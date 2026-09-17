@@ -1,0 +1,118 @@
+{
+  "class": 3,
+  "topic": "Linear Machine Learning for Return Prediction",
+  "files": [
+    {
+      "file": "market_linear_model_summary.csv",
+      "description": "Validation settings and test evidence for the monthly linear models.",
+      "bytes": 1559,
+      "sha256": "9cfd11e7aaa3be088cecb8ae588de92f3c3a4c5056209cd35e9a7985ffa0b9b4",
+      "rows": 15,
+      "columns": [
+        "market",
+        "model",
+        "validation_mse",
+        "alpha",
+        "l1_ratio",
+        "test_mse",
+        "oos_r2",
+        "forecast_correlation",
+        "nonzero_coefficients"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "market_linear_test_predictions.csv",
+      "description": "Monthly test predictions for the three markets.",
+      "bytes": 26860,
+      "sha256": "9316219b701215abda593beb00f0c0c0fd1c9011d6ab255558d8de99f32c587e",
+      "rows": 180,
+      "columns": [
+        "forecast_month",
+        "market",
+        "actual",
+        "MA(12)",
+        "OLS",
+        "Ridge",
+        "LASSO",
+        "Elastic Net"
+      ],
+      "date_range": {
+        "field": "forecast_month",
+        "start": "2021-07-31",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "stock_linear_model_summary.csv",
+      "description": "Validation settings and test evidence for the weekly stock models.",
+      "bytes": 821,
+      "sha256": "f9866f7a9da92290d51f69d67f86e7caa329f95982cea589577a0dfb1d284e56",
+      "rows": 7,
+      "columns": [
+        "universe",
+        "model",
+        "validation_mse",
+        "alpha",
+        "l1_ratio",
+        "test_mse",
+        "oos_r2",
+        "forecast_correlation",
+        "nonzero_coefficients"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "stock_linear_test_predictions.csv",
+      "description": "Weekly HSI constituent test predictions.",
+      "bytes": 1127308,
+      "sha256": "8023143bee31a6471b4010c83442e1bde6c5922183502dc47a6a73bfbc40311e",
+      "rows": 4108,
+      "columns": [
+        "forecast_week",
+        "universe",
+        "ticker",
+        "stock_return",
+        "market_return",
+        "risk_free_yield_pct",
+        "risk_free_return",
+        "actual",
+        "Zero",
+        "OLS",
+        "Ridge",
+        "LASSO",
+        "Elastic Net",
+        "PCR",
+        "PLS",
+        "predicted_excess_return",
+        "forecast_quintile"
+      ],
+      "date_range": {
+        "field": "forecast_week",
+        "start": "2025-07-04",
+        "end": "2026-06-26"
+      }
+    },
+    {
+      "file": "stock_linear_forecast_spreads.csv",
+      "description": "Forecast-sorted weekly high-minus-low portfolio evidence.",
+      "bytes": 890,
+      "sha256": "f2fa2fd597a710cc2bf83c81ecabeefa93df8dc766b0582ed70565dd537db8a8",
+      "rows": 6,
+      "columns": [
+        "universe",
+        "model",
+        "sortable",
+        "weeks",
+        "mean_weekly_spread",
+        "t_statistic",
+        "annualized_sharpe",
+        "hit_rate",
+        "first_half_mean",
+        "second_half_mean",
+        "note"
+      ],
+      "date_range": null
+    }
+  ]
+}

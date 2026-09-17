@@ -1,0 +1,801 @@
+
+00:00 
+Purely CS course, but it's also not a course that discuss AI only at a very high strategy level and this course goal is to help you guys understand the technology well and. Try to use it and evaluate it and communicate with the. 
+
+00:29 
+Technology teams, it's more like a discussion of course for AI product manager. So before studying the courses, let me briefly introduce myself and my name is Miao and and assistant professor at City of Hong Kong. And my research is mainly focused on how the AI shape human behaviors and also build the explainable transport CAI for business practices. 
+
+01:05 
+My academic path was actually not completely. Clear 'cause I got bachelor degree at Nankai University and got master from the University of Michigan and I both major in the operations research. The the academic in or OM is to develop models and try to use the sterilized game theory model to verify a phenomenon and after my master I. 
+
+01:40 
+Umm, first read a paper in IS and Phil is very interesting. I can design an artifact and then, uh, evaluate the, umm, impact. Uh, and another reason I switch from or to is, is umm, the job markets in OM is very competitive. Uh, But uh, my suggestion is not just to chase the. 
+
+02:06 
+The the hottest the topic or the hottest job? Umm, but they need to find. Uh, what you really want to do? Umm, And umm, during my PhD study, I collaborate with, uh, several, umm, technology, uh, platform, uh, like in PN technology, I work on the development of the fintech algorithm. It's more like a CS flavor research And uh, in mate one, uh, I collaborate with their, uh, grocery service group. 
+
+02:39 
+Called like social supermarket. And we focus on the empirical study. And recently I started collaboration with Tencent for the Smart retelling consultation. So after introducing myself, I would introduce our TAS. These are the two TA for this course. 
+
+03:08 
+It will。 
+
+03:08 
+Mainly support uh, Canvas activities and student uh, Inquiry and Intro will provide onsite assistance and help uh, the uh, converse administration. And by the way, uh, please uh, uh, go through the Canvas before the UH, class. Umm, so this courses will, uh, include four modules. The first one is the generative AI foundations and in this module, uh, it will take 3 weeks. Uh, it covers the core generated AI concepts. It's like this course, like this lecture will be more conceptual and we will begin with the history of. 
+
+03:59 
+AI and then introduce the four concept, uh, like. Algorithms terminology of generative AI, and you don't need to memorize every definition, but the main purpose of today's lecture is just to help you build a conceptual map. So by the end of the class, I hope you can distinguish several terminologies in AI, and in the next lecture I will. 
+
+04:29 
+Discuss several technique mainly used in. Apps such as Chrome engineering find training and retrieval, augmented generation and, uh, the function call. Umm, I try, umm, I try to, uh, make it's, umm, not that technical and it's easy to understand. Maybe as the, uh, product manager, you can, uh, utilize these techniques to discuss with the technology teams how you want to view this product or this. 
+
+05:05 
+And the third lecture I would introduce some. Agency AI like the single agent multi agent system. How one agent? How one agent can lead the other agents and recent auto research pipeline How the technology companies started to use the auto research to automatically do the algorithm development, experiment evaluation and. 
+
+05:37 
+And then, uh, start the new loop. OK, yeah. And the second module is Generative AI strategies, but. So we should start to ask a question which large language model should we buy as like Co and it should begin with a business problem, a user and existing workflow measurable outcome and we will therefore learn how to identify. 
+
+06:11 
+The valuable opportunities and distinguish a real business case from an impressive demonstration. And in this module, we start invited, uh, guest, uh, speakers in this class, uh, so that you can have the opportunity to, uh, uh, connect with the. 
+
+06:34 
+And the module 3, uh, it will take, uh, four courses and this module focuses more on the industry use cases and practitioner experience. And we will. Examine how the genre AI is being applied in real business practice, like in marketing on the legal industry, the insurance and the retail. So 4 sessions will include. 
+
+07:09 
+Guest speakers who can show us the constraint they often are missing from the public product demonstrations. And the last? Module, it's actually it will take only one week because I would leave the last week as the review before the final exam. So the in this responsible AI part, I want this module to be practical. So responsible AI is sometimes taught in a very abstract way and people may talk about. 
+
+07:47 
+Ethics, fairness, transparency, and. At human values this concept. And I have to say that this concept are very important, but if we. Just stay at the slogan level is not very helpful for your future work or like job interviews. So in this course when we talk about responsible AI, I want to focus more on. 
+
+08:17 
+Start with the practical question, like if you watch working properly and. Our team begins with lunch AI product. What could go wrong and how should you think about before the product goes live? For example, suppose. 
+
+08:35 
+Your company wants to build an internal chat box for employees and it may look simple. You just upload the document and connect them with an LM and use the external retrieval augmented generation techniques and let the employee. 
+
+08:55 
+But immediately we may have many responsible AI issues. The 1st is what document can the system access? What if we use the document without the license from other companies? And if the model summarize some like confidential information from other group and send it to the wrong group is that? 
+
+09:19 
+A privacy issue, even though it occurs in the internal. UH88 Even so it's exists in in within the company. Umm. So, umm, now let's, uh, briefly talk about the tentative, tentative course schedule. Umm, I will teach the first 3 lectures. And as I summarized before, uh, I would, uh, introduce the, uh, concept of AI and several techniques associated with strategy AI and then I will show how to. 
+
+09:58 
+Generate the agent system as a demo in the third lecture. And I'll start from the module 2 we would invite. Oh after these three lectures we will have like 2 week break because of the Mid Autumn Festival holiday and the University Non teaching day on October 3rd. So our 4th class will start October 10th and we will begin a series of 6 guest lectures and this session will cover. 
+
+10:35 
+Both the strategic implementation of Java AI and the practical use cases from different industries and take care of place. Just go through the covers because we will send announcement before the module 2 and Module 3 as the guest lecturer may not be able to. 
+
+11:00 
+Give lecture twice in in a day. So we will combine these two session. During our six guest lectures and our lecture room will switch from here to CMC and 3017 so and after the guest lecture, we have two lectures before the final exam and I will discuss the responsible AI in November 21 and give a brief review before the final exam on November. 
+
+11:36 
+Is there any questions? So now it's come to the most important part. In this lecture, I will explain how your final way will be calculated. First, the lectures. Guest lectures account for 20% of your final grade. The attendance and the participation during the guest lectures will be recorded and will. 
+
+12:08 
+Come toward your. Assessment and your participation and your questions during the guest lecture also matters in particular, you will complete 6 post lecture post guest lecture reflection each was 3% and for the total of 18% and the remaining 2% will. 
+
+12:34 
+Be based on your participation, such as asking the questions to the. Guest speakers engaging in the discussion, uh, during the guest lecture, umm, and that means, uh, the attendance and the participation in my lectures, uh, will not be uh, graded. Uh, I totally understand that many of you umm, are busy with internships, uh, like job applications, interviews or assignment from other courses, so. 
+
+13:07 
+Umm, I have designed this attendance policy selectively. I don't require you guys attend all my lectures based on the course assessment, but I strongly encourage you to attend the guest lecture first. The guest lecturer. I think it's a valuable learning opportunity. There is often a gap between learning a framework of concept in the classroom. 
+
+13:38 
+And understanding how it works in the. Industry, especially when I started collaborating with this Internet companies. So the purpose the the department have invest investigated considerable time and resources in inviting this experienced guest picture guest speakers and the purpose is to help you. 
+
+14:08 
+Connect what you learn at university with what you will encounter in your. Umm future uh, work in place and to support your uh, transition from being a student umm, to uh, professional uh practitioner and 2nd. This lectures give you a rare opportunity umm, to view the connection with the senior people in industry Umm. So before umm applying for job, many students usually try to. 
+
+14:42 
+Arrange a coffee cat with this. Uh, industry practitioners, uh, but usually, uh, our guests are very, uh, seniors. It's hard for you guys to directly find the senior professional who are willing to, uh, listen, uh, speak with you or chat with you. Umm, so our guest lecturer bring this, uh, senior practitioners directly to the classroom and it's, each session will also include type for. 
+
+15:12 
+Uh, Q&A, so please take. Advantage of this opportunity, you can ask umm, this, uh, speakers, umm, like industry, their, uh, career paths and their like company environments, uh, or the technology applications about AI or many other uh, topics relevant to your like. 
+
+15:41 
+I'll transfer to your scenario. So when I first tried to establish the the university industry research collaborations, I did not have this like convenient opportunity to meet the senior. Industry professionals through my university. So I applied I think at least 100. 
+
+16:10 
+Job post from this. Large technology companies, and most of them were the large platform companies because my research required access to the large computing resources and the data and business applications, and I used one interview after another as an opportunity to speak with this team leader. 
+
+16:43 
+To explore whether there might be opportunities for collaboration. So my thinking is very simple, if I approach is 100 company or 100 job post, at least one of them eventually offer me an opportunity to collaborate with me. So throughout this process I gradually be with my own network of industry contacts and was eventually able to launch several research project with this. 
+
+17:16 
+And so based on my own experience, I can tell you that this opportunity you have in this course is. Umm, like very, uh, valuable. So please don't treat this gasoline as umm, just attendance requirements and treat them as opportunity to learn, umm, how the general AI works in practice, how, uh, this senior practice practitioner can achieve their career goal in over the long term. 
+
+17:54 
+And in terms of the UMM group project? Similar to I would use the like the video presenting, you can just record a video to do present your group project. And in terms of the writing exam? It's accounts for 50% and it will take two hours. 
+
+18:26 
+So I will elaborate, elaborately explain the group project so you will work in teams of five to seven students. And the TA already sent the announcement about your. A group assignment. You can just choose who you want to be a group and each team should identify a specific business problem and explain who is affected by that problem and design. 
+
+19:03 
+A junky AI solution and this is not only a conceptual proposal. Or I have to say I hope it's not a conceptual proposal your project should include. And actually AI agents and a working that a working demo of that agents. Of course with today's web coding tools, you don't need to write every line of code manually in the traditional way and that is old fashioned. You can just use AI tools to help you generate it. 
+
+19:43 
+And debug and improve your multi agent systems. Umm and sometimes the AI tools cannot do all the thinking for you. You still need to define the business problem by yourself and design the workflow as they lack the data sources and and last decide umm like which tools the agent should use and explain how this application could be. 
+
+20:12 
+嗯。wrote out in。 
+
+20:14 
+Business practice and in your reported presentation you might clearly introduce the business contacts and the target users, explain the architecture of your agents, identify the appropriate evaluation matrix and discuss the extracted outcome. And demonstrate how the agents actually work. 
+
+20:44 
+And I will try my best to teach you in the following two lectures, so in the second week and the third week, how to build an agent over this two weeks. And in the next class we will focus on the major component of. 
+
+21:05 
+Applications include proper engineering, the my training techniques and Reg and external use. We can also call it the functional calling and in the third lecture we will connect this component and examine how they can work together as an multi agent systems and I will discuss. 
+
+21:30 
+The topic like multi agent systems, open flaw and the output research pipeline and then demonstrate how to build and agents step by step. So these two lectures should give you the basic knowledge and tools needed to get started but. 
+
+21:54 
+The practical skill cannot be developed simply by listening so. At some point your own hands still need to do the work, so you will need to spend some time after class experimenting with this tools and trying different approaches and figuring out how. 
+
+22:17 
+Something works online. Does not work. I don't require anything with. I see them a technology, technology multi again systems, because this is a group work, so you can divide the work according to your interests and strengths. And some member may focus more on the definition of business problem, the user name and some students might design the workflow. 
+
+22:48 
+And your evaluation plan and others may take the responsibility for building and testing the agents. So every loop must produce an actual. Animal and if you are interested in becoming an AI product manager or applying for another. 
+
+23:14 
+AI related position I strongly encourage you to become involved in the hands on development experience with web coding and building and AI agents is increasingly close to what the Internet company expect from. 
+
+23:34 
+A strong fresh graduates. So companies when I interviewed fresh graduates in the company, I think the company understand that as a fresh graduates you may not yet have. Have enough opportunity to develop the large scale AI systems in the. 
+
+24:01 
+Real business. 
+
+24:02 
+They said image is not normally copied as one complete item from the filling data and the model just produced an output by using the. Representations learned during training. Umm, so this parts uh, point to several common misunderstanding about junk AI. The 1st is that the general AI means ChatGPT umm. 
+
+24:37 
+But the chatted GPT is just one product and one conversational interface, so the broader category includes many models and applications for test images, speech, music, video, code, and scientific design. 
+
+24:58 
+And the second uh, misunderstanding is that anything with the chat window must be done to AI. Umm, A chatbot may use umm, fixed rules or search uh, predictive model or even a large language model. The interface does not review this architecture. 
+
+25:21 
+And the third misleading is that the fluent language proves human like understanding. A language model predicts plausible. Plausible continuation from patterns learned during the training and from the contact supplied at runtime. That mechanism can produce the useful reasoning like behavior, but it can also produce a confident false statement. So it's fluent, but it's wrong and the force misunderstanding is. 
+
+26:01 
+That the AI suddenly appeared in the, uh, 2000 and 2023. Umm, the few dates. Back many articles, many like researchers, so today's progress reflect. Accumulated changes in data, in computing resources, in the model structure and the training method. So for managers this distinctions are practical. So if you if we mislead the task, we may buy the wrong technology. 
+
+26:45 
+Umm, so AI is not a new field. So umm, this video will umm, takes us back to the historical setting around the uh, 1956 that month workshop, which is often treated as. Uh, like first foremost starting point for AI as research agenda and researchers at that time were uh, already asking what, uh, whether the, umm, aspects. 
+
+27:15 
+Of learning, reasoning and intelligence could be described. Precisely enough for a machine to stimulate them. And their ambition was. Obvious, especially given the very limited computing resources available. 
+
+27:39 
+In the summer of 1956, a small group of brilliant minds gathered at Dartmouth College in the rural town of Hanover, NH. They brought with them groundbreaking ideas that would shape the future of AI. Among the participants were John McCarthy, Marvin Minsky, and Claude Shannon, whose contributions were particularly notable. 
+
+27:57 
+The Dartmouth Conference proposal outlined ambitious goals for the development of artificial intelligence. These goals were focused on exploring the possibility of machines using language, forming abstract concepts, solving complex problems, and self improvement. The overarching aim was to understand and create machines capable of intelligent behavior comparable to that of humans. Professor John McCarthy was a driving force behind the conference. The guy is known as the father of AI and is even responsible for coining the term. 
+
+28:28 
+Official Intelligence. His vision was to explore the relationship between language and intelligence. McCarthy believed that the complexity of human behavior could be simulated through higher levels of abstraction, particularly using language as a tool. He proposed the development of an artificial language that could enable machines to engage in conjecture and self reference. This concept played the groundwork for future programming languages on AI communication protocols, and his foresight now powers AI. 
+
+28:57 
+Locations like Chaturbate and similar digital assistants. Mathematician and computer scientist Marvin Minsky brought his expertise in neural networks and mathematics. He had already built one of the first machines simulating neural networks, the Stochastic Neural Analog Reinforcement Calculator, which reflected the interest in how patients can learn and form abstractions. Minsky focused on developing machines capable of goal-seeking behavior through sensory and motor abstractions. His work hinted at the possibility of machine is building internal models of their environments. 
+
+29:31 
+Which is a precursor to modern machine learning and environmental interaction algorithms. Today, this concept has evolved into sophisticated deep learning technologies fundamental to modern AI systems. Cloud Shannon, renowned as the father of the Information Age, also played a crucial role in the Dartmouth Conference. 
+
+29:50 
+Known for his groundbreaking work in the field of digital circuit design theory and telecommunications, Shannon's insights were pivotal in laying the groundwork for AI. His theories on information processing and transmission and communication systems brought a unique perspective to the discussions of the conference. Shannon's work emphasized the importance of mathematical models and understanding complex systems, which is a cornerstone of AI development. 
+
+30:16 
+His contributions helped shape the conceptual understanding of how information is structured, processed, and interpreted by machines, influencing A developmental setting and computational methods used in AI today. 
+
+30:29 
+His vision underscored the potential of AI and transforming communication and data processing, ushering in new possibilities and machine learning and intelligence systems. In particularly revolutionary idea was the concept of self improvement in machines. This early notion of machines learning and adapted overtime is now an essential aspect of AI seen in autonomous systems and advanced machine learning algorithms. These ideas, along with contributions from other attendees, sparked discussions and debates on neural networks, language processing, and machine learning. This melting pot of conference was certainly ahead of its time and many concepts that formed the core of modern AI. 
+
+31:08 
+What do you think? I drove these brilliant minds to envision a future where machines could think and learn. How did their initial ideas mirror the AI technologies you use every day? And if you find these pioneering that is fascinating, don't forget to like this video. 
+
+31:25 
+The conference regulated an unprecedented optimism its visionary participants. So as we watch this historical context and it's important gap between the, umm, capability and aspiration. The researchers had important ideas about the symbolic reasoning and the machine, uh, intelligence, but they did not have. 
+
+31:55 
+If they come in from the GPUs and the cloud platform or the large pre trained models so that gap. Helps explain the cycle of optimal optimism and the disappointment that later because no one is AI winters. So the right conclusion is neither that. 
+
+32:24 
+Early AI was naive more than today's systems have solved intelligence, so each generation. Works within a particular combination of the technology they have, compute and engineering. So the current strategy AI wave is therefore a new stage. 
+
+32:51 
+In the long history, but now the beginning of that history. So the year 1956 matters because the term artificial intelligence entered a formal research agenda decades before today's generative models and the dark moths researchers propose that features of intelligence might be. 
+
+33:20 
+Represented and studied computationally. The early work focused the heavy. On symbols, logic search and problem solving. So those methods were appropriate for the hardware and scientific assumptions of the period, but this researchers struggled with the perception and the enormous number of exceptions found in the real world. 
+
+33:56 
+So the today's systems look very different because several paradigm shifts occurred recently and the statistical machine learning allowed models to umm, estimate the patterns from examples, and deep learning learned representations directly from large data set and the transformer architecture made the large scale. 
+
+34:24 
+We're training, umm and pre training, uh, much more than effective umm, and the clouds are in front and specialized chip made, uh, training and serving possible at, uh, large scale. When we say that the current AI is new, we should mean that the, uh, capability, the, uh, scale, the, the accessibility and the business impact on you and the. 
+
+34:54 
+Inspiration to build machines that are performing intelligent task has been with us for roughly about 70 years. So the next question is simple, but it's prevent an important category mistake. Is the system a chat board or is it? 
+
+35:21 
+A ChatGPT, so a chatbot is a type of user interface and interaction. Pattern and the ChatGPT is a specific product build by the Open AI company and two systems can look similar. And they their interface can almost identical on the screen while relying on the completely different mechanism and the colors. So let's look at the lady rule that we understand what it's doing. 
+
+35:58 
+As we do, it's easy to meet false conclusions, as Professor Weissmann discovered when he created Eliza. Elias computer program that anyone can converse with buying a keyboard and they retired on the screen we say speech during the conversation more clear. 
+
+36:21 
+Men are all alike. In what way? They're always bugging us about something rather. Can you think of a specific example? Well, my boyfriend made me come here. My boyfriend made you come here. He said so I'm depressed much of the time. I'm sorry to hear that you're depressed. That's true, I am unhappy. Do you think coming here will help you not to be unhappy? The computers replies seem very understanding, but this program is merely triggered by certain phrases to come out with stock responses. Nevertheless, Weissenbach's secretary fell under the spell of the machine. Saturn down at the keyboard, and then she began to type because I looked over her shoulder. 
+
+37:06 
+To make sure that everything was operating properly, after two or three interchanges with the machine, she turned to me and she said, would you mind leaving the workplace? And yet she knew that was about it, that Eliza didn't understand a single word that could be typed into it. 
+
+37:27 
+赶紧给他们相处why do you think。 
+
+37:31 
+You're afraid of me. I. 
+
+37:39 
+在你看那个机位还有可以体验在那个男人系呀。 
+
+37:43 
+Alternatively. So just summarize in summarizing one sentence. So the ELISA is just a chatbot it based on the keyword as you can see. She or it cannot explain or understand the input and explain its output. It just based on the keyword. 
+
+38:14 
+The goal input to generate the output. Does it understand? 
+
+38:25 
+Some. So, umm, a chatbot is a board, uh. Uh, categories of conversational software. It may be implemented by umm, uh, script rules, decision trees, uh, or uh, just the keyword matching as the ELISA umm. 
+
+38:48 
+But the ChatGPT is 1 particular conversational product built on open AI models and it generates responses from learned larger language model distributions and can be combined with the retrieval, the external tools, the memory. 
+
+39:11 
+Even long term or short term memory and application level controls. So consider a consumer asking can I? Cancel my order. The traditional chat box you may experience may match the word cancel and display a policy page. A workflow about may authenticate the consumer and check out their status call and like all their management API or generative system may explain the policy in natural language and. 
+
+39:47 
+A complete business system. We may combine all this. Functions like the rules enforce eligibility, the retrieval supplies the current policy and at all performance the consulate cancellation and the language model explain the results. So the work chatbot tells us only just the user interacts so to understand the actual system. 
+
+40:18 
+Ask what component products what component produce each? Output and what data the system used and what actions it can take. And what constraint it applies when something goes wrong? So Elisa is just a classic. 
+
+40:45 
+Rule based conversation program and it was created in the 1960 and the famous doctor script imitate a reflective. Psychologist If a user type, I feel unhappy and the system might recognize a pattern involving I feel and. 
+
+41:11 
+Umm, respond with the questions such as why do you feel unhappy? It could uh, also transform the, umm, pronouns and repeat part of the user statement. So there was no, uh, learned language model, no semantic representation compare, uh, compared with the, uh, like even the representation in the transformer architecture and no, uh, genuine uh. 
+
+41:41 
+Comprehensive of users intention, but many user experience the conversation as meaningful because the people naturally interpret A responsive dialogue, umm, with like uh, social flavor. So this tendency became known as the ELISA effect. 
+
+42:04 
+So this lesson remains highly relevant because modern system are formal capable, but users sometimes still attribute the certainty, the intention or even authority to systems on the basis of the, uh, fluent, uh, output. So the designer must therefore make. 
+
+42:31 
+Limitation clear avoid misleading human like claims and. Provide appropriate explanations when the conversation involves like uh, healthcare, uh, financial services, employment, or other umm, high stake domain. 
+
+42:53 
+So let's have a 10 minute break and we will. Continue. 
+
+43:20 
+牛牛仔feel照书籍算。这。这我之前有问题就唔系，前几日有回复个老师就爱你啦。唔单止内地啦，即完全对住个。 
+
+43:37 
+They have a. Accidentally. 
+
+43:39 
+Fraud transfer but. Their output are probabilistic and may not be grounded in current business facts. So in business practice, the most reliable design is often hybrid, for example. Loan application workflow might use a classifier to root applications from consumers and a regression model to estimate the loss and the retrieval to help the consumers find the current policy and and to explain the results. 
+
+44:24 
+So the paradigms are building blocks, not competing the brands. So the symbolic AI represent the knowledge explicitly through symbols, rules and the logical operators. A typical expert systems contains facts about a domain and if them, rules that determine what follows from those fat search and planning algorithm explore. 
+
+44:57 
+A defined state space to umm, find a sequence of actions. So the main advantage is visibility and all data can often inspect which was fired and why. So actually this if the rules is quite popular in like Pinan insurance company. So actually when I first work with them, I was shocked that they. 
+
+45:28 
+Still rely on this if the rules but they told me. Humans, in the end, would take the responsibility to end the decision, so they prefer to use the tools that they can control, and they know clearly why. 
+
+45:48 
+The decision is yes or no. And if you are curious about my experiencing company, I'm happy to talk with you during the break and this symbolic AI models. Work well in the very structured settings because like the Pi insurance company they have many user cases and based on this. 
+
+46:17 
+Examples they can set up a clear rules so that. 
+
+46:23 
+A system。 
+
+46:23 
+System can just apply a clear defined threshold and a compliance workflow can block a transaction when a documented condition is met and the planner can repair the legal sequence of the actions. But the reality is will ambiguity and exceptions, so the neutral language varies and image do not arrive at. 
+
+46:56 
+Neat symbols. The expert knowledge changes over time sometimes, so as rule spaces grow, the interaction among rules become difficult to maintain. So this symbolic AI therefore give strong control where the knowledge can be written clearly, but it does not automatically. 
+
+47:22 
+Provide the broad adaptability so the modern systems do use. The all the symbolic constraint precisely when the. Explicit behavior is valuable. Like the high state domain, like the government, Government or the financial services. 
+
+47:45 
+And the symbolic system delivered business value when the rules were supposed, uh, explicit and they supported repeatable decisions, the transparent logic, planning and compliance. So if a systems, uh, if it work pro uh, process could be written as a stable decision tree, then the computer would umm. 
+
+48:13 
+Executed consistently and. Explain which branch was followed. And this was especially useful in expert system where the specialist translated part of their knowledge into formal rules that you can imagine. In the fintech company like Piano, we have like millions of gift rules. 
+
+48:41 
+In in in the sub company of the group based on this. Like 30 years experience. So the boundary became visible when inputs were ambiguous or exceptions multiplied. So the people had to write tasks prioritized and update every rule. And rule for one case could potentially conflict with another rule. 
+
+49:12 
+And at this, at this time, the interview would switch to the from the rule to the human being. To make the final decisions and the error structure has speech images like the vehicle damage were difficult to reduce to reliable symbols. 
+
+49:33 
+So the coverage. Deteriorated as the environment changes. For example, a rule based fraud system can block. An impossible transaction, but thousands of handwritten rules cannot easily capture every changing behaviors of the fraud users among millions of users in the company. 
+
+50:04 
+So the lesson is not to abandon the rules, but just use the rules for the. Right conditions. And another disadvantage of the symbolic models is it can only be maintained manually and it's not beneficial for the companies. 
+
+50:31 
+Companies cost effective strategy. So the symbolic AI eventually encountered a challenge called scalability wall. So the research problems were, uh, fraud. But many deployed systems were narrow and, uh, very expensive to maintain, umm, and fragile to uh, outside, umm, dynamic conditions. 
+
+51:00 
+The rule based expanded faster than teams could update them. Speech and visual perception remind unreliable, so the available data and the increasing computing power were limited at that time. So when exceptions exceeded demonstrated capability and funding decline, the field experience periods described as AI winters. 
+
+51:32 
+So this history offered two lessons. First. Umm umm, technical progress depends on the ecosystems of method uh like data, computing sources, engineering support, umm, so and attractive uh, idea alone is not enough. Second, the methods can maintain valuable even when the dominant paradigm changes. 
+
+52:03 
+Explicit rules still matter in these days. For its compliance, safety limits and determines determine deterministic calculations. So what failed was the assumption that the handwritten knowledge alone could cover the complexity of the real world. So that limitation in con encourage the researchers to ask a different question. 
+
+52:33 
+Instead of specifying every rule, can a system? Estimate useful patterns directly from this data. So the, uh, the statistical machine learning grew from that sheet. So the statistical, uh, machine learning changes the source of behavior. Instead of asking programmers to write every decision who we provide examples and allow an algorithm as they may the parameters that umm can predict an outcome. 
+
+53:09 
+So historical data have becomes evidence from which the system. Learners and performance can be explicitly measured on hold out example that or not used for training. Suppose an online platform wants to predict consumer trend and the rule based approach might list conditions such as low activities repeated. 
+
+53:39 
+Umm, compliance. But a statistic model can, uh, learn how many variables jointly related to the consumer trend and, uh, produce uh, probabilities for each consumer. Umm, and the organization can compare prediction with actual outcome and measure, uh, generalization. So this flexibility introduce how of the new. 
+
+54:09 
+Dependencies. So the data must be representable and, uh. Legal, legally used and labeled. Must introduce. The intended business outcome so the behaviors may change after a promotion or the market shock creating. 
+
+54:33 
+Drift. So the model therefore does not remove the human judgment. It moved the human decisions into data selection, the target definition, evaluation, deployment. And uh, monitoring and actually the umm, statistical machine learning approach is very popular when we predict the estimate how arrival like the umm, wasted. 
+
+55:01 
+I'm on the footlood platform。 
+
+55:04 
+Avoid the red Pilling platform like DB. Most algorithm they just use the statistically. And to predict this time because the the reverse time it must be within one second. And the disadvantage of the transformer models is it takes more time than this simple statistic. 
+
+55:35 
+Statistical machine learning approaches. So these three terms form a set of nested categories. The artificial intelligence is the broadest goal building the machines that perform tasks associated with intelligence such as perception, reasoning, language, planning, or decisions support. Machine learning is 1 family of method for achieving that goal by learning patterns. 
+
+56:11 
+From umm. Step from a large group of data and deep learning is just a subset of machine learning that use uh, like neutral network with many layers to learn, uh, hierarchical representations. So this uh, three categories should not be used, umm, like together. So a rule based expert system may be AI. 
+
+56:40 
+Without being machine learning and a linear regression model to predict the estimate. A rebel is machine learning without being deep learning and convolutional neutral network is deep learning, machine learning and AI at the same time. So the jump AI often use uses deep learning foundation models, but the the business application may also contain. 
+
+57:11 
+Rules search connected database the. Predict models, so using precise term help us select the right evaluations, so we evaluate the classifier differently from. Hack generator even if both appear inside the same AI product. 
+
+57:35 
+Umm, so now let's look at the mathematical diagram. I will try my best to, uh, make this now that, uh, boring. Umm. So the row vectors on the left contains the input written as a one through an. So it's a matrix and, uh, each input represents one feature or one signal. 
+
+58:02 
+And the matrix in the middle contains the weights. So each input is multiplied by a learned weight from last layer and the weighted values are combined to produce the output written as C1 through CM. So the weights represents which input signals matter and how strongly this input. 
+
+58:30 
+Matter a positive A positive weight means that increasing and. Inputs tends to increase the corresponding output and negative weights means that increased input tends to reduce the output and away close to 0 means that the connection. 
+
+58:52 
+Currently has relatively little influence. Umm. Because the diagram produced several outputs, it represents a complete neutral network layer rather than only one artificial neuron. So each output is calculated from a different weighted combination of the input. 
+
+59:19 
+Actually. In front of the A matrix and B matrix there would be a function transformation to help this two input transform to output C matrix like the resource or Sigma sigmoid function. For example, we can understand if we just use a matrix multiply B matrix and it's a linear relationship, that means it would fluctuate. 
+
+59:55 
+Largely, but if we add the reload or sigmoid function in front of this input, then that would have a nonlinear transformation, so the fluctuate will not be that high. So it's not that easily. To, uh, miss some, uh, information that may not that positive or negative and, uh, it may not that easily to be the outlier in the, umm, uh, deep learning, uh, process. So a neutral network is built from the simple, uh, computational units often called. 
+
+01:00:38 
+Artificial neurons. So it's, umm, a biological. 
+
+01:00:44 
+Logical neurons show。 
+
+01:00:45 
+That at the bottom of this slides provide a useful analogy. Receive signal and the cell body combine those signals. To transmit and output. So an artificial neuron follows the same general patterns of input, transformation and output. However, the IT is a mathematical function rather than a realistic simulation of the. 
+
+01:01:21 
+Biological brain cell. So in a complete neutral network neutral network we would normally include a another biased term and and activation function. So the model first multiply the input by the weight matrix, that is the B matrix in the equation and add the bias term and then applies an activation function. 
+
+01:01:50 
+To introduce the nonlinear nonlinearity, so without the. One linear activation functions stacking many layers would still be equivalent to one large linear transformation. And to accelerate the training process, the network would not be able to learn a sufficient complex relationship under the linear transformation. That's why we want to add this nonlinear function, uh in front of the, uh matrix. 
+
+01:02:26 
+So consider a simplified credit risky sample. The input might include consumer income. Ratio the repayment history and their account age, and the model does not receive a fixed rule saying that one variable is always. 
+
+01:02:48 
+Decisive. You must based on this variable to make the. The the decision to evaluate the credit risk so it learns the combination of weights from the labeled historical cases. Umm and umm. In the statistical machine learning, one is the supervised learning. The definition is that the training data contain labels. In another word, for each training example. In supervised learning, we already know the correct answer, and the model learns the relationship between the inputs and the known output and then uses that relationship to make the predictions for. 
+
+01:03:42 
+呃。new data without the label。 
+
+01:03:45 
+Labeled Outcome. So supervised learning problem generally fall into two categories, the classification and regression. Classification predicts a category or a class. For example, we may want to determine whether an e-mail is spammed, whether a transaction is fraud, or whether a consumer is likely to. 
+
+01:04:14 
+Leave this platform. So the purpose of this classification is to. Differentiate the categories such as Yes or no, class AB or C. And the regression, by contrast, predict the continuous numerical value, like predicting the estimated type of rival for the food delivery or the waiting time in the reptilian the next chapter salary or the amount of the revenue that a consumer may generate. 
+
+01:04:57 
+So the simply distinction. Between the classification and regression is that the classification predict a class, but the regression predicts a numerical value. And for classification, we may just use the matrix as to evaluate like the accuracy, the precision, recall and F1 support in applications like the fraud detection or medical. 
+
+01:05:32 
+That noses the accuracy long may be misleading. This is because the positive cases are often rare, for example in the fraud detection cases. In the data, usually only .8% is the fraud cases. So if the accuracy is only the one it's only one evaluation matrix, then we just predict all the cases as. 
+
+01:06:04 
+Not too far we can get the accuracy level about above 99%. So because the fraud cases is very rare, so we cannot just use accuracy as one evaluation, we need to combine the recall to find more fraud cases that the target of the company. 
+
+01:06:30 
+We don't care about the precision or accuracy and for regression. We usually measure the differences between the predicted and actual values using matrix like mean, squared, area or some. Transform the mean square area like Mae or RMSE. The real world they have sometimes are rarely as clean and complete as the data we see in the textbooks. So in company we usually have a very. 
+
+01:07:06 
+Large amount of data, but only a small percentage of data may be labeled and clean. Can be used for our training process, so usually we use the. Semi supervised learning. So what is timely supervised learning? We have supervised learning like the classification regression and the unsupervised learning is the training process. 
+
+01:07:37 
+Is that the data? We don't have the labeled outcome, So what we can do is just cluster this data for example or in company we want to classify. A large 30 data set into several consumer group and try to personalize the marketing strategy to this consumer group. But we do not have the label data for this consumers, so we use the unsupervised machine here and more. 
+
+01:08:09 
+Cases we have some data that means we have some label consumers, we know their gender, their income, their location at all and we want to use this small portion of data to help us to. Classify the data without any label. 
+
+01:08:31 
+So so this is where the stand made supervised learning becomes very useful and it can combine the small amount of labeled data with the mark very large amount of unlabeled data. And the general idea is to use this unlabeled data to learn useful patterns or representations and then use this limited label data to guide. 
+
+01:09:00 
+Some specific. Uh, prediction task or the, uh classification task? If the data have no level at all, then or we cannot. Just use the supervised learning or semi supervised learning which usually deal with unsupervised learning. So clustering is the most intuitive example. The model is now given a correct answer. Instead it identified the similarities between the data and the groups. 
+
+01:09:35 
+And to combine the similar. They have points together. For example, without defining the consumer types in advance, the model may just group the consumers according to their purchase frequency or the. 
+
+01:09:53 
+Product preference and the business manager can then examine this clustering clusters and interpret the this cluster characteristic and design. The differentiated strategy for each group like how how much coupons you want to send to this group of companies. 
+
+01:10:20 
+Of course, the unsupervised learning is now limited to the clustering. We can also include the like the outlier detection and other tasks, but clustering is the useful starting point for understanding this basic ideas. 
+
+01:10:42 
+Umm, we have already discussed the supervised, uh, uh, machine learning, unsupervised and semi supervised learning. We now, uh, come to another important stage in the development of uh, in the development of AI. That is the deep learning. So from roughly umm, 2012 and 2017, the deep learning. 
+
+01:11:07 
+UMM advanced rapidly and became the dominant approaches for many. Uh, applications. However, one point this to be classified here is that the deep learning was not the first approach that allowed machine to learn from data. Uh, in the traditional uh, machine learning models, we can also learn patterns from data. The major changes between these two models was how the, uh, features or representations were produced in the traditional machine learning like the classification. 
+
+01:11:42 
+Regression. The humans usually identify and construct important features first, like the feature engineering, and the model then learns how to make predictions from those features. So this process works pretty well when we have structured data and understand which variables are important and. 
+
+01:12:07 
+The number of variables is limited. But it becomes much more difficult when the work with images. Like the fraud detection cases, we need to detect the vehicle image to find whether the items or component is. 
+
+01:12:30 
+Include the fraud items. So for example, if we want a traditional model to recognize the face, what feature should we manually define? Should we measure the? Distance between the eyes or the shape of the nose or the. 
+
+01:12:51 
+Uh, the position of. Eyes on the face or the texture of the skin. So the real images contain so many complex patterns that almost impossible to specify all this relevant features by hand. So as the data set become larger and larger and the data types become more complex after. 
+
+01:13:18 
+2020 five 2012 manual feature engineering became. Uh, major bottleneck. So the deep learning emerged as a practical response to the problem and the deep learning use multi layer neutral networks, uh, as we discussed in the previous several slides and the different layers learn different level of information and the earlier layers may identify simple patterns will later layers combine them into more complex and umm, abstract. 
+
+01:13:54 
+Features. So during this stage the deep learning will use mainly for. Discriminate discriminative path, that is identifying, classifying or predicting something. So for example, the facial recognition identifies the person in an image and the medical imaging models detect the possible. 
+
+01:14:20 
+Abnormal Abnormal diagnosis. And forecasting models use historical data to predict the feature outcome. So the primary goal is still to select or predict the correct answer rather than to generate the new contents like generative AI. 
+
+01:14:41 
+So why the deep learning becomes successful during this period? It was not because of one single invention. Several conditions become available at the same time. The first one was big data. The Internet and the digital platform produce enormous numbers of images, text, videos. 
+
+01:15:07 
+Behavior data, user trajectories. Giving complex models enough. Examples from which to learn and the second was the confusing power. GPU and distributed computing make large scale parallel computation practical and allowing the researcher to train much larger deeper. 
+
+01:15:33 
+Visual networks. And the third was the progress in algorithms and architectures. So better optimization methods, the activation functions. And the regularization techniques and neutral network architectures made deep network more stable and easily easily to train. 
+
+01:16:04 
+So therefore, the rise of deep learning was driven by the combination of large data, the computing power and algorithm make improvement. MMM So, umm, we just explained why the deep learning became important and this like, uh, I will focus more on what deep learning actually, uh, changed. Umm, the key change was, umm, the deep learning made, uh, representation learning practical at scale. So what is the representation? So a representation is the way a model internally. 
+
+01:16:47 
+Expressed and organized information. So a raw image consists of uh, pixels, as a speech consists of sounds, waves, and texts consists of tokens. Obviously a model image, uh, so a model cannot understand those inputs in the same way that the human uh, can do, so it must convert to this raw data. 
+
+01:17:15 
+With different modality into numerical representations that you can. Uh, process. In traditional machine learning, humans usually decide how the data should be represented. In deep learning, a multi layer neutral network can learn useful representations and uh directly from the large data set. So, umm, you see their image recognition. The early layers of a neutral network may. 
+
+01:17:46 
+Learn to detect the simple patterns such as edges, colors and lines. And the middle layers may combine them into. Textures, shapes or other objects and the later layer may recognize more abstract concepts such as a face, a car or an animal. So in other words, the model starts with raw data and gradually learn. 
+
+01:18:18 
+Learn this complex representation and then output. The final classification or the regression results? Umm, so Alexa is a landmark because it shows that the deep neutral network could outperform the traditional, uh, computer region CV pipelines. 
+
+01:18:42 
+With architecture data。 
+
+01:18:44 
+Data and compute were combined at scale so to understand this breakthrough. We I will first discuss the image next actually is the large labeled image data set and the computation ask a model to identify the main object in an image from one I think 1000 possible categories. 
+
+01:19:12 
+So before Alex, that many computer region CV systems depended heavily on hand engineering features, and researchers specify how to detect edges, the textures, the shapes, and then pass these features to a classifier. 
+
+01:19:34 
+The Alex Net changed that workflow. It's just learned representation directly from the raw photos. The early convolutional layers detect simple patterns such as the colors, and the middle layers combine them into textures and local shapes, and the deep layers combine these features into representation of the complete object. 
+
+01:20:06 
+Architecturally, Alex Nets used 5 convolutional layers followed by three fully connected stages. Including the final 1000 class output with roughly. Like 6,000,000 parameters and then re rule activations as we discussed, is the nonlinear transition function make the optimization faster? 
+
+01:20:35 
+Then the linear activation commonly used at that time and the Max pooling reduces the. Spatial resolution and the dropout reduced overfitting in the fully connected layers. Uh, and the data uh, augmentation such as, umm, the horizontal reflection creates more uh, varied training examples. So in the 2012, uh, image net computation, Alex net achieved a top five errors of above 15%. Will the render up was around uh, like 26%. So top five areas means the prediction. 
+
+01:21:26 
+Counted as wrong only when the crack Hickory is absent from the models. 5 most likely answers. So a gap of more than 10 percentage point was dramatic at that time. So we have seen that the deep neutral network can learn increasingly complex representations, but simply adding more layers that not automatically. 
+
+01:21:59 
+A better model. So as a network become deeper and deeper, it becomes more and more difficult to train. Information and ingredients must pass through many layers, and during the process the gradient may become extremely small or very unstable. So as a result. 
+
+01:22:23 
+The earlier layers may learn very slowly, and adding more layers may actually. Make the performance worse. So how can we improve that? There are two important architecture. Transform transition can help address this challenge. One is inception modules and another is residual connection. The insectional. The inception architecture allows the network to process the same input through the multiple operations in parallel. 
+
+01:23:01 
+And. The the the diagrams on this slide just focus on the second innovation, the residual connection. We also call the shortcut connection. So from the left to the right, the input is represented by X, and along the main path X passes through a convolutional layer and a Relu nonlinear activation function. 
+
+01:23:33 
+And another convolutional layer. So together this operations learn a transformation that we call FX. At the same time the green line, the original input X travels along the green shortcut path. It skipped this intermediate convolutional layers and it added directly to the learned transformation at the end. So therefore the output become FX. 
+
+01:24:03 
+Glasses. So why we have this two process and this residential learning can make the training process useful is that without the shortcut the block must learn the complete mapping from the input from the desired output and with this screen shortcut. 
+
+01:24:28 
+Line the block only need to learn the residual, that is what need to change relative to the. CBD show input. So suppose the input already contains. Umm, it's. It's already good and it's already contains the useful information. And actually the block does not need to modify too much, so instead of reconstructing the exterior input, the block can just learn the small adjustment. So in the simplest case it can make the FX. 
+
+01:25:04 
+Close to 0. And allowing the original information acts to pass through almost any change. So the deep learning interaction around 2000, 2012 did not result from a single invention. 3 resources reinforce one each other. The 1st is GPU provide parallel hardware makes large neutral network training dramatically faster. 
+
+01:25:40 
+And second, the image net skill data set. The large data set supplied enough labeled examples to let the deep learning model train and compare large vision models. And 3rd is the architecture and the optimization. Optimization techniques such as. 
+
+01:26:06 
+Convolution, dropout and the residual connection we discussed in the last slide. Make deeper models more trainable. And Alex Knight made this three combined effect visible because it's used all three effectively. More than how results and appropriate model may not produce useful learning, and the larger model without enough compute may be impossible to train, and more compute without representative data may simply. 
+
+01:26:43 
+Scale the wrong objective. Umm, so let's have a 10 minutes break and we can. But we introduce one person called, uh, Geophane Hilton, and he studied how, uh, network of simple computational units could learn, umm, distributed representation. And he won the Nobel Prize in physics, uh, in 2024. Umm, as you look at the, uh, Jeffrey's career, notice that the persistence required to work on the neutral network ideas during. 
+
+01:27:33 
+Furious when they were now the dominant approach over decades. But in the end, he won the Nobel Prize and the touring awards. So the large language model the language in this phrase meaning. Depends on context. The word bank can refer to a financial institution in the sentence the bank approved the loan, but it can refer to the side of reward. In we sit on the riverbank. The letters are the same and the surrounding word determine the relevant sense. The pronouns depend on earlier tests, the. 
+
+01:28:20 
+Homemade, implicit and world order can reverse a relationship. So this makes language different from a fixed table of independent numerical features. A useful language representation must contain token identity, sequence information, relationship to the surrounding tokens. 
+
+01:28:48 
+So one how the encoding gives every word or token a unique position in vocabulary. So in this small example bank is represented by a vector with A1 in the first position and zeros elsewhere. So the matrix is a sparse matrix because the dimensions might be. 
+
+01:29:12 
+Around 100,000 dimensions. And there's no semantic distance between this word. And this pipeline shows how the raw text becomes some single language model can compute with. So first we begin with a string such as generative, AI and the tokenizer device. The strain into discrete units and depending on the vocabulary, the generative might be 1 token or maybe split into three pieces. 
+
+01:29:48 
+And each token is converted to an integer and then defier and. By embedding, table maps that identifier towards numerical vectors and this embedding alone does not tell the model where the token appears, but the positional information is added and attention then allows each token representation to. 
+
+01:30:13 
+Incorporate relevant information from other positions and the result is the contextual vector. The World Bank will therefore receive a different representation. They in the riverbank and the bank loan, even though the initial token identifier is the same, but because the position and the attention learned during this process is totally different between the real World Bank and the bank loan. So the, umm, the contacts uh, outcome is uh, totally different. 
+
+01:30:51 
+A recurrent neutral network processes sequence step by step and the hidden state after token 1 is passed to token 2 and updated states is passed to the token 3, and the process continue until the token and the structure represent other naturally, but it creates a long computational path between distinct tokens and the information from the beginning. 
+
+01:31:20 
+Of the long document must survive many sequential update before it can affect a token near the end. So the transformer changed the language modeling by replacing the recurrent training with attention over the full sequence. In the sequence the bank approved the loan. Every token is the first represented as a vector within the position information and the multi hat self attention then allows each token the bank approved the loan to combine the information from other. 
+
+01:31:59 
+The tokens and the representation of loan can emphasize bank and approved will. The representation of bank can use loan to select the financial meaning rather than the river meaning. IN2000278, researchers published a famous paper called Attention is all you Need. In that paper, the researchers first introduced the transformer architecture and the citation is about 26267 thousand, so it's a very. 
+
+01:32:43 
+Famous and. Umm instruct uh, uh, instructors, uh, papers in umm computer science and also in is actually uh, transformer is the foundation of generate AI. Umm, the uh, decoder encoder structure umm embraced the umm generative, the occurrence of generative AI. 
+
+01:33:12 
+The self attention allows token in the same sequence to. Create a context for one another so the bank approved the loan This sentence to understand the token loan the model considers all the other tokens and determines which one provide useful information. Bank is important because it's established the financial context will the approved describe what happens to the loan and. 
+
+01:33:42 
+The roles represent information from these tokens flowing. Into the updated representation of floor so the band can approved at 2 most important uh tokens to influence the uh uh generation of loan. And this relationship is not taken from a fixed, uh dictionary, learn from the training data and recalculated for each sentences. That's why the same word can have different meaning in different contexts. 
+
+01:34:18 
+So an LLM is complete architecture and serving system, not only just an attention layer and the process begin with tokenization and embedding and similar positional information preserve the sequence order and multi layers of multihad attention. 
+
+01:34:42 
+Transform the token representation and the residual connection and. Like these techniques help information and ingredients move through the neutral network and the final layer produced the score over possible next focus. 
+
+01:35:02 
+During the training, a recovery model mass update is hidden, uh states in the sequence like the token A influences token B, which influences token C and so on. But a transformer removes that recurrent dependency, the sequential uh training process, so all the token positions can participate in attention within the same layer and which allows much more uh parallel. 
+
+01:35:31 
+Computation and create direct paths between this part of the sequence. OK. 
+
+01:35:42 
+Auto呃。 
+
+01:35:43 
+Regressive generation is a repeated uh precision loop. The model reads the current context and produce the probabilities for the next token and select one token of, hand it to the sequence and then rest the next step booster uh updated context and the answer grows 1 token 1. So as every generation step the model produces a uh probability. Silly person motion also next tokens. In this example we have met and several tokens. 
+
+01:36:23 
+But they do not have equal probability in one rule. So a decoding strategy determines how one candidate is selected in this clip. In this example, the cat sat on the mat. The map has the highest possibility, so the general AI output the word. 
+
+01:36:45 
+Math as results so LLM is large, pre trained and designed to model language and launch. A large usually refers to substantial parameter counts, the training data and the computational requirements. Although there is no single numerical threshold that defines the category and the pre training means that the model first learn broad statistical. 
+
+01:37:15 
+Regulations from large scale tests and multimodal data from being adapt to a specific application. I will not go deeper in the pre training stage because it's closely related to the AI infra. That's not the student in Business School without care and the training objective. 
+
+01:37:40 
+Usually just self supervise it. Uh, such as the, uh, predicting mixing or the next token. So labels are derived from the data itself and adaption. Umm, I will, I'll discuss the, uh, engineering retrieval, fine training and uh, the external toll, uh, in the next lecture. 
+
+01:38:06 
+Uh, the transformer create a scalable foundation from models that could be pre trained once and adapt across many tasks. So earlier system uh were often built for one narrow objective foundation. Models learned are broad representation from large data set and can support writing, summarization, uh, question answering or the code generation. 
+
+01:38:35 
+Umm, or other. Multimodal interaction. The commercial wave accelerates this process when NLP. Made this capability accessible to the normal users. Umm, the generative AI landscape should be viewed as a portfolio, but umm, the copilot may not be, uh. 
+
+01:39:03 
+Uh, just be the compeller is just one product uh, compared with the GPT Gemini cloud code uh, Tianan DC and uh ground, that's the cloud uh, that's the umm foundation model Uh, copilot itself. Umm, is not a foundation model uh, because it's famous product. So I put it here, but actually it's totally different from the. 
+
+01:39:30 
+Rest of 6 foundation models. So opacity changes how the enterprise established trust. A traditional rule can often be interacted directly, but a large neutral model contains billions of learned parameters. 
+
+01:39:53 
+So that's that's not mean the system is. Impossible to be evaluated by human experts. It means trust must come from several. Form of evidence rather than one simple explanation. So we should document the training, the whole training process and the evaluation data to test the model on the representative scenario and to compute each subgroup's performance and preserve the retrieved resources. 
+
+01:40:30 
+Umm, the trust was the AI requires the capability, evidence and control umm. So the capability measure, the task accuracy, the robustness, latency and cost on the representative workload. Umm and the evidence is to ground outputs in approved data and pre preserved sources versions and evaluation results. The control is. 
+
+01:41:00 
+Umm, easy to be ignore, but it's very important, uh, it includes how to apply the permission monitoring rules, the human review and the incidence response, uh, according to the risk. So the Part 2 focused on the, umm, how to design the, umm, enterprise, uh, relative AI systems. 
+
+01:41:24 
+So umm the enterprise that I am required of multi objective design it's. Uh can not only consider the capability, we just use the best uh, foundation model uh, like the umm, GPT or uh, cloud code. Uh, we should also consider the cost, the uh, governance issues and also the latency uh, through output and the contacts. 
+
+01:41:56 
+So the, this six factors define an architectural trade basis. Uh, when we choose one model in the company, we can not just focus on UH-11 context. We need to consider the six factors that is the modality, uh, latency, performance, cost or cost through output and, uh, context. So it's not a performance driven Dec. 
+
+01:42:25 
+It's a comprehensive decision including the six vectors. So the best model is not automatically the biggest model with more parameters. So we need also to consider the quality, for example the performance and effective contacts. And also the economics is another important. 
+
+01:42:57 
+Vector and usually when the company that have 1 cost. We already have limited choice select. Umm. So there are two broad ways to build the multimodal system. Here is the pipeline. Umm, the speech may be converted to the text by the automatic. 
+
+01:43:22 
+To detect once there is about this, how to detect which parts can be improved compared with this separate pipeline? The latency have at least 2 user visible components. The time to 1st token is the delay before the response begin and enter. That is the inter token latency or token generation rate. 
+
+01:43:54 
+Determines how quickly the rest of the answer appears. So the TIFT and ITL are two different measures of latency. And the LRM interface is often divided into preview and decode. So are the 2 common interface patterns serve different workload? The interactive serving handles individual requests with slow delay, often using the streaming so the users see or hears the answer as it is generated. 
+
+01:44:35 
+And batch inference collects many tasks and processes them together, improving the ******** utilization as throughout. Throughput when the immediate responses are necessary. So the key difference between these two interface pattern is depends on the latency, whether you just want a quick answer but not that accurate or you want a deliberate reasoning answer with more waiting time. 
+
+01:45:15 
+Retrieval and reasonings of different problems. So the retrieval is to find the relevant external evidence from the external knowledge base like the approved policy, the product record or the report and the reasoning transformed the available information in the. 
+
+01:45:39 
+Pre train stage of the model and the comparing the options decomposing the. Uh question were applying a rule or uh, uh, searching the evidence uh, based on the learned uh parameters in in the model instead of using the external umm knowledge base? 
+
+01:46:01 
+So amount of maximum contact window is the capacity limit, not a guarantee that every token is used equally well. So research and. Practice Business practice often find stronger use of information near the beginning and the end of the documents. One reason is because the structure itself the the transformer structure itself have this. 
+
+01:46:33 
+Issue another is the training data like the document. When we write one article, always the beginning and the end are the most important part. So when the model learn the structure, they start focusing more on the beginning and the end instead of the middle content like the details of the. 
+
+01:46:58 
+Document and actually this middle issue. I think still do not have very good solutions and it's also a occurring research trend for the CS researcher. And the maximum context window is, as we discussed, is an engineering capacity, not a guarantee of effective use of AI. So the model may technically accept hundreds or thousands of tokens, but the task performance can decline when the critical evidence is buried among the. 
+
+01:47:43 
+Distractors and the position, the document structure. Um, even the conflicting version. All matter. In the AI process. Umm, so the contacts window comparisons, uh, require care. Providers may report a maximum token capacity, but the tokenizer, the model version, umm, the, uh, configuration, and the task all affect the, uh, practical results. 
+
+01:48:18 
+The latency and throughoutput describe two different aspects of the system performance. Latency is the time required to complete one request and throughput is the total amount of work the system complete across many requests, such as requests or tokens. 
+
+01:48:42 
+Processed per second. So batching groups several requests so the hardware can process them efficiently. And GPUs are most economical when the enough work is available to use their parallel capacity compared with CPU. So dynamic batching with briefly for compatible requests and combines them. 
+
+01:49:11 
+Umm, so the model price can fall while the total systems cost remains high. The total cost includes the input tokens, output tokens, retrieval, toast and hosting and also people plus control. And when we consider the total cost, we need also consider the performance of the model, maybe the. 
+
+01:49:39 
+Token is. Very cheap, but because the model cannot achieve your proposed goal, the total cost will be very high because you have to keep prompting the models to work on your task. Umm. So architecture design begins with the, uh, medium. We need to consider the user need, the quality need and operating need, umm, that include like, uh, traffic volume and the unit, uh, economics and governance and deployment constraints. 
+
+01:50:23 
+Uh. So the compound AI uses several coordinated components rather than asking one large model to handle every request. So a router first identifies the type and the difficulty of the task, and the small model may just answer the simple questions. 
+
+01:50:50 
+Or a classification request to reduce cost and the retrieval or RAG. May just handle the knowledge question and the code, or the function call may handle the calculation and the database question and human review. 
+
+01:51:10 
+Is used to handle the complex question that cannot be answered by the previous tools. Umm, so in the past three we turned to governing the. Probabilistic AI. The traditional software generally follow explicit logic. Even the same input and configuration, the same code we set, the same seed and the same code pass produce the same results, and a failure can often be traced to hold. 
+
+01:51:51 
+But generative Generative AI models estimate probability distributions over possible outputs outputs, so their behavior can change with prompt wording, context sampling, and model updates. Umm, so the hallucination. So what is the hallucination? Hallucination means that even though. 
+
+01:52:18 
+哦the LM can generate。 
+
+01:52:20 
+Also without any. Waiting time, but they use the wrong information to generate answer the cooperate example for example. When someone use some prompt techniques to guide the AI can output that you can purchase one car using only $1.00 these kinds of words. Actually, that's the hallucination, right? 
+
+01:52:52 
+Umm, no company would sell one car, uh, use one, uh, just use one, uh, dollar. But umm, some prompt can leave this model in in the early stage, some from currently the like language model to output this kind of sentences. 
+
+01:53:13 
+The grounding reduces uncertainty by connect model output to approved evidence and controlled uh system actions. So before generation retrieve the relevant and current umm source. So during the umm executa execution log the uh evidence. 
+
+01:53:36 
+And two cause validation。 
+
+01:53:38 
+Text and the prompt versions and approval and after generation just clarified important claim and calculation. So if the uh evidence is missing or the uh decision is high impact, escalate to a qualified person because uh, AI cannot take any uh, responsibility for their uh, outputs. So Reg reasoning and human review address different failure most. I will elaborate more about RG in next lectures. So Reg grounds the model in external evidence such as the internal policy or a approved knowledge base and reasoning method help decompose the. 
+
+01:54:31 
+Task and compare the evidence and. Uh, I would nice check, but compare this to, I think reasoning, uh, cannot uh, mitigate the hallucination because the reasoning is still umm, the, the uh, rationale is also generated umm, uh, based on the parameters of the pre trade model. But the IG system we use the external knowledge database and that is verified by human beings. So. 
+
+01:55:04 
+Actually connecting with our AG system can significantly reduce the hallucination rate of an AI systems and human review is a process to find a human to take this responsibility. Once the system have bug, we need to find one person to deal with this issue. 
+
+01:55:33 
+Umm, so build an evidence chain, not a chain of salt, as I uh, mentioned the, uh, generated. 
+
+01:55:42 
+呃，这generate reaction now just。 
+
+01:55:44 
+Is some uh, correct, but it may not guarantee to review uh, the, uh, ground truth because it's still based on the parameters of the printing model instead of the, uh, ground truth, uh, we saved in the external knowledge database. So the generative AI extend the separate attack surface because neutral language become a path for the instructions data and to use. 
+
+01:56:20 
+Umm, so, uh, defence in depth, uh, combines the, uh, red team, the content, uh, provenance, the input output filters and umm, the permission boundaries to uh, control the whole process. So the actually the security is a life, uh, cycle discipline, not just one time model evaluation. So we need all four components to. 
+
+01:56:49 
+Uh, make sure that the system. Is. Secure and without any. Illegal accountants. Umm, this incident illustrate two different authority and identified uh, gaps. So in the public front, the injection umm, examples, as I mentioned, the user just umm, induced the chatbot to claim that it can sell a car for just $1.00 and the response did not itself, uh, compete the legally binding cell, but it's exposed the. 
+
+01:57:30 
+Additional risk of an interface that could be manipulated into making unauthorized, uh, commitment. The sensitive. Protect data across the complete model life cycle. At collection, gather only the tasks required and during the preparation just remove the unnecessary identifier or the contents and during training and retrieval, isolate the sensitive words or resources to enforce the original access permissions and. 
+
+01:58:15 
+At deployment. The users can control which models and tools can see which data. We need to clearly define the authorized users and during monitoring all this usage and apply retention and delegation policies. 
+
+01:58:37 
+Umm. So the training data raises a right question, that is, the material is public accessible, does not automatically determine whether it can be collected, transformed, used for the data training process. 
+
+01:59:02 
+And the copyright and during the data training process, we also might make. Face the copyright risk. Data risk is, for example, whether the uh, training data is licensed to be used during the training process. And the output risk uh, for include the memorized similarity. For example, uh, in the uh, Chinese LM, we generate the similar results, uh, from the umm, uh, closed uh, LM from other countries. So the output have quite similar because maybe we use the similar. 
+
+01:59:42 
+Our training data but can so it's actually it's debatable to whether two different model can generate quite similar results. And. So I skip. Umm, so fairness is an operating process that begins before, uh, training and continues after, uh, deployment. Umm, the first is data curation can improve the representation, label quality and documentation, and the evaluation matrix should match the decision context and umm, the, umm, demographic, uh. 
+
+02:00:33 
+Normative and operational choice. Now the purely. 
+
+02:00:38 
+Mathematical choice。 
+
+02:00:39 
+Place and the human uh feedback or human in the loop can help identify the harmful behavior and shape the model, uh response. But human rates also have bias and may not, uh, represent all the affected uh communities. So diverse reviewers, the domain expert, and explicit behavior principles improve the process. 
+
+02:01:11 
+Uh, responsible AI also extend beyond the model uh, like the environmental impact, the value chain capacity and the human AI umm collaboration. So consider a medical checkout, even if it's average answer quality is quite high and the interface may uh, looks. 
+
+02:01:33 
+Authoritative Authoritative when the system is uncertain, so the design should communicate. It's uh, limits and uh, to protect the health data and avoid, uh, making wrong, uh, diagnosis decision, uh, and it also should be uh, transparent to the users, uh, about the, uh, limitation of the systems. 
+
+02:01:59 
+The environmental impact should be also measured in the context rather than just to reduce to like one query. Umm for example the energy, the water and the hardware. OK. So lastly, I will talk about the Nest AI risk management framework. It provides a common language for organizing AI risk work and it's commonly used in the company and it include the govern map manager and manage. 
+
+02:02:41 
+So. The the government create the organizational. Foundation roles like roles, policies, training and my establish the context, purpose, the users, the stakeholders, the benefits and the risk tolerance. The measure evaluate the systems with matrix as we discussed before and manage, prioritize the. 
+
+02:03:12 
+Find findings and choose treatment release condition ownership. And communications. Uh, Last, uh, the last slide is, uh, the goal is, umm, actually, uh, acceptable risk, not zero risk. So a problem, a probabilistic system cannot eliminate uncertainty and conventional system also carry, umm, operational or security or the human risk. So, umm, the wise choice is. 
+
+02:03:51 
+We just find one risk tolerance for the company and. The threshold set helps the threshold and try to make the whole the whole process. The risk of the whole process is controllable. So that's the end of the lecture. 
+
+02:04:19 
+Oh, I will submit the slides after the class. 

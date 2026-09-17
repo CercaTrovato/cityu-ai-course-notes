@@ -1,0 +1,1656 @@
+
+00:00 
+Um, so I discussed with another professor, so we hope, uh, um, I will-- we can introduce one famous person that, uh, influenced this AI industry, uh, for in, in each class. 
+
+00:14 
+Um, so let's, uh, meet someone, uh, who has, uh, already played an important role in modern AI. Um, I guess you may heard, uh, about Fei-Fei Li. She is often called the Godmother of AI. 
+
+00:30 
+Um, but what matters more is what she helped build and how she think about the technology and people. 
+
+00:38 
+Um, she actually grew up in China and moved to the US as a teenager, and she also help her parents, uh, dry, dry cleaning business. 
+
+00:48 
+And later, she studies physics at Princeton and get a-- got PhD degree in EE, electronic engineering at, uh, California Tech. 
+
+00:59 
+And her work has focused on a fundamental question: How can machines understand the world we see? Uh, one of her best-known contribution is leading the work behind, uh, ImageNet. 
+
+01:14 
+Uh, I think I introduced the ImageNet database before, uh, in, in the last, uh, class. So think of it as a large collection of images with category labels. Um, it is not a model, actually. 
+
+01:28 
+It's provide an, uh, important foundation for training and testing models. So why does that matter? 
+
+01:37 
+Um, to recognize object, a machine need more than a few, uh, perfect, uh, photographs, and it also need examples with different, um, background viewing angles and different, um, like, lightning, uh, conditions. 
+
+01:56 
+So researchers also need shared test, um, the public test to determine whether one approach actually work better than another. 
+
+02:06 
+Um, so ImageNet brought large scale data and comparable evaluation together. 
+
+02:13 
+AlexNet's, uh, breakthrough in, um, two thousand and twenty-one competition helped accelerate the adoption of deep learning. But this progress did not come from an algorithm alone. 
+
+02:28 
+So the data, um, the algorithm, and the computer resources work together. So that give us, um, um, a natural question is, if an AI feature perform poorly, will a bigger model necessarily fix it? 
+
+02:46 
+Um, I think the answer is no, because the data may not represent the real users, and the label may be wrong, or the evaluation may miss the actual task. 
+
+02:58 
+Um, and another central idea in this work is human-centered AI. 
+
+03:05 
+The question is not just how much we can automate, it is whether, um, the technology generally help, uh, people while, uh, respecting their judgment, uh, privacy, and, uh, different needs. 
+
+03:22 
+So her involvement in founding AI for All also reflect the importance of bringing people from different background into AI. 
+
+03:32 
+Um, I think, um, the trajectory of Fei-Fei Li's, uh, research is highly impacted by her advisor. 
+
+03:41 
+So her advisor, um, proposed start, uh, to build a larger dataset, and then Fei-Fei Li followed, um, the advisor's guideline to start build, um, the image, uh, dataset. 
+
+03:56 
+Um, it's very-- Maybe it's common in, um, recent years, but as you can see, she started to build ImageNet, uh, in two thousand and twelve. So that's forward-looking. 
+
+04:10 
+And so from her experience, um, personally speaking, I think, uh, find a good leader or a good advisor could, uh, really influence your career over the long term. 
+
+04:24 
+Um, so now let's hear, um, the introduction, the brief introduction of Fei-Fei. Oh, I cannot play it. 
+
+05:09 
+So let's skip the, uh, the introduction part, and you may, uh, go through the video, uh, after class. 
+
+05:22 
+Um, so before we, uh, compare models, let's, uh, separate the train, uh, training a model from, uh, using one. So during pre-training, the system, uh, learns patterns from large collection of data. 
+
+05:37 
+For a large model, a common learning task is to, uh, predict, uh, predict the, the next token. And a token, as we discussed in last lecture, is the small, uh, unit of text. 
+
+05:50 
+And by doing this at scale, the model develops using patterns for language and many other task. Um, but being good at predicting tasks- Does not automatically make a model a helpful assistant. 
+
+06:07 
+So, uh, instruction training gives e-examples of requests and suitable responses, and it learns more about how to, uh, follow a task rather than simply, um, continue a passage. 
+
+06:23 
+And the next is, uh, reward training. 
+
+06:26 
+So here we give the model feedback about which response, um, is better, and we might, um, compare two answers and, uh, indicate which one we prefer or give an answer a score based on whether it, it achieves the desired results. 
+
+06:47 
+But we need to choose that reward carefully. 
+
+06:51 
+Suppose the, um, scoring system tend to reward, uh, longer answers and the model might learn to add unnecessary details or repeat itself to get the higher score. 
+
+07:05 
+Um, so the score improves in the end, but the answer does not become more helpful. 
+
+07:12 
+Um, this is also called reward hacking, exploiting, um, a weak-weakness in the scoring system without achieving our real goal, and it's very common in the industry applications. 
+
+07:26 
+Um, so one, uh, suggestion would be when you want to use, um, the reward training, uh, try not to, um, let the LLM or system easily detect your reward function. 
+
+07:40 
+Um, otherwise, um, you may produce a system that good at, uh, evaluation but cannot achieve your, uh, downstream, uh, target. Um, so then it comes to, uh, inference. 
+
+07:54 
+That's what happens when we, um, send a request to the model, um, in our, uh, like daily work and get a response. We can provide, um, instructions, documents, or results from tools. 
+
+08:09 
+So those inputs help with the, mmm, current request, and they don't, um, by themselves update the model's, uh, weight scores. 
+
+08:21 
+Um, so this is distinction could, um, potentially help us diagnose problem if the assistant, um, doesn't know today's, like, room price or the, um, for the hotel billing contacts or more, uh, instruction training won't, um, give it the live inventory. 
+
+08:44 
+Um, so it need access to, um, the current database, uh, inside the company. And if the facts are, are present, but it keeps ignoring a required format, then we have a different problem. 
+
+08:59 
+We may need the, um, the reward training to, um, and give them, um, feedback during that training to let them, um, include the, uh, format. 
+
+09:11 
+So, um, as we compare models, keep their learnability separate from the information and tools, um, and application give them. So suppose two models can do the job, uh, reasonably. 
+
+09:28 
+Why might a company choose one with open weights rather than, um, a closed model? So what is weight? Um, in your understanding, weights are the learned numbers inside model. 
+
+09:41 
+With an open weight release, we can obtain these weights and may be able to run or change them depending on the, uh, license. 
+
+09:52 
+With a closed model like, uh, GPT or Cloud Code, the, um, the effective models, you normally use a service where, um, the provider keeps control of the weights. Um, so first we, um, discuss cost. 
+
+10:10 
+A low API price is very attractive, but running a model yourself also, uh, costs money. You need, um, hardware, engineers, and enough ca-capacity when the traffic rises. 
+
+10:25 
+Um, and so the free download does not mean the free operations. 
+
+10:30 
+And, um, also when you look at the API price, um, you may not recognize that when you want to solve one task, um, the, um, the quantity of the token you take from the lower API price and, uh, the higher API price, um, in the end, you may calculate the total price. 
+
+10:53 
+Uh, maybe the lower API price will, uh, cost you more. Um, and next, think about the, mmm, performance. Um, so either approach can produce a useful model. 
+
+11:07 
+And the right, um, comparison is how the exact version perform on your task. A licensing category does not tell us which model, uh, will answer a different... a, a difficult, um, question correctly. 
+
+11:26 
+Um, and next, we look at the deployment. Mmm, deployment changes who controls the, um, data path. 
+
+11:35 
+Self-hosting can keep, uh, uh, processing inside the infra you manage, and you will also, um, have to secure the logs, uh, tools and network connections. 
+
+11:50 
+For a hosted services, the deployment option and data terms need careful attention. Um, customization is another difference. Fine-tuning changes Learn behaviors through, uh, further training. 
+
+12:09 
+Um, so qu- uh, quantization stores numbers with lower precision to reduce memory needs. Um, and distillation trains another model use, um, using signals from a teacher's model. 
+
+12:25 
+And actually, distillation needs not necessarily, uh, be applied, uh, from large model to small model. 
+
+12:33 
+Uh, when I was in a company, I distilled myself, uh, from all my, uh, agent work, uh, in the laptop and then generate a skill for, uh, my, uh, colleagues and let them use, um, some, uh, useful skills after, uh, I leave the company. 
+
+12:55 
+Um, and access to weights can give you more, uh, freedom, but each method has its own, um, limits. And both open and closed model can also work with, uh, prompts, retrieval, and tools. 
+
+13:10 
+So this technique do not, uh, always require changing the weights. Um, and, uh, transparency and licensing need, um, separate checks. 
+
+13:23 
+Public weights do not review every training example or, um, explain every answer. And open weight licenses are not all the same. 
+
+13:35 
+So when you want to, uh, use the open weight model in your, uh, company for business, um, uh, usage, uh, try to, um, make sure that license allow you to do that. 
+
+13:50 
+Uh, because open weight license does not mean that you can use that model to, uh, make money. Mm, finally, who handles failure and updates? 
+
+14:01 
+Um, with self-hosting, m- much of that work falls to your team or a supporting partner. 
+
+14:08 
+A managed provider takes, um, some of them, but a service agreement does not guarantee that every answer is correct. 
+
+14:18 
+So the choice comes down to how much control you need and, um, how much operating responsibility you are ready to take on. 
+
+14:32 
+Um, before testing every model, we can, um, rule out options that do not meet the basic requirements, um, using this, um, at a glance table. So first, what kind of information will users send? 
+
+14:49 
+Um, is it text, image, audio, or video? Um, these are different modalities. A model can, um, accept an image, but it still produce only text or vice versa. 
+
+15:06 
+So understanding an image and, um, generating an image are separate, uh, abilities. And next, how much information needs to, uh, fill in, uh, one request? 
+
+15:18 
+So the context window is the model's working space for, um, that interaction, and the instruction document, uh, conversation history, and the tool request can use all this part of available budget, and the exact rules depend on the service. 
+
+15:38 
+But for recent models, I think the, um, context window is quite long and, uh, if you use LLM in a agent's framework like Claude, you can, uh, save your long-term, um, memory in one skill and, uh, to save the short-term memory, uh, it might be long, but it may, uh, be specific to a task in the short-term memory, um, skill part. 
+
+16:05 
+Um, so the context window might not be a, um, big issue. Um, and also notice the, um, difference between input and output limits. 
+
+16:16 
+Being able to read a very long, uh, document, that does not necessarily mean the model can generate an equally, uh, long answer. Mm, and a large limit does not guarantee, um, good understanding. 
+
+16:31 
+A model may accept a document but miss an important detail buried in the middle. We will return to that when we discuss long context, uh, text. 
+
+16:45 
+Um, so for now, use these specifications to, um, just build a shortlist for you, so you can check the exact model version and the available, uh, interface, uh, rather than assuming, like, every model, uh, from the same company supports, um, the same features. 
+
+17:08 
+Um, so there are several, um, different meanings of better here, and we need to keep them separate. So time to first token tells us how long we wait before the, uh, response starts. 
+
+17:26 
+And through, uh, throughput tells us how quickly the model produced tokens after, um, the first token. And the model can, um, take a while to begin and then generate the rest, uh, very quickly. 
+
+17:43 
+Um, and we also discussed this concept in the first lecture, uh, in details. Um, and price has similar distinction. So input tokens and output tokens may have different rates. 
+
+17:58 
+Um, a short classification request and a long report can therefore have very different costs even when they use, um, the same model. So the performance column adds another kind of evidence. 
+
+18:14 
+A coding score tells us something about coding and, uh, particularly, um, um, like difficult task conditions, and the scenario score tells us something else. 
+
+18:28 
+So we cannot treat the highest score in each role as though all the numbers came from the same exam. Um, missing information also matters. 
+
+18:40 
+If latency hasn't been measured, we should record it as unknown. We cannot fill the gap by assuming that a newer model must be, uh, faster than the previous, uh, models. 
+
+18:54 
+We will e-examine these measures separately, um, in this lecture. And, um, so this just give you a brief overview of the, um, different aspect of these models. 
+
+19:14 
+Um, so GPT, um, six Astra, um, released, um, last week is very, uh, people models create an interesting, um, question that should we make all of its ability available to everyone immediately. 
+
+19:32 
+Um, the reported Astra release, uh, follows the stage approach actually, um, starting with a smaller group before wider access. 
+
+19:43 
+And the idea is to learn about real use when keeping the initial, um, exposure more controlled. 
+
+19:52 
+Um, its reported strengths cover, um, difficult mathematics, um, unfamiliar reasoning, uh, task, and, um, software engineering. Those are, um, different abilities. 
+
+20:06 
+A high score on one task gives you, um, evidence about that task, but it doesn't establish that the system will succeed on every unfamiliar, uh, problem. Computer use adds another, uh, layer. 
+
+20:24 
+Now the system may, um, interact with an interface and takes a sequence, um, of actions, and speed becomes useful only if your, um, actions lead to the right results. Um, so clicking the right... 
+
+20:42 
+Uh, clicking the, mm, wrong button twice as fast doesn't help the users. Um, cybersecurity makes the... Uh, so another point of GPT six Astra, um, they highlight the cybersecurity. 
+
+20:57 
+Um, it makes the capabil-capability, uh, question, especially, um, sensitive. Um, so an ability that helps a definer, uh, investigate a weakness could also create opportunities for, uh, misuse. 
+
+21:16 
+That's why capability evaluation and access controls, um, needs to work together. 
+
+21:23 
+So for a, um, product team in the company, the stage, uh, staged access suggests a sensible way to think about a launch of new, uh, product. 
+
+21:38 
+So starts with a well-defined task and, uh, limited permissions among current users, um, watch for, um, unexpected behavior, and decide, uh, you know, once when a human, uh, needs to step in. 
+
+21:54 
+Um, so the exact release and score claims, um, need, uh, primary evidence, and the broader question is useful regardless the model's name. 
+
+22:07 
+So what can the system do and under what condition are we, um, prepared to, uh, let it do that? Um, so why does one model offer different versions? 
+
+22:24 
+In the last slides, we introduced the, um, GPT, uh, five, uh, five point six Astra, and in this page, uh, we discussed the, uh, five point six, um, SOL. 
+
+22:37 
+Because different tasks need different levels of ability, and not every task justifies the, uh, same cost as high as the most, uh, advanced model. 
+
+22:52 
+So, um, SOL is, uh, presented as a hi-high-end option, and Terra aims for a balance between ability and cost, while Luna targets, uh, lower cost use. 
+
+23:08 
+Um, so, uh, for the limited budgets, the, uh, product team could test a lighter, uh, version for, um, simple classification and reserve a stronger one, uh, for difficult analysis. 
+
+23:23 
+Um, but usually in large companies, they will purchase, uh, the, the most advanced model, uh, like TikTok, and there is no, uh, token limitations for the RD, the research development team. 
+
+23:36 
+So you can always choose the best models if your company offer that. Uh, one, uh, reported, um, SOL feature is an ultra model that, um, coordinates, um, multiple agents. 
+
+23:51 
+So an agent is a system that can, um, take steps and use tools to work towards a goal. Um, several agents could, um, explore different solutions at the same time. 
+
+24:05 
+And another part of system could, um, compare the results. But they might repeat each other's work or Mm-hmm. I disagree. 
+
+24:17 
+Um, so the coordination at, um, co-cost, so parallel work need to produce enough benefits to justify it. And efficiency claims, uh, raise a separate, uh, raise a separate, um, question. 
+
+24:34 
+If a model use fewer, um, output tokens for similar quality, it may finish the work more, um, cost, um, cost economically, we will still ask whether the comparison include retries and, uh, tool costs. 
+
+24:54 
+A shorter answer is useful when it removes unnecessary text, but less useful when it, uh, leaves out evidence that the user needs. 
+
+25:06 
+So finally, as we discussed in last lecture, uh, red teaming means, um, deliberately testing for, uh, misuse and weakness in safeguards. 
+
+25:20 
+GPU hours measure total, uh, computing resources used, and they don't tell us, uh, on their own how complete or, um, effective the testing is. 
+
+25:35 
+So taken together, mm, like this idea help us ask a question that is, "Which current failure would a new version actually solve, and what would that improvement cost when we, uh, look at the new version of the, uh, current model?" Um, sometimes, uh, we may not need, um, a different model, but you need some model to spend, um, a different, uh, amount of time on the specific task. 
+
+26:14 
+So, uh, Cloud Outpost 5 is, um, a good model for, um, the coding task. Um, and it's a useful way to understand, um, the adjusted effort described for, uh, Outpost 5. 
+
+26:29 
+Um, a straightforward request may need very little additiona- additional, uh, processing. A difficult code change may benefit from, uh, more work before the model finishes its answer. 
+
+26:45 
+Um, during my, uh, work, um, in company, I usually, uh, use Cloud Code, uh, that is the product of the, uh, Cloud Outpost model, um, or the, um, agent system of Cloud Outpost 5. 
+
+27:01 
+Um, it's really, um, better than, uh, Codex, um, the behind model, uh, is GPT. 
+
+27:10 
+Um, so how I evaluate the performance is I give these two model, um, the same task, and I count how many times I need to debug after the output. And I think, um, Cloud Code perform pretty well. 
+
+27:27 
+Usually, I only need, uh, one round or two round, and I can upload code to the system. Um, but GPT always, mm, makes some mistakes. 
+
+27:37 
+Um, so, um, I think, um, this model is, mm, like specific for, mm, the coding work. 
+
+27:45 
+Mm, it's not limited to Python, Java, or C Sharp, but also, um, like some SAS or Tableau, any coding work, um, Cloud Outpost would be, um, the best among the current, um, models. 
+
+28:02 
+Um, and, uh, increasing effort can, um, I think, um, improve some results. Um, but we should expect a possible increase in the waiting time or the, um, token use. 
+
+28:18 
+Um, it might be, um, slower in Cloud Code when it generate code, mm, but it doesn't mean that the model learns new information during the request. 
+
+28:31 
+It doesn't guarantee that answer, uh, will, um, improve every time. So now, uh, compare that with a fast mode. 
+
+28:42 
+The reported claim in, uh, Cloud Code Outpost is higher speed at a higher price, um, that is a different control. 
+
+28:53 
+Mm, and one setting changes how much work the model does, um, the other changes the, um, service option used to get a response more quickly. We shouldn't treat them as the same thing. 
+
+29:07 
+Um, uh, imagine a user waiting for help during a live conversation. 
+
+29:13 
+Um, a speed premium might be worth testing there for a report that, uh, can run in the, uh, background, and the same premium may add little value. 
+
+29:32 
+Um, um, and the price per million tokens also leaves part of the story out. Mm, two versions could have the same token rate, but one could use fewer tokens or need, uh, fewer attempts. 
+
+29:45 
+Um, their cost per completed, um, task would, um, then differ. Mm, so next, we, uh, introduce the, uh, another version of the, uh, cloud out-- uh, cloud, uh, models. 
+
+30:05 
+Helping with one function is very different from working through a large, uh, code base for several hours. 
+
+30:13 
+So long task require a system to keep track of what it has already done, and it may need to read, um, files from a possible Explanation, make a change, run the check, and then revise the changes when something fails. 
+
+30:32 
+Um, similar to our own experience, revising the code written by others is much more difficult than, uh, writing the new code for yourself. 
+
+30:44 
+So in, uh, for the, um, large language model, they also ex- have the similar experience. So, um, it's easier to make mistakes when, um, the models need to revise your code. 
+
+31:00 
+Um, and, uh, the earlier mistakes can affect many late, uh, later steps. 
+
+31:07 
+So five oh five point one is, uh, present around this kind of work, and the reported example include, um, investigating a rare production crash or, uh, handling a very large code, uh, migration. 
+
+31:24 
+And they are, um, interesting cases, but we would need more details before treating them as evidence of, uh, routine reliability. So what tools were available? 
+
+31:38 
+What did the people, uh, prepare, and how did they decide the work was, uh, complete? The cost, uh, claim also makes more sense at the task level. 
+
+31:51 
+Um, a model that, um, finds the right direction earlier may avoid, uh, repeated searches and, uh, failed edits. 
+
+32:02 
+Even if individual calls are expensive, the whole job could cost less, and that's something we, um, can measure by comparing, um, the same jobs under the same, um, conditions. 
+
+32:17 
+For long-run work, um, I would also want checkpoints. Uh, what state can we save, and can we recover after multiple fails? Uh, which changes requires, um, approval before they reach a live system? 
+
+32:36 
+Um, so those question explain why an, uh, impressive model and a reliable agent have different engineering achievement, and the model supplies useful, um, decisions while the surrounding applications manage, um, the permissions, progress, and recovery. 
+
+32:57 
+Um, so I think this model would be at very helpful if you want to use that, um, to, uh, to, uh, finish the interview for the, like, algorithm engineers. 
+
+33:10 
+Uh, usually we would ask for, um, the candidate to, um, implement, um, like a GitHub project during the interview with the help of AI coding. 
+
+33:22 
+Um, so, um, if you-- your, uh, target is to become a, uh, algorithm engineering, I highly recommend you to, uh, subscribe the cloud code. 
+
+33:32 
+Um, and, uh, with Gemini's three point eight slash, uh, two ideas are wor- worth, um, understanding, um, the multi-model input and, uh, cost, uh, efficiency. 
+
+33:47 
+Um, so let's start with the, uh, multi-model input. Alongside text and images, the model is described as, um, supporting native, uh, audio and video. 
+
+34:01 
+This allows to fuse information form, uh, from, um, the sound and visual, um, evid-- uh, visual evidence, rather than relying only on a written, um, uh, descri-- uh, description. 
+
+34:18 
+Um, imagine a user, uh, upload a screen, um, recording and says, "Um, this app freezes after I press this button." Um, transcript tells us what the user said, but it may miss which button they, uh, pressed, and what changes, um, on the screen and order of the events you conduct. 
+
+34:45 
+Uh, so combining that information could, um, help the system understand, um, the problem. Um, but accepting video, um, doesn't guarantee accurate, um, understanding. 
+
+35:00 
+Small packs, um, like background noise and events far apart in time can still, um, cause errors. So we should test realistic user recording, um, including, um, uh, the imperfect ones. 
+
+35:17 
+So, um, now what does reasoning per dollar mean? Just simply put, how much useful reasoning do we get for the money we spend? Um, the token price is only, uh, one part of the answer. 
+
+35:33 
+If a cheaper model needs, like, three attempts to complete a task, then it may cost more overall than a model that succeed on one first attempt. 
+
+35:46 
+So the quoted rate, um, seventy-five cents per million input tokens and three dollars seventy-five per million output tokens. However, the comparison, uh, material contains another stack of price. 
+
+36:03 
+Before estimating the budget, we need to confirm, um, the date, the, um, service tier, and the billing condition. 
+
+36:13 
+So the reported release also, um, include a specialist cyber version for security work like, uh, OpenAI. 
+
+36:23 
+And, um, internal test reports about, uh- 2.6 time as many current security, um, patches as competing, uh, models. Um, be careful about what that number means. 
+
+36:39 
+It concerns, um, correct patches under a, a particular test setup, and it doesn't mean the model is 2.6 times better than every security test. 
+
+36:52 
+We will want to know which tests were included, uh, how many attempts were allowed, and how the, uh, patches were, uh, checked. 
+
+37:03 
+Um, so for the product team, um, the question, um, the practical question would be, does the multimodal input help us, um, understand the user information? 
+
+37:15 
+Um, does the specialist version, uh, really improve our target task? And are those improvement worth this high cost? Um, uh, so let's have a ten-minute break. Continue, um, the video work. 
+
+37:36 
+Um, so, uh, let's look at, um, the brief introduction of, um, Professor Fei-Fei Li. A lot of people call you the godfather of AI. 
+
+37:46 
+The work you did actually was the spark that brought us out of AI winter. 
+
+37:50 
+In the middle of twenty fifteen, middle of twenty sixteen, some tech companies avoid using the word AI because they were not sure if AI was a dirty word. 
+
+38:00 
+Twenty seventeen-ish was the beginning of companies calling themselves AI companies. There's a line I think-- This was when you were presenting at conference. There's nothing artificial about AI. 
+
+38:10 
+It's inspired by people, it's created by people, and most importantly, it affects people. It's not like I think AI will have no impact on jobs for people. 
+
+38:18 
+In fact, I believe that whatever AI does currently or in the future is up to us. It's up to us. 
+
+38:26 
+I do believe technology is a net positive for humanity, but I think every technology is a double-edged sword. 
+
+38:34 
+If we're not doing the right thing as a society, as individuals, we can screw this up as well. You had this great theory, insight of just, okay, we can train machines to think like humans do. 
+
+38:44 
+It's just using the data that humans have to learn as a child. I chose to look at artificial intelligence through the lens of visual intelligence because humans are deeply visual animals. 
+
+38:55 
+We need to train machines with as much information and also, um, images of objects. But objects are very, very difficult to input. 
+
+39:04 
+A single object can have infinite possibilities that is shown on an image. In order to train computers with tens and thousands of object concepts, you really need to show it millions of examples. 
+
+39:20 
+Today my guest is Dr. Fei-Fei Li, who's known as the godfather of AI. 
+
+39:25 
+Fei-Fei has been responsible for and at the center of many of the biggest breakthroughs that sparked the AI revolution that we're currently living through. 
+
+39:32 
+She spearheaded the creation of ImageNet, which was basically her realizing that AI needed a ton of clean label data to get smarter. 
+
+39:40 
+And that data set became the breakthrough that led to the current approach to building and scaling AI models. 
+
+39:46 
+She was chief AI scientist at Google Cloud, which is where some of the biggest early technology breakthroughs emerged from. 
+
+39:51 
+She was director at SAIL, Stanford's Artificial Intelligence Lab, where many of the biggest AI minds came out of. 
+
+39:58 
+She's also a co-creator of Stanford's Human-Centered AI Institute, which is playing a vital role in the direction that AI is taking. She's also been on the board of Twitter. 
+
+40:06 
+She was named one of Time's one hundred most influential people in AI. She's also at the United Nations Advisory Board. I could go on. 
+
+40:14 
+In our conversation, Fei-Fei shares a brief history about how we got to today in the world of AI, including this mind-blowing reminder that nine to ten years ago, calling yourself an AI company was basically a death knell for your brand because no one believed that AI was actually gonna work. 
+
+40:29 
+Today it's completely different. Every company is an AI company. 
+
+40:33 
+We also chat about her take on how she sees AI impacting humanity in the future, how far current technologies will take us, why she's so passionate about building a world model and what exactly world models are, and most exciting of all, the launch of the world's first large world model, Marvel, which just came out as this podcast comes out. 
+
+40:52 
+Anyone can go play with this at marvel.worldlabs.ai. It's insane. Definitely check it out. Fei-Fei is incredible and way too under the radar for the impact that she's had on, on the world. 
+
+41:04 
+So I am- Um, so I think, um, given this, uh, brief introduction of Professor Fei-Fei, you would, um, um, get some, um, information about, um, what she is working on is the, uh, world model. 
+
+41:22 
+Um, so, um, uh, then it's have another question is what would an AI system need to do before we call it, um, generally, um, intelligent? 
+
+41:34 
+So people usually use AGI, the artificial, uh, generated intelligence, to describe a system that can handle a wide range of tasks and adapt to, um, unfamiliar situations. 
+
+41:49 
+But there isn't one agreed task for that, um, settles the question. And language is part of the, uh, picture. 
+
+41:59 
+We also understand where objects are, how they move, and what might happen if we, um, take any, um, action. And that's where spatial intelligence and world models become, um, relevant. 
+
+42:15 
+So in simple terms, a world model tries to represent the aspect of, uh, environments and how they can change. Um, so let's look at how, uh, Fei-Fei explained, um, uh, what is AGI. 
+
+42:33 
+Ask you this question. It feels like we're always on this precipice of AGI. This kind of big term people throw around. AGI is coming, it's gonna take over everything. How... 
+
+42:42 
+What's your take on how far you think we might be from AGI? Do you think we're gonna get there on the current trajectory we're on? Do you think we need more breakthroughs? 
+
+42:48 
+Do you think the current approach will get us there? Yeah, this is a very interesting term, Lenny. Um, I don't know if anyone has ever defined AGI. 
+
+43:02 
+You know, there are many different definitions including, you know, some kind of superpower for machines all the way to can, um, uh, machines can become economically viable agents in, in the society. 
+
+43:18 
+Uh, uh, in other words, making salaries to live. Is that the definition of AGI? 
+
+43:24 
+As a scientist, I, I take science very seriously, and I entered the field because I was inspired by this audacious question of, can machines think and do things in the way that human kind, humans can do? 
+
+43:40 
+For me, that's always the North Star of AI. And from that point of view, I don't know what's the difference between AI and AGI. 
+
+43:49 
+I think we've done very well in achieving parts of the goal, including conversational AI, but I don't think we have completely conquered all the goals, uh, of, of AI. 
+
+44:02 
+And I think our founding fathers, the Alan Turing... 
+
+44:06 
+I wonder if Alan Turing is around today and you ask him to contrast AI versus AGI, he might just shrug and said, "Well, I asked the same question again back in nineteen-forties." So, so I don't wanna get, get onto a rabbit hole of defining AI versus AGI. 
+
+44:26 
+I feel AGI is more a marketing term than a scientific term. As a scientist and technologist, AI is my North Star. 
+
+44:35 
+It is my field's North Star, and I'm happy people call it whatever name they want to call it. So let me ask you maybe, maybe this way. 
+
+44:45 
+Like you described, there's kind of these components that from ImageNet and AlexNet kind of took us to where we're at today. GPUs, essentially data, label data, just like the algorithm of the model. 
+
+44:58 
+There is also just the transformer feels like an important step in that trajectory. 
+
+45:03 
+Do you feel like those are the same components that'll get us to, I don't know, ten times smarter model, something that's like life-changing for the entire world? 
+
+45:11 
+Or do you think we need more breakthroughs? 
+
+45:12 
+I know we're, we're gonna talk about role models, which I think is a component of this, but is there anything else that you think is like, "Oh, this is a little plateau," or, "Okay, this will take us... 
+
+45:20 
+Just need more data, more compute, more GPUs"? Oh, no. I definitely think we need more, uh, innovations. 
+
+45:26 
+I, I think scaling laws of more data, more GPUs, and bigger current model architecture is there's still a lot to be done there. But I absolutely think we need to innovate more. 
+
+45:39 
+Um, there is not a single deeply scientific discipline in human history that has arrived at a place that says, "We're done. 
+
+45:50 
+We're done innovating." And AI is one, one of the, if not the youngest discipline in, in human civilization in terms of science and technology. We're still scratching the surface. 
+
+46:03 
+Uh, for example, um, like I said, we're gonna segue into world models. 
+
+46:07 
+Today, you take a, a model and, and, and run it through a, a video of a, a couple of office rooms and ask the, the model to count the number of chairs. 
+
+46:20 
+And this is something a toddler could do or maybe, maybe a, a, an elementary school kid could do, and AI could not do that, right? So, um, there's just so much AI today could not do. 
+
+46:32 
+Then let alone thinking about how did, you know, um, someone like Isaac Newton look at the movements of the celestial bodies and, and, and derive an equation or, or a set of equations that governs the movement of all bodies. 
+
+46:52 
+That level of creativity, extrapolation, abstraction, we have no way of enabling AI to do that today. And then let's look at emotional intelligence. 
+
+47:04 
+If you look at a student coming to a teacher's office and have a conversation about motivation, passion, what to learn, what's the problem that's, that's, you know, really, uh, bothering you, that conversation, as powerful as, as today's conversational bots are, you don't get that level of emotional cognitive intelligence, uh, from today's AI. 
+
+47:31 
+So there's a lot we can do better, um, and I do not believe we're done innovating. Uh, Dennis had this really... Ask you this question. 
+
+47:43 
+It feels like we're always on this pre- Um, so, um, another question is, um, where do you fit into AI if you aren't, um, going to train a foundation model yourself? 
+
+47:57 
+That is, if you, um, do not want to work on the AI infra, then, uh, where do you fit into AI? Mm, there is plenty of work, uh, between a model and a useful product. 
+
+48:12 
+Um, someone has to understand, um, the user's problem, um, and someone have to, um, decide which information the system needs and what, uh, it should do when that information is missing. 
+
+48:28 
+And other, um, people also have to measure whether the new feature helps in this, uh, product. Um, so let's look at how, uh, Professor Li I was not aware of all that other work you were doing. 
+
+48:44 
+Uh, as you're talking, I was reminded of Charlie Munger and this quote, "Take a simple idea and take it very seriously." I feel like you've done that in so many different ways and, and stayed with it, and it's unbelievable the impact you've had in so many ways over the years. 
+
+49:01 
+I'm gonna skip the lightning round, and I'm just gonna ask you one last question. Is there anything else that you wanted to share? Anything else you want to leave listeners with? 
+
+49:08 
+I- I'm very excited by AI learning. 
+
+49:12 
+Uh, I want to answer one question that I-- when I travel around the world, everybody asks me is that, "If I'm a musician, if I'm a teacher, middle school teacher, if I'm a nurse, if I'm an accountant, if I'm a farmer, do I have a role in AI or is AI just gonna take over my life or my work?" And I think this is the most important question of AI. 
+
+49:42 
+And I find that in Silicon Valley, we tend not to speak heart to heart with people, with people like us and, and not like us in Silicon Valley, but like all of us. 
+
+49:56 
+We tend to just toss around words like infinite productivity or infinite leisure time or, or, you know, infinite power or whatever. But at the end of the day, AI is about people. 
+
+50:13 
+And when people ask me that question, it's a resounding yes. Everybody has a role in AI. It depends on what, what you do and what you want, but no technology should take away human dignity. 
+
+50:28 
+And the human dignity and agency should be at the heart of the development, the deployment, as well as the governance of every technology. 
+
+50:39 
+So if you are a young artist and your passion is storytelling, uh, embrace AI as a tool. In fact, embrace Marble. 
+
+50:51 
+We hope it becomes a tool for you, um, because the way you tell your story is unique and the s- the world still needs it. 
+
+51:01 
+But how you tell your story, how you use the most incredible tool to tell your story in the most unique way is important, and that voice needs to be heard. 
+
+51:14 
+If you are a farmer near retirement, AI still matters because you're a citizen. You can participate in your community. You should have a voice in how AI is used, how AI is applied. 
+
+51:30 
+You, you work with people and you can, you know, encourage all of, all of you to use AI, uh, to make life easier for you. 
+
+51:41 
+If you're a nurse, I want to know that at least in my, uh, career, I have worked so much in healthcare research because I feel our healthcare workers should be greatly augmented and helped by AI technology, whether it's smart cameras to feed more, uh, in- information or robotic assistance, because our nurses are overworked, over-fatigued, and as our society ages, we need more help for, for people to be taken care of. 
+
+52:18 
+So AI can play that role. So I just wanna say that it's so important that, um, even the technologists like me, um, are sincere about that everybody has a role in AI. What a beautiful way to end it. 
+
+52:34 
+It's such a tie back to where we started about how it's up to us and taking individual responsibility for what AI will do in our lives. Final question. Where can folks find Marble? 
+
+52:45 
+Where can they go maybe, uh, try to join, uh, World Labs if they want to? What's the website? Where do people go? 
+
+52:51 
+Well, World Labs website is www.worldlabs.ai, and you can find, um, you can find our research progress there. We, we have technical blogs. You can find Marble the product there. 
+
+53:06 
+You can sign in there. You can find our job posts, uh, link there. You can, uh... You know, we're in San Francisco. We love to work with the world's best talents. Amazing. 
+
+53:20 
+So, um, next, um, uh, and, um, this, uh, marketing, uh, part. 
+
+53:26 
+Um, so, uh, for an AI product manager, um, I think besides what, uh, Professor Li, uh, mentioned in the podcast, um, I think a strong contribution might be, uh, finding that, um, users, um, keeps, um-- get stuck at the same time and turning that, um, problem into a clear requirement like PRD, um, product requirement documents, and working with, um, engineering to test a solution. 
+
+54:02 
+Um- Good. I was not aware of this. Um, so let's skip to the model introduction part. Um, we have already, um, done with Gemini, um, 3.8. Um, so let's, uh, introduce the Grok, uh, 4.6. 
+
+54:30 
+Um, if two agents can complete the same task, how do we decide, mm, which one is more efficient? We need to consider both the speed of each step and the total number of steps. 
+
+54:45 
+So, um, Grok 4.6 is described as a explainable, uh, AI model for long-running coding agents and knowledge work. 
+
+54:57 
+Um, this task usually require more than one, uh, answer, and the system reads, um, information, um, use, um, uses tools and, um, decides what to do next based on the, um, current results. 
+
+55:13 
+The reported intelligence in that score is, um, 61, matching, um, GPT 5.6 SOL. But the same overall score doesn't mean the model has same, um, strengths. 
+
+55:29 
+A more, um, interesting, um, comparison concerns the number of turns. 
+
+55:35 
+Um, for the reported, um, AA briefcase workload, the, uh, Grok used about, uh, 53 turns compared with roughly, uh, 103 for, um, Cloud Opus 5 Max. So what counts as one turn? 
+
+55:54 
+So think of it as a unit of, uh, interaction during the agent's work. Um, the exact counting rule depends on the benchmark. 
+
+56:05 
+For example, when, uh, fixing code, an agent might read an error instead, um, files and, uh, make a change and then, uh, run tests. 
+
+56:17 
+Uh, if it keeps searching the same information or repeating, um, unsuccessful changes, it, um, needs more, uh, turns. Um, fewer turns may, um, therefore suggest less wasted work. 
+
+56:34 
+But 53 turns doesn't automatically mean twice as, um, faster or half the cost of 103 turns, um, in the, uh, Cloud Opus model. 
+
+56:49 
+So each turn may use different amount of tasks, um, computing, uh, resources and, uh, tool time. Uh, we also need to check, um, that the agent hasn't skipped an important task. 
+
+57:04 
+Um, the same, um, here applies to, um, pricing. The quoted rates are less than half of GPT 5.6, but a lower rate doesn't guarantee, um, a lower total task cost. 
+
+57:19 
+Actual usage, the tool cost, and retries all matters. 
+
+57:24 
+Um, and for the company, um, the product team also consider the provider's safety and, um, governance record, how is data handled, um, who control the permission and who, uh, responds when someone, uh, some- or something goes wrong. 
+
+57:45 
+So easy access through a developer platform doesn't settle those, uh, questions. 
+
+57:52 
+So when evaluating an, uh, agent system, look for less wasted work, uh, correct final results and, uh, process that meets the, uh, product safety requirements. 
+
+58:09 
+Um, now we come to the Chinese LLM models. Uh, can the model be very large without using all its parameter every time it, uh, process the token? 
+
+58:22 
+So that's the main idea of MoE, the Mixture of Expert, uh, which was very popular, uh, in the Spring Festival, uh, 2000-- uh, 2025. Mm. 
+
+58:37 
+So the DeepSeek V4 Pro description gives a total of about 100, uh, 1.6 trillion, uh, parameters, but around, uh, 49 billion active parameters per token. So think of a large team. 
+
+58:56 
+Um, every task doesn't need everyone to participate. So a routing mechanism selects some expert modules to perform parts of the computation. 
+
+59:07 
+So that is, um, uh, we call it MoE, the Mixture of Expert. So this can, uh, reduce the computing work needed for each token, but the remaining parameter does not disappear. 
+
+59:23 
+The full model still needs storage, the running, um, um, and across devices can, uh, involve communication, uh, costs. 
+
+59:34 
+So we can't estimate the, um, hardcore requirements from the active para- parameter count alone. 
+
+59:41 
+Um, and the reported benchmark cover different abilities, um, like the scientific reasoning, the broad knowledge and reasoning, um, and, uh, fixing issues in software responsibility. 
+
+59:56 
+They help us understand, um, the model's strengths, um, but their, um, percentage aren't directly, um, comparable because the tasks have different tasks and scoring rules. 
+
+01:00:11 
+Um, and I think another, uh, strength of DeepSeek is, uh, it's an open source model, uh, which, uh, like many, um, uh, governments use the DeepSeek as the, uh, baseline, uh, model for their, uh, government services instead of, uh, more advanced model like, uh, GPT or CloudCode. 
+
+01:00:36 
+Um- And, um- 怎么可能想什么呢 ... next is at least Tianwen, uh, three point eight max. Um, imagine that a system that reads the same long set of instruction every time, um, it handles the request. 
+
+01:00:53 
+So why pay the full processing cost for that- 可以 就是他 ... uh, repeated input on every, uh, call? The, um, input caching can reduce some of that repeated work. 
+
+01:01:06 
+So the Tianwen, uh, three point eight max description highlights a much lower price for, um, cached input than, uh, for, uh, fresh input. So the important word is, uh, cache. 
+
+01:01:22 
+We only receive that benefits when the request meets the provider's, uh, caching rules, reusable, uh, prefix, um, cache, uh, lifetime, and the way we organize requests can all matter. 
+
+01:01:37 
+Um, so we shouldn't apply the cache rate to every input token when the, um, when we, um, estimate the cost. 
+
+01:01:47 
+Um, and there's another, um, subtle point is, uh, a cache preserves something we have used before, and it doesn't make that information current. 
+
+01:01:59 
+If a policy changes, reusing the old policy more cheaply, uh, still give us the wrong answer. So don't, um, like, pay more attention to the, uh, cheap rate instead of the, um, the task requirements. 
+
+01:02:17 
+Um, and Tianwen also reports the visual stress, and it suggests the second, um, error to task. Um, understanding the structured documents, reading the words is only part of that job. 
+
+01:02:31 
+So the system may also need to connect a number with the correct row, heading, and, um, diagram, uh, diagram, uh, component. 
+
+01:02:45 
+Um, so another question is what, uh, changes when a highly capable model is also available for organizations to run themselves? 
+
+01:02:55 
+Um, I think that's the, um, similar questions when we, uh, comes to the Chinese model, um, since most, uh, Chinese LLM, uh, are, um, open, uh, source. 
+
+01:03:09 
+Um, that's a useful question to explore with Kimi. 
+
+01:03:13 
+Um, so Kimi K3 comes from the, uh, Moonshots AI, uh, which, uh, counts Alibaba among its, uh, investors, and K3 is, uh, presented its third, uh, generation flagship, uh, combining strong capability with open weights. 
+
+01:03:35 
+Um, according to the supplied, uh, comparison, it ranked third on the, uh, artificial analysis index at launch. 
+
+01:03:43 
+But, um, the third overall doesn't mean the third on every task, so the index, um, combine the different evaluations. We still need to examine, um, the tasks that matter to our, uh, own application. 
+
+01:04:01 
+Um, a bigger question is how an organization can access and use that, uh, ability. Uh, with an API, we send a request to a provider service. 
+
+01:04:15 
+Um, self-hosting gives an organization more control over what the model runs, which version it uses, and how, uh, it's, uh, connect to the, uh, internal systems. 
+
+01:04:29 
+Um, imagine a company building an, uh, internal knowledge assistant. It may want this document, um, processed within, um, infrastructure it can manage themselves. 
+
+01:04:45 
+Open weights offer one possible route, but the team still need to control, um, like the document access, logs, and external function calls. 
+
+01:04:57 
+Um, downloading the model does not automatically, um, make the system secure. So, um, all the, like, the veteaming, um, is... all the security check are necessary. 
+
+01:05:11 
+We also need to, um, unpack the word free. Um, the supplied, um, uh, description says there's no model licensing fee for, um, self-hosting. 
+
+01:05:25 
+Um, but GPU, storage, engineering support, and maintenance still cost money. So with low usage, self-hosting could even cost more than API, and the exact license terms also need checking. 
+
+01:05:42 
+Um, finally, um, describing the, um, China-United States capability gap, um, as shrinking from, uh, months to weeks is, um, um, analytical judgment rather than a, um, precise technical, uh, measure. 
+
+01:06:04 
+So without shared task, um, the database that's, uh, constructed by, uh, Professor Fei-Fei Li, and also the dates, um, the comparison method, we cannot, um, calculate that gap, uh, reliably. 
+
+01:06:21 
+So for a company, the more, uh, practical question is whether it can, um, operate the model at an affordable cost while meeting its own, um, quality and, um, the data control requirements. 
+
+01:06:41 
+Um, so, um, do we always need a model that performs well on the hardest scientific question, like the previous models? 
+
+01:06:52 
+So let's consider a service, um, that extract views from routine requests or, um, produce short, uh, summaries. 
+
+01:07:02 
+If a faster, um, lower cost model meets the quality requirement, mm, paying for more advanced reasoning may bring, um, little benefit. So Mistral Large 3 is this model. 
+
+01:07:17 
+Um, it is presented as an example, um, of that trade-off. 
+
+01:07:23 
+Um, the comparison gives it a low time to first token and, um, low token prices, while also showing limits on some, um, demanding reasoning task. 
+
+01:07:37 
+Um, and notice that a strong, uh, human evaluation results and a weaker, um, GPQA results can both be true. 
+
+01:07:47 
+One involves writing small functions and the other involves difficult scientific questions. 
+
+01:07:54 
+Um, so we learn more from that pattern than from, uh, trying to turn two, two scores into one general statement about, um, the intelligence. 
+
+01:08:06 
+Um, and, um, the follow-up question is, how much compo-- uh, computing, uh, power does it take to train a model, and how much does it take to answer a question? Um, these are two questions. 
+
+01:08:22 
+The Muse Spark, uh, one point three description brings them together according to the, um, supplied information. So Muse Spark was the first model family from Meta, um, Super Intelligence Lab. 
+
+01:08:36 
+It developed from v- version one point zero through one point one to one point three, making a new direction for, um, Meta AI's work. 
+
+01:08:47 
+Um, that is the description of the, um, Meta, um, AI, um, uh, comment, but I disagree because this model is, um, not that good. 
+
+01:09:01 
+But I, I trying to cover all the, uh, LLMs here, so, um, I still introduce the model here. 
+
+01:09:09 
+Um, so, uh, when comparing models start, um, comparing this, um, LLMs, uh, we would start with two, uh, practical question. 
+
+01:09:21 
+Um, the first one is, what kind of information can the model receive, and how much can it handle at once? Um, the first question is about modality. 
+
+01:09:33 
+Um, as we can see, the Gemini, uh, three point eight Flash is the only, uh, flagship with, uh, native audio and video input. Um, and, um, the second question concerns about the context window. 
+
+01:09:50 
+Um, and think of it, the context window as the space available for information in the current request. 
+
+01:09:59 
+Um, and I don't think there is a large gap between, uh, Chinese model and US model in terms of the context window. Uh, especially, uh, we have many, um, harness technique, uh, recently. 
+
+01:10:15 
+So, um, I think context window is like a general, uh, requirement for the, like, um, LLMs for, uh, business practice. Um, and another, uh, point is the, uh, input capability and output limits. 
+
+01:10:34 
+Uh, I want to discriminate these two, um, definition. 
+
+01:10:38 
+The comparison between the three hundred and, uh, eighty-four K and one hundred and twenty-eight K means a threshold difference in the stated maximum output length, not, um, three times the, uh, reasoning ability. 
+
+01:10:57 
+So the longer outputs may help with the, uh, with some longer deliverables, but it also adds, um, like waiting time, uh, cost, and review work. 
+
+01:11:10 
+Um, the actual length can depend on input length and interface limits. So the context as just the, um, starting point. 
+
+01:11:19 
+The long context evaluation help us discover, uh, whether the model can actually use the, um, space, uh, reliably. 
+
+01:11:31 
+Um, when you send a question to an AI, uh, assistant and wait a few seconds later, um, the first, uh, piece of text appears, and that's initial wake up, uh, time to first token or, um, TTFT. 
+
+01:11:47 
+Uh, as we can see, um, the, um, the, the, the Grok, uh, four point six and the Claude five-oh and, um, the, uh, Cloud Code Opus five and the GPT, um, takes longer time than the, um, LLMs, uh, like the Tianwen and, um, DeepSeek. 
+
+01:12:13 
+Um, and we just, um, discussed how long the user waits before the first, uh, token appears. And now the answer has started, how quickly does the rest arrive? 
+
+01:12:25 
+That's what, uh, outputs, uh, that's what output threshold matters, the number of tokens generated per second. So unlike time to first token, a higher number means faster generation. 
+
+01:12:41 
+So in this screenshot, Gemini, um, three point eight Flash produced about Um, 300 tokens per second, uh, which is, uh, faster than other, uh, baseline models. 
+
+01:12:57 
+Um, beyond the speed, we need to ask how much does it cost to, um, complete a task? There are two prices to separate. 
+
+01:13:06 
+The, um, lighter bars represent the input tokens, and the darker bars rep- um, represent the output tokens. Both are priced in, um, US dollars per million tokens. 
+
+01:13:19 
+Um, the inputs, uh, include more than the user's latest, uh, question. 
+
+01:13:25 
+It may also contain the instruction, um, the conversion, uh, the convert- the con- conversation history, um, the documents, and the tool results. 
+
+01:13:38 
+An output is exactly the contents the model generates. We calculate the two costs separately, uh, instead of adding them together. 
+
+01:13:48 
+Um, in this figure, output is always, uh, more expensive than input. And Mes- uh, Mistral is listed, um, at 50 cents per million, uh, input tokens at $1.15 for output. 
+
+01:14:05 
+Fibble is, um, the, the most expensive one. Um, but I think the only disadvantage of this expensive, uh, models is, um, the price. 
+
+01:14:20 
+Um, and after looking at, um, speed and price, let's return to the question, um, that is which model is the strongest? Um, and that depends on what we ask the model to do. 
+
+01:14:36 
+Um, to first separate the headline numbers, the 65.7 in this figure is a composite, um, intelligence index combining the results from, uh, multiple evaluations. 
+
+01:14:54 
+And the number above, um, 97% concerns, um, a benchmark called GPQA Diamond, a test of difficult scientific questions, and the figure above like, um, 90% plus, uh, concerns software issue, uh, resolution on the SWE bench, uh, VeriSite. 
+
+01:15:24 
+Um, so putting all this comparison together, um, there are four points worth, uh, remembering. First, optimal ways do not automatically mean weaker, uh, performance. 
+
+01:15:38 
+In the comparison we've just discussed, PME and DeepSeek are, um, competitive on some knowledge and coding task. 
+
+01:15:48 
+Um, but similar scores on selective tasks do not mean, um, the models are equally good at everything. Um, second, price and waiting time are not direct measures of ability. 
+
+01:16:04 
+Uh, it is easy to assume that a more expensive model must be better or, um, that a model takes longer must be thinking more carefully. Um, neither is, um, the safe assumption. 
+
+01:16:20 
+A lower cost model may be do the, uh, may do the same task well, while the slower model may not produce a more useful answer. 
+
+01:16:31 
+Um, the third point is we don't need the most powerful model for every, um, step. Extracting a few, uh, like, fields is different from solving a complex, uh, multi-step, uh, problem. 
+
+01:16:47 
+If a simpler model already meets our quality targets, then a small... a, a more, um, expensive one may just add cost without much value. 
+
+01:17:00 
+Um, and, um, the last point is a test, um, becomes less useful for comparison when scores gather near the top. 
+
+01:17:10 
+Think of an exam where almost everyone gets full, um, uh, marks, and it becomes harder to, um, tell students apart. 
+
+01:17:22 
+That doesn't mean they can solve every real world problem, it means that we need more, uh, evaluation tests. Um, so we already, um, seen a lot of scores. 
+
+01:17:39 
+Um, now let's, uh, look at, um, the, uh, benchmark. So what is the benchmark in LLM? 
+
+01:17:47 
+A benchmark is defined as a set of tasks with a way to judge the results generated by LLM, and it let us to compare systems. 
+
+01:18:01 
+But the comparison only means something when we understand the task and the scores rules. So there are 10, uh, categories, uh, which can sound like a lot. 
+
+01:18:16 
+So, uh, I connect this 10, uh, category into four, uh, questions, uh, a business team can ask. So the first question is: Can the model solve the underlying problem? 
+
+01:18:31 
+Um, so knowledge, mathematics, and coding help us in weighing that. And another question you may note in your future work is: Can it use the information we give it? 
+
+01:18:43 
+Um, that brings in visual understanding, long documents, and factual support. A model may know a, um, great deal and still read the wrong row in the table. 
+
+01:18:57 
+And the third question is, can we rely on it during an, uh, interaction? Can we care about the tool use, the, uh, conversation quality, and safety? 
+
+01:19:09 
+Taking an action creates, um, different risk from writing suggestion. 
+
+01:19:14 
+And the last question we want to ask is how does the task quality, um, transfer to a useful, um, delivero-- uh, um, deliverables? 
+
+01:19:26 
+Broad indices summarize several abilities, while, um, the professional work evaluations look more directly at the quality of deliverables. 
+
+01:19:36 
+So these groups connect to one another, and a poor answer begin with, um, misunderstood image and then lead to the wrong, uh, tool call, and end with a confidence, uh, but wrong explanation. 
+
+01:19:53 
+Um, so separating this ability help us to find where that chain went wrong when we design the whole systems. Um, so the basic ability is the general, um, knowledge and reasoning for LLMs. 
+
+01:20:11 
+Suppose the model answers a scientific question correctly. Did it recall the answer and, um, reason from the information in the question or, um, encounter almost the same question during training? 
+
+01:20:27 
+So one results, uh, usually cannot tell us which explanation is right. That's why benchmark design matters. Um, broad knowledge, um, tasks sample, um, many subjects. 
+
+01:20:43 
+Uh, more demanding tasks may require several reasoning steps or, um, specialist knowledge. 
+
+01:20:50 
+And some abstract tasks reduce the role of factual recall and ask the model to infer a ru-rule from examples. Um, but, uh, public tasks have an additional challenge. 
+
+01:21:04 
+Once the question and solutions circulate widely, they may become part of, uh, later training data. 
+
+01:21:12 
+And that doesn't prove every high score comes from, um, memorization, but it would reduce our confidence that the task measured the unfamiliar, uh, work. So newer tasks can help. 
+
+01:21:28 
+Although there isn't, um, a fixed, um, schedule on which every benchmark be-become useless nor, um, uh, all the, um, name has simply successive versions of the same exam. 
+
+01:21:43 
+So for the produ-- um, product, uh, work, the broad knowledge is just a starting point. Um, and this is the, um, uh, benchmark, uh, for the general knowledge, uh, reasoning. 
+
+01:22:01 
+Um, and this ability are related, but they are not the same. So the MMLU covers, uh, fifty-seven subject. 
+
+01:22:11 
+Um, think of it as a broad exam across many fields, and it has knowledge and some, uh, reasoning. Uh, and GPQA focuses on graduate level science, including the physics, chemistry, um, biology. 
+
+01:22:29 
+And the ARC family takes a different approach. Instead of mainly testing the remembered knowledge, it asks for the model to find a rule from the example and apply it to something new. 
+
+01:22:43 
+Um, imagine looking at, um, several changes to colored, uh, grid, then working out how to change another grid. 
+
+01:22:52 
+Um, and HLE or, um, humanity last exam brings together, um, difficult expert-level questions. Besides accuracy, we care about, um, the, uh, calibration. So can we choose the model's, uh, confidence? 
+
+01:23:10 
+Um, if it says, um, it is eighty percent confident access, mm, it's right about eighty percent of the time, or just being confident wrong is a problem, even with a good overall score. 
+
+01:23:25 
+The finally BBH and BBGH focuses on multi-step logic and, uh, following rules, such as tracking objects as their position change. 
+
+01:23:37 
+Um, I think you don't need to memory all this, um, benchmarks name or, um, you mu-maybe you just need to have an impression on where you want to, um, test your product. 
+
+01:23:51 
+Uh, you can, um, search for, uh, um, like, um, the name of this, uh, benchmark and use the one that fit your task. I think that's what I want to, um, emphasize, like, in this slide. 
+
+01:24:08 
+Um, um, then let's use three question to make the difference between the knowledge and reasoning more, uh, concrete. That's the specific question in this, uh, benchmark. 
+
+01:24:21 
+The first is a mathematic question from MMLU. We need to judge two, uh, statements separately. Uh, and the second is a chemistry question require, um, ex-- uh, specialist knowledge. 
+
+01:24:38 
+And, um, I think when the LLM, um, um, like answer this question, uh, it need to notice the wor-the word "not." Um, we are looking for the statement that does not describe the reaction. 
+
+01:24:54 
+Um, but since I already forgot all the chemistry knowledge in my high school, so let's, uh, just look at this question and get some understanding, uh, what the, uh, benchmark, other questions in benchmark looks like. 
+
+01:25:09 
+Um, I think these three questions and different, uh, benchmark, they test the different things. 
+
+01:25:15 
+The first is understanding, uh, is to understand the definition, and the second is to apply, um, the specialist knowledge, um, the chemistry knowledge. 
+
+01:25:26 
+And the third, uh, is to track a sequence, um, accurately. And the model can know a lot but still make mistakes can, uh, in any of them. Um, so let's have a ten minutes break. 
+
+01:26:29 
+Knowledge, uh, we will look at the mathematical reasoning. Um, a confident explanation does not rescue, um, a wrong calculation. 
+
+01:26:46 
+That's one reason mathematics is attractive for, um, the model evaluation. 
+
+01:26:51 
+Um, for many problem, we can compare the final number with the known answer or use, um, the symbolic check, and this makes, um, scoring more repeatable than asking whether a paragraph sounds convincing. 
+
+01:27:06 
+Um, so let's look at how the benchmark families move from the basic, um, algorithm towards more, um, demanding mathematical work. 
+
+01:27:17 
+Um, the GSM8K uses the, um, uh, algorithm word problem, and the maths include, um, the maths benchmark include computation style problem involving areas such as algebra and, uh, geometry. 
+
+01:27:36 
+Um, and AIM, uh, AIME questions usually need several connected steps and some insights. Um, and the Frontier Maths aims at, um, much more advanced, uh, problem. 
+
+01:27:51 
+And Olympic Bench, uh, adds demanding mathematics and physics, including the questions that can, um, involve images and more than, uh, one language. 
+
+01:28:05 
+Um, and here are s-several examples of the, um, mathematical, uh, reasoning. Um, so we start with the e-easy, um, case that is Natalie clip. She sold, uh, forty-eight in April. 
+
+01:28:21 
+Half as many May is, uh, twenty-four, and add the two months, we get, um, seventy-two. And for the graph, we have two divided, uh, by x squared plus x minus twelve. 
+
+01:28:37 
+Uh, and, uh, in the end, the results is two vertical, uh, lines. Uh, and the third question is, um, the advanced mathematics. 
+
+01:28:49 
+I have to say, um, the seventeen written in base b means b plus seven, and the ninety-seven in base b means nine b plus seven. 
+
+01:28:59 
+So we need the first number to, um, divide the second, and the base must be greater than nine. 
+
+01:29:06 
+So, um, as this example is just to give you, um, an insight about how the mathematical reasoning benchmark would, uh, look like. Um, let me print the correct answer. 
+
+01:29:24 
+So, um, next we would, um, use the coding and software, uh, engineering benchmark. Um, so why is coding especially useful for evaluation? Because, um, code does not need to look correct. 
+
+01:29:39 
+We can usually run it and check whether it does the job. For example, suppose we ask the model to write a sorting function. We can give it some numbers and check the order of the results. 
+
+01:29:54 
+We can also test an empty list or repeated numbers compare with, um, judging whether an essay is well written. This gives us a more, um, objective way to score the answer. 
+
+01:30:10 
+And, um, this benchmark all involve code, but it has different kind of work, uh, like, uh, writing a function, solving an algorithm problem, or making changes to an existing, uh, project. 
+
+01:30:26 
+Uh, I want to highlight as Tableau E Bench, um, I think it moves into, um, existing code, uh, repositories instead of completing an isolated function. 
+
+01:30:38 
+The model need to resolve a real issue, and it must find the relevant files, understand the cause, and make the change, uh, verified, um, contains five hundred human reviewed, uh, task. 
+
+01:30:52 
+So it's, uh, more advanced, uh, benchmark compared with others, and you can evaluate the, uh, resposition... uh, the, the project on GitHub, um, to see, um, um, the evaluation results. 
+
+01:31:09 
+Um, and here's the example, um, of the coding and, uh, software engineering. Um, and, um, the function asks whether any two numbers are closer together than a given threshold. 
+
+01:31:24 
+So we only need one, uh, qualifying pair for the answer to be true. So the first question is very, uh, easy. 
+
+01:31:33 
+Uh, and we, uh, should also think about, mm, the, um, the second, uh, part, that is the node. So the SWE bench, the LabCode bench, and, um, the terminal bench takes a full, uh, raspberry. 
+
+01:31:51 
+So, um, it's issue-based, uh, problem, not just, uh, like single function, um, requirements. Um, so far, most example have arrived as text. 
+
+01:32:05 
+So, um, we, uh, can look at, um, the multi-model understanding. Um, imagine a table with the right number in every cell, but the model assigns those numbers to the wrong, um, customers. 
+
+01:32:18 
+And the text recognition might look good, but the results is unreusable. So the multi-modal understanding includes, um, that connection between content and structure. 
+
+01:32:31 
+We need the system to read the words, understand the position, and use the, uh, relationship correctly. 
+
+01:32:40 
+Um, so MMU, um, uses, uh, visual questions grounded, um, in different academic subjects and, um, maths version, uh, focus on mathematics that depend on r-- uh, visual information like, um, geometry. 
+
+01:32:59 
+And the OmniDoc bench is closer to document, uh, processing. It evaluate extraction from complex pages where, um, text order, table structure, and, uh, mathematical contents are measured. 
+
+01:33:15 
+Uh, MM bench include a useful idea for multiple choice evaluation. And Video MME asks question about video. 
+
+01:33:25 
+So when choosing among this text, start with the input your, um, users or your product actually have. 
+
+01:33:33 
+And the document extraction flow needs different evidence from a system that explains the video clips. Mm. So here is an example of, um, the video, uh, benchmark. 
+
+01:33:47 
+We, uh, always start with a basic requirement. The model need the, uh, conflict image to support, um, its answer. And on the right, we have a separate, uh, um, classroom example. 
+
+01:34:03 
+Uh, so on the left-hand side, there's no, uh, photograph here, so, um, de-definitely we cannot answer without any figure. But in the right-hand side, we have a separate, uh, example. 
+
+01:34:17 
+Um, it include the figure here. So, um, we, we can use the visual benchmark to, uh, generate, um, the results and evaluate this question. Um, and next is the long context, uh, processing benchmark. 
+
+01:34:36 
+Um, suppose the model can answer a question when, um, the relevant sentence is in two-page document. Now we place the same sentence inside two hundred pages. Does it still find it? 
+
+01:34:49 
+So the long content pr-- uh, processing benchmark is to, uh, find the exact two, uh, page document over like hundreds of pages to evaluate this ability. 
+
+01:35:04 
+And, um, finding one sentence is just, um, the beginning. 
+
+01:35:10 
+A realistic question may require joining facts from several documents, resolving a change policy, or comparing two versions of, um, the agreement. 
+
+01:35:24 
+Um, so these are the, um, five benchmark of long context, uh, processing. Mm. 
+
+01:35:34 
+And here is the example, um, that the hidden number example ask for the, um, special San Francisco number, and the text explicitly contains, um, uh, some numbers here, so a successful answer retrieves that exact value. 
+
+01:35:53 
+So here is, um, very little reasoning after the right sentence has been found. 
+
+01:35:59 
+We could make the search harder by placing the sentence in the middle of the longer document or adding similar-looking facts. 
+
+01:36:08 
+Um, and the sixth, um, benchmark, it's, uh, factual, uh, factuality and hallucination. Um, there are several ways, um, a factual answer can go wrong. 
+
+01:36:22 
+The model may recall something incorrectly, and it may contradict the source it was given, or it may add a detail that sounds reasonable but has no supporting, um, evidence. 
+
+01:36:35 
+Um, Simple QA asks such factual questions and distinguish correct answers, mm, or, um, and incorrect answers, and question the model doesn't, um, attempt. 
+
+01:36:48 
+That help us examine both recall and the willingness to answer. Um, but a single factor is small unit. It does not tell us how many unsupported claims might appear in the long report. 
+
+01:37:03 
+So the truthful QA and, uh, hallucination that broaden the discussion towards hallucination in longer generation and the situation, um, where a question does not have the assumed answer. 
+
+01:37:19 
+For an application, mm, a useful evaluation that combine these ideas include, um, answerable question, common, uh, misconception, and requests where key information is, um, missing. 
+
+01:37:37 
+Um, so this pattern tells us much more about what to improve than, um, general instruction to, uh, reduce hallucination. Um, so here is the example of the, uh, hallucination benchmark. 
+
+01:37:54 
+Um, the football question asks for a specific player in a specific match, and the supplied answer is, let me show first, is, uh, what, um, like this guy. 
+
+01:38:08 
+And to evaluate that answer properly, um, the reference needs to match the wording about the type of goal, not merely show that the player appeared in the match. 
+
+01:38:20 
+So this is a fact, fact retrieval task. A plausible bench player's name wouldn't be enough. 
+
+01:38:30 
+Um, so for a product, we would also, um, include one question here is, one, where the necessary information isn't available, then we can see whether the system asks for clarification or simply just fill the gap. 
+
+01:38:49 
+Mm, I think when we design the product, we also need, uh, need to consider the, uh, backup plan. 
+
+01:38:58 
+Uh, once the necessary information isn't available, uh, either we want to, um, double-check with the user, um, uh, about the question or, uh, we just simply say that we cannot handle, um, this question. 
+
+01:39:16 
+Um, and the seventh, um, benchmark is agentic behavior and tool use. 
+
+01:39:23 
+Um, uh, I will also elaborate this part in the next section, but in the, um, benchmark part, um, uh, there are also, uh, specific benchmark, um, to evaluate the, um, agentic AI systems. 
+
+01:39:42 
+So an agent can choose an action, use a tool, um, observe the results, and decide, uh, what to do next. To evaluate it, we need to look at what changed in environment. 
+
+01:39:56 
+So a confident message saying, "Done," isn't enough if the request action never happened. Um, so think about a consumer asking to change an order. 
+
+01:40:08 
+A successful agent need to identify the right order, can, um, check the, uh, relevant rules, uh, choose an allowed action, and confirm the results. 
+
+01:40:20 
+So each tool response changes what the system knows. If the change fails, then the agent has n- to notice that failure and decide how to recover. 
+
+01:40:33 
+Repeating the same action blindly could create a second problem. That's why the final environment states matters. Did the right order, um, change? Did any unrelated data change? 
+
+01:40:48 
+Did the system respect, mm, the user's permission? And we also care about the consistency. A system that succeeds once in a, um, demonstration may fail on another run with the same, uh, request. 
+
+01:41:07 
+So small differences can send a long, uh, sequence of action down a, a different ta- uh, task. So agent, uh, benchmark will vary in, um, how much of this process they capture. 
+
+01:41:22 
+Some emphasize finding information, while others require changes inside the, um, working systems. Um, here is the sixth, um, agentic, uh, benchmark. 
+
+01:41:37 
+The GAIA combines, uh, reasoning with tool use and, um, Tool Bench and Tool Square Bench focus on multi-turn tasks with tools and policies. 
+
+01:41:48 
+Uh, Web Arena puts agents into realistic web environment, and the system need to navigate the interface and complete task. So both the model and the, um, its interaction tools affect the results. 
+
+01:42:05 
+Um, BrowseComp, uh, emphasize the difficult information search. The challenge is often working out the search strategy and connecting, um, evidence across sources. 
+
+01:42:18 
+Um, and artificial, uh, analysts also evaluate the agentic workloads. For any combined scores, check with which task and weights were used for that particular, uh, release of the index. 
+
+01:42:36 
+Um, I think this task ex-expose different, uh, failures. An agent may be good at finding, um, an answer, but, uh, very poor at keeping a business process, um, consistent over time. 
+
+01:42:52 
+So choose the evaluation environment that, mm, resembles the, um, responsibilities you expect to, um, uh, give it. And here is the, um, example of agentic behavior. 
+
+01:43:08 
+Both questions look as though they need only a short answer, but the difficulty lies in, uh, finding enough evidence to justify. 
+
+01:43:20 
+So for the clinical trial question as e-, um, as example, the agents need to, uh, locate the right study and distinguish actual, um, enrollment from planned enrollment. 
+
+01:43:35 
+And they also need to match the condition, the, uh, participation, um, group, and the date range. 
+
+01:43:44 
+Um, and the final number should come from the correct, um, registry record with a reference that lets someone else, uh, check it. 
+
+01:43:56 
+And also can, um, provide a target, but the retrieval process still need that evidence. Um, now, um, we come to the human preference and conversational quality. 
+
+01:44:12 
+So imagine two answers are both factually right. One is easy to follow and addresses the question directly, and the other one is technically complete, but difficult to read. 
+
+01:44:28 
+So which, uh, would a user prefer? So the, um, conversation quality depends on clarity, the, uh, relevance, and the way the answer fit to, um, the user's, um, environment. 
+
+01:44:44 
+And that requires a different evaluation approach from, uh, factual, uh, factual, uh, and hallucination benchmark. Um, so what makes an answer helpful depends partly on the person asking. 
+
+01:45:02 
+If I ask for, um, quick explanation, three useful sentence may be better than a long essay. If I'm trying to understand a difficult method, then the same three sentence may leave too many, um, gaps. 
+
+01:45:17 
+Um, and this makes human preference valuable, um, evidence. We can compare, um, the responses to the same request and ask people which one helps more. 
+
+01:45:31 
+Um, here are the five, um, human preference and conversational, uh, quality. Um, LLM Arena uses comparison between model responses to learn what people prefer. 
+
+01:45:44 
+And MT-Bench uses multi-turn conversation and model-based judging. And it helps, uh, examine whether a system follows the conversation rather than only answering the isolated, uh, questions. 
+
+01:46:00 
+Um, and Alpaca, uh, evaluation compares the instruction following responses, and its stress controlled approach address a useful concern. Uh, a model shouldn't win simply because it's wrote more. 
+
+01:46:18 
+And Arena Hard Auto use, um, uses different pro... uh, a d- different prompt to try to separate a system, uh, whose ability might look similar on easier question. 
+
+01:46:33 
+And WorldBench draws on messy, uh, real world requests and uses criteria for evaluating, um, helpfulness. 
+
+01:46:44 
+So real, uh, requests can be, um, unclear, incomplete, or, um, unusual in ways that, um, meet benchmark question aren't. Um, so think about a blind, um, a taste test. 
+
+01:47:03 
+You try two drinks without seeing the brands and then choose the one you prefer. Hiding the brands helps reduce one source of bias. And the same idea applies to comparing model response. 
+
+01:47:19 
+A user sees answer A and answer B without knowing which model produced each answer, then it chooses the more, um, helpful, uh, response. 
+
+01:47:32 
+Across many, uh, comparisons, the reading system estimate relative, uh, performance. 
+
+01:47:38 
+So, and Elon style, um, rating is a useful, uh, way, although we should check the platform's exact, um, statistical method. 
+
+01:47:49 
+A reading of fifteen hundred doesn't mean the model is correct fifteen hundred times or has a fixed percentage of, um, human abilities. 
+
+01:48:04 
+Mm, so the next, uh, benchmark is, uh, safety, security and, uh, robustness. There are two sides to, uh, useful safety evaluation. So can the system, um, resist requests it shouldn't fulfill? 
+
+01:48:23 
+And can it still help with the legal requests that look, um, superficially similar? 
+
+01:48:30 
+If we only reward refusal, a model can appear safe by declining almost everything, and that would create a poor product. And we need to measure helpful compliance and unnecessary refusal together. 
+
+01:48:47 
+Um, here are four, uh, benchmark in the, um, evaluation process of safety, security and robustness. Mm, and here, um, is a safe way to make the evaluation process concrete. 
+
+01:49:03 
+Imagine a past account, um, ask for another user's private booking history, and the application should prewe-- uh, prevent that, um, disclosure. 
+
+01:49:17 
+So now create a match, um, like a match request, the user ask for their own booking history through an, um- Also, uh, authorities the flow, and the system should help with that request rather than, uh, refuse it just because it's, um, mentions private information. 
+
+01:49:43 
+And the last benchmark is the, uh, composite indices and real-world, um, economic value. Mm, an overall index is convenient because it always reduce many, uh, results to one number. 
+
+01:49:59 
+Um, but someone have to decide which tasks count and how much weight each one receives. Um, the, um, artificial analysis intelligence index combines, um, selected evaluation. 
+
+01:50:17 
+Its interpretation depends on the version, um, included task and weights. And GDP, uh, we are focused on professional knowledge work. 
+
+01:50:29 
+And Stanford HELM, um, takes a broad evaluation approach with multiple measures, and you can also develop your own composite, um, indices based on, um, your applications. 
+
+01:50:47 
+Um, after all these categories, how should we read, uh, benchmark results? 
+
+01:50:53 
+Um, I think, uh, we may, uh, start by, um, identifying the exact task and, uh, version, and next report the condition, and then, um, ask whether the task at scale matters for our application. 
+
+01:51:12 
+And finally, look at, um, uh, the, the evidence beyond the familiar, uh, public questions, or you can even develop a new benchmark by yourself, just, um, specific for your applications. 
+
+01:51:30 
+Um, so think of a student taking an exam after seeing the same question and answer, answers in advance. 
+
+01:51:38 
+A high mark might still reflect some understanding, but it gives us weaker evidence about, um, unfamiliar problem. The training overlap creates a similar concern for models. 
+
+01:51:53 
+Exposure can range from related materials to the exact question or even the question with its answer label already. Um, so those case aren't equivalent. 
+
+01:52:08 
+So when we, um, evaluate, um, a system, we always want to find a newer, uh, benchmark, newer questions to get the fair, um, scores. 
+
+01:52:22 
+Um, a leaderboard changes over time, so the dates belongs with the results. Um, but the date isn't only thing to record. 
+
+01:52:31 
+We also need a benchmark, uh, release, the, um, task set and the exact model, uh, configuration. So before look at the overall rank, um, decide which columns are relevant. 
+
+01:52:46 
+If we are building a coding assistant, um, a coding and agency coding might, um, deserve closer attention. 
+
+01:52:56 
+And if instruction are strict, um, the instruction following may expose an important limitation. Um, a simple way to understand LiveBench is, um, just don't keep giving models the same old exam. 
+
+01:53:15 
+Add fresh questions and use clear rules to, um, check these answers. So why do fresh question matter? 
+
+01:53:25 
+As we discussed before, if a model have already seen the question or the answer during the training process, then a high score may partly reflect the memory rather than the ability to solve the new problem. 
+
+01:53:40 
+That is the contamination issue we, um, uh, discussed in the previous slides. Um, so the LabBench use recent material like, um, articles, papers, um, dataset to help reduce this risk. 
+
+01:54:00 
+Um, in the January snapshot, the, um, Claude five point... 
+
+01:54:05 
+uh, uh, four point five outpost thinking high effort has an overall average of, um, sixty-five point, uh, nine six, and GPT, uh, five point two high follows at, um, seventy-four. 
+
+01:54:23 
+If we stop there, we might choose the first model without asking what our task need. 
+
+01:54:30 
+And when we look at the September snapshot, uh, there, um, this snapshot gives us another, um, example of a trade-off. 
+
+01:54:40 
+The Phi-0 five point five max effort leads to the recorded overall column at eighty-three. 
+
+01:54:48 
+And Astra, the, uh, GPT Astra max effort is slightly lower at around, uh, eighty-two, but higher in reasoning at, um, above, uh, ninety score compared with, um, other models. 
+
+01:55:10 
+Um, so now let's keep three comparison, uh, visible rather than let one ranking decide, um, everything. So an intelligence index summarize quality on a selected mix of evaluation. 
+
+01:55:25 
+Um, and, um, output speed tell us how quickly tokens arrive after generation beginnings. Um, the cost per task tell us what a particular workload cost under the stated method. 
+
+01:55:41 
+So, um, here is the, um, result of the, um, int-intel-intelligence, and here is the, uh, results of the speed across, um, this, um, popular models. 
+
+01:55:58 
+And here is the cost range, um, in, uh, the S-September snapshot. And we can see, um, the, uh, most advanced, um, model have the highest cost per task. 
+
+01:56:16 
+So imagine, um, an question you might meet during, um, like your future work or interview is how would you evaluate, uh, two models for new AI features. 
+
+01:56:32 
+So let's turn, um, let's start with the representative request and clear acceptance rules. 
+
+01:56:40 
+Um, include the, mm, ordinary cases, but also, um, missing information, conflicting, um, constraints and failures that could, um, seriously affect the users. 
+
+01:56:54 
+So ask reviewers to agree on how those cases should be handled. And the second step is to compare under controlled conditions. Keep the input evidence and operating, um, the setup consistent. 
+
+01:57:09 
+If we optimize, uh, prompts separately for each model, give each one a comparable, um, development budget and document the differences. 
+
+01:57:23 
+And the third step is to, uh, record, um, the results case by case. And average can hide that one model includes, um, easy questions, but make more serious mistakes on a smaller group. 
+
+01:57:40 
+So try to break the results down for useful slices, such as request type or, um, complexity. And then, um, keep a separate holdout set for the final decision. 
+
+01:57:55 
+If we have, um, repeatedly changed prompt after seeing a case, that case is now part of, um, development. It can't provide the same independent evidence as an unseen case. 
+
+01:58:11 
+And last, um, we need to decide, uh, who owns the release criteria and what happens if, um, results worsen after launch. 
+
+01:58:21 
+Um, a product manager helps connect this, um, task definition, the engineering, uh, measurements, and the user's experience. 
+
+01:58:33 
+So the deliverable is a definable decision with enough details that another team or colleagues could repeat, um, this comparison. 
+
+01:58:48 
+Um, so let's apply all the above, um, model comparison and benchmark to a travel assistant that help users plan a trip and compare, uh, hotels. 
+
+01:59:02 
+So an LLM is useful because the user describe their needs in different way, and it can turn this different request into a plan and explain the option. 
+
+01:59:16 
+And for model selection, we would create the same set of trip, uh, requests for each, uh, candidate. 
+
+01:59:25 
+We would check whether the plans respect the cons-- uh, respect the constraints and whether the explanation match the available, uh, evidence. And we would also measure the waiting time and cost. 
+
+01:59:39 
+Um, so now the question would be after launch, um, the, um, clicks increase, but the con-conversion fails. Would you switch to a strong, stronger model? 
+
+01:59:52 
+Um, that's quite common in the, um, work, uh, of the product manager. 
+
+02:00:00 
+Um, that is, we always observe, um, the increased click after, um, the launch of AI feature, but the purchase rate or the, um, clicks through conversion falls. 
+
+02:00:15 
+Um, I think, um, uh, the answer would be not necessary to change to a stronger model. So first, we need to define the conversion. 
+
+02:00:25 
+Like, are we measuring, um, booking per click or booking per, uh, traffic per exposure? That's, um, different statistical, um, definition. And then, um, find where the user drop out. 
+
+02:00:42 
+We may add several checkpoints to, um, diagnose, like, where user, um, drop out from our system. 
+
+02:00:51 
+Are suggestions outside their budget, or does the price change after they click, uh, or the generation is too slow or, um, the, the AI feature actually, uh, is not user-friendly. 
+
+02:01:08 
+So, um, if the prices are outdated, then we need to fix the data connection. We may refine our, uh, retrieval-augmented generation part, the RAG part. 
+
+02:01:20 
+And if the model receive correct information but still ignore user constraints, then we may, um, examine the prompt and the model capability. 
+
+02:01:33 
+Um, and in the end, we can use, um, a randomized A/B test to check whether the, uh, proposed change actually improved the business outcomes. 
+
+02:01:46 
+And to, um, estimate the effect, use a properly designed comparison with a consistent eligible, uh, population rather than just assume a before/after change was caused by AI. 
+
+02:02:02 
+Um, that's how the, um, technical evaluation connects to the, um, like the real product evaluation. Um, um, and next we, uh, will, um, discuss the prompt engineering part. 
+
+02:02:19 
+Um, suppose we send a consumer message to a model and say, "Handle this," and what should happen next? 
+
+02:02:26 
+I think the model would-- can, um, summarize it and draft a reply, classify the issue or suggest an action. We have left the, the task unclear. So a useful plan to make the operation, uh, explicit. 
+
+02:02:43 
+For example, we could ask it to, uh, classify the message using a defined set of labels, and we can then provide the relevant label definitions and the messages itself as context. 
+
+02:02:56 
+Um, so we usually use, um, few-shots learning instead of zero-shots learning. 
+
+02:03:02 
+So in the zero-shots, uh, request, we just explain the task and provide a new input without any, um, demonstration, uh, or example. 
+
+02:03:14 
+We could just say, "Classify the message." And the few-shot prompting, um, adds a small set of accepted examples, like reset, uh, my password, and here's the account, and I was charged twice, that's the, uh, billing. 
+
+02:03:30 
+Um, so a few easy example may leave the hard boundary, uh, undefined. We also need cases for, um, the other label and for, um, messages that contain more than one issue. 
+
+02:03:44 
+Um, but, uh, for my, uh, personal experience, I think few-shot is, um, quite useful in terms of the, uh, prompt engineering. 
+
+02:03:55 
+Um, when we, um, offer several cases to the, um, agent system, they will learn, um, quite well and, uh, for the, um, easier task. Um, if a final answer is wrong, where did the error start? 
+
+02:04:12 
+It's difficult to tell when one large prompt tries to do everything at once. So breaking a task into inspectable stage can make diagnose easier. 
+
+02:04:24 
+So first, abstract the relevant facts into, um, tagged fields, and next, check the constraint using suitable rules or tools. 
+
+02:04:34 
+And then compose the answer from the, um, checked, uh, information, and finally, validate the results. Um, a useful, um, uh... A user, um, changes their mind halfway through the, um, conversation. 
+
+02:04:53 
+So how does the application make sure the next answer uses the new information? Um, the model only has access to what the system supplies or, um, make available for that request. 
+
+02:05:09 
+Some, um, services manage conversation history, but applications still need to decide which facts are current and which results are no longer, uh, valid. 
+
+02:05:22 
+Um, when a prompt performs badly, mm, the tempting response is to keep, uh, adding instructions. That can make it longer without making the cause any clearer. 
+
+02:05:34 
+So start with a simple baseline and a fixed set of, um, development cases, and save the prompt version and the results so we know that, uh, what, uh, changed. 
+
+02:05:48 
+And then make a targeted revision, perhaps a label, mm, definition was unclear or a boundary example was missing. 
+
+02:05:59 
+Um, and then run the same cases and look at the paired outcome, like wha-which error disappeared or, uh, which correct cases became wrong. 
+
+02:06:09 
+And next, classify the failure before choosing the, um, next change. And once the de-development results look promising, use the independent holdout case for the release decision. 
+
+02:06:24 
+Um, and also, um, I think this approach would makes prompt work easier to explain to your colleagues or your leaders. 
+
+02:06:34 
+Um, and we can show a specific problem, a specific change, and the evidence about its effect rather than rely on, um, like, which version sounds more, uh, like fancy or, uh, sophisticated. 
+
+02:06:52 
+Um, so I think this is an, um, example that I, um, discussed in a previous slides, is, uh, how to diagnose a, the bug of your, um, like AI assistant in the hotel context. Mm. 
+
+02:07:13 
+And for your further study, um, choose the resources that matches what you want to practice next. 
+
+02:07:20 
+Um, when I prepared the, um- slides，I use the Microsoft GenAI for Beginners。Um，I think it will be enough for you if you want to，uh，like，uh，interview for the，uh，product manager instead of the algorithm engineers。Um，as，um，the Microsoft material focus more on the understanding of the AI，um，techniques instead of the coding，uh，work。Um，and the Anthropic courses。Oh，and also，um，by the way，the Microsoft GenAI for Beginners have，um，different support different languages，so you can，uh，go through the Chinese materials or the English materials。Uh，and Anthropic courses include，uh，the prompting，uh，evaluation and tool use。And the Data well LLM，uh，just，uh，it offers a Chinese language route into，uh，RAG project，which I will elaborate in the next lecture。And the Hugging Face Agents course，um，can help you explore the system that use tools and manage several，um，steps。And I，uh，list all the，um，GitHub links here。Um，if you want to，um，go deeper in terms of the，um，uh，LLM techniques，uh，you can，uh，check this website and even，uh，start，uh，your，uh，group project with this，uh，materials。Uh，I think most of these materials，um，not only include the, the slides，but also the，uh，supporting codes，uh，and even the，um，API。So it's，um，a very comprehensive and，uh，user-friendly materials。Uh，I think that's the end of today's class。Uh，if you have any question we can discuss。 

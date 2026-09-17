@@ -1,0 +1,1137 @@
+
+00:01 
+Because the main goal I want to teach that is. Samuel data yourself. So this is cause might be totally. Different from your other courses there. The professor gives you the data set. 
+
+00:13 
+This is something I don't like. Okay. I like to use like open source data set like we done with the share. Okay, so from the time status I enter. 
+
+00:23 
+So we downloaded ourselves from the internet and we asked AI to demo data for ourselves. And with us AI to prepare and clean the data for ourselves. 
+
+00:32 
+So this is something I want you to get exposures from the first five lectures. Okay. And I do not believe, okay, you will get familiar with all those algorithms I'm going to teach in my lectures. 
+
+00:48 
+I really want to teach that. I think I can take it for two courses. 
+
+00:52 
+But for this five lectures there, my goal is just to let those most students who do have that much understanding, both a lot has damage programming backgrounds that they spack on in the past, you can still do something. 
+
+01:03 
+Okay, so you can. So if you are doing personal investment in filter in five years, in 10 years, then you know it is quite easy for you to use AI to do that. 
+
+01:12 
+So this is the main message I want to give. Okay. To those of you who were interested, okay, into the methodology, I was interested into the program and stuff. 
+
+01:23 
+I would suggest you to take further courses from my five lectures. You can only see a very small proportion for water big picture S. And for details there, I suggest you to take other courses. Okay. 
+
+01:36 
+I believe that because most students for this section are from the AID sections there for AI recession, I believe that there was a hyphen cost or something like that. 
+
+01:44 
+Okay, so, so you can also, you can still teach that course because there still does not be why, why if we do not understand any programming, we keep using Y coding, then is there anything wrong, then we might miss? 
+
+01:57 
+Okay, of course, something wrong. We'll just be using white hole in there. Okay. I I never say that it is always true. Even you use chativity, you will see a message there. 
+
+02:12 
+But you're using trajectory. You have message there. AI can be wrong. Okay, so this is always true. But I just want to say that. 
+
+02:21 
+95 of the students, 95 of the graduate, you will not become professional coders programmers in future. So it is better to land some white token because you forget everything in one year. 
+
+02:33 
+If you do not practice yourself. But this is something you might not forget. Because it's so easy to do. Okay, so that's the main purpose. I. So I teach now. 
+
+02:44 
+And of course, I have changed my teaching material, different style. Last year, from two years ago, from three years ago, because I, I saw, I do see the world is changing very, very fast. Okay. 
+
+02:58 
+So let's, let's talk about something called. That. Okay, so in natural one, so we, I try to show you how to build a data set. Okay. 
+
+03:07 
+How we use AI as AI to download a data set for, for us, download the macro variables. Okay. Download the market returns. Okay. The trading data set from Yahoo Finance from AK shares. 
+
+03:19 
+Mac aware goes from the US bank, from the, from the national database of China. Okay. So we can download all those micro data there. And the key part I want to mention last week, that is. 
+
+03:32 
+Try to avoid. That is we. Always remember example, the CDI for August was released this week. Okay. With this two days ago. For China. 0.8%. 
+
+03:48 
+So we, so please do not use a CVI of organs to critical stock return in September. We only know this from so for this week. So this is the case I want to tell you. Try to avoid the advice like this. 
+
+04:00 
+Because it history, even though we see the data, it's recorded for, I don't know, August 2020. Okay. But the data release, they might be later than that. 
+
+04:12 
+So it's those kind of cases that if you are not familiar, you ask AI and then you confirm what might be over here. Or we try some conservative approach. We will use the predictors. 
+
+04:26 
+We wait two months, we wait three months, and then we lose the predictors there. So you try to consult your coach. And last time I also try to show you. 
+
+04:34 
+How we construct momentum volatility or predictors from the Yangu Finance data without. 
+
+04:42 
+So if you really want to play with data analysis, if we want to big data analysis, then you usually have many, many predictors. And how to download mathematical predictors. 
+
+04:54 
+We do not have to discuss that. We construct it because ourselves. Okay, so that's why I mentioned we have done. 
+
+05:01 
+So I have a few slides to show you how we can start momentum, volatility and those trend predictors there. And one thing I want to show you that is because we're predicting stock returns. 
+
+05:11 
+The relationship is always weak, weak. Okay. You might not see anything from the cloud, but you can, if you see something very strong, that means you might have lower head bias. 
+
+05:23 
+If you see something very real, then you might have bug in your data. 
+
+05:28 
+So before you do it, any analysis, always drop the data to see if you don't know how to create a block in python in a plot for you. Okay. So that's one, that's the things we talk about in class one. 
+
+05:41 
+For class two. So today I'm going to talk about something else. Okay. I will try to, I would like to define what is return probability. 
+
+05:50 
+So even though those are students who are from the finance background, the slider, my astronaut student, I think half of them from MSF and from MSFE. Okay. 
+
+06:01 
+But as I expect most of them, actually awesome, they do have a lot of busy from the undergraduate studies because this is not the core project. 
+
+06:10 
+This is not the call type called key concept for landscape that they used to learn. Okay. Because most, most people will believe that returns are unpredictable. Okay. 
+
+06:23 
+This is something we call the efficient market hypothesis, okay, from Yuji Pharma of University of Chicago. I also graduated there, too. But that's the reality. 
+
+06:36 
+Economic models, they're about equilibrium. 
+
+06:39 
+So they say efficient market hypothesis, they always say that, okay, because the market can process information very, very quickly if the information is public and process this quickly, then all those signals, all those patterns, they can be digest in seconds, okay, or in minutes. 
+
+06:57 
+Okay. So in this case, there are any kind of liability patterns happen, the market will either pattern than the previous will disappear. This is true. This is very, very true. 
+
+07:08 
+So I also took pharma course when I was first year student. Okay. So actually, in one of the prize in 2013, when I was at second year student, we were also in discuss them. We take a photo with him. 
+
+07:22 
+So I will, I will always say that his theory is always true, but this is true in average in long one. Okay. If you look at the data for 50 years, okay, time after. In 1956, 58 something. 
+
+07:35 
+And, and then it stayed in Chicago for more than 70 years. Okay. So if you look at data from the past 60 years, 70 years for the US, they think, yes, this is very true. 
+
+07:44 
+However, if you look at data for every day, for every month, then you will see that the market is might be inefficient almost every day. That's the reason. 
+
+07:56 
+There are huge industry called active investment. Okay, so, so, so, so that is the case. It is possible to look for signals there, but the signal, they might only survive. 
+
+08:06 
+In a few days, in a few months. Okay. There are trends, there are Cycles. So those things that change a lot. 
+
+08:13 
+And as I mentioned, once a signal, a predictor has been discovered and then many Traders use that predictor and then the critical can be digestified of the market. 
+
+08:23 
+So this makes returnability a very interesting topic. So this is something change almost every month every year. So this is something. Allows a lot of researchers to spend their time on this. 
+
+08:38 
+And, and I'm one of those who visit your spending more than. Almost a decade on this topic. I graduated in 2017, almost, almost effective on. This. 
+
+08:50 
+And the other part I'm trying to talk about that is so Pharma was a lot of guy who grew more than statistic to embryo asset pricing. 
+
+08:59 
+So if we want to evaluate with the probability, then the goal I'm going to talk about is statistic 101. Good question. Okay. 
+
+09:07 
+I believe most of you have background in statistics and regression at least for one course from your undergraduate studies as long as you remember those, those things used with over five. Okay. 
+
+09:17 
+So this is one thing I try to emphasize for the day. And there are, there are some how to conduct forecast in my portfolio. I would, I would publish this in class five. 
+
+09:28 
+Okay, so, so the last lecture for this kind of returnability analysis. Yeah, that's the plan. Before I continue. Okay, so I want to. Call a few names. Okay. But attendance check if you like. 
+
+09:45 
+If you do not like, I will still do this. So. Let me see. Which face. I think. Okay. I do get a few emails, too. That school will be absent. I think I remember those names now, but. Okay. 
+
+10:26 
+Let me ask another one. As a lady. Han. Yes. Just tell me for one thing. If you enter this y, then you get back from a spot. What have you learned in class one? 
+
+10:47 
+Just tell the most important thing you learn from class one. Say it louder. Where to find the database. I. Thought I'll wrap that name many, many times. 
+
+11:29 
+Have your childhood download the data yourself after class. Okay. I already tell you the database name. Use AI to data from Yahoo file lens from AK share from Google Finance. Okay. 
+
+11:51 
+I'll give you one more spot. But answer in the question. Okay, so let me try another guy. Yes. So what, what, what, what is a lot of things like? 
+
+12:12 
+This. Are learned from. Your class. Room. S. Just. The one piece. In all the bottles are garbage. 
+
+12:19 
+This is the only thing you learn. 
+
+12:30 
+Just. Hopefully. Just through the. Wire. They can talk. To a bench. Or. Just graph some. Information. From the some certain website for you to use. Invest. Ed activities project. 
+
+12:52 
+Can you tap more? Thanks. Why? Why? So why do you think I said all models are garbage? Usually people will say all models are wrong, but some are useful. Okay. Thank you. Sure. 
+
+13:22 
+They talk. White. Tenants or. Use. Share. But. I have no idea how to choose them because they are different. Data source. And data. Or. Why. Tenant. Share two. Camp. 
+
+13:50 
+So I think I mentioned in the slide. Okay, so first of all, this is a very good question. I mentioned in a slide. 
+
+13:57 
+If you look at the US data set or the Hong Kong data set, then it is easier to use Yahoo balance and Google Finance. Okay. 
+
+14:05 
+You can download the training information of actually the price data and volume from Yahoo balance. And you can also tunnel some fundamental data. Okay. From Java lands. 
+
+14:17 
+So this is, there's some rubber dynamic information there from the AK shares. If you want to work on the Asia data, then the APG of this is way better than Yang Silas and Google PlayLabs. 
+
+14:28 
+If you, if you stay in mainland China, then you might do not have access to the overlands and global balance. Then HHA might be the very good source because it is, they also cover US stocks. 
+
+14:41 
+They also cut the Hong Kong stock too. However, I believe that they are coverage as long as good as Yang Balance and World Bank. So, so it depends on which Market you work on. 
+
+14:51 
+If you want to download. Chinese macroeconomic records that, of course, you can go to the trans government website. And if you want them to the US one, then you go to the bank. Okay. 
+
+15:04 
+So, so there are one student told me in the afternoon session, she tried to download data from SISMA. What I am one of the. Like data set, just. Like, like compute set of CSP. Okay. 
+
+15:21 
+From the academic side. So from epidemia, we usually use CSP to download the training data, use computer stack to download the financial web of data there. 
+
+15:30 
+So computer stack is provided by standard pool. So SMP. And this is two data set that we're similar to Bloomberg. 
+
+15:40 
+Roomba, they also provide some data too, but they provide wide data set for shorter coverage. So academic research, like for my papers there, we usually work on data for more than 50 years. 
+
+15:52 
+We won't look for patterns that really consist of four or five decades there. For the Chinese side, so wind is the one most close to Bloomberg. 
+
+16:03 
+Okay, so for, for commercial data set and, and SISMA, this is the one most close to CSP and computer set. Can I ask your name? Yeah, you add your. You answer one question last time. 
+
+16:20 
+I remember your name. Okay. That's all for today. Okay. Asking questions there. So as I mentioned. This might be the only way you get bonus point. Okay. Or Coco by me or ask questions. 
+
+16:47 
+This is quite important because in the past, I usually see most people that keep wasting their hand in class for T. Okay, so let's start the lecture. 
+
+16:59 
+So as I mentioned, for recoverability, there are several meanings or there are several ways to, to Define when returns are predictable. 
+
+17:09 
+But one way that we call conditional expectation or condition of mean. So if, if you have one predictor, you call, I don't know, like CBI. Okay. CBI for, for, for China. Okay. 
+
+17:21 
+And then we want to write down the conditional expectation for CSI 300. So CSR 20 consists of like 180 stocks from the exchange 180 largest trend and one fund the largest of certain exchange. 
+
+17:38 
+Okay, so food and sunbath really represent for the major index in, in Asia market there. So I assume we want to use CPI to predict CS Adventure for the next month. 
+
+17:51 
+Okay, so this is the conditional expectation. So we know for one thing that is if XP minus one has any, any signal to predict RG, then this conditional expectation will be different. 
+
+18:05 
+From the unconditional expectation. Okay. If you don't know what is unconditional expectation, then you need to go back to your statistic 101 course. 
+
+18:16 
+I'm generally spending just say, get rid of this time. 
+
+18:18 
+Okay, so if XT minus 1, say CTI as any, any signal to predict CSI 200, then we know that the conditional expectation is this one from the unconditional expectations. 
+
+18:33 
+Then for, for example, if the condition expectation follows linear model, for example, with question. Okay, then usually X minus 1. 
+
+18:44 
+So how X minus 1 of T, then we check the coefficient for X t minus 1. The slow coefficient. 
+
+18:52 
+So if you write down a simple regression RT equals to a plus B times X minus 1 plus the noise, then P that slow coefficient there, that represent the relationship or the signal strength of X t minus 1 on RT. 
+
+19:09 
+Okay. So this is the conditional mean. This is one way to define whatever. Actually, the first two ways, they are very similar. 
+
+19:17 
+Statistical weight that is because we understand when even though the wide range regression RT equal to a plus B times XT minus one plus the noise. Okay. 
+
+19:27 
+However, statistics, okay, probably many of you. Might do not like this concept, but I would say it this way. 
+
+19:35 
+So I, so I do not mind the working data because statistics is always about small data set. 
+
+19:42 
+We have a small data set or we have a finite sample data set and then we want to run something for the population. Okay, so that is the test step. So we observe a data set. 
+
+19:53 
+For example, abscess for this classroom, the ratio for female and male students is. About six to four. Okay. 60 Athena students here. So that's my vision for this sample. 
+
+20:08 
+And then if someone asks me what might be the female and male student, whether it's CPU, that's the population. Of course, I do not observe the population there. I can only guess. Okay. 
+
+20:18 
+Based on the sample I have, I guess the population weight ratio for females is also about 60%. Okay. But you can see that my guess that people said the slower percent population program. Okay. 
+
+20:32 
+If the sample from here is larger than I would have more confidence. If some of them here is smaller than I would have less confidence. 
+
+20:39 
+Okay, so this is usually from the sample to population statistics. It's try to learn something about the population from a small sample. Okay, so our goal. 
+
+20:51 
+So the goal from back to my toy example, we want to learn about in population, whether in CTU, the festival ratio is about 60% or not. Okay. But I do not see every student. 
+
+21:05 
+I see students from this classroom and then out from this classroom, 60, it seems correct, even though from this classroom IC61 or for 59, close to 60 percentage. 
+
+21:17 
+I will also say that statistically this number might be in different form 60% Okay. So in statistical terms, they're always uncertainty. Estimation errors there. 
+
+21:28 
+Okay, so, so, so this is why you see confidence in the p value. Those things you learn from the statistic 101 course because this sample is small. 
+
+21:38 
+A smaller sample, larger uncertainty, larger sample, smaller uncertainty. Okay. This is kind of like the same sweat. Okay. So for the return repeatability. So what is the population there? 
+
+21:51 
+The population is about all data. In the future. If you want to see CVI to predict stock returns. CBI to predict CSI to engine. Okay. In the Chinese market, the stock market, they started in 1990. 
+
+22:10 
+We only have data for 46 years. Okay. A short history. But if we want to see. So what is the population there, including data from filter. Okay. 2027, 2037, 2047. Okay. 2557. 
+
+22:26 
+So everything in the future. So we, when we do statistics inference there, we want to know whether inflation predict stock return. Then we are talking about in the population tax. 
+
+22:41 
+We want to know whether this is a true story. Whether inflation can predict stock returns there. But we learn from the history. The history is a sample for the past 46 years of data set. 
+
+22:53 
+We learn from history. Yeah. From the short history of 36 years, it seems that CSI has low relationship with the CSI threaten. Okay. If they have no different process agenda, it seems that. 
+
+23:07 
+Which might be statistical incidence or low relationships. Okay. Some conclusion we, we can make. But I just want to tell you that when we talk about statistical terms. 
+
+23:16 
+We emphasize on population parameter. So population inference that we want to know something about the future. 
+
+23:23 
+But when you estimate the models and the functions there, this is something about the past. There are two things there. Okay. In statistics, you may also hear about the term IID. Okay. 
+
+23:35 
+I call independently distributed. Okay, so that means that means if you believe that the past and the future, they will be follow identical function. They follow identical data generating process. 
+
+23:49 
+Then those things you learn from the past might make sense in the future. 
+
+23:53 
+Then you estimate from the past theta, you find out inflation can, can predict then, okay, then let's do it again in a field to do. In the future data there. So that's rely on one key assumption. 
+
+24:05 
+You believe. The history and the future, they follow same patterns. Okay, so this is a very, very strong belief. No one believes that. 
+
+24:15 
+So because we see for the Chinese stock market, they are, they have changed the rules, change the policies almost every few years. 
+
+24:23 
+Okay, so you, so we also see that the proportion for the, for the investor conversations there, for example, I don't know. So when. 
+
+24:33 
+So 10 years ago, 20 years ago, most people, they, they will say that the Chinese stock market, Asia, as I said this way, the Asia market was dominated by retail investors. Okay. However. 
+
+24:47 
+In recent 10 years, this pattern has changed. Okay. The proportion is the judge investors has surpassed a real investment. I think their institutions investors, they have account for about 70 now. 
+
+25:01 
+Okay. Because we thank you for the quantitative investment fund that they keep doing a lot of trades or kind of like institution investors. They support the ratio for retail investors. 
+
+25:16 
+So you can see that. Those investors for the Asian market, they have, they have also changed. So a lot of things have changed. This is the reason I imagine this. 
+
+25:26 
+Why do you believe those things you estimated in the past? Can be used in future? You might not be this. Okay, I don't believe this. 
+
+25:33 
+Okay, so that's why in addition to these two maintenance there, there's something called alpha sample. Strategy or out of sample definitive there. 
+
+25:43 
+So this is something I would mention at the end of this lecture. So that is we implement a strategy. And then we perform. 
+
+25:52 
+Some forecasts based on the strategy here, and then we evaluate, you say, hold out data set in the future step by step, step by step. 
+
+25:59 
+For example, I just tell you that there's a magic number if you use the average from the past five months. Okay. 
+
+26:08 
+The past five months will return there, which can be a good predictor or less member investment. This is something I call a strategy or I call a model. Okay. 
+
+26:20 
+M5 moving average of the past five months. Okay. And then try to predict next month. And then this is one model. And how to evaluate how could this model is? We do out of sample analysis. 
+
+26:32 
+And then we keep seeing future data set who how could this ma5 perform? Then evaluate how could this ma5 is. And of course, we can also compare this with like some other benchmark like MHO. Okay. 
+
+26:47 
+Or we can one-on-one regression, especially if you want to regressions there with regards to your IT on RT minus one, RT minus 12 and at the maximum up to at 12 there, you obtain those coefficient a, b, c, b1, b2, b2, betwixt334 to b12. 
+
+27:06 
+Okay. Those coefficients are estimated in sample. If you fix those parameters and then you use them for other samples. So how could this regression forecast this? 
+
+27:16 
+So those are called out of sample forecast. I will talk about them later. But there are two things we need to make sure. So when we talk about this like forecast, how to evaluate this forecasting. 
+
+27:30 
+The one thing is to. See exclusive. Okay. Whether the numbers match. Okay. Or we talk about those like mean square error or we try to see if we predict the stock market go up or go down. Okay. 
+
+27:43 
+So whether we can make the sign correct. Okay. For example. In the US market about 60% of the time. Of the month they go up. So even though you ask a monthly. Okay. 
+
+28:01 
+And then of course the monthly that's locked now all those like medical data set, those like, so I don't know the month. The monkey does not know all models there. 
+
+28:10 
+And what is the guess for the monkey? Every month? Okay. But you can see that even for a monkey performs such a live ease forecast. We can make 60% total. 
+
+28:24 
+But I just want to tell you for one thing that many economists. Their performance might be worse than 60% Because they are thinking more sophisticated way. And this is one thing I want to tell. 
+
+28:37 
+Okay, so we did some statistical criteria to define how good the forecast is. So up or down among kids saying that up 100% and this might be a good forecast. 
+
+28:49 
+But you can see this as a lie is focused there. If you pay your tuition to learn up 100% then you don't pay notification worth it. Okay. And the last thing I want to talk about is economic criteria. 
+
+29:04 
+So if you believe your forecast makes sense, okay, if you believe your forecast. Out. Beat the monkeys forecast there, how to make money on this. Okay, so this is one thing we should also learn. 
+
+29:19 
+So this is this statistical criterion mean square error heating wave. And the last one is the economic criterion. We want to see some investment performance. 
+
+29:30 
+Based on the forecast of your market return. So how do you rebalance your portfolio? 
+
+29:36 
+Okay, for example, if you forecast like US stocks, Asia stock, Hong Kong stocks, okay, for the next month and then you just bet one of them, okay, if which one you will bet on. 
+
+29:46 
+And then based on the performance, assume you would balance your portfolio every month. So once you accumulate one year, two year, three years. So what's the performance there? 
+
+29:56 
+So that's something might be more interesting. To investors. Okay. If you tell them means forever, if you try to fit them way, then they don't think, okay, those are statistical terms. 
+
+30:08 
+Can you translate those come into dollars? And the dollar said that you talk about shock ratio. You need to talk about drawdown. Okay. Those kind of things. 
+
+30:16 
+So this is also something I think I will mention most of them in class five. Okay, today's lecture I'll talk about the first four. Okay, so Jim Simons, okay, this is Legend. 
+
+30:30 
+Okay, so if you search his name, it's the founder for Reason Technology. Okay, when he pushing, okay, so this guy is a mathematician. So he used to be. 
+
+30:40 
+A heavy professor in Stony Group, okay, in United States. He left academia at this time to build Haxbank. 
+
+30:49 
+But in the time he realized for one thing, because he's from the left side, okay, he's looking farma from the finance side. He will ask for one thing. He does lovely. 
+
+30:59 
+Economies of financial economies. So he only hire mathematician physics computer scientists. Okay. But I believe this is true. This is very true. 
+
+31:08 
+From time to time because if you ask economists, if you ask a financial economist, they will tell you the market is efficient. So this is the answer I see. For most of my friends there. Okay. 
+
+31:22 
+And for most of my balance front, if you ask them what kind of stocks you're buying, they will tell you the market index. If you ask. My statistical friends, okay, actually many of my. 
+
+31:38 
+Rich friends, they are from the statistics side, they will tell you, okay, what kind of like small cap stock they are looking for? Now. So I think different philosophy. 
+
+31:47 
+So of course I also have like many statistrand, they take stock and then they get rolled. So that's some survival way there too. But one thing I want to mention here that is this is a little weight. 
+
+32:00 
+And I did explain because in Afghan some students asked me because they are from the financial engineering program. 
+
+32:06 
+So they asked me whether these kind of things also belong to financial engineering. I would say no because. Past students asked me whether I studied bioengineering. 
+
+32:16 
+I always say no because I don't know much about options and don't know much about the virtues. Okay, I took a few courses when I was an undergraduate student and then I never used that. 
+
+32:26 
+My interest more on the. So I would say I would like, don't I say that financial engineering or financial math, okay, they try to build on the absolute pricing. 
+
+32:36 
+For example, if you want to sell a derivative product, if you want to sell an open contract, then what might be. The fair price for that contract. So you need to calculate for that. 
+
+32:47 
+And then however. For my research here, you can see I do not focus on the price. I focus on the change of the price. 
+
+32:56 
+Because for my research, I always say that the price can change and that we want to see if we see option, okay, for corporate bonds, we want to see. 
+
+33:06 
+What might be the optimal return, how to predict returning step. So you can see that that's a different focus. This is a relative pricing. I do not care about the absolute prices there. Okay. 
+
+33:16 
+Of course, I have many colleagues who work on those field. I just find those things not as interesting as this case. 
+
+33:25 
+In the headspan, you will see the traditional quantum, most of them, they are kucoin because the field they represent for the probability measure to change to the measure. 
+
+33:35 
+Okay, so they are work for the financial engineering side, from pharyngo math side. In recent. 10 years or 15 years, there are many new positions they call P1 for predictive funds. Okay. 
+
+33:48 
+So I think I would prefer the second one and then I usually call this like financial machine learning or financial statistics. Okay, so I'm more on the statistics side. 
+
+33:57 
+I understand that all these steps, they are far away from math. So I would not call them financial banks. Okay, so this is my understanding. But I do have concerns for this field. 
+
+34:09 
+I do have very serious concerns for this. Field. I have, so I do have like every year I have one or two PhD students who graduated and one go to academia, one to have fun in Hong Kong. 
+
+34:21 
+Yes, they have made some good money for the past two years. But I talked to them regularly because they are in Hong Kong, they come back to have, you know, recently from time to time. 
+
+34:33 
+I would just say for one thing. If you ask me what AI have replaced. Con is. The position here. I can easily get replaced. 
+
+34:43 
+So even though you are doing option pricing, you will be pricing, you are doing predictive modeling. Those things behind the computer do not need to talk to your client. 
+
+34:53 
+This is something that can be easy to place battery. And my past student, they also share the same concept with me. Because for this past few years, the financial market worked quite well. 
+
+35:05 
+So they still have their job security now. But if there are some financial crisis in two years, then they will get on. This is their concern and this is my concern for them now. 
+
+35:17 
+Because I don't know. So for my research too, I don't expect them about you. So for my research, so you might also see the news that AI cracked down some math fancy math problems. Okay. Most people, they cannot solve that case almost every week. Okay. So to those research area, who do not have experiments like
+
+35:42 
+I have serious concerns that. I don't know what to do in the last five years because AI can use the fibrillation issue. 
+
+35:48 
+For me, I'm fine because I'm tannual now, but my students who would go to academia, I don't know what they can do. So this is the will concept. Even though going to academia, also you have fun. 
+
+36:03 
+I'm quite concerned for their future now. But if you ask me, what if you don't know? They are young, they can say think about something else. Okay. But this is the case I want to share with you. 
+
+36:14 
+That's why I want to push you to those AI as much as possible. But I also find myself when I have been losing. Code days and car code since early this year. I feel myself. Summer. Okay. 
+
+36:30 
+Much dumber than half year ago. So like having meetings with students, the first thing I would think about as ChatGPT, what might be the suggestion. That makes me way dumber now. 
+
+36:45 
+And I think this is a very bad thing. Okay, this is for me, I'm okay because I'm now. But for my students, for my PhD students, we are ready to establish themselves. Okay. 
+
+36:57 
+But for the past for the future five, ten years and then they keep using code like OJ. Please does not work. 
+
+37:03 
+Okay, so I don't know what might be solutions there because if they don't use, then other people will use. Then other people will publish a paper stand. Okay. So I don't know what's the solution. 
+
+37:15 
+But to most of you, because you do not use AI as much as we do. I highly suggest you to use as much as you can until you find the point that your friend looks out. Then you stop. 
+
+37:28 
+So having suggestion. Okay, so come back to the equation. So to those of you who forget everything for regression, this is a slide for you. Okay. 
+
+37:42 
+So as I mentioned, the conditional relationship, if we assume the model is linear, then alpha plus beta X1. Okay, then beta is something you see here. 
+
+37:53 
+If beta is non zero, then we believe that a predictor might be useful. Okay, but inflation might not be the only predictor. There have been many, many predictors there, but might be useful. 
+
+38:05 
+If Vena is non zero. So the whole thing, we introduce the test text into this problem. Or we translate this problem into statistical terms. That is, we use a statistical inference case. 
+
+38:18 
+If beta length zero, then we collect victory. We find out some useful predictor. But this victory is not a causal relationship. 
+
+38:28 
+We still cannot say, okay, if the price level increase, then the stock return will act that the stock market might react in the last month. We cannot build any cultural relationship for that. 
+
+38:40 
+There's something I cannot feel. 
+
+38:41 
+Okay, I can only, of course, this Friday I think US will release the CPI number and next Monday or Tuesday that we have the FOMC meeting whether they raise the sun rate. Okay. So. We don't know. 
+
+38:57 
+Okay, so we don't know about this. So, but statistic, we do not claim any causal relationship. There's no explanation here. There's only association here. Related associated. 
+
+39:12 
+So this is those like defensive. We cannot say explain. I think you learn this form of statistical course. Okay. So to those of you who have used codecs, okay, so this is something I would do. 
+
+39:26 
+And so, so that's kind of. Which stock you guys like. I don't know. Okay. Okay. Yeah. Apple stop. So the one crazy expensive from the. Past. Time here. Okay. From Yahoo Files. Calculate. 
+
+40:03 
+The monthly return. S. And then we try to use something to predict. What might be the things we can use pretty appropriate. Time. Probably the past returns for Apple. Okay. 
+
+40:19 
+So let's one big question. One simple regression. The regressor. Is. The pass return. At T minus 1. Display, the regression table. 
+
+40:49 
+So some students asked me in the afternoon session, I should show more poem in the cars. Okay. Then you know how to do it. So you can see it now. I would try to share the pump history with you guys. 
+
+41:02 
+Okay. It is not that you have to share them, but you need to have the account open history. Yeah. So this is my VPN 1.5. Okay. They are downloading data. They calculate a pretend they are. 
+
+41:20 
+They want the request. So you can see the pomix symbol. Okay, so you can see this promise very simple. 
+
+41:26 
+If you want to change your app, your sort of store, you change your sample period, you can change everything you want. Okay, this is distance a lot harder. 
+
+41:38 
+But you need to install Python or art in your computer first. So I think I have one slide for you for this plus in class one. You need to have. 
+
+41:49 
+Your pattern and so then you can instruct your AI to do the job for you. So you can see, I simply just ask them to download data. And one of the question. And display a regression table. 
+
+42:04 
+So you need to have some knowledge. For one minute regression. There is a reflection table. So you need to know those kind of things. So this is from your other courses. 
+
+42:14 
+So for my course, I do not teach you that many things there, but you'll see what I'm doing. Okay. So I also want to say that it will use tobao that also spawn similar things. 
+
+42:40 
+Yeah, you can also type. English and talk about. Slower than productivity. I think both are small now. COVID, this is due to my weekend. Yeah. So usually if you use this kind of like. 
+
+42:57 
+Close AI systems there, the bottleneck is not valued at all. The bottleneck is about the VPN. Can feel better. I don't want to change, especially when I use cloud. 
+
+43:15 
+I don't want to change my Ruby yet. Otherwise. They might kill my account. So I only use cloud when I say FM at home. I believe that the internet is more stable here. 
+
+43:28 
+To those of you who do not read Chinese. Okay, I just tell you that nothing wrong here stumbled in a table. They're similar because it's the same form in two AI. Okay. 
+
+43:39 
+And then we compare those results from two AI here. 
+
+43:48 
+I. Have a question. Let's say you have a good model which gives the hospital future positive signals for the future. So actually when you do the actual investment, how much you bet each time? 
+
+44:03 
+Any suggestions? 
+
+44:08 
+But often it's a very good question. If for me now, I will ask you to write out this question for AI, but for myself, because it depends on your belief on the model. 
+
+44:27 
+My belief to many models, they are very weak. Because one thing you can see that they use 20 years of data to estimate the model. Or 10 year, five year. 
+
+44:38 
+And you understand that those companies, they change quarterly to quarter. Ly. So it is really hard to use historical data to back out something for future. And the model should also change too. 
+
+44:52 
+I learned the same from the CARI criteria. Is that what? 
+
+44:57 
+Yeah, that one is for sports betting. It is okay, but. It is medical. Many criteria models that they are a lot better. Okay, this is only I can tell you. 
+
+45:10 
+And I will try to show you how to do back testing to evaluate whether that criteria work or not. So for our class, we do back testing. 
+
+45:18 
+Probably the criterion might work for some market for some period. But I believe that they do not work everywhere. Okay, may I ask your name? Yeah, this is a very good question there. 
+
+45:33 
+So I highly encourage everyone to think about, especially if you want to do investment yourself or you want to track investment for others and use the thing about something for that. 
+
+45:44 
+Okay, so this is the data set from. FGBT. This is. Can you see this? A little bit. Yeah. So you can see how they calculate over time, how they want to regression for t minus 1, okay. 
+
+46:12 
+For this queries of 10 by 206 to 2026. Okay. And then. So that's the reflection table. This is the intercept. The intercept is highly significant on O21. So 2.1% a month. You can think about it. 
+
+46:32 
+Number 2.1% a month for a year, that's 45% But 20 years, you think about the numbers. Okay. The coefficient of beta for RT minus 1 is. Marginally significant. Okay. P value 0.08. 
+
+46:49 
+So log 0.05 level and between 0.05 and 0.1. So if you still remember some statistic concepts from statistic 101, we should look for 1.96, which is not 4.05. But this is marginally different. Okay. 
+
+47:05 
+The r squared is small about 1%. Okay, so this is the case we see for Apple. For monthly return prediction. Lastly, the lumber farm talk about. 0.0216.01114. 0217 on 011124. 
+
+47:24 
+So very similar, I would say for this one now. Okay. The numbers are very similar. I want to understand why the numbers are different. Okay, so what should I do? The numbers. I see from Douba. 
+
+47:42 
+O are different. They've prepared a palm file. And summarize what we have done. To talk about. Find out a reason. Yeah, this is how AI make people done. Okay, but you can see that. Now. 
+
+48:05 
+If you don't understand something. Ask a question. Then forward question. Two. Can you still bounce the question table? And. Skip? Or I can copy paste this. To talk about a magnetic activity. 
+
+48:28 
+You can invite them into a chat room. 
+
+48:31 
+Actually, I don't know how to do it. So I think this is one thing, but I can, but I don't want to waste too much time here now. I just want to tell you that my guess that is. 
+
+48:45 
+Because this is the Apple return and Apple they take it with the from time to time. From this formula, you can see that they have lot included dividend. Okay. 
+
+48:57 
+From Doubao, I'm not sure they have the formula here. They don't have the formula here. So my guess that is this one might include dividend or something. Okay. 
+
+49:09 
+Because for Apple, this is a value stock. It pays dividend about one to two percent almost every year. So this is something about 1% every year. So this is something you should consider. 
+
+49:22 
+Lucky year public here. So this is my guess that this is the place they can't believe. But even for this part. But even for this half. The numbers are very close. Okay. The number are very close. 
+
+49:40 
+So I believe that there's one thing you do not need to worry about. The data you use AI to download. They must be will. Okay. Yeah. So I believe that right now we have more advanced AI now. 
+
+49:55 
+Six GPT-6. Okay. Actually, my profile is not Tranjang was. I don't know what is. Because I haven't paid for the money for. 
+
+50:09 
+So I used to pay 200 yuan for the past few months when they started a subscription. But then I realized that about does not provide involves ChatGPT provided. Inwards every month. 
+
+50:20 
+Then I can get reimbursement from the university. They have no invoice from Total. I only have the screenshot from my Alipay. So I cannot get in bus. 
+
+50:30 
+And then my wife submitted me to subscribe to that. But anyway, but that's my guess. Okay, so you can do this yourself. So you can see the promise very simple. You want to do any analysis. 
+
+50:46 
+You can write on targets. Okay. So this is my thing I want to tell you. Okay, you can do this yourself. All predictors and then do this. So in a slide, I do have the data set for you. 
+
+51:02 
+I call market feature. I think that's the S&P 500 for SPY, the ETF SM5. I do have a couple of the criticals there. I think that's the momentum, that's the volatility, that's the MA gap. 
+
+51:17 
+Okay, so that's the predictors there. So you already see this from my ChatGPT case. Okay, how we calculate the return without dividend. 
+
+51:28 
+Okay, so this is also something I also want to emphasize from time to time. Okay, if. I would want to say that for me, if you know how to spread out the dividend for each month, then that's good. 
+
+51:46 
+If you don't know how to do it, then you kind of do it. Okay. Or you can ask AI how to do a dividend step for most financial engineering exercises, they always don't do that. 
+
+51:56 
+But now for many value stocks, okay, high dividend stock, people, they do longer for good times. They just use a lot for the dividends there. Okay, so this is also a lot of thing. 
+
+52:08 
+For example, I don't know. For example, H2SP 3C. So this is one of. The largest weight stock in Hansa index. 
+
+52:20 
+Okay, so most investors, local investors in Hong Kong, I think they mainly look for the dividend from HTTPC because they believe very stable dividend in the past. Two or three days. There. 
+
+52:32 
+For example, a few days ago, there's some other stuff called. Zongborient. 
+
+52:39 
+So once they have their earning announcement, they say that they are not going to pay the first half, the first half year dividend. Okay, I think two weeks ago. 
+
+52:52 
+Then I see the stock price dropped by 8%, even way more than dividend. They're willing to pay. So you'll see that there are some stocks investors, they are really looking for dividends there. 
+
+53:06 
+If you don't give them the incentivity. So, but if you calculate returning this way, then what kind of iglooing those stocks? 
+
+53:17 
+So there's actually a better way to move the dividend for each month there. So you can check AI how to do this yourself. Okay. And this is the predictor we introduce in class one. 
+
+53:28 
+I think it's a pretty first there. And for the slide, so you can see that every time we do it something just like the plot we see. You block the data a little bit. 
+
+53:41 
+So this is we can come to and we can time t minus one for apple from the data, you see some positive relationship. Okay, it seems that the return time t minus one can predict return voltage. 
+
+53:53 
+It seems that there are some momentum impactful at home. Okay, so this is the rock we see from Apple. However, from the block, you can see for my slide. Okay, we try to use. 
+
+54:06 
+The lab momentum, okay, I think the lack of momentum that's cumulative return from time to minus two to 20 minus 12. Okay, so this is the past year preference there, but past month, okay, past year. 
+
+54:21 
+And then we plot the scatter plot for the US, for the Hang Seng index for the Asia market. If you don't check my knife of this one, then if you just check for the scatter block, to be honest. 
+
+54:38 
+No patterns, low pattern, low pattern. Even though for this block here, if you don't see my web line, I don't believe that it was the end pattern. Test. Okay. So I added some reference now for you. 
+
+54:51 
+Okay, the reference line, they work. So what do we see? The reference, like they kind of like not going up or not going down. Kind of like flat. I will tell you how I can start reference later. 
+
+55:06 
+But what does this tell us? This tells us that. This predictor might have zero beta. Okay, no relationship. Okay, infrastructure has low risk. We do not see anything from there. 
+
+55:20 
+The reference line might be flat. But from this block here. Slightly positive. This predictor, the past month will return might have something. 
+
+55:31 
+So might have to something that we might be able to form a strategy. Based on this guy. Okay, so this tells you something for that. And so for this block, how do I construct this? 
+
+55:45 
+So one thing you can easily understand, we are looking for return data now. We can beta variable Asian, the noise are huge. Okay. 
+
+55:56 
+The noise are always huge, even though you have a very strong predictor, you know that the stock market will go up eventually. But the path for price must look like this. 
+
+56:08 
+Okay, so we talk about agent can be huge. They can get you both most of the time. Okay. So this is written data there. But how to deal with this kind of data? 
+
+56:19 
+How to create such a reference line to see the pattern from the data. So one way finance researchers, they usually do is to cut the data into different beam. Okay. 
+
+56:33 
+Current data into different groups there. So for example, based on the particular. Based on the predictor, they group the data into 10 groups. Okay. The lowest momentum. 
+
+56:46 
+And the highest momentum that they put the data into 10 groups there. Because we have the data for 240 months. Okay, so each group you have like 24 observations there. 
+
+56:58 
+We could be the independent groups and then for each group you calculate the predictor, the x bar. And for each group to calculate the corresponding r bar. Okay, so you see the dot here. 
+
+57:11 
+This is the x bar for the first group and a bar for the first group. Expa for second group, for second group, x bar for. The largest momentum group and a bar for the largest formula group. 
+
+57:24 
+So this is the other, this is the x bar. Okay. So we can plot them into the way. Why they do it in this way? Because the case is about this guy. This guy is very, very noisy. This guy is very, very. 
+
+57:40 
+Noisy there and how to smooth the noise. Take the average. Okay. Because sometimes if you happen to know. 
+
+57:49 
+From your statistic 101 course, there's something called central numbers there, then you will understand for with time data, it kind of look like normal distribution. 
+
+58:04 
+Once you take average, then my converge to the mean and it might converge to the normal distribution there. So that's why finance people, they love to use. Written, they not use average. 
+
+58:17 
+They love to use regression models because you kind of have something related to the statistic foundation. Central legal theory. Okay. 
+
+58:27 
+So this is the temporary code to show you how we create tan beans there, okay, for 10 groups. Okay. Then yeah, that's then we look at the second thing. So those are the things. 
+
+58:42 
+Those are one thing about the statistic 101 course. Of course, we look at the car inflation, okay, coordination is also a second concept to look at. 
+
+58:53 
+But you can see the next month SPY return and the predictors there, the correlation is kind of. Small. 0.02, 0.12, 0.05. You can kind of say that they are almost uncorrelated. 
+
+59:09 
+Can anyone tell me that. The correlation. Here. So how to connect the correlation here with the simple regression we see from here. So which parameter for the simple regression? 
+
+59:24 
+Correspond to the correlations. Next please. Hello? Not the beta. Good attempt about others. Any other. 
+
+59:42 
+Cats? X t minus 1. Yes, data momentum. 
+
+59:53 
+So when we talk about parameters there, we usually talk about alpha beta. And of course there are something called us. No, this is not a quick guess. The answer is ask for. Okay, you can take off. 
+
+01:00:12 
+This is only true for simple reflection. If you still remember from your statistic 101 when I was. Fractured my student, this is the exercise I took in the class. 
+
+01:00:23 
+So you can easily guess that the correlation is so small. So simple regression r squared is also as small as this. Scale. So the. 
+
+01:00:36 
+Set because as we mentioned, if the correlation is huge, then the predictor will be killed. Okay. Because meditators look for this opportunity there then. And we're going to trim on this. 
+
+01:00:49 
+Then the signal gets. But it's for the correlation or the signal is kind of small. It might not surpass the transaction cost. Okay. For some of us, we tell investors there. 
+
+01:01:04 
+Your trade, there's a lot of change the market. But for institutional investors, they are trade. That's move the market. Okay. 
+
+01:01:11 
+So the numbers here, they might be statistically economically not be zero. Okay. So but one thing I want to point out, okay, from this slide. There are two things. Actually. 
+
+01:01:25 
+The one thing that the first thing is when you have a predictor, when you want to compare your predictors there, you need to pay attention to the scale of the predictors. 
+
+01:01:35 
+The scale of predictor is quite important. For example CEI. That's in percentage. And employment way. That's it. Also in percentage. Okay. PMI, that's a totally different numbers. Okay. 
+
+01:01:50 
+51, 49 something. Okay. So the scale makes sense there. So if you talk about predictive, so when you talk about predictors certificates, sometimes you might want. 
+
+01:02:04 
+To mention the t statistic for the beta. The key statistic which is scale free. Okay. But beta itself is large scale free. So this is one thing. 
+
+01:02:16 
+A second thing I want, I want to say this also makes the study here very different from order studies you see for medical statistics from biostatistics from engineering statistics that is. 
+
+01:02:30 
+In the history of financial market. There are many outliers. For example COVID. For example financial crisis. Okay. For example, I don't know liberty day from. Okay. 
+
+01:02:42 
+So there are many, many outliers. There. But we do not drop our layers. We level top allies there. So that's the purpose. For asset pricing sites. 
+
+01:02:53 
+We want to understand because there are not many financial crisis there. You need to keep all the financial crisis to learn what kind of things we can predict the less financial crisis. 
+
+01:03:05 
+So we keep all data set we have. We might understand that there are some data points more than three standard deviation outlier, but we still keep them. 
+
+01:03:16 
+Okay, so this is something different from other statistical topics there from engineering, for medical. If they want experiment on the mice number one, number two, number three, to number 500. 
+
+01:03:28 
+Okay, they don't care to drop any mice. There. But for hours, we are not running an experiment. We are stacking the data from the real world. Okay. And the data, they will not change. 
+
+01:03:41 
+So that's the case. Okay. So. We develop, we do not do this kind of like removing our live data set. This is one even though we'll see crazy results there. But the job for us is to explain this. 
+
+01:04:00 
+Not to talk. Okay. So this is another slide for simple regression. So I believe that you all remember the question 101. 
+
+01:04:10 
+We use ordinary least square method to minimize this kind of like quadratic system of error to find out the programming the a and b. Okay. 
+
+01:04:19 
+And then the conditional expectation, the forecast that I had, alpha head plus beta hat. So that's the conditional forecast. The epsilon hat is this guy. As the realizable can subtract the eye. 
+
+01:04:34 
+But one thing I want to show you that is. Construct. A new clock. So the question forecast reflection. Forecast. And actual actual return. In scale. So before we see the problem. 
+
+01:05:04 
+So any guess what problem? 30 seconds, I guess. So my guess is simple. The actual returns vary volatile. Okay, bum, bum, bum, bum, bum. The forecast is very stable. 
+
+01:05:27 
+The reason I know about this is because. The coefficient is extremely small. Okay, it's really small. This 0.111 something comes with. Antimatter one is way smaller than this guy. 
+
+01:05:44 
+So this is another way to show you. Single use AI. To create a graph. Okay. Simple to use adequate crops there. Okay, so smoke. I change. Model for this. 
+
+01:06:01 
+But yeah, for our jobs there, you do not be advanced models. I think I can simply change one. I will just burn it. Enough. Yeah, so you also you can see the block. 
+
+01:06:17 
+The block that is the actual return is here. So the actual return is here. So you can see that actual returns from latitude 30% to positive 10% Okay. The range is huge. Okay. 
+
+01:06:34 
+But the forecast will come as clear. About 1%, about point something. Okay. So you can see that. The forecast does not change enough. But actual return change a lot. So what do we learn from this? 
+
+01:06:59 
+It is almost impossible. To. Predict we return perfectly. Okay. So when this field like the first to positive time and your forecast 1. Something. Yeah. So this is 4 g is. 
+
+01:07:17 
+Like if I want to, if someone. Tell me about the way for this class, okay, I think most students weight might be from. 100 to 200 pounds or something like this. So this is a huge range. Okay. 
+
+01:07:32 
+If I get someone's way, 200 pound, just guess my longest medicine. My little bit any sense there because this is going to y. But for this case here, this forecast is two level. 
+
+01:07:45 
+Focus is two level here that makes the forecast. If you keep others ask you to predict stuff we can, you always say 0.5%, 100%, 100% every month, 0.5% Then people will think you are so crazy. 
+
+01:08:00 
+But this is the reality from the question table we have here. Okay, so this is the reason I will want to say most models are wrong because they do not really capture the realized data. 
+
+01:08:15 
+And it is almost impossible to capture the realized data there. But some models can be useful. Okay. Let's see. 
+
+01:08:25 
+Okay, so if you want to cut analysis there, then there are a few things we need to know. Okay. For the slope, if you understand your predictor, it's momentum. 
+
+01:08:39 
+Then you are not only looking for a landscale beta. You are looking for a positive data. So the coefficient sine should be consistent with your expectation. Because we call that momentum. 
+
+01:08:54 
+You do not call that reversal. So if for example volatility. If volatility is high, then the beta should be positive. Why we think the beta is positive because most of us will believe that. 
+
+01:09:11 
+Higher risk, higher return. Okay, we do not believe that higher risk lower returns there, then no one will buy the stock. Okay, so that's the case. We need to clear the key of our sun. 
+
+01:09:23 
+And you also need to know about uncertainty. The sample you estimate, they can only tell something for that sample. If the sample size is large, you have more confidence symbols are small. 
+
+01:09:34 
+You have smaller competence. There. The model fitness, which is the model fitness that is. 
+
+01:09:41 
+R squared because you try to use one predictor through approximate the time series valuation for the realized return. So can you block this into the tensors? Plot? Why and why have. 
+
+01:09:58 
+In terms of crop? So I should say return of r and r hat. E. The r hat is a forecast when time series. 
+
+01:10:11 
+So usually when we want about this particular question, we want to use the predicted capture that time series very Asian for realized we can stay. 
+
+01:10:21 
+And then from the times 12, you can see that just like this one here. They do not capture any value agent for that. Or the r squared can be extremely small, just like 1% This is true in reality. 
+
+01:10:36 
+Okay, so if we plot the numbers, okay, like rt, alpha plus beta momentum. So this is the number. If we use the first 15 years of the data, so 181. So this might be the number. We can estimate. Okay. 
+
+01:10:52 
+And you plug in the number. So this is the fake numbers there. So let me ask because otherwise you will not see on a or point six. Okay. Perfect numbers here. The figure is here. So the blue line. 
+
+01:11:05 
+Okay. Let me change this to. The proline is the actual return. The r is. The forecast return. Okay. So you can still do. So from this speaker, you understand that. It captures nothing. 
+
+01:11:30 
+Compared to the real life movements there. That's why we say r square 1% That's the, that's the reality. That's your forecast. Okay. 
+
+01:11:41 
+And if we plug in the number, okay, so I believe that from those who have the percussion backgrounds there, do not do understand that how we calculate a hat and we say that this concept times on one with momentum bias is left on one. 
+
+01:11:57 
+So this is the change. By the basis there. So the forehead should be point a plus 0.6 times 0.10 times like 11. Okay, so this is number. All of you can calculate this. 
+
+01:12:12 
+And this is the regression table. Okay, so this is the beta. Estimate. This is the standard error for beta hat. This is statistic for the t has. 
+
+01:12:25 
+So I believe you remember that the 0.31 equals to constants divided by 2 by 1. 
+
+01:12:30 
+Okay, so you get 0.41 because 0.31 lower than 1.96 or so we know that in the left hand from 0 and p value 0.76 higher than 0.05, we cannot with just no hypothesis that the beta is 0. 
+
+01:12:48 
+We do not have any statistical evidence to support that. Data is line 0. We can also say momentum is a useful predictor for spark in this sample. Okay, so that's the case. 
+
+01:13:03 
+I will have a break in fineness. Okay, let me finish. Two more slides. This is a better for me. Okay. So as I explained, the r square, this is the standard r squared for 1 minute overgradient. 
+
+01:13:16 
+Okay, you might still remember this. Epsilon head is actually subtract r hat. So in the nominator, so that's the model fitness. 
+
+01:13:27 
+For how to use your limb layer projection ahead to approximate ri to rt. So this x1 t hat in the denominator that is because in the nominator, that's the conditional mean. In the denominator. 
+
+01:13:45 
+This is the unconditional meaning. Okay. And what is the unification of mean? So, and you also add a. Knife. Reference 9 for the unconditional mean. Okay. 
+
+01:14:06 
+So this r square is simply just compare if we want to see the model fitness with the conditional mean versus the unconditional mean. Where the condition is better. 
+
+01:14:17 
+You can see from those statistics 101 course, the condition mean is always better for in sample analysis. Because it has something into the data. So if we add one more nine, it is not show up yet. 
+
+01:14:31 
+Okay, but this is the concept for us. 
+
+01:14:35 
+But you can see that for 0.1%, it means that the conditional mean is only better than the unconditional 0.1% Then this comes back to our first concept I talk about for return capability. 
+
+01:14:49 
+Condition on me. Conditioning versus midday. Okay. So. Simple regression. Not finished yet? Okay. The query dash 9 shows the where is the quadrational? And you change the color. To green? 
+
+01:15:22 
+That night. I cannot see this here. Where is the grid dash line? But okay, this is one table. So you can see that we compare simple regression. 
+
+01:15:33 
+We change the predictor step momentum volatility and a gap. For the first one and for the last one, the number kind of small. But for the second one, the r squared is half. The r squared is 1.5. 
+
+01:15:49 
+The r square is high. Okay, so this is something we see here. It seems that the volatility seems like a predictor for spy. Okay, what is it? Similarly, and the coefficient is 8.5. So as I mentioned. 
+
+01:16:05 
+If you talk about volatility, then this means the higher risk because volatility, they usually have life consistency. Okay. Persistency means that it's politically for yesterday is high. 
+
+01:16:16 
+Then what is it for today might be high too. Okay, so 8.5 higher weights than higher return. So this positive beta extends here. The p-value 0.11 close to the pens. 
+
+01:16:30 
+I would say marginal significance. Okay. But this some tells you something out of this. We predicted the tells you something. Let's look at this problem. Okay, then you see the. 
+
+01:16:42 
+Green line is the unconditional mean. Okay. That's a constant. That's the horizontal line. This knife is your conditional mean. This is the actual data set. 
+
+01:16:52 
+So if you use r squared as the metric to evaluate how good the regression forecast is. Then I can tell you now it beats the unconditional impact upon 1% For this case. Okay. For this case. There. 
+
+01:17:09 
+For this case, probably 1% Okay. So. The last thing for regarding analysis. Usually with seals, they will think about this noise for standard. We work for standard regression courses. 
+
+01:17:29 
+But for our case, this can be signals. Residuals can be signals. You put that on the table. Okay. Because from standard regression causes, they always tell you that residual might follow. 
+
+01:17:45 
+IIP normal distribution. Okay. Independent ident quality distributed. Okay. But from this block here, by the way, I have updated a slide on the slide previously the time frame is wrong. 
+
+01:17:58 
+I have to do that. So from volatility, you will see that during 2008 and 2009, the volatility is huge. So there are some data point. 
+
+01:18:08 
+Some research or lack of 80% During COVID, there are some residuals, like 14% Or some residuals above 11% here. So volatility is huge. Volatility is huge. Kind of like peaceful in the middle here. 
+
+01:18:24 
+So one time you can see that. Residual, they do long follow identical distribution. The variance is high. The variance is high. The variance is small. So this breaks down for one thing. 
+
+01:18:37 
+The second thing that is okay, if you pull up residuals and predict model returns there, there might be also some patterns too. Okay. 
+
+01:18:46 
+Some patterns too because the patterns, they are not linear because the one thing we see that is volatility has a positive relationship with return. But what is volatility? 
+
+01:18:57 
+The variation is volatility. Okay, so there are no linear relation to recognize that. But there are some things related to the second moment for residuals. And we can focus. Okay. 
+
+01:19:13 
+Let's ask this question. Then we'll take a break. I want to take you with question has the highest example R squared. Okay, as we see 1.5% something. Okay. 
+
+01:19:24 
+And do my tell a story that higher waves, higher return. Or I say plausible economic style because we do not identify any cultural relationship. 
+
+01:19:36 
+Which essence most directly support using this model for real time market return prediction. In sample coefficient is positive. Because B, the residual, they sum up about zero in the sample. 
+
+01:19:52 
+C, it can be used to deliver out of sample R squared. This is something I'll talk about in the second half of the lecture. Compared to some benchmark. B the predictor has the largest beta. 
+
+01:20:07 
+You see. 
+
+01:20:10 
+Too many answers there. Yes, C is correct. Okay. This is the longest answer. Okay, so for a. Sample perfume is false that it does not mean out of sample, you can still use this. 
+
+01:20:27 
+Okay, so you can understand. My question about in sample and out of samples there. Second. The average approximately zero. This is forced by regression estimation. 
+
+01:20:41 
+If you use OLS, the residual mean they always say, well, block approximately, they are zero. Okay. 
+
+01:20:48 
+C and yes, it might if the model is useful for real-time multiple prediction and they might apply some evidence later. 
+
+01:20:58 
+Okay, so this is something I'll talk about in the second half of the lecture of the lecture. And B, as I mentioned, the scale might look better. You need to look at some skills we parameters. 
+
+01:21:08 
+For example, a key statistics. Okay. So these three are warm. So this can be true. So students ask me what kind of questions you might see in final exam. These are the questions you will see. 
+
+01:21:20 
+And you can also guess that. Generally by AI. Based on electron load I have, okay, I keep asking them show me questions from this code to easy and ethical field. Okay. So I have many multiple. 
+
+01:21:35 
+So at the end of the semester, I will show you practice exam. If you want to do more of them, I always have more. But I think one is enough. Okay. 
+
+01:21:47 
+But I can tell you for one thing for my past grading experience. As long as you finish all homework and show up in exam, it is very hard for me to fail you. Okay. So in the past. 
+
+01:22:02 
+In a finite sample for the past three years. Three students fail, two of them to lock job in front of exam. One of them is the presentation for a project. Okay. So that's the reason. 
+
+01:22:15 
+Okay, so let's have a break and come back in. A40. 

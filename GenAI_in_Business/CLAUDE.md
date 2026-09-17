@@ -1,0 +1,93 @@
+# CLAUDE.md — IS5542 GenAI in Business（课程级）
+
+> 🚧 **骨架，待填。** 通用方法论见 vault 根的 [CLAUDE.md](../CLAUDE.md)。工具无关版见 [AGENTS.md](AGENTS.md)。
+> **开工前必做**：读 syllabus + 抓官方课程目录对校 → 产出 `_prep/课程前置资料.md`。
+
+---
+
+## 1. 已知情况
+
+| 项 | 内容 |
+|---|---|
+| 课程码 | IS5542 |
+| 定位 | MScAIB (P85) **AI 核心必修**（与 IS5113 同属 9 学分 AI 核心） |
+| 上课时间 | **周六**（⚠️ 据文件时间戳推断，待确认） |
+| 首课 | 2026-09-05 |
+
+**材料**
+
+| 文件 | 状态 |
+|---|---|
+| `IS5542 GenAI in Business Syllabus 2026 Sem A.pdf` | ✅ 已读，见 `_prep/课程前置资料.md` |
+| `GenAI in Business IS5542-Lecture 1.pptx`（15MB） | ✅ 已成笔记 `notes/M01-…`（v1.0，转录已合并） |
+| `IS5542-Lecture 2.pdf`（88 页，3.8MB，macOS 导出，无备注） | ✅ 已成笔记 `notes/M02-模型全景-基准评测与提示设计.md`（**v1.0**，转录已合并 2026-09-15）。⚠️ 页脚显示它只是源 deck 的 Part 1 / 1B / 2；🎙️ 9/19 讲 agent + RAG |
+| `IS5542 Project Template.pptx`（9 页） | ✅ 已转写进 `_meta/作业与DDL.md` §2 |
+| `Announcementscreenshot/`（Canvas 公告截图 ×2，9/11） | ✅ 已并入 `_meta/作业与DDL.md`、`00-课程总览.md`（项目 11/28 录像提交；六场客座主题、强制出席、反思 3%、内容进期末） |
+
+✅ **材料已迁入 `course_files_export/`**（2026-09-08），符合 [[材料处理规则#0. 文件存放约定|材料处理规则 › 0. 文件存放约定]]。
+
+**转录**：`transcripts/M01-transcript.txt` —— ✅ **已修复补全**（267 段，`00:00→02:04:19`，无空档）。见 §3
+
+---
+
+## 2. 讲义是 `.pptx`（`python-pptx` 已装）
+
+`python-pptx` 1.0.2 已于 2026-09-08 安装，可直接处理。
+
+**必须读 speaker notes**（见 [[材料处理规则#6. `.pptx`|材料处理规则 › 6. `.pptx`]]）——这是 pptx 相对 PDF 的关键优势，教授常把不写进正文的要点放在备注里。15MB 的体积说明图片很多，**图片页要视觉复核**。
+
+---
+
+## 3. ✅ 转录已修复补全
+
+`transcripts/M01-transcript.txt` —— **267 段，`00:00 → 02:04:19`（124分19秒），无时序倒退、无 >2 分钟空档。**
+
+**修复经过**（2026-09-08）：Notta 的**导出功能**只给出 `43:39` 之后的内容（171 段 / 52KB），缺开头 43 分 39 秒。但云端**从 `00:00` 就有内容**——是导出环节的缺陷，不是录音缺失。已从 Notta 分享页直接提取缺失部分并拼接，`43:39` 接缝逐字校对一致。
+
+方法与可复用的提取脚本见 [[转录处理规则#✅ 已解决：IS5542 导出截断|转录处理规则 › ✅ 已解决：IS5542 导出截断]]。
+
+> 💡 **这份转录信息量很大**，W1 的完整课程信息（教师背景、四模块结构、考核构成、学期日程、小组项目要求）已整理进 `_prep/课程前置资料.md`。**动笔记之前先读那份。**
+
+---
+
+## 4. 跨课交叉：与 IS5113 关系最近 ★
+
+两门同属 **AI 核心必修**，主题重叠最多：
+
+| 交叉点 | IS5542 | IS5113 |
+|---|---|---|
+| 生成式 AI 与虚假信息 | 全课主题 | **W8** |
+| AI 基础与范式 | Lecture 1 | **M01 §2.2** |
+| 偏见与公平（生成式 AI 语境） | 待确认 | **W3** |
+| 知识产权与版权 | 待确认 | 官方 Keyword Syllabus 有此项 |
+
+**规则**：遇到同名概念时**主动建双链**，并把跨课概念登记进根级 [[术语总表]] §1 的对照表（该表的 IS5542 列目前全空）。
+
+---
+
+## 5. 待确认
+
+- [ ] 抓官方目录对校：`https://www.cityu.edu.hk/catalogue/pg/<学年>/course/IS5542.pdf` — 学分、**及格线**、**GenAI 政策**（这门课的 GenAI 政策尤其值得看）、CILO
+- [ ] 读 syllabus，确认周数与主题地图、授课教师
+- [ ] 确认上课时间与班次
+- [ ] 是否有编程作业 → 若有，规则已就绪（[[材料处理规则]] §7/§8）
+- [x] ✅ **L2 转录**已合并（2026-09-15，`transcripts/M02-transcript.txt`，552 段 `00:00→02:07:20`，连续；两次课间录音暂停；开头可能略晚于开课——p.6 日程未录到）
+- [ ] **9/19 讲义**：🎙️ L2 转录已确认讲 agent + RAG；再看是否含微调 / function calling（台账预告清单仍标"M03 或更后"）
+
+---
+
+## 6. Claude Code 操作提示
+
+装好 `python-pptx` 后：
+
+```python
+from pptx import Presentation
+prs = Presentation(path)
+for i, s in enumerate(prs.slides, 1):
+    texts = [sh.text_frame.text for sh in s.shapes if sh.has_text_frame]
+    notes = s.notes_slide.notes_text_frame.text if s.has_notes_slide else ""
+```
+
+**Notion**：进度库 `collection://500c1c03-e1ff-4bce-b190-efaa39e2185b`。
+
+**回复语言**：简体中文。
