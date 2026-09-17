@@ -8,6 +8,7 @@ description: 把课堂录音转录（Notta 导出的 txt）合并进已有的 v0
 > 本技能是 `_meta/转录处理规则.md`（原理层：为什么、提取什么）的**执行层**（做什么、写成什么样、怎么验收）。两份都要读；冲突时以本技能为准并在回执里指出冲突。
 > 质量标杆：`Artificial_Intelligence_Accounting/notes/M02-交易的会计处理.md`（v1.0）及其顺延回填 `M01-会计与商业.md` §2.8.5。**"和之前一样的质量"= 与这两篇形态一致且 `transcript_check.py audit` PASS。**
 > 所有面向用户的文字用简体中文；转录原话保留英文。
+> **2026-09-18 起默认按 §11「分片并行模式」执行**：主代理登记与切分 → 2–3 个分片代理并行产出 patch + findings（不写 vault）→ `merge_apply.py` 合并验收、一次写入 → 1 个验收代理做语义核对。§2–§7 仍是每个分片必须遵守的内容规范；单体模式只在转录很短（<40 分钟）时用。
 
 ---
 
@@ -67,6 +68,13 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py s
 - **ASR**：遇到明显错的专名，查 `reference/asr-dictionary.md`；新错误追加进去（转录原文 → 应为，附时间戳）。拿不准的写 `[?]`，**不猜**。
 
 读完全文后再开始写笔记。写到一半才发现后面推翻前面，是不读完就动笔的典型后果。
+
+**对齐表的粒度上限**：`align.md` 只写上面那六列、**每 10–15 分钟一行、全程不超过 60 行**；**不在对齐表里草拟引文或笔记文字**——引文在写各自小节时再用 `transcript_check.py window / quote` 从转录取。（教训：2026-09-17 一个代理把对齐和 35 个格的草稿放在一轮里想完，7 分钟无任何落盘，中断即全废。）取转录段用脚本，不用自己写解析：
+
+```
+PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py window <转录> 49:04 01:14:37   # 打印时间窗内所有段
+PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py quote  <转录> 01:15:01 2      # 某时间戳前后 ±2 段
+```
 
 ### 3.1 覆盖状态的定义与证据标准
 
@@ -175,7 +183,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/link_check.py
 # ④ 有顺延回填时，对上一讲笔记也跑 ①（--transcript 给两份转录）
 ```
 
-- ① 的 WARN 要么修掉，要么在 §9.5 写明为什么保留（例如 A5 低匹配是因为那段 ASR 乱码严重、已按 `[ ]` 规则标注）。
+- ① 的 WARN 要么修掉，要么在 §9.5 写明为什么保留（例如 A5 低匹配是因为那段 ASR 乱码严重、已按 `[ ]` 规则标注）。**A13（方括号外的词在转录窗口找不到）与 A14（引文里的数字在转录找不到）逐条过一遍**：真是改写就补 `[ ]`，是 ASR 近似（UCago/UChicago）可留；A14 命中的数字必须回转录核对——数字是最危险的改写（2026-09-18 抓到 "32 weeks" 被写成 52 未标注）。
 - ② 融合前先跑一次留底（写进 PROGRESS.md），融合后对比；新增内容触发的 L3 货币 `$`、L4 标题特殊字符等问题要修。
 - 脚本报的行号是原文件行号，直接定位。
 
@@ -194,7 +202,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/link_check.py
 - [ ] 转录全文读完，`align.md` 时间区间首尾相接覆盖全程
 - [ ] 文件已按 §5 命名；scan 结果与完整性判定（含内容证据）写进 §9.5
 - [ ] "待转录补充" = 0；每个 🎙️ 格四选一且合规
-- [ ] 每个时间戳带反引号、真实存在；每句原话斜体直引号、改写加 `[ ]`
+- [ ] 每个时间戳带反引号、真实存在；每句原话斜体直引号、改写加 `[ ]`（A13 / A14 逐条看过）
 - [ ] ❓ 与 ⏭️ 没混用；每个 ⏭️ 在 §9.1 有依据
 - [ ] §6.1 数量表更新、§6.2 每条 🔴 有原话；被教授降权的条目已降级
 - [ ] §8 覆盖列无空、统计句、时间分配表
@@ -211,8 +219,52 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/link_check.py
 
 - Claude Code：用会话 scratchpad；其它 agent：`%LOCALAPPDATA%\Temp\transcript-merge\<课程码>-M0N\`。**不要在 vault 里建临时文件**（此前有把脚本输出落到 vault 根目录的事故）。不要用 `/tmp`。
 - 工作目录里维护 `PROGRESS.md`：阶段 0–5 各一节，每完成一步就写（时间戳、产出文件、关键判断）。额度中断后**从 PROGRESS.md 最后一步继续**，不重做。
-- 大段改写用脚本（Python `str.replace` + `assert count == 1`）落盘，不手改；脚本用编辑工具写成文件再运行（shell heredoc 会吃反斜杠和中文）；**落盘一律 `atomic_write`**。
+- **分片模式下分片代理不写 vault**（只产出 patch.json / findings.json，见 §11）。单体模式或主代理的零星修补：大段改写用脚本（Python `str.replace` + `assert count == 1`）落盘，不手改；脚本用编辑工具写成文件再运行（shell heredoc 会吃反斜杠和中文）；**落盘一律 `atomic_write`**。
+- 融合结束后主代理把工作目录（patch / findings / align / PROGRESS）打包进 `D:\上课资料\CityU_backups\merge-<课程>-M0N-<日期>.zip`——它们是可重放的改动记录（2026-09-17 AC6761 M03 被截断后就是靠改动脚本重放找回的），不进 vault。
 - 数字（用时、占比、段数）全部由脚本算出并在笔记里注明脚本名或 "按时间戳"。
+
+---
+
+## 11. 分片并行模式（默认流程）
+
+> 目的：把 40 分钟的串行子代理压到 ≈ 17 分钟，同时**只让一个写者碰 vault**。内容规范（§2–§7）不变；变的是分工与落盘方式。
+
+### 11.1 角色与产物
+
+| 角色 | 谁 | 读什么 | 产出 | 不做什么 |
+|---|---|---|---|---|
+| **主代理**（登记 + 合并） | Opus | scan 输出、笔记 §8 页码表、上一讲 ❓ | 改名、`scan`、**分片表**（写进任务单）、`main.json`、`merge_apply.py` 合并、四项验收、Notion、提交 | 不写 🎙️ 内容 |
+| **分片代理** ×2–3（并行） | Sonnet | 规则文件、任务单、**整份转录**、**自己那段笔记**（按行号范围） | `shard_k/patch.json`（自己小节的 🎙️ 格 + §8 覆盖行）、`shard_k/findings.json`（🔴 行、§9.x 行、时间分配、元文件追加行、任务单问题答案）、`align.md`、`PROGRESS.md` | **不写 vault**；不引用自己时间段外的时间戳；不动 §0/§6/§9 |
+| **验收代理** ×1 | Sonnet | 合并后的笔记、转录、任务单 | 语义核对报告（解读是否走样 / 任务单问题证据 / 🔴 依据 / 零基础 3 题） | 不改文件 |
+
+### 11.2 切分规则（主代理，写进任务单「分片表」）
+
+- 按 **(转录时间段 → 目标笔记)** 切，不按页数对半：顺延段（回填上一讲）自成一片；本讲正文按 **🎙️ 格数 × 转录分钟数** 均衡切成 2 片（>2.5 小时的课可 3 片）。行政段（考试 / 作业 / 分组）归它所在时间段的分片。
+- 每片给：时间段、目标笔记、**笔记行号范围**（`grep -n '^### \|^#### '` 取）、该范围内的 🎙️ 格数与小节标题清单、`important/exam/…` 信号词里落在本段的时间戳。
+- 分片边界落在小节之间；一段转录同时讲两片的内容时，归内容多的那片，并在任务单里点名。
+
+### 11.3 分片代理的落盘格式
+
+只写工作目录 `shard_k/`，格式见 `reference/formats.md` §10：
+- `patch.json`：`cells[]`（`section` = 小节标题原文或 `#### 2.4.3` 这样的唯一前缀；`block` = **整个 🎙️ 格**，以 `**🎙️ 课堂补充**` 开头，到下一格标签之前）、`s8[]`（`page`、`coverage`）。
+- `findings.json`：`red[]`（§6.2 整行）、`s91[]` / `s92[]` / `s95[]`（整行）、`time_alloc[]`、`class_summary[]`、`kb_rows[]` / `ddl_rows[]` / `term_rows[]` / `ledger_rows[]` / `cross_rows[]` / `asr_rows[]`（元文件追加行）、`answers[]`（任务单问题：题号、答案、时间戳、原话）。
+- **自验**：把 patch 应用到笔记副本上跑 `merge_apply.py --dry-run`（主代理在任务单给出命令），audit 与 note_quality 都过再交；回执 = `PROGRESS.md` 末尾 + 汇报，格式 `formats.md` §9。
+
+### 11.4 主代理的合并
+
+```
+PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/merge_apply.py <工作目录> --note <笔记相对路径> --transcript <转录…> --dry-run   # 先看报告
+PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/merge_apply.py <工作目录> --note <笔记相对路径> --transcript <转录…>             # 通过后一次写入 + 元文件追加
+```
+
+- `main.json` 由主代理写：`date`、`class_date`、`span`、`merge_row`（§9.6）、`replacements[]`（文首提示块、§6.1 数量表、任何精确替换）。
+- `merge_apply.py` 把 findings 渲染进 §0 / §6.2 / §8 时间分配 / §9.1 / §9.2 / §9.5 / §9.6 与 frontmatter，把 `*_rows` **追加到各元文件末尾**的日期区块（不再逐处 grep 插入；`00-课程总览` / 根 `README` / `转录处理规则` §8 那三行仍由主代理改）。
+- 任何 FAIL 都不写 vault；修的是 patch / findings / main.json，再跑一次——不要手改 merged.md。
+- 通过后：`integrity_check.py verify` → 派验收代理 → 修补 → Notion → 提交。
+
+### 11.5 时间预算（2 小时课）
+
+登记 3 min ‖ 分片 ×2 并行 ≈ 12 min ‖ 合并 + 验收脚本 2 min ‖ 验收代理 5 min ‖ 修补 / Notion / 提交 3 min。分片超过 15 分钟没回执，主代理看它的 `PROGRESS.md` 再决定等或重派。
 
 ---
 

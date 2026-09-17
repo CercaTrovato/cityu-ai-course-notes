@@ -5,6 +5,8 @@ transcript_check.py — 转录融合的机器验收（配合 .claude/skills/tran
 用法（在 vault 根目录）：
     PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py scan  <转录.txt> [<part2.txt> ...]
     PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py audit <笔记.md> --transcript <转录.txt> [<更多转录.txt> ...] [--json] [--no-red]
+    PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py window <转录.txt> <起 MM:SS|HH:MM:SS> <止>     # 打印时间窗内的段（对齐 / 取引文用）
+    PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py quote  <转录.txt> <时间戳> [±段数=2]          # 打印某时间戳前后的原话
 
 scan  ：融合前跑。解析时间戳 → 段数、起止、时长、时序倒退、≥120 秒空档（附前后原文）、
         首尾各 3 段原文（判断"内容上"是否缺开头/缺结尾——脚本判断不了，必须人读）、
@@ -22,6 +24,8 @@ audit ：融合后跑。逐项检查笔记是否达到 AC6761 M02 v1.0 的融合
         A10 出现"教授说/教授强调/教授明确…"的行没有时间戳（WARN，列出行号）
         A11 §9.6（或 9.7）变更记录有本次合并行（含"转录"二字）
         A12 §8 里所有 `a`–`b` 区间的并集覆盖录音时长的比例 ≥ 75%（WARN；低于此值说明没有全程对齐）
+        A13 引文里方括号外的实词，在该时间戳前后 ±90 秒的转录里找不到 → 改写未加 [ ]（WARN，列出词）
+        A14 引文里方括号外的数字，在同一窗口的转录里找不到 → 数字被改（WARN；数字改动最危险，必须核对）
         FAIL = 任一 A1–A8、A11 不过；WARN 不影响判定，但要在 §9.5 说明或修掉。
 时间戳写法：`MM:SS`（<1h）或 `HH:MM:SS`，必须加反引号；多段录音写 `part2 12:34`，脚本按 --transcript 文件名里的 partN 分别查。
 引文写法：*"原话"*（斜体+直引号）；对 ASR 的改写/补词放在方括号 [ ] 里，脚本会跳过方括号只核对原文部分。
@@ -62,6 +66,24 @@ def parse_transcript(path):
 FILLERS = {'um', 'uh', 'er', 'ah', 'hmm', 'mm', 'mhm', 'eh'}
 def words(t):
     return [w for w in re.findall(r"[a-z0-9]+", t.lower().replace("'", '')) if w not in FILLERS]
+
+# ---------------------------------------------------------------- window / quote
+def parse_ts(s):
+    m = re.fullmatch(r'(\d{1,2}):(\d{2})(?::(\d{2}))?', s.strip('`'))
+    if not m: raise SystemExit('时间戳格式应为 MM:SS 或 HH:MM:SS：%s' % s)
+    return to_sec(*m.groups())
+
+def window(path, a, b):
+    segs = parse_transcript(path); lo, hi = parse_ts(a), parse_ts(b)
+    for i, (sec, ts, txt) in enumerate(segs):
+        if lo <= sec <= hi: print('[%d] %s  %s' % (i, ts, txt))
+
+def quote(path, ts, n=2):
+    segs = parse_transcript(path); c = parse_ts(ts)
+    k = min(range(len(segs)), key=lambda i: abs(segs[i][0] - c))
+    if segs[k][0] != c: print('!! 转录里没有 %s 这个时间戳，最近的是 %s' % (ts, segs[k][1]))
+    for i in range(max(0, k - n), min(len(segs), k + n + 1)):
+        print('%s[%d] %s  %s' % ('>>' if i == k else '  ', i, segs[i][1], segs[i][2]))
 
 # ---------------------------------------------------------------- scan
 def scan(paths):
@@ -133,9 +155,9 @@ def audit(note, tpaths, want_json=False, no_red=False):
     fails = []; warns = []; info = {}
 
     # 转录：时间戳集合 + 词序列
-    ts_all = set(); ts_part = {}; twords = []; span = 0
+    ts_all = set(); ts_part = {}; twords = []; span = 0; seg_all = []
     for p in tpaths:
-        segs = parse_transcript(p)
+        segs = parse_transcript(p); seg_all += segs
         secs = {s[0] for s in segs}
         if segs and p == tpaths[0]: span = segs[-1][0] - segs[0][0]   # 只按第一份（本讲）转录算时长
         ts_all |= secs
@@ -271,6 +293,53 @@ def audit(note, tpaths, want_json=False, no_red=False):
     info['§8_time_coverage'] = ratio
     if span and ratio < 0.75: warns.append('A12 §8 的转录区间只覆盖录音的 %d%%（并集 %s / 录音 %s）——检查是否全程对齐' % (ratio * 100, fmt(cov), fmt(span)))
 
+    # A13 / A14 改写未加括号 & 数字守恒：逐条引文，取本行（或本格往上 8 行内最近）的时间戳，窗口 = [min−60s, max+120s]
+    import difflib
+    STOP = {'the', 'and', 'for', 'that', 'this', 'with', 'you', 'are', 'not', 'but', 'have', 'has', 'was', 'were', 'they',
+            'them', 'then', 'than', 'will', 'can', 'its', 'our', 'your', 'from', 'into', 'about', 'what', 'which', 'there',
+            'here', 'okay', 'yeah', 'like', 'just', 'very', 'some', 'all', 'one', 'two', 'also', 'more', 'most', 'when', 'how'}
+    seg_all.sort(key=lambda s: s[0])
+    rew = []; numbad = []
+    def near(tok, pool, nospace):
+        if tok in pool or tok in nospace: return True
+        if len(tok) >= 5 and any(w.startswith(tok[:5]) for w in pool): return True        # 词形变化 increase/increases
+        return bool(difflib.get_close_matches(tok, pool, n=1, cutoff=0.8))                 # ASR 近似 ucago/uchicago
+    for i, ln in enumerate(lines):
+        qs = re.findall(r'(?<!\*)\*["“]([^"“”*|一-鿿]+?)["”]\*(?!\*)', ln)
+        if not qs: continue
+        tss = [to_sec(*m.groups()) for m in TS.finditer(ln)]
+        if not tss:
+            for back in range(1, 9):
+                if i - back < 0 or (LABEL.match(lines[i - back]) and '🎙️' not in lines[i - back]): break
+                tss = [to_sec(*m.groups()) for m in TS.finditer(lines[i - back])]
+                if tss: break
+        if not tss: continue
+        lo, hi = min(tss) - 60, max(tss) + 120
+        win = ' '.join(s[2] for s in seg_all if lo <= s[0] <= hi).lower()
+        wwords = set(words(win)); nospace = re.sub(r'[^a-z0-9]', '', win)
+        wnums = [x.replace(',', '') for x in re.findall(r'\d[\d,]*(?:\.\d+)?', win)]
+        for q in qs:
+            core = re.sub(r'\[[^\]]*\]', '~', q)
+            miss = []
+            for tok in re.findall(r"[a-z~]+", core.lower().replace("'", '')):
+                parts = [p for p in tok.split('~') if p]
+                if '~' in tok:
+                    if not all(any(w.startswith(p) or w.endswith(p) for w in wwords) or p in nospace for p in parts): miss.append(tok)
+                    continue
+                if len(tok) < 3 or tok in STOP or tok in FILLERS: continue
+                if not near(tok, wwords, nospace): miss.append(tok)
+            if miss: rew.append((i + 1, miss[:4], q[:40]))
+            for m in re.finditer(r'(~?)(\d[\d,]*(?:\.\d+)?)(?=(~?))', core):
+                num = m.group(2).replace(',', '')
+                if not num: continue
+                if m.group(1) or m.group(3):                                              # 与方括号相邻：前缀/后缀匹配
+                    if any(n.startswith(num) or n.endswith(num) for n in wnums): continue
+                elif num in wnums: continue
+                numbad.append((i + 1, m.group(2), q[:40]))
+    info['A13_rewrite_unbracketed'] = len(rew); info['A14_number_mismatch'] = len(numbad)
+    if rew: warns.append('A13 %d 条引文有方括号外的词在转录窗口里找不到（改写未加 [ ]？）：%s' % (len(rew), rew[:8]))
+    if numbad: warns.append('A14 %d 处引文数字在转录窗口里找不到（数字被改？必须逐个核对）：%s' % (len(numbad), numbad[:8]))
+
     verdict = 'PASS' if not fails else 'FAIL'
     if want_json:
         print(json.dumps({'note': note, 'verdict': verdict, 'fails': fails, 'warns': warns, 'info': info}, ensure_ascii=False, indent=1))
@@ -284,10 +353,14 @@ def audit(note, tpaths, want_json=False, no_red=False):
 
 if __name__ == '__main__':
     a = sys.argv[1:]
-    if not a or a[0] not in ('scan', 'audit'):
+    if not a or a[0] not in ('scan', 'audit', 'window', 'quote'):
         print(__doc__); sys.exit(2)
     if a[0] == 'scan':
         scan(a[1:]); sys.exit(0)
+    if a[0] == 'window':
+        window(a[1], a[2], a[3]); sys.exit(0)
+    if a[0] == 'quote':
+        quote(a[1], a[2], int(a[3]) if len(a) > 3 else 2); sys.exit(0)
     note = a[1]; want_json = '--json' in a; no_red = '--no-red' in a
     tp = []
     if '--transcript' in a:

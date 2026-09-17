@@ -110,7 +110,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/safe_write.py --check
 | 教授原话强调（"this will be on the exam"） | 直接考点 | 进考点库，可信度标「教授明示」，**引用原话**而非转述 |
 | 课堂问答与讨论 | 真实的误解来源 | 填进正文的「常见误解」格 |
 
-**必须遵守的转录处理规则**（原理见 `_meta/转录处理规则.md`；**执行步骤、模板与验收见 `.claude/skills/transcript-merge/SKILL.md`——Codex 等不自动加载 skill 的 agent 也必须先读完它再动手**；完成标准 = `_meta/tools/transcript_check.py audit` PASS）：
+**必须遵守的转录处理规则**（原理见 `_meta/转录处理规则.md`；**执行步骤、模板与验收见 `.claude/skills/transcript-merge/SKILL.md`——Codex 等不自动加载 skill 的 agent 也必须先读完它再动手**；完成标准 = `_meta/tools/transcript_check.py audit` PASS；2026-09-18 起默认走 SKILL.md §11 分片并行模式，分片代理只产出 patch / findings、由 `merge_apply.py` 一次写入）：
 
 1. **专名一律以讲义的书面拼写为准校正**。语音转写对英文哲学/法律专名错误率很高（`Kantianism`→`Contianism`、`deontology`→`the ontology`、`Bentham`→`Benthem`）。先用讲义术语表过一遍转录
 2. **听不清的术语标 `[?]`，不要猜一个填上**

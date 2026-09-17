@@ -27,7 +27,8 @@ CityU/                              ← vault 根
 │   ├─ tools/note_quality.py         ← 质量量表脚本（并入原七项自检）；tools/link_check.py 全库链接检查
 │   ├─ 材料处理规则.md                ← 各类材料怎么读、怎么转（扩展接口在此）
 │   ├─ 转录处理规则.md                ← 课堂录音转录的专项规则（原理层）
-│   ├─ tools/transcript_check.py     ← 转录融合验收：scan 登记 / audit 12 项（融合后必须 PASS）
+│   ├─ tools/transcript_check.py     ← 转录融合验收：scan 登记 / window · quote 取段 / audit 14 项（融合后必须 PASS）
+│   ├─ tools/merge_apply.py          ← 转录融合分片模式的合并器：收 patch + findings → 副本验收 → 一次 atomic_write（唯一写者）
 │   ├─ tools/safe_write.py · integrity_check.py · backup_vault.py ← ★ 文件安全三件套（原子写 / 快照比对 / 备份），见「文件安全协议」
 │   ├─ Notion进度看板.md              ← Notion 两个库的字段定义与回写规则
 │   ├─ 术语总表.md                    ← 全 vault 双语术语，跨课去重
@@ -220,7 +221,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/safe_write.py --check
 2. **读官方口径** — 读该课 `_prep/课程前置资料.md`，明确 ILO 与考核方式（决定笔记侧重）
 3. **提取讲义全文** — 按 `_meta/材料处理规则.md` 转文本，存到 scratchpad，不落到 vault 里
 4. **视觉复核** — 纯图片页（文本提取为空的页）用 Read 工具看图，补回内容
-5. **处理转录** — 按 skill `.claude/skills/transcript-merge/`：scan 登记 → 通读对齐 → 四态回填 🎙️ 格 → 结构块 → 跨文件回写 → `transcript_check.py audit` PASS
+5. **处理转录** — 按 skill `.claude/skills/transcript-merge/` §11 分片并行模式：主代理 scan 登记 + 切分 → 2–3 个分片代理并行产出 patch + findings（不写 vault）→ `merge_apply.py` 合并 + 验收 + 一次写入 → 验收代理语义核对 → `transcript_check.py audit` PASS
 6. **查台账** — 读 `_meta/知识层级台账.md`，列出本讲的"已有 / 新增 / 预告"三类概念
 7. **重排大纲** — 定学习逻辑顺序，记录与讲义页码的映射
 8. **写正文** — 按模板 9 节，七格微结构
