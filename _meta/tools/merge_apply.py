@@ -223,6 +223,7 @@ def meta_blocks(F, course_dir, module, today, course=''):
         if title is None:                       # asr-dictionary：追加到本课程分节的表末（见 insert_asr）
             out[path] = ('ASR', course, '\n'.join(rows) + '\n')
         else:
+            header = F.get(key + '_header') or header                                   # 各课元文件表头不同时由分片 / main.json 给 <key>_header 覆盖
             out[path] = '\n\n## 🎙️ %s 转录追加（%s）· %s\n\n' % (module, today, title) + '\n'.join(header + rows) + '\n'
     return out
 
@@ -324,6 +325,7 @@ def main():
                 if isinstance(v, list): F.setdefault(k, []).extend(v)
                 else: F[k] = v
     mp = os.path.join(work, 'main.json'); main_ = json.load(io.open(mp, encoding='utf-8')) if os.path.exists(mp) else {}
+    for k, v in main_.get('meta_headers', {}).items(): F[k + '_header'] = v          # main.json 里的 meta_headers 优先
     # 应用
     lines = text0.split('\n')
     lines = apply_cells(lines, cells, log)

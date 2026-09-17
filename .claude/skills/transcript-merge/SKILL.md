@@ -163,7 +163,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py q
 | `<课程>/_meta/作业与DDL.md` | 课上说的作业 / 提交方式 / 截止 / 参与记录方式，带时间戳 |
 | `<课程>/00-课程总览.md` | 模块表该行改 ✅ v1.0（转录已合并 日期 + 一句缺口说明）；`transcripts/` 状态表加行；目录树加文件 |
 | `_meta/转录处理规则.md` §8 | 加 / 改本课本讲那一行：覆盖、时长、判定、特殊之处 |
-| `README.md` | 顶部待办 / 最近完成加一行 |
+| `README.md`（= GitHub 首页） | **全部信息点**：「五门课」表该课的「笔记」列（`M0N v1.0`）与「转录」列（`M0N ✅` / `W0N ✅` + 缺口一句话）、「待办 / 最近完成」表（旧的「待导出」行改 ✅ ~~划掉~~ + 结果一句）、目录树注释（若文件命名变了）；收工跑 `readme_check.py` 必须 0 问题 |
 | 上一讲笔记（若有顺延） | 见 §4.4 |
 | Notion 🎓 学习进度 | 该 module 行：勾 `🤖 转录已交AI`，`状态` → `笔记v1.0`，`卡点/备注` 写缺口一句话；发现新作业 → 📌 DDL 库建行。**没有 Notion 工具的执行者**：在回执里列出应更新的字段，由主代理补 |
 
@@ -178,8 +178,9 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/integrity_check.py ve
 PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py audit <笔记.md> --transcript <本讲转录> [<被引用的其它转录>]
 # ② 笔记质量不回退：与融合前同一模式跑（frontmatter 有 quality_spec: v1 才加 --strict），判定不得从 PASS 变 FAIL
 PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/note_quality.py <笔记.md> --pages <讲义页数> [--strict]
-# ③ 全库链接
+# ③ 全库链接 + README 同步
 PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/link_check.py
+PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/readme_check.py
 # ④ 有顺延回填时，对上一讲笔记也跑 ①（--transcript 给两份转录）
 ```
 
@@ -208,7 +209,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/link_check.py
 - [ ] §8 覆盖列无空、统计句、时间分配表
 - [ ] §9.2 按价值排序、§9.5 反方视角三问
 - [ ] 顺延内容回填到上一讲并改其 ❓ → ✅（如适用）
-- [ ] 考点库 / 台账 / 术语表 / 作业与DDL / 00-总览 / 转录处理规则 §8 / README 全部回写
+- [ ] 考点库 / 台账 / 术语表 / 作业与DDL / 00-总览 / 转录处理规则 §8 全部回写；README 五门课表 + 待办表都改了（`readme_check.py` 0 问题）
 - [ ] `transcript_check.py audit` PASS；`note_quality.py` 不回退；`link_check.py` 0 问题
 - [ ] frontmatter `transcript: merged`、`status: v1.0`、`updated`；§9.6 有合并行
 - [ ] 没有碰 `course_files_export/`；没有引用 Notta 中文版；没有一处"教授说"缺时间戳（A10 WARN 已清或已解释）
@@ -260,7 +261,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/merge_apply.py <工�
 - `main.json` 由主代理写：`date`、`class_date`、`span`、`merge_row`（§9.6）、`replacements[]`（文首提示块、§6.1 数量表、任何精确替换）。
 - `merge_apply.py` 把 findings 渲染进 §0 / §6.2 / §8 时间分配 / §9.1 / §9.2 / §9.5 / §9.6 与 frontmatter，把 `*_rows` **追加到各元文件末尾**的日期区块（不再逐处 grep 插入；`00-课程总览` / 根 `README` / `转录处理规则` §8 那三行仍由主代理改）。
 - 任何 FAIL 都不写 vault；修的是 patch / findings / main.json，再跑一次——不要手改 merged.md。
-- 通过后：`integrity_check.py verify` → 派验收代理 → 修补 → Notion → 提交。
+- 通过后：`integrity_check.py verify` → 派验收代理 → 修补 → Notion → README（五门课表 + 待办表，`readme_check.py`）→ 提交。
 
 ### 11.5 时间预算（2 小时课）
 

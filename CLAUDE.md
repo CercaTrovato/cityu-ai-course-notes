@@ -24,7 +24,7 @@ CityU/                              ← vault 根
 ├─ _meta/                           ← 跨课程公共层
 │   ├─ 笔记模板.md                   ← module 笔记的标准骨架（写笔记前必读）
 │   ├─ 笔记质量规范.md               ← ★ 可量化的质量门槛（标 v0.9 前必须过脚本）
-│   ├─ tools/note_quality.py         ← 质量量表脚本（并入原七项自检）；tools/link_check.py 全库链接检查
+│   ├─ tools/note_quality.py         ← 质量量表脚本（并入原七项自检）；tools/link_check.py 全库链接检查；tools/readme_check.py 根 README 五门课表 vs 笔记 frontmatter
 │   ├─ 材料处理规则.md                ← 各类材料怎么读、怎么转（扩展接口在此）
 │   ├─ 转录处理规则.md                ← 课堂录音转录的专项规则（原理层）
 │   ├─ tools/transcript_check.py     ← 转录融合验收：scan 登记 / window · quote 取段 / audit 14 项（融合后必须 PASS）
@@ -227,6 +227,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/safe_write.py --check
 8. **写正文** — 按模板 9 节，七格微结构
 9. **回写元数据** — 更新台账 L1、课程术语表、`_meta/术语总表.md`、考点库；有作业则登记 `作业与DDL.md`
 10. **同步 Notion** — 更新该 module 在进度库的勾选状态与笔记路径；新作业写进 DDL 库。规则见 `_meta/Notion进度看板.md`
+10b. **同步根 `README.md`（它就是 GitHub 仓库首页，2026-09-18 起有脚本查）** — 任何笔记的 `status` / `transcript` 变化、新转录到位、新建笔记，都要在 README 里改**全部**信息点，不是只加一行待办：① 「五门课」表的「笔记」列（`M0N vX.Y`）与「转录」列（`M0N ✅` / `W0N ✅` / 待导出 / 缺口一句话）；② 「待办 / 最近完成」表——完成的行改 ✅ + ~~划掉~~ + 一句结果，别留旧的 🟡 / 🔴；③ 顶部 DDL 提示块（若作业 / 截止变了）；④ 目录树注释（若目录 / 文件命名变了）；⑤ 「最近完成」里提到的数字（格数、🔴 数）要和笔记 §9.7 一致。收工跑 `_meta/tools/readme_check.py`（五门课表 vs 各笔记 frontmatter，必须 0 问题）。教训：2026-09-18 IS6400 W03 合并后只改了待办行，「五门课」表仍写「W03 待导出」，被用户在 GitHub 上看到
 11. **★ 对抗自检** — 跑 [`_meta/对抗自检清单.md`](_meta/对抗自检清单.md) 的 **12 项 + 11c 质量量表**（`_meta/tools/note_quality.py` G 硬门槛全过、`link_check.py` 0 问题），**全过才算完成**；任一 ✗ 停在 `draft`
 
 ---

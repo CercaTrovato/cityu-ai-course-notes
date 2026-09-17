@@ -213,6 +213,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/safe_write.py --check
 7. 按 9 节骨架写正文，七格微结构
 8. 回写：台账 L1、课程术语表、`_meta/术语总表.md`、考点库；有作业登记到 `作业与DDL.md`
 9. 更新 Notion 进度看板（字段见 `_meta/Notion进度看板.md`）；没有 Notion 访问权就把该更新的内容列出来交给用户手动填
+9b. **同步根 `README.md`（= GitHub 仓库首页；`_meta/tools/readme_check.py` 会查）**：笔记 `status` / `transcript` 变了、新转录到位、新建笔记，都要改 README 的**全部**信息点——「五门课」表的「笔记」列（`M0N vX.Y`）与「转录」列（`M0N ✅` / `W0N ✅` / 待导出 + 缺口一句）、「待办 / 最近完成」表（完成的行改 ✅ ~~划掉~~ + 结果一句）、顶部 DDL 提示块、目录树注释；收工 `readme_check.py` 必须 0 问题（2026-09-18 教训：只改了待办行，五门课表仍写「待导出」）
 10. **★ 对抗自检**：跑 `_meta/对抗自检清单.md` 的 **12 项 + 11c 质量量表**（`_meta/tools/note_quality.py` G 硬门槛全过、`link_check.py` 0 问题），**全过才算完成**；任一 ✗ 停在 `draft`
 
 ---

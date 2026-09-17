@@ -120,7 +120,7 @@ updated: 2026-09-17
 | ✅ | ~~AC6761 M03 转录合并~~ —— **2026-09-17 完成，M03 升 v1.0**：录音只讲到 p.27（§2.1–§2.4，Nike 两道分析题答案 💡→✅ 确认），p.28 起（利润表/现金流量表/权益变动表/附注）无转录标 ❓；前 49 分钟 W2 顺延（课堂练习 2 解答 + 当堂小测 + 试算表/AI 演示）已回填 M02 §2.6.4/§2.7.2。两份 audit PASS，note_quality 三项指标与基线相同（18 L / G3a 1 / G6 0.23），link_check 0，独立 sonnet 验收通过。⚠️ 过程中 M01 / M03 被截断（脚本整读整写 + Remotely Save 同步）：M01 用 iPhone 端完整版恢复，M03 由原稿重放改动脚本找回；同日建立文件安全三件套并写入根 CLAUDE.md「文件安全协议」 |
 | ✅ | ~~转录融合流程提速~~ —— 2026-09-18：分析 EF5560 M03 融合的 40 分钟子代理耗时（工具执行仅 15 秒，全是串行生成：7 分钟规划轮 + 7 分钟元文件逐条 Edit）→ skill 新增 §11 **分片并行模式**（分片只产 patch / findings，`merge_apply.py` 唯一写者、一次 atomic_write）、`transcript_check.py` 加 `window` / `quote` 与 A13（改写未加括号）/ A14（数字守恒）。目标 40 → ≈17 分钟，下一份转录实测 |
 | ✅ | ~~转录融合流程规范化~~ —— 2026-09-17：新建 skill `.claude/skills/transcript-merge/`（SOP + 各块模板 + 按课 ASR 词典 + 任务单模板）和验收脚本 `_meta/tools/transcript_check.py`（scan / audit 12 项）。标杆 AC6761 M01 / M02 经小修后 audit PASS；audit 顺带查出 IS5542 M02 正文已 v1.0 但 frontmatter 仍 pending（已改）。目标：任何模型按 skill 做转录融合都能达到标杆形态 |
-| 🟡 | **IS5113 M03 转录待导出** —— 9/15 的课若有 Notta 录音，导出到 `AI_Ethics_and_Regulations/transcripts/M03-transcript.txt`；笔记 39 处 🎙️ 待回填，考点暂 🟡 封顶 |
+| ✅ | ~~IS5113 M03 转录合并~~ —— **2026-09-18 完成，M03 升 v1.0**：M03 转录（Notta 30 段粗粒度，`00:01 → 02:02:00`）2026-09-18 已合并：39 格落态（A 18 / B 2 / C 1 / D 18），§6.2 +2 🔴（罗尔斯优先次序、基本自由不可交换）+ 1 🟡（程序 / 分配正义的分析基准，验收后降级），p.32 猴子公平实验视频当堂全程播放、最后通牒博弈给了真实数据；**缺结尾——转录止于 p.52 后的 AI 操纵讨论，p.53–89（偏见来源两套分类、公平性指标、缓解与治理）全部未录到，§2.11–§2.15 标 ❓ 不可降权**。分片并行模式第二次实测：3 个 sonnet 分片并行 9–14 分钟，派发 → 写入 18 分钟 |
 | ✅ | ~~产 IS5113 M03 笔记~~ —— **v0.9**（2026-09-15）：讲义 89 页全覆盖（仅封面除外）、10 个低文本页视觉复核（5 张图片卡片 + 3 张图已誊录）、两套偏见分类合成对照表、公平性指标配虚构数字例子（脚本算出）；无转录 |
 | 🔴 | **IS6400 Assignment Week 3 — 2026-09-25（五）23:59 截止**（✅ Canvas 截图），10 分。Airbnb 描述报告 + 数据质量 / 关系探索 + **自己项目数据**的探索。⚠️ Q1 的"百分位数不等于 exp"前提实跑不成立、Q2 的 `bedrooms` 没有缺失——两处要如实写，见 [T03-数据探索实战-Iris与Airbnb的描述统计](Business_Data_Analytics/notes/T03-数据探索实战-Iris与Airbnb的描述统计.md) §7.3 |
 | 🟠 | **IS6400 Week 4 Assignment — ⚪ 2026-10-02（五）23:59**（Canvas 尚未挂出；总分 80 待问），Iris 特征选择四题 + Airbnb 选 3 特征。六种 `SequentialFeatureSelector` 组合都选 petal-L / petal-W；见 [T04-特征选择与PCA实战-Iris](Business_Data_Analytics/notes/T04-特征选择与PCA实战-Iris.md) §7.3 |
@@ -148,7 +148,7 @@ updated: 2026-09-17
 
 | 课程 | 代码 | 定位 | 笔记 | 转录 |
 |---|---|---|---|---|
-| **AI Ethics and Regulations** | IS5113 | AI 核心必修 | M01 v0.9 · **M02 v1.0** · M03 v0.9 | M01 无（永久）· M02 ✅ · M03 待导出 |
+| **AI Ethics and Regulations** | IS5113 | AI 核心必修 | M01 v0.9 · **M02 v1.0 · M03 v1.0** | M01 无（永久）· M02 ✅ · M03 ✅（缺结尾，p.53–89 未录到） |
 | GenAI in Business | IS5542 | AI 核心必修 | **M01 v1.0**（117 页）· **M02 v1.0**（88 页） | M01 ✅ · M02 ✅ |
 | Fintech and AI in Finance | EF5560 | 商业核心 | **M01 v1.0 · M02 v1.0 · M03 v1.0** · 8 张数据集卡 · **`code/` 11 个可复现脚本** | M01 ✅ · M02 ✅ · M03 ✅ |
 | Artificial Intelligence Accounting | AC6761 | 商业核心 | **M01 v1.0 · M02 v1.0 · M03 v1.0** · M04–M06 v0.9<br>**六周 379 页全部逐页讲解，期中范围 W1–W5 齐备** | M01 ✅（缺开头；9/17 截断事故已用 iPhone 端完整版恢复）· M02 ✅（缺结尾）· M03 ✅（只讲到 p.27）· W4–W6 待录 |

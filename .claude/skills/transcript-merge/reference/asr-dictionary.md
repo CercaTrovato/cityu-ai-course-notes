@@ -99,6 +99,11 @@
 | Rolls / Ralls | Rawls | — |
 | maximum | maxim | — |
 | GDP R | GDPR | — |
+| FAPIT (principle) | FATP | M03 `00:01` |
+| Thousand Year（剧名，未还原） | [?]（语境为报应正义相关的影视作品，无法确认原名） | M03 `45:33` |
+| master of power | master's programme（不确定） | M03 `01:40:16` |
+| one dollar out of the fifty-nine or one hundred | 数字疑似错误，未还原（不确定） | M03 `01:17:02` |
+| categoric imperative | categorical imperative | M03 `01:54:07` |
 
 ## IS6400 · Business Data Analytics（技术课：库名 / 指标名易错；M03 起为本地 Whisper，错法是按发音写成常见词）
 
