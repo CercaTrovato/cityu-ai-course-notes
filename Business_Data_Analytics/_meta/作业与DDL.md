@@ -533,3 +533,14 @@ timeline
 - 作业原文与逐题攻略：[[T01-Jupyter入门与Pandas基础#7. 本次作业（notebook cell 24 原文）|T01-Jupyter入门与Pandas基础 › 7. 本次作业（notebook cell 24 原文）]] ｜ [[T02-回归实战-从合成数据到Airbnb定价#8. 本次作业（notebook cell 38 原文）|T02-回归实战-从合成数据到Airbnb定价 › 8. 本次作业（notebook cell 38 原文）]] ｜ [[T03-数据探索实战-Iris与Airbnb的描述统计#7. 本次作业：Week 3 Assignment（notebook cell 44–48 原文）|T03 › 7]] ｜ [[T04-特征选择与PCA实战-Iris#7. 本次作业：Week 4 Assignment（notebook cell 35 原文）|T04 › 7]]
 - 项目要用的数据：[[Business_Data_Analytics/_meta/数据集卡片|数据集卡片]]
 - 考试重点：[[Business_Data_Analytics/_meta/考点库|考点库]]
+
+
+## 🎙️ M03 转录追加（2026-09-18）· 课堂口头信息（转录追加）
+
+| 事项 | 内容 | 来源 |
+|---|---|---|
+| 课堂小测（Week 3 Quiz）提交方式与关闭时间 | 拍照上传或 Word 文件上传 Canvas，三分钟内完成、课间也能继续做，2 p.m. 关闭；教授明确要求不要把题目拍照发给缺勤的同学 | 🎙️`42:39`–`43:28`：*"you can write down and take a picture and upload a picture to Canvas… you can also get a word file and type the answer in the word and send the word file to Canvas… The quiz will be closed at 2 p.m."* |
+| 期末考允许带 A4 cheat sheet | 教授用"文档数据"举例时确认：期末考可以带一张自己准备的 A4 小抄 | 🎙️`24:20`–`24:26`：*"the A4 cheat sheet you can bring to the final exam is actually a document data"* |
+| Q3 出题来源 | 由助教（TA）出题，教授目的是让作业比之前更有挑战性 | 🎙️`02:11:38`–`02:11:51`「this question was prepared by the TAs. I just asked them one time to make the assignment more challenging than what I had before.」 |
+| Q3 同组变量规则 | 同一小组若用同一份数据集，组员之间必须使用不同的变量组合（如一人用属性 1/2/3，另一人用 1/2/5），不可提交完全相同的变量选择 | 🎙️`02:12:43`–`02:13:09`「different [group?] members must use different variables... but you cannot use identical attributes[,] in a single group」 |
+| Week 3 作业提交方式（口头补充） | 可以直接在 tutorial notebook 基础上继续写，也可以新建一份自己复制代码 | 🎙️`02:10:22`–`02:10:38`「You can just write on top of my tutorial. Or you can generate a new one and copy my command, and the library」 |

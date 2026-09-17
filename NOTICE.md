@@ -15,7 +15,7 @@
 
 ## 2. 课堂转录（`*/transcripts/`）
 
-这些文本是课堂录音经语音识别（Notta）自动生成的转录稿，**不是源音频**，也不是逐字校对过的文字记录。
+这些文本是课堂录音经语音识别自动生成的转录稿（2026-09-18 起用本地 Whisper large-v3，此前用 Notta），**不是源音频**（音频不在仓库里），也不是逐字校对过的文字记录。
 
 - 转录**可能存在大量识别错误**（专有名词、数字、术语），各笔记 §9.5 列出了已发现的错误样本；请勿把转录内容当作教师原话的准确记录。
 - 转录中的发言内容属于任课教师；公开仅为让笔记中"🎙️ 课堂补充"的引用可回溯。**禁止用于任何与本课程学习无关的目的。**
@@ -45,6 +45,6 @@
 This repository is my personal study knowledge base (I am an MSc student at CityU; GitHub: CercaTrovato), made public so that others can **reproduce or improve the AI-assisted note-taking workflow and tooling** — not to redistribute course materials.
 
 - **Course materials** under `*/course_files_export/` (slides, syllabi, notebooks, datasets) are © their respective instructors and City University of Hong Kong. **Do not download, redistribute or reuse them without written permission from the copyright holders.** They are kept only so that page references and reproduction scripts can be verified. **Copyright holders: contact me (Issue, or the email in the commit log) and the files will be removed immediately, including from git history.**
-- **Transcripts** under `*/transcripts/` are automatic speech-recognition output (Notta), **not source audio and not verified verbatim records**; they contain recognition errors. They are kept only so that quoted classroom remarks in the notes can be traced. Instructors may request removal at any time.
+- **Transcripts** under `*/transcripts/` are automatic speech-recognition output (local Whisper large-v3 from 2026-09-18; Notta before that), **not source audio and not verified verbatim records** — audio files are never committed; they contain recognition errors. They are kept only so that quoted classroom remarks in the notes can be traced. Instructors may request removal at any time.
 - **Notes, rules and scripts** are my own derivative work; see `LICENSE.md`. Notes may contain errors — official materials prevail.
 - No affiliation with, and no endorsement by, City University of Hong Kong or any instructor.

@@ -100,11 +100,33 @@
 | maximum | maxim | — |
 | GDP R | GDPR | — |
 
-## IS6400 · Business Data Analytics（技术课：库名 / 指标名易错）
+## IS6400 · Business Data Analytics（技术课：库名 / 指标名易错；M03 起为本地 Whisper，错法是按发音写成常见词）
 
 | 转录原文 | 应为 | 首见 |
 |---|---|---|
 | （待补：pandas / sklearn / R-squared / OLS / multicollinearity 类词以讲义与 notebook 为准） | | W2 |
+| CPU | CityU（Whisper 按发音） | M03 `00:49` |
+| SKU (value/type) | scale (value/type)（不确定，见 s95） | M03 `07:12` 起反复出现 |
+| X field | attribute（不确定） | M03 `22:28` |
+| quotation analysis | association analysis | M03 `16:19` |
+| estimation nominal attributes | asymmetric nominal attributes | M03 `16:19` |
+| racial equity | ratio attribute | M03 `22:20` |
+| VGA | BDA（Business Data Analytics，不确定） | M03 `05:32` |
+| infrastructure data | unstructured data（不确定） | M03 `28:16` |
+| SKU needs | skewness | M03 `49:49` |
+| channel phase | Chernoff faces | M03 `01:43:53` |
+| tennis break | 疑似 ten[?]-minute break | M03 `01:32:50` |
+| cross-line experiment | [?]（未还原，语境为准实验/实验方法名） | M03 `55:44` |
+| read SZV | read_csv | T03 `01:47:10` |
+| PP-DOS | pd（pandas） | T03 `01:47:32` |
+| SKU needs / school needs | skewness | T03 `01:46:09`、`01:49:09`、`01:52:40` |
+| KUDOS list / QNAS / quotasys | kurtosis | T03 `01:49:54`、`01:52:16`、`01:52:45` |
+| LBNB / LVM / LWB | Airbnb | T03 `01:59:19` |
+| costiller | scikit-learn（sklearn） | T03 `02:01:47` |
+| board transactions | fraud transactions[?] | T03 `01:54:07` |
+| Stata Airbnb | so today[,] Airbnb[?] | T03 `02:10:40` |
+| capitation | classification[?] | T03 `01:53:43` |
+| the 19th percentile | the 90th percentile[?] | T03 `01:57:02` |
 
 ## EF5560 · Fintech and AI in Finance
 

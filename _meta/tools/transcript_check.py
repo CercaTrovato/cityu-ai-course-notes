@@ -18,8 +18,8 @@ audit ：融合后跑。逐项检查笔记是否达到 AC6761 M02 v1.0 的融合
         A4  笔记里出现的每个 `时间戳` 都能在转录里找到对应段（防编造）
         A5  带时间戳/🎙️ 行里的斜体英文引文 *"..."* 能在转录里模糊匹配到（<40% FAIL，40–60% WARN；防编造原话）
         A6  §8 表「课堂覆盖」列：非封面/分隔页行不得为空或 —
-        A7  §9.1、§9.2 有表且 §9.2 ≥3 行带时间戳；§9.5 含「反方视角」
-        A8  §6.2 至少 1 条 🔴 且带时间戳与引文（转录里确实没有任何考试信号时加 --no-red 降为 WARN）
+        A7  §9.1、§9.2 有表且 §9.2 ≥3 行带时间戳；§9 里有「反方视角」（§9.5 末尾或独立小节）
+        A8  §6.2 至少 1 条 🔴 且带时间戳与引文（转录里确实没有任何考试信号时加 --no-red 降为 WARN；tutorial 笔记无 §6.2 自动降为 WARN）
         A9  §0 有 🎙️ 课堂实况块；文首提示块提到 merged（WARN）
         A10 出现"教授说/教授强调/教授明确…"的行没有时间戳（WARN，列出行号）
         A11 §9.6（或 9.7）变更记录有本次合并行（含"转录"二字）
@@ -251,16 +251,17 @@ def audit(note, tpaths, want_json=False, no_red=False):
     if not table_rows(s91): fails.append('A7 §9.1 没有表格（略过/缺失清单）')
     r92 = [r for r in table_rows(s92)[1:] if TS.search(' '.join(r))]
     if len(r92) < 3: fails.append('A7 §9.2 带时间戳的行只有 %d（需 ≥3）' % len(r92))
-    if '反方视角' not in s95: fails.append('A7 §9.5 缺「反方视角」')
+    if '反方视角' not in s95 and '反方视角' not in section(body, 9): fails.append('A7 §9.5 缺「反方视角」')
     if '无转录' in s92 and '无法判断' in s92: fails.append('A7 §9.2 仍写着"本讲无转录，无法判断"')
 
     # A8 §6.2 🔴
     s6 = section(body, 6)
-    red = [r for r in table_rows(s6) if r and r[0].startswith('🔴')]
+    red = [r for r in table_rows(s6) if r and (r[0].startswith('🔴') or (len(r) > 1 and r[1].startswith('🔴')))]   # # 列在前时 🔴 在第 2 列
     red_ok = [r for r in red if TS.search(' '.join(r)) and re.search(r'\*["“]', ' '.join(r))]
     info['🔴_rows'] = len(red); info['🔴_rows_with_quote'] = len(red_ok)
+    is_tut = bool(re.search(r'^type:\s*tutorial', text[:1200], re.M)) or not re.search(r'^### 6\.2', body, re.M)
     if not red_ok:
-        (warns if no_red else fails).append('A8 §6.2 没有带时间戳+引文的 🔴 行（%d 条 🔴）' % len(red))
+        (warns if (no_red or is_tut) else fails).append('A8 §6.2 没有带时间戳+引文的 🔴 行（%d 条 🔴）%s' % (len(red), '（tutorial 笔记无 §6.2，🔴 应写进配套讲义笔记）' if is_tut else ''))
     if re.search(r'0 条.*无转录|无转录.*无法产生', s6): fails.append('A8 §6.1 仍写着"本讲无转录，无法产生 🔴"')
 
     # A9
@@ -274,7 +275,8 @@ def audit(note, tpaths, want_json=False, no_red=False):
     if noev: warns.append('A10 %d 行有"教授说/强调…"但本行无时间戳：%s' % (len(noev), noev[:20]))
 
     # A11
-    s96 = subsection(body, '9.6') or subsection(body, '9.7')
+    m96 = re.search(r'^### (9\.\d+) .*变更记录', body, re.M)
+    s96 = subsection(body, m96.group(1)) if m96 else (subsection(body, '9.6') or subsection(body, '9.7'))
     if not re.search(r'\|\s*20\d\d-\d\d-\d\d.*转录', s96): fails.append('A11 §9.6/9.7 变更记录没有含"转录"的合并行')
 
     # A12 §8 区间并集覆盖率

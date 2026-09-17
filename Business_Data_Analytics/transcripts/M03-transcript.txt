@@ -1,0 +1,4083 @@
+00:00 
+this is our prediction target and all other features which are also related to 
+
+00:04 
+the prediction target. So when we get the problem, then we need to go to the 
+
+00:11 
+original data center and see the definitions of all these columns and how many objects 
+
+00:17 
+what are the objects we have in this data table and then we will understand whether 
+
+00:21 
+we can use the data table to solve the problem. 
+
+00:25 
+Now if you go to a more complicated business problem, for example, for the supermarket 
+
+00:33 
+like if you go to Pace, if you go to Walmart, or some other supermarket, or retail stores 
+
+00:39 
+so every single item you purchase is at the retail store 
+
+00:43 
+so the retail store will generate one record for your purchase 
+
+00:49 
+And we can see, whenever I go to purchase, for example, I go to the coffee shop, right, I make this cup of coffee, I use my credit card, and purchase this item in one coffee bar in SKU, and this whole system has my record in the database. 
+
+01:20 
+in a supermarket. So in general, the data actually can be separated into three different groups. 
+
+01:29 
+So for example, for the customer information, now for each purchase I generated as a database, 
+
+01:36 
+I will be able to collect the customer's information from these purchases. 
+
+01:42 
+In other words, who made these purchases. 
+
+01:46 
+So if you have a membership, you have a membership for the page of Walmart, whenever you go shopping, you scan your ID card, and you will be able to see that the supermarket will have your customer ID, the gender, the marriage status, homeowner status, number of children, and income level. 
+
+02:07 
+So all of these features, you input these features when you get your membership. And whenever the member is making a purchase. 
+
+02:16 
+The supermarket will have this customer information as the first group of attributes or features we have in the data table 
+
+02:23 
+Second group of information the supermarket can analyze is the store information 
+
+02:30 
+So where do you make the purchase? 
+
+02:32 
+Is that a retail store or supermarket near the school or in any other big city? 
+
+02:38 
+And finally, the supermarket will have your transaction information indicating what kind of items or how many items and how much money you spend in this transaction. 
+
+02:49 
+Now, to have this transaction recorded, each row here will present one transaction, including three pieces of information from the customer, store, and transaction levels to record the whole bunch of transaction information. 
+
+03:06 
+Now we can actually differentiate among different transactions in different rows using all these piece of columns of features 
+
+03:13 
+So we can understand who make the purchase again, again, again 
+
+03:18 
+or whether some icons in the supermarket was frequently purchased by many groups of consumers 
+
+03:28 
+We also do some location-based marketing to see whether different groups of customers, 
+
+03:33 
+when we combine the customer information with the store information, 
+
+03:36 
+we can send coupons to certain groups of customers who usually make purchase in some certain retail store for certain groups of items. 
+
+03:46 
+So we can do all these kind of analysis using this raw data table. 
+
+03:51 
+In other words, the transaction data table records the very fundamental information for the supermarket 
+
+03:58 
+or for the managers of the supermarket to understand their customers 
+
+04:02 
+to understand their different retail stores' sales performance 
+
+04:05 
+and to understand the sales performance of different categories of products 
+
+04:10 
+And once you combine different columns together, you can do a fine-grained analysis 
+
+04:14 
+to see who and when and where this customer purchased what kind of items 
+
+04:21 
+I want to remind you that at the very beginning, when the managers of the supermarkets, they define these data tables, they have no idea which kind of business problems they are trying to solve in the future. 
+
+04:35 
+So they may collect as much information as they can when they have one single transaction. 
+
+04:41 
+Of course, in the real world, the transaction can be even larger, right? 
+
+04:46 
+The transaction data set can be even larger. You can also get the supplier's information from this transaction or product ID 
+
+04:53 
+Or you can get the discount information, or you can get the sales channel from where these customers get to know this kind of coupon for this item and make this kind of purchase 
+
+05:05 
+So in the real world, the transaction data table can be even larger and larger by incorporating more information that can help the managers to run a better business 
+
+05:16 
+But our job is that once the managers already defined or collected the data set for one or two years, or maybe ten years, 
+
+05:24 
+and they already have a very big group of data points collecting all the transactions for the past ten years, 
+
+05:32 
+now our job as a VGA is to extract what kind of useful information from their original load data set to deliver a better business solution. 
+
+05:45 
+So to understand that, we need to first get to know the attributes we have in this data table. 
+
+05:54 
+So the attributes values are the numbers of symbols that we use to indicate the values of the attributes. 
+
+06:03 
+So we can actually use these attributes to differentiate different customers. 
+
+06:08 
+So we want to combine these features of the attributes. 
+
+06:13 
+to maybe build a relationship among different other features or attributes. 
+
+06:18 
+For example, you may realize that I just cut my hair, right? 
+
+06:21 
+So if the hair length is one of my features, you can see the feature can change. 
+
+06:25 
+And you may see different age of the man with different length of the hair that you can see. 
+
+06:32 
+So the first thing is that when you understand what kind of features we have, 
+
+06:36 
+and different features, we may have different formats. 
+
+06:39 
+So in general, 
+
+06:42 
+There are four different types of attributes, and using different types of attributes, the analysis will be different. 
+
+06:48 
+The fourth type, which is very common, is the nominal attributes, like the student ID, or the gender, or the zip code. 
+
+06:57 
+So the nominal attributes only indicate the identity, or the name, or some other ID information 
+
+07:12 
+objects. So, for example, when we see the student ID, for example, we have student ID 1 or 2 or 3. 
+
+07:22 
+So, these actually do what we called it using some numbers, but we know that they are not real numbers, right? 
+
+07:28 
+So, student 1 is student 1. We use the number 1 to show the identity of this student 1. 
+
+07:36 
+So, we cannot make any other comparison that the student ID 2 is larger or smaller than student ID 1. 
+
+07:44 
+so this does not make any sense right so when we see the original data table and 
+
+07:52 
+we see a list of numbers for example so our first job is to get to know what is 
+
+07:58 
+the definition of this column so if you see a list of 1 2 3 4 5 then you may 
+
+08:05 
+need to 
+
+08:07 
+make sure that this column of numbers, 1, 2, 3, 4, 5, whether they are real numbers 
+
+08:12 
+like the money or the income level or the age, real numbers 
+
+08:18 
+or whether this list of numbers, they are indicating the ID information 
+
+08:22 
+so if this list of numbers is indicating the ID information like the student ID 
+
+08:27 
+or the item ID, then it indicates 
+
+08:32 
+so SKU is nominal SKU, it's not a real number, it's an ID information. Now if we 
+
+08:40 
+put more information into the SKU values, then we get all the SKUs. 
+
+08:45 
+So all the SKUs we can tell the ranking, we can tell which SKU value is 
+
+08:51 
+larger than the other SKU values, but we don't know how much the difference 
+
+08:57 
+between two SKU values would be. So for example, 
+
+09:02 
+When we have that kind of flat height that's medium and short, we know that tall is higher than the medium 
+
+09:12 
+but we do not know what's the distance between these two actual values, right? What's the gap? 
+
+09:17 
+So let me give you an example, I believe most of you know whether you went to the Japanese noodle restaurant in Hong Kong 
+
+09:25 
+So if you go there, you may have some choices, the spicy level of the noodles, right? 
+
+09:33 
+So I come from Hunan, so you know most of the levels does not make sense to me 
+
+09:39 
+So we have no spicy right, the bottom level, no spicy, mild spicy, medium spicy and very spicy 
+
+09:49 
+So we can tell that when you choose this kind of objects, the spicy levels 
+
+09:56 
+We can tell that no spicy is less than the mild or less than the medium 
+
+10:01 
+but you cannot tell the difference between these two. 
+
+10:06 
+So for me, no spicy, mild spicy, medium spicy, 
+
+10:11 
+they have no difference. 
+
+10:14 
+But once you go to very spicy, there's a big gap, right? 
+
+10:18 
+The very spicy is known for humans, I think, 
+
+10:21 
+in some Japanese restaurants. 
+
+10:23 
+So you can see for this kind of ash field, 
+
+10:27 
+we can tell which ash field's value is larger. 
+
+10:30 
+We cannot tell how large it would be. 
+
+10:33 
+We cannot use the medium minus small, we cannot use very spicy minus spicy, we do not know the gap. 
+
+10:40 
+But if we add more information to the ordinal attributes, then we will be able to get the interval attributes. 
+
+10:46 
+Now the difference between the ordinal attributes and the interval attributes is that the attribute values in the interval attributes can be calculated. 
+
+10:58 
+So, for example, we know if we use the Monday, Tuesday as the SKU value to do the recording, 
+
+11:04 
+we know the gap, the distance between Monday and Tuesday is fixed, it is one day, right? 
+
+11:09 
+Monday, the distance between Monday and Wednesday, the two SKU values is two days. 
+
+11:15 
+Now we can, if this interval is fixed, the SKU value, SKU value, the different SKU values, 
+
+11:21 
+their intervals, their gaps are fixed. So we can do some simple calculation. 
+
+11:27 
+We can calculate, okay, Monday plus Monday would be Tuesday. 
+
+11:32 
+I always tell, inform my PhD students, now this is Wednesday, your meeting will be two days away. 
+
+11:41 
+So Wednesday plus two days will be the due date for my PhD students. 
+
+11:45 
+So usually they say, hey, this kind of interval is because they can do the counting. 
+
+11:50 
+Or I can do the counting for the due date. 
+
+11:52 
+So we can see... 
+
+11:55 
+For the intervals, even though we have the order, we also have this kind of gaps among different actual values. 
+
+12:02 
+But after we get the interval ratios, we cannot do a further calculation. 
+
+12:07 
+We can do the addition calculation like plus or minus, that two days minus one day would be something, right? 
+
+12:15 
+But we cannot do the initial calculation. 
+
+12:18 
+So, for example, we cannot tell, okay, Monday times two is what? 
+
+12:23 
+does not make any sense, right? 
+
+12:25 
+Monday times two, or Monday divided by two, it is nothing. 
+
+12:30 
+So it does not exist. 
+
+12:32 
+So the interval attributes can only be used to calculate the addition calculation, 
+
+12:37 
+plus or minus, but not ratio calculation. 
+
+12:40 
+But if we have more information from the attributes definition, 
+
+12:43 
+for example, the time, the counts, or the income levels, or the age, 
+
+12:51 
+We can do the ratio calculation and now it becomes the ratio attributes. 
+
+12:56 
+Now when we have the ratio attributes and we try the ratio calculation, it does make sense. 
+
+13:02 
+For example, now I'm age 36 and I always hope that my age can be divided by 2. 
+
+13:10 
+So I will go back to the original age, which is the most handsome age I will be. 
+
+13:16 
+So we can see, for the ratio calculation, we can do this kind of divided or multiplied calculation. 
+
+13:22 
+and it contains the most flexible calculation for the attribute calculations. 
+
+13:26 
+So when we have the data set, we should understand the attribute definition and then the attribute types. 
+
+13:36 
+So after we know this attribute is actually student ID, now it is nominal, 
+
+13:40 
+we can only do the distinct calculation, yes or no, equals or not equal. 
+
+13:45 
+So whether this record will indicate this student, not other students, right, the distinct calculation. 
+
+13:51 
+And once we get another definition, we know maybe this is the ordinal attribute because we can compare the larger or smaller value of the attributes among different attribute values, but we cannot do any other calculation. 
+
+14:06 
+We can only do the comparison, which is larger, which is smaller, but we cannot do any additional or additional calculations. 
+
+14:12 
+Now it is the ordinal. 
+
+14:14 
+In the later stage, we may do this kind of addition calculation for the interval attributes and we know that 
+
+14:21 
+So for these attributes, we can do addition calculation plus or minus 
+
+14:25 
+But we cannot do any other calculations. Finally, we have the ratio calculation which can support the multiplication calculations 
+
+14:33 
+So once you have the data and you know the definition, and you have no idea which SKU types they would be, 
+
+14:40 
+then you need to try these kind of calculations and see whether all these calculations, 
+
+14:46 
+if we use these calculations to manipulate all these SKU values, whether they make sense. 
+
+14:51 
+So whether I can do the multiplication for these SKU values, if the calculation does not make sense, then it belongs to the ratio. 
+
+14:59 
+So this is how we identify the types or the properties of different attribute values. 
+
+15:06 
+And there are some other simple categories, like discrete attributes or continuous attributes, 
+
+15:12 
+depending on whether these number of attributes in certain intervals, they are countable or not. 
+
+15:18 
+So for the discrete attributes, we have this kind of countable 
+
+15:24 
+for the numbers of actual values in small intervals. 
+
+15:27 
+For example, in Hong Kong, how many zip codes, 
+
+15:30 
+in Guangzhou, how many zip codes we have in this big city. 
+
+15:33 
+And we can do the counting that in this classroom, 
+
+15:36 
+how many students in this classroom. 
+
+15:38 
+Now we can do this grid counting, right? 
+
+15:41 
+But if we want to calculate the distance, 
+
+15:46 
+the distance between all these kind of four desks in this, 
+
+15:50 
+Now this becomes a continuous attribute because there are infinite number of countings of how many distance we can get in these certain intervals, right? 
+
+16:00 
+1 meter, 1 centimeter, and the number of distance between 1 meter and 1 centimeter, we cannot count how many. 
+
+16:09 
+So this becomes continuous. 
+
+16:11 
+And also there is one more attribute type called asymmetric nominal attribute. 
+
+16:19 
+So we will learn how these estimation nominal attributes would be useful in identifying some patterns in our data set or do the quotation analysis. 
+
+16:29 
+So for these type of attributes, it is reported by 0 or 1, yes or no. 
+
+16:35 
+So whether it is yes, it shows up, or it does not show up. 
+
+16:40 
+And we only care about the presence, the value 1, which is more important than the value 0. 
+
+16:46 
+For example, we can construct the student attendance sheet, attendance data table to 
+
+16:54 
+record whether you come to class or not. If for one student come to class today and 
+
+16:59 
+recorded 1, otherwise 0. Now imagine that now in our class we have 200 students, right? 
+
+17:05 
+We have 200 students, so each student is my study object. Now for this, week 3, we 
+
+17:12 
+have one column. 
+
+17:13 
+200 rows of students and one column indicating whether these students come to class or not 
+
+17:19 
+on this Wednesday. 
+
+17:23 
+When these students come, I recorded one, otherwise zero. 
+
+17:27 
+Now, we have so many students, right? 
+
+17:29 
+So, 1-1-1-0-0, you can imagine this column, we have the attendance. 
+
+17:34 
+Now, if student 1 comes... 
+
+17:38 
+to class, this is one, otherwise, zero. 
+
+17:41 
+Now, I only appreciate students who come to class. 
+
+17:44 
+So, the number one, the indicator one is more important 
+
+17:48 
+than the number zero. 
+
+17:50 
+So, it's not only about these students come to class, 
+
+17:52 
+it also, we can also extract some other useful information 
+
+17:54 
+from the one pairs. 
+
+17:56 
+So, for example, if I want to analyze whether student one 
+
+18:00 
+or student two, they are close friends or not. 
+
+18:02 
+So, we can see, 
+
+18:04 
+If student 1 comes and student 2 comes, if they come together, for example, these two students, they come together, they sit together, that's 1-1. 
+
+18:13 
+So for the two columns, for this column, the student 1 and student 2, they come together, now it is 1-1, right? 
+
+18:20 
+If student 1 comes, but student 2 does not, then it is 1-0. 
+
+18:24 
+If student 1 does not, and student 2 comes, it's 0-1. 
+
+18:28 
+If both students are hanging out, it is 0-0. 
+
+18:32 
+Now we have so many ways, and if among different ways, we always identify that these two students come together or not come together, 1-1 or 0-0, then they have a very high probability to be close friends. 
+
+18:46 
+So we can show this kind of co-movement pattern from the asymmetric nominal attributes. 
+
+18:54 
+When we are doing the location-based marketing, we want to send the coupon to the group leader, so what does that mean? 
+
+19:03 
+So imagine that whenever I use my cell phone to hang out 
+
+19:07 
+now the retail store will record my attendance, right? 
+
+19:12 
+So if I go to the supermarket or the retail store, like you come to my class, whenever you come to my class 
+
+19:18 
+I have your GPS and know you are sitting in this classroom 
+
+19:21 
+And whenever I go to the retail store, the retail store manager has my GPS location, and he or she knows that I come to their store. 
+
+19:30 
+And then we have a very close friend. He or she will always come to me, usually it is he. 
+
+19:38 
+So he usually comes with me to the retail store, and of course the manager will also have his ones, right, the attendants. 
+
+19:48 
+And E is... 
+
+19:49 
+After so many days that the managers identify, okay, these two guys, they are GPS, they are just moving together, and they attend my retail store together, they attend the supermarket together, and they know these two, they always go shopping together. 
+
+20:03 
+Now the coupon will only be sent to one of us. The coupon will not be sent to the two different guys in a single group. 
+
+20:12 
+Because if you send one coupon to one guy to my retail store, the other guy will come with you. 
+
+20:17 
+so that's called a co-movement detection using these asymmetric and nominal attributes so once we 
+
+20:25 
+can do this kind of analysis we know whether the two objects or the two attribute values 
+
+20:31 
+so if we change the actual value as one and then we can actually show the co-coordinates 
+
+20:38 
+among the two attribute values of two objects or some two other things we care about 
+
+20:43 
+We can use this SKU to do many other association analysis to identify whether these two items will show up together or not 
+
+20:52 
+Now 
+
+20:54 
+Again, go back to the very beginning of this data table, so this data table actually records the cheating transaction detection for a very simple data set, so we have this kind of transaction ID, the refund status, managed status, tax income, and the final label by the bank manager, so we need to understand, according to this data table, which types of SKUs we would have. 
+
+21:23 
+So for example, for the transaction ID, we see that 1, 2, 3, 4, 10, right? 
+
+21:29 
+So do you think that TID here is nominal or ratio attribute in this column? 
+
+21:36 
+The TID. 
+
+21:40 
+Is that a ratio attribute or nominal attribute? 
+
+21:44 
+It is nominal, right? 
+
+21:46 
+But imagine that once you are given this data set, nobody tells you what is TID. 
+
+21:53 
+So maybe we have TID, TED, AID, ABD, so many Ds, right? 
+
+21:58 
+So the managers will just do some short names for all their records, and you may have no idea what is TID. 
+
+22:05 
+I know, I tell you that this is transaction ID for the full name. I tell you the definition. 
+
+22:11 
+But before that, you have no idea what is TID, so when you get there, you need to tell or ask the manager, what is TID? 
+
+22:20 
+Before you can answer my question whether it is nominal or racial equity. 
+
+22:28 
+Nominal X field as the initial X field, then you may have some mistakes in the downstream analysis, right? 
+
+22:35 
+Because for this X field value, we cannot do any initial calculation. 
+
+22:39 
+It's just an ID information. We do not use ID information as the feature for the downstream analysis. 
+
+22:45 
+So this is, I think, three years or four years old final exam question. 
+
+22:51 
+I use this data table to do some questions. 
+
+22:55 
+So first I will give you the definitions of all these kind of columns, and then you will need to answer some questions related to this data table. 
+
+23:04 
+Now that's the actual types. So in addition to the actual types, we also need to understand that we may have some other data types. 
+
+23:15 
+So not everything is actually recorded. Not everything is recorded in the data matrix or data table. 
+
+23:23 
+The first one is the data matrix or the data table that we can use Excel to open it. 
+
+23:30 
+And in most of the cases, the information or the values of your business, actually they 
+
+23:36 
+were hidden in the non-structured data table. 
+
+23:41 
+For example, the document data. 
+
+23:44 
+So for some other data types, they cannot be opened using Excel, and they are not well organized in the rows and the columns in your data table. 
+
+23:53 
+But they are also very informative and valuable. 
+
+23:57 
+Now for example, for the document data. 
+
+23:59 
+So we can see for the document data, we have the paragraphs and the sentences and the keywords, right? 
+
+24:06 
+So you can see, after we finish this course, you will have one important document data generated by yourself. 
+
+24:15 
+So do you still remember that thing? 
+
+24:18 
+The A4 cheat sheet, right? 
+
+24:20 
+So you can see the A4 cheat sheet you can bring to the final exam is actually a document data. 
+
+24:26 
+And you know this is the most valuable and informative data type you can generate for the preparation of your final exam. 
+
+24:35 
+Now it is document data. 
+
+24:37 
+And for all my slides and the textbooks and some other news articles or research papers, 
+
+24:45 
+the format of the document data and of course we will learn how to deal with the document data in the later stage of this course 
+
+24:54 
+but we need to understand that not only that itself, the data table can be useful 
+
+24:59 
+and there are many other data types that are also very useful 
+
+25:03 
+and also if you go to the supermarket, we have the transaction data 
+
+25:07 
+now the original format of the transaction data is not rows and columns 
+
+25:12 
+So if you go to the page, you will get a list of items as an output, right? 
+
+25:17 
+So that's the transactional list of items in the dataset. 
+
+25:21 
+Now if you go to some other business problems like the social media, marketing, or some other research collaboration analysis, 
+
+25:29 
+or the company's collaborations, like chain network collaborations, then we need to deal with the block data. 
+
+25:36 
+Now graph design is not only about rows and rows, it also tells us the relationships and links among different objects in our penis. 
+
+25:45 
+So we need to understand how we can extract the information from the graph data type 
+
+25:52 
+So it's another format of data and it contains more information than the data metrics 
+
+25:56 
+But it makes the analysis more challenging 
+
+25:59 
+Yes, this is another data set we may have from our company's raw data 
+
+26:04 
+So once your company provides this kind of connections or relationships among different objects in your company 
+
+26:13 
+Then you need to understand, okay, this is the number types of data. We can now use the Excel data table to open this graph data, but the graph data contains more information for us to analyze. 
+
+26:26 
+Of course, you may also get some other data like the spatial and temporal data set. 
+
+26:31 
+Spatial data set means that, so now I'm in this location, and after three hours I will go to the restaurant and I will be in another location. 
+
+26:41 
+So this location data is usually not stored in the rows and the columns. 
+
+26:49 
+Instead, these records, they will map to a Google map. 
+
+26:53 
+You can see, we have a Google map. It has the base spatial information we have, and we have the individual's footprint, the location. 
+
+27:01 
+Now this all together will become the spatial data we can analyze. 
+
+27:05 
+and most of the location-based service, or the location-based marketing, or the research I'm doing, the bike shelving, so the shelved bike, the 共享单车, 
+
+27:14 
+so we are doing this kind of location-based spatial data to do the analysis. 
+
+27:18 
+And temporal data actually tells you the temporal changes among different objects, like stock price. 
+
+27:26 
+So even for the same stock, the price changes from minute to second to second. 
+
+27:31 
+and the data, they have this kind of time dependencies among each other, so the 
+
+27:38 
+temporal data can tell you more information about this kind of trend or 
+
+27:42 
+pattern of signaling patterns, so it provides more information. And for the 
+
+27:47 
+temporal data, usually we can store temporal data using the data matrix, data table, 
+
+27:52 
+but we also need to incorporate the time information to indicate the temporal 
+
+28:01 
+When we go to the company, we need to get as many data sets as we can, and we need to know that some of the data sets, they cannot be opened using Excel, so what we can do with this data? 
+
+28:16 
+So we will learn in the following lectures of this semester to learn some infrastructure data starting from week 8 or week 9. 
+
+28:24 
+So we will learn more. But today we need to know that we may have some other data formats. 
+
+28:30 
+There are types of data sets we need to deal with. 
+
+28:34 
+So for the data metrics, that's the most commonly used data. 
+
+28:40 
+that you may have in the University. So when you are studying your TPG courses, in many other courses, you are using CELL from the data table. 
+
+28:49 
+Redfield courses will actually deal with unstructured data table. Before I teach the IIS 6423, the AI for Business Education, 
+
+29:00 
+so that for the course method, you need to deal with unstructured data table using deep learning. 
+
+29:06 
+but very few of the course will actually tell you how to deal with unstructured data 
+
+29:10 
+so usually you need to understand and then in my this course 
+
+29:13 
+for most of the weeks you will deal with this kind of data table data matrix very simple one 
+
+29:19 
+the rows indicate the objects and the columns indicate the attributes and the targets we are trying to predict 
+
+29:24 
+and we learn how to leverage different data tables using different techniques or algorithms 
+
+29:31 
+and the way for the document data, we can also transform the document data into a data 
+
+29:35 
+matrix. So that's the simplest way to deal with the document data and we can only do 
+
+29:40 
+the document level analysis because each row here will present one document. 
+
+29:45 
+So each row represents one document, and we have columns and attributes to differentiate different documents by using the keyword counting. 
+
+29:54 
+So for the fourth one, for the fourth feature here, the team, this is a keyword, and we will use the frequency of this keyword in different documents as the first attribute. 
+
+30:05 
+So for example, for the value 3, it indicates that in document 1, this keyword team shows three times. 
+
+30:13 
+in document 1, but it does not show up in document 2 or document 3, so these two are zeros. 
+
+30:19 
+Now we can use this simple frequency counting using this keyword theme to differentiate these three documents. 
+
+30:29 
+Of course, a single attribute or a single keyword is not enough. 
+
+30:34 
+So if we want to identify whether these documents are the sports-related articles, 
+
+30:39 
+then theme, one single keyword is not enough, so we introduce. 
+
+30:44 
+The second keyword, the code. Now we do the frequency counting for using the second keyword as the second feature, we do another round of frequency counting and we will fill these three actual values for the three documents. 
+
+30:58 
+Now we can add more and more keywords as the actuals and we will have the data matching, the data table like this. 
+
+31:05 
+So still, this is the data table. We have the columns indicating the attributes. 
+
+31:09 
+The attributes is actually the frequency counting for different keywords. 
+
+31:14 
+And we have those as the documents. 
+
+31:16 
+So we can actually transform the document data into a standard data matrix. 
+
+31:20 
+And then use all these kind of attributes, attributes values to do the analysis. 
+
+31:26 
+So that's the document data. 
+
+31:30 
+So then we also learn the transaction data. So usually when you go to the supermarket, each transaction has a list of items like this. 
+
+31:38 
+So for the transaction ID1, we have a list of three items purchased in this transaction, a list of items. 
+
+31:45 
+So that's the standard transaction data that we need to understand how to deal with the transaction data set. 
+
+31:51 
+and also we may have a graph data like the collaboration graph or the social media, social network graph 
+
+31:57 
+and those graphs provide actual information than the individual data points here 
+
+32:03 
+so we need to understand how to extract all these kind of graphs or interactions or connections among different data objects in the data set 
+
+32:14 
+so that's all the data formats we may have when we work for the company to solve the business problems 
+
+32:21 
+and use the other data sets. 
+
+32:24 
+But before we actually feed this data into our model, we also need to do some other processing and data understanding. 
+
+32:31 
+The most important thing is the data quality. 
+
+32:34 
+So this is very important because even though you have a very large data with so many attributes, 
+
+32:40 
+maybe this data is still useless because of the quality. 
+
+32:44 
+So we need to understand what kind of data quality problems we may have when we have a data set. 
+
+32:51 
+and how we can actually detect or to deal with these problems. 
+
+32:57 
+The most critical thing is that we need to detect or to understand the data quality issue. 
+
+33:03 
+The first issue is the noise and the outliers. 
+
+33:06 
+So what does that mean? 
+
+33:08 
+So for example, when we have a cell phone, the GPS, right? 
+
+33:13 
+Now it means that if we are using the Google Map in this area, of course it works very well. 
+
+33:20 
+But if you go to central, I don't know whether you use the Google Map in central with so many tall buildings around you. 
+
+33:27 
+Now your GPS location will be floating around, right? It is not that stable. 
+
+33:33 
+You cannot easily check your location, the exact location in the central, your hangout, your very big ranch 
+
+33:40 
+and the Google map cannot identify your exact location using Google map in that area. 
+
+33:46 
+So because the signal is so weak, the GPS signal is so weak, so the GPS chase collected in the area will be very noisy. 
+
+33:54 
+Now you can see, maybe you cannot use this kind of location check in central to easily identify whether this customer is near my DABAC, and I will send you a coupon, because the signal is not so stable, it's so noisy. 
+
+34:08 
+An outlier means that sometimes when you are walking in Hong Kong, and I keep chasing your location, but suddenly for two seconds, your GPS point was located in Shenzhen, and after three seconds, you go back to Hong Kong. So it does not make any sense, right? So you may have some two outliers or mistakes because of the signal collection issues. 
+
+34:31 
+And the second issue is the missing values. 
+
+34:34 
+So missing values means that when you have data recording, or when you're recording the data, you do not have the information. 
+
+34:41 
+But for some other records, you do have the information. 
+
+34:44 
+But you will not just ignore all these kinds of columns for SKUs, right, even though you have some missing values. 
+
+34:50 
+So if some of the records, they have missing values, then you will see we still have the columns, but we keep some of the records' values to be none, the NAN. 
+
+35:00 
+So that's very common. So imagine that if you go to the supermarket and you are never a membership of the page 
+
+35:07 
+and when you go shopping, then the supermarket has no idea who you are 
+
+35:14 
+and all your information, the age, membership ID, the gender, all the information will be missing, right? 
+
+35:21 
+It will be empty. Now what we can do with that? 
+
+35:25 
+And also when we have some duplicate data, then when I go shopping 
+
+35:30 
+So I put one cup of coffee, but maybe the check out is actually check out two bottles of coffee 
+
+35:38 
+But that's very common, so I don't know whether you put many, the retail store, right? 
+
+35:45 
+So that's the self-checkout, and you need to scan the code of the item to get a self-checkout 
+
+35:52 
+And usually when I scan this item, and you've got to scan this twice 
+
+35:57 
+So you may have to take more approaches, but you only got one item. 
+
+36:01 
+And there are so many other data quality issues that you may have in real world. 
+
+36:07 
+So let me give you an example. 
+
+36:09 
+So when I work for that company who is ordering this kind of world-class products, 
+
+36:14 
+so usually they need to do the daily inventory check, right? 
+
+36:17 
+So the daily inventory check means that by the end of the day, how many items I have left on the shelf. 
+
+36:24 
+So I need to check the inventory every day. 
+
+36:28 
+until, because I need to order some items for the next day, and do the demand analysis to check. 
+
+36:34 
+But that, some managers, they are so lazy. 
+
+36:38 
+They do not check this kind of sales or the inventory level every day. 
+
+36:43 
+They will just, okay, today my sales is zero, and tomorrow my sales is zero, 
+
+36:48 
+and on the third day I will sum the three day sales together as a single day sale. 
+
+36:52 
+So you see, zero, zero, big sale, zero, zero, big sale, and that big sale is even larger than the inventory level, so yesterday it's the inventory level, so you know that it does not make sense, right? 
+
+37:04 
+So that's because of this kind of non-consistency data recording. 
+
+37:10 
+So really you need to do the recording every day, but maybe the data collector is so lazy that he or she does not collect the data and find it. 
+
+37:20 
+and you may have the wrong data set. For that wrong quality data set, we can do nothing. 
+
+37:25 
+So we cannot analyze the view and the web itself because of the mistakes by the data collection. 
+
+37:32 
+So we need to understand the data quality issue. 
+
+37:35 
+In addition to the data quality, we have the dimensionality issue. 
+
+37:40 
+The dimensionality is that the number of SKUs is much much larger than we need. 
+
+37:48 
+And in that case, we may have the curse of dimensionality that all machine learning models cannot support a very small data set with so many, so few data records. 
+
+37:59 
+So if we have only 100 rows, or we have 1,000 columns of extras, because of the curse of dimensionality, and your model performance will be very bad. 
+
+38:10 
+Because your few records cannot support the high dimensional information we need to analyze. 
+
+38:16 
+So we have the dimensionality issue. So it is not the high dimension is the better. 
+
+38:22 
+So usually we need to get the most representative dimensions or features for our analysis. 
+
+38:29 
+And also we may have the sparsity issue indicates that when we have the records, 
+
+38:34 
+and we do want to collect some actual values for this data, for this group of data objects. 
+
+38:41 
+But unfortunately for many of them, they are zeros. These actual values are zeros. 
+
+38:46 
+Now if you see the data table, so many zeros, a very big data table, so many zeros, and they have no any values for this group of data objects 
+
+38:56 
+Now imagine that if your data table has so many zeros or none, then you can do nothing, right? 
+
+39:02 
+So you cannot deal with this data table because of the sparsity issue 
+
+39:06 
+and also the resolution issue is another dimension you need to check. 
+
+39:12 
+It does not mean that the resolution should be very very high or very very low. 
+
+39:16 
+So in case that whether the resolution level is the level you need to support your solution. 
+
+39:23 
+So for example for if you are doing the social media marketing or location based marketing for example for the GPS. 
+
+39:29 
+So I need, so if I am the retail store or if I am the platform vendor, I hope 
+
+39:37 
+Your location should be very, very high-resolution, right? 
+
+39:41 
+Because I need to exact location you are shopping 
+
+39:47 
+You are shopping in Starbucks, not in other coffee shop near Starbucks 
+
+39:51 
+I need to know you are located sitting in my retail store, not others 
+
+39:57 
+So then I will know that you are the recruiting and loyal customer 
+
+40:02 
+So the resolution should be very high 
+
+40:04 
+But sometimes we cannot 
+
+40:07 
+do that because first, the high resolution data will cost a lot of money to do the recording. 
+
+40:12 
+And second, we need to protect the privacy issue for the customer. 
+
+40:17 
+So usually you cannot see a very high resolution location data recording, but we have a range. 
+
+40:23 
+Now your GTX location may be within the 10 meter range. 
+
+40:27 
+So I don't know where you are, but I know you are in this 10 meter range. 
+
+40:31 
+For some other platforms, they protect your customers, so in the 30-minute range, I know you are now located in any of the possible locations in this big range, but I don't know where you are. 
+
+40:46 
+So you may see that, even though China is putting some regulations for the location data, so I don't know whether if you play Xiaohongsu, you know, when you have a post or comment. 
+
+40:59 
+others will see the promise level of your comments, right? 
+
+41:04 
+So I think that's very good, especially for some guys like me, the Wang Luopengzi. 
+
+41:09 
+So usually we do not want others to find the exact location of mine, right? 
+
+41:13 
+But they know I'm in Hong Kong, I'm in Guangzhou, but they will not be able to find me. 
+
+41:17 
+So that's the resolution level. So we need to check. 
+
+41:21 
+So when we have some data recording, we need to check whether this is actually a very high resolution of data or low resolution. 
+
+41:28 
+So for some stock price, we know that for some tick level, so my other paper actually deals with the stock price at 3 second level, very high resolution. 
+
+41:38 
+Every 3 seconds, we refresh the price at the bid-ask list. 
+
+41:41 
+So we get a very fine-grained data table because it is very high resolution, changes every 3 seconds. 
+
+41:48 
+But for others, we only do the daily, day-end price, we do not give the three-second level price, we give daily price, that's enough. 
+
+41:57 
+So for different resolution, we may get different analysis. 
+
+42:02 
+And yes, before break, we will have an in-class quiz. So the quiz question is very simple. 
+
+42:10 
+So we want to get to know this regression analysis we learned last week 
+
+42:15 
+And we know that we defined the Easter indicator to be 1, it is wholly otherwise 0 
+
+42:22 
+Now we need to answer three simple questions 
+
+42:25 
+What are the variables in this model and what are the attribute types? 
+
+42:28 
+Nominal, ordinal, interval, or ratio? 
+
+42:33 
+And what do the coefficients of these negative 170 and Easter 32,000 present? 
+
+42:39 
+so you need to write down these answers on the paper or you use the 
+
+42:44 
+please do not take pictures and send to your friends who are not here 
+
+42:47 
+okay so I mentioned please do not do that okay no no 
+
+42:52 
+you can take pictures of me but not pictures of Chris 
+
+42:56 
+So, please do not send this quick question to your friends, okay, if I'm not in the class, and yes, you can write down and take a picture and upload a picture to Canvas, so we'll have a quick question submission on Canvas very soon. 
+
+43:10 
+and you can also get a word file and type the answer in the word and send the word file to Canvas, okay? 
+
+43:19 
+So we have three minutes to finish and during the break you can still finish the quiz question. 
+
+43:24 
+The quiz will be closed at 2 p.m. 
+
+43:28 
+Okay, so let's have a quiz and a break, okay? 
+
+43:32 
+So we will be back at 1 p.m. 
+
+43:41 
+we want to describe the data we have using some summary statistics or some simple calculations. 
+
+43:49 
+So when we use some simple numbers, for example, the summary statistics, or to use some data 
+
+43:55 
+visualization to understand the patterns or the relationships we can extract from the 
+
+44:00 
+data. 
+
+44:01 
+And when we do this kind of simple analysis, we can also extract some alters or the association 
+
+44:08 
+patterns from different SKUs. 
+
+44:13 
+For the nominal attributes or the categorical attributes, we need to do some frequency counting. 
+
+44:19 
+So this is very important. 
+
+44:21 
+So we need to count how many records are holding these categories in our analysis. 
+
+44:28 
+For example, for the categorical attributes, like last week when we have the property type, 
+
+44:37 
+So you can come here and see what are the unique categories we have in this column 
+
+44:42 
+And among all these records, how many of them belong to different categories 
+
+44:47 
+And for some classification problems, so if you have the classification problem for your course project 
+
+44:54 
+You also need to pay attention to the frequency counting for your classification target 
+
+44:59 
+For example, for the bank transaction detection, fraud or non-fraud transactions labels, you need to do the frequency counting and see how many records in your data set would be fraud transactions and how many of them are normal transactions. 
+
+45:12 
+So usually they are not very close, these two numbers are very different from each other and you may have an imbalance of data issue. 
+
+45:19 
+So you will understand the imbalance of data issue at the very beginning when you have the data set. 
+
+45:26 
+And then we may have some summary statistics for some numerical or visual attributes 
+
+45:32 
+So we have to do some mean, median, or more calculations to get minimum, maximum percentiles of your data 
+
+45:40 
+And also calculate the inter-portal range and relevance 
+
+45:44 
+Also we can get the shape, the smoothness, or closeness of your variables 
+
+45:49 
+And for two or more variables, we can also do the correlation calculation to get the correlation relationship of multiple attributes. 
+
+46:00 
+So far we do not use any learning algorithms, we just get some summary statistics or patterns of the data we have. 
+
+46:07 
+So I'm not repeating the minimum and maximum, but here I want to inform you about the percentiles, because soon we will have a box plot using these calculations. 
+
+46:19 
+The percentile indicates that for any percentage P, for example, 10%, if you use 10% then the P equals to 10 
+
+46:27 
+For any percentage P, the P's percentile is the value such that percentage P of all actual values are less than this threshold 
+
+46:38 
+So what does that mean? 
+
+46:40 
+So let me give you an example 
+
+46:42 
+So here is the list of attributes we have in the data set 
+
+46:46 
+And in total we have 9 data points 
+
+46:50 
+and the x-values goes from the smallest value to the largest value. 
+
+46:54 
+So among these nine records of these attributes, I want to calculate the Q1 of the 25 percentile. 
+
+47:05 
+So what does this 25 percentile indicate? 
+
+47:08 
+It indicates that among the whole data set, the 25 percentile is the threshold that about 25 percentage of the total x-value values will be smaller than this threshold. 
+
+47:20 
+So what is that 25% of the data points? So we have 9 data points, so the 25% of the data points will be located around 2.75, right, so, sorry, 2.25, so it's in the middle between the second and the third X values. 
+
+47:44 
+here. So this, there is a threshold located here, and this threshold indicates there are about 25 percentage. 
+
+47:51 
+So there are two 25 percentage of the data points with their x values smaller than this threshold. 
+
+47:57 
+So 25 percentile. Now it is in the middle between 64 and 64, so it is average. 
+
+48:03 
+So 64 would be the 25 percentile that, about 25 percentage of total x values will be smaller than this threshold. 
+
+48:12 
+Q3 is 75 percentile. 75 percentile indicates a position around 7.75 here. 
+
+48:23 
+So among the nine records, there is one threshold located here, and about 75 percentage, 
+
+48:32 
+the whole 75 percentage of the actual values would be smaller than this threshold value. 
+
+48:38 
+so it's in the middle between 77 and 81 and actually the average of these two are just in the observations so it is 79 
+
+48:46 
+so 79 is the Q3 here and indicating that about 75% of the actual values will be smaller than this number 79 
+
+48:56 
+Now there is one measurement of the data range called interquartile range, which is Q3 minus Q1 
+
+49:04 
+So this range will tell you how distant this Q threshold will be 
+
+49:08 
+If your X value is very diversified, it is widespread, then this interquartile range will be very big 
+
+49:16 
+Otherwise it would be very small 
+
+49:18 
+So that's the range calculation 
+
+49:21 
+and again we may have the shape of your actual distribution so if we plot the density plot of all your actual values 
+
+49:29 
+so x-axis is your actual value and y-axis is the frequency counting for the density of your actual value 
+
+49:35 
+so we have this kind of smoothness. In the middle it is symmetrically distributed 
+
+49:43 
+so if this actual value is normal, the distribution is normal 
+
+49:49 
+SKU needs will be zero. Otherwise if your distribution is SKU to the left, then SKU needs will be positive, or if most of them are actually to the right-hand side, then it is negative. 
+
+50:01 
+So the SKU needs can tell you whether your data attribute value is naturally disputed or not. 
+
+50:09 
+And for the kurtosis, it's another shape calculation that if the data is normally distributed, 
+
+50:17 
+so in the middle, if it is normally distributed, we get zero kurtosis. 
+
+50:21 
+Otherwise, if your data is more concentrated in the middle, then the normal distribution, then we get positive kurtosis. 
+
+50:28 
+Otherwise, if your data is very, very flat, and the variance is much larger than the normal distribution, 
+
+50:35 
+then we get negative kurtosis. 
+
+50:38 
+number to describe the shape of your SKU values. And also if we want to understand 
+
+50:49 
+three or more SKU values co-occurrence, then we can do some association analysis or the correlation analysis. 
+
+50:56 
+So for the correlation analysis, we can calculate the co-valence or the falling correlation analysis. 
+
+51:07 
+So we just do this kind of covariance calculation or calculate the correlation we will understand when these two columns are linearly or non-related to each other. 
+
+51:17 
+So usually if we consider the two actual values, x and y, so maybe they are positively linear correlated or negative linear correlated, or they are not correlated at all. 
+
+51:28 
+So as x changes, y does not change. 
+
+51:31 
+But that's one special case that the correlation between these two variables, they are zero, but they do have the relationship. 
+
+51:38 
+But their relationship is non-linear, it's non-linear. 
+
+51:42 
+If they have this kind of U shape, then the correlation coefficient can still be zero, but actually we have the relationship between these two variables. 
+
+51:55 
+So I don't know whether I told you that when I deal with the demand analysis for the retail store, for example, for the cold drink. 
+
+52:04 
+So for the cold drink or the ice cream for the demand for some retail store who are selling the cold drinks. 
+
+52:12 
+So we know that in general, intuitively, when the temperature outside increases, the demand of the cold drink will also increase, right? 
+
+52:21 
+Intuitively. 
+
+52:23 
+So my engineers in that research group. 
+
+52:25 
+KC graduates. He just used the temperature as one of the key features. That is feature into the demand prediction model and the model is a linear model but unfortunately the temperature does not present a significant contribution to the prediction result. That doesn't make sense. 
+
+52:49 
+So everybody thinks that it does not make sense, so the retail managers, they also think, well why, the temperature increase, why the demand is not linearly increased, or related to the temperature 
+
+53:01 
+We just open the box and see, so it's not a pure linear relationship, it's non-linear 
+
+53:09 
+So when the temperature increase, so when you just enter the summer, when the temperature increase, actually yes, we observe that demand of the sales increase 
+
+53:18 
+But at certain level of the temperature, as the temperature continues to increase, the demand will drop significantly. 
+
+53:24 
+So can you imagine why, when the temperature continues to increase, why the demand of cold drinks significantly decreases? 
+
+53:34 
+It's not tasty? 
+
+53:36 
+Yes? 
+
+53:37 
+It's not tasty? 
+
+53:38 
+No. 
+
+53:39 
+People don't want to hang out. 
+
+53:40 
+Yeah, people don't want to hang out. 
+
+53:43 
+People are not willing to make any purchase outside to visit the retail store. 
+
+53:50 
+So, it's not that surprising at all, right? 
+
+53:52 
+But the question is that we need to use the non-linear model 
+
+53:55 
+Or we can incorporate a total visit as the big background of the sales performance into this analysis 
+
+54:03 
+Actually, they keep the quality of the item very well 
+
+54:06 
+But the question is that they have very few visits when the temperature is very high 
+
+54:12 
+Like me, I prefer staying at home, playing games, not going outside for shopping 
+
+54:19 
+Okay, so what we need to understand is that sometimes we need to open the data before we use the data to build the model. 
+
+54:29 
+We need to understand the pattern of the data. 
+
+54:33 
+And I want to emphasize that the correlation analysis does not indicate the causality. 
+
+54:41 
+So what does that mean? 
+
+54:42 
+So you can see that there are two things that usually come together or usually happen together, but there are no causalities. 
+
+54:50 
+One happens does not indicate that the other will happen. 
+
+54:54 
+Or the other happens is not because of the first thing is happening. 
+
+54:58 
+So let me give you an example. 
+
+55:02 
+Whenever I made a purchase for the Tesla stock, the stock price dropped next day. Every time. Every time. 
+
+55:12 
+Now I cannot tell Musk that your stock price dropped. It's all because of me. 
+
+55:22 
+because I made the purchase of your stock and that's why it drops. So there's no causality, right? 
+
+55:28 
+It's just co-occurrence. It just happens to show up together. 
+
+55:32 
+So usually the correlation does not indicate causality. We need to make sure that we do not... 
+
+55:37 
+identify the causality relationship. But if we want to extract the causality 
+
+55:44 
+relationship, yes, we can do that, but not using the correlation coefficient. We can 
+
+55:48 
+use some experiments, the lab experiment or the cross-line experiment to have 
+
+55:54 
+the statistical model to identify the causality relationship, but not using the 
+
+55:58 
+correlation coefficient. So, unfortunately, the lab experiment is not covered in this 
+
+56:06 
+later, but not today, okay, for the causality relationship. 
+
+56:11 
+Now, following the correlation, I want to show that it's not only about correlation 
+
+56:17 
+coefficient that can show you the call or cause relationship among two attributes, but 
+
+56:24 
+also do the association analysis to show whether two attribute values, they will show up together. 
+
+56:30 
+So, the basic idea of the association analysis comes from the supermarket transaction. 
+
+56:35 
+So when the supermarket managers, they are dealing with the load transaction data set 
+
+56:42 
+So, for example, when I go to the supermarket, I put all these items into the basket, right? 
+
+56:48 
+And I check out, I made a purchase for this single transaction, I purchased all these items in my basket 
+
+56:55 
+The managers only care about two things from my transaction 
+
+56:59 
+First, if there is one random customer coming to my supermarket 
+
+57:07 
+So what's the probability that the two items will show up together in a single transaction? 
+
+57:13 
+So that's what I tell about. 
+
+57:16 
+Because if you go to the taste, you may realize that the bread, and the milk, and the food, 
+
+57:25 
+these three categories of items, they are located very close to each other, right? 
+
+57:30 
+You may wonder why. 
+
+57:34 
+The supermarket manager will analyze the transaction data and he or she will realize that people usually put these three categories of items together in a single transaction 
+
+57:43 
+If that's the case, why not just make these three items closer to each other so you can make a very easy purchase 
+
+57:49 
+Now that's the first question 
+
+57:52 
+The second question by the manager is that 
+
+57:57 
+Now if I already see that one customer purchased one milk 
+
+58:05 
+Now let's say you purchase this thing. Now what's the probability that you will purchase that? 
+
+58:10 
+So are you interested in purchasing that? If you are interested, but I haven't seen you make a purchase, 
+
+58:18 
+I may send some coupon or recommendation for you, right? 
+
+58:22 
+Now, the managers only care about these two questions. Actually these two questions are different. 
+
+58:29 
+So it's another kind of call callers. 
+
+58:34 
+relationship. So whether these two items, they will show up together in a single basket. 
+
+58:40 
+So similar to whether the two students will come to class together. Right? 
+
+58:45 
+So, we can see, to deal with this kind of transaction data set and answer these two questions, 
+
+58:54 
+we need to understand the association rule, mining. 
+
+58:58 
+So actually we are trying to extract a co-occurrence relationship or association relationship among different items that may show up together in a single basket when you check out. 
+
+59:11 
+So an example of association rule looks like that. We have left hand side items and right hand side items. 
+
+59:17 
+So we want to analyze associations among these two items on the left hand and right hand side. 
+
+59:23 
+So here is the typical transaction data set that we have, and we want to extract some patterns according to this rule set. 
+
+59:32 
+For example, for the diaport to beer, we want to understand why do these two items, diaport and beer, they will show up together from a random customer? 
+
+59:41 
+Or, the second question is, when I observe that somebody purchased diaport, what's the probability that he or she will also purchase beer? 
+
+59:50 
+Now we want to answer these questions, so the answer to these questions would be very important, not only for the supermarket 
+
+59:59 
+Of course, for the supermarket, we can do this kind of between-values calculation 
+
+01:00:04 
+so to see whether apple and coke will be purchased together 
+
+01:00:07 
+or we can identify whether these two big categories of items should be placed across each other 
+
+01:00:13 
+the food and magazines, whether these two categories of items will be placed here 
+
+01:00:18 
+in this region together for the supermarket 
+
+01:00:21 
+Now we can also see that we can see 
+
+01:00:24 
+we need to understand this kind of 
+
+01:00:27 
+Association analysis can be also applied to some actual values. So for example, for this 
+
+01:00:35 
+set, there are some of the applicants, they are married. The marriage equals to yes or no. 
+
+01:00:42 
+So we can consider the marriage equals to yes is one item, like milk. The marriage equals to no is 
+
+01:00:49 
+the other category of milk, right? So we can see these two actual values as two different items. 
+
+01:00:56 
+Now it becomes another association analysis to analyze whether the actual value for some transaction or the applicants 
+
+01:01:04 
+when the managed data is equal to years and the homeowner's data is equal to years 
+
+01:01:10 
+whether these two items will show up together with a very high probability. 
+
+01:01:19 
+is all the conditions that we always see that somebody is already married 
+
+01:01:24 
+what is the probability that he or she will also have the house 
+
+01:01:28 
+so you can see this question is very important for some Chinese parents 
+
+01:01:34 
+that when you want to get married you need to buy a house, right? 
+
+01:01:40 
+So we can see, we can also use this association rule analysis, the 11th slide item, then you consider this as an item, 11th slide item, you can consider, you can calculate the co-occurrence of these two items, the two attribute values, whether they show up together. 
+
+01:01:56 
+Or we can do the overtime association. 
+
+01:01:59 
+So for the year 1, if you purchase a textbook of database, I can also calculate that the probability that you will purchase data mining textbook in year 2. 
+
+01:02:11 
+So in other words, what's the probability that you will purchase two different textbooks in the subsequent years? 
+
+01:02:18 
+So what's the probability? 
+
+01:02:19 
+Also, I already see you purchase the database in year 1. 
+
+01:02:24 
+So whether in year two I will send some coupons or advertisement for you to purchase the data mining textbook. 
+
+01:02:30 
+So these association patterns among all these left hand side and right hand side items would be very important. 
+
+01:02:40 
+So for example when you are running the supermarket or to do the product placement, you need to understand how to answer these questions. 
+
+01:02:49 
+Or if you are doing some recommendations, I don't know whether you get a new cell phone or not. 
+
+01:02:55 
+So, when you are looking for the new cell phone, right, then the Apple will analyze what's the probability that you will also purchase the case, the two items, call, callers, or association, relationship. 
+
+01:03:09 
+So once you identify that, for somebody, for example, for somebody like me who purchased the iPhone for Mac, then the Apple will analyze, okay, what kind of Apple case you would be willing to purchase. 
+
+01:03:26 
+communication, authorization. Okay, so usually I look before this case. This case is for my wife, and it says 
+
+01:03:36 
+don't be afraid to put your mental health first. So this was for her, but she got a 
+
+01:03:43 
+smaller one, so she passed this bigger one to me. So we can see, we can do all 
+
+01:03:48 
+this kind of association analysis, when we have the item recommendations, right? 
+
+01:03:53 
+Now, also, I don't know whether you have this kind of experience, that when you first, the first day you come to Hong Kong, 
+
+01:04:00 
+so when you book a flight from Seachip or from other companies, then you book the flight to Hong Kong, 
+
+01:04:08 
+the next very second you are receiving an advertisement to recommend you some hotels in Hong Kong, right? 
+
+01:04:15 
+Now why, why this happen? Because if you consider the flight as one item and the hotel as other item 
+
+01:04:23 
+The flight to Hong Kong and the hotel in Hong Kong, these two items will be purchased very frequently according to the historical transactions 
+
+01:04:32 
+Now the companies will analyze all the historical transactions and make this kind of recommendation or boundary recommendation for you 
+
+01:04:39 
+That if you purchase flight and hotel together, I give you a discount 
+
+01:04:46 
+If I already see that you are looking for flight, I already get your cookie, even though you haven't purchased any flight ticket 
+
+01:04:54 
+Once I see you that you already booked a flight or you are looking for a flight to Hong Kong, I will send a boundary recommendation or the hotel discount for you directly on the same page 
+
+01:05:05 
+I don't know whether you have experience 
+
+01:05:07 
+But, the reverse part, from one side to another side, we are not 
+
+01:05:13 
+be a very clear pattern. 
+
+01:05:15 
+So in other words, given I observe that you already booked a hotel in Hong Kong, 
+
+01:05:22 
+the probability that you will receive a coupon for flight will be lower. 
+
+01:05:29 
+So if I already observe that you booked flight to Hong Kong, you will receive a hotel coupon. 
+
+01:05:34 
+But in the other way, if I already observe that you booked a hotel in Hong Kong, 
+
+01:05:39 
+the probability that you will receive a flight will be lower. 
+
+01:05:43 
+Why? Because the other company knows that if you fly to Hong Kong, you must find a place to live. 
+
+01:05:52 
+But if you always want a place to live, you may take the high speed railway or the subway to Hong Kong, right? 
+
+01:06:00 
+You may not purchase a flight. 
+
+01:06:02 
+In other words, in front of local transaction data, when somebody already purchased a flight, 
+
+01:06:07 
+in a very few seconds, they will purchase the hotel. 
+
+01:06:10 
+But for some other, most customers, when they book the hotel, they may not purchase the flight. 
+
+01:06:16 
+So that's why the conditional community is very important. 
+
+01:06:19 
+So we care how to answer all these questions. 
+
+01:06:22 
+If we can answer these questions, we can get some useful patterns from our data sets. 
+
+01:06:31 
+Next, how to do that? How to get this kind of association analysis to answer that two critical questions? 
+
+01:06:38 
+For example, once we have this, transaction data set, we need to answer the two questions. 
+
+01:06:43 
+One is the random probability. For random customer, what's the probability that you will purchase the two items together? 
+
+01:06:50 
+Second question is the conditional probability. So conditional on that I already observed you purchased one item, 
+
+01:06:57 
+what's the probability that you will purchase the other item? 
+
+01:07:00 
+So the two questions. To answer that kind of question, we need to understand some concepts in the association room mining. 
+
+01:07:07 
+The first concept is the item set. The item set is a basket of items. 
+
+01:07:12 
+So once you are given a data set, there are so many baskets of items. 
+
+01:07:18 
+The combinations of items, we can put different items in the basket. 
+
+01:07:22 
+Then we get different item sets. The K item set, you can say in this item set we have K items. 
+
+01:07:28 
+Now once we have given the item set and the transaction data, we can do some simple calculation. 
+
+01:07:34 
+For example, the first calculation we can do is called support count. 
+
+01:07:38 
+So, the support count of the item set indicates that among the transaction we have, 
+
+01:07:46 
+what's the frequency of the occurrence of this item set. 
+
+01:07:50 
+For example, I want to get the support count. 
+
+01:07:56 
+of this item set, the item set has three items inside the milk, bread, and diet part, 
+
+01:08:02 
+and now I have a historical record of five transactions, now I just do the frequency counting. 
+
+01:08:09 
+So does the fourth transaction, ID1, contain this item set? 
+
+01:08:15 
+No, right? The fourth transaction only has two items. 
+
+01:08:18 
+For this item set, I need to observe milk, bread, and diet part. 
+
+01:08:26 
+A transaction contains the item set, milk, bread, and diaper. No, right? Milk is missing. 
+
+01:08:36 
+So the third one, the milk is inside. What about bread and diaper? The bread is missing, right? 
+
+01:08:45 
+Now the third transaction ID does not contain this item set. 
+
+01:08:50 
+Now what about the fourth one? Does the fourth transaction contain this item set? Yes, right? 
+
+01:09:01 
+Can you see? Can you check? It contains the item set. So the count plus one. What about this? 
+
+01:09:07 
+Dress, milk, and dapper. Yes, right? So the transaction four and transaction five, these two 
+
+01:09:16 
+transactions contain this item set. The milk, dapper, milk and dapper. So this 
+
+01:09:22 
+number here is two. Two transactions contain this item set. 
+
+01:09:29 
+Now once we get the support account, we can get the support. 
+
+01:09:33 
+The support is actually the fraction of the transactions that are contained in the item set. 
+
+01:09:38 
+So here we have five transactions, and two of them contain the item set. 
+
+01:09:43 
+So the support of this item set will be 2 over 5. 
+
+01:09:48 
+Is that clear, how we did the calculation? 
+
+01:09:50 
+Just do the frequency counting, right? 
+
+01:09:53 
+Now, we only care about the item set with a very high frequency. 
+
+01:10:00 
+Why we only care about why this basket of items, they will show up together with a very high frequency 
+
+01:10:06 
+If the frequency that they will show up very, the frequency is very low, actually the store managers will not care about this kind of combinations of items 
+
+01:10:14 
+So, we only care about the frequent item sets 
+
+01:10:18 
+Now, after we can do the frequency counting, we will be able to view the association rule mining 
+
+01:10:27 
+So, a typical association rule has two item sets 
+
+01:10:31 
+the left hand side item set and the right hand side item set 
+
+01:10:35 
+so we use X and Y to indicate the left hand side and the right hand side 
+
+01:10:39 
+so from X to Y 
+
+01:10:41 
+so here you can see from X to Y 
+
+01:10:43 
+and this is one association rule 
+
+01:10:47 
+for example we can get this association rule for analysis 
+
+01:10:52 
+so X is the item set of milk and diaper 
+
+01:10:56 
+and Y here is the beer 
+
+01:11:00 
+So to analyze this association rule, we want to answer the two questions related to this association rule. 
+
+01:11:07 
+The first question is the support. 
+
+01:11:10 
+So we want to calculate the support of this association rule. 
+
+01:11:13 
+That's the fraction of transactions that contain both X and Y. 
+
+01:11:18 
+And the confidence. 
+
+01:11:21 
+The confidence is that to measure the conditional probability that given the observation of X, 
+
+01:11:26 
+what's the probability that you will see Y in the basket? 
+
+01:11:30 
+Let me give you an example of this transaction, of this association rule in this transaction data set. 
+
+01:11:36 
+So this is the association rule we want to analyze. 
+
+01:11:40 
+Now the first question is the support. 
+
+01:11:42 
+The support actually helps us answer the question that given a random customer, 
+
+01:11:48 
+what would be the probability that you will see both X and Y in the basket? 
+
+01:11:53 
+So we know that we need to get the union of the two baskets into a single one 
+
+01:11:58 
+with milk, daipan, and beer 
+
+01:12:01 
+So actually we did the frequency counting before, right? 
+
+01:12:03 
+So the part of this, both X and Y in an item set is 2 over 5 or 0.4 
+
+01:12:11 
+So what does this number indicate? 
+
+01:12:14 
+It indicates that if there is a random customer, according to my historical transaction data set, 
+
+01:12:20 
+for a random customer coming to the supermarket, there is a 40% probability that I will see both eggs, 
+
+01:12:29 
+the milk and dapper, and the beer together in the basket. 
+
+01:12:35 
+So 40% of the probability, random for a random customer. Is that clear? 
+
+01:12:42 
+for the definition of the support. 
+
+01:12:44 
+It's not only about a 0.4. 
+
+01:12:46 
+We understand the physical meaning of this 0.4 and why we need this number. 
+
+01:12:50 
+It's a random pick customer's purchase probability. 
+
+01:12:54 
+Now the confidence indicates that once we already see X, 
+
+01:12:59 
+that I already see that somebody already purchased milk and a diaper in the basket, 
+
+01:13:05 
+what is the probability that I will also see beer? 
+
+01:13:12 
+Now, among the five transactions, how many of them that we already observed milk and diaper? 
+
+01:13:18 
+Milk and diaper, the first one is no, right? 
+
+01:13:24 
+Second milk and diaper is no. 
+
+01:13:27 
+The third one is yes, right? 
+
+01:13:29 
+It contains milk and diaper. 
+
+01:13:31 
+So we already see milk and diaper in this basket. 
+
+01:13:34 
+About first one, milk and diaper, milk and diaper, yes. 
+
+01:13:45 
+The left hand side, I think they are milk and diaper in the basket 
+
+01:13:49 
+So this number here is 3 
+
+01:13:53 
+So among the 3 transactions that we already observed milk and diaper 
+
+01:13:58 
+How many of them also observed beer? 
+
+01:14:01 
+2, right? 
+
+01:14:04 
+Now we get the number 2 over 3 
+
+01:14:06 
+Or 0.67 
+
+01:14:09 
+So what does that mean? 
+
+01:14:11 
+It means that, if I already know a customer who already purchased milk and a barrel 
+
+01:14:18 
+now conditional on that observation, the probability that this customer will purchase beer 
+
+01:14:25 
+that beer will also show up in the basket, the probability is 67%. Is that clear? 
+
+01:14:36 
+So that's called confidence. 
+
+01:14:38 
+Now these Q numbers can answer many of the association patterns for the supermarket managers. 
+
+01:14:46 
+So the support, so once you are given the transaction and you may need to calculate the support and interpret the number 
+
+01:14:53 
+And also for the confidence, so for another given data set you should be able to calculate the confidence for this transaction data set 
+
+01:15:02 
+So usually the managers only care about the transactions or the rules, the association rules with a very high support and confidence 
+
+01:15:13 
+Then we usually push minimum support and minimum confidence to filter out some important association rules from your transaction data set 
+
+01:15:22 
+Because we can analyze so many different transaction association rules 
+
+01:15:26 
+So we need to do this kind of filtering 
+
+01:15:29 
+and we can measure this up, this threshold, to see which are the association rules that 
+
+01:15:36 
+managers should pay special attention to, with very high values. 
+
+01:15:40 
+So if we put the minimum support and minimum confidence into the calculation, 
+
+01:15:45 
+then we only check the two rules, we only get the two rules. 
+
+01:15:49 
+The breadth to diaport and the diaport to breadth. 
+
+01:15:52 
+So these are two different rules. 
+
+01:15:57 
+An association rule with a very low support is typically not that important or interesting 
+
+01:16:04 
+because these two items, left hand side, right hand side, item side, they usually will not show up together. 
+
+01:16:10 
+I have no idea whether they have a strong relationship or not, so just forget about these potential bundling of the items. 
+
+01:16:16 
+And also the high confidence usually presents a very strong reliability of this kind of co-occurrence. 
+
+01:16:23 
+Given the X, we always have a high probability of observing Y from the data set. 
+
+01:16:28 
+So, the managers really care about these two items, the two terms, the support and the confidence. 
+
+01:16:36 
+But there is one special case called the imbalanced observation. 
+
+01:16:40 
+And when the imbalanced observation happens, there is another issue. 
+
+01:16:44 
+So I will tell you what is called imbalanced observation. 
+
+01:16:47 
+But this example is very interesting. 
+
+01:16:51 
+So, imagine that we are running the Starbucks retail store in Festival Walk 
+
+01:16:58 
+In the Festival Walk, there's a Starbucks. I don't know whether you purchase coffee over there 
+
+01:17:04 
+So you know that Starbucks sells tea and coffee, right? 
+
+01:17:11 
+They sell both tea and coffee, so I can purchase tea or I can purchase coffee 
+
+01:17:15 
+So the manager wants to understand this association rule, from tea to coffee 
+
+01:17:20 
+Now the manager wants to know, for some customers who already purchased tea, should I actually recommend coffee to them, send some coupons of the coffee to them so they can make a purchase of coffee, or I should avoid this kind of coupon? 
+
+01:17:36 
+So I want to analyze this tea to coffee association rule. So like me, I always purchase coffee. I usually do not purchase tea. 
+
+01:17:46 
+So let's see, among all the historical transactions, here we have 100 transactions, totally. 
+
+01:17:53 
+Totally 100 transactions, and we do the frequency counting for all the transactions, and I get this table. 
+
+01:17:59 
+So this 15 here indicates that among 100 transactions, 15 of the customers purchased both tea and coffee together. 
+
+01:18:08 
+So this is number 15. 
+
+01:18:15 
+5 customers purchase tea, but not coffee, and here 75 indicates that 75 of the customers purchase coffee, but not tea, so you get this number 
+
+01:18:33 
+And 5 here indicates that 5 customers come here and purchase nothing, so total is 100 
+
+01:18:45 
+Now, we can use these numbers to do the calculations 
+
+01:18:51 
+so the confidence of this association rule is that so from tea to coffee so 
+
+01:18:57 
+given the observation of tea how many of them purchase coffee right so how many of 
+
+01:19:02 
+them we already observed that how many of them purchase tea in total there are 20 
+
+01:19:08 
+customers purchase tea right so among the 20 customers who already purchase tea 
+
+01:19:14 
+how many of them also purchase coffee 15 right you get these two numbers 
+
+01:19:26 
+So the confidence of this association rule is 15 over 20, or the 75 percentage. 
+
+01:19:32 
+So how to interpret this 75 percentage? 
+
+01:19:36 
+It indicates that once I observe somebody purchase tea, there are some 75 probability that this customer will also purchase coffee. 
+
+01:19:45 
+So do you think that this probability is very high? 
+
+01:19:49 
+It is very high, right? 
+
+01:19:52 
+So should I recommend coffee to a tea lover? 
+
+01:19:56 
+From this number it should be. 
+
+01:20:00 
+But it doesn't make sense, right? For me, I only choose one. 
+
+01:20:06 
+So yeah, I prefer tea, usually I will not purchase coffee in Starbucks. 
+
+01:20:11 
+If I prefer coffee, I will not purchase tea, right? 
+
+01:20:14 
+But this number here is very high, 75. 
+
+01:20:17 
+Now, just something inconsistent here. So what happened? 
+
+01:20:23 
+I get a number that may not be so real, but this is from our transaction. 
+
+01:20:29 
+So let's take another number from this transaction. 
+
+01:20:35 
+So we call that the confidence of this association rule is 75%. 
+
+01:20:40 
+Now what about the support of coffee? 
+
+01:20:43 
+So what is the probability that if I do not know any preference of the customers, 
+
+01:20:48 
+for a random customer who comes to Starbucks, for a random customer, 
+
+01:20:52 
+what is the probability that this customer will purchase coffee? 
+
+01:20:58 
+So among the 100 random customers, coffee purchase is 90, right? 
+
+01:21:04 
+So among the 100 random customers, if this customer is a random customer, and you don't know whether you prefer tea or coffee, it's a random customer. 
+
+01:21:15 
+A random customer who comes to Starbucks, the probability that this guy will purchase coffee is 90%. 
+
+01:21:23 
+Now you get some numbers, right? 
+
+01:21:26 
+So, if I do not know whether you like tea or coffee, the probability that you will purchase coffee in Starbucks is 90%. 
+
+01:21:36 
+But if I know that you prefer tea, the probability that you will also like coffee is actually lower than the random customer, 
+
+01:21:47 
+who has no information about the tea or coffee preference. 
+
+01:21:51 
+Now you see it makes sense, right? 
+
+01:21:53 
+The information or the condition about your tea preferred will lower the probability of purchasing coffee 
+
+01:22:02 
+So, it actually drops the probability that I will make a purchase of coffee 
+
+01:22:13 
+Now it makes sense 
+
+01:22:14 
+Now if we go to another association rule 
+
+01:22:21 
+So if I consider these association rules, so what's that? 
+
+01:22:26 
+So among all the transactions, how many of them are not T? 
+
+01:22:30 
+80, right? Not T? 
+
+01:22:36 
+So these two numbers add together, it's 80. 
+
+01:22:38 
+So conditional on not T, I already know that you will not purchase T, not T. 
+
+01:22:44 
+The probability that you will purchase coffee is 75 over 80, which is higher than 90% of random customers. 
+
+01:22:53 
+In other words, if I know that you are not a purchase team, the probability that you will like coffee is higher than the customer. 
+
+01:23:00 
+So we can see the 75 number here alone is actually misleading. 
+
+01:23:07 
+We need to compare these two numbers together to make a judgment about whether these two items, they have a very high probability to be purchased together. 
+
+01:23:16 
+So, there is a new method called LEAD. 
+
+01:23:22 
+The list of the oscillation rules from X to Y is the confidence of the rule divided by the support of the consequent, PY 
+
+01:23:30 
+So what does that mean? 
+
+01:23:34 
+Okay, some of you are like, oh, I have had so many P's, Y's, X's 
+
+01:23:40 
+But you need to understand the interpretation behind this, right? 
+
+01:23:44 
+Because when you are running a Starbucks, you need to get these numbers 
+
+01:23:49 
+So what does the PY here indicate? 
+
+01:23:51 
+It indicates that for a random customer who approaches coffee, the one hand side item. 
+
+01:23:57 
+Now, the confidence of the rule is that given the condition of X, the probability that you 
+
+01:24:04 
+approach is Y. 
+
+01:24:05 
+So I have the conditional probability to a random PY customer. 
+
+01:24:10 
+So if the conditional probability is lower than the random probability, what does that 
+
+01:24:17 
+mean? 
+
+01:24:17 
+It means that the information of X is lower than the probability of Y 
+
+01:24:22 
+So if the list is less than 1, it means that this rule is worse than not having any rule 
+
+01:24:33 
+So these two items, they are negatively associated to each other 
+
+01:24:38 
+Because the information of X is lower than the probability of Y, right? 
+
+01:24:42 
+So they become negatively associated 
+
+01:24:45 
+So what about those lists? If it's less than 1, then they become positively associated 
+
+01:24:51 
+So from this case, we know that if the list of the two items is less than one, they are the substitution effects 
+
+01:24:58 
+They are the substitution effects, you will have to choose all coffee, choose one of these two 
+
+01:25:04 
+But if it is larger than one, then they become dependent effects 
+
+01:25:08 
+So we can bundle these two items together to increase the purchase probability 
+
+01:25:14 
+So you get my point? 
+
+01:25:17 
+So why did this happen? Now we need to understand why this 95% here is misleading 
+
+01:25:24 
+It's because the transaction is imbalanced 
+
+01:25:28 
+The total number of costs of coffee purchase and the total number of tea purchase is imbalanced in this transaction data set 
+
+01:25:36 
+If 50-50, then you do not need the lead 
+
+01:25:39 
+50 coffee and 50 tea for the random pick, you do not need that 
+
+01:25:47 
+90 of them purchase coffee and only 20 here purchase tea, right? 
+
+01:25:53 
+So they are not balanced. 
+
+01:25:55 
+The two items, they have very different purchase frequency. 
+
+01:25:59 
+So that's why when you have this kind of confidence calculation for two items with very different support, 
+
+01:26:05 
+then you may need to consider the lift. 
+
+01:26:07 
+So is that clear? 
+
+01:26:09 
+So far so good. 
+
+01:26:13 
+So, interesting, right? 
+
+01:26:15 
+So, we purchase Starbucks every day, but we don't know that there is a very confusing association analysis here. 
+
+01:26:22 
+So, if the Starbucks manager didn't take my class, he may actually put the two items together, but that's less efficient. 
+
+01:26:31 
+Because of this kind of list calculation is missing. 
+
+01:26:36 
+So, imagine if you see a transaction data set in your final exam. 
+
+01:26:42 
+and some questions. You should be able to get some formulas from all these slides to do some simple calculations, right? 
+
+01:26:49 
+There's no one to repeat that. So far so good? So easy, right? 
+
+01:26:57 
+Just 1, 2, 3, 4 frequency counting, we get the answer. 
+
+01:27:00 
+But you need to understand the physical meaning behind these numbers after you get the association rule analysis. 
+
+01:27:09 
+Now finally, we have the data, so once after we get the data, we also understand data and when we need to do some preprocessing of the data 
+
+01:27:17 
+The first data preprocessing is called aggregation 
+
+01:27:21 
+So what does that mean? 
+
+01:27:24 
+So usually we want to reduce the number of records or the number of features from the data sets by doing the aggregation 
+
+01:27:31 
+So let me give you an example 
+
+01:27:34 
+So when we have this kind of hourly sales of a product 
+
+01:27:41 
+For example, I have the hourly sales of this coffee drink, hourly, so it's very fine-grained 
+
+01:27:49 
+But what I need to support the business solution is to decide how many cups of coffee I need to prepare for tomorrow 
+
+01:27:57 
+The daily total demand 
+
+01:28:01 
+Now, I do not care about the hourly demand, right? 
+
+01:28:04 
+So hourly demand, yes, it provides more information about hourly demand, but does not make any new actual value for me to make daily demand prediction. 
+
+01:28:14 
+So I have a time series of the hourly demand for certain items, but my problem is doing the daily demand prediction. 
+
+01:28:21 
+So I need to average hourly demand into a daily demand record. 
+
+01:28:26 
+And then we do the daily demand prediction and time series. 
+
+01:28:29 
+So my fundamental unit, the basic unit of analysis would be the daily aggregated demand instead of the hourly demand. 
+
+01:28:37 
+So why this is important? Because sometimes when your data is via high resolution, then the data becomes fast and noisy. 
+
+01:28:47 
+Hourly demand can be very noisy, but total demand will have a very small standard deviation than the hourly demand. 
+
+01:28:54 
+So how do we do the data aggregation? Usually we get a better pattern of the data and we can better support the solution of our business solutions. 
+
+01:29:05 
+And also when the data is too large, so we can do some sampling before we do the modeling. 
+
+01:29:12 
+Sampling means that we want to use a small dataset to present the patterns of the large population of the data. 
+
+01:29:19 
+We hope that the small sample, the conclusion we get from the small sample can be applied to the whole generation of the large sample of the population 
+
+01:29:27 
+So there's the trade-off 
+
+01:29:29 
+So for example, at the very beginning we have 8,000 data points in the original dataset 
+
+01:29:34 
+But I do not want to analyze this data pattern one by one, the data points one by one 
+
+01:29:38 
+So I randomly sample the dataset with 2,000 data points 
+
+01:29:44 
+So we get this 
+
+01:29:46 
+Smaller size data set, but still we can see the pattern, right? 
+
+01:29:50 
+But the computational resources we need to get this pattern will be much much smaller 
+
+01:29:56 
+But if I oversample that, then we only get 500 data points 
+
+01:30:02 
+Sometimes we can see a pattern but not that clear 
+
+01:30:05 
+It's actually we sampled oversampled small data set and we didn't get many useful patterns from the small data set 
+
+01:30:14 
+So what we can do? 
+
+01:30:17 
+So, that's the trade-off. We want to use the sample, but we do not want to lose so much information from the small sample. 
+
+01:30:24 
+In general, there are two types of sampling. The first one is the random sample. The second is the stratified sampling. 
+
+01:30:31 
+Random sampling is very easy. We just randomly pick the small sample from the whole population. 
+
+01:30:36 
+Stratified sampling means that we want to keep some certain properties of the original population in my data sample. 
+
+01:30:45 
+For example, in my class, there are about 60 boys and 40 girls in my class 
+
+01:30:51 
+Now I want to draw a sample of 10 students 
+
+01:30:54 
+But I want to keep this 6 to 4 
+
+01:30:56 
+So no matter what kind of random samples I pick from the 100 students' whole population 
+
+01:31:02 
+I will keep the 10 students in the sample that has 6 boys and 4 girls 
+
+01:31:07 
+So I want to keep the proportion fixed in a small sample 
+
+01:31:13 
+and sometimes we want to do this kind of dimension reduction because we do not want to deal with very high dimensional data 
+
+01:31:19 
+and some of the dimensions they are not so informative or they may be noisy 
+
+01:31:24 
+and so we want to reduce the dimensions. 
+
+01:31:27 
+So we will learn more about how to reduce the dimensions next week. 
+
+01:31:33 
+The purpose is to avoid the dimensionality of the data and we want to use the most representative columns 
+
+01:31:39 
+to differentiate different data objects in our datasets. 
+
+01:31:43 
+So we have the feature selection and the dimension reduction. 
+
+01:31:46 
+And sometimes we may need to create some new features. 
+
+01:31:49 
+So when we have some... 
+
+01:31:52 
+stock price, we need to create some indicators from the combinations of the raw data, the historical price, or the bid-ask threat 
+
+01:32:00 
+so we create some signals to make future predictions 
+
+01:32:04 
+and finally I want to remind you that when you have a very high dimensional data 
+
+01:32:09 
+and you cannot see any patterns from high dimensional data set 
+
+01:32:13 
+usually we need to project the data into low dimensional feature space 
+
+01:32:17 
+So, for example, for the three-dimensional data set, if we can see nothing, the pattern is mixed. 
+
+01:32:22 
+So if we project the data into the low-dimensional feature space, 
+
+01:32:26 
+so, for example, in the XY feature space, the two-dimensional feature space, we see a circle pattern. 
+
+01:32:31 
+So the pattern becomes obvious and interpretable. 
+
+01:32:35 
+And for the XZ, we see a triangle pattern. 
+
+01:32:38 
+So sometimes we need to lower the dimension when we explore the data visualization, 
+
+01:32:42 
+then we can see better patterns from the original data set. 
+
+01:32:45 
+so we will continue with this kind of iris flower data set which will be used in our tutorial 
+
+01:32:50 
+so let's have a tennis break and we will continue with the lecture of the tutorial 
+
+01:32:58 
+so for this tutorial we will use some data sets to do some simple data understanding and exploration 
+
+01:33:09 
+so the first data we may use is the iris flower data set so it's a very standard textbook data set 
+
+01:33:17 
+it has, it will have four attributes to differentiate these flowers into three categories 
+
+01:33:24 
+the setosa, virginica, and verticalla 
+
+01:33:27 
+so this is how the wine flower looks like 
+
+01:33:31 
+and if we, and if we take a look at these three different categories of the same flower 
+
+01:33:41 
+so we use the sepal, the sepal length, sepal width, and the petal length, petal width 
+
+01:33:48 
+So the full measurements to describe the feature of this object 
+
+01:33:55 
+For example, if you use the length of my hair as one attribute 
+
+01:34:00 
+It's similar to the petal length 
+
+01:34:02 
+And the size of my eyes is the petal length of something, right? 
+
+01:34:07 
+You can use all these numbers to describe different flowers you observe in your dataset 
+
+01:34:11 
+And some of them belong to the vegeta of the cytosa of virginica 
+
+01:34:18 
+Now our job is to see whether all these features, these four features, they are useful for us to differentiate the three categories of flowers, because in the later stage we are using the data set to do the classification. 
+
+01:34:31 
+Now our base job is to identify whether we will be able to use this data set to do the classification, or whether the attributes are useful or not. 
+
+01:34:40 
+So of course we can use a simple histogram to get an understanding of the attributes values. 
+
+01:34:46 
+So I'm not repeating the histogram, so I believe you have used this in some other courses. 
+
+01:34:52 
+Or you can do the high dimensional histogram where you add the two feature values together 
+
+01:34:57 
+and then do the frequency counting. 
+
+01:34:59 
+For the cases that find the two conditions of the two actual values. 
+
+01:35:03 
+And another technique you may consider in exploring your data set is the box plot. 
+
+01:35:10 
+So a typical box plot is to present the distribution of a single column of actual values. 
+
+01:35:17 
+For example here, we plot the box flow of a single action value 
+
+01:35:21 
+So the box flow will provide some location or position of different thresholds 
+
+01:35:28 
+The first threshold is called 10th percentile 
+
+01:35:31 
+Now it's bottom line 
+
+01:35:33 
+It means that at this level about 10 percentage of the action values will be smaller than this threshold 
+
+01:35:39 
+And 25th percentile, 50th percentile which is the median, 75th percentile and 90th percentile 
+
+01:35:46 
+Now you can see these percentiles will tell you the distributions of your actual values, right? 
+
+01:35:51 
+So that's what we learn in the percentile calculation. 
+
+01:35:55 
+And this box plot can also be useful for labeling some potential outliers. 
+
+01:36:01 
+For example, this plot shape here. 
+
+01:36:05 
+This plot shape here, it indicates that one data point, one record in your data set, that the value of this record, the X value of this record is smaller than the 10 percentile threshold. 
+
+01:36:19 
+Now, the X value is extremely small, so it is labeled a potential outlier data point. 
+
+01:36:25 
+And similarly, across the whole data set, there are three 
+
+01:36:30 
+data points with their attribute value larger than the 90 percentile. 
+
+01:36:36 
+Now, these three data records, they were also labeled as potential outlier data points. 
+
+01:36:43 
+So, we may take further look at these outlier data points from the box plots. 
+
+01:36:48 
+Now, for the whole data set, we have four attributes. 
+
+01:36:51 
+So, we can plot them together in a single figure with four box plots. 
+
+01:37:01 
+So we can see, if we compare these two box plots, we can see the sample length, the value of the sample length is much larger than the sample width, right, according to the threshold 
+
+01:37:12 
+So 10 percentile of the sample length is even larger than 90 percentile of the sample width 
+
+01:37:19 
+The spectral length has the largest value, you can see, the sample length 
+
+01:37:26 
+The 90 percentile and the 10 percentile values are the largest, right? 
+
+01:37:31 
+So we can see different, we can get different patterns from the box plots of the four attributes. 
+
+01:37:35 
+And then we can also do some low-definition scatter plots. 
+
+01:37:40 
+The scatter plot is to plot the two dimensions of features using the scatters. 
+
+01:37:47 
+So here we have four. 
+
+01:37:49 
+So any pair of the attributes can be useful for plotting the scatter plot. 
+
+01:37:55 
+So, for example, if we use these two attributes, the sample length and the petal width, so this is x-axis and this is y-axis. 
+
+01:38:04 
+Now, each dot here represents one data point with their actual value of x-value, the sample length, and the y-value of the petal width. 
+
+01:38:13 
+The color shape indicates the categories of the different data points in this scatter plot. 
+
+01:38:21 
+These four scatterplots only present two-dimensional feature space, right? 
+
+01:38:26 
+And we have four. 
+
+01:38:28 
+So the second scatterplot tells us X is actually in a sample width, another feature, 
+
+01:38:34 
+and Y is actually in a sample width. 
+
+01:38:37 
+So in total, we have 16, 4 by 4, 16 scatterplots in a two-dimensional feature space to do the visualization. 
+
+01:38:47 
+And we should be able to tell some patterns from the scatterplot. 
+
+01:38:53 
+For the petal length, we can see, if we use the petal length, we can easily differentiate the blue data points from the red 
+
+01:39:02 
+So we can see the petal length should be some attribute which is very informative in telling the difference between the blue category 
+
+01:39:14 
+The blue category is the cytosol and the rest of the data points 
+
+01:39:18 
+So we can get some hint or some pattern or the information about that, about the data 
+
+01:39:24 
+distribution. Now you may see the scatterplot, you can only present two dimensions of 
+
+01:39:31 
+features in a single figure, but we have four features. I have no one going to put 16 
+
+01:39:36 
+figures one by one. Now if I have five dimensions or six dimensions, then the 
+
+01:39:42 
+number of scatterplots should be very large. So what about I do high dimensional 
+
+01:39:48 
+visualization? So there's one technique called parallel coordinates. 
+
+01:39:53 
+that can view the high-dimensional visualization in a single figure. 
+
+01:39:59 
+So here is parallel coordinates plot. 
+
+01:40:04 
+So x-axis is the category of the attributes, and y-axis is the actual value. 
+
+01:40:11 
+Now, each line here, so we have a line. 
+
+01:40:14 
+So each line here represents one data point. 
+
+01:40:22 
+for this data point. So it has the pattern width at this level. Now for the same record, it has the pattern length of this value. 
+
+01:40:32 
+Now I will use this line to link these two actual values. So these two points represent a single data point. 
+
+01:40:40 
+Now the single data point still has the sample width. So I will continue the line to link this actual value with the other actual value here. 
+
+01:40:50 
+and then finally the step-by-step. So each line, each line will present one data point. 
+
+01:40:58 
+So we have four data points indicating one record. So imagine that if I have five attributes, 
+
+01:41:06 
+then I will have one, two, three, four, five bullet points indicating one single data point linked by a single line. 
+
+01:41:13 
+Is that clear how the parallel coordinates is working? 
+
+01:41:19 
+Among these different colors of the lines represent different categories of the flowers. 
+
+01:41:24 
+So we can see among these four attributes, 
+
+01:41:31 
+do you think that the sample values here is a very useful attribute for us to differentiate these three categories of flowers? 
+
+01:41:40 
+No, right? Why? Because according to the plot, the three different colors of categories of flowers 
+
+01:41:49 
+there are actual values of the sample width mixed together 
+
+01:41:53 
+so in other words, I cannot see any difference 
+
+01:41:58 
+among the three categories of flowers in this dimension 
+
+01:42:03 
+so what about the sample length here? 
+
+01:42:05 
+can we tell the difference? 
+
+01:42:09 
+this is much better, right? 
+
+01:42:11 
+at least for the blue one, we can see a clear boundary 
+
+01:42:15 
+but for the vertical and the virginica, I can see the difference 
+
+01:42:19 
+but still there are some myths here 
+
+01:42:22 
+but in general it is much better than the separate ways. 
+
+01:42:26 
+So can I use the separate layers to do the differentiation? 
+
+01:42:30 
+Not that obvious, right? 
+
+01:42:32 
+So from a single figure we can plot 
+
+01:42:34 
+four dimensional feature space 
+
+01:42:37 
+and tell some patterns from the visualization. 
+
+01:42:42 
+So we need to do that. 
+
+01:42:43 
+Before we're done with this, data into your model. 
+
+01:42:46 
+So if you want to do the differentiation 
+
+01:42:48 
+you may realize that 
+
+01:42:50 
+among all the features you selected, they are all mixed in the parallel coordinates. 
+
+01:42:54 
+So even though you have a very large data set, the feature value may not be so helpful 
+
+01:43:00 
+in helping you differentiate in different data points. 
+
+01:43:04 
+So that's why we need to do data understanding. 
+
+01:43:08 
+So if the data is not that representative, no matter what kind of models you are using, 
+
+01:43:14 
+you cannot get any results from the analysis, because the data is not so useful. 
+
+01:43:21 
+And there are some other methods doing this kind of high dimensional data representation. 
+
+01:43:26 
+For example, we can use the star plot. 
+
+01:43:29 
+So here we can use the length here indicating one dimension, length here indicating the other 
+
+01:43:34 
+dimension. 
+
+01:43:35 
+Now for the four dimensional piece of space, we need to use the four stars, right? 
+
+01:43:39 
+If we have five dimensions, we have five angles, five stars to indicate the actual values. 
+
+01:43:53 
+Also, we can use the channel phase. 
+
+01:43:56 
+So for example, we can use the size of your eyes, 
+
+01:44:01 
+the size of your nose, the size of your mouth 
+
+01:44:04 
+indicates different dimensions of your features. 
+
+01:44:07 
+The size indicates the actual values. 
+
+01:44:09 
+So it's very similar to the one punch man. 
+
+01:44:11 
+I don't know whether you worked there before. 
+
+01:44:14 
+The E-train tolerance. 
+
+01:44:16 
+You know that? 
+
+01:44:16 
+It's very similar to that phase, right? 
+
+01:44:23 
+but I'm not too old, so I know something. 
+
+01:44:27 
+So we can actually plot a very high-dimensional data set 
+
+01:44:31 
+into this two-dimensional figure, right? 
+
+01:44:35 
+So why should we do that? 
+
+01:44:37 
+For example, if you compare the three classes of, 
+
+01:44:41 
+three categories of flowers into a single figure, 
+
+01:44:44 
+you can do some eye-mining, right? 
+
+01:44:46 
+You can just observe the pattern. 
+
+01:44:48 
+So among these four dimensional pieces of space, we can see that Tosa is very different from Verticala and Virginica 
+
+01:44:56 
+in terms of the patterns, in terms of the shapes of the four stars 
+
+01:45:00 
+and the Verticala has some similarities compared with Virginica 
+
+01:45:05 
+but still there are some actual values that can help us differentiate, right? 
+
+01:45:09 
+The length of some dimensions can be different 
+
+01:45:12 
+Now we need to have some basic understanding of the data, doing some visualization before we do the modeling. 
+
+01:45:20 
+So that's how we do the data understanding. 
+
+01:45:24 
+Any questions? So far so good? 
+
+01:45:27 
+Still too easy, right? This lecture should be too easy. 
+
+01:45:33 
+And yes, we will have the tutorial. 
+
+01:45:44 
+So today's tutorial, I will go through some data exploration, so you need to download the Jupyter Notebook together with the dataset from Canvas into a single folder on your local desk. 
+
+01:45:56 
+And then you should be able to open the Jupyter Notebook and run the tutorial one line by one line. 
+
+01:46:02 
+And yes, we will have an assignment to the end of this, today's tutorial. 
+
+01:46:09 
+So for today's study, we have the data exploration, and we need to understand how we understand the data types, the percentage calculations, and to do some group-wide visualization or summary statistics, and calculate school needs, school losses, do some visualizations, and deal with some missing values, or identify some potential alternatives using the IQR or Z-score, and do some standardization, and calculate some covariance or correlation. 
+
+01:46:40 
+So we will see how we can do that. 
+
+01:46:42 
+So the data we will use for today's tutorial is the IRIS dataset. 
+
+01:46:46 
+And this dataset has 150 flowers or records from three categories of flowers. 
+
+01:46:56 
+And the row is an object. 
+
+01:46:58 
+And the column is the attributes we have. 
+
+01:47:01 
+So the first step is to import the CSV file or TST file from the raw data. 
+
+01:47:10 
+So here, in order to do that, we are forced to use Pandas to read SZV. 
+
+01:47:15 
+So, we used Pandas before, right? 
+
+01:47:18 
+So whenever we want the computer to do something for us, we use the tool from some toolbox. 
+
+01:47:24 
+Now we want to import the TXT file from the data to the data format the computer can recognize. 
+
+01:47:30 
+The Pandas data frame. 
+
+01:47:32 
+So we use the PP-DOS read SZV. 
+
+01:47:36 
+Now we import the raw data, and because the raw data, if you open the raw data of the txt file, they are all pure numbers. 
+
+01:47:43 
+There are no definitions of the header. 
+
+01:47:45 
+So the header equals to none. 
+
+01:47:47 
+It means that we do not have the name for each column from the raw data. 
+
+01:47:51 
+So that's very trustful. 
+
+01:47:53 
+So sometimes when the company is recording the data, they will prepare two different datasets. 
+
+01:47:58 
+One is the pure values of SKU. 
+
+01:48:01 
+The second will be the name of different columns. 
+
+01:48:05 
+in two different separate ones. 
+
+01:48:07 
+So here, after we import the raw values into the Pandas 
+
+01:48:11 
+data, we also need to add column names to the data. 
+
+01:48:16 
+So I add the column names according to the previous 
+
+01:48:19 
+definition of these columns. 
+
+01:48:21 
+So here we have the first and fourth to separate, 
+
+01:48:28 
+separate with title and title width. 
+
+01:48:30 
+The final column is the class. 
+
+01:48:32 
+so after that we show the first ten rows of the data frame and it looks like this 
+
+01:48:37 
+so can you import the data? so far so good 
+
+01:48:43 
+so you can see in this data set we have first four columns indicating the 
+
+01:48:49 
+four attributes and the fifth one is the class label so this is our 
+
+01:48:59 
+imported data table. Now we need to understand data table after we know the 
+
+01:49:04 
+definitions of the columns. We need to do some fundamental summary statistics 
+
+01:49:09 
+that are median, standard deviation, minimum, Q1, Q3, IQR, or SKU needs. 
+
+01:49:15 
+So here most of the summary statistics calculations have 
+
+01:49:26 
+been supported by the Pandas Data Frame. 
+
+01:49:28 
+So if we want to use S as one column of the data, the data table 
+
+01:49:34 
+Now S the column dot mean is indicated by the average value of this column 
+
+01:49:41 
+And S dot median is the median value 
+
+01:49:44 
+And the mode, standard deviation, minimum, maximum, Q1, Q3, and maximum, minus, minimum 
+
+01:49:54 
+and S to the SKU list, KUDOS list. So these calculations are all supported by the calculation. 
+
+01:50:01 
+And Q1, Q3, we will calculate it using S dot quantile. So this is a 25 quantile or 75 quantile. 
+
+01:50:09 
+So we can get Q1, Q3. And finally for the IQR, it is Q3 minus Q1. So if you run this, 
+
+01:50:18 
+So if we want to describe column and we fit the data table with the name of your column into the function 
+
+01:50:25 
+We will be able to get a list of summary statistics like this 
+
+01:50:30 
+You may try that 
+
+01:50:31 
+so this is the function of this calculation I defined before and 
+
+01:50:39 
+The input of this function is the data table, the data frame we generated here. Okay, and 
+
+01:50:46 
+this 
+
+01:50:47 
+Second input is the name of your column, the step-all line, which is the step-all line, the name of this column, okay? 
+
+01:50:55 
+So once you import, input all this information into the function, the function will generate all these calculations according to these calculations for you, so manually. 
+
+01:51:08 
+And also, we can actually view some 
+
+01:51:14 
+summary, do the description of the columns into a data table, so we can actually generate 
+
+01:51:19 
+a new data frame, and then to generate all these summaries of the actual summary statistics 
+
+01:51:27 
+into a single data table. 
+
+01:51:29 
+So you do not need to do this by yourself, because next week, I think, we will have a 
+
+01:51:35 
+simple function called data.describe, okay? 
+
+01:51:39 
+So data.describe will generate all this information in a single command. 
+
+01:51:44 
+So I just want to show you that we can organize all these summary statistics into a single table 
+
+01:51:49 
+so you can make comparisons among different attributes. 
+
+01:51:53 
+And also we can generate different percentiles using different thresholds. 
+
+01:51:57 
+So we will actually use the function to use the quantile function to generate different thresholds for you. 
+
+01:52:06 
+And also we will be able to integrate the school needs and the courses. 
+
+01:52:11 
+So all are different between the school needs and the courses from the calculated results. 
+
+01:52:16 
+So here we have the school needs, this function is the school needs and this function is the 
+
+01:52:21 
+quotasys. So how we can actually calculate these two numbers and what do these two 
+
+01:52:25 
+numbers indicate? So you can combine with our lecture to integrate. The quotasys 
+
+01:52:32 
+will tell you whether it is symmetric and the 
+
+01:52:39 
+analysis. 
+
+01:52:40 
+So the SKU needs to tell you whether it is matching and the QNAS needs to tell you whether 
+
+01:52:45 
+it is normally disputed or concentrated to the middle or west-west. 
+
+01:52:51 
+And then we want to do some simple frequency counting. 
+
+01:52:54 
+So here, we can actually, because the class column, if you go to the dot data table here, 
+
+01:52:59 
+the class column, it is categorical, right? 
+
+01:53:02 
+So for the categorical, actually, we can only do the frequency counting. 
+
+01:53:08 
+In section 3 here, we can data class, so this I extract the class column from the data frame 
+
+01:53:16 
+And the dot value counts, it will generate the frequency counting for different categories of data points here 
+
+01:53:26 
+And if we put in the value count and do the normalization, and keep the three decimals here 
+
+01:53:33 
+Then you will tell you that about 33.3% is the data point 
+
+01:53:38 
+belonging to your cytosine. 
+
+01:53:41 
+So this calculation is very important, 
+
+01:53:43 
+because if you want to do the capitation, 
+
+01:53:46 
+and you want to do the frequency counting 
+
+01:53:49 
+before you do any analysis, 
+
+01:53:51 
+here we can see that the frequencies 
+
+01:53:53 
+or the fractions among the three categories of data points, 
+
+01:53:58 
+they are equal to each other, right? 
+
+01:54:01 
+But in most of the real case, 
+
+01:54:02 
+the number of the frequency of different class labels, 
+
+01:54:05 
+they are very, very different from each other. 
+
+01:54:07 
+Now when you go to the bank, the number of normal transactions will be much, much larger than the board transactions. 
+
+01:54:15 
+So if we want to detect board transactions, we are actually getting a very tiny group of labeled board transactions from the large group of normal transactions. 
+
+01:54:25 
+So that's called imbalance calculation. 
+
+01:54:28 
+Imbalance classification is very challenging. 
+
+01:54:32 
+So in the later classification lecture we will have one small section to illustrate how to deal with the imbalanced data classification. 
+
+01:54:41 
+But before we do the imbalanced data classification, to choose the model to deal with the imbalanced classification, 
+
+01:54:48 
+we need to explore the data and first understand that our dataset has this kind of imbalanced data issue. 
+
+01:54:56 
+If our original dataset is balanced, 
+
+01:55:00 
+All the categories, their frequencies are very balanced, they are the same, so we do not need to run the imbalanced data modeling, you get my point? 
+
+01:55:11 
+So, the data exploration is very important at the very beginning for you to choose the right model. 
+
+01:55:18 
+And also we can use the goodbye class, so we can actually get the, we can use the class. 
+
+01:55:24 
+So to first group different data points into different groups 
+
+01:55:27 
+So for all the data points belonging to the same group, it will first generate a group of these data points 
+
+01:55:33 
+And then do some summary statistics or calculations for this specific group of data points 
+
+01:55:38 
+So here from group 5, we can get the same group summary statistics like this 
+
+01:55:45 
+And that's the summary statistics 
+
+01:55:48 
+And then we can do some data visualization, so like the histogram, we can just use the data, the selected column, dot, histogram 
+
+01:55:58 
+The base number indicates how many bins we will use to do the histogram 
+
+01:56:02 
+So here the bins equals to 20, so this function will just draw the plot, the histogram for you 
+
+01:56:09 
+So let me show you that there are 20 intervals here 
+
+01:56:14 
+Because BNC has 20, there are 20 intervals here, and we have the frequency counting Q3, how many records belong to this interval, so there are 20 intervals. So you can see, for this, most of the records, they have their petal width, with the petal width value to be very small, and some of the petal width values are in this range. 
+
+01:56:41 
+and also we can do a box plot 
+
+01:56:43 
+so we can do data.boxplot 
+
+01:56:45 
+so remember data is a variable name 
+
+01:56:48 
+you make this name 
+
+01:56:49 
+when you import the txt file to the pend of data stream 
+
+01:56:53 
+now data.boxplot 
+
+01:56:55 
+you will be able to see 
+
+01:56:57 
+get this result 
+
+01:56:58 
+so the threshold 
+
+01:57:00 
+together with some outliers here 
+
+01:57:02 
+the outliers above the 19th percentile 
+
+01:57:05 
+or below the 10th percentile 
+
+01:57:07 
+they were labeled outliers 
+
+01:57:10 
+Now we can do some get plot using this visualization. 
+
+01:57:14 
+So a simple visualization, a two-dimensional visualization is petal length and petal width. 
+
+01:57:20 
+So we get this plot result, and we will be able to interpret this result as the blue data points. 
+
+01:57:25 
+The patterns of the blue data points in this two-dimensional picture frame, 
+
+01:57:29 
+we can see a very clear difference in the patterns of the blue data points that total from the rest of the data points. 
+
+01:57:35 
+And for the green and the gray ones, 
+
+01:57:38 
+Here, we have some mix, but still, most of them are very different from each other 
+
+01:57:43 
+So we can see from this single scatter flow, we can see these three categories of flowers 
+
+01:57:49 
+We can differentiate them into three different categories 
+
+01:57:53 
+According to the actual values 
+
+01:57:55 
+Of course, we may have some miscalculation errors for some data points here 
+
+01:58:00 
+Why? Because they are mixed together 
+
+01:58:02 
+In general, most of the data points are differentiable 
+
+01:58:07 
+should be classified so we can do that now so if we want to do the parallel coordinates 
+
+01:58:13 
+so we need to import the tool of parallel coordinates from the pandas plotting so pandas 
+
+01:58:20 
+has its own plotting library called pandas from plotting and one of the tool in the plotting 
+
+01:58:27 
+library is called parallel coordinate so we extract this tool and use this tool to analyze the data 
+
+01:58:36 
+and we use the class colon to use the representation of the color 
+
+01:58:42 
+now we can see we can get this parallel coordinates 
+
+01:58:46 
+so the green one takes the multi-color and each line here represents one data point 
+
+01:58:52 
+right one data point so we can see a big difference for this part 
+
+01:58:57 
+and the blue and the green ones we are totally different but still we have some 
+
+01:59:07 
+because the values among the three categories. 
+
+01:59:12 
+Finally, I want to use some data to deal with the missing values. 
+
+01:59:19 
+So here, we will use the LBNB data set. 
+
+01:59:23 
+So here, we switch to the real data set of LBNB, and we know 
+
+01:59:28 
+that it contains some missing values in the reviews for 
+
+01:59:31 
+rating and values. 
+
+01:59:34 
+So let me see. 
+
+01:59:35 
+For this LBNB data set. 
+
+01:59:37 
+for the review score rating. For the review score rating, you can see this number here. 
+
+01:59:45 
+This is none, right? It's missing. So how to deal with the missing values? So there are 
+
+01:59:54 
+certain ways to deal with the missing values. The first one, the first method we can deal 
+
+02:00:00 
+with is that if the number of missing values is very small compared with the whole data 
+
+02:00:06 
+and if we remove these, we will not affect the whole population or the patterns of the data 
+
+02:00:11 
+we can just remove these field records, if we are not affected 
+
+02:00:17 
+But if we believe that these records, even though for this column, they may have missing values, 
+
+02:00:23 
+but some other, but these records, they are very important for us. 
+
+02:00:27 
+Here we want to analyze these data points, even though for certain actions they have missing values, 
+
+02:00:33 
+but we want to keep them, so we need to fill the missing values. 
+
+02:00:36 
+So there are many different ways to fill the missing values, 
+
+02:00:40 
+but before that, we need to calculate how many of them are not. 
+
+02:00:44 
+For example, we need to calculate missing, that for the LVM data set, we need to calculate if none, and summarize how many of them are none, values. 
+
+02:00:55 
+So here, we can see, among the whole data set, the host has 40 pictures, we have 180 missing records. 
+
+02:01:07 
+The host identified 180, and the review score 18, we have so many missing values for this call. 
+
+02:01:14 
+so we need to understand whether we have missing values 
+
+02:01:17 
+and then we want to fill the missing values 
+
+02:01:20 
+now how we fill the missing values? 
+
+02:01:22 
+so if we do not want to remove these missing records 
+
+02:01:25 
+so we need to fill the missing values 
+
+02:01:27 
+so there is one library 
+
+02:01:32 
+so let me see 
+
+02:01:34 
+this is the right beginning 
+
+02:01:36 
+and then put it all together 
+
+02:01:40 
+so there is one toolbox here 
+
+02:01:47 
+costiller dot impute. 
+
+02:01:51 
+But the impute is a library that we can use the library 
+
+02:01:54 
+and so many tools in the library to impute or to fill 
+
+02:01:58 
+the missing values in your data set. 
+
+02:02:00 
+So there are two big imputor. 
+
+02:02:05 
+One is a simple imputor. 
+
+02:02:07 
+The other is the KN imputor. 
+
+02:02:09 
+But I will illustrate it soon what are the differences. 
+
+02:02:17 
+Now here for the simple imputers, we can use the mean value of the actual quality of field meeting value, so that's the mean, so when we import the simple imputer from the library, now we need to set up the tool. 
+
+02:02:33 
+How to set up this tool? We have a strategy to set up. 
+
+02:02:36 
+So we need to manually set up this strategy. 
+
+02:02:38 
+If we set the strategy equal to mean, 
+
+02:02:42 
+so it asks the machine to use the mean value of this column to fill the missing value. 
+
+02:02:48 
+Now I will use all the non-missing values of this column to calculate the average value of this column. 
+
+02:02:55 
+And then use this average value to fill the missing value. 
+
+02:03:03 
+The missing action value of this column will be filled with the mean value of this column. 
+
+02:03:09 
+So here, as we specify this tool, we will use the tool dot fit transform of these two columns. 
+
+02:03:19 
+So fit transform will do two things. 
+
+02:03:23 
+First, the fit will get the mean value of the non-missing vector, the average value. 
+
+02:03:31 
+The missing value is the mean value we calculated from the C. 
+
+02:03:35 
+So after that, the new columns will have the mean value, the average value filled columns. 
+
+02:03:43 
+And we add these two columns back into the original data table. 
+
+02:03:47 
+Alternatively, we can change the strategy from mean to median. 
+
+02:03:54 
+Now we are doing something similar, right? 
+
+02:03:57 
+We use the median value of these columns using the non-missing vector. 
+
+02:04:03 
+So there are mean values to fill the missing values. 
+
+02:04:07 
+Now the missing values will be filled with the value of the median values. 
+
+02:04:11 
+So here we use the field.fix transform. 
+
+02:04:16 
+So we get these new field columns. 
+
+02:04:20 
+And alternatively we can use the KANN imputer. 
+
+02:04:24 
+The KANN imputer is to use the K nearest neighbors. 
+
+02:04:33 
+10 years is the neighbor's value to fill the missing value, or according to other future values, distance. 
+
+02:04:41 
+So for example, here, after we set the 10 computers, we manually set up the number of neighbors to be 5. 
+
+02:04:49 
+Now what does that mean? Let me give you an example here. 
+
+02:04:53 
+Okay, so you want to be the example. 
+
+02:04:56 
+So that student, I do not know his GPA. 
+
+02:05:01 
+I don't know of his GPA, but I know that he is hitting around 5 other students, around 10 
+
+02:05:09 
+Now if I calculate distance, so I use the x and y axis to represent his official space 
+
+02:05:16 
+Now you can see this student is hitting around many other students, right? 
+
+02:05:20 
+I don't know of his GPA, his GPA is missing, but I know the grade of others around 10 students' GPA 
+
+02:05:27 
+The 10 students are hitting closest to this student 
+
+02:05:31 
+Now I will use five closest neighbors, five closest neighbors, I will use the average value of the five closest neighbors' GPA to fill the missing value of his missing GPA. 
+
+02:05:44 
+Is that clear? I only use the neighbors. I will not use the whole population's average. 
+
+02:05:50 
+I only use the average neighbor's, the neighbor's average value to fill the missing value. 
+
+02:06:00 
+In terms of other SKU dimensions, only the closest data points may have similar values with me, right? 
+
+02:06:09 
+So this is our k-neighborhood assumption. 
+
+02:06:12 
+So once we get the k-n imputer ready, we use the fit transform. 
+
+02:06:17 
+So we will be able to get the field result. 
+
+02:06:20 
+So here is how we can get the missing value field. 
+
+02:06:26 
+Now after we do the puring, there's no missing value from the original data table. 
+
+02:06:34 
+And finally, if we want to identify some outside data points, we can use the IQR. 
+
+02:06:40 
+I already informed that IQR is Q3 minus Q1, right? 
+
+02:06:44 
+So we can actually filter out that if some of the actual values, rather we get Q1 and Q3, 
+
+02:06:50 
+if we get some of the actual values more than the Q1 minus certain IQR or larger than this one, 
+
+02:07:00 
+Some of the records, they have their X values below or above certain thresholds we manually set up. 
+
+02:07:08 
+So, we can actually, alternatively we can use this kind of Z-score. 
+
+02:07:15 
+Z-score is to use the X value minus mean value divided by the standard deviation of this column. 
+
+02:07:21 
+By doing that, we are generating a standard normal distribution, right? 
+
+02:07:27 
+if the actual value is actually very large to the value zero after the standardization or very small 
+
+02:07:34 
+so we count this as the outer data points 
+
+02:07:37 
+so we can actually filter out some of the outer data points using the z-score or IQR 
+
+02:07:42 
+and the second step is to do some standardization or the scalability of your data points. 
+
+02:07:56 
+So, for example, for the standardization, when we are subject, the actual value is the mean divided by the standard deviation. 
+
+02:08:04 
+So by doing that, for different columns, if they have different range, so if they have different range, 
+
+02:08:12 
+then after doing this kind of transformation, standardization transformation, 
+
+02:08:16 
+there are mean values, so after the transformation, all the columns' mean value will become zero, 
+
+02:08:23 
+and the standard deviation will be one. 
+
+02:08:26 
+So even though they are from different levels, they will underdevelop at the same scale. 
+
+02:08:31 
+And also we can use some robust scaler to do the standardization similar to the standard scaler. 
+
+02:08:40 
+So we can do the subtraction by median and divide it by the IQR. 
+
+02:08:45 
+This will do the normalization. 
+
+02:08:48 
+So here we need to do so many different... 
+
+02:08:52 
+data processes. And after that we can do some covariance correlation calculation. So we 
+
+02:08:58 
+can do the correlation matrix. So we just import the columns we want to do and we 
+
+02:09:04 
+can use data dot covariance. So this will generate the covariance matrix or the 
+
+02:09:11 
+correlation matrix for you. And you will be able to get this result. 
+
+02:09:15 
+and to see different, all the correlation metrics, the HITMAP. 
+
+02:09:20 
+If they are positively correlated, it's closer to the red. 
+
+02:09:24 
+If they are negatively correlated to each other, it will be close to the dark blue. 
+
+02:09:28 
+So we can use this visualization to see whether certain columns of SKUs, they are highly positive or negatively correlated. 
+
+02:09:36 
+But again, I want to emphasize that the correlation does not mean causality. 
+
+02:09:41 
+and field correlation does not mean they do not have relationship, maybe they have non-linear correlation, non-linear relationship 
+
+02:09:51 
+To summarize 
+
+02:09:54 
+So once we are given a data set, whether it is LNBNB or your own cost per data set, we need to understand the data definition, we need to do some summary statistics, we need to do some visualization to understand the patterns, and pre-process the data by filling in the missing values, or check the quality, or to do some data standardization or normalization. 
+
+02:10:18 
+So, that's all about today's tutorial. 
+
+02:10:22 
+Of course, we have assignments. 
+
+02:10:25 
+So, you still need to use the tutorial templates, the Dictator Notebook, to do the assignments. 
+
+02:10:30 
+You can just write on top of my tutorial. 
+
+02:10:33 
+Or you can generate a new one and copy my command, and the library, or an empty new one. 
+
+02:10:38 
+It's up to you. 
+
+02:10:40 
+So, where do you see Stata Airbnb data sets to do the analysis? 
+
+02:10:45 
+and the first question Y is to do some discrete analysis on the LWB dataset. 
+
+02:10:51 
+So you need to answer all these questions. 
+
+02:10:53 
+The actual type table is written as the DC frequency percentile tables, percentile group comparisons 
+
+02:11:01 
+and at least interpret some specific numbers you find interesting from your data table. 
+
+02:11:10 
+And then you need to structure your answer as a short and a little report. 
+
+02:11:14 
+So you need to use the markdown cells to write down your own interpretations 
+
+02:11:20 
+followed by the code and the numbers generated by your code. 
+
+02:11:25 
+And the question two is to examine the data quality, do some visualization, 
+
+02:11:30 
+and examine some relationship with this target, the lost points. 
+
+02:11:34 
+So these are all the questions you may need to answer. 
+
+02:11:38 
+Okay, and we have question 3. Okay, so this question was prepared by the TAs. 
+
+02:11:45 
+I just asked them one time to make the assignment more challenging than what I had before. 
+
+02:11:51 
+And this is the final output from their... 
+
+02:11:54 
+Yeah, but they are not challenging, but there are many. 
+
+02:11:59 
+And question 3 is to explore your own project data set. 
+
+02:12:03 
+So you may need to... 
+
+02:12:06 
+Find a data stack, maybe this is a data stack from your course project 
+
+02:12:10 
+Or if you haven't found a group, you can just pick randomly some real data that you may use 
+
+02:12:17 
+in your course project to do some data understanding and supervision 
+
+02:12:21 
+So you need to have a very simple data exploration to show me the actual values, the states, whether the qualities or any other steps 
+
+02:12:33 
+You can take the first step of understanding the data and explore the patterns and tell me what you can do using this data set 
+
+02:12:43 
+So if you are using the good data, then different good members must use different variables, ok? 
+
+02:12:50 
+You cannot submit, so for example you have six members using the same dataset, 
+
+02:12:56 
+then you can, one member can use attributes 1, 2, 3, the second can use 1, 2, 5, ok? 
+
+02:13:03 
+But you cannot use identical attributes. 
+
+02:13:07 
+in a single group to do the assignment. 
+
+02:13:09 
+It means that you cannot assign me the identical individual assignments for using the same group data. 
+
+02:13:15 
+Okay, I think that's all for today. 
+
+02:13:18 
+So still very easy. 
+

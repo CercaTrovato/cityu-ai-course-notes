@@ -124,7 +124,7 @@ updated: 2026-09-17
 | ✅ | ~~产 IS5113 M03 笔记~~ —— **v0.9**（2026-09-15）：讲义 89 页全覆盖（仅封面除外）、10 个低文本页视觉复核（5 张图片卡片 + 3 张图已誊录）、两套偏见分类合成对照表、公平性指标配虚构数字例子（脚本算出）；无转录 |
 | 🔴 | **IS6400 Assignment Week 3 — 2026-09-25（五）23:59 截止**（✅ Canvas 截图），10 分。Airbnb 描述报告 + 数据质量 / 关系探索 + **自己项目数据**的探索。⚠️ Q1 的"百分位数不等于 exp"前提实跑不成立、Q2 的 `bedrooms` 没有缺失——两处要如实写，见 [T03-数据探索实战-Iris与Airbnb的描述统计](Business_Data_Analytics/notes/T03-数据探索实战-Iris与Airbnb的描述统计.md) §7.3 |
 | 🟠 | **IS6400 Week 4 Assignment — ⚪ 2026-10-02（五）23:59**（Canvas 尚未挂出；总分 80 待问），Iris 特征选择四题 + Airbnb 选 3 特征。六种 `SequentialFeatureSelector` 组合都选 petal-L / petal-W；见 [T04-特征选择与PCA实战-Iris](Business_Data_Analytics/notes/T04-特征选择与PCA实战-Iris.md) §7.3 |
-| 🟡 | **IS6400 W03 转录待导出** —— 9/16 的课（我反馈课中"W03 还没上完"）结束后若有 Notta 录音，导出到 `Business_Data_Analytics/transcripts/M03-transcript.txt`；M03 28 处 🎙️ 待回填，关联规则是否考试范围待问 |
+| ✅ | ~~IS6400 W03 转录合并~~ —— **2026-09-18 完成，M03 / T03 升 v1.0**：转录改由本地 Whisper 产出（`M03-transcript.txt`，1361 段，`00:00 → 02:13:18`，缺开头、结尾完整、两次课间录音暂停）；M03 28 个 🎙️ 格（A 18 / B 10）+ T03 新建 9 格（A 7 / B 2）；§6.2 新增 4 条 🔴（**关联规则会考计算题**、TID 属性类型判断是往年期末题、课堂小测 = 上周回归模型的属性类型、同组作业必须用不同变量）；p.19 数据质量三问有课堂答案（GPS 噪声 / 深圳离群点 / 非会员缺失 / 自助结账重复）、p.49 未布置练习、p.64 未作答、降维明确下周讲。**分片并行模式首次实测：3 个 sonnet 分片并行各 ≈15 分钟，`merge_apply.py` 合并两篇一次 PASS，从派发到写入 19 分钟**（上次串行 29 分钟）；规则文件已按 `lecture-transcribe/HANDOFF-cityu-vault.md` 改为 Whisper 来源 |
 | 🟢 | **把 `Downloads/` 里重新下载的 `IS6400-W3-DataMining.pdf`、`IS6400-W4-Feature.pdf` 复制覆盖到 `Business_Data_Analytics/course_files_export/`**（已核对：72 / 69 页完整，文字层与笔记所用一致；原目录里的两份是截断的） |
 | ✅ | ~~按新规范返工 IS6400 M03 / M04~~ —— 2026-09-16 晚：我指出两篇不如 M02 透彻 → 派 opus 子代理把"透彻度"固定成可量化规则（[笔记质量规范](_meta/笔记质量规范.md) + `_meta/tools/note_quality.py`，三层判定 L / G / E，阈值按 4 篇标杆校准）→ 按规范整篇重写两篇 §2（M03 §2 1.2 万 → 2.7 万字、M04 0.85 万 → 2.4 万字，leaf 小节 22 → 28 / 15 → 29，每个公式型小节手把手算例 + 为什么公式长这样 + 边界情况）→ 两篇 strict PASS。⚠️ 同一次体检里 **另有 12 篇存量笔记 FAIL**（含 IS6400 M01 134 字/页、M02 G3b），见 [质量体检-2026-09-16](_meta/质量体检-2026-09-16.md)，待安排返工 |
 | ✅ | ~~产 IS6400 W3 / W4 笔记~~ —— **M03 / T03 / M04 / T04 四篇 v0.9 + `iris.txt` 数据集卡**（2026-09-16）：讲义 72 + 69 页全覆盖、图片页视觉复核；Gini / 熵 / 小测 / PCA / 关联规则 / Airbnb 统计全部脚本复算；⚠️ 发现 **Syllabus 与 Canvas 周次错位一周**（实际 W3 = 描述性分析、W4 = 特征工程） |
@@ -200,7 +200,7 @@ CityU/
    ├─ CLAUDE.md / AGENTS.md   课程级规则
    ├─ 00-课程总览.md           MOC 入口
    ├─ course_files_export/    ★ 所有下载来的原始材料
-   ├─ transcripts/            Notta 转录（M<NN>-transcript[-partN].txt）
+   ├─ transcripts/            课堂转录（M<NN>-transcript[-partN].txt；本地 Whisper，早期 Notta）
    ├─ _prep/                  前置资料（官方调研、口碑）
    ├─ _meta/                  台账 / 术语 / 考点 / DDL / 数据集
    └─ notes/                  M<NN> 讲义笔记 · T<NN> 代码讲解笔记

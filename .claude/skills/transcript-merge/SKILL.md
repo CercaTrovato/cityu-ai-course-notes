@@ -1,6 +1,6 @@
 ---
 name: transcript-merge
-description: 把课堂录音转录（Notta 导出的 txt）合并进已有的 v0.9 讲义笔记、升级为 v1.0 的完整流程与验收标准（CityU vault 专用）。当 <课程>/transcripts/ 出现新文件、用户说"转录到了 / 合并转录 / 回填 🎙️ / 升 v1.0"、或笔记 frontmatter 是 transcript: pending 而转录文件已存在时使用。任何模型（Claude 任一档、Codex、其他 agent）执行都必须逐步照做，产出用 _meta/tools/transcript_check.py 机器验收。
+description: 把课堂录音转录（本地 Whisper 或 Notta 导出的带时间戳 txt）合并进已有的 v0.9 讲义笔记、升级为 v1.0 的完整流程与验收标准（CityU vault 专用）。当 <课程>/transcripts/ 出现新文件、用户说"转录到了 / 合并转录 / 回填 🎙️ / 升 v1.0"、或笔记 frontmatter 是 transcript: pending 而转录文件已存在时使用。任何模型（Claude 任一档、Codex、其他 agent）执行都必须逐步照做，产出用 _meta/tools/transcript_check.py 机器验收。
 ---
 
 # 转录融合（v0.9 → v1.0）
@@ -46,7 +46,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py s
 
 做四件事，结果写进工作目录的 `PROGRESS.md`（见 §9）。**在此之前先跑** `backup_vault.py` 与 `integrity_check.py snapshot 融合前`，并确认同步已关。
 
-1. **改名**：按 `转录处理规则` §5 改成 `M0N-transcript.txt`（分段 `-part1/2`，不完整 `-partial`）。Notta 给的内容标题式文件名一律改掉。`transcripts/` 不是 `course_files_export/`，可以改名。
+1. **改名**：按 `转录处理规则` §5 改成 `M0N-transcript.txt`（分段 `-part1/2`，不完整 `-partial`）。本地 Whisper 产出的与音频同名的 `.txt` 改名为 `M0N-transcript.txt`（同目录的源音频 mp3 / wav **不要动**，也不进仓库）；早期 Notta 的内容标题式文件名同样改掉。`transcripts/` 不是 `course_files_export/`，可以改名。
 2. **时序**：段数、起止、时长、时序倒退、≥120 秒空档。每个空档都要**读前后原文**判断性质（课堂练习时间 / 课间 / 录音暂停 / 内容丢失），写成 §9.5 的一行。
 3. **完整性（内容判断，脚本做不了）**：读首 3 段——第一句是不是一堂课该有的开头（问候 / 议程 / 上节回顾）？已在讲课中段 = **缺开头**；读末 3 段——有没有下课语 / 布置作业？半句或噪声 = **缺结尾**。"时间戳连续"只证明文件没截断，不证明覆盖整堂课。
 4. **顺延边界**：读前 15 分钟，对照**上一讲**的讲义——如果教授在补上周没讲完的页，记下切换到本讲讲义的时间戳。顺延段的内容回填到**上一讲**笔记（§5.4），本讲 §8 只做索引。
@@ -73,7 +73,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py s
 
 ```
 PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py window <转录> 49:04 01:14:37   # 打印时间窗内所有段
-PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py quote  <转录> 01:15:01 2      # 某时间戳前后 ±2 段
+PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py quote  <转录> 01:15:01 4      # 某时间戳前后 ±4 段（Whisper 逐句分段，±2 不够上下文）
 ```
 
 ### 3.1 覆盖状态的定义与证据标准
@@ -108,7 +108,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py q
 - 格式：`*"英文原话"*`——星号 + 直引号；中文转述放在引文外。讲义引文用 `**"…"**` 或 📄 标记以示区别（脚本不查讲义引文）。
 - 对 ASR 的**改写、补词、省略**都用 `[ ]`：*"we debit [the] cash account"*、*"[the] ledger is a collection of all accounts"*。整句乱码则不引，改为转述 + `（ASR 乱码，按讲义 p.N 还原）`。
 - 省略用 `…`；每段引文 ≤ 60 词；同一格里引文不超过正文的一半——引文是证据，不是正文。
-- 一律引**英文转录**；Notta 的中文翻译版不引、不参考（它继承全部 ASR 错误并叠加翻译误差）。
+- 一律引**英文转录**；Notta 的中文翻译版不引、不参考（它继承全部 ASR 错误并叠加翻译误差）。Whisper 转录里与上下文无关的短句（`Thank you for watching`、重复句）是幻觉，不引；≥12 秒只剩几个词的段在回执里报时间戳（可重转）。
 - 引文后紧跟时间戳：*"…"*（`58:09`）。多句连引给区间（`01:04:43`–`01:05:25`）。
 
 ### 4.3 差集信息的落位

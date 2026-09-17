@@ -8,18 +8,18 @@ source: "Week 3 Description.ipynb（48 cells：28 markdown / 20 code）"
 runtime: "Python 3.13.5 · kernel conda-base-py"
 libraries: [pandas, numpy, matplotlib, seaborn, scikit-learn]
 data: "iris.txt（150 × 5）· Airbnb.csv（68,133 × 15）"
-transcript: pending
+transcript: merged
 prerequisites: [M01, T01, M02, T02, M03]
 new_concepts: [read_csv(header=None), 自定义描述函数, quantile(), mode(), skew(), kurt(), value_counts(normalize=True), groupby().agg(), hist(bins=), boxplot(), 分组散点图, parallel_coordinates, isna().sum(), SimpleImputer, KNNImputer, fit_transform, IQR 离群点规则, Z 分数离群点规则, StandardScaler, RobustScaler, cov(), corr(), sns.heatmap, sort_values(key=abs)]
 tags: [IS6400, tutorial, pandas, seaborn, sklearn, 描述统计, 缺失值, 离群点, 标准化, iris, Airbnb]
-status: v0.9
-updated: 2026-09-16
+status: v1.0
+updated: 2026-09-18
 ---
 
 # T03 · 数据探索实战：Iris 与 Airbnb 的描述统计
 
 > **本讲一句话**：这个 notebook 把 [[M03-数据类型与描述性分析]] 的"描述性分析"部分**全部变成代码**——前半段用 150 行的 Iris 练手（描述统计、分位数、偏度峰度、分组、四种图），后半段换到 68,133 行的 Airbnb 处理**真实的脏数据**（缺失值三种填法、离群点两种规则、标准化两种尺度、相关矩阵与热力图）。notebook 自己说它是"**aligned with the Week 3 assignment difficulty**"——**它就是作业的模板**，作业第 2 题几乎逐条对应 cell 25–42。
-> **原始材料**：`Week 3 Description.ipynb`（48 cells）｜ **配套讲义**：[[M03-数据类型与描述性分析]]｜ **数据**：[[Business_Data_Analytics/_meta/数据集卡片#iris.txt|数据集卡片 › iris.txt]] · [[Business_Data_Analytics/_meta/数据集卡片#Airbnb.csv|数据集卡片 › Airbnb.csv]] ｜ **转录**：`pending`
+> **原始材料**：`Week 3 Description.ipynb`（48 cells）｜ **配套讲义**：[[M03-数据类型与描述性分析]]｜ **数据**：[[Business_Data_Analytics/_meta/数据集卡片#iris.txt|数据集卡片 › iris.txt]] · [[Business_Data_Analytics/_meta/数据集卡片#Airbnb.csv|数据集卡片 › Airbnb.csv]] ｜ **转录**：`merged`（`M03-transcript.txt` 的 tutorial 段 `01:45:33`–`02:13:18`，2026-09-18 合并）
 >
 > ⚠️ **与 T01 / T02 的两个不同**：① notebook 里**没有任何 `🤖 AI Prompt` 单元格**——W1/W2 每个 code cell 后面都跟一段"把这段代码用自然语言要回来"的提示，本周没有；② notebook 末尾 **cell 44–48 直接附了 Week 3 Assignment（100 分，3 题）和提交清单**，题目比 T02 的 4 道题重得多。见 §7、§8。
 
@@ -38,6 +38,9 @@ notebook 第一个 cell 自己列了八件事，我按数据分成两段：
 | C · 作业 | 44–48 | Airbnb + 自己的项目数据 | 3 题 100 分 | §7 |
 
 **它和 M03 讲义的关系**：讲义 p.19 只问了"数据质量问题怎么发现、怎么办"没答，**答案全在段 B**；讲义没讲"标准化"，段 B 的 cell 35–37 是新增内容（为 M04 的 PCA 和 W04 的聚类铺路——这两者都对尺度敏感）。
+
+> 🎙️ **课堂实况**（2026-09-16 周三课，tutorial 段）：tutorial 段（`01:45:33`–`02:13:18`，约 28 分钟） 由教授本人主讲（不是助教），全程带着 Iris 与 Airbnb 两个 notebook 逐 cell 跑；时间最集中在 cell 28（三种缺失值填补，尤其 KNN 的 GPA 近邻类比，约 5.1 分钟）与 cell 5–8（描述统计函数与偏度峰度，约 3.8 分钟）；作业在最后约 2.9 分钟口头交代，重点是 Q3 由 TA 出题、同组必须用不同变量组合。
+
 
 ---
 
@@ -116,6 +119,13 @@ data.head(10)
 
 **⚠️ 易错点**：文件叫 `.txt` 但内容是 CSV——`read_csv` 只看内容不看后缀。
 
+**🎙️ 课堂补充**（`01:46:42`–`01:48:59`，约 2.3 分钟，A · 课上展开）
+
+- 复述“行是对象、列是属性”这条定义：*"And the row is an object. And the column is the attributes we have."*（`01:46:56`–`01:46:58`）
+- 逐句解释 `header=None` 的必要性：*"There are no definitions of the header. So the header equals to none. It means that we do not have the name for each column from the raw data."*（`01:47:43`–`01:47:51`）
+- 补了 notebook 没写的业务背景——为什么原始文件会没有列名：*"[S]ometimes when the company is recording the data, they will prepare two different datasets. One is the pure values of SKU[s]. The second will be the name of different columns[,] in two different separate ones."*（`01:47:53`–`01:48:05`）
+- **这段改变了什么**：确认了笔记对 `header=None` 的解读；新增一条业务解释——公司常把“纯数值表”和“字段对照表”分开存，这正是 `iris.txt` 这类无表头文件的来源。
+
 ### 2.2 【cell 5–7】自定义描述函数：一次算 12 个统计量
 
 **这块在干什么**：`describe()` 只给 8 个数（count/mean/std/min/25%/50%/75%/max），作业要求 11 个（加众数、Q1/Q3、极差、IQR、偏度、峰度）。notebook 自己写了一个函数补齐。
@@ -146,6 +156,14 @@ describe_col(data, 'sepal length')
 - `kurt()` 是**超额峰度**（正态 = 0）。
 - 众数对连续变量意义不大（M03 §2.9）。
 
+**🎙️ 课堂补充**（`01:49:04`–`01:52:51`，约 3.8 分钟，A · 课上展开）
+
+- 强调 pandas 已经内置了这些统计量的计算：*"[M]ost of the summary statistics calculations have been supported by the Pandas Data Frame."*（`01:49:15`–`01:49:26`）
+- Q1/Q3 与 IQR 的口头公式：*"Q1, Q3, we will calculate it using S dot quantile. So this is a 25 quantile or 75 quantile. ... [F]or the IQR, it is Q3 minus Q1."*（`01:50:01`–`01:50:09`）
+- 明确预告 `describe()` 要到下一讲才教：*"[N]ext week, I think, we will have a simple function called data.describe... [it] will generate all this information in a single command."*（`01:51:29`–`01:51:39`）
+- 偏度 / 峰度的口头定义（ASR 把 skewness 识别成 "SKU needs"、kurtosis 识别成 "QNAS/quotasys"）：*"[T]he [skewness] tell[s] you whether it is [symmetric?]... and the [kurtosis] tell[s] you whether it is normally dis[tributed] or concentrated to the middle..."*（`01:52:40`–`01:52:45`）
+- **这段改变了什么**：确认了笔记对 `describe_col` 与六分位数的解读；新增一条时间线信息——手写统计函数是给 `data.describe()`（下一讲才教）打的铺垫，不是长期要用的写法。
+
 ### 2.3 【cell 10–11】频数与分组统计
 
 **这块在干什么**：类别列只能数（M03 §2.8）；然后按品种分组，看四个数值属性在三类里各是什么水平——这是"分组 = 聚合"（M03 §2.16）。
@@ -162,6 +180,13 @@ data.groupby('class')[['sepal length', 'sepal width', 'petal length', 'petal wid
 **为什么这么写**：`groupby(...)[cols].agg([list])` 是 pandas 做"透视表"的标准写法（M03 §2.7 的 pivot table）；输出是**多级列**（属性 × 统计量），看着乱但作业可以直接贴。
 
 **⚠️ 易错点**：`value_counts()` 默认按频数降序排；`normalize=True` 给比例不是百分比（0.333 不是 33.3）。
+
+**🎙️ 课堂补充**（`01:52:51`–`01:55:48`，约 3.0 分钟，A · 课上展开）
+
+- `value_counts(normalize=True)` 的口头解释与结果（ASR 把 setosa 识别成 "cytosine"）：*"[I]f we put in the value count[s] and do the normalization, and keep the three decimals here[,] then you will tell you that about 33.3% is the data point belonging to your [setosa]."*（`01:53:26`–`01:53:41`）
+- 🔴 **notebook 和讲义都没有的增量：用银行“正常交易 vs 欺诈交易”举例讲类别不平衡**（ASR 把 fraud 识别成 "board"）：*"Now when you go to the bank, the number of normal transactions will be much, much larger than the [fraud?] transactions. So if we want to detect [fraud?] transactions, we are actually getting a very tiny group of labeled [fraud?] transactions from the large group of normal transactions."*（`01:54:07`–`01:54:25`）
+- 预告分类章节会专门处理不平衡数据，并点明数据探索的意义：*"[I]n the later classification lecture we will have one small section to illustrate how to deal with the imbalanced data classification. ... [T]he data exploration is very important at the very beginning for you to choose the right model."*（`01:54:32`–`01:55:11`）
+- **这段改变了什么**：`value_counts` 与 `groupby().agg` 本身与笔记一致；新增了“三类各占 33.3%”这件事为什么重要——真实数据常常类别不平衡，这是选模型前必须先看的信号，教授用银行欺诈检测具体举了例子。
 
 ### 2.4 【cell 14–23】四种图
 
@@ -189,6 +214,14 @@ parallel_coordinates(data, 'class')
 - `plt.show()` 之后再调 `plt.title` 无效（图已经画完了）；标题和轴标签要在 `show()` **之前**。
 - `data.boxplot()` 会把所有数值列画在一起，如果量纲差几个数量级（Airbnb 的 `number_of_reviews` 0–600 与 `bathrooms` 0–8），小的那些会压成一条线——Airbnb 要分开画或先标准化。
 - 平行坐标的轴序按 DataFrame 列顺序；想换序先 `data[[新顺序]]`。
+
+**🎙️ 课堂补充**（`01:55:48`–`01:59:12`，约 3.4 分钟，A · 课上展开）
+
+- 直方图 bin 数与读图：*"[L]et me show you that there are 20 intervals here[,] because [bins equals] 20... [M]ost of the records[,] they have their petal width value to be very small."*（`01:56:09`–`01:56:41`）
+- 🔴 **箱线图离群点边界，口头说法是百分位而非 1.5×IQR——与本笔记 §9.5 ⑤ 的疑问对上了**：*"[S]o the threshold[,] together with some outliers here[:] the outlier[s] above the [90th?] percentile or below the 10th percentile[,] they were labeled outliers."*（`01:56:58`–`01:57:07`）
+- 分组散点图的读图描述：*"[A] simple visualization, a two-dimensional visualization is petal length and petal width. ... [W]e can see a very clear difference in the pattern[s] of the blue data points[.]"*（`01:57:14`–`01:57:29`）
+- 平行坐标的工具来源：*"[P]andas has its own plotting library called pandas [dot] plotting[,] and one of the tool[s] in [that] library is called parallel coordinate[s]."*（`01:58:13`–`01:58:27`）
+- **这段改变了什么**：确认了四张图的读法；新增一条与本笔记 §9.5 ⑤ 直接相关的证据——教授口头描述箱线图须用的是 10/90 百分位，与 `data.boxplot()` 实际默认的 1.5×IQR **不是同一套口径**；作业里若按讲义 10/90 百分位算须会与 notebook 输出的箱线图对不上，建议以 `boxplot()` 的 1.5×IQR 为准并注明。
 
 ---
 ## 3. 逐块讲解 · 段 B：Airbnb 的脏数据（cell 25–42）
@@ -221,6 +254,14 @@ pd.DataFrame({'missing': missing, 'ratio': missing_ratio})[missing > 0]
 **为什么这么写**：作业第 2.1 题第一条就是 "Missing-value report for all columns"——这三行就是模板。⚠️ 注意 `bedrooms` **没有缺失**，但 cell 28 仍然把它和 `review_scores_rating` 一起填补——见 §3.2 的坑。
 
 **⚠️ 易错点**：`head()` 的第 4 行 `review_scores_rating` 已经是 `NaN`（该房源 `number_of_reviews = 0`）——**评分缺失的机制是"没评论就没评分"**，不是随机缺失（数据集卡片 §3.1）。这一点在作业里写出来是加分项：它说明"用中位数填"是在给没人住过的房源一个"典型"评分，得说清这个假设。
+
+**🎙️ 课堂补充**（`01:59:12`–`02:01:20`，约 2.1 分钟，A · 课上展开）
+
+- 切换数据集与确认缺失列（ASR 把 Airbnb 识别成 "LBNB"）：*"[W]e switch to the real data set of [Airbnb], and we know that it contains some missing values in the review[s] [scores] rating..."*（`01:59:19`–`01:59:34`）
+- 🎙️ **notebook 没写的处理框架——“删除”与“填补”两条路怎么选**：*"[T]he first method... [is] if the number of missing values is very small compared with the whole data[,] and if we remove [them], we will not affect the whole population... we can just remove these... records."*（`01:59:54`–`02:00:17`）
+- 何时该填而不是删：*"[I]f we believe that these records... are very important for us[,] ... we want to keep them, so we need to fill the missing values."*（`02:00:17`–`02:00:33`）
+- 缺失计数口头核对（`review_scores_rating` 的具体数字被 ASR 严重压缩，标 [?]）：*"[A]mong the whole data set, the host has 40 [profile pic?] pictures, we have 180 missing records. The host identif[ied] 180, and the review score[s rating], we have so many[?] missing values for this col[umn]."*（`02:00:55`–`02:01:07`）
+- **这段改变了什么**：确认了 §3.1 缺失值报告的三列结果（180 / 180 / review_scores_rating 大量缺失）；新增一条 notebook 没写的决策框架——先判断“删了会不会影响整体分布”，不行再填补，这是本节“为什么选填补而不是删除”的理论依据。
 
 ### 3.2 【cell 28–30】三种缺失值填补：均值 / 中位数 / KNN
 
@@ -272,6 +313,14 @@ cell 30 建 `air_clean`：复制一份，把两列替换成中位数版本，`is
 - KNN 的邻居只在 `cols` 那两列里找；要让 KNN 有意义，应该把 `accommodates`、`bathrooms`、`beds` 等也放进去（`KNNImputer` 会用所有传入的列算距离）。**且 KNN 对尺度敏感**——评分 20–100 与卧室 0–10 量纲不同，严格做法要先标准化（§3.4）。这是 T03 第一个"改参数"点（§5）。
 - 用整张表算均值再填补，**测试集的信息会泄漏到训练集**（M02 §2.9.3 的验证集纪律）。作业不要求，但项目里应 `fit` 训练集、`transform` 测试集。
 
+**🎙️ 课堂补充**（`02:01:20`–`02:06:26`，约 5.1 分钟，A · 课上展开）
+
+- `sklearn.impute` 库的口头介绍（ASR “costiller” = scikit-learn）：*"[Scikit-learn] dot impute. [B]ut the impute is a library that we can use[,] ... [and] so many tools in the library to impute or to fill the missing values in your data set. So there are two big imputer[s]. One is a simple imputer[,] the other is the K[NN] imputer."*（`02:01:47`–`02:02:09`）
+- `strategy='mean'` 的口头解释：*"[I]f we set the strategy equal to mean, ... it asks the machine to use the mean value of this column to fill the missing value[,] ... [using] all the non-missing values of this column to calculate the average value."*（`02:02:38`–`02:02:55`）
+- `fit_transform` 拆两步：*"[F]it transform will do two things. First, the fit will get the mean value of the non-missing vector[s]... So after that, the new columns will have the... average value filled."*（`02:03:19`–`02:03:43`）
+- 🔴 **notebook 完全没有的 KNN 类比——用“不知道某学生 GPA，但知道他离哪些同学最近”讲 K 近邻填补**（ASR "hitting around" 疑为 "clustered close to"）：*"[T]hat student, I do not know his GPA[,] but I know that he is [close?] around 5 other students, around 10. ... I will use five closest neighbors['] ... average value of the five closest neighbors' GPA to fill the missing value of his missing GPA. ... I only use the neighbors. I will not use the whole population's average."*（`02:04:56`–`02:05:44`）
+- **这段改变了什么**：确认了 §3.2 三种填补方法的操作流程；新增了“KNN 邻居定义很弱”这条易错点背后教授自己给的直觉类比——K 近邻只看“最像的 k 个”，不看全体，这条类比可以直接写进作业的 justify 段落。
+
 ### 3.3 【cell 32–34】两种离群点规则：IQR vs Z 分数
 
 **这块在干什么**：给三列各用两种规则标记离群点，数各有多少个，比较。
@@ -320,6 +369,8 @@ cell 33：`log_price` 的 IQR 离群比例 = **0.0213**（1,453 / 68,133）；�
 - Z 分数用的是含离群点的均值和标准差，离群点会"拉大"标准差、掩盖自己（masking）；RobustScaler 用中位数和 IQR 就是为了这个（§3.4）。
 - 标记 ≠ 删除。notebook 只加了一列 flag，没有删行；M02 §2.6.4 讲过离群点的两条路（删 / 找解释变量）。
 
+**🎙️ 课堂补充**（`02:06:26`–`02:07:42`，约 1.3 分钟，B · 讲了同讲义）：教授只是简讲了一遍 IQR 与 Z 分数两条离群点规则的公式，没有给出 Airbnb 三列（`log_price` / `accommodates` / `bathrooms`）任何具体计数或对比结论——*"[I]f we want to identify some [outlier] data points, we can use the IQR. I already informed [you] that IQR is Q3 minus Q1. ... [A]lternatively we can use this kind of Z-score[:] ... the X value minus mean value divided by the standard deviation."*（`02:06:34`–`02:07:21`）与笔记 §3.3 的公式一致；notebook 里 `bathrooms` 的 IQR=0 退化、14,307 个“离群点”这条最有价值的发现，本段没有口头提及。
+
 ### 3.4 【cell 36–37】标准化：StandardScaler vs RobustScaler
 
 **这块在干什么**：五个数值特征量纲不同（`accommodates` 1–16，`review_scores_rating` 20–100），把它们压到可比的尺度上；两种压法，一种用均值 / 标准差，一种用中位数 / IQR。
@@ -357,6 +408,8 @@ $$\text{StandardScaler：} z = \frac{x - \bar{x}}{s}, \qquad \text{RobustScaler�
 - `fit_transform` 用全表统计量，同样有训练 / 测试泄漏问题。
 - 标准化后列名要自己接，否则一堆无名数组（cell 36 的 `columns=` 就是在做这件事）。
 
+**🎙️ 课堂补充**（`02:07:42`–`02:08:48`，约 1.1 分钟，B · 讲了同讲义）：只念了两个公式，没有展开“何时用哪个”的取舍标准，也没有提 Airbnb 五个特征的具体输出——*"[F]or the standardization... the actual value [minus] the mean divided by the standard deviation. ... [A]fter... standardization[,] all the columns' mean value will become zero, and the standard deviation will become one. ... [W]e can use... robust scaler... [subtracting] median and divid[ing] it by the IQR."*（`02:07:56`–`02:08:40`）与笔记 §3.4 的两个公式一致；`bathrooms_rob` 因 IQR=0 退化成“减 1”这条易错点没有被提及。
+
 ### 3.5 【cell 39–42】协方差、相关矩阵、热力图、相关 ≠ 因果
 
 **这块在干什么**：算 7 列（目标 + 6 个数值特征）的协方差矩阵和相关矩阵，画热力图，找与 `log_price` 最相关的特征，然后说一遍"相关不是因果"。
@@ -393,6 +446,12 @@ cell 41 的前 5：accommodates 0.578、bedrooms 0.483、beds 0.470、bathrooms 
 - `corr()` 只算数值列；`city`、`property_type` 不会出现——它们与 `log_price` 的关系要用分组箱线图（§2.4）或分组中位数（§2.3）看。
 - `review_scores_rating` 与价格相关只有 0.08——**"评分高的房贵"在这份数据里几乎不成立**，作业写 insight 时这是一个反直觉的好例子。
 - 热力图的颜色尺度默认按数据范围，两张图不可直接比色；作业要比就固定 `vmin=-1, vmax=1`。
+
+**🎙️ 课堂补充**（`02:08:48`–`02:09:51`，约 1.1 分钟，A · 课上展开）
+
+- 热力图颜色编码的口头说明（notebook 只写了 `cmap='coolwarm'`，没有解释）：*"[T]o see... all the correlation metrics, the [heatmap][:] if they are positively correlated, it's closer to the red[;] if they are negatively correlated... it will be close to the dark blue."*（`02:09:15`–`02:09:24`）
+- 相关系数低 ≠ 无关系的补充（ASR "field correlation" 疑为 "zero correlation"）：*"[Z]ero[?] correlation does not mean they do not have [a] relationship[;] maybe they have non-linear correlation, non-linear relationship."*（`02:09:36`–`02:09:41`）
+- **这段改变了什么**：确认了 §3.5 热力图与“相关≠因果”的读法；补上了 notebook 没写的热力图配色规则，以及一条独立于因果问题的提醒——低（线性）相关不代表没有关系，可能是非线性关系。
 
 ---
 
@@ -571,54 +630,72 @@ flowchart TD
 
 ## 8. cell ↔ 讲义页码映射 · 课堂覆盖
 
-**20 个 code cell 全部在 §2–§3 有讲解**；28 个 markdown cell 中，cell 1、2、4、8、9、12、13、15、16、18、19、21、22、24、25、29、31、34、35、37、38、42、43 的内容已并入对应小节，cell 44–48 见 §7。本讲无转录，「课堂覆盖」整列 `—`。
+**20 个 code cell 全部在 §2–§3 有讲解**；28 个 markdown cell 中，cell 1、2、4、8、9、12、13、15、16、18、19、21、22、24、25、29、31、34、35、37、38、42、43 的内容已并入对应小节，cell 44–48 见 §7。「课堂覆盖」列来自 `M03-transcript.txt` tutorial 段（2026-09-18 合并）。
 
 | cell | 类型 | 内容 | 笔记小节 | 讲义页 | 课堂覆盖 |
 |---|---|---|---|---|---|
-| 1 | md | 标题与八项清单 | §0 | — | — |
-| 2 | md | object / attribute | §2.1 | p.4 | — |
-| 3 | code | import · 样式 · 读 iris | §2.1 | p.61 | — |
-| 4 | md | 描述统计说明 | §2.2 | p.24 | — |
-| 5 | code | `describe_col` | §2.2 | p.24–26 | — |
-| 6 | code | 四列汇总表 | §2.2 | p.24–28 | — |
-| 7 | code | 六个分位数 | §2.2 | p.25 | — |
-| 8 | md | 偏度峰度读法 | §2.2 | p.27–28 | — |
-| 9 | md | 频数与分组说明 | §2.3 | p.23 | — |
-| 10 | code | `value_counts` | §2.3 | p.23 | — |
-| 11 | code | `groupby().agg` | §2.3 | p.22, p.51 | — |
-| 12 | md | insight | §2.3 | — | — |
-| 13 | md | 4.1 标题 | §2.4 | — | — |
-| 14 | code | 直方图 | §2.4 | p.63 | — |
-| 15 | md | 多峰 = 混合 | §2.4 | p.63 | — |
-| 16 | md | 4.2 标题 | §2.4 | — | — |
-| 17 | code | 箱线图 | §2.4 | p.65–66 | — |
-| 18 | md | 读法 | §2.4 | — | — |
-| 19 | md | 4.3 标题 | §2.4 | — | — |
-| 20 | code | 分组散点 | §2.4 | p.67–68 | — |
-| 21 | md | 强且非线性 | §2.4 | p.33 | — |
-| 22 | md | 4.4 标题 | §2.4 | — | — |
-| 23 | code | 平行坐标 | §2.4 | p.69–70 | — |
-| 24 | md | 读法 | §2.4 | — | — |
-| 25 | md | 切换到 Airbnb | §3.1 | p.5, p.19 | — |
-| 26 | code | 读 Airbnb | §3.1 | p.5 | — |
-| 27 | code | 缺失报告 | §3.1 | p.19 | — |
-| 28 | code | 三种填补 | §3.2 | p.19 | — |
-| 29 | md | 解读与选择 | §3.2 | — | — |
-| 30 | code | `air_clean` | §3.2 | — | — |
-| 31 | md | 6 标题 | §3.3 | — | — |
-| 32 | code | IQR / Z 标记 | §3.3 | p.19, p.26 | — |
-| 33 | code | `outlier_iqr` 比例 | §3.3 | — | — |
-| 34 | md | 两法比较 | §3.3 | — | — |
-| 35 | md | 两种 scaler 定义 | §3.4 | —（讲义无） | — |
-| 36 | code | 标准化 | §3.4 | — | — |
-| 37 | md | 何时用哪个 | §3.4 | — | — |
-| 38 | md | 协方差 / 相关定义 | §3.5 | p.30–32 | — |
-| 39 | code | `cov` / `corr` | §3.5 | p.30–33 | — |
-| 40 | code | 热力图 | §3.5 | — | — |
-| 41 | code | top 5 相关 | §3.5 | — | — |
-| 42 | md | 相关 ≠ 因果 | §3.5 | p.34 | — |
-| 43 | md | Wrap-up | §4 | — | — |
-| 44–48 | md | Week 3 Assignment + 清单 | §7 | — | — |
+| 1 | md | 标题与八项清单 | §0 | — | ✅ 简讲 `01:46:09`–`01:46:40`（口头概述本讲八件事） |
+| 2 | md | object / attribute | §2.1 | p.4 | ✅ 详讲 `01:46:56`–`01:46:58` |
+| 3 | code | import · 样式 · 读 iris | §2.1 | p.61 | ✅ 详讲 `01:46:42`–`01:48:59` |
+| 4 | md | 描述统计说明 | §2.2 | p.24 | ⚡ 一句带过（并入 cell 5 讲解） |
+| 5 | code | `describe_col` | §2.2 | p.24–26 | ✅ 详讲 `01:49:04`–`01:51:08` |
+| 6 | code | 四列汇总表 | §2.2 | p.24–28 | ✅ 详讲 `01:51:08`–`01:51:49` |
+| 7 | code | 六个分位数 | §2.2 | p.25 | ✅ 详讲 `01:51:49`–`01:52:11` |
+| 8 | md | 偏度峰度读法 | §2.2 | p.27–28 | ✅ 详讲 `01:52:11`–`01:52:51` |
+| 9 | md | 频数与分组说明 | §2.3 | p.23 | ⚡ 一句带过（并入 cell 10 讲解） |
+| 10 | code | `value_counts` | §2.3 | p.23 | ✅ 详讲 `01:52:51`–`01:53:41` |
+| 11 | code | `groupby().agg` | §2.3 | p.22, p.51 | ✅ 简讲 `01:55:18`–`01:55:48` |
+| 12 | md | insight | §2.3 | — | ⏭️ 没有专门念 insight 原文，前后 `01:55:11`→`01:55:18` 直接跳到 groupby 演示 |
+| 13 | md | 4.1 标题 | §2.4 | — | ⚡ 隐含（标题未单独念） |
+| 14 | code | 直方图 | §2.4 | p.63 | ✅ 详讲 `01:55:48`–`01:56:41` |
+| 15 | md | 多峰 = 混合 | §2.4 | p.63 | ⏭️ 没有念“多峰=混合”这条 insight，`01:56:41` 直接转到箱线图 |
+| 16 | md | 4.2 标题 | §2.4 | — | ⚡ 隐含 |
+| 17 | code | 箱线图 | §2.4 | p.65–66 | ✅ 详讲 `01:56:41`–`01:57:10` |
+| 18 | md | 读法 | §2.4 | — | ⏭️ 没有念 "no obvious extreme outliers"，`01:57:10` 直接转到散点图 |
+| 19 | md | 4.3 标题 | §2.4 | — | ⚡ 隐含 |
+| 20 | code | 分组散点 | §2.4 | p.67–68 | ✅ 详讲 `01:57:10`–`01:58:00` |
+| 21 | md | 强且非线性 | §2.4 | p.33 | ⏭️ 没有念“强且非线性”这条 insight，`01:58:00` 直接转到平行坐标 |
+| 22 | md | 4.4 标题 | §2.4 | — | ⚡ 隐含 |
+| 23 | code | 平行坐标 | §2.4 | p.69–70 | ✅ 详讲 `01:58:07`–`01:59:07` |
+| 24 | md | 读法 | §2.4 | — | ⏭️ 没有专门念读法，`01:59:07` 直接切换到 Airbnb |
+| 25 | md | 切换到 Airbnb | §3.1 | p.5, p.19 | ✅ 简讲 `01:59:12`–`01:59:19` |
+| 26 | code | 读 Airbnb | §3.1 | p.5 | ✅ 简讲 `01:59:19`–`01:59:34` |
+| 27 | code | 缺失报告 | §3.1 | p.19 | ✅ 详讲 `01:59:34`–`02:01:14` |
+| 28 | code | 三种填补 | §3.2 | p.19 | ✅ 详讲 `02:01:20`–`02:04:20`（mean/median 两种 SimpleImputer） |
+| 29 | md | 解读与选择 | §3.2 | — | ⏭️ 没有念选中位数的理由，只讲了操作步骤 |
+| 30 | code | `air_clean` | §3.2 | — | ✅ 简讲 `02:06:26`（“no missing value from the original data table”） |
+| 31 | md | 6 标题 | §3.3 | — | ⚡ 隐含 |
+| 32 | code | IQR / Z 标记 | §3.3 | p.19, p.26 | ✅ 简讲 `02:06:26`–`02:07:21`（只讲公式，无 Airbnb 具体数字） |
+| 33 | code | `outlier_iqr` 比例 | §3.3 | — | ⏭️ 没有提 `outlier_iqr` 具体比例数字 |
+| 34 | md | 两法比较 | §3.3 | — | ⏭️ 没有专门比较两法结论 |
+| 35 | md | 两种 scaler 定义 | §3.4 | —（讲义无） | ✅ 简讲 `02:07:42`–`02:08:04` |
+| 36 | code | 标准化 | §3.4 | — | ✅ 简讲 `02:08:04`–`02:08:31` |
+| 37 | md | 何时用哪个 | §3.4 | — | ⏭️ 没有展开“何时用哪个”的取舍标准 |
+| 38 | md | 协方差 / 相关定义 | §3.5 | p.30–32 | ✅ 简讲 `02:08:48`–`02:09:11` |
+| 39 | code | `cov` / `corr` | §3.5 | p.30–33 | ✅ 简讲 `02:09:04`–`02:09:15` |
+| 40 | code | 热力图 | §3.5 | — | ✅ 简讲 `02:09:15`–`02:09:28` |
+| 41 | code | top 5 相关 | §3.5 | — | ⏭️ 没有提 top 5 相关系数具体数字 |
+| 42 | md | 相关 ≠ 因果 | §3.5 | p.34 | ✅ 详讲 `02:09:28`–`02:09:51` |
+| 43 | md | Wrap-up | §4 | — | ✅ 简讲 `02:09:51`–`02:10:18` |
+| 44–48 | md | Week 3 Assignment + 清单 | §7 | — | ✅ 详讲 `02:10:22`–`02:13:18`（Q1/Q2/Q3 口头交代，含 TA 出题背景与 Q3 同组不同变量规则） |
+
+**课堂时间分配**（tutorial 段 `01:45:33 → 02:13:18`，约 28 分钟（同一份 `M03-transcript.txt`），按时间戳）：
+
+| 内容块 | 时间戳 | 用时 | 占比 |
+|---|---|---|---|
+| 开场：tutorial 预告与本讲内容概述 | `01:45:33`–`01:46:42` | ~1.1 min | 4.1% |
+| cell 3 读 iris 数据、命名列 | `01:46:42`–`01:48:59` | ~2.3 min | 8.3% |
+| cell 5–8 描述统计函数、偏度峰度 | `01:49:04`–`01:52:51` | ~3.8 min | 13.7% |
+| cell 10–11 频数/分组统计 + 类别不平衡举例 | `01:52:51`–`01:55:48` | ~3.0 min | 10.8% |
+| cell 14–23 四种图 | `01:55:48`–`01:59:12` | ~3.4 min | 12.3% |
+| cell 26–27 切换 Airbnb、缺失值报告 | `01:59:12`–`02:01:20` | ~2.1 min | 7.6% |
+| cell 28–30 三种缺失值填补（含 KNN GPA 类比） | `02:01:20`–`02:06:26` | ~5.1 min | 18.4% |
+| cell 32–34 IQR / Z-score 离群点 | `02:06:26`–`02:07:42` | ~1.3 min | 4.7% |
+| cell 36–37 两种标准化 | `02:07:42`–`02:08:48` | ~1.1 min | 4.0% |
+| cell 39–42 协方差/相关/热力图/相关≠因果 | `02:08:48`–`02:09:51` | ~1.1 min | 4.0% |
+| cell 43 总结 | `02:09:51`–`02:10:22` | ~0.5 min | 1.8% |
+| cell 44–48 Week 3 作业口头交代 | `02:10:22`–`02:13:18` | ~2.9 min | 10.5% |
+
 
 ---
 
@@ -626,11 +703,26 @@ flowchart TD
 
 ### 9.1 notebook 有但课上略过
 
-本讲无转录，无法判断。
+| 讲义页 | 内容 | 课上处理 | 笔记处理 |
+|---|---|---|---|
+| cell 12 | insight（petal length 比 sepal width 更能区分品种） | ⏭️ 没有专门念这句结论，`01:55:11`→`01:55:18` 直接跳到 groupby 演示 | ⚪ 内容仍成立，读者按 notebook 原句理解即可 |
+| cell 15 | “多峰=可能是混合总体”读法 | ⏭️ 讲完直方图后 `01:56:41` 直接转箱线图，没有念这条解读 | ⚪ 保留在正文，属于笔记补充性质的解读，不降权 |
+| cell 18 | “No obvious extreme outliers” | ⏭️ 没有念，`01:57:10` 直接进入散点图 | ⚪ 与教授口头描述的 10/90 百分位须相符（见 §2.4 🎙️），可保留 |
+| cell 21 | “strong and nonlinear”结论 | ⏭️ 没有念，`01:58:00` 直接转平行坐标 | ⚪ 与 §3.5 🎙️ 里“低相关不代表无关系”的口头提醒逻辑一致，保留 |
+| cell 29 | 选中位数而非均值/KNN 的理由 | ⏭️ 只讲了 SimpleImputer/KNNImputer 怎么操作，没有口头给出“为什么选中位数” | ⚠️ 作业要求自己 justify，教授没有代劳，读者仍需自己论证（笔记 §3.2 已给论证） |
+| cell 33/41 | `outlier_iqr` 比例、top 5 相关系数等具体输出数字 | ⏭️ 只讲操作步骤和公式，没有口头核对任何具体数字 | ⚪ 以 notebook 输出与 `verify_airbnb.py` 复核结果为准 |
 
 ### 9.2 课上讲了但 notebook 没有
 
-本讲无转录，无法比对。⚠️ 转录到位后优先核对：作业截止日期与占分是否被宣布；助教有没有解释 `bedrooms` 无缺失这件事；有没有讲标准化与 M04 PCA 的关系。
+| # | 内容 | 时长 | 时间戳 | 小节 | 为什么值钱 |
+|---|---|---|---|---|---|
+| 1 | 🔴 **KNN 填补的“不知道 GPA 但知道最近 5 个同学”类比** | ~48 s | `02:04:56`–`02:05:44` | T03 §3.2 | 完整解释了 K 近邻填补“只看最像的 k 个，不看全体”的直觉，notebook 和讲义都没有；可直接写进作业的 justify 段落 |
+| 2 | 🔴 **银行“正常交易 vs 欺诈交易”讲类别不平衡** | ~34 s | `01:54:07`–`01:54:41` | T03 §2.3 | 解释了“三类各占 33.3%”为什么值得注意——真实数据常不平衡，这是选模型前的必要一步；notebook 完全没有这段 |
+| 3 | ⭐ **缺失值“删 vs 填”的决策框架** | ~39 s | `01:59:54`–`02:00:33` | T03 §3.1 | notebook 直接跳到三种填补方法，没有说明什么时候该删、什么时候该填；这段补上了决策依据 |
+| 4 | ⭐ **箱线图离群点用 10/90 百分位而非 1.5×IQR 的口头说法** | ~9 s | `01:56:58`–`01:57:07` | T03 §2.4 | 直接回应本笔记 §9.5 ⑤ 的悬案——教授描述的须与 `data.boxplot()` 实际默认（1.5×IQR）不是同一套口径，作业里要注明用哪种 |
+| 5 | ⚪ **热力图颜色编码口头说明** | ~9 s | `02:09:15`–`02:09:24` | T03 §3.5 | notebook 只写了 `cmap='coolwarm'`，没解释红/深蓝分别代表什么 |
+| 6 | ⚪ **`describe()` 要到下一讲才正式教** | ~10 s | `01:51:29`–`01:51:39` | T03 §2.2 | 说明手写 `describe_col` 是过渡写法，给出了时间线信息 |
+| 7 | ⚪ **原始数据无表头的业务背景** | ~12 s | `01:47:53`–`01:48:05` | T03 §2.1 | 解释了为什么公司会把“纯数值表”和“字段名对照表”分开存 |
 
 ### 9.3 notebook 自身的问题
 
@@ -661,10 +753,15 @@ flowchart TD
 | # | 事项 | 说明 |
 |---|---|---|
 | ① | ~~Week 3 作业截止日、Canvas 占分~~ | ✅ 9/25（五）23:59，Canvas 10 分（2026-09-16 截图）；上传的文件类型限制待上传时看 |
-| ② | **转录** | 未导出；到位后回填 §9.1–9.2 与 §8 课堂覆盖列 |
+| ② | ~~转录~~ | ✅ 2026-09-18 已合并 tutorial 段（`01:45:33`–`02:13:18`）：§8 课堂覆盖列、§9.1–9.2、9 个 🎙️ 格 |
 | ③ | Q1 分位数题的出题本意 | 实跑分位数一致；是出题人笔误还是想考均值 / 插值——**建议课上或 Canvas 讨论区问一句**，答题时两种可能都覆盖（§7.3） |
 | ④ | Q3 的项目数据集 | 需要用户自己的选题；本笔记无法代写 |
 | ⑤ | 讲义 p.65 须（10/90 百分位）与 notebook 箱线图（1.5×IQR）口径不同 | 作业里注明用哪种 |
+| ⑥ | ✅ **本片段转录已核对（shard_3，`01:45:33`–`02:13:18`）** | 段 [1056]–[1359]，共 304 段，时长约 27 分 45 秒；无时序倒退；本片段内无 ≥120 秒空档 |
+| ⑦ | 〔?〕`review_scores_rating` 缺失计数被 ASR 压缩，听不出具体数字 | `02:00:55`–`02:01:07` 只留下“review score 18”一类残缺读数，与[[Business_Data_Analytics/_meta/数据集卡片#Airbnb.csv\|数据集卡片]] §3 的 15,275（22.42%）明显不符；笔记数字以数据集卡片与 `verify_airbnb.py` 复核结果为准，转录原文标 [?] 不采信 |
+| ⑧ | 〔?〕“board transactions”疑为 “fraud transactions” | `01:54:07`–`01:54:15`，按上下文（银行“正常交易 vs 极少数被标记的交易”）推断为 fraud，未能 100% 确认，笔记引文标 [fraud?] |
+| ⑨ | 〔?〕“the 19th percentile”疑为 “the 90th percentile” | `01:57:02`，与紧邻的 “below the 10th percentile” 对称推断为 90th，笔记引文标 [90th?] |
+| ⑩ | ✅ 本片段新增的 ASR 错误样本（已列入 findings 的 asr_rows，供追加到 asr-dictionary.md） | 详见 `asr_rows` |
 
 ### 9.6 反方视角（对抗自检第 12 项）
 
@@ -677,6 +774,7 @@ flowchart TD
 | 日期 | 变更 |
 |---|---|
 | 2026-09-16 | v0.9 建稿：20 个 code cell 逐块讲解；notebook 全部数值输出用 `verify_airbnb.py` / `verify_w3w4.py` 在原始数据上复核一致；发现题干两处与数据不符（`bedrooms` 无缺失、分位数 exp 一致）；无转录，无 AI Prompt cell |
+| 2026-09-18 | **合并 W3 转录 tutorial 段**（`M03-transcript.txt` `01:45:33 → 02:13:18`，本地 Whisper）→ v1.0：新增 9 个 🎙️ 格（A 7 / B 2 / C 0 / D 0）；§8 48 个 cell 加课堂覆盖列与时间分配表；§9.1 / 9.2 / 9.5 重写；作业口头规则回写 `作业与DDL` 与考点库 |
 
 ---
 

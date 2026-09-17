@@ -63,22 +63,34 @@ def apply_cells(lines, cells, log):
     for c in cells:
         i = find_heading(lines, c['section']); a, b = own_range(lines, i)
         r = cell_range(lines, a, b)
-        if not r: die('小节内 🎙️ 格不是恰好 1 个：%s' % c['section'])
         block = c['block'].rstrip('\n').split('\n')
         if not CELL.match(block[0]): die('patch block 必须以 **🎙️ 课堂补充** 开头：%s' % c['section'])
-        lines[r[0]:r[1]] = block; log.append('格 %s：%d 行 → %d 行' % (c['section'][:40], r[1] - r[0], len(block)))
+        if r:
+            lines[r[0]:r[1]] = block; log.append('格 %s：%d 行 → %d 行' % (c['section'][:40], r[1] - r[0], len(block)))
+        elif not any(CELL.match(lines[k]) for k in range(a, b)):                  # 小节没预留格（tutorial 笔记）：追加到小节末尾
+            j = b
+            while j - 1 > a and lines[j - 1].strip() in ('', '---'): j -= 1
+            lines[j:j] = [''] + block; log.append('格 %s：新增 %d 行' % (c['section'][:40], len(block)))
+        else: die('小节内 🎙️ 格多于 1 个：%s' % c['section'])
     return lines
 
 def apply_s8(lines, rows, log):
     s8 = find_heading(lines, '## 8'); a, b = section_range(lines, s8)
     hdr = next((i for i in range(a, b) if lines[i].startswith('|') and '课堂覆盖' in lines[i]), None)
     if hdr is None: die('§8 没有带「课堂覆盖」列的表')
-    ci = [c.strip() for c in lines[hdr].strip().strip('|').split('|')].index(next(c for c in [x.strip() for x in lines[hdr].strip().strip('|').split('|')] if '课堂覆盖' in c))
+    hcells = [c.strip() for c in lines[hdr].strip().strip('|').split('|')]
+    ci = next(k for k, c in enumerate(hcells) if '课堂覆盖' in c)
+    pi = next((k for k, c in enumerate(hcells) if '页' in c and '覆盖' not in c), 0)     # 讲义页列（EF5560 在第 1 列，IS6400/IS5113 在第 2 列）
+    def split_row(l): return [c.strip() for c in l.strip().strip('|').split('|')]
     for r in rows:
-        key = r['page'].strip()
-        idx = [i for i in range(hdr + 2, b) if lines[i].startswith('|') and re.match(r'^\|\s*\**%s\**\s*\|' % re.escape(key), lines[i])]
+        key = r['page'].strip().strip('*')
+        kc = pi
+        if r.get('col'):                                                            # 指定按哪一列定位（如 T0N 笔记的 cell 列）
+            kc = next((k for k, c in enumerate(hcells) if c.strip('*') == r['col']), None)
+            if kc is None: die('§8 表头没有「%s」列' % r['col'])
+        idx = [i for i in range(hdr + 2, b) if lines[i].startswith('|') and len(split_row(lines[i])) > kc and split_row(lines[i])[kc].strip('*') == key]
         if len(idx) != 1: die('§8 行定位到 %d 处：%s' % (len(idx), key))
-        cells = [c.strip() for c in lines[idx[0]].strip().strip('|').split('|')]
+        cells = split_row(lines[idx[0]])
         while len(cells) <= ci: cells.append('')
         cells[ci] = r['coverage']
         lines[idx[0]] = '| ' + ' | '.join(cells) + ' |'
@@ -122,11 +134,14 @@ def append_rows(lines, num, rows, header, placeholder_re, log):
         lines[end:end] = rows; log.append('§%s：追加 %d 行' % (num, len(rows)))
     return lines
 
-def renumber(rows, start=1):
+CIRCLED = '①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳'
+NUMROW = re.compile(r'^\|\s*(\d+|[①-⑳])\s*\|')
+def renumber(rows, start=1, circled=False):
     out = []
     for k, r in enumerate(rows, start):
         cells = r.strip().strip('|').split('|')
-        if cells and cells[0].strip().isdigit(): cells[0] = ' %d ' % k
+        if cells and (cells[0].strip().isdigit() or cells[0].strip() in CIRCLED):
+            cells[0] = ' %s ' % (CIRCLED[k - 1] if circled and 1 <= k <= 20 else k)
         out.append('|' + '|'.join(cells) + '|')
     return out
 
@@ -147,6 +162,7 @@ def render(lines, F, main, log):
         r = sub_range(lines, '0.') or None
         s0 = find_heading(lines, '## 0'); a, b = section_range(lines, s0)
         blk = ['', '> 🎙️ **课堂实况**（%s）：%s' % (main.get('class_date', today), ' '.join(F['class_summary'])), '']
+        while b > a and lines[b - 1].strip() in ('', '---'): b -= 1
         lines[b:b] = blk; log.append('§0：课堂实况块')
     # §6.2 🔴 行：插在第一条非 🔴 行之前（🔴 在表首）
     if F.get('red'):
@@ -165,17 +181,20 @@ def render(lines, F, main, log):
         while b > a and lines[b - 1].strip() in ('', '---'): b -= 1
         lines[b:b] = blk; log.append('§8：时间分配表 %d 行' % len(rows))
     # §9.1 / 9.2 / 9.5
-    lines = append_rows(lines, '9.1', F.get('s91', []), ['| 讲义页 | 内容 | 课上处理 | 笔记处理 |', '|---|---|---|---|'], r'无转录', log)
+    lines = append_rows(lines, '9.1', F.get('s91', []), F.get('s91_header') or ['| 讲义页 | 内容 | 课上处理 | 笔记处理 |', '|---|---|---|---|'], r'无转录', log)   # tutorial 笔记可用 s91_header 覆盖表头
     lines = append_rows(lines, '9.2', renumber(F.get('s92', [])), ['| # | 内容 | 时长 | 时间戳 | 小节 | 为什么值钱 |', '|---|---|---|---|---|---|'], r'无转录', log)
     if F.get('s95'):
-        r = sub_range(lines, '9.5'); a, b = r; existing = [l for l in lines[a:b] if re.match(r'^\|\s*\d+\s*\|', l)]
-        lines = append_rows(lines, '9.5', renumber(F['s95'], len(existing) + 1), ['| # | 事项 | 说明 |', '|---|---|---|'], None, log)
+        r = sub_range(lines, '9.5'); a, b = r; existing = [l for l in lines[a:b] if NUMROW.match(l)]
+        circ = bool(existing) and NUMROW.match(existing[-1]).group(1) in CIRCLED
+        lines = append_rows(lines, '9.5', renumber(F['s95'], len(existing) + 1, circ), ['| # | 事项 | 说明 |', '|---|---|---|'], None, log)
     # §9.6
     row = main.get('merge_row')
     if row:
-        r = sub_range(lines, '9.6') or sub_range(lines, '9.7'); a, b = r
+        i = next((k for k, l in enumerate(lines) if re.match(r'^### 9\.\d+ .*变更记录', l)), None)
+        if i is None: die('找不到「变更记录」小节')
+        a, b = sub_range(lines, re.match(r'^### (9\.\d+)', lines[i]).group(1))
         end = last_table_end(lines, a, b)
-        if end is None: die('§9.6 没有表')
+        if end is None: die('变更记录小节没有表')
         lines[end:end] = [row if row.startswith('|') else '| %s | %s |' % (today, row)]; log.append('§9.6：合并行')
     # 主代理的任意精确替换（文首提示块、§6.1 计数等）
     text = '\n'.join(lines)
@@ -195,17 +214,35 @@ META_TARGETS = {   # findings 键 → (文件相对课程 _meta 的路径 或 va
     'asr_rows':    ('.claude/skills/transcript-merge/reference/asr-dictionary.md', None, None),
 }
 
-def meta_blocks(F, course_dir, module, today):
+def meta_blocks(F, course_dir, module, today, course=''):
     out = {}
     for key, (rel, title, header) in META_TARGETS.items():
         rows = F.get(key) or []
         if not rows: continue
         path = os.path.join(ROOT, rel) if rel.startswith('.claude') else os.path.join(course_dir, rel)
-        if title is None:                       # asr-dictionary：直接追加行（表在文件末尾）
-            out[path] = '\n'.join(rows) + '\n'
+        if title is None:                       # asr-dictionary：追加到本课程分节的表末（见 insert_asr）
+            out[path] = ('ASR', course, '\n'.join(rows) + '\n')
         else:
             out[path] = '\n\n## 🎙️ %s 转录追加（%s）· %s\n\n' % (module, today, title) + '\n'.join(header + rows) + '\n'
     return out
+
+def insert_asr(old, course, rows):
+    """把 rows 插到 asr-dictionary 里 `## <course>` 分节最后一张表的末尾；找不到分节就追加到文件末尾。"""
+    ls = old.split('\n')
+    i = next((k for k, l in enumerate(ls) if l.startswith('## ') and course in l), None)
+    if i is None: return old.rstrip('\n') + '\n' + rows
+    j = i + 1
+    while j < len(ls) and not ls[j].startswith('## '): j += 1
+    end = None; k = i + 1
+    while k < j:
+        if ls[k].startswith('|'):
+            m = k
+            while m < j and ls[m].startswith('|'): m += 1
+            end = m; k = m
+        else: k += 1
+    if end is None: return old.rstrip('\n') + '\n' + rows
+    ls[end:end] = rows.rstrip('\n').split('\n')
+    return '\n'.join(ls)
 
 # ------------------------------------------------------------------ 验收
 def run(cmd):
@@ -295,7 +332,8 @@ def main():
     merged = os.path.join(work, 'merged.md')
     io.open(merged, 'w', encoding='utf-8', newline='\n').write('\n'.join(lines))
     today = main_.get('date') or datetime.date.today().isoformat()
-    blocks = meta_blocks(F, course_dir, module, today)
+    course = (re.search(r'^course:\s*(\S+)', text0[:800], re.M) or [None, module])[1]
+    blocks = meta_blocks(F, course_dir, module, today, course)
     # 验收
     ok1, ok2, out1, out2, L = verify(merged, transcripts, pages, strict, baseline_L, partial)
     rep = ['merge_apply %s  %s%s' % (datetime.datetime.now().isoformat(timespec='seconds'), note_rel, '  [partial：分片自验，A1/2/3/6/7/8/9/11 的 FAIL 不计]' if partial else ''), '分片 %d 个，🎙️ 格 %d，§8 行 %d' % (len(shards), len(cells), len(s8))] + ['  · ' + l for l in log] + \
@@ -312,7 +350,9 @@ def main():
     n = atomic_write(src, '\n'.join(lines)); print('   ✓ 写入', note_rel, n, '字节')
     for path, blk in blocks.items():
         old = io.open(path, encoding='utf-8').read() if os.path.exists(path) else ''
-        atomic_write(path, old.rstrip('\n') + '\n' + blk, min_ratio=0.0); print('   ✓ 追加', os.path.relpath(path, ROOT))
+        if isinstance(blk, tuple): new = insert_asr(old, blk[1], blk[2])
+        else: new = old.rstrip('\n') + '\n' + blk
+        atomic_write(path, new, min_ratio=0.0); print('   ✓ 追加', os.path.relpath(path, ROOT))
 
 if __name__ == '__main__':
     main()

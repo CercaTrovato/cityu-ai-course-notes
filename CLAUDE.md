@@ -48,7 +48,7 @@ CityU/                              ← vault 根
     │   ├─ 术语表.md                  ← 本课术语（中英对照）
     │   ├─ 考点库.md                  ← 按 module 汇总的潜在考点
     │   └─ 作业与DDL.md               ← 作业、截止日期、提交要求
-    ├─ transcripts/                 ← ★ 课堂录音转录（Notta 导出）
+    ├─ transcripts/                 ← ★ 课堂录音转录（本地 Whisper 产出；2026-09-17 前为 Notta）
     │   └─ M01-transcript.txt ...
     ├─ notes/
     │   └─ M01-<主题>.md ...          ← module 笔记正文
@@ -128,7 +128,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/safe_write.py --check
 
 ## 5. 核心机制三：讲义 × 转录 双源比对
 
-用户每节课都用 **Notta** 录音并生成完整转录。转录不是讲义的补充说明，它是**独立的一等材料**：
+用户每节课都录音，并用**本地 Whisper**（`E:\AIworkspace\lecture-transcribe`，faster-whisper large-v3，纯本地）生成完整转录（2026-09-17 之前的转录来自 Notta，格式兼容）。转录不是讲义的补充说明，它是**独立的一等材料**：
 
 - **讲义** = 教授准备讲什么（结构、定义、框架）
 - **转录** = 教授实际讲了什么（例子、强调、跳过、考试暗示、课堂问答）
@@ -145,7 +145,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/safe_write.py --check
 
 详细规则见 [`_meta/转录处理规则.md`](_meta/转录处理规则.md)（原理）与 skill [`.claude/skills/transcript-merge/SKILL.md`](.claude/skills/transcript-merge/SKILL.md)（执行步骤、模板、验收），**处理转录前必读**；融合完成的唯一标准是 `_meta/tools/transcript_check.py audit` PASS + `note_quality.py` 不回退 + `link_check.py` 0。其中最关键的一条：
 
-> **ASR 专名错误一律以讲义的书面拼写为准校正**。Notta 对英文哲学/法律专名错误率高（`Kantianism`→`Contianism`、`deontology`→`the ontology`、`Bentham`→`Benthem`）。转录里听不清的术语标 `[?]`，**不要猜一个填上**。
+> **ASR 专名错误一律以讲义的书面拼写为准校正**。两种来源的错法不同——Whisper 按发音写成常见词（`CityU`→`CPU`、`skewness`→`SKU needs`），Notta 拆专名（`Kantianism`→`Contianism`）——见 [`_meta/转录处理规则.md`](_meta/转录处理规则.md) §3。转录里听不清的术语标 `[?]`，**不要猜一个填上**；Whisper 在静音 / 噪声处可能吐出与上下文无关的短句，视为噪声不引用。
 
 **两阶段产出**：
 - **v0.9** — 只有讲义、转录未到位。正常出笔记，frontmatter 标 `transcript: pending`，第 9 节写明「本讲尚无转录，课堂补充待回填」
