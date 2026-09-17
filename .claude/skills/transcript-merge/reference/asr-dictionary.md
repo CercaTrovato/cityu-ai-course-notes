@@ -110,4 +110,12 @@
 
 | 转录原文 | 应为 | 首见 |
 |---|---|---|
-| （待补） | | |
+| which regression / width regression / weight regression | ridge regression | M03 `44:47`（整堂课反复出现，ASR 几乎没听对过一次） |
+| brand | Bryan [Kelly]（教授导师，Gu-Kelly-Xiu 2020 论文作者之一） | M03 `10:23` |
+| thumb scrap | term spread | M03 `01:05:54` |
+| federal fund way / federal fund[s] way | federal funds rate | M03 `18:12` 起多次 |
+| unemployment wave | unemployment rate | M03 `01:05:54` |
+| CTO models | [?]（推断为 constant models，未确认） | M03 `36:49` |
+| camera（"upload to the camera"） | Canvas | M03 `01:18:56` |
+| QP fuel | [?]（未还原，语境为恒指相关指数名） | M03 `01:18:03` |
+| funnel three and three | [?]（未还原，语境为"两种不同尺度"） | M03 `01:16:18` |

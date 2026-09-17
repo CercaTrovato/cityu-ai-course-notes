@@ -116,7 +116,7 @@ updated: 2026-09-17
 |---|---|
 | 🔴 | **IS5113 交警 AI 摄像头案例分析作业 — 2026-09-22 12:00 截止**<br>👉 完整分析演练已备好：[M02-道德理论及其应用](AI_Ethics_and_Regulations/notes/M02-道德理论及其应用.md) §7 第 10 题；答题框架 §6.3；M03 新增工具（差别性影响 / 程序公平四要素 / 模型卡的超范围用途）见 [作业与DDL](AI_Ethics_and_Regulations/_meta/作业与DDL.md) |
 | ✅ | ~~产 EF5560 M03 笔记~~ —— **v0.9**（2026-09-17，我在课上要求当场产出）：`Lec03_Linear_Machine_Learning.pdf` 56 页全覆盖（49 页内容 + 7 页封面 / 分隔），§2 共 36 个 leaf、3.1 万字，按 [笔记质量规范](_meta/笔记质量规范.md) v1 **strict PASS**（12 公式型 / 2 算法型 / 6 案例型 / 4 图表型 / 2 对比型 / 1 代码型 / 9 定义型）；`class03/` 5 个 CSV sha256 校验 + 全部数字重算（`code/L03_linear_ml/`，`run_all.py` 11/11）；数据集卡片 §11、台账 H 组 22 概念、术语表 5c、考点库 27–39、待并入 D 组；同日 09-09 版 syllabus 只改 Class 5 主题与 ILO 2 措辞。❗ `class03/README.md` 引用的 `shared/` 四个面板文件不在导出包，**Canvas 上也没有**（用户 9/17 核实），等 ML 作业发布或问 TA |
-| 🟡 | **EF5560 M03 转录待导出**（9/17 课）—— 到位后按 skill 合并，36 处 🎙️ 待回填；三道选择题 + 计算题的课堂答案待核 |
+| ✅ | ~~EF5560 M03 转录合并~~ —— **2026-09-17 完成，M03 升 v1.0**：`M03-transcript.txt`（`00:56`→`02:24:04`，587 段，缺开头约 1 分钟、缺结尾——p.56 总结未完）；35 个 🎙️ 格全部回填（A 29 / B 3 / C 1 / D 2），§6 新增 7 条 🔴（含 p.26 课堂当堂确认答案 A、港币联系汇率解释"为什么只有香港赢"、波动率分组"反直觉"、常数预测 = ML 作业最容易踩的坑）；§8 加课堂覆盖列与时间分配表；考点库/知识层级台账/术语表/待并入术语总表/作业与DDL/00-课程总览/转录处理规则 §8/asr-dictionary 全部回写；`transcript_check.py audit` PASS、`note_quality.py --strict` PASS、`link_check.py` 0、`integrity_check.py verify` 0 |
 | ✅ | ~~AC6761 M03 转录合并~~ —— **2026-09-17 完成，M03 升 v1.0**：录音只讲到 p.27（§2.1–§2.4，Nike 两道分析题答案 💡→✅ 确认），p.28 起（利润表/现金流量表/权益变动表/附注）无转录标 ❓；前 49 分钟 W2 顺延（课堂练习 2 解答 + 当堂小测 + 试算表/AI 演示）已回填 M02 §2.6.4/§2.7.2。两份 audit PASS，note_quality 三项指标与基线相同（18 L / G3a 1 / G6 0.23），link_check 0，独立 sonnet 验收通过。⚠️ 过程中 M01 / M03 被截断（脚本整读整写 + Remotely Save 同步）：M01 用 iPhone 端完整版恢复，M03 由原稿重放改动脚本找回；同日建立文件安全三件套并写入根 CLAUDE.md「文件安全协议」 |
 | ✅ | ~~转录融合流程规范化~~ —— 2026-09-17：新建 skill `.claude/skills/transcript-merge/`（SOP + 各块模板 + 按课 ASR 词典 + 任务单模板）和验收脚本 `_meta/tools/transcript_check.py`（scan / audit 12 项）。标杆 AC6761 M01 / M02 经小修后 audit PASS；audit 顺带查出 IS5542 M02 正文已 v1.0 但 frontmatter 仍 pending（已改）。目标：任何模型按 skill 做转录融合都能达到标杆形态 |
 | 🟡 | **IS5113 M03 转录待导出** —— 9/15 的课若有 Notta 录音，导出到 `AI_Ethics_and_Regulations/transcripts/M03-transcript.txt`；笔记 39 处 🎙️ 待回填，考点暂 🟡 封顶 |
@@ -149,7 +149,7 @@ updated: 2026-09-17
 |---|---|---|---|---|
 | **AI Ethics and Regulations** | IS5113 | AI 核心必修 | M01 v0.9 · **M02 v1.0** · M03 v0.9 | M01 无（永久）· M02 ✅ · M03 待导出 |
 | GenAI in Business | IS5542 | AI 核心必修 | **M01 v1.0**（117 页）· **M02 v1.0**（88 页） | M01 ✅ · M02 ✅ |
-| Fintech and AI in Finance | EF5560 | 商业核心 | **M01 v1.0** · **M02 v1.0** · 8 张数据集卡 · **`code/` 9 个可复现脚本** | M01 ✅ · M02 ✅ |
+| Fintech and AI in Finance | EF5560 | 商业核心 | **M01 v1.0 · M02 v1.0 · M03 v1.0** · 8 张数据集卡 · **`code/` 11 个可复现脚本** | M01 ✅ · M02 ✅ · M03 ✅ |
 | Artificial Intelligence Accounting | AC6761 | 商业核心 | **M01 v1.0 · M02 v1.0 · M03 v1.0** · M04–M06 v0.9<br>**六周 379 页全部逐页讲解，期中范围 W1–W5 齐备** | M01 ✅（缺开头，⚠️ 文件被截断丢失 §8/§9，待修复）· M02 ✅（缺结尾）· M03 ✅（只讲到 p.27）· W4–W6 待录 |
 | **Business Data Analytics** | IS6400 | **选修 · 唯一技术课** | **M01 v0.9 · M02 v1.0 · T01 v0.9 · T02 v1.0 · M03 v0.9 · T03 v0.9 · M04 v0.9 · T04 v0.9**（M04 / T04 课前建稿）· 2 张数据集卡 | W01 无 · W02 ✅ · W03 待导出 · W04 未上课 |
 

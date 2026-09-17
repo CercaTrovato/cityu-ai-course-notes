@@ -18,7 +18,7 @@ updated: 2026-09-17
 | **2026-09-03（周四）** | Class 1 · Financial data and vibe coding | 上课 | 文件时间戳 + 转录 | 🟡 |
 | **本周内（≤ 下次上课前）** | ★ **在 Canvas 上组队**（≤3 人） | **硬性要求** | 🎙️`02:15:07` | 🔴 |
 | 课后（不计分） | 自己拿 HSTECH / CSI 300 / S&P 500 的股票玩一遍 vibe coding：画图、下财报、看会发生什么 | Take-home（不交） | 🎙️`02:13:16` | 🔴 |
-| **2026-09-27（周日 10:00）** | **TA tutorial #1**：ML 投资作业准备 · Zoom · **有录像** | 辅导 | syllabus | 🔴 |
+| **2026-09-27（周日 10:00）** | **TA tutorial #1**：ML 投资作业准备 · Zoom · **有录像** | 辅导 | syllabus；🎙️ M03 转录 `01:34`–`02:20` 再次确认"两次都在周日上午、纯 Zoom、不在教室" | 🔴 |
 | **2026 年 9 月下旬 ⚪** | **ML 投资作业发布** | 作业发布 | 🎙️`11:10`「I will probably send you the assignment **in late September**」 | ⚠️ 与 syllabus 冲突，见 §4 |
 | **2026-10-01（周四）** | 🚫 **国庆假期，停课** | 停课 | ⚪ 推断（🎙️`13:51` + 10/01 确为周四） | ⚪ |
 | **Week 7 结束前 ⚪** | **ML 投资作业截止** | **DDL** | syllabus「due two weeks later, in Week 7」；讲义 p.5「due at the **end of Week 7**」 | ⚠️ 见 §4 |
@@ -26,7 +26,7 @@ updated: 2026-09-17
 | **Week 12 ⚪（约 2026-11-16 ~ 11-20）** | **FinTech 案例报告 + 录像展示 双双截止** | **DDL** | syllabus + 案例 brief + 讲义 p.5 | 🟡 |
 | **2026-11-29（周日 10:00）** | **TA tutorial #2**：期末考准备，**逐题讲模拟卷** · Zoom · **有录像** | 辅导 | syllabus | 🔴 |
 | **2026-11-30（周一）** | ⚠️ **学术诚信在线课程 + 测验 + 声明**（**Semester A 2026/27 全体新生**） | **硬性 DDL** | syllabus | 🔴 |
-| **2026-12 考试周 ⚪** | **期末考**：2 小时、线下、手写、闭卷 | **考试** | syllabus + 🎙️`10:20` | 🟡 |
+| **2026-12 考试周 ⚪** | **期末考**：2 小时、线下、手写、闭卷；**允许一张 A4 双面手写 cheat sheet**（不可打印/iPad） | **考试** | syllabus + 🎙️`10:20`；🎙️ M03 `02:53`–`03:22` 确认细节，见 §2.4 | 🔴 |
 
 ---
 
@@ -104,6 +104,24 @@ updated: 2026-09-17
 
 **💡 复用提示（笔记补充）**：案例报告的六节骨架 ＝ [[Fintech_and_AI_in_Finance/_meta/考点库|考点库]] §2 框架 C ＝ 期末 FinTech 简答题的答题结构。**准备一次，三处都能用。**
 
+### 2.4 期末考形式（🎙️ 2026-09-17，M03 转录 `02:53`–`06:43` 行政段，教授专门用约 4 分钟讲解）
+
+学生课间集中问了这个问题，教授回来后系统讲了一遍：
+
+| 项 | 内容 | 教授原话（转录时间戳） |
+|---|---|---|
+| **小抄** | **允许一张 A4，双面**，写什么都行；**必须手写**，不许打印、不许 iPad，普通纸普通笔 | 🎙️`02:53`–`03:17`「I allow [a] cheat sheet for you guys… it is A4… both sided you can write down anything you want… it must be handwritten, [no] AI, [no] iPad. Regular paper regular pen.」 |
+| **过往使用率** | 大多数学生只用了正面，反面很少用 | 🎙️`03:22`「in the past years most of the students… they only use one side, they never use the other side」 |
+| **模拟卷** | 学期末发（可能不止一份） | 🎙️`04:30`「I will send you the mock exam at the end of the semester」 |
+| **选择题占比** | **约 60%**（学校设的选择题上限，与考点库 §0 已知的"最多 60%"口径一致；"do 60" 是否指"用满上限"待核） | 🎙️`04:30`–`04:44`「they require [no] lower than 60% of the [grade] from the multiple [choice] question exam so I did 60」 |
+| **覆盖范围** | 上下半场都考（例：CBDC、稳定币属下半场） | 🎙️`04:44`–`04:57` |
+| **短答题字数上限** | **不超过 10 个词** | 🎙️`05:09`「to answer question I only expect no more than 10 words」 |
+| **计算题题型** | **给两个 SSE（或类似数字）算样本外 R²**；数字会很简单，**不允许用计算器** | 🎙️`05:35`–`06:01`「you will see to calculate out of sample R squared based on the numbers here… if I give you simple numbers like this I will not allow any [calculator]」；若给计算器则数字会更复杂（`06:01`） |
+| **及格情况** | 过去三年只挂过 **3 人**（两人与期末考有关、第三人属特殊情形，细节 ASR 听不清） | 🎙️`06:04`–`06:43`「in the past three years I only failed three students and two of them [?]… the final exam just lower[,] that one is kind of like [?] exam」 |
+
+> 与 M02 转录已记录的"及格线：做完作业 + 出席就很难挂"（本文件 §3）一致，两讲说法互相印证。
+> ⚠️ 待确认：**"do 60" 的准确语境**——是"选择题固定占 60% 的分数"还是"选择题数量占 60%"，转录原句有歧义，按考点库 §0 的"学校规定最多 60%"口径理解为"用满上限"。
+
 ---
 
 ## 3. 参与分（10%）——它是逐周结算的
@@ -127,6 +145,11 @@ updated: 2026-09-17
 - **题型**：每讲讲义里那道"四选一 + Discuss"就是期末题型，「These are the questions you will see」；题库由教授用 AI 按讲义生成
 - **模拟卷**：「At the end of the semester, I will show you practice exam. If you want to do more of them, I always have more.」（与 syllabus 的"11 月中旬发 Canvas"一致）
 - **及格线**：「As long as you finish all homework and show up in exam, it is very hard for me to fail you」——三年挂 3 人：2 人缺考、1 人没做项目展示
+
+**🎙️ M03 转录再次确认（`00:56`–`08:32` 行政段）**
+- **参与分 10%** 再次点名：🎙️`06:56`「there's about 10% for participation grade」
+- **总成绩构成**：🎙️`07:20`「the case we would call the presentation[,] the assignment[,] participation[,]… for your… exam」——presentation（案例展示）+ assignment（ML 作业）+ participation（参与）+ exam（期末），与本文件已知权重（20%+20%+10%+40%+10% 报告）对得上
+- **随机分组**：没找到组的同学，教授课后按**同一 section** 随机分配，避免跨 section 配对增加协调难度：🎙️`07:51`–`08:20`「I will form the random group for you… I will try to form within the same section, this is easier」
 
 ---
 
@@ -193,14 +216,14 @@ updated: 2026-09-17
 |---|---|---|
 | 1 | ML 投资作业的**实际发布日与截止日** | 盯 Canvas + 教授邮件（见 §4） |
 | 2 | 案例报告 + 录像的**具体截止日期与时刻** | Canvas |
-| 3 | 期末考的**日期、地点、允许携带的材料**（含一页手写小抄） | Canvas；syllabus 说以学校最终考试指引为准 |
-| 4 | Zoom office hour 的**具体周日日期** | Canvas |
-| 5 | TA tutorial 的 Zoom 链接 | 教授说会在会前发（🎙️`12:11`） |
-| 6 | 10/01 是否真的停课 | ⚪ 目前是推断；第 2 讲转录里**没有提到**，仍待确认 |
+| 3 | ~~期末考的**日期、地点、允许携带的材料**~~ | ✅ **携带材料已确认**（M03 转录，见 §2.4：A4 双面手写小抄）；**日期与地点仍待 Canvas** |
+| 4 | Zoom office hour 的**具体周日日期** | Canvas；M03 转录只确认了"周日上午"这一通用格式，没有给出 9/27 之外的新日期 |
+| 5 | TA tutorial 的 Zoom 链接 | 教授说会在会前发（🎙️`12:11`）；M03 转录再次确认"两次 tutorial 都在周日上午、Zoom、不在教室"（`01:34`–`02:20`），但**仍未给出具体链接** |
+| 6 | 10/01 是否真的停课 | ⚪ 目前是推断；第 2、3 讲转录里**都没有提到**，仍待确认 |
 | 7 | Canvas 上是否有**更新版 Lec02 PDF** | 🎙️ 教授说已修了 p.25 那张图的时间轴（M02 转录 `P1 01:17:45`） |
 | 8 | 恒生 / CSI 300 的三变量特征表是否在 Canvas | 🎙️ 教授说"数据在 Canvas 上"（`P2 41:03`）；本地 `data/` 只有 SPY 的 |
-| 9 | ❗ **`class03/README.md` 引用的 `shared/` 四个面板文件**（`market_excess_return_panel.csv`、`hsi_stock_excess_return_panel.csv`、`technical_characteristics_dictionary.csv`、`risk_free_yields_monthly.csv`）不在导出包里 | **Canvas 上也没有**（2026-09-17 核实：Lecture 3 只有 PDF + `class03.zip`）。等 ML 作业发布时看是否附带；否则邮件问 TA（抄送教授，主题 `[EF5560]`） |
-| 10 | Lec03（9/17）课上有没有更新 ML 作业的发布日 / 数据 / 组队要求 | 待 M03 转录 |
+| 9 | ❗ **`class03/README.md` 引用的 `shared/` 四个面板文件**（`market_excess_return_panel.csv`、`hsi_stock_excess_return_panel.csv`、`technical_characteristics_dictionary.csv`、`risk_free_yields_monthly.csv`）不在导出包里 | **Canvas 上也没有**（2026-09-17 核实：Lecture 3 只有 PDF + `class03.zip`）；**M03 转录同样没有点名 `shared/`**，教授只说数据在他的 Dropbox / Canvas（`01:18:56`）。等 ML 作业发布时看是否附带；否则邮件问 TA（抄送教授，主题 `[EF5560]`） |
+| 10 | ~~Lec03（9/17）课上有没有更新 ML 作业的发布日 / 数据 / 组队要求~~ | ✅ **已由 M03 转录部分回答**：`02:17:41` 教授明说"I can promise you this is the assignment for your homework"，剧透作业会让学生**自己改训练/验证/测试窗口长度、重新跑股票排序**（呼应 §2.2）；**没有**给出新的具体发布日期，仍按"late September"（⚪，见 §4）与 Week 5 后（syllabus）两说并存 |
 
 > 📝 **2026-09-09 版 syllabus 更新（2026-09-17 收到）**：考核权重、截止、TA tutorial（9/27、11/29）、参与规则**全部未变**；只改了 ML 板块的描述——Class 5 主题改为 "Interpretable machine learning and portfolio decisions"，ILO 2 加 "including the limits of coefficients, feature importance, and response profiles"。本文件的日期与权重无需修改。
 
