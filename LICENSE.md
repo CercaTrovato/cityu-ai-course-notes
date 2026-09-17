@@ -5,14 +5,14 @@
 | 内容 | 路径 | 授权 |
 |---|---|---|
 | 规则、模板、技能与脚本（可复用的方法与工具） | `_meta/*.md`、`_meta/tools/*.py`、`.claude/skills/**`、根 `CLAUDE.md` / `AGENTS.md`、各课 `CLAUDE.md` / `AGENTS.md`、`*/code/**`（不含 `output/` 里由课程数据生成的图表） | **MIT License**（见下） |
-| 笔记正文与课程元数据（作者的二次创作） | `*/notes/*.md`、`*/_meta/*.md`、`*/_prep/*.md`、`*/00-课程总览.md`、根 `README.md` | **CC BY-NC-SA 4.0**（署名 · 非商业 · 相同方式共享）。其中引用的讲义原文与教师口述部分不在此授权范围内，版权归原作者 |
+| 笔记正文与课程元数据（我的二次创作） | `*/notes/*.md`、`*/_meta/*.md`、`*/_prep/*.md`、`*/00-课程总览.md`、根 `README.md` | **CC BY-NC-SA 4.0**（署名 · 非商业 · 相同方式共享）。其中引用的讲义原文与教师口述部分不在此授权范围内，版权归原作者 |
 | 课程材料与课堂转录 | `*/course_files_export/**`、`*/transcripts/**`、`*/code/output/**` 中由课程数据生成的图表 | **不授权。All rights reserved by the original authors.** 禁止下载、再分发或任何商业用途，除非获得版权方书面许可。侵权请联系删除（`NOTICE.md`） |
 
 ---
 
 ## MIT License（适用于上表第一行）
 
-Copyright (c) 2026 the repository author
+Copyright (c) 2026 CercaTrovato
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
