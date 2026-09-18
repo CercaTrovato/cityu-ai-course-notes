@@ -6,7 +6,7 @@ description: 把课堂录音转录（本地 Whisper 或 Notta 导出的带时间
 # 转录融合（v0.9 → v1.0）
 
 > 本技能是 `_meta/转录处理规则.md`（原理层：为什么、提取什么）的**执行层**（做什么、写成什么样、怎么验收）。两份都要读；冲突时以本技能为准并在回执里指出冲突。
-> 质量标杆：`Artificial_Intelligence_Accounting/notes/M02-交易的会计处理.md`（v1.0）及其顺延回填 `M01-会计与商业.md` §2.8.5。**"和之前一样的质量"= 与这两篇形态一致且 `transcript_check.py audit` PASS。**
+> 质量标杆：`AC6761_Artificial_Intelligence_Accounting/notes/M02-交易的会计处理.md`（v1.0）及其顺延回填 `M01-会计与商业.md` §2.8.5。**"和之前一样的质量"= 与这两篇形态一致且 `transcript_check.py audit` PASS。**
 > 所有面向用户的文字用简体中文；转录原话保留英文。
 > **2026-09-18 起默认按 §11「分片并行模式」执行**：主代理登记与切分 → 2–3 个分片代理并行产出 patch + findings（不写 vault）→ `merge_apply.py` 合并验收、一次写入 → 1 个验收代理做语义核对。§2–§7 仍是每个分片必须遵守的内容规范；单体模式只在转录很短（<40 分钟）时用。
 

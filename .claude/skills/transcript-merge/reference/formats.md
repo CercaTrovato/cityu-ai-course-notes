@@ -1,6 +1,6 @@
 # 转录融合 · 各块固定模板（附标杆原文）
 
-> 标杆原文均摘自 `Artificial_Intelligence_Accounting/notes/M02-交易的会计处理.md`（v1.0）与 `M01-会计与商业.md` §2.8.5。模板里 `〈 〉` 是要替换的槽位。
+> 标杆原文均摘自 `AC6761_Artificial_Intelligence_Accounting/notes/M02-交易的会计处理.md`（v1.0）与 `M01-会计与商业.md` §2.8.5。模板里 `〈 〉` 是要替换的槽位。
 > 通用写法：时间戳 `` `MM:SS` ``（<1h）/ `` `HH:MM:SS` ``，反引号必须有；区间用 `` `a`–`b` ``（短横 –）；多段录音 `` `part2 12:34` ``。原话 *"…"*，改写补词 `[ ]`，省略 `…`。
 
 ---
@@ -248,7 +248,7 @@
 
 ```json
 {
- "note": "Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测.md",
+ "note": "EF5560_Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测.md",
  "cells": [
   {"section": "#### 2.4.3 LASSO：绝对值惩罚，能把系数压到零（讲义 p.15）",
    "block": "**🎙️ 课堂补充**（`53:29`–`58:22`，约 4.9 分钟，A · 课上展开）\n\n- 解释归零的机制…：*\"[T]he simple change…\"*（`54:01`）\n- **这段改变了什么**：…"}

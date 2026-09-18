@@ -12,8 +12,8 @@
 """
 import io, os, re, sys, glob
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
-COURSES = {'IS5113': 'AI_Ethics_and_Regulations', 'IS5542': 'GenAI_in_Business', 'EF5560': 'Fintech_and_AI_in_Finance',
-           'AC6761': 'Artificial_Intelligence_Accounting', 'IS6400': 'Business_Data_Analytics'}
+COURSES = {'IS5113': 'IS5113_AI_Ethics_and_Regulations', 'IS5542': 'IS5542_GenAI_in_Business', 'EF5560': 'EF5560_Fintech_and_AI_in_Finance',
+           'AC6761': 'AC6761_Artificial_Intelligence_Accounting', 'IS6400': 'IS6400_Business_Data_Analytics'}
 
 def in_range(mod, status, col):
     """接受 `M04–M06 v0.9` 这种区间写法。"""
