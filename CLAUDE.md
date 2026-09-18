@@ -28,6 +28,7 @@ CityU/                              ← vault 根
 │   ├─ 材料处理规则.md                ← 各类材料怎么读、怎么转（扩展接口在此）
 │   ├─ 转录处理规则.md                ← 课堂录音转录的专项规则（原理层）
 │   ├─ tools/transcript_check.py     ← 转录融合验收：scan 登记 / window · quote 取段 / audit 14 项（融合后必须 PASS）
+│   ├─ tools/export_courses_json.py  ← 生成 lecture-transcribe 的 courses.json（课程 → Whisper hotwords / next_module），术语表更新后重跑
 │   ├─ tools/merge_apply.py          ← 转录融合分片模式的合并器：收 patch + findings → 副本验收 → 一次 atomic_write（唯一写者）
 │   ├─ tools/safe_write.py · integrity_check.py · backup_vault.py ← ★ 文件安全三件套（原子写 / 快照比对 / 备份），见「文件安全协议」
 │   ├─ Notion进度看板.md              ← Notion 两个库的字段定义与回写规则

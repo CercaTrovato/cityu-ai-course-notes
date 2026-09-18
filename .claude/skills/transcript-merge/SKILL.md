@@ -46,7 +46,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py s
 
 做四件事，结果写进工作目录的 `PROGRESS.md`（见 §9）。**在此之前先跑** `backup_vault.py` 与 `integrity_check.py snapshot 融合前`，并确认同步已关。
 
-1. **改名**：按 `转录处理规则` §5 改成 `M0N-transcript.txt`（分段 `-part1/2`，不完整 `-partial`）。本地 Whisper 产出的与音频同名的 `.txt` 改名为 `M0N-transcript.txt`（同目录的源音频 mp3 / wav **不要动**，也不进仓库）；早期 Notta 的内容标题式文件名同样改掉。`transcripts/` 不是 `course_files_export/`，可以改名。
+1. **改名**：按 `转录处理规则` §5 改成 `M0N-transcript.txt`（分段 `-part1/2`，不完整 `-partial`）。本地 Whisper 产出的与音频同名的 `.txt` 改名为 `M0N-transcript.txt`（或直接 `cd E:\AIworkspace\lecture-transcribe; uv run lt.py export <id> --module M0N`，见 `转录处理规则` §5.1；同目录的源音频 mp3 / wav **不要动**，也不进仓库）；早期 Notta 的内容标题式文件名同样改掉。`transcripts/` 不是 `course_files_export/`，可以改名。
 2. **时序**：段数、起止、时长、时序倒退、≥120 秒空档。每个空档都要**读前后原文**判断性质（课堂练习时间 / 课间 / 录音暂停 / 内容丢失），写成 §9.5 的一行。
 3. **完整性（内容判断，脚本做不了）**：读首 3 段——第一句是不是一堂课该有的开头（问候 / 议程 / 上节回顾）？已在讲课中段 = **缺开头**；读末 3 段——有没有下课语 / 布置作业？半句或噪声 = **缺结尾**。"时间戳连续"只证明文件没截断，不证明覆盖整堂课。
 4. **顺延边界**：读前 15 分钟，对照**上一讲**的讲义——如果教授在补上周没讲完的页，记下切换到本讲讲义的时间戳。顺延段的内容回填到**上一讲**笔记（§5.4），本讲 §8 只做索引。
