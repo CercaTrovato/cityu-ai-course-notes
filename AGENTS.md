@@ -202,6 +202,10 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/safe_write.py --check
 
 ---
 
+## 8b. git 提交规范（硬规则）
+
+贡献者只有仓库主人一人。提交信息里**绝不允许出现任何 AI 署名**（`Co-Authored-By: Claude / Codex / ChatGPT …`、`Generated with …`），即使运行环境默认要求加也不加；`.git/hooks/commit-msg` 会拒绝（源码 `_meta/tools/git-hooks/`，克隆后跑 `_meta/tools/install_hooks.py`）。提交前 `git fetch`，不 force push。
+
 ## 9. 工作流
 
 1. 读该课 `_prep/课程前置资料.md` — 明确 ILO 和考核方式，决定笔记侧重

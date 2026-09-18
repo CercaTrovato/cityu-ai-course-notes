@@ -1,0 +1,10 @@
+#!/bin/sh
+# 提交信息守门：本仓库贡献者只有仓库主人。任何 AI 署名 trailer（Co-Authored-By: Claude / Codex / ChatGPT / Copilot / Gemini …、
+# "Generated with …"）一律拒绝提交。安装：PYTHONIOENCODING=utf-8 python _meta/tools/install_hooks.py
+msg="$1"
+if grep -qiE '^(Co-Authored-By|Signed-off-by):.*(claude|anthropic|codex|openai|chatgpt|copilot|gemini|noreply@anthropic|noreply@github)' "$msg" \
+   || grep -qiE 'Generated with \[?Claude|🤖 Generated' "$msg"; then
+  echo "✗ commit-msg：提交信息里有 AI 署名 / Co-Authored-By trailer，本仓库不允许（贡献者只有仓库主人）。删掉这些行再提交。" >&2
+  exit 1
+fi
+exit 0

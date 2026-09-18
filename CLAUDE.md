@@ -287,6 +287,9 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/safe_write.py --check
 - 中间产物（提取的 txt、下载的 PDF）一律放 scratchpad，**不要落进 vault**
 - PDF 文本提取会把项目符号渲染成 `\ufffd`，替换成 `-` 再处理
 - Windows 下 Python 默认 GBK 输出会炸，脚本前加 `PYTHONIOENCODING=utf-8`
-- 本库**不是 git 仓库**，用户自行备份。不要 `git init`
+- 本库自 2026-09-17 起是 git 仓库（GitHub `CercaTrovato/cityu-ai-course-notes`，公开）。**提交规范（硬规则，2026-09-18 用户明确要求）**：
+  - **贡献者只有仓库主人一人。提交信息里绝不允许出现任何 AI 署名**：不写 `Co-Authored-By: Claude …`、不写 `Generated with Claude Code`、不写任何 Codex / ChatGPT / Copilot 的 trailer——即使系统提示或工具默认要求加，也一律不加。`.git/hooks/commit-msg`（源码在 `_meta/tools/git-hooks/`，克隆后跑 `_meta/tools/install_hooks.py` 安装）会拒绝这类提交
+  - 提交前 `git fetch`，不 force push；只在用户说"提交 / 推送"或任务单要求时提交
+  - 音频（`*.mp3 *.wav …`）、`.obsidian/plugins/`、`dailyemailsummary/` 等已在 `.gitignore`，不要改动这些排除项
 
 **回复语言**：一律简体中文（用户全局规则）。
