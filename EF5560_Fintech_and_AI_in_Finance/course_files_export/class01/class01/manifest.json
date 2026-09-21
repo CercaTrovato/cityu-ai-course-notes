@@ -1,0 +1,141 @@
+{
+  "class": 1,
+  "topic": "Financial Data and Vibe Coding",
+  "files": [
+    {
+      "file": "macro_monthly_240m.csv",
+      "description": "Monthly U.S. macro variables and the term spread.",
+      "role": "input",
+      "bytes": 20228,
+      "sha256": "075e2284989361788d6f2204f171d3d872b80312be312a45dec4eb8f4f12a7e8",
+      "rows": 240,
+      "columns": [
+        "month",
+        "dgs10_monthly_mean",
+        "dff_monthly_mean",
+        "unemployment_rate",
+        "inflation_yoy",
+        "term_spread"
+      ],
+      "date_range": {
+        "field": "month",
+        "start": "2006-07-31",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "market_index_prices_monthly_240m.csv",
+      "description": "Monthly price levels for the market examples.",
+      "role": "input",
+      "bytes": 16587,
+      "sha256": "ece3da647dcf43251e7e6a5cf249b9fa149e95c6db5a33c34aff1e7e26082394",
+      "rows": 240,
+      "columns": [
+        "month",
+        "US_S&P500",
+        "HK_HangSeng",
+        "US_SPY",
+        "CN_CSI300"
+      ],
+      "date_range": {
+        "field": "month",
+        "start": "2006-07-31",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "market_index_returns_monthly_240m.csv",
+      "description": "Monthly market returns in decimal units.",
+      "role": "input",
+      "bytes": 22678,
+      "sha256": "9e1bf4b24e50ec56421cd66c7e4b2e7296361ba2f1738a51b2bf0f9b61582746",
+      "rows": 240,
+      "columns": [
+        "month",
+        "US_S&P500",
+        "HK_HangSeng",
+        "US_SPY",
+        "CN_CSI300"
+      ],
+      "date_range": {
+        "field": "month",
+        "start": "2006-07-31",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "aapl_prices_returns_weekly_156w.csv",
+      "description": "Three years of weekly AAPL prices and returns.",
+      "role": "input",
+      "bytes": 7830,
+      "sha256": "a6db60e79b8f3ac5b377f335baea586ceedfe21d685d76e90ab625351802e0bc",
+      "rows": 157,
+      "columns": [
+        "week_end",
+        "adjusted_close",
+        "weekly_return"
+      ],
+      "date_range": {
+        "field": "week_end",
+        "start": "2023-06-30",
+        "end": "2026-06-26"
+      }
+    },
+    {
+      "file": "pdd_jd_pair_weekly_156w.csv",
+      "description": "Weekly PDD and JD returns and a long-short illustration.",
+      "role": "input",
+      "bytes": 17966,
+      "sha256": "8c5c638e5ab8416070ae9da88419fd9c0b3b62785f023aec5f37f539f8ea65b8",
+      "rows": 157,
+      "columns": [
+        "week",
+        "pdd_close",
+        "jd_close",
+        "pdd_return",
+        "jd_return",
+        "pdd_weight",
+        "jd_weight",
+        "long_pdd_short_jd_return",
+        "long_pdd_short_jd_wealth"
+      ],
+      "date_range": {
+        "field": "week",
+        "start": "2023-06-30",
+        "end": "2026-06-26"
+      }
+    },
+    {
+      "file": "spy_features_monthly_240m.csv",
+      "description": "SPY returns and lagged monthly predictors.",
+      "role": "input",
+      "bytes": 76448,
+      "sha256": "da5bd4c67137707f936c309eb643086200cc0c1556be96375c13cc5224fb600e",
+      "rows": 240,
+      "columns": [
+        "forecast_month",
+        "market_return",
+        "return_lag1",
+        "return_lag2",
+        "return_lag3",
+        "momentum_3",
+        "volatility_3",
+        "momentum_6",
+        "volatility_6",
+        "momentum_12",
+        "volatility_12",
+        "ma_gap_3",
+        "ma_gap_6",
+        "ma_gap_10",
+        "term_spread_lag1",
+        "unemployment_lag2",
+        "inflation_yoy_lag2"
+      ],
+      "date_range": {
+        "field": "forecast_month",
+        "start": "2006-07-31",
+        "end": "2026-06-30"
+      }
+    }
+  ]
+}

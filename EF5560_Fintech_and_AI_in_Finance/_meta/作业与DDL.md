@@ -1,7 +1,7 @@
 ---
 type: 作业与DDL
 course: EF5560
-updated: 2026-09-17
+updated: 2026-09-22
 ---
 
 # EF5560 作业与 DDL
@@ -222,7 +222,7 @@ updated: 2026-09-17
 | 6 | 10/01 是否真的停课 | ⚪ 目前是推断；第 2、3 讲转录里**都没有提到**，仍待确认 |
 | 7 | Canvas 上是否有**更新版 Lec02 PDF** | 🎙️ 教授说已修了 p.25 那张图的时间轴（M02 转录 `P1 01:17:45`） |
 | 8 | 恒生 / CSI 300 的三变量特征表是否在 Canvas | 🎙️ 教授说"数据在 Canvas 上"（`P2 41:03`）；本地 `data/` 只有 SPY 的 |
-| 9 | ❗ **`class03/README.md` 引用的 `shared/` 四个面板文件**（`market_excess_return_panel.csv`、`hsi_stock_excess_return_panel.csv`、`technical_characteristics_dictionary.csv`、`risk_free_yields_monthly.csv`）不在导出包里 | **Canvas 上也没有**（2026-09-17 核实：Lecture 3 只有 PDF + `class03.zip`）；**M03 转录同样没有点名 `shared/`**，教授只说数据在他的 Dropbox / Canvas（`01:18:56`）。等 ML 作业发布时看是否附带；否则邮件问 TA（抄送教授，主题 `[EF5560]`） |
+| 9 | ✅ **`shared/` 四个面板已随 2026-09-21 的 class04 数据包到位**（数据集卡片 §13.1；M04 已用它们重训三棵树）。`class03/stock_linear_test_predictions.csv` 曾被同步截断（358 / 4,108 行），2026-09-22 用重下的 `class03.zip` 恢复并复核。原记录： | **Canvas 上也没有**（2026-09-17 核实：Lecture 3 只有 PDF + `class03.zip`）；**M03 转录同样没有点名 `shared/`**，教授只说数据在他的 Dropbox / Canvas（`01:18:56`）。等 ML 作业发布时看是否附带；否则邮件问 TA（抄送教授，主题 `[EF5560]`） |
 | 10 | ~~Lec03（9/17）课上有没有更新 ML 作业的发布日 / 数据 / 组队要求~~ | ✅ **已由 M03 转录部分回答**：`02:17:41` 教授明说"I can promise you this is the assignment for your homework"，剧透作业会让学生**自己改训练/验证/测试窗口长度、重新跑股票排序**（呼应 §2.2）；**没有**给出新的具体发布日期，仍按"late September"（⚪，见 §4）与 Week 5 后（syllabus）两说并存 |
 
 > 📝 **2026-09-09 版 syllabus 更新（2026-09-17 收到）**：考核权重、截止、TA tutorial（9/27、11/29）、参与规则**全部未变**；只改了 ML 板块的描述——Class 5 主题改为 "Interpretable machine learning and portfolio decisions"，ILO 2 加 "including the limits of coefficients, feature importance, and response profiles"。本文件的日期与权重无需修改。

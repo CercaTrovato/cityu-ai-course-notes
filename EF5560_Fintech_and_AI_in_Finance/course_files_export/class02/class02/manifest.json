@@ -1,0 +1,285 @@
+{
+  "class": 2,
+  "topic": "Regression and Return Predictability",
+  "files": [
+    {
+      "file": "market_features.csv",
+      "description": "SPY returns and predictors; use this filename for the Class 2 code example.",
+      "role": "input",
+      "bytes": 76448,
+      "sha256": "da5bd4c67137707f936c309eb643086200cc0c1556be96375c13cc5224fb600e",
+      "rows": 240,
+      "columns": [
+        "forecast_month",
+        "market_return",
+        "return_lag1",
+        "return_lag2",
+        "return_lag3",
+        "momentum_3",
+        "volatility_3",
+        "momentum_6",
+        "volatility_6",
+        "momentum_12",
+        "volatility_12",
+        "ma_gap_3",
+        "ma_gap_6",
+        "ma_gap_10",
+        "term_spread_lag1",
+        "unemployment_lag2",
+        "inflation_yoy_lag2"
+      ],
+      "date_range": {
+        "field": "forecast_month",
+        "start": "2006-07-31",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "macro_monthly_240m.csv",
+      "description": "Monthly macro inputs for the three-market comparison.",
+      "role": "input",
+      "bytes": 20228,
+      "sha256": "075e2284989361788d6f2204f171d3d872b80312be312a45dec4eb8f4f12a7e8",
+      "rows": 240,
+      "columns": [
+        "month",
+        "dgs10_monthly_mean",
+        "dff_monthly_mean",
+        "unemployment_rate",
+        "inflation_yoy",
+        "term_spread"
+      ],
+      "date_range": {
+        "field": "month",
+        "start": "2006-07-31",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "market_index_returns_monthly_240m.csv",
+      "description": "Monthly market returns for the three-market comparison.",
+      "role": "input",
+      "bytes": 22678,
+      "sha256": "9e1bf4b24e50ec56421cd66c7e4b2e7296361ba2f1738a51b2bf0f9b61582746",
+      "rows": 240,
+      "columns": [
+        "month",
+        "US_S&P500",
+        "HK_HangSeng",
+        "US_SPY",
+        "CN_CSI300"
+      ],
+      "date_range": {
+        "field": "month",
+        "start": "2006-07-31",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "spy_regression_scorecard.csv",
+      "description": "SPY test-period regression and timing statistics.",
+      "role": "reference",
+      "bytes": 511,
+      "sha256": "87eaf30539323d4ad51789c13c26bee905552807d730997fbb633ca46a85f710",
+      "rows": 1,
+      "columns": [
+        "train_months",
+        "test_months",
+        "oos_benchmark",
+        "model_mse",
+        "benchmark_mse",
+        "oos_r_squared",
+        "model_directional_accuracy",
+        "benchmark_directional_accuracy",
+        "timing_annual_return",
+        "timing_annual_volatility",
+        "timing_sharpe",
+        "buy_hold_annual_return",
+        "buy_hold_annual_volatility",
+        "buy_hold_sharpe"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "spy_test_predictions_monthly.csv",
+      "description": "SPY test-period forecasts, benchmark, and realized returns.",
+      "role": "reference",
+      "bytes": 25713,
+      "sha256": "6b537e9959ed18140c5d6271f402ab95240ac1e14457cff180f3c6c08d6ea48d",
+      "rows": 60,
+      "columns": [
+        "forecast_month",
+        "market_return",
+        "return_lag1",
+        "return_lag2",
+        "return_lag3",
+        "momentum_3",
+        "volatility_3",
+        "momentum_6",
+        "volatility_6",
+        "momentum_12",
+        "volatility_12",
+        "ma_gap_3",
+        "ma_gap_6",
+        "ma_gap_10",
+        "term_spread_lag1",
+        "unemployment_lag2",
+        "inflation_yoy_lag2",
+        "forecast",
+        "benchmark",
+        "model_error",
+        "benchmark_error",
+        "weight",
+        "timing_return",
+        "buy_hold_return"
+      ],
+      "date_range": {
+        "field": "forecast_month",
+        "start": "2021-07-31",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "csi300_macro_panel_monthly_240m.csv",
+      "description": "CSI 300 returns and lagged Chinese macro predictors.",
+      "role": "input",
+      "bytes": 25870,
+      "sha256": "740b83d3c9db429d37327754b16491cf83fe1ce5bacf2a0cd49306c17d5d2f63",
+      "rows": 240,
+      "columns": [
+        "forecast_month",
+        "market_return",
+        "exports_yoy_lag2",
+        "imports_yoy_lag2",
+        "cli_gap_lag2",
+        "reer_12m_lag2",
+        "benchmark_ma12"
+      ],
+      "date_range": {
+        "field": "forecast_month",
+        "start": "2006-07-31",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "csi300_macro_scorecard.csv",
+      "description": "CSI 300 test-period forecast statistics.",
+      "role": "reference",
+      "bytes": 310,
+      "sha256": "9b7a31c266413a437638a6994cd26a34e38dc6ee527ba37293d624b53e24af55",
+      "rows": 1,
+      "columns": [
+        "train_months",
+        "test_months",
+        "oos_benchmark",
+        "train_r_squared",
+        "model_mse",
+        "benchmark_mse",
+        "oos_r_squared",
+        "model_directional_accuracy",
+        "benchmark_directional_accuracy"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "csi300_macro_test_predictions.csv",
+      "description": "CSI 300 test forecasts, benchmark, and realized returns.",
+      "role": "reference",
+      "bytes": 10465,
+      "sha256": "c17b7a5b1b8b8c72b2a1fd4c4d7325aa25822d163270d1f53192cfb76d762a7a",
+      "rows": 60,
+      "columns": [
+        "forecast_month",
+        "market_return",
+        "exports_yoy_lag2",
+        "imports_yoy_lag2",
+        "cli_gap_lag2",
+        "reer_12m_lag2",
+        "benchmark_ma12",
+        "forecast",
+        "model_error",
+        "benchmark_error"
+      ],
+      "date_range": {
+        "field": "forecast_month",
+        "start": "2021-07-31",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "spy_single_predictor_regressions.csv",
+      "description": "Individual-predictor OLS coefficients and significance.",
+      "role": "reference",
+      "bytes": 515,
+      "sha256": "0d5d79af2d1dad07cf79c2aaff33503291e25f03ca6d7f58cf5e05de55e353ed",
+      "rows": 4,
+      "columns": [
+        "predictor",
+        "intercept",
+        "slope",
+        "standard_error",
+        "p_value",
+        "r_squared"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "spy_momentum_bins.csv",
+      "description": "Training-sample binned momentum and next-month returns.",
+      "role": "reference",
+      "bytes": 475,
+      "sha256": "57069a051bc0e29d3cd48b5acc57381fa18943b65ee98a220b4225ec69ae9114",
+      "rows": 10,
+      "columns": [
+        "mean_momentum",
+        "mean_return",
+        "count"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "three_market_regression_scorecard.csv",
+      "description": "Regression evidence for the U.S., HKSAR, and Chinese mainland.",
+      "role": "reference",
+      "bytes": 492,
+      "sha256": "107f591827338b8afeb79b3af2e4821c4584ae3c4b2a7198d3ace352aec941a8",
+      "rows": 3,
+      "columns": [
+        "market",
+        "oos_r2",
+        "directional_accuracy",
+        "positive_return_base_rate",
+        "directional_hits",
+        "positive_months",
+        "test_mse",
+        "benchmark_mse"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "three_market_timing_scorecard.csv",
+      "description": "Timing-strategy evidence for the three markets.",
+      "role": "reference",
+      "bytes": 988,
+      "sha256": "b16e45404afac62ab544cbf4011d9387b7fd25da2c36c897f46dea71c2a57e1a",
+      "rows": 3,
+      "columns": [
+        "market",
+        "buy_hold_ann_return",
+        "timing_ann_return",
+        "buy_hold_ann_volatility",
+        "timing_ann_volatility",
+        "buy_hold_sharpe",
+        "timing_sharpe",
+        "timing_market_exposure",
+        "buy_hold_terminal_wealth",
+        "timing_terminal_wealth",
+        "months_in_market",
+        "months_in_cash",
+        "in_market_mean_return",
+        "in_cash_mean_return"
+      ],
+      "date_range": null
+    }
+  ]
+}

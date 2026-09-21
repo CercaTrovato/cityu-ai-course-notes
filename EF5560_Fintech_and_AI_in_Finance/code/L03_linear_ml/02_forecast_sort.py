@@ -20,6 +20,7 @@ import pandas as pd
 from common import load, plot
 
 sp = load.c03_stock_predictions()
+assert len(sp) == 4108, f"stock_linear_test_predictions.csv 只有 {len(sp)} 行（manifest 4,108 行）——本地文件已截断，请从 Canvas 重新下载 class03.zip"  # ASSERT_4108 2026-09-21
 fs = load.c03_stock_spreads().set_index("model")
 models = ["OLS", "Ridge", "LASSO", "Elastic Net", "PCR", "PLS"]
 sse0 = (sp.actual ** 2).sum()

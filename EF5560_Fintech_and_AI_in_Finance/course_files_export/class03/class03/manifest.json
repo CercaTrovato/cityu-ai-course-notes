@@ -5,6 +5,7 @@
     {
       "file": "market_linear_model_summary.csv",
       "description": "Validation settings and test evidence for the monthly linear models.",
+      "role": "reference",
       "bytes": 1559,
       "sha256": "9cfd11e7aaa3be088cecb8ae588de92f3c3a4c5056209cd35e9a7985ffa0b9b4",
       "rows": 15,
@@ -24,6 +25,7 @@
     {
       "file": "market_linear_test_predictions.csv",
       "description": "Monthly test predictions for the three markets.",
+      "role": "reference",
       "bytes": 26860,
       "sha256": "9316219b701215abda593beb00f0c0c0fd1c9011d6ab255558d8de99f32c587e",
       "rows": 180,
@@ -46,6 +48,7 @@
     {
       "file": "stock_linear_model_summary.csv",
       "description": "Validation settings and test evidence for the weekly stock models.",
+      "role": "reference",
       "bytes": 821,
       "sha256": "f9866f7a9da92290d51f69d67f86e7caa329f95982cea589577a0dfb1d284e56",
       "rows": 7,
@@ -65,6 +68,7 @@
     {
       "file": "stock_linear_test_predictions.csv",
       "description": "Weekly HSI constituent test predictions.",
+      "role": "reference",
       "bytes": 1127308,
       "sha256": "8023143bee31a6471b4010c83442e1bde6c5922183502dc47a6a73bfbc40311e",
       "rows": 4108,
@@ -96,6 +100,7 @@
     {
       "file": "stock_linear_forecast_spreads.csv",
       "description": "Forecast-sorted weekly high-minus-low portfolio evidence.",
+      "role": "reference",
       "bytes": 890,
       "sha256": "f2fa2fd597a710cc2bf83c81ecabeefa93df8dc766b0582ed70565dd537db8a8",
       "rows": 6,
@@ -111,6 +116,259 @@
         "first_half_mean",
         "second_half_mean",
         "note"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "market_linear_validation.csv",
+      "description": "Validation losses across candidate model settings.",
+      "role": "reference",
+      "bytes": 3898,
+      "sha256": "57c39e3f66dcbfb380605b5a947832c04168bc5dd781aba6ec843667de6deb06",
+      "rows": 78,
+      "columns": [
+        "market",
+        "model",
+        "alpha",
+        "l1_ratio",
+        "validation_mse"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "market_linear_coefficients.csv",
+      "description": "Fitted standardized coefficients for the market models.",
+      "role": "reference",
+      "bytes": 2502,
+      "sha256": "f695137b06d5a6f761236cddc17c5349006265483f8b3f3d0dd4ca9cdebf8c1f",
+      "rows": 48,
+      "columns": [
+        "market",
+        "model",
+        "feature",
+        "standardized_coefficient"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "stock_linear_validation.csv",
+      "description": "Validation losses for the weekly stock models.",
+      "role": "reference",
+      "bytes": 2014,
+      "sha256": "3c9a6f823878f67680d54228ad20c9447ef1f2fdcc49b275bf5b4c257c308a48",
+      "rows": 37,
+      "columns": [
+        "universe",
+        "model",
+        "alpha",
+        "l1_ratio",
+        "validation_mse"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "stock_linear_coefficients.csv",
+      "description": "Fitted standardized coefficients for the linear stock models.",
+      "role": "reference",
+      "bytes": 9833,
+      "sha256": "e8b1738a6c90e16a63c021e1d02486e536b95195e0c982c70f1c098c2ecd0b94",
+      "rows": 180,
+      "columns": [
+        "universe",
+        "model",
+        "feature",
+        "standardized_coefficient"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "stock_linear_quintiles.csv",
+      "description": "Weekly realized returns for forecast-sorted stock portfolios.",
+      "role": "reference",
+      "bytes": 1502,
+      "sha256": "44ffd6716a13704ada395b0345fceba3127c3c1a533a4dc6a7f3c94063aa4f16",
+      "rows": 20,
+      "columns": [
+        "universe",
+        "model",
+        "forecast_quintile",
+        "mean_excess_return",
+        "mean_stock_return",
+        "observations"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "market_excess_return_panel.csv",
+      "description": "Three-market monthly excess-return forecasting panel.",
+      "role": "input",
+      "bytes": 131285,
+      "sha256": "1d572df7553bd174cd748eecbe5d64736e68cac2360fbdb52ccd1a01d7196368",
+      "rows": 714,
+      "columns": [
+        "forecast_month",
+        "market",
+        "market_label",
+        "split",
+        "market_total_return",
+        "risk_free_yield_lag1_pct",
+        "risk_free_return",
+        "market_excess_return",
+        "benchmark_ma12_excess_return",
+        "term_spread_lag1",
+        "fed_funds_lag1",
+        "unemployment_lag2",
+        "inflation_lag2"
+      ],
+      "date_range": {
+        "field": "forecast_month",
+        "start": "2006-09-30",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "hsi_stock_excess_return_panel.csv",
+      "description": "HSI stock-week panel with 30 characteristics and excess returns.",
+      "role": "input",
+      "bytes": 16410163,
+      "sha256": "91dd515feed25d87a0b6745b691b5c83d66e9d0b21b596bb3d33e24c6edd6179",
+      "rows": 12480,
+      "columns": [
+        "forecast_week",
+        "split",
+        "universe",
+        "benchmark_ticker",
+        "ticker",
+        "company_name",
+        "sector",
+        "stock_return",
+        "market_return",
+        "risk_free_yield_pct",
+        "risk_free_return",
+        "excess_return",
+        "characteristic_date",
+        "mom5d",
+        "mom20d",
+        "mom60d",
+        "close_vs_sma20d",
+        "maxret20d",
+        "minret20d",
+        "donchian_pos20d",
+        "efficiency_ratio20d",
+        "bop_mean20d",
+        "clv_mean20d",
+        "log_dolvol20d",
+        "abn_dolvol20d",
+        "illiq20d",
+        "natr20d",
+        "rv20d",
+        "downside_rv20d",
+        "rsi20d",
+        "adx20d",
+        "mom10d",
+        "mom120d",
+        "high52w_gap",
+        "close_vs_sma60d",
+        "rv60d",
+        "rv_ratio_20_60",
+        "skew60d",
+        "illiq60d",
+        "dolvol_trend",
+        "hl_spread20d",
+        "beta_mkt60d",
+        "ivol_mkt60d",
+        "mom5d_rank",
+        "mom20d_rank",
+        "mom60d_rank",
+        "close_vs_sma20d_rank",
+        "maxret20d_rank",
+        "minret20d_rank",
+        "donchian_pos20d_rank",
+        "efficiency_ratio20d_rank",
+        "bop_mean20d_rank",
+        "clv_mean20d_rank",
+        "log_dolvol20d_rank",
+        "abn_dolvol20d_rank",
+        "illiq20d_rank",
+        "natr20d_rank",
+        "rv20d_rank",
+        "downside_rv20d_rank",
+        "rsi20d_rank",
+        "adx20d_rank",
+        "mom10d_rank",
+        "mom120d_rank",
+        "high52w_gap_rank",
+        "close_vs_sma60d_rank",
+        "rv60d_rank",
+        "rv_ratio_20_60_rank",
+        "skew60d_rank",
+        "illiq60d_rank",
+        "dolvol_trend_rank",
+        "hl_spread20d_rank",
+        "beta_mkt60d_rank",
+        "ivol_mkt60d_rank",
+        "complete_characteristics",
+        "usable_for_ml"
+      ],
+      "date_range": {
+        "field": "forecast_week",
+        "start": "2023-07-07",
+        "end": "2026-06-26"
+      }
+    },
+    {
+      "file": "technical_characteristics_dictionary.csv",
+      "description": "Definitions for the 30 technical characteristics.",
+      "role": "input",
+      "bytes": 3116,
+      "sha256": "fb6cced643a5476414aa2bcd2948189c437796d702f20d37734d7b20405b1e77",
+      "rows": 30,
+      "columns": [
+        "name",
+        "family",
+        "window_days",
+        "formula",
+        "plain_english"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "risk_free_yields_monthly.csv",
+      "description": "Monthly U.S. and Chinese mainland three-month government yields.",
+      "role": "input",
+      "bytes": 5521,
+      "sha256": "fc44461476c234809533c3e6342c377954cf0707e9a57b5182880c18e6dcdcc1",
+      "rows": 241,
+      "columns": [
+        "month",
+        "us_3m_treasury_yield_pct",
+        "cn_3m_government_yield_pct"
+      ],
+      "date_range": {
+        "field": "month",
+        "start": "2006-06-30",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "hsi_constituents_2023_07.csv",
+      "description": "Fixed July 2023 constituent list, company names, sectors, and membership source.",
+      "role": "input",
+      "bytes": 51397,
+      "sha256": "fa00fcbe00a85bb1a892c618f410bb6392e876f5d1ed4552bbc0d20a7d834736",
+      "rows": 80,
+      "columns": [
+        "universe",
+        "asset_id",
+        "code",
+        "ticker",
+        "company_name",
+        "sector",
+        "index_weight_pct",
+        "constituent_vintage",
+        "source_url",
+        "source_note",
+        "price_source_note"
       ],
       "date_range": null
     }

@@ -21,7 +21,9 @@
 | `syllabus_EF5560_2026.pdf` | ⚠️ 未读 |
 | `Lec01_Data_and_Vibe_Coding.pdf` | ⚠️ 未读 |
 | `Lec02_Regression_Vibe_Coding.pdf` | ✅ → M02 v1.0 |
-| `Lec03_Linear_Machine_Learning.pdf`（56 页）+ `class03/class03/`（5 CSV + manifest + README） | ✅ → M03 v0.9（2026-09-17）；❗ README 引用的 `shared/` 四个面板不在导出包、Canvas 也没有（9/17 核实） |
+| `Lec03_Linear_Machine_Learning.pdf`（56 页）+ `class03/class03/`（2026-09-22 重下更新版：15 CSV + manifest + README，含五个共享面板） | ✅ → M03 v1.0（2026-09-17）；`stock_linear_test_predictions.csv` 曾被同步截断，9/22 已恢复复核；`Lec03_Linear_Machine_Learning.pdf` 曾被截为 32 KB，9/22 已重下（56 页） |
+| `Lec04_Nonlinear_Machine_Learning.pdf`（54 页）+ `class04/class04/`（5 共享面板 + 11 结果表 + manifest + README） | ✅ → M04 v0.9 课前预习版（2026-09-21）；三棵树用共享面板重训一致；转录待 9/24 |
+| `class01/class01/`（6）· `class02/class02/`（12，含 8 张官方结果表） | ✅ 2026-09-21 补发；输入表 = `data/`（sha256 一致）；M02 数字 22 项全部对上 → 数据集卡片 §12 |
 | `EF5560_FinTech_Company_Case_Requirements.pdf` | ⚠️ 未读 → 读完登记作业与 DDL |
 | `data/*.csv` ×8 | 未处理 → 建 `_meta/数据集.md` |
 | `course_image/canvas_course_card_2026.png` | 杂项，忽略 |

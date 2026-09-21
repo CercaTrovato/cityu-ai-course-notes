@@ -18,7 +18,7 @@ cd "D:/上课资料/CityU/EF5560_Fintech_and_AI_in_Finance/code"
 /d/python/python run_all.py
 ```
 
-**环境**：Python 3.9 + `requirements.txt`（pandas / numpy / matplotlib / statsmodels / scipy）。已在本机 `/d/python/python` 装好。
+**环境**：Python 3.9 + `requirements.txt`（pandas / numpy / matplotlib / statsmodels / scipy / **scikit-learn**，2026-09-21 起 L04 需要）。已在本机 `/d/python/python` 装好。
 **Windows 编码**：跑之前设 `PYTHONIOENCODING=utf-8`，否则中文 print 会报 GBK 错。
 
 每个脚本跑完会：
@@ -40,6 +40,7 @@ code/
 ├─ L01_data/            对应 [[M01-金融数据与Vibe-Coding]]
 ├─ L02_regression/      对应 [[M02-回归与样本外设计]]
 ├─ L03_linear_ml/       对应 [[M03-线性机器学习与收益预测]]（数据来自 class03 结果表，loader 为 common.load.c03_*）
+├─ L04_nonlinear/       对应 [[M04-非线性机器学习与收益预测]]（class04 结果表 + 共享面板，loader 为 common.load.c04_*；需 scikit-learn）
 ├─ L0N_.../             以后每讲一个目录
 └─ output/              图与表的输出，笔记用 ![[...]] 引用
 ```
@@ -106,6 +107,10 @@ L01_03 · PDD-JD 配对交易的完整路径
 | `L02_regression/04_hit_rate.py` | Lec02 p.43–48 | M02 §2.7.4 | 方向命中率 vs 多数类基线：63.3% 到底强不强？ |
 | `L03_linear_ml/01_reproduce_lecture.py` | Lec03 p.7–55 | M03 §2.2–2.9、§9.5 | 讲义每个数字能否复现：假数算例按公式重算；真数从 class03 五个 CSV 逐格重算（12 个市场 OOS R²、6 个个股 OOS R²、五分组价差与 t）；笔记补充的迷你例子 |
 | `L03_linear_ml/02_forecast_sort.py` | Lec03 p.47–55 | M03 §2.8.1、§2.9.3 | MSE 看水平、分组看次序：六模型 OOS R² 柱状 + 四个可排序模型的五组收益曲线 |
+| `L02_regression/05_official_scorecards.py` | Lec02 p.24 / 33 / 46–51 | M02 §9.5、数据集卡片 §12 | class02 补发的 8 张官方结果表 vs 本库复现：22 项逐格对照全部一致；打印 Class 5 预告的择时成绩单 |
+| `L04_nonlinear/01_reproduce_lecture.py` | Lec04 p.9–51 | M04 §2.2–2.9、§4.2 | 讲义每个数字能否复现：假数算例（p.11/14/19/23/27/32/33/46）+ 真数（12 + 4 个 OOS R²、CSI 300 子窗口、三棵树的叶子人数、Techtronic、五分组价差与 t）|
+| `L04_nonlinear/02_refit_trees.py` | Lec04 p.6–10、21–22、43–47 | M04 §2.2.5–2.2.6、§2.6.3、§9.5 | 用共享面板按汇总表设置重训树 / 森林 / 提升：树逐位一致（阈值 2.482 / 2.456 / 0.150），森林 / 提升近似 |
+| `L04_nonlinear/03_nonlinear_sort.py` | Lec04 p.36 / 38 / 47–51 | M04 §2.5.1、§2.7.1 | 两张图：市场六模型 OOS R² + 美国提升曲线；个股三族 OOS R² + 五组曲线 + 森林重要性前 15 |
 
 > 每写一个新脚本，在这张表加一行；在对应笔记小节加一行 `📁 代码：` 链接。
 
@@ -126,6 +131,8 @@ L01_03 · PDD-JD 配对交易的完整路径
 
 ## 6. 已知限制
 
+- **class03/stock_linear_test_predictions.csv 曾被同步截断**（358 / 4,108 行，2026-09-21 发现，2026-09-22 重下恢复）：`L03_01` / `L03_02` 保留行数断言，文件再被截断会主动失败
+- **随机森林 / 梯度提升只能近似复现**：树是确定性的（`L04_02` 逐位一致），森林差随机种子、提升的讲义实现与 sklearn 不同（美国 GB 验证 24.28 vs 表 23.35）；笔记里森林 / 提升的数字一律取结果表
 - **无交易成本、无换手约束**：所有策略类计算都是"纸面"结果，M05 讲组合时要自己加
 - **`csi300_macro_panel.csv` 的 `cli_gap_lag2` 含义未知**，脚本里只当普通特征用，不解释
 - **前 12 行的滚动统计量用了样本前的数据**（见数据集卡片 §7），`04_leakage_audit.py` 只验证 2007-07 之后的行
@@ -139,3 +146,4 @@ L01_03 · PDD-JD 配对交易的完整路径
 |---|---|
 | 2026-09-10 | 建库。定目录约定、三条硬规则、docstring 格式、9 个脚本的映射表 |
 | 2026-09-10 | 补齐其余 8 个脚本（L01_02–05、L02_01–04），`run_all.py` 9/9 ✅；映射表小节号校正（L01_02 → §2.9.2、L02_04 → §2.7.4）；`load.spy_features` docstring 的"16 个特征"改为"1 个目标 + 15 个预测变量" |
+| 2026-09-21 | 加 `L04_nonlinear/` 三个脚本与 `L02_regression/05`；`common/load.py` 加 class02（8）/ class04（16）共 24 个 loader；`requirements.txt` 加 scikit-learn；发现 class03 预测表截断，L03_01 / 02 加断言；`run_all.py` 13/15（L03_01 / 02 按预期失败；9/22 class03 恢复后 15/15） |

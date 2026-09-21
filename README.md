@@ -33,7 +33,7 @@ updated: 2026-09-17
 | 覆盖讲义 | 1,300 多页，每一页在笔记正文里都有实质讲解（脚本逐页检查） |
 | 课堂转录 | 14 个文件、11 次课，其中 9 次已合并进笔记 |
 | 课堂原话引用 | 1,100 多处 🎙️ 标记，2,300 多个时间戳；合并过转录的笔记都通过了脚本逐条核对（时间戳存在、引文能在转录里找到） |
-| 可复现代码 | EF5560 的 `code/`（`run_all.py` 一键跑 11 个脚本），讲义上的数字（收益率、R²、回归系数）都能重算出来 |
+| 可复现代码 | EF5560 的 `code/`（`run_all.py` 一键跑 15 个脚本），讲义上的数字（收益率、R²、回归系数）都能重算出来 |
 | 规则与工具 | 根 `CLAUDE.md` / `AGENTS.md`、`_meta/` 下 12 份规则与记录文件、6 个脚本（3 个验收 + 3 个文件安全）、1 个转录融合 skill |
 
 目录结构很简单：根目录是规则层，每门课一个目录，里面 `course_files_export/` 放原始材料（只读，我从不改它）、`transcripts/` 放转录、`notes/` 放笔记、`_meta/` 放这门课的术语表 / 考点库 / 前置知识台账 / 作业 DDL。完整说明在 [开源仓库说明](_meta/开源仓库说明.md)。
@@ -115,6 +115,9 @@ updated: 2026-09-17
 | 优先级 | 事项 |
 |---|---|
 | 🔴 | **IS5113 交警 AI 摄像头案例分析作业 — 2026-09-22 12:00 截止**<br>👉 完整分析演练已备好：[M02-道德理论及其应用](IS5113_AI_Ethics_and_Regulations/notes/M02-道德理论及其应用.md) §7 第 10 题；答题框架 §6.3；M03 新增工具（差别性影响 / 程序公平四要素 / 模型卡的超范围用途）见 [作业与DDL](IS5113_AI_Ethics_and_Regulations/_meta/作业与DDL.md) |
+| 🔴 | **同步截断事故根因（2026-09-22 排查结论）与待办** —— 9/16–9/18 共 11 个文件被截成半截（三篇笔记、术语总表、`class03` 预测表、3 张 PNG、`Lec03` PDF、EF5560 syllabus、IS6400 W3 / W4 PDF、`Week 4 Feature Engineering.html`），**全部是同一机制、都不是脚本写坏的**：Obsidian 的 Remotely Save 经 Clash（全局模式 · 新加坡节点，服务器日志里客户端 IP 是 89.167.172.11 / 103.172.183.86）上传 >100 KB 文件时中途停滞 → dufs 把半截直接写在目标路径（先清空再写，没有临时文件）→ 几分钟后下一轮同步按"取较新"把半截拉回本地覆盖（被覆盖文件的 mtime 纳秒全为 0 是铁证）。**待办**：① Clash 改规则模式并把 `cercatrovato.com` / `39.108.171.159` 设为 DIRECT（现有 DIRECT 规则挂在未启用的订阅上，从未生效），或同步时关掉 Clash；② 服务器加每日快照备份；~~③ 从 Canvas 重下 5 个半截课件~~ ✅ 2026-09-22 已重下覆盖（Lec03 56 页 / syllabus 3 页 / IS6400 W3 72 页 / W4 69 页 / Week 4 html，Canvas 现名 `Week4_Feature_Engineering_Tutorial.html`，库内沿用原名），`sync_damage_check.py` 全库 0 可疑；④ 下次提交时 3 张 PNG 已由 `run_all.py` 重新生成 |
+| ✅ | ~~EF5560：从 Canvas 重新下载 `class03.zip`~~ —— 2026-09-22 已重下（Canvas 更新版 15 个文件，sha256 全部一致），`stock_linear_test_predictions.csv` 恢复 4,108 行，`L03_01` / `L03_02` 重跑通过，M03 §2.8.1 / §2.9.3 复核成立、勘误已撤销，`run_all.py` 15/15 |
+| ✅ | ~~产 EF5560 M04 笔记（课前预习版）~~ —— **v0.9**（2026-09-21）：`Lec04_Nonlinear_Machine_Learning.pdf` 54 页全覆盖（内容页 49），§2 共 37 个 leaf、3.8 万字，strict PASS；class04 数据包 16 个文件 sha256 一致，**class03 缺失的 `shared/` 面板随之到位**，`code/L04_nonlinear/` 三个脚本复算讲义全部真数、用面板重训三棵树逐位一致；class01 / 02 补发包 = `data/`，class02 的 8 张官方结果表与 M02 的 22 个数字全部对上（`L02_regression/05`）；台账 I 组 25 概念、术语表 5d 30 条、考点 #55–72；转录待 9/24 |
 | ✅ | ~~产 EF5560 M03 笔记~~ —— **v0.9**（2026-09-17，我在课上要求当场产出）：`Lec03_Linear_Machine_Learning.pdf` 56 页全覆盖（49 页内容 + 7 页封面 / 分隔），§2 共 36 个 leaf、3.1 万字，按 [笔记质量规范](_meta/笔记质量规范.md) v1 **strict PASS**（12 公式型 / 2 算法型 / 6 案例型 / 4 图表型 / 2 对比型 / 1 代码型 / 9 定义型）；`class03/` 5 个 CSV sha256 校验 + 全部数字重算（`code/L03_linear_ml/`，`run_all.py` 11/11）；数据集卡片 §11、台账 H 组 22 概念、术语表 5c、考点库 27–39、待并入 D 组；同日 09-09 版 syllabus 只改 Class 5 主题与 ILO 2 措辞。❗ `class03/README.md` 引用的 `shared/` 四个面板文件不在导出包，**Canvas 上也没有**（用户 9/17 核实），等 ML 作业发布或问 TA |
 | ✅ | ~~EF5560 M03 转录合并~~ —— **2026-09-17 完成，M03 升 v1.0**：`M03-transcript.txt`（`00:56`→`02:24:04`，587 段，缺开头约 1 分钟、缺结尾——p.56 总结未完）；35 个 🎙️ 格全部回填（A 29 / B 3 / C 1 / D 2），§6 新增 7 条 🔴（含 p.26 课堂当堂确认答案 A、港币联系汇率解释"为什么只有香港赢"、波动率分组"反直觉"、常数预测 = ML 作业最容易踩的坑）；§8 加课堂覆盖列与时间分配表；考点库/知识层级台账/术语表/待并入术语总表/作业与DDL/00-课程总览/转录处理规则 §8/asr-dictionary 全部回写；`transcript_check.py audit` PASS、`note_quality.py --strict` PASS、`link_check.py` 0、`integrity_check.py verify` 0 |
 | ✅ | ~~AC6761 M03 转录合并~~ —— **2026-09-17 完成，M03 升 v1.0**：录音只讲到 p.27（§2.1–§2.4，Nike 两道分析题答案 💡→✅ 确认），p.28 起（利润表/现金流量表/权益变动表/附注）无转录标 ❓；前 49 分钟 W2 顺延（课堂练习 2 解答 + 当堂小测 + 试算表/AI 演示）已回填 M02 §2.6.4/§2.7.2。两份 audit PASS，note_quality 三项指标与基线相同（18 L / G3a 1 / G6 0.23），link_check 0，独立 sonnet 验收通过。⚠️ 过程中 M01 / M03 被截断（脚本整读整写 + Remotely Save 同步）：M01 用 iPhone 端完整版恢复，M03 由原稿重放改动脚本找回；同日建立文件安全三件套并写入根 CLAUDE.md「文件安全协议」 |
@@ -125,7 +128,7 @@ updated: 2026-09-17
 | 🔴 | **IS6400 Assignment Week 3 — 2026-09-25（五）23:59 截止**（✅ Canvas 截图），10 分。Airbnb 描述报告 + 数据质量 / 关系探索 + **自己项目数据**的探索。⚠️ Q1 的"百分位数不等于 exp"前提实跑不成立、Q2 的 `bedrooms` 没有缺失——两处要如实写，见 [T03-数据探索实战-Iris与Airbnb的描述统计](IS6400_Business_Data_Analytics/notes/T03-数据探索实战-Iris与Airbnb的描述统计.md) §7.3 |
 | 🟠 | **IS6400 Week 4 Assignment — ⚪ 2026-10-02（五）23:59**（Canvas 尚未挂出；总分 80 待问），Iris 特征选择四题 + Airbnb 选 3 特征。六种 `SequentialFeatureSelector` 组合都选 petal-L / petal-W；见 [T04-特征选择与PCA实战-Iris](IS6400_Business_Data_Analytics/notes/T04-特征选择与PCA实战-Iris.md) §7.3 |
 | ✅ | ~~IS6400 W03 转录合并~~ —— **2026-09-18 完成，M03 / T03 升 v1.0**：转录改由本地 Whisper 产出（`M03-transcript.txt`，1361 段，`00:00 → 02:13:18`，缺开头、结尾完整、两次课间录音暂停）；M03 28 个 🎙️ 格（A 18 / B 10）+ T03 新建 9 格（A 7 / B 2）；§6.2 新增 4 条 🔴（**关联规则会考计算题**、TID 属性类型判断是往年期末题、课堂小测 = 上周回归模型的属性类型、同组作业必须用不同变量）；p.19 数据质量三问有课堂答案（GPS 噪声 / 深圳离群点 / 非会员缺失 / 自助结账重复）、p.49 未布置练习、p.64 未作答、降维明确下周讲。**分片并行模式首次实测：3 个 sonnet 分片并行各 ≈15 分钟，`merge_apply.py` 合并两篇一次 PASS，从派发到写入 19 分钟**（上次串行 29 分钟）；规则文件已按 `lecture-transcribe/HANDOFF-cityu-vault.md` 改为 Whisper 来源 |
-| 🟢 | **把 `Downloads/` 里重新下载的 `IS6400-W3-DataMining.pdf`、`IS6400-W4-Feature.pdf` 复制覆盖到 `IS6400_Business_Data_Analytics/course_files_export/`**（已核对：72 / 69 页完整，文字层与笔记所用一致；原目录里的两份是截断的） |
+| ✅ | ~~把 `Downloads/` 里重新下载的 `IS6400-W3-DataMining.pdf`、`IS6400-W4-Feature.pdf` 复制覆盖到 `IS6400_Business_Data_Analytics/course_files_export/`~~ —— 2026-09-22 已覆盖（72 / 69 页），同批覆盖 `Week 4 Feature Engineering.html` |
 | ✅ | ~~按新规范返工 IS6400 M03 / M04~~ —— 2026-09-16 晚：我指出两篇不如 M02 透彻 → 派 opus 子代理把"透彻度"固定成可量化规则（[笔记质量规范](_meta/笔记质量规范.md) + `_meta/tools/note_quality.py`，三层判定 L / G / E，阈值按 4 篇标杆校准）→ 按规范整篇重写两篇 §2（M03 §2 1.2 万 → 2.7 万字、M04 0.85 万 → 2.4 万字，leaf 小节 22 → 28 / 15 → 29，每个公式型小节手把手算例 + 为什么公式长这样 + 边界情况）→ 两篇 strict PASS。⚠️ 同一次体检里 **另有 12 篇存量笔记 FAIL**（含 IS6400 M01 134 字/页、M02 G3b），见 [质量体检-2026-09-16](_meta/质量体检-2026-09-16.md)，待安排返工 |
 | ✅ | ~~产 IS6400 W3 / W4 笔记~~ —— **M03 / T03 / M04 / T04 四篇 v0.9 + `iris.txt` 数据集卡**（2026-09-16）：讲义 72 + 69 页全覆盖、图片页视觉复核；Gini / 熵 / 小测 / PCA / 关联规则 / Airbnb 统计全部脚本复算；⚠️ 发现 **Syllabus 与 Canvas 周次错位一周**（实际 W3 = 描述性分析、W4 = 特征工程） |
 | 🔴🔴 | **IS6400 Tutorial 1 作业 — 2026-09-11（四）截止**，交 HTML。4 题 100 分，半小时能做完；三个坑见 [T01-Jupyter入门与Pandas基础](IS6400_Business_Data_Analytics/notes/T01-Jupyter入门与Pandas基础.md) §7.2 |
@@ -153,7 +156,7 @@ updated: 2026-09-17
 |---|---|---|---|---|
 | **AI Ethics and Regulations** | IS5113 | AI 核心必修 | M01 v0.9 · **M02 v1.0 · M03 v1.0** | M01 无（永久）· M02 ✅ · M03 ✅（缺结尾，p.53–89 未录到） |
 | GenAI in Business | IS5542 | AI 核心必修 | **M01 v1.0**（117 页）· **M02 v1.0**（88 页）· **M03 v0.9**（80 页，课前预习版） | M01 ✅ · M02 ✅ · M03 待录（9/19） |
-| Fintech and AI in Finance | EF5560 | 商业核心 | **M01 v1.0 · M02 v1.0 · M03 v1.0** · 8 张数据集卡 · **`code/` 11 个可复现脚本** | M01 ✅ · M02 ✅ · M03 ✅ |
+| Fintech and AI in Finance | EF5560 | 商业核心 | **M01 v1.0 · M02 v1.0 · M03 v1.0 · M04 v0.9**（课前预习版）· 数据集卡 8 + class02/03/04 三个数据包 · **`code/` 15 个可复现脚本** | M01 ✅ · M02 ✅ · M03 ✅ · M04 待录（9/24） |
 | Artificial Intelligence Accounting | AC6761 | 商业核心 | **M01 v1.0 · M02 v1.0 · M03 v1.0** · M04–M06 v0.9<br>**六周 379 页全部逐页讲解，期中范围 W1–W5 齐备** | M01 ✅（缺开头；9/17 截断事故已用 iPhone 端完整版恢复）· M02 ✅（缺结尾）· M03 ✅（只讲到 p.27）· W4–W6 待录 |
 | **Business Data Analytics** | IS6400 | **选修 · 唯一技术课** | **M01 v0.9 · M02 v1.0 · T01 v0.9 · T02 v1.0 · M03 v1.0 · T03 v1.0 · M04 v0.9 · T04 v0.9**（M04 / T04 课前建稿）· 2 张数据集卡 | W01 无 · W02 ✅ · W03 ✅（本地 Whisper；缺开头）· W04 未上课 |
 
@@ -206,7 +209,7 @@ CityU/
    ├─ transcripts/            课堂转录（M<NN>-transcript[-partN].txt；本地 Whisper，早期 Notta）
    ├─ _prep/                  前置资料（官方调研、口碑）
    ├─ _meta/                  台账 / 术语 / 考点 / DDL / 数据集
-   ├─ code/                   可复现分析脚本（EF5560 11 个；IS5542 从 M03 起）
+   ├─ code/                   可复现分析脚本（EF5560 15 个；IS5542 从 M03 起）
    └─ notes/                  M<NN> 讲义笔记 · T<NN> 代码讲解笔记
 ```
 
@@ -218,7 +221,7 @@ CityU/
 
 | 库 | 内容 |
 |---|---|
-| [🎓 CityU 学习进度](https://app.notion.com/p/526a0242e72d40b3aa4f1a26f9ac7f4f) | **37 行**。八格流水线：📄课件 → 🎙️录音 → 📝转录 → 🤖交AI → 📔笔记 → 👁️通读 → ✅自测 → 🔁复习 |
+| [🎓 CityU 学习进度](https://app.notion.com/p/526a0242e72d40b3aa4f1a26f9ac7f4f) | **38 行**。八格流水线：📄课件 → 🎙️录音 → 📝转录 → 🤖交AI → 📔笔记 → 👁️通读 → ✅自测 → 🔁复习 |
 | [📌 CityU 作业与 DDL](https://app.notion.com/p/c4bab444ac4f457fb3516cf13d19517d) | 作业 / 项目 / 考试，关联到对应 module |
 
 **AI 不会替你勾** `👁️ 已通读` / `✅ 自测通过` / `复习次数` —— 那三个是你的学习行为。

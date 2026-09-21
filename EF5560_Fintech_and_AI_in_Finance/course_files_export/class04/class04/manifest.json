@@ -1,0 +1,404 @@
+{
+  "class": 4,
+  "topic": "Nonlinear Machine Learning for Return Prediction",
+  "files": [
+    {
+      "file": "market_nonlinear_model_summary.csv",
+      "description": "Test evidence for trees, forests, and boosting.",
+      "role": "reference",
+      "bytes": 1550,
+      "sha256": "f94b9b664bc5ae077226ec1f724cc471475c3bef49b14a5bca622e3b006e41e0",
+      "rows": 15,
+      "columns": [
+        "market",
+        "model",
+        "validation_mse",
+        "max_depth",
+        "min_samples_leaf",
+        "learning_rate",
+        "test_mse",
+        "oos_r2",
+        "forecast_correlation"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "market_nonlinear_test_predictions.csv",
+      "description": "Monthly nonlinear test predictions for the three markets.",
+      "role": "reference",
+      "bytes": 26625,
+      "sha256": "5361f0d2fd9f348da0577d7a9854285db0979133783c84d1b93f4aec12c53c35",
+      "rows": 180,
+      "columns": [
+        "forecast_month",
+        "market",
+        "actual",
+        "MA(12)",
+        "OLS",
+        "Decision tree",
+        "Random forest",
+        "Gradient boosting"
+      ],
+      "date_range": {
+        "field": "forecast_month",
+        "start": "2021-07-31",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "market_nonlinear_feature_importance.csv",
+      "description": "Permutation importance for the selected market models.",
+      "role": "reference",
+      "bytes": 990,
+      "sha256": "36a0384daaae24682bac95d553c7090c8904ea443b36c7ea5217c1eab4513c69",
+      "rows": 12,
+      "columns": [
+        "market",
+        "selected_model",
+        "feature",
+        "permutation_importance",
+        "importance_sd"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "stock_nonlinear_model_summary.csv",
+      "description": "Test evidence for weekly nonlinear stock models.",
+      "role": "reference",
+      "bytes": 637,
+      "sha256": "66347039f3e6501cea0ea73d22cd4d474989bb29e502f156513bbab3d67e7458",
+      "rows": 5,
+      "columns": [
+        "universe",
+        "model",
+        "validation_mse",
+        "max_depth",
+        "min_samples_leaf",
+        "learning_rate",
+        "test_mse",
+        "oos_r2",
+        "forecast_correlation"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "stock_nonlinear_test_predictions.csv",
+      "description": "Weekly nonlinear HSI constituent predictions.",
+      "role": "reference",
+      "bytes": 960891,
+      "sha256": "fbcfd3bbfb5659a9bb8d4e54859a1c4e0a78defbb10b03242324d7b9bd0b84ea",
+      "rows": 4108,
+      "columns": [
+        "forecast_week",
+        "universe",
+        "ticker",
+        "stock_return",
+        "market_return",
+        "risk_free_yield_pct",
+        "risk_free_return",
+        "actual",
+        "Zero",
+        "OLS",
+        "Decision tree",
+        "Random forest",
+        "Gradient boosting",
+        "predicted_excess_return",
+        "forecast_quintile"
+      ],
+      "date_range": {
+        "field": "forecast_week",
+        "start": "2025-07-04",
+        "end": "2026-06-26"
+      }
+    },
+    {
+      "file": "stock_nonlinear_feature_importance.csv",
+      "description": "Permutation importance for the selected stock model.",
+      "role": "reference",
+      "bytes": 2803,
+      "sha256": "cb73a465fb8b63e16e526e92203ea7bc11b32c33a5fc19c846fe6b9bbb13638f",
+      "rows": 30,
+      "columns": [
+        "universe",
+        "selected_model",
+        "feature",
+        "permutation_importance",
+        "importance_sd"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "stock_nonlinear_forecast_spreads.csv",
+      "description": "Forecast-sorted weekly high-minus-low portfolio evidence.",
+      "role": "reference",
+      "bytes": 622,
+      "sha256": "48793badbe5e5e3009686df949b7a5d4f15d509fe6ae0f44e37ec167c20232df",
+      "rows": 3,
+      "columns": [
+        "universe",
+        "model",
+        "sortable",
+        "weeks",
+        "mean_weekly_spread",
+        "t_statistic",
+        "annualized_sharpe",
+        "hit_rate",
+        "first_half_mean",
+        "second_half_mean",
+        "note"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "market_nonlinear_validation.csv",
+      "description": "Validation losses across candidate tree-model settings.",
+      "role": "reference",
+      "bytes": 5219,
+      "sha256": "46831f256fc407b125a9f2a1711b740043ab825202887739cc0c7a5acb121ecd",
+      "rows": 90,
+      "columns": [
+        "market",
+        "model",
+        "max_depth",
+        "min_samples_leaf",
+        "learning_rate",
+        "n_estimators",
+        "validation_mse"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "stock_nonlinear_validation.csv",
+      "description": "Validation losses for weekly nonlinear stock models.",
+      "role": "reference",
+      "bytes": 2011,
+      "sha256": "46abd3ae390055ae347c158cfa2f038dac7c266fbccfcb172ecceffb719a452d",
+      "rows": 30,
+      "columns": [
+        "universe",
+        "model",
+        "max_depth",
+        "min_samples_leaf",
+        "learning_rate",
+        "n_estimators",
+        "validation_mse"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "stock_nonlinear_quintiles.csv",
+      "description": "Test-period mean returns by model and forecast quintile, not a weekly time series.",
+      "role": "reference",
+      "bytes": 1309,
+      "sha256": "be972fb57a89ff18ab74e4d75f855f94438c4c53e751ad5a8c65b57ade09410a",
+      "rows": 15,
+      "columns": [
+        "universe",
+        "model",
+        "forecast_quintile",
+        "mean_excess_return",
+        "mean_stock_return",
+        "observations"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "csi300_recent_window_summary.csv",
+      "description": "CSI 300 July 2023-June 2026 results for the recent-window slide; the original June 2021 model fits are retained.",
+      "role": "reference",
+      "bytes": 579,
+      "sha256": "f96ab8c7a27fbd80c2247208d287aa5b20783193aad9c5c3994b752589854ac2",
+      "rows": 4,
+      "columns": [
+        "market",
+        "model",
+        "test_start",
+        "test_end",
+        "n_months",
+        "benchmark",
+        "test_mse",
+        "benchmark_mse",
+        "oos_r2"
+      ],
+      "date_range": {
+        "field": "test_start/test_end",
+        "start": "2023-07-31",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "market_excess_return_panel.csv",
+      "description": "Three-market monthly excess-return forecasting panel.",
+      "role": "input",
+      "bytes": 131285,
+      "sha256": "1d572df7553bd174cd748eecbe5d64736e68cac2360fbdb52ccd1a01d7196368",
+      "rows": 714,
+      "columns": [
+        "forecast_month",
+        "market",
+        "market_label",
+        "split",
+        "market_total_return",
+        "risk_free_yield_lag1_pct",
+        "risk_free_return",
+        "market_excess_return",
+        "benchmark_ma12_excess_return",
+        "term_spread_lag1",
+        "fed_funds_lag1",
+        "unemployment_lag2",
+        "inflation_lag2"
+      ],
+      "date_range": {
+        "field": "forecast_month",
+        "start": "2006-09-30",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "hsi_stock_excess_return_panel.csv",
+      "description": "HSI stock-week panel with 30 characteristics and excess returns.",
+      "role": "input",
+      "bytes": 16410163,
+      "sha256": "91dd515feed25d87a0b6745b691b5c83d66e9d0b21b596bb3d33e24c6edd6179",
+      "rows": 12480,
+      "columns": [
+        "forecast_week",
+        "split",
+        "universe",
+        "benchmark_ticker",
+        "ticker",
+        "company_name",
+        "sector",
+        "stock_return",
+        "market_return",
+        "risk_free_yield_pct",
+        "risk_free_return",
+        "excess_return",
+        "characteristic_date",
+        "mom5d",
+        "mom20d",
+        "mom60d",
+        "close_vs_sma20d",
+        "maxret20d",
+        "minret20d",
+        "donchian_pos20d",
+        "efficiency_ratio20d",
+        "bop_mean20d",
+        "clv_mean20d",
+        "log_dolvol20d",
+        "abn_dolvol20d",
+        "illiq20d",
+        "natr20d",
+        "rv20d",
+        "downside_rv20d",
+        "rsi20d",
+        "adx20d",
+        "mom10d",
+        "mom120d",
+        "high52w_gap",
+        "close_vs_sma60d",
+        "rv60d",
+        "rv_ratio_20_60",
+        "skew60d",
+        "illiq60d",
+        "dolvol_trend",
+        "hl_spread20d",
+        "beta_mkt60d",
+        "ivol_mkt60d",
+        "mom5d_rank",
+        "mom20d_rank",
+        "mom60d_rank",
+        "close_vs_sma20d_rank",
+        "maxret20d_rank",
+        "minret20d_rank",
+        "donchian_pos20d_rank",
+        "efficiency_ratio20d_rank",
+        "bop_mean20d_rank",
+        "clv_mean20d_rank",
+        "log_dolvol20d_rank",
+        "abn_dolvol20d_rank",
+        "illiq20d_rank",
+        "natr20d_rank",
+        "rv20d_rank",
+        "downside_rv20d_rank",
+        "rsi20d_rank",
+        "adx20d_rank",
+        "mom10d_rank",
+        "mom120d_rank",
+        "high52w_gap_rank",
+        "close_vs_sma60d_rank",
+        "rv60d_rank",
+        "rv_ratio_20_60_rank",
+        "skew60d_rank",
+        "illiq60d_rank",
+        "dolvol_trend_rank",
+        "hl_spread20d_rank",
+        "beta_mkt60d_rank",
+        "ivol_mkt60d_rank",
+        "complete_characteristics",
+        "usable_for_ml"
+      ],
+      "date_range": {
+        "field": "forecast_week",
+        "start": "2023-07-07",
+        "end": "2026-06-26"
+      }
+    },
+    {
+      "file": "technical_characteristics_dictionary.csv",
+      "description": "Definitions for the 30 technical characteristics.",
+      "role": "input",
+      "bytes": 3116,
+      "sha256": "fb6cced643a5476414aa2bcd2948189c437796d702f20d37734d7b20405b1e77",
+      "rows": 30,
+      "columns": [
+        "name",
+        "family",
+        "window_days",
+        "formula",
+        "plain_english"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "risk_free_yields_monthly.csv",
+      "description": "Monthly U.S. and Chinese mainland three-month government yields.",
+      "role": "input",
+      "bytes": 5521,
+      "sha256": "fc44461476c234809533c3e6342c377954cf0707e9a57b5182880c18e6dcdcc1",
+      "rows": 241,
+      "columns": [
+        "month",
+        "us_3m_treasury_yield_pct",
+        "cn_3m_government_yield_pct"
+      ],
+      "date_range": {
+        "field": "month",
+        "start": "2006-06-30",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "hsi_constituents_2023_07.csv",
+      "description": "Fixed July 2023 constituent list, company names, sectors, and membership source.",
+      "role": "input",
+      "bytes": 51397,
+      "sha256": "fa00fcbe00a85bb1a892c618f410bb6392e876f5d1ed4552bbc0d20a7d834736",
+      "rows": 80,
+      "columns": [
+        "universe",
+        "asset_id",
+        "code",
+        "ticker",
+        "company_name",
+        "sector",
+        "index_weight_pct",
+        "constituent_vintage",
+        "source_url",
+        "source_note",
+        "price_source_note"
+      ],
+      "date_range": null
+    }
+  ]
+}

@@ -61,6 +61,7 @@ ss = load.c03_stock_summary()
 ss["val_x1e4"] = (ss.validation_mse * 1e4).round(2); ss["oos_pct"] = (ss.oos_r2 * 100).round(2)
 print(ss[["model", "val_x1e4", "alpha", "l1_ratio", "oos_pct", "nonzero_coefficients"]].to_string(index=False))
 sp = load.c03_stock_predictions()
+assert len(sp) == 4108, f"stock_linear_test_predictions.csv 只有 {len(sp)} 行（manifest 4,108 行）——本地文件已截断，请从 Canvas 重新下载 class03.zip"  # ASSERT_4108 2026-09-21
 print("行数", len(sp), " 周数", sp.forecast_week.nunique(), " 股票数", sp.ticker.nunique(),
       " 实现超额收益标准差", round(sp.actual.std() * 100, 2), "%")
 sse0 = (sp.actual ** 2).sum()

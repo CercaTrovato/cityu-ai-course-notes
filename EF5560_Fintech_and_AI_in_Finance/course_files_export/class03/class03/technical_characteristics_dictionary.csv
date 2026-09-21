@@ -1,0 +1,31 @@
+name,family,window_days,formula,plain_english
+mom5d,Returns and trend,5,C_t / C_{t-5} - 1,One-week close-to-close momentum
+mom20d,Returns and trend,20,C_t / C_{t-20} - 1,One-month close-to-close momentum
+mom60d,Returns and trend,60,C_t / C_{t-60} - 1,Three-month close-to-close momentum
+close_vs_sma20d,Returns and trend,20,C_t / SMA_20(C)_t - 1,Price relative to its one-month moving average
+maxret20d,Returns and trend,20,"max(r_i, i=t-19,...,t)",Best daily return in the past month
+minret20d,Returns and trend,20,"min(r_i, i=t-19,...,t)",Worst daily return in the past month
+donchian_pos20d,Returns and trend,20,(C_t - LL_20) / (HH_20 - LL_20),Close position inside the one-month high-low channel
+efficiency_ratio20d,Returns and trend,20,abs(C_t-C_{t-20}) / sum(abs(delta C_i)),How straight rather than noisy the recent price path was
+bop_mean20d,Bar geometry,20,"mean((C-O)/(H-L), 20)",Average balance of power inside the daily bar
+clv_mean20d,Bar geometry,20,"mean((2C-H-L)/(H-L), 20)",Whether the stock tends to close near the daily high or low
+log_dolvol20d,Activity and liquidity,20,"log(mean(C_i x Volume_i, 20))",Typical dollar trading volume
+abn_dolvol20d,Activity and liquidity,20,"z-score(log dollar volume_t, 20)",How unusual today's dollar volume is
+illiq20d,Activity and liquidity,20,"mean(abs(r_i)/dollar volume_i, 20)",Amihud price impact per dollar traded
+natr20d,Volatility and range,20,100 x ATR_20 / C_t,Average true range scaled by price
+rv20d,Volatility and range,20,"sqrt(252) x sd(log return, 20)",Annualized realized volatility
+downside_rv20d,Volatility and range,20,"sqrt(252 x mean(min(log return,0)^2,20))",Annualized downside realized volatility
+rsi20d,Oscillators and trend strength,20,100 - 100/(1+RS_20),Relative Strength Index with Wilder smoothing
+adx20d,Oscillators and trend strength,20,ADX_20,"Trend strength, independent of its direction"
+mom10d,Returns and trend,10,C_t / C_{t-10} - 1,Two-week close-to-close momentum
+mom120d,Returns and trend,120,C_t / C_{t-120} - 1,Six-month close-to-close momentum
+high52w_gap,Returns and trend,250,"C_t / max(C, 250d) - 1",Distance below the one-year high
+close_vs_sma60d,Returns and trend,60,C_t / SMA_60(C)_t - 1,Price relative to its three-month moving average
+rv60d,Volatility and range,60,"sqrt(252) * sd(log return, 60d)",Three-month realized volatility
+rv_ratio_20_60,Volatility and range,60,rv20d / rv60d,Short-horizon volatility relative to the longer horizon
+skew60d,Volatility and range,60,"skewness(log return, 60d)",Asymmetry of the daily return distribution
+illiq60d,Activity and liquidity,60,"mean(|r| / dollar volume, 60d)",Amihud illiquidity over three months
+dolvol_trend,Activity and liquidity,60,log dolvol 20d - log dolvol 60d,Recent turnover relative to its three-month level
+hl_spread20d,Activity and liquidity,20,"mean((H - L) / C, 20d)",High-low range as a crude spread proxy
+beta_mkt60d,Local market risk,60,"cov(r_i,r_m)/var(r_m), 60 days",Sensitivity to the local market benchmark
+ivol_mkt60d,Local market risk,60,"sqrt(252 x CAPM residual variance), 60 days",Volatility left after removing local market beta
