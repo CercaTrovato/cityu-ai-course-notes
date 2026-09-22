@@ -73,7 +73,11 @@
 - p.54（历史 / 代表性 / 测量 / 聚合 / 评估）与 p.57–63（数据 / 抽样 / 标签 / 测量 / 算法 / 社会 / 反馈回路）是两套分类，讲义未说明关系——笔记 §2.11.6 有对照表，**不要当两套知识点分别背**
 - p.7、p.20 把亚里士多德式的形式正义原则挂在罗尔斯名下；p.15 "Reversalizability" 应为 Universalizability；p.26 自利偏差的描述与标准定义相反。完整清单见 [[M03-偏见与公平]] §9.3
 
-**④ 讲义与官方目录的书单完全不重叠**
+**④ M04 课件信息密度极低**
+
+50 页里 30 多页是"标题 + 三四条短句"的生成式版式，每页 30–60 个英文词，句式雷同（几乎每页以"builds trust"收尾）；p.21 与 p.49 是同一份挑战清单的两个版本；p.1 标题拼错（TRANSPARANCY）；Bard 案例已过时。真正有信息量的是 p.15–20 三篇论文与漫画、p.26–29 审查截图、p.35 Adobe 承诺——都是纯图片页，必须视觉复核誊录。见 [[M04-AI透明-从看得见到信得过]] §9.3。
+
+**⑤ 讲义与官方目录的书单完全不重叠**
 
 以 Course Outline 的两本为准（Coeckelbergh 2020、Boddington 2024）。官方那五本全是法律向。官方明确写 Compulsory Readings: **Nil**。
 
@@ -97,8 +101,9 @@
 |---|---|---|---|
 | 1 | Introduction to AI and Ethics | [[M01-导论-AI与伦理]] | ✅ v0.9（无转录） |
 | 2 | Ethical Theories | [[M02-道德理论及其应用]] | ✅ v1.0（三段转录已合并） |
-| 3 | Bias and Fairness | [[M03-偏见与公平]] | ✅ v0.9（2026-09-15；无转录，待导出） |
-| 4–11 | 见 [[IS5113_AI_Ethics_and_Regulations/_prep/课程前置资料#5. 13 周地图（Tentative）\|课程前置资料 › 5. 13 周地图（Tentative）]] | | 待课件 |
+| 3 | Bias and Fairness | [[M03-偏见与公平]] | ✅ v1.0（2026-09-18 转录已合并，缺结尾） |
+| 4 | Transparency and Explainability | [[M04-AI透明-从看得见到信得过]] | ✅ v0.9（2026-09-22 课前预习版；转录待录） |
+| 5–11 | 见 [[IS5113_AI_Ethics_and_Regulations/_prep/课程前置资料#5. 13 周地图（Tentative）\|课程前置资料 › 5. 13 周地图（Tentative）]] | | 待课件 |
 | 12–13 | Project Presentation | — | 无笔记，产出为项目 |
 
 ---

@@ -95,8 +95,9 @@ CityU **IS5113 · AI Ethics and Regulations**，3 学分，MSc Artificial Intell
 |---|---|---|---|
 | 1 | Introduction to AI and Ethics | `notes/M01-导论-AI与伦理.md` | ✅ v0.9（无转录，永久） |
 | 2 | Ethical Theories, Practical Applications and Limitations | `notes/M02-道德理论及其应用.md` | ✅ v1.0（三段转录已合并）；含 9/22 截止的作业 |
-| 3 | Bias and Fairness | `notes/M03-偏见与公平.md` | ✅ v0.9（2026-09-15；无转录，待导出） |
-| 4–11 | 见 `_prep/课程前置资料.md` 的 13 周地图 | — | 待课件 |
+| 3 | Bias and Fairness | `notes/M03-偏见与公平.md` | ✅ v1.0（2026-09-18 转录已合并，缺结尾） |
+| 4 | Transparency and Explainability | `notes/M04-AI透明-从看得见到信得过.md` | ✅ v0.9（2026-09-22 课前预习版；转录待录） |
+| 5–11 | 见 `_prep/课程前置资料.md` 的 13 周地图 | — | 待课件 |
 | 12–13 | Project Presentation | — | 无笔记 |
 
 ---

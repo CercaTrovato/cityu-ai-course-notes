@@ -82,6 +82,7 @@ Tutorial notebook 里有形如下面的 markdown 单元格：
 | `Week 3 Description.ipynb` | ✅ 已读 → [[T03-数据探索实战-Iris与Airbnb的描述统计]]（48 cells，Python 3.13.5；**含 Week 3 Assignment**；⚠️ **无 AI Prompt 格**） |
 | `IS6400-W4-Feature.pdf` | ✅ 已读 → [[M04-特征工程-特征重要性与降维]]（69 页，课前建稿）。⚠️ 同上被截断 |
 | `Week 4 Feature Engineering.ipynb` | ✅ 已读 → [[T04-特征选择与PCA实战-Iris]]（37 cells，⚠️ kernel Python 3.7.6；**含 Week 4 Assignment**；无 AI Prompt 格） |
+| `IS6400-L5-Clustering.pdf` | ✅ 已读 → [[M05-聚类-Kmeans层次与DBSCAN]]（67 页，2026-09-22 课前建稿；30 页图逐页视觉复核；Reading = DM Chapter 7, 8）。⚠️ Syllabus / Notion 原排 W05 = 决策树，实为聚类 |
 | `iris.txt` | 150 × 5，无表头，CRLF → [[IS6400_Business_Data_Analytics/_meta/数据集卡片#iris.txt\|数据集卡片 › iris.txt]] |
 
 | `*.html` | **忽略**（notebook 导出，与 ipynb 重复） |

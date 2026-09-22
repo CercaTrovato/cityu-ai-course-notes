@@ -20,6 +20,8 @@
 |---|---|
 | `AC6761 Outline 2627.docx` | 课程大纲，**尚未读取** |
 | `Week 1 PPT.pptx` ~ `Week 6 PPT.pptx` | 六周讲义，教授**一次性提前放出** |
+| `Accounting principles.docx` | W1 四条原则例题 → M01 §2.6.3 |
+| `Transaction analyses for Lecture 1.docx` · `Case 1 with solution.docx` · `Case 2 with solution.docx` · `2 Analyze balance sheet.docx` | ✅ 2026-09-21 补发、9/22 已并入：官方解答表 → M01 §2.8.4；两份案例 → M01 / M02 §7 第 9 题（含解答，`verify_ac6761_cases.py` 复核）；AI 提示词 → M03 §2.2.10 |
 
 **转录**：`transcripts/M01-transcript.txt` ✅ 已导出并核验完整（356 段，`00:01→02:03:38`，覆盖 2h03m42s 全程；仅 `01:41:09→01:44:57` 有 3分48秒 空档，疑为课间）。
 

@@ -19,7 +19,8 @@
 | 文件 | 说明 |
 |---|---|
 | `AC6761 Outline 2627.docx` | 课程大纲，**尚未读取** |
-| `Accounting principles.docx` | 会计原理材料，**尚未读取** |
+| `Accounting principles.docx` | W1 四条原则例题 → M01 §2.6.3 |
+| `Transaction analyses for Lecture 1.docx` · `Case 1 with solution.docx` · `Case 2 with solution.docx` · `2 Analyze balance sheet.docx` | ✅ 2026-09-21 补发、9/22 已并入 M01 §2.8.4 / M01 §7 / M02 §7 / M03 §2.2.10 |
 | `Week 1 PPT.pptx` ~ `Week 6 PPT.pptx` | 六周讲义，教授**一次性提前放出** |
 
 **转录**：`transcripts/M01-transcript.txt`（85KB，1068 行，带 `MM:SS` 时间戳）✅ 已导出

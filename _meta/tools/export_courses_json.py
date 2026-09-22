@@ -137,15 +137,18 @@ def course_name(code):
     return m.group(1).strip() if m else None
 
 def next_module(cdir, today):
-    dates = {}
+    dates = {}; merged = {}
     for p in glob.glob(os.path.join(cdir, 'notes', 'M0*.md')):
         t = io.open(p, encoding='utf-8').read(1500)
         m = re.search(r'^date:\s*(\d{4}-\d{2}-\d{2})', t, re.M)
         if m: dates[int(os.path.basename(p)[1:3])] = datetime.date.fromisoformat(m.group(1))
+        mt = re.search(r'^transcript:\s*(\w+)', t, re.M)
+        merged[int(os.path.basename(p)[1:3])] = bool(mt and mt.group(1) == 'merged')
     if not dates: return 'M01', '没有笔记'
-    future = [(d, n) for n, d in dates.items() if d > today]
+    # 当天的课在录完前也算"下一次"：date == 今天 且转录未合并（2026-09-22 起）
+    future = [(d, n) for n, d in dates.items() if d > today or (d == today and not merged.get(n))]
     if future:
-        d, n = min(future); return 'M%02d' % n, '笔记 M%02d 的 date %s 在今天之后（课前建稿）' % (n, d)
+        d, n = min(future); return 'M%02d' % n, '笔记 M%02d 的 date %s 在今天或之后且转录未合并（课前建稿）' % (n, d)
     n, d = max(dates.items(), key=lambda kv: kv[1])
     return 'M%02d' % (n + 1), '最近一次已上课 M%02d（%s，笔记 date）+ 1；每周一次' % (n, d)
 
