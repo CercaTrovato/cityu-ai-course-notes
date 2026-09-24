@@ -18,10 +18,13 @@
 
 | 文件 | 状态 |
 |---|---|
-| `syllabus_EF5560_2026.pdf` | ⚠️ 未读 |
-| `Lec01_Data_and_Vibe_Coding.pdf` · `Lec02_Regression_Vibe_Coding.pdf` | ⚠️ 未读 |
+| `syllabus_EF5560_2026.pdf` | 课程口径见 `_prep/课程前置资料.md`；原件细节仍以原件核对 |
+| `Lec01_Data_and_Vibe_Coding.pdf` · `Lec02_Regression_Vibe_Coding.pdf` | ✅ 对应 M01 / M02 v1.0，转录已合并 |
+| `Lec03_Linear_Machine_Learning.pdf`（56 页）+ `class03/` | ✅ M03 v1.0；9/22 重下受同步截断影响的课件与数据 |
+| `Lec04_Nonlinear_Machine_Learning.pdf`（54 页）+ `class04/` | ✅ M04 v0.9 课前预习版；转录待处理 |
+| `class01/` · `class02/` | ✅ 已补发并与 M02 数字核对；细节见课程总览与数据集卡片 |
 | `EF5560_FinTech_Company_Case_Requirements.pdf` | ⚠️ 未读 → 读完登记作业与 DDL |
-| `data/*.csv` ×8 | 未处理 → 建 `_meta/数据集.md` |
+| `data/*.csv` ×8 | 数据集说明以本课 `_meta/数据集卡片.md` 为准；原始文件保持只读 |
 
 **转录**：`transcripts/M01-transcript.txt`（118KB，2013 行，`MM:SS` 时间戳）✅ 已导出，**是五门课里最完整的一份**
 
@@ -68,7 +71,7 @@
 ## 6. 待确认
 
 - [ ] 抓官方目录对校：`https://www.cityu.edu.hk/catalogue/pg/<学年>/course/EF5560.pdf` — 学分、**及格线**、**GenAI 政策**、CILO
-- [ ] 读 syllabus，确认周数与主题地图
+- [ ] 对照 syllabus、课程前置资料与后续课堂口径，确认仍未核实的周次与主题
 - [ ] 读 `EF5560_FinTech_Company_Case_Requirements.pdf` → 登记作业与 DDL（Notion 该行目前标着 ❗待补）
 
 ---

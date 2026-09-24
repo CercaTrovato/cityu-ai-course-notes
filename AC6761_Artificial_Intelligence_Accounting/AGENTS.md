@@ -1,7 +1,7 @@
 # AGENTS.md — AC6761 Artificial Intelligence Accounting（课程级 · 工具无关版）
 
-> 🚧 **骨架，待填。** 通用方法论见 vault 根的 `AGENTS.md`。Claude Code 版见同目录 `CLAUDE.md`。
-> **开工前必做**：先产出 `_prep/课程前置资料.md`（读 `AC6761 Outline 2627.docx` + 抓官方课程目录对校），再动笔记。
+> 通用方法论见 vault 根的 `AGENTS.md`。Claude Code 版见同目录 `CLAUDE.md`。
+> **开工前必做**：核对现有 `_prep/课程前置资料.md` 与 `AC6761 Outline 2627.docx`、官方课程目录；新材料到位后再更新课程笔记。
 
 ---
 
@@ -18,12 +18,12 @@
 
 | 文件 | 说明 |
 |---|---|
-| `AC6761 Outline 2627.docx` | 课程大纲，**尚未读取** |
+| `AC6761 Outline 2627.docx` | 课程大纲；现行分析见 `_prep/课程前置资料.md`，具体要求仍回原件核对 |
 | `Accounting principles.docx` | W1 四条原则例题 → M01 §2.6.3 |
 | `Transaction analyses for Lecture 1.docx` · `Case 1 with solution.docx` · `Case 2 with solution.docx` · `2 Analyze balance sheet.docx` | ✅ 2026-09-21 补发、9/22 已并入 M01 §2.8.4 / M01 §7 / M02 §7 / M03 §2.2.10 |
 | `Week 1 PPT.pptx` ~ `Week 6 PPT.pptx` | 六周讲义，教授**一次性提前放出** |
 
-**转录**：`transcripts/M01-transcript.txt`（85KB，1068 行，带 `MM:SS` 时间戳）✅ 已导出
+**转录**：`transcripts/M01-transcript.txt` 已导出，但首句已在讲复式记账流程，**开头内容未录到**；`01:41:09→01:44:57` 为课堂练习，不当作内容丢失。详见 `00-课程总览.md` 的转录状态表。
 
 ---
 
@@ -79,4 +79,4 @@
 
 ## 6. 进度
 
-Notion 进度库已建 W01–W06 六行。W01 的 `📄课件`、`🎙️已录音`、`📝已转录` 均已勾；`🤖转录已交AI` 待笔记产出后勾。
+本地 `notes/` 的 M01–M03 为 v1.0（已合并转录），M04–M06 为 v0.9（仅讲义）；M02 录音缺尾，M03 录音只覆盖讲义到 p.27。Notion 勾选状态需与笔记 frontmatter 逐项核对，不能沿用旧的 W01 快照。

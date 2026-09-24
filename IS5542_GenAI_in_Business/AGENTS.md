@@ -1,7 +1,7 @@
 # AGENTS.md — IS5542 GenAI in Business（课程级 · 工具无关版）
 
-> 🚧 **骨架，待填。** 通用方法论见 vault 根的 `AGENTS.md`。Claude Code 版见同目录 `CLAUDE.md`。
-> **开工前必做**：读 syllabus + 抓官方课程目录对校 → 产出 `_prep/课程前置资料.md`。
+> 通用方法论见 vault 根的 `AGENTS.md`。Claude Code 版见同目录 `CLAUDE.md`。
+> **开工前必做**：核对现有 `_prep/课程前置资料.md` 与 syllabus、官方课程目录；新材料到位后再更新笔记。
 
 ---
 
@@ -69,9 +69,9 @@
 ## 5. 待确认
 
 - [ ] 抓官方目录对校：`https://www.cityu.edu.hk/catalogue/pg/<学年>/course/IS5542.pdf` — 学分、**及格线**、**GenAI 政策**（这门课的 GenAI 政策尤其值得看）、CILO
-- [ ] 读 syllabus，确认周数、主题地图、授课教师
+- [x] syllabus 已读并形成 `_prep/课程前置资料.md`；后续公告与课程目录仍需对校
 - [ ] 确认上课时间与班次
 - [ ] 是否有编程作业 → 若有，规则已就绪（根级 `_meta/材料处理规则.md` §7/§8）
 - [x] ✅ **L2 转录**已合并（2026-09-15，`transcripts/M02-transcript.txt`，552 段 `00:00→02:07:20`，连续；两次课间录音暂停；开头可能略晚于开课——p.6 日程未录到）
 - [x] ✅ **9/19 讲义已到并成笔记**（M03 v0.9）：agent + harness；RAG 只一页；微调 / function calling 未出现
-- [ ] **9/19 录完后**：`lt.py export <id> --module M03` → transcript-merge §11 分片并行 → M03 升 v1.0；重点回填 §9.2 五项（综述出处 / 讨论题自答 / RAG 是否展开 / 微调是否出现 / 项目要求）
+- [ ] M03 转录尚未见于 `transcripts/`；取得后按 transcript-merge SOP 合并，再评估能否升 v1.0，重点回填 §9.2 五项（综述出处 / 讨论题自答 / RAG 是否展开 / 微调是否出现 / 项目要求）

@@ -91,7 +91,7 @@
 - **EF5560 Fintech & AI in Finance** —— W8 讲「金融风控中的伦理」时交叉
 - **AC6761 AI Accounting** —— 审计、合规相关内容可能与 W5 问责交叉
 
-**跨课双链是本 vault 用一个 Obsidian vault 装四门课的主要理由。** 遇到同名概念（如 FATP、GDPR、算法偏见）时主动建链。
+**跨课双链是本 vault 用一个 Obsidian vault 装五门课的主要理由。** 遇到同名概念（如 FATP、GDPR、算法偏见）时主动建链。
 
 ---
 
@@ -102,7 +102,7 @@
 | 1 | Introduction to AI and Ethics | [[M01-导论-AI与伦理]] | ✅ v0.9（无转录） |
 | 2 | Ethical Theories | [[M02-道德理论及其应用]] | ✅ v1.0（三段转录已合并） |
 | 3 | Bias and Fairness | [[M03-偏见与公平]] | ✅ v1.0（2026-09-18 转录已合并，缺结尾） |
-| 4 | Transparency and Explainability | [[M04-AI透明-从看得见到信得过]] | ✅ v0.9（2026-09-22 课前预习版；转录待录） |
+| 4 | Transparency and Explainability | [[M04-AI透明-从看得见到信得过]] | ✅ v1.0（2026-09-23 转录已合并；讲义外四个案例） |
 | 5–11 | 见 [[IS5113_AI_Ethics_and_Regulations/_prep/课程前置资料#5. 13 周地图（Tentative）\|课程前置资料 › 5. 13 周地图（Tentative）]] | | 待课件 |
 | 12–13 | Project Presentation | — | 无笔记，产出为项目 |
 
@@ -119,7 +119,7 @@ pdftotext -layout "Module 2 - Moral Theories and Ethics.pdf" "$SCRATCH/M2.txt"
 
 - 项目符号会变成 `�`，替换成 `-`
 - 按 `\f` 分页；页码与 `pdfinfo` 对齐
-- **纯图片页必须用 Read 工具视觉复核**。M01 有 4 页（p.17/19/22/60）因未复核而缺失，M02 也有若干页（如 p.53 的图）需要处理
+- **纯图片页必须视觉复核**。M01 曾遗漏 4 页（p.17/19/22/60），已于 2026-09-09 视觉复核并补入正文；记录见该笔记 §9.5。M02 的低文本页处理以笔记 §8、§9 的现行记录为准。
 
 **Notion 回写**
 

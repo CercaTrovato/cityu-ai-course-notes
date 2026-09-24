@@ -85,7 +85,7 @@ CityU **IS5113 · AI Ethics and Regulations**，3 学分，MSc Artificial Intell
 
 交叉点：W8 的生成式 AI 与虚假信息 ↔ IS5542；W8 的金融风控伦理 ↔ EF5560；W5 的问责 ↔ AC6761 的审计合规。
 
-遇到跨课同名概念（FATP、GDPR、算法偏见、可解释性）时**主动建立双链**。四门课共用一个笔记库，这是主要理由。
+遇到跨课同名概念（FATP、GDPR、算法偏见、可解释性）时**主动建立双链**。本 vault 共收五门课，本节列的是同项目的三门近邻课程。
 
 ---
 
@@ -96,7 +96,7 @@ CityU **IS5113 · AI Ethics and Regulations**，3 学分，MSc Artificial Intell
 | 1 | Introduction to AI and Ethics | `notes/M01-导论-AI与伦理.md` | ✅ v0.9（无转录，永久） |
 | 2 | Ethical Theories, Practical Applications and Limitations | `notes/M02-道德理论及其应用.md` | ✅ v1.0（三段转录已合并）；含 9/22 截止的作业 |
 | 3 | Bias and Fairness | `notes/M03-偏见与公平.md` | ✅ v1.0（2026-09-18 转录已合并，缺结尾） |
-| 4 | Transparency and Explainability | `notes/M04-AI透明-从看得见到信得过.md` | ✅ v0.9（2026-09-22 课前预习版；转录待录） |
+| 4 | Transparency and Explainability | `notes/M04-AI透明-从看得见到信得过.md` | ✅ v1.0（2026-09-23 转录已合并；讲义外四个案例） |
 | 5–11 | 见 `_prep/课程前置资料.md` 的 13 周地图 | — | 待课件 |
 | 12–13 | Project Presentation | — | 无笔记 |
 
@@ -106,7 +106,7 @@ CityU **IS5113 · AI Ethics and Regulations**，3 学分，MSc Artificial Intell
 
 - 讲义为 960×540 的幻灯片导出 PDF，多栏排版，提取后可能交错
 - 项目符号会被渲染成替换字符，需替换
-- **纯图片页必须视觉复核**。M01 有 4 页（p.17/19/22/60）未复核而缺失内容，已记在第 9.5 节待核对表里
+- **纯图片页必须视觉复核**。M01 曾遗漏 4 页（p.17/19/22/60），已于 2026-09-09 视觉复核并补入正文；记录见该笔记 §9.5。新笔记不能照搬旧的“未复核”状态。
 - M02 讲义 86 页，p.85–86 是**作业页**（2026-09-22 12:00 截止），处理时务必登记到 `_meta/作业与DDL.md`
 
 无 Notion 访问权时，把该更新的进度整理成清单交给用户手填，并说明自己无法直接写入。

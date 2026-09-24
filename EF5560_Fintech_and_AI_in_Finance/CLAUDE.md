@@ -25,7 +25,7 @@
 | `Lec04_Nonlinear_Machine_Learning.pdf`（54 页）+ `class04/class04/`（5 共享面板 + 11 结果表 + manifest + README） | ✅ → M04 v0.9 课前预习版（2026-09-21）；三棵树用共享面板重训一致；转录待 9/24 |
 | `class01/class01/`（6）· `class02/class02/`（12，含 8 张官方结果表） | ✅ 2026-09-21 补发；输入表 = `data/`（sha256 一致）；M02 数字 22 项全部对上 → 数据集卡片 §12 |
 | `EF5560_FinTech_Company_Case_Requirements.pdf` | ⚠️ 未读 → 读完登记作业与 DDL |
-| `data/*.csv` ×8 | 未处理 → 建 `_meta/数据集.md` |
+| `data/*.csv` ×8 | 数据集说明以本课 `_meta/数据集卡片.md` 为准；原始文件保持只读 |
 | `course_image/canvas_course_card_2026.png` | 杂项，忽略 |
 
 **转录**：`transcripts/M01-transcript.txt`（118KB，2013 行，带 `MM:SS` 时间戳）✅ 已导出，**是目前最完整的一份**
@@ -75,7 +75,7 @@
 ## 5. 待确认
 
 - [ ] 抓官方目录对校：`https://www.cityu.edu.hk/catalogue/pg/<学年>/course/EF5560.pdf` — 学分、**及格线**、**GenAI 政策**、CILO
-- [ ] 读 syllabus，确认周数与主题地图
+- [ ] 对照 syllabus、课程前置资料与后续课堂口径，确认仍未核实的周次与主题
 - [ ] 读 `EF5560_FinTech_Company_Case_Requirements.pdf` → 登记 `_meta/作业与DDL.md` + Notion（该行目前标着 ❗待补）
 - [ ] **L0 基线**：读者有 ML 基础，但**金融概念（收益率、波动率、因子、配对交易）零基础**，必须就地解释
 
@@ -88,7 +88,7 @@ cd "/d/上课资料/CityU/EF5560_Fintech_and_AI_in_Finance/course_files_export"
 pdftotext -layout "Lec01_Data_and_Vibe_Coding.pdf" "$SCRATCH/EF_L01.txt"
 ```
 
-转录质量优于 AC6761，但仍需按 [[转录处理规则]] §3 校正金融专名（ticker、指标名、机构名）。
+转录质量优于 AC6761，但仍需按 [[转录处理规则]] §3 校正金融专名（ticker、指标名、机构名）；拿不准的标 `[?]`，不要猜。
 
 **Notion**：进度库 `collection://500c1c03-e1ff-4bce-b190-efaa39e2185b`。
 

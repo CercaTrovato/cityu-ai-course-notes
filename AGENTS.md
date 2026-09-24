@@ -1,8 +1,11 @@
 # AGENTS.md — CityU 课程笔记库（根级指导文件 · 工具无关版）
 
-> 本文件面向**任何 AI 助手**（ChatGPT / Gemini / Cursor / Copilot / 本地模型等）。
+> 本文件面向**任何 AI 助手**（Codex CLI / ChatGPT / Gemini / Cursor / Copilot / 本地模型等）。
 > 不假设你有 shell、文件系统或联网能力——能做多少做多少，做不到的显式说明。
+> **有 shell 的助手（如 Codex CLI）先读 §2b「环境与工具」**，那里给了解释器路径、PDF 工具和脚本调用方式。
 > Claude Code 专用版见同目录 `CLAUDE.md`，两份规则等价。
+
+**全库共同验收标准**：`_meta/笔记模板.md` 定正文结构，`_meta/笔记质量规范.md` 定 L / G / E 门槛，`_meta/对抗自检清单.md` 定人工复核，`_meta/材料处理规则.md` 定各类材料的处理方式，`.claude/skills/transcript-merge/SKILL.md` 定转录融合流程。五门课的 `AGENTS.md` / `CLAUDE.md` 只补课程特性。出现不同说法时，以这些共用文件中的现行规则为准，并在继续产出前修正冲突；进度以笔记 frontmatter、原始材料和验收结果核对，不照抄旧状态表。
 
 ---
 
@@ -25,6 +28,20 @@
 - 该课的 `_meta/知识层级台账.md`（前置知识登记表）
 
 **输出**：一个 `.md` 笔记文件（9 节固定骨架，见第 6 节），外加对台账、术语表、考点库的增量更新，以及 Notion 进度看板的状态更新。
+
+---
+
+## 2b. 环境与工具（给能跑 shell 的 agent，2026-09-23 实测）
+
+本节是给 Codex CLI 这类**有 shell、有文件系统**的助手的。只有聊天窗口的助手跳过本节。
+
+- **Python**：在 PowerShell 用 `D:\anaconda3\python.exe -X utf8` 运行 `_meta/tools/` 脚本；Git Bash 可用对应的 `/d/anaconda3/python.exe` 路径。工作目录一律 vault 根 `D:\上课资料\CityU`。
+- **PDF**：`pdftotext -layout` 抽文本（项目符号会变成 `\ufffd`，替换成 `-` 再处理）；`pdfinfo` 看页数。
+- **纯图片页复核**（§9 步骤 4）：没有"直接把 PDF 页当图像读"的能力时，用 `/d/poppler/Library/bin/pdftoppm -f <页> -l <页> -r 150 -png <讲义.pdf> <scratch前缀>` 转成 PNG 再看图。**仍然看不了就照 §9 步骤 4 在第 9 节注明"第 X 页为图片，未纳入"，不许猜内容。**
+- **转录融合 SOP**：`.claude/skills/transcript-merge/SKILL.md` 是**普通 Markdown 文档**，不依赖任何插件或 skill 机制——直接当文档读、逐步照做即可（`reference/` 下是模板与 ASR 词典）。
+- **Notion**：没有 Notion 连接器时按 §9 步骤 9 降级——把该填的字段和值列出来交给用户手动填，不要跳过这一步。
+- **中间产物**（抽出的 txt、转出的 PNG、下载的文件）一律放 vault 外的临时目录（Codex 可用 `~/.codex/scratchpad/`），**绝不落进 vault**；也不要用 `/tmp`（Windows 下会被解析到盘符根目录）。
+- **git 钩子**：本机 `core.hooksPath = ~/.git-hooks` 全局生效，`commit-msg` 会拒绝任何带 AI 署名的提交（见 §8b）。被拒就删掉署名重提，**禁止 `--no-verify`**。
 
 ---
 
@@ -87,10 +104,10 @@
 
 命令速查（vault 根）：
 ```
-PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/backup_vault.py
-PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/integrity_check.py snapshot 开工
-PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/integrity_check.py verify [--allow 有意重写的文件]
-PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/safe_write.py --check <文件>
+D:\anaconda3\python.exe -X utf8 _meta/tools/backup_vault.py
+D:\anaconda3\python.exe -X utf8 _meta/tools/integrity_check.py snapshot 开工
+D:\anaconda3\python.exe -X utf8 _meta/tools/integrity_check.py verify [--allow 有意重写的文件]
+D:\anaconda3\python.exe -X utf8 _meta/tools/safe_write.py --check <文件>
 ```
 
 ## 5. 核心机制三：讲义 × 转录 双源比对
@@ -151,6 +168,8 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/safe_write.py --check
 常见误解         — 初学者最容易搞错的地方
 与其他概念的关系 — 放进知识网，双链
 ```
+
+七格之外，每个 `###` 单元还须有解释学习衔接的 **「所以呢」** 收束句；覆盖门槛见 `_meta/笔记质量规范.md` 的 G6。不要把七格标签齐全当作「已经讲透」。
 
 ---
 
@@ -217,7 +236,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/safe_write.py --check
 7. 按 9 节骨架写正文，七格微结构
 8. 回写：台账 L1、课程术语表、`_meta/术语总表.md`、考点库；有作业登记到 `作业与DDL.md`
 9. 更新 Notion 进度看板（字段见 `_meta/Notion进度看板.md`）；没有 Notion 访问权就把该更新的内容列出来交给用户手动填
-9b. **同步根 `README.md`（= GitHub 仓库首页；`_meta/tools/readme_check.py` 会查）**：笔记 `status` / `transcript` 变了、新转录到位、新建笔记，都要改 README 的**全部**信息点——「五门课」表的「笔记」列（`M0N vX.Y`）与「转录」列（`M0N ✅` / `W0N ✅` / 待导出 + 缺口一句）、「待办 / 最近完成」表（完成的行改 ✅ ~~划掉~~ + 结果一句）、顶部 DDL 提示块、目录树注释；收工 `readme_check.py` 必须 0 问题（2026-09-18 教训：只改了待办行，五门课表仍写「待导出」）
+9b. **同步根 `README.md`（= GitHub 仓库首页；`_meta/tools/readme_check.py` 会查）**：笔记 `status` / `transcript` 变了、新转录到位、新建笔记，都要改 README 的**全部**信息点——「五门课」表的「笔记」列（`M0N vX.Y`）与「转录」列（`M0N ✅` / `W0N ✅` / 待导出 + 缺口一句）、「待办 / 最近完成」表（完成的行改 ✅ ~~划掉~~ + 结果一句）、顶部 DDL 提示块、目录树注释；「最近完成」里的格数、考点数须与笔记 §9.7 对上；收工 `readme_check.py` 必须 0 问题（2026-09-18 教训：只改了待办行，五门课表仍写「待导出」）
 10. **★ 对抗自检**：跑 `_meta/对抗自检清单.md` 的 **12 项 + 11c 质量量表**（`_meta/tools/note_quality.py` G 硬门槛全过、`link_check.py` 0 问题），**全过才算完成**；任一 ✗ 停在 `draft`
 
 ---

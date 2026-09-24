@@ -3,6 +3,8 @@
 > 本文件面向 **Claude Code**。工具无关的同等规则见同目录 [AGENTS.md](AGENTS.md)。
 > 两份文件内容对齐、各自独立自洽，任一份被单独复制走都应能独立使用。
 
+**全库共同验收标准**：`_meta/笔记模板.md` 定正文结构，`_meta/笔记质量规范.md` 定 L / G / E 门槛，`_meta/对抗自检清单.md` 定人工复核，`_meta/材料处理规则.md` 定各类材料的处理方式，`.claude/skills/transcript-merge/SKILL.md` 定转录融合流程。五门课的 `AGENTS.md` / `CLAUDE.md` 只补课程特性。出现不同说法时，以这些共用文件中的现行规则为准，并在继续产出前修正冲突；进度以笔记 frontmatter、原始材料和验收结果核对，不照抄旧状态表。
+
 ---
 
 ## 1. 这个库是什么
@@ -121,10 +123,10 @@ CityU/                              ← vault 根
 
 命令速查（vault 根）：
 ```
-PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/backup_vault.py
-PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/integrity_check.py snapshot 开工
-PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/integrity_check.py verify [--allow 有意重写的文件]
-PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/safe_write.py --check <文件>
+D:\anaconda3\python.exe -X utf8 _meta/tools/backup_vault.py
+D:\anaconda3\python.exe -X utf8 _meta/tools/integrity_check.py snapshot 开工
+D:\anaconda3\python.exe -X utf8 _meta/tools/integrity_check.py verify [--allow 有意重写的文件]
+D:\anaconda3\python.exe -X utf8 _meta/tools/safe_write.py --check <文件>
 ```
 
 ## 5. 核心机制三：讲义 × 转录 双源比对
@@ -164,6 +166,8 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/safe_write.py --check
 
 正文里每个概念走**七格微结构**：
 **是什么 → 为什么需要它 → 课件原例 → 🎙️ 课堂补充 → 换个说法 → 常见误解 → 与其他概念的关系**
+
+七格之外，每个 `###` 单元还须有解释学习衔接的 **「所以呢」** 收束句；覆盖门槛见 `_meta/笔记质量规范.md` 的 G6。不要把七格标签齐全当作「已经讲透」。
 
 （无转录时第 4 格写「待转录补充」，不要删掉这一格——留着它才知道哪里还欠债。）
 
@@ -210,7 +214,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/safe_write.py --check
 
 各类材料的提取方式与产出物，见 [`_meta/材料处理规则.md`](_meta/材料处理规则.md)。该文件用一张状态表管理类型，**新增材料类型时往表里加一行 + 补一节规则即可**，不要改本文件。
 
-当前状态速览：`.pdf` 已启用；`.docx` 已启用；**课堂转录已启用**（见 `_meta/转录处理规则.md`）；`.pptx` 待装 `python-pptx`；`.csv/.xlsx`、`.py/.ipynb`、原始音视频、网页/论文为**预留槽位**（规则待定，遇到时先补规则再动手）。
+当前状态以 `_meta/材料处理规则.md` 的状态表为准：`.pdf`、`.docx`、`.pptx`、`.csv/.xlsx`、`.py/.ipynb` 与课堂转录均已启用；原始音视频、网页/论文仍为预留槽位。`.pptx` 必须检查 speaker notes；数据和 notebook 产出形态见材料规则 §7–§8。
 
 ---
 
@@ -274,7 +278,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/safe_write.py --check
 
 **本机可用工具**（已验证）
 - `pdftotext -layout`（poppler，`/d/poppler`）、`pdfinfo` — PDF 首选
-- Python `/d/python/python`，已装 `pypdf`、`python-docx`、**`python-pptx` 1.0.2**；未装 `pdfplumber`、`PyMuPDF`
+- 本库脚本在 PowerShell 使用 `D:\anaconda3\python.exe -X utf8`；所需库与实际环境在执行前检查，不能沿用旧的 `/d/python/python` 路径假设
 - **Read 工具可直接按页读 PDF 并以图像呈现**（`pages` 参数，单次最多 20 页）——这是复核纯图片页的正确方法，不需要额外的图像提取工具
 - `opencli` 1.8.6 — 社媒抓取。`rednote` 子命令可用（`search` / `note` / `comments` / `user`），但**需要用户先在 Chrome 登录**，不要尝试代为登录
 - **Notion MCP 已连接**（server id `3d0e10e6-…`）。可用 `notion-fetch` / `notion-query-data-sources` / `notion-create-pages` / `notion-update-page` 等

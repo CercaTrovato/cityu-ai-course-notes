@@ -78,16 +78,16 @@ Tutorial notebook 里有形如下面的 markdown 单元格：
 | `Tutorial 1 - …_Prompt.ipynb` | 25 cells，Python 3.13.5，kernel `conda-base-py` |
 | `Week 2 Regression Analysis_With Prompt.ipynb` | 39 cells，线性回归 + 岭回归 |
 | `Airbnb.csv` | **68,133** × 15，目标变量 `log_price` → [[IS6400_Business_Data_Analytics/_meta/数据集卡片\|数据集卡片]]（W2–W4 三周共用） |
-| `IS6400-W3-DataMining.pdf` | ✅ 已读 → [[M03-数据类型与描述性分析]]（72 页，2026-09-16）。⚠️ 本地文件于 9/16 12:42 后被截断（`pdfinfo` 报错），建议从 Canvas 重下 |
+| `IS6400-W3-DataMining.pdf` | ✅ M03 / T03 已成 v1.0，W3 转录已合并；曾被同步截断的 PDF 于 9/22 重下复核 |
 | `Week 3 Description.ipynb` | ✅ 已读 → [[T03-数据探索实战-Iris与Airbnb的描述统计]]（48 cells，Python 3.13.5；**含 Week 3 Assignment**；⚠️ **无 AI Prompt 格**） |
-| `IS6400-W4-Feature.pdf` | ✅ 已读 → [[M04-特征工程-特征重要性与降维]]（69 页，课前建稿）。⚠️ 同上被截断 |
+| `IS6400-W4-Feature.pdf` | ✅ M04 / T04 已成 v0.9；曾被同步截断的 PDF 于 9/22 重下复核 |
 | `Week 4 Feature Engineering.ipynb` | ✅ 已读 → [[T04-特征选择与PCA实战-Iris]]（37 cells，⚠️ kernel Python 3.7.6；**含 Week 4 Assignment**；无 AI Prompt 格） |
 | `IS6400-L5-Clustering.pdf` | ✅ 已读 → [[M05-聚类-Kmeans层次与DBSCAN]]（67 页，2026-09-22 课前建稿；30 页图逐页视觉复核；Reading = DM Chapter 7, 8）。⚠️ Syllabus / Notion 原排 W05 = 决策树，实为聚类 |
 | `iris.txt` | 150 × 5，无表头，CRLF → [[IS6400_Business_Data_Analytics/_meta/数据集卡片#iris.txt\|数据集卡片 › iris.txt]] |
 
 | `*.html` | **忽略**（notebook 导出，与 ipynb 重复） |
 
-**转录**：W02 已合并；W03 待导出；W04 未上课。
+**转录**：W02 / W03 已合并；W04 的对应转录目前未见于 `transcripts/`。是否录音及课堂日期以用户和原始材料核实。
 
 > ⚠️ **W3 / W4 的 notebook 没有 `🤖 AI Prompt` 单元格**（§3 的规则对它们不适用，T03 / T04 在 §0 注明即可）。
 > ⚠️ **Syllabus 与 Canvas 周次错位一周**（Syllabus W03 = PCA，实际 W3 = 描述性分析、W4 = 特征工程）：笔记编号跟 Canvas 的 Week，不跟 Syllabus。

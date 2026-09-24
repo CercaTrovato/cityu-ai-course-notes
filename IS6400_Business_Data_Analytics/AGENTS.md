@@ -87,13 +87,14 @@ Tutorial notebook 含形如 `🤖 AI Prompt (Copy this to AI): ...` 的 markdown
 | `IS6400 Project Guideline.pdf` | ⚠️ 未读 → 读完登记作业与 DDL |
 | `Tutorial 1 - …_Prompt.ipynb`（25 cells）· `Week 2 Regression…ipynb`（39 cells） | Python 3.13.5，kernel `conda-base-py` |
 | `Airbnb.csv` | **68,133** 行 × 15 列，目标变量 `log_price` → `_meta/数据集卡片.md`（W2–W4 共用） |
-| `IS6400-W3-DataMining.pdf`（72 页）· `Week 3 Description.ipynb`（48 cells） | ✅ 已读 → `notes/M03-*.md`、`notes/T03-*.md`（2026-09-16）。⚠️ PDF 本地副本于 9/16 12:42 后被截断，建议重下 |
-| `IS6400-W4-Feature.pdf`（69 页）· `Week 4 Feature Engineering.ipynb`（37 cells，kernel Python 3.7.6） | ✅ 已读 → `notes/M04-*.md`、`notes/T04-*.md`（课前建稿）。⚠️ PDF 同上 |
+| `IS6400-W3-DataMining.pdf`（72 页）· `Week 3 Description.ipynb`（48 cells） | ✅ M03 / T03 已成 v1.0；W3 转录已合并。曾被同步截断的 PDF 于 9/22 重下复核 |
+| `IS6400-W4-Feature.pdf`（69 页）· `Week 4 Feature Engineering.ipynb`（37 cells，kernel Python 3.7.6） | ✅ M04 / T04 已成 v0.9；曾被同步截断的 PDF 于 9/22 重下复核 |
+| `IS6400-L5-Clustering.pdf`（67 页） | ✅ M05 v0.9 课前预习版，30 页图已视觉复核；转录待后续课堂 |
 | `iris.txt` | 150 × 5，无表头 → `_meta/数据集卡片.md` |
 
 | `*.html` | **忽略**（notebook 导出，内容重复） |
 
-**转录**：W02 已合并；W03 待导出；W04 未上课。
+**转录**：W02 / W03 已合并；W04 的对应转录目前未见于 `transcripts/`。是否录音及课堂日期以用户和原始材料核实。
 
 > ⚠️ W3 / W4 的 notebook **没有** `🤖 AI Prompt` 单元格；Syllabus 与 Canvas 周次错位一周，笔记编号跟 Canvas。
 
@@ -105,4 +106,4 @@ Tutorial notebook 含形如 `🤖 AI Prompt (Copy this to AI): ...` 的 markdown
 - [ ] 确认班次（周一 15:00 / 周三 12:00 / 周三 19:00）
 - [ ] 读 Project Guideline，登记作业与 DDL
 - [ ] **确认 L0 基线**（见 §3）
-- [ ] 建 `_meta/知识层级台账.md`、`_meta/数据集.md`
+- [x] 已建 `_meta/知识层级台账.md`、`_meta/数据集卡片.md`；后续逐讲增量维护

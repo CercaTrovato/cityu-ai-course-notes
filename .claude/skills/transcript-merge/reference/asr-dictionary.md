@@ -104,6 +104,34 @@
 | master of power | master's programme（不确定） | M03 `01:40:16` |
 | one dollar out of the fifty-nine or one hundred | 数字疑似错误，未还原（不确定） | M03 `01:17:02` |
 | categoric imperative | categorical imperative | M03 `01:54:07` |
+| CHET test / CHET-GPT | ChatGPT | M04 `42:44` |
+| human noise | [?]（语境"with … and with agentic AI, it can actually do what a physical person can do"，疑似 humanoid 一类误听，拿不准） | M04 `05:26` |
+| Boon trust | [?]（语境是复述"信任三要素"总结句，拿不准原词） | M04 `28:17` |
+| a bioeconomist | [?]（指代论文作者身份的用词，可能是 behavioral economist 之类，拿不准） | M04 `36:45` |
+| employer models | [?]（语境"engage employer models and AI applications"，可能是对 AI/ML models 一类术语的误听，拿不准） | M04 `19:51` |
+| Compass / Qantas case / caucus case / accomplished case | COMPAS（Correctional Offender Management Profiling for Alternative Sanctions） | M04 `01:14:50` 起反复出现 |
+| Applecart case | Apple Card case | M04 `01:31:02`（shard_3 案例名，本片段边界内发现） |
+| Chameleon Airlines | Air Canada | M04 `01:31:02`（shard_3 案例名，本片段边界内发现） |
+| CVE / CVEs | CV / CVs（简历） | M04 `59:23` 起反复出现 |
+| system tree | [?]（未还原，语境为"算法/决策树"，不确定） | M04 `59:28` |
+| soft-based | [?]（未还原，语境疑似 "shortlisted"，不确定） | M04 `59:33` |
+| welcomed（"a person who could have been released has now been welcomed"） | [?]（未还原，语境为"被继续拘押"，与 welcomed 字面矛盾，疑似 detained/confined，不确定） | M04 `01:23:51` |
+| Freelance Night 2014 | [?]（未还原，语境为 Amazon 2014 案总结句，疑似专名误识别） | M04 `01:05:18` |
+| reprimand（"fairness and discriminating in reprimand"） | [?]（未还原，语境为 Amazon 招聘案，疑似 recruitment，未确认） | M04 `01:22:46` |
+| re-authentic（"unlikely to be re-authentic"） | reoffend | M04 `01:16:36` |
+| re-attempt（"high probability of re-attempt"） | reoffending / recidivism | M04 `01:17:17` |
+| political review（"rated as high for political review"） | parole review | M04 `01:18:09` |
+| advocates（"Recruiters, advocates, managers and regulators"） | [?]（未还原，语境疑似 candidates，未确认） | M04 `01:07:13` |
+| AI Canada | Air Canada | M04（同一堂课内 ASR 时对时错，`01:40:28` 处正确，`01:44:14` 处误作 "AI Canada"） |
+| Richmond fare | bereavement fare | M04 `01:42:02` |
+| checkbox / check board(s) / tech board(s) | chatbot(s) | M04 `01:47:06`、`01:49:57`、`01:50:14`、`01:50:25` |
+| Chez GVD | ChatGPT | M04 `02:08:25` |
+| AdvoCard | Apple Card | M04 `02:02:58` |
+| entropic | Anthropic | M04 `02:06:14`（教授自我纠正 "Open AI or entropic? Entropic, you know"） |
+| expandability | explainability | M04 `01:52:40`、`02:09:38`（全讲反复出现） |
+| IT photography firm | IT consulting / consultancy firm | M04 `02:11:13` |
+| David Hanson | [?]（疑似知名科技企业家，未核实拼写，不作断言） | M04 `01:33:42` |
+| Mofat / Moffat | [?]（Air Canada 案当事人姓名，前后拼写不一致） | M04 `01:40:37` |
 
 ## IS6400 · Business Data Analytics（技术课：库名 / 指标名易错；M03 起为本地 Whisper，错法是按发音写成常见词）
 
