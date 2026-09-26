@@ -1,7 +1,7 @@
 """
 run_all.py · 按编号顺序跑全部分析脚本
 =====================================
-用法：cd code && /d/python/python run_all.py
+用法：在 code/ 目录运行 D:\\anaconda3\\python.exe -X utf8 run_all.py
 每个脚本独立运行（subprocess），一个失败不影响其余；最后汇总。
 """
 import subprocess, sys, os

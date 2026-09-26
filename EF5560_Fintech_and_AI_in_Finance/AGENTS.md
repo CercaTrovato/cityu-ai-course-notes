@@ -1,6 +1,6 @@
 # AGENTS.md — EF5560 Fintech and AI in Finance（课程级 · 工具无关版）
 
-> 🚧 **骨架，待填。** 通用方法论见 vault 根的 `AGENTS.md`。Claude Code 版见同目录 `CLAUDE.md`。
+> 课程特有口径以本文件补充；现行进度以 `00-课程总览.md`、笔记 frontmatter 与原始材料核对。通用融合与验收规则见 vault 根文件及 `.claude/skills/transcript-merge/SKILL.md`。
 > **开工前必做**：读 `syllabus_EF5560_2026.pdf` + 抓官方课程目录对校 → 产出 `_prep/课程前置资料.md`。
 
 ---
@@ -11,7 +11,7 @@
 |---|---|
 | 课程码 | EF5560 |
 | 定位 | MScAIB (P85) **商业核心**；开课单位为 EF（经济与金融系） |
-| 上课时间 | **周四**（⚠️ 据文件时间戳推断，待确认） |
+| 上课时间 | 周四；2026-09-24 晚场 M04 双录音和 `10/1` 停课口头通知已核实。具体时段以 Canvas 为准 |
 | 首课 | 2026-09-03 |
 
 **材料**（`course_files_export/`，✅ 已符合存放约定）
@@ -21,12 +21,12 @@
 | `syllabus_EF5560_2026.pdf` | 课程口径见 `_prep/课程前置资料.md`；原件细节仍以原件核对 |
 | `Lec01_Data_and_Vibe_Coding.pdf` · `Lec02_Regression_Vibe_Coding.pdf` | ✅ 对应 M01 / M02 v1.0，转录已合并 |
 | `Lec03_Linear_Machine_Learning.pdf`（56 页）+ `class03/` | ✅ M03 v1.0；9/22 重下受同步截断影响的课件与数据 |
-| `Lec04_Nonlinear_Machine_Learning.pdf`（54 页）+ `class04/` | ✅ M04 v0.9 课前预习版；转录待处理 |
+| `Lec04_Nonlinear_Machine_Learning.pdf`（54 页）+ `class04/` | ✅ M04 v1.0（2026-09-26）；同课 A/B 双录音互补，37 个 🎙️ 格已回填；实际课堂至 p.39，p.40–54 明确顺延；课件 54 页仍全覆盖 |
 | `class01/` · `class02/` | ✅ 已补发并与 M02 数字核对；细节见课程总览与数据集卡片 |
-| `EF5560_FinTech_Company_Case_Requirements.pdf` | ⚠️ 未读 → 读完登记作业与 DDL |
+| `EF5560_FinTech_Company_Case_Requirements.pdf` | ✅ 已读 → `_meta/作业与DDL.md` §2.3；个人作业成品不入公开仓库 |
 | `data/*.csv` ×8 | 数据集说明以本课 `_meta/数据集卡片.md` 为准；原始文件保持只读 |
 
-**转录**：`transcripts/M01-transcript.txt`（118KB，2013 行，`MM:SS` 时间戳）✅ 已导出，**是五门课里最完整的一份**
+**转录**：M01–M03 已融合；M04 的 `M04-transcript-A-partial.txt` 和 `M04-transcript-B-partial.txt` 是**同一晚场的重叠录音**，两者互补而非前后分段。课堂至 p.39，p.40–54 明确顺延，细节见 M04 §8–9。
 
 ---
 
@@ -70,9 +70,9 @@
 
 ## 6. 待确认
 
-- [ ] 抓官方目录对校：`https://www.cityu.edu.hk/catalogue/pg/<学年>/course/EF5560.pdf` — 学分、**及格线**、**GenAI 政策**、CILO
+- [x] 官方目录、syllabus 与课程前置资料已对校；学分、GenAI 政策及 CILO 差异见 `_prep/课程前置资料.md`。
 - [ ] 对照 syllabus、课程前置资料与后续课堂口径，确认仍未核实的周次与主题
-- [ ] 读 `EF5560_FinTech_Company_Case_Requirements.pdf` → 登记作业与 DDL（Notion 该行目前标着 ❗待补）
+- [x] 案例 brief 已读并登记 `_meta/作业与DDL.md` §2.3；M04 口头复述了录像上限与每人时长，正式 DDL 仍看 Canvas。
 
 ---
 

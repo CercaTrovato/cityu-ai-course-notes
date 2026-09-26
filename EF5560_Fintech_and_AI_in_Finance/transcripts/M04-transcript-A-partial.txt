@@ -1,0 +1,3032 @@
+00:00
+Okay, so attend the TA office hour by the Zoom section here. Okay, so this is by Zoom. You do not need to come to campus because there's a lot of students who came to campus last Sunday. Okay, you do not need to come to campus. Everything's on Zoom. Everything's on Citibus. Just check Citibus, then you will notice that.
+
+00:21
+There's a TA tutorial, she will help those students who do not have any background, so if you believe that, you might have no clue for my assignment, please, please attend the TA tutorial this Sunday morning.
+
+00:34
+Don't tell me on October 10th, you guys don't know anything, okay?
+
+00:39
+Do it this weekend.
+
+00:41
+Okay, don't wait till the last week, because you can guess that if you send me a message on October 14th, I will not get back to you.
+
+00:49
+Okay, do it this weekend.
+
+00:51
+So the TA has prepared some demonstration how to start assignment. Okay, I think she has done too much, but it is fine because everyone can see her demonstration there. I will ask her to record a video if you kind of have conflict, okay, with that. If you have something to do, more important to do, 10 a.m. on Sunday, the TA will record a...
+
+01:18
+Video for you, okay, but it is better you see her on zoom
+
+01:23
+It is better you see her on zoom
+
+01:25
+also
+
+01:26
+One thing I also need your help that is most of my TAs. They are just
+
+01:33
+Yunting, she's just second year PhD students
+
+01:35
+So it is hard for her to keep talking for one hour without any question from you guys
+
+01:41
+so please
+
+01:43
+Interrupt her because you can you can guess that
+
+01:46
+She might be the same age as many of you or younger than some of you
+
+01:50
+It is hard for her to keep talking for one hour. It is hard for me when I was an assistant professor
+
+01:57
+Eight years, nine years ago. It is also hard for me to keep talking for three hours
+
+02:02
+But right now I get used to it
+
+02:05
+That's why I cold call
+
+02:07
+So so that's the case, okay
+
+02:10
+Office hour, remember that
+
+02:14
+That's the plan for everything
+
+02:17
+Any questions for the assignment? You will see the assignment. If you have questions for the assignment there, also ask the TA in the TA office hours.
+
+02:28
+This is designed for you. I understand that for the past few years, my course is the only one that has the office hours there.
+
+02:38
+Please use this very well. Talk to the TA more, because I believe that this is beneficial to both you and my TAs.
+
+02:46
+I want my TA to practice talking to more than 100 students all together, so this is helping you and us and also helping her
+
+02:54
+Actually I have two TAs, one second year student and one first year student
+
+03:00
+So that's the case, let me look at my slide
+
+03:23
+So the title for the day is Nonlinear Machine Learning Models
+
+03:29
+Unfortunately, I cannot finish all of the slides in the afternoon session, so I will probably end at the same page as I did in the afternoon session, 45, 46 something, okay?
+
+03:40
+So don't worry. So I will leave something for next week. So that's the plan for today. I want both sessions to keep on the same pace.
+
+03:50
+I don't understand why I'm talking too slow in the afternoon.
+
+03:53
+section, but usually I'm talking slower in the evening sessions there, but that's the case for the day.
+
+04:00
+So what we have learned last week, machine learning, why do we need this kind of things there?
+
+04:06
+So for our case, there are like two reasons for we need machine learning. Last week we focused on linear models.
+
+04:15
+which address the first reason, that is, if you kind of have many, many predictors, or if you kind of have like high-dimensional predictors there,
+
+04:25
+then you might have the high-dimensional challenge for linear regression, okay, so that's the case.
+
+04:32
+And so then you want a simpler model, okay, you want something interpretable, you want a simpler model there, you need variable selection.
+
+04:44
+You need predictor selection, okay. So in this case then, then you want to, that's why last week we see the forward stepwise selection, we see the lasso, we see the reach of elasticity lag, that those two methods do not really select the predictors but shrink the predictors there. We see PCA, principal component analysis, and partial least squares analysis of partial least squares.
+
+05:10
+for dimension reduction, reducing hundreds of predictors to 5 to 10, okay?
+
+05:17
+So that's the most important motivation for machine learning because of big data.
+
+05:23
+The big data that is we have too many predictors on the right-hand side,
+
+05:27
+and we do not have sufficient number for observation on the left-hand side.
+
+05:33
+because we're working on a stock return data. If you're working on a monthly stock return data there, for the Asia market, the Asia market started in 1990, we only have 47 years, times 12, okay, this is a small number. So that is the main reason why we lead.
+
+05:53
+variable selection, why we need dimension reduction, okay, to deal with the high dimensional challenge. That's the first
+
+06:00
+motivation, okay, for this kind of things there. The second thing that, as I mentioned to you,
+
+06:05
+if our focus is out-of-sample prediction, if our focus is out-of-sample predictions there, most of the time, simpler
+
+06:15
+models outperform
+
+06:17
+complicated models there.
+
+06:19
+Okay, simple models, so this is the case we have seen many, many times in the lecture notes. Simple models, for example, average, historical average, moving average, those models without any predictors there, they perform very well. Those models with a lot of predictors there, with a lot of complicated functions there, they underperform.
+
+06:47
+So this happens a lot when those signals are very weak
+
+06:53
+By the way, another thing I also mentioned in the afternoon session, that is because some students, I believe, I might see more students from this section too, I understand that you do not have, some of you might do not have any finance background or investment background, even though you are a finance student, you might not see any investment problems in the past
+
+07:22
+relatively simple okay so one question I was asked last time and so a student
+
+07:31
+she does not know what's the difference between the market
+
+07:35
+portfolio and individual stock okay so for example for market portfolio
+
+07:40
+This is like for Asia market, this is like a basket of 300 largest stock for the market
+
+07:47
+CSI 300, we have like 180 of them come from the Shanghai exchange, 120 of them from the Shenzhen exchange
+
+07:55
+So the three largest, most representative stocks for the Asia market
+
+08:00
+For the Hang Seng index there, this is about 90 stocks now
+
+08:03
+The most representative one for multiple industries listed in the Hong Kong exchange
+
+08:10
+For the most famous one, S&P 500, I guess most of you know about this one, even though you don't know where 500 stocks comes from.
+
+08:19
+There used to be many exchanges in the US, but right now there are two major ones.
+
+08:23
+One is New York Stock Exchange, the other one is Lasdaq.
+
+08:27
+So, 500 stocks, those are the...
+
+08:30
+Large-cap, most representative stocks from these two exchanges in the US, because they represent for 90% of the market equity value in the US and the CSI 300 about 80% of the market equity value in the Asian market.
+
+08:47
+You will believe that this represent for the market
+
+08:50
+For individual stock, that is like Alibaba, Apple, Google, Tension, Maotai, those are like individual stock, individual fund data
+
+09:00
+So when we talk about market index, then there are some ETF to represent for the index there
+
+09:06
+CSI 300, Hang Seng Index, S&P 500
+
+09:10
+When we talk about individual stock, they are linked to individual companies
+
+09:16
+Those of you who do not have any finance investment background there, don't worry about this, because all of you are master students now.
+
+09:25
+I think my mom also, she's, my mom does not have the high school degree, she also only got Zhongzuan, but she keeps investing for the past 20 years.
+
+09:35
+And I understand she makes some good profit. So, this story tells you that investment does not need degrees.
+
+09:44
+So I believe that you can understand all those things, even though, because you also see many PhD degree mutual fund managers, I believe their performance are worse than my mom, so that's the case, usually, so degree does not matter.
+
+10:03
+If you don't have the background, I believe that you have the learning ability to learn from AI, to learn from Wikipedia, to learn from Zihu, from all those things there.
+
+10:14
+So yes, that's the case I want to mention. So background is not something you really need here.
+
+10:23
+You also need to understand my difficulty because I'm talking to...
+
+10:28
+246 students and those students are from very very different backgrounds okay so I
+
+10:33
+have to design the course to accommodate 90% of the students there okay this is
+
+10:38
+my goal I understand that there's always 10% who understand nothing because for
+
+10:45
+background for their infuse for most things there but I will try to
+
+10:49
+accommodate 90% of the students to make sure
+
+10:54
+Most of the materials, you do not need prerequisite, okay, and understand from my course. If you happen to be the remaining 5%, 10%, then try hard to learn this from AI, okay, because you understand my difficulty. It is hard to convince, it is hard to cover the background for 100% for all of you. I need to find some fresh hope to make sure.
+
+11:16
+The other 90% of the students feel happy. They learn something. Otherwise, I only have like 12 lectures for this semester. I cannot cover everything.
+
+11:27
+So, come back to the slide here. The third lesson, the third reason why do we need machine learning here, that is, I talked about high-dimensional challenge, I talked about out-of-sample predictability.
+
+11:42
+The last one, that is nonlinearity.
+
+11:47
+So most of you, actually all of us, we do not believe the world follows a linear model.
+
+11:56
+Linear model, too abstract, too simplified.
+
+12:00
+None of us would believe that the complicated stock market or anything else in the world follows a linear model.
+
+12:09
+If you are from a physics background, then most of the formulas are linear.
+
+12:13
+If you are from, I don't know, any kind of a background there, most of the formulas are linear.
+
+12:20
+The reason that is linear model, the math is simple, most of us we can follow, and then we kind of want to use simpler things to describe the world.
+
+12:30
+We understand that this is not perfect approximation, but we want to have some trade-offs there, again.
+
+12:37
+Because only simpler things, linear models, they can attract so many students to study physics.
+
+12:45
+If everything is nonlinear, stochastic, then you will see way less physics students in the future
+
+12:51
+So I think that is also one of the cases for sharing knowledge
+
+12:58
+So linear models, most people can understand, they can easily understand what might be addictive
+
+13:03
+But if you want to do predictions there, so my key here is
+
+13:10
+No one believes the world is actually linear, even though they are interpretable, but we do not believe that.
+
+13:16
+We don't believe this is the best case, so you need to explore nonlinear model patterns there.
+
+13:23
+So I will try to introduce a few nonlinear model patterns for the day, and there are some students asking me in lecture 3, they sent me emails,
+
+13:35
+I should tell more details for each method. For last time, I think I only have like two or three slides, or three or four slides for each method there.
+
+13:43
+This week, I changed a little bit. I have more than ten slides for tree, for regression tree, because this is the most favorite model for me.
+
+13:52
+Writing papers there, so I like regression trees. And I will also have a few slides, more than a few slides for neural network, the first version for deep learning or for AI.
+
+14:03
+For now, when people talk about AI, the first thing you'll think about is the GBT model, okay?
+
+14:09
+You'll think about those like large language model they represent for AI. This is the most people think about for GBT, for cloud, okay?
+
+14:18
+For deep-seek, okay, this is the case now, but ten years ago
+
+14:25
+deep learning is considered AI
+
+14:28
+Deep learning, the most representative, because I believe that you might watch the news 10 years ago for the AlphaGo, someone that used AI to win the game for Go, I don't know about you because I also played a few years ago when I was young, so I understand that this is a breakthrough, this is a...
+
+14:53
+AI can play so good. So right now I also download a few apps on my iPhone. They will suggest the AI move for Go there. I also learn from the Go. I also learn those AI moves there too.
+
+15:08
+So AlphaGo might be the first field version for AI you might hear about, but AlphaGo is trained by...
+
+15:15
+reinforcement learning, log transformer you see today, reinforcement learning then, but today I will focus on a simpler one
+
+15:22
+That's the feed forward neural network. Okay, which has a long tradition to
+
+15:27
+But
+
+15:31
+you have the GPT account
+
+15:42
+Okay. Yeah, so if you do not have the US credit card that
+
+15:46
+Then it is hard for you to get the chat GPT and and and the cloud account there
+
+15:52
+If you try very hard, there are someone selling those accounts on Taobao and Xianyu, this is my PhD student doing that
+
+16:00
+So in addition to Chachimiti and Codex, what other AI tools do you have to learn?
+
+16:11
+German line
+
+16:19
+Okay,
+
+16:27
+I will still give you one bonus point, but I just want to say you need to use AI soon
+
+16:32
+Okay
+
+16:34
+Try to finish the conversation now, so you will use AI soon, this is, I expect most of you at least, you have AI installed on your laptop, so not just the web version, not just the chat room version there, you allow some function for AI to run code for your laptops there, so another one,
+
+17:03
+yes?
+
+17:09
+Which AI do you have installed?
+
+17:12
+Okay, so I also try Dobao in the afternoon for my afternoon session too, so you can see that
+
+17:19
+but
+
+17:20
+What kind of things you have done for Dobao?
+
+17:24
+for example
+
+17:27
+Give me some tasks you have done for the past week
+
+17:34
+Therefore, so for example, like for my course, have you downloaded data for Dobao?
+
+17:42
+Is there? Why?
+
+17:44
+for
+
+17:51
+example
+
+17:53
+You can see my doubao, like can you download the stock price for Apple in the past three months and
+
+18:06
+create a blog.
+
+18:10
+So, for such a simple poem, can you do that on your doubao?
+
+18:18
+Yeah, that's something I want you to try.
+
+18:24
+Otherwise, you will have trouble for your assignment.
+
+18:30
+Of course, if you know R and Python very well, you do not have any troubles for that.
+
+18:34
+But if you do not know R and Python very well, then you need Dobao to control your
+
+18:38
+laptop for some functions there.
+
+18:52
+Sorry?
+
+18:59
+So you use Dobao to generate R code for you,
+
+19:02
+or Python code for you, and then you paste them on.
+
+19:08
+So what kind of things you have done?
+
+19:15
+So you translate a PBT.
+
+19:20
+That's just the first step, use AI.
+
+19:23
+You need to use more. For example, I think this is a simple poem.
+
+19:27
+Everyone can do it, right, you already see that, just download the stock price for Apple and then make a plot
+
+19:36
+But of course, you let them to control your local desktop, okay, and this is something you have to give control for
+
+19:45
+Otherwise, you need to be very good in Python or R
+
+19:50
+That's also fine, so I don't care about that, but that's also fine
+
+19:54
+But the purpose for my course is that I just want you to learn something for white-coding. This is easy to cover
+
+20:01
+95% of the students who do not have any programming background there
+
+20:05
+Okay. Thank you. I will also give you one bonus point. So let me ask another student
+
+20:16
+Liu Chunyuan
+
+20:20
+Are you here?
+
+20:23
+It should be a male student
+
+20:33
+Are you called Liu Chenyue?
+
+20:36
+I'm not called you, I'm called Liu Chunyuan
+
+20:40
+But you can do it too
+
+20:46
+First of all, I need to make sure whether this guy is here
+
+20:49
+Liu Chunyuan
+
+20:52
+Are you Liu Chunyuan?
+
+20:55
+Okay
+
+20:57
+What is your name?
+
+21:01
+Liu Chunyuan
+
+21:03
+Chun
+
+21:08
+Liu Chunyuan, okay, so can you tell me what AI you have installed and what you have done in the past week?
+
+21:21
+Tragivity and what you have done?
+
+21:33
+So you haven't downloaded any data yet?
+
+21:36
+Oh
+
+21:41
+god, it's too slow.
+
+21:44
+Four minutes, okay.
+
+21:49
+You can see that I'm also too lazy now. This is my email.
+
+21:54
+I'm just too lazy to write emails now. So that's also my response to your email too.
+
+22:01
+Any other thing you have done?
+
+22:12
+So you haven't tried those data downloading and running Python or R through AI yet.
+
+22:23
+This is something you should do this week. This is for assignment.
+
+22:28
+I will also give you one bonus point because you are here.
+
+22:34
+Liu Chenyue, can you tell me what you have learned last week?
+
+22:41
+I changed the question. Which
+
+22:49
+method you like the most?
+
+23:13
+So they don't shrink the parameters to zero. They shrink them to very small numbers.
+
+23:20
+Why do you like this?
+
+23:26
+Most people, they would tell me that they would like LASO.
+
+23:30
+Because they will preserve the interpretation for variable selection.
+
+23:34
+But I can tell you that which is a more robust predictor than LASO.
+
+24:06
+Actually, this is a good answer, because from time to time we don't know which predictors are true predictors, which predictors are bad predictors there.
+
+24:13
+So, which does provide a more robust predictive framework than LASO, because for LASO, yes, it has the variable selection interpretation there,
+
+24:23
+but from time to time, most of the time, they put the wrong predictors.
+
+24:28
+So, in this case, then, which might provide a more robust...
+
+24:34
+method, then LASSO. Okay, thank you for the answer. Okay, then I'm done for my
+
+24:38
+cold calling. If you want bonus points, just wait, just volunteer or waste your
+
+24:43
+hand, that's easier for me too. Yes, why, why, why change BT is way faster than
+
+24:48
+Dobao? Because I guess the plot will be the same. This is the stock price for
+
+24:53
+Apple for the past three months. Dobao is still working on this.
+
+25:04
+I don't know. Well, I do know something about this, because for one thing, so today I also tried to, so two days ago, I also tried to download Zico, Zipo, okay, if you know what Zico, so
+
+25:25
+because I want to show you something that the Chinese AI can also do the same thing for everything we do in this class, for Zico here,
+
+25:34
+For the GLM513 model, that's very smart, I agree with this, but I pay the account for my desktop at home, and then this is my laptop for work here, and then I do not have the account, so I pay $80 for the other one, but for this one I do not have one.
+
+25:56
+One thing I want to tell you why the Chinese AI, they will like slower or they might cost more because I realized that
+
+26:04
+Zipu might cost more than ChaiGPT for some sense, this is still again for the lack of GPU so far because you know that
+
+26:16
+Unlike OpenAI, unlike N4PIC, most trans-AI firms do not have sufficient number for GPUs
+
+26:24
+Even we understand Huawei can produce most advanced GPUs now, but Huawei still have the problem for limited production
+
+26:32
+And Huawei is willing to give the production to Dipsy rather than Mini, Max, or Apple
+
+26:42
+They customized their big models to Huawei GGBU now. So given their limited number of chips they have, most of the AI companies, they will reserve the chips for training the next generation models, rather than give the chips for inference for 2C customers.
+
+27:02
+But the Chinese AI firms, they are very smart. So most of them, they follow the open source route.
+
+27:10
+Cloud companies to deploy their models.
+
+27:14
+So they rely on the cloud companies there.
+
+27:16
+So last week, I read the news from ,,
+
+27:18
+they deployed their models on AWS now.
+
+27:22
+So for each
+
+27:24
+So for each one for Z-code on AWS, they will get a cut for this, about 20% or 30% or something.
+
+27:33
+So they share the revenue with those cloud companies.
+
+27:37
+I think they are discussing with Microsoft, with Google Cloud.
+
+27:42
+So this is also the case you see for DeepSeq.
+
+27:45
+They have deployed their...
+
+27:47
+models for Tenshin, for Ali, for Baidu. So all of them are doing this to deploy the models for those like cloud.
+
+27:54
+computing companies, so they are very smart on this part, okay, but because of the lack of GPU so far, so you will see that the computing cost for Chinese AI, they are not cheap, okay, but I believe that in one or two years, especially we see the price war initiated by OpenAI and N4P yesterday, okay, so I believe that sooner, probably next year, all this price, they will go very down, okay, so this is what we see, for price war, the Chinese firms, they always win
+
+28:25
+Okay, yeah, Doubao is still working on this.
+
+28:32
+Oh, this might be one reason.
+
+28:38
+Why we didn't kill Doubao?
+
+28:43
+Okay, I don't know, so let's come back to my slide.
+
+28:48
+Okay, with gyms and nonlinear forecast.
+
+28:51
+One of the nonlinear models
+
+28:56
+I want to introduce is the with gym-based
+
+28:59
+models there. So for example, for this figure, you can see that the Y-axis is the return for last month. The X-axis is the inflation, the lack of inflation there.
+
+29:12
+The blue line is our linear regression forecast. The linear regression forecast tells you that if inflation is high, then the expected return is lower.
+
+29:23
+If inflation is low, the expected return is higher. You can guess that because when inflation is high, the interest rate might be high, return might be lower.
+
+29:33
+If inflation is low, interest rate might be low, return might be higher. So this makes sense.
+
+29:41
+But one thing my challenge of thinking that is, so we talked about that last week, we see the FOMC meeting from US Fed, they increased the rate, so for the past three years they keep reducing the rate, we also see the
+
+30:02
+924 moment for China two years ago, right after the US Fed reduced the weight, we also reduced the weight, and then we pushed those plans for encouraging stock purchase for those SOE companies there, that's two years ago, so one thing I want to emphasize here, that is, like, reducing weight, or increasing weight, with Jim, like with Jim here, investors' thinking mode might be totally different.
+
+30:31
+When you think you are in the business cycle for reducing interest rate, then you have a lot of path, you have a different thinking mode
+
+30:39
+You will think that interest rate will be lower and lower
+
+30:42
+When you are on the other cycle for increasing interest rate, then you will follow those analysis or trend vision
+
+30:50
+The US Fed might have a lot of increase at the end of this year
+
+30:57
+So your thinking mode will be totally different there and that's the reason we might need to have regime-based models
+
+31:06
+When the interest rate is high, when the interest rate is low, when inflation is high, when inflation is low, your predictive model should be different
+
+31:17
+You should not just use one model for all periods there
+
+31:22
+So that's quite important for us to learn about macroeconomic regimes
+
+31:30
+Here I show you one simple model. This simple model just have like two values, okay?
+
+31:38
+So when inflation is above like 2.5, we go to here.
+
+31:45
+When inflation is below 2.5, we go to here.
+
+31:50
+Okay, so what is that? When inflation above 2.5, we calculate the average for returns.
+
+31:58
+Okay, this number.
+
+32:00
+I don't know what it is, negative 0.014 something, when inflation is below 2.5, we calculate the average here, positive 0.015 something, so why I make something like this, okay, as I, as we know from last week, most complicated models there, they do not outperform average, they do not outperform his powerful average, they do not outperform
+
+32:31
+Moving average 12 month. Okay, so this is something we see from last week. So average is a very robust predictor
+
+32:39
+But now if we're thinking in two regime modes now, okay high inflation, low inflation
+
+32:44
+So what should we do? Then we should think about that high inflation for one average, low inflation for a lot of average there
+
+32:51
+So we calculate two average. Okay, so this is the case
+
+32:56
+0.015 for low inflation, negative 0.014 for high inflation. So this is the case now. So you can guess for one thing. If we compare the MSE or the total square error for the regression line and for the IBLU and this line, I don't know what line this is. This is the
+
+33:19
+Nonlinear line in red, which one might have lower total square errors there?
+
+33:25
+It is usually the red line because this is more flexible
+
+33:29
+Okay, of course, this is just a simplified one
+
+33:33
+High inflation, low inflation, you might have like some other like high inflation, median inflation, low inflation, or high inflation, low inflation, deflation, okay, like as we know the past three or four years for China, we are in a different cycle with the US case, okay, we have inflation, I think last month it's like 0.8%, okay, this is really the deflation numbers.
+
+34:00
+So then you might want to, rather than splitting the sample into two, you want to split them into three parts or three groups there.
+
+34:07
+So that's the motivation I have for the tree forecast, for the tree forecast there.
+
+34:14
+So that's the, that's my motivation, why we need tree.
+
+34:18
+Because we understand there's nonlinear pattern in the data, like regime-based patterns in the data.
+
+34:24
+We need to have the corresponding method to deal with this kind of data.
+
+34:29
+okay so you need to understand for one thing I always say we have the demand
+
+34:35
+for something that's why we need a method okay actually most of my
+
+34:40
+statistic friends they will tell a story in a different way they have developed a
+
+34:47
+new method they want to solve something okay it is like they have created a
+
+35:00
+regression tree is simply just divided observation into different groups or we
+
+35:06
+call them leaf there but for different group and for different leaf the forecast
+
+35:11
+is very simple we are just taking the average okay we're just taking average
+
+35:18
+there just follow this graph okay for the red line here above 2.5 this
+
+35:29
+We simply just divide the observation into multiple groups and then for different group, we just take the group average
+
+35:37
+Okay, so so this is something called regression tree. Of course, you can divide the sample into
+
+35:45
+20 groups, 100 groups, 200 groups there. Okay, of course you can divide it for each day. They have to have their own group
+
+35:53
+Okay, but
+
+35:55
+Of course, if for each day you have your own group there, what will you have?
+
+36:00
+The total square error becomes zero, but this you might have like over-fit problem for out-of-sample forecast there
+
+36:11
+So we do not want to divide the data into too many groups
+
+36:15
+And we do not want to divide the data into one or two groups there
+
+36:20
+We want a few groups, not that many
+
+36:24
+something suitable okay so this is something we want so regression tree
+
+36:29
+provide you such a such a platform to let you to do this okay and once you
+
+36:36
+divide them into groups there the forecast is way easier than those
+
+36:40
+regression forecast because you do not have A plus B times X you only have Y bar
+
+36:49
+You only have Y-bar. The group average, the leaf average, that is the forecast you have for all observations in the group.
+
+36:58
+For out-of-sample forecast there, so for example, for October, we expect the inflation is still above 2.5.
+
+37:06
+So this is our forecast for October. So this is the case.
+
+37:14
+And then for regression trees there, I will talk about the complexity later, usually how many groups there, if you have too many groups, then this is too complex, if you have too less groups, then this is too simple, so we need to find out something in between, not too many groups and not too less groups, then something in between there, to make the performance the best
+
+37:34
+This
+
+37:41
+is one example for the single regression tree
+
+37:43
+So for the single regression tree here, you can see that
+
+37:49
+If the inflation less than equal to 2.482, okay, 2.482, then when this evaluation is true, you go to the left side
+
+38:00
+When the evaluation is false, you go to the right side
+
+38:03
+Okay, so this represents for the
+
+38:07
+split here. About 75% of the observation on the left side, 25% observation on the right side, because you see the number here. Sample 74.2, sample 25.8%. So this split, 2.48 as the threshold for high inflation and low inflation, this seems reasonable. As I told you many times,
+
+38:34
+I'm not a big fan for complicated models there. I like to add my thinking what the model should do, so because we know that for most central bank, their inflation target is about 2%, so it seems that 2.48 is okay. It is close to their target.
+
+38:54
+If it is really far away from 2, then the central bank might do something.
+
+38:59
+If it is like 2.1, 2.2, the central bank might have a higher tolerance for this.
+
+39:04
+So 2.4 seems reasonable.
+
+39:07
+So this is the case.
+
+39:08
+And as you see, they split the sample about 3 quarters for low inflation, about 1 quarter for high inflation there.
+
+39:16
+And you see the value here, 0.015 and negative 0.014.
+
+39:21
+What are they? This is the Y bar.
+
+39:24
+For low inflation, the Y bar is 0.015. For high inflation, the Y bar is negative 0.014. So this is the number we see.
+
+39:33
+So this is the first split of the tree. We split the data into two groups there.
+
+39:40
+We can, of course, we can just stop here. It is totally fine. Just 99 here. We can just stop here. You do not need to make further splits.
+
+39:49
+However, if you believe that you want to make further splits, I want to have a more complicated model, like three groups, then we continue.
+
+39:59
+Then continue, you will see that they change the predictor. They change inflation to unemployment here.
+
+40:07
+I will tell you how they select these predictors later, but you see that they change to unemployment here.
+
+40:17
+7.65 you go to the left side, larger you go to the right side, so you see they split the 74% observation into 51 and 23, something like this, so what have we seen here, so this unemployment only applies to the low inflation regime
+
+40:40
+If for high inflation regimes there, if you are fat, then you don't look at unemployment numbers there.
+
+40:47
+But if in a low inflation regime, then you do look at the unemployment numbers there.
+
+40:52
+So this kind of like give an investor what might be the considering factor by sequence.
+
+41:03
+First thing, think about inflation. High or low, we go to the left or we go to the right.
+
+41:09
+If inflation is low, then we think about, okay, let's look at unemployment number.
+
+41:17
+Okay, so you kind of like have the forecast for the interactive macro-predictor regime.
+
+41:24
+So, low inflation, you still need to consider unemployment rate.
+
+41:28
+But for high inflation, you don't consider anything else.
+
+41:32
+So this is something called interaction effect
+
+41:37
+Inflation interacts with unemployment asymmetrically
+
+41:42
+Asymmetrically means that high inflation nothing, low inflation something
+
+41:47
+So this is what we see in the figure here
+
+41:50
+So this is something we call nonlinear patterns
+
+41:53
+These are nonlinear patterns you cannot show
+
+41:57
+easily in regression models there. Of course, they will tell you that I will have X1 times X2, but it is not as clear as the graph you see here.
+
+42:08
+The graph this is just simple decision tree. Even a high school student can understand simple decision tree.
+
+42:15
+But the graph is very clear, tells you where, so when we know about the regime, what should we do?
+
+42:27
+direction, what should you do here. So in the future, you will see many complicated methods from other courses there, but still, in my recommendation that regression tree is always the most simple one, that provides the nonlinear structure graphically, so you can plot them, you can draw them.
+
+42:53
+Many complicated models, you can only show formulas and you don't know how to draw them. You ask people,
+
+43:00
+I understand that you have x1 times x2 times x3 squared times exponential to x4
+
+43:06
+Why this is nonlinear?
+
+43:09
+They cannot tell you. They will just tell you that this is a nonlinear function. So it is nonlinear
+
+43:16
+But it does not make sense. I can always use nonlinear function to do a lot of things there
+
+43:21
+But it does not mean that the data pattern follows nonlinear things
+
+43:25
+Regression tree is different. It shows nonlinearity in the figure here
+
+43:32
+Okay, it's in the figure here. So you understand that there are interaction patterns here
+
+43:38
+So, if you want to continue to make the model more complicated, then we continue to split on the unemployment rate, when unemployment rate is low, so this time it's again inflation, so less than equal to 1.235, you go to the left side, higher than 1.235, you go to the right side, okay?
+
+44:00
+So, this is a very special case for inflation and unemployment rate.
+
+44:07
+you see interaction effect, and at the end you have like four leaves, so you know exactly when inflation is high, this is my forecast
+
+44:19
+when inflation is in the medium, then between 1.235 and
+
+44:31
+2.48, when unemployment rate is high, it is here, employment rate is low, it is here, something like that.
+
+44:37
+So you know exactly when you know about the macro regimes, determined by inflation and unemployment, then this is the case you see.
+
+44:47
+If you ask me which textbook can teach you this kind of things there, I would say none of the textbooks, because this is developed by my paper.
+
+45:03
+Which one?
+
+45:07
+This one. So this is a paper for currency return prediction. Okay, what is the role for US macroeconomics with gyms there?
+
+45:17
+Okay, so for this paper, you also see very similar things. If we want to predict currency returns,
+
+45:24
+I think I have two predictors here.
+
+45:30
+Here. This is the treasury bill rate and the unemployment rate there. If the treasury bill rate is low,
+
+45:38
+or if it is high, then we split on that, and if the treasure view is low, we also split on the unemployment rate there, so we kind of like split the data into multiple regions, I think I have the trees somewhere, yeah, this is the tree, yeah, this is, yeah, this is the tree for them, so somehow, somehow, I just use my paper to show you, so you this kind of like understanding, oh, finally,
+
+46:09
+finished, 30 minutes, okay, oh, yeah, he also downloaded the CSV, so this is the price for Apple, I believe that the data should be correct, okay, because they downloaded from Yahoo Finance, so this, I have no problem for this part, okay, so it just takes some time, okay, it should take some time for that, but I believe that because for one thing that is, they also spend some time for installing packages there, so,
+
+46:38
+If I ask them to do this for a larger stock, I believe that it will be way faster
+
+46:44
+This is how you raise electricity
+
+46:52
+Let's see, it can be done in 3 minutes, and we have a raise with ChurchVT
+
+46:59
+Oh, one thing I understand, because I used the advanced models here
+
+47:08
+This is the reason, I understand now, this is the reason, I used the advanced model there
+
+47:15
+I did use VPN now, okay, so just see for the live model how long it takes, okay, come back to my slide.
+
+47:29
+So split criteria, so what is the split criteria there?
+
+47:33
+So as I mentioned, the first split we need to determine if you believe, if you have like a predictor, inflation.
+
+47:42
+Well, you need to determine. You need to think about why we split at 2.5, why not 2.4, why not 2.3, why not 2.1, why not 4.3, okay?
+
+47:52
+So you need to determine the split threshold number.
+
+47:57
+And you also need to check, should we use inflation, unemployment, interest rate?
+
+48:04
+Okay, there are many other member variables too. Which one we should use?
+
+48:08
+okay so then you need to calculate a split criteria split criteria you can see
+
+48:15
+that the first thing that is this is a sum of quadratic errors sum of quadratic
+
+48:20
+errors is the same thing you have you seen so you have seen last week okay you
+
+48:26
+this same thing for the ordinary least squares okay but we're talking about
+
+48:32
+nonlinear model now so
+
+48:35
+We are focusing, we still focus on the quadratic errors. We need to find out the split of the data. We split it into two parts.
+
+48:42
+Then for the left part, we use the Y bar for the left. For the Y part, we use the Y bar for the right.
+
+48:51
+And then for this split of the data, we hope to minimize this guy.
+
+48:55
+As I mentioned to you, if you have like five macro predictors, for each predictor, if you have like, for example, if
+
+49:03
+inflation. You try the threshold number from 1 .0, 1 .1 to 5 .0, okay? Then you might have like about 40 numbers there. If you have five macro predictors, you have 40 numbers there, how many combinations you need to calculate?
+
+49:21
+200 of them, okay? 200 of them you need to calculate. 200 combinations there.
+
+49:29
+And I can tell you that this is the major difference between model training like regression tree or model estimation like ordinary least-squared methods
+
+49:42
+For linear regression, you have the closed-form formula
+
+49:46
+You calculate alpha hat and beta hat, you can calculate it by hat because you have the closed-form formulas there
+
+49:58
+Then you do not have the closed-form formula. You need to calculate everything
+
+50:03
+As I mentioned five mega predictors and 40
+
+50:07
+Threshold numbers there. You need to calculate 5 times 40
+
+50:11
+200 of them. So that's the good-force calculation. So this is the first thing. Good-force calculation
+
+50:19
+should determine the optimal which mega variable we use, which threshold we use. It determines, okay, and then
+
+50:27
+It turns out inflation is the one selected, 2.5 is the one selected, so inflation less than equal to 2.5, inflation larger than 2.5, you split data into two parts, so that's the case
+
+50:40
+So that's the case for fitting the regression tree, you really change the model, you change the model, you need to optimize that, so that's the first split
+
+50:51
+For the second split, you do this again
+
+50:55
+So you do this again, for the low inflation period here, you do this again, we try all five predictors, we try all 40 threshold numbers there, we calculate 200 combinations of them, we find out the minimum one, and then you find out, okay, unemployment rate seems the best
+
+51:18
+Unemployment rate and 7.65 seems the best, then you find out your split criteria, your splitting rules here, so that's the case
+
+51:29
+You need to calculate everything, there's no closed form formula
+
+51:40
+Yeah, one minute now, this is reasonable, I think they need some time to install the package, one minute now
+
+51:52
+So you can also see that you can do everything for Doval, okay, so don't worry about this, if you, I, for all the questions in my course, okay, there's no difference for Doval interactivity, okay, you see I use the 2.19 model here, this is the September 21st tracing run, okay, I don't know, you can also change all these things as you want
+
+52:22
+So this is the lecture I created by Dongbao previously.
+
+52:27
+So this is something you can only use the Chinese AI to do that.
+
+52:31
+I think they will replace my job later in future.
+
+52:43
+Of course, this is AI. So I haven't figured out because my Dobao account is not good enough. This one is not good. Let the other one, because I have someone better than this one.
+
+53:06
+In the last class, we used linear models to forecast...
+
+53:10
+Yeah, this is the English one.
+
+53:12
+Today, we relaxed one key assumption...
+
+53:15
+But the slide is not changing, so it creates a couple of them for me, with my photo here, too.
+
+53:31
+Yeah, but anyway, so you can understand for one thing that sooner or later...
+
+53:38
+probably for next year I just create a couple of the videos there and then I
+
+53:42
+sit together with you with the next year for student if they have question they
+
+53:46
+raise their hand I answer and I do not need to repeat all those things they
+
+53:51
+generated by AI yeah I'm very happy that I am attending faculty here because I
+
+53:58
+believe that we are not going to hire any new faculties in future anyway so
+
+54:08
+so this one shows you how we use the forecast okay so so for regression tree
+
+54:13
+so easy below 2.48% go to the left about three quarters of the
+
+54:19
+observations there point one five percent point one point five percent as
+
+54:24
+the forecast if higher than this guy then about one quarter of the
+
+54:28
+observations there then one negative one point four percent this is the forecast
+
+54:32
+this is what we learn from the previous the first three
+
+54:37
+okay and as I mentioned we can continue to a second split okay so so to do the
+
+54:42
+those like good force computation for all of them again okay usually we'll
+
+54:48
+call this like relationship the parent the parent node and a child node okay so
+
+54:53
+this is the parent node for this child node this is the parent node for this child node
+
+54:57
+okay so the node and leaf they are the same thing in my lecture nodes here so
+
+55:06
+Then for the previous case, I focused on predicting market returns. Okay, then let's come back to
+
+55:13
+individual stock returns again
+
+55:16
+Individual stock returns, this is like I mentioned last time. This is a panel data set. Panel data set means that you have
+
+55:24
+number of months, you have number of stocks. So this is like a rectangular
+
+55:29
+So when we can split the sample
+
+55:33
+which dimension should we split?
+
+55:36
+We split over the macro regimes, high inflation, low inflation, probably the high inflation case, they only had the growth stock, it does not have the value stock.
+
+55:48
+The low inflation case might have the value stock, but it gives a great room for the growth stocks there, like technology stocks there.
+
+55:58
+If we consider the individual stock case, the retangular, the panel of the stock returns, you can consider two things
+
+56:05
+One is to split the core section
+
+56:09
+Okay, to split the core section means that I split them by large cap, small cap, medium cap
+
+56:16
+Okay, I split them by
+
+56:19
+growth stock, value stock
+
+56:22
+medium stocks. I split them like high volatility stocks, low volatility stocks. So there are many choices for you to split the sample into multiple parts, not only for macro regime, but also for stock characteristics too. So this is a very interesting problem.
+
+56:44
+I keep advertising my paper again so this is also by a lot of paper of me okay this is a working paper so I do like working on these problems there and I to show you that I teach the frontier research I'm doing every day so so so this is the case but I believe that so this gives you a little sense
+
+57:09
+Why we need nonlinear models there? Because this is the panel data for stock returns.
+
+57:15
+We want to understand, most people will not believe that the value stock and the growth stock, they follow the same function for prediction.
+
+57:24
+No people would believe that the growth will follow the same prediction function in high inflation and low inflation periods there
+
+57:31
+Of course they will change, but what should we do?
+
+57:35
+How can we look for those patterns from the data?
+
+57:37
+So that's why you need to read my paper
+
+57:40
+But I'm okay if you don't read that, this will not be tested
+
+57:44
+So don't worry about that
+
+57:47
+So this is my student graduated
+
+57:51
+This summer, he joined Lin-Fu Luo-Ting Han, so that's a...
+
+57:59
+Private school in Zhejiang, okay, so he also has the offer from Wuhan University
+
+58:05
+but I believe that because you can easily guess that the private one pay much higher than Wuhan University and
+
+58:12
+Even though he's from Hubei, so he
+
+58:15
+He moved to Zhejiang now, okay, and I'm quite happy for him
+
+58:23
+So come back to a different market. So
+
+58:28
+This is the, we use the same U.S. macro data for the Hong Kong market. Of course,
+
+58:35
+because U.S. inflation
+
+58:37
+affect the U.S. interest rate, and there are, as I mentioned last week,
+
+58:40
+there's a pact between the Hong Kong currency and the U.S. dollars there.
+
+58:44
+So every time you see the U.S., they change the interest rate, the HKMA in Hong Kong,
+
+58:50
+they will change the interest rate in a second day to keep the pact, okay?
+
+58:56
+So one thing we see here that is, if we train the tree model, again, it is inflation being selected
+
+59:05
+It is inflation being selected with a very similar number, 2.456, very close to 2.48
+
+59:14
+So what does this mean? This means that, yes, so this is really the target range, the fact
+
+59:25
+loss-fall, okay, at least for the past 10 years there. So 2.46 to 2.48 something, so this is a threshold the FAT will look for to increase the weight or reduce the weight, and because the FAT controls the weight change, and then it also implicitly controls the weight change in Hong Kong.
+
+59:48
+Okay, that's what you see here. And you also see that when in the low inflation period, this is the expected return for Hong Kong, 1.1% for Hang Seng Index every month.
+
+01:00:04
+When it is in high inflation period, this is expected return for Hong Kong Hang Seng Index, negative 2.4% every month.
+
+01:00:12
+Unfortunately, we are here now.
+
+01:00:20
+Okay, and an interesting thing that is...
+
+01:00:23
+Using the U.S. macro variables for predicting the U.S. stock returns there, the R-squared is negative 2.6%, but for Hong Kong stock returns, positive 4.7%, based on the data I had.
+
+01:00:38
+You can replicate the numbers there.
+
+01:00:40
+So, it tells you that...
+
+01:00:43
+Yeah, so the numbers in Hong Kong is really driven by the flow for US dollar
+
+01:00:47
+Because right now it is increasing the rate, the US dollar flows out
+
+01:00:52
+So you will see the market for the Hong Kong will not be that good based on this model forecast
+
+01:01:02
+Of course there are multiple reasons for that because Hong Kong is famous for too many IPOs every year
+
+01:01:09
+this is good for the investment bank business but this is not good for the
+
+01:01:13
+investors because there's like fun fun flow out from the old stock to the new
+
+01:01:19
+stocks there so this is not good for the investors okay so what does this light
+
+01:01:27
+tell you this light out tells you that if we keep growing the tree so this is
+
+01:01:33
+this is for if we do not split
+
+01:01:36
+This is for we split once, this is for we split, like we keep the tree like for four layers
+
+01:01:42
+So this means two layers, okay, four layers or eight layers there, so what do we see?
+
+01:01:48
+If you keep growing the trees, you keep splitting the trees there, then one thing you can expect that is, as I mentioned, the chain-link sample MSE
+
+01:01:58
+Reduce, reduce, and reduce, from 24, 21, 16 to 9
+
+01:02:05
+split, I don't know, 200 times, you get almost every observation for itself, then the MSE is zero, okay, so this guy can be reduced to zero, in theory, but of course, this shows the sign for overflipping, okay, overflipping there.
+
+01:02:29
+There's loads that we do not have that many regime. This is totally overfitting there.
+
+01:02:34
+For overfitting, so you can see that, it seems that splitting once might be the best scenario.
+
+01:02:42
+Okay, splitting once might be the best scenario. If you split twice then, if you split like three times, no, the validation MFC gets increased.
+
+01:02:52
+So this might be the optimal stopping point for 1248.
+
+01:02:57
+These might be optimal stopping points here.
+
+01:03:00
+So this example shows you that the tree model, again, just like everything we see from last
+
+01:03:09
+week, it is not complicated.
+
+01:03:12
+So too complicated does not mean the model is good.
+
+01:03:16
+Sometimes we want a small tree there.
+
+01:03:26
+Talk about the tuning parameters there. So depth one means that we have like two layers, just one split.
+
+01:03:33
+Depth two, then we will have like three layers.
+
+01:03:36
+And then, so as I mentioned, if you have like more depth,
+
+01:03:40
+if you have more layers of the tree structures there, they do not provide you a better validation MSE.
+
+01:03:52
+how many depth of the trees you look for.
+
+01:03:55
+So that is the tuning parameter. This is the same as the number of principal component analysis, number of PCs from last week, and the tuning parameter for last week and for which for last week.
+
+01:04:09
+The same thing. Tuning parameter. We need to think about how to choose the tuning parameter for this kind of location, like KK says there.
+
+01:04:17
+In addition to that, a lot of tuning parameter is the size for the leaf.
+
+01:04:23
+because for the leaf there, we calculate the good base or the leaf base Y-bar as the forecast.
+
+01:04:32
+You can think about that.
+
+01:04:33
+If the leaf does not contain that many observations, then you might not have a good calculation for Y-bar.
+
+01:04:43
+So you don't want the leaf to be too small. So we also need to control the leaf size there
+
+01:04:48
+So these two, they are like training parameter, the depth of the tree, the size of the leaf, those are training parameters there
+
+01:04:56
+To those of you who do not understand what I'm talking about, don't worry about this
+
+01:05:00
+You just ask AI to pick the training parameter for you
+
+01:05:03
+Okay, but you understand that
+
+01:05:05
+Training models, this is not like running regression
+
+01:05:09
+regression we call model estimation there's always closed form formula but
+
+01:05:15
+for model training we don't have closed form formulas there we just pick the
+
+01:05:21
+tuning parameter that maximize the performance in the validation sample and
+
+01:05:27
+then we will fit the tree okay so that might be the case so for prediction so
+
+01:05:42
+exam, this might be the questions there.
+
+01:05:44
+So you can see that, what is the question?
+
+01:05:48
+If by six months, we split them at inflation 2.5%.
+
+01:05:53
+So 2.5, we simply cut them into half.
+
+01:05:57
+So you can calculate the white bar on the left.
+
+01:06:00
+The white bar on the right, okay, this is the white bar on the left, this is the white bar on the right
+
+01:06:05
+If someone tells you that their inflation is like 2.0%, it should be on the left, the forecast should be 2%
+
+01:06:16
+If someone tells you that the inflation is 3.5%, then it should stay on the right, the forecast should be negative 1%, so this is a simple demonstration
+
+01:06:28
+for the simple calculation for regression tree.
+
+01:06:32
+So for these kind of numbers there, of course,
+
+01:06:35
+you understand I will not allow you to use calculator.
+
+01:06:39
+Calculate everything by your own.
+
+01:06:41
+Simple numbers there.
+
+01:06:43
+So that's just for one split.
+
+01:06:46
+How about if we have two splits?
+
+01:06:48
+So the two split here, so you can see that momentum and volatility, okay, momentum and volatility here
+
+01:06:56
+So for momentum, for example, if the first split that is the volatility, the market state for volatility is there
+
+01:07:04
+So right now we are in high volatility state, but sometimes we are in low volatility state there
+
+01:07:18
+How to construct the factors. They ran the stocks. Okay, for the momentum factors there, they ran the stock, they find out the winners, they find out the losers, and then the winners subtract the losers to create long-term portfolio. That's what we see from the momentum strategy.
+
+01:07:35
+Here, we can also construct the momentum strategy again, and then for the low volatility state, this is our winner, this is our losers. Okay, so once you create a long-term strategy, you see 0.6%.
+
+01:07:48
+on a weekly basis.
+
+01:07:50
+But during high volatility stage, the story might change.
+
+01:07:55
+This is the winner.
+
+01:07:56
+This is the loser.
+
+01:07:58
+But you get negative premium.
+
+01:08:01
+So what does this slide tell you?
+
+01:08:03
+The slide might tell you that not only for market return
+
+01:08:07
+predictions, for all those stuff related to factor investing,
+
+01:08:11
+they might also change based on regimes.
+
+01:08:15
+Okay, some factors, they only work, they only produce you alpha, they only produce you positive returns, or positive factor premium in some regimes, not all regimes there.
+
+01:08:27
+Okay, so this is the case I also want to mention here.
+
+01:08:31
+Okay, so...
+
+01:08:33
+If you are a long only manager, you do not want to trade on long short portfolios, that's also fine
+
+01:08:41
+What does that tell you? That tells you that if you want to trade on those high momentum stocks, because most people they want to trade Zang Sa Die, so this is momentum
+
+01:08:54
+So high momentum stocks there, you will understand that you can only trade Zang Sa Die when the volatility is low
+
+01:09:03
+Don't do this in the high volatility period, okay? This is the case of all these numbers I make them up, okay?
+
+01:09:10
+So don't believe this, so low investment advice at all, okay?
+
+01:09:14
+So, but this tells you the case, even for Zhejiang, Sade, there's also regime-based dollars, too
+
+01:09:21
+Volatility might be one regime-based dollar, and this is what, this is something I also observed in the U.S. data, too
+
+01:09:29
+Okay, and I will talk more about this in, so in class 5
+
+01:09:33
+I think it is a good point for me to stop now, and let's come back in A35, okay?
+
+01:09:52
+Previously, as I told you, if we have like 5 predictors there, if we have like, for each predictor, we have like 40 cut-off points for evaluation there, we need to calculate 5 times 40.
+
+01:10:04
+200 candidates for brute-force calculations there. That's the previous case for a simple one single tree.
+
+01:10:12
+Right now we are doing random predictor selection. We don't want to calculate 5, just calculate 2 each time.
+
+01:10:19
+Okay, so we calculate these two for the first split. We calculate these two for the second split.
+
+01:10:24
+We just simply calculate 2 each time for random predictor selection.
+
+01:10:30
+Okay, so add some randomness there. So you can guess that this is a second level for randomness and then
+
+01:10:36
+the goal is to make every tree very different. If they're very different, their forecasts are
+
+01:10:44
+less correlated, then reduce the prediction variance a lot. So this is something we want.
+
+01:10:51
+Okay
+
+01:10:56
+So this is the step to fit our weekly stock models there, okay, so this is also the same data set we see many many times
+
+01:11:04
+30 lagged stock characteristics, and then we want to predict the lags with excess returns, okay
+
+01:11:09
+So you draw your bootstrap sample from your training data set
+
+01:11:14
+Each split you consider the random subset of the characteristics there, so two levels for randomness, and then
+
+01:11:22
+The second thing you need to do that is you need to determine the training parameter
+
+01:11:27
+on the validation data there, the tuning parameter, how many leaves you want, what is the minimum leaf size you want, okay, you need to consider, okay, you need to figure out what might be the tuning parameter you need, okay, on the validation set for reducing the validation MSC, so that's the second step, so once you've determined those are the tuning parameter you want, you refit your data.
+
+01:11:55
+You will fit your model with all the data you have for the training and validation
+
+01:12:00
+With it, and then you obtain 103, you get 103 forecasts, you take the average of them
+
+01:12:07
+That's all, very simple
+
+01:12:11
+Okay, usually, so for the random split for characteristic, they will consider the square root, but I don't think this kind of things matter that much, you just follow the package standards, okay, so each package, they will provide you some, there are rules there for Python, for R, so this is not a big deal, from my perspective, this is not a big deal there.
+
+01:12:35
+Simply just follow AI, okay, they will give you the recommendations there. This is a small things
+
+01:12:41
+One one thing I believe that you still need professor to teach rather than AI to teach that is
+
+01:12:48
+There are too many details AI will ask you to pay attention to every one of them and and I will circle
+
+01:12:55
+This is the high line. Okay, so so this is the case
+
+01:13:00
+And that's why you need to attend the last lecture. I will try to tell you what I want to test for the final exam.
+
+01:13:08
+And this is something AI does not know.
+
+01:13:11
+So one student asked me, because next Thursday, that's the national holiday, October 1st, we do not have lecture on that day.
+
+01:13:22
+Don't come to campus on that day.
+
+01:13:30
+In previous year, if I have like 13 lectures there, I will leave the last one as the presentation.
+
+01:13:36
+For this semester, because we do not have 13 lectures, we only have 12, so I think on a syllabus, I list that, you'll recall your presentation.
+
+01:13:48
+And you can easily guess that how I will grade your presentations there. It must be done by trajectory T, plus my TA.
+
+01:13:57
+Okay, I will have three scores, one from Tragic BTU, two from my TA, and then I'll take the average.
+
+01:14:04
+And then I will find out the best one, and then I'll watch the best one.
+
+01:14:08
+For most of them...
+
+01:14:10
+I will try to watch a few minutes, but I cannot promise you I will watch for 10 minutes for that, because from, from, I think it is, for the presentation, for your final case there, you lost, so, last year, for class presentation, many students bring a paper, written down on a script, and then reading the script for 10 minutes there, you must think that I really hate that,
+
+01:14:40
+Okay, no one want to watch you reading the script, your eyes are all on the papers there, do not watch any audience down there, no one want to see this, okay, I believe that, you do not want me to read this for whole class, okay
+
+01:14:59
+So, and I also understand that it might be hard for you, so do not show me that you are reading the script on your video, you can
+
+01:15:09
+probably put the script here, you pay some efforts to try to show that you're really presenting yourself
+
+01:15:21
+then the AI cannot find out the bugs there, that should be fine
+
+01:15:26
+so pay some efforts, you need to practice a few times
+
+01:15:30
+so that's the case I see from last year
+
+01:15:33
+Very boring, but I have to sit there to watch all presentations there
+
+01:15:39
+But I guess that those students staying with me, they really hate that lecture. Okay
+
+01:15:45
+So this is my suggestion to you and that's the reason we do not have makeup class
+
+01:15:50
+You just record the video at home. Okay, so we will have 12 lectures the same as I did have last year
+
+01:16:00
+We really need to build this in one continuous thing
+
+01:16:07
+Yes, if you have three people, each one, you make sure how you connect those PPCs into one video
+
+01:16:19
+Mix it like a real one, okay?
+
+01:16:20
+Otherwise, the Chugabee team might realize that this is badly connected by three people there
+
+01:16:36
+As long as AI does not recognize, I'm fine.
+
+01:16:43
+So you can grade your video by AI first.
+
+01:16:49
+If Chachapiti gives you a high score, then you'll get a high score from me.
+
+01:16:54
+So it is quite easy.
+
+01:17:00
+Multiple times before recording the video there. I think I also listed on sleepers. Do not give me a file of more than
+
+01:17:08
+100 megabyte
+
+01:17:10
+50 megabyte something like that. So do not turn on your
+
+01:17:14
+high resolution camera. 720 might be good enough, okay?
+
+01:17:21
+You understand that?
+
+01:17:24
+We will not download your 500 megabyte files there. 50 might be enough. Okay, just 10 minutes there
+
+01:17:34
+Yes
+
+01:17:51
+So I
+
+01:17:53
+Do not, I do not need all, so at least I think I have some minimum requirement each person
+
+01:18:00
+How much, how many minutes there?
+
+01:18:03
+I think I have somewhere there, you need to ask Judge VT what I record, what I do.
+
+01:18:09
+So, a recorded video presentation, no more than 10 minutes, okay.
+
+01:18:14
+Every member must deliver at least 2 minutes of the substantive presentation there.
+
+01:18:21
+Submit one MP4 file, okay, so you see that I have very clear requirement.
+
+01:18:27
+No other format, MP4. If you don't know how to convert your file into MP4, then I don't think you can be a master student, okay?
+
+01:18:36
+80 megabytes, so this is my requirement.
+
+01:18:39
+If you don't know how to do it, ask AI. If after asking AI, you don't know how to do it, then I'm sorry.
+
+01:18:45
+Okay, so this is the case.
+
+01:18:52
+Any other questions?
+
+01:18:56
+Yeah, so I think I listed every, yeah, so this is the...
+
+01:19:01
+So for all questions, just with syllabus. I keep updating it because you might not notice that I just updated syllabus today.
+
+01:19:11
+So when I find out there's a bug, I will update the syllabus. And you can easily guess how I update that. Codex.
+
+01:19:18
+I just type, I want to add something, and then they add something there.
+
+01:19:23
+So everything is here, just with syllabus there.
+
+01:19:30
+Then the last method, gradient boosting. So you will also see a lot of this kind of like Chachibichi make cartoons, okay, in future slides, okay?
+
+01:19:41
+I started to add one this week. So what are we doing?
+
+01:19:46
+gradient boosting there. So this is a lot of method, we also try to make a lot of, but we try to make a couple of trees there, or we try to make some simple model first.
+
+01:19:57
+So you can see the step, simple model, we try a simple model first, say a very shallow tree, like two layer, three layer, okay, very shallow tree there.
+
+01:20:08
+And then, after this shallow tree, a simple model,
+
+01:20:13
+We calculate the residual, okay, so this is the simple models there
+
+01:20:17
+And then we calculate the residual, EIM, so this is the actual return, this is the forecast return
+
+01:20:25
+This guy subtracted, this guy you get the residual, okay
+
+01:20:30
+And for the residuals there, so this is the genius part for the gradient boosting method
+
+01:20:36
+We feed a larger tree on the residuals
+
+01:20:42
+OK, so now this time we are not fitting the tree on return, on the actual return, we fit another tree on the residuals there, so training residual we want to fit a tree here, and then we create a new forecast, the new forecast that is the previous simple tree plus this
+
+01:21:07
+error-fitting tree, multiplied with a learning weight, so you see current forecast plus correction times learning weight, so this is the updated forecast, I believe that this cartoon is very good, okay, this is exactly the steps we are presenting here.
+
+01:21:27
+You create some simple forecast first. You always get some residual and then you generate a model based on the residual and then we call that model correction model, correction tree, okay, and we call HM here, HM here. And this HM is the correction tree. It multiplies with some...
+
+01:21:50
+running way, okay, V is the running way there, can be point one, can be point two, and then this guy blasts on your current forecast, so the previous simple models there, then you have the updated forecast, okay, back to the clock here, so you can see that once you have the simple tree, you still have bunch of the residuals here, and you can see that
+
+01:22:19
+Those residuals, many of them are large, are very large, okay, many of the residuals there, because we are using just the average here, the average is close to zero, so many of the residuals, they are close to the actual returns, this is true, okay, if you use simple tree for prediction, many of the residuals, they are close to the actual return
+
+01:22:44
+So, we are fitting a larger correction tree based on the residuals, okay?
+
+01:22:52
+So, back to the cartoon.
+
+01:22:56
+So, boosting, that is, then you get one correction.
+
+01:23:01
+How about we get a larger correction?
+
+01:23:03
+So, based on this, so F2, so say F2, then there's again residuals again.
+
+01:23:15
+residuals, you fit a second correction tree, and then you add your second correction tree here, you continue to update your forecast, so that is gradient boosting, each time you have a new learning way, but you can see that, follow this algorithm, so the second correction tree, the learning way should be V-squared, the third correction tree, the learning way should be V-cubed, okay, V to the third,
+
+01:23:45
+So what does that mean?
+
+01:23:46
+So there's no need to add too many correction trees. If your learning weight is 0.5
+
+01:23:53
+then you might can add like, I don't know, 5, 6 correction trees at most. If your weight is 0.2,
+
+01:24:01
+3 and 4 correction trees at most, 0.1, 1 or 2 correction trees are sufficient.
+
+01:24:08
+Okay, so you will see that it's based on a learning way. If the learning way decay very very far, say 0.1, you only add one or two correction trees, because you understand that once we take to the power of three, 0.001, the correction tree does not matter. Okay, we just stop there. So that's the case. Okay, so let's see.
+
+01:24:32
+Here, for one example, if we have, again, six months of the data, the simple model gives you a forecast 0.5, okay, then the second step, you calculate the residual state.
+
+01:24:46
+This is the actual return. This is the residual. Residual subtract the forecast, you'll get a, so return subtract the forecast, you'll get a residual there, okay?
+
+01:24:55
+And you, again, then you need to fit the correction tree based on the residuals, based on the residuals here, okay?
+
+01:25:04
+You need to fit a correction tree based on the residuals here.
+
+01:25:08
+And based on the value, 2.5%, you find out the correction tree gives you either 1.5 or negative 1.5
+
+01:25:16
+So this is the correction tree, also a two-leaf tree, 1.5 or negative 1.5 is there
+
+01:25:22
+Then you update your forecast, F1
+
+01:25:26
+F1 equals to F0 plus the learning weight times the correction tree forecast
+
+01:25:33
+Then you have your updated forecast there
+
+01:25:38
+So when you do a gradient boosting, usually the correction tree and the model and the F0 model, they are all simple models there.
+
+01:25:47
+We do not play with large models, just play with simple models there.
+
+01:25:52
+We let the subsequent model to correct the previous procedure.
+
+01:25:59
+We do not say we grow a tree for five layers, six layers, seven layers. We do not want to do something for that.
+
+01:26:05
+We grow a tree with like one layer, two layer. Okay, might be sufficient. And then we grow
+
+01:26:12
+correction trees to continue to correct the residuals there. So that's the key idea for boosting.
+
+01:26:30
+Okay, so there are like two tuning parameters here. One is the learning weight, of course, I tell you about that. If learning weight is 0.5, so you might leave like 5 or 6 trees. If learning weight is 0.2, probably...
+
+01:26:46
+3 or 4 trees there. If learning weight is just 0.1, one or two trees might be sufficient, because you know that the
+
+01:26:54
+subsequent trees, that's the 0.1 multiplied by 0.1 multiplied by 0.1,
+
+01:26:59
+the weight is very very small. Once it's below 0.001 something, it does not matter.
+
+01:27:05
+We can just stop.
+
+01:27:06
+and for the and and and that also related to tree count there okay so so
+
+01:27:12
+these two parameters they're related so we also choose them based on the
+
+01:27:17
+validation sample so it's very similar to what we see in the past so
+
+01:27:24
+let me
+
+01:27:24
+summarize a little bit to compare these two idea so these two on on samples
+
+01:27:30
+by the way for the boosting this simple model or this correction
+
+01:27:39
+any other methods, linear regression, LASA, REST-LAT, PCA
+
+01:27:45
+yeah there can be any methods there so I'm not saying that you can only use
+
+01:27:50
+regression tree okay you can use any method you want you can even use random
+
+01:27:56
+forest if you want okay just that might be too boring
+
+01:28:01
+So this is just an idea, just like bagging, just an idea for on-sample strategies there.
+
+01:28:08
+How to grow multiple models, how to create multiple models and combine them.
+
+01:28:12
+So when I summarize here, you can see that for bagging, we grow multiple models and then we take a simple average.
+
+01:28:21
+Okay, because each model, we do not have the sequence. We fit the model on the bootstrap samples there, on the selected predictors, on the randomly selected predictors that are there. Okay, so that's the bagging idea.
+
+01:28:37
+But for boosting, we fit the model with a sequence
+
+01:28:40
+Because you know that the second model is to correct the first model
+
+01:28:44
+The third model is to correct the first two models
+
+01:28:48
+The fourth model is to correct the first three models
+
+01:28:50
+So there's a sequence for the boosting there
+
+01:28:53
+So for bagging, because there's no sequence, we take a simple average
+
+01:28:58
+for boosting, because they are with a sequence, so we need the learning way to control how much weight we give to the second model,
+
+01:29:06
+how much weight we give the third model, fourth model there.
+
+01:29:09
+Okay, we need the learning way to control the weight there.
+
+01:29:12
+So these are two major things here.
+
+01:29:15
+Okay, and for all others there, I think...
+
+01:29:19
+Yeah, I do not quite care about the orders. I just want you to understand that these two schemes called on-sample strategies,
+
+01:29:26
+they can be applied to any
+
+01:29:30
+methods, not only trees.
+
+01:29:33
+The reason you see trees is because regression tree might be the ideal place to apply these two ensemble strategies
+
+01:29:42
+Like I grow 100 trees, it is a beautiful story, random forest, fancy name
+
+01:29:48
+But it can be applied to any other methods there
+
+01:29:53
+So this is the key message I want to give you
+
+01:29:59
+Time to ask questions. So this is a difficult one.
+
+01:30:05
+So I promise that I will also have short answer questions in the final exam.
+
+01:30:10
+Those are transformed by the multiple questions there. I just erased the multiple choices.
+
+01:30:18
+So all the answers should be short.
+
+01:30:20
+If you are writing too long...
+
+01:30:23
+I believe that the TA will penalize you, okay, so short answer, so based on this, because I understand that even for the TA, okay, when they're, when they're students taking exams, that they always try to write down something, write down more things there to kill the TA, but don't write too long, okay, if you're writing more than two sentences, it must be wrong, so, so any volunteer?
+
+01:30:51
+A tree splits at inflation 2 .5%, so there are some diagnostic tests, which one might be a warning, or identify two warning signs there, so any volunteer for the question here, yes please, yeah, the lady in blue, you will answer the second one,
+
+01:31:30
+okay, what is the second one, so
+
+01:31:46
+you want to change leaf size 12 to
+
+01:31:50
+to 50, to 30, 40, okay, yeah, this can be a good answer, okay, because there's no correct answer for this question, I think there's two good warnings there.
+
+01:32:03
+May I ask your name?
+
+01:32:05
+Phung Chiang Lin.
+
+01:32:26
+Gentlemen, so can you answer the second question?
+
+01:32:28
+You also raised your hand.
+
+01:32:32
+No?
+
+01:32:33
+Okay, I'm sorry.
+
+01:32:35
+Any other one for the second question?
+
+01:32:37
+Whether the threshold is credible enough to guide a financial decision?
+
+01:32:42
+I think I explained this previously
+
+01:32:48
+yes
+
+01:33:12
+that's true okay may I ask your name
+
+01:33:14
+again? Wong Chun Kee so
+
+01:33:20
+I so I think what I said in there that is because we kind
+
+01:33:26
+of know the guidance for central band is about 2% so for 2% for the guidance then
+
+01:33:32
+this 2.5% seems reasonable okay because if it is like 2.1 2.2% the central band
+
+01:33:41
+Like big changes there, but if above something they might start some big changes. Okay, for example right now, okay
+
+01:33:48
+So this is the case
+
+01:33:51
+Propose one additional validation track without looking at the frozen test
+
+01:33:58
+Without looking at the frozen test. So even for me, I don't know what this question means, but any idea?
+
+01:34:15
+The tree on rolling time when those are released to say is 2.5%, the threshold constantly show up.
+
+01:34:31
+I don't think this is what I'm looking for.
+
+01:34:33
+How about you?
+
+01:34:35
+I think we should use the region strategy
+
+01:34:39
+One is that maybe the track rate, interest rate level
+
+01:34:44
+Another one is like the energy price level
+
+01:34:48
+like fuel or oil or gasoline, something like that
+
+01:34:52
+or a combination of two of these things
+
+01:35:01
+It seems both of you make some point.
+
+01:35:03
+Actually, I don't know what might be the best answer now.
+
+01:35:08
+Let me ask Jack GPT.
+
+01:35:11
+Oh, can we just add some noise into the regional data?
+
+01:35:18
+No, this is a fancy way to do that.
+
+01:35:20
+This is something what I look for.
+
+01:35:23
+Where is my folder for this course?
+
+01:35:26
+I don't have a folder for this course.
+
+01:35:28
+Yeah, OK, forget about this.
+
+01:35:31
+Anyway, so for, I think for one thing that is, I don't think this is a good question to ask, but I will give both of you a bonus point, from my perspective that is, for me, I think I keep telling you that I like picking, tuning parameters manually, okay, I would like, I do not like complicated models, for principal component analysis, I always pick three and five, for growing a tree, I always pick two layers or three layers.
+
+01:36:01
+Okay, so if you, for any validation check, so that's the thing I would want to do.
+
+01:36:10
+Okay, but I believe that for the procedures there, we will have the data for training, validation, and testing.
+
+01:36:17
+So once you use the validation data to determine the training parameters, rather than picking them manually, you need to refit the model again.
+
+01:36:25
+But once you refit the model, you believe for one thing that is, the tree structure might change.
+
+01:36:32
+Okay, this is reasonable. This is reasonable. The tree structures, they might change. They might not be the one you used to pick only using the training dataset.
+
+01:36:45
+This is okay because once you fit those like LASSO, PCA, you also see once you include all the dataset, they change. So this is fine. But this might hurt the interpretation for them.
+
+01:36:58
+I think interpretation is always more important than those little tiny statistical improvements
+
+01:37:05
+Okay, so I would prefer picking the tuning parameter by myself
+
+01:37:10
+Okay, so may I ask your name?
+
+01:37:13
+Yes, Yu Yang
+
+01:37:18
+May
+
+01:37:26
+I ask your name?
+
+01:37:29
+You
+
+01:37:33
+have to forgive me, I always forget others' names
+
+01:37:36
+I know I give you a couple of times
+
+01:37:40
+you can answer one more question okay
+
+01:37:44
+so so this is another example to show you
+
+01:37:52
+that okay I think I talk about the momentum strategy okay the momentum
+
+01:37:55
+strategy there's there's this is another example to show you
+
+01:38:00
+What kind of things I might want you to understand, okay, so this table just summarizes the tree structure we just see
+
+01:38:08
+Volatility high, this number, volatility no, we try these two numbers there. Okay, we try these two numbers there. So, so if
+
+01:38:18
+If you, we are in such a regime for high volatility and then momentum, this guy, then what might be the forecast for this stock, okay, then you see this is the 0.2%, negative 0.2%.
+
+01:38:32
+So this is how to width the tree by tables, okay.
+
+01:38:37
+So I give you a couple of the structure.
+
+01:38:39
+I give you a tree structure.
+
+01:38:41
+That's easier. I think the table should be straightforward because you already see that 1.5, less than 2%, negative 0.4%, less than 0, so we choose this guy.
+
+01:38:51
+Okay.
+
+01:38:53
+Oh, this should be the last slide for the random predictor set.
+
+01:38:57
+So as I mentioned, I think I mentioned this, I already mentioned this previously, the reason we pick the random...
+
+01:39:04
+predictor subset, that is to make those trees more dislike each other, okay. If you simply just
+
+01:39:13
+bootstrap the sample, sometimes you'll find out that the first split, they are still the same.
+
+01:39:18
+If the first split, they are still the same, then they are still highly correlated. We want the
+
+01:39:24
+correlation role to be as low as possible. So that's why we add the second level randomness there.
+
+01:39:32
+OK, and that's the random, that makes one of the most famous algorithms for random forest
+
+01:39:39
+OK, if
+
+01:39:46
+you happen to want to read papers, OK, so as I mentioned to you, so my papers is really based on boosting and random forest too
+
+01:39:57
+So I think I have papers like this one, I don't know where is the paper
+
+01:40:08
+Yes, so this one is really has those like boosting and random forest stuff
+
+01:40:13
+If you happen want to read some academic papers there, this is the one. If you want to read the short version
+
+01:40:19
+I think I have the short version on somewhere at CTU. So if you check the
+
+01:40:25
+CTU
+
+01:40:27
+research story something like that
+
+01:40:34
+So for this one, I do have the boosting and random forest
+
+01:40:50
+Okay,
+
+01:40:58
+the title is called, so this is also my student, he's in USTC now, Zhongke Da, so this is my first student.
+
+01:41:09
+So you can see that all of them, they are really, we call growing efficient, so this is usually the tree, how we split the cross-section, and we try to grow multiple trees on this, okay?
+
+01:41:22
+And the so-called growing efficient frontier, so this is the efficient frontier, how we grow the trees to the limit for the efficient frontiers there.
+
+01:41:30
+This is on a U.S. stock case.
+
+01:41:32
+If you want to read the short story, I think there should be one.
+
+01:41:37
+Which one is mine?
+
+01:41:51
+I
+
+01:41:55
+think it's easier, I find it myself, I
+
+01:42:03
+don't know, it should be somewhere, it
+
+01:42:13
+should be somewhere, why so many research stuff, this is 2024 now, yeah, I don't know, so, I think it should, they asked me to write something in 2025, is it 2026, it should be somewhere around here, 2025,
+
+01:42:33
+Where is the research? Yeah, gone, I don't know.
+
+01:42:36
+So, oh, I know where I have that.
+
+01:42:41
+Where I have that, I also add to my website.
+
+01:42:49
+News.
+
+01:42:54
+Yeah,
+
+01:42:56
+this one.
+
+01:42:58
+Okay, so you can read this here.
+
+01:43:03
+This is the AI model we claim, but of course, I understand that there's no AI at all.
+
+01:43:11
+This is a simple story, but I don't know why CTU has
+
+01:43:21
+so many newspapers on this article.
+
+01:43:25
+I think CTU has some kind of relations with the Hong Kong local newspapers there, so they keep sharing this paper everywhere, so if you search it.
+
+01:43:38
+The paper names, so you will still see on those newspapers there, but if you're interested in tree models there, so that's what I like, okay?
+
+01:43:48
+Then back to my first version for AI, neural network, okay, neural networks there.
+
+01:43:55
+For neural networks there, so this is also something quite interesting, so previously when you try to predict something, predict something, we run regression, we run regression and then we have the momentum, volatility to predict the forecast
+
+01:44:11
+But what is neural network? Neural network tries to transform the predictors a little bit
+
+01:44:20
+They do not show, they do not use M and V directly. They transform them, I don't know, M to square, V, exponential of V, okay, they transform them in nonlinear function, like H1, H2, H3, and then they create a forecast based on this transformation.
+
+01:44:39
+Okay, you can see nonlinear combinations, what I call here. Then they forecast. Of course, they can transform for one layer, they can transform for multiple layers here. Okay, transform for multiple layers there. So that is something called multi-layer neural network. You can think about for one thing, the human knowledge.
+
+01:45:03
+How humans discover momentum is a useful predictor.
+
+01:45:07
+How researchers discover volatility is a useful predictor.
+
+01:45:12
+They observed them from the original war dataset.
+
+01:45:16
+They tried very very hard to create a nonlinear transformation for momentum.
+
+01:45:22
+They tried very very hard to create a measure for volatility.
+
+01:45:32
+Human researchers, this is like act-like neural network, feed-forward neural network there.
+
+01:45:39
+We will start from the original data set, and then you create a so-called momentum,
+
+01:45:44
+you create a so-called volatility through nonlinear transformation for the goal for forecast there.
+
+01:45:51
+So the feed-forward neural network represents something for, I will call it, okay,
+
+01:45:58
+Human thinking, how we do it in five levels. I also have one paper. So this is a lot of paper. It took me many, many years to publish. I talked in afternoon session. So I would also call to say that, for example, for factors there, this graph, I like, so I like this graph.
+
+01:46:22
+So we observe those paths return t-minus 1, t-minus 2, t-minus 3, to t-minus 60
+
+01:46:28
+And then humans doing the deep thinking there, or deep learnings there, okay?
+
+01:46:34
+They try to combine them, something called momentum
+
+01:46:37
+They calculate return from t, return from negative 2 to negative 12
+
+01:46:42
+They call something for short-term reversal, just the last month
+
+01:46:46
+They call something for long-term
+
+01:46:50
+long-term reversal return from T-minus 13 to T-minus 16. They call something called industry momentum
+
+01:46:58
+They multiply with the industry specifications there and then they create the long-shot strategy called factors
+
+01:47:05
+Those things I show you last week
+
+01:47:07
+Okay, and then they create the factors there and then they try to explain the cost section for stock returns
+
+01:47:13
+So this is the same idea as I generate this slide
+
+01:47:17
+that is
+
+01:47:21
+You already see that I totally believe in this kind of shit, okay?
+
+01:47:25
+But I understand that they do not work in reality, but I like this structure
+
+01:47:31
+This is the usually academic people thinking about so they tell you that how human researcher they convert
+
+01:47:38
+They convert raw data set to something
+
+01:47:41
+Interpretable and then do something to focus. Okay, they tell you for something for that. But what is the difference for neural network here?
+
+01:47:49
+The neural network, that is, the key part that is, once you create a forecast, they will give you something for backward propagation, the backward propagation that is, they will give you some feedback, okay, probably your transformation is not very good, you should not put X power 2, you should put X power 3, okay, you should put X power 3 plus 5
+
+01:48:16
+Why this makes sense? It might not make any sense, but they'll give you some feedback, help you to adjust the formula.
+
+01:48:24
+You should put m times v, you should put m times v squared, okay, all those things there.
+
+01:48:31
+Okay, so those are neural network backward propagations there. So this is also the same as like human thinking
+
+01:48:38
+Okay, I tried to create a formula. It does not work. I tried to create another one. It works better now
+
+01:48:45
+I think this direction helped me to correct that. I continue to create another formula based on the previous one
+
+01:48:51
+It is better now
+
+01:48:52
+So this backward propagation also mimics the human thinking there based on the forecast, based on the object there
+
+01:49:00
+Okay, so this is the case. I think it is really interesting. If you happen to want to see, I do have at least two papers to do, neural network, okay, V4 neural network there. So I believe that these are also quite interesting things there. So neural network is my second favorite model after panel 3.
+
+01:49:22
+Okay, so let's compare neural network, this V4 network, with the linear models there.
+
+01:49:29
+For the linear models, because we have the closed form formula, you don't have the chance to adjust your linear combination, how we combine the predictors, how we transform the predictors, should we calculate momentum using return from 2 to 12 months, or 3 to 12 months, or 6 to 12 months, which one we should use, so you need the feedback from your fitting laws, help you to correct the formula, so this is the signal response
+
+01:49:58
+The second thing that is, for linear models, if you want to play with interaction, you need to include x1 times x2, those kind of things there
+
+01:50:06
+But for neural network, they combine them for you, also based on the feedback from the fitting laws there
+
+01:50:13
+And they combine a lot of nonlinear combinations there
+
+01:50:17
+So that makes the neural network
+
+01:50:21
+We add to the laws, fitting. We add to that. So this is something I really like.
+
+01:50:26
+They mimic the human thinking behavior.
+
+01:50:30
+You can just like the figure I show here.
+
+01:50:34
+I say that all those research by mining factors, mining anomalies in the finance research, in practitioner side.
+
+01:50:45
+They mine hundreds of them, thousands of them. All these things can be automated by deep learning.
+
+01:50:51
+Okay, they can be automated by deep learnings there. Okay, so this is the case for the paper I present here.
+
+01:51:01
+Okay, so what is the loss function? The loss function, again, is very similar to the one you see for ridge regression or for lasso regression.
+
+01:51:13
+They always have one path for the quadratic loss. Okay, for the quadratic loss here, they change a little bit.
+
+01:51:21
+This guy, previously we have a linear function, now we call that F-theta, because the function is too complicated, we don't know how to call that, just call it F, okay, we don't write down the functions there, so you never see people write down the neural network function there, you only see them to write, to create the plot, okay, you only see them to create the plot there, multi-layer plot
+
+01:51:45
+And in addition to this, because fitting a neural network, there are many, many parameters there.
+
+01:51:52
+Okay, why there are many parameters?
+
+01:51:54
+Because you might have multiple layers.
+
+01:51:56
+You will have many hidden neurons there.
+
+01:51:59
+This guy we call neurons.
+
+01:52:00
+You will have many hidden neurons there.
+
+01:52:03
+So each neuron, you might have many parameters.
+
+01:52:06
+And now you have multiple layers.
+
+01:52:08
+new one, and you have multiple layers, so you can guess that fitting any neural network, it is easy to get more than 100, more than 500, more than 1,000 parameters, so you need to have some shrinking of penalty on parameters there, so you can see that this is very similar to which, or lasso, okay, all those things there, a quadratic loss plus a penalty.
+
+01:52:35
+Okay, but the interesting thing that is, because for neural network, they do, they use, they, the activate, the activation function, they transform the data, which is different, rangeable, so they can, they can train this very, very fast.
+
+01:52:55
+I can tell you for one thing, the neural network, this is not something new.
+
+01:53:00
+in recent 15 years. This is something published 40 years ago. But 40 years ago, we do not have the computing resources to really fit the neural network models there.
+
+01:53:11
+Until people find out that GPU can be used for parallel matrix computation.
+
+01:53:22
+If you just do any calculations there, GPU is not as good as CPU. Of course, CPU is way better for single calculations there.
+
+01:53:34
+However, GPU is very, very convenient for parallel computing.
+
+01:53:42
+For parallel computing, especially for matrix calculations there. So it makes GPU very easy to fit neural network.
+
+01:53:51
+That's why you see most deep learning paper they were published since 2010.
+
+01:53:59
+When Jensen Huang tried to push GPU to sell them to game players and then
+
+01:54:06
+researchers find out that, yes, this kind of things can be used for scientific calculation, scientific computing
+
+01:54:12
+and right now, game players, they cannot afford the GPU now
+
+01:54:18
+okay, so this is one case for activation function
+
+01:54:25
+so when you have M and V, we transform to H, what is the transformation?
+
+01:54:30
+so there's something called WETLOO activation
+
+01:54:33
+WETLOO activation that's the
+
+01:54:36
+Max, 0, and A times M plus B times V. A kind of B plus 1 here, B times B negative 1 here, okay?
+
+01:54:45
+So this is a simple web loop activation.
+
+01:54:48
+If you search Wikipedia,
+
+01:54:53
+there are more than 10, more than 15, more than 20 commonly used activation functions there.
+
+01:54:59
+For example, in this paper, I use something called Softmax.
+
+01:55:02
+Softmax is also a very commonly used activation.
+
+01:55:05
+function. I use that to approximate something, to approximate
+
+01:55:11
+stock sorting. So I think I have the block here. So I use the softmax function to approximate
+
+01:55:17
+ranking stocks, because ranking stocks is not something different-rangeable. The softmax
+
+01:55:23
+function is different-rangeable, if you still remember what means different-rangeable from
+
+01:55:28
+your calculus course. So softmax can be a good approximation for ranking stocks there.
+
+01:55:34
+So for this paper, that's why we generate this kind of strategy for ranking stocks there.
+
+01:55:40
+You can also guess that if you work on this kind of research, practitioners, they like this research way more than my academic colleagues there, but right now we have more people that care about this kind of quantitative investment research now.
+
+01:55:58
+So, activation function, you transform m and v, so, for example, if m is 1, v is 0.5, but m is larger than 0.5, so the h equal to 0.5, and then h equal to 0.5, we multiply with 0.4 plus 0.1, you get 0.3.
+
+01:56:16
+If, say, m is 1, v is 1.5, so m is less than v, so you output 0. 0 times 0.4 plus 0.1, you get 0.1.
+
+01:56:27
+Okay, so that's a simple activation functions there. And if you don't know which one to choose, then always choose wet-loose.
+
+01:56:34
+So this is my simple choice. And if you ask me why this is optimal, it is not optimal.
+
+01:56:40
+It is just simply I forget other names. Okay.
+
+01:56:43
+So I think this one is okay.
+
+01:56:46
+Because for many cases there,
+
+01:56:48
+so this is also something I tell you this is the activation function choice
+
+01:56:53
+sometimes they do not matter that much okay don't care about too much for this
+
+01:56:58
+because usually there's something I tell students, students keep asking me those
+
+01:57:03
+unimportant question so I tell you that which one is in which one is important
+
+01:57:08
+multi-layer is important the choices for this is not important okay but this
+
+01:57:15
+slide is
+
+01:57:17
+important here, so for neural networks there, so what is the tuning parameter, so there's no tuning parameters here now, okay, probably there's one for the cores, the lambda here, but usually picking tuning parameter is not the case for neural network, what they want, so as I mentioned to you,
+
+01:57:37
+You transform the data, you get a forecast, you get a feedback from the fitting loss there
+
+01:57:43
+You get feedback there, you transform it again, and then get a lot of feedback
+
+01:57:49
+And then you transform it again. So each time it is called an epoch
+
+01:57:54
+Okay, you do a whole loop for this
+
+01:57:57
+So for neural network, the case that is if you want to avoid overfitting, we usually try early stopping
+
+01:58:05
+That is, do not fit too many times. Do not go too many epochs there.
+
+01:58:11
+So this is the case to show you. If you try 10 epochs there, then you get chainlink MSE 0.025, 30.021, 60.018.
+
+01:58:22
+You see that more epochs decrease in chainlink MSE, but for the validation MSE here, this is the optimal one.
+
+01:58:30
+Okay, so it should stop at some point.
+
+01:58:33
+Do not waste too much electricity, this is the same thing I talk to my PhD student now
+
+01:58:39
+They are wasting too much electricity on random unimportant things there
+
+01:58:47
+So
+
+01:58:54
+when do we use neural network prediction?
+
+01:58:57
+If you want to predict the market, it's only like we have 200-300 months of the data
+
+01:59:05
+Probably not enough, because you will easily have
+
+01:59:10
+hundreds of parameters to fit. So I only use neural network for predicting individual stock returns because I have thousands, thousands of observations there, okay.
+
+01:59:21
+So for market return, forget about neural network. Try simple models like tree, okay.
+
+01:59:28
+But for individual stock returns there, it is possible because you have tons of observations there, thousands of observations there, then you can fit your neural network there.
+
+01:59:39
+okay so that is the case so that so that is the case there in a lot of case I
+
+01:59:45
+also need to emphasize that I think I emphasized that in the first half when
+
+01:59:51
+we when we split the data into multiple paths there when we bootstrap the data
+
+01:59:57
+When we split it into multiple parts there, for sample data there, for individual sample data there, we only consider the bootstrap sample over time.
+
+02:00:13
+Why is this? Because I tell you that there's huge cross-sectional correlation between stocks.
+
+02:00:22
+You see the stock, they go up, they go down, all together, from time to time, from time to time, okay?
+
+02:00:27
+So, but over time, you will see stock returns, their serial correlation is very low, which means that
+
+02:00:36
+today's return barely predicts tomorrow's return.
+
+02:00:39
+Okay, so the serial correlation is very, very low. So why we always
+
+02:00:45
+focus on things?
+
+02:00:47
+We split the data, chain-link sample in the past, validation sample predict the future.
+
+02:00:53
+We focus on the date.
+
+02:00:54
+We do not focus on the cross-sectional split for this kind of like bootstrap cases there
+
+02:01:00
+because there are huge cross-sectional correlations there.
+
+02:01:05
+If your goal is to do prediction, then this is not the case.
+
+02:01:18
+2% for the day, Jingdong return go down 2% for the day, so what's the guess for Alibaba?
+
+02:01:24
+Of course go down.
+
+02:01:26
+So this is the case.
+
+02:01:30
+So this is the numbers from the different market.
+
+02:01:38
+So I need to explain one thing first.
+
+02:01:41
+Why the Chinese numbers here, for the Asian market here, this is so negative.
+
+02:01:45
+It is because right now we are using the U.S. predictors to predict the Chinese market
+
+02:01:53
+As I told you in the first half, we are experiencing different cycles now
+
+02:01:58
+The U.S. is inflation, the mainland China is deflation
+
+02:02:04
+You use the inflation regime to predict something for deflation economy, then of course you get very bad
+
+02:02:12
+forecast errors there. So this makes sense, okay. So for the case, you'll see that we fit three models, decision tree, gradient boosting, and random forest, one by one, okay.
+
+02:02:25
+And for the Hong Kong case, it works for somehow, for decision tree and random forest, as I told you, because
+
+02:02:33
+Hong Kong has the pact with U.S. So if the most important two predictors are inflation and federal fund rate, then of course they also affect Hong Kong too.
+
+02:02:46
+Okay, so for these two things, we're okay for that, but for this part, we also understand for this, okay, we understand because we're experiencing different cycles with U.S. now
+
+02:02:58
+You use the U.S. predictors, a lot of good starting points
+
+02:03:04
+Okay, this is also the plot I want to show you, okay, this is the plot, so why I want to show you this plot here
+
+02:03:15
+I think I also told you in the first half, okay, 9 to 4 today, two years ago there's a huge jump for stock, two years ago for the week from 9 to 4 to October for 9.30, okay, so many people, they do not want the seven-day break for the October 1st.
+
+02:03:35
+Because they keep watching the stock market go up and go up. For those weeks there, I think the Asian market jumped more than 20%.
+
+02:03:41
+The Hong Kong stock market jumped more than 30% for one week.
+
+02:03:46
+Because the PVOC, they followed the US factor which deals the way, and then the PVOC and SEC keep saying that they boost the SOE firms.
+
+02:04:07
+They have many policies then, so this is the 924 policy announcement.
+
+02:04:12
+The reason I show you here, I just want to show you for one thing.
+
+02:04:17
+This is something you'd never expect linear, nonlinear model can pick up.
+
+02:04:24
+Okay, no one can predict this kind of thing, so this is the beauty for the Asian market, they always surprise you
+
+02:04:35
+Okay, so this is why foreign hedge funds cannot kill the local hedge funds there, because the foreign hedge funds, they do not understand the Chinese markets there
+
+02:04:46
+Okay, and this is something I do like that
+
+02:04:53
+Do not believe that you learn some statistic, you learn some AI, and then you can trade on the stocks. Do not believe that, okay?
+
+02:05:00
+You need to learn politics, too. Okay, so there are many many things to learn and
+
+02:05:05
+This is why I present this slide here
+
+02:05:09
+Okay, and this is the slide to show you, okay, we compare the methods from last week and the methods from this week, okay,
+
+02:05:19
+whether which is the best linear selection method, which is the best nonlinear selection method there.
+
+02:05:25
+For the Hong Kong market, the Hong Kong market, it seems that both the linear and nonlinear methods do quite well for out-of-sample prediction.
+
+02:05:34
+This is the Hong Kong market case.
+
+02:05:36
+But for the Asia market case, not the case, especially for random forest, not the case.
+
+02:05:43
+For the US market case, the out-of-sample methods for the nonlinear methods, it does way better than the linear methods there
+
+02:05:52
+So these are evidence from our sample, from our sample in these five years
+
+02:05:59
+Okay, for market return prediction, this is evidence we have. Okay, this is not something I make up
+
+02:06:05
+Okay, this is, if you see ugly numbers like this, so this must be real numbers
+
+02:06:11
+okay trained by my AI based on a data download okay so so this is the case so what the market
+
+02:06:21
+results really mean for an investor okay so you see that linear selection nonlinear selection
+
+02:06:29
+okay for different markets there Hong Kong market Asia market US market so what do these things
+
+02:06:35
+really mean for you so what should we learn for this kind of things there so as I mentioned
+
+02:06:41
+do not rely too much on models.
+
+02:06:44
+They provide some good references.
+
+02:06:46
+Do not rely too much on models there.
+
+02:06:49
+They provide some guidance for the economic condition.
+
+02:06:53
+They confirm our understanding.
+
+02:06:56
+Inflation might be a good predictor.
+
+02:06:58
+The inflation might be a good determinant there.
+
+02:07:01
+It confirms something for that.
+
+02:07:03
+But...
+
+02:07:05
+What that mean for an investor for example for retail investor
+
+02:07:08
+So so I will continue more discussion about this next week. Okay, that's my plan and
+
+02:07:15
+Then this is where I stop in the afternoon and where I am going to stop now
+
+02:07:19
+Okay, so
+
+02:07:21
+Try to contact your group members as soon as possible, today, tonight, okay?
+
+02:07:26
+If you do not get response, quit them, and join your, and create your own group.
+
+02:07:31
+Tomorrow morning, I will randomly assign people, those unassigned students there, okay?

@@ -12,14 +12,17 @@
 cd "D:/上课资料/CityU/EF5560_Fintech_and_AI_in_Finance/code"
 
 # 跑单个脚本
-/d/python/python L01_data/03_drawdown.py
+D:\anaconda3\python.exe -X utf8 L01_data/03_drawdown.py
 
 # 跑全部（按编号顺序）
-/d/python/python run_all.py
+D:\anaconda3\python.exe -X utf8 run_all.py
+
+# 单独核对讲义练习（只读课程 CSV，不写 output/，不计入 run_all 的脚本数）
+D:\anaconda3\python.exe -X utf8 L01_data/check_exercises.py
 ```
 
-**环境**：Python 3.9 + `requirements.txt`（pandas / numpy / matplotlib / statsmodels / scipy / **scikit-learn**，2026-09-21 起 L04 需要）。已在本机 `/d/python/python` 装好。
-**Windows 编码**：跑之前设 `PYTHONIOENCODING=utf-8`，否则中文 print 会报 GBK 错。
+**环境**：本机 `D:\anaconda3\python.exe` 为 Python 3.12.3；依赖见 `requirements.txt`（pandas / numpy / matplotlib / statsmodels / scipy / scikit-learn）。运行前核对实际环境，不沿用旧 `/d/python/python` 路径。
+**Windows 编码**：命令中的 `-X utf8` 防止中文输出遇到 GBK 编码错误。
 
 每个脚本跑完会：
 1. 在 `output/` 下生成 **同名的 `.png`**（图）和可能的 **`.csv`**（数字表）

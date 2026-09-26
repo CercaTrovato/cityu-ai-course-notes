@@ -1,12 +1,12 @@
 ---
 type: 作业与DDL
 course: EF5560
-updated: 2026-09-22
+updated: 2026-09-26
 ---
 
 # EF5560 作业与 DDL
 
-> **来源**：`syllabus_EF5560_2026.pdf` ＋ `EF5560_FinTech_Company_Case_Requirements.pdf` ＋ `Lec01` 讲义 p.5 ＋ `M01-transcript.txt`。
+> **来源**：`syllabus_EF5560_2026.pdf` ＋ `EF5560_FinTech_Company_Case_Requirements.pdf` ＋ `Lec01` 讲义 p.5 ＋ M01–M04 课堂转录。M04 为 A/B 同课双录音；音频是课堂说法，最终截止与入口以 Canvas 为准。
 > ⚠️ **Canvas 是唯一权威**。syllabus 自己写着「Later Canvas or University announcements take precedence.」讲义 p.5 也写着「**Canvas is the source of truth for rubrics, submission links, and any administrative updates.**」下面凡标 ⚪ 的日期都是推算，**不要据此安排最后一天**。
 
 ---
@@ -20,8 +20,8 @@ updated: 2026-09-22
 | 课后（不计分） | 自己拿 HSTECH / CSI 300 / S&P 500 的股票玩一遍 vibe coding：画图、下财报、看会发生什么 | Take-home（不交） | 🎙️`02:13:16` | 🔴 |
 | **2026-09-27（周日 10:00）** | **TA tutorial #1**：ML 投资作业准备 · Zoom · **有录像** | 辅导 | syllabus；🎙️ M03 转录 `01:34`–`02:20` 再次确认"两次都在周日上午、纯 Zoom、不在教室" | 🔴 |
 | **2026 年 9 月下旬 ⚪** | **ML 投资作业发布** | 作业发布 | 🎙️`11:10`「I will probably send you the assignment **in late September**」 | ⚠️ 与 syllabus 冲突，见 §4 |
-| **2026-10-01（周四）** | 🚫 **国庆假期，停课** | 停课 | ⚪ 推断（🎙️`13:51` + 10/01 确为周四） | ⚪ |
-| **Week 7 结束前 ⚪** | **ML 投资作业截止** | **DDL** | syllabus「due two weeks later, in Week 7」；讲义 p.5「due at the **end of Week 7**」 | ⚠️ 见 §4 |
+| **2026-10-01（周四）** | 🚫 **国庆假期，停课** | 停课 | M04 A `01:13:11`–`01:13:22`（B `01:21:44`–`01:21:52` 同段）教授明确说当天没有课 | 🔴 |
+| **2026-10-15（周四）14:00**（Canvas 页面显示） | **ML Investment Project／ML 投资作业截止** | **DDL** | 用户 2026-09-26 提供的 Canvas「Upcoming Assignments」截图：`ML Investment Project — Due Oct 15 at 2:00pm — -/100 pts`；年份据本学期登记，截图未显示时区 | 🔴 Canvas 截止已确认 |
 | **2026 年 11 月中旬** | 模拟卷（mock paper）发布到 Canvas | 复习材料 | syllabus | 🟡 |
 | **Week 12 ⚪（约 2026-11-16 ~ 11-20）** | **FinTech 案例报告 + 录像展示 双双截止** | **DDL** | syllabus + 案例 brief + 讲义 p.5 | 🟡 |
 | **2026-11-29（周日 10:00）** | **TA tutorial #2**：期末考准备，**逐题讲模拟卷** · Zoom · **有录像** | 辅导 | syllabus | 🔴 |
@@ -42,15 +42,17 @@ updated: 2026-09-22
 | 用途 | **同一个组同时做 ML 投资作业和 FinTech 案例**（🎙️`02:15:07`：「you will finish the assignment with your groupmate. You finish[ed] the [case] with the [same] mate.」） |
 
 > ⚠️ **两项作业共用同一个组**，所以选人要慎重——一个组要一起交 20% 的 ML 作业和 30% 的案例 + 录像，**合计 50% 的成绩**。
+> **M04 课后历史提醒**：B `01:53:16`–`01:53:39` 催当晚联系组员，说次日上午会给未组队者随机分配，并确认两人一组也可以。这是 2026-09-24 当堂安排，**不是新的未来 DDL**；具体名单与提交仍看 Canvas。
 
 ### 2.2 ML 投资作业（20%）
 
 | 项 | 内容 |
 |---|---|
-| 权重 | **20%** |
+| 权重 | **20%**（课程总评占比） |
+| Canvas 计分 | 截图显示 `-/100 pts`，是该作业在 Canvas 的满分；**100 分不等于课程总评 100%** |
 | 团队 | 最多 3 人，**一份联合报告** |
-| 发布 | Week 5 课后（syllabus）／ Class 5 后（讲义 p.5）／「late September」（🎙️）→ **见 §4 的冲突** |
-| 截止 | 发布后**两周**，Week 7 结束前 |
+| 发布 | 截图显示本作业已列在 Canvas「Upcoming Assignments」；**正式发布日期未显示**。syllabus 的 Week 5／讲义的 Class 5／教授口头「late September」口径见 §4，不用来推算截止 |
+| 截止 | **2026-10-15 14:00**（Canvas 当前页面显示；截图未显示时区）。此时间优先于 syllabus／讲义的周次推算 |
 | **要交三样** | ① 报告 ② **组合权重 CSV** ③ **可复现的代码包（reproducible code package）** |
 | 封面要求 | 列出**全部组员姓名 + CityU 学号**；指定**一位提交人** |
 | 内容 | 🎙️`10:32`「I'll give you some **predictors, some stocks**, and then you run your investment analysis… based on everything we show you for the **first five lectures**」 |
@@ -101,6 +103,7 @@ updated: 2026-09-22
 - `13:07`：**允许（甚至预期）你用 AI 来做前期调研**——「I do not expect you will search by Google. So use AI to prepare those [materials]. It is totally fine. **But at least [cite] sources.**」
 - `01:52:59`：**如果是上市公司，要自己做数字分析**——「**you should have some number analysis for the company you introduce.** …If that is not a public company, you can tell me something about [the] industry, about the [economics]」。他现场演示了用 vibe coding 拉 **MicroStrategy（现名 Strategy）** 的财报做图。
 - `14:14`：录像自己用手机拍就行；文件太大就问 AI 怎么压缩。
+- **M04 再次口头确认**（A `01:15:45`–`01:18:36`，B `01:24:19`–`01:26:59` 同段）：**在家录、不用补课做现场展示**；视频应形成一段连贯的团队论证，提前排练、不要只对着稿子念。教授回读书面要求：≤10 分钟、每人至少 2 分钟实质讲解、**单个 MP4 ≤80 MB**；前面口语提到“100/50 MB”并非最终上限，文件限制以 brief 的 **80 MB** 为准。
 
 **💡 复用提示（笔记补充）**：案例报告的六节骨架 ＝ [[EF5560_Fintech_and_AI_in_Finance/_meta/考点库|考点库]] §2 框架 C ＝ 期末 FinTech 简答题的答题结构。**准备一次，三处都能用。**
 
@@ -155,7 +158,7 @@ updated: 2026-09-22
 
 ## 4. ⚠️ 一个必须核对的时间冲突
 
-**四份材料对"ML 作业什么时候发"的说法对不上：**
+**ML 作业的正式发布日期仍不清楚；截止时刻已由 Canvas 截图确认。旧材料对发布节奏的说法如下：**
 
 | 来源 | 说法 |
 |---|---|
@@ -163,14 +166,15 @@ updated: 2026-09-22
 | 讲义 p.5 | 「released after **Class 5** and due at the **end of Week 7**」 |
 | 🎙️ 转录 `11:10` | 「I will probably send you the assignment **in late September**」 |
 | syllabus | **TA tutorial #1（作业准备）定在 2026-09-27** |
+| **Canvas Upcoming Assignments（用户 2026-09-26 截图）** | **ML Investment Project — Due Oct 15 at 2:00pm — -/100 pts**；已列出作业，但截图不显示正式发布日期、时区和提交细节 |
 
 **为什么会冲突**：若 Class 1 = 9/03（周四）且 10/01 国庆停课，则 **Class 5 落在 10/08，属于第 6 个教学周**——"Class 5" 与 "Week 5" 从此错开一周。而作业辅导 tutorial 却排在 9/27，比 Class 5 早了 11 天。
 
-**⚪ 两种自洽的解读**：
+**⚪ 以下只讨论可能的发布时间，是历史推断，不能再用于计算截止**：
 - **解读 A**：作业其实在 **Class 4（9/24）** 后就发，9/27 辅导，两周后（约 10/08–10/16）交。符合"late September"。
 - **解读 B**：syllabus 的周次是按**原定 13 周日历**写的，没有把停课算进去；实际以 Canvas 公告为准。
 
-**结论：不要按 syllabus 的周次自行推算最后一天。盯 Canvas 公告和邮件。**
+**结论：正式截止已确认是 2026-10-15 14:00（Canvas 当前页面显示；截图未显示时区）。不要再按 syllabus 的周次自行推算截止。** M04 A `00:34`／`00:41` 的 10 月 10／14 日是催尽早提问，不是截止。正式发布日期、任务详细题面、提交入口及迟交规则没有出现在这张截图中，仍需以 Canvas 作业详情页为准。教授 A `01:19:01` 另说 9/24 更新过 syllabus，本地 9/9 版尚未核到该次更新。
 
 **推算日历（⚪，仅供规划，非权威）**
 
@@ -214,18 +218,18 @@ updated: 2026-09-22
 
 | # | 事项 | 怎么解决 |
 |---|---|---|
-| 1 | ML 投资作业的**实际发布日与截止日** | 盯 Canvas + 教授邮件（见 §4） |
+| 1 | ~~ML 投资作业截止日~~／正式发布日期与详情 | ✅ Canvas 截图已确认 **2026-10-15 14:00**；截图没有显示时区、正式发布日期、详细题面与迟交规则，后者需打开 Canvas 作业详情核对 |
 | 2 | 案例报告 + 录像的**具体截止日期与时刻** | Canvas |
 | 3 | ~~期末考的**日期、地点、允许携带的材料**~~ | ✅ **携带材料已确认**（M03 转录，见 §2.4：A4 双面手写小抄）；**日期与地点仍待 Canvas** |
 | 4 | Zoom office hour 的**具体周日日期** | Canvas；M03 转录只确认了"周日上午"这一通用格式，没有给出 9/27 之外的新日期 |
 | 5 | TA tutorial 的 Zoom 链接 | 教授说会在会前发（🎙️`12:11`）；M03 转录再次确认"两次 tutorial 都在周日上午、Zoom、不在教室"（`01:34`–`02:20`），但**仍未给出具体链接** |
-| 6 | 10/01 是否真的停课 | ⚪ 目前是推断；第 2、3 讲转录里**都没有提到**，仍待确认 |
+| 6 | ~~10/01 是否真的停课~~ | ✅ M04 A `01:13:11`–`01:13:22` 已明确确认 2026-10-01 不上课；本条不再待确认 |
 | 7 | Canvas 上是否有**更新版 Lec02 PDF** | 🎙️ 教授说已修了 p.25 那张图的时间轴（M02 转录 `P1 01:17:45`） |
 | 8 | 恒生 / CSI 300 的三变量特征表是否在 Canvas | 🎙️ 教授说"数据在 Canvas 上"（`P2 41:03`）；本地 `data/` 只有 SPY 的 |
 | 9 | ✅ **`shared/` 四个面板已随 2026-09-21 的 class04 数据包到位**（数据集卡片 §13.1；M04 已用它们重训三棵树）。`class03/stock_linear_test_predictions.csv` 曾被同步截断（358 / 4,108 行），2026-09-22 用重下的 `class03.zip` 恢复并复核。原记录： | **Canvas 上也没有**（2026-09-17 核实：Lecture 3 只有 PDF + `class03.zip`）；**M03 转录同样没有点名 `shared/`**，教授只说数据在他的 Dropbox / Canvas（`01:18:56`）。等 ML 作业发布时看是否附带；否则邮件问 TA（抄送教授，主题 `[EF5560]`） |
 | 10 | ~~Lec03（9/17）课上有没有更新 ML 作业的发布日 / 数据 / 组队要求~~ | ✅ **已由 M03 转录部分回答**：`02:17:41` 教授明说"I can promise you this is the assignment for your homework"，剧透作业会让学生**自己改训练/验证/测试窗口长度、重新跑股票排序**（呼应 §2.2）；**没有**给出新的具体发布日期，仍按"late September"（⚪，见 §4）与 Week 5 后（syllabus）两说并存 |
 
-> 📝 **2026-09-09 版 syllabus 更新（2026-09-17 收到）**：考核权重、截止、TA tutorial（9/27、11/29）、参与规则**全部未变**；只改了 ML 板块的描述——Class 5 主题改为 "Interpretable machine learning and portfolio decisions"，ILO 2 加 "including the limits of coefficients, feature importance, and response profiles"。本文件的日期与权重无需修改。
+> 📝 **2026-09-09 版 syllabus 更新（2026-09-17 收到）**：当时的考核权重、TA tutorial（9/27、11/29）与参与规则未变；ML 板块主题及 ILO 2 措辞调整。2026-09-26 用户提供的 Canvas 作业列表已给出 **10/15 14:00** 的准确截止，优先于 syllabus 的 Week 7 描述；9/24 教师提及再次更新 syllabus，版本内容仍待核对。
 
 ---
 
@@ -235,3 +239,10 @@ updated: 2026-09-22
 - [[EF5560_Fintech_and_AI_in_Finance/_prep/课程前置资料|课程前置资料]]（含 GenAI 政策的官方原文）
 - [[EF5560_Fintech_and_AI_in_Finance/_meta/考点库|考点库]]（案例简答题与报告共用同一个框架）
 - [[EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片|数据集卡片]]（ML 作业的现成数据）
+
+
+## 🎙️ M04 转录追加（2026-09-26）· 课堂口头信息（转录追加）
+
+| 事项 | 内容 | 来源 |
+|---|---|---|
+| 本周自练（无正式提交要求） | 教授建议用桌面 AI 实际下载 Apple 近三个月股价并作图，练习让 AI 在本机运行代码；**不是独立作业题面或提交 DDL** | A `17:53`–`18:24`、`22:12`–`22:23` |

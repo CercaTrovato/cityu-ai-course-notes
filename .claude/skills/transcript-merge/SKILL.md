@@ -16,7 +16,7 @@ description: 把课堂录音转录（本地 Whisper 或 Notta 导出的带时间
 
 1. **可回溯**：笔记里每一处来自转录的内容都带 `` `时间戳` ``（反引号包住），每句教授原话都是 *"斜体直引号"*；脚本会逐个核对时间戳是否真实存在、原话能否在转录里匹配到。
 2. **不编造**：转录没说的不写成"教授说"；听不清的标 `[?]`；对 ASR 的改写和补词放在 `[ ]` 里；没录到 ≠ 没讲（❓ 不是 ⏭️）。
-3. **不省格**：每个「🎙️ 课堂补充」格都要落到四种状态之一（§4.1），结束时"待转录补充"必须为 0；不许删格、不许写"已核对"敷衍。
+3. **不省格**：每个「🎙️ 课堂补充」格都要落到五种状态之一（§4.1），结束时"待转录补充"必须为 0；不许删格、不许写"已核对"敷衍。
 
 4. **文件安全**：改笔记只用 `_meta/tools/safe_write.py` 的 `atomic_write`（禁止 `open(path,'w')`）；开工先 `backup_vault.py` + `integrity_check.py snapshot`，收工 `integrity_check.py verify`；**发现任何文件损坏（解码失败、行数骤减、结尾不是 §9/相关）立即停下报告，不许凭记忆重建**；开工前确认用户已关闭 Remotely Save 自动同步。
 
@@ -44,7 +44,7 @@ description: 把课堂录音转录（本地 Whisper 或 Notta 导出的带时间
 PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py scan <课程>/transcripts/<文件>.txt [part2 ...]
 ```
 
-做四件事，结果写进工作目录的 `PROGRESS.md`（见 §9）。**在此之前先跑** `backup_vault.py` 与 `integrity_check.py snapshot 融合前`，并确认同步已关。
+做四件事，结果写进工作目录的 `PROGRESS.md`（见 §9）。**在此之前先跑** `backup_vault.py` 与 `integrity_check.py snapshot 融合前`，并确认同步已关。**若是同课重叠的双录音，先分别 scan、以内容或音频对齐、逐源标 A/B，不用 `part1/part2` 伪装成前后接续；多文件 audit 的时间戳并集不能替代逐源引文核对。**
 
 1. **改名**：按 `转录处理规则` §5 改成 `M0N-transcript.txt`（分段 `-part1/2`，不完整 `-partial`）。本地 Whisper 产出的与音频同名的 `.txt` 改名为 `M0N-transcript.txt`（或直接 `cd E:\AIworkspace\lecture-transcribe; uv run lt.py export <id> --module M0N`，见 `转录处理规则` §5.1；同目录的源音频 mp3 / wav **不要动**，也不进仓库）；早期 Notta 的内容标题式文件名同样改掉。`transcripts/` 不是 `course_files_export/`，可以改名。
 2. **时序**：段数、起止、时长、时序倒退、≥120 秒空档。每个空档都要**读前后原文**判断性质（课堂练习时间 / 课间 / 录音暂停 / 内容丢失），写成 §9.5 的一行。
@@ -62,7 +62,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py s
 ```
 
 - **讲义页**：对照笔记 §8 的页码表定位；教授不按顺序讲很常见，按内容对，不按顺序猜。
-- **覆盖**五选一（定义见 §3.1）。
+- **覆盖**六选一（定义见 §3.1）。
 - **原话**：一块至少挑 2–4 句最有信息量的（定义的口语版、例子、强调、降权信号），记原始时间戳。
 - **学生提问**：记问题本身（这是「⚠️ 常见误解」格最真实的来源）。
 - **ASR**：遇到明显错的专名，查 `reference/asr-dictionary.md`；新错误追加进去（转录原文 → 应为，附时间戳）。拿不准的写 `[?]`，**不猜**。
@@ -83,23 +83,25 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py q
 | ✅ 详讲 / 简讲 / 一句带过 | 讲义页在课上讲了 | 时间区间 + 用时 | §8 覆盖列；🎙️ 格 |
 | 🎙️ 纯课堂内容 | 讲义没有、课上讲了 | 时间区间 + 用时 + 内容摘要 | §8 加**（讲义无对应页）**行；正文对应小节；§9.2 |
 | ⏭️ 略过 | 教授在场、翻过去没讲 | 前后页都有时间戳、中间没有；或教授明说 "skip / don't have to" | §8；§9.1（给依据 + 建议） |
-| ❓ 未录到 / 转录无对应 | 录音缺失或那段听不清 | 说明缺失区间（缺开头 / 缺结尾 / 空档 / 噪声） | §8；§9.1（**注明不可降权**） |
+| ❓ 未录到 / 转录无对应 | 所有音源均缺失或听不清 | 说明缺失区间（缺开头 / 缺结尾 / 空档 / 噪声） | §8；§9.1（**注明不可降权**） |
+| ↪️ 明确顺延 | 教授明说后续留到下一讲，且录到本讲收束 | 停课／下讲继续的原话时间戳 + 最后实讲页 | §8；§9.1（**保留讲义自学内容，下一讲回填**） |
 | ⚪ 封面 / 分隔页 | 无实质内容 | — | §8 |
 
-**⏭️ 与 ❓ 的分界**：只有"教授在场且有证据翻过去了"才是 ⏭️。录音开始前、结束后、空档内的页一律 ❓。判断依据必须写进 §9.1 的「依据」列。宁可 ❓ 不可误 ⏭️。
+**⏭️ / ❓ / ↪️ 的分界**：只有"教授在场且有证据翻过去了"才是 ⏭️；所有录音都缺该段时才是 ❓；教授明确说下讲续讲、并录到本讲收束时是 ↪️。判断依据必须写进 §9.1 的「依据」列。宁可保留不确定，也不可误判略过或顺延。
 
 ---
 
 ## 4. 阶段 2 · 写回正文
 
-### 4.1 「🎙️ 课堂补充」格的四种状态（每格必居其一）
+### 4.1 「🎙️ 课堂补充」格的五种状态（每格必居其一）
 
 | 状态 | 什么时候 | 最少要写什么 |
 |---|---|---|
 | **A 课上展开** | 教授讲了讲义没有的东西 / 口语解释 / 例子 | `（时间区间，约 N 分钟）` + 1–3 句原话 *"…"*（各带时间戳）+ 中文转述 + **这段改变了什么理解**（确认了笔记推断 / 推翻了 / 新增了） |
 | **B 讲了同讲义** | 教授照念或简讲，没有增量 | `（时间区间）` + 一句概括（"照 p.N 念了定义，用时 40 秒"）+ 至少一句原话或降权信号（如 *"we already know"*）。**不许只写"已核对"** |
 | **C ⏭️ 略过** | 有证据翻过去了 | `⏭️` + 依据（前后时间戳）+ 对读者的建议（降权到什么程度） |
-| **D ❓ 未录到** | 缺失区间内 | `❓` + 缺失原因 + **"不可降权"** + 这一节只能靠讲义与笔记 |
+| **D ❓ 未录到** | 所有录音均缺失该区间 | `❓` + 缺失原因 + **"不可降权"** + 这一节只能靠讲义与笔记 |
+| **E ↪️ 顺延** | 教授明确把后续页留到下一讲 | `↪️` + 停课与下讲继续的原话时间戳 + 本讲最后实讲页 + **不可降权**、下讲回填位置 |
 
 模板与标杆例句见 `reference/formats.md` §1。脚本 A3 检查：每格要么有时间戳，要么有 ❓/⏭️ 且 ≥20 字理由。
 
@@ -176,6 +178,8 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py q
 PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/integrity_check.py verify
 # ① 融合验收（必须 PASS）
 PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py audit <笔记.md> --transcript <本讲转录> [<被引用的其它转录>]
+# 同一课堂两份重叠录音再跑逐源核验（A/B 分别指定，不用时间戳并集代替）
+PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_source_check.py <笔记.md> <A转录.txt> <B转录.txt>
 # ② 笔记质量不回退：与融合前同一模式跑（frontmatter 有 quality_spec: v1 才加 --strict），判定不得从 PASS 变 FAIL
 PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/note_quality.py <笔记.md> --pages <讲义页数> [--strict]
 # ③ 全库链接 + README 同步
@@ -191,7 +195,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/readme_check.py
 **回执**（写进 PROGRESS.md 末尾并汇报）：
 1. 三个脚本的判定与关键数字（🎙️ 格数、时间戳数、引文数、🔴 数、§8 检查行数）
 2. 转录登记：起止、段数、缺口判定与依据、顺延边界
-3. 回填了哪些 🎙️ 格（A/B/C/D 各多少）、§9.2 前三条
+3. 回填了哪些 🎙️ 格（A/B/C/D/E 各多少）、§9.2 前三条
 4. 上一讲 ❓ 被解决的项
 5. 没做到的事与原因（例如 Notion 未更新、某练习题答案未录到）
 6. 追加到 `reference/asr-dictionary.md` 的条目数
@@ -202,7 +206,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/readme_check.py
 
 - [ ] 转录全文读完，`align.md` 时间区间首尾相接覆盖全程
 - [ ] 文件已按 §5 命名；scan 结果与完整性判定（含内容证据）写进 §9.5
-- [ ] "待转录补充" = 0；每个 🎙️ 格四选一且合规
+- [ ] "待转录补充" = 0；每个 🎙️ 格五选一且合规
 - [ ] 每个时间戳带反引号、真实存在；每句原话斜体直引号、改写加 `[ ]`（A13 / A14 逐条看过）
 - [ ] ❓ 与 ⏭️ 没混用；每个 ⏭️ 在 §9.1 有依据
 - [ ] §6.1 数量表更新、§6.2 每条 🔴 有原话；被教授降权的条目已降级

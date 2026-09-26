@@ -174,3 +174,9 @@
 | camera（"upload to the camera"） | Canvas | M03 `01:18:56` |
 | QP fuel | [?]（未还原，语境为恒指相关指数名） | M03 `01:18:03` |
 | funnel three and three | [?]（未还原，语境为"两种不同尺度"） | M03 `01:16:18` |
+| with gyms / with gym | regimes | M04 A `28:48`、`30:02`，按 p.3–4 语境校正 |
+| good-force calculation | brute-force calculation | M04 A `50:11`，枚举候选变量与门槛 |
+| white bar / Y-bar | y-bar（叶内均值） | M04 A `01:05:57`，按 p.14 与上下文校正 |
+| reach / which regression | Ridge regression | M04 A `23:34`，回顾 M03 时沿用旧 ASR 错例 |
+| WETLOO / wet-loose / red-loop | ReLU | EF5560 M04 A `01:54:30`–`01:56:27`、B `01:40:25`–`01:42:36`；按讲义 p.32 书面拼写 |
+| PVOC / SEC | PBOC 等机构名 `[?]` | EF5560 M04 A `02:03:46`、B `01:49:41`；B 支持 PBOC，后句仍需回听，不硬改细则 |

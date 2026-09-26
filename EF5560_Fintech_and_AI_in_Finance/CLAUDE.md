@@ -1,6 +1,6 @@
 # CLAUDE.md — EF5560 Fintech and AI in Finance（课程级）
 
-> 🚧 **骨架，待填。** 通用方法论见 vault 根的 [CLAUDE.md](../CLAUDE.md)。工具无关版见 [AGENTS.md](AGENTS.md)。
+> 课程特有口径以本文件补充；现行进度以 `00-课程总览.md`、笔记 frontmatter 与原始材料核对。通用融合与验收规则见 vault 根文件及 `.claude/skills/transcript-merge/SKILL.md`。
 > **开工前必做**：读 `syllabus_EF5560_2026.pdf` + 抓官方课程目录对校 → 产出 `_prep/课程前置资料.md`。
 
 ---
@@ -11,24 +11,24 @@
 |---|---|
 | 课程码 | EF5560 |
 | 定位 | MScAIB (P85) **商业核心**（9 学分组内选一）；开课单位为 EF（经济与金融系） |
-| 上课时间 | **周四**（⚠️ 据文件时间戳推断，待确认） |
+| 上课时间 | 周四；2026-09-24 晚场 M04 双录音和 `10/1` 停课口头通知已核实。具体时段以 Canvas 为准 |
 | 首课 | 2026-09-03 |
 
 **材料**（`course_files_export/`，✅ 已符合存放约定）
 
 | 文件 | 状态 |
 |---|---|
-| `syllabus_EF5560_2026.pdf` | ⚠️ 未读 |
-| `Lec01_Data_and_Vibe_Coding.pdf` | ⚠️ 未读 |
+| `syllabus_EF5560_2026.pdf` | ✅ 已读 → `_prep/课程前置资料.md`；M04 教师说 9/24 又更新过，更新版需到 Canvas 复核 |
+| `Lec01_Data_and_Vibe_Coding.pdf` | ✅ → M01 v1.0，58 页全覆盖、转录已融合 |
 | `Lec02_Regression_Vibe_Coding.pdf` | ✅ → M02 v1.0 |
 | `Lec03_Linear_Machine_Learning.pdf`（56 页）+ `class03/class03/`（2026-09-22 重下更新版：15 CSV + manifest + README，含五个共享面板） | ✅ → M03 v1.0（2026-09-17）；`stock_linear_test_predictions.csv` 曾被同步截断，9/22 已恢复复核；`Lec03_Linear_Machine_Learning.pdf` 曾被截为 32 KB，9/22 已重下（56 页） |
-| `Lec04_Nonlinear_Machine_Learning.pdf`（54 页）+ `class04/class04/`（5 共享面板 + 11 结果表 + manifest + README） | ✅ → M04 v0.9 课前预习版（2026-09-21）；三棵树用共享面板重训一致；转录待 9/24 |
+| `Lec04_Nonlinear_Machine_Learning.pdf`（54 页）+ `class04/` | ✅ M04 v1.0（2026-09-26）；同课 A/B 双录音互补，37 个 🎙️ 格已回填；实际课堂至 p.39，p.40–54 明确顺延；课件 54 页仍全覆盖 |
 | `class01/class01/`（6）· `class02/class02/`（12，含 8 张官方结果表） | ✅ 2026-09-21 补发；输入表 = `data/`（sha256 一致）；M02 数字 22 项全部对上 → 数据集卡片 §12 |
-| `EF5560_FinTech_Company_Case_Requirements.pdf` | ⚠️ 未读 → 读完登记作业与 DDL |
+| `EF5560_FinTech_Company_Case_Requirements.pdf` | ✅ 已读 → `_meta/作业与DDL.md` §2.3；个人作业成品不入公开仓库 |
 | `data/*.csv` ×8 | 数据集说明以本课 `_meta/数据集卡片.md` 为准；原始文件保持只读 |
 | `course_image/canvas_course_card_2026.png` | 杂项，忽略 |
 
-**转录**：`transcripts/M01-transcript.txt`（118KB，2013 行，带 `MM:SS` 时间戳）✅ 已导出，**是目前最完整的一份**
+**转录**：M01–M03 已融合；M04 的 `M04-transcript-A-partial.txt` 和 `M04-transcript-B-partial.txt` 是**同一晚场的重叠录音**，两者互补而非前后分段。课堂至 p.39，p.40–54 明确顺延，细节见 M04 §8–9。
 
 ---
 
@@ -74,9 +74,9 @@
 
 ## 5. 待确认
 
-- [ ] 抓官方目录对校：`https://www.cityu.edu.hk/catalogue/pg/<学年>/course/EF5560.pdf` — 学分、**及格线**、**GenAI 政策**、CILO
+- [x] 官方目录、syllabus 与课程前置资料已对校；学分、GenAI 政策及 CILO 差异见 `_prep/课程前置资料.md`。
 - [ ] 对照 syllabus、课程前置资料与后续课堂口径，确认仍未核实的周次与主题
-- [ ] 读 `EF5560_FinTech_Company_Case_Requirements.pdf` → 登记 `_meta/作业与DDL.md` + Notion（该行目前标着 ❗待补）
+- [x] 案例 brief 已读并登记 `_meta/作业与DDL.md` §2.3；M04 口头复述了录像上限与每人时长，正式 DDL 仍看 Canvas。
 - [ ] **L0 基线**：读者有 ML 基础，但**金融概念（收益率、波动率、因子、配对交易）零基础**，必须就地解释
 
 ---

@@ -9,7 +9,7 @@ prerequisites: []
 new_concepts: [生成式AI, ELIZA效应, 符号AI, AI寒冬, 统计机器学习, 半监督学习, 表示学习, AlexNet, 残差连接, 基础模型, 四范式, 激活函数, one-hot编码, token, 嵌入, 位置编码, 自注意力, Transformer, 大语言模型, 预训练, 自回归生成, 解码策略, 温度, 不透明性, 可信AI三支柱, 神经符号AI, 六向量权衡, TTFT, ITL, 吞吐, 批处理, 有效上下文, 中间迷失, 总拥有成本, 复合AI, 路由器, 幻觉, 接地, RAG, 证据链, 提示注入, 纵深防御, 记忆式相似, NIST_AI_RMF, 可接受风险]
 tags: [genai, IS5542, 导论, LLM, 企业架构, 责任AI]
 status: v1.0
-updated: 2026-09-11
+updated: 2026-09-25
 ---
 
 # M01 · 导论：生成式 AI 基础与企业落地
@@ -1049,6 +1049,8 @@ Prompt → 上下文状态 → 下一 token 的概率分布 → 选一个 token 
 
 讲义 p.54 的结论句值得记：**"Fluent conversation can trigger anthropomorphism, but social behavior is not evidence of consciousness or genuine understanding."**（流畅对话会触发拟人化，但社交行为不构成意识或真正理解的证据）—— 这是 §2.3 ELIZA 效应的正式表述。
 
+**p.54 讨论题直接作答**（⚪ 笔记参考，讲义无标准答案）：若要从“它说话像人”进一步声称 AI **有主观体验或真正理解**，需要先提出可检验、能把“按训练模式生成流畅话语”与“确有该属性”区分开的判据，再在不同任务、时间和系统上重复验证，并排除只靠模仿语料、提示诱导或人类拟人化也能解释结果的可能。**流畅对话本身只证明输出像对话**；目前这张讲义没有给出可据以确认意识的实验或公认判据，所以不能把“感觉活着”写成“已经证明有意识”。
+
 > ⏭️ **转录里没有播放这两段视频的痕迹**，教授从 p.52 直接跳到了 p.55 的模型全景。**可自行观看，优先级不高。**
 
 #### 2.7.2 不透明性：可信从哪里来（讲义 p.57）
@@ -1735,6 +1737,7 @@ COLLECT   →  PREPARE   →  TRAIN/RETRIEVE →  DEPLOY        →  MONITOR
 | 退出（opt-out）义务 | 使用与审批流程 |
 
 > **讲义 p.101 结论**："**IP risk begins with data provenance and continues through model outputs and downstream use.**"
+> **p.101 三个检查问句的逐问回答**（⚪ 作为课程治理检查表，**不是对特定材料的法律结论**）：① 先为每个来源保存出处和授权记录，核实是有许可、确属公有领域，还是有可适用的例外；**没有证据就标“授权状态待核”**，不把“网上能看到”当成“可以训练”。② 记录来源是否附合同条款、访问控制或机器可读限制，并交由有资格的人员判断这些信号的适用范围；抓取成功不等于获得重用授权。③ 用代表性提示抽查模型是否可能复现受保护表达或专有资料，对相似输出设置人工复核与发布审批；**一次抽查未命中不能证明以后绝不复现**。具体权利判断随作品、合同与法域变化，讲义 p.104 要求合格法律分析。
 > **讲义 p.102 结论**："Treat **model procurement, training data, generated content, and publication as connected IP decisions**."
 
 **🎙️ 教授对输出侧风险举的例子**（转录 `01:59:02`，讲义没有）：

@@ -10,7 +10,7 @@ new_concepts: [agent, 固定工作流, 多 agent, 范式转移, 目标导向自�
 tags: [genai, IS5542, agent, harness, MCP, 多 agent, 评估与部署]
 status: v0.9
 quality_spec: v1
-updated: 2026-09-18
+updated: 2026-09-25
 ---
 
 # M03 · AI agent：模型之外，谁在真正干活
@@ -1772,6 +1772,8 @@ p.46 用一个请求走一遍（"Prepare a brief for tomorrow's supplier meeting
 
 p.47 说适用与不适用：**适合**个人或可信团队的协助——准备周期性简报、找工作文件、跨应用协调一个有界任务；**为什么合适**——同一个运行时可以从多个渠道收请求，并带着持久的上下文与工具工作；**什么时候别用它**——固定的高频交易通常需要确定性的工作流；**互不信任的用户需要分开的信任边界**。设计决策："which task may act automatically, and which action must wait for approval?"
 
+**设计题直接作答**（⚪ 笔记参考；仍要按实际应用授权配置）：在用户已授权的资料范围内，**只读检索、汇总和草拟简报**可以自动执行并留日志；**向外发送消息、付款、修改共享记录、删除文件或扩大访问权限**会改变外部状态，应在执行前展示目标、内容与影响范围，等待有权的人批准。失败重试也不能绕过这道门；多人共用时还须按身份隔离上下文与工具权限。这个划分来自“可逆只读 vs 有外部后果”的任务边界，不是因为某个模型名称较强就放宽审批。
+
 **为什么需要它**
 
 它是 §2.7.12 Space 原则（放在用户已在用的渠道里）与 §2.7.9 审批门（外发前确认）的完整实例，也是 p.15 里"单 agent + 固定步骤混合"的产品形态。p.47 的两个"别用它"很有考试价值：**高频固定交易 → 用确定性工作流**（呼应 p.74 "先做工作流"）；**多个互不信任的用户 → 要分开的信任边界**（呼应 §2.7.11 身份）。
@@ -1821,6 +1823,8 @@ p.47 说适用与不适用：**适合**个人或可信团队的协助——准�
 p.49 是这个仓库的实验记录图："83 experiments, 15 kept improvements"——横轴实验编号 0–80，纵轴 val_bpb 从基线约 0.998 一路降到约 0.977（⚪ 读图估计，不要在考卷上引用具体数值）；绿点是被保留的改进、灰点是被丢弃的尝试、绿线是"目前最好"。图上标注的改动名（读图，部分字迹很小）诸如 "halve total batch"、"add 5% warmup"、"RoPE base frequency 10000→50000"、"random seed 42→137"——都是训练超参数的小改动。**83 次里只留了 15 次**：大多数尝试是失败的，但因为评估器固定、循环便宜，失败不要紧。
 
 p.50 的适用性：**实际用途**——在同一评估器与 GPU 预算下探索小语言模型的训练代码改动；**模式的迁移**——"Prompt or ranking experiments can use a similar loop if a team supplies fixed test cases, a reliable metric and a limited edit scope."（提示或排序实验也能用同样的循环，前提是团队提供**固定测试用例、可靠指标、有限的可改范围**）；**它做不好的**——"Open-ended strategy questions and live user experiments lack a quick, reliable score. Optimizing one score can also hide regressions."（开放式战略问题与真实用户实验没有快速可靠的分数；**只优化一个分数还可能掩盖别处的退步**）。设计决策："what may change, what stays fixed, and what independent check confirms an improvement?"
+
+**设计题直接作答**（⚪ 笔记参考）：允许 agent 只改**事先限定的训练代码 / 提示版本或排序规则**，一次改动一处并保存 diff；固定数据切分、评分程序、测试案例、GPU / 时间预算和成功门槛，agent 不能改评估器或挑掉失败案例。每轮先在受保护的验证集上比较，只有超过预定门槛且关键切片没有退步才保留；最后用**独立留出案例或人工复核**确认改进，而不是把反复优化过的同一分数当成最终证据。若任务没有快速可靠的评分，这种自动循环就不适合直接套用。
 
 **为什么需要它**
 
