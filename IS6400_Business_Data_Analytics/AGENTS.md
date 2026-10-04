@@ -9,7 +9,7 @@
 
 CityU **IS6400 · Business Data Analytics**，2026/27 Sem A，授课教师 Junming Liu, Ph.D.，Offline 授课，每周 lecture + hands-on tutorial 近 3 小时。
 
-**它是本笔记库五门课里唯一的技术实操课**——Python 编程 + 统计/机器学习模型 + 业务解读。其他四门讲"该不该做、怎么治理、用在哪"，这门讲"怎么做出来"。
+**它是本笔记库五门课里集中训练数据分析技术实操的课程**——Python 编程 + 统计/机器学习模型 + 业务解读。其他四门讲"该不该做、怎么治理、用在哪"，这门讲"怎么做出来"。
 
 ---
 
@@ -32,7 +32,7 @@ CityU **IS6400 · Business Data Analytics**，2026/27 Sem A，授课教师 Junmi
 
 | 内容 | 是否属 L0 |
 |---|---|
-| 线性回归、PCA、KMeans、DBSCAN、决策树、集成学习、ANN/RNN | ✅ 属 L0，不必从零讲原理 |
+| 线性回归、PCA、KMeans、DBSCAN、决策树、集成学习、ANN/RNN | **本讲核心使用时必须从零讲机制**，不能用 L0 免讲；见根 `_meta/机制理解与可读性标准.md` |
 | Python 语法 | ❓ 未确认 |
 | pandas / numpy / sklearn / statsmodels 的 API | ❓ 未确认 |
 | 业务解读（系数的业务含义） | ❌ 不属 L0，必须讲 |
@@ -107,3 +107,11 @@ Tutorial notebook 含形如 `🤖 AI Prompt (Copy this to AI): ...` 的 markdown
 - [ ] 读 Project Guideline，登记作业与 DDL
 - [ ] **确认 L0 基线**（见 §3）
 - [x] 已建 `_meta/知识层级台账.md`、`_meta/数据集卡片.md`；后续逐讲增量维护
+
+## 9. 作业续写与验收（2026-09-30）
+
+本课计分作业执行 `_meta/IS6400作业制作规范.md` 和根级 `_meta/作业规范.md`：从当前 Canvas Notebook 的副本续写，保留原题与教学顺序；先核前三周的实际经验，再对新作业逐问完成、零基础解释、必做拓展和实际导出阅读验收。作业的 Python 入场基线是零基础，覆盖本文件 §3 的讲义默认假设。`*.html` 中的个人提交是需要复核的历史材料，不因 §7“重复导出”而忽略。
+
+W04 于 2026-09-30 核到当前 `Week4_Feature_Engineering_Tutorial.ipynb`（43 cells），新题合计 100 内部分；旧 37-cell 版本的题号与分值仅作历史材料，不用于当前作业。当前 Canvas 提交类型为 HTML 或 PDF。完整个人答案只在 Git 忽略的 `assignment/`，公开笔记不反向链接私有答案。
+
+**Notebook 提交导出（2026-09-30 用户明确）**：HTML 必须直接通过 Jupyter 菜单或标准 nbconvert 从已保存的 `.ipynb` 导出；内容、顺序、输出与字号均在 Notebook 维护，不另做 HTML 页面。导出脚本仅允许调用标准导出器和保存，不重排或单改 HTML。

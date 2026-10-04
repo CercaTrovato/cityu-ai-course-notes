@@ -1,0 +1,2214 @@
+00:00 
+So at the very beginning, we have the raw features in the raw data table, so each column will have the actual values of x, so x1, x2, x3, x4, now for each x here, we will use this formula to do the transformation, so for each x, I will use x, this feature value of this data point 1, x minus the minimum value of this column 
+
+00:28 
+Divided by the maximum value of this column minus the minimum value of this column. 
+
+00:33 
+Now for example, x. Here, if x equals to 62, then we will use 62 minus the minimum of this h column. 
+
+00:44 
+Divided by the maximum h minus the minimum h of this column. 
+
+00:48 
+Now the x, 62, will be transformed into a new number, right? x prime. 
+
+00:56 
+Now for each data point in our original data table, I will use the same formula to do the transformation. 
+
+01:02 
+So the second data point, x equals to 65, so I will use this formula to get x prime for the second data point. 
+
+01:11 
+Now for all the data points in this data table, for all the data points in this column of feature values, 
+
+01:18 
+I will do the same transformation using their own feature values. 
+
+01:21 
+Now I will get a new list of x prime. 
+
+01:25 
+Now let's see, in the newness of x prime, what is the minimum value of x prime here? 
+
+01:31 
+So we can see this linear transformation, right? 
+
+01:34 
+The minimum value of x prime comes from the minimum value of x, right? 
+
+01:40 
+So what is the minimum value of x prime? 
+
+01:44 
+So if we put x minimum into the formula, 
+
+01:48 
+so x equals x minimum. 
+
+01:50 
+So what's the minimum value of x prime? 
+
+01:53 
+Zero, right? 
+
+01:54 
+So what's the maximum value of x prime? 
+
+01:57 
+It's one. 
+
+01:59 
+So you can see, after we do this transformation, the min-max transformation, and we generate a new column of feature with the numbers using x1, 
+
+02:10 
+so x1 will be in the scale from 0 to 1, right? 
+
+02:14 
+Now for the second column, for the income attributes, now we do the same thing, right? 
+
+02:21 
+For each data point income x, I will use x minus the min-income in this data table. 
+
+02:30 
+Divided by the maximum income minus the minimum income 
+
+02:33 
+Now I will get a new list of income, x-prime 
+
+02:37 
+And for that new column, it's still in the same range between 0 and 1 
+
+02:42 
+Now these two features, they are in the same scale 
+
+02:45 
+That's it, how we do this 
+
+02:47 
+This is the values information 
+
+02:49 
+Now after we do the min-max scaling 
+
+02:52 
+Now all the points will be represented using the new feature, values 
+
+02:57 
+Just to re-scale the feature values, and then we can do the clustering or distance calculation in the new X1 data table. 
+
+03:06 
+So we will not have this kind of dominant features in different scales. 
+
+03:11 
+There is one issue that when we are using the minimum-maximum feature transformation. 
+
+03:18 
+So this formula will be valid or useful only when you do not have many outliers in your data table. 
+
+03:27 
+So imagine that there is one big oclap. So for example, if Marine comes to our class, and we are trying to normalize our income with Marine in this class, in this dataset, so you can see, Marine's income will be normalized to 1, right? 
+
+03:50 
+But all the rest of their bonds, their incomes will be normalized to a very, very small value close to 0. There's no variance. 
+
+03:58 
+So when we have an alternate data point, we cannot use min-max normalization here, and alternately we can do the standardization. 
+
+04:09 
+Now standardization is also trying to transform or rescale the original feature values into a new scale, using a different formula. 
+
+04:18 
+So here we are using this, we are trying to calculate a new column of feature values. 
+
+04:25 
+The formula is that we use X minus mu, mu is the mean value of this column. 
+
+04:32 
+divided by tau, the standard deviation of these columns. 
+
+04:36 
+Now we will be able to use the original future values to calculate a new column of future values 
+
+04:41 
+which follows the standard normal distribution. 
+
+04:46 
+And in the newly transformed x-prime column, the mean value of x-prime will be 0. 
+
+04:52 
+And the standard deviation of the x-prime will be 1. 
+
+04:56 
+So after I do the standardization for all the columns of features, and then the new transform column for features, they will be in the same scale, with the mean value of 0, and the standardization to be 1. 
+
+05:11 
+So that's for the attribute normalization. So when you run your own algorithms, for example if you use some Python libraries or techniques, you may need to check 
+
+05:25 
+from official documentation, then some of the algorithms, they will view the feature normalization or standardization within the model setting. 
+
+05:33 
+Some of them will not. 
+
+05:35 
+So if the technique or algorithm, they do not view the feature accurate normalization or standardization, 
+
+05:43 
+Then sometimes you need to do this by yourself, so if you have your own course project, and you are dealing with new raw data, usually the data table, the raw data table, their features will be in different scales. 
+
+05:56 
+And if you use the out-of-scale feature values to do some analysis, for example, for the K-means clustering, then you will have trouble. 
+
+06:03 
+So you need to make sure that your analysis is valid, and it will not be affected by the dominant features in the out-of-scale attribute table. 
+
+06:13 
+So that's the attribute normalization. 
+
+06:16 
+Now, after we do the normalization or standardization, and we get the most representative feature table in the same scale, then we can do the Fourier analysis, the K-means, hierarchical clustering, and density-based clustering. 
+
+06:30 
+So let's go through this one by one. 
+
+06:33 
+So for the K-means clustering, 
+
+06:36 
+It is one of my favorite machine learning algorithms, and I also use the K-means algorithm to publish one top journal 
+
+06:43 
+We use the expectation maximization algorithm to deal with the location-based problem 
+
+06:48 
+So we will have that problem in a later example 
+
+06:52 
+So why I like this algorithm a lot, because this algorithm, the source code of this algorithm, it only has five rows of code 
+
+07:05 
+The machine learning in year one of my Ph.D. study, I cannot imagine that there are so many complicated codes and this code is so clean and timely. 
+
+07:16 
+Only five nodes of commands, it will run very fancy analysis for using the K-means. 
+
+07:24 
+So how does it work? The YGA3 algorithm is so small, but it's so effective. 
+
+07:31 
+So the idea of the K-means clustering is to segment your original data set into K different clusters, and the K must be specified. 
+
+07:45 
+So we need to manually specify how many Ks we need, how many clusters we need. 
+
+07:51 
+Now the algorithm will generate two patterns for you. 
+
+07:54 
+The first pattern is the assignment of different data points to the cluster. 
+
+08:00 
+And the second pattern is the center, the centroid of different clusters, so the algorithm will generate the cube patterns for you, how it can generate the cluster centroid, and the data points assigned to this cluster, so at the very beginning, we need these two patterns from the data table, but at the very beginning there are no clusters, right? 
+
+08:28 
+If there are no clusters at the very beginning, we do not have the cluster centers. 
+
+08:33 
+The reason is that if there are no cluster centers, we have no idea which data point will be closest to this cluster center and should be assigned to this cluster. 
+
+08:42 
+Most patterns are missing at the very beginning. 
+
+08:45 
+So what can we do? 
+
+08:47 
+At the very beginning, we initialize a pattern. 
+
+08:51 
+At the very beginning, I initialize the centroid of the K clusters. 
+
+08:58 
+I have no idea where are the clusters, but I will randomly initialize the centers for each cluster. 
+
+09:05 
+Now each cluster will have its own cluster centroid. 
+
+09:09 
+So I randomly identify the location for this center. 
+
+09:13 
+Now we will follow this kind of iteration. 
+
+09:17 
+So for each iteration, for each iteration here, we will force this assignment. 
+
+09:26 
+Now you mentioned that now I've already identified the locations of the cluster centroid. 
+
+09:32 
+Now I will actually assign different data points to the given cluster centroid. 
+
+09:38 
+So I assume that the cluster centroid, they are given. 
+
+09:42 
+Now I will assign the data point to the closest cluster centroid. 
+
+09:51 
+I will get the labels for each data point, right? 
+
+09:54 
+Data point 1 will be assigned to which cluster, and data point 2 assigned to which cluster 
+
+10:00 
+And then, I will fix the assignment 
+
+10:03 
+I will fix the assignment of the data point, and re-compute the centroid location of these clusters 
+
+10:12 
+Let me give you an example, and we will see how we can do this intelligently 
+
+10:16 
+Remember that every time we have two steps 
+
+10:20 
+The first step is to fix the centroid and find the data assignment. 
+
+10:27 
+The second step is that we fix the assignment and then we compute the cluster centroid. 
+
+10:33 
+So for this data distribution, we know that we are trying to group the data points into three clusters. 
+
+10:39 
+At my very beginning, we do not have a cluster centroid and we do not have an assignment. 
+
+10:44 
+So at my very beginning, I randomly initialize three locations for the centroid. 
+
+10:53 
+So this is my initialization. 
+
+10:56 
+And after my initialization, I will use the Euclidean distance or some other distance calculation to calculate the distance of this data point to the three centroid. 
+
+11:06 
+Now we identify that this data point is closest to the green centroid. 
+
+11:12 
+So we will do the assignment of this data point, and it will be assigned to the green cluster. 
+
+11:22 
+So for every single data point, now for example for this data point, I will calculate its distance to the three centroids, right? 
+
+11:28 
+Now I need to find out that it is closest to blue, so it will be colored blue. 
+
+11:35 
+So you get my first step. 
+
+11:38 
+I just do a distance calculation and I'll assign the data point to the closest one, right? 
+
+11:42 
+So after that, I will color all the data points, given the current locations of the centroids. 
+
+11:53 
+Now the step one is done. 
+
+11:56 
+Now, in the same iteration, after we color all the data points, 
+
+12:01 
+and soon I realized that my color in the centroid here is not the center of the green data points. 
+
+12:12 
+It's not the center of the green cluster anymore, right? 
+
+12:15 
+So after I did the assignment, after I get all the colors for all the individual data points, 
+
+12:21 
+now we realize that the cluster center now is not the center of the cluster. 
+
+12:27 
+So what do I can do? 
+
+12:29 
+Now in the iteration 1, in my second step in the iteration 1, I will fix the color, the assignment of the data points. 
+
+12:38 
+And then according to the color, I will recompute the center, the centroid of this cluster. 
+
+12:47 
+Now the centroid for the green will be moved to this location, right? 
+
+12:52 
+And the centroid here will be moved here. 
+
+12:55 
+Is that clear? 
+
+12:57 
+Now the first iteration is done. 
+
+13:01 
+Now you can imagine after the first iteration, I will be able to get three new clusters of centroid, right? 
+
+13:09 
+For example, I get these three new clusters of centroid. 
+
+13:13 
+Now, 
+
+13:14 
+in my second iteration, I will repeat the same step. I will fix the centroid location. 
+
+13:22 
+And we do the coloring. 
+
+13:25 
+Why? Because after we do, after I get these three new class centroid, and I fix the class centroid, 
+
+13:32 
+but then this green data point, it was assigned green, now according to the new class centroid, 
+
+13:38 
+they are not green, right? They are closer to red. So they will be the color red instead of green. 
+
+13:45 
+So in my second iteration, I will fix the three centroid. Okay, I fix the three centroid, 
+
+13:57 
+And we color, we assign different bit of points to its closest new centroid. 
+
+14:04 
+So I gave the new color. 
+
+14:06 
+Now when I give the new color, and you can see this bit of points, they were assigned green, now they were assigned yellow, or they were assigned red, right? 
+
+14:16 
+Now according to this new assignment of the green, this class centroid from the previous iteration is not the center of this new cluster. 
+
+14:25 
+According to the class, I will do 
+
+14:29 
+We calculate the location. 
+
+14:31 
+So you can see, in iteration 2, we did the same thing. 
+
+14:36 
+We fixed the location of the centroid from the previous iteration, 
+
+14:41 
+and now I will do the data point assignment, 
+
+14:44 
+to get the colors of different data points, 
+
+14:46 
+according to their distance to the closest cluster centroid. 
+
+14:50 
+And then we fix the color, we fix the assignment of different data points, 
+
+14:54 
+then we compute the cluster centroid. 
+
+14:59 
+Now, in step 3, I do the same thing, according to the new cluster centroid, I fix the locations of the new centroid, and then I redo the coloring of the data points, and now according to the new colors, I will update the locations for the centroid, and then I do this again, and again, and again, so you can see, at the very beginning, this is my green cluster, now my green cluster is 
+
+15:26 
+change to this mode region, you get this process automatically. 
+
+15:33 
+So, after six iterations, 
+
+15:38 
+I will get a point that the locations for the centroid do not change anymore. 
+
+15:44 
+And if the locations do not change, the assignment will not change. 
+
+15:48 
+Now it is called the convergent point. 
+
+15:51 
+Now the algorithm has reached the convergence. 
+
+15:55 
+And if you continue the intuition, nothing will change, and we will stop here. 
+
+16:00 
+And this is the final clustering result, and intuition 6. 
+
+16:05 
+And the K-means algorithm is done. 
+
+16:07 
+So up there, we can see what we get. 
+
+16:09 
+We get three classes of centroid, and the colors for each data point, the assignment. 
+
+16:15 
+And the K-means is done, we get the two patterns. 
+
+16:18 
+Okay, so let's have a 10-minute break, and we will continue with the lecture. 
+
+16:24 
+And sometimes the building will have a false alarm, and yeah, we don't know why, but whenever we hear the alarm, we need to go outside, and to make sure that we are in a very safe place. 
+
+16:39 
+So I feel the class will continue until we receive another alarm, and maybe we will cancel this one-hour lecture. Hopefully not. 
+
+16:50 
+Let's continue, so we know that K-means actually follows two steps in each situation, where it picks location, find the color, and then picks the color, find the location. 
+
+17:00 
+So, we can actually identify some solutions to the location optimization problem. 
+
+17:07 
+So, for example, here. 
+
+17:10 
+This following is actually from my research paper. So my research paper is to identify the location for the last mile facility, the warehouse. 
+
+17:18 
+So if you use the Jindong or Timo, you may receive the one-day delivery service, right? 
+
+17:24 
+So you may wonder why we have the one-day delivery service. 
+
+17:28 
+So the one-day delivery service comes from the very close warehouse in your open city. 
+
+17:34 
+And the retailers will prepare some inventories in the last-mile warehouse, so when you place the order, the warehouse will send the item to you within the same day. 
+
+17:45 
+So how we can identify the location for the warehouse which can serve for very small region of customers? 
+
+17:52 
+We have so many customers, and how we can identify so many locations for the warehouse automatically? 
+
+17:59 
+Now I abstract that problem into a post office problem, so the problem is the same, imagine that we have so many residents in this city, so each blue dot here represents one resident, the home location, and we need to identify three locations of three post offices, and each post office will serve a small range of customers which are located closest to this post office. 
+
+18:27 
+So we need two things, the location of the post office and the assignment of the message to the post office. 
+
+18:34 
+So how we can do? 
+
+18:36 
+So actually to solve this problem, at the very beginning we have no location and we have no assignment. 
+
+18:42 
+Both patterns are missing. 
+
+18:44 
+So what we can do, at the very beginning we randomly pick three locations for the post office. 
+
+18:50 
+So here we have position, location 1, skew 3, so we randomly select 3 locations, so just random, we have no idea whether these 3 locations are good or bad, but we just select 3 locations. 
+
+19:04 
+Now according to the locations, we will continue the K-means iteration. 
+
+19:08 
+At the very beginning, I think it's the locations that define the colors, right? 
+
+19:13 
+The color will be assigned to the closest location, so this group of residents will be assigned to the rest of the office. 
+
+19:22 
+And this group assigned to the yellow, and this group assigned to the black. 
+
+19:28 
+Now, after that, we, I think that okay, according to the red assignment, 
+
+19:34 
+the distance in the red cluster, the location of the red post office would not be the optimal location for this group of customers. 
+
+19:44 
+It's not located in the center of these customers, right? 
+
+19:47 
+So now, my second step is that we will fix the color. 
+
+19:52 
+and re-optimize the location of your centroid. 
+
+19:56 
+So now update the class, the locations for the post offices. 
+
+20:02 
+And after that, you may realize, after the first installation, you realize that, 
+
+20:08 
+okay, for this post office, it was assigned black. 
+
+20:13 
+Now according to the new locations of the post office, it is closer to the red than the black, right? 
+
+20:22 
+So these residents will be assigned to that instead of the black, according to the new post office locations, the new locations here and here and here. 
+
+20:32 
+So I will go to the second iteration. In the second iteration I do the same thing. I fix the location of the centroid and reassign the individuals to the closest centroid. 
+
+20:51 
+Now you can see, after I find the assignment for the RAD core office, two new listeners join the community, right? 
+
+21:01 
+But your location of the core office for the RAD was for the previous clusters here. 
+
+21:07 
+So the location is not optimal, so we need to shift the location for the RAD to a new updated centroid for all the RAD listeners here. 
+
+21:17 
+Now, you may imagine that I will fix the color and then recompute the locations of the post offices. 
+
+21:25 
+And after that, we are going to start the integration, right? 
+
+21:27 
+I fix the location and get the color. 
+
+21:30 
+And then get the color, you know, fix the color and then get the location. 
+
+21:34 
+Again, again, again, until the locations of the post offices do not change. 
+
+21:39 
+And if the locations do not change, then the assignment will not change. 
+
+21:43 
+And now we reach the convergence point. 
+
+21:46 
+And how does that work? Again, the three locations. 
+
+21:48 
+The optimal locations of the post offices, and the colors, the assignment of each individual instance to the closest post office. 
+
+21:57 
+Is that clear? How we use the K-means? 
+
+22:00 
+The two iterations, the iterations of two steps to compute the locations and the service range. 
+
+22:08 
+So that's for the K-means, and how to use K-means to solve the location optimization problem. 
+
+22:15 
+We realized that the K-means is so fast, it is so efficient, but it has certain limitations. 
+
+22:23 
+The first limitation is that we have randomized initialization. 
+
+22:29 
+So at my beginning, we randomly selected three or more initial centroids to start the iterations for K-means. 
+
+22:38 
+And sometimes you may get very bad results. For example, 
+
+22:44 
+For this data distribution, ideally I want to get these three clusters here, but if at the very beginning you get two initial centroids here, then eventually you will get these three clusters, cluster 1, cluster 2, and cluster 3. 
+
+23:00 
+So this may not be good, but this result is possible. 
+
+23:05 
+So why we get this result on the right-hand side, the sub-optimal clustering result, because the randomly selected initial centroid manage the local optimal result, so what we can do, so we can have the K-means++, so K-means++ is a method to get a better initial centroid, which will be used later to start the K-means clustering analysis, so how it works? 
+
+23:38 
+So we will not select the centroid randomly, instead we will do this one by one. 
+
+23:46 
+Now according to this data distribution here, I want to do the four cluster K-means. 
+
+23:51 
+But I made in beginning I will not do the four cluster K-means with the four randomly selected initial centroid. 
+
+24:00 
+So in my beginning, I just randomly select one centroid. 
+
+24:04 
+So I randomly select one centroid, and the selected centroid is here, you cannot see it clearly, the centroid is here, so I'm only going to select the first one, now when I select the second centroid, because if I want to do four clusters of K-means, I need four centroid, right, so after I select the first one, for the second one, I will fix the location for the first one. 
+
+24:32 
+I fixed the location for the first one, now when I say the second one, I'm wrong. 
+
+24:37 
+The second centroid should be very far away from the first one. 
+
+24:42 
+Because when you want two clusters, the cluster centroid for two clusters, 
+
+24:47 
+the centroid should be very far away from each other, right? 
+
+24:51 
+So, for the second centroid, I fixed the location on the first one, 
+
+24:55 
+now I have to land the second one here. 
+
+24:58 
+The second one is as far away as possible to the first one. 
+
+25:02 
+Now the second one is not randomly selected. I select the locations of the second initial centroid using the locations of the first. 
+
+25:12 
+And then when I select the third centroid, I will fix the location of the fourth one, location of the second one, and then I will select the third centroid which is far away from both previous two centroids, as far away as possible. 
+
+25:26 
+Now I select the third one, here. 
+
+25:29 
+And when I select the fourth one, I fix the three locations here and select the fourth one. 
+
+25:35 
+The first one should be as far away as possible from the previous three selected centroids. 
+
+25:40 
+Now after that, I select four centroids, right? 
+
+25:44 
+But these four centroids will be used to start the K-means clustering. 
+
+25:52 
+So these four centroids, they are not optimal centroids for the four clusters. 
+
+25:56 
+They are the initial centroids for K-means. 
+
+25:59 
+So I will start from these four initial centroids. I fix the locations and give the color, and fix color, recompute the locations of the four centroids again and again. 
+
+26:09 
+And we will be able to get the final convergent K-means classic result. 
+
+26:13 
+And with this result will be much better than the randomly selected four initial centroids. 
+
+26:19 
+So that's the randomness issue. 
+
+26:26 
+Size, density, and the shapes of the data distribution. 
+
+26:30 
+But usually it can't all work. 
+
+26:31 
+But first, the data of different sizes. 
+
+26:37 
+So, for this data distribution, ideally we want to get these three clusters, cluster 1, cluster 2, cluster 3, but we realize that cluster 1, 2, 3, cluster 2 is too big, the community for the second cluster is too big, but if we use the K-means cluster according to the minimum distance assignment, so now for these data points here, 
+
+27:00 
+They will be closer to the blue centroid than to the middle large community centroid, right? 
+
+27:07 
+So this boundary data points, because of the size of the second community, this boundary data points will be assigned to the blue 
+
+27:14 
+And this data point will be assigned to the right cluster 
+
+27:19 
+So if you run the K-means, the three cluster K-means directly, we will get this result 
+
+27:26 
+Not that good, right? So that's the problem of the 
+
+27:31 
+K-means for different size of data distribution. 
+
+27:35 
+And for the different densities, so ideally we want to get these three clusters, but unfortunately 
+
+27:48 
+So if we use K-means directly, what we will get? 
+
+27:52 
+We will get these three clusters, and these high density regions, they will be grouped 
+
+27:57 
+into a single cluster. 
+
+27:58 
+because their inter-cluster distances are also very small. 
+
+28:03 
+So we know that for different densities, it may not work. 
+
+28:06 
+And finally, for different shapes. 
+
+28:08 
+Ideally, I want to get these two clusters. 
+
+28:11 
+For example, we only did our points. 
+
+28:13 
+This red line is closer to the blue instead of the red here. 
+
+28:18 
+So if you use K-means directly, we get this result. 
+
+28:21 
+Not that good, right? 
+
+28:23 
+So you may ask, can we get 
+
+28:26 
+The ideal case, because we want to use the patterns from different clusters to do the downstream analysis, of course we can do that. 
+
+28:35 
+So a very intuitive and efficient way to deal with K-means clustering for data with different shapes, density, and size is to stack the K-means with more number of clusters than you need. 
+
+28:51 
+For this data distribution of different sizes, we first initialize the K-means using 10 clusters. 
+
+28:58 
+So if you want 10 clusters of K-means, you will get 10 clusters. 
+
+29:03 
+The 1 and the 2, so that's the 2 small clusters we want, right? 
+
+29:07 
+And also for the middle big size, we will get 8 different clusters. 
+
+29:13 
+1, 2, 3, 4, 6, 7, 8. 
+
+29:16 
+Now what we need to do next? 
+
+29:21 
+I can analyze the 10 clusters one by one, analyze the centroid, analyze the members in different clusters, I analyze one by one, I analyze 10 clusters. 
+
+29:33 
+I will decide whether the middle age clusters will be from the same community or I will send coupons to the age one by one, right? 
+
+29:45 
+To start your K-means clustering at a very high resolution, then do the post-mortem analysis to see whether some of the clusters should be merged together in a single cluster. 
+
+29:54 
+Same for the density distribution, for the different distribution of different densities. 
+
+30:00 
+So, instead of doing the three-cluster K-means, I do ten-cluster K-means. 
+
+30:05 
+So, after that, I do a cluster one, cluster two, so that's the two density clusters I want to get. 
+
+30:12 
+And for the low-density regions here, I will get 8 clusters, and then I will do the same thing, I analyze these 10 clusters one by one. 
+
+30:21 
+And also for different shares, I can use these 10 cluster K-means, and then analyze the small clusters. 
+
+30:28 
+So we can actually jump into a very high resolution of our analysis, and then do this one-grain analysis. 
+
+30:35 
+So the trade-off is that we need to spend more time on analyzing each small cluster. 
+
+30:43 
+Of course, for these different shapes, we have learned the density-based clustering, which will deal with the different shapes better. 
+
+30:51 
+Now, finally, we have one last question. 
+
+30:54 
+At my opinion, we mentioned that the number of clusters is not, there is no golden standard for the optimal number of clusters. 
+
+31:02 
+But we can deal with the 
+
+31:05 
+number of very low resolution with smaller number of clusters to our high resolution with a very large number of clusters. 
+
+31:12 
+So how we can do this 
+
+31:14 
+adaptively. So that's what I've been called bisecting K-means. 
+
+31:18 
+The idea of the bisecting K-means is that we can do the two cluster K-means again and again and again. 
+
+31:26 
+So there's a bigger iteration outside of the iteration of a single K-means clustering. So let's see how it works. 
+
+31:34 
+So, for this bit of distribution, we can actually get two clusters, or three clusters, or ten clusters. 
+
+31:42 
+But we haven't decided how many clusters we may need. 
+
+31:46 
+By my beginning, I will run two cluster K-means. 
+
+31:50 
+I just do two cluster K-means. 
+
+31:52 
+And this is a convergent result. 
+
+31:55 
+I run two cluster K-means, I get cluster 1 and cluster 2. 
+
+32:04 
+Of course, I can stop here. I can analyze the two big clusters. 
+
+32:08 
+I realize that for the bigger one, the data distribution is very bad. 
+
+32:14 
+So what I can do next? 
+
+32:16 
+I will run the two cluster K-means again, but only using the data points in the big cluster. 
+
+32:24 
+Now we have two clusters, right? 
+
+32:27 
+Now I will leave the small clusters ahead, or I will just leave these small clusters. 
+
+32:32 
+Now I only focus on these big clusters. 
+
+32:35 
+And for the bigger clusters, I will run two cluster K-means again. 
+
+32:40 
+And I will reach the convergent point. 
+
+32:43 
+And then the bigger cluster will be split into two, right? 
+
+32:48 
+The left-hand side remains the same. 
+
+32:51 
+So the two clusters, the second two clusters only deal with the bigger cluster. 
+
+32:55 
+Now, can I stop here? Can I analyze cluster 1, cluster 2, and cluster 3, and I stop here? 
+
+33:02 
+Yes, we can. 
+
+33:03 
+And we know that it's not a level, right? 
+
+33:05 
+But you may want to further explore the bigger cluster. 
+
+33:09 
+So what we can do next? 
+
+33:11 
+So I will run two cluster K-means again, on the biggest cluster. 
+
+33:17 
+Now this one is the biggest one, so I run two cluster K-means, and this one will be split into two. 
+
+33:24 
+So what I need to do, I can continue to increase the number of clusters, and I will reach more number of clusters at a higher and higher level of resolution, right? 
+
+33:34 
+So I do this again, every time I do the two-cluster K-means, I will split the biggest cluster into two. 
+
+33:43 
+So I do it again, again, again, now I reach ten clusters. 
+
+33:51 
+So every time, I will split the largest one into two, using the two cluster K-means. 
+
+33:57 
+So can I stop here? Of course, we can stop here. 
+
+34:01 
+Can we continue? Yes, we can continue. 
+
+34:06 
+So, after that, if you believe, okay, after that, I think, for my company, 
+
+34:13 
+this group of customers, they may be the potential customer. 
+
+34:18 
+But I want to do a fine-grained analysis for this group. 
+
+34:22 
+Now I can do two cluster K-means again on this group, right? 
+
+34:32 
+So there's no golden standard, it depends on your business problem. 
+
+34:37 
+And what level of resolution you want to conduct your business solution on which group of people. 
+
+34:44 
+Then you can continue using the two-cluster K-means again and again until you reach a resolution level and the patterns you get or the differences among different subgroups of customers you get from this level is good enough for a finished solution. 
+
+35:00 
+Then we stop here. 
+
+35:01 
+So that's for the bisecting K-means, from a very low resolution of two clusters to a very high resolution of ten or more clusters using the same data set. 
+
+35:11 
+Next, we want to learn the hierarchical clustering. 
+
+35:15 
+The idea of hierarchical clustering is to divide these hierarchical structures of your data distribution. 
+
+35:21 
+We want to group the closest data points into a single cluster first. 
+
+35:25 
+Here, we have six data points. 
+
+35:27 
+First, we identify 0.1 and 0.3 that are closest to each other. 
+
+35:31 
+At the very beginning, I will group 0.1 and 0.3 into a single cluster. 
+
+35:37 
+Now, the other data points will be in one single cluster. 
+
+35:41 
+At a higher level, we have five clusters now. 
+
+35:44 
+Then I will follow the group. Among the five data points, group 1, 3, group 2, group 5, group 2, and group 6, 
+
+35:52 
+I find group 2 and group 5, they are closely to each other, so they are from a higher level of group. 
+
+36:00 
+And then we group point 2 and 5 together. 
+
+36:03 
+Then we have four data points. So this is first point, second point, third point, and fourth point. 
+
+36:10 
+Now, among these four data points, I find, okay, point 1 and point 2, they are closest to each other, so they will be merged into a higher level, okay? 
+
+36:19 
+So we keep merging the closest data point into a higher level, and at a higher level, the number of clusters will be smaller, but the cluster size can be bigger and bigger. 
+
+36:30 
+So we can have this kind of hierarchical structure, and we can build the hierarchical structure from bottom to up, from the individual data points to the largest group, or up-down, that we start from a single big cluster and keep excluding the data points outside of the big cluster, so we can have the up-down. 
+
+36:51 
+So let's take a look at how this hierarchical structure can be formally calculated. 
+
+36:57 
+So to calculate, or to generate the hierarchical clustering, we need to maintain a distance or proximity matrix. 
+
+37:04 
+So for example, among the 12 data points here, we want to maintain this matrix. 
+
+37:09 
+And the scale of this matrix here indicates the distance between point 1 and point 2, or the similarity between point 1 and point 2. 
+
+37:17 
+And this scale will record the distance or similarity between point 1 and point 3. 
+
+37:25 
+The metrics will be matched as the metric. 
+
+37:27 
+So this value, distance between 0.1 and 0.2 will be the same as to this value, the distance between 0.2 and 0.1. 
+
+37:35 
+Now we need to have these metrics. 
+
+37:38 
+At the right beginning, we have 12 data points. 
+
+37:41 
+At the bottom level, we have 12 clusters. 
+
+37:44 
+Each one single data point will present one single cluster, so we have 12 clusters. 
+
+37:48 
+So these metrics will be curve by curve. 
+
+37:52 
+Any pair of data points or clusters, we will be able to calculate our distance, so we have 12 by 12. 
+
+37:59 
+Now imagine that we group these two data points together, so they will be grouped into a new data point. 
+
+38:06 
+Now we will merge the two data points into a higher level, so at the higher level we will have 11 data points, right? 
+
+38:13 
+Now, at a higher level, the matrix will be, for example, these two data points will be grouped together into a new one. 
+
+38:21 
+So at a higher level, we have 11 data points, and the matrix will be in the dimension of 11 by 11. 
+
+38:26 
+So every time, according to the distance of the min-max matrix, we identify the closest matrix, the closest pair, 
+
+38:35 
+and then we will merge the two data points with the minimum distance into a higher level. 
+
+38:41 
+Now we can continue to do that. 
+
+38:43 
+But that's what I need to use and figure out at the middle level that, for example, for the cloud data points, at the middle level, I put some of the data points into the higher level, and in the middle, we have five clusters of data points here. 
+
+38:58 
+Now, each cluster may have some data points within the single cluster. 
+
+39:04 
+Now, I may have a five by five matrix, right? 
+
+39:09 
+Now, this, they actually record distance between C1 and C2. 
+
+39:14 
+and this structure that we call the distance between C1 and C3, and according to these distance matches, we can notice there are two clusters which are closest to each other to a higher level, so 4x4 matches with four clusters, so this is the hierarchical structure, but to do that, we have one issue, so which is the distance between two clusters, of course, for example, we can notice, we can actually identify the distance between 
+
+39:44 
+Cluster 2 and Cluster 5, the two clusters are closest to each other among the five clusters' square-wise distance. 
+
+39:50 
+Now I want to merge C2 and C5 into a single one, to a higher level. 
+
+39:56 
+Now at a higher level, C2 and C5 will be merged into a bigger cluster. 
+
+40:00 
+Now we will have four clusters left. 
+
+40:03 
+The matrix will be updated into a 4x4. 
+
+40:06 
+Now the question is, how we can compute the distance between two clusters? 
+
+40:12 
+At the beginning, we talked about the distance between two data points, that's easy, but one cluster contains many data points, so how can we compute the distance between two clusters? 
+
+40:23 
+There are 10 different ways of computing the distance between two clusters. 
+
+40:27 
+The first one is the minimum link, or single link. 
+
+40:31 
+The minimum link will use the minimum distance between any pair among all pairs of the distance in two clusters. 
+
+40:39 
+Now you can see, I can compare the distance from this data point to this one in the other cluster, the distance to this one, the distance to this one. 
+
+40:46 
+I can also compute the distance between this data point in cluster 1 to the other data points in other clusters. 
+
+40:53 
+So among all the pairwise distances between the two clusters of data points, I use the minimum distance as the distance between the two clusters. 
+
+41:06 
+to quantify the distance between the two clusters. 
+
+41:09 
+So that's one method. 
+
+41:11 
+Alternatively, I can use the maximum distance or complete link distance. 
+
+41:16 
+The maximum distance will use the maximum distance between the pair of data points in two different clusters 
+
+41:22 
+as the distance measurement for the cluster distance. 
+
+41:26 
+So we use the maximum distance. 
+
+41:29 
+And we can also use the group average. 
+
+41:31 
+The group average will actually first compute the pairwise distance between all the data points in two clusters one by one, 
+
+41:39 
+and then take the average of the distance. 
+
+41:41 
+And the average value will be used to record the distance between any two clusters. 
+
+41:48 
+Also we can 
+
+41:50 
+Fourth, we can use the distance between the cluster centroid, so we first get the locations of the centroid and then use the distance between the two centroid as the distance between the two clusters. 
+
+42:03 
+Of course, in your own business problem, you may use other methods according to your business scenario and you can quantify the distance between two clusters according to your own setting. 
+
+42:15 
+Now let's take a look at an example of how we can use the minimum link or single link to generate the hierarchical structure. 
+
+42:23 
+So here, at my beginning we have six data points, and at bottom level we have six clusters. 
+
+42:29 
+And then we will have the six by six distance matching. 
+
+42:33 
+So here, for example, 0.23 is the distance between point 1 and point 2. 
+
+42:39 
+So point 1 and point 2, the Euclidean distance between these two is 0.24. 
+
+42:45 
+And this matching is symmetric, because 0.24 between 0.1 and 0.2 is the same as the distance between 0.2 and 0.1, as this one, right? 
+
+42:56 
+And the distance to the same point will be 0, so the diagonal will be 0. 
+
+43:02 
+So right beginning we have 6x6 distance matrix, and bottom level we have 6 data points. 
+
+43:09 
+Now I want to merge the closest data point into a higher level. 
+
+43:14 
+Now I identify the minimum value in this matrix, right? 
+
+43:19 
+So excluding the zeros in the diagonal, I want to identify the minimum distance in this data matrix. 
+
+43:26 
+So what's the minimum distance here? 
+
+43:30 
+So it's this value, 0.11, right? 
+
+43:34 
+So what's the distance, what is this distance? 
+
+43:37 
+This is the distance between two data points. 
+
+43:40 
+So what are the two data points? 
+
+43:43 
+0.3 and 0.6, right? 
+
+43:48 
+Are you following me? 
+
+43:50 
+So this is one year final exam, okay, okay, now everybody raise up your head, okay, not kidding, okay 
+
+44:00 
+So 
+
+44:01 
+We're going to talk about this distance is a minimum one 
+
+44:04 
+So if I want to merge the data point to a higher level, I will merge point 3 and point 6 into a single cluster 
+
+44:12 
+Right, so I merge point, I identify this 
+
+44:18 
+Point 3 and point 6 are closest to each other. So they will be merged to a higher level 
+
+44:23 
+Now after we merge these two data points into a higher level, then we will have five data points at this higher level. 
+
+44:31 
+And at this higher level, I need to update the 6x6 distance matrix into 5x5 distance matrix, 
+
+44:38 
+while the point 3 and point 6, they will merge together as a new data point here. 
+
+44:44 
+Now to get this new 5x5 distance matrix, because we don't use this 5x5 matrix to decide which two data points will be merged to a higher level 
+
+44:55 
+Now there is an issue 
+
+44:57 
+So to fill this data table, we need to calculate the distance between P1 and P36 
+
+45:05 
+So P1 to point 1 to the cluster 
+
+45:12 
+In this cluster, we have two data points, so we need to tell the machine which distance matrix we should use. 
+
+45:20 
+Now, here we tell you, we use the minimum link or the single link, so we will use the minimum distance. 
+
+45:26 
+So what's the distance between 0.1 and 0.3 in this new cluster? 0.1 and 0.3 is 0.22. 
+
+45:34 
+So what's the distance between 0.1 and 0.6? 0.23, right? So what's the minimum distance? 
+
+45:42 
+between point 1 and this cluster, 0.22, right? 
+
+45:49 
+So this value here is 0.22. 
+
+45:52 
+It is the minimum distance between P1 to the pair of the standpoint in this new cluster. 
+
+45:59 
+So what is the distance between P2 and P36? 
+
+46:04 
+So what is this value? P2 and P3-6, there is a minimum distance between P2 and P3, which is 0.5, or P2 and P3, 0.25, so this one is smaller, the smallest one, the minimum distance, so this value is 0.15. 
+
+46:21 
+Is that clear? I will use the minimum link, or minimum distance to compute the distance between two classes. 
+
+46:29 
+Now after that, we will be able to get these 5x5 matrix, right? 
+
+46:35 
+Now in this 5x5 matrix, I want to merge the data distribution of the 5 data points into a higher level of 4 data points. 
+
+46:43 
+So according to the minimum value in this 5x5 distance matrix, which two should be merged next? 
+
+46:50 
+We get the minimum value here is 0.14, and this is the distance between 0.2 and 0.5, right? 
+
+46:56 
+So what should I do? I merge 0.2 and 0.5 together. 
+
+47:03 
+So I merge 0.2 and 0.5 together, then I will be able to get these 4x4 distance metrics, right? 
+
+47:09 
+Now I need to compute all these distance values here, including the distance between these two clusters. 
+
+47:16 
+The distance between 1 and these two clusters, and the 4 to these clusters, right? 
+
+47:22 
+So we need to do the computation using the minimum distance metrics. 
+
+47:26 
+Now we get these 4x4 distance metrics. 
+
+47:30 
+Now we will continue, right? 
+
+47:32 
+So you can find this on Canvas. 
+
+47:35 
+So we can continue. 
+
+47:37 
+Now in this new level, I identify the minimum distance here, 
+
+47:43 
+and I will merge them together into a higher level. 
+
+47:46 
+So I continue to do that. 
+
+47:48 
+Then you will be able to get this hierarchical structure. 
+
+47:51 
+At the very beginning, we have six different points at the bottom level. 
+
+47:55 
+And according to the distance matches we see, 
+
+47:58 
+okay, points three and point six should be merged together 
+
+48:00 
+with a minimum distance of 0.11. 
+
+48:04 
+So 0.11 here is a threshold to aggregate, to cluster 0.36 together or exclude them into two different clusters, right? 
+
+48:14 
+So this 0.11, and if the threshold is larger than this one, then 0.36 will be grouped together. 
+
+48:21 
+And then I go to a higher level, and I group 0.25 together, with the distance of 0.14, right? 
+
+48:34 
+2, 3, 4 data points. 
+
+48:37 
+Now I continue building the hierarchical structure, I go to a higher level. 
+
+48:43 
+And I update the distance matrix, and according to the distance matrix, I continue to do the merge. 
+
+48:49 
+And until finally I merge all the data points into a single cluster. 
+
+48:54 
+And I will be able to get this danglegram. 
+
+48:58 
+Okay, is that clear? How we call this danglegram? 
+
+49:03 
+Now we can see, if from this diagram, if I set a distance threshold to be 0.2, a very large distance, how many clusters do we get at this level, to get 2, right? 
+
+49:17 
+This is one cluster, and this is the second cluster, and a very long resolution for a large distance. 
+
+49:28 
+So, this is how we can build the hierarchical structure for the data points, and use the hierarchical structure to conduct. 
+
+49:38 
+clustering analysis at different resolution levels. 
+
+49:41 
+And finally, we have the density-based clustering. 
+
+49:45 
+The idea of the density-based clustering is very different from the previous two. 
+
+49:49 
+For the previous two, we are using the Euclidean distance of some pairwise distance to do the 
+
+49:53 
+calculation. For the density-based clustering, we are using the density 
+
+49:58 
+calculation to do the clustering analysis. The idea is very smart. 
+
+50:08 
+Let me give you a very simple example so that you will understand how it works. 
+
+50:14 
+So, to start this algorithm, we need to manually specify two parameters. 
+
+50:21 
+The first one is the range of your neighborhood. 
+
+50:23 
+So here, for my arm, imagine this arm is 2 meters, same as my height. 
+
+50:31 
+Okay, 2 meters. Lovely. 
+
+50:38 
+I will consider the Q-minus radius length is my neighborhood. 
+
+50:43 
+Now, in this class, if you can use your arms to look around, you have so many students in this room. 
+
+50:52 
+Okay, don't speak in any way, just look around. 
+
+50:56 
+So that's called neighborhood. 
+
+50:59 
+Now, I have my second threshold. 
+
+51:01 
+So within my neighborhood, within this radius length, within my neighborhood, within this circle, 
+
+51:08 
+I need to have a minimum number of neighbors 
+
+51:11 
+and this minimum number of neighbors indicates that if the center point, 
+
+51:15 
+so within this center point's neighbor, 
+
+51:18 
+if there are more than the minimum number of neighborhoods in this range, 
+
+51:22 
+I will consider the focal point a core member, a core point. 
+
+51:28 
+The core point means that you are located in a very high density region 
+
+51:32 
+because you have so many neighbors within your neighborhood, right? 
+
+51:38 
+So it's very similar that if you go to the elevator during rush hour, you become the co-members in the building. 
+
+51:44 
+But if in the elevator, you look around, you have 20 students near you. 
+
+51:49 
+In a very high density region. 
+
+51:51 
+Now the idea is that, we first identify all the co-members in this feature space. 
+
+52:00 
+Now some of the students, you may find, okay, for example, if I identify at least 5 members in my neighborhood, I will be considered a co-member. 
+
+52:10 
+So for students there, if you look around, all of you will become the core members, right, because you have so many classmates near you, but for these students, so if you look around, you have two members, right, including you, you have three members, but they are not, you are not the core member, you do not have so many neighbors with you, but one of your neighbors here, 
+
+52:36 
+He is a core member because he has so many neighborhoods, but one thing, so you are the neighbor of a core member, but you are not the core member, so you are the border member, so we call it borderline member, so it's similar that when you live in a high density community, or the urban area, and some of the people there are 
+
+53:00 
+The whole location is in the high-density community, and some of them are in the low-density, right? 
+
+53:07 
+So if you consider this as Hong Kong, so for the core members, they are living in festival work. 
+
+53:16 
+And for some of the other members, they are living in Sunflake, the borderline of the urban areas. 
+
+53:23 
+Now we can actually just use these two parameters to identify all the labels, so some of them are the core members, some of them are border members, and some of them, like me, if I look around, I do not have any core members near me, and I do not have any... 
+
+53:42 
+I don't have enough number of neighbors within my neighborhood, and all the neighbors I have here, they are not the core members of this urban city, now I become the noise, I become the outer data point, right, I'm not close to any high density region, now, after I label all the data points in this classroom, some of you are high density, located in the high density region, you are the core member, and some of them, you are the border member, and some of them are the noise member, for example, here. 
+
+54:13 
+For the data point A, if I specify this as a radius, and the minimum number of data points should be 7 as the core member, then for the point A, in this circle branch, it has more than 7 data points in this branch, so it is the core point. 
+
+54:29 
+And for the point B here, within the neighborhood of B, we do not have 7 neighbors in this branch, but one of the neighbor A. 
+
+54:40 
+is actually a co-member of B, so B becomes the bottom point, the bottom member, and for the point C, it does not have seven data points in the neighbor, and now the neighbor is the co-member, so it is the noise point, so at the very beginning, according to this two-threshold, I can label all the data points in this classroom, some of them are the co-member, some of them are the bottom member, some of them are noise member, right? Now, I can label community. 
+
+55:07 
+So for this student, let's go back to this student, so he is sitting in a high density region, now he must be in the, he must be the member of one community or cluster, but where are the other cluster members in the same cluster, so I identified his neighborhood, okay, for the student behind him, okay, can you step down, okay, for the student behind him, if he looks around, he is also a member, right? 
+
+55:35 
+So these core members, they are the neighborhood of each other. 
+
+55:39 
+So these two core members, they must be from the same cluster or community. 
+
+55:45 
+You get my point? 
+
+55:47 
+Now, for the student behind you, can you please, yes. 
+
+55:53 
+So for his neighborhood behind him, so that student is also a core member, right? 
+
+55:59 
+So these two, they are also the neighborhood of each other, and they are all the core members. 
+
+56:04 
+So, the student behind the team should also be in the same cluster. 
+
+56:09 
+So these three members should be in the same group, in the same substantial areas of the high densities. 
+
+56:18 
+Now, we can propagate these high density communities, right? 
+
+56:22 
+As long as the density continues, so for the students behind these core members in that region, 
+
+56:28 
+if they look around, their members are all core members, so they are in the same community, so they are in the same cluster. 
+
+56:35 
+So after I label all these members in the same cluster, and I realize some of the members, they are not the neighborhood of their core members, but they are also the core members. 
+
+56:50 
+For example, for some students here, they are not continuously connected to that community, but they are also the core members because they satisfy the threshold. 
+
+57:04 
+Now, they must be a core member in a new community, so these two communities, they are not connected to each other, because they have a low density region to separate these two high density regions. 
+
+57:17 
+Now, where does that start? The labeling for the second cluster, starting from the new core member, here. 
+
+57:24 
+Now, the idea of the DBSCAN, the density-based clustering, is to use the continuity of the density distribution in your feature space to identify the groups. 
+
+57:34 
+So for example here, we use the RAD as the first cluster, and some of the core members in the RAD, their neighbors are also the core members. 
+
+57:43 
+I will continue to search your neighborhood, and label all the core members in your neighborhood, to label them as the same cluster, right? 
+
+57:52 
+Now the high density region will continue to search all the core members in the same group. 
+
+57:58 
+And after that, after I label all the members in the RAD community. 
+
+58:03 
+I realized that, for the whole dataset, there are some data points here, there are some data points in the middle, 
+
+58:11 
+so they were labeled core members, but they were not the neighbor of the red core members. 
+
+58:22 
+Now they must be located in a new high density community, in a new cluster. 
+
+58:29 
+So I will label the core members here as the blue. 
+
+58:34 
+Now I will continue to start searching the blue community. 
+
+58:37 
+So, starting from the blue core member, if your neighbor is also a core member, and this neighbor is not labeled red, 
+
+58:45 
+then this member should be in your same community of blue, right? 
+
+58:51 
+So, I will continue searching your neighborhood as a core member, then I will be able to get all the blue ones. 
+
+58:56 
+So, as I search all your neighborhoods and your neighbor's neighborhoods in the blue community, 
+
+59:02 
+I labeled all the members to be blue, in your neighborhood, and blue's neighborhood, and I realized that there are still some core members, they are not labeled any color, so they must be in a new community, a new cluster, so I will use a new class ID to label all the unlabeled core members, so after that you may realize 
+
+59:27 
+Some of the data points here, they are not close to any cluster, they are not close to any community because they are the knowledge member. 
+
+59:35 
+So they will not be assigned to any clusters, they are outside data points, they will not get any class ID, so they will be excluded from my clustering analysis. 
+
+59:47 
+So after that, we can do this kind of... 
+
+59:51 
+Density-based clustering that research the community research the cluster members along the continuous of high density distribution 
+
+59:59 
+So following that principle, we can identify the clusters for the data distribution of different shapes 
+
+01:00:07 
+But the idea is that the density distribution should be continuous 
+
+01:00:11 
+So if we use the DBSCAN, we'll be able to get this clustering result 
+
+01:00:17 
+And this method is very resistant to the noise data points. 
+
+01:00:23 
+So we call for the K-means clustering, if we have some outside data points, these outside data points will be assigned to one cluster. 
+
+01:00:31 
+But for the DBSCAN, they will not be assigned to any clusters. 
+
+01:00:35 
+So that's the main difference. 
+
+01:00:37 
+And the calculation, the K-means is for the pairwise distance calculation, but for the DBSCAN is the calculation of the density calculations. 
+
+01:00:45 
+So that's the difference. 
+
+01:00:47 
+Okay, I think that's all for the clustering analysis. 
+
+01:00:51 
+We will have another tennis break, and then we will have the tutorial. 
+
+01:00:55 
+We will learn how to use Python to run all the algorithms for clustering analysis. 
+
+01:01:00 
+So not that difficult, right? 
+
+01:01:02 
+So these are the first learning algorithms. 
+
+01:01:06 
+For Python, it will be very simple. 
+
+01:01:08 
+Python is a template. 
+
+01:01:10 
+You will identify all the implementations of the algorithms will be the same from each other. 
+
+01:01:15 
+So let's have a break and we'll be back at 2pm, so please download the canvas materials for the tutorial part. 
+
+01:01:43 
+And also to restruct it and give it to follows. 
+
+01:01:47 
+So first thing, I want you to run all the codes in the Python in this kind of avocados and to save it as a HTML. 
+
+01:01:59 
+And don't give me the source code of HTML. 
+
+01:02:03 
+So how to save it? 
+
+01:02:04 
+So fire and then to import. 
+
+01:02:10 
+Save and import the notebook as HTML. 
+
+01:02:15 
+So please run the code and save it as HTML and submit it. 
+
+01:02:20 
+If you didn't run the code, we will deduct like half the points for you. 
+
+01:02:29 
+If you select 20 points, you will lose 10 points. 
+
+01:02:32 
+So this is the first thing. 
+
+01:02:34 
+And also, I have some of you have already finished the week before. 
+
+01:02:39 
+assignments. But I also want to say that HTML, and you can use a template, but just to indicate where I can find the answer for the question one and question two. 
+
+01:02:53 
+Okay, so don't mix up because we cannot find the answer for it. 
+
+01:02:57 
+So just to indicate where is the question one and question two, 
+
+01:03:01 
+or you can just to put all the answers for assignments below this template. 
+
+01:03:08 
+Okay, so this is sentencing. 
+
+01:03:10 
+And so I want to say like, so after running your code, 
+
+01:03:15 
+if the output can answer the questions, you can... 
+
+01:03:19 
+Directly show me the output, give some print or directly show the feature you selected, but personally don't give me something like that and tell me that I have selected. 
+
+01:03:54 
+So don't just give me some output like this one and told that I selected like HelloLens or HelloWiz because I cannot recognize which two features you selected. 
+
+01:04:04 
+So at least show me something like this one to show me the results or you can use the print. 
+
+01:04:09 
+The print, like I told you last week about the guest support, use that function to directly print the column's name. 
+
+01:04:17 
+So this is the second thing and the third one also like some of you have like for the assignment like you have shown me the F value of the P value for all the features but didn't give me any explanation. So how do I know like which two features are? 
+
+01:04:34 
+are selected by the function you use. 
+
+01:04:37 
+So just to be clear, give me the explanation and answers 
+
+01:04:42 
+to answer the assignment questions. 
+
+01:04:46 
+And another thing that I know you have utilized some AI 
+
+01:04:52 
+to do the assignments, but remember to check it. 
+
+01:04:56 
+So in your assignment, still got something like that, 
+
+01:04:59 
+insert it. 
+
+01:05:00 
+from the Python output, but you didn't insert it. 
+
+01:05:03 
+So just to check it, again, be careful to answer that question. 
+
+01:05:09 
+And so that's, yeah, I think that's all for the assignment. 
+
+01:05:25 
+Okay, so let's start with today's tutorial. 
+
+01:05:30 
+So today, we are going to show you some methods to do the clustering analysis, and one thing I want to highlight is that for some of the libraries, like how to import the functions, something like this one, from the sklearn collector, import the K-means, you should know that. 
+
+01:05:59 
+can include this kind of library things to write down in your cheat sheet note because like in the 
+
+01:06:06 
+exam you may encounter some questions that ask you how to like write the course at least you 
+
+01:06:13 
+should know like the libraries and also the like the models that you have called 
+
+01:06:20 
+and also how to run the models at least you should know these two things 
+
+01:06:25 
+the K-means, call the K-means, and to set the key parameter, like number of clusters, and, but this, for the, like, yeah, for this kind of not key parameter, you don't need to be careful, you don't need to know that, but at least the key parameter you should know, so this is for CNS, well, this one should be also applies to the, like, the regression that we have learned before, so now how to import the 
+
+01:06:53 
+modeling the function the method from the which like the library so yeah you should know that 
+
+01:07:00 
+because in the exam you may ask to write down some codes and you know how to call the method 
+
+01:07:05 
+how to call the modeling and to set the key parameters so this kind of the three things 
+
+01:07:11 
+you should know so for this tutorial like you should know the K-means and also the 
+
+01:07:16 
+yeah for the like these figures you don't need to have to know that 
+
+01:07:20 
+And also for this kind of special clustering. So these two you should know about the library name and also the function name. 
+
+01:07:30 
+So, okay, so this is value of clustering stamps. 
+
+01:07:34 
+So today we're going to show you like four clustering methods. The first one is the K-means clustering. The second one is hierarchical clustering. And the third one is density-based clustering and the spectral clustering. 
+
+01:07:52 
+And we also provide your library, so you can just click it to see the detailed manual guides for each clustering method. 
+
+01:08:02 
+So let's start with the K-means clustering. 
+
+01:08:13 
+So for the K-means clusters, firstly, we need to import this data. 
+
+01:08:22 
+So the user indicates like the special codes or the name for each of the measurements. 
+
+01:08:28 
+So user should not be considered as a features. 
+
+01:08:31 
+So in your assignments, the ID should not be considered as a features, okay? 
+
+01:08:36 
+And then we have like four columns, like the first two indicate like the action movies, 
+
+01:08:42 
+the George and Star Wars, and the last two, Exorcist and the Omen, indicating the surreal movie. 
+
+01:08:50 
+So we want to use like this for their preference. They're like waiting for this kind of formulae to do the clustering and to cluster into like two groups. 
+
+01:09:01 
+And you should be noted that there's like no dependent variables. So for the clustering, we don't need the dependent variables. 
+
+01:09:11 
+So how to do it? To import it and to, yeah, you need to know that. 
+
+01:09:17 
+for your exams, and then we drop the users, because the user just like the special ID to indicate which observation should be, so this is my feature, and then call the K-means and set the own cluster as a 2, because we want to make it into 2 groups, and then use the fit to learn 
+
+01:09:46 
+to learn from the data, to learn from the feature, and the labels, so the labels just give me, so what's the labels, you can run, so 
+
+01:10:04 
+the labels will give me something like the numbers, 
+
+01:10:10 
+Since I have two clusters, it will show me 0 and 1. 
+
+01:10:14 
+If I cluster into three, I will have three numbers, 0, 1, 2. 
+
+01:10:19 
+And for the same number, indicators belong to the same group. 
+
+01:10:23 
+So this is kind of like the final result for the clustering. 
+
+01:10:28 
+The John, Mary, Bob will belong to one group, and the Lisa, Lee, and Harry will belong to another group. 
+
+01:10:36 
+Yeah, so this is for this one, and we can also print out the centroid, and you can see that actually the centroid, the value is higher in the action movie for the cluster 0, and the value is higher for the serial movie for the cluster 1. 
+
+01:11:01 
+So it seems like I clustered these people by their preference for the type of the movies. 
+
+01:11:08 
+So this is for the K-means. And the next part, so what this chunk of the code performed, 
+
+01:11:16 
+this one is just to utilize what I learned from this kind of six observations to predict. 
+
+01:11:27 
+to predict the new data, like I've given the new users of Paul, Kim, Liz, Tom, and Bill, and also their preference of these movies, so what the clustering will be like, so you can see this, I use the predict, and you can see that, so for the data, it indicates the action movie, 
+
+01:11:53 
+For the cluster ID 1, it indicates the serial movie, but can you see that for the user list? 
+
+01:12:15 
+And for the user list, you can see that although I classify it into the zero, like the action movies, 
+
+01:12:24 
+but you can see that there is a really high value of the four for the three movies. 
+
+01:12:32 
+So you can try another one, like just to integrate these two tables. 
+
+01:12:43 
+and trying to do the cluster again, so 
+
+01:13:03 
+I just combine these two tables and to do the clustering overall, so let's see what we get, so 
+
+01:13:42 
+this, yeah, you can, yeah, just try this code, if you don't have time to include, you can take a picture 
+
+01:13:53 
+So this one, just combine these two tables, like the training data and testing data, and then to classify them into two groups, and use the K-means, so I didn't use the predict. 
+
+01:14:04 
+So while we're gone, like, you can see this is cluster ID, and now, so it changed a little bit, like, for the cluster ID, it's one, it indicates, it's more like the 
+
+01:14:35 
+So for this one, this is more likely the action movie, but after we combine to do the clustering again, it seems that these are more likely to be pushed to the story movie side. 
+
+01:14:49 
+So since we didn't have the dependent variable to train to do the clustering, so it's better just to not use a predict, but just directly to do the clustering is okay, and it's more accurate. 
+
+01:15:03 
+So this is for the K-means clustering, and then the second type of clustering is called like the hierarchical clustering, and this one will just show you the like the hierarchical levels of each one, and we have like four types, the single link, the complete link, the group average, and the word method. 
+
+01:15:31 
+So for the single links, I think you have already learned in the lecture, it means like the closest pair of the observations, and for the complete links, it's like the farthest, like the farthest pair of the observations, and the average use, the average distance, and the word method is like the just to within like the same like clustering virus, so this is kind of different among these four. 
+
+01:15:58 
+And we imported another table to indicate their class for the animals. 
+
+01:16:07 
+So just write it. And then let's try the single link. 
+
+01:16:12 
+So 
+
+01:16:14 
+for this part, you don't need to know how to draw this kind of figure, 
+
+01:16:22 
+but just to be careful about the K-means and the spectral clustering for your exams. 
+
+01:16:29 
+And for this one, you can open up the manuscript to see how it works exactly. 
+
+01:16:37 
+So this will give you the explanation for the single, complete, average, and Ward. 
+
+01:16:43 
+And we also have other methods like the weighted, centroid, and medium. 
+
+01:16:50 
+Yeah, you can try it after the class. 
+
+01:16:54 
+And also give you the definitions. The single performs the nearest linkage, and completes the farthest point linkage, and the average is the average linkage, and also the word is in the condensed distance matrix. 
+
+01:17:13 
+So yeah you can see it's so and also there are two methods to run the for each math for each types of the how to calculate the clustering and you can directly use this kind of linkage to do that and you can also try this one. 
+
+01:17:40 
+Use the linkage and give you the types of the link here that you want to select, the single or the complete or the average or the word, and also you can try this one, based on the math manual script, yeah, you can directly try this one. 
+
+01:18:08 
+The single directly called the single method and it's also okay for that but you don't need to then put the correct parameter on 
+
+01:18:16 
+The this one only requires to increase the Y. So just the inputs the features 
+
+01:18:25 
+yeah, okay, so this is how it show in the single using the single method and also just 
+
+01:18:32 
+Yeah, another for the common complete. So just change the parameter to the complete 
+
+01:18:39 
+And you can also try to directly call it a complete function, just the same as the last one, it's 
+
+01:18:57 
+also okay. 
+
+01:19:00 
+But for the linkages, it's more flexible, so you can just use the linkages, okay. 
+
+01:19:09 
+And just remember to indicate which method you want to train. 
+
+01:19:16 
+So this one is important, and then this is how it shows using the complete link, and we also have the average link, just do the same thing, change the parameter to the average, and we also have the Ward method, it will merge the pair of the clusters that lead to the minimum increase in total within-cluster variance. 
+
+01:19:46 
+Okay, so this is the hierarchical clustering, and we also provide you some reference like how to comparing the linkage methods on different data shapes. 
+
+01:20:03 
+So yeah, you don't need to know how this kind of graph are generated, but we just want to give you some visual aids on how to classify these four things. 
+
+01:20:22 
+So this one will read several data sets. 
+
+01:20:30 
+And to draw the clustering based on these four data sets, moons, blobs, variants, and any source, and using like the four methods, single link, average link, complete link, and word method. 
+
+01:20:47 
+And since you can see that this one, because this is kind of like the hierarchical clustering, but they didn't show the hierarchical things, because this is a scalar plot, we cannot show the hierarchical things. 
+
+01:21:01 
+So what it shows you finally is like the final clusters for using this kind of hierarchical clustering, and for the single link. 
+
+01:21:24 
+So for the single link, if 
+
+01:21:33 
+we're using the Cloy's pair of observations, they're more likely to connect the groups through chains of the nearby points. 
+
+01:21:43 
+So you can see that just connected the Cloy's to one connected Cloy's ledger chain, then show something like this one. 
+
+01:21:49 
+And this is how the single links work. 
+
+01:21:57 
+It's based on the farthest pair of the observations, so they are more favored to the clusters whose members are relatively close together. 
+
+01:22:11 
+So for the complete, it's more like, yeah, this two is more like close to each other, so it's all blue, like this circle, and it's like more close to each other, so why it's orange. 
+
+01:22:25 
+Yeah, so that's why it looks like that, and the average thing is just in the between the single link and also the complete link, and so for the Ward's methods 
+
+01:22:47 
+Yeah, it were like a merge that produces the smallest increase within cluster variants, so it tends to form the compact, relatively balanced clusters. 
+
+01:23:01 
+So it's trying to cluster the observations within the smallest areas to be condensed and also to be more balanced among the different clusters. 
+
+01:23:15 
+So yeah, you can see this one is more like balanced one 
+
+01:23:20 
+This is really like these three clusters more balanced and these more like compact 
+
+01:23:25 
+so that's how to differentiate this four and 
+
+01:23:31 
+The third clustering is called like the density based clustering 
+
+01:23:37 
+So it will identify the individual clusters as the high density regions that are separated by ranges of the low density. 
+
+01:23:47 
+And we use DBSCAN as one of the most popular density-based clustering methods. 
+
+01:23:57 
+So still, please read this kind of data. 
+
+01:24:08 
+So while we want to do the density clustering, you can see that we want, yeah, should be the one cluster, one cluster, one cluster, yeah, and just show in the colors. And you can directly run it. 
+
+01:24:24 
+So this is exactly to show how the density clustering will be like. 
+
+01:24:37 
+and two thing you need to know is about like since we have to set in the neighborhood's radians 
+
+01:24:45 
+so this one is about the radians and we set it as 15.5 and you can change the value to see 
+
+01:24:52 
+how it will be look like yeah maybe I change it to 
+
+01:25:00 
+yeah so you can see all of like our clustering into like the one to belong to that one cluster 
+
+01:25:08 
+or maybe to change it to the bigger one, yeah, so, yeah, 
+
+01:25:17 
+so this is how it looks like, and another thing you need to set up is the minimum number of the points, this is the minimum number of the points, is 5, and 
+
+01:25:37 
+so this, but you, this is how the figure will show, but you can see that they have like two lines, 
+
+01:25:44 
+But we didn't use it to show you in the figures, and this one was to indicate whether the point is the co -point or not, and 
+
+01:26:10 
+to contain 
+
+01:26:18 
+the position, but this one is more accurate. 
+
+01:26:23 
+It contains the provision of the observation that's identified as the cone points, and you can also draw it in the figures. 
+
+01:26:32 
+Yeah, you can use this one. You 
+
+01:26:41 
+can see it will show you the cone points. 
+
+01:26:43 
+The others are maybe the like the border points or the noisy points. 
+
+01:26:49 
+And this like black circle will be showing the cone points. 
+
+01:26:53 
+So yeah, if you don't have time, you can take a picture and run after class. 
+
+01:27:10 
+that's a figure we're showing like something like that and then come to the the last one the 
+
+01:27:18 
+spectral clusters and this one is that because of the K-means clustering 
+
+01:27:25 
+algorithm it cannot detect like the the shapes if the cluster is like the shapes 
+
+01:27:31 
+But for this spectral clustering, it can just detect the ambiguous shift of the clusters, and even when the cluster's centroid is overlapped with one another. 
+
+01:27:48 
+So if you want this kind of two figures, the trident wall will be light for the K-means. 
+
+01:27:56 
+so you will just to separate the centrals as much as possible and to do the like the clusters 
+
+01:28:03 
+and if i want to do to classify into like two groups they are more likely to be the the upper 
+
+01:28:10 
+half will be belong to one like one cluster the upper half will become to the like another cluster 
+
+01:28:19 
+groups but it's impossible to do the like the 
+
+01:28:25 
+For this kind of two-circle, it's more like the centroid is in the upper, and the other one is in the lower area, and just to separate this kind of two-circle into two halves, and one belongs to another cluster, the other one belongs to another group, and it's important for the K-means to identify that this is one cluster, and this is another one. 
+
+01:28:52 
+because you know you try to imagine what uh this one is the cluster for the K-means the central 
+
+01:28:58 
+are more like in in this one just like the uh the central points of the circle and for this one 
+
+01:29:05 
+also the central point of circle so it's impossible for that to uh centralize to 
+
+01:29:10 
+overlap for the K-means so uh we're trying to do the like the yeah so you can see that 
+
+01:29:18 
+So if we use the K-means for this to like like the globular shaped distribution of the observations it will for the K-means it will be to clustering like this one like you can just you can say that just to classify into like upper half and the lower half so this is for the K-means but if we're using the central clustering yeah 
+
+01:29:45 
+You need to know the central cluster, you need to know the libraries, because you will may have in the exams, and just to set it as the number of clusters as the two, and so what will be like and to fit, and you can see that you can just identify like two more shapes, and also like two circles. 
+
+01:30:12 
+Yeah, so this is for the clustering, and I think for the following tutorial, it's more important to you to know the libraries, the exact libraries. 
+
+01:30:26 
+libraries, and also the methods, just to directly import it from the libraries, and then to call it, to utilize it, and to set up the parameters. 
+
+01:30:37 
+So it's really easy for the, I think, for the following tutorials, because we have already prepared the tools for you, you can directly use it. 
+
+01:30:45 
+And also we have the assignment for you for the week 5. 
+
+01:30:52 
+So to apply the K-means with the K-implicatory theory to the iris dataset, and to apply the bisectoring K-means to the iris dataset. 
+
+01:31:03 
+And you can check this kind of link to do it. 
+
+01:31:07 
+And also to choose one density-based clustering algorithm, and also present the clustering results on the iris dataset. 
+
+01:31:18 
+and to summarize which linkage methods for the section 2.5 is most suitable for which types of the datasets. 
+
+01:31:30 
+And to review and compare the clustering algorithm and choose one clustering algorithm for your course project datasets. 
+
+01:31:43 
+For the project datasets, some of you asked me like, do I need to have to do exactly the same for the members? 
+
+01:31:50 
+I think you can just, because our intention is for you to start your project. 
+
+01:31:58 
+If you have other better data sets, you can also use it, because it's really hard for us to identify whether you use the same one. 
+
+01:32:08 
+So this is for the assignment, just to execute every code and to show the result, to explain it, and also to save it as HTML. 
+
+01:32:20 
+So that's all for today. 
+
+01:35:24 
+And for the assignment for the week, if you already have submitted, just to check it, please, and to, yeah, if you encounter any issues that I propose in class to try to resubmit it, okay? 
+
+01:36:17 
+SSE, 
+
+01:37:47 
+SSE, hierarchical clustering, DBSCAN 
+
+01:38:34 
+Euclidean distance, standardization, 
+

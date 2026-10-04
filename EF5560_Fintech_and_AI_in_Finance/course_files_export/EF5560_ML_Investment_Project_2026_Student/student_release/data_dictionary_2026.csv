@@ -1,0 +1,27 @@
+field,role,description,units
+week,identifier,"Simulated forecast week, 1-260",integer
+forecast_date,identifier,Forecast-date label; not a historical observation,YYYY-MM-DD
+set,split,"training, validation, or private_evaluation",text
+asset_id,identifier,"Fixed asset identifier, 1-80; not a model input",integer
+ticker,identifier,Company label; not a model input,text
+company_name,identifier,Company label; not a model input,text
+official_sector,identifier,Sector label; use for portfolio summaries,text
+ret_next_week,outcome,Next-week total simple return; private values blank,decimal
+rf_weekly,target adjustment,Known weekly risk-free return; subtract from total return,decimal
+market_trend,predictor,Simulated common market trend signal,dimensionless simulated signal
+market_risk,predictor,Simulated common market risk signal,dimensionless simulated signal
+market_sentiment,predictor,Simulated common sentiment signal,dimensionless simulated signal
+liquidity_state,predictor,Simulated common liquidity signal,dimensionless simulated signal
+rate_pressure,predictor,Simulated common interest-rate pressure signal,dimensionless simulated signal
+policy_uncertainty,predictor,Simulated common policy uncertainty signal,dimensionless simulated signal
+momentum_short,predictor,Simulated short-horizon momentum signal,dimensionless simulated signal
+momentum_medium,predictor,Simulated medium-horizon momentum signal,dimensionless simulated signal
+reversal_signal,predictor,Simulated reversal signal,dimensionless simulated signal
+risk_signal,predictor,Simulated stock risk signal,dimensionless simulated signal
+turnover_signal,predictor,Simulated trading-activity signal,dimensionless simulated signal
+size_signal,predictor,Simulated size signal,dimensionless simulated signal
+value_signal,predictor,Simulated valuation signal,dimensionless simulated signal
+quality_signal,predictor,Simulated quality signal,dimensionless simulated signal
+beta_signal,predictor,"Simulated market-exposure signal, not an estimated beta",dimensionless simulated signal
+illiquidity_signal,predictor,Simulated stock illiquidity signal,dimensionless simulated signal
+sector_trend,predictor,"Simulated sector trend, common within each official sector",dimensionless simulated signal

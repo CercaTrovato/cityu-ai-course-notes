@@ -1,0 +1,138 @@
+00:00 
+A common case of doing the distance calculation in any dimension of feature space is the Euclidean distance, and we have this expression. 
+
+00:10 
+I believe you have used this expression in your very early education in high school, we used this to calculate the distance. 
+
+00:17 
+Now let's take a look at the three-dimensional feature space, how we can generate this kind of distance measurement. 
+
+00:26 
+So let's go back to the apple and the orange here. So we know that we can use RGB to present these two data points in our dataset, and in this dataset we only have two rows of data points, and each row of the data object is presented by using three feature values in a single vector, so the feature space is three-dimensional. 
+
+00:47 
+Now if we want to quantify the distance between these two data points, 
+
+00:51 
+We use the Euclidean distance, and of course we calculate the distance in the fourth dimension 
+
+00:58 
+So, 2020 minus 2023, so this is the distance in the fourth dimension, right? 
+
+01:08 
+And because we do not want to compare which one is larger, so we take the distance squared 
+
+01:14 
+Okay, this is how we quantify the distance of these two data points in the fourth dimension 
+
+01:25 
+166-194 
+
+01:26 
+Now this is the distance in the second dimension 
+
+01:28 
+Now we take the square, and this is the distance in the third dimension 
+
+01:33 
+Now after we take the distance squared in each dimension, we sum them together and then take the square root of it 
+
+01:40 
+So this is actually the distance of these two data points in this feature space 
+
+01:45 
+So imagine that if we have five features 
+
+01:49 
+To quantify, to profile each data point, then we need to add two dimensions of distance squared in this calculation, right? 
+
+01:58 
+So it can be used to deal with high-dimensional features. 
+
+02:02 
+So is that clear? How we use this calculation? 
+
+02:08 
+Okay, now we'll have today's early in-class quiz. 
+
+02:13 
+So please do not take pictures, okay, for students who didn't come to class. 
+
+02:19 
+They will not be able to get this grade. No, you can take picture for me, but not for the question, okay. No, no, no, no picture, no picture. 
+
+02:31 
+Okay, so because this is for the class attendance, so if you come to class, yes, I will really appreciate your attendance, and if you come, I have no picture, okay. 
+
+02:54 
+For the attendance. If you answer it correctly, then you get full credit. 
+
+02:59 
+Okay, so, you have about, at most, five minutes to finish, and then you can write down using the Word file, 
+
+03:07 
+and some of these, your Word file to Canvas, or you can just write down on paper and take picture and upload your picture to Canvas. 
+
+03:13 
+Okay? So, yeah, the question is that once we have three data points in the data table, we want to identify which, 
+
+03:22 
+Which food is closer to the page in the feature space? 
+
+03:27 
+So we have three data points. 
+
+03:28 
+So which one, apple orange, will be closer to the third data point? 
+
+03:33 
+So you need to calculate the two distances and then make a comparison. 
+
+10:23 
+So 
+
+10:30 
+in terms of these three feature values, 
+
+10:36 
+of course we can use the formula we have before to calculate distances between these two data points. 
+
+10:43 
+Now we can take the distance in the fourth dimension for the age, income, and the number of credit cards. 
+
+10:51 
+But if we do this calculation directly, we will see that among the age is only 3, the distance among the number of credit cards is only 2. 
+
+11:02 
+But the distance among the income is 10,000. 
+
+11:16 
+Q-square, and final result will be around 10,000, right? 
+
+11:21 
+So why? Because the whole calculation will be dominated by the large-scale feature value. 
+
+11:26 
+This one. 
+
+11:28 
+And your distance calculation will only be sensitive to this dimension of feature. 
+
+11:34 
+And it will not be very sensitive to the distance in the age or the number of credit cards. 
+
+11:39 
+Why? Because the scale for the age and the scale for the number of credit cards are very small. 
+
+11:46 
+So, what we can do. So, to make sure that for each attribute will have the same weight in the distance calculation, we would like to use some data transformation techniques. 
+
+12:01 
+The first one is called standardization, and we can actually compute your feature values to your standard score. 
+
+12:08 
+And the second one is called minimum-maximum feature scaling. 
+
+12:18 
+So at the very beginning, we have raw features in the raw data table, so each column we have the actual values of x, so x1, x2, x3, x4, now for each x here, we will use this formula to do the transformation. 
+

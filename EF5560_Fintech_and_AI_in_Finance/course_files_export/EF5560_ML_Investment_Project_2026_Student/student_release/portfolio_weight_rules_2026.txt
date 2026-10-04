@@ -1,0 +1,58 @@
+EF5560 2026 ML Investment Assignment
+PORTFOLIO WEIGHT RULES
+
+These rules apply to the final long-only weight CSV. They keep portfolios
+fully invested and limit single-stock concentration for a common comparison.
+
+1. PORTFOLIO CONSTRAINTS - EVERY WEEK
+
+- Invest only in the 80 stocks in submission_template_2026.csv.
+  Each stock must satisfy 0 <= weight <= 0.10: no short selling, maximum 10%.
+- Sum of the 80 weights = 1.00 (100%). No cash allocation or borrowing.
+  A stock you do not hold has weight zero; keep its column in the file.
+- Rebalance weekly for Weeks 105-260: 156 weekly portfolios.
+  Start from equal weights at the end of Week 104. Ignore transaction costs.
+
+The 10% cap implies at least 10 stocks with positive weights each week.
+There is no separate sector cap or turnover limit. In Q5, report the largest
+weekly sector allocation during validation and discuss concentration risk.
+
+2. CSV FORMAT
+
+- Filename: EF5560_leadstudentid.csv, replacing leadstudentid with your ID.
+- Exactly 156 data rows plus the header; 81 columns: forecast_date followed
+  by the 80 ticker columns. Keep all column names and their original order.
+- Keep the template's exact dates and row order: 2023-07-07 to 2026-06-26.
+  These are simulation labels. Do not change them to match trading holidays.
+- Use decimal weights with at least eight decimal places: 0.05000000 means
+  5%, not 5 or 5%. Enter 0.00000000 for unheld stocks; leave no blanks.
+
+Each row gives the weights held over the following week's return period.
+Select the model/rule on validation data, refit on Weeks 1-104, and keep the
+fitted model fixed when forming weights from each private week's predictors.
+
+3. EXAMPLES FOR ONE WEEK
+
+Valid: 16 stocks at 0.06250000 each; the other 64 at zero. Total = 1.00.
+Valid: all 80 stocks at 0.01250000 each. Total = 1.00.
+Invalid: 5 stocks at 0.20000000 each. Total = 1.00, but the 10% cap is exceeded.
+
+The top-16 rule is required for the Q5 model comparison, not for your final
+submitted strategy. Another final long-only rule is allowed if supported by
+validation evidence and consistent with these constraints. Long-short results
+belong in the report, not this CSV.
+
+4. CHECK BEFORE SUBMISSION
+
+Keep the official template and checker together. Run either command, using
+your own filename:
+
+  python check_submission_2026.py EF5560_12345678.csv
+  Rscript check_submission_2026.R EF5560_12345678.csv
+
+The checker requires finite numeric weights and uses an absolute rounding
+tolerance of 1e-6 for the weight bounds and row sums. It does not rescale
+weights. A pass confirms file format and weight constraints, not performance.
+Invalid weight files receive zero private-performance points; report marks
+are assessed separately. Submit this weight CSV with your report PDF and code
+ZIP appendix, as specified in the assignment brief.

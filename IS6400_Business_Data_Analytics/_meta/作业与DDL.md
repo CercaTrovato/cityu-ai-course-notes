@@ -1,11 +1,13 @@
 ---
 type: 作业与DDL
 course: IS6400
-updated: 2026-09-16（晚，按 Canvas 截图核实）
+updated: 2026-09-30
 tags: [IS6400, DDL, 作业]
 ---
 
 # IS6400 作业与 DDL
+
+> **2026-09-27 Canvas 提交复核**：Assignment Week 1（9/11 21:35）、Week 2、Week 3（9/22 00:06）详情页均显示 `Submitted!`，附件名与本地私有归档对应；远端字节哈希未比对，评分仍待 Canvas。旧 `assignments/Week1–3` 的个人文件已逐件 SHA-256 核对并迁入被 Git 忽略的 `assignment/`，旧路径从 Git index 移除；既往 Git 历史不因此消失。这段的 W01–W03 是 9/27 历史复核。W04 已于 9/30 核当前 Canvas：10/2 23:59 截止、10 points、HTML 或 PDF，新版四题共 100 内部分。
 
 > ⚠️ **本文件里的日期分两类**：
 > - **✅ 确认** = 材料里白纸黑字写的
@@ -52,22 +54,26 @@ tags: [IS6400, DDL, 作业]
 
 **三个坑**（详见 T03 §7.3）：① Q1 要求解释"price 的百分位数**不是** exp(log_price 百分位数)"——**实跑两者完全相等**（单调变换保序），要如实写并解释；② Q2 要求比较 `bedrooms` 的三种填补——**该列没有缺失值**，要说明；③ Q3 需要小组已经选好数据集——**先定项目数据**。
 
-### 🟠 Week 4 Assignment —— ⚪ **10/2（周五）23:59**（Canvas 尚未挂出，按 W2/W3 "上课后第 9 天周五 23:59" 的规律推算）
+### ✅ Week 4 Assignment —— **2026-10-02（周五）23:59，香港时间**
 
-> 来源：`Week 4 Feature Engineering.ipynb` cell 35（2026-09-16 已放 Canvas 的 Week 4 页，课在 9/23）。**2026-09-16 的 Canvas 作业列表里还没有 Assignment Week 4**——W2 截止 9/18（上课 9/9）、W3 截止 9/25（上课 9/16），都是上课后第 9 天的周五；W4 按此推为 10/2。
+2026-09-30 实际检查 Canvas Assignments、Announcements、Files、Modules。[任务页](https://canvas.cityu.edu.hk/courses/71457/assignments/330603) 显示 10 points、上传 HTML／PDF，当前未提交。题目来自用户新下载的 [当前附件](https://canvas.cityu.edu.hk/courses/71457/files/16057486)：`Week4_Feature_Engineering_Tutorial.ipynb`，43 cells／475599 字节，SHA-256 `b41b08f5c22afb59286ad7c522e9cb0f70dc4de635b3a961298661d66c57376f`。
 
-| 项 | 内容 |
+| 项 | 当前口径 |
 |---|---|
-| 题目 | notebook **cell 35**，**4 题合计 80 分**（Q1 `f_classif` 重做 + filter/wrapper 判断 10 · Q2 三种方法的区别 10 · Q3 `SequentialFeatureSelector` 选前 2 个特征 **40** · Q4 Airbnb 选 3 个最有代表性的特征预测价格 20）。❗ 总分 80 不是 100，待问 |
-| 数据 | `iris.txt`（Q1–Q3）+ `Airbnb.csv`（Q4，"on Canvas-Week4 Homepage"） |
-| 交什么 | notebook 没写；按 W3 惯例 `.ipynb` + `.html` |
-| 逐题攻略 | [[T04-特征选择与PCA实战-Iris#7. 本次作业：Week 4 Assignment（notebook cell 35 原文）\|T04 › 7. 本次作业]] —— 六种估计器 × 前后向的 SFS 结果都是 petal-L / petal-W；Q4 过滤法与前向选择答案不同（`verify_t04.py`） |
+| 四题内部评分 | Q1 ANOVA F／过滤判断 20；Q2 SFS 选二列／机制 40；Q3 Airbnb f_regression 选八列／为什么不用分类检验 20；Q4 随机森林 RFE 选八列／比较 20，共 100 |
+| 提交 | HTML 或 PDF；本次制作 HTML，Notebook 保持可续写 |
+| 进度 | 可提交（待本人审阅）；空内核运行与导出验收完成，本人学习未确认，未代提交 |
+| 本地入口 | 私有 `assignment/00-overview/作业总览.md` → A05 → 中文指南／Notebook／HTML |
+| 规则 | [[IS6400_Business_Data_Analytics/_meta/IS6400作业制作规范\|本课作业制作规范]]，有依据的加分深度为必做 |
+
+**新旧变化：** 旧 37-cell 版本 cell 35 的 80 分任务（含三方法比较、Airbnb 三特征）不再是现行题面。T04 保留的旧材料解读有历史标记，不据此提交。没有将“按规律预计”继续当作正式截止。
+
 
 ### 📋 Week 3 Quiz（课堂小测，Participation 5% 的一次）
 
 > ✅ Canvas 截图："Week 3 Quiz - Wed 12 PM · Due Sep 16 at 2:00pm · -/1 pts"。这就是 Syllabus 说的**随机抽课堂上小测**——W3（9/16）被抽中了，12:00 上课、14:00 截止、1 分。⚪ 推断：以后每次被抽中都会以 "Week N Quiz" 的形式出现在 Canvas，**上课时留意 Canvas 通知**。
 
-⚠️ Week 2（9/18）、Week 3（9/25）、⚪ Week 4（10/2）三份作业**连着三个周五**，且 W3 的 Q3 依赖项目数据——**9/16–10/2 是本课到目前最重的两周半**。
+⚠️ Week 2（9/18）、Week 3（9/25）、✅ Week 4（10/2）三份作业**连着三个周五**，且 W3 的 Q3 依赖项目数据——**9/16–10/2 是本课到目前最重的两周半**。
 
 ---
 
@@ -262,7 +268,7 @@ Minimum Examination Passing Requirement (%)             20
 | 周 | 上课日 | 作业 | 截止 |
 |---|---|---|---|
 | W03 | 2026-09-16 | **Assignment Week 3**（3 题 100 分 ↔ Canvas 10 分，Airbnb + 项目数据） | ✅ **2026-09-25（五）23:59** |
-| W04 | 2026-09-23 | **Week 4 Assignment**（4 题 80 分，Iris + Airbnb） | ⚪ 2026-10-02（五）23:59（Canvas 未挂出） |
+| W04 | 2026-09-23 | **Week 4 Assignment**（新四题 100 内部分，Canvas 10 points） | ✅ 2026-10-02（五）23:59（香港时间，9/30 已核） |
 
 > 📐 **规律**（三次一致）：作业在上课当天挂出，**截止 = 上课后第 9 天（下下周五）23:59**，Canvas 每次 10 分。
 
@@ -285,6 +291,9 @@ Minimum Examination Passing Requirement (%)             20
 ---
 
 ## 3. 小组项目（合计 30%）
+
+> **A06 项目准备（2026-09-30）**：用户已定 Olist，6 人各自探索角度；官方数据和九表全景教学放在本地私有 `assignment/graded/A06-group-project/`。状态 draft；下一步 数据熟悉与选题比较。Canvas 本轮访问跳转登录，未完成现行行政要求核验；本人学习与提交状态不变。
+
 
 出处：`IS6400 Project Guideline.pdf`（2 页）+ Syllabus + W1 讲义 p.11
 
@@ -315,10 +324,11 @@ timeline
 | **同一份 Guideline 再下一句** | "Preview: **Week 6** will be an engaging and meaningful session designed to equip you for success!!!" |
 | **Syllabus 课程表** | **Week 6 = Project Briefing** |
 | **W1 讲义 p.6 课程表** | 同 Syllabus |
+| **Canvas 2026-09-22 公告** | [Project Briefing in Week 6](https://canvas.cityu.edu.hk/courses/71457/discussion_topics/635126)：明确说 **Week 6** 做 briefing，只介绍团队、数据与计划，**不需展示分析**；具体提交截止仍未给出 |
 
 ⚪ **最可能的真实安排**：W5 讲怎么写 proposal → **W5 末交书面 proposal** → **W6 上台做 briefing 演示**。
 
-> ✅ **2026-09-16 用户确认：Briefing 顺延**（与讲课进度一起后移；⚪ 按顺延一周计 = W07 · 2026-10-14，Proposal 相应 ⚪ W6 末 ≈ 10/09–10/10）。**具体日期以 Canvas 为准**，Notion 课表库未改。
+> ✅ **2026-09-16 用户曾确认 Briefing 顺延**；2026-09-22 Canvas 新公告直接写 **Week 6**，较早的 W07／10-14 推算不能再当当前安排。**具体日期与提交时刻仍以 Canvas 后续入口为准**，Notion 课表库未改。
 
 ### 3.3 组队
 
@@ -342,7 +352,7 @@ timeline
 | 演示 | **No more than 3 minutes** |
 | **必含五项** | ① **Business Problem** — 清楚说明项目要解决的商业问题<br>② **Dataset Description** — 说明打算用的数据集，**包括字段名与数据类型**<br>③ **Key Variables** — 打算分析哪些变量<br>④ **BDA Methods** — 打算用什么分析/建模方法<br>⑤ **Potential Contribution** — 预期的商业洞察或贡献 |
 
-> 💡 **这五项正好是 CRISP-DM 的前四步**（见 [[M01-导论-商业数据分析全景与工具链#2.5 ⭐ BDA 流程：CRISP-DM 六步（本讲唯一的核心内容）|M01-导论-商业数据分析全景与工具链 › 2.5 ⭐ BDA 流程：CRISP-DM 六步（本讲唯一的核心内容）]]）。讲义 p.31 也明说："**Your group project may follow this process (except deployment if not applicable)**"。
+> 💡 **这五项正好是 CRISP-DM 的前四步**（见 [[M01-导论-商业数据分析全景与工具链#2.5 ⭐ BDA 流程：CRISP-DM 六步（本讲的项目过程核心）|M01-导论-商业数据分析全景与工具链 › 2.5 ⭐ BDA 流程：CRISP-DM 六步（本讲唯一的核心内容）]]）。讲义 p.31 也明说："**Your group project may follow this process (except deployment if not applicable)**"。
 >
 > ⚠️ **第 ② 项要求"字段名与数据类型"意味着 W5 之前必须真的拿到数据**，不能只有一个想法。参照 [[IS6400_Business_Data_Analytics/_meta/数据集卡片|数据集卡片]] 那种写法。
 
@@ -484,7 +494,7 @@ timeline
 | 9 | Participation 抽到几次课 | 无法预知 —— **每节都要到** | — | ❌ 无 |
 | 10 | 香港公众假期是否会造成课程顺延 | 校历 | 🟢 | ❌ 无 |
 | 11 | ~~Week 3 Assignment 的截止日~~ | — | ✅ **9/25（五）23:59，10 分**（Canvas 截图）；提交文件类型限制待上传时看 | — |
-| 12 | **Week 4 Assignment 的截止日、提交格式、总分为何是 80** | Canvas（9/16 尚未挂出）/ 9/23 课上 | 🔴 高（⚪ 推 10/2） | ⏳ 未上课 |
+| 12 | Week 4 当前版本／截止／格式 | 2026-09-30 Canvas 与用户新下载附件 | ✅ 已核 | 10/2 23:59（香港时间），HTML／PDF，10 Canvas points／100 内部分 |
 | 13 | **Syllabus 周次顺延一周后，W05 起的主题、Proposal 的精确日期** | 课上 / Canvas | 🟡（✅ Briefing 已确认顺延） | ⏳ |
 | 15 | **W03 讲义是否讲完**（9/16 当天课未结束时记录）；若没讲完，W4 是否先补 W3 | 课后 / 转录 | 🟡 | ⏳ |
 | 14 | **关联规则（M03 p.35–49）是否属于考试范围** | 课上 | 🟡 | ⏳ |
@@ -512,7 +522,7 @@ timeline
 | 2026-09-23（三） | W04 上课（M04 特征工程） |
 | **2026-09-25（五）** | 🔴 **Assignment Week 3 截止 23:59**（✅ Canvas） |
 | 2026-09-30（三） | W05 上课（⚪ 聚类） |
-| ⚪ 2026-10-02（五） | ⚪ Week 4 Assignment 截止 23:59（Canvas 未挂出，按规律推） |
+| ✅ 2026-10-02（五） | Week 4 Assignment 截止 23:59（香港时间，9/30 Canvas 已核） |
 | 2026-10-07（三） | W06（⚪ 分类，或 Proposal 讲解）· ⚪ **Proposal 截止顺延至 W6 末（≈ 10/09–10/10）** |
 | ⚪ **2026-10-14（三）** | **W07 · Project Briefing（5%）——✅ 已确认顺延，⚪ 按一周计** |
 | 2026-10-14（三） | W07 上课 |
@@ -544,3 +554,18 @@ timeline
 | Q3 出题来源 | 由助教（TA）出题，教授目的是让作业比之前更有挑战性 | 🎙️`02:11:38`–`02:11:51`「this question was prepared by the TAs. I just asked them one time to make the assignment more challenging than what I had before.」 |
 | Q3 同组变量规则 | 同一小组若用同一份数据集，组员之间必须使用不同的变量组合（如一人用属性 1/2/3，另一人用 1/2/5），不可提交完全相同的变量选择 | 🎙️`02:12:43`–`02:13:09`「different [group?] members must use different variables... but you cannot use identical attributes[,] in a single group」 |
 | Week 3 作业提交方式（口头补充） | 可以直接在 tutorial notebook 基础上继续写，也可以新建一份自己复制代码 | 🎙️`02:10:22`–`02:10:38`「You can just write on top of my tutorial. Or you can generate a new one and copy my command, and the library」 |
+
+
+## 🎙️ M05 转录追加（2026-09-30）· 课堂口头信息（转录追加）
+
+| 事项 | 内容 | 来源 |
+|---|---|---|
+| M05 early in-class quiz | 到场小测计 attendance；答对得 full credit；可交 Word 或纸面照片到 Canvas，禁止把题目拍给未到场同学 | 🎙️ A `02:08`–`03:33` |
+| W4 / 既有作业提交质量 | Notebook 代码必须执行并展示结果，导出 HTML；答案位置与题号要清楚，解释所选特征；使用 AI 后须检查占位文本 | 🎙️ B `01:01:43`–`01:05:09` |
+| W5 clustering assignment | 对 iris 做 K-means / K-means++、bisecting K-means、任选 density-based 方法并呈现结果；比较 linkage 适用数据；为 course project 选择聚类算法；执行代码、解释并导出 HTML | 🎙️ B `01:30:45`–`01:32:20` |
+| Week 5 Assignment（5 题，截止未在录音中说明） | Q1 KMeans(K=3)+Iris 散点图；Q2 BisectingKMeans(K=3)+机制区别；Q3 自选密度聚类、调参并统计 noise；Q4 比较 4×4 linkage 网格并给选法；Q5 为项目数据选聚类算法 | `Week5_Clustering_Tutorial.ipynb` cell 34；课堂 B `01:30:45`–B `01:32:20` |
+| 聚类作业提交 / 评分口径 | 所有代码必须实际运行并展示结果；逐题标清答案位置并解释；保存 HTML 提交；未运行代码会扣约一半题分；用 AI 后要检查残留占位文字。若已交但命中课堂指出的问题，可尝试重交 | B `01:01:47`–B `01:05:09`；补充 B `01:35:24` |
+
+## Week 5 聚类作业新登记（2026-09-30）
+
+Notebook cell 35：Iris KMeans（10）、BisectingKMeans（20）、密度聚类和噪声（20）、四种链接网格比较（20）、项目算法选择（30），内部共 100 分。课堂 B `01:30:45`–B `01:32:20` 要求运行、展示结果、解释并保存 HTML。正式截止与 Canvas points 待当前登录核对，不能从周次推算；个人作答未开始。公开方法见 [[T05-聚类实战-Kmeans层次密度与谱聚类]] §7；Notion 已登记 [Week 5 作业](https://app.notion.com/p/3eb8310b259681a0baead571c2cfcd01)。

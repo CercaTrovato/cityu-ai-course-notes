@@ -50,7 +50,8 @@ def fmt(sec):
 
 def parse_transcript(path):
     """返回 [(sec, ts_str, text)]，按文件顺序。兼容 Notta 导出：时间戳单独一行，下一行为文本。"""
-    lines = io.open(path, encoding='utf-8').read().splitlines()
+    with io.open(path, encoding='utf-8') as stream:
+        lines = stream.read().splitlines()
     segs = []; cur = None
     for ln in lines:
         s = ln.strip()
@@ -144,8 +145,42 @@ def tables(block):
 def table_rows(block):
     return [r for tb in tables(block) for r in tb]
 
+def audit_layout(text):
+    """Keep lecture 8/9 defaults; tutorial chapters follow the existing material contract."""
+    fm = re.match(r'^---\n(.*?)\n---', text, re.S)
+    metadata = fm.group(1) if fm else ''
+    if not re.search(r'^type:\s*tutorial\s*$', metadata, re.M):
+        return 8, 9
+    clean = re.sub(r'```.*?```', '', text, flags=re.S)
+    headings = re.findall(r'^##\s+(\d+)\.\s*([^\n]+)', clean, re.M)
+    mapping = next((int(n) for n, title in headings
+                    if ('映射' in title or '对照' in title) and ('cell' in title.lower() or '页码' in title)), 8)
+    extension = next((int(n) for n, title in headings if '延伸' in title or '勘误' in title), 9)
+    return mapping, extension
+
+
+def covered_seconds(block, scope=None):
+    """Timestamp union, accepting one/two Markdown code spans; optionally clip one clock."""
+    pattern = r'`(?:part\d+ )?(\d{1,2}:\d{2}(?::\d{2})?)`?\s*[–\-—~→]\s*`?(?:part\d+ )?(\d{1,2}:\d{2}(?::\d{2})?)`'
+    intervals = []
+    for start, end in re.findall(pattern, block):
+        a, b = parse_ts(start), parse_ts(end)
+        if scope is not None:
+            a, b = max(a, scope[0]), min(b, scope[1])
+        if b > a: intervals.append((a, b))
+    intervals.sort(); total = 0; current = None
+    for a, b in intervals:
+        if current and a <= current[1]: current = (current[0], max(current[1], b))
+        else:
+            if current: total += current[1] - current[0]
+            current = (a, b)
+    if current: total += current[1] - current[0]
+    return total
+
+
 def audit(note, tpaths, want_json=False, no_red=False):
-    text = io.open(note, encoding='utf-8').read()
+    with io.open(note, encoding='utf-8') as stream:
+        text = stream.read()
     body = re.sub(r'```.*?```', '', text, flags=re.S)
     # 行号按原文件报；围栏代码内的行置空，不参与逐行检查
     lines = []; fence = False
@@ -229,7 +264,9 @@ def audit(note, tpaths, want_json=False, no_red=False):
     if low_q: warns.append('A5 %d 条引文匹配率 40–60%%（多半是改写了 ASR 却没加 [ ]，请核对）：%s' % (len(low_q), low_q[:6]))
 
     # A6 §8 课堂覆盖列（只看带「课堂覆盖」列的那张映射表）
-    s8 = section(body, 8)
+    mapping_num, extension_num = audit_layout(text)
+    info['mapping_section'] = mapping_num; info['extension_section'] = extension_num
+    s8 = section(body, mapping_num)
     rows = next((tb for tb in tables(s8) if any('课堂覆盖' in c for c in tb[0])), None); missing = 0; checked = 0
     if rows:
         hdr = rows[0]; ci = next(k for k, c in enumerate(hdr) if '课堂覆盖' in c)
@@ -247,11 +284,11 @@ def audit(note, tpaths, want_json=False, no_red=False):
     if '时间分配' not in s8 and '用时' not in s8: warns.append('A6 §8 没有「课堂时间分配」表')
 
     # A7 §9.1 / 9.2 / 9.5
-    s91 = subsection(body, '9.1'); s92 = subsection(body, '9.2'); s95 = subsection(body, '9.5')
+    s91 = subsection(body, '%d.1' % extension_num); s92 = subsection(body, '%d.2' % extension_num); s95 = subsection(body, '%d.5' % extension_num)
     if not table_rows(s91): fails.append('A7 §9.1 没有表格（略过/缺失清单）')
     r92 = [r for r in table_rows(s92)[1:] if TS.search(' '.join(r))]
     if len(r92) < 3: fails.append('A7 §9.2 带时间戳的行只有 %d（需 ≥3）' % len(r92))
-    if '反方视角' not in s95 and '反方视角' not in section(body, 9): fails.append('A7 §9.5 缺「反方视角」')
+    if '反方视角' not in s95 and '反方视角' not in section(body, extension_num): fails.append('A7 §9.5 缺「反方视角」')
     if '无转录' in s92 and '无法判断' in s92: fails.append('A7 §9.2 仍写着"本讲无转录，无法判断"')
 
     # A8 §6.2 🔴
@@ -275,22 +312,27 @@ def audit(note, tpaths, want_json=False, no_red=False):
     if noev: warns.append('A10 %d 行有"教授说/强调…"但本行无时间戳：%s' % (len(noev), noev[:20]))
 
     # A11
-    m96 = re.search(r'^### (9\.\d+) .*变更记录', body, re.M)
-    s96 = subsection(body, m96.group(1)) if m96 else (subsection(body, '9.6') or subsection(body, '9.7'))
+    m96 = re.search(r'^### (%d\.\d+) .*变更记录' % extension_num, body, re.M)
+    s96 = subsection(body, m96.group(1)) if m96 else (subsection(body, '%d.6' % extension_num) or subsection(body, '%d.7' % extension_num))
     if not re.search(r'\|\s*20\d\d-\d\d-\d\d.*转录', s96): fails.append('A11 §9.6/9.7 变更记录没有含"转录"的合并行')
 
     # A12 §8 区间并集覆盖率
-    iv = []
-    for m in re.finditer(r'`(?:part\d+ )?(\d{1,2}):(\d{2})(?::(\d{2}))?`\s*[–\-—~]\s*`(?:part\d+ )?(\d{1,2}):(\d{2})(?::(\d{2}))?`', s8):
-        a = to_sec(*m.groups()[:3]); b = to_sec(*m.groups()[3:])
-        if b > a: iv.append((a, b))
-    iv.sort(); cov = 0; cur = None
-    for a, b in iv:
-        if cur and a <= cur[1]: cur = (cur[0], max(cur[1], b))
+    scope = None
+    start_m = re.search(r'^transcript_scope_start:\s*["\']?(\d{1,2}:\d{2}(?::\d{2})?)["\']?\s*$', fmt_, re.M)
+    end_m = re.search(r'^transcript_scope_end:\s*["\']?(\d{1,2}:\d{2}(?::\d{2})?)["\']?\s*$', fmt_, re.M)
+    if start_m or end_m:
+        if not (start_m and end_m): fails.append('A12 转录子区间须同时给 start/end')
         else:
-            if cur: cov += cur[1] - cur[0]
-            cur = (a, b)
-    if cur: cov += cur[1] - cur[0]
+            scope = (parse_ts(start_m.group(1)), parse_ts(end_m.group(1)))
+            source_segs = parse_transcript(tpaths[0])
+            if not source_segs or scope[1] <= scope[0] or scope[0] < source_segs[0][0] or scope[1] > source_segs[-1][0]:
+                fails.append('A12 转录子区间不在首源时间戳范围内或倒序'); scope = None
+            else:
+                span = scope[1] - scope[0]; info['transcript_scope_seconds'] = span
+    # Coarse time-allocation rows must not hide holes in the actual page/cell mapping.
+    mapping_text = '\n'.join(' | '.join(r) for r in rows) if rows else ''
+    cov = covered_seconds(mapping_text, scope)
+    info['coverage_union_seconds'] = cov
     ratio = round(cov / span, 2) if span else 0
     info['§8_time_coverage'] = ratio
     if span and ratio < 0.75: warns.append('A12 §8 的转录区间只覆盖录音的 %d%%（并集 %s / 录音 %s）——检查是否全程对齐' % (ratio * 100, fmt(cov), fmt(span)))

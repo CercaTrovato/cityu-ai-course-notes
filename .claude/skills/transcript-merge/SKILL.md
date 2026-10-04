@@ -44,7 +44,9 @@ description: 把课堂录音转录（本地 Whisper 或 Notta 导出的带时间
 PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py scan <课程>/transcripts/<文件>.txt [part2 ...]
 ```
 
-做四件事，结果写进工作目录的 `PROGRESS.md`（见 §9）。**在此之前先跑** `backup_vault.py` 与 `integrity_check.py snapshot 融合前`，并确认同步已关。**若是同课重叠的双录音，先分别 scan、以内容或音频对齐、逐源标 A/B，不用 `part1/part2` 伪装成前后接续；多文件 audit 的时间戳并集不能替代逐源引文核对。**
+做五件事，结果写进工作目录的 `PROGRESS.md`（见 §9）。**在此之前先跑** `backup_vault.py` 与 `integrity_check.py snapshot 融合前`，并确认同步已关。**多个独立录音时钟都先分别 scan，再核内容/音频接缝；已确认先后才标 partN，大范围重叠才标 A/B。保留原始时钟；多文件 audit 的时间戳并集不能替代逐源引文核对或计算课堂总时长。两段 partN 如需现有逐源脚本，文首固定 A=part1、B=part2，全文引文逐条带别名；脚本未覆盖的结构块还须人工核。**
+
+0. **来源登记与课程归属**：登记每源原文件/录音 ID、设备、原课程元数据、实际课程/module、错误 hotwords 风险与判定依据。设备切换接缝按连续/重叠/缺口/未知登记，长度未知不猜。误选课程先按《转录处理规则》§5.1 更正路由再导出。
 
 1. **改名**：按 `转录处理规则` §5 改成 `M0N-transcript.txt`（分段 `-part1/2`，不完整 `-partial`）。本地 Whisper 产出的与音频同名的 `.txt` 改名为 `M0N-transcript.txt`（或直接 `cd E:\AIworkspace\lecture-transcribe; uv run lt.py export <id> --module M0N`，见 `转录处理规则` §5.1；同目录的源音频 mp3 / wav **不要动**，也不进仓库）；早期 Notta 的内容标题式文件名同样改掉。`transcripts/` 不是 `course_files_export/`，可以改名。
 2. **时序**：段数、起止、时长、时序倒退、≥120 秒空档。每个空档都要**读前后原文**判断性质（课堂练习时间 / 课间 / 录音暂停 / 内容丢失），写成 §9.5 的一行。

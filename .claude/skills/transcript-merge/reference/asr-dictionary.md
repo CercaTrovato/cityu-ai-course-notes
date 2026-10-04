@@ -132,6 +132,13 @@
 | IT photography firm | IT consulting / consultancy firm | M04 `02:11:13` |
 | David Hanson | [?]（疑似知名科技企业家，未核实拼写，不作断言） | M04 `01:33:42` |
 | Mofat / Moffat | [?]（Air Canada 案当事人姓名，前后拼写不一致） | M04 `01:40:37` |
+| accountancy（FATP / governance 语境） | accountability | M05 `15:51` |
+| inferencing / inference（与 manipulating 对比） | influencing / influence | M05 `01:01:18` 起 |
+| reliability（与 accountability / responsibility 并列） | liability | M05 `01:43:42` |
+| the ban（贷款审批赔偿主体） | the bank | M05 `01:44:54` |
+| black-bottom AI | black-box AI | M05 `01:52:51` |
+| expandability（accuracy 权衡语境） | explainability | M05 `01:56:55` |
+| 50 pages（Part 2 页数） | 15 pages（讲义 p.1 + `05:23` 总 30 页；音频未回听） | M05 `05:18` |
 
 ## IS6400 · Business Data Analytics（技术课：库名 / 指标名易错；M03 起为本地 Whisper，错法是按发音写成常见词）
 
@@ -160,6 +167,19 @@
 | Stata Airbnb | so today[,] Airbnb[?] | T03 `02:10:40` |
 | capitation | classification[?] | T03 `01:53:43` |
 | the 19th percentile | the 90th percentile[?] | T03 `01:57:02` |
+| Q-square（距离公式收束语境） | square root | M05 A `11:16` |
+| oclap / alternate data point | outlier / outlier data point | M05 B `03:27` / `03:58` |
+| YGA3 algorithm | K-means algorithm | M05 B `07:24` |
+| intuition / installation / integration（迭代语境） | iteration | M05 B `14:59` / `20:02` / `21:25` |
+| danglegram | dendrogram | M05 B `48:54` |
+| co-member / co-point / bottom member / knowledge member | core member / core point / border member / noise member | M05 B `51:22`–`59:35` |
+| sklearn collector | `sklearn.cluster` | M05 B `01:05:30` |
+| write the course（考试代码语境） | write the code | M05 B `01:06:06` |
+| bisectoring K-means | bisecting K-means | M05 B `01:30:52` |
+| danglegram | dendrogram | M05 B `48:54`、B `48:58` |
+| word method | Ward's method | T05 B `01:15:03`、B `01:19:16` |
+| co-member / cone point / core member | core point / core member | M05 B `51:18` 起；T05 B `01:25:37` 起 |
+| bottom member / borderline member | border point / border member | M05 B `52:36`、B `54:40` |
 
 ## EF5560 · Fintech and AI in Finance
 
@@ -180,3 +200,14 @@
 | reach / which regression | Ridge regression | M04 A `23:34`，回顾 M03 时沿用旧 ASR 错例 |
 | WETLOO / wet-loose / red-loop | ReLU | EF5560 M04 A `01:54:30`–`01:56:27`、B `01:40:25`–`01:42:36`；按讲义 p.32 书面拼写 |
 | PVOC / SEC | PBOC 等机构名 `[?]` | EF5560 M04 A `02:03:46`、B `01:49:41`；B 支持 PBOC，后句仍需回听，不硬改细则 |
+
+## IS6400 T02 定点校词复核（2026-10-01）
+
+原M02-transcript.txt的02:27:45/02:27:59与原notebookcell29书面类别对照，正文改写须加[ ]，不修改原转录。
+
+| ASR原串 | 书面校词 | 原时间戳 | 依据与边界 |
+|---|---|---|---|
+| one cortic coder | OneHotEncoder | 02:27:45 | 原cell29接口；引文写[OneHotEncoder] |
+| automatically draw the first one | automatically [drop] the first one | 02:27:45 | 同句已说will drop，原cell29 drop='first'；非逐字原话 |
+| house locked and downhouse | house[,] [loft] and [townhouse] | 02:27:59 | 原categories_与输出列，Loft/Townhouse为校词 |
+

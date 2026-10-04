@@ -1,12 +1,12 @@
 ---
 type: 作业与DDL
 course: EF5560
-updated: 2026-09-26
+updated: 2026-09-27
 ---
 
 # EF5560 作业与 DDL
 
-> **来源**：`syllabus_EF5560_2026.pdf` ＋ `EF5560_FinTech_Company_Case_Requirements.pdf` ＋ `Lec01` 讲义 p.5 ＋ M01–M04 课堂转录。M04 为 A/B 同课双录音；音频是课堂说法，最终截止与入口以 Canvas 为准。
+> **来源**：`syllabus_EF5560_2026.pdf` ＋ `EF5560_FinTech_Company_Case_Requirements.pdf` ＋ ML 作业 Canvas 页及 2026-09-27 已与官方 ZIP 逐文件比对的 `EF5560_ML_Investment_Project_2026.pdf` ＋ `Lec01` 讲义 p.5 ＋ M01–M04 课堂转录。M04 为 A/B 同课双录音；最终截止与入口以 Canvas 为准。
 > ⚠️ **Canvas 是唯一权威**。syllabus 自己写着「Later Canvas or University announcements take precedence.」讲义 p.5 也写着「**Canvas is the source of truth for rubrics, submission links, and any administrative updates.**」下面凡标 ⚪ 的日期都是推算，**不要据此安排最后一天**。
 
 ---
@@ -19,9 +19,9 @@ updated: 2026-09-26
 | **本周内（≤ 下次上课前）** | ★ **在 Canvas 上组队**（≤3 人） | **硬性要求** | 🎙️`02:15:07` | 🔴 |
 | 课后（不计分） | 自己拿 HSTECH / CSI 300 / S&P 500 的股票玩一遍 vibe coding：画图、下财报、看会发生什么 | Take-home（不交） | 🎙️`02:13:16` | 🔴 |
 | **2026-09-27（周日 10:00）** | **TA tutorial #1**：ML 投资作业准备 · Zoom · **有录像** | 辅导 | syllabus；🎙️ M03 转录 `01:34`–`02:20` 再次确认"两次都在周日上午、纯 Zoom、不在教室" | 🔴 |
-| **2026 年 9 月下旬 ⚪** | **ML 投资作业发布** | 作业发布 | 🎙️`11:10`「I will probably send you the assignment **in late September**」 | ⚠️ 与 syllabus 冲突，见 §4 |
+| **2026-09-25 17:01** | **ML 投资作业公告** | 作业发布 | [Canvas 教授公告](https://canvas.cityu.edu.hk/courses/70898/discussion_topics/635870)；本地包 README 写数据 9/19、提交说明 9/20 更新 | 🔴 公告已核 |
 | **2026-10-01（周四）** | 🚫 **国庆假期，停课** | 停课 | M04 A `01:13:11`–`01:13:22`（B `01:21:44`–`01:21:52` 同段）教授明确说当天没有课 | 🔴 |
-| **2026-10-15（周四）14:00**（Canvas 页面显示） | **ML Investment Project／ML 投资作业截止** | **DDL** | 用户 2026-09-26 提供的 Canvas「Upcoming Assignments」截图：`ML Investment Project — Due Oct 15 at 2:00pm — -/100 pts`；年份据本学期登记，截图未显示时区 | 🔴 Canvas 截止已确认 |
+| **2026-10-15（周四）14:00 香港时间** | **ML Investment Project／ML 投资作业截止**；内部 12:00 完成检查 | **DDL** | [Canvas 作业页](https://canvas.cityu.edu.hk/courses/70898/assignments/336302) + [教授公告](https://canvas.cityu.edu.hk/courses/70898/discussion_topics/635870)；包内 brief p.1 写 12:00，冲突见 §2.2 | 🔴 Canvas 截止已确认 |
 | **2026 年 11 月中旬** | 模拟卷（mock paper）发布到 Canvas | 复习材料 | syllabus | 🟡 |
 | **Week 12 ⚪（约 2026-11-16 ~ 11-20）** | **FinTech 案例报告 + 录像展示 双双截止** | **DDL** | syllabus + 案例 brief + 讲义 p.5 | 🟡 |
 | **2026-11-29（周日 10:00）** | **TA tutorial #2**：期末考准备，**逐题讲模拟卷** · Zoom · **有录像** | 辅导 | syllabus | 🔴 |
@@ -49,14 +49,18 @@ updated: 2026-09-26
 | 项 | 内容 |
 |---|---|
 | 权重 | **20%**（课程总评占比） |
-| Canvas 计分 | 截图显示 `-/100 pts`，是该作业在 Canvas 的满分；**100 分不等于课程总评 100%** |
+| Canvas 计分 | 作业页显示 100 points；**100 分不等于课程总评 100%** |
 | 团队 | 最多 3 人，**一份联合报告** |
-| 发布 | 截图显示本作业已列在 Canvas「Upcoming Assignments」；**正式发布日期未显示**。syllabus 的 Week 5／讲义的 Class 5／教授口头「late September」口径见 §4，不用来推算截止 |
-| 截止 | **2026-10-15 14:00**（Canvas 当前页面显示；截图未显示时区）。此时间优先于 syllabus／讲义的周次推算 |
+| 发布 | 教授 2026-09-25 17:01 在 Canvas 公告发布；包内 README 写数据 9/19 发布、提交说明 9/20 更新；旧 syllabus 的 Week 5／讲义 Class 5 已过时 |
+| 截止 | **2026-10-15 14:00 香港时间**（Canvas 作业页和教授公告）；**包内 brief p.1 写 12:00**，内部按较早时刻完成并检查，两口径均保留 |
 | **要交三样** | ① 报告 ② **组合权重 CSV** ③ **可复现的代码包（reproducible code package）** |
 | 封面要求 | 列出**全部组员姓名 + CityU 学号**；指定**一位提交人** |
 | 内容 | 🎙️`10:32`「I'll give you some **predictors, some stocks**, and then you run your investment analysis… based on everything we show you for the **first five lectures**」 |
-| 详细要求 | 另有 assignment brief（发布时一并给出） |
+| 详细要求 | Canvas 当前 ZIP（5,335,480 bytes；SHA-256 `CE4B9E0ECCB4BBBA5468DACC3D501A05DE7A2D3D9AEDBCDC24E03956B31F8CD9`）含 12 项，2026-09-27 与既有解压目录逐项 SHA-256 一致。brief 4 页，Q1–Q5 分值 10／20／15／15／15，另实现 5、隐藏区间相对表现 20 |
+
+**正式交付细节（brief p.4）**：报告 `EF5560_<提交人学号>_report.pdf`，≤8 页含封面，可另有 1 页附录；全体组员英文姓名和学号上封面；必须有 Q1–Q5、Figure 1–4 与 Table 1–3，新增分析图表用附录编号 `Figure A1` 等。CSV `EF5560_<提交人学号>.csv` 按官方模板给出 156 周 × 80 股、至少 8 位小数并过官方 checker。源码 `EF5560_<提交人学号>_code.zip` ≤10 MB，不含数据或安装包。brief p.4 对本项另要求软件／包版本、随机种子及 AI 使用与团队检查的简短说明；这不是全库通用声明。
+
+**私有进度**：`assignment/graded/A01-ml-investment/` 已有 Obsidian 导览、可从空内核运行的 Jupyter Notebook、Q1–Q5 图表与带 `DRAFT` 的三件套；官方权重 checker 报 156 dates／80 stocks／全部约束满足。缺团队名单、提交人学号和本人逐条复核，**仍为 `draft`，不能当作已提交**。作业目录由 `.gitignore` 排除，不在公开仓库链完整答案。
 
 > ★ **"可复现代码包"这一项直接呼应 M01 的课堂强调**：🎙️`01:06:31`「every time you ask your AI to use the vibe coding for you, **please also save the file for the code**」。**从第一周就开始存代码，不要到交作业时才想起来。** 见 [[M01-金融数据与Vibe-Coding#2.2.4 🎙️ 三条只有课堂上才有的操作要点|M01 §2.2.4]]。
 >
@@ -158,7 +162,7 @@ updated: 2026-09-26
 
 ## 4. ⚠️ 一个必须核对的时间冲突
 
-**ML 作业的正式发布日期仍不清楚；截止时刻已由 Canvas 截图确认。旧材料对发布节奏的说法如下：**
+**2026-09-27 更新：ML 作业已在 9/25 17:01 的 Canvas 公告发布，正式截止由作业页及公告确认为 10/15 14:00 香港时间；包内 PDF p.1 的 12:00 与之冲突。** 下表保留此前材料的历史说法，供核对版本变化，不能再据此推算 DDL：
 
 | 来源 | 说法 |
 |---|---|
@@ -174,7 +178,7 @@ updated: 2026-09-26
 - **解读 A**：作业其实在 **Class 4（9/24）** 后就发，9/27 辅导，两周后（约 10/08–10/16）交。符合"late September"。
 - **解读 B**：syllabus 的周次是按**原定 13 周日历**写的，没有把停课算进去；实际以 Canvas 公告为准。
 
-**结论：正式截止已确认是 2026-10-15 14:00（Canvas 当前页面显示；截图未显示时区）。不要再按 syllabus 的周次自行推算截止。** M04 A `00:34`／`00:41` 的 10 月 10／14 日是催尽早提问，不是截止。正式发布日期、任务详细题面、提交入口及迟交规则没有出现在这张截图中，仍需以 Canvas 作业详情页为准。教授 A `01:19:01` 另说 9/24 更新过 syllabus，本地 9/9 版尚未核到该次更新。
+**结论：Canvas 作业页与教授公告给出的正式截止是 2026-10-15 14:00 香港时间；团队内部按 brief 较早的 12:00 完成全部检查。** M04 A `00:34`／`00:41` 的 10 月 10／14 日是催尽早提问，不是截止。Q1–Q5 题面与三件套已从 Canvas 官方 ZIP 核对；迟交规则及提交前是否有新版本仍需临近截止再查。教授 A `01:19:01` 另说 9/24 更新过 syllabus，本地 9/9 版尚未核到该次更新。
 
 **推算日历（⚪，仅供规划，非权威）**
 
@@ -218,7 +222,7 @@ updated: 2026-09-26
 
 | # | 事项 | 怎么解决 |
 |---|---|---|
-| 1 | ~~ML 投资作业截止日~~／正式发布日期与详情 | ✅ Canvas 截图已确认 **2026-10-15 14:00**；截图没有显示时区、正式发布日期、详细题面与迟交规则，后者需打开 Canvas 作业详情核对 |
+| 1 | ~~ML 投资作业发布日期、题面与交付件~~／迟交规则及最后更新 | ✅ 2026-09-27 已核 Canvas 作业页、9/25 公告和官方 ZIP 12 项哈希；14:00 香港时间与 PDF p.1 的 12:00 冲突已记录。迟交规则、提交前是否有新版本仍需在 Canvas 复核 |
 | 2 | 案例报告 + 录像的**具体截止日期与时刻** | Canvas |
 | 3 | ~~期末考的**日期、地点、允许携带的材料**~~ | ✅ **携带材料已确认**（M03 转录，见 §2.4：A4 双面手写小抄）；**日期与地点仍待 Canvas** |
 | 4 | Zoom office hour 的**具体周日日期** | Canvas；M03 转录只确认了"周日上午"这一通用格式，没有给出 9/27 之外的新日期 |

@@ -1,0 +1,93 @@
+EF5560 2026 ML Investment Assignment - report outline
+
+Copy this outline into your preferred editor and replace the prompts with
+your results. Submit a searchable PDF, not this TXT file. You may change
+the layout. Keep Q1-Q5 and the numbered table and figure labels so results are easy to find.
+Limit: eight pages including the cover, plus an optional one-page appendix.
+
+COVER
+Lead student ID:
+Team members (names and student numbers; up to three):
+
+Q1. DATA AND PREDICTION BENCHMARK (10)
+Purpose: Reliable forecast evaluation starts with the right target and benchmark;
+show that your data split respects what investors could have known at each forecast date.
+
+Counts by split: stocks, weeks, stock-week rows.
+Training target mean and sample standard deviation.
+Figure 1: Predictor correlations - training correlation matrix of the 17 predictors.
+One strongly correlated pair and its correlation.
+Why keep the time order and all stocks in a week together?
+Define y and the zero-excess-return forecast; give validation benchmark MSE.
+
+Q2. OLS AND LASSO (20)
+Purpose: Variable selection may reduce noise; use OLS and LASSO results to show
+whether retaining fewer signals improves validation accuracy.
+
+Explain how you fit the scaler and models and apply them to validation data.
+
+Table 1: Prediction results
+Model | Training MSE | Validation MSE | Validation OOS R-squared
+Zero forecast | [result] | [result] | 0
+OLS | [result] | [result] | [result]
+LASSO | [result] | [result] | [result]
+Random forest OR boosting (Q3) | [result] | [result] | [result]
+
+State the software/function and penalty values used for LASSO.
+Figure 2: LASSO penalty selection - validation MSE versus penalty.
+Give the selected penalty and nonzero count.
+
+Table 2: Coefficients
+Predictor | Standardized OLS coefficient | Selected LASSO coefficient
+[one row per predictor; intercept separately, excluded from nonzero count]
+
+Which signals are retained? Does selection improve validation accuracy?
+
+Q3. ONE NONLINEAR MODEL (15)
+Purpose: Nonlinear models allow more flexible relationships; use validation evidence
+to judge whether that flexibility adds predictive value beyond OLS and LASSO.
+
+Name the model, settings tried, and validation MSE for each setting.
+State the selected setting and random seed; add its results to Table 1.
+When could it improve on a linear model? What happened in your results?
+
+Q4. CHARACTERISTIC IMPORTANCE (15)
+Purpose: Interpreting a model helps explain its forecasts; show which characteristics
+it relies on and how its predictions respond when those characteristics change.
+
+Explain the fixed-model, standardized drop-to-zero calculation.
+Figure 3: Characteristic importance - five largest values, including negative values if selected.
+Figure 4: Response profile - the most important predictor, over its training
+10th-90th percentile range. Label both axes and state the prediction units.
+Compare with LASSO's selected variables using your results.
+
+Q5. FORECASTS AND PORTFOLIOS (15)
+Purpose: Forecast accuracy is not the same as investment performance; show whether
+your predictions support a portfolio choice that you can justify in terms of return and risk.
+
+Use the same top-16/bottom-16 rules for all three models in the comparison.
+
+Table 3: Validation portfolios (Weeks 79-104 only)
+Model/rule | Mean weekly long-short spread | Long-only Sharpe |
+Long-only information ratio vs equal weight | Long-only maximum drawdown
+OLS / top 16 | [results]
+LASSO / top 16 | [results]
+Random forest OR boosting / top 16 | [results]
+80-stock equal weight | N/A for spread; [portfolio results]
+Final rule (only if different from a row above) | N/A for spread; [results]
+
+Does the best prediction model also give the best portfolio?
+Identify the final model/rule, its validation evidence, and one material risk.
+Give the final rule's largest weekly sector weight in validation, sector, week.
+Explain refitting on Weeks 1-104 and forming private-period weights.
+
+IMPLEMENTATION DETAILS AND AI USE
+Name the main script/notebook and list software/package versions and random seeds.
+Briefly state any AI tools used and your own checks. Submit the PDF report,
+weight CSV, and source code ZIP appendix; no separate code README is required.
+
+UNITS
+Returns and drawdown: decimals; drawdown nonpositive.
+MSE: squared decimal-return units, at least six significant digits.
+OOS R-squared: decimal, not percent. Other summaries: at least four decimals.
+Use unrounded values in calculations. N/A means not applicable, not zero.

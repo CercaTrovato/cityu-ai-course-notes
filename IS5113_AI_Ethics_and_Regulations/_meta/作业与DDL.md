@@ -133,3 +133,19 @@ updated: 2026-09-15
 | 事项 | 内容 | 来源 |
 |---|---|---|
 | 小组项目组队规则（下周 W6 正式启动） | 自由组队，**每组最多 8 人**；已组好的需发邮件给教授，注明每位成员姓名（中英文都有则都写）、学号、以及谁是 **coordinator**；未组好的由教授下周随机分配 | 🎙️ M04 `01:31:18`–`01:32:21`：*"you are free to form groups, up to 8 people in a group... send me an email, tell me who are the members of your group, name, student ID, name in Chinese and English, if you have both, and in your group, who is the coordinator?... I cannot talk to all eight students. I need a person that I can talk to."* |
+
+## 2026-09-30 M05 项目新口径与来源核对
+
+新材料 `IS5113 Group Project.pdf`（6页）及M05 p.1–6已到。旧大纲项目40%为历史，**新文件和课堂 `01:14` 明说50%**，但其他考核组成不能自行重算。**最多8人**：`00:14` 明确纠正“not five to seven actually, eight students”。
+
+| 项目 | 当前证据与要求 | 边界 |
+|---|---|---|
+| Part1 | 教师指定AI伦理主题研究，最多15页；原文件p.1、Appendix A | 本组题目尚未知 |
+| Part2 | 指定行业/领域的可执行政策，自选一家具体公司作标杆比较，最多15页；原文件p.2、Appendix B | 本组行业未知；不得将公司自选误作行业也自选 |
+| 评分 | 两部分各100分；Part1研究25/论证25/商业20/协作10/展示20，Part2框架30/证据15/利益相关者15/实施10/协作10/展示20；各列最多5加分 | 两部分最终合成权重未明确 |
+| 展示与截止 | W12–W13；报告本组展示后7天。课堂 `00:30`、`00:57` 与书面一致 | 无本组展示年月日/时刻，绝对DDL待确认；旧Notion11/17不作确定报告DDL |
+| 必须披露 | 每名成员角色和贡献；是否/如何使用AI、工具、本人超过AI的贡献；课堂 `06:22`–`07:27` | 必须基于真实过程，不编记录 |
+| Canvas | Modules/Files有项目file16124104和M05 file16124087；Assignments仅Assignment1；Announcements disabled | 附件副本下载被客户端阻止，未比对远端SHA；未见项目正式提交项 |
+| ASR数字冲突 | `05:18` 说50 pages，`05:23`又说总计30pages；书面每部分15页 | 采用书面并保留口误/ASR待核，不篡改原引文 |
+
+准备路线与个人/团队工作区保留在本地私有assignment目录；公开笔记仅提供通用要求与方法，不公开完整评分作业答案。本次没有替用户组队、选题或提交。

@@ -8,7 +8,7 @@ integrity_check.py — 全库 Markdown 完整性快照与比对。任何 agent �
     PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/integrity_check.py verify [--allow <文件路径片段> ...]
         → 与最近一次快照比对：
              ✗ 任何文件 utf-8 解码失败
-             ✗ 笔记（*/notes/*.md）最后一个标题不是 §9 / 变更记录 / 相关
+             ✗ 讲义笔记（*/notes/*.md，排除 assignment/）最后一个标题不是 §9 / 变更记录 / 相关；作业教程检查 UTF-8 与末行完整
              ✗ 文件缩短超过 20%（--allow 指定的路径除外——例如你本来就要整篇重写的那篇）
              △ 列出所有变动过的文件（供核对"我没打算改的文件为什么变了"）
         退出码：0 = 全部通过，1 = 有 ✗
@@ -40,6 +40,9 @@ def info(rel):
 
 def tail_ok(rel, d):
     if '/notes/' not in rel: return True
+    if '/assignment/' in rel:
+        from safe_write import check
+        return check(os.path.join(ROOT, rel))[0]
     h = d['last_head']
     return h.startswith('## 相关') or '9.' in h or '变更' in h
 
