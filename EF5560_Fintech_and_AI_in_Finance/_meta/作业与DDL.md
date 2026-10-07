@@ -6,6 +6,8 @@ updated: 2026-09-27
 
 # EF5560 作业与 DDL
 
+> 制作规则：[[作业规范|全局通用规则]] → [[EF5560_Fintech_and_AI_in_Finance/_meta/EF5560作业制作规范|EF5560 课程细则]] → 本地私有 Axx 任务说明。本页维护作业事实与历史来源，不能覆盖制作规则。
+
 > **来源**：`syllabus_EF5560_2026.pdf` ＋ `EF5560_FinTech_Company_Case_Requirements.pdf` ＋ ML 作业 Canvas 页及 2026-09-27 已与官方 ZIP 逐文件比对的 `EF5560_ML_Investment_Project_2026.pdf` ＋ `Lec01` 讲义 p.5 ＋ M01–M04 课堂转录。M04 为 A/B 同课双录音；最终截止与入口以 Canvas 为准。
 > ⚠️ **Canvas 是唯一权威**。syllabus 自己写着「Later Canvas or University announcements take precedence.」讲义 p.5 也写着「**Canvas is the source of truth for rubrics, submission links, and any administrative updates.**」下面凡标 ⚪ 的日期都是推算，**不要据此安排最后一天**。
 
@@ -58,7 +60,7 @@ updated: 2026-09-27
 | 内容 | 🎙️`10:32`「I'll give you some **predictors, some stocks**, and then you run your investment analysis… based on everything we show you for the **first five lectures**」 |
 | 详细要求 | Canvas 当前 ZIP（5,335,480 bytes；SHA-256 `CE4B9E0ECCB4BBBA5468DACC3D501A05DE7A2D3D9AEDBCDC24E03956B31F8CD9`）含 12 项，2026-09-27 与既有解压目录逐项 SHA-256 一致。brief 4 页，Q1–Q5 分值 10／20／15／15／15，另实现 5、隐藏区间相对表现 20 |
 
-**正式交付细节（brief p.4）**：报告 `EF5560_<提交人学号>_report.pdf`，≤8 页含封面，可另有 1 页附录；全体组员英文姓名和学号上封面；必须有 Q1–Q5、Figure 1–4 与 Table 1–3，新增分析图表用附录编号 `Figure A1` 等。CSV `EF5560_<提交人学号>.csv` 按官方模板给出 156 周 × 80 股、至少 8 位小数并过官方 checker。源码 `EF5560_<提交人学号>_code.zip` ≤10 MB，不含数据或安装包。brief p.4 对本项另要求软件／包版本、随机种子及 AI 使用与团队检查的简短说明；这不是全库通用声明。
+**正式交付细节（brief p.4）**：报告 `EF5560_<提交人学号>_report.pdf`，≤8 页含封面，可另有 1 页附录；全体组员英文姓名和学号上封面；必须有 Q1–Q5、Figure 1–4 与 Table 1–3，新增分析图表用附录编号 `Figure A1` 等。CSV `EF5560_<提交人学号>.csv` 按官方模板给出 156 周 × 80 股、至少 8 位小数并过官方 checker。源码 `EF5560_<提交人学号>_code.zip` ≤10 MB，不含数据或安装包。brief p.4 对本项另要求软件／包版本、随机种子及 AI 使用与团队检查的简短说明；这些是本任务的额外要求；全局另有一句实际 AI 工具声明的默认，不能据此省略 brief 明示内容。
 
 **私有进度**：`assignment/graded/A01-ml-investment/` 已有 Obsidian 导览、可从空内核运行的 Jupyter Notebook、Q1–Q5 图表与带 `DRAFT` 的三件套；官方权重 checker 报 156 dates／80 stocks／全部约束满足。缺团队名单、提交人学号和本人逐条复核，**仍为 `draft`，不能当作已提交**。作业目录由 `.gitignore` 排除，不在公开仓库链完整答案。
 

@@ -126,3 +126,7 @@ pdftotext -layout "Module 2 - Moral Theories and Ethics.pdf" "$SCRATCH/M2.txt"
 进度库 `collection://500c1c03-e1ff-4bce-b190-efaa39e2185b`，DDL 库 `collection://a8e8c875-baa9-4c2e-a5b1-7ebdf4a105f5`。规则见 [[Notion进度看板]]。
 
 **回复语言**：简体中文。
+
+## 作业规则入口（2026-10-06）
+
+本课作业依次读取根级 `_meta/作业规范.md` → 本课 `_meta/IS5113作业制作规范.md` → 对应 Axx 任务说明。全局规定通用语言、学习/提交分工、AI 声明和安全验收；本课文件只补学科方法，当前题目、格式和期限在任务层回源。讲义笔记的自测与模板不直接套到正式答卷。

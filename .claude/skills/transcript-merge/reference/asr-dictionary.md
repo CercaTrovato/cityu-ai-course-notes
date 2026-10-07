@@ -62,6 +62,15 @@
 | “66,000”（库存股回购总额，讲义算法应为 $6×1,000=$6,000） | [?]（数字与算法不符，未还原） | W3 `01:17:09` |
 | “800”（少数股东权益例题里 A 的份额） | 80（讲义 p.12 原例：B 净资产 100 的 80%） | W3 `01:19:18` |
 | 折旧分录贷方报成 “10,000”（借方已报 1,000） | [?]（按讲义逻辑贷方累计折旧应与借方折旧费用同为 1,000） | W3 `01:03:06` |
+| CERF | sales（收入别名语境，按 p.31） | S2 `28:04` |
+| CFS | CFF（筹资活动，按 p.41） | S2 `40:59` |
+| harassing | healthy / health（成熟公司语境，按 p.42） | S2 `45:15` |
+| double-entry housekeeping | double-entry bookkeeping（课程记账语境） | S2 `54:29` |
+| IA / IEA / IE / IEM | REA | S3/S4，按Week4书面拼写 |
+| share / FAIR / SEER | Sale（销售） | S4，会计语境按讲义，不引用未校正专名 |
+| TESH / cache | Cash | S4，按讲义类名称 |
+| counter receivable | accounts receivable | S4 `03:56`，讲义p.14 |
+| stock（基数语境） | star / * | S4 `30:16`–`37:30`，字母位置仍不确定 |
 
 ## IS5542 · GenAI in Business
 
@@ -180,6 +189,20 @@
 | word method | Ward's method | T05 B `01:15:03`、B `01:19:16` |
 | co-member / cone point / core member | core point / core member | M05 B `51:18` 起；T05 B `01:25:37` 起 |
 | bottom member / borderline member | border point / border member | M05 B `52:36`、B `54:40` |
+| step-hole / sample / sepal（长度上下文） | sepal length | W04 `31:41`/`39:52`，按讲义 |
+| filling | Feeling | W04 `19:25`，按p.18 |
+| RGD | RGB | W04 `09:24`，按p.13 |
+| ANVIS / IELTS | Iris | W04 `31:28`及tutorial，按数据源 |
+| genius / gene index | Gini index | W04 `53:53`/`56:41`，按书面公式 |
+| 0.612（节点权重语境） | 6/12 | W04 `59:27`，按p.38人数，不改引文 |
+| Timmy speak | [?] break语境 | W04 `45:58`，下一句46:03说1pm回来 |
+| engine values / engine vectors | eigenvalues / eigenvectors | IS6400 W04 `01:32:43`–`01:33:32`，按讲义p.66 |
+| valence | variance | IS6400 W04 `01:31:56`，按讲义p.65 |
+| low data set | raw data set | IS6400 W04 `01:21:48`，上下文原始表 |
+| Revolve / Revol / Revo（目标数组压平） | ravel | W04 `01:43:56`–`01:44:20`，按当前API |
+| gas support / gap support | get_support | W04 `01:45:55`、`02:10:54`，按当前API |
+| white label | y label | W04 `01:57:27`，上下文为纠正图轴标签 |
+| Neptune 12 | [?] 源代码为1e-12；不将ASR数字当可靠直引 | W04 `01:50:45` |
 
 ## EF5560 · Fintech and AI in Finance
 

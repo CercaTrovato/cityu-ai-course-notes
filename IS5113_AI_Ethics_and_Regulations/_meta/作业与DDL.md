@@ -6,6 +6,8 @@ updated: 2026-09-15
 
 # IS5113 作业与 DDL
 
+> 制作规则：[[作业规范|全局通用规则]] → [[IS5113_AI_Ethics_and_Regulations/_meta/IS5113作业制作规范|IS5113 课程细则]] → 本地私有 Axx 任务说明。本页维护作业事实与历史来源，不能覆盖制作规则。
+
 > 与 Notion [📌 CityU 作业与 DDL](https://app.notion.com/p/c4bab444ac4f457fb3516cf13d19517d) 同步。
 > Notion 负责提醒和状态流转，本文件负责保留完整要求原文与分析。
 

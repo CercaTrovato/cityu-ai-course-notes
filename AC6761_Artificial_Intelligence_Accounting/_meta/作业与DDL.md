@@ -6,6 +6,8 @@ updated: 2026-09-22
 
 # AC6761 作业与 DDL
 
+> 制作规则：[[作业规范|全局通用规则]] → [[AC6761_Artificial_Intelligence_Accounting/_meta/AC6761作业制作规范|AC6761 课程细则]] → 本地私有 Axx 任务说明。本页维护作业事实与历史来源，不能覆盖制作规则。
+
 > **Case 3（2026-09-30 核对）**：课堂照片及 Canvas `Case 3 with solution.docx` 已取得，完整学习与答案在本地私有 `assignment/practice/`，入口为作业总览／练习索引。23 行、46 个百分比与官方一致。Canvas 未明示本案例的计分、提交及截止，不为它捏造 DDL，也不替本人记录学习或提交。
 
 > 信息来源：`AC6761 Outline 2627.docx`、官方课程目录（2026-09-09 抓取）、**`Week 1 PPT.pptx` p.2（细节最全）**、`transcripts/M01-transcript.txt`。
@@ -47,7 +49,7 @@ updated: 2026-09-22
 
 > 💡 **Rubric 的三个动词是选题的约束**：`introduce`（介绍这项 AI 技术）→ `interpret`（解释它在会计里意味着什么）→ `demonstrate`（**展示**它的应用）。**第三个动词最重**——它对应 DEC 的 A3「Accomplishments：产出创造性作品/对真实问题的有效解决方案」。**纯文献综述型的选题在这个 Rubric 下拿不到高分，要有可演示的东西。**
 
-> 💡 **GenAI 要求的第二句才是重点**：*"provide explanation of **why** the piece of response from the GenAI tool is adopted"* —— 它要求你展示**判断**，不只是引用。这恰好呼应讲义 p.7 的"You become the quality filter"。**建议在报告里单开一节"GenAI 使用说明"**，逐条列出：用了什么工具、问了什么、它答了什么、**我为什么采信/不采信这一段**。
+> 💡 **GenAI 要求的第二句才是重点**：*"provide explanation of **why** the piece of response from the GenAI tool is adopted"* —— 它要求你展示**判断**，不只是引用。这恰好呼应讲义 p.7 的"You become the quality filter"。按 2026-10-06 全局规则，先用一句话写实际工具；若本任务现行要求仍要求采纳理由，再补充该理由。不要自行扩展为完整提示词、回答与逐段 AI 分工清单；教师明确要求的内容另按原文处理。
 
 > 🔗 **选题可与 [[AC6761_Artificial_Intelligence_Accounting/00-课程总览#与其他课的交叉点|IS5113]] 复用**：IS5113 的 FATP 框架（Fairness / Accountability / Transparency / Privacy）可以直接拿来给 AI 会计应用做伦理体检，对应本课 W11 的 "ethical considerations"。
 
@@ -273,3 +275,10 @@ gantt
 |---|---|---|
 | **2026-10-14（周三）19:30–21:30** | 🔴 **期中考**，闭卷，AC1 (Yeung) Y4302 & Y4702 | 🎙️ W1 转录 `13:28`：范围是 **Week 1–Week 5**，**不含 W6**。⚠️ 但 W6 是全课最厚的一讲（92 页），**期末范围未知，需确认** |
 <!-- /W6 -->
+
+
+## 🎙️ M02 转录追加（2026-10-07）· 课堂口头信息（转录追加）
+
+| 事项 | 内容 | 来源 |
+|---|---|---|
+| Quiz 1 讲评与后续练习 | 讲评日期2026-09-30；此次不新增提交渠道或DDL，不把讲评当作本人提交/完成 | S2 `06:09`–`24:54`；旧M03 `20:58`说明小测仅作参与证据 |

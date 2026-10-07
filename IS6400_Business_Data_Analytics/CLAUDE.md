@@ -80,14 +80,14 @@ Tutorial notebook 里有形如下面的 markdown 单元格：
 | `Airbnb.csv` | **68,133** × 15，目标变量 `log_price` → [[IS6400_Business_Data_Analytics/_meta/数据集卡片\|数据集卡片]]（W2–W4 三周共用） |
 | `IS6400-W3-DataMining.pdf` | ✅ M03 / T03 已成 v1.0，W3 转录已合并；曾被同步截断的 PDF 于 9/22 重下复核 |
 | `Week 3 Description.ipynb` | ✅ 已读 → [[T03-数据探索实战-Iris与Airbnb的描述统计]]（48 cells，Python 3.13.5；**含 Week 3 Assignment**；⚠️ **无 AI Prompt 格**） |
-| `IS6400-W4-Feature.pdf` | ✅ M04 / T04 已成 v0.9；曾被同步截断的 PDF 于 9/22 重下复核 |
+| `IS6400-W4-Feature.pdf` | ✅ M04 / T04 已成 v1.0（2026-10-07已融合9/23原录音）；曾被同步截断的 PDF 于 9/22 重下复核 |
 | `Week 4 Feature Engineering.ipynb` | ✅ 已读 → [[T04-特征选择与PCA实战-Iris]]（37 cells，⚠️ kernel Python 3.7.6；**含 Week 4 Assignment**；无 AI Prompt 格） |
 | `IS6400-L5-Clustering.pdf` | ✅ 已读 → [[M05-聚类-Kmeans层次与DBSCAN]]（67 页，2026-09-22 课前建稿；30 页图逐页视觉复核；Reading = DM Chapter 7, 8）。⚠️ Syllabus / Notion 原排 W05 = 决策树，实为聚类 |
 | `iris.txt` | 150 × 5，无表头，CRLF → [[IS6400_Business_Data_Analytics/_meta/数据集卡片#iris.txt\|数据集卡片 › iris.txt]] |
 
 | `*.html` | **忽略**（notebook 导出，与 ipynb 重复） |
 
-**转录**：W02 / W03 已合并；W04 的对应转录目前未见于 `transcripts/`。是否录音及课堂日期以用户和原始材料核实。
+**转录**：W02/W03/W04均已融合，W04为 `M04-transcript-partial.txt`（9/23Windows原录音，1058段，缺开头、结尾完整）。M04/T04课堂与现行评分部分分别维护，现场修改不冒充原保存源码执行。
 
 > ⚠️ **W3 / W4 的 notebook 没有 `🤖 AI Prompt` 单元格**（§3 的规则对它们不适用，T03 / T04 在 §0 注明即可）。
 > ⚠️ **Syllabus 与 Canvas 周次错位一周**（Syllabus W03 = PCA，实际 W3 = 描述性分析、W4 = 特征工程）：笔记编号跟 Canvas 的 Week，不跟 Syllabus。
@@ -127,8 +127,12 @@ for i, c in enumerate(nb['cells'], 1):
 
 ## 9. 作业续写与验收（2026-09-30）
 
-本课计分作业执行 `_meta/IS6400作业制作规范.md` 和根级 `_meta/作业规范.md`：从当前 Canvas Notebook 的副本续写，保留原题与教学顺序；先核前三周的实际经验，再对新作业逐问完成、零基础解释、必做拓展和实际导出阅读验收。作业的 Python 入场基线是零基础，覆盖本文件 §3 的讲义默认假设。`*.html` 中的个人提交是需要复核的历史材料，不因 §7“重复导出”而忽略。
+本课计分作业执行 `_meta/IS6400作业制作规范.md` 和根级 `_meta/作业规范.md`：从当前 Canvas Notebook 的副本续写，保留原题与教学顺序；先核前三周的实际经验，再逐问完成答案与必做拓展；零基础教学、自测与提交检查放私人导览，正式 Notebook 保留解题所需的方法、代码、输出和讨论，最后标准导出与实看。作业的 Python 入场基线是零基础，覆盖本文件 §3 的讲义默认假设。`*.html` 中的个人提交是需要复核的历史材料，不因 §7“重复导出”而忽略。
 
 W04 于 2026-09-30 核到当前 `Week4_Feature_Engineering_Tutorial.ipynb`（43 cells），新题合计 100 内部分；旧 37-cell 版本的题号与分值仅作历史材料，不用于当前作业。当前 Canvas 提交类型为 HTML 或 PDF。完整个人答案只在 Git 忽略的 `assignment/`，公开笔记不反向链接私有答案。
 
 **Notebook 提交导出（2026-09-30 用户明确）**：HTML 必须直接通过 Jupyter 菜单或标准 nbconvert 从已保存的 `.ipynb` 导出；内容、顺序、输出与字号均在 Notebook 维护，不另做 HTML 页面。导出脚本仅允许调用标准导出器和保存，不重排或单改 HTML。
+
+## 作业规则入口（2026-10-06）
+
+本课作业依次读取根级 `_meta/作业规范.md` → 本课 `_meta/IS6400作业制作规范.md` → 对应 Axx 任务说明。全局规定通用语言、学习/提交分工、AI 声明和安全验收；本课文件只补学科方法，当前题目、格式和期限在任务层回源。讲义笔记的自测与模板不直接套到正式答卷。

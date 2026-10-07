@@ -1,0 +1,3173 @@
+00:00
+or some other symbols to indicate this object.
+
+00:04
+So imagine that, so like me, I have a three-year-old daughter,
+
+00:08
+and every time I teach her, okay, this is a dog, this is cat,
+
+00:13
+so I need to teach her, okay, why this is a dog,
+
+00:16
+you can see all these kind of local patterns, right, the face,
+
+00:20
+and this is called dog.
+
+00:22
+So we build this kind of relationship between these descriptions
+
+00:25
+and the labels, the names of these objects.
+
+00:30
+Starting from your three years old until now, you keep learning so many combinations between the features and the labels of these objects, right?
+
+00:41
+So, for example, you may see, this is actually my outlook when I started my PhD.
+
+00:50
+So every time I walk on the street in the United States, and other foreigners, Americans know, okay, this guy must be a programmer.
+
+01:10
+So you can see when I walk along the street like this, it must
+
+01:25
+be very tough,
+
+01:29
+it's working very hard, 6 foot, this
+
+01:36
+kind of recognition, you see this feature,
+
+01:47
+you see this guy is a very very working programmer, so why do we have this kind of recognition, why do we identify and simultaneously identify this guy as a programmer, because
+
+02:02
+From our historical understanding or historical learning, we see so many guys wearing like this and they are working as a program engineer
+
+02:13
+So we actually build this kind of relationship, right? All these signals, observations, features
+
+02:20
+And once we see these features, we link these features to the labels of these objects
+
+02:27
+And these features, they are the numbers or indicators that are weak
+
+02:37
+and we can understand this object using these features.
+
+02:42
+Now, our job as
+
+02:48
+human beings, we already build so many relationships with features and labels of so many objects.
+
+02:54
+Now today's job is very simple.
+
+02:56
+We want to tell,
+
+03:01
+and using this job, the machine can get the labels for this automatically using them.
+
+03:16
+I want the machine to understand this, and
+
+03:21
+of course we can use some NLP language to
+
+03:27
+We can also construct some features. We tell the machine, for example, we use the frequency of the keywords as the feature numbers, we illustrated the example last week.
+
+03:40
+For example, we can use the keywords, spam, machine, email, class, and chi, and
+
+03:48
+use their frequency as the feature numbers.
+
+03:51
+Then we can actually tell the machine, once you see these five numbers,
+
+03:59
+which is the number we use to profile this paragraph.
+
+04:04
+Then it must be a document related to the spam email classification.
+
+04:11
+Now once we tell this kind of information to the machine, the machine will remember this relationship.
+
+04:17
+The five numbers, the frequency of the five keywords will be used to link to the labels of this paragraph.
+
+04:26
+Now imagine that we have thousands of documents.
+
+04:31
+So five real numbers to profile this document, and we tell machine, okay, you see, some of these five numbers, they are spam email-related articles, and some others with other five numbers, they are not.
+
+04:43
+So once we educate a lot of examples to the machine, machine will remember this kind of relationship.
+
+04:50
+So when I see some of the five real numbers in the feature, they may be the spam email-related article, and some other five numbers as features.
+
+04:59
+When they show up, they indicate some general articles.
+
+05:02
+Now we need to teach machine, okay, which numbers you need to capture,
+
+05:08
+and once you see these features, are the labels on them.
+
+05:15
+And similarly, when we see some other contact objects,
+
+05:19
+for example, the social media user,
+
+05:20
+we may also need to tell the machine, okay, what kind of information we need from the online users.
+
+05:27
+I believe you know these two guys very well, right?
+
+05:30
+The Angel and the Austin.
+
+05:32
+So one is Seo Jin-mae and the other is Lee Jia-chi.
+
+05:35
+I don't know whether you are too young to recognize these two famous guys.
+
+05:40
+And the first one, my wife spent a lot of time in her TV shows.
+
+05:47
+And the second guy, my wife spent a lot of money in his live videos.
+
+05:55
+So we can see what we profile these two guys.
+
+05:58
+Even though we can build so many attributes or features to profile and to tell others who they are
+
+06:05
+So maybe you do not know them, but I can tell you the distinct features
+
+06:09
+One is for TV show and the other is for live streaming in common
+
+06:14
+So we can also build some other information from their public social media accounts
+
+06:20
+Like the number of followers, the roles, the gender, the social tags they provide on their home page
+
+06:28
+And we can use this
+
+06:30
+information as a feature, and tell machine, okay, look, even though the machine may not understand who this guy, the angel or Austin would be, but once the machine recognizes all these features, the laws, the followers, and the gender, they know, okay, this is the guy who is called angel, and the other numbers here, they are associated with the social media user Austin.
+
+06:56
+And we can deliver this kind of relationship to machine, and ask machine to remember this kind of information, the relationship between the features and the labels, or the name of this user, and the machine will be able to recognize.
+
+07:08
+Now the question is, which numbers, or which features should we use to profile a single object, or a list of objects in our dataset?
+
+07:21
+So, let's go back to this.
+
+07:27
+Now, I'm not educating you guys as a three-year-old doctor, but I'm educating a machine, okay?
+
+07:34
+Imagine we are educating a machine, and the machine does not see any apple or orange before, but we need to teach the machine.
+
+07:43
+Now, here we have apple and orange, and we want to educate the machine to recognize or differentiate these two objects, the apple and orange.
+
+07:53
+Now, we can provide two options in the feature selection.
+
+07:58
+So I can select feature set 1, so feature set 1 will use the width and the height of this object to profile this object
+
+08:07
+And we want, of course, we want to use this feature to tell machine, okay, see the difference between the two features, and this is apple and this is orange
+
+08:15
+Now imagine that we are using this feature set, and for the apple we get two numbers, the feature numbers, 10 centimeters and 10 centimeters
+
+08:24
+But for the orange we get something similar, right?
+
+08:28
+Now do you think that these two numbers and features, the feature vector would be useful or not for the machine to distinguish or differentiate these two objects?
+
+08:39
+We cannot, right?
+
+08:40
+So like when you describe, okay, who is Dr. Liu, you must not say he has two eyes.
+
+08:48
+You must say he has very, very evil, tiny eyes, looks very angry.
+
+08:58
+You must have this kind of description in order to differentiate this guy from others, right?
+
+09:03
+Okay, now, similarly, if I want to use the other feature set, and we use RGB, right?
+
+09:10
+So three color index. And for the apple, we get three numbers.
+
+09:15
+And for the orange, we get another three numbers.
+
+09:18
+So we have two feature vectors to prefer apple and orange.
+
+09:22
+So can we see the difference?
+
+09:24
+We can see, right? So do you think that these three real numbers, the RGD index, would be useful for us to tell the difference?
+
+09:34
+We can do that, right? Now imagine, let's make it more challenging.
+
+09:40
+Now imagine that we have another object, for example the watermelon or some other fruit, okay?
+
+09:52
+So that also looks like an apple. It is red.
+
+09:57
+Now we cannot use these three numbers to distinguish the apple, orange, and some other fruit.
+
+10:04
+So we need some other features.
+
+10:06
+So we need to combine and add some other features in order to differentiate these three categories of fruit.
+
+10:12
+So we need to do that.
+
+10:14
+Also when we have the image recognition, so for humans we know
+
+10:20
+Okay, so if the humans, do you want to paint the red sub-images or the yellow sub-images to tell the difference between these two objects, the woman and the dog?
+
+10:30
+Red, right? So why? They're different.
+
+10:36
+So if we capture these two sub-images in red, we can easily tell the difference between these two images.
+
+10:43
+Now, how we can educate a machine to identify useful focus on these two sub-images?
+
+10:53
+before you make a classification model to distinguish these two different categories or labels of objects.
+
+10:59
+Now that's our job. So how we can do that?
+
+11:03
+For humans, of course, we are well educated, we are very smart, and we can teach the difference
+
+11:08
+and tell the most representative features using our own observation.
+
+11:14
+Imagine the machine is empty, just like a two-year-old or three-year-old kid.
+
+11:20
+And then he knows nothing, but we need to tell, and how we can tell a machine, who can only recognize numbers, and identify the most representative features automatically.
+
+11:31
+We do not want to teach everything, we do not want to teach the machine, okay, pay attention to these numbers, they will be the most representative features, and how we can do that.
+
+11:42
+And then we want to notify that the feature representativeness is case by case.
+
+11:56
+Some features in this problem, they may be the most presentive, the same features for users, they may not be so presentive for the business problem
+
+12:07
+So what does this tell? So imagine that we have 1,000 social media users, ok, 1,000
+
+12:16
+So when you play with social media, I have 1,000 social media users
+
+12:21
+Now I have one company, and the company is trying to find some potential sports game customers
+
+12:29
+The main thing is the company is trying to launch a new game, a sports game, and the company needs to identify the group of potential users, who is the new game, the new sports game.
+
+12:43
+Now, I have 1,000 social media users, and every single social media user, I have their daily social media activities.
+
+12:51
+Your comments, your articles, your views, all the likes you crack, and how much money you spend on social media platforms.
+
+13:03
+So I have all this kind of information, the social media user activity.
+
+13:10
+For this business owner, we construct or we tell the machine, you may need to, the first feature of the app, X1, the first feature here, I would like to use the social media activity that how many hours a user is spending in the video game.
+
+13:33
+Like me, I may spend two hours a day in Wang Zedong Yard. So that's my social media feature.
+
+13:41
+and some others, maybe they play six hours.
+
+13:45
+But these are the features.
+
+13:50
+Now imagine we have this.
+
+13:51
+Now, axis indicates how many hours you play in the video game.
+
+13:57
+One axis, how
+
+14:05
+many sports videos.
+
+14:12
+Now we can see X1, the social,
+
+14:20
+the video games.
+
+14:21
+So
+
+14:24
+far we use this to feed
+
+14:28
+the users.
+
+14:28
+We get this, get, and for this group, it's
+
+14:36
+more.
+
+14:36
+To identify this subgroup of users as much.
+
+14:42
+No, right?
+
+14:43
+Because they play very few numbers,
+
+14:53
+Now compare with this group, do you think this group of users, maybe
+
+15:00
+yes, right, at least they play the game every day for a long time
+
+15:06
+And they also read some news articles related to sports
+
+15:13
+So we can see X1, X2, and we tell the machine, okay, you use X1, X2, this attitude answers
+
+15:23
+the question one, the potential sports game customers
+
+15:28
+Now, the case is done
+
+15:36
+The other company is facing the same 1,000 social media users, but that company is not releasing a new game.
+
+15:44
+The other company is actually sharing the news articles, and the news articles are related to the COVID-19.
+
+15:54
+So the second company wants to identify some potential customers who would be willing to purchase the COVID-19 related news subscription.
+
+16:04
+Now, do you think that X1 and X2 were identified before for these, for the same 1000 social media users?
+
+16:12
+Do you think that X1 and X2 were identified before would be useful for the second company?
+
+16:17
+It's not related at all.
+
+16:21
+No one would care how many hours you play the game, you would be purchased the COVID-19 news article.
+
+16:27
+So we need two other features, right?
+
+16:30
+So for the same 1000 social media users, can you imagine some other features that may be related to this problem?
+
+16:42
+So first, did this guy read a lot of posts or write some comments on the COVID-19 related posts, right?
+
+16:52
+So this is one feature.
+
+16:54
+And second feature is also very important.
+
+16:56
+So how much money this guy spent every year on the news article subscription?
+
+17:02
+So like me, I read a lot of articles, but I never paid for the news article subscription.
+
+17:09
+So maybe one feature is high, but the other feature value, the money I paid is very low, then I'm not the targeted customer.
+
+17:18
+So we need to construct two other features in order to answer this question, right?
+
+17:23
+And these two other features, they may be more representative for the second problem,
+
+17:27
+but has nothing to do with the first problem, even for the same group of users.
+
+17:32
+So this is why we call the feature engineering is problem-specific.
+
+17:37
+You cannot just give me a data set and tell me, okay, this data is so good, you can solve my problem, identify 1,000 features, they are so informative and they are so comprehensive, you cannot do that.
+
+17:50
+You need to tell me, okay, in order to solve this problem, and which problem it would be, the data would be useful.
+
+17:58
+So without a problem specified before, we cannot tell which feature would be more important or representative.
+
+18:07
+So how we can do that?
+
+18:09
+So in order to tell the machine how we can actually get this kind of representative feature set
+
+18:14
+we need to create some features from the raw data
+
+18:19
+or remove some duplicate or redundant features
+
+18:22
+and be more focused on the most important features
+
+18:25
+and more importantly, when the dimension of the raw data is high
+
+18:30
+we need to reduce the dimension to avoid the curse of dimensionality
+
+18:37
+So for example, once we have a document, the raw data, and we want to profile this document using a feature vector,
+
+18:45
+so we need to construct or create some new features.
+
+18:49
+Like the example before, we used the frequency of keywords as the feature definition, and used this feature to profile the document.
+
+18:59
+And sometimes we need to identify the duplicate or redundant feature.
+
+19:06
+When we got two or more columns of features, they are telling me the same information.
+
+19:11
+For example, we have two columns here, and the first column is the temperature.
+
+19:16
+And the feature values is recorded from 0 to 200 degrees in a continuous actual format.
+
+19:25
+The second feature, I only get three, the second column of feature is called filling,
+
+19:30
+and I've only got three unique, the cold, warm, and hot.
+
+19:39
+We can see, if we have both columns of features, I can easily use the temperature to calculate the three categories, right?
+
+19:50
+But can we do it reversely? Can we use these three feelings to recalculate the exact temperature we have for this state?
+
+20:02
+We cannot. In other words, the temperature column contains more information we need than the feeling.
+
+20:10
+So if that's the case, do you think that we still need the filling column anymore in this data set?
+
+20:16
+We do not, right?
+
+20:18
+Because why can't we use one column to completely calculate the second column?
+
+20:22
+And the fourth column of the temperature contains all the information we can get from the second column of features
+
+20:29
+And the second column of features, the filling, is not that important
+
+20:32
+Or it is not important at all
+
+20:34
+So we do not need it
+
+20:35
+And also, we do not want a very high dimensional data set
+
+20:42
+So for some of the machine learning algorithms, we developed machine learning algorithms using a very, not big, sometimes we have a smaller set, at least the data is not so big.
+
+20:54
+It's very different from deep learning or the large language model that we have a mega data set to build a very, very complex model.
+
+21:01
+For most of the machine learning models, we do not have a very huge data set to train a machine learning model.
+
+21:08
+So in that case, we do not want a very high dimensional data set.
+
+21:13
+So imagine that if I want to view the article and some features.
+
+21:18
+Some keywords, the frequency of keywords, some keywords they are related to sports, so I want to use this feature to differentiate sports from others
+
+21:26
+And some of the keywords they are related to travel articles, and I also want to include that keywords into the feature set
+
+21:35
+And in order to differentiate the travel articles from others
+
+21:39
+Maybe there are some other
+
+21:41
+job description liquid keywords, and we use these keywords to differentiate job articles from others.
+
+21:48
+Now imagine that we have so many categories to differentiate from each other,
+
+21:53
+now we need a very large number of keywords to differentiate all these categories, right?
+
+22:00
+Now imagine this can be thousands of keywords.
+
+22:05
+We have thousands of columns to make the document classification using this feature vector.
+
+22:10
+Now this dimension is really high, and the high dimension will have some, will introduce some challenges for us.
+
+22:17
+First, the whole feature data table would be very sparse, because only the sports related articles, they have the real numbers, the non-zero numbers here, but most of these feature values can be zeros, right?
+
+22:34
+So we may have a very sparse data set, and also we may have the curse of dimensionality issue.
+
+22:42
+The curse of dimensionality is that in order to maintain a very good performance for your learning algorithm, we need a lot of data.
+
+22:52
+So what does it mean? The number of data we need will go with this kind of formula.
+
+23:00
+So imagine that the cc here is the error rate we have for the learning algorithm
+
+23:05
+Then if we want to do the document classification, I want to maintain cc equal to 0.1
+
+23:12
+So I want the miscalculation rate or the error rate to be at 0.1
+
+23:20
+I want the model to perform very well at this level
+
+23:25
+And the number of data points we need to maintain this error rate
+
+23:32
+would go exponentially with the dimension of the data D.
+
+23:38
+Now imagine that we have 100 features to build a model with a performance of 0.1.
+
+23:45
+Now the number of data is 0.1 to the power of 100 over 1, okay?
+
+23:53
+Now if I increase the dimension from 100 to 200,
+
+24:00
+And I want to maintain the performance to be 0.1, the algorithm to be 0.1
+
+24:05
+Then the number of records I need to maintain this high dimensional data will grow exponentially
+
+24:12
+So we need a lot of data to change the model
+
+24:15
+So of course if you have very very very large data set
+
+24:19
+Of course you can support a very very high dimensional data and a very high dimensional model as deep learning
+
+24:26
+And even though the deep learning is a very high dimensional model and requires so many features we have from the raw object
+
+24:34
+Then we need an even larger and larger dataset to support deep learning training
+
+24:41
+But for the machine learning algorithms, when we don't have a very huge dataset
+
+24:45
+We need to reduce the dimensions of our data and only get the most representative feature from our dataset
+
+24:54
+And also, the dimension reduction or the feature selection to reduce the number of features we have in our data set will trigger this kind of trade-off between the model efficiency and the model accuracy.
+
+25:08
+So, here we have this kind of image classification, for example, and we will learn how to build the convolutional neural network to do the image classification in a later stage.
+
+25:18
+Now imagine that we are trying to use some standard machine learning, the support vector machine, to classify all these images.
+
+25:25
+And here we have ten labels of images. Some of them are plants, some of them are cars, and some of them are dogs or cats.
+
+25:33
+We have so many images here, and we want to use machine to classify the labels of these images.
+
+25:41
+Now what we have, or how we profile all these images, and how the computer can read the features of these images
+
+25:49
+So we have pixels. So what is pixel? So imagine that this is the image, the slide is the image
+
+25:55
+So we have pixel 1, and pixel 1 here is indexed blue
+
+25:59
+And we have so many pixels to profile the image, so this is my second pixel, and it's also indexed blue, right?
+
+26:06
+So I have one load of pixels, the second load of pixels
+
+26:10
+And some of the pixels here, they are labeled white, the color of the pixel
+
+26:15
+So that's why when you purchase a new cell phone, you may
+
+26:20
+The seller will tell you, okay, how many pixels you have for your screen, right?
+
+26:24
+The more number of pixels, the more fun the screen will be
+
+26:29
+So we have all these pixels as feature numbers to profile a single image
+
+26:34
+So the raw data, the raw image, it has 3,072 real numbers
+
+26:42
+the pixel numbers to profile a single image.
+
+26:45
+Now of course we can use this 3,072 features as a feature vector to profile an image
+
+26:53
+and to build a relationship between this feature vector and the label of this image
+
+26:58
+and ask the machine to learn the relationship between this high dimensional feature and the class label of this image.
+
+27:13
+Accuracy, if we use the Sputovac machine to use the full dataset, including the 3000 features, we get an accuracy of 63.1%.
+
+27:25
+The training time, the time we need to train this machine to extract the relationship between the features and the class label, the image label, would be around 2 hours.
+
+27:36
+A very long time.
+
+27:38
+But you may see that for a single image, for example, for this slide, some of the pixels, so some of these pixels, they're actually not so informative, right?
+
+27:49
+So they may not be so useful for some margins, they're all white or blue, for every single slide here, they have the same color, and these are not so important features.
+
+28:01
+So we want to reduce the dimensions of the data by removing some low values or the feature values that do not have so much information
+
+28:12
+So we do a principal component analysis. We will learn how to do that later today
+
+28:18
+So after the PCA, the principal component analysis, I reduce the dimension of the data from 3000 to 100
+
+28:28
+So you can imagine that originally I have a very big feature vector, and in this feature vector I have 3000 real numbers to profile this single loop
+
+28:37
+Now after PCA, I only have 100 real numbers to profile this single object
+
+28:44
+And I remove about 2000 other features from the dataset
+
+28:52
+Now after we do the PCA, I can build the relationship between the 100 new features
+
+29:00
+together with the class labels of these images.
+
+29:04
+And after that, I got a model, and the model is performing not so bad.
+
+29:09
+The performance is around 60%.
+
+29:11
+The accuracy only dropped by 3%,
+
+29:14
+but the time I used to change the model is reduced from two hours to a few minutes.
+
+29:21
+Now we can actually use the second model to have a very quick implementation of the image classification
+
+29:27
+to deal with all the images using only 100 features to do the analysis
+
+29:33
+That's why we need some techniques to do the feature engineering
+
+29:38
+to select the most representative features for our machine
+
+29:42
+and then educate the machine how to build relationships
+
+29:45
+using the low-dimensional but most representative features to do the analysis
+
+29:51
+So, we have the feature importance
+
+29:55
+Now, in order to tell the machine, okay, which features are more representative or more important
+
+30:01
+We cannot just tell the machine using our own observation
+
+30:07
+Tell the machine, okay, this is more important than others
+
+30:10
+We need to ask the machine to identify the feature importance by machine themselves
+
+30:18
+But you remember that the machine can only recognize the number of symbols, right?
+
+30:25
+Now how we can tell machine which number or which features are more important.
+
+30:30
+So we need a method to quantify the feature importance.
+
+30:35
+And once we get this kind of feature importance score or metrics,
+
+30:42
+then the machine can use this score to compare the importance of multiple features automatically,
+
+30:49
+and we do not need to observe one thousand or two thousand features one by one,
+
+30:57
+So how we can do that?
+
+31:00
+So, for this subsection, our job is to do the feature importance measurement.
+
+31:05
+We need a single number, and this single number can tell the machine which feature is more important.
+
+31:11
+So we are trying to develop some techniques that calculate a score for all the input features,
+
+31:18
+and to measure the representativeness or the importance of different features that the machine can recognize.
+
+31:24
+So how we can do that?
+
+31:26
+This is not a very simple task.
+
+31:28
+So imagine that, let's go back to last week, and we have the scatterplot for the ANVIS dataset, the flower dataset, right?
+
+31:36
+So if you come to my class, you will remember this, scatterplot.
+
+31:41
+Now for this scatterplot, I have the petal width as x, and the step-hole length as x2.
+
+31:49
+Now we do the stack scatterplot, and each dot represents one data point,
+
+31:55
+and the color represents the categories of the flowers.
+
+31:59
+Now, in order to differentiate the blue data points, the blue categories from other categories of flowers in the dataset using our human observation,
+
+32:10
+do you think the petal grid is a very good feature to differentiate the blues from the rest of the data points in my dataset?
+
+32:20
+Do you think it's a good one?
+
+32:23
+Yes, right? Why? Because we can easily set a boundary condition here, and the left-hand side says why they are all blues, and the right-hand side says they are all non-blues, right?
+
+32:34
+I can make perfect classification using this single feature.
+
+32:38
+So do you think that the other feature here in this figure, do you think the sample length is a good choice to classify the blues from the rest?
+
+32:50
+No, right? Because once...
+
+32:53
+I set a boundary here to classify, and all these regions, they mix, move with some other few data points from other categories, they're not good
+
+33:03
+Now from our human's observation, we can easily identify which feature is more important
+
+33:09
+So how we can tell machine?
+
+33:13
+Can
+
+33:16
+we just use a scatter plot, and we take a look at a scatter plot, and tell machine which feature you should choose
+
+33:28
+Can you do this visualization and interpretation and do this selection all by yourself, one by one?
+
+33:35
+Of course you can do that, but I'm so lazy.
+
+33:39
+So you must know my name on social media, right?
+
+33:45
+Yes. I'm so lazy, I don't want to do that myself.
+
+33:48
+So, what should we do?
+
+33:51
+We need to make it smart.
+
+33:54
+We need to do a measurement, to measure the goodness of a feature or a feature subset.
+
+34:01
+and using this single score, I can delegate the feature selection job to the machine.
+
+34:07
+Once machine can calculate all this feature importance of goodness or some other important scores,
+
+34:13
+automatically, I do not need to be involved into the feature selection procedure, right?
+
+34:20
+I do not need to do the scale of the code, I do not need to read all these kind of numbers, all the figures.
+
+34:26
+I can ask machine to do that.
+
+34:30
+So, there are so many different ways to do the feature importance measurement, including the information measurement.
+
+34:37
+So we have learned how to do the information gain.
+
+34:40
+It tells us how much new information the feature would contain to solve the problem.
+
+34:46
+Then we can use this information measurement to measure the importance of the feature.
+
+34:53
+We can also use the distance measurement to tell, if we use this feature, how we can differentiate with the distance in the feature space to tell differences among different data objects.
+
+35:06
+Or we can use some dependence measurement to see what is the dependencies among the feature and our prediction target, and use the dependency statistics to measure the importance of the features.
+
+35:20
+Also, we can use some consistency or accuracy measurement to see whether these features, they can provide very good learning performance and with consistent results with their robustness.
+
+35:30
+Then we use these kind of features with the best model performance as the presenting features.
+
+35:38
+So no matter what kind of feature importance measurement, so in general, the feature selection or the feature evaluation method can be categorized into two big groups.
+
+35:49
+The first one is called filter model, and the other one is called wrapper model.
+
+35:54
+So the difference between the filter model and the wrapper model, this is one example, I think three years ago, one year ago.
+
+36:03
+So filter model is the feature selection model that we do not use any learning algorithm to quantify the feature importance.
+
+36:13
+We only use summary statistics to measure the importance.
+
+36:18
+But for the vector model, we will use some learning algorithms and use the performance of these learning algorithms on the feature set to evaluate the feature importance
+
+36:30
+So if you take a look at the filter model, so we can see, so once we are given the data set, and we pick a feature subset, then we need to evaluate the importance of this feature subset
+
+36:49
+frequency counting, or some other statistical methods that we want to use some statistics, or some of this, or some simple measurement to measure whether this feature subset, they are good or bad.
+
+37:04
+If they are very good, with very high measuring score, then we will use this feature subset as the optimal feature subset to develop the learning algorithm.
+
+37:15
+Otherwise, if these features are not so representative, then I will go back and reselect some feature subset
+
+37:20
+So you can see, when we pick the best feature subset, or measure the feature importance here, we do not have any learning algorithms
+
+37:31
+We do not have the linear regression, the decision trees, the logistic regression, we do not have all these algorithms in measuring the feature importance
+
+37:41
+We only use some summary statistics to do that
+
+37:45
+So now let me take an example of how we can do the filter model and just use some simple calculation to evaluate the importance of different features.
+
+37:57
+So before we do that, let's revisit this kind of example that we manually select the petal width over the sample length in this kind of plot.
+
+38:14
+Actually, we pick the petal width. Why? Because after we pick the petal width, we see the petal width will separate the original data set into two subsets, set 1 and set 2, right?
+
+38:28
+Now, in set 1, we can do some frequency counting, and in set 1, we can see, in set 1, we get 50 data points belonging to blue, the setosa, and zero of them in set 1 belonging to the other kind of width.
+
+38:45
+So this is very good, right?
+
+38:46
+In the second one, I get two numbers.
+
+38:48
+And I can read these two numbers.
+
+38:51
+They are very pure.
+
+38:52
+I do not mix any other categories in these two numbers.
+
+38:59
+Right?
+
+39:00
+Now I take a look at step two.
+
+39:02
+So in step two, I also do the frequency counting for these two categories.
+
+39:08
+And I see that there's no blue mix.
+
+39:12
+And all of them, 100 of the data points in step two,
+
+39:18
+Now we can see, given these two numbers, and these two numbers, I can see the result is very good if I use the petal width.
+
+39:28
+Now we can see, if I do not take a look at this scatter plot, I only see these four numbers in the table, I can tell, okay, petal width is very good.
+
+39:41
+If I use petal width to do the data segmentation into set 1 and set 2, both set 1 and set 2, they are very good.
+
+39:52
+If I use the sample length to separate the data into two parts, set 1 and set 2, now in set 2, we can see it is good, in set 2, we do not have any mix of data points in set 2, all the data points in set 2, they are non-statosa, they are not looped, but what about set 1, in set 1, we have 10 data points mixed with statosa
+
+40:21
+So the cell line is not that good, right? It is not that pure. It makes some data points from other categories.
+
+40:30
+Now, by comparing these four numbers, using this feature, the sample length, with four numbers we get from using the petal width.
+
+40:43
+So if you just take a look at these two tables, one table will have four numbers, right? So can you tell me which table is better?
+
+40:54
+The previous table is better.
+
+40:56
+Only use these four numbers, we can tell which one is better.
+
+41:01
+Now, we can see, imagine that with some other features,
+
+41:07
+and the other features may also separate the data
+
+41:10
+into two parts, step one and step two.
+
+41:13
+So no matter which feature we use,
+
+41:15
+we will be able to get these four numbers.
+
+41:18
+Two numbers for step one, data distribution,
+
+41:20
+and two numbers for step two, data distribution, right?
+
+41:24
+Now, we must be able to use these four numbers to quantify a single number, and this single number can help us identify which feature is better than the others.
+
+41:38
+We must be able to do that.
+
+41:43
+Or, for example, here we have this dataset, and then we have the data categorized into two categories, C0 or C1.
+
+41:54
+And here we have four attributes, or three or four features here in the original data table
+
+41:59
+Now if I use the gender as the selected feature, the gender will separate the data into two parts, right?
+
+42:10
+The male or not male, the female
+
+42:14
+So for all the data points belonging to this male, you can see this male, this male
+
+42:22
+Among all the data points belonging to males, we can see 6 of them belong to C0, and 4 of them belong to C1
+
+42:29
+You can just use frequency counting, you get these two numbers
+
+42:34
+And for the females, 4 of them belong to C0, and 6 of them belong to C1
+
+42:44
+So according to these 4 numbers, do you think that gender is a very good feature to differentiate C0 from C1?
+
+42:52
+This is not, right? They are mixed. I didn't see many big differences in these two subsets. They are mixed.
+
+43:01
+Now if I use the card type, the card type will be categorized into three subsets, cell 1, cell 2, cell 3.
+
+43:09
+Now for cell 1, for family cards, I see 1C0 and 3C1. For the sports cards, I do the frequency counting, and I see 8C0 and 0C1.
+
+43:22
+And for the third types, the third subsets, 1C0 and 7C1, so even though the three subsets, they are not pure, they are not the purest case, but do you think that the car type is a better feature than the gender? It is, right? Because we get three subsets, and they are much purer than the first feature subset, so the second one is better.
+
+43:46
+Now we can see, we can just use all these numbers to quantify
+
+43:50
+A single number. So far we do not know which number we can calculate, but we know that number should be able to be based on this subset data distribution.
+
+44:01
+We can do that.
+
+44:02
+Now one exceptional case is the ID information.
+
+44:06
+So if you use the ID information as a key feature, you get a pure risk case, but each subset you only get one data point.
+
+44:14
+Why? Because you use the ID information.
+
+44:17
+Now we cannot use
+
+44:19
+This feature, even though we get a purely subset. Why? Because we are trying to use this data for future implementation.
+
+44:29
+Imagine that there's a new customer coming, we cannot get the labels for the new customer with the new customer ID, right?
+
+44:37
+So that's the case. So among all these features, which one do you prefer?
+
+44:42
+So I would prefer the car type. Now the question is that...
+
+44:47
+How we can ask machine to select the car type automatically over the gender information, over the gender feature.
+
+44:57
+Now, we know that we need a very simple frequency counting calculation to quantify the importance or the goodness of the data subset.
+
+45:12
+For any data subset, we can view the frequency counting of the data points belonging to the two categories, right?
+
+45:19
+Now in this case, we have a very high degree of impurity. So this is not pure.
+
+45:26
+So this is the subset we want to avoid, right?
+
+45:30
+And for these two numbers, they have a low degree of impurity because we only have one data point mixed with C0.
+
+45:40
+Now this case, this subset is the subset we want to see after we use one feature to sample the data into the subset.
+
+45:49
+Now our first job is to use the two numbers in a single subset to quantify the goodness of this subset.
+
+45:58
+Now let's have Timmy speak and we will continue to see how we can build the future importance score.
+
+46:03
+So we will be back at 1pm,
+
+46:10
+measurement.
+
+46:13
+So, no matter what kind of measurement we got, we can use this measurement to evaluate the feature importance.
+
+46:20
+So the pipeline is that we want to compute the impurity measurement P before we use any feature to split the data.
+
+46:31
+In other words, we get an impurity level, the distribution of the two categories of data points in the original data set.
+
+46:44
+to record the impurity level of the original data set
+
+46:49
+and then we want to compute the impurity measurement
+
+46:52
+the level of the impurity after we use the feature to do the split
+
+46:57
+so we can split the original data into set one and set two
+
+47:00
+now we want to use the set one and set two data distribution to measure the
+
+47:04
+impurity of the data subset after we use this
+
+47:10
+To measure the impurity after the beta-speed, we need to compute the impurity of each subset, and then do the average impurity of the subset using the feature we choose.
+
+47:24
+After that, we can use P minus M to calculate the gain.
+
+47:30
+So what does p minus m here represent? So p represents the impurity we have before we use the feature, and m here represents the impurity we have after we use the feature.
+
+47:42
+So the gap means the reduction in the data impurity after we use this feature. So the larger the gap, the better the feature we have. So that's our purpose.
+
+47:54
+So how we can actually compute and use all these kind of pipelines and use these numbers from our original frequency counting to compute the infinities
+
+48:05
+So imagine that we have an original dataset and we do not use any features to analyze the dataset
+
+48:12
+Now we get the data distribution of this set, C0 and C1 using the frequency counting of the data points belonging to C0
+
+48:23
+So it is N00 and N01. So we want to use these two numbers, the data distributions distributed in C0 and C1 to compute a single number of the data impurity, and this single number is recorded P.
+
+48:41
+Now imagine that I use the feature A, and the feature A, like agenda or car part, we use one feature, we choose one feature A, and the feature A will separate the data into two parts according to the actual values.
+
+48:55
+In node 1, we get two other numbers, and in set 2, we get two other numbers, so according to the data distribution in node 1, in set 1, we can further calculate M11, the impurity of the data in this distribution using these two numbers, right, so we get M11, and also for node 2 here, using these two numbers, we get the impurity of node 2, and we get M12
+
+49:24
+Now we get two impurities for the two subsets after we use the H to the A.
+
+49:29
+Now we want to aggregate M1 and M1Q into an aggregated impurity number.
+
+49:35
+Now we get a single number, M1, to measure the impurity of the data after I use A.
+
+49:42
+Now I can compute the gain, P minus M1.
+
+49:46
+Now the gain will be the importance of the feature A.
+
+49:52
+So imagine that I have the other feature to evaluate, the feature B. Now feature B will separate the original data into two sets.
+
+50:01
+So we can compute the impurity for S3, which is M2-1, or this subset, M2-2, and we combine M2-1 and M2-2 together into a single number, now we get again P-M2, so this would be the single number we use to tell the importance of the feature B.
+
+50:23
+Now we can compare these two gains, A or B, to tell which feature is more important.
+
+50:30
+Now you can see among all these kind of calculations, we need to leverage these two numbers
+
+50:37
+So any two numbers here in a dataset to measure the impurity
+
+50:43
+So how we can do that?
+
+50:44
+So the first measurement we can get is called Gini index
+
+50:48
+Gini
+
+50:52
+index has this kind of definition that given a dataset T
+
+51:02
+in this set T. Now we have this measurement to measure the impurity of this data distribution.
+
+51:11
+So the most critical term in this expression that you need to remember is PJT, and the definition of PJT.
+
+51:19
+So you may be willing to add this expression and the definition in your cheat sheet.
+
+51:26
+So, I remember one year, I see some students write down this expression, but they forgot what is PJT.
+
+51:33
+So they didn't get any calculation. Now the PJT is called the relative frequency of class J at this.
+
+51:43
+So let's take a look at this data set. So this data set, we have two classes, C1 and C2, and there are 0, 0, 0 points belonging to C1 and 6 0 points belonging to C2. Now what is the frequency of C1 in this set, T? 0, right? So what is relative frequency? C0 over still 0. So P, C1, T.
+
+52:10
+PCA1t is 0 over 6. Now what is PC2t? Because we have two classes, right? What is PC2t? The frequency of C2, the relative frequency of C2 is 1, right?
+
+52:27
+So now let's put this data distribution back into this formula. So what is the Gini index for this node t? It's 1 minus the summation of j.
+
+52:40
+Remember j is a class, and j here in this cell, we have two class labels of j, just the 1 or 2.
+
+52:50
+So what is about j equals to c1, so p squared is 0 over 6 squared, and the minus, that's the summation j, right? j equals to c2, 6, that
+
+53:09
+is the final result, that is 0, right?
+
+53:12
+The Gini index for this data distribution is 0. Now
+
+53:23
+let's take another example here, for this data distribution, so what is the relative frequency of c1 in this data set? So anyone here? 2 over 6, right?
+
+53:37
+Total number of earphones is 6, the frequency counting of C1 is 2, so 2 over 6
+
+53:43
+And what about the relative frequency of C2? 4 over 6, right?
+
+53:49
+So we put this data distribution back into this formula
+
+53:53
+So the genius here would be 1 minus 2 over 6 squared minus 4 over 6 in
+
+54:06
+this number
+
+54:06
+So you can see, you can do this calculation
+
+54:13
+As the data is becoming impure and impure, so we know that we become impure and impure, and the Gini index goes from 0 to 5, to 0.5, so the degree of impurity increases with the number of Gini index, right?
+
+54:35
+Now we can see, we can use this Gini index to measure the goodness or the impurity of the data distribution.
+
+54:47
+The more impure the data distribution would be.
+
+54:51
+Is that clear?
+
+54:53
+So the gene index is very important to measure the goodness of the data distribution.
+
+54:58
+So this is how we calculate.
+
+55:00
+So once we are given a data distribution, no matter whether this is for the original data distribution,
+
+55:05
+or the data after we use some feature, we get the data subset,
+
+55:10
+and this is the data distribution for our data subset,
+
+55:13
+we can always use this Gini index to calculate the impurity.
+
+55:18
+Using these two numbers, right?
+
+55:22
+Now, if you go back to see what we calculated from this example,
+
+55:26
+using
+
+55:30
+these two numbers, can we use the Gini index expression to calculate P?
+
+55:41
+Can we use the same expression of Gini index to calculate M11 using these two numbers?
+
+55:50
+We can do that, right? Can we do that for M12?
+
+55:55
+We can still do that.
+
+55:59
+Now we get P, M11, and M12. In order to calculate the gain, P minus M1, now we need to combine M11 and M12 to calculate M1.
+
+56:10
+That's the only thing we need to do to compute the gain of using this feature, right?
+
+56:16
+Now what is the average of M11 and M12 for using the QGIN index? So we have a weighted average.
+
+56:26
+So it's not a simple average of m11 plus m12 divided by 2, it's actually a weighted average.
+
+56:33
+So what is the weight? The weight of m11 would be the total number of data points in this subset.
+
+56:41
+Remember m11 is the gene index of this subset, right?
+
+56:45
+And the importance of m12 is the total number of data points in this subset.
+
+56:50
+So weighted sum is weighted by the total number of data points in both subsets.
+
+56:56
+So I have the weighted sum. Now if we put that into the formula, so an i here is the number of data points in subset i, and this is the weight of this subset i times the Gini index of the subset i.
+
+57:17
+So we take the weighted average. Now let me give you an example and you will understand what is this. So give me a data set.
+
+57:27
+Okay, before we use any feature to split, now we get the parent of the original data set
+
+57:35
+And we get 7 data points in C1 and 5 data points in C2, so that's my original data set
+
+57:40
+Now we can use the Gini index to calculate the number p, right?
+
+57:44
+So what is p? p here equals to 1 minus, what's the relative frequency of C1 in the data set?
+
+57:52
+7 over 12, right? So it is 7 over 12 squared
+
+57:59
+And what is the relative frequency of CQ?
+
+58:02
+5 over 12, right?
+
+58:05
+We
+
+58:09
+can calculate Gini index for number P
+
+58:12
+So for the node 1, if I use the H2B, feature B to split the data, we split the data into Z1 and Z2
+
+58:20
+Now we get Z1 with distribution of 5, 1 and Z2 with distribution of 2 and 4
+
+58:26
+Now for 5, 1, we can use the expression to get Gini index for node 1, right?
+
+58:33
+And then, for using the Gini index, we get a node for node 2.
+
+58:37
+Now, I want to combine these two Gini index together to get the final weighted average Gini index after we use H2B.
+
+58:45
+Now, what's the importance of node 1?
+
+58:48
+The total number of data points in node 1 is 6, right?
+
+58:52
+And the total number of data points in both of them is 12.
+
+58:56
+So what's the importance of node 1?
+
+58:58
+It is 6 over 12.
+
+59:02
+So this is the importance of node 1, right?
+
+59:06
+And the Gini index of node 1 is what? 0 .278,
+
+59:12
+this number, right?
+
+59:15
+Now this is the Gini index contribution from Z1
+
+59:19
+So what is the weighted sum from Z2?
+
+59:22
+So the Gini index of Z2 is 0.444, but what's the importance of Z2?
+
+59:27
+It's 0.612, because we have totally 6 data points
+
+59:30
+So 0.612 is the weight of Z2
+
+59:37
+Now we get the weighted sum in 0.361. So what's the gain? Gain is 0.486 minus 0.3. That's the reduction of the data impurity after I use attribute B.
+
+01:00:00
+Now using this single number, we can quantify the importance of feature B, the reduction of data impurity from using attribute B.
+
+01:00:12
+So, so far so good. Any
+
+01:00:15
+questions?
+
+01:00:17
+That's one of the very few calculations you need to remember for the whole semester, okay?
+
+01:00:24
+So, you need to remember these.
+
+01:00:26
+Calculation and definition of PJT from the expression.
+
+01:00:31
+So once you can calculate the Gini index, now the feature importance evaluation becomes super easy.
+
+01:00:37
+So here, let's go back to the previous example.
+
+01:00:47
+So how do we calculate this?
+
+01:00:54
+And then I take the weighted average of these three, right?
+
+01:00:57
+And I'll be able to calculate the weighted sum G-index of the sum
+
+01:01:03
+Alternatively, if I have some other feature distributions, and we get all these distributions
+
+01:01:08
+And for using this two-way split, I get G-index of 0.167
+
+01:01:17
+So among the three different data spread methods, which one do you prefer according to the Gini index?
+
+01:01:24
+The first one, right?
+
+01:01:27
+We're going to reach the minimum level of the Gini index, or the impurity of the data distribution.
+
+01:01:36
+So, we can do that.
+
+01:01:38
+Now that's for using the Gini index.
+
+01:01:42
+Alternatively, we can measure the impurity of the data using the entropy.
+
+01:01:48
+Now entropy is somehow, for most of cases, it is equivalent to the G-index, using a different expression, so here we are still using the PJT, so the key unit is still PJT, but we use this expression, the summation of J, the class label J, is PJT times log2, so here is the log2, okay, log2 PJT.
+
+01:02:14
+Now this is another expression by the ZT, the same measurement for the data impurity.
+
+01:02:19
+So how did it work?
+
+01:02:20
+So here we can see, for example, for this case, for this data distribution, we already know that PCY is 1 over 6, right?
+
+01:02:30
+And PC2 is 5 over 6.
+
+01:02:32
+But we are using a different expression to deal with the PGT.
+
+01:02:35
+We use the entropy calculation.
+
+01:02:38
+Now once we get PC1 and PC2, we can use this expression here.
+
+01:02:46
+PC1, log2 PC1, minus the other j, 506, log2 506, and this is the final entropy value we get from using the expression.
+
+01:03:00
+Now you can do the calculation by yourself.
+
+01:03:03
+So if I go from the purest case to the impurest case, the entropy will go from 0 to a very large number until 1.
+
+01:03:13
+Now we can see that entropy is another measurement that we can use to measure the impurity of this data distribution.
+
+01:03:24
+Now the whole calculation will be the same as we use the Gini index.
+
+01:03:29
+So we can still calculate the gain.
+
+01:03:31
+So first we calculate the Gini index, or we calculate the entropy of the data before we split.
+
+01:03:38
+So this is the value p, but we use the entropy to calculate the number of p.
+
+01:03:44
+And here, the entropy i will be the m, right? m i, the entropy of each subset.
+
+01:03:54
+Now what is the weight? The weight is the average.
+
+01:03:57
+Now what is the weight? The weight will be the number of data points in the subset i,
+
+01:04:02
+divided by the total number of data points.
+
+01:04:04
+The same thing, right?
+
+01:04:06
+So here is the weight, the average of the entropy of all the data subsets.
+
+01:04:18
+So P minus N is a gain, and we call it information gain, using the entropy calculation.
+
+01:04:26
+So we can do that, using the entropy.
+
+01:04:30
+So the calculations are the same, but we are using a different expression to deal with the PJT.
+
+01:04:38
+So relative frequency of that.
+
+01:04:42
+So any questions so far for the Gini index and entropy?
+
+01:04:47
+Yes,
+
+01:04:50
+please remember, now you can take a picture of this.
+
+01:04:54
+if you want to put some more information into your chipsheet.
+
+01:04:57
+Now,
+
+01:05:00
+just for the future model,
+
+01:05:01
+so recall, when we calculate this gain, right,
+
+01:05:05
+no matter whether we are using the entropy or Gini index,
+
+01:05:08
+so when we calculate this gain to quantify,
+
+01:05:12
+okay, I should have a good wearing today,
+
+01:05:16
+because all of you are taking pictures, okay.
+
+01:05:20
+Now, recall, when we have these kind of calculations,
+
+01:05:27
+to quantify the importance.
+
+01:05:29
+Did we use any learning algorithm like reverse analysis or classification model?
+
+01:05:35
+Did we use any of them?
+
+01:05:37
+No, right?
+
+01:05:38
+What we did, we just do the frequency counting.
+
+01:05:41
+And that's it.
+
+01:05:44
+So this is the measurement of your feature importance.
+
+01:05:48
+It's mainly based on this kind of frequency counting.
+
+01:05:51
+We call it filter model.
+
+01:05:55
+Now, remember that for the field model, when we calculate feature importance, we do not have any learning algorithm.
+
+01:06:02
+Now, for the second category, if we use some other learning algorithms, like regression analysis,
+
+01:06:10
+we can feed the feature vector or feature subset into the learning algorithm and evaluate the performance of this learning algorithm.
+
+01:06:19
+Now, remember that the learning algorithm is trying to establish the relationship between the feature and the prediction target.
+
+01:06:26
+If the model performance is better, the accuracy is higher, it means that the feature is more important or useful for this learning algorithm.
+
+01:06:37
+So here we will be able to use the performance or the accuracy of this learning algorithm as the indicator for the feature importance or the feature usefulness.
+
+01:06:48
+Now here we can use the learning algorithm to evaluate the feature importance and then use the learning algorithm to deploy the model.
+
+01:06:56
+So this is called the wrapper model.
+
+01:06:58
+The wrapper model, we need a learning algorithm together with the performance of this learning algorithm to quantify the feature importance.
+
+01:07:06
+So that's the main difference between the filter model and the wrapper model.
+
+01:07:11
+Now, you can see, if you see...
+
+01:07:15
+So do you want quiz today? No, right?
+
+01:07:19
+But this is the quiz from last semester.
+
+01:07:25
+So if you are given the data distribution or if you are given the data set and I want you to select the most representative feature among all the features, you should be able to do that using the Gini index or entropy.
+
+01:07:40
+So that's how we quantify the feature importance.
+
+01:07:44
+So if we can do that, now the machine can do the feature selection or dimension reduction automatically for us.
+
+01:07:53
+So, now let's continue for the feature selection and dimension reduction.
+
+01:07:58
+So the feature selection is very simple.
+
+01:08:01
+We quantify the feature importance of each column of features,
+
+01:08:05
+and we only select the top-ranked features and remove other columns in our original data set.
+
+01:08:11
+So that's called selection.
+
+01:08:12
+We only select all these features with highest feature importance scores.
+
+01:08:17
+But dimension reduction or feature reduction is different.
+
+01:08:23
+We first transform, so in the dimension reduction, we transform the original feature space into a new feature space
+
+01:08:30
+And in the new feature space, we only select the most representative features in the new feature space
+
+01:08:36
+So actually we are creating some new features in dimension reduction, so they are very different
+
+01:08:43
+So one is to do the selection from the original data tables, and the other is to map the original feature space into a new feature space
+
+01:08:54
+and then we reduce the dimensions from D to P.
+
+01:08:57
+Actually this is the feature space location or transformation.
+
+01:09:02
+So they are very different.
+
+01:09:04
+So if I ask you to identify whether it is feature selection
+
+01:09:08
+or dimension reduction, you should be able to do that.
+
+01:09:11
+Now for the feature selection, of course,
+
+01:09:13
+we can use the filter model or the wrapper model
+
+01:09:16
+as the measurement to quantify the feature importance.
+
+01:09:19
+And then once we get the feature importance
+
+01:09:21
+for all the features in our data set,
+
+01:09:23
+we can do the feature selection.
+
+01:09:26
+So, now we can select one or two or three features from the original dataset, but we want to get an optimal feature subset.
+
+01:09:38
+So the optimal feature subset is a subset that contains all the information for supporting our solution.
+
+01:09:46
+And we do not need any other features to solve the problem.
+
+01:09:50
+And we cannot remove any feature from the optimal feature subset, otherwise we cannot solve the problem.
+
+01:09:56
+Let me give you an example of optimal feature subset.
+
+01:10:00
+So here in this problem, we are trying to build a model and use some features from feature 1 to feature 5 to calculate the class label C.
+
+01:10:12
+All the feature values and the class labels, they are 0s or 1s.
+
+01:10:18
+Now first, I want to use feature 1 itself. I do not want to use any other features.
+
+01:10:23
+So if I use feature 1 to calculate the class label C, can I do that?
+
+01:10:30
+Can I get a very good result?
+
+01:10:32
+So we can see, for the first two records, F1s are both zeros, but I get different C labels, right?
+
+01:10:41
+Now do you think F1 is good enough?
+
+01:10:44
+Do you think F1 contains all the information I need to calculate the label C?
+
+01:10:49
+No, right? Because for the first two records, we see the same feature values, I get different labels, right?
+
+01:10:56
+So f1 is not enough. Now I want to add more features into the feature subset. So I add f1 together with f2.
+
+01:11:06
+I have two features, f1 and f2. Now I can build a function c equals to f1 or f2.
+
+01:11:15
+It means that if f1 or f2 equals to 1, c equals to 1, otherwise if both x1 and x2 equals to 0, then c equals to 0.
+
+01:11:27
+Now, let's see whether F1 and F2 together with this expression can calculate the label C.
+
+01:11:34
+So, we can see for the first record here, both F1 and F2, they are 0s, and C equals to 0, which is correct, right?
+
+01:11:42
+Now, for the next three records, we see at least one of the two features, they are 1s, and my final label is 1, so it is correct, right?
+
+01:11:54
+Now for the fifth, 0 0s and 0s, and for the rest, at least one of them is 1, so we get all 1s.
+
+01:12:02
+Now do you think f1 and f2 together can provide the perfect information for us to calculate the label C?
+
+01:12:10
+Yes, we can do that.
+
+01:12:12
+Now if we can do that, do we need to add another feature into our feature set to calculate the label C?
+
+01:12:21
+We do not, right?
+
+01:12:23
+and here, F1 and F2, the two features together represent the optimal feature subset, which provides all the information we need.
+
+01:12:35
+Now, the optimal feature subset is usually not unique. What does that mean?
+
+01:12:42
+So, now I already identified F1 and F2, they can form an optimal feature subset, but we can see F2 and F3
+
+01:12:53
+They have a unique one-to-one mapping calculation, that if F2 is 0, F3 is 1, otherwise if F2 is 1, F3 is 0, so F2 and F3, they are equivalent to each other, right?
+
+01:13:09
+So I can replace F2 with not F3 in this expression, because F2 and not F3, they are equivalent to each other.
+
+01:13:21
+So, the other optimal feature subsets, I can use F1 and F3 together to properly calculate the level C, right?
+
+01:13:29
+We can do that.
+
+01:13:32
+Now, we can get the second optimal feature subset using F1 and F3.
+
+01:13:39
+And we don't need F2, because F2 and F3, they are redundant from each other.
+
+01:13:44
+So, this is the optimal feature subset.
+
+01:13:48
+Now, you may question, if I have so many features,
+
+01:13:54
+How many feature subsets I should test in order to get optimal feature subsets.
+
+01:14:01
+Let's do a simple calculation here.
+
+01:14:05
+Of course, I can choose nothing, right?
+
+01:14:07
+So imagine that we have four features in our original data set.
+
+01:14:11
+And here we use four dummies here to present whether we select the fourth or second or third or fourth column of features in our feature subset.
+
+01:14:21
+Zero means that we do not select.
+
+01:14:23
+One means we select.
+
+01:14:25
+So if we select nothing, then we get four zeros, zero, zero, zero, that we didn't select any features to be the optimal feature subset.
+
+01:14:32
+So this is one option. So what if I want to only test one feature, that we select one feature from the four features,
+
+01:14:41
+how many options I have to construct a one-dimensional feature space, and evaluate the optimality of this one-dimensional feature.
+
+01:14:53
+So here, I can choose feature 1, right? The fourth column, this is 1, 0, 0, 0, so this is one option, right? I only choose feature 1.
+
+01:15:03
+The second option is that I only choose feature 2. So how many options we have for the one-dimensional feature space?
+
+01:15:13
+Four, right? Because we have four features, we have four different options.
+
+01:15:17
+So if you don't know how to calculate a combination, it's 3, 4, 1, right?
+
+01:15:25
+two-dimensional features in the feature subset, so how many feature subsets I can construct for the two-dimensional feature space, it's six, right, I choose any two from the four, so it's three for two, so we have six, so how many of them, if I want to choose three features in the subset, another four options, right, finally we have four sets, so these are all the options for the feature subset,
+
+01:15:59
+Now, for the four features, how many choices do I have in total?
+
+01:16:03
+2 to the power of 4.
+
+01:16:06
+Select or not select, for one dimension, there are two options.
+
+01:16:10
+Now, for the four dimensions, it's 2 to the power of 4.
+
+01:16:13
+Now, imagine I have 100 features.
+
+01:16:15
+How many feature subsets?
+
+01:16:17
+2 to the power of 100.
+
+01:16:21
+That's too many, right?
+
+01:16:23
+So, what we can do?
+
+01:16:24
+I do not want to do so many feature evaluations.
+
+01:16:27
+So, we have the recursive feature selection.
+
+01:16:32
+recursive feature selection is a very simple adaptive calculation and neighborhood search
+
+01:16:40
+so even though we cannot get the global optimal feature subset
+
+01:16:44
+but this can provide us a very good feature subset in a recursive and efficient way
+
+01:16:49
+now let's take a look at how we can significantly improve the efficiency of doing the feature selection
+
+01:17:03
+I didn't choose any features into my feature subset.
+
+01:17:06
+Now in the fourth round, I will select the optimal one-dimensional feature subset.
+
+01:17:12
+So here we have four options.
+
+01:17:15
+I want to evaluate the feature importance of F1, F2, F3, and F4 separately.
+
+01:17:20
+Now I will evaluate four times, right?
+
+01:17:24
+And according to their feature importance, I select the best one.
+
+01:17:28
+So here, imagine we select F2.
+
+01:17:32
+Now, in one-dimensional feature space, F2 is the best.
+
+01:17:36
+Now, for the second round, I will fix F2.
+
+01:17:40
+No matter what other features you select in the other rounds, I will add F2 into my optimal feature subset.
+
+01:17:48
+So, given F2 is already selected, I want to construct a two-dimensional feature subset.
+
+01:17:59
+Now, how many options I have for the two -dimensional features?
+
+01:18:05
+We only have three, right?
+
+01:18:07
+Because we already fixed F2, I cannot remove F2. I already chose F2.
+
+01:18:15
+So I have three options, F1, F2, F2, F3, or F2, F4.
+
+01:18:19
+I want to select the best among these three of the two-dimensional feature space.
+
+01:18:24
+Now imagine that I select F2 and F3.
+
+01:18:28
+Now you may imagine what I need to do next, right?
+
+01:18:31
+I want to get the three-dimensional feature sub-element.
+
+01:18:35
+Even I already chose F2 and F3.
+
+01:18:38
+So how many options we have for the three-dimensional feature space?
+
+01:18:45
+Only two, right?
+
+01:18:46
+So we only have F1, F2, F3, or F2, F3, F4.
+
+01:18:51
+Now we see that F1, F2, F3 is the best three-dimensional feature subset.
+
+01:18:58
+Now what's next?
+
+01:18:59
+I will evaluate the one-dimensional feature, F2, two-dimensional feature subset, F2, F3,
+
+01:19:05
+three-dimensional feature subset, F1, F2, F3, and the full set.
+
+01:19:10
+And I repeat, the best one.
+
+01:19:12
+So maybe it's not...
+
+01:19:14
+the highest feature importance, all the feature steps which provides the best performance for my learning algorithm
+
+01:19:20
+and that's the selected feature step. Is that clear?
+
+01:19:25
+recursive process.
+
+01:19:29
+So in our portfolio, we will have recursive feature selection
+
+01:19:33
+and this is the pipeline, okay? So we have four features, separate width, pattern width
+
+01:19:40
+now we can follow this kind of recursive feature selection to do the
+
+01:19:43
+feature selection from one dimensional to the other
+
+01:19:51
+as called feature selection.
+
+01:19:53
+So remember that so far, no matter
+
+01:19:56
+we are doing the single feature selection
+
+01:19:58
+or we are doing the recursive feature selection,
+
+01:20:01
+we remove some of the non-important features
+
+01:20:05
+from the original data columns.
+
+01:20:07
+But for the dimension reduction, we are doing another way.
+
+01:20:12
+So for the dimension reduction,
+
+01:20:16
+we force transform the original feature space
+
+01:20:19
+into a new feature space,
+
+01:20:21
+and then do the feature selection in the new feature space.
+
+01:20:25
+So mathematically, we are doing a transformation of the original data matching data table X.
+
+01:20:32
+Imagine that we have a data table.
+
+01:20:34
+The rows represent the objects, the data points.
+
+01:20:37
+The Ys, the columns, represent the features we have in our original data table.
+
+01:20:43
+And that's X.
+
+01:20:45
+Now we want to transform X into a new data matching of Z.
+
+01:20:50
+And in the matrix Z, in the table Z, the rows are still all objects, the same objects, but the columns, they are totally different, we construct some new features to profile all the data points using the new columns presented by Z.
+
+01:21:08
+Now Z, some of them they are very useful and some of them are not so useful.
+
+01:21:16
+Colors C, which contains the most values which we can tell the differences among different data objects in these new dimensions
+
+01:21:24
+So let me give you an example of the principal component analysis
+
+01:21:30
+So for the following, I will introduce some mathematics
+
+01:21:34
+But you only need to remember why they are called principal components
+
+01:21:40
+The principal components means that they contain the most values of the information of the original dataset
+
+01:21:48
+So let me give you an example here. So imagine that at the very beginning, I have some data points, and they were recorded in the low data set using X1 and X2, two columns of features, right?
+
+01:22:01
+Now for this original data table, if I build a data plot using these two features, I get this data distribution. I have done this before, last week.
+
+01:22:11
+Now we can see the data, they are distributed along the diagonal of X1 and X2, right?
+
+01:22:20
+So we need X1 and X2 to tell the differences among all the data points in the two-dimensional feature space.
+
+01:22:30
+So if I only use X1 or you only use X2, we cannot tell a big difference.
+
+01:22:34
+If we project all the data points along X1 or project all the data points along X2, they are closer to each other.
+
+01:22:42
+Now imagine that I have a new feature space.
+
+01:22:47
+The new feature space is specified by mu-axis of Z.
+
+01:22:53
+How did I get the new feature space? I will rotate x1 by certain degrees of theta, and x2 will rotate by the same degree of theta, so you can see, for the same group of data points, all the data points will be the same, how I measure the data points will be different, so if you rotate your head with me by theta, it's
+
+01:23:20
+in z, z1, z2.
+
+01:23:24
+Now I see a new feature space.
+
+01:23:27
+So like if I rotate the whole classroom by a certain degree, you remain thinking how I look like, how you look like from my view will be targeted in the new feature space.
+
+01:23:40
+So in the new feature space, the data points are still the same, but their actual values can be measured using Z1 and Z2, the new axis.
+
+01:23:54
+Now if I project the data points along Z1, I get the feature value along Z1.
+
+01:24:00
+If I project the data points along Z2, I get the data values along Z2
+
+01:24:04
+Now you can see, the data distribution, if I want to tell the differences among the data points
+
+01:24:12
+Most of the data differences would be along Z1
+
+01:24:17
+So Z1 can tell big differences among all the data points
+
+01:24:21
+The actual values, values, or the information of the data points, they are all distributed along Z1
+
+01:24:27
+If I projected all the data points along Z2
+
+01:24:32
+They are very close to each other, right? Along Z2.
+
+01:24:36
+So Z2 contains very few data values or the information of the data points.
+
+01:24:42
+And if we use the actual values of Z2, they show no difference from each other.
+
+01:24:48
+Now do you think that Z1 itself would be very important compared with Z2?
+
+01:24:55
+Because it contains the most values and information, right?
+
+01:24:58
+So Z1 is called the principal component. It contains the largest values.
+
+01:25:06
+This is the principal component in a new feature space, right?
+
+01:25:10
+We first construct a new feature space, and then we can tell, in a new feature space,
+
+01:25:15
+can we use one single principal component to record the most information on the values of our data?
+
+01:25:22
+So this is called the transformation of the original feature space.
+
+01:25:27
+And this is a linear transformation.
+
+01:25:30
+So, you can imagine that I force in the feature space transformation and in the new feature space, I select Z1 over Z2, I remove Z2 in the new feature space, right?
+
+01:25:42
+Now the feature transformation can be non-linear, so if you go to a higher advanced class, we can actually transform the original feature space into a new feature space using the non-linear PCA
+
+01:25:55
+And originally the data may not be linearly separable
+
+01:26:00
+After the PCA transformation, I do the feature space transformation, and in the new feature space, the data distribution becomes much clearer, linear, separable.
+
+01:26:09
+So we can do that.
+
+01:26:12
+And also, for the PCA analysis, it's not only about the two-dimensional space to one-dimensional space,
+
+01:26:20
+dual higher space. So here, for the two-dimensional space, of course, we can use the Z1 itself to record the differences among different data points.
+
+01:26:30
+But if the original feature space is three-dimensional, X1, X2, and X3, we realize that most of the data values, so the differences among the data,
+
+01:26:39
+they are along the plane, not a single line, right? So actually we can find Z1 and Z2 along these planes, and if we project all the data points along Z1 and Z2,
+
+01:26:51
+So we can tell the big differences among all the data points.
+
+01:26:55
+So this is a projection.
+
+01:26:58
+Then, Z1 and Z2 are the principal components in the new feature space.
+
+01:27:03
+And if we only use Z1 and Z2, we can tell the differences.
+
+01:27:07
+Of course, after we do the notation, there's another axis of Z3, right?
+
+01:27:12
+But Z3 is not that important, because if we project all data points to the axis Z3, we see no difference.
+
+01:27:20
+So actually we do the feature selection and remove Z3 in the new feature space.
+
+01:27:25
+Now imagine that we have a real dataset with six columns indicating the attributes for all the objects.
+
+01:27:34
+Now we can actually transform the original feature space into a new feature space specified by Z1, Z2, Z3, and Z6.
+
+01:27:44
+Now I only select the principal components of Z1 and Z2 in the new feature space. Now the data table looks like this.
+
+01:27:53
+We only have two columns of features in the new feature space to present all the data points.
+
+01:27:59
+So this is the idea of PCA.
+
+01:28:04
+So let's see why PCA is working so well in the original feature space.
+
+01:28:18
+Well, we can see the difference along the X1, X2, but if we present the data distribution using Z1, using Z1, and we remove Z2, right?
+
+01:28:32
+So actually we lose some information along Z2, but the information we lose is this projection error.
+
+01:28:40
+So this is actually the actual value along Z2, right?
+
+01:28:47
+So if I remove the attribute axis, Z2, actually we remove the number, the attribute value along Z2
+
+01:28:54
+So that value is called the projection error, the distance from the data point to Z1
+
+01:29:01
+So if this projection error can be very small, it means that we actually throw away a very few non-important information from the data values
+
+01:29:12
+Right?
+
+01:29:15
+We identify the principal component and non-principal component by minimizing this kind of projection error
+
+01:29:24
+If the projection error is so small, then we can believe the information lab or long D1 would be very useful
+
+01:29:33
+Same for the high dimensional feature space
+
+01:29:36
+We also want to remove the non-principal component and the rest of the principal component
+
+01:29:47
+So, we want to compute Z1 and Z2, and we know why Z1 is called principal component and Z2 is called non-principal component
+
+01:29:58
+So we can see, after we do the projection, along Z1 we can tell the differences among different data points
+
+01:30:06
+Remember why we are doing feature engineering? By trying to tell the machine, or we ask the machine to identify the most important or representative features for us automatically, right?
+
+01:30:18
+Now, from this, we can see, if all data points, we project them along Z1, we can tell the big differences among different data points using Z1 itself.
+
+01:30:30
+But if we project these data points along Z2, now this is a data distribution along Z2.
+
+01:30:37
+The actual values used in Z2, they are very close to each other.
+
+01:30:43
+Then, it looks like you are describing Dr. Liu using two eyes, right?
+
+01:30:48
+There are no big differences among all the data points in this step.
+
+01:30:52
+Now, ZQ is not so informative compared with Z1.
+
+01:30:57
+And ZQ is not so informative because we first construct a new feature space using Z1 and Z2.
+
+01:31:06
+And in the new construction, Z1 contains most information, and the importance of Z2 will be significantly reduced.
+
+01:31:16
+and that's why the importance of PCA analysis is you find a new feature space in Z1 and Z2
+
+01:31:25
+and we can identify the principal components and reduce the dimensionality of the original data table
+
+01:31:33
+using the principal components only.
+
+01:31:35
+So this is the idea of the PCA.
+
+01:31:40
+So the PCA, the principal component analysis, is to find a transformation of the original data set that satisfies the following properties
+
+01:31:49
+So there are many calculations behind this kind of PCA analysis
+
+01:31:56
+So we are trying to capture the principal components which provide the largest valence
+
+01:32:03
+So you may consider what is the valence and how we can quantify this valence
+
+01:32:12
+composition. So if you are familiar with the matrix decomposition, then you will be able to understand the following calculations here. So we start from the covariance matrix of a feature data table. So given any m by n data matrix D, we force the m rows to represent the data objects and the n columns to represent the attributes we have in the original data table. Now D is the original data table. Now we force compute the covariance matrix S,
+
+01:32:43
+and then we calculate the engine values and vectors of N
+
+01:32:46
+so during the matching decomposition
+
+01:32:50
+so after we get the engine values here
+
+01:32:53
+the engine values actually indicate
+
+01:32:54
+the non-negative engine values indicate this kind of variance among different principal components
+
+01:33:01
+from number 1 until number N
+
+01:33:03
+so remember that if we have N data points and N columns
+
+01:33:14
+Then after we do the transformation into new feature space, the new feature space, the original new feature space still has the same dimensions of the columns in the new feature space
+
+01:33:24
+Now among the NAMDAS, we only select NAMDAS, the largest NAMDAS among all the principal engine values
+
+01:33:32
+And the corresponding engine vectors will present the selected principal components
+
+01:33:39
+So if you take a look at this kind of calculation, so originally we can use the new feature space to do the data transformation from D to D prime
+
+01:33:48
+So if we keep all the columns or the dimensions in this rotation matrix U, it is M by N
+
+01:33:58
+So original data space is M data points by N attributes
+
+01:34:06
+Now after we do the transformation, we transform the original data space into a new data space of D'
+
+01:34:11
+And in the new feature space, the D' data table is still M by N
+
+01:34:15
+We have M data points and N columns
+
+01:34:19
+Now we do not want to use all the information in the new feature space of U
+
+01:34:22
+Actually we want to identify the principal components to construct the matrix U
+
+01:34:28
+And after the transformation, because U is actually reduced
+
+01:34:35
+with the largest values. After the matrix transformation, the dimension will be reduced, and of course, you do not need to understand all these calculations.
+
+01:34:49
+I just want to show you how the dimension can be reduced automatically after the data transformation.
+
+01:34:58
+And of course, our software in our tutorial will do the PC calculation automatically from the learn decomposition library.
+
+01:35:07
+The decomposition library is to do this kind of covariance matrix decomposition
+
+01:35:12
+And after that, we will be able to transform the original feature space into some new feature space
+
+01:35:18
+And specified by these principal components
+
+01:35:23
+So we get engine values and engine vectors
+
+01:35:25
+And reduce the dimensions from...
+
+01:35:28
+Okay, I think that's all for the lecture
+
+01:35:33
+We only did some calculations
+
+01:35:38
+Yes, I think that's...
+
+01:35:41
+So easy task. Now starting from next week, we will go through some more challenging calculations and more challenges after the briefing.
+
+01:35:51
+So remember that we have a project briefing in week 6, right?
+
+01:35:54
+So you need to find a team. If you haven't found a team, you may find some discussions on Canvas while looking for a team.
+
+01:36:01
+Okay? So please, identify the team and get the briefing ready.
+
+01:36:05
+Okay, I think that's all for the lecture. Let's have a break and we'll be back at 2pm.
+
+01:36:11
+How to select what's the representative features and also how to reduce the dimensions.
+
+01:36:19
+So, please download the week form.
+
+01:36:25
+And so let's start.
+
+01:36:26
+First, we introduce you the various features, click it, select the best.
+
+01:36:36
+It provides you the detail, like the manual guide for you.
+
+01:36:40
+And also you can see, actually they have a container.
+
+01:36:43
+and other functions that I can use, so actually for all these kind of things, you don't need to define the function by yourself, you just need to import it from the existing libraries and to use it.
+
+01:37:02
+And so what would the commerce staff wait to import it?
+
+01:37:07
+Yeah, import something.
+
+01:37:11
+From library, from the function, any model that you want to just call it, and then it will just give some, like the model name, and you will have something like the, just call this model name, and then to, it will give you more generic steps, and then we will call the feet.
+
+01:37:36
+So what the fit means that the fits were learned from the data you have.
+
+01:37:45
+So after learning something from the data you have imported, we already have the transform.
+
+01:37:53
+So the transform means that I want to change the data by what I have learned from the X and Y.
+
+01:38:00
+So if you want to select the most representative features, then the transform will help you to select the columns.
+
+01:38:08
+And if you want to just reduce the dimension, the output will be the reduced dimension, so this is how it's like a generative step for you, so and then let's see the select path, so today we are going to use the K path, and so for the end, well you can see the, like the,
+
+01:38:36
+The bracket here, the inputs, so you need to include the parameters based on your data and also what you want to train, so you can customize this part.
+
+01:38:49
+For this select KBAS, we want, like it requires that to include two things.
+
+01:38:55
+The first one is for, it's like the functions into arrays of X and Y.
+
+01:39:02
+The other one is the K represents the top of the features that you want to select.
+
+01:39:10
+For this one, we will
+
+01:39:20
+have like K2 means that we want to select, so that's about what the K means, and for the score font, I want to illustrate more about the score font, actually we, this is all kind of the score font you can use, and you can try.
+
+01:39:46
+So today we will focus on the three ones. The first one is the F class if. This one utilizes the ANOVA F value between the label feature for the classification task. So it means that ifs are utilized for the classification. The dependent variable you include should be the categorical values.
+
+01:40:09
+and another one is called the chi-square.
+
+01:40:12
+The chi-square states of the non-negative features for classification tasks.
+
+01:40:18
+It's also for the classification.
+
+01:40:20
+The dependent variable should be the categorical variables.
+
+01:40:24
+But what the inputs here require is the non-negative features,
+
+01:40:30
+which means that all the independent variables you include...
+
+01:40:40
+And I think most of the scenarios we use this one for like, you know, if the independent feature is more like the count-like, like the categorical things.
+
+01:40:51
+like the gender, like the female, or the male, or the number of tasks, this kind of thing definitely should be like larger than zero or equal to zero.
+
+01:41:01
+So these are the cases why we use chi-square.
+
+01:41:05
+And another one we introduced is called the F-regression.
+
+01:41:10
+And this one is the F-value between the label feature for the regression test.
+
+01:41:15
+So if your dependent variable is more like the continuous numeric.
+
+01:41:20
+all of these are continuous numeric values, like 1, 1, 1.2, 345, 5.6, so you can use the F regression.
+
+01:41:33
+So let's see what we're trying to do for the iris.
+
+01:41:39
+Just to read the iris, I think most of you can do it, but if you cannot successfully read it to the Python, you should...
+
+01:41:51
+After the class, this is really important. Otherwise, you cannot do all the assignments and the tutorials.
+
+01:41:57
+And then, we introduced another more advanced function called the seaboard.
+
+01:42:02
+You can directly use the pairplot. You will just plot the figures.
+
+01:42:08
+I think the scatter figures we have tried to plot for the last week, but we used the scatter functions.
+
+01:42:22
+It will help you to draw the figures for you with every pair of the features, and it will give you more like the instinct, more like straightforward visual aid for you to identify which feature I make, and for example, you can see that the distribution for the paddle length and the paddle width, like this kind of distribution.
+
+01:42:51
+For these three flower species, the classes, they are like this, over that.
+
+01:42:59
+So you may indicate that these two will be more helpful, more useful to do the class to get the flower species.
+
+01:43:08
+So, and then we identified our feature and target.
+
+01:43:12
+Our feature we selected is four, and our class is our target, is our independent.
+
+01:43:18
+dependent variable, and you can see that the class is the flower species, it's like categorical data
+
+01:43:25
+so what if we want to use the select event so we can only use the chi-square and also the f
+
+01:43:31
+class like the f class if and also the chi-square but we cannot use the f regression
+
+01:43:40
+um yeah and i want to add one more thing for
+
+01:43:47
+values i
+
+01:43:52
+want to add this one to the y
+
+01:43:56
+So why the reason why we added the Revolve things, the Revolve just to flatten, I think you have seen
+
+01:44:08
+it like, I think in the week 2 or week 1 tutorial, the Revolve does like this to flatten, is to unflatten the arrays to the one dimensions.
+
+01:44:20
+And because some of the models that require this kind of specific type of wire, so you can directly add it.
+
+01:44:30
+And then for the feedback, so we want to select the most to represent the characteristics, so we directly call it, and then to fill it, and then to transform it, see what we got.
+
+01:44:51
+We will select two columns for me, so what the FDU looks like, you can see, two dimensional arrays selected.
+
+01:45:03
+But I got one question for you, it has already selected two columns which is more important and representative, but how do I know the feature name for these two columns?
+
+01:45:20
+The most useful way is just to read the table and to compare which feature I selected.
+
+01:45:28
+But I want to introduce another way to do that.
+
+01:45:33
+You can't
+
+01:45:42
+run this one.
+
+01:45:43
+I just like to separate runnings.
+
+01:45:47
+Firstly, to run the selected path and to assign to the path.
+
+01:45:50
+And then to call it the feed transform.
+
+01:45:55
+And so what the select gas reports will give us, you can run it to see that.
+
+01:46:04
+It will indicate the four features.
+
+01:46:07
+Indicate
+
+01:46:12
+the four features.
+
+01:46:15
+Sippo lens, Sippo wave, Sippo paddle lens, and paddle waves.
+
+01:46:20
+And indicate if it's true, means that that's exactly the feature I selected.
+
+01:46:25
+So that's a reason why it will output like the paddle length and the paddle width
+
+01:46:30
+because, you know, like force, force, true, true, this two will be the true, so it will just to give you the feature name.
+
+01:46:38
+So it's more easy for you to just to do this one.
+
+01:46:42
+Yeah, and also you can try the, like the app classic EVE to just to change the name here.
+
+01:46:57
+from the chi -square to the f -classes if, and also you can change the, maybe I want to select the most three representative, like, variables, yeah, I can set the key to the future
+
+01:47:13
+running, yeah,
+
+01:47:24
+just change it, only replace the chi -square with the f -class if, and then you will get, like, the most three.
+
+01:47:38
+and the representative feature that I selected by using the app as Steve.
+
+01:47:42
+And the reason why I just to edit like the re-work, like the values re-work here to unflash this kind of erasing
+
+01:47:52
+because, yeah, if you didn't add this one, if you didn't add this one, you directly use the app collective,
+
+01:48:07
+So that's the reason, yeah, it's more easy just to revel for the Y, for all the models, it's more easy for you, otherwise you need to debug, but, yeah, but sometimes, I know, for some of you, it's really hard to find the Y, it's, why it gives me the, like, the error message.
+
+01:48:23
+So this is for this one, and then I will just give you like the, we have to, just to define the Gini index and information gains from the left kernels, like the two cases, the parallel width is less than or equal to the 0.8, or the equal length is less than or equal to the 6 or 0.
+
+01:48:50
+We were just to replicate this to, like, cases by using Python, and so what we do now, like, yeah, because, yeah, I think we're ready to read, ready to read the IELTS, we don't need to read it again, but if you want to explore it again, you can also do it, so I use a copy, just to copy the same table to the IELTS filter.
+
+01:49:21
+So, let's see how we define the, first thing about the Gini function, this function, we define the, how to calculate the Gini function, and you can see what the normal life means, it will directly calculate the probabilities, so for the return, for the results, you will not see the denominators, so it will just do this one.
+
+01:49:52
+Yeah, because we would have already quite normalized, we have already calculated into the probability, so there's no need to add in the denominator, and also for the enterprise, do the same thing, yeah,
+
+01:50:12
+enterprise do the same thing, but we set up the base of the two for the log functions, then you can also change it to like 2, 3, 4, 5, but you're already waiting.
+
+01:50:28
+And you can see we also added this one. So what is this one?
+
+01:50:32
+So
+
+01:50:45
+for this kind of IE, Neptune 12 is for the 10 to the power of Neptune 12.
+
+01:50:52
+It's really small, like it's really, really small bandwidth.
+
+01:50:55
+But why we added it is we want to prevent what is like the log2 zero cases.
+
+01:51:08
+and so on, and so forth, and so forth, and so forth, and so forth, and so forth, and so forth, and so forth, and so forth,
+
+01:51:30
+to split, like the tree, to split into the left leaf and also the right leaf, based on the structure we have defined, and then to calculate the parent nodes.
+
+01:51:43
+I think it just replicates the same thing in the hardpoint slide.
+
+01:51:47
+And to, yeah, to calculate the parent and also the chi-nodes separately, and to do the overall, like the weighted impurity and information gains with the equations.
+
+01:52:01
+So that's how it do it. And while this function return, this is the return of the function, we will return the features, records, number of the left, number of the right, it is parent Gini, Gini sleep, parent entropy, and the Gini sleep.
+
+01:52:19
+So you can just call these functions. Yeah, just directly call these functions. There's no need to define by yourself, just call it.
+
+01:52:30
+give it with the parameters that we want and
+
+01:52:36
+you can see that actually there is like four parameters
+
+01:52:42
+the first one is about the data frame and the feature and the threshold and the target and we
+
+01:52:49
+have this kind of target equal to RS, Zetosef so if we define here like our target is something
+
+01:53:04
+If you didn't define in the function here, let's give it four values, and then you will have to claim that's the target that you want to have.
+
+01:53:17
+So this is about this function, and you record it, and then it will give you the table.
+
+01:53:23
+You can see it's actually Gini's three values.
+
+01:53:28
+almost zero for the LOS, and also the information gain is maximum for the LOS.
+
+01:53:38
+So let's see how to show it in the graph.
+
+01:53:43
+So this is kind of two graphs, but this is a type of figure.
+
+01:53:49
+So let's see how to pick this out.
+
+01:53:51
+So this one is to define the figures, and the axis means that we...axis...
+
+01:54:07
+So
+
+01:54:13
+this is how it works. You can see there, it just gives you the figures, how to define the figures.
+
+01:54:20
+We want to have two soft sample plots, so that's written in white.
+
+01:54:25
+And if you change it to like, you will get like, you can see four.
+
+01:54:30
+This is kind of like the row, this is the columns of the plots.
+
+01:54:36
+and we define the figure set as classified and for the like for the uh i would say for the x uh axis one uh axis uh x uh for the yeah for this uh for the axis you can
+
+01:55:04
+see uh like for the um for the axis
+
+01:55:09
+Yes, this one we have got it for two times two figures. For the axis, axis 0, it will be this one. This is the axis 0, 0. This is the axis 0, 1. This is axis 1, 0. And this is axis 1 and 1.
+
+01:55:29
+So, for now, we're only going to define like the two...
+
+01:56:00
+Yeah, and we want to draw the features of the PADOS with a stretch of 0.8.
+
+01:56:10
+And the second figure we want to draw is from the axis of 0.1 with the feature superlens and also the stretch of 6.0 and to draw it.
+
+01:56:24
+So you can see that it supports for the first figure, that the y-axis should be the circle length, and the x-axis is the circle length, and the y-axis is the circle width.
+
+01:56:43
+So this one should be the circle length.
+
+01:56:49
+So how are we to change it?
+
+01:56:52
+So, please edit one more function here, yeah, because this is, I'll
+
+01:57:05
+change it to table,
+
+01:57:17
+table here, yeah,
+
+01:57:22
+edit this one, edit
+
+01:57:27
+this one, and to change it to the white label, white label.
+
+01:57:32
+So that's the correct one, and you can see that if we use the feature of the power wave, it's kind of like you can direct it to classify into cytosine or non-cytosine, but for the syphilins, yeah.
+
+01:57:52
+Although we said it has a threshold of 6.0, some of the stills and peaks are when the sequence is less than 6.6, like 6.0, so this one is like, this feature is kind of like a better thing.
+
+01:58:09
+So this is about how to calculate the Gini functions and also the information gains.
+
+01:58:18
+And also, yeah, we provided the explanation, so we want the Gini function as, like, the lowest is there, and for the Gini, like, the information gain is, like, the value is larger is there, so this is how...
+
+01:58:37
+And the second thing I was going to do is to use the repo model to measure the feature importance.
+
+01:58:46
+It will not just select the feature for you, but it will just give you the value to see which feature is more important.
+
+01:58:55
+So still do the same thing, import the function, no need to define to read all the functions, just to use it.
+
+01:59:05
+and then, yeah, I don't think we need to read it, yeah, can we just delete, let's delete, no need, we have already input, sorry, the one thing I want you to delete this one, x values, yeah, while x equal to x dot values, don't, don't have the list x point values, but why,
+
+01:59:34
+point value, so Revo is okay, yeah, okay, so let's see, so delete this X point value, okay, yeah, and let's see how to utilize this really firstly to call the function ExtraTrees classifier, and we define the number of estimators, it's more like the number of like the soft trees that I want to train, where it's like 50, I want like 50 trees.
+
+02:00:04
+and then to the field called the feature importance attributes.
+
+02:00:12
+So it will give you the attributes of four features.
+
+02:00:16
+And you can see that for the last two, actually the balance is greater than the first two.
+
+02:00:27
+It indicates that these two are more important features.
+
+02:00:33
+And then to call the select from the model, and we input the CRF that we have created here.
+
+02:00:43
+Yeah, you can see we have all the CRF fitted.
+
+02:00:46
+So, and pre-fitted is true, is exactly what we've done here.
+
+02:00:52
+The property is true means that we have already done the pre-fitted here, so there's no need to fit again.
+
+02:01:00
+and then to transform it, and to say that the features are more important, and this is what we've got here.
+
+02:01:17
+Yeah, and just also, if you want to know the name of the feature, you can still use this type of gas support ways.
+
+02:01:35
+and to run these two lines, it will give you the output of the feature that I selected here.
+
+02:01:44
+So I'm calling on SEDAR KEDA support and to print the SEDAR KEDA.
+
+02:01:50
+So actually this too is the same as when we got the feature's name from the SEDAR KEDA, so we can just run it.
+
+02:02:00
+Yeah, and then the next method we introduced to you is called recursive feature animation, and also gives you the reference, you can just click it, yeah, enter it, and also to change the, like, the variable to include for the list functions, like, if you have, for your, like, group project or your assignments.
+
+02:02:25
+And let's see, first let's import it, and to define the ExtraTrees applications, and then we include this CLF here, and we set the number feature 1 to select as the 2, and to fit it, and to transform it, fit it is like to learn from the X and Y.
+
+02:02:55
+and the transform means like wow we can use the current data from what we learned from here
+
+02:03:02
+and then it will select the two columns, two features here
+
+02:03:07
+and
+
+02:03:14
+if you don't want to do a fit and also the transform separately
+
+02:03:21
+you can directly call the fit transform
+
+02:03:24
+so this line fit transform is exactly the same thing as these two
+
+02:03:36
+You don't want to write too many lines, you can just call it a feature form, and it will just give you the most representative feature by using the recursive feature illustration.
+
+02:03:56
+You can also do the same thing, how to select a feature.
+
+02:04:08
+It's kind of like the result is consistent. All select the petal length and petal width is the most to represent the feature.
+
+02:04:17
+You can also try different methods. All the methods that this feature is important, then just use it for your training data.
+
+02:04:27
+And then the last thing we do about the principal component analysis.
+
+02:04:35
+This one is, we want to utilize as much as information from our features, but since there are too many features, it really takes time to train our models, so we want to reduce the dimensions.
+
+02:04:52
+So still we provide the reference here, and you can read it, and then to import the function from the library, yeah, I can also find it.
+
+02:05:09
+Yeah, you only need to relate once. Also, you only need to import once, so no need to import every time you run, like, a function, yeah.
+
+02:05:17
+And then to, and to run it, to run the PCA directly, sets the number of components, the number of dimensions.
+
+02:05:31
+If you want to reduce to the two dimensions at F2, if you want to change it to maybe 3 or 4, something else, you can try, and then to call the feeds, X and P.
+
+02:05:50
+Yeah, so you can call it a template or you can just call it this function, fit-transform, and then it were just to give you like you can see that we print like the first five like the observations for the like for the demand and reduced demand.
+
+02:06:11
+And we call it as a day 1 and day 2, and we assign to the table iris day 1 and day 2, and you can see it's day 1 and day 2 here, then we plotted the data using this day 1 and day 2, let's see what we have, so let's do the group by.
+
+02:06:34
+to group the number of observations within the same class, within the same flower species
+
+02:06:44
+and then to print it, use a scanner while we have trial for the last week's tutorial
+
+02:06:52
+and to give the coordinates with the X of group C1 and group C2
+
+02:07:02
+So this is what we get here. And you can see that we didn't use like four kind of dimensions. We only used like two. Day one and day two.
+
+02:07:12
+It seems like, yeah, you can see, imagine there is a line here. It can perfectly separate the iris-seq hotel, iris-non-seq hotel.
+
+02:07:23
+And also, there is a line here between the green and orange.
+
+02:07:30
+Although it cannot perfectly differentiate the versicola and the virginica, but actually it can classify most of them.
+
+02:07:46
+So this is how the principal component analysis comes down.
+
+02:07:53
+This tutorial will just introduce several methods for you.
+
+02:07:59
+to do the feature engineering, to select the features, or to reduce the dimensions, but there are other maps or foundations, there are very many in the Python library, you can see the manuscript we have provided, just click it, the link, and to see any other features, and also for the homework, for the assignments.
+
+02:08:24
+I think it's really easy for most of you, I think. You just need to change the function name or change the function that you call and also the parameters that you input to the function, then it will give you the result. There's no need to rewrite all of these. So you can just use the template to do the modifications for your assignments.
+
+02:08:53
+And for the assignment for this week, we'll firstly use the F plus SU evaluation measurement and we'll do the feature selection.
+
+02:09:09
+I think I have already like give you the example. Yeah, and what the app classic it represents
+
+02:09:16
+Well, I think I also did one like at the end of at the beginning of the tutorial
+
+02:09:21
+What it represents you can yeah
+
+02:09:24
+also from this manuscript
+
+02:09:27
+and
+
+02:09:28
+for the question to
+
+02:09:30
+Read the document of sequential feature selection
+
+02:09:34
+selector
+
+02:09:37
+And then use it to select the top two features, and what is the mechanism of two, and what are these two optimal features.
+
+02:09:46
+So you can just read it, yeah, just to import this one from the library, and directly call this function, and to input the parameter here, just to directly use it.
+
+02:10:02
+If someone finds it really hard to do it, I think it provides some example for you.
+
+02:10:09
+You can try the example here to know how it works, how to call this function, how to import from the library, and how to set the parameter here.
+
+02:10:19
+And then try to modify it to replace with your own data, with your own customized parameters to do the assignments.
+
+02:10:30
+So this is about this one, and then the question is about fuel loads and RPMV, and the target is still the log price, so with the F-regressions, but the target price is like continuous, like numeric value, so you cannot use the chi-square and also the F-regressions, which is like the top F-figure.
+
+02:10:54
+And to print the feature name, this is what I told you about, like the gap support, to directly call the gap support and you can directly get the feature name, no need to just to, you know, to compare each column with each column.
+
+02:11:08
+And also try to, you know, why the chi-square and F, as you see, are not appropriate here.
+
+02:11:14
+and the last one is about to use the random forward regressions with a recursive RFB to select eight features.
+
+02:11:25
+Here you can read it, so just don't like to try to write, written the whole function by yourself, just to use it and to change it with the parameters you want to include to the function.
+
+02:11:40
+And since there's already the example here to use, if you truly don't know how to do it, try to copy this example to print this example first, and then you will get the idea how to do it for your own homework.
+
+02:11:54
+So that's all about this week, so any questions so far?
+
+02:12:01
+Okay, if you have no questions, you can leave or do your homework, or if you have any questions, you can ask me.
