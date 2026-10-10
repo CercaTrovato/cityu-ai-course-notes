@@ -1,6 +1,8 @@
 ---
 course: IS6400
 module: 3
+readability_rules: v2
+readability_review: pending
 type: tutorial
 week: 3
 date: 2026-09-16
@@ -15,7 +17,7 @@ tags: [IS6400, tutorial, pandas, seaborn, sklearn, 描述统计, 缺失值, 离�
 status: v1.0
 updated: 2026-10-01
 mechanism_spec: v1
-mechanism_review: passed
+mechanism_review: pending
 ---
 
 # T03 · 数据探索实战：Iris 与 Airbnb 的描述统计
@@ -35,11 +37,39 @@ notebook 第一个 cell 自己列了八件事，我按数据分成两段：
 
 | 段 | cell | 数据 | 教什么 | 对应讲义 |
 |---|---|---|---|---|
-| **A · 干净的小数据** | 3–24 | Iris（150 × 5） | 读数据、认对象与属性；描述统计（均值 / 中位数 / 众数 / 分位数 / IQR / 偏度 / 峰度）；类别频数；分组统计；直方图 / 箱线图 / 散点图 / 平行坐标 | M03 §2.2、§2.8–2.10、§2.18 |
-| **B · 真实的脏数据** | 25–42 | Airbnb（68,133 × 15） | 缺失值报告；均值 / 中位数 / KNN 三种填补的比较；IQR vs Z 分数两种离群点规则；StandardScaler vs RobustScaler；协方差、相关矩阵、热力图；相关 ≠ 因果 | M03 §2.6、§2.9–2.12 |
+| **A · 干净的小数据** | 3–24 | Iris（150 × 5） | 读数据、认对象与属性（详见表后） | M03 §2.2、§2.8–2.10、§2.18 |
+| **B · 真实的脏数据** | 25–42 | Airbnb（68,133 × 15） | 缺失值报告（详见表后） | M03 §2.6、§2.9–2.12 |
 | C · 作业 | 44–48 | Airbnb + 自己的项目数据 | 3 题 100 分 | §7 |
 
-**它和 M03 讲义的关系**：讲义 p.19 只问了"数据质量问题怎么发现、怎么办"没答，**答案全在段 B**；讲义没讲"标准化"，段 B 的 cell 35–37 是新增内容（为 M04 的 PCA 和 W04 的聚类铺路——这两者都对尺度敏感）。
+**A · 干净的小数据 · 教什么**
+
+读数据、认对象与属性。
+
+描述统计（均值 / 中位数 / 众数 / 分位数 / IQR / 偏度 / 峰度）。
+
+类别频数。
+
+分组统计。
+
+直方图 / 箱线图 / 散点图 / 平行坐标
+
+**B · 真实的脏数据 · 教什么**
+
+缺失值报告。
+
+均值 / 中位数 / KNN 三种填补的比较。
+
+IQR vs Z 分数两种离群点规则。
+
+StandardScaler vs RobustScaler。
+
+协方差、相关矩阵、热力图。
+
+相关 ≠ 因果
+
+**它和 M03 讲义的关系**：讲义 p.19 只问了"数据质量问题怎么发现、怎么办"没答，**答案全在段 B**。
+
+讲义没讲"标准化"，段 B 的 cell 35–37 是新增内容（为 M04 的 PCA 和 W04 的聚类铺路——这两者都对尺度敏感）。
 
 > 🎙️ **课堂实况**（2026-09-16 周三课，tutorial 段）：tutorial 段（`01:45:33`–`02:13:18`，约 28 分钟） 由教授本人主讲（不是助教），全程带着 Iris 与 Airbnb 两个 notebook 逐 cell 跑；时间最集中在 cell 28（三种缺失值填补，尤其 KNN 的 GPA 近邻类比，约 5.1 分钟）与 cell 5–8（描述统计函数与偏度峰度，约 3.8 分钟）；作业在最后约 2.9 分钟口头交代，重点是 Q3 由 TA 出题、同组必须用不同变量组合。
 
@@ -59,9 +89,11 @@ from sklearn.impute import SimpleImputer, KNNImputer    # 新：缺失值填补
 from sklearn.preprocessing import StandardScaler, RobustScaler   # 新：标准化
 ```
 
-五个库 Anaconda 都自带（T01 §1.1 装 Anaconda 时一起装好）；`seaborn` 是第一次出现——它是 matplotlib 的"高级封装"，一行画热力图 / 配对图。运行环境按 notebook 元数据：**Python 3.13.5，kernel `conda-base-py`**（与 T01/T02 相同）。
+这些导入提供表格、数组、绘图、填补与缩放工具。在实际 kernel 检查依赖；安装了 Anaconda 本身不能保证每个环境都有这五个库。
 
-⚠️ 两个数据文件要和 notebook **放在同一个文件夹**（`pd.read_csv('iris.txt')` 用的是相对路径）；Canvas 上 Week 3 页面同时给了 `iris.txt` 和 `Airbnb.csv`。
+seaborn 封装了 matplotlib 的统计绘图，本篇用它画热力图。原 metadata 是 Python 3.13.5、kernel conda-base-py；它是来源记录，不当作本轮运行版本。
+
+两个数据文件应能由 kernel 的实际工作目录访问。工作目录恰好是 notebook 所在目录时，把 CSV 放同目录很方便；否则使用正确相对路径或明确路径。Canvas Week 3 提供 iris.txt 与 Airbnb.csv。
 
 ### 1.2 对应哪一讲的理论
 
@@ -130,7 +162,7 @@ data.head(10)
 12,3,2,0.7,B
 ```
 
-按 `header=None`，逗号拆成每行5字段，所有行都作数据，先得到2×5表；列标签暂为0/1/2/3/4，行标签为0/1。再赋原代码的五个列名：第0行的`sepal length=10`、`petal width=.5`、`class='A'`；第1行对应12/.7/B。`head(10)`实际只返回现有两行，不造另外八行。
+按 `header=None`，逗号拆成每行5字段，所有行都作数据，先得到2×5表；列标签暂为0/1/2/3/4，行标签为0/1。再赋原代码的五个列名：第0行的`sepal length=10`、`petal width=.5`、`class='A'`；第1行对应12/0.7/B。`head(10)`实际只返回现有两行，不造另外八行。
 
 ```mermaid
 flowchart TD
@@ -153,7 +185,11 @@ flowchart TD
 - 复述“行是对象、列是属性”这条定义：*"And the row is an object. And the column is the attributes we have."*（`01:46:56`–`01:46:58`）
 - 逐句解释 `header=None` 的必要性：*"There are no definitions of the header. So the header equals to none. It means that we do not have the name for each column from the raw data."*（`01:47:43`–`01:47:51`）
 - 补了 notebook 没写的业务背景——为什么原始文件会没有列名：*"[S]ometimes when the company is recording the data, they will prepare two different datasets. One is the pure values of SKU[s]. The second will be the name of different columns[,] in two different separate ones."*（`01:47:53`–`01:48:05`）
-- **这段改变了什么**：确认了笔记对 `header=None` 的解读；新增一条业务解释——公司常把“纯数值表”和“字段对照表”分开存，这正是 `iris.txt` 这类无表头文件的来源。
+- **这段改变了什么**：确认了笔记对 `header=None` 的解读。
+
+新增一条业务解释——公司常把“纯数值表”和“字段对照表”分开存，这是课堂说明“为什么有些文件可能无表头”的业务例子。
+
+没有证据认证本 iris.txt 的实际制作来源。
 
 ### 2.2 【cell 5–7】自定义描述函数：一次算 12 个统计量
 
@@ -190,10 +226,36 @@ describe_col(data, 'sepal length')
 函数接收 DataFrame 与列名，输出一个带统计量名称的 Series；cell 6 将四份 Series 拼成 12×4 表，再转成 4×12。它汇总的是每列实际观测值，不会把缺失项当零。以下小列与 Iris 原例分开，用于看清函数内部动作：`[1,2,2,4,9,10,NaN]`。
 
 1. 记录缺失 1 个、有效数 $n=6$，排序后仍为 $1,2,2,4,9,10$。和为 28，均值 $28/6=14/3$。不能除以原行数 7；最小 1、最大 10、极差 9。
-2. 分位数的默认线性插值在零起算位置 $h=(n-1)q$。$q$ 是目标比例，$h$ 是排序后的所在位置；若 $h=j+f$，$j$ 是向下取整的位置、$0\le f<1$，结果为 $(1-f)x_{(j)}+fx_{(j+1)}$。本例 Q1 的位置 1.25，两端都是 2，所以 Q1=2；中位位置 2.5，两端 2、4，故为 3；Q3 位置 3.75，两端 4、9，故 $4+0.75(9-4)=7.75$，IQR=5.75。Q99 位置 4.95，结果 9.95，**并非最大值 10**。
+2. 分位数的默认线性插值在零起算位置 $h=(n-1)q$。
+
+$q$ 是目标比例，$h$ 是排序后的所在位置。
+
+若 $h=j+f$，$j$ 是向下取整的位置、$0\le f<1$，结果为 $(1-f)x_{(j)}+fx_{(j+1)}$。
+
+本例 Q1 的位置 1.25，两端都是 2，所以 Q1=2。
+
+中位位置 2.5，两端 2、4，故为 3。
+
+Q3 位置 3.75，两端 4、9，故 $4+0.75(9-4)=7.75$，IQR=5.75。
+
+Q99 位置 4.95，结果 9.95，**并非最大值 10**。
 3. 频数表为 1→1 次、2→2 次、4/9/10→各 1 次，众数为 2。若改成 `[1,1,2,2]`，`mode()` 返回两个众数 1、2；`.iloc[0]` 只保留第一个，不等于只有一个众数。
 4. 均值处的偏差依次 $-11/3,-8/3,-8/3,-2/3,13/3,16/3$，平方和 $226/3$。样本方差除以 $n-1=5$，为 $226/15$，开根得到 std≈3.881580。总体口径除以 6 得到不同的数，不能混用。
-5. 偏度与超额峰度不是“再看均值大小”：它们读取三、四次方偏差及样本校正。本例三次方和 $1310/9$、四次方和 $38982/27$；除以 6 得 $m_3,m_4$，平方和除以 6 得 $m_2$。pandas 的样本偏度是 $\sqrt{n(n-1)}m_3/[(n-2)m_2^{3/2}]$；样本超额峰度是 $\frac{n-1}{(n-2)(n-3)}[(n+1)(m_4/m_2^2-3)+6]$。本例分别约 0.746662、−1.797909。$m_r$ 表示偏差 r 次方的平均；校正与形状解释见 [[M03-数据类型与描述性分析#2.10 数值变量 II：分布形状——偏度与峰度（讲义 p.27–28）|M03 偏度与峰度]]，不要由一个峰度数单独断言有几个群。
+5. 偏度与超额峰度不是“再看均值大小”：它们读取三、四次方偏差及样本校正。
+
+本例三次方和 $1310/9$、四次方和 $38982/27$。
+
+除以 6 得 $m_3,m_4$，平方和除以 6 得 $m_2$。
+
+pandas 的样本偏度是 $\sqrt{n(n-1)}m_3/[(n-2)m_2^{3/2}]$。
+
+样本超额峰度是 $\frac{n-1}{(n-2)(n-3)}[(n+1)(m_4/m_2^2-3)+6]$。
+
+本例分别约 0.746662、−1.797909。
+
+$m_r$ 表示偏差 r 次方的平均。
+
+校正与形状解释见 [[M03-数据类型与描述性分析#2.10 数值变量 II：分布形状——偏度与峰度（讲义 p.27–28）|M03 偏度与峰度]]，不要由一个峰度数单独断言有几个群。
 
 **下图是包含安全边界检查的笔记补充流程**；原cell5函数没有全缺失众数守卫，不能把图说成原函数已经实现的步骤。
 
@@ -218,7 +280,11 @@ flowchart TD
 - 强调 pandas 已经内置了这些统计量的计算：*"[M]ost of the summary statistics calculations have been supported by the Pandas Data Frame."*（`01:49:15`–`01:49:26`）
 - Q1/Q3 与 IQR 的口头公式：*"Q1, Q3, we will calculate it using S dot quantile. So this is a 25 quantile or 75 quantile. ... [F]or the IQR, it is Q3 minus Q1."*（`01:50:01`–`01:50:09`）
 - 明确预告 `describe()` 要到下一讲才教：*"[N]ext week, I think, we will have a simple function called data.describe... [it] will generate all this information in a single command."*（`01:51:29`–`01:51:39`）
-- 偏度 / 峰度的口头定义（ASR 把 skewness 识别成 "SKU needs"、kurtosis 识别成 "QNAS/quotasys"）：*"[T]he [skewness] tell[s] you whether it is [symmetric?]... and the [kurtosis] tell[s] you whether it is normally dis[tributed] or concentrated to the middle..."*（`01:52:40`–`01:52:45`）
+- 偏度 / 峰度的口头定义（ASR 把 skewness 识别成 "SKU needs"、kurtosis 识别成 "QNAS/quotasys"）：
+
+> *"[T]he [skewness] tell[s] you whether it is [symmetric?]... and the [kurtosis] tell[s] you whether it is normally dis[tributed] or concentrated to the middle..."*
+
+（`01:52:40`–`01:52:45`）
 - **这段改变了什么**：确认了笔记对 `describe_col` 与六分位数的解读；新增一条时间线信息——手写统计函数是给 `data.describe()`（下一讲才教）打的铺垫，不是长期要用的写法。
 
 ### 2.3 【cell 10–11】频数与分组统计
@@ -256,7 +322,7 @@ data.groupby('class')[['sepal length', 'sepal width', 'petal length', 'petal wid
 1. 默认缺失键不成组，得到 A={行1,2,3}、B={行4,5}。`size()` 数行，A=3、B=2；`count()` 数指定列的非缺失，x 列 A=2、B=2。第6行的 x=40 本来有效，却因键缺失被分组默认排除；若业务要它另成“未知组”，显式 `dropna=False`。
 2. A 的 x 均值 $(10+20)/2=15$、中位15、样本 std=$\sqrt{(25+25)/(2-1)}\approx7.0711$；A 的 y 均值3、中位3、std=2。B 的 x 均值10、中位10、std≈7.0711；y 均值3、中位3、std≈1.4142。
 3. 原命令选两列、算三函数，因此新表是 **2 行×6 列**。例如 `result.loc['A', ('x','mean')]` 为15，而 `('y','std')` 为2。元组表示列的两个层级，不是两次独立索引。
-4. `class.value_counts(normalize=True)` 默认排除缺失键，比例 A=3/5=.6、B=2/5=.4；不是3/6和2/6。分母选全6行时须另做缺失类别计数，不能把两个口径并排比较后说结果算错。
+4. `class.value_counts(normalize=True)` 默认排除缺失键，比例 A=3/5=0.6、B=2/5=0.4；不是3/6和2/6。分母选全6行时须另做缺失类别计数，不能把两个口径并排比较后说结果算错。
 
 ```mermaid
 flowchart TD
@@ -277,9 +343,19 @@ flowchart TD
 **🎙️ 课堂补充**（`01:52:51`–`01:55:48`，约 3.0 分钟，A · 课上展开）
 
 - `value_counts(normalize=True)` 的口头解释与结果（ASR 把 setosa 识别成 "cytosine"）：*"[I]f we put in the value count[s] and do the normalization, and keep the three decimals here[,] then you will tell you that about 33.3% is the data point belonging to your [setosa]."*（`01:53:26`–`01:53:41`）
-- 🔴 **notebook 和讲义都没有的增量：用银行“正常交易 vs 欺诈交易”举例讲类别不平衡**（ASR 把 fraud 识别成 "board"）：*"Now when you go to the bank, the number of normal transactions will be much, much larger than the [fraud?] transactions. So if we want to detect [fraud?] transactions, we are actually getting a very tiny group of labeled [fraud?] transactions from the large group of normal transactions."*（`01:54:07`–`01:54:25`）
-- 预告分类章节会专门处理不平衡数据，并点明数据探索的意义：*"[I]n the later classification lecture we will have one small section to illustrate how to deal with the imbalanced data classification. ... [T]he data exploration is very important at the very beginning for you to choose the right model."*（`01:54:32`–`01:55:11`）
-- **这段改变了什么**：`value_counts` 与 `groupby().agg` 本身与笔记一致；新增了“三类各占 33.3%”这件事为什么重要——真实数据常常类别不平衡，这是选模型前必须先看的信号，教授用银行欺诈检测具体举了例子。
+- 🔴 **notebook 和讲义都没有的增量：用银行“正常交易 vs 欺诈交易”举例讲类别不平衡**（ASR 把 fraud 识别成 "board"）：
+
+> *"Now when you go to the bank, the number of normal transactions will be much, much larger than the [fraud?] transactions. So if we want to detect [fraud?] transactions, we are actually getting a very tiny group of labeled [fraud?] transactions from the large group of normal transactions."*
+
+（`01:54:07`–`01:54:25`）
+- 预告分类章节会专门处理不平衡数据，并点明数据探索的意义：
+
+> *"[I]n the later classification lecture we will have one small section to illustrate how to deal with the imbalanced data classification. ... [T]he data exploration is very important at the very beginning for you to choose the right model."*
+
+（`01:54:32`–`01:55:11`）
+- **这段改变了什么**：`value_counts` 与 `groupby().agg` 本身与笔记一致。
+
+新增了“三类各占 33.3%”这件事为什么重要——真实数据常常类别不平衡，这是选模型前必须先看的信号，教授用银行欺诈检测具体举了例子。
 
 ### 2.4 【cell 14–23】四种图
 
@@ -315,10 +391,57 @@ plt.show()
 **逐行**：
 - **直方图**（cell 14）：`bins=20` 对应讲义 p.63 右图；输出图左侧 0.1–0.3 一根高柱（setosa 的花瓣极窄），右侧多个峰。cell 15 的结论：**多峰 = 可能是多个总体的混合**，"an important warning about distributional shape"。
 - **箱线图**（cell 17）：`data.boxplot()` 一次画四列（讲义 p.66 原图的 pandas 版）；petal length的四分位跨度最大，sepal width较窄且有被默认规则单独标出的点；盒子的纵向位置与跨度是两种量，不要混读。cell 18："No obvious extreme outliers"。
-- **分组散点图**（cell 20）：`for name, group in data.groupby('class')` 是 pandas 的**按组循环**——每次拿到组名和该组的子表，各画一次 `scatter` 并用 `label=name` 生成图例；`alpha=0.7` 半透明防重叠。输出：setosa在花瓣两列中较易分离，versicolor与virginica仍有重叠；按类别着色帮助观察，不能由图保证新样本分类无误。cell 21 的结论：两个变量的关系可以"strong and **nonlinear** when a categorical variable is present"——M03 §2.11 说相关只抓线性，原notebook提出非线性观察，但类别存在本身不能证明非线性；本图能直接支持的是组分布不同及两类有重叠，具体函数关系需再检验。
+- **分组散点图**（cell 20）：`for name, group in data.groupby('class')` 是 pandas 的**按组循环**——每次拿到组名和该组的子表，各画一次 `scatter` 并用 `label=name` 生成图例。
+
+`alpha=0.7` 半透明防重叠。
+
+输出：setosa在花瓣两列中较易分离，versicolor与virginica仍有重叠。
+
+按类别着色帮助观察，不能由图保证新样本分类无误。
+
+cell 21 的结论：两个变量的关系可以"strong and **nonlinear** when a categorical variable is present"——M03 §2.11 说相关只抓线性，原notebook提出非线性观察，但类别存在本身不能证明非线性。
+
+本图能直接支持的是组分布不同及两类有重叠，具体函数关系需再检验。
 - **平行坐标**（cell 23）：`parallel_coordinates(data, 'class')` 第二个参数是**类别列名**，用来着色；输出与讲义 p.70 左图一致（轴序 sepal length → sepal width → petal length → petal width），三类在 petal 两根轴上分成三束。
 
-**输出核对（2026-09-30 实跑）**：`render-t03-plots.py` 按原 Iris 数据生成并实际查看了四张图。20个直方箱计数合计150；平行坐标150条样本线直接使用原行的四个数，首行为5.1/3.5/1.4/.2。散点中setosa分离较明显，另两类重叠，不能说三类完全分开。箱线图是petal length的IQR最大，sepal width较窄并有单独点。中间核对见`t03-plot-check.json`，图像为临时验收材料，不嵌入正文替代可编辑代码与解释。
+**本轮将四个输出放到读法旁边**：同一 iris.txt 定向生成，散点另配点形，其余保原统计口径；不是旧保存像素。图源 figures/t03-readability/figures.py。
+
+**直方图：花瓣宽度集中在哪些区间？**
+
+![[IS6400_Business_Data_Analytics/notes/figures/t03-readability/iris-hist.svg]]
+
+横轴花瓣宽 cm，纵轴区间内花数；每柱累计多行。首行 0.2 cm 给所在箱贡献 1 次，20 箱合计 150。文字替代：窄花瓣区间集中，较宽区间也有记录；多峰只提示进一步分组，改变分箱会改变形状。
+
+**箱线图：哪列中间一半的跨度大？**
+
+![[IS6400_Business_Data_Analytics/notes/figures/t03-readability/iris-box.svg]]
+
+横向四项是测量列，纵轴 cm。盒底/中线/盒顶为 Q1/中位数/Q3；须到围栏内最远观测。sepal length 的 Q1=5.1、Q3=6.4，所以盒高为 1.3 cm。
+
+文字替代：petal length 的 IQR 最大；盒位置表示水平，盒高表示离散。图沿原 boxplot 默认 1.5×IQR；课堂口头 10/90 百分位的版本冲突继续保留，不混用。
+
+**散点：怎样保持同一朵花的两测量配对？**
+
+![[IS6400_Business_Data_Analytics/notes/figures/t03-readability/iris-scatter.svg]]
+
+横轴花瓣长、纵轴花瓣宽，均 cm；首行 (1.4,0.2) 是一个 Setosa 点。点形/颜色来自已知 class。文字替代：Setosa 较易分离，另两类部分重叠；它不是独立分类成绩。两列不能独立排序再画点。
+
+**平行坐标：一朵花跨四属性是什么轮廓？**
+
+![[IS6400_Business_Data_Analytics/notes/figures/t03-readability/iris-parallel.svg]]
+
+横向依次四属性，纵轴原 cm；一条线连接同一原行，没有时间箭头。首行依次 5.1→3.5→1.4→0.2。文字替代：150 行各有一条原测量轮廓；默认未做各轴独立缩放，换轴序/尺度会改变视觉印象。
+
+<details><summary>四图读图自测：箱须、跨列连线、直方频数与散点配对</summary>
+
+1. 箱须是围栏值吗？须取围栏内真实观测，不直接画围栏。
+2. 哪张连接首行四值？平行坐标；散点仅取同花的花瓣两值。
+3. 首行 0.2 cm 对哪个直方箱贡献？20 等宽箱从 0.1 到 2.5，箱宽 0.12，所以进入 [0.1,0.22)，贡献 1。柱汇总该区间的多朵花，不代表单花。
+4. 横纵两列独立排序后仍是同花吗？通常不是，原行配对已破坏。应按同一原行同时取两值。
+
+</details>
+
+**输出核对（2026-09-30 实跑）**：`render-t03-plots.py` 按原 Iris 数据生成并实际查看了四张图。20个直方箱计数合计150；平行坐标150条样本线直接使用原行的四个数，首行为5.1/3.5/1.4/0.2。散点中setosa分离较明显，另两类重叠，不能说三类完全分开。箱线图是petal length的IQR最大，sepal width较窄并有单独点。中间核对见`t03-plot-check.json`，图像为临时验收材料，不嵌入正文替代可编辑代码与解释。
 
 **为什么这么写**：作业第 2.3 题要求"每个特征与 log_price 一个统计量 + 一张图，带标题、轴标签、2–3 句解释"，**且 "at least 8 plots"**——这四个 cell 每个都示范了"`plt.title` + `plt.xlabel` + `plt.ylabel` + 一段 markdown 解释"的完整格式，照着来。
 
@@ -327,7 +450,23 @@ plt.show()
 - `data.boxplot()` 会把所有数值列画在一起，如果量纲差几个数量级（Airbnb 的 `number_of_reviews` 0–600 与 `bathrooms` 0–8），小的那些会压成一条线——Airbnb 要分开画或先标准化。
 - 平行坐标的轴序按 DataFrame 列顺序；想换序先 `data[[新顺序]]`。
 
-**行怎样变成图（笔记补充）**：小列1/2/2/3/4/20，指定箱界[0,2,4,6,20]时，直方频数为1/3/1/1：通常左闭右开，最后一箱含20。不能把柱高当该箱中心的值。箱线图先用同列Q1=2/Q3=3.75，须截止于围栏内最远观察值1和4，20单独画点；须不是围栏数−.625/6.375本身。散点把同一原行的横纵值组成一对，先按共同有效行处理；组颜色是来源标签，非计算出的分类结果。平行坐标一行(1,100)在第一轴取1、第二轴取100后连线；pandas默认直接使用这些数，**不会自动给每轴做独立缩放**。要改尺度须显式预处理并说明，折线交叉不能当变量间因果。
+**行怎样变成图（笔记补充）**：小列1/2/2/3/4/20，指定箱界[0,2,4,6,20]时，直方频数为1/3/1/1：通常左闭右开，最后一箱含20。
+
+不能把柱高当该箱中心的值。
+
+箱线图先用同列Q1=2/Q3=3.75，须截止于围栏内最远观察值1和4，20单独画点。
+
+须不是围栏数−0.625/6.375本身。
+
+散点把同一原行的横纵值组成一对，先按共同有效行处理。
+
+组颜色是来源标签，非计算出的分类结果。
+
+平行坐标一行(1,100)在第一轴取1、第二轴取100后连线。
+
+pandas默认直接使用这些数，**不会自动给每轴做独立缩放**。
+
+要改尺度须显式预处理并说明，折线交叉不能当变量间因果。
 
 **所以呢**：图上每一柱、点和折线都应能回到原行或计数；换成Airbnb脏数据，先处理缺失与参照尺度再解释图形。
 
@@ -358,7 +497,11 @@ flowchart TD
 - 🔴 **箱线图离群点边界，口头说法是百分位而非 1.5×IQR——与本笔记 §9.5 ⑤ 的疑问对上了**：*"[S]o the threshold[,] together with some outliers here[:] the outlier[s] above the [90th?] percentile or below the 10th percentile[,] they were labeled outliers."*（`01:56:58`–`01:57:07`）
 - 分组散点图的读图描述：*"[A] simple visualization, a two-dimensional visualization is petal length and petal width. ... [W]e can see a very clear difference in the pattern[s] of the blue data points[.]"*（`01:57:14`–`01:57:29`）
 - 平行坐标的工具来源：*"[P]andas has its own plotting library called pandas [dot] plotting[,] and one of the tool[s] in [that] library is called parallel coordinate[s]."*（`01:58:13`–`01:58:27`）
-- **这段改变了什么**：确认了四张图的读法；新增一条与本笔记 §9.5 ⑤ 直接相关的证据——教授口头描述箱线图须用的是 10/90 百分位，与 `data.boxplot()` 实际默认的 1.5×IQR **不是同一套口径**；作业里若按讲义 10/90 百分位算须会与 notebook 输出的箱线图对不上，建议以 `boxplot()` 的 1.5×IQR 为准并注明。
+- **这段改变了什么**：确认了四张图的读法。
+
+新增一条与本笔记 §9.5 ⑤ 直接相关的证据——教授口头描述箱线图须用的是 10/90 百分位，与 `data.boxplot()` 实际默认的 1.5×IQR **不是同一套口径**。
+
+作业里若按讲义 10/90 百分位算须会与 notebook 输出的箱线图对不上，建议以 `boxplot()` 的 1.5×IQR 为准并注明。
 
 ---
 ## 3. 逐块讲解 · 段 B：Airbnb 的脏数据（cell 25–42）
@@ -390,7 +533,9 @@ pd.DataFrame({'missing': missing, 'ratio': missing_ratio})[missing > 0]
 
 **为什么这么写**：作业第 2.1 题第一条就是 "Missing-value report for all columns"——这三行就是模板。⚠️ 注意 `bedrooms` **没有缺失**，但 cell 28 仍然把它和 `review_scores_rating` 一起填补——见 §3.2 的坑。
 
-**⚠️ 易错点**：`head()` 的第 4 行 `review_scores_rating` 已经是 `NaN`（该房源 `number_of_reviews = 0`）——**评分缺失的机制是"没评论就没评分"**，不是随机缺失（数据集卡片 §3.1）。这一点在作业里写出来是加分项：它说明"用中位数填"是在给没人住过的房源一个"典型"评分，得说清这个假设。
+**⚠️ 易错点**：`head()` 的第 4 行 `review_scores_rating` 已经是 `NaN`（该房源 `number_of_reviews = 0`）——**评分缺失的机制是"没评论就没评分"**，不是随机缺失（数据集卡片 §3.1）。这一点在作业里写出来是加分项：它说明"用中位数填"是在给没有记录评分的房源一个"典型"评分，得说清这个假设。
+
+没有记录评论不等于无人入住。已核 15,275 条缺评分中，14,434 条评论数为 0；其余 841 条的缺评分原因仍未核，不能统称“没人住过”。
 
 **💡 从单元格缺失到逐列报告（笔记补充）**
 
@@ -425,10 +570,20 @@ flowchart TD
 **🎙️ 课堂补充**（`01:59:12`–`02:01:20`，约 2.1 分钟，A · 课上展开）
 
 - 切换数据集与确认缺失列（ASR 把 Airbnb 识别成 "LBNB"）：*"[W]e switch to the real data set of [Airbnb], and we know that it contains some missing values in the review[s] [scores] rating..."*（`01:59:19`–`01:59:34`）
-- 🎙️ **notebook 没写的处理框架——“删除”与“填补”两条路怎么选**：*"[T]he first method... [is] if the number of missing values is very small compared with the whole data[,] and if we remove [them], we will not affect the whole population... we can just remove these... records."*（`01:59:54`–`02:00:17`）
+- 🎙️ **notebook 没写的处理框架——“删除”与“填补”两条路怎么选**：
+
+> *"[T]he first method... [is] if the number of missing values is very small compared with the whole data[,] and if we remove [them], we will not affect the whole population... we can just remove these... records."*
+
+（`01:59:54`–`02:00:17`）
 - 何时该填而不是删：*"[I]f we believe that these records... are very important for us[,] ... we want to keep them, so we need to fill the missing values."*（`02:00:17`–`02:00:33`）
-- 缺失计数口头核对（`review_scores_rating` 的具体数字被 ASR 严重压缩，标 [?]）：*"[A]mong the whole data set, the host has 40 [profile pic?] pictures, we have 180 missing records. The host identif[ied] 180, and the review score[s rating], we have so many[?] missing values for this col[umn]."*（`02:00:55`–`02:01:07`）
-- **这段改变了什么**：确认了 §3.1 缺失值报告的三列结果（180 / 180 / review_scores_rating 大量缺失）；新增一条 notebook 没写的决策框架——先判断“删了会不会影响整体分布”，不行再填补，这是本节“为什么选填补而不是删除”的理论依据。
+- 缺失计数口头核对（`review_scores_rating` 的具体数字被 ASR 严重压缩，标 [?]）：
+
+> *"[A]mong the whole data set, the host has 40 [profile pic?] pictures, we have 180 missing records. The host identif[ied] 180, and the review score[s rating], we have so many[?] missing values for this col[umn]."*
+
+（`02:00:55`–`02:01:07`）
+- **这段改变了什么**：确认了 §3.1 缺失值报告的三列结果（180 / 180 / review_scores_rating 大量缺失）。
+
+新增一条 notebook 没写的决策框架——先判断“删了会不会影响整体分布”，不行再填补，这是本节“为什么选填补而不是删除”的理论依据。
 
 ### 3.2 【cell 28–30】三种缺失值填补：均值 / 中位数 / KNN
 
@@ -459,6 +614,10 @@ air['bedrooms_knn'] = knn_vals[:, 1]
 
 **输出**：
 
+下面每行是一种填补后列的摘要。review 的 mean/std 单位为评分分值，bed 的单位为卧室个数；skew（偏度）无单位。
+
+std 按样本分母 n−1 计算，n 是该列填补后有效数。读 review_mean：平均 94.013 分、样本 std 6.899 分、偏度 −3.778；这是均值填补后的分布，未证明缺失评分的真值。
+
 | 列 | mean | std | skew |
 |---|---|---|---|
 | review_mean | 94.013 | 6.899 | −3.778 |
@@ -467,7 +626,13 @@ air['bedrooms_knn'] = knn_vals[:, 1]
 | bed_mean / bed_median / bed_knn | 1.272 | 0.855 | 2.005（三者**完全相同**） |
 
 **读法**（cell 29 原文 + 补充）：
-- `review_scores_rating` **左偏**（偏度 −3.8，堆在 100 附近）：均值填补把 15,275 个空位全填成 94.01（均值被低分拖低），中位数填补填 96（notebook 没直接打印中位数，`verify_airbnb.py` 实跑：median = 96，mean = 94.013；另外 15,275 个缺失里有 14,434 个是 `number_of_reviews = 0` 的房源）——中位数描述已观察评分的中心位置；选择它需要说明缺失机制假设。填补后的分布接近已观察部分不证明未评论房源具有相同评分，真实缺失值仍未知。
+- `review_scores_rating` **左偏**（偏度 −3.8，堆在 100 附近）：均值填补把 15,275 个空位全填成 94.01（均值被低分拖低），中位数填补填 96（notebook 没直接打印中位数，`verify_airbnb.py` 实跑：median = 96，mean = 94.013。
+
+另外 15,275 个缺失里有 14,434 个是 `number_of_reviews = 0` 的房源）——中位数描述已观察评分的中心位置。
+
+选择它需要说明缺失机制假设。
+
+填补后的分布接近已观察部分不证明未评论房源具有相同评分，真实缺失值仍未知。
 - `bedrooms` 三种结果**一模一样**，因为它**本来就没有缺失值**（cell 27 的报告里没有它）——三个 Imputer 什么都没填。
 - notebook 的选择：**两列都用中位数**（"simple and robust"），KNN 是"valid alternative if local similarity matters"。
 
@@ -477,14 +642,38 @@ cell 30 建 `air_clean`：复制一份，把两列替换成中位数版本，`is
 
 **⚠️ 易错点**：
 - **`bedrooms` 没有缺失**——作业题干说 "It contains missing values in `review_scores_rating` and `bedrooms`" 是错的（notebook cell 25 也这么说）。作业里如实指出"bedrooms 无缺失，三种方法结果相同"是正确做法，不要硬编一个差异。
-- KNN 的邻居只在 `cols` 那两列里找；要让 KNN 有意义，应该把 `accommodates`、`bathrooms`、`beds` 等也放进去（`KNNImputer` 会用所有传入的列算距离）。**KNN距离对参与列的尺度敏感**；本两列例填评分时距离实际上只用已观察的卧室列，不能把评分差也加进去。扩展多列后先检查尺度贡献，必要时用训练状态缩放并保留NaN，填后回原单位（§3.4）。这是 T03 第一个"改参数"点（§5）。
+- KNN 的邻居只在 `cols` 那两列里找。
+
+要让 KNN 有意义，应该把 `accommodates`、`bathrooms`、`beds` 等也放进去（`KNNImputer` 会用所有传入的列算距离）。
+
+**KNN距离对参与列的尺度敏感**。
+
+本两列例填评分时距离实际上只用已观察的卧室列，不能把评分差也加进去。
+
+扩展多列后先检查尺度贡献，必要时用训练状态缩放并保留NaN，填后回原单位（§3.4）。
+
+这是 T03 第一个"改参数"点（§5）。
 - 用整张表算均值再填补，**测试集的信息会泄漏到训练集**（M02 §2.9.3 的验证集纪律）。作业不要求，但项目里应 `fit` 训练集、`transform` 测试集。
 
 **💡 KNN 填补如何真正执行（笔记补充）**
 
 输入是保留 NaN 的数值矩阵、邻居数 $k$、距离与权重规则；输出是同形状的已填矩阵（全缺失训练列的默认移除策略另述）。`fit` 保存训练矩阵作为供体库，`transform` 为新行找供体；它不是训练一个分类标签模型。以下统一用 $k=2$、均匀权重和 sklearn 默认 `nan_euclidean`，与课件的 k=5 区分。
 
-**缺失感知距离的依据**：两行共有 $d$ 列，但只有 $m$ 列两边都已观察；先在这 $m$ 列求差平方和，再乘 $d/m$、开根。式子为 $D(a,b)=\sqrt{\frac d m\sum_{j\in O_{ab}}(a_j-b_j)^2}$；$a,b$ 是两行，$O_{ab}$ 是共同观察到的列集合。$d,m$ 为列数，$D$ 为待求距离。乘 $d/m$ 是将共同列的平均平方差外推到全部列的尺度，不是恢复真值的保证；$m=0$ 时距离未定义，不能给0。
+**先看哪些列能比较**：两行都观察到的列才有真实差值。默认距离把共同列平均平方差外推到全部列的尺度。
+
+| 符号 | 角色 | 本例值 |
+|---|---|---|
+| $a,b$ | 比较的两行 | 如 r1/r2 |
+| $d$ | 总列数 | A/B/C 共 3 |
+| $O_{ab}$ | 共同观察列集合 | r1/r2 只有 A |
+| $m$ | 共同观察列数 | r1/r2 为 1 |
+| $D(a,b)$ | 算出的距离 | 原测量尺度的欧氏型距离 |
+
+$$D(a,b)=\sqrt{\frac d m\sum_{j\in O_{ab}}(a_j-b_j)^2}.$$
+
+读 r1/r2：共同 A 列差平方为 1，乘 $3/1$ 得平方距离 3，开根才是距离。按平方距离排序得到相同近邻。
+
+本步边界：$m=0$ 距离未定义，不给 0。尺度须事先声明；不同单位未经选择不能解释成公平相似性。$d/m$ 是距离估计政策，不保证补回真值。
 
 | 行 | A | B | C |
 |---|---|---|---|
@@ -495,7 +684,18 @@ cell 30 建 `air_clean`：复制一份，把两列替换成中位数版本，`is
 
 **同一输入的完整运行**（所有距离以原始观察值计算，不把刚填出的数再充作观察值）：
 
-1. 填 r1 的 C，供体必须 C 已观察，候选 r2/r3/r4。r1/r2 只有 A 共同观察，距离平方 $3(1-2)^2=3$；r1/r3 有 A/B 两列，$\frac32[(1-3)^2+(2-4)^2]=12$；r1/r4 只有 B，$3(2-6)^2=48$。选最近 r2/r3，其 C 为6/9，填 $(6+9)/2=7.5$。
+1. 填 r1 的 C，先筛出 C 已观察的 r2/r3/r4。一行一个供体，距离只用原观察。
+
+| 供体 | 共同列 | 差平方和 | $d/m$ | 平方距离 |
+|---|---|---:|---:|---:|
+| r2 | A | 1 | 3 | 3 |
+| r3 | A/B | 8 | 3/2 | 12 |
+| r4 | B | 16 | 3 | 48 |
+
+逐列读法：共同列决定原差来源；差平方和衡量这些列；乘数校正共同列数；最后一列排序。读 r3：两列各差 2，平方和 8，乘 3/2 得 12。
+
+最近 r2/r3 的 C 为 6/9，均匀权重填 $(6+9)/2=7.5$。填值仍是估计，不成为新增观察。
+
 2. 填 r2 的 B，合格供体 r1/r3/r4。距离平方为3、$\frac32[(2-3)^2+(6-9)^2]=15$、$3(6-12)^2=108$，最近 r1/r3 的 B 为2/4，所以填3。r1刚填的C=7.5**不参与**这次距离。
 3. 填 r4 的 A，合格供体 r1/r2/r3。距离平方为48、108、$\frac32[(6-4)^2+(12-9)^2]=19.5$，选 r3/r1，其 A 为3/1，所以填2。
 4. 最后矩阵为 r1=(1,2,7.5)、r2=(2,3,6)、r3=(3,4,9)、r4=(2,6,12)；原非缺失项完全保留。三个待填单元都处理完便返回，没有 K-means 那样反复更新到收敛。
@@ -516,7 +716,23 @@ flowchart TD
 
 **为什么是这些供体**：同一行缺 A 或 C，合格供体集合可能不同；“整行找五个邻居”不能免去待填列非缺失条件。均匀权重使输出为所选目标值平均；`weights='distance'` 会让近者更重，不能继续套简单平均。默认算法是相似行共享目标值的局部假设；若实际缺失有系统原因或输入列不相关，距离再精确也可能填偏。
 
-**边界与失败**：定义了距离的供体少于 k 时，用实际可用者，不复制凑够 k；没有定义距离时，默认回到该训练列均值。本例全缺失新行得到训练观察均值 (2,4,9)，它没有任何“最近同学”证据。训练全缺失列默认会被移除；需要保持形状时，显式 `keep_empty_features=True` 并说明其0占位与缺失信息，不当已估真实值。尺度不合适会改变邻居顺序；先用训练观察数据估缩放参数、保留NaN后找邻居，填完再反变换到原单位。重复距离的 kth 边界没有天然唯一答案，必须固定顺序/版本或报告敏感性；稀疏区域、错配特征与非随机缺失分别需要检验。
+**边界与失败**：定义了距离的供体少于 k 时，用实际可用者，不复制凑够 k。
+
+没有定义距离时，默认回到该训练列均值。
+
+本例全缺失新行得到训练观察均值 (2,4,9)，它没有任何“最近同学”证据。
+
+训练全缺失列默认会被移除。
+
+需要保持形状时，显式 `keep_empty_features=True` 并说明其0占位与缺失信息，不当已估真实值。
+
+尺度不合适会改变邻居顺序。
+
+先用训练观察数据估缩放参数、保留NaN后找邻居，填完再反变换到原单位。
+
+重复距离的 kth 边界没有天然唯一答案，必须固定顺序/版本或报告敏感性。
+
+稀疏区域、错配特征与非随机缺失分别需要检验。
 
 **均值/中位数对照**：训练列 `[1,2,3,100,NaN]` 的均值为26.5、中位数为2.5。SimpleImputer 保存26.5或2.5，此后新缺失值沿用它们；不是把未来样本加入再 fit。二者都把所有缺失填同一个数，会制造集中峰并改变方差，不能只看填后偏度接近原值便证明找回真值。
 
@@ -528,11 +744,21 @@ flowchart TD
 
 **🎙️ 课堂补充**（`02:01:20`–`02:06:26`，约 5.1 分钟，A · 课上展开）
 
-- `sklearn.impute` 库的口头介绍（ASR “costiller” = scikit-learn）：*"[Scikit-learn] dot impute. [B]ut the impute is a library that we can use[,] ... [and] so many tools in the library to impute or to fill the missing values in your data set. So there are two big imputer[s]. One is a simple imputer[,] the other is the K[NN] imputer."*（`02:01:47`–`02:02:09`）
+- `sklearn.impute` 库的口头介绍（ASR “costiller” = scikit-learn）：
+
+> *"[Scikit-learn] dot impute. [B]ut the impute is a library that we can use[,] ... [and] so many tools in the library to impute or to fill the missing values in your data set. So there are two big imputer[s]. One is a simple imputer[,] the other is the K[NN] imputer."*
+
+（`02:01:47`–`02:02:09`）
 - `strategy='mean'` 的口头解释：*"[I]f we set the strategy equal to mean, ... it asks the machine to use the mean value of this column to fill the missing value[,] ... [using] all the non-missing values of this column to calculate the average value."*（`02:02:38`–`02:02:55`）
 - `fit_transform` 拆两步：*"[F]it transform will do two things. First, the fit will get the mean value of the non-missing vector[s]... So after that, the new columns will have the... average value filled."*（`02:03:19`–`02:03:43`）
-- 🔴 **notebook 完全没有的 KNN 类比——用“不知道某学生 GPA，但知道他离哪些同学最近”讲 K 近邻填补**（ASR "hitting around" 疑为 "clustered close to"）：*"[T]hat student, I do not know his GPA[,] but I know that he is [close?] around 5 other students, around 10. ... I will use five closest neighbors['] ... average value of the five closest neighbors' GPA to fill the missing value of his missing GPA. ... I only use the neighbors. I will not use the whole population's average."*（`02:04:56`–`02:05:44`）
-- **这段改变了什么**：确认了 §3.2 三种填补方法的操作流程；新增了“KNN 邻居定义很弱”这条易错点背后教授自己给的直觉类比——K 近邻只看“最像的 k 个”，不看全体，这条类比可以直接写进作业的 justify 段落。
+- 🔴 **notebook 完全没有的 KNN 类比——用“不知道某学生 GPA，但知道他离哪些同学最近”讲 K 近邻填补**（ASR "hitting around" 疑为 "clustered close to"）：
+
+> *"[T]hat student, I do not know his GPA[,] but I know that he is [close?] around 5 other students, around 10. ... I will use five closest neighbors['] ... average value of the five closest neighbors' GPA to fill the missing value of his missing GPA. ... I only use the neighbors. I will not use the whole population's average."*
+
+（`02:04:56`–`02:05:44`）
+- **这段改变了什么**：确认了 §3.2 三种填补方法的操作流程。
+
+新增了“KNN 邻居定义很弱”这条易错点背后教授自己给的直觉类比——K 近邻只看“最像的 k 个”，不看全体，这条类比可以直接写进作业的 justify 段落。
 
 ### 3.3 【cell 32–34】两种离群点规则：IQR vs Z 分数
 
@@ -569,15 +795,27 @@ $$\text{IQR 规则：} x < Q_1 - k\cdot\text{IQR} \;\text{或}\; x > Q_3 + k\cdo
 
 | 列 | IQR 标记 | Z 标记 | 为什么差这么多 |
 |---|---|---|---|
-| log_price | 1,453 | 453 | Q1 = 4.29，Q3 = 5.19，IQR = 0.90；须 2.94–6.55；两端都有长尾 |
+| log_price | 1,453 | 453 | Q1 = 4.29，Q3 = 5.19，IQR = 0.90（详见表后） |
 | accommodates | 3,299 | 1,378 | Q1 = 2，Q3 = 4，须 −1 到 7；**所有 ≥ 8 人的房源全被 IQR 标记** |
 | bathrooms | **14,307** | 1,878 | **Q1 = Q3 = 1 → IQR = 0 → 须就是 [1, 1]**：凡是不等于 1 的浴室数（0、1.5、2……）全被标成离群点——占 21% |
+
+**log_price · 为什么差这么多**
+
+Q1 = 4.29，Q3 = 5.19，IQR = 0.90。
+
+须 2.94–6.55。
+
+两端都有长尾
 
 cell 33：`log_price` 的 IQR 离群比例 = **0.0213**（1,453 / 68,133）；这个 `outlier_iqr` 列留在 `air_clean` 里（作业要求 "keep an `outlier_iqr` flag column"）。
 
 **读法**（cell 34 原文）："IQR usually flags more points because it does not assume a normal distribution. Z-score assumes an approximately Gaussian variable, so it can miss heavy-tail outliers and over-flag variables that are not normal."
 
-**为什么这么写**：作业第 2.1 题原话："Outlier detection on `log_price`, `accommodates`, and `bathrooms` using **both IQR (1.5 × IQR)** and **Z-score (threshold 3)**. Compare the two methods."——这三个数就是答案，但**比较**要你自己写；`bathrooms` 那一行是最值得写的：**IQR规则在此离散集中列上退化**（IQR=0），许多正常差异也被标记；Z规则给另一尺度参照，是否更合业务须核查，不能自动判为更合理。
+**为什么这么写**：作业第 2.1 题原话："Outlier detection on `log_price`, `accommodates`, and `bathrooms` using **both IQR (1.5 × IQR)** and **Z-score (threshold 3)**. Compare the two methods."——这三个数就是答案，但**比较**要你自己写。
+
+`bathrooms` 那一行是最值得写的：**IQR规则在此离散集中列上退化**（IQR=0），许多正常差异也被标记。
+
+Z规则给另一尺度参照，是否更合业务须核查，不能自动判为更合理。
 
 **⚠️ 易错点**：
 - `bathrooms` 的 14,307 不是"真的有两万个离群点"，是 IQR 规则退化——作业里指出这点比照抄数字有价值得多。
@@ -588,9 +826,9 @@ cell 33：`log_price` 的 IQR 离群比例 = **0.0213**（1,453 / 68,133）；�
 
 输入为一列带原索引的数、IQR 倍数 k 或 Z 阈值；输出是同索引布尔标记及计数。方法没有训练类别或删行；若用于未来样本，必须另存参照阈值。取六值 `[1,2,2,3,4,20]`，按原 notebook 的样本 std 与默认线性分位数：
 
-1. Q1位置1.25，两端2/2，Q1=2；Q3位置3.75，两端3/4，Q3=3.75，IQR=1.75。k=1.5，低界−.625、高界6.375。
+1. Q1位置1.25，两端2/2，Q1=2；Q3位置3.75，两端3/4，Q3=3.75，IQR=1.75。k=1.5，低界−0.625、高界6.375。
 2. 逐值比较低/高界，得到 `False,False,False,False,False,True`；只有20超高界。布尔求和为1，均值为1/6；比较符号是严格小于/大于，恰在界上不会被标记。
-3. 同列均值16/3，平方偏差和790/3，样本方差158/3，std≈7.257180。六个Z约为−.5971/−.4593/−.4593/−.3215/−.1837/2.0210。阈值3时**一个都不标记**：20自己也拉大了标准差；两法回答的是各自规则，不能由“多数标记”投票得真值。
+3. 同列均值16/3，平方偏差和790/3，样本方差158/3，std≈7.257180。六个Z约为−0.5971/−0.4593/−0.4593/−0.3215/−0.1837/2.0210。阈值3时**一个都不标记**：20自己也拉大了标准差；两法回答的是各自规则，不能由“多数标记”投票得真值。
 4. 将Z阈值降为2，20会被标记；将IQR k降为.5，界为1.125/4.625，1与20都被标记。参数变化留下的是规则敏感性，不是数据本身变坏。
 
 ```mermaid
@@ -614,7 +852,13 @@ IQR=0 并非程序无法运行，两界会重合；这样可能把离散变量�
 
 **所以呢**：标记给出可检查的原行，方法差异应回到分母、分布与参数解释；选择缩放器时继续保留这些区别。
 
-**🎙️ 课堂补充**（`02:06:26`–`02:07:42`，约 1.3 分钟，B · 讲了同讲义）：教授只是简讲了一遍 IQR 与 Z 分数两条离群点规则的公式，没有给出 Airbnb 三列（`log_price` / `accommodates` / `bathrooms`）任何具体计数或对比结论——*"[I]f we want to identify some [outlier] data points, we can use the IQR. I already informed [you] that IQR is Q3 minus Q1. ... [A]lternatively we can use this kind of Z-score[:] ... the X value minus mean value divided by the standard deviation."*（`02:06:34`–`02:07:21`）与笔记 §3.3 的公式一致；notebook 里 `bathrooms` 的 IQR=0 退化、14,307 个“离群点”这条最有价值的发现，本段没有口头提及。
+**🎙️ 课堂补充**（`02:06:26`–`02:07:42`，约 1.3 分钟，B · 讲了同讲义）：教授只是简讲了一遍 IQR 与 Z 分数两条离群点规则的公式，没有给出 Airbnb 三列（`log_price` / `accommodates` / `bathrooms`）任何具体计数或对比结论——
+
+> *"[I]f we want to identify some [outlier] data points, we can use the IQR. I already informed [you] that IQR is Q3 minus Q1. ... [A]lternatively we can use this kind of Z-score[:] ... the X value minus mean value divided by the standard deviation."*
+
+（`02:06:34`–`02:07:21`）与笔记 §3.3 的公式一致。
+
+notebook 里 `bathrooms` 的 IQR=0 退化、14,307 个“离群点”这条最有价值的发现，本段没有口头提及。
 
 ### 3.4 【cell 36–37】标准化：StandardScaler vs RobustScaler
 
@@ -631,13 +875,27 @@ print(X_rob.describe().T[['mean', 'std', 'min', 'max']])
 
 **公式**（cell 35 原文 + 补充）：
 
-$$\text{StandardScaler：} z = \frac{x - \mu}{\sigma_0}, \qquad \text{RobustScaler：} z = \frac{x - \text{median}}{\text{IQR}}$$
+StandardScaler 先减训练均值，再除训练总体标准差：
+
+$$z=\frac{x-\mu}{\sigma_0}.$$
+
+RobustScaler 先减训练中位数，再除训练 IQR；IQR=0 的软件政策在输出旁说明：
+
+$$z=\frac{x-\text{median}}{\text{IQR}}.$$
 
 | 符号 | 含义 |
 |---|---|
 | $\mu,\sigma_0$ | 训练列均值、ddof=0的总体口径标准差（对离群点敏感） |
 | median、IQR | 该列的中位数、$Q_3 - Q_1$（对离群点稳健） |
-| $z$ | 缩放输出；非退化训练列的StandardScaler均值0/总体std1，RobustScaler中位0/IQR1；新数据不保证这些统计量 |
+| $z$ | 缩放输出（详见表后） |
+
+**该计算 · 含义**
+
+缩放输出。
+
+非退化训练列的StandardScaler均值0/总体std1，RobustScaler中位0/IQR1。
+
+新数据不保证这些统计量
 
 **逐行**：`fit_transform` 返回 numpy 数组 → 用 `pd.DataFrame(..., columns=[f + '_std' for f in feats])` 接回列名（列表推导式，T02 §3 助教讲过）。
 
@@ -657,7 +915,19 @@ $$\text{StandardScaler：} z = \frac{x - \mu}{\sigma_0}, \qquad \text{RobustScal
 
 输入是训练矩阵、按列计算的中心与尺度约定；fit 输出可复用的 `mean_/var_/scale_` 或 `center_/scale_` 状态，transform 输出保持行列次序的数值矩阵。缩放不移动样本之间的排序关系，也不把异常值删除。
 
-sklearn StandardScaler 的分母为总体口径 $\sigma_0=\sqrt{\sum_i(x_i-\mu)^2/n}$（ddof=0），不是本篇 Z 离群规则使用的样本 $s$（ddof=1）。$\mu$ 是训练列平均，$n$ 是有效训练数，$\sigma_0$ 是保存尺度。只有非零方差训练列，缩放后的总体 std=1；pandas `describe()` 用样本 std，所以显示 $\sqrt{n/(n-1)}$。新测试数据并不保证均值0或std1。RobustScaler 默认保存 median 与Q3−Q1；IQR非零的训练列才有训练IQR1。
+sklearn StandardScaler 的分母为总体口径 $\sigma_0=\sqrt{\sum_i(x_i-\mu)^2/n}$（ddof=0），不是本篇 Z 离群规则使用的样本 $s$（ddof=1）。
+
+$\mu$ 是训练列平均，$n$ 是有效训练数，$\sigma_0$ 是保存尺度。
+
+只有非零方差训练列，缩放后的总体 std=1。
+
+pandas `describe()` 用样本 std，所以显示 $\sqrt{n/(n-1)}$。
+
+新测试数据并不保证均值0或std1。
+
+RobustScaler 默认保存 median 与Q3−Q1。
+
+IQR非零的训练列才有训练IQR1。
 
 同一训练列 `[10,20,30]`，一个新值40：
 
@@ -670,6 +940,10 @@ sklearn StandardScaler 的分母为总体口径 $\sigma_0=\sqrt{\sum_i(x_i-\mu)^
 | inverse_transform新输出 | 2.449490×8.164966+20=40 | 2×10+20=40 |
 
 这是一条完整可逆的计算路径。若又拿测试40参加fit，中心会改成25、尺子也变了；之后变的是参照状态，不是先前输出自动被重写。对预测实验先分数据，fit仅训练，在验证/测试上transform；探索整份数据可描述性fit全表，但不得将结果冒充样本外建模过程。
+
+**用新 40 走图**：S0 输入训练 10/20/30，S1 保存均值 20、scale≈8.165。40 到 S2 只减 20、除 8.165，得约 2.449；S3 保行索引，S4 可还原 40。
+
+箭头表示状态依次产生与复用，不让新值回 S1 重训。文字替代：先存训练尺子，新行沿用；下方既有新值 5 自测检验同一路径。
 
 ```mermaid
 flowchart TD
@@ -687,7 +961,13 @@ flowchart TD
 
 **后续概念预告**：主成分分析（PCA）将多列变成组合坐标；第一主成分是训练数据中保留方差最大的单位方向。M04正式推导，本节只说明缩放为什么会影响哪个方向占大方差，不要求现在执行PCA。
 
-**🎙️ 课堂补充**（`02:07:42`–`02:08:48`，约 1.1 分钟，B · 讲了同讲义）：只念了两个公式，没有展开“何时用哪个”的取舍标准，也没有提 Airbnb 五个特征的具体输出——*"[F]or the standardization... the actual value [minus] the mean divided by the standard deviation. ... [A]fter... standardization[,] all the columns' mean value will become zero, and the standard deviation will become one. ... [W]e can use... robust scaler... [subtracting] median and divid[ing] it by the IQR."*（`02:07:56`–`02:08:40`）与笔记 §3.4 的两个公式一致；`bathrooms_rob` 因 IQR=0 退化成“减 1”这条易错点没有被提及。
+**🎙️ 课堂补充**（`02:07:42`–`02:08:48`，约 1.1 分钟，B · 讲了同讲义）：只念了两个公式，没有展开“何时用哪个”的取舍标准，也没有提 Airbnb 五个特征的具体输出——
+
+> *"[F]or the standardization... the actual value [minus] the mean divided by the standard deviation. ... [A]fter... standardization[,] all the columns' mean value will become zero, and the standard deviation will become one. ... [W]e can use... robust scaler... [subtracting] median and divid[ing] it by the IQR."*
+
+（`02:07:56`–`02:08:40`）与笔记 §3.4 的两个公式一致。
+
+`bathrooms_rob` 因 IQR=0 退化成“减 1”这条易错点没有被提及。
 
 ### 3.5 【cell 39–42】协方差、相关矩阵、热力图、相关 ≠ 因果
 
@@ -705,24 +985,59 @@ sns.heatmap(corr_matrix, annot=True, fmt='.2f', cmap='coolwarm'); plt.title('Cor
 air_clean[corr_cols].corr()['log_price'].drop('log_price').sort_values(key=abs, ascending=False).head(5)
 ```
 
-**逐行**：`df.cov()` / `df.corr()` 一次算所有列两两的协方差 / Pearson 相关（M03 §2.11 的公式，分母 n−1）；`sns.heatmap(annot=True, fmt='.2f', cmap='coolwarm')`——在格子里标数、两位小数、采用coolwarm色带；原代码自动色域不保证零居中，颜色先读色标再读数值；最后一行取 `log_price` 那一列，去掉自己（1.0），**按绝对值**排序（`key=abs`，这样负相关也能排前面），取前 5。
+**逐行**：`df.cov()` / `df.corr()` 一次算所有列两两的协方差 / Pearson 相关（M03 §2.11 的公式，分母 n−1）。
+
+`sns.heatmap(annot=True, fmt='.2f', cmap='coolwarm')`——在格子里标数、两位小数、采用coolwarm色带。
+
+原代码自动色域不保证零居中，颜色先读色标再读数值。
+
+最后一行取 `log_price` 那一列，去掉自己（1.0），**按绝对值**排序（`key=abs`，这样负相关也能排前面），取前 5。
 
 **输出**（相关矩阵，cell 39）：
 
-| | log_price | accommodates | bathrooms | bedrooms | beds | reviews | rating |
-|---|---|---|---|---|---|---|---|
-| log_price | 1 | **0.578** | 0.377 | 0.483 | 0.470 | −0.025 | 0.081 |
-| accommodates | | 1 | 0.523 | 0.724 | **0.829** | 0.052 | −0.023 |
-| bedrooms | | | 0.609 | 1 | 0.730 | −0.032 | 0.012 |
+一行是一项填补后特征与 log_price 的相关，r 无单位，数值沿用原输出。
+
+| 特征 | 与 log_price 的 r |
+|---|---:|
+| accommodates | 0.578 |
+| bedrooms | 0.483 |
+| beds | 0.470 |
+| bathrooms | 0.377 |
+| number_of_reviews | −0.025 |
+| review_scores_rating | 0.081 |
+
+读第一行：容量较大房源通常具有较高 log 价格，相关 0.578；没有控制地点等共同因素。第一列给原数值字段身份，第二列来自两列有效成对行，不是美元效应。
+
+原宽表中其它已显示格拆出保留；空格只表示原未展示，不当作 0。
+
+| 列对 | r |
+|---|---:|
+| accommodates / bathrooms | 0.523 |
+| accommodates / bedrooms | 0.724 |
+| accommodates / beds | 0.829 |
+| accommodates / number_of_reviews | 0.052 |
+| accommodates / review_scores_rating | −0.023 |
+| bedrooms / bathrooms | 0.609 |
+| bedrooms / beds | 0.730 |
+| bedrooms / number_of_reviews | −0.032 |
+| bedrooms / review_scores_rating | 0.012 |
+
+列对就是该交叉格来源，r 是同口径相关。原对角为各非退化列与自己相关 1；对称格相同，不再横向重复成 8 列宽表。
 
 cell 41 的前 5：accommodates 0.578、bedrooms 0.483、beds 0.470、bathrooms 0.377、review_scores_rating 0.081。`cov_matrix` 算了但没显示（协方差带单位，看不出强弱——M03 §2.11）。
 
 **读法**（cell 42 原文）："A larger `accommodates` is strongly correlated with a higher `log_price`, but size does not *cause* price by itself. **Location, amenities, and demand are confounding factors** that affect both. This is exactly the kind of reasoning required in the assignment."
 
-**为什么这么写**：作业第 2.4 题四条要求（相关矩阵、带数字的热力图、前 3 相关特征、一个混杂变量）逐条对应 cell 39–42。⚠️ 热力图里 **accommodates–beds 0.829、accommodates–bedrooms 0.724、bedrooms–beds 0.730** 这三个数比与 `log_price` 的相关更值得写——它们提示相关特征可能影响T02 §5.5的条件系数解释；仅这些相关数不能证明 `beds` 负系数的唯一原因（多重共线性，[[IS6400_Business_Data_Analytics/_meta/数据集卡片#Airbnb.csv|数据集卡片]] §5.1）。
+**为什么这么写**：作业第 2.4 题四条要求（相关矩阵、带数字的热力图、前 3 相关特征、一个混杂变量）逐条对应 cell 39–42。
+
+⚠️ 热力图里 **accommodates–beds 0.829、accommodates–bedrooms 0.724、bedrooms–beds 0.730** 这三个数比与 `log_price` 的相关更值得写——它们提示相关特征可能影响T02 §5.5的条件系数解释。
+
+仅这些相关数不能证明 `beds` 负系数的唯一原因（多重共线性，[[IS6400_Business_Data_Analytics/_meta/数据集卡片#Airbnb.csv|数据集卡片]] §5.1）。
 
 **⚠️ 易错点**：
-- 本例显式选七个数值列再 `corr()`，所以`city`、`property_type`没有进入矩阵；现代pandas默认并不保证混合字符串表自动跳过非数值列——它们与 `log_price` 的关系要用分组箱线图（§2.4）或分组中位数（§2.3）看。
+- 本例显式选七个数值列再 `corr()`，所以`city`、`property_type`没有进入矩阵。
+
+现代pandas默认并不保证混合字符串表自动跳过非数值列——它们与 `log_price` 的关系要用分组箱线图（§2.4）或分组中位数（§2.3）看。
 - `review_scores_rating` 与价格相关只有 0.08——这份数据中已填补评分与log价格的线性相关较弱，不能推出所有非线性或分组关系都不存在，作业写 insight 时这是一个反直觉的好例子。
 - 热力图的颜色尺度默认按数据范围，两张图不可直接比色；作业要比就固定 `vmin=-1, vmax=1`。
 
@@ -739,6 +1054,20 @@ cell 41 的前 5：accommodates 0.578、bedrooms 0.483、beds 0.470、bathrooms 
 例如 cov(a,b)=[(−1)(−2)+0+1×2]/2=2；各 std 为1/2/1，相除后相关矩阵为 `[[1,1,-1],[1,1,-1],[-1,-1,1]]`。热力图的(a,c)格来自这两列的−1；只有明确以零为中心的色域，才能将红/蓝对应为正/负，默认颜色先表示当前色标上的大小，不会画出变量发生改变的因果方向。目标为a时，去掉自相关后 b=1、c=−1；按绝对值两者平局，须报告两者或指定平局顺序，不能将负号误当不重要。
 
 pandas在存在缺失时默认按每一对的共同非缺失行计算，两格可能有不同样本数；需要同时列有效数矩阵。先填补再相关也会改变关系，原始观测相关与填补后相关应分开标。全常数/成对不足/混合字符串须先处理，NaN不能转成“关系为0”；0相关也不能证明无非线性关系。正文 M03 §2.11 已展开缺失成对的正/负反例。图若要跨数据对比，明确 `vmin=-1,vmax=1`；固定颜色只统一编码，不消除样本差异。
+
+**一个格怎样读颜色与数值**：只画上述 a/b/c 三行教学表，不重跑 Airbnb 完整预处理。
+
+![[IS6400_Business_Data_Analytics/notes/figures/t03-readability/toy-correlation.svg]]
+
+横纵是列名，格值是两列 Pearson r；色域固定 [−1,1]，0 居中。每格由 3 对有效观测计算，没有因果箭头。
+
+走 (a,c)：a 上升 1→2→3，c 下降 3→2→1；样本 cov=−1，两 std 均 1，所以 r=−1。文字替代：a/b 完全正线性，另两列对完全负线性；有缺失时各格有效数不一定都是 3。
+
+<details><summary>读图自测：c 的 −1 会在绝对值排名里输给 b 的 +1 吗？</summary>
+
+不会，两者绝对值都是 1，平局。符号给方向，绝对值给线性强度；都不证明因果。
+
+</details>
 
 **迁移自测**：把b改为原来的十倍，cov(a,b)与corr(a,b)怎样变？<details><summary>答案</summary>cov从2到20，b的std从2到20，corr仍1。协方差改变单位，相关抵消正尺度；若乘负数则相关符号翻转。来源：笔记补充，逐偏差乘积可核。</details>
 
@@ -775,13 +1104,15 @@ plt.title('Correlation Heatmap with Fixed Color Scale')
 plt.show()
 ```
 
-**逐行**：新建画布；沿用同一`corr_matrix`，三个新增参数只固定颜色映射，不重算相关；最后设置标题再显示。**输出**：实际两版对照已渲染并查看，色域分别为[−.040035,1]/[−1,1]，矩阵数字相同；见临时`t03-heatmap-check.py`和`t03-heatmap-check.json`。课堂关于红正蓝负的描述可作为零居中图的读法，不能当作此原代码默认色域已保证的性质。
+**逐行**：新建画布；沿用同一`corr_matrix`，三个新增参数只固定颜色映射，不重算相关；最后设置标题再显示。**输出**：实际两版对照已渲染并查看，色域分别为[−0.040035,1]/[−1,1]，矩阵数字相同；见临时`t03-heatmap-check.py`和`t03-heatmap-check.json`。课堂关于红正蓝负的描述可作为零居中图的读法，不能当作此原代码默认色域已保证的性质。
 
 **🎙️ 课堂补充**（`02:08:48`–`02:09:51`，约 1.1 分钟，A · 课上展开）
 
 - 热力图颜色编码的口头说明（notebook 只写了 `cmap='coolwarm'`，没有解释）：*"[T]o see... all the correlation metrics, the [heatmap][:] if they are positively correlated, it's closer to the red[;] if they are negatively correlated... it will be close to the dark blue."*（`02:09:15`–`02:09:24`）
 - 相关系数低 ≠ 无关系的补充（ASR "field correlation" 疑为 "zero correlation"）：*"[Z]ero[?] correlation does not mean they do not have [a] relationship[;] maybe they have non-linear correlation, non-linear relationship."*（`02:09:36`–`02:09:41`）
-- **这段改变了什么**：确认了 §3.5 热力图与“相关≠因果”的读法；补上了 notebook 没写的热力图配色规则，以及一条独立于因果问题的提醒——低（线性）相关不代表没有关系，可能是非线性关系。
+- **这段改变了什么**：确认了 §3.5 热力图与“相关≠因果”的读法。
+
+补上了 notebook 没写的热力图配色规则，以及一条独立于因果问题的提醒——低（线性）相关不代表没有关系，可能是非线性关系。
 
 ---
 
@@ -801,7 +1132,19 @@ flowchart TD
     H --> I["结论<br/>相关 ≠ 因果：说出混杂变量"]
 ```
 
-**三条贯穿的纪律**：① 每个统计量选"抗离群点"还是"敏感"版本（中位数 vs 均值、IQR vs 标准差、RobustScaler vs StandardScaler）要**看分布形状再定**——偏度是那个信号；② 每张图三件套（title / xlabel / ylabel）+ 2–3 句解释；③ 每个数字要能回答"所以呢"——`review_scores_rating` 缺 22% 不是结论，"没评论就没评分，所以填中位数是在假设新房源是典型房源"才是。
+**总览读法**：箭头是讲解与处理状态顺序。真实建模先分训练/评估，填补和缩放只在训练内 fit；这项条件不能由总览顺序替代。
+
+缺评分房源到 F：先数缺失、判断机制，再按已声明规则建 air_clean。G 换尺子，不恢复真实缺评分；H 得到处理后的相关。
+
+1. 看分布与业务目标选择中心/尺度，中位数和 RobustScaler 都非无条件更好。
+2. 保存图标题、轴、单位和读法，每个数字可回到输入。
+3. 缺 22% 是范围；填中位数假设未评论房源具有典型评分。缺失真值仍未知。
+
+<details><summary>总览自测：经过 G，缺评分已经是真实观察吗？</summary>
+
+没有。F 只是估计，G 只改尺度；后续关系仍须承认填补假设。
+
+</details>
 
 ---
 
@@ -1065,7 +1408,7 @@ flowchart TD
 | ⑤ | 28 | KNN只传两列，填评分时仅靠卧室定义邻居；这一单一观察维度的正缩放不改变邻居顺序，增加多列后须检查尺度 | §3.2 易错点 |
 | ⑥ | 3 | `np.random.seed(42)` 在本 notebook 里没有被任何随机操作用到 | 无害；作业模板 |
 | ⑦ | 1 | 自称 "follows the original 'Week 3 - Description' notebook"——说明这是**改写版**，原版（可能带 AI Prompt cell）没有发 | 与 T01/T02 风格不同的原因 |
-| ⑧ | 35 | Week 4 notebook 的 kernel 是 Python 3.7.6（2020 年），本 notebook 是 3.13.5——两周的 notebook 出自不同年份 | 见 [[T04-特征选择与PCA实战-Iris]] §9.3 |
+| ⑧ | 35 | 旧记录列 Week 4 kernel 为 Python 3.7.6，本周为 3.13.5；版本不同不能证明制作年份 | 保留历史版本记录；当前 T04 的 43-cell 源 metadata 为 Python 3.9.12，详见 [[T04-特征选择与PCA实战-Iris]] §9.3 |
 
 ### 9.4 课外补充
 

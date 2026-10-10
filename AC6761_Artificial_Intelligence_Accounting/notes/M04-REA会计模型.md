@@ -10,16 +10,22 @@ new_concepts: [REA模型, 经济资源, 经济事件, 经济参与者, 内部参
 tags: [AC6761, REA, 会计信息系统, UML, 数据库建模, McCarthy]
 status: v1.0
 updated: 2026-10-07
-mechanism_review: passed
+mechanism_review: pending
 mechanism_review_mode: efficient-20261002
 mechanism_content: repaired
 mechanism_acceptance: "2026-10-02 简化流程；4 图实看，Step 3/5 UNIQUE 可读；未做独立全量 Q/R；transcript pending 与来源限制保留"
 mechanism_spec: v1
+readability_rules: v2
+readability_review: pending
 ---
 
 # M04 · REA 会计模型（REA Accounting Model）
 
-> **本讲一句话**：前三讲教你**怎么用会计的方式记账、读报表**；这一讲告诉你 —— **这套方式本身是 1494 年为纸笔时代设计的，它把大量业务信息在进账之前就扔掉了**；然后教你另一套不扔信息的记法：**把业务直接建模成「资源—事件—参与者」，存进关系数据库**。
+> **本讲问题**：同一笔销售，怎样同时保存金额、商品、客户和经手人的关系？
+>
+> 先对比科目汇总与 REA 事件记录，再学 UML 的类、关联、属性和多重性，最后决定关联怎样转换成外键或独立表。
+>
+> 本讲简化科目汇总不直接展示全部业务细节，真实凭证/ERP 明细仍可保留它们。REA 显式建模已正确捕获的关系，也不自动保证资料完整。
 > **原始材料**：`Week 4 PPT.pptx`（53 页） ｜ **转录**：`merged`（2026-10-07 合并 9 月 30 日三段录音）。
 
 > ✅ **本笔记为 v1.0**。S3/S4 从 REA 开场讲到 p.29 多重性；p.30–53 未直接录到，保留自学正文且不可降权。S2 的 Quiz 1 讲评与年报顺延分别回填 M02/M03；S3 开头是课堂视频旁白。
@@ -44,7 +50,9 @@ Dr. 销货成本 8    Cr. 存货 8
 Dr. 应收账款 10   Cr. 销售收入 10
 ```
 
-**谁卖的（Paul）、卖给谁（Joe）、卖的是什么（曲奇）、在哪卖的（又一城 7-11）——全部丢失。** 因为它们不能用钱衡量，而 [[M01-会计与商业]] 的**货币计量假设**规定：会计只记能用货币表达的东西。
+**只看这四行科目金额，不能直接知道 Paul、Joe、曲奇和地点的关系。** 要回答这些问题，需查保留相应身份与明细的业务记录。
+
+货币计量限定财务金额如何表达，不禁止真实凭证保留客户、商品和经手人。本节对照的是所展示的简化科目汇总与显式事件关系。
 
 1982 年，密歇根州立大学的 **Bill McCarthy** 发表了一篇论文，主张：**借、贷、账户这些东西都是"人工构造物（artifacts）"，不是自然存在的现象**，它们是纸笔时代的产物，而且**遮蔽了非会计用途所需要的业务细节**。他提出用三类自然存在的对象来建模企业：
 
@@ -58,10 +66,12 @@ Dr. 应收账款 10   Cr. 销售收入 10
 
 | 段 | 页 | 在讲什么 |
 |---|---|---|
-| **① 论点** | p.2–10 | 复式记账 vs REA 的强项与局限；会计的历史；McCarthy 1982 的主张 |
+| **① 论点** | p.2–10 | 复式记账与 REA 的论点、会计史及 McCarthy 1982 |
 | **② 例子** | p.11–19 | 用一块曲奇把两种记法各跑一遍；引出 REA 三要素与**二元性（duality）** |
 | **③ 工具** | p.20–35 | 怎么把 REA 画出来：概念/逻辑/物理三层模型 + **UML 类图**四构件（类、关联、属性、**多重性**）+ 四道多重性练习 |
 | **④ 落地** | p.36–53 | 怎么把画出来的图变成**真正的数据库表**：关系模型三原则 + **五步转换法** |
+
+**论点段的阅读顺序**：先比较复式记账与 REA 的强项和局限，再用会计历史理解 McCarthy 在 1982 年提出主张的背景。
 
 **⚠️ 注意第③④段占了 34 页（64%），而且几乎全是可操作的规则。** 这一讲的重心**不在哲学思辨，在动手建模**。W6 的 ACCESS 上机就是把这些规则敲进软件。
 
@@ -216,7 +226,7 @@ Dr. 应收账款 10   Cr. 销售收入 10
 
 **为什么重要（💡 笔记补充，讲义没展开）**
 
-复式记账关心的是**结果**（这一年赚了多少、现在有多少现金），**不关心过程**（这些钱是怎么赚来的、经过了哪些环节、谁参与了、花了多长时间）。
+本讲展示的简化总账汇总主要呈现**财务结果**（这一年赚了多少、现在有多少现金），分录本身不直接呈现完整业务过程（这些钱是怎么赚来的、经过了哪些环节、谁参与了、花了多长时间）。
 
 用 [[M02-交易的会计处理]] 的例子：FastForward 那 16 笔交易记完之后，你能算出净利润和试算表，但你**说不出**：
 - 哪个客户贡献最多？（账上只有 "Accounts Receivable" 一个总数）
@@ -230,10 +240,10 @@ Dr. 应收账款 10   Cr. 销售收入 10
 教授把借贷维持会计等式、关注利润/现金流与标准化四张报表作为复习，原话：*"so we already know that"*（S3 `08:36`）。这里是已学会计流程的唤醒，没有新分录或考试范围声明。
 
 **💡 换个说法（笔记补充）**
-复式记账像一台**只输出摘要的记录仪**：它把每天发生的成千上万件事压缩成一张损益表和一张资产负债表。压缩比极高，但**压缩是有损的**，扔掉的部分再也找不回来。
+如果系统只保留本讲示例中的科目汇总，它像一台只输出摘要的记录仪：报表无法反推出未保存的客户、商品与流程细节。真实企业还可能在凭证、辅助账或 ERP 中保留这些明细，是否可回查取决于实际系统。
 
 **⚠️ 常见误解**
-- ❌ "复式记账是记录业务的方法"。→ 它是**记录业务的财务影响**的方法。业务本身（谁、在哪、多久）不在它的记录范围内。
+- ❌ "复式记账是记录业务的方法"。→ 它是**记录业务的财务影响**的方法。这些字段不在复式分录本身的必备结构里；真实凭证、辅助账或 ERP 可以另行记录。
 
 **与其他概念的关系**
 本页是 §2.1.3 REA 的对照组；"focuses on financial outcomes" 这一句是 §2.1.4 "holistic view" 的反面。
@@ -285,7 +295,19 @@ GAAP 与 IFRS（[[M01-会计与商业]] §2.6.1–2.6.2）都是**围绕复式�
 
 **这段改变了什么**：范围有限应限定为传统财务主表/本讲简化科目汇总，不等于整份年报或所有真实复式系统完全没有非财务信息；REA 把业务语境直接存为结构化事件关系。
 
-**课堂播放材料（视频旁白，不是教授原话；S3 `00:00`–`04:02`、`04:40`–`07:37`）**：第一段讲自动发票捕获的输入（纸张、PDF、扫描图）与输出（供应商、发票编号、日期、金额、行项目及采购订单号）；在 `01:31` 区分 OCR（把图中文字识别成文本）与 IDP（智能文档处理，按版面/语境抽取字段），`01:59` 提到完整性与异常数值检查。它把正确录入视为后续对单、审批、付款的起点，最终目标是减少人工触碰的处理流程。第二段列安全隐私、实施成本、监管与培训挑战，以及自动化、预测分析、人员技能和实时决策支持趋势。**这些是课堂播放视频的主张，未获独立性能/合规验证，不能由此保证全自动永远正确。** `04:11` 是教师切换视频的说明；`07:43` 后才是教师对视频的评价。
+**课堂播放材料（视频旁白，不是教授原话；S3 `00:00`–`04:02`、`04:40`–`07:37`）**：第一段讲自动发票捕获的输入（纸张、PDF、扫描图）与输出（供应商、发票编号、日期、金额、行项目及采购订单号）；
+
+在 `01:31` 区分 OCR（把图中文字识别成文本）与 IDP（智能文档处理，按版面/语境抽取字段），`01:59` 提到完整性与异常数值检查。
+
+它把正确录入视为后续对单、审批、付款的起点，最终目标是减少人工触碰的处理流程。
+
+第二段列安全隐私、实施成本、监管与培训挑战，以及自动化、预测分析、人员技能和实时决策支持趋势。
+
+**这些是课堂播放视频的主张，未获独立性能/合规验证，不能由此保证全自动永远正确。**
+
+`04:11` 是教师切换视频的说明；
+
+`07:43` 后才是教师对视频的评价。
 
 **💡 换个说法（笔记补充）**
 复式记账是**后视镜**：非常清晰、非常可靠、还有法律效力，**但它只能看见已经开过的路**，而且只显示"路程"和"油耗"，不显示"路况"和"乘客体验"。
@@ -411,7 +433,7 @@ REA 把"事件"当成一等公民来记录的野心讲完了，它是否真的�
 
 **强项 ①：整体视图 —— 财务与非财务数据一体化。**
 讲义举的两个例子值得记住，因为它们精确对应 p.3 的两条局限：
-- **order fulfillment time 订单履行时长** ⇒ 因为 REA 记录了 `Sale.date` 和 `Delivery.date`，两者相减就是履行时长。**复式记账里没有 Delivery 这个事件，所以算不出。**
+- **order fulfillment time 订单履行时长** ⇒ 要算订单履行时长，必须另有 `Order.orderDate` 及与交付/销售履行记录的关联；若只有 `Sale.date` 与 `Delivery.date`，最多只能算销售至交付间隔。**复式记账里没有 Delivery 这个事件，所以算不出。**
 - **resource utilization 资源利用率** ⇒ 因为 REA 记录了每台设备参与了哪些生产事件。
 
 **强项 ②：流程优化 —— 通过映射事件序列识别低效环节。**
@@ -424,8 +446,8 @@ REA 把"事件"当成一等公民来记录的野心讲完了，它是否真的�
 **强项 ④：适应性 —— 支持实时数据分析与 AI 驱动的预测。**
 ⭐ **这是全讲唯一一处把 REA 与 AI 直接挂钩的句子**，也是本讲与课程主题（Artificial Intelligence Accounting）的接口。
 💡 **展开（笔记补充，讲义只有一行）**：机器学习需要的是**细粒度、结构化、有语境**的数据。
-- 复式记账给 AI 的是**月度汇总的科目余额**——样本量小、特征少、本讲金额汇总不直接呈现业务语境。
-- REA 给 AI 的是**每一笔事件的完整记录**——样本量大、特征丰富（谁、何时、何地、多少）。
+- 若只向 AI 提供本讲示意的月度科目余额，输入就缺少逐笔业务语境；复式记账系统仍可通过凭证、辅助账或 ERP 提供明细。
+- REA 将事件、资源和参与者关系明确建模，便于组织逐笔特征；实际记录是否完整、样本是否足够，仍取决于采集与数据质量。
 - ⇒ **想做 W9–W10 的"AI 财报分析"，数据基础的质量直接决定上限。** 这条线讲义没画出来，但它是本课前后半段的真正连接点。
 
 **局限 ①：实施复杂 —— 需要重新设计数据库并培训人员，才能采集细粒度的事件/参与者数据。**
@@ -433,10 +455,10 @@ REA 把"事件"当成一等公民来记录的野心讲完了，它是否真的�
 
 **局限 ②：⭐ 缺乏标准化 —— 没有通用的 REA 报告指引，使审计与跨公司比较变得复杂。**
 这一条**最致命**，而且与 p.3 强项 ② 完全对称：
-- 复式记账有 GAAP/IFRS ⇒ 任何两家公司的报表可以直接比
-- REA 没有统一规范 ⇒ **每家公司的模型都不一样**，审计师不知道该按什么标准查，分析师不知道该怎么比
+- 报表可比性取决于适用的 GAAP/IFRS、会计政策及披露口径；采用复式记账不保证任意两家公司可以不经调整直接比较。
+- REA 是内部数据建模方式，模型会随业务而异，但财务报告仍须遵守适用的确认、计量和列报规则；内部模型本身不决定报告是否合规或可审计。
 
-💡 **这解释了一个现实问题（笔记补充）**：REA 提出 40 多年了，为什么上市公司仍然全部用复式记账对外报告？**因为对外报告的本质是"可比性"，而 REA 恰恰在这一点上最弱。** REA 的真实用武之地是**企业内部的信息系统**——那里不需要跨公司可比。
+💡 **内部模型与对外报告怎样衔接（笔记补充）**：REA 可以组织内部业务事实，再按适用会计规则生成对外报表。跨企业可比性取决于一致的确认、计量和披露口径，不能由底层是否采用 REA 直接判定。内部系统若用于集团汇总或企业间比较，同样需要统一口径。
 
 **🎙️ 课堂补充**（S3 `11:44`–`13:35`，A · 课上展开）
 
@@ -716,7 +738,9 @@ artifact（借贷、账户都是人造物）这个概念讲清楚了，下一节
 
 它们在总账里是两个科目的汇总（真实分录可通过凭证ID保持联系），各有各的余额。**要知道"这一笔卖了多少、成本多少、赚了多少"，你必须去两本账里各找一次，然后靠日期和摘要把它们配对回来。**
 
-⚠️ 而且一旦到了月末汇总，**配对关系就彻底丢了**——总账上只剩 `销货成本合计 XXX` 和 `销售收入合计 YYY`。**你再也无法知道哪一笔销售的毛利是多少。**
+只留下月末两科目合计时，不能从合计数反推出逐销售配对关系。若原凭证或业务明细保留交易 ID，仍可回查。
+
+REA 的具体优势是把售价、成本和 Sale 的身份关系显式保存；前提仍是录入正确、明细粒度明确。
 
 **在 REA 里：**
 
@@ -738,7 +762,7 @@ Sale
 **这带来三个直接后果（💡 笔记补充）**
 
 1. **配对关系永不丢失。** 每一笔销售的收入与成本天然在同一行，毛利 = `sales revenue − cost of goods` 随时可算，**按客户、按员工、按门店、按商品分组都可以**。
-2. **会计报表仍然能出。** `SELECT SUM(sales_revenue) FROM Sale WHERE year = 2013` 就是全年销售收入；`SELECT SUM(cost_of_goods) FROM Sale ...` 就是全年销货成本。⇒ **借贷科目没有消失，只是变成了查询结果。**
+2. **会计报表仍然能出。** 以下是概念伪 SQL（`year` 表示从销售日期提取的年份，并非上表已定义字段）：`SELECT SUM(sales_revenue) FROM Sale WHERE EXTRACT_YEAR(saleDate) = 2013` 就是全年销售收入；`SELECT SUM(cost_of_goods) FROM Sale ...` 就是全年销货成本。⇒ **借贷科目没有消失，只是变成了查询结果。**
 3. **多出来的问题现在能回答了**："Paul 卖出的商品毛利率是多少""又一城门店的毛利率比其他门店高吗""Joe 这个客户一年买了多少" —— 本讲简化汇总不能直接回答，真实凭证与业务明细可另查询。
 
 **⭐ 这个例子是本讲对"artifact 遮蔽细节"最好的注脚**：把一件事拆成两个账户，是纸笔时代**为了让借贷平衡**而做的技术妥协；在数据库时代，这个妥协没有必要了。
@@ -966,21 +990,61 @@ give 的一半（曲奇出去、成本与收入一起确认）已经记完，下
 
 Paul 在 2013-01-01、Festival Walk 7-11 向 Joe 给出一件曲奇，售价 10、成本 8，随后同日收款 10。p.12–16 给的是这组事实与两步教学分录，**没有给真实时间差或信用政策**；用应收作同日中间清算不等于证明发生跨期赊销。
 
-**输入到输出**：先把商品、人员、客户的身份存入基础表；录入销售头和商品行；收到现金时另录收款；将收款应用到销售。输出既能回答“谁卖给谁什么”，也能算收入、成本、应收。这里 ID、字段、数据粒度与 SQL 均为笔记补充；没有打开真实 Access 数据库。
+**从业务事实到查询输出（笔记补充）**
+
+1. 基础表先保存商品、Paul 和 Joe 的稳定身份。
+2. Sale 保存销售头；SaleLine 保存这次出售的商品、数量、成交价和成本快照。
+3. 另用 CashReceipt 记录收到的现金。
+4. Duality 保存收款应用到哪笔销售、应用多少。
+5. 查询这些关联，取得商品和人员，并计算收入、成本与应收。
+
+上述 ID、字段、粒度和 SQL 是教学补充，没有打开真实 Access 数据库。顺序是数据录入依赖，不证明原例有跨期信用销售。
 
 **五张核心表**（SaleLine 为单独明细行，不能只在文字中出现）：
 
-| 表 / 主键 | 教学样例行 | 引用 |
-|---|---|---|
-| Inventory / itemID | C01、Cookie、当前参考成本 8 | — |
-| Employee / empID | E01、Paul | — |
-| Customer / custID | U01、Joe | — |
-| Sale / saleID | S001、2013-01-01、Festival Walk 7-11、E01、U01 | empID→Employee；custID→Customer |
-| SaleLine / (saleID,lineNo) | S001、1、C01、quantity=1、unitPrice=10、unitCost=8 | saleID→Sale；itemID→Inventory |
+每行先定位一张表的身份和外键引用，具体样例行放在对应表名下。此五表为补充数据模式。
+
+| 表 / 主键 | 引用 |
+| --- | --- |
+| Inventory / itemID | — |
+| Employee / empID | — |
+| Customer / custID | — |
+| Sale / saleID | empID→Employee；custID→Customer |
+| SaleLine / (saleID,lineNo) | saleID→Sale；itemID→Inventory |
+
+表/主键列确定每行粒度；引用列说明哪列值来自哪张表的身份。“—”表示本表无该处外键说明，不是金额0。读SaleLine：一行是一笔销售的一条商品明细，以saleID与lineNo定位。
+
+**Inventory / itemID**
+
+教学样例行：C01、Cookie、当前参考成本 8
+
+
+**Employee / empID**
+
+教学样例行：E01、Paul
+
+
+**Customer / custID**
+
+教学样例行：U01、Joe
+
+
+**Sale / saleID**
+
+教学样例行：S001、2013-01-01、Festival Walk 7-11、E01、U01
+
+
+**SaleLine / (saleID,lineNo)**
+
+教学样例行：S001、1、C01、quantity=1、unitPrice=10、unitCost=8
+
+
 
 `quantity` 是件数，`unitPrice/unitCost` 是成交价格/成本快照，均为每件美元；行金额为数量乘单价。Inventory 当前参考成本后来变化，不能直接覆盖历史行成本。Sale 头金额 10/成本 8 如保留，应声明由明细归集维护并检查，而不是两套独立权威事实。
 
 **收现再加三张辅助表**：CashAccount(CA01,门店现金)；CashReceipt(CR001,2013-01-01,amount=10,cashAccountID=CA01,empID=E01,custID=U01)；Duality(S001,CR001,amountApplied=10)，其主键为销售/收款双键、二者为 FK。CashAccount 引用是新增教学字段，补足现金资源的真实连接；不是课件原字段。员工与客户 FK 指向前表，业务必须存在时非空。
+
+**看图前先问**：一块曲奇的业务记录怎样走到毛利与应收？
 
 ```mermaid
 flowchart TD
@@ -991,6 +1055,20 @@ flowchart TD
  C --> D["4 Duality应用10到S001"]
  D --> Q["5 明细JOIN及聚合：Cookie/Paul/Joe；应收0；毛利2"]
 ```
+
+箭头是补充数据录入与查询依赖，不是原例跨期信用政策。
+
+**沿例子读图（笔记补充）**：沿图中数字走曲奇例：第 1 步确定 Cookie、Paul 和 Joe 的稳定身份；第 2 步保存 Sale S001 及第 1 商品行，收入 10、成本 8、应收 10。第 3 步录 CR001 收 10 到 CA01，第 4 步把 10 应用给 S001。第 5 步查询明细，得到毛利 2、应收 0。
+
+**图旁边界**：ID/明细/字段为补充；同日原例没给时间差，不能当跨期赊销。
+
+**文字替代**：曲奇身份、销售明细、收款及分配关系共同支持毛利2和应收0的查询。
+
+<details><summary>读图自测：CR001收10但漏Duality行，可以据键存在说应收0吗？</summary>
+
+不能。关系和应用额都须保存并核对；收到现金未说明应用到哪笔销售。
+
+</details>
 
 **可实际执行的 SQLite 查询（笔记补充）**：JOIN 是按相同键把记录拼接，不是把所有金额直接加在一起。先 Sale→SaleLine 找该销售各行，再 itemID 找名称、empID/custID 找人；这笔一行所以输出一行。
 
@@ -1024,7 +1102,7 @@ LEFT JOIN (
 WHERE s.saleDate<=:asof;
 ```
 
-**执行顺序**：参数 `:asof` 为统一 YYYY-MM-DD 文本日期；内层先筛截止日收款、按 saleID 将 amountApplied 分配额相加，输出每销售一行；外层 LEFT JOIN 保留没有分配的销售；COALESCE 将无匹配的应用额变 0，最后用金额减应用额。Sale、Duality、CashReceipt 字段及参数来自本节教学模式；含真实时分秒时应改为次日零点的半开截止界限，不能声称本例测试了 Access Date 行为。
+**字段映射与执行顺序**：本 SQL 统一采用 `Sale(saleID, saleDate, amount)`、`CashReceipt(receiptID, receiptDate, amount)`、`Duality(saleID, receiptID, amountApplied)`；上方教学小表中的通用 `date` 列分别对应这里的 `saleDate` 与 `receiptDate`。参数 `:asof` 为统一 YYYY-MM-DD 文本日期；内层先筛截止日收款、按 saleID 将 amountApplied 分配额相加，输出每销售一行；外层 LEFT JOIN 保留没有分配的销售；COALESCE 将无匹配的应用额变 0，最后用金额减应用额。Sale、Duality、CashReceipt 字段及参数来自本节教学模式；含真实时分秒时应改为次日零点的半开截止界限，不能声称本例测试了 Access Date 行为。
 
 <details><summary>错误查询为何给出200或330？何时停？</summary>
 
@@ -1043,10 +1121,26 @@ WHERE s.saleDate<=:asof;
 
 **图（讲义 p.17 的原图，重画为 Mermaid）**
 
+**看图前先问**：资源、事件、参与者各在问同一业务的哪一部分？
+
 ```mermaid
 flowchart LR
     R["Economic<br/>Resource"] --- E["Economic<br/>Event"] --- A["Economic<br/>Agent"]
 ```
+
+无箭头的关联线连接对象，不表示现金从资源流向参与者。
+
+**沿例子读图（笔记补充）**：曲奇对应 Economic Resource，出售它的 S001 对应 Economic Event；Paul 和 Joe 对应 Economic Agent。日期 2013-01-01、地点 Festival Walk、收入 10 和成本 8 描述这次事件或明细，不另建成参与者。
+
+**图旁边界**：布局按REA字母便于读；不是借左贷右约定。
+
+**文字替代**：资源回答涉及什么，事件回答发生什么/何时/何地，参与者回答谁。
+
+<details><summary>读图自测：2013-01-01应新建一个参与者类吗？</summary>
+
+不应，它描述事件时间；参与者回答谁。
+
+</details>
 
 **图下方的文字（讲义原文）**
 
@@ -1079,7 +1173,7 @@ flowchart LR
 
 *"When? Where? What? Who?"* —— 少了 **Why（为什么）** 和 **How much（多少）**。
 - **How much** 其实有，只是它是 Event 的**属性**（数量、金额），不是独立的类
-- **Why** 确实不在基本 REA 里。⇒ 后来的扩展模型（REAL、REA 本体）加入了 **Commitment（承诺，如订单）** 和 **Contract（合同）** 来回答"为什么会发生这个事件"。**本课不讲这部分**，但知道有这个缺口有助于理解 W5 的业务流程建模。
+- **Why** 确实不在基本 REA 里。⇒ 后来的扩展模型（REAL、REA 本体）加入了 **Commitment（承诺，如订单）** 和 **Contract（合同）** 来回答"为什么会发生这个事件"。**本讲暂不展开这部分；M05 会进入 Commitment/业务流程扩展**，但知道有这个缺口有助于理解 W5 的业务流程建模。
 
 **🎙️ 课堂补充**（S4 `04:41`–`07:06`，A · 课上展开）
 
@@ -1112,7 +1206,9 @@ Resource / Event / Agent 三个方框有了，下一节讲清楚方框之间那�
 > - *"Two events are linked – **a cash receipt occurs in exchange for a sale**, and vice versa."*
 > - *"Could be more complicated – **a product conversion occurs in exchange for a usage of raw material, labor cost and overhead**."*
 
-**⭐ 二元性（Duality）** = **REA 的核心里总是一对事件**：一个代表资源**被给出/失去**，另一个代表资源**被收到/获得**。
+**二元性（Duality）**：在本讲的交换模式中，关联把资源给出与资源获得事件配对。p.18 用的是 usually。
+
+先看曲奇销售和现金收款；再看生产的多种投入与一次产出。毁损、内部耗用等情形不凭这句描述强造一个外部收款事件。
 
 | | give（给出） | get（得到） |
 |---|---|---|
@@ -1122,7 +1218,9 @@ Resource / Event / Agent 三个方框有了，下一节讲清楚方框之间那�
 
 **为什么需要它**
 
-因为**经济活动的本质是交换**。你不会平白无故失去一样东西，也不会平白无故得到一样东西——**总是拿 A 换 B**。
+在这笔曲奇销售中，公司给出商品，客户给出现金。把两项事件连起来，才能回答“这笔收款抵哪笔销售”。
+
+这说明本交换例为何需要 duality；它不是所有资源损失都必有补偿的普遍规则。
 
 **⭐⭐ Duality 与复式记账是什么关系（讲义没说，💡 笔记补充——但这是本讲最重要的一个类比）**
 
@@ -1130,7 +1228,7 @@ Resource / Event / Agent 三个方框有了，下一节讲清楚方框之间那�
 |---|---|---|
 | **表达交换的机制** | **借 = 贷**（每笔金额相等的一对记录） | **give 事件 ↔ get 事件**（一对配对的事件） |
 | **配平的对象** | **金额** | **事件** |
-| **保证了什么** | 会计等式恒平衡 | 每一次资源流出都能追到对应的流入 |
+| **核心检查对象** | 金额借贷平衡 | 核心交换模式中 give/get 事件的关联；未结清、内部转换与损耗须按业务另判 |
 | **名字的由来** | **Double**-entry（"双"分录） | **Dual**ity（"二元"性） |
 
 **⇒ 两个词的词根都是"二"，因为它们表达的是同一个经济事实：交换有两端。**
@@ -1154,10 +1252,12 @@ Resource / Event / Agent 三个方框有了，下一节讲清楚方框之间那�
 教授从公司视角区分现金流入、曲奇流出，销售和收款由 duality 相连；生产再用原材料、人工与 overhead 三种耗用连接成品生产，原话 *"This is three-to-one association."*（S4 `11:25`）。**这段改变了什么**：duality 不强制一对一，案例中三种投入连到一次产出；这是生产举例而非给所有生产系统固定“恰三”基数。S4 `07:38` 仍用 usually，不能把交换类故事强套到所有损失事件。
 
 **💡 换个说法（笔记补充）**
-duality 就是**"天下没有白拿的东西"这条常识的建模版本**。你的资源少了一样，一定是换了另一样回来（哪怕换回来的是"客户欠你的钱"这种无形的东西）。
+在赊销例中，Sale 已发生，Cash Receipt 可以暂时没有。duality 保存后来哪个收款对应哪笔销售的关系。
+
+文字替代：事件配对回答业务联系，不自动证明金额已付清，也不把所有损失都解释成获得另一项资源。
 
 **⚠️ 常见误解**
-- ❌ "duality 就是复式记账换了个名字"。→ **配平的东西不同**：复式记账配平**金额**（借方合计 = 贷方合计），REA 配平**事件**（每个 give 事件都有配对的 get 事件）。REA 的 duality 关联上**不带金额约束**——一笔 \$10 的销售可以对应两笔 \$5 的收款。
+- ❌ "duality 就是复式记账换了个名字"。→ **配平的东西不同**：复式记账配平**金额**（借方合计 = 贷方合计），REA 在核心交换模式中关联 give/get 事件；赊销可能暂未收款，内部生产、损耗等也不能强套“每个事件立即成对”。REA 的 duality 关联上**不带金额约束**——一笔 \$10 的销售可以对应两笔 \$5 的收款。
 - ❌ "每个事件都必须立刻有配对"。→ 赊销时，Sale 已发生而 Cash Receipt 还没发生。**这正是 §2.8 练习 2、3 要处理的情况**：最小多重性为 0 就是在表达"可以暂时没有配对"。
 
 **与其他概念的关系**
@@ -1177,6 +1277,8 @@ duality 把 give 事件和 get 事件配对的规则讲完了，下一节看讲�
 
 **讲义 p.19 的原图（视觉复核后重画为 Mermaid）**
 
+**看图前先问**：给货和收钱为什么画两事件却能引用同一客户和员工？
+
 ```mermaid
 flowchart LR
     subgraph GIVE["Give（给出 · 经济减量）"]
@@ -1191,13 +1293,27 @@ flowchart LR
         CR --- CUS2["Outside Agent<br/><b>Customer</b>"]
         CR --- EMP2["Inside Agent<br/><b>Employee</b>"]
     end
-    SALE ---|"<b>duality</b>"| CR
+    SALE ---|"duality"| CR
 ```
 
-**图上的每一个标签（讲义原文照抄）**：
-上半部分 —— `Economic Resource: Inventory` ／ `Economic Event: Sale` ／ `Inside Agent: Employee` ／ `Outside Agent: Customer`
-下半部分 —— `Economic Resource: CASH` ／ `Economic Event: Cash Receipt` ／ `Outside Agent: Customer` ／ `Inside Agent: Employee`
-中间横贯的分界线上标着 **`Give`**（上）与 **`Get`**（下），中央是彩色艺术字 **`duality`**。
+无方向线表示参与/资源关联，duality连接事件，不是时间或因果箭头。
+
+**沿例子读图（笔记补充）**：在 Give 区固定 Sale S001：Inventory 是曲奇，Employee 是 Paul，Customer 是 Joe。再到 Get 区固定 Cash Receipt CR001：Cash 为 10，经手 Employee 也可为 Paul，Customer 仍可为 Joe。中间的 duality 保存两事件的应用关系。
+
+**图旁边界**：重复角色框便于布局，不复制两套客户档案；可赊销时不要求立即CR。
+
+**文字替代**：给货与收款各连自己的资源和角色，同一人可被两个事件引用，duality连事件。
+
+<details><summary>读图自测：两Employee框能证明两名不同自然人吗？</summary>
+
+不能，角色/引用可指同一个人；职责分离须实际身份/权限核对。
+
+</details>
+
+**按重画后的区名定位标签**：
+- `Give` 区：`Economic Resource: Inventory`、`Economic Event: Sale`、`Inside Agent: Employee`、`Outside Agent: Customer`。
+- `Get` 区：`Economic Resource: CASH`、`Economic Event: Cash Receipt`、`Outside Agent: Customer`、`Inside Agent: Employee`。
+- 中央 `duality` 连接 Sale 与 Cash Receipt。当前重画为 Get 在上、Give 在下；原课件的上下位置不同，空间位置不承载业务顺序。
 
 **⭐ 两个新概念在这张图上第一次出现**
 
@@ -1205,7 +1321,7 @@ flowchart LR
 > **外部参与者（Outside Agent）** ⭐：**企业之外的**参与者——客户、供应商。
 >
 > **为什么要分内外（💡 笔记补充，讲义没解释）**：
-> 1. **每个经济事件都必然有内外两个参与者**——本企业总要有个人负责，对方总要有个人对接。这是一条可以用来检查模型完整性的规则。
+> 1. **本外部销售交换示例分别记录内部和外部参与者**。Paul 是企业经手人，Joe 是客户；内部生产/耗用可以没有外部参与者，不能把此图模板强套全部事件。
 > 2. **内部参与者是问责的落点**（[[M01-会计与商业]] 讲的**内部控制**与**审计轨迹**在这里落地：出了问题能查到具体是谁经手的）。
 > 3. **外部参与者是关系管理的落点**（哪个客户买得多、哪个供应商供货慢）。
 
@@ -1359,14 +1475,18 @@ flowchart LR
 
 | 决策 | 例子 |
 |---|---|
-| 每个列的**数据类型** | `Date` 用 `DATE` 还是 `DATETIME`？`Amount` 用 `CURRENCY` 还是 `DECIMAL(12,2)`？ |
+| 每个列的**数据类型** | 日期精度和金额类型须在具体软件中选择 |
 | **索引**建在哪些列上 | 常按客户查 ⇒ 在 `Sale.custID` 上建索引 |
 | **存储**与分区 | 数据放哪个磁盘、按年份分表 |
 | **软件特定的语法** | ACCESS 的 `AutoNumber` vs SQL Server 的 `IDENTITY` vs MySQL 的 `AUTO_INCREMENT` |
 
+**数据类型的两个物理层问题**：日期字段是 `DATE` 还是 `DATETIME`，关系到是否保留时间；金额字段是 `CURRENCY` 还是 `DECIMAL(12,2)`，关系到范围和精度。选择须服从实际软件与业务要求。
+
 **⇒ W6 的 ACCESS 上机就是在做这一层**：同样一套逻辑模型，在 ACCESS 里实现和在 Oracle 里实现，物理模型不一样。
 
 **三层的关系（三页合起来看）**
+
+**看图前先问**：怎样把每Sale恰一客户从业务规则细化到数据库？
 
 ```mermaid
 flowchart TD
@@ -1375,6 +1495,28 @@ flowchart TD
     P["③ 物理数据库模型 Physical Model<br/>触发条件：决定了具体<b>软件</b><br/>数据类型、索引、存储<br/>（W6：ACCESS 上机）"]
     C --> L --> P
 ```
+
+箭头是模型层次细化，软件变化不自动改变业务规则。
+
+**沿例子读图（笔记补充）**
+
+1. ① 概念模型先规定 S001 属于客户 U01。
+
+2. ② 逻辑模型把 Customer 的键作为 Sale.custID 保存。
+
+3. ③ 物理模型再在 Access 选择字段类型、设置参照完整性和必填要求。
+
+4. 每一步细化上一层，不能倒过来用字段类型决定业务规则。
+
+**图旁边界**：Excel只是行列类比；不表示其自动带FK约束或所有业务规则。
+
+**文字替代**：业务对象关系先转表与键，再按具体软件设类型和约束，三层解决不同问题。
+
+<details><summary>读图自测：在概念层先定varchar长度，能代替每Sale几个客户的讨论吗？</summary>
+
+不能，字段尺寸属物理层；业务基数错了，类型正确仍会存错关系。
+
+</details>
 
 **⭐ 为什么要分三层（💡 笔记补充，讲义完全没解释，但这是本节存在的理由）**
 
@@ -1533,7 +1675,7 @@ Entity ──转换成──▶  Row（行）
 因为**它让图自我解释**。看到 `<<economicDecrement>> Sale`，你立刻知道三件事：
 1. 这是一个**事件**（不是资源、不是参与者）
 2. 它使某种资源**减少**
-3. 所以它**必然有一个配对的 increment 事件**（duality，§2.5.2）——如果图上找不到，模型就是不完整的
+3. 在本交换模式中，继续检查对应增量事件及 duality（§2.5.2）。允许赊销时可暂时没有收款；毁损等事件另核，不能仅凭减量类型判模型不完整
 
 **⇒ 构造型把 REA 的规则编码进了图形记法本身，成了一种检查清单。**
 
@@ -1582,6 +1724,24 @@ Student ————— Enrollment ————— Course
 ⇒ (Margaret, Accounting 201) 这一对**最多出现一次**。
 ⇒ 这个关联可以用 **`(Student#, Course#)` 这个组合作为主键**——因为组合永不重复。
 ⇒ 这就是 **association class**，转成表时用**复合主键**（§2.10.3）。
+
+**把“同一对能否重复”落到实例行（笔记补充）**
+
+| 记录 | 学生 | 课程 | 发生范围 | 本范围内身份 |
+|---|---|---|---|---|
+| 一次修读 | Margaret | Accounting 201 | 不允许重修 | 学生×课程 |
+| 第一次修读 | Margaret | Accounting 201 | 2025 秋季 | Enrollment E1 |
+| 再次修读 | Margaret | Accounting 201 | 2026 春季 | Enrollment E2 |
+
+这三行用于对照两种业务规则，不是同一原数据集的三次登记。后两行同一学生×课程重复，需明确学期/次数和自己的身份。
+
+逐列读法：记录列说明情形；学生/课程是同一对对象；发生范围决定粒度；身份列说明怎样区分行。读最后两行：多重性仍问连多少课程，而 E1/E2 区分同一对在不同学期的记录。
+
+<details><summary>读表自测：一笔Sale分两次收款，是否自动要求每个配对都有AllocationID？</summary>
+
+不自动要求。若Sale×每个独立CashReceipt这一对仅出现一次，可用两键组合并存分配额。同一对需要独立重分配/冲销历史时，才另定AllocationID与有效时点。
+
+</details>
 
 **情形二：可以有多个链接 ⇒ 具象化关联**
 
@@ -1720,7 +1880,7 @@ Hilda 和 Physics 678 两个孤例已经埋下了"最小多重性可以是 0"的
 > 讲义定义：*"can be derived / computed from the values of **other attributes in the database**"*
 > **可以从数据库里其他属性的值计算出来。**
 
-**⇒ 可导出属性通常不该存**，因为存了就有两份数据、可能不一致（这就是 §2.9.4 的「一事一地」）。
+可导出值优先从权威数据算。若性能需要存缓存或汇总，要有更新、失效和重算机制；本节后面给出易变属性的维护边界。存了一个值并不自动使它成为第二份独立权威事实。
 
 **④ 静态 vs 易变** ⭐ —— 讲义把可导出属性又分成两类：
 
@@ -1802,7 +1962,21 @@ Hilda 和 Physics 678 两个孤例已经埋下了"最小多重性可以是 0"的
 
 **🎙️ 课堂补充**（S4 `29:14`–`37:30`，A · 课上展开）
 
-教师先讲 min 为0/1、max 为1/星，再以 Sale–CashReceipt 白板情境解释：*"Sale is associated with zero cash receipt"*（S4 `32:39`）表示允许赊销；`34:05` 用“两个月、每月一半”示范一售多收的部分付款；*"In addition to sales, this company has other cash sources."*（S4 `35:06`）说明收款可无销售；*"That means the combined payment is not allowed."*（S4 `37:06`）说明一收至多一售禁止合并。
+教师先讲 min 为0/1、max 为1/星，再以 Sale–CashReceipt 白板情境解释：
+
+> *"Sale is associated with zero cash receipt"*
+
+（S4 `32:39`）表示允许赊销；
+
+`34:05` 用“两个月、每月一半”示范一售多收的部分付款；
+
+> *"In addition to sales, this company has other cash sources."*
+
+（S4 `35:06`）说明收款可无销售；
+
+> *"That means the combined payment is not allowed."*
+
+（S4 `37:06`）说明一收至多一售禁止合并。
 
 **这段改变了什么**：把四个数字接回实际业务规则，白板的 A/B/C/D 字母被ASR混乱记录，不硬写位置对应；位置读法仍按讲义p.30–33的书面规则。`30:16` 的“至少2就是star”是宽松口语/ASR，星只代表不设最大上限，不代表最小必为2。S4 `37:30` *"And we have some examples in the discussion next week."* 预告下周例子；录音未获正式下课语，后续讲义页无直接覆盖证据，不能判它们略过。
 
@@ -1847,10 +2021,25 @@ Hilda 和 Physics 678 两个孤例已经埋下了"最小多重性可以是 0"的
 
 **⭐⭐ 现在做那个关键的对照**
 
-| 讲义说的事实 | 这对应哪一对数字 | 那对数字**画在图上的哪一侧** |
-|---|---|---|
-| **Customer** 可以参与 **0 次**、也可以参与 **多次** ⇒ Customer 的多重性是 **`0..*`** | `0..*` | ⚠️ **画在 Sale 那一侧！** |
-| **Sale** 至少参与 **1 次**、至多参与 **1 次** ⇒ Sale 的多重性是 **`1..1`** | `1..1` | ⚠️ **画在 Customer 那一侧！** |
+先定位数字和贴在哪个类旁，再逐条读原讲义事实。固定一个对象时，数的是另一端对象个数。
+
+| 这对应哪一对数字 | 那对数字**画在图上的哪一侧** |
+| --- | --- |
+| `0..*` | ⚠️ **画在 Sale 那一侧！** |
+| `1..1` | ⚠️ **画在 Customer 那一侧！** |
+
+数字列是min..max，位置列是被数类；两者无货币单位。Customer旁1..1，读成一笔Sale对应恰一个Customer；Sale旁0..*，读成一个Customer可有零到多笔Sale。
+
+**Customer 可以参与 0 次、也可以参与多次 ⇒ Customer 的多重性是 `0..*`**
+
+讲义说的事实：**Customer** 可以参与 **0 次**、也可以参与 **多次** ⇒ Customer 的多重性是 **`0..*`**
+
+
+**Sale 至少参与 1 次、至多参与 1 次 ⇒ Sale 的多重性是 `1..1`**
+
+讲义说的事实：**Sale** 至少参与 **1 次**、至多参与 **1 次** ⇒ Sale 的多重性是 **`1..1`**
+
+
 
 > # ⭐ 位置约定（本讲最重要的一条规则）
 >
@@ -2027,7 +2216,7 @@ Hilda 和 Physics 678 两个孤例已经埋下了"最小多重性可以是 0"的
 **💡 验证业务场景与多重性一致（笔记补充）**
 
 - "all sales are paid for **immediately**" ⇒ 不存在赊销 ⇒ **每笔 Sale 都立刻有 CR** ⇒ CR 最小 = 1 ✅
-- "paid for immediately **with cash**"（一次付清）⇒ 不分期 ⇒ CR 最大 = 1 ✅
+- 讲义给定图额外规定每笔 Sale 只对应一笔 Cash Receipt，因此 CR 最大 = 1。`paid immediately with cash` 本身只说明无欠款，不自动排除同一时点拆成多笔收款。
 - "sales are the company's **only** source of cash" ⇒ 不存在别的收款来源 ⇒ **每笔 CR 必有 Sale** ⇒ Sale 最小 = 1 ✅
 - 一次收款只对应当场那一笔销售 ⇒ Sale 最大 = 1 ✅
 
@@ -2111,7 +2300,7 @@ Sale ──[1..1]────── duality ──────[0..*]── Cash 
 **具体场景想象一下**：客户买了一台 \$12,000 的设备（Sale S001），约定分 12 期、每月付 \$1,000。
 ⇒ S001 对应 CR001…CR012 共 **12 笔收款** ⇒ CR 最大 = `*` ✅
 ⇒ 每一笔 CR 都只针对 S001 这一笔销售 ⇒ Sale 最大 = 1 ✅
-⇒ 刚签约还没收第一期时，S001 存在而没有任何 CR ⇒ CR 最小 = 0 ✅
+⇒ 设备已经交付并确认 Sale S001、但第一期尚未收到时，S001 存在而没有任何 CR ⇒ CR 最小 = 0 ✅
 
 **这个关联的类型**：`1..1 – 0..*` ⇒ 按 §2.10.8（Step 4），**从 1..1 那一侧（Sale）过账一个外键到 Cash Receipt 表**：
 ```
@@ -2296,7 +2485,7 @@ Sale 表（saleID 是它的主键；custID 是"过账"进来的外键）
 
 **② 列的顺序无所谓，但列的数据格式很重要。**
 - 顺序无所谓：`Sale(saleID, date, amount)` 和 `Sale(amount, saleID, date)` 是同一张表
-- ⭐ **格式重要**：`date` 必须是日期类型，不能存成文本 —— 否则无法做日期计算（"这笔销售到收款隔了几天"）。**这正是 §2.6.3 物理模型要决定的事。**
+- ⭐ **格式重要**：在本课的 Access 物理模型中，`date` 应设为 Date/Time 类型，便于日期验证与计算；某些数据库（如 SQLite）也可按受控 ISO 文本约定存日期，所以不能泛化为所有数据库都禁止文本（"这笔销售到收款隔了几天"）。**这正是 §2.6.3 物理模型要决定的事。**
 
 **③ ⭐ 每一格只能有一个值，不允许重复组（repeating groups）。**
 
@@ -2403,7 +2592,7 @@ Sale 表（saleID 是它的主键；custID 是"过账"进来的外键）
 > *"**Fact = a pairing of a candidate key attribute value with another attribute value**"*
 > **一个事实 = 一个候选键属性值与另一个属性值的配对。**
 
-**⭐ 候选键（Candidate Key）**：*"those attributes which can be used as primary key attributes"* —— **有资格当主键的属性**（唯一且非空）。一张表可能有多个候选键（如学号和身份证号都能唯一标识学生），从中选一个当主键。
+**⭐ 候选键（Candidate Key）**：*"those attributes which can be used as primary key attributes"* —— **有资格当主键的最小属性集合**：必须唯一、非空，而且移除其中任何一部分后就不再能唯一标识。一张表可能有多个候选键（如学号和身份证号都能唯一标识学生），从中选一个当主键。
 
 **💡 把 "fact" 这个定义讲透（笔记补充，讲义只给了一行公式，不展开根本看不懂 p.41/p.42）**
 
@@ -2562,7 +2751,7 @@ Sale(saleID, date, amount, custID*)      ← 只留外键
 ⇒ **Andy 的地址只存一次**，改一处全局生效。
 ⇒ ⚠️ **注意 `custID` 这一列仍然重复出现（C422 两次），这不算违规**——因为它是外键，是"指针"，不是被复制的事实。**被复制的是 name 和 address，那才是问题。**
 
-**⭐ 这一页与 §2.10.2 的规则直接相连**：p.44 说 *"You can NEVER post from a * class table. This causes 'repeating groups' redundancy"* —— 这里演示的正是"从多的那一侧过账"会发生什么。
+**⭐ 这一页与 §2.10.2 的规则直接相连**：p.44 说 *"You can NEVER post from a * class table. This causes 'repeating groups' redundancy"* —— 这里首先演示的是把 Customer 的 `name/address` 等非键事实复制到多笔 Sale 行造成更新冗余。另一类错误是把多端的多个键塞进一端单格，形成重复组；两者不要混称为同一个“从多端过账”问题。
 
 **🎙️ 课堂补充**（D · ❓ 未录到）
 
@@ -2679,7 +2868,7 @@ EmployeeDegree(empID*, degree)      ← 复合主键 (empID, degree)
 | ② **避免冗余** | *avoid redundancy* | 就是 §2.9.4 的 One Fact One Place | 更新/插入/删除异常（§2.9.6） |
 | ③ **最小化空值** | *minimize null values* | 列里不要有大片空白 | 浪费存储；且"空"的含义模糊 |
 
-⚠️ **这三个目标会互相冲突**：为了避免冗余可能要多建表（① 与 ②冲突）；为了少建表可能产生空值（① 与 ③ 冲突）。**五步转换法就是在这三者之间做权衡的规则。**
+⚠️ **三个目标会互相冲突。** 为避免冗余，可能需要增加表；为减少表，又可能引入空值。五步转换法在表的数量、冗余与空值之间作权衡，不能把任何单个目标当成唯一标准。
 
 **⭐ Step 1：每个类建一张表**
 
@@ -2777,7 +2966,7 @@ EmployeeDegree(empID*, degree)      ← 复合主键 (empID, degree)
 
 ```
 最大多重性规则  ——  硬约束，绝不能违反（违反 = 产生重复组 = 数据库不可用）
-最小多重性规则  ——  软约束，可以为了满足硬约束而让步（违反 = 产生空值 = 浪费空间但可用）
+最小多重性规则  ——  业务参与约束，不能因存储布局而放弃；外键/Required 无法执行父侧“至少一个子项”时，还要用额外验证或流程控制
 ```
 
 **🎙️ 课堂补充**（D · ❓ 未录到）
@@ -3066,6 +3255,7 @@ Step 3 的三条禁令与一条自由记住了，下一节用 Sale 与 Cash Rece
 **⭐ 最后一句是这一步的全部理由，值得逐字读：**
 
 > *"Posting FROM a 1..1 guarantees that **each related class instance will have a value** and that **each related class instance will have only one value**"*
+下表把每句讲义要求与它实现的效果对应起来。最后一列说明它服务于减少冗余、表数量或空值的哪项指标。
 
 | 讲义原句 | 保证了什么 | 解决哪个指标 |
 |---|---|---|
@@ -3074,9 +3264,16 @@ Step 3 的三条禁令与一条自由记住了，下一节用 Sale 与 Cash Rece
 
 **⇒ `1..1` 这两个数字，一个（最小 1）保证非空，一个（最大 1）保证唯一。所以从它过账两全其美。**
 
+**从哪取键、往哪放（笔记补充）**
+
+固定一笔 Sale S1，它恰好引用 Customer U1：从 Customer 取主键 U1，写进 Sale.custID。这里“from 1..1”是取键来源，不是外键接收表。
+
+每个 Sale 只有一个客户值，不表示全表的 custID 值各不相同；S1、S2 可都属于 U1。一对一时才另加 UNIQUE，父侧“至少一子”仍需单独检查。
+
 **⭐ 反方向会怎样（讲义也说了）**
 
 > *"If you post the opposite direction, either **redundancy [for \* maximums]** OR **load [for 0 minimums]** will be a problem"*
+下表固定被引用的一端，观察把外键反向放置的后果；“对面是”列给多重性，“后果”列说明会丢失或重复什么关系。
 
 | 对面是 | 反向过账的后果 |
 |---|---|
@@ -3261,20 +3458,20 @@ Step 3 的三条禁令与一条自由记住了，下一节用 Sale 与 Cash Rece
 **⭐ 为什么这一步要"判断"而不是"照做"（讲义把两条规则的冲突讲得很清楚）**
 
 ```
-最大多重性规则说：必须从 0..1 那一侧过账（或建表）
-                  ——因为对面最大是 *，往那边过账会产生重复组，绝对不行
+最大多重性先决定可行方向：若把多端类的多个主键复制进一端表的一格，就会产生重复组；因此应把一端类的主键作为外键放入多端表，或建立关联表。这里直接写源类与目标表，不能只靠“对面 *”猜方向
                      ⇓
-最小多重性规则说：不应该从 0..1 那一侧过账
-                  ——因为 0..1 的最小是 0，过账过去会产生大量空值
+可选关联的外键布局还要考虑空值：若某行允许无对应对象，该行外键可以为空
                      ⇓
-                ⚠️ 两条规则打架
+在直接存外键与另建关联表之间比较存储载荷；业务要求的最小参与次数必须另外落实
 ```
 
 **⭐ 讲义给的裁决原则（原文）**：
 > *"However, if **a separate table would waste more space**, then it is better to **follow the maximum rule and break the minimum rule**"*
 > **如果建独立表浪费的空间更多，那就遵守最大规则、违反最小规则。**
 
-**⇒ 换句话说：这一步的决策标准是「哪种做法更省空间」，而衡量它的指标就是「载荷」。**
+**这里必须区分两种“最小规则”（笔记补充）**：讲义这句话讨论的是为减少外键空值而提出的布局偏好。“break the minimum rule”不能解释成可以违反业务规定的最小参与次数。
+
+可以用载荷比较直接存外键和另建关联表的空间成本，但选定布局后仍须落实业务约束。例如每个父对象至少关联一个子对象，需要额外的程序或事务检查；外键与 Required 本身不能保证这一点。
 
 **⭐ 两个分支**
 
@@ -3328,17 +3525,61 @@ SaleSalesperson(saleID PRIMARY KEY/FK, salespersonID NOT NULL/FK)     ← 只有
 
 **把“图转换成功”落实成可验证约束（笔记补充）**：输入是业务 min/max 和每表主键，输出是列、约束与尚需检查的规则。不要只决定“post 到哪”就结束。
 
-| 业务要求 | 局部物理约束能做什么 | 还缺什么 |
-|---|---|---|
-| 每 Sale 恰一 Customer；每 Customer 可多 Sale | Sale.custID NOT NULL + FK，每 Sale 一列一值且引用存在客户；不加 UNIQUE | 每 Customer 至少一 Sale 若为规则，另查父侧无子记录 |
-| 每收款至多配一 Sale、且每收款须有 Sale | CashReceipt.saleID NOT NULL + UNIQUE + FK | Sale 若也必须收款，另查销售无收款 |
-| 多对多销售/收款 | Duality(saleID,crID)复合 PK、两 FK、amountApplied>0 | 金额合计、同客/同币种、有效日期与父侧最少参与 |
-| Sale 可无 Salesperson、最多一人；关联表替代空列 | SaleSalesperson.saleID 为 PK/FK，salespersonID NOT NULL/FK | 两侧可选；员工可多 Sale 不在员工FK上加 UNIQUE |
-| 两端最多一、两端可选 | 任一侧 nullable UNIQUE FK，或关联表两个 FK 分别 UNIQUE | 不是只复合 PK 就保证各端最多一 |
+每行是一个业务约束问题。局部键/可空/唯一约束的作用与剩余业务检查，放在同名说明中分别读。
+
+| 业务要求 |
+| --- |
+| 每 Sale 恰一 Customer；每 Customer 可多 Sale |
+| 每收款至多配一 Sale、且每收款须有 Sale |
+| 多对多销售/收款 |
+| Sale 可无 Salesperson、最多一人；关联表替代空列 |
+| 两端最多一、两端可选 |
+
+业务要求列是模型输入，不是字段名。读每Sale恰一Customer：先决定子记录中的FK与非空，再问父侧最小参与和金额守恒，不能只看到FK便说全部业务成立。
+
+**每 Sale 恰一 Customer；每 Customer 可多 Sale**
+
+局部物理约束能做什么：Sale.custID NOT NULL + FK，每 Sale 一列一值且引用存在客户；不加 UNIQUE
+
+还缺什么：每 Customer 至少一 Sale 若为规则，另查父侧无子记录
+
+
+**每收款至多配一 Sale、且每收款须有 Sale**
+
+局部物理约束：`CashReceipt.saleID` 使用 NOT NULL 与 FK。单个字段给每笔收款指定一个存在的 Sale；本条要求没有禁止多笔收款引用同一 Sale，因此不加 UNIQUE。
+
+例如 R1、R2 分别收取 S1 的部分款项，两行的 saleID 都是 S1，符合本条规则。加 UNIQUE 会拒绝第二笔，额外施加“一次销售至多一次收款”。
+
+如果另一道题明确要求一对一，才按那个题面加入 UNIQUE；若还要求每个 Sale 至少有一次收款，仍须另查没有收款的销售，单靠 FK 或 UNIQUE 均不能保证。
+
+
+**多对多销售/收款**
+
+局部物理约束能做什么：Duality(saleID,crID)复合 PK、两 FK、amountApplied>0
+
+还缺什么：金额合计、同客/同币种、有效日期与父侧最少参与
+
+
+**Sale 可无 Salesperson、最多一人；关联表替代空列**
+
+局部物理约束能做什么：SaleSalesperson.saleID 为 PK/FK，salespersonID NOT NULL/FK
+
+还缺什么：两侧可选；员工可多 Sale 不在员工FK上加 UNIQUE
+
+
+**两端最多一、两端可选**
+
+局部物理约束能做什么：任一侧 nullable UNIQUE FK，或关联表两个 FK 分别 UNIQUE
+
+还缺什么：不是只复合 PK 就保证各端最多一
+
+
 
 **贯穿小例**：Customer U1/U2，Sale S1→U1、S2→U1。NOT NULL+FK 允许两笔同客，拒绝不存在的 U9 和无客户 Sale；U2 没有销售仍可插入，说明 FK 不保证父至少一个子。若规则选择每 Customer 至少一 Sale，就用 NOT EXISTS 查出 U2 并由事务/业务验收处理，不能悄悄删 U2。另一张一对一 Child.parentID 加 UNIQUE 后，两个 Child 同指 P1 被拒，P2 无 Child 仍可存在。这些差别在 `calc.py` 的 SQLite 内存示例实际运行。
 
 **金额反例**：收款 OVER 实收1、给销售分配5，复合PK/FK/正金额检查仍允许插入；应当核该收款分配总额≤实收，发现超4。同时核每销售分配≤可结算额、客户/币种一致；并发分配须在事务中核，单次 SQLite 例不证明并发安全。
+
+**看图前先问**：外键列已经存在，什么时候仍需额外业务检查？
 
 ```mermaid
 flowchart TD
@@ -3353,11 +3594,27 @@ flowchart TD
  X -->|是| O["输出表结构及明确剩余限制"]
 ```
 
+箭头是补充约束实施与查缺流程；重核受影响业务，不能填另一行配平。
+
+**沿例子读图（笔记补充）**：假设客户 U1、U2 中，销售 S1、S2 都属于 U1。先定业务规则和表结构，再设 NOT NULL 与 FK，不设 UNIQUE，允许同客多笔销售。试行后进入“检查父侧最小参与”，会发现 U2 无销售；是否违规要看题面。金额、客户和日期另核，若不成立则沿回路修受影响规则或记录。
+
+**图旁边界**：FK不保证每父至少一个子；复合键不保证分配合计≤付款，金额守卫另核。
+
+**文字替代**：键约束之后还要核父侧最小参与、分配金额和业务范围，不靠FK包办全部规则。
+
+<details><summary>读图自测：一收款实收1却分配5，PK/FK成立足够吗？</summary>
+
+不够。“核数量、金额、客户和日期”阶段核分配总额，必须拒绝超额4或按明确业务修正。
+
+</details>
+
 **变式与答案**：若 S1 可重复与同 CR 做独立冲销/重分配，原两键 PK 不能容纳多次同对动作，需另定义 allocationID、时间/动作和业务粒度；若只有一次分配但需要 amountApplied，关联表直接带金额即可，不强制独立事件。空表 load 分母为0，不能凭空算100%；课件未给高低阈值，只能陈述分布条件和设计权衡。
 
 #### 2.10.12 💡 五步转换法决策树（笔记补充，讲义无对应页）
 
 > ⚠️ 讲义把五步散在 p.43–53 共 11 页里，**从头到尾没有一页做总结**。但考场上要用的正是这张决策树。以下为 💡 笔记补充。
+
+**看图前先问**：面对不同min/max，哪一步先判断？
 
 ```mermaid
 flowchart TD
@@ -3373,6 +3630,20 @@ flowchart TD
     Q5 -->|"载荷低"| S5B["<b>5B</b><br/>建独立关联表<br/>各端 max=1 时分别加 UNIQUE"]
     Q5 -->|"0..1—0..1<br/>两向都低"| S5B
 ```
+
+箭头代表按顺序选择结构，Step 5高低是给定分布的设计权衡。
+
+**沿例子读图（笔记补充）**：练习 2 为 Sale 端 1..1、收款端 0..1。建类表后按顺序排除多对多和两端均 1..1，进入 Step 4，把 saleID 放入收款表；不能看到 0..1 就直接跳 Step 5。练习 4 两端最大值都是 *，因此在 Step 2 建 Duality 表。
+
+**图旁边界**：无高低统一阈值；两端0..1比较两向，结果还须PK/FK/UNIQUE/额外检查。
+
+**文字替代**：先按完整min/max依序选Step2–5，再写唯一/可空与额外约束；载荷没有通用阈值。
+
+<details><summary>读图自测：两端1..1能把两边都存对方FK吗？</summary>
+
+按本讲Step3选择一侧，避免同一配对两份独立权威事实；一对一须另核UNIQUE与父侧参与。
+
+</details>
 
 **⭐ 一句话记忆版**
 
@@ -3405,9 +3676,11 @@ flowchart TD
 
 ### 图 1 · REA 的完整结构（对应讲义 p.17 + p.19，加上构造型与多重性）
 
+**看图前先问**：这张REA概览怎样定位一次销售交换？
+
 ```mermaid
 flowchart TB
-    subgraph GIVE["Give · 经济减量（企业失去资源）"]
+    subgraph GIVE["Give · 经济减量"]
         INV["&lt;&lt;Resource&gt;&gt;<br/><b>Inventory</b>"]
         SALE["&lt;&lt;economicDecrement&gt;&gt;<br/><b>Sale</b><br/>saleID · date · amount"]
         EMP1["&lt;&lt;Agent&gt;&gt; Inside<br/><b>Employee</b>"]
@@ -3416,7 +3689,7 @@ flowchart TB
         SALE ---|participation| EMP1
         SALE ---|participation| CUS1
     end
-    subgraph GET["Get · 经济增量（企业获得资源）"]
+    subgraph GET["Get · 经济增量"]
         CASH["&lt;&lt;Resource&gt;&gt;<br/><b>Cash</b>"]
         CR["&lt;&lt;economicIncrement&gt;&gt;<br/><b>Cash Receipt</b><br/>crID · date · amount"]
         EMP2["&lt;&lt;Agent&gt;&gt; Inside<br/><b>Employee</b>"]
@@ -3425,33 +3698,71 @@ flowchart TB
         CR ---|participation| EMP2
         CR ---|participation| CUS2
     end
-    SALE ===|"<b>DUALITY</b>"| CR
+    SALE ===|"DUALITY"| CR
 ```
 
-**这张图呈现本讲外部销售交换**：give/get 连接资源与内外参与者；内部生产/耗用不能强套外部参与者，事件配对也不自动证明业务金额完整。⚠️ `stockflow` 这个关联名是我按 REA 通行术语补的（💡），**讲义从未提到它**（§9.3 ⑦）。
+Give 表示企业失去资源，Get 表示企业获得资源。无方向关联分别是 stockflow 或 participation；粗线强调 DUALITY，不表示立即收款。
+
+**沿例子读图（笔记补充）**：从 Give 区的 Sale 找到 Inventory 曲奇、Employee Paul 和 Customer Joe。再沿 DUALITY 到 Get 区的 Cash Receipt CR001，核对 Cash 10 与对应收款角色。此总图不显示具体 min/max，端点答案仍看正文局部模型。
+
+**图旁边界**：此总图未标min/max，保留旧标题锚点并在图注解释；内部生产不套外部参与者。
+
+**文字替代**：总图定位give/get与资源角色，具体min/max必须回局部模型按两方向读。
+
+<details><summary>读图自测：DUALITY能直接连Inventory与Cash吗？</summary>
+
+不能。它连Sale和CashReceipt；两个资源各由stockflow连事件。
+
+</details>
+
+**这张图呈现本讲外部销售交换**：give/get 连接资源与内外参与者。
+
+标题保留既有锚点；此总览图源未标具体 min/max，多重性请读 §2.7.8 和 §2.8 的局部图，不能把它当完整端点答案。内部生产/耗用不能强套外部参与者，事件配对也不自动证明金额完整。⚠️ `stockflow` 这个关联名是我按 REA 通行术语补的（💡），**讲义从未提到它**（§9.3 ⑦）。
 
 ---
 
 ### 图 2 · 两种范式的信息流（💡 笔记补充，对应 §2.3.2 与 §2.4.5）
 
+**看图前先问**：两种表示各能直接回答什么，哪些仍需原明细？
+
 ```mermaid
 flowchart TD
     W["<b>真实世界发生的事</b><br/>1/1 · 又一城7-11 · Paul<br/>卖给 Joe · 一块曲奇<br/>售价 10 · 成本 8"]
+    O["订单输入（若要算履行时长）<br/>orderDate + 履行关联"]
 
     W -->|"复式记账<br/>（有损压缩）"| DE["<b>4 行分录</b><br/>Dr COGS 8 / Cr Inventory 8<br/>Dr A/R 10 / Cr Sales 10<br/><br/>❌ 谁 · 谁买 · 哪里 · 什么商品<br/>本讲科目汇总未直接呈现<br/>真实凭证和业务明细可保留"]
-    W -->|"REA<br/>（无损记录）"| REA["<b>Sale + CashReceipt 两条事件</b><br/>连着 Inventory / Employee /<br/>Customer / Cash<br/><br/>✅ 八条事实全保留"]
+    W -->|"REA<br/>（显式关系记录）"| REA["<b>Sale + CashReceipt 两条事件</b><br/>连着 Inventory / Employee /<br/>Customer / Cash<br/><br/>✅ 八条事实全保留"]
 
     DE --> FS1["财务报表 ✅"]
     DE -.->|"❌ 答不了"| BQ["业务问题<br/>哪个客户最赚钱？<br/>哪个门店毛利高？<br/>订单履行要多久？"]
     REA --> FS2["财务报表 ✅<br/>（用 SUM 查询算出来）"]
-    REA --> BQ2["业务问题 ✅<br/>（同一套数据直接查）"]
+    REA --> BQ2["客户/门店/商品问题 ✅<br/>按已采集关联查询"]
+    O --> BQ3["订单履行时长 ✅<br/>Order 到 Delivery/Sale"]
 ```
 
-**这张图在说**：复式记账与 REA 的差别不在"记得准不准"，而在"**记完之后还剩多少信息**"。REA 能出财务报表（把事件加总），复式记账不能反推业务细节（信息已经被扔掉了）。**⇒ 这就是 §2.3.1 说的 "artifacts obscure details"。**
+箭头表示同一事实被组织为不同表示和查询结果，不是不可逆删除原凭证。
+
+**沿例子读图（笔记补充）**：“真实世界发生的事”给售价 10、成本 8 和 Paul、Joe、地点。左路“4 行分录”能算毛利 2；右路“Sale + CashReceipt 两条事件”保留人员及商品关联，便于按键回答业务问题。实际复式凭证若保存交易 ID 和明细，也能保留这些细节。
+
+**图旁边界**：仅比较本讲简化科目汇总，不称REA无损或所有传统系统不可查；未采集信息不能自动生成。
+
+**文字替代**：简化科目合计不能反推未保存细节；显式事件关系也依赖实际正确采集。
+
+<details><summary>读图自测：把月末两总数放一起能反推每次毛利吗？</summary>
+
+不能。需要逐笔配对的收入与成本明细；有没有它依实际保存结构。
+
+</details>
+
+这张图对照本讲简化科目汇总与显式事件关系。只剩科目合计，不能反推出未保存的商品/人员配对；真实凭证或业务明细有交易ID时仍可回查。
+
+REA 也只回答已正确采集并关联的数据。生成财务报表仍要确认、计量、时间口径与适用规则，不能把图里的“查询生成”当自动合规。
 
 ---
 
 ### 图 3 · 从业务规则到数据库表的完整流水线（本讲方法论总结）
+
+**看图前先问**：业务文字怎样经过多重性与表结构形成可建数据库？
 
 ```mermaid
 flowchart TD
@@ -3467,6 +3778,28 @@ flowchart TD
     B -.->|"检查"| E["三条完整性原则<br/>实体完整性 · 参照完整性 · 一事一地<br/>（讲义 p.39-42）"]
     C -.->|"检查"| E
 ```
+
+箭头是模型转换依赖，末尾完整性检查是检查条件，不表示所有完整性只靠FK。
+
+**沿例子读图（笔记补充）**
+
+1. ① 业务规则规定赊销、可分期、不合并支付且只收销售款。
+
+2. ② 概念模型因此取 Sale 端 1..1、收款端 0..*。
+
+3. ③ 逻辑模型走 Step 4，把 saleID 放入收款表。
+
+4. ④ Access 物理模型落实外键和非空，再按末框检查实体、参照与一事一地原则。
+
+**图旁边界**：原练习3是参考推断；物理环境未执行；全部业务条件同图/正文。
+
+**文字替代**：业务文字决定多重性，多重性决定表结构，软件实现后仍须完整性与业务核对。
+
+<details><summary>读图自测：放saleID在CR后，需要Sale各行都有CR吗？</summary>
+
+不需要，CR端最小0允许Sale未收款；每个已有CR必须对应一Sale。
+
+</details>
 
 **这张图在说**：本讲 52 页内容其实是**一条流水线**。业务规则 → 多重性 → 表结构，每一步都有明确的规则可循。**⚠️ 最关键的一步是①→②（把中文业务规则翻译成多重性数字），因为一旦这一步错了，后面全错。**
 
@@ -3509,8 +3842,10 @@ flowchart TD
 |---|---|---|
 | **类 Class** | 标准三格框；本课可省空操作格，画类名/属性两格（S4 `22:04`–`23:01`） | 类 = 共享特征的实体集合；实体可以是**物理的或概念的** |
 | **关联 Association** | 两框之间一条线 + 关联名 | **关联类**（同一对只能连一次）vs **具象化关联**（可连多次） |
-| **属性 Attribute** | 写在第二格 | 主键（唯一 **且** 非空）；简单 vs 复合；可导出（**静态** vs **易变**） |
+| **属性 Attribute** | 写在第二格 | 主键、简单与复合属性、可导出属性 |
 | **多重性 Multiplicity** | 线两端的 `min..max` | ⭐ **写在类 Y 旁的数字 = 一个 X 能连几个 Y** |
+
+**属性速查展开**：主键必须唯一且非空。普通属性要区分简单与复合；可导出属性还应区分静态与易变，以决定如何存储和维护。
 
 ### 4.4 ⭐ 多重性四问对照表（讲义 p.32–35 四道练习的通用解法）
 
@@ -3546,15 +3881,21 @@ flowchart TD
 
 | 情形 | 多重性模式 | 做法 | 讲义页 |
 |---|---|---|---|
-| **Step 1** | — | 每类一张表；属性→列；实例→行 | p.43 |
+| **Step 1** | — | 每个类建立一张表 | p.43 |
 | **Step 2 多对多** | `0..*—0..*` `0..*—1..*` `1..*—0..*` `1..*—1..*` | ❗**必须建独立关联表**，主键 = **复合主键** | p.45–47 |
-| **Step 3 一对一** | `1..1—1..1` | 任选一侧过账外键；❌不要两边都过；❌不要建表 | p.48–49 |
+| **Step 3 一对一** | `1..1—1..1` | 任选一侧过账外键 | p.48–49 |
 | **Step 4 有一侧 1..1** | `0..*—1..1` `1..*—1..1` `1..1—0..*` `1..1—1..*` `0..1—1..1` `1..1—0..1` | **从 `1..1` 那侧过账**主键到对面表；❌不要建表 | p.50–52 |
-| **Step 5 剩下的 0..1** | `0..*—0..1` `1..*—0..1` `0..1—0..*` `0..1—1..*` `0..1—0..1` | **算载荷**：高 → **5A 过账**；低 → **5B 建表**<br/>`0..1—0..1` 取载荷最高的方向；两向都低则建表 | p.53 |
+| **Step 5 剩下的 0..1** | `0..*—0..1` `1..*—0..1` `0..1—0..*` `0..1—1..*` `0..1—0..1` | 比较载荷：高选 5A，低选 5B | p.53 |
+
+**Step 5 的判断**：先尝试从可选一端过账，载荷高时接受少量空值（5A），低时另建关联表（5B）。两端均为 `0..1` 时比较两种方向，选载荷较高者；两向都低则建表。
+
+**Step 3 的限制**：一对一按本讲规则选一侧存对方主键，不两侧重复过账，也不另建关系表；数据库唯一性与最小参与的约束仍按正文分开落实。
+
+**Step 1 的映射**：类变表，属性变列，每个实例变成一行；三者不是三个独立的建表动作。
 
 **两条通则**（p.44）：
 - **最大多重性**：只能**从 "1" 那侧过账**；**绝不能从 "\*" 那侧过账**（会产生重复组）— **硬约束**
-- **最小多重性**：优先**从"强制参与（min=1）"那侧过账**（避免空值）— **软约束，可让步**
+- **最小多重性**：它是业务参与约束。存储方向可为减少空值而选择，但若 FK/Required 不能保证父侧至少一个子项，须另用查询、表单流程或约束核验；载荷偏好不改变业务 min
 
 **两个指标**（p.43）：
 - **冗余 Redundancy** = 一事多地 或 多事一地
@@ -3564,51 +3905,271 @@ flowchart TD
 
 ## 5. 双语术语卡
 
-| 中文 | English | 考试可用的英文定义（优先讲义原句） | 首现 |
-|---|---|---|---|
-| 复式记账 | (Traditional) Double-Entry Bookkeeping | Records every transaction with dual entries (debit/credit) to maintain the accounting equation `Assets = Liabilities + Equity`; focuses on financial outcomes and uses standardized financial statements. | §2.1.1 |
-| REA 会计模型 | REA Accounting Model | Models business activities around three core elements — Resources, Events and Agents — recording economic events in their **semantic context** rather than as debits/credits. | §2.1.3 |
-| 语义语境 | Semantic Context | Recording an event together with the resource exchanged, the agents involved and the related events, instead of translating it into account balances. | §2.1.3 |
-| 人工构造物 | Artifact | Something **manufactured, not naturally occurring**; debits, credits and accounts are artifacts that **obscure details of business transactions needed for non-accounting purposes**. | §2.3.1 |
-| 经济资源 | Economic Resource | The "what": things of economic value that events increase or decrease (inventory, cash, equipment). | §2.5.1 |
-| 经济事件 | Economic Event | The "what, when, where": a business activity that changes resources (sale, purchase, production). | §2.5.1 |
-| 经济参与者 | Economic Agent | The "who": persons or organisations participating in events (customers, employees, suppliers). | §2.5.1 |
-| 内部 / 外部参与者 | Inside / Outside Agent | The agent belonging to the enterprise / to the outside party. Every economic event has both. | §2.5.3 |
-| 二元性 | Duality | There is usually **a pair of events** at the heart of REA: one represents a resource being **given away or lost**, another a resource being **received or gained**; the two are linked. | §2.5.2 |
-| 经济减量 / 增量 | economicDecrement / economicIncrement | Stereotypes marking events that decrease / increase a resource; duality always links one of each. | §2.7.8 |
-| 概念模型 | Conceptual Model | A representation that depicts **the important objects and the relationships between the objects** that must be captured in a database. | §2.6.1 |
-| 逻辑模型 | Logical Model | A conceptual model converted **once the type of database has been determined** (relational, object-oriented, hierarchical, network). | §2.6.2 |
-| 物理数据库模型 | Physical Database Model | Created based on **the specific database software package** in which the database is implemented. | §2.6.3 |
-| XBRL | eXtensible Business Reporting Language | An XML-based conceptual modeling language used for tagging business and financial reporting data. | §2.6.1 |
-| UML 类图 | UML Class Diagram | The four constructs: **classes, associations, attributes and multiplicities**; appropriate for conceptual modeling of REA concepts. | §2.7.1 |
-| 实体 | Entity | A real world object that has a **separate existence, either physical or conceptual**. | §2.7.2 |
-| 类 | Class | A **set of entities that share the same characteristics**; drawn as a three-compartment box. | §2.7.2 |
-| 构造型 | Stereotype | A **generalized type of class to which other classes may belong**, written in `<< >>` above the class name. | §2.7.3 |
-| 关联 | Association | A relationship between classes. | §2.7.4 |
-| 关联类 | Association Class | An association in which there can be **only one link** between the related entities. | §2.7.4 |
-| 具象化关联 | Reified Association | An association in which there can be **multiple links** between the related entities, so it needs its own identifier. | §2.7.4 |
-| 属性 | Attribute | Characteristics or elementary properties of **classes and/or associations**. | §2.7.6 |
-| 主键 | Primary Key | An attribute that **uniquely and universally identifies** each instance of a class or association. | §2.7.6 |
-| 候选键 | Candidate Key | Attributes which **can be used as** primary key attributes. | §2.9.4 |
-| 简单 / 复合属性 | Simple / Composite Attribute | Simple cannot be further decomposed; composite may be decomposed into other attributes. | §2.7.6 |
-| 可导出属性 | Derivable Attribute | Can be derived / computed from the values of other attributes in the database. | §2.7.6 |
-| 静态 / 易变 | Static / Volatile | Static: **will not change** if new data is entered into the system. Volatile: **will change** if new data is entered. | §2.7.6 |
-| 多重性 | Multiplicity | **How many times an instance of a class is allowed to participate in an association**; written `minimum..maximum`. | §2.7.7 |
-| 最小多重性 | Minimum Multiplicity | The minimum number of times one instance **must** participate. **0 = optional participation**, **1 = mandatory participation**. | §2.7.7 |
-| 最大多重性 | Maximum Multiplicity | The maximum number of times one instance **may** participate. **1 = one-time only**, **\* = as many times as needed, no restrictions**. | §2.7.7 |
-| 关系数据库 | Relational Database | Consists of **tables (relations)** linked together via the use of **primary and foreign keys**. | §2.9.1 |
-| 外键 | Foreign Key | **A primary key from a different table that has been posted into the table** to create a link between the two tables. | §2.9.1 |
-| 元组 | Tuple | A row; the rows are also called the **table extension**. Order does not matter. | §2.9.2 |
-| 表的内涵 / 模式 | Table Intension / Schema | The columns. Order does not matter, but **data format does matter**. | §2.9.2 |
-| 空值 | Null | A blank; means "no value / unknown". Not zero, not an empty string. | §2.9.4 |
-| 实体完整性 | Entity Integrity | **A primary key in a table must not contain a null value.** | §2.9.4 |
-| 参照完整性 | Referential Integrity | A value for a foreign key must either **be null (blank)** or **match exactly** a value for the primary key in the table from which it was posted. | §2.9.4 |
-| 一事一地 | One Fact, One Place | A **fact = a pairing of a candidate key attribute value with another attribute value**; each fact must appear once and in one place only. | §2.9.4 |
-| 重复组 | Repeating Group | Two or more attribute values in one cell — i.e. **multiple facts in one place**; not allowed. | §2.9.7 |
-| 冗余 | Redundancy | **One fact in multiple places, or multiple facts in one place.** | §2.10.1 |
-| 载荷 | Load | **The percentage of non-null values in a column.** | §2.10.1 |
-| 过账（数据库义） | Post | To copy a table's primary key into another table as a foreign key. ⚠️ Different from the accounting "posting" (journal → ledger). | §2.9.1 |
-| 复合主键 | Composite / Concatenated Primary Key | A primary key formed by posting the primary keys of the two related class tables into the association table. | §2.10.3 |
+每行定位一个概念及正文首次展开处。英文原定义移到同名条目，逐项完整保留。
+
+| 中文 | English | 首现 |
+| --- | --- | --- |
+| 复式记账 | (Traditional) Double-Entry Bookkeeping | §2.1.1 |
+| REA 会计模型 | REA Accounting Model | §2.1.3 |
+| 语义语境 | Semantic Context | §2.1.3 |
+| 人工构造物 | Artifact | §2.3.1 |
+| 经济资源 | Economic Resource | §2.5.1 |
+| 经济事件 | Economic Event | §2.5.1 |
+| 经济参与者 | Economic Agent | §2.5.1 |
+| 内部 / 外部参与者 | Inside / Outside Agent | §2.5.3 |
+| 二元性 | Duality | §2.5.2 |
+| 经济减量 / 增量 | economicDecrement / economicIncrement | §2.7.8 |
+| 概念模型 | Conceptual Model | §2.6.1 |
+| 逻辑模型 | Logical Model | §2.6.2 |
+| 物理数据库模型 | Physical Database Model | §2.6.3 |
+| XBRL | eXtensible Business Reporting Language | §2.6.1 |
+| UML 类图 | UML Class Diagram | §2.7.1 |
+| 实体 | Entity | §2.7.2 |
+| 类 | Class | §2.7.2 |
+| 构造型 | Stereotype | §2.7.3 |
+| 关联 | Association | §2.7.4 |
+| 关联类 | Association Class | §2.7.4 |
+| 具象化关联 | Reified Association | §2.7.4 |
+| 属性 | Attribute | §2.7.6 |
+| 主键 | Primary Key | §2.7.6 |
+| 候选键 | Candidate Key | §2.9.4 |
+| 简单 / 复合属性 | Simple / Composite Attribute | §2.7.6 |
+| 可导出属性 | Derivable Attribute | §2.7.6 |
+| 静态 / 易变 | Static / Volatile | §2.7.6 |
+| 多重性 | Multiplicity | §2.7.7 |
+| 最小多重性 | Minimum Multiplicity | §2.7.7 |
+| 最大多重性 | Maximum Multiplicity | §2.7.7 |
+| 关系数据库 | Relational Database | §2.9.1 |
+| 外键 | Foreign Key | §2.9.1 |
+| 元组 | Tuple | §2.9.2 |
+| 表的内涵 / 模式 | Table Intension / Schema | §2.9.2 |
+| 空值 | Null | §2.9.4 |
+| 实体完整性 | Entity Integrity | §2.9.4 |
+| 参照完整性 | Referential Integrity | §2.9.4 |
+| 一事一地 | One Fact, One Place | §2.9.4 |
+| 重复组 | Repeating Group | §2.9.7 |
+| 冗余 | Redundancy | §2.10.1 |
+| 载荷 | Load | §2.10.1 |
+| 过账（数据库义） | Post | §2.9.1 |
+| 复合主键 | Composite / Concatenated Primary Key | §2.10.3 |
+
+中文/English对照名称，首现是学习定位；数量/金额没有从定义表产生。读Load时，分母是所讨论表的行数，完整950/1000例见2.10.1。
+
+**复式记账**
+
+考试可用的英文定义（优先讲义原句）：Records every transaction with dual entries (debit/credit) to maintain the accounting equation `Assets = Liabilities + Equity`; focuses on financial outcomes and uses standardized financial statements.
+
+
+**REA 会计模型**
+
+考试可用的英文定义（优先讲义原句）：Models business activities around three core elements — Resources, Events and Agents — recording economic events in their **semantic context** rather than as debits/credits.
+
+
+**语义语境**
+
+考试可用的英文定义（优先讲义原句）：Recording an event together with the resource exchanged, the agents involved and the related events, instead of translating it into account balances.
+
+
+**人工构造物**
+
+考试可用的英文定义（优先讲义原句）：Something **manufactured, not naturally occurring**; debits, credits and accounts are artifacts that **obscure details of business transactions needed for non-accounting purposes**.
+
+
+**经济资源**
+
+考试可用的英文定义（优先讲义原句）：The "what": things of economic value that events increase or decrease (inventory, cash, equipment).
+
+
+**经济事件**
+
+考试可用的英文定义（优先讲义原句）：The "what, when, where": a business activity that changes resources (sale, purchase, production).
+
+
+**经济参与者**
+
+考试可用的英文定义（优先讲义原句）：The "who": persons or organisations participating in events (customers, employees, suppliers).
+
+
+**内部 / 外部参与者**
+
+考试可用的英文定义（优先讲义原句）：The agent belonging to the enterprise / to the outside party. External exchange events usually involve inside and outside agents; internal events and losses require their own participation rules.
+
+
+**二元性**
+
+考试可用的英文定义（优先讲义原句）：There is usually **a pair of events** at the heart of REA: one represents a resource being **given away or lost**, another a resource being **received or gained**; the two are linked.
+
+
+**经济减量 / 增量**
+
+考试可用的英文定义（优先讲义原句）：Stereotypes marking events that decrease / increase a resource; duality always links one of each.
+
+
+**概念模型**
+
+考试可用的英文定义（优先讲义原句）：A representation that depicts **the important objects and the relationships between the objects** that must be captured in a database.
+
+
+**逻辑模型**
+
+考试可用的英文定义（优先讲义原句）：A conceptual model converted **once the type of database has been determined** (relational, object-oriented, hierarchical, network).
+
+
+**物理数据库模型**
+
+考试可用的英文定义（优先讲义原句）：Created based on **the specific database software package** in which the database is implemented.
+
+
+**XBRL**
+
+考试可用的英文定义（优先讲义原句）：An XML-based conceptual modeling language used for tagging business and financial reporting data.
+
+
+**UML 类图**
+
+考试可用的英文定义（优先讲义原句）：The four constructs: **classes, associations, attributes and multiplicities**; appropriate for conceptual modeling of REA concepts.
+
+
+**实体**
+
+考试可用的英文定义（优先讲义原句）：A real world object that has a **separate existence, either physical or conceptual**.
+
+
+**类**
+
+考试可用的英文定义（优先讲义原句）：A **set of entities that share the same characteristics**; drawn as a three-compartment box.
+
+
+**构造型**
+
+考试可用的英文定义（优先讲义原句）：A **generalized type of class to which other classes may belong**, written in `<< >>` above the class name.
+
+
+**关联**
+
+考试可用的英文定义（优先讲义原句）：A relationship between classes.
+
+
+**关联类**
+
+考试可用的英文定义（优先讲义原句）：An association in which there can be **only one link** between the related entities.
+
+
+**具象化关联**
+
+考试可用的英文定义（优先讲义原句）：An association in which there can be **multiple links** between the related entities, so it needs its own identifier.
+
+
+**属性**
+
+考试可用的英文定义（优先讲义原句）：Characteristics or elementary properties of **classes and/or associations**.
+
+
+**主键**
+
+考试可用的英文定义（优先讲义原句）：An attribute that **uniquely and universally identifies** each instance of a class or association.
+
+
+**候选键**
+
+考试可用的英文定义（优先讲义原句）：Attributes which **can be used as** primary key attributes.
+
+
+**简单 / 复合属性**
+
+考试可用的英文定义（优先讲义原句）：Simple cannot be further decomposed; composite may be decomposed into other attributes.
+
+
+**可导出属性**
+
+考试可用的英文定义（优先讲义原句）：Can be derived / computed from the values of other attributes in the database.
+
+
+**静态 / 易变**
+
+考试可用的英文定义（优先讲义原句）：Static: **will not change** if new data is entered into the system. Volatile: **will change** if new data is entered.
+
+
+**多重性**
+
+考试可用的英文定义（优先讲义原句）：**How many times an instance of a class is allowed to participate in an association**; written `minimum..maximum`.
+
+
+**最小多重性**
+
+考试可用的英文定义（优先讲义原句）：The minimum number of times one instance **must** participate. **0 = optional participation**, **1 = mandatory participation**.
+
+
+**最大多重性**
+
+考试可用的英文定义（优先讲义原句）：The maximum number of times one instance **may** participate. **1 = one-time only**, **\* = as many times as needed, no restrictions**.
+
+
+**关系数据库**
+
+考试可用的英文定义（优先讲义原句）：Consists of **tables (relations)** linked together via the use of **primary and foreign keys**.
+
+
+**外键**
+
+考试可用的英文定义（优先讲义原句）：**A primary key from a different table that has been posted into the table** to create a link between the two tables.
+
+
+**元组**
+
+考试可用的英文定义（优先讲义原句）：A row; the rows are also called the **table extension**. Order does not matter.
+
+
+**表的内涵 / 模式**
+
+考试可用的英文定义（优先讲义原句）：The columns. Order does not matter, but **data format does matter**.
+
+
+**空值**
+
+考试可用的英文定义（优先讲义原句）：A blank; means "no value / unknown". Not zero, not an empty string.
+
+
+**实体完整性**
+
+考试可用的英文定义（优先讲义原句）：**A primary key in a table must not contain a null value.**
+
+
+**参照完整性**
+
+考试可用的英文定义（优先讲义原句）：A value for a foreign key must either **be null (blank)** or **match exactly** a value for the primary key in the table from which it was posted.
+
+
+**一事一地**
+
+考试可用的英文定义（优先讲义原句）：A **fact = a pairing of a candidate key attribute value with another attribute value**; each fact must appear once and in one place only.
+
+
+**重复组**
+
+考试可用的英文定义（优先讲义原句）：Two or more attribute values in one cell — i.e. **multiple facts in one place**; not allowed.
+
+
+**冗余**
+
+考试可用的英文定义（优先讲义原句）：**One fact in multiple places, or multiple facts in one place.**
+
+
+**载荷**
+
+考试可用的英文定义（优先讲义原句）：**The percentage of non-null values in a column.**
+
+
+**过账（数据库义）**
+
+考试可用的英文定义（优先讲义原句）：To copy a table's primary key into another table as a foreign key. ⚠️ Different from the accounting "posting" (journal → ledger).
+
+
+**复合主键**
+
+考试可用的英文定义（优先讲义原句）：A primary key formed by posting the primary keys of the two related class tables into the association table.
+
+
 
 ---
 
@@ -3618,9 +4179,11 @@ flowchart TD
 
 | 级别 | 含义 | 本讲数量 |
 |---|---|---|
-| 🔴 教授明示 | 转录里教授明确说过会考 / 要记 | **1 条**（含反向提醒；新增 1 条；旧/新源各自计时） |
+| 🔴 教授明示 | 转录里教授明确说过会考 / 要记 | 1 条，来源时段各自保留 |
 | 🟡 CILO 反推 | 对应官方 CILO 或期中考 Rubric | 6 条 |
 | ⚪ 笔记推断 | 根据篇幅分配、页面设计、题型惯例 | 9 条 |
+
+**计数说明**：这 1 条含反向提醒，材料整合记录为新增 1 条；旧、新源各自计时，不能拼接成同一时间轴。
 
 > 本次新增教授明确的属性举例学习要求；其余未获题型明示的条目继续保留 🟡/⚪。没有由课表周次推断具体考题。
 
@@ -3633,7 +4196,7 @@ flowchart TD
 
 | 可信度 | 考点 | 依据 | 对应小节 |
 |---|---|---|---|
-| 🔴 | **理解属性分类并能举例，不能只机械复述概念** | *"you should be able to name some examples."*（S4 `29:06`）；*"That is my request."*（S4 `29:11`）；是学习要求，未承诺具体题型/分值 | §2.7.6 |
+| 🔴 | **理解属性分类并能举例，不能只机械复述概念** | 学习要求，原话与时间戳见下 | §2.7.6 |
 | 🟡 | **复式记账 vs REA 的对比**（原理、强项各 3 条、局限各 2 条） | 讲义用 **4 整页**（p.2–5）对称呈现；CILO 1 | §2.1、§4.1 |
 | 🟡 | **REA 三要素的定义与 what/when/where/who 对应** | 讲义 p.4、p.17 两处给出；这是模型的名字本身 | §2.5.1 |
 | 🟡 | **duality（二元性）的定义与 give/get 结构** | 讲义 p.18 整页 + p.19 整页图 | §2.5.2–2.5.3 |
@@ -3649,6 +4212,14 @@ flowchart TD
 | ⚪ | **属性的四种分类**（主键、简单/复合、可导出的静态/易变） | 讲义 p.28 整页 | §2.7.6 |
 | ⚪ | **载荷（load）的定义与它在 Step 5 里的作用** | 讲义 p.43 给定义、p.53 用它做判断 | §2.10.1、§2.10.11 |
 | ⚪ | **REA 与 AI 的关系** | 讲义 p.5 唯一一处 *"AI-driven forecasting"*；课程名里有 AI | §2.1.4 |
+
+**属性举例的课堂要求（S4）**：
+
+> *"you should be able to name some examples."*（`29:06`）
+
+> *"That is my request."*（`29:11`）
+
+教师要求能举例解释属性分类，不能只机械复述概念；原话未承诺具体题型或分值。
 
 ### 6.3 答题框架
 
@@ -3733,7 +4304,7 @@ flowchart TD
 
 **为什么要消灭**（讲义 p.9）：*"Accounting artifacts **obscure details of business transactions needed for non-accounting purposes**."* —— 它们**遮蔽了**业务交易中那些**非会计用途所需要的细节**。
 
-**展开**：一笔销售真实发生的是"某人在某时某地把某物给了某人换回多少钱"；借贷科目把这一切压缩成几个数字，**谁、在哪、什么商品全部丢失**。对会计够用，对生产/销售/客服完全不够。
+**展开**：一笔销售真实发生的是"某人在某时某地把某物给了某人换回多少钱"；若只保留本讲简化分录和科目汇总，谁、地点、商品等字段无法从汇总数反推；真实凭证、辅助账或 ERP 若另存明细则仍可回查。对会计够用，对生产/销售/客服完全不够。
 
 **McCarthy 的替代方案**：聚焦 *"natural phenomena common to most enterprises"* —— 即 Resources、Events、Agents 三类自然存在的对象。
 
@@ -3751,7 +4322,7 @@ flowchart TD
 
 | | 复式记账 | REA |
 |---|---|---|
-| 配平什么 | **金额**（借方合计 = 贷方合计） | **事件**（每个 give 事件配一个 get 事件） |
+| 检查什么 | **金额**（借方合计 = 贷方合计） | 核心交换中的 give/get 关联；未结清与内部事件另行判断 |
 | 约束强度 | 金额必须严格相等 | duality 关联**不要求金额相等**（一笔 \$10 的销售可以对应两笔 \$5 的收款） |
 
 **讲义还给了一个"更复杂"的例子**：*"a **product conversion** occurs in exchange for a **usage of raw material, labor cost and overhead**"* —— 说明 duality **不一定是一对一**，可以是多对一。→ §2.5.2
@@ -3925,7 +4496,7 @@ Duality:  S001 ↔ CR001
 - ❌ **卖方是谁**（Paul）
 - ❌ **买方是谁**（Joe——A/R 只有一个总额）
 - ❌ **商品是什么**（Inventory 只有一个总额）
-- ❌ **售价与成本属于同一笔交易的配对关系**（月末汇总后彻底丢失，§2.3.2）
+- ❌ **售价与成本属于同一笔交易的配对关系**（只剩合计时不能反推；若原凭证/明细留存ID仍可回查，§2.3.2）
 
 **保留的只有 3 条**：日期、售价 10、成本 8。
 
@@ -4164,9 +4735,9 @@ Duality:  S001 ↔ CR001
 ### 9.4 课外补充
 
 - 🔗 **McCarthy 1982 的完整文献**：William E. McCarthy, *"The REA Accounting Model: A Generalized Framework for Accounting Systems in a Shared Data Environment,"* **The Accounting Review**, Vol. 57, No. 3 (July 1982), pp. 554–578。⚠️ **讲义未给引用**，此为我补充的外部信息（获取日期 2026-09-09），**写进作业前请自行核实**。
-- 💡 **REA 的两个"缺失要素"**：基本 REA 只有 Resource / Event / Agent，回答不了 **"为什么会发生这个事件"**。后续扩展加入了 **Commitment（承诺，如订单）** 与 **Contract（合同）**。**本课不讲**，但知道有这个缺口有助于理解 W5 的业务流程建模——一个完整的收入循环通常是 `Order（承诺）→ Sale（事件）→ Cash Receipt（事件）`。
+- 💡 **REA 的两个"缺失要素"**：基本 REA 只有 Resource / Event / Agent，回答不了 **"为什么会发生这个事件"**。后续扩展加入了 **Commitment（承诺，如订单）** 与 **Contract（合同）**。**本讲不展开、M05 会继续处理 Commitment 与业务流程**；知道这个缺口有助于理解 W5 的业务流程建模——一个完整的收入循环通常是 `Order（承诺）→ Sale（事件）→ Cash Receipt（事件）`。
 - 💡 **REA 与 ERP 的关系**：p.9 那句 *"integrated enterprise systems that can satisfy accounting needs while also satisfying needs of other business areas"* 就是 **ERP（企业资源规划）** 的核心理念。今天的 SAP、Oracle、用友、金蝶都是这个思想的商业实现——**一套数据库同时供财务、生产、销售、采购使用**。⇒ **REA 的思想赢了，但它的"消灭借贷"主张没赢**：ERP 内部记录细粒度事件，对外仍然出借贷式的 IFRS 报表。
-- 💡 **本讲与 AI 的连接点**（讲义只有 p.5 一行）：机器学习的效果上限由数据的**粒度、结构化程度与语境完整性**决定。REA 数据库提供的是**每一笔事件的完整记录**，复式记账提供的是**月度汇总的科目余额**。**⇒ W9–W10 的"AI 财报分析"如果只能拿到后者，能做的事非常有限。** 这条线值得在小组项目里展开。
+- 💡 **本讲与 AI 的连接点**（讲义只有 p.5 一行）：机器学习的效果上限由数据的**粒度、结构化程度与语境完整性**决定。REA 模型要求显式记录事件及关系；传统系统也可能同时保存逐笔凭证和业务明细。若分析输入只有月度科目余额，很多客户、商品和流程问题便无法回答。**⇒ W9–W10 的"AI 财报分析"如果只能拿到后者，能做的事非常有限。** 这条线值得在小组项目里展开。
 - 💡 **对照 [[M03-年报分析]] 的三条 Weakness**：资产负债表"有些资产负债根本不上表"（p.13）、利润表"数字可被操纵"（p.33）——REA 对第一条有实质帮助（它不受"能否可靠计量"的门槛限制），**对第二条帮助有限**（估计仍然是估计）。**答题时能指出这个界限，是加分点。**
 
 > 🔧 **译名已统一（2026-09-09 主 agent 裁决）**：`referential integrity` 全库统一译 **参照完整性**，本篇原用的「引用完整性」已全部替换（14 处）。理由：中文数据库文献（SQL Server / MySQL / Oracle 官方中文文档及国内教材）以「参照完整性」为主流译法，M06 也用这个；「引用完整性」易与 UML 的 reference 混淆。已登记进 [[AC6761_Artificial_Intelligence_Accounting/_meta/术语表|术语表]] 与根 [[术语总表]]。
@@ -4183,7 +4754,7 @@ Duality:  S001 ↔ CR001
 | 4 | **完整的构造型清单** | 讲义只出现 2 个（§9.3 ⑦）。`<<Resource>>`、`<<economicIncrement>>`、`stockflow` 是我按 REA 通行术语补的，**未经讲义确认**。 |
 | 5 | **McCarthy 1982 的文献信息** | §9.4 的引用是外部补充，**讲义未给**，未经核实。 |
 | 6 | **REA考题的答题格式** | UML数据模型可省空operations格已由S4 `22:04`–`23:01`确认；正式REA考题是画图/表结构、是否要求构造型及各项分值仍未明示 |
-| 7 | **上课日期 2026-09-23 是推断值** | W1 = 2026-09-02（周三），按每周一次推算 W4 = 09-23。**未经确认**，frontmatter 的 `date` 字段据此填写 |
+| 7 | **旧版本曾把上课日期推定为 2026-09-23** | 当前 frontmatter 已按现有三源登记更新为 2026-09-30；09-23 只保留为历史推定记录，不再解释当前字段 |
 | 8 | **W5 与本讲的分界** | 讲义在 duality 之后没有讲完整的业务循环（收入循环、采购循环），推测留在 W5。**需要看 Week 5 PPT 确认。** |
 | 9 | 2026-09-30 三源登记与范围 | S2 = `M04-transcript-part1-partial.txt`（录音 2，258 段）；S3 = `M04-transcript-part2-partial.txt`（录音 3，130 段）；S4 = `M04-transcript-part3-partial.txt`（录音 4，235 段）。各源独立计时；顺序结合文件日期、课间语和内容衔接核实，接缝连续性及缺口长度未知。 三源媒体时长合计 6938.178166 秒（1h55m38s，`source_manifest.py`），仅为录音长度，不是墙钟课长。S2 `06:09` 起有有效教学，前段噪声/残留幻觉不引用；S2 `34:16`→`37:47` 是教授安排的 Nike 自读；S3 从视频中段开始；S4 `37:30` 后无有效教学转录，末端残留幻觉不作为课堂结尾。 |
 | 10 | 三源课程路由 | 本片使用S3及S4原始时钟；S4 `00:00`–`00:31`为M03比例问题，交M03片，不重复记入M04时长 |

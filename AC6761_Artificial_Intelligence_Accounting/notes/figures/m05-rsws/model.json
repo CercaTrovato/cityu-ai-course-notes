@@ -1,0 +1,422 @@
+{
+  "schema": "cityu-concept-graph-v1",
+  "diagram_type": "uml-rea",
+  "title": "RSWS core acquisition model",
+  "scope": "Week 5 p.17–20 core acquisition/payment; association lines are not temporal arrows",
+  "assumptions": [
+    "Cash retains ResourceType as p.17–20; other lecture patterns use Resource CashAccount. Do not normalize this source conflict silently.",
+    "No transaction amounts supplied by original RSWS; allocation fields are schema, not observed transactions.",
+    "Internal role classes do not prove separate natural persons. Supplier scope and overhead-only purchases require explicit business interpretation."
+  ],
+  "figure_caption": "Baseline transcription redrawn; no new official-source validation. Overview and full attributes share one JSON.",
+  "nodes": [
+    {
+      "id": "InventoryType",
+      "label": "Inventory Type",
+      "kind": "ResourceType",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": [
+        {
+          "id": "InventoryType-attr0",
+          "name": "Item-id (PK)",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "InventoryType-attr1",
+          "name": "Item-desc",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "InventoryType-attr2",
+          "name": "Item-std-cost",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "InventoryType-attr3",
+          "name": "Item-list-price",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "InventoryType-attr4",
+          "name": "Item-qoh",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "Overhead",
+      "label": "Overhead",
+      "kind": "ResourceType",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": [
+        {
+          "id": "Overhead-attr0",
+          "name": "OH-id (PK)",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "Overhead-attr1",
+          "name": "OH-desc",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "Cash",
+      "label": "Cash",
+      "kind": "ResourceType",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": [
+        {
+          "id": "Cash-attr0",
+          "name": "AcctNum (PK)",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "Cash-attr1",
+          "name": "AcctType",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "Cash-attr2",
+          "name": "AcctLoc",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "Cash-attr3",
+          "name": "AcctBal",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "Purchase",
+      "label": "Purchase",
+      "kind": "EconomicIncrement",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": [
+        {
+          "id": "Purchase-attr0",
+          "name": "Acq-ID (PK)",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "Purchase-attr1",
+          "name": "Acq-date",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "Purchase-attr2",
+          "name": "Acq-amt",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "CashDisbursement",
+      "label": "Cash Disbursement",
+      "kind": "EconomicDecrement",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": [
+        {
+          "id": "CashDisbursement-attr0",
+          "name": "CD-id (PK)",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "CashDisbursement-attr1",
+          "name": "CD-date",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "CashDisbursement-attr2",
+          "name": "CD-amt",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "PurchaseAgent",
+      "label": "Purchase Agent",
+      "kind": "InternalAgent",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": [
+        {
+          "id": "PurchaseAgent-attr0",
+          "name": "PA-id (PK)",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "PurchaseAgent-attr1",
+          "name": "PA-name",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "PurchaseAgent-attr2",
+          "name": "PA-limit",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "Supplier",
+      "label": "Supplier",
+      "kind": "ExternalAgent",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": [
+        {
+          "id": "Supplier-attr0",
+          "name": "SupNum (PK)",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "Supplier-attr1",
+          "name": "Sup-name",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "Supplier-attr2",
+          "name": "Sup-add",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "Supplier-attr3",
+          "name": "Sup-rating",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "APClerk",
+      "label": "A/P Clerk",
+      "kind": "InternalAgent",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": [
+        {
+          "id": "APClerk-attr0",
+          "name": "AP-id (PK)",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "APClerk-attr1",
+          "name": "AP-name",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "APClerk-attr2",
+          "name": "AP-bond",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "Manager",
+      "label": "Manager",
+      "kind": "InternalAgent",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": [
+        {
+          "id": "Manager-attr0",
+          "name": "Mgr-id (PK)",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "Manager-attr1",
+          "name": "Mgr-name",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "Manager-attr2",
+          "name": "Mgr-degree",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "sf1",
+      "a": "InventoryType",
+      "b": "Purchase",
+      "a_multiplicity": "0..*",
+      "b_multiplicity": "0..*",
+      "label": "Stockflow1",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": [
+        {
+          "id": "sf1-attr0",
+          "name": "item-qty-purch",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        },
+        {
+          "id": "sf1-attr1",
+          "name": "item-unit-cost",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "sf2",
+      "a": "Overhead",
+      "b": "Purchase",
+      "a_multiplicity": "0..*",
+      "b_multiplicity": "0..*",
+      "label": "Stockflow2",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": [
+        {
+          "id": "sf2-attr0",
+          "name": "oh-qty-purch",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "sf3",
+      "a": "Cash",
+      "b": "CashDisbursement",
+      "a_multiplicity": "1..1",
+      "b_multiplicity": "0..*",
+      "label": "Stockflow3",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "duality",
+      "a": "Purchase",
+      "b": "CashDisbursement",
+      "a_multiplicity": "0..*",
+      "b_multiplicity": "0..*",
+      "label": "Duality",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": [
+        {
+          "id": "duality-attr0",
+          "name": "cd-acq-applied",
+          "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "p1",
+      "a": "PurchaseAgent",
+      "b": "Purchase",
+      "a_multiplicity": "1..1",
+      "b_multiplicity": "0..*",
+      "label": "Participation (1)",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "p2",
+      "a": "Supplier",
+      "b": "Purchase",
+      "a_multiplicity": "1..1",
+      "b_multiplicity": "0..*",
+      "label": "Participation2",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "p3",
+      "a": "Supplier",
+      "b": "CashDisbursement",
+      "a_multiplicity": "0..1",
+      "b_multiplicity": "0..*",
+      "label": "Participation3",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "p4",
+      "a": "APClerk",
+      "b": "CashDisbursement",
+      "a_multiplicity": "1..1",
+      "b_multiplicity": "0..*",
+      "label": "Participation4",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "p5",
+      "a": "Manager",
+      "b": "CashDisbursement",
+      "a_multiplicity": "1..1",
+      "b_multiplicity": "0..*",
+      "label": "Participation5",
+      "source": "Week 5 PPT.pptx p.17–20; baseline M05 §2.9.4–2.9.5; 新图沿现有逐项来源记录重绘，未重新认证原端点视觉位置",
+      "status": "source",
+      "attributes": []
+    }
+  ],
+  "layout": {
+    "columns": [
+      [
+        "InventoryType",
+        "Overhead",
+        "Cash"
+      ],
+      [
+        "Purchase",
+        "CashDisbursement"
+      ],
+      [
+        "PurchaseAgent",
+        "Supplier",
+        "APClerk",
+        "Manager"
+      ]
+    ]
+  }
+}

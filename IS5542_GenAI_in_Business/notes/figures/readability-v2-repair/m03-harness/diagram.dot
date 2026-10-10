@@ -1,0 +1,21 @@
+digraph Harness {
+graph [rankdir=TB,bgcolor="white",nodesep=.45,ranksep=.8,compound=true,fontname="Microsoft YaHei",fontsize=18];
+node [shape=box,style="rounded,filled",fillcolor="#f4f6f8",fontname="Microsoft YaHei",fontsize=16,margin=".14,.12",width=3.1,height=.65];
+edge [fontname="Microsoft YaHei",fontsize=13,color="#506070",arrowsize=.75];
+subgraph cluster1 {label="运行及信息入口"; color="#aab4bd";
+{rank=same;E[label="执行循环 E"];T[label="工具层 T"];C[label="上下文管理 C"];}
+M1[label="同一模型的判断",width=3.7,fillcolor="#dcecf8"];
+E->M1[label="决定继续\n或停止"];T->M1[label="提供操作\n及结果"];C->M1[label="选择本次\n可见信息"];
+}
+subgraph cluster2 {label="状态及检查"; color="#aab4bd";
+{rank=same;S[label="记忆与状态 S"];L[label="生命周期钩子 L"];V[label="评估与验证 V"];}
+M2[label="同一模型的判断",width=3.7,fillcolor="#dcecf8"];
+S->M2[label="提供\n持久状态"];L->M2[label="调用前后\n策略及记录"];V->M2[label="检查输出\n及任务表现"];
+}
+subgraph cluster3 {label="讲义另列的约束与组织"; color="#aab4bd";
+{rank=same;P[label="权限与沙箱"];SP[label="系统提示组装"];O[label="子agent与编排"];}
+M3[label="同一模型及应用边界",width=4.3,fillcolor="#dcecf8"];
+P->M3[label="限制\n真实执行",style=dashed];SP->M3[label="提供\n本次指令",style=dashed];O->M3[label="分派\n有界任务",style=dashed];
+}
+M1->L[style=invis,weight=20];M2->SP[style=invis,weight=20];
+}

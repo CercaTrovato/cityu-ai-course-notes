@@ -1,0 +1,10 @@
+flowchart TD
+ A[host内MCP client] --> B[初始化tools capability]
+ B --> C[tools/list及分页 保存schema]
+ C --> D[host核输入及授权]
+ D --> E[tools/call到server]
+ E --> F{protocol error或isError吗}
+ F -->|是| G[记录错误 有限恢复或停止]
+ F -->|否| H{输出schema 来源版本及范围都合格吗}
+ H -->|否| G
+ H -->|是| I[交模型真实且已核的observation]

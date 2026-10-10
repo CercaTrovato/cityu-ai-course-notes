@@ -10,21 +10,23 @@ new_concepts: [资源, 资源类型, 经济事件, 经济增量事件, 经济减
 tags: [AC6761, REA, 业务流程建模, UML类图, 采购循环, 收入循环, 期中考范围]
 status: v0.9
 updated: 2026-10-02
-mechanism_review: passed
+mechanism_review: pending
 mechanism_review_mode: efficient-20261002
 mechanism_content: repaired
 mechanism_acceptance: "2026-10-02 简化流程；3 图实看；12 行关系表逐行读取且按 source/table 记录；未做独立全量 Q/R；transcript pending 与来源限制保留"
 mechanism_spec: v1
+readability_rules: v2
+readability_review: pending
 ---
 
 # M05 · REA 业务流程建模（REA Business Process Modeling）
 
-> **本讲一句话**：M04 给了你 REA 的**零件**（资源 / 事件 / 参与者）和**画图的语法**（UML 类图、多重度）；这一讲给你**装配图纸**——一套六步走的固定程序，把任何一段业务叙述变成一张可以直接落成数据库的 REA 模型，并用**采购循环**和**收入循环**两个完整实例走完全程。
-> **原始材料**：`Week 5 PPT.pptx`（57 页） ｜ **转录**：`pending`（本课只有 W01 有转录）
+> **本讲一句话**：M04 给了你 REA 的**零件**（资源 / 事件 / 参与者）和**画图的语法**（UML 类图、多重度）；这一讲给你**装配图纸**——一套六步建模程序，按业务叙述确定对象、关联、属性和参与次数，再检查能否落表，并用**采购循环**和**收入循环**两个完整实例走完全程。
+> **原始材料**：`Week 5 PPT.pptx`（57 页） ｜ **转录**：`pending`（本讲尚未融合课堂转录）
 
 > ⚠️ **本笔记为 v0.9**：**完全基于讲义**，无课堂转录。七格微结构里的「🎙️ 课堂补充」一律写「待转录补充」——这是有意留的欠债标记，不是遗漏。转录到手后要回填的具体问题清单见 [[#9.2 课上讲了但课件没有|§9.2]]。
 >
-> 🔴 **这是期中考范围的最后一周。** 期中考 **2026-10-14（周三）19:30–21:30**，闭卷，考场 AC1 (Yeung) Y4302 & Y4702，范围 **W1–W5**（教授在 W1 课上说了两遍）。本讲和 W4 合起来占了考试范围的 **40%**（五周里的两周），而且是**唯一需要"画东西"的部分**。
+> 🔴 **这是期中考范围的最后一周。** 期中考 **2026-10-14（周三）19:30–21:30**，闭卷，考场 AC1 (Yeung) Y4302 & Y4702，范围 **W1–W5**（教授在 W1 课上说了两遍）。本讲和 W4 合起来占范围内课程周数的 **40%**（五周里的两周，**不是考试分值权重**），而且是**唯一需要"画东西"的部分**。
 
 ---
 
@@ -32,14 +34,14 @@ mechanism_spec: v1
 
 **这一讲讲了什么**
 
-W4 结束时你手里有：REA 的三类东西（**资源 Resource、事件 Event、参与者 Agent**）、一套画图语法（**UML 类图**：类画成三格方框、关联画成连线、连线两端标**多重度**）、以及一个核心直觉（**二元性 duality**：企业每"得到"一样东西，一定"给出"另一样东西）。
+W4 结束时你已经认识 REA 的三类对象：**资源 Resource、事件 Event、参与者 Agent**。你也会读 **UML 类图**：类画成三格方框，关联画成连线，连线两端标**多重度**。本讲沿用的核心直觉是**二元性 duality**：在核心交换模式中，把资源增量事件与对应的资源减量事件连起来；赊购等未结清状态可以暂时只有一端，损耗或内部事件也不能硬套成交换。
 
 **但你还不会真正建一张图。** 因为没人告诉你：拿到一段业务描述，第一笔该画什么？画到什么程度算完？多重度那些 `0..*`、`1..1` 到底根据什么填？
 
 这一讲就是回答这三个问题的**施工手册**，一共给了四样东西：
 
 1. **零件清单**（p.2–4）—— 把 REA 的类和关联一次列全：三类核心类（资源/资源类型、经济事件的增量与减量、内部/外部参与者）、三条**主关联**（二元性 Duality、存量流 Stockflow、参与 Participation）、三条**次关联**（保管 Custody、指派 Assignment、责任 Responsibility）。
-2. **六步法**（p.5–8）—— `① 找经济交换事件 → ② 挂资源 → ③ 挂外部参与者 → ④ 挂内部参与者 → ⑤ 分配属性 → ⑥ 分配多重度`。这六步是**答题模板**，考场上按顺序走就不会漏。
+2. **六步法（p.5–8）**是答题顺序：先找经济交换事件，再挂资源、外部参与者和内部参与者，最后分配属性与多重度。各步在 §2.1–§2.6 分别展开，按此顺序检查可减少漏项。
 3. **两个核心模式与一个完整实例**（p.9–21）—— 采购循环（acquisition cycle）和收入循环（revenue cycle）的标准骨架；再用 **Robert Scott Woodwind Shop（RSWS）**这家乐器店把六步完整走一遍，包括**从四句业务叙述反推出全部 18 个多重度**（p.19–20）。
 4. **扩展模型**（p.22–57）—— 核心模型画资源交换事件及二元性，允许货与款不同步。真实业务在它前面还有**起因事件**（有人提出需求）和**承诺事件**（签了单但还没交货），后面还有**冲销事件**（退货）。这三类事件加上七条新关联，构成完整的扩展模型；然后再把扩展模型分别实例化成**扩展采购循环**（p.38–47）和**扩展收入循环**（p.48–57）。
 
@@ -57,7 +59,7 @@ W4 结束时你手里有：REA 的三类东西（**资源 Resource、事件 Even
 
 1. **六步法的顺序不能乱**：先事件、再资源、再外部参与者、再内部参与者、最后属性和多重度。**为什么是这个顺序**：REA 是**以事件为中心**的模型，事件是骨架，资源和参与者都是挂在事件上的枝叶。先画枝叶你会不知道往哪挂。
 2. **多重度必须"看对面"**：标在类 A 旁边的那个数字，说的是**"一个 B 的实例连着几个 A"**（W4 p.31 原话："Minimum participation of employee = 0 (**put next to dept**)"）。读反了整题就废了。
-3. **采购循环与收入循环是同一件事的两面**：你卖东西给客户 = 客户从你这里采购。所以两个模型的结构**完全对称**，只是**增量与减量互换了位置**——采购循环里"收货"是增量、"付钱"是减量；收入循环里"收钱"是增量、"发货"是减量。
+3. **采购循环与收入循环是同一件事的两面**：你卖东西给客户 = 客户从你这里采购。所以两个模型共享“增量事件—减量事件”的交换骨架：采购循环里“收货”是增量、“付钱”是减量；收入循环里“收钱”是增量、“发货”是减量。它们不是完全对称：起因、承诺、履行、退回及参与角色仍由各自业务规则决定。
 
 ---
 
@@ -65,7 +67,7 @@ W4 结束时你手里有：REA 的三类东西（**资源 Resource、事件 Even
 
 ### 1.1 你已经有的
 
-> ⚠️ **本表的 M03 / M04 链接是占位**。W3、W4 的笔记由另外两位 agent 同时产出，文件名与小节锚点在本笔记写作时尚未确定。**待 M03/M04 落盘后须核对链接名**（见 [[#9.5 待核对|§9.5]]）。
+> **当前衔接状态**：M03 与 M04 笔记已经存在，下面链接指向现有文件。M05 自身仍是 `transcript: pending`；这只表示本讲尚无可融合转录，不把 M02–M04 已融合的状态改回待处理。
 
 | 概念 | 一句话唤醒 | 回看 |
 |---|---|---|
@@ -74,16 +76,16 @@ W4 结束时你手里有：REA 的三类东西（**资源 Resource、事件 Even
 | 应付账款 / 赊购 | 已买入但还没付钱；`on account` = **不涉及现金** | [[M01-会计与商业#2.7.3 负债（讲义 p.40）\|M01 §2.7.3]] |
 | 复式记账、借与贷 | 每笔交易借贷金额相等；借 = 左、贷 = 右 | [[M02-交易的会计处理#2.4.2 复式记账系统（讲义 p.15–16）\|M02 §2.4.2]] |
 | 货币计量假设 | 一切以货币单位表达 —— **其推论是：不能用钱衡量的信息被系统性排除**，这正是 REA 的出发点 | [[M01-会计与商业#2.6.4 四大假设（讲义 p.34–35）\|M01 §2.6.4]] |
-| 存货 / 销货成本 | 待售的商品；卖出时结转为成本 | [[M03-年报分析]]（占位） |
-| REA 模型的动机 | 复式记账只记"影响会计等式且能用钱衡量"的事，把**谁做的、在哪做的、用了哪台设备**全部丢掉了 | [[M04-REA会计模型]]（占位） |
-| 资源 / 事件 / 参与者（REA 三要素） | 事件回答 what/when/where，资源回答 what，参与者回答 who | [[M04-REA会计模型]]（占位） |
-| 二元性 duality | REA 的核心：一对事件，一个"给出"、一个"得到" | [[M04-REA会计模型]]（占位） |
-| 概念模型 / 逻辑模型 / 物理模型 | 三层建模：先画概念图（UML），再转成关系表，最后落成真实数据库 | [[M04-REA会计模型]]（占位） |
-| UML 类图的四个构件 | 类（三格方框）、关联（连线）、属性、多重度 | [[M04-REA会计模型]]（占位） |
-| 刻板印象 stereotype | 方框第一格里 `<<...>>` 包起来的那个词，表示"这个类属于哪一大类" | [[M04-REA会计模型]]（占位） |
-| 多重度的读法 | **标在对面**：写在类 A 旁边的数字，说的是"一个 B 连着几个 A" | [[M04-REA会计模型]]（占位） |
-| 主键 PK | 唯一标识一行记录的属性 | [[M04-REA会计模型]]（占位） |
-| 多对多关联要单独建表 | `0..*—0..*` 的关联在关系数据库里必须变成一张独立的表 | [[M04-REA会计模型]]（占位） |
+| 存货 / 销货成本 | 待售的商品；卖出时结转为成本 | [[M03-年报分析]] |
+| REA 模型的动机 | 复式记账只记"影响会计等式且能用钱衡量"的事，把**谁做的、在哪做的、用了哪台设备**全部丢掉了 | [[M04-REA会计模型]] |
+| 资源 / 事件 / 参与者（REA 三要素） | 事件回答 what/when/where，资源回答 what，参与者回答 who | [[M04-REA会计模型]] |
+| 二元性 duality | REA 的核心：一对事件，一个"给出"、一个"得到" | [[M04-REA会计模型]] |
+| 概念模型 / 逻辑模型 / 物理模型 | 三层建模：先画概念图（UML），再转成关系表，最后落成真实数据库 | [[M04-REA会计模型]] |
+| UML 类图的四个构件 | 类（三格方框）、关联（连线）、属性、多重度 | [[M04-REA会计模型]] |
+| 刻板印象 stereotype | 方框第一格里 `<<...>>` 包起来的那个词，表示"这个类属于哪一大类" | [[M04-REA会计模型]] |
+| 多重度的读法 | **标在对面**：写在类 A 旁边的数字，说的是"一个 B 连着几个 A" | [[M04-REA会计模型]] |
+| 主键 PK | 唯一标识一行记录的属性 | [[M04-REA会计模型]] |
+| 多对多关联要单独建表 | `0..*—0..*` 的关联在关系数据库里必须变成一张独立的表 | [[M04-REA会计模型]] |
 
 ### 1.2 本讲全新引入的概念
 
@@ -251,7 +253,9 @@ REA 把它分成两种，方向相反：
 
 **为什么需要它**
 
-因为 REA 的第一原理是：**天下没有白得的东西。** 企业不会平白拿到资源，一定是拿别的资源换的。所以经济事件**永远成对出现**——一个增量配一个减量，这一对就叫**二元性（duality）**（§2.2.1）。
+本采购/销售交换模型把资源取得与资源付出事件配对，称为二元性（duality，§2.2.1）。
+
+先问取得了什么，再问哪项付出与它相关。允许赊购时，Purchase 可以先有，付款以后才发生。内部耗用或毁损另判，不能为凑配对编一笔现金事件。
 
 > 讲义原文里那句 `in quantity or value`（在数量上，或在价值上）值得注意：资源的流入流出**可以是数量的变化，也可以是价值的变化**。比如设备折旧没有任何东西离开厂房，但资源"价值"减少了——这也可以建成减量事件。
 
@@ -288,15 +292,15 @@ REA 把它分成两种，方向相反：
 
 **为什么需要它**
 
-这是 REA 相对复式记账**最直接的增益**。M04 的主线论点里，第一条局限就是复式记账**记不下"谁做的"**：一张 `借：存货 / 贷：应付账款` 的分录里，没有任何位置能写"这批货是张三采购的、李四签收的"。
+这是 REA 相对复式记账**最直接的增益**。M04 的主线论点里，第一条局限是**本讲简化总账分录本身不编码“谁做的”**：一张 `借：存货 / 贷：应付账款` 的分录里，没有位置写“这批货是张三采购的、李四签收的”。真实凭证、辅助账或 ERP 可以另存这些信息；这里比较的是分录数据与显式 REA 关系。
 
 REA 把参与者建成**一等公民**（独立的类），于是下面这些问题变成了一句 SQL 就能回答的查询：
 
 - 张三这个月采购了多少金额？（业绩考核）
 - 哪个收货员经手的批次退货率最高？（内控与舞弊线索）
-- 同一笔付款的申请人和批准人是不是同一个人？（**职责分离** segregation of duties 的自动检查）
+- 同一笔付款的申请人和批准人是不是同一个人？（有共享人员身份与授权记录时，可核查**职责分离** segregation of duties）
 
-> 💡 **换个说法（笔记补充）**：最后一条是**内部控制**（[[M01-会计与商业#2.5.3 SOX 法案（讲义 p.26）|M01 §2.5.3]]）的核心手段——"申请的人不能是批准的人"。在传统总账里你查不出来，因为总账根本不存人；在 REA 数据库里这是一条 `WHERE 申请人 = 批准人` 的查询。**这是 REA 与 W1 会计伦理/SOX 那一段最实在的接口，论述题很好用。**
+> 💡 **换个说法（笔记补充）**：最后一条是**内部控制**（[[M01-会计与商业#2.5.3 SOX 法案（讲义 p.26）|M01 §2.5.3]]）的核心手段——"申请的人不能是批准的人"。在本讲简化总账分录里查不出来，因为分录本身不存角色；在 REA 数据库里，前提是各角色记录共享可核的 `PersonID` 并保存授权规则，才能用 `WHERE 申请人 = 批准人` 查出同一自然人兼任的线索。**这是 REA 与 W1 会计伦理/SOX 那一段最实在的接口，论述题很好用。**
 
 **⚠️ 常见误解**
 
@@ -318,12 +322,28 @@ REA 把参与者建成**一等公民**（独立的类），于是下面这些问
 
 三条主关联恰好对应三种"两两配对"：**事件↔事件、事件↔资源、事件↔参与者**。
 
+**看图前先问**：三条主关联分别连哪些对象，怎么用来保存一笔采购？
+
 ```mermaid
 flowchart LR
     R["资源 / 资源类型<br/>Resource"] ---|"Stockflow<br/>存量流"| E["经济事件<br/>Economic Event"]
     E ---|"Participation<br/>参与"| A["参与者<br/>Agent"]
     E2["另一个经济事件<br/>（方向相反）"] ---|"Duality<br/>二元性"| E
 ```
+
+无箭头线是业务关系，不是现金/商品的必然时间方向。
+
+**沿例子读图（笔记补充）**：补充例中，采购 P1 取得乐器：Economic Event 是 Purchase，Resource 是 Inventory Type，Agent 包括供应商和采购员。另一个 Economic Event 是后来付款 CD1。Stockflow 保存取得哪类货，Participation 保存谁参与，Duality 保存 CD1 应用到采购 P1 的关系。
+
+**图旁边界**：本交换核心模式；赊购时CD实例可暂时没有，金额结清要另核分配额。
+
+**文字替代**：Stockflow连事件与资源，Participation连角色，Duality连交换事件；关系不自动保证金额。
+
+<details><summary>读图自测：把Supplier直接用Duality连Cash可以吗？</summary>
+
+不可以，Duality连增减事件；Supplier由Participation连事件。
+
+</details>
 
 > 这张图在说：**核心 REA 模型 = 一对事件（Duality 相连）+ 每个事件各自挂上资源（Stockflow）和参与者（Participation）**。就这三根线，没有别的。
 
@@ -337,15 +357,15 @@ flowchart LR
 
 **为什么需要它**
 
-因为 duality **就是复式记账的"借贷相等"在 REA 里的对应物**（M04 已论证）。复式记账用"左边金额 = 右边金额"来保证等式平衡；REA 用"每个增量事件必须能连到一个减量事件"来保证**没有白拿的资源**。
+因为 duality **就是复式记账的"借贷相等"在 REA 里的对应物**（M04 已论证）。复式记账用"左边金额 = 右边金额"来保证等式平衡；REA 的 duality 保存交换两端的事件关系。关系本身不保证款项已付清、金额守恒或每个事件此刻已有对方；这些另按业务范围与分配额核对。
 
 区别在于：
 
 | | 复式记账 | REA 的 duality |
 |---|---|---|
 | 连的是什么 | 两个**账户**的金额 | 两个**事件**的实例 |
-| 时间信息 | 丢失（分录只有一个日期） | 保留（两个事件各有自己的日期） |
-| 能不能一对多 | 不能（一笔分录就是一笔） | **能** —— 一次付款可以清多张采购单 |
+| 时间信息 | 分录记录自己的日期；跨凭证业务关系需明细 | 两个事件分别保存日期与关系 |
+| 能不能一对多 | 科目金额本身不表达结算配对；辅助明细可记录 | 一次付款可通过分配关系清多张采购单 |
 
 **课件原例**
 
@@ -353,7 +373,7 @@ RSWS 的 duality 连的是 `Purchase` ↔ `Cash Disbursement`（讲义 p.12）�
 
 **💡 换个说法（笔记补充）**
 
-想象一根扁担：一头挑着"我得到了什么"，一头挑着"我付出了什么"。Duality 就是那根扁担。**扁担断了 = 有东西凭空出现或凭空消失 = 账不对了。**
+想象一根扁担：一头挑着"我得到了什么"，一头挑着"我付出了什么"。Duality 就是那根扁担。**在允许赊购的状态中，暂未连付款可以是正常状态。** 已付款却漏关联时才需追查；不能仅见一端无关联便判业务错误。
 
 **⚠️ 常见误解**
 
@@ -479,7 +499,7 @@ Participation 就是单据上的**签名栏**。一张采购单上有"申请人"
 - 仓库里的存货，平时归**仓管员**保管 —— 这是 custody，**跟有没有发生交易无关**，一天没有出入库这个关系也在。
 - 某次出库是**发货员**办的 —— 这是 participation，**只在那次事件里成立**。
 
-**为什么这个区分重要**：盘点亏了少了一批货，你要找的是 **custody** 那个人，不是那次 participation 的人。
+**为什么这个区分重要**：盘点发现短缺时，custody 指向平时控制或接触该资源的人，是调查线索；participation 指向某次事件的参与者。仅凭任一条关联都不能直接认定个人责任，还要核对盘点、交接、权限和其他证据。
 
 **课件原例**
 
@@ -662,9 +682,13 @@ Responsibility = **组织架构图上的那根竖线**。
 
 | 优先级 | 来源 | 说明 |
 |---|---|---|
-| **1** | **业务叙述**（narrative descriptions） | 题面里明写的话。**有就必须照做，不能自己发挥。** |
-| **2** | **商业常识**（business common sense） | 叙述没说、但常识上只有一种合理答案。例："一次采购来自几个供应商？"——常识答案是 1 个。 |
+| **1** | **业务叙述**（narrative descriptions） | 优先遵守题面明确写出的业务条件 |
+| **2** | **商业常识**（business common sense） | 叙述未明说时，再检查适用于本模型的常识 |
 | **3** | **合理假设**（reasonable assumptions） | 前两者都不管用时自己定，但**答题时必须把假设写出来**。 |
+
+**常识例**：本题“一次采购来自几个供应商”按一次采购单对应一个供应商理解，答案是 1。它以本模型的单据范围为前提，不能不看题面就推广到所有系统。
+
+**来源优先级**：业务叙述明写的条件必须遵守，不能用自己的常识替换它。
 
 > 🟡 **答题技巧**：考试给你一段 narrative，你的第一个动作应该是**把叙述逐句拆开，每句话对应到图上的哪一条线的哪一端**。RSWS 的四句叙述（p.19）刚好覆盖了 18 个多重度中的一大半，剩下的用常识补。完整推导见 §2.9.5，那是本讲的核心练习。
 
@@ -687,11 +711,37 @@ Responsibility = **组织架构图上的那根竖线**。
 
 按这个读法逐条翻译：
 
-| 讲义写法 | 逐字翻译 | 通俗说法 | 为什么 |
-|---|---|---|---|
-| `Resource Type 1..* – 0..* Economic Event` | 一个经济事件涉及 **1 到多个**资源类型；一个资源类型出现在 **0 到多个**事件中 | 一次交易至少动了一种货；一个货品可能从没被交易过（刚建档） | 事件必须有内容；资源类型可以先入库存档案 |
-| `Resource 1..* – 0..1 Economic Event` | 一个经济事件涉及 **1 到多个**资源；**一个具体资源最多出现在 1 个事件中** | 一颗特定的钻石最多被卖掉一次 | **这就是 Resource 与 Resource Type 的差别落到图上的地方** |
-| `Economic Event 0..* – 1..1 Agent` | 一个参与者参与 **0 到多个**事件；**一个事件恰好有 1 个（某角色的）参与者** | 一次采购只有一个采购员签字；一个采购员可以采购很多次，也可能一次没有 | 单据上每个签名栏只签一个人 |
+三行是p6的通常规则，原讲义注明usually but not always。先固定一个对端实例反解数字，例子与理由分别读。
+
+| 讲义写法 | 逐字翻译 |
+| --- | --- |
+| `Resource Type 1..* – 0..* Economic Event` | 一个经济事件涉及 **1 到多个**资源类型；一个资源类型出现在 **0 到多个**事件中 |
+| `Resource 1..* – 0..1 Economic Event` | 一个经济事件涉及 **1 到多个**资源；**一个具体资源最多出现在 1 个事件中** |
+| `Economic Event 0..* – 1..1 Agent` | 一个参与者参与 **0 到多个**事件；**一个事件恰好有 1 个（某角色的）参与者** |
+
+讲义写法是两类和贴近各类的min/max；逐字翻译按固定对象数另一端。读Resource Type旁1..*：一个事件需1到多品类；RSWS只买Overhead时InventoryType最小可0，不能照默认填1。
+
+**`Resource Type 1..* – 0..* Economic Event`**
+
+通俗说法：一次交易至少动了一种货；一个货品可能从没被交易过（刚建档）
+
+为什么：事件必须有内容；资源类型可以先入库存档案
+
+
+**`Resource 1..* – 0..1 Economic Event`**
+
+通俗说法：一颗特定的钻石最多被卖掉一次
+
+为什么：**这就是 Resource 与 Resource Type 的差别落到图上的地方**
+
+
+**`Economic Event 0..* – 1..1 Agent`**
+
+通俗说法：一次采购只有一个采购员签字；一个采购员可以采购很多次，也可能一次没有
+
+为什么：单据上每个签名栏只签一个人
+
+
 
 **⚠️ "usually but don't always" 这句话是个陷阱预告**
 
@@ -709,8 +759,8 @@ Responsibility = **组织架构图上的那根竖线**。
 
 **⚠️ 常见误解**
 
-- ❌ 把多重度读成"标在 A 旁边就是 A 的个数"。**这是本讲最致命的错误**，一读反整张图的语义全反。牢记 W4 的原话：**put next to dept**（描述 employee 的数字，写在 dept 旁边）。
-- ❌ 以为最小值 0 是"可以不填"。不是。**最小值 0 = 允许这一端的实例孤零零存在**；最小值 1 = **强制**必须有配对。
+- ❌ 把多重度读成“标在 A 旁边就是固定一个 A 后的数量”。正确读法是：**先固定对面的一个 B，再读贴在 A 旁的数字，得到它允许关联几个 A**。牢记 W4 的原话：**put next to dept**（描述 employee 的数字写在 dept 旁边）。
+- ❌ 以为最小值 0 是“可以不填”。例如数字 0 贴在 A 端，表示**固定一个 B 时允许没有 A 与它匹配**；它不等于“A 自己可以孤立”。最小值 1 则表示固定该 B 时至少要有一个 A。
 
 **🎙️ 课堂补充**
 待转录补充。
@@ -730,14 +780,61 @@ Responsibility = **组织架构图上的那根竖线**。
 
 要从一句采购故事得到可落表的模型，先固定交换事件，再补资源、外部伙伴与内部角色，最后按事实定义属性和参与次数。下表每行都是一次有明确产出的建模动作；未知金额和业务范围应保留缺口。
 
-| 步 | 讲义原文（p.7–8） | 做什么 | 产出 |
-|---|---|---|---|
-| **1** | *"Identify Economic Exchange Events — Create each economic exchange event as a class and create a **duality** association between them"* | 找出这段业务里"一得一失"的那**一对**事件，各建一个类，中间连 duality | 2 个方框 + 1 条线 |
-| **2** | *"Attach Resources to the Economic Events — Create each resource as a class and create a **stockflow** association between it and the related economic event"* | 问每个事件："你搬动的是什么？"每样答案建一个资源类，连 stockflow | +N 个方框 +N 条线 |
-| **3** | *"Attach **External** Agents to Economic Events — Create as a class the external agent **from whom** resources are obtained in each economic **increment** event ... Create as a class the external agent **to whom** resources are transferred in each economic **decrement** event ..."* | 问："资源从谁那儿来 / 给了谁？"建外部参与者类，连 participation | +1~2 个方框 |
-| **4** | *"Attach **internal** agents to economic events — Create as classes the internal agents who **process, accomplish, or authorize** each economic increment / decrement event ..."* | 问："企业这边谁**经办、完成或批准**了它？"建内部参与者类，连 participation | +N 个方框 |
-| **5** | *"Assign attributes to classes and associations"* | 给每个方框填第二格；按组合语义给关联属性 | 属性 |
-| **6** | *"Assign multiplicities"* | 按 §2.5 的三个来源填每条线的两端 | 多重度 |
+一行是六步法中的一个动作与当步产物。英文原指令和完整解释在同一步下照录。
+
+| 步 | 产出 |
+| --- | --- |
+| **1** | 2 个方框 + 1 条线 |
+| **2** | +N 个方框 +N 条线 |
+| **3** | +1~2 个方框 |
+| **4** | +N 个方框 |
+| **5** | 属性 |
+| **6** | 多重度 |
+
+步列表示建模顺序；产出列说明新增类/关联或标注，不是当前已发生的交易数。读Step1：识别当前交换模式的增减事件类别，未来付款可以尚无实例。
+
+**1**
+
+讲义原文（p.7–8）：*"Identify Economic Exchange Events — Create each economic exchange event as a class and create a **duality** association between them"*
+
+做什么：找出这段业务里"一得一失"的那**一对**事件，各建一个类，中间连 duality
+
+
+**2**
+
+讲义原文（p.7–8）：*"Attach Resources to the Economic Events — Create each resource as a class and create a **stockflow** association between it and the related economic event"*
+
+做什么：问每个事件："你搬动的是什么？"每样答案建一个资源类，连 stockflow
+
+
+**3**
+
+讲义原文（p.7–8）：*"Attach **External** Agents to Economic Events — Create as a class the external agent **from whom** resources are obtained in each economic **increment** event ... Create as a class the external agent **to whom** resources are transferred in each economic **decrement** event ..."*
+
+做什么：问："资源从谁那儿来 / 给了谁？"建外部参与者类，连 participation
+
+
+**4**
+
+讲义原文（p.7–8）：*"Attach **internal** agents to economic events — Create as classes the internal agents who **process, accomplish, or authorize** each economic increment / decrement event ..."*
+
+做什么：问："企业这边谁**经办、完成或批准**了它？"建内部参与者类，连 participation
+
+
+**5**
+
+讲义原文（p.7–8）：*"Assign attributes to classes and associations"*
+
+做什么：给每个方框填第二格；按组合语义给关联属性
+
+
+**6**
+
+讲义原文（p.7–8）：*"Assign multiplicities"*
+
+做什么：按 §2.5 的三个来源填每条线的两端
+
+
 
 **所以呢**
 
@@ -784,7 +881,15 @@ Step 4 的三个动词也要记：内部参与者是那些 **process（经办）
 
 ---
 
-**六步法的输入、状态与结束条件（笔记补充）**：输入为企业视角、业务叙述/单据、观察时点；输出为类、关联、各端min/max、属性粒度/PKFK和可计算的余额或明确缺数。每步保存当前图和已知事实，不把尚未发生的未来付款填成现款。
+**六步法的输入、状态与结束条件（笔记补充）**
+
+先确定三项输入：站在哪家企业看业务、原叙述/单据给了什么、观察截至哪天。
+
+逐步产出类、关联、两端 min/max 和属性粒度。`PK` 是主键，用来唯一标识一行；`FK` 是外键，用来引用另一表的主键；`SF1` / `SF2` 是 Stockflow1 / Stockflow2 的简称。金额语境中的 `AP` 指应付账款（Accounts Payable）余额，角色名 `A/P Clerk` 则指应付账款会计，两者不是同一个对象。最后再说明落表要求、能算的余额及仍缺哪些数。
+
+每步保存当前图与已知事实。尚未发生的付款只能作为未来义务，不能填成现款。RSWS原图足以讲结构，但没有完整交易金额。
+
+**看图前先问**：六步图建完之后，还要怎样判断能否算余额？
 
 ```mermaid
 flowchart TD
@@ -799,6 +904,20 @@ flowchart TD
  H -->|否| D
  H -->|是| O["输出模型、期末状态与限制"]
 ```
+
+箭头是建模与验证的控制流；“数量、金额、身份、日期成立吗”否回第 5 步粒度与键修受影响粒度，不能用未给金额补齐。
+
+**沿例子读图（笔记补充）**：假设订单订 10 件。先在“叙述、企业视角、截止时点”明确范围，再找取得与付款事件，挂货物、现金与角色。第 5 步确定订单行和付款分配粒度，第 6 步逐端确定 min/max。若“资料足以计算且无冲突吗”发现缺已认可贷项数据，就走“停止金额结论”，保留已知模型而不补数。
+
+**图旁边界**：RSWS原源仅完整结构，无全交易金额；步骤和金额结论分开。
+
+**文字替代**：六步得到结构和粒度，再核资料是否足以算数；缺原交易金额不编官方余额。
+
+<details><summary>读图自测：填完18端点是否自动得官方AP？</summary>
+
+不能；“资料足以计算且无冲突吗”仍需实际取得、分配和贷项数据。
+
+</details>
 
 RSWS 原源六步按p.12–20走到官方结构图，原源没有完整交易金额，因此“模型已画完”不能升级为“官方 AP 已算完”。下面的数值机制明确自给。
 
@@ -855,7 +974,7 @@ RSWS 原源六步按p.12–20走到官方结构图，原源没有完整交易金
 
 **为什么减量端这么简单**：因为企业买东西**几乎总是用钱付**。（理论上可以以物易物，那样减量事件就是另一个 Purchase 的镜像，但讲义不展开。）
 
-> ⚠️ **注意内部参与者的角色分工**：增量端是 **采购员**（Purchasing Agent / Buyer），减量端是 **出纳或应付会计**（Cashier or A/P Clerk）。**这两组人不同**——这正是内部控制里的**职责分离**：**下单的人不能同时是付钱的人**。讲义没点破这一层，但这是理解为什么模型要分开画两组内部参与者的关键（💡 笔记补充）。
+> ⚠️ **注意内部参与者的角色分工**：增量端画 **采购员**（Purchasing Agent / Buyer）角色，减量端画 **出纳或应付会计**（Cashier or A/P Clerk）角色。职责分离政策通常要求下单与付款由不同自然人承担，但两个类框只证明角色不同；还要用共享人员身份、权限与授权记录核验是否确由不同人执行（💡 笔记补充）。
 
 **所以呢**
 
@@ -866,6 +985,8 @@ RSWS 原源六步按p.12–20走到官方结构图，原源没有完整交易金
 讲义 p.11 是一张纯图（无标题栏），左上角写着 `For Inventory (merchandise, raw materials, or supplies)` ——意思是"以采购**存货**（商品／原材料／耗材）为例"。
 
 **图的内容**（视觉复核所得，讲义 p.11）：
+
+**看图前先问**：采购取得货和付款怎样连资源及角色？
 
 ```mermaid
 classDiagram
@@ -903,6 +1024,20 @@ classDiagram
     CashDisbursement -- PayablesClerk : Participation5
 ```
 
+无箭头关联不表示必须先收货后付钱或同日结清。
+
+**沿例子读图（笔记补充）**：固定一次 Purchase：Stockflow1 找货物，Participation1、Participation2 分别找图上的采购及收货角色，Participation3 找 Supplier。再固定 Cash Disbursement，经 Stockflow2 找 Cash Account，经 Participation4 找 Supplier，经 Participation5 找付款角色。Duality 配对这两个事件；这里 Participation1 不是交易编号 P1。
+
+**图旁边界**：p11骨架没有属性和minmax；具体业务另填，职责分离还须人员/权限证据。
+
+**文字替代**：取得货与付现金分别连资源和角色，Duality保存联系；骨架不表示立即付清。
+
+<details><summary>读图自测：采购员角色与付款角色不同就证明自然人不同吗？</summary>
+
+不能；图记角色，需要共同身份与授权实际检查。
+
+</details>
+
 **逐条读这张图**（这是六步法的产物，按步骤对照）：
 
 | 六步 | 图上对应 |
@@ -917,7 +1052,7 @@ classDiagram
 
 1. **`<<Resource>> or <<ResourceType>>`** —— 讲义在第一个方框里**同时写了两个刻板印象**，提醒你：建成哪个取决于货品可不可互换（§2.1.1）。
 2. **`Cash Account` 标的是 `<<Resource>>`**（不是 ResourceType）—— 因为具体的银行账户不可互换。⚠️ RSWS 例子里却标成了 ResourceType，见 [[#9.3 课件自身的问题|§9.3 ①]]。
-3. **Purchase 挂了两个内部参与者**（采购员 + 收货员），**Cash Disbursement 只挂一个**（应付会计）。这是标准的职责分离设计。
+3. **Purchase 挂了两个内部角色**（采购员 + 收货员），**Cash Disbursement 挂应付会计角色**。这为职责分离提供了角色结构；是否由不同自然人执行仍须核身份与权限。
 
 **🎙️ 课堂补充**
 待转录补充。
@@ -938,6 +1073,8 @@ classDiagram
 
 讲义 p.21 标题 `Revenue Core Pattern`，图的内容（视觉复核所得）。
 ⚠️ 讲义原图上，货那一侧的方框写的是 `<<Resource>> or <<ResourceType>> / Goods or Services`（二选一，同 p.11），减量事件方框写的是 `<<EconomicDecrement>> / Sale or Service Engagement or Rental`（三选一，同 p.9 的镜像）。下图为便于渲染各取其一：
+
+**看图前先问**：收入循环中为什么Sale是减量、收款是增量？
 
 ```mermaid
 classDiagram
@@ -970,6 +1107,20 @@ classDiagram
     CashReceipt -- Customer : Participation3
     CashReceipt -- Cashier : Participation4
 ```
+
+无箭头线表示关联，增减由企业视角的资源变化决定。
+
+**沿例子读图（笔记补充）**：从GoodsOrServices经Stockflow1连Sale，货离开本企业；CashAccount经Stockflow2连CashReceipt，现金进来；Customer分别参与两事件，Salesperson与Cashier记录不同角色。
+
+**图旁边界**：p21原图货资源/事件有多个选择，当前简图各取一；不能叫官方唯一全图。
+
+**文字替代**：同一企业视角下，销售货流出为减量，收款现金流入为增量，盈利另算。
+
+<details><summary>读图自测：卖出赚钱，为何不把Sale画成Increment？</summary>
+
+Sale关注商品流出；盈利是收入成本差，CashReceipt另记录现金流入。
+
+</details>
 
 **⭐ 与采购循环逐项对照**（这张对照表是本讲最值钱的一页）：
 
@@ -1030,6 +1181,8 @@ classDiagram
 
 图上：两个方框，中间一条线标 `Duality`。
 
+**看图前先问**：RSWS六步第一步为何先找事件类别？
+
 ```mermaid
 classDiagram
     class Purchase {
@@ -1040,6 +1193,20 @@ classDiagram
     }
     Purchase -- CashDisbursement : Duality
 ```
+
+无箭头线是事件配对；建立类不表示每次采购此刻已有付款实例。
+
+**沿例子读图（笔记补充）**：Step1识别Purchase取得与CashDisbursement付现的类别，中间Duality保存交换联系；资源在Step2添加，属性Step5再填。
+
+**图旁边界**：原p12只是结构，没有交易金额/参与次数；不能从两框推出1..1。
+
+**文字替代**：先识别取得与付款类别，再补资源和角色；有两个类不等此刻已有两项实例。
+
+<details><summary>读图自测：允许赊购时，能先存Purchase吗？</summary>
+
+可以，后续minmax允许无付款；不要为填两个类创造一笔付款。
+
+</details>
 
 **注意此时方框的第二、三格是空的** —— 属性要到 Step 5 才填。UML 类图的三格结构（第一格：刻板印象 + 类名；第二格：属性；第三格：操作，本课永远留空）在 M04 讲过。
 
@@ -1066,6 +1233,8 @@ classDiagram
 
 > *"Step 2: Attach Resources to Events — **Cash** to Cash Disbursement；**Inventory Type and Overhead** to Purchase"*
 
+**看图前先问**：一次采购只买Overhead时，InventoryType关系怎么读？
+
 ```mermaid
 classDiagram
     class InventoryType {
@@ -1088,6 +1257,20 @@ classDiagram
     Cash -- CashDisbursement : Stockflow3
     Purchase -- CashDisbursement : Duality
 ```
+
+无箭头线连接资源类型与事件，不是把Overhead余额当已付现金。
+
+**沿例子读图（笔记补充）**：固定Purchase，只买间接费用时Stockflow2连Overhead，Stockflow1当前可无InventoryType实例；CD由Stockflow3连一个Cash账户。
+
+**图旁边界**：Cash保留原ResourceType标签冲突；最小值最终按p19/20填，不机械套默认。
+
+**文字替代**：Purchase可仅涉及Overhead；默认最小值须服从当前业务范围及跨资源明细要求。
+
+<details><summary>读图自测：InventoryType端必须填1吗？</summary>
+
+本RSWS可以仅买Overhead，故该端最小0；两资源组至少一项需额外业务检查。
+
+</details>
 
 </details>
 
@@ -1117,6 +1300,8 @@ classDiagram
 > *"Steps 3 and 4: Agents —*
 > *External = **Supplier***
 > *Internal = **Purchase Agent** for Purchase, **A/P Clerk and Manager** for Cash Disbursement"*
+
+**看图前先问**：Supplier同一类为什么对Purchase和CD各画一条参与线？
 
 ```mermaid
 classDiagram
@@ -1157,6 +1342,20 @@ classDiagram
     CashDisbursement -- APClerk : Participation4
     CashDisbursement -- Manager : Participation5
 ```
+
+关联线是某角色参与某事件，各线编号依具体图，不是事件顺序。
+
+**沿例子读图（笔记补充）**：Purchase从Supplier取得资源，用Participation2；CD向Supplier付款，用Participation3。采购员经办Purchase，APClerk执行CD，Manager批准CD。
+
+**图旁边界**：p15第一条标签无编号1；不同原图Participation3可能含义不同；角色类不自动证明自然人分离。
+
+**文字替代**：供应商在取得与付款中参与两次不同关系，执行与批准角色须分别记录。
+
+<details><summary>读图自测：只画Supplier与Purchase一条线能保存付款对象吗？</summary>
+
+不能，还需CD的独立参与关系，或明确继承/引用的业务约束。
+
+</details>
 
 （讲义 p.15 是一张整页的图，无标题栏。第一条 participation 在图上写作 `Participation`，没有编号 1，后面依次 2–5。）
 
@@ -1210,17 +1409,85 @@ classDiagram
 
 **类属性**
 
-| 类 | 刻板印象 | 属性 | 含义（笔记补充） |
-|---|---|---|---|
-| `Inventory Type` | ResourceType | **Item-id (PK)**、Item-desc、Item-std-cost、Item-list-price、Item-qoh | 品类编号／描述／标准成本／标价／**库存数量**（qoh = quantity on hand） |
-| `Overhead` | ResourceType | **OH-id (PK)**、OH-desc | 费用类目编号／描述 |
-| `Cash` | ResourceType | **AcctNum (PK)**、AcctType、AcctLoc、AcctBal | 账号／账户类型／开户地／**账户余额** |
-| `Purchase` | EconomicIncrement | **Acq-ID (PK)**、Acq-date、Acq-amt | 采购编号／**采购日期**／采购金额 |
-| `Cash Disbursement` | EconomicDecrement | **CD-id (PK)**、CD-date、CD-amt | 付款编号／**付款日期**／付款金额 |
-| `Purchase Agent` | InternalAgent | **PA-id (PK)**、PA-name、PA-limit | 工号／姓名／**采购权限额度** |
-| `Supplier` | ExternalAgent | **SupNum (PK)**、Sup-name、Sup-add、Sup-rating | 供应商编号／名称／地址／**评级** |
-| `A/P Clerk` | InternalAgent | **AP-id (PK)**、AP-name、AP-bond | 工号／姓名／**保证金（bond）** |
-| `Manager` | InternalAgent | **Mgr-id (PK)**、Mgr-name、Mgr-degree | 工号／姓名／学历 |
+每行先定位RSWS的一类及讲义标注的类型。完整属性和中文含义在对应类下保留，便于与同源全属性图逐项对照。
+
+| 类 | 刻板印象 |
+| --- | --- |
+| `Inventory Type` | ResourceType |
+| `Overhead` | ResourceType |
+| `Cash` | ResourceType |
+| `Purchase` | EconomicIncrement |
+| `Cash Disbursement` | EconomicDecrement |
+| `Purchase Agent` | InternalAgent |
+| `Supplier` | ExternalAgent |
+| `A/P Clerk` | InternalAgent |
+| `Manager` | InternalAgent |
+
+类列是业务类别，不是具体交易；类型列沿p17原标。读Cash：原源把它标ResourceType，与其他模式CashAccount=Resource的差异继续保留。字段名不自动证明余额维护正确。
+
+**`Inventory Type`**
+
+属性：**Item-id (PK)**、Item-desc、Item-std-cost、Item-list-price、Item-qoh
+
+含义（笔记补充）：品类编号／描述／标准成本／标价／**库存数量**（qoh = quantity on hand）
+
+
+**`Overhead`**
+
+属性：**OH-id (PK)**、OH-desc
+
+含义（笔记补充）：费用类目编号／描述
+
+
+**`Cash`**
+
+属性：**AcctNum (PK)**、AcctType、AcctLoc、AcctBal
+
+含义（笔记补充）：账号／账户类型／开户地／**账户余额**
+
+
+**`Purchase`**
+
+属性：**Acq-ID (PK)**、Acq-date、Acq-amt
+
+含义（笔记补充）：采购编号／**采购日期**／采购金额
+
+
+**`Cash Disbursement`**
+
+属性：**CD-id (PK)**、CD-date、CD-amt
+
+含义（笔记补充）：付款编号／**付款日期**／付款金额
+
+
+**`Purchase Agent`**
+
+属性：**PA-id (PK)**、PA-name、PA-limit
+
+含义（笔记补充）：工号／姓名／**采购权限额度**
+
+
+**`Supplier`**
+
+属性：**SupNum (PK)**、Sup-name、Sup-add、Sup-rating
+
+含义（笔记补充）：供应商编号／名称／地址／**评级**
+
+
+**`A/P Clerk`**
+
+属性：**AP-id (PK)**、AP-name、AP-bond
+
+含义：工号／姓名／原字段 `AP-bond`。`bond` 在本图中的具体中文业务含义未由讲义字段说明证实，暂不译作保证金、保险或其他确定概念。
+
+
+**`Manager`**
+
+属性：**Mgr-id (PK)**、Mgr-name、Mgr-degree
+
+含义（笔记补充）：工号／姓名／学历
+
+
 
 **关联属性**（讲义 p.17 画成虚线挂在关联上的小方框）
 
@@ -1234,12 +1501,37 @@ classDiagram
 
 **⭐ 为什么这四个属性必须挂关联，不能挂类**（这是 p.5 判据的实战检验，**极可能考**）：
 
-| 属性 | 挂在类上会怎样 | 所以必须挂关联 |
-|---|---|---|
-| `item-qty-purch` | 挂 `Purchase` → 一次采购买了 3 个品类，只有一个数量字段，存不下<br>挂 `Inventory Type` → 这个品类被采购过 10 次，每次数量不同，存不下 | 它属于 **"这次采购 × 这个品类"** 这一对 |
-| `item-unit-cost` | 同上。而且**单价每次都可能不同**（这次进货 800，下次 850），不能写死在品类档案里 | 同上 |
-| `oh-qty-purch` | 同上 | 属于"这次采购 × 这个费用类目" |
-| `cd-acq-applied` | 挂 `Cash Disbursement` → 一次付款清了 3 张采购单，各清多少存不下<br>挂 `Purchase` → 这张采购单被 2 次付款清完，各清多少存不下 | 属于 **"这次付款 × 这张采购单"** 这一对 |
+每行是一项组合属性。先定位它属于哪个对象组合，再读表后的错误放置反例。
+
+| 属性 | 所以必须挂关联 |
+| --- | --- |
+| `item-qty-purch` | 它属于 **"这次采购 × 这个品类"** 这一对 |
+| `item-unit-cost` | 同上 |
+| `oh-qty-purch` | 属于"这次采购 × 这个费用类目" |
+| `cd-acq-applied` | 属于 **"这次付款 × 这张采购单"** 这一对 |
+
+属性列是字段名；最后列说明需要哪两个对象才能确定一个值。读item-qty-purch：特定Purchase×特定InventoryType的件数，不是所有采购的总件数。
+
+**`item-qty-purch`**
+
+挂在类上会怎样：挂 `Purchase` → 一次采购买了 3 个品类，只有一个数量字段，存不下<br>挂 `Inventory Type` → 这个品类被采购过 10 次，每次数量不同，存不下
+
+
+**`item-unit-cost`**
+
+挂在类上会怎样：同上。而且**单价每次都可能不同**（这次进货 800，下次 850），不能写死在品类档案里
+
+
+**`oh-qty-purch`**
+
+挂在类上会怎样：同上
+
+
+**`cd-acq-applied`**
+
+挂在类上会怎样：挂 `Cash Disbursement` → 一次付款清了 3 张采购单，各清多少存不下<br>挂 `Purchase` → 这张采购单被 2 次付款清完，各清多少存不下
+
+
 
 > ⭐ **`cd-acq-applied` 是全讲最精彩的一个设计**。它解决的是传统会计很难表达的问题：**部分付款与合并付款**。
 > - 采购单 A 金额 1000，先付 400 再付 600 → duality 表里两行：`(CD1, A, 400)`、`(CD2, A, 600)`
@@ -1289,7 +1581,7 @@ classDiagram
 
 ---
 
-##### 逐条推导（18 个多重度）
+#### 逐条推导（18 个多重度）
 
 **先复习读法**：写在类 X 旁边的数字 = **"另一端的一个实例连着几个 X"**。
 
@@ -1333,13 +1625,16 @@ classDiagram
 
 → **Duality = `Purchase 0..*` — `0..* Cash Disbursement`**（第 10、11 个格子）
 
-同一句话还有一个后果：**既然有些付款是付公用事业费、不是向供应商采购，那么"一笔付款连着几个供应商"的最小值就是 0** → `Participation3` 的 **Supplier 端 = `0..1`**（第 12 个格子）。
+原 p.20 答案把 `Participation3` 的 Supplier 端标为 `0..1`（第 12 个格子）：一笔付款可以不连本模型的 Supplier，也可以连一个。这个端点是原图答案，不能仅由“支付公用事业费”在现实中直接推出。
 
-> ⚠️ 这一条是四句叙述里**最需要动脑筋**的推理，讲义没有明说。逻辑链是：`utilities 付款 → 不是向 supplier 的采购付款 → 该付款实例可以不关联任何 supplier → 最小值 0`。最大值仍是 1（一笔付款不会同时付给两个供应商）。
+**怎样理解这个局部模型**：如果 Supplier 类只收录采购循环中的特定供应商，那么给类外公用事业单位的付款可以没有 Supplier 引用。电力公司在现实中也可能是供应商；若数据库把它纳入 Supplier 类，须重核业务范围。
+
+本题仍保留原图的最小 0、最大 1。最大 1 对应一笔付款至多付给一个本模型供应商，不代表所有现实付款系统都如此。
 
 **④ 叙述 4 决定三条内部参与者关联的 Agent 端 = `1..1`**
 
 > *"Both purchase and cash disbursement can be handled by one and only one internal agent."*
+下表一行是一条内部参与者关联。“Agent 端”是另一端单个事件能对应的人员数量，“读作”把 1..1 展开为一句业务要求。
 
 | 关联 | Agent 端 | 读作 |
 |---|---|---|
@@ -1361,47 +1656,33 @@ classDiagram
 
 ---
 
-##### 讲义 p.20 的答案图（视觉复核所得）
+#### 讲义 p.20 的答案图（视觉复核所得）
 
-```mermaid
-classDiagram
-    class InventoryType {
-        <<ResourceType>>
-    }
-    class Overhead {
-        <<ResourceType>>
-    }
-    class Cash {
-        <<ResourceType>>
-    }
-    class Purchase {
-        <<EconomicIncrement>>
-    }
-    class CashDisbursement {
-        <<EconomicDecrement>>
-    }
-    class PurchaseAgent {
-        <<InternalAgent>>
-    }
-    class Supplier {
-        <<ExternalAgent>>
-    }
-    class APClerk {
-        <<InternalAgent>>
-    }
-    class Manager {
-        <<InternalAgent>>
-    }
-    InventoryType "0..*" -- "0..*" Purchase : Stockflow1
-    Overhead "0..*" -- "0..*" Purchase : Stockflow2
-    Cash "1..1" -- "0..*" CashDisbursement : Stockflow3
-    Purchase "0..*" -- "0..*" CashDisbursement : Duality
-    PurchaseAgent "1..1" -- "0..*" Purchase : Participation1
-    Supplier "1..1" -- "0..*" Purchase : Participation2
-    Supplier "0..1" -- "0..*" CashDisbursement : Participation3
-    APClerk "1..1" -- "0..*" CashDisbursement : Participation4
-    Manager "1..1" -- "0..*" CashDisbursement : Participation5
-```
+**先看这张图要回答什么**：一笔采购可能只涉及存货、只涉及 Overhead，也可能分次或合并付款。怎样把这些选择、数量和付款分配放在同一个模型里？
+
+![[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-rsws/rsws-overview.svg]]
+
+这是结构图：保留全部9类、9条关联和18端点，省略类内普通字段；关联属性继续挂在对应组合上。无箭头线表示关联，不表示时间、因果或现金沿线流动。
+
+![[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-rsws/rsws-full.svg]]
+
+这是同源全属性图：展示30个类属性和4个关联属性。两图来自同一份 [[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-rsws/model.json|语义源 JSON]]，并保留 [[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-rsws/rsws-full.dot|全属性 DOT]] 与 [[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-rsws/rsws-overview.dot|结构 DOT]]。发布后以 JSON 维护语义，不分别修改两个 SVG。包内 [[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-rsws/render-rsws.mjs|渲染代码]] 与 [[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-rsws/reproduction.md|复现步骤]] 保留同源生成入口。
+
+**两向读法**：固定一笔 Purchase，可涉及零到多种 Inventory Type；固定一个 Inventory Type，可参加零到多笔 Purchase。其他关联在紧邻答案表逐条读两端，不能把数字只读成“该类现有几行”。
+
+**走一个实例（笔记补充，非官方 RSWS 金额）**：沿用 §2.16.2 的 P1/P2 与 C2。C2 付款15,000，经 Duality 分给 P1 的6,000和 P2的9,000；`cd-acq-applied` 属付款×采购的组合。Cash–CashDisbursement 的 Cash 端1..1表示这笔付款只从一个账户出；Supplier 端0..1允许某些非本模型供应商采购用途的付款不连 Supplier。
+
+Stockflow1 的 `item-qty-purch` 与 `item-unit-cost` 属采购×品类。假设同一对需要记录不同批次，应再定 LineNo/LineID，不能用本两键粒度覆盖原明细。
+
+**文字替代**：Purchase 连货/Overhead 与采购角色，付款连现金与执行/批准角色，两事件用 Duality 保存分配关系。金额守恒、至少一种资源明细、角色自然人分离，都不是18端点自动保证的。
+
+**来源与边界**：p.17–20及本篇既有逐项转写。Cash 保留该原图的 ResourceType 标签，与 p.11/p.21 的 Resource CashAccount 冲突不归一化；原 RSWS 未给全交易金额，不据图输出官方 AP。`AP-bond` 细义未知，Overhead 没有原单价字段。SVG 已在 scratch 渲染；本轮未实际查看最终 SVG，visual_review 与 semantic_review 均 pending。
+
+<details><summary>读图自测：一笔 Purchase 既没有 Stockflow1 也没有 Stockflow2，能仅凭每条边最小0说业务有效吗？</summary>
+
+不能。两条边各自允许零，是为了容纳纯货或纯开销采购；若业务要求至少一种资源明细，还须核 count(Stockflow1)+count(Stockflow2)≥1。不能把任一单边改为1而排除另一路合法情形。
+
+</details>
 
 **完整答案表（可直接背）**
 
@@ -1451,7 +1732,7 @@ classDiagram
 
 **RSWS 原图的结构与约束实际落地（p.17–20，物理字段为笔记补充）**：原源是9条关联、18个多重度端点，计12个0..*、5个1..1、1个0..1，**不是18个事件、完成或取消状态统计**。端点贴在哪边仍须按“另一端一个实例能连几个本端实例”读。
 
-Purchase 增加 SupNum、PA-id 非空FK；CD 增加 AcctNum、AP-id、Mgr-id 非空FK及可空SupNum。SF1(Acq-ID,Item-id,item-qty-purch,item-unit-cost)、SF2(Acq-ID,OH-id,oh-qty-purch)、Duality(Acq-ID,CD-id,cd-acq-applied) 两端FK、适用粒度下复合PK。一采购同品类如果有两批2件@100、3件@110，应另加LineNo/LineID，原两键不能容纳两次同对；汇总才为5件/530、加权单价106，不能用106伪作两笔原单价。
+这里 `CD` 是 Cash Disbursement（现金付款），`SF1` / `SF2` 是 Stockflow1 / Stockflow2，`PK` / `FK` 分别是主键 / 外键；`AP-id` 属于 `A/P Clerk` 角色，不是应付账款余额。Purchase 增加 SupNum、PA-id 非空 FK；CD 增加 AcctNum、AP-id、Mgr-id 非空 FK 及可空 SupNum。SF1(Acq-ID,Item-id,item-qty-purch,item-unit-cost)、SF2(Acq-ID,OH-id,oh-qty-purch)、Duality(Acq-ID,CD-id,cd-acq-applied) 两端用 FK，并在适用粒度下采用复合 PK。一采购同品类如果有两批2件@100、3件@110，应另加LineNo/LineID，原两键不能容纳两次同对；汇总才为5件/530、加权单价106，不能用106伪作两笔原单价。
 
 **原字段的意义和限制**：Item-std-cost/Item-list-price 是主数据，item-unit-cost 是该次成本快照；改标准成本不改历史行。原 Item-qoh/AcctBal 是存量或受控缓存，应说明维护与事件对账，不能说 REA 绝不存余额。Overhead 原图仅 oh-qty-purch、没有单价，无法从它独算全部 Acq-amt；AP-bond 的细义未由原字段证实，不编金额。
 
@@ -1473,6 +1754,8 @@ Purchase 增加 SupNum、PA-id 非空FK；CD 增加 AcctNum、AP-id、Mgr-id 非
 
 核心模型记录实际资源交换两端及配对，并不要求已经钱货两清。但真实业务在它前后还有一大截：
 
+**看图前先问**：核心交换前后的意向、承诺、退货有什么不同？
+
 ```mermaid
 flowchart LR
     I["① 起因<br/>有人发现需要买东西<br/>（还没承诺任何事）"] --> C["② 承诺<br/>签了采购单<br/>（约定了未来交换）"]
@@ -1480,13 +1763,35 @@ flowchart LR
     E --> R["④ 冲销<br/>货有问题，退回去"]
 ```
 
-**核心模型只覆盖 ③。** 但 ①②④ 里全是企业真正关心的信息：
+此流程箭头是典型教学顺序，不能要求每起因都签单或每单都退货。
+
+**沿例子读图（笔记补充）**
+
+1. ① 起因：提出需要 10 件。
+
+2. ② 承诺：签订单，约定将来的取得。
+
+3. ③ 经济事件：先取得 4 件，再取得 4 件，付款单独记录。
+
+4. ④ 冲销：若后来退 1 件，另记退回。取消尚未履行的 2 件属于承诺变化，不能把已发生的取得 8 件历史改掉。
+
+**图旁边界**：核心允许赊购与部分履行；图概览不能替代数量/金额的局部状态链。
+
+**文字替代**：起因、承诺、实际交换、冲销是不同状态；部分履行和取消需数量记录。
+
+<details><summary>读图自测：有一条Fulfillment是否就没backlog？</summary>
+
+不一定，订10交4仍欠6；还需取消与累计交付量。
+
+</details>
+
+**核心模型只覆盖资源实际交换。** 需求提出、交易承诺与后续退回仍包含企业关心的信息，下面逐类补进模型。
 
 - **① 起因**：市场活动的效果如何？哪次促销带来了订单？
-- **② 承诺**：**在手订单有多少？**（这是最重要的一个——签了单还没交货的金额，传统会计**根本不记账**，因为它还没影响会计等式，但它是判断一家公司未来景气最关键的数字）
+- **② 承诺**：**在手订单有多少？**（这是最重要的一个——签了单还没交货的金额尚未满足确认条件，本讲简化总账分录不记录；订单/CRM 系统可以另存，而 REA 将它与后续履行显式关联）
 - **④ 冲销**：退货率多少？哪个供应商的货质量差？
 
-> ⭐ **这正是 M04 主线论点的实证**：传统复式记账"**不影响会计等式的事项一律不记**"，于是把在手订单、销售拜访、报价这些**极有价值但尚未成交**的信息全部排除在系统之外。REA 的扩展模型把它们全部纳入。**期末论述题极可能落在这里。**
+> ⭐ **这正是 M04 主线论点的实证**：本讲简化总账分录对尚未影响会计等式的订单、销售拜访和报价**不作分录编码**；真实企业仍可能在 CRM、订单系统或辅助记录中保存它们。REA 扩展模型的优势是把这些业务事项与后续交换放在同一显式关系结构中。**期末论述题极可能落在这里。**
 
 **扩展模型加了什么**（一句话版本）：
 
@@ -1516,6 +1821,8 @@ flowchart LR
 
 **图 A — 事件主干（从起因到冲销）**
 
+**看图前先问**：Fulfillment、Duality和Reversal连的事件为什么不同？
+
 ```mermaid
 classDiagram
     class InstigationEvent {
@@ -1540,7 +1847,23 @@ classDiagram
     EconomicIncrement -- EconomicReversal : Reversal
 ```
 
+这里都是结构关联，不应从左右/箭头想成必然业务发生。
+
+**沿例子读图（笔记补充）**：起因事件推动承诺，承诺可履行为经济增量或经济减量；实际交换的两事件以 Duality 配对。原泛图的 Reversal 只画增量冲销，销售退回冲减 Sale 的关系另看 p.48，不能把原图没有的边读成已经画出。
+
+**图旁边界**：泛图不展示全部13关联；收入冲销原缺边不偷偷补作官方原图。
+
+**文字替代**：Fulfillment联系承诺与兑现，Duality联系交换，Reversal联系冲销；泛图与具体图边界不同。
+
+<details><summary>读图自测：Reciprocal为何不见？</summary>
+
+此承诺合并为MutualCommitment，原p30明确未画Reciprocal；拆两承诺时才另连。
+
+</details>
+
 **图 B — 事件与资源**
+
+**看图前先问**：资源类型、具体库存与订单/事件各怎样连接？
 
 ```mermaid
 classDiagram
@@ -1576,6 +1899,20 @@ classDiagram
     Resource2 -- EconomicDecrement : Stockflow2
     Resource1 -- EconomicReversal : Stockflow3
 ```
+
+无箭头线是不同语义关联，Reservation不表示已支付或冻结现金。
+
+**沿例子读图（笔记补充）**：采购申请用Proposition提出品类；订单用Reservation1关联品类、Reservation2关联Cash计划；Typification从具体库存找到类型；Stockflow表示实际取得/付现/退回。
+
+**图旁边界**：原资源/资源类型记号按图保留；计划和实际状态不同，不从关联自动算可用库存。
+
+**文字替代**：类型化分开品类和具体资源，提议/预留属于意向或承诺，Stockflow属于实际变化。
+
+<details><summary>读图自测：销售订单关联CashAccount时能把未来回款当现有现金吗？</summary>
+
+不能，它表示预期/计划，实际现金由CashReceipt保存。
+
+</details>
 
 **图 C — 事件与参与者、参与者之间**
 
@@ -1630,7 +1967,7 @@ P2 连接 IA2；不能将其读成外部参与者。Responsibility/Assignment �
 | **内部发起** internally instigated | 一次市场活动（marketing event） | **采购申请**（部门主管说"我们要买纸"） | **销售拜访**（销售员打电话给客户） |
 | **外部发起** externally instigated | **供应商的销售员打电话来** | 供应商上门推销，你才想起该补货 | **客户主动询价** |
 
-**为什么需要它** —— 因为"生意从哪来"是**营销与内控都关心**的问题。传统会计里，一次没成交的销售拜访**不留下任何痕迹**；REA 把它记下来，于是可以算"拜访 → 订单"的转化率。
+**为什么需要它** —— 因为"生意从哪来"是**营销与内控都关心**的问题。传统总账分录本身不会因一次未成交拜访而记账；CRM 等业务系统仍可能保留痕迹。REA 把拜访及其后续订单显式关联，于是可以在同一模型中算“拜访 → 订单”的转化率。
 
 **⚠️ 常见误解**：以为起因事件必须成功。**不必**。一次拜访没谈成，它仍然是一个起因事件，只是后面没有 Fulfillment 连出去。**这恰恰是它的价值**——失败的线索也被记录了。
 
@@ -1733,10 +2070,10 @@ p.26 用红框高亮了全景图上唯一的 `<<EconomicReversal>>` 方框。
 
 **为什么需要它** —— 它把**流程串起来**，于是可以回答：
 
-- 这张订单交货了没有？（未被 fulfillment 连出去的承诺事件 = **未履约订单**）
+- 这张订单还欠交多少？先比较订单行数量、累计履行量与已授权取消的未履行量。没有关联可表示尚未交货；有一条关联也可能只是部分交货。
 - 这次营销活动带来了几张订单？（起因事件连出去的 fulfillment 数量 = **转化数**）
 
-> ⭐ **"未被 fulfillment 连出去的承诺事件"就是在手订单（backlog）。** 一条 SQL 就能查出来。这是扩展模型最实用的一个查询，值得记住。
+> **在手订单要按剩余义务算**。本节补例用订10、交4、取消2、再交4说明：第一次有Fulfillment时还欠6，最终交8+取消2才结束。无关联只是尚未履行的一种情形，不能代表所有未完成订单。
 
 **② 冲销（Reversal）**
 
@@ -1806,9 +2143,9 @@ p.26 用红框高亮了全景图上唯一的 `<<EconomicReversal>>` 方框。
 
 **是什么** —— 把**承诺事件**和它涉及的资源连起来。
 
-**为什么叫"预留"** —— 因为一旦签了订单，那批货就**被这张订单占住了**，不能再卖给别人。这是仓储系统里非常实在的一个概念：**可用库存 = 实际库存 − 已预留**。
+**为什么叫“预留”** —— 这条关联表示承诺事件涉及哪类或哪个资源。它本身只保存计划关系；只有业务规则要求分配库存、系统已经执行锁定且取消/到期会释放时，签单才会减少可用量。此时才可按 **可用库存 = 实际库存 − 未交且仍生效的已执行预留** 计算。
 
-**为什么需要它** —— 超卖（oversell）是电商最常见的事故：库存显示有 10 件，同时接了 12 张订单。**Reservation 就是防止超卖的数据基础。**
+**为什么需要它** —— 超卖（oversell）是电商常见事故。Reservation 可以作为防止超卖的数据基础，但还要配合数量、状态、执行时点与取消政策；图上有一条线不等于实物已被锁住。
 
 **Reservation1 与 Reservation2 的区别**（看 p.22 全景图）：
 
@@ -1819,7 +2156,7 @@ p.26 用红框高亮了全景图上唯一的 `<<EconomicReversal>>` 方框。
 
 **⚠️ 常见误解**：把 Proposition 和 Reservation 搞反。记忆法：
 
-> **Proposition = 提议（还只是嘴上说说，起因事件）；Reservation = 预留（已经占位了，承诺事件）。** 承诺比提议"实"，所以占位的那个是 Reservation。
+> **Proposition = 提议（起因事件涉及什么）；Reservation = 承诺涉及的资源（承诺事件涉及什么）。** 是否真的“占位”，要再看企业的预留执行与取消政策。
 
 **🎙️ 课堂补充**
 待转录补充。
@@ -1974,7 +2311,7 @@ OrderedQty 是订单10件，FulfilledQty 是累计取得量，CancelledUnfulfill
 | 取消未交2件 | 4 | 2 | 4 | 400 |
 | A2再取得4件 | 8 | 2 | 0 | 800 |
 
-有第一条Fulfillment时仍欠交6件；最后8+2=10交货义务结束，但赊购时AP仍800。付款300正确分配后欠500，再付500才款项结束。之后退A1一件，实物净持有7件，历史履行仍8、取消2、待交0；若获供应商认可贷项100且尚欠500，AP才降400。若退货要求补发，须另有重开/替代承诺，不暗改历史履行数。
+有第一条 Fulfillment 时仍欠交 6 件；最后 8+2=10，交货义务结束，但赊购时应付账款（AP, Accounts Payable）仍为 800。付款300正确分配后欠500，再付500才款项结束。之后退A1一件，实物净持有7件，历史履行仍8、取消2、待交0；若获供应商认可贷项100且尚欠500，AP才降400。若退货要求补发，须另有重开/替代承诺，不暗改历史履行数。
 
 **Reservation区别**：另假设销售侧现有可售12件，签10件销售订单预留10，只影响可用量，不立即减少实物；交付同时减实物和待交预留，取消释放，退回验收可售才增实物，且不自动重新预留。
 
@@ -2040,6 +2377,8 @@ OnHandQty 为实物可售库存、ReservedOpenQty 为未交订单预留、Availa
 
 **上半：从申请到订单**
 
+**看图前先问**：采购申请到订单的上半图怎样读，谁参与？
+
 ```mermaid
 classDiagram
     class PurchaseRequisition {
@@ -2073,7 +2412,23 @@ classDiagram
     PurchaseOrder -- Supplier : Participation4
 ```
 
+无箭头线是角色/资源/履行关联，不是控制权从人员流向订单。
+
+**沿例子读图（笔记补充）**：Department Supervisor 通过 Participation1 提出纸张采购申请。Purchase Agent 通过 Participation2 处理申请，又通过 Participation3 处理 Purchase Order；订单经 Participation4 联系 Supplier。申请以 Proposition 连品类，订单以 Reservation 连计划资源。
+
+**图旁边界**：上下半共享PurchaseOrder/InventoryType/CashAccount/Supplier，完整关系表保留；原p38没Fulfillment3不增补官方边。
+
+**文字替代**：采购申请是内部提出需要，订单阶段才有供应商承诺；上下图共享对象但范围不同。
+
+<details><summary>读图自测：采购申请是否必须有Supplier参与？</summary>
+
+按原p38及p40是完全内部申请，不连Supplier；订单阶段才有供应商承诺。
+
+</details>
+
 **下半：从收货到付款到退货**
+
+**看图前先问**：收货、付款、退回分别让哪种资源进出企业？
 
 ```mermaid
 classDiagram
@@ -2125,9 +2480,23 @@ classDiagram
     PurchaseReturn -- ShippingClerk : Participation10
 ```
 
+无方向线是业务关联；货的进出由事件定义读，不由布局箭头读。
+
+**沿例子读图（笔记补充）**：从 Purchase Order 经 Fulfillment2 找到 Purchase，由 Stockflow1 表示 Inventory 取得。Cash Disbursement 经 Stockflow2 减少 Cash，用 Duality 关联 Purchase。Purchase Return 经 Reversal 指回原采购，再由 Stockflow3 表示存货流出。
+
+**图旁边界**：职责角色需共同PersonID/权限检查；退回不自动等供应商认可贷项或现金退款。
+
+**文字替代**：采购取得使货流入，付款使现金流出，退回使货流出；认可贷项与实物退回另核。
+
+<details><summary>读图自测：PurchaseReturn由ReceivingClerk经手吗？</summary>
+
+原p38用ShippingClerk，因为货从企业发回供应商。
+
+</details>
+
 **⭐ 读这张图必须注意的五个细节**
 
-1. **采购员（Purchase Agent）没有参与 Purchase 事件。** 它只参与了 `Purchase Requisition`（P2）和 `Purchase Order`（P3）。**收货**由 `Receiving Clerk` 负责（P6）。这是**职责分离**：下单的人不能同时是验收的人（否则可以虚假验收）。
+1. **按 p.38 的角色图**，Purchase Agent 连申请/订单，Receiving Clerk 连收货。图记录不同工作角色；是否由不同自然人执行，还要核共同人员身份与实际授权，不能由两个类自动证明职责已分离。
 2. **`Reservation2` 预留的是现金账户**，不是存货。含义：签了订单就等于**承诺了未来这笔钱**，所以要在现金账户上"占住"这个金额（业务上叫资金计划）。
 3. **`Stockflow3` 连的是 `Inventory` 和 `Purchase Return`**，而不是 `Purchase Return` 和 `Inventory Type`。因为退回去的是**具体的那批货**。
 4. **退货由 `Shipping Clerk`（发货员）经手** —— 因为退货时**货要从企业发出去**，所以是发货员而不是收货员。**这一条极容易在考试里被反着问。**
@@ -2269,8 +2638,8 @@ classDiagram
 **要点**：
 
 1. **`Almost always`** —— 采购循环的减量事件几乎总是付款。（"几乎"是给以物易物留的口子。）
-2. **`cash or equivalent`** —— 现金**或现金等价物**。对零基础读者：现金等价物指支票、银行转账、三个月内到期的短期存款这类"随时能当钱用"的东西。
-3. **注意它同样用 "transfers ownership"** —— 与 Purchase 的 "title transfers" 对称。**REA 一贯用"所有权转移"作为经济事件的判据。**
+2. **`cash or equivalent`** —— 这里保留讲义的“现金或等价物”措辞。支票、银行转账是**支付方式**，不是仅凭方式就认定的现金等价物资产；短期投资还要满足可随时转换为已知金额、价值变动风险很低等条件，通常再看原始到期是否不超过三个月。
+3. **本节商品与现金例中的 "transfers ownership"** —— Purchase 的商品权利转移与 Cash Disbursement 的现金转出形成交换。服务、租赁或使用权业务未必以实物所有权转移为判据，要按实际履约和控制内容建模。
 
 > ⚠️ 讲义 p.45 **没有再给一页单独的 "Cash Disbursement Event" 定义页**（不像 requisition/order/purchase/return 都各有一页）。付款事件的定义就写在这一页里。这是讲义排版的一处不对称。
 
@@ -2315,7 +2684,7 @@ classDiagram
 
 ### 2.13 扩展的收入循环模型（讲义 p.48）
 
-讲义 p.48 标题 `Expanded Revenue Cycle REA model`。结构与 p.38 完全对称，但**多了一条参与关联**（11 条 vs 10 条）。
+讲义 p.48 标题 `Expanded Revenue Cycle REA model`。它与 p.38 共享交换骨架，但不是完全对称：收入循环有 **11 条 Participation**，采购循环有 **10 条**，具体履行、退回与角色仍按各自业务读。
 
 | 全景图上的泛化类 | 收入循环里的具体类 |
 |---|---|
@@ -2361,6 +2730,8 @@ classDiagram
 
 **上半：从拜访到订单**
 
+**看图前先问**：SalesCall内部发起，为什么仍连Customer？
+
 ```mermaid
 classDiagram
     class SalesCall {
@@ -2391,61 +2762,92 @@ classDiagram
     SaleOrder -- Customer : Participation4
 ```
 
+关联线是参与和承诺关系，内部发起不等全程只有内部参与者。
+
+**沿例子读图（笔记补充）**：Salesperson 通过 Participation1 发起 Sales Call，Customer 通过 Participation2 参与。Proposition 说明介绍的商品类型；谈成后可用 Fulfillment1 连到 Sale Order。订单另有客户、销售员参与和资源预留，没谈成的拜访仍保留。
+
+**图旁边界**：该图上半仅显示拜访/订单，实际发货/收款另见下半；未谈成拜访仍可存在。
+
+**文字替代**：销售拜访内部发起但客户参与，未转订单的拜访仍是已发生的起因事件。
+
+<details><summary>读图自测：没有订单的SalesCall应删除吗？</summary>
+
+不应，它是已发生起因，可用于分析未转化情况。
+
+</details>
+
 **下半：从发货到收款到退货**
+
+**看图前先问**：收入循环的销售退回为什么冲减量Sale？
+
+两张局部图合起来保留原下半图的 12 类、14 条关联。同名的 Sale、GoodsInventory 和 Customer 是同一类，为读线方便重复显示；分图不添加新业务条件。
+
+**销售与收款局部图**
+
+```mermaid
+%%{init: {"themeVariables": {"fontSize": "18px"}, "flowchart": {"nodeSpacing": 22, "rankSpacing": 42}}}%%
+flowchart TB
+    SO["&lt;&lt;CommitmentEvent&gt;&gt;<br/><b>SaleOrder</b>"]
+    S["&lt;&lt;EconomicDecrement&gt;&gt;<br/><b>Sale</b>"]
+    CR["&lt;&lt;EconomicIncrement&gt;&gt;<br/><b>CashReceipt</b>"]
+    GIT["&lt;&lt;ResourceType&gt;&gt;<br/><b>GoodsInventoryType</b>"]
+    GI["&lt;&lt;Resource&gt;&gt;<br/><b>GoodsInventory</b>"]
+    CA["&lt;&lt;Resource&gt;&gt;<br/><b>CashAccount</b>"]
+    CU["&lt;&lt;ExternalAgent&gt;&gt;<br/><b>Customer</b>"]
+    SP["&lt;&lt;InternalAgent&gt;&gt;<br/><b>Salesperson</b>"]
+    SH["&lt;&lt;InternalAgent&gt;&gt;<br/><b>ShippingClerk</b>"]
+    CS["&lt;&lt;InternalAgent&gt;&gt;<br/><b>Cashier</b>"]
+    SO ---|Fulfillment2| S
+    GIT ---|Typification| GI
+    GI ---|Stockflow1| S
+    S ---|Duality| CR
+    CA ---|Stockflow2| CR
+    S ---|Participation5| SP
+    S ---|Participation6| CU
+    S ---|Participation7| SH
+    CR ---|Participation8| CU
+    CR ---|Participation9| CS
+```
+
+**销售退回局部图**
 
 ```mermaid
 classDiagram
-    class SaleOrder {
-        <<CommitmentEvent>>
-    }
+    direction LR
     class Sale {
         <<EconomicDecrement>>
-    }
-    class CashReceipt {
-        <<EconomicIncrement>>
     }
     class SaleReturn {
         <<EconomicReversal>>
     }
-    class GoodsInventoryType {
-        <<ResourceType>>
-    }
     class GoodsInventory {
-        <<Resource>>
-    }
-    class CashAccount {
         <<Resource>>
     }
     class Customer {
         <<ExternalAgent>>
     }
-    class Salesperson {
-        <<InternalAgent>>
-    }
-    class ShippingClerk {
-        <<InternalAgent>>
-    }
-    class Cashier {
-        <<InternalAgent>>
-    }
     class ReceivingClerk {
         <<InternalAgent>>
     }
-    SaleOrder -- Sale : Fulfillment2
-    GoodsInventoryType -- GoodsInventory : Typification
-    GoodsInventory -- Sale : Stockflow1
-    CashAccount -- CashReceipt : Stockflow2
-    Sale -- CashReceipt : Duality
-    Sale -- Salesperson : Participation5
-    Sale -- Customer : Participation6
-    Sale -- ShippingClerk : Participation7
-    CashReceipt -- Customer : Participation8
-    CashReceipt -- Cashier : Participation9
     Sale -- SaleReturn : Reversal
     GoodsInventory -- SaleReturn : Stockflow3
     SaleReturn -- Customer : Participation10
     SaleReturn -- ReceivingClerk : Participation11
 ```
+
+无箭头线是模型结构，不表示退货必然立即退款。
+
+**沿例子读图（笔记补充）**：固定一笔 Sale，沿 Stockflow1 找到流出的 Goods Inventory。收款时，Cash Receipt 经 Stockflow2 对应流入的 Cash Account；退货时，Sale Return 经 Reversal 指回 Sale，再经 Stockflow3 表示货回本企业。最后沿 Participation11 找到验收退回的 Receiving Clerk。
+
+**图旁边界**：同源原p48比采购模式多Sale–Salesperson一边；不强行对称删它，未给金额不计算官方退回额。
+
+**文字替代**：销售退回冲减量Sale，货由ReceivingClerk验收；退款与实物退回并非自动同一动作。
+
+<details><summary>读图自测：退回货由ShippingClerk还是ReceivingClerk？</summary>
+
+ReceivingClerk，货回企业；采购退回货出去才ShippingClerk。
+
+</details>
 
 **⭐ 三个必须注意的细节**
 
@@ -2545,7 +2947,9 @@ classDiagram
 
 讲义的说法非常精确：*"the **giving up** of one or more resources **in order to get** some other resource"* —— **为了得到别的东西而先付出**。**销售这个事件本身，付出的是货**；得到钱是**另一个事件**（Cash Receipt）的事。
 
-> 💡 **换个说法（笔记补充）**：REA 把"一手交钱一手交货"**拆成了两个独立事件**。传统会计的一张分录 `借：应收账款 / 贷：销售收入` 把两件事糊在一起；REA 分开记，于是"发了货还没收到钱"这件事在数据上一目了然（= 有 Sale 但 duality 连出去的 Cash Receipt 金额不足）。**这就是应收账款账龄分析在 REA 里的自然实现。**
+💡 **换个说法（笔记补充）**：赊销的 `借：应收账款 / 贷：销售收入` 记录销售确认，尚未记录收现金。随后收款另做 `借：现金 / 贷：应收账款`；复式记账本身也区分这两步。
+
+REA 的优势在于把 Sale 与 Cash Receipt 作为可单独引用的事件，并用 Duality 保存逐笔应用关系。要查“发了货还没收到多少款”，就核对某笔 Sale 的金额与已经应用给它的收款、退回；再结合销售日期形成账龄。不能把这个优势解释成原分录把给货和收钱混为一次。
 
 **讲义 p.54**（标题 `Sale Event`）
 
@@ -2589,7 +2993,16 @@ classDiagram
 
 一对经济事件（发货、收款）都定义完了，最后补上流程末尾的例外情况——客户退货。
 
-**收款的状态机制（笔记补充）**：客户把现金交给企业，CashReceipt增加现金资源；若是结清已有销售，应收减少而非再次增加收入；若货物/服务尚未提供，须保留未来交付义务，不能仅见收款就确认收入。本讲原图描述资源所有权转移，不给金额实例或预收处理全套准则。给定销售已交付金额600、同日收400和200，两笔均应用该销售时现金合计增加600、应收归零；“当场付清”仍允许两个收款记录，除非业务另禁拆分。截止在第一笔400后，应收仍200；这正是关联次数与金额结清不能混用的原因。
+**收款怎样改变状态（笔记补充）**
+
+客户交付现金时，Cash Receipt 增加现金资源。若收的是已确认销售的欠款，应收减少，不再重复确认收入；若尚未提供货物或服务，应保留未来交付义务，不能只看收款就确认收入。
+
+假设销售已交付，金额为 600；同日先收 400，再收 200，两笔均应用给该销售：
+
+1. 第一笔后，现金增加 400，应收还剩 200。
+2. 第二笔后，现金累计增加 600，应收归零。
+
+所以“当场付清”也可有两条收款记录，除非业务明确禁止拆分。关联次数与金额是否结清是两个问题。原图描述资源所有权转移，没有给这组金额，也没有完整展开预收的会计准则。
 
 #### 2.14.5 经济减量冲销事件（讲义 p.56）与销售退回（讲义 p.57）
 
@@ -2620,6 +3033,7 @@ classDiagram
 ### 2.15 两个循环的完整镜像对照（笔记综合，跨 p.38–57）
 
 > 💡 **本节是笔记补充**，讲义没有这张表。但它是把 20 页内容压成一页的最有效方式，**也是最可能出简答题的地方**。
+下表按相同维度对照采购付款与销售收款循环，页码指各自原图；镜像只解释角色方向，不能抹去原图具体关系的差别。
 
 | 维度 | 采购/付款循环（p.38–47） | 销售/收款循环（p.48–57） |
 |---|---|---|
@@ -2677,15 +3091,16 @@ classDiagram
 
 > 🔴 教授原话（W1 转录 `01:54:08`–`01:54:55`）：
 > > *"since you are not accounting students, we make it simple. We just decide whether it affects assets, or it affects liabilities, or it affects equity. But **you need to determine whether it's positive or negative**. **That is my request for you** when you answer such questions. **You must indicate whether it's positive or negative.**"*
+下表一行是一笔交易，后三列分别记录资产、负债、权益的变化；正负号按本企业增减读，不是现金流方向。
 
 | 交易 | Assets | Liabilities | Equity |
 |---|---|---|---|
 | ① 9/30 赊购单簧管 HK\$40,000 | **+40,000**（存货） | **+40,000**（应付账款） | 0 |
-| **余额** | **+40,000** | **+40,000** | **0** |
+| **本笔累计变化** | **+40,000** | **+40,000** | **0** |
 
 **验算**：`+40,000 = +40,000 + 0` ✅ 等式平衡。
 
-> ⚠️ **格式要求逐条核对**：三列（不细分子科目）✅；**每个数字都带正负号** ✅；每笔之后写余额 ✅。**不要用课件 W1 p.55–76 的多列格式。**
+> ⚠️ **格式要求逐条核对**：三列（不细分子科目）✅；**每个数字都带正负号** ✅；每笔之后写本笔累计变化 ✅（企业余额还需期初及其他交易）。**不要用课件 W1 p.55–76 的多列格式。**
 
 **表示二：REA 模型里存了什么**
 
@@ -2704,11 +3119,11 @@ classDiagram
 | 问题 | 传统三列表能回答吗 | REA 能回答吗 |
 |---|---|---|
 | 资产增加了多少？ | ✅ +40,000 | ✅（把 Purchase 的金额汇总即可算出） |
-| 会计等式还平衡吗？ | ✅ 直接可见 | ✅（duality 缺口 = 应付账款余额） |
+| 会计等式还平衡吗？ | ✅ 直接可见 | REA 事件可生成会计视图；某笔 Purchase 的未应用金额只表示该笔未清，企业总 AP 还要有完整期初、全部采购、付款分配与认可贷项 |
 | 买了**几支**？单价多少？ | ❌ 只有金额 | ✅ Stockflow1 的关联属性 |
 | 向**谁**买的？ | ❌ | ✅ Participation |
 | **谁**经手的？ | ❌ | ✅ Participation |
-| 还欠多少？什么时候欠的？ | 部分（应付账款总额） | ✅（每张单各欠多少，精确到笔） |
+| 还欠多少？什么时候欠的？ | 本表仅显示本笔应付增加额 | 截止观察日的单据、对应付款分配及认可贷项完整时，可按单计算未清金额 |
 | 有没有对应的**采购订单**？ | 本讲简化汇总不直接显示；真实凭证/业务明细可另存 | ✅ Fulfillment2 |
 
 > ⭐ **这张表就是 M04"主线 A"论述题的证据。** 题面若是 *"Discuss the limitations of the traditional double-entry system and explain how the REA model addresses them"*，把这张表展开写就是满分答案。
@@ -2731,6 +3146,7 @@ $$\begin{aligned}
 &- \sum \text{（该供应商所有 Cash Disbursement 通过 Duality 分配过来的 cd-acq-applied）} \\
 &- \sum \text{（已关联原采购且截至日生效的供应商认可贷项（不自动等于实物退货））}
 \end{aligned}$$
+下表说明应付账款算式的组成项及哪些已知、哪些待求。每项先统一到同一采购、同一截止日，再代入金额。
 
 | 符号 / 项 | 是什么 | 已知 / 待求 |
 |---|---|---|
@@ -2743,7 +3159,7 @@ $$\begin{aligned}
 
 $$40{,}000 - 0 - 0 = 40{,}000$$
 
-——RSWS 欠 Yamaha 的应付账款余额是 HK\$40,000，与传统三列表里 `Liabilities +40,000` 完全对得上。**假设**（原故事没有的情节，用于演示公式）RSWS 后来对这张采购单支付了 HK\$25,000（即这笔 Cash Disbursement 通过 Duality 分配给 A001 的 `cd-acq-applied = 25,000`），且没有退货，则余额变为：
+——在“期初为 0、Yamaha 没有其他采购/付款/认可贷项”的限定下，A001 这笔采购的未清金额以及该范围内的 Yamaha AP 都是 HK\$40,000；若缺企业完整期初或还有其他交易，不能把本笔金额冒充企业总余额。**假设**（原故事没有的情节，用于演示公式）RSWS 后来对这张采购单支付了 HK\$25,000（即这笔 Cash Disbursement 通过 Duality 分配给 A001 的 `cd-acq-applied = 25,000`），且没有退货，则余额变为：
 
 $$40{,}000 - 25{,}000 - 0 = 15{,}000$$
 
@@ -2765,7 +3181,19 @@ $$40{,}000 - 25{,}000 - 0 = 15{,}000$$
 
 ---
 
-**采购应付从事实运行到余额（笔记补充，非 RSWS 官方交易）**：下面独立例不用原文40,000/25,000假设冒充原题。单位HKD，同供应商同币种，无税折扣、其他期初AP。P1在9/20取得并赊购24,000，P2在9/22取得16,000；C1在9/23付10,000全应用P1；C2在9/25付15,000，分P1 6,000/P2 9,000；U1在9/26付公用事业费1,000，无Purchase应用；P2在9/30退货且同日获认可贷项2,000；C3在10/2另付3,000应用P1。期初现金50,000。
+**采购应付从事实到余额（笔记补充，非 RSWS 官方交易）**
+
+下面独立例与前面的 40,000/25,000 例分开。单位为 HKD；`AP` 指应付账款余额，`A/P Clerk` 才是角色。假设同一供应商、同一币种、无税折扣、没有其他期初 AP，期初现金为 50,000。
+
+1. 9/20取得P1，赊购24,000。
+2. 9/22取得P2，金额16,000。
+3. 9/23付款C1共10,000，全部应用P1。
+4. 9/25付款C2共15,000，其中P1应用6,000，P2应用9,000。
+5. 9/26付公用事业费U1共1,000，不应用任何Purchase。
+6. 9/30退P2货，并在同日取得供应商认可贷项2,000。
+7. 10/2另付C3共3,000，应用P1。
+
+要算9/30应付，先截止采购、付款分配与认可贷项，再逐采购求差；C3仍是未来付款。
 
 $$AP_p(t)=AcqAmt_p-PaidApplied_p(t)-AcceptedCredit_p(t).$$
 
@@ -2801,6 +3229,8 @@ LEFT JOIN credit r ON r.acq=p.acq WHERE p.dt<=:cutoff;
 
 WITH定义两个先聚合结果；GROUP BY acq使每采购最多一行；JOIN以键连接实际付款，LEFT JOIN保留仍未付采购，COALESCE按本例无业务匹配变0；参数cutoff为统一ISO文本日期。所有列及CTE是新增教学模式，不能声称Access原生已认证。
 
+**看图前先问**：付款全额、应用到采购的金额和认可贷项为何要分开？
+
 ```mermaid
 flowchart TD
  P["取得金额与截止日期"] --> A["按采购聚合已生效付款分配"]
@@ -2813,6 +3243,20 @@ flowchart TD
  Q -->|有| X["停止该金额结论，补来源/修业务"]
  Q -->|无| O["截至日AP按采购/供应商归集"]
 ```
+
+箭头是先筛/聚合/连接/求差/业务核对的依赖，条件“停止该金额结论”停止相关金额不是删除事实。
+
+**沿例子读图（笔记补充）**：截至 9/30，采购 P1、P2 的取得金额为 24,000、16,000。先在“按采购聚合已生效付款分配”得到 16,000、9,000，再聚合 P2 已认可贷项 2,000。左连回每采购一行后，相减得 8,000、5,000，总应付 13,000。公用事业付款 U1 与 10/2 的 C3 不扣当前应付。
+
+**图旁边界**：本例为独立补充，原RSWS没有退货认可字段；未应用预付不直接减AP。
+
+**文字替代**：截至日先聚合付款应用和认可贷项，再逐采购求差；utilities和未来付款不误扣。
+
+<details><summary>读图自测：直接减所有现金支出会少算多少？</summary>
+
+误把U1公用事业费1,000抵采购，会把13,000错算12,000。
+
+</details>
 
 **失败实测与停止边界**：反查“没有任何付款关系”的采购会漏掉P1/P2仍欠的13,000；减全部现金支出会误扣U1，得12,000。将两个付款和两个credit直接JOIN会两两复制，不能在重复行上分别SUM。PK/FK不自动限制累计分配≤付款总额；给C1再应用20,000仍能通过局部键却超10,000现金，需要事务内金额守卫。缺认可credit的生效日期/金额就不能断定9/30欠13,000，不能从原RSWS没有的return字段假造官方答案。
 
@@ -2827,64 +3271,75 @@ flowchart TD
 
 ### 图 1 · 业务流程的四段与 REA 的四类事件
 
+**看图前先问**：四阶段概览中的冲销怎么同时覆盖采购与收入？
+
 ```mermaid
-flowchart LR
-    subgraph S1["① 起因 Instigation"]
-        A["发现需求 / 主动推销<br/>采购申请 · 销售拜访"]
-    end
-    subgraph S2["② 承诺 Commitment"]
-        B["签单，约定未来交换<br/>采购订单 · 销售订单"]
-    end
-    subgraph S3["③ 经济事件 Economic —— 核心模型只有这一段"]
-        C["增量：资源流入"]
-        D["减量：资源流出"]
-        C ---|Duality| D
-    end
-    subgraph S4["④ 冲销 Reversal"]
-        E["退货<br/>采购退回 · 销售退回"]
-    end
+%%{init: {"themeVariables": {"fontSize": "18px"}, "flowchart": {"nodeSpacing": 30, "rankSpacing": 50}}}%%
+flowchart TB
+    A["① 起因 Instigation<br/>发现需求 / 主动推销<br/>采购申请 · 销售拜访"]
+    B["② 承诺 Commitment<br/>签单，约定未来交换<br/>采购订单 · 销售订单"]
+    C["③a 经济增量<br/>资源流入"]
+    D["③b 经济减量<br/>资源流出"]
+    E["④ 冲销 Reversal<br/>退货：采购退回 · 销售退回"]
     A -->|Fulfillment1| B
     B -->|Fulfillment2| C
     B -->|Fulfillment3| D
-    C -->|Reversal| E
+    C ---|Duality| D
+    C -->|"采购：增量冲销"| E
+    D -->|"销售：减量冲销（补充对照）"| E
 ```
 
-> **这张图在说**：核心模型只画 ③，扩展模型把 ①②④ 补齐。**"传统会计只记 ③，而且只记它的金额"** —— 这是本讲与 M04 的连接点。
+原关联名仍表示履行/配对/冲销；概览箭头不强制全部起因成功或资源立刻结清。
+
+**沿例子读图（笔记补充）**：在“③ 经济事件”里，Purchase 属“增量：资源流入”，沿其 Reversal 路径到采购退回。Sale 属“减量：资源流出”，沿补充对照路径到销售退回。两种退回的具体原关系分别在 p.38、p.48，不把这张概览当作单一原图。
+
+**图旁边界**：补充对照明确新增，不把泛图原未画销售冲销边冒充原事实。
+
+**文字替代**：采购退回冲增量Purchase，销售退回冲减量Sale；新增对照边明确为补充。
+
+<details><summary>读图自测：销售退回要从增量CashReceipt出发吗？</summary>
+
+实物销售退回关联减量Sale；实际退款另定资源现金事件/关联，不能用一个框抹掉不同状态。
+
+</details>
+
+> **这张图在说**：核心 REA 模型聚焦 ③，扩展模型把 ①②④ 补齐。简化总账分录主要记录已满足确认条件的经济事件；④ 退回若改变已确认金额也会入账。①② 可以留在订单/CRM 等业务系统，REA 的特点是把四阶段显式连成同一模型。
 
 ### 图 2 · 13 条关联按"连接的两端"分类
 
+**看图前先问**：13种关联怎样按两端对象区分，而非只背名称？
+
 ```mermaid
-flowchart TD
-    subgraph EE["事件 ↔ 事件"]
-        d["Duality 二元性<br/>增量经济事件 ↔ 减量经济事件"]
-        f["Fulfillment 履行<br/>起因→承诺，承诺→经济"]
-        rv["Reversal 冲销<br/>经济事件 ↔ 冲销事件"]
-        rc["Reciprocal 对等<br/>增量承诺 ↔ 减量承诺"]
-    end
-    subgraph ER["事件 ↔ 资源"]
-        sf["Stockflow 存量流<br/>经济事件 ↔ 资源"]
-        pr["Proposition 提议<br/>起因事件 ↔ 资源"]
-        rs["Reservation 预留<br/>承诺事件 ↔ 资源"]
-    end
-    subgraph EA["事件 ↔ 参与者"]
-        pa["Participation 参与<br/>任何事件 ↔ 任何参与者"]
-    end
-    subgraph AA["参与者 ↔ 参与者"]
-        as["Assignment 指派<br/>内部 ↔ 外部"]
-        rp["Responsibility 责任<br/>内部 ↔ 内部"]
-    end
-    subgraph RA["资源 ↔ 参与者 / 资源"]
-        cu["Custody 保管<br/>资源 ↔ 内部参与者"]
-        lk["Linkage 构成<br/>资源 ↔ 资源"]
-    end
-    subgraph TY["实例 ↔ 类型"]
-        ty["Typification 类型化<br/>Resource/Event/Agent ↔ 其 Type"]
-    end
+%%{init: {"themeVariables": {"fontSize": "18px"}, "flowchart": {"nodeSpacing": 24, "rankSpacing": 34}}}%%
+flowchart TB
+    EE["事件 ↔ 事件<br/>Duality：增量经济事件 ↔ 减量经济事件<br/>Fulfillment：起因→承诺，承诺→经济<br/>Reversal：经济事件 ↔ 冲销事件<br/>Reciprocal：增量承诺 ↔ 减量承诺"]
+    ER["事件 ↔ 资源<br/>Stockflow：经济事件 ↔ 资源<br/>Proposition：起因事件 ↔ 资源<br/>Reservation：承诺事件 ↔ 资源"]
+    EA["事件 ↔ 参与者<br/>Participation：任何事件 ↔ 任何参与者"]
+    AA["参与者 ↔ 参与者<br/>Assignment：内部 ↔ 外部<br/>Responsibility：内部 ↔ 内部"]
+    RA["资源 ↔ 参与者 / 资源<br/>Custody：资源 ↔ 内部参与者<br/>Linkage：资源 ↔ 资源"]
+    TY["实例 ↔ 类型<br/>Typification：Resource / Event / Agent ↔ 其 Type"]
+    EE ~~~ ER ~~~ EA ~~~ AA ~~~ RA ~~~ TY
 ```
+
+框是类别分组，图无业务顺序箭头；分类格不证明某个模型必须画全部13种。
+
+**沿例子读图（笔记补充）**：找采购中的品类数量，要读事件与资源组中的 Stockflow；找采购员参与 Purchase，要读事件与参与者组中的 Participation。独立于单次交易的专属客户经理关系才读 Assignment。订单兑现则读事件与事件组中的 Fulfillment。
+
+**图旁边界**：Reciprocal/Linkage在原全景未画，仍保留术语和启用条件；Custody原图/文字类型差保留。
+
+**文字替代**：关联按两端对象及启用条件分类，共同参与一笔事件不自动产生长期Assignment。
+
+<details><summary>读图自测：同一次交易中出现经理与供应商，必须多画Assignment吗？</summary>
+
+不一定，独立于此次事件仍成立的长期关系才Assignment。
+
+</details>
 
 > **这张图在说**：13 条关联不需要死记，**按"它连的是哪两类东西"归类，一共只有六格**。考试问"某某关联连什么"，先想它在哪一格。
 
 ### 图 3 · 六步法与图上元素的对应
+
+**看图前先问**：六步每一步增加什么，如何知道没漏批准角色？
 
 ```mermaid
 flowchart TD
@@ -2900,6 +3355,20 @@ flowchart TD
     O5 --> S6["Step 6<br/>分配多重度"]
     S6 --> O6["产出：每条线两端各一个<br/>叙述 → 常识 → 假设"]
 ```
+
+箭头是建模顺序；Step 4 的输出角色数量由事实决定，不是必须固定N个自然人。
+
+**沿例子读图（笔记补充）**：RSWS 从 Step 1 识别 Purchase、Cash Disbursement 并连 Duality。Step 2 挂 Inventory Type、Overhead、Cash；Step 3 挂 Supplier；Step 4 加 Purchase Agent、A/P Clerk、Manager。然后 Step 5 分清类属性与组合属性，Step 6 为每个端点写明依据。
+
+**图旁边界**：结构/端点齐全不是金额数据齐全；批准Manager依据authorize，身份分离须另核。
+
+**文字替代**：六步依次补事件、资源、外部/内部角色、属性和端点；完成或批准者都依业务事实。
+
+<details><summary>读图自测：漏Manager会在哪一步发现？</summary>
+
+在Step 4识别authorize角色时；原RSWS现金付款由Manager批准，不能只找经办者。
+
+</details>
 
 > **这张图在说**：**考场上把这六个标题当小标题写下来，逐个填**，改卷人一眼看到结构，就算某一步填错也不至于全丢。
 
@@ -2962,7 +3431,7 @@ Step 1  Identify Economic Exchange Events   →  两个事件 + Duality
 Step 2  Attach Resources                    →  Stockflow
 Step 3  Attach External Agents              →  from whom / to whom
 Step 4  Attach Internal Agents              →  process / accomplish / authorize
-Step 5  Assign Attributes                   →  类属性 + 关联属性（只有 M:N 才需要）
+Step 5  Assign Attributes                   →  类属性 + 关联属性（按对象组合判断，不限定 M:N）
 Step 6  Assign Multiplicities               →  叙述 > 常识 > 假设
 ```
 
@@ -2980,48 +3449,253 @@ Step 6  Assign Multiplicities               →  叙述 > 常识 > 假设
 
 ## 5. 双语术语卡
 
-| 中文 | English | 考试可用的英文定义（优先讲义原句） | 首现 |
-|---|---|---|---|
-| 资源 | Resource | An economic resource owned or controlled by the enterprise; modelled individually when its instances are **not interchangeable** (e.g. diamonds). | §2.1.1 |
-| 资源类型 | Resource Type | A category of resource whose individual instances **are interchangeable** (e.g. cookies). | §2.1.1 |
-| 经济事件 | Economic Event | Events in which a resource is either **given up or taken**. | §2.1.2 |
-| 经济增量事件 | Economic Increment Event | An economic event that **results in resource inflow**, in quantity or value. | §2.1.2 |
-| 经济减量事件 | Economic Decrement Event | An economic event that **results in resource outflow**, in quantity or value. | §2.1.2 |
-| 内部参与者 | Internal Agent | Agents who **act on behalf of the enterprise**. | §2.1.3 |
-| 外部参与者 | External Agent | Agents who are **external business partners**. | §2.1.3 |
-| 二元性 | Duality | An association that **links increment and decrement economic events**. | §2.2.1 |
-| 存量流 | Stockflow | An association that **links economic events and resources or resource types**; **inflow** links an increment event to a resource, **outflow** links a decrement event to a resource. | §2.2.2 |
-| 参与 | Participation | An association that **links economic events and agents (internal and external)**. | §2.2.3 |
-| 保管 | Custody | An association that **links agents and resources such that the agent has physical control over the resource or controls access to it**; use when responsibility for a resource must be tracked **independently of any event**. | §2.3.1 |
-| 指派 | Assignment | An association that **links an internal agent to an external agent**; use **only when the relationship exists independently of their mutual participation in an event**. | §2.3.2 |
-| 责任 | Responsibility | An association that **links an internal agent to an internal agent**; use when one is responsible for another **independent of their mutual participation in an event**. | §2.3.3 |
-| 关联属性 | Association Attribute | An attribute that describes **a combination of things** rather than just one thing, and therefore belongs to the association rather than to either class. | §2.4 |
-| 多重度 | Multiplicity | How many times an instance of a class is allowed to participate in an association; the value is **written next to the class at the other end**. | §2.5 |
-| 起因事件 | Instigation Event | An event that **initiates activities in the business process**; may be **internally instigated** (e.g. a marketing event) or **externally instigated** (e.g. a call from a supplier's salesperson). | §2.10.2 |
-| 承诺事件 | Commitment Event | An event in which **commitments are made by the enterprise or by one of its external business partners for part of a future economic exchange**. | §2.10.2 |
-| 相互承诺事件 | Mutual Commitment Event | A single event combining the commitments of **both** the enterprise and its partner. | §2.10.2 |
-| 经济冲销事件 | Economic Reversal Event | An event in which a **previous economic event is reversed or negated**. | §2.10.3 |
-| 履行 | Fulfillment | An association that **links instigation events to commitment events and commitment events to economic events**. | §2.10.4 |
-| 冲销（关联） | Reversal | An association that **links economic events to the events that reverse them**. | §2.10.4 |
-| 对等 | Reciprocal | An association that **links increment and decrement commitment events**; it **is the commitment-level equivalent of duality**. | §2.10.4 |
-| 提议 | Proposition | An association that **links instigation events to resources or resource types**. | §2.10.5 |
-| 预留 | Reservation | An association that **links commitment events to resources or resource types**. | §2.10.5 |
-| 构成 | Linkage | An association that **links two resources**; use to identify a resource **made up of** another resource. | §2.10.7 |
-| 类型化 | Typification | An association relating **each resource, event, or agent to a resource type, event type, or agent type**. | §2.10.7 |
-| 采购申请 | Purchase Requisition | An **instigation event that is entirely internal**; typically a **department supervisor** identifying a need for a **type** of good or service and communicating it to the purchasing department. | §2.12.1 |
-| 采购订单 | Purchase Order | A **mutual commitment event** whereby a supplier agrees to provide goods to the enterprise and the enterprise agrees to pay an **ascertained price** for those goods. | §2.12.2 |
-| 采购（取得） | Purchase / Acquisition | An economic increment event in which **title (ownership) of one or more products is transferred from a supplier to the enterprise**, in person or via transit. | §2.12.3 |
-| 现金付款 | Cash Disbursement | An economic decrement event whereby the enterprise **transfers ownership of cash (or equivalent) to a supplier**. | §2.12.4 |
-| 采购退回 | Purchase Return | An economic event in which title for goods previously transferred from a supplier to the enterprise **is transferred back from the enterprise to the supplier**. | §2.12.5 |
-| 销售拜访 | Sales Call | An **instigation event that is internally initiated**; a sales representative calling on a customer via telephone or in person to **describe the features** of products or services. | §2.14.1 |
-| 销售订单 | Sale Order | A mutual commitment event whereby **the enterprise agrees to deliver goods to a customer** and that customer agrees to pay an **ascertained price**. | §2.14.2 |
-| 销售 | Sale | An economic **decrement** event in which **title (ownership) of one or more products is transferred from the enterprise to a customer**. | §2.14.3 |
-| 现金收款 | Cash Receipt | An economic increment event in which **an external agent transfers ownership of cash (or a cash equivalent) to the enterprise**. | §2.14.4 |
-| 销售退回 | Sale Return | An economic event in which title for products previously transferred **from seller to buyer is transferred back from buyer to seller**. | §2.14.5 |
-| 采购/付款循环 | Acquisition / Payment Process | The business process covering requisition → order → receipt of goods → payment → return. | §2.7 |
-| 销售/收款循环 | Sales / Collection Process（Revenue Cycle） | The business process covering sales call → order → delivery → collection → return. | §2.8 |
-| 制造费用 | Overhead | Indirect costs (utilities, rent, maintenance) modelled in RSWS as a `<<ResourceType>>`. | §2.9.2 |
-| 库存数量 | Quantity on Hand (qoh) | Attribute of a resource type recording how many units are currently held. | §2.9.4 |
+术语卡先定位名称和首次展开处，较长英文定义移到同名条目，保持原句不删。
+
+| 中文 | English | 首现 |
+| --- | --- | --- |
+| 资源 | Resource | §2.1.1 |
+| 资源类型 | Resource Type | §2.1.1 |
+| 经济事件 | Economic Event | §2.1.2 |
+| 经济增量事件 | Economic Increment Event | §2.1.2 |
+| 经济减量事件 | Economic Decrement Event | §2.1.2 |
+| 内部参与者 | Internal Agent | §2.1.3 |
+| 外部参与者 | External Agent | §2.1.3 |
+| 二元性 | Duality | §2.2.1 |
+| 存量流 | Stockflow | §2.2.2 |
+| 参与 | Participation | §2.2.3 |
+| 保管 | Custody | §2.3.1 |
+| 指派 | Assignment | §2.3.2 |
+| 责任 | Responsibility | §2.3.3 |
+| 关联属性 | Association Attribute | §2.4 |
+| 多重度 | Multiplicity | §2.5 |
+| 起因事件 | Instigation Event | §2.10.2 |
+| 承诺事件 | Commitment Event | §2.10.2 |
+| 相互承诺事件 | Mutual Commitment Event | §2.10.2 |
+| 经济冲销事件 | Economic Reversal Event | §2.10.3 |
+| 履行 | Fulfillment | §2.10.4 |
+| 冲销（关联） | Reversal | §2.10.4 |
+| 对等 | Reciprocal | §2.10.4 |
+| 提议 | Proposition | §2.10.5 |
+| 预留 | Reservation | §2.10.5 |
+| 构成 | Linkage | §2.10.7 |
+| 类型化 | Typification | §2.10.7 |
+| 采购申请 | Purchase Requisition | §2.12.1 |
+| 采购订单 | Purchase Order | §2.12.2 |
+| 采购（取得） | Purchase / Acquisition | §2.12.3 |
+| 现金付款 | Cash Disbursement | §2.12.4 |
+| 采购退回 | Purchase Return | §2.12.5 |
+| 销售拜访 | Sales Call | §2.14.1 |
+| 销售订单 | Sale Order | §2.14.2 |
+| 销售 | Sale | §2.14.3 |
+| 现金收款 | Cash Receipt | §2.14.4 |
+| 销售退回 | Sale Return | §2.14.5 |
+| 采购/付款循环 | Acquisition / Payment Process | §2.7 |
+| 销售/收款循环 | Sales / Collection Process（Revenue Cycle） | §2.8 |
+| 制造费用 | Overhead | §2.9.2 |
+| 库存数量 | Quantity on Hand (qoh) | §2.9.4 |
+
+中文与English是名称对应；首现列是本篇小节索引。正式定义仍与原讲义页/教学例同读，不能从一句定义跳过数量、日期与模型范围。
+
+**资源**
+
+考试可用的英文定义（优先讲义原句）：An economic resource owned or controlled by the enterprise; modelled individually when its instances are **not interchangeable** (e.g. diamonds).
+
+
+**资源类型**
+
+考试可用的英文定义（优先讲义原句）：A category of resource whose individual instances **are interchangeable** (e.g. cookies).
+
+
+**经济事件**
+
+考试可用的英文定义（优先讲义原句）：Events in which a resource is either **given up or taken**.
+
+
+**经济增量事件**
+
+考试可用的英文定义（优先讲义原句）：An economic event that **results in resource inflow**, in quantity or value.
+
+
+**经济减量事件**
+
+考试可用的英文定义（优先讲义原句）：An economic event that **results in resource outflow**, in quantity or value.
+
+
+**内部参与者**
+
+考试可用的英文定义（优先讲义原句）：Agents who **act on behalf of the enterprise**.
+
+
+**外部参与者**
+
+考试可用的英文定义（优先讲义原句）：Agents who are **external business partners**.
+
+
+**二元性**
+
+考试可用的英文定义（优先讲义原句）：An association that **links increment and decrement economic events**.
+
+
+**存量流**
+
+考试可用的英文定义（优先讲义原句）：An association that **links economic events and resources or resource types**; **inflow** links an increment event to a resource, **outflow** links a decrement event to a resource.
+
+
+**参与**
+
+考试可用的英文定义（优先讲义原句）：An association that **links economic events and agents (internal and external)**.
+
+
+**保管**
+
+考试可用的英文定义（优先讲义原句）：An association that **links agents and resources such that the agent has physical control over the resource or controls access to it**; use when responsibility for a resource must be tracked **independently of any event**.
+
+
+**指派**
+
+考试可用的英文定义（优先讲义原句）：An association that **links an internal agent to an external agent**; use **only when the relationship exists independently of their mutual participation in an event**.
+
+
+**责任**
+
+考试可用的英文定义（优先讲义原句）：An association that **links an internal agent to an internal agent**; use when one is responsible for another **independent of their mutual participation in an event**.
+
+
+**关联属性**
+
+考试可用的英文定义（优先讲义原句）：An attribute that describes **a combination of things** rather than just one thing, and therefore belongs to the association rather than to either class.
+
+
+**多重度**
+
+考试可用的英文定义（优先讲义原句）：How many times an instance of a class is allowed to participate in an association; the value is **written next to the class at the other end**.
+
+
+**起因事件**
+
+考试可用的英文定义（优先讲义原句）：An event that **initiates activities in the business process**; may be **internally instigated** (e.g. a marketing event) or **externally instigated** (e.g. a call from a supplier's salesperson).
+
+
+**承诺事件**
+
+考试可用的英文定义（优先讲义原句）：An event in which **commitments are made by the enterprise or by one of its external business partners for part of a future economic exchange**.
+
+
+**相互承诺事件**
+
+考试可用的英文定义（优先讲义原句）：A single event combining the commitments of **both** the enterprise and its partner.
+
+
+**经济冲销事件**
+
+考试可用的英文定义（优先讲义原句）：An event in which a **previous economic event is reversed or negated**.
+
+
+**履行**
+
+考试可用的英文定义（优先讲义原句）：An association that **links instigation events to commitment events and commitment events to economic events**.
+
+
+**冲销（关联）**
+
+考试可用的英文定义（优先讲义原句）：An association that **links economic events to the events that reverse them**.
+
+
+**对等**
+
+考试可用的英文定义（优先讲义原句）：An association that **links increment and decrement commitment events**; it **is the commitment-level equivalent of duality**.
+
+
+**提议**
+
+考试可用的英文定义（优先讲义原句）：An association that **links instigation events to resources or resource types**.
+
+
+**预留**
+
+考试可用的英文定义（优先讲义原句）：An association that **links commitment events to resources or resource types**.
+
+
+**构成**
+
+考试可用的英文定义（优先讲义原句）：An association that **links two resources**; use to identify a resource **made up of** another resource.
+
+
+**类型化**
+
+考试可用的英文定义（优先讲义原句）：An association relating **each resource, event, or agent to a resource type, event type, or agent type**.
+
+
+**采购申请**
+
+考试可用的英文定义（优先讲义原句）：An **instigation event that is entirely internal**; typically a **department supervisor** identifying a need for a **type** of good or service and communicating it to the purchasing department.
+
+
+**采购订单**
+
+考试可用的英文定义（优先讲义原句）：A **mutual commitment event** whereby a supplier agrees to provide goods to the enterprise and the enterprise agrees to pay an **ascertained price** for those goods.
+
+
+**采购（取得）**
+
+考试可用的英文定义（优先讲义原句）：An economic increment event in which **title (ownership) of one or more products is transferred from a supplier to the enterprise**, in person or via transit.
+
+
+**现金付款**
+
+考试可用的英文定义（优先讲义原句）：An economic decrement event whereby the enterprise **transfers ownership of cash (or equivalent) to a supplier**.
+
+
+**采购退回**
+
+考试可用的英文定义（优先讲义原句）：An economic event in which title for goods previously transferred from a supplier to the enterprise **is transferred back from the enterprise to the supplier**.
+
+
+**销售拜访**
+
+考试可用的英文定义（优先讲义原句）：An **instigation event that is internally initiated**; a sales representative calling on a customer via telephone or in person to **describe the features** of products or services.
+
+
+**销售订单**
+
+考试可用的英文定义（优先讲义原句）：A mutual commitment event whereby **the enterprise agrees to deliver goods to a customer** and that customer agrees to pay an **ascertained price**.
+
+
+**销售**
+
+考试可用的英文定义（优先讲义原句）：An economic **decrement** event in which **title (ownership) of one or more products is transferred from the enterprise to a customer**.
+
+
+**现金收款**
+
+考试可用的英文定义（优先讲义原句）：An economic increment event in which **an external agent transfers ownership of cash (or a cash equivalent) to the enterprise**.
+
+
+**销售退回**
+
+考试可用的英文定义（优先讲义原句）：An economic event in which title for products previously transferred **from seller to buyer is transferred back from buyer to seller**.
+
+
+**采购/付款循环**
+
+考试可用的英文定义（优先讲义原句）：The business process covering requisition → order → receipt of goods → payment → return.
+
+
+**销售/收款循环**
+
+考试可用的英文定义（优先讲义原句）：The business process covering sales call → order → delivery → collection → return.
+
+
+**制造费用**
+
+考试可用的英文定义（优先讲义原句）：Indirect costs (utilities, rent, maintenance) modelled in RSWS as a `<<ResourceType>>`.
+
+
+**库存数量**
+
+考试可用的英文定义（优先讲义原句）：Attribute of a resource type recording how many units are currently held.
+
+
 
 ---
 
@@ -3035,7 +3709,7 @@ Step 6  Assign Multiplicities               →  叙述 > 常识 > 假设
 | 🟡 CILO 反推 | 对应官方 CILO，口径上必须考核 | 9 条 |
 | ⚪ 笔记推断 | 根据内容重要性、页数分配、题型惯例的判断 | 7 条 |
 
-> ⚠️ **本讲没有 🔴 级考点，不是因为不重要，而是因为没有转录。** 本课六份 pptx 里只有 W01 录了音。**W5 的课上到之后请立刻录音并导出转录**，届时按 [[#9.2 课上讲了但课件没有|§9.2]] 的清单回填。
+> ⚠️ **本讲没有 🔴 级考点，不是因为不重要，而是因为没有转录。** 本讲当前没有已融合转录。**W5 的课上到之后请立刻录音并导出转录**，届时按 [[#9.2 课上讲了但课件没有|§9.2]] 的清单回填。
 >
 > 🔴 **但有一条从 M01 继承过来的、适用于整个期中考的硬性要求**，见 §6.3 框架 C。
 
@@ -3089,7 +3763,7 @@ Step 4 — Internal agents
 
 Step 5 — Attributes
   · 每个类：identifier(PK) + 该类型的标准属性（事件必带 date）
-  · 关联属性：凡是 M:N 的关联，问"这个数字需要两个东西才确定吗"
+  · 关联属性：按对象组合语义判断，问"这个数字需要两个东西才确定吗"；不限定M:N
 
 Step 6 — Multiplicities
   · 先把叙述逐句拆开，标出每句管哪条线的哪一端
@@ -3152,12 +3826,12 @@ Step 6 — Multiplicities
 
 ```
 1. 立论：传统系统的准入规则是"影响会计等式 + 能用货币计量"，这条规则同时是它的三重局限
-2. 局限一：丢掉了 who（参与者不进系统）
-   → REA：Agent 是一等公民，Participation 把每个事件与经手人绑定
-   → 后果：职责分离可以自动检查（申请人 = 批准人？）
+2. 局限一：简化总账分录本身不编码 who（参与者）
+   → REA：Agent 是一等公民，Participation 把每个事件与角色绑定
+   → 后果：若再保存共享 PersonID、权限与授权时点，可检查职责分离（申请人与批准人是否为同一自然人）
 3. 局限二：丢掉了 non-monetary 信息（货币计量假设）
    → REA：Stockflow 的关联属性记数量、Resource 记规格
-4. 局限三：丢掉了"尚未影响等式"的事项（订单、拜访、报价）
+4. 局限三：总账分录本身不编码“尚未影响等式”的事项（订单、拜访、报价）；配套业务系统可能另存
    → REA：Instigation Event、Commitment Event
    → 后果：在手订单 backlog 可查（= 按订单行数量减累计已履行与已取消未履行数量；仅有/无关联不足以判全部完成）
 5. 局限四：账户余额是被存起来的，口径事先写死
@@ -3318,7 +3992,9 @@ $$\begin{aligned}
 | ③ 前半"不允许赊销" | duality 的 **Cash Receipt 端最小值** | 在题设当前已付清销售范围，每笔销售有收款 → 最小1；包括待结算销售的生命周期库需另定观察范围 |
 | ③ 前半"必须当场付清" | duality 的 **Cash Receipt 端最大值** | 当场付清只规定金额/时点，不排除同日拆分400+200等；最大1须再假设不允许拆分付款 |
 | ③ 后半"允许合并结清" | duality 的 **Sale 端最大值** | 一笔收款可对应多笔销售 → 最大值 = **\*** |
-| 常识 | duality 的 **Sale 端最小值** | 一笔收款是否可能不对应任何销售？叙述未给其他收款范围，不能由未提及推出不存在；若收款类仅含销售收款可取1，若含其他来源可取0 |
+| 常识 | duality 的 **Sale 端最小值** | 取决于 Cash Receipt 类是否包含非销售收款 |
+
+**自测中的最小值边界**：一筆收款可能不对应销售吗？题面未说明其他收款范围，不能由未提及就认定不存在。若 Cash Receipt 类只含销售收款，该端最小可取 1；若也含其他来源，可取 0。
 
 **条件答案**（额外假设每 Sale 不允许拆分付款、CR 类仅含销售收款）：
 
@@ -3362,7 +4038,7 @@ Sale "1..*" —— Duality —— "1..1" Cash Receipt
 - 各自 Participation
 
 **扩展部分**
-- `<<InstigationEvent>> Trial Class`（试课）——**内部发起的营销事件**，不收费所以不是经济事件
+- `<<InstigationEvent>> Trial Class`（试课）——在本扩展情境中记录营销起因。免费不等没有经济耗用：教练时间和场地可另记资源耗用，是否拆独立经济事件须明确模型范围
   - Fulfillment1 → 会籍合同
   - Proposition → Membership Service Type（试的是哪种课）
   - Participation → Member、Trainer
@@ -3373,7 +4049,7 @@ Sale "1..*" —— Duality —— "1..1" Cash Receipt
   - Reservation2 → Cash Account
   - Participation → Member、销售/前台
 - `<<EconomicReversal>> Refund / Membership Cancellation`（7 天退会退款）
-  - **⚠️ 这里要判断它冲的是哪一个**：退的是**钱**，所以它冲销的是 `Cash Receipt`（增量）→ 属于 **economic increment reversal**
+  - **分别处理合同取消与实际退款**。取消的是未来服务/付款承诺；实际退款使现金流出，可作为与原CashReceipt关联的补充冲销/退款事件。两者不是同一状态，原题未给全部履约与退款明细，不能自动抵销已经交付的服务
   - Reversal → Cash Receipt
   - Stockflow3 → Cash Account
   - Participation → Member、Manager
@@ -3381,7 +4057,7 @@ Sale "1..*" —— Duality —— "1..1" Cash Receipt
 **Step 5 — 属性要点**
 - `Service Delivery`：ID(PK)、date、duration
 - `Cash Receipt`：ID(PK)、date、amount
-- **Duality 的关联属性**：`receipt-service-applied`（这期扣款对应哪几节课）——因为一次扣款覆盖一个月的多次服务，是**多对多**
+- **Duality 的关联属性**：`receipt-service-applied`（这期扣款对应哪几节课）。若业务允许一次扣款覆盖多次服务，且一次服务也可由多笔扣款分摊，两端最大值才都是 `*`，此时是**多对多**；题面只给前一方向时还不能单独推出 M:N
 - **Stockflow1 的关联属性**：`sessions-used`
 
 **Step 6 — 多重度要点**
@@ -3406,11 +4082,11 @@ Sale "1..*" —— Duality —— "1..1" Cash Receipt
 | 交易 | Assets | Liabilities | Equity |
 |---|---|---|---|
 | ① 9/30 赊购单簧管 5 支 @ 8,000 | **+40,000** | **+40,000** | **0** |
-| **余额** | **+40,000** | **+40,000** | **0** |
+| **本笔累计变化** | **+40,000** | **+40,000** | **0** |
 
 验算：`+40,000 = +40,000 + 0` ✅
 
-⚠️ 格式检查：三列 ✅、每个数字带正负号 ✅、给出余额 ✅、不细分子科目 ✅。
+⚠️ 格式检查：三列 ✅、每个数字带正负号 ✅、给出本笔累计变化 ✅、不细分子科目 ✅；企业余额还需期初及其他交易。
 
 **(b) REA 模型里产生的记录**
 
@@ -3420,7 +4096,7 @@ Sale "1..*" —— Duality —— "1..1" Cash Receipt
 | `Stockflow1`（Inventory Type ↔ Purchase） | `(A001, 单簧管品类, qty=5, unit-cost=8000)` |
 | `Participation2`（Purchase ↔ Supplier） | `(A001, Yamaha)` |
 | `Participation1`（Purchase ↔ Purchase Agent） | `(A001, <采购员工号>)` |
-| `Duality` | **无行** ← "赊购"在 REA 里就表现为 duality 上暂时没有对应记录 |
+| `Duality` | 在本例“截至观察时点尚未付款”的假设下无行；若部分付款则已有配对行但仍可能未清 |
 
 **(c) (a) 丢失了什么**
 
@@ -3431,7 +4107,7 @@ Sale "1..*" —— Duality —— "1..1" Cash Receipt
 | 谁经手的 | ❌ | ✅ 采购员 |
 | 具体是哪个品类 | ❌ | ✅ 单簧管品类 |
 | 有没有对应的采购订单 | ❌ | ✅ 通过 Fulfillment2 可查 |
-| 这笔欠款单独还欠多少 | ❌ 只汇总进"负债 +40,000" | ✅ 精确到单 |
+| 这笔欠款单独还欠多少 | ❌ 只汇总进“负债 +40,000” | ✅ 在付款分配与认可贷项完整时可精确到单；企业总 AP 还需完整期初和全体交易 |
 
 **收尾一句**：这正是 M04 说的"传统复式记账把业务压缩成金额，REA 保留业务本身"的具体体现。
 
@@ -3501,7 +4177,7 @@ Sale "1..*" —— Duality —— "1..1" Cash Receipt
 | §2.14.5 收入循环经济减量冲销事件 | p.56 | 文字 | — |
 | §2.14.5 销售退回事件（定义） | p.57 | 文字 | — |
 
-> 「课堂覆盖」列整列为 `—`：**本讲无转录**（本课六周只有 W01 录了音），无法判断教授实际讲了哪些页、跳过了哪些页。
+> 「课堂覆盖」列整列为 `—`：**M05 本讲无转录**，因此无法判断教授实际讲了哪些页、跳过了哪些页。课程整体状态另计：M02–M04 已融合已有转录，不能概括为“本课六周只有 W01 录了音”。
 
 **页面统计**
 
@@ -3662,7 +4338,7 @@ REA 由 **William E. McCarthy** 于 **1982 年**在 *The Accounting Review* 上�
 
 **③ 在手订单（Backlog）** 🔗
 
-§2.10.2 提到"未履行义务须按数量与取消政策算；部分有 Fulfillment 的订单也可能有在手余量"。在真实的上市公司财报里，backlog 是一个**在附注或 MD&A 里披露、但不在四张报表里**的指标（因为它不满足收入确认原则，见 [[M01-会计与商业#2.6.3 四大原则（讲义 p.32–33 + `Accounting principles.docx`）|M01 §2.6.3]]）。
+§2.10.2 提到"未履行义务须按数量与取消政策算；部分有 Fulfillment 的订单也可能有在手余量"。在真实的上市公司财报里，backlog 是一个**在附注或 MD&A 里披露、但不在四张报表里**的指标（因为它不满足收入确认原则，见 [[M01-会计与商业#2.6.3 四大原则（讲义 p.32–33 + Accounting principles.docx）|M01 §2.6.3]]）。
 
 **为什么这条有用**：它是"REA 能记而复式记账记不了"的**最有商业说服力的例子**，比"记录销售员姓名"更有分量。做 M04 主线 A 的论述题时可以用。
 （🔗 财务分析常识，非本课材料，2026-09-09）
@@ -3675,9 +4351,9 @@ REA 由 **William E. McCarthy** 于 **1982 年**在 *The Accounting Review* 上�
 |---|---|
 | `1..1` — `0..*` / `1..*` | **外键**：把"1"那一端的主键放进"多"那一端的表 |
 | `0..*` — `0..*`（多对多） | **一张独立的连接表**，主键是两端主键的组合，关联属性作为普通字段 |
-| `1..1` — `1..1` | 可以合并成一张表，或任选一端放外键 |
+| `1..1` — `1..1` | 按本课“每类一表”转换法保留两表，并在一端放带唯一约束的外键；合并表是额外设计变体，需另说明适用条件 |
 
-RSWS 的 9 条关联里，**4 条是多对多**（Stockflow1、Stockflow2、Duality，以及广义上 Participation 都是 `1..1—0..*` 属于一对多）——准确地说：`Stockflow1`、`Stockflow2`、`Duality` 三条是 `0..*—0..*`，**将来会各变成一张独立的表**；其余 6 条是一对多，变成外键。
+RSWS 的 9 条关联里，**3 条是多对多**：`Stockflow1`、`Stockflow2`、`Duality` 都是 `0..*—0..*`，将来各变成一张独立连接表；其余 **6 条**是 `1..1—0..*` 或 `0..1—0..*` 的一对多关系，按本课方法在“多”端保存外键。Participation 不属于第 4 条多对多。
 
 **这也解释了为什么关联属性只出现在这三条上**（§2.9.4）。
 
@@ -3687,10 +4363,10 @@ RSWS 的 9 条关联里，**4 条是多对多**（Stockflow1、Stockflow2、Dual
 
 | 项 | 说明 |
 |---|---|
-| **[[M03-年报分析]] / [[M04-REA会计模型]] 的实际文件名与锚点** | ⚠️ W3、W4 的笔记由另外两位 agent 同时产出，**本笔记写作时尚未落盘**。§1.1、§2.9.5、§2.16 等处的双链是**占位**，须在 M03/M04 产出后核对并改成真实文件名与小节锚点 |
-| **M04 是否已展开"资源/事件/参与者"与"duality"** | 本笔记按"M04 只给了概念直觉、W5 p.2–4 才给出完整定义"来处理（依据：W4 讲义 p.17–19 只有一页 REA 三要素图和两页 duality 说明，没有 Resource Type / Stockflow / Participation / Custody / Assignment / Responsibility 的定义）。若 M04 笔记已完整展开这些，本笔记 §2.1–§2.3 应改为"回指 + 一句话唤醒"，并同步修改 [[AC6761_Artificial_Intelligence_Accounting/_meta/知识层级台账\|知识层级台账]] 的首现列 |
+| **M03 / M04 衔接状态** | `[[M03-年报分析]]` 与 `[[M04-REA会计模型]]` 已存在，本篇相关文件链接不再是占位；正式发布时只需按全库链接检查核对具体标题锚点 |
+| **M04 内容边界** | M04 已作为前置笔记存在；本篇仍以 W5 p.2–4 的完整定义为当前展开依据。是否调整台账首现属于正式发布者的跨文件任务，本轮不改共享台账 |
 | **多重度的读法** | 本笔记采用"**看对面**"（标在类 X 旁的数字描述"另一端一个实例连着几个 X"），依据是 **W4 讲义 p.31** 的原话 *"Minimum participation of employee = 0 (**put next to dept**)"* 与 **p.32 Exercise 1** 的答案 *"No – 1 min **next to CR**"*，并用 W5 p.19 叙述 2 与 p.20 图交叉验证通过。**若 M04 笔记采用了相反的读法，两篇必须统一**——以 W4 p.31/p.32 原文为准 |
-| **RSWS 的完整业务叙述** | 讲义只给了 4 句（p.19），不足以从零建出整个模型（比如没说"为什么要建 Overhead 这个资源类型"）。**课上教授很可能口头补了完整案例**，转录到手后回填 |
+| **RSWS 的完整业务叙述** | 讲义只给了 4 句（p.19），不足以从零建出整个模型（比如没说"为什么要建 Overhead 这个资源类型"）。**是否有课堂口头补充无法从现有材料确认**；M05 转录到位后再按来源回填 |
 | **期中考会不会要求手画 UML 类图** | 闭卷手写画图是很重的题型。讲义无从判断，**必须从转录或课上确认** |
 | **Reservation2 在采购循环里预留现金账户的业务解释** | p.38 图上确实连了 `Purchase Order ↔ Cash Account`，但讲义没有任何文字解释为什么订单要预留现金。本笔记给的是"资金计划"的推断解释（💡 笔记补充），**待课堂确认** |
 

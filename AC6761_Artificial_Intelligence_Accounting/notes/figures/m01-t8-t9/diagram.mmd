@@ -1,0 +1,10 @@
+sequenceDiagram
+ participant U as 客户
+ participant F as FastForward业务
+ participant A as 会计状态
+ F->>U: T8 咨询1600与设施租用300已交付
+ F->>A: 应收加1900 收入加1900 现金不变
+ Note over A: Cash4000 AR1900 A41500 E34400
+ U->>F: T9 支付已欠1900
+ F->>A: Cash加1900 AR减1900 收入不变
+ Note over A: Cash5900 AR0 A41500 E34400

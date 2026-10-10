@@ -1,0 +1,107 @@
+{
+  "boxes": [
+    {
+      "data": [
+        63.0,
+        64.0,
+        64.0,
+        70.0,
+        72.0,
+        76.0,
+        77.0,
+        81.0,
+        81.0
+      ],
+      "quartile_method": "exclude median, median of lower/upper half",
+      "Q1": 64.0,
+      "median": 72.0,
+      "Q3": 79.0,
+      "IQR": 15.0,
+      "fences": [
+        41.5,
+        101.5
+      ],
+      "Tukey_whiskers": [
+        63.0,
+        81.0
+      ],
+      "linear_p10_p90": [
+        63.8,
+        81.0
+      ],
+      "Tukey_outliers": []
+    },
+    {
+      "data": [
+        63.0,
+        64.0,
+        64.0,
+        70.0,
+        72.0,
+        76.0,
+        77.0,
+        81.0,
+        181.0
+      ],
+      "quartile_method": "exclude median, median of lower/upper half",
+      "Q1": 64.0,
+      "median": 72.0,
+      "Q3": 79.0,
+      "IQR": 15.0,
+      "fences": [
+        41.5,
+        101.5
+      ],
+      "Tukey_whiskers": [
+        63.0,
+        81.0
+      ],
+      "linear_p10_p90": [
+        63.8,
+        101.00000000000001
+      ],
+      "Tukey_outliers": [
+        181.0
+      ]
+    }
+  ],
+  "covariance": {
+    "source": "M03 §2.11 existing invented four-school example, not the 49-school source",
+    "graduation_percent": [
+      80.0,
+      90.0,
+      70.0,
+      100.0
+    ],
+    "SAT": [
+      1200.0,
+      1300.0,
+      1100.0,
+      1350.0
+    ],
+    "mean_x": 85.0,
+    "mean_y": 1237.5,
+    "paired_products": [
+      187.5,
+      312.5,
+      2062.5,
+      1687.5
+    ],
+    "covariance": 1416.6666666666665,
+    "correlation": 0.9897782665572893,
+    "covariance_after_x_div100": 14.166666666666666
+  },
+  "directed_correction": {
+    "source": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\course_files_export\\Airbnb.csv",
+    "source_sha256": "429141448fed5ee5692550a040ee9ba13c43e7aafac680d5b1346fa1d094395b",
+    "purpose": "定向核原句均价比四分之三房源贵，与Q3约180矛盾；非全实验重跑",
+    "N": 68133,
+    "price_mean": 158.5465046303707,
+    "Q75": 180.00000001976213,
+    "strict_below_mean_count": 46950,
+    "strict_below_mean_fraction": 0.6890933908678614,
+    "old_claim": "158美元比四分之三的房源都贵",
+    "finding": "mean<Q75且低于均价的观察比例不是75%，旧句不成立"
+  },
+  "visual_review": "pending"
+}

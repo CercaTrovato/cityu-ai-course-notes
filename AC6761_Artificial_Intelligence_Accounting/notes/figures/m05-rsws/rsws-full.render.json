@@ -1,0 +1,119 @@
+{
+  "schema": "cityu-concept-graph-v1",
+  "title": "RSWS core acquisition model",
+  "implementation": "@viz-js/viz",
+  "implementation_version": "3.31.0",
+  "graphviz_version": "16.1.0",
+  "source_sha256": "09f91b3461e1afc4a3433cbeaba81c0dcc00b58ee0a0bc1ad4fa1ee877bdee27",
+  "nodes": 9,
+  "associations": 9,
+  "multiplicity_endpoints": 18,
+  "node_attributes": 30,
+  "association_attributes": 4,
+  "overview": false,
+  "shown_node_attributes": 30,
+  "warnings": [],
+  "endpoint_mapping": [
+    {
+      "edge_id": "sf1",
+      "a": "InventoryType",
+      "a_multiplicity": "0..*",
+      "b": "Purchase",
+      "b_multiplicity": "0..*",
+      "draw_tail": "InventoryType",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "Purchase",
+      "draw_head_multiplicity": "0..*"
+    },
+    {
+      "edge_id": "sf2",
+      "a": "Overhead",
+      "a_multiplicity": "0..*",
+      "b": "Purchase",
+      "b_multiplicity": "0..*",
+      "draw_tail": "Overhead",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "Purchase",
+      "draw_head_multiplicity": "0..*"
+    },
+    {
+      "edge_id": "sf3",
+      "a": "Cash",
+      "a_multiplicity": "1..1",
+      "b": "CashDisbursement",
+      "b_multiplicity": "0..*",
+      "draw_tail": "Cash",
+      "draw_tail_multiplicity": "1..1",
+      "draw_head": "CashDisbursement",
+      "draw_head_multiplicity": "0..*"
+    },
+    {
+      "edge_id": "duality",
+      "a": "Purchase",
+      "a_multiplicity": "0..*",
+      "b": "CashDisbursement",
+      "b_multiplicity": "0..*",
+      "draw_tail": "Purchase",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "CashDisbursement",
+      "draw_head_multiplicity": "0..*"
+    },
+    {
+      "edge_id": "p1",
+      "a": "PurchaseAgent",
+      "a_multiplicity": "1..1",
+      "b": "Purchase",
+      "b_multiplicity": "0..*",
+      "draw_tail": "Purchase",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "PurchaseAgent",
+      "draw_head_multiplicity": "1..1"
+    },
+    {
+      "edge_id": "p2",
+      "a": "Supplier",
+      "a_multiplicity": "1..1",
+      "b": "Purchase",
+      "b_multiplicity": "0..*",
+      "draw_tail": "Purchase",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "Supplier",
+      "draw_head_multiplicity": "1..1"
+    },
+    {
+      "edge_id": "p3",
+      "a": "Supplier",
+      "a_multiplicity": "0..1",
+      "b": "CashDisbursement",
+      "b_multiplicity": "0..*",
+      "draw_tail": "CashDisbursement",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "Supplier",
+      "draw_head_multiplicity": "0..1"
+    },
+    {
+      "edge_id": "p4",
+      "a": "APClerk",
+      "a_multiplicity": "1..1",
+      "b": "CashDisbursement",
+      "b_multiplicity": "0..*",
+      "draw_tail": "CashDisbursement",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "APClerk",
+      "draw_head_multiplicity": "1..1"
+    },
+    {
+      "edge_id": "p5",
+      "a": "Manager",
+      "a_multiplicity": "1..1",
+      "b": "CashDisbursement",
+      "b_multiplicity": "0..*",
+      "draw_tail": "CashDisbursement",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "Manager",
+      "draw_head_multiplicity": "1..1"
+    }
+  ],
+  "semantic_review": "required: source contract validation does not verify business facts",
+  "visual_review": "required: actual rendered labels and connections must be checked"
+}

@@ -1,0 +1,508 @@
+{
+  "class": 5,
+  "topic": "Interpretable Machine Learning and Portfolio Decisions",
+  "files": [
+    {
+      "file": "model_portfolio_summary.csv",
+      "description": "Return, risk, drawdown, Sharpe ratio, and turnover statistics.",
+      "role": "reference",
+      "bytes": 496,
+      "sha256": "54844059388551be5f9c5e2a6479359a8c07602b67bddce3515209b99d7396c4",
+      "rows": 3,
+      "columns": [
+        "strategy",
+        "compound_annual_return",
+        "annualized_mean_excess",
+        "annualized_volatility",
+        "sharpe",
+        "maximum_drawdown",
+        "mean_turnover"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "model_portfolios_monthly.csv",
+      "description": "Monthly forecasts, positions, total returns, and excess returns.",
+      "role": "input",
+      "bytes": 25575,
+      "sha256": "2cf1073a29e2d73ed1021c802c6a71b7d2190ca6ec979608661c03e129a38ee7",
+      "rows": 60,
+      "columns": [
+        "forecast_month",
+        "market",
+        "actual",
+        "MA(12)",
+        "OLS",
+        "Ridge",
+        "LASSO",
+        "Elastic Net",
+        "actual_nonlinear",
+        "Gradient boosting",
+        "market_total_return_log",
+        "risk_free_return_log",
+        "market_total_return",
+        "risk_free_return",
+        "market_excess_return_simple",
+        "volatility_12",
+        "Buy and hold weight",
+        "Buy and hold portfolio excess return",
+        "Buy and hold portfolio return",
+        "LASSO weight",
+        "LASSO portfolio excess return",
+        "LASSO portfolio return",
+        "Gradient boosting weight",
+        "Gradient boosting portfolio excess return",
+        "Gradient boosting portfolio return"
+      ],
+      "date_range": {
+        "field": "forecast_month",
+        "start": "2021-07-31",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "stock_drop_zero_importance.csv",
+      "description": "Drop-to-zero characteristic importance for the stock model.",
+      "role": "reference",
+      "bytes": 1024,
+      "sha256": "e0de7996b817197b4e8695a17e2b2cd5e4646f8a057aa9a0124ed9db2ec0f51a",
+      "rows": 30,
+      "columns": [
+        "characteristic",
+        "delta_r2"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "three_market_capm_regressions.csv",
+      "description": "CAPM alpha and beta for the three market-timing examples.",
+      "role": "reference",
+      "bytes": 408,
+      "sha256": "eb2374370f19b8b2f31a6a7e6b1a5bb4440d3522a3c267e42016d138144f7876",
+      "rows": 3,
+      "columns": [
+        "market",
+        "local_market_proxy",
+        "alpha_monthly",
+        "alpha_annual_pct",
+        "alpha_t",
+        "beta_market",
+        "t_market",
+        "r_squared",
+        "months"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "three_market_capm_returns_monthly.csv",
+      "description": "Monthly total and excess returns used in the CAPM regressions.",
+      "role": "input",
+      "bytes": 23914,
+      "sha256": "1ccd38dd4201ab2434a12afb5a97ca4a4e355f1e00089eecd983c585e236e909",
+      "rows": 180,
+      "columns": [
+        "forecast_month",
+        "market_total_return",
+        "risk_free_return",
+        "market_excess_return",
+        "forecast",
+        "weight",
+        "timing_excess_return",
+        "timing_total_return",
+        "market",
+        "local_market_proxy"
+      ],
+      "date_range": {
+        "field": "forecast_month",
+        "start": "2021-07-31",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "hsi_large_constituent_capm.csv",
+      "description": "Weekly CAPM evidence for selected large HSI constituents.",
+      "role": "reference",
+      "bytes": 495,
+      "sha256": "7b1ec4f4886c3494847db2adfe052e4de78fea3a02a329aaed590b4dccb33962",
+      "rows": 5,
+      "columns": [
+        "ticker",
+        "company",
+        "august_2026_hsi_weight_pct",
+        "mean_return_annual_pct",
+        "alpha_annual_pct",
+        "alpha_t_nw4",
+        "beta_hsi",
+        "r_squared_pct",
+        "weeks"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "capm_market_data_monthly.csv",
+      "description": "Matched market total returns, risk-free returns, and excess returns for CAPM.",
+      "role": "input",
+      "bytes": 15694,
+      "sha256": "4013fa5ce4cc8602ab5a153a46c0fc76984866072bf2d291587db86fef33f45b",
+      "rows": 180,
+      "columns": [
+        "forecast_month",
+        "market_total_return",
+        "risk_free_return",
+        "market_excess_return",
+        "market",
+        "local_market_proxy"
+      ],
+      "date_range": {
+        "field": "forecast_month",
+        "start": "2021-07-31",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "three_market_timing_scorecard.csv",
+      "description": "Three-market OLS timing results calculated with simple portfolio returns.",
+      "role": "reference",
+      "bytes": 984,
+      "sha256": "15678eed8354a3c9a829afb6d8a4861b29db5b245c3b2f9d3ad50a9771bb3df5",
+      "rows": 3,
+      "columns": [
+        "market",
+        "buy_hold_ann_return",
+        "timing_ann_return",
+        "buy_hold_ann_volatility",
+        "timing_ann_volatility",
+        "buy_hold_sharpe",
+        "timing_sharpe",
+        "timing_market_exposure",
+        "buy_hold_terminal_wealth",
+        "timing_terminal_wealth",
+        "months_in_market",
+        "months_in_cash",
+        "in_market_mean_return",
+        "in_cash_mean_return"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "hsi_top5_weights_2026_08.csv",
+      "description": "August 2026 index weights identifying the five CAPM examples.",
+      "role": "input",
+      "bytes": 602,
+      "sha256": "06e8ec2cf86d225fea9741245cbf208cd60850ebd73e76fd84f9c27521fee23c",
+      "rows": 5,
+      "columns": [
+        "ticker",
+        "company",
+        "hsi_weight_pct",
+        "weight_date",
+        "source_url"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "weekly_momentum_sort_returns.csv",
+      "description": "Realized total returns for the course's weekly momentum-sorted portfolios.",
+      "role": "input",
+      "bytes": 17461,
+      "sha256": "8c1942b0e8e18594b770733f6f689d3c3a5fa6d49a7c25df6e21d422a8418b2a",
+      "rows": 156,
+      "columns": [
+        "forecast_week",
+        "universe",
+        "Low",
+        "Middle",
+        "High",
+        "High-Low"
+      ],
+      "date_range": {
+        "field": "forecast_week",
+        "start": "2023-07-07",
+        "end": "2026-06-26"
+      }
+    },
+    {
+      "file": "stock_linear_coefficients.csv",
+      "description": "Fitted standardized stock coefficients for the interpretation examples.",
+      "role": "reference",
+      "bytes": 9833,
+      "sha256": "e8b1738a6c90e16a63c021e1d02486e536b95195e0c982c70f1c098c2ecd0b94",
+      "rows": 180,
+      "columns": [
+        "universe",
+        "model",
+        "feature",
+        "standardized_coefficient"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "stock_linear_test_predictions.csv",
+      "description": "Stock-week forecasts and realized returns for comparing the six linear-model portfolio sorts.",
+      "role": "input",
+      "bytes": 1127308,
+      "sha256": "8023143bee31a6471b4010c83442e1bde6c5922183502dc47a6a73bfbc40311e",
+      "rows": 4108,
+      "columns": [
+        "forecast_week",
+        "universe",
+        "ticker",
+        "stock_return",
+        "market_return",
+        "risk_free_yield_pct",
+        "risk_free_return",
+        "actual",
+        "Zero",
+        "OLS",
+        "Ridge",
+        "LASSO",
+        "Elastic Net",
+        "PCR",
+        "PLS",
+        "predicted_excess_return",
+        "forecast_quintile"
+      ],
+      "date_range": {
+        "field": "forecast_week",
+        "start": "2025-07-04",
+        "end": "2026-06-26"
+      }
+    },
+    {
+      "file": "stock_linear_forecast_spreads.csv",
+      "description": "Summary of the six linear-model sorts shown in Class 5, including the models with constant forecasts.",
+      "role": "reference",
+      "bytes": 890,
+      "sha256": "f2fa2fd597a710cc2bf83c81ecabeefa93df8dc766b0582ed70565dd537db8a8",
+      "rows": 6,
+      "columns": [
+        "universe",
+        "model",
+        "sortable",
+        "weeks",
+        "mean_weekly_spread",
+        "t_statistic",
+        "annualized_sharpe",
+        "hit_rate",
+        "first_half_mean",
+        "second_half_mean",
+        "note"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "stock_linear_model_summary.csv",
+      "description": "Selected linear settings and stock-model test evidence.",
+      "role": "reference",
+      "bytes": 821,
+      "sha256": "f9866f7a9da92290d51f69d67f86e7caa329f95982cea589577a0dfb1d284e56",
+      "rows": 7,
+      "columns": [
+        "universe",
+        "model",
+        "validation_mse",
+        "alpha",
+        "l1_ratio",
+        "test_mse",
+        "oos_r2",
+        "forecast_correlation",
+        "nonzero_coefficients"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "stock_nonlinear_model_summary.csv",
+      "description": "Selected nonlinear settings and stock-model test evidence.",
+      "role": "reference",
+      "bytes": 637,
+      "sha256": "66347039f3e6501cea0ea73d22cd4d474989bb29e502f156513bbab3d67e7458",
+      "rows": 5,
+      "columns": [
+        "universe",
+        "model",
+        "validation_mse",
+        "max_depth",
+        "min_samples_leaf",
+        "learning_rate",
+        "test_mse",
+        "oos_r2",
+        "forecast_correlation"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "market_excess_return_panel.csv",
+      "description": "Three-market monthly excess-return forecasting panel.",
+      "role": "input",
+      "bytes": 131343,
+      "sha256": "5ef790cdcad70111e3145566acc5851d587d75c4e3c8569a88b26c6d3b80b2a8",
+      "rows": 714,
+      "columns": [
+        "forecast_month",
+        "market",
+        "market_label",
+        "split",
+        "market_total_return",
+        "risk_free_yield_lag1_pct",
+        "risk_free_return",
+        "market_excess_return",
+        "benchmark_ma12_excess_return",
+        "term_spread_lag1",
+        "fed_funds_lag1",
+        "unemployment_lag2",
+        "inflation_lag2"
+      ],
+      "date_range": {
+        "field": "forecast_month",
+        "start": "2006-09-30",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "hsi_stock_excess_return_panel.csv",
+      "description": "HSI stock-week panel with 30 characteristics and excess returns.",
+      "role": "input",
+      "bytes": 16410163,
+      "sha256": "91dd515feed25d87a0b6745b691b5c83d66e9d0b21b596bb3d33e24c6edd6179",
+      "rows": 12480,
+      "columns": [
+        "forecast_week",
+        "split",
+        "universe",
+        "benchmark_ticker",
+        "ticker",
+        "company_name",
+        "sector",
+        "stock_return",
+        "market_return",
+        "risk_free_yield_pct",
+        "risk_free_return",
+        "excess_return",
+        "characteristic_date",
+        "mom5d",
+        "mom20d",
+        "mom60d",
+        "close_vs_sma20d",
+        "maxret20d",
+        "minret20d",
+        "donchian_pos20d",
+        "efficiency_ratio20d",
+        "bop_mean20d",
+        "clv_mean20d",
+        "log_dolvol20d",
+        "abn_dolvol20d",
+        "illiq20d",
+        "natr20d",
+        "rv20d",
+        "downside_rv20d",
+        "rsi20d",
+        "adx20d",
+        "mom10d",
+        "mom120d",
+        "high52w_gap",
+        "close_vs_sma60d",
+        "rv60d",
+        "rv_ratio_20_60",
+        "skew60d",
+        "illiq60d",
+        "dolvol_trend",
+        "hl_spread20d",
+        "beta_mkt60d",
+        "ivol_mkt60d",
+        "mom5d_rank",
+        "mom20d_rank",
+        "mom60d_rank",
+        "close_vs_sma20d_rank",
+        "maxret20d_rank",
+        "minret20d_rank",
+        "donchian_pos20d_rank",
+        "efficiency_ratio20d_rank",
+        "bop_mean20d_rank",
+        "clv_mean20d_rank",
+        "log_dolvol20d_rank",
+        "abn_dolvol20d_rank",
+        "illiq20d_rank",
+        "natr20d_rank",
+        "rv20d_rank",
+        "downside_rv20d_rank",
+        "rsi20d_rank",
+        "adx20d_rank",
+        "mom10d_rank",
+        "mom120d_rank",
+        "high52w_gap_rank",
+        "close_vs_sma60d_rank",
+        "rv60d_rank",
+        "rv_ratio_20_60_rank",
+        "skew60d_rank",
+        "illiq60d_rank",
+        "dolvol_trend_rank",
+        "hl_spread20d_rank",
+        "beta_mkt60d_rank",
+        "ivol_mkt60d_rank",
+        "complete_characteristics",
+        "usable_for_ml"
+      ],
+      "date_range": {
+        "field": "forecast_week",
+        "start": "2023-07-07",
+        "end": "2026-06-26"
+      }
+    },
+    {
+      "file": "technical_characteristics_dictionary.csv",
+      "description": "Definitions for the 30 technical characteristics.",
+      "role": "input",
+      "bytes": 3116,
+      "sha256": "fb6cced643a5476414aa2bcd2948189c437796d702f20d37734d7b20405b1e77",
+      "rows": 30,
+      "columns": [
+        "name",
+        "family",
+        "window_days",
+        "formula",
+        "plain_english"
+      ],
+      "date_range": null
+    },
+    {
+      "file": "risk_free_yields_monthly.csv",
+      "description": "Monthly U.S. and Chinese mainland three-month government yields.",
+      "role": "input",
+      "bytes": 5521,
+      "sha256": "fc44461476c234809533c3e6342c377954cf0707e9a57b5182880c18e6dcdcc1",
+      "rows": 241,
+      "columns": [
+        "month",
+        "us_3m_treasury_yield_pct",
+        "cn_3m_government_yield_pct"
+      ],
+      "date_range": {
+        "field": "month",
+        "start": "2006-06-30",
+        "end": "2026-06-30"
+      }
+    },
+    {
+      "file": "hsi_constituents_2023_07.csv",
+      "description": "Fixed July 2023 constituent list, company names, sectors, and membership source.",
+      "role": "input",
+      "bytes": 51397,
+      "sha256": "fa00fcbe00a85bb1a892c618f410bb6392e876f5d1ed4552bbc0d20a7d834736",
+      "rows": 80,
+      "columns": [
+        "universe",
+        "asset_id",
+        "code",
+        "ticker",
+        "company_name",
+        "sector",
+        "index_weight_pct",
+        "constituent_vintage",
+        "source_url",
+        "source_note",
+        "price_source_note"
+      ],
+      "date_range": null
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+flowchart TD
+ T[输入文本] --> TK[首次分词得到token IDs]
+ TK --> EM[按当前token序列查嵌入]
+ EM --> PE[加入当前位置的信息]
+ PE --> AT[多头注意力得到上下文向量]
+ AT --> PD[下一token概率分布]
+ PD --> DC[按温度与采样规则选一个ID]
+ DC --> STOP{EOS或长度预算结束吗}
+ STOP -->|是| END[输出序列和停止原因]
+ STOP -->|否| APP[追加已选token ID到前缀序列]
+ APP --> EM

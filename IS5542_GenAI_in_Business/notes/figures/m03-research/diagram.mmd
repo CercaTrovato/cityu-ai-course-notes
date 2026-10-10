@@ -1,0 +1,11 @@
+flowchart TD
+ U[跨市场比较供应商的问题] --> L[Lead agent 拆有界子任务]
+ L -->|调查简报| A[Search subagent 市场A]
+ L -->|调查简报| B[Search subagent 市场B]
+ A -->|带来源的发现| S[Lead 综合证据]
+ B -->|带来源的发现| S
+ S --> D{关键问题证据齐全吗}
+ D -->|否 补查简报| L
+ D -->|是| C[Citations subagent 核引用支持]
+ C -->|核对发现交主agent| R[带引用报告 待人审来源覆盖]
+ M[Memory] <-->|保存及重读研究状态| L

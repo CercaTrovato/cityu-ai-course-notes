@@ -11,8 +11,24 @@ note_quality.py — CityU 课程笔记质量量表（《_meta/笔记质量规范
     --strict    元素清单 E 计入 PASS/FAIL（默认：frontmatter 有 `quality_spec:` 字段时自动 strict）
     --legacy    强制 legacy 模式（E 只报 WARN）
     --sections  打印逐小节明细表（默认只打印不达标小节）
+    --readability         打印 R 可读性层的全部 ✗ 与 △（默认只列前 12 条 ✗ 与分项计数）
+    --readability-strict  R 层 ✗ 计入 FAIL（frontmatter 的 readability_rules 为 v1 / v2 时也启用）
 
 退出码：0 = PASS，1 = FAIL，2 = 文件/参数错误。
+
+R 可读性层（2026-10-08，规则与阈值见《_meta/可读性总规则.md》；存量笔记只报告，不改变 L/G/E 判定）
+  阅读单元：汉字 / 可见标点各 1；连续英文单词或数字串 1；行内公式、行内代码各 2；Markdown 标记不计
+  R1 句子：单句 >120 ✗、>80 △；全篇 p90 >60 或 >80 长句占比 >3% ✗；一句 ≥2 分号 △；括号插入 >30 △；一段否定澄清 ≥4 ✗ / 3 △
+  R2 段落：>200 单元或 ≥7 句 ✗，>150 或 6 句 △；列表项 >150 ✗ / >80 △；段内 ①②③ ≥3 ✗；段内加粗 ≥4 △
+  R3 版面：无标题/标签/表/公式隔断的连续正文 >800 ✗ / >500 △；##### 及以下标题 ✗；表格紧贴上一行文字 ✗
+  R4 表格：列 ≥9 ✗ / 7–8 △；单元格 >80 ✗ / >40 △；单元格 ≥3 句 ✗ / 2 句 △；§2 表格前无引导文字 ✗；一行 >200 △（页码映射区只报 △）
+  R5 公式代码：一段 ≥6 个不同行内公式 ✗ / 4–5 △；一个 $$ 块多个等式 △；行内公式 >60 字符 △；代码块 >30 行 △；“.5” 式小数 ✗
+  R6 术语：一段 ≥3 处括号英文注释 △        R7 分层：主线出现 6 位以上小数 / 绝对路径 / 哈希 / ≥3 时间戳 △；段内长英文原话 △
+  R8 场景：§2 的 ###/#### 标题缺 p.页码 △；小节首段 ≥4 句 △
+  范围：§0–§7 与 T 笔记主体；「页码映射」区只查表格（降为 △）；「延伸与勘误」区与标题含复算/来源/核验的 <details> 只查渲染（R3c）
+  豁免：块前一行写 <!-- 可读性豁免: 理由 -->，该块不检查但计入「豁免块」数；超过 5 块报 ✗
+  v2（2026-10-09）：R4f/g、R6b/c/d、R8c 是启发式疑点，只报 △，须人工核对。
+  识别到定义词、冒号或格式，只代表找到解释线索，不代表解释正确完整。
 
 判定分三层（详见《笔记质量规范》§3）：
   L  合规检查（原 notecheck.py 七项，逐条列出问题；有问题时退出码 1）
@@ -44,7 +60,7 @@ note_quality.py — CityU 课程笔记质量量表（《_meta/笔记质量规范
   先修概念唤醒        = PREREQ 词典（统计 101 / 线代 / 微积分）里的词在 §2 首次出现处：25 字内有括号、或同行有 [[回指]] / §x 指向、或该词在 §1.1 表 / §5 术语卡里
   需补字数（估算）     = max(0, 250 × 该小节覆盖页数 − 该小节 cjk)，只用于返工清单排序
 """
-import re, io, sys, os, json, collections, argparse
+import re, io, sys, os, json, collections, argparse, glob
 
 SPEC_DATE = '2026-09-16'
 
@@ -475,6 +491,463 @@ def term_checks(t, body, sec5):
             prereq_bad.append((name, i + 1)); break
     return unexplained, checked, prereq_bad, early
 
+# ---------------------------------------------------------------- R 可读性层（《可读性总规则》，2026-10-08）
+# 口径：阅读单元 = 1 个汉字 / 可见标点计 1；连续英文单词或数字串计 1；行内公式、行内代码各计 2；Markdown 标记不计。
+# 切句：每行单独切（列表项、段落行天然断开），行内按 。！？ 切；引用块、表格、代码、公式、标题不参与句长统计。
+R_TH = dict(sent_hard=120, sent_warn=80, sent_p90=60, long_share=0.03, para_hard=200, para_warn=150, para_sent_hard=7, para_sent_warn=6,
+            li_hard=150, li_warn=80, run_hard=800, run_warn=500, circ_hard=3, neg_hard=4, neg_warn=3, bold_warn=4,
+            cols_hard=9, cols_warn=7, cell_hard=80, cell_warn=40, cell_sent_hard=3, cell_sent_warn=2, row_warn=200,
+            math_hard=6, math_warn=4, inline_tex_warn=60, code_lines_warn=30, paren_warn=30, gloss_warn=3, first_para_sent_warn=4)
+R_CODE = collections.OrderedDict([
+    ('R1a', '单句长度'), ('R1b', '全篇句长分布'), ('R1c', '一句多个分号'), ('R1d', '括号插入语过长'), ('R1e', '否定澄清堆叠'),
+    ('R2a', '段落长度 / 句数'), ('R2b', '列表项长度'), ('R2c', '段内圈号编号'), ('R2d', '段内加粗过多'),
+    ('R3a', '连续正文块过长'), ('R3b', '标题层级过深'), ('R3c', '表格前缺空行'),
+    ('R4a', '表格列数'), ('R4b', '单元格字数'), ('R4c', '单元格句数'), ('R4d', '表格前无引导文字'), ('R4e', '表格行总长'),
+    ('R5a', '一段行内公式过多'), ('R5b', '一个公式块多个等式'), ('R5c', '行内公式过长'), ('R5d', '代码块过长'), ('R5e', '小数省略前导 0'),
+    ('R6a', '一段术语注释过密'), ('R7a', '主线混入核验细节'), ('R7b', '长原话未放引用块'),
+    ('R8a', '§2 标题缺页码'), ('R8b', '小节首段过长'), ('R0', '豁免数量超限'),
+    ('R4f', '表头说明线索待核'), ('R4g', '统计量计算判断待核'), ('R6b', '句内术语密度待核'), ('R6c', '压缩表达待核'),
+    ('R6d', '术语首用解释待核'), ('R8c', '误解解释待核'),
+])
+R_EXEMPT = re.compile(r'<!--\s*可读性豁免\s*[:：]\s*([^>]*?)\s*-->')
+R_LABEL = re.compile(r'^\s*\*\*[^*\n]{1,30}\*\*\s*[：:]?')
+R_NEG = re.compile(r'不是|不能|不代表|不等于|不意味着|并不|并非|不保证|不说明')
+R_CIRC = re.compile(r'[①②③④⑤⑥⑦⑧⑨⑩]')
+R_TS = re.compile(r'\b\d{1,2}:\d{2}(?::\d{2})?\b')
+R_ZONE_MAP = re.compile(r'^##\s+\d+\.\s*.*(映射)')
+R_ZONE_LOG = re.compile(r'^##\s+\d+\.\s*.*(延伸与勘误|勘误|复核记录|验收记录)')
+R_LOG_DETAILS = re.compile(r'复算|来源|核验|日志|验证|审查|脚本')
+
+def r_strip_md(s):
+    s = re.sub(r'\[\[([^\]|]*?)\\?\|([^\]]*)\]\]', r'\2', s)
+    s = re.sub(r'\[\[([^\]]*)\]\]', r'\1', s)
+    s = re.sub(r'\[([^\]]*)\]\([^)]*\)', r'\1', s)
+    s = s.replace('**', '').replace('__', '')
+    return re.sub(r'<[^>]+>', '', s)
+
+R_WORD = re.compile(r'[A-Za-z0-9][A-Za-z0-9_.,%\-+/]*')
+def r_units(s):
+    """阅读单元数（见上方口径）"""
+    s = r_strip_md(s)
+    n = [0]
+    def rep(m): n[0] += 1; return ' '
+    s = re.sub(r'(?<!\$)\$(?!\$)[^$\n]+\$', rep, s)
+    s = re.sub(r'`[^`\n]+`', rep, s)
+    lat = len(R_WORD.findall(s))
+    rest = R_WORD.sub('', s)
+    return len(re.findall(r'[^\s\-*#>|]', rest)) + lat + 2 * n[0]
+
+def r_sentences(text):
+    out = []
+    # Markdown 段落内的软换行不是句号，不能靠折行规避检查。
+    for line in [re.sub(r'\s*\n\s*', ' ', text)]:
+        line = re.sub(r'^\s*([-*+]|\d+[.)])\s+', '', line.strip())
+        prot = re.sub(r'\$[^$]+\$', lambda m: m.group(0).replace('。', '.').replace('？', '?').replace('！', '!'), line)
+        for s in re.split(r'(?<=[。！？])', prot):
+            if r_units(s) >= 3: out.append(s.strip())
+    return out
+
+def r_blocks(t):
+    """把笔记切成块：(kind, text, 起始行号, zone, ctx)。kind ∈ para/li/label/table/bq/code/formula/head/html；
+    zone ∈ main（§0–§7 及 T 笔记主体）/ map（页码映射）/ log（§9 延伸与勘误）；ctx = dict(mic, logdet, exempt, sec)"""
+    lines = t.split('\n')
+    m = re.match(r'---\n.*?\n---\n', t, re.S)
+    i = t[:m.end()].count('\n') if m else 0
+    out = []; zone = 'main'; sec = ''; fence = False; math = False; mic = False; logdet = 0; exempt = None; lab = ''; labno = 0
+    details_stack = []
+    cur = []; curk = None; curl = 0; curctx = None
+    def flush():
+        nonlocal cur, curk, curctx
+        if cur: out.append((curk, '\n'.join(cur), curl, zone, curctx))
+        cur = []; curk = None; curctx = None
+    while i < len(lines):
+        raw = lines[i]; s = raw.strip()
+        if fence:
+            cur.append(raw)
+            if s.startswith('```'): fence = False; flush()
+            i += 1; continue
+        if math:
+            cur.append(raw)
+            if s.count('$$') % 2 == 1: math = False; flush()
+            i += 1; continue
+        if s.startswith('```'):
+            flush(); curk = 'code'; curl = i + 1; curctx = dict(mic=mic, logdet=logdet > 0, exempt=exempt, sec=sec); exempt = None
+            cur.append(raw); fence = True; i += 1; continue
+        if s.startswith('$$'):
+            flush(); curk = 'formula'; curl = i + 1; curctx = dict(mic=mic, logdet=logdet > 0, exempt=exempt, sec=sec); exempt = None
+            cur.append(raw)
+            if s.count('$$') % 2 == 1: math = True
+            else: flush()
+            i += 1; continue
+        mm = R_EXEMPT.search(s)
+        if mm: flush(); exempt = mm.group(1) or '未写理由'; i += 1; continue
+        if not s: flush(); i += 1; continue
+        if s.startswith('#'):
+            flush()
+            if s.startswith('## '):
+                zone = 'map' if R_ZONE_MAP.match(s) else ('log' if R_ZONE_LOG.match(s) else 'main')
+            hm = re.match(r'^#+\s*(\d+(?:\.\d+)*)', s); sec = hm.group(1) if hm else sec
+            mic = False; lab = ''
+            out.append(('head', s, i + 1, zone, dict(mic=False, logdet=logdet > 0, exempt=None, sec=sec, label='')))
+            i += 1; continue
+        if re.search(r'<details\b', s):
+            flush()
+            details_stack.append(bool(logdet or (re.search(r'<summary\b', s) and R_LOG_DETAILS.search(s))))
+        if re.search(r'<summary\b', s) and details_stack and R_LOG_DETAILS.search(s):
+            details_stack[-1] = True
+        if '</details>' in s and details_stack:
+            flush()
+            details_stack.pop()
+        logdet = int(any(details_stack))
+        if s.startswith('>'): k = 'bq'
+        elif s.startswith('|'): k = 'table'
+        elif re.match(r'^([-*+]|\d+[.)])\s', s): k = 'li'
+        elif s.startswith('<'): k = 'html'
+        elif R_LABEL.match(s) and r_units(R_LABEL.sub('', s)) < 3: k = 'label'
+        else: k = 'para'
+        if k in ('para', 'label') and R_LABEL.match(s):
+            mic = '🎙️' in R_LABEL.match(s).group(0)
+            lab = re.sub(r'[*：:\s]', '', R_LABEL.match(s).group(0)); labno += 1
+        if k in ('li', 'html', 'label') or k != curk:
+            flush(); curk = k; curl = i + 1; curctx = dict(mic=mic, logdet=logdet > 0, exempt=exempt, sec=sec, label=lab, labno=labno); exempt = None
+        cur.append(s); i += 1
+    flush()
+    return out, lines
+
+def r_cells(row):
+    return [c.strip() for c in re.split(r'(?<!\\)\|', row.strip().strip('|'))]
+
+def r_cell_sentence_count(cell):
+    """R4c：句末标点终结最后一句，不额外制造一句；连续句末标点只作一个边界。"""
+    text = re.sub(r'\$[^$]*\$', '', cell).rstrip('。；！？')
+    return len(re.findall(r'[。；！？]+', text)) + (1 if r_units(cell) > 0 else 0)
+
+# ---------------------------------------------------------------- R v2：说人话与表头完整性（2026-10-08 用户截图反馈）
+# R4f 表头缺专门说明  R4g 统计量列缺计算或判断  R6b 一句术语过多  R6c 压缩表达  R6d 高风险术语在本节首用未展开  R8c 常见误解未用 ❌ 格式
+R_VAULT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+R_COURSES = ('AC6761', 'EF5560', 'IS5113', 'IS5542', 'IS6400')
+R_ACR_STOP = set('AI ML API CSV PDF HTML URL OK ID PPT PPTX CEO US USA HK UK EU QA FAQ PS NB TV PC IT UI DDL GB MB KB'.split())
+R_GENERIC_HEAD = re.compile(r'^(项目|内容|字段|说明|含义|是什么|例子|示例|备注|步骤|动作|页|讲义页|页码|来源|中文|English|英文|术语|首现|首现位置|读法|作用|行|行号|代码片段|代码|列|编号|序号|类型|问题|答案|结论|理由|维度|场景|情况|改法|症状|层|名称|对象|模型|学校|公司|账户|日期|时间|标记|组成部分|注|原文|翻译|本例取值|本节取值|单位|已知还是要算|何时已知|读作|判断|结果|数值|脚本|格|阶段|方法|做法|字段名|操作|界面|位置|人物|机构|观点|阶段|例|英文定义|考试可用的英文定义)$', re.I)
+R_METRIC_HEAD = re.compile(r'均值|平均|比例|率|价差|收益|误差|统计量|标准|权重|分数|得分|系数|重要性|贡献|回撤|换手|占|差|MSE|RMSE|MAE|R\^?2|R²|Beta|Alpha|SSE|距离|概率|余额|金额|利润|成本', re.I)
+R_STAT_HEAD = re.compile(r'^(t|p|z|F|t\(.*\)|t_\{?\\?mathrm\{?stat\}?\}?|tstat)$|统计量|p值|t值|显著|置信', re.I)   # 检验统计量：必须有计算和判断线
+R_CN_NUM = '零一二三四五六七八九十'
+R_CALC = re.compile(r'\d[\d.,%]*\s*(?:[=÷×/]|\\frac|\\div|\\times)|(?:=|÷|\\frac|\\approx|≈)\s*[{\\]?\s*[\d−\-]')
+R_JUDGE = re.compile(r'临界|阈值|判断线|大于|小于|超过|低于|高于|约 ?2|拒绝|显著|怎么判断|判断')
+R_EXPL_AFTER = re.compile(r'^[\s*”"」]{0,3}(?:[（(][^）)]*[\u4e00-\u9fff][^）)]*[）)]|[：:]|，?\s*(?:即|也就是|就是|是指|指的是|指|意思是|叫做?|称为|表示|是(?!否)))')
+R_EXPL_BEFORE = re.compile(r'(?:叫做?|称为|这叫|叫作|记作|简称|即|所谓)\s*[“"「*]*\s*$')
+
+def r_explanation_clue(plain, start, end):
+    """检测先解释后命名、括号命名等线索；不认证语义正确性。"""
+    before, after = plain[max(0, start - 100):start], plain[end:end + 100]
+    if R_EXPL_AFTER.match(after) or R_EXPL_BEFORE.search(before):
+        return True
+    if re.search(r'[（(]\s*$', before) and re.match(r'\s*[）)]', after):
+        return cjk(re.split(r'[。！？]', before)[-1]) >= 4
+    return False
+R_COMPRESS = re.compile(r'口径|层面|意义上|稳定性|有效性|一致性|可比性|稳健性|显著性结论|证据强度|时间依赖|常见近似|一定条件下|仍需检查|掩盖了?|体现了|体现出|反映了|支持.{0,6}结论|提供了?.{0,6}证据|存在.{0,4}问题|具有.{0,4}意义')
+
+def r_course_of(t, path):
+    c = frontmatter(t).get('course', '').strip()
+    if c in R_COURSES: return c
+    for part in re.split(r'[\\/]', os.path.abspath(path or '')):
+        for cc in R_COURSES:
+            if part.startswith(cc + '_'): return cc
+    return ''
+
+def r_variants(cell):
+    cell = re.sub(r'\*\*|`|\$', '', cell)
+    return [w.strip(' “”"') for w in re.split(r'\s*[/／、]\s*|[（(]|[）)]', cell) if len(w.strip(' “”"')) >= 2]
+
+def r_risk_terms(course):
+    """课程可读性细则「高风险术语」表 → [(变体列表, 人话)]"""
+    out = []
+    if not course: return out
+    for p in glob.glob(os.path.join(R_VAULT, course + '_*', '_meta', course + '可读性细则.md')):
+        with io.open(p, encoding='utf-8') as source:
+            txt = source.read()
+        m = re.search(r'\n#+ [^\n]*高风险术语[^\n]*\n(.*?)(?=\n#+ |\Z)', txt, re.S)
+        if not m: continue
+        for line in m.group(1).split('\n'):
+            if not line.startswith('|') or re.match(r'^\|[\s:|-]+\|?$', line): continue
+            cells = r_cells(line)
+            if len(cells) < 2 or cells[0] in ('术语', '词', '本课术语'): continue
+            out.append((r_variants(cells[0]), cells[1]))
+    return out
+
+def r_term_index(t, course):
+    idx = []
+    for i, (vs, gloss) in enumerate(r_risk_terms(course)):
+        for v in vs: idx.append((v, 'K%d' % i, 'risk'))
+    for j, (zh, en, first) in enumerate(terms_sec5(t)):
+        vs = r_variants(zh) + [e.strip() for e in re.split(r'\s*/\s*', re.sub(r'\(.*?\)', '', en or '')) if len(e.strip()) >= 4]
+        for v in vs: idx.append((v, 'S%d' % j, 'sec5'))
+    idx.sort(key=lambda x: -len(x[0]))
+    out = []
+    for v, cid, kind in idx:
+        pat = re.compile(r'(?<![A-Za-z])' + re.escape(v) + r'(?![A-Za-z])', re.I) if v.isascii() else re.compile(re.escape(v))
+        out.append((pat, v, cid, kind))
+    return out
+
+def r_find_terms(s, idx):
+    """一行里的术语命中 [(start, end, 原文, cid, kind)]：高风险表 / §5 术语卡 / 大写缩写，不重叠"""
+    clean = re.sub(r'\$[^$]*\$|`[^`]*`|\[\[[^\]]*\]\]|https?://\S+|p\.\s*\d+', lambda m: ' ' * len(m.group(0)), s)
+    taken = [False] * len(clean); hits = []
+    for pat, v, cid, kind in idx:
+        for m in pat.finditer(clean):
+            if any(taken[m.start():m.end()]): continue
+            for k in range(m.start(), m.end()): taken[k] = True
+            hits.append((m.start(), m.end(), m.group(0), cid, kind))
+    for m in re.finditer(r'(?<![A-Za-z0-9])[A-Z][A-Z0-9]{1,}(?![A-Za-z0-9])', clean):
+        w = m.group(0)
+        if any(taken[m.start():m.end()]) or w in R_ACR_STOP or re.match(r'^[MTWSQ]\d+$|^[A-Z]{2}\d{4}$', w): continue
+        hits.append((m.start(), m.end(), w, 'A:' + w, 'acr'))
+    hits.sort()
+    return hits
+
+def r_norm_head(h):
+    # 保留 t(alpha) 等角色，只剥离明确的单位括号。
+    h = re.sub(r'[（(](?:%|％|元|万元|秒|周|月|年)[）)]', '', h)
+    h = re.sub(r'\\mathrm\{([^}]*)\}|\\text\{([^}]*)\}', lambda m: m.group(1) or m.group(2), h)
+    return re.sub(r'[\s*$`\\{}]', '', h)
+
+R_T_TOKEN = r'\$t[\$_(]|\|t\||t ?统计量|t_\{?\\mathrm\{stat\}|(?<![A-Za-z])t\s*[=≈(]|t_\{?stat'
+def r_stat_token(core):
+    if core.lower() in ('t', 'tstat', 't_stat'): return re.compile(R_T_TOKEN)
+    if re.match(r'^t[(_]', core): return re.compile(re.escape(core) + '|' + R_T_TOKEN)
+    return re.compile(re.escape(core), re.I)
+
+def r_v2_checks(t, blocks, lines, path, tut, add, hard, warn, cut):
+    course = r_course_of(t, path)
+    idx = r_term_index(t, course)
+    heads = [(ln, x) for k, x, ln, zone, ctx in blocks if k == 'head']
+    # ---- 节单元：### 及其 #### 子节；只查 §2（T 笔记查全部主体）
+    def in_body(ctx):
+        return tut or re.match(r'^2(\.|$)', (ctx or {}).get('sec') or '') is not None
+    unit_of = {}; unit_head = collections.defaultdict(str); unit = None
+    for k, x, ln, zone, ctx in blocks:
+        if k == 'head':
+            lvl = len(x) - len(x.lstrip('#'))
+            if lvl <= 3: unit = ln
+            unit_head[unit] += ' ' + x
+        unit_of[ln] = unit
+    vocab = collections.defaultdict(set)
+    for k, x, ln, zone, ctx in blocks:
+        if k in ('li', 'para') and ctx and '本节用词' in (ctx.get('label') or ''):
+            for line in x.split('\n'):
+                head_part = re.split(r'[：:]', r_strip_md(line), 1)[0]
+                for h in r_find_terms(head_part, idx): vocab[unit_of[ln]].add(h[3])
+    seen = collections.defaultdict(set)
+    misc = collections.OrderedDict()
+    for k, x, ln, zone, ctx in blocks:
+        if zone != 'main' or not ctx or ctx.get('exempt') or ctx.get('logdet'): continue
+        lab = ctx.get('label') or ''
+        if k in ('para', 'li') and '常见误解' in lab and in_body(ctx):
+            key = (unit_of[ln], ctx.get('labno'))
+            misc.setdefault(key, [ln, False])
+            if '❌' in x: misc[key][1] = True
+        if k not in ('para', 'li'): continue
+        for line in x.split('\n'):
+            plain = r_strip_md(line)
+            # R6c 压缩表达（一句 ≥2 处）
+            for s in r_sentences(line):
+                cs = R_COMPRESS.findall(r_strip_md(s))
+                if len(cs) >= 2: add(warn, 'R6c', ln, '“%s”：%s' % ('、'.join(cs[:3]), cut(s)))
+                hs = r_find_terms(r_strip_md(s), idx)
+                n = len({h[3] for h in hs})
+                if n >= 6: add(warn, 'R6b', ln, '一句 %d 个术语，核对是否需要拆解（%s）：%s' % (n, '、'.join(dict.fromkeys(h[2] for h in hs)), cut(s)))
+                elif n >= 4: add(warn, 'R6b', ln, '一句 %d 个术语（%s）：%s' % (n, '、'.join(dict.fromkeys(h[2] for h in hs)), cut(s)))
+            # R6d 高风险术语在本节第一次出现时要展开（前文定义过不豁免）
+            if not in_body(ctx) or '本节用词' in lab: continue
+            u = unit_of[ln]
+            for st, en, w, cid, kind in r_find_terms(plain, idx):
+                if cid in seen[u]: continue
+                seen[u].add(cid)
+                if kind == 'sec5' or cid in vocab[u]: continue
+                if r_explanation_clue(plain, st, en): continue
+                nearby = r_strip_md(x)
+                if any(h[3] == cid and r_explanation_clue(nearby, h[0], h[1])
+                       for h in r_find_terms(nearby, idx)): continue
+                if kind == 'risk': add(warn, 'R6d', ln, '“%s”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒' % w)
+                else: add(warn, 'R6d', ln, '缩写“%s”首用未识别到中文说明；人工核对' % w)
+    for (u, _), (ln, ok) in misc.items():
+        if not ok: add(warn, 'R8c', ln, '未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求')
+    # ---- R4f / R4g 表头完整性：表头里的指标、符号、缩写在同一小节要有专门说明；统计量列还要有计算和判断线
+    hlines = [ln for ln, x in heads if len(x) - len(x.lstrip('#')) <= 4]
+    for k, x, ln, zone, ctx in blocks:
+        if k != 'table' or zone != 'main' or not in_body(ctx) or (ctx and (ctx.get('exempt') or ctx.get('logdet'))): continue
+        rows = [r for r in x.split('\n') if r.startswith('|')]
+        hdr = r_cells(rows[0])
+        if len(hdr) < 2 or any(re.search(r'符号|记号|表头|列名|字段|术语', h) for h in hdr): continue
+        lo = max([h for h in hlines if h < ln] or [1]); hi = min([h for h in hlines if h > ln] or [len(lines) + 1])
+        tab_end = ln + len(rows) - 1
+        eligible = set()
+        for bk, bx, bl, bz, bc in blocks:
+            if bz == 'main' and bk in ('para', 'li', 'formula', 'table') and not (bc or {}).get('logdet'):
+                eligible.update(range(bl, bl + len(bx.split('\n'))))
+        rng = [(i, lines[i - 1]) for i in range(lo + 1, hi)
+               if i in eligible and not (ln <= i <= tab_end)]
+        for col, h in enumerate(hdr, start=1):
+            core = r_norm_head(h)
+            if not core or R_GENERIC_HEAD.match(core): continue
+            needs = '$' in h or re.search(r'[A-Za-z]', core) or R_METRIC_HEAD.search(core) or r_find_terms(core, idx)
+            if not needs: continue
+            pos = re.compile(r'第\s*(?:%d|%s)\s*列' % (col, R_CN_NUM[col] if col <= 10 else 'X'))
+            def dedicated(line):
+                s0 = re.sub(r'^\s*(?:[-*+]|\d+[.)])\s+', '', line.strip())
+                nl = r_norm_head(re.sub(r'^\|', '', s0))
+                if nl.startswith(core) or nl.startswith('“' + core) or nl.startswith('「' + core): return True
+                if pos.search(line) or re.search(r'[“「]?' + re.escape(core) + r'[”」]?(?:这一?|一)?列|列[的“「]' + re.escape(core), r_norm_head(line)): return True
+                if re.search(r'[“「]' + re.escape(core) + r'[”」].{0,3}(?:是|表示|指|：|:)', r_norm_head(line)): return True
+                return any(r_norm_head(b).startswith(core) or core in [r_norm_head(p) for p in re.split(r'[/／、]', b)] for b in re.findall(r'\*\*(.+?)\*\*', line))
+            if not any(dedicated(l) for i, l in rng if l.strip()):
+                add(warn, 'R4f', ln, '表头“%s”未识别到专门说明；核对含义、算法或来源、单位和一行读法' % core)
+                continue
+            if R_STAT_HEAD.search(core):
+                tok = r_stat_token(core)
+                hit = lambda l: tok.search(l) or tok.search(r_norm_head(l))
+                has_calc = any(hit(l) and R_CALC.search(l) for i, l in rng)
+                has_judge = any(hit(l) and R_JUDGE.search(l) for i, l in rng)
+                if not (has_calc and has_judge):
+                    add(warn, 'R4g', ln, '统计量列“%s”未识别到%s；核对本列代入过程、判断规则和条件' % (core, '、'.join(n for n, ok in (('计算', has_calc), ('判断线', has_judge)) if not ok)))
+
+def readability_checks(t, tut=False, path=None):
+    blocks, lines = r_blocks(t)
+    hard = []; warn = []; exempt_n = 0; sent_all = []
+    cell_max = 0; cell_max_line = 0; cols_max = 0
+    def add(lst, code, ln, detail): lst.append((code, ln, detail))
+    def cut(s, n=36):
+        s = re.sub(r'\s+', ' ', r_strip_md(s)); return s[:n] + ('…' if len(s) > n else '')
+    run = 0; run_start = None; prev_kind = None; first_para_pending = None
+    for idx, (k, x, ln, zone, ctx) in enumerate(blocks):
+        if ctx and ctx.get('exempt'):
+            exempt_n += 1; prev_kind = k; continue
+        # ---- 版面与连续正文块
+        if k in ('head', 'label', 'table', 'code', 'formula', 'html') or (k == 'para' and R_LABEL.match(x)):
+            if run > R_TH['run_hard'] and zone == 'main': add(hard, 'R3a', run_start, '%d 单元无标题 / 标签 / 表格 / 公式隔断' % run)
+            elif run > R_TH['run_warn'] and zone == 'main': add(warn, 'R3a', run_start, '%d 单元无隔断' % run)
+            run = 0; run_start = None
+        if k == 'head':
+            lvl = len(x) - len(x.lstrip('#'))
+            if lvl >= 5: add(hard, 'R3b', ln, '%d 级标题；改为 #### 或加粗标签' % lvl)
+            if zone == 'main' and not tut and lvl in (3, 4) and re.match(r'^#+\s*2\.', x) and not re.search(r'p\.\s*\d|cell|Cell', x):
+                add(warn, 'R8a', ln, cut(x, 40))
+            first_para_pending = ln if lvl in (3, 4) and zone == 'main' else None
+            prev_kind = k; continue
+        if zone == 'log' or (ctx and ctx.get('logdet')):
+            if k == 'table' and ln >= 2 and lines[ln - 2].strip() and not lines[ln - 2].strip().startswith('|'):
+                add(hard, 'R3c', ln, '表格紧接上一行文字，Obsidian 不渲染')
+            prev_kind = k; continue
+        logdet = ctx.get('logdet') if ctx else False
+        if k in ('para', 'li', 'bq'):
+            if run_start is None: run_start = ln
+            run += r_units(x)
+        # ---- 句子与段落
+        if k in ('para', 'li') and not logdet and zone == 'main':
+            u = r_units(x); ss = r_sentences(x)
+            for s in ss:
+                su = r_units(s); sent_all.append(su)
+                if su > R_TH['sent_hard']: add(hard, 'R1a', ln, '%d 单元：%s' % (su, cut(s)))
+                elif su > R_TH['sent_warn']: add(warn, 'R1a', ln, '%d 单元：%s' % (su, cut(s)))
+                if s.count('；') >= 2: add(warn, 'R1c', ln, '%d 个分号：%s' % (s.count('；'), cut(s)))
+            for p in re.findall(r'[（(]([^（）()]*)[）)]', re.sub(r'\$[^$]*\$', '', x)):
+                if r_units(p) > R_TH['paren_warn']: add(warn, 'R1d', ln, '括号内 %d 单元：%s' % (r_units(p), cut(p)))
+            ng = len(R_NEG.findall(x))
+            if ng >= R_TH['neg_hard']: add(hard, 'R1e', ln, '一段 %d 处“不是 / 不能…”澄清' % ng)
+            elif ng >= R_TH['neg_warn']: add(warn, 'R1e', ln, '一段 %d 处否定澄清' % ng)
+            if k == 'para':
+                if u > R_TH['para_hard'] or len(ss) >= R_TH['para_sent_hard']: add(hard, 'R2a', ln, '%d 单元 / %d 句：%s' % (u, len(ss), cut(x)))
+                elif u > R_TH['para_warn'] or len(ss) >= R_TH['para_sent_warn']: add(warn, 'R2a', ln, '%d 单元 / %d 句：%s' % (u, len(ss), cut(x)))
+                if len(R_CIRC.findall(x)) >= R_TH['circ_hard']: add(hard, 'R2c', ln, '段内 %d 个圈号编号，改为编号列表' % len(R_CIRC.findall(x)))
+            else:
+                if u > R_TH['li_hard']: add(hard, 'R2b', ln, '%d 单元：%s' % (u, cut(x)))
+                elif u > R_TH['li_warn']: add(warn, 'R2b', ln, '%d 单元：%s' % (u, cut(x)))
+                if len(R_CIRC.findall(x)) >= R_TH['circ_hard']: add(hard, 'R2c', ln, '列表项内 %d 个圈号编号，拆成子列表' % len(R_CIRC.findall(x)))
+            nb = len(re.findall(r'\*\*[^*\n]+\*\*', R_LABEL.sub('', x, count=1)))
+            if nb >= R_TH['bold_warn']: add(warn, 'R2d', ln, '段内 %d 处加粗' % nb)
+            nm_ = len(set(re.findall(r'(?<!\$)\$(?!\$)([^$\n]+)\$', x)))
+            if nm_ >= R_TH['math_hard']: add(hard, 'R5a', ln, '一段 %d 个不同行内公式，改符号表或逐项列表' % nm_)
+            elif nm_ >= R_TH['math_warn']: add(warn, 'R5a', ln, '一段 %d 个不同行内公式' % nm_)
+            for f in re.findall(r'(?<!\$)\$(?!\$)([^$\n]+)\$', x):
+                if len(f) > R_TH['inline_tex_warn']: add(warn, 'R5c', ln, '行内公式 %d 字符，改独立公式：%s' % (len(f), f[:30]))
+            gl = len(re.findall(r'[（(][^（）()]*[A-Za-z]{3,}[^（）()]*[）)]', x))
+            if gl >= R_TH['gloss_warn']: add(warn, 'R6a', ln, '一段 %d 处括号英文注释（约等于 %d 个新术语）' % (gl, gl))
+            if not (ctx and ctx.get('mic')):
+                ev = []
+                if re.search(r'\d+\.\d{6,}', re.sub(r'\$[^$]*\$', '', x)) or re.search(r'\$[^$]*\d+\.\d{7,}[^$]*\$', x): ev.append('6 位以上小数')
+                if re.search(r'[A-Za-z]:\\\\|[A-Za-z]:\\[^\s]|(?<![\w/])/d/|scratchpad', x): ev.append('绝对路径')
+                if re.search(r'\b[0-9a-f]{16,}\b', x): ev.append('哈希')
+                if len(R_TS.findall(x)) >= 3: ev.append('%d 个时间戳' % len(R_TS.findall(x)))
+                if re.search(r'10\^\{?[−-]\d{2,}|\de-\d{2,}', x): ev.append('浮点级误差')
+                if re.search(r'\.(csv|py|ipynb|xlsx|json)\b', x) and re.search(r'复算|核验|保存表|\d[\d,]* 行|rank\(|qcut\(|groupby\(', x): ev.append('复算记录')
+                if ev: add(warn, 'R7a', ln, '、'.join(ev) + '；移到 §9 或折叠「复算与来源」')
+            for q in re.findall(r'\*["“]([^"”*]{20,})["”]\*', x):
+                if len(re.findall(r'[A-Za-z]+', q)) >= 25: add(warn, 'R7b', ln, '段内英文原话 %d 词，放引用块并配中文' % len(re.findall(r'[A-Za-z]+', q)))
+            if re.search(r'(?<![\w.\d])\.\d', re.sub(r'\$[^$]*\$|`[^`]*`|\[\[[^\]]*\]\]|https?://\S+', '', x)):
+                add(hard, 'R5e', ln, '“.5” 写成 “0.5”')
+            if first_para_pending and k == 'para':
+                if len(ss) >= R_TH['first_para_sent_warn']: add(warn, 'R8b', ln, '小节首段 %d 句；首段 ≤ 3 句，先给问题或结论' % len(ss))
+                first_para_pending = None
+        # ---- 表格
+        if k == 'table':
+            if ln >= 2 and lines[ln - 2].strip() and not lines[ln - 2].strip().startswith('|'):
+                add(hard, 'R3c', ln, '表格紧接上一行文字，Obsidian 不渲染')
+            rows = [r for r in x.split('\n') if r.startswith('|')]
+            hdr = r_cells(rows[0]) if rows else []
+            body = [r_cells(r) for r in rows[2:]]
+            ncol = len(hdr)
+            if zone == 'main':
+                cols_max = max(cols_max, ncol)
+                for offset, row in enumerate(rows):
+                    if offset == 1: continue
+                    for cell in r_cells(row):
+                        size = r_units(cell)
+                        if size > cell_max: cell_max, cell_max_line = size, ln + offset
+                if ncol >= R_TH['cols_hard']: add(hard, 'R4a', ln, '%d 列；拆表或转置' % ncol)
+                elif ncol >= R_TH['cols_warn']: add(warn, 'R4a', ln, '%d 列' % ncol)
+            for j, r in enumerate(body):
+                tot = 0
+                for c in r:
+                    cu = r_units(c); tot += cu
+                    ns = r_cell_sentence_count(c)
+                    tgt_h = hard if zone == 'main' else warn
+                    if cu > R_TH['cell_hard']: add(tgt_h, 'R4b', ln + 2 + j, '单元格 %d 单元：%s' % (cu, cut(c)))
+                    elif cu > R_TH['cell_warn']: add(warn, 'R4b', ln + 2 + j, '单元格 %d 单元：%s' % (cu, cut(c)))
+                    if ns >= R_TH['cell_sent_hard']: add(tgt_h, 'R4c', ln + 2 + j, '单元格 %d 句：%s' % (ns, cut(c)))
+                    elif ns >= R_TH['cell_sent_warn']: add(warn, 'R4c', ln + 2 + j, '单元格 %d 句' % ns)
+                if tot > R_TH['row_warn'] and zone == 'main': add(warn, 'R4e', ln + 2 + j, '一行合计 %d 单元' % tot)
+            if zone == 'main' and not tut and ctx and re.match(r'^2(\.|$)', ctx.get('sec') or '') and prev_kind not in ('para', 'li', 'label', 'html'):
+                add(hard, 'R4d', ln, '表格前一块是 %s；先用一段话说明一行是什么、各列回答什么' % {'table': '另一张表', 'formula': '公式', 'code': '代码', 'head': '标题', 'bq': '引用'}.get(prev_kind, prev_kind))
+        if k == 'formula' and zone == 'main':
+            body_tex = re.sub(r'\\text\{[^}]*\}', '', x)
+            if re.search(r'\\qquad|,\s*\\quad', body_tex) and body_tex.count('=') >= 2:
+                add(warn, 'R5b', ln, '一个 $$ 块放了多个等式；拆开并在中间加一句话')
+        if k == 'code' and zone == 'main':
+            n_lines = len(x.split('\n')) - 2
+            if n_lines > R_TH['code_lines_warn'] and not re.match(r'^\s*```(mermaid|dot|text)', x):
+                add(warn, 'R5d', ln, '代码块 %d 行；按功能拆块并分别说明' % n_lines)
+        prev_kind = k
+    # 最后一块也要结算，不能靠文末没有标题漏过连续正文限制。
+    if run > R_TH['run_hard'] and blocks and blocks[-1][3] == 'main':
+        add(hard, 'R3a', run_start, '%d 单元无隔断（文末）' % run)
+    elif run > R_TH['run_warn'] and blocks and blocks[-1][3] == 'main':
+        add(warn, 'R3a', run_start, '%d 单元无隔断（文末）' % run)
+    # ---- 全篇句长分布
+    stats = {}
+    if sent_all:
+        xs = sorted(sent_all)
+        p = lambda q: xs[int(round((len(xs) - 1) * q))]
+        o80 = sum(1 for v in xs if v > R_TH['sent_warn'])
+        stats = dict(sentences=len(xs), mean=round(sum(xs) / len(xs), 1), p50=p(.5), p90=p(.9), max=xs[-1],
+                     over80=o80, over120=sum(1 for v in xs if v > R_TH['sent_hard']), long_share=round(o80 / len(xs), 3))
+        if stats['p90'] > R_TH['sent_p90']: add(hard, 'R1b', 0, '句长 p90 = %d > %d' % (stats['p90'], R_TH['sent_p90']))
+        if stats['long_share'] > R_TH['long_share']: add(hard, 'R1b', 0, '>80 单元长句占 %.1f%% > %.0f%%' % (100 * stats['long_share'], 100 * R_TH['long_share']))
+    r_v2_checks(t, blocks, lines, path, tut, add, hard, warn, cut)
+    stats['exempt'] = exempt_n
+    stats.update(table_max_columns=cols_max, table_max_cell_units=cell_max,
+                 table_max_cell_line=cell_max_line, measurement_version='v2')
+    if exempt_n > 5: add(hard, 'R0', 0, '%d 个豁免块超过上限 5；人工检查是否误藏核心讲解' % exempt_n)
+    return dict(hard=hard, warn=warn, stats=stats)
+
 # ---------------------------------------------------------------- 判定
 REQ_CELLS = {
     '定义型': ['what', 'why', 'alt', 'misc', 'so'],
@@ -634,6 +1107,7 @@ def main():
     ap.add_argument('path'); ap.add_argument('--pages', type=int, default=0); ap.add_argument('--tut', action='store_true')
     ap.add_argument('--json', action='store_true'); ap.add_argument('--strict', action='store_true'); ap.add_argument('--legacy', action='store_true')
     ap.add_argument('--sections', action='store_true'); ap.add_argument('-h', '--help', action='store_true')
+    ap.add_argument('--readability', action='store_true'); ap.add_argument('--readability-strict', action='store_true')
     a = ap.parse_args()
     if a.help: print(__doc__); return 0
     fn = a.path
@@ -670,13 +1144,41 @@ def main():
         print('   ' + ' | '.join(hdr))
         for r in res['rows']:
             print('   ' + ' | '.join(str(r.get(h, '') if h != 'pages' else len(r.get('pages', []))) for h in hdr))
+    # ---- R 可读性层：frontmatter 有 readability_rules 或 --readability-strict 时计入判定（readability_spec 已被 sentence-table-v1 占用）；否则只报告
+    r_version = fm.get('readability_rules', '').split('#', 1)[0].strip().strip('\"\'')
+    if r_version and r_version not in ('v1', 'v2'):
+        print('readability_rules 版本无效:', r_version, '（允许 v1 / v2）'); return 2
+    r_strict = a.readability_strict or r_version in ('v1', 'v2')
+    R = readability_checks(t, tut, fn)
+    print('【R 可读性】 %s（规则：_meta/可读性总规则.md）' % ('计入判定' if r_strict else '只报告，不改变判定'))
+    st_ = R['stats']
+    print('   语义检查仅为 △ 疑点；PASS 不表示读者已理解。')
+    print('   表格: 最多 %d 列，最大单元格 %d 单元（行 %s）' % (
+        st_['table_max_columns'], st_['table_max_cell_units'], st_['table_max_cell_line'] or '—'))
+    if st_.get('sentences'):
+        print('   句长（阅读单元）: %d 句  均值 %s  中位 %s  p90 %s  最长 %s  >80: %d（%.1f%%）  >120: %d  豁免块: %d' % (
+            st_['sentences'], st_['mean'], st_['p50'], st_['p90'], st_['max'], st_['over80'], 100 * st_['long_share'], st_['over120'], st_['exempt']))
+    cnt_h = collections.Counter(c for c, _, _ in R['hard']); cnt_w = collections.Counter(c for c, _, _ in R['warn'])
+    print('   ✗ %d 项  △ %d 项' % (len(R['hard']), len(R['warn'])))
+    for code, name in R_CODE.items():
+        if cnt_h[code] or cnt_w[code]: print('     %-4s %-14s ✗ %-4d △ %d' % (code, name, cnt_h[code], cnt_w[code]))
+    shown = R['hard'] if a.readability else R['hard'][:12]
+    for code, ln, d in shown: print('   ✗ %s 行%s %s' % (code, ln or '—', d))
+    if not a.readability and len(R['hard']) > 12: print('   …其余 ✗ %d 项与全部 △ 用 --readability 查看' % (len(R['hard']) - 12))
+    if a.readability:
+        for code, ln, d in R['warn']: print('   △ %s 行%s %s' % (code, ln or '—', d))
+    if r_strict and R['hard'] and res['verdict'].startswith('PASS'):
+        res['verdict'] = 'FAIL（R 可读性 ✗ %d 项）' % len(R['hard'])
+    elif r_strict and R['hard']:
+        res['verdict'] += ' + R 可读性 ✗ %d 项' % len(R['hard'])
     s = res['summary']
     print('【汇总】', {k: v for k, v in s.items() if k != 'file'})
     print('【判定】', res['verdict'], '' if not probs else ' + L 合规问题 %d 条' % len(probs))
     print('=' * 100)
     if a.json:
         out = dict(file=fn, verdict=res['verdict'], legacy_problems=probs, legacy_info=info, G={k: [v[0], v[1]] for k, v in res['G'].items()},
-                   E=res['E'], summary=s, sections=[{k: v for k, v in r.items() if k != 'first_para'} for r in res['rows']])
+                   E=res['E'], summary=s, sections=[{k: v for k, v in r.items() if k != 'first_para'} for r in res['rows']],
+                   R=dict(strict=r_strict, stats=st_, hard=R['hard'], warn=R['warn']))
         print('JSON:' + json.dumps(out, ensure_ascii=False, default=str))
     return 0 if res['verdict'].startswith('PASS') and not probs else 1
 
