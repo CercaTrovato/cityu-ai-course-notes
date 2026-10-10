@@ -1,0 +1,1932 @@
+00:00 
+very senior and then he used to work in the industry as a CTO CIO role and then we have Jim 
+
+00:07 
+Jim is actually our customer engineer architect so so they will actually go through the idea 
+
+00:14 
+generation uh with us today and next week uh we have like uh added one more uh guest 
+
+00:22 
+speaker okay i won't take up too much time but like uh time passed to you 
+
+00:37 
+okay 
+
+00:49 
+Anyway, hi, good morning, I'm Michael, and thank you for your patience, and interesting, I mean, every university in Hong Kong has a different setup, and somehow my computer can connect to others as well, but CTU has a pretty secure computer, so... 
+
+01:10 
+With a secure Google laptop, it's hard to connect. 
+
+01:13 
+Anyway, my name is Michael Yong. As Andy introduced, I'm the strategic advisor of Google Cloud. 
+
+01:21 
+So, let's have some warm-up exercises first. 
+
+01:24 
+We have about 200 of you here, and raise your right hand. 
+
+01:33 
+Right hand. Interesting. Some of you look at your hand and then decide whether it's right hand or left hand. 
+
+01:44 
+And then clap your hands. Okay, wake up, man. Okay, cool. And then shout out your name. Three, two, one. Your name? 
+
+01:57 
+It's you, Igor. Sorry, I need to instruct in English, right? Okay. Okay, cool. I mean, good morning again. 
+
+02:07 
+Thanks for joining this class. And today, two, three hours, we'll focus on how to generate ideas with AI tools. 
+
+02:16 
+In the near future, you probably need to, in your job, in your future career, you need to do something to think about some new ideas. 
+
+02:23 
+So this session is about this. 
+
+02:27 
+I believe all of you have some experience with prompting, right? 
+
+02:34 
+Should be expert in that already. 
+
+02:36 
+So I will have a little game just to see how good you are with your prompting technique. 
+
+02:44 
+The major two stuff, the first one is Jobs To Be Done, JTBD. I will introduce this methodology, JTBD, such that you can identify some work opportunities. 
+
+02:58 
+And then the next one is Design Thinking. So we will use Design Thinking to think about how to define your problem statement. 
+
+03:08 
+Since the setup is not a team setup, so I may need you to do some exercise all by yourself 
+
+03:15 
+and then think about some idea all by yourself 
+
+03:19 
+And then lastly, that would be pick up some of your output to see whether you can generate a solution 
+
+03:28 
+Okay, so that's this morning's rundown 
+
+03:33 
+Okay, so improve your problems 
+
+03:39 
+That's my little game. 15 seconds. What do you see from that screen? 
+
+03:45 
+Sorry? Current support car. Wow, wow, wow. Okay. Any others? Other than that, what do you see? 
+
+03:55 
+Okay. Any others? How about color? Did you see the color? 
+
+04:03 
+Okay. Yeah, so orange, blue. In fact, right now, this weekend, we have a Formula One in Singapore, 
+
+04:10 
+and you will see that race car as well in Singapore. 
+
+04:14 
+I have the video, this morning, from Audrey. 
+
+04:21 
+Okay, but if I ask the AI to do the same thing, in five seconds, that's what AI can see. 
+
+04:29 
+That is a McLaren Formula One car, MCL36. 
+
+04:35 
+The AI not only see this, the AI can also see that the livery, that is the papaya orange color. 
+
+04:43 
+All the sponsors, Google Chrome, Android, Tesla, DeWalt, and Alteryx. That's what AI can see. 
+
+04:49 
+I'm not sure in the last 15 seconds whether you can see those. 
+
+04:53 
+And not only that, they can also see the real covers. That is Google Chrome feed. 
+
+05:03 
+So what I'm trying to tell you is, if you want to use a prompt to generate this image, you should be at least that detailed. 
+
+05:14 
+But not only the engine, the color, and the race car plan 
+
+05:21 
+Lastly, the AI can also see the settings, that is the scenes, the background 
+
+05:27 
+Whether there's a wind, or speed, or wave, everything, the sunlight 
+
+05:32 
+And just from that, you guess if it's a race in Bahrain or Saudi Arabia 
+
+05:39 
+Just by guessing, the AI can do all this in 5 seconds 
+
+05:45 
+and lastly motion and action the AI can also see this so I'm not sure in your 
+
+05:53 
+prompt whether you can cover all of this but later on we will have a mini exercise 
+
+05:59 
+so let's if I combined all these the observation by AI into one prompt that 
+
+06:07 
+simple prompt would be something like that a side profile cinematic action shot 
+
+06:16 
+And then also the background, the car features, 
+
+06:20 
+everything in that prompt. 
+
+06:22 
+It's already a simplified version of what you just saw 
+
+06:26 
+in the last few slides, that prompt. 
+
+06:28 
+And with that prompt, it will generate something. 
+
+06:33 
+This is the alternative pick. 
+
+06:35 
+With the similar prompt I just entered, 
+
+06:38 
+based on what AI observed, it will generate this. 
+
+06:42 
+as you can see it's not exactly the same even with a detailed prompt so basically the learning is even with a well-crafted prompt a very very good or detailed prompt you will not generate 100% the same answer to what you expected okay remember that point because generative AI will not provide a perfect 100% same answer to what you wanted okay so 
+
+07:11 
+The original page with AI described and then to generate this and I believe with your prompt, you would never generate something like this on the right hand side, even the AI cannot generate 100% the same, but you as the prompt engineer in the future, you need to master that skills to really describe your output in very detail. 
+
+07:41 
+In the past few years in the US, if you want to apply for a job as a prompt engineer, you won't get a job if you are a bachelor of computer science or information systems. 
+
+07:56 
+In fact, the easier way to get a job as a prompt engineer is to have a degree in linguistic, understanding languages. 
+
+08:06 
+because that's the best professional to understand what the problems are, what the questions are, and what the answers should look like. 
+
+08:14 
+So if you are in the science field, don't worry, still practice that and then improve this to instruct the AI to do things what you want. 
+
+08:25 
+So as you can see in the previous example, prompt and the context is the key for image prompt just to produce image. 
+
+08:35 
+You need to provide the subject, the action, environment, style, and composition 
+
+08:41 
+But most of us, including me and you, will provide just the subject and the environment background, but not the others 
+
+08:49 
+But to AI, you better provide all these five ingredients, such that you can have a good prompt for imaging 
+
+08:58 
+So subject, plus action, plus environment, style, and technical details 
+
+09:05 
+Most of us will just cover subject and answer. If you have tried C-Dance or some other Hakenfields or Vio or Omni, some other video models, for a casual user, we just provide the first two. But for a professional user, they will also include the scene, the camera movement, and the style and lighting. 
+
+09:33 
+and that's why some other can produce really really good video or short video drama 
+
+09:38 
+but some of some people like me I can never produce those because I'm not trained in that 
+
+09:44 
+and to me I think especially important is the camera movement when you want to zoom in zoom out 
+
+09:51 
+have a drone shot or have a over the shoulder shot all these you need to specify in your plot 
+
+10:06 
+You can use your text prompt to generate the storyboard at the bottom. 
+
+10:11 
+The storyboard and then generate the images with ImageWave AI. 
+
+10:18 
+And then use those to generate the video. 
+
+10:23 
+I'm not sure if there's a video campaign. 
+
+10:26 
+You 
+
+10:52 
+use AI to generate the storyboard, images, video. 
+
+10:58 
+background music and narrative using text-to-speech AI so everything combined together with your prompt 
+
+11:05 
+with your 
+
+11:07 
+Instruction, AI can do this 
+
+11:12 
+but in the near future your job is not about just image or video and 
+
+11:20 
+Sometimes it's about business and here the criteria or the context are quite different 
+
+11:27 
+You need to specify 
+
+11:29 
+the persona, what you want the AI to play what role and then you define the 
+
+11:35 
+audience and then get your constraints and tasks so for example I assume many of 
+
+11:43 
+you use AI to do some assignment I guess you won't lie to Andy or myself or to 
+
+11:50 
+yourself okay you do use AI to do that so likely your problem would be you are a 
+
+11:59 
+AI class student or your AI class professor, and then your audience is the professor, and then please answer this question, blah, blah, blah, blah, blah, blah, okay? 
+
+12:10 
+So just enter the information to the prompt, but exactly tell them what AI, what role he should play, and the output is targeted to who. 
+
+12:20 
+Because in AI, there's always a rule, that's what we call the mirror effect. 
+
+12:25 
+If you ask a question like a primary school student, you will get an answer like a primary school student. 
+
+12:32 
+But if you ask it like a university student, you will get a much better answer. 
+
+12:38 
+So this is a pretty simple business context prompt. 
+
+12:47 
+So again, this is a summary. I think most of you already know that, so I don't want to go into detail. 
+
+12:59 
+I want you to design a plomb with Gemini or some other tools you have. The plomb is to design a 21 inch carry-on suitcase. This is just a very simple instruction. I want you to beef up to enrich that plomb to make a good plomb that can design a 21 inch carry-on suitcase. So just use the tools you have. I will give you 
+
+13:29 
+3-5 minutes to try it out. And ideally, the tool can also generate an image because the output should be an image of a 21-inch carry-on suitcase, okay? 
+
+13:44 
+So, let's start. Let's do it in 3 minutes. I will cut it in 3 minutes. Just try it. Use your way to prompting. 
+
+13:57 
+Or if you don't have computer, check out your peer to see whether you can look it up. 
+
+14:05 
+21 
+
+14:12 
+inch carry -on suitcase. 
+
+14:29 
+Have 
+
+14:33 
+you defined the size of the wheel, number of wheel, the color, or any other? 
+
+14:43 
+Special features of your own personal carrier luggage, two more minutes, 
+
+15:16 
+the 
+
+15:22 
+web version, just 
+
+15:33 
+in case that you don't have this app or website, I'll give you one more minute, upcoming 
+
+16:02 
+mini exercise that requires some AI tools, so you better install the AI tools if not already, or use the web version, so register to get your AI platform ready, one 
+
+16:54 
+more minute, and let's... 
+
+16:56 
+Resume 
+
+16:57 
+Nice, 
+
+17:04 
+nice, nice 
+
+17:05 
+So detailed 
+
+17:07 
+Yeah, 
+
+17:28 
+the JTBD 2 .5 image is not bad 
+
+17:38 
+Okay, 
+
+17:42 
+that's it 
+
+17:44 
+I think actually some use ChatGPT, the TPT image 2.5 maybe, and then some others as well. 
+
+17:52 
+So that's a typical problem. 
+
+17:55 
+Instead of designing a 21-inch carry-on case or luggage, sometimes do this. 
+
+18:06 
+Casetify is one of our customers. 
+
+18:08 
+Anyone use Casetify case or Casetify... 
+
+18:13 
+Accessory to protect your mobile phone or your computer or your laptop. Anyway, their designers use this kind of platform to do that. 
+
+18:22 
+As you can see here, the role, I mean the persona, is you are an accessory designer. And the target is young IT professionals, in that example. 
+
+18:34 
+You can be any audience and add the details of that. 
+
+18:43 
+And in my case, I also add in one more paragraph, please suggest free ideas so that the AI can help me to complete free designs with different features. 
+
+18:55 
+And that's what, if I provide this prompt, and that's what I get with nano by nano. 
+
+19:05 
+So if you use a lot of tools, that's also fine, as long as you can try it. 
+
+19:13 
+The AI is smart enough to tell since you are a case-divide designer, the footnote will be labeled with case-divide travel. 
+
+19:23 
+So that's the design. 
+
+19:26 
+But the key is, sometimes if you don't know how to do your problem, you can use AI to help you to do your problem. 
+
+19:35 
+So instead of this, design a 21-inch camera suitcase. 
+
+19:39 
+You just tell them to please improve the problem below and then let the AI help you. 
+
+19:45 
+I think you all should already know this technique. 
+
+19:49 
+So if I ask them to improve, the AI will be smart enough to create three problems. 
+
+19:56 
+The first one is for industrial designers. 
+
+20:00 
+Second prompt is for lifestyle and third one is for some innovation or innovative minded user 
+
+20:08 
+So as you can see with AI, they can provide three different prompts for you to reference 
+
+20:14 
+So AI can do a lot of things but if you don't know how to master the AI, ask the AI to help 
+
+20:22 
+Later on in other upcoming exercise, you can ask AI to help as well 
+
+20:29 
+not only you as a designer okay 
+
+20:37 
+so basically the summary is make sure you 
+
+20:42 
+have a well-crafted plan even though that they may not 100% match what you 
+
+20:46 
+expected the context is key and then use AI to help I guess those are simple 
+
+20:53 
+stuff so any questions so far no easy enough okay now jobs to be done 
+
+21:03 
+This is one very, very famous methodology to help you to identify opportunities. 
+
+21:12 
+Opportunities means business opportunities. 
+
+21:14 
+So if you are running a company or running a department, many times you want to know what to do next, 
+
+21:20 
+how I can expand my market, how can I capture new business. 
+
+21:25 
+And that's what this methodology can help you. 
+
+21:29 
+So I will introduce that and hopefully you will learn something from this and you will do a little exercise with your computer as well. 
+
+21:39 
+This is the first part, JTBD, and then afterwards, given what you achieved in JTBD, we will go to the Design Thinking. 
+
+21:49 
+Anyone tried Design Thinking before in your other classes? 
+
+21:54 
+No? Jobs To Be Done? 
+
+22:02 
+This session will focus on Jobs To Be Done and then after this maybe we will have a short break after the Jobs To Be Done. 
+
+22:12 
+Okay, what is a job? It's not a job about after you graduate you want to find a job. 
+
+22:19 
+A job is think about as a customer or think about as a student. 
+
+22:24 
+This morning you have a couple of jobs. 
+
+22:27 
+One job is to find a transportation to travel from your home to the school. This is one job 
+
+22:35 
+Maybe you have some other job is I have a job 
+
+22:37 
+I want to have a good breakfast before going to school another job. These are the customer job, but the point is 
+
+22:48 
+Customers have different view of things and sometimes we misunderstood their requirements 
+
+22:54 
+for example 
+
+22:56 
+People will buy some tools from hardware store to do things. This is not their job. 
+
+23:04 
+Their job is to have a quarter inch hole. The 
+
+23:14 
+job or the outcome in this example is the quarter inch hole. 
+
+23:19 
+Remember that because many times we will fall in the trap that I can do this and I can do that. 
+
+23:26 
+But you are not helping the customer to get their job done. 
+
+23:32 
+This is the key. This is the most important idea you need to capture. 
+
+23:36 
+Instead of focusing on the tools, focus on what the customer wants to achieve. 
+
+23:44 
+So, a job is the outcome that the customer tries to achieve. 
+
+23:52 
+And many times, the user struggles to get a job done. 
+
+23:56 
+So, for example, if you have a job this morning to have a good breakfast, 
+
+24:03 
+I'm not sure, maybe your home will cook the breakfast for you, will you need to struggle a little bit on which fast-food shop or cha-cha-ting I should go? 
+
+24:15 
+This is what we call the struggle to get the job done. 
+
+24:19 
+And then many times you will ask the customer, or the potential customer, if you had this struggle, what would you do? 
+
+24:31 
+to finish that job. What will you do to find the alternative? What will you do to subside this struggle? 
+
+24:39 
+So basically, customers just hiring you and your product to get their job done, 
+
+24:46 
+just like the previous example. You may run a hardware store, you may selling some drill, 
+
+24:53 
+but the whole idea is they will go to your store, buy a drill to get a job done is to get a hole. 
+
+25:03 
+The idea is that instead of many people just focus in, the job is to sell that tool, the job is to open that store, that is not your job. 
+
+25:14 
+Your job is to fulfill the customer's requirement as well. 
+
+25:20 
+So I want you to remember that, that is a job statement. 
+
+25:24 
+Job statement is this, when something happens, a situation, 
+
+25:29 
+When something happens, I want to achieve something, that's the motivation, such that I can blah blah blah, the outcome, expect the outcome, so that's the job statement. 
+
+25:41 
+When situation, I want to achieve something, the motivation, so I can achieve something, expect the outcome, that's the job statement. 
+
+25:53 
+And I will ask you to prepare some job statement as well. 
+
+25:58 
+But before that, let me show you an example. Some years ago, a fast food shop, a fast food chain in America, in USA, they want to sell more breakfast in the morning. 
+
+26:14 
+They want to sell more breakfast in the morning. And then somehow they find that in North America, they drive to the company, they find that in the morning they are not buying. 
+
+26:26 
+Some other preference, they buy music as the job to have a preference. 
+
+26:34 
+So, why music? What's the job of that driver or that worker want to achieve and they buy music to achieve this? 
+
+26:47 
+What do you think? What's the driver's job in the morning? 
+
+26:52 
+We all know he or she want to have a preference, but why he or she buy music? What's the job? 
+
+27:01 
+convenience well yeah that can be convenient and then you think if convenience important why the 
+
+27:09 
+driver didn't buy other types of breakfast why music any 
+
+27:19 
+other idea have 
+
+27:23 
+a breakfast why 
+
+27:27 
+he or she buy 
+
+27:28 
+music why not hamburger why not pancake why not hot dog why 
+
+27:38 
+not croissant why not black why not 
+
+27:45 
+He likes the flavor, he'll still like the flavor, okay, yeah. Maybe some other breakfasts are just too bland, the tastes are the same. Any others? Let me give you a hint. He'll still need to finish the breakfast when driving, okay. 
+
+28:04 
+If that's the hint, he'll still need to drive when he's having his breakfast or her breakfast. What other jobs need to be done? 
+
+28:22 
+Now imagine you need to finish a croissant. 
+
+28:26 
+or cookies when you drive it what's going to happen sorry yeah and the car likely will get all these 
+
+28:40 
+scrambles and something that they can just finish it with one hand just drink 
+
+28:52 
+they gotta be fake that's the job to be done turn 
+
+28:59 
+on this fast food shop 
+
+29:00 
+define now the reasons behind the job to be done as a morning driver 
+
+29:06 
+So they try to implement this, more music in the morning 
+
+29:11 
+But then in the afternoon, with the same customer, same customer in the afternoon 
+
+29:18 
+They find that they are buying different types of music 
+
+29:23 
+Say in the late afternoon, after work 
+
+29:25 
+But why? Then they ask the question again 
+
+29:29 
+Why the same customer in the late afternoon, after work, they buy music 
+
+29:36 
+with different favour, different style than in the morning. 
+
+29:40 
+What is the Jobs To Be Done for Afternoon Milkshake? 
+
+29:53 
+US families, after work, they will go to pick up their children from schools. 
+
+30:00 
+They 
+
+30:03 
+buy milkshake for their kids, not 
+
+30:08 
+for themselves as breakfast. 
+
+30:10 
+So, same product, they have different milkshake for different jobs, and turn out in the morning. 
+
+30:21 
+The music need to be a lot thicker to fill the stomach as a breakfast. 
+
+30:26 
+In the afternoon, the music need to be a lot more sweeter with chocolate chips, marshmallow. 
+
+30:36 
+That's the best selling product. 
+
+30:38 
+And what's that fast food chain? It's McDonald's. 
+
+30:44 
+Okay, so think about it. 
+
+30:47 
+We are end consumer. 
+
+30:49 
+Every time we buy something, we have something, we have a job to be done for myself. 
+
+30:56 
+and you as the owner of a business, what you would do to help me to finish the job. 
+
+31:03 
+That's the key you ought to think about in the near future. 
+
+31:06 
+When you are serving customers, what you should design and produce and deliver, product or services. 
+
+31:16 
+So that's an example. 
+
+31:20 
+So in summary, a potential customer with your product what you sell, 
+
+31:33 
+and that's the job and your job is to make that happen their job is to have their own 
+
+31:41 
+expectation achieved so again this is the job story or job statement when something happens 
+
+31:49 
+i want to do this so i can get that okay so when i hungry in the morning i want to buy a breakfast 
+
+32:02 
+It won't dirty my car, I can do it in one hand, and this is the job story or job statement. 
+
+32:09 
+In theory, if you have 10 customers, you may have 10 job stories or job statements, or even more. 
+
+32:18 
+Because every customer will have a different way to see it. 
+
+32:24 
+So, another example, 
+
+32:30 
+if I'm filming a vlog, or taking a long exposure sunset, 
+
+32:36 
+I want to have a special mobile phone case, that is again, Casetify designer's job statement 
+
+32:43 
+I want this, I want to do this, with that, so I can capture stable, high quality content without fumbling 
+
+32:54 
+And what you are selling is a case that can mount to a certain tripod 
+
+33:00 
+This is a special mobile phone case for BlockGuard 
+
+33:07 
+But what if the customer is not a blogger or vlogger. What if the customer is only someone like you or young and energetic and want to go to parties or concerts, then your mobile phone case design will be different because when I go out to a crowded bar or a concert, I want my phone case not holding a lot of things, just my ID or credit card. 
+
+33:35 
+So I can leave my bulky wallet at home. This is another job statement. 
+
+33:41 
+And if you are a designer, you design two different types of mobile phone cases for two different types of customers. 
+
+33:50 
+Because they have different job statements. 
+
+33:52 
+And your job is to understand what they need with job statements. 
+
+33:57 
+It's not about, I want a cheap mobile phone, I want a mobile phone that's a transparent case. It's not only that. 
+
+34:03 
+In their mind, they have something else and you need to discover those ideas 
+
+34:09 
+Ok, 
+
+34:14 
+now I want you to play a little exercise or a little game 
+
+34:18 
+Imagine you are one of these 
+
+34:20 
+You are a mobile phone case designer 
+
+34:22 
+You are a suitcase designer 
+
+34:25 
+You are an airport case designer 
+
+34:27 
+Or you are a Google Pixel 11 Pro phone designer 
+
+34:32 
+And you want to design something 
+
+34:35 
+for them. So I want you to prepare a job statement. So first, pick a role of this, any role you like, and then prepare a job statement. If you are one of these roles, understand, 
+
+34:57 
+you need to prepare some job story or job statements. But you can think with this structure or you can ask AI to help. So 
+
+35:09 
+This is the little exercise. You pick a role, one of the four, and then with your tools or GenAI, try the prompt following this, and then you ask the AI to prepare a job statement, and then you let me know later on how many job statements your AI platform can provide to you. Maybe three, maybe five, maybe ten, but your job is as a role. 
+
+35:40 
+you prepare this and you have 10 minutes after 10 minutes i want you to pick the most important job 
+
+35:49 
+story from the output of AI the AI may output many but i want to pick one that you think that's most 
+
+35:58 
+important so likely the problem is like that if you haven't tried it you are a blah blah blah 
+
+36:11 
+Please prepare the format. This is a simple prompt that you can form. Just use your tools and do that and then I will count down for 10 minutes. 
+
+36:22 
+Within 10 minutes, prepare the job stories and pick the most important one. 
+
+36:28 
+And each team or individual, because we don't have a team here, the output is the most important job story and time starts now. 
+
+38:30 
+What brand is it? 
+
+38:31 
+But 
+
+38:51 
+check out those job stories generated by AI, 
+
+38:54 
+see whether it makes sense and reasonable. 
+
+38:59 
+Of course, there's so many designers, 
+
+39:01 
+they will prepare their own job statements 
+
+39:04 
+after a customer study or survey, 
+
+39:08 
+instead of asking AI to help, okay? 
+
+41:16 
+Any of these job stories you think make a lot of sense, or you haven't think about that before? 
+
+41:48 
+By 
+
+42:50 
+the time you should have all these job stories, and then you go through one by one, and then based on your role, pick the best one. 
+
+45:00 
+Okay, 
+
+45:05 
+I guess most of you have this ready. 
+
+45:09 
+Okay, 
+
+45:18 
+I have some volunteers just to tell, let me know the job story you shared. 
+
+45:30 
+Maybe, anyone, yeah? 
+
+45:42 
+I'm an airport designer. 
+
+45:46 
+So my story is when I take the subway to work every morning, I want to use lightweight and compact similar earbuds with effective noise cancellation and hi-fi sound quality so I can enjoy immersive music, reduce subway noise and stay comfortable through my commute. 
+
+46:15 
+Key design requires is a similar in-air design and effective ANC, hi-fi sound and comfort and compact size 
+
+46:28 
+Thank you, but it sounds like you are a headphone designer, not a Casetify designer, right? 
+
+46:35 
+But those are important, lightweight, compact, with ANC, active noise cancellation, right? 
+
+46:45 
+Yeah, it was important. Anyone else? Probably from this side, yeah? Okay. 
+
+47:00 
+I want to design a suction cup case like this. Actually, this is the most convenient one. 
+
+47:07 
+When I'm doing my makeup or getting ready in the bathroom where the counter is wet and has limited space, 
+
+47:16 
+I want to stick my phone to the mirror or some smooth tiles and adjust the viewing angle. 
+
+47:27 
+Community, so I can watch videos or listen to music or make videos myself without worrying about my phone taking and breaking. 
+
+47:38 
+That's a nice design. Where did you get it? Taobao? Okay, okay. 
+
+47:44 
+I'll go to Pinduoduo and see if I can find it. Okay, that's a nice one. 
+
+47:50 
+A case design. 
+
+47:59 
+So you can stick your mobile phone easily through services such as you can make video, yeah, okay, how about that side? 
+
+48:08 
+I'm 
+
+48:18 
+a travel suitcase designer 
+
+48:21 
+When an international student like me, like us, is packing bags for a cross-border flight and facing the street 23 kilograms checked baggage limit in a dorm, I want to design a checked suitcase featuring a purely mechanical... 
+
+48:43 
+Spring-based gravity balancing weighing system, which is completely lithium battery free and aviation compliant, so that I can simply lift the handle while packing to precisely monitoring the weight via the scale, completely avoiding the embarrassment of public repacking and overweight penalties at airport check-in counter. 
+
+49:15 
+Your AI is quite innovative right? But you think it's useful? 
+
+49:20 
+I thought you just want to have a suitcase with a weight built in, so you can check the weight. 
+
+49:30 
+Any other good job story you find? 
+
+49:33 
+For the students who answer questions, please send a message to the TA. 
+
+49:40 
+We will still do the participation points, but I forgot the paper. 
+
+49:46 
+As a mobile phone case designer, when a new flagship phone like iPhone 18 launches with a changed camera, bump, and button layout, I want to secure the exact CAD file early so I can begin tooling before competitors. 
+
+50:27 
+iPhone 18 for two weeks already, two phone cases, because when we are happy we buy phone cases, when we are not happy we buy phone cases, so it's all done. 
+
+50:40 
+Any others? Okay, anyone 
+
+50:47 
+design? 
+
+50:51 
+Okay, what's the design? Mobile phone case designer. 
+
+50:58 
+Once their conscious consumers want to express their personality through their tech accessories, I want to create visually striking phone case designs, feature unique colors and trendy graphics, so I can help users turn their everyday device into a fashionable personal statement. 
+
+51:28 
+In 
+
+51:34 
+Hong Kong, they sell their mobile phone case in a high price 
+
+51:44 
+So as a designer, you will design this case with different colors to match the personalities of different customers, right? 
+
+51:53 
+Yeah, of course. That's why they have their DIY mobile phone case designer on their website 
+
+52:03 
+Out of those who mentioned that job stories, anyone is crafted by yourself or is generated by AI? 
+
+52:13 
+AI, AI, AI, who did not use AI? 
+
+52:21 
+Okay, then I better give you a chance. So what's your design job statement, job stories? 
+
+52:33 
+So basically, I'm using iPhone Duo. 
+
+52:35 
+Yeah. 
+
+52:36 
+Already? 
+
+52:38 
+Oh, okay. 
+
+52:39 
+I wanna say that it's way more expensive than the regular one. 
+
+52:43 
+And also two weeks later, right? 
+
+52:44 
+Yes. 
+
+52:45 
+And I'm thinking of protection for iPhone Duo, 
+
+52:49 
+because the folding is quite weak, I would say that. 
+
+52:55 
+And so while I'm transitioning between different activities, 
+
+53:00 
+like shooting vlogs, taking pictures, 
+
+53:03 
+Productivity and using the iPhone Duo by one hand, I wish my case get protected and can seamlessly switching in different like the small one and the bigger one 
+
+53:17 
+Different hand right? 
+
+53:19 
+Yes, so I can like fully experience the function that Apple mentioned that iPhone Duo have 
+
+53:34 
+Resensitivity for both smartphones, which I think most of the phone cases don't have right now. 
+
+53:41 
+But you can try your design with a Xiaomi folding phone, except it's in size. 
+
+53:47 
+Oh, that's so cool! 
+
+53:49 
+The 
+
+54:00 
+idea is to do something, but when you implement it, many times you'll find that there are a lot of problems. 
+
+54:08 
+and you want to do it and probably in many many ways and then you will develop 
+
+54:14 
+the prototype and then you will test it and that's what design thinking all about 
+
+54:21 
+if you go to other classes a design thinking workshop will last for three 
+
+54:27 
+five days but now we have a one hour or so so I will skip 
+
+54:32 
+Some of the steps in the design thinking. So right now we are in the second step. We have identified the opportunities. Now we set out the problem statement. This is the five stages design thinking from left to right. The first step is empathize. 
+
+54:54 
+That is, most of the time for a big corporation like Coca-Cola or McDonald's, they will do a lot of market research or survey to understand what the users really want. 
+
+55:08 
+And that's what Amplify is all about. 
+
+55:13 
+And then with that stage, you will get hundreds of thousands of ideas. 
+
+55:19 
+And that's why the shape, the triangle shape is like that. 
+
+55:27 
+So just like that. Once you get these hundreds of ideas, you want to define the really important problem statement 
+
+55:36 
+and then converge, swing it down to maybe 10 problem statement you want to solve 
+
+55:42 
+because you or your company or your department won't have resources to resolve thousands of problem statement 
+
+55:50 
+You pick the most important one and then you ideate the possible solution 
+
+55:56 
+Again, if that's there, you will generate a lot of ideas to solve the problem statement 
+
+56:03 
+And that's why the shape is triangle again, but expanding triangle 
+
+56:08 
+And then lastly, you will do the prototyping and test and then roll out to the market on the right hand side 
+
+56:17 
+And that is the design thinking 
+
+56:18 
+And today, we will focus on these two, define and ideate 
+
+56:24 
+Because on the left hand side, the empathize in the previous step using JTBD, Jobs To Be Done, you already defined some opportunities or you empathize some use case already. 
+
+56:36 
+In real world, the first step empathize may take months to do market research. But now with AI, you just did in an hour. 
+
+56:48 
+So right here, there will be a couple of steps. 
+
+56:55 
+The first step is we will draft many problem statements. Again, you can use AI to help on your own and I will give you 10 minutes to do that. 
+
+57:06 
+And then given those problem statements, I need you to help to prioritize which problem statement should we go first to solve it. 
+
+57:15 
+And that will have 5 minutes and I will tell you how to draft problem statement and how to prioritize the problem statement. 
+
+57:25 
+And then again, I will pick some of you to present the problem statements you have, and sometimes you already have solutions, that's right. 
+
+57:35 
+So, first of all, problem statement. And many times in the Design Thinking workshop, we call it, how might we, HMW, how might we. 
+
+57:46 
+Previously, in the Jobs To Be Done, we have 
+
+57:49 
+When something happens, what I want to do to achieve something 
+
+57:52 
+And now the structure of problem statement is how might we 
+
+57:56 
+And the structure is like this 
+
+57:58 
+How might we, some action, that is what is the action 
+
+58:03 
+And then for who, the stakeholder, in order to make some changes 
+
+58:09 
+That's the how might we statement 
+
+58:10 
+So example here, how might we improve the design of the phone case for executive 
+
+58:20 
+Now, for someone, can be executive, can be others, she's 
+
+58:29 
+okay. 
+
+58:29 
+Student 
+
+58:43 
+life is really tough, so you better also keep your good health, right? Okay? 
+
+58:51 
+So, don't work too hard, use AI, sorry, don't use AI as a tool, but use AI as a tool for thought. 
+
+59:07 
+Don't use it as a tool to finish your assignment. Use AI to help you to think through things, to learn new things. 
+
+59:14 
+Ask 
+
+59:30 
+AI questions, something that you don't understand, but don't ask them to give you the answer straight away. 
+
+59:36 
+Ask them to guide you through how to think through the product. That's what AI should use. 
+
+59:53 
+And use AI to expand your knowledge, but not AI to shrink your effort. It's not the point. 
+
+01:00:03 
+Save time, you will learn nothing. 
+
+01:00:06 
+So this is structure, how might we, and one example here is how might we improve the design for executive. 
+
+01:00:14 
+Such that internally, we can increase the revenue. 
+
+01:00:19 
+So basically, the left hand side and the right hand side are the same. 
+
+01:00:23 
+But in order to what change, right now here is achieve what job. 
+
+01:00:28 
+And therefore, the job you pick in previous session. 
+
+01:00:33 
+Basically, you can do this. How can we improve the design of something for someone in order to achieve the job statement or the job story you just created in previous session? 
+
+01:00:48 
+So when you create a how-my-we statement in my password shop, many times you only have 10 minutes. 
+
+01:00:56 
+Within 10 minutes, you will generate a lot of how-my-we statement of certain job statement. 
+
+01:01:06 
+What you need to do is go for quantity. It means keep thinking for 10 minutes. Keep saying HMW blah blah blah blah blah, HMW blah blah blah blah. Keep generating this Harmony Statement. You don't need logic. Just keep output Harmony Statement. And then each Harmony Statement should be really short. Write headlines. Just like newspaper headline. 10 words, 15 words, 5 words and that's all you need. 
+
+01:01:35 
+You don't need to describe a whole paragraph or whole passage for your how-my-read statement. 
+
+01:01:42 
+Go for big ideas. 
+
+01:01:47 
+Just think about the great idea. 
+
+01:01:50 
+You think that if I do that, I can solve that. 
+
+01:01:53 
+How-my-read. 
+
+01:01:55 
+And don't be judgmental. 
+
+01:01:57 
+In the past, many times if you work with other team members, if you raise a new idea, the others may say, no, no, no, it's too difficult. No, no, no, it's too costly. No, no, no, we don't have time. Don't be judgmental. Just keep bumping new ideas. That's all you need to do. Just new ideas. A lot of them, based on your job statements, you just define them. 
+
+01:02:21 
+So each of you will have a lot of how might we statements after this mini exercise and again as I mentioned 
+
+01:02:29 
+You have 10 minutes 
+
+01:02:31 
+So based on this you just create how might we something 
+
+01:02:38 
+for someone 
+
+01:02:40 
+In order to achieve the job statement you just created in the past session and you have 
+
+01:02:46 
+10 minutes I pause here 
+
+01:02:50 
+anyone 
+
+01:02:51 
+Don't understand the instructions. Anyone have questions about the instructions? 
+
+01:02:55 
+The stakeholders can be the users. 
+
+01:03:03 
+Can be executive, can be international students traveling around, can be someone like a mobile phone to take video. 
+
+01:03:16 
+So your target audience. 
+
+01:03:18 
+But of course, this is a great question, because in other scenarios, you want to target internal stakeholders. 
+
+01:03:25 
+It's also possible. 
+
+01:03:26 
+Because of design thinking can be applied to internal or external. So it's up to you to decide, but to follow the previous exercise, treat it as an external customer first, but when you use it in your career or in your job, it can be anyone. 
+
+01:03:47 
+So she's okay. We went to the hospital and they could ask her. 
+
+01:04:11 
+Ask AI to help you think, prepare hardware and machine, put your job story to the AI as well. 
+
+01:04:19 
+We 
+
+01:04:39 
+bump up 20 or 30 hardware and machines. Now with AI, it can be more, it can be less. 
+
+01:06:37 
+want to run this, 
+
+01:06:39 
+Many times we just have a deck of post-it notes. We pass a deck of post-it notes to everybody and then they just write down how many we, HMW, blah, blah, blah, blah, yeah, and then finish it, have another one, keep on doing this for 10 minutes, okay, it's just like bring down what all the ideas you have, all the ideas the team have, dump it on those post-it notes, without judging, without constant cost, okay. 
+
+01:07:07 
+Has 
+
+01:07:11 
+anyone used AI already completed this, how may we statement? 
+
+01:07:14 
+And 
+
+01:07:25 
+for this time, you don't need to go through those to find the most important 
+
+01:07:28 
+because later on we have the prioritization step to help you to do that 
+
+01:07:33 
+All you need to do is just prepare as many, how may we statement as possible 
+
+01:07:38 
+How 
+
+01:09:21 
+many already have 10, gentlemen? Or more than that? 
+
+01:11:50 
+You can say, for example, define your role, and then ask the AI, please prepare how much restatement in this structure, and that structure is to solve or to achieve the job statement you have selected previously. Use AI to do that. 
+
+01:12:51 
+Okay, time's 
+
+01:14:04 
+up. 
+
+01:14:06 
+Again, how many is 
+
+01:14:11 
+not fired up? How 
+
+01:14:19 
+many have more than 10 how much restatement? 
+
+01:14:27 
+Less than 10? Okay, 
+
+01:14:31 
+then let me reframe the questions. How many think that how my restatement describes something 
+
+01:14:37 
+matches the job story that you think is correct? So 
+
+01:14:46 
+how many get 5 how my restatement? 
+
+01:14:54 
+Now, as I mentioned in the past workshop, without AI 
+
+01:15:00 
+There are dozens of hardware restatement generated by the team, but maybe because of the team, everyone will generate 10 or 15, and then when you have a team of 4, you have a 60 or 50 hardware restatement. 
+
+01:15:15 
+And if you want to run as a team, many times it's good that all the team members are from the same department, if you want to focus on solving the ping pong or problem statement of one department. 
+
+01:15:28 
+But many times you also want to have a team with a mix of different departments 
+
+01:15:32 
+such that you can really understand the problem statement from different angles 
+
+01:15:38 
+So if you have a lot of problem statement, the next step is pick the one that you really 
+
+01:15:44 
+or your company or your department really invest resources to solve 
+
+01:15:48 
+And that is the step, prioritizing 
+
+01:15:52 
+Now imagine you have a two by two matrix 
+
+01:15:57 
+If anyone of you is going to join consulting firms, they all use 2x2 or something like that, similar, so you can learn it now. 
+
+01:16:07 
+On the left-hand side, the YSS is the value to your organization. That is, if you solve that problem statement, how might we statement? 
+
+01:16:18 
+Where should you place? Whether it's up on the green color quadrant or yellow, so the higher one has higher value. 
+
+01:16:27 
+and then XSS on the bottom is the complexity of the implementation 
+
+01:16:33 
+some of the how my restatement the idea will take months or years 
+
+01:16:39 
+some will take a lot of money 
+
+01:16:41 
+so in theory the one in green color is cheap to develop and same time high value 
+
+01:16:52 
+so green color is that quadrant that category 
+
+01:16:58 
+In your session, if you have a lot of yellow color post-it notes, we will draw these two by two and then we post the post-it note to that area, the green color, if it's easy to implement and high value. 
+
+01:17:14 
+If it's difficult to implement and low value, then it will be red color. Then you put up your post-it note to the red color one. 
+
+01:17:23 
+But right now since every one of you have the 2x2 matrix likely with your computer and your hardware restatement with your computer 
+
+01:17:33 
+So I want you to assess this, check out the hardware restatement one by one 
+
+01:17:39 
+And then see whether they are high value, low value, hard to implement or easily implement 
+
+01:17:54 
+For many companies, they will start with green, some companies like Google, we start from yellow 
+
+01:18:03 
+because we want everybody in Google to understand AI first, so for implement AI, we start from yellow 
+
+01:18:09 
+For some companies, start from blue, that is they want high value stuff first, even if it's difficult to implement, they will still want that 
+
+01:18:19 
+So sometimes it's green and blue and yellow in sequence, sometimes it's blue, green and yellow in sequence 
+
+01:18:25 
+But most of the company will never never touch the red one 
+
+01:18:30 
+Because it's low value and hard to implement 
+
+01:18:34 
+So this is how we structure 
+
+01:18:38 
+And for this, all you need is just a lot of time 
+
+01:18:42 
+So I will give you all 5 minutes 
+
+01:18:47 
+to think about each harm and restatement, the value and the implementation cost. 
+
+01:18:54 
+In the team, sometimes you will talk to other team members because maybe the team they have IT team members 
+
+01:19:02 
+or maybe they have some other team members have some other knowledge. 
+
+01:19:05 
+So I want you to focus on those just by yourself maybe and it will be something like this. 
+
+01:19:15 
+1, 2, 3, 4, 5, put it in different area and it depends on your company or your party 
+
+01:19:23 
+sometimes you will start with 1, 3, some of you like to start with 2, depends on the project 
+
+01:19:29 
+in our case for AI literacy we start from yellow because we want everyone be Google 
+
+01:19:39 
+start to understand AI so it's up to you and a different situation 
+
+01:19:53 
+Just a recap, most of the business will check out the green and the item number two or number threes are important. 
+
+01:20:05 
+Number two is if you have a lot of hardware restatement in green quadrant, more than three, most of the time we will just focus on three. 
+
+01:20:18 
+The three out of say five or ten in the green quadrant, we have something called dot voting that every team member other than the yellow color post-it note will pass them some red color dots and then they will do the voting, the first three to work on. 
+
+01:20:37 
+And just a little tips, if in your team you have manager or your boss, ask them to vote the last. 
+
+01:20:47 
+If you allow them to vote first, every team member will vote, oh, yeah, the boss like that. Let me go for this idea. 
+
+01:20:55 
+So, let the team members vote first, and then the boss vote last. Okay? So, that's the idea. 
+
+01:21:03 
+So, most of the time is, we pick three to focus on, and right here, same, you base on your... 
+
+01:21:11 
+High priority job statement, and now you use AI or yourself to prepare the how might we, and now I want you to pick three on 
+
+01:21:22 
+your decision. 
+
+01:21:24 
+As mentioned, each team or individual, the output would be one two by two matrix, and three how might we statement. 
+
+01:21:34 
+And you have five minutes for 
+
+01:21:41 
+your how might we statement. 
+
+01:21:42 
+How 
+
+01:22:05 
+do you define value to your organization? 
+
+01:22:08 
+Sometimes it's cost saving, sometimes it's more customer, or more revenue. 
+
+01:22:13 
+So again, something to decide based on that. 
+
+01:22:19 
+If what you suggested is a mobile phone case, for example, then the value to the organisation likely is about more business. 
+
+01:22:31 
+Selling the most case, selling the most phone case, which I did. 
+
+01:22:40 
+Saving costs for the customer agents. That's also a value. 
+
+01:22:46 
+You can see 
+
+01:23:15 
+on screen, usually in our workshop, we use a large A1 size white paper 
+
+01:23:21 
+and then the whole team will draw up that 2x2 matrix and everybody discuss whether it should be green or yellow or blue or red 
+
+01:23:31 
+and then they vote to pick the top three. So the process is like that. 
+
+01:23:39 
+Maybe later on in your course, you need to do teamwork. 
+
+01:23:43 
+If you want to pick the right project to do, you can go for this methodology as well. 
+
+01:23:48 
+Five 
+
+01:26:50 
+minutes should be enough. 
+
+01:26:55 
+Anyone have trouble to select top three? 
+
+01:27:00 
+Or, let me put it this way. 
+
+01:27:03 
+Anyone have, after your assessment, anyone have the hardware investment in the red zone? 
+
+01:27:10 
+Anyone? 
+
+01:27:11 
+All your hardware investment in green or blue? 
+
+01:27:15 
+Okay, 
+
+01:27:28 
+so how many have three hardware investment in the green zone? 
+
+01:27:32 
+after your assessment one how 
+
+01:27:38 
+about in a green zone so 
+
+01:27:45 
+one in blue 
+
+01:27:54 
+now okay i i just want you to 
+
+01:27:57 
+sink in a little bit go through the process again you define the opportunities and then 
+
+01:28:03 
+you based on the opportunity opportunities to find the problem statement and then prioritize 
+
+01:28:08 
+those and then pick a few to spend time to address on so that's the summary of that and 
+
+01:28:21 
+now 
+
+01:28:23 
+Again, I want a few of you, maybe one or two from each side to tell us what's the top helmet restatement in your green quadrant. 
+
+01:28:36 
+And before that, you may 
+
+01:28:47 
+want to share your role, whether you're a mobile phone designer or whether you're a suitcase designer. 
+
+01:28:55 
+This 
+
+01:29:20 
+side first, anyone volunteer to tell us. 
+
+01:29:22 
+Your how may we statement in green, quadrant. Don't 
+
+01:29:32 
+forget to send out your name later to the TA to get your engagement score. 
+
+01:29:38 
+What's 
+
+01:29:41 
+your role? 
+
+01:29:42 
+Do I need to say my job story? 
+
+01:29:46 
+No, no, it's just your role in index already. It's fine. 
+
+01:29:50 
+How might we create stretchable, multi-size, reusable, silicone food list? 
+
+01:29:59 
+for families and home cooks in order to seal containers of different shapes and reduce single-use plastic waste. 
+
+01:30:07 
+So 
+
+01:30:12 
+you think it's a high value at least for the family, right? 
+
+01:30:16 
+But then what's the implementation? Is it difficult? 
+
+01:30:21 
+You 
+
+01:30:26 
+believe that it's easy to manufacture? That's such a product, right? 
+
+01:30:34 
+Anyone? From that side as well? 
+
+01:30:46 
+so I come up with this idea from a real life experience yeah okay good I was exercising at gym 
+
+01:30:54 
+and I heard about the song I think it is very wonderful but I can't 
+
+01:31:01 
+Listen to its lyrics clearly, and so I mess it afterwards. 
+
+01:31:05 
+So the AI-generated sentence was, 
+
+01:31:09 
+How might we enable rhythm-first audio identification by translating tapped tempos, humming, or melodic patterns into precise track matches for casual music listeners and enthusiasts in order to effortlessly recover and download forgotten sounds when lyrics are completely out of reach? 
+
+01:31:31 
+And then somehow the GenAI gives this reason. So it says that high value because it resolves an acute, highly frequent user frustration. 
+
+01:31:47 
+low complexity because audio fingerprinting, tempo matching, and the acoustic pattern recognition 
+
+01:31:53 
+algorithms are well established and mature. I see. And I don't know that if it is true for AI to 
+
+01:32:03 
+train to recognize music. Music and songs, right. Are you using Android phone or iPhone? 
+
+01:32:16 
+is exactly the same features, just by understanding the tempo, the music, the lyrics, then from 
+
+01:32:25 
+the databases to retrieve the song, and then you can watch the YouTube or you can save 
+
+01:32:31 
+the song. There's apps on that. Maybe Andrew also have some? 
+
+01:32:36 
+You can search again also. If you do YouTube search, you can actually come to the song and 
+
+01:32:42 
+then you can search for it. 
+
+01:32:45 
+Okay. 
+
+01:32:46 
+I choose 
+
+01:32:54 
+the Airpods case designer. During our trip, we always lose our Airpods. Travelers often carry suitcases, backpacks, phones, and passports. 
+
+01:33:09 
+A strong clip or strap makes Airpods easier to carry and access. This feature is simple to design and don't need 
+
+01:33:20 
+require advanced technology, and it's only the green part. 
+
+01:33:26 
+So high value for active person and easy to produce, right? 
+
+01:33:31 
+Yes. 
+
+01:33:32 
+That's exactly the same case as the last cohort. 
+
+01:33:37 
+Exactly the same airport case design. 
+
+01:33:40 
+The same AI. 
+
+01:33:42 
+Maybe use the same AI. 
+
+01:33:43 
+One more from this side. 
+
+01:33:46 
+Anyone? 
+
+01:33:50 
+Anyone have a good Harmony statement to share? 
+
+01:34:03 
+Okay, so I want to know how might we design an economic store, like how to say, that promotes healthy sitting pressure that is reduced lower back discomfort during the prolonged sitting. 
+
+01:34:23 
+Okay, so the ASS... 
+
+01:34:28 
+high value or low and low implementation so I thought the reason is already have those 
+
+01:34:37 
+store so that's the one reason but I think the many improvements 
+
+01:34:44 
+space in real life so we can make it better yeah so the designs for 
+
+01:34:59 
+but interesting why I mean those are good ideas but I just wondering why it's not 
+
+01:35:05 
+related to mobile or suitcase this is the prompt that you enter something else 
+
+01:35:10 
+okay 
+
+01:35:13 
+okay right on the best time yeah any any good how many statement you find in a 
+
+01:35:24 
+green zone that you want to share I 
+
+01:35:31 
+bet you have some with your laptop or mobile 
+
+01:35:36 
+If you try that. 
+
+01:35:40 
+Anyone? Yeah, okay. Yeah, thank you 
+
+01:35:46 
+So my product is about the customer service. So how about we integrate AI power support assistant for 
+
+01:35:53 
+e-commerce shoppers in order to resolve after-sale issues quickly and increase platform trust 
+
+01:35:59 
+So I think it's really highly valid because 
+
+01:36:02 
+So AI can save a lot of money 
+
+01:36:05 
+Just like so you don't need to hire real person agent to answer the question 
+
+01:36:11 
+You know what, there's an expert just standing here, about whether AI is a good agent to replace life agents. 
+
+01:36:23 
+Thank you, yeah. Obviously, for all the retailers, they have this Harmony Restatement. 
+
+01:36:31 
+And then, likely, the team leaders will pass the Harmony Restatement. 
+
+01:36:38 
+to the technical team or the customer service team to achieve this. Any input? 
+
+01:36:47 
+I think the more important thing is the user experience. 
+
+01:36:52 
+It's not just focusing on whether you can solve the problem, but whether it aligns with your brand and tone. 
+
+01:36:59 
+So that's more important in my perspective. 
+
+01:37:03 
+And I tend to think sometimes, I for one, I'm not sure about you, have you encountered any really really good AI chatbot that you like or you can fall in love with them? I'm not sure. 
+
+01:37:15 
+So I tend to think that the first use of AI in that situation is to use AI to triage the questions from the customer. 
+
+01:37:24 
+The AI should tell the customer lifetime value of the customer to decide whether I should assign a life agent to help him or her or just use the FAQ chatbot to answer all the questions. 
+
+01:37:36 
+So based on the lifetime value and then the complexity of the questions. 
+
+01:37:39 
+Okay, one more from that side. Anyone would like to share? 
+
+01:37:54 
+When we use AI or large language models, we just cannot easily see what sensitive information is shared with the model or the app, so maybe design some app or plug-in for the product to let us know. 
+
+01:38:15 
+to let us just can easily know where our information is shared or how it's shared with external tools or website or something like that. 
+
+01:38:30 
+Yeah, that would be very useful for consumers. Of course, it's also based on the implementation of that AI platform. 
+
+01:38:41 
+In our AI platform, it will be blocked. All the PII will not be able to enter to those. 
+
+01:38:47 
+So, it's up to your AI performing presentation. 
+
+01:38:51 
+Okay, so what you can see here is, for some, you may think that what's the difference between Jobs To Be Done, Job Stories, and Harmony Restatement. 
+
+01:39:01 
+But many times, it depends on really the last step. 
+
+01:39:04 
+What you want to achieve is to achieve something the... 
+
+01:39:10 
+customer want to finish the job and then you focus on the value and cost of implementation and then to do the prioritization. 
+
+01:39:19 
+So let me continue to go to the next step. 
+
+01:39:24 
+So the next step is to ideate. That is, you have the job to be done, the job story, you have the how I reach statement, the problem statement. 
+
+01:39:35 
+Most of the time, based on those, you start to ideate what are the possible solutions. 
+
+01:39:42 
+So again, you can use AI to ideate, but I don't want to waste your time here, but the magic is, once you have the how-my-read statement on the green zone, because you all prioritize it, you can use AI and then you ask the question, with that how-my-read statement, please provide 5 ideas or 10 ideas on how to solve this. 
+
+01:40:14 
+and in that AI prompt you can ask them to include images or video such that you can visualize the possible output 
+
+01:40:24 
+and then you roll out this prototype or pass that to the development team to develop some apps or some physical products 
+
+01:40:33 
+and then find some test user to test this prototype 
+
+01:40:39 
+This is the typical design thinking process 
+
+01:40:44 
+you empathize, that is understand the customer needs, and then to define the problem statement, 
+
+01:40:52 
+IDEA, the possible solutions, and then prototyping and test. 
+
+01:40:58 
+So that's the whole cycle. 
+
+01:41:00 
+Most of the time, it takes 1-2 weeks at least for the step 2 to step 5. 
+
+01:41:05 
+Step 1, that empathize, that customer survey, or market survey, or research, will take weeks. 
+
+01:41:12 
+But now when you understand that with AI, there's something you can do, that's all I have anything that you want to add 
+
+01:41:21 
+So I hope you learn something about idea generation and then you can use it for your project 
+
+01:41:29 
+I think you can apply what you learn today with your group members and then think about what will be the problem that you're solving, how jobs to be done, what is the jobs to be done for your project, how many re-statements for your project. 
+
+01:41:46 
+So I think this is a good methodology that you can apply. 
+
+01:41:51 
+Of course, you can apply this in your real life and real working situation as well. 
+
+01:41:57 
+like Michael actually run a lot of the workshop for a lot of the corporate customers that actually apply this in their day-to-day working time so so uh remember we will release the assignment for the reflection of this so the reflection should capture what you have learned what you have like uh actually start to think differently right for after this guest lecture 
+
+01:42:23 
+And also for next week, we are going to start at 10am instead of 9am, so just to make sure that you have time for breakfast, okay? 
+
+01:42:35 
+Make sure you eat breakfast before you come here. 
+
+01:42:39 
+There's a job story right here. 
+
+01:42:41 
+Yeah. 
+
+01:42:41 
+You have to have breakfast before your class. 
+
+01:42:44 
+Exactly. 
+
+01:42:45 
+but I don't eat breakfast but like uh but like for mix mix we'll start at 10 we'll make an 
+
+01:42:50 
+announcement but we'll start at 10. uh but next week just to actually let you know I invited 
+
+01:42:56 
+a forward deploy engineer from google uh who actually doing this job right remember 
+
+01:43:03 
+in one of the lectures actually we discussed about this kind of new job 
+
+01:43:07 
+role right forward deploy engineer so so he will actually come and talk about like 
+
+01:43:14 
+What is it that is exactly FDE? What does it do? How he actually come about in doing this in Google, right? 
+
+01:43:21 
+So if you want to be interested, please come. And then we also have the Venture Capitalist, the guy who is responsible for the Venture Capitalist relationship within Google. 
+
+01:43:34 
+So he will talk about a lot of the trends and 
+
+01:43:37 
+what is the VC now the money is looking at to investing right so so should be very valuable 
+
+01:43:44 
+uh if not to your project but to your next step right after after your job right either you want 
+
+01:43:50 
+to do a uh either you want to do a startup yourself or you want to join a potential startup 
+
+01:43:55 
+then you can see which one is the good one to choose right um so uh anything 
+
+01:44:07 
+And for the people who answer questions, please remember to send the message to the TA, and then we will record your extra participation amount. Thank you. 
+
