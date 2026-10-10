@@ -14,6 +14,8 @@
 
 **2026-10-09 全量图文可读性整改的执行时机（本轮优先）**：逐篇处理全部适用正文，评估重点只决定先后，不缩成抽样难段。所有代理只在指定 scratch 写候选；全部候选完稿后集中做教学语义与最终视觉验收，再由管理者发起单一发布者的哈希校对与原子写。创作时允许必要渲染、来源定位、重要计算和文件完整性防损，最多一次整篇作者自查；不派中途验收、不重复全库验收。具体缺陷才定向修复。图文理解执行 [[可读性总规则]] §11.3，验收时机执行该文件 §1.3；源码可渲染不等于视觉通过，无法实际查看须明确待核。
 
+**2026-10-10 日常制作与融合门槛**：新写、重写、转录融合、顺延回填均先读 `_meta/笔记制作与融合验收流程.md`。按现行可读性总规则和课程细则写候选，完稿后一次集中核对解释链、来源、R 疑点和实际图文显示。新稿全篇验收，局部融合验全部新增及受影响单元；audit PASS 或材料 v1.0 不等于教学通过。正式写回前运行 `note_release_gate.py` 并提供与候选哈希绑定的实质核对记录；融合由 `merge_apply.py` 强制拦截缺记录、R 失败和源文件冲突。旧 G/E 标签分数只作诊断，未做过的核对不得记 passed。
+
 ## 可读性总规则入口（2026-10-09）
 
 制作或修改课堂笔记，先读 `_meta/可读性总规则.md`，再读本课 `_meta/<课程码>可读性细则.md`。总规则是教学语言、表格读法与版面的唯一现行入口，已替代旧《教学语言与表格完整性规范》和散落的语言摘要。
@@ -180,7 +182,7 @@ D:\anaconda3\python.exe -X utf8 _meta/tools/safe_write.py --check <文件>
 | 教授原话强调（"this will be on the exam"、"you must remember"） | 直接考点 | 进考点库，可信度标「教授明示」 |
 | 课堂问答与讨论 | 真实的误解来源 | 填进正文的「常见误解」格 |
 
-详细规则见 [`_meta/转录处理规则.md`](_meta/转录处理规则.md)（原理）与 skill [`.claude/skills/transcript-merge/SKILL.md`](.claude/skills/transcript-merge/SKILL.md)（执行步骤、模板、验收），**处理转录前必读**；融合完成的唯一标准是 `_meta/tools/transcript_check.py audit` PASS + `note_quality.py` 不回退 + `link_check.py` 0。其中最关键的一条：
+详细规则见 [`_meta/转录处理规则.md`](_meta/转录处理规则.md)（原理）与 skill [`.claude/skills/transcript-merge/SKILL.md`](.claude/skills/transcript-merge/SKILL.md)（执行步骤、模板、验收），**处理转录前必读**；融合完成须满足材料 audit PASS、《笔记制作与融合验收流程》的 L/R 及教学／视觉门槛，并完成链接和写后完整性核对。其中最关键的一条：
 
 > **ASR 专名错误一律以讲义的书面拼写为准校正**。两种来源的错法不同——Whisper 按发音写成常见词（`CityU`→`CPU`、`skewness`→`SKU needs`），Notta 拆专名（`Kantianism`→`Contianism`）——见 [`_meta/转录处理规则.md`](_meta/转录处理规则.md) §3。转录里听不清的术语标 `[?]`，**不要猜一个填上**；Whisper 在静音 / 噪声处可能吐出与上下文无关的短句，视为噪声不引用。
 
@@ -262,7 +264,7 @@ D:\anaconda3\python.exe -X utf8 _meta/tools/safe_write.py --check <文件>
 2. **读官方口径** — 读该课 `_prep/课程前置资料.md`，明确 ILO 与考核方式（决定笔记侧重）
 3. **提取讲义全文** — 按 `_meta/材料处理规则.md` 转文本，存到 scratchpad，不落到 vault 里
 4. **视觉复核** — 纯图片页（文本提取为空的页）用 Read 工具看图，补回内容
-5. **处理转录** — 按 skill `.claude/skills/transcript-merge/` §11 分片并行模式：主代理 scan 登记 + 切分 → 2–3 个分片代理并行产出 patch + findings（不写 vault）→ `merge_apply.py` 合并 + 验收 + 一次写入 → 验收代理语义核对 → `transcript_check.py audit` PASS
+5. **处理转录** — 按 skill `.claude/skills/transcript-merge/` §11 分片并行模式：主代理 scan 登记 + 切分 → 2–3 个分片代理并行产出 patch + findings（不写 vault）→ `merge_apply.py --dry-run` 生成候选 → 按《笔记制作与融合验收流程》集中核对并保存 review.json → 主写者正式合并（audit、L/R、记录与哈希均通过）→ 写后核对
 6. **查台账** — 读 `_meta/知识层级台账.md`，列出本讲的"已有 / 新增 / 预告"三类概念
 7. **重排大纲** — 定学习逻辑顺序，记录与讲义页码的映射
 8. **写正文** — 按模板 9 节，七格微结构；按 [[课件题目处理规则]] 逐页登记讲义原题，在 §2 对每个小问给直接答案、解析与来源

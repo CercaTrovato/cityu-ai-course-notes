@@ -1,14 +1,14 @@
 ---
 name: transcript-merge
-description: 把课堂录音转录（本地 Whisper 或 Notta 导出的带时间戳 txt）合并进已有的 v0.9 讲义笔记、升级为 v1.0 的完整流程与验收标准（CityU vault 专用）。当 <课程>/transcripts/ 出现新文件、用户说"转录到了 / 合并转录 / 回填 🎙️ / 升 v1.0"、或笔记 frontmatter 是 transcript: pending 而转录文件已存在时使用。任何模型（Codex 任一档、Codex、其他 agent）执行都必须逐步照做，产出用 _meta/tools/transcript_check.py 机器验收。
+description: 把课堂录音转录（本地 Whisper 或 Notta 导出的带时间戳 txt）合并进已有讲义笔记，首次融合升级为 v1.0、后续增补保留材料状态 的完整流程与验收标准（CityU vault 专用）。当 <课程>/transcripts/ 出现新文件、用户说"转录到了 / 合并转录 / 回填 🎙️ / 升 v1.0"、或笔记 frontmatter 是 transcript: pending 而转录文件已存在时使用。任何模型执行都必须遵守现行可读性规则；材料 audit 与教学发布门槛分别验收。
 ---
 
 # 转录融合（v0.9 → v1.0）
 
-> 本技能是 `_meta/转录处理规则.md`（原理层：为什么、提取什么）的**执行层**（做什么、写成什么样、怎么验收）。两份都要读；冲突时以本技能为准并在回执里指出冲突。
-> 质量标杆：`AC6761_Artificial_Intelligence_Accounting/notes/M02-交易的会计处理.md`（v1.0）及其顺延回填 `M01-会计与商业.md` §2.8.5。**"和之前一样的质量"= 与这两篇形态一致且 `transcript_check.py audit` PASS。**
+> 本技能是 `_meta/转录处理规则.md`（原理层：为什么、提取什么）的**执行层**（做什么、写成什么样、怎么验收）。两份都要读；教学语言与验收以现行《可读性总规则》《笔记制作与融合验收流程》为准，本技能只补融合操作，发现冲突先修正入口。
+> 质量标杆：`AC6761_Artificial_Intelligence_Accounting/notes/M02-交易的会计处理.md`（v1.0）及其顺延回填 `M01-会计与商业.md` §2.8.5。旧笔记只作为结构参考；当前质量须满足现行可读性、D 层及《笔记制作与融合验收流程》，不得用旧样板或 audit PASS 代替。
 > 所有面向用户的文字用简体中文；转录原话保留英文。
-> **2026-09-18 起默认按 §11「分片并行模式」执行**：主代理登记与切分 → 2–3 个分片代理并行产出 patch + findings（不写 vault）→ `merge_apply.py` 合并验收、一次写入 → 1 个验收代理做语义核对。§2–§7 仍是每个分片必须遵守的内容规范；单体模式只在转录很短（<40 分钟）时用。
+> **2026-09-18 起默认按 §11「分片并行模式」执行**：主代理登记与切分 → 2–3 个分片代理并行产出 patch + findings（不写 vault）→ `merge_apply.py --dry-run` 生成全部候选 → 一次集中教学／视觉核对并保存 review.json → 主写者哈希校对、原子写回。§2–§7 仍是每个分片必须遵守的内容规范；单体模式只在转录很短（<40 分钟）时用。
 
 ---
 
@@ -25,6 +25,8 @@ description: 把课堂录音转录（本地 Whisper 或 Notta 导出的带时间
 ---
 
 ## 1. 开工前必读（按顺序，读完再动手）
+
+先读根 `AGENTS.md`、`_meta/可读性总规则.md`、本课 `_meta/<课程码>可读性细则.md`、`_meta/机制理解与可读性标准.md` 当前简化流程及 `_meta/笔记制作与融合验收流程.md`，再读下表。涉及图示时读《教学图示规范》《教学图示工具流程》。派给分片的提示词必须包含这些真实路径、受影响单元、候选和回执要求，不把读规则完全留给主代理。
 
 | # | 文件 | 读什么 |
 |---|---|---|
@@ -94,6 +96,12 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py q
 ---
 
 ## 4. 阶段 2 · 写回正文
+
+### 4.0 新增内容同样须可自学
+
+课堂口语不能只翻译后塞进 🎙️ 格。按现行总规则先说明问题、对象、步骤、中间结果和理由，再命名；术语就地解释，公式给符号和完整例，表格逐列读，原话配中文。新增条件、例子和纠错须同步受影响正文、图、速查、自测及上一讲回填，避免两种口径并存。图按 §11.3 配合正文，不以全局概览替代局部讲解。
+
+分片在 scratch 交完整替换格和必要的正文／图源精确补丁；超出 patch 格式的改动交主代理用 main.json 的 replacements 精确合并，不因旧格式限制而省略解释。保留来源、条件、原题答案及既有 readability_rules；新写／整篇重写必须为 v2。
 
 ### 4.1 「🎙️ 课堂补充」格的五种状态（每格必居其一）
 
@@ -182,20 +190,21 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/integrity_check.py ve
 PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py audit <笔记.md> --transcript <本讲转录> [<被引用的其它转录>]
 # 同一课堂两份重叠录音再跑逐源核验（A/B 分别指定，不用时间戳并集代替）
 PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_source_check.py <笔记.md> <A转录.txt> <B转录.txt>
-# ② 笔记质量不回退：与融合前同一模式跑（frontmatter 有 quality_spec: v1 才加 --strict），判定不得从 PASS 变 FAIL
-PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/note_quality.py <笔记.md> --pages <讲义页数> [--strict]
+# ② 统一发布门槛：包含 strict/sections/readability 原始诊断，旧 G/E 不单独阻塞
+# review.json 必须在实际教学核对后填写；仅预检用 --check-only，不算教学通过
+D:\anaconda3\python.exe -X utf8 _meta/tools/note_release_gate.py <候选.md> --note <正式笔记相对路径> --source <原始副本.md> --scope changed --pages <讲义页数> --review <review.json>
 # ③ 全库链接 + README 同步
 PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/link_check.py
 PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/readme_check.py
-# ④ 有顺延回填时，对上一讲笔记也跑 ①（--transcript 给两份转录）
+# ④ 顺延回填的上一讲也独立执行 ①②，以自己的候选和 review.json 核对，逐源引用对应转录
 ```
 
 - ① 的 WARN 要么修掉，要么在 §9.5 写明为什么保留（例如 A5 低匹配是因为那段 ASR 乱码严重、已按 `[ ]` 规则标注）。**A13（方括号外的词在转录窗口找不到）与 A14（引文里的数字在转录找不到）逐条过一遍**：真是改写就补 `[ ]`，是 ASR 近似（UCago/UChicago）可留；A14 命中的数字必须回转录核对——数字是最危险的改写（2026-09-18 抓到 "32 weeks" 被写成 52 未标注）。
-- ② 融合前先跑一次留底（写进 PROGRESS.md），融合后对比；新增内容触发的 L3 货币 `$`、L4 标题特殊字符等问题要修。
+- ② 全部候选完成后按《笔记制作与融合验收流程》集中核对适用内容，保留 L/G/E/R 原始结果和 △ 处理。机械通过不表示教学通过。旧 G/E 只诊断，不为凑标签扩写。已有 v1/v2 的 R 硬项必须清零；旧未标记稿按该流程保留未变历史项、阻塞新缺陷。新写／整篇重写用 scope full。
 - 脚本报的行号是原文件行号，直接定位。
 
 **回执**（写进 PROGRESS.md 末尾并汇报）：
-1. 三个脚本的判定与关键数字（🎙️ 格数、时间戳数、引文数、🔴 数、§8 检查行数）
+1. 脚本原始判定及关键数字（🎙️ 格数、时间戳数、引文数、🔴 数、§8 行数）；另列发布机械门槛、实质教学核对、实际视觉范围、review.json 路径与候选哈希
 2. 转录登记：起止、段数、缺口判定与依据、顺延边界
 3. 回填了哪些 🎙️ 格（A/B/C/D/E 各多少）、§9.2 前三条
 4. 上一讲 ❓ 被解决的项
@@ -216,7 +225,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/readme_check.py
 - [ ] §9.2 按价值排序、§9.5 反方视角三问
 - [ ] 顺延内容回填到上一讲并改其 ❓ → ✅（如适用）
 - [ ] 考点库 / 台账 / 术语表 / 作业与DDL / 00-总览 / 转录处理规则 §8 全部回写；README 五门课表 + 待办表都改了（`readme_check.py` 0 问题）
-- [ ] `transcript_check.py audit` PASS；`note_quality.py` 不回退；`link_check.py` 0 问题
+- [ ] audit PASS；L/R 发布门槛满足，旧 G/E 原始结果如实保留；全部新增与受影响单元按总规则／D 层完成一次核对，△ 已逐项判断；实际视觉范围有证据，review.json 无 pending／未闭合缺口；链接与完整性据实报告
 - [ ] frontmatter `transcript: merged`、`status: v1.0`、`updated`；§9.6 有合并行
 - [ ] 没有碰 `course_files_export/`；没有引用 Notta 中文版；没有一处"教授说"缺时间戳（A10 WARN 已清或已解释）
 
@@ -224,7 +233,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/readme_check.py
 
 ## 9. 工作目录与断点续做
 
-- Codex：用会话 scratchpad；其它 agent：`%LOCALAPPDATA%\Temp\transcript-merge\<课程码>-M0N\`。**不要在 vault 里建临时文件**（此前有把脚本输出落到 vault 根目录的事故）。不要用 `/tmp`。
+- Claude Code：用会话 scratchpad；其它 agent：`%LOCALAPPDATA%\Temp\transcript-merge\<课程码>-M0N\`。**不要在 vault 里建临时文件**（此前有把脚本输出落到 vault 根目录的事故）。不要用 `/tmp`。
 - 工作目录里维护 `PROGRESS.md`：阶段 0–5 各一节，每完成一步就写（时间戳、产出文件、关键判断）。额度中断后**从 PROGRESS.md 最后一步继续**，不重做。
 - **分片模式下分片代理不写 vault**（只产出 patch.json / findings.json，见 §11）。单体模式或主代理的零星修补：大段改写用脚本（Python `str.replace` + `assert count == 1`）落盘，不手改；脚本用编辑工具写成文件再运行（shell heredoc 会吃反斜杠和中文）；**落盘一律 `atomic_write`**。
 - 融合结束后主代理把工作目录（patch / findings / align / PROGRESS）打包进 `D:\上课资料\CityU_backups\merge-<课程>-M0N-<日期>.zip`——它们是可重放的改动记录（2026-09-17 AC6761 M03 被截断后就是靠改动脚本重放找回的），不进 vault。
@@ -240,9 +249,9 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/readme_check.py
 
 | 角色 | 谁 | 读什么 | 产出 | 不做什么 |
 |---|---|---|---|---|
-| **主代理**（登记 + 合并） | Opus | scan 输出、笔记 §8 页码表、上一讲 ❓ | 改名、`scan`、**分片表**（写进任务单）、`main.json`、`merge_apply.py` 合并、四项验收、Notion、提交 | 不写 🎙️ 内容 |
-| **分片代理** ×2–3（并行） | Sonnet | 规则文件、任务单、**整份转录**、**自己那段笔记**（按行号范围） | `shard_k/patch.json`（自己小节的 🎙️ 格 + §8 覆盖行）、`shard_k/findings.json`（🔴 行、§9.x 行、时间分配、元文件追加行、任务单问题答案）、`align.md`、`PROGRESS.md` | **不写 vault**；不引用自己时间段外的时间戳；不动 §0/§6/§9 |
-| **验收代理** ×1 | Sonnet | 合并后的笔记、转录、任务单 | 语义核对报告（解读是否走样 / 任务单问题证据 / 🔴 依据 / 零基础 3 题） | 不改文件 |
+| **主代理**（登记 + 合并） | 按任务指定模型 | 现行规则、scan、原稿上下文、上一讲 ❓ | 分片表、main.json、候选集中核对、review.json、哈希校对与单一写回、状态同步 | 不用脚本结果替代教学判断；无授权不提交 |
+| **分片代理** ×2–3（并行） | 按任务指定模型 | 总规则、本课细则、本流程、任务单、**整份转录**、**自己那段笔记及受影响上下文** | `shard_k/patch.json`（自己小节的 🎙️ 格 + §8 覆盖行）、`shard_k/findings.json`（🔴 行、§9.x 行、时间分配、元文件追加行、任务单问题答案）、`align.md`、`PROGRESS.md` | **不写 vault**；不引用自己时间段外的时间戳；不动 §0/§6/§9 |
+| **集中核对**（主代理或指定执行者） | 按任务指定模型 | 全部完成候选、来源与图、现行规则 | 按统一流程记录理解链、来源、R 疑点和真实视觉证据 | 不补造读者分数；不做重复全量盲读 |
 
 ### 11.2 切分规则（主代理，写进任务单「分片表」）
 
@@ -255,7 +264,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/readme_check.py
 只写工作目录 `shard_k/`，格式见 `reference/formats.md` §10：
 - `patch.json`：`cells[]`（`section` = 小节标题原文或 `#### 2.4.3` 这样的唯一前缀；`block` = **整个 🎙️ 格**，以 `**🎙️ 课堂补充**` 开头，到下一格标签之前）、`s8[]`（`page`、`coverage`）。
 - `findings.json`：`red[]`（§6.2 整行）、`s91[]` / `s92[]` / `s95[]`（整行）、`time_alloc[]`、`class_summary[]`、`kb_rows[]` / `ddl_rows[]` / `term_rows[]` / `ledger_rows[]` / `cross_rows[]` / `asr_rows[]`（元文件追加行）、`answers[]`（任务单问题：题号、答案、时间戳、原话）。
-- **自验**：把 patch 应用到笔记副本上跑 `merge_apply.py --dry-run`（主代理在任务单给出命令），audit 与 note_quality 都过再交；回执 = `PROGRESS.md` 末尾 + 汇报，格式 `formats.md` §9。
+- **交付**：保存 patch、findings、必要正文／图源补丁和范围清单，最多一次作者自查；教学状态保持 pending。必要定位时可在副本使用 --partial，但不强制分片各跑完整验收。全部候选齐备后主代理统一 dry-run 和集中核对，回执按 formats.md §9。
 
 ### 11.4 主代理的合并
 
@@ -266,12 +275,12 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/merge_apply.py <工�
 
 - `main.json` 由主代理写：`date`、`class_date`、`span`、`merge_row`（§9.6）、`replacements[]`（文首提示块、§6.1 数量表、任何精确替换）。
 - `merge_apply.py` 把 findings 渲染进 §0 / §6.2 / §8 时间分配 / §9.1 / §9.2 / §9.5 / §9.6 与 frontmatter，把 `*_rows` **追加到各元文件末尾**的日期区块（不再逐处 grep 插入；`00-课程总览` / 根 `README` / `转录处理规则` §8 那三行仍由主代理改）。
-- 任何 FAIL 都不写 vault；修的是 patch / findings / main.json，再跑一次——不要手改 merged.md。
-- 通过后：`integrity_check.py verify` → 派验收代理 → 修补 → Notion → README（五门课表 + 待办表，`readme_check.py`）→ 提交。
+- audit 或发布门槛失败不写 vault；按定位修 patch / findings / main.json，重新生成候选。旧 G/E 诊断 FAIL 原样保留；只针对真实缺陷修复，不把它伪报 PASS。候选变化后定向核对受影响内容并更新真实回执，禁止只改哈希绕过复核。
+- dry-run 只代表机械预检。写回前按《笔记制作与融合验收流程》完成 review.md / review.json；合并器校对源、候选和证据哈希后才写入。写后核对完整性、链接、Notion 与 README；仅用户授权时提交。语义核对必须在写回前完成。
 
 ### 11.5 时间预算（2 小时课）
 
-登记 3 min ‖ 分片 ×2 并行 ≈ 12 min ‖ 合并 + 验收脚本 2 min ‖ 验收代理 5 min ‖ 修补 / Notion / 提交 3 min。分片超过 15 分钟没回执，主代理看它的 `PROGRESS.md` 再决定等或重派。
+时间随讲义和转录复杂度变化，不按旧固定分钟预算压缩解释与来源核对。分片按实际完成情况落盘并汇报；主代理先读 PROGRESS.md 和候选，避免重复派工。
 
 ---
 

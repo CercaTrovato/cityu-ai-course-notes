@@ -238,7 +238,12 @@
 ```
 ## 回执 〈日期〉
 - audit：PASS｜🎙️ 格 N（A a / B b / C c / D d）｜时间戳 N（未匹配 0）｜引文 N（<40% 0，40–60% n 已解释）｜🔴 N｜§8 检查行 N
-- note_quality（legacy/strict）：融合前 PASS/FAIL → 融合后 PASS/FAIL；link_check 0
+- note_quality：原始 L/G/E/R 判定与计数；发布 L/R 门槛 PASS/FAIL；link_check 原始结果
+- 本次范围：full/changed；新增及受影响单元清单；保留的未变历史项
+- 实质核对：理解链与适用 D 层、来源／复算、R 疑点的真实缺口／误报／合理保留位置
+- 图文：语义证据、实际观看文件及尺寸、未看过的载体；不适用须给理由
+- review.md / review.json：路径、源／候选／报告／资产 SHA-256；未闭合缺口
+- 状态：候选完稿／机械预检／教学核对／写回分别报告；audit PASS 不等于可读
 - 转录：`起 → 止`，N 段，时长；完整性：缺开头/缺结尾/完整（依据）；空档 N 处均查明；顺延边界 `ts`
 - 上一讲 ❓ → ✅：p.… （W〈N〉 `a`–`b`）
 - §9.2 前三：…
@@ -250,7 +255,7 @@
 
 ## 10. 分片模式的落盘格式（`merge_apply.py` 读取）
 
-工作目录：`<scratchpad>/<课程码>_M0N_merge/`，每个分片一个子目录 `shard_1/`、`shard_2/`（顺延分片叫 `shard_spill/`，其 patch 的 `note` 指向上一讲）。
+工作目录：`E:/app-data/codex/scratchpad/<course>-m0n-merge/`，每个分片一个子目录 `shard_1/`、`shard_2/`（顺延分片叫 `shard_spill/`，其 patch 的 `note` 指向上一讲）。
 
 ### `shard_k/patch.json`
 

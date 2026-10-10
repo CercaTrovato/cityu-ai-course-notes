@@ -1,6 +1,6 @@
 # 转录融合任务单模板
 
-> 主代理（或用户）在派发前填好，存到 `<课程>/_meta/转录融合任务-M0N.md`。执行者开工第一件事是读它。
+> 主代理（或用户）在派发前填好，存到本任务 scratch 的 `task-brief.md`。执行者开工第一件事是读它。
 > 目的：把"只有读过上一讲笔记 / 扫过转录的人才知道的事"一次性交给执行者，避免它从零摸索或漏掉顺延。
 
 ```markdown
@@ -12,6 +12,13 @@ created: 〈日期〉
 ---
 
 # 转录融合任务 · 〈课程码〉 M0N
+
+## 0. 必读与范围
+- 根 AGENTS.md、可读性总规则、本课可读性细则、机制理解与可读性标准、笔记制作与融合验收流程、transcript-merge/SKILL.md：〈填写真实路径〉
+- 工作目录：〈E:/app-data/codex/scratchpad/英文任务目录〉；只写 scratch，由主代理单一写回
+- 任务范围：〈新写/整篇重写 full，或局部融合 changed〉
+- 受影响单元：〈正文、图、速查、自测、上一讲顺延等全部位置〉
+- 基线：〈原始副本路径与 SHA-256；不覆盖〉；候选保留 readability_rules，新写/整篇用 v2
 
 ## 1. 输入
 - 转录：`〈课程目录〉/transcripts/M0N-transcript.txt`（已按 §5 改名；原 Notta 文件名：〈…〉）
@@ -33,7 +40,7 @@ created: 〈日期〉
 | shard_1 | `49:04`–`01:19:45` | 本讲 | 行 〈a〉–〈b〉 | 18 | §2.1–§2.4 | important 01:05:54 … |
 | shard_2 | `01:19:45`–`02:24:04` | 本讲 | 行 〈c〉–〈d〉 | 17 | §2.5–§2.9 | exam 01:14:37 … |
 
-自验命令（各片在自己的工作目录里跑）：
+全部候选完稿后由主代理生成合并副本；分片不重复跑全量验收：
 `merge_apply.py <工作目录> --note <笔记> --transcript <转录> --dry-run`
 
 ## 3. 本次必须回答的问题（按优先级）
@@ -47,9 +54,11 @@ created: 〈日期〉
 - 按 `.claude/skills/transcript-merge/SKILL.md` 全流程；验收命令：
   `transcript_check.py audit 〈笔记〉 --transcript 〈本讲转录〉 〈上一讲转录（若顺延）〉`
 - 顺延回填后对上一讲也跑 audit（两份转录都给）
-- note_quality 模式：〈legacy / strict〉（融合前判定：〈PASS/FAIL 及项目〉）
+- 按统一流程一次集中核对解释链、适用 D 层、来源、重要计算、R 疑点及图文实际显示；保存 review.md / review.json，并绑定源、候选、报告与资产哈希
+- 发布前 note_release_gate.py 检查；机械失败或回执 pending 不写回；旧 G/E 原始诊断如实保留，R 适用硬项清零
+- 回执分别记录候选完稿／机械预检／教学与视觉核对／已写回，未看过的最终载体明确待核
 - 回执写到工作目录 PROGRESS.md 并汇报
 
 ## 5. 不做的事
-- 〈例如：不改 Notion（主代理做）；不重写 v0.9 正文的讲义部分；不动 course_files_export〉
+- 〈例如：不改 Notion（主代理做）；不改本次无关内容；理解链确需改动的正文交主代理精确补丁；不动 course_files_export〉
 ```

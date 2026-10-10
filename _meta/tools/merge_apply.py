@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 merge_apply.py — 转录融合「分片模式」的合并器：收齐各分片的 patch.json / findings.json，在副本上应用、渲染结构块、
-跑验收；通过后**一次** atomic_write 进 vault。分片代理不写 vault，主代理只跑这一条命令。
+生成候选并跑机械预检；教学核对记录通过且源哈希未变后才 atomic_write 进 vault。
 配合 .claude/skills/transcript-merge/SKILL.md §「分片并行模式」与 reference/formats.md §10（patch / findings 格式）。
 
 用法（vault 根）：
     PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/merge_apply.py <工作目录> --note <笔记相对路径> --transcript <转录…> [--pages N] [--dry-run] [--partial] [--src <原稿副本>]
-        --partial：分片自验（只含自己的 shard_k）——隐含 --dry-run，A1/A2/A3/A6/A7/A8/A9/A11 的 FAIL 不计（那是别的分片 / 主代理的事），A4/A5/A13/A14 与 note_quality 必须过
+        --partial：仅按需定位分片问题，隐含 --dry-run，不作为教学验收；默认等全部候选完成后集中检查。
+        --scope full|changed：默认 changed；整篇重写用 full。正式写回要求工作目录有 review.json（见《笔记制作与融合验收流程》）。
     PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/merge_apply.py extract <笔记相对路径> <输出 patch.json>     # 把已合并笔记的 🎙️ 格与 §8 覆盖列导成 patch（回放 / 自测用）
 
 工作目录结构：
@@ -16,14 +17,15 @@ merge_apply.py — 转录融合「分片模式」的合并器：收齐各分片�
     <工作目录>/merged.md               输出：应用后的副本（--dry-run 只到这里）
     <工作目录>/merge_report.txt        输出：验收结果
 
-退出码：0 = 副本通过验收（非 dry-run 时已写入 vault）；1 = 有 FAIL，未写入。
+退出码：0 = 机械预检通过（dry-run）或已写入（正式）；1 = 被拦截。机械通过不代表教学通过。
 """
-import os, sys, io, re, json, glob, shutil, subprocess, datetime
+import os, sys, io, re, json, glob, shutil, subprocess, datetime, hashlib
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
 sys.path.insert(0, HERE)
 from safe_write import atomic_write
+from note_release_gate import quality_gate, review_gate, sha256
 PY = sys.executable
 LABEL = re.compile(r'^(\*\*(⚠️|💡|📄|🔗|🧪|所以呢|🎯|📌|📝|🔴|🟡|⚪|🎙️)|#{2,6} |---|\*\*[^*]{1,12}\*\*$)')
 CELL = re.compile(r'^\*\*🎙️ ?课堂(补充|实况|练习)')
@@ -252,16 +254,15 @@ def run(cmd):
 
 PARTIAL_OK = ('A1 ', 'A2 ', 'A3 ', 'A6 ', 'A7 ', 'A8 ', 'A9 ', 'A11 ')   # 分片自验时允许的 FAIL（其它分片 / 主代理负责的部分）
 
-def verify(merged, transcripts, pages, strict, baseline_L, partial=False):
+def verify(merged, transcripts, pages, source, note, partial=False, scope='changed'):
     rc1, out1 = run([PY, os.path.join(HERE, 'transcript_check.py'), 'audit', merged, '--transcript'] + transcripts)
     if partial and rc1 != 0:
         left = [l for l in out1.splitlines() if l.strip().startswith('✗') and not any(c in l for c in PARTIAL_OK)]
-        rc1 = 1 if left else 0
-    cmd = [PY, os.path.join(HERE, 'note_quality.py'), merged, '--pages', str(pages)] + (['--strict'] if strict else [])
-    rc2, out2 = run(cmd)
-    L = re.search(r'L 合规问题 (\d+) 条', out2); L = int(L.group(1)) if L else 0
-    ok2 = ('【判定】 PASS' in out2) if strict else (L <= baseline_L)
-    return rc1 == 0, ok2, out1, out2, L
+        # traceback/空输出不是“只剩可忽略的分片失败”。
+        failures = [l for l in out1.splitlines() if l.strip().startswith('✗')]
+        rc1 = 1 if rc1 != 1 or left or not failures else 0
+    ok2, out2 = quality_gate(merged, note, source, scope, pages)
+    return rc1 == 0, ok2, out1, out2
 
 # ------------------------------------------------------------------ extract（回放 / 自测）
 def extract(note_rel, out):
@@ -294,6 +295,8 @@ def main():
     def opt(k, d=None):
         return a[a.index(k) + 1] if k in a else d
     note_rel = opt('--note'); pages = int(opt('--pages', 0) or 0)
+    scope = opt('--scope', 'changed')
+    if scope not in ('full', 'changed'): die('--scope 只能为 full 或 changed')
     transcripts = []
     if '--transcript' in a:
         k = a.index('--transcript') + 1
@@ -302,15 +305,12 @@ def main():
     src = os.path.join(ROOT, note_rel); course_dir = os.path.dirname(os.path.dirname(src))
     src_read = opt('--src', src)          # 回放 / 自测：从别的文件读原稿，写入目标仍是 --note
     module = re.match(r'([MT]\d+)', os.path.basename(note_rel)).group(1)
-    text0 = io.open(src_read, encoding='utf-8').read()
-    strict = bool(re.search(r'^quality_spec:\s*v1', text0[:800], re.M))
+    with open(src_read, 'rb') as source_file:
+        source_bytes = source_file.read()
+    source_hash = hashlib.sha256(source_bytes).hexdigest()
+    text0 = source_bytes.decode('utf-8').replace('\r\n', '\n')
     if not pages:
         m = re.search(r'（(\d+) 页）', text0[:800]); pages = int(m.group(1)) if m else die('给 --pages')
-    # 基线（legacy 模式看 L 数不变差）
-    baseline_L = 0
-    if not strict:
-        _, out = run([PY, os.path.join(HERE, 'note_quality.py'), src_read, '--pages', str(pages)])
-        m = re.search(r'L 合规问题 (\d+) 条', out); baseline_L = int(m.group(1)) if m else 0
     # 收集分片
     shards = sorted(glob.glob(os.path.join(work, 'shard_*')))
     if not shards: die('工作目录下没有 shard_* 子目录')
@@ -318,13 +318,20 @@ def main():
     for sd in shards:
         p = os.path.join(sd, 'patch.json')
         if os.path.exists(p):
-            P = json.load(io.open(p, encoding='utf-8')); cells += P.get('cells', []); s8 += P.get('s8', [])
+            with io.open(p, encoding='utf-8') as patch_file:
+                P = json.load(patch_file)
+            cells += P.get('cells', []); s8 += P.get('s8', [])
         f = os.path.join(sd, 'findings.json')
         if os.path.exists(f):
-            for k, v in json.load(io.open(f, encoding='utf-8')).items():
+            with io.open(f, encoding='utf-8') as findings_file:
+                findings = json.load(findings_file)
+            for k, v in findings.items():
                 if isinstance(v, list): F.setdefault(k, []).extend(v)
                 else: F[k] = v
-    mp = os.path.join(work, 'main.json'); main_ = json.load(io.open(mp, encoding='utf-8')) if os.path.exists(mp) else {}
+    mp = os.path.join(work, 'main.json'); main_ = {}
+    if os.path.exists(mp):
+        with io.open(mp, encoding='utf-8') as main_file:
+            main_ = json.load(main_file)
     for k, v in main_.get('meta_headers', {}).items(): F[k + '_header'] = v          # main.json 里的 meta_headers 优先
     # 应用
     lines = text0.split('\n')
@@ -332,23 +339,35 @@ def main():
     if s8: lines = apply_s8(lines, s8, log)
     lines = render(lines, F, main_, log)
     merged = os.path.join(work, 'merged.md')
-    io.open(merged, 'w', encoding='utf-8', newline='\n').write('\n'.join(lines))
+    with io.open(merged, 'w', encoding='utf-8', newline='\n') as candidate_file:
+        candidate_file.write('\n'.join(lines))
+    candidate_hash = sha256(merged)
     today = main_.get('date') or datetime.date.today().isoformat()
     course = (re.search(r'^course:\s*(\S+)', text0[:800], re.M) or [None, module])[1]
     blocks = meta_blocks(F, course_dir, module, today, course)
     # 验收
-    ok1, ok2, out1, out2, L = verify(merged, transcripts, pages, strict, baseline_L, partial)
+    ok1, ok2, out1, out2 = verify(merged, transcripts, pages, src_read, note_rel, partial, scope)
     rep = ['merge_apply %s  %s%s' % (datetime.datetime.now().isoformat(timespec='seconds'), note_rel, '  [partial：分片自验，A1/2/3/6/7/8/9/11 的 FAIL 不计]' if partial else ''), '分片 %d 个，🎙️ 格 %d，§8 行 %d' % (len(shards), len(cells), len(s8))] + ['  · ' + l for l in log] + \
-          ['', '--- transcript_check audit', out1.strip(), '', '--- note_quality %s' % ('strict' if strict else 'legacy（基线 L=%d）' % baseline_L), out2.strip()[-1500:],
+          ['', '--- transcript_check audit', out1.strip(), '', '--- note_quality（G/E 原始诊断 + L/R 发布门槛）', out2.strip(),
            '', '元文件追加：' + (', '.join(os.path.relpath(p, ROOT) for p in blocks) if blocks else '无'),
-           '', '【结果】 audit %s · note_quality %s%s' % ('PASS' if ok1 else 'FAIL', 'PASS' if ok2 else 'FAIL', '' if strict else '（L=%d）' % L)]
-    io.open(os.path.join(work, 'merge_report.txt'), 'w', encoding='utf-8', newline='\n').write('\n'.join(rep))
-    print('\n'.join(rep[:2 + len(log)])); print('   audit: %s   note_quality: %s%s' % ('PASS' if ok1 else 'FAIL', 'PASS' if ok2 else 'FAIL', '' if strict else '（L=%d，基线 %d）' % (L, baseline_L)))
+           '', '【机械预检】 audit %s · L/R 门槛 %s；教学记录另验' % ('PASS' if ok1 else 'FAIL', 'PASS' if ok2 else 'FAIL')]
+    with io.open(os.path.join(work, 'merge_report.txt'), 'w', encoding='utf-8', newline='\n') as report:
+        report.write('\n'.join(rep))
+    print('\n'.join(rep[:2 + len(log)])); print('   audit: %s   L/R 门槛: %s' % ('PASS' if ok1 else 'FAIL', 'PASS' if ok2 else 'FAIL'))
     if not ok1: print(out1.strip()[-1200:])
     if not ok2: print(out2.strip()[-1200:])
     print('   报告：', os.path.join(work, 'merge_report.txt'))
     if not (ok1 and ok2): sys.exit(1)
     if dry: print('   --dry-run：未写入 vault（副本在 %s）' % merged); return
+    reviewed, message = review_gate(os.path.join(work, 'review.json'), merged, note_rel, src_read, scope)
+    print('   教学核对记录：', message)
+    with io.open(os.path.join(work, 'merge_report.txt'), 'a', encoding='utf-8') as report:
+        report.write('\n教学核对记录：' + message + '\n')
+    if not reviewed: sys.exit(1)
+    if sha256(merged) != candidate_hash:
+        die('候选在本次生成后发生变化；不得用不同候选的验收记录写回')
+    if sha256(src_read) != source_hash or sha256(src) != source_hash:
+        die('源笔记自生成候选后已变；保留候选，重新合并受影响内容，禁止覆盖并发修改')
     n = atomic_write(src, '\n'.join(lines)); print('   ✓ 写入', note_rel, n, '字节')
     for path, blk in blocks.items():
         old = io.open(path, encoding='utf-8').read() if os.path.exists(path) else ''
