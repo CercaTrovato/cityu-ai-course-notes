@@ -1,0 +1,105 @@
+{
+  "toy_hash": {
+    "rule": "n modulo 4, represented as two binary digits; NOT SHA-256",
+    "rows": [
+      {
+        "input": 0,
+        "remainder": 0,
+        "digest": "00"
+      },
+      {
+        "input": 1,
+        "remainder": 1,
+        "digest": "01"
+      },
+      {
+        "input": 2,
+        "remainder": 2,
+        "digest": "10"
+      },
+      {
+        "input": 3,
+        "remainder": 3,
+        "digest": "11"
+      },
+      {
+        "input": 4,
+        "remainder": 0,
+        "digest": "00"
+      }
+    ],
+    "collision_inputs": [
+      0,
+      4
+    ],
+    "variant_collision_inputs": [
+      1,
+      5
+    ]
+  },
+  "pos_example": {
+    "assumptions": "Valid blocks/votes; successive checkpoints; source already justified; simplified normal path only",
+    "total_weight": 100,
+    "weights": {
+      "A": 40,
+      "B": 35,
+      "C": 25
+    },
+    "round1_early": {
+      "groups": [
+        "A"
+      ],
+      "weight": 40,
+      "fraction": 0.4,
+      "threshold_met": false
+    },
+    "round1_full": {
+      "support": {
+        "groups": [
+          "A",
+          "B"
+        ],
+        "weight": 75,
+        "fraction": 0.75,
+        "threshold_met": true
+      },
+      "link": "C0 -> C1",
+      "after": {
+        "C0": "finalized",
+        "C1": "justified"
+      }
+    },
+    "round2_normal": {
+      "support": {
+        "groups": [
+          "A",
+          "B"
+        ],
+        "weight": 75,
+        "fraction": 0.75,
+        "threshold_met": true
+      },
+      "link": "C1 -> C2",
+      "after": {
+        "C1": "finalized",
+        "C2": "justified"
+      }
+    },
+    "round2_variant": {
+      "support": {
+        "groups": [
+          "A",
+          "C"
+        ],
+        "weight": 65,
+        "fraction": 0.65,
+        "threshold_met": false
+      },
+      "link": "C1 -> C2",
+      "after": {
+        "C1": "justified",
+        "C2": "not justified by this link"
+      }
+    }
+  }
+}

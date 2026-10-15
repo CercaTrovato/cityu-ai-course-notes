@@ -1,0 +1,76 @@
+{
+  "volume_usd_month": 4000000,
+  "revenue_usd_month": 20000.0,
+  "average_cost_usd_per_tx": {
+    "10000": 1.05,
+    "50000": 0.25,
+    "100000": 0.15000000000000002
+  },
+  "combined_partial_margin_usd_month": 5000.0,
+  "advance_cap_rmb": 800000.0,
+  "bank_b_capacity_rmb": 200000.0,
+  "interest_rmb_60_days": 6000.0,
+  "interest_rmb_30_days": 3000.0,
+  "duplicate_payment_avoided_rmb": 800,
+  "treasury_topup_usd": 300000,
+  "released_cash_usd": 800000,
+  "annual_opportunity_saving_usd": 32000.0,
+  "net_annual_saving_usd": 120000,
+  "payback_years": 2.5,
+  "handling_minutes_saved": 15,
+  "handling_relative_reduction": 0.375,
+  "reconciliation_change_pp": -8,
+  "default_change_pp": 0.10000000000000009,
+  "loan_profit_rmb_before": 500,
+  "loan_profit_rmb_after": 1000,
+  "variants": {
+    "half_fee_revenue": 10000.0,
+    "half_fee_margin": -5000,
+    "bank_b_after_repayment": 300000,
+    "opportunity_at_2pct": 16000.0,
+    "payback_higher_run_cost": 5.0
+  },
+  "hash_original": "55fe9bc198a5bf38a5f78bc6f5291485104c481a1effc17e243e7dd6bf79cab9",
+  "hash_altered": "483c6e60f7071c3d62ef19f08bd55c6e22e21c06e839afd49ae362f3501e7e59",
+  "hash_same_input_equal": true,
+  "source": "Lec06 p.10–11,p.20,p.37–40,p.44–45,p.49,p.52–53; teaching assumptions, not observed business outcomes",
+  "pow_toy": {
+    "input_prefix": "block101|prev100|Alice pays Bob 1|",
+    "target": "hex digest starts with 0",
+    "max_attempts": 10000,
+    "trials": [
+      {
+        "nonce": 0,
+        "digest": "80e4b147bf200173a7a262582deaf91ae9e29c1beb680333d03b7326ad008cb1",
+        "hit": false
+      },
+      {
+        "nonce": 1,
+        "digest": "3b8442d766675a11e699945c35a653aebc37f5d306cbc3891f5287be833980cb",
+        "hit": false
+      },
+      {
+        "nonce": 2,
+        "digest": "93c43a0f0062516529a21b3673295ec62478ec5003737ce5e7e95eb4a966edb7",
+        "hit": false
+      },
+      {
+        "nonce": 3,
+        "digest": "0424bc2414f5357d59c8b0818212e206b0cc783c71ace7cb1ad2874737d4a797",
+        "hit": true
+      }
+    ],
+    "stop_nonce": 3
+  },
+  "pos_weight_toy": {
+    "total_stake": 100,
+    "group_weights": [
+      40,
+      35,
+      25
+    ],
+    "first_support": 40,
+    "second_support": 75,
+    "checkpoint_threshold": "at least two thirds; not a full Ethereum state machine"
+  }
+}
