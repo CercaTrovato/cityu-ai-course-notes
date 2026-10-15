@@ -223,6 +223,8 @@
 | reach / which regression | Ridge regression | M04 A `23:34`，回顾 M03 时沿用旧 ASR 错例 |
 | WETLOO / wet-loose / red-loop | ReLU | EF5560 M04 A `01:54:30`–`01:56:27`、B `01:40:25`–`01:42:36`；按讲义 p.32 书面拼写 |
 | PVOC / SEC | PBOC 等机构名 `[?]` | EF5560 M04 A `02:03:46`、B `01:49:41`；B 支持 PBOC，后句仍需回听，不硬改细则 |
+| 01:49–02:04 | Sharpe → “shock ratio”；fire sales → “file sales” | 按语境与讲义校正，必要处标 [?] |
+| 00:58:43–00:59:53 | “OLX”“Farmer French”“asset return”是 ASR 风险词 | 不把它们当校正后的英文原话；使用 `[?]` 或按讲义术语回写（OLS / Fama-French / excess return 需主代理回源核对） |
 
 ## IS6400 T02 定点校词复核（2026-10-01）
 

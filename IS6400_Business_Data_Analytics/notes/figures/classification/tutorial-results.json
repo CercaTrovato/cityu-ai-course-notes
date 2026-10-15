@@ -1,0 +1,537 @@
+{
+  "environment": {
+    "python": "3.12.3",
+    "pandas": "2.3.3",
+    "numpy": "1.26.4",
+    "scikit_learn": "1.5.1",
+    "matplotlib": "3.9.2",
+    "notebook_kernelspec": {
+      "display_name": "Python [conda env:base] *",
+      "language": "python",
+      "name": "conda-base-py"
+    },
+    "notebook_language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.13.5"
+    }
+  },
+  "source_hashes_sha256": {
+    "Week 7 Classification_Tutorial.ipynb": "4431d53034ec8ddc9815f434efeaa98c6d84cb257bc0785c90324f87c6d1fe2c",
+    "Credit_approval.csv": "f4c35cf327d94120a81d4943f8e0ce4996e6ec31037afc91709a50085634e97b",
+    "creditcard-reduced.csv": "38328a3298ec8bde9d03b0693be9c2188e79a0602d81a733593a1df5d3cf7162"
+  },
+  "cell_inventory": [
+    {
+      "cell": 0,
+      "type": "markdown",
+      "execution_count": null,
+      "saved_output_count": 0,
+      "source_lines": 9
+    },
+    {
+      "cell": 1,
+      "type": "markdown",
+      "execution_count": null,
+      "saved_output_count": 0,
+      "source_lines": 27
+    },
+    {
+      "cell": 2,
+      "type": "markdown",
+      "execution_count": null,
+      "saved_output_count": 0,
+      "source_lines": 1
+    },
+    {
+      "cell": 3,
+      "type": "code",
+      "execution_count": 1,
+      "saved_output_count": 1,
+      "source_lines": 8
+    },
+    {
+      "cell": 4,
+      "type": "code",
+      "execution_count": 2,
+      "saved_output_count": 0,
+      "source_lines": 4
+    },
+    {
+      "cell": 5,
+      "type": "markdown",
+      "execution_count": null,
+      "saved_output_count": 0,
+      "source_lines": 2
+    },
+    {
+      "cell": 6,
+      "type": "code",
+      "execution_count": 3,
+      "saved_output_count": 1,
+      "source_lines": 9
+    },
+    {
+      "cell": 7,
+      "type": "markdown",
+      "execution_count": null,
+      "saved_output_count": 0,
+      "source_lines": 2
+    },
+    {
+      "cell": 8,
+      "type": "code",
+      "execution_count": 4,
+      "saved_output_count": 1,
+      "source_lines": 10
+    },
+    {
+      "cell": 9,
+      "type": "markdown",
+      "execution_count": null,
+      "saved_output_count": 0,
+      "source_lines": 1
+    },
+    {
+      "cell": 10,
+      "type": "code",
+      "execution_count": 5,
+      "saved_output_count": 1,
+      "source_lines": 10
+    },
+    {
+      "cell": 11,
+      "type": "markdown",
+      "execution_count": null,
+      "saved_output_count": 0,
+      "source_lines": 1
+    },
+    {
+      "cell": 12,
+      "type": "code",
+      "execution_count": 6,
+      "saved_output_count": 1,
+      "source_lines": 10
+    },
+    {
+      "cell": 13,
+      "type": "markdown",
+      "execution_count": null,
+      "saved_output_count": 0,
+      "source_lines": 1
+    },
+    {
+      "cell": 14,
+      "type": "code",
+      "execution_count": 7,
+      "saved_output_count": 1,
+      "source_lines": 39
+    },
+    {
+      "cell": 15,
+      "type": "markdown",
+      "execution_count": null,
+      "saved_output_count": 0,
+      "source_lines": 1
+    },
+    {
+      "cell": 16,
+      "type": "code",
+      "execution_count": 8,
+      "saved_output_count": 2,
+      "source_lines": 5
+    },
+    {
+      "cell": 17,
+      "type": "markdown",
+      "execution_count": null,
+      "saved_output_count": 0,
+      "source_lines": 1
+    },
+    {
+      "cell": 18,
+      "type": "code",
+      "execution_count": 9,
+      "saved_output_count": 2,
+      "source_lines": 21
+    },
+    {
+      "cell": 19,
+      "type": "code",
+      "execution_count": 10,
+      "saved_output_count": 2,
+      "source_lines": 7
+    },
+    {
+      "cell": 20,
+      "type": "code",
+      "execution_count": 11,
+      "saved_output_count": 2,
+      "source_lines": 8
+    },
+    {
+      "cell": 21,
+      "type": "markdown",
+      "execution_count": null,
+      "saved_output_count": 0,
+      "source_lines": 6
+    },
+    {
+      "cell": 22,
+      "type": "markdown",
+      "execution_count": null,
+      "saved_output_count": 0,
+      "source_lines": 7
+    }
+  ],
+  "credit_approval": {
+    "shape": [
+      678,
+      6
+    ],
+    "file_size_bytes": 15513,
+    "columns_exact": [
+      "Age",
+      "Debt",
+      "YearsEmployed",
+      " CreditScore",
+      "Income ",
+      "Approved"
+    ],
+    "dtypes": {
+      "Age": "float64",
+      "Debt": "float64",
+      "YearsEmployed": "float64",
+      " CreditScore": "int64",
+      "Income ": "int64",
+      "Approved": "object"
+    },
+    "missing_count": {
+      "Age": 0,
+      "Debt": 0,
+      "YearsEmployed": 0,
+      " CreditScore": 0,
+      "Income ": 0,
+      "Approved": 0
+    },
+    "duplicates": 1,
+    "target_counts": {
+      "-": 373,
+      "+": 305
+    },
+    "target_share": {
+      "-": 0.5501474926253688,
+      "+": 0.4498525073746313
+    },
+    "numeric_min": {
+      "Age": 13.75,
+      "Debt": 0.0,
+      "YearsEmployed": 0.0,
+      " CreditScore": 0.0,
+      "Income ": 0.0
+    },
+    "numeric_max": {
+      "Age": 80.25,
+      "Debt": 28.0,
+      "YearsEmployed": 28.5,
+      " CreditScore": 67.0,
+      "Income ": 100000.0
+    },
+    "numeric_mean": {
+      "Age": 31.56817109144543,
+      "Debt": 4.777625368731563,
+      "YearsEmployed": 2.209225663716814,
+      " CreditScore": 2.4351032448377583,
+      "Income ": 1021.240412979351
+    }
+  },
+  "fraud_dataset": {
+    "shape": [
+      32764,
+      31
+    ],
+    "file_size_bytes": 11877400,
+    "columns": [
+      "Time",
+      "V1",
+      "V2",
+      "V3",
+      "V4",
+      "V5",
+      "V6",
+      "V7",
+      "V8",
+      "V9",
+      "V10",
+      "V11",
+      "V12",
+      "V13",
+      "V14",
+      "V15",
+      "V16",
+      "V17",
+      "V18",
+      "V19",
+      "V20",
+      "V21",
+      "V22",
+      "V23",
+      "V24",
+      "V25",
+      "V26",
+      "V27",
+      "V28",
+      "Amount",
+      "Class"
+    ],
+    "dtypes": {
+      "Time": "int64",
+      "V1": "float64",
+      "V2": "float64",
+      "V3": "float64",
+      "V4": "float64",
+      "V5": "float64",
+      "V6": "float64",
+      "V7": "float64",
+      "V8": "float64",
+      "V9": "float64",
+      "V10": "float64",
+      "V11": "float64",
+      "V12": "float64",
+      "V13": "float64",
+      "V14": "float64",
+      "V15": "float64",
+      "V16": "float64",
+      "V17": "float64",
+      "V18": "float64",
+      "V19": "float64",
+      "V20": "float64",
+      "V21": "float64",
+      "V22": "float64",
+      "V23": "float64",
+      "V24": "float64",
+      "V25": "float64",
+      "V26": "float64",
+      "V27": "float64",
+      "V28": "float64",
+      "Amount": "float64",
+      "Class": "int64"
+    },
+    "missing_count": {
+      "Time": 0,
+      "V1": 0,
+      "V2": 0,
+      "V3": 0,
+      "V4": 0,
+      "V5": 0,
+      "V6": 0,
+      "V7": 0,
+      "V8": 0,
+      "V9": 0,
+      "V10": 0,
+      "V11": 0,
+      "V12": 0,
+      "V13": 0,
+      "V14": 0,
+      "V15": 0,
+      "V16": 0,
+      "V17": 0,
+      "V18": 0,
+      "V19": 0,
+      "V20": 0,
+      "V21": 0,
+      "V22": 0,
+      "V23": 0,
+      "V24": 0,
+      "V25": 0,
+      "V26": 0,
+      "V27": 0,
+      "V28": 0,
+      "Amount": 0,
+      "Class": 0
+    },
+    "duplicates": 177,
+    "target_counts": {
+      "0": 32272,
+      "1": 492
+    },
+    "target_share": {
+      "0": 0.9849835184959101,
+      "1": 0.015016481504089855
+    },
+    "time_min_max": [
+      406,
+      172792
+    ],
+    "amount_min_max_mean_median": [
+      0.0,
+      25691.16,
+      70.73558570382127,
+      15.17
+    ]
+  },
+  "split": {
+    "train_shape": [
+      406,
+      5
+    ],
+    "test_shape": [
+      272,
+      5
+    ],
+    "train_target_counts": {
+      "-": 218,
+      "+": 188
+    },
+    "test_target_counts": {
+      "-": 155,
+      "+": 117
+    }
+  },
+  "credit_models_recomputed": {
+    "decision_tree": {
+      "train_accuracy": 0.7512315270935961,
+      "validation_accuracy": 0.7279411764705882,
+      "confusion_labels": [
+        "+",
+        "-"
+      ],
+      "confusion_matrix": [
+        [
+          56,
+          61
+        ],
+        [
+          13,
+          142
+        ]
+      ]
+    },
+    "random_forest": {
+      "train_accuracy": 0.7807881773399015,
+      "validation_accuracy": 0.7610294117647058,
+      "confusion_labels": [
+        "+",
+        "-"
+      ],
+      "confusion_matrix": [
+        [
+          70,
+          47
+        ],
+        [
+          18,
+          137
+        ]
+      ]
+    },
+    "bagging": {
+      "train_accuracy": 0.7783251231527094,
+      "validation_accuracy": 0.7352941176470589,
+      "confusion_labels": [
+        "+",
+        "-"
+      ],
+      "confusion_matrix": [
+        [
+          66,
+          51
+        ],
+        [
+          21,
+          134
+        ]
+      ]
+    },
+    "adaboost": {
+      "train_accuracy": 0.8054187192118226,
+      "validation_accuracy": 0.7794117647058824,
+      "confusion_labels": [
+        "+",
+        "-"
+      ],
+      "confusion_matrix": [
+        [
+          87,
+          30
+        ],
+        [
+          30,
+          125
+        ]
+      ]
+    },
+    "stacking": {
+      "train_accuracy": 0.8054187192118226,
+      "validation_accuracy": 0.7647058823529411,
+      "confusion_labels": [
+        "+",
+        "-"
+      ],
+      "confusion_matrix": [
+        [
+          81,
+          36
+        ],
+        [
+          28,
+          127
+        ]
+      ]
+    }
+  },
+  "synthetic_counts": {
+    "0": 1000,
+    "1": 9000
+  },
+  "class_weight_recomputed": {
+    "unweighted": {
+      "confusion_labels": [
+        0,
+        1
+      ],
+      "confusion_matrix": [
+        [
+          262,
+          124
+        ],
+        [
+          8,
+          3606
+        ]
+      ],
+      "accuracy": 0.967,
+      "minority_0_precision": 0.9703703703703703,
+      "minority_0_recall": 0.6787564766839378,
+      "minority_0_f1": 0.7987804878048781
+    },
+    "class_weight_0_10": {
+      "confusion_labels": [
+        0,
+        1
+      ],
+      "confusion_matrix": [
+        [
+          376,
+          10
+        ],
+        [
+          532,
+          3082
+        ]
+      ],
+      "accuracy": 0.8645,
+      "minority_0_precision": 0.41409691629955947,
+      "minority_0_recall": 0.9740932642487047,
+      "minority_0_f1": 0.5811437403400309
+    }
+  },
+  "scope_note": "评分任务使用 fraud 数据的五模型训练未执行；仅做数据概况。教学 cells 在 scratch 中用当前 API 复算。"
+}

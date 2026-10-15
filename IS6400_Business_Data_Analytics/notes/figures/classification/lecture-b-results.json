@@ -1,0 +1,304 @@
+{
+  "lecture_page_83_metrics": {
+    "tp": 10,
+    "fn": 20,
+    "fp": 50,
+    "tn": 10000,
+    "accuracy": 0.9930555555555556,
+    "precision": 0.16666666666666666,
+    "recall": 0.3333333333333333,
+    "f1": 0.2222222222222222
+  },
+  "all_negative_1000": {
+    "tp": 0,
+    "fn": 1,
+    "fp": 0,
+    "tn": 999,
+    "accuracy": 0.999,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  "all_class0_10000": {
+    "tp": 0,
+    "fn": 10,
+    "fp": 0,
+    "tn": 9990,
+    "accuracy": 0.999,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  "lecture_page_85_costs": {
+    "M1": 3910,
+    "M2": 4255
+  },
+  "lecture_page_85_audit": {
+    "M1_actual_positive": 190,
+    "M1_actual_negative": 310,
+    "M2_actual_positive": 295,
+    "M2_actual_negative": 205,
+    "same_actual_class_distribution": false,
+    "comparison_note": "The two matrices do not describe the same true-class distribution, so their model quality is not directly comparable."
+  },
+  "cost_sensitive_threshold": {
+    "cost_matrix": {
+      "C(+,+)": -1,
+      "C(+,-)": 100,
+      "C(-,+)": 1,
+      "C(-,-)": 0
+    },
+    "predict_positive_if_p_positive_gt": 0.00980392156862745
+  },
+  "hard_margin_example": {
+    "points": [
+      [
+        -2,
+        -1
+      ],
+      [
+        -1,
+        -1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "w": 1,
+    "b": 0,
+    "functional_margins": [
+      2,
+      1,
+      1,
+      2
+    ],
+    "full_margin": 2
+  },
+  "soft_margin_candidate_comparison": {
+    "0.1": [
+      {
+        "w": 1.0,
+        "b": 0.0,
+        "objective": 0.7,
+        "slacks": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          2.0
+        ]
+      },
+      {
+        "w": 0.8,
+        "b": -0.4,
+        "objective": 0.52,
+        "slacks": [
+          0.0,
+          0.0,
+          0.6,
+          0.0,
+          1.4
+        ]
+      },
+      {
+        "w": 0.0,
+        "b": -1.0,
+        "objective": 0.4,
+        "slacks": [
+          0.0,
+          0.0,
+          2.0,
+          2.0,
+          0.0
+        ]
+      }
+    ],
+    "1.0": [
+      {
+        "w": 1.0,
+        "b": 0.0,
+        "objective": 2.5,
+        "slacks": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          2.0
+        ]
+      },
+      {
+        "w": 0.8,
+        "b": -0.4,
+        "objective": 2.3200000000000003,
+        "slacks": [
+          0.0,
+          0.0,
+          0.6,
+          0.0,
+          1.4
+        ]
+      },
+      {
+        "w": 0.0,
+        "b": -1.0,
+        "objective": 4.0,
+        "slacks": [
+          0.0,
+          0.0,
+          2.0,
+          2.0,
+          0.0
+        ]
+      }
+    ],
+    "10.0": [
+      {
+        "w": 1.0,
+        "b": 0.0,
+        "objective": 20.5,
+        "slacks": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          2.0
+        ]
+      },
+      {
+        "w": 0.8,
+        "b": -0.4,
+        "objective": 20.32,
+        "slacks": [
+          0.0,
+          0.0,
+          0.6,
+          0.0,
+          1.4
+        ]
+      },
+      {
+        "w": 0.0,
+        "b": -1.0,
+        "objective": 40.0,
+        "slacks": [
+          0.0,
+          0.0,
+          2.0,
+          2.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  "soft_margin_slsqp_optima": {
+    "0.1": {
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "w": 0.3000000021856155,
+      "b": -0.39999999643514483,
+      "slacks": [
+        0.0,
+        0.3000000013792395,
+        1.099999994249529,
+        0.7999999920639131,
+        0.9000000057504712
+      ],
+      "objective": 0.3549999999999999,
+      "constraint_values": [
+        8.063758549781141e-10,
+        -2.220446049250313e-16,
+        -2.220446049250313e-16,
+        -6.661338147750939e-16,
+        4.440892098500626e-16
+      ]
+    },
+    "1.0": {
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "w": 0.6666666666666707,
+      "b": -0.33333333333333215,
+      "slacks": [
+        1.8042418563691517e-15,
+        2.7478019859472624e-15,
+        0.6666666666666692,
+        2.275957200481571e-15,
+        1.3333333333333335
+      ],
+      "objective": 2.2222222222222348,
+      "constraint_values": [
+        0.6666666666666754,
+        5.551115123125783e-15,
+        7.771561172376096e-15,
+        1.1546319456101628e-14,
+        -5.10702591327572e-15
+      ]
+    },
+    "10.0": {
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "w": 0.6666666666666394,
+      "b": -0.3333333333333205,
+      "slacks": [
+        0.0,
+        0.0,
+        0.6666666666661982,
+        0.0,
+        1.3333333333328217
+      ],
+      "objective": 20.2222222222124,
+      "constraint_values": [
+        0.6666666666665995,
+        -4.007905118896815e-14,
+        -4.828359934094806e-13,
+        -4.163336342344337e-14,
+        -4.972688927296076e-13
+      ]
+    }
+  },
+  "rbf_example": [
+    {
+      "a": [
+        0,
+        0
+      ],
+      "b": [
+        0,
+        0
+      ],
+      "squared_distance": 0,
+      "gamma": 0.5,
+      "kernel": 1.0
+    },
+    {
+      "a": [
+        0,
+        0
+      ],
+      "b": [
+        1,
+        0
+      ],
+      "squared_distance": 1,
+      "gamma": 0.5,
+      "kernel": 0.6065306597126334
+    },
+    {
+      "a": [
+        0,
+        0
+      ],
+      "b": [
+        2,
+        0
+      ],
+      "squared_distance": 4,
+      "gamma": 0.5,
+      "kernel": 0.1353352832366127
+    }
+  ]
+}

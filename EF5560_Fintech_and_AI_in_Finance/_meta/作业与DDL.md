@@ -1,7 +1,7 @@
 ---
 type: 作业与DDL
 course: EF5560
-updated: 2026-09-27
+updated: 2026-10-15
 ---
 
 # EF5560 作业与 DDL
@@ -258,3 +258,9 @@ updated: 2026-09-27
 Lec05 p53–54确认展示80股/17模拟信号、156私人周、只做多满仓单股≤10%、权重156×81、ZIP≤10MB和10/15 14:00 HKT。该课件p54仍写8页+optional appendix；旧brief p4写8页含封面+1页附录。
 
 本次读到邮件知识库 `E:/AIworkspace/codex-workspace/cityu-mail-knowledge-base/courses/EF5560.md` 对2026-10-05 17:10公告的已核正文记录：正文≤15页、所有必需表图正文、10–12pt、1.0–1.5、附录不限页数。[Canvas格式公告](https://canvas.cityu.edu.hk/courses/70898/announcements/637830)与[要求附件](https://canvas.cityu.edu.hk/courses/70898/files/16095479?wrap=1)为核定入口；该附件当时未读。本次Canvas作业直达页到CityU SSO，四入口未完成当前核验。保留冲突，不能仅凭课件日期推断撤回15页公告；提交前核当前明示。旧8页要求段落保留历史，不再当唯一现行版本。本次不改私人作业/提交状态。
+
+## 🎙️ M05 转录追加（2026-10-10）
+
+| 事项 | 内容 | 来源 |
+|---|---|---|
+| 作业策略 | 录音明确提到 long-only 口径；p.53–54 提交、截止与行政条件未确认 | M05 `01:04:18`、录音至 `02:26:27` |

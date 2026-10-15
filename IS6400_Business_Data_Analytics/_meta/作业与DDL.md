@@ -1,7 +1,7 @@
 ---
 type: 作业与DDL
 course: IS6400
-updated: 2026-09-30
+updated: 2026-10-15
 tags: [IS6400, DDL, 作业]
 ---
 
@@ -585,3 +585,13 @@ Notebook cell 35：Iris KMeans（10）、BisectingKMeans（20）、密度聚类�
 | 事项 | 内容 | 来源 |
 |---|---|---|
 | W04 tutorial一般作业指导（录音补充） | 先按官方文档示例理解接口，再换自己的数据和参数；Q2须解释SFS机制，Q3连续目标log_price用F回归，Q4森林RFE留8列；录音未另给提交渠道/期限 | `02:08:24`–`02:11:54`；当前43cell题面及已核Canvas优先，旧§7历史段不适用 |
+
+## Week 7 分类作业（2026-10-14 材料登记）
+
+Notebook 第 23 格（0 起算 cell 22）三题内部 50／30／20 共 100 分：五分类器与五项评估；机制／性能比较；同一分类器有无 class_weight 的比较。使用 creditcard-reduced.csv；不能照搬合成例的“0 是少数类”编码。公开方法见 [[IS6400_Business_Data_Analytics/notes/T07-分类实战-信用审批与欺诈识别|T07 分类实战]]，完整个人答案保持私有，本轮未制作或提交。
+
+本次已只读核 Canvas [Assignments](https://canvas.cityu.edu.hk/courses/71457/assignments)、[Announcements](https://canvas.cityu.edu.hk/courses/71457/announcements)、[Modules](https://canvas.cityu.edu.hk/courses/71457/modules) 与 Files。Week 7 模块含五附件；Assignments 可见列表与模块未见独立提交入口；Files 列表重定向课程首页，已从 HTML 文件预览核题面。10/1 [通用公告](https://canvas.cityu.edu.hk/courses/71457/discussion_topics/637007) 要求执行全部代码、展示输出、Markdown 解释、HTML 提交及逐题定位。专属截止、Canvas points、允许文件类型和额外 rubric 仍待核，不按上周日期规律推算，也不称未发布。
+
+来源：Week 7 Classification_Tutorial.ipynb cell22；Canvas file16237312 HTML 预览；module items666015/666018/666019/683043/683044。具体上课日期未单独确认。[[IS6400_Business_Data_Analytics/_meta/M06-T07-制作验收记录-2026-10-14|制作验收记录]] 保留四入口核对边界。
+
+2026-10-14 同步闭环：Notion [Week 7 分类进度](https://app.notion.com/p/3d58310b259681578796e1ea214affe9) 与 [Week 7 作业要求](https://app.notion.com/p/3f88310b259681e79cd4f84a1df78e40)已写入并逐字段回读；截止保持空缺，已有学习／录音／转录字段不变。文件安全及检查器误报明细见 [[IS6400_Business_Data_Analytics/_meta/M06-T07-同步回执-2026-10-14|同步回执]]。
