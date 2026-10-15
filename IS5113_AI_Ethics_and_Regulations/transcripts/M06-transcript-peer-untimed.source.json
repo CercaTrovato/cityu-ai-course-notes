@@ -1,0 +1,65 @@
+{
+  "schema": "untimed-source-v1",
+  "sources": [
+    {
+      "id": "U1",
+      "text": "M06-transcript-peer-untimed.txt",
+      "text_sha256": "ae651143c647fcecade5e6ccba38cf5f51f863a1d9dedc9b0c2b48decce422a6",
+      "pages": 19,
+      "page_line_counts": {
+        "1": 38,
+        "2": 38,
+        "3": 38,
+        "4": 38,
+        "5": 37,
+        "6": 38,
+        "7": 38,
+        "8": 38,
+        "9": 36,
+        "10": 38,
+        "11": 38,
+        "12": 38,
+        "13": 38,
+        "14": 38,
+        "15": 38,
+        "16": 38,
+        "17": 38,
+        "18": 38,
+        "19": 17
+      },
+      "redacted_lines": [
+        {
+          "page": 1,
+          "line": 1,
+          "category": "document-title"
+        },
+        {
+          "page": 1,
+          "line": 2,
+          "category": "exporter-date-duration"
+        },
+        {
+          "page": 5,
+          "line": 5,
+          "category": "exporter-date-duration"
+        },
+        {
+          "page": 9,
+          "line": 15,
+          "category": "exporter-date-duration"
+        }
+      ],
+      "extractor": "pypdf 6.10.2, PageObject.extract_text() defaults, splitlines()",
+      "parameters": "PageObject.extract_text() defaults; splitlines(); no text correction; four metadata lines redacted",
+      "limits": [
+        "peer supplied; user absent",
+        "no segment timestamps",
+        "no audio speaker verification",
+        "not a complete-class claim",
+        "earlier privacy session missing",
+        "module 6 is Outline topic mapping, actual teaching week unverified"
+      ]
+    }
+  ],
+  "source_mode": "untimed"
+}

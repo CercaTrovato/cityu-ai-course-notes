@@ -592,6 +592,22 @@ Notebook 第 23 格（0 起算 cell 22）三题内部 50／30／20 共 100 分�
 
 本次已只读核 Canvas [Assignments](https://canvas.cityu.edu.hk/courses/71457/assignments)、[Announcements](https://canvas.cityu.edu.hk/courses/71457/announcements)、[Modules](https://canvas.cityu.edu.hk/courses/71457/modules) 与 Files。Week 7 模块含五附件；Assignments 可见列表与模块未见独立提交入口；Files 列表重定向课程首页，已从 HTML 文件预览核题面。10/1 [通用公告](https://canvas.cityu.edu.hk/courses/71457/discussion_topics/637007) 要求执行全部代码、展示输出、Markdown 解释、HTML 提交及逐题定位。专属截止、Canvas points、允许文件类型和额外 rubric 仍待核，不按上周日期规律推算，也不称未发布。
 
-来源：Week 7 Classification_Tutorial.ipynb cell22；Canvas file16237312 HTML 预览；module items666015/666018/666019/683043/683044。具体上课日期未单独确认。[[IS6400_Business_Data_Analytics/_meta/M06-T07-制作验收记录-2026-10-14|制作验收记录]] 保留四入口核对边界。
+来源：Week 7 Classification_Tutorial.ipynb cell22；Canvas file16237312 HTML 预览；module items666015/666018/666019/683043/683044。上课日期由用户说明、媒体日期与内容核为2026-10-14。[[IS6400_Business_Data_Analytics/_meta/M06-T07-制作验收记录-2026-10-14|制作验收记录]] 保留四入口核对边界。
 
 2026-10-14 同步闭环：Notion [Week 7 分类进度](https://app.notion.com/p/3d58310b259681578796e1ea214affe9) 与 [Week 7 作业要求](https://app.notion.com/p/3f88310b259681e79cd4f84a1df78e40)已写入并逐字段回读；截止保持空缺，已有学习／录音／转录字段不变。文件安全及检查器误报明细见 [[IS6400_Business_Data_Analytics/_meta/M06-T07-同步回执-2026-10-14|同步回执]]。
+
+
+### 🎙️ 2026-10-15 转录补充：Week 7要求
+
+来源为10月14日教程B原时钟。以下只更新已核要求，不改变本人作答、审阅、提交或评分状态；没有录到专属截止或新的提交渠道。
+
+| 事项 | 本次确认 | 来源 |
+|---|---|---|
+| 五分类器 | 可沿用教程五种，也可从链接选其他分类器；须用指定creditcard-reduced数据 | TA B `01:32:50`–`01:33:35` |
+| 评价交付 | 混淆矩阵之外仍要题面所列accuracy、precision、recall、F-score | TA B `01:34:09`–`01:34:37`、B `01:35:55` |
+| 第二题分析 | 用完整句子展示自己的分析思路，不只关键词 | TA B `01:35:06`–`01:35:14` |
+| 第三题比较 | 同一分类器有/无class_weight前后比较 | TA B `01:35:31`–`01:35:55` |
+| 分值边界 | 01:33:12的ASR转成15marks，与原题50分冲突；未回听，以书面50/30/20为准 | 原notebook cell22 |
+| 截止与提交 | 本次录音无专属截止、points或新提交渠道；保留Canvas既有核对限制 | 完整教程通读 |
+
+自动语音识别（ASR）的三条过滤记录保留原件；晚段两条可能为实质指标说明，未回听不直引，现有原题和未过滤段已支持上述要求。课堂参考解析不等于本人已提交。

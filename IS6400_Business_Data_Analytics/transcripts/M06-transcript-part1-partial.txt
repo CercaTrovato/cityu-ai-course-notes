@@ -1,0 +1,795 @@
+00:00 
+This model should help us establish the relationship between the three features and this prediction target, the class label. 
+
+00:08 
+So the right hand side here is one decision tree model we just optimized. 
+
+00:16 
+Now this is a well-structured decision tree. Of course, we can have many different tree structures. 
+
+00:22 
+So let's take a look at this decision tree. So a decision tree is to help us make decisions according to the attributes we have, but these attributes, they are fed into the tree structure in different order or in different sequence. So a typical decision tree has two categories of nodes. One category is the attribute node. 
+
+00:45 
+labeled color here, the yellow color here, so we can see the merit status, homeowner status, and income, these three different attributes, they are labeled yellow, and they are called attribute nodes, and attribute nodes will split the data into different parts according to the attribute values, and the second category of nodes is labeled blue here, called decision node, or end node. 
+
+01:10 
+So when we reach the end node or decision node, we are trying to make the decision according to the label of this end node or decision node. 
+
+01:19 
+So let's take a look at how this tree structure, we are going to learn how we induce a tree structure soon. 
+
+01:26 
+Let's see how this tree structure can be useful to extract the relationship. 
+
+01:31 
+So first, let's take a look at the first training record here. 
+
+01:36 
+So according to the three attributes, the human experts want to provide final decision as a node, so if we use this decision tree instead of human experts, then we will first check the applicant or the user's marriage status. If the marriage status is married, I go to the left-hand side, otherwise I go to the right-hand side of this tree structure. 
+
+02:00 
+Now for the first record, the married status is single, so I will go to the right-hand side, right? 
+
+02:07 
+Now once I go to the right-hand side of the tree structure, I will reach the second level, the second attribute node, which is asking you to examine the homeowner status. 
+
+02:18 
+Now I examine the homeowner status of this record, and it is yes. 
+
+02:23 
+So according to the tree structure, I go to the left-hand side. 
+
+02:28 
+Now once I go to the left-hand side, I reach the decision node, or the end node, and the decision node tells me that my label is no, and we can see this label provided by the decision tree structure matches the real label provided by the human experts. 
+
+02:46 
+Now do you think that this tree structure can help us mimic the decisions made by the human experts for the forest record? So we can do that right? 
+
+02:58 
+Now we can examine the second training record, so still we first check the marriage status and it is married, so I go to the left side directly and I reach no, so this decision is the same as a human's decision, right? 
+
+03:13 
+So, you can examine all the training records here in the data table, and you may realize that if I feed these attributes for all the records into this tree structure, the tree structure will provide a perfect classification label for all the records here. 
+
+03:30 
+Now, in that case, the tree structure contains all the information we need to make the right predictions according to the attribute values, right? 
+
+03:41 
+Now do you think that we need this data table anymore? 
+
+03:45 
+We do not need this data table because this tree structure contains all the relationship we need to make the correct classification 
+
+03:55 
+for the incoming applicants. So this is how the decision tree structure and algorithms 
+
+04:02 
+with the structure like this that can help us quantify the relationship between the features and the class labels 
+
+04:12 
+Now once we have this learning algorithm induced or well-trained, then we can apply this model for future usage. 
+
+04:21 
+So how a tree structure can be useful for making future usage? 
+
+04:26 
+Imagine that if we have this tree structure, and we have a new applicant. 
+
+04:31 
+And when we have a new applicant, we have all the future values ready for the new applicant. 
+
+04:38 
+Now we just use this tree structure and we check the actual nodes from layer to layer, and for the first layer we check homeowner status, and it is no, I go to the right-hand side, and then I list the second actual node, which is marriage status, and it is married, so I go to the right-hand side, and the label provided by the tree is no, so I will use this no as my predicted result using the tree structure. 
+
+05:07 
+So we will assign no to this record. 
+
+05:09 
+Of course, for this whole data set, we may have the real label to evaluate whether the label predicted by the tree matches the real label in the result data set. 
+
+05:25 
+So we have the 
+
+05:27 
+loop. So we use the change data set to change the classification model which can capture the relationship between the features and the target in the change data set. And then we can apply this model for future usage. Now still... 
+
+05:44 
+For the previous trees, I just provide the tree structure for you, and the tree is working very well in predicting all the labels for the training record, but the question remains, how we induce, or how we get, this tree structure. 
+
+06:01 
+So, there are many different algorithms that we can use to train a decision tree, like the Hamster algorithm, CAD. 
+
+06:12 
+The ideas are the same. The ideas among all these algorithms are the same. 
+
+06:17 
+We are trying to identify the features which can make the best predictions. 
+
+06:24 
+In other words, we are trying to select the features as the feature node in different layers, 
+
+06:30 
+and these features can help us identify the differences among different class labels of data records. 
+
+06:39 
+So if you consider this as a problem, 
+
+06:43 
+For example, when we are trying to establish a tree structure for this training record 
+
+06:48 
+Now my first question for constructing this tree structure is to determine which attributes should I use as the first layer of the decision tree 
+
+07:01 
+For the attribute node, right? 
+
+07:03 
+So we have three attributes to choose, homeowner, management, and annual income 
+
+07:13 
+As you know, so which one is that? 
+
+07:17 
+Now recall, we are trying to create a feature which can differentiate different classes of data points as much as possible 
+
+07:26 
+And this feature should be the most important feature for us to tell the differences among different data points 
+
+07:34 
+Now, this problem is very similar to the problem we have solved before in the feature engineering 
+
+07:43 
+So recall, when we have feature engineering, we use some methods to quantify the future importance, right? 
+
+07:51 
+Now we get some future importance, and we get the most important feature, which can get the purest data subset. 
+
+08:00 
+The purest data, right? 
+
+08:03 
+So recall, we have Gini index, entropy, and in our formula we have a p-value and some other statistical and vector models to quantify the future importance. 
+
+08:15 
+Now similarly, for constructing the decision tree model, or in other words, we are trying to select the most important attribute node for different layers, we are doing the same thing. 
+
+08:28 
+We are quantifying the future importance for different data sets. 
+
+08:33 
+So let's see how the Hans algorithm is very useful in inducing the decision tree structure. 
+
+08:46 
+Let's see, for the house algorithm here, at 
+
+08:53 
+the very beginning, I have nothing, so there's no decision tree, there's no attribute node, and we have the training data table like this, so by default, I can still make a prediction, so by default, I will predict the majority of the data points, and we can see among all the data points in this training data set, we have three labeled years 
+
+09:22 
+Three labeled years and seven labeled nodes. 
+
+09:28 
+So if I just have a random guess, so I will guess the label to be node, because if I guess this label to be node, I still have 70 % accuracy, right? So if I have no attribute node here, I can still make a default guess. The guess will be node. And I have a 70 % accuracy. I know this is not good. 
+
+09:54 
+So I want to introduce a decision tree structure. Now I want to construct the first level decision tree, the first layer, using one attribute node. 
+
+10:04 
+Now the question is that we have three attributes. Which attributes should I use for the first attribute node? 
+
+10:14 
+Now I will do the G-index or entropy calculation, right? So pure the better. So what I did... 
+
+10:23 
+So at my beginning, I have 10 data points. 3 are no, 3 are yes, and 7 are no. 
+
+10:29 
+And I know this. I can calculate the Gini index or entropy for the parent node, right? 
+
+10:36 
+Now I try the three attributes one by one. 
+
+10:40 
+And I will calculate the Gini index after I pick one feature to split the data. 
+
+10:44 
+And I can calculate the Gini index or entropy after the split. 
+
+10:49 
+After that, I pick the homeowner status. Homeowner status as the most important feature because after that, my subset will have a pure result. The Gini index or entropy is the lowest. 
+
+11:06 
+So I get this result. I choose the homeowner status as the first attribute because it is the most important one according to the future importance score. 
+
+11:17 
+Now the home order status will split the data into the left hand side and right hand side, yes or no 
+
+11:22 
+So home order status equals to yes, so here we have three records 
+
+11:27 
+So these three records, they go to the left hand side, and we check their labels, they are all no's 
+
+11:33 
+So for the left hand side data set, we have 0 yes and 3 no 
+
+11:38 
+So this end node is pure, right? 
+
+11:43 
+And according to the label distribution, I will predict any data points below this M node to be no, the label should be no, following the majority 
+
+11:54 
+Now for the last 7 data points, they have the actual value of homeowner to be no, and we can check, for all these data points here, 3 of them are labeled yes, and 4 of them are labeled no 
+
+12:11 
+So still, if I only have one attribute node, this will become the decision node, the end node. 
+
+12:17 
+And for this end node, we have seven chain data points in this end node. 
+
+12:22 
+So we have three years for node. 
+
+12:25 
+So by default, the prediction result for this label, for this lead node or end node, it should be node. 
+
+12:32 
+So we follow the majority. 
+
+12:35 
+Now we can see, using the one-wheel decision tree, the performance is still not good, right? 
+
+12:41 
+So our accuracy is still 70% because we have three data points misclassified here in this decision node. 
+
+12:50 
+So do you think we need to go further, we need to go to a second layer by introducing another attribute node into the tree structure? 
+
+12:58 
+We can do that. 
+
+12:59 
+Now the question comes, now we have two N nodes, right? 
+
+13:04 
+So we can pick one feature to further split this leaf node into two parts. 
+
+13:09 
+But do you think it is necessary to do that? 
+
+13:13 
+It is not. Because this leaf node, this end node, or this decision node, it is pure already. 
+
+13:20 
+It is a pure risk case. 
+
+13:22 
+If we choose a new actual node to further split this leaf node, the information gain is zero. 
+
+13:29 
+We cannot get it pure. 
+
+13:32 
+So, do we need to add one attribute node for these 7 data points in this leaf node to further split this data distribution into a pure status? 
+
+13:42 
+We can do that, right? 
+
+13:44 
+Now, the question becomes, starting from the first layer here, we want to pick one attribute, one feature, which can split the 7 data points into a pure status. 
+
+14:01 
+Now, what I need to do? 
+
+14:03 
+Among the three attributes, I want to quantify their importance again, but the importance depends on the Gini index or the entropy of these padded nodes, because these three data points, they were already filtered out, we only need to deal with these seven data points. 
+
+14:27 
+Now the feature importance quantification using the information gain or any other matrix 
+
+14:32 
+We are starting from these seven data points. We are not starting from the ten original data set 
+
+14:38 
+We only need to split these seven data points into two parts and we pick the best 
+
+14:44 
+attribute or feature which can provide the purest subset 
+
+14:50 
+Now that's our job 
+
+14:52 
+So we do the information calculation again, and we pick the marriage status, so by using the marriage status, we have 3 yes and 4 no, split data into two parts, so for the left side part, and right side part, we get different distributions, so for the left side, we have 3 yes and 1 no, so by default, the prediction accuracy here, we have 1 misclassified, right? 
+
+15:22 
+because we follow the majority and we only predict the yes, and here, the right hand side, this is pure 
+
+15:32 
+so for this decision tree, what 
+
+15:38 
+is the overall accuracy we have for using this decision tree 
+
+15:45 
+so among the 10 training records, how many data points are misclassified using this tree structure with 2 XBNO in 2 layers 
+
+15:54 
+only one, right? 
+
+15:58 
+Because this decision node is pure. This decision node is pure, only this one we have one mix with three other points. Only one data point is classified. 
+
+16:10 
+And finally, we can stop here, and if we stop here, we only have one data point is classified. 
+
+16:21 
+But can we go further? Can we further induce this tree structure to another layer? 
+
+16:30 
+And if we want to do that, we do not need to deal with this leaf node, right? 
+
+16:35 
+We only need to find one important attribute to further split these four data points into pure status. 
+
+16:43 
+Now we get this annual income. 
+
+16:46 
+So 
+
+16:50 
+in my chart, for using the annual income, this is pure, this is pure, this is pure, this is pure. 
+
+16:57 
+So for the four decision nodes, they are all pure. 
+
+17:01 
+And the training error will be zero. 
+
+17:04 
+We can obtain 100 training accuracy. 
+
+17:08 
+Now, in other words, can we use this tree structure to represent all the relationship we may need from this training data set, 
+
+17:20 
+which tells us the relationship between the features and the classification label? 
+
+17:26 
+We can do that, right? 
+
+17:28 
+Is that clear? 
+
+17:30 
+How we call this tree structure? 
+
+17:36 
+Because we don't have quiz question for many days, so let's have the first quiz today 
+
+17:43 
+So yeah, everybody is waking up 
+
+17:47 
+Okay, the question, so please do not inform your students or close friends who are hanging out 
+
+17:54 
+in class, so you may see I'm 
+
+17:58 
+suffering a very serious voice turning down. I'm still here in class. I also want to 
+
+18:04 
+sleep on top of my sofa, playing Rondo Royale with my friends while I'm still here. 
+
+18:10 
+So I appreciate all the students who come to class. 
+
+18:13 
+So the question, the today's class question is very simple. 
+
+18:16 
+So please tell me how the training accuracy is changing from the default setting to the final structure. 
+
+18:26 
+We have four stages, right? 
+
+18:28 
+And you need to provide four training accuracies. 
+
+18:32 
+for inducing along the path we induce the chip structure. 
+
+18:38 
+Is that clear? 
+
+18:42 
+So training accuracy. 
+
+18:43 
+So if we use this chip structure, you need to tell me the training accuracy for using the default chip. 
+
+18:51 
+If I use this chip structure, what is the training error or training accuracy? 
+
+19:00 
+If I use this tree structure, what is the training accuracy? 
+
+19:05 
+And if I use this tree structure, what is the training accuracy? 
+
+19:09 
+So you need to provide four training accuracy to submit the answer. 
+
+19:15 
+Is that clear? 
+
+19:17 
+Actually, I already tell you the answer during the lecture, right? 
+
+19:21 
+Okay, so please do not share with your friends. 
+
+19:24 
+So you have about five minutes to submit these four numbers. 
+
+19:28 
+Okay, only four numbers. 
+
+19:31 
+The accuracy of these four different layers of the decision tree structure and I will pose the quiz questions soon. 
+
+19:39 
+You can 
+
+24:58 
+see the decision tree, 
+
+25:03 
+so my advantage is that when we construct the tree structure, we only quantify the feature importance. 
+
+25:10 
+And we call, when we calculate the feature importance, it is a very fast method, so it's not that expensive to construct the decision tree structure. 
+
+25:22 
+It's very fast for us to change or use the decision tree for the implementation. 
+
+25:28 
+And also it's very easy for us to interpret the small size tree structure because we will interpret the tree using the if-else conditions. 
+
+25:36 
+So for example here, for this tree structure, we just interpret the tree structure as if the homeowner's status is yes, I predict no, otherwise I check the marriage status. 
+
+25:47 
+If the marriage status is married, I predict no, otherwise I check the annual income. 
+
+25:52 
+So the tree structure can be interpreted using the if-else conditions 
+
+25:57 
+Now of course, for the tree structure, it is also very robust to use some certain random features 
+
+26:08 
+So if some features are just pure noise, they will not be selected as the actual node 
+
+26:15 
+Why? Because their feature importance score will be very low 
+
+26:23 
+In picking the attribute node, we use the feature importance code, they will not be picked. 
+
+26:29 
+So it's very easy for us to handle the redundant or irrelevant features using the decision tree structure. 
+
+26:36 
+But there are certain disadvantages of using the decision tree structure. 
+
+26:42 
+So first, we need a lot of space to store this tree structure. 
+
+26:46 
+It's not similar to a linear line that we only use the intercept and slope to record the linear line. 
+
+26:53 
+For the tree structure, we need the whole tree parameters, layers, attribute nodes, and list nodes to record the algorithm. 
+
+27:04 
+And also, certain limitations come from the tree structure because we use these attributes one by one. 
+
+27:12 
+So we use one attribute for one time, and then for the second layer, we pick up the other attributes. 
+
+27:18 
+For one layer here, for one attribute node, we do not use the combinations of many different attributes together. 
+
+27:26 
+So this limitation will make the decision trees kind of stupid for some simple classification problems. 
+
+27:34 
+So for example, for this blue and red data points, 
+
+27:39 
+Scatter plot in the X1 and X2 feature space. Now we can see if we want to use these two features to classify the two colors of data points, it's very easy for us, right? We just get this classification boundary. And the classification boundary has the function of X1 plus X2 equals to 20. 
+
+28:07 
+So actually value X1 plus X2 is larger than 20, I label it red, otherwise I label it blue. So simple, right? 
+
+28:16 
+But if you use the decision tree structure, it becomes very complicated because if we put decision tree, I may just use X1 first. 
+
+28:26 
+So if I use X1 first, I get a classification boundary to split the data into left-hand side and right-hand side part, right? 
+
+28:34 
+And then I will use X2. 
+
+28:37 
+X2 will split the data into other two subsets, and X1 again, X2 again, X1, X2, X1, X2, until I mimic the classification boundary using many layers of decision trees like this. 
+
+28:53 
+So X1, X2, X1, X2 will have so many layers. 
+
+28:58 
+And we need a very big tree structure to deal with the classification problem for this data set. 
+
+29:06 
+Because we can only use X1, X2 one by one. Of course, if we are smarter, we can just use an advocated X1 plus X2, then we will be able to use one little decision tree to mimic this education boundary. 
+
+29:22 
+But unfortunately, if you implement the decision tree directly, you will not construct one feature here. 
+
+29:32 
+Observe the pattern, you may manually construct a new feature called X1 plus X2 
+
+29:37 
+And if you fit this as a new single feature into the decision tree, you will provide a very good classification probability 
+
+29:45 
+And also if your classification boundary looks like this, it's very difficult for us to get the, to build a decision tree to get the classification boundary here, because we need so many layers of decision trees in order to get the classification boundary for this data distribution. 
+
+30:05 
+So I want to remind you that 
+
+30:08 
+For the decision tree that is used for the classification problem, we can also apply the decision tree for the regression analysis. 
+
+30:17 
+The basic idea is that, recall, when we are using decision tree to use the subset and get the final label, 
+
+30:28 
+so we use, for example here, we use the default label because the number of yes and number of no, we follow the majority. 
+
+30:37 
+To get the predicted label for the decision node, right? 
+
+30:40 
+Now imagine if this target is not class labels, they are real numbers, 1 or 2 or 3. 
+
+30:50 
+For example, the risk score, or probability of the risk from 0 to 1. 
+
+30:56 
+And here, it is not 2 class label frequency counting, right? 
+
+31:02 
+Actually, this indicates the 7 data points with their real numbers as the prediction target. 
+
+31:08 
+Now, we may use the average value of the 7 data points as my predictive value here. 
+
+31:16 
+But it's not for the majority, because for the numerical prediction target, for the regression analysis, we can use 
+
+31:25 
+And we can only use the average value of the prediction target for the 70 training reports in this decision node as my final decision. 
+
+31:33 
+The average value. 
+
+31:36 
+So we can see, following this calculation, any decision tree class files or any classification models you can see in today's class and in today's tutorial, they will be able to be transformed into a regression model. 
+
+31:57 
+And we can use this model structure to make real number prediction for regression analysis. 
+
+32:04 
+But we will not repeat that for the lecture. In our tutorial, we can see some examples. 
+
+32:13 
+Now, the decision tree model is just a warm-up. 
+
+32:17 
+So is that clear for the decision tree? So easy, right? 
+
+32:21 
+Now let's get something difficult today. 
+
+32:27 
+Maybe some of you learn or someone learns in other classes, but we will go to some advanced ones. 
+
+32:41 
+Because today's job for us is to establish the relationship between features and class labels using the learning algorithm 
+
+32:49 
+Now we can see the decision tree is very simple 
+
+32:53 
+But it is useful to extract the relationship from some small and simple data set 
+
+32:58 
+Now when the data becomes more complicated 
+
+33:01 
+Maybe one single decision tree is not working very well 
+
+33:05 
+To identify or extract the relationship 
+
+33:08 
+So do we have any other models? 
+
+33:11 
+and some other more complicated, more useful, more advanced algorithms that can do a better job in extracting the relationship between the features and the class labels. 
+
+33:25 
+Yes, we can do that. So it's called ensemble learning method. 
+
+33:29 
+So ensemble learning method's idea is to assign different base classification models even though for the base classification models they may not work very well. 
+
+33:41 
+But our job is to assemble or hybrid all the base classification models to learning outcomes into our final prediction 
+
+33:50 
+It's very similar to the element problem that for one base class file here 
+
+33:59 
+So if you consider this man as one single classifier like a decision tree, and this man will guess, or will extract a pattern from the whole object from his own view, and he will make his own guess. 
+
+34:13 
+Maybe his guess is wrong, it doesn't matter. I will find a second guy to observe another part of the data, and this guy, another base classifier, maybe another decision tree model, will make his own decision. 
+
+34:28 
+Maybe his decision is wrong, and I have some 3 and 4. 
+
+34:33 
+Now maybe all the 4 basic test files have their own predictions, and some of them are correct, some of them are wrong. 
+
+34:40 
+But we will not use one only. 
+
+34:43 
+I will aggregate these 4 basic test files all together with God's view. 
+
+34:48 
+And we will make the final prediction according to their all outcomes. 
+
+34:54 
+So this is called ensemble learning. 
+
+34:57 
+Now why ensemble learning is working? 
+
+35:00 
+So we call it collectively intelligent, so while the collection can become intelligent, one union object, so let me give you an example here, so here we have 25 bit class files, maybe 25 humans or 25 decision trees, and each class file or each decision tree has the error rate of 0.35 
+
+35:27 
+In other words, if I ask one base class bar among the 25, ask them to make prediction, they will make mistake about 35%. 
+
+35:38 
+Now let me give you an example. About 3 weeks or 4 weeks ago, I followed one of my colleagues suggestion to purchase one stock in Europe. 
+
+35:50 
+The stock is called Thermax. 
+
+35:55 
+Even though I cannot afford the product, I can afford the stock. 
+
+35:59 
+So, unfortunately the price dropped from $200 to $150. 
+
+36:05 
+The biggest disaster which ruined my reputation in stock investments for my whole life. 
+
+36:14 
+But actually most of us, I believe most of us are very smart and we should make very good decisions together. 
+
+36:22 
+Until it's not enough. 
+
+36:28 
+So I have 25 students here. And now I want to make a decision to decide whether I need to buy the Tesla stock tonight. So I will follow the majority of 25 students. So for example for you, can you make a prediction whether the Tesla stock price will go up or go down? Just make a guess. 
+
+36:50 
+Of course I will not follow you. 
+
+36:53 
+Make a guess. 
+
+36:55 
+Ok, he guessed go up. 
+
+36:57 
+Can you provide a guess for me? 
+
+37:00 
+Of course I will not follow you. 
+
+37:02 
+Ok, also up. 
+
+37:04 
+Now you can see, I can collect the predictions by 25 students, right? 
+
+37:10 
+Some of them we have predicted up, some of them we have predicted down. 
+
+37:15 
+But I have seen students 
+
+37:17 
+They are not so confident, because they can make mistakes, right? 
+
+37:21 
+And the probability that they will make the wrong prediction is 35%, not that high, right? 
+
+37:29 
+Now I have 25 students, not every single one has a very outstanding prediction. 
+
+37:35 
+All of the students, they have their own prediction, L to be 0.35. 
+
+37:41 
+L is B. 
+
+37:43 
+Now I will follow the majority of the 25 students to make my final decision. 
+
+37:49 
+If more than half of the 25 students ask me to buy, I will buy. 
+
+37:53 
+Ok, not buy. 
+
+37:55 
+So if more than half of the students make the right prediction, I will follow the prediction. 
+
+38:03 
+Of course I can make mistakes. 
+
+38:06 
+Now the probability that I will make the final mistake equals to the probability that more than half of the 25 students, they make mistakes. 
+
+38:17 
+They provide wrong predictions, right? 
+
+38:20 
+Now what's the probability? 
+
+38:22 
+Now, for the X defined as the number of students making mistakes 
+
+38:26 
+If X is larger than 13, the half of the students who make mistakes 
+
+38:33 
+My final prediction will be wrong, right? 
+
+38:36 
+Now if X equals to 13, now I put I equals to 13, so here is the combination of 25 over 13, indicating how many combinations that 13 students will make mistakes, exactly 13 students, and this is the probability that the 13 students make mistakes, and this is the probability that the last 12 students make the correct prediction, so I equals to 13 
+
+39:00 
+Now if 14 students make mistakes, I will make mistakes, right? 
+
+39:05 
+So I can go to 14, and this is 25 combination of 14, and 14 students make wrong prediction, and 11 students make correct prediction. 
+
+39:16 
+So I summarize all the I from 13 to 25 indicating the total probability or the total possible combination that more than half of students make mistake. 
+
+39:35 
+prediction error by advocating the drama prediction that the total prediction error for me who makes the final prediction is only 0.06 we can see this number drops from 0.35 to 0.06 a magic right so let's have a 10 minutes break and we will continue how we can ensemble base classification model to get a better one so we will have a break and continue at 1pm 
+

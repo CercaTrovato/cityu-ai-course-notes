@@ -1,0 +1,1857 @@
+00:00 
+from 0.35 to 0.06, small number, and this is a measure of ensemble learning, so here from this figure we can see, the x-axis is the base classification error, and y is the final prediction error that if I ensemble the 25 base classifiers together, if the base classifier error is 0.35, 
+
+00:28 
+It is 0.35, the prediction error will drop from 0.35 to 0.06, and then if the performance of your base classifier is better, the single base classification error is 0.2, and you add in the 25, the final prediction error will be very close to 0. 
+
+00:53 
+So ensemble learning is very useful, that you can amplify the performance of a single base class file, but there are two requirements, first, each base class file should be independent from each other, and you cannot use other predictions as your own prediction when the two base class files are working, they should work independently to make their own guess, so if they are independent, 
+
+01:22 
+Then we can put their performance in. 
+
+01:25 
+And also, in the team, among 25 base classifiers, some of them may not have a worse performance than the random guess. 
+
+01:35 
+If the base classifier's error rate is larger than the random guess of 0.5, 
+
+01:41 
+that means the classification error for the base classifier is 0.6, the ensemble learning result can be worse. 
+
+01:48 
+So usually we will remove the base class file with the performance even worse than the random prediction. 
+
+01:56 
+Now, let's see how we can construct an ensemble learning framework or model to get final prediction. 
+
+02:08 
+So the idea of getting the ensemble learning is to chain many different base class files using as much independent dataset as possible. 
+
+02:22 
+So at the very beginning we have only one original dataset, so our job for the first step is to split or random sample or use original dataset to construct many new training datasets. 
+
+02:35 
+We can use random sampling to sample dataset 1, a new training dataset, and training dataset 2 until training dataset T. 
+
+02:45 
+So we can randomly generate many different training datasets independently. 
+
+02:50 
+And each training dataset will be induced for one base classification model 
+
+02:56 
+For example, for training dataset 1, we will use it to induce a classification model C1 
+
+03:04 
+And C1 is only able to observe the training dataset 1 
+
+03:10 
+It cannot observe the original dataset 
+
+03:13 
+And it cannot observe the other dataset 
+
+03:18 
+like a base classifier in an island that we cannot observe or it does not know whether we have any other training data set in the world 
+
+03:28 
+now for the data set 2, similarly we only use data set 2 to induce one base classifier C2 
+
+03:36 
+so now we have two training procedures 
+
+03:39 
+so following the same training procedure we induce a single tree 
+
+03:43 
+this is tree model, here we do it twice 
+
+03:48 
+Randomly sample data, we will induce one classifier, and the classifier will be trained using this data set it observes. 
+
+03:56 
+So no matter how many data sets we generate here, we will conduct many base classification models in each instance. 
+
+04:08 
+And then finally, in step 3, we will aggregate all these base classifiers all together to make the final prediction here. 
+
+04:18 
+This is the basic idea of ensemble learning 
+
+04:22 
+To achieve ensemble learning, there are many different methods 
+
+04:27 
+For all these methods, whether we are doing the matching ensemble to mix different data distribution, to the sampling different data points, or to manipulate the features, we can select some features in dataset 1 and select some other features in dataset 2, or we can actually manipulate some class labels to generate some new data points in the training dataset from the original dataset. 
+
+04:53 
+So we can do a lot more manipulations to get or to generate some new independent training data set from the original one 
+
+05:01 
+Now, let's take a look at an example of how we can use the bagging method to do the analysis 
+
+05:10 
+to do the ensemble learning 
+
+05:12 
+So the bagging method is trying to do the sampling of the original data set with placement 
+
+05:24 
+So let's take a look at this problem. So we want to build a classification model using the baggling method. Now, the original data set, we have only one feature of X. And the X value goes from 0.1 to 1. So we have 10 training records here to my original data set. 
+
+05:52 
+So first three are labeled positive ones, the middle four are negative ones, and the rest three are positive ones. 
+
+05:58 
+Now if I use one decision tree like this, one layer decision tree with only one attribute node, 
+
+06:06 
+because we only have one attribute node here, so X with some classification boundary, 
+
+06:12 
+so using one single attribute node for the decision tree model, 
+
+06:17 
+can one single decision tree model make perfect classification for my training dataset? 
+
+06:23 
+So if my classification model is here, I mix two classes of data points here, right? 
+
+06:30 
+And if my classification model is here, I mix two class labels here. 
+
+06:36 
+So do you think one single decision tree model can make perfect classification? 
+
+06:41 
+No, we cannot do that, right? 
+
+06:43 
+So, what we can do? 
+
+06:46 
+Now, we build different banks of training records. 
+
+06:54 
+and then use different training records to induce the tree structure 
+
+06:59 
+and then we ensemble the tree structure together to get the random forest 
+
+07:02 
+the random forest, we have one bag of base classifier and the decision tree 
+
+07:09 
+so it's called random forest 
+
+07:11 
+so for the fourth bag, let's see how we construct the fourth bag of training 
+
+07:17 
+so for the original dataset here, I prepare a bag, an empty bag 
+
+07:27 
+Now, I randomly pick one data point from the original data set into the back as my first training record. 
+
+07:36 
+Now I put this, I get a pattern, the x and the y values for this data point, and I put this point back so the original data set is not affected. 
+
+07:45 
+Now I randomly pick the second data point back into the back. 
+
+07:50 
+Now in the back I have two data points, right? 
+
+07:53 
+And I do the same thing. 
+
+07:57 
+Pick one data point from the original data set with this replacement, and pick one data point into my bag. 
+
+08:06 
+So after 10 times, I pick 10 data points into my bag. 
+
+08:11 
+So in the bag 1, I can see this is my training record in my first bag. 
+
+08:19 
+So I have the first data point in the bag, the second data point, it was picked twice. 
+
+08:26 
+In my bag 1, I have 2.2, and third data point 1, the fourth data point twice, and the fifth one, sixth one, and ninth data point twice. 
+
+08:36 
+Now I have 10 training records with their features and prediction targets, right? 
+
+08:41 
+Now I can use these training data points, the 10 training data points, to induce the first-phase cash flow, the first one-as-you-know decision tree. 
+
+08:53 
+Now, this is my one node decision tree. I use it as the if-else conditions. 
+
+08:58 
+Now, we can see the classification boundary has a threshold of 0.35. 
+
+09:02 
+If the actual value is less than this threshold, I will predict the label to be positive 1. 
+
+09:09 
+Otherwise, I follow the majority and I predict the label to be negative 1. 
+
+09:13 
+So, this is actually the fourth decision tree we have, right? 
+
+09:18 
+Is that clear? How I get the fourth decision tree here using the fourth bag of training record? 
+
+09:25 
+Good so far? 
+
+09:27 
+Now the fourth base classifier is done. 
+
+09:31 
+So that's not the end. 
+
+09:33 
+Because we know that the fourth base classifier will have prediction error. 
+
+09:37 
+So I prepare the second bag, the second empty bag. 
+
+09:43 
+And I do the same thing, I do random sampling from the original dataset, and I keep adding the data points into my second bag, and I get 10 training records in my second bag. 
+
+09:56 
+So in my second bag I get first point, second point, third point, fourth point, and the fifth point twice, the ninth point, and tenth point three times. 
+
+10:06 
+And I get the second bag of training records. 
+
+10:10 
+Now we'll use these training records to use my stack and the base CASFAR 
+
+10:16 
+with this classification boundary here 
+
+10:18 
+Is that clear? 
+
+10:21 
+What I did for constructing the stack and the base CASFAR 
+
+10:26 
+So that's not the end 
+
+10:27 
+I do the same procedure, I prepare the third bag 
+
+10:31 
+and I randomly select the 10 degree points in my third bag 
+
+10:36 
+and I get the third base CASFAR 
+
+10:43 
+force, back, and I do it 10 times. 
+
+10:46 
+So each time I get a bag of training records, 
+
+10:51 
+and use this bag of training records to train a base classification model, 
+
+10:56 
+a single layer decision tree. 
+
+10:57 
+After that, I got 10 base classification models. 
+
+11:04 
+Each round here, from round 1 to round 10, I did it. 
+
+11:09 
+That is the same thing, but I will be able to get different bag of training records. 
+
+11:16 
+For each bag of changing that cost, I will be able to introduce one single layer decision tree. 
+
+11:21 
+So from long one, I get this decision tree with split point equal to 0.35, and left class decision label, and right class decision label. 
+
+11:33 
+And for my second one, I get secondary classification decision tree for the base class bar. 
+
+11:42 
+So we can see, after that, I get 10 base classification models. 
+
+11:49 
+Each zone here represents one single layer decision tree, right? 
+
+11:54 
+Now we can use these 10 various classification models to make a final prediction for a new data point. 
+
+12:01 
+Now imagine that there is a new data point with the actual value equal to 0.5. 
+
+12:07 
+And I will be able to fit this actual value back into the 10 based class files. 
+
+12:15 
+And for the first one, the feature value is on the right side of the split point. So I will predict the right class, the negative one here. Right? So this is the label predicted by the forest-based classification model. The forest decision tree from the first bag. And for the second one, it is on the left side of this split point, so the prediction is 1. 
+
+12:43 
+And for the third one, on the right hand side, it is negative 1. 
+
+12:49 
+So I will fit these feature values into the turn-based classifiers, 
+
+12:53 
+and each base classifier will make their own prediction. 
+
+12:57 
+And here I have totally turned classification results. 
+
+13:02 
+And I will sum them together. 
+
+13:05 
+If the total sum is larger than 0, it means that more than half of them voted for positive. 
+
+13:11 
+If the total sum is negative, it means that more than half of the base classification models is voted for a negative one. 
+
+13:19 
+So we can make final prediction according to the total sum of the 10 classification outcomes. 
+
+13:26 
+So we can see, for using this 10-base test box, so let's see whether this 10-base test box... 
+
+13:36 
+can capture all the relationship we need to classify the labels for my changes that 
+
+13:43 
+by extracting the relationship between features and position target, the X and the Y. 
+
+13:49 
+So we can see if we put the first three training records into the 
+
+13:57 
+10 base cast bars, because the actual values are smaller than all the thresholds here, so I will use all the left hand side as my prediction results, right, so you can see these are the list of the left hand side class, and the total sum of them are 2, so what does that mean, it means that for the first three training records, the 10 base cast bars together will predict the final vote to be positive 1. 
+
+14:30 
+Now for the fourth one, we do the same thing, we put the feature value back into the term-based class files, and each one will make its own prediction, the first term-based classification model predicts negative one, the second one predicts positive one, the third one predicts negative one, so among the term-based classification model's predictions, my final vote is negative one, is that clear? 
+
+14:59 
+Now I do the same thing for the 5th, 6th, and 7th data points and make the negative 1 predictions. 
+
+15:07 
+Now you may try starting from x equals to 0.8. 
+
+15:12 
+What is the final prediction? 
+
+15:15 
+We can say x equals to 0.8. 
+
+15:19 
+It's the right side of the first line, so it's the negative 1. 
+
+15:22 
+The right side of the second line, positive 1. 
+
+15:25 
+The right side, right? 
+
+15:29 
+All along the right hand side. So how many negative 1s on my right hand side for the x equal to 0 .8? 
+
+15:39 
+4, right? And how many of them are positive? 6. So for the x equal to 0 .8, what is the final prediction label here? It is positive 1, right? And if 9, it is positive 1 and positive 1. 
+
+15:58 
+So you can see, if we fit the actual values back into the time-based cache files and use their aggregations to make the final prediction, can I make a perfect prediction for my original training records? 
+
+16:12 
+The first three are positive, the middle four are negative, and the last three are positive, right? 
+
+16:19 
+But if you take a look at my original training record, one base cache file cannot express the relationship between X and Y. 
+
+16:28 
+But if we put 10 base test files together, they together can provide the perfect relationship between X and Y to make the perfect classification key. 
+
+16:42 
+Is that clear? How it works? So far so good? 
+
+16:49 
+We just added 25 students all together to make the final guess, right? 
+
+16:54 
+Now we make the 10 predictors or test files together to make the final classification. 
+
+17:01 
+So this is one of the previous quiz questions, okay. So you can take a look. So if you see this in your final, do not be surprised. And I want to remind you that, indeed, some students, they use the quiz questions on Canvas to submit their quiz questions, because they are not here. But they can see the file on Canvas. So they will not be greedy. 
+
+17:30 
+So in the future, if you are hanging out and you see some quiz questions on Canvas, do not try to answer all these questions, okay? 
+
+17:40 
+So maybe for one week, I will have no quiz, but I will leave a quiz assignment on Canvas. 
+
+17:47 
+Any students who submit will get zero attendance for that week, okay? 
+
+17:51 
+So be careful. 
+
+17:56 
+So, okay, this professor is too bad. 
+
+18:05 
+Okay, now, again, I really appreciate the students who come to class, even though we have no formal attendance. I really appreciate it. 
+
+18:17 
+So, now, if you understand the bagging method, now we will continue to get a more complicated one for the boosting. 
+
+18:26 
+Now, for the boosting method, it's an iterative procedure. Now, the idea of the bagging is very different from the idea of boosting. 
+
+18:38 
+So this is a very common job interview question, so what's the difference between a bagging method and a boosting method in ensemble learning? 
+
+18:45 
+So both of them are called ensemble learning methods. 
+
+18:49 
+So when we are doing the bagging, we realize that we prepare the bag of changing records randomly, right? 
+
+18:56 
+In every single bag, the probability that each data point will be selected into this bag is the same. 
+
+19:05 
+Pure random procedure. 
+
+19:06 
+But for boosting, it is different, so the procedure looks like this, starting from the original data set 
+
+19:17 
+For the first round, I still have the equal weight, that each data point will have the same probability to be picked 
+
+19:27 
+in my third, into my fourth training spec, so in my first spec, each data point will be selected randomly 
+
+19:38 
+And after that, I will use the 10 data points to train a base class file. 
+
+19:44 
+After that, I will not get the second bag right now. 
+
+19:49 
+After I train the fourth base class file, I will use the fourth base class file and apply this first base class file back into my original training data points. 
+
+20:03 
+Now the first base cat file will make some correct predictions for some data points, or wrong predictions, right? 
+
+20:10 
+For the correct predictions, for all the data points which can be correctly predicted by my first base cat file, 
+
+20:19 
+their probability to be selected in my second one will be low. 
+
+20:25 
+And for some of their points, they were mistakenly predicted by the first base cat file 
+
+20:32 
+because they cannot be handled by the first base cat file 
+
+20:36 
+So their probability to be selected in my second bag will be higher 
+
+20:43 
+Now I will adjust the probability distributions among different training records 
+
+20:50 
+According to the performance of the base test file, and then I will start the second round of sampling. 
+
+20:57 
+Now for my second bag, even for the same 10 training records, their probabilities to be selected in my second bag is already updated. 
+
+21:10 
+They have non-equal probability to be selected. 
+
+21:15 
+The data points which can be hardly handled by force-based caspars enjoy a higher probability to be selected. 
+
+21:23 
+So that's the iterative procedure. I will give you an example to see how it works. 
+
+21:31 
+Now, for the boosting, or for the error boosting, we are still trying to construct different base caspars. 
+
+21:39 
+But we know we construct them iteratively. 
+
+21:43 
+So when we construct the first base cast file, it is constructed using a random sampled bag of training records. 
+
+21:51 
+In that bag, each data point is randomly selected with equal probability. 
+
+21:56 
+But for the second base cast file, the training records are provided for the second base cast file. 
+
+22:05 
+The construction of the second bag of training records is not a pure random procedure. 
+
+22:11 
+In each data point, they have their own probability to be selected in the second bag of training records, which will be used to change second base cache file. 
+
+22:22 
+So for each base cache file i, we will be able to calculate their error rate according to the weighted sum of the misclassification records. 
+
+22:35 
+So if for the JS data point, if the ISBaseCast file cannot provide the correct prediction label for the JS data point, I will record an error here. 
+
+22:46 
+The column here is the error function if this condition in the basket is satisfied, it equals 1, otherwise 0. 
+
+22:55 
+Now, ISBaseCast file, after we compute the error rate, we can use the error rate to compute the importance. 
+
+23:07 
+If the average for i's base cast file is 0.5, and we put the 0.5 back to the formula, to the alpha i, the importance of this base cast file is 0. 
+
+23:20 
+Meaning that this base cast file is a random guess, it's not important, so its importance is 0. 
+
+23:28 
+So the lower the average, the higher the importance for the base cast file. 
+
+23:35 
+Now, this is the weight updating rule. The weight is the probability that each data point will be selected. 
+
+23:41 
+Now, for the i-th data point, its probability to be selected in the J plus 1 spec is calculated like this. 
+
+23:58 
+Now, it has its own probability to be created in the J spec. 
+
+24:05 
+So in the J spec, each data point has its own probability to be picked, and the probability is W, I, J. I is the I data point, J is the J spec. 
+
+24:18 
+So if we use the J-spec training record to induce the J-based CAS file, and we can use this J-based CAS file to update the probability, if the J-classification model can provide correct prediction for the I-state point, then the probability in my next bag will be downplayed by this vector, so probability is low. 
+
+24:46 
+So, if the prediction is wrong, by the J-shape bag's hash bar, the probability will be boosted to a higher probability. 
+
+24:57 
+Now this is how we can update the probability of different data points for my next round of boosting. 
+
+25:03 
+So let me give an example, the same example we used for the baggage. 
+
+25:08 
+And here we have the same changes, and we have the same base hash bar, one layer, single layer decision tree model. 
+
+25:16 
+We already know that this single-layer decision tree model cannot capture the relationship between X and Y. 
+
+25:22 
+Let's see how the add-up boosting can be useful. 
+
+25:27 
+Now, at the very beginning, I have prepared the first bag of training records. 
+
+25:34 
+Now in my first run, each data point, we have their own equal probability to be selected in my first bag. 
+
+25:46 
+F1, F2, F3, F4, F5, F6, F7, F10, F11, F12, F13, F14, F15, F16, F17, F18, F19, F20, F21, F21, F22, F23, F24, F25, F26, F27, F28, F29, F30, F31, F32, F33, F34, F35, 
+
+26:05 
+F36, F37, F38, F39, F40, F41, F42, F43, F44, F45, F46, F47, F47, F48, F49, F49, F50, F50, F50, F50, F50, F50, F50, F50, F50, F50, F50, F50, F50, F50, F40, F40, F40, F40, F40, F40, F40, F40, F40, F40, F 
+
+26:18 
+So how the weight is calculated? 
+
+26:22 
+At the very beginning, for my first one, each data form, each data form, their probability to be selected in my first bag is 0.1. 
+
+26:35 
+Equal, right? 
+
+26:36 
+And after that, I induce my first base class form. 
+
+26:44 
+Now, I will use this base cat bar with threshold equal to 0.575 back into my original training data set 
+
+26:54 
+So I have the threshold of 0.35, and it is on my left side, I have to predict negative 1, otherwise positive 1, right? 
+
+27:04 
+So that's my prediction result, using the fourth base cat bar with the threshold here is 0.35 
+
+27:13 
+So you can see among the 10 training records, which are correctly predicted, so is the first three correctly predicted? No, right? Because we predict them to be negative ones, which is wrong. What about the three of four? Are they correct? Yes. How about the last three? Correct, right? 
+
+27:38 
+Now, according to this prediction result, I will update the probability each data point will be selected in my second batch. 
+
+27:48 
+So these three data points, they will enjoy a higher probability to be selected. 
+
+27:53 
+The rest of the correct labels, they will have a downgrade probability. 
+
+28:00 
+So let's see how the weight is updated from an equal probability to my second round probability. 
+
+28:07 
+So you can see, for the first three records, in my training record, they have a much higher probability to be selected, right? 
+
+28:15 
+And for the last seven data points, their probability are equal to 0.01. 
+
+28:22 
+Now I'm going to follow this new probability distribution to select my second bag of training records. 
+
+28:31 
+Now, for my second... 
+
+28:33 
+In this bag of training records here, we can see all of them are the fourth or second or third training records. 
+
+28:42 
+Why? Because they have a much higher probability to be selected in my second bag. 
+
+28:47 
+Now, according to the second bag, I will induce my second base CASVAR here. 
+
+28:55 
+And the threshold is 0.05 and all the prediction results are the ones. 
+
+29:03 
+So now we apply the second base class file back into the original training record. 
+
+29:10 
+And the stretch code is here, and I predict all of them to be positive 1. 
+
+29:16 
+So for the second base class file, the first three are correct. 
+
+29:20 
+The middle four are wrong. 
+
+29:23 
+The last three are correct. 
+
+29:26 
+Now, I will use this classification result by the second base class file to further update the probability of data selection for my third bag 
+
+29:35 
+The middle four will enjoy a higher probability to be selected 
+
+29:40 
+So if you take a look at the probability for the third one, the middle four, they have a very high probability to be selected here, right? 
+
+29:50 
+And the rest, they have a lower probability 
+
+29:53 
+Is that clear? 
+
+29:57 
+Now I use update the probability distribution to get my third bag of training records and induce my third base classifier. 
+
+30:06 
+So you can see this training procedure is iterative, one by one, one by one, and we keep updating the probability that each data point will be selected. 
+
+30:19 
+Each round, we use one base test file, and it will have its algorithm, and we will be able to get the importance, the alpha, for this base test file. 
+
+30:32 
+So now we constructed three base test files, using three rounds of boosting, and we get this result. 
+
+30:41 
+So, let's see how we can apply this, how we can apply this for the... 
+
+30:49 
+final prediction that we ensemble these three phase classifiers together 
+
+30:54 
+now because for the error boosting here, this one phase classifier, we have their own importance, the alpha value 
+
+31:00 
+so here we have three phase classifiers, so this is the same as the back end, in our back end we have ten rows, right? 
+
+31:13 
+each row represents one single layer decision tree model 
+
+31:21 
+Now let's check the force-changing records, so by feeding the force-changing records to the actual back into the split-based CAS file, the force-based CAS file will be on the left-hand side, so I will predict negative 1, the force-based CAS file will predict negative 1, the force-changing record, the second-based CAS file is positive 1, and the third-based CAS file is on the left-hand side of split 1, so it will predict negative 1, and the third-based CAS file is on the left-hand side of split 1, so it will predict negative 1, and the third-based CAS file is on the left-hand side of split 1, and the third-based CAS file is on the left-hand side of split 1, and the third-based CAS file is on the left-hand side of split 1, and the third-based CAS file is on the left-hand side of split 1, and the third-based CAS file is on the left-hand side of split 1, and the third- 
+
+31:53 
+positive 1. Now we get three outputs, the three predictions from the three base classifiers, right? 
+
+32:01 
+Now we will use a weighted sum. The weighted sum is that the prediction output times positive 1 times is important, 
+
+32:12 
+plus the prediction by the second classification model times is important, and plus positive 1 times is important. 
+
+32:26 
+So it's a weighted sum. So the prediction by each base class file is weighted by the classification model's importance, and then we sum the weighted sum together, we get this, 5.16. Now it is positive, and my final prediction is positive. Is that clear? How I aggregate them together? 
+
+32:51 
+Now you can try for the second and third records. I get the same result and I get three positive final outcomes. 
+
+32:59 
+And in the middle four, if I fit their future values back into the three-bit cache files and do the weighting sound, I get four negative ones. 
+
+33:09 
+And finally for the last three, I get three positive ones. 
+
+33:14 
+Now do you think that by using these three-bit cache files following the add-a-boosting method, 
+
+33:20 
+Can we get the perfect relationship between the future values and the prediction target for my original training data table? 
+
+33:28 
+So we can do that, right? 
+
+33:32 
+Another kind of magic 
+
+33:33 
+Of course, even when we have smaller rounds of training, but we have a more complicated iterative computation in the middle 
+
+33:46 
+So that's how ad-boosting is working 
+
+33:48 
+Is that clear? 
+
+33:54 
+But if you can follow my hand writing, then I believe you can understand. 
+
+34:01 
+And of course, in our tutorial we have one law of command and it is well trained and it can make predictions. 
+
+34:09 
+So you may need to understand how it is working and how it shows difference compared with the bagging method. 
+
+34:17 
+And then we want to show some two other methods. 
+
+34:26 
+For the first one, it's called stacking or stack generalization method. 
+
+34:31 
+So this method will not show up in your final exam. 
+
+34:35 
+Okay, now you can just relax and enjoy. 
+
+34:39 
+So for this method, the idea is very intuitive. 
+
+34:43 
+Now, no matter what you call the stacking or the boosting, 
+
+34:48 
+that you use different data sets, you use different basic classification model, 
+
+34:51 
+and then aggregate their predictions all together. 
+
+34:55 
+So, can we actually use deep-grounded base-cast files? 
+
+34:58 
+For example, for the same training dataset, I can use the first base-cast file as the decision tree 
+
+35:04 
+And for the second base-cast file, I can use the k-neutrics label or neural network 
+
+35:10 
+I can use deep-grounded learning algorithms to deal with the training vector 
+
+35:17 
+And after that, each base-cast creation model will provide its own output predictions 
+
+35:24 
+And finally, I may not just simply aggregate them together using the sum or weighted sum, I use the second layer learning algorithm, and I use the second layer of training, that we aggregate these three inputs, or three outputs of the three base class files output as the input features for my second learning algorithm, and I have X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, X11, X12, X13, X14, X15, X16, X17, X18, X19, X20, X20, X21, X22, X23, X23, X24, X24, X25, X26, X26, X27, X28, X29, X29, X29, X30, X30, X30, X30, X29, X30, X30, X29, X30, X29, X29, X29, X29, X29, X29, X29, X29, X29 
+
+35:51 
+X3, S3 input features to make my final prediction. 
+
+35:56 
+So how it works? 
+
+36:00 
+Now you can see, MZoT is still an ensemble learning method by integrating different basic classification models together. 
+
+36:08 
+And we have two layers of learning. 
+
+36:11 
+It's very different from bagging or boosting. 
+
+36:13 
+And how it works? 
+
+36:15 
+For example, 
+
+36:18 
+Here we have five training samples here, and we are trying to use the stacking method to establish the relationship between X1, X2, and the final prediction label Y. 
+
+36:29 
+So to do that, I will use the logistic regression and decision tree as a two-phase test file. 
+
+36:37 
+For each phase test file, I will use the chain list to induce the tree structure. 
+
+36:45 
+So the base 1 and base 2 have logistic regression and the decision tree, and among five samples, the base models will be trained, and they will provide their own prediction values. 
+
+36:58 
+This is a two-way, so they will provide their own prediction values. And after that, we will add their predicted results into another logistic regression. 
+
+37:12 
+and then change the logistic regression which will provide the final prediction using this output. 
+
+37:17 
+Now for this logistic function, I will have to change output together with the logistic regression output into a new learning algorithm. 
+
+37:26 
+The new learning algorithm will make the final prediction. 
+
+37:30 
+For example, given the other three data forms with their future values and I want to use the stacking method to make the final prediction. 
+
+37:40 
+Now for the point A here, according to the actual values, the logistic regression will predict the probability that the point A is labeled 1, so it is 0.25, and for the decision tree, it will use the point A's actual value to predict the probability that the point A will be labeled 1, so the probability is 0.1. 
+
+38:06 
+Now, after I get the probabilities by these two base headbars, I feed them into the logit function, so this is the probability by the logistic regression, 0.25, and this is the probability provided by the decision tree, 0.1. 
+
+38:23 
+Now, by following this logit function, it is very negative, and my final prediction is 0, very negative. So we have two layers of learning. 
+
+38:36 
+So we first use X1, X2 to get the Y1 by the logistic regression and the Y by the decision tree, and then we use these two Y outputs to train a new algorithm for the final prediction. So that's a few layers of the stacking method. 
+
+38:56 
+So you may try to use this in your project. So we have one for example to show how the stacking classification method can be implemented. 
+
+39:06 
+Again, you do not need to fully capture what it delivers. 
+
+39:12 
+So if you have inches, you can learn how it works, but unfortunately it will not show up in your final. 
+
+39:20 
+And again, I want to introduce the support vector machine. 
+
+39:24 
+So the support vector machine method is very different from some of your previous training procedures. 
+
+39:33 
+The idea is that, so for the most of the training procedures, no matter for the logistic regression, or for the decision tree, or for using the linear regression, so we have some training objectives that we want, are trying to minimize the training error, or to maximize the training accuracy, but for support vector machine, we are doing a different objective. 
+
+39:56 
+So you can see, we are trying to classify the data points into two parts. 
+
+40:03 
+I can identify a classification boundary, so here I can identify boundary 1 to segment the two groups of data points of boundary 2 
+
+40:15 
+But I have so many classification boundaries, right? So all of them can separate them very well 
+
+40:21 
+But my question is that, do we have the optimal classification boundary among all the possible ones? 
+
+40:29 
+In other words, if we have boundary 1 or boundary 2 here, so this is the boundary 1, this is the boundary 2, which one is better? 
+
+40:39 
+So can any of you tell me which one do you like better? 
+
+40:45 
+B1? Any other? Most of you vote for B1, right? 
+
+40:51 
+Why? 
+
+40:55 
+Anyone tell me why? 
+
+40:57 
+It looks better, right? 
+
+40:59 
+Why? So you have a very good sense. 
+
+41:04 
+Yes, we should pick B1 or Y, so imagine that if there is a new data point in the squared class, and it is located very close to the squared community, so B1 will provide a correct prediction, right? 
+
+41:20 
+But B2 will predict Y. 
+
+41:24 
+So, there 
+
+41:28 
+is one hidden number associated with each classification boundary we call the margin. 
+
+41:36 
+The margin is the distance between the two closest data points in different sides, 
+
+41:44 
+specified by the classification boundary. 
+
+41:47 
+So if we choose B1, the margin is the distance between these two supporting vectors, the two data points. 
+
+41:54 
+But if we select B2, the margin is specified by these two closest boundary data points. 
+
+42:01 
+The margin is very small. 
+
+42:03 
+Now to identify the optimal classification boundary, we are looking for the boundary associated with the maximum margin. 
+
+42:14 
+So the searching space is actually trying to identify the maximum margin, which is measured by Q divided by the value of the coefficient of the slope of this boundary, subject to the certain constraint. 
+
+42:31 
+the objective subject to the constraint that is the data point value is on the right side of the boundary is less than 1, otherwise less than 1 
+
+42:41 
+and it is a constraint optimization problem 
+
+42:45 
+so for the support vector machine, you do not need to solve or understand how we solve it using the Lagrangian optimization problem 
+
+42:54 
+the key idea, the key point you need to take away is 
+
+42:59 
+We are trying to get the classification boundary using support vector machine with the maximum margin 
+
+43:08 
+It's not a simple accuracy score, it's a margin 
+
+43:13 
+And of course, for some cases, there are some mixed data points on the other side 
+
+43:20 
+So when we solve the constraint optimization, we allow some of the data points can be 
+
+43:26 
+Located on the other side of the classification boundary, now the optimization model should relax certain threshold here 
+
+43:35 
+That still will allow some of the distance that the data points can be classified on the other side, but not too far away 
+
+43:43 
+So that's how we can identify the classification boundaries and calculate the margins and find the optimal classification boundaries using the support vector machine 
+
+43:56 
+So there's one special case for the support vector machine. I believe you may use this for your course project 
+
+44:03 
+It's called the kernel chip 
+
+44:08 
+So for example for this one dimension of data points 
+
+44:12 
+So we cannot use one single linear boundary to segment the two classes of data points, right? 
+
+44:18 
+Now the kernel chip, we can do a quadratic mapping. So in addition to the first future column 
+
+44:25 
+I can compute the second feature coordinate of x squared using your original feature values 
+
+44:31 
+Now I can scatterplot your original data points into a two-dimensional feature space specified by x and x squared 
+
+44:41 
+Now you can see magically that the data can be linearly separable using the support vector machine after I do the projected mapping 
+
+44:54 
+I actually mapped one-dimensional feature space into two-dimensional feature space using x and x squared. 
+
+45:02 
+And also, if we have this data distribution, we can also use the kernel trick, the nonlinear support vector machine, that we first compute x1 and x2. 
+
+45:11 
+So originally, our data form is specified by the two features, x1 and x2, the two columns of features. 
+
+45:18 
+Now, I will use this formula to calculate. 
+
+45:22 
+Another dimension of feature using x1 squared minus x1 
+
+45:27 
+And the other corner of feature using x2 squared minus x2 
+
+45:32 
+Now if I do the scatter plot of your data points in this two new mapping space 
+
+45:40 
+They become linearly separable 
+
+45:43 
+So you can see originally x1, x2, right? 
+
+45:48 
+Now after we do the mapping, x1 and x2 
+
+45:52 
+In the other two dimensional feature space, they are linearly separable. 
+
+45:56 
+So we call it kernel mapping. 
+
+45:59 
+So we introduce some kernel functions. 
+
+46:01 
+And kernel functions can be the polynomial kernel functions, or Gaussian functions, or the tangent kernel functions. 
+
+46:10 
+So they have the same idea, that we transform the original feature space into the kernel space. 
+
+46:15 
+And in the kernel space, the data points can be linearly separable. 
+
+46:22 
+support vector machine, kernel chip of course the support vector machine, the key takeaway is that the support vector machine is trying to identify the classification model with the maximum margin by solving the optimization problem instead of looking for the minimum classification error and sometimes the linear kernel chip will make the classification model very slow 
+
+46:52 
+In some way, you may need to understand how this new vector machine shows a very different mechanism compared with the other classification model we have in today's class. 
+
+47:03 
+Okay, so, and forget about the mathematical part. 
+
+47:07 
+I'm not challenging you anything for designing the Lagrangian optimization or the mathematics in the final exam. 
+
+47:13 
+Okay, so any questions for the learning algorithms part? 
+
+47:18 
+Sounds good? 
+
+47:20 
+Okay, now... 
+
+47:23 
+I still have a few minutes, so I want to introduce, briefly introduce the imbalanced data set 
+
+47:28 
+because some of you have the imbalanced data set in your cost project 
+
+47:33 
+So what is called imbalanced data? 
+
+47:36 
+Imbalanced data means that when we have two class labels, for example for the bank vault transaction detection 
+
+47:45 
+the number of vault transactions is much much much smaller than the number of normal transactions 
+
+47:51 
+So if we want to induce a training, a classification model using this imbalanced training vector, we may have a big trouble. 
+
+48:01 
+Because the minor class, the four transaction neurons of their number is very very small. 
+
+48:07 
+They are very very important, right? 
+
+48:10 
+So we are trying to identify this small group of important transactions from a big group of normal transactions. 
+
+48:18 
+So what is the trouble we have? 
+
+48:22 
+So there are two troubles. The first trouble is that the traditional objective function, the accuracy, may not work. 
+
+48:32 
+So if you have a CAS file for the bank transaction, among 1,000 transactions, only one is full transaction. 
+
+48:38 
+And if you have the overall accuracy to be 99.9, it may not work. 
+
+48:45 
+Why? Because I may not make any learning. I just predict all the transactions to be normal. 
+
+48:51 
+My performance, the accuracy is still 99.9 
+
+48:55 
+Because only the fourth transaction is misplaced 
+
+49:00 
+That's not good, right? 
+
+49:01 
+Our job is to identify this one 
+
+49:05 
+So the accuracy is not working 
+
+49:07 
+So we need to split the evaluation matrix into a confusion matrix, not a single number 
+
+49:13 
+So here we have ABCD 
+
+49:16 
+So A means that the number of records that the actual label is yes and my predicted label is yes 
+
+49:22 
+B means that the actual label is yes but my prediction label is no 
+
+49:28 
+How many we have 
+
+49:30 
+C is no and yes, the actual is no but the true is yes 
+
+49:35 
+And D means no and no, both the normal transactions are correctly predicted as no 
+
+49:42 
+We have the four numbers 
+
+49:44 
+Now we can see how we can use the four numbers to compute the evaluation matrix 
+
+49:49 
+Now for the bank transaction detection, the number D indicates the number of normal transactions that are correctly predicted 
+
+49:58 
+So this number D is very big, right? 
+
+50:04 
+Now imagine if this D is very big, and A, B, C are relatively small 
+
+50:10 
+Then the overall accuracy will be dominated by the number D 
+
+50:15 
+It will not be sensitive to the A, B, C, and it will be very close to the number 100 percentage, so that's why the F1, C is not working, and the number D is actually the number we do not care, so the normal transactions are directly predicted to be normal, it is normal, right, so we do not care about the number D 
+
+50:39 
+So, we may have some other alternative measures to deal with the imbalance data set. 
+
+50:44 
+So let's have 10 minutes break and we will be back at 2 to finish the imbalance data and then we will have the tutorial. 
+
+50:51 
+Okay, so let's have a break and we will be back at 2. 
+
+50:56 
+Now, we understand that we can remove this number D from our evaluation and then what do we have? 
+
+51:04 
+We have precision recall and F-measure. 
+
+51:07 
+So let's see the physical meanings of all these metrics. 
+
+51:12 
+So the precision is A divided by A plus C. 
+
+51:16 
+So what is A plus C? 
+
+51:19 
+A plus C is the total number of records 
+
+51:23 
+that my predictions are yes. 
+
+51:28 
+And A divided by this number means 
+
+51:30 
+that among all my predictions to be yes, 
+
+51:33 
+how many of them are correct? 
+
+51:36 
+How precise you hit the target, right? We call it precision. 
+
+51:40 
+And the recall is actually A divided by A plus B. 
+
+51:45 
+So what is A plus B? A plus B is what I usually call the real case. 
+
+51:50 
+And you see that in the real case, how many of them are real labeled as yes? 
+
+51:56 
+And among these numbers, how many of them are correctly predicted? 
+
+52:04 
+Precision measures how precise my prediction will be, and the recall is to recall how many are connected to Vicky, and the F-measure takes the average of these two numbers, two metrics together, but in addition to these four numbers, so for your own business problem, there is a special case, and we call it asymmetric cost, so what does that mean? 
+
+52:30 
+So let's go back to the bank transaction form. 
+
+52:33 
+So if you are a bank manager, and you got a classification model with these four numbers, 
+
+52:39 
+so A equals 10 means that among the four transactions, 10 of the four transactions are correctly credited by your model. 
+
+52:48 
+So if you are a bank manager, you like this number to be as large as possible, right? 
+
+52:53 
+So you put a reward for your engineer who developed this model, you get $1 bonus for every single record, for every single transaction record they are correctly predicted. 
+
+53:05 
+Now what about number B? Number B means that the actual label is false, but your prediction is wrong, you predicted it as normal, so you let the false transaction go. 
+
+53:19 
+Then the bank will lose money, right? 
+
+53:24 
+So this is a big lose. So you may put a big penalty for the engineers that if one false transaction is miscalculated and it is done, then you lose 100 US dollars per transaction like this. 
+
+53:43 
+Now for number 3 here, it means that the actual label is normal, but your prediction is false. Then your algorithm will block this transaction. 
+
+53:54 
+Your client will make a complaint, will call the bank, right? 
+
+53:58 
+But the bank will not lose any money. 
+
+54:01 
+It just delays the transaction. 
+
+54:03 
+It may take a few minutes, more than a few minutes for the bank owner to complete the transaction. 
+
+54:11 
+So here, I will put a small penalty here, because the bank will not lose money. 
+
+54:17 
+It's still a small penalty. 
+
+54:20 
+So the number D, nobody cares. 
+
+54:22 
+So the importance is still. 
+
+54:25 
+So we call it cost matrix. The cost matrix means the cost for each matrix in the confusion matrix. So we have the cost matrix together with the confusion matrix. Now, let's see how the cost matrix, once we specify the cost matrix according to our business problems, we can use to do the model selection. 
+
+54:52 
+So imagine that we have two models, model 1 and model 2, and we already specify the cost matrix here, so here, the first number is the cost, the cost weight is negative 1, it means that if you correctly predict the first transaction, every single correct prediction for the first transaction, the cost will be reduced by 1 unit, by 1 dollar. 
+
+55:23 
+For this number, every single transaction that you predict to be normal, your cost, your penalty is positive $100. 
+
+55:33 
+For this number, for the normal transaction, but you block the transaction because you believe it to be false, 
+
+55:42 
+then you have one US dollar penalty for this number. 
+
+55:47 
+And this one is zero. 
+
+55:59 
+We have two models, model 1 and model 2. 
+
+56:01 
+Now for the model 1, if we just compute the accuracy, the accuracy of model 1 is smaller than the accuracy of model 2. 
+
+56:10 
+But we know that in a real world business problem, the managers will not make the equal weight, right? 
+
+56:17 
+So if we consider cost matrix, 
+
+56:20 
+So this 150 times negative 1 plus 40 times 100 plus 60 times 1 plus 0 times 250 
+
+56:30 
+And the cost is 3,910 
+
+56:34 
+For the second model, the cost is 4,000 
+
+56:38 
+So according to the cost, we will pick the model 1 
+
+56:43 
+Even though the overall accuracy is smaller 
+
+56:49 
+The weighting cost is even smaller. So we will choose the one with the lower cost. Is that clear? 
+
+57:00 
+So this is how we can handle the infrastructure by using the class-based ordering that we specify the priorities of some data points that should be correctly predicted. 
+
+57:17 
+We can add the cost-sensitive classification by putting more penalties into the miscalculations in the training objective function. 
+
+57:25 
+And finally, we may have a sampling-based approach. 
+
+57:29 
+So, I want to emphasize for the sampling-based approach, 
+
+57:35 
+so typically we have two different methods on the sampling over sampling. 
+
+57:40 
+So for all undersampling, we undersample the majority class, so we reduce the number of normal transactions, and then we make the number of gold and number of normal balance in the training procedure. 
+
+57:56 
+And oversampling means that we will oversample the minor parts of flow transaction records by doing some sampling or manipulation to enlarge the number of flow transaction records in my training procedure and make the Q number the number of flows and the number of normal silence. 
+
+58:14 
+But I want to emphasize that this sampling method is only valid for training data set only. 
+
+58:24 
+You cannot do under-sampling or over-sampling for your testing data set. 
+
+58:29 
+Your testing data set should remain the same proportion as your original data set. 
+
+58:35 
+If your original data set's population is imbalanced, then your testing data set should maintain the imbalanced proportion of distribution. 
+
+58:44 
+It cannot be balanced. 
+
+58:48 
+So most of the groups, they suffer from a low grade because in their imbalanced classification, they make mistake by balancing the testing data set. 
+
+58:58 
+That's not correct. The testing data set should never be balanced, because they represent the future unknown data points. 
+
+59:08 
+So we have under sampling, over sampling, or smooth. 
+
+59:13 
+These are the two methods integrated together, so we will learn how to do that in a later class, I think in week 11 
+
+59:21 
+We will have more examples to deal with the balanced data in the photo selection and evaluation procedure 
+
+59:27 
+Okay, is that clear? Sounds good? 
+
+59:31 
+Okay, it's good, I still have my voice to the last minute 
+
+59:35 
+But later, I will have our TA and co-instructor, Yanqing, to deliver the tutorial 
+
+59:41 
+Okay, let's welcome 
+
+01:00:04 
+Hello, so from this link I will take the tutorial part. If you haven't downloaded the tutorial, you can download that from the covers here, this one too, and also the dataset, please download that, and then we can, I will go through this, today's topic, classification in sample learning. 
+
+01:00:32 
+So I think the tutorial won't be too challenging because if you remember the general process, that's the first thing, and the second is key library name with tool name and also the key parameters of each tool. So that's all. I think that will be fine for your assignment and final exam. 
+
+01:01:00 
+So today is about what is classification and how we implement this classification techniques for our problems. 
+
+01:01:11 
+So here is a summary of the toolbox. 
+
+01:01:17 
+Classification, I think if you link this with your feature engineering part, this is a type of supervised learning with the label, it's categorical attributes and based on values of other attributes, we can say it's predictive variables. 
+
+01:01:43 
+So here in this tutorial, I will show you two parts of classifiers with single. 
+
+01:01:51 
+The first one is single classifiers, and the second one is ensemble learners with, let me check, four learners. 
+
+01:02:04 
+So here we have five, totally we have total five classifiers. 
+
+01:02:10 
+So let me introduce the general process. That's the first thing I mentioned. 
+
+01:02:18 
+So the general process is, you can also see from here, the first step is for data preparation, like here. 
+
+01:02:34 
+We need to load the data and split it into testing and training data and then for the second step we choose the appropriate model for our program. Here they are classification techniques. 
+
+01:02:53 
+from 2 and 6. They are all classifiers. And then after these two steps, we chain and evaluate this model based on some metrics. 
+
+01:03:11 
+Here, if I remember correctly, we used the accuracy score and also we specifically tell you how to use the confusion matrix. 
+
+01:03:24 
+and here is an extra knowledge about how to balance the data set using the weighted classification 
+
+01:03:36 
+so here let's begin today's tutorial 
+
+01:03:39 
+for the first part is data preparation 
+
+01:03:44 
+so here 
+
+01:03:46 
+Here is the second key thing you need to know, it's the rich library, the second one, model selection, to import, actually this is the function, okay, I think you have encountered this one many times, so please remember this, this may enter to your final exam. 
+
+01:04:14 
+Here then we use the panels to read our data set. In this data set we use the credit approval. So here we take a brief view. 
+
+01:04:34 
+So you can see that the label here is a code or not. This is the dependent variables, right? 
+
+01:04:46 
+And this part, these five attributes are independent variables. 
+
+01:04:54 
+Actually, this is a binary variable. If you remember the feature engineering, I think the professor will tell you what is a binary variable. 
+
+01:05:05 
+Then, this is data preparation part. We use this function to split our data set into training data set here, training, and this is the independent part, and this is the dependent part into training and testing. 
+
+01:05:29 
+You should remember what's the key parameters here. I think the most important is this one, test size. 
+
+01:05:36 
+which means we use 40% here, we set it to 0.4, which means we use 40% of the total data set for testing and the rest of 60% for training, right? 
+
+01:05:53 
+Okay, this is the first part, data preparation, and we will use the skills of testing and training data for the... 
+
+01:06:04 
+the model training and also for our model evaluation okay is that clear for this part 
+
+01:06:16 
+so you need to remember this function training classes and also the parameters we use here 
+
+01:06:27 
+If that's clear, I want to move to the second part, which is the model. 
+
+01:06:33 
+Yes, we just used some existing toolbox. 
+
+01:06:37 
+We need no need to implement by ourselves, step by step. 
+
+01:06:45 
+Okay, and then, so for the first part, techniques, there's a single classifier here. 
+
+01:06:51 
+We use the decision tree classifier. 
+
+01:06:55 
+Here are some links for that decision 
+
+01:07:02 
+tree. 
+
+01:07:06 
+Decision 
+
+01:07:09 
+tree classifier is here. 
+
+01:07:13 
+Here is, this is the API page. This one will show what parameters you can customize by yourself and also how to use, this is the class, how to use the functions here. I think usually we only need to know what is fit and what is... 
+
+01:07:34 
+predict for so many algorithms they are seen because they belong to a second-hand library. 
+
+01:07:44 
+Okay, so let's go back to the single-in-single classifier. Just remember. 
+
+01:07:57 
+This one, the library name, because again, the final exam may include this one. 
+
+01:08:05 
+Okay, and then here is the initialization part. 
+
+01:08:10 
+This row is the initialization part for the model. 
+
+01:08:15 
+I said this is the basic parameter. 
+
+01:08:19 
+That's the maximum layer of the tree. 
+
+01:08:27 
+as you can set it as you okay I'm sorry for that here we just we haven't go there go there we are here for a single one a single classifier a single decision tree with two layers and please remember these parameters 
+
+01:08:48 
+Of course, you can set it into another number like 20, 25, as you like, but please know that if the number is too larger, there will be an issue for overfitting. I think you will learn what is overfitting in the future lecture. 
+
+01:09:07 
+Okay, and then here, when we initialize the model and then we fit. 
+
+01:09:16 
+This function, fit, is how we check the model based on the training data set and then predict based on the X independent variable set. 
+
+01:09:30 
+So here is the second step to train our model. 
+
+01:09:40 
+Go to our evaluation. When we train a model, we should evaluate its performance. For this part, it's training accuracy and validation accuracy for its ability to generalize. 
+
+01:10:00 
+You can see here is the whole process of from low data, from data preparation to model, model training, from initialize to train, and gather predictive labels, and then the last step, yes, the third step is to evaluate its performance. 
+
+01:10:24 
+The following models will follow, will keep the same procedures. So please keep that in mind. And you will know which part we are adding to. Okay? So is that clear? For this part, a single classifier. 
+
+01:10:45 
+Okay, is that okay? We will move on to the ensemble classifiers. So what's the key idea of ensemble learners? 
+
+01:10:58 
+I think the key is we do not just give one single classifier or one single model, we combine their crowds, combine their wisdom from a group of models right here, for the first one in many ways, for the first one is random forest, so for random forest here we should know what is random forest, so for random forest here we should know what is random forest, so for random forest here we should know what is random forest, so for random forest here we should know what is random forest, so for random forest here we should know what is random forest, so for random forest here we should know what is random forest, so for random forest here we should know what is random forest, so for random forest here we should know what is random forest, so for random forest here we should know what is random forest, so for random forest here we should know what is random forest, so for random forest here we should know what is random forest, so for random forest here we should know what is random forest, so for random forest here we should know what is random forest, so for random 
+
+01:11:26 
+the library name, random forest classifier, and all these example classifiers are from the same library, secular example, you can see here, secular example, but the true name is different, so if you are interested in this everything, you can go to, you can use this link. 
+
+01:11:54 
+I think I have open match here. 
+
+01:12:00 
+Again, you can see here is a brief description of what is random forest classifiers. 
+
+01:12:06 
+A classifier is a method, an estimator that fits a number of decision trees, which means we cannot change the base model. 
+
+01:12:17 
+Because, for example, we can buy a group of models here, this tool has specified a model as a decision tree. 
+
+01:12:29 
+So this would be easier to customize by ourselves. 
+
+01:12:37 
+Here, the 
+
+01:12:42 
+mass depth is 2, same as the single model here. 
+
+01:12:48 
+We use the here. And we use 500. This parameter n of estimator is a key parameter. If there is a question in your final exam, like please build a model, please build a random forest classifier with 500 base model and each one with two depths. You can write down this line. Then you will go Denmark. 
+
+01:13:16 
+You will get that mark, okay? 
+
+01:13:18 
+So please remember the key parameters and what is meaning here. 
+
+01:13:24 
+And this line, these five lines are... 
+
+01:13:31 
+Same with previous one, right? We just edit our model, what model we are using, and we initialize that and customize by ourselves with these parameters, okay? 
+
+01:13:46 
+So remember this one, random forest classifier and the key parameters here. 
+
+01:14:00 
+We can see that the performance of ensemble learners can be better than a single one. 
+
+01:14:07 
+We can see that the validation, compare the validation accuracy here. 
+
+01:14:12 
+one is 076, and this one is 072, okay, then we go to the bagging, bagging is another way to combine the group of models, it's in parallel way, so 
+
+01:14:33 
+But that's the underlying mechanism, but here you just need to know what's the library name in the second example, or true name here, back in classifier, please remember that. 
+
+01:14:50 
+Here you can use, here, because of bagging, actually this is a base model, right, you can use another model like SVM. I can show you here. If you 
+
+01:15:09 
+like, you can use another model to 
+
+01:15:20 
+restart the curve. I 
+
+01:15:25 
+load the data and split it into testing and training. 
+
+01:15:34 
+For the random forest, and then for the baggy, I just would say that we do not need to use decision tree, we can use SVM, it's a base model, you can customize by yourself, okay, like if I use the base model, how about use the KNN, K-Diver 
+
+01:16:08 
+Here I'm showing you how to customize the model. 
+
+01:16:13 
+I have done that before, so the base model, if I set the base model as K-never classifier and the neighbor here is 7, then I put this base model into the bagging classifier, you can see that, here is, I said I have 15 
+
+01:16:41 
+such models here then we can change that so please if before you use this model 
+
+01:16:49 
+you should import that from you import that from the library okay I can change 
+
+01:16:56 
+that so this this part 
+
+01:17:00 
+all these things we are doing is editing the initializing of a model. I set the base model as k neighbors to the classifier and we have 15 such base models and in here, this bagging, I use the decision tree classifier with each one 
+
+01:17:25 
+The layers is 2 and I have 15. You can set the estimator with 100. It's okay. 
+
+01:17:35 
+So the general process is that we are editing what models we are using. 
+
+01:17:42 
+So is that clear for bagging? If it is clear, I will move on to the next part. 
+
+01:17:52 
+It's another ensemble wave. This other boost belongs to boosting ensemble learning. It's different from the banking. It's a sequence. 
+
+01:18:08 
+So with the later classifier pays more attention on the wrong samples by former classifiers, so that's the underlying of the kinds of differences. 
+
+01:18:39 
+Here, also you need to set the base model. Yes, you can set to other models in here I have shown you previously. 
+
+01:18:51 
+As you like, you can customize the model. Here is how many base models we use in our group. It's 5, right? You can set it to 10, it's okay. And the following is feet, the chain, how to chain model. You just use this function based on the chain set, not the testing set, okay? It's the X chain and Y chain. 
+
+01:19:16 
+Then we got the trend model, and we use the trend model to get the predictive labels and get the accuracy score. 
+
+01:19:29 
+So the procedure, again, they are same. So I think the criteria will not challenge you because the general process are same. 
+
+01:19:44 
+The model we use. So is that clear? Also you can compare, you can keep the accuracy of a single model in mind, keep in mind that 0.72 and this one 
+
+01:20:06 
+These three, actually these four examples, their performance are better than a single one, right? 
+
+01:20:13 
+Because we combined a group of models. 
+
+01:20:17 
+So the next one is the last one, our fifth model used in our tutorial is the stacking classifier. 
+
+01:20:28 
+Here is, please remember this one. 
+
+01:20:33 
+Okay, stacking classifier, and also the decision tree we have used previously, and K-label, K-label is classifier, and these are classification techniques. If you want to use another, you can go to the second level for more information, okay? 
+
+01:20:59 
+So stacking will be a bit more complex than the previous one because they have two layers. 
+
+01:21:09 
+You can see the API page here, stacking classifier. You can see that the description is that a stack of estimators is the first part, first level, right? 
+
+01:21:22 
+And with the final classifier, which means you should specify, customize these two parts. 
+
+01:21:38 
+classifier. Okay, so here in our tutorial, the code here, number one, we set down the base estimator. First, we use decision tree classifier. Remember, okay, here it shows again max depth. We set it into three. And the random state is one. View set is as one. 
+
+01:22:06 
+because when training we will random sample the data, so we set it to 1, so therefore we can repeat, therefore the code will be repeatable, right, we can run it again and again, okay, and then we go, the second estimator is 
+
+01:22:31 
+We use this function, make pipeline, to record these three base estimators. 
+
+01:22:38 
+Second, we use this here, K-neighbor classifier with neighbor is 7, because this is a peak parameters. 
+
+01:22:49 
+Also, as we see, we use the kernel method. 
+
+01:22:55 
+So this is the first. 
+
+01:22:57 
+This is the first level when we initialize our model, and for the second, this is the second part of our second classifier, we use logistic regression, like we set the maximum iteration to 200. 
+
+01:23:24 
+So after we set these two levels, base estimator with final decision, we 
+
+01:23:38 
+We have customized the stacking classifiers here. So this will be a little bit more complex, but if we remember the procedure, the structure of this model, two levels, we got the variable. And then set the parameters to this variable. 
+
+01:24:03 
+Is that clear here? Because it's a bit more complex, but just remember the procedure here, and use the phi cross -validation, we send the cross -validation to phi, and I think this is the default value, and just remember this is okay 
+
+01:24:30 
+for stacking classifier, okay? 
+
+01:24:35 
+And after that, these are initialization of our model. Here you can customize as required. As assignment required or the final exam required. And then you change the model, see if it fits. 
+
+01:25:05 
+training function is the fit based on the training dataset you have seen in the data preparation stage 
+
+01:25:14 
+so the same with previous one, all these are first we prepare for the first stage is data preparation is testing and study 
+
+01:25:28 
+The second, we choose the tool, the algorithm we use. For classification, here we use some decision tree classifier or some example methods like Adaboost classifier. 
+
+01:25:45 
+Okay, so they are same. This is the second stage. For the third stage, we need to... 
+
+01:25:55 
+Evaluate the model performance, we use the matrix here, this accuracy score, I think you have learned that before, because it's a very common matrix for classification, you can remember this function, accuracy score. 
+
+01:26:15 
+So here, we go back to go through the whole stage. 
+
+01:26:23 
+preparation, and use different models to train a classifier for your dev, dev credit approval program, right, and evaluate the model in training dataset and testing dataset, okay, that's the model part, and for here we tell you how to use another 
+
+01:26:53 
+matrix, confusion matrix, you can remember this one, how to display, but remember the tool name, and it's how to use that one, and the CLF is a classifier, right, we have chained it, this is how it's chained, most of them haven't chained, it's how it's chained. 
+
+01:27:21 
+This one has changed based on the dataset, and we use testing, but we cannot use training dataset for evaluation, we can only use testing dataset, and display the labels, plus or negative, plus or minus, and value format means 
+
+01:27:52 
+And here is the color blue, you can see you used a series of blues here to show that. 
+
+01:28:02 
+So I think you can remember the name and the keys to usually learn how to explain this. 
+
+01:28:17 
+Okay, I think professor Liu has told you just now, and okay, here is the class weight, because in real case, the data will be imbalanced, like for detention, so many data samples are negative, so if we encounter such 
+
+01:28:43 
+Such dataset, what we can do to help our model to change a model with good performance, so here is what we are doing, so first of all, here, this is the make up data, we do not use our previous one, we use the make up data, and we run this. 
+
+01:29:08 
+This part is not required for final exam because it's about data visualization. 
+
+01:29:20 
+So we just go to this part to see what is in balance the data as we can see here they are same with previous one. We use the channel data to show the confusion matrix. You can see most of them are 
+
+01:29:46 
+If we use this data set, I can see here 
+
+01:29:55 
+1 is 90% and 0 is 10%, we use that to predict we got an imbalanced model, right, so this we didn't do anything to solve the imbalanced issue, but here, what we can do is here, set a parameter weights here, 
+
+01:30:19 
+We got more attention on the data sample with zero label. 
+
+01:30:26 
+We set it to 10, while the other label was set to 1, right? 
+
+01:30:33 
+So we set this one here. 
+
+01:30:39 
+So the professor has said that we can only use the weights when we are changing the model, not use for testing model, right? 
+
+01:30:52 
+So here we set, when we initialize the model, we set it into this one. 
+
+01:31:01 
+They are so actually our tutorial when we are editing our model initialization, right, and fit that they are same and display the confusion matrix. Here you can compare these two. We can see that with more predictive label as 0, right, here is 8, but here is... 
+
+01:31:32 
+532 right so much more zero legal okay this is how we weighted how we made the imbalance data just use the weights then the weights it's a dict 
+
+01:31:51 
+which is the data to set the weight to each label 0 or label 1, set the weight for 0 and set the weight for 1, and then we put this variable into initialization stage here, we set these key parameters, so remember the key parameters, class, weight, okay? 
+
+01:32:21 
+That's all, I think that's all for today's tutorial, and here is... 
+
+01:32:27 
+So here is the summary, we learned the general process for data preparation, and then we trained the model, and last we evaluate by accuracy score, and then I show you how to use confusion matrix, and also if we encounter some imbalance in the data set, what we can do. 
+
+01:32:50 
+So here the assignment, the first one is use a credit card reducer. 
+
+01:32:56 
+data set, build 5 classification models. I think the tutorial has 5 models you can customize by yourself, okay? 
+
+01:33:05 
+Or if you want to use another, click this link to this classifier configuration. 
+
+01:33:12 
+And please be careful, this one is 15 marks. 
+
+01:33:20 
+Don't you, yes, you can use AI to produce code, but please include all the requirements like by models, use the specified data, specified data sets, okay? 
+
+01:33:35 
+And plot, yes, we need to see the pictures here, confusion matrix, and also some other metrics. 
+
+01:34:09 
+accuracy score, we just use that. This is for classification matrix. And F1 score here, right, these are requirements. And also others, like, you can just search the page, like, recall. You 
+
+01:34:30 
+can search the page. Use command plus F to search. 
+
+01:34:37 
+I can see that here is the recall score. So all the requirements, required metrics are here. You can find that. So here, this is the first question. And for the second question, it's the description. Based on question one, you should show your own analysis. Do not just say one key word or... 
+
+01:35:06 
+Please use the sentence, the complete sentence to show your analysis roadmap, okay? 
+
+01:35:14 
+If you just produce keywords, I don't think you will go to a good grade in this assignment. 
+
+01:35:21 
+So, for the third one is class weight method. 
+
+01:35:26 
+I think this we have shown right here. 
+
+01:35:28 
+We use the weight here. 
+
+01:35:31 
+Here is a model with weights, and here is a model without weights, right, so we compare, we compare these two confusion matrix, right, here. 
+
+01:35:43 
+So, this is for the third question, and evaluate your model performance before and after. 
+
+01:35:55 
+Yes, the confusion matrix is not enough. 
+
+01:36:06 
+Okay, that's the third question. 
+
+01:36:09 
+Is that clear? 
+

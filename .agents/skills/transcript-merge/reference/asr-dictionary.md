@@ -233,3 +233,17 @@
 | one cortic coder | OneHotEncoder | 02:27:45 | 原cell29接口；引文写[OneHotEncoder] |
 | automatically draw the first one | automatically [drop] the first one | 02:27:45 | 同句已说will drop，原cell29 drop='first'；非逐字原话 |
 | house locked and downhouse | house[,] [loft] and [townhouse] | 02:27:59 | 原categories_与输出列，Loft/Townhouse为校词 |
+
+
+## IS6400 M06/T07 · 2026-10-14 来源增量（2026-10-15核对）
+
+| 原转写 | 书面校词 | 原来源与边界 |
+|---|---|---|
+| Hamster/Hans/house algorithm | Hunt's algorithm | A06:01/08:33/08:46，L6 p16–18；原转录不改 |
+| base class file / base CASFAR / base cat bar | base classifier | B00:53起，L6集成语境 |
+| kernel chip | kernel trick | B44:03/46:22，L6 p71 |
+| panels | pandas | B01:04:14，原cell3 |
+| mass depth | max_depth | B01:12:42，原cell8 |
+| secular example | sklearn.ensemble | B01:11:26，原cell8/10/12 |
+
+A股票名、B阈值/映射、TA200/15marks仍不确定，不作为确定校词；按原件2000/50保留边界，不改写源文本。
