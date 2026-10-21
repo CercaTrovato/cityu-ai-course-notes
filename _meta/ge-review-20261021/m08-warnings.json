@@ -1,0 +1,779 @@
+[
+  {
+    "code": "R6a",
+    "line": 35,
+    "detail": "一段 3 处括号英文注释（约等于 3 个新术语）",
+    "scope": "unchanged_history",
+    "context": "\n## 0. 三分钟速览\n\n预测模型真正完成的标志，不是训练误差够小，而是可预测结构已进入拟合值，剩余残差近似白噪声（White Noise）。自相关函数（ACF）和偏自相关函数（PACF）帮助判断过去值或过去误差仍留下什么结构。\n\nAR 模型用过去的 $y$，MA 模型用过去的冲击误差，ARMA 合并两者。若原序列的均值、方差或季节结构随时间改变，先通过变换与差分得到较稳定的序列，再用 ARIMA／SARIMA 建模。所有模型都要按时间顺序滚动评价，不能随机交叉验证。\n"
+  },
+  {
+    "code": "R4c",
+    "line": 64,
+    "detail": "单元格 2 句",
+    "scope": "unchanged_history",
+    "context": "| 水平、趋势、季节 | 水平是局部中心，趋势是长期方向，季节是固定日历周期 | [[IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性#2.3 模式与分解：水平、趋势、季节和周期（讲义物理 p.14–21）\\|M07 §2.3]] |\n| SES／Holt／Holt-Winters | 分别递推更新水平、水平加趋势、水平加趋势加季节 | [[IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性#2.6 Holt 与 Holt-Winters：递推保存水平、趋势和季节（讲义物理 p.32–35）\\|M07 §2.6]] |\n| 趋势与季节回归 | 时间趋势与季度虚拟变量可同时进入回归，但仍需检查残差 | [[IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性#2.9 季节回归：虚拟变量与基准季度（讲义物理 p.42–43）\\|M07 §2.9]] |\n| 残差 | $e_t=Y_t-\\hat Y_t$；仍有规律说明模型漏掉可预测结构 | [[IS6400_Business_Data_Analytics/notes/M02-预测分析-线性回归#2.5.3 曲线拟合：怎么定义\"最好的那条线\"（讲义 p.19, p.28）\\|M02 §2.5.3]] |\n\n读最后一行：本讲不是从原序列名字开始堆模型，而是先问已有模型的残差是否还留下可预测关系。\n"
+  },
+  {
+    "code": "R1a",
+    "line": 96,
+    "detail": "87 单元：p.1 是 Lecture 9 封面；p.2–6 复现 SMA、WMA、…",
+    "scope": "unchanged_history",
+    "context": "\n**是什么**\n\np.1 是 Lecture 9 封面；p.2–6 复现 SMA、WMA、SES、Holt 和 Holt-Winters；p.7–11 复现线性趋势、软饮料残差、指数趋势和季节虚拟变量；p.12 复现 sklearn 的滞后／滚动特征；p.13 是“Autoregression”分隔封面；p.14 再问“time-indexed independent variable $X_t$ 从哪里来？”答案之一是过去的 $Y$ 与过去残差。\n\n**为什么需要它**\n"
+  },
+  {
+    "code": "R1c",
+    "line": 96,
+    "detail": "5 个分号：p.1 是 Lecture 9 封面；p.2–6 复现 SMA、WMA、…",
+    "scope": "unchanged_history",
+    "context": "\n**是什么**\n\np.1 是 Lecture 9 封面；p.2–6 复现 SMA、WMA、SES、Holt 和 Holt-Winters；p.7–11 复现线性趋势、软饮料残差、指数趋势和季节虚拟变量；p.12 复现 sklearn 的滞后／滚动特征；p.13 是“Autoregression”分隔封面；p.14 再问“time-indexed independent variable $X_t$ 从哪里来？”答案之一是过去的 $Y$ 与过去残差。\n\n**为什么需要它**\n"
+  },
+  {
+    "code": "R1c",
+    "line": 170,
+    "detail": "2 个分号：p.15 明确要求 fitted value 包含所有可预测成分；p.1…",
+    "scope": "unchanged_history",
+    "context": "\n**课件原例**\n\np.15 明确要求 fitted value 包含所有可预测成分；p.16 用银行账户余额说明相邻月份常相关；p.17 用先形成 lagged variables、再算 correlation 的 Excel 表解释操作。\n\n**🎙️ 课堂补充**\n"
+  },
+  {
+    "code": "R1c",
+    "line": 213,
+    "detail": "2 个分号：这里 $\\Delta$ 是一阶差分算子，动作是“当前水平减上一期水平”；…",
+    "scope": "affected_unit",
+    "context": "\\Delta Y_t=Y_t-Y_{t-1}=m+e_t.\n$$\n\n这里 $\\Delta$ 是一阶差分算子，动作是“当前水平减上一期水平”；$m$ 的单位是“$Y$ 单位／期”；$e_t$ 与 $Y$ 同单位。期望（Expectation）$E[e_t]=0$ 表示在反复出现的同类时点中，冲击的长期平均为 0，不表示每一期冲击都等于 0。\n\n**为什么需要它**\n"
+  },
+  {
+    "code": "R5a",
+    "line": 213,
+    "detail": "一段 5 个不同行内公式",
+    "scope": "affected_unit",
+    "context": "\\Delta Y_t=Y_t-Y_{t-1}=m+e_t.\n$$\n\n这里 $\\Delta$ 是一阶差分算子，动作是“当前水平减上一期水平”；$m$ 的单位是“$Y$ 单位／期”；$e_t$ 与 $Y$ 同单位。期望（Expectation）$E[e_t]=0$ 表示在反复出现的同类时点中，冲击的长期平均为 0，不表示每一期冲击都等于 0。\n\n**为什么需要它**\n"
+  },
+  {
+    "code": "R5a",
+    "line": 275,
+    "detail": "一段 4 个不同行内公式",
+    "scope": "unchanged_history",
+    "context": "\n**为什么公式长这样**\n\n每个 $\\phi_j$ 衡量在控制其他列后，$j$ 期前值对当前预测的线性贡献。截距提供长期中心；当 $|\\phi|<1$ 时，AR(1) 冲击会按 $\\phi^h$ 衰减。\n\n**数字例子（手把手）**\n"
+  },
+  {
+    "code": "R5a",
+    "line": 345,
+    "detail": "一段 5 个不同行内公式",
+    "scope": "affected_unit",
+    "context": "\n**PACF(2) 的实际残差化例子（笔记补充）**\n\n取短序列 $[1,2,1,3,2,5]$。对 $t=3,4,5,6$ 排成三列：当前值 $Y_t=[1,3,2,5]$，一阶滞后 $Y_{t-1}=[2,1,3,2]$，二阶滞后 $Y_{t-2}=[1,2,1,3]$。PACF(2) 要控制中间的一阶滞后：\n\n1. 用截距和 $Y_{t-1}$ 回归 $Y_t$，得到拟合式 $\\widehat Y_t=3.75-0.5Y_{t-1}$，残差为 $[-1.75,-0.25,-0.25,2.25]$。\n2. 用同样的截距和 $Y_{t-1}$ 回归 $Y_{t-2}$，得到 $\\widehat Y_{t-2}=2.75-0.5Y_{t-1}$，残差为 $[-0.75,-0.25,-0.25,1.25]$。"
+  },
+  {
+    "code": "R5a",
+    "line": 347,
+    "detail": "一段 4 个不同行内公式",
+    "scope": "affected_unit",
+    "context": "\n取短序列 $[1,2,1,3,2,5]$。对 $t=3,4,5,6$ 排成三列：当前值 $Y_t=[1,3,2,5]$，一阶滞后 $Y_{t-1}=[2,1,3,2]$，二阶滞后 $Y_{t-2}=[1,2,1,3]$。PACF(2) 要控制中间的一阶滞后：\n\n1. 用截距和 $Y_{t-1}$ 回归 $Y_t$，得到拟合式 $\\widehat Y_t=3.75-0.5Y_{t-1}$，残差为 $[-1.75,-0.25,-0.25,2.25]$。\n2. 用同样的截距和 $Y_{t-1}$ 回归 $Y_{t-2}$，得到 $\\widehat Y_{t-2}=2.75-0.5Y_{t-1}$，残差为 $[-0.75,-0.25,-0.25,1.25]$。\n3. 两组残差的点积为 4.25，平方和分别为 8.25 与 2.25，因此：\n   $$"
+  },
+  {
+    "code": "R5a",
+    "line": 348,
+    "detail": "一段 4 个不同行内公式",
+    "scope": "affected_unit",
+    "context": "取短序列 $[1,2,1,3,2,5]$。对 $t=3,4,5,6$ 排成三列：当前值 $Y_t=[1,3,2,5]$，一阶滞后 $Y_{t-1}=[2,1,3,2]$，二阶滞后 $Y_{t-2}=[1,2,1,3]$。PACF(2) 要控制中间的一阶滞后：\n\n1. 用截距和 $Y_{t-1}$ 回归 $Y_t$，得到拟合式 $\\widehat Y_t=3.75-0.5Y_{t-1}$，残差为 $[-1.75,-0.25,-0.25,2.25]$。\n2. 用同样的截距和 $Y_{t-1}$ 回归 $Y_{t-2}$，得到 $\\widehat Y_{t-2}=2.75-0.5Y_{t-1}$，残差为 $[-0.75,-0.25,-0.25,1.25]$。\n3. 两组残差的点积为 4.25，平方和分别为 8.25 与 2.25，因此：\n   $$\n   \\operatorname{PACF}(2)=\\frac{4.25}{\\sqrt{8.25\\times2.25}}=0.98644."
+  },
+  {
+    "code": "R5a",
+    "line": 354,
+    "detail": "一段 5 个不同行内公式",
+    "scope": "affected_unit",
+    "context": "   \\operatorname{PACF}(2)=\\frac{4.25}{\\sqrt{8.25\\times2.25}}=0.98644.\n   $$\n\n这个数表示：把 $Y_{t-1}$ 能线性解释的部分从两边都拿走后，$Y_{t-2}$ 与 $Y_t$ 仍有很强的剩余线性关系。小样本只用于展示算法，不作为真实选阶证据。迁移到 PACF($k$) 时，就把中间的 1 到 $k-1$ 阶滞后共同放进两次回归。\n\n**为什么公式长这样**\n"
+  },
+  {
+    "code": "R5a",
+    "line": 362,
+    "detail": "一段 4 个不同行内公式",
+    "scope": "affected_unit",
+    "context": "\n**课件原例与完整表格复算（p.25）**\n\n讲义给 $\\hat Y_t=10+0.5e_{t-1}$、$Y_t=\\hat Y_t+e_t$，并给误差 $e_1=-2,e_2=1,e_3=0,e_4=2,e_5=1$。若初始化 $e_0=0$：\n\n| $t$ | 已知上期误差 | $\\hat Y_t$ | 当期误差 $e_t$ | $Y_t$ |\n|---:|---:|---:|---:|---:|"
+  },
+  {
+    "code": "R5a",
+    "line": 410,
+    "detail": "一段 5 个不同行内公式",
+    "scope": "unchanged_history",
+    "context": "\n**是什么**\n\n讲义把平稳概括为“无趋势、方差恒定、无季节性”。更严谨地说，本讲通常需要弱平稳（Weak Stationarity）：$E[Y_t]=\\mu$ 不随 $t$ 变，$Var(Y_t)=\\sigma^2$ 不随 $t$ 变，$Cov(Y_t,Y_{t-k})$ 只依赖滞后 $k$，不依赖具体日历时点。\n\n这一定义允许短程自相关或随机波动形成局部起伏；“平稳”不等于一条平线，也不等于绝对没有任何频率结构。\n"
+  },
+  {
+    "code": "R6a",
+    "line": 414,
+    "detail": "一段 3 处括号英文注释（约等于 3 个新术语）",
+    "scope": "unchanged_history",
+    "context": "\n这一定义允许短程自相关或随机波动形成局部起伏；“平稳”不等于一条平线，也不等于绝对没有任何频率结构。\n\nKPSS（Kwiatkowski–Phillips–Schmidt–Shin）检验的原假设可设为围绕常数平稳（`regression='c'`）或围绕确定性趋势平稳（`regression='ct'`）。\n\nKPSS 先按所选原假设去掉常数或常数加趋势，得到残差 $e_t$。然后累积残差：\n"
+  },
+  {
+    "code": "R1c",
+    "line": 436,
+    "detail": "3 个分号：p.32 四图 A–D：A 有下行趋势；B 暖／冷季节交替；C 有趋势和…",
+    "scope": "unchanged_history",
+    "context": "\n**课件原例**\n\np.30 明写 ARMA assumes a stationary time series。p.31 给三条教学判断。p.32 四图 A–D：A 有下行趋势；B 暖／冷季节交替；C 有趋势和季节；D 是股价日变化，均值较稳定但有波动聚集与尖峰，不能只凭视觉宣布全部性质成立。p.33 给 KPSS 原假设与 0.05 判定。\n\n**KPSS 判断步骤**\n"
+  },
+  {
+    "code": "R1a",
+    "line": 568,
+    "detail": "88 单元：文字替代：面板 (a) 随时间上升并有四期锯齿；(b) 取对数后仍有趋势…",
+    "scope": "unchanged_history",
+    "context": "5. 减去给定季节项后为 $2.350674-0.18=2.170674$。\n6. 再减去给定趋势后为 $2.170674-2.2=-0.029326$，正好回到给定扰动。\n\n文字替代：面板 (a) 随时间上升并有四期锯齿；(b) 取对数后仍有趋势和四期波动；(c) 减去给定四位置季节项后只剩平滑上升趋势与小扰动；(d) 再减去给定线性趋势后围绕 0 呈小幅振荡。图源为 `M08-simulated-transform-panels.py`，逐点数据为 `M08-simulated-transform-data.csv`。\n\n**中文题意与图形限制**\n"
+  },
+  {
+    "code": "R1c",
+    "line": 568,
+    "detail": "3 个分号：文字替代：面板 (a) 随时间上升并有四期锯齿；(b) 取对数后仍有趋势…",
+    "scope": "unchanged_history",
+    "context": "5. 减去给定季节项后为 $2.350674-0.18=2.170674$。\n6. 再减去给定趋势后为 $2.170674-2.2=-0.029326$，正好回到给定扰动。\n\n文字替代：面板 (a) 随时间上升并有四期锯齿；(b) 取对数后仍有趋势和四期波动；(c) 减去给定四位置季节项后只剩平滑上升趋势与小扰动；(d) 再减去给定线性趋势后围绕 0 呈小幅振荡。图源为 `M08-simulated-transform-panels.py`，逐点数据为 `M08-simulated-transform-data.csv`。\n\n**中文题意与图形限制**\n"
+  },
+  {
+    "code": "R1c",
+    "line": 576,
+    "detail": "2 个分号：(b) 对原序列做 Box-Cox，压缩高水平处越来越大的季节振幅；(c…",
+    "scope": "unchanged_history",
+    "context": "\n**直接答案与逐问解析**（⚪ 参考作答；笔记推断，非官方答案）\n\n1. (b) 对原序列做 Box-Cox，压缩高水平处越来越大的季节振幅；(c) 在此基础上去季节，使固定周期峰谷明显减弱，但图上仍有上升趋势；(d) 再去趋势，围绕较稳定中心波动。\n2. (a) 有上升趋势、季节性且振幅随水平变化，明显不满足讲义的平稳口径。(d) 视觉上更接近弱平稳，但仅凭图不能确认。应对处理后的有效样本运行 KPSS，说明 `c` 或 `ct`、滞后规则与 $p$ 值；并结合 ACF、均值／方差随时间图和残差白噪声诊断。$p\\ge0.05$ 只能说未拒绝原假设。\n\n**English reference answer（笔记自拟；非官方答案）**"
+  },
+  {
+    "code": "R2b",
+    "line": 577,
+    "detail": "123 单元：2. (a) 有上升趋势、季节性且振幅随水平变化，明显不满足讲义的平稳口…",
+    "scope": "unchanged_history",
+    "context": "**直接答案与逐问解析**（⚪ 参考作答；笔记推断，非官方答案）\n\n1. (b) 对原序列做 Box-Cox，压缩高水平处越来越大的季节振幅；(c) 在此基础上去季节，使固定周期峰谷明显减弱，但图上仍有上升趋势；(d) 再去趋势，围绕较稳定中心波动。\n2. (a) 有上升趋势、季节性且振幅随水平变化，明显不满足讲义的平稳口径。(d) 视觉上更接近弱平稳，但仅凭图不能确认。应对处理后的有效样本运行 KPSS，说明 `c` 或 `ct`、滞后规则与 $p$ 值；并结合 ACF、均值／方差随时间图和残差白噪声诊断。$p\\ge0.05$ 只能说未拒绝原假设。\n\n**English reference answer（笔记自拟；非官方答案）**\n"
+  },
+  {
+    "code": "R1c",
+    "line": 639,
+    "detail": "3 个分号：差分负责把水平变化转成较稳定序列；AR 描述变化量的持续性；MA 描述冲…",
+    "scope": "affected_unit",
+    "context": "\n**为什么公式长这样**\n\n差分负责把水平变化转成较稳定序列；AR 描述变化量的持续性；MA 描述冲击的短期延续；季节项在固定间隔 $m$ 重复同样两类依赖。\n\n**数字例子（手把手）**\n"
+  },
+  {
+    "code": "R5a",
+    "line": 657,
+    "detail": "一段 5 个不同行内公式",
+    "scope": "affected_unit",
+    "context": "\n**SARIMA 季节运算与一步预测例（笔记补充）**\n\n设季度周期 $m=4$，原序列前 8 期为 $[10,12,14,16,11,14,17,20]$。用 SARIMA$(0,0,0)(1,1,0)_4$ 的简化季节结构，先做季节差分 $Z_t=Y_t-Y_{t-4}$，再令 $Z_t=0.5Z_{t-4}+e_t$。\n\n1. 第 5–8 期季节差分分别为 $1,2,3,4$。\n2. 预测第 9 期差分时，使用同一季节位置四期前的 $Z_5=1$：$\\hat Z_9=0.5(1)=0.5$。"
+  },
+  {
+    "code": "R2b",
+    "line": 675,
+    "detail": "89 单元：5. 诊断与停止：比较同一滚动切分下的误差和信息准则，检查残差 ACF、…",
+    "scope": "affected_unit",
+    "context": "2. **提出候选**：ACF／PACF 只给小范围 $p,q,P,Q$，不能直接宣布最终阶数。\n3. **估计**：给定候选后，通过条件平方误差或似然估计 $c,\\phi,\\theta$ 等参数。MA 部分的创新误差不是原始数据列，要在估计过程中随参数递推。\n4. **预测与还原**：先预测差分序列，再按相反顺序加回最后水平与对应季节水平。上面的第 9 期例就是先得 $\\hat Z_9=0.5$，再加回 $Y_5=11$ 得 11.5。\n5. **诊断与停止**：比较同一滚动切分下的误差和信息准则，检查残差 ACF、参数稳定性、平稳／可逆根及优化状态。继续加阶不改善滚动误差，或出现不收敛、近单位根和残差相关时停止并回到较简单候选。\n\n**为什么需要它**\n"
+  },
+  {
+    "code": "R1c",
+    "line": 683,
+    "detail": "2 个分号：p.37 给 ARMA($p,q$)；p.38 的 ACF 与 PACF…",
+    "scope": "affected_unit",
+    "context": "\n**课件原例**\n\np.37 给 ARMA($p,q$)；p.38 的 ACF 与 PACF 第一阶候选指向 ARMA(1,1)；p.39 写 ARMA(1,1)。p.40 给一阶与二阶差分；p.41 写 ARIMA(1,1,1) 和特例；p.42 给非季节 $(p,d,q)$ 与季节 $(P,D,Q)_m$。\n\n**🎙️ 课堂补充**\n"
+  },
+  {
+    "code": "R1c",
+    "line": 683,
+    "detail": "2 个分号：p.40 给一阶与二阶差分；p.41 写 ARIMA(1,1,1) 和特…",
+    "scope": "affected_unit",
+    "context": "\n**课件原例**\n\np.37 给 ARMA($p,q$)；p.38 的 ACF 与 PACF 第一阶候选指向 ARMA(1,1)；p.39 写 ARMA(1,1)。p.40 给一阶与二阶差分；p.41 写 ARIMA(1,1,1) 和特例；p.42 给非季节 $(p,d,q)$ 与季节 $(P,D,Q)_m$。\n\n**🎙️ 课堂补充**\n"
+  },
+  {
+    "code": "R1c",
+    "line": 740,
+    "detail": "3 个分号：若共有 8 期，用前 4 期起步做一步预测：训练 1–4 预测 5；训练…",
+    "scope": "unchanged_history",
+    "context": "\n**数字例子（手把手）**\n\n若共有 8 期，用前 4 期起步做一步预测：训练 1–4 预测 5；训练 1–5 预测 6；训练 1–6 预测 7；训练 1–7 预测 8。四个误差一起算 MAE。规格选择结束后，仍需保留一段从未参与选择的最终测试期。\n\n**🎙️ 课堂补充**\n"
+  },
+  {
+    "code": "R4c",
+    "line": 796,
+    "detail": "单元格 2 句",
+    "scope": "affected_unit",
+    "context": "|---|---|---|\n| $Y_t$ | 本期要预测的响应 | 业务响应单位 |\n| $X_t$ | 本期真实可得的外生变量 | 由业务变量决定 |\n| $c$ | ADL 式的截距；前两个非 ADL 式用 $\\beta_0$ 表示截距 | 与响应相同 |\n| 非截距 $\\beta$ | 给对应输入分配权重；需先看该式的下标约定 | 响应单位／输入单位 |\n| $\\phi_i$ | 给第 $i$ 阶过去响应分配权重 | 无 |\n| ADL 的 $\\beta_j$ | 给当前或第 $j$ 阶外生变量分配权重；其中 $\\beta_0$ 乘当前 $X_t$，不是截距 | 响应单位／外生变量单位 |"
+  },
+  {
+    "code": "R4c",
+    "line": 797,
+    "detail": "单元格 2 句",
+    "scope": "affected_unit",
+    "context": "| $Y_t$ | 本期要预测的响应 | 业务响应单位 |\n| $X_t$ | 本期真实可得的外生变量 | 由业务变量决定 |\n| $c$ | ADL 式的截距；前两个非 ADL 式用 $\\beta_0$ 表示截距 | 与响应相同 |\n| 非截距 $\\beta$ | 给对应输入分配权重；需先看该式的下标约定 | 响应单位／输入单位 |\n| $\\phi_i$ | 给第 $i$ 阶过去响应分配权重 | 无 |\n| ADL 的 $\\beta_j$ | 给当前或第 $j$ 阶外生变量分配权重；其中 $\\beta_0$ 乘当前 $X_t$，不是截距 | 响应单位／外生变量单位 |\n| $u_t$ | 本期尚未解释的扰动 | 与响应相同 |"
+  },
+  {
+    "code": "R4c",
+    "line": 799,
+    "detail": "单元格 2 句",
+    "scope": "affected_unit",
+    "context": "| $c$ | ADL 式的截距；前两个非 ADL 式用 $\\beta_0$ 表示截距 | 与响应相同 |\n| 非截距 $\\beta$ | 给对应输入分配权重；需先看该式的下标约定 | 响应单位／输入单位 |\n| $\\phi_i$ | 给第 $i$ 阶过去响应分配权重 | 无 |\n| ADL 的 $\\beta_j$ | 给当前或第 $j$ 阶外生变量分配权重；其中 $\\beta_0$ 乘当前 $X_t$，不是截距 | 响应单位／外生变量单位 |\n| $u_t$ | 本期尚未解释的扰动 | 与响应相同 |\n| $p$ | 决定放入多少阶过去响应 | 非负整数 |\n| $q$ | 决定放入多少阶过去外生变量 | 非负整数 |"
+  },
+  {
+    "code": "R1c",
+    "line": 903,
+    "detail": "3 个分号：输入列说它看什么；参数列给阶数；线索列给诊断用途；边界列说明常见失效处。",
+    "scope": "unchanged_history",
+    "context": "| KPSS | 原或变换序列 | `c`／`ct`、lags | 检查平稳原假设 | 未拒绝不等于证明 |\n| ADL | 过去 $Y$ 与当前／过去 $X$ | $p,q$ | 内生惯性＋外部驱动 | 未来 $X$ 可得性、因果边界 |\n\n一行是一种模型或工具。输入列说它看什么；参数列给阶数；线索列给诊断用途；边界列说明常见失效处。\n\n---\n"
+  },
+  {
+    "code": "R6b",
+    "line": 35,
+    "detail": "一句 4 个术语（自相关函数、ACF、偏自相关函数、PACF）：自相关函数（ACF）和偏自相关函数（PACF）帮助判断过去值或过去误差仍…",
+    "scope": "unchanged_history",
+    "context": "\n## 0. 三分钟速览\n\n预测模型真正完成的标志，不是训练误差够小，而是可预测结构已进入拟合值，剩余残差近似白噪声（White Noise）。自相关函数（ACF）和偏自相关函数（PACF）帮助判断过去值或过去误差仍留下什么结构。\n\nAR 模型用过去的 $y$，MA 模型用过去的冲击误差，ARMA 合并两者。若原序列的均值、方差或季节结构随时间改变，先通过变换与差分得到较稳定的序列，再用 ARIMA／SARIMA 建模。所有模型都要按时间顺序滚动评价，不能随机交叉验证。\n"
+  },
+  {
+    "code": "R6b",
+    "line": 45,
+    "detail": "一句 4 个术语（ARIMA、SARIMA、ADL、滚动前推评价）：读懂 ARIMA$(p,d,q)$、SARIMA$(p,d,q)(P,D…",
+    "scope": "unchanged_history",
+    "context": "2. 从随机游走推到 AR(1)，判断 $\\phi=0$、$\\phi=1$ 等边界含义。\n3. 用给定误差逐期算 MA(1) 的预测与观测，并区分它与 M07 的移动平均平滑。\n4. 解释弱平稳、KPSS 原假设、Box-Cox、普通差分与季节差分的作用和风险。\n5. 读懂 ARIMA$(p,d,q)$、SARIMA$(p,d,q)(P,D,Q)_m$ 与 ADL，并设计滚动前推评价。\n\n**如果只记三件事**\n"
+  },
+  {
+    "code": "R6b",
+    "line": 49,
+    "detail": "一句 4 个术语（ACF、PACF、差分、残差）：ACF／PACF 是诊断线索；有限样本、混合模型和差分都会让“截尾规则”…",
+    "scope": "unchanged_history",
+    "context": "\n**如果只记三件事**\n\n- ACF／PACF 是诊断线索；有限样本、混合模型和差分都会让“截尾规则”不干净，最终要比较滚动误差并检查残差。\n- KPSS 的 $p\\ge0.05$ 只表示“未拒绝相应平稳原假设”，不能写成 95% 确认平稳。\n- 差分次数不是越多越好。过度差分会放大噪声并制造负相关。\n"
+  },
+  {
+    "code": "R6b",
+    "line": 84,
+    "detail": "一句 4 个术语（残差、AR、MA、ARIMA）：本文把复习压缩成 §2.1，并在每处回链 M07；正文按“残差目标 → …",
+    "scope": "unchanged_history",
+    "context": "\n### 1.3 为什么按这个顺序学 · 重排说明\n\n讲义 p.2–12 先复习 M07，p.13 才切入 autoregression。本文把复习压缩成 §2.1，并在每处回链 M07；正文按“残差目标 → 相关诊断 → AR／MA → 平稳化 → ARIMA → 评价 → 外生变量”组织。\n\n这比直接背 $p,d,q$ 更稳：先知道为什么需要滞后，再知道哪些变换改变了数据，最后才能解释阶数与评价结果。\n"
+  },
+  {
+    "code": "R6b",
+    "line": 96,
+    "detail": "一句 4 个术语（SMA、WMA、SES、残差）：p.1 是 Lecture 9 封面；p.2–6 复现 SMA、WMA、…",
+    "scope": "unchanged_history",
+    "context": "\n**是什么**\n\np.1 是 Lecture 9 封面；p.2–6 复现 SMA、WMA、SES、Holt 和 Holt-Winters；p.7–11 复现线性趋势、软饮料残差、指数趋势和季节虚拟变量；p.12 复现 sklearn 的滞后／滚动特征；p.13 是“Autoregression”分隔封面；p.14 再问“time-indexed independent variable $X_t$ 从哪里来？”答案之一是过去的 $Y$ 与过去残差。\n\n**为什么需要它**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 96,
+    "detail": "缩写“SMA”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**是什么**\n\np.1 是 Lecture 9 封面；p.2–6 复现 SMA、WMA、SES、Holt 和 Holt-Winters；p.7–11 复现线性趋势、软饮料残差、指数趋势和季节虚拟变量；p.12 复现 sklearn 的滞后／滚动特征；p.13 是“Autoregression”分隔封面；p.14 再问“time-indexed independent variable $X_t$ 从哪里来？”答案之一是过去的 $Y$ 与过去残差。\n\n**为什么需要它**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 96,
+    "detail": "缩写“WMA”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**是什么**\n\np.1 是 Lecture 9 封面；p.2–6 复现 SMA、WMA、SES、Holt 和 Holt-Winters；p.7–11 复现线性趋势、软饮料残差、指数趋势和季节虚拟变量；p.12 复现 sklearn 的滞后／滚动特征；p.13 是“Autoregression”分隔封面；p.14 再问“time-indexed independent variable $X_t$ 从哪里来？”答案之一是过去的 $Y$ 与过去残差。\n\n**为什么需要它**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 96,
+    "detail": "缩写“SES”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**是什么**\n\np.1 是 Lecture 9 封面；p.2–6 复现 SMA、WMA、SES、Holt 和 Holt-Winters；p.7–11 复现线性趋势、软饮料残差、指数趋势和季节虚拟变量；p.12 复现 sklearn 的滞后／滚动特征；p.13 是“Autoregression”分隔封面；p.14 再问“time-indexed independent variable $X_t$ 从哪里来？”答案之一是过去的 $Y$ 与过去残差。\n\n**为什么需要它**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 96,
+    "detail": "“残差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+    "scope": "unchanged_history",
+    "context": "\n**是什么**\n\np.1 是 Lecture 9 封面；p.2–6 复现 SMA、WMA、SES、Holt 和 Holt-Winters；p.7–11 复现线性趋势、软饮料残差、指数趋势和季节虚拟变量；p.12 复现 sklearn 的滞后／滚动特征；p.13 是“Autoregression”分隔封面；p.14 再问“time-indexed independent variable $X_t$ 从哪里来？”答案之一是过去的 $Y$ 与过去残差。\n\n**为什么需要它**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 100,
+    "detail": "缩写“ACF”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**为什么需要它**\n\nARIMA 不应替代对趋势和季节的理解。若序列的非平稳结构未处理，长串 ACF 可能只是共同趋势造成，不代表每个滞后都有直接作用。\n\n**课件原例**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 137,
+    "detail": "“残差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+    "scope": "unchanged_history",
+    "context": "Y_t=\\hat Y_{t\\mid t-1}+e_t.\n$$\n\n理想残差 $e_t$ 应近似白噪声：均值为 0、方差稳定、不同非零滞后间不相关。对序列 $Y_t$，滞后 $k$ 的样本自相关是\n\n$$\nr_k=\\frac{\\sum_{t=k+1}^{n}(Y_t-\\bar Y)(Y_{t-k}-\\bar Y)}{\\sum_{t=1}^{n}(Y_t-\\bar Y)^2}."
+  },
+  {
+    "code": "R6d",
+    "line": 143,
+    "detail": "“标准化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+    "scope": "unchanged_history",
+    "context": "r_k=\\frac{\\sum_{t=k+1}^{n}(Y_t-\\bar Y)(Y_{t-k}-\\bar Y)}{\\sum_{t=1}^{n}(Y_t-\\bar Y)^2}.\n$$\n\n下表每行解释自相关公式的一个量。单位列说明哪些量保留原尺度，哪些量已经标准化而无单位。\n\n| 符号 | 是什么 | 单位 | 已知还是要算 |\n|---|---|---|---|"
+  },
+  {
+    "code": "R6b",
+    "line": 191,
+    "detail": "一句 5 个术语（ACF、MA、残差、白噪声、PACF）：ACF 是 MA 阶数的经典线索，也是残差白噪声检查的一部分；PACF …",
+    "scope": "unchanged_history",
+    "context": "\n**与其他概念的关系**\n\nACF 是 MA 阶数的经典线索，也是残差白噪声检查的一部分；PACF 在 §2.5 去除中间滞后的间接通路。\n\n**所以呢**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 191,
+    "detail": "缩写“MA”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**与其他概念的关系**\n\nACF 是 MA 阶数的经典线索，也是残差白噪声检查的一部分；PACF 在 §2.5 去除中间滞后的间接通路。\n\n**所以呢**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 191,
+    "detail": "缩写“PACF”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**与其他概念的关系**\n\nACF 是 MA 阶数的经典线索，也是残差白噪声检查的一部分；PACF 在 §2.5 去除中间滞后的间接通路。\n\n**所以呢**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 251,
+    "detail": "缩写“AR”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "\n**与其他概念的关系**\n\n随机游走是 AR(1) 在 $\\phi=1,c=0$ 的边界，也是 ARIMA$(0,1,0)$ 的特例。\n\n**所以呢**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 261,
+    "detail": "缩写“AR”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**是什么**\n\nAR($p$) 用过去 $p$ 个观测预测当前值：\n\n$$\nY_t=c+\\phi_1Y_{t-1}+\\cdots+\\phi_pY_{t-p}+e_t."
+  },
+  {
+    "code": "R6d",
+    "line": 291,
+    "detail": "缩写“OLS”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**课件原例**\n\np.20 从随机游走扩展到 AR(1)、AR(2)、AR($p$)，并说明可用 OLS 估计。p.23 用“先回归掉 $x_1,x_2$，再相关剩余部分”引出 PACF；p.24 用传话图说明中间滞后会传递间接影响。\n\n**🎙️ 课堂补充**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 291,
+    "detail": "缩写“PACF”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**课件原例**\n\np.20 从随机游走扩展到 AR(1)、AR(2)、AR($p$)，并说明可用 OLS 估计。p.23 用“先回归掉 $x_1,x_2$，再相关剩余部分”引出 PACF；p.24 用传话图说明中间滞后会传递间接影响。\n\n**🎙️ 课堂补充**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 303,
+    "detail": "“残差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+    "scope": "unchanged_history",
+    "context": "\n**⚠️ 常见误解**\n\n- OLS 可估系数不代表普通独立误差回归诊断自动成立；残差仍要查白噪声。\n- $|\\phi|<1$ 是 AR(1) 平稳的重要边界；$\\phi=1$ 不能用同一个长期均值公式。\n\n**停止条件／什么时候别用**"
+  },
+  {
+    "code": "R6d",
+    "line": 312,
+    "detail": "缩写“ARMA”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**与其他概念的关系**\n\nPACF 对纯 AR($p$) 理论上在 $p$ 后截尾；混合 ARMA 中通常不会这么干净。\n\n**所以呢**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 322,
+    "detail": "缩写“MA”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "\n**是什么**\n\n移动平均误差模型（Moving Average Error Model, MA($q$)）用过去 $q$ 个创新冲击。创新（Innovation）是观测到来前不可预测、到来后可由“实际值减一步预测”估计的误差：\n\n$$\nY_t=\\mu+\\theta_1e_{t-1}+\\cdots+\\theta_qe_{t-q}+e_t."
+  },
+  {
+    "code": "R6d",
+    "line": 339,
+    "detail": "缩写“PACF”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "\n读第一行：若基准均值为 10，那么没有可延续的过去冲击时，一步预测从 10 起步。\n\n偏自相关函数（Partial Autocorrelation Function, PACF）则问：控制中间各阶滞后后，最远那一阶滞后还剩多少直接线性关联。\n\nACF 衡量 $Y_t$ 与 $Y_{t-k}$ 的总线性关联，包含中间滞后传递的间接作用。PACF 衡量控制 $Y_{t-1},\\ldots,Y_{t-k+1}$ 后，$Y_{t-k}$ 与 $Y_t$ 的剩余线性关联。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 341,
+    "detail": "缩写“ACF”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "\n偏自相关函数（Partial Autocorrelation Function, PACF）则问：控制中间各阶滞后后，最远那一阶滞后还剩多少直接线性关联。\n\nACF 衡量 $Y_t$ 与 $Y_{t-k}$ 的总线性关联，包含中间滞后传递的间接作用。PACF 衡量控制 $Y_{t-1},\\ldots,Y_{t-k+1}$ 后，$Y_{t-k}$ 与 $Y_t$ 的剩余线性关联。\n\n**PACF(2) 的实际残差化例子（笔记补充）**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 347,
+    "detail": "“残差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+    "scope": "affected_unit",
+    "context": "\n取短序列 $[1,2,1,3,2,5]$。对 $t=3,4,5,6$ 排成三列：当前值 $Y_t=[1,3,2,5]$，一阶滞后 $Y_{t-1}=[2,1,3,2]$，二阶滞后 $Y_{t-2}=[1,2,1,3]$。PACF(2) 要控制中间的一阶滞后：\n\n1. 用截距和 $Y_{t-1}$ 回归 $Y_t$，得到拟合式 $\\widehat Y_t=3.75-0.5Y_{t-1}$，残差为 $[-1.75,-0.25,-0.25,2.25]$。\n2. 用同样的截距和 $Y_{t-1}$ 回归 $Y_{t-2}$，得到 $\\widehat Y_{t-2}=2.75-0.5Y_{t-1}$，残差为 $[-0.75,-0.25,-0.25,1.25]$。\n3. 两组残差的点积为 4.25，平方和分别为 8.25 与 2.25，因此：\n   $$"
+  },
+  {
+    "code": "R6b",
+    "line": 374,
+    "detail": "一句 4 个术语（PACF、AR、ACF、MA）：p.28 的 PACF 前两阶显著对应 AR(2) 候选；p.29 的 …",
+    "scope": "affected_unit",
+    "context": "\n一行是一时点。第二列是预测时已知的过去误差，第三列是预测，第四列是新冲击，第五列是观测结果。\n\np.27 用三个月鲑鱼价格说明 ACF 的两月关联包含“前两月 → 上月 → 本月”的间接通路；PACF 去掉上月后看直接部分。p.28 的 PACF 前两阶显著对应 AR(2) 候选；p.29 的 ACF 前两阶显著对应 MA(2) 候选。\n\n**为什么需要它**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 374,
+    "detail": "缩写“AR”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "\n一行是一时点。第二列是预测时已知的过去误差，第三列是预测，第四列是新冲击，第五列是观测结果。\n\np.27 用三个月鲑鱼价格说明 ACF 的两月关联包含“前两月 → 上月 → 本月”的间接通路；PACF 去掉上月后看直接部分。p.28 的 PACF 前两阶显著对应 AR(2) 候选；p.29 的 ACF 前两阶显著对应 MA(2) 候选。\n\n**为什么需要它**\n"
+  },
+  {
+    "code": "R6b",
+    "line": 392,
+    "detail": "一句 4 个术语（PACF、AR、ACF、MA）：“PACF 截尾选 AR、ACF 截尾选 MA”只对理想纯模型是线索，不…",
+    "scope": "affected_unit",
+    "context": "\n- MA($q$) 的“Moving Average”是历史冲击线性组合，不是窗口销量平均。\n- 过去误差不是外部直接给定特征；模型估计与预测时要按递推或状态空间方法处理。\n- “PACF 截尾选 AR、ACF 截尾选 MA”只对理想纯模型是线索，不是自动判题规则。\n\n**极端／边界情况**\n"
+  },
+  {
+    "code": "R6b",
+    "line": 400,
+    "detail": "一句 5 个术语（AR、MA、ARMA、差分、ARIMA）：AR 与 MA 合并成 ARMA；非平稳序列先差分后得到 ARIMA。",
+    "scope": "affected_unit",
+    "context": "\n**与其他概念的关系**\n\nAR 与 MA 合并成 ARMA；非平稳序列先差分后得到 ARIMA。\n\n**所以呢**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 400,
+    "detail": "缩写“ARMA”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "\n**与其他概念的关系**\n\nAR 与 MA 合并成 ARMA；非平稳序列先差分后得到 ARIMA。\n\n**所以呢**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 414,
+    "detail": "缩写“KPSS”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n这一定义允许短程自相关或随机波动形成局部起伏；“平稳”不等于一条平线，也不等于绝对没有任何频率结构。\n\nKPSS（Kwiatkowski–Phillips–Schmidt–Shin）检验的原假设可设为围绕常数平稳（`regression='c'`）或围绕确定性趋势平稳（`regression='ct'`）。\n\nKPSS 先按所选原假设去掉常数或常数加趋势，得到残差 $e_t$。然后累积残差：\n"
+  },
+  {
+    "code": "R6d",
+    "line": 432,
+    "detail": "缩写“ARMA”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**为什么需要它**\n\nARMA 的均值、方差与相关结构假设在时间上稳定。对明显非平稳水平直接拟合 ARMA，系数和显著性可能误导。\n\n**课件原例**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 444,
+    "detail": "缩写“ACF”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "2. 计算统计量与 $p$ 值，并记录滞后选择方法。\n3. 若 $p<0.05$，在该规格下拒绝平稳原假设。\n4. 若 $p\\ge0.05$，只能说“未拒绝”，不能说“以 95% 概率确认平稳”。\n5. 结合时序图、ACF、另一类单位根检验和残差诊断形成结论。\n\n**KPSS 可复算小例（笔记补充）**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 525,
+    "detail": "缩写“ARMA”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**为什么需要它**\n\nARMA 需要较稳定相关结构。稳定化让模型在一个时期学到的关系更可能迁移到后来。\n\n**课件原例与公开 Quiz（p.36）**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 540,
+    "detail": "缩写“KPSS”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n![[IS6400_Business_Data_Analytics/notes/figures/time-series/M08-source-p36.png|900]]\n\n图源是 `IS6400-L9-time series2.pdf` 物理 p.36 的 200 dpi 渲染，未改动原图。四幅图横轴都是连续时间位置；(a) 的纵轴是原始 monthly heater demand，(b)–(d) 的纵轴是变换后数值。讲义没有提供原始数列、确切时间标签、Box-Cox $\\lambda$、季节估计或趋势估计过程，因此只能判读形状，不能从图片反推原数据或 KPSS 数值。\n\n- (a) 中心与振幅随时间上升，并有重复峰谷。\n- (b) Box-Cox 后振幅较接近，但上升趋势和重复峰谷仍在。"
+  },
+  {
+    "code": "R6d",
+    "line": 551,
+    "detail": "缩写“SVG”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n![[IS6400_Business_Data_Analytics/notes/figures/time-series/M08-simulated-transform-panels.svg|900]]\n\n这张 SVG 使用 24 个确定性模拟正数，不估计原图。所有面板横轴都是时间索引 $t=1,\\ldots,24$。四个纵轴依次是模拟原单位、对数单位、去季节后的对数单位、去趋势后的对数残差单位。构造式为：\n\n$$\n\\log Y_t=(2+0.04t)+s_{position}+0.03\\sin(0.9t),"
+  },
+  {
+    "code": "R6d",
+    "line": 551,
+    "detail": "“残差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+    "scope": "unchanged_history",
+    "context": "\n![[IS6400_Business_Data_Analytics/notes/figures/time-series/M08-simulated-transform-panels.svg|900]]\n\n这张 SVG 使用 24 个确定性模拟正数，不估计原图。所有面板横轴都是时间索引 $t=1,\\ldots,24$。四个纵轴依次是模拟原单位、对数单位、去季节后的对数单位、去趋势后的对数残差单位。构造式为：\n\n$$\n\\log Y_t=(2+0.04t)+s_{position}+0.03\\sin(0.9t),"
+  },
+  {
+    "code": "R6b",
+    "line": 577,
+    "detail": "一句 4 个术语（KPSS、ACF、残差、白噪声）：应对处理后的有效样本运行 KPSS，说明 `c` 或 `ct`、滞后规则…",
+    "scope": "unchanged_history",
+    "context": "**直接答案与逐问解析**（⚪ 参考作答；笔记推断，非官方答案）\n\n1. (b) 对原序列做 Box-Cox，压缩高水平处越来越大的季节振幅；(c) 在此基础上去季节，使固定周期峰谷明显减弱，但图上仍有上升趋势；(d) 再去趋势，围绕较稳定中心波动。\n2. (a) 有上升趋势、季节性且振幅随水平变化，明显不满足讲义的平稳口径。(d) 视觉上更接近弱平稳，但仅凭图不能确认。应对处理后的有效样本运行 KPSS，说明 `c` 或 `ct`、滞后规则与 $p$ 值；并结合 ACF、均值／方差随时间图和残差白噪声诊断。$p\\ge0.05$ 只能说未拒绝原假设。\n\n**English reference answer（笔记自拟；非官方答案）**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 577,
+    "detail": "缩写“ACF”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "**直接答案与逐问解析**（⚪ 参考作答；笔记推断，非官方答案）\n\n1. (b) 对原序列做 Box-Cox，压缩高水平处越来越大的季节振幅；(c) 在此基础上去季节，使固定周期峰谷明显减弱，但图上仍有上升趋势；(d) 再去趋势，围绕较稳定中心波动。\n2. (a) 有上升趋势、季节性且振幅随水平变化，明显不满足讲义的平稳口径。(d) 视觉上更接近弱平稳，但仅凭图不能确认。应对处理后的有效样本运行 KPSS，说明 `c` 或 `ct`、滞后规则与 $p$ 值；并结合 ACF、均值／方差随时间图和残差白噪声诊断。$p\\ge0.05$ 只能说未拒绝原假设。\n\n**English reference answer（笔记自拟；非官方答案）**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 603,
+    "detail": "缩写“SARIMA”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**与其他概念的关系**\n\nARIMA 的 $d$ 记录普通差分次数；SARIMA 的 $D$ 记录季节差分次数。\n\n**所以呢**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 613,
+    "detail": "缩写“ARMA”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "\n**是什么**\n\nARMA($p,q$) 在平稳序列上组合过去值和过去误差：\n\n$$\nY_t=c+\\sum_{i=1}^{p}\\phi_iY_{t-i}+\\sum_{j=1}^{q}\\theta_je_{t-j}+e_t."
+  },
+  {
+    "code": "R6d",
+    "line": 619,
+    "detail": "缩写“SARIMA”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "Y_t=c+\\sum_{i=1}^{p}\\phi_iY_{t-i}+\\sum_{j=1}^{q}\\theta_je_{t-j}+e_t.\n$$\n\nARIMA($p,d,q$) 先对原序列做 $d$ 次普通差分，再对差分序列拟合 ARMA。SARIMA 再加入季节部分：\n\n$$\n\\text{SARIMA}(p,d,q)(P,D,Q)_m."
+  },
+  {
+    "code": "R6d",
+    "line": 639,
+    "detail": "缩写“AR”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "\n**为什么公式长这样**\n\n差分负责把水平变化转成较稳定序列；AR 描述变化量的持续性；MA 描述冲击的短期延续；季节项在固定间隔 $m$ 重复同样两类依赖。\n\n**数字例子（手把手）**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 639,
+    "detail": "缩写“MA”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "\n**为什么公式长这样**\n\n差分负责把水平变化转成较稳定序列；AR 描述变化量的持续性；MA 描述冲击的短期延续；季节项在固定间隔 $m$ 重复同样两类依赖。\n\n**数字例子（手把手）**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 672,
+    "detail": "缩写“ACF”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "**从候选规格到可用预测的拟合闭环**\n\n1. **输入**：只取当前滚动训练窗，保存原尺度最后水平及季节位置；在训练窗内决定 Box-Cox、$d$、$D$ 与 $m$。\n2. **提出候选**：ACF／PACF 只给小范围 $p,q,P,Q$，不能直接宣布最终阶数。\n3. **估计**：给定候选后，通过条件平方误差或似然估计 $c,\\phi,\\theta$ 等参数。MA 部分的创新误差不是原始数据列，要在估计过程中随参数递推。\n4. **预测与还原**：先预测差分序列，再按相反顺序加回最后水平与对应季节水平。上面的第 9 期例就是先得 $\\hat Z_9=0.5$，再加回 $Y_5=11$ 得 11.5。\n5. **诊断与停止**：比较同一滚动切分下的误差和信息准则，检查残差 ACF、参数稳定性、平稳／可逆根及优化状态。继续加阶不改善滚动误差，或出现不收敛、近单位根和残差相关时停止并回到较简单候选。"
+  },
+  {
+    "code": "R6d",
+    "line": 672,
+    "detail": "缩写“PACF”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "**从候选规格到可用预测的拟合闭环**\n\n1. **输入**：只取当前滚动训练窗，保存原尺度最后水平及季节位置；在训练窗内决定 Box-Cox、$d$、$D$ 与 $m$。\n2. **提出候选**：ACF／PACF 只给小范围 $p,q,P,Q$，不能直接宣布最终阶数。\n3. **估计**：给定候选后，通过条件平方误差或似然估计 $c,\\phi,\\theta$ 等参数。MA 部分的创新误差不是原始数据列，要在估计过程中随参数递推。\n4. **预测与还原**：先预测差分序列，再按相反顺序加回最后水平与对应季节水平。上面的第 9 期例就是先得 $\\hat Z_9=0.5$，再加回 $Y_5=11$ 得 11.5。\n5. **诊断与停止**：比较同一滚动切分下的误差和信息准则，检查残差 ACF、参数稳定性、平稳／可逆根及优化状态。继续加阶不改善滚动误差，或出现不收敛、近单位根和残差相关时停止并回到较简单候选。"
+  },
+  {
+    "code": "R6d",
+    "line": 675,
+    "detail": "“残差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+    "scope": "affected_unit",
+    "context": "2. **提出候选**：ACF／PACF 只给小范围 $p,q,P,Q$，不能直接宣布最终阶数。\n3. **估计**：给定候选后，通过条件平方误差或似然估计 $c,\\phi,\\theta$ 等参数。MA 部分的创新误差不是原始数据列，要在估计过程中随参数递推。\n4. **预测与还原**：先预测差分序列，再按相反顺序加回最后水平与对应季节水平。上面的第 9 期例就是先得 $\\hat Z_9=0.5$，再加回 $Y_5=11$ 得 11.5。\n5. **诊断与停止**：比较同一滚动切分下的误差和信息准则，检查残差 ACF、参数稳定性、平稳／可逆根及优化状态。继续加阶不改善滚动误差，或出现不收敛、近单位根和残差相关时停止并回到较简单候选。\n\n**为什么需要它**\n"
+  },
+  {
+    "code": "R6b",
+    "line": 705,
+    "detail": "一句 4 个术语（ARIMA、AR、MA、ARMA）：🔗 statsmodels ARIMA 官方文档（获取日期 2026-1…",
+    "scope": "affected_unit",
+    "context": "\n**外部核对**\n\n🔗 [statsmodels ARIMA 官方文档](https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima.model.ARIMA.html)（获取日期 2026-10-20）把 AR($p$)、MA($q$)、ARMA、ARIMA、季节模型和带 ARIMA 误差的回归列为同一接口的特例，并分别提供 stationarity／invertibility 约束。\n\n**与其他概念的关系**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 709,
+    "detail": "缩写“ETS”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "\n**与其他概念的关系**\n\nETS 直接维护水平趋势季节状态；ARIMA 直接建模差分与滞后依赖。两者应以同一滚动切分比较。\n\n**所以呢**\n"
+  },
+  {
+    "code": "R6b",
+    "line": 736,
+    "detail": "一句 7 个术语，核对是否需要拆解（AR、MA、ARIMA、差分、KPSS、ACF、PACF）：p.43 的流程图要求：先画序列找结构，必要时 Box-Cox，选择 A…",
+    "scope": "unchanged_history",
+    "context": "\n**课件原例**\n\np.43 的流程图要求：先画序列找结构，必要时 Box-Cox，选择 AR／MA／ARIMA，必要时差分并做 KPSS，用 ACF／PACF 定候选阶数，最后 evaluate；左下角紫色三角格显示训练窗口逐步扩展。\n\n**数字例子（手把手）**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 736,
+    "detail": "缩写“AR”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**课件原例**\n\np.43 的流程图要求：先画序列找结构，必要时 Box-Cox，选择 AR／MA／ARIMA，必要时差分并做 KPSS，用 ACF／PACF 定候选阶数，最后 evaluate；左下角紫色三角格显示训练窗口逐步扩展。\n\n**数字例子（手把手）**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 736,
+    "detail": "缩写“MA”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**课件原例**\n\np.43 的流程图要求：先画序列找结构，必要时 Box-Cox，选择 AR／MA／ARIMA，必要时差分并做 KPSS，用 ACF／PACF 定候选阶数，最后 evaluate；左下角紫色三角格显示训练窗口逐步扩展。\n\n**数字例子（手把手）**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 736,
+    "detail": "缩写“KPSS”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**课件原例**\n\np.43 的流程图要求：先画序列找结构，必要时 Box-Cox，选择 AR／MA／ARIMA，必要时差分并做 KPSS，用 ACF／PACF 定候选阶数，最后 evaluate；左下角紫色三角格显示训练窗口逐步扩展。\n\n**数字例子（手把手）**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 736,
+    "detail": "缩写“ACF”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**课件原例**\n\np.43 的流程图要求：先画序列找结构，必要时 Box-Cox，选择 AR／MA／ARIMA，必要时差分并做 KPSS，用 ACF／PACF 定候选阶数，最后 evaluate；左下角紫色三角格显示训练窗口逐步扩展。\n\n**数字例子（手把手）**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 736,
+    "detail": "缩写“PACF”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**课件原例**\n\np.43 的流程图要求：先画序列找结构，必要时 Box-Cox，选择 AR／MA／ARIMA，必要时差分并做 KPSS，用 ACF／PACF 定候选阶数，最后 evaluate；左下角紫色三角格显示训练窗口逐步扩展。\n\n**数字例子（手把手）**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 740,
+    "detail": "缩写“MAE”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**数字例子（手把手）**\n\n若共有 8 期，用前 4 期起步做一步预测：训练 1–4 预测 5；训练 1–5 预测 6；训练 1–6 预测 7；训练 1–7 预测 8。四个误差一起算 MAE。规格选择结束后，仍需保留一段从未参与选择的最终测试期。\n\n**🎙️ 课堂补充**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 753,
+    "detail": "“标准化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+    "scope": "unchanged_history",
+    "context": "**⚠️ 常见误解**\n\n- “time series cross-validation” 不意味着时间被随机分折。\n- 每个起点重新选 Box-Cox、季节均值或标准化参数时，只能用该训练窗口估计。\n- 一步预测最优不保证 12 步预测最优，评价 horizon 必须与业务一致。\n\n**停止条件／迁移题**"
+  },
+  {
+    "code": "R6d",
+    "line": 758,
+    "detail": "“超参数”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+    "scope": "unchanged_history",
+    "context": "\n**停止条件／迁移题**\n\n候选模型和超参数事先限定；同一切分、同一损失比较。差异小则优先讲义 p.43 的 simpler model 原则。\n\n**与其他概念的关系**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 762,
+    "detail": "缩写“ETS”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**与其他概念的关系**\n\n滚动评价把 M02 的训练／验证／测试隔离迁移到有顺序数据，并用于比较 ETS、ARIMA 与 ADL。\n\n**所以呢**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 762,
+    "detail": "缩写“ADL”首用未识别到中文说明；人工核对",
+    "scope": "unchanged_history",
+    "context": "\n**与其他概念的关系**\n\n滚动评价把 M02 的训练／验证／测试隔离迁移到有顺序数据，并用于比较 ETS、ARIMA 与 ADL。\n\n**所以呢**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 784,
+    "detail": "缩写“ADL”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "Y_t=\\beta_0+\\beta_1X_t+\\beta_2X_{t-1}+\\cdots+u_t.\n$$\n\n自回归分布滞后模型（Autoregressive Distributed Lag, ADL）再加入过去的 $Y$：\n\n$$\nY_t=c+\\sum_{i=1}^{p}\\phi_iY_{t-i}+\\sum_{j=0}^{q}\\beta_jX_{t-j}+u_t."
+  },
+  {
+    "code": "R6d",
+    "line": 808,
+    "detail": "缩写“AR”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "\n**为什么公式长这样**\n\n销售既可能有自身惯性，也可能受当前和过去价格影响。AR 部分保存响应惯性，distributed lag 部分保存外生冲击的延迟传播。\n\n**为什么需要它**\n"
+  },
+  {
+    "code": "R6b",
+    "line": 839,
+    "detail": "一句 7 个术语，核对是否需要拆解（AR、PACF、MA、ACF、ARMA、ARIMA、SARIMA）：p.46 总结 stationarity、AR/PACF、MA/ACF、…",
+    "scope": "affected_unit",
+    "context": "\n**课件原例**\n\np.44 的加油站数据表含 Gallons Sold、Week、Price/Gallon，并给趋势图和回归输出。p.45 区分 autoregressive distributed lag、ADL($p,q$) 与 multiple predictors，并列 OLS 和 Generalized OLS。p.46 总结 stationarity、AR/PACF、MA/ACF、ARMA／ARIMA／SARIMA。\n\n**🎙️ 课堂补充**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 839,
+    "detail": "缩写“OLS”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "\n**课件原例**\n\np.44 的加油站数据表含 Gallons Sold、Week、Price/Gallon，并给趋势图和回归输出。p.45 区分 autoregressive distributed lag、ADL($p,q$) 与 multiple predictors，并列 OLS 和 Generalized OLS。p.46 总结 stationarity、AR/PACF、MA/ACF、ARMA／ARIMA／SARIMA。\n\n**🎙️ 课堂补充**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 839,
+    "detail": "缩写“PACF”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "\n**课件原例**\n\np.44 的加油站数据表含 Gallons Sold、Week、Price/Gallon，并给趋势图和回归输出。p.45 区分 autoregressive distributed lag、ADL($p,q$) 与 multiple predictors，并列 OLS 和 Generalized OLS。p.46 总结 stationarity、AR/PACF、MA/ACF、ARMA／ARIMA／SARIMA。\n\n**🎙️ 课堂补充**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 839,
+    "detail": "缩写“MA”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "\n**课件原例**\n\np.44 的加油站数据表含 Gallons Sold、Week、Price/Gallon，并给趋势图和回归输出。p.45 区分 autoregressive distributed lag、ADL($p,q$) 与 multiple predictors，并列 OLS 和 Generalized OLS。p.46 总结 stationarity、AR/PACF、MA/ACF、ARMA／ARIMA／SARIMA。\n\n**🎙️ 课堂补充**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 839,
+    "detail": "缩写“ACF”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "\n**课件原例**\n\np.44 的加油站数据表含 Gallons Sold、Week、Price/Gallon，并给趋势图和回归输出。p.45 区分 autoregressive distributed lag、ADL($p,q$) 与 multiple predictors，并列 OLS 和 Generalized OLS。p.46 总结 stationarity、AR/PACF、MA/ACF、ARMA／ARIMA／SARIMA。\n\n**🎙️ 课堂补充**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 839,
+    "detail": "缩写“ARMA”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "\n**课件原例**\n\np.44 的加油站数据表含 Gallons Sold、Week、Price/Gallon，并给趋势图和回归输出。p.45 区分 autoregressive distributed lag、ADL($p,q$) 与 multiple predictors，并列 OLS 和 Generalized OLS。p.46 总结 stationarity、AR/PACF、MA/ACF、ARMA／ARIMA／SARIMA。\n\n**🎙️ 课堂补充**\n"
+  },
+  {
+    "code": "R6d",
+    "line": 839,
+    "detail": "缩写“SARIMA”首用未识别到中文说明；人工核对",
+    "scope": "affected_unit",
+    "context": "\n**课件原例**\n\np.44 的加油站数据表含 Gallons Sold、Week、Price/Gallon，并给趋势图和回归输出。p.45 区分 autoregressive distributed lag、ADL($p,q$) 与 multiple predictors，并列 OLS 和 Generalized OLS。p.46 总结 stationarity、AR/PACF、MA/ACF、ARMA／ARIMA／SARIMA。\n\n**🎙️ 课堂补充**\n"
+  },
+  {
+    "code": "R6b",
+    "line": 944,
+    "detail": "一句 5 个术语（差分、ACF、PACF、残差、白噪声）：模型识别题按“是否平稳 → 是否差分 → ACF/PACF 只提候选 →…",
+    "scope": "unchanged_history",
+    "context": "\n### 6.3 答题框架\n\n模型识别题按“是否平稳 → 是否差分 → ACF/PACF 只提候选 → 估计与约束 → 滚动误差 → 残差白噪声”回答。检验题先写原假设、检验规格与显著性水平，再写拒绝／未拒绝，最后说明统计结论的限制。\n\n---\n"
+  },
+  {
+    "code": "R8c",
+    "line": 116,
+    "detail": "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求",
+    "scope": "unchanged_history",
+    "context": "\n**⚠️ 常见误解**\n\n- M08 的 MA 是过去误差的模型，不是 M07 的窗口平均。\n- 滞后列不是自动合法；仍需保证构造时没有使用当前或未来答案。\n\n**与其他概念的关系**"
+  },
+  {
+    "code": "R8c",
+    "line": 182,
+    "detail": "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求",
+    "scope": "unchanged_history",
+    "context": "\n**⚠️ 常见误解**\n\n- 不相关不等于独立；白噪声诊断常关注线性相关，但更复杂依赖可能仍存在。\n- 单个柱超过界线只是候选证据；检查很多滞后会出现偶然显著，且界线依赖样本假设。\n\n**极端／边界情况**"
+  },
+  {
+    "code": "R8c",
+    "line": 242,
+    "detail": "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求",
+    "scope": "affected_unit",
+    "context": "\n**⚠️ 常见误解**\n\n- “随机游走”不是说水平图毫无形状；累积冲击常形成看似趋势。\n- $m$ 是平均变化而不是误差均值；通常假定 $E[e_t]=0$。\n\n**极端／边界情况**"
+  },
+  {
+    "code": "R8c",
+    "line": 303,
+    "detail": "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求",
+    "scope": "unchanged_history",
+    "context": "\n**⚠️ 常见误解**\n\n- OLS 可估系数不代表普通独立误差回归诊断自动成立；残差仍要查白噪声。\n- $|\\phi|<1$ 是 AR(1) 平稳的重要边界；$\\phi=1$ 不能用同一个长期均值公式。\n\n**停止条件／什么时候别用**"
+  },
+  {
+    "code": "R8c",
+    "line": 390,
+    "detail": "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求",
+    "scope": "affected_unit",
+    "context": "\n**⚠️ 常见误解**\n\n- MA($q$) 的“Moving Average”是历史冲击线性组合，不是窗口销量平均。\n- 过去误差不是外部直接给定特征；模型估计与预测时要按递推或状态空间方法处理。\n- “PACF 截尾选 AR、ACF 截尾选 MA”只对理想纯模型是线索，不是自动判题规则。\n"
+  },
+  {
+    "code": "R8c",
+    "line": 468,
+    "detail": "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求",
+    "scope": "unchanged_history",
+    "context": "\n**⚠️ 常见误解**\n\n- p.33 的 “accept stationary at 95% confidence” 过强。应写 fail to reject the stationarity null at the 5% level。\n- “无季节性”是本讲建 ARMA 前的实务口径；弱平稳的核心是均值、方差与协方差结构不依赖绝对时点。\n- KPSS 对结构突变、样本长度和滞后选择敏感，不应单独决定差分次数。\n"
+  },
+  {
+    "code": "R8c",
+    "line": 593,
+    "detail": "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求",
+    "scope": "unchanged_history",
+    "context": "\n**⚠️ 常见误解**\n\n- Box-Cox 不负责自动去趋势或去季节，它主要改变尺度与方差关系。\n- 过度差分会把本来稳定的序列变得过于抖动，并常造成强负一阶相关。\n- 讲义 p.34 的“subtract monthly average”需要只用训练期估计季节均值；用全数据会泄漏未来。\n"
+  },
+  {
+    "code": "R8c",
+    "line": 695,
+    "detail": "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求",
+    "scope": "affected_unit",
+    "context": "\n**⚠️ 常见误解**\n\n- ARIMA 的 $d$ 不是模型复杂度排名，而是数据变换次数。\n- 周数据的季节周期不总是 7。每天一条数据的周周期才是 7；每周一条数据的年周期常约 52，仍要按业务日历定义。\n- ACF／PACF 图在 ARMA 混合模型中通常都拖尾，不能按纯模型口诀硬选。\n"
+  },
+  {
+    "code": "R8c",
+    "line": 752,
+    "detail": "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求",
+    "scope": "unchanged_history",
+    "context": "\n**⚠️ 常见误解**\n\n- “time series cross-validation” 不意味着时间被随机分折。\n- 每个起点重新选 Box-Cox、季节均值或标准化参数时，只能用该训练窗口估计。\n- 一步预测最优不保证 12 步预测最优，评价 horizon 必须与业务一致。\n"
+  },
+  {
+    "code": "R8c",
+    "line": 851,
+    "detail": "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求",
+    "scope": "affected_unit",
+    "context": "\n**⚠️ 常见误解**\n\n- 讲义把外部变量称 causal factors，不代表回归系数自动有因果含义。价格可能由预期需求反向决定，需要额外识别设计。\n- 预测未来销量时，未来 $X_t$ 必须已知、可计划或另有预测；不能默认为免费可得。\n- 含滞后因变量时，误差相关和动态稳定性仍要检查。\n"
+  },
+  {
+    "code": "R4g",
+    "line": 364,
+    "detail": "统计量列“t”未识别到判断线；核对本列代入过程、判断规则和条件",
+    "scope": "affected_unit",
+    "context": "\n讲义给 $\\hat Y_t=10+0.5e_{t-1}$、$Y_t=\\hat Y_t+e_t$，并给误差 $e_1=-2,e_2=1,e_3=0,e_4=2,e_5=1$。若初始化 $e_0=0$：\n\n| $t$ | 已知上期误差 | $\\hat Y_t$ | 当期误差 $e_t$ | $Y_t$ |\n|---:|---:|---:|---:|---:|\n| 1 | $e_0=0$ | 10.0 | −2 | 8.0 |\n| 2 | −2 | 9.0 | 1 | 10.0 |"
+  }
+]

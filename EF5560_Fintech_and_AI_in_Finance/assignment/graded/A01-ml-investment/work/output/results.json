@@ -1,0 +1,170 @@
+{
+  "source_csv": "D:\\上课资料\\CityU\\EF5560_Fintech_and_AI_in_Finance\\course_files_export\\EF5560_ML_Investment_Project_2026_Student\\student_release\\project_data_handout_2026.csv",
+  "n_rows": 20800,
+  "predictors": [
+    "market_trend",
+    "market_risk",
+    "market_sentiment",
+    "liquidity_state",
+    "rate_pressure",
+    "policy_uncertainty",
+    "momentum_short",
+    "momentum_medium",
+    "reversal_signal",
+    "risk_signal",
+    "turnover_signal",
+    "size_signal",
+    "value_signal",
+    "quality_signal",
+    "beta_signal",
+    "illiquidity_signal",
+    "sector_trend"
+  ],
+  "split_counts": {
+    "private_evaluation": {
+      "weeks": 156,
+      "stocks": 80,
+      "rows": 12480
+    },
+    "training": {
+      "weeks": 78,
+      "stocks": 80,
+      "rows": 6240
+    },
+    "validation": {
+      "weeks": 26,
+      "stocks": 80,
+      "rows": 2080
+    }
+  },
+  "training_target_mean": -0.0010226791154326926,
+  "training_target_sample_sd": 0.05650977170451759,
+  "strongly_correlated_pair": {
+    "first": "momentum_short",
+    "second": "momentum_medium",
+    "r": 0.6399936121276756
+  },
+  "lasso_selected": {
+    "alpha": 0.003727593720314938,
+    "validation_mse": 0.003072298860475138,
+    "nonzero": 1
+  },
+  "forest_selected": {
+    "n_estimators": 200,
+    "max_depth": 5,
+    "min_samples_leaf": 10,
+    "validation_mse": 0.0038428017425883483
+  },
+  "lasso_retained": [
+    "quality_signal"
+  ],
+  "most_important_characteristic": "sector_trend",
+  "characteristic_importance_top5": [
+    {
+      "predictor": "sector_trend",
+      "importance": 0.060892710859500765
+    },
+    {
+      "predictor": "liquidity_state",
+      "importance": 0.04682741941846058
+    },
+    {
+      "predictor": "market_risk",
+      "importance": 0.008740831994321407
+    },
+    {
+      "predictor": "policy_uncertainty",
+      "importance": 0.004855628052658378
+    },
+    {
+      "predictor": "risk_signal",
+      "importance": 0.0048516516505972
+    }
+  ],
+  "portfolio_model_selected": "OLS",
+  "portfolio_rule_selected": "top16-sector-cap6",
+  "largest_validation_sector_weight": {
+    "week": 79,
+    "forecast_date": "2023-01-06",
+    "sector": "Commerce & Industry",
+    "sector_weight": 0.375
+  },
+  "table_1": [
+    {
+      "model": "Zero",
+      "training_mse": 0.0031938884151733542,
+      "validation_mse": 0.0030908983981451153,
+      "validation_oos_r2": 0.0
+    },
+    {
+      "model": "OLS",
+      "training_mse": 0.0031130152403026335,
+      "validation_mse": 0.003154495015724868,
+      "validation_oos_r2": -0.020575447454991735
+    },
+    {
+      "model": "LASSO",
+      "training_mse": 0.003164862645962694,
+      "validation_mse": 0.003072298860475138,
+      "validation_oos_r2": 0.006017518298608304
+    },
+    {
+      "model": "Random forest",
+      "training_mse": 0.002257255524553789,
+      "validation_mse": 0.0038428017425883483,
+      "validation_oos_r2": -0.2432636882837882
+    }
+  ],
+  "table_3": [
+    {
+      "model_rule": "OLS / top 16",
+      "mean_weekly_long_short_spread": 0.02200834403653846,
+      "long_only_sharpe": 4.453040945727789,
+      "long_only_information_ratio": 7.865440414727246,
+      "long_only_max_drawdown": -0.047749824775000005
+    },
+    {
+      "model_rule": "LASSO / top 16",
+      "mean_weekly_long_short_spread": 0.02034330638533654,
+      "long_only_sharpe": 4.292557066051507,
+      "long_only_information_ratio": 10.929279305885421,
+      "long_only_max_drawdown": -0.05487670059970584
+    },
+    {
+      "model_rule": "Random forest / top 16",
+      "mean_weekly_long_short_spread": 0.015342929661298079,
+      "long_only_sharpe": 3.459620207161335,
+      "long_only_information_ratio": 4.08996120823843,
+      "long_only_max_drawdown": -0.04298603056874983
+    },
+    {
+      "model_rule": "80-stock equal weight",
+      "mean_weekly_long_short_spread": null,
+      "long_only_sharpe": 1.7803052507089392,
+      "long_only_information_ratio": 0.0,
+      "long_only_max_drawdown": -0.07766624840354042
+    },
+    {
+      "model_rule": "OLS / top 16; sector cap 6",
+      "mean_weekly_long_short_spread": null,
+      "long_only_sharpe": 4.764913745094436,
+      "long_only_information_ratio": 7.707589241254537,
+      "long_only_max_drawdown": -0.042543112035576036
+    }
+  ],
+  "weights": {
+    "path": "D:\\上课资料\\CityU\\EF5560_Fintech_and_AI_in_Finance\\assignment\\graded\\A01-ml-investment\\work\\output\\DRAFT_EF5560_LEAD_ID.csv",
+    "selected_model": "OLS",
+    "selected_rule": "top16-sector-cap6",
+    "fit_weeks": "1-104",
+    "private_weeks": "105-260"
+  },
+  "versions": {
+    "python": "3.12.3",
+    "pandas": "2.3.3",
+    "numpy": "1.26.4",
+    "sklearn": "1.5.1",
+    "matplotlib": "3.9.2"
+  },
+  "random_seed": 2026
+}

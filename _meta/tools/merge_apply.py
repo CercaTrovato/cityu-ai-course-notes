@@ -7,6 +7,7 @@ merge_apply.py — 转录融合「分片模式」的合并器：收齐各分片�
 用法（vault 根）：
     PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/merge_apply.py <工作目录> --note <笔记相对路径> --transcript <转录…> [--pages N] [--dry-run] [--partial] [--src <原稿副本>]
         --partial：仅按需定位分片问题，隐含 --dry-run，不作为教学验收；默认等全部候选完成后集中检查。
+        --no-red：显式透传 transcript_check 的无考试明示模式，只把 A8 无明示转为警告；其他审计不变。
         --scope full|changed：默认 changed；整篇重写用 full。正式写回要求工作目录有 review.json（见《笔记制作与融合验收流程》）。
     PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/merge_apply.py extract <笔记相对路径> <输出 patch.json>     # 把已合并笔记的 🎙️ 格与 §8 覆盖列导成 patch（回放 / 自测用）
 
@@ -254,8 +255,8 @@ def run(cmd):
 
 PARTIAL_OK = ('A1 ', 'A2 ', 'A3 ', 'A6 ', 'A7 ', 'A8 ', 'A9 ', 'A11 ')   # 分片自验时允许的 FAIL（其它分片 / 主代理负责的部分）
 
-def verify(merged, transcripts, pages, source, note, partial=False, scope='changed'):
-    rc1, out1 = run([PY, os.path.join(HERE, 'transcript_check.py'), 'audit', merged, '--transcript'] + transcripts)
+def verify(merged, transcripts, pages, source, note, partial=False, scope='changed', no_red=False):
+    rc1, out1 = run([PY, os.path.join(HERE, 'transcript_check.py'), 'audit', merged, '--transcript'] + transcripts + (['--no-red'] if no_red else []))
     if partial and rc1 != 0:
         left = [l for l in out1.splitlines() if l.strip().startswith('✗') and not any(c in l for c in PARTIAL_OK)]
         # traceback/空输出不是“只剩可忽略的分片失败”。
@@ -346,14 +347,14 @@ def main():
     course = (re.search(r'^course:\s*(\S+)', text0[:800], re.M) or [None, module])[1]
     blocks = meta_blocks(F, course_dir, module, today, course)
     # 验收
-    ok1, ok2, out1, out2 = verify(merged, transcripts, pages, src_read, note_rel, partial, scope)
+    ok1, ok2, out1, out2 = verify(merged, transcripts, pages, src_read, note_rel, partial, scope, no_red='--no-red' in a)
     rep = ['merge_apply %s  %s%s' % (datetime.datetime.now().isoformat(timespec='seconds'), note_rel, '  [partial：分片自验，A1/2/3/6/7/8/9/11 的 FAIL 不计]' if partial else ''), '分片 %d 个，🎙️ 格 %d，§8 行 %d' % (len(shards), len(cells), len(s8))] + ['  · ' + l for l in log] + \
-          ['', '--- transcript_check audit', out1.strip(), '', '--- note_quality（G/E 原始诊断 + L/R 发布门槛）', out2.strip(),
+          ['', '--- transcript_check audit', out1.strip(), '', '--- note_quality（现行 L/C/R + 历史 G/E 原始诊断）', out2.strip(),
            '', '元文件追加：' + (', '.join(os.path.relpath(p, ROOT) for p in blocks) if blocks else '无'),
-           '', '【机械预检】 audit %s · L/R 门槛 %s；教学记录另验' % ('PASS' if ok1 else 'FAIL', 'PASS' if ok2 else 'FAIL')]
+           '', '【机械预检】 audit %s · L/C/R 门槛 %s；教学记录另验' % ('PASS' if ok1 else 'FAIL', 'PASS' if ok2 else 'FAIL')]
     with io.open(os.path.join(work, 'merge_report.txt'), 'w', encoding='utf-8', newline='\n') as report:
         report.write('\n'.join(rep))
-    print('\n'.join(rep[:2 + len(log)])); print('   audit: %s   L/R 门槛: %s' % ('PASS' if ok1 else 'FAIL', 'PASS' if ok2 else 'FAIL'))
+    print('\n'.join(rep[:2 + len(log)])); print('   audit: %s   L/C/R 门槛: %s' % ('PASS' if ok1 else 'FAIL', 'PASS' if ok2 else 'FAIL'))
     if not ok1: print(out1.strip()[-1200:])
     if not ok2: print(out2.strip()[-1200:])
     print('   报告：', os.path.join(work, 'merge_report.txt'))

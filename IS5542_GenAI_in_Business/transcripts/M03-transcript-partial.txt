@@ -1,0 +1,2352 @@
+00:00 
+What about science too though, because you use it in that domain? 
+
+00:03 
+Yes, you could. So science, you know, again, I think building models of scientifically complex domains, 
+
+00:12 
+whether that's materials on atomic level, you know, in biology, but also like some physical things as well, like weather. 
+
+00:24 
+Understand the systems is to build simulations, learn simulations of those systems from the raw data, right? 
+
+00:30 
+So you have a bunch of raw data, let's say it's about the weather and obviously we have some amazing weather projects going on 
+
+00:35 
+And then you have a model that kind of learns those dynamics and can recreate those dynamics more efficiently 
+
+00:43 
+So, then doing it by brute force. So, I think there's huge potential for simulations and kind of world models, maybe specialized ones for aspects of science and mathematics. 
+
+00:54 
+But then also, so here are the... 
+
+00:58 
+The next three key points in this video, I think the first one is that world model is beyond guessing the next word. 
+
+01:08 
+So today's large language models mostly focus on guessing the next word. 
+
+01:15 
+But a real AI agent needs a picture of the physical world in its mind and understanding the basic physics. 
+
+01:30 
+The second point is to test the ideas in the mind, with the work model an AI agent can test its plan in its 
+
+01:53 
+The third point is the nature actually follows real-world mistakes. 
+
+02:02 
+Hasselbeck believes that most rules in nature like physics, the chemical reaction, the biology can be calculated by computers. 
+
+02:13 
+And if we can model these real-world rules with code, AI will become much better at solving hard scientific problems. 
+
+02:24 
+And for business agents, I think we often use a more direct source of feedback, a tool to check the actual order status for the current room price, and the agents then adjust this plan, and it may also predict what a tool will return, but it must check the results ahead. 
+
+02:49 
+So now let's look at this lecture roadmap. We will work through six key modules step by step. The first is foundations and agency. What makes a simple program a real agent? And the second part is the agent system. How do the main loop and the safety set up help the agent take real actions? 
+
+03:15 
+And after we learned the modules in agent system, we would study the agent architecture, how do the real system like deep research, open file, and auto research organize the complex work. 
+
+03:33 
+And the fourth part is the application and scientific AI, we would answer where do agents actually work together and what can we learn from the scientific AI cases. 
+
+03:47 
+And the fifth part is evaluation and deployment, what clear evidence do you need before making a large decision. 
+
+03:56 
+And lastly, we have a summarization, what have we learned so far and how do we design tasks with clear and safe boundaries. 
+
+04:11 
+So look at the big numbers on this page. The score jumped from 6.7% to 68.3%. 
+
+04:22 
+That's the 10 times score increase in the code editing task. 
+
+04:27 
+But here is the key point. The AI model did not change at all. 
+
+04:33 
+So what changed? Only the tool format changed, moving from the simple code. 
+
+04:39 
+Patches to the Line Hashtag. And the results saw a similar jump when testing a smaller set of tools. 
+
+04:49 
+So the question would be when a company claims how good their agent is, how much of that success comes from the core model 
+
+04:59 
+and how much comes from the outer tools built around it. The exact question is what this lecture is all about. 
+
+05:11 
+So let's check several numbers together. When we talk about AI agents in the real world, there is often a huge gap between task scores, human acceptance, and business value. 
+
+05:26 
+So let's break down these three columns step by step. 
+
+05:33 
+So in the left-hand side of the page, there is a 24.2 percentage point gap between the automatic test scores and careful human reviewers. 
+
+05:47 
+The automated tests make the AI look great, but when real human experts check the actual work, the success rate drops quickly. 
+
+05:57 
+Even worse, this gap grows about 6 points. 
+
+06:04 
+This shows why we can now simply trust automatic tasks and we must have real people audit the agent's work. 
+
+06:14 
+And the second column is the knowledge document. 
+
+06:22 
+When the AI agent tries to answer the consumer questions using only its own base memory, and it passes only about 25% of the time. 
+
+06:35 
+But when we build a simple setup around it and fit it to write reference documents, the pass rate jumps straight to 40%. 
+
+06:46 
+And this shows how much outer tools... 
+
+06:49 
+And the context can help an agent succeed. 
+
+06:56 
+And on the right side, McKinsey data shows that 20% of companies claimed to use AI agents across their whole business. 
+
+07:10 
+However, only 6% of companies actually got top performance and real financial risk from these AI applications. 
+
+07:21 
+Most teams are trying out AI, but very few are getting great value yet. 
+
+07:33 
+In this, the capability acceptance and business value evaluation, I think each part has a different outcome, and whenever someone shows you a high pass rate, I always ask them questions like what was the exact task, and who checked the work, is it human or the benchmark, and the third question is when was it tested. 
+
+08:03 
+So we have seen why a model score is just part of the AI applications. 
+
+08:11 
+Now let's define the kind of system we are studying. 
+
+08:17 
+We will begin with the history of agents and then compare how much choice different systems have. 
+
+08:30 
+Long pre-date modern large language models, most of the foundation vocabulary, theoretical framework and logic behind the agent system were established decades before the large language model, which possessed the capability to act on them. 
+
+08:52 
+and the evaluation spans, the evolution trajectory spans six distinct eras. 
+
+09:03 
+The first is from 1940 to 1970. Early cybermetrics and mathematical models of AI artificial neurons laid the ground rules for how artificial systems could perceive and respond to their environment. 
+
+09:32 
+Multi-agent communication protocols defining what it means for a system to reason, plan, and collaborate. 
+
+09:42 
+And then we jump to the third stage, Learning Agent and Deep Reinforcement Learning. 
+
+09:50 
+Focus shift from hot-coded rule to trial and error learning and accumulating in deep reinforcement learning breakthroughs that allow agents to master complex decision-making tasks. 
+
+10:07 
+And more recently, we go to the LLM term. The natural language became the central interface for reasoning, enabling models to break down tasks, handle contacts, and execute tools dynamically. 
+
+10:28 
+And after that, the fifth stage is productization and protocol. 
+
+10:36 
+The industry focus shifts toward the production-ready deployment, establishing the standardized function calling protocols, 
+
+10:48 
+and agent-to-agent communication standards and security framework. 
+
+10:58 
+In a more mature stage, a multi-agent system moves beyond experimental prototypes into fully integrated mission-critical enterprise workflow driving the measurable business value. 
+
+11:18 
+So now let's take a look at how the agents grow up between the years 2000 and 2010. 
+
+11:26 
+So this was the era when learning agents and deep reinforcement learning really took off. 
+
+11:34 
+And here's how this part of AI history played out in the four major steps. 
+
+11:42 
+Back in early 2000s, researchers developed systems like ACT-R, and they tried to mix memory, reasoning, and action together to mimic how human minds work. 
+
+12:03 
+Clever, these earlier systems do struggle to learn new things automatically. 
+
+12:11 
+And for the second stage, everything changed when the Deep Neutral Network met Reinforcement Learning. 
+
+12:21 
+And DeepMind introduced the DeepQ network. 
+
+12:25 
+So look at this game on the right-hand side of the screen. 
+
+12:35 
+So, for the first time ever, an AI agent could look directly at raw pixels on the screen and learn how to play the game entirely on its own from scratch. 
+
+12:50 
+And the third stage is the long-term planning, and the example is the AlphaGo. 
+
+13:02 
+AlphaGo, AlphaFold showed that agents could manage the long-term planning under uncertainty. 
+
+13:09 
+And AI learned to look many moves ahead to win the complex game like Go. 
+
+13:16 
+The main limitation is this early system were true agents and they could see, plan and take real action. 
+
+13:28 
+But they had one limitation is each system was built for only one single environment. 
+
+13:37 
+And you could not talk to them using simple everyday words and they could not move their skills to a new job. 
+
+13:46 
+An AI that master this game could never help you write an email or organize the database. 
+
+13:59 
+So now let's see how quickly these things change over the last two years from 2024 and 2025. 
+
+14:10 
+And this was the time when AI agents moved out of the research lab and became the real products that every company would like to use. 
+
+14:22 
+The major, there are four major milestones. The first is around March 2024, a company called Cognition built Daven, the first AI software worker. 
+
+14:37 
+Instead of just chatting in a text box, Daven got its own code editor, command window and web browser inside a safe sandbox. 
+
+14:54 
+In October 2024, the Anthropocene gave AI models a way to use computers just like humans do. 
+
+15:03 
+AI could look at a screen, move the mouse pointer, click buttons, and tap tasks in any regular app. 
+
+15:14 
+In November 2024, Anthropic, that's the company of the cloud code, shared an open tool called MCP. 
+
+15:26 
+It works like a simple USP plug for AI. 
+
+15:31 
+And big companies like Microsoft, OpenAI, and Google all started using it by early 2025 to connect AI models with outside apps. 
+
+15:43 
+In April 2025, Google launched Agent-to-Agent, so different AI agents could communicate with each other. 
+
+15:56 
+By early 2026, over 150 organizations started using it to let multiple agents work together as a team. 
+
+16:09 
+And look at the right-hand side of the slide, in the first three months of 2025 alone, investors put $8.7 billion into AI-agent startups, and that was a massive 143% jump compared to the year before. 
+
+16:31 
+And we can also see many landmark products launched during this short time, including the OpenAI Operator, BigResearch, Manas, and Amazon's AgentCore. 
+
+16:47 
+I think from this number, what we can learn is when we want to find a job in a company, just... 
+
+16:54 
+To see where the VC found, if you want to invest the company as your new start, just to see which company gained the most VC fundings recently, and then it would have a higher possibility that you would grow up with the company, and when the company goes to market, you can stop working. 
+
+17:23 
+Get your stock, just stay at home or travel around the world. 
+
+17:31 
+And here is where we see AI agents technology reach real maturity in 2026. 
+
+17:42 
+There are three big shifts define how we build and test agents today. 
+
+17:49 
+The first is coding agents and test problem. 
+
+17:53 
+So coding became the primary task around for AI agents. 
+
+17:59 
+Like me, I stopped writing code by myself in like early months this year. 
+
+18:08 
+Because I think Cloud Code is much better than me. I usually need four or three days to write the connection between apps, but Cloud Code can finish it within one hour. 
+
+18:21 
+So on public, the leaderboard like SWE Bench Verify, the top agents now score over 95%. 
+
+18:31 
+But the independent evaluation wanted us to be careful. 
+
+18:37 
+This test is now very old and many of the test questions were already included inside the AI training data. 
+
+18:45 
+So the high test scores no longer mean the agents can work perfectly in real life. 
+
+18:53 
+And the second point is the METR time horizon. 
+
+18:59 
+A task group called METR gives us a much better metric called the time horizon. 
+
+19:04 
+They measure how long an AI agent can work on a task while staying at least 50% reliable. 
+
+19:14 
+And that task lengths have been doubling roughly every 4 to 7 months. 
+
+19:24 
+By early 2026, top models can manage tasks that take human experts 5 to 6 hours to complete without stopping. 
+
+19:35 
+And the third point is the rise of Harness Engineering. The way we build AI applications has completed changes. 
+
+19:48 
+The simple prompt engineering is now replaced by the context engineering and at the same time hardness engineering has become a serious professional practice. 
+
+20:00 
+I think the hardness, that word, includes the prompt engineering and the context engineering. 
+
+20:06 
+And today the main trick to making an agent reliable is not changing the model's inner width. 
+
+20:16 
+Like fine training or training from at the beginning, but building a strong outer harness around the model. 
+
+20:31 
+So now let's clear up a big question that confused a lot of developers today. 
+
+20:37 
+What actually makes something a real AI agent? 
+
+20:41 
+In the technical world, people often count almost any software app with an AI model and agent. 
+
+20:50 
+But as engineers or in the AI company, we need to be much more careful with our definition. 
+
+20:59 
+There is a huge difference between a regular automatic workflow and a true autonomous agent. 
+
+21:09 
+So to view the real AI agents, we need four main architectural pillars. 
+
+21:14 
+The first is Persona and Role. 
+
+21:17 
+This set of job description, the boundaries for the AI, and it tells the agent who it is, 
+
+21:25 
+and what specific job it needs to do, and what safety rules it must never break. 
+
+21:33 
+And the second part is memory, and the agents need to remember things over time instead of using the complex engineering. 
+
+21:43 
+It keeps track of the current short-term chat history while using the long-term external memory like the company documents or database to look at fresh information whenever needed. 
+
+22:00 
+The MD found in your open cloud architecture. 
+
+22:07 
+And the third part is the planning and reflection. 
+
+22:12 
+When you give an agent a big task, it does not jump in blindly. 
+
+22:17 
+It breaks the big goal into smaller steps, thinks through the problem step by step, and then checks its own work. 
+
+22:28 
+If an action fails, then it reflects on the area and tries a better approach for you. 
+
+22:35 
+And the last part is action and tools. A simple chat model only talks and writes tasks, but a real-world agent takes actual action. 
+
+22:47 
+It connects to outside software, calls web API, and re-slaps market data and changes things in the real world. 
+
+23:00 
+So now how do we draw a clear boundary between a workflow and a real agent? 
+
+23:06 
+I think many companies, especially financial companies, they prefer to use workflow instead of real agents 
+
+23:15 
+because a workflow follows the fixed rules, and I think a workflow like the factory assembly line, 
+
+23:29 
+If-Else Rules, and the AI model is just one path processing worker sitting on the fixed line, and the path is starting from human code. 
+
+23:41 
+An agent makes dynamic choices, and autonomous agents follow a fixed path. 
+
+23:49 
+And the AI model looks at the current situation and decide what model or step to use next and test it and learn from the real feedback. 
+
+24:00 
+So in the financial companies like PN Technology I collaborate with, most of my colleagues prefer to use workflow in their real working environment because they can control the workflow. 
+
+24:18 
+The AI agents is more like black box. When they make decision, human cannot monitor the AI agents by minutes, so they prefer to use a workflow to define a specific task for the AI to help them. 
+
+24:36 
+And to keep this clear for all future projects, I think the goal is if human co-decide the next step. 
+
+24:46 
+Then you build a workflow actually, but if the AI model can automatically decide the next tool or next step based on the real environment, then you build a real agent. 
+
+25:01 
+So building on the four pillars, now we break down how an AI agent actually operates under the hood and how system responsibilities are partitioned. 
+
+25:15 
+So in a practical agent architecture, the large language model serves purely as the cognitive engine, the brain deciding what to do. 
+
+25:30 
+Application Access at Hand, and actually executing the tools and enforcing the strict operational constraints. 
+
+25:40 
+Practically, an agent functions along three core dimensions. 
+
+25:46 
+The first is goal. Unlike the standard LLM that just reacts to the single prompt, an agent is strictly outcome-driven. 
+
+25:57 
+You give it a defined goal and it automatically pursues that target. 
+
+26:05 
+The second stage is action. It goes beyond generating text by choosing tools and observing real-world feedback. 
+
+26:15 
+It calls an API or ransom query, inspects the actual system response, and adopts its next move accordingly. 
+
+26:26 
+And the third part is control. This is essentially for enterprise safety. An agent must operate within strictly defined constraints and it needs to know when to keep going, when to stop, when to pause to request a human intervention if a task crosses a safety or uncertainty threshold. 
+
+26:55 
+Um... 
+
+26:56 
+When designing the agent system, remember that while the model provides the intelligence and the surrounding application wrapper provides the reliability and safety control. 
+
+27:09 
+I think for the control part, we usually, when we do the fraud detection, we always need human as the last part of the workflow after the AI agents. 
+
+27:25 
+One reason is only human can take the responsibility of the work. 
+
+27:31 
+And the second reason is that current agents can automatically evaluate the fraud or the illegal cases by themselves at 100% accuracy. 
+
+27:51 
+Next, let me show this comparison table. We understand the difference between a workflow and an agent, and now we can look at how this concept fits into real software product. 
+
+28:11 
+So first is the chatbot, who chooses the next step, and the user drafts every single turn. 
+
+28:18 
+Use the travel example we used in the last lecture. 
+
+28:23 
+For example, the user wants the agent or chatbot to explain the baggage rules. 
+
+28:30 
+You ask how heavy your luggage can be, and the chatbot answers, it's purely passive. 
+
+28:37 
+It only answers what you ask and takes no autonomous steps. 
+
+28:43 
+And the second level is fixed workflow. 
+
+28:47 
+So who chose the next step is the product logic defines the exact route in advance. 
+
+28:55 
+Like in the travel example, we think of the standard travel website, when you search for flight, the human code runs the fixed line and search the database filter by price and rank by time. 
+
+29:12 
+The step-by-step path never changes under this fixed workflow. 
+
+29:17 
+And the third level is the single agents. 
+
+29:21 
+So in this level, who is the next step? 
+
+29:24 
+The AI model actually chooses the next action within the safety boundaries. 
+
+29:29 
+In the travel example, for example, revising a search query after it fails, 
+
+29:36 
+if an agent tries to find a direct flight and gets zero results, it does not stop or crash. 
+
+29:46 
+Revise and it's search and checks for layover flights or alternative date on its own. 
+
+29:55 
+And the fourth level is the Multi-Agents. 
+
+30:02 
+So in this level who choose the next step is the Coordinator Agents, Delegate Task to Helper Agents or the Downstream Agents. 
+
+30:15 
+In the travel example, think about researching independent destination. 
+
+30:21 
+If you want to plan a multi-city vacation, a leader agent split this work. 
+
+30:29 
+One work agent check hotel, another searches the flight prices under your constraint, 
+
+30:38 
+and the third one looks up the local tour for you. 
+
+30:42 
+The leader then gathers all these answers from these three agents for you. 
+
+30:47 
+So a real product often combines the fixed workflow step with agent decisions together. 
+
+30:56 
+You don't need to make every single step fully autonomous. 
+
+31:03 
+Hard Code for Predictable Steps to Save Money and Ensure Savability and Use Agents Only where you need flexible thinking and error correction. 
+
+31:18 
+So think back to the generative AI boom around 2023 and 2024 on the left hand side. During that time AI was essentially a passive oracle. It operated on a strict linear request response loop and you feed it a prompt and its output 
+
+31:45 
+It was incredibly smart, but its fundamental limitation was that it could only synthesize existing information to describe the world. 
+
+31:59 
+It couldn't touch or change anything outside the chat window. 
+
+32:06 
+Now look at the right hand side. 
+
+32:12 
+Present, 2026, the Errors of Agentic AI, the fundamental shift here is that AI has become an active operator, instead of just waiting for your next prompt, it operates with goal-directed autonomy, it uses continuous perception action loop, and it looks at environment reasons through the problem. 
+
+32:39 
+and they leverage the necessary tools after the results and adapts. 
+
+32:47 
+So we have moved from the stage of simply describing words to the stage of actually changing the words. 
+
+32:58 
+SystemNow uses LLM as a reasoning engine to directly alter the state of the environment and conceptually the exact shift is what makes complex multi-agent framework like the ones we are designing for the automatic travel agents in our travel example. 
+
+33:29 
+So this staircase illustrates the evolution of system levels, and it's an excellent maturity model to benchmark where your current AI projects actually stand. 
+
+33:43 
+So the level 1 is the baseline, the human-triggered, explicit, hard-coded sequence, and LLM only handles the isolated processing steps. 
+
+33:57 
+Level 2 is to work for agents, and Level 3 is partially autonomous, I think it's the current stage, and Level 4 is fully autonomous, which is strategic in the future. 
+
+34:18 
+So we have to find what an agent does. Now we start to examine what makes that behavior possible. 
+
+34:27 
+The model is just one part of a larger system. 
+
+34:32 
+So our first deep dive centers on the fundamental engineering layer of modern agent architecture, the harness. 
+
+34:43 
+So what is Harness? It is the comprehensive runtime layer constructed directly around the fundamental model. 
+
+34:53 
+If we view the large language model as the raw processing chip, the Harness is the operating system around it. 
+
+35:04 
+It's like the memory controller, the safety enclosure that transforms the chip into a functional, real-world computer for people to use. 
+
+35:16 
+The central claim in modern agent system engineering is clear, the harness rather than the underlying model weights is now the primary determinant of whether an agent actually works for production. 
+
+35:32 
+Why does this matter so much? 
+
+35:40 
+Like Fintech company, a cable model is only table six. Models hallucinate, tool calls timeout, the contacts window decay. 
+
+35:54 
+So without a resilient runtime harness wrapped around the reasoning engine, even the most advanced frontier model remains a fragile. 
+
+36:05 
+Over the coming pages, I will break down the nine essential components of a production-grade harness. 
+
+36:18 
+A harness is basically the runtime-layer-around model, and LLM itself mainly provides reasoning and judgment. 
+
+36:29 
+But real agents need much more than that. It needs to keep running, call tools, manage contacts, preserve state, and control the permissions. 
+
+36:43 
+and in the end, Verified Results. 
+
+36:45 
+So a simple way to think about it is, 
+
+36:48 
+the model supplies judgment 
+
+36:50 
+and the harness supplies everything else. 
+
+36:53 
+The diagrams in the right-hand side 
+
+36:57 
+breaks the harness into six parts. 
+
+37:00 
+E is the... 
+
+37:02 
+Execution Rule. The agent reasons X, observes the results, and continues. 
+
+37:10 
+And T is the two layers such as web search, Python, database, or APIs. 
+
+37:19 
+The C is context management, which decides what information the model should see at each step, and S is memory and state, which keeps track of what the agents have already done, and L is lifecycle hooks, including things like permissions, retries, logging, and human approval. 
+
+37:45 
+And lastly, V is Evaluation and Verification, which checks whether the final result is actually correct. 
+
+37:55 
+So even if two agents use exactly the same model, they can behave very differently because their harnesses are different. 
+
+38:05 
+When we look at an agent system, we should not only ask what model does it use, but also 
+
+38:12 
+What Harness is built around the model. 
+
+38:17 
+Let's have a 10-minute break. 
+
+38:20 
+I 
+
+38:26 
+mentioned earlier that Harness can strongly determine agent reliability, 
+
+38:33 
+and that may sound counterintuitive at first glance, 
+
+38:41 
+So much attention is focused on the frontier models, but there is some useful industry evidence behind this idea. 
+
+38:52 
+So here is the first example. In a code acting benchmark, as we mentioned, the graph code first improved from 6.7% to 68.3%. 
+
+39:05 
+The model itself didn't change. What changed was the format of the added tool in the harness. 
+
+39:21 
+How the tool was exposed to the model produced roughly a tenfold improvement. 
+
+39:32 
+The WordCell example challenges another common assumption that giving an agent more pools 
+
+39:39 
+automatically makes it more capable. 
+
+39:42 
+So WordCell reduces pool staff by about 80% and reports the best results. 
+
+39:48 
+With fewer and more clearly differentiated pools, the model has less... 
+
+39:58 
+There is a lot of ambiguity when deciding which tool to call, which can reduce the routine errors, and the boundary design license that a large tool library is not necessary, a good tool library. 
+
+40:13 
+In practice, we often want a smaller and more deterministic set of tools. 
+
+40:25 
+Five Queries. So I will treat it as an illustrative result rather than a general one. 
+
+40:33 
+And as Reposit provided a third example, they reported a performance improvement of more than 90% on an internal search evaluation after moving from a standard chat setup to a more agentic execution framework. 
+
+40:51 
+At the same time, the agents used roughly 15 times as many tokens as the other chat baselines. 
+
+40:59 
+So better agents' performance can also accomplish substantially higher computational costs. 
+
+41:07 
+These examples all point out the same. 
+
+41:11 
+Direction. If an agent is falling, the underlying model is usually not the first thing to change before fine-tuning the model or switching to a powerful, expensive one. It's worth checking the execution loop, the tool design, the context management, and the verification mechanism first. 
+
+41:39 
+Let's see a simple travel scenario that we always use in this lecture to connect this agent's concept. 
+
+41:49 
+So suppose two people are traveling from Hong Kong to Tokyo for three days, 
+
+41:53 
+and the total budget is 8,000 Hong Kong dollars, covering two return flights and one hotel room for two nights, 
+
+42:02 
+and dates are flexible. 
+
+42:08 
+Travel Guides, for the user, the minimum viable output, that's the MVT. It's much simpler. 
+
+42:18 
+So find two feasible options, resources, and price timestamps. News and local transport 
+
+42:26 
+outside the scope. We also need a clear completion boundary. The agent is responsible for researching 
+
+42:36 
+Comparing and Proposing Options until the user accepts the plan, the calendar update, booking, and payment are not included in this agent framework yet. 
+
+42:51 
+So this is already more than a normal check-out task. 
+
+42:55 
+The agent needs live data, budget checking, comparison across alternatives, and a clear rule for 
+
+43:04 
+When the task is complete, so planning is about taking a larger goal, breaking it into smaller tasks and making the dependencies between those tasks explicit. 
+
+43:21 
+Using our Tokyo trip example, the final goal is to produce two physical plans within budgets. 
+
+43:34 
+Searching for flights, searching for hotels, checking the total budget, and comparing different combinations. 
+
+43:45 
+Importantly, not every step needs its own agent. Some steps may just be a full call or a fixed rule-based check. 
+
+43:55 
+We normally use an agent only when the task requires more flexible learning or multiple steps. 
+
+44:02 
+Planning also need capture dependencies, for example, the flight and hotel searches need to use the same travel date, so the dates have to be agreed first, and if all combinations turn out to be over budget, the system may need to re-plan, choose different dates, and search again. 
+
+44:23 
+So, planning is really offering two questions. One is, what needs to be done? And the second is, what others should be done? 
+
+44:34 
+And the execution loop and the tool layer are closely connected because an agent repeatedly decides whether it needs to take an action or which tool to use. 
+
+44:48 
+The basic execution loop looks like this. 
+
+44:51 
+First is to read a contact and then decide action, execute. 
+
+45:03 
+In our Tokyo example, the agent checks the current information and realizes it still needs the flat prices, calls the search tool, reads the results, and then decides whether to search for hotels or try different state-owned users. 
+
+45:19 
+The important design question is not only what the next action should be, but also when the loop should stop. 
+
+45:26 
+We may use the maximum number of iterations, or a total budget, or a time limit. 
+
+45:34 
+Or you can also define the explicit completion condition. 
+
+45:39 
+If something fails, the system also needs to decide whether to retry or reformulate the request or stop. 
+
+45:49 
+The tool layer defines what the agents can actually do, like search, query database, use a browser, call API, or even communicate with other agents. 
+
+46:02 
+A useful principle here is that more tools are not always better. If several tools overlap heavily, the model has more opportunities to select the wrong one. 
+
+46:14 
+The tool names, description, parameter therefore need to be very clear because they are part of the information the model could use when choosing a tool. 
+
+46:28 
+And we also increasingly see standard protocol here. The model contacts protocol MCT provides a common way to expose the external code. 
+
+46:41 
+tools and resources to the model, while the agent-to-agent protocol, A2A, focuses more on the communication, delegation, and collaboration with other agents. 
+
+46:55 
+So the execution loop determines how the agents keep working, while the two-layer determines what the agent is able to use. 
+
+47:08 
+Next is the model Compact Protocol or MCP. 
+
+47:12 
+We can think of MCP as a standard interface for connecting agents to external tools and data. 
+
+47:22 
+Traditionally, if an agent needed access to Google Drive, GitHub, or a database, 
+
+47:38 
+Agents, as the number of pools grows, that quickly becomes difficult to manage. 
+
+47:46 
+So MCP, the Model Contacts Protocol, addresses this by providing a common protocol. 
+
+47:54 
+Different tools and data sources can expose their capabilities through an MCP server, 
+
+48:01 
+and the agent can discover and use them through a more standardized interface. 
+
+48:07 
+And that's why MCP is often described as USB for AI applications. 
+
+48:14 
+So the USB-C gives many devices a common connection standard, and adds CTAs to do something similar to AI applications connecting to the tools and data. 
+
+48:29 
+For example, research agents could use MDP to read files from Google Drive and inspect the GitHub REST procedure and query a database without requiring a completely different interaction design for every tool. 
+
+48:47 
+So, MDP is not an agent itself, it answers a more basic infra question. 
+
+48:56 
+How does an agent connect to the outside world in a standard way? 
+
+49:03 
+And there are several concepts here that are easy to mix up, the tools, skills, and protocols. 
+
+49:10 
+A tool for AI or ATI for AI is specific operation the agents can perform, such as searching the websites, carrying a database, or sending an email. 
+
+49:24 
+The key question is what is allowed to read or change. 
+
+49:29 
+A skill is closer to a reusable procedure for completing a task if it may... 
+
+49:37 
+It contains instructions, templates, resources, and references to the tools, so a skill is not just one action, it describes how to perform a task, and sometimes 
+
+49:54 
+You may hear the skill in the open block, like long-term memory, short-term memory, or skill. 
+
+50:02 
+I think this concept of going to a similar procedure that is a reusable procedure for completing a task. 
+
+50:13 
+And then we have two protocols, the model context protocol and the agent-to-agent protocol. 
+
+50:20 
+MCP provides a standard way for AI applications to connect to external posts and contacts. 
+
+50:29 
+An important design question is permission. What access does the connector actually receive? 
+
+50:38 
+So agent-to-agent protocol A2A focuses on communication and task delegation between agents. 
+
+50:47 
+If one agent navigates a task to another, we need to define who owns the task and how the result comes back, what happens if it fails. 
+
+50:59 
+So a simple story is a tool defines what the agents can do. 
+
+51:06 
+And a skill defines how to do the task. 
+
+51:11 
+MCP, the Model Compact Protocol, connects the agent to tools and contacts. 
+
+51:17 
+And A2A, Agent-to-Agent, connects agent to another agent. 
+
+51:22 
+The protocols make integration more consistent, but they do not automatically solve permissions, security, or output quality. 
+
+51:35 
+Memory and state solve a basic problem, how does an agent maintain continuity across long tasks or even across multiple sessions. 
+
+51:47 
+Compact management mainly 
+
+51:51 
+Design, what the model needs to see right now, and memory preserves long-term information, the current plan, the completed path of steps, the previous attempts, and results from early session. 
+
+52:07 
+A common practical pattern is to let the agent maintain an internal artifact, such as a non-stop MD file or a planning file, and the agent can write to it, update it, and read it again later. 
+
+52:24 
+In that way, important state is not lost when the context is complex or when the process is interpreted. 
+
+52:35 
+When I work with the PN group, we always write our failure mode in notes.md fail to record and we even use reinforcement learning to learn from the failure mode when we regenerate the features in the FinTech context. So it's really useful in business practice. 
+
+53:02 
+And another important point is that the system prompting the production agents is often not a single static stream. 
+
+53:09 
+It can be assessed as runtime from several sources based at present now the project level instructions such as the cloud.mdfl and the available tool catalog and the current environment state. 
+
+53:26 
+So there is a balance here. 
+
+53:29 
+If the instructions are too specific, we end up with e-files logic that creates unexpected cases. 
+
+53:40 
+But if they are too vague, then the model may not know what behavior is expected. 
+
+53:46 
+So a practical approach is to start with the minimum instruction you can have and add. 
+
+53:55 
+Specifically, only when we are in the real video mode. 
+
+54:02 
+The context management addresses the very practical question that is what should the model see at this moment. 
+
+54:12 
+The context window is essentially the agent's working memory, but bigger is not always better. 
+
+54:20 
+At the context growth, it accumulates the conversation history, the tool outputs, and the individual results. 
+
+54:30 
+Even before reaching the hard context limit, too much irrelevant information can make it harder for the model to focus on what actually matters. 
+
+54:42 
+It's often referred to as context growth. 
+
+54:47 
+So the goal is not to put everything into the context window. 
+
+54:52 
+The goal is to keep the information that is useful for the color set. 
+
+54:57 
+There are several common techniques. 
+
+55:00 
+First is compaction. 
+
+55:02 
+It summarizes long history while preserving important decisions and unresolved issues. 
+
+55:11 
+And the tool without clearing can remove the old group outputs if we have already extracted useful information from the website, we may not need to keep the entire page in the context. 
+
+55:26 
+And the third approach is just-in-time retrieval, which references like a file path or a website link and loads the full context only when it is needed. 
+
+55:42 
+The progressive disclosure reviews more details as the task becomes more specific rather than providing everything upfront. 
+
+55:54 
+And the prompt caching allows stable parts of the prompt to be reused across calls, which can reduce latency and cost. 
+
+56:04 
+So the basic principle is the good context management is not about showing the model more information. 
+
+56:14 
+It's about showing the right information at the right time. 
+
+56:21 
+The ordinary retrieval augmented generation, or REG, is usually fairly linear. 
+
+56:28 
+The retrieval relevant information, and then generated also from it. 
+
+56:33 
+In an engine system, retrieval can become a feedback loop. 
+
+56:39 
+The model first analyzes the question and decides whether it has enough information. 
+
+56:46 
+If not, it selects a tool and retrieves additional evidence. 
+
+56:51 
+After that, it also evaluates the quality of the results, if the evidence is weak or outdated or conflicting. 
+
+57:01 
+The agent can search again rather than immediately producing the final answer for the LLM to generate the results. 
+
+57:10 
+So the key difference with the agency RAC, R-A-G, is not simply whether the system can retrieve information, 
+
+57:18 
+but the system can decide, do I need more information, or should I search, and is this evidence good enough? 
+
+57:27 
+We therefore need some evidence quality rules, such as the freshness requirements, citation requirements, and the search budgets. 
+
+57:37 
+Otherwise, agents may simply keep searching and increase both latency and cost. 
+
+57:44 
+For example, in our Tokyo trip example, if two sources keep conflicting luggage budget policies, the agent should not randomly choose one to generate the answer. 
+
+57:57 
+It should search for the latest policy from the airline's official source before making a decision. 
+
+58:05 
+So I conducted one research project in 2024 about the RAG system. 
+
+58:12 
+It actually includes more technical details than this only one-page slide. 
+
+58:20 
+But what I want you just to understand RAG's definition, the advantage, and... 
+
+58:39 
+I think knowing some details like how the RAG really works, it's important, even though in the interview stage, it's easy for the... 
+
+58:55 
+Employees and the companies to detect whether you really work on one project or whether you can understand the logic of the technique. 
+
+59:07 
+One use for approach for me to learn the technical framework is I usually, when I have time, I really browse the project on the BPAP website. 
+
+59:22 
+And I search for my research interest and go through the title of the Raspberries and just copy paste the link of the GitHub to my codex or cloud code and let it explain the framework of the project. 
+
+59:42 
+And once I feel it may not be useful for my target or for my project, I just... 
+
+01:00:17 
+The Codex for COCO can automatically help me to modify the project, the GitHub project inside of this one field. 
+
+01:00:27 
+So once you go through the whole process, you will be equally understanding all the technical details at a higher level. 
+
+01:00:46 
+Future Work. Because I think my lecture is more like a passive learning for you. I try to put something in your brain and help you to find a job or preparing the interview. But once you go through the whole process by yourself, even with the help of the cloud code or GDT. 
+
+01:01:13 
+You are actually an active learning process, and that may make you fully understand the whole details of a technique, why you want to improve that, or you would have a deep understanding of each component in the multi-agent systems. 
+
+01:01:38 
+So that's my own learning experience. Hopefully it will be helpful for you. 
+
+01:01:45 
+So once an agent can call tools, modify fails, or access the network, the sentence is no longer just about whether the answer is correct. 
+
+01:01:59 
+The more important question is what is the agent actually allowed to do. 
+
+01:02:05 
+The first layer is stackboxing. 
+
+01:02:13 
+A container or virtual machine restricts its access to files, networks, and system resources. 
+
+01:02:21 
+Sandbox is useful in the real production environment. 
+
+01:02:28 
+One intern in the company, she did not know the constraint of the modifying the algorithm. 
+
+01:02:41 
+Since for Sandbox, she didn't modify all the algorithms that are published online in our group. 
+
+01:02:51 
+Otherwise, without the Sandbox, her agent would easily delete all the files in my group. 
+
+01:03:01 
+And the second layer is the permission control. A common design is read only by default. If the agents need to write files, send emails, execute code, or modify a database, permissions can be escalated only when necessary. 
+
+01:03:25 
+High-stake actions, we can add approval gate, deleting files, making payment, or publish contacts may require explicit human approval rather than being... 
+
+01:03:44 
+The 15% to 35% container escape rate shown on the right hand side illustrates that the container escalation is not perfectly reliable. 
+
+01:03:59 
+In some evaluated systems, agents were still able to break out of the 
+
+01:04:07 
+Intended Execution Boundary. 
+
+01:04:09 
+So, safety should not rely on the sandbox alone, 
+
+01:04:14 
+but much more systems also use allow and deny lists, 
+
+01:04:18 
+or the whitelist, spending limits, and audit blocks. 
+
+01:04:24 
+In the enterprise deployment, the goal is usually not full autonomy, the agent can act, but within clearly defined boundaries. 
+
+01:04:40 
+Even if an agent achieves an AP or 
+
+01:04:46 
+60% success rate in an evaluation. The remaining failure can still prevent fully autonomous deployment in high-speed settings for tasks such as the financial transfers or the production system operations. Even a relatively small failure rate may be unassessable. 
+
+01:05:11 
+That is where the human oversight becomes important. 
+
+01:05:16 
+The patch-up rule on this slide represents a simple safety principle. 
+
+01:05:23 
+When an agent is about to perform a high-risk or irreversible action, 
+
+01:05:31 
+it should pause and require human confirmation before execution. 
+
+01:05:40 
+Information, Compare Alternatives, and Prepare a Transaction on its own. 
+
+01:05:46 
+But when it reaches the point of actually transferring money, deleting data, or shooting down the production service, human approval is definitely required. 
+
+01:05:59 
+There is also another operational risk, the repeated failure and retry. 
+
+01:06:07 
+An agent may fail, retry, fail again, and continue consuming time and tokens. 
+
+01:06:15 
+So the system needs checkpoints, the maximum iteration limits, or the cost limit to prevent the infinite retry loops. 
+
+01:06:28 
+Human Oversight therefore does not mean reviewing every set of your agents have conducted, it means playing humans at the decision point where mistakes have serious consequences. 
+
+01:06:48 
+The PATROF rule here is inspired by a real event in 1983. 
+
+01:06:56 
+The Soviet early warning system reported what appeared to be incoming U.S. nuclear missiles. 
+
+01:07:05 
+And the officer on duty, PATROF, did not simply treat the automatic warning as a confirmed attack. 
+
+01:07:17 
+The very small number of missiles reported, he judged that the alert was probably false. 
+
+01:07:25 
+It was later confirmed that the system had mistaken sunlight reflected from clouds for missiles. 
+
+01:07:34 
+In ancient design, we can turn this... 
+
+01:07:38 
+Historical example into a simple principle, for high risk actions, don't let the automatic system execute the final step without human confirmation. 
+
+01:07:54 
+An agent may analyze a financial transaction, prepare a payment, or recommend shooting down a production system. 
+
+01:08:06 
+But before the money is transferred or the system is actually shut down, we add a human confirmation gate. 
+
+01:08:16 
+One of my related projects with PNN is we actually developed features, automated features, using the multi-agent system for the fraud detection, instead of using the multi-agent system directly to detect the fraud cases. 
+
+01:08:39 
+So what we do is we basically want to replace the feature engineering that humans usually do to do the earlier job in the whole multi-agent system, in the whole workflow, instead of using multi-agents to conduct all the work in the line. 
+
+01:09:06 
+Aiden could help to prepare features to feature engineering, but we still need one expert to do the human evaluation at the end of the line to make the final decision whether we want to pay money or not. 
+
+01:09:29 
+So an agent connects to a more empathized system, we gather new security problems called Identity Spots to access databases, cloud services, and GitHub. 
+
+01:09:44 
+An agent may need API keys, service accounts, or access tokens. 
+
+01:09:57 
+Credentials also growth, which increase the attack surface. The real risk is that if one agency is compromised while holding the permanent high-privileged credentials, those credentials may be used to access other systems, and this is a form of labor movement. 
+
+01:10:21 
+The design principle on the right hand side is just in time privilege elevation. 
+
+01:10:27 
+The agent should normally operate within minimum privilege. 
+
+01:10:32 
+Only when a specific pass requires additional access should it require a temporary token from the authorization. 
+
+01:10:45 
+System. So once the test is completed, the activated privilege should expire. For example, 
+
+01:10:56 
+a finance agent may normally have permission to read transaction records to generate the 
+
+01:11:03 
+features, but not modify the database. And only when an approved transaction needs to 
+
+01:11:14 
+System Temporary Grant, Required Right Permission 
+
+01:11:19 
+The core idea is very similar to zero trust. 
+
+01:11:23 
+Do not trust an identity simply because it belongs to an agent. 
+
+01:11:29 
+An agent identity should be managed within the same principle as human identities. 
+
+01:11:38 
+That is the list of temporary access to data modification and clear audit. 
+
+01:11:52 
+The user experience of an agent is not just a chat interface. 
+
+01:11:58 
+The user also needs to understand where the agent works, how it is doing now, and what it can and cannot do. 
+
+01:12:07 
+We can think about this through three dimensions. 
+
+01:12:11 
+The first is space. Ideally, the agent should appear where the user already performed the task. 
+
+01:12:19 
+A coding agent belongs in the IDE or Visual Studio, and an email agent belongs in the email workflow. 
+
+01:12:28 
+And the second is time. Many agent tasks take time, so the interface should show progress. 
+
+01:12:36 
+Is the agent searching, calling the tool, or waiting for your approval? 
+
+01:12:45 
+Also be able to pause the task, redirect it, and even take over. 
+
+01:12:53 
+The third is core. The actual capability and the limits of the agents. 
+
+01:13:02 
+Users should know what the data and the agents can access, and what actions they can perform, and which actions do require human transportation. 
+
+01:13:12 
+So agents' user experience is not only about how users talk to the agents, it's also about where does the agent work, and what is the agent doing now, and what is actually allowed to do. 
+
+01:13:32 
+The final two components are Life Cycle, Hoops, and Validation. 
+
+01:13:38 
+First Lifecycle Hooks are fixed intervention points during agent execution. 
+
+01:13:45 
+Before a talkout, the system may check authority or permission. 
+
+01:13:51 
+After the call, it may record logs, calls, and results. 
+
+01:13:58 
+The sensitive information can also be filtered. 
+
+01:14:03 
+Policies, Involved Agents, Left-Cycle Hooks are also important for observability, agent, behavior is partly non-explanatory, so without a trace, debugging becomes very difficult, in practice, we want to know which tool was called, 
+
+01:14:27 
+What the model returned and how many tokens and how much cost were used and where the failure occurred. 
+
+01:14:34 
+On the right is evaluation and verification. 
+
+01:14:38 
+And there are two different paths. 
+
+01:14:41 
+The first is new loop verification. 
+
+01:14:44 
+The agent checks its own output during execution. 
+
+01:14:50 
+And a coding agent, for example, may run Unix has for 
+
+01:14:55 
+A winter after generating code. If the pass failed, agent revises the code instead of immediately returning it. 
+
+01:15:05 
+The second is offline evaluation. Developers maintain evaluation suits and return to re-render. 
+
+01:15:16 
+Whenever the prompt tools for harness change, mainly to detect the regressions. 
+
+01:15:22 
+But evaluation also has the limitations. 
+
+01:15:27 
+The strong benchmark performance, as we mentioned, does not automatically mean the strong real-world reliability 
+
+01:15:34 
+because the production paths are usually more diverse and less controlled. 
+
+01:15:43 
+So the left cycle groups help us to see what the agent is doing and the evaluation help us judge whether it's doing well. 
+
+01:15:55 
+Putting all these components together makes it easier to see why the harness has such a strong effect on agent reliability. 
+
+01:16:06 
+So without an execution loop, the system is basically a single short chatbot, and it produces one response, but does not react to the consequence of its own actions. 
+
+01:16:23 
+Without a tool layer, the model may know what should be done, but it has no way to actually perform those actions. 
+
+01:16:32 
+Without the complex management, the long-running tasks accumulate more and more irrelevant information, and the model may gradually lose the focus, and that's the complex root problem we discussed earlier. 
+
+01:16:52 
+And without memory and state, work can be lost when the process... 
+
+01:16:59 
+Self -Defense, 
+
+01:17:19 
+The failure becomes difficult to debug, and we lose visibility into the true cost and execution history. 
+
+01:17:32 
+Without the evaluation and verification, we have no reliable way to know whether the agents actually work. 
+
+01:17:42 
+But the goal for developing the product is now to keep adding more contentment forever. 
+
+01:17:52 
+Harness is a form of 
+
+01:17:56 
+Scalp folding around the model. As the model improves, some of that scalp folding may become unnecessary, so a good harness design is not about the maximum capacity, it's about keeping the component that can address the real failure mode. 
+
+01:18:21 
+So this page puts the previous concept into the complete execution tree. 
+
+01:18:28 
+The first column is the observed state, what the agent currently knows. 
+
+01:18:35 
+The second is the next action, what the agent should be next. 
+
+01:18:39 
+And the third is evidence to be returned, what information should be preserved for data stack. 
+
+01:18:50 
+Notice that the user has not provided an acceptable date range. 
+
+01:18:58 
+Instead of immediately searching for flights, it first asks for the dates and retains the constraints that have already been confirmed, 
+
+01:19:09 
+such as the budget and the number of travelers. 
+
+01:19:12 
+I suppose the first search produced the total budget of HK$8,600, which exceeds the initial HK$8,000 budget. 
+
+01:19:30 
+The agent should reject that option and report why it failed the budget check and search another allotted date. 
+
+01:19:39 
+Later, it finds two valid options, for example, 
+
+01:19:45 
+7,400 HKD, 7,800 HKD, then the next step is still not to finish immediately, the agent checks the source's current availability and the price timestamp so that the two planes are generally comparable, and finally the user accepts 
+
+01:20:10 
+One-Option, and the agent saves the accepted plan and stops. 
+
+01:20:17 
+So our completion boundary in this travel example was defined that the agent is responsible for finding and confirming a plan, but not booking or payment. 
+
+01:20:32 
+So a complete agent trace is essentially from observing the circumstances. 
+
+01:20:39 
+Decide the next step, and then conduct the action, retain useful evidence, and then repeat until the completion, condition is satisfied in the loop. 
+
+01:20:54 
+So 
+
+01:20:58 
+far, we have examined the part of the agent system, like the retrieval augmented generation, this harness techniques. 
+
+01:21:11 
+And in the third part of today's lecture, we will introduce the agent architecture as to how those parts work together for a particular kind of task. 
+
+01:21:27 
+When we move to agent architecture, the question is no longer only what component an agent has. 
+
+01:21:36 
+In this part, we try to combine all these components we discussed in the previous slides, 
+
+01:21:44 
+and the question is how these components are coordinated for different types of work. 
+
+01:21:53 
+We can compare three examples. Not necessary there's only the three examples in the multi-agent system, they have more, but I choose these three as representative architecture which is either very popular in the early months since 2026. 
+
+01:22:18 
+or I use a lot in the company like the Outdoor Research Pipeline. 
+
+01:22:23 
+So we can compare these three examples. In deep research, I think it's popular to start from 2025, the open-air first launch to deep research inside the GPTN codex, a lead agent coordinating the research process, and it can decompose the question into smaller research tasks, gather evidence through 
+
+01:22:51 
+Different searches for analysis and then combine these results. 
+
+01:22:56 
+So the basic unit of work is a research task. 
+
+01:23:01 
+It's not necessary for science research. 
+
+01:23:04 
+It can also be a research for a travel plan. 
+
+01:23:07 
+And the success depends on whether the evidence is sufficient and the final synthesis is complete. 
+
+01:23:15 
+And the open cloud structure is closer to a persistent personal system runtime. 
+
+01:23:23 
+It connects message, sessions, memory, and flows so that agents can continue working across multiple interactions. 
+
+01:23:35 
+And the important idea here is continuity. 
+
+01:23:38 
+When a new message arrives, the agents can continue from the previous state rather than starting from zero. 
+
+01:23:47 
+In company, we also use Open Cloud during the work, and our own virtual assistants of ourselves are also inside our group. 
+
+01:24:03 
+Our virtual assistants in the group can tell him or her what we want to do, even after work, during the weekend, with the help of Open Cloud, our virtual assistants can still help us to write the code and feedback. So it's very helpful for the personal usage. 
+
+01:24:31 
+The open researchers may not be very familiar with this architecture, the same as mine, but when I work in the company in the summer, in the summer, they use a lot. It's a very different architecture. It runs an experimental loop around a measurable outcome. 
+
+01:24:55 
+And the agent proposed a change, runs the experiment, checks the matrix, see if the change, if the performance improves or not, and discard it if it does not. 
+
+01:25:07 
+So this architecture partially replaced the work of the business analytics or any data analyst work. 
+
+01:25:21 
+Because with the help of this architecture, the technical team, the algorithm team in the company, they can run the experiment by themselves and start the loop and even evaluate the results under this architecture. 
+
+01:25:38 
+So I think the business analytics for the data analyst work. 
+
+01:25:48 
+would be easily to be replaced by the multi-agent systems. 
+
+01:25:55 
+And the core idea of sub-agents is to decompose the large tasks into smaller, well-bounded tasks, and let different agents handle them separately. 
+
+01:26:09 
+Each sub-agent can have its own clean context. 
+
+01:26:14 
+When it finishes, it does not need to return to the entire reasoning trajectory. 
+
+01:26:24 
+So this allows work to run in parallel while keeping the coordinators' contacts relatively clean. 
+
+01:26:34 
+And there are three common orchestration patterns. 
+
+01:26:39 
+The first is hierarchical. 
+
+01:26:41 
+One lead agent coordinates several worker agents, and the lead agents host the overall team. 
+
+01:26:48 
+Strategy and Delegate Specific Task to the Workers, and the second is Parallel, or Find Out and Find Me, several sub-agents work on different parts of the problem at the same time, and their results are combined later, and the third is 
+
+01:27:11 
+Sequential, similar to a pipeline. The output of one agent becomes the input to the next. 
+
+01:27:19 
+and this makes it easier to detect the progress of this agent system. 
+
+01:27:28 
+ASRUPIC research system is a useful example. 
+
+01:27:32 
+A lead researcher maintains the overall strategy and memory 
+
+01:27:38 
+while different sub-agents search in parallel using separate contacts. 
+
+01:27:46 
+and the Self-Restatation Agents can then validate claims and sources before the final answer is produced. 
+
+01:27:55 
+But multi-agent systems are not free. 
+
+01:28:00 
+AnswerPick reported that its research setup used roughly 15 times to focus on 
+
+01:28:10 
+15 types of tokens of the ordinary task, and if tasks' boundaries are raised, then different agents may duplicate the same work. 
+
+01:28:23 
+So the important design principle is not to maximize the number of agents, 
+
+01:28:51 
+The deep research is the typical multi-agent research architecture, and the lead agents in the center act as the orchestrator. 
+
+01:29:02 
+And at first, they compose a broad question into several research questions, and then assign those questions to different search staff agents. 
+
+01:29:15 
+These sub-agents can search in parallel and return the evidence to the lead agent, and the lead agent does more than simply combine the results. 
+
+01:29:27 
+It synthesizes the evidence and checks whether the important information is still missing. 
+
+01:29:33 
+If a conclusion is weakly supported, it can launch another sub-agent to collect more evidence, and that creates a research loop. 
+
+01:29:43 
+The lead agent also uses the memory to keep track of confirmed findings, open questions, and previous research directions. 
+
+01:29:56 
+It may also use model context protocol and CP pools to access external data sources. 
+
+01:30:04 
+On the left, there is a separate citation sub-agent. 
+
+01:30:09 
+Its job is just to check whether the claims in the final report are actually supported by the cited resources. 
+
+01:30:18 
+So the overall architecture is decompose, search in parallel, synthesize, identify the gaps, and then search again to verify, and then verify the citations. 
+
+01:30:33 
+This architecture is especially useful for broad tasks such as market research, industry analysis, or supplier research, where the answer depends on collecting and reconciling evidence from many sources. 
+
+01:30:54 
+OpenClaw is quite different from the deep research architecture we just discussed. 
+
+01:31:01 
+It is closer to the persistent personal assistant runtime. 
+
+01:31:06 
+The goal is not just to complete one research task, but to continuously connect the conversation to real actions. 
+
+01:31:16 
+On the left are channels. 
+
+01:31:19 
+Such as WhatsApp, WeChat, requests from these channels first go through the gateway, where handles routine and session management, and the agent runtime in the center is the core component, and it builds the current context, combines it with instruction skills and history from the workspace and memory. 
+
+01:31:44 
+and then calls the model provider to decide what action should happen next. 
+
+01:31:49 
+And if the task requires interaction with the external environment, the runtime can call 
+
+01:31:56 
+host and device nodes such as the browser, the device actions, and these actions can also pass through 
+
+01:32:07 
+access policies and approval dates before the exact action. 
+
+01:32:12 
+I like deep research which focuses on parallel research and synthesize. Open Cloud focuses more on maintaining a persistent assistant environment that connects the message, sessions, memory, model reasoning tools, and actions. 
+
+01:32:33 
+Let's use a concrete task to see how the personal assistant runtime like Open Cloud works. 
+
+01:32:43 
+Prepare a brief for tomorrow's supplier meeting and submit the draft. 
+
+01:32:49 
+The first step is request a session. 
+
+01:32:52 
+The message may arrive through WhatsApp and the gateway identifies the relevant user and session 
+
+01:33:03 
+and route the request to the correct agents. 
+
+01:33:08 
+The second step is Contacts and Tools. The agent can use information already available in that session, such as previous communication with the supplier, and it may access the permitted fields, the calendar, the broader tools to gather the meeting time, the supplier's background, and other relevant information. 
+
+01:33:31 
+And the third step is Draft and Review. The agents create a brief from the collected information. 
+
+01:33:38 
+And in this example, sent me the draft, simply means returning the draft to the user, if the next step were to send a message to the supplier or another external recipient, the system could require human approval before that external action is conducted. 
+
+01:34:01 
+The fourth step is Results and Continuation. The full results confirm what actually happened and the briefest return to the user where the relevant session history is created. 
+
+01:34:15 
+So if the user later says, shorten the secondary section of the draft and send it to the supplier, 
+
+01:34:24 
+the agent can continue from the same context instead of starting from scratch, 
+
+01:34:31 
+and that continuity is the main idea here. 
+
+01:34:35 
+The overclock connects the conversation, the context, the tools. 
+
+01:34:40 
+Approvals and Session Distributing to One Persistent Workflow. 
+
+01:34:47 
+Overflow-style architectures would be for personal assistance or work within a small trusted team. 
+
+01:34:55 
+The typical example include preparing, recording briefs, retrieving work documents across connected apps. 
+
+01:35:09 
+The same runtime can receive requests through multiple channels such as WhatsApp, Telegram, or other messaging interfaces while continuing to use the same session context and configure tools. 
+
+01:35:27 
+But not every workflow needs the kind of persistent assistance. 
+
+01:35:32 
+If the task is highly standardized and high volume such as 
+
+01:35:37 
+Processing a very large number of routine transactions or deterministic workflow is often a better design than letting an agent decide each step dynamically. 
+
+01:35:48 
+And if the system serves users who should not trust each other, the stronger trust boundary lines, also meaning the contacts, memory, credentials, and permissions should not simply be shared across the users. 
+
+01:36:07 
+All the research uses a very different architecture from deep research or open cloud. 
+
+01:36:16 
+Its core idea is not information retrieval of a system. 
+
+01:36:21 
+It's to let an agent run an experiment automatically and use a measurable matrix to decide what to find out. 
+
+01:36:31 
+At the loop, the human defines the goal. 
+
+01:36:34 
+The Constraint and Experiment Tools, for example, in the program, the agent is now supported to redefine the objective itself. 
+
+01:36:45 
+And the coding agent then proposes a change to the actual training code, such as training Python file. 
+
+01:36:54 
+And after each change, the system runs a real training experiment under a fixed compute budget. 
+
+01:37:02 
+For example, one GPU for five minutes, and the result is then passed through a fixed evaluator. 
+
+01:37:11 
+Importantly, the elevator is protected from agent habits. 
+
+01:37:18 
+Otherwise, the agent could improve the score by changing the evaluation rather than improving the model. 
+
+01:37:27 
+So the loop is to propose a change, run the experiment, evaluate, keep or discard, learn from the history, and then try again. 
+
+01:37:38 
+This architecture works especially well when the success can be measured quickly, objectively, and repeatedly. 
+
+01:37:47 
+Without a reliable evaluator, the agent has no stable signal telling it, 
+
+01:37:53 
+Where did the experiment actually improve anything? 
+
+01:38:00 
+This figure shows the experiment record produced by our researchers. 
+
+01:38:05 
+The x-axis is the experiment number, and the y-axis is the validation bits per byte. 
+
+01:38:13 
+In this case, the y-axis lowers the record. 
+
+01:38:18 
+So the system runs 83 experiments, but only 15 changes were kept. 
+
+01:38:24 
+The green points represent experiments that did not fit the current fast-speed laws, and were therefore discarded. 
+
+01:38:34 
+And the green points represent the improvements that were kept. 
+
+01:38:38 
+The gray star piece is the running fast. 
+
+01:38:47 
+VALIDATION GIFT PROVIDES, THAT VERSION BECOMES THE NEW BEST, AND IF THE EXPERIMENT PERFORMS FIRST, 
+
+01:38:55 
+THE SYSTEM DISCARD THE CHANGE, RETURNS TO THE PREVIOUS BEST VERSION, AND TRIES SOMETHING 
+
+01:39:02 
+ELSE. 
+
+01:39:04 
+So, other research does not assume that every change proposed by the agent would work. 
+
+01:39:12 
+In fact, most experiments may fail. 
+
+01:39:16 
+What makes the loop useful is that there is a fixed evaluator that can answer a very clear question. 
+
+01:39:24 
+Did this change actually improve the results? 
+
+01:39:33 
+The outcome of each experiment that gives the agent the history of both successful and unsuccessful directions. 
+
+01:39:41 
+So the overall process looks very much like the automatic scientific experimentation loop. 
+
+01:39:49 
+That is, generate a hypothesis, run an experiment, measure the outcome, decide to keep or discard, and then repeat. 
+
+01:40:01 
+In the real world application, one of the leaders in the technical team told us, maybe in the near future, 
+
+01:40:14 
+We don't need the data analysts, we don't need so many RD groups. 
+
+01:40:25 
+Because without this auto-research architecture, I think one algorithm engineer can only run one or two experiments per week. 
+
+01:40:38 
+But with this architecture, based on the record and company, we summarize and find that we can run 100 experiments per month. 
+
+01:40:50 
+So when the leader mentioned that we don't need so many humans in the technical group or the R&D group, that's actually a shock for me. 
+
+01:41:05 
+So what I'm thinking is how to maintain the position in the group if I was the employee in the company. 
+
+01:41:16 
+I'm thinking one direction is to develop this kind of architecture, all the developers of this multi-agent system will know that there will be a day that the company will need less and less people, but they told me they hope to be the last group that exists in the company. 
+
+01:41:45 
+So the auto-research works best for very specific type of problem. 
+
+01:41:52 
+The agent can repeatedly change something and the change can be developed quickly with a reliable framework. 
+
+01:42:02 
+That is exactly what the original research does. 
+
+01:42:09 
+The agent modified the training code for a small language model and regressed training under the same GPU budget and the same evaluator. 
+
+01:42:22 
+Because the experimental condition remains fixed, different changes can be compared directly, and the same pattern can be adapted to other patterns. 
+
+01:42:36 
+Optimization, the agent can modify a prompt and then re-run the game's stats of past cases. 
+
+01:42:46 
+And for re-running, for the ranking model, the agent can select a code or parameters and then check whether the ranking matrix improves. 
+
+01:42:59 
+But the loop requires at least three things, versus fixed test cases, and a reliable matrix, and a limited added scope. 
+
+01:43:09 
+But I think most works and algorithm group can be abstracted into this. 
+
+01:43:18 
+So it's quite standard and suitable for the technical team, and the agent needs clear boundaries on what it allows to change, while the Indiagnator itself must remain fixed. 
+
+01:43:34 
+This architecture is much less suitable for the open-ended strategy questions because there is usually no fast and reliable score. 
+
+01:43:44 
+The live user experiments are also difficult because feedback is slower and much noisier. 
+
+01:43:52 
+There is another risk as well. Optimizing one matrix can hide regression elsewhere, and a better score on one dimension does not necessarily mean the overall system is better. 
+
+01:44:05 
+So I think when we implement the auto-research architecture, we always need to ask what can the agent change, what must remain fixed, and what independent evaluation tells us. 
+
+01:44:20 
+The changes actually better. So if we compare this three example architecture, the main difference is now the underlying model, it is the control logic and the success signal. 
+
+01:44:35 
+OpenClaw is better suited to personal assistant tasks, and it receives the request, takes action, secures, observes the results, and continues the interaction. 
+
+01:44:47 
+The deep research is designed for research tasks, lead agent decomposed questions, subagent search for evidence, and results are synthesized into reports. 
+
+01:45:05 
+All the research follows a different loop. It repeatedly modifies something, runs an experiment, measures the outcome, and then decides whether to keep or discard the change. 
+
+01:45:20 
+So here the successful signal is much more explicit. Did the fixed matrix actually improve? Ideally followed by the independent evaluation. 
+
+01:45:32 
+So when choosing an agent architecture, three questions are useful, what is the output, what is the control group, and how do we know if it succeeds or not. 
+
+01:45:46 
+We 
+
+01:45:50 
+now move from system design to application address. 
+
+01:45:55 
+Agents have already been applied across many domains like the software engineering, the research analysis, consumer support and the browser computer usage, the knowledge work, the security operations and the scientific or technical work. 
+
+01:46:20 
+Let's look at the areas where AI agents are most successful right now, the software engineering. 
+
+01:46:27 
+Why are agents so good at writing code? The reasons are built into how coding works. 
+
+01:46:35 
+First, the coding environment has strict, clear rules. 
+
+01:46:39 
+Second, the feedback is simple, a test either passes or it fails. 
+
+01:46:49 
+And another point is there is a massive amount of public code online for the AI to learn from. 
+
+01:46:57 
+In daily work, Next Agents are very helpful if you just describe a bug to them, they can find it and fix it, and they also write test code, update older code, package, review code, and handle big, boring changes that cause many bugs at once. 
+
+01:47:23 
+are widely used in this space right now. 
+
+01:47:26 
+But the most amazing fact is on the right-hand side of the slides, 
+
+01:47:30 
+a company named Stript used AI agents to complete and merge over 1,000 code updates every week. 
+
+01:47:39 
+And the agents do the work from start to finish, 
+
+01:47:42 
+and human engineers just do it at the end. 
+
+01:47:46 
+The most important lesson here is this, Stript explicitly states, 
+
+01:47:52 
+Any questions? 
+
+01:47:59 
+The script explicitly says that a huge success comes from building a great engineering system around the AI, 
+
+01:48:08 
+that is the hardest, and not just from having a smarter AI model. 
+
+01:48:13 
+This shows that how you set up the tool is what really drives success. 
+
+01:48:25 
+We should have a wireless Mac, so if you have any questions, I can use that Mac to have a Q&A session here. 
+
+01:48:40 
+So let's look specifically at research and analysis. 
+
+01:48:45 
+And this is another area where AI agents work extremely well. 
+
+01:48:51 
+The deep research agents do not just search the web once, they do multiple round searches. 
+
+01:49:00 
+When they find new details in the first search, they automatically change their search terms for the next round, 
+
+01:49:09 
+detailed reports with clear soft links. 
+
+01:49:13 
+For the system setup, this usually uses a leader and a worker design. 
+
+01:49:20 
+Once main leader agents manage the project, several worker agents search different topics at the same time, 
+
+01:49:28 
+and a separate verification staff checks every single source before the report is finished. 
+
+01:49:36 
+You can use this approach for many real-world jobs, checking competitor updates, doing the market research, or writing the literature reviews, or even tracking new legal rules. 
+
+01:49:54 
+So why do this system work so well here? I think there are two reasons. 
+
+01:50:00 
+One is it is easy to spot errors. A source link either proves a claim or it does not. There is no confusion. 
+
+01:50:13 
+And second, running helper agents at the same time really speed up the work. 
+
+01:50:19 
+Having five agents search five topics at once saves huge amount of time. 
+
+01:50:25 
+So look at the big number on the right-hand side. 
+
+01:50:29 
+The Anthropolitics reported that using this multi-agent research setup can cut total research time by up to 90%. 
+
+01:50:42 
+Moving on to our next major vertical, the consumer support. 
+
+01:50:49 
+As you can see from the prominent figure highlighted on the right-hand side, this sector represents one of the largest commercial categories in the AI ecosystem today. 
+
+01:51:02 
+Companies like CERA have already crossed the thousands of $100 million in the annual recurring revenue, ARR, demonstrating the most market demand. 
+
+01:51:18 
+In terms of the functional deployment, this system primarily handles the Taiwan resolution with seamless escalation to human agents when necessary. 
+
+01:51:31 
+But by leveraging the API, the agents interact directly with the back-end system to inspect the order history and account state. 
+
+01:51:43 
+It answers queries grounded in knowledge bases and autonomously executes routine operational tasks such as processing returns, issuing refunds, and updating shipping address. 
+
+01:52:03 
+Klama is a useful case for understanding both the benefits and the limits of AI in consumer service. 
+
+01:52:09 
+In 2024, Klama reported that AI agents handled 2.3 million conversations in its first month, 
+
+01:52:19 
+about two-thirds of its consumer service chats, with workload equipment to roughly 700 full-time agents. 
+
+01:52:27 
+Average resolution time fell from around 11 minutes to under 2 minutes, and Glamour initially estimated about $14 million in profit improvement for 2024. 
+
+01:52:41 
+If we only look at the efficiency matrix, the results are extremely strong. Faster services, lower cost, and much greater skill. 
+
+01:52:52 
+But consumer service cannot be evaluated only by cost and resolution time. 
+
+01:52:58 
+In 2025, Glamour CEO said the company had pushed the cost-cutting side too far and emphasized that consumers should still have the option to speak with a real person, especially for more complex situations. 
+
+01:53:14 
+Importantly, this was not a rejection of AI. 
+
+01:53:18 
+So the CLAMA later described its approach as a dual-track model. 
+
+01:53:23 
+Scalable AI for a large share of booting service and combined with high-quality human support. 
+
+01:53:31 
+Knowledge work and back-office operations are another major application area for agents. 
+
+01:53:37 
+Typical use cases include enterprise search, question answering over internal documents, contract view, legal discovery, IT service tasks, and data pipeline monitoring. 
+
+01:54:00 
+already consists of reading information from documents, databases, and enterprise software. 
+
+01:54:11 
+Next topic is Supply Chain Automation. It's a useful example of the difference between agents and a traditional workflow. 
+
+01:54:20 
+Suppose the system detects a weather disruption at 8 am and predicts that a weak shipment may be delayed. 
+
+01:54:29 
+A traditional system might simply generate an alert and wait for an operations manager to respond. 
+
+01:54:39 
+Step further, it can check inventory, alternative warehouses, transportation status, and factory schedules. 
+
+01:54:49 
+and then decide whether re-routing is necessary. 
+
+01:54:53 
+In this example, the agent redirects the supply from a secondary warehouse and adjusts the production schedule. 
+
+01:55:01 
+This action also requires access to multiple enterprise systems such as the transportation management system or the warehouse management system. 
+
+01:55:14 
+Broker and computer use agents are different from other API-based agents because they can 
+
+01:55:21 
+operate software directly through the user interface. 
+
+01:55:26 
+Typical tasks include filling out forms, navigating enterprise photos that have no API, collecting 
+
+01:55:35 
+information across websites, making bookings. 
+
+01:55:38 
+and Performing QA Sessions. 
+
+01:55:41 
+The agents have to understand what is on the screen 
+
+01:55:44 
+and then decide where to click, what to type, 
+
+01:55:47 
+and what to do next. 
+
+01:55:49 
+Browser use focus more on searching, navigating, retrieving information from the web, and the 68.9% show here is OpenAI's reported results for chapter ET agent on the browse computation, which measures ability to locate difficult-to-find information on the website. 
+
+01:56:16 
+Let's move to discuss the role of AI within security operations. 
+
+01:56:21 
+In this experiment, what functions are those agents actually performing? 
+
+01:56:26 
+As outlined in our first point, their primary utility lies in alert and enrichment, conducting log correction and performing the critical first-pass incident investigation. 
+
+01:56:43 
+Furthermore, they are highly effective in vulnerability assessment and patch preparation. 
+
+01:56:53 
+Now let's turn to the application of AI in scientific and technical work. 
+
+01:56:59 
+In this rigorous environment, AI agents are heavily utilized for tasks such as the literature synthesis, environment planning, writing simulation, and analyzing the results. 
+
+01:57:14 
+But I want to emphasize the critical theoretical distinction highlighted in red. 
+
+01:57:21 
+RightSight, and the Reinforcement Learning that come in the LLM agents. 
+
+01:57:28 
+The deep reinforcement learning lineage, which include milestone models like EQN and AlphaGo, certainly did not disappear. 
+
+01:57:39 
+But these reinforcement learning agents are specifically designed to operate within highly constrained domains. 
+
+01:57:58 
+So-called cheap layout and this system remains fundamentally, architecturally distinct from the LLM agent we have been studying. 
+
+01:58:11 
+The operational rule of thumb here is that reinforcement learning agents will often significantly outperform LLM agents in any scenario where the environment can be simulated cheaply. 
+
+01:58:27 
+Conversely, the LLM agent specialized and dominant in errors where tasks, instructions, and reasoning are formatted in natural language. 
+
+01:58:38 
+Now, let's look at one of the biggest milestones in scientific AI, the protein folding problem. 
+
+01:58:46 
+The core challenge is simple to say, that is if you only know the one big string of 
+
+01:58:53 
+BEEZ, it's can you predict the exact 3D shape it will fold into. So why does the 3D shape matter so much? Because in biology, shape determines function. The way a protein folds decides what job it does inside the body, like how it fights off a... 
+
+01:59:19 
+If AI can accurately predict this 3D structure, we can design better medicine more faster. 
+
+01:59:28 
+To solve this 50-year-old challenge, DeepMind created AlphaFold. 
+
+01:59:36 
+Look at the image on the slide. It shows us how the AlphaFold actually works. 
+
+01:59:43 
+It does not guess the final 3D shape all at once. Instead, it improves its predictions step-by-step through an iterative process. 
+
+01:59:55 
+On the left, the model starts with very rough, simple guess, and then the alpha fold acts like a spooler and slowly moves each part of the prompting over many rounds using physical rules. 
+
+02:00:13 
+About how items fit together. By the time we reach the right side, after many rounds of adjustment, the predicted shape matches the real printing structure almost perfectly. 
+
+02:00:28 
+And this step-by-step refinement, starting with a rough draft and constantly polishing it, is the exact same agentic approach we have been studying throughout this course. 
+
+02:00:43 
+So solving the biology problem was big, but sharing the answer with the world was even big. 
+
+02:00:50 
+So the laptop screen, this is the Alpha 4 database, and DeepMind made this tool completely free for everyone. 
+
+02:01:00 
+In the past, finding a 3D shape of just one person took years of hard lab work and cost a lot of money. 
+
+02:01:10 
+Now the scientists anywhere in the world can just open the web browser, tag in the name, and get the straight structure for 3 seconds. 
+
+02:01:19 
+By making this a free tool for our researchers, AI is helping scientists solve problems much faster, and starting and expanding new areas for science. 
+
+02:01:34 
+To understand how big the achievement is, let's put it into simple numbers. 
+
+02:01:41 
+Understanding how Protein4 is key to finding disease and developing new drugs. 
+
+02:01:47 
+Nature contains hundreds of millions of different proteins. 
+
+02:01:52 
+And in the past, it took a PG student five full years of lab work just to figure out the 3D shape of the single protein. 
+
+02:02:00 
+And in 2022, Google created AlphaFloat, so then it has created over 200 million protein structures and shared all the results really with the world. 
+
+02:02:14 
+Doing that work by hand would have taken 1 billion years of human research. 
+
+02:02:22 
+These figures show the AlphaFolding research, how real scientists use it every day. 
+
+02:02:31 
+And in this page, we show four major work problems that AlphaFold is helping to solve right now. 
+
+02:02:39 
+The plastic pollution, antibiotic resistance, neglected disease, malarial vases. 
+
+02:02:49 
+So the agent performance is highly asymmetric across domains. 
+
+02:02:54 
+What matters is often not the industry itself but how well-bounded the task is, 
+
+02:03:01 
+how deterministic the environment is, and how clear the feedback signal is. 
+
+02:03:10 
+We have seen what the system can do and where they struggle. Now we need to release a decision. What evidence is enough to put a particular product in front of users? 
+
+02:03:28 
+Here's the big picture. AI capability is rising much faster than real-world deployment. 
+
+02:03:34 
+At the same time, the gap between high task force and real-world trust is getting wider, not smaller, just because an agent scores well on a benchmark does not mean a business trusts it to run automatically. 
+
+02:03:56 
+The capabilities improving very quickly, but enterprise deployment is moving much more slowly. 
+
+02:04:04 
+In the McKinsey 2026 survey, only about 20% of organizations were scaling agents enterprise-wide. 
+
+02:04:13 
+Among companies with more than $1 billion in revenue, that number was higher at around 40%. 
+
+02:04:22 
+and had increased substantially from previous year. 
+
+02:04:25 
+But adoption is not the same as business impact. 
+
+02:04:30 
+Only 37% reported any A-Bits impact from AI, 
+
+02:04:37 
+and that figure was essentially unchanged year over year. 
+
+02:04:40 
+Only around 6% qualified as what McKinsey called high performance. 
+
+02:04:48 
+So the bottleneck is increasingly not just the model compatibility, but it's whether firms can redesign the workflow, integrate agents into real processes, and build the necessary evaluation systems around them. 
+
+02:05:09 
+A few years ago, the most obvious bottleneck for agents was simply model ability, and many tasks failed because the model could not read it well enough, write a reliable code. 
+
+02:05:25 
+And that bottleneck is now moving outward. 
+
+02:05:31 
+Production and Deployment increasingly depend on the harness, quality, evaluation, the permission design, and the quality of the underlying data and workflows. 
+
+02:05:42 
+That's why terms like Harness Engineering has become more important. 
+
+02:05:50 
+And the engineering problem is no longer just how to write a better prompt, it's how to design the entire runtime around the model. 
+
+02:06:04 
+Now we will explain why benchmark performance and real-world reliability are now the same thing. 
+
+02:06:12 
+The METR results suggest that even when the pool requires satisfied benchmark success criteria, 
+
+02:06:19 
+that does not mean the real software maintainer will actually merge it. 
+
+02:06:24 
+The result shown here is a 24.2% gap between the benchmarking implied success and the actual human merge rate. 
+
+02:06:37 
+And that gap has been widening. 
+
+02:06:41 
+So a benchmark may say the task is completed, but a real developer may still say I would not put this into production. 
+
+02:06:53 
+A good agent's evaluation should not test only the happy tasks, and it should also test how the system behaves under different failure conditions. 
+
+02:07:05 
+Let me use the Tokyo travel example. Again, the first category is the typical task. 
+
+02:07:16 
+If the data are clear and the feasible options exist, the agent should produce two valid plans supported by evidence. 
+
+02:07:24 
+And the second category is ambiguity. 
+
+02:07:28 
+Suppose the data are missing or the number of travelers is unclear, a good agent should not guess. 
+
+02:07:37 
+They should ask a targeted clarification question. 
+
+02:07:40 
+The third headway is Constraint Conflict. Suppose the user's budget is 8,000 Hong Kong dollars, but Eric's life option exceeds that budget. 
+
+02:07:51 
+Then the agent should explain the conflict cannot currently be satisfied rather than making up a cheaper choice. 
+
+02:08:01 
+The final headway is Failure. 
+
+02:08:05 
+or ATT&CK. The data may be stale, a tool may time-warp, or a by-page may contain prompt injection. 
+
+02:08:15 
+Here the evaluation is not asking whether the agent can keep going at all costs. 
+
+02:08:22 
+It is asking whether the agent can correctly recover, stop, or escalate. 
+
+02:08:31 
+When evaluating the economics of an agent, cost per attempt can be misleading. 
+
+02:08:39 
+A more useful matrix is cost per accepted outcome. 
+
+02:08:44 
+How much do we actually spend to produce one result that is good enough to use? 
+
+02:08:51 
+AI agents should not move directly from an offline network to full production. 
+
+02:08:59 
+A safer approach is to extend the deployment scope gradually. 
+
+02:09:04 
+At the first stage is the offline evaluation. 
+
+02:09:08 
+We test the system on a representative test and failure cases and look at quality. 
+
+02:09:20 
+And the second stage is shadow mode. The agents can generate recommendations or drafts, but the human still reviews the output before any consumer-facing action is taken. 
+
+02:09:35 
+And the third stage is a limited pilot. The agents are released to a small... 
+
+02:09:40 
+Named group of users with clear style policy. In company, we usually add ourselves as the whitelist when we start an experiment. 
+
+02:09:52 
+At this stage, we should monitor not only accepted outcome, but also cost and tail latency. 
+
+02:10:04 
+We now have covered the full path of the harness and agent architecture to applications. 
+
+02:10:13 
+Evaluation, and Requirements. 
+
+02:10:17 
+So the lecture can be summarized around three themes. 
+
+02:10:22 
+The first is that the concept of an agent predates the current technology by decades. 
+
+02:10:29 
+And the second theme is agent performance depends on much more than the model. 
+
+02:10:36 
+And the third one is who has the strongest model, it's, so the question may not be who has the strongest model, it's also about who can build the most effective, reliable system around that model, that is the meaning of the harness engineering. 
+
+02:10:59 
+So, I just leave the three questions for you to think about after class. 
+
+02:11:05 
+The first is about competitive advantage. 
+
+02:11:09 
+If differences in agent reliability increasingly come from the harness rather than only from the underlying model, 
+
+02:11:18 
+does competitive advantage in enterprise AI also begin to shift towards the harness layer? 
+
+02:11:29 
+What is your position to own that layer? Is the foundation model labs or some in-house teams that understand their own workflows? 
+
+02:11:45 
+Internal Data. The second question comes from the enterprise deployment. We saw that around 20% of organizations report failing agents enterprise-wide. Well, only around 6% of them are high quality. 
+
+02:12:06 
+IT Impact has now increased at the same pace. So the question is, what is the value actually being lost? 
+
+02:12:16 
+And I think the third question is, agents reliably succeed only where the feedback is unambitious and struggle wherever the knowledge is contested. 
+
+02:12:35 
+Valuable Business Knowledge, by its nature exactly the kind agents can yet use well, or what does that imply for which job can get automated first. 
+
+02:12:48 
+So I think rather than ask only what jobs will disappear, a more useful question may be what parts of jobs have clear input, clear action. 
+
+02:13:01 
+and Queer Feedback because agents are more likely to automate the individual tasks before they automate entire jobs. 
+
+02:13:16 
+I didn't upload this part on the converse, because I think for this course, the target is for you guys to understand the AI concept, but for your future interview, especially if you want to find an AI-specific product manager, I think I would like to supply some learning materials here for the AI product case, 
+
+02:13:45 
+We refer this example as your group project, and it's not necessary to be your initial project or original project, you can just use this project on GitHub and modify it to customize your targeted users. 
+
+02:14:06 
+The first is DeFi, and DeFi is a useful example of a rather simple but very... 
+
+02:14:16 
+The basic workflow is very straightforward and you can go to the github and go through this DeFi consumer support project. 
+
+02:14:27 
+And you can see when you want to develop the agent or workflow on the DeFi. 
+
+02:14:37 
+There are many learning materials in Chinese or English you can use and to learn, so that's the easier one. 
+

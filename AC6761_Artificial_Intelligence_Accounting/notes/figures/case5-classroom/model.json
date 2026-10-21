@@ -1,0 +1,197 @@
+{
+  "schema": "cityu-concept-graph-v1",
+  "diagram_type": "uml-rea",
+  "title": "AC6761 Case 5 Revenue Process Core REA Model",
+  "scope": "Official Case 5 revenue-process core model: 7 classes, 8 associations, 20 class attributes, 1 association attribute, and 16 multiplicity endpoints.",
+  "figure_caption": "Source: Case 5.docx and the one-page official hand-drawn Solution of Case 5.pdf. Layout positions aid reading and do not imply sequence or causality.",
+  "assumptions": [
+    "Every endpoint follows the official hand-drawn solution. Where the narrative alone is insufficient, no additional business rule is inferred.",
+    "Surfboard Inventory represents individually identified physical surfboards because the official answer gives Surfboard# as PK and permits each surfboard to participate in at most one Sale.",
+    "Cash means the concrete Cash Account class shown in the official solution and supported by Cash Account#, account type, bank name, and cash balance."
+  ],
+  "layout": {
+    "columns": [
+      ["surfboard_inventory", "cash_account"],
+      ["sale", "cash_receipt"],
+      ["salesperson", "customer", "cashier"]
+    ]
+  },
+  "nodes": [
+    {
+      "id": "surfboard_inventory",
+      "label": "Surfboard Inventory",
+      "kind": "Resource",
+      "source": "Case 5.docx Step 2 and Step 5; official solution PDF",
+      "status": "source",
+      "attributes": [
+        {"id": "surfboard_no", "name": "Surfboard# (PK)", "source": "Case 5.docx Step 5", "status": "source"},
+        {"id": "surfboard_description", "name": "Surfboard description", "source": "Case 5.docx Step 5", "status": "source"},
+        {"id": "surfboard_sell_price", "name": "Surfboard sell-price", "source": "Case 5.docx Step 5", "status": "source"}
+      ]
+    },
+    {
+      "id": "cash_account",
+      "label": "Cash Account",
+      "kind": "Resource",
+      "source": "Case 5.docx Step 2 and Step 5; official solution PDF labels the class Cash Account",
+      "status": "source",
+      "attributes": [
+        {"id": "cash_account_no", "name": "Cash Account# (PK)", "source": "Case 5.docx Step 5", "status": "source"},
+        {"id": "cash_account_type", "name": "Cash account type", "source": "Case 5.docx Step 5", "status": "source"},
+        {"id": "bank_name", "name": "Bank name", "source": "Case 5.docx Step 5", "status": "source"},
+        {"id": "cash_balance", "name": "Cash balance", "source": "Case 5.docx Step 5", "status": "source"}
+      ]
+    },
+    {
+      "id": "sale",
+      "label": "Sale",
+      "kind": "EconomicDecrement",
+      "source": "Case 5.docx Step 1; official solution PDF",
+      "status": "source",
+      "attributes": [
+        {"id": "sale_no", "name": "Sale# (PK)", "source": "Case 5.docx Step 5", "status": "source"},
+        {"id": "sale_total_amount", "name": "Sale total amount", "source": "Case 5.docx Step 5", "status": "source"},
+        {"id": "sale_no_items", "name": "Sale no. of items", "source": "Case 5.docx Step 5", "status": "source"}
+      ]
+    },
+    {
+      "id": "cash_receipt",
+      "label": "Cash Receipt",
+      "kind": "EconomicIncrement",
+      "source": "Case 5.docx Step 1; official solution PDF",
+      "status": "source",
+      "attributes": [
+        {"id": "cash_receipt_no", "name": "Cash receipt# (PK)", "source": "Case 5.docx Step 5", "status": "source"},
+        {"id": "cash_receipt_total", "name": "Cash receipt total amount", "source": "Case 5.docx Step 5", "status": "source"}
+      ]
+    },
+    {
+      "id": "salesperson",
+      "label": "Salesperson",
+      "kind": "InternalAgent",
+      "source": "Case 5.docx Step 3 and 4; official solution PDF",
+      "status": "source",
+      "attributes": [
+        {"id": "salesperson_no", "name": "Salesperson# (PK)", "source": "Case 5.docx Step 5", "status": "source"},
+        {"id": "salesperson_name", "name": "Salesperson name", "source": "Case 5.docx Step 5", "status": "source"},
+        {"id": "salesperson_comm_rate", "name": "Salesperson commission rate", "source": "Case 5.docx Step 5", "status": "source"}
+      ]
+    },
+    {
+      "id": "customer",
+      "label": "Customer",
+      "kind": "ExternalAgent",
+      "source": "Case 5.docx Step 3 and 4; official solution PDF",
+      "status": "source",
+      "attributes": [
+        {"id": "customer_no", "name": "Customer# (PK)", "source": "Case 5.docx Step 5", "status": "source"},
+        {"id": "customer_name", "name": "Customer name", "source": "Case 5.docx Step 5", "status": "source"},
+        {"id": "customer_ar", "name": "Customer account receivable", "source": "Case 5.docx Step 5", "status": "source"}
+      ]
+    },
+    {
+      "id": "cashier",
+      "label": "Cashier",
+      "kind": "InternalAgent",
+      "source": "Case 5.docx Step 3 and 4; official solution PDF",
+      "status": "source",
+      "attributes": [
+        {"id": "cashier_no", "name": "Cashier# (PK)", "source": "Case 5.docx Step 5", "status": "source"},
+        {"id": "cashier_name", "name": "Cashier name", "source": "Case 5.docx Step 5", "status": "source"}
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "stockflow1",
+      "a": "surfboard_inventory",
+      "b": "sale",
+      "a_multiplicity": "1..*",
+      "b_multiplicity": "0..1",
+      "label": "Stockflow1",
+      "source": "Official solution PDF; Case 5 narrative: surfboards are available and a Sale transfers surfboard inventory",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "stockflow2",
+      "a": "cash_account",
+      "b": "cash_receipt",
+      "a_multiplicity": "1..1",
+      "b_multiplicity": "0..*",
+      "label": "Stockflow2",
+      "source": "Official solution PDF; Case 5 narrative: every cash receipt is deposited into one and only one cash account",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "duality",
+      "a": "sale",
+      "b": "cash_receipt",
+      "a_multiplicity": "0..*",
+      "b_multiplicity": "0..*",
+      "label": "Duality",
+      "source": "Official solution PDF; Case 5 narrative allows credit sales, partial payments, combined payments, and non-sale cash receipts",
+      "status": "source",
+      "attributes": [
+        {"id": "cash_receipt_applied", "name": "Cash receipt amount applied to sale", "source": "Case 5.docx Step 5", "status": "source"}
+      ]
+    },
+    {
+      "id": "participation1",
+      "a": "sale",
+      "b": "salesperson",
+      "a_multiplicity": "0..*",
+      "b_multiplicity": "1..1",
+      "label": "Participation1",
+      "source": "Official solution PDF; Case 5 narrative: each Sale is made by one and only one salesperson, while employee data may exist without transactions",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "participation2",
+      "a": "sale",
+      "b": "customer",
+      "a_multiplicity": "0..*",
+      "b_multiplicity": "1..1",
+      "label": "Participation2",
+      "source": "Official solution PDF; Case 5 narrative and official diagram",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "participation3",
+      "a": "cash_receipt",
+      "b": "customer",
+      "a_multiplicity": "0..*",
+      "b_multiplicity": "0..1",
+      "label": "Participation3",
+      "source": "Official solution PDF; Case 5 narrative permits cash receipts from sources other than surfboard sales",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "participation4",
+      "a": "cash_receipt",
+      "b": "cashier",
+      "a_multiplicity": "0..*",
+      "b_multiplicity": "1..1",
+      "label": "Participation4",
+      "source": "Official solution PDF; Case 5 narrative: each cash receipt is handled by one and only one cashier, while employee data may exist without transactions",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "assignment",
+      "a": "salesperson",
+      "b": "customer",
+      "a_multiplicity": "1..1",
+      "b_multiplicity": "1..*",
+      "label": "Assignment",
+      "source": "Official solution PDF; Case 5 narrative: each customer has exactly one salesperson and each salesperson has one or more customers",
+      "status": "source",
+      "attributes": []
+    }
+  ]
+}
+

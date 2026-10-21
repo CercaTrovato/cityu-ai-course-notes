@@ -2,14 +2,14 @@
 course: EF5560
 module: 6
 week: null # Class 6 已确认。教学周未另行确认
-date: null # 不以课件生成时间代替实际上课日期
+date: 2026-10-16 # 用户在 2026-10-17 本会话直接指认“昨天的 5560”
 source: "Lec06_FinTech_Overview_and_Blockchain.pdf（54 页）"
-transcript: pending
+transcript: merged
 prerequisites: [M01, M05]
 new_concepts: [金融科技商业模式, 规模经济, 货币三职能, 共享账本, 区块链, 代币, 应收账款融资, 许可网络, 哈希, 数字签名, 双花, 共识, 工作量证明, 权益证明, 确认, 私钥托管, 日内回购, 网络采用, 简单回收期, 哈希碰撞, 检查点, 已获证明, 最终确定]
 tags: [EF5560, FinTech, blockchain, trade-finance]
-status: v0.9
-updated: 2026-10-15
+status: v1.0
+updated: 2026-10-18
 readability_rules: v2
 mechanism_spec: v1
 mechanism_review: passed
@@ -18,7 +18,15 @@ mechanism_review: passed
 # M06 · FinTech 概览与区块链
 
 > 本讲一句话：先找金融业务哪里费钱，再判断共享账本能改哪一步，最后用收益、成本和风险决定是否采用。
-> 原始材料：Class 6，54 页。暂无本讲转录。案例数字中，“教学假设”和公司公布的规模必须分开读。
+> 原始材料：Class 6，54 页。转录已按 P1／P2／P3／P4 四个独立时钟融合；课堂日期为 2026-10-16，依据用户本次直接指认。
+> ✅ **本笔记为 v1.0**（2026-10-18 合并转录）。P1 为课间前连续段；P1→P2、P2→P3、P3→P4 均有未知接缝缺口。p.25–26、p.47–49 不可因未录到而降权。
+> 使用方式：先读 §2 的英文原题／全部选项，再用中文解析核对，最后练习英文参考答案。英文答案均按标注区分讲义给定内容与笔记自拟，不作官方答案。
+
+<details><summary>转录来源与独立时钟</summary>
+
+P1 = `transcripts/M06-transcript-part1.txt`；P2 = `transcripts/M06-transcript-part2-partial.txt`；P3 = `transcripts/M06-transcript-part3-partial.txt`；P4 = `transcripts/M06-transcript-part4-partial.txt`。四份文件都位于本课目录，原始时间戳各自从头计时且不重置、不拼成一个连续时钟。
+
+</details>
 
 ## 0. 三分钟速览
 
@@ -33,6 +41,9 @@ mechanism_review: passed
 5. 用业务证据判断共享账本是否值得采用。
 
 如果只记三件事：文件没变不代表交易真实。技术有效不代表客户愿付钱。处理更快不代表信用风险下降。
+
+> 🎙️ **课堂实况**（2026-10-16（用户本次直接指认））：四段独立时钟按内容顺序为 P1→P2→P3→P4；已录范围合计约 119.3 分钟，但三处接缝缺口时长未知，不能当作课堂总时长。 课堂重心从 FinTech 需求与商业模式进入共享历史、授权控制和中国／香港应用；p.25–26 与 p.47–49 没有可靠课堂片段，仍须靠讲义与正文学习。 P2 明示授权控制选择题是期末题型，P3 明示期末有短答且期望不超过三行。
+
 
 ## 1. 开始之前 · 知识衔接
 
@@ -85,17 +96,44 @@ p.1 是课程封面。p.2、p.15、p.34 只有章节标题，分别提示商业�
 
 **为什么需要它**
 
-银行先查商店是谁、销售能否支持还款，这花信息核查成本。处理文件、解决支付异常花操作成本。商店、支付机构和银行记录不同，还要花协调成本。（讲义 p.4）
+银行核查商店身份与销售能否支持还款，形成信息成本（Information cost）。
+
+处理成本（Processing cost）来自处理文件和解决支付异常。商店、支付机构和银行记录不同，还要花协调成本（Coordination cost）。（讲义 p.4）
 
 小额业务也可能需要相近的核查步骤。因此，金额小不等于服务便宜。
 
+**英文原题（讲义 p.3）**
+
+> Consider a small retailer buying stock and selling online.
+>
+>
+> • Receive payments. Customers need a way to pay, and the shop needs access to the money.
+>
+> • Finance purchases. Suppliers may need payment before the shop sells its stock.
+>
+> • Manage cash. The owner keeps enough money for wages and decides what to do with spare funds.
+>
+>
+> Banks and other financial firms provide these services. Where could technology improve them?
+>
+
+**中文题意与读题条件**
+
+小商店要收款、先买货、安排工资与闲钱。问题是技术能改善这些服务的哪些具体步骤；不是只列技术名称。下文 p.4–5 的成本与改进就是参考答案的依据。
+
 **课件原例**
 
-讲义 p.5 用同一家商店说明三种改进：经商店许可，数字销售记录辅助贷款判断。软件把到账与订单匹配。系统互传交易状态，减少重复检查。这种用技术改进金融服务的做法叫金融科技（FinTech）。
+讲义 p.5 用同一家商店说明三种改进：经商店许可，数字销售记录辅助贷款判断。软件把到账与订单匹配。系统互传交易状态，减少重复检查。这种用技术改进金融服务的做法叫金融科技（Financial technology，FinTech）。
 
-**🎙️ 课堂补充**
+**英文参考答案（笔记自拟；非官方答案）**
 
-待转录补充。课件没有证明这些改进已在某家商店实现。
+With the retailer’s permission, digital sales records can support lending decisions. Software can match payments to orders, and connected systems can reduce repeated reconciliation. Each improvement must be weighed against its implementation cost.
+
+**🎙️ 课堂补充**（P1 `00:50`–`13:06`，A · 课上展开）
+
+- P1 `00:50`–`04:19`：教授用网店和家里小企业说明支付、营运资金融资与现金管理；小企业也要在工资到期前备好现金。
+- P1 `08:08`–`12:47`：FinTech 是实践界对‘用新技术改善金融服务’的宽泛称呼；数据、自动化与互联系统的收益仍须大于技术成本。
+- **这段改变了什么**：确认正文的三类成本框架，并补出后半程要反复问的商业判断：技术改了哪一步，谁得到收益，谁支付成本。
 
 **💡 换个说法（笔记补充）**
 
@@ -120,7 +158,9 @@ p.1 是课程封面。p.2、p.15、p.34 只有章节标题，分别提示商业�
 
 **是什么**
 
-数字支付帮助收付和处理交易。贷款则让借款人先拿钱、以后偿还。众筹把项目与出资者连接起来。出资者收到什么，要看该项目规则。
+数字支付（Digital payments）帮助收付和处理交易。贷款（Lending）则让借款人先拿钱、以后偿还。
+
+众筹（Crowdfunding）把项目与出资者连接起来。出资者收到什么，要看该项目规则。
 
 **为什么需要它**
 
@@ -132,16 +172,39 @@ p.1 是课程封面。p.2、p.15、p.34 只有章节标题，分别提示商业�
 
 课程安排：数字支付对应 Class 10；贷款与众筹对应 Class 11。
 
+**英文原题（讲义 p.6）**
+
+> Digital payments — Case focus
+>
+> Who pays the fee, and how does the service compare with existing payment methods?
+>
+>
+> Lending and crowdfunding — Case focus
+>
+> What does the funder receive, and who bears the risk of non-payment or project failure?
+>
+
+**中文题意与读题条件**
+
+第一组有两项：谁付费，以及与现有支付方式怎样比较。第二组也有两项：出资者获得什么，以及谁承担不还款或项目失败。`existing` 指现有替代方式，`bears the risk` 指承担损失风险，不能只答谁提供软件。
+
 **原题：两组 Case focus**
 
 ⚪ 参考作答（笔记推断，依据讲义 p.6）。
 
 1. 支付服务谁付费、怎样比较？先查合同中的收费对象、费率和固定费，再比较同类支付的到账速度、成功率及异常处理。不能只比 App 界面。本页未给实际费率，不能断言哪家最便宜。
-2. 出资者拿什么、谁承担风险？贷款方通常获得约定本息并承担借款人不还款的信用风险。奖励型众筹支持者获得约定奖励，项目失败可能导致奖励无法兑现。具体追索与退款权利要看合同。
+2. 出资者拿什么、谁承担风险？贷款方通常获得约定本息并承担借款人不还款的信用风险（Credit risk）。奖励型众筹支持者获得约定奖励，项目失败可能导致奖励无法兑现。具体追索与退款权利要看合同。
 
-**🎙️ 课堂补充**
+**英文参考答案（笔记自拟；非官方答案）**
 
-待转录补充。
+1. Identify who pays each fee under the contract, then compare total fees, settlement time, payment success and exception handling with existing methods. The slide does not provide enough fee data to rank the firms.
+2. A lender generally receives agreed principal and interest and bears borrower default risk. In rewards-based crowdfunding, the funder receives a promised reward and may bear non-delivery risk. Exact rights depend on the contract.
+
+**🎙️ 课堂补充**（P1 `16:02`–`18:26`，A · 课上展开）
+
+- P1 `16:02`–`16:47`：教授把 Alipay、Stripe 与 WeBank 放回后续课程路线，强调支付平台替商户处理收款，贷款机构仍承担信用判断。
+- P1 `17:29`–`18:26`：Kickstarter 式奖励众筹的支持者可获得首映座位或签名等回报，通常不取得金融收益。
+- **这段改变了什么**：课堂例子把‘回报’拆成服务费、贷款利息与非金融奖励，不能把所有 funding 都当股权投资。
 
 **💡 换个说法（笔记补充）**
 
@@ -165,13 +228,49 @@ p.1 是课程封面。p.2、p.15、p.34 只有章节标题，分别提示商业�
 
 **是什么**
 
-机器人投顾（Robo-advice）用规则或模型辅助配置投资。网络安全检测异常活动。监管科技（RegTech）把技术用于客户核查、金融文本审阅等合规工作。
+机器人投顾（Robo-advice）用规则或模型辅助配置投资。
 
-钱包管理交易所需的密钥。加密借贷以加密资产等作为抵押。稳定币是试图把价格联系到某种参照物的代币，本页举与美元挂钩的例子。
+网络安全（Cybersecurity）检测异常活动。监管科技（Regulatory technology，RegTech）把技术用于客户核查、金融文本审阅等合规工作。
+
+钱包（Wallet）管理交易所需的密钥。加密借贷（Crypto lending）以加密资产等作为抵押。
+
+稳定币（Stablecoin）是试图把价格联系到某种参照物的代币，本页举与美元挂钩的例子。
 
 **为什么需要它**
 
-小账户也需要服务，逐户人工咨询可能很贵。异常检测可以扩大审阅范围，但误报会增加人员工作。数字资产的所有权记录和可支配权，还依赖谁持有授权密钥。
+小账户也需要服务，逐户人工咨询可能很贵。异常检测可以扩大审阅范围，但误报（False alert）是把正常活动误认成异常，会增加人员工作。数字资产的所有权记录和可支配权，还依赖谁持有授权密钥。
+
+**英文原题（讲义 p.7）**
+
+> Robo-advice — Case focus
+>
+> Can advisory fees cover the cost of serving small accounts?
+>
+>
+> Cybersecurity and RegTech — Case focus
+>
+> What evidence shows lower losses or review costs, after accounting for false alerts?
+>
+
+**中文题意与读题条件**
+
+投顾题要比较每户顾问费和服务成本。风控题中的 `after accounting for false alerts` 要求把误报带来的人工处理成本算回去；告警更多不等于损失更少。
+
+**英文原题（讲义 p.8）**
+
+> Wallets and crypto lending — Case focus
+>
+> Who controls the assets, and who bears losses?
+>
+>
+> Stablecoins — Case focus
+>
+> How do issuers earn revenue, and can reserves meet redemptions?
+>
+
+**中文题意与读题条件**
+
+钱包与借贷题分别问控制权和损失承担。稳定币题分别问发行人的收入来源和储备能否满足赎回；知道币价目标不等于知道实际兑付能力。
 
 **课件原例与逐问参考作答**
 
@@ -182,11 +281,20 @@ p.1 是课程封面。p.2、p.15、p.34 只有章节标题，分别提示商业�
 3. Ledger、Aave：谁控制资产、谁承担损失？硬件钱包重点保护私钥，持有者仍须安全签署指令。抵押借贷还须考察抵押物跌价、清算与协议风险。本页不足以确定某次损失由谁赔付。
 4. Circle 的 USDC、Tether 的 USDT：发行方怎样收入、储备能否兑付？需查储备资产收益、服务收费与负债，以及储备的价值、流动性和赎回条款。本页未给财报，无法据此确认任何发行人的偿付能力。
 
-**🎙️ 课堂补充**
+**英文参考答案（笔记自拟；非官方答案）**
 
-待转录补充。Classes 7–12 的标注是后续课程安排，不是本讲已完整教过所有产品机制。
+1. Compare advisory fees per account with onboarding, service, compliance and allocated technology costs. The slide alone cannot establish profitability.
+2. Compare losses and review costs for comparable activity, including the labour cost of investigating false alerts. Alert counts alone are insufficient.
+3. Identify who controls the private keys and approval rights. For lending, also examine collateral, liquidation and protocol risks; loss allocation depends on the arrangements.
+4. Examine issuers’ reserve income and fees alongside costs. Assess reserve value, liquidity and redemption terms; a dollar peg alone does not establish redemption capacity.
 
-课件安排：机器人投顾、网络安全与 RegTech 对应 Class 12；钱包和加密借贷对应 Classes 7–8；稳定币对应 Class 9。
+**🎙️ 课堂补充**（P1 `18:28`–`22:19`，A · 课上展开）
+
+- P1 `18:28`–`19:35`：教授认为机器人投顾热度下降，后续会多讲网络安全与 RegTech，特别是 AI 发起攻击与 AI 防御的对抗。
+- P1 `20:19`–`22:19`：课堂把钱包、加密借贷、稳定币与中国内地／香港不同路径放入后续课；这里只作业务入口，不代表本讲已经教完机制。
+- **这段改变了什么**：补出课程选择这些公司的理由，并保留地域与监管边界。
+
+**📄 课件后续课程安排**：机器人投顾、网络安全与 RegTech 对应 Class 12；钱包和加密借贷对应 Classes 7–8；稳定币对应 Class 9。课堂口述的后续侧重可能调整，但不能静默删掉讲义安排。
 
 **💡 换个说法（笔记补充）**
 
@@ -233,9 +341,11 @@ flowchart TD
 
 图的文字替代是：用户请求必须有金融服务承接，服务依赖数据和支付设施，整个过程受治理规则约束。实际产品可能双向反馈，图仅保留讲义层次。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（P1 `22:19`–`26:30`，A · 课上展开）
 
-待转录补充。
+- P1 `22:19`–`24:22`：教授从手机客户向下读五层：App 界面、金融服务、跨机构支付与数据基础设施、治理和风险。转数快（Faster Payment System，FPS）是转账基础设施，不是独立银行账户；实际账户仍由商业银行提供。
+- P1 `24:30`–`26:19`：合规与监管是 FinTech 的就业方向，但政策仍在变化；课堂建议不是就业结果保证。
+- **这段改变了什么**：确认五层图必须从界面一路追到实际账户与治理，不能把好用的 App 当作资金已经完成结算。
 
 **💡 换个说法（笔记补充）**
 
@@ -259,11 +369,13 @@ flowchart TD
 
 **是什么**
 
-支付流水是被处理的交易金额。收入是平台赚取的服务费。利润还要从收入中扣去为提供服务承担的各项成本。
+支付流水（Payment volume）是被处理的交易金额。收入（Revenue）是平台赚取的服务费。
+
+利润（Profit）还要从收入中扣去为提供服务承担的各项成本。
 
 **为什么需要它**
 
-大流水可能只产生很薄的收费。固定成本若能分给更多交易，平均处理成本会下降，这叫规模经济。但新增欺诈、支持或合规费用可能抵消节省。
+大流水可能只产生很薄的收费。固定成本若能分给更多交易，平均处理成本会下降，这叫规模经济（Economies of scale）。但新增欺诈、支持或合规费用可能抵消节省。
 
 **课件原例：收入**
 
@@ -283,9 +395,9 @@ flowchart TD
 
 **课件原例：平均成本**
 
-p.11 另给每月固定成本 10,000 美元，每笔可变成本 0.05 美元。固定成本不随本例笔数变化。可变成本每增加一笔就多 0.05 美元。
+p.11 另给每月固定成本（Fixed cost）10,000 美元，每笔可变成本（Variable cost）0.05 美元。固定成本不随本例笔数变化。可变成本每增加一笔就多 0.05 美元。
 
-要算一笔平均分摊多少成本：
+每笔平均成本（Average cost per transaction）表示一笔交易平均分摊多少成本：
 
 $$AC=\frac{F}{N}+v$$
 
@@ -316,9 +428,15 @@ $$AC=\frac{F}{N}+v$$
 
 💡 笔记补充：若把两页假设合在一起，10 万笔收入 20,000 美元，所列处理成本 15,000 美元，差额 5,000 美元。它只是扣这两类成本后的差额，不能当完整净利润。
 
-**🎙️ 课堂补充**
+**英文计算表达（笔记自拟）**
 
-待转录补充。
+Payment volume is US\$4 million per month, whereas fee revenue is US\$20,000. At 100,000 monthly transactions, average cost is US\$0.15 per transaction. Revenue less the two stated cost components is US\$5,000; this is not a complete net-profit estimate.
+
+**🎙️ 课堂补充**（P1 `26:35`–`32:24`，A · 课上展开）
+
+- P1 `26:35`–`27:15`：10 万笔、每笔 40 美元形成 400 万美元支付流水；0.5% 商户费才形成 2 万美元平台收入。
+- P1 `28:48`–`31:16`：课堂用香港出租车电子支付说明小市场中的系统固定成本、到账等待和商户费会影响采用；案例费率是口述经验，不当作当前统一收费。
+- **这段改变了什么**：补出规模经济为何影响支付普及，同时保持‘流水不等于收入、收入还不是利润’。
 
 **💡 换个说法（笔记补充）**
 
@@ -349,6 +467,22 @@ $$AC=\frac{F}{N}+v$$
 
 三种功能可能表现不同。一个东西能被少数商家收取，不代表工资、债务和商品价格都以它报价。稀缺也不保证短期购买力稳定。
 
+**英文原题（讲义 p.12）**
+
+> • Medium of exchange: people accept it as payment.
+>
+> • Unit of account: prices and debts are stated in it.
+>
+> • Store of value: it carries purchasing power into the future.
+>
+>
+> Which of these functions does Bitcoin perform well?
+>
+
+**中文题意与读题条件**
+
+逐项判断三种货币职能，不能只回答“是钱／不是钱”。`stated in it` 指价格和债务直接用它标示；商店收 BTC 但先用美元报价，不代表 BTC 已成为记账单位。
+
 **课件原例与 p.12 原题**
 
 问题是“Bitcoin 哪些货币功能表现较好？”✅ 讲义 p.14 给判断方向：支付功能部分成立。价值储藏有争议。记账单位尚不普遍。这里概括的是本课材料，不是对所有地区逐户调查。
@@ -363,9 +497,15 @@ BTC 是 Bitcoin 的交易代码。p.13 写 Satoshi Nakamoto 发布设计和开�
 
 本页人物画像注明为 AI 编辑插图。Satoshi 的形象是匿名表示，不能当作真实肖像或身份材料。
 
-**🎙️ 课堂补充**
+**英文参考答案（笔记自拟；非官方答案）**
 
-待转录补充。
+Bitcoin partly serves as a medium of exchange, but everyday acceptance remains limited in the course examples. Its role as a store of value is contested because scarcity does not prevent price volatility. It is not widely used as a unit of account. These statements paraphrase the assessment on slide 14.
+
+**🎙️ 课堂补充**（P1 `32:24`–`47:00`，A · 课上展开）
+
+- P1 `34:16`–`38:03`：教授依次解释交易媒介、记账单位与价值储藏，并用银行存款利息说明跨期购买力。
+- P1 `44:02`–`46:45`：课堂判断 Bitcoin 只在部分场景作支付工具；稀缺支持‘数字黄金’叙事，但价格波动削弱价值储藏，商品也很少直接以 BTC 标价。
+- **这段改变了什么**：确认三项职能要分别判断，不能用 2,100 万枚上限一次证明三项都成立。
 
 **💡 换个说法（笔记补充）**
 
@@ -403,9 +543,11 @@ BTC 是 Bitcoin 的交易代码。p.13 写 Satoshi Nakamoto 发布设计和开�
 
 💡 笔记补充：借用 p.42 的编号 EX-204 和 p.37 的 60 万元，组合成“该发票已借出 60 万元”的示例。这是跨页组合，非 p.16 原例。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（P1 `47:00`–`51:52`，A · 课上展开）
 
-待转录补充。
+- P1 `47:00`–`47:41`：教授明确本课只作金融应用层简介；需要正式工程训练应另修区块链课程。
+- P1 `48:46`–`50:52`：共享历史是课堂强调的用途；代币是在账本上记录的数字单位，但并非每条业务区块链都有可交易代币。
+- **这段改变了什么**：把账本、区块链与代币分开，避免把‘使用区块链’误写成‘必须发行币’。
 
 **💡 换个说法（笔记补充）**
 
@@ -429,11 +571,35 @@ BTC 是 Bitcoin 的交易代码。p.13 写 Satoshi Nakamoto 发布设计和开�
 
 **是什么**
 
-应收账款（Receivable）是买家尚欠卖家的货款。营运资金缺口是日常经营需要付款时，现金回收尚未跟上的缺口。应收账款融资让银行依据这笔待收款先提供现金。
+应收账款（Receivable）是买家尚欠卖家的货款。
+
+营运资金缺口（Working-capital gap）是日常经营需要付款时，现金回收尚未跟上的缺口。应收账款融资（Receivables financing）让银行依据这笔待收款先提供现金。
 
 **为什么需要它**
 
 出口商可先付经营支出，银行以后依靠买家付款等偿还来源收回贷款。银行仍要核实货物、单据、融资记录和还款风险。
+
+**英文原题（讲义 p.18）**
+
+> An exporter presents the same RMB 1m receivable to two banks.
+>
+>
+> Bank A’s record: Already advanced RMB 600,000 against this receivable.
+>
+> Bank B’s decision: Receives a new request for RMB 600,000 against the same receivable.
+>
+>
+> Suppose total financing may not exceed 80% of the receivable. What does Bank B need to know before lending?
+>
+>
+> A shared record can reveal prior financing only if the participating banks report it.
+>
+> Hypothetical financing example. The 80% aggregate limit is a teaching assumption.
+>
+
+**中文题意与读题条件**
+
+同一笔应收款为人民币 100 万元，A 已贷 60 万元，B 又收到 60 万元申请。`total financing` 是所有银行的融资合计，`may not exceed` 是不能超过；80% 是教学假设，不能把它当成 B 可再贷 80%。`only if` 提醒记录完整依赖参与银行报送。
 
 **课件原例与 p.18 原题**
 
@@ -457,9 +623,15 @@ flowchart LR
 
 文字替代：贷款桥接了“现在付钱”和“以后收钱”，没有消除未来不付款的可能。
 
-**🎙️ 课堂补充**
+**英文参考答案（笔记自拟；非官方答案）**
 
-待转录补充。
+Bank B must identify the same receivable and the outstanding financing already linked to it, and check that reporting is complete and current. The aggregate limit is RMB 800,000, so only RMB 200,000 remains after Bank A’s RMB 600,000 advance. Document verification and repayment assessment are still required.
+
+**🎙️ 课堂补充**（P1 `51:52`–`57:37`，A · 课上展开）
+
+- P1 `51:52`–`53:22`：出口商今天发货、60 天后收款，仍要先付供应商；交付争议会把实际收款拖得更久。
+- P1 `53:55`–`55:29`：同一 100 万元应收款已向 Bank A 融资 60 万元时，Bank B 必须知道既有融资，不能只看出口商再次提交的文件。
+- **这段改变了什么**：课堂把资金缺口与重复融资风险接起来；共享记录只补信息，不能保证买方付款。
 
 **💡 换个说法（笔记补充）**
 
@@ -487,7 +659,9 @@ flowchart LR
 
 **为什么需要它**
 
-不同场景对开放核验、隐私和纠错责任的要求不同。选择网络时，读权限、写权限和治理权限都要分别问。
+不同场景对开放核验、隐私和纠错责任的要求不同。选择网络时，读权限（Read access）、写权限（Write access）要分别问。
+
+治理（Governance）还要说明谁定规则、谁负责纠错。
 
 **课件原例**
 
@@ -501,9 +675,11 @@ flowchart LR
 
 读第一行：开放参与仍须满足协议规则。三列分别给判断维度及两类典型安排，没有数量单位。具体网络须另查实际权限。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（P1 `57:37`–`01:00:47`，A · 课上展开）
 
-待转录补充。
+- P1 `57:37`–`58:54`：银行联盟属于许可网络，只有获批机构能查贸易融资记录，公众和普通朋友无权查看借款人的银行债务。
+- P1 `59:00`–`01:00:47`：公共网络按协议规则开放验证；公开可查不等于任何人能改记录，也不等于跨国银行能读取彼此受限数据。
+- **这段改变了什么**：把‘共享’限定为有权限、有治理的共享，避免把共享账本写成全球公开数据库。
 
 **💡 换个说法（笔记补充）**
 
@@ -589,9 +765,11 @@ flowchart TD
 
 再次对第一串相同字节计算，摘要相同，验证的是确定性。本轮 `clarity-calculate.py` 另核上表的玩具映射与碰撞；两类实验没有混用。空格或编码也会改变字节，实际业务须明确比较对象。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（P1 `01:00:56`–`01:02:36`，A · 课上展开）
 
-待转录补充。碰撞映射和证据边界是笔记补充，不冒充讲义上的计算或课堂原话。
+- P1 `01:01:14`–`01:02:23`：课堂沿四格图讲发票从 10,000 改成 90,000 后摘要由 A 变 B，和可信基线不匹配。
+- 教授把哈希口语类比成指纹和密码（P1 `01:00:56`–`01:02:36`）；这个类比只解释改动检测，不表示哈希能证明发票真实。
+- **这段改变了什么**：确认‘重新计算并比较’的动作，同时保留正文的碰撞与可信基线边界。
 
 **💡 换个说法（笔记补充）**
 
@@ -625,6 +803,30 @@ Alice 同意付 Bob 1 枚代币。别人把指令改成 10 枚后，Bob 应怎�
 
 付款系统需要同时检查：这条指令得到相应密钥授权吗？传来的内容还是签署时那份吗？实际签名算法完成这些检查，而不要求把私钥交给收款方。
 
+**英文原练习与给定步骤（讲义 p.22）**
+
+> A Signature Exercise without Code
+>
+>
+> Message A: “Alice pays Bob 1 token.”
+>
+> Message B: “Alice pays Bob 10 tokens.”
+>
+>
+> 1. Alice signs the hash of Message A with her private key.
+>
+> 2. Bob verifies it with Alice’s public key.
+>
+> 3. Changing 1 to 10 changes the hash, so the old signature fails.
+>
+>
+> The signature proves authorization and message integrity. It does not prove that Alice has enough funds.
+>
+
+**中文题意与读题条件**
+
+这是讲义给出的签名演示，不是另编的一道教授问句。跟踪原消息、私钥签名、公钥验证，以及改成 10 后旧签名失效。`does not prove` 限定了签名的证明范围：资金是否足够仍要另查。
+
 **课件原例：无代码签名练习**
 
 讲义 p.22 的全过程如下，数字 1 和 10 是不同的付款金额。
@@ -636,13 +838,19 @@ Alice 同意付 Bob 1 枚代币。别人把指令改成 10 枚后，Bob 应怎�
 
 这里只追踪签名的输入输出，没有伪造课件未提供的签名字节。签署输入是具体消息与私钥。验证输入是消息、公钥和签名，输出是通过或失败。
 
-**🎙️ 课堂补充**
+**英文参考答案（笔记自拟；非官方答案）**
 
-待转录补充。
+Alice signs the hash of Message A, and Bob verifies the signature with her public key. In this exercise, changing the amount from 1 to 10 changes the hash, so the original signature does not verify for Message B. A valid signature establishes authorization by the key and message integrity, not available funds.
+
+**🎙️ 课堂补充**（P1 `01:03:01`–`01:05:56`，A · 课上展开）
+
+- P1 `01:03:01`–`01:03:47`：私钥留在持有人处，公钥供他人验证；签名把特定指令与密钥联系起来，但不建立持有人的法律身份。
+- P1 `01:04:43`–`01:05:56`：把‘1 token’改成‘10 tokens’会改变消息摘要，使旧签名验证失败；签名仍不能证明 Alice 有足够余额。
+- **这段改变了什么**：确认授权、完整性、身份与资金充足是四个不同判断。
 
 **💡 换个说法（笔记补充）**
 
-一份真实签过名的支票，账户也可能没钱。签名检查解决授权与消息完整性，余额检查解决能否支付。
+一份真实签过名的支票，账户也可能没钱。签名检查解决授权（Authorization）与消息完整性（Message integrity），余额检查解决能否支付。
 
 **⚠️ 常见误解**
 
@@ -693,9 +901,11 @@ flowchart TD
 
 文字替代：先核权限与资金，再对历史达成一致，最后按接受的历史更新可花状态。具体比特币还包含找零和手续费，本例为隔离“双花”难点而省略。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（P1 `01:06:06`–`01:07:43`；p.25 为 D · 未录到）
 
-待转录补充。
+- P1 `01:06:06`–`01:07:43`：钱包提交付款指令后，网络还要检查授权与可用资金；收款人等到所需确认后才把付款视为结算。
+- P1 在 p.24 结束，P2 `00:00` 已从 p.27 风险中段开始；四源没有可定位的 p.25 双花讲解。**不可降权**，p.25 仍按讲义与正文学习。
+- **这段改变了什么**：课堂确认提交、验资、入块和确认的顺序；双花机制没有课堂证据，不能写成教授略过。
 
 **💡 换个说法（笔记补充）**
 
@@ -855,9 +1065,11 @@ PoW 算力集中会削弱抵抗历史重写的能力；PoS 有效票权不足可
 
 🔗 机制补充依据：[Bitcoin 白皮书 §4–6](https://bitcoin.org/bitcoin.pdf)、[Ethereum 官方 PoS 与 PoW 对照](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/pos-vs-pow/)（获取日期：2026-10-15）。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（P1 `01:07:43`–`01:09:34`；p.26 为 D · 未录到）
 
-待转录补充。
+- P1 `01:07:43`–`01:09:07`：课堂用连续编号说明更改早期记录会破坏后续引用，并预告共识／挖矿稍后再讲。
+- 教授在 P1 `01:08:10`–`01:09:07` 把‘每笔交易加一个区块’及密钥／哈希混在一起；正文按讲义保留严谨分工：区块可容多笔交易，哈希、密钥与签名不同。
+- P1 在预告 p.26 后休息，P2 又从 p.27 中段开始；p.26 的 PoW／PoS 课堂讲解未被四源捕获，**不可降权**。
 
 **💡 换个说法（笔记补充）**
 
@@ -882,7 +1094,7 @@ PoW 算力集中会削弱抵抗历史重写的能力；PoS 有效票权不足可
 
 **是什么**
 
-确认（Confirmation）表示付款已被纳入接受的区块，并有后续有效块接续。重组风险是网络改为接受另一条有效历史，导致原来那笔付款的位置或状态改变。
+确认（Confirmation）表示付款已被纳入接受的区块，并有后续有效块接续。重组风险（Reorganization risk）是网络改为接受另一条有效历史，导致原来那笔付款的位置或状态改变。
 
 **为什么需要它**
 
@@ -894,9 +1106,12 @@ p.27 从“付款入块”到“另一个有效块”再到“更多块”。箭
 
 💡 笔记补充走例：Bob 看见付款在块 100，随后接受 101、102，则付款获得更多后续支撑。若 100 被包含冲突交易的替代历史取代，Bob 必须重查付款。等待的目的就是降低此类风险。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（P2 `00:00`–`01:29`，D/A · 缺头后续讲）
 
-待转录补充。
+- P2 `00:00` 已在总结确认之外的汇率与托管风险，说明 p.27 前半不在本源；P1 又停在 p.24，因此缺失区间未知，**不能标略过**。
+- P2 `00:00`–`01:29`：等待确认不会消除 Bitcoin 价格波动、钱包／交易所托管与机构破产风险。
+- 课堂对三地存款保障上限的口述含旧值与不确定；现行官方数额及适用单位见 §9.3，不能把银行存款保障套到 crypto 钱包或交易所。
+- **这段改变了什么**：课堂支持正文‘确认只降低重组风险’的边界，但没有完整录到确认页的开头。
 
 **💡 换个说法（笔记补充）**
 
@@ -920,11 +1135,20 @@ p.27 从“付款入块”到“另一个有效块”再到“更多块”。箭
 
 **是什么**
 
-托管（Custody）关注谁掌握资产的实际支配能力，以及怎样保管和使用密钥。访问控制规定谁可审批、谁可变更权限。两项权限都影响资产安全。
+托管（Custody）关注谁掌握资产的实际支配能力，以及怎样保管和使用密钥。访问控制（Access control）规定谁可审批、谁可变更权限。两项权限都影响资产安全。
 
 **为什么需要它**
 
 签名验证程序可以完全正常，却执行被盗密钥签出的付款，或员工被骗批准的危险变更。技术上有效的授权不代表业务上应当批准。
+
+**英文原题（讲义 p.28）**
+
+> Who can approve a transfer, and what exactly are they approving?
+>
+
+**中文题意与读题条件**
+
+必须同时检查谁有批准权，以及本次批准实际授权了什么。人数足够但凭据不独立，或员工误认批准内容，都可能出问题。下文 Bybit 与 Ronin 是讲义给出的两种失败例。
 
 **课件原例**
 
@@ -933,6 +1157,34 @@ p.28 列 Bybit 2025-02 事件，估算损失 14.6 亿美元：欺骗界面诱使
 同页列 Ronin Bridge 2022-03 事件，约 6.2 亿美元：攻击者控制九把授权密钥中的五把，达到批准提现门槛。控制教训是批准凭据及控制权要有实质独立性。
 
 这些是讲义所引历史事件的当日估值，不是本次重新计算的币价损失，也不表示区块链所有机制被攻破。未在本讲复原完整攻击取证链。
+
+**英文原题（讲义 p.29）**
+
+> A US asset manager requires two employees to approve a crypto transfer, but both approval accounts share one administrator password.
+>
+>
+> Which change most directly improves control over unauthorized transfers?
+>
+>
+> A) Increase the number of approvers using the same administrator account.
+>
+> B) Separate approval credentials and restrict who can change access permissions.
+>
+> C) Move the assets to a blockchain with lower transaction fees.
+>
+> D) Produce a more detailed monthly report after transfers have occurred.
+>
+
+**中文题意与读题条件**
+
+美国资产管理公司要求两名员工批准加密资产转账，但两人的批准账户共用一个管理员密码。问哪项改变最直接改善对未授权转账的控制。`most directly` 要找切断当前危险路径的措施。
+
+**选项中文对照**
+
+- A：在同一管理员账户下增加批准人数。
+- B：分离批准凭据，并限制谁能修改访问权限。
+- C：转移到手续费更低的区块链。
+- D：转账发生后编制更详细的月报。
 
 **原题 p.29：选哪项改善控制？**
 
@@ -944,9 +1196,16 @@ p.28 列 Bybit 2025-02 事件，估算损失 14.6 亿美元：欺骗界面诱使
 
 若改条件为“两把独立密钥已安全，但批准界面被篡改”，仅分离密钥还不够，须独立确认收款地址、金额和授权操作内容。这对应 Bybit 的教训。
 
-**🎙️ 课堂补充**
+**英文参考答案（笔记自拟；非官方答案）**
 
-待转录补充。没有课堂或官方答案确认，B 的地位是有讲义依据的参考作答。
+For the slide 28 question, examine both approval authority and the actual instruction being approved. For slide 29, choose B. Separate approval credentials and restrict access-permission changes to reduce common administrative control. A retains the shared point of failure; C changes fees; D is a retrospective reporting measure.
+
+**🎙️ 课堂补充**（P2 `01:29`–`05:32`，A · 课上展开）
+
+- P2 `01:29`–`02:54`：Bybit 与 Ronin 的共同教训是独立核查批准内容，并让批准凭据与控制权相互独立。
+- P2 `03:26`–`04:43`：课堂做 p.29 选择题，学生答 B，教师确认；增加共用管理员账户的批准人数仍保留同一控制点。
+- P2 `03:04`–`03:12`：*"you will see in final exam, this is the question you will see"*；教授建议用 AI 生成同型练习。
+- **这段改变了什么**：B 从笔记推断升级为课堂确认，且题型获明确考试信号。
 
 **💡 换个说法（笔记补充）**
 
@@ -974,7 +1233,7 @@ p.28 列 Bybit 2025-02 事件，估算损失 14.6 亿美元：欺骗界面诱使
 
 **为什么需要它**
 
-多家独立机构各自维护同一事实，记录不一致会导致反复核对。若它们能约定访问、更新和纠错责任，共享账本才可能节省协调工作。
+多家独立机构各自维护同一事实，记录不一致会导致反复核对。对账（Reconciliation）就是比较记录、查清并处理这些差异。若它们能约定访问、更新和纠错责任，共享账本才可能节省协调工作。
 
 **课件原例与判断顺序**
 
@@ -995,6 +1254,34 @@ flowchart TD
 
 文字替代：多方、有真实协调成本且能共同治理，才是值得比较的候选。进入试点还不等于采用成功。
 
+**英文原题（讲义 p.32）**
+
+> A Chinese exporter submits an invoice recorded on a shared blockchain platform. A bank is considering a loan against the unpaid invoice.
+>
+>
+> Which check is most important before the bank lends?
+>
+>
+> A) Confirm only that the uploaded file has remained unchanged.
+>
+> B) Use the platform’s user count as evidence of the exporter’s credit quality.
+>
+> C) Accept the invoice because all participating banks use the same software.
+>
+> D) Verify the trade documents and check financing already linked to the receivable.
+>
+
+**中文题意与读题条件**
+
+中国出口商提交一张已记在共享区块链平台上的未收款发票，银行拟据此贷款。问放贷前哪项检查最重要。`only` 把 A 限定为只查文件未变；`already linked` 要查这笔应收款已有的融资。
+
+**选项中文对照**
+
+- A：只确认上传文件未发生变化。
+- B：用平台用户数证明出口商信用质量。
+- C：因为参与银行使用同一软件就接受发票。
+- D：核实贸易单据，并查询该应收款已有的融资。
+
 **原题 p.32：出口融资检查**
 
 ⚪ 参考作答（笔记推断）：选 D，验证贸易单据，并检查应收款已关联的融资。
@@ -1006,6 +1293,34 @@ flowchart TD
 
 改条件：若单据真实但买家濒临破产，D 仍不是足够的完整放贷审查，还要评估偿付能力。
 
+**英文原题（讲义 p.33）**
+
+> Several US banks consider a shared ledger to replace separate records of the same interbank payments. The payment contracts and funding arrangements stay unchanged.
+>
+>
+> Which benefit should they expect from consistent shared records?
+>
+>
+> A) Each bank needs less funding because payment obligations disappear.
+>
+> B) Counterparty default losses become the platform operator’s responsibility.
+>
+> C) Staff spend less time comparing inconsistent records and resolving discrepancies.
+>
+> D) Every customer payment becomes an insured bank deposit.
+>
+
+**中文题意与读题条件**
+
+美国多家银行准备用共享账本替代同一批银行间付款的分散记录。付款合同与资金安排保持不变，问一致记录能带来什么好处。`stay unchanged` 排除了题目未给出的资金、责任或存款属性变化。
+
+**选项中文对照**
+
+- A：付款义务消失，所以各银行所需资金减少。
+- B：交易对手违约损失转由平台运营者承担。
+- C：员工花更少时间比较不一致记录并处理差异。
+- D：每笔客户付款都成为受保险保障的银行存款。
+
 **原题 p.33：美国银行共享付款账本**
 
 ⚪ 参考作答（笔记推断）：选 C，减少比较不一致记录及解决差异的人工时间。题面明确合同与资金安排不变，因此预期改善发生在协调成本。
@@ -1016,9 +1331,17 @@ flowchart TD
 
 换成“新增了融资净额结算安排”的题面，资金需求可能另受影响。本题没有这个条件，不能自行补上。
 
-**🎙️ 课堂补充**
+**英文参考答案（笔记自拟；非官方答案）**
 
-待转录补充。
+Slide 32: Choose D. Verify the trade documents and check financing already linked to the same receivable. An unchanged file, platform scale or common software does not establish the underlying trade or remaining financing capacity.
+
+Slide 33: Choose C. Consistent shared records reduce reconciliation work. Because contracts and funding arrangements are unchanged, the ledger alone does not remove payment obligations, transfer default losses or create deposit-insurance coverage.
+
+**🎙️ 课堂补充**（P2 `05:32`–`11:50`，A · 课上展开）
+
+- P2 `05:58`–`08:22`：多机构记录不一致会产生对账延迟；只有各方能约定访问、更新与纠错责任时共享账本才有用。若一个可信组织控制全流程，普通数据库更简单。
+- P2 `08:30`–`11:18`：课堂继续做 p.32／p.33 两题并讨论错误选项；自动语音识别（Automatic Speech Recognition，ASR）没有可靠保留学生的选项字母，所以 D／C 仍按讲义逻辑作参考答案，不伪称口头字母确认。
+- P2 `09:45`–`10:05`：教授说不会刻意提高选择题难度，课堂目的之一是区分是否到课；这不构成具体分数保证。
 
 **💡 换个说法（笔记补充）**
 
@@ -1038,11 +1361,11 @@ flowchart TD
 
 ### 2.17 SAFE 与重复融资（讲义 p.35–37）
 
-银行 B 担心同一笔应收款已被其他银行贷过。共享记录能让它在放款前看见既有融资，但须由参与行及时写入。
+银行 B 担心同一笔应收款已被其他银行贷过。本例的重复融资（Duplicate financing）是同一应收款被再次用于融资，需要合并已有融资检查上限。共享记录能让它在放款前看见既有融资，但须由参与行及时写入。
 
 **是什么**
 
-国家外汇管理局（SAFE）的跨境金融服务平台支持出口单据核验与既有融资查询。授信是银行决定愿意承担多少贷款风险。平台提供证据，银行仍决定是否放贷。
+国家外汇管理局（SAFE）的跨境金融服务平台支持出口单据核验与既有融资查询。授信决策（Credit decision）是银行决定愿意承担多少贷款风险。平台提供证据，银行仍决定是否放贷。
 
 **为什么需要它**
 
@@ -1082,9 +1405,11 @@ flowchart TD
 
 原图横轴比较 B 贷 60 万与贷 20 万，纵轴为人民币百万元。堆叠柱底部是 A 的 0.6，上部是 B 的新增量。虚线是 0.8。第二根柱刚好碰上限，第一根超过。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（P2 `11:50`–`16:44`，A · 课上展开）
 
-待转录补充。
+- P2 `12:28`–`15:25`：SAFE 平台把海关单据、外汇收付与参与银行的贷款／还款记录连起来；银行仍自行作信用决策。
+- P2 `15:48`–`16:17`：在 100 万元应收款、80% 教学上限和 Bank A 已贷 60 万元的设定下，Bank B 剩余额度为 20 万元。
+- **这段改变了什么**：确认 p.37 的计算，同时强调 80% 是本例假设，平台不能消除买方不付款风险。
 
 **💡 换个说法（笔记补充）**
 
@@ -1109,7 +1434,9 @@ flowchart TD
 
 **是什么**
 
-利息是借用资金的价格。本例用单利：本金乘年利率，再乘占一年的时间比例。360 天是题面指定计息基础。
+利息（Interest）是借用资金的价格。本例用单利（Simple interest），计息期间不把已产生利息并回本金。
+
+本金（Principal）是原始借款额，年利率（Annual interest rate）是借用一年资金的约定利息比例。将本金乘年利率，再乘占一年的时间比例，就得到本期利息。360 天是题面指定计息基础。
 
 **为什么需要它**
 
@@ -1138,9 +1465,11 @@ $$I=P\times r\times\frac{d}{B}$$
 3. 利息为 $36{,}000\times60/360=6{,}000$ 元。
 4. 若到期一次还本付息，应付 606,000 元。本金归还不算借款费用。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（P2 `16:44`–`18:03`，B · 讲了同讲义）
 
-待转录补充。
+- P2 `16:44`–`17:13`：教授按 60 万元、60 天、年利率 6%、360 天基础复述利息 6,000 元。
+- P2 `17:13`–`17:31`：更快核验能让贷款更早可用，但借款额、利率和融资期间仍决定利息账单。
+- **这段改变了什么**：课堂确认计算口径，没有把更快审批误写成更低利率。
 
 **💡 换个说法（笔记补充）**
 
@@ -1160,7 +1489,7 @@ $$I=P\times r\times\frac{d}{B}$$
 
 ### 2.19 发票报销为什么要更新状态（讲义 p.39–40）
 
-两名员工交来同一个发票编号，发票文件都是真的且未变。公司仍可能因为不知道它已经报销，而付两遍钱。
+两名员工交来同一个发票编号，发票文件都是真的且未变。公司仍可能因为不知道它已经报销，而发生重复付款（Duplicate payment），即同一合法费用被支付两次。
 
 **是什么**
 
@@ -1181,9 +1510,11 @@ p.40 的 SZ-1048 金额人民币 800 元。Employee A 已报销，Employee B 再
 3. 标记第二笔重复，不自动再次付款。
 4. 由审核者查原因，并保持后续状态一致。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（P3 `03:02`–`07:09`，A · 课上展开）
 
-待转录补充。
+- P3 `03:08`–`05:29`：深圳电子发票把开票与报销状态相连；共同发票编号和最新状态可发现同一凭证再次报销。
+- P3 `05:35`–`07:02`：Employee A 已报销 RMB 800，Employee B 再用同一 ID 申请时会被标记；课堂强调中国应用重心是共享历史与不可无痕修改，而非代币。
+- **这段改变了什么**：补出‘哈希相同’仍不够，业务状态必须从已报销更新到再次提交。
 
 **💡 换个说法（笔记补充）**
 
@@ -1207,7 +1538,7 @@ p.40 的 SZ-1048 金额人民币 800 元。Employee A 已报销，Employee B 再
 
 **是什么**
 
-电子存证把文件或其可核摘要与时间记录关联，后来重新核验。p.41 展示原文件→带日期记录→后续核验。
+电子存证（Electronic evidence preservation）把文件或其可核摘要与时间记录关联，后来重新核验。p.41 展示原文件→带日期记录→后续核验。
 
 **为什么需要它**
 
@@ -1219,9 +1550,11 @@ p.40 的 SZ-1048 金额人民币 800 元。Employee A 已报销，Employee B 再
 
 最小必要法律边界来自 🔗 [最高人民法院对《人民法院在线诉讼规则》的解释](https://www.court.gov.cn/zixun/xiangqing/309561.html)（获取日期：2026-10-15）。技术核验一致可支持上链后未篡改的认定，存在足够相反证据时可推翻。这不直接确认上链前的内容真实。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（P3 `07:09`–`12:35`，A · 课上展开）
 
-待转录补充。
+- P3 `07:09`–`08:31`：课堂把司法存证解释为原件、带日期登记与后续核验；它帮助发现登记后的改动，不替法院判断来源和相关性。
+- P3 `10:44`–`11:27`：教授扩展到学历核验，但同时承认机构是否参与和系统成本会限制采用；这是课堂建议，不是已部署事实。
+- **这段改变了什么**：补出存证应用的参加者与成本条件，保留正文‘未改过不等于内容真实’。
 
 **💡 换个说法（笔记补充）**
 
@@ -1245,7 +1578,7 @@ p.40 的 SZ-1048 金额人民币 800 元。Employee A 已报销，Employee B 再
 
 **是什么**
 
-LLM 信息提取把非结构化文本变成可检查字段。共享账本随后记录通过审核的融资状态。模型提取与银行批准是不同步骤。
+大语言模型（Large language model，LLM）能把非结构化文本提取成可检查字段。共享账本随后记录通过审核的融资状态。模型提取与银行批准是不同步骤。
 
 **为什么需要它**
 
@@ -1253,7 +1586,7 @@ LLM 信息提取把非结构化文本变成可检查字段。共享账本随后�
 
 **课件原例**
 
-下面每行是发票的一项字段，示例与检查要求来自 p.42。
+结构化提取（Structured extraction）把文件内容整理成指定字段，输出仍须回源核对。下面每行是发票的一项字段，示例与检查要求来自 p.42。
 
 | 字段 | 提取示例 | 银行核对什么 |
 |---|---|---|
@@ -1265,9 +1598,11 @@ LLM 信息提取把非结构化文本变成可检查字段。共享账本随后�
 
 完整输入输出链是：原发票→提取三字段→逐项对原件与合同→银行决定→账本记融资。若期限无法唯一解释，先退回人工，不把缺字段当作零天。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（P3 `12:35`–`13:27`，A · 课上观点）
 
-待转录补充。此页为示意应用，没有本课真实部署、准确率或节约工时结果。
+- P3 `12:35`–`13:20`：教授认为 LLM 能把大量纸面文件字段转成可处理数据，因此现在比十年前更适合落地区块链业务应用。
+- 这是一项课堂判断，不是部署成效：转录没有准确率、人工复核率、节省工时或真实客户结果。
+- **这段改变了什么**：支持正文‘LLM 负责提取、银行负责核证、账本负责记录’的分工，并保留输出仍须核对。
 
 **💡 换个说法（笔记补充）**
 
@@ -1297,6 +1632,22 @@ LLM 信息提取把非结构化文本变成可检查字段。共享账本随后�
 
 若只答“区块链提高透明度”，无法说明究竟看到了什么，也无法检查效果。
 
+**英文原题（讲义 p.46）**
+
+> A bank in China uses a shared platform to verify export documents and check previous financing. Loan officers still decide whether to lend.
+>
+>
+> 1. Explain how the platform could reduce duplicate financing.
+>
+> 2. Identify one reason a verified export receivable might still go unpaid.
+>
+> 3. Name one measure the bank could compare before and after adoption.
+>
+
+**中文题意与读题条件**
+
+三问分别要求解释一个机制、指出一个剩余不付款原因、给出一个前后比较指标。`Loan officers still decide` 明确最终授信由人决定；`verified` 只表示已核验，不能推出必然付款。
+
 **课件原题逐问作答**
 
 1. 怎样减少重复融资？平台把同一应收款的单据标识与已发生、未偿还融资连接起来。银行在新贷前查这些记录，避免把已使用额度再次当作可贷空间。前提是参与行及时完整报送。
@@ -1309,9 +1660,11 @@ LLM 信息提取把非结构化文本变成可检查字段。共享账本随后�
 2. A buyer may dispute delivery and delay payment even when the documents have been verified.
 3. Compare manual handling minutes per comparable application before and after adoption, using the same measurement rules.
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（P3 `18:36`–`19:22`，A/D · 题型明示但讲评截断）
 
-待转录补充。英文为笔记自拟答题表述，不是教授原话。
+- P3 `18:36`–`18:48`：*"in the exam, you will also see some short answer question"*；教授说短答期望不超过三行。
+- P3 `18:52`–`19:22` 开始复述 p.46，确认共享平台通过既有融资记录减少重复融资，并说买方不付款可使已核验应收款仍未收回；录音在该句中截断。
+- **这段改变了什么**：题型和篇幅获课堂明示；第三问的指标没有录到课堂答案，仍使用讲义与笔记参考作答，不能冒充完整官方解答。
 
 **💡 换个说法（笔记补充）**
 
@@ -1335,7 +1688,7 @@ LLM 信息提取把非结构化文本变成可检查字段。共享账本随后�
 
 **是什么**
 
-企业资金管理（Treasury）安排各账户的现金、支付与流动性。Kinexys Digital Payments 使用区块链存款账户，在其支持网络内做接近实时的转账。这里转移的是银行货币，不是凭空创造现金。
+企业资金管理（Treasury）安排各账户的现金与支付。流动性（Liquidity）在这里指需要付款时有可用现金。Kinexys Digital Payments 使用区块链存款账户，在其支持网络内做接近实时的转账。这里转移的是银行货币，不是凭空创造现金。
 
 **为什么需要它**
 
@@ -1366,10 +1719,10 @@ flowchart TD
 
 **课件原例：p.45 价值计算**
 
-闲置现金从平均 200 万降到 120 万美元，减少 80 万。4% 是假定替代年回报，意思是释放的现金若用于其他用途可获得的回报率。
+闲置现金（Idle cash）从平均 200 万降到 120 万美元，减少 80 万。4% 是假定替代年回报，意思是释放的现金若用于其他用途可获得的回报率。
 
 1. 释放金额：$2{,}000{,}000-1{,}200{,}000=800{,}000$ 美元。
-2. 年机会成本节省：$800{,}000\times0.04=32{,}000$ 美元/年。
+2. 年机会成本（Opportunity cost）节省：$800{,}000\times0.04=32{,}000$ 美元/年。
 3. 年费和实施成本按同一期间口径比较，应低于这项收益才可能值得采用。
 
 ![[EF5560_Fintech_and_AI_in_Finance/notes/figures/m06/idle-cash.svg]]
@@ -1378,9 +1731,11 @@ flowchart TD
 
 p.45 图横轴是采用前后，纵轴是闲置美元百万元，两柱为 2 与 1.2。0.8 是释放资金量，32,000 是按年计算的收益，不能把两者相加当利润。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（P3 `13:27`–`18:36`，A · 课上展开）
 
-待转录补充。节省是假设决策，不是公司报告的客户成效。
+- P3 `13:27`–`16:58`：跨时区子公司可按最低余额规则触发资金调拨；示例在余额降至 70 万美元时补 30 万美元，减少反复人工指令。
+- P3 `17:50`–`18:28`：课堂用闲置现金从 200 万降至 120 万解释机会成本，但 P3 `18:16` 口述 42,000 与讲义计算 32,000 美元冲突；正文继续按 p.45 的 $0.8m\times4\%=32,000$。
+- **这段改变了什么**：补出可编程支付的触发规则，并把课堂数字口误显式隔离。
 
 **💡 换个说法（笔记补充）**
 
@@ -1405,7 +1760,7 @@ p.45 图横轴是采用前后，纵轴是闲置美元百万元，两柱为 2 与
 
 **是什么**
 
-回购（Repo）是以证券支持的短期融资安排，并约定稍后反向交易。借款方取得现金，同时提供证券。到期归还现金及约定利息，证券返回。日内回购在同一天完成这条往返。
+回购（Repo）是以证券支持的短期融资安排，并约定稍后反向交易。借款方取得现金，同时提供证券。到期归还现金及约定利息，证券返回。日内回购（Intraday repo）在同一天完成这条往返。
 
 **为什么需要它**
 
@@ -1429,11 +1784,32 @@ sequenceDiagram
 
 走图：10 点交易商拿到现金，证券处于约定安排中。16 点归还现金和利息，证券释放。若交易商不还款，就不能沿正常路径自动当作结清，需要违约处置。本图省略具体合同处置细节。
 
-文字替代：借现金与交证券是一组相配动作，归还现金与释放证券是反向的一组。共享记录协调状态，信用与抵押品风险仍须管理。
+文字替代：借现金与交证券是一组相配动作，归还现金与释放证券是反向的一组。共享记录协调状态，信用与抵押品（Collateral，即用来支持融资的资产）风险仍须管理。
 
 **真实规模**
 
 🔗 [Broadridge 2026-05-04 公告](https://www.broadridge.com/press-release/2026/broadridges-distributed-ledger-repo-achieves-268-percent-year-over-year-growth-in-april)确认 2026-04 日均回购交易量为 3,680 亿美元（获取日期：2026-10-15）。这是处理规模，不是公司收入，也不是 1,200 万教学交易的实际观测。
+
+**英文原题、图中数据与给定结果（讲义 p.49）**
+
+> Broadridge Case: Would a Bank Pay for DLR?
+>
+>
+> Hypothetical DLR adoption decision: \$300,000 setup cost.
+>
+> Annual savings: \$180,000. Annual running cost: \$60,000.
+>
+> $\text{Net annual saving}=180{,}000-60{,}000=120{,}000\text{ US dollars}$
+>
+> $\text{Simple payback}=300{,}000/120{,}000=2.5\text{ years}$
+>
+>
+> Teaching assumptions, not a Broadridge quote or client result. Integration costs and enough participating counterparties determine adoption. Excludes discounting and taxes.
+>
+
+**中文题意与读题条件**
+
+题面标题问银行是否愿采用 DLR。输入、公式和 2.5 年结果均为讲义给定；这里把图中英文标签与数值转成文字，版式不同，数值未改。先扣运行费，再算回收期；未考虑折现和税，也未给银行的最低回报要求，不能唯一断言一定采用。
 
 **课件原例：p.49 是否愿付钱**
 
@@ -1451,9 +1827,11 @@ sequenceDiagram
 
 p.49 图横轴为年节省与年运行费，纵轴为美元千元。180 与 60 的差为 120，先转成一致单位，再计算回收期。
 
-**🎙️ 课堂补充**
+**英文参考答案（笔记自拟；非官方答案）**
 
-待转录补充。
+Under the teaching assumptions, net annual savings are US\$120,000 and simple payback is 2.5 years. Adoption remains conditional on sustained savings, integration costs and sufficient counterparties. The slide does not specify the bank’s acceptance threshold, and excludes discounting and taxes.
+
+**🎙️ 课堂补充**：❓ **四源没有可定位的 p.47–49 DLR 讲解。** P3 `19:22` 在 p.46 第二问中截断，P4 `00:00` 已在后续 Futu 商业讨论中段；两源之间缺口时长未知。**不可降权**，本节仍按讲义与既有复算学习，不能把缺录写成课上略过。
 
 **💡 换个说法（笔记补充）**
 
@@ -1478,11 +1856,33 @@ p.49 图横轴为年节省与年运行费，纵轴为美元千元。180 与 60 �
 
 **是什么**
 
-网络采用关心参与者如何相互创造价值。共享系统的价值往往依赖别人也接入。每家却要自己承担接入成本。效果评估再检查采用后究竟改善了哪一种结果。
+网络采用（Network adoption）关心参与者如何相互创造价值。共享系统的价值往往依赖别人也接入。每家却要自己承担接入成本。效果评估（Impact evaluation）再检查采用后究竟改善了哪一种结果。
 
 **为什么需要它**
 
 技术可用、商业可持续、因果效果是三个不同判断。用户数、成交量和采用前后差异都提供证据，但各有范围。
+
+**英文原题（讲义 p.50）**
+
+> TradeLens: Would Your Company Join?
+>
+>
+> Maersk and IBM launched TradeLens in 2018 to share shipping information across organizations.
+>
+>
+> • Carrier: better shipment visibility, but who can access commercially sensitive records?
+>
+> • Port or freight forwarder: less repeated paperwork, but who pays for system integration?
+>
+> • Cargo owner: more complete tracking, but which carriers and ports actually contribute data?
+>
+>
+> Choose one participant and state a condition for joining.
+>
+
+**中文题意与读题条件**
+
+选择承运人、港口／货代或货主中的一种角色，给出加入条件。`one participant` 允许只选一种；`actually contribute data` 强调相关伙伴必须实际提供数据，不能只注册。角色提示也全部保留，便于换角度练习。
 
 **课件原例：TradeLens 与原题 p.50**
 
@@ -1510,13 +1910,13 @@ Maersk 与 IBM 于 2018 年推出 TradeLens，共享航运信息。题目要求�
 
 读第一行：一份申请平均处理时间少 15 分钟，按原来 40 分钟为分母，降幅 37.5%。第二行少 8 个百分点。第三行升 0.1 个百分点。
 
-第一列是测量问题，后两列是两个时期结果。一年违约率须保持同样观察期和纳入定义。讲义未给样本数，不能算统计显著性。统计显著性检验判断观察差异是否足以反驳指定假设，需要样本量、波动与检验设定。它也没有提供可比对照组，不能断言技术造成了全部变化。
+第一列是测量问题，后两列是两个时期结果。一年违约率须保持同样观察期和纳入定义。讲义未给样本数，不能算统计显著性（Statistical significance）。统计显著性检验判断观察差异是否足以反驳指定假设，需要样本量、波动与检验设定。它也没有提供可比对照组，不能断言技术造成了全部变化。
 
 这一表支持本例处理指标改善，不能证明信用风险下降。申请难易程度、同期人员变化或其他政策都可能影响前后差异，实际评估应控制这些变化。
 
 **课件原例：p.53 贷款利润**
 
-贷款本金人民币 100,000 元，为期一年，年利率 8%。融资成本是银行取得资金的费用。预期信用损失是事前预计收不回的金额，并非本次已发生坏账。
+贷款本金人民币 100,000 元，为期一年，年利率 8%。融资成本（Funding cost）是银行取得资金的费用。预期信用损失（Expected credit loss）是事前预计收不回的金额，并非本次已发生坏账。
 
 下表均为同一笔一年期贷款的预期金额，单位为人民币元。
 
@@ -1535,9 +1935,15 @@ Maersk 与 IBM 于 2018 年推出 TradeLens，共享航运信息。题目要求�
 
 本例没有加入新的平台建设摊销，不能把 1,000 元直接推广成所有采用项目的净收益。
 
-**🎙️ 课堂补充**
+**英文参考答案（笔记自拟；非官方答案）**
 
-待转录补充。
+Choose the cargo owner. I would join if my main carriers and ports consistently contribute relevant shipment data and the value of improved tracking exceeds integration and operating costs. Missing key participants would reduce the benefit.
+
+**🎙️ 课堂补充**（P4 `01:05`–`08:29`，A · 课上展开）
+
+- P4 `01:05`–`05:31`：TradeLens 的承运人、港口和货主各有不同收益与成本；商业敏感数据、集成费用和其他参与者不足会降低加入意愿。
+- P4 `06:17`–`07:23`：处理时间和对账比例改善只说明效率；违约率从 2.0% 到 2.1% 的示例不能证明信用风险下降。
+- P4 `07:36`–`08:29`：利润从 RMB 500 增到 1,000 来自核验／服务成本下降。ASR 把 p.52 的 40 分钟识别成 40 percent、把 p.53 的 4,000 识别成 400,000；数字以讲义为准。
 
 **💡 换个说法（笔记补充）**
 
@@ -1562,7 +1968,7 @@ Maersk 与 IBM 于 2018 年推出 TradeLens，共享航运信息。题目要求�
 
 **是什么**
 
-本页对比中国内地与香港特别行政区。法偿性是法律赋予货币的清偿地位，不能仅凭某人愿意接受 BTC 付款就推断存在。
+本页对比中国内地与香港特别行政区。法偿性（Legal tender status）是法律赋予货币的清偿地位，不能仅凭某人愿意接受 BTC 付款就推断存在。
 
 **为什么需要它**
 
@@ -1570,21 +1976,23 @@ Maersk 与 IBM 于 2018 年推出 TradeLens，共享航运信息。题目要求�
 
 **课件原例与一手来源核对**
 
-讲义将中国内地支持区块链业务应用、单独的 e-CNY 计划，与禁止境内虚拟货币兑换和 ICO 等服务并列。ICO 指首次代币发行融资。e-CNY 是中央银行数字货币方向，不能与 Bitcoin 或 Ether 混称。
+讲义将中国内地支持区块链业务应用、单独的 e-CNY 计划，与禁止境内虚拟货币兑换和 ICO 等服务并列。首次代币发行（Initial coin offering，ICO）指通过首次发行代币融资。e-CNY 是中央银行数字货币方向，不能与 Bitcoin 或 Ether 混称。
 
 🔗 [银发〔2026〕42 号联合通知原文](https://www.csrc.gov.cn/csrc/c100028/c7614318/content.shtml)于 2026-02-06 发布并施行（获取日期：2026-10-15）。第（一）项明确虚拟货币不具法偿性，并禁止所列境内兑换、代币发行融资等相关业务活动。本文仅提炼本课需要的规则，不把技术分类当作法律结论。
 
-该通知第（二）项还涉及境内 RWA（现实世界资产）代币化的禁止及获业务主管部门同意、依托特定金融基础设施的例外。所以上述“支持应用”不能扩张成任意资产代币化均可经营。通知末尾明确银发〔2021〕237 号同时废止，本讲不把旧文作为现行入口。
+该通知第（二）项还涉及境内 现实世界资产（Real-world assets，RWA）代币化的禁止及获业务主管部门同意、依托特定金融基础设施的例外。所以上述“支持应用”不能扩张成任意资产代币化均可经营。通知末尾明确银发〔2021〕237 号同时废止，本讲不把旧文作为现行入口。
 
 香港部分：SFC 是香港证券及期货事务监察委员会，HKEX 是香港交易所。
 
 🔗 [SFC 2023-05-31 通函](https://apps.sfc.hk/edistributionWeb/api/circular/list-content/circular/doc?lang=EN&refNo=23EC28)说明虚拟资产交易平台牌照制度于 2023-06-01 生效。🔗 [HKEX 2024-04-30 公告](https://www.hkex.com.hk/News/News-Release/2024/240430news?sc_lang=en)确认现货虚拟资产 ETF 上市（均获取于 2026-10-15）。
 
-ETF 是交易所买卖基金。此处的“现货虚拟资产 ETF”是受规定安排约束的投资产品。允许受监管渠道不等于所有平台、客户或跨境销售都允许。本页还提香港发展代币化存款与债券，具体产品规则本讲未展开。
+交易所买卖基金（Exchange-traded fund，ETF）是一类在交易所买卖的基金。此处的“现货虚拟资产 ETF”是受规定安排约束的投资产品。允许受监管渠道不等于所有平台、客户或跨境销售都允许。本页还提香港发展代币化存款与债券，具体产品规则本讲未展开。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（P4 `08:29`–`10:01`，B · 讲了同讲义）
 
-待转录补充。实际业务须查对应当时规则与许可范围，本笔记不代作具体项目合规认定。
+- P4 `08:29`–`09:56`：教授把数字人民币（e-CNY）／央行数字货币（Central Bank Digital Currency，CBDC）放到后续课，并强调内地与香港选择不同的数字资产政策路径；香港案例不能直接外推到内地经营。
+- P4 `10:01`：*"I think that's the end for today and I will see you next week."* 这是四源里明确的下课语。
+- **这段改变了什么**：确认政策边界是业务采用条件；具体许可仍须查相应时点的官方规则。
 
 **💡 换个说法（笔记补充）**
 
@@ -1696,11 +2104,37 @@ flowchart TD
 | 已获证明 | Justified | A checkpoint has sufficient support from an appropriate justified source. | §2.13.2 |
 | 最终确定 | Finalized | A stronger commitment established through a subsequent qualifying checkpoint link. | §2.13.2 |
 
+
+本轮补齐正文中用于读题的词。下列英文释义为笔记自拟，首次讲解仍在正文，不要求读者只靠词表猜意思。
+
+| 中文 | English | 考试可用英文定义 | 首现位置 |
+|---|---|---|---|
+| 数字支付 | Digital payments | Electronic services for sending and receiving payments. | §2.2 |
+| 众筹 | Crowdfunding | Funding raised from multiple contributors under specified terms. | §2.2 |
+| 网络安全 | Cybersecurity | Protection of systems and data against cyber threats. | §2.3 |
+| 稳定币 | Stablecoin | A token designed to track a specified reference value. | §2.3 |
+| 误报 | False alert | A normal activity incorrectly flagged as suspicious. | §2.3 |
+| 固定成本 | Fixed cost | A cost that stays fixed over the activity range assumed. | §2.5 |
+| 可变成本 | Variable cost | A cost that changes with the number of transactions. | §2.5 |
+| 每笔平均成本 | Average cost per transaction | Total relevant processing cost divided by transaction count. | §2.5 |
+| 营运资金缺口 | Working-capital gap | Cash needed for current operations before receipts arrive. | §2.8 |
+| 应收账款融资 | Receivables financing | Financing supported by amounts owed for existing sales. | §2.8 |
+| 访问控制 | Access control | Rules determining who may access, approve or change permissions. | §2.15 |
+| 对账 | Reconciliation | Comparing records and resolving differences between them. | §2.16 |
+| 重复融资 | Duplicate financing | Repeated financing against the same receivable, checked against prior funding and the aggregate limit. | §2.17 |
+| 流动性 | Liquidity | Cash availability to meet payment needs when due. | §2.23 |
+| 日内回购 | Intraday repo | A securities-backed financing transaction reversed within one day. | §2.24 |
+| 抵押品 | Collateral | Assets pledged or provided to support a financing arrangement. | §2.24 |
+| 信用风险 | Credit risk | The risk that a borrower or counterparty fails to pay as agreed. | §2.2 |
+| 预期信用损失 | Expected credit loss | An estimate of credit losses before actual losses are known. | §2.25 |
+
+读“访问控制”一行：英文问句涉及批准、访问或改权限时，回到 §2.15 检查控制权，而不是只数签名。四列依次给中文对象、英文识别词、自拟短定义和正文位置，没有金额单位。
+
 ## 6. 考点预判与答题框架
 
 ### 6.1 可信度与范围
 
-本讲无转录，没有任何“教授明示会考”条目。🟡 表示课程目标反推，⚪ 表示笔记根据讲义题目与主线判断。它们不是分数预测。
+本讲有两条 🔴 教授明示：授权控制选择题是期末题型；期末有短答且期望不超过三行。🟡 仍表示课程目标反推，⚪ 表示笔记根据讲义题目与主线判断。课堂没有承诺具体题目数量或分数。
 
 ### 6.2 本讲考点
 
@@ -1708,6 +2142,8 @@ flowchart TD
 
 | 可信度 | 考点 | 依据 | 位置 |
 |---|---|---|---|
+| 🔴 | **授权与访问控制选择题是期末题型** | 🎙️ P2 `03:04`–`03:12`：*"you will see in final exam, this is the question you will see"*；课堂随后确认 p.29 选 B | §2.15 |
+| 🔴 | **期末有短答，教授期望不超过三行** | 🎙️ P3 `18:36`–`18:48`：*"in the exam, you will also see some short answer question"*；*"I do not expect you [to] write down more than three lines"* | §2.22 |
 | 🟡 | 从客户问题分析 FinTech 价值 | 课程前置资料的应用目标 | §2.1–2.5 |
 | ⚪ | 哈希、签名与共识分工 | p.20–27 机制主线 | §2.10–2.14 |
 | ⚪ | 授权凭据独立性 | p.29 选择题 | §2.15 |
@@ -1725,6 +2161,16 @@ flowchart TD
 案例题按“谁有问题→哪项记录不一致→共享怎样减少工作→保留什么风险→用什么指标测量”回答。原题 p.46 的三问答案见 §2.22。
 
 计算题先标币种、期间和假设，再逐步代入，最后解释数值地位。20 万元是本例剩余融资上限。2.5 年是无折现的简单回收期，二者都不是保证。
+
+### 6.4 从中文理解到英文作答
+
+先在英文题干中圈出对象和限制，再沿 §6.3 的中文判断顺序组织句子。以下是笔记自拟框架，不是教授原话；方括号要换成当前题面的内容。
+
+- 机制题：The system checks [input] to establish [limited result]. It does not establish [remaining risk].
+- 案例题：Shared records reduce [specific reconciliation task], provided [reporting and access condition]. The bank still bears [remaining risk].
+- 计算题：Under the stated assumptions, [calculation] gives [result and unit]. This result excludes [omitted costs or conditions].
+
+例如 p.33 可写：Consistent records reduce reconciliation work; they do not change the payment contracts or funding arrangements. 句子的前半回答收益，后半保留题面限制，不能套成所有区块链都节省资金。
 
 ## 7. 自测
 
@@ -1916,61 +2362,86 @@ C1 是 justified，即已获证明，尚未 finalized。第二轮 A 与 C 的票
 |---|---|---|---|
 | p.1 | 封面 | §1.3 | — |
 | p.2 | 章节标题页：FinTech Businesses | §1.3、§2.1 | — |
-| p.3–5 | 商店需求、三项成本、技术改进 | §2.1 | — |
-| p.6 | 支付、融资及两组讨论 | §2.2 | — |
-| p.7–8 | 投顾、风控、数字资产讨论 | §2.3 | — |
-| p.9 | 产品五层图 | §2.4 | — |
-| p.10–11 | 流水收入、平均成本 | §2.5 | — |
-| p.12–14 | 货币职能、历史与判断 | §2.6 | — |
+| p.3–5 | 商店需求、三项成本、技术改进 | §2.1 | ✅ P1 `00:50`–`13:06` 详讲：三类金融需求、成本与技术改进 |
+| p.6 | 支付、融资及两组讨论 | §2.2 | ✅ P1 `16:02`–`18:26` 详讲支付、贷款与奖励众筹 |
+| p.7–8 | 投顾、风控、数字资产讨论 | §2.3 | ✅ P1 `18:28`–`22:19` 详讲后续案例路线与监管边界 |
+| p.9 | 产品五层图 | §2.4 | ✅ P1 `22:19`–`26:30` 详讲五层产品与合规层 |
+| p.10–11 | 流水收入、平均成本 | §2.5 | ✅ P1 `26:35`–`32:24` 详讲流水、收入、成本与支付采用 |
+| p.12–14 | 货币职能、历史与判断 | §2.6 | ✅ P1 `32:24`–`47:00` 详讲货币三职能与 Bitcoin 判断 |
 
 第二段映射进入共享账本机制。以下页段仍按原 PDF 页码。
 
 | 讲义页 | 内容 | 笔记小节 | 课堂覆盖 |
 |---|---|---|---|
 | p.15 | 章节标题页：How a Blockchain Works | §1.3、§2.7 | — |
-| p.16 | 账本、区块链、代币 | §2.7 | — |
-| p.17–18 | 资金缺口与融资提问 | §2.8、§2.17 | — |
-| p.19 | 公开与许可网络 | §2.9 | — |
-| p.20 | 发票哈希四格图 | §2.10 | — |
-| p.21–22 | 密钥与签名练习 | §2.11 | — |
-| p.23 | 从提交到确认 | §2.12 | — |
-| p.24 | 区块引用 | §2.13 | — |
+| p.16 | 账本、区块链、代币 | §2.7 | ✅ P1 `47:00`–`51:52` 详讲账本、区块链、代币 |
+| p.17–18 | 资金缺口与融资提问 | §2.8、§2.17 | ✅ P1 `51:52`–`57:37` 详讲资金缺口与重复融资 |
+| p.19 | 公开与许可网络 | §2.9 | ✅ P1 `57:37`–`01:00:47` 详讲许可／公开网络 |
+| p.20 | 发票哈希四格图 | §2.10 | ✅ P1 `01:00:56`–`01:02:36` 详讲哈希图 |
+| p.21–22 | 密钥与签名练习 | §2.11 | ✅ P1 `01:03:01`–`01:05:56` 详讲密钥、签名与练习 |
+| p.23 | 从提交到确认 | §2.12 | ✅ P1 `01:06:06`–`01:07:43` 详讲提交、验资与确认 |
+| p.24 | 区块引用 | §2.13 | ✅ P1 `01:07:43`–`01:09:34` 简讲区块引用；口语机制混用已在 §9.3 限定 |
 
 第三段对上共识、控制与中国应用。
 
 | 讲义页 | 内容 | 笔记小节 | 课堂覆盖 |
 |---|---|---|---|
-| p.25 | 双花 | §2.12 | — |
-| p.26 | 共识和激励 | §2.13 | — |
-| p.27 | 确认 | §2.14 | — |
-| p.28–29 | 授权失败与选择题 | §2.15 | — |
-| p.30–33 | 事实边界、适用条件、两选择题 | §2.16 | — |
+| p.25 | 双花 | §2.12 | ❓ P1→P2 接缝缺失，四源无双花页；不可降权 |
+| p.26 | 共识和激励 | §2.13 | ❓ P1→P2 接缝缺失，四源无 PoW／PoS 讲解；不可降权 |
+| p.27 | 确认 | §2.14 | ❓/✅ P2 `00:00` 从风险段中途开始；确认页开头未录到 |
+| p.28–29 | 授权失败与选择题 | §2.15 | ✅ P2 `01:29`–`05:32` 详讲授权事故；p.29 课堂确认 B；🔴 期末题型 |
+| p.30–33 | 事实边界、适用条件、两选择题 | §2.16 | ✅ P2 `05:32`–`11:50` 详讲适用条件并做两道选择题 |
 | p.34 | 章节标题页：Blockchain in Financial Services | §1.3、§2.17 | — |
-| p.35–37 | 中国应用、SAFE、额度计算 | §2.17 | — |
-| p.38 | 利息 | §2.18 | — |
+| p.35–37 | 中国应用、SAFE、额度计算 | §2.17 | ✅ P2 `11:50`–`16:44` 详讲 SAFE 与额度 |
+| p.38 | 利息 | §2.18 | ✅ P2 `16:44`–`18:03` 复述 6,000 元利息 |
 
 最后一段为业务例与效果判断。
 
 | 讲义页 | 内容 | 笔记小节 | 课堂覆盖 |
 |---|---|---|---|
-| p.39–40 | 发票与重复报销 | §2.19 | — |
-| p.41 | 电子存证 | §2.20 | — |
-| p.42 | LLM 提取单据 | §2.21 | — |
-| p.43–45 | Kinexys 与现金价值 | §2.23 | — |
-| p.46 | 贸易融资短答三问 | §2.22 | — |
-| p.47–49 | 日内回购、规模与回收期 | §2.24 | — |
-| p.50–53 | TradeLens、试点、贷款利润 | §2.25 | — |
-| p.54 | 两地政策边界 | §2.26 | — |
+| p.39–40 | 发票与重复报销 | §2.19 | ✅ P3 `03:02`–`07:09` 详讲发票与重复报销 |
+| p.41 | 电子存证 | §2.20 | ✅ P3 `07:09`–`12:35` 详讲司法存证与采用限制 |
+| p.42 | LLM 提取单据 | §2.21 | ✅ P3 `12:35`–`13:27` 讲 LLM 降低文件提取门槛 |
+| p.43–45 | Kinexys 与现金价值 | §2.23 | ✅ P3 `13:27`–`18:36` 详讲 Kinexys；课堂数字口误已限定 |
+| p.46 | 贸易融资短答三问 | §2.22 | ✅/❓ P3 `18:36`–`19:22` 明示短答格式并开始讲评；后半截断 |
+| p.47–49 | 日内回购、规模与回收期 | §2.24 | ❓ P3→P4 接缝缺失，四源无 DLR 页；不可降权 |
+| p.50–53 | TradeLens、试点、贷款利润 | §2.25 | ✅ P4 `01:05`–`08:29` 详讲 TradeLens、效率与利润 |
+| p.54 | 两地政策边界 | §2.26 | ✅ P4 `08:29`–`10:01` 简讲政策边界并正式下课 |
+
+**课堂时间分配**（四个独立时钟的已录范围合计约 119.3 分钟；三处跨源缺口时长未知，按时间戳）：
+
+| 内容块 | 时间戳 | 用时 | 占比 |
+|---|---|---|---|
+| P1：FinTech 需求、公司路线、规模、货币与区块链至 p.24 | P1 `00:00`–`01:09:34` | ~69.6 min | 58.3% |
+| P2：p.27 后半、授权题、适用条件、SAFE 至 Tallo 视频截断 | P2 `00:00`–`20:23` | ~20.4 min | 17.1% |
+| P3：公司补充、发票／司法、Kinexys 与短答截断 | P3 `00:00`–`19:22` | ~19.4 min | 16.2% |
+| P4：Futu 尾、TradeLens、效率利润与政策收束 | P4 `00:00`–`10:01` | ~10.0 min | 8.4% |
+
 
 ## 9. 延伸与勘误
 
 ### 9.1 课件有但课上略过
 
-暂无本讲转录，无法判断。p.1、p.2、p.15、p.34 只有课程或章节标题，不含未讲解的实质内容。其余 50 页均在正文展开。不能把未知课堂覆盖写为略过。
+四源转录已融合，没有录到教授明确略过实质内容页的证据。p.1、p.2、p.15、p.34 只有课程或章节标题，不含未讲解的实质内容。其余 50 页均在正文展开；跨源未录到的页按下表保留为 ❓，不可降权。
+
+
+| 讲义页 | 内容 | 课上处理 | 笔记处理 |
+|---|---|---|---|
+| p.25–26 | 双花、PoW 与 PoS | ❓ P1 在 p.24 预告后休息，P2 从 p.27 中段开始；接缝缺口未知 | **不可降权**；按讲义与正文学习 |
+| p.27 前半 | 确认与重组风险 | ❓ P2 `00:00` 已在汇率／托管风险中段 | **不可降权**；仅课堂后半边界可用 |
+| p.46 后半、p.47–49 | 短答余下讲评与 DLR | ❓ P3 `19:22` 在第二问中截断，P4 `00:00` 已到后续 Futu 讨论 | **不可降权**；保留讲义复算 |
 
 ### 9.2 课上讲了但课件没有
 
-待转录补充。全篇 26 个正文单元的课堂格均保持 pending，不把笔记例子冒充课堂故事。
+下表只收录讲义之外且对理解或应试有增量的课堂内容；逐页覆盖另见 §8。
+
+
+| # | 内容 | 时长 | 时间戳 | 小节 | 为什么值钱 |
+|---|---|---|---|---|---|
+| 1 | 🔴 **期末题型与作答长度** | ~2.4 min | P2 `03:04`–`04:43`；P3 `18:36`–`19:22` | §2.15、§2.22 | 讲义只有题目；课堂明确选择题型、确认 B；教授期望短答不超过三行 |
+| 2 | **中国业务链重在共享历史，不要求发币或去中心化** | ~7.6 min | P3 `03:08`–`10:44` | §2.19–2.20 | 把发票、报销与司法存证的共同机制说清 |
+| 3 | **网络采用失败来自敏感数据、集成成本与参与者不足** | ~5.0 min | P4 `01:05`–`06:06` | §2.25 | TradeLens 例把技术可行与商业可行分开 |
+| 4 | **FinTech 公司分析先问需求，再看收入、成本与风险** | ~7.1 min | P1 `13:06`–`20:14` | §2.2–2.3、§6.3 | 直接连接案例报告与公司选择 |
 
 ### 9.3 课件口径与防误读
 
@@ -1981,6 +2452,10 @@ C1 是 justified，即已获证明，尚未 finalized。第二轮 A 与 C 的票
 - p.45、p.49、p.52、p.53 是假设结果，不当作已观测客户成效。
 - p.48 的 3,680 亿美元是 2026-04 日均回购交易量。公司收入未由该量推出。
 - p.51 官方关闭理由与商业分析已分开。p.54 的现行通知为银发〔2026〕42 号，旧 237 号同时废止。
+- 课堂 P1 `01:08:10`–`01:09:07` 把“每笔交易加一个区块”及密钥／哈希混在一起；正文继续按讲义区分：区块可容多笔交易，哈希、密钥与签名承担不同动作。
+- 课堂 P2 `00:47` 对存款保障上限使用旧值并带不确定。2026-10-18 官方定向核对：[香港存款保障计划历史](https://www.dps.org.hk/en/about-us/history-of-deposit-protection-in-hong-kong/) 明确每名存款人在每个计划成员 HK\$800,000，自 2024-10-01 生效；[中国人民银行答复](https://wzdt.pbc.gov.cn/eportal/ui?msgDataId=d3f5c72a0157407e97b4998676c34ef2&pageId=77c3557bd521439ea5cd869f5393ba98) 明确同一存款人在同一家投保机构本息合计 RMB500,000；[FDIC 存款保险说明](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance) 为每名存款人在每家受保银行、每种账户所有权类别 USD250,000。本次 FDIC 只核到官方搜索摘要，正文返回 403。三者都不把 crypto 钱包／交易所自动纳入存款保障。
+- 课堂 P3 `18:16` 口述 42,000 与讲义 p.45 的 $0.8m\times4\%=32{,}000$ 冲突；正文按讲义复算保留 32,000，并把课堂数列作口误。
+- P4 `06:22` 的“40 percent → 25 percent”应按 p.52 读 40 分钟 → 25 分钟；P4 `07:36` 的资金成本 ASR 误作 400,000，p.53 明示 RMB 4,000。
 
 ### 9.4 外部来源与补充范围
 
@@ -1990,12 +2465,25 @@ C1 是 justified，即已获证明，尚未 finalized。第二轮 A 与 C 的票
 
 ### 9.5 待核对
 
-- 本讲实际日期、教学周与转录尚待确认。
-- 原题答案为参考推断，未有官方解答或课堂确认。
+- 本讲课堂日期为 2026-10-16，依据用户在 2026-10-17 本会话直接指认“昨天的 5560”；教学周仍未另行确认。
+- p.29 选择题 B 获课堂确认；p.32／p.33 的 D／C 因 ASR 未可靠保留学生字母，仍按讲义逻辑标参考答案。p.46 讲评中途截断，未形成完整官方答案。
 - p.28 两起安全事件沿讲义历史摘要与金额估值，未在本次独立复原攻击取证。
 - p.39 深圳发票作为讲义所引历史应用，不宣称现时运行规模。
 - p.52 未给申请数、违约率详细分母或对照组，不能计算显著性或识别因果。
 - 正式 Obsidian 阅读视图是否已查看，按本次验收回执据实记录。同源浏览器预览不能冒称 Obsidian 已核。
+
+
+| # | 事项 | 说明 |
+|---|---|---|
+| 1 | ✅ **四源转录已登记** | P1 `00:00`–`01:09:34`（source9，381 段）；P2 `00:00`–`20:23`（source10，140 段）；P3 `00:00`–`19:22`（source11，117 段）；P4 `00:00`–`10:01`（source12，51 段）。各源均无倒退、无 ≥120 秒内源空档；独立时钟不可直接拼成课堂总时长 |
+| 2 | ⚠️ **接缝有未知缺口** | P1→P2 缺 p.25–27 前半；P2→P3 缺 Tallo 视频尾与过渡；P3→P4 缺 p.46 后半及 p.47–49。四段内容顺序为 9→10→11→12，但接缝不是无缝连续 |
+| 3 | ⚪ **完整性判定：开头可能缺半句，结尾完整** | P1 `00:00` 首句残缺，P1 `00:06` 即进入 FinTech 议程；P4 `10:01` 明确正式下课。不能由内源连续性推断三处跨源缺口时长 |
+| 4 | ⚠️ **Tallo 视频身份边界** | P2 `19:19`–`20:23` 是课堂播放的结构化产品旁白，说话人未独立辨声；不作为教授原话，不把风险引擎宣传当真实成效 |
+| 5 | ⚠️ **课堂机制口语混用** | P1 `01:08:10`–`01:09:07` 把每笔交易加一块、哈希与密钥混在一起；正文保留讲义的严谨机制，不静默把口语改成准确原话 |
+| 6 | ⚠️ **课堂数字／现行规则纠正** | P2 `00:47` 的存款保障数额含旧值与不确定；P3 `18:16` 的 42,000 与 p.45 的 32,000 冲突；P4 `06:22`／P4 `07:36` 有单位与 ASR 数字错误。详 §9.3 |
+| 7 | ✅ **课堂日期** | 2026-10-16，依据用户在 2026-10-17 本会话直接指认‘昨天的 5560’；容器时间只作导出／复制时刻 |
+| 8 | ⚠️ **Notion 与正式同步** | 正式写回与适用同步结果见本次回执；Git 未执行；本人学习／提交状态未代填 |
+| 9 | **反方视角** | 最薄弱：p.25–26 与 p.47–49 因接缝缺失只能靠讲义。现在仍答不稳：p.46 第三问未录到课堂答案。关键推断：四源按内容为 P1→P2→P3→P4；若接缝另有未识别内容，课堂覆盖与权重判断须重核 |
 
 ### 9.6 复算与图源
 
@@ -2014,11 +2502,28 @@ C1 是 justified，即已获证明，尚未 finalized。第二轮 A 与 C 的票
 ### 9.7 本次制作记录
 
 - 来源：54 页 PDF，正文实质内容 50 页。4 页课程或章节封面均有映射说明。
-- 正文：26 个单元。26 个课堂格待转录。不新增“教授明示”考点。
+- **2026-10-15 讲义版历史**：正文 26 个单元；当时 26 个课堂格待转录，尚无“教授明示”考点。本次融合后的现态见下方 2026-10-18 记录。
 - 原题登记：详见 [[EF5560_Fintech_and_AI_in_Finance/_meta/M06-制作验收记录-2026-10-15|本次逐题覆盖清单]]。教学推断与题面给定结果分别标注。
 - 自测：22 道原创练习，含局部图与总图的路径判断、变式结果和失败原因。
 - 本轮回执见 [[EF5560_Fintech_and_AI_in_Finance/_meta/M06-解释修补验收-2026-10-15|解释修补验收]]。
 - 本轮定向修补 §2.10 碰撞与同摘要边界、§2.13.2 检查点两阶段，并更新受影响图与自测。上一轮对这两处讲解的验收判断偏宽，本轮不沿用其已讲清结论；本轮已按 changed 范围集中核对通过，未重复验收未改全文。
 - 按 2026-10-02 简化流程完成全篇集中理解、来源与计算、R 疑点及同源浏览器图文验收。未做独立 Q/R 或真人试读，Obsidian 未直接查看。
-- L 硬项 0、R 机械硬项 0，旧 strict 的 E 诊断仍为 FAIL，不用标签或篇幅补造 PASS。材料仍为讲义版 v0.9，转录待补。
+- **2026-10-15 讲义版历史**：L 硬项 0、R 机械硬项 0，旧 strict 的 E 诊断仍为 FAIL；当时材料为讲义版 v0.9、转录待补。本次 v1.0 现态与机械结果见 2026-10-18 记录。
 - 正式写回、本地同步、Notion 回读与 Git 状态分别见制作验收记录。笔记生成不代替本人通读或自测。
+- 2026-10-18 转录融合：四源顺序 P1→P2→P3→P4；26 个课堂格全部定态，新增 2 条 🔴，§8 写入逐页课堂覆盖与独立时钟时间表。三处接缝缺口、Tallo 视频身份、课堂机制／数字口误均保留边界；本次全部新增与受影响内容已完成教学、来源、R 疑点与同源图文核对；未直接查看原生 Obsidian，未逐声人工听校。
+
+### 9.8 英文原题与应试对照修复（2026-10-15）
+
+此前三道选择题只有中文转述与排除理由，未完整保留英文题面和 A–D；其他 Case focus 和短答也缺原文入口。旧“完整参考解析”记录只说明当时有答案，不足以证明英文应试对照合格。本轮补回原题、全部选项、中文读题与逐项解析、英文参考答案，并在正文首用处补英文术语。
+
+修复范围包括 p.3、p.6–8、p.12、p.18、p.22、p.28–29、p.32–33、p.46、p.49–50 的原问题／演示及其上下文，共 14 个源页。仍沿用 26 个作答／演示单元；演示、图中给定结果和复合问句不伪称 26 道独立试题。p.29／p.32／p.33 的 12 个选项全部保留；参考选择仍为 B／D／C，未取得官方答案。
+
+源页的换行、连字及图中排版转成可读文本，金额、选项字母、否定和条件保真。p.22 是讲义给定演示；p.49 输入与 2.5 年由讲义给定，采用判断仍为有条件的笔记参考作答。英文原题修复在 2026-10-15 当时维持 v0.9、transcript pending；本次 2026-10-18 转录融合不改写该历史事实。本人学习与提交状态不变。验收和同步结果见 [[EF5560_Fintech_and_AI_in_Finance/_meta/M06-英文原题与术语修复-2026-10-15|本轮修复记录]]。
+
+本次融合的逐源核验、教学与图文范围、正式写回及同步回读记录见 [[_meta/制作与融合回执-2026-10-18|本次制作与融合回执]]。
+
+### 9.9 变更记录
+
+| 日期 | 变更 |
+|---|---|
+| 2026-10-18 | **合并 M06 四源转录**：P1／P2／P3／P4 独立时钟；26 个课堂格定态，新增 2 条 🔴，§8 补课堂覆盖与时间分配；三处接缝缺口保留。集中验收已完成；正式写回及适用同步见本次回执 |

@@ -1,0 +1,208 @@
+{
+  "schema": "cityu-concept-graph-v1",
+  "diagram_type": "uml-rea",
+  "title": "Mock A Q6: revenue-process REA",
+  "scope": "Original mock Q6: individual boards; no returns/resale; no customer advances/overpayments; loan receipts have no customer or sale link.",
+  "assumptions": [],
+  "figure_caption": "Original mock Q6. Individual boards; no resale.\nLoan receipts may have no Customer or Sale.\nFields shown are the five attributes asked in Q6(d).",
+  "layout": {
+    "columns": [
+      [
+        "Surfboard",
+        "CashAccount"
+      ],
+      [
+        "Sale",
+        "CashReceipt"
+      ],
+      [
+        "Salesperson",
+        "Customer",
+        "Cashier"
+      ]
+    ]
+  },
+  "nodes": [
+    {
+      "id": "Surfboard",
+      "label": "Surfboard",
+      "kind": "Resource",
+      "source": "Mock A Q6 original narrative",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "CashAccount",
+      "label": "CashAccount",
+      "kind": "Resource",
+      "source": "Mock A Q6 original narrative",
+      "status": "source",
+      "attributes": [
+        {
+          "id": "CashAccount-0",
+          "name": "Cash balance",
+          "source": "Mock A Q6(d)",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "Sale",
+      "label": "Sale",
+      "kind": "EconomicDecrement",
+      "source": "Mock A Q6 original narrative",
+      "status": "source",
+      "attributes": [
+        {
+          "id": "Sale-0",
+          "name": "Sale total amount",
+          "source": "Mock A Q6(d)",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "CashReceipt",
+      "label": "CashReceipt",
+      "kind": "EconomicIncrement",
+      "source": "Mock A Q6 original narrative",
+      "status": "source",
+      "attributes": [
+        {
+          "id": "CashReceipt-0",
+          "name": "Cash receipt total amount",
+          "source": "Mock A Q6(d)",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "Salesperson",
+      "label": "Salesperson",
+      "kind": "InternalAgent",
+      "source": "Mock A Q6 original narrative",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "Customer",
+      "label": "Customer",
+      "kind": "ExternalAgent",
+      "source": "Mock A Q6 original narrative",
+      "status": "source",
+      "attributes": [
+        {
+          "id": "Customer-0",
+          "name": "Customer account receivable",
+          "source": "Mock A Q6(d)",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "Cashier",
+      "label": "Cashier",
+      "kind": "InternalAgent",
+      "source": "Mock A Q6 original narrative",
+      "status": "source",
+      "attributes": []
+    }
+  ],
+  "edges": [
+    {
+      "id": "boards",
+      "a": "Surfboard",
+      "b": "Sale",
+      "a_multiplicity": "1..*",
+      "b_multiplicity": "0..1",
+      "label": "Stockflow",
+      "source": "Mock A Q6 original narrative",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "cash",
+      "a": "CashAccount",
+      "b": "CashReceipt",
+      "a_multiplicity": "1..1",
+      "b_multiplicity": "0..*",
+      "label": "Stockflow",
+      "source": "Mock A Q6 original narrative",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "duality",
+      "a": "Sale",
+      "b": "CashReceipt",
+      "a_multiplicity": "0..*",
+      "b_multiplicity": "0..*",
+      "label": "Duality",
+      "source": "Mock A Q6 original narrative",
+      "status": "source",
+      "attributes": [
+        {
+          "id": "applied",
+          "name": "Amount applied to sale",
+          "source": "Mock A Q6(d)",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "sale-customer",
+      "a": "Sale",
+      "b": "Customer",
+      "a_multiplicity": "0..*",
+      "b_multiplicity": "1..1",
+      "label": "Participation",
+      "source": "Mock A Q6 original narrative",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "receipt-customer",
+      "a": "CashReceipt",
+      "b": "Customer",
+      "a_multiplicity": "0..*",
+      "b_multiplicity": "0..1",
+      "label": "Participation",
+      "source": "Mock A Q6 original narrative",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "seller",
+      "a": "Sale",
+      "b": "Salesperson",
+      "a_multiplicity": "0..*",
+      "b_multiplicity": "1..1",
+      "label": "Participation",
+      "source": "Mock A Q6 original narrative",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "cashier",
+      "a": "CashReceipt",
+      "b": "Cashier",
+      "a_multiplicity": "0..*",
+      "b_multiplicity": "1..1",
+      "label": "Participation",
+      "source": "Mock A Q6 original narrative",
+      "status": "source",
+      "attributes": []
+    },
+    {
+      "id": "assignment",
+      "a": "Salesperson",
+      "b": "Customer",
+      "a_multiplicity": "1..1",
+      "b_multiplicity": "1..*",
+      "label": "Assignment",
+      "source": "Mock A Q6 original narrative",
+      "status": "source",
+      "attributes": []
+    }
+  ]
+}

@@ -1,66 +1,25 @@
 # -*- coding: utf-8 -*-
 """
-note_quality.py — CityU 课程笔记质量量表（《_meta/笔记质量规范.md》的执行脚本）
+note_quality.py — CityU 笔记机器检查（现行规则 2026-10-21）
 
-用法
-    PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/note_quality.py <笔记路径> [--pages N] [--tut] [--json] [--strict|--legacy] [--sections]
+用法：python note_quality.py <笔记> [--pages N] [--tut] [--strict] [--json] [--sections]
+      [--readability] [--readability-strict] [--profile current|historical]
+      [--source-checks 原题清单.json]
 
-    --pages N   讲义总页数（省略时从 frontmatter `source:` 的「（NN 页）」读）
-    --tut       T 系列（notebook 逐块讲解）笔记，走 T 指标集
-    --json      额外输出机器可读 JSON（stdout 末尾一行，以 `JSON:` 开头）
-    --strict    元素清单 E 计入 PASS/FAIL（默认：frontmatter 有 `quality_spec:` 字段时自动 strict）
-    --legacy    强制 legacy 模式（E 只报 WARN）
-    --sections  打印逐小节明细表（默认只打印不达标小节）
-    --readability         打印 R 可读性层的全部 ✗ 与 △（默认只列前 12 条 ✗ 与分项计数）
-    --readability-strict  R 层 ✗ 计入 FAIL（frontmatter 的 readability_rules 为 v1 / v2 时也启用）
-
-退出码：0 = PASS，1 = FAIL，2 = 文件/参数错误。
-
-R 可读性层（2026-10-08，规则与阈值见《_meta/可读性总规则.md》；存量笔记只报告，不改变 L/G/E 判定）
-  阅读单元：汉字 / 可见标点各 1；连续英文单词或数字串 1；行内公式、行内代码各 2；Markdown 标记不计
-  R1 句子：单句 >120 ✗、>80 △；全篇 p90 >60 或 >80 长句占比 >3% ✗；一句 ≥2 分号 △；括号插入 >30 △；一段否定澄清 ≥4 ✗ / 3 △
-  R2 段落：>200 单元或 ≥7 句 ✗，>150 或 6 句 △；列表项 >150 ✗ / >80 △；段内 ①②③ ≥3 ✗；段内加粗 ≥4 △
-  R3 版面：无标题/标签/表/公式隔断的连续正文 >800 ✗ / >500 △；##### 及以下标题 ✗；表格紧贴上一行文字 ✗
-  R4 表格：列 ≥9 ✗ / 7–8 △；单元格 >80 ✗ / >40 △；单元格 ≥3 句 ✗ / 2 句 △；§2 表格前无引导文字 ✗；一行 >200 △（页码映射区只报 △）
-  R5 公式代码：一段 ≥6 个不同行内公式 ✗ / 4–5 △；一个 $$ 块多个等式 △；行内公式 >60 字符 △；代码块 >30 行 △；“.5” 式小数 ✗
-  R6 术语：一段 ≥3 处括号英文注释 △        R7 分层：主线出现 6 位以上小数 / 绝对路径 / 哈希 / ≥3 时间戳 △；段内长英文原话 △
-  R8 场景：§2 的 ###/#### 标题缺 p.页码 △；小节首段 ≥4 句 △
-  范围：§0–§7 与 T 笔记主体；「页码映射」区只查表格（降为 △）；「延伸与勘误」区与标题含复算/来源/核验的 <details> 只查渲染（R3c）
-  豁免：块前一行写 <!-- 可读性豁免: 理由 -->，该块不检查但计入「豁免块」数；超过 5 块报 ✗
-  v2（2026-10-09）：R4f/g、R6b/c/d、R8c 是启发式疑点，只报 △，须人工核对。
-  识别到定义词、冒号或格式，只代表找到解释线索，不代表解释正确完整。
-
-判定分三层（详见《笔记质量规范》§3）：
-  L  合规检查（原 notecheck.py 七项，逐条列出问题；有问题时退出码 1）
-       L1 逐页覆盖（§2 正文里 p.N 引用覆盖到每一页；封面/目标页允许）  L2 伪公式（代码块 / 行内代码里的数学字符）
-       L3 表格：管道数不一致 / 公式含裸竖线 / 双链别名未转义；未转义货币 $      L4 标题含 | [ ] ^ * ` 等特殊字符
-       L5 代码围栏成对、<details> 配对    L6 同文件锚点 [[#…]] 能对上标题    （原 ⑦ 小节首元素并入 G3a）
-  G  硬门槛（任一不过即 FAIL；阈值来自 2026-09-16 校准，见规范附录 A）
-       G1  §2 中文字数 / 内容页 ≥ 250                    G2a §5 术语数 / leaf 小节 ≤ 1.6
-       G2b 内容页 / leaf 小节 ≤ 2.5                       G2c 承载术语的 leaf 小节 ≥ 150 字
-       G3a 小节首元素是段落（不是表格 / 公式 / 代码）        G3b 每个 $$ 公式的符号都有着落（符号表 / 散文点名 / 前文已解释 / 自注释 / 纯数字代入）
-       G3c 有公式的小节有数字例子                          G3d 每个 python/sql/bash 代码块前有「在做什么」、后有逐行说明
-       G6  每个 ### 单元（含其 #### 子节）至少一处「所以呢」，覆盖率 ≥ 0.80
-       T 笔记：G1t 逐块讲解中文字数 / code cell ≥ 350；G3a；G3d 缺失率 ≤ 0.20
-  E  元素清单（规范 §5 每型概念的必备元素 + §6 术语首现 + §4 先修唤醒）
-       strict 模式（frontmatter 有 quality_spec: 或 --strict）计入 FAIL；legacy 模式只报 △ WARN，判定写「PASS（存量宽限）」
-
-指标定义
-  内容页            = 讲义总页数 − §8 表里小节列为「—（封面）」等、或备注含「封面 / 章节标题页 / 学习目标页 / 行政页 / 安装截图页 / 空白页 / 分隔页」的页
-  leaf 小节         = §2 里的 ###/#### 标题块，去掉纯容器（正文 < 60 中文字）
-  cjk              = 小节非代码、非标题行的中文字符数；own_cjk = 其中普通段落（不含引用块 / 表格 / 公式）的中文字数
-  bq_ratio         = 引用块字符 / 小节非代码字符（只报告，不作门槛：校准显示它不区分好坏）
-  术语数            = §5 术语卡「首现」列落在该小节的行数（首现指向容器节时平摊给子节）
-  小节类型          = 标题/内容启发式（公式型 / 算法流程型 / 对比型 / 案例数据型 / 图表读法型 / 勘误型 / 代码型 / 行政型 / 定义型），可在小节标题下一行用
-                     <!-- 类型: 公式型 --> 显式指定
-  换个说法角度        = 「💡 换个说法」块里 ≥ 40 字的独立段落或列表项数（标签行不算）
-  常见误解条数/带理由   = 「⚠️ 常见误解」块里 ❌ 条数 / 其中 ❌ 之后含 → —— 因为 其实 … 等理由标记的条数
-  数字例子           = 小节普通段落或表格里出现 = ≈ × + − 接数字、小数或千分位数字；numex_step = 含算式（两数相乘/相减/连等）的行数
-  术语首现解释率      = §5 每个术语在其「首现」小节里：标题含该术语，或首次出现处 40 字内有括号 / 定义词（是、指、即、就是…）/ 4 行内出现英文名
-  先修概念唤醒        = PREREQ 词典（统计 101 / 线代 / 微积分）里的词在 §2 首次出现处：25 字内有括号、或同行有 [[回指]] / §x 指向、或该词在 §1.1 表 / §5 术语卡里
-  需补字数（估算）     = max(0, 250 × 该小节覆盖页数 − 该小节 cjk)，只用于返工清单排序
+默认 current：L格式、R硬项、有证据的内容缺失/纯数字算式/源题清单错误参与机器判定。
+固定标签、中文字数、页/小节比和类比数量只保存在 historical 字段，不决定当前FAIL。
+historical：重放旧G/E配额判定；--strict使旧E参与，--legacy使旧E仅警告。
+小节a后缀与代码语言正则边界修复同时适用于两种profile；历史输出不声称逐字重现旧版bug。
+--source-checks：显式提供人工回源建立的note-source-checks-v1清单，
+核源文件哈希、原题全文/选项字母与全文、每问中英答案锚点；不自动认证清单抄写和答案语义。
+未提供清单时，源题完整性明确未验证；页码引述不等于实质逐页覆盖。
+计算只核可安全识别的纯数字四则/幂/开方等式及显示精度，不执行代码或猜符号/单位。
+所有profile都保留L/R检查；机器PASS不等于教学、计算运行或原题保真已验收。
+JSON有profile、C、historical、legacy_problems、R等字段；旧诊断和回执不可追改为新结果。
+退出码：0=机器可验证项通过（仍须实质核对），1=阻塞，2=参数/文件/结构错误。
 """
-import re, io, sys, os, json, collections, argparse, glob
+import re, io, sys, os, json, collections, argparse, glob, ast, math, hashlib, unicodedata
+from pathlib import Path
 
 SPEC_DATE = '2026-09-16'
 
@@ -246,7 +205,7 @@ def terms_sec5(t):
         if not line.startswith('|') or '---' in line or re.match(r'\|\s*中文', line): continue
         cells = [c.strip() for c in line.strip('|').split('|')]
         if len(cells) < 4: continue
-        m = re.search(r'§\s*(\d+(?:\.\d+)*)', cells[-1])
+        m = re.search(r'§\s*(\d+(?:\.\d+)*[a-z]?)', cells[-1])
         out.append((cells[0], cells[1], m.group(1) if m else ''))
     return out
 
@@ -286,7 +245,7 @@ def numeric_formula(tex):
 NUM_STEP = re.compile(r'\d[\d,\.]*\s*[×x\*/÷+−\-]\s*[\d(]|\(\s*[\d,\.]+\s*[−\-+]\s*[\d,\.]+\s*\)|[=≈]\s*\**\s*[−\-]?\d[\d,\.]*.*[=≈]\s*\**\s*[−\-]?\d|\\frac\{[\d\.]+\}\{[\d\.]+\}')
 NUM_ANY = re.compile(r'[=≈×+−]\s*\**\s*[−\-]?\d|\d+\.\d+|\d{1,3}(?:,\d{3})+')
 REASON = re.compile(r'→|——|—|因为|其实|实际上|正确|应该|不是|才是|只有|而是|但')
-SUBJ = re.compile(r'^\d+(?:\.\d+)*')
+SUBJ = re.compile(r'^\d+(?:\.\d+)*[a-z]?')
 
 def section_metrics(sec, sec_type_override=None):
     head = sec[0]; lines = sec; kinds = classify(lines)
@@ -380,7 +339,7 @@ def section_metrics(sec, sec_type_override=None):
     bad_code = 0
     idx = [i for i, (l, k) in enumerate(zip(lines, kinds)) if l.strip().startswith('```') and k == 'code']
     for a, b in zip(idx[0::2], idx[1::2]):
-        if not re.match(r'^\s*```(python|py|sql|bash|sh|r|R)', lines[a]): continue
+        if not re.match(r'^\s*```(python|py|sql|bash|sh|r|R)\b', lines[a]): continue
         before = [kinds[j] for j in range(max(0, a - 3), a)]
         after_lines = lines[b + 1:b + 9]; after_kinds = kinds[b + 1:b + 9]
         ok_before = 'text' in before
@@ -431,12 +390,12 @@ def term_checks(t, body, sec5):
     sec_of = {}; cur = ''
     for i, (l, k) in enumerate(zip(lines, kinds)):
         if k == 'head':
-            mm = re.match(r'^#+\s*(\d+(?:\.\d+)*)', l); cur = mm.group(1) if mm else cur
+            mm = re.match(r'^#+\s*(\d+(?:\.\d+)*[a-z]?)', l); cur = mm.group(1) if mm else cur
         sec_of[i] = cur
     heads_by_sec = {}
     for i, (l, k) in enumerate(zip(lines, kinds)):
         if k == 'head':
-            mm = re.match(r'^#+\s*(\d+(?:\.\d+)*)', l)
+            mm = re.match(r'^#+\s*(\d+(?:\.\d+)*[a-z]?)', l)
             if mm: heads_by_sec[mm.group(1)] = l
     unexplained = []; checked = 0; early = 0
     for zh, en, first in sec5:
@@ -586,7 +545,7 @@ def r_blocks(t):
             flush()
             if s.startswith('## '):
                 zone = 'map' if R_ZONE_MAP.match(s) else ('log' if R_ZONE_LOG.match(s) else 'main')
-            hm = re.match(r'^#+\s*(\d+(?:\.\d+)*)', s); sec = hm.group(1) if hm else sec
+            hm = re.match(r'^#+\s*(\d+(?:\.\d+)*[a-z]?)', s); sec = hm.group(1) if hm else sec
             mic = False; lab = ''
             out.append(('head', s, i + 1, zone, dict(mic=False, logdet=logdet > 0, exempt=None, sec=sec, label='')))
             i += 1; continue
@@ -1095,6 +1054,261 @@ def evaluate_T(t, fn, strict):
     summary = dict(file=fn, code_cells=ncode, body_cjk=cjk_body, note_cjk=cjk(t), leaf_n=len(leaf), strict=strict)
     return dict(summary=summary, G=G, E=E, rows=leaf, verdict=verdict)
 
+# ---------------------------------------------------------------- 现行内容线索：不以标签/字数/类比配额代替实质核对
+CURRENT_SPEC = '2026-10-21'
+SECTION_NUMBER = r'\d+(?:\.\d+)*[a-z]?'
+PLACEHOLDER = re.compile(r'^(?:待补(?:充)?|待完善|略|同理|见(?:讲义|课件|上文)|TODO|TBD|N/?A)[。.!！\s]*$', re.I)
+
+
+def content_sections(body):
+    """保留真实标题、a后缀和全局行号；父节包含子节，空容器不算缺正文。"""
+    lines = body.splitlines()
+    kinds = classify(lines)
+    heads = [(n, len(l)-len(l.lstrip('#')), re.sub(r'^#+\s*', '', l))
+             for n, (l, k) in enumerate(zip(lines, kinds)) if k == 'head' and re.match(r'^#{3,4} ', l)]
+    result = []
+    for n, (start, level, heading) in enumerate(heads):
+        end = next((a for a, lev, _ in heads[n+1:] if lev <= level), len(lines))
+        own_end = heads[n+1][0] if n+1 < len(heads) else len(lines)
+        number = re.match(SECTION_NUMBER, heading)
+        result.append(dict(number=number[0] if number else heading, heading=heading, line=start+1,
+                           text='\n'.join(lines[start+1:end]), own='\n'.join(lines[start+1:own_end]),
+                           container=own_end < end, level=level))
+    return result
+
+
+def author_text(text):
+    """原题引文、程序、图源、空标签和占位句不作为已有讲解的证据。"""
+    lines = text.splitlines()
+    result = []
+    for line, kind in zip(lines, classify(lines)):
+        s = line.strip()
+        if kind not in ('text', 'table') or re.match(r'</?(?:details|summary)|<!--', s):
+            continue
+        if re.match(r'^\*\*[^*]+\*\*\s*[:：]?\s*$', s):
+            continue
+        s = r_strip_md(s)
+        if s and not PLACEHOLDER.fullmatch(s):
+            result.append(s)
+    return '\n'.join(result)
+
+
+def safe_number(expression):
+    """仅求有界数字四则/幂/开方；不执行名称、属性、下标或任意函数。"""
+    def walk(node, depth=0):
+        if depth > 16:
+            raise ValueError('expression too deep')
+        if isinstance(node, ast.Constant) and type(node.value) in (int, float):
+            value = node.value
+        elif isinstance(node, ast.UnaryOp) and isinstance(node.op, (ast.UAdd, ast.USub)):
+            value = walk(node.operand, depth+1) * (-1 if isinstance(node.op, ast.USub) else 1)
+        elif isinstance(node, ast.BinOp) and type(node.op) in (ast.Add, ast.Sub, ast.Mult, ast.Div, ast.Pow):
+            left, right = walk(node.left, depth+1), walk(node.right, depth+1)
+            if isinstance(node.op, ast.Pow) and abs(right) > 10:
+                raise ValueError('exponent too large')
+            value = {ast.Add: lambda: left+right, ast.Sub: lambda: left-right,
+                     ast.Mult: lambda: left*right, ast.Div: lambda: left/right,
+                     ast.Pow: lambda: left**right}[type(node.op)]()
+        elif isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id == 'sqrt' and len(node.args) == 1 and not node.keywords:
+            value = math.sqrt(walk(node.args[0], depth+1))
+        else:
+            raise ValueError('not pure arithmetic')
+        if not isinstance(value, (int, float)) or not math.isfinite(value) or abs(value) > 1e15:
+            raise ValueError('out of range')
+        return value
+    if len(expression) > 160:
+        raise ValueError('expression too long')
+    return walk(ast.parse(expression, mode='eval').body)
+
+
+def arithmetic_checks(body):
+    findings = []
+    # 有意错误示例、原题选项及运行输出不自动判成作者算错；代码不会被执行。
+    for kind, text, line, zone, context in r_blocks(body)[0]:
+        if kind not in ('para', 'li', 'formula') or zone != 'main':
+            continue
+        if re.search(r'错误|错法|误写|不应|不等于|不是|❌|wrong|incorrect', text, re.I) or '误解' in (context.get('label') or ''):
+            continue
+        fragments = re.findall(r'(?<!\$)\$(?!\$)([^$\n]+)\$(?!\$)', text)
+        if kind == 'formula':
+            fragments.append(text.replace('$$', ''))
+        for raw in fragments:
+            expr = raw.replace('−', '-').replace('×', '*').replace('÷', '/').replace(r'\times', '*').replace(r'\cdot', '*').replace(r'\approx', '=').replace('≈', '=')
+            expr = re.sub(r'\\(?:left|right|,|;|!)', '', expr)
+            for _ in range(4):
+                expr = re.sub(r'\\frac\{([^{}]+)\}\{([^{}]+)\}', r'((\1)/(\2))', expr)
+                expr = re.sub(r'\\sqrt\{([^{}]+)\}', r'sqrt(\1)', expr)
+            expr = expr.replace('^', '**')
+            expr = re.sub(r'(?<=\d)(?=\()', '*', expr)
+            expr = re.sub(r'(?<=\))(?=\d|\()', '*', expr)
+            expr = re.sub(r'(?<=\d),(?=\d{3}(?:\D|$))', '', expr)
+            parts = expr.strip().rstrip('.,。').split('=')
+            if len(parts) < 2 or not all(parts):
+                continue
+            # 等式中出现变量/百分号/单位/未支持LaTeX时整条跳过，不猜参数或单位。
+            try:
+                values = [safe_number(part.strip()) for part in parts]
+            except (ValueError, SyntaxError, TypeError, ZeroDivisionError, OverflowError):
+                continue
+            for left, right, displayed in zip(values, values[1:], parts[1:]):
+                digits = re.fullmatch(r'\s*[+-]?\d+(?:\.(\d+))?\s*', displayed)
+                tol = (0.5 * 10**(-len(digits[1] or ''))) if digits else 1e-8
+                if abs(left-right) > max(tol, abs(left)*1e-9) + 1e-10:
+                    findings.append(dict(code='C_ARITHMETIC', section=context.get('sec', ''),
+                                         line=line, message='纯数字等式与显示精度不符，须回算：'+raw,
+                                         evidence=raw))
+                    break
+    return findings
+
+
+def source_contract_checks(body, manifest_path):
+    """清单须人工从原件建立；只认证源版本/字面完整/声明的逐问锚点，不认证语义。"""
+    result = dict(status='unverified_without_manifest', checked_questions=0, hard=[], warnings=[])
+    if not manifest_path:
+        return result
+    def fail(message, section=''):
+        result['hard'].append(dict(code='C_SOURCE_CONTRACT', section=section, line=0, message=message, evidence=str(manifest_path)))
+    try:
+        path = Path(manifest_path)
+        data = json.loads(path.read_text(encoding='utf-8'))
+        if data.get('schema') != 'note-source-checks-v1' or not isinstance(data.get('questions'), list) or not data['questions']:
+            raise ValueError('须有schema note-source-checks-v1与非空questions')
+        sources = data['sources']
+        verified = set()
+        for source_id, source in sources.items():
+            p = path.parent / source['path']
+            if not re.fullmatch(r'[a-fA-F0-9]{64}', source['sha256']):
+                raise ValueError('source sha256无效')
+            if hashlib.sha256(p.read_bytes()).hexdigest().lower() != source['sha256'].lower():
+                fail('原题源版本哈希不符：'+source_id)
+            else:
+                verified.add(source_id)
+        sections = content_sections(body)
+        def normalize(s):
+            s = unicodedata.normalize('NFKC', s)
+            s = re.sub(r'(?m)^\s*>\s?', '', s)
+            return re.sub(r'\s+', ' ', s).strip()
+        seen = set()
+        for question in data['questions']:
+            qid = question['id']
+            if not isinstance(qid, str) or not qid or qid in seen:
+                raise ValueError('题号为空或重复')
+            seen.add(qid)
+            section = question['section']
+            matches = [s for s in sections if s['number'] == section or s['heading'] == section]
+            if len(matches) != 1 or question['source_id'] not in verified:
+                fail(qid+'：正文定位不唯一/缺失或源版本未核', section)
+                continue
+            question_text = strip_code(matches[0]['text'])
+            content = normalize(question_text)
+            original = question['original']
+            units = question['answers']
+            if not isinstance(original, str) or not original.strip() or not isinstance(units, list) or not units:
+                raise ValueError(qid+'：须有完整original和逐问answers')
+            if normalize(original) not in content:
+                fail(qid+'：缺完整原题，不能以题号/中文概述替代', section)
+            options = question.get('options', {})
+            if not isinstance(options, dict):
+                raise ValueError('options须为字母到完整选项的对象')
+            for letter, option in options.items():
+                if not re.fullmatch('[A-Z]', letter) or not isinstance(option, str) or not option.strip():
+                    raise ValueError('选项字母/全文无效')
+                if normalize(option) not in normalize(original) or not re.search(r'(?:^|\n)\s*'+letter+r'[.)、]\s', original):
+                    raise ValueError(qid+'：original须包含声明的原选项字母和全文'+letter)
+                if normalize(option) not in content or not re.search(r'(?:^|\n)\s*(?:>\s*)?(?:[-*]\s*)?'+letter+r'[.)、]\s', question_text):
+                    fail(qid+'：缺原字母或完整选项'+letter, section)
+            # 英文参考可以在引用/斜体中；排除程序后再匹配，不把原题本身当答案。
+            answers_text = normalize(strip_code(matches[0]['text']))
+            answer_ids = set()
+            for unit in units:
+                if unit['id'] in answer_ids:
+                    raise ValueError('逐问答案id重复')
+                answer_ids.add(unit['id'])
+                chinese, english = unit['chinese'], unit['english']
+                if not isinstance(chinese, str) or not CJK.search(chinese) or not isinstance(english, str) or not re.search('[A-Za-z]', english):
+                    raise ValueError(qid+'：逐问中英答案锚点无效')
+                if chinese.strip() in ('中文解析', '中文题意', '答案') or re.fullmatch(r'English reference answers?', english.strip(), re.I):
+                    raise ValueError(qid+'：标签不是答案证据')
+                if normalize(chinese) not in answers_text or normalize(chinese) in normalize(original):
+                    fail(qid+'/'+unit['id']+'：缺声明的中文解析', section)
+                if normalize(english) not in answers_text or normalize(english) in normalize(original):
+                    fail(qid+'/'+unit['id']+'：缺独立英文参考答案', section)
+            result['checked_questions'] += 1
+        result['status'] = 'contract_failed' if result['hard'] else 'manifest_contract_passed'
+    except (OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
+        fail('原题清单无效，不能跳过：'+str(exc))
+        result['status'] = 'contract_failed'
+    return result
+
+
+def assess_current(t, fn, total=0, tut=False, source_checks=None):
+    body = body_T(t) if tut else body_M(t)
+    sections = content_sections(body)
+    hard, warnings = [], []
+    if not sections:
+        hard.append(dict(code='C_STRUCTURE', section='§2', line=0,
+                         message='未找到教学单元，空正文不能获得机器通过', evidence='### / ####'))
+    shared_steps = [s['number'] for s in sections if any(NUM_STEP.search(line) for line in s['text'].splitlines() if not line.lstrip().startswith('>'))]
+    offset = t[:t.index(body)].count('\n') if body else 0
+    def add(code, s, message, blocking=False, evidence=''):
+        (hard if blocking else warnings).append(dict(code=code, section=s['heading'], line=s['line']+offset,
+                                                     message=message, evidence=evidence))
+    for section in sections:
+        content = section['text']
+        own = author_text(section['own'])
+        if not own and section['container'] and not re.search(chr(96)*3, section['own']):
+            continue
+        if not own:
+            add('C_EXPLANATION', section, '未找到作者解释；标题、原题、标签和占位句不能代替讲解', True)
+        # 一个连续教学单元统合子步骤；叶节不因共享推导或数字例而反复报缺。
+        if section['level'] == 3:
+            author = author_text(content)
+            formulas = [text for kind, text, _, _, _ in r_blocks(content)[0] if kind == 'formula']
+            computational = any(re.search(r'\\(?:frac|sum|sqrt|prod)|[+\-−*/×÷]', formula) for formula in formulas)
+            steps = any(NUM_STEP.search(line) for line in content.splitlines() if not line.lstrip().startswith('>'))
+            if computational and not steps:
+                add('C_CALCULATION_STEPS', section,
+                    '本单元有计算公式但未找到数字代入过程；给定结果或API调用不能替代可复算例'
+                    + ('。本篇其他单元有代入，请核是否为同一机制及是否需就近回指：'+', '.join(shared_steps) if shared_steps else ''),
+                    not shared_steps)
+            if formulas and not re.search(r'符号|单位|其中|表示|代表|分别|意味着|是|为|含义', author):
+                add('C_SYMBOLS', section, '公式符号/单位解释线索不足，须核具体含义与适用条件')
+        # 程序解释接受普通段落、表格、编号步骤与代码注释，不要求固定加粗标题。
+        code_pattern = re.compile(r'(?m)^'+chr(96)*3+r'(python|py|sql|bash|sh|r|R)\s*\n([\s\S]*?)^'+chr(96)*3+r'\s*$', re.M)
+        for code in code_pattern.finditer(section['own']):
+            pre = author_text(section['own'][:code.start()])
+            next_code = code_pattern.search(section['own'], code.end())
+            post = author_text(section['own'][code.end():next_code.start() if next_code else None])
+            comments = re.search(r'(?m)^\s*(?:#|--)\s*\S', code[2])
+            if not pre and not comments:
+                add('C_CODE_PURPOSE', section, '代码前未找到任务/输入说明或有效行注释', True)
+            if not post and not comments:
+                add('C_CODE_EXPLANATION', section, '代码后未找到动作/输出/关键行解释', True)
+        if own and not re.search(r'因为|因此|所以|为了|避免|否则|意味着|若|如果|不能|误解|失败|作用|对应|输入|输出|这会|使|从而|理由|先|再|更新|取|选择', own):
+            add('C_REASONING_REVIEW', section, '找到正文，但理由/过程线索不足；人工核对，不能凭字数断言缺失')
+    for item in arithmetic_checks(body):
+        item['line'] += offset
+        hard.append(item)
+    contract = source_contract_checks(body, source_checks)
+    hard.extend(contract['hard'])
+    if total and not tut:
+        declared = sorted(set(int(n) for n in re.findall(r'(\d+)\s*页', frontmatter(t).get('source', ''))))
+        ambiguous = bool(declared and (len(declared) > 1 or total not in declared))
+        missing = sorted(set(range(1, total+1)) - pages_in(strip_code(body), total) - noncontent_pages(t, total))
+        contract['page_references'] = dict(requested_total=total, declared_totals=declared,
+                                          status='ambiguous_version' if ambiguous else 'reference_check_only')
+        if ambiguous:
+            warnings.append(dict(code='C_PAGE_VERSION', section='source/--pages', line=0,
+                                 message='页数与source声明冲突或存在多版本，须绑定源版本后逐页核；不把另一版页数套到旧页码。', evidence=str(declared)))
+        elif missing:
+            hard.append(dict(code='C_PAGE_REFERENCES', section='§2', line=0, message='内容页缺正文页码归属：'+str(missing), evidence=str(missing)))
+    # 不持有源题清单时，不能声称排除了漏整题、漏末选项或错抄原文。
+    return dict(spec=CURRENT_SPEC, hard=hard, warn=warnings, source_coverage=contract,
+                limits=['机检通过不代表解释正确或读者已理解；页码引述不证明该页已实质讲解。',
+                        '纯数字等式只核支持的四则/幂/开方及显示精度；不执行代码、不验证符号推导或模型结果。',
+                        '无显式源题清单时，无法验证漏整题/原文保真；有清单也只核其字面契约，清单抄写与逐问语义仍需回源。'])
+
+
 # ---------------------------------------------------------------- 输出
 def fmt(v):
     if isinstance(v, (list, tuple)):
@@ -1104,13 +1318,17 @@ def fmt(v):
 
 def main():
     ap = argparse.ArgumentParser(add_help=False)
-    ap.add_argument('path'); ap.add_argument('--pages', type=int, default=0); ap.add_argument('--tut', action='store_true')
+    ap.add_argument('path', nargs='?'); ap.add_argument('--pages', type=int, default=0); ap.add_argument('--tut', action='store_true')
     ap.add_argument('--json', action='store_true'); ap.add_argument('--strict', action='store_true'); ap.add_argument('--legacy', action='store_true')
     ap.add_argument('--sections', action='store_true'); ap.add_argument('-h', '--help', action='store_true')
     ap.add_argument('--readability', action='store_true'); ap.add_argument('--readability-strict', action='store_true')
+    ap.add_argument('--profile', choices=('current', 'historical'), default='current')
+    ap.add_argument('--source-checks')
     a = ap.parse_args()
     if a.help: print(__doc__); return 0
     fn = a.path
+    if not fn: print(__doc__); return 2
+    if a.profile == 'historical' and a.source_checks: print('原题清单须在current模式核对'); return 2
     if not os.path.exists(fn): print('文件不存在:', fn); return 2
     t = io.open(fn, encoding='utf-8').read()
     fm = frontmatter(t)
@@ -1123,24 +1341,44 @@ def main():
     probs, info = legacy_checks(t, TOTAL, tut)
     res = evaluate_T(t, fn, strict) if tut else evaluate_M(t, fn, TOTAL, strict)
     if res is None: print('找不到 §2 正文，无法评估'); return 2
+    historical = dict(spec=SPEC_DATE, G=res['G'], E=res['E'], verdict=res['verdict'])
+    C = None
+    if a.profile == 'current':
+        C = assess_current(t, fn, TOTAL, tut, a.source_checks)
+        res['G'] = {}
+        res['E'] = [(x['section'], '待核线索', [x['message']]) for x in C['warn']]
+        res['verdict'] = 'FAIL（现行内容阻塞%d项）' % len(C['hard']) if C['hard'] else 'PASS（机器可验证项；仍须教学、计算运行与原题回源核对）'
+        if probs: res['verdict'] = 'FAIL（L格式问题%d项）' % len(probs)
+        if tut and 'code_cells' in res['summary']:
+            res['summary']['code_blocks_observed'] = res['summary'].pop('code_cells')
+
     print('=' * 100)
-    print('笔记质量量表  ', os.path.basename(fn), '  模式:', 'strict' if strict else 'legacy', '  status:', fm.get('status', '?'))
+    print('笔记质量量表  ', os.path.basename(fn), '  模式:', a.profile + ('/strict' if strict else '/legacy'), '  status:', fm.get('status', '?'))
     print('-' * 100)
     print('【L 合规检查】')
     for k, v in info.items(): print('  ', k, ':', fmt(v))
     for p in probs: print('   ✗', p)
     if not probs: print('   ✓ 七项无问题（L1 未讲解页见上，封面/目标页允许）')
-    print('【G 硬门槛】')
-    for k, (val, ok) in res['G'].items():
-        mark = '✓' if ok else ('—' if ok is None else '✗')
-        print('   %s %-42s %s' % (mark, k, fmt(val)))
-    print('【E 元素清单】 %s' % ('计入判定' if strict else '只报 WARN'))
-    if not res['E']: print('   ✓ 全部小节元素齐全')
-    for num, ty, miss in res['E']:
-        print('   %s §%s [%s] %s' % ('✗' if strict else '△', num, ty, '；'.join(miss)))
+    if a.profile == 'historical':
+        print('【G 硬门槛】')
+        for k, (val, ok) in res['G'].items():
+            mark = '✓' if ok else ('—' if ok is None else '✗')
+            print('   %s %-42s %s' % (mark, k, fmt(val)))
+        print('【E 元素清单】 %s' % ('计入判定' if strict else '只报 WARN'))
+        if not res['E']: print('   ✓ 全部小节元素齐全')
+        for num, ty, miss in res['E']:
+            print('   %s §%s [%s] %s' % ('✗' if strict else '△', num, ty, '；'.join(miss)))
+    else:
+        print('【现行内容检查】字数/固定标签/类比配额不计FAIL')
+        for x in C['hard']: print('   ✗ %s 行%s §%s %s' % (x['code'], x['line'] or '—', x['section'], x['message']))
+        for x in C['warn']: print('   △ %s 行%s §%s %s' % (x['code'], x['line'] or '—', x['section'], x['message']))
+        if not C['hard']: print('   ✓ 未报确定性阻塞；不是教学完整证明')
+        print('   原题清单:', C['source_coverage']['status'], '核对题数:', C['source_coverage']['checked_questions'])
+        for limitation in C['limits']: print('   范围:', limitation)
+        print('   历史G/E统计已保存；查看旧配额详情用 --profile historical')
     if a.sections:
         print('【逐小节明细】')
-        hdr = ['num', 'type', 'cjk', 'own_cjk', 'bq_ratio', 'terms', 'pages', 'need_cjk', 'alt_angles', 'misc_n', 'misc_reason', 'formula_n', 'numex_step', 'has_so', 'first_kind']
+        hdr = (['num', 'type', 'cjk', 'own_cjk', 'bq_ratio', 'terms', 'pages', 'need_cjk', 'alt_angles', 'misc_n', 'misc_reason', 'formula_n', 'numex_step', 'has_so', 'first_kind'] if a.profile == 'historical' else ['num', 'cjk', 'pages', 'formula_n', 'numex_step', 'first_kind'])
         print('   ' + ' | '.join(hdr))
         for r in res['rows']:
             print('   ' + ' | '.join(str(r.get(h, '') if h != 'pages' else len(r.get('pages', []))) for h in hdr))
@@ -1176,7 +1414,7 @@ def main():
     print('【判定】', res['verdict'], '' if not probs else ' + L 合规问题 %d 条' % len(probs))
     print('=' * 100)
     if a.json:
-        out = dict(file=fn, verdict=res['verdict'], legacy_problems=probs, legacy_info=info, G={k: [v[0], v[1]] for k, v in res['G'].items()},
+        out = dict(file=fn, profile=a.profile, C=C, historical=historical, verdict=res['verdict'], legacy_problems=probs, legacy_info=info, G={k: [v[0], v[1]] for k, v in res['G'].items()},
                    E=res['E'], summary=s, sections=[{k: v for k, v in r.items() if k != 'first_para'} for r in res['rows']],
                    R=dict(strict=r_strict, stats=st_, hard=R['hard'], warn=R['warn']))
         print('JSON:' + json.dumps(out, ensure_ascii=False, default=str))

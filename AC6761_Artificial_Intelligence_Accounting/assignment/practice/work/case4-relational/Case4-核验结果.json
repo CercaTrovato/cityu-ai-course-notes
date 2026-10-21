@@ -1,0 +1,236 @@
+{
+  "checks": [
+    {
+      "check": "Q3b拆分JOIN无损还原，保留两个Andy编号",
+      "actual": [
+        [
+          "45631",
+          "C123",
+          "Andy",
+          21
+        ],
+        [
+          "63123",
+          "C124",
+          "Andy",
+          21
+        ],
+        [
+          "132123",
+          "C125",
+          "Jennifer",
+          29
+        ],
+        [
+          "313213",
+          "C126",
+          "Arlie",
+          33
+        ]
+      ],
+      "expected": [
+        [
+          "45631",
+          "C123",
+          "Andy",
+          21
+        ],
+        [
+          "63123",
+          "C124",
+          "Andy",
+          21
+        ],
+        [
+          "132123",
+          "C125",
+          "Jennifer",
+          29
+        ],
+        [
+          "313213",
+          "C126",
+          "Arlie",
+          33
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "check": "Q4五个收银员保留及分组汇总",
+      "actual": [
+        [
+          "C1",
+          "F",
+          2,
+          500
+        ],
+        [
+          "C2",
+          "G",
+          0,
+          0
+        ],
+        [
+          "C3",
+          "H",
+          0,
+          0
+        ],
+        [
+          "C4",
+          "I",
+          0,
+          0
+        ],
+        [
+          "C5",
+          "J",
+          2,
+          500
+        ]
+      ],
+      "expected": [
+        [
+          "C1",
+          "F",
+          2,
+          500
+        ],
+        [
+          "C2",
+          "G",
+          0,
+          0
+        ],
+        [
+          "C3",
+          "H",
+          0,
+          0
+        ],
+        [
+          "C4",
+          "I",
+          0,
+          0
+        ],
+        [
+          "C5",
+          "J",
+          2,
+          500
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "check": "Q4金额总数",
+      "actual": 1000,
+      "expected": 1000,
+      "passed": true
+    },
+    {
+      "check": "Q3a编号前导零保留",
+      "actual": [
+        "05233",
+        "05234",
+        "05235"
+      ],
+      "expected": [
+        "05233",
+        "05234",
+        "05235"
+      ],
+      "passed": true
+    },
+    {
+      "check": "Q3a Stephen主键NULL拒绝",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "check": "Q3a空字符串主键拒绝",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "check": "Q4悬空Cashier外键拒绝",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "check": "Q4收款缺Cashier拒绝",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "check": "Q4重复CashR主键拒绝",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "check": "同名同龄可保留为不同客户",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "check": "PK/FK整体检查",
+      "actual": [],
+      "expected": [],
+      "passed": true
+    },
+    {
+      "check": "Q2无关联退货头需业务核对（FK不自动防止）",
+      "actual": [
+        "R-EMPTY"
+      ],
+      "expected": [
+        "R-EMPTY"
+      ],
+      "passed": true
+    }
+  ],
+  "cashier_summary": [
+    [
+      "C1",
+      "F",
+      2,
+      500
+    ],
+    [
+      "C2",
+      "G",
+      0,
+      0
+    ],
+    [
+      "C3",
+      "H",
+      0,
+      0
+    ],
+    [
+      "C4",
+      "I",
+      0,
+      0
+    ],
+    [
+      "C5",
+      "J",
+      2,
+      500
+    ]
+  ],
+  "checks_passed": 12,
+  "currency": "not specified by question",
+  "q2_example_is_supplement": true,
+  "official_solution_verified": false
+}

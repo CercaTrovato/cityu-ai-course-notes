@@ -71,6 +71,15 @@
 | TESH / cache | Cash | S4，按讲义类名称 |
 | counter receivable | accounts receivable | S4 `03:56`，讲义p.14 |
 | stock（基数语境） | star / * | S4 `30:16`–`37:30`，字母位置仍不确定 |
+| IE / IEA / IE model | REA / REA model | AC6761 S6 |
+| SEAR / CER / share / fair | Sale | AC6761 S6 |
+| cash reimbursement | Cash Disbursement | AC6761 S6 |
+| marketable interest / particularities | multiplicities | AC6761 S6 |
+| IE / IEA / IE model | REA / REA model | AC6761 S6 |
+| share / fair / SEAR | Sale | AC6761 S6 |
+| billboard inventory / support | Surfboard inventory / Surfboard | AC6761 S6 Case 5 |
+| cash reimbursement | Cash Disbursement | AC6761 S6 |
+| AP clerk 误听片段 | A/P Clerk | AC6761 S6 |
 
 ## IS5542 · GenAI in Business
 
@@ -87,6 +96,29 @@
 | LabBench | LiveBench | L2 |
 | artificial generated intelligence | artificial general intelligence | L2 |
 | 数字口误：AlexNet "2021"（应 2012）、ImageNet "2012" 启动（讲义 2007）、Mistral "\$1.15"（讲义 \$1.50）、LiveBench "65.96"（讲义 75.96） | 以讲义为准 | L2 |
+| Deep Neutral Network | Deep Neural Network | IS5542 M03 `12:11` |
+| Daven | Devin | IS5542 M03 `14:22` |
+| Anthropocene | Anthropic | IS5542 M03 `14:54` |
+| USP plug | USB-C plug | IS5542 M03 `15:26` |
+| hardness / Harness | harness | IS5542 M03 `19:35`–`20:16`、`34:32` |
+| pools | tools | IS5542 M03 `39:32`–`40:13`、`45:49` |
+| MCT / MDP / model Compact Protocol | MCP / Model Context Protocol | IS5542 M03 `46:28`、`48:29`、`48:47` |
+| contacts / complex management | context / context management | IS5542 M03 `51:47`、`54:02` |
+| cloud.mdfl | CLAUDE.md file | IS5542 M03 `53:09` |
+| non-stop MD / notes.md fail | NOTES.md / notes file | IS5542 M03 `52:07`、`52:35` |
+| e-files logic | if-else logic | IS5542 M03 `53:29` |
+| Hasselbeck | Hassabis | `00:58`–`02:13` 世界模型视频 |
+| hardness / hardens | harness | `19:35`–`20:31`、`34:32`–`41:39` agent runtime |
+| model contacts protocol / MCT / MDP | Model Context Protocol / MCP | `46:28`–`51:22` |
+| REG / RAC | RAG | `56:21`–`58:20` agentic RAG |
+| cloud code / COCO | Claude Code / Codex | `59:22`–`01:01:13` 主动学习建议 |
+| PATROF / patch-up | Petrov | `01:05:16`–`01:08:16` Petrov rule |
+| Open Cloud / overclock / open file | OpenClaw | `01:23:15`–`01:36:07` 架构 |
+| all the research / outdoor research | autoresearch | `01:24:31`–`01:45:20` 架构 |
+| Stript | Stripe | `01:47:26`–`01:48:13` 软件工程案例 |
+| Klama / Glamour | Klarna | `01:52:03`–`1:53:31` 客服案例 |
+| CERA | Sierra | `01:50:49`–`01:51:18` 客服 ARR |
+| AlphaFloat / AlphaFolding / Protein4 | AlphaFold / protein folding | `01:58:38`–`02:02:22` |
 
 ## IS5113 · AI Ethics and Regulations
 
@@ -148,6 +180,19 @@
 | black-bottom AI | black-box AI | M05 `01:52:51` |
 | expandability（accuracy 权衡语境） | explainability | M05 `01:56:55` |
 | 50 pages（Part 2 页数） | 15 pages（讲义 p.1 + `05:23` 总 30 页；音频未回听） | M05 `05:18` |
+| Virginia / KL / Paris | GDPR / relevant camera notice rules [?] | T1 `01:25`–`04:54` 隐私监管语境，专名破损不补成确定法域 |
+| inference / inferior data | inferred information / inferred data | T1 `18:39`–`33:53` |
+| actors | artists | T1 `21:30`–`22:26` Van Gogh / generative AI 训练资料 |
+| dynamic privacy, consent protocol | dynamic privacy consent protocol | T1 `44:24`–`46:15` |
+| CDBR / TDPR 类口误 | GDPR / PDPO（按明确法域另核） | T1 `49:56`–`51:19` |
+| censored everywhere | sensors everywhere | T1 `00:27`–`00:49`、`51:39`–`52:51` |
+| inferior data | inferred data | IS5113 M06 T1 `19:29`、`25:44` |
+| goblin | gibbon | IS5113 M06 T1 `01:17:09` |
+| data portioning | data poisoning | IS5113 M06 T1 `01:30:05`、`01:32:01` |
+| Trump injection / Chrome injection | prompt injection | IS5113 M06 T1 `01:40:07`、`02:10:41` |
+| Tropic / entropic | Anthropic | IS5113 M06 T1 `02:00:40`、`02:13:10` |
+| OpenAI's open model | OpenAI o1 | IS5113 M06 T1 `02:07:42` |
+| Ashmole three-law | Asimov's Three Laws | IS5113 M06 T1 `02:17:04` |
 
 ## IS6400 · Business Data Analytics（技术课：库名 / 指标名易错；M03 起为本地 Whisper，错法是按发音写成常见词）
 
@@ -250,3 +295,29 @@
 | secular example | sklearn.ensemble | B01:11:26，原cell8/10/12 |
 
 A股票名、B阈值/映射、TA200/15marks仍不确定，不作为确定校词；按原件2000/50保留边界，不改写源文本。
+
+## IS5542 M05 · Guest Lecture 2（2026-10-18）
+
+| 原转写 | 书面校词 | 原来源与边界 |
+|---|---|---|
+| FTE / FDU | FDE（Forward Deployed Engineer） | M05 `00:22`、`23:42` 等；B deck 有书面拼写 |
+| German notebook / Gemini novel / Noble LM | Gemini / NotebookLM（依局部语境分别判断） | M05 `13:22`、`19:43`、`41:00`；只在 deck／上下文足以区分时使用 |
+| LitesLM / Lite Liam | `[?]` 工具名未核 | M05 `15:11`、`38:54`；无书面证据，不确定写成 LiteLLM |
+| Panetti / penalty | `[?]` 机构／产品名未核 | M05 `02:21`–`02:32`；FDE 语境不足以确定为 Palantir |
+| Moonshot K3 | `[?]` 原转写型号未核 | M05 `53:30`；不猜 Kimi K2 或其他具体型号 |
+
+原转录不改；确定校词只来自讲义书面拼写，其他项保留 `[?]`。
+
+## EF5560 M06 · 四源转录（2026-10-18）
+
+| 原转写 | 书面校词 | 原来源与边界 |
+|---|---|---|
+| exchange rate wicks | exchange-rate risk | M06 P2 `00:00`；按讲义风险语境 |
+| WalletBridge | Ronin Bridge | M06 P2 `02:33`；按讲义 p.28 |
+| Tang Xin / Tenshin | Tencent | M06 P1／P2 多处；按公司语境 |
+| Kinsey / Kinsey's | Kinexys | M06 P3 `14:39` 起；按讲义 p.43–45 |
+| Trayland | TradeLens | M06 P4 `01:05` 起；按讲义 p.50–51 |
+| 40 percent now 25 percent | 40 minutes to 25 minutes | M06 P4 `06:22`；按讲义 p.52 |
+| funding cost 400,000 | funding cost RMB 4,000 | M06 P4 `07:36`；按讲义 p.53 |
+
+数字校词只用于解释课堂口语与讲义冲突，不修改原转录；引文改写仍按方括号规则。

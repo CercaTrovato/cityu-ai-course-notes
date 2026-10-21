@@ -1,22 +1,25 @@
-# ---- 私密 / 本机相关（绝不能进仓库）----
-# .obsidian/plugins/ 含 Remotely Save 的 data.json（WebDAV 地址与密码）；workspace*.json 是本机窗口布局
+# 2026-10-21：本人个人材料、作业、源音频与核验资料允许发布。
+# 允许跟踪不等于已扫描、已上传；见 _meta/备份与公开发布规则.md。
+
+# 认证、同步及本机运行配置：可能含凭据，不能直接发布
 .obsidian/plugins/
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
-# 个人邮件总结 / 个人简历素材
-dailyemailsummary/
-_meta/项目简介-简历参考.md
-Test on iPhone.md
 .claude/settings.local.json
 .claude/*.local.*
+.env
+.env.*
+!.env.example
+!.env.template
+*.pem
+*.key
 
-# ---- 课堂录音源音频（transcripts/ 同目录，只保留转录文本；GitHub 单文件 100MB 上限）----
-*.mp3
-*.wav
-*.m4a
-*.flac
+# 第三方学生个人资料：发布前另做去除个人信息的副本，原件不动
+AC6761_Artificial_Intelligence_Accounting/course_files_export/AC6761 group namelist.xls
+AC6761_Artificial_Intelligence_Accounting/course_files_export/AC6761 mid-term date, venue, and seating plan.xls
+IS6400_Business_Data_Analytics/course_files_export/project*schedule*.xlsx
 
-# ---- 临时与生成物 ----
+# 缓存、锁文件、临时输出和浏览器运行目录
 __MACOSX/
 __pycache__/
 *.pyc
@@ -26,23 +29,18 @@ desktop.ini
 *.tmp
 *.bak
 ~$*
-
-# ---- 说明 ----
-# course_files_export/ 与 transcripts/ 有意保留在仓库里，用途与限制见 NOTICE.md。
-# code/output/ 的图与表是笔记引用的产物，保留。
-
-# 完整性快照（每次任务前后重建，不入库）
-_meta/tools/integrity_manifest.json
-
-# ---- 私人作业成品（含学号或个人作答；公开仓库不收录）----
-*/assignment/
-# 旧版 IS6400 私人提交路径；文件已迁入私有 assignment/
-*/assignments/
-
-# 2026-10-15 发布边界：私人行政材料、抓取证据和日志
 .playwright-mcp/
 *.log
-AC6761_Artificial_Intelligence_Accounting/course_files_export/AC6761 group namelist.xls
-AC6761_Artificial_Intelligence_Accounting/course_files_export/AC6761 mid-term date, venue, and seating plan.xls
-AC6761_Artificial_Intelligence_Accounting/_meta/canvas-materials-20261011.json
-IS6400_Business_Data_Analytics/_meta/M06-T07-Notion回读-2026-10-14.json
+
+# 原始音频存 Google Drive，GitHub 保留下载索引
+*.mp3
+*.m4a
+*.wav
+*.flac
+
+# Notebook 自动检查点及虚拟文档属于缓存
+.ipynb_checkpoints/
+.virtual_documents/
+
+# 每次重建的完整性快照不能恢复正文，不作为发布资料
+_meta/tools/integrity_manifest.json

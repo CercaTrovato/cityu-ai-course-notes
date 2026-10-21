@@ -53,7 +53,7 @@ for f in files:
         if in_code(m.start(), spans): continue
         name = m.group(1).strip().rstrip('\\'); base = name.split('/')[-1]
         if name.startswith('http') or re.search(r'\.(png|jpg|jpeg|svg|gif|pdf)$', name, re.I): continue
-        if not (os.path.exists(name + '.md') or byname.get(base)):
+        if not (os.path.isfile(name) or os.path.exists(name + '.md') or byname.get(base)):
             print('目标缺失(无锚点)', f, m.group(0)); bad += 1
     for m in re.finditer(r'\[[^\]]*\]\(#([^)]*)\)', t):
         if in_code(m.start(), spans): continue

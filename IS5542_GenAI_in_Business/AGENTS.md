@@ -21,7 +21,7 @@
 | `IS5542 GenAI in Business Syllabus 2026 Sem A.pdf` | ✅ 已读，见 `_prep/课程前置资料.md` |
 | `GenAI in Business IS5542-Lecture 1.pptx`（15MB） | ✅ 已成笔记 `notes/M01-…`（v1.0，转录已合并） |
 | `IS5542-Lecture 2.pdf`（88 页，3.8MB，macOS 导出，无备注） | ✅ 已成笔记 `notes/M02-模型全景-基准评测与提示设计.md`（**v1.0**，转录已合并 2026-09-15）。⚠️ 页脚显示它只是源 deck 的 Part 1 / 1B / 2；🎙️ 9/19 讲 agent + RAG |
-| `IS5542-Lecture 3.pdf`（80 页，4.6MB，PptxGenJS 导出，无备注；13 页 NotebookLM 信息图） | ✅ 已成笔记 `notes/M03-AI-agent-从harness到部署.md`（**v0.9 课前预习版**，2026-09-18）。agent 占绝大部分，RAG 只有 p.32 一页，微调 / function calling 未出现；转录待 9/19 |
+| `IS5542-Lecture 3.pdf`（80 页，4.6MB，PptxGenJS 导出，无备注；13 页 NotebookLM 信息图） | ✅ 已成笔记 `notes/M03-AI-agent-从harness到部署.md`（**v1.0**，2026-10-21融合）。784段转录已纳入；RAG课堂展开反馈回路与学习方法，但切块/向量索引/重排、微调/function calling仍未作为完整工程链讲授 |
 | `IS5542 Project Template.pptx`（9 页） | ✅ 已转写进 `_meta/作业与DDL.md` §2 |
 | `Announcementscreenshot/`（Canvas 公告截图 ×2，9/11） | ✅ 已并入 `_meta/作业与DDL.md`、`00-课程总览.md`（项目 11/28 录像提交；六场客座主题、强制出席、反思 3%、内容进期末） |
 
@@ -73,8 +73,8 @@
 - [ ] 确认上课时间与班次
 - [ ] 是否有编程作业 → 若有，规则已就绪（根级 `_meta/材料处理规则.md` §7/§8）
 - [x] ✅ **L2 转录**已合并（2026-09-15，`transcripts/M02-transcript.txt`，552 段 `00:00→02:07:20`，连续；两次课间录音暂停；开头可能略晚于开课——p.6 日程未录到）
-- [x] ✅ **9/19 讲义已到并成笔记**（M03 v0.9）：agent + harness；RAG 只一页；微调 / function calling 未出现
-- [ ] M03 转录尚未见于 `transcripts/`；取得后按 transcript-merge SOP 合并，再评估能否升 v1.0，重点回填 §9.2 五项（综述出处 / 讨论题自答 / RAG 是否展开 / 微调是否出现 / 项目要求）
+- [x] ✅ **9/19 讲义已到并成笔记**（M03现v1.0，2026-10-21）：agent + harness；RAG讲义一页、课堂回路已补；微调/function calling未出现
+- [x] M03 转录已按规则融合（2026-10-21）：784段、57课堂格，缺开头与末尾边界保留；讨论题没有正式课堂答案，考试明示0。
 
 ## 可读性规则入口（2026-10-09）
 

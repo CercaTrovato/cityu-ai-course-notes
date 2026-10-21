@@ -1,0 +1,1203 @@
+{
+  "file": "E:\\app-data\\codex\\scratchpad\\ge-remediation-20261021\\time-series\\M07-时间序列I-平滑趋势与季节性.md",
+  "verdict": "FAIL",
+  "legacy_problems": [],
+  "legacy_info": {
+    "L1_未讲解页": [],
+    "L1_省略前缀连写": [],
+    "L5_围栏数": 6,
+    "L5_details": [
+      4,
+      4
+    ]
+  },
+  "G": {
+    "G1 密度 §2 字/内容页 ≥ 250": [
+      168,
+      false
+    ],
+    "G2a 粒度 术语数/leaf 小节 ≤ 1.6": [
+      1.0,
+      true
+    ],
+    "G2b 粒度 内容页/leaf 小节 ≤ 2.5": [
+      4.2,
+      false
+    ],
+    "G2c 承载术语的小节 ≥ 150 字": [
+      [],
+      true
+    ],
+    "G3a 小节首元素为段落": [
+      [],
+      true
+    ],
+    "G3b 公式有符号表（或符号已在前文解释）": [
+      [],
+      true
+    ],
+    "G3c 有公式的小节有数字例子": [
+      [],
+      true
+    ],
+    "G3d 代码三件套": [
+      [],
+      true
+    ],
+    "G6 ### 单元「所以呢」覆盖率 ≥ 0.80": [
+      [
+        1.0,
+        []
+      ],
+      true
+    ]
+  },
+  "E": [
+    [
+      "全篇",
+      "先修唤醒",
+      [
+        "先修概念首次使用无一句话唤醒：方差（行 500）、对数（行 146）、梯度（行 689）"
+      ]
+    ],
+    [
+      "2.1",
+      "定义型",
+      [
+        "换个说法角度 0 < 2",
+        "常见误解 0 条 < 2"
+      ]
+    ],
+    [
+      "2.2",
+      "图表读法型",
+      [
+        "常见误解 0 条 < 2"
+      ]
+    ],
+    [
+      "2.3",
+      "公式型",
+      [
+        "换个说法角度 0 < 2",
+        "常见误解 0 条 < 2",
+        "缺 极端/边界情况"
+      ]
+    ],
+    [
+      "2.5",
+      "公式型",
+      [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2",
+        "缺 极端/边界情况"
+      ]
+    ],
+    [
+      "2.6",
+      "公式型",
+      [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2"
+      ]
+    ],
+    [
+      "2.7",
+      "公式型",
+      [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2",
+        "缺「为什么公式长这样」"
+      ]
+    ],
+    [
+      "2.8",
+      "公式型",
+      [
+        "换个说法角度 0 < 2",
+        "常见误解 0 条 < 2"
+      ]
+    ],
+    [
+      "2.9",
+      "公式型",
+      [
+        "换个说法角度 0 < 2",
+        "常见误解 0 条 < 2",
+        "缺 极端/边界情况"
+      ]
+    ]
+  ],
+  "summary": {
+    "file": "E:\\app-data\\codex\\scratchpad\\ge-remediation-20261021\\time-series\\M07-时间序列I-平滑趋势与季节性.md",
+    "total_pages": 45,
+    "noncontent": [
+      1,
+      19,
+      38
+    ],
+    "content_pages": 42,
+    "sec2_cjk": 7066,
+    "note_cjk": 10030,
+    "leaf_n": 10,
+    "concept_n": 10,
+    "terms_n": 10,
+    "strict": true
+  },
+  "sections": [
+    {
+      "sec": "2.1 从普通回归转到有顺序的数据（讲义物理 p.1–6）",
+      "num": "2.1",
+      "level": 3,
+      "cjk": 458,
+      "chars": 737,
+      "own_cjk": 458,
+      "bq_ratio": 0.0,
+      "code_blocks": 0,
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so"
+      ],
+      "type": "定义型",
+      "what_cjk": 48,
+      "why_cjk": 54,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 38,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'y', 'x', 'Y', 'X'}",
+      "formulas": [],
+      "numex_step": 0,
+      "numex_any": 1,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 1,
+      "has_step_table": 0,
+      "has_cmp_table": 0,
+      "has_script": 0,
+      "orig_cjk": 62,
+      "terms": 0,
+      "need_cjk": 1042,
+      "E_miss": [
+        "换个说法角度 0 < 2",
+        "常见误解 0 条 < 2"
+      ]
+    },
+    {
+      "sec": "2.2 时间序列与预测方法地图（讲义物理 p.7–13）",
+      "num": "2.2",
+      "level": 3,
+      "cjk": 723,
+      "chars": 1082,
+      "own_cjk": 652,
+      "bq_ratio": 0.0,
+      "code_blocks": 0,
+      "pages": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so"
+      ],
+      "type": "图表读法型",
+      "what_cjk": 170,
+      "why_cjk": 56,
+      "alt_angles": 1,
+      "alt_nodigit": 1,
+      "alt_cjk": 58,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'h'}",
+      "formulas": [],
+      "numex_step": 0,
+      "numex_any": 0,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 0,
+      "orig_cjk": 302,
+      "terms": 1,
+      "need_cjk": 1027,
+      "E_miss": [
+        "常见误解 0 条 < 2"
+      ]
+    },
+    {
+      "sec": "2.3 模式与分解：水平、趋势、季节和周期（讲义物理 p.14–21）",
+      "num": "2.3",
+      "level": 3,
+      "cjk": 860,
+      "chars": 1389,
+      "own_cjk": 731,
+      "bq_ratio": 0.0,
+      "code_blocks": 0,
+      "pages": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so",
+        "whyf"
+      ],
+      "type": "公式型",
+      "what_cjk": 245,
+      "why_cjk": 47,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 34,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 2,
+      "symtab_syms": "set()",
+      "prose_syms": "{'I', 'S', 'Y', 'C'}",
+      "formulas": [
+        [
+          6,
+          "$$ Y_t=T_t+S_t+C_t+I_t, $$",
+          false
+        ],
+        [
+          12,
+          "$$ Y_t=T_tS_tC_tI_t. $$",
+          false
+        ]
+      ],
+      "numex_step": 2,
+      "numex_any": 3,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 0,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 0,
+      "orig_cjk": 89,
+      "terms": 2,
+      "need_cjk": 1140,
+      "E_miss": [
+        "换个说法角度 0 < 2",
+        "常见误解 0 条 < 2",
+        "缺 极端/边界情况"
+      ]
+    },
+    {
+      "sec": "2.4 移动平均、加权平均与简单指数平滑（讲义物理 p.22–26）",
+      "num": "2.4",
+      "level": 3,
+      "cjk": 1008,
+      "chars": 2868,
+      "own_cjk": 911,
+      "bq_ratio": 0.2,
+      "code_blocks": 1,
+      "pages": [
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so",
+        "whyf",
+        "edge"
+      ],
+      "type": "代码型",
+      "what_cjk": 444,
+      "why_cjk": 140,
+      "alt_angles": 1,
+      "alt_nodigit": 0,
+      "alt_cjk": 50,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 6,
+      "symtab_syms": "{'L', 'w', '\\\\alpha', 'Y'}",
+      "prose_syms": "{'S', '\\\\alpha', 'L', 'Y'}",
+      "formulas": [
+        [
+          6,
+          "$$ \\hat Y_{t+1\\mid t}=\\frac{1}{m}\\sum_{j=0}^{m-1}Y_{t-j} $$",
+          true
+        ],
+        [
+          10,
+          "$$ \\hat Y_{t+1\\mid t}=\\sum_{j=0}^{m-1}w_{j+1}Y_{t-j},\\qquad \\sum_{j=1}^{m}w_j=1 $$",
+          true
+        ],
+        [
+          14,
+          "$$ L_t=\\alpha Y_t+(1-\\alpha)L_{t-1},\\qquad \\hat Y_{t+1\\mid t}=L_t $$",
+          true
+        ],
+        [
+          69,
+          "$$ \\hat Y_{t+1\\mid t}=0.1(100)+0.3(110)+0.6(130)=121. $$",
+          false
+        ],
+        [
+          93,
+          "$$    \\hat Y_{11\\mid 10}=\\frac{168.5+231.8+224.5+192.8+122.9}{5}=188.10.    $$",
+          true
+        ],
+        [
+          98,
+          "$$    L_2=0.2(145.9)+0.8(266.0)=241.98.    $$",
+          true
+        ]
+      ],
+      "numex_step": 7,
+      "numex_any": 15,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 254,
+      "terms": 2,
+      "need_cjk": 242,
+      "E_miss": []
+    },
+    {
+      "sec": "2.5 双重移动平均：从两个滞后中心恢复趋势（讲义物理 p.27–31）",
+      "num": "2.5",
+      "level": 3,
+      "cjk": 570,
+      "chars": 1309,
+      "own_cjk": 501,
+      "bq_ratio": 0.0,
+      "code_blocks": 0,
+      "pages": [
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so",
+        "whyf"
+      ],
+      "type": "公式型",
+      "what_cjk": 125,
+      "why_cjk": 43,
+      "alt_angles": 1,
+      "alt_nodigit": 1,
+      "alt_cjk": 51,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 1,
+      "symtab_syms": "{'L', 'M', 'D'}",
+      "prose_syms": "{'L', 'D', 'M'}",
+      "formulas": [
+        [
+          6,
+          "$$ L_t=2M_t-D_t,\\qquad T_t=\\frac{2(M_t-D_t)}{n-1},\\qquad \\hat Y_{t+k\\mid t}=L_t+kT_t. $$",
+          true
+        ]
+      ],
+      "numex_step": 4,
+      "numex_any": 5,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 0,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 35,
+      "terms": 1,
+      "need_cjk": 680,
+      "E_miss": [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2",
+        "缺 极端/边界情况"
+      ]
+    },
+    {
+      "sec": "2.6 Holt 与 Holt-Winters：递推保存水平、趋势和季节（讲义物理 p.32–35）",
+      "num": "2.6",
+      "level": 3,
+      "cjk": 858,
+      "chars": 2257,
+      "own_cjk": 781,
+      "bq_ratio": 0.0,
+      "code_blocks": 0,
+      "pages": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so",
+        "whyf",
+        "edge"
+      ],
+      "type": "公式型",
+      "what_cjk": 146,
+      "why_cjk": 43,
+      "alt_angles": 1,
+      "alt_nodigit": 1,
+      "alt_cjk": 56,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 11,
+      "symtab_syms": "{'\\\\gamma', 'S', 'L', '\\\\alpha', '\\\\beta'}",
+      "prose_syms": "{'\\\\gamma', 'S', 'L', 'h', '\\\\alpha', 'Y', '\\\\bmod', '\\\\beta'}",
+      "formulas": [
+        [
+          6,
+          "$$ L_t=\\alpha Y_t+(1-\\alpha)(L_{t-1}+T_{t-1}), $$",
+          false
+        ],
+        [
+          10,
+          "$$ T_t=\\beta(L_t-L_{t-1})+(1-\\beta)T_{t-1}, $$",
+          true
+        ],
+        [
+          14,
+          "$$ \\hat Y_{t+k\\mid t}=L_t+kT_t. $$",
+          true
+        ],
+        [
+          20,
+          "$$ L_t=\\alpha\\frac{Y_t}{S_{t-m}}+(1-\\alpha)(L_{t-1}+T_{t-1}), $$",
+          true
+        ],
+        [
+          24,
+          "$$ T_t=\\beta(L_t-L_{t-1})+(1-\\beta)T_{t-1}, $$",
+          true
+        ],
+        [
+          28,
+          "$$ S_t=\\gamma\\frac{Y_t}{L_t}+(1-\\gamma)S_{t-m}, $$",
+          true
+        ],
+        [
+          32,
+          "$$ \\hat Y_{t+k\\mid t}=(L_t+kT_t)S_{t-m+h_m}, $$",
+          true
+        ],
+        [
+          65,
+          "$$    L_5=0.5\\left(\\frac{96}{0.8}\\right)+0.5(100+4)=112.    $$",
+          true
+        ],
+        [
+          69,
+          "$$    T_5=0.25(112-100)+0.75(4)=6.    $$",
+          false
+        ],
+        [
+          73,
+          "$$    S_5=0.2\\left(\\frac{96}{112}\\right)+0.8(0.8)=0.811429.    $$",
+          true
+        ],
+        [
+          77,
+          "$$    \\hat Y_{9\\mid5}=(112+4\\times6)(0.811429)=110.354.    $$",
+          true
+        ]
+      ],
+      "numex_step": 8,
+      "numex_any": 9,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 0,
+      "orig_cjk": 58,
+      "terms": 2,
+      "need_cjk": 142,
+      "E_miss": [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2"
+      ]
+    },
+    {
+      "sec": "2.7 ETS：把误差、趋势、季节写成模型规格（讲义物理 p.36–37）",
+      "num": "2.7",
+      "level": 3,
+      "cjk": 980,
+      "chars": 1795,
+      "own_cjk": 980,
+      "bq_ratio": 0.0,
+      "code_blocks": 0,
+      "pages": [
+        36,
+        37
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so"
+      ],
+      "type": "公式型",
+      "what_cjk": 581,
+      "why_cjk": 54,
+      "alt_angles": 1,
+      "alt_nodigit": 1,
+      "alt_cjk": 44,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 1,
+      "symtab_syms": "set()",
+      "prose_syms": "{'\\\\varepsilon', '\\\\ell', 'Y', 'A', '\\\\sigma', 'F'}",
+      "formulas": [
+        [
+          12,
+          "$$ \\ell=-\\frac{n}{2}\\log(2\\pi\\sigma^2)-\\frac{1}{2\\sigma^2}\\sum_{t=1}^{n}e_t^2. $$",
+          false
+        ]
+      ],
+      "numex_step": 2,
+      "numex_any": 3,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 0,
+      "has_script": 0,
+      "orig_cjk": 73,
+      "terms": 1,
+      "need_cjk": 0,
+      "E_miss": [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2",
+        "缺「为什么公式长这样」"
+      ]
+    },
+    {
+      "sec": "2.8 回归趋势：固定金额增长与固定百分比增长（讲义物理 p.38–41）",
+      "num": "2.8",
+      "level": 3,
+      "cjk": 619,
+      "chars": 1137,
+      "own_cjk": 549,
+      "bq_ratio": 0.0,
+      "code_blocks": 0,
+      "pages": [
+        38,
+        39,
+        40,
+        41
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so",
+        "whyf",
+        "edge"
+      ],
+      "type": "公式型",
+      "what_cjk": 189,
+      "why_cjk": 42,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 39,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 2,
+      "symtab_syms": "{'b', 'a'}",
+      "prose_syms": "{'\\\\widehat', 'Y', 'b', 'R', 'u'}",
+      "formulas": [
+        [
+          8,
+          "$$ Y_t=a+bt+e_t, $$",
+          true
+        ],
+        [
+          14,
+          "$$ \\ln Y_t=a+bt+e_t. $$",
+          true
+        ]
+      ],
+      "numex_step": 2,
+      "numex_any": 6,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 0,
+      "orig_cjk": 96,
+      "terms": 0,
+      "need_cjk": 381,
+      "E_miss": [
+        "换个说法角度 0 < 2",
+        "常见误解 0 条 < 2"
+      ]
+    },
+    {
+      "sec": "2.9 季节回归：虚拟变量与基准季度（讲义物理 p.42–43）",
+      "num": "2.9",
+      "level": 3,
+      "cjk": 489,
+      "chars": 909,
+      "own_cjk": 489,
+      "bq_ratio": 0.0,
+      "code_blocks": 0,
+      "pages": [
+        42,
+        43
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so",
+        "whyf"
+      ],
+      "type": "公式型",
+      "what_cjk": 22,
+      "why_cjk": 45,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 34,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 1,
+      "symtab_syms": "set()",
+      "prose_syms": "{'p', 'b', 'R', 'Q'}",
+      "formulas": [
+        [
+          6,
+          "$$ \\ln Sales_t=b_0+b_1t+b_2Q1_t+b_3Q2_t+b_4Q3_t+e_t. $$",
+          false
+        ]
+      ],
+      "numex_step": 1,
+      "numex_any": 2,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 0,
+      "has_step_table": 0,
+      "has_cmp_table": 0,
+      "has_script": 0,
+      "orig_cjk": 98,
+      "terms": 0,
+      "need_cjk": 11,
+      "E_miss": [
+        "换个说法角度 0 < 2",
+        "常见误解 0 条 < 2",
+        "缺 极端/边界情况"
+      ]
+    },
+    {
+      "sec": "2.10 滞后、滚动与日历特征：怎样不偷看未来（讲义物理 p.44–45）",
+      "num": "2.10",
+      "level": 3,
+      "cjk": 501,
+      "chars": 831,
+      "own_cjk": 501,
+      "bq_ratio": 0.0,
+      "code_blocks": 1,
+      "pages": [
+        44,
+        45
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so"
+      ],
+      "type": "代码型",
+      "what_cjk": 127,
+      "why_cjk": 47,
+      "alt_angles": 1,
+      "alt_nodigit": 0,
+      "alt_cjk": 46,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'Y', 'x'}",
+      "formulas": [],
+      "numex_step": 1,
+      "numex_any": 1,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 1,
+      "has_step_table": 0,
+      "has_cmp_table": 0,
+      "has_script": 0,
+      "orig_cjk": 58,
+      "terms": 1,
+      "need_cjk": 0,
+      "E_miss": []
+    }
+  ],
+  "R": {
+    "strict": true,
+    "stats": {
+      "sentences": 317,
+      "mean": 27.5,
+      "p50": 27,
+      "p90": 43,
+      "max": 112,
+      "over80": 3,
+      "over120": 0,
+      "long_share": 0.009,
+      "exempt": 0,
+      "table_max_columns": 5,
+      "table_max_cell_units": 32,
+      "table_max_cell_line": 63,
+      "measurement_version": "v2"
+    },
+    "hard": [],
+    "warn": [
+      [
+        "R4c",
+        63,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        64,
+        "单元格 2 句"
+      ],
+      [
+        "R1a",
+        88,
+        "82 单元：本文保留主次序，但把 p.20–21 的分解与 p.14–18 的图形模…"
+      ],
+      [
+        "R1c",
+        88,
+        "2 个分号：本文保留主次序，但把 p.20–21 的分解与 p.14–18 的图形模…"
+      ],
+      [
+        "R1a",
+        96,
+        "112 单元：讲义先用六页复习建立桥梁：p.2 是“训练 → 评价 → 分析错误 → …"
+      ],
+      [
+        "R1c",
+        96,
+        "4 个分号：讲义先用六页复习建立桥梁：p.2 是“训练 → 评价 → 分析错误 → …"
+      ],
+      [
+        "R5a",
+        100,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R1c",
+        144,
+        "2 个分号：依据列说明预测从哪里来；适用情形列说明何时合理；最后一列保留讲义术语。"
+      ],
+      [
+        "R1a",
+        152,
+        "83 单元：p.7 用 Facebook 股价和能源生产展示规则间隔观测；p.8 用…"
+      ],
+      [
+        "R1c",
+        152,
+        "3 个分号：p.7 用 Facebook 股价和能源生产展示规则间隔观测；p.8 用…"
+      ],
+      [
+        "R5a",
+        189,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R1c",
+        219,
+        "4 个分号：p.14 的汽油销量在一条近似水平线附近波动；p.15 的 iPhone…"
+      ],
+      [
+        "R1c",
+        260,
+        "2 个分号：简单移动平均（Simple Moving Average, SMA）给窗…"
+      ],
+      [
+        "R5b",
+        266,
+        "一个 $$ 块放了多个等式；拆开并在中间加一句话"
+      ],
+      [
+        "R5b",
+        270,
+        "一个 $$ 块放了多个等式；拆开并在中间加一句话"
+      ],
+      [
+        "R1c",
+        315,
+        "2 个分号：移动平均让窗口内每期等权；加权平均允许近期更重要；SES 每次把旧水平保…"
+      ],
+      [
+        "R1c",
+        333,
+        "2 个分号：p.22 的季度销量用 4 期均值；p.23 说明加权和为 1；p.24…"
+      ],
+      [
+        "R5b",
+        398,
+        "一个 $$ 块放了多个等式；拆开并在中间加一句话"
+      ],
+      [
+        "R5a",
+        414,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R5a",
+        431,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R5a",
+        509,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R5a",
+        518,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R5a",
+        520,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R5a",
+        539,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R5a",
+        547,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R7a",
+        547,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R6a",
+        578,
+        "一段 3 处括号英文注释（约等于 3 个新术语）"
+      ],
+      [
+        "R5a",
+        580,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R5a",
+        590,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R1e",
+        602,
+        "一段 3 处否定澄清"
+      ],
+      [
+        "R5a",
+        729,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R1c",
+        849,
+        "3 个分号：状态列说模型把历史压成什么；结构列说它能吸收什么；参数列给选择项；失败信…"
+      ],
+      [
+        "R6d",
+        96,
+        "缩写“GDP”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        179,
+        "缩写“ADL”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        215,
+        "缩写“SES”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        260,
+        "缩写“SMA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6b",
+        284,
+        "一句 5 个术语（SMA、WMA、SES、DMA、Holt-Winters）：共享递推控制流程：SMA／WMA／SES／DMA／Holt／Holt-W…"
+      ],
+      [
+        "R6d",
+        284,
+        "缩写“WMA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        284,
+        "缩写“SES”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        284,
+        "缩写“DMA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        333,
+        "缩写“RMSE”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        376,
+        "缩写“MA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        390,
+        "“残差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        396,
+        "缩写“DMA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        547,
+        "缩写“RMSE”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        578,
+        "缩写“SES”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        602,
+        "“残差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6b",
+        610,
+        "一句 4 个术语（seasonality、ETS、SES、Holt-Winters）：p.36 用树形图要求在 trend、seasonality、rando…"
+      ],
+      [
+        "R6d",
+        631,
+        "缩写“ARIMA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        682,
+        "“残差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        721,
+        "“残差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        754,
+        "缩写“SARIMA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6b",
+        801,
+        "一句 4 个术语（ACF、PACF、AR、MA）：下一讲会用 ACF／PACF 为 AR／MA 阶数提供诊断线索。"
+      ],
+      [
+        "R6d",
+        801,
+        "缩写“ACF”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        801,
+        "缩写“PACF”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        801,
+        "缩写“AR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        801,
+        "缩写“MA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R8c",
+        120,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        174,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        231,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        374,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        443,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        559,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        622,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        694,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        745,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        795,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ]
+    ]
+  }
+}

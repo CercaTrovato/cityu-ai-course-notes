@@ -1,7 +1,7 @@
 ---
 type: 作业与DDL
 course: AC6761
-updated: 2026-10-15
+updated: 2026-10-21
 ---
 
 # AC6761 作业与 DDL
@@ -37,12 +37,12 @@ updated: 2026-10-15
 | 项 | 内容 | 出处 |
 |---|---|---|
 | **总权重** | **20%** | 官方目录 / Outline / 讲义 p.2 |
-| **拆分** | **书面报告 10% + 小组展示 10%** | ⭐ **只有讲义 p.2 有这个拆分** |
+| **拆分** | **书面报告 10% + 小组展示 10%** | 讲义 p.2及当前AC6761 Group project.docx |
 | 组队 | 3–5 人 | 官方目录 / 讲义 p.2 |
-| 题目 | *"Each group is required to **examine the application of AI in accounting area**."* | 官方目录 / Outline |
+| 题目 | 当前：The AI-Powered Financial Analyst: A Comparative Analysis；同业两家上市公司、各至少最近两年年报、五节报告 | 当前项目DOCX；目录/Outline原宽泛主题保留为课程背景 |
 | **名单 DDL** | **第 3 周末**（约 2026-09-16） | 讲义 p.2 |
-| **报告 DDL** | **第 13 周末**（约 **2026-11-25**，最迟 2026-11-29） | 讲义 p.2：*"The written report (10%) should be submitted at the end of week 13"* |
-| **展示时间** | **第 12–13 周**（2026-11-18 与 2026-11-25） | Outline 进度表 |
+| **报告 DDL** | **2026-11-29，具体时刻未给**；PDF正文≤7页，邮件至xindozhu@cityu.edu.hk、主题AC6761 | 当前项目DOCX；旧讲义“end of week13”为历史，不再推算11/25 |
+| **展示时间** | 本人Group11名单列 **2026-11-18**，具体时刻未给；全课原安排W12–13 | 当前group namelist.xls本人行；Outline为全课安排 |
 | **展示时长** | **约 25–30 分钟**，**每位组员都必须参与** | 讲义 p.2：*"Each of team member has to participate in group presentation"* |
 | **GenAI** | ✅ **允许**，但**必须**：① 恰当署明使用了 GenAI 工具；② **解释为什么采纳 GenAI 给出的那一段回答**。❌ **严禁用 AI 代写报告的任何部分** | 官方目录 + Outline |
 | **评分标准** | *"Ability to **introduce, interpret, and demonstrate** the application of AI in accounting and related functions."*<br>五档：Excellent(A) High ｜ Good(B) Significant ｜ Fair(C) Moderate ｜ Marginal(D) Basic ｜ Failure(F) Not even reaching marginal levels | 官方目录 Rubric |
@@ -141,20 +141,20 @@ updated: 2026-10-15
 gantt
     dateFormat YYYY-MM-DD
     axisFormat %m-%d
-    title AC6761 关键节点（日期为推算值）
+    title AC6761 关键节点与备考建议
     section 小组项目
-    组队与选题               :active, a1, 2026-09-02, 2026-09-16
+    组队与选题（旧建议区间） :a1, 2026-09-02, 2026-09-16
     ❗名单提交 DDL           :milestone, crit, m1, 2026-09-16, 0d
     项目研究与撰写           :a2, 2026-09-17, 2026-11-17
     小组展示（W12–W13）      :a3, 2026-11-18, 2026-11-25
-    ❗书面报告 DDL           :milestone, crit, m2, 2026-11-25, 0d
+    ❗书面报告 DDL           :milestone, crit, m2, 2026-11-29, 0d
     section 考试
     期中复习（W1–W5）        :b1, 2026-10-01, 2026-10-14
-    ❗期中考 19:30–21:30     :milestone, crit, m3, 2026-10-14, 0d
+    ❗期中考（19点30至21点30） :milestone, crit, m3, 2026-10-14, 0d
     期末复习                 :b2, 2026-11-26, 2026-12-10
 ```
 
-> 📌 **日期推算依据**：W1 = 2026-09-02（周三），逐周 +7 天，与讲义 p.2 写明的期中考 10 月 14 日（第 7 周周三）完全吻合。遇公众假期顺延，以学校课表为准。
+> 📌 **时间线读法**：2026-11-29报告日来自当前项目DOCX，具体时刻未给；全课展示W12–13来自Outline，本人Group11在名单中列11/18。10/14期中考为已核历史节点。名单日与研究/复习条带是旧推算或准备建议，不代表本人已完成，也不是新增官方截止。
 
 ---
 
@@ -311,3 +311,24 @@ gantt
 ## 2026-10-15 考试日与录音预期
 
 用户确认2026-10-14为期中考试，当日没有授课，因此没有本周授课录音属于不适用，不能登记成缺录。M05/M06原有材料与录音缺口仍保留；不据此改本人考试、学习、提交或评分状态。
+
+## 2026-10-20 项目现行要求
+
+新原件 `AC6761 Group project.docx`（Canvas file16312020）已下载并核 SHA-256。题目为 *The AI-Powered Financial Analyst: A Comparative Analysis*。在同一行业选两家上市公司，取得双方最近至少两年的年报。报告包括公司/行业概况、含图表的财务定量比较、MD&A/CEO Letter/Risk Factors 等定性比较、每家公司的 Buy/Hold/Sell 建议，以及 AI 方法的局限、偏差和错误。必须加入团队自己的批判性判断。
+
+报告为 PDF，正文最多 7 页，不含封面与参考文献；封面列组号、成员姓名与学号。2026-11-29 前发至 `xindozhu@cityu.edu.hk`，邮件主题注明 `AC6761`；原件未给具体小时，不擅自填 23:59。报告 10%，全员参与的 25–30 分钟展示 10%。`AC6761 group namelist.xls` 当前本地已与 Canvas 哈希一致，本人 LI Binxiong 行为 Group 11、2026-11-18 展示；具体展示时刻未明示。名单只引用本人行，不复制其他同学资料。
+
+上述正式文件替代此前“题目/报告日期/提交渠道待核”和泛称 AI 会计应用的准备方向。旧 Week 13 相对期限及展示周次保留为历史；尚未制作或提交团队报告，不改变本人学习/提交/评分状态。当前文件要求 AI 辅助分析并对 AI 草稿加入批判思考；旧 Outline 对代写的限制和采纳说明仍需结合本次任务区分，不能解释为可不经人工核验直接交 AI 输出。
+
+来源：[新项目文件](https://canvas.cityu.edu.hk/courses/70229/files/16312020)、[10/20 公告](https://canvas.cityu.edu.hk/courses/70229/discussion_topics/640901)、[组号及展示名单](https://canvas.cityu.edu.hk/courses/70229/files/16067043)。四入口核对沿用本日完整下载核对记录：Files 21项，公告5条；Assignments/Modules未在该课导航开放。
+
+
+## 🎙️ M05 转录追加（2026-10-21）· 课堂口头信息（转录追加）
+
+| 事项 | 内容 | 来源 |
+|---|---|---|
+| 期中题型补充 | 2 小时；两教室；将另发 seating plan；题型类似上传的 Cases / Quizzes | S6 `01:46:15`–`01:47:33`；本转录不提供绝对日期，不由“next Wednesday”推断 |
+
+## 2026-10-21 S6录音补证（历史复盘）
+
+Core pattern、给骨架填关联名/属性/PK/多重度、关联属性降权及概念举例要求已按S6补入M04/M05与Notion期中考要求。此为已过考试的教学范围补证，不产生新DDL；当前已核行政时间及本人出席/成绩/提交状态不改。

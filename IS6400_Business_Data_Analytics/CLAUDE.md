@@ -129,7 +129,7 @@ for i, c in enumerate(nb['cells'], 1):
 
 本课计分作业执行 `_meta/IS6400作业制作规范.md` 和根级 `_meta/作业规范.md`：从当前 Canvas Notebook 的副本续写，保留原题与教学顺序；先核前三周的实际经验，再逐问完成答案与必做拓展；零基础教学、自测与提交检查放私人导览，正式 Notebook 保留解题所需的方法、代码、输出和讨论，最后标准导出与实看。作业的 Python 入场基线是零基础，覆盖本文件 §3 的讲义默认假设。`*.html` 中的个人提交是需要复核的历史材料，不因 §7“重复导出”而忽略。
 
-W04 于 2026-09-30 核到当前 `Week4_Feature_Engineering_Tutorial.ipynb`（43 cells），新题合计 100 内部分；旧 37-cell 版本的题号与分值仅作历史材料，不用于当前作业。当前 Canvas 提交类型为 HTML 或 PDF。完整个人答案只在 Git 忽略的 `assignment/`，公开笔记不反向链接私有答案。
+W04 于 2026-09-30 核到当前 `Week4_Feature_Engineering_Tutorial.ipynb`（43 cells），新题合计 100 内部分；旧 37-cell 版本的题号与分值仅作历史材料，不用于当前作业。当前 Canvas 提交类型为 HTML 或 PDF。完整个人答案在 `assignment/` 单独组织，按根 `_meta/备份与公开发布规则.md` 允许公开；正文可链接已发布目标，尚未上传须标明。
 
 **Notebook 提交导出（2026-09-30 用户明确）**：HTML 必须直接通过 Jupyter 菜单或标准 nbconvert 从已保存的 `.ipynb` 导出；内容、顺序、输出与字号均在 Notebook 维护，不另做 HTML 页面。导出脚本仅允许调用标准导出器和保存，不重排或单改 HTML。
 

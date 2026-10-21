@@ -40,7 +40,7 @@ def info(rel):
 
 def tail_ok(rel, d):
     if '/notes/' not in rel: return True
-    if '/assignment/' in rel:
+    if '/assignment/' in rel or '/notes/figures/' in rel:
         from safe_write import check
         return check(os.path.join(ROOT, rel))[0]
     h = d['last_head']

@@ -1,0 +1,1424 @@
+{
+  "file": "E:\\app-data\\codex\\scratchpad\\ge-remediation-20261021\\time-series\\M08-时间序列II-自相关差分与ARIMA.md",
+  "verdict": "FAIL",
+  "legacy_problems": [],
+  "legacy_info": {
+    "L1_未讲解页": [],
+    "L1_省略前缀连写": [],
+    "L5_围栏数": 4,
+    "L5_details": [
+      4,
+      4
+    ]
+  },
+  "G": {
+    "G1 密度 §2 字/内容页 ≥ 250": [
+      172,
+      false
+    ],
+    "G2a 粒度 术语数/leaf 小节 ≤ 1.6": [
+      1.1,
+      true
+    ],
+    "G2b 粒度 内容页/leaf 小节 ≤ 2.5": [
+      4.4,
+      false
+    ],
+    "G2c 承载术语的小节 ≥ 150 字": [
+      [],
+      true
+    ],
+    "G3a 小节首元素为段落": [
+      [],
+      true
+    ],
+    "G3b 公式有符号表（或符号已在前文解释）": [
+      [],
+      true
+    ],
+    "G3c 有公式的小节有数字例子": [
+      [],
+      true
+    ],
+    "G3d 代码三件套": [
+      [],
+      true
+    ],
+    "G6 ### 单元「所以呢」覆盖率 ≥ 0.80": [
+      [
+        1.0,
+        []
+      ],
+      true
+    ]
+  },
+  "E": [
+    [
+      "全篇",
+      "先修唤醒",
+      [
+        "先修概念首次使用无一句话唤醒：方差（行 49）、对数（行 463）、期望（行 125）、协方差（行 340）、显著性（行 344）、似然（行 585）、线性组合（行 302）、内积（行 261）、标准化（行 55）"
+      ]
+    ],
+    [
+      "2.1",
+      "定义型",
+      [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2"
+      ]
+    ],
+    [
+      "2.2",
+      "公式型",
+      [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2"
+      ]
+    ],
+    [
+      "2.3",
+      "公式型",
+      [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2",
+        "缺「为什么公式长这样」"
+      ]
+    ],
+    [
+      "2.4",
+      "公式型",
+      [
+        "换个说法角度 0 < 2",
+        "常见误解 0 条 < 2",
+        "「是什么」自己的话 < 80 字"
+      ]
+    ],
+    [
+      "2.5",
+      "公式型",
+      [
+        "换个说法角度 0 < 2",
+        "常见误解 0 条 < 2"
+      ]
+    ],
+    [
+      "2.6",
+      "公式型",
+      [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2",
+        "缺「为什么公式长这样」"
+      ]
+    ],
+    [
+      "2.7",
+      "公式型",
+      [
+        "换个说法角度 0 < 2",
+        "常见误解 0 条 < 2",
+        "缺 极端/边界情况"
+      ]
+    ],
+    [
+      "2.8",
+      "公式型",
+      [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2",
+        "缺 极端/边界情况"
+      ]
+    ],
+    [
+      "2.9",
+      "代码型",
+      [
+        "「是什么」自己的话 < 80 字"
+      ]
+    ],
+    [
+      "2.10",
+      "公式型",
+      [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2"
+      ]
+    ]
+  ],
+  "summary": {
+    "file": "E:\\app-data\\codex\\scratchpad\\ge-remediation-20261021\\time-series\\M08-时间序列II-自相关差分与ARIMA.md",
+    "total_pages": 46,
+    "noncontent": [
+      1,
+      13
+    ],
+    "content_pages": 44,
+    "sec2_cjk": 7561,
+    "note_cjk": 10172,
+    "leaf_n": 10,
+    "concept_n": 10,
+    "terms_n": 11,
+    "strict": true
+  },
+  "sections": [
+    {
+      "sec": "2.1 M07 方法复习：先吸收趋势季节，再研究剩余依赖（讲义物理 p.1–14）",
+      "num": "2.1",
+      "level": 3,
+      "cjk": 324,
+      "chars": 575,
+      "own_cjk": 324,
+      "bq_ratio": 0.0,
+      "code_blocks": 0,
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so"
+      ],
+      "type": "定义型",
+      "what_cjk": 61,
+      "why_cjk": 56,
+      "alt_angles": 1,
+      "alt_nodigit": 1,
+      "alt_cjk": 43,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'Y', 'X'}",
+      "formulas": [],
+      "numex_step": 0,
+      "numex_any": 0,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 0,
+      "has_cmp_table": 0,
+      "has_script": 0,
+      "orig_cjk": 42,
+      "terms": 0,
+      "need_cjk": 3176,
+      "E_miss": [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2"
+      ]
+    },
+    {
+      "sec": "2.2 白噪声、滞后变量与自相关（讲义物理 p.15–17）",
+      "num": "2.2",
+      "level": 3,
+      "cjk": 589,
+      "chars": 1129,
+      "own_cjk": 531,
+      "bq_ratio": 0.0,
+      "code_blocks": 0,
+      "pages": [
+        15,
+        16,
+        17
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so",
+        "whyf",
+        "edge"
+      ],
+      "type": "公式型",
+      "what_cjk": 144,
+      "why_cjk": 45,
+      "alt_angles": 1,
+      "alt_nodigit": 1,
+      "alt_cjk": 45,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 2,
+      "symtab_syms": "{'r', 'Y'}",
+      "prose_syms": "{'r', 'Y'}",
+      "formulas": [
+        [
+          6,
+          "$$ Y_t=\\hat Y_{t\\mid t-1}+e_t. $$",
+          true
+        ],
+        [
+          12,
+          "$$ r_k=\\frac{\\sum_{t=k+1}^{n}(Y_t-\\bar Y)(Y_{t-k}-\\bar Y)}{\\sum_{t=1}^{n}(Y_t-\\bar Y)^2}. $$",
+          true
+        ]
+      ],
+      "numex_step": 2,
+      "numex_any": 5,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 0,
+      "orig_cjk": 45,
+      "terms": 2,
+      "need_cjk": 161,
+      "E_miss": [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2"
+      ]
+    },
+    {
+      "sec": "2.3 随机游走：水平不平稳，变化可能无规律（讲义物理 p.18–19）",
+      "num": "2.3",
+      "level": 3,
+      "cjk": 453,
+      "chars": 827,
+      "own_cjk": 453,
+      "bq_ratio": 0.0,
+      "code_blocks": 0,
+      "pages": [
+        18,
+        19
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so",
+        "edge"
+      ],
+      "type": "公式型",
+      "what_cjk": 99,
+      "why_cjk": 60,
+      "alt_angles": 1,
+      "alt_nodigit": 1,
+      "alt_cjk": 102,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 2,
+      "symtab_syms": "set()",
+      "prose_syms": "{'Y', 'E', '\\\\phi', '\\\\Delta', 'c'}",
+      "formulas": [
+        [
+          6,
+          "$$ Y_t=Y_{t-1}+m+e_t, $$",
+          true
+        ],
+        [
+          12,
+          "$$ \\Delta Y_t=Y_t-Y_{t-1}=m+e_t. $$",
+          true
+        ]
+      ],
+      "numex_step": 4,
+      "numex_any": 9,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 0,
+      "has_script": 0,
+      "orig_cjk": 32,
+      "terms": 1,
+      "need_cjk": 47,
+      "E_miss": [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2",
+        "缺「为什么公式长这样」"
+      ]
+    },
+    {
+      "sec": "2.4 自回归模型：过去的值怎样进入预测（讲义物理 p.20–24）",
+      "num": "2.4",
+      "level": 3,
+      "cjk": 463,
+      "chars": 949,
+      "own_cjk": 463,
+      "bq_ratio": 0.0,
+      "code_blocks": 0,
+      "pages": [
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so",
+        "whyf"
+      ],
+      "type": "公式型",
+      "what_cjk": 68,
+      "why_cjk": 40,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 32,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 1,
+      "symtab_syms": "set()",
+      "prose_syms": "{'p', 'Y', '\\\\phi', 'x', 'c'}",
+      "formulas": [
+        [
+          6,
+          "$$ Y_t=c+\\phi_1Y_{t-1}+\\cdots+\\phi_pY_{t-p}+e_t. $$",
+          true
+        ]
+      ],
+      "numex_step": 5,
+      "numex_any": 8,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 0,
+      "has_script": 0,
+      "orig_cjk": 50,
+      "terms": 1,
+      "need_cjk": 787,
+      "E_miss": [
+        "换个说法角度 0 < 2",
+        "常见误解 0 条 < 2",
+        "「是什么」自己的话 < 80 字"
+      ]
+    },
+    {
+      "sec": "2.5 MA、ACF 与 PACF：过去冲击和直接滞后（讲义物理 p.21、p.25–29）",
+      "num": "2.5",
+      "level": 3,
+      "cjk": 836,
+      "chars": 1994,
+      "own_cjk": 777,
+      "bq_ratio": 0.0,
+      "code_blocks": 0,
+      "pages": [
+        21,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so",
+        "whyf",
+        "edge"
+      ],
+      "type": "公式型",
+      "what_cjk": 371,
+      "why_cjk": 34,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 33,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 2,
+      "symtab_syms": "{'\\\\theta', '\\\\mu', 'q'}",
+      "prose_syms": "{'Y', 'q', '\\\\widehat'}",
+      "formulas": [
+        [
+          6,
+          "$$ Y_t=\\mu+\\theta_1e_{t-1}+\\cdots+\\theta_qe_{t-q}+e_t. $$",
+          true
+        ],
+        [
+          32,
+          "$$    \\operatorname{PACF}(2)=\\frac{4.25}{\\sqrt{8.25\\times2.25}}=0.98644.    $$",
+          true
+        ]
+      ],
+      "numex_step": 3,
+      "numex_any": 12,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 132,
+      "terms": 2,
+      "need_cjk": 664,
+      "E_miss": [
+        "换个说法角度 0 < 2",
+        "常见误解 0 条 < 2"
+      ]
+    },
+    {
+      "sec": "2.6 平稳性与 KPSS：先明确检验的是哪种稳定（讲义物理 p.30–33）",
+      "num": "2.6",
+      "level": 3,
+      "cjk": 862,
+      "chars": 1943,
+      "own_cjk": 862,
+      "bq_ratio": 0.0,
+      "code_blocks": 0,
+      "pages": [
+        30,
+        31,
+        32,
+        33
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so"
+      ],
+      "type": "公式型",
+      "what_cjk": 263,
+      "why_cjk": 46,
+      "alt_angles": 1,
+      "alt_nodigit": 1,
+      "alt_cjk": 44,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 2,
+      "symtab_syms": "set()",
+      "prose_syms": "{'S', 'p', 'E', '\\\\mu', 'Y', '\\\\sigma', '\\\\widehat'}",
+      "formulas": [
+        [
+          12,
+          "$$ S_t=\\sum_{i=1}^{t}e_i. $$",
+          false
+        ],
+        [
+          18,
+          "$$ \\operatorname{KPSS}=\\frac{n^{-2}\\sum_{t=1}^{n}S_t^2}{\\widehat\\sigma^2_{LR}}. $$",
+          false
+        ]
+      ],
+      "numex_step": 6,
+      "numex_any": 10,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 0,
+      "has_script": 1,
+      "orig_cjk": 293,
+      "terms": 1,
+      "need_cjk": 138,
+      "E_miss": [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2",
+        "缺「为什么公式长这样」"
+      ]
+    },
+    {
+      "sec": "2.7 稳定化：Box-Cox、去季节与差分（讲义物理 p.34–36）",
+      "num": "2.7",
+      "level": 3,
+      "cjk": 1371,
+      "chars": 3469,
+      "own_cjk": 1277,
+      "bq_ratio": 0.22,
+      "code_blocks": 0,
+      "pages": [
+        34,
+        35,
+        36
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so",
+        "whyf"
+      ],
+      "type": "公式型",
+      "what_cjk": 220,
+      "why_cjk": 39,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 37,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 3,
+      "symtab_syms": "set()",
+      "prose_syms": "{'D', 'p', 'Y', '\\\\lambda', 's', '\\\\Delta'}",
+      "formulas": [
+        [
+          6,
+          "$$ g_\\lambda(y)= \\begin{cases} \\dfrac{y^\\lambda-1}{\\lambda}, & \\lambda\\ne0,\\\\ \\log y, & \\lambda=0. \\end{cases} $$",
+          false
+        ],
+        [
+          16,
+          "$$ \\Delta^2Y_t=Y_t-2Y_{t-1}+Y_{t-2}. $$",
+          false
+        ],
+        [
+          69,
+          "$$ \\log Y_t=(2+0.04t)+s_{position}+0.03\\sin(0.9t), $$",
+          true
+        ]
+      ],
+      "numex_step": 6,
+      "numex_any": 10,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 0,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 730,
+      "terms": 1,
+      "need_cjk": 0,
+      "E_miss": [
+        "换个说法角度 0 < 2",
+        "常见误解 0 条 < 2",
+        "缺 极端/边界情况"
+      ]
+    },
+    {
+      "sec": "2.8 ARMA、ARIMA 与 SARIMA：把三种结构组合（讲义物理 p.37–42）",
+      "num": "2.8",
+      "level": 3,
+      "cjk": 1145,
+      "chars": 2381,
+      "own_cjk": 1046,
+      "bq_ratio": 0.0,
+      "code_blocks": 0,
+      "pages": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so",
+        "whyf"
+      ],
+      "type": "公式型",
+      "what_cjk": 204,
+      "why_cjk": 43,
+      "alt_angles": 1,
+      "alt_nodigit": 0,
+      "alt_cjk": 46,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 3,
+      "symtab_syms": "set()",
+      "prose_syms": "{'\\\\theta', 'p', '\\\\Delta', 'D', 'Y', 'q', 'P', '\\\\phi', 'Z', 'Q', 'c'}",
+      "formulas": [
+        [
+          6,
+          "$$ Y_t=c+\\sum_{i=1}^{p}\\phi_iY_{t-i}+\\sum_{j=1}^{q}\\theta_je_{t-j}+e_t. $$",
+          false
+        ],
+        [
+          12,
+          "$$ \\text{SARIMA}(p,d,q)(P,D,Q)_m. $$",
+          false
+        ],
+        [
+          36,
+          "$$ Z_t=c+\\phi Z_{t-1}+\\theta e_{t-1}+e_t. $$",
+          false
+        ]
+      ],
+      "numex_step": 8,
+      "numex_any": 10,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 0,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 0,
+      "orig_cjk": 34,
+      "terms": 1,
+      "need_cjk": 355,
+      "E_miss": [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2",
+        "缺 极端/边界情况"
+      ]
+    },
+    {
+      "sec": "2.9 滚动前推评价：模拟每个真实预测时点（讲义物理 p.43）",
+      "num": "2.9",
+      "level": 3,
+      "cjk": 437,
+      "chars": 701,
+      "own_cjk": 437,
+      "bq_ratio": 0.0,
+      "code_blocks": 1,
+      "pages": [
+        43
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so"
+      ],
+      "type": "代码型",
+      "what_cjk": 75,
+      "why_cjk": 42,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 31,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "set()",
+      "formulas": [],
+      "numex_step": 0,
+      "numex_any": 0,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 0,
+      "has_cmp_table": 0,
+      "has_script": 0,
+      "orig_cjk": 124,
+      "terms": 1,
+      "need_cjk": 0,
+      "E_miss": [
+        "「是什么」自己的话 < 80 字"
+      ]
+    },
+    {
+      "sec": "2.10 外生变量、分布滞后与 ADL（讲义物理 p.44–46）",
+      "num": "2.10",
+      "level": 3,
+      "cjk": 1081,
+      "chars": 2138,
+      "own_cjk": 900,
+      "bq_ratio": 0.0,
+      "code_blocks": 0,
+      "pages": [
+        44,
+        45,
+        46
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so",
+        "whyf"
+      ],
+      "type": "公式型",
+      "what_cjk": 326,
+      "why_cjk": 387,
+      "alt_angles": 1,
+      "alt_nodigit": 1,
+      "alt_cjk": 43,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 4,
+      "symtab_syms": "{'p', 'Y', '\\\\beta', 'X', 'q', '\\\\phi', 'u', 'c'}",
+      "prose_syms": "{'p', 'Y', 'X', '\\\\beta', 'q', '\\\\Delta', 'u'}",
+      "formulas": [
+        [
+          6,
+          "$$ Sales_t=\\beta_0+\\beta_1Week_t+\\beta_2Price_t+u_t. $$",
+          true
+        ],
+        [
+          12,
+          "$$ Y_t=\\beta_0+\\beta_1X_t+\\beta_2X_{t-1}+\\cdots+u_t. $$",
+          true
+        ],
+        [
+          18,
+          "$$ Y_t=c+\\sum_{i=1}^{p}\\phi_iY_{t-i}+\\sum_{j=0}^{q}\\beta_jX_{t-j}+u_t. $$",
+          true
+        ],
+        [
+          50,
+          "$$ Y_t=10+0.5Y_{t-1}+2X_t+1X_{t-1}+u_t. $$",
+          true
+        ]
+      ],
+      "numex_step": 5,
+      "numex_any": 8,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 0,
+      "orig_cjk": 30,
+      "terms": 1,
+      "need_cjk": 0,
+      "E_miss": [
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2"
+      ]
+    }
+  ],
+  "R": {
+    "strict": true,
+    "stats": {
+      "sentences": 363,
+      "mean": 25.7,
+      "p50": 24,
+      "p90": 44,
+      "max": 88,
+      "over80": 2,
+      "over120": 0,
+      "long_share": 0.006,
+      "exempt": 0,
+      "table_max_columns": 5,
+      "table_max_cell_units": 31,
+      "table_max_cell_line": 799,
+      "measurement_version": "v2"
+    },
+    "hard": [],
+    "warn": [
+      [
+        "R6a",
+        35,
+        "一段 3 处括号英文注释（约等于 3 个新术语）"
+      ],
+      [
+        "R4c",
+        64,
+        "单元格 2 句"
+      ],
+      [
+        "R1a",
+        96,
+        "87 单元：p.1 是 Lecture 9 封面；p.2–6 复现 SMA、WMA、…"
+      ],
+      [
+        "R1c",
+        96,
+        "5 个分号：p.1 是 Lecture 9 封面；p.2–6 复现 SMA、WMA、…"
+      ],
+      [
+        "R1c",
+        170,
+        "2 个分号：p.15 明确要求 fitted value 包含所有可预测成分；p.1…"
+      ],
+      [
+        "R1c",
+        213,
+        "2 个分号：这里 $\\Delta$ 是一阶差分算子，动作是“当前水平减上一期水平”；…"
+      ],
+      [
+        "R5a",
+        213,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R5a",
+        275,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R5a",
+        345,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R5a",
+        347,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R5a",
+        348,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R5a",
+        354,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R5a",
+        362,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R5a",
+        410,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R6a",
+        414,
+        "一段 3 处括号英文注释（约等于 3 个新术语）"
+      ],
+      [
+        "R1c",
+        436,
+        "3 个分号：p.32 四图 A–D：A 有下行趋势；B 暖／冷季节交替；C 有趋势和…"
+      ],
+      [
+        "R1a",
+        568,
+        "88 单元：文字替代：面板 (a) 随时间上升并有四期锯齿；(b) 取对数后仍有趋势…"
+      ],
+      [
+        "R1c",
+        568,
+        "3 个分号：文字替代：面板 (a) 随时间上升并有四期锯齿；(b) 取对数后仍有趋势…"
+      ],
+      [
+        "R1c",
+        576,
+        "2 个分号：(b) 对原序列做 Box-Cox，压缩高水平处越来越大的季节振幅；(c…"
+      ],
+      [
+        "R2b",
+        577,
+        "123 单元：2. (a) 有上升趋势、季节性且振幅随水平变化，明显不满足讲义的平稳口…"
+      ],
+      [
+        "R1c",
+        639,
+        "3 个分号：差分负责把水平变化转成较稳定序列；AR 描述变化量的持续性；MA 描述冲…"
+      ],
+      [
+        "R5a",
+        657,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R2b",
+        675,
+        "89 单元：5. 诊断与停止：比较同一滚动切分下的误差和信息准则，检查残差 ACF、…"
+      ],
+      [
+        "R1c",
+        683,
+        "2 个分号：p.37 给 ARMA($p,q$)；p.38 的 ACF 与 PACF…"
+      ],
+      [
+        "R1c",
+        683,
+        "2 个分号：p.40 给一阶与二阶差分；p.41 写 ARIMA(1,1,1) 和特…"
+      ],
+      [
+        "R1c",
+        740,
+        "3 个分号：若共有 8 期，用前 4 期起步做一步预测：训练 1–4 预测 5；训练…"
+      ],
+      [
+        "R4c",
+        796,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        797,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        799,
+        "单元格 2 句"
+      ],
+      [
+        "R1c",
+        903,
+        "3 个分号：输入列说它看什么；参数列给阶数；线索列给诊断用途；边界列说明常见失效处。"
+      ],
+      [
+        "R6b",
+        35,
+        "一句 4 个术语（自相关函数、ACF、偏自相关函数、PACF）：自相关函数（ACF）和偏自相关函数（PACF）帮助判断过去值或过去误差仍…"
+      ],
+      [
+        "R6b",
+        45,
+        "一句 4 个术语（ARIMA、SARIMA、ADL、滚动前推评价）：读懂 ARIMA$(p,d,q)$、SARIMA$(p,d,q)(P,D…"
+      ],
+      [
+        "R6b",
+        49,
+        "一句 4 个术语（ACF、PACF、差分、残差）：ACF／PACF 是诊断线索；有限样本、混合模型和差分都会让“截尾规则”…"
+      ],
+      [
+        "R6b",
+        84,
+        "一句 4 个术语（残差、AR、MA、ARIMA）：本文把复习压缩成 §2.1，并在每处回链 M07；正文按“残差目标 → …"
+      ],
+      [
+        "R6b",
+        96,
+        "一句 4 个术语（SMA、WMA、SES、残差）：p.1 是 Lecture 9 封面；p.2–6 复现 SMA、WMA、…"
+      ],
+      [
+        "R6d",
+        96,
+        "缩写“SMA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        96,
+        "缩写“WMA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        96,
+        "缩写“SES”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        96,
+        "“残差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        100,
+        "缩写“ACF”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        137,
+        "“残差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        143,
+        "“标准化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6b",
+        191,
+        "一句 5 个术语（ACF、MA、残差、白噪声、PACF）：ACF 是 MA 阶数的经典线索，也是残差白噪声检查的一部分；PACF …"
+      ],
+      [
+        "R6d",
+        191,
+        "缩写“MA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        191,
+        "缩写“PACF”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        251,
+        "缩写“AR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        261,
+        "缩写“AR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        291,
+        "缩写“OLS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        291,
+        "缩写“PACF”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        303,
+        "“残差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        312,
+        "缩写“ARMA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        322,
+        "缩写“MA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        339,
+        "缩写“PACF”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        341,
+        "缩写“ACF”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        347,
+        "“残差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6b",
+        374,
+        "一句 4 个术语（PACF、AR、ACF、MA）：p.28 的 PACF 前两阶显著对应 AR(2) 候选；p.29 的 …"
+      ],
+      [
+        "R6d",
+        374,
+        "缩写“AR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6b",
+        392,
+        "一句 4 个术语（PACF、AR、ACF、MA）：“PACF 截尾选 AR、ACF 截尾选 MA”只对理想纯模型是线索，不…"
+      ],
+      [
+        "R6b",
+        400,
+        "一句 5 个术语（AR、MA、ARMA、差分、ARIMA）：AR 与 MA 合并成 ARMA；非平稳序列先差分后得到 ARIMA。"
+      ],
+      [
+        "R6d",
+        400,
+        "缩写“ARMA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        414,
+        "缩写“KPSS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        432,
+        "缩写“ARMA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        444,
+        "缩写“ACF”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        525,
+        "缩写“ARMA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        540,
+        "缩写“KPSS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        551,
+        "缩写“SVG”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        551,
+        "“残差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6b",
+        577,
+        "一句 4 个术语（KPSS、ACF、残差、白噪声）：应对处理后的有效样本运行 KPSS，说明 `c` 或 `ct`、滞后规则…"
+      ],
+      [
+        "R6d",
+        577,
+        "缩写“ACF”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        603,
+        "缩写“SARIMA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        613,
+        "缩写“ARMA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        619,
+        "缩写“SARIMA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        639,
+        "缩写“AR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        639,
+        "缩写“MA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        672,
+        "缩写“ACF”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        672,
+        "缩写“PACF”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        675,
+        "“残差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6b",
+        705,
+        "一句 4 个术语（ARIMA、AR、MA、ARMA）：🔗 statsmodels ARIMA 官方文档（获取日期 2026-1…"
+      ],
+      [
+        "R6d",
+        709,
+        "缩写“ETS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6b",
+        736,
+        "一句 7 个术语，核对是否需要拆解（AR、MA、ARIMA、差分、KPSS、ACF、PACF）：p.43 的流程图要求：先画序列找结构，必要时 Box-Cox，选择 A…"
+      ],
+      [
+        "R6d",
+        736,
+        "缩写“AR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        736,
+        "缩写“MA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        736,
+        "缩写“KPSS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        736,
+        "缩写“ACF”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        736,
+        "缩写“PACF”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        740,
+        "缩写“MAE”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        753,
+        "“标准化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        758,
+        "“超参数”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        762,
+        "缩写“ETS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        762,
+        "缩写“ADL”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        784,
+        "缩写“ADL”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        808,
+        "缩写“AR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6b",
+        839,
+        "一句 7 个术语，核对是否需要拆解（AR、PACF、MA、ACF、ARMA、ARIMA、SARIMA）：p.46 总结 stationarity、AR/PACF、MA/ACF、…"
+      ],
+      [
+        "R6d",
+        839,
+        "缩写“OLS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        839,
+        "缩写“PACF”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        839,
+        "缩写“MA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        839,
+        "缩写“ACF”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        839,
+        "缩写“ARMA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        839,
+        "缩写“SARIMA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6b",
+        944,
+        "一句 5 个术语（差分、ACF、PACF、残差、白噪声）：模型识别题按“是否平稳 → 是否差分 → ACF/PACF 只提候选 →…"
+      ],
+      [
+        "R8c",
+        116,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        182,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        242,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        303,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        390,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        468,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        593,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        695,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        752,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R8c",
+        851,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R4g",
+        364,
+        "统计量列“t”未识别到判断线；核对本列代入过程、判断规则和条件"
+      ]
+    ]
+  }
+}

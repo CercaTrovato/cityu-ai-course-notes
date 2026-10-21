@@ -5,6 +5,8 @@ description: 把课堂录音转录（本地 Whisper 或 Notta 导出的带时间
 
 # 转录融合（v0.9 → v1.0）
 
+> **英文应试保真（2026-10-15）**：融合所触及的原题和解析同样执行 `_meta/课件题目处理规则.md` §2b：保留原语言完整题面、全部选项和小问，另给中文读题／逐项解析、英文参考答案与来源地位，正文首现词就地中文（English）。不能用中文转述覆盖英文原题，不能把自拟英文变成教授原话。任务与回执须列原文／选项／中文解析／英文答案／关键词及未核项；只核本次全部受影响单元，不自动宣称存量全部达标。
+
 > **来源路由（2026-10-15）**：有时间戳按既有流程与全部时间核验要求；明确无时间戳的第三方转录按本文 §12，以稳定物理页／行定位替代时间定位，禁止生成时间戳。此分支仍须完整来源、教学与视觉核对。
 
 > 本技能是 `_meta/转录处理规则.md`（原理层：为什么、提取什么）的**执行层**（做什么、写成什么样、怎么验收）。两份都要读；教学语言与验收以现行《可读性总规则》《笔记制作与融合验收流程》为准，本技能只补融合操作，发现冲突先修正入口。
@@ -20,7 +22,7 @@ description: 把课堂录音转录（本地 Whisper 或 Notta 导出的带时间
 2. **不编造**：转录没说的不写成"教授说"；听不清的标 `[?]`；对 ASR 的改写和补词放在 `[ ]` 里；没录到 ≠ 没讲（❓ 不是 ⏭️）。
 3. **不省格**：每个「🎙️ 课堂补充」格都要落到五种状态之一（§4.1），结束时"待转录补充"必须为 0；不许删格、不许写"已核对"敷衍。
 
-4. **文件安全**：改笔记只用 `_meta/tools/safe_write.py` 的 `atomic_write`（禁止 `open(path,'w')`）；开工先 `backup_vault.py` + `integrity_check.py snapshot`，收工 `integrity_check.py verify`；**发现任何文件损坏（解码失败、行数骤减、结尾不是 §9/相关）立即停下报告，不许凭记忆重建**；开工前确认用户已关闭 Remotely Save 自动同步。
+4. **文件安全**：改笔记只用 `_meta/tools/safe_write.py` 的 `atomic_write`（禁止 `open(path,'w')`）；开工按 `_meta/备份与公开发布规则.md` 检查 Git 恢复基线并运行 `integrity_check.py snapshot`，不生成日常全库 ZIP，收工 `integrity_check.py verify`；**发现任何文件损坏（解码失败、行数骤减、结尾不是 §9/相关）立即停下报告，不许凭记忆重建**；开工前确认用户已关闭 Remotely Save 自动同步。
 
 其它硬约束（来自 vault 总规则）：不改动 `course_files_export/` 下任何文件；不 `git init`；计算出的数字必须来自脚本并注明脚本名；Notion 的 `👁️ 已通读` / `✅ 自测通过` / `复习次数` 不动；跨课程术语走 `<课程>/_meta/待并入术语总表.md`，分片不直接改根 `_meta/术语总表.md`；管理者指定的单一发布者按统一流程 §6 精确合并本次适用增量并回读。
 
@@ -48,11 +50,11 @@ description: 把课堂录音转录（本地 Whisper 或 Notta 导出的带时间
 PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py scan <课程>/transcripts/<文件>.txt [part2 ...]
 ```
 
-做五件事，结果写进工作目录的 `PROGRESS.md`（见 §9）。**在此之前先跑** `backup_vault.py` 与 `integrity_check.py snapshot 融合前`，并确认同步已关。**多个独立录音时钟都先分别 scan，再核内容/音频接缝；已确认先后才标 partN，大范围重叠才标 A/B。保留原始时钟；多文件 audit 的时间戳并集不能替代逐源引文核对或计算课堂总时长。两段 partN 如需现有逐源脚本，文首固定 A=part1、B=part2，全文引文逐条带别名；脚本未覆盖的结构块还须人工核。**
+做五件事，结果写进工作目录的 `PROGRESS.md`（见 §9）。**在此之前先跑** `integrity_check.py snapshot 融合前` 并检查 Git 恢复基线（不运行日常全库 ZIP），并确认同步已关。**多个独立录音时钟都先分别 scan，再核内容/音频接缝；已确认先后才标 partN，大范围重叠才标 A/B。保留原始时钟；多文件 audit 的时间戳并集不能替代逐源引文核对或计算课堂总时长。两段 partN 如需现有逐源脚本，文首固定 A=part1、B=part2，全文引文逐条带别名；脚本未覆盖的结构块还须人工核。**
 
 0. **来源登记与课程归属**：登记每源原文件/录音 ID、设备、原课程元数据、实际课程/module、错误 hotwords 风险与判定依据。设备切换接缝按连续/重叠/缺口/未知登记，长度未知不猜。误选课程先按《转录处理规则》§5.1 更正路由再导出。
 
-1. **改名**：按 `转录处理规则` §5 改成 `M0N-transcript.txt`（分段 `-part1/2`，不完整 `-partial`）。本地 Whisper 产出的与音频同名的 `.txt` 改名为 `M0N-transcript.txt`（或直接 `cd E:\AIworkspace\lecture-transcribe; uv run lt.py export <id> --module M0N`，见 `转录处理规则` §5.1；同目录的源音频 mp3 / wav **不要动**，也不进仓库）；早期 Notta 的内容标题式文件名同样改掉。`transcripts/` 不是 `course_files_export/`，可以改名。
+1. **改名**：按 `转录处理规则` §5 改成 `M0N-transcript.txt`（分段 `-part1/2`，不完整 `-partial`）。本地 Whisper 产出的与音频同名的 `.txt` 改名为 `M0N-transcript.txt`（或直接 `cd E:\AIworkspace\lecture-transcribe; uv run lt.py export <id> --module M0N`，见 `转录处理规则` §5.1；同目录的源音频 mp3 / wav **不要动**，公开范围按 `_meta/备份与公开发布规则.md` 执行）；早期 Notta 的内容标题式文件名同样改掉。`transcripts/` 不是 `course_files_export/`，可以改名。
 2. **时序**：段数、起止、时长、时序倒退、≥120 秒空档。每个空档都要**读前后原文**判断性质（课堂练习时间 / 课间 / 录音暂停 / 内容丢失），写成 §9.5 的一行。
 3. **完整性（内容判断，脚本做不了）**：读首 3 段——第一句是不是一堂课该有的开头（问候 / 议程 / 上节回顾）？已在讲课中段 = **缺开头**；读末 3 段——有没有下课语 / 布置作业？半句或噪声 = **缺结尾**。"时间戳连续"只证明文件没截断，不证明覆盖整堂课。
 4. **顺延边界**：读前 15 分钟，对照**上一讲**的讲义——如果教授在补上周没讲完的页，记下切换到本讲讲义的时间戳。顺延段的内容回填到**上一讲**笔记（§5.4），本讲 §8 只做索引。
@@ -194,7 +196,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/integrity_check.py ve
 PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_check.py audit <笔记.md> --transcript <本讲转录> [<被引用的其它转录>]
 # 同一课堂两份重叠录音再跑逐源核验（A/B 分别指定，不用时间戳并集代替）
 PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/transcript_source_check.py <笔记.md> <A转录.txt> <B转录.txt>
-# ② 统一发布门槛：包含 strict/sections/readability 原始诊断，旧 G/E 不单独阻塞
+# ② 统一发布门槛：包含现行 L/C/R 及历史 G/E；C.hard 阻塞，旧配额不单独阻塞
 # review.json 必须在实际教学核对后填写；仅预检用 --check-only，不算教学通过
 D:\anaconda3\python.exe -X utf8 _meta/tools/note_release_gate.py <候选.md> --note <正式笔记相对路径> --source <原始副本.md> --scope changed --pages <讲义页数> --review <review.json>
 # ③ 全库链接 + README 同步
@@ -204,7 +206,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/readme_check.py
 ```
 
 - ① 的 WARN 要么修掉，要么在 §9.5 写明为什么保留（例如 A5 低匹配是因为那段 ASR 乱码严重、已按 `[ ]` 规则标注）。**A13（方括号外的词在转录窗口找不到）与 A14（引文里的数字在转录找不到）逐条过一遍**：真是改写就补 `[ ]`，是 ASR 近似（UCago/UChicago）可留；A14 命中的数字必须回转录核对——数字是最危险的改写（2026-09-18 抓到 "32 weeks" 被写成 52 未标注）。
-- ② 全部候选完成后按《笔记制作与融合验收流程》集中核对适用内容，保留 L/G/E/R 原始结果和 △ 处理。机械通过不表示教学通过。旧 G/E 只诊断，不为凑标签扩写。已有 v1/v2 的 R 硬项必须清零；旧未标记稿按该流程保留未变历史项、阻塞新缺陷。新写／整篇重写用 scope full。
+- ② 全部候选完成后按《笔记制作与融合验收流程》集中核对适用内容，保留现行 L/C/R、JSON historical 中的旧 G/E 和 △ 处理。机械通过不表示教学通过。旧 G/E 只诊断，不为凑标签扩写。已有 v1/v2 的 R 硬项必须清零；旧未标记稿按该流程保留未变历史项、阻塞新缺陷。新写／整篇重写用 scope full。
 - 脚本报的行号是原文件行号，直接定位。
 
 **回执**（写进 PROGRESS.md 末尾并汇报）：
@@ -229,7 +231,7 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/readme_check.py
 - [ ] §9.2 按价值排序、§9.5 反方视角三问
 - [ ] 顺延内容回填到上一讲并改其 ❓ → ✅（如适用）
 - [ ] 考点库 / 台账 / 术语表 / 作业与DDL / 00-总览 / 转录处理规则 §8 全部回写；README 五门课表 + 待办表都改了（`readme_check.py` 0 问题）
-- [ ] audit PASS；L/R 发布门槛满足，旧 G/E 原始结果如实保留；全部新增与受影响单元按总规则／D 层完成一次核对，△ 已逐项判断；实际视觉范围有证据，review.json 无 pending／未闭合缺口；链接与完整性据实报告
+- [ ] audit PASS；L/C/R 发布门槛满足，旧 G/E 原始结果如实保留；全部新增与受影响单元按总规则／D 层完成一次核对，△ 已逐项判断；实际视觉范围有证据，review.json 无 pending／未闭合缺口；链接与完整性据实报告
 - [ ] frontmatter `transcript: merged`、`status: v1.0`、`updated`；§9.6 有合并行
 - [ ] 没有碰 `course_files_export/`；没有引用 Notta 中文版；没有一处"教授说"缺时间戳（A10 WARN 已清或已解释）
 
@@ -281,6 +283,8 @@ PYTHONIOENCODING=utf-8 /d/anaconda3/python.exe _meta/tools/merge_apply.py <工�
 - `merge_apply.py` 把 findings 渲染进 §0 / §6.2 / §8 时间分配 / §9.1 / §9.2 / §9.5 / §9.6 与 frontmatter，把 `*_rows` **追加到各元文件末尾**的日期区块（不再逐处 grep 插入；`00-课程总览` / 根 `README` / `转录处理规则` §8 那三行仍由主代理改）。
 - audit 或发布门槛失败不写 vault；按定位修 patch / findings / main.json，重新生成候选。旧 G/E 诊断 FAIL 原样保留；只针对真实缺陷修复，不把它伪报 PASS。候选变化后定向核对受影响内容并更新真实回执，禁止只改哈希绕过复核。
 - dry-run 只代表机械预检。写回前按《笔记制作与融合验收流程》完成 review.md / review.json；合并器校对源、候选和证据哈希后才写入。写后核对完整性、链接、Notion 与 README；仅用户授权时提交。语义核对必须在写回前完成。
+
+当完整通读后确实没有考试明示时，合并命令显式加 `--no-red`，透传底层审计已有模式；只把A8无明示转为警告，不豁免引文、时戳、L/C/R或教学核对，也不得为凑条数把课堂参考答案升级成考试声明。
 
 ### 11.5 时间预算（2 小时课）
 

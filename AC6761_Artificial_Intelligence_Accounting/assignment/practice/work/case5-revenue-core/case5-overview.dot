@@ -1,0 +1,28 @@
+digraph CityUModel {
+graph [rankdir=LR, nodesep=0.65, ranksep=1.6, splines=polyline, pad=0.7, bgcolor="white", outputorder=edgesfirst];
+node [shape=plain, fontname="Arial", fontsize=16];
+edge [dir=none, fontname="Arial", fontsize=14, labelfontname="Arial", labelfontsize=16, color="#52616b", labeldistance=2.6, labelangle=28, penwidth=1.3];
+graph [label="Case 5: revenue core model (reference) - relationship overview\nPhysical Surfboard IDs; no resale.\nNon-customer receipts allowed as a scope assumption. Official solution pending.",labelloc=b,fontname="Arial",fontsize=13];
+"Surfboard" [id="node-Surfboard",label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="9" COLOR="#52616b"><TR><TD BGCOLOR="#e9f3fc" ALIGN="CENTER"><FONT POINT-SIZE="13">&lt;&lt;Resource&gt;&gt;</FONT><BR/><B>Surfboard</B></TD></TR></TABLE>>];
+"CashAccount" [id="node-CashAccount",label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="9" COLOR="#52616b"><TR><TD BGCOLOR="#e9f3fc" ALIGN="CENTER"><FONT POINT-SIZE="13">&lt;&lt;Resource&gt;&gt;</FONT><BR/><B>CashAccount</B></TD></TR></TABLE>>];
+"Cashier" [id="node-Cashier",label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="9" COLOR="#52616b"><TR><TD BGCOLOR="#f3eefb" ALIGN="CENTER"><FONT POINT-SIZE="13">&lt;&lt;InternalAgent&gt;&gt;</FONT><BR/><B>Cashier</B></TD></TR></TABLE>>];
+"CashReceipt" [id="node-CashReceipt",label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="9" COLOR="#52616b"><TR><TD BGCOLOR="#e8f5ed" ALIGN="CENTER"><FONT POINT-SIZE="13">&lt;&lt;EconomicIncrement&gt;&gt;</FONT><BR/><B>CashReceipt</B></TD></TR></TABLE>>];
+"Customer" [id="node-Customer",label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="9" COLOR="#52616b"><TR><TD BGCOLOR="#f1f3f5" ALIGN="CENTER"><FONT POINT-SIZE="13">&lt;&lt;ExternalAgent&gt;&gt;</FONT><BR/><B>Customer</B></TD></TR></TABLE>>];
+"Salesperson" [id="node-Salesperson",label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="9" COLOR="#52616b"><TR><TD BGCOLOR="#f3eefb" ALIGN="CENTER"><FONT POINT-SIZE="13">&lt;&lt;InternalAgent&gt;&gt;</FONT><BR/><B>Salesperson</B></TD></TR></TABLE>>];
+"Sale" [id="node-Sale",label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="9" COLOR="#52616b"><TR><TD BGCOLOR="#fff2dc" ALIGN="CENTER"><FONT POINT-SIZE="13">&lt;&lt;EconomicDecrement&gt;&gt;</FONT><BR/><B>Sale</B></TD></TR></TABLE>>];
+subgraph column_0 { rank=same; "Surfboard"; "CashAccount"; }
+subgraph column_1 { rank=same; "Sale"; "CashReceipt"; }
+subgraph column_2 { rank=same; "Salesperson"; "Customer"; "Cashier"; }
+"Surfboard" -> "CashAccount" [style=invis,weight=100];
+"Sale" -> "CashReceipt" [style=invis,weight=100];
+"Salesperson" -> "Customer" [style=invis,weight=100];
+"Customer" -> "Cashier" [style=invis,weight=100];
+"Sale" -> "CashReceipt" [id="edge-E1",taillabel="0..*",headlabel="0..*",label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="white"><TR><TD>Duality</TD></TR><TR><TD>AppliedAmount</TD></TR></TABLE>>,constraint=false,minlen=1];
+"Surfboard" -> "Sale" [id="edge-E2",taillabel="1..*",headlabel="0..1",label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="white"><TR><TD>Stockflow</TD></TR></TABLE>>,constraint=true,minlen=1];
+"CashAccount" -> "CashReceipt" [id="edge-E3",taillabel="1..1",headlabel="0..*",label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="white"><TR><TD>Stockflow</TD></TR></TABLE>>,constraint=true,minlen=1];
+"Sale" -> "Salesperson" [id="edge-E4",taillabel="0..*",headlabel="1..1",label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="white"><TR><TD>Participation</TD></TR></TABLE>>,constraint=true,minlen=1];
+"CashReceipt" -> "Cashier" [id="edge-E5",taillabel="0..*",headlabel="1..1",label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="white"><TR><TD>Participation</TD></TR></TABLE>>,constraint=true,minlen=1];
+"Sale" -> "Customer" [id="edge-E6",taillabel="0..*",headlabel="1..1",label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="white"><TR><TD>Participation</TD></TR></TABLE>>,constraint=true,minlen=1];
+"CashReceipt" -> "Customer" [id="edge-E7",taillabel="0..*",headlabel="0..1",label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="white"><TR><TD>Participation</TD></TR></TABLE>>,constraint=true,minlen=1];
+"Salesperson" -> "Customer" [id="edge-E8",taillabel="1..1",headlabel="1..*",label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="white"><TR><TD>Assignment</TD></TR></TABLE>>,constraint=false,minlen=1];
+}

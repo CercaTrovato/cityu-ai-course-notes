@@ -4,12 +4,12 @@ module: 5
 week: 5
 date: 2026-09-30
 source: "Week 5 PPT.pptx（57 页）"
-transcript: pending
+transcript: merged
 prerequisites: [M01, M02, M03, M04]
 new_concepts: [资源, 资源类型, 经济事件, 经济增量事件, 经济减量事件, 内部参与者, 外部参与者, 二元性, 存量流, 参与, 保管, 指派, 责任, 关联属性, 核心REA模型六步法, 采购循环, 收入循环, 起因事件, 承诺事件, 相互承诺事件, 经济冲销事件, 履行, 冲销, 对等, 提议, 预留, 类型化, 构成, 采购申请, 采购订单, 采购退回, 销售拜访, 销售订单, 销售退回, 现金收款, 现金付款]
 tags: [AC6761, REA, 业务流程建模, UML类图, 采购循环, 收入循环, 期中考范围]
-status: v0.9
-updated: 2026-10-02
+status: v1.0
+updated: 2026-10-21
 mechanism_review: pending
 mechanism_review_mode: efficient-20261002
 mechanism_content: repaired
@@ -22,9 +22,9 @@ readability_review: pending
 # M05 · REA 业务流程建模（REA Business Process Modeling）
 
 > **本讲一句话**：M04 给了你 REA 的**零件**（资源 / 事件 / 参与者）和**画图的语法**（UML 类图、多重度）；这一讲给你**装配图纸**——一套六步建模程序，按业务叙述确定对象、关联、属性和参与次数，再检查能否落表，并用**采购循环**和**收入循环**两个完整实例走完全程。
-> **原始材料**：`Week 5 PPT.pptx`（57 页） ｜ **转录**：`pending`（本讲尚未融合课堂转录）
+> **原始材料**：`Week 5 PPT.pptx`（57 页）+ `Case 5.docx` + `Solution of Case 5.pdf` ｜ **转录**：`merged`（S6 = `M04-M05-transcript-source6-partial.txt`，M05 段 `01:13:52`–`01:48:21`；与 M04 共用同一完整时钟）。
 
-> ⚠️ **本笔记为 v0.9**：**完全基于讲义**，无课堂转录。七格微结构里的「🎙️ 课堂补充」一律写「待转录补充」——这是有意留的欠债标记，不是遗漏。转录到手后要回填的具体问题清单见 [[#9.2 课上讲了但课件没有|§9.2]]。
+> ✅ **本笔记为 v1.0**：已融合 S6 的 M05 段 `01:13:52`–`01:48:21`。课堂讲完核心概念、六步法、采购/收入核心模式，并完整讲评 Case 5；扩展模型被明确降为“for your information, not our focus”。S6 与 M04 共用时钟，不从导出时间推断授课日期。
 >
 > 🔴 **这是期中考范围的最后一周。** 期中考 **2026-10-14（周三）19:30–21:30**，闭卷，考场 AC1 (Yeung) Y4302 & Y4702，范围 **W1–W5**（教授在 W1 课上说了两遍）。本讲和 W4 合起来占范围内课程周数的 **40%**（五周里的两周，**不是考试分值权重**），而且是**唯一需要"画东西"的部分**。
 
@@ -60,6 +60,8 @@ W4 结束时你已经认识 REA 的三类对象：**资源 Resource、事件 Eve
 1. **六步法的顺序不能乱**：先事件、再资源、再外部参与者、再内部参与者、最后属性和多重度。**为什么是这个顺序**：REA 是**以事件为中心**的模型，事件是骨架，资源和参与者都是挂在事件上的枝叶。先画枝叶你会不知道往哪挂。
 2. **多重度必须"看对面"**：标在类 A 旁边的那个数字，说的是**"一个 B 的实例连着几个 A"**（W4 p.31 原话："Minimum participation of employee = 0 (**put next to dept**)"）。读反了整题就废了。
 3. **采购循环与收入循环是同一件事的两面**：你卖东西给客户 = 客户从你这里采购。所以两个模型共享“增量事件—减量事件”的交换骨架：采购循环里“收货”是增量、“付钱”是减量；收入循环里“收钱”是增量、“发货”是减量。它们不是完全对称：起因、承诺、履行、退回及参与角色仍由各自业务规则决定。
+
+> 🎙️ **课堂实况**：S6 在 `01:13:52` 切入 M05，约 11 分钟讲 p.2–11 核心概念与采购 Core pattern；`01:25:05`–`01:27:12` 是性质未核的 ASR 空档；其后简讲 RSWS 与收入核心，并用 `01:31:05`–`01:45:25` 完整讲评 Case 5。扩展模型明确只供了解，考试要求集中在 Core pattern 的关联名、属性和多重度。
 
 ---
 
@@ -223,8 +225,9 @@ p.49–57    收入循环各事件的逐个定义
 - ❌ "Resource Type 是 Resource 的父类，像面向对象的继承。" —— **不是继承关系，是"型 / 例"关系**（type / instance）。在扩展模型里两者会被一条叫 **Typification（类型化）** 的关联连起来（§2.10.7）：`<<ResourceType>> Inventory Type` ←→ `<<Resource>> Inventory`。
 - ❌ "现金一定是 Resource Type，因为钞票可以互换。" —— 讲义的做法是把 **`<<Resource>> Cash Account`**（现金账户）建成资源，因为你要区分"汇丰的活期账户"和"中银的支票账户"——**它们不能互换**（一个账户余额不够不能拿另一个顶）。⚠️ 讲义在 RSWS 例子里把 Cash 标成了 `<<ResourceType>>`，与其他 4 处不一致，见 [[#9.3 课件自身的问题|§9.3 ①]]。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:13:52`–`01:15:18`，约 1.4 分钟，A · 课上展开）
+
+教授用 cookie 与 diamond 对比：cookie 个体通常可互换，按 ResourceType；diamond 价值高且有唯一编号，卖掉后该实例消失，按 Resource（S6 `01:14:00`–`01:15:14`）。**这段改变了什么**：课堂直接确认正文的“可互换性 + 独特性”判据。
 
 **与其他概念的关系**
 
@@ -274,8 +277,9 @@ REA 把它分成两种，方向相反：
 
 > 💡 **换个说法（笔记补充）**：把企业想成一个仓库。增量 = 有东西搬进仓库，减量 = 有东西搬出仓库。搬出去的是货（销售）还是钱（付款），仓库管理员不关心，他只记"进"和"出"。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:15:18`–`01:15:29`，B · 讲了同讲义）
+
+课堂在 S6 `01:15:18`–`01:15:29` 只说 Events 已在 M04 讲过，没有新增定义；随后用 Duality 唤醒资源流入/流出。**这段改变了什么**：本节只得到课堂复习信号，不新增边界。
 
 **所以呢**
 
@@ -307,8 +311,9 @@ REA 把参与者建成**一等公民**（独立的类），于是下面这些问
 - ❌ "内部/外部是按'在不在公司里上班'分的。" —— 更准确的说法是**"这个人是代表企业一方，还是代表交易对手一方"**。一个外包的清洁公司员工在你的厂房里干活，但他在"采购清洁服务"这个事件里是**外部参与者**。
 - ❌ "一个事件只能有一个参与者。" —— 恰恰相反，通常**至少两个**：一个外部（交易对手）、一个或多个内部（经手人、批准人）。讲义 p.11 的采购事件就挂了 3 个参与者。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:15:18`–`01:15:22`，B · 讲了同讲义）
+
+Agents 被一句带过为已学内容。**这段改变了什么**：确认课堂没有再次展开 Internal/External Agent；正文仍承担自学解释。
 
 **所以呢**
 
@@ -380,8 +385,9 @@ RSWS 的 duality 连的是 `Purchase` ↔ `Cash Disbursement`（讲义 p.12）�
 - ❌ "duality 一定是 1 对 1。" —— 只有在"一手交钱一手交货、绝不赊账、绝不分期"的极简业务里才是 `1..1—1..1`（这正是 **W4 Exercise 1** 的那张图）。现实里几乎总是多对多。
 - ❌ "duality 连的是资源。" —— 不，**连的是事件**。资源是靠 stockflow 挂上去的。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:15:22`–`01:15:38`，B · 讲了同讲义）
+
+教授复述 Duality 连接两个事件：一个资源流入、一个资源流出（S6 `01:15:22`–`01:15:38`）。**这段改变了什么**：与正文一致，无新增限制。
 
 **所以呢**
 
@@ -427,8 +433,9 @@ Stockflow 就是仓库出入库单上的"品名"那一栏。事件是"什么时�
 - ❌ "一个事件只能有一条 stockflow。" —— RSWS 的 Purchase 事件就有**两条**（存货 + 制造费用）。一次采购当然可以既买货又买服务。
 - ❌ "Inflow / Outflow 是两种不同的关联，图上要用不同的线。" —— 讲义图上**都写 `Stockflow`**，方向由所连事件决定。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:15:38`–`01:15:46`，B · 讲了同讲义）
+
+教授一句话说明 Stockflow 连接 Economic Event 与 Resource / ResourceType，并预告稍后实例。**这段改变了什么**：无增量。
 
 **所以呢**
 
@@ -461,8 +468,9 @@ Participation 就是单据上的**签名栏**。一张采购单上有"申请人"
 - ❌ "participation 只连内部参与者。" —— 讲义括号里明写 `(internal and external)`。**外部参与者也靠 participation 连**。
 - ❌ "同一个事件到同一个人只能有一条 participation。" —— 如果一个人在同一事件里有**两个不同角色**（既是申请人又是审批人），严格建模应画两条并给它们不同的名字。讲义没展开这一点。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:15:46`–`01:16:05`，B · 讲了同讲义）
+
+课堂例子是 Cashier–CashReceipt、Supplier–Purchase，均命名 Participation（S6 `01:15:46`–`01:16:05`）。**这段改变了什么**：补了两条最小口语例。
 
 **所以呢**
 
@@ -514,8 +522,9 @@ Custody = **钥匙在谁手里**。保险柜的钥匙归财务主管，这是 cu
 
 - ❌ "有 participation 就不用画 custody。" —— 反了。**大多数情况下不画 custody**（讲义把它列为"次"关联就是这个意思）；只有当"谁负责保管"需要**独立追踪**时才画。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:16:05`–`01:16:25`，B · 讲了同讲义）
+
+教授照 p.4 解释 Custody：Agent 对 Resource 有物理控制或控制访问（S6 `01:16:12`）。没有解释 p.34 为什么连 ResourceType。**这段改变了什么**：旧勘误仍未解决，必须继续保留。
 
 **所以呢**
 
@@ -551,8 +560,9 @@ Custody = **钥匙在谁手里**。保险柜的钥匙归财务主管，这是 cu
 
 Assignment = **通讯录里的"对口人"字段**。你手机里存着"招行 · 客户经理王某"，你这个月没去过银行，但这个对口关系一直在。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:16:25`–`01:16:55`，A · 课上展开）
+
+Assignment 的例子是新客户由公司分配一位经理照顾，VIP 客户也可由指定经理负责（S6 `01:16:25`–`01:16:55`）。**这段改变了什么**：新增一个 Internal Agent–External Agent 的口语例。
 
 **所以呢**
 
@@ -582,8 +592,9 @@ Responsibility = **组织架构图上的那根竖线**。
 
 - ❌ "responsibility 就是 custody 的人对人版。" —— 不是。custody 是**人对物**（谁管着东西），responsibility 是**人对人**（谁管着人）。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:16:55`–`01:17:07`，A · 课上展开）
+
+Responsibility 的例子是新员工由资深经理照顾和指导（S6 `01:16:55`–`01:17:07`）。**这段改变了什么**：用“员工对员工”与 Assignment 的“员工对客户”形成对照。
 
 **所以呢**
 
@@ -659,8 +670,11 @@ Responsibility = **组织架构图上的那根竖线**。
 - ❌ "关联属性是可选的装饰。" —— 不是。**多对多关联上的属性无处可去**，不挂关联就只能丢掉。
 - ❌ "所有关联都能挂属性。" —— 能挂，不限定只有多对多；须按对象组合与业务粒度判断。一对多关联的属性可以挪到"多"的那一端的类上（RSWS 的 `Stockflow3` 就没有属性，因为 `Cash 1..1 — 0..* Cash Disbursement` 不是多对多，金额直接放在 `Cash Disbursement.CD-amt` 里了）。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:17:17`–`01:18:12`，A · 课上展开）
+
+- 属性通常描述一个类；极少数属性描述一对对象的关联（S6 `01:17:17`–`01:17:38`）。
+- Resource 通常有 ID、description、value/dimensions；Event 有 ID、date/time、value；Agent 有 ID、name、address、telephone（S6 `01:17:42`–`01:18:12`）。
+- **这段改变了什么**：确认“组合语义”才是关联属性判据，不是只有 M:N 才能有。
 
 **所以呢**
 
@@ -762,8 +776,9 @@ Responsibility = **组织架构图上的那根竖线**。
 - ❌ 把多重度读成“标在 A 旁边就是固定一个 A 后的数量”。正确读法是：**先固定对面的一个 B，再读贴在 A 旁的数字，得到它允许关联几个 A**。牢记 W4 的原话：**put next to dept**（描述 employee 的数字写在 dept 旁边）。
 - ❌ 以为最小值 0 是“可以不填”。例如数字 0 贴在 A 端，表示**固定一个 B 时允许没有 A 与它匹配**；它不等于“A 自己可以孤立”。最小值 1 则表示固定该 B 时至少要有一个 A。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:18:16`–`01:18:56`，A · 课上展开）
+
+多重度判断顺序是 narrative description → business common sense → reasonable assumption；只有前两者不足时才写自己的假设，且答案要与假设一致（S6 `01:18:16`–`01:18:44`）。教授明确略过 p.6 的三条默认规则（`01:18:50`–`01:18:56`）。**这段改变了什么**：默认规则降为辅助，题目文字优先。
 
 **所以呢**
 
@@ -868,8 +883,9 @@ Step 4 的三个动词也要记：内部参与者是那些 **process（经办）
 - ❌ "step 1 只建一个事件。" —— **必须成对**。原文 `Create each economic exchange event as a class and create a duality association **between them**`，`them` 是复数。
 - ❌ "外部参与者在增量和减量事件里是同一个，所以只连一条线。" —— 是同一个类（比如都是 Supplier），但**要连两条 participation**，因为它参与了两个不同的事件。RSWS 的 Supplier 就连了两条（p.15 的 Participation2 和 Participation3）。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:19:17`–`01:21:43`，A · 课上展开）
+
+教授逐步复述六步：先两件 Economic Exchange Events 并连 Duality；再挂 Resources、External Agents、Internal Agents；最后分配 Attributes 与 Multiplicities（S6 `01:20:57`–`01:21:43`）。**这段改变了什么**：六步法得到直接课堂确认，并被后续 Case 5 实际执行。
 
 **与其他概念的关系**
 
@@ -1054,8 +1070,12 @@ classDiagram
 2. **`Cash Account` 标的是 `<<Resource>>`**（不是 ResourceType）—— 因为具体的银行账户不可互换。⚠️ RSWS 例子里却标成了 ResourceType，见 [[#9.3 课件自身的问题|§9.3 ①]]。
 3. **Purchase 挂了两个内部角色**（采购员 + 收货员），**Cash Disbursement 挂应付会计角色**。这为职责分离提供了角色结构；是否由不同自然人执行仍须核身份与权限。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:21:55`–`01:25:05`，A · 课上展开，覆盖 p.9–11）
+
+- 采购增量事件考试只需记 Purchase，资源用 Inventory / InventoryType，外部参与者 Supplier，内部参与者 Purchasing Agent（S6 `01:21:55`–`01:23:38`）。
+- 减量事件用 Cash Disbursement，资源 Cash，外部参与者仍是 Supplier，内部参与者可写 Cashier（S6 `01:23:38`–`01:24:09`）。
+- 教授明确考试给出已连好的结构骨架，学生填属性、关联名与多重度（S6 `01:24:30`–`01:24:55`）。
+- **这段改变了什么**：p.9–11 从讲义模式升级为课堂确认，并明确答题交付边界。
 
 **所以呢**
 
@@ -1148,8 +1168,9 @@ Sale关注商品流出；盈利是收入成本差，CashReceipt另记录现金�
 - ❌ "Sale 是收入，收入是好事，所以 Sale 应该是增量。" —— **最常见的错误**。再说一次：增量/减量看的是**资源进出方向**，不是损益方向。**Sale 是减量**（货出去了）。
 - ❌ "p.21 少画了 Shipping Clerk（发货员），是漏了。" —— 严格说这是核心模式的**简化**，讲义在采购侧画了 Receiving Clerk 而销售侧没画对应的 Shipping Clerk（不对称）。但到了扩展模型 p.48 就补上了 Shipping Clerk。见 [[#9.3 课件自身的问题|§9.3 ⑦]]。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:30:38`–`01:31:05`，B · 讲了同讲义）
+
+教授把收入核心模式概括为 Sale–CashReceipt 的 Duality；资源是 goods/service/inventory 与 cash；参与者是 Salesperson、Customer、Cashier（S6 `01:30:38`–`01:31:05`）。**这段改变了什么**：课堂只简讲骨架，完整练习转入 Case 5。
 
 **与其他概念的关系**
 
@@ -1216,8 +1237,9 @@ classDiagram
 
 **⚠️ 常见误解**：想在 Step 1 就把"存货"画出来。忍住。存货是 Step 2 的事。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:27:12`–`01:27:38`，B · 讲了同讲义）
+
+RSWS Step 1 取 Purchase 与 Cash Disbursement 两事件，用 Duality 连接（S6 `01:27:18`–`01:27:38`）。**这段改变了什么**：直接课堂确认，无新边界。
 
 **所以呢**
 
@@ -1282,8 +1304,9 @@ classDiagram
 
 **💡 换个说法（笔记补充）**：Step 2 就是在给每个事件回答"**买的是啥 / 付的是啥**"。答案有几样，就画几条 stockflow。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:27:38`–`01:28:28`，A · 课上展开）
+
+Purchase 挂 InventoryType 与 Overhead，CashDisbursement 挂 Cash；三条线分别命名 Stockflow1/2/3（S6 `01:27:38`–`01:28:28`）。**这段改变了什么**：教授强调同类关联也要用编号区分具体连线。
 
 **所以呢**
 
@@ -1383,8 +1406,9 @@ classDiagram
 
 **同样叫 Participation3，在两张图上指的是完全不同的两条线。** 编号只是画图时的顺序标签，**不携带语义**。考试时若题目引用 "Participation3"，必须回到那张具体的图去看它连的是谁。（这一点讲义没有提醒，见 [[#9.3 课件自身的问题|§9.3 ⑥]]。）
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:28:28`–`01:29:29`，A · 课上展开）
+
+课堂识别 PurchaseAgent、Supplier、A/P Clerk（或 Cashier）与 Manager，并把五条参与线命名 Participation1–5（S6 `01:28:28`–`01:29:17`）。是否纳入 Manager/A/P Clerk 取决于 narrative description（`01:29:17`–`01:29:29`）。**这段改变了什么**：两个内部角色不是普遍常识，必须由题面决定。
 
 **所以呢**
 
@@ -1547,8 +1571,9 @@ classDiagram
 
 **⚠️ 讲义的小毛病**：p.16 的四个属性里，`item-qty-purch` 和 `oh-qty-purch` 前面没有连字符，而 `-item-unit-cost` 和 `-cd-acq-applied` 前面有。UML 里属性前的 `-` 表示"私有"，这里显然只是复制粘贴时的不一致。见 [[#9.3 课件自身的问题|§9.3 ⑤]]。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:29:29`–`01:30:10`，B · 讲了同讲义）
+
+教授以 Acquisition ID 为例再次要求 ID 标 PK，并说考试会把属性名称写清楚，让学生归入正确方框（S6 `01:29:29`–`01:30:06`）。**这段改变了什么**：课堂未逐项讲 p.16–17 全部字段，但确认了考试任务是“归属属性”，不是凭空发明属性。
 
 **所以呢**
 
@@ -1717,8 +1742,117 @@ Stockflow1 的 `item-qty-purch` 与 `item-unit-cost` 属采购×品类。假设�
 
 > 🟡 **答题框架（可直接套用）**：见 [[#6.3 答题框架|§6.3 框架 B]]。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:30:10`–`01:45:25`，A · 课上展开；`Case 5.docx` + 官方解答 PDF）
+
+- p.18 的 Step 6 只被一句带过；p.19–20 的 RSWS 四句和 18 个端点没有逐项讲。`01:30:38` 已转到 p.21 收入核心模式。
+- `01:31:05` 起教授改用 Canvas `Case 5.docx` 走收入循环六步，并以官方手绘 `Solution of Case 5.pdf` 对照。以下题面来自 Word 原件，课堂讲解另带 S6 时间戳。
+
+<details><summary>📄 Case 5 英文原题（官方 Word 原件，完整题面）</summary>
+
+**Case 5**
+
+**Step 1:** Sale and Cash receipt
+
+**Step 2:** Attach Cash to Cash receipt; Attach Surfboard inventory to Sale
+
+**Step 3 and 4:** Attach Salesperson to Sale; Attach Cashier to Cash receipt; Attach Salesperson to Customer (Assignment); Attach Customer to Sale and Cash Receipt
+
+**Step 5: Assign Attributes**
+
+- Surfboard#; Surfboard description; Surfboard Sell-price
+- Cash Account#; Cash account type; Bank name; Cash balance
+- Cashier #; Cashier name
+- Cash receipt #; Cash receipt total amount
+- Customer #; Customer name; Customer account receivable
+- Salesperson #; Salesperson name; Salesperson-comm-rate
+- Sale#; Sale total amount; Sale no. of items
+- Cash receipt amount applied to sale
+
+**Step 6: Assign Multiplicities (using narrative description and common business sense)**
+
+Credit sale is allowed; Partial payment is allowed; Combined payment is allowed; Sale of surfboard inventory is not the only source of cash receipt.
+
+There are some surfboards available for sale. Sale can be made by one and only one salesperson.
+
+Every cash receipt has to be deposited into one and only one cash account. Cash receipt can be handled by one and only one cashier.
+
+The data on employees and customers can enter system without any transactions.
+
+One customer must be assigned with one and only one salesperson. One salesperson must be assigned to one customer and can be assigned to multiple customers.
+
+**Require:** Create a revenue process level Core model.
+
+</details>
+
+**中文读题与限定词**
+
+1. `allowed` 表示业务允许出现这种记录，不表示每笔都如此。
+2. `one and only one` 同时给最小值 1 和最大值 1；`can enter system without any transactions` 给相关事件端最小值 0。
+3. credit / partial / combined / other cash source 分别决定 Duality 的四个端点：Sale 可无收款、Sale 可分多次收款、一次收款可合并多笔 Sale、CashReceipt 可没有 Sale。
+
+**课堂逐步答案**
+
+- Step 1–4：教授确认 Sale–CashReceipt 用 Duality；资源用 Stockflow；Salesperson/Customer/Cashier 用 Participation；Salesperson–Customer 是 Assignment（S6 `01:31:27`–`01:33:36`）。
+- Step 5：编号/ID 是 PK；20 个类属性按名称归入七个类，`Cash receipt amount applied to sale` 挂 Duality。教授同时降权该关联属性：*"Such attributes will not be tested"*（S6 `01:36:49`–`01:37:30`）。
+- Step 6（Duality）：credit、partial、combined 和其他现金来源使两端都是 `0..*`（S6 `01:38:04`–`01:39:06`）。
+- Step 6（现金角色）：每个 CashReceipt 恰好对应一个 CashAccount 和一个 Cashier（S6 `01:39:43`–`01:40:12`）。
+- Step 6（主数据先入库）：员工与客户可在没有交易时先入库，所以相关事件端最小值为 0（S6 `01:40:22`–`01:41:20`）。
+- Step 6（库存）：一块 Surfboard 最多卖一次；一笔 Sale 至少包含一块，也可包含多块（S6 `01:42:10`–`01:43:14`）。
+- Step 6（销售参与者）：一笔 Sale 恰好一个 Salesperson、一个 Customer；角色可参与多笔交易（S6 `01:43:49`–`01:44:39`）。
+- Step 6（收款来源）：CashReceipt 可以来自非客户来源，所以 Customer 端为 `0..1`（S6 `01:44:44`–`01:45:17`）。
+
+**English reference answer（课堂逻辑 + 官方手绘解答）**
+
+> The revenue-process core model contains Sale and CashReceipt linked by Duality; SurfboardInventory and CashAccount linked by Stockflow; Salesperson, Customer, and Cashier linked by Participation; and Salesperson linked to Customer by Assignment. Credit sales, partial payments, combined payments, and other cash sources make both Duality ends `0..*`. Each sale is handled by exactly one salesperson and belongs to exactly one customer; each cash receipt is deposited into exactly one cash account and handled by exactly one cashier. The remaining minimums and maximums follow the narrative, common business sense, or an explicitly stated assumption.
+
+- **来源地位**：题面 = 官方 Word；图形答案 = 官方扫描 PDF；解释与课堂强调 = S6；英文参考答案为笔记整合，不冒充教授逐字原话。
+**可编辑模型图**
+
+先用结构图回答“七个类怎样通过八条关系连起来”，再用全属性图核对二十个类属性和 Duality 上的一项关联属性。两图都由同一份 JSON 生成；线没有箭头，位置不表示时间或因果。
+
+![[AC6761_Artificial_Intelligence_Accounting/notes/figures/case5-classroom/case5-overview.svg]]
+
+![[AC6761_Artificial_Intelligence_Accounting/notes/figures/case5-classroom/case5-full.svg]]
+
+可编辑来源：[[AC6761_Artificial_Intelligence_Accounting/notes/figures/case5-classroom/model.json|同源语义 JSON]]、[[AC6761_Artificial_Intelligence_Accounting/notes/figures/case5-classroom/case5-overview.dot|结构图 DOT]]、[[AC6761_Artificial_Intelligence_Accounting/notes/figures/case5-classroom/case5-full.dot|全属性图 DOT]]。
+
+**按列读图**
+
+- 左列是资源：逐块识别的 Surfboard Inventory，以及具体 Cash Account。
+- 中列是事件：Sale 让冲浪板流出；Cash Receipt 让现金流入。
+- 右列是参与者：Salesperson 与 Cashier 是内部角色，Customer 是外部角色。
+- 每条线两端的数字要反向读。贴在 A 类旁的数字回答“固定一个 B，可以连几个 A”。
+
+**八条关联、十六个端点的双向读法**
+
+| 关联 | 固定右端，数左端 | 固定左端，数右端 | 依据 |
+|---|---|---|---|
+| Stockflow1 | 一笔 Sale 含 `1..*` 块 Surfboard | 一块 Surfboard 属 `0..1` 笔 Sale | 官方图 |
+| Stockflow2 | 一笔 CashReceipt 进 `1..1` 个 CashAccount | 一个 CashAccount 有 `0..*` 笔 CashReceipt | 题面 + 官方图 |
+| Duality | 一笔 CashReceipt 对应 `0..*` 笔 Sale | 一笔 Sale 对应 `0..*` 笔 CashReceipt | 四条付款政策 |
+| Participation1 | 一个 Salesperson 办 `0..*` 笔 Sale | 一笔 Sale 有 `1..1` 个 Salesperson | 题面 + 官方图 |
+| Participation2 | 一个 Customer 有 `0..*` 笔 Sale | 一笔 Sale 属 `1..1` 个 Customer | 官方图 |
+| Participation3 | 一个 Customer 有 `0..*` 笔 CashReceipt | 一笔 CashReceipt 有 `0..1` 个 Customer | 其他现金来源 + 官方图 |
+| Participation4 | 一个 Cashier 办 `0..*` 笔 CashReceipt | 一笔 CashReceipt 有 `1..1` 个 Cashier | 题面 + 官方图 |
+| Assignment | 一个 Customer 配 `1..1` 个 Salesperson | 一个 Salesperson 配 `1..*` 个 Customer | 题面 + 官方图 |
+
+**走一个具体例子（💡 笔记补充，不是官方交易数据）**
+
+1. Customer C1 由 Salesperson SP1 负责；这满足 Assignment 的 Customer 端 `1..*` 与 Salesperson 端 `1..1`。
+2. Sale S1 由 SP1 办理，卖给 C1，并包含 Surfboard SB1、SB2。
+3. S1 先收到 R1，后来又收到 R2；这展示 partial payment 使一笔 Sale 可连多笔 CashReceipt。
+4. 同一客户另有一笔 Sale S2。假设 R2 共 1,000，其中 600 抵 S1、400 抵 S2。两个分配额写在两条 Duality 关系上，不写成 R2 的单一类属性。
+5. R2 由 Cashier K1 处理并存入 CashAccount CA1；固定 R2 时，两条关系的另一端都恰好一个。
+
+<details><summary>读图自测：固定一笔 CashReceipt，为什么 Customer 端是 0..1，而 Sale 端是 0..*？</summary>
+
+Customer 端 `0..1`：收款可来自销售以外来源，所以可以没有 Customer；若是客户付款，本题模型最多连一个 Customer。Sale 端 `0..*`：其他来源时可连零笔 Sale，combined payment 时可连多笔 Sale。
+
+</details>
+
+**来源与假设边界**：七类、八关联、二十个类属性、一个关联属性和十六端点来自官方 Word 与官方手绘答案。题面本身未独立决定的端点照官方图保留，不用通用 REA 默认规则补猜。`Cash` 按官方答案写成 Cash Account；渲染器报告无 warning，但正式 SVG 的实际观看与视觉通过仍待主代理完成。
+
+- **这段改变了什么**：M05 不再只是讲义 RSWS 示例；新增一个完整收入循环课堂案例，并明确期中给骨架、要求填关联名、属性和多重度（S6 `01:32:58`–`01:33:36`、`01:45:25`–`01:45:55`）。
 
 **与其他概念的关系**
 
@@ -1938,8 +2072,7 @@ P2 连接 IA2；不能将其读成外部参与者。Responsibility/Assignment �
 
 > ⚠️ **注意 p.22 的全景图并没有画出全部 13 条关联**：`Reciprocal` 没画（讲义 p.30 明说 "Reciprocal not shown"）、`Linkage` 没画（p.36 明说 "Linkage not shown"）、`Custody` 在 p.34 才补上高亮。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.22 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。本页全景只可作为认识扩展模型的结构图；课堂没有逐线解释。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -1995,8 +2128,7 @@ P2 连接 IA2；不能将其读成外部参与者。Responsibility/Assignment �
 
 p.24 是 p.22 的同一张全景图，用**红色粗框**高亮了两个方框：`<<InstigationEvent>>` 和 `<<CommitmentEvent>>`。**只高亮类，不高亮线** —— 因为 p.23 讲的是"新增了哪两个类"，连线要到 p.27–28 才讲。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.23–24 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。Instigation/Commitment 的定义和高亮图没有课堂展开。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -2040,8 +2172,7 @@ p.26 用红框高亮了全景图上唯一的 `<<EconomicReversal>>` 方框。
 
 > ⚠️ **注意讲义的一处简化**：p.25 说冲销有**两种**（增量冲销和减量冲销），但 p.22 的全景图上**只画了一个 `<<EconomicReversal>>` 方框**，而且它（在 p.29 高亮时可以看到）只连到 `<<EconomicIncrement>>`。这是把两种冲销**合并成一个泛化的框**来画。到了具体模型里：采购循环的 `Purchase Return` 冲的是**增量**（p.38），收入循环的 `Sale Return` 冲的是**减量**（p.48）。见 [[#9.3 课件自身的问题|§9.3 ⑧]]。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.25–26 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。EconomicReversal 的定义与高亮图没有课堂展开。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -2114,8 +2245,7 @@ p.26 用红框高亮了全景图上唯一的 `<<EconomicReversal>>` 方框。
 
 > 💡 **换个说法（笔记补充）**：如果你把订单拆成"卖方承诺"和"买方承诺"两个方框，中间就要画 Reciprocal；如果你把订单画成一个方框（现实中就是一张纸），Reciprocal 就自动消失了，代价是这一个方框要往下连两条 Fulfillment。**两种画法等价，讲义选了后者。**
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.27–30 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。Fulfillment/Reversal/Reciprocal 未在课堂逐项解释；Reciprocal 未画原因仍待核。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -2158,8 +2288,7 @@ p.26 用红框高亮了全景图上唯一的 `<<EconomicReversal>>` 方框。
 
 > **Proposition = 提议（起因事件涉及什么）；Reservation = 承诺涉及的资源（承诺事件涉及什么）。** 是否真的“占位”，要再看企业的预留执行与取消政策。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.27–28 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。Proposition/Reservation 未在课堂展开，Reservation2 连接 CashAccount 的解释仍属笔记推断。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -2194,8 +2323,7 @@ p.26 用红框高亮了全景图上唯一的 `<<EconomicReversal>>` 方框。
 > **Responsibility（内 ↔ 内）→ Assignment（内 ↔ 外）→ Custody（人 ↔ 物）**。
 > 前两条的启用条件是同一句话（"脱离事件也成立"），第三条是"需要独立追踪保管责任"。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.31–34 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。Assignment/Responsibility/Custody 在 p.4 有口语例，但扩展图端点和 Custody–ResourceType 矛盾未解释。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -2244,8 +2372,7 @@ p.36 用红框高亮了 `<<ResourceType>>` 和 `<<Resource>>`（第一个）两�
 
 **⚠️ 常见误解**：以为 Typification 是继承（inheritance）。**不是。** 继承是"子类是父类的一种"（萨克斯 is-a 乐器）；Typification 是"实例属于某个类型"（这一支 is-an-instance-of B♭ 单簧管）。在数据库里，Typification 会变成一个**外键**（Resource 表里有一列指向 ResourceType 表）。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.35–36 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。Typification/Linkage 未展开；Linkage 未画原因仍待核。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -2289,8 +2416,7 @@ p.36 用红框高亮了 `<<ResourceType>>` 和 `<<Resource>>`（第一个）两�
 | 12 | **Linkage** | 资源 ↔ 资源 | p.35（图上未画） |
 | 13 | **Typification** | 实例 ↔ 类型 | p.35 |
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.37 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。新增事件的 Participation 编号未展开。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -2513,8 +2639,9 @@ classDiagram
 | 有没有"未成交"的信息 | ❌ | ✅（Requisition、Order） |
 | 有没有退货 | ❌ | ✅ |
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:20:20`–`01:20:47`，B · 讲了同讲义并明确降权）
+
+教授用扩展采购模型说明核心之外还有 PurchaseRequisition、PurchaseOrder、PurchaseReturn，但紧接着说 *"this is just for your information, not our focus"*，并明确只要求理解和构造核心模式（S6 `01:20:20`–`01:20:47`）。**这段改变了什么**：p.38 得到简讲，但考试降为识别即可。
 
 **所以呢**
 
@@ -2553,8 +2680,7 @@ classDiagram
 
 > ⭐ 第 3 点是讲义**唯一一处**把"文字定义"和"图上的连线选择"直接对应起来的地方，很可能被考："为什么 Proposition 连的是 Inventory Type 而不是 Inventory？"
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.39–40 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。PurchaseRequisition 细定义未展开。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -2586,8 +2712,7 @@ classDiagram
 
 > 💡 **换个说法（笔记补充）**：requisition 是"我想要"，order 是"我要了，签字画押"。前者是内部意向，后者是**对外的法律承诺**。在传统会计里两者**都不做分录**，但它们的法律效力天差地别。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.41–42 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。PurchaseOrder 细定义未展开。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -2620,8 +2745,7 @@ classDiagram
 
 **`aka` = also known as**（又称）。讲义标题 `Purchase (aka Acquisition) Event` 是在提醒你：**Purchase 和 Acquisition 在本课里是同一个东西**——这解释了为什么 p.17 的属性叫 `Acq-ID`、`Acq-date`、`Acq-amt` 而类名叫 `Purchase`。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.43–44 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。Purchase 细定义未展开；课堂只在核心模式使用名称。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -2643,8 +2767,7 @@ classDiagram
 
 > ⚠️ 讲义 p.45 **没有再给一页单独的 "Cash Disbursement Event" 定义页**（不像 requisition/order/purchase/return 都各有一页）。付款事件的定义就写在这一页里。这是讲义排版的一处不对称。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.45 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。CashDisbursement 细定义未展开；课堂只在核心模式使用名称。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -2673,8 +2796,7 @@ classDiagram
 
 > 🟡 **考点提示**：这种"镜像定义"的写法在本讲出现了四次（Purchase/Purchase Return、Sale/Sale Return、Purchase/Sale、Cash Disbursement/Cash Receipt）。**考试很可能给你一个，要你写另一个。** 方法：**把介词短语的方向调转，其余照抄。**
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.46–47 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。PurchaseReturn 细定义未展开。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -2857,8 +2979,7 @@ ReceivingClerk，货回企业；采购退回货出去才ShippingClerk。
 2. **退货由 `Receiving Clerk` 经手** —— 客户退货，货**进**企业，所以是收货员。**与采购退回（Shipping Clerk，货出去）刚好相反。** 这一对是本讲最容易被反着考的细节。
 3. **`Reservation2` 预留现金账户** —— 与采购循环一样。含义：接了订单就等于**预期这笔钱会进来**。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.48 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。扩展收入全图未展开。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -2900,8 +3021,7 @@ ReceivingClerk，货回企业；采购退回货出去才ShippingClerk。
 2. **"telephone or in person"** —— 与 Purchase 的 "in person or via transit" 呼应：讲义习惯给出交付/接触的两种形态。
 3. **"describe the features of one or more products or services"** —— 一次拜访可以推**多个**产品，所以 Proposition 的多重度在产品端可以是 `1..*`。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.49–50 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。SalesCall 细定义未展开。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -2929,8 +3049,7 @@ ReceivingClerk，货回企业；采购退回货出去才ShippingClerk。
 
 > ⭐ **这一对定义是"镜像写法"的最佳范例。** 把主语和宾语互换，其余照抄。考试若考"写出销售订单事件的定义"，直接按这个结构写。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.51–52 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。SaleOrder 细定义未展开。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -2961,8 +3080,7 @@ REA 的优势在于把 Sale 与 Cash Receipt 作为可单独引用的事件，�
 - **当面**：在校园书店买一件 T 恤 —— 一手交钱一手交货，所有权当场转移
 - **在途**：网店发一份电子游戏 —— 所有权在运输途中的某一刻转移
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.53–54 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。Sale 的扩展流程位置未展开；课堂只在核心模式/Case 5 使用 Sale。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -2986,8 +3104,7 @@ REA 的优势在于把 Sale 与 Cash Receipt 作为可单独引用的事件，�
 
 ⚠️ 同样地，讲义**没有给 Cash Receipt 单独一页定义**，定义就写在 p.55 里。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.55 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。CashReceipt 的扩展流程位置未展开；课堂只在核心模式/Case 5 使用 CashReceipt。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -3021,8 +3138,7 @@ REA 的优势在于把 Sale 与 Cash Receipt 作为可单独引用的事件，�
 
 > ⚠️ **注意用词的细微变化**：p.47 的采购退回用的是 `from a supplier to the enterprise` → `from the enterprise to the supplier`（具体角色）；p.57 用的是 `from seller to buyer` → `from buyer to seller`（**抽象角色**）。同一件事的两种写法。**考试用哪种都对**，但抽象写法更通用。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**：⏭️ **p.56–57 课上未展开。** 教授在 S6 `01:20:20`–`01:20:47` 明确说扩展模型 *"is just for your information, not our focus"*，并要求掌握能构造的核心模式；此后直接转到核心采购、RSWS、收入核心与 Case 5，未回到本段。SaleReturn 细定义未展开。 **建议**：考试可降权为识别和理解，但正文保留，不能删去讲义自学内容。
 
 **所以呢**
 
@@ -3172,8 +3288,9 @@ $$40{,}000 - 25{,}000 - 0 = 15{,}000$$
 
 **⚠️ 常见误解**：以为 REA 系统"不出财务报表"。**恰恰相反**，REA 的主张是财报**可以**从事件数据生成，而且能生成得比传统系统更细。REA 不是要取消报表，是要取消"只存报表口径的数据"这件事。
 
-**🎙️ 课堂补充**
-待转录补充。
+**🎙️ 课堂补充**（S6 `01:35:26`–`01:35:53`，A · 课上展开）
+
+Case 5 把 `Customer account receivable` 当作 Customer 的一个属性，与 Customer#、CustomerName 放在同一类（S6 `01:35:26`–`01:35:53`）。**这段改变了什么**：课堂证明 REA 答题可以保存客户层的应收信息字段，但没有给余额公式、金额守恒或总账分录；本节公式继续标为笔记补充。
 
 **所以呢**
 
@@ -3705,32 +3822,36 @@ Step 6  Assign Multiplicities               →  叙述 > 常识 > 假设
 
 | 级别 | 含义 | 本讲数量 |
 |---|---|---|
-| 🔴 教授明示 | 转录里教授明确说过会考 / 要记 —— **引用原话** | **0 条**（本讲无转录，**最高只能到 🟡**） |
-| 🟡 CILO 反推 | 对应官方 CILO，口径上必须考核 | 9 条 |
-| ⚪ 笔记推断 | 根据内容重要性、页数分配、题型惯例的判断 | 7 条 |
+| 🔴 教授明示 | 转录里教授明确说过会考 / 要记 / 规定答题方式或降权 —— **引用原话** | 9 条索引行，归并为 5 类课堂信号 |
+| 🟡 CILO 反推 | 对应官方 CILO，口径上必须考核 | 1 条 |
+| ⚪ 笔记推断 | 根据内容重要性、页数分配、题型惯例的判断 | 6 条 |
 
-> ⚠️ **本讲没有 🔴 级考点，不是因为不重要，而是因为没有转录。** 本讲当前没有已融合转录。**W5 的课上到之后请立刻录音并导出转录**，届时按 [[#9.2 课上讲了但课件没有|§9.2]] 的清单回填。
+> ✅ **本讲已有 S6 课堂证据**。教授把考试任务收窄为 Core pattern：给出类与连线骨架，学生填关联名、属性和多重度；扩展模型和 association attribute 均明确降权。详见下表与 §2.9 Case 5。
 >
 > 🔴 **但有一条从 M01 继承过来的、适用于整个期中考的硬性要求**，见 §6.3 框架 C。
+
+
+**计数口径**：同一 Core pattern 范围在不同题目中有多行索引；9 行归并为核心范围、给定骨架、关联属性降权、属性归属／主键、理解与举例这 5 类信号，不代表 9 项独立考试承诺。
 
 ### 6.2 考点清单
 
 | 可信度 | 考点 | 依据 | 对应小节 |
 |---|---|---|---|
-| 🟡 | **给一段业务叙述，画出核心 REA 模型** | CILO 1（"basic accounting concepts"）＋ Outline 摘要明写 *"develops students' ability to **model business processes** and develop accounting information database"* | §2.6, §2.9 |
-| 🟡 | **给一张 REA 图 + 一段叙述，填多重度**；或反过来给多重度，要求用中文/英文解释它的业务含义 | 同上；且讲义花了 3 页（p.18–20）只讲这一件事 | §2.5, §2.9.5 |
-| 🟡 | **解释某一条关联**（13 条中任意一条）连接哪两类东西、什么时候用 | 讲义 p.3/4/27/31/35 全部是定义页；扩展模型 16 页里有 5 页是关联定义 | §2.2, §2.3, §2.10.4–7 |
+| 🔴 | **给定类与连线骨架，补完核心 REA 模型的关联名、属性和多重度** | 🎙️ S6 `01:24:30`–`01:24:55`：*"I will provide the pattern to you … but you need to determine the attributes … [association names] … and the multiplicities"*；Case 5 再次确认 | §2.6, §2.9 |
+| 🔴 | **按 narrative description → common sense → assumption 填多重度** | 🎙️ S6 `01:45:25`–`01:45:55`：*"finish … all the multiplicities based on the common sense, based on the narrative description"* | §2.5, §2.9.5 |
+| 🔴（核心）/ ⏭️（扩展） | **核心关联名必须会填；扩展关联降为理解** | 🎙️ S6 `01:32:58`–`01:33:36`：*"you need to put the name, like duality, like stockflow 1, stockflow 2"*；`01:20:20`–`01:20:47` 明确扩展模型 not our focus | §2.2, §2.3, §2.10.4–7 |
 | 🟡 | **区分 Resource 与 Resource Type**，并判断一个具体资源该建成哪个 | 讲义 p.2 首条；且它直接决定多重度（p.6 第 2 条规则） | §2.1.1 |
-| 🟡 | **区分四类事件**（起因/承诺/经济/冲销），对号入座具体单据 | 讲义 p.23/25 + p.39–47 + p.49–57 共 20 页全在做这件事 | §2.10.2–3, §2.12, §2.14 |
-| 🟡 | **写出某个事件的英文定义**（Purchase / Sale / Purchase Order / Sale Order / Cash Receipt / Cash Disbursement / Purchase Return / Sale Return / Purchase Requisition / Sales Call） | 讲义用 18 页逐个下定义，每页只有一句话——**这种排版就是"要你背"** | §2.12, §2.14, §5 |
-| 🟡 | **判断属性该挂类还是挂关联**，并说明理由 | 讲义 p.5 是唯一的判据页；p.16–17 是它的实例 | §2.4, §2.9.4 |
-| 🟡 | **采购循环 ↔ 收入循环的镜像对照**：给一个，写另一个 | 讲义把两个循环写成逐字镜像（p.42↔p.52、p.44↔p.54、p.45↔p.55、p.47↔p.57） | §2.15 |
-| 🟡 | **核心模型 vs 扩展模型**：扩展模型多了什么，为什么需要 | 讲义 p.22 的 "core = green" 全部 11 页高亮图都在做这个对比 | §2.10 |
-| ⚪ | **六步法默写**（顺序 + 每步产出） | 讲义 p.7–8 用红字强调 `*Core*`，是全讲唯一的"程序性知识" | §2.6 |
+| ⏭️ | **区分四类事件**（起因/承诺/经济/冲销） | 扩展模型在 S6 `01:20:20`–`01:20:47` 明确为 for your information / not our focus；正文仍保留讲义自学 | §2.10.2–3, §2.12, §2.14 |
+| 🔴（反向） | **题型类似已上传 Cases / Quizzes；概念不要求逐字背定义，但要理解并能举例** | 🎙️ S6 `01:46:15`–`01:47:11`：*"you are not required to … provide the exact wording … instead you should be able to name some examples"* | §2.12, §2.14, §5 |
+| 🔴 | **把打乱顺序的属性放进正确类，并标出 PK** | 🎙️ S6 `01:37:39`–`01:38:04`：*"in the midterm … I could mix the sequence a little bit"*；编号/ID 为 PK | §2.4, §2.9.4 |
+| 🔴（反向） | **Association attribute 本次不考** | 🎙️ S6 `01:36:49`–`01:37:30`：*"Such attributes will not be tested"* | §2.4, §2.9.5 |
+| ⏭️ | **扩展采购 ↔ 扩展收入镜像对照** | 属扩展模型，S6 `01:20:20`–`01:20:47` 明确降权；核心采购/收入骨架仍需理解 | §2.15 |
+| 🔴（反向） | **只要求能构造 Core pattern；扩展模型供了解** | 🎙️ S6 `01:20:20`–`01:20:47`：*"The only model I request you to understand and be able to construct would be the core pattern"* | §2.10 |
+| 🔴 | **用六步法完成给定 Core pattern** | 🎙️ S6 `01:21:30`–`01:21:43`：*"Then step 3 is attach external agent. Step 4, attach internal agent. Then step 5, assign attributes. Step 6, assign multiplicities."*；Case 5 实际执行 | §2.6 |
 | ⚪ | **为什么 Proposition 连 Resource Type 而不是 Resource** | 讲义 p.40 的 "a **type** of good or service" 与 p.38 的连线是唯一一处文字—图形的显式呼应 | §2.12.1 |
 | ⚪ | **退货由谁经手**（Purchase Return → Shipping Clerk；Sale Return → Receiving Clerk） | 两张扩展图的这一处最容易被反着问 | §2.15 |
 | ⚪ | **Reciprocal 为什么在图上没画** | 讲义 p.30 专门加了一行红字解释，**加红字 = 讲义作者知道这里会被问** | §2.10.4 |
-| ⚪ | **关联属性 `cd-acq-applied` 的作用**（部分付款与合并付款） | 它是全讲唯一一个真正体现"REA 优于复式记账"的技术细节 | §2.9.4 |
+| 🔴（反向） | **关联属性（含 `cd-acq-applied`）本次不考** | 🎙️ S6 `01:36:49`–`01:37:30`：*"Such attributes will not be tested"*；正文保留理解部分/合并付款 | §2.9.4 |
 | ⚪ | **REA 里没有"应付账款"这个类，余额怎么来** | 与 M04 主线 A 直接相接；论述题的好素材 | §2.16.2 |
 | ⚪ | **Instigation Event 的两种来源**（内部 / 外部）及两个循环的措辞差异 | 讲义 p.39 与 p.49 的措辞差别是有意的 | §2.12.1, §2.14.1 |
 | ⚪ | **为什么核心模型不画多重度、实例才画** | 反映"模式（pattern）vs 实例（instance）"的区别 | §2.7.3 |
@@ -4120,64 +4241,74 @@ Sale "1..*" —— Duality —— "1..1" Cash Receipt
 | 笔记小节 | 讲义页 | 页面性质 | 课堂覆盖 |
 |---|---|---|---|
 | （标题页） | **p.1** | **📕 封面页**（唯一一页仅登记不展开） | — |
-| §2.1 核心 REA 类 | p.2 | 文字 | — |
-| §2.2 核心主关联 | p.3 | 文字 | — |
-| §2.3 核心次关联 | p.4 | 文字 | — |
-| §2.4 分配属性 | p.5 | 文字 | — |
-| §2.5 分配多重度 | p.6 | 文字 | — |
-| §2.6 六步法（步骤 1–3） | p.7 | 文字 | — |
-| §2.6 六步法（步骤 4–6） | p.8 | 文字 | — |
-| §2.7.1 采购增量事件三选一 | p.9 | 文字 | — |
-| §2.7.2 采购减量事件 | p.10 | 文字 | — |
-| §2.7.3 采购核心模式全图 | **p.11** | 🖼️ 纯图（已视觉复核并重画） | — |
-| §2.9.1 RSWS Step 1 | p.12 | 文字 + 图 | — |
-| §2.9.2 RSWS Step 2 | p.13 | 文字 + 图 | — |
-| §2.9.3 RSWS Step 3–4（文字） | p.14 | 文字 | — |
-| §2.9.3 RSWS Step 3–4（图） | **p.15** | 🖼️ 纯图（已视觉复核并重画） | — |
-| §2.9.4 RSWS Step 5（关联属性清单） | p.16 | 文字 | — |
-| §2.9.4 RSWS Step 5（属性全图） | **p.17** | 🖼️ 纯图（已视觉复核，属性已全部转写成表） | — |
-| §2.9.5 RSWS Step 6（标题） | p.18 | 文字（整页仅一行） | — |
-| §2.9.5 RSWS 的四句业务叙述 | p.19 | 文字 | — |
-| §2.9.5 RSWS Step 6 答案图（18 个多重度） | **p.20** | 🖼️ 纯图（已用 `pdftotext -bbox` 逐个定位多重度并复核） | — |
-| §2.8 收入核心模式全图 | **p.21** | 🖼️ 纯图（已视觉复核并重画） | — |
-| §2.10.1 扩展模型全景图（core = green） | **p.22** | 🖼️ 纯图（已视觉复核，拆成 3 张 Mermaid） | — |
-| §2.10.2 起因事件与承诺事件（定义） | p.23 | 文字 | — |
-| §2.10.2 全景图高亮：两个新事件类 | **p.24** | 🖼️ 高亮图（红框：InstigationEvent、CommitmentEvent） | — |
-| §2.10.3 经济冲销事件（定义） | p.25 | 文字 | — |
-| §2.10.3 全景图高亮：EconomicReversal | **p.26** | 🖼️ 高亮图（红框：EconomicReversal） | — |
-| §2.10.4 事件—事件关联 · §2.10.5 事件—资源关联（定义） | p.27 | 文字 | — |
-| §2.10.4 全景图高亮：Fulfillment1/2/3 | **p.28** | 🖼️ 高亮图 | — |
-| §2.10.4 全景图高亮：Reversal | **p.29** | 🖼️ 高亮图 | — |
-| §2.10.4 全景图高亮：Reciprocal（+ 红字说明"未画"） | **p.30** | 🖼️ 高亮图 + 关键红字 | — |
-| §2.10.6 参与者—参与者、资源—参与者关联（定义） | p.31 | 文字 | — |
-| §2.10.6 全景图高亮：Assignment | **p.32** | 🖼️ 高亮图 | — |
-| §2.10.6 全景图高亮：Responsibility | **p.33** | 🖼️ 高亮图 | — |
-| §2.10.6 全景图高亮：Custody | **p.34** | 🖼️ 高亮图（⚠️ 连的是 ResourceType，与文字矛盾） | — |
-| §2.10.7 资源—资源关联与类型化（定义） | p.35 | 文字 | — |
-| §2.10.7 全景图高亮：Typification（+ 红字"Linkage not shown"） | **p.36** | 🖼️ 高亮图 + 关键红字 | — |
-| §2.10.8 全景图高亮：新事件的 Participation 1/2/3/4/9/10 | **p.37** | 🖼️ 高亮图 | — |
-| §2.11 扩展采购循环全图 | **p.38** | 🖼️ 纯图（已视觉复核 + 局部放大核对交叉线） | — |
-| §2.12.1 采购循环起因事件 | p.39 | 文字 | — |
-| §2.12.1 采购申请事件（定义） | p.40 | 文字 | — |
-| §2.12.2 采购循环相互承诺事件 | p.41 | 文字 | — |
-| §2.12.2 采购订单事件（定义） | p.42 | 文字 | — |
-| §2.12.3 采购循环经济增量事件 | p.43 | 文字 | — |
-| §2.12.3 采购事件（定义） | p.44 | 文字 | — |
-| §2.12.4 采购循环经济减量事件 + 现金付款（定义） | p.45 | 文字 | — |
-| §2.12.5 采购循环经济增量冲销事件 | p.46 | 文字 | — |
-| §2.12.5 采购退回事件（定义） | p.47 | 文字 | — |
-| §2.13 扩展收入循环全图 | **p.48** | 🖼️ 纯图（已视觉复核 + 局部放大核对 11 条 Participation） | — |
-| §2.14.1 收入循环起因事件 | p.49 | 文字 | — |
-| §2.14.1 销售拜访事件（定义） | p.50 | 文字 | — |
-| §2.14.2 收入循环相互承诺事件 | p.51 | 文字 | — |
-| §2.14.2 销售订单事件（定义） | p.52 | 文字 | — |
-| §2.14.3 收入循环经济减量事件 | p.53 | 文字 | — |
-| §2.14.3 销售事件（定义） | p.54 | 文字 | — |
-| §2.14.4 收入循环经济增量事件 + 现金收款（定义） | p.55 | 文字 | — |
-| §2.14.5 收入循环经济减量冲销事件 | p.56 | 文字 | — |
-| §2.14.5 销售退回事件（定义） | p.57 | 文字 | — |
+| §2.1 核心 REA 类 | p.2 | 文字 | ✅ 详讲 S6 `01:13:52`–`01:15:22`：Resource/ResourceType、Events、Agents |
+| §2.2 核心主关联 | p.3 | 文字 | ✅ 简讲 S6 `01:15:22`–`01:16:05`：Duality/Stockflow/Participation |
+| §2.3 核心次关联 | p.4 | 文字 | ✅ 详讲 S6 `01:16:05`–`01:17:07`：Custody/Assignment/Responsibility |
+| §2.4 分配属性 | p.5 | 文字 | ✅ 详讲 S6 `01:17:17`–`01:18:12`：类/关联属性 |
+| §2.5 分配多重度 | p.6 | 文字 | ✅ 详讲 S6 `01:18:16`–`01:18:56`；默认规则被略过 |
+| §2.6 六步法（步骤 1–3） | p.7 | 文字 | ✅ 详讲 S6 `01:19:17`–`01:21:30`：Step 1–3 |
+| §2.6 六步法（步骤 4–6） | p.8 | 文字 | ✅ 详讲 S6 `01:21:30`–`01:21:43`：Step 4–6 |
+| §2.7.1 采购增量事件三选一 | p.9 | 文字 | ✅ 详讲 S6 `01:21:55`–`01:23:38`：Purchase 核心术语 |
+| §2.7.2 采购减量事件 | p.10 | 文字 | ✅ 详讲 S6 `01:23:38`–`01:24:09`：CashDisbursement 核心术语 |
+| §2.7.3 采购核心模式全图 | **p.11** | 🖼️ 纯图（已视觉复核并重画） | ✅ 详讲 S6 `01:24:13`–`01:25:05`：采购核心模式与考试骨架 |
+| §2.9.1 RSWS Step 1 | p.12 | 文字 + 图 | ✅ 简讲 S6 `01:27:12`–`01:27:38`：RSWS Step 1 |
+| §2.9.2 RSWS Step 2 | p.13 | 文字 + 图 | ✅ 详讲 S6 `01:27:38`–`01:28:28`：RSWS Step 2 |
+| §2.9.3 RSWS Step 3–4（文字） | p.14 | 文字 | ✅ 详讲 S6 `01:28:28`–`01:29:29`：RSWS Step 3–4 |
+| §2.9.3 RSWS Step 3–4（图） | **p.15** | 🖼️ 纯图（已视觉复核并重画） | ✅ 结合 p.14 详讲 S6 `01:28:28`–`01:29:29` |
+| §2.9.4 RSWS Step 5（关联属性清单） | p.16 | 文字 | ✅ 简讲 S6 `01:29:29`–`01:30:10`：属性与 PK |
+| §2.9.4 RSWS Step 5（属性全图） | **p.17** | 🖼️ 纯图（已视觉复核，属性已全部转写成表） | ✅ 结合 p.16 简讲 S6 `01:29:29`–`01:30:10` |
+| §2.9.5 RSWS Step 6（标题） | p.18 | 文字（整页仅一行） | ✅ 一句带过 S6 `01:30:10`–`01:30:26`：Step 6 判断顺序 |
+| §2.9.5 RSWS 的四句业务叙述 | p.19 | 文字 | ⏭️ 未逐句讲；`01:30:38` 已转 p.21，后用 Case 5 代替练习 |
+| §2.9.5 RSWS Step 6 答案图（18 个多重度） | **p.20** | 🖼️ 纯图（已用 `pdftotext -bbox` 逐个定位多重度并复核） | ⏭️ 18 端点未逐项讲；后用 Case 5 练多重度 |
+| §2.8 收入核心模式全图 | **p.21** | 🖼️ 纯图（已视觉复核并重画） | ✅ 简讲 S6 `01:30:38`–`01:31:05`：收入核心模式 |
+| §2.10.1 扩展模型全景图（core = green） | **p.22** | 🖼️ 纯图（已视觉复核，拆成 3 张 Mermaid） | ⏭️ 扩展模型明确非重点 S6 `01:20:20`–`01:20:47` |
+| §2.10.2 起因事件与承诺事件（定义） | p.23 | 文字 | ⏭️ 扩展模型明确非重点 S6 `01:20:20`–`01:20:47` |
+| §2.10.2 全景图高亮：两个新事件类 | **p.24** | 🖼️ 高亮图（红框：InstigationEvent、CommitmentEvent） | ⏭️ 扩展模型明确非重点 |
+| §2.10.3 经济冲销事件（定义） | p.25 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.10.3 全景图高亮：EconomicReversal | **p.26** | 🖼️ 高亮图（红框：EconomicReversal） | ⏭️ 扩展模型明确非重点 |
+| §2.10.4 事件—事件关联 · §2.10.5 事件—资源关联（定义） | p.27 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.10.4 全景图高亮：Fulfillment1/2/3 | **p.28** | 🖼️ 高亮图 | ⏭️ 扩展模型明确非重点 |
+| §2.10.4 全景图高亮：Reversal | **p.29** | 🖼️ 高亮图 | ⏭️ 扩展模型明确非重点 |
+| §2.10.4 全景图高亮：Reciprocal（+ 红字说明"未画"） | **p.30** | 🖼️ 高亮图 + 关键红字 | ⏭️ 扩展模型明确非重点 |
+| §2.10.6 参与者—参与者、资源—参与者关联（定义） | p.31 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.10.6 全景图高亮：Assignment | **p.32** | 🖼️ 高亮图 | ⏭️ 扩展模型明确非重点 |
+| §2.10.6 全景图高亮：Responsibility | **p.33** | 🖼️ 高亮图 | ⏭️ 扩展模型明确非重点 |
+| §2.10.6 全景图高亮：Custody | **p.34** | 🖼️ 高亮图（⚠️ 连的是 ResourceType，与文字矛盾） | ⏭️ 扩展模型明确非重点；Custody 口径未解释 |
+| §2.10.7 资源—资源关联与类型化（定义） | p.35 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.10.7 全景图高亮：Typification（+ 红字"Linkage not shown"） | **p.36** | 🖼️ 高亮图 + 关键红字 | ⏭️ 扩展模型明确非重点 |
+| §2.10.8 全景图高亮：新事件的 Participation 1/2/3/4/9/10 | **p.37** | 🖼️ 高亮图 | ⏭️ 扩展模型明确非重点 |
+| §2.11 扩展采购循环全图 | **p.38** | 🖼️ 纯图（已视觉复核 + 局部放大核对交叉线） | ✅ 简讲且降权 S6 `01:20:20`–`01:20:47`：扩展采购仅供了解 |
+| §2.12.1 采购循环起因事件 | p.39 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.12.1 采购申请事件（定义） | p.40 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.12.2 采购循环相互承诺事件 | p.41 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.12.2 采购订单事件（定义） | p.42 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.12.3 采购循环经济增量事件 | p.43 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.12.3 采购事件（定义） | p.44 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.12.4 采购循环经济减量事件 + 现金付款（定义） | p.45 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.12.5 采购循环经济增量冲销事件 | p.46 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.12.5 采购退回事件（定义） | p.47 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.13 扩展收入循环全图 | **p.48** | 🖼️ 纯图（已视觉复核 + 局部放大核对 11 条 Participation） | ⏭️ 扩展模型明确非重点 |
+| §2.14.1 收入循环起因事件 | p.49 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.14.1 销售拜访事件（定义） | p.50 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.14.2 收入循环相互承诺事件 | p.51 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.14.2 销售订单事件（定义） | p.52 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.14.3 收入循环经济减量事件 | p.53 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.14.3 销售事件（定义） | p.54 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.14.4 收入循环经济增量事件 + 现金收款（定义） | p.55 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.14.5 收入循环经济减量冲销事件 | p.56 | 文字 | ⏭️ 扩展模型明确非重点 |
+| §2.14.5 销售退回事件（定义） | p.57 | 文字 | ⏭️ 扩展模型明确非重点 |
 
-> 「课堂覆盖」列整列为 `—`：**M05 本讲无转录**，因此无法判断教授实际讲了哪些页、跳过了哪些页。课程整体状态另计：M02–M04 已融合已有转录，不能概括为“本课六周只有 W01 录了音”。
+> 「课堂覆盖」列已按 S6 回填：p.2–18 与 p.21 有课堂覆盖；p.19–20 未逐项讲；p.22–37、p.39–57 因扩展模型明确“for your information, not our focus”而降权；p.38 只作核心/扩展对照简讲。Case 5 是讲义外的主要课堂练习，单列于 §2.9 课堂格和 §9.2。
+
+**课堂时间分配**（S6 的 M05 段 `01:13:52`–`01:48:21`；2:07 空档性质未核，单列且不计入教学内容）：
+
+| 内容块 | 转录区间 | 用时 | 说明 |
+|---|---|---:|---|
+| 核心概念、六步法、采购核心 | `01:13:52`–`01:25:05` | ~11.2 min | p.2–11 |
+| ASR 空档 | `01:25:05`–`01:27:12` | ~2.1 min | 性质未核；不能证明期间没有口述 |
+| RSWS Step 1–5 与收入核心 | `01:27:12`–`01:31:05` | ~3.9 min | p.12–18、p.21 |
+| Case 5 收入 Core model | `01:31:05`–`01:45:25` | ~14.3 min | 官方 Case 5 |
+| 期中题型与行政 | `01:45:25`–`01:48:21` | ~2.9 min | 不由相对日期推断绝对授课/考试日期 |
 
 **页面统计**
 
@@ -4202,29 +4333,19 @@ Sale "1..*" —— Duality —— "1..1" Cash Receipt
 
 ### 9.1 课件有但课上略过
 
-**本讲无转录，无法判断。**
+| 讲义页 | 内容 | 判定 | 依据 | 建议 |
+|---|---|---|---|---|
+| p.19–20 | RSWS 四句业务叙述与 18 个端点 | ⏭️ 未逐项讲 | S6 `01:30:10` 只说 Step 6 判断顺序，`01:30:38` 已转 p.21；后用 Case 5 练习 | RSWS 正文继续自学；Case 5 是课堂确认的主要多重度例 |
+| p.22–37 | 扩展模型类与关联 | ⏭️ 明确降权 | S6 `01:20:20`–`01:20:47`：扩展模型 just for information / not focus，唯一要求构造 Core pattern | 考试可降权为识别；正文保留自学 |
+| p.39–57 | 扩展采购/收入事件定义 | ⏭️ 明确降权 | 教授简讲 p.38 后未进入这些页；`01:20:20`–`01:20:47` 已给全段降权信号 | 保留讲义自学；不再写成高概率定义背诵题 |
 
 ### 9.2 课上讲了但课件没有
 
-**本讲无转录，无法判断。**
-
-> ⏳ **转录到手后要做的事（v0.9 → v1.0 清单）**
->
-> 1. 把七格微结构里所有「🎙️ 课堂补充 —— 待转录补充」逐条填实（共 **23 处**）
-> 2. 填 §8 页码映射表的「课堂覆盖」列
-> 3. 在 §6.2 补 🔴 级考点，**重点搜索以下关键词**：
->    - `midterm` / `exam` / `test` —— 教授是否再次划范围、是否点名 REA 要考
->    - `draw` / `diagram` —— **期中考会不会要求画图？** 这是本讲最大的未知数（闭卷手写画 UML 类图是很重的题型）
->    - `multiplicity` / `0..*` / `one and only one` —— 教授讲多重度时的口头判据
->    - `RSWS` / `woodwind` —— 教授是否在课上另外补了 RSWS 的完整业务叙述（讲义只给了 4 句，**不足以支撑一次完整建模**）
->    - `Reciprocal` / `Linkage` / `Custody` —— 这三条讲义图上没画或画错，教授口头怎么说的
-> 4. **重点确认**：教授是否解释了 **p.34 的 Custody 连 ResourceType** 是笔误还是有意（见 §9.3 ④）
-> 5. **重点确认**：教授是否解释了 **RSWS 例子里 Cash 被标成 `<<ResourceType>>`**（见 §9.3 ①）
-> 6. **重点确认**：教授是否给出**收入循环的多重度练习**（讲义只给了采购循环的）
-> 7. 检查是否布置了个人作业、是否公布了期中考的题型分布
-> 8. 检查是否提到 W1 承诺的 **Word 答题模板**（M01 转录 `01:53:19`）
-> 9. frontmatter 改 `transcript: merged`、`status: v1.0`
-> 10. 回写 [[AC6761_Artificial_Intelligence_Accounting/_meta/知识层级台账|知识层级台账]]、[[AC6761_Artificial_Intelligence_Accounting/_meta/术语表|术语表]]、[[AC6761_Artificial_Intelligence_Accounting/_meta/考点库|考点库]]
+| # | 内容 | 时长 | 时间戳 | 小节 | 为什么值钱 |
+|---|---|---|---|---|---|
+| 1 | 🔴 **Case 5 收入循环 Core model 六步课堂讲评** | ~14.3 min | S6 `01:31:05`–`01:45:25` | §2.9（课堂格） | 官方题面+官方手绘答案；课堂逐项讲结构、21 属性、端点与考试交付 |
+| 2 | 🔴 **期中给骨架、填关联名/属性/多重度** | ~1.5 min | S6 `01:24:30`–`01:24:55`、`01:32:58`–`01:33:36`、`01:45:25`–`01:45:55` | §2.7.3、§6.3 | 把“是否手画整张图”的旧未知改为已确认题型边界 |
+| 3 | **定义不用逐字背，必须能举例** | ~0.5 min | S6 `01:46:42`–`01:47:11` | §6.3 | 明确复习策略：理解与应用优先于长定义默写 |
 
 ### 9.3 课件自身的问题
 
@@ -4361,17 +4482,27 @@ RSWS 的 9 条关联里，**3 条是多对多**：`Stockflow1`、`Stockflow2`、
 
 ### 9.5 待核对
 
-| 项 | 说明 |
-|---|---|
-| **M03 / M04 衔接状态** | `[[M03-年报分析]]` 与 `[[M04-REA会计模型]]` 已存在，本篇相关文件链接不再是占位；正式发布时只需按全库链接检查核对具体标题锚点 |
-| **M04 内容边界** | M04 已作为前置笔记存在；本篇仍以 W5 p.2–4 的完整定义为当前展开依据。是否调整台账首现属于正式发布者的跨文件任务，本轮不改共享台账 |
-| **多重度的读法** | 本笔记采用"**看对面**"（标在类 X 旁的数字描述"另一端一个实例连着几个 X"），依据是 **W4 讲义 p.31** 的原话 *"Minimum participation of employee = 0 (**put next to dept**)"* 与 **p.32 Exercise 1** 的答案 *"No – 1 min **next to CR**"*，并用 W5 p.19 叙述 2 与 p.20 图交叉验证通过。**若 M04 笔记采用了相反的读法，两篇必须统一**——以 W4 p.31/p.32 原文为准 |
-| **RSWS 的完整业务叙述** | 讲义只给了 4 句（p.19），不足以从零建出整个模型（比如没说"为什么要建 Overhead 这个资源类型"）。**是否有课堂口头补充无法从现有材料确认**；M05 转录到位后再按来源回填 |
-| **期中考会不会要求手画 UML 类图** | 闭卷手写画图是很重的题型。讲义无从判断，**必须从转录或课上确认** |
-| **Reservation2 在采购循环里预留现金账户的业务解释** | p.38 图上确实连了 `Purchase Order ↔ Cash Account`，但讲义没有任何文字解释为什么订单要预留现金。本笔记给的是"资金计划"的推断解释（💡 笔记补充），**待课堂确认** |
+| # | 事项 | 说明 |
+|---|---|---|
+| 1 | ✅ **S6 正式归档并完成分界** | `M04-M05-transcript-source6-partial.txt`：761 段，`00:01`→`01:48:21`；M05 从 `01:13:52` 开始，`01:48:21` 有正式下课语。 |
+| 2 | ⚠️ **M05 段空档性质未核** | `01:25:05`→`01:27:12` 前为 “Then we move on”，后为 Acquisition core example；没有明确休息或做题原话，不能证明期间没有口述。 |
+| 3 | ✅ **核心模型考试交付已确认** | 给出类与连线骨架，学生填关联名、属性和多重度（S6 `01:24:30`–`01:24:55`、`01:32:58`–`01:33:36`、`01:45:25`–`01:45:55`）。构造型和具体分值仍未明。 |
+| 4 | ✅ **Case 5 来源已分开** | 题面来自官方 `Case 5.docx`；答案图来自官方 `Solution of Case 5.pdf`；课堂解释来自 S6 `01:31:05`–`01:45:25`；英文参考答案为笔记整合。 |
+| 5 | ⚠️ **Custody / Reciprocal / Linkage / Reservation2 仍未获课堂解释** | p.34 的 ResourceType 端、Reciprocal/Linkage 未画原因、Reservation2–CashAccount 均未在 S6 出现；继续保留讲义矛盾或笔记推断标签。 |
+| 6 | ⚠️ **RSWS p.19–20 仍主要靠讲义自学** | S6 `01:30:10` 只提 Step 6 判断顺序，`01:30:38` 已转 p.21；课堂随后用 Case 5 练多重度，不能冒称 RSWS 18 端点逐项讲过。 |
+| 7 | ⚠️ **ASR 高风险词已登记** | `IE/IEA`→REA；`share/fair/SEAR`→Sale；`billboard inventory/support`→Surfboard inventory；`cash reimbursement`→Cash Disbursement；`01:39:06` 数字串不作为端点证据。 |
+| 7 | ⚠️ **ASR 高风险词已登记** | `IE/IEA`→REA；`share/fair/SEAR`→Sale；`billboard inventory/support`→Surfboard inventory；`cash reimbursement`→Cash Disbursement；`01:39:06` 数字串不作为端点证据。 |
+| 7 | ⚠️ **ASR 高风险词已登记** | `IE/IEA`→REA；`share/fair/SEAR`→Sale；`billboard inventory/support`→Surfboard inventory；`cash reimbursement`→Cash Disbursement；`01:39:06` 数字串不作为端点证据。 |
 
+**反方视角（2026-10-21 简化流程的来源检查，未做全量 Q/R 盲读）**
+
+1. **最薄弱的一节**：§2.10–§2.14 扩展模型被明确降权，没有逐页课堂解释；正文仍依赖讲义与既有视觉复核。
+2. **如果考了仍答不上的**：Custody–ResourceType、Reciprocal/Linkage 未画原因、Reservation2–CashAccount 的教授口径均未知。
+3. **本次推断及后果**：把 p.39–57 归入扩展模型整体降权；若教师只表示课堂非重点而非永久不考，正文仍完整保留，读者不能直接跳过自学。
 ### 9.6 变更记录
 
 | 日期 | 变更 |
 |---|---|
 | 2026-09-11 | 链接修复：本文件 20 处 Markdown 形式的同文件锚点（`[§x](#slug)` 写法）改为 Obsidian 双链 `[[#标题原文\|§x]]`——Obsidian 按标题原文匹配，GitHub 式小写连字符 slug 一律点不开（对抗自检清单 9b）。只改链接写法，标题与正文未动 |
+| 2026-10-21 | **首次合并跨 M04/M05 的 S6 新转录**（M05 段 `01:13:52`–`01:48:21`）→ v1.0：40 个 🎙️ 格全部五态化，§8 补课堂覆盖，新增 Case 5 完整课堂题与教授明示/反向考点；扩展模型按原话降权但正文保留。 |
+| 2026-10-21 | 融合 S6（全源761段，M04/M05共用原时钟）：40个课堂格，补齐本篇实际覆盖、课堂题解与考试范围信号；保留原有材料及ASR/开头缺口，教学与视觉验收另见本次回执。 |

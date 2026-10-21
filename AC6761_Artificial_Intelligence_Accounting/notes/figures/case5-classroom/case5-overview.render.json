@@ -1,0 +1,108 @@
+{
+  "schema": "cityu-concept-graph-v1",
+  "title": "AC6761 Case 5 Revenue Process Core REA Model",
+  "implementation": "@viz-js/viz",
+  "implementation_version": "3.31.0",
+  "graphviz_version": "16.1.0",
+  "source_sha256": "7b7c23b92a561826a585ef2a5e7ec3668597d329733d6c054e602149e6b72c6d",
+  "nodes": 7,
+  "associations": 8,
+  "multiplicity_endpoints": 16,
+  "node_attributes": 20,
+  "association_attributes": 1,
+  "overview": true,
+  "shown_node_attributes": 0,
+  "warnings": [],
+  "endpoint_mapping": [
+    {
+      "edge_id": "stockflow1",
+      "a": "surfboard_inventory",
+      "a_multiplicity": "1..*",
+      "b": "sale",
+      "b_multiplicity": "0..1",
+      "draw_tail": "surfboard_inventory",
+      "draw_tail_multiplicity": "1..*",
+      "draw_head": "sale",
+      "draw_head_multiplicity": "0..1"
+    },
+    {
+      "edge_id": "stockflow2",
+      "a": "cash_account",
+      "a_multiplicity": "1..1",
+      "b": "cash_receipt",
+      "b_multiplicity": "0..*",
+      "draw_tail": "cash_account",
+      "draw_tail_multiplicity": "1..1",
+      "draw_head": "cash_receipt",
+      "draw_head_multiplicity": "0..*"
+    },
+    {
+      "edge_id": "duality",
+      "a": "sale",
+      "a_multiplicity": "0..*",
+      "b": "cash_receipt",
+      "b_multiplicity": "0..*",
+      "draw_tail": "sale",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "cash_receipt",
+      "draw_head_multiplicity": "0..*"
+    },
+    {
+      "edge_id": "participation1",
+      "a": "sale",
+      "a_multiplicity": "0..*",
+      "b": "salesperson",
+      "b_multiplicity": "1..1",
+      "draw_tail": "sale",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "salesperson",
+      "draw_head_multiplicity": "1..1"
+    },
+    {
+      "edge_id": "participation2",
+      "a": "sale",
+      "a_multiplicity": "0..*",
+      "b": "customer",
+      "b_multiplicity": "1..1",
+      "draw_tail": "sale",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "customer",
+      "draw_head_multiplicity": "1..1"
+    },
+    {
+      "edge_id": "participation3",
+      "a": "cash_receipt",
+      "a_multiplicity": "0..*",
+      "b": "customer",
+      "b_multiplicity": "0..1",
+      "draw_tail": "cash_receipt",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "customer",
+      "draw_head_multiplicity": "0..1"
+    },
+    {
+      "edge_id": "participation4",
+      "a": "cash_receipt",
+      "a_multiplicity": "0..*",
+      "b": "cashier",
+      "b_multiplicity": "1..1",
+      "draw_tail": "cash_receipt",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "cashier",
+      "draw_head_multiplicity": "1..1"
+    },
+    {
+      "edge_id": "assignment",
+      "a": "salesperson",
+      "a_multiplicity": "1..1",
+      "b": "customer",
+      "b_multiplicity": "1..*",
+      "draw_tail": "salesperson",
+      "draw_tail_multiplicity": "1..1",
+      "draw_head": "customer",
+      "draw_head_multiplicity": "1..*"
+    }
+  ],
+  "semantic_review": "required: source contract validation does not verify business facts",
+  "visual_review": "required: actual rendered labels and connections must be checked"
+}

@@ -1,7 +1,7 @@
 ---
 type: 台账
 course: IS5542
-updated: 2026-10-10
+updated: 2026-10-21
 ---
 
 # IS5542 作业与 DDL
@@ -49,7 +49,7 @@ updated: 2026-10-10
 | 项 | 内容 |
 |---|---|
 | 次数 | **6 次**，每次 **3%**——✅ Canvas 公告 9/11（TA Zhanye LI）原话 "A **mandatory reflection** (3% × 6 = 18% total) is required for each guest lecture." |
-| 对应 | **6 场客座讲座**：10/10 Design Thinking · 10/17 Venture Capitalist · 10/24 Marketing · 10/31 Financial Services · 11/7 Digital Native · 11/14 Legal Industry（CMC M3017；原公告 9:00–12:00，10/10 更新公告改为下周起 10:00 开始；预计有 Zoom 链接并可能录像） |
+| 对应 | **6 场客座讲座**：10/10 Design Thinking · 10/17 Agentic AI 与 FDE 实践 · 10/24 Marketing · 10/31 Financial Services · 11/7 Digital Native · 11/14 Legal Industry（CMC M3017；原公告 9:00–12:00，10/10 更新公告改为下周起 10:00 开始；预计有 Zoom 链接并可能录像） |
 | 出席 | **强制**："All students are required to attend all guest lectures."——与教授本人课"不计出勤"正相反 |
 | 期末 | **客座内容进期末**："the content covered in the guest lectures will be included in the final examination." |
 | 当前要求 | 10/10 公告确认每场一页、Canvas 上传、课后两周内；首场 Assignments 337533 显示 10/24 23:59、3 points。页面未显示时区，未见额外字数/rubric/任务级 AI 限制；后五场具体截止待各自任务页核对 |
@@ -200,3 +200,17 @@ updated: 2026-10-10
 
 - 主代理 2026-10-10 约 19:42 Asia/Shanghai 核四入口：[Reflection for Guest lecture1](https://canvas.cityu.edu.hk/courses/71410/assignments/337533) 显示 `Due Oct 24 by 11:59pm`、`Points 3`、`Submitting a file upload`，无 additional details；[Zhanye LI 10/10 16:14 公告](https://canvas.cityu.edu.hk/courses/71410/discussion_topics/639030) 要求 one-page reflection via Canvas within two weeks。页面未显示时区文字，未见额外字数、rubric 或任务级 AI 限制；Files/Modules 未见额外 reflection brief。首场私人一页 draft 已生成并视觉核对，待本人确认观点/身份，未提交，不代填出席与学习。
 - 同一更新公告：下周起 guest 10:00 开始、CMC M3017；课件预计一天内上传；分组 finalized；项目 11/28。公告 finalized 不等于本人组别已核。
+
+## 2026-10-18 · Guest Lecture 2 Reflection 提交登记
+
+| 作业 | 截止 | 分值／占比 | 提交 | 已核来源 | 私人状态 |
+|---|---|---|---|---|---|
+| Reflection for Guest lecture 2 | 2026-10-31 23:59 HKT（UTC+8；账号 Settings 已核 Hong Kong） | 3 points；公告总评口径 3% | Canvas file upload；一页 | Assignment 338082；Announcements 640478 / 639030；同堂两份 slides 只见一个正式入口 | 2026-10-18 本人于本会话确认已提交；A02 现有已提交记录保持；私有 A03 与作业总览同步已提交；制作时一页英文草稿为 460 词，Word／PDF 已视觉核对，原草稿保留 |
+
+本场实际主题为 **Agentic AI 与 FDE 实践**，不是旧日程中的单一 “Venture Capitalist”。本区只登记要求及制作状态，不复制私人反思正文；A03 提交状态依据本人明确确认，不由草稿生成推定；评分及学习状态另行登记。
+
+本次写回与适用同步证据见 [[_meta/制作与融合回执-2026-10-18|制作与融合回执]]。
+
+## 2026-10-21 M03课堂行政核对
+
+02:13:16后的GitHub改造和Dify客服项目是面试/小组项目参考建议；没有新增评分条件、必做组件或DDL。已有截止、本人提交和评分状态保持。

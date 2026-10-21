@@ -15,7 +15,7 @@
 
 ## 2. 课堂转录（`*/transcripts/`）
 
-这些文本是课堂录音经语音识别自动生成的转录稿（2026-09-18 起用本地 Whisper large-v3，此前用 Notta），**不是源音频**（音频不在仓库里），也不是逐字校对过的文字记录。
+这些文本是课堂录音经语音识别自动生成的转录稿（2026-09-18 起用本地 Whisper large-v3，此前用 Notta），也不是逐字校对过的文字记录。2026-10-21 起源音频保存到 Google Drive，GitHub 保留录音索引与可下载链接；实际上传、第三方信息处理和验证范围须逐项核实。音频未逐字重听，ASR 扫描不等于逐字隐私保证。
 
 - 转录**可能存在大量识别错误**（专有名词、数字、术语），各笔记 §9.5 列出了已发现的错误样本；请勿把转录内容当作教师原话的准确记录。
 - 转录中的发言内容属于任课教师；公开仅为让笔记中"🎙️ 课堂补充"的引用可回溯。**禁止用于任何与本课程学习无关的目的。**
@@ -31,7 +31,8 @@
 
 ## 4. 个人信息
 
-- 仓库不含我的学号、密码、私钥、同步服务配置或任何私人通信（已通过 `.gitignore` 排除）。
+- 2026-10-21 起，我授权将本人的个人材料、姓名／学号、作业答案、提交稿、学习资料、邮件整理及简历素材纳入公开范围；允许跟踪不等于这些内容已经上传。密码、令牌、私钥、会话信息及认证／同步配置仍不公开。
+- 本人的授权不覆盖第三方私人通信、同学学号／联系方式或名单座位表中的个人信息；混合材料发布前须制作去除这些信息的副本，保留原件。
 - 教师姓名与办公邮箱来自公开的课程大纲；助教与同学的个人邮箱已在笔记中隐去。如仍有遗漏，请联系我删除。
 
 ## 5. 不构成任何背书
@@ -45,6 +46,7 @@
 This repository is my personal study knowledge base (I am an MSc student at CityU; GitHub: CercaTrovato), made public so that others can **reproduce or improve the AI-assisted note-taking workflow and tooling** — not to redistribute course materials.
 
 - **Course materials** under `*/course_files_export/` (slides, syllabi, notebooks, datasets) are © their respective instructors and City University of Hong Kong. **Do not download, redistribute or reuse them without written permission from the copyright holders.** They are kept only so that page references and reproduction scripts can be verified. **Copyright holders: contact me (Issue, or the email in the commit log) and the files will be removed immediately, including from git history.**
-- **Transcripts** under `*/transcripts/` are automatic speech-recognition output (local Whisper large-v3 from 2026-09-18; Notta before that), **not source audio and not verified verbatim records** — audio files are never committed; they contain recognition errors. They are kept only so that quoted classroom remarks in the notes can be traced. Instructors may request removal at any time.
+- **Transcripts** under `*/transcripts/` are automatic speech-recognition output (local Whisper large-v3 from 2026-09-18; Notta before that), **not verified verbatim records**; source audio is stored on Google Drive with download links in the GitHub audio index, subject to third-party privacy checks; they contain recognition errors. They are kept only so that quoted classroom remarks in the notes can be traced. Instructors may request removal at any time.
 - **Notes, rules and scripts** are my own derivative work; see `LICENSE.md`. Notes may contain errors — official materials prevail.
+- The owner has authorized publication of personal study materials and assignments. Credentials and third-party personal information remain excluded; eligibility does not mean files have already been uploaded.
 - No affiliation with, and no endorsement by, City University of Hong Kong or any instructor.

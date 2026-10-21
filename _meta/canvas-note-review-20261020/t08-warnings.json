@@ -1,0 +1,702 @@
+[
+  {
+    "code": "R1c",
+    "line": 84,
+    "detail": "4 个分号：逐列读法：数据列给文件名；规模是行数 × 列数；时间字段说明源中的顺序标…",
+    "in_scope": true,
+    "context": "|---|---:|---|---|---:|---:|\n| `shampoo_sales.csv` | 36 × 2 | `Date`，字符串 | `Sales`，float64 | 0 | 0 |\n| `CVD.csv` | 56 × 3 | `year`、`quarter`，int64 | `cvd`，int64 | 0 | 0 |\n\n逐列读法：数据列给文件名；规模是行数 × 列数；时间字段说明源中的顺序标签；数值字段是被预测量；缺失与重复均按整张表统计。第一行表示 shampoo 表有 36 个观测、2 列，没有缺失或完全重复行。\n\n`shampoo_sales.csv` 的 `Sales` 范围为 119.3–682.0，均值为 312.6。源 tutorial 把它称为 monthly series，但 CSV 标签从 `1/1/2020` 到 `31/1/2020`，随后到 `1/2/2020`–`5/2/2020`，图标题又写成 `Daily shampoo sales`。这三处频率口径互相冲突；本文保留其教学意图，同时不把标签冒充已经核实的真实月度日期。\n"
+  },
+  {
+    "code": "R4c",
+    "line": 109,
+    "detail": "单元格 2 句",
+    "in_scope": true,
+    "context": "\n| 行 | 代码片段 | 作用 |\n|---:|---|---|\n| 1 | `copy()` | 另建对象，不改源数据框 |\n| 2–4 | `pd.to_datetime(...)` | 按日/月/年解析；坏标签直接报错 |\n| 5 | `set_index(...).sort_index()` | 用时间做索引并按先后排序 |\n\n逐列读法：行是补充代码的行号；代码片段是关键 API；作用说明输入如何变成时间索引。它是笔记补充，不是 notebook Cell 0–48 的源代码。"
+  },
+  {
+    "code": "R1c",
+    "line": 112,
+    "detail": "2 个分号：逐列读法：行是补充代码的行号；代码片段是关键 API；作用说明输入如何变…",
+    "in_scope": true,
+    "context": "| 1 | `copy()` | 另建对象，不改源数据框 |\n| 2–4 | `pd.to_datetime(...)` | 按日/月/年解析；坏标签直接报错 |\n| 5 | `set_index(...).sort_index()` | 用时间做索引并按先后排序 |\n\n逐列读法：行是补充代码的行号；代码片段是关键 API；作用说明输入如何变成时间索引。它是笔记补充，不是 notebook Cell 0–48 的源代码。\n\nCVD 的 `year` 与 `quarter` 已明确，可以安全构造季度 PeriodIndex：\n"
+  },
+  {
+    "code": "R5b",
+    "line": 131,
+    "detail": "一个 $$ 块放了多个等式；拆开并在中间加一句话",
+    "in_scope": true,
+    "context": "`model lagged term in sklearn.xlsx` 用 11 个月的小例说明滞后特征。先做 `shift(1)`，再在过去 3 个值上滚动，月 4 的均值是 $(100+104+112)/3=105.3333$。如果直接对包含本月的窗口求平均，就把待预测值泄漏进特征。\n\n`Why Double Moving Average Works.xlsx` 用同一小例解释二重移动平均。窗口 $n=3$ 时，月 5 的第一次移动平均 $M_5=116.3333$，第二次移动平均 $D_5=110.4444$。它们的差用于估计趋势：\n\n$$\nL_t = 2M_t-D_t,\n\\qquad\nT_t = \\frac{2(M_t-D_t)}{n-1},"
+  },
+  {
+    "code": "R6a",
+    "line": 149,
+    "detail": "一段 3 处括号英文注释（约等于 3 个新术语）",
+    "in_scope": true,
+    "context": "## 2. 逐 cell 讲解\n\n### 2.1 Cells 0–1：任务、RMSE 与 ETS 工具箱\n\nCell 0 给出完整预测流程、两份数据的教学角色和 RMSE。Cell 1 介绍 `statsmodels` 的 ETS：误差（error）、趋势（trend）与季节（seasonality）三个部件。\n\nRMSE 把每个测试时点的误差平方后求平均，再开根：\n"
+  },
+  {
+    "code": "R1c",
+    "line": 166,
+    "detail": "2 个分号：逐列读法：符号是公式对象；含义说明它对应哪个数据；单位／范围说明可比较口…",
+    "in_scope": true,
+    "context": "| $y_t$ | 时点 $t$ 的真实值 | 与目标相同 |\n| $\\hat y_t$ | 对同一时点的预测值 | 与目标相同 |\n| $y_t-\\hat y_t$ | 预测误差 | 与目标相同 |\n\n逐列读法：符号是公式对象；含义说明它对应哪个数据；单位／范围说明可比较口径。若 sales 的 RMSE 为 90.61，意思是五个测试时点的平方误差平均后开根为约 90.61 个 sales 单位。\n\n**为什么平方后再开根**：平方让正负误差不会抵消，并加重较大误差；开根把结果带回目标原单位。RMSE 只能在同一目标、同一测试时段和同一尺度下直接比较。\n"
+  },
+  {
+    "code": "R1c",
+    "line": 170,
+    "detail": "2 个分号：简单指数平滑（simple exponential smoothing,…",
+    "in_scope": true,
+    "context": "逐列读法：符号是公式对象；含义说明它对应哪个数据；单位／范围说明可比较口径。若 sales 的 RMSE 为 90.61，意思是五个测试时点的平方误差平均后开根为约 90.61 个 sales 单位。\n\n**为什么平方后再开根**：平方让正负误差不会抵消，并加重较大误差；开根把结果带回目标原单位。RMSE 只能在同一目标、同一测试时段和同一尺度下直接比较。\n\nETSModel 默认使用加法误差。简单指数平滑（simple exponential smoothing, SES）只维护水平；Holt 再维护趋势；Holt-Winters 再维护一个长度为 $m$ 的季节状态。\n\n**所以呢**：模型的复杂度来自它维护的状态，不是 API 名称越长就天然越好。\n"
+  },
+  {
+    "code": "R1c",
+    "line": 202,
+    "detail": "2 个分号：逐列读法：行对应源 cell 的物理行；代码片段保留 API；作用说明这…",
+    "in_scope": true,
+    "context": "| 5 | `pyplot as plt` | 画训练、测试和预测线 |\n| 7 | `%matplotlib inline` | 让图显示在 notebook cell 下方 |\n| 9 | `chained_assignment=None` | 关闭 pandas 链式赋值提示 |\n\n逐列读法：行对应源 cell 的物理行；代码片段保留 API；作用说明这行给后续哪一步服务。\n\n**失败方式**：`%matplotlib inline` 是 IPython magic，在普通 `.py` 文件中会触发语法错误。关闭链式赋值提示不会解决副本／视图歧义，只会让警告消失；生产代码宜显式 `.copy()`。\n"
+  },
+  {
+    "code": "R5b",
+    "line": 314,
+    "detail": "一个 $$ 块放了多个等式；拆开并在中间加一句话",
+    "in_scope": true,
+    "context": "$$\n\n窗口 $w$ 决定一次平均多少个最新观测。源实现用训练期最后一个 $M_T^{(w)}$ 预测整个测试区间：\n\n$$\n\\hat y_{T+h}=M_T^{(w)},\\qquad h=1,\\ldots,5.\n$$\n"
+  },
+  {
+    "code": "R4c",
+    "line": 332,
+    "detail": "单元格 2 句",
+    "in_scope": true,
+    "context": "| 行 | 代码片段 | 作用 |\n|---:|---|---|\n| 2 | `train['Sales']` | 取训练期销量序列 |\n| 2 | `.rolling(5)` | 为每行建立含当前行在内的后向 5 点窗口 |\n| 2 | `.mean()` | 对窗口求算术平均；不足 5 点时为 `NaN` |\n| 3 | `head(31)` | 显示全部 31 个训练观测及均值 |\n\n前 4 行是 `NaN`，因为当时还凑不齐 5 个观测。最后 5 个训练销量为 315.9、439.3、401.3、437.4、575.5，手核如下："
+  },
+  {
+    "code": "R1c",
+    "line": 396,
+    "detail": "2 个分号：逐列读法：代码片段对应源 API；输入 → 输出说明形状变化；参数后果说…",
+    "in_scope": true,
+    "context": "| `rolling(10).mean()` | 31 个销量 → 前 9 个缺失、其后为 10 点均值 | 窗口更大，线更平滑、反应更慢 |\n| `iloc[-1]` | 最后一个均值 → 397.79 | 只用训练末端，不读测试真实值 |\n| 写入 forecast 列 | 标量 → 五个相同预测 | 多步预测保持平坦 |\n\n逐列读法：代码片段对应源 API；输入 → 输出说明形状变化；参数后果说明换窗口会改变什么。第一行表示 10 点窗口让最早 9 行没有足够历史。\n\nCell 17 标出窗口 15。Cell 18 重复同一机制：\n"
+  },
+  {
+    "code": "R1c",
+    "line": 448,
+    "detail": "2 个分号：逐列读法：窗口是一轮纳入的训练观测数；平坦预测是测试五步共用值；两列 R…",
+    "in_scope": true,
+    "context": "| 5 | 433.88 | 161.9135 | 161.9135 |\n| 10 | 397.79 | 191.1079 | 191.1079 |\n| 15 | 351.72 | 231.2218 | 231.2218 |\n\n逐列读法：窗口是一轮纳入的训练观测数；平坦预测是测试五步共用值；两列 RMSE 分别来自原 notebook 输出和本轮独立复算。第一行表示这三个移动平均中，5 点窗口误差最低。\n\nCell 21 的源解释是：5 点窗口相对最好，但三者都无法外推趋势；因此转向更重视近期值、并可显式增加趋势与季节状态的指数平滑。\n"
+  },
+  {
+    "code": "R5b",
+    "line": 458,
+    "detail": "一个 $$ 块放了多个等式；拆开并在中间加一句话",
+    "in_scope": true,
+    "context": "### 2.7 Cells 22–25：简单指数平滑只维护水平\n\nCell 22 定义 SES。其一个常见加法状态写法是：\n\n$$\n\\ell_t=\\alpha y_t+(1-\\alpha)\\ell_{t-1},\n\\qquad\n\\hat y_{T+h}=\\ell_T."
+  },
+  {
+    "code": "R1c",
+    "line": 472,
+    "detail": "2 个分号：逐列读法：符号是模型状态或参数；含义说明它在更新中做什么；边界给单位或取…",
+    "in_scope": true,
+    "context": "| $\\ell_t$ | 时点 $t$ 更新后的水平状态 | 与目标同单位 |\n| $\\alpha$ | 新观测权重 | 通常在 0–1 内，由拟合估计 |\n| $h$ | 从训练末端向前的预测步数 | 正整数 |\n\n逐列读法：符号是模型状态或参数；含义说明它在更新中做什么；边界给单位或取值。$\\alpha$ 越大，水平越快跟随新观测，但也更容易追逐噪声。\n\n这里的 $\\alpha$ 是教材更新式中的平滑权重。`ETSModel.fit()` 返回的软件参数还依赖当前 ETS 规格、初始状态与参数约束；若要用保存参数手工复原预测，必须先核 statsmodels 当前版本的参数化，不能只按名称直接代入本式。\n"
+  },
+  {
+    "code": "R1c",
+    "line": 588,
+    "detail": "3 个分号：逐列读法：参数／方法是首次 API；本例值是源代码实参；作用说明它改变哪…",
+    "in_scope": true,
+    "context": "| `trend` | `'add'` | 每期增加一个加法趋势状态 | `None` 会退回无趋势结构 |\n| `.fit()` | 默认优化 | 按软件约定估计平滑参数与初始状态 | 版本、初始化或优化细节可能改变末位数 |\n| `.forecast(5)` | 5 | 从同一训练末端预测 5 步 | 改为 1 只预测下一步 |\n\n逐列读法：参数／方法是首次 API；本例值是源代码实参；作用说明它改变哪个状态；最后一列说明调整时的结构后果。\n\nCell 28 画训练、测试和向上倾斜的 Holt 预测：\n"
+  },
+  {
+    "code": "R1c",
+    "line": 653,
+    "detail": "3 个分号：逐列读法：参数是 `ETSModel` 实参；本例值来自 Cell 31…",
+    "in_scope": true,
+    "context": "| `trend` | `'add'` | 加法趋势状态 | 每期变化以目标单位相加 |\n| `seasonal` | `'add'` | 加法季节状态 | 季节波动近似固定绝对幅度 |\n| `seasonal_periods` | 4 | 每 4 个观测重复同一季节位置 | 对 shampoo 只是演示口径 |\n\n逐列读法：参数是 `ETSModel` 实参；本例值来自 Cell 31；精确含义说明模型怎样分解；边界说明能否解释成自然周期。若它真是月度数据，自然年度季节应为 $m=12$；$m=4$ 只代表“4 个月一循环”，不是一年四季，也不是自动等于季度。\n\nCell 32 画结果：\n"
+  },
+  {
+    "code": "R1c",
+    "line": 681,
+    "detail": "2 个分号：逐列读法：证据区分原保存与本轮环境；RMSE 是同一五步测试期；最后一列…",
+    "in_scope": true,
+    "context": "|---|---:|---|\n| 原 notebook 保存输出 | 93.4528 | 高于 90.6062 |\n| 本轮 scratch 复算 | 93.0974 | 高于 90.6063 |\n\n逐列读法：证据区分原保存与本轮环境；RMSE 是同一五步测试期；最后一列只比较同一证据内的 Holt。两套数值都支持“额外季节状态没有改善本例”。\n\n**为什么会有数值差**：源保存环境没有记录完整版本、初始化和优化细节。差异可能与软件版本、初始化或优化过程有关，但本轮没有唯一定位原因。模型排序一致；本轮值仍不能冒充源 cell 原输出。\n"
+  },
+  {
+    "code": "R1c",
+    "line": 790,
+    "detail": "2 个分号：逐列读法：行对应源代码；输入形状是进入 API 的一维序列；状态／输出说…",
+    "in_scope": true,
+    "context": "| 1 | `(50,)` | 建立仅水平 ETS 规格 |\n| 2 | `(50,)` | 估计水平平滑参数和初始水平 |\n| 3 | `N_test=6` | 返回 6 个未来季度预测 |\n\n逐列读法：行对应源代码；输入形状是进入 API 的一维序列；状态／输出说明模型内部维护什么、返回多少值。\n\nCell 43 画出平坦预测：\n"
+  },
+  {
+    "code": "R1c",
+    "line": 846,
+    "detail": "2 个分号：逐列读法：功能块说明 cell 内的三个阶段；关键行是源代码位置；输入 …",
+    "in_scope": true,
+    "context": "| 建模 | 1–3 | 50 个季度值 → 6 个带线性趋势的预测 |\n| 绘图 | 5–10 | 训练、测试、预测 → 一张比较图 |\n| 评价 | 12–13 | 6 对实际／预测 → RMSE |\n\n逐列读法：功能块说明 cell 内的三个阶段；关键行是源代码位置；输入 → 输出说明形状与用途。\n\n源代码复用了变量名 `ses`、`ses_fit` 和 `rmse_ses`，但模型已是 Holt。变量名会误导后续读者；判断模型必须看 `trend='add'`。\n"
+  },
+  {
+    "code": "R1c",
+    "line": 883,
+    "detail": "2 个分号：逐列读法：功能块对应源 cell 的阶段；状态变化说明内部对象如何变；输…",
+    "in_scope": true,
+    "context": "| `.fit()` | 反复计算似然并更新参数，直到优化停止 | `hw_fit` |\n| `.forecast(6)` | 从 1999 Q2 末状态向前循环季节位置 | 1999 Q3–2000 Q4 六个预测 |\n| RMSE | 六个季度逐点比较 | 一个 CVD 单位误差 |\n\n逐列读法：功能块对应源 cell 的阶段；状态变化说明内部对象如何变；输出给变量或评估量。\n\n本轮预测约为 3584.97、4155.94、4633.91、4014.37、3618.71、4189.68。它在 Q3 较低、Q4 回升、Q1 较高、Q2 回落，并在下一年重复季度位置。\n"
+  },
+  {
+    "code": "R1c",
+    "line": 893,
+    "detail": "2 个分号：逐列读法：模型列给 ETS 变体；两列 RMSE 区分源保存与本轮；结构…",
+    "in_scope": true,
+    "context": "| SES | 477.6303 | 477.6303 | 水平 |\n| Holt | 473.2970 | 473.2966 | 水平 + 趋势 |\n| Holt-Winters | 246.5844 | 246.5843 | 水平 + 趋势 + $m=4$ 季节 |\n\n逐列读法：模型列给 ETS 变体；两列 RMSE 区分源保存与本轮；结构列说明状态集合。最后一行在这 6 季测试期内误差最低，但不证明它在所有未来年份都最好。\n\n**重要计算手核**：第一个测试季度真实值为 3669，Holt-Winters 预测约 3584.97，误差约 84.03。六个误差平方求平均再开根得到约 246.58，与 API 输出一致。\n"
+  },
+  {
+    "code": "R1c",
+    "line": 951,
+    "detail": "3 个分号：逐列读法：模型列给源代码结构；预测形状是输出元素数；两个 RMSE 列严…",
+    "in_scope": true,
+    "context": "| SES | 5 | 132.5452 | 132.5447 | 约 475.48 平坦线 |\n| Holt | 5 | 90.6062 | 90.6063 | 线性上升 |\n| Holt-Winters，$m=4$ | 5 | 93.4528 | 93.0974 | 趋势上叠加演示性 4 点季节 |\n\n逐列读法：模型列给源代码结构；预测形状是输出元素数；两个 RMSE 列严格区分证据；主要行为说明预测线为什么是平或斜。Holt 在本测试期最低，但与 Holt-Winters 的差距不大，且源频率冲突限制了季节解释。\n\n### 4.2 CVD 的季度比较\n"
+  },
+  {
+    "code": "R1c",
+    "line": 963,
+    "detail": "2 个分号：逐列读法：测试季度数是 RMSE 分母 $n$；两列数值分别来自源 no…",
+    "in_scope": true,
+    "context": "| SES | 6 | 477.6303 | 477.6303 | 漏趋势与季节 |\n| Holt | 6 | 473.2970 | 473.2966 | 捕捉弱趋势，漏季节 |\n| Holt-Winters，$m=4$ | 6 | 246.5844 | 246.5843 | 捕捉季度重复 |\n\n逐列读法：测试季度数是 RMSE 分母 $n$；两列数值分别来自源 notebook 和本轮；最后一列解释结构性误差。Holt-Winters 在本测试期 RMSE 比 Holt 低约 226.71。\n\n### 4.3 读实际复算图\n"
+  },
+  {
+    "code": "R1c",
+    "line": 973,
+    "detail": "2 个分号：2026-10-20 已实际查看同源 1760 × 1280 PNG：标…",
+    "in_scope": true,
+    "context": "上图横轴是观测索引或季度索引，纵轴分别是 sales 与 CVD deaths；虚线是训练／测试边界。蓝线是训练真实值，橙线是测试真实值，绿、红、紫分别是 SES、Holt、Holt-Winters。\n\n**读一个点**：CVD 横轴 52 对应 2000 Q1，真实值 4884；Holt-Winters 预测约 4633.91，而 SES 仍约 4068.26。季节模型虽仍低估，却明显更接近该季度高点。\n\n图由 `T08-generate-forecast-figure.py` 读取只读 `course_files_export/shampoo_sales.csv` 与 `CVD.csv` 复算生成，可编辑矢量源为 `T08-forecast-comparison.svg`。2026-10-20 已实际查看同源 1760 × 1280 PNG：标题、图例、边界线、轴标签与五条线均可辨；同源浏览器 SVG 已实际查看；原生 Obsidian 阅读视图未直接查看。\n\n## 5. Cell ↔ 理论对应表\n"
+  },
+  {
+    "code": "R7a",
+    "line": 973,
+    "detail": "复算记录；移到 §9 或折叠「复算与来源」",
+    "in_scope": true,
+    "context": "上图横轴是观测索引或季度索引，纵轴分别是 sales 与 CVD deaths；虚线是训练／测试边界。蓝线是训练真实值，橙线是测试真实值，绿、红、紫分别是 SES、Holt、Holt-Winters。\n\n**读一个点**：CVD 横轴 52 对应 2000 Q1，真实值 4884；Holt-Winters 预测约 4633.91，而 SES 仍约 4068.26。季节模型虽仍低估，却明显更接近该季度高点。\n\n图由 `T08-generate-forecast-figure.py` 读取只读 `course_files_export/shampoo_sales.csv` 与 `CVD.csv` 复算生成，可编辑矢量源为 `T08-forecast-comparison.svg`。2026-10-20 已实际查看同源 1760 × 1280 PNG：标题、图例、边界线、轴标签与五条线均可辨；同源浏览器 SVG 已实际查看；原生 Obsidian 阅读视图未直接查看。\n\n## 5. Cell ↔ 理论对应表\n"
+  },
+  {
+    "code": "R1c",
+    "line": 1031,
+    "detail": "3 个分号：逐列读法：Cell 是 notebook 的零基编号；类型区分文字与可执…",
+    "in_scope": true,
+    "context": "| 46 | Code | CVD Holt 全流程 | §2.13 |\n| 47 | Markdown | CVD Holt-Winters 说明 | §2.14 |\n| 48 | Code | CVD HW 全流程 | §2.14 |\n\n逐列读法：Cell 是 notebook 的零基编号；类型区分文字与可执行代码；源内容概括该 cell；实质覆盖给正文定位。第一行表示 Cell 0 的目标、数据角色和 RMSE 已在 §0 与 §2.1 展开。\n\nCells 49–50 不在上表：它们是评分任务及提交要求，边界见 §2.15。\n"
+  },
+  {
+    "code": "R1c",
+    "line": 1046,
+    "detail": "4 个分号：逐列读法：方法给模型家族；状态说明模型记住什么；预测形状描述源中的多步行…",
+    "in_scope": true,
+    "context": "| SES | 水平 $\\ell_t$ | 平坦 | $\\alpha$ | 漏趋势、漏季节 |\n| Holt | 水平 + 趋势 | 线性外推 | $\\alpha,\\beta$ | 远期趋势失真 |\n| Holt-Winters | 水平 + 趋势 + 季节 | 趋势叠加周期 | $\\alpha,\\beta,\\gamma,m$ | 错频率、缺完整周期 |\n\n逐列读法：方法给模型家族；状态说明模型记住什么；预测形状描述源中的多步行为；关键参数是待估或待定对象；失败方式指出结构不匹配时怎样错。第一行表示源 SMA 只记住最后窗口均值，所以五步都一样。\n\n选择时按以下顺序提问：\n"
+  },
+  {
+    "code": "R1c",
+    "line": 1119,
+    "detail": "3 个分号：逐列读法：来源是只读原件；使用范围说明进入正文哪部分；状态记录本次实际动…",
+    "in_scope": true,
+    "context": "| `CVD.csv` | 56 季公开教程 | 已描述与复算 | 地区、统计定义未提供 |\n| 两份 XLSX | 滞后与二重移动平均补充 | 只读解释 | notebook 未调用 |\n| 课堂转录 | 无 | pending | 不编课堂补充或教授明示 |\n\n逐列读法：来源是只读原件；使用范围说明进入正文哪部分；状态记录本次实际动作；限制保留材料不能证明的事实。第一行表示公开教程 0–48 已逐 cell 覆盖，评分任务没有进入公开答案。\n\n## 9. 制作、复算与勘误记录\n"
+  },
+  {
+    "code": "R6d",
+    "line": 47,
+    "detail": "缩写“CVD”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "> 本篇尚无课堂转录，`transcript: pending`。正文没有“教授说”或“教授明示考点”的表述。\n\n## 0. 这个 notebook 在教什么\n\n这份 tutorial 解决一个核心问题：怎样只用过去的数据，预测时间顺序之后的值，并用留出的未来区间比较模型。它先用 shampoo 销量说明“平坦预测为什么追不上趋势”，再用季度 CVD 数据说明“季节模式存在时，季节状态为什么有用”。\n\n学完后，你应该能完成以下可检验动作：\n"
+  },
+  {
+    "code": "R6d",
+    "line": 55,
+    "detail": "缩写“RMSE”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "- 按时间顺序切出训练期和测试期，并说明为什么不能随机打乱。\n- 从最近 $w$ 个观测手算滚动平均，再把最后一个平均值扩展成平坦多步预测。\n- 写出简单指数平滑、Holt 线性趋势与加法 Holt-Winters 的状态更新和预测公式。\n- 用 `ETSModel(...).fit().forecast(h)` 建模，并解释 `trend`、`seasonal`、`seasonal_periods` 与预测步数 $h$。\n- 根据预测序列和实际序列复算均方根误差（root mean squared error, RMSE），读出模型在指定测试期的相对表现。\n- 判断季度自然周期 $m=4$、月度自然年度周期 $m=12$ 与源例“4 个观测一循环”的区别。\n- 识别日期标签、频率、数据泄漏、优化收敛和模型过度复杂等失败方式。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 57,
+    "detail": "“数据泄漏”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+    "in_scope": true,
+    "context": "- 写出简单指数平滑、Holt 线性趋势与加法 Holt-Winters 的状态更新和预测公式。\n- 用 `ETSModel(...).fit().forecast(h)` 建模，并解释 `trend`、`seasonal`、`seasonal_periods` 与预测步数 $h$。\n- 根据预测序列和实际序列复算均方根误差（root mean squared error, RMSE），读出模型在指定测试期的相对表现。\n- 判断季度自然周期 $m=4$、月度自然年度周期 $m=12$ 与源例“4 个观测一循环”的区别。\n- 识别日期标签、频率、数据泄漏、优化收敛和模型过度复杂等失败方式。\n\n## 1. 前置、环境与数据\n"
+  },
+  {
+    "code": "R6d",
+    "line": 63,
+    "detail": "缩写“ARIMA”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "## 1. 前置、环境与数据\n\n### 1.1 理论衔接\n\n本 tutorial 的理论入口是 [[IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性|M07 时间序列 I]]。下一讲的自相关、差分与 ARIMA 见 [[IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA|M08 时间序列 II]]。\n\n时间序列（time series）是一组带先后顺序的观测。预测第 $t+1$ 期时，模型只能使用 $t$ 期及以前已知的信息。若测试期的信息提前参与拟合、调参或特征计算，就发生数据泄漏（data leakage）。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 63,
+    "detail": "缩写“II”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "## 1. 前置、环境与数据\n\n### 1.1 理论衔接\n\n本 tutorial 的理论入口是 [[IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性|M07 时间序列 I]]。下一讲的自相关、差分与 ARIMA 见 [[IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA|M08 时间序列 II]]。\n\n时间序列（time series）是一组带先后顺序的观测。预测第 $t+1$ 期时，模型只能使用 $t$ 期及以前已知的信息。若测试期的信息提前参与拟合、调参或特征计算，就发生数据泄漏（data leakage）。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 65,
+    "detail": "“数据泄漏”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+    "in_scope": true,
+    "context": "### 1.1 理论衔接\n\n本 tutorial 的理论入口是 [[IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性|M07 时间序列 I]]。下一讲的自相关、差分与 ARIMA 见 [[IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA|M08 时间序列 II]]。\n\n时间序列（time series）是一组带先后顺序的观测。预测第 $t+1$ 期时，模型只能使用 $t$ 期及以前已知的信息。若测试期的信息提前参与拟合、调参或特征计算，就发生数据泄漏（data leakage）。\n\n本篇会反复执行五个动作：\n"
+  },
+  {
+    "code": "R6d",
+    "line": 114,
+    "detail": "缩写“CVD”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "| 5 | `set_index(...).sort_index()` | 用时间做索引并按先后排序 |\n\n逐列读法：行是补充代码的行号；代码片段是关键 API；作用说明输入如何变成时间索引。它是笔记补充，不是 notebook Cell 0–48 的源代码。\n\nCVD 的 `year` 与 `quarter` 已明确，可以安全构造季度 PeriodIndex：\n\n```python\ncvd_q = cvd.copy()"
+  },
+  {
+    "code": "R6d",
+    "line": 139,
+    "detail": "缩写“XLSX”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "\\qquad\n\\hat y_{t+p}=L_t+pT_t.\n$$\n\n代入月 5 得 $L_5=122.2222$、$T_5=5.8889$，所以月 6 的一步预测是 $128.1111$。两份 XLSX 只作机制补充；源 notebook Cells 0–48 没有读取它们。\n\n### 1.5 重排说明\n"
+  },
+  {
+    "code": "R6d",
+    "line": 143,
+    "detail": "缩写“CVD”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "代入月 5 得 $L_5=122.2222$、$T_5=5.8889$，所以月 6 的一步预测是 $128.1111$。两份 XLSX 只作机制补充；源 notebook Cells 0–48 没有读取它们。\n\n### 1.5 重排说明\n\n源 notebook 按“shampoo 的四类模型 → CVD 的三类模型”排列。本文保留这个主顺序，但先把时间边界、频率和 ETS 状态讲清，再进入重复 API。这样读者在看到 RMSE 之前，已经知道每个预测能使用哪些信息、为什么会平坦或随趋势移动。\n\n## 2. 逐 cell 讲解\n"
+  },
+  {
+    "code": "R6d",
+    "line": 143,
+    "detail": "缩写“ETS”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "代入月 5 得 $L_5=122.2222$、$T_5=5.8889$，所以月 6 的一步预测是 $128.1111$。两份 XLSX 只作机制补充；源 notebook Cells 0–48 没有读取它们。\n\n### 1.5 重排说明\n\n源 notebook 按“shampoo 的四类模型 → CVD 的三类模型”排列。本文保留这个主顺序，但先把时间边界、频率和 ETS 状态讲清，再进入重复 API。这样读者在看到 RMSE 之前，已经知道每个预测能使用哪些信息、为什么会平坦或随趋势移动。\n\n## 2. 逐 cell 讲解\n"
+  },
+  {
+    "code": "R6d",
+    "line": 143,
+    "detail": "缩写“RMSE”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "代入月 5 得 $L_5=122.2222$、$T_5=5.8889$，所以月 6 的一步预测是 $128.1111$。两份 XLSX 只作机制补充；源 notebook Cells 0–48 没有读取它们。\n\n### 1.5 重排说明\n\n源 notebook 按“shampoo 的四类模型 → CVD 的三类模型”排列。本文保留这个主顺序，但先把时间边界、频率和 ETS 状态讲清，再进入重复 API。这样读者在看到 RMSE 之前，已经知道每个预测能使用哪些信息、为什么会平坦或随趋势移动。\n\n## 2. 逐 cell 讲解\n"
+  },
+  {
+    "code": "R6d",
+    "line": 149,
+    "detail": "缩写“RMSE”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "## 2. 逐 cell 讲解\n\n### 2.1 Cells 0–1：任务、RMSE 与 ETS 工具箱\n\nCell 0 给出完整预测流程、两份数据的教学角色和 RMSE。Cell 1 介绍 `statsmodels` 的 ETS：误差（error）、趋势（trend）与季节（seasonality）三个部件。\n\nRMSE 把每个测试时点的误差平方后求平均，再开根：\n"
+  },
+  {
+    "code": "R6d",
+    "line": 170,
+    "detail": "缩写“SES”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "逐列读法：符号是公式对象；含义说明它对应哪个数据；单位／范围说明可比较口径。若 sales 的 RMSE 为 90.61，意思是五个测试时点的平方误差平均后开根为约 90.61 个 sales 单位。\n\n**为什么平方后再开根**：平方让正负误差不会抵消，并加重较大误差；开根把结果带回目标原单位。RMSE 只能在同一目标、同一测试时段和同一尺度下直接比较。\n\nETSModel 默认使用加法误差。简单指数平滑（simple exponential smoothing, SES）只维护水平；Holt 再维护趋势；Holt-Winters 再维护一个长度为 $m$ 的季节状态。\n\n**所以呢**：模型的复杂度来自它维护的状态，不是 API 名称越长就天然越好。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 176,
+    "detail": "缩写“ETS”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "**所以呢**：模型的复杂度来自它维护的状态，不是 API 名称越长就天然越好。\n\n### 2.2 Cell 2：导入库与 notebook 显示设置\n\n这段代码准备表格、数组、指标、ETS 模型和绘图工具。\n\n```python\nimport pandas as pd"
+  },
+  {
+    "code": "R6d",
+    "line": 260,
+    "detail": "缩写“SES”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "**逐项解析**：整体水平向后升高，支持“存在上升趋势”；局部高低波动没有显示与明确自然周期对齐的稳定重复，且源频率本身冲突，所以不能把某四点起伏命名为年度季节性。\n\n**English reference answer（⚪ 笔记推断；Cell 7 与源观察一致）**：The series shows a clear upward trend, while no stable seasonal pattern is obvious from the plotted observations. The date-frequency inconsistency should be resolved before assigning a natural seasonal period.\n\nCell 7 的源观察是“clear upward trend but no obvious seasonality”，并据此把 Holt 作为合理候选，同时保留移动平均、SES 和 Holt-Winters 作同一测试集基准。\n\n**所以呢**：先看图是为了提出模型假设；真正比较仍要回到同一测试期 RMSE。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 262,
+    "detail": "缩写“RMSE”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "**English reference answer（⚪ 笔记推断；Cell 7 与源观察一致）**：The series shows a clear upward trend, while no stable seasonal pattern is obvious from the plotted observations. The date-frequency inconsistency should be resolved before assigning a natural seasonal period.\n\nCell 7 的源观察是“clear upward trend but no obvious seasonality”，并据此把 Holt 作为合理候选，同时保留移动平均、SES 和 Holt-Winters 作同一测试集基准。\n\n**所以呢**：先看图是为了提出模型假设；真正比较仍要回到同一测试期 RMSE。\n\n### 2.4 Cells 8–9：按时间保留最后 5 个观测\n"
+  },
+  {
+    "code": "R6d",
+    "line": 302,
+    "detail": "缩写“RMSE”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "`label` 为图例提供名称；`legend` 把训练与测试颜色映射显示出来。源图没有画切分竖线，读者要从颜色交界处找边界。\n\n**为什么时间序列不能照搬随机划分**：随机划分会让未来行进入训练，模型就可能利用评估时点之后的信息。源算法正确地保留了顺序；本文不会悄悄改成随机 `train_test_split`。\n\n**所以呢**：模型比较是否可信，先取决于预测边界是否真实，再取决于 RMSE 大小。\n\n### 2.5 Cells 10–14：5 点滚动平均与平坦预测\n"
+  },
+  {
+    "code": "R6d",
+    "line": 306,
+    "detail": "缩写“SMA”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "**所以呢**：模型比较是否可信，先取决于预测边界是否真实，再取决于 RMSE 大小。\n\n### 2.5 Cells 10–14：5 点滚动平均与平坦预测\n\nCell 10 定义简单移动平均（simple moving average, SMA）：\n\n$$\nM_t^{(w)}=\\frac{1}{w}\\sum_{i=0}^{w-1}y_{t-i}."
+  },
+  {
+    "code": "R6b",
+    "line": 335,
+    "detail": "一句 4 个术语（15、39、40、37）：最后 5 个训练销量为 315.9、439.3、401.3、437.4、…",
+    "in_scope": true,
+    "context": "| 2 | `.rolling(5)` | 为每行建立含当前行在内的后向 5 点窗口 |\n| 2 | `.mean()` | 对窗口求算术平均；不足 5 点时为 `NaN` |\n| 3 | `head(31)` | 显示全部 31 个训练观测及均值 |\n\n前 4 行是 `NaN`，因为当时还凑不齐 5 个观测。最后 5 个训练销量为 315.9、439.3、401.3、437.4、575.5，手核如下：\n\n$$\nM_{31}^{(5)}=\\frac{315.9+439.3+401.3+437.4+575.5}{5}=433.88."
+  },
+  {
+    "code": "R6d",
+    "line": 456,
+    "detail": "缩写“SES”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "**所以呢**：窗口不是越大越稳就越好；上升序列中，长窗口会让陈旧低值占比更大，预测更落后。\n\n### 2.7 Cells 22–25：简单指数平滑只维护水平\n\nCell 22 定义 SES。其一个常见加法状态写法是：\n\n$$\n\\ell_t=\\alpha y_t+(1-\\alpha)\\ell_{t-1},"
+  },
+  {
+    "code": "R6d",
+    "line": 474,
+    "detail": "缩写“ETS”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "| $h$ | 从训练末端向前的预测步数 | 正整数 |\n\n逐列读法：符号是模型状态或参数；含义说明它在更新中做什么；边界给单位或取值。$\\alpha$ 越大，水平越快跟随新观测，但也更容易追逐噪声。\n\n这里的 $\\alpha$ 是教材更新式中的平滑权重。`ETSModel.fit()` 返回的软件参数还依赖当前 ETS 规格、初始状态与参数约束；若要用保存参数手工复原预测，必须先核 statsmodels 当前版本的参数化，不能只按名称直接代入本式。\n\nCell 23 建模、拟合并预测 5 步：\n"
+  },
+  {
+    "code": "R6d",
+    "line": 503,
+    "detail": "缩写“SSE”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "2. 沿训练时间逐期产生一步预测，取得新观测后更新状态，并记录预测误差。\n3. 用训练误差计算似然目标，调整参数，再从训练开头递推。\n4. 达到数值容差或迭代上限后结束，返回参数、初始状态和训练末状态。\n\n对固定加法高斯误差规格，较小的误差平方和（sum of squared errors, SSE）对应较好的拟合目标；软件还会处理方差、初始化和参数约束。因此不能把一次手动挑参数写成已经重现了整套优化器。\n\n例如只比较两个SES权重。取训练序列100、110、120，初始水平固定为100，两组参数都先预测第二期为100。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 527,
+    "detail": "缩写“BFGS”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "```\n\n读图时，回环只发生在训练资料内部。以权重0.2的例子走图，候选参数给出训练SSE424；优化器可再尝试别的权重，但不能为了降低训练目标去读取测试期。若到迭代上限仍未收敛，应保留警告并排查，不把“返回对象”当作已经可靠拟合。\n\n原保存输出里的 L-BFGS-B 日志记录数值优化。`CONVERGENCE` 说明优化器按自己的停止条件结束，不证明模型结构适合业务，也不证明找到唯一全局最优。\n\nCell 24 画三条线：\n"
+  },
+  {
+    "code": "R6b",
+    "line": 548,
+    "detail": "一句 4 个术语（RMSE、13、45、44）：源保存 RMSE 为 132.5452；本轮为 132.5447，差约 …",
+    "in_scope": true,
+    "context": "rmse_ses = np.sqrt(metrics.mean_squared_error(y_pred=y_predict, y_true=test['Sales']))\nprint(rmse_ses)\n```\n\n源保存 RMSE 为 132.5452；本轮为 132.5447，差约 0.0006，来自优化数值差异。它优于三个移动平均，但仍没有追踪持续上升方向。\n\n**停止边界与失败方式**：缺失值、非数值值、极少样本或优化不收敛会让拟合失败或不稳定。即使优化收敛，若序列有趋势，平坦的结构仍会系统性落后。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 548,
+    "detail": "缩写“RMSE”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "rmse_ses = np.sqrt(metrics.mean_squared_error(y_pred=y_predict, y_true=test['Sales']))\nprint(rmse_ses)\n```\n\n源保存 RMSE 为 132.5452；本轮为 132.5447，差约 0.0006，来自优化数值差异。它优于三个移动平均，但仍没有追踪持续上升方向。\n\n**停止边界与失败方式**：缺失值、非数值值、极少样本或优化不收敛会让拟合失败或不稳定。即使优化收敛，若序列有趋势，平坦的结构仍会系统性落后。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 570,
+    "detail": "缩写“ETS”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "$$\n\\hat y_{T+h}=\\ell_T+h b_T.\n$$\n\n$b_t$ 是每期水平变化的平滑估计；$\\beta$ 决定趋势对最新变化的反应速度。上式是教材层面的加法更新机制。`ETSModel` 采用自己的 ETS 状态空间约定、初始化、参数约束和归一化；软件结果中的 `smoothing_level`、`smoothing_trend` 不应脱离当前 statsmodels 版本与模型规格，直接当作上式 $\\alpha$、$\\beta$ 手工代入。\n\nCell 27 的源代码只多传一个参数：\n"
+  },
+  {
+    "code": "R6d",
+    "line": 602,
+    "detail": "缩写“RMSE”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "plt.xticks(rotation=45) # 👈 Add this line to rotate dates by 45 degrees\nplt.show()\n```\n\nCell 29 沿用同一 RMSE API：\n\n```python\nrmse_holt = np.sqrt(metrics.mean_squared_error(y_pred=y_predict, y_true=test['Sales']))"
+  },
+  {
+    "code": "R6b",
+    "line": 609,
+    "detail": "一句 4 个术语（22、48、41、27）：五步本轮预测约为 497.54、522.97、548.41、573.84…",
+    "in_scope": true,
+    "context": "rmse_holt = np.sqrt(metrics.mean_squared_error(y_pred=y_predict, y_true=test['Sales']))\nprint(rmse_holt)\n```\n\n源保存 RMSE 为 90.6062；本轮为 90.6063。五步本轮预测约为 497.54、522.97、548.41、573.84、599.27，体现每多走一步就加一次末端趋势。\n\n**失败方式**：长期线性外推可能在远期变得不合理，例如销量无限增长或降到负值。可考虑阻尼趋势、变换或只在短期使用，但这些不是源 Cell 27 的算法。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 667,
+    "detail": "缩写“RMSE”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "plt.xticks(rotation=45) # 👈 Add this line to rotate dates by 45 degrees\nplt.show()\n```\n\nCell 33 计算 RMSE，但把变量名继续写成 `rmse_holt`：\n\n```python\nrmse_holt = np.sqrt(metrics.mean_squared_error(y_pred=y_predict, y_true=test['Sales']))"
+  },
+  {
+    "code": "R6d",
+    "line": 689,
+    "detail": "缩写“SES”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "**所以呢**：季节参数必须来自数据频率和稳定重复模式；为了复杂而增加季节状态，可能只增加估计负担。\n\n### 2.10 Cells 34–36：CVD 的季度结构\n\nCell 34 明确 CVD 是季度序列，一个自然年度有 4 个观测。它预告将比较 SES、Holt 和带加法季节的 Holt-Winters。\n\nCell 35 读取并显示前 5 行：\n"
+  },
+  {
+    "code": "R6b",
+    "line": 719,
+    "detail": "一句 4 个术语（19、47、42、17）：怎么读一个点：横轴 0 对应 1987 Q1，纵轴 4761；横轴 1 …",
+    "in_scope": true,
+    "context": "```\n\n未显式传横轴时，Matplotlib 使用 0–55 的行索引。相邻四点构成一个年度循环；图中高低模式多次重复，支持尝试 $m=4$ 的季节状态。\n\n**怎么读一个点**：横轴 0 对应 1987 Q1，纵轴 4761；横轴 1 对应 1987 Q2，纵轴 4217。若只看横轴数字而不回到 `year`、`quarter`，会丢失季度含义。\n\n**所以呢**：CVD 的 $m=4$ 来自明确季度频率，和 shampoo 的演示性 $m=4$ 不是同一个理由。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 725,
+    "detail": "缩写“ETS”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "**所以呢**：CVD 的 $m=4$ 来自明确季度频率，和 shampoo 的演示性 $m=4$ 不是同一个理由。\n\n### 2.11 Cells 37–40：90%/10% 顺序切分的实际边界\n\nCell 37 说明用前三种 ETS 变体比较趋势和季节的增量价值。Cell 38 计算数量：\n\n```python\n# let's first split our data into 90% training and 10% testing"
+  },
+  {
+    "code": "R6d",
+    "line": 753,
+    "detail": "缩写“RMSE”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "cvd_train = cvd[:N_train] # take first N_train (50) data as trainig data\ncvd_test = cvd[N_train:] # the remaining N_test (6) data as test data\n```\n\n训练期结束于 1999 Q2；测试期是 1999 Q3、Q4 和 2000 全年，共 6 季。此边界跨越 1.5 个季节周期，足以观察部分季节重复，但样本仍很小，单次 RMSE 不应被当作稳定的全局排名。\n\nCell 40 画两段：\n"
+  },
+  {
+    "code": "R6d",
+    "line": 774,
+    "detail": "缩写“SES”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "**所以呢**：比例描述要回到具体年份与季度，才能知道预测真正跨过了什么时间边界。\n\n### 2.12 Cells 41–44：CVD 的 SES 平坦基线\n\nCell 41 预测没有趋势、没有季节的平坦基线。Cell 42 与 shampoo SES 使用同一 API，但输入改为 50 个季度值，预测步数改为 6：\n\n```python\nses = ETSModel(cvd_train['cvd']) "
+  },
+  {
+    "code": "R6d",
+    "line": 782,
+    "detail": "缩写“CVD”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "ses_fit = ses.fit()\ny_predict = ses_fit.forecast(N_test)\n```\n\n下表一行对应 CVD 的 SES 步骤，输入和输出都是一维季度序列。\n\n| 行 | 输入形状 | 状态／输出 |\n|---:|---:|---|"
+  },
+  {
+    "code": "R6b",
+    "line": 850,
+    "detail": "一句 5 个术语（SES、33、12、42、11）：它只比 SES 低约 4.33，六个预测约从 4126.69 缓慢升至 …",
+    "in_scope": true,
+    "context": "逐列读法：功能块说明 cell 内的三个阶段；关键行是源代码位置；输入 → 输出说明形状与用途。\n\n源代码复用了变量名 `ses`、`ses_fit` 和 `rmse_ses`，但模型已是 Holt。变量名会误导后续读者；判断模型必须看 `trend='add'`。\n\n源保存 RMSE 为 473.2970；本轮为 473.2966。它只比 SES 低约 4.33，六个预测约从 4126.69 缓慢升至 4211.08，仍未重现季度高低。\n\n**所以呢**：增加一个与主要规律无关的状态，只会带来有限收益；错误机制仍在季节维度。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 850,
+    "detail": "缩写“RMSE”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "逐列读法：功能块说明 cell 内的三个阶段；关键行是源代码位置；输入 → 输出说明形状与用途。\n\n源代码复用了变量名 `ses`、`ses_fit` 和 `rmse_ses`，但模型已是 Holt。变量名会误导后续读者；判断模型必须看 `trend='add'`。\n\n源保存 RMSE 为 473.2970；本轮为 473.2966。它只比 SES 低约 4.33，六个预测约从 4126.69 缓慢升至 4211.08，仍未重现季度高低。\n\n**所以呢**：增加一个与主要规律无关的状态，只会带来有限收益；错误机制仍在季节维度。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 850,
+    "detail": "缩写“SES”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "逐列读法：功能块说明 cell 内的三个阶段；关键行是源代码位置；输入 → 输出说明形状与用途。\n\n源代码复用了变量名 `ses`、`ses_fit` 和 `rmse_ses`，但模型已是 Holt。变量名会误导后续读者；判断模型必须看 `trend='add'`。\n\n源保存 RMSE 为 473.2970；本轮为 473.2966。它只比 SES 低约 4.33，六个预测约从 4126.69 缓慢升至 4211.08，仍未重现季度高低。\n\n**所以呢**：增加一个与主要规律无关的状态，只会带来有限收益；错误机制仍在季节维度。\n"
+  },
+  {
+    "code": "R6b",
+    "line": 885,
+    "detail": "一句 9 个术语，核对是否需要拆解（35、15、46、33、40、14、37、36、18）：本轮预测约为 3584.97、4155.94、4633.91、4014.…",
+    "in_scope": true,
+    "context": "| RMSE | 六个季度逐点比较 | 一个 CVD 单位误差 |\n\n逐列读法：功能块对应源 cell 的阶段；状态变化说明内部对象如何变；输出给变量或评估量。\n\n本轮预测约为 3584.97、4155.94、4633.91、4014.37、3618.71、4189.68。它在 Q3 较低、Q4 回升、Q1 较高、Q2 回落，并在下一年重复季度位置。\n\n| 模型 | 源保存 RMSE | 本轮 RMSE | 本轮结构 |\n|---|---:|---:|---|"
+  },
+  {
+    "code": "R6d",
+    "line": 893,
+    "detail": "缩写“ETS”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "| SES | 477.6303 | 477.6303 | 水平 |\n| Holt | 473.2970 | 473.2966 | 水平 + 趋势 |\n| Holt-Winters | 246.5844 | 246.5843 | 水平 + 趋势 + $m=4$ 季节 |\n\n逐列读法：模型列给 ETS 变体；两列 RMSE 区分源保存与本轮；结构列说明状态集合。最后一行在这 6 季测试期内误差最低，但不证明它在所有未来年份都最好。\n\n**重要计算手核**：第一个测试季度真实值为 3669，Holt-Winters 预测约 3584.97，误差约 84.03。六个误差平方求平均再开根得到约 246.58，与 API 输出一致。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 893,
+    "detail": "缩写“RMSE”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "| SES | 477.6303 | 477.6303 | 水平 |\n| Holt | 473.2970 | 473.2966 | 水平 + 趋势 |\n| Holt-Winters | 246.5844 | 246.5843 | 水平 + 趋势 + $m=4$ 季节 |\n\n逐列读法：模型列给 ETS 变体；两列 RMSE 区分源保存与本轮；结构列说明状态集合。最后一行在这 6 季测试期内误差最低，但不证明它在所有未来年份都最好。\n\n**重要计算手核**：第一个测试季度真实值为 3669，Holt-Winters 预测约 3584.97，误差约 84.03。六个误差平方求平均再开根得到约 246.58，与 API 输出一致。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 899,
+    "detail": "缩写“CVD”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "**重要计算手核**：第一个测试季度真实值为 3669，Holt-Winters 预测约 3584.97，误差约 84.03。六个误差平方求平均再开根得到约 246.58，与 API 输出一致。\n\n**停止与失败机制**：需要至少多个完整季节来初始化和估计季节状态；缺期、错序或错误的 $m$ 会把不同季节位置混在一起。若季节幅度随水平成比例扩大，加法季节可能不合适，应另比较乘法结构；源 cell 没有做这项比较。\n\n**所以呢**：CVD 的改进来自把“第几季度”变成模型状态，而不只是增加参数数量。\n\n### 2.15 Cells 49–50：评分作业边界\n"
+  },
+  {
+    "code": "R6d",
+    "line": 928,
+    "detail": "缩写“RMSE”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "    I --> J[\"与同一测试期真实值配对\"]\n    J --> K[\"计算 RMSE 并解释失败模式\"]\n```\n\n**读图路径**：从上方序列开始，先锁住测试期；之后模型只能看训练期。菱形不是自动选模器，而是研究者根据频率、图形和验证协议提出的候选结构。所有候选预测同一 $h$ 步，再进入同一 RMSE。\n\n**具体例走图**：CVD 共 56 季，保留末 6 季后，前 50 季进入 `ETSModel`。Holt-Winters 用 $m=4$ 维护四个季度位置，从 1999 Q2 末端预测 1999 Q3 至 2000 Q4，再与 `[3669, 4664, 4884, 3847, 3714, 4189]` 配对，得到本轮 RMSE 246.58。\n"
+  },
+  {
+    "code": "R6b",
+    "line": 930,
+    "detail": "一句 4 个术语（19、20、RMSE、24）：Holt-Winters 用 $m=4$ 维护四个季度位置，从 1999…",
+    "in_scope": true,
+    "context": "```\n\n**读图路径**：从上方序列开始，先锁住测试期；之后模型只能看训练期。菱形不是自动选模器，而是研究者根据频率、图形和验证协议提出的候选结构。所有候选预测同一 $h$ 步，再进入同一 RMSE。\n\n**具体例走图**：CVD 共 56 季，保留末 6 季后，前 50 季进入 `ETSModel`。Holt-Winters 用 $m=4$ 维护四个季度位置，从 1999 Q2 末端预测 1999 Q3 至 2000 Q4，再与 `[3669, 4664, 4884, 3847, 3714, 4189]` 配对，得到本轮 RMSE 246.58。\n\n**图旁边界**：图没有表示滚动重拟合、交叉验证、乘法季节和参数选择。若用测试集反复挑结构，最后的 RMSE 会带有选择偏差。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 930,
+    "detail": "缩写“CVD”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "```\n\n**读图路径**：从上方序列开始，先锁住测试期；之后模型只能看训练期。菱形不是自动选模器，而是研究者根据频率、图形和验证协议提出的候选结构。所有候选预测同一 $h$ 步，再进入同一 RMSE。\n\n**具体例走图**：CVD 共 56 季，保留末 6 季后，前 50 季进入 `ETSModel`。Holt-Winters 用 $m=4$ 维护四个季度位置，从 1999 Q2 末端预测 1999 Q3 至 2000 Q4，再与 `[3669, 4664, 4884, 3847, 3714, 4189]` 配对，得到本轮 RMSE 246.58。\n\n**图旁边界**：图没有表示滚动重拟合、交叉验证、乘法季节和参数选择。若用测试集反复挑结构，最后的 RMSE 会带有选择偏差。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 951,
+    "detail": "缩写“RMSE”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "| SES | 5 | 132.5452 | 132.5447 | 约 475.48 平坦线 |\n| Holt | 5 | 90.6062 | 90.6063 | 线性上升 |\n| Holt-Winters，$m=4$ | 5 | 93.4528 | 93.0974 | 趋势上叠加演示性 4 点季节 |\n\n逐列读法：模型列给源代码结构；预测形状是输出元素数；两个 RMSE 列严格区分证据；主要行为说明预测线为什么是平或斜。Holt 在本测试期最低，但与 Holt-Winters 的差距不大，且源频率冲突限制了季节解释。\n\n### 4.2 CVD 的季度比较\n"
+  },
+  {
+    "code": "R6d",
+    "line": 955,
+    "detail": "缩写“ETS”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "逐列读法：模型列给源代码结构；预测形状是输出元素数；两个 RMSE 列严格区分证据；主要行为说明预测线为什么是平或斜。Holt 在本测试期最低，但与 Holt-Winters 的差距不大，且源频率冲突限制了季节解释。\n\n### 4.2 CVD 的季度比较\n\n一行是一个 ETS 结构，测试期固定为 1999 Q3–2000 Q4。\n\n| 模型 | 测试季度数 | 源保存 RMSE | 本轮 RMSE | 遗漏／捕捉 |\n|---|---:|---:|---:|---|"
+  },
+  {
+    "code": "R6d",
+    "line": 963,
+    "detail": "缩写“RMSE”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "| SES | 6 | 477.6303 | 477.6303 | 漏趋势与季节 |\n| Holt | 6 | 473.2970 | 473.2966 | 捕捉弱趋势，漏季节 |\n| Holt-Winters，$m=4$ | 6 | 246.5844 | 246.5843 | 捕捉季度重复 |\n\n逐列读法：测试季度数是 RMSE 分母 $n$；两列数值分别来自源 notebook 和本轮；最后一列解释结构性误差。Holt-Winters 在本测试期 RMSE 比 Holt 低约 226.71。\n\n### 4.3 读实际复算图\n"
+  },
+  {
+    "code": "R6d",
+    "line": 969,
+    "detail": "缩写“CVD”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "### 4.3 读实际复算图\n\n![[figures/time-series/T08-forecast-comparison.svg]]\n\n上图横轴是观测索引或季度索引，纵轴分别是 sales 与 CVD deaths；虚线是训练／测试边界。蓝线是训练真实值，橙线是测试真实值，绿、红、紫分别是 SES、Holt、Holt-Winters。\n\n**读一个点**：CVD 横轴 52 对应 2000 Q1，真实值 4884；Holt-Winters 预测约 4633.91，而 SES 仍约 4068.26。季节模型虽仍低估，却明显更接近该季度高点。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 969,
+    "detail": "缩写“SES”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "### 4.3 读实际复算图\n\n![[figures/time-series/T08-forecast-comparison.svg]]\n\n上图横轴是观测索引或季度索引，纵轴分别是 sales 与 CVD deaths；虚线是训练／测试边界。蓝线是训练真实值，橙线是测试真实值，绿、红、紫分别是 SES、Holt、Holt-Winters。\n\n**读一个点**：CVD 横轴 52 对应 2000 Q1，真实值 4884；Holt-Winters 预测约 4633.91，而 SES 仍约 4068.26。季节模型虽仍低估，却明显更接近该季度高点。\n"
+  },
+  {
+    "code": "R6b",
+    "line": 971,
+    "detail": "一句 8 个术语，核对是否需要拆解（CVD、20、48、46、33、SES、40、26）：读一个点：CVD 横轴 52 对应 2000 Q1，真实值 4884；H…",
+    "in_scope": true,
+    "context": "![[figures/time-series/T08-forecast-comparison.svg]]\n\n上图横轴是观测索引或季度索引，纵轴分别是 sales 与 CVD deaths；虚线是训练／测试边界。蓝线是训练真实值，橙线是测试真实值，绿、红、紫分别是 SES、Holt、Holt-Winters。\n\n**读一个点**：CVD 横轴 52 对应 2000 Q1，真实值 4884；Holt-Winters 预测约 4633.91，而 SES 仍约 4068.26。季节模型虽仍低估，却明显更接近该季度高点。\n\n图由 `T08-generate-forecast-figure.py` 读取只读 `course_files_export/shampoo_sales.csv` 与 `CVD.csv` 复算生成，可编辑矢量源为 `T08-forecast-comparison.svg`。2026-10-20 已实际查看同源 1760 × 1280 PNG：标题、图例、边界线、轴标签与五条线均可辨；同源浏览器 SVG 已实际查看；原生 Obsidian 阅读视图未直接查看。\n"
+  },
+  {
+    "code": "R6b",
+    "line": 973,
+    "detail": "一句 7 个术语，核对是否需要拆解（20、26、10、17、12、PNG、SVG）：2026-10-20 已实际查看同源 1760 × 1280 PNG：标…",
+    "in_scope": true,
+    "context": "上图横轴是观测索引或季度索引，纵轴分别是 sales 与 CVD deaths；虚线是训练／测试边界。蓝线是训练真实值，橙线是测试真实值，绿、红、紫分别是 SES、Holt、Holt-Winters。\n\n**读一个点**：CVD 横轴 52 对应 2000 Q1，真实值 4884；Holt-Winters 预测约 4633.91，而 SES 仍约 4068.26。季节模型虽仍低估，却明显更接近该季度高点。\n\n图由 `T08-generate-forecast-figure.py` 读取只读 `course_files_export/shampoo_sales.csv` 与 `CVD.csv` 复算生成，可编辑矢量源为 `T08-forecast-comparison.svg`。2026-10-20 已实际查看同源 1760 × 1280 PNG：标题、图例、边界线、轴标签与五条线均可辨；同源浏览器 SVG 已实际查看；原生 Obsidian 阅读视图未直接查看。\n\n## 5. Cell ↔ 理论对应表\n"
+  },
+  {
+    "code": "R6d",
+    "line": 973,
+    "detail": "缩写“SVG”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "上图横轴是观测索引或季度索引，纵轴分别是 sales 与 CVD deaths；虚线是训练／测试边界。蓝线是训练真实值，橙线是测试真实值，绿、红、紫分别是 SES、Holt、Holt-Winters。\n\n**读一个点**：CVD 横轴 52 对应 2000 Q1，真实值 4884；Holt-Winters 预测约 4633.91，而 SES 仍约 4068.26。季节模型虽仍低估，却明显更接近该季度高点。\n\n图由 `T08-generate-forecast-figure.py` 读取只读 `course_files_export/shampoo_sales.csv` 与 `CVD.csv` 复算生成，可编辑矢量源为 `T08-forecast-comparison.svg`。2026-10-20 已实际查看同源 1760 × 1280 PNG：标题、图例、边界线、轴标签与五条线均可辨；同源浏览器 SVG 已实际查看；原生 Obsidian 阅读视图未直接查看。\n\n## 5. Cell ↔ 理论对应表\n"
+  },
+  {
+    "code": "R6d",
+    "line": 1031,
+    "detail": "缩写“RMSE”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "| 46 | Code | CVD Holt 全流程 | §2.13 |\n| 47 | Markdown | CVD Holt-Winters 说明 | §2.14 |\n| 48 | Code | CVD HW 全流程 | §2.14 |\n\n逐列读法：Cell 是 notebook 的零基编号；类型区分文字与可执行代码；源内容概括该 cell；实质覆盖给正文定位。第一行表示 Cell 0 的目标、数据角色和 RMSE 已在 §0 与 §2.1 展开。\n\nCells 49–50 不在上表：它们是评分任务及提交要求，边界见 §2.15。\n"
+  },
+  {
+    "code": "R6d",
+    "line": 1046,
+    "detail": "缩写“SMA”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "| SES | 水平 $\\ell_t$ | 平坦 | $\\alpha$ | 漏趋势、漏季节 |\n| Holt | 水平 + 趋势 | 线性外推 | $\\alpha,\\beta$ | 远期趋势失真 |\n| Holt-Winters | 水平 + 趋势 + 季节 | 趋势叠加周期 | $\\alpha,\\beta,\\gamma,m$ | 错频率、缺完整周期 |\n\n逐列读法：方法给模型家族；状态说明模型记住什么；预测形状描述源中的多步行为；关键参数是待估或待定对象；失败方式指出结构不匹配时怎样错。第一行表示源 SMA 只记住最后窗口均值，所以五步都一样。\n\n选择时按以下顺序提问：\n"
+  },
+  {
+    "code": "R6d",
+    "line": 1061,
+    "detail": "缩写“CVD”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "## 7. 自测与迁移\n\n### 7.1 读图自测\n\n**题目**：在 §3 流程图中，若先查看 CVD 测试期并据此决定 $m=4$，哪条边界被破坏？\n\n<details><summary>答案</summary>\n"
+  },
+  {
+    "code": "R6d",
+    "line": 1065,
+    "detail": "缩写“RMSE”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "**题目**：在 §3 流程图中，若先查看 CVD 测试期并据此决定 $m=4$，哪条边界被破坏？\n\n<details><summary>答案</summary>\n\n测试期参与了结构选择，破坏“只用训练期拟合／选择”的边界。季度频率本身来自 `quarter` 字段，可以预先确定 $m=4$；但不能因为测试线恰好呈现季度起伏才回头选择模型，再把同一测试 RMSE 当最终评估。\n\n</details>\n"
+  },
+  {
+    "code": "R6b",
+    "line": 1071,
+    "detail": "一句 4 个术语（15、39、40、37）：题目：训练末五个 shampoo 销量为 315.9、439.3、401…",
+    "in_scope": true,
+    "context": "</details>\n\n### 7.2 手算题\n\n**题目**：训练末五个 shampoo 销量为 315.9、439.3、401.3、437.4、575.5。按源实现，SMA(5) 对未来第 3 步的预测是多少？\n\n<details><summary>答案</summary>\n"
+  },
+  {
+    "code": "R6d",
+    "line": 1071,
+    "detail": "缩写“SMA”首用未识别到中文说明；人工核对",
+    "in_scope": true,
+    "context": "</details>\n\n### 7.2 手算题\n\n**题目**：训练末五个 shampoo 销量为 315.9、439.3、401.3、437.4、575.5。按源实现，SMA(5) 对未来第 3 步的预测是多少？\n\n<details><summary>答案</summary>\n"
+  },
+  {
+    "code": "R4f",
+    "line": 433,
+    "detail": "表头“API／对象”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+    "in_scope": true,
+    "context": "```\n\n下表一行对应 RMSE 计算或输出动作；误差单位是 sales。\n\n| 行 | API／对象 | 作用 |\n|---:|---|---|\n| 2–3 | `mean_squared_error(...)` | 配对五个预测与五个真实销量，求平方误差均值 |\n| 2 | `np.sqrt(...)` | 把 MSE 开根，回到销量单位 |"
+  },
+  {
+    "code": "R4f",
+    "line": 442,
+    "detail": "表头“窗口w”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+    "in_scope": true,
+    "context": "| 8–10 | `print(...)` | 按 5、10、15 的顺序输出 |\n\n源保存输出与本轮复算一致到显示精度：\n\n| 窗口 $w$ | 平坦预测 | 源保存 RMSE | 本轮 RMSE |\n|---:|---:|---:|---:|\n| 5 | 433.88 | 161.9135 | 161.9135 |\n| 10 | 397.79 | 191.1079 | 191.1079 |"
+  },
+  {
+    "code": "R4f",
+    "line": 442,
+    "detail": "表头“源保存RMSE”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+    "in_scope": true,
+    "context": "| 8–10 | `print(...)` | 按 5、10、15 的顺序输出 |\n\n源保存输出与本轮复算一致到显示精度：\n\n| 窗口 $w$ | 平坦预测 | 源保存 RMSE | 本轮 RMSE |\n|---:|---:|---:|---:|\n| 5 | 433.88 | 161.9135 | 161.9135 |\n| 10 | 397.79 | 191.1079 | 191.1079 |"
+  },
+  {
+    "code": "R4f",
+    "line": 442,
+    "detail": "表头“本轮RMSE”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+    "in_scope": true,
+    "context": "| 8–10 | `print(...)` | 按 5、10、15 的顺序输出 |\n\n源保存输出与本轮复算一致到显示精度：\n\n| 窗口 $w$ | 平坦预测 | 源保存 RMSE | 本轮 RMSE |\n|---:|---:|---:|---:|\n| 5 | 433.88 | 161.9135 | 161.9135 |\n| 10 | 397.79 | 191.1079 | 191.1079 |"
+  },
+  {
+    "code": "R4f",
+    "line": 486,
+    "detail": "表头“API”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+    "in_scope": true,
+    "context": "```\n\n下表一行对应 SES 的建模、拟合或预测步骤，输出形状按观测数计。\n\n| 行 | API | 输入 → 中间状态 → 输出 |\n|---:|---|---|\n| 1 | `ETSModel(endog)` | 31 个训练销量 → 无趋势、无季节的加法误差模型规格 |\n| 2 | `.fit()` | 规格 → 优化参数与初始状态 → 拟合结果对象 |"
+  },
+  {
+    "code": "R4f",
+    "line": 676,
+    "detail": "表头“Holt-Wintersm=4RMSE”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+    "in_scope": true,
+    "context": "```\n\n变量名不会改变值，却会覆盖 Cell 29 的 Holt RMSE。更清晰的名字应为 `rmse_hw`，但本文保留源代码并在解释中指出。\n\n| 证据 | Holt-Winters $m=4$ RMSE | 与 Holt 的关系 |\n|---|---:|---|\n| 原 notebook 保存输出 | 93.4528 | 高于 90.6062 |\n| 本轮 scratch 复算 | 93.0974 | 高于 90.6063 |"
+  },
+  {
+    "code": "R4f",
+    "line": 676,
+    "detail": "表头“与Holt的关系”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+    "in_scope": true,
+    "context": "```\n\n变量名不会改变值，却会覆盖 Cell 29 的 Holt RMSE。更清晰的名字应为 `rmse_hw`，但本文保留源代码并在解释中指出。\n\n| 证据 | Holt-Winters $m=4$ RMSE | 与 Holt 的关系 |\n|---|---:|---|\n| 原 notebook 保存输出 | 93.4528 | 高于 90.6062 |\n| 本轮 scratch 复算 | 93.0974 | 高于 90.6063 |"
+  },
+  {
+    "code": "R4f",
+    "line": 887,
+    "detail": "表头“源保存RMSE”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+    "in_scope": true,
+    "context": "逐列读法：功能块对应源 cell 的阶段；状态变化说明内部对象如何变；输出给变量或评估量。\n\n本轮预测约为 3584.97、4155.94、4633.91、4014.37、3618.71、4189.68。它在 Q3 较低、Q4 回升、Q1 较高、Q2 回落，并在下一年重复季度位置。\n\n| 模型 | 源保存 RMSE | 本轮 RMSE | 本轮结构 |\n|---|---:|---:|---|\n| SES | 477.6303 | 477.6303 | 水平 |\n| Holt | 473.2970 | 473.2966 | 水平 + 趋势 |"
+  },
+  {
+    "code": "R4f",
+    "line": 887,
+    "detail": "表头“本轮RMSE”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+    "in_scope": true,
+    "context": "逐列读法：功能块对应源 cell 的阶段；状态变化说明内部对象如何变；输出给变量或评估量。\n\n本轮预测约为 3584.97、4155.94、4633.91、4014.37、3618.71、4189.68。它在 Q3 较低、Q4 回升、Q1 较高、Q2 回落，并在下一年重复季度位置。\n\n| 模型 | 源保存 RMSE | 本轮 RMSE | 本轮结构 |\n|---|---:|---:|---|\n| SES | 477.6303 | 477.6303 | 水平 |\n| Holt | 473.2970 | 473.2966 | 水平 + 趋势 |"
+  },
+  {
+    "code": "R4f",
+    "line": 942,
+    "detail": "表头“源保存RMSE”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+    "in_scope": true,
+    "context": "### 4.1 Shampoo 的同一测试期比较\n\n一行是一个源模型，数字来自源保存输出或 2026-10-20 scratch 复算。\n\n| 模型 | 预测形状 | 源保存 RMSE | 本轮 RMSE | 主要行为 |\n|---|---:|---:|---:|---|\n| SMA(5) | 5 | 161.9135 | 161.9135 | 433.88 平坦线 |\n| SMA(10) | 5 | 191.1079 | 191.1079 | 397.79 平坦线 |"
+  },
+  {
+    "code": "R4f",
+    "line": 942,
+    "detail": "表头“本轮RMSE”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+    "in_scope": true,
+    "context": "### 4.1 Shampoo 的同一测试期比较\n\n一行是一个源模型，数字来自源保存输出或 2026-10-20 scratch 复算。\n\n| 模型 | 预测形状 | 源保存 RMSE | 本轮 RMSE | 主要行为 |\n|---|---:|---:|---:|---|\n| SMA(5) | 5 | 161.9135 | 161.9135 | 433.88 平坦线 |\n| SMA(10) | 5 | 191.1079 | 191.1079 | 397.79 平坦线 |"
+  },
+  {
+    "code": "R4f",
+    "line": 957,
+    "detail": "表头“源保存RMSE”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+    "in_scope": true,
+    "context": "### 4.2 CVD 的季度比较\n\n一行是一个 ETS 结构，测试期固定为 1999 Q3–2000 Q4。\n\n| 模型 | 测试季度数 | 源保存 RMSE | 本轮 RMSE | 遗漏／捕捉 |\n|---|---:|---:|---:|---|\n| SES | 6 | 477.6303 | 477.6303 | 漏趋势与季节 |\n| Holt | 6 | 473.2970 | 473.2966 | 捕捉弱趋势，漏季节 |"
+  },
+  {
+    "code": "R4f",
+    "line": 957,
+    "detail": "表头“本轮RMSE”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+    "in_scope": true,
+    "context": "### 4.2 CVD 的季度比较\n\n一行是一个 ETS 结构，测试期固定为 1999 Q3–2000 Q4。\n\n| 模型 | 测试季度数 | 源保存 RMSE | 本轮 RMSE | 遗漏／捕捉 |\n|---|---:|---:|---:|---|\n| SES | 6 | 477.6303 | 477.6303 | 漏趋势与季节 |\n| Holt | 6 | 473.2970 | 473.2966 | 捕捉弱趋势，漏季节 |"
+  }
+]

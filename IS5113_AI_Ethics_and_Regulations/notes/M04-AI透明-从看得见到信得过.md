@@ -3,14 +3,20 @@ course: IS5113
 module: 4
 week: 4
 date: 2026-09-22
-source: "Module 4 - AI Transparency.pdf（50 页）"
+source: "Module 4 - AI Transparency.pdf（旧版 50 页）＋course_files_export/canvas-20261020/Module 4 - AI Transparency.pdf（新版 79 页）"
 transcript: merged
 prerequisites: [M01, M03]
-new_concepts: [AI 透明, 可解释性, 数据透明, 模型透明, 决策可追溯性, 局限披露, 用户知情, 信任转移, U 形效应, 认知过载, 透明三维度, 信任信念, 充分条件与必要条件, AI 披露效应, 正当性感知, 算法厌恶, 透明悖论, 黑箱问题, 自适应透明, 受众定制披露, 反事实解释, 隐私审查量表, 透明度报告, 不确定性标记, 来源引用, 基础模型透明度指数, 卓越中心, 算法问责, 审计追踪, 透明审计, 可解释模型]
+new_concepts: [AI 透明, 可解释性, 原生可解释性, 事后解释, 数据透明, 模型透明, 决策可追溯性, 局限披露, 用户知情, 信任转移, U 形效应, 认知过载, 透明三维度, 信任信念, 充分条件与必要条件, AI 披露效应, 正当性感知, 算法厌恶, 透明悖论, 黑箱问题, 自适应透明, 受众定制披露, 反事实解释, 隐私审查量表, 透明度报告, 不确定性标记, 来源引用, 基础模型透明度指数, 卓越中心, 算法问责, 审计追踪, 透明审计, 可解释模型]
 tags: [ai-ethics, IS5113, 透明, 可解释性, 信任, XAI, 反事实解释, 模型卡, GDPR, AI Act, 案例]
 status: v1.0
 quality_spec: v1
-updated: 2026-10-02
+source_update_review: passed
+source_update_review_scope: changed
+source_update_review_date: 2026-10-20
+ge_review: passed
+ge_review_scope: G/E diagnostics and consequent changes
+ge_review_date: 2026-10-21
+updated: 2026-10-21
 mechanism_spec: v1
 mechanism_review: passed
 mechanism_review_mode: efficient-20261002
@@ -21,10 +27,16 @@ readability_review: pending
 
 # M04 · AI 透明：从"看得见"到"信得过"
 
-> **本轮候选状态**：readability v2 作者候选，集中教学语义与最终视觉验收 pending。材料 status/transcript 保留原值；下方旧机制/验收记录属于历史版本，不代表本候选已通过。
+### 阅读前：材料与版本边界
+
+> **当前局部核对状态**：2026-10-20 双源／页码增量及 2026-10-21 G/E 实修均已写回，记录分别见本篇 §9 的对应范围说明与 [[G-E诊断与实质修复回执-2026-10-21|G/E 回执]]。本次再核 9 条待核线索；下方整篇 pending 标记不因局部核对自动升级。材料 status/transcript 和本人学习状态保留原值。
+
+> **版本说明**：正文原有“讲义 p.X”均指旧版 50 页讲义，旧引用锚点保留。新版 79 页讲义在 p.29–52 正式加入 Amazon、COMPAS、Apple Card、Air Canada 与四案比较；这些案例此前已经由课堂转录进入正文。本轮不重复案例叙事，只把四案升级为“新版讲义＋转录”双源，并在 §8.1 给出新旧页码对照。
 
 > **本讲一句话**：FATP 的第二个字母 **T（Transparency）**。上一讲讲"公平"时已经用到"可解释 AI"和"模型卡"这两件工具，这一讲把"透明"整个拆开——它由哪六个构件组成、它和"信任"是什么关系（不是越透明越好，三篇 2023–2025 年的论文都说"有条件"）、为什么难做、新思路是什么，然后用十几个企业案例和一个"伦理 / 法律 / 商业"三面框架收束。
 > **原始材料**：`Module 4 - AI Transparency.pdf`（50 页，PowerPoint 导出；**大部分页面是"标题 + 三四条短句"的 AI 生成式版式，每页只有 30–60 个英文词**）｜ **转录**：`merged`（`M04-transcript.txt`，本地 Whisper，`00:00 → 02:11:34`，969 段，2026-09-23 合并）｜ **状态**：**v1.0**（按 [[笔记质量规范]] v1 写，strict 模式）
+
+#### 旧版课堂记录怎样读
 
 > ✅ **本笔记为 v1.0**（2026-09-22 讲义版 v0.9 → 2026-09-23 合并转录）。录音**完整**（开场白与下课语俱在，0 处空档），但**这份转录有三个必须先知道的特殊之处**：
 > 1. **教授基本没按讲义的案例章节讲**。`02:07:45` 他说 *"this is computing here, you can look at it later when you have time"*，把讲义 **p.25–43**（ChatGPT、Bard、医疗、金融、八家公司）整段留给学生自读，只在最后约 3.5 分钟泛讲"各大公司都在官网讲自己怎么做透明"。§2.5–§2.7 的 11 个 🎙️ 格因此是 **B（点名带过）3 个 + C（⏭️ 自读）8 个**，正文保留但降为参考。
@@ -494,7 +506,9 @@ p.6 是章节页，p.7–12 每页一个构件；六个词是后面所有案例�
 
 第一种强调模型结构；后两种可为模型补充解释。是否真正可懂，还要看模型规模和受众。
 
-第一种是"模型本身就透明"，后两种是"给黑箱外面装一个解释器"。
+**💡 两条解释路线（笔记补充）**：原生可解释性（intrinsic interpretability）利用模型自身可读的结构，例如沿一棵小决策树的条件走到叶子。事后解释（post-hoc explanation）在模型拟合后分析其行为，例如用置换重要性观察打乱一列输入后误差怎样改变。
+
+特征重要性和可视化也可用于本身较易解释的模型，不能把它们一律等同于“黑箱解释器”。树过大仍会难读，事后解释也不自动成为因果证明；先问受众要核查哪一次决定、能看到哪些依据。
 
 顺便把六个构件各自回答的问题先摆出来，后面五节逐个展开：可解释性问"为什么这样决定"。
 
@@ -1456,7 +1470,7 @@ p.16 正文还提出一条路径：若人认为所有相关信息都已披露，
 
 SEM需说明测量模型、系数与控制假设，正系数不证明有X就必有Y。
 
-NCA需拟合天花板/瓶颈、核显著性与测量/样本支持，不是看到空白就得逻辑定理。
+NCA 需拟合天花板/瓶颈，并核对显著性（statistical significance）。这里的“显著”是问：若真实数据没有这种约束，随机波动是否仍很容易产生同样强的结果；它不是说图上的空白“看起来很明显”。还要同时核测量与样本支持，不能看到空白就下逻辑定理。
 
 两者的统计证据不能由互补故事替代。
 
@@ -1833,7 +1847,9 @@ p.21 五个障碍，p.22 三条新思路，p.23 展开其中的反事实解释�
 
 黑箱问题（black box problem）要单独说清：一个深度神经网络的决定是几百万个参数共同作用的结果，没有任何一个参数"代表"一条人能读的规则。
 
-所以"打开箱子"（模型透明）并不自动得到"看懂"（可解释性）——这就是为什么 §2.2.1 的解释技术都是事后给黑箱加解释器。
+公开模型结构（模型透明）并不自动让人看懂决定（可解释性）。§2.2.1 的小决策树采用原生可解释路线；在模型拟合后做特征重要性分析，则属于事后解释路线。两者可配合使用，不应把全部解释技术说成“事后给黑箱加解释器”。
+
+**💡 条件改变后（笔记补充）**：一棵只有两次判断的小树，可以直接核对分支与叶预测；若换成数千个分支，结构虽公开，用户仍难理解个案路径。换回小树提高了可读性，却没有证明训练数据公平或规则未来稳定。
 
 **五条挑战分别对应六构件里的不同项**
 
@@ -2733,6 +2749,8 @@ p.31 是公司层——定期、格式固定、面向公众的报告，内容不
 
 #### 2.5.4 🎙️ 案例一：Amazon 招聘 AI 筛选系统（讲义无对应页）
 
+**双源状态**：新版讲义现已把本案列为正式案例，补出“透明用于发现训练数据中的历史偏见”和“developer transparency”的总结；课堂转录仍提供较长的经过与教师分析。两源一致处可互证，细节差异继续分别标注。
+
 **先定位这个案例**：历史模式使女性候选人不利。以下是依据本节已保存材料整理的案例卡，不能代替原话和经过。
 
 | 字段 | 内容 |
@@ -2862,6 +2880,8 @@ Amazon 案是数据透明出问题。
 ---
 
 #### 2.5.5 🎙️ 案例二：COMPAS 再犯风险评分（讲义无对应页）
+
+**双源状态**：新版讲义把本案定位为 accountability，并区分 developer、user、subject 三层透明；课堂转录补出正当程序与可挑战性。新版 p.42 的跨案结论属于讲义总结，不改写成教授逐字原话。
 
 **先定位这个案例**：高风险评分能否在个案中解释与挑战。以下是依据本节已保存材料整理的案例卡，不能代替原话和经过。
 
@@ -3174,15 +3194,19 @@ M03 §2.11 的代理变量问题（邮编 = 种族），要靠特征层面的可
 
 #### 2.6.3 🎙️ 案例三：Apple Card 信用额度（讲义无对应页）
 
+**2026-10-21 页码核正**：标题中的“无对应页”保留旧 50 页版的既有锚点含义；新 79 页版的 Apple Card 在物理 p.43–44，p.45 实际重复 COMPAS 跨案 takeaway，不把该页算成 Apple Card 新事实。
+
+**双源状态**：新版讲义明确给出 2019、David Heinemeier Hansson、Goldman Sachs 与四个用户问题；课堂转录的人名读音曾标 `[?]`。正文采用讲义书面拼写，并保留“课堂口述细节曾不确定”的来源记录。
+
 **先定位这个案例**：不同额度缺少用户可理解的理由。以下是依据本节已保存材料整理的案例卡，不能代替原话和经过。
 
 | 字段 | 内容 |
 | --- | --- |
-| 时间与地点 | 2019（课堂叙述） |
+| 时间与地点 | 2019（新版讲义 p.43；课堂叙述方向一致） |
 | 当事方 | 用户、Apple、Goldman Sachs |
 | 发生了什么 | 见下方原材料经过 |
 | 争议点 | 不同额度缺少用户可理解的理由 |
-| 结果 | 课堂谈媒体与声誉；未据原数据认证公平 |
+| 结果 | 2021 NYDFS 未发现故意歧视或差别影响违法证据，但确认客服与透明不足 |
 | 本讲用来说明 | 个体解释与申诉 |
 
 卡片左列是定位问题；右列来自本节课堂引用。未知和版本冲突继续保留，下文叙事不因此变成独立核验事实。
@@ -3230,6 +3254,33 @@ Apple 的信用审批由高盛（Goldman Sachs）代为做风控、用 AI 系统
 
 challenge / question / appeal 这三个动词，正是 §2.2.6 用户知情与 §2.4.3 反事实解释存在的理由。
 
+<details><summary>English original page · 新版 p.44（四个用户问题，原文完整）</summary>
+
+**Affected individuals asked:**
+
+- Why was my credit limit lower?
+- Which variables influenced the decision?
+- Was gender a factor?
+- How can I challenge the outcome?
+
+</details>
+
+**中文题意与逐问解析**：
+
+1. **为什么我的额度更低？** 这要求针对个人给出主要决定因素，而不是只报总体准确率。材料只能确认当时用户没有得到够用的解释，不能据此反推出唯一原因。
+2. **哪些变量影响了决定？** 企业应说明本次决定实际使用的主要变量、方向和可核证据。仅列“收入、负债、信用记录”这一类通用字段，仍不足以解释哪个因素改变了该用户的额度。
+3. **性别是否是因素？** 这要求区分直接使用性别、使用代理变量和结果差异。监管报告未发现故意性别歧视或差别影响违法证据，但该结论不等于证明所有历史偏差都不存在。
+4. **怎样挑战结果？** 用户需要申诉入口、人工复核、补充或更正数据的机会，以及复核后的理由。只有一句“系统算的”不能支持有效申诉。
+
+**English reference answers (note-authored, not official):**
+
+1. *The available materials do not establish one unique reason for the lower limit. The issuer should provide the main case-specific factors and explain how they affected the decision.*
+2. *The issuer should identify the variables that materially affected this application, their direction of influence, and the evidence used, rather than provide only a generic list of possible inputs.*
+3. *The regulatory review did not find evidence of intentional sex discrimination or disparate-impact violations, but that finding does not prove that every possible proxy or historical bias was absent.*
+4. *A meaningful challenge process should provide human review, a way to correct or add data, a timely reconsideration, and an explanation of the reviewed outcome.*
+
+**来源地位**：英文四问来自新版讲义 p.44；中文解析和英文答案为笔记自拟。旧版 50 页讲义没有这组 Apple Card 页面，不能把新版题面倒写成旧版内容。
+
 **🎙️ 课堂补充**（`01:32:43`–`01:39:59`，约 7.3 分钟，A · 课上展开）
 
 - 背景与发现过程：
@@ -3251,7 +3302,7 @@ challenge / question / appeal 这三个动词，正是 §2.2.6 用户知情与 �
 > *"Without transparency there can be no governance[,] because all the other principles do not exist[,] or it enables all the other principles."*（`01:39:51`–`01:39:57`）
 
 这句直接呼应 §2.1.2 对"透明是问责前提"的定义，是本段分量最重的一句。
-- 这段改变了什么：讲义 p.34–43 完全没有 Apple Card 这个案例。
+- 这段改变了什么：旧版 50 页讲义的 p.34–43 没有 Apple Card；新版 79 页讲义已在物理 p.43–44 增补案例与四个用户问题。课堂转录仍补充了个体申诉、治理与声誉影响。
 
   本节把"可解释性"从抽象构件变成一个具体反例——统计上准确不等于个人可接受，补上了 §2.2.1 可解释性小节里缺的真实场景。
 
@@ -3262,6 +3313,8 @@ challenge / question / appeal 这三个动词，正是 §2.2.6 用户知情与 �
   哪怕系统真的没有偏心，"不肯说为什么"这件事本身就会被当成心虚的证据。
 
 在本课转录的叙述中，Apple Card 被用来说明解释不足会引发公平争议；材料没有完成对模型公平性的独立认证，不能把本案写成已核定的公平或不公平结论。
+
+**🔗 监管一手核对（纽约州，获取 2026-10-20）**：NYDFS 2021 报告分析接近 400,000 名纽约申请人的承保数据，未发现故意性别歧视或差别影响公平信贷违法的证据；这不等于证明信用评分体系不存在任何历史偏差。报告同时认定客服与透明存在缺陷：Goldman Sachs 能向监管者解释投诉人的决定因素，但投诉人本人得到的信息不足，六个月后才能申诉额度的流程加剧了困惑。监管结论因此支持“未证违法歧视＋个人透明/申诉不足”这一双重口径。[NYSDFS Report on Apple Card Investigation, March 2021](https://www.dfs.ny.gov/reports_and_publications/202103_report_apple_card_investigation)
 - 换个角度看，这个案例其实是在提醒我们区分两件不同的事：一件是"决定本身对不对"（模型的统计表现）。
 
   另一件是"决定能不能被讲清楚"（对个人的可解释性）。
@@ -3297,15 +3350,17 @@ Apple Card案例连接以下概念：
 
 #### 2.6.4 🎙️ 案例四：Air Canada 聊天机器人（讲义无对应页）
 
+**双源状态**：新版讲义明确写 Jake Moffatt、2024 与“90 天内申请”的 chatbot 说法，并把透明问题拆为来源、置信度、AI 披露、解释、升级和审计。课堂转录此前的人名、年份和 “19 days” 为 ASR/口述冲突；官方裁决现可校正为事件发生于 2022 年、裁决发布于 2024 年、chatbot 写 90 天。
+
 **先定位这个案例**：机器人给错优惠申请时点。以下是依据本节已保存材料整理的案例卡，不能代替原话和经过。
 
 | 字段 | 内容 |
 | --- | --- |
-| 时间与地点 | 加拿大；2023/2024/2014 的课堂版本冲突 `[?]` |
-| 当事方 | 公司、乘客 Mofat/Moffat `[?]` |
+| 时间与地点 | 加拿大；事件 2022-11，裁决 2024-02-14 |
+| 当事方 | Air Canada、乘客 Jake Moffatt（新版讲义 p.46） |
 | 发生了什么 | 见下方原材料经过 |
 | 争议点 | 机器人给错优惠申请时点 |
-| 结果 | 转录称 tribunal 判公司负责并赔偿；机构/金额未给 |
+| 结果 | British Columbia Civil Resolution Tribunal：总计 C\$812.02 |
 | 本讲用来说明 | 来源、权威性与组织问责 |
 
 卡片左列是定位问题；右列来自本节课堂引用。未知和版本冲突继续保留，下文叙事不因此变成独立核验事实。
@@ -3315,13 +3370,13 @@ Apple Card案例连接以下概念：
 
 想象你在一家航空公司官网上问客服机器人"能不能因为家人过世申请特殊票价"。
 
-机器人回答"可以，先买普通票，19 天内申请就行"——结果你照做了，公司却说这不是真政策，拒绝退款。
+机器人回答“可以，先买普通票，90 天内申请”——结果用户照做了，公司却说真实政策不允许出行后追溯申请，拒绝退款。
 
-这是加拿大航空（Air Canada）真实发生的事（转录时间线交代较跳跃，具体年份标 `[?]`，教授先后提到 "2024" 与 "2023, ChatGPT4 came out"）。
+事件发生在 2022 年 11 月；British Columbia Civil Resolution Tribunal 于 2024-02-14 发布书面裁决。课堂的 2023/2024/2014 冲突保留为口述/ASR 记录，不再作为事实年份。
 
-当事人转录称为 "Mofat" 或 "Moffat"（读音不确定，标 `[?]`），他询问的是 "bereavement travel discount"（丧亲票价优惠）（`01:40:37`–`01:40:58`）。
+书面裁决当事人为 Jake Moffatt；课堂的 “Mofat/Moffat” 只保留为 ASR 读音记录。他询问的是 bereavement travel discount（丧亲票价优惠）（`01:40:37`–`01:40:58`）。
 
-聊天机器人告诉他可以先买普通票、19 天内申请折扣（`01:41:12`–`01:41:18`），但实际政策要求优惠必须在出行前申请，不能事后追溯（`01:41:37`–`01:42:02`）。
+聊天机器人书面内容写可在出票后 90 天内申请；课堂 `01:41:12`–`01:41:18` 的 “19 days” 是 ASR 错误。实际网页政策不允许出行完成后再追溯申请（裁决 ¶15–17）。
 
 他照聊天机器人说的买了票，事后申请被拒，于是起诉。
 
@@ -3329,7 +3384,7 @@ Apple Card案例连接以下概念：
 
 > *"there's a tribunal in Canada agreed that Air Canada was responsible for information provided by this AI system… [and] has to pay the damage to the user."*（`01:44:37`–`01:44:55`）
 
-加拿大的一个仲裁庭（转录原词 tribunal，具体机构名与赔偿金额转录未给，不编造）判定 Air Canada 要为自己聊天机器人给出的信息负责并赔偿。
+British Columbia Civil Resolution Tribunal 在 *Moffatt v. Air Canada*, 2024 BCCRT 149 中认定 negligent misrepresentation。裁决认为 chatbot 是 Air Canada 网站的一部分，公司须为网站信息负责；最终命令支付 C\$650.88 损害赔偿、C\$36.14 判前利息和 C\$125 CRT 费用，合计 C\$812.02。[CanLII 裁决全文（来源：Civil Resolution Tribunal of British Columbia）](https://www.canlii.org/en/bc/bccrt/doc/2024/2024bccrt149/2024bccrt149.html)
 
 它暴露的是六构件里生成式 AI 特有的一层。
 
@@ -3351,7 +3406,7 @@ Apple Card案例连接以下概念：
 
 - 案情：*"Mofat asked… the chatbot… about bereavement travel discount"*（`01:40:37`）；机器人给错信息、公司拒赔、上仲裁庭：
 
-> *"the chatbot told him that he could purchase a regular ticket and later apply for [the] discount [w]ithin 19 days… Air Canada denied the request because… [the] actual policy requires this special fare, the [bereavement] fare[,]… [to] be arranged before travel, not after."*（`01:41:12`–`01:42:02`；ASR 原文把 "bereavement fare" 听成 "the Richmond fare"，已按上下文校正，见词典追加）
+> *"the chatbot told him that he could purchase a regular ticket and later apply for [the] discount [w]ithin 19 days… Air Canada denied the request because… [the] actual policy requires this special fare, the [bereavement] fare[,]… [to] be arranged before travel, not after."*（`01:41:12`–`01:42:02`；课堂原话保留；书面裁决确认应为 90 days，ASR 还把 "bereavement fare" 听成 "the Richmond fare"）
 - 判决：
 
 > *"a tribunal in Canada agreed that Air Canada was responsible for information provided by this AI system… has to pay the damage to the user."*（`01:44:37`–`01:44:55`）
@@ -3414,7 +3469,7 @@ Apple Card案例连接以下概念：
 6. 审计：保存回答、政策及版本记录。
 
 用户会依据回答作真实决定。任一环节缺失都可能留下不同风险，不能用一句流畅回答代替六项控制。
-- 换个角度看这场官司的意义：它把"聊天机器人说的话算不算公司的正式承诺"这个原本模糊的问题定了性——**加拿大的仲裁结果说，算**。
+- 换个角度看这场纠纷：裁决不是宣布所有 chatbot 文字都自动成为合同承诺，而是在本案事实下认定 negligent misrepresentation，并拒绝公司把 chatbot 当作独立法律实体。
 
 这意味着以后任何公司在官网挂一个客服机器人，都要把它当成会说话的员工来管理。
 
@@ -3450,6 +3505,37 @@ Apple Card案例连接以下概念：
 ---
 
 #### 2.6.5 🎙️ 四个案例的对比与 AI 透明的十年演进（讲义无对应页）
+
+**双源状态**：新版 p.49–51 现已正式呈现四案的 domain、failure、governance issue、stakeholder question、transparency dimension 和四代演进；课堂 `02:03:36` 明确说这是总结。这里保留原课堂表述，同时把页码加入映射，不另复制一张同内容表。
+
+<details><summary>English original pages · 新版 p.50–51（两组案例问题标签）</summary>
+
+**p.50 Stakeholder Question**
+
+- Amazon Recruiting: “Is the model fair?”
+- COMPAS: “Can I challenge the decision?”
+- Apple Card: “Why did I receive this result?”
+- Air Canada Chatbot: “Can I trust this information?”
+
+**p.51 Core Question**
+
+- Amazon: “Was the system trained fairly?”
+- COMPAS: “How was this decision made?”
+- Apple Card: “Why did this happen to me?”
+- Air Canada: “Why should I trust this answer?”
+
+</details>
+
+**中文题意**：p.50 从当事人要解决的问题命名四案；p.51 再把同一问题压成训练公平、决策过程、个体结果与内容可信四个透明焦点。两页是比较表，不是八个互不相干的新案例。
+
+**English reference answers (note-authored, not official):**
+
+1. *For Amazon, fairness requires examining the training data, gender-related indicators, and outcome differences across applicant groups; a high overall score does not answer the group question.*
+2. *For COMPAS, a meaningful challenge requires access to the factors, procedure, and a human or legal review path; a proprietary score alone is insufficient.*
+3. *For Apple Card, the issuer should provide case-specific factors, their direction, and a timely reconsideration route so the individual can understand and challenge the limit.*
+4. *For Air Canada, trust requires an authoritative source, current policy version, uncertainty signal, escalation route, and an auditable record of the answer.*
+
+这些四句同时回答 p.50 与 p.51 的同案问法。英文问题来自新版讲义；答案为笔记自拟。旧版 50 页讲义没有这两张四案比较表。
 
 **是什么**
 
@@ -5052,6 +5138,8 @@ clearly stating what the AI system can and cannot do；accuracy thresholds, doma
 | 窄 AI | Narrow AI | 见说明 1 | §2.1.1 |
 | AI 透明 | AI transparency | 见说明 2 | §2.1.2 |
 | 可解释性 | Explainability | 见说明 3 | §2.2.1 |
+| 原生可解释性 | Intrinsic interpretability | Understanding through the model’s own readable structure.（笔记补充） | §2.2.1 |
+| 事后解释 | Post-hoc explanation | Analysing a fitted model to explain aspects of its behaviour.（笔记补充） | §2.2.1 |
 | 决策树 | Decision tree | 见说明 4 | §2.2.1 |
 | 数据透明 | Data transparency | 见说明 5 | §2.2.2 |
 | 模型透明 | Model transparency | 见说明 6 | §2.2.3 |
@@ -5636,7 +5724,7 @@ ChatGPT：只说"diverse datasets"，来源不公开；撞上数据问题（网�
 
 ## 8. 讲义页码映射
 
-> 「课堂覆盖」列已按 `M04-transcript.txt` 逐页填写（`00:00 → 02:11:34`，969 段）。**表末 4 行「（讲义无对应页）」是课上讲、讲义没有的四个案例与对比**。非内容页的标注理由见 §1.3。
+> 本节主表保留旧版 50 页讲义的历史页码与课堂覆盖，避免破坏现有引用锚点。2026-10-20 新版已把四个案例与对比正式加入 p.29–52；旧表中的“讲义无对应页”只描述旧版状态。新旧完整对照见 §8.1。
 
 | 笔记小节 | 讲义页 | 内容 | 课堂覆盖 |
 |---|---|---|---|
@@ -5732,12 +5820,44 @@ ChatGPT：只说"diverse datasets"，来源不公开；撞上数据问题（网�
 | 生成式 AI 透明悖论 + 奇点题外话 | `02:04:24`–`02:07:41` | ~3.3 min | 2.5% |
 | 八家公司做法泛讲（仅 3 家点名） | `02:07:53`–`02:11:34` | ~3.7 min | 2.8% |
 
+### 8.1 新版 79 页讲义与旧版 50 页对照
+
+新版前 24 页与旧版 p.1–24 的教学主线一致；新版插入 28 页 recap/四案材料后，旧版应用与企业实践整体后移。下面的“对应”表示内容位置，不表示页面像素完全相同。
+
+| 新版页 | 对应旧版/新增内容 | 正文去向 | 双源状态 |
+|---|---|---|---|
+| p.1–24 | 旧版 p.1–24 | §2.1–§2.4 | 旧页码继续作为正文主锚点 |
+| p.25–28 | 新增 recap：透明重要性、构件与挑战 | §2.1–§2.4 的复习入口 | 讲义新增；不另建重复正文 |
+| p.29–35 | 新增 Amazon recruiting case | §2.5.4 | 新版讲义＋课堂转录 |
+| p.36–42 | 新增 COMPAS case、三层透明及跨案 takeaway | §2.5.5 | 新版讲义＋课堂转录 |
+| p.43–44 | 新增 Apple Card case | §2.6.3 | 新版讲义＋课堂转录；姓名由讲义书面拼写校正 |
+| p.45 | 重复 COMPAS 跨案 takeaway | §2.5.5、§9.3 | 已按原页实际显示核对；编排原因未知 |
+| p.46–48 | 新增 Air Canada 背景、透明问题与六项改进 | §2.6.4 | 新版讲义＋课堂转录 |
+| p.49–50 | 新增四案对比：领域、失败、治理、stakeholder question、dimension | §2.6.5 | 新版讲义＋课堂转录总结 |
+| p.51 | 新增四代透明演进表 | §2.6.5 | 新版讲义＋课堂转录总结 |
+| p.52 | 新增 Air Canada 结论页 | §2.6.4 | 新版讲义＋课堂转录 |
+| p.53 | 对应旧版 p.24 应用案例章节页 | §2.5 | 章节过渡 |
+| p.54–58 | 对应旧版 p.25–29：ChatGPT 与 privacy vetting | §2.5.1–§2.5.2 | 旧版内容后移 29 页 |
+| p.59–60 | 对应旧版 p.30–31：Bard/Google transparency report | §2.5.3 | 旧版内容后移 29 页 |
+| p.61–62 | 对应旧版 p.32–33：healthcare/financial services | §2.6.1–§2.6.2 | 旧版内容后移 29 页 |
+| p.63–72 | 对应旧版 p.34–43：八家公司实践 | §2.7.1–§2.7.6 | 旧版内容后移 29 页 |
+| p.73–76 | 对应旧版 p.44–47：伦理、法律、商业含义 | §2.8 | 旧版内容后移 29 页 |
+| p.77–79 | 对应旧版 p.48–50：挑战与方案 | §2.9 | 旧版内容后移 29 页 |
+
+逐列读法：第一列是新版正式页码；第二列说明与旧版关系；第三列给正文位置；第四列限定材料地位。四案现在确有讲义来源，但课堂时间戳仍来自独立转录，不能把新讲义文字冒充教授原话。
+
+**新版覆盖统计**：79/79 页均可通过上述对照进入正文。新增实质页 p.25–52 已在 §2.5.4–§2.6.5 或既有概念单元中解释；p.29–52 的四案不再标作“讲义无对应页”。旧版映射、课堂覆盖和所有旧页码引用保留，方便对回历史原件。
+
+**仍待集中视觉核**：新版 p.29–52 的版面和两张比较表需要在最终载体实际查看；本候选只依据已抽取全文与现成 p.25/p.26 图证据确认新增块存在，未声称 Obsidian 视觉通过。
+
 
 ---
 
 ## 9. 延伸与勘误
 
 ### 9.1 课件有但课上略过
+
+以下表格的页码继续指旧版 50 页讲义。新版中同一批 ChatGPT、Bard、行业实践和法规页整体后移到 p.54–79；课堂略过判定仍针对这些内容。新版 p.29–52 的四案属于课堂已讲内容，不能套用本表的“略过”。
 
 | 讲义页 | 内容 | 判定与依据 | 建议 |
 |---|---|---|---|
@@ -5762,6 +5882,8 @@ ChatGPT：只说"diverse datasets"，来源不公开；撞上数据问题（网�
 
 ### 9.2 课上讲了但课件没有
 
+**版本更新**：本标题描述 2026-09-23 合并旧版 50 页讲义时的差集。2026-10-20 新版 79 页讲义已把 Amazon、COMPAS、Apple Card、Air Canada 与四案比较加入 p.29–52，因此这些项目现在是双源，不再属于“新版讲义没有”。教授版透明四维度、透明→人在环路→问责链和生成式 AI “关不掉的开关”等仍主要来自转录。
+
 v0.9 列的五个"合并时的重点"，逐条结果：**①** 教授对透明困境给了**长达约 9 分钟的个人版叙事**（`36:45`–`45:40`，用"电话问诊病人"的情境讲"自己披露伤信任、被发现伤更重"），见 §2.3.5；**②** **没有**给 GDPR / AI Act 的条款号，法律面只在四个案例里以"公司要为 AI 的输出负责"的形式出现（Air Canada 案 `01:44:37`–`01:44:55`），条文仍待 M09；**③** 三篇论文**一个具体数字都没给**（无样本量、无效应量、无阈值），只给结论句，且 `45:08` 明说不考这些细节；**④** **没有**点名本课考试形式——`42:58` 那处 "final / test" 是 ChatGPT 通过纽约州律师资格考的题外话，**不是本课期末考**；**⑤** 与小组项目的关系是**直接的行政信息**：`01:31:18` 宣布下周启动项目、最多 8 人、发邮件报成员与 coordinator（见 [[IS5113_AI_Ethics_and_Regulations/_meta/作业与DDL|作业与DDL]]）。
 
 下表按价值排序列出课上讲了、讲义没有的内容。
@@ -5780,12 +5902,16 @@ v0.9 列的五个"合并时的重点"，逐条结果：**①** 教授对透明�
 | 9 | 🎙️ **教授版透明定义 + 四维度 + 三层次框架** | ~6 min（另见 `01:27:09`、`01:28:25`） | `52:37`–`58:26` | §2.4.4 | 比讲义 p.5 的三层抽象定义更可操作，是后面两个案例分析时实际使用的分析工具 |
 | 10 | 🎙️ **透明→人在环路→问责→可挑战 的因果链** | ~4 min | `01:10:09`–`01:14:23` | §2.4.5 | 讲义 §2.2 只平行列出六构件，没讲清它们之间的依赖关系；这条因果链是讲义完全没有的论证 |
 | 11 | 🔴 **Air Canada 聊天机器人案：六项透明补救机制 + 加拿大仲裁判赔** | ~15.4 min | `01:40:45`–`01:56:09` | §2.6.4 | 讲义 §2.7.3 只给两个机制，这里给六个并逐一配话术模板；还有讲义完全没有的真实判例——不透明的法律责任具体化 |
-| 12 | 🔴 **Apple Card 信用额度案：模型公平但解释不足伤害声誉** | ~7.3 min | `01:32:43`–`01:39:59` | §2.6.3 | 讲义 p.34–43 没有这个案例；填上"可解释性面向个人用户"这一层的真实反例 |
+| 12 | 🔴 **Apple Card 信用额度案：未证违法歧视，但个人解释与申诉不足** | ~7.3 min | `01:32:43`–`01:39:59` | §2.6.3 | 课堂用于说明个体解释；2021 NYDFS 报告补出监管边界 |
 | 13 | 🔴 **四案对比表（Amazon→COMPAS→Apple Card→Air Canada）与十年演进** | ~8.2 min | `01:56:09`–`02:04:22` | §2.6.5 | 教授亲口说"这是总结"，把整个案例章节压缩成一张表，是备考案例分析题最直接的骨架 |
 | 14 | 生成式 AI 透明悖论 + "关不掉的开关"（奇点预告） | ~3.2 min | `02:04:24`–`02:07:33` | §2.9.3 | 讲义完全没有；明确预告后续课程会展开，是本讲留下的最大伏笔 |
 | 15 | 八家公司泛讲：仅 Adobe / Microsoft / Accenture 被点名，Salesforce / Intesa / Kredito / IBM 全部跳过 | ~3.7 min | `02:07:53`–`02:11:34` | §2.7.1–2.7.6 | 直接决定了 §2.7 六个格里哪些是 B、哪些是 C，是分片间最重要的一条"判定依据"证据 |
 
 ### 9.3 课件自身的问题
+
+- **新版结构变化**：新版 p.25–28 增加 recap，p.29–52 加入四案后，旧版 p.24–50 整体移到新版 p.53–79。若只看正文旧页码会误以为漏页，因此 §8.1 保留双版本映射。
+- **新版 p.45 的标题/内容编排**：2026-10-21 已实际查看原页渲染，确认该页再次出现 COMPAS 跨案 takeaway；Apple Card 实际在 p.43–44 展开。能确认重复内容，仍不能确定编排意图或是否误放，不静默改原件。
+- **四案事实来源**：新版提供书面姓名、年份和案例定位，但没有把全部现实裁判或监管细节附上原始来源。讲义来源足以说明“课程如何讲”，不足以证明当前法律事实。
 
 - **p.1 标题拼写错误**："TRANSPARANCY" 应为 "TRANSPARENCY"（PDF 元数据标题同样拼错）。考试作答写正确拼写。
 - **p.4–12、p.25、p.30、p.32–47 是同一种"标题 + 三四条短句"的生成式版式**，每页只有 30–60 个英文词，句式高度雷同（"X enhances trust / ensures compliance / builds trust"），大量内容是同义反复（几乎每页都以"建立信任"收尾）。**这些页的信息密度很低**，本笔记的解释绝大部分是 💡 笔记补充；读者不要把每条短句当作独立知识点背。
@@ -5798,6 +5924,11 @@ v0.9 列的五个"合并时的重点"，逐条结果：**①** 教授对透明�
 - p.13 那段综述式文字没有注明出处，读起来像 AI 生成的摘要（⚪ 推断）；其中"perceived fairness, privacy concerns, age and prior experience"等因素讲义后文没有再展开。
 
 ### 9.4 课外补充
+
+**2026-10-20 一手定向核对**：
+
+- [NYSDFS Report on Apple Card Investigation](https://www.dfs.ny.gov/reports_and_publications/202103_report_apple_card_investigation)：接近 400,000 名纽约申请人数据未支持故意歧视或差别影响违法，但监管确认客服、透明和申诉流程不足。
+- [*Moffatt v. Air Canada*, 2024 BCCRT 149](https://www.canlii.org/en/bc/bccrt/doc/2024/2024bccrt149/2024bccrt149.html)：British Columbia Civil Resolution Tribunal 的正式书面理由；事件发生于 2022 年，裁决日期 2024-02-14，总命令 C\$812.02。该裁决是本案法域和事实的结论，不自动适用于其他司法辖区或所有 chatbot 错误。
 
 - 🔗 **反事实解释的原始提出**：Wachter, Mittelstadt & Russell (2017), "Counterfactual Explanations without Opening the Black Box: Automated Decisions and the GDPR", *Harvard Journal of Law & Technology*——标题就说明了它与 GDPR 的关系，是 §2.4.3 与 §2.8.2 之间的桥（公开资料常识，2026-09-22）。
 - 🔗 **模型卡**：Mitchell et al. (2019), "Model Cards for Model Reporting"——M03 §2.13.3 已列，本讲 p.40 再现。
@@ -5827,10 +5958,10 @@ v0.9 列的五个"合并时的重点"，逐条结果：**①** 教授对透明�
 | 11 | ✅ **本段转录完整、无空档** | `01:32:32`–`02:11:34`，约 39 分钟，无时序倒退，无 ≥120 秒空档；两次课间休息均在 `01:31:10` 之前（属 shard_2），本段不含课间 |
 | 12 | ✅ **§2.7 六格全部落到 B / C，无 D** | 依据 `02:07:41`–`02:07:48`"you can look at it later when you have time… section of the example of current industrial practice"，以及随后 `02:07:53`–`02:11:34` 的逐句检索（Adobe/Microsoft/Accenture 被点名 = B，Salesforce/Intesa/Kredito/IBM 未点名 = C） |
 | 13 | ✅ **§2.8、§2.9 五格全部判 ⏭️（C），非 ❓** | 依据：录音连续到 `02:11:34` 自然下课（"next week... accountability"），教授全程在场，只是把时间用在了四个新案例与泛讲公司实践上，从未提及 p.45–50 关键词；这是"教授在场、翻页翻过去了"的证据，不是录音缺失 |
-| 14 | 〔?〕**"David Hanson"（Apple Card 案当事人姓名，`01:33:42`）** | 转录读音不确定；未核实其准确拼写，正文标 `[?]`，未补充转录之外的身份信息 |
-| 15 | 〔?〕**"Mofat" / "Moffat"（Air Canada 案当事人姓名，`01:40:37`）** | 转录读音不确定，前后不一致（Mofat / Moffat），正文标 `[?]` |
-| 16 | 〔?〕**Air Canada 案具体年份** | 转录给出两个互相矛盾的年份：`01:40:08` "2024, airline, 2023, ChatGPT4 came out"；`01:56:36` 又说 "Chatbot in 2014"。两处对不上，正文标 `[?]`，未擅自取舍、未按外部知识补充 |
-| 17 | 〔?〕**Air Canada 案判决机构名称与赔偿金额** | 转录只说 "a tribunal in Canada"（`01:44:37`），未给具体机构名或金额；按任务单要求不编造，正文与本回执均未补充 |
+| 14 | ✅ **Apple Card 当事人姓名的课程书面口径** | 新版讲义 p.43 写 David Heinemeier Hansson；课堂 `01:33:42` 的 “David Hanson” 保留为 ASR 读音记录，不再用于正文姓名 |
+| 15 | ✅ **Air Canada 当事人姓名的课程书面口径** | 新版讲义 p.46 写 Jake Moffatt；课堂 Mofat/Moffat 冲突保留为 ASR 记录 |
+| 16 | ✅ **Air Canada 年份** | CRT 裁决确认事件发生于 2022-11，裁决发布于 2024-02-14；课堂 2023/2024/2014 冲突保留为口述/ASR 记录 |
+| 17 | ✅ **Air Canada 判决机构与金额** | *Moffatt v. Air Canada*, 2024 BCCRT 149；British Columbia Civil Resolution Tribunal；C\$650.88 damages + C\$36.14 interest + C\$125 fees = C\$812.02 |
 | 18 | ✅ **本段新增的 ASR 错误样本（10 条，已同步进 asr-dictionary）** | 见 asr_rows：AI Canada→Air Canada、Richmond fare→bereavement fare、checkbox/check board(s)/tech board(s)→chatbot(s)、Chez GVD→ChatGPT、AdvoCard→Apple Card、entropic→Anthropic、expandability→explainability、IT photography firm→IT consulting/consultancy firm、David Hanson[?]、Mofat/Moffat[?] |
 
 ### 9.6 反方视角（对抗自检第 12 项）
@@ -5863,6 +5994,7 @@ v0.9 列的五个"合并时的重点"，逐条结果：**①** 教授对透明�
 | 2026-09-22 | **零基础试读回填**（§9.6.1）：33 / 33 及格；按试读补 6 处术语解释（transformer、OSCB、LaMDA、三大伦理理论一句唤醒、SEM / NCA 怎么检验、四个核心元素人话）；strict 重跑 PASS |
 | 2026-09-22 | 建稿 v0.9（课前预习版）：`Module 4 - AI Transparency.pdf` 50 页全覆盖（内容页 42，非内容页 8：封面 2 + 章节标题页 6），12 页低文本 / 纯图片页逐页视觉复核、10 页誊录（三篇论文首页与模型图、透明悖论漫画、1EdTech 审查三张截图、Google 透明度报告页、Adobe 九条承诺）；§2 共 33 个 leaf 小节、七格齐全；术语 41 条；考点 10 🟡 + 5 ⚪；转录 pending，🎙️ 格全部待回填 |
 | 2026-09-23 | **合并 W4 转录**（`M04-transcript.txt`，本地 Whisper，`00:00 → 02:11:34`，969 段，完整无缺口）→ **v1.0**：33 个原有 🎙️ 格全部回填（**A 16 / B 3 / C 13 / 存疑 1 · 无 ❓**，脚本 `count_states.py` 统计）；**新增 8 个 🎙️ 纯课堂小节**（§2.4.4 教授版透明定义与四维度、§2.4.5 透明是人在环路与问责的前提、§2.5.4 Amazon 招聘 AI 筛选系统案、§2.5.5 COMPAS 案、§2.6.3 Apple Card 案、§2.6.4 Air Canada 案、§2.6.5 四案对比与十年演进、§2.9.3 生成式 AI 的透明悖论与"关不掉的开关"）；§6 增 7 条 🔴（含 2 条反向降权）；§8 补全课堂覆盖列 + 4 行「讲义无对应页」+ 时间分配表；§9.1 / §9.2 / §9.5 重写；ASR 词典 +28 条 |
+| 2026-10-20 | 接入新版 79 页讲义：保留旧 50 页页码锚点；补 §8.1 全量新旧映射；Amazon/COMPAS/Apple Card/Air Canada 与四案比较改为新版讲义＋转录双源；用讲义书面拼写校正两处课堂 ASR 姓名，并保留现实案一手核验边界 |
 
 ---
 
@@ -5871,3 +6003,10 @@ v0.9 列的五个"合并时的重点"，逐条结果：**①** 教授对透明�
 - 上一讲 [[M03-偏见与公平]] ｜ 课程入口 [[IS5113_AI_Ethics_and_Regulations/00-课程总览|00-课程总览]]
 - [[IS5113_AI_Ethics_and_Regulations/_meta/知识层级台账|知识层级台账]] · [[IS5113_AI_Ethics_and_Regulations/_meta/术语表|术语表]] · [[IS5113_AI_Ethics_and_Regulations/_meta/考点库|考点库]] · [[IS5113_AI_Ethics_and_Regulations/_meta/作业与DDL|作业与DDL]]
 - 跨课：[[EF5560_Fintech_and_AI_in_Finance/notes/M04-非线性机器学习与收益预测|EF5560 M04]]（置换重要性作为解释工具）· [[M03-AI-agent-从harness到部署|IS5542 M03]]（agent 的评估与部署透明）
+
+
+### 9.12 2026-10-21 待核线索定向修订
+
+H02–H09 逐项核到子节；父标题导读句未命中理由词，不等于后续解释缺失。H04 实核另发现“全部解释技术都是事后解释”与 §2.2.1 的小树路线冲突，本次已在两处区分原生与事后解释，并给模型规模改变的边界。
+
+H10 保留旧 50／新 79 页的真实版本提示；另纠正顶部过期“候选 pending”告示，不冒称整篇已验。原题、课堂时钟及源版本不改。见 [[待核线索核实与修复回执-2026-10-21|23 条线索回执]]。

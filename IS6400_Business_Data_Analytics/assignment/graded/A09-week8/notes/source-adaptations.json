@@ -1,0 +1,42 @@
+[
+  {
+    "source_cell": 4,
+    "before": "# read csv file\nshampoo = pd.read_csv('shampoo_sales.csv')\nshampoo.head()",
+    "after": "# read csv file\nshampoo = pd.read_csv(DATA_DIR / 'shampoo_sales.csv')\nshampoo.head()"
+  },
+  {
+    "source_cell": 23,
+    "before": "ses = ETSModel(train['Sales']) #by default, it is SEM\nses_fit = ses.fit()\ny_predict = ses_fit.forecast(5)",
+    "after": "ses = ETSModel(train['Sales']) #by default, it is SEM\nses_fit = ses.fit(disp=False)\ny_predict = ses_fit.forecast(5)"
+  },
+  {
+    "source_cell": 27,
+    "before": "holt = ETSModel(train['Sales'], trend='add') #we use linear by adding addictive trend pattern\nholt_fit = holt.fit()\ny_predict = holt_fit.forecast(5)",
+    "after": "holt = ETSModel(train['Sales'], trend='add') #we use linear by adding addictive trend pattern\nholt_fit = holt.fit(disp=False)\ny_predict = holt_fit.forecast(5)"
+  },
+  {
+    "source_cell": 31,
+    "before": "holt = ETSModel(train['Sales'], trend='add',seasonal = 'add', seasonal_periods = 4) \nholt_fit = holt.fit()\ny_predict = holt_fit.forecast(5)",
+    "after": "holt = ETSModel(train['Sales'], trend='add',seasonal = 'add', seasonal_periods = 4) \nholt_fit = holt.fit(disp=False)\ny_predict = holt_fit.forecast(5)"
+  },
+  {
+    "source_cell": 35,
+    "before": "# import the data\ncvd = pd.read_csv('CVD.csv')\ncvd.head()",
+    "after": "# import the data\ncvd = pd.read_csv(DATA_DIR / 'CVD.csv')\ncvd.head()"
+  },
+  {
+    "source_cell": 42,
+    "before": "ses = ETSModel(cvd_train['cvd']) \nses_fit = ses.fit()\ny_predict = ses_fit.forecast(N_test)",
+    "after": "ses = ETSModel(cvd_train['cvd']) \nses_fit = ses.fit(disp=False)\ny_predict = ses_fit.forecast(N_test)"
+  },
+  {
+    "source_cell": 46,
+    "before": "ses = ETSModel(cvd_train['cvd'], trend='add') \nses_fit = ses.fit()\ny_predict = ses_fit.forecast(N_test)\n\nplt.figure(figsize = (20,8))\nplt.plot(cvd_train['cvd'],'.-',markersize=20, label = 'Train')\nplt.plot(cvd_test['cvd'],'.-',markersize=20, label = 'Test')\nplt.plot(y_predict,'.-',markersize=20, label = 'Holt Linear')\nplt.legend(loc = 'upper right')\nplt.show()\n\nrmse_ses = np.sqrt(metrics.mean_squared_error(y_pred=y_predict, y_true=cvd_test['cvd']))\nprint(rmse_ses)",
+    "after": "ses = ETSModel(cvd_train['cvd'], trend='add') \nses_fit = ses.fit(disp=False)\ny_predict = ses_fit.forecast(N_test)\n\nplt.figure(figsize = (20,8))\nplt.plot(cvd_train['cvd'],'.-',markersize=20, label = 'Train')\nplt.plot(cvd_test['cvd'],'.-',markersize=20, label = 'Test')\nplt.plot(y_predict,'.-',markersize=20, label = 'Holt Linear')\nplt.legend(loc = 'upper right')\nplt.show()\n\nrmse_ses = np.sqrt(metrics.mean_squared_error(y_pred=y_predict, y_true=cvd_test['cvd']))\nprint(rmse_ses)"
+  },
+  {
+    "source_cell": 48,
+    "before": "hw = ETSModel(cvd_train['cvd'], trend='add', seasonal = 'add', seasonal_periods = 4)\nhw_fit = hw.fit()\ny_predict = hw_fit.forecast(N_test)\n\nplt.figure(figsize = (20,8))\nplt.plot(cvd_train['cvd'],'.-',markersize=20, label = 'Train')\nplt.plot(cvd_test['cvd'],'.-',markersize=20, label = 'Test')\nplt.plot(y_predict,'.-',markersize=20, label = 'Holt Winter')\nplt.legend(loc = 'upper right',fontsize=20)\nplt.show()\n\nrmse_hw = np.sqrt(metrics.mean_squared_error(y_pred=y_predict, y_true=cvd_test['cvd']))\nprint(rmse_hw)",
+    "after": "hw = ETSModel(cvd_train['cvd'], trend='add', seasonal = 'add', seasonal_periods = 4)\nhw_fit = hw.fit(disp=False)\ny_predict = hw_fit.forecast(N_test)\n\nplt.figure(figsize = (20,8))\nplt.plot(cvd_train['cvd'],'.-',markersize=20, label = 'Train')\nplt.plot(cvd_test['cvd'],'.-',markersize=20, label = 'Test')\nplt.plot(y_predict,'.-',markersize=20, label = 'Holt Winter')\nplt.legend(loc = 'upper right',fontsize=20)\nplt.show()\n\nrmse_hw = np.sqrt(metrics.mean_squared_error(y_pred=y_predict, y_true=cvd_test['cvd']))\nprint(rmse_hw)"
+  }
+]

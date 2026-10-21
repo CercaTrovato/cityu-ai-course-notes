@@ -51,7 +51,7 @@ def inherited_hard(issue, before, after, baseline):
     return False
 
 
-def quality_gate(candidate, note, source=None, scope='changed', pages=0):
+def quality_gate(candidate, note, source=None, scope='changed', pages=0, source_checks=None):
     candidate, note = Path(candidate), Path(note)
     after = candidate.read_text(encoding='utf-8')
     before = Path(source).read_text(encoding='utf-8') if source else ''
@@ -69,6 +69,8 @@ def quality_gate(candidate, note, source=None, scope='changed', pages=0):
     # scratch 中常叫 merged.md / candidate.md，不能因此把 T 笔记误当 M。
     if re.match(r'T\d', note.name):
         cmd.append('--tut')
+    if source_checks:
+        cmd.extend(['--source-checks', str(Path(source_checks).resolve())])
     proc = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8', errors='replace', cwd=HERE.parent.parent)
     output = (proc.stdout or '') + (proc.stderr or '')
     payloads = [line[5:] for line in output.splitlines() if line.startswith('JSON:')]
@@ -80,6 +82,12 @@ def quality_gate(candidate, note, source=None, scope='changed', pages=0):
             raise ValueError('缺少 L/R 检查结果')
         if data['legacy_problems']:
             errors.append('L 格式/覆盖检查有 %d 项，须定位处理，不能用 G/E PASS 覆盖' % len(data['legacy_problems']))
+        if data.get('profile') == 'current':
+            content = data.get('C')
+            if not isinstance(content, dict) or not isinstance(content.get('hard'), list):
+                raise ValueError('现行检查缺少可靠C结果')
+            if content['hard']:
+                errors.append('现行内容/计算/源题契约阻塞：%d项' % len(content['hard']))
         hard = data['R']['hard']
         if scope == 'changed' and source and not version(before) and not version(after):
             baseline = readability_checks(before, bool(re.match(r'T\d', note.name)), str(note))
@@ -138,12 +146,13 @@ def main():
     ap.add_argument('--source', help='本次修改前的原始副本；新笔记不传')
     ap.add_argument('--scope', choices=('full', 'changed'), required=True)
     ap.add_argument('--pages', type=int, default=0)
+    ap.add_argument('--source-checks', help='人工回源建立的原题清单；传给现行内容检查')
     ap.add_argument('--review', help='review.json，正式发布必需')
     ap.add_argument('--check-only', action='store_true', help='只做机械预检，不能用于宣布可发布')
     args = ap.parse_args()
     if args.scope == 'changed' and not args.source:
         ap.error('局部修改必须提供 --source')
-    ok, output = quality_gate(args.candidate, args.note, args.source, args.scope, args.pages)
+    ok, output = quality_gate(args.candidate, args.note, args.source, args.scope, args.pages, args.source_checks)
     print(output)
     if args.check_only:
         print('仅机械预检；尚未验教学记录，不构成发布授权。')

@@ -1,0 +1,52 @@
+{
+  "schema": "note-source-checks-v1",
+  "scope": "Only the two new public MCQs on physical p26-27; not all questions in M02.",
+  "sources": {
+    "canvas-20261020": {
+      "path": "../../EF5560_Fintech_and_AI_in_Finance/course_files_export/canvas-20261020/Lec02_Regression_Vibe_Coding.pdf",
+      "sha256": "95c1299e9011f35ccb2a20a18b858ddba9ad5db22862dc1cfc3b0b9c8705f676"
+    }
+  },
+  "questions": [
+    {
+      "id": "new-p26",
+      "source_id": "canvas-20261020",
+      "section": "2.4.6a",
+      "source_location": "physical p.26",
+      "original": "Multiple-Choice Question: Interpreting a Regression Slope\n\nA fitted regression is $\\hat r = 0.20 + 0.30m$, where both the return $r$ and momentum $m$ are measured in percentage points.\n\nIf momentum rises from 2 to 4, how much does the forecast return change?\n\nA) It rises by 0.30 percentage points.  \n\nB) It rises by 0.80 percentage points.  \n\nC) It rises by 1.40 percentage points.  \n\nD) It rises by 0.60 percentage points.  ",
+      "options": {
+        "A": "It rises by 0.30 percentage points.",
+        "B": "It rises by 0.80 percentage points.",
+        "C": "It rises by 1.40 percentage points.",
+        "D": "It rises by 0.60 percentage points."
+      },
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "问的是预测收益的变化量（change），不是变化前或变化后的水平。",
+          "english": "D. Momentum increases by 2 percentage points, so the forecast return rises by $0.30\\times2=0.60$ percentage points."
+        }
+      ]
+    },
+    {
+      "id": "new-p27",
+      "source_id": "canvas-20261020",
+      "section": "2.4.6a",
+      "source_location": "physical p.27",
+      "original": "Multiple-Choice Question: Statistical Precision and Model Fit\n\nA return regression has a slope of 0.40, a standard error of 0.10, and an in-sample $R^2$ of 0.03. The reported p-value is below 0.05.\n\nWhich interpretation is justified?\n\nA) The positive association is statistically significant, but the model explains only a small share of return variation.  \n\nB) The model must explain at least 40% of return variation.  \n\nC) The low $R^2$ means the slope cannot be statistically significant.  \n\nD) The significant slope establishes that the model will forecast future returns accurately.  ",
+      "options": {
+        "A": "The positive association is statistically significant, but the model explains only a small share of return variation.",
+        "B": "The model must explain at least 40% of return variation.",
+        "C": "The low $R^2$ means the slope cannot be statistically significant.",
+        "D": "The significant slope establishes that the model will forecast future returns accurately."
+      },
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "统计显著性（statistical significance）问斜率相对其估计不确定性是否明显；拟合优度（goodness of fit）问样本内解释了多少收益变动。",
+          "english": "A. The positive association is statistically significant at the reported level, while the in-sample $R^2$ of 0.03 indicates limited explanatory power."
+        }
+      ]
+    }
+  ]
+}

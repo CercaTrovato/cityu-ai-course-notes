@@ -1,0 +1,4477 @@
+{
+  "file": "E:\\app-data\\codex\\scratchpad\\ge-remediation-20261021\\finance\\M03-线性机器学习与收益预测.md",
+  "verdict": "FAIL",
+  "legacy_problems": [],
+  "legacy_info": {
+    "L1_未讲解页": [
+      1,
+      9,
+      28,
+      46,
+      52
+    ],
+    "L1_省略前缀连写": [],
+    "L5_围栏数": 16,
+    "L5_details": [
+      27,
+      27
+    ]
+  },
+  "G": {
+    "G1 密度 §2 字/内容页 ≥ 250": [
+      863,
+      true
+    ],
+    "G2a 粒度 术语数/leaf 小节 ≤ 1.6": [
+      0.79,
+      true
+    ],
+    "G2b 粒度 内容页/leaf 小节 ≤ 2.5": [
+      1.29,
+      true
+    ],
+    "G2c 承载术语的小节 ≥ 150 字": [
+      [],
+      true
+    ],
+    "G3a 小节首元素为段落": [
+      [],
+      true
+    ],
+    "G3b 公式有符号表（或符号已在前文解释）": [
+      [],
+      true
+    ],
+    "G3c 有公式的小节有数字例子": [
+      [],
+      true
+    ],
+    "G3d 代码三件套": [
+      [],
+      true
+    ],
+    "G6 ### 单元「所以呢」覆盖率 ≥ 0.80": [
+      [
+        1.0,
+        []
+      ],
+      true
+    ]
+  },
+  "E": [
+    [
+      "全篇",
+      "先修唤醒",
+      [
+        "先修概念首次使用无一句话唤醒：方差（行 238）、标准误（行 1161）、分位数（行 1792）、协方差（行 238）、矩阵（行 241）、特征值（行 2459）、自由度（行 496）、残差（行 241）"
+      ]
+    ],
+    [
+      "2.1.2",
+      "定义型",
+      [
+        "换个说法角度 1 < 2"
+      ]
+    ],
+    [
+      "2.4.2",
+      "公式型",
+      [
+        "换个说法角度 1 < 2",
+        "缺「为什么公式长这样」"
+      ]
+    ],
+    [
+      "2.4.4",
+      "公式型",
+      [
+        "换个说法角度 1 < 2"
+      ]
+    ],
+    [
+      "2.7.2",
+      "代码型",
+      [
+        "缺 是什么",
+        "「是什么」自己的话 < 80 字"
+      ]
+    ],
+    [
+      "2.10",
+      "定义型",
+      [
+        "缺 为什么需要它",
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2"
+      ]
+    ]
+  ],
+  "summary": {
+    "file": "E:\\app-data\\codex\\scratchpad\\ge-remediation-20261021\\finance\\M03-线性机器学习与收益预测.md",
+    "total_pages": 56,
+    "noncontent": [
+      1,
+      3,
+      9,
+      28,
+      39,
+      46,
+      52
+    ],
+    "content_pages": 49,
+    "sec2_cjk": 42275,
+    "note_cjk": 55083,
+    "leaf_n": 38,
+    "concept_n": 38,
+    "terms_n": 30,
+    "strict": true
+  },
+  "sections": [
+    {
+      "sec": "2.1.1 两个预测任务的对照（讲义 p.2）",
+      "num": "2.1.1",
+      "level": 4,
+      "cjk": 981,
+      "chars": 2205,
+      "own_cjk": 856,
+      "bq_ratio": 0.21,
+      "code_blocks": 0,
+      "pages": [
+        2
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so"
+      ],
+      "type": "定义型",
+      "what_cjk": 259,
+      "why_cjk": 99,
+      "alt_angles": 2,
+      "alt_nodigit": 1,
+      "alt_cjk": 176,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'z', 'R', '\\\\beta', '\\\\alpha'}",
+      "formulas": [],
+      "numex_step": 0,
+      "numex_any": 5,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 0,
+      "has_cmp_table": 1,
+      "has_script": 0,
+      "orig_cjk": 133,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.1.2 一篇里程碑论文与 Class 3–5 的路线（讲义 p.4）",
+      "num": "2.1.2",
+      "level": 4,
+      "cjk": 824,
+      "chars": 2192,
+      "own_cjk": 824,
+      "bq_ratio": 0.27,
+      "code_blocks": 0,
+      "pages": [
+        4
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so"
+      ],
+      "type": "定义型",
+      "what_cjk": 173,
+      "why_cjk": 101,
+      "alt_angles": 1,
+      "alt_nodigit": 1,
+      "alt_cjk": 156,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'R'}",
+      "formulas": [],
+      "numex_step": 0,
+      "numex_any": 3,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 1,
+      "has_step_table": 0,
+      "has_cmp_table": 0,
+      "has_script": 0,
+      "orig_cjk": 13,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": [
+        "换个说法角度 1 < 2"
+      ]
+    },
+    {
+      "sec": "2.1.3 四个美国宏观变量与它们的滞后（讲义 p.5）",
+      "num": "2.1.3",
+      "level": 4,
+      "cjk": 871,
+      "chars": 1537,
+      "own_cjk": 789,
+      "bq_ratio": 0.08,
+      "code_blocks": 0,
+      "pages": [
+        5
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so"
+      ],
+      "type": "定义型",
+      "what_cjk": 180,
+      "why_cjk": 131,
+      "alt_angles": 2,
+      "alt_nodigit": 1,
+      "alt_cjk": 192,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "set()",
+      "formulas": [],
+      "numex_step": 0,
+      "numex_any": 2,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 0,
+      "has_cmp_table": 1,
+      "has_script": 0,
+      "orig_cjk": 92,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.2.1 OLS 在最小化什么（讲义 p.6）",
+      "num": "2.2.1",
+      "level": 4,
+      "cjk": 1644,
+      "chars": 3330,
+      "own_cjk": 1512,
+      "bq_ratio": 0.01,
+      "code_blocks": 0,
+      "pages": [
+        6
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so",
+        "whyf",
+        "edge"
+      ],
+      "type": "公式型",
+      "what_cjk": 262,
+      "why_cjk": 67,
+      "alt_angles": 2,
+      "alt_nodigit": 1,
+      "alt_cjk": 150,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 2,
+      "symtab_syms": "{'z', '\\\\beta', 'S', 'r', '\\\\alpha'}",
+      "prose_syms": "{'z', '\\\\beta', 'p', 'x', 'y', 'L', '\\\\lambda', 'X', 'r', '\\\\alpha'}",
+      "formulas": [
+        [
+          6,
+          "$$L(\\alpha, \\beta) = \\frac{1}{2n}\\sum_{t \\in S}\\left(r_t^{e} - \\alpha - z_t^{\\top}\\beta\\right)^2, \\qquad (\\hat\\alpha, \\hat\\beta)_{\\text{OLS}} = \\arg\\min_{\\alpha,\\beta} L(\\alpha, \\beta)$$",
+          true
+        ],
+        [
+          10,
+          "$$\\hat r_t^{e} = \\hat\\alpha + \\sum_{j=1}^{p}\\hat\\beta_j z_{jt}$$",
+          true
+        ]
+      ],
+      "numex_step": 5,
+      "numex_any": 15,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 159,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.2.2 用拟合好的系数算下个月的预测（讲义 p.7）",
+      "num": "2.2.2",
+      "level": 4,
+      "cjk": 723,
+      "chars": 1750,
+      "own_cjk": 723,
+      "bq_ratio": 0.12,
+      "code_blocks": 0,
+      "pages": [
+        7
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so"
+      ],
+      "type": "定义型",
+      "what_cjk": 124,
+      "why_cjk": 71,
+      "alt_angles": 2,
+      "alt_nodigit": 1,
+      "alt_cjk": 173,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'z', '\\\\beta', 'x', 's', 'r', '\\\\alpha'}",
+      "formulas": [],
+      "numex_step": 1,
+      "numex_any": 9,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 1,
+      "has_cmp_table": 0,
+      "has_script": 1,
+      "orig_cjk": 117,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.2.3 冻结时间线：142 / 36 / 60（讲义 p.8）",
+      "num": "2.2.3",
+      "level": 4,
+      "cjk": 790,
+      "chars": 2319,
+      "own_cjk": 750,
+      "bq_ratio": 0.27,
+      "code_blocks": 0,
+      "pages": [
+        8
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so"
+      ],
+      "type": "定义型",
+      "what_cjk": 144,
+      "why_cjk": 99,
+      "alt_angles": 2,
+      "alt_nodigit": 2,
+      "alt_cjk": 149,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "set()",
+      "formulas": [],
+      "numex_step": 6,
+      "numex_any": 5,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 0,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 89,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.3 前向选择：一个一个地挑变量的算法（讲义 p.10–11）",
+      "num": "2.3",
+      "level": 3,
+      "cjk": 2010,
+      "chars": 5087,
+      "own_cjk": 1874,
+      "bq_ratio": 0.19,
+      "code_blocks": 1,
+      "pages": [
+        10,
+        11
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so"
+      ],
+      "type": "代码型",
+      "what_cjk": 212,
+      "why_cjk": 118,
+      "alt_angles": 2,
+      "alt_nodigit": 2,
+      "alt_cjk": 161,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 1,
+      "symtab_syms": "{'A'}",
+      "prose_syms": "{'A', '\\\\varnothing', 'x'}",
+      "formulas": [
+        [
+          28,
+          "$$j^{*} = \\arg\\min_{j \\notin A_k} \\text{MSE}_{\\text{valid}}\\big(A_k \\cup \\{j\\}\\big), \\qquad A_{\\text{candidate}} = A_k \\cup \\{j^{*}\\}$$",
+          true
+        ]
+      ],
+      "numex_step": 6,
+      "numex_any": 24,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 386,
+      "terms": 1,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.4.1 惩罚项的一般形式（讲义 p.12）",
+      "num": "2.4.1",
+      "level": 4,
+      "cjk": 1205,
+      "chars": 3437,
+      "own_cjk": 1120,
+      "bq_ratio": 0.19,
+      "code_blocks": 0,
+      "pages": [
+        12
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so",
+        "whyf",
+        "edge"
+      ],
+      "type": "公式型",
+      "what_cjk": 233,
+      "why_cjk": 99,
+      "alt_angles": 2,
+      "alt_nodigit": 2,
+      "alt_cjk": 174,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 1,
+      "symtab_syms": "{'\\\\beta', 'P', '\\\\lambda', 'L', '\\\\alpha'}",
+      "prose_syms": "{'z', '\\\\beta', 'L', 'P', '\\\\lambda', 'r', '\\\\alpha'}",
+      "formulas": [
+        [
+          6,
+          "$$(\\hat\\alpha, \\hat\\beta) = \\arg\\min_{\\alpha, \\beta}\\Big\\{\\underbrace{L(\\alpha, \\beta)}_{\\text{训练平方误差}} + \\lambda\\, \\underbrace{P(\\beta)}_{\\text{斜率惩罚}}\\Big\\}$$",
+          true
+        ]
+      ],
+      "numex_step": 3,
+      "numex_any": 12,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 1,
+      "has_step_table": 0,
+      "has_cmp_table": 1,
+      "has_script": 0,
+      "orig_cjk": 114,
+      "terms": 3,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.4.2 岭回归：平方惩罚，压小但不归零（讲义 p.13–14）",
+      "num": "2.4.2",
+      "level": 4,
+      "cjk": 1540,
+      "chars": 5591,
+      "own_cjk": 1456,
+      "bq_ratio": 0.17,
+      "code_blocks": 0,
+      "pages": [
+        13,
+        14
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so"
+      ],
+      "type": "公式型",
+      "what_cjk": 230,
+      "why_cjk": 97,
+      "alt_angles": 1,
+      "alt_nodigit": 1,
+      "alt_cjk": 167,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 1,
+      "symtab_syms": "{'\\\\lambda', '\\\\beta'}",
+      "prose_syms": "{'z', '\\\\beta', 'y', 'L', 'R', 'v', 'Z', 'c', '\\\\rho', '\\\\lambda', 'I', 'J', 'G'}",
+      "formulas": [
+        [
+          18,
+          "$$(\\hat\\alpha, \\hat\\beta)_{\\text{Ridge}} = \\arg\\min_{\\alpha,\\beta}\\Big\\{L(\\alpha,\\beta) + \\frac{\\lambda}{2}\\sum_{j=1}^{p}\\beta_j^2\\Big\\}$$",
+          true
+        ]
+      ],
+      "numex_step": 12,
+      "numex_any": 22,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 505,
+      "terms": 1,
+      "need_cjk": 0,
+      "E_miss": [
+        "换个说法角度 1 < 2",
+        "缺「为什么公式长这样」"
+      ]
+    },
+    {
+      "sec": "2.4.3 LASSO：绝对值惩罚，能把系数压成恰好零（讲义 p.15–16）",
+      "num": "2.4.3",
+      "level": 4,
+      "cjk": 2121,
+      "chars": 6146,
+      "own_cjk": 1897,
+      "bq_ratio": 0.17,
+      "code_blocks": 1,
+      "pages": [
+        15,
+        16
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so",
+        "whyf",
+        "edge"
+      ],
+      "type": "代码型",
+      "what_cjk": 168,
+      "why_cjk": 131,
+      "alt_angles": 2,
+      "alt_nodigit": 2,
+      "alt_cjk": 148,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 1,
+      "symtab_syms": "{'\\\\beta', 'u', 'c', '\\\\lambda', 'S', 'G'}",
+      "prose_syms": "{'z', 'b', '\\\\beta', 'a', 'S', '\\\\alpha', 'u', 'c', '\\\\lambda', '\\\\rho', 'r', 'G'}",
+      "formulas": [
+        [
+          36,
+          "$$(\\hat\\alpha, \\hat\\beta)_{\\text{LASSO}} = \\arg\\min_{\\alpha,\\beta}\\Big\\{L(\\alpha,\\beta) + \\lambda\\sum_{j=1}^{p}\\lvert\\beta_j\\rvert\\Big\\}$$",
+          true
+        ]
+      ],
+      "numex_step": 14,
+      "numex_any": 38,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 177,
+      "terms": 2,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.4.4 弹性网：两种惩罚的混合（讲义 p.17–18）",
+      "num": "2.4.4",
+      "level": 4,
+      "cjk": 1056,
+      "chars": 3413,
+      "own_cjk": 990,
+      "bq_ratio": 0.2,
+      "code_blocks": 0,
+      "pages": [
+        17,
+        18
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so",
+        "whyf",
+        "edge"
+      ],
+      "type": "公式型",
+      "what_cjk": 151,
+      "why_cjk": 82,
+      "alt_angles": 1,
+      "alt_nodigit": 1,
+      "alt_cjk": 168,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 1,
+      "symtab_syms": "{'\\\\beta', '\\\\lambda', '\\\\rho'}",
+      "prose_syms": "{'\\\\rho', 'R', '\\\\beta', '\\\\lambda'}",
+      "formulas": [
+        [
+          6,
+          "$$(\\hat\\alpha, \\hat\\beta)_{\\text{EN}} = \\arg\\min_{\\alpha,\\beta}\\Big\\{L(\\alpha,\\beta) + \\lambda\\Big[\\rho\\sum_{j=1}^{p}\\lvert\\beta_j\\rvert + \\frac{1-\\rho}{2}\\sum_{j=1}^{p}\\beta_j^2\\Big]\\Big\\}$$",
+          true
+        ]
+      ],
+      "numex_step": 9,
+      "numex_any": 24,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 167,
+      "terms": 1,
+      "need_cjk": 0,
+      "E_miss": [
+        "换个说法角度 1 < 2"
+      ]
+    },
+    {
+      "sec": "2.4.5 读两张图：系数路径与验证曲线（讲义 p.19–20）",
+      "num": "2.4.5",
+      "level": 4,
+      "cjk": 1104,
+      "chars": 2964,
+      "own_cjk": 1104,
+      "bq_ratio": 0.19,
+      "code_blocks": 0,
+      "pages": [
+        19,
+        20
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "misc",
+        "so"
+      ],
+      "type": "图表读法型",
+      "what_cjk": 141,
+      "why_cjk": 132,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 0,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'R'}",
+      "formulas": [],
+      "numex_step": 2,
+      "numex_any": 15,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 0,
+      "has_cmp_table": 0,
+      "has_script": 1,
+      "orig_cjk": 517,
+      "terms": 2,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.4.6 验证选模：美国数据上的四个候选（讲义 p.21）",
+      "num": "2.4.6",
+      "level": 4,
+      "cjk": 761,
+      "chars": 2183,
+      "own_cjk": 749,
+      "bq_ratio": 0.14,
+      "code_blocks": 0,
+      "pages": [
+        21
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "misc",
+        "so"
+      ],
+      "type": "案例数据型",
+      "what_cjk": 125,
+      "why_cjk": 105,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 0,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'R'}",
+      "formulas": [],
+      "numex_step": 3,
+      "numex_any": 15,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 235,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.5.1 计算题：对滞后 MA(12) 的样本外 R 方（讲义 p.22）",
+      "num": "2.5.1",
+      "level": 4,
+      "cjk": 1109,
+      "chars": 3759,
+      "own_cjk": 1039,
+      "bq_ratio": 0.21,
+      "code_blocks": 0,
+      "pages": [
+        22
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so",
+        "whyf",
+        "edge"
+      ],
+      "type": "公式型",
+      "what_cjk": 182,
+      "why_cjk": 124,
+      "alt_angles": 2,
+      "alt_nodigit": 1,
+      "alt_cjk": 151,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 1,
+      "symtab_syms": "{'R', 'r'}",
+      "prose_syms": "{'R', 'r'}",
+      "formulas": [
+        [
+          6,
+          "$$R^2_{\\text{OOS}} = 1 - \\frac{\\text{SSE}_{\\text{model}}}{\\text{SSE}_{\\text{benchmark}}}, \\qquad \\text{SSE}_{\\text{model}} = \\sum_{t \\in \\text{test}}\\big(r_t^e - \\hat r_t^e\\big)^2, \\quad \\text{SSE}_{\\text{benchmark}} = \\sum_{t \\in \\text{test}}\\big(r_t^e - \\hat r_t^{e,b}\\big)^2$$",
+          true
+        ]
+      ],
+      "numex_step": 6,
+      "numex_any": 17,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 73,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.5.2 三个市场的测试结果与四幅图（讲义 p.23–24）",
+      "num": "2.5.2",
+      "level": 4,
+      "cjk": 1003,
+      "chars": 3595,
+      "own_cjk": 989,
+      "bq_ratio": 0.31,
+      "code_blocks": 0,
+      "pages": [
+        23,
+        24
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "misc",
+        "so"
+      ],
+      "type": "图表读法型",
+      "what_cjk": 115,
+      "why_cjk": 126,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 0,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'R'}",
+      "formulas": [],
+      "numex_step": 2,
+      "numex_any": 20,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 422,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.5.3 让 Codex 在同一规格下拟合 Ridge 与 LASSO（讲义 p.25）",
+      "num": "2.5.3",
+      "level": 4,
+      "cjk": 517,
+      "chars": 1416,
+      "own_cjk": 337,
+      "bq_ratio": 0.11,
+      "code_blocks": 1,
+      "pages": [
+        25
+      ],
+      "labels": [
+        "what",
+        "why",
+        "misc",
+        "so",
+        "line",
+        "out"
+      ],
+      "type": "代码型",
+      "what_cjk": 113,
+      "why_cjk": 102,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 0,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'R', '\\\\lambda'}",
+      "formulas": [],
+      "numex_step": 1,
+      "numex_any": 6,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 0,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 0,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.5.4 两道选择题：冻结与标准化（讲义 p.26–27）",
+      "num": "2.5.4",
+      "level": 4,
+      "cjk": 964,
+      "chars": 3886,
+      "own_cjk": 946,
+      "bq_ratio": 0.45,
+      "code_blocks": 0,
+      "pages": [
+        26,
+        27
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so"
+      ],
+      "type": "定义型",
+      "what_cjk": 105,
+      "why_cjk": 48,
+      "alt_angles": 2,
+      "alt_nodigit": 2,
+      "alt_cjk": 128,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "set()",
+      "formulas": [],
+      "numex_step": 1,
+      "numex_any": 8,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 0,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 347,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.6.1 观测单位变了：市场问题 vs 个股问题（讲义 p.29）",
+      "num": "2.6.1",
+      "level": 4,
+      "cjk": 937,
+      "chars": 1962,
+      "own_cjk": 759,
+      "bq_ratio": 0.25,
+      "code_blocks": 0,
+      "pages": [
+        29
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so"
+      ],
+      "type": "对比型",
+      "what_cjk": 170,
+      "why_cjk": 75,
+      "alt_angles": 2,
+      "alt_nodigit": 2,
+      "alt_cjk": 153,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'R'}",
+      "formulas": [],
+      "numex_step": 0,
+      "numex_any": 9,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 0,
+      "has_cmp_table": 1,
+      "has_script": 0,
+      "orig_cjk": 250,
+      "terms": 1,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.6.2 固定的 2023 年 7 月股票池（讲义 p.30）",
+      "num": "2.6.2",
+      "level": 4,
+      "cjk": 823,
+      "chars": 2027,
+      "own_cjk": 823,
+      "bq_ratio": 0.3,
+      "code_blocks": 0,
+      "pages": [
+        30
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so"
+      ],
+      "type": "定义型",
+      "what_cjk": 185,
+      "why_cjk": 158,
+      "alt_angles": 2,
+      "alt_nodigit": 2,
+      "alt_cjk": 146,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "set()",
+      "formulas": [],
+      "numex_step": 1,
+      "numex_any": 5,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 0,
+      "has_cmp_table": 0,
+      "has_script": 1,
+      "orig_cjk": 48,
+      "terms": 2,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.6.3 六族技术指标：三十列在问六个问题（讲义 p.31）",
+      "num": "2.6.3",
+      "level": 4,
+      "cjk": 1203,
+      "chars": 3281,
+      "own_cjk": 1085,
+      "bq_ratio": 0.31,
+      "code_blocks": 0,
+      "pages": [
+        31
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so"
+      ],
+      "type": "定义型",
+      "what_cjk": 188,
+      "why_cjk": 131,
+      "alt_angles": 2,
+      "alt_nodigit": 2,
+      "alt_cjk": 174,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'C', 'x'}",
+      "formulas": [],
+      "numex_step": 1,
+      "numex_any": 5,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 0,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 245,
+      "terms": 2,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.6.4 从日频数据到无泄漏的周度预测行：中心化排名（讲义 p.32）",
+      "num": "2.6.4",
+      "level": 4,
+      "cjk": 1942,
+      "chars": 5232,
+      "own_cjk": 1784,
+      "bq_ratio": 0.24,
+      "code_blocks": 0,
+      "pages": [
+        32
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so",
+        "whyf",
+        "edge"
+      ],
+      "type": "公式型",
+      "what_cjk": 270,
+      "why_cjk": 146,
+      "alt_angles": 2,
+      "alt_nodigit": 2,
+      "alt_cjk": 153,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 2,
+      "symtab_syms": "{'V', 'C', 'x', 'O', 'L', 'r', 'H'}",
+      "prose_syms": "{'R', 'r'}",
+      "formulas": [
+        [
+          24,
+          "$$\\{O, H, L, C, V\\}_{i,\\ \\text{through week } t-1} \\;\\longrightarrow\\; x_{i,t-1} \\;\\longrightarrow\\; \\text{rank}_{m,t-1}(x_i) \\;\\longrightarrow\\; \\hat r^{e}_{i,t} \\;\\longrightarrow\\; r^{e}_{i,t}$$",
+          true
+        ],
+        [
+          26,
+          "$$\\text{centered rank} = \\text{within-universe percentile rank} - 0.50$$",
+          true
+        ]
+      ],
+      "numex_step": 7,
+      "numex_any": 29,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 111,
+      "terms": 2,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.6.5 超额收益与无风险代理（讲义 p.33–34）",
+      "num": "2.6.5",
+      "level": 4,
+      "cjk": 1497,
+      "chars": 3636,
+      "own_cjk": 1389,
+      "bq_ratio": 0.14,
+      "code_blocks": 0,
+      "pages": [
+        33,
+        34
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so",
+        "whyf",
+        "edge"
+      ],
+      "type": "公式型",
+      "what_cjk": 285,
+      "why_cjk": 125,
+      "alt_angles": 2,
+      "alt_nodigit": 2,
+      "alt_cjk": 137,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 2,
+      "symtab_syms": "{'r'}",
+      "prose_syms": "{'R', 'c', 'y', 'r'}",
+      "formulas": [
+        [
+          8,
+          "$$r^{e}_{i,t} = r_{i,t} - r_{f,t}, \\qquad \\hat r^{e,b}_{i,t} = 0$$",
+          true
+        ],
+        [
+          37,
+          "$$R^2_{\\text{OOS}} = 1 - \\frac{\\sum_{i,t}\\big(r^{e}_{i,t} - \\hat r^{e}_{i,t}\\big)^2}{\\sum_{i,t}\\big(r^{e}_{i,t}\\big)^2}$$",
+          true
+        ]
+      ],
+      "numex_step": 5,
+      "numex_any": 15,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 244,
+      "terms": 2,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.6.6 两张图：排名热图与特征分组组合（讲义 p.35–36）",
+      "num": "2.6.6",
+      "level": 4,
+      "cjk": 1211,
+      "chars": 3411,
+      "own_cjk": 1211,
+      "bq_ratio": 0.3,
+      "code_blocks": 0,
+      "pages": [
+        35,
+        36
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "misc",
+        "so"
+      ],
+      "type": "图表读法型",
+      "what_cjk": 185,
+      "why_cjk": 171,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 0,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "set()",
+      "formulas": [],
+      "numex_step": 0,
+      "numex_any": 12,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 0,
+      "has_cmp_table": 0,
+      "has_script": 1,
+      "orig_cjk": 586,
+      "terms": 1,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.6.7 一条截面线性规则与周度切分（讲义 p.37）",
+      "num": "2.6.7",
+      "level": 4,
+      "cjk": 1099,
+      "chars": 2891,
+      "own_cjk": 957,
+      "bq_ratio": 0.1,
+      "code_blocks": 0,
+      "pages": [
+        37
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so",
+        "whyf",
+        "edge"
+      ],
+      "type": "公式型",
+      "what_cjk": 239,
+      "why_cjk": 141,
+      "alt_angles": 2,
+      "alt_nodigit": 2,
+      "alt_cjk": 144,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 1,
+      "symtab_syms": "{'z', '\\\\beta', 'r', '\\\\alpha'}",
+      "prose_syms": "{'z', '\\\\alpha'}",
+      "formulas": [
+        [
+          8,
+          "$$\\hat r^{e}_{i,t} = \\hat\\alpha + z_{i,t-1}^{\\top}\\hat\\beta$$",
+          true
+        ]
+      ],
+      "numex_step": 7,
+      "numex_any": 19,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 131,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.6.8 选择题：验证误差几乎相同时，选哪个线性工具（讲义 p.38）",
+      "num": "2.6.8",
+      "level": 4,
+      "cjk": 880,
+      "chars": 3124,
+      "own_cjk": 853,
+      "bq_ratio": 0.37,
+      "code_blocks": 0,
+      "pages": [
+        38
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so"
+      ],
+      "type": "对比型",
+      "what_cjk": 134,
+      "why_cjk": 59,
+      "alt_angles": 2,
+      "alt_nodigit": 2,
+      "alt_cjk": 120,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "set()",
+      "formulas": [],
+      "numex_step": 1,
+      "numex_any": 9,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 0,
+      "has_cmp_table": 1,
+      "has_script": 0,
+      "orig_cjk": 186,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.7.1 三十个特征不是三十个信号：读相关热图与方差累计图（讲义 p.40）",
+      "num": "2.7.1",
+      "level": 4,
+      "cjk": 941,
+      "chars": 2224,
+      "own_cjk": 941,
+      "bq_ratio": 0.21,
+      "code_blocks": 0,
+      "pages": [
+        40
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "misc",
+        "so"
+      ],
+      "type": "图表读法型",
+      "what_cjk": 154,
+      "why_cjk": 110,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 0,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "set()",
+      "formulas": [],
+      "numex_step": 3,
+      "numex_any": 12,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 1,
+      "has_step_table": 0,
+      "has_cmp_table": 0,
+      "has_script": 1,
+      "orig_cjk": 449,
+      "terms": 1,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.7.2 主成分回归：先找输入的主方向，再回归（讲义 p.41–43）",
+      "num": "2.7.2",
+      "level": 4,
+      "cjk": 1706,
+      "chars": 4677,
+      "own_cjk": 1549,
+      "bq_ratio": 0.19,
+      "code_blocks": 0,
+      "pages": [
+        41,
+        42,
+        43
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so",
+        "whyf",
+        "edge"
+      ],
+      "type": "公式型",
+      "what_cjk": 338,
+      "why_cjk": 128,
+      "alt_angles": 2,
+      "alt_nodigit": 1,
+      "alt_cjk": 185,
+      "misc_n": 3,
+      "misc_reason": 3,
+      "formula_n": 1,
+      "symtab_syms": "{'w', 'Z', 'c', '\\\\gamma', 'K'}",
+      "prose_syms": "{'z', 'R', 'w', 'Z', 'p', 'c', 'K', 'r'}",
+      "formulas": [
+        [
+          14,
+          "$$w_1 = \\arg\\max_{\\lVert w\\rVert_2 = 1} \\text{Var}_S(Zw), \\qquad c_{ik} = z_i^{\\top}w_k, \\qquad \\hat r^{e}_i = \\hat\\alpha + \\sum_{k=1}^{K}\\hat\\gamma_k c_{ik}, \\quad K < p$$",
+          true
+        ]
+      ],
+      "numex_step": 6,
+      "numex_any": 13,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 315,
+      "terms": 2,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.7.2a PCR 与 PLS 共用四行数据：找到方向、拟合到新点（💡 笔记补充）",
+      "num": "2.7.2",
+      "level": 4,
+      "cjk": 1344,
+      "chars": 3030,
+      "own_cjk": 1344,
+      "bq_ratio": 0.0,
+      "code_blocks": 1,
+      "pages": [],
+      "labels": [
+        "so"
+      ],
+      "type": "代码型",
+      "what_cjk": 0,
+      "why_cjk": 0,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 0,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'z', 'C', 'w', 'p', 'y', 'q', 'Z', 'c'}",
+      "formulas": [],
+      "numex_step": 8,
+      "numex_any": 14,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 0,
+      "has_script": 1,
+      "orig_cjk": 0,
+      "terms": 2,
+      "need_cjk": 0,
+      "E_miss": [
+        "缺 是什么",
+        "「是什么」自己的话 < 80 字"
+      ]
+    },
+    {
+      "sec": "2.7.3 偏最小二乘：让收益参与挑方向（讲义 p.44–45）",
+      "num": "2.7.3",
+      "level": 4,
+      "cjk": 1095,
+      "chars": 3142,
+      "own_cjk": 1005,
+      "bq_ratio": 0.2,
+      "code_blocks": 0,
+      "pages": [
+        44,
+        45
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so",
+        "whyf",
+        "edge"
+      ],
+      "type": "公式型",
+      "what_cjk": 238,
+      "why_cjk": 81,
+      "alt_angles": 2,
+      "alt_nodigit": 2,
+      "alt_cjk": 149,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 1,
+      "symtab_syms": "{'K', 'w', 'r', 'c'}",
+      "prose_syms": "{'z', 'R', 'w', 'Z', 'c', 'K', 'r'}",
+      "formulas": [
+        [
+          12,
+          "$$w_1 = \\arg\\max_{\\lVert w\\rVert_2 = 1}\\ \\text{Cov}_S(Zw,\\ r^e)^2, \\qquad c_{i1} = z_i^{\\top}w_1, \\qquad \\hat r^{e}_i = \\hat\\alpha + \\sum_{k=1}^{K}\\hat\\gamma_k c_{ik}$$",
+          true
+        ]
+      ],
+      "numex_step": 3,
+      "numex_any": 11,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 1,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 138,
+      "terms": 1,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.8.1 六个线性模型在同一个股票面板上（讲义 p.47–48）",
+      "num": "2.8.1",
+      "level": 4,
+      "cjk": 850,
+      "chars": 2779,
+      "own_cjk": 788,
+      "bq_ratio": 0.22,
+      "code_blocks": 0,
+      "pages": [
+        47,
+        48
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "misc",
+        "so"
+      ],
+      "type": "案例数据型",
+      "what_cjk": 85,
+      "why_cjk": 94,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 0,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'R'}",
+      "formulas": [],
+      "numex_step": 2,
+      "numex_any": 18,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 376,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.8.2 一周里的三只股票（讲义 p.49）",
+      "num": "2.8.2",
+      "level": 4,
+      "cjk": 748,
+      "chars": 2288,
+      "own_cjk": 705,
+      "bq_ratio": 0.19,
+      "code_blocks": 0,
+      "pages": [
+        49
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "misc",
+        "so"
+      ],
+      "type": "案例数据型",
+      "what_cjk": 138,
+      "why_cjk": 70,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 0,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'R'}",
+      "formulas": [],
+      "numex_step": 3,
+      "numex_any": 18,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 289,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.8.3 Vibe coding：让 Codex 比较六个模型并追踪一只股票（讲义 p.50）",
+      "num": "2.8.3",
+      "level": 4,
+      "cjk": 791,
+      "chars": 1656,
+      "own_cjk": 791,
+      "bq_ratio": 0.17,
+      "code_blocks": 0,
+      "pages": [
+        50
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so"
+      ],
+      "type": "定义型",
+      "what_cjk": 155,
+      "why_cjk": 132,
+      "alt_angles": 2,
+      "alt_nodigit": 2,
+      "alt_cjk": 152,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'R'}",
+      "formulas": [],
+      "numex_step": 0,
+      "numex_any": 3,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 1,
+      "has_cmp_table": 0,
+      "has_script": 0,
+      "orig_cjk": 8,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.8.4 常数预测：MSE 上不吃亏，但排不了序（讲义 p.51）",
+      "num": "2.8.4",
+      "level": 4,
+      "cjk": 713,
+      "chars": 2602,
+      "own_cjk": 713,
+      "bq_ratio": 0.41,
+      "code_blocks": 0,
+      "pages": [
+        51
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so"
+      ],
+      "type": "定义型",
+      "what_cjk": 133,
+      "why_cjk": 117,
+      "alt_angles": 2,
+      "alt_nodigit": 2,
+      "alt_cjk": 166,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'r', '\\\\alpha'}",
+      "formulas": [],
+      "numex_step": 0,
+      "numex_any": 5,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 0,
+      "has_cmp_table": 0,
+      "has_script": 1,
+      "orig_cjk": 14,
+      "terms": 1,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.9.1 按预测分五组的四个步骤（讲义 p.53）",
+      "num": "2.9.1",
+      "level": 4,
+      "cjk": 934,
+      "chars": 2750,
+      "own_cjk": 934,
+      "bq_ratio": 0.21,
+      "code_blocks": 0,
+      "pages": [
+        53
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so"
+      ],
+      "type": "算法流程型",
+      "what_cjk": 144,
+      "why_cjk": 70,
+      "alt_angles": 2,
+      "alt_nodigit": 2,
+      "alt_cjk": 127,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'r'}",
+      "formulas": [],
+      "numex_step": 0,
+      "numex_any": 8,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 0,
+      "has_script": 1,
+      "orig_cjk": 348,
+      "terms": 2,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.9.2 量级与排名的分离：一个三行例子（讲义 p.54）",
+      "num": "2.9.2",
+      "level": 4,
+      "cjk": 696,
+      "chars": 2174,
+      "own_cjk": 675,
+      "bq_ratio": 0.25,
+      "code_blocks": 0,
+      "pages": [
+        54
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "misc",
+        "so"
+      ],
+      "type": "案例数据型",
+      "what_cjk": 136,
+      "why_cjk": 77,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 0,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'R'}",
+      "formulas": [],
+      "numex_step": 4,
+      "numex_any": 13,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 225,
+      "terms": 1,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.9.3 Ridge：预测精度弱，分组价差为正（讲义 p.55）",
+      "num": "2.9.3",
+      "level": 4,
+      "cjk": 1614,
+      "chars": 4517,
+      "own_cjk": 1556,
+      "bq_ratio": 0.23,
+      "code_blocks": 1,
+      "pages": [
+        55
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "misc",
+        "so"
+      ],
+      "type": "代码型",
+      "what_cjk": 123,
+      "why_cjk": 125,
+      "alt_angles": 0,
+      "alt_nodigit": 0,
+      "alt_cjk": 0,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'R'}",
+      "formulas": [],
+      "numex_step": 4,
+      "numex_any": 24,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 1,
+      "has_step_table": 1,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 259,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.9.4 留给非线性的问题（讲义 p.56）",
+      "num": "2.9.4",
+      "level": 4,
+      "cjk": 944,
+      "chars": 1974,
+      "own_cjk": 944,
+      "bq_ratio": 0.26,
+      "code_blocks": 0,
+      "pages": [
+        56
+      ],
+      "labels": [
+        "what",
+        "why",
+        "orig",
+        "mic",
+        "alt",
+        "misc",
+        "so"
+      ],
+      "type": "定义型",
+      "what_cjk": 187,
+      "why_cjk": 89,
+      "alt_angles": 2,
+      "alt_nodigit": 2,
+      "alt_cjk": 178,
+      "misc_n": 2,
+      "misc_reason": 2,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "set()",
+      "formulas": [],
+      "numex_step": 0,
+      "numex_any": 3,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 0,
+      "has_cmp_table": 0,
+      "has_script": 0,
+      "orig_cjk": 8,
+      "terms": 2,
+      "need_cjk": 0,
+      "E_miss": []
+    },
+    {
+      "sec": "2.10 2026-10-20 版本对齐：讲法调整与市场结果的小数差异",
+      "num": "2.10",
+      "level": 3,
+      "cjk": 793,
+      "chars": 1157,
+      "own_cjk": 634,
+      "bq_ratio": 0.0,
+      "code_blocks": 0,
+      "pages": [],
+      "labels": [
+        "what",
+        "mic",
+        "alt",
+        "misc",
+        "rel",
+        "so"
+      ],
+      "type": "定义型",
+      "what_cjk": 485,
+      "why_cjk": 0,
+      "alt_angles": 1,
+      "alt_nodigit": 1,
+      "alt_cjk": 43,
+      "misc_n": 0,
+      "misc_reason": 0,
+      "formula_n": 0,
+      "symtab_syms": "set()",
+      "prose_syms": "{'R'}",
+      "formulas": [],
+      "numex_step": 0,
+      "numex_any": 4,
+      "code_bad": 0,
+      "first_kind": "text",
+      "first_bad": 0,
+      "has_so": 1,
+      "has_whyf": 0,
+      "has_edge": 0,
+      "has_step_table": 0,
+      "has_cmp_table": 1,
+      "has_script": 1,
+      "orig_cjk": 0,
+      "terms": 0,
+      "need_cjk": 0,
+      "E_miss": [
+        "缺 为什么需要它",
+        "换个说法角度 1 < 2",
+        "常见误解 0 条 < 2"
+      ]
+    }
+  ],
+  "R": {
+    "strict": true,
+    "stats": {
+      "sentences": 1711,
+      "mean": 33.2,
+      "p50": 31,
+      "p90": 59,
+      "max": 109,
+      "over80": 34,
+      "over120": 0,
+      "long_share": 0.02,
+      "exempt": 0,
+      "table_max_columns": 7,
+      "table_max_cell_units": 56,
+      "table_max_cell_line": 2552,
+      "measurement_version": "v2"
+    },
+    "hard": [],
+    "warn": [
+      [
+        "R3a",
+        32,
+        "674 单元无隔断"
+      ],
+      [
+        "R3a",
+        52,
+        "506 单元无隔断"
+      ],
+      [
+        "R3a",
+        76,
+        "584 单元无隔断"
+      ],
+      [
+        "R4b",
+        92,
+        "单元格 44 单元：预测 $t$ 月的收益，只能用 $t$ 月开始前已经公布的数据；宏观数据…"
+      ],
+      [
+        "R4c",
+        92,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        96,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        98,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        100,
+        "单元格 2 句"
+      ],
+      [
+        "R3a",
+        131,
+        "541 单元无隔断"
+      ],
+      [
+        "R1e",
+        166,
+        "一段 3 处否定澄清"
+      ],
+      [
+        "R7b",
+        170,
+        "段内英文原话 34 词，放引用块并配中文"
+      ],
+      [
+        "R2b",
+        199,
+        "99 单元：- 打个比方：市场任务像预测\"明天全城平均气温\"，个股任务像预测\"全城 …"
+      ],
+      [
+        "R2b",
+        207,
+        "90 单元：- ❌ \"OOS $R^2$ 越接近零说明预测越没用\" → 要看对手是谁…"
+      ],
+      [
+        "R1a",
+        217,
+        "109 单元：Gu, Kelly & Xiu (2020, *Review of Fi…"
+      ],
+      [
+        "R1a",
+        219,
+        "83 单元：严谨地说，这篇论文建立了\"机器学习在资产定价里的标准比赛规则\"：统一的输…"
+      ],
+      [
+        "R1c",
+        223,
+        "2 个分号：p.4 明说：Class 3 = 选择、收缩、降维；Class 4 = …"
+      ],
+      [
+        "R7b",
+        227,
+        "段内英文原话 27 词，放引用块并配中文"
+      ],
+      [
+        "R2b",
+        260,
+        "103 单元：- 换个角度：这篇论文最大的贡献不是\"神经网络赢了\"，而是\"大家在同一个…"
+      ],
+      [
+        "R1a",
+        264,
+        "96 单元：❌ \"这一讲学的是 GKX 论文的结论\" → 本讲只借用它的框架（把收益…"
+      ],
+      [
+        "R2b",
+        264,
+        "96 单元：- ❌ \"这一讲学的是 GKX 论文的结论\" → 本讲只借用它的框架（把…"
+      ],
+      [
+        "R2b",
+        265,
+        "81 单元：- ❌ \"线性模型讲完就过时了，Class 4 的树和神经网络才是正菜\"…"
+      ],
+      [
+        "R1a",
+        277,
+        "90 单元：预测美国、香港、内地三个市场下个月的超额收益，讲义只用四个美国宏观变量：…"
+      ],
+      [
+        "R2b",
+        314,
+        "140 单元：- 为什么要\"再退一个月\"：想象你在 3 月 31 日晚上做 4 月的预…"
+      ],
+      [
+        "R2b",
+        315,
+        "96 单元：- 打个比方：四个变量像四个体温计，分别量\"经济周期的冷热\"\"央行的松紧…"
+      ],
+      [
+        "R5b",
+        336,
+        "一个 $$ 块放了多个等式；拆开并在中间加一句话"
+      ],
+      [
+        "R5a",
+        355,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R1a",
+        361,
+        "83 单元：数字例子（手把手）——用一个 3 个月的迷你训练集看\"平方误差之和\"是怎…"
+      ],
+      [
+        "R5c",
+        366,
+        "行内公式 89 字符，改独立公式：L = \\frac{1}{2 \\times 3}(0.000"
+      ],
+      [
+        "R7a",
+        366,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R1a",
+        377,
+        "91 单元：为什么是 $z$ 而不是原始 $x$：标准化（standardizati…"
+      ],
+      [
+        "R2b",
+        377,
+        "91 单元：- 为什么是 $z$ 而不是原始 $x$：标准化（standardiza…"
+      ],
+      [
+        "R2b",
+        381,
+        "85 单元：- 输入互不相关且各自方差为 1 时，每个 OLS 斜率等于该输入与收益…"
+      ],
+      [
+        "R2b",
+        384,
+        "83 单元：- 如果 $n$ 小于 $p$（月份数少于变量数），系数通常不唯一；只有…"
+      ],
+      [
+        "R2b",
+        404,
+        "104 单元：- 想象你在调一台四个旋钮的收音机，目标是让 142 段录音里的杂音总量…"
+      ],
+      [
+        "R5c",
+        439,
+        "行内公式 70 字符，改独立公式：z_{j,t^\\*} = (x_{j,t^\\*} - \\ba"
+      ],
+      [
+        "R6a",
+        443,
+        "一段 3 处括号英文注释（约等于 3 个新术语）"
+      ],
+      [
+        "R5c",
+        447,
+        "行内公式 73 字符，改独立公式：\\hat r^e = 0.20\\% + 0.40\\%\\, z"
+      ],
+      [
+        "R2b",
+        467,
+        "95 单元：- 斜率的单位是\"每一个标准差\"：$0.40\\%$ 的意思是\"利差比训练…"
+      ],
+      [
+        "R2b",
+        468,
+        "108 单元：- 反过来想：如果把下个月的输入用\"全样本\"的均值来标准化，等于在做预测…"
+      ],
+      [
+        "R2d",
+        483,
+        "段内 4 处加粗"
+      ],
+      [
+        "R7a",
+        506,
+        "复算记录；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R2b",
+        526,
+        "117 单元：- 把三段想成\"练习册 / 模拟考 / 高考\"。练习册（develop）…"
+      ],
+      [
+        "R6a",
+        526,
+        "一段 3 处括号英文注释（约等于 3 个新术语）"
+      ],
+      [
+        "R7a",
+        555,
+        "浮点级误差；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R2a",
+        566,
+        "170 单元 / 4 句：先说人话：手上有四个候选变量，不知道该用几个。最笨也最稳的办法是——先一…"
+      ],
+      [
+        "R5a",
+        566,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R5b",
+        568,
+        "一个 $$ 块放了多个等式；拆开并在中间加一句话"
+      ],
+      [
+        "R1c",
+        598,
+        "2 个分号：输入：候选变量清单 {利差, 利率, 失业率, 通胀}、developm…"
+      ],
+      [
+        "R1a",
+        613,
+        "85 单元：别用它的情形：候选变量多且彼此高度相关（本讲的 30 个技术指标就是），…"
+      ],
+      [
+        "R2b",
+        613,
+        "101 单元：- 别用它的情形：候选变量多且彼此高度相关（本讲的 30 个技术指标就是…"
+      ],
+      [
+        "R1d",
+        636,
+        "括号内 31 单元：`36:34`–`36:49`，\"CTO models\" 疑似 ASR …"
+      ],
+      [
+        "R3a",
+        615,
+        "627 单元无隔断"
+      ],
+      [
+        "R1c",
+        643,
+        "2 个分号：像组建一支乐队：先招一个人，听一场演出（验证集）看效果；再招第二个，效果…"
+      ],
+      [
+        "R2b",
+        643,
+        "97 单元：- 像组建一支乐队：先招一个人，听一场演出（验证集）看效果；再招第二个，…"
+      ],
+      [
+        "R2b",
+        644,
+        "101 单元：- 反过来说，前向选择的\"停\"是一种硬选择：一个变量要么全进（斜率不受限…"
+      ],
+      [
+        "R2b",
+        651,
+        "108 单元：- ❌ \"前向选择选出来的两个变量就是'真正有用'的两个\" → 它只是在…"
+      ],
+      [
+        "R7a",
+        663,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R7a",
+        665,
+        "浮点级误差；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R1c",
+        667,
+        "2 个分号：截距 MSE=1；单 x1 MSE=11.72、单 x2 MSE=1，均…"
+      ],
+      [
+        "R1a",
+        698,
+        "85 单元：收缩的做法是在训练误差后面加一笔\"罚款\"，斜率越大罚款越多，于是模型在\"…"
+      ],
+      [
+        "R5a",
+        702,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R4c",
+        708,
+        "单元格 2 句"
+      ],
+      [
+        "R7b",
+        724,
+        "段内英文原话 46 词，放引用块并配中文"
+      ],
+      [
+        "R7a",
+        730,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R2b",
+        774,
+        "116 单元：- 想象一位谨慎的老板审预算：部门（变量）要多少钱（斜率）都可以，但每多…"
+      ],
+      [
+        "R2b",
+        775,
+        "92 单元：- 换个角度：收缩是在承认\"训练期的最优不等于未来的最优\"。OLS 对训…"
+      ],
+      [
+        "R1c",
+        798,
+        "3 个分号：求解的状态也分开：先中心化输入与目标、截距不罚；再建立$Z^\\top Z…"
+      ],
+      [
+        "R1a",
+        802,
+        "89 单元：先说人话：如果四个输入里有两个几乎同进退（比如联邦基金利率和期限利差），…"
+      ],
+      [
+        "R2a",
+        802,
+        "168 单元 / 3 句：先说人话：如果四个输入里有两个几乎同进退（比如联邦基金利率和期限利差），…"
+      ],
+      [
+        "R4c",
+        811,
+        "单元格 2 句"
+      ],
+      [
+        "R6a",
+        838,
+        "一段 3 处括号英文注释（约等于 3 个新术语）"
+      ],
+      [
+        "R5a",
+        840,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R5a",
+        842,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R7a",
+        842,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R5a",
+        844,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R5c",
+        844,
+        "行内公式 66 字符，改独立公式：\\begin{bmatrix}1+k&\\rho\\\\\\rho&"
+      ],
+      [
+        "R7a",
+        844,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R6a",
+        852,
+        "一段 3 处括号英文注释（约等于 3 个新术语）"
+      ],
+      [
+        "R7a",
+        856,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R7a",
+        858,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R3a",
+        836,
+        "621 单元无隔断"
+      ],
+      [
+        "R3a",
+        867,
+        "613 单元无隔断"
+      ],
+      [
+        "R2b",
+        902,
+        "112 单元：- 换个角度：Ridge 的\"压小但不归零\"意味着它不做选择——它相信每…"
+      ],
+      [
+        "R2a",
+        961,
+        "152 单元 / 3 句：p.15 说得很直白：绝对值惩罚在零点有一个角（corner），所以一些…"
+      ],
+      [
+        "R5c",
+        982,
+        "行内公式 116 字符，改独立公式：\\hat\\beta = \\operatorname{sign"
+      ],
+      [
+        "R6a",
+        982,
+        "一段 4 处括号英文注释（约等于 4 个新术语）"
+      ],
+      [
+        "R3a",
+        1006,
+        "612 单元无隔断"
+      ],
+      [
+        "R1a",
+        1037,
+        "95 单元：换个角度看它的缺点：面对一对孪生变量，LASSO 只请一个进场就够了（另…"
+      ],
+      [
+        "R2b",
+        1037,
+        "95 单元：- 换个角度看它的缺点：面对一对孪生变量，LASSO 只请一个进场就够了…"
+      ],
+      [
+        "R2b",
+        1044,
+        "87 单元：- ❌ \"LASSO 一定比 Ridge 好，因为它还能选变量\" → 看…"
+      ],
+      [
+        "R5a",
+        1054,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R7a",
+        1060,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R7a",
+        1062,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R7a",
+        1064,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R7a",
+        1066,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R3a",
+        1050,
+        "574 单元无隔断"
+      ],
+      [
+        "R1a",
+        1177,
+        "81 单元：每多一个要选的设定，验证集就要多做一轮比较，36 个月的验证期本来就不长…"
+      ],
+      [
+        "R2b",
+        1177,
+        "102 单元：- 换个角度：弹性网多出来的那个 ρ 不是免费的。每多一个要选的设定，验…"
+      ],
+      [
+        "R8b",
+        1194,
+        "小节首段 4 句；首段 ≤ 3 句，先给问题或结论"
+      ],
+      [
+        "R2a",
+        1200,
+        "168 单元 / 3 句：公式告诉你\"λ 越大斜率越小\"，图告诉你小到什么程度、在哪个 λ 归零、…"
+      ],
+      [
+        "R1a",
+        1258,
+        "89 单元：（`01:05:54`–`01:06:15`，\"thumb scrap\"…"
+      ],
+      [
+        "R2a",
+        1277,
+        "158 单元 / 3 句：先说人话：四个候选（OLS、Ridge、LASSO、Elastic Ne…"
+      ],
+      [
+        "R2b",
+        1318,
+        "104 单元：- ❌ \"验证 MSE 最低的就是最好的模型，所以美国应该报告 LASS…"
+      ],
+      [
+        "R1a",
+        1335,
+        "81 单元：先说人话：模型在 60 个测试月上的误差平方和是 0.018，而\"过去 …"
+      ],
+      [
+        "R5b",
+        1337,
+        "一个 $$ 块放了多个等式；拆开并在中间加一句话"
+      ],
+      [
+        "R2b",
+        1400,
+        "100 单元：- 为什么分母是基准的 SSE 而不是方差：普通 $R^2$ 的分母是\"…"
+      ],
+      [
+        "R1a",
+        1401,
+        "83 单元：若把 $t$ 到 $t+11$ 的均值拿来充当实时基准，它包含待预测月份…"
+      ],
+      [
+        "R1e",
+        1401,
+        "一段 3 处否定澄清"
+      ],
+      [
+        "R2b",
+        1401,
+        "117 单元：- 为什么 MA 要滞后：$\\hat r_t^{e,b}$ 只用 $t-…"
+      ],
+      [
+        "R5a",
+        1401,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R1a",
+        1420,
+        "82 单元：这段改变了什么：这是唯一一处教授把某道具体讲义题型直接点名为期末考题型的…"
+      ],
+      [
+        "R2b",
+        1420,
+        "82 单元：- 这段改变了什么：这是唯一一处教授把某道具体讲义题型直接点名为期末考题…"
+      ],
+      [
+        "R1c",
+        1487,
+        "2 个分号：收缩相对 OLS 的挽回幅度：美国 $-22.1\\% - (-3.2\\%…"
+      ],
+      [
+        "R1a",
+        1525,
+        "97 单元：这段改变了什么：把笔记原来\"美国货币政策对港股影响大是有道理的\"这一句 …"
+      ],
+      [
+        "R2b",
+        1525,
+        "97 单元：- 这段改变了什么：把笔记原来\"美国货币政策对港股影响大是有道理的\"这一…"
+      ],
+      [
+        "R3a",
+        1497,
+        "659 单元无隔断"
+      ],
+      [
+        "R7a",
+        1534,
+        "复算记录；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R4b",
+        1561,
+        "单元格 42 单元：两个候选估计器，惩罚参数 `alpha` 是验证集选出的（Ridge 1…"
+      ],
+      [
+        "R4c",
+        1561,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        1562,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        1563,
+        "单元格 2 句"
+      ],
+      [
+        "R2b",
+        1676,
+        "89 单元：- p.27 的错误选项各代表一种\"泄漏或失效\"：A 用了测试期的分布（…"
+      ],
+      [
+        "R1a",
+        1681,
+        "89 单元：❌ \"p.27 选 B，因为 LASSO 的惩罚是对系数的，和单位无关\"…"
+      ],
+      [
+        "R2b",
+        1681,
+        "89 单元：- ❌ \"p.27 选 B，因为 LASSO 的惩罚是对系数的，和单位无…"
+      ],
+      [
+        "R1a",
+        1702,
+        "100 单元：严谨地说，这是一个股-周面板（stock-week panel，行 = …"
+      ],
+      [
+        "R4c",
+        1718,
+        "单元格 2 句"
+      ],
+      [
+        "R1a",
+        1770,
+        "90 单元：先说人话：预测\"恒生指数成分股\"时有个陷阱——成分股每隔几个月就调整一次…"
+      ],
+      [
+        "R2a",
+        1770,
+        "167 单元 / 2 句：先说人话：预测\"恒生指数成分股\"时有个陷阱——成分股每隔几个月就调整一次…"
+      ],
+      [
+        "R2a",
+        1776,
+        "158 单元 / 3 句：它防的是一种隐蔽的泄漏——生存者偏差（survivorship bias…"
+      ],
+      [
+        "R2a",
+        1844,
+        "159 单元 / 3 句：第一，30 个名字记不住、也不必记，六个问题记得住；Class 5 讲\"…"
+      ],
+      [
+        "R4c",
+        1852,
+        "单元格 2 句"
+      ],
+      [
+        "R3a",
+        1875,
+        "712 单元无隔断"
+      ],
+      [
+        "R2b",
+        1903,
+        "103 单元：- 把 30 个指标想成六个科室的体检报告：每个科室开了四五张单子（血压…"
+      ],
+      [
+        "R2b",
+        1904,
+        "102 单元：- 换个角度：这六个问题都只看\"过去的价格和成交量\"，不看财报、不看新闻…"
+      ],
+      [
+        "R4b",
+        1949,
+        "单元格 44 单元：该指标在第 $t-1$ 周、股票池 $m$（恒指 80 只）内的截面排名…"
+      ],
+      [
+        "R4b",
+        1951,
+        "单元格 44 单元：中心化排名（centered rank）：百分位减 0.5，取值 −0.…"
+      ],
+      [
+        "R5a",
+        1979,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R5a",
+        1980,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R3a",
+        2003,
+        "688 单元无隔断"
+      ],
+      [
+        "R2b",
+        2036,
+        "84 单元：- 排名就像把一场考试的分数换成\"班级百分位\"：满分 100 与满分 1…"
+      ],
+      [
+        "R2b",
+        2037,
+        "101 单元：- 换个角度：排名是一种有意的信息丢弃——它扔掉了\"C 比 A 高一倍\"…"
+      ],
+      [
+        "R7a",
+        2054,
+        "浮点级误差；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R5b",
+        2078,
+        "一个 $$ 块放了多个等式；拆开并在中间加一句话"
+      ],
+      [
+        "R4b",
+        2085,
+        "单元格 48 单元：与持有期匹配的无风险收益：上一个日历月末的 3 个月国债年化收益率，换算…"
+      ],
+      [
+        "R7b",
+        2105,
+        "段内英文原话 27 词，放引用块并配中文"
+      ],
+      [
+        "R7a",
+        2111,
+        "复算记录；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R1c",
+        2114,
+        "2 个分号：零预测的误差 $= 1.9\\% - 0 = 1.9\\%$，平方 $= 3…"
+      ],
+      [
+        "R5a",
+        2114,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R7a",
+        2117,
+        "6 位以上小数、复算记录；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R5a",
+        2120,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R2b",
+        2165,
+        "92 单元：- 换个角度：\"零超额收益不等于零总收益\"这句话容易被忽略：基准说的是\"…"
+      ],
+      [
+        "R1a",
+        2188,
+        "88 单元：严谨地说：p.36 在 development 期的每一周，按某个滞后特…"
+      ],
+      [
+        "R7b",
+        2210,
+        "段内英文原话 26 词，放引用块并配中文"
+      ],
+      [
+        "R3a",
+        2234,
+        "576 单元无隔断"
+      ],
+      [
+        "R4b",
+        2291,
+        "单元格 48 单元：截距：训练变换后输入取 0 时的预期超额收益；只有在变换零点恰好代表中心…"
+      ],
+      [
+        "R4c",
+        2291,
+        "单元格 2 句"
+      ],
+      [
+        "R7b",
+        2311,
+        "段内英文原话 35 词，放引用块并配中文"
+      ],
+      [
+        "R1c",
+        2315,
+        "2 个分号：行数检查：$6{,}123 + 2{,}050 = 8{,}173$，与…"
+      ],
+      [
+        "R2b",
+        2354,
+        "84 单元：- 像一张\"通用体检评分表\"：每项指标的权重（斜率）对所有人一样，每个人…"
+      ],
+      [
+        "R1a",
+        2436,
+        "103 单元：这段改变了什么：任务单问题 1 里第三道选择题（p.38）的课堂原始记录…"
+      ],
+      [
+        "R2b",
+        2436,
+        "103 单元：- 这段改变了什么：任务单问题 1 里第三道选择题（p.38）的课堂原始…"
+      ],
+      [
+        "R2b",
+        2442,
+        "84 单元：- 像招聘时三个候选人笔试分数只差一分：这时该看谁更符合岗位要求，而不是…"
+      ],
+      [
+        "R1a",
+        2449,
+        "83 单元：题干明说三者都在一个标准误之内，此时可以按题设的一标准误简约规则选最低者…"
+      ],
+      [
+        "R2b",
+        2487,
+        "86 单元：- 累计方差曲线：横轴是\"保留多少个主成分\"，纵轴是\"保留了原始 30 …"
+      ],
+      [
+        "R7a",
+        2500,
+        "6 位以上小数、复算记录；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R1a",
+        2535,
+        "89 单元：主成分回归（Principal Component Regression…"
+      ],
+      [
+        "R5b",
+        2545,
+        "一个 $$ 块放了多个等式；拆开并在中间加一句话"
+      ],
+      [
+        "R4b",
+        2552,
+        "单元格 56 单元：第 $k$ 个主成分的权重向量（unit length，$\\lVert …"
+      ],
+      [
+        "R4c",
+        2552,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        2555,
+        "单元格 2 句"
+      ],
+      [
+        "R2a",
+        2560,
+        "152 单元 / 3 句：它把\"30 个相关的斜率\"换成\"K 个互不相关的斜率\"，共线性问题在第一…"
+      ],
+      [
+        "R5c",
+        2564,
+        "行内公式 61 字符，改独立公式：\\text{PC}_1 = 0.6 z_{\\text{mom"
+      ],
+      [
+        "R5c",
+        2566,
+        "行内公式 61 字符，改独立公式：\\hat r^e = 0.10\\% + 0.30\\%\\,\\t"
+      ],
+      [
+        "R1a",
+        2572,
+        "83 单元：p.43（讲义 p.43，视觉复核）：第一成分的载荷图里，`high52…"
+      ],
+      [
+        "R5c",
+        2585,
+        "行内公式 61 字符，改独立公式：\\text{PC}_1 = 0.6 \\times 1 + 0"
+      ],
+      [
+        "R5c",
+        2587,
+        "行内公式 96 字符，改独立公式：\\hat r^e = 0.10\\% + 0.30\\% \\ti"
+      ],
+      [
+        "R2b",
+        2602,
+        "91 单元：- 若 30 列完全不相关且方差相等，主成分方向不唯一。特征值表示协方差…"
+      ],
+      [
+        "R1a",
+        2624,
+        "82 单元：这段改变了什么：教授现场口头解读了 p.43 的载荷图——第一主成分正向…"
+      ],
+      [
+        "R2b",
+        2624,
+        "82 单元：- 这段改变了什么：教授现场口头解读了 p.43 的载荷图——第一主成分…"
+      ],
+      [
+        "R2b",
+        2630,
+        "125 单元：- 想象给 80 个人的 30 项体检数据\"画肖像\"：第一主成分是\"总体…"
+      ],
+      [
+        "R2b",
+        2631,
+        "107 单元：- 换个角度：PCR 是\"先无监督、后有监督\"——第一步没看收益（无监督…"
+      ],
+      [
+        "R8a",
+        2649,
+        "#### 2.7.2a PCR 与 PLS 共用四行数据：找到方向、拟合到新点（…"
+      ],
+      [
+        "R5a",
+        2655,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R7a",
+        2657,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R7a",
+        2658,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R7a",
+        2659,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R7a",
+        2660,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R7a",
+        2672,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R5a",
+        2676,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R7a",
+        2680,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R7a",
+        2686,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R7a",
+        2689,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R7a",
+        2690,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R7a",
+        2696,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R7a",
+        2700,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R1c",
+        2714,
+        "2 个分号：开发模型已冻结，K1 验证预测 0、MSE=4；K2 预测 2、MSE≈…"
+      ],
+      [
+        "R7a",
+        2716,
+        "复算记录；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R1c",
+        2730,
+        "3 个分号：失败：PCR 可丢掉低方差真信号；PLS 用训练标签可能追噪声；秩或样本…"
+      ],
+      [
+        "R5b",
+        2752,
+        "一个 $$ 块放了多个等式；拆开并在中间加一句话"
+      ],
+      [
+        "R4c",
+        2761,
+        "单元格 2 句"
+      ],
+      [
+        "R5a",
+        2769,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R1a",
+        2780,
+        "82 单元：为什么是协方差而不是相关系数：协方差同时包含\"一起动的程度\"和\"输入方向…"
+      ],
+      [
+        "R2b",
+        2780,
+        "82 单元：- 为什么是协方差而不是相关系数：协方差同时包含\"一起动的程度\"和\"输入…"
+      ],
+      [
+        "R1a",
+        2806,
+        "85 单元：回到体检的比方：PCR 先按\"人与人差别最大的轴\"打分，PLS 先按\"最…"
+      ],
+      [
+        "R2b",
+        2806,
+        "85 单元：- 回到体检的比方：PCR 先按\"人与人差别最大的轴\"打分，PLS 先按…"
+      ],
+      [
+        "R7b",
+        2850,
+        "段内英文原话 39 词，放引用块并配中文"
+      ],
+      [
+        "R1d",
+        2860,
+        "括号内 37 单元：`code/L03_linear_ml/01_reproduce_lec…"
+      ],
+      [
+        "R7a",
+        2860,
+        "复算记录；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R2b",
+        2887,
+        "81 单元：- ❌ \"PLS 的 +0.05% 最高，所以应该用 PLS\" → 验证…"
+      ],
+      [
+        "R1d",
+        2928,
+        "括号内 42 单元：`class03/stock_linear_test_predictio…"
+      ],
+      [
+        "R1c",
+        2930,
+        "2 个分号：三只股票的预测极差：$0.85\\% - (-0.24\\%) = 1.09…"
+      ],
+      [
+        "R5a",
+        2931,
+        "一段 4 个不同行内公式"
+      ],
+      [
+        "R1a",
+        2969,
+        "81 单元：严谨地说，这是 M01 六项规格（语言与包 / 数据 / 价格口径 / …"
+      ],
+      [
+        "R1a",
+        2973,
+        "104 单元：p.50 最后一句给了检查顺序：*\"Read the model com…"
+      ],
+      [
+        "R1a",
+        2987,
+        "81 单元：前后对照：`02:11:28`（PLS 取舍讨论结束）到 `02:12:…"
+      ],
+      [
+        "R2b",
+        2995,
+        "96 单元：- 把这条指令想成给分析师的工作单：第一段是\"做什么、用什么数据、按什么…"
+      ],
+      [
+        "R2b",
+        2996,
+        "82 单元：- 换个角度：\"refit through June 2025\"这几个字…"
+      ],
+      [
+        "R1a",
+        3011,
+        "84 单元：先说人话：在这个股票面板上，验证选出的 LASSO 惩罚（0.003）和…"
+      ],
+      [
+        "R7a",
+        3011,
+        "复算记录；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R2b",
+        3061,
+        "114 单元：- 换个角度：常数预测是收缩的极限形态——λ 大到把一切信号都压掉。它提…"
+      ],
+      [
+        "R2a",
+        3084,
+        "171 单元 / 4 句：先说人话：不问\"预测得准不准\"，改问\"预测高的股票是不是真的涨得多\"。做…"
+      ],
+      [
+        "R8b",
+        3084,
+        "小节首段 4 句；首段 ≤ 3 句，先给问题或结论"
+      ],
+      [
+        "R7b",
+        3092,
+        "段内英文原话 39 词，放引用块并配中文"
+      ],
+      [
+        "R1c",
+        3096,
+        "2 个分号：输入：某个测试周 $t$，79 只股票的预测 $\\hat r^{e}_{…"
+      ],
+      [
+        "R5a",
+        3105,
+        "一段 5 个不同行内公式"
+      ],
+      [
+        "R1a",
+        3160,
+        "93 单元：它是 §2.8（六模型 MSE 差不多）与 §2.9.3（Ridge 有…"
+      ],
+      [
+        "R7b",
+        3172,
+        "段内英文原话 27 词，放引用块并配中文"
+      ],
+      [
+        "R5c",
+        3176,
+        "行内公式 77 字符，改独立公式：[(0.1-0.2)^2 + (0.2-0.4)^2 + ("
+      ],
+      [
+        "R5c",
+        3177,
+        "行内公式 75 字符，改独立公式：[(0.1-0.4)^2 + (0.2-0.8)^2 + ("
+      ],
+      [
+        "R2a",
+        3235,
+        "170 单元 / 3 句：它是本讲的落点：\"预测得准\"和\"排得对\"是同一组预测的两种不同属性（p.…"
+      ],
+      [
+        "R4a",
+        3241,
+        "7 列"
+      ],
+      [
+        "R1c",
+        3255,
+        "2 个分号：显著性：t = 1.46 < 2，按常规标准不显著；命中率（价差为正的周…"
+      ],
+      [
+        "R1a",
+        3283,
+        "88 单元：这段改变了什么：教授用\"我想说服你们的经济学证据\"这句话为整个排序论证收…"
+      ],
+      [
+        "R2b",
+        3283,
+        "145 单元：- 这段改变了什么：教授用\"我想说服你们的经济学证据\"这句话为整个排序论…"
+      ],
+      [
+        "R7a",
+        3312,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R7a",
+        3314,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R1e",
+        3316,
+        "一段 3 处否定澄清"
+      ],
+      [
+        "R3a",
+        3298,
+        "554 单元无隔断"
+      ],
+      [
+        "R7a",
+        3332,
+        "6 位以上小数；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R1c",
+        3370,
+        "2 个分号：本节只能靠讲义与本笔记学；M03 当堂 Class 4 具体预告仍未录到…"
+      ],
+      [
+        "R7a",
+        3372,
+        "4 个时间戳；移到 §9 或折叠「复算与来源」"
+      ],
+      [
+        "R2b",
+        3378,
+        "115 单元：- 线性模型像一张对所有人相同的\"药物剂量表\"：每公斤体重多少毫克，对谁…"
+      ],
+      [
+        "R1a",
+        3379,
+        "93 单元：换个角度：本讲的六个模型在个股任务上分不出胜负（§2.8），一个可能的原…"
+      ],
+      [
+        "R2b",
+        3379,
+        "102 单元：- 换个角度：本讲的六个模型在个股任务上分不出胜负（§2.8），一个可能…"
+      ],
+      [
+        "R8a",
+        3398,
+        "### 2.10 2026-10-20 版本对齐：讲法调整与市场结果的小数差异"
+      ],
+      [
+        "R8b",
+        3400,
+        "小节首段 4 句；首段 ≤ 3 句，先给问题或结论"
+      ],
+      [
+        "R4c",
+        3406,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3407,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3409,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3490,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3539,
+        "单元格 2 句"
+      ],
+      [
+        "R4b",
+        3592,
+        "单元格 43 单元：对应 syllabus ILO 2「interpret and comp…"
+      ],
+      [
+        "R4b",
+        3601,
+        "单元格 42 单元：🎙️ `05:35`–`06:01`：*\"you will see to…"
+      ],
+      [
+        "R4b",
+        3602,
+        "单元格 41 单元：🎙️ `01:09:55`–`01:10:54`：*\"there's a…"
+      ],
+      [
+        "R4c",
+        3608,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3609,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3610,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3611,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3613,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3613,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3614,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3614,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3616,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3617,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3619,
+        "单元格 2 句"
+      ],
+      [
+        "R5c",
+        3626,
+        "行内公式 70 字符，改独立公式：L(\\alpha,\\beta) = \\frac{1}{2n}"
+      ],
+      [
+        "R1c",
+        3627,
+        "2 个分号：再各加一项：Ridge $\\frac{\\lambda}{2}\\sum\\b…"
+      ],
+      [
+        "R1c",
+        3628,
+        "3 个分号：说三句话：截距不罚；输入先用训练数据标准化；预测式 $\\hat\\alph…"
+      ],
+      [
+        "R5c",
+        3633,
+        "行内公式 78 字符，改独立公式：R^2_{\\text{OOS}} = 1 - \\text{S"
+      ],
+      [
+        "R1c",
+        3635,
+        "2 个分号：说明基准是什么（市场：滞后 MA(12)；个股：零），以及为什么基准必须…"
+      ],
+      [
+        "R1c",
+        3641,
+        "2 个分号：说出后果：泄漏 → 高估；测试集被用于选择 → 失去评估资格；"
+      ],
+      [
+        "R1c",
+        3646,
+        "2 个分号：区分两种评价：MSE / OOS $R^2$ 度量预测水平；分组价差度量…"
+      ],
+      [
+        "R5c",
+        3662,
+        "行内公式 108 字符，改独立公式：\\hat\\beta = \\operatorname{sign"
+      ],
+      [
+        "R6a",
+        3662,
+        "一段 3 处括号英文注释（约等于 3 个新术语）"
+      ],
+      [
+        "R2b",
+        3741,
+        "89 单元：1. 你的小组在 ML 作业里用 26 周验证期比较了 Ridge、LA…"
+      ],
+      [
+        "R4c",
+        3793,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3799,
+        "单元格 3 句：Ridge 三步流程；美国 alpha = 100、验证 27.02、O…"
+      ],
+      [
+        "R4c",
+        3807,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3808,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3817,
+        "单元格 3 句：日频 → 周度预测行；中心化排名；无泄漏"
+      ],
+      [
+        "R4c",
+        3819,
+        "单元格 2 句"
+      ],
+      [
+        "R4c",
+        3822,
+        "单元格 3 句：截面线性规则；周度切分表；恒生银行缺失"
+      ],
+      [
+        "R4c",
+        3841,
+        "单元格 2 句"
+      ],
+      [
+        "R8b",
+        4067,
+        "小节首段 4 句；首段 ≤ 3 句，先给问题或结论"
+      ],
+      [
+        "R6b",
+        58,
+        "一句 4 个术语（收缩、OLS、OOS、MA）：市场层：收缩确实把 OLS 的大错（美国 OOS $R^2$ −22.1…"
+      ],
+      [
+        "R6b",
+        66,
+        "一句 4 个术语（OLS、LASSO、Elastic Net、惩罚项）：写出OLS、Ridge、LASSO、Elastic Net 四个目标函数…"
+      ],
+      [
+        "R6b",
+        80,
+        "一句 4 个术语（OOS、低组、MSE、常数预测）： 一个模型可以 OOS $R^2$ 为负却排得出赚钱的高减低组合（Rid…"
+      ],
+      [
+        "R6b",
+        159,
+        "一句 4 个术语（OLS、前向选择、LASSO、Elastic Net）：模型包括 OLS、前向选择、Ridge、LASSO、Elastic Ne…"
+      ],
+      [
+        "R6d",
+        159,
+        "缩写“MA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        159,
+        "缩写“OLS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6b",
+        160,
+        "一句 4 个术语（技术指标、超额收益、PCR、PLS）：周度个股任务：用技术指标预测个股超额收益，与零预测比较；模型再加 PCR…"
+      ],
+      [
+        "R6d",
+        160,
+        "缩写“PCR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        160,
+        "缩写“PLS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        162,
+        "“样本外”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6b",
+        170,
+        "一句 7 个术语，核对是否需要拆解（MA、OLS、forward selection、LASSO、Elastic Net、PCR、PLS）：p.2 原文：*\"Monthly market excess retur…"
+      ],
+      [
+        "R6d",
+        227,
+        "缩写“DOI”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        239,
+        "缩写“ASR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        264,
+        "缩写“GKX”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        287,
+        "缩写“CSI”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        328,
+        "缩写“OLS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        334,
+        "“超额收益”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        383,
+        "缩写“C3”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        420,
+        "缩写“SSE”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        443,
+        "缩写“PCR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        443,
+        "缩写“PLS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        473,
+        "“样本外”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        489,
+        "缩写“MSE”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        544,
+        "缩写“MSE”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        566,
+        "缩写“OLS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        632,
+        "缩写“MA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        636,
+        "缩写“CTO”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        636,
+        "缩写“ASR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        698,
+        "缩写“OLS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        726,
+        "缩写“SSE”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        738,
+        "“超额收益”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        753,
+        "“样本外”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        780,
+        "缩写“MSE”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        796,
+        "“冻结”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        832,
+        "缩写“MA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        850,
+        "缩写“L1”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        869,
+        "缩写“ASR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        982,
+        "缩写“C1”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        1060,
+        "缩写“JSON”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        1062,
+        "缩写“KKT”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        1066,
+        "缩写“L2”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6b",
+        1270,
+        "一句 4 个术语（OLS、LASSO、Elastic Net、MSE）：下一节把 OLS、Ridge、LASSO、Elastic Net 的验证…"
+      ],
+      [
+        "R6b",
+        1277,
+        "一句 4 个术语（OLS、LASSO、Elastic Net、MSE）：讲义 p.21 的表是美国市场、四个宏观变量、36 个验证月的真实结果：…"
+      ],
+      [
+        "R6d",
+        1304,
+        "“标准误”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        1304,
+        "“显著”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        1306,
+        "缩写“HKSAR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        1329,
+        "“OOS”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        1364,
+        "缩写“MA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        1393,
+        "缩写“SSE”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        1409,
+        "缩写“OLS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        1427,
+        "“超额收益”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        1446,
+        "“冻结”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        1458,
+        "缩写“HKSAR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        1477,
+        "“年化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        1520,
+        "缩写“MA12”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        1591,
+        "缩写“MSE”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6b",
+        1631,
+        "一句 4 个术语（MSE、OLS、LASSO、Elastic Net）：p.26（讲义原题）：候选模型的验证 MSE：OLS 0.0025、Ri…"
+      ],
+      [
+        "R6d",
+        1649,
+        "缩写“C2”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        1700,
+        "“超额收益”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6b",
+        1702,
+        "一句 4 个术语（股-周面板、stock-week panel、截面、超额收益、技术指标）：严谨地说，这是一个股-周面板（stock-week panel，行 = …"
+      ],
+      [
+        "R6d",
+        1702,
+        "“截面”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        1706,
+        "“OOS”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        1728,
+        "“价差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        1776,
+        "“冻结”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        1859,
+        "缩写“C9”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        1873,
+        "缩写“OHLCV”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        1897,
+        "缩写“X1”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        1897,
+        "缩写“X2”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        1976,
+        "缩写“C4”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2054,
+        "缩写“NA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2089,
+        "缩写“FRED”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2111,
+        "缩写“C5”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2111,
+        "缩写“C6”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2115,
+        "“年化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        2122,
+        "缩写“PCR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2137,
+        "“常数预测”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        2137,
+        "缩写“MSE”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2186,
+        "“等权”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        2202,
+        "“五分位”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        2210,
+        "缩写“HSI”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2223,
+        "“标准误”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        2458,
+        "缩写“PCR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2458,
+        "缩写“PLS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2502,
+        "缩写“C7”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2537,
+        "缩写“OLS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2566,
+        "“超额收益”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        2574,
+        "缩写“PC2”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2580,
+        "缩写“MSE”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2581,
+        "“冻结”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        2624,
+        "缩写“RSI”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2631,
+        "“OOS”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        2668,
+        "缩写“K1”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6b",
+        2680,
+        "一句 4 个术语（PC1、PCR、SSE、OLS）：只保留 PC1 的 PCR 斜率 $T1^\\top y/(T1^\\top…"
+      ],
+      [
+        "R6d",
+        2680,
+        "缩写“SSE”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6b",
+        2700,
+        "一句 4 个术语（PCR、K1、K2、PLS）：PCR K1 输出 0；PCR K2 或 PLS K1 的得分差方向=0…"
+      ],
+      [
+        "R6d",
+        2700,
+        "缩写“K2”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6b",
+        2714,
+        "一句 5 个术语（冻结、K1、MSE、K2、SSE）：开发模型已冻结，K1 验证预测 0、MSE=4；K2 预测 2、MSE≈…"
+      ],
+      [
+        "R6b",
+        2716,
+        "一句 4 个术语（PCA、PCR、K2、冻结）：选定后加入验证这一行作 5 行 pre-test，重新算每列均值/sd/…"
+      ],
+      [
+        "R6d",
+        2716,
+        "缩写“PCA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2718,
+        "缩写“K5”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2787,
+        "“常数预测”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6b",
+        2818,
+        "一句 5 个术语（OLS、LASSO、Elastic Net、PCR、PLS）：六个线性模型（OLS、Ridge、LASSO、Elastic Net、P…"
+      ],
+      [
+        "R6d",
+        2822,
+        "“常数预测”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        2829,
+        "缩写“MSE”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2829,
+        "“OOS”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        2829,
+        "缩写“PCR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6b",
+        2835,
+        "一句 4 个术语（超额收益、PCR、PLS、OOS）：这是个股任务的\"判决\"，而且判决很诚实：线性模型对周度个股超额收益几乎没…"
+      ],
+      [
+        "R6d",
+        2835,
+        "“超额收益”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        2835,
+        "缩写“PLS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6b",
+        2850,
+        "一句 4 个术语（PCR、PLS、OOS、excess return）：原文：*\"Validation selects PCR with fiv…"
+      ],
+      [
+        "R6d",
+        2854,
+        "缩写“OLS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6b",
+        2862,
+        "一句 6 个术语，核对是否需要拆解（OOS、OLS、LASSO、Elastic Net、PCR、PLS）：六个 OOS $R^2$ 逐一对上：OLS −0.531%、Ridge …"
+      ],
+      [
+        "R6d",
+        2869,
+        "缩写“EN”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6b",
+        2881,
+        "一句 5 个术语（MSE、PCR、PLS、OOS、OLS）：这段改变了什么：确认了验证 MSE 几乎相同、只有 PCR/PLS 测试…"
+      ],
+      [
+        "R6d",
+        2883,
+        "缩写“GKX”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2890,
+        "“价差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        2931,
+        "缩写“CCB”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        2932,
+        "“年化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6b",
+        2963,
+        "一句 5 个术语（OLS、LASSO、Elastic Net、PCR、PLS）：先说人话：这一页不是代码，是一条给 AI 编码工具的指令——用周度股票面…"
+      ],
+      [
+        "R6d",
+        3013,
+        "“截面”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        3017,
+        "“等权”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        3078,
+        "“价差”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6b",
+        3084,
+        "一句 4 个术语（预测分组排序、forecast sort、最高组、最低组、高减低价差、high-minus-low spread）：这叫预测分组排序（forecast sort，按模型预测把股票分成若干组…"
+      ],
+      [
+        "R6d",
+        3084,
+        "“超额收益”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        3084,
+        "“等权”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        3084,
+        "“最高组”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        3101,
+        "“显著”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        3107,
+        "缩写“C8”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        3112,
+        "“截面”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        3112,
+        "“常数预测”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        3142,
+        "“年化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        3154,
+        "缩写“MSE”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6b",
+        3160,
+        "一句 4 个术语（MSE、价差、OOS、常数预测）：它是 §2.8（六模型 MSE 差不多）与 §2.9.3（Ridge 有…"
+      ],
+      [
+        "R6d",
+        3160,
+        "“OOS”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        3218,
+        "缩写“SE”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        3222,
+        "“冻结”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        3235,
+        "“标准误”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6b",
+        3257,
+        "一句 6 个术语，核对是否需要拆解（OLS、价差、PCR、PLS、LASSO、Elastic Net）：同一张 CSV 里其他可排序模型：OLS 价差 +0.32%（t = 1…"
+      ],
+      [
+        "R6d",
+        3257,
+        "缩写“OLS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        3257,
+        "缩写“PCR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        3257,
+        "缩写“PLS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        3265,
+        "“换手”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        3302,
+        "“敞口”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6b",
+        3310,
+        "一句 4 个术语（周价差、SE、HAC、IID）：同周平均先消去部分个股噪声，跨周价差序列才是本题 SE 的输入；有周依赖…"
+      ],
+      [
+        "R6d",
+        3310,
+        "缩写“HAC”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        3310,
+        "缩写“IID”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        3411,
+        "缩写“PCR”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        3411,
+        "缩写“PCA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        3413,
+        "缩写“README”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        3413,
+        "缩写“ZIP”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        3415,
+        "缩写“MA”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        3417,
+        "缩写“OLS”首用未识别到中文说明；人工核对"
+      ],
+      [
+        "R6d",
+        3417,
+        "“OOS”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6d",
+        3425,
+        "“冻结测试”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"
+      ],
+      [
+        "R6b",
+        3741,
+        "一句 4 个术语（LASSO、Elastic Net、MSE、标准误）：你的小组在 ML 作业里用 26 周验证期比较了 Ridge、LASSO…"
+      ],
+      [
+        "R8c",
+        3423,
+        "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"
+      ],
+      [
+        "R4f",
+        587,
+        "表头“验证MSE×10⁴”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        790,
+        "表头“n”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        790,
+        "表头“冻结对象”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        790,
+        "表头“软件alpha”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        790,
+        "表头“等价理论lambda”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        927,
+        "表头“beta_2”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        967,
+        "表头“联邦基金利率”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        1114,
+        "表头“LASSO份额ρ”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        1287,
+        "表头“验证MSE×10⁴”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        1651,
+        "表头“标准化结果”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        1919,
+        "表头“平均名次”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        2321,
+        "表头“波动率输入”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        2411,
+        "表头“验证MSE”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        2411,
+        "表头“非零系数”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        2841,
+        "表头“验证MSE×10⁴”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        2841,
+        "表头“测试OOSR^2（对零）”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        2920,
+        "表头“预测hatr^e_i,t”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        2920,
+        "表头“实现r^e_i,t”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        3166,
+        "表头“实现超额收益”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        3166,
+        "表头“模型A预测”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        3166,
+        "表头“模型B预测”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        3210,
+        "表头“高组收益”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        3210,
+        "表头“低组收益”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        3241,
+        "表头“Ridge预测分组”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        3241,
+        "表头“Q1”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        3241,
+        "表头“Q2”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        3241,
+        "表头“Q3”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        3241,
+        "表头“Q4”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        3241,
+        "表头“Q5”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ],
+      [
+        "R4f",
+        3241,
+        "表头“Q5−Q1”未识别到专门说明；核对含义、算法或来源、单位和一行读法"
+      ]
+    ]
+  }
+}
