@@ -624,3 +624,13 @@ Notebook 第 23 格（0 起算 cell 22）三题内部 50／30／20 共 100 分�
 
 
 2026-10-21 本人在本对话确认“已提交”。状态记为已提交（本人确认）；未回读 Canvas 提交回执、远端附件字节或准确提交时刻，未核成绩。
+
+## 🎙️ M07三源课堂行政增量（2026-10-21）
+
+本节只登记课堂明确行政说明，不改变A09等本人作业／提交／评分状态，也不补造新的截止、points或提交入口。课堂实际日期仍未核。
+
+| 事项 | 已核内容 | 来源与限制 |
+|---|---|---|
+| 当日Participation／Quiz操作 | 教授说当天没有实际quiz，但会在Canvas建立quiz项；到场学生不要提交，不提交得到当天attendance 1分，提交反而会损失部分attendance分 | S17 `02:18`–`03:24`：*"Today we have no quiz"*、*"do not submit"*、*"if you do not submit, you get one point for today's attendance"*。这是当日特殊操作，不推广为其他周规则；没有替本人点击或登记提交 |
+| 历年Quiz练习 | 课堂展示上一年SMA/SES题并给3–4分钟尝试；讲义已在Canvas，无需拍照 | S17 `02:52`–`06:46`；是课堂参考题型，不等于本日需要提交，也不冒充final真题 |
+| Tutorial时段 | lecture在S17 `43:25`结束，`43:29`说明*"we have a tutorial at 2pm"* | 只确认该次课堂的2pm tutorial提示；本次未取得tutorial录音，T08继续pending |

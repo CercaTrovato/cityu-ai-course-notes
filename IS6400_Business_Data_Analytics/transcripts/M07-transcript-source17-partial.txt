@@ -1,0 +1,1245 @@
+00:00 
+Because we do not have y0, right? We start from t equals to 1 
+
+00:04 
+Now, using this formula 
+
+00:07 
+So, if we have L1, then we can calculate L2 
+
+00:13 
+So, what is L2? 
+
+00:14 
+So, alpha is the human menu setting 
+
+00:18 
+So, alpha is known, and L1 is known, right? 
+
+00:22 
+And y2 is known 
+
+00:24 
+So, we can use y2 with L1 
+
+00:26 
+So, L1 is known, to get calculated L2 
+
+00:32 
+Now, once L2 is known 
+
+00:33 
+So once we get L2, we can get t equals to 3. 
+
+00:40 
+L3 is the weighted average of L2, which was calculated before, and y3. 
+
+00:46 
+Once we know L3, we can calculate L4. 
+
+00:50 
+Use L4 to calculate, and use L to calculate. 
+
+00:57 
+Once we got Lt, we got ft+. 
+
+01:02 
+So, according 
+
+01:08 
+to the time information, the column for time and the column for the prediction target, 
+
+01:13 
+then we need to generate a new column called horizontal pattern of the level of LT. 
+
+01:20 
+And the initial value of LT for L1, so for the first one, for the first row, T equals to 1. 
+
+01:28 
+So for the first row, L1 equals to Y1. So this is YT, right? 
+
+01:33 
+And this is T, so LT, we are trying to calculate. 
+
+01:39 
+So once we have L1, then we can use L1 together with Y2, using this alpha value to calculate L2. 
+
+01:49 
+Now I use LQ together with Y3 to calculate L until we calculate LT. 
+
+01:57 
+Is 
+
+02:02 
+that clear how I calculate new corner of LT using the original YT? 
+
+02:07 
+Good so far? 
+
+02:10 
+So you may need to be able to calculate this by yourself. 
+
+02:14 
+Let me see your quiz questions. 
+
+02:18 
+So today we have no quiz. 
+
+02:21 
+Okay? Today we have no quiz. 
+
+02:23 
+But I will establish a quiz question or quiz submission on Canvas. 
+
+02:31 
+So please do not stop me. 
+
+02:34 
+For all the students, do not submit the quiz question on Canvas for today. 
+
+02:40 
+If you submit, you lose some points for today's attendance. 
+
+02:45 
+But you may take a look at this quiz question. 
+
+02:49 
+So we take a look at this quiz question. 
+
+02:52 
+So this quiz question is what we have from last year. 
+
+02:54 
+So you have to have this slide on Canvas. 
+
+02:57 
+You don't have to take pictures. 
+
+03:00 
+So here, so let's see the question 2. 
+
+03:03 
+So do you want to try about three or four minutes to see whether you can solve this question? 
+
+03:09 
+So you may take a look. 
+
+03:12 
+What is the quiz question from last year? 
+
+03:15 
+Okay? 
+
+03:17 
+Again, so for students who come to class, do not submit the quiz question today. 
+
+03:22 
+Okay? 
+
+03:22 
+Do not. 
+
+03:24 
+And if you do not submit, you get one point for today's attendance. 
+
+03:29 
+Okay. 
+
+03:32 
+So look at this quiz question. 
+
+03:37 
+So typically you will see the two columns of data. 
+
+03:40 
+We have one column is for t, the other column is for the historical variation of yt. 
+
+03:46 
+And we may want you to use the moving average. 
+
+03:50 
+So we will tell you the window size. 
+
+03:51 
+And you need to use the simple moving average to make the predictions. 
+
+03:58 
+Alternatively, I will ask you that once I specify the alpha for you, the importance for alpha, 
+
+04:04 
+how we can use the simple exponential smoothing to make predictions. 
+
+04:09 
+For example, if you want to use alpha, then you may need to calculate a new column of L, T. 
+
+04:15 
+And for a new column of L, T, so we know that L1 equals to the same Y1. 
+
+04:26 
+So L1 equals to Y1. 
+
+04:28 
+Now starting from L2. 
+
+04:30 
+So L2, this value equals to 1 minus alpha, L2 minus 1, which is 266. 
+
+04:42 
+plus alpha y2, and y2 is 145.9, right? 
+
+04:49 
+So this is the formula we have to calculate L2 
+
+04:54 
+Now once we have L2 here, so what we need to calculate for L3 
+
+05:01 
+So for L3, now this number is not L1, it is L2, we just calculated 
+
+05:05 
+plus alpha times 13.1, right? y3 
+
+05:14 
+now you can rolling calculating all last 
+
+05:20 
+one and you may use the last one to make 
+
+05:22 
+the next exactly what's 
+
+05:30 
+a good so you know why it is so you may take a look 
+
+05:36 
+at this let me the 
+
+05:41 
+assignment you have no 
+
+06:05 
+idea what I think here please write 
+
+06:09 
+down write down the hand note and you may know how to solve similar question 
+
+06:46 
+again please do not stop me okay 
+
+06:51 
+so if you have no questions then let's 
+
+06:53 
+continue so so far you realize that no matter whether we are using the simple 
+
+07:00 
+exponential smooth things so here we use the level LT as my feature level will 
+
+07:09 
+continue or if we use the series here we are calculate for example this for 
+
+07:17 
+example level and still for the simple movie average we're taking a simple way 
+
+07:24 
+calculate the horizontal level. So among the three statistical methods, we are trying to use, or we assume, a horizontal pattern 
+
+07:34 
+and we are trying to use the horizontal level as my future prediction. So in other words, these three methods here, they do not, 
+
+07:51 
+but in our real world, have the chain pattern. So it's not a flat up 
+
+07:59 
+chain or down chain. So here, double 
+
+08:06 
+moving average. 
+
+08:07 
+So the double moving average, 
+
+08:12 
+moving average, so starting from the original observations, 
+
+08:17 
+yt, we first calculate the simple moving average recorded by mt. 
+
+08:23 
+Now, we calculate the average value, the moving average value of mt. 
+
+08:30 
+So we take another moving window, and the moving window will calculate the average value 
+
+08:36 
+of mt for a matrix. 
+
+08:39 
+And then we record it as dc. 
+
+08:42 
+So what's the difference between these? 
+
+08:45 
+Now if you take a look at MT, 
+
+08:50 
+we will consider the most recent average value, the most recent of the vision. 
+
+08:55 
+This record might be 
+
+09:01 
+using the most recent. 
+
+09:09 
+But for this one, because we are using some old MT, we 
+
+09:15 
+actually represent some old. 
+
+09:18 
+Imagine 
+
+09:23 
+that I have my most recent horizontal level, and I have the old long -term horizontal level. 
+
+09:30 
+So the gap between this horizontal level actually indicates the change from long-term. 
+
+09:36 
+We 
+
+09:39 
+have this kind of trend pattern TT defined as the gap between the long term and short term 
+
+09:45 
+divided by the number of periods between these two average horizontal levels. So once we have the TT 
+
+09:52 
+then we can use LT and T together with the future number of periods K close 
+
+10:01 
+to 1. 
+
+10:02 
+So I'm using this formula to make the next data. 
+
+10:15 
+So this is to use the double moving average to get 
+
+10:19 
+a slope or to get a change. Now why is the double -moving average is 
+
+10:28 
+starting from this stock observation. So this is my yt. So I have y1, y2, y3, until yt. Now using the original observation of yt, I will first calculate the mt. And I take the average of these three observations, I get the force of the vision of mt. And then for this moving average of these three observations, 
+
+10:58 
+And I will get the second mt, and the third mt, fourth mt, so from period to period, 
+
+11:13 
+for this one, for this mt, or for this mt, it captures the most recent observations of yt, and they represent the most recent levels of your time series. 
+
+11:24 
+Now starting from mt, starting from this line, the mt, I will use the average value of this 
+
+11:33 
+three mt values to calculate the dt, the double moving average dt. Now you can see the double 
+
+11:42 
+moving average dt, because it considers the three moving average values of mt, it's actually 
+
+11:48 
+the moving average, it calculates all these historical levels, right? It actually represents 
+
+11:56 
+present a long -term level compared with MT. Now we want to use this, the 
+
+12:05 
+MT which is 
+
+12:06 
+represent the short-term level and their average at this time point and DT is the 
+
+12:14 
+double moon average level and their average time period is this one. So we 
+
+12:20 
+take the gap between MT and DT together with the time intervals between 
+
+12:26 
+between these two values, and then we will be able to calculate 
+
+12:29 
+from long term to short term changes 
+
+12:37 
+per time interval. So we have mt minus dt 
+
+12:42 
+divided by this time interval between mt and dt 
+
+12:46 
+then we will be able to get the slope. 
+
+12:50 
+So after we get the slope 
+
+12:52 
+and we will be able to use the slope together with the level 
+
+12:56 
+to make future, so that's how the double moving average can help us 
+
+13:01 
+identify the chain from completing the short-term level and the long-term level 
+
+13:06 
+so that's the double-moving average. What we can see for the double-moving average 
+
+13:12 
+to 
+
+13:15 
+get these two, 
+
+13:19 
+we realize that we may need a more strict 
+
+13:24 
+visual change 
+
+13:27 
+then we get the whole linear. The whole linear method is also very very very 
+
+13:34 
+important. You may need to remember these formulas to use the whole linear 
+
+13:43 
+model to decompose the time series patterns from the original time series. So the whole 
+
+13:51 
+linear model is a combination of the simple exponential smoothing together with the chain 
+
+13:56 
+pattern. It's useful for modeling the mixed patterns of the chain pattern together with 
+
+14:03 
+the horizontal level. Now let's see how it works. So in order to run the whole linear 
+
+14:13 
+We assume that the historical time series data contains two patterns. 
+
+14:19 
+The first one is recorded as LT. 
+
+14:22 
+We need to quantify the level LT. 
+
+14:25 
+And also we need to quantify a slope, the chain of. 
+
+14:30 
+Now, let's see how we get LT and TT. 
+
+14:37 
+So if we do not have the chain pattern or the slope equal to 0, 
+
+14:42 
+then for the formula of LT, if the t minus 1 or if the chain pattern is 0, then we can see 
+
+14:52 
+this formula will be reduced to the simple exponential smoothing, right? But 
+
+14:59 
+because of the chain pattern, your previous level is also affected by the 
+
+15:05 
+chain pattern in the previous time period. So when we calculate the level, we are still taking 
+
+15:11 
+in the weighted average. And the most recent observation of Yt, it is weighted by alpha. 
+
+15:17 
+But for my previous level, it is calculated by this term, the LT minus 1 plus the influence 
+
+15:24 
+in the previous period, T minus 1. So we have the weighted sum here to calculate LT. Now, 
+
+15:34 
+in addition to LT, we also need to maintain a new column to 
+
+15:41 
+use the TT to quantify the 
+
+15:44 
+influence of your time here we still have to reach the end so here we 
+
+15:50 
+introduce a new 
+
+15:58 
+beta is also taking the between the most recent of pattern 
+
+16:03 
+calculation or chain pattern and the my previous chain so beta is weighted up 
+
+16:10 
+for the most recent chain pattern quantified by LT minus LT minus one the 
+
+16:16 
+gap between the current level and my previous level so this is the most 
+
+16:22 
+with the information about the slope I can get. Other term is weighted by 1, beta is slope 
+
+16:29 
+we calculate 
+
+17:11 
+the yt, right? We want to decompose, so this is t, this is yt, so we want to 
+
+17:18 
+decompose t and yt into the and 
+
+17:25 
+tt to make future prediction. The 
+
+17:32 
+alpha and 
+
+17:33 
+beta value here. Alpha is the importance for the level calculation, and beta is the 
+
+17:40 
+of the importance for the chain pattern. Now, starting from here, I know yt, so the first 
+
+17:48 
+row here is still t equals to 1. It 
+
+17:56 
+is still t equals to 1. Now, for my first period, t 
+
+18:01 
+equals to 1, my l1, so this is l1, right, equals to y1, my initialization. Now, what 
+
+18:10 
+is the chain for my first period? For my first period, because we do all the level information, 
+
+18:17 
+So the chain pattern for my fourth period initialize to be so 
+
+18:26 
+you need this to initialize the value to the 
+
+18:32 
+oldest day 
+
+18:33 
+So now to the time P. 
+
+18:38 
+Let's see how this value is 
+
+18:44 
+what? 
+
+18:54 
+plus 1 minus alpha l1 
+
+18:56 
+plus t1 right equals 
+
+19:03 
+alpha times y2 plus 
+
+19:11 
+1 minus alpha 
+
+19:13 
+Times what? l1 right 
+
+19:23 
+t1 which is 0 now 
+
+19:36 
+What is t2? 
+
+19:40 
+t2 is calculated as the beta times the most recent level right 
+
+19:47 
+The most recent level is L2 minus L1. 
+
+19:50 
+So you can see in the most recent observation, 
+
+19:52 
+between L1 and L2, we see an uptrend. 
+
+19:56 
+The level increased, right? 
+
+19:58 
+We get L2 minus L1. 
+
+20:01 
+So this is L2, which was calculated before, 
+
+20:04 
+minus L1 here. 
+
+20:06 
+And the plus, which is the weight is 1 minus beta of T1. 
+
+20:16 
+So what is T1? 
+
+20:17 
+And 
+
+20:22 
+following this formula, we get T. 
+
+20:31 
+After that, we need to calculate what? 
+
+20:34 
+This 
+
+20:39 
+number is calculated by alpha times this number plus 1 minus alpha times L2. 
+
+20:47 
+So 
+
+20:52 
+we get L3. 
+
+20:53 
+And using L3, we will be able to calculate beta times the last 1 minus beta times this number. 
+
+21:04 
+So we can start the period t equals to 1 until 
+
+21:13 
+the last. 
+
+21:26 
+So you know why I keep that 
+
+21:31 
+as the bonus. 
+
+21:33 
+Okay, 
+
+21:39 
+so once we have given these 
+
+21:46 
+any questions, after 
+
+21:53 
+the whole thing is 
+
+21:58 
+composed, 
+
+21:58 
+so yt into Q quantified pattern 
+
+22:07 
+present the season 
+
+22:12 
+to season then 
+
+22:16 
+we need to further 
+
+22:19 
+more flexible one 
+
+22:21 
+then pattern into the level and chain p 
+
+22:31 
+the view of the mission now 
+
+22:49 
+we have this 
+
+22:49 
+for 
+
+22:53 
+using this formula we want to introduce a seasonal index of x what 
+
+23:04 
+does that 
+
+23:04 
+mean let me give you example so soon you will learn for the tutorial we have the 
+
+23:15 
+hot hot hot 
+
+23:17 
+hot 
+
+23:17 
+hot 
+
+23:18 
+hot 
+
+23:18 
+hot 
+
+23:19 
+hot 
+
+23:19 
+Q1, Q2, Q3, Q4, and the CVD is the number of deaths for this kind of disease. 
+
+23:30 
+So you can see during the winter season, Q4, the number of deaths will be because some senior, old people, they have 
+
+23:47 
+Q2, Q4, and 
+
+23:54 
+then QQ4. 
+
+23:57 
+It's 
+
+24:01 
+a peak. 
+
+24:02 
+There 
+
+24:07 
+is one horizontal line here, and the seasonal index will change the value from the horizontal level to the peak or bottom. 
+
+24:20 
+The influence of Q4 is actually makes the horizontal baseline by a certain number. 
+
+24:30 
+For example, if the bottom line is 1K, then for every Q4, it is 1K times a seasonal index of Q4, 
+
+24:39 
+which may represent the influence is 1.1. 
+
+24:42 
+So in other words, the number of observations, the Yt, will be about 10% higher than the baseline. 
+
+24:52 
+And for every screen here, the value for every Q1, then maybe it is the baseline 1K times 0.8, 
+
+25:07 
+which will be 20% lower than the baseline for the screen semester for the Q1. 
+
+25:15 
+So the influence of the season will introduce a multiplier to the baseline, to the level and the change. 
+
+25:23 
+Let's see how we can use seasonal influence. 
+
+25:27 
+So in addition, you need to maintain another 
+
+25:41 
+weighted sum. 
+
+25:43 
+Now the most recent signal index is the yt divided by lt. 
+
+25:52 
+So once we have this yt, so we divide this yt by this lt, 
+
+25:58 
+now we get this signal influence. 
+
+26:02 
+The most recent multiplier by this, 
+
+26:08 
+so it is weighted by gamma. 
+
+26:10 
+And the influence of the theorem of q1, 
+
+26:14 
+it is weighted by another term of the previous signal index, 
+
+26:22 
+t minus m. 
+
+26:23 
+m is the number of signal 
+
+26:29 
+indexes, and this 
+
+26:37 
+is how we get st. 
+
+26:40 
+Because of the inference, the L will be kindly different. 
+
+26:45 
+Now the most recent level here is actually yt minus the signal index inference, st minus m. 
+
+26:54 
+So it calculates the most recent level, and together with my previous level. 
+
+27:02 
+calculation and the TT remains the same and the ST is what we mentioned before 
+
+27:07 
+and finally we can use these three patterns so after we quantify these three 
+
+27:13 
+patterns we can aggregate them together to make the final prediction 
+
+27:19 
+now we can see the LT plus KTT represent my baseline level for the future period 
+
+27:27 
+it's 
+
+27:33 
+a horizontal together with chain patterns and this will calculate the 
+
+27:38 
+baseline and the baseline will be multiplied by the signal influence 
+
+27:44 
+future plus 
+
+27:49 
+k minus n once we have all these use the pattern chain pattern 
+
+27:56 
+together with the signal pattern to calculate the future demand so 
+
+28:05 
+for this 
+
+28:06 
+page of the formulas you do not need to remember this okay you do not need to 
+
+28:12 
+write these formulas into your cheat sheet because you are not be challenging 
+
+28:16 
+to do the winter. But you may need to understand what does the whole winter do. Okay? And 
+
+28:27 
+see 
+
+28:28 
+the pattern in the calculation. 
+
+28:32 
+That's for the whole winter model. Now in today's tutorial, 
+
+28:37 
+you will learn the ETS library. The ETS model integrates the random error, the change pattern, 
+
+28:45 
+the dynamic pattern into a single model. So the model is called the ETS model. And by 
+
+28:51 
+By changing all these settings, we can introduce the check pattern or signal pattern into the model setting. 
+
+28:59 
+And then this single library will be useful to model any model we learn. 
+
+29:08 
+So you will learn how to do that in today's tutorial. 
+
+29:13 
+Let's recall what we have learned so far. 
+
+29:17 
+So we learned so many statistical methods. 
+
+29:23 
+Recall all these statistical methods in the whole vector, or whole linear, or the simple exponential smoothing. 
+
+29:34 
+We do not use any training algorithms, we do not introduce an objective function, we do not introduce the training algorithm. 
+
+29:46 
+So what we have done so far, for all these statistical methods, we just use YT to keep calculating the LT, TT, and ST, right? 
+
+30:01 
+We use the old observations and the decomposed observations. In 
+
+30:08 
+this kind of calculation, we do not introduce any learning parameters. 
+
+30:12 
+These 
+
+30:19 
+calculations, they are super fast. 
+
+30:21 
+They do not try to minimize the change 
+
+31:35 
+feature we have NYT, right? 
+
+31:40 
+Now the relationship will be quantified by this intercept and slope. 
+
+31:45 
+Original 
+
+31:50 
+data into the linear regression model, we 
+
+31:55 
+will be able to get A and B. 
+
+31:58 
+So for example, if we have the time series here, we can just feed the data bonds into the linear regression. 
+
+32:04 
+The linear regression will return the intercept and slope for me. 
+
+32:08 
+But 
+
+32:11 
+we can see, once we get A and B, actually we hold, assumption 
+
+32:21 
+is the flow pattern specified by the number B is constant across the whole training period. 
+
+32:31 
+Because flow is constant with that number right after the model training. 
+
+32:37 
+So you get a straight linear line here, starting from the old 1994 to the most recent of the version of 2009. 
+
+32:49 
+And once you use the linear regression to do chaining in this formula, and take the time t as my feature or number, 
+
+32:57 
+and you get the number b for the slope, of course you can get the chain pattern for the whole period. 
+
+33:03 
+But you also hold the assumption that this slope is constant. 
+
+33:08 
+But if you take a look at this original data set here from the visualization, we know, 
+
+33:13 
+at the very beginning of the slope, the chain pattern is very small, right? 
+
+33:18 
+And slope in the middle or in the late stage, they become large. 
+
+33:23 
+And if you assume the slope to be constant, 
+
+33:27 
+so you can see at the very beginning, the early stage, 
+
+33:30 
+my predicted values are 
+
+33:34 
+higher than the true values. 
+
+33:36 
+Because for the true values, their slope is 
+
+33:41 
+smaller. 
+
+33:48 
+In the middle late stage here, because the real slope is larger than the slope, 
+
+33:56 
+then your predicted value by this linear line will be smaller. 
+
+34:14 
+limitation may make of for 
+
+34:18 
+why the predictions linear line may provide 
+
+34:24 
+performance then the statistical methods here so you can see even for the whole 
+
+34:30 
+linear model here the value of 
+
+34:36 
+pattern will change and 
+
+34:42 
+then you can make the 
+
+34:45 
+slope pattern recorded by regression 
+
+34:52 
+introduction so 
+
+34:56 
+this is a strong assumption 
+
+34:57 
+sometimes 
+
+35:05 
+so yt is following this formula with t so actually it is not a 
+
+35:11 
+linear formula. 
+
+35:17 
+It's not linear. So here, this is not a linear 
+
+35:23 
+formula. 
+
+35:30 
+Of course, we can do that. So what we need to do is 
+
+35:33 
+first to do the log transformation of your y t, 
+
+35:36 
+transform your y t into a new column. 
+
+35:41 
+And so this becomes my 
+
+35:43 
+new y t, right? And then we use this formula. So we will be able 
+
+35:48 
+to capture the relationship between log y t and the time 
+
+35:53 
+time we can use the relationship between log y t and t to make 
+
+35:58 
+So after I predict log yt plus 1, then I can use the predictive value to re-template yt using the log yt. 
+
+36:08 
+So this is how we can also use the linear regression to capture the multiplicative chain from your historical time series observations. 
+
+36:22 
+But still here, the limitation or still assumption that... 
+
+36:36 
+Now finally 
+
+36:40 
+seasonal pattern. Now can we use the linear regression formula to the influence of the seasonal pattern and then use the chain and seasonal pattern together to make future prediction using the relationship from the linear regression. Of course we can do that. 
+
+37:02 
+Imagine that for the focus 
+
+37:28 
+Now for this for you need 
+
+37:33 
+Bubbles, how many dummies do we need to transform the 
+
+37:43 
+three right? Oh, they cause 
+
+37:50 
+Linear regression with 
+
+37:52 
+Holiday 
+
+37:56 
+Remember that yes, 
+
+38:01 
+it's a long time ago about five weeks or six within that totally forget 
+
+38:08 
+get possible 
+
+38:11 
+because we may have 
+
+38:18 
+what I have that are you need to so 
+
+38:24 
+if you have 
+
+38:25 
+four unique categorical value dummy 
+
+38:31 
+variables if you have n unique category n -1 dummy 
+
+38:37 
+variables so here we need to introduce three dummy variables to indicate whether 
+
+38:42 
+this is q1 or not whether this is q2 or not or whether this is q3 or not once we have dummy 
+
+38:49 
+then we can have this linear line. 
+
+38:55 
+Now the linear line, the previous field captures the chain pattern, right? 
+
+39:06 
+Here we have the input of the three-quartile index. 
+
+39:11 
+Now where is Q first? 
+
+39:17 
+Q B2 represents. B2 represents that once the time is the same, 
+
+39:21 
+it is Q, then the observation of the Q1 will be B2 compared with the... 
+
+39:34 
+Now once we have two rows, two columns of data, the quota and the cells together with the three dummies, 
+
+39:42 
+then we can fit the features including the time t, the dummy q1, which is 0,1, dummy q2, and dummy q3. 
+
+39:53 
+So we fit these four features together like cells by 
+
+40:04 
+minimizing the sum square 
+
+40:08 
+to get the fitting. 
+
+40:09 
+We 
+
+40:12 
+will get the coefficient and 
+
+40:17 
+the coefficients for dummy variables. 
+
+40:20 
+We 
+
+40:33 
+still hold a very strong assumption that the influence of the quarter index may become 
+
+40:40 
+constant number. 
+
+40:41 
+And it will not change from for the whole changing period. 
+
+40:48 
+So B2, B3, B4, they are constant coefficients. 
+
+40:53 
+Now this also shows very different compared with whole winter model here. 
+
+40:57 
+So here the influence of my seasonal index will change from period to period. 
+
+41:04 
+that's the real case even we have a signal pattern the impact signal index 
+
+41:11 
+or the level of the peak or bottom will change from this so the linear 
+
+41:18 
+regression by taking the time T into my feature set or the time index Q into my 
+
+41:25 
+feature set may not work so good 
+
+41:33 
+because they change the impact so 
+
+41:39 
+what we can do 
+
+41:40 
+So you know that if we use the t, we have this trouble, and if you use the quota index as w, what we can do? 
+
+41:50 
+Now, a 
+
+41:54 
+long time ago, we learned how to deal with the feature engineers. 
+
+41:59 
+Now, 
+
+42:04 
+from the historical data of t and yt, now I assume that all the information of yt becomes available information we can use. 
+
+42:13 
+The 
+
+42:15 
+idea of regression analysis is that we can use all these historical observations of yt to construct new features of x. 
+
+42:25 
+We 
+
+42:28 
+will change from period to period, not t. 
+
+42:32 
+Remember we can calculate the moving average as my new columns of numbers. 
+
+42:40 
+I take the first three records into a new number here of shifting average. 
+
+42:47 
+Now this is a new column of numbers. 
+
+42:50 
+And I can use this new column of numbers as my new feature. 
+
+42:55 
+And then I can construct the relationship between x and yt. 
+
+43:03 
+Next week 
+
+43:09 
+we will learn how to do it. 
+
+43:18 
+Okay, next week is very challenging. 
+
+43:20 
+So please review the lecture slides before the lecture next week. 
+
+43:25 
+Okay, I think that's all for today. 
+
+43:27 
+Okay, see you guys next week. 
+
+43:29 
+And we have a tutorial at 2pm. 
+
+43:32 
+Okay. 
+

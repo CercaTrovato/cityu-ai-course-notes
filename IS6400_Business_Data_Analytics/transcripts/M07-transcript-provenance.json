@@ -1,0 +1,78 @@
+{
+  "schema": "cityu-transcript-provenance-v1",
+  "course": "IS6400",
+  "modules": [
+    "M07"
+  ],
+  "processing_date": "2026-10-21",
+  "class_date": null,
+  "engine": "faster-whisper sequential WhisperModel.transcribe",
+  "model": "large-v3",
+  "device": "cuda",
+  "compute_type": "float16",
+  "decode_parameters": {
+    "language": "en",
+    "beam_size": 5,
+    "vad_filter": true,
+    "vad_parameters": {
+      "min_silence_duration_ms": 500
+    },
+    "condition_on_previous_text": false,
+    "word_timestamps": true,
+    "postfilter": "none"
+  },
+  "sources": [
+    {
+      "alias": "S15",
+      "audio_original_name": "新录音 15.m4a",
+      "audio_bytes": 30500931,
+      "audio_sha256": "e5d46d914c555e6593bf3130d2d238536c5040aa7a6cd8e908bbd4fc803548d3",
+      "media_duration_seconds": 1815.701333,
+      "transcript": "M07-transcript-source15-partial.txt",
+      "transcript_sha256": "2fc527eb5a56e80d71a2c6bc3ee40a78c90c883091cd8cbc826d78161d4754b7",
+      "segment_count": 295,
+      "drive_file_id": "1dDtuRtxNxiIMCgax3pxg0SGIkJOJlfbM",
+      "drive_url": "https://drive.google.com/file/d/1dDtuRtxNxiIMCgax3pxg0SGIkJOJlfbM/view?usp=drivesdk"
+    },
+    {
+      "alias": "S16",
+      "audio_original_name": "新录音 16.m4a",
+      "audio_bytes": 6719826,
+      "audio_sha256": "733ece76b121828535ee839fbe58010de94943adbde85c0498112ff6b7c74ef0",
+      "media_duration_seconds": 400.192,
+      "transcript": "M07-transcript-source16-partial.txt",
+      "transcript_sha256": "1b39a5d75cd082fbaa4f48e716c522438ff91e0fd0a1389087bcbd2a4e762040",
+      "segment_count": 55,
+      "drive_file_id": "16dDieHNthhP_gBY1Hfs3MEZgsbJ6fsrc",
+      "drive_url": "https://drive.google.com/file/d/16dDieHNthhP_gBY1Hfs3MEZgsbJ6fsrc/view?usp=drivesdk"
+    },
+    {
+      "alias": "S17",
+      "audio_original_name": "新录音 17.m4a",
+      "audio_bytes": 34512349,
+      "audio_sha256": "fe3849eda87864f40c20da999541be9cc18c4449ada0a8e0e0450350b383df7a",
+      "media_duration_seconds": 2614.506667,
+      "transcript": "M07-transcript-source17-partial.txt",
+      "transcript_sha256": "fd6de1e4c2c78abd52e9548a4c5fe18941990a68addc703a4c4bd96b78074597",
+      "segment_count": 415,
+      "drive_file_id": "1cQ5eIG-0BvlS7SV8EKpuEuSVOn295sY8",
+      "drive_url": "https://drive.google.com/file/d/1cQ5eIG-0BvlS7SV8EKpuEuSVOn295sY8/view?usp=drivesdk"
+    }
+  ],
+  "source_alias_policy": "S15/S16/S17 are independent original clocks, not a continuous classroom clock",
+  "completeness": {
+    "opening": "S15 starts mid-regression-tree review on M07 p6; earlier lecture opening not captured",
+    "S15_to_S16": "topic jumps from trend pattern to SES; seasonality/cycle/decomposition and SMA/WMA detailed teaching not located, seam duration unknown",
+    "S16_to_S17": "SES initialization context connects; sample-accurate continuity not verified",
+    "ending": "S17 43:25 closing, 43:27 next week, 43:29 tutorial at 2pm, 43:32 Okay",
+    "internal_scan": "765 segments total, no backwards timestamps or >=120-second segment-start gaps; this does not prove full classroom coverage"
+  },
+  "routing": {
+    "M06": "S15 p6 is M07 review; no new M06 spillback required",
+    "T08": "not recorded; keep v0.9/pending",
+    "M08": "not recorded; keep v0.9/pending"
+  },
+  "asr_quality": "Initial batched decoding produced sparse text/repetition; two targeted sequential checks recovered substantive speech, so all three sources were redecoded sequentially. Raw ASR still contains jargon/number errors; direct quotes and corrections are distinguished in note. No full manual listening claim.",
+  "privacy": "All final text and metadata reviewed for identified third-party private information; no full word-by-word audio listening claim.",
+  "cloud_verification": "Name, size, folder and anyone/reader permissions read back; all three Drive previews show 下载. No server checksum returned or full remote byte comparison."
+}

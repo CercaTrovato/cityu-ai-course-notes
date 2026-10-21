@@ -1,0 +1,165 @@
+00:00 
+How do we realize that for the weighted moving average, we need so many hyperparameters to tune? 
+
+00:05 
+And for the simple moving average, it is too simple, assuming all the observations in the top window have the same importance. 
+
+00:14 
+So we will go to a more commonly used moving average method, and it is called simple exponential smoothing. 
+
+00:21 
+So the assumption under this simple exponential smoothing is that we have the weighted average of the historical observations, but they have the discounted weight. 
+
+00:38 
+So for f t plus 1, the future demand, it is the weighted average of all the historical observations, but they have different weight. 
+
+00:48 
+For the most recent observation, yt, the importance is defined by alpha. 
+
+00:55 
+And alpha is the only parameter for the simple exponential smoothing, 
+
+01:02 
+because alpha will be used to quantify the importance for yt, 
+
+01:07 
+the most recent observation, and the previous observation. 
+
+01:11 
+Now for yt-1, the previous observation, 
+
+01:15 
+the importance will be discounted by 1-alpha. 
+
+01:21 
+alpha times 1 minus alpha. Now for an older date, for yt minus 2, the importance will be further discounted by 1 minus alpha, so the importance is alpha times 1 minus alpha squared. 
+
+01:36 
+So the older the observation, the less important of the observation in taking the average. So you get this assumption. 
+
+01:45 
+Now of course after certain discounts you can see the importance of an old date of the vision is very close to zero, right? 
+
+01:55 
+So we can use this formula, so here this formula is a moving average method 
+
+02:03 
+So the real formula here is actually a moving average 
+
+02:08 
+By taking certain assumptions for the importance of different observations in the historical data 
+
+02:15 
+So as soon as we realize that for using this formula it is so long, right? 
+
+02:23 
+We need to write a very long formula to calculate the weighted average to make prediction for ft plus 1. 
+
+02:31 
+So we have a simplified or nested formula. 
+
+02:36 
+So here we have this nested formula. 
+
+02:38 
+This formula is very important because it is very precise and very accurately describes the simple exponential smoothing. 
+
+02:51 
+So the idea of the simple exponential smoothing is to identify a horizontal pattern or the level of LT. 
+
+02:58 
+And assume the LT will continue, the level LT will continue and this is the predicted value for the model, for FT plus 1. 
+
+03:07 
+So we need to extract LT from period to period. 
+
+03:14 
+So we have LT identified as a weighted average of two terms. 
+
+03:21 
+The first term is LT minus 1, the level of the previous period. 
+
+03:28 
+And the importance of the previous period level LT minus 1 is 1 minus alpha. 
+
+03:35 
+So we get this important score. 
+
+03:38 
+And the 
+
+03:42 
+second term is my most recent observation of yt, because it represents how the level will change from L to minus 1 to Lt. 
+
+03:52 
+So it is the weighted average of these two terms. Of course, the summation of these two, the two important will be one. 
+
+04:01 
+And if you use this nested formula with only two terms, and soon you may realize that these two expressions, they are identical from each other. 
+
+04:14 
+They are presenting the same thing. So let me show you the magic here 
+
+04:19 
+So we can see by using this formula. What is L T minus 1 so 
+
+04:29 
+L T minus 1 if you change 
+
+04:32 
+the T if you replace T with T minus 1 then L T minus 1 equals 
+
+04:38 
+1 minus alpha L 
+
+04:43 
+T minus 2 alpha 
+
+04:49 
+Y T minus 1 right so these you see what I'm writing here 
+
+04:54 
+I just use this notation, this formula again, right? Now we can put this expression 
+
+05:01 
+L t minus 1 back into this formula. So let's see what is F t plus 1 or L t. 
+
+05:10 
+F t plus 1 equals to 1 minus alpha squared plus 
+
+05:25 
+2 alpha 1 minus alpha y t minus 1 
+
+05:34 
+1 plus alpha yt, right? So 
+
+05:42 
+I just put l t minus 1 back into this formula and expand 
+
+05:45 
+this formula. I got this. So if you continue to expand l t minus 2 using the 
+
+05:52 
+inactive formula and keep expanding l t minus 2, l t minus 3, l t minus 4, you will see 
+
+05:59 
+that this formula after you expand l t minus 1 with all these l t's, you will be able to 
+
+06:04 
+get this formula. Is that clear? So these two formulas they are equivalent to each 
+
+06:11 
+other we are using the next formula so why do we need to remember this next 
+
+06:17 
+formula so you know when I see something important it's really important right so 
+
+06:24 
+why we need to use this form remember this formula because we can easily 
+
+06:27 
+calculate LZ to make this prediction using the simple exponential smoothing so here for the first 
+
+06:37 
+For the first level, for the fourth of the region, you might come to a state like this. 
+

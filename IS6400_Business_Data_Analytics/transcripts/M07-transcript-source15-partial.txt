@@ -1,0 +1,885 @@
+00:00 
+To split data into region 2 and region 1. 
+
+00:03 
+So we get region 2 and region 1. 
+
+00:06 
+Now we have three decision nodes. 
+
+00:09 
+So after we use X1, X2, 
+
+00:11 
+to go to Q-level decision tree for regression analysis, 
+
+00:15 
+then we can use the average value of the prediction target 
+
+00:20 
+from the training data points in this same region 
+
+00:24 
+as my prediction value. 
+
+00:26 
+So for example, here we have 1, 2, 3, 4, 5, 6. 
+
+00:30 
+We have six Chinese data points, four within this range, and for any future data points 
+
+00:38 
+further within the same region, we will use the average value, average prediction target 
+
+00:44 
+of these six Chinese data points as my predicted value. 
+
+00:48 
+If the average of them, their deposit is $10,000, then the $10,000 will become the predicted 
+
+00:55 
+value for any new data points for within this region. 
+
+00:58 
+Similarly, if we have a new record with X5 equals to 60 and XQ equals to 40, and if you follow this DCG, you may realize this new data point, all within the region 2. 
+
+01:15 
+So this is low and this is low, all within region 2. 
+
+01:19 
+So whether I use the training record, the prediction target values of the training data point, so whether it's still average prediction target, 
+
+01:30 
+That's my predictive value for this new data point. Now we have three training records in region 2 
+
+01:36 
+And their average target value will become the predicted value for any new data point within the same region 
+
+01:45 
+So this is how we can use 
+
+01:47 
+a machine model to extract relationship features and 
+
+01:55 
+similar to the classification analysis we can do something using the machine 
+
+02:02 
+But so far, no matter whether you are using the linear regression or between two regressions, 
+
+02:08 
+for the table regression analysis, like this data table, we can see the order, the row 
+
+02:19 
+index of the records, they will not affect the relationship we are trying to extract. 
+
+02:26 
+So here, for example, if we change the row for career, the second row, so if we move 
+
+02:32 
+this row to the end of this data set. So we change the order of the changing data points 
+
+02:38 
+in my data table. So after the changes, we will be able to get the same identical scatter 
+
+02:47 
+plot. We will be able to get the same identical linear line. So nothing will change. So in 
+
+02:54 
+other words, for the general regression analysis, the order of the data records in our data 
+
+03:02 
+data set will not matter at all. 
+
+03:07 
+Similar to the DCT regressor, but if we change the orders of the data points in our original 
+
+03:15 
+data set, the final relationship or the model structure we can construct after the model 
+
+03:22 
+training will be the same. 
+
+03:25 
+Now that's for the general regression analysis. 
+
+03:27 
+Now today we are trying to learn the time series regression or the time series. 
+
+03:35 
+For the time series prediction, we are using a totally different data set. 
+
+03:40 
+So even though we can organize all the data in a data table, 
+
+03:43 
+but the data records, they were recorded with a time stamp. 
+
+03:50 
+These are the records you have in my data set. 
+
+03:54 
+They were recorded from a very old date with a fixed time interval, 
+
+03:59 
+and we recorded these observations from day to day or from week to week. 
+
+04:07 
+So here we have the fixed time intervals. 
+
+04:10 
+For 
+
+04:13 
+example, for the stock price of Facebook, now we have the time information. 
+
+04:18 
+For example, every day we record the day end stock price. 
+
+04:23 
+And every single fixed interval, the day, so one day and one day after, 
+
+04:28 
+we have the observations and we record this data into our dataset. 
+
+04:33 
+So typically for the time series data, you have two columns of information. 
+
+04:38 
+The first column is the time t, the time index t. 
+
+04:42 
+Which day you have this observation, or which week you have the observation. 
+
+04:47 
+And the other column is the Y-T, the prediction target, like the day and the price, the Y-T. 
+
+04:56 
+Now we can see the T is typically the first feature we can construct in our new data set, associated with the Y-T. 
+
+05:07 
+Now we are trying to extract some useful information from the T-Scope observations, 
+
+05:11 
+and use this information or patterns of relationships to make future predictions. 
+
+05:17 
+So we care more about the future. 
+
+05:20 
+Use all the information option now. 
+
+05:22 
+So all the historical information we already collected and observed. 
+
+05:27 
+The historical information including the timestamp and the observations of the prediction target. 
+
+05:34 
+Now I want to predict the stock price for tomorrow. 
+
+05:37 
+model. And similarly, when we have an energy reduction, so how much energy the city is 
+
+05:44 
+consuming, we still have the time information together with the prediction targets, x and 
+
+05:50 
+y. Now our job today is to use any possible information we can get from the historical 
+
+05:56 
+predictions to make future predictions. So you can see for the time series prediction 
+
+06:02 
+of the regression analysis, still our prediction target can be a real number or a class label, 
+
+06:09 
+but it's very different from the previous regression analysis because all the data records 
+
+06:15 
+here, they are ordered. They are ordered according to the time intervals. And if the observation 
+
+06:23 
+is from a very old data, then it is in the very beginning of this data set, and we cannot 
+
+06:28 
+not change the order of the vision, because they were observed with the time dependencies, 
+
+06:35 
+with the time intervals. So the time scale prediction is actually very useful for our 
+
+06:43 
+daily applications. For example, if you are trying to run the algorithm training, so I 
+
+06:50 
+have a research paper for the tick level, three second level algorithm training, that 
+
+06:57 
+to monitor and to make the investment decisions every 3 seconds. 
+
+07:02 
+Every 3 seconds we observe the most recent beta spread and the stock price changes, 
+
+07:10 
+whether we need to buy or sell the stock. 
+
+07:14 
+So we can see, with this kind of algorithm trading or autonomous AI for the investment, 
+
+07:20 
+we are trying to use all the information we have right now, by this second, to make the 
+
+07:27 
+future investments. So we need to extract the relationship or some patterns from the 
+
+07:33 
+results observations up to now, up to this second, so we will be able to make quick predictions. 
+
+07:41 
+And also, if you have your cell phone, you may realize that the cell phone is recording 
+
+07:50 
+party 
+
+07:50 
+on top of that 
+
+07:59 
+you'll make it here 
+
+08:01 
+uh... 
+
+08:03 
+yeah 
+
+08:05 
+patient 
+
+08:06 
+all 
+
+08:07 
+on the party that's uh... 
+
+08:12 
+also 
+
+08:15 
+uh... 
+
+08:16 
+A few minutes ago, I used my cell phone to purchase a new iPhone for my wife. 
+
+08:21 
+And then soon, the investment will recommend some cases for me. 
+
+08:28 
+So they have my activities as a time series. 
+
+08:32 
+And they will predict what I'm trying for the next hour of the next day. 
+
+08:39 
+So they have all these kinds of activities to predict what you would do. 
+
+08:44 
+And 
+
+08:48 
+also for the mass factory, so you can see, the country's prediction is very important for the inventory measurement. 
+
+08:57 
+Do you know that why some warehouses, they have a very large amount of inventory? 
+
+09:03 
+Because they have very big uncertainty in the future demand. 
+
+09:07 
+So imagine that if my demand uncertainty goes from 10 to 100 for the next week. 
+
+09:14 
+For example, for the coffee, if you have uncertainty that the number of cups of coffee for tomorrow, 
+
+09:26 
+the predictive value is not accurate and the predictions can range from 10 cups to 100 cups. 
+
+09:34 
+If you do not want to waste money, then you need to prepare 100 cups for tomorrow. 
+
+09:39 
+So you have a very big inventory level in order to meet the demand uncertainties for tomorrow. 
+
+09:46 
+But if we can provide a very accurate demand prediction and say that, 
+
+09:51 
+okay, the demand for your coffee for tomorrow is just around 50, 
+
+09:57 
+with a very small prediction error of 5 cups, 
+
+10:00 
+then you only need to prepare about 55 or 60 cups. 
+
+10:05 
+And then you have a very low inventory and with a very good sales performance. 
+
+10:09 
+So similarly for most of the inventory management, they have this kind of demand for making future predictions. 
+
+10:19 
+How many products should we prepare for the future? 
+
+10:23 
+And also for the hospitals, they have very strict requirements to keep some expensive medicines for the future patients. 
+
+10:34 
+They have no idea what these patients will do, but they need to spend a lot of money to prepare for this kind of medicine and keep them in the hospital. 
+
+10:43 
+So if we can make very accurate predictions for tomorrow, then we can improve the business performance for most of the business operations management. 
+
+10:58 
+Now the question is that how? 
+
+11:04 
+So typically there are two major methods to make future predictions. 
+
+11:11 
+The first big category is called qualitative methods, or we call it survey methods. 
+
+11:18 
+The other stream is called quantitative methods, BDA methods. 
+
+11:25 
+So even though our class focuses more on the second one, the BDA method, 
+
+11:30 
+I also want to inform you about the first method, the survey. 
+
+11:35 
+The survey method requires us to collect the opinions from the human experts. 
+
+11:42 
+And using these surveys we get opinions and then we act with their opinions to make the final decision or prediction. 
+
+11:52 
+So why the survey method is somehow useful and necessary even though we have a PDA solution? 
+
+11:59 
+So because sometimes when you want to solve a problem for future prediction, 
+
+12:06 
+you may soon realize that you do not have data to construct a PDA solution. 
+
+12:14 
+Or, maybe you have the data, but soon you realize that the data you have is not so representative 
+
+12:21 
+for the future. 
+
+12:24 
+So, for example, for the fashion, the clothes, right, that I mentioned before. 
+
+12:29 
+So, for the new season, the new product sales predictions, you do not have the focus sales 
+
+12:36 
+data for this new product. 
+
+12:37 
+And soon you realize that for some similar items you sold last season, last summer, popularity 
+
+12:46 
+The reality is not the same as what you observe in your society. 
+
+12:50 
+So you cannot assume that the same best-selling products will become the best-selling products in the new season. 
+
+12:57 
+So for that case, it's very difficult for the fashion companies to make the new fashion product prediction in the new season. 
+
+13:06 
+So what they typically do? 
+
+13:08 
+So when I work for that fashion company to develop their BDA solutions using the social media marketing and social media surveys, 
+
+13:18 
+that's the most recent problem we can develop BDA solutions for the new product in our tradition. 
+
+13:24 
+So before that, they are using the human experts survey to decide which products will become the best fashion products, 
+
+13:34 
+and they need to produce more products they predict to be the best. 
+
+13:41 
+About one month before the new season, one month before the new season, they will ask all the city managers from Beijing, from Shaobing, from Shenzhen, from Hangzhou, from Suzhou, they will ask all the city managers to come together in this room, in Suzhou meeting room. 
+
+14:04 
+And then they will prepare 100, or sometimes more than 100, fashion product candidates. 
+
+14:12 
+They will just showcase the PPT, because they haven't produced the product yet. 
+
+14:17 
+So they show the PPT, show the algorithm, show the materials, 
+
+14:21 
+and maybe show some, maybe sell it as well by some models how it looks like. 
+
+14:28 
+So they just show the 100 fashion products, the candidates, 
+
+14:33 
+And to showcase for all the human experts in this room. 
+
+14:37 
+And city managers will do their own voting. 
+
+14:40 
+So they will vote, okay, this is what they are selling for the new season, for the new winter. 
+
+14:45 
+And they will say, no, this is not a popular one. I don't like this style. 
+
+14:51 
+So they collect about 100 city managers in a single room. 
+
+14:54 
+They collect surveys, write their opinions. 
+
+14:58 
+their opinions to make the next run of the race. 
+
+15:02 
+So why do they need to make the next run of the race? 
+
+15:06 
+Because most of the human experts, 
+
+15:11 
+their opinions will not converge. 
+
+15:14 
+So different city managers, they have different tastes. 
+
+15:17 
+They have different prediction results. 
+
+15:19 
+For some managers in Harbin or in Beijing, 
+
+15:22 
+they have totally different fashion popularity predictions 
+
+15:26 
+compared with a city manager in Shenzhen, especially for the winter season. 
+
+15:33 
+So how can the human experts, even though their opinions are totally different, 
+
+15:58 
+so here we want to send this kind of survey to a sequence of surveys 
+
+16:06 
+until we have consistent 
+
+16:15 
+and confident predictions for which products would be good, 
+
+16:21 
+and then they will invest more. 
+
+16:30 
+This method, even though most fashion companies are 
+
+16:44 
+clear, 
+
+16:44 
+out 
+
+16:47 
+particularly for the leading fashion companies their precision is below in 
+
+16:52 
+thirty percent 
+
+16:55 
+so for binary classification for the most managers they vote for yes 
+
+17:01 
+it is a best-selling and no this is not a product the precision for targeting 
+
+17:06 
+the correct best-selling product is only below 30 percentage so what does that mean it 
+
+17:15 
+means that if I label 10 fashion products to be the best selling product 
+
+17:21 
+Less than three of them will become actual best-selling products in the museum. 
+
+17:29 
+So they have a very low precision accuracy for making these kinds of decisions. 
+
+17:37 
+But still, they have no other choices. Before we developed these, they had no other choices. 
+
+17:44 
+Why? Because they do not have enough data to have no choices but collect from the human experts. 
+
+17:53 
+And also, sometimes, in addition to the human exports, 
+
+18:00 
+I know when we want to do some promotions for the new products, 
+
+18:05 
+and we know that we do not have the demand, 
+
+18:10 
+local demand for these new products, 
+
+18:12 
+and we do not have any cost consumer evaluations 
+
+18:16 
+for these new products, right? 
+
+18:18 
+Usually we want to, if we want to make a demand position 
+
+18:21 
+for the long-term FPU, the stock-keeping unit, 
+
+18:25 
+in the retail store, which are used for historical demand and see the comments, the reviews of the existing customers, 
+
+18:32 
+and we can make future demand predictions. 
+
+18:34 
+But for new products, usually we don't have all this information. 
+
+18:40 
+So the retailers will usually do the market research, the demand-related surveys. 
+
+18:48 
+We just send coupons to certain groups of potential customers and see their responses. 
+
+18:55 
+If they respond actively, then yes, it's a real signal that this item, this product will become a popular one in this group. 
+
+19:06 
+So let me give you an example. When I solve the new bike station for city location problem in New York City, 
+
+19:14 
+so you know that for the stock of bike shopping in New York, they need to expand the service areas by setting up new bike stations. 
+
+19:24 
+And in the new areas, there are no bike stations before, so they have no bike demand data from the historical positions. 
+
+19:35 
+So what they can do, before we do the transfer learning, to transfer the demand patterns from existing areas to the new areas, 
+
+19:43 
+they need to send a survey to the local residents. 
+
+19:47 
+They just send a survey and ask them, okay, if I set up a new bike station here, 
+
+19:51 
+to use the bike to commute, so 
+
+20:04 
+they use the marketer's research because 
+
+20:13 
+they have known enough data 
+
+20:15 
+so 
+
+20:19 
+we can see, for using this method, there are many reasons for using enough data 
+
+20:28 
+so for the surveying method, we want to get a panel of X, and we get them together 
+
+20:38 
+and 
+
+20:45 
+we want to send a sequence of surveys until they reach a convergence of most 
+
+20:53 
+companies 
+
+20:54 
+So 
+
+20:58 
+these are the survey methods. You may still see many survey methods if you are working for a company. 
+
+21:07 
+So they are still working, especially when you do not have enough data, and these will be used for 
+
+21:15 
+your business. 
+
+21:17 
+Of course, this method... 
+
+21:26 
+Now for today, we want to focus more on the VDA method, trying to learn how we can lack historical data and the trees. 
+
+21:45 
+So for this stream of method, we are trying to get this pattern of relationship. 
+
+21:51 
+In 
+
+21:53 
+other words, to 
+
+22:06 
+make future predictions. 
+
+22:08 
+So your assumption here is that the pattern will repeat. 
+
+22:12 
+The relationship will continue. 
+
+22:18 
+It is very critical. 
+
+22:19 
+Whenever you are using the BCA solution to solve a time-serious problem, 
+
+22:25 
+you will have this kind of 
+
+22:29 
+relationship continue. 
+
+22:31 
+Build on top of this assumption to make your prediction. 
+
+22:38 
+Once this assumption does not expire, then your prediction will become totally wrong. 
+
+22:48 
+However, it's very difficult to hold the assumption that simply 
+
+22:56 
+it's very difficult to even extract the partnership from the piece of paper. 
+
+23:03 
+So why is time series analysis used for 
+
+23:08 
+the real world business solution? 
+
+23:11 
+First, it's not for time series observation. 
+
+23:14 
+vision. This 
+
+23:18 
+is the result of outcomes of many different factors. 
+
+23:24 
+As I mentioned, very very difficult for me to 
+
+23:28 
+predict the Chinese stock price. Of course we are trying to extract on time, we are trying to 
+
+23:36 
+collect many signals, and companies' announcements, and the public opinion, social sentiment for these stocks in Chinese markets. 
+
+23:45 
+But soon we realized that they are marked by the unknown noisy signals. Sometimes we could 
+
+23:54 
+people who I 
+
+23:55 
+of I why is that 
+
+24:00 
+of I'm you cannot 
+
+24:04 
+I'll the land and I'm 
+
+24:07 
+with I'll I'm regulation 
+
+24:10 
+all maybe I'll not 
+
+24:14 
+are called I'm 
+
+24:22 
+of I'll you 
+
+24:28 
+have I'll 
+
+24:31 
+and 
+
+24:34 
+also even though you build the relationship or you identify some key 
+
+24:42 
+features for the time -series prediction from using the historical data, the importance of these signals will change as 
+
+24:53 
+I mean. 
+
+24:56 
+So for example, if you are trying to see the demand for the cell phone, okay, now about five years ago or six years ago, what is 
+
+25:07 
+the driving the demand for the new cell phone how far the cell phone and 
+
+25:19 
+about 
+
+25:20 
+three years ago the most influential factors driving the cell phone is the CPU 
+
+25:27 
+and the resolution of 
+
+25:35 
+the price or demand for the new cell phone because 
+
+25:42 
+all the 
+
+25:43 
+previous functions they already hit the minimum levels of the play tool so 
+
+25:53 
+you can see 
+
+25:54 
+from previous demand 
+
+25:57 
+and previous 
+
+26:05 
+from the previous year may not be valid for the 
+
+26:08 
+relationship you for the new foot 
+
+26:14 
+so it's not guaranteed that the actually 
+
+26:17 
+important for your time seriously and finally the past patterns may not 
+
+26:25 
+continue in the future I feel I still remember one of my physics to provide 
+
+26:33 
+money Wall Street he 
+
+26:47 
+didn't change the static for the in 
+
+26:59 
+one kid because the 
+
+27:02 
+pattern we are not compete and we didn't realize that even continue for us now 
+
+27:10 
+Now, still, we know that it's very little to make time-series predictions, but still, we are trying to understand what kind of pattern leadership is when they extract. 
+
+27:22 
+It's when the assumptions still hold, it's still valid, when the relationship is still continuing. 
+
+27:30 
+Still, we can make some short-term time-series predictions, and maybe we can make some money or provide some better solutions to your daily operations, and help you make better for tomorrow. 
+
+27:42 
+what happens from the time series data. The first pattern here is called horizontal pattern. 
+
+27:53 
+The horizontal pattern is similar to this kind of horizontal line that even though if you check the stop price 
+
+28:00 
+or the time series observations from day to day, from week to week, of course your observations will fluctuate. 
+
+28:06 
+So it has all its own uncertainties because of some that we may not observe. 
+
+28:14 
+So maybe it is not a constant number, but if we take a short-term observation of many time series observations in a short-term window, 
+
+28:26 
+I think the average value of these observations, 
+
+28:29 
+and we move the moving window and calculate the average value of the observations in this sequence of moving windows, 
+
+28:39 
+And the average value becomes a flattened line, or horizontal line. 
+
+28:46 
+And the average is very stable. 
+
+28:50 
+So if that's the case, then we have the horizontal pattern. 
+
+28:55 
+Now once you identify the horizontal pattern, you can, for example, for the soft bias prediction, 
+
+29:00 
+you can make some more money with a very high frequency of trading. 
+
+29:05 
+So you can buy in when the price is below in this horizontal line and sell when the price is higher than this horizontal line. 
+
+29:17 
+So you can buy and sell, buy and sell, and you can make some more money doing this horizontal period. 
+
+29:23 
+But still you need to make sure that the horizontal pattern will continue in the near future. 
+
+29:29 
+Because maybe you buy in here and suddenly the horizontal pattern does not hold. 
+
+29:34 
+and it shows a downtrend, then you lose all your money, right? 
+
+29:40 
+Accumulate some small money with a high frequency, but one big drop on the stock price 
+
+29:48 
+because of the new pattern, the new trend pattern, and you may lose money. 
+
+29:56 
+The other one is, the other pattern is called the trend pattern. 
+
+30:00 
+The trend pattern means that if you can look at the long-term range, 
+
+30:04 
+you may see that the stock price dropped significantly with a low. 
+
+30:10 
+So even though for some short observations, the price will fluctuate. 
+
