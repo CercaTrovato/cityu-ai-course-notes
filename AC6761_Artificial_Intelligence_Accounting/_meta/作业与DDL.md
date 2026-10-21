@@ -1,7 +1,7 @@
 ---
 type: 作业与DDL
 course: AC6761
-updated: 2026-10-21
+updated: 2026-10-22
 ---
 
 # AC6761 作业与 DDL
@@ -332,3 +332,9 @@ gantt
 ## 2026-10-21 S6录音补证（历史复盘）
 
 Core pattern、给骨架填关联名/属性/PK/多重度、关联属性降权及概念举例要求已按S6补入M04/M05与Notion期中考要求。此为已过考试的教学范围补证，不产生新DDL；当前已核行政时间及本人出席/成绩/提交状态不改。
+
+## 2026-10-22 Canvas 新材料
+
+Quiz 2 原件已到：基于 ExampleTables1 查询 E-10 的销售，保存 QueryA，并按题面邮件交更新后的数据库。题面未明示计分或截止，本轮未发送、未生成本人已提交记录。解析与实际5行结果：[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M06-Quiz2-按销售员筛选销售|Quiz 2 解析]]。
+
+小组项目文件与本地版本 SHA-256 一致，最新公告仍为10/20：展示从Week11开始，报告11/29前邮件交，具体小时未给。补课10/31 14:00–17:00 LI-4109沿当前公告，未新增其他DDL。Files 28项、Announcements 5条；Assignments禁用；Modules重定向首页。
