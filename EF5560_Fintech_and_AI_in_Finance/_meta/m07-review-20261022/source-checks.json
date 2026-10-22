@@ -1,0 +1,283 @@
+{
+  "schema": "note-source-checks-v1",
+  "scope": "17个源页、20个给定演示或作答单元；3道选择题12选项。其余页另外逐页覆盖核对。",
+  "sources": {
+    "lecture": {
+      "path": "../../course_files_export/Lec07_Bitcoin_and_Ethereum.pdf",
+      "sha256": "fcbcb8fc32059a353fdfd6d918dfa68086ab065554a4ae727f176222768c4874"
+    }
+  },
+  "questions": [
+    {
+      "id": "p14",
+      "source_id": "lecture",
+      "section": "2.7",
+      "source_location": "physical p.14",
+      "original": "Hypothetical holding company: Bitcoin holdings stay at \\$100m, with no other assets or liabilities.\nInitial equity value: 150; after premium disappears: 100. US dollars, millions.\nShareholder return = 100/150 − 1 = −33.3%.\nThe initial 50% premium disappears even though Bitcoin’s price is unchanged.",
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "✅ 讲义给定结果为负 33.3%；上述中文步骤为笔记译解。英文参考答案（笔记自拟）：The shareholder loses 33.3% when equity value falls from US\\$150 million to US\\$100 million, despite unchanged Bitcoin holdings.",
+          "english": "The shareholder loses 33.3% when equity value falls from US\\$150 million to US\\$100 million, despite unchanged Bitcoin holdings."
+        }
+      ]
+    },
+    {
+      "id": "p27",
+      "source_id": "lecture",
+      "section": "2.7",
+      "source_location": "physical p.27",
+      "original": "A US-listed company holds Bitcoin worth \\$100 million. Its shares have a total market value of \\$150 million. Assume it has no other assets or liabilities.\n\nWhat premium do shareholders pay relative to the value of its Bitcoin holdings?\n\nA) 33.3%\n\nB) 50%\n\nC) 150%\n\nD) 0%",
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "“relative to”指定以 BTC 价值为基准；“no other assets or liabilities”让 BTC 价值等于 NAV。⚪ 参考作答（笔记推断）：选 B，溢价为 50%。",
+          "english": "B. Shareholders pay a 50% premium because the US\\$50 million excess is measured against US\\$100 million of Bitcoin holdings."
+        }
+      ],
+      "options": {
+        "A": "33.3%",
+        "B": "50%",
+        "C": "150%",
+        "D": "0%"
+      }
+    },
+    {
+      "id": "p15",
+      "source_id": "lecture",
+      "section": "2.8",
+      "source_location": "physical p.15",
+      "original": "Illustrative company: \\$100m of Bitcoin, 10m shares, and no liabilities. Net asset value (NAV) is \\$10 per share.\nIssue 1m shares at \\$15 each. Buy \\$15m of Bitcoin. Assets: \\$115m. Shares: 11m.\nNew NAV per share = \\$115m / 11m = \\$10.45.\nIssuing above NAV increases assets per share in this example; issuing below NAV would reduce them.\nAssumes no issue costs and no change in Bitcoin’s price.",
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "3. 股数由 10 增至 11 百万股，每股 NAV 为 115 除以 11，约 10.45 美元。",
+          "english": "NAV per share rises to approximately US\\$10.45 because the new shares are issued above the original US\\$10 NAV, assuming no costs or Bitcoin price change."
+        }
+      ]
+    },
+    {
+      "id": "p16",
+      "source_id": "lecture",
+      "section": "2.9",
+      "source_location": "physical p.16",
+      "original": "Illustrative month: A miner maintains 1% of the network’s computing power. Total network rewards and transaction fees are worth US\\$10 million. The miner’s monthly operating costs are US\\$120,000.\nExpected revenue = 1% × US\\$10 million = US\\$100,000.\nExpected operating profit = 100,000 − 120,000 = −US\\$20,000.\nA 1% share of computing power gives roughly a 1% expected share of rewards. Actual rewards fluctuate.\nMiners compete on costs as well as computing power. Electricity and hardware expenses can exceed mining revenue.",
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "2. 减去本月成本 US\\$120,000，得到经营亏损 US\\$20,000。",
+          "english": "Expected monthly revenue is US\\$100,000, leaving a US\\$20,000 operating loss under the stated cost assumption."
+        }
+      ]
+    },
+    {
+      "id": "p28",
+      "source_id": "lecture",
+      "section": "2.9",
+      "source_location": "physical p.28",
+      "original": "Before a hypothetical halving, block subsidies provide 80% of a miner’s revenue and transaction fees provide 20%. The subsidy halves. The coin price, fee revenue, and number of blocks mined stay unchanged.\n\nBy what percentage does total revenue fall?\n\nA) 20%\n\nB) 40%\n\nC) 50%\n\nD) 80%",
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "题目固定币价、费用收入和挖到的块数，只让补贴减半。⚪ 参考作答（笔记推断）：选 B，总收入下降 40%。",
+          "english": "B. Total revenue falls by 40% because subsidy revenue drops from 80 to 40 while fee revenue remains 20."
+        }
+      ],
+      "options": {
+        "A": "20%",
+        "B": "40%",
+        "C": "50%",
+        "D": "80%"
+      }
+    },
+    {
+      "id": "p30",
+      "source_id": "lecture",
+      "section": "2.14",
+      "source_location": "physical p.30",
+      "original": "The seller deposits a unique digital collectible (an NFT) into a contract. Assume no administrator can bypass the auction rules.\n\nBid sequence / USDC offered / Contract response:\nAlice / 100 / Holds her bid.\nBob / 120 / Leads. Alice may withdraw 100.\nCharlie / 110 / Rejects the lower bid.\n\nAfter the deadline, a settlement transaction transfers the NFT to Bob and 120 USDC to the seller.\n\nCould the seller collect Bob’s payment but refuse to deliver the token?\n\nHypothetical contract, ignoring fees. NFT ownership alone grants no copyright.",
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "⚪ 参考作答（笔记推断）：在题面规则及正确实现假设下，卖方不能成功收走 Bob 的付款却拒交已托管 NFT。转移受同一次结算约束；这不保证链外版权或实物履约。",
+          "english": "Under the stated rules, settlement delivers the escrowed NFT to Bob and 120 USDC to the seller together. The seller cannot separately withhold the token, but NFT ownership does not itself grant copyright."
+        }
+      ]
+    },
+    {
+      "id": "p25",
+      "source_id": "lecture",
+      "section": "2.15",
+      "source_location": "physical p.25",
+      "original": "Illustrative year: An investor stakes 10 ETH worth US\\$2,000 each. Net staking rewards add 4% to the ETH balance, while the ETH price falls 20% to US\\$1,600.\nEnding value = 10 × 1.04 × 1,600 = US\\$16,640.\nDollar return = 16,640/20,000 − 1 = −16.8%.\nStaking rewards compensate validators for helping verify transactions. A positive reward in ETH can accompany a loss in dollars.\nValidator penalties and withdrawal delays add separate risks.",
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "4. 用期末价值除以期初再减一，美元回报为负 16.8%。",
+          "english": "The ending balance is 10.4 ETH worth US\\$16,640, so the one-year dollar return is −16.8% despite a 4% increase in ETH holdings."
+        }
+      ]
+    },
+    {
+      "id": "p29",
+      "source_id": "lecture",
+      "section": "2.15",
+      "source_location": "physical p.29",
+      "original": "An investor receives staking rewards in Ether but measures investment performance in US dollars. The number of Ether held increases during the year.\n\nWhich statement about the investment is correct?\n\nA) More Ether guarantees a positive dollar return.\n\nB) Staking rewards compensate the investor for any fall in Ether’s price.\n\nC) Reinvesting rewards removes exposure to the token’s market price.\n\nD) The dollar value can fall even though the investor holds more Ether.",
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "题目只确认币数增加，没有保证价格或美元财富。⚪ 参考作答（笔记推断）：选 D。",
+          "english": "D. The dollar value can fall because a decline in Ether’s price can outweigh the increase in Ether holdings."
+        }
+      ],
+      "options": {
+        "A": "More Ether guarantees a positive dollar return.",
+        "B": "Staking rewards compensate the investor for any fall in Ether’s price.",
+        "C": "Reinvesting rewards removes exposure to the token’s market price.",
+        "D": "The dollar value can fall even though the investor holds more Ether."
+      }
+    },
+    {
+      "id": "p26",
+      "source_id": "lecture",
+      "section": "2.16",
+      "source_location": "physical p.26",
+      "original": "Illustrative transfer: the quoted network fee is 0.001 ETH and ETH trades at \\$2,000.\nDollar fee = 0.001 × \\$2,000 = \\$2.\nThe same \\$2 fee is 10% of a \\$20 payment, but only 0.4% of a \\$500 payment.",
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "2. 若付 US\\$20，费率占转账本金 2 除以 20，为 10%。",
+          "english": "The fee is US\\$2, equal to 10% of a US\\$20 transfer or 0.4% of a US\\$500 transfer at the stated ETH price."
+        }
+      ]
+    },
+    {
+      "id": "p38",
+      "source_id": "lecture",
+      "section": "2.20",
+      "source_location": "physical p.38",
+      "original": "Let x be ETH reserves and y USDC reserves. Initially, x = 100 and y = 200,000, so the marginal price is 2,000 USDC per ETH.\nxy = k = 100 × 200,000 = 20,000,000.\nBuying 10 ETH leaves 90 ETH in the pool:\ny_after = 20,000,000/90 = 222,222.22.\nUSDC paid = 222,222.22 − 200,000 = 22,222.22.\nAverage execution price is 2,222.22 USDC per ETH. The final marginal price is 222,222.22/90 = 2,469.14.\nHypothetical Uniswap v2-style full-range pool. No trading fees, gas, or LP deposits/withdrawals during the trade.",
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "5. 付款除以 10 ETH，整笔平均价约 2,222.22 USDC/ETH。",
+          "english": "Buying 10 ETH requires approximately 22,222.22 USDC. The average price is 2,222.22 USDC per ETH, while the final marginal price is 2,469.14."
+        }
+      ]
+    },
+    {
+      "id": "p39",
+      "source_id": "lecture",
+      "section": "2.20",
+      "source_location": "physical p.39",
+      "original": "Average execution price for buying 10 ETH. Initial price: 2,000 USDC/ETH.\n100 ETH pool: 2,222.22 USDC/ETH. 1000 ETH pool: 2,020.20 USDC/ETH.\nDeep pool: 1,000 ETH and 2m USDC. Payment: 20,202.02 USDC.\nOutside price: 2,000. Would arbitrageurs buy ETH from or sell ETH to the shallow pool?",
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "⚪ 套利方向参考作答（笔记推断）：向浅池卖 ETH。因为浅池末端价约 2,469.14，高于外部 2,000。套利者可在外部买 ETH，再卖入池子换 USDC，使池内 ETH 增加、USDC 减少，价格向外部靠近。",
+          "english": "Arbitrageurs would sell ETH to the shallow pool because its post-trade marginal price exceeds the outside price. A deeper pool produces less price impact for the same trade size."
+        }
+      ]
+    },
+    {
+      "id": "p40",
+      "source_id": "lecture",
+      "section": "2.21",
+      "source_location": "physical p.40",
+      "original": "Illustrative day: trading volume is \\$2m, the fee is 0.3%, and an investor provides 5% of the pool.\nTotal fees = \\$2m × 0.3% = \\$6,000.\nInvestor’s fee share = 5% × \\$6,000 = \\$300.\nThis is fee income, not total investment profit. The pool’s assets can gain or lose value.\nAssume the fee is fully allocated to liquidity providers and the investor’s share stays constant.",
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "2. 总费用乘 0.05，投资者费用份额 US\\$300。",
+          "english": "The investor earns US\\$300 in fee income under the stated allocation assumptions, but total investment profit cannot be determined without asset-value changes and other costs."
+        }
+      ]
+    },
+    {
+      "id": "p43",
+      "source_id": "lecture",
+      "section": "2.22",
+      "source_location": "physical p.43",
+      "original": "Illustrative exchange, not Hyperliquid accounts:\n\\$1bn traded in one day. Average fee 0.03%. \\$300,000 gross fees.\nContribution after rebates = \\$300,000 − \\$60,000 = \\$240,000.\nTechnology, staff, compliance, and other operating costs must still be paid.\nTo compare businesses, distinguish trading volume, gross fees, retained revenue, and profit.",
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "少量员工服务大量交易，能证明公司净利润很高吗？先确认交易产品、收入定义和费用归属。",
+          "english": "Gross fees are US\\$300,000 and contribution after rebates is US\\$240,000. Net profit remains unknown because operating costs have not been deducted."
+        }
+      ]
+    },
+    {
+      "id": "p44",
+      "source_id": "lecture",
+      "section": "2.13",
+      "source_location": "physical p.44",
+      "original": "A US importer uses an app that pays a supplier automatically when a delivery database reports that goods have arrived. An incorrect entry triggers payment before delivery.\n\n1. Explain why correct software execution did not protect the importer.\n\n2. Identify one check that could reduce incorrect payments.\n\n3. State one recovery or dispute procedure the business still needs.",
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "付款条件依赖错误的交货记录。",
+          "english": "The app correctly followed an incorrect delivery record. Correct execution did not establish that the goods had actually arrived."
+        },
+        {
+          "id": "2",
+          "chinese": "付款前要求买方确认收货，并核对该确认属于同一订单。",
+          "english": "Require the buyer’s receipt confirmation for the matching order before releasing payment, rather than relying solely on the delivery database."
+        },
+        {
+          "id": "3",
+          "chinese": "约定错付后的退款和争议处理程序，保存订单、交付记录及付款证据。",
+          "english": "The business still needs a documented refund and dispute process, with retained evidence and an agreed route for recovering an incorrect payment."
+        }
+      ]
+    },
+    {
+      "id": "p47",
+      "source_id": "lecture",
+      "section": "2.23",
+      "source_location": "physical p.47",
+      "original": "Illustrative investment: \\$10,000 in a spot crypto ETF. Assume a constant asset value, a 0.5% annual fund fee, and \\$10 brokerage at purchase and sale.\nOne-year fees = 10,000 × 0.5% + 10 + 10 = \\$70.\nFees as a share of investment = 70/10,000 = 0.7%.\nThe investor avoids managing private keys but pays for the fund and brokerage services.\nBid–ask spreads and any premium or discount can add to the cost.",
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "3. 合计除以本金 10,000，为 0.7%；这是题面列出的成本，未含买卖价差（Bid–ask spread，即可成交买价与卖价之差）等成本。",
+          "english": "The stated one-year costs total US\\$70, or 0.7% of the US\\$10,000 investment, excluding spreads and any premium or discount."
+        }
+      ]
+    },
+    {
+      "id": "p52",
+      "source_id": "lecture",
+      "section": "2.25",
+      "source_location": "physical p.52",
+      "original": "Illustrative review results: of 100 flagged transfers, investigators confirm 20 as suspicious; 80 are false alarms.\nPrecision = 20/100 = 20%.\nReview workload is high. To measure missed cases, we also need information about transfers the model did not flag.",
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "2. 用确认可疑 20 除以已标记 100，精确率为 20%。",
+          "english": "Precision is 20% because 20 of the 100 flagged transfers are confirmed suspicious. Recall cannot be calculated without information about suspicious transfers that were not flagged."
+        }
+      ]
+    },
+    {
+      "id": "p54",
+      "source_id": "lecture",
+      "section": "2.27",
+      "source_location": "physical p.54",
+      "original": "What Does a Crypto Downturn Reveal?\n\nBitcoin miner: Dollar rewards fall if BTC earned is unchanged; power costs remain.\nBitcoin holding company: Asset value falls; financing obligations remain and the share premium may shrink.\nETH staker: More ETH can still be worth fewer dollars; staking is not price insurance.\nTrading platform: Revenue depends on volume and fee rates. A sell-off can briefly increase trading.\n\nIllustrative investment: start with \\$100, lose 50%, then gain 50%.\n100 × (1 − 0.50) × (1 + 0.50) = 75.\nStill a 25% loss. Recovering from a 50% loss requires a 100% gain.\nDiscuss: which participants depend on token prices, and which depend on customer activity?",
+      "answers": [
+        {
+          "id": "main",
+          "chinese": "3. 最终仍较原本金少 25%，要从 50 回到 100 需增加 50，涨幅为 100%。",
+          "english": "The investment ends at US\\$75, a 25% loss. A 100% gain from US\\$50 is needed to recover the original US\\$100."
+        },
+        {
+          "id": "discussion",
+          "chinese": "价格依赖与活动依赖可以并存。",
+          "english": "Miners, treasury companies and ETH stakers have direct token-price exposure. Trading-platform fees depend more directly on customer volume and fee rates, although token prices can also affect activity and risk."
+        }
+      ]
+    }
+  ]
+}
