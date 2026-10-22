@@ -1412,9 +1412,10 @@ def main():
     s = res['summary']
     print('【汇总】', {k: v for k, v in s.items() if k != 'file'})
     print('【判定】', res['verdict'], '' if not probs else ' + L 合规问题 %d 条' % len(probs))
+    print('【教学边界】本脚本未评估教学可读性；须独立子代理按高中知识起点审查，零报错不能作为教学质量指标。')
     print('=' * 100)
     if a.json:
-        out = dict(file=fn, profile=a.profile, C=C, historical=historical, verdict=res['verdict'], legacy_problems=probs, legacy_info=info, G={k: [v[0], v[1]] for k, v in res['G'].items()},
+        out = dict(file=fn, profile=a.profile, teaching_assessment='not_assessed_by_script', C=C, historical=historical, verdict=res['verdict'], legacy_problems=probs, legacy_info=info, G={k: [v[0], v[1]] for k, v in res['G'].items()},
                    E=res['E'], summary=s, sections=[{k: v for k, v in r.items() if k != 'first_para'} for r in res['rows']],
                    R=dict(strict=r_strict, stats=st_, hard=R['hard'], warn=R['warn']))
         print('JSON:' + json.dumps(out, ensure_ascii=False, default=str))

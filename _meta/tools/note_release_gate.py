@@ -7,6 +7,7 @@ import argparse
 import difflib
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -65,13 +66,14 @@ def quality_gate(candidate, note, source=None, scope='changed', pages=0, source_
         errors.append('不能移除已有 readability_rules 来绕过 R 层')
     elif version(before) == 'v2' and version(after) != 'v2':
         errors.append('不能把 readability_rules: v2 降级')
-    cmd = [sys.executable, str(HERE / 'note_quality.py'), str(candidate), '--json', '--strict', '--sections', '--readability', '--pages', str(pages)]
+    cmd = [sys.executable, '-X', 'utf8', str(HERE / 'note_quality.py'), str(candidate), '--profile', 'current', '--json', '--strict', '--sections', '--readability', '--pages', str(pages)]
     # scratch 中常叫 merged.md / candidate.md，不能因此把 T 笔记误当 M。
     if re.match(r'T\d', note.name):
         cmd.append('--tut')
     if source_checks:
         cmd.extend(['--source-checks', str(Path(source_checks).resolve())])
-    proc = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8', errors='replace', cwd=HERE.parent.parent)
+    env = dict(os.environ, PYTHONUTF8='1', PYTHONIOENCODING='utf-8')
+    proc = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8', errors='replace', cwd=HERE.parent.parent, env=env)
     output = (proc.stdout or '') + (proc.stderr or '')
     payloads = [line[5:] for line in output.splitlines() if line.startswith('JSON:')]
     try:
@@ -82,12 +84,16 @@ def quality_gate(candidate, note, source=None, scope='changed', pages=0, source_
             raise ValueError('缺少 L/R 检查结果')
         if data['legacy_problems']:
             errors.append('L 格式/覆盖检查有 %d 项，须定位处理，不能用 G/E PASS 覆盖' % len(data['legacy_problems']))
-        if data.get('profile') == 'current':
-            content = data.get('C')
-            if not isinstance(content, dict) or not isinstance(content.get('hard'), list):
-                raise ValueError('现行检查缺少可靠C结果')
-            if content['hard']:
-                errors.append('现行内容/计算/源题契约阻塞：%d项' % len(content['hard']))
+        if data.get('profile') != 'current':
+            raise ValueError('必须取得明确的 current 结果，历史或未知模式不能用于发布')
+        content = data.get('C')
+        if not isinstance(content, dict) or not isinstance(content.get('hard'), list):
+            raise ValueError('现行检查缺少可靠C结果')
+        if content['hard']:
+            errors.append('现行内容/计算/源题契约阻塞：%d项' % len(content['hard']))
+        # 旧 G/E 的 FAIL 只诊断；current 的异常退出不能因空列表被放行。
+        if proc.returncode == 1 and not (data['legacy_problems'] or content['hard'] or data['R']['hard']):
+            raise ValueError('检查器失败退出但缺少可解释的 current 阻塞结果')
         hard = data['R']['hard']
         if scope == 'changed' and source and not version(before) and not version(after):
             baseline = readability_checks(before, bool(re.match(r'T\d', note.name)), str(note))
@@ -111,7 +117,7 @@ def review_gate(review, candidate, note, source=None, scope='changed'):
         review = Path(review)
         data = json.loads(review.read_text(encoding='utf-8'))
         expected = {
-            'schema': 'note-review-v1', 'note': Path(note).as_posix(), 'scope': scope,
+            'schema': 'note-review-v2', 'note': Path(note).as_posix(), 'scope': scope,
             'source_sha256': sha256(source) if source else None,
             'candidate_sha256': sha256(candidate),
         }
@@ -128,6 +134,29 @@ def review_gate(review, candidate, note, source=None, scope='changed'):
             allowed = ('passed', 'not_applicable') if key == 'visuals' else ('passed',)
             if check.get('status') not in allowed or not isinstance(check.get('evidence'), str) or not check['evidence'].strip():
                 errors.append('%s 未完成或缺少证据位置' % key)
+        # 只验证独立报告的结构与版本绑定，不认证标识真实或语义正确。
+        independent = data['independent_review']
+        authors = independent['author_ids']
+        if not isinstance(authors, list) or not authors or any(not isinstance(x, str) or not x.strip() for x in authors):
+            errors.append('独立审查须列真实的非空 author_ids')
+        else:
+            reports = independent.get('reviews', [independent])
+            if not isinstance(reports, list) or not reports:
+                errors.append('独立审查报告未列出')
+            else:
+                for item in reports:
+                    reviewer = item.get('reviewer_id')
+                    if not isinstance(reviewer, str) or not reviewer.strip() or reviewer.strip() in {x.strip() for x in authors}:
+                        errors.append('独立审查者缺失或与作者相同')
+                    if item.get('perspective') != 'high-school-beginner' or item.get('status') != 'passed':
+                        errors.append('高中知识起点独立审查未完成')
+                    if item.get('candidate_sha256') != sha256(candidate):
+                        errors.append('独立报告未绑定最终候选；须先复核实际修改')
+                    report = review.parent / item['report_file']
+                    if report.resolve() == evidence.resolve():
+                        errors.append('独立报告不能由主报告冒充')
+                    if not report.read_text(encoding='utf-8').strip() or sha256(report) != item['report_sha256']:
+                        errors.append('独立审查报告为空或哈希已变')
         if not isinstance(data.get('assets'), list):
             errors.append('须显式列出已核对图源/渲染资产 assets（无外部资产填 []）')
         else:
@@ -136,7 +165,7 @@ def review_gate(review, candidate, note, source=None, scope='changed'):
                     errors.append('已核对资产内容已变：%s' % asset['path'])
     except (OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
         errors.append('教学核对记录无效或缺失：%s' % exc)
-    return not errors, '\n'.join(errors) or '教学核对记录完整且哈希一致（不代替实际语义/视觉判断）'
+    return not errors, '\n'.join(errors) or '记录完整且版本一致；程序不认证独立身份、教学语义或视觉，须核真实代理执行与报告'
 
 
 def main():

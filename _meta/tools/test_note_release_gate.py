@@ -28,8 +28,8 @@ class ReleaseGate(unittest.TestCase):
         self.candidate.write_text(self.text, encoding='utf-8')
         self.note = 'AC6761_Artificial_Intelligence_Accounting/notes/M01-test.md'
 
-    def result(self, hard=None, problems=None, verdict='FAIL', rc=1):
-        payload = dict(verdict=verdict, legacy_problems=problems or [], R=dict(hard=hard or [], warn=[]))
+    def result(self, hard=None, problems=None, verdict='PASS', rc=0):
+        payload = dict(profile='current', C=dict(hard=[], warn=[]), historical=dict(verdict='FAIL'), verdict=verdict, legacy_problems=problems or [], R=dict(hard=hard or [], warn=[]))
         return SimpleNamespace(returncode=rc, stdout='JSON:' + json.dumps(payload), stderr='')
 
     def check(self, result, **kwargs):
@@ -66,6 +66,20 @@ class ReleaseGate(unittest.TestCase):
         with patch.object(gate.subprocess, 'run', return_value=self.result()) as call:
             gate.quality_gate(self.candidate, 'course/notes/T01-test.md', self.source)
         self.assertIn('--tut', call.call_args.args[0])
+        self.assertEqual(call.call_args.kwargs['env']['PYTHONIOENCODING'], 'utf-8')
+        self.assertEqual(call.call_args.args[0][1:3], ['-X', 'utf8'])
+
+    def test_unknown_profile_missing_c_and_unexplained_failure_block(self):
+        for change in ('missing_profile', 'historical', 'missing_c', 'failed_exit'):
+            result = self.result()
+            data = json.loads(result.stdout[5:])
+            if change == 'missing_profile': del data['profile']
+            if change == 'historical': data['profile'] = 'historical'
+            if change == 'missing_c': del data['C']
+            result.stdout = 'JSON:' + json.dumps(data)
+            if change == 'failed_exit': result.returncode = 1
+            with self.subTest(change=change):
+                self.assertFalse(self.check(result)[0])
 
     def test_full_requires_v2_and_local_cannot_drop_or_downgrade(self):
         for replacement in ('', 'readability_rules: v1\n'):
@@ -90,7 +104,9 @@ class ReleaseGate(unittest.TestCase):
     def receipt(self):
         evidence = self.work / 'review.md'
         evidence.write_text('测试证据：理解链、来源、疑点、图均已核对。仅测试夹具。', encoding='utf-8')
-        data = dict(schema='note-review-v1', note=self.note, scope='changed', source_sha256=gate.sha256(self.source), candidate_sha256=gate.sha256(self.candidate), review_file=evidence.name, review_sha256=gate.sha256(evidence), checks={key: dict(status='passed', evidence='review.md 中对应证据') for key in ('understanding', 'sources', 'warnings', 'visuals')}, assets=[], unresolved=[])
+        independent = self.work / 'independent-review.md'
+        independent.write_text('仅测试版本绑定的独立报告夹具；内容不被测试认证为教学可读。', encoding='utf-8')
+        data = dict(schema='note-review-v2', note=self.note, scope='changed', source_sha256=gate.sha256(self.source), candidate_sha256=gate.sha256(self.candidate), review_file=evidence.name, review_sha256=gate.sha256(evidence), checks={key: dict(status='passed', evidence='review.md 中对应证据') for key in ('understanding', 'sources', 'warnings', 'visuals')}, independent_review=dict(author_ids=['author'], reviewer_id='reviewer', perspective='high-school-beginner', status='passed', candidate_sha256=gate.sha256(self.candidate), report_file=independent.name, report_sha256=gate.sha256(independent)), assets=[], unresolved=[])
         path = self.work / 'review.json'
         path.write_text(json.dumps(data), encoding='utf-8')
         return path, data
@@ -106,7 +122,7 @@ class ReleaseGate(unittest.TestCase):
         self.assertTrue(self.review(path)[0])
 
     def test_candidate_source_or_report_change_invalidates(self):
-        for name in ('candidate.md', 'before.md', 'review.md'):
+        for name in ('candidate.md', 'before.md', 'review.md', 'independent-review.md'):
             with self.subTest(name=name):
                 path, _ = self.receipt()
                 target = self.work / name
@@ -114,6 +130,41 @@ class ReleaseGate(unittest.TestCase):
                 target.write_bytes(old + b'\nchanged')
                 self.assertFalse(self.review(path)[0])
                 target.write_bytes(old)
+
+    def test_old_generic_self_review_cannot_publish_new_teaching(self):
+        path, data = self.receipt()
+        data['schema'] = 'note-review-v1'
+        del data['independent_review']
+        path.write_text(json.dumps(data), encoding='utf-8')
+        self.assertFalse(self.review(path)[0])
+
+    def test_independent_record_rejects_self_review_pending_wrong_version_or_missing_report(self):
+        for change in ('same_author', 'no_authors', 'pending', 'perspective', 'stale', 'missing', 'main_report'):
+            path, data = self.receipt()
+            item = data['independent_review']
+            if change == 'same_author': item['reviewer_id'] = ' author '
+            if change == 'no_authors': item['author_ids'] = []
+            if change == 'pending': item['status'] = 'pending'
+            if change == 'perspective': item['perspective'] = 'expert'
+            if change == 'stale': item['candidate_sha256'] = '0' * 64
+            if change == 'missing': item['report_file'] = 'missing.md'
+            if change == 'main_report':
+                item['report_file'] = data['review_file']
+                item['report_sha256'] = data['review_sha256']
+            path.write_text(json.dumps(data), encoding='utf-8')
+            with self.subTest(change=change):
+                self.assertFalse(self.review(path)[0])
+
+    def test_multi_package_review_requires_every_report_current(self):
+        path, data = self.receipt()
+        original = data['independent_review']
+        item = {k: v for k, v in original.items() if k != 'author_ids'}
+        data['independent_review'] = dict(author_ids=['author'], reviews=[item, dict(item, reviewer_id='second')])
+        path.write_text(json.dumps(data), encoding='utf-8')
+        self.assertTrue(self.review(path)[0])
+        data['independent_review']['reviews'][1]['status'] = 'pending'
+        path.write_text(json.dumps(data), encoding='utf-8')
+        self.assertFalse(self.review(path)[0])
 
     def test_pending_gaps_wrong_scope_or_missing_check_blocks(self):
         for key in ('pending', 'gap', 'scope', 'missing'):
@@ -182,6 +233,7 @@ class ReleaseGate(unittest.TestCase):
             self.note = 'course/notes/M01-test.md'
             path, data = self.receipt()
             data['review_file'] = '../review.md'
+            data['independent_review']['report_file'] = '../independent-review.md'
             (work / 'review.json').write_text(json.dumps(data), encoding='utf-8')
             with patch.object(sys, 'argv', args):
                 merge.main()
