@@ -1,0 +1,631 @@
+{
+  "candidate_sha256": "e6279b430dc0e66b7104d1135f12d48198733c23aa9b50734f32901308248ef1",
+  "proposed_sha256": "6c4c4a71f383ad482442b0a004a618e256a82f2a11dec365715f020afaf65f25",
+  "changes": [
+    {
+      "id": "C01",
+      "defects": [
+        "B1"
+      ],
+      "note": "replace false prerequisite assumptions",
+      "old": "本讲是全课起点，不依赖任何前序 module。只需要具备 [[EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账#L0 · 入场基线|L0 入场基线]]：AI/机器学习基础（监督学习、训练/验证/测试、线性回归、R²）、基本统计（均值、标准差、相关、箱线图）、以及 **Python 的基础语法**（会看 `a = f(b, c=1)`）。\n\n**金融方面不需要任何基础。** 收益率、复权价、指数、基准、回撤这些词本讲会从零讲起——这是本课台账写死的口径，理由见台账「判断一」。\n\n**pandas / yfinance / akshare 的具体函数也不需要会。** 讲义里出现的每一行都会解释，但重点永远落在\"时点对不对\"，不在语法。",
+      "new": "本讲是全课起点。读者只需会四则运算、简单代数和百分数；本篇不假定会金融、统计、机器学习或 Python。[[EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账#L0 · 入场基线|L0 台账]]只用于登记依赖，不能代替正文解释。\n\n为读懂后面的任务，先认三个角色：**预测变量（predictor）**是决策前已经知道的输入，**目标（target）**是之后才发生、要预测的结果；**训练集（training set）**用来定规则，**测试集（test set）**留到最后，只检验一次。例：用前 8 个月的动量定规则，再用后 2 个月检验；若看完后 2 个月再换变量，它们就不再是独立测试。\n\n统计和代码也从当前任务所需的最小动作讲起：均值是平均水平，标准差描述一组数围绕均值的起伏；R²、散点图和箱线图在首次承担判断时再就地展开。Python 代码只要求能追踪“输入表 → 选列 → 调函数 → 得到新表/序列”，不要求自己从空白写程序。"
+    },
+    {
+      "id": "C02",
+      "defects": [
+        "B2"
+      ],
+      "note": "add log/exp bridge before use",
+      "old": "**为什么需要两个**\n- **简单收益能跨资产相加**",
+      "new": "**先把 `ln` 和 `exp` 当作一对记账工具**\n\n正数相乘时，`ln` 会把乘法变成加法：`ln(1.10×0.90)=ln(1.10)+ln(0.90)`。`exp` 做相反动作，把相加后的 log 结果还原成财富倍数。这里不需要微积分，只需记住二者互相撤销：`exp(ln x)=x`。\n\n**为什么需要两个**\n- **简单收益能跨资产相加**"
+    },
+    {
+      "id": "C03",
+      "defects": [
+        "B2",
+        "B3"
+      ],
+      "note": "explain degrees of freedom and annualization chains",
+      "old": "这里计算的是收益的标准差。先用数据估计了一个均值，因此少一个自由度，分母用 $n-1$。\n\n月频年化波动为 $s\\sqrt{12}=40\\%$。这一步要求零自相关、方差稳定，才能将各月方差加成 $12s^2$。若有相关性，还要加入各期协方差；根号年化不能普遍保证未来一年的风险。",
+      "new": "这里计算的是收益的标准差。三期偏差相加必须等于 0；知道前两项后，最后一项已被均值约束决定，所以只有 $n-1$ 个可自由变化的偏差，分母用 $n-1$。这就是本例“少一个自由度”的具体含义。\n\n月频平均收益若只换成一年口径，常写成“月均值 × 12”；复利路径则从 $1.089=(1+m)^3$ 解每月固定增长率 $m$，再把同一倍数延长到 12 个月。风险不同：独立月份的**方差**相加为 12 倍，标准差才变成 $s\\sqrt{12}=40\\%$。若各月常一起涨跌，就存在协方差，不能只把风险简单相加；因此根号年化要求零自相关、方差稳定。"
+    },
+    {
+      "id": "C04",
+      "defects": [
+        "B3",
+        "B9"
+      ],
+      "note": "teach R2/OLS/residual before magnitude claims",
+      "old": "**股票收益预测的 R² · 参照值**\n\n**平均 ≈ 1%**。",
+      "new": "**股票收益预测的 R² · 先知道它在比较什么**\n\n先用四个月的小例。实际收益为 `[1%, -1%, 2%, 0%]`，一个只报平均值的基准每月都预测 `0.5%`。某模型给出 `[0.8%, -0.6%, 1.4%, 0.4%]`。每个月“实际 − 预测”叫**残差（residual）**；把残差平方后相加，是模型没解释掉的误差。普通最小二乘（OLS）就是选择一条线，使训练样本的残差平方和尽量小。\n\n$R^2$ 比较“模型残差平方和”与“只报平均值的基准误差平方和”：$R^2=1-\text{模型误差}/\text{基准误差}$。$R^2=1\\%$ 表示样本内平方误差相对基准少约 1%，**不是收益率 1%，两者不能比较单位**。在训练样本上算叫样本内；在未参与选变量/定参数的后来样本上算叫样本外，后者更接近真实预测检验。\n\n**课堂参照：平均 ≈ 1%**。"
+    },
+    {
+      "id": "C05",
+      "defects": [
+        "B4"
+      ],
+      "note": "add minimal Python table/object model",
+      "old": "§2.3.4 数感表里标普 500、恒生、沪深 300 三个指数 20 年的表现数字是怎么来的？三个市场分散在两个不同的数据源：美股和港股在 Yahoo Finance 能查到完整历史，沪深 300 只能从 AKShare 拿（原因见下表第 3 行）。下面这段代码示范怎么把它们拼到同一张表上：\n\n```python",
+      "new": "§2.3.4 数感表里标普 500、恒生、沪深 300 三个指数 20 年的表现数字是怎么来的？三个市场分散在两个不同的数据源：美股和港股在 Yahoo Finance 能查到完整历史，沪深 300 只能从 AKShare 拿（原因见下表第 3 行）。下面这段代码示范怎么把它们拼到同一张表上。\n\n**只为读代码的最小表模型**：DataFrame 是一张二维表；`index` 是每行标签（这里是日期），`columns` 是列名。选一列如 `df[\"Close\"]` 后得到 Series，可把它想成“带日期标签的一列”。`=` 把右边结果命名；`f(x, option=True)` 是调用函数，括号里先放输入、再放命名参数；点号方法链 `daily.resample(\"ME\").last()` 是把上一步结果继续交给下一个动作。\n\n| index 日期 | Close | Volume |\n|---|---:|---:|\n| 2026-06-01 | 100 | 20 |\n| 2026-06-02 | 102 | 25 |\n\n读 `close = df[\"Close\"]`：从表 `df` 选出 Close 列，把这列 Series 命名为 `close`。`dtype` 是一列的存储类型；`float64` 可做小数运算，`object` 常意味着数字被当成文本，需先停下核对。\n\n```python"
+    },
+    {
+      "id": "C06",
+      "defects": [
+        "B6"
+      ],
+      "note": "clarify pandas last skipna semantics",
+      "old": "| `.resample(\"ME\").last()` | 按**月末**（Month End）取当月最后一个观测，把三个市场统一到同一张月度日历上 |",
+      "new": "| `.resample(\"ME\").last()` | 按**月末**（Month End）分组，并对每一列取该月最后一个非缺失值；pandas `Resampler.last` 默认 `skipna=True`（[官方文档](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.Resampler.last.html)，获取日 2026-10-23） |"
+    },
+    {
+      "id": "C07",
+      "defects": [
+        "B6"
+      ],
+      "note": "separate daily missing from monthly result",
+      "old": "> 因此**跨市场表里必然有缺失值**，而这正是他坚持不给学生\"洗干净的数据集\"的原因",
+      "new": "> 因此**日频 outer join 表**会因各市场假日不同而在某些日期出现 NA；但这不等于月频表必然缺月。只要某市场在该月仍有至少一个有效交易日，逐列 `.last()` 跳过 NA 后，本例月频 `(240,3)` 可以是 0 个缺月。教授强调缺失是现实常态，而本例“日频有空格、月频无缺月”说的是两个不同阶段。这个区别也意味着：若整列整月都缺，`.last()` 仍会得到 NA，不能静默补值。\n>\n> 原课堂表述：跨市场日历会出现缺失值，而这正是他坚持不给学生\"洗干净的数据集\"的原因"
+    },
+    {
+      "id": "C08",
+      "defects": [
+        "source-p22"
+      ],
+      "note": "preserve p22 complete English question",
+      "old": "**课件原例**（讲义 p.22 的四条 + 课堂讨论题）",
+      "new": "<details><summary>讲义 p.22 英文原题与必要情境（课堂讨论；无选项）</summary>\n\n**Adjusted and Unadjusted Prices Answer Different Questions**\n\n- A stock split changes the quoted price without creating an investor loss.\n- A cash dividend creates a return even though the ex-dividend price falls.\n- An adjusted series tries to place prices on a comparable economic basis.\n- Package defaults and vendor conventions can change; make the choice explicit.\n\n**Class discussion:** What would a 2-for-1 split do to a return computed from unadjusted closing prices?\n\n</details>\n\n中文限定词：`unadjusted` 是未复权收盘价；问题问“计算出来的收益会怎样”，不是投资者真实财富一定怎样。讲义无书面官方答案；中英参考答案为：**It would show an apparent return of about −50%, even though the investor's total value is unchanged because one share becomes two shares.**\n\n**课件原例**（讲义 p.22 的四条 + 课堂讨论题）"
+    },
+    {
+      "id": "C09",
+      "defects": [
+        "source-p23"
+      ],
+      "note": "preserve p23 complete English task",
+      "old": "讲义 p.23 给了一条检查指令，要求 AI 在动手计算前先交出四样东西：",
+      "new": "讲义 p.23 给了一条检查指令，要求 AI 在动手计算前先交出四样东西。中文读题关键词是“计算前、精确列名和类型、首尾三行、缺失与描述统计”；描述统计至少要看计数、均值、最小/最大值是否符合该市场量级。\n\n<details><summary>讲义 p.23 英文原题（无选项）</summary>\n\n**Data-checking instruction**\n\nBefore calculating returns, run Python and show: (1) table dimensions, (2) exact column names and types, (3) the first and last three dated rows, and (4) missing-value and descriptive-statistic summaries.\n\nReading the output is the part that cannot be delegated. Two questions decide whether to continue: which column is the adjusted economic price, and are the missing observations and magnitudes plausible for this market?\n\n</details>\n\n原题没有官方答案；下文是依据讲义检查要求的中文参考解释："
+    },
+    {
+      "id": "C10",
+      "defects": [
+        "B5"
+      ],
+      "note": "add mechanisms for leakage paths 1 2 5",
+      "old": "| 5 | 看完最终测试集表现之后再**回头挑选**预测变量 | 测试集被你用作了选择依据 |\n\n> **Keep in mind",
+      "new": "| 5 | 看完最终测试集表现之后再**回头挑选**预测变量 | 测试集被你用作了选择依据 |\n\n**把 1、2、5 走成能追踪的小例**\n\n- 全样本标准化：训练期数值 `[1,2,3]`，测试期极端值 `100`。若先用四个数求均值 `26.5`，训练期已经“知道”未来有 100；正确做法只用训练期均值 `2` 和训练期标准差变换训练/测试。\n- 居中窗口：要给第 2 月算三月均值，`center=True` 会用第 1、2、3 月。若第 2 月是预测时点，第 3 月尚未发生；应使用只向后看的第 0–2 月或更早窗口。\n- 测试集选变量：前 8 月训练，后 2 月测试。看完后 2 月后在 20 个变量里挑“测试成绩最好”的那个，相当于用答案选题；应在训练/验证期定变量，只对冻结方案使用测试集一次。\n\n路径 3 的财报归档例见 §2.6.3；路径 4 的发布时间/修订例见 §2.6.1。五条的共同检查是：每个处理参数和选择决定由哪一段数据决定？若答案包含最终测试期，它就不再是独立测试。\n\n> **Keep in mind"
+    },
+    {
+      "id": "C11",
+      "defects": [
+        "B8"
+      ],
+      "note": "clarify three date types versus four nodes",
+      "old": "#### 2.5.4 三种日期，永远分开记（讲义 p.27）★",
+      "new": "#### 2.5.4 三类日期与四个节点，永远分开记（讲义 p.27）★"
+    },
+    {
+      "id": "C12",
+      "defects": [
+        "B8"
+      ],
+      "note": "define date categories and cutoff node",
+      "old": "讲义把\"从经济事件到可用信息\"画成一条链：",
+      "new": "这里说“三类日期”是：①数据描述的参考期/交易期，②文件标签日，③真实公开日或归档日。实际决策还要增加第 4 个**比较节点**——决策 cutoff；“可用于预测”不是新的数据日期，而是公开时刻与 cutoff 比较后的判断结果。\n\n讲义把\"从经济事件到可用信息\"画成一条链："
+    },
+    {
+      "id": "C13",
+      "defects": [
+        "source-p31"
+      ],
+      "note": "preserve p31 English questions",
+      "old": "**讲义 p.31 的四个检查问题，逐问回答**",
+      "new": "<details><summary>讲义 p.31 英文原题（四问，无选项）</summary>\n\n**Follow-up instruction**\n\nRun Python to plot UNRATE against its observation month. Then repeat for DGS10, DFF, and CPIAUCSL, using monthly means for the daily rate series. Return the chart, the aggregation rule, and a table of missing months.\n\n1. Does the chart use the requested variable and units?\n2. Did daily rates become monthly means rather than month-end values?\n3. Are gaps visible rather than silently filled?\n4. What extra release lag is required before using each series for prediction?\n\n</details>\n\n中文限定词：`observation month` 是参考月；日频利率必须取月均；缺口必须显示；用于预测还要补实际发布滞后。原题无官方答案，以下为课程数据与 p.28–33 支持的参考作答。\n\n**讲义 p.31 的四个检查问题，逐问回答**"
+    },
+    {
+      "id": "C14",
+      "defects": [
+        "source-p25"
+      ],
+      "note": "preserve p25 full English MCQ and discuss",
+      "old": "上一节的热力图用的是冻结不变的 30 只成分股；讲义 p.25 接着这张图出了一道单选题，考的是\"如果不冻结、退市了就找新公司来替补，会出什么问题\"。教授当堂明说这道题就是他为考试设计的原题：",
+      "new": "上一节的热力图用的是冻结不变的 30 只成分股；讲义 p.25 接着这张图出了一道单选题，考的是“如果不冻结、退市了就找新公司来替补，会出什么问题”。教授当堂明说这道题就是他为考试设计的原题。\n\n<details><summary>讲义 p.25 完整英文原题、全部选项与 Discuss</summary>\n\n**Multiple-Choice Question: What Does a Frozen Universe Protect?**\n\nA researcher starts with the July 2023 HSTECH 30 constituents. When one stock delists, it is replaced by a company that joined the index in 2025 so that every week still has 30 stocks. What is the main problem?\n\nA) Future membership information changes the historical investment universe.\n\nB) Weekly returns can no longer be computed for any surviving stock.\n\nC) The replacement automatically removes all extreme returns.\n\nD) The market index must become equally weighted.\n\n**Discuss:** What should the frozen panel record after the original constituent delists, and why?\n\n</details>\n\n中文限定词：`starts with` 固定 2023-07 起点名单，`joined in 2025` 是未来信息，`main problem` 只选最核心问题。来源地位：A 由课堂讲评确认；Discuss 的具体退市收益处理仍须按可验证来源，不能猜 0 或 −100%。\n\n中文题意与选项如下："
+    },
+    {
+      "id": "C15",
+      "defects": [
+        "cross-law-source"
+      ],
+      "note": "correct SEC/SFC cross-jurisdiction analogy",
+      "old": "> （美国是 SEC，香港是 **SFC**。）\n> → **含义**：做长历史回测",
+      "new": "> 课堂口述在这里把美国 SEC 与香港 SFC 并列。监管机构名称属于课堂事实，但**提交/发布机制不能直接类比**：美国 10-Q/10-K 走 SEC filing；香港上市公司的公告和文件按 HKEX Listing Rules 经电子呈交系统（ESS）提交，并在 HKEXnews 发布。HKEX 明确说明 HKEXnews 是监管信息的首个发布点，ESS 用于提交待发布文件（[HKEX ESS FAQ](https://www.hkex.com.hk/Global/Exchange/FAQ/ESS-All-FAQs/Access-to-eSubmission-System-ESS?sc_lang=en)、[HKEX 投资者 FAQ](https://www.hkex.com.hk/-/media/HKEX-Market/Listing/Rules-and-Guidance/eSubmission-System/Listed-Company-Information-Dissemination-and-Related-Trading-Arrangements/faqinv.pdf)，获取日 2026-10-23）。因此腾讯等港股的可用时点应核实际 HKEXnews 公告发布时间，不能套用美国“向 SEC 归档”的同款规则。\n> → **含义**：做长历史回测"
+    },
+    {
+      "id": "C16",
+      "defects": [
+        "C-hard-p42"
+      ],
+      "note": "assign p42 divider to section start",
+      "old": "### 2.7 无泄漏地造预测变量\n\n#### 2.7.1",
+      "new": "### 2.7 无泄漏地造预测变量\n\n讲义 p.42 是本节标题分隔页 **“Construct Predictors without Leakage”**，不含独立公式或题目；它给 p.43–48 的预测时钟、变量公式、代码、三行手检和五种泄漏路径划定主题。以下从 p.43 的具体时钟开始。\n\n#### 2.7.1"
+    },
+    {
+      "id": "C17",
+      "defects": [
+        "B7"
+      ],
+      "note": "narrow three-row check title",
+      "old": "#### 2.7.4 三行手检：唯一可靠的验证方式（讲义 p.47）★",
+      "new": "#### 2.7.4 三行手检：验证窗口方向的最后一道防线（讲义 p.47）★"
+    },
+    {
+      "id": "C18",
+      "defects": [
+        "B7"
+      ],
+      "note": "narrow three-row check claim",
+      "old": "**只有把三行数字摆出来对着价格算一遍，才能确认。**",
+      "new": "对 `shift`、`pct_change` 和 `rolling` 的窗口方向，**把三行数字摆出来对着价格算一遍是最直接的确认**。它不能认证宏观发布日、财报 vintage 或历史成分股；那些仍要查事件时间和点时数据。"
+    },
+    {
+      "id": "C19",
+      "defects": [
+        "B7"
+      ],
+      "note": "narrow self-test claim",
+      "old": "**唯一可靠的发现方式**：三行手检",
+      "new": "**发现窗口错位的直接方法**：三行手检"
+    },
+    {
+      "id": "C20",
+      "defects": [
+        "B7"
+      ],
+      "note": "narrow mapping claim",
+      "old": "是唯一可靠的验证手段",
+      "new": "是验证窗口方向的直接手段"
+    },
+    {
+      "id": "C21",
+      "defects": [
+        "B3"
+      ],
+      "note": "teach boxplot before interpretation",
+      "old": "**① 箱线图（p.21，转录",
+      "new": "**先学会读箱线图**：中间的线是中位数；箱体覆盖从第 25 百分位到第 75 百分位，即中间 50% 的月份；“须”延伸到常规范围，须外单点标为离群点。离群点表示相对其余月份极端，先回查事件与数据，不能自动删除。\n\n**① 箱线图（p.21，转录"
+    },
+    {
+      "id": "C22",
+      "defects": [
+        "B8"
+      ],
+      "note": "correct drawdown oral statement",
+      "old": "> 「the CSI 300 lose more than 70%… **about 70% in 2007–2008**… for [2015] they lose like 60%… The S&P 500 during the financial crisis, they lose about **50%**, but they come back… **most of the time the drawdown is about zero**, which means that [in] the past 12 months they don't lose any money.」",
+      "new": "> 「the CSI 300 lose more than 70%… **about 70% in 2007–2008**… for [2015] they lose like 60%… The S&P 500 during the financial crisis, they lose about **50%**, but they come back… **most of the time the drawdown is about zero**, which means that [in] the past 12 months they don't lose any money.」\n>\n> **就地纠正课堂口述**：按本篇 $D_t=V_t/H_t-1$ 的 running-peak 定义，`drawdown = 0` 只表示当前净值回到截至当时的历史峰值；它不能推出过去 12 个月每一期都没亏钱，也不能推出任意 12 个月区间收益非负。保留原话是为了忠实记录，计算与答题按严格定义。"
+    },
+    {
+      "id": "C23",
+      "defects": [
+        "source-p49"
+      ],
+      "note": "preserve p49 English questions",
+      "old": "前面几节都在讲\"怎么把数据做对\"；这一节换个角度",
+      "new": "前面几节都在讲\"怎么把数据做对\"。先保留讲义的完整英文四问，再用中文逐图回答。\n\n<details><summary>讲义 p.49 英文原题（四图四问，无选项）</summary>\n\n1. **Price through time:** Did the download cover the intended sample? Are adjustments plausible?\n2. **Returns through time:** Are there extreme observations, gaps, or suspicious zeros?\n3. **Rolling volatility:** Does risk vary through time as expected?\n4. **Predictor versus target:** Is the relation visible, nonlinear, dominated by outliers, or simply weak?\n\n</details>\n\n中文限定词：`plausible` 是“看起来合理但仍须回源”，`rolling` 要写窗口终点，`dominated by outliers` 是少数极端点主导图形。原题没有官方答案，下文是基于本讲图的参考判断。\n\n这一节换个角度"
+    },
+    {
+      "id": "C24",
+      "defects": [
+        "source-p53"
+      ],
+      "note": "preserve p53 English questions and count defect",
+      "old": "**讲义 p.53 实为五个核对问句，逐问给判断标准**",
+      "new": "<details><summary>讲义 p.53 英文原题（标题写 four，实际五问；无选项）</summary>\n\n**Read an Explanation against the Evidence**\n\n1. Which observations drive the axes and apparent pattern?\n2. Are the units and annualization correct?\n3. Did the rolling statistic use only past and current data?\n4. Should the scatter use raw, ranked, or winsorized variables?\n5. Does the conclusion identify a scale, benchmark, and forecast horizon?\n\n</details>\n\n中文题意：逐项核观测、单位/年化、窗口时点、变量表示和结论范围。讲义没有给待批改的具体解释或官方答案，以下是参考判断标准。\n\n**讲义 p.53 实为五个核对问句，逐问给判断标准**"
+    },
+    {
+      "id": "C25",
+      "defects": [
+        "B3"
+      ],
+      "note": "bridge scatter/autocorrelation/nonlinearity/sample split",
+      "old": "横轴是滞后 12 月年化波动率",
+      "new": "横轴是滞后 12 月年化波动率。散点图每个点是一对“输入 x、结果 y”；自相关则比较同一收益序列与自身滞后值，问过去收益和后来收益是否一起变化。非线性表示关系不是一条直线，OLS 直线可能看不见它。样本内只描述用于拟合的这些点；样本外是在冻结规则后用新时期检验。\n\n横轴具体是滞后 12 月年化波动率"
+    },
+    {
+      "id": "C26",
+      "defects": [
+        "source-p8",
+        "B8"
+      ],
+      "note": "preserve p8 English context and bilingual answer",
+      "old": "> **The question（讲义 p.8）**：如果投资者把新增的外卖敞口更多地计入 JD 的定价，**一个美元中性的\"做多 PDD / 做空 JD\"头寸能否受益？**",
+      "new": "<details><summary>讲义 p.8 英文原题与必要情境（无选项）</summary>\n\n**PDD-JD: A Relative-Value Trade**\n\nPDD Holdings' reported platforms are Pinduoduo and Temu. The investment thesis treats PDD as outside the food-delivery competition. JD.com officially launched Food Delivery in February 2025. The new business adds investment and execution risk, but could also raise customer traffic and cross-selling.\n\n**The question:** Can a dollar-neutral long PDD / short JD position benefit if investors price the new food-delivery exposure more heavily into JD?\n\n</details>\n\n中文限定词：`dollar-neutral` 是多空名义金额相等，`benefit if` 是条件性问题，不保证盈利或因果。讲义无官方答案；下文给中英参考答案和算术条件。\n\n> **中文题意（讲义 p.8）**：如果投资者把新增的外卖敞口更多地计入 JD 的定价，一个美元中性的“做多 PDD / 做空 JD”头寸能否受益？\n>\n> **English reference answer（⚪ 笔记推断）**: It may benefit only if PDD outperforms JD by more than trading and shorting costs over the holding period. Dollar neutrality does not remove every shared risk, and the historical comparison does not prove that food delivery caused the return spread."
+    },
+    {
+      "id": "C27",
+      "defects": [
+        "B8"
+      ],
+      "note": "explain short selling before first formula",
+      "old": "只做多 PDD，你没法知道赚的钱是因为\"PDD 真的比 JD 强\"",
+      "new": "**做空（short selling）**先借入 JD 股票并卖出，以后买回归还；价格下跌时买回更便宜，空头盈利，价格上涨时空头亏损。因此公式里的负权重不是随意的减号，而是“JD 上涨会拖累组合、JD 下跌会帮助组合”。\n\n只做多 PDD，你没法知道赚的钱是因为\"PDD 真的比 JD 强\""
+    },
+    {
+      "id": "C28",
+      "defects": [
+        "source-p54"
+      ],
+      "note": "preserve p54 full English and three-choice boundary",
+      "old": "讲义原设计是**全班选一道题，教授现场贴 prompt、跑一遍、一起看证据**。三道题各对应本讲前面的一节，题面按讲义原文：",
+      "new": "讲义原设计是**全班从三项中选一道**，教授现场贴 prompt、跑一遍、一起看证据；原页第 3 项后悬空 `or` 是版式缺口，不能据此编出第 4 项，也不能写成三题都要求现场运行。\n\n<details><summary>讲义 p.54 英文原题（三选一；无选项字母）</summary>\n\n**Live Prompt Workshop: Change One Element**\n\nThe class chooses one task for a live run:\n\n1. compare the weekly returns of two HSTECH 30 constituents while retaining the same 156 forecast weeks;\n2. add one FRED series to the 240-month macro calendar and state its release-time problem;\n3. construct one additional price-based predictor from the AAPL weekly series; or\n\nKeep in mind: First agree on the sample, variable definition, dates, and checks. I then paste the prompt, run it, and we inspect the evidence together. You do not need to type Python in class.\n\n</details>\n\n中文限定词：`chooses one task` 是三选一，`same 156 forecast weeks` 要保持同一预测周，新增 FRED 序列必须说明发布时点。原件无官方结果；任务 1/2 需要指定股票/序列并实际运行，以下只给可执行 prompt、验收条件和条件性答案，不编造现场输出。\n\n三道题各对应本讲前面的一节："
+    },
+    {
+      "id": "C29",
+      "defects": [
+        "source-p54"
+      ],
+      "note": "give conditional prompts for unrun p54 tasks 1 and 2",
+      "old": "**选第 3 题：新增 2 周动量的可复算参考解**",
+      "new": "**任务 1 可执行 prompt（未运行）**：`Using the frozen July-2023 HSTECH 30 universe, choose [ticker A] and [ticker B], build adjusted Friday prices and simple weekly returns for the same 156 forecast weeks, print first/last dates, row counts, missing weeks, and three hand-checked returns.` 条件性答案：只有冻结名单、复权口径、共同周历和三行复算都通过，才可比较；缺具体两只股票时没有唯一数值答案。\n\n**任务 2 可执行 prompt（未运行）**：`Add [FRED series ID] to the 2006-07–2026-06 240-month calendar. Preserve missing months; return the observation frequency, aggregation rule, release calendar/vintage requirement, and the first forecast month when each value is usable.` 条件性答案：具体 lag 取决于所选序列的实际发布时间与修订规则；未指定 series ID 时不能给唯一 lag。\n\n**任务 3 中英参考答案：新增 2 周动量的可复算示例**"
+    },
+    {
+      "id": "C30",
+      "defects": [
+        "B4"
+      ],
+      "note": "add normal/abnormal output examples",
+      "old": "| **Logic 逻辑** | 出错那一行**之前**的那个对象 | **代码跑通了，但算的不是你要的东西** |\n\n**讲义 p.55 的收尾句**",
+      "new": "| **Logic 逻辑** | 出错那一行**之前**的那个对象 | **代码跑通了，但算的不是你要的东西** |\n\n**正常/异常输出的最小样子**：`df.columns` 正常可能是 `['Close','Volume']`，若出现两层括号/多个 ticker 层级，就先确认多级列；日期 index 正常应像 `2026-06-01` 且类型为 datetime，若仍是字符串 `'06/01/2026'` 就不能可靠排序；`df.dtypes` 中价格列应是 `float64` 等数值类型，若是 `object`，先查是否混入逗号或文字；空 DataFrame 会显示 0 行，不能继续计算。方法链每一步都应保留可打印的中间对象。\n\n**讲义 p.55 的收尾句**"
+    },
+    {
+      "id": "C31",
+      "defects": [
+        "source-p56"
+      ],
+      "note": "preserve p56 English questions",
+      "old": "**讲义 p.56 的四个自查问题**（现场检查表，可直接用于作业）",
+      "new": "<details><summary>讲义 p.56 英文原题（四问，无选项）</summary>\n\n**Whole-Class Check: Four Questions**\n\n1. What does one row represent, and which date belongs to the predictor and target?\n2. Are the prices adjusted, and how was that choice verified?\n3. Does each macro or accounting value use its release or filing date?\n4. Can the code regenerate the table and plot from a clean environment?\n\n</details>\n\n中文限定词：一行的粒度、输入/目标日期、复权证据、真实公开时点和从空环境复现。讲义无官方答案，以下为本库数据的条件性参考作答。\n\n**讲义 p.56 的四个自查问题**（现场检查表，可直接用于作业）"
+    },
+    {
+      "id": "C32",
+      "defects": [
+        "B8"
+      ],
+      "note": "soften term spread claim",
+      "old": "| 期限利差 | Term spread | Long-term yield minus short-term rate; a negative spread is read as a recession signal. | §2.9.2 |",
+      "new": "| 期限利差 | Term spread | Long-term yield minus short-term rate; a negative spread is often treated as a risk warning, not a guarantee of recession. | §2.9.2 |"
+    },
+    {
+      "id": "C33",
+      "defects": [
+        "B8"
+      ],
+      "note": "state market efficiency as hypothesis",
+      "old": "| 市场有效性 | Market efficiency | All information up to today is already incorporated into the price. | §2.9.3 |",
+      "new": "| 市场有效性 | Market efficiency | The market-efficiency hypothesis says available information is incorporated into prices; it is a testable hypothesis, not a fact proved by one scatter plot. | §2.9.3 |"
+    },
+    {
+      "id": "C34",
+      "defects": [
+        "B8"
+      ],
+      "note": "align dividend wording with main text",
+      "old": "| 复权收盘价 | Adjusted close | A price series adjusted for splits and dividends to place prices on a comparable economic basis. | §2.3.2 |",
+      "new": "| 复权收盘价 | Adjusted close | A vendor-adjusted series for splits and dividends; cash dividends can offset part of an ex-dividend price fall, but do not guarantee a positive total return. | §2.3.2 |"
+    },
+    {
+      "id": "C35",
+      "defects": [
+        "cross-law-source"
+      ],
+      "note": "correct date glossary across jurisdictions",
+      "old": "| 发布日 / 归档日 | Release date / Filing date | The date a value became public, or the date a 10-Q / 10-K was filed with the regulator. | §2.6.3 |",
+      "new": "| 发布日 / 归档日 | Release date / Filing date | The actual public timestamp: US 10-Q/10-K filing uses SEC records; Hong Kong listed-company announcements use HKEX ESS/HKEXnews publication rather than an assumed SFC-equivalent filing. | §2.6.3 |"
+    },
+    {
+      "id": "C36",
+      "defects": [
+        "B9"
+      ],
+      "note": "separate investment metrics from R2",
+      "old": "**框架 B · \"给你一个数字，判断合不合理\"**\n\n1. 先明确年化口径：算术平均乘 52/12；路径增长用 $\\prod(1+r)^{h/n}-1$；同口径收益波动在适用条件下乘 $\\sqrt h$，三者不混用\n2. 对照 §4.4 的量级表\n3. 若明显偏高",
+      "new": "**框架 B · \"给你一个数字，判断合不合理\"**\n\n1. 先确认它是什么量：收益、波动、回撤、Sharpe，还是预测 $R^2$；不同单位的百分数不互相比大小。\n2. 投资业绩只与同口径的长期年化收益、波动、回撤、杠杆和成本比较；算术平均乘 52/12、路径增长用 $\\prod(1+r)^{h/n}-1$、波动在适用条件下乘 $\\sqrt h$。\n3. 模型预测力另与基准误差和样本外 $R^2$ 比较；$R^2=1\\%$ 不是收益 1%。\n4. 若同类指标明显偏高"
+    },
+    {
+      "id": "C37",
+      "defects": [
+        "B9"
+      ],
+      "note": "fix self-test mixed-unit comparison",
+      "old": "- **股票收益预测的 R² 平均只有约 1%**（🎙️`01:44:05`）；教授将 R² 到 2–3% 视为潜在优势，不能单凭 R² 保证可交易盈利",
+      "new": "- **同口径收益参照**：S&P 500 长期年化约 8%；50% 连续多年远高于这一收益参照，应查杠杆、回撤、成本、样本期和泄漏。\n\n$R^2$ 约 1% 属于另一类“预测误差改善”尺度，只能用来检查模型预测力，不能与年化收益直接比较。"
+    },
+    {
+      "id": "C38",
+      "defects": [
+        "B9",
+        "cross-law-source"
+      ],
+      "note": "remove unsupported 1.7 percent and separate metrics",
+      "old": "**先用框架 B 判断量级**：年化 42%、夏普 2.1，远超 §4.4 的任何参照（港股 20 年年化约 1.7%，S&P 500 约 8%）。→ **第一嫌疑：数据泄漏。**",
+      "new": "**先用框架 B 判断量级**：年化 42% 应与同口径长期收益、波动、回撤、杠杆和成本比较；夏普 2.1 应与同频差额收益的均值/标准差口径比较。本文没有给出可独立复算的“港股 20 年年化 1.7%”链条，因此不把它当参照。两项都异常强时，**首要核查数据泄漏**，但异常不等于已经证明泄漏。"
+    },
+    {
+      "id": "C39",
+      "defects": [
+        "cross-law-source"
+      ],
+      "note": "correct case question jurisdiction wording",
+      "old": "- **\"最新一期的利润率\"**：是按财季期末匹配的还是按 10-Q/中报归档日匹配的？港股是半年报制度，滞后更长。若按期末匹配，就是泄漏路径 ③。",
+      "new": "- **“最新一期的利润率”**：美国样本是否按 SEC filing 的真实时刻匹配？香港样本是否按 HKEXnews 公告发布时间匹配？不能把 10-Q/10-K、SFC 和 HKEX 公告机制混写成一种“归档日”。若只按财季期末匹配，就是泄漏路径 ③。"
+    },
+    {
+      "id": "C40",
+      "defects": [
+        "history-boundary"
+      ],
+      "note": "mark old pass as historical",
+      "old": "`mechanism_review: passed`；按 2026-10-02 简化流程验收",
+      "new": "`mechanism_review: passed` 是 2026-10-02 的历史字段，不代表本次全篇独立审查已通过；当时按简化流程验收"
+    },
+    {
+      "id": "C41",
+      "defects": [
+        "source-p23"
+      ],
+      "note": "add p23 bilingual direct answer",
+      "old": "两个问题决定要不要继续：**哪一列是复权后的经济价格？缺失值和数量级对这个市场来说合理吗？**",
+      "new": "两个问题决定要不要继续：**哪一列是复权后的经济价格？缺失值和数量级对这个市场来说合理吗？**\n\n**English reference answer（⚪ 条件性答案）**: Use the explicitly adjusted-price column only after checking the vendor convention. Continue only when missing observations match the market calendar or a documented source gap and when prices, returns, and dates have plausible magnitudes; otherwise stop and inspect the raw rows. 本讲 AAPL 样本应核 adjusted_close、157 个周价与首行收益缺失；三市场日表允许假日 NA，月表本例为 240×3 且零缺月。"
+    },
+    {
+      "id": "C42",
+      "defects": [
+        "source-p25"
+      ],
+      "note": "add p25 English MCQ and discuss answer",
+      "old": "**✅ 正确答案：A**",
+      "new": "**✅ 正确答案：A**\n\n**English reference answer**: A is correct because 2025 membership was not known in July 2023, so the replacement changes the historical investable universe with future information. B, C, and D do not follow. After a constituent delists, keep its verified terminal return or liquidation treatment, record the exit, and leave later panel entries missing rather than replacing it with a future member. If the terminal value is unavailable, mark the result unresolved instead of inventing zero or −100%."
+    },
+    {
+      "id": "C43",
+      "defects": [
+        "source-p31"
+      ],
+      "note": "add p31 English answers",
+      "old": "**所以呢**：美国的宏观数据讲完了",
+      "new": "**English reference answers（逐问）**\n\n1. Verify each chart's series ID and units against source metadata; UNRATE is a percent, DGS10/DFF are annualized rates in percent, and CPIAUCSL is an index level.\n2. Aggregate daily rate observations by calendar month using the monthly mean, not the month-end observation.\n3. Keep and report missing months; do not silently interpolate or forward-fill them.\n4. Use the actual release calendar and vintage available before each forecast cutoff. If those records are unavailable, apply and disclose a conservative lag rather than treating the reference month as the release date.\n\n**所以呢**：美国的宏观数据讲完了"
+    },
+    {
+      "id": "C44",
+      "defects": [
+        "source-p49"
+      ],
+      "note": "add p49 English answers",
+      "old": "> **Keep in mind（讲义 p.49）**",
+      "new": "**English reference answers（逐图）**: (1) Check start/end dates and corporate-action adjustments against raw data. (2) Investigate extreme returns, calendar gaps, and suspicious zeros before deleting anything. (3) Confirm that rolling risk rises and falls over time and that its window ends before the forecast period. (4) Treat a weak or outlier-driven scatter as diagnostic evidence only; it does not establish out-of-sample predictability.\n\n> **Keep in mind（讲义 p.49）**"
+    },
+    {
+      "id": "C45",
+      "defects": [
+        "source-p53"
+      ],
+      "note": "add p53 English answers",
+      "old": "**所以呢**：用图诊断数据讲完了",
+      "new": "**English reference answers（五问）**: Identify influential observations and axis ranges; verify units and annualization; reconstruct one rolling window to exclude future data; compare raw/ranked/winsorized representations only under a predeclared development rule; and state the scale, benchmark, and forecast horizon in the conclusion. The slide supplies questions, not an official worked answer.\n\n**所以呢**：用图诊断数据讲完了"
+    },
+    {
+      "id": "C46",
+      "defects": [
+        "source-p54"
+      ],
+      "note": "add p54 task1 English answer",
+      "old": "**任务 1 可执行 prompt（未运行）**",
+      "new": "**English reference answer (Task 1, conditional)**: The comparison is valid only after selecting two historical constituents, freezing the July-2023 universe, aligning adjusted Friday prices to the same 156 forecast weeks, and hand-checking sample returns. No unique numeric answer exists until the two tickers are specified.\n\n**任务 1 可执行 prompt（未运行）**"
+    },
+    {
+      "id": "C47",
+      "defects": [
+        "source-p54"
+      ],
+      "note": "add p54 task2 English answer",
+      "old": "**任务 2 可执行 prompt（未运行）**",
+      "new": "**English reference answer (Task 2, conditional)**: Preserve the 240-month calendar and missing values, but attach the selected FRED series only after its actual release time and historical vintage are known. The required lag depends on the chosen series, so no unique lag can be stated before the series ID and release calendar are specified.\n\n**任务 2 可执行 prompt（未运行）**"
+    },
+    {
+      "id": "C48",
+      "defects": [
+        "source-p54"
+      ],
+      "note": "add p54 task3 English answer",
+      "old": "**任务 3 中英参考答案：新增 2 周动量的可复算示例**",
+      "new": "**English reference answer (Task 3)**: Define two-week momentum for forecast week t as P(t-1)/P(t-3)-1, so every source price is known before the target week ends. Print three rows with both source dates and recompute them by hand.\n\n**任务 3 中英参考答案：新增 2 周动量的可复算示例**"
+    },
+    {
+      "id": "C49",
+      "defects": [
+        "source-p56"
+      ],
+      "note": "add p56 English answers",
+      "old": "**🎙️ 教授版的收尾",
+      "new": "**English reference answers（四问）**: One row must have a declared grain and separate predictor/target dates. Adjusted prices require a named vendor convention plus sample checks against raw prices and corporate actions. Macro/accounting values require actual release/filing publication times before the cutoff. Reproducibility requires a fresh environment to rerun the code and match row counts, dates, tables, and plots; the existence of a script alone is insufficient.\n\n**🎙️ 教授版的收尾"
+    },
+    {
+      "id": "C50",
+      "defects": [
+        "IR-11-p30"
+      ],
+      "note": "cover p30 raw versus cleaned operation",
+      "old": "讲义 p.33 把这条讲透了：",
+      "new": "讲义 p.30 先要求对一条 UNRATE 序列保存两份文件：raw 保留下载原貌和来源证据，cleaned 只做已声明的解析或整理，不能覆盖 raw。预期对象是 2006-07 至 2026-06 的 240 个 observation-month 行，含 observation date 和 UNRATE 值，并保留发布的缺失；这一步不能把参考月当发布日期、把当前 vintage 当实时 vintage，或把缺失当 0。\n\n讲义 p.33 把这条讲透了："
+    },
+    {
+      "id": "C51",
+      "defects": [
+        "IR-11-p20-p50-p52"
+      ],
+      "note": "cover p20 p50 p52 specific visual evidence",
+      "old": "**🎙️ 课堂补充：几张图的解读，教授给得比讲义细得多**",
+      "new": "**把 p.20、p.50、p.52 的独有图义补齐**\n\n- p.20 上图把三个市场 2006-07 都归一为 100，只能比较价格指数路径；下图是滞后 12 月滚动年化波动率。2008–2009 三者风险同时抬高，CSI 300 超过 50%；2015–2016 CSI 再现约 40% 高峰，2022–2023 恒生接近 40%。共同危机与各市场独有阶段都存在，不能用一个静态年化波动数替代整条风险路径。\n- p.50 左上月收益围绕 0 高频跳动，右上滞后波动率和左下滞后动量具有连续阶段；右下动量与下月收益仍像散点云。读图要横向比较“预测变量较平滑、目标很噪”，也要纵向核单位：动量和收益是百分比，波动率是年化百分比。持续的 predictor 不等于能预测噪声目标。\n- p.52 同一动量/波动配方在三市场给出不同范围与阶段：S&P 动量大致在 −40% 到 +40%，恒生约 −60% 到 +60%，CSI 300 早期动量接近 +300%；三者波动峰值时点也不同。统一代码只保证公式相同，不保证尺度、分布或模型参数可直接搬用。\n\n**🎙️ 课堂补充：几张图的解读，教授给得比讲义细得多**"
+    },
+    {
+      "id": "C52",
+      "defects": [
+        "IR-11-p11"
+      ],
+      "note": "cover p11 peaks valleys and price-only boundary",
+      "old": "本案例的终点收益须与归一化起点、期间数和成本假设一起读；下表报讲义原结果，随后解释路径风险。",
+      "new": "讲义 p.11 不只给终点。两条线都从 2023-06-30 的 100 开始：PDD 在 2024 年多次冲到约 200–225，随后大幅回落再反弹；JD 先跌到约 65–80，2024 年末短暂冲到约 140，之后又走低。相对路径多次改变，不能把起终点差解释成稳定价差。原页明确这是 closing-price comparison，不含股利等 total-return 成分。\n\n本案例的终点收益须与归一化起点、期间数和成本假设一起读；下表报讲义原结果，随后解释路径风险。"
+    },
+    {
+      "id": "C53",
+      "defects": [
+        "B8"
+      ],
+      "note": "correct summary graph same-day timing",
+      "old": "    B -->|\"公司编报\"| C[\"2025-05-02<br/>10-Q 归档日\"]\n    C -->|\"可用于预测\"| D[\"2025-05-02 起<br/>预测变量取值\"]",
+      "new": "    B -->|\"公司编报\"| C[\"2025-05-02<br/>示例归档日\"]\n    C -->|\"与决策 cutoff 比较\"| D[\"实际公开后首个合法决策<br/>预测变量才取值\"]"
+    },
+    {
+      "id": "C54",
+      "defects": [
+        "B8"
+      ],
+      "note": "register drawdown and cross-law corrections in errata",
+      "old": "### 9.4 课外补充",
+      "new": "**⑧ ⚠️ 课堂 drawdown 口述不等于正式定义**\n\n转录 `02:11:31` 把“回撤约为 0”说成“过去 12 个月没有亏钱”。按本篇和讲义图使用的 running-peak 定义，0 只表示当前净值达到截至当时的历史峰值；过去 12 个月仍可能出现过亏损月份或先跌后涨。正文 §2.9.2 已保留原话并就地纠正，答题按严格定义。\n\n**⑨ ⚠️ 美国与香港的披露机制不能只换监管机构名称**\n\n课堂把 SEC 与 SFC 并列，但美国 10-Q/10-K filing 与香港上市公司经 ESS/HKEXnews 发布公告不是同一机制。港股特征可用时点须查实际 HKEXnews 公告发布时间，不能套用美国 filing 规则；正文 §2.6.3 已按 HKEX 官方资料纠正。\n\n### 9.4 课外补充"
+    },
+    {
+      "id": "C55",
+      "defects": [
+        "mechanical-R3a"
+      ],
+      "note": "break long calculation block",
+      "old": "步骤 1 从相邻价作比，得到每期资金乘数",
+      "new": "**复利、峰值与回撤**\n\n步骤 1 从相邻价作比，得到每期资金乘数"
+    },
+    {
+      "id": "C56",
+      "defects": [
+        "mechanical-R3a"
+      ],
+      "note": "break long risk block",
+      "old": "风险计算使用同一组三个月的简单收益",
+      "new": "**样本波动与风险年化**\n\n风险计算使用同一组三个月的简单收益"
+    },
+    {
+      "id": "C57",
+      "defects": [
+        "mechanical-R2c"
+      ],
+      "note": "replace inline circled enumeration",
+      "old": "这里说“三类日期”是：①数据描述的参考期/交易期，②文件标签日，③真实公开日或归档日。实际决策还要增加第 4 个**比较节点**——决策 cutoff；“可用于预测”不是新的数据日期，而是公开时刻与 cutoff 比较后的判断结果。",
+      "new": "这里说“三类日期”是：\n\n1. 数据描述的参考期或交易期；\n2. 文件标签日；\n3. 真实公开日或归档日。\n\n实际决策还要增加第 4 个比较节点——决策 cutoff。“可用于预测”不是新的数据日期，而是公开时刻与 cutoff 比较后的判断结果。"
+    },
+    {
+      "id": "C58",
+      "defects": [
+        "mechanical-R-p31"
+      ],
+      "note": "split p31 answers into scannable blocks",
+      "old": "1. **图里是否用了指定变量与单位？** 应逐图核对 `UNRATE` 是失业率百分比、`DGS10` / `DFF` 是以百分比表示的年化利率、`CPIAUCSL` 是价格指数水平；若画的是课程派生的 `inflation_yoy`，纵轴必须改写“CPI 同比 %”，不能冒称它是 `CPIAUCSL` 指数。读图时先确认纵轴到底是价格篮子水平还是同比变动，再讨论趋势；只看曲线形状不能证明列和单位用对了，需把图例与数据列名、来源元数据对上。\n2. **日频利率是否转为月均，而非月末值？** 对 `DGS10` / `DFF` 应按日观察值所在月份分组取均值，再检查每月的有效日数；课程 `macro_240m.csv` 提供 `dgs10_monthly_mean` / `dff_monthly_mean` 两列。它没有原始日频行，因此**能确认交付列的口径，不能仅凭该 CSV 独立重算每个月均值**；需要原始 FRED 日数据才能完成最后一步核查。\n3. **缺口是否如实可见？** 不对缺值静默插值或前填；课程宏观表的 **2025-10** 行中 `unemployment_rate` 与 `inflation_yoy` 都为空（`code/L01_data/check_exercises.py` 实测），图与缺月表应保留并说明这一行。课程数据的缺口不等于断言当月官方未发布，原因还须回数据源核查。\n4. **用于预测时还需加什么发布滞后？** `UNRATE` 和 CPI 描述参考月，通常要在参考月结束后才公布；月均利率至少要等该月日观察值收齐。逐个预测日查实际发布日与可能的历史修订版本，只允许使用当时已公布的值；没有发布日历时采取清楚说明的保守滞后，不能把 `2026-06-01` 这样的参考月标签当成 6 月 1 日可用。",
+      "new": "**1. 变量与单位。** UNRATE 是失业率百分比；DGS10 / DFF 是以百分比表示的年化利率；CPIAUCSL 是价格指数水平。若画派生的 inflation_yoy，纵轴必须写“CPI 同比 %”。图例、数据列名和来源元数据要互相对上。\n\n**2. 日频转月频。** 对 DGS10 / DFF 应按月份取日观察值均值，并检查有效日数。课程 CSV 只提供月均列，没有原始日频行；因此能确认交付列名，不能独立重算每个月均值。\n\n**3. 缺口。** 不静默插值或前填。课程宏观表 2025-10 的失业率与通胀为空，图和缺月表应保留；缺口原因仍须回数据源核查。\n\n**4. 发布滞后。** UNRATE 和 CPI 的标签是参考月，月均利率也要等当月观察值收齐。逐个预测日查实际发布日和 vintage；没有发布日历时采用并披露保守滞后，不能把 2026-06-01 当成 6 月 1 日可用。"
+    },
+    {
+      "id": "C59",
+      "defects": [
+        "mechanical-R1a"
+      ],
+      "note": "split long A-option explanation",
+      "old": "- **A 对**：「**you cannot use future information to predict the historical investment universe**, because you don't know [which] stock will be added in 2025. …future information cannot be used if you want to back[]test your strategy.」IPO（initial public offering，首次公开发行上市）例子只能说明：一家公司在 2026 年才上市时，2023 年的可交易股票池不能把它作为后来才知道的成员纳入；这不表示公司在 2023 年不存在或无人知道。",
+      "new": "- **A 对。** 教授说：“you cannot use future information to predict the historical investment universe”，因为当时不知道谁会在 2025 年加入。IPO（首次公开发行上市）例子只说明 2026 年才上市的股票不能被后来塞进 2023 年可交易池；它不表示公司当时不存在或无人知道。"
+    },
+    {
+      "id": "C60",
+      "defects": [
+        "mechanical-R1a"
+      ],
+      "note": "split code output microexamples",
+      "old": "**正常/异常输出的最小样子**：`df.columns` 正常可能是 `['Close','Volume']`，若出现两层括号/多个 ticker 层级，就先确认多级列；日期 index 正常应像 `2026-06-01` 且类型为 datetime，若仍是字符串 `'06/01/2026'` 就不能可靠排序；`df.dtypes` 中价格列应是 `float64` 等数值类型，若是 `object`，先查是否混入逗号或文字；空 DataFrame 会显示 0 行，不能继续计算。方法链每一步都应保留可打印的中间对象。",
+      "new": "**正常/异常输出的最小样子**\n\n- df.columns 正常可为 Close / Volume；若出现多个 ticker 层级，先确认多级列。\n- 日期 index 应像 2026-06-01 且类型为 datetime；若仍是字符串，不能可靠排序。\n- 价格 dtype 应是 float64 等数值类型；若是 object，先查逗号或文字。\n- 空 DataFrame 会显示 0 行，不能继续计算。方法链每一步都应保留可打印的中间对象。"
+    },
+    {
+      "id": "C61",
+      "defects": [
+        "source-p31"
+      ],
+      "note": "restore p31 English title",
+      "old": "<details><summary>讲义 p.31 英文原题（四问，无选项）</summary>\n\n**Follow-up instruction**",
+      "new": "<details><summary>讲义 p.31 英文原题（四问，无选项）</summary>\n\n**Plot FRED, Then Check the Timing**\n\n**Follow-up instruction**"
+    },
+    {
+      "id": "C62",
+      "defects": [
+        "source-p49"
+      ],
+      "note": "restore p49 English title",
+      "old": "<details><summary>讲义 p.49 英文原题（四图四问，无选项）</summary>\n\n1. **Price through time:**",
+      "new": "<details><summary>讲义 p.49 英文原题（四图四问，无选项）</summary>\n\n**Four Plots, Four Different Questions**\n\n1. **Price through time:**"
+    },
+    {
+      "id": "C63",
+      "defects": [
+        "IR-9"
+      ],
+      "note": "record verified Hang Seng CAGR",
+      "old": "恒生 → ≈ 130",
+      "new": "恒生 → ≈ 130\n\n同一 class01 价格表的恒生起终倍数为 1.348215270；240 个价格形成 239 个间隔，故 CAGR 为 $1.348215270^{12/239}-1=0.01511468$，即约 **1.511468%/年**。这是本讲数据与期间的复算值，不写成近似 1.7%。"
+    },
+    {
+      "id": "C64",
+      "defects": [
+        "C02"
+      ],
+      "note": "replace code math and define ln/exp input",
+      "old": "**先把 `ln` 和 `exp` 当作一对记账工具**\n\n正数相乘时，`ln` 会把乘法变成加法：`ln(1.10×0.90)=ln(1.10)+ln(0.90)`。`exp` 做相反动作，把相加后的 log 结果还原成财富倍数。这里不需要微积分，只需记住二者互相撤销：`exp(ln x)=x`。",
+      "new": "**先把 $\\ln$ 和 $\\exp$ 当作一对记账工具**\n\n输入对象是正的资金倍数 $u$。自然对数 $g=\\ln u$ 是满足 $e^g=u$ 的指数，其中 $e\\approx2.718$；反向运算 $\\exp(g)=e^g$ 把指数还原成资金倍数。比如 $\\ln(1.1)\\approx0.09531$，再算 $\\exp(0.09531)\\approx1.1$。\n\n因此，正数相乘时，$\\ln(1.10\\times0.90)=\\ln(1.10)+\\ln(0.90)$；$\\exp$ 再把相加后的结果还原。这里不需要微积分，只需认清输入是正资金倍数、输出是指数记账值。"
+    },
+    {
+      "id": "C65",
+      "defects": [
+        "C04"
+      ],
+      "note": "make R2 example fully reproducible",
+      "old": "先用四个月的小例。实际收益为 `[1%, -1%, 2%, 0%]`，一个只报平均值的基准每月都预测 `0.5%`。某模型给出 `[0.8%, -0.6%, 1.4%, 0.4%]`。每个月“实际 − 预测”叫**残差（residual）**；把残差平方后相加，是模型没解释掉的误差。普通最小二乘（OLS）就是选择一条线，使训练样本的残差平方和尽量小。",
+      "new": "先用四个月的人为小例。实际收益的平均值是 0.5%，所以“只报平均值”的基准每月都预测 0.5%。每个月的“实际 − 预测”叫**残差（residual）**；把残差平方后相加，是模型没解释掉的误差。普通最小二乘（OLS）就是选择一条线，使训练样本的残差平方和尽量小。\n\n| 月 | 实际收益 | 模型预测 | 模型残差 | 基准预测 | 基准残差 |\n|---|---:|---:|---:|---:|---:|\n| 1 | 1.0% | 0.8% | 0.2 个百分点 | 0.5% | 0.5 个百分点 |\n| 2 | −1.0% | −0.6% | −0.4 个百分点 | 0.5% | −1.5 个百分点 |\n| 3 | 2.0% | 1.4% | 0.6 个百分点 | 0.5% | 1.5 个百分点 |\n| 4 | 0.0% | 0.4% | −0.4 个百分点 | 0.5% | −0.5 个百分点 |\n\n基准残差平方和是 $0.5^2+(-1.5)^2+1.5^2+(-0.5)^2=5$ 个百分点平方；模型残差平方和是 $0.2^2+(-0.4)^2+0.6^2+(-0.4)^2=0.72$ 个百分点平方。"
+    },
+    {
+      "id": "C66",
+      "defects": [
+        "C04-control"
+      ],
+      "note": "repair LaTeX control characters and calculate R2",
+      "old": "$R^2$ 比较“模型残差平方和”与“只报平均值的基准误差平方和”：$R^2=1-\text{模型误差}/\text{基准误差}$。$R^2=1\\%$ 表示样本内平方误差相对基准少约 1%，**不是收益率 1%，两者不能比较单位**。在训练样本上算叫样本内；在未参与选变量/定参数的后来样本上算叫样本外，后者更接近真实预测检验。",
+      "new": "$R^2$ 比较模型残差平方和与基准残差平方和：\n\n$$\nR^2=1-\\frac{0.72}{5}=0.856=85.6\\%.\n$$\n\n这个 85.6% 是刻意构造的高拟合教学例，只用来演示算法；它不是本课市场数据的真实预测力，更不是收益率 85.6%。一般地，$R^2=1\\%$ 表示样本内平方误差相对基准少约 1%，不能与收益率比较单位。在训练样本上算叫样本内；在未参与选变量或定参数的后来样本上算叫样本外，后者更接近真实预测检验。"
+    },
+    {
+      "id": "C67",
+      "defects": [
+        "C21"
+      ],
+      "note": "make boxplot rule executable and bounded",
+      "old": "**先学会读箱线图**：中间的线是中位数；箱体覆盖从第 25 百分位到第 75 百分位，即中间 50% 的月份；“须”延伸到常规范围，须外单点标为离群点。离群点表示相对其余月份极端，先回查事件与数据，不能自动删除。",
+      "new": "**先学会读箱线图**：中间的线是中位数。箱体下边是第一四分位数 $Q_1$，上边是第三四分位数 $Q_3$，覆盖中间 50% 的月份；四分位距为 $IQR=Q_3-Q_1$。常见默认画法先设下围栏 $Q_1-1.5IQR$ 和上围栏 $Q_3+1.5IQR$，再把两根“须”画到围栏范围内最远的实际观测，范围外的点单独标为离群点。讲义只给成图、没有保存绘图参数；这里说明的是常见默认读法，精确须端点仍须查生成代码，不能冒充课件设置已核。离群点先回查事件与数据，不能自动删除。"
+    },
+    {
+      "id": "C68",
+      "defects": [
+        "C10"
+      ],
+      "note": "replace undefined month zero with dated window",
+      "old": "- 居中窗口：要给第 2 月算三月均值，`center=True` 会用第 1、2、3 月。若第 2 月是预测时点，第 3 月尚未发生；应使用只向后看的第 0–2 月或更早窗口。",
+      "new": "- 居中窗口：假设在 3 月 31 日形成信号，用它预测 4 月收益。若给 3 月计算“三个月居中均值”，窗口可能包含 2 月、3 月和 4 月；4 月在信号时刻尚未发生，已经泄漏。正确的三个月尾部窗口只用 1 月、2 月、3 月，并在 4 月目标实现前冻结。"
+    },
+    {
+      "id": "C69",
+      "defects": [
+        "selftest-2"
+      ],
+      "note": "supply second same-unit magnitude reference",
+      "old": "- **S&P 500 长期年化 ≈ 8%**（🎙️`49:53`），一个世纪的美国股市就这个水平\n- **同口径收益参照**：S&P 500 长期年化约 8%；50% 连续多年远高于这一收益参照，应查杠杆、回撤、成本、样本期和泄漏。",
+      "new": "- **S&P 500 长期年化约 8%**（课堂百年、含股息再投资口径）；\n- **本讲恒生价格指数 2006-07 至 2026-06 的 CAGR 约 1.511%/年**（不含股息，239 个间隔）。\n\n两者都是年化收益参照，但期间和股息口径不同，不能直接排名市场优劣。50% 连续多年明显高于这两组同单位参照，应查杠杆、回撤、成本、样本期和泄漏。"
+    }
+  ]
+}

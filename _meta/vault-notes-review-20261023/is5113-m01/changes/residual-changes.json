@@ -1,0 +1,159 @@
+{
+  "candidate_sha256": "3cd4557986ead8197f2488214b559ec7f15753dfcfdc1addf188311bef501646",
+  "proposed_sha256": "dde8ef1a44bc1bf61efee3b212c60634256d1aade9c72d1a3c9ca7cf1ea166c1",
+  "changes": [
+    {
+      "id": "R01",
+      "defects": [
+        "B1"
+      ],
+      "note": "make consultation example reproducible",
+      "old": "**零基础贯穿例：20 条咨询怎样变成分流系统。**\n\n1. 人工给 20 条咨询标“财务/选课/紧急支援”。\n2. 用 12 条训练模型，4 条验证阈值，最后 4 条只做一次测试。\n3. 若测试 3 对 1 错，准确率是 $3/4=75\\%$。\n4. 普通件错报紧急叫误报；紧急件漏成普通叫漏报。\n5. 降低“紧急”阈值会多抓紧急件，也会增加误报。\n6. 若看完最终测试再改阈值，测试信息就泄漏进开发。\n7. 上线后的每次预测叫推理；低置信度转人工。\n8. 新课程名使错分上升叫漂移；反馈先由人核标签，不能直接喂回模型。\n9. 模型版本、数据版本和阈值要留痕；缓存过期或含隐私时要失效。",
+      "new": "**零基础贯穿例：20 条咨询怎样变成分流系统。** 一行是一条咨询，人工答案是训练或核验用的正确部门；“紧急”是本例的正例。\n\n| ID | 咨询输入（简写） | 人工答案 | 用途 |\n|---:|---|---|---|\n| 1 | 学费账单金额不对 | 财务 | 训练 |\n| 2 | 想把课程 A 换成 B | 选课 | 训练 |\n| 3 | 现在有自伤风险 | 紧急支援 | 训练 |\n| 4 | 奖学金何时到账 | 财务 | 训练 |\n| 5 | 怎么退掉一门课 | 选课 | 训练 |\n| 6 | 今晚没有安全住处 | 紧急支援 | 训练 |\n| 7 | 收据抬头要修改 | 财务 | 训练 |\n| 8 | 课程时间冲突 | 选课 | 训练 |\n| 9 | 正在遭受即时威胁 | 紧急支援 | 训练 |\n| 10 | 退款多久到账 | 财务 | 训练 |\n| 11 | 想加候补课程 | 选课 | 训练 |\n| 12 | 需要今天联系辅导员 | 紧急支援 | 训练 |\n| 13 | 我现在喘不过气 | 紧急支援 | 验证阈值 |\n| 14 | 奖学金何时发 | 财务 | 验证阈值 |\n| 15 | 系统显示马上停学 | 紧急支援 | 验证阈值 |\n| 16 | 怎么改选修课 | 选课 | 验证阈值 |\n| 17 | 退学退款多久到账 | 财务 | 最终测试 |\n| 18 | 今晚无处住宿 | 紧急支援 | 最终测试 |\n| 19 | 课程冲突怎么换班 | 选课 | 最终测试 |\n| 20 | 学生账户被锁 | 财务 | 最终测试 |\n\n训练内部不在本讲展开。冻结模型后，四条最终测试得到下表；不能看完这些结果再改模型或阈值。\n\n| ID | 人工真值 | 模型预测 | 是否正确 |\n|---:|---|---|---|\n| 17 | 财务 | 财务 | 对 |\n| 18 | 紧急支援 | 紧急支援 | 对 |\n| 19 | 选课 | 财务 | 错 |\n| 20 | 财务 | 财务 | 对 |\n\n正确 3 条、总计 4 条，所以准确率是 $3/4=75\\%$。这 75% 不表示“紧急识别也只有 75%”：在最终测试里，以紧急为正例时，TP=1、FP=0、FN=0、TN=3；唯一错误发生在选课与财务之间。\n\n阈值要在验证集决定。给 ID13–16 的“紧急分数”分别为 0.85、0.65、0.55、0.35。\n\n| 阈值 | 判为紧急的 ID | TP | FP | FN | TN | 结果 |\n|---:|---|---:|---:|---:|---:|---|\n| 0.70 | 13 | 1 | 0 | 1 | 2 | 漏掉 ID15 |\n| 0.50 | 13、14、15 | 2 | 1 | 0 | 1 | 抓到 ID15，但把 ID14 误报紧急 |\n\n因此降低阈值会减少漏报，也可能增加误报。Precision 是 $TP/(TP+FP)$，Recall 是 $TP/(TP+FN)$；分母为 0 时不能硬算。上线后，低分或高影响记录转人工；新课程名造成错分上升叫漂移。反馈先由人核标签，模型/数据/阈值版本要留痕，缓存过期或含隐私时要失效。"
+    },
+    {
+      "id": "R02",
+      "defects": [
+        "B3"
+      ],
+      "note": "remove meeting-room residual",
+      "old": "**所以呢**：M01 到此收尾。带着这个\"决定被提前搬进会议室\"的悬念进入 M02——那一讲会正式发给你一套能拿去分析这类难题的理论工具箱。",
+      "new": "**所以呢**：M01 到此收尾。带着“运行时算法选择如何追溯到设计、部署与监控责任链”的问题进入 M02——下一讲会提供多类伦理理论工具来分析这种难题。"
+    },
+    {
+      "id": "R03",
+      "defects": [
+        "B7"
+      ],
+      "note": "remove final theory count",
+      "old": "- 下一讲：**M02 · 道德理论及其应用**（把 §2.4 的四大理论展开成七大理论深挖）",
+      "new": "- 下一讲：**M02 · 道德理论及其应用**（把 §2.4 的课件四栏展开成多类伦理理论）"
+    },
+    {
+      "id": "R04",
+      "defects": [
+        "B8-p27"
+      ],
+      "note": "give p27 itemwise English answers",
+      "old": "**English reference answer（⚪ 笔记自拟）**: Each case may be inconsistent, but the degree depends on relevant facts. State the person's principle, identify the conduct, and test whether timing, necessity, prior ownership, or another morally relevant distinction changes the comparison.",
+      "new": "**English reference answers（A–F，⚪ 笔记自拟）**\n\n- **A.** The two positions may conflict if the principle is “all intentional killing is wrong”; a narrower principle distinguishing innocent life from punishment would require further justification and safeguards against error.\n- **B.** Buying new leather after adopting a principle against animal products is inconsistent; continuing to use shoes bought earlier may be less inconsistent because the purchase decision occurred before the commitment.\n- **C.** Private schooling conflicts with an absolute opposition to private education; a reformer using the present system during transition must still explain equal access and why no feasible alternative exists.\n- **D.** Secretly having an affair strongly conflicts with publicly advocated family fidelity; a consensual non-monogamous arrangement would change the relevant facts.\n- **E.** Driving a gasoline SUV for convenience conflicts more strongly with environmental commitments when lower-harm alternatives exist; necessary remote or emergency use requires separate analysis.\n- **F.** Unauthorized copying conflicts with a principle against taking or violating others’ rights, although copying is not physically identical to removing an object and the exact rights must be stated."
+    },
+    {
+      "id": "R05",
+      "defects": [
+        "B8-p32"
+      ],
+      "note": "give p32 itemwise English answers",
+      "old": "**English reference answer（⚪ 笔记自拟）**: Personal convenience alone does not justify an exception. Serious threats to life or public health may create competing duties, but each case still requires evidence, necessity, safer alternatives, and a rule that could apply consistently. Items 3b, 4a, and 4b remain ethically contested rather than automatic permissions.",
+      "new": "**English reference answers（1a–4b，⚪ 笔记自拟）**\n\n- **1a.** Being late for work is personal convenience and does not justify imposing traffic risk on others.\n- **1b.** Transporting a critically ill person may create a competing duty to protect life, but only if the emergency is real and no safer alternative exists.\n- **2a.** A more interesting invitation is not a consistent reason to break a promise.\n- **2b.** An infectious disease is relevant because attending may harm the other person; notice and rescheduling should be considered.\n- **3a.** Personal shortage alone does not create a private exemption from a common tax rule; lawful relief must apply consistently.\n- **3b.** Conscientious opposition to nuclear spending raises a serious conflict, but it does not automatically justify non-payment without addressing common obligations and lawful alternatives.\n- **4a.** Preventing Hitler’s mass violence supplies a grave-harm argument, yet strict duty ethics must still confront the prohibition on killing, evidence, necessity, and alternatives.\n- **4b.** Stopping an imminent terrorist attack may be necessary, but planning, imminence, evidence, and non-lethal alternatives must be verified before lethal force can be defended."
+    },
+    {
+      "id": "R06",
+      "defects": [
+        "B8-p33"
+      ],
+      "note": "give first-person p33 answer",
+      "old": "My conclusion should identify the missing facts and explain which principle controls it.",
+      "new": "**English reference answers（⚪ 笔记自拟）**\n\n- **Kant:** Kant would normally require keeping the promise because a maxim permitting secret promise-breaking would undermine promising.\n- **Mill:** A utilitarian answer is conditional because the prompt gives no probabilities or comparable utilities; it must compare feasible options, harms, trust, and longer-term effects under stated assumptions.\n- **My view:** I would keep the promise unless I obtained valid authorization or a lawful protective arrangement. The promise created a specific obligation, and the prompt does not authorize me to replace the woman’s decision with my preferred use of the money. I would reconsider if new facts showed incapacity, fraud, or a legally appointed trustee with protective duties."
+    },
+    {
+      "id": "R07",
+      "defects": [
+        "B9-admin"
+      ],
+      "note": "add p11 group size and participation components",
+      "old": "| 11 | 50% 笔试、40% 项目、10% 参与，并要求笔试与持续评估两部分分别及格 |",
+      "new": "| 11 | 50% 两小时笔试、40% 八人小组项目、10% 参与；参与含出勤、小测/短作业、研讨和线上讨论，两大考核部分须分别及格 |"
+    },
+    {
+      "id": "R08",
+      "defects": [
+        "B9-admin"
+      ],
+      "note": "restore p13 weekly topics",
+      "old": "| 13 | W1–W13 周次地图：W2 理论，W3–W6 FATP，W7–W11 应用/治理/影响，W12–W13 项目展示 |",
+      "new": "| 13 | W1–W13 完整主题地图，见表后清单 |"
+    },
+    {
+      "id": "R09",
+      "defects": [
+        "B9-admin"
+      ],
+      "note": "move weekly topics outside table",
+      "old": "读 p.8 的直接动作：材料去 Modules，正式提交只去 Assignments；邮件/预约是沟通渠道，不是提交渠道。",
+      "new": "读 p.8 的直接动作：材料去 Modules，正式提交只去 Assignments；邮件/预约是沟通渠道，不是提交渠道。\n\n**p.13 周次清单**：W1 导论；W2 理论；W3 公平；W4 透明；W5 问责；W6 隐私；W7 营销/消费者/HR；W8 金融/风险/生成式 AI 与错误信息；W9 全球治理监管；W10 环境社会影响；W11 新兴风险案例；W12–W13 项目展示。"
+    },
+    {
+      "id": "R10",
+      "defects": [
+        "B9-p23"
+      ],
+      "note": "restore p23 unique facts",
+      "old": "**所以呢**：\"AI 是什么\"到这里讲完了——历史、定义、路线、源流都齐了。",
+      "new": "**p.23 页底三条补充**：经济学家 Herbert Simon 与 Allen Newell 参与了早期 AI 研究；具身观点认为某些智能需要机器人等身体与环境互动；GPU 和专用硬件提升了基础神经网络算法性能，是深度网络近期成功的重要工程因素。三条分别补“人物来源、具身假说、硬件条件”，不能只记八个学科名称。\n\n**所以呢**：\"AI 是什么\"到这里讲完了——历史、定义、路线、源流都齐了。"
+    },
+    {
+      "id": "R11",
+      "defects": [
+        "B9-business"
+      ],
+      "note": "make commercial AI mechanisms substantive",
+      "old": "读一行：p.43 给出问题、方案和待验证结果，并不保证满意度一定改善。要用测试、申诉和 FATP 证据判断。",
+      "new": "**把目录走进同一咨询例**\n\n- p.38–39：数据分析统计积压主题，自动化执行低风险转派，预测提示未来需求，人工仍决定高影响案件；输出是部门、紧急标记和人工转接，不是笼统“洞察”。\n- p.40–42：监督式 ML 用已标注咨询学习部门；NLP 读取文本意图；若上传证明图片，CV 才处理图像。金融欺诈、制造质检、物流路线、教育个性化等页例使用不同输入和输出，不能把同一模型跨行业直接搬用。\n- p.43–44：问题是客服慢，chatbot 只是候选方案；数据脏、人员不会维护、旧系统接不上、偏见/隐私会使“响应更快”仍不合格。\n- p.46–48：边缘计算是在本地设备先处理以降低延迟；人机协作把低风险自动化、高影响转人工；生成式 AI 只生成草稿。专业工具分别做表格、语言、图像和预测。数据标注要说明谁给答案、如何复核，安全和持续更新要有负责人。\n- p.52：Identify 发现积压，Develop 定义标签/阈值，Implement 有限上线并接人工队列，Evaluate 用错分、延误、申诉和 FATP 结果评价。\n- p.53：数据分析、任务自动化、预测、减少人工错误和改善体验是五个不同目标；本例只能用实际测试分别证明。\n- p.54：个性化、语音、情境感知和需求预测是四种界面能力；使用个人历史前先核授权和最少数据。\n\n读 p.43 的结论：问题、方案和待验证结果是三层，不保证满意度一定改善。"
+    },
+    {
+      "id": "R12",
+      "defects": [
+        "B11"
+      ],
+      "note": "sync four process summary",
+      "old": "> 这些步骤即使名称熟悉，也不能免除实际数据、评估、部署与反馈机制；下文用同一公开咨询分流例跑到运营纠错。另需注意**课件在 p.49、p.55、p.57 给了三个互相冲突的流程图**（8 步 / 6 步 / 7 步反馈环），见 [[#9.3 课件自身的问题|§9.3]]。",
+      "new": "> 这些步骤即使名称熟悉，也不能免除实际数据、评估、部署与反馈机制；下文用同一咨询分流例跑到运营纠错。课件 p.49、p.52、p.55、p.57 有四套范围不同的图：开发到部署、业务应用、训练升级、上线反馈；步数不同不表示互相冲突，见 [[#9.3 课件自身的问题|§9.3]]。"
+    },
+    {
+      "id": "R13",
+      "defects": [
+        "B11"
+      ],
+      "note": "sync four process paragraph",
+      "old": "课件p.49/55/57三套流程仍分别保留，以上是笔记将数据/评估/部署/反馈连接的机制解释，不冒官方新增流程。",
+      "new": "课件 p.49/p.52/p.55/p.57 四套图分别覆盖开发部署、业务应用、训练升级和上线反馈；以上只是把它们接入同一咨询例，不冒充课件新增统一流程。"
+    },
+    {
+      "id": "R14",
+      "defects": [
+        "page-count"
+      ],
+      "note": "fix 60 plus one error",
+      "old": "**页面统计**：讲义共 60 页 + 1 空白页。其中课程行政 13 页（22%）、AI 与伦理学核心内容 22 页（37%）、商业 AI 全景 24 页（40%）。",
+      "new": "**页面统计**：原 PDF 共 60 页，不存在额外空白页。p.1 是封面；其余页按行政与课程入口、AI/伦理核心、商业 AI 模板与案例分组，分组若重叠不再用百分比冒充不相交总和。"
+    },
+    {
+      "id": "R15",
+      "defects": [
+        "summary-sync"
+      ],
+      "note": "sync Kohlberg summary",
+      "old": "最高阶段（据自身信念判断对错）",
+      "new": "最高阶段（按讲义简化口径：据自身信念与情境判断）"
+    },
+    {
+      "id": "R16",
+      "defects": [
+        "wording"
+      ],
+      "note": "narrow metric claim",
+      "old": "AI 的全部评估指标只覆盖智能侧",
+      "new": "本节列出的常用行为与性能指标主要覆盖智能侧"
+    },
+    {
+      "id": "R17",
+      "defects": [
+        "wording"
+      ],
+      "note": "narrow no-answer claim",
+      "old": "**所以呢**：五条理由的落点是\"没有标准答案，只有可辩护的判断\"——下一节的 FATP 就是这门课接下来要用来做判断的四把具体的尺子。",
+      "new": "**所以呢**：五条理由的落点是“许多 AI 伦理案例没有唯一答案，但判断必须可辩护”——下一节的 FATP 提供四类具体检查问题。"
+    }
+  ]
+}

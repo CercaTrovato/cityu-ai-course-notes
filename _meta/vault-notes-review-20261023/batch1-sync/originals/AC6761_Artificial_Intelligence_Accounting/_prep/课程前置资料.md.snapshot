@@ -1,0 +1,294 @@
+---
+type: 前置资料
+course: AC6761
+updated: 2026-09-09
+sources:
+  - "AC6761 Outline 2627.docx（教授发放，course_files_export/）"
+  - "https://www.cityu.edu.hk/catalogue/pg/current/course/AC6761.pdf（官方课程目录，2026-09-09 抓取）"
+  - "Week 1 PPT.pptx p.2（教授在课件里给出的考核细则）"
+  - "transcripts/M01-transcript.txt（课堂口头补充）"
+---
+
+# AC6761 课程前置资料 · 官方目录 × Outline 逐项对校
+
+> **本文件回答三个问题**：这门课**官方**要求什么、教授**实际**打算怎么教、两者**哪里不一样**。
+> 写任何 module 笔记之前先读这里——它决定笔记该往哪个方向使劲。
+
+---
+
+## 0. 抓取记录
+
+| 项 | 内容 |
+|---|---|
+| 官方课程目录 URL | `https://www.cityu.edu.hk/catalogue/pg/current/course/AC6761.pdf` |
+| 抓取日期 | **2026-09-09** |
+| PDF 元数据生成日 | 2026-05-06（CourseLeaf 生成） |
+| PDF 首页写明的 Effective Term | **Semester A 2026/27** ← 与本学期一致，可直接采信 |
+| 试过但 404 的 URL | `…/pg/2026-27/course/AC6761.pdf`、`…/pg/2025-26/course/AC6761.pdf` |
+
+> 💡 **踩坑记录**：CityU 目录站的学年段路径（`2026-27`、`2025-26`）对本课都返回 404，只有 `current` 有效。以后抓其他课先试 `current`。
+
+---
+
+## 1. 一页速览（结论先行）
+
+| 项 | 数值 | 来源一致性 |
+|---|---|---|
+| 课程码 / 名称 | AC6761 · Artificial Intelligence Accounting | ✅ 双方一致 |
+| 开课单位 | Department of Accountancy (AC)，College of Business | 仅官方目录有 |
+| 学分 | **3** | ✅ 双方一致 |
+| Level | **P5, P6**（官方）／ P6（Outline） | ⚠️ 见 §4.1 |
+| 时长 | One Semester（13 周） | ✅ |
+| 授课/考核语言 | English | ✅ |
+| 先修 / 前置 / 等价 / 互斥 | **全部 Nil** | ✅ 双方一致 |
+| 课程主任 | **Prof. Kevin ZHU**（xindozhu@cityu.edu.hk，AC3 13-218，3442 4763） | 仅 Outline / 课件有 |
+| 持续评估 | **50%**（课堂 10% + 小组项目 20% + 期中 20%） | ✅ |
+| 期末考试 | **50%**，**闭卷**，**3 小时** | ✅ |
+| **及格线规则** | **课程作业与期末考试两部分都必须通过** | ✅ **双方都写了**（见 §3） |
+| GenAI 政策 | 逐项列明，见 §3.2 | ✅ 双方一致 |
+
+**一句话定位**：这是 MScAIB (P85) 的**商业核心组内选修**。它的真身是「**给非会计背景的人补一学期财务会计，再教他们怎么让 AI 替自己读财报**」。前 7 周几乎全是纯会计，AI 从第 8 周才正式登场。
+
+---
+
+## 2. 官方 CILO × Outline ILO 对校
+
+**结论：完全一致，逐字相同。** 教授的 Outline 是官方目录的忠实副本，没有删改，也没有加权重。
+
+| # | CILO（官方目录与 Outline 逐字相同） | 权重 | 对应到本课的什么 |
+|---|---|---|---|
+| 1 | Describe and explain the basic accounting concepts and the automation of financial analyses using contemporary AI technologies. | 未分配 | W1–W3（会计概念）+ W9–W10（自动化分析） |
+| 2 | Identify AI techniques and models in accounting. | 未分配 | W8 |
+| 3 | Explain the application progress of AI techniques and models in accounting functions. | 未分配 | W9–W11 |
+| 4 | Explain clearly to potential users of AI accounting with **enhanced communication and presentation skills**. | 未分配 | **小组展示（W12–W13）** |
+| 5 | Apply AI and accounting knowledge in accounting and related functions. | 未分配 | 小组项目 + 期末案例题 |
+
+> ⚠️ **CILO 权重列是空的**。官方目录的 Weighting 列在 PDF 里被排版打乱（渲染成一列 `x`），而 Outline docx 的对应单元格**确实是空的**，只在合计行写了 `100%`。
+> **结论：本课没有给 CILO 分配权重**，不能像 IS5113 那样用「CILO 权重」反推考试比重。考点库的 🟡 级只能按「哪个 CILO 覆盖这个知识点」定，不能按百分比排序。
+
+**DEC（Discovery-enriched Curriculum）标注**：官方目录里 5 条 CILO 都打了 A1/A2/A3 的勾（Outline docx 里那几列是空的，是勾选框未渲染）。三个维度的定义：
+
+| 代号 | 名称 | 含义 |
+|---|---|---|
+| A1 | Attitude | 好奇心、主动提问、挑战既有假设 |
+| A2 | Ability | 批判性思维、研究能力、跨学科综合、把学术知识用到真实问题上 |
+| A3 | Accomplishments | 产出创造性作品／对真实问题的有效解决方案／新流程 |
+
+> 💡 A3 直接对应**小组项目**——它要求的是"产出物"，不是"读后感"。
+
+---
+
+## 3. 考核：三份材料的对校（最关键的一节）
+
+本课的考核信息散在**三个地方**，且**只有课件 p.2 给出了可执行的细节**。
+
+### 3.1 权重与形式
+
+| 评估任务 | 官方目录 | Outline docx | **Week 1 PPT p.2（最细）** | 取舍 |
+|---|---|---|---|---|
+| In-class Discussion and Activities | 10% | 10% | **Class participation 10%** — 课堂讨论、个人作业或案例解答 | 三者一致，采信课件的细节 |
+| Group Project | 20% | 20% | **拆成两半：书面报告 10% + 小组展示 10%**；3–5 人一组；**名单第 3 周末前提交**；**报告第 13 周末提交**；展示 **25–30 分钟**，**每位成员都必须上台** | ⭐ **只有课件有拆分和 DDL** |
+| Mid-Term Test | 20%，闭卷 | 20%，闭卷 | **闭卷，Week 7，10 月 14 日 19:30–21:30，考场 AC1 (Yeung) Y4302 & Y4702** | ⭐ **只有课件有时间地点** |
+| Final Examination | 50%，闭卷，**3 小时** | 50%，闭卷，**3 小时** | 50%，闭卷 | 时长以官方/Outline 的 **3 小时**为准 |
+| 持续评估合计 | 50% | 50% | 50% | ✅ |
+
+### 3.2 ❗ 两条硬性规则（官方目录与 Outline 都写了）
+
+> **① 及格线**
+> 原文（两处逐字相同）：*"Students are required to pass both coursework and examination components to guarantee to pass the course. **Failing either component may lead to failure in the course.**"*
+> 课件 p.2 的中式表述更直白：*"You must pass **both** the Coursework (including group project, class participation and Midterm) **and** the Final in order to pass the course."*
+>
+> **含义**：持续评估那 50% 和期末那 50% 要**分别及格**。期末考爆了，前面刷再高也救不回来；反之亦然。
+>
+> ⚠️ **与 IS5113 的差别**：IS5113 的官方目录写死了**数字门槛**（两部分各 ≥25%）。**AC6761 没有给数字**，只说"必须都通过"。所以本课的 pass 线只能按学校通用规则（一般理解为各部分达到 D 级）来推，**不要在笔记里编一个 25% 出来**。这一条列入 §7 待核对。
+
+> **② GenAI 使用政策**（逐项，官方目录与 Outline 完全一致）
+>
+> | 评估任务 | 允许用 GenAI？ | 原文限制 |
+> |---|---|---|
+> | In-class Discussion and Activities | **Yes** | *"permitted to use Generative AI tools **in information searching**; however, they are **strictly prohibited from using AI to write any part of their assessment reports**."* |
+> | Group Project | **Yes** | *"required to **properly acknowledge** the use of GenAI tools, and **provide explanation of why** the piece of response from the GenAI tool is adopted."* |
+> | Mid-Term Test | **No** | — |
+> | Final Examination | **No** | — |
+>
+> 💡 **这条对本课特别讽刺也特别重要**：一门教你用 AI 做会计分析的课，明文禁止你用 AI 代写报告。小组项目里用 GenAI **必须署明出处 + 解释为什么采纳它的这段输出**——后半句才是重点，它要求你展示**判断**，而不只是引用。这正好呼应课件 p.7 的"You become the quality filter"。
+
+### 3.3 评分 Rubric（官方目录与 Outline 完全一致）
+
+四项任务各一条 criterion，等级只有 High / Significant / Moderate / Basic / Not even reaching marginal levels 五档。
+
+| # | 任务 | Criterion 原文 |
+|---|---|---|
+| 1 | In-class Discussion | Ability to **actively participate** in interactive discussions and **contribute to the discovery** of contemporary knowledge and possible developments. |
+| 2 | Group Project | Ability to **introduce, interpret, and demonstrate** the application of AI in accounting and related functions. |
+| 3 | Mid-term Test | Ability to **explain the concepts, types, and implementation of AI**, as well as the knowledge related to **basic accounting concepts**. |
+| 4 | Final Examination | Ability to provide **good analysis of conceptual and case questions** and demonstrate **excellent presentation** on the provided answers. |
+
+> ⭐ **两条可操作的推论**
+> 1. **期中的 criterion 明确写了"AI 的概念、类型、实现"**——但按教学进度，AI 要到 Week 8 才讲，而教授在课上说期中**只考 Week 1–5**（见 §5）。这是官方模板与实际进度的**冲突**，详见 §4.2。
+> 2. **期末的 criterion 里，"case questions"和"presentation on the provided answers"各占一半份量**。它和 Outline 的 "answer all the essay and case questions" 对得上——**期末是论述题 + 案例题，没有选择题**。练"把理论套到案例上并写清楚"比背定义重要。
+
+---
+
+## 4. 差异与取舍清单
+
+### 4.1 Level：P5+P6 vs P6
+
+| | 说法 |
+|---|---|
+| 官方目录 | **P5, P6 - Postgraduate Degree** |
+| Outline docx | **P6** |
+| **取舍** | 采信官方目录的 **P5, P6**。这只影响"哪些项目的学生能选"，对学习内容零影响。Outline 大概是只填了自己项目对应的那一档。 |
+
+### 4.2 ⚠️ 期中考的范围：Rubric 说考 AI，进度表说 AI 还没讲
+
+| | 说法 |
+|---|---|
+| 官方 Rubric（第 3 项） | 期中考 "the concepts, types, and implementation of **AI**, as well as … **basic accounting concepts**" |
+| Outline 进度表 | Week 7 期中；**AI 的引入在 Week 8** |
+| 🎙️ 教授课上（`13:28` / `14:02`，说了两遍） | *"the midterm test in Week 7 will cover the content **from Week 1 to Week 5**"* |
+| **取舍** | **采信教授的口头说法：期中只考 Week 1–5**（会计基础 + REA 模型），**不考 AI**，**也不考 Week 6 的 ACCESS 操作**。官方 Rubric 那句 AI 是从模板抄来的、没有跟着实际进度改。 |
+
+> 这是本课**最重要的一条对校发现**。如果只读官方文件，你会花大量时间在期中前背 AI 概念——完全白费。
+
+### 4.3 Outline 有、官方目录没有的：13 周进度表
+
+官方目录**完全没有周次安排**（CourseLeaf 模板里没这一节），只有一段 Keyword Syllabus。**13 周表只在 Outline docx 里有**，见 §5。
+
+### 4.4 官方目录有、Outline 没有的
+
+| 项 | 内容 |
+|---|---|
+| 开课单位与学院 | Accountancy (AC) / College of Business (CB) |
+| Level 的完整范围 | P5, P6 |
+| Effective Term | Semester A 2026/27 |
+
+其余（Abstract、CILO、LTA、AT、Rubric、Keyword Syllabus、Reading List）**逐字相同**。
+
+### 4.5 阅读材料：官方与 Outline 一致，但与教学内容脱节
+
+| 类别 | 书目 |
+|---|---|
+| **Compulsory Readings** | ① *Superminds*, Thomas Malone, MIT Center for Collective Intelligence (2019)<br>② **Delivery Notes from Course Lecturers**（即课件本身） |
+| **Additional Readings** | ① *Artificial Intelligence in Accounting and Auditing: Towards New Paradigms*, Vol. 4, Vasarhelyi & Kogan (1998)<br>② *Superminds, how humans and machines can work together*, Deloitte Review, Issue 24, pp. 120–131 (Jan 2019) |
+
+> ⚠️ **三点观察**
+> 1. **"Delivery Notes from Course Lecturers" 被列为必读**——就是课件。这意味着**课件本身具有必读地位**，笔记覆盖课件全部内容是有依据的。
+> 2. *Superminds* 讲的是**人机协作的集体智能**，和前 7 周的复式记账、REA 模型**毫无关系**，只对 W8–W11 与小组项目有用。
+> 3. Vasarhelyi & Kogan 那本是 **1998 年**的。作为"AI 在会计中"的历史文献有价值，但里面不会有任何 LLM/GenAI 的内容。**不要指望它能帮你写小组项目。**
+> 4. 教授在 W1 讲的会计内容（FastForward 案例、GAAP 神殿图、Big 5→Big 4）**明显来自 Wild 的 *Financial and Managerial Accounting*（McGraw-Hill）**——课件 p.26 底部残留着 `© McGraw-Hill Education` 版权行。**这本书才是前 7 周真正的底本，但它不在任何书单上**（⚪ 笔记推断，见 §8）。
+
+### 4.6 Keyword Syllabus vs 实际周次的对照
+
+官方 Keyword Syllabus（与 Outline 逐字相同）共 13 个关键词。逐项对照实际进度：
+
+| Keyword | 对应周次 | 备注 |
+|---|---|---|
+| Accounting in Business | **W1** | ✅ |
+| Analysis of Financial Statements | W3, W9–W10 | ✅ |
+| Artificial Intelligence, Concept and Development History | W8 | ✅ |
+| Computerization and Automation | W6, W8 | ✅ |
+| **Robotics in Business and Accounting** | ❓ | **进度表里没有对应周次**（可能并入 W8 的 RPA） |
+| Reasoning and Self-Learning Process | W8 | ✅ |
+| Contemporary AI Accounting Practices | W9–W11 | ✅ |
+| **Expert Systems** | ❓ | 进度表无对应，推测在 W8 的 AI 发展史里带过 |
+| AI in the Finance Sector | W9–W10 | ✅ |
+| **Cost Benefit Analysis and Assessment** | ❓ | 进度表无对应 |
+| Obstacles and Challenges in AI Applications | W11（ethical considerations） | ✅ |
+| Forecasted Future Development | W11（future trends） | ✅ |
+| （进度表有但 Keyword 没有） | **W4–W5 REA 模型**、**W6 ACCESS 数据库** | ⚠️ **反向缺口，见下** |
+
+> ⭐ **最值得注意的反向缺口**：**REA 模型和 ACCESS 数据库占了 3 周（W4–W6），是期中考的主要内容之一，但 Keyword Syllabus 里一个字都没提。**
+> Abstract 里倒是有对应句：*"develops students' ability to **model business processes** and **develop accounting information database**"*。也就是说 REA + ACCESS 对应的是 Abstract 而不是 Keyword Syllabus。
+> **实践含义**：官方文件在这门课上不是可靠的复习指南，**以进度表 + 课件 + 课堂说法为准**。
+
+---
+
+## 5. 13 周进度表（仅 Outline docx 有）
+
+| Week | Topic（Outline 原文） | 中文 | 讲义文件 | 备注 |
+|---|---|---|---|---|
+| 1 | Accounting in Business | 会计与商业 | `Week 1 PPT.pptx`（83 页） | ✅ 已出笔记 [[M01-会计与商业]] |
+| 2 | Accounting for Business Transactions | 交易的会计处理 | `Week 2 PPT.pptx`（47 页） | 复式记账、借贷、日记账、过账、试算表 |
+| 3 | Annual Report Analyses | 年报分析 | `Week 3 PPT.pptx`（47 页） | 四表详解 + 共同比分析 + Nike 案例 |
+| 4 | REA Accounting Model | REA 会计模型 | `Week 4 PPT.pptx`（53 页） | 与复式记账的范式对比 |
+| 5 | REA Business Process Modeling | REA 业务流程建模 | `Week 5 PPT.pptx`（57 页） | 采购循环 / 收入循环 |
+| 6 | Accounting Information Querying with ACCESS | 用 ACCESS 查询会计信息 | `Week 6 PPT.pptx`（92 页） | **机房上机**（转录 `12:56`） |
+| **7** | **Mid-term test** | **期中考** | — | **10/14 19:30–21:30，AC1 (Yeung) Y4302 & Y4702，闭卷，范围 W1–W5** |
+| 8 | Introduction of AI | AI 导论 | 待发 | AI 在本课第一次正式登场 |
+| 9 | AI in Financial Statement Analyses – from the Perspective of Stakeholders | 利益相关者视角 | 待发 | |
+| 10 | AI in Financial Statement Analyses – Utilizing a Variety of Analytical Models | 多种分析模型 | 待发 | |
+| 11 | Hands-on AI Application, Ethical Considerations and Future Trends of AI | 上机 + 伦理 + 趋势 | 待发 | ← **与 IS5113 的交叉点** |
+| 12 | Group presentations | 小组展示 | — | |
+| 13 | Group presentations | 小组展示 | — | **书面报告本周末截止** |
+
+> 🎙️ 教授在课上对进度表的补充（`12:20`–`14:48`）：
+> - W1–W3 是复式记账入门；W4–W5 是 REA **理论**模型；**W6 之所以存在，是因为"纯理论太难懂也太无聊"，所以要把概念模型落到真实数据库里跑一遍**（原话大意）。
+> - **"The schedule is in the future. If we have any change, I will let you know immediately."** —— 进度表可能变。
+
+---
+
+## 6. 与其他课的交叉点
+
+### 6.1 ↔ IS5113 AI Ethics and Regulations
+
+| AC6761 | IS5113 | 交叉内容 |
+|---|---|---|
+| **W1 §会计伦理**（Enron / WorldCom / Olympus / SOX） | **W5 Accountability and Liability** | **问责的落点**。AC6761 给的是"制度怎么把责任钉到人身上"的真实案例：SOX 要求 CEO/CFO **亲笔签字**为财报负责、审计师必须**独立验证**内控有效性。IS5113 W5 讨论的是"AI 出错谁负责"——SOX 正是同一问题在**会计领域**的已成型答案，可以直接当作**制度先例**引用 |
+| **W1 §审计意见分级**（🎙️ 转录独有） | IS5113 W4 Transparency | 审计意见（clean / with explanatory notes / qualified / adverse）是一套**分级的、公开的、可问责的外部鉴证机制**。它是"透明性怎么被制度化"的现成模板 |
+| **W1 §内部控制 / SOX 404** | IS5113 W5 | 内控是"事前防止出错"的制度设计，对应 AI 治理里的 guardrail |
+| **W11 Ethical Considerations of AI** | IS5113 全课 | 直接重叠。**AC6761 W11 一节课要讲完的东西，IS5113 讲 13 周。**做 AC6761 小组项目时可以直接搬 IS5113 的 FATP 框架，反过来 IS5113 的项目也能用 AC6761 的会计案例 |
+| **W1 §成本效益约束 / 重要性水平** | IS5113 W3 Fairness | 重要性（materiality）本质是一条**阈值判断**："多小的错可以不说"。与算法公平性里的阈值选择是同构问题 |
+| **W1 §AI 幻觉与"你是质量过滤器"** | IS5113 W4/W5 | 课件 p.7 的四条论证（要会术语、报表相互勾稽、判断仍属人类、你是质量过滤器）**几乎是一份"人在环路（human-in-the-loop）"的会计版宣言** |
+
+### 6.2 ↔ 其他
+
+| 课 | 交叉 |
+|---|---|
+| EF5560 / Fintech | 财报分析、比率分析是共同基础 |
+| IS5542 GenAI in Business | 幻觉、提示工程、GenAI 的商业落地 |
+| IS6400 BDA | ACCESS 数据库 ↔ SQL / 数据建模 |
+
+---
+
+## 7. 待核对
+
+| # | 事项 | 现状 |
+|---|---|---|
+| 1 | **及格线的具体数字** | 官方目录只写"两部分都要过"，**没有百分比**。IS5113 有 25% 的明文，本课没有。需向教授或教务确认，或按学校通用 Regulations 处理。**在确认前，笔记里不得出现具体百分比。** |
+| 2 | 上课时间与地点 | 期中考是 19:30–21:30，**推测常规课也在晚间**，但未见明文。W1 录音长 2h03m，若课时为 3 小时则录音**缺开头约 1 小时**；若课时为 2h15m 则只缺约 10 分钟。**需确认课表** |
+| 3 | 转录开头的缺口 | 录音从 `00:01` 起就在讲课中段（复式记账流程），**课件 p.1–2（含全部考核细则）没有被录到**。课件 p.2 的信息本笔记已直接取自 PPT，但教授对考核的口头补充**永久缺失** |
+| 4 | 小组名单提交方式 | 课件只说"Week 3 末前提交"，未说提交到哪（Canvas？邮件？）。转录未涉及（在录音缺口里） |
+| 5 | 教授承诺上传的 Word 模板 | 🎙️ `01:53:19`：*"So this word file… we upload it… maybe next week after we finish all of them."* —— 交易分析答题模板，**下周（W2）上传**。到时要下载并补进笔记 |
+| 6 | Robotics / Expert Systems / Cost-Benefit Analysis 三个 Keyword 无对应周次 | 推测在 W8 一并带过，待 W8 课件发出后核对 |
+
+---
+
+## 8. 延伸发现
+
+**① 前 7 周的真实底本是 Wild 的 McGraw-Hill 会计教科书** ⚪
+
+依据：
+- Week 1 PPT p.26 右下角残留 `© McGraw-Hill Education`
+- FastForward / Chuck Taylor 的 11 笔交易案例，是 John J. Wild 等著 *Financial and Managerial Accounting* / *Fundamental Accounting Principles* 第 1–2 章的标准例题
+- "GAAP 神殿"图（Principles / Assumptions / Constraints 三层柱式）同样出自该系列
+
+**含义**：若某个会计概念课件讲得太简，去查这本书的对应章节是最快的补课路径。**⚪ 这是我根据版权行与例题特征做的推断，不是教授说的。**
+
+**② 官方目录的 Abstract 比 Keyword Syllabus 更准确地描述了这门课**
+
+Abstract 里那句 *"It develops students' ability to **model business processes** and **develop accounting information database**"* 精确对应 W4–W6，而 Keyword Syllabus 完全漏了。**看这门课要干什么，读 Abstract 不要读 Keyword Syllabus。**
+
+**③ 这门课对"AI"的定位比名字保守得多**
+
+课名叫 *Artificial Intelligence Accounting*，但 13 周里 AI 只占 4 周（W8–W11），且教授在 W1 用了近 10 分钟论证「**为什么必须先学会计再谈 AI**」（课件 p.6–8 + 转录 `14:48`–`18:14`）。核心论点：*"AI is a powerful amplifier, but only when you already understand the numbers."*
+
+**这门课的实际主张是：AI 不是替代品，是放大器；不懂会计的人用 AI 分析财报，放大的是错误。**
+
+---
+
+## 相关
+
+- 课程入口：[[AC6761_Artificial_Intelligence_Accounting/00-课程总览|00-课程总览]]
+- 笔记：[[M01-会计与商业]]
+- 元数据：[[AC6761_Artificial_Intelligence_Accounting/_meta/知识层级台账|知识层级台账]] ｜ [[AC6761_Artificial_Intelligence_Accounting/_meta/术语表|术语表]] ｜ [[AC6761_Artificial_Intelligence_Accounting/_meta/考点库|考点库]] ｜ [[AC6761_Artificial_Intelligence_Accounting/_meta/作业与DDL|作业与DDL]]

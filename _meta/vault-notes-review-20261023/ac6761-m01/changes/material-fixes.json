@@ -1,0 +1,60 @@
+{
+  "from_candidate": "1cc9fe0b429730dc700cbc9e9675d76584d7b7f7190094cf101760b614fcde14",
+  "candidate_sha256": "6aee3a79a8ac39ee2257d0f4a65f23ce6bd37f2a4d1da02dea36cdb9cb4e97af",
+  "changes": [
+    {
+      "label": "A5 damaged schedule quote",
+      "old": "他还提醒（`14:48`）：*\"The schedule… if we have any change, I will let you know immediately.\"*",
+      "new": "教授在 `14:48` 说明这只是暂定日程。后半句关于安排变化后的通知有 ASR 句法损坏，原音未核，因此这里不保留重构的逐字引文；具体变更以随后发布的课程通知为准。"
+    },
+    {
+      "label": "A10 cross section time",
+      "old": "教授强调的\"你是质量过滤器\"针对的就是这一侧。",
+      "new": "“你是质量过滤器”是对 M01 `17:16` 这一段的语境转述（详见 §2.2.2），针对的就是这一侧；ASR 把术语识别成 `quality theater`，这里不冒充清晰的逐字原话。"
+    },
+    {
+      "label": "A13 whole correction capitalized and self test",
+      "old": "Instead it is capitalized into the balance sheet.",
+      "new": "Instead it is [capitalized] into the balance sheet."
+    },
+    {
+      "label": "same quote correction self test",
+      "old": "although the company suffered so much loss",
+      "new": "although the company suffer[ed] so much loss"
+    },
+    {
+      "label": "A13 A14 amount inference",
+      "old": "> ⚠️ 转录在这一段里把 equity 反复识别成了 \"revenue\"（如 `01:21:09` 的 *\"the revenue would be that 2 million\"*）。**按上下文应为 equity**，已在本笔记中还原。见 [[#9.5 待核对|§9.5]]。",
+      "new": "> ⚠️ M01 `01:21:09` 的 ASR 句子损坏，出现了 revenue，但本段讨论的是权益（equity）。相邻 `01:20:00`–`01:20:43` 给出资产 300 万、负债 100 万，按 $300-100=200$ 万元可算出权益。200 万来自相邻数据与等式，不是受损句可核实的逐字引文；术语按讲义书面定义解释，原音实际发音仍未核。见 [[#9.5 待核对|§9.5]]。"
+    },
+    {
+      "label": "A13 credit sale paraphrase",
+      "old": "> **on credit / on account = 赊 = 不涉及现金。** *\"credit sale means the seller [gets] credit, no cash.\"*",
+      "new": "> **on credit / on account = 赊：本笔交易未即时收付现金。** 教授用卖方赊销说明这一点，并明确说 *\"no cash\"*（M01 `01:23:02`；前半句术语 ASR 损坏，只保留稳定的短引文）。"
+    },
+    {
+      "label": "A13 affected",
+      "old": "两笔之后 *\"liability is not affect[ed], so the number [is] even the same.\"*（`06:10`）",
+      "new": "两笔之后 *\"liability is not [affected], so the number [is] even the same.\"*（W2 `06:10`；方括号为按上下文作的整词校正）"
+    },
+    {
+      "label": "A13 time and whole receivable",
+      "old": "| 7 | **赊账**提供快递服务 **\\$2,500**（`44:07`） | *\"'on credit' means no cash receipt from customer. So it's account[s] receivable increase—[that's an] asset increase. And the revenue increase[s]\"* |",
+      "new": "| 7 | **赊账**提供快递服务 **\\$2,500**（DOCX 原题；W2 `44:29`–`44:50` 讲处理） | *\"[on credit] means no cash receipt from customer. So it's [accounts receivable] increase—[that's an] asset increase. And the revenue increase[s]\"*（方括号标 ASR 校正） |"
+    },
+    {
+      "label": "A13 XBRL and MD&A source boundaries",
+      "old": "**④ XBRL 是什么** 🔗\n\n教授在编制者视角里提到 *\"XBRL tagging\"*（转录 `07:32` 的 `XPI attacking` 是 ASR 错误）。**XBRL = eXtensible Business Reporting Language**，一套用 XML 给财报每个数字打上机器可读标签的标准（\"这个数字是营业收入、单位千元、期间是 2025 全年\"）。美国 SEC、中国证监会、香港交易所都已强制或部分强制使用。\n\n**为什么它对本课重要**：**XBRL 是\"让 AI 能读财报\"的基础设施。** 没有它，AI 只能从 PDF 里 OCR 出数字然后猜含义；有了它，数字自带语义。教授在讲 REA 时提到 *\"this is related to the REA model\"*——两者的共同点是**给数据加语义结构**。\n（🔗 常识性财务信息化知识，非本课材料，2026-09-09）\n\n**⑤ MD&A 是什么** 🔗\n\n转录 `10:14` 的 `MBNA / management, development and analysis` 是 ASR 错误，正确是 **MD&A = Management's Discussion and Analysis（管理层讨论与分析）**——年报中管理层用文字解释业绩、风险与前景的部分。**它是年报里唯一大段的自然语言，因此也是 NLP / LLM 最能发挥的地方**（情绪分析、风险信号检测）。W3 的年报组成和 W9–W10 的 AI 分析都会用到。\n（🔗 常识性财报知识，非本课材料）\n\n",
+      "new": "**④ XBRL 是什么** 🔗\n\n课堂词与外部定义要分开。M01 `07:32` 的 ASR 是 `XPI attacking`，结合会计信息化语境，笔记暂按 `[XBRL tagging?]` 理解；**原音未核，不能把这个校正写成教授清晰说出的原话**。同段 `IDEA model` 也未独立核音，不能据此引用为确定的 REA 原句。\n\n**可扩展商业报告语言（eXtensible Business Reporting Language，XBRL）**是一套数字报告标准。它用预先定义的概念描述报告事实。例如一项事实不只存“100”，还要说明它是什么项目、属于哪一期间、采用什么单位。接收者可按概念读取和检验数据，减少反复人工猜表头的工作。\n\n💡 **笔记补充与边界**：这与 REA 用结构明确业务数据含义的教学目的有相通之处，但不是同一套模型。XBRL 只是结构化报告的一种办法；文本 PDF、HTML 和表格也可读取。无论哪种格式，都还要核对项目、单位、期间和原始披露，标签本身不保证数字真实。本段没有逐地核查各监管机构当前的强制范围，故不作地域法规概括。\n\n🔗 来源：[XBRL International · The Standard for Reporting](https://www.xbrl.org/the-standard/what/the-standard-for-reporting/)（获取日期：2026-10-23）；外部释义，不是课堂逐字引文。\n\n**⑤ MD&A 是什么** 🔗\n\nM01 `10:14` 的 ASR 出现 `MBNA / management, development and analysis`。按本段财报语境，笔记将术语校正为**管理层讨论与分析（Management's Discussion and Analysis，MD&A）**；原始发音仍未回听。SEC 的投资者指南将 MD&A 说明为管理层对财务表现、状况、趋势及风险提供的叙述和背景。\n\n💡 **笔记补充**：假如收入增长，MD&A 可能解释是销量、售价还是收购所致，读者要再对照报表与附注核验。附注等其他部分同样有大量文字，不能说 MD&A 是年报中唯一的自然语言。自然语言处理（Natural Language Processing，NLP）与大语言模型（Large Language Model，LLM）可辅助提取和比较这些叙述；它们的摘要或风险判断仍须回到原披露，不因来自管理层或模型就自动可靠。W3 的年报组成和 W9–W10 的 AI 分析会进一步使用这些材料。\n\n🔗 来源：[SEC · Beginners’ Guide to Financial Statements](https://www.sec.gov/investor/pubs/begfinstmtguide.htm) 中 “Read the Footnotes” 与 “Read the MD&A”（获取日期：2026-10-23）；上段操作例是笔记补充。\n\n"
+    },
+    {
+      "label": "A14 repeated table and uncertain terms",
+      "old": "| 8 | 转录中 equity ↔ revenue 的系统性混淆 | `01:19:14`–`01:21:36`、`01:27:36` 等处，ASR 反复把 `equity` 识别成 `revenue`（如 *\"the revenue would be that 2 million\"*、*\"we call it revenue because that's always equal to total assets minus total liabilities\"`）。**按语义已在笔记中全部还原为 equity。** 其他已确认的 ASR 错误：`general letter of account`→general ledger of accounts、`trial about food`→trial balance、`XPI attacking`→XBRL tagging、`MBNA`→MD&A、`Isas/Ifis/IPAS`→IFRS、`JP/GAHD/DAAB/DAAT/DAHC`→GAAP、`Rea/RJ/IE/IA/RGM/iron model`→REA model、`error/Aaron/Enron`→Enron、`lipo/depot`→LIFO/FIFO、`Lisa`→lease、`right abuse assets`→right-of-use assets、`imperative test`→impairment test、`Pineapple`→（应为某地区名，未还原） |",
+      "new": "| 8 | 转录中 equity ↔ revenue 的系统性混淆 | `01:19:14`–`01:21:36`、`01:27:36` 的 ASR 多次出现不合本段定义的 revenue，笔记按讲义权益定义解释。`01:21:09` 原句损坏；200 万是由相邻资产 300 万减负债 100 万推得，不能当成受损句的逐字引文。`general letter of account`→general ledger of accounts、`trial about food`→trial balance 等是书面术语校正；`XPI attacking` 暂按 `[XBRL tagging?]`、`MBNA` 按 MD&A 语境理解，原音仍未核。其余 IFRS、GAAP、REA、Enron、LIFO/FIFO、lease、right-of-use assets、impairment test 以讲义书面拼写为准，不认证原音实际发音；`Pineapple` 疑为地区名，未还原。 |"
+    }
+  ],
+  "external_sources_checked": [
+    "https://www.xbrl.org/the-standard/what/the-standard-for-reporting/",
+    "https://www.sec.gov/investor/pubs/begfinstmtguide.htm"
+  ]
+}

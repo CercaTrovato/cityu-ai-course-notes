@@ -1,0 +1,466 @@
+---
+type: 术语表
+course: EF5560
+updated: 2026-10-22
+---
+
+# EF5560 术语表（中英对照 · 统一译名）
+
+> **用途**：统一全课译名，避免同一个英文在不同笔记里出现两种中文。
+> **考试用英文作答**，因此「考试可用的英文定义」列优先抄讲义原句；讲义没有的，标注来源。
+> 跨课程通用的条目已另行登记在 [[EF5560_Fintech_and_AI_in_Finance/_meta/待并入术语总表|待并入术语总表]]，由主 agent 合并进 `_meta/术语总表.md`。
+
+**来源标记**：`讲` = 讲义原文｜`🎙️` = 课堂转录｜`💡` = 笔记补充｜`大纲` = syllabus / 官方目录
+
+---
+
+## 1. AI 辅助编码
+
+| 中文（统一译名） | English | 定义 | 首现 | 源 |
+|---|---|---|---|---|
+| **Vibe Coding**（保留英文，中文可写「AI 辅助编码」） | Vibe Coding / AI-assisted coding | Describe the task in plain language, let an AI assistant write and run a small Python job, inspect the result, and revise until the output passes explicit checks. | M01 §2.2 | 讲 p.7 |
+| 六步循环 | Six-step procedure | Define → give a precise instruction → run without editing first → inspect rows and plots → challenge timing and logic → fix, save, and document. | M01 §2.2.2 | 讲 p.9 |
+| 六项规格 | Six specifications | Language and packages; data; price convention; forecast clock; predictors; outputs and checks. | M01 §2.2.3 | 讲 p.10 |
+| 桌面编码工具 | Desktop coding tool | An AI tool that can read local files and execute code, as opposed to a chatbot that can only print code. | M01 §2.2.4 | 🎙️`43:06` |
+| 权限分级 | Permission levels | The scope of local file and command access granted to an AI agent; start with the most restrictive. | M01 §2.2.4 | 🎙️`44:00` |
+| 代码留痕 / 代码备份 | Code backup | Saving the generated code for every result, so that a mistake can be traced later. | M01 §2.2.4 | 🎙️`01:06:31` |
+| 挑战式检验 | Challenge the output | Using your own knowledge of the data to contradict the AI's result (e.g. 200 prices must give 199 returns). | M01 §2.4.3 | 🎙️`47:59` |
+| 幻觉 | Hallucination | AI-generated numbers that look plausible but are fabricated. | M01 §2.4.5 | 🎙️`01:22:11` |
+
+## 2. 收益、价格与风险
+
+| 中文（统一译名） | English | 定义 | 首现 | 源 |
+|---|---|---|---|---|
+| **简单收益** | Simple return | `r_t = P_t / P_{t−1} − 1` | M01 §2.3.1 | 讲 p.19 |
+| **对数收益** | Log return | `r_t = ln(P_t / P_{t−1})` | M01 §2.3.1 | 讲 p.20 图注 |
+| 收盘价 | Closing price | The last traded price of the period. | M01 §2.3.2 | 讲 p.22 |
+| **复权收盘价** | Adjusted close | A price series adjusted for splits and dividends to place prices on a comparable economic basis. | M01 §2.3.2 | 讲 p.22 |
+| 拆股 | Stock split | A split changes the quoted price without creating an investor loss. | M01 §2.3.2 | 讲 p.22 |
+| 现金股利 | Cash dividend | A dividend creates a return even though the ex-dividend price falls. | M01 §2.3.2 | 讲 p.22 |
+| 价格指数 | Price index | An index that excludes dividends. | M01 §2.3.3 | 讲 p.18 |
+| 全收益（指数） | Total return | A return measure that includes dividends. | M01 §2.3.3 | 讲 p.11 图注 |
+| **波动率（年化）** | Annualized volatility | Under the stated square-root-of-time approximation, period return standard deviation times the square root of periods per year; serial dependence requires covariance-aware treatment and a disclosed sample denominator. | M01 §2.3.4 | 讲 p.44 |
+| **回撤 / 最大回撤** | Drawdown / Maximum drawdown | The cumulative loss from the running peak; the part a client actually lives through. | M01 §2.9.2 | 讲 p.51 |
+| **基准** | Benchmark | The reference return a strategy must beat before its performance means anything. | M01 §2.3.3 | 🎙️`30:50` |
+| 无风险资产 | Risk-free asset | A government bond repaid in its own currency. | M01 §2.3.3 | 🎙️`50:44` |
+| 国债收益率 | Treasury yield | The yield on government debt; the 10-year is the standard reference. | M01 §2.3.3 | 🎙️`31:01` |
+| **期限利差** | Term spread | Long-term yield minus the short-term policy rate; a negative spread is read as a recession signal. | M01 §2.9.2 | 讲 p.32 ＋ 🎙️`01:48:20` |
+| 联邦基金利率 | Federal funds rate (DFF) | The interbank overnight rate targeted by the Fed. | M01 §2.6.1 | 讲 p.28 |
+| 市值加权 | Capitalization-weighted / value-weighted | Bigger companies take higher weight in the index. | M01 §2.8.2 | 🎙️`01:31:29` |
+
+## 3. 组合与交易
+
+| 中文（统一译名） | English | 定义 | 首现 | 源 |
+|---|---|---|---|---|
+| 组合权重 | Portfolio weight | The fraction of capital allocated to each asset; negative for short positions. | M01 §2.10.2 | 讲 p.15 |
+| **多空组合** | Long-short position | A position that buys one asset and sells another. | M01 §2.10.2 | 讲 p.15 |
+| **美元中性** | Dollar-neutral | Equal dollar weights long and short, so net dollar exposure is zero — **but not all risk is neutralized**. | M01 §2.10.2 | 讲 p.15 |
+| 相对价值 / 配对交易 | Relative-value trade / Pairs trade | A position whose payoff depends on the relative performance of two related assets. | M01 §2.10.1 | 讲 p.8 |
+| 再平衡 | Rebalance | Resetting portfolio weights to their targets each period. | M01 §2.10.2 | 讲 p.15 |
+| **主动收益** | Active return | Stock return minus market return. | M01 §2.7.1 | 讲 p.41 |
+| 交易成本 | Transaction cost | The cost of executing a trade, ignored in this course's exercises. | M01 §2.3 | 🎙️`02:03:48` |
+| **买卖价差** | Bid-ask spread | A simple proxy for transaction cost. | M01 §2.3 | 🎙️`02:04:56` |
+| 流动性 | Liquidity | How easily a position can be traded without moving the price. | M01 §2.3 | 🎙️`02:05:08` |
+| 市场冲击 | Market impact | The price movement caused by one's own order. | M01 §2.3 | 🎙️`02:03:42` |
+| 回测 | Backtest | Evaluating a strategy on historical data. | M01 §2.5.2 | 🎙️`29:19` |
+| 夏普比率 | Sharpe ratio | 风险调整后收益（**M05 正式定义**） | M05（预告） | 🎙️`01:35:06` |
+
+## 4. 数据时点纪律 ★ 本课核心
+
+| 中文（统一译名） | English | 定义 | 首现 | 源 |
+|---|---|---|---|---|
+| **预测时钟** | Forecast clock | When the signal is formed and which future return is the target. | M01 §2.5.1 | 讲 p.10, 43 |
+| **数据泄漏** | Data leakage | Using information in a predictor that was not observable at the time the forecast was made. | M01 §2.5.2 | 讲 p.48 |
+| **前视偏差** | Look-ahead bias | Evaluating a historical strategy with information that only became available later; in M03 the professor uses the same term for published factors that were found by "looking back" at what already worked. | M01 §2.5.2 | 🎙️`01:41:52`；🎙️ M03 §2.6.6 `01:54:11`–`01:55:31`（"published…factors that discover[ed]…expose[d]…this is called look-ahead bias"） |
+| **生存者偏差** | Survivorship bias | Keeping only assets that survived to today, which systematically overstates historical performance. | M01 §2.8.3 | 🎙️`01:41:52` |
+| **冻结样本池** | Frozen universe / frozen panel | Fixing index membership as of a historical date so later membership changes cannot enter the sample. | M01 §2.8 | 讲 p.24, 25 |
+| 历史成分股 | Historical constituents | The index membership as it actually stood at each past date. | M01 §2.8.3 | 讲 p.13 脚注 |
+| **时点数据** | Point-in-time data | Data recorded as it stood on each date, rather than the currently revised series. | M01 §2.5.4 | 讲 p.13 脚注 |
+| **参考期 / 观测月** | Reference period / observation month | The period a statistic describes — not the day investors could see it. | M01 §2.5.4 | 讲 p.27, 33 |
+| **发布日** | Release date | The day a statistic became public. | M01 §2.5.4 | 讲 p.27 |
+| **归档日** | Filing date | The day a 10-Q or 10-K was filed with the regulator. | M01 §2.6.3 | 讲 p.39 |
+| 财季期末 | Fiscal period end | The last day of the accounting period a statement describes. | M01 §2.6.3 | 讲 p.39 |
+| **数据修订** | Revision | Previously published values can be revised. | M01 §2.6.1 | 讲 p.33 |
+| **实时数据版本** | Vintage (ALFRED) | The version of a series as it stood at a past date, before later revisions. | M01 §2.6.1 | 讲 p.33 |
+| **发布滞后** | Release lag | Extra waiting time added for safety: **+1 month for macro, +3 months for company financials**. | M01 §2.6.1 | 🎙️`01:41:24` |
+| 三行手检 | Three-row check | Verifying by hand, on three consecutive forecast periods, which information each predictor used. | M01 §2.7.4 | 讲 p.47 |
+| 静默插值 | Silent interpolation | Filling published gaps without saying so — explicitly forbidden. | M01 §2.6.1 | 讲 p.30, 32 |
+
+## 5. 预测变量与建模
+
+| 中文（统一译名） | English | 定义 | 首现 | 源 |
+|---|---|---|---|---|
+| **预测变量** | Predictor / feature | A variable used on the right-hand side to forecast a future return. | M01 §2.7 | 讲 p.10 |
+| **特征表** | Feature table | One row per forecast period (and asset), with predictors available no later than the declared forecast cutoff and later realised return as target; equality at cutoff is allowed only when the data is actually released and accessible then. | M01 §2.7.1 | 讲 p.41, 46 |
+| 目标 | Target | The realized return the row is trying to forecast. | M01 §2.7.2 | 讲 p.44 |
+| **横截面** | Cross-section | The set of assets observed at one point in time. | M01 §2.8.1 | 讲 p.24 |
+| 面板数据 | Panel data | Multiple assets observed over multiple periods. | M01 §2.8 | 💡 |
+| **动量** | Momentum | `P_{t−1}/P_{t−k−1} − 1`, the cumulative price change known before the forecast period. | M01 §2.7.2 | 讲 p.44 |
+| **均线偏离** | Moving-average gap | `P_{t−1} / mean(P_{t−k..t−1}) − 1`, distance from the recent trend. | M01 §2.7.2 | 讲 p.44 |
+| **技术指标** | Technical indicator | A predictor computed from price and volume alone; it avoids external publication lags only under the stated data availability; future prices, centred windows or later revisions can still leak. | M01 §2.7.5 | 🎙️`01:56:43` |
+| 利润率 | Profit margin | net income / revenue | M01 §2.6.4 | 讲 p.38 |
+| 账面杠杆 | Book leverage | 1 − equity / assets | M01 §2.6.4 | 讲 p.38 |
+| 资产增长 | Asset growth | assets / lagged assets − 1 | M01 §2.6.4 | 讲 p.38 |
+| 现金流/资产 | Cash flow to assets | operating cash flow / assets | M01 §2.6.4 | 讲 p.38 |
+| **市场有效性** | Market efficiency | All information up to today is already incorporated into the price. | M01 §2.9.3 | 🎙️`01:02:05` |
+| **随机游走 / 鞅** | Random walk / Martingale | The best predictor of tomorrow's price is today's price. | M01 §2.9.3 | 🎙️`01:01:24` |
+| 反转 | Reversal | The slight negative autocorrelation found in realized returns. | M01 §2.9.3 | 🎙️`01:02:30` |
+| 另类数据 | Alternative data | Non-public datasets bought by investors to obtain information beyond public sources. | M01 §2.7.5 | 🎙️`02:02:27` |
+| 内幕信息 | Inside information | Non-public information about a company; using it is illegal. | M01 §2.3 | 🎙️`25:13` |
+
+## 5b. 回归与样本外评价（M02）
+
+| 中文（统一译名） | English | 定义 | 首现 | 源 |
+|---|---|---|---|---|
+| 条件均值 | Conditional mean | Does `E[r_t \| x_{t−1}]` change with the predictor? | M02 §2.1 | 讲 L2 p.3 |
+| 拟合线 | Fitted line | OLS chooses α̂ and β̂ to minimize squared residuals. | M02 §2.4.1 | 讲 L2 p.18 |
+| 残差 | Residual | `ε̂_t = r_t − r̂_t`; residuals are data, not waste. | M02 §2.4.6 | 讲 L2 p.25 |
+| 标准误 | Standard error | How much an estimate would vary across repeated samples generated by the same process. | M02 §2.4.3 | 讲 L2 p.22 |
+| 等频分箱 | Equal-count bins | Sort by the predictor, split into ten groups of similar size, and average x and r within each group. **A diagnostic, not a substitute for the raw data.** | M02 §2.3.3 | 讲 L2 p.13 |
+| 多元回归 | Multiple regression | How returns vary with one predictor while holding the others fixed. | M02 §2.5.1 | 讲 L2 p.28 |
+| **厨房水槽（回归）** | Kitchen sink | Putting every available predictor into one regression — Welch and Goyal (2008 RFS); fits best in sample, loses badly out of sample. | M02 §2.5.1 | 讲 L2 p.28 |
+| 多重共线性 | Correlated predictors / multicollinearity | When two predictors move together, the fitted line is well determined but the split between them is not. | M02 §2.5.2 | 讲 L2 p.30 |
+| **训练集标准化** | Standardize using training data only | `z = (x − x̄_train)/s_train`; recomputing on the full sample **leaks future distribution information**. | M02 §2.5.3 | 讲 L2 p.31 |
+| 按时间切分 | Chronological split | Earlier dates for fitting, later dates for evaluation; **never shuffle rows**. | M02 §2.6.2 | 讲 L2 p.7, 37 |
+| 训练 / 验证 / 测试 | Training / Validation / Test | Estimate / choose / evaluate once. **Changing a model after inspecting the test result turns that period into development data.** | M02 §2.6.3 | 讲 L2 p.38 |
+| 固定 / 扩展 / 滚动窗口 | Fixed holdout / Expanding / Rolling window | Every valid design preserves time order and fits before evaluating. | M02 §2.6.3 | 讲 L2 p.40 |
+| 冻结规格 | Frozen design | Predictor names, training means and standard deviations, fitted coefficients, and test dates and row order all stay fixed. | M02 §2.6.4 | 讲 L2 p.45 |
+| 均方误差 | MSE | `(1/T)·Σ(r_t − r̂_t)²` | M02 §2.7.2 | 讲 L2 p.43 |
+| **样本外 R²** | Out-of-sample R² | `1 − Σ(r_t−r̂_t)²/Σ(r_t−r̂ᵇ_t)²`; positive means beating the stated benchmark. **Has no target-free meaning.** | M02 §2.7.2 | 讲 L2 p.43, 44 |
+| 命中率 | Hit rate | `(1/T)·Σ 𝟙{sign(r̂_t)=sign(r_t)}` | M02 §2.7.2 | 讲 L2 p.43 |
+| **基准命中率** | Positive-return base rate | The share of months with a positive return; **directional accuracy must beat this, not an automatic 50%**. | M02 §2.7.3 | 讲 L2 p.47 |
+| **滞后 MA(12) 基准** | Lagged MA(12) benchmark | `r̂ᵇ_{m,t} = (1/12)·Σ_{j=1..12} r_{m,t−j}`；数据集 `csi300_macro_panel.benchmark_ma12` 就是它 | M02 §2.7.3 | 讲 L2 p.44, 46 |
+| 中性预测（个股） | Zero active-return benchmark | `â ᵇ_{i,t} = 0`: stock i is expected to match its local market. | M02 §2.7.3 | 讲 L2 p.44 |
+| 有效市场假说 | Efficient Market Hypothesis (EMH) | Public information is priced in within seconds so patterns vanish; true on average in the long run, not month by month（🎙️ P1 `07:22`） | M02 §2.1 | 🎙️ 课堂 |
+| F 检验（联合显著性） | F-test | Tests whether **all** slopes are zero at once; can be significant while every single t-test is not — the signature of multicollinearity | M02 §2.5.0 | 🎙️ 课堂 |
+| 数据挖掘（贬义） | Data mining (p-hacking) | Trying many predictors until one clears p < 0.05; 100 useless predictors still yield ~5 "significant" ones（🎙️ P2 `32:42`）。⚠️ 与 IS6400 里褒义的 data mining 是同一个词 | M02 §2.6.1 | 🎙️ 课堂 |
+| 发表后偏差 | Post-publication bias | Once a predictor is published, traders trade on it and the signal fades | M02 §2.6.1 | 🎙️ 课堂 |
+| 历史均值基准 | Historical average | The forecast with all slopes set to zero — Campbell & Thompson (2008): hard to beat out of sample | M02 §2.6.1 | 讲 L2 p.36 + 🎙️ |
+| 猴子基准 | "Monkey" benchmark | Always guessing "up"; ≈60% in the US market — the colloquial name for the positive-return base rate | M02 §2.1、§2.7.4 | 🎙️ 课堂 |
+| 六条评价标准 | Six evaluation criteria | Sample association / forecast error / relative accuracy / direction / stability / economic value. | M02 §2.7.1 | 讲 L2 p.42 |
+
+## 5c. 线性机器学习：收缩、降维与排序（M03）
+
+| 中文（统一译名） | English | 定义 | 首现 | 源 |
+|---|---|---|---|---|
+| 超额收益 | Excess return | $r^e_{i,t} = r_{i,t} - r_{f,t}$, the return above a period-matched risk-free return. | M03 §2.6.5 | 讲 L3 p.33 🎙️ |
+| 无风险收益代理 | Risk-free proxy | U.S. three-month Treasury yield (U.S., HKSAR); ChinaBond three-month yield (Chinese mainland); previous month-end value converted to the holding period. | M03 §2.6.5 | 讲 L3 p.33 |
+| 收缩 | Shrinkage | Add a cost for large slopes to the OLS loss; larger λ puts more weight on small slopes; the forecast remains linear. | M03 §2.4.1 | 讲 L3 p.12 |
+| 惩罚项 | Penalty | $\lambda P(\beta)$ added to the training loss; the intercept is left unpenalized. | M03 §2.4.1 | 讲 L3 p.12 |
+| 超参数 | Hyperparameter | A setting (λ, ρ, K) chosen on validation data rather than estimated in the fit. | M03 §2.4.1 | 💡 |
+| 前向选择 | Forward selection | Start with no predictors; add the predictor with the lowest validation MSE; stop when validation MSE no longer falls. | M03 §2.3 | 讲 L3 p.10 |
+| 岭回归 | Ridge regression | Squared-slope penalty; stabilizes coefficients; generally retains all predictors. | M03 §2.4.2 | 讲 L3 p.13 🎙️（ASR 几乎每次把 "ridge" 听成 "which/width/weight"，见 asr-dictionary） |
+| LASSO | Least Absolute Shrinkage and Selection Operator | Absolute-value penalty with a corner at zero: some fitted slopes become exactly zero. | M03 §2.4.3 | 讲 L3 p.15 |
+| 软阈值 | Soft-thresholding | $\hat\beta = \operatorname{sign}(\hat\beta_{OLS})\max(\lvert\hat\beta_{OLS}\rvert - \lambda, 0)$ for one standardized input. | M03 §2.4.3 | 💡 |
+| 弹性网 | Elastic Net | Both penalties in one objective; ρ is the LASSO share; use when a compact rule should retain several related signals. | M03 §2.4.4 | 讲 L3 p.17 |
+| 软件惩罚参数 | Software alpha | In scikit-learn, alpha denotes penalty strength; with $L = \text{SSE}/(2n)$, Ridge's software alpha = $n\lambda$; scales differ across implementations. | M03 §2.4.2 | 讲 L3 p.14, p.25 |
+| 系数路径 | Coefficient path | Fitted slopes as a function of the penalty. | M03 §2.4.5 | 讲 L3 p.19 |
+| 验证曲线 | Validation curve | Validation MSE as a function of the penalty; the minimum is the selected penalty. | M03 §2.4.5 | 讲 L3 p.20 |
+| 股-周面板 | Stock-week panel | One row = one stock in one forecast week. | M03 §2.6.1 | 讲 L3 p.29 |
+| 固定股票池 | Fixed universe | Membership is fixed at the start of the exercise; missing returns remain missing; later additions do not replace original members. | M03 §2.6.2 | 讲 L3 p.30 |
+| 技术指标六族 | Six indicator families | Trend / bar geometry / activity / volatility / oscillator / market risk. | M03 §2.6.3 | 讲 L3 p.31 |
+| 截面排名 | Cross-sectional rank | Rank of a characteristic inside the Hang Seng Index cross-section at one date. | M03 §2.6.4 | 讲 L3 p.32 |
+| 中心化排名 | Centered rank | Within-universe percentile rank − 0.50; zero is the middle of the cross-section. | M03 §2.6.4 | 讲 L3 p.32 🎙️（教授当堂口述"减 0.5、让 0 在中间"，`01:38:49`） |
+| 特征分组组合 | Characteristic-sorted portfolio | Five equal-weighted portfolios formed each week from one lagged characteristic. | M03 §2.6.6 | 讲 L3 p.36 |
+| 降维 | Dimension reduction | Summarize many correlated inputs by a few components before regression. | M03 §2.7.1 | 讲 L3 p.40 |
+| 主成分回归 | Principal Component Regression (PCR) | Directions with large variation in the training predictors; then OLS on K component scores; uses Z alone. | M03 §2.7.2 | 讲 L3 p.41 |
+| 主成分载荷 | Loading | Weight of each original characteristic in a component. | M03 §2.7.2 | 讲 L3 p.43 |
+| 偏最小二乘 | Partial Least Squares (PLS) | Components chosen to maximize squared covariance with training excess returns; uses both Z and $r^e$. | M03 §2.7.3 | 讲 L3 p.44 |
+| 常数预测 | Constant forecast | All slopes zero → identical forecasts; competitive under MSE, no stock ranking. | M03 §2.8.4 | 讲 L3 p.51 🎙️（教授两次用 "crazy" 强调，并点名这是 ML 作业最容易踩的坑） |
+| 预测分组排序 | Forecast sort | Rank by predicted excess return before the holding week; assign five groups; compare realized returns. | M03 §2.9.1 | 讲 L3 p.53 |
+| 高减低价差 | High-minus-low spread | Top forecast group's realized excess return minus the bottom group's. | M03 §2.9.1 | 讲 L3 p.54–55 |
+| 预测精度与排序的分离 | Accuracy versus ranking | MSE assesses forecast levels; a sort assesses ordering. | M03 §2.9.2 | 讲 L3 p.54 |
+| 阈值 · 交互 | Threshold · Interaction | Slope effects that change with a level or with another predictor — Class 4. | M03 §2.9.4 | 讲 L3 p.56（转录缺结尾，未涉及） |
+| 主动收益 | Active return | Individual stock return minus the market return (not minus the risk-free rate). | M03 §2.6.5 | 🎙️ 讲义没有，教授口头提及（`01:20:14`），姊妹概念，本讲不用 |
+
+## 5d. 非线性机器学习：树、集成与神经网络（M04）
+
+> 来自 [[M04-非线性机器学习与收益预测]] v0.9 课前预习版（无转录，英文定义取讲义原句）。
+
+| 中文 | English | 英文定义（可默写） | 首现 | 来源 |
+|---|---|---|---|---|
+| 回归树 | Regression tree | A tree divides observations into groups called leaves; in leaf $R_\ell$ the forecast is the mean training return. Forecasts differ across observable regimes. | M04 §2.2.2 | 讲 L4 p.5、p.14 |
+| 叶子 | Leaf | A terminal group of training observations defined by a sequence of splits; its mean return is the forecast for any observation routed to it. | M04 §2.2.2 | 讲 L4 p.5、p.14 |
+| 分裂准则 | Split criterion | At each node choose predictor $j$ and threshold $s$ to minimize the sum of squared deviations from the two child means; repeat within each child subject to depth and leaf-size limits. | M04 §2.2.3 | 讲 L4 p.6 |
+| 截面分裂 | Cross-sectional split | In the same month, separate firms by a characteristic such as size; different stock groups can have different return relations. | M04 §2.2.4 | 讲 L4 p.7 |
+| 时序分裂 | Time-series split | For the same market, separate months by a state such as lagged inflation; different market states can have different return relations. | M04 §2.2.4 | 讲 L4 p.7 |
+| 深度 | Depth | The maximum number of successive questions from root to leaf; chosen on chronological validation data — deeper trees fit development returns more closely but forecast validation months worse. | M04 §2.2.7 | 讲 L4 p.11–12 |
+| 最小叶大小 | Minimum leaf size | The smallest number of training observations a leaf may contain; a high-return leaf based on a few months is a noisier estimate than a similar leaf observed repeatedly. | M04 §2.2.8 | 讲 L4 p.13 |
+| 交互效应 | Interaction | The effect of one signal depends on another (the momentum effect changes sign with volatility); a regression with only additive terms cannot reproduce it, a tree can split on volatility then momentum. | M04 §2.2.9 | 讲 L4 p.15 |
+| 只做多 · 超配 / 低配 | Long-only · Overweight / underweight | A manager who cannot short expresses a negative view by holding less than the benchmark weight; Class 5 turns forecasts into constrained weights. | M04 §2.2.10 | 讲 L4 p.16 |
+| bagging | Bagging (bootstrap aggregating) | Fit B trees independently on bootstrap samples drawn from training data with replacement and average their forecasts; more trees reduce the uncorrelated part of prediction variance, shared errors remain. | M04 §2.3.1 | 讲 L4 p.18–19 |
+| 自助样本 | Bootstrap sample | A resample of the training rows drawn with replacement, the same size as the original; resampling uses training data only. | M04 §2.3.1 | 讲 L4 p.18–19 |
+| 随机森林 | Random forest | Bagging plus, at each node, a search for the best split among a fresh random subset of predictors (5 of 30 here); random predictor selection reduces correlation between trees, making averaging more effective. | M04 §2.3.2 | 讲 L4 p.20–21 |
+| 随机预测变量子集 | Random predictor subset | The $\lfloor\sqrt{p}\rfloor$ predictors considered at each split of a random-forest tree. | M04 §2.3.2 | 讲 L4 p.20–21 |
+| 梯度提升 | Gradient boosting | $F_0 = \bar y_{\text{train}}$, $e_{im} = y_i - F_{m-1}(x_i)$, $F_m = F_{m-1} + \nu h_m$: fit corrections sequentially with small trees on current residuals; a forest averages trees, boosting adds successive corrections. | M04 §2.3.3 | 讲 L4 p.22–23 |
+| 残差修正 | Residual correction | Each boosting step fits a small tree to the residuals of the current forecast and adds a scaled version of it. | M04 §2.3.3 | 讲 L4 p.22–23 |
+| 学习率 | Learning rate ν | The fraction of each correction tree's forecast added at every boosting step; chosen together with tree count and depth on validation data. | M04 §2.3.3 | 讲 L4 p.22–23 |
+| 早停 | Early stopping | Track validation loss as trees (or epochs) are added and stop when it no longer falls — the same decision as choosing complexity on validation, made one step at a time. | M04 §2.3.4 | 讲 L4 p.24 |
+| 神经网络 | Neural network | Hidden units apply a nonlinear activation to weighted inputs; training learns the connection weights and intercepts; parameters minimize squared error plus weight shrinkage. | M04 §2.4.1 | 讲 L4 p.30 |
+| 隐藏单元 | Hidden unit | A weighted sum of standardized inputs passed through a nonlinear activation, e.g. $h = \max(0, m - v)$. | M04 §2.4.1 | 讲 L4 p.30 |
+| ReLU | ReLU activation | $\max(0, \cdot)$: negative inputs become zero, positive inputs pass unchanged. | M04 §2.4.1 | 讲 L4 p.30 |
+| 权重收缩 | Weight shrinkage | The penalty $\frac{\lambda}{2}\sum_{w\in\mathcal W} w^2$ on connection weights (biases unpenalized), the same form as ridge. | M04 §2.4.2 | 讲 L4 p.31 |
+| 训练轮数 | Epoch | One pass through the training data; the number of epochs is chosen by early stopping on validation weeks. | M04 §2.4.4 | 讲 L4 p.33 |
+| 独立日期数 | Number of independent dates | Stocks in the same week share news and market shocks, so 12,281 stock-week rows cover 156 weekly dates, not 12,281 independent episodes; the 156 weeks are not guaranteed IID and may be serially dependent; keep every stock from a date together when splitting. | M04 §2.4.5 | 讲 L4 p.34–35 |
+| 置换重要性 | Permutation importance | The increase in test MSE when one predictor's values are shuffled; it records how much the selected model relies on that predictor — not a regression coefficient or a causal effect. | M04 §2.5.1 | 讲 L4 p.36 |
+| 政策公告（2024-09-24） | Policy announcement (24 Sep 2024) | The CSI 300 excess return of +18.9% in September 2024 that no June-2021 model anticipated; models retain their earlier fits, OOS $R^2$ in the recent 36-month window ranges from −43% to −180%. | M04 §2.5.2 | 讲 L4 p.37 |
+| 成交额趋势排名 | Dollar-volume-trend rank | The centered cross-sectional rank of the trading-activity trend; the validation-tuned stock tree splits it at about 0.150 (65th percentile), test OOS $R^2$ −0.1% against zero. | M04 §2.6.3 | 讲 L4 p.43–44 |
+| 验证平局 | Validation near-tie | All three nonlinear families have validation MSE within 26.25–26.64 (×10⁴); report the numbers and treat small differences cautiously. | M04 §2.6.4 | 讲 L4 p.45–46 |
+| 冻结模型 | Preselected evaluation model | The model chosen on validation and reported on the test; do not switch after the test even if another candidate has lower test MSE. | M04 §2.6.5 | 讲 L4 p.47 |
+| 投资授权 | Investment mandate | The constraints a manager operates under (long-only, concentration, risk); a model can perform differently under accuracy, ranking and mandate objectives — choose the objective before the final test. | M04 §2.7.5 | 讲 L4 p.52–53 |
+| 信息集（缺失变量） | Information set · Missing predictive variable | More flexibility cannot compensate for a missing predictive variable; thirty overlapping indicators and short-period thresholds explain the limited test gains. | M04 §2.7.6 | 讲 L4 p.54 |
+
+## 6. 数据源与机构
+
+| 中文（统一译名） | English | 定义 | 首现 | 源 |
+|---|---|---|---|---|
+| Yahoo Finance / `yfinance` | — | 免费全球行情与财务数据接口，本课主力数据源 | M01 §2.4 | 讲 p.10 |
+| AKShare | — | 面向中国市场的开源数据接口 | M01 §2.6.2 | 讲 p.29 |
+| FRED | Federal Reserve Economic Data | 圣路易斯联储宏观数据库 | M01 §2.6.1 | 讲 p.28 |
+| ALFRED | Archival FRED | FRED 的实时版本（vintage）数据库 | M01 §2.6.1 | 讲 p.33 |
+| `quantmod` / `TTR` | — | R 语言的金融数据与技术指标包 | M01 §2.4.2 | 讲 p.12 |
+| 10-Q / 10-K | — | 美国上市公司的季报 / 年报 | M01 §2.6.3 | 讲 p.27, 34 |
+| SEC | U.S. Securities and Exchange Commission | 美国证券交易委员会 | M01 §2.6.3 | 讲 p.34 ＋ 🎙️ |
+| SFC | Securities and Futures Commission | 香港证券及期货事务监察委员会 | M01 §2.6.3 | 🎙️`01:38:40` |
+| **上证综指** | SSE Composite Index | 上海证券交易所综合指数——**不可直接交易**，媒体常引用，是评估收益时的常见错误 | M01 §2.3.3 | 🎙️`01:10:59` |
+| **沪深 300** | CSI 300 | 可通过 ETF 投资，是 A 股的标准基准 | M01 §2.3.3 | 🎙️`01:11:26` |
+| 恒生指数 | Hang Seng Index | 香港市场的主要指数 | M01 §2.4 | 讲 p.17 |
+| **恒生科技指数** | HSTECH（Hang Seng TECH Index） | 30 只港股科技龙头（腾讯、阿里、美团、京东、小米等），本课个股练习的样本池 | M01 §2.8.1 | 讲 p.24 ＋ 🎙️`01:25:53` |
+| 标普 500 | S&P 500 | 美国大盘基准 | M01 §2.4 | 讲 p.17 |
+| SPY | SPDR S&P 500 ETF Trust | 跟踪 S&P 500 的 ETF；本课特征表的市场收益代理 | M01 §2.7.1 | 讲 p.41 |
+| Bloomberg / Wind | — | 付费金融数据终端；CityU 有终端但需去机房，本课不需要 | M01 §2.6.4 | 🎙️`01:54:28` |
+
+## 7. 课程与考核（大纲术语）
+
+| 中文（统一译名） | English | 说明 | 源 |
+|---|---|---|---|
+| 持续评估 | Continuous assessment | 占 **60%** | 大纲 |
+| 期末考试 | Final examination | 占 **40%**，**2 小时**，闭卷手写 | 大纲 ＋ 🎙️ |
+| FinTech 公司案例报告 | FinTech company case report | 10%，≤10 页 | 大纲 |
+| 录像展示 | Recorded video presentation | 20%，≤10 分钟，≤80 MB MP4 | 大纲 |
+| ML 投资作业 | Machine-learning investment assignment | 20%，含报告 + 权重 CSV + 可复现代码包 | 大纲 |
+| 参与与课堂表现 | Participation and in-class work | 10%，起始 5/10，答对 +1、缺席被点名 −1 | 大纲 ＋ 🎙️ |
+| 点名提问 | Cold call | 教授按名单点名，不等志愿者 | 大纲 |
+| 课程预期学习成果 | CILO / ILO | 官方目录 4 条 vs syllabus 4 条，**内容不同**，见 [[EF5560_Fintech_and_AI_in_Finance/_prep/课程前置资料\|课程前置资料]] §3.3 | 大纲 |
+| 可复现性 | Reproducibility | 「Empirical work must preserve the data timing and transformation steps needed to reproduce the reported result.」 | 大纲 |
+| 生成式 AI 政策 | Generative AI policy | 作业可用但须披露、最终版必须是自己的作品、**不得复制粘贴 AI 答案**；考试禁用 | 官方目录 |
+
+---
+
+## 译名规范（写笔记时遵守）
+
+| 情况 | 规则 | 例 |
+|---|---|---|
+| 首次出现 | 写 `中文（English）` | 前视偏差（look-ahead bias） |
+| 之后 | 用中文，除非该词在考卷上必须写英文 | 前视偏差 |
+| **不译**的词 | Vibe Coding、ticker、10-Q / 10-K、SPY、CSI 300、HSTECH、FRED、ALFRED、AKShare、`yfinance`、SEC、SFC、ETF | — |
+| 代码、参数名、报错 | **一律不译** | `auto_adjust=True`、`shift(1)` |
+| 中英混排 | 中文与英文/数字之间留空格 | 年化 15% 的波动率 |
+| ⚠️ 易混淆需并列 | 同段内出现时两个都给英文 | 简单收益（simple return）与对数收益（log return） |
+
+**已统一的三处译名分歧**（避免以后反复）：
+
+| 英文 | ✅ 采用 | ❌ 不用 | 理由 |
+|---|---|---|---|
+| Adjusted close | **复权收盘价** | 调整后收盘价 / 除权价 | 中文金融惯例；"除权"指的是相反的操作 |
+| Look-ahead bias | **前视偏差** | 前瞻偏差 / 未来函数 | "未来函数"是量化交易圈的行话，学术写作用"前视偏差" |
+| Dollar-neutral | **美元中性** | 资金中性 / 金额中性 | 原文强调的是**美元金额**相等，不是风险中性 |
+
+
+## 🎙️ M04 转录追加（2026-09-26）· 课堂口头术语 / 例子（转录追加）
+
+| 中文 | English | 课上说法 | 出处 |
+|---|---|---|---|
+| 叶均值预测 | Leaf-mean forecast | *"The group average, the leaf average, that is the forecast"* | A `36:49`，§2.2.2 |
+| 非对称交互 | Asymmetric interaction | 只有低通胀枝继续问失业率，高通胀枝不用该变量 | A `40:17`–`41:47`，§2.2.5 |
+
+## M05 · 可解释机器学习与投资组合决策（2026-10-08）
+
+| 中文 | English | 一句话定义 | 首现与依赖 |
+|---|---|---|---|
+| 预测贡献 | Forecast contribution | 给定观测中单项输入对预测的加数 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.2；标准化、系数 |
+| 置零重要性 | Drop-to-zero importance | 固定模型与同样本逐列置零造成的训练拟合损失 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.5；SSE、零基准 |
+| 条件响应曲线 | Reference-value response curve | 其余输入固定参考值时，某一输入与预测的关系 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.7；固定模型、网格 |
+| 预测排序 | Forecast sort | 按冻结模型的预测排股票次序 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.9；截面、信息时点 |
+| 最高减最低价差 | Top-bottom spread | 最高组均值减最低组均值；单位敞口须说明 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.10；排序、等权 |
+| 只做多授权 | Long-only mandate | 权重非负且全额投资，不能偷偷使用空头 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.11；权重、投资限制 |
+| 金额中性 | Dollar neutrality | 多空金额互抵，不保证市场或行业风险中性 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.11；净敞口、beta |
+| 去均值信号 | Demeaned forecast | 预测减同一形成期截面均值 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.12；预测、截面均值 |
+| 预测加权 | Forecast weighting | 去均值信号除以绝对值总和形成多空权重 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.12；去均值、毛敞口 |
+| 只做多倾斜 | Long-only tilt | 以基准权重加信号倾斜后截断、归一并核限仓 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.12；基准、约束 |
+| 毛敞口 | Gross exposure | 所有持仓权重的绝对值总和 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.13；权重、绝对值 |
+| 净敞口 | Net exposure | 保留正负号的权重总和 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.13；权重、空头 |
+| 波动率目标 | Volatility targeting | 用事前风险估计缩放仓位接近目标波动 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.13；风险频率、杠杆限制 |
+| 累计财富 | Cumulative wealth | 将每期简单收益乘到前一期资本 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.15；简单收益、复利 |
+| 年化算术均值 | Annualized arithmetic mean | 周期均值乘每年周期数，不是复合增长 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.16；均值、频率 |
+| 复合年收益 | Compound annual return | 累计资本增长对应的年几何增长率 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.16；累计财富、持有期 |
+| 夏普比率 | Sharpe ratio | 平均超额收益除以同频超额收益标准差 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.17；超额收益、标准差 |
+| 市场择时 | Market timing | 依据事前预测改变一个市场的逐期仓位 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.19；预测时点、仓位 |
+| 持仓阈值 | Timing threshold | 本例训练均值判持有与现金，不是MA12损失基准 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.21；冻结训练、对数预测 |
+| 风险厌恶 | Risk aversion | 方差惩罚的强度，越大越少承担风险 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.25；方差、目标函数 |
+| 均值方差仓位 | Mean-variance position | 按预期收益和风险之比配市场仓位后裁剪约束 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.25；风险厌恶、方差 |
+| 基点 | Basis point | 1bp为0.01%，10bp为0.001的小数收益 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.28；百分比、百分点 |
+| 换手率 | Turnover | 交易金额占资本比例，须写是否计买加卖或半边 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.28；漂移权重、调仓 |
+| 最大回撤 | Maximum drawdown | 资本相对历史高点的最负跌幅，高点含初始1 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.30；财富、高点状态 |
+| 资本资产定价模型 | CAPM | 以本地市场超额收益和beta给风险补偿基准 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.32；超额收益、本地市场 |
+| 市场 beta | Market beta | 市场超额变动一个百分点时拟合超额变动的幅度 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.32；OLS、市场超额收益 |
+| CAPM alpha | CAPM alpha | 本地市场beta贡献以外的平均回归截距 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.32；OLS截距、标准误 |
+| 单期异常收益 | One-period abnormal return | 一期总收益减同期CAPM风险补偿基准 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.33；CAPM、时点 |
+| Newey–West 标准误 | Newey-West standard error | 按指定滞后校正异方差与序列相关的估计不确定性 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.34.1；残差、序列相关 |
+
+## 🎙️ M05 课堂口头术语（2026-10-10）
+
+| 中文 | English | 课上说法 | 出处 |
+|---|---|---|---|
+| 总暴露 | gross exposure | 权重绝对值之和 | M05 `01:07:46` |
+| 净暴露 | net exposure | 权重代数和 | M05 `01:07:46` |
+| 交易成本 | transaction cost | 只影响收益分子，不改变波动率分母 | M05 `02:04:19`–`02:04:28` |
+
+## M06 · 2026-10-15 新增
+
+| 中文 | English | 一句话解释 | 出处 |
+|---|---|---|---|
+| 金融科技商业模式 | FinTech business model | 用技术改善服务，说明客户、收费、成本和风险 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.1 |
+| 支付流水 | Payment volume | 平台处理的支付总额，不是平台收入 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.5 |
+| 收入 | Revenue | 提供服务赚取的费用或其他收入 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.5 |
+| 规模经济 | Economies of scale | 固定成本分给更多交易时平均成本下降 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.5 |
+| 货币三职能 | Monetary functions | 交易媒介、记账单位与价值储藏分别判断 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.6 |
+| 共享账本 | Shared ledger | 多参与方按约定共同使用的业务记录 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.7 |
+| 区块链 | Blockchain | 链接批次记录并按共同规则维护共享历史 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.7 |
+| 代币 | Token | 在账本上记录的数字单位 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.7 |
+| 应收账款融资 | Receivables financing | 依据尚未收回的货款先取得银行现金 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.8 |
+| 许可网络 | Permissioned network | 限定获批参与者并可限制访问的网络 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.9 |
+| 哈希 | Hash | 按固定算法把字节变成摘要，用可信基线比较 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.10 |
+| 数字签名 | Digital signature | 将特定消息与授权密钥联系并可公开验证 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.11 |
+| 双花 | Double spending | 试图重复使用同一笔可花资金 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.12 |
+| 共识 | Consensus | 选择共同承认的一条有效历史的协议规则 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.13 |
+| 工作量证明 | Proof of work | 搜索满足工作门槛的候选并由节点验真 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.13.1 |
+| 权益证明 | Proof of stake | 以质押、验证投票及奖罚约束共识参与 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.13.2 |
+| 确认 | Confirmation | 付款入块并获后续历史支持的状态 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.14 |
+| 私钥托管 | Private-key custody | 保护密钥并约束实际资产支配和权限变更 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.15 |
+| 机会成本 | Opportunity cost | 未选取的最佳替代用途可获得的价值 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.23 |
+| 日内回购 | Intraday repo | 同一天内现金与证券融资安排的交付和反向偿还 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.24 |
+| 简单回收期 | Simple payback | 初始投入除以稳定净年节省，不含折现 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.24 |
+| 网络采用 | Network adoption | 各方在他人参与与自身成本约束下决定接入 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.25 |
+
+## M06 两处解释修补（2026-10-15）
+
+本轮改清首用词与状态关系。
+
+| 中文 | English | 定义与边界 | 出处 |
+|---|---|---|---|
+| 哈希碰撞 | Hash collision | 不同输入得到同一摘要；抗碰撞是难找而非不存在 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.10 |
+| 检查点 | Checkpoint | 链上epoch边界的阶段标记，本例按C0/C1/C2连续推进 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.13.2 |
+| 已获证明 | Justified | 从合适且已justified的source到target获得足够有效票权 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.13.2 |
+| 最终确定 | Finalized | 本例后续相邻关系达标后对较早检查点作更强承诺 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.13.2 |
+
+## M06 英文读题与正文配词补齐（2026-10-15）
+
+已有概念不改首现；以下只列此前表中未登记的对应词，其余沿用既有词条。正文完整解释与来源在M06各节，英文释义为笔记自拟。
+
+| 中文 | English | 英文短定义（笔记自拟） | 来源 |
+|---|---|---|---|
+| 数字支付 | Digital payments | Electronic services for sending and receiving payments. | 💡 M06 §2.2 |
+| 众筹 | Crowdfunding | Funding raised from multiple contributors under specified terms. | 💡 M06 §2.2 |
+| 网络安全 | Cybersecurity | Protection of systems and data against cyber threats. | 💡 M06 §2.3 |
+| 稳定币 | Stablecoin | A token designed to track a specified reference value. | 💡 M06 §2.3 |
+| 误报 | False alert | A normal activity incorrectly flagged as suspicious. | 💡 M06 §2.3 |
+| 固定成本 | Fixed cost | A cost that stays fixed over the activity range assumed. | 💡 M06 §2.5 |
+| 可变成本 | Variable cost | A cost that changes with the number of transactions. | 💡 M06 §2.5 |
+| 每笔平均成本 | Average cost per transaction | Total relevant processing cost divided by transaction count. | 💡 M06 §2.5 |
+| 营运资金缺口 | Working-capital gap | Cash needed for current operations before receipts arrive. | 💡 M06 §2.8 |
+| 访问控制 | Access control | Rules determining who may access, approve or change permissions. | 💡 M06 §2.15 |
+| 对账 | Reconciliation | Comparing records and resolving differences between them. | 💡 M06 §2.16 |
+| 重复融资 | Duplicate financing | Repeated financing against the same receivable, checked against prior funding and the aggregate limit. | 💡 M06 §2.17 |
+| 抵押品 | Collateral | Assets pledged or provided to support a financing arrangement. | 💡 M06 §2.24 |
+| 信用风险 | Credit risk | The risk that a borrower or counterparty fails to pay as agreed. | 💡 M06 §2.2 |
+| 预期信用损失 | Expected credit loss | An estimate of credit losses before actual losses are known. | 💡 M06 §2.25 |
+
+2026-10-15：M06补齐14个源页原题／演示、3道选择题12个选项、中文读题及逐项解析、英文参考答案；正文英文术语就地补配，§5现45条双语卡，§6.4新增英文作答框架。26作答／演示单元、22原创自测、12Mermaid＋4数值图、v0.9／转录待补不变。旧“完整”未覆盖英文应试的判断已更正，见[[EF5560_Fintech_and_AI_in_Finance/_meta/M06-英文原题与术语修复-2026-10-15|英文原题与术语修复记录]]。
+
+## 🎙️ M06 课堂表达增量（2026-10-18）
+
+| 中文 | English | 定义与边界 | 来源 |
+|---|---|---|---|
+| 共享历史 | Shared history | 多参与方共同使用、不能无痕改写的记录；是课堂解释中国业务案例的表达，不替代“共享账本”机制词条 | P1 `48:46`–`51:52`；P3 `06:09`–`06:56` |
+| 转数快 | Faster Payment System (FPS) | 香港的转账基础设施，不是独立银行账户；实际账户仍由商业银行提供 | M06 §2.4；P1 `22:19`–`24:22` |
+| 自动语音识别 | Automatic Speech Recognition (ASR) | 把语音转成文字的技术；选项字母、专名和数字仍须回到原始窗口核对 | M06 §2.16（笔记来源说明） |
+| 央行数字货币／数字人民币 | Central Bank Digital Currency (CBDC) / e-CNY | 由中央银行体系发行的数字货币方向；e-CNY 是中国的数字人民币，不与 Bitcoin 或 Ether 混称 | M06 §2.26；P4 `08:29`–`09:56` |
+
+其余课堂术语沿用 M06 既有卡片，本轮不重复登记。
+
+本次写回与适用同步证据见 [[_meta/制作与融合回执-2026-10-18|制作与融合回执]]。
+
+## 2026-10-20 Canvas 材料增量
+
+| 中文 | English | 英文参考定义 | 本次深化 |
+|---|---|---|---|
+| 基学习器 | Base Learner | An individual predictor combined by an ensemble procedure. | M04 §2.8；线性基模型线性组合仍为线性 |
+| 样本外误差口径 | Out-of-sample loss comparison | A comparison of prediction losses on the same held-out dates against a prespecified feasible benchmark. | M03 §2.10、M04 §2.8；保存预测评价复算不等于模型重新训练 |
+
+## 2026-10-21 G/E实质审修
+
+本批首用词与本表对齐，具体位置见课程总览本日记录与[[G-E诊断与实质修复回执-2026-10-21|本次G/E回执]]。既有词只增正文定位，不重复造词。
+
+## 2026-10-21 · 23 条待核线索闭环
+
+残差（Residual）在真实收益结算后由实际减已保存预测得到；用于事后诊断不等于当期可用信号（M02 §2.4.6）。训练拟合优度（Training R²）在含截距的普通 OLS 中相对训练均值预测的平方误差度量；6.1%不是收益率或预测正确比例（M02 §2.8.2）。
+
+## M07 · 比特币、以太坊与加密金融
+
+[[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式|M07]] 40 条双语卡对应；英文为笔记自拟，课堂转录待补。既有词汇只登记 M07 应用，不改旧首现。
+
+| 中文 | English | 英文定义 | 本次位置 | 来源 |
+|---|---|---|---|---|
+| 投资敞口 | Exposure | The extent to which an asset affects wealth. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.1 | 📄；英文自拟 |
+| 自托管 | Self-custody | The user controls the keys authorizing transfers. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.1 | 📄；英文自拟 |
+| 区块补贴 | Block subsidy | New BTC allowed for a valid block. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.2 | 📄；英文自拟 |
+| 减半 | Halving | A scheduled reduction of the block subsidy by half. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.2 | 📄；英文自拟 |
+| 区块高度 | Block height | A block’s sequential position in the chain. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.2 | 📄；英文自拟 |
+| 区块空间 | Block space | Capacity available for transaction data. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.3 | 📄；英文自拟 |
+| 分叉 | Fork | A divergence in rules or chain history. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.3 | 📄；英文自拟 |
+| 硬件钱包 | Hardware wallet | A device that protects keys and signs transactions. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.4 | 📄；英文自拟 |
+| 普通股 | Common shares | Residual ownership claims on a company. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.6 | 📄；英文自拟 |
+| 优先股 | Preferred shares | Securities with priority terms over common equity. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.6 | 📄；英文自拟 |
+| 净资产价值 | Net asset value | Asset value less the relevant prior claims. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.6 | 📄；英文自拟 |
+| 未实现收益 | Unrealized gain | An increase in value not yet realized in cash. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.6 | 📄；英文自拟 |
+| 溢价 | Premium | Market value above NAV, measured relative to NAV. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.7 | 📄；英文自拟 |
+| 增发 | Share issuance | Selling new shares to raise capital. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.8 | 📄；英文自拟 |
+| 每股净资产增厚 | NAV accretion | An increase in NAV per share. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.8 | 📄；英文自拟 |
+| 算力 | Hash rate | The rate of hash attempts used in mining. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.9 | 📄；英文自拟 |
+| 智能合约 | Smart contract | A program executed on the ledger through transactions. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.12 | 📄；英文自拟 |
+| 托管付款 | Escrow | Funds held until specified conditions are met. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.12 | 📄；英文自拟 |
+| 预言机 | Oracle | A mechanism supplying external information to contracts. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.13 | 📄；英文自拟 |
+| 非同质化代币 | Non-fungible token | A uniquely identified on-chain token. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.14 | 📄；英文自拟 |
+| 原子结算 | Atomic settlement | Linked transfers complete together or revert. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.14 | 📄；英文自拟 |
+| 质押 | Staking | Committing ETH to support validation and face penalties. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.15 | 📄；英文自拟 |
+| 基础费 | Base fee | A protocol-determined transaction fee that is burned. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.16 | 📄；英文自拟 |
+| 优先费 | Priority fee | A transaction tip paid for processing incentives. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.16 | 📄；英文自拟 |
+| 第二层 | Layer 2 | Additional processing using Ethereum for settlement. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.17 | 📄；英文自拟 |
+| 批处理扩容 | Rollup | Batch processing with settlement constraints on Ethereum. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.17 | 📄；英文自拟 |
+| 首次代币发行 | Initial coin offering | Raising funds by selling tokens. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.18 | 📄；英文自拟 |
+| 治理代币 | Governance token | A token granting specified decision rights. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.18 | 📄；英文自拟 |
+| 流动性池 | Liquidity pool | Contract-held reserves used for exchanges. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.19 | 📄；英文自拟 |
+| 流动性提供者 | Liquidity provider | An investor supplying assets to a pool. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.19 | 📄；英文自拟 |
+| 自动做市商 | Automated market maker | A trading mechanism using a pricing rule. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.19 | 📄；英文自拟 |
+| 恒定乘积 | Constant product | A simplified rule keeping reserve products fixed. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.20 | 📄；英文自拟 |
+| 边际价格 | Marginal price | The price for an infinitesimal trade at the current state. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.20 | 📄；英文自拟 |
+| 价格冲击 | Price impact | A price change caused by the trade itself. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.20 | 📄；英文自拟 |
+| 永续合约 | Perpetual futures | Derivative contracts without a fixed expiry date. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.22 | 📄；英文自拟 |
+| 返佣 | Rebates | Fees returned to trading participants. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.22 | 📄；英文自拟 |
+| 现货 ETF | Spot ETF | Fund shares providing exposure to underlying spot assets. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.23 | 📄；英文自拟 |
+| 精确率 | Precision | Confirmed positives divided by flagged cases. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.25 | 📄；英文自拟 |
+| 召回率 | Recall | Detected positives divided by all actual positives. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.25 | 📄；英文自拟 |
+| 回本涨幅 | Recovery gain | The gain needed to restore the pre-loss value. | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.27 | 📄；英文自拟 |
+
+## M07 · 用户反馈后的术语解释深化（2026-10-22）
+
+正文先解释动作，再命名术语；原卡40条补为42条（新增套利、杠杆两卡），其余三词在正文就地解释。均为M07应用/深化，不改已登记的首现。
+
+| 中文 | English | 本次就地解释 | 正文位置 |
+|---|---|---|---|
+| 套利 | Arbitrage | 在便宜处买入、贵处卖出以利用价差，仍受费用和执行风险约束 | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.20.6 |
+| 杠杆 | Leverage | 用较少担保资金支持较大计价头寸，价格变化放大投入资金的损益 | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.22 |
+| 库存／储备 | Reserves | 池子当时分别持有的两种币数量，不是交易者个人余额 | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.19 |
+| 保证金 | Margin | 为支持头寸履约而投入的担保资金，须满足平台条件 | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.22 |
+| 清算 | Liquidation | 保证金等条件不足时按规则强制减少或关闭头寸 | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.22 |

@@ -9,18 +9,21 @@ prerequisites: []
 new_concepts: [图灵测试, 智能, 心灵, 意识, 认知科学, 伦理学, 道德, 应用伦理学, 道德相对主义, 道德一致性, 义务伦理, 定言令式, 黄金法则, 功利主义, 善良意志, 特殊申辩, 无知之幕, 伦理困境, 科尔伯格道德发展阶段, 破坏性技术, FATP]
 tags: [ai-ethics, IS5113, 导论, 伦理学基础]
 status: v0.9
-updated: 2026-10-02
+updated: 2026-10-23
 mechanism_review: passed
-mechanism_review_mode: efficient-20261002
+mechanism_review_mode: full-independent-20261023
 mechanism_content: repaired
 mechanism_spec: v1
 readability_rules: v2
-readability_review: pending
+teaching_standard: novice-v1
+readability_review: passed
+teaching_review_run: vault-notes-review-20261023
+teaching_review_receipt: _meta/vault-notes-review-20261023/is5113-m01/review.json
 ---
 
 # M01 · 导论：AI 与伦理
 
-> **本轮候选状态**：readability v2 作者候选，集中教学语义与最终视觉验收 pending。材料 status/transcript 保留原值；下方旧机制/验收记录属于历史版本，不代表本候选已通过。
+> **2026-10-23 本次重审**：全篇独立高中知识起点审查、来源/原题与实际图文核对已完成；本次正式回执位于 `_meta/vault-notes-review-20261023/is5113-m01/review.json`。材料 status/transcript 保留原值，永久无录音、视频未核等限制仍在；旧机制/验收记录不作为本次通过依据。写回、同步和 Git 状态另记。
 
 > **本讲一句话**：这一讲不解决任何伦理问题，它负责把后面十讲要用的**三套词汇**发给你——AI 是什么（技术侧）、伦理学是什么（哲学侧）、以及为什么这两件事必须放在一起谈（商业侧）。
 > **原始材料**：`Module 1 - Introduction.pdf`（60 页） ｜ **转录**：`none`（本讲未录音，永久无课堂补充）
@@ -59,11 +62,11 @@ readability_review: pending
 
 ### 1.1 你已经有的
 
-本讲是全课起点，不依赖任何前序 module。
+本讲是全课起点。读者只需会四则运算、简单代数和百分数；不假定会 AI、机器学习、统计、哲学或法律。[[IS5113_AI_Ethics_and_Regulations/_meta/知识层级台账#L0 · 入场基线|L0 台账]]只登记依赖，不替代正文教学。
 
-只需要具备 [[IS5113_AI_Ethics_and_Regulations/_meta/知识层级台账#L0 · 入场基线|L0 入场基线]]——即 AI / 机器学习的基础概念（监督学习、训练集、模型、准确率、过拟合、LLM 等）。
+先认一条最小 AI 链：一条人工判断过的“咨询文本→应去部门”叫带标签样本；模型从一批样本中学习输入与答案的对应关系。训练集用来学规则，验证集用来选阈值，最终测试集冻结到最后一次检验。准确率是正确条数除以全部条数；它必须和误报、漏报及群体分项一起读。§2.7 会用 20 条小例把阈值、泄漏、部署、反馈与漂移走完。
 
-哲学、伦理学、法律方面**不需要任何基础**，本讲会从零讲起。
+哲学、伦理学和法律也从当前案例所需位置起步。
 
 ### 1.2 本讲全新引入的概念
 
@@ -95,7 +98,7 @@ readability_review: pending
 - §2.2（AI 是什么）→ 为 W3 偏见、W4 透明性打底。
 
   要先区分可观察的理性行动与尚未由本材料证明的内在理解，才能进一步讨论偏见和解释边界
-- §2.3–2.5（伦理学）→ **直接就是 W2 的前置**。M02 把这里一笔带过的义务论、功利主义等展开成八类理论逐一深挖
+- §2.3–2.5（伦理学）→ **直接就是 W2 的前置**。M02 把这里一笔带过的义务论、功利主义等展开成多类伦理理论逐一深挖
 - §2.6（FATP）→ **是 W3–W6 的目录**。公平→W3，透明→W4，问责→W5，隐私→W6
 
 **重排说明**
@@ -107,9 +110,9 @@ readability_review: pending
 1. **把 p.45 的 FATP 从第四段抽出来**，与 p.35「为什么需要 AI 伦理」合并成 §2.6。
 
 原因：FATP 夹在一堆商业 AI 泛论中间容易被忽略，但它其实是整门课的目录，值得独立成节
-2. **把第四段（p.36–59）压缩成 §2.7 的"速通"**。
+2. **把第四段（p.36–59）按应用任务重排进 §2.7**。
 
-原因见 [[#9.3 课件自身的问题|§9.3]]——这 24 页是低信噪比的模板内容，逐页展开会浪费你的复习时间
+先用一个咨询分流例串起数据、开发、部署、反馈和治理，再解释各行业及每页独有内容，避免把不同范围的流程图混成一套步骤。重复与模板问题见 [[#9.3 课件自身的问题|§9.3]]；重排不删页，也不凭模板风格判断考核优先级。
 
 小节 ↔ 页码的完整对应见 [[#8. 讲义页码映射|§8]]。
 
@@ -119,6 +122,8 @@ readability_review: pending
 
 ### 2.1 这门课怎么运作（先把实用信息说完）
 
+讲义 p.1 是封面页，仅列课程标题，无独有教学内容；按封面例外处理。
+
 以下行政信息按 M01 讲义及本篇当时核对日期阅读。
 
 后续材料若有新人数、项目占比或期限，真实版本冲突须在对应讲次保留。
@@ -126,6 +131,22 @@ readability_review: pending
 本候选不把旧大纲40%默改为后续项目50%，也不更新作业登记。
 
 这一小节对应讲义 p.2–13，是课程行政信息。它不是"知识"，但它决定你怎么分配精力，所以放最前面、一次说完。
+
+**p.3–13 行政页逐页行动入口**
+
+| 页 | 独有信息与学生动作 |
+|---:|---|
+| 3、7、10 | 三张 agenda 逐步展开 Course Objective、Logistics、Seminar、Participation 与 Group Project；用于确认课程要求的组成，不是三份不同任务 |
+| 4–5 | 课程目标是把伦理理论用于商业/社会 AI；六项 ILO 依次要求理论、FATP、商业价值、影响评估、治理政策和批判讨论 |
+| 6、9 | 研讨/案例/线上反思/团队项目；学生要承担小组责任并训练口头、逻辑、批判与写作能力 |
+| 8 | Modules 下载、Assignments 提交、邮件/预约沟通（“our KM course”为模板残留） |
+| 11 | 50% 两小时笔试、40% 八人小组项目、10% 参与；参与含出勤、小测/短作业、研讨和线上讨论，两大考核部分须分别及格 |
+| 12 | 两本推荐教材和按主题追加阅读，不等于 compulsory reading |
+| 13 | W1–W13 完整主题地图，见表后清单 |
+
+读 p.8 的直接动作：材料去 Modules，正式提交只去 Assignments；邮件/预约是沟通渠道，不是提交渠道。
+
+**p.13 周次清单**：W1 导论；W2 理论；W3 公平；W4 透明；W5 问责；W6 隐私；W7 营销/消费者/HR；W8 金融/风险/生成式 AI 与错误信息；W9 全球治理监管；W10 环境社会影响；W11 新兴风险案例；W12–W13 项目展示。
 
 授课教师（讲义 p.2）：Prof. Matthew Lee，HKMU 数字商业与 AI 讲席教授，曾任 CityU 系主任、学院院长、副校长。
 
@@ -169,6 +190,14 @@ readability_review: pending
 详见 [[IS5113_AI_Ethics_and_Regulations/_prep/课程前置资料#4.3 阅读材料：几乎不重叠|课程前置资料 › 4.3 阅读材料：几乎不重叠]]。
 
 官方明确写 Compulsory Readings: Nil，所以两边都属推荐性质，不是必读。
+
+<details><summary>讲义 p.6 英文任务与管理者反思问题（无选项）</summary>
+
+The course uses seminars, case learning and discussion, out-of-class sharing via an online discussion forum, teamwork, and an interactive and participative approach. Take the course from the perspective of a responsible business professional: **What changes do you, as a manager, intend to make to yourself, your team, and in the organization?**
+
+</details>
+
+中文限定词：问题要求管理者分别写自己、团队、组织三个层次的改变。**English reference answer（⚪ 笔记自拟）**: I would document my own decision criteria, require my team to record evidence and dissent, and establish an organizational review and appeal process for high-impact AI decisions. The exact controls should depend on the system's risks and authority.
 
 **学习方式**（讲义 p.6, p.9）
 
@@ -232,7 +261,9 @@ readability_review: pending
 | ELIZA（基线） | 23% |
 | GPT-4o（基线） | 21% |
 
-论文结论：这是**首个"任何人工系统通过标准三方图灵测试"的实证证据**。
+论文结论：这是**首个“任何人工系统通过标准三方图灵测试”的实证证据**。
+
+> 🔗 **版本更新（外部资料，获取日 2026-10-23）**：讲义 p.17 展示的是 2025-03-31 的 arXiv 预印本快照，上述两组 5 分钟测试和四系统数字应按该快照保留。论文已于 2026 年在 PNAS 以 *Large language models pass a standard three-party Turing test* 正式发表，并新增第三个 15 分钟研究及更多系统（[PNAS](https://doi.org/10.1073/pnas.2524472123)）。因此不能把“两组、四系统”写成当前正式版研究的全部范围。
 
 > ⚠️ **73% 这个数字的含义要看清楚**：GPT-4.5 不只是"骗过了人"，而是**比真人更像人**——审问者把它选作"人类"的次数，比选真正的人还多。
 >
@@ -262,12 +293,12 @@ readability_review: pending
   见下一节的三层区分
 - ❌ **"图灵测试早就没人在乎了。"** —— 恰恰相反，课件专门整页贴了 2025 年的论文。
 
-  它作为工程目标确实过时（没人以通过它为研发目的），但作为衡量"AI 与人可区分度"的实验范式，在 LLM 时代重新变得有意义
-- ❌ **"通不过图灵测试就不算 AI。"** —— 一个诊断癌症准确率超过医生的模型完全通不过图灵测试（它连闲聊都不会），但它显然是 AI
+  把“像人交谈”当作所有 AI 系统的统一工程目标并不合适：系统应按自己要完成的任务评价。但图灵测试仍可作为衡量特定对话条件下人机可区分度的实验范式，不能从课件观点推出“现在没有人以通过它为研发目的”。
+- ❌ **"通不过图灵测试就不算 AI。"** —— 例如一个只接收医学影像、没有对话接口的模型，应按诊断任务的表现及限制评价，不能因为它不会闲聊就排除其 AI 身份；这里是笔记假设例，不是在报告某个模型已超过医生。
 
 **与其他概念的关系**
 
-图灵测试是把"智能"操作化的第一次尝试，它绕开了 §2.2.2 的心灵与意识问题。
+图灵测试是把“智能”转成可操作行为评测的一次经典尝试，它绕开了 §2.2.2 的心灵与意识问题。
 
 这个"绕开"在今天有直接的伦理后果：如果我们无法判断 AI 是否真的理解。
 
@@ -464,7 +495,7 @@ p.17对应的Jones/Bergen研究采用三方测试及persona，其73%是该条件
 
 也是 W5「问责与责任」的前提——不能仅凭拟人对话赋予系统道德主体资格。
 
-实际责任还须追踪可控制和承担义务的人，所以责任必须回落到人（开发者、部署者、使用者）身上。
+现实问责不能由“意识尚未证实”直接推出唯一归属。应沿控制、知情、权限与职责追踪开发者、供应商、部署组织、操作人员和管理者；谁解释、纠正和承担何种后果，要按制度与事实分配，W5 再展开。
 
 这条线索会贯穿整门课。
 
@@ -504,7 +535,7 @@ p.17对应的Jones/Bergen研究采用三方测试及persona，其73%是该条件
 
 这个区分在伦理上有个不太直观的推论：**正因为我们选了工程取向、不要求 AI 像人，AI 才会做出人绝不会做的决策**。
 
-一个按"最小化总伤亡"训练的自动驾驶系统，可能在极端情况下计算出应该牺牲车内乘客——这是完全"理性"的。
+一个按“最小化总伤亡”这一预设目标运行的自动驾驶系统，可能在极端情况下算出牺牲车内乘客。这只是相对给定目标与约束的**工具理性**选择，不自动等于道德上正当。
 
 也是任何人类司机都不会做的。
 
@@ -518,9 +549,9 @@ p.17对应的Jones/Bergen研究采用三方测试及persona，其73%是该条件
 
 **与其他概念的关系**
 
-工程取向解释了为什么 AI 的行为需要**外部**的伦理约束：它内部没有任何机制会自发地"觉得不妥"。这直接引出 §2.6。
+工程系统会执行被写入的目标、约束和更新规则，但不会自动获得一套已经证明正当的伦理标准。系统是否存在主观体验仍未知；工程目标、道德正当和制度责任是三个不同问题。
 
-**所以呢**：选工程取向，意味着 AI 内部不会自己"觉得不对"——判断对错的责任必须由外部的伦理框架来扛。
+**所以呢**：工程取向要求外部伦理与治理去审查目标、约束和后果；具体问责按控制、知情、权限和义务分配。
 
 下一节先补完"AI 是什么"这条线的最后一块：它到底是从哪些学科拼出来的。
 
@@ -542,6 +573,8 @@ p.17对应的Jones/Bergen研究采用三方测试及persona，其73%是该条件
 | 语言学 Linguistics | 语言与思维的关系；语言是人类理性的重要部分 |
 
 > 💡 **换个说法（笔记补充）**：经济学那行引入效用与目标最大化，后面功利主义也讨论“计入什么结果、为谁计入”。二者可作机制类比；优化某个目标数值，不证明 AI 具有完整道德理论。原“AI 天生就是个功利主义者”只可作为这个类比，不能当主体或规范判断。
+
+**p.23 页底三条补充**：经济学家 Herbert Simon 与 Allen Newell 参与了早期 AI 研究；具身观点认为某些智能需要机器人等身体与环境互动；GPU 和专用硬件提升了基础神经网络算法性能，是深度网络近期成功的重要工程因素。三条分别补“人物来源、具身假说、硬件条件”，不能只记八个学科名称。
 
 **所以呢**："AI 是什么"到这里讲完了——历史、定义、路线、源流都齐了。
 
@@ -695,6 +728,33 @@ F 这一条（反对偷窃却盗版）离本课最近——它正是知识产权
 
 #### 2.3.3.1 准则、事实与相关区别
 
+<details><summary>讲义 p.27 完整英文原题与 A–F（无单选答案）</summary>
+
+**To what extent do you think the following individuals are morally inconsistent?**
+
+A. an anti-abortionist who supports the death penalty
+
+B. a vegetarian who buys leather shoes
+
+C. a socialist who educates his children at a private school
+
+D. A politician who advocates family values and has an affair
+
+E. An environmental activist who drives a gasoline SUV
+
+F. Someone who thinks stealing is wrong but makes illegal copies of computer software or music.
+
+</details>
+
+中文限定词是“to what extent”：不是机械判真/假，而要说明准则、事实、时间和例外。**English reference answers（A–F，⚪ 笔记自拟）**
+
+- **A.** The two positions may conflict if the principle is “all intentional killing is wrong”; a narrower principle distinguishing innocent life from punishment would require further justification and safeguards against error.
+- **B.** Buying new leather after adopting a principle against animal products is inconsistent; continuing to use shoes bought earlier may be less inconsistent because the purchase decision occurred before the commitment.
+- **C.** Private schooling conflicts with an absolute opposition to private education; a reformer using the present system during transition must still explain equal access and why no feasible alternative exists.
+- **D.** Secretly having an affair strongly conflicts with publicly advocated family fidelity; a consensual non-monogamous arrangement would change the relevant facts.
+- **E.** Driving a gasoline SUV for convenience conflicts more strongly with environmental commitments when lower-harm alternatives exist; necessary remote or emergency use requires separate analysis.
+- **F.** Unauthorized copying conflicts with a principle against taking or violating others’ rights, although copying is not physically identical to removing an object and the exact rights must be stated.
+
 p.27六个一致性例逐问判断（⚪参考作答，非官方唯一答案）：先写当事人实际接受的准则，再核行为、时间与范围，最后看有没有相关区别。
 
 不能只看到行为标签就判人虚伪。
@@ -832,7 +892,7 @@ flowchart TD
 
 M02 会把定言令式拆成两个表述（普遍化 + 把人当目的而非手段），并给出完全义务 / 不完全义务的区分。本讲的直觉版足够应付 §2.4.5 的困境题。
 
-**所以呢**：定言令式用"能不能普遍化"当尺子，完全不问后果——下一节的功利主义换了一把完全相反的尺子：只问后果、不问规则本身对不对。
+**所以呢**：定言令式用“能不能普遍化”作为最终对错判据。分析准则和义务冲突时仍须知道可预见伤害、必要性与替代方案；这些事实不会把后果变成唯一标准。下一节的功利主义则以后果作为最终判断中心。
 
 #### 2.4.2.1 从虚假承诺准则到构想矛盾
 
@@ -887,6 +947,39 @@ flowchart TD
 
 原理依据为康德原著第二部分虚假承诺例；🔗 [Groundwork英译原文](https://www.gutenberg.org/files/5682/5682-h/5682-h.htm)，获取2026-10-02。
 
+<details><summary>讲义 p.32 完整英文题干与 1a–4b</summary>
+
+**Which of the following is a special case that justifies breaking a generally accepted rule?**
+
+1a. You should respect the traffic code, but it is ok to drive through a red light if you are late for work.
+
+1b. You should respect the highway code, but it is ok to drive through a red light if you are taking a critically ill person to the hospital.
+
+2a. You should keep your word, but it is ok to break a social engagement if something more interesting comes up.
+
+2b. You should keep your word, but it is ok to break a social engagement if you have just contracted an infectious disease.
+
+3a. You should pay your taxes, but it is ok not to pay them if you are short of money that year.
+
+3b. You should pay your taxes, but it is ok not to pay them if they are being spent on a nuclear arms program.
+
+4a. Murder is wrong, but it would have been ok to assassinate Hitler in 1942.
+
+4b. Murder is wrong, but it would be OK to kill someone planning a terrorist attack.
+
+</details>
+
+中文限定词：题目问何种事实足以辩护破例，不等于 b 全对、a 全错。**English reference answers（1a–4b，⚪ 笔记自拟）**
+
+- **1a.** Being late for work is personal convenience and does not justify imposing traffic risk on others.
+- **1b.** Transporting a critically ill person may create a competing duty to protect life, but only if the emergency is real and no safer alternative exists.
+- **2a.** A more interesting invitation is not a consistent reason to break a promise.
+- **2b.** An infectious disease is relevant because attending may harm the other person; notice and rescheduling should be considered.
+- **3a.** Personal shortage alone does not create a private exemption from a common tax rule; lawful relief must apply consistently.
+- **3b.** Conscientious opposition to nuclear spending raises a serious conflict, but it does not automatically justify non-payment without addressing common obligations and lawful alternatives.
+- **4a.** Preventing Hitler’s mass violence supplies a grave-harm argument, yet strict duty ethics must still confront the prohibition on killing, evidence, necessity, and alternatives.
+- **4b.** Stopping an imminent terrorist attack may be necessary, but planning, imminence, evidence, and non-lethal alternatives must be verified before lethal force can be defended.
+
 **讲义 p.32 八个原小问：逐项条件作答（⚪ 笔记参考）**
 
 原题问哪些特殊情形足以辩护破例。先写行为准则，再检验相关条件，不能把 a 一律判错、b 一律判对。
@@ -940,6 +1033,18 @@ flowchart TD
 
 > 有且只有一条至高道德原则——**我们应当追求最大多数人的最大幸福**。最大化幸福。由 Jeremy Bentham 与 John Stuart Mill 在 1800 年前后确立。
 
+<details><summary>讲义 p.30 完整英文开放题（无选项）</summary>
+
+What do you think is the relationship between pleasure and happiness? Is happiness just the sum of pleasures, or can you have many pleasures and still be unhappy?
+
+Are the richest nations of the world home to the happiest people in the world?
+
+According to Bertrand Russell (1872–1970), “To be without some of the things you want is an indispensable part of happiness.” What did he mean? Do you agree?
+
+</details>
+
+中文限定词：分别回答概念关系、财富是否足以推出幸福、Russell 句意和你的有条件立场。**English reference answer（⚪ 笔记自拟）**: Pleasure can contribute to happiness, but repeated pleasure may coexist with poor health, relationships, or purpose. National wealth alone does not establish happiness without comparable evidence. Russell can be read as saying that limits and continued aspiration may give life meaning; I agree only for non-basic wants, not deprivation of food, housing, or care.
+
 **课件原例**（讲义 p.30）课件用三个问题引导思考幸福的本质：
 
 1. 快乐（pleasure）与幸福（happiness）是什么关系？
@@ -988,7 +1093,7 @@ flowchart TD
 
 **💡 换个说法（笔记补充）**
 
-这三个问题看似闲聊，其实在攻击功利主义的**要害**：如果幸福不能被简单加总，那"最大化总幸福"这个目标函数就无法计算。
+这三个问题指出功利主义的测量难题：幸福没有一套无争议、可直接相加的单位。若明确利益相关者、期间、尺度、概率与价值假设，可以建立条件性的效用模型；但算出排序不证明这些度量与权重本身道德正当。
 
 这一点对 AI 尤其致命——AI 必须把目标写成一个可计算的数。
 
@@ -1001,7 +1106,7 @@ flowchart TD
 - ❌ **"功利主义 = 自私自利。"** 恰恰相反，它要求把**所有人**的幸福平等计入，包括你不喜欢的人。中文"功利"一词的贬义是翻译造成的误导
 - ❌ **"最大多数人的最大幸福"可以直接拿来算。** 谁算在内？算多久？怎么加总？这些 M02 会展开
 
-**所以呢**：功利主义要求把幸福加总，但"怎么加总"这个问题本身就没有答案——下一节回到康德这一边。
+**所以呢**：功利主义要求比较后果，但“谁被计入、算多久、用什么尺度和权重”没有无争议的唯一答案。§2.4.5.1 的数字只是显式假设下的教学模型，不是从题面自动测出的真实幸福。
 
 看他怎么用"善良意志"和"普遍化"绕开这个计算难题。
 
@@ -1017,7 +1122,7 @@ flowchart TD
 | --- | --- | --- |
 | **特殊申辩** | Special pleading | 对自己搞例外的自我合理化 |
 | 黄金法则 | The golden rule | 以你希望被对待的方式对待他人 |
-| **无知之幕** | Veil of ignorance | 想象自己站在双方的位置上看这件事 |
+| **无知之幕** | Veil of ignorance | 选择规则时不知道自己会处于哪种社会位置、拥有何种优势或个人特征，以限制偏私；不只是站到双方位置换位思考 |
 
 **为什么需要它**
 
@@ -1059,7 +1164,7 @@ flowchart TD
 
 - ❌ 把无知之幕当成康德的概念。
 
-无知之幕（veil of ignorance）是 John Rawls 在 1971 年提出的，比康德晚近两百年。
+无知之幕（veil of ignorance）是 John Rawls 在 1971 年系统提出的，比康德晚近两百年。它要求选择原则时不知道自己将是富或穷、强或弱、多数或少数的一方；若不知道自己会落在哪个位置，还愿意接受什么规则？这比普通换位思考更严格（[Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/original-position/)，获取日 2026-10-23）。
 
 课件把它列在「Kant's approach」一页下，属于归类粗糙。
 
@@ -1072,6 +1177,38 @@ M02 讲社会契约论时会把它归还给 Rawls。
 下一节用一个真实的两难场景，让康德和密尔的方法正面对撞，看它们会不会给出不同答案。
 
 #### 2.4.5 伦理困境：遗产案（Ethical Dilemma）
+
+<details><summary>讲义 p.33 完整英文原题（货币符号仅作 Markdown 转义）</summary>
+
+An elderly woman living alone in poor circumstances with few friends or relatives is dying,
+
+and you, her friend, are at her bedside.
+
+She draws your attention to a small case under her bed, which contains some momentos along with the money she has managed to save over the years, despite her apparent poverty. She asks you to take the case and to promise to deliver its contents, after she dies, to her nephew living in another state.
+
+Moved by her plight and by your affection for her, you promise to do as she requests.
+
+After a tearful goodbye, you take the case and leave.
+
+A few weeks later the old woman dies,
+
+and when you open the case, you discover that it contains \$500,000 dollars. No one else knows about the money, or the promise you made.
+
+You learn that the nephew is a compulsive gambler and has a drug addiction.
+
+What would Kant say you should do?
+
+What would John Stuart Mill say you should do?
+
+What would you do? Why?
+
+</details>
+
+中文限定词：分别写 Kant、Mill 和自己的论证；原题没有官方唯一答案。**English reference answer（⚪ 笔记自拟）**: Kant would normally require keeping the promise because a maxim permitting secret promise-breaking would undermine promising. A utilitarian answer is conditional because the prompt gives no probabilities or comparable utilities; it must compare feasible options, harms, trust, and longer-term effects under stated assumptions. **English reference answers（⚪ 笔记自拟）**
+
+- **Kant:** Kant would normally require keeping the promise because a maxim permitting secret promise-breaking would undermine promising.
+- **Mill:** A utilitarian answer is conditional because the prompt gives no probabilities or comparable utilities; it must compare feasible options, harms, trust, and longer-term effects under stated assumptions.
+- **My view:** I would keep the promise unless I obtained valid authorization or a lawful protective arrangement. The promise created a specific obligation, and the prompt does not authorize me to replace the woman’s decision with my preferred use of the money. I would reconsider if new facts showed incapacity, fraud, or a legally appointed trustee with protective duties.
 
 **课件原例**（讲义 p.33）
 
@@ -1240,6 +1377,8 @@ A为−10。
 
 ### 2.5 道德是怎么长出来的：科尔伯格阶段
 
+本节必须分两栏读。**讲义 p.34 的简化口径**把第 5 阶写成维护群体/文化价值、第 6 阶写成依个人信念和情境判断；分类讲义原题时保留此措辞。**标准 Kohlberg 操作口径**通常把第 5 阶写成社会契约、权利与公共福利，把第 6 阶写成普遍伦理原则（[ERIC 教学材料 pp.17–18](https://files.eric.ed.gov/fulltext/ED129718.pdf)，获取日 2026-10-23）。下文练习与速查明确采用哪一栏，不静默混用。
+
 **是什么**（讲义 p.34）
 
 Kohlberg（1973）的道德发展阶段论，课件称其为"被引用最多"的模型，同时注明**它是否同等适用于不同性别和不同文化，一直存在质疑**。
@@ -1284,7 +1423,7 @@ Kohlberg（1973）的道德发展阶段论，课件称其为"被引用最多"的
 
   答题时带上这个限定，比无保留地引用要好
 
-**所以呢**：科尔伯格的最高阶段（据自身信念判断对错）已经在向康德靠拢，说明"道德怎么发展"和"道德理论怎么论证"这两条线迟早要汇合。
+**所以呢**：科尔伯格的最高阶段（按讲义简化口径：据自身信念与情境判断）已经在向康德靠拢，说明"道德怎么发展"和"道德理论怎么论证"这两条线迟早要汇合。
 
 下一节回到最直接的问题：为什么偏偏是 AI，逼着我们现在就要处理这些理论。
 
@@ -1388,7 +1527,7 @@ flowchart TD
 
 你在小组项目里被要求的不是找出正确答案，而是在不确定性下做出可辩护的判断——这正好对应官方评分维度里的 "Original thinking" 和 "Rational analysis"。
 
-**所以呢**：五条理由的落点是"没有标准答案，只有可辩护的判断"——下一节的 FATP 就是这门课接下来要用来做判断的四把具体的尺子。
+**所以呢**：五条理由的落点是“许多 AI 伦理案例没有唯一答案，但判断必须可辩护”——下一节的 FATP 提供四类具体检查问题。
 
 #### 2.6.2 FATP：整门课的目录
 
@@ -1434,11 +1573,58 @@ flowchart TD
 
 ### 2.7 商业 AI 全景速通（讲义 p.36–59）
 
-> ⚠️ **先说清楚**：这 24 页是**低信噪比的模板内容**——泛泛的行业清单、重复的流程图、以及至少一页明显的占位符（讲义 p.50 上直接印着 "This is a sample dashboard. Please edit the metrics according to your message"）。详见 [[#9.3 课件自身的问题|§9.3]]。
->
-> 我把它压缩成下面这些表。**复习时这一节的优先级应低于 §2.2–§2.6。**
+**零基础贯穿例：20 条咨询怎样变成分流系统。** 一行是一条咨询，人工答案是训练或核验用的正确部门；“紧急”是本例的正例。
 
-**AI 发展史时间线**（讲义 p.37）——这是本段唯一值得记牢的内容：
+| ID | 咨询输入（简写） | 人工答案 | 用途 |
+|---:|---|---|---|
+| 1 | 学费账单金额不对 | 财务 | 训练 |
+| 2 | 想把课程 A 换成 B | 选课 | 训练 |
+| 3 | 现在有自伤风险 | 紧急支援 | 训练 |
+| 4 | 奖学金何时到账 | 财务 | 训练 |
+| 5 | 怎么退掉一门课 | 选课 | 训练 |
+| 6 | 今晚没有安全住处 | 紧急支援 | 训练 |
+| 7 | 收据抬头要修改 | 财务 | 训练 |
+| 8 | 课程时间冲突 | 选课 | 训练 |
+| 9 | 正在遭受即时威胁 | 紧急支援 | 训练 |
+| 10 | 退款多久到账 | 财务 | 训练 |
+| 11 | 想加候补课程 | 选课 | 训练 |
+| 12 | 需要今天联系辅导员 | 紧急支援 | 训练 |
+| 13 | 我现在喘不过气 | 紧急支援 | 验证阈值 |
+| 14 | 奖学金何时发 | 财务 | 验证阈值 |
+| 15 | 系统显示马上停学 | 紧急支援 | 验证阈值 |
+| 16 | 怎么改选修课 | 选课 | 验证阈值 |
+| 17 | 退学退款多久到账 | 财务 | 最终测试 |
+| 18 | 今晚无处住宿 | 紧急支援 | 最终测试 |
+| 19 | 课程冲突怎么换班 | 选课 | 最终测试 |
+| 20 | 学生账户被锁 | 财务 | 最终测试 |
+
+训练内部不在本讲展开。冻结模型后，四条最终测试得到下表；不能看完这些结果再改模型或阈值。
+
+| ID | 人工真值 | 模型预测 | 是否正确 |
+|---:|---|---|---|
+| 17 | 财务 | 财务 | 对 |
+| 18 | 紧急支援 | 紧急支援 | 对 |
+| 19 | 选课 | 财务 | 错 |
+| 20 | 财务 | 财务 | 对 |
+
+正确 3 条、总计 4 条，所以准确率是 $3/4=75\%$。这 75% 不表示“紧急识别也只有 75%”：在最终测试里，以紧急为正例时，TP=1、FP=0、FN=0、TN=3；唯一错误发生在选课与财务之间。
+
+阈值要在验证集决定。给 ID13–16 的“紧急分数”分别为 0.85、0.65、0.55、0.35。
+
+| 阈值 | 判为紧急的 ID | TP | FP | FN | TN | 结果 |
+|---:|---|---:|---:|---:|---:|---|
+| 0.70 | 13 | 1 | 0 | 1 | 2 | 漏掉 ID15 |
+| 0.50 | 13、14、15 | 2 | 1 | 0 | 1 | 抓到 ID15，但把 ID14 误报紧急 |
+
+因此降低阈值会减少漏报，也可能增加误报。Precision 是 $TP/(TP+FP)$，Recall 是 $TP/(TP+FN)$；分母为 0 时不能硬算。上线后，低分或高影响记录转人工；新课程名造成错分上升叫漂移。反馈先由人核标签，模型/数据/阈值版本要留痕，缓存过期或含隐私时要失效。
+
+这条链只演示机制，不代表 20 条足以训练真实系统，也不把 75% 当合格线。后面 p.38–59 的用途、数据、开发、界面、治理、反馈和可持续性都接在这条链上。
+
+> ⚠️ **先说清楚**：p.36–59 有模板化和重复内容，但仍有逐页独有信息，不能用“低信噪比”跳过。以下按学习任务合并，页码逐项保留；p.50 明示为 sample dashboard，其数字不作真实模型结果。
+>
+> 下列表格先定位每页主题，后续小节再完成逐项的输入、动作、结果与边界。它们是索引，不能代替机制讲解。
+
+**AI 发展史时间线**（讲义 p.37）提供背景；后面的行业用途、开发与治理同样有本讲需要解释的内容：
 
 | 年份 | 事件 | 意义 |
 | --- | --- | --- |
@@ -1454,7 +1640,7 @@ flowchart TD
 
 `Define（定义问题）→ Collect（收集数据）→ Preprocess（预处理）→ Select（选算法）→ Train（训练）→ Evaluate（评估）→ Tune（调参）→ Deploy（部署）`
 
-> 这些步骤即使名称熟悉，也不能免除实际数据、评估、部署与反馈机制；下文用同一公开咨询分流例跑到运营纠错。另需注意**课件在 p.49、p.55、p.57 给了三个互相冲突的流程图**（8 步 / 6 步 / 7 步反馈环），见 [[#9.3 课件自身的问题|§9.3]]。
+> 这些步骤即使名称熟悉，也不能免除实际数据、评估、部署与反馈机制；下文用同一咨询分流例跑到运营纠错。课件 p.49、p.52、p.55、p.57 有四套范围不同的图：开发到部署、业务应用、训练升级、上线反馈；步数不同不表示互相冲突，见 [[#9.3 课件自身的问题|§9.3]]。
 
 **其余各页要点**（每页一句话，够用了）
 
@@ -1473,7 +1659,7 @@ flowchart TD
 
 | 讲义页 | 主题 | 一句话 |
 | --- | --- | --- |
-| p.50 | 性能指标 | Accuracy/Precision/Recall/F1（属 L0）。**此页为模板占位** |
+| p.50 | 性能指标 | 四指标、阈值与两类错误；该页模板数字不可当真实结果 |
 | p.51–55 | 建设策略与训练升级 | 数据收集、模型选择、持续学习 |
 | p.56 | **AI 治理六件事** | **数据伦理、合规框架、风险评估、透明性措施、利益相关者参与、持续监控** ← 值得记，是 W9 的预告 |
 | p.57 | 反馈机制 | 数据→处理→学习→反馈→调整→测试→迭代 |
@@ -1481,9 +1667,9 @@ flowchart TD
 | p.59 | 结语 | 四件事：懂 AI 基础（AiB 核心课）、**AI 伦理（本课）**、探索商业应用（项目内其他课）、AI 的未来 |
 | p.60 | **UNESCO 自动驾驶案例** | 全讲收尾，见 [[#2.8 收尾：课件留给你的案例（讲义 p.60）\|§2.8]] |
 
-> 💡 **值得单独指出**：p.44、p.56、p.58 这三页虽然写得笼统，但分别对应了后面的 W3–W6、W9、W10。**它们是课程后半程的预告片**，比这一段其他页有价值。
+> 💡 **值得单独指出**：p.44、p.56、p.58 这三页虽然写得笼统，但分别对应了后面的 W3–W6、W9、W10。**它们预告课程后半程的主题**；其他页仍须按其用途和学习任务理解。
 
-**所以呢**：这一段可以当背景知识略读，真正需要精读的是最后一页——讲义特意留了一个案例收尾。
+**所以呢**：先用下面的开发、部署与反馈链把各页连起来，最后再用 p.60 案例综合应用；不能只记时间线或只读收尾案例。
 
 把本讲"AI 是什么、伦理学是什么、为什么需要伦理"这三条线在一个具体场景里重新接在一起。
 
@@ -1508,6 +1694,58 @@ flowchart TD
 3. **Evaluate/Tune**：先看整体错分，再按语言/问题类型检查错误差异；检查阈值变动的延误代价，不能以p.50模板95%等数宣布此系统达标。
 
 公平标准先定义，不能把一条群体指标当全部公平。
+
+**逐页独有信息对照（p.38–59）**
+
+| 页 | 独有动作与边界 |
+|---:|---|
+| 38–39 | 医疗/金融/制造/交通四种行业用途；数据分析、自动化、预测、决策支持、个性化和降本是不同业务动作，不能只写“用了 AI” |
+| 40–42 | 数据到评估的核心环节、ML/NLP/CV 三技术，以及六行业的具体输入输出 |
+| 43–44 | 客服问题→聊天机器人→响应时间变化；实施还受数据质量、技能、旧系统集成和伦理风险限制 |
+| 46–48 | 边缘计算、人机协作、生成式 AI、专业工具，以及数据多样性/质量/标注/安全/更新/伦理 |
+| 49 | Define→Collect→Preprocess→Select→Train→Evaluate→Tune→Deploy，强调从问题到生产的八步 |
+| 50–51 | 模板指标不可当证据；真实方案仍要核数据、模型选择和持续学习 |
+| 52–54 | Identify→Develop→Implement→Evaluate；人机协作和界面还涉及个性化、语音、情境与需求预测 |
+| 55–57 | 训练升级六步、治理六项与上线反馈七步环 |
+| 58–59 | 能效、资源、伦理采购、碳足迹、社区参与；结论页把 AI 基础、伦理、应用和未来课程分开 |
+
+**把目录走进同一咨询例**
+
+**p.38 原页四行业：源字面与机制分开**
+
+讲义字面只给四项用途：医疗数据支持临床决策；金融交易中评估风险、识别欺诈；制造流程优化与预测维护；自动驾驶与交通管理。
+
+| 行业 | 谁使用什么输入 | 系统动作 | 输出交给谁、为何有用 | 当前边界 |
+|---|---|---|---|---|
+| 医疗 Healthcare | 临床团队使用病历、检验或影像等医疗数据 | 找模式并提供临床决策支持 | 把风险提示或摘要交给临床人员，用于辅助判断 | 💡 笔记补充机制；原页没有真实数据、诊断准确率或自动治疗授权，不能写成替代医生 |
+| 金融 Finance | 风控/反欺诈团队使用交易记录及已获准的账户信号 | 评估风险并标记可疑交易 | 把风险分数/告警交给分析员复核，用于优先调查 | 💡 原页没有阈值、误报率或真实安全提升；不能把告警直接当欺诈定罪 |
+| 制造 Manufacturing | 工厂运营人员使用机器传感器、故障史与生产日志 | 优化流程并预测维护需求 | 把维护告警/排程建议交给工程师和排产人员，用于减少意外停机 | 💡 原页没有设备样本或停机改善量；建议须经现场安全与设备规则验证 |
+| 交通 Transportation | 车辆/交通管理人员使用车载传感器、道路与交通流数据 | 支持自动驾驶控制并优化交通管理 | 把控制/路线建议交给车辆系统或交通中心，用于改善安全与拥堵 | 💡 原页没有部署效果、事故率或法律授权；安全关键动作仍需约束、监控与人工/组织责任链 |
+
+- p.39（另页）：数据分析统计积压主题，自动化执行低风险转派，预测提示未来需求，人工仍决定高影响案件；输出是部门、紧急标记和人工转接，不是笼统“洞察”。
+- p.40–41：监督式 ML 用已标注咨询学习部门，NLP 读取文本意图；只有上传证明图片时，CV 才处理图像。三者的输入、输出和证据不同。
+
+**p.42 原页六行业：源字面与机制分开**
+
+| 行业 | 谁使用什么输入 | 系统动作 | 输出交给谁、为何有用 | 当前边界 |
+|---|---|---|---|---|
+| 零售 Retail | 推荐/商品团队使用经授权的浏览、购买和偏好记录 | 个性化排序商品或优惠 | 向顾客显示候选商品，也向商品团队提供分群结果，以改善相关性 | 💡 原页只说提升满意度，没有实测提升；须核同意、价格歧视与过滤气泡 |
+| 制造 Manufacturing | 供应链与产线人员使用订单、库存、交期和机器状态 | 优化供应链与生产线安排 | 向计划员/操作员给补货、排产或瓶颈提示，以减少等待与浪费 | 💡 原页没有供应中断、成本或安全数据；优化目标须写明，不能只追求速度 |
+| 金融 Finance | 投资团队使用市场价格、交易量、新闻及组合约束 | 预测市场趋势并提出组合管理建议 | 把预测和权重建议交给分析员/组合经理，用于比较方案 | 💡 原页没有预测期、基准或风险结果；趋势预测不保证收益，最终决定须含风险和授权检查 |
+| 交通 Transportation | 车辆/调度人员使用路况、位置、订单和车队容量 | 支持自动驾驶并优化物流路线 | 向车辆控制系统或调度员输出路线/控制建议，以改善行程和配送 | 💡 原页没有事故、迟到或燃料改善值；自动驾驶与物流路线是两个动作，均须安全边界 |
+| 医疗 Healthcare | 医护人员使用病历、检验和影像 | 分析医疗数据，辅助诊断与治疗选择 | 把候选诊断/风险/治疗提示交给临床人员，以支持而非替代专业判断 | 💡 原页没有临床试验、适用人群或监管状态；不能宣称已改善患者结果 |
+| 教育 Education | 教师/学生使用作业表现、学习进度和互动记录 | 个性化学习内容并分析学业表现 | 向学生提供练习建议，向教师提供困难点摘要，以调整教学 | 💡 原页没有成绩提升证据；须核学生隐私、标签偏差和教师申诉/纠正路径 |
+
+同一“分析数据”机制可以复用，但六行业的被服务者、输入、输出和失败后果不同，不能用一份咨询模型替代原页六项。
+- p.43–44：问题是客服慢，chatbot 只是候选方案；数据脏、人员不会维护、旧系统接不上、偏见/隐私会使“响应更快”仍不合格。
+- p.46–48：边缘计算是在本地设备先处理以降低延迟；人机协作把低风险自动化、高影响转人工；生成式 AI 只生成草稿。专业工具分别做表格、语言、图像和预测。数据标注要说明谁给答案、如何复核，安全和持续更新要有负责人。
+- p.52：Identify 发现积压，Develop 定义标签/阈值，Implement 有限上线并接人工队列，Evaluate 用错分、延误、申诉和 FATP 结果评价。
+- p.53：数据分析、任务自动化、预测、减少人工错误和改善体验是五个不同目标；本例只能用实际测试分别证明。
+- p.54：个性化、语音、情境感知和需求预测是四种界面能力；使用个人历史前先核授权和最少数据。
+
+读 p.43 的结论：问题、方案和待验证结果是三层，不保证满意度一定改善。
+
+指标读法：Accuracy 看全部判断中正确的比例；Precision 看报为正的案例有多少真为正；Recall 看真实正例抓到多少；F1 综合 Precision 与 Recall。阈值变化会改变误报和漏报。
 
 #### 2.7.2 有限部署与运营反馈
 
@@ -1584,7 +1822,7 @@ flowchart TD
 
 若学生能直接修改参考答案，反馈污染会教坏下一版，需人工核标签及独立留出。
 
-课件p.49/55/57三套流程仍分别保留，以上是笔记将数据/评估/部署/反馈连接的机制解释，不冒官方新增流程。
+课件 p.49/p.52/p.55/p.57 四套图分别覆盖开发部署、业务应用、训练升级和上线反馈；以上只是把它们接入同一咨询例，不冒充课件新增统一流程。
 
 <details><summary>迁移：为了提高透明性拟公开全部原咨询，是否FATP四项都更好？</summary>
 
@@ -1622,6 +1860,28 @@ p.58要求能效、资源管理、伦理采购、碳足迹与社区参与。
 ### 2.8 收尾：课件留给你的案例（讲义 p.60）
 
 全讲最后一页只有一句标题——**"A case in AI ethics to think about !"**——配一段 UNESCO 的材料。
+
+<details><summary>讲义 p.60 完整英文原题（Source: UNESCO）</summary>
+
+**Autonomous car**
+
+An autonomous car is a vehicle that is capable of sensing its environment and moving with little or no human involvement. For the vehicle to move safely and to understand its driving environment, an enormous amount of data needs to be captured by myriad different sensors across the car at all time. These are then processed by the vehicle's autonomous driving computer system.
+
+The autonomous car must also undertake a considerable amount of training in order to understand the data it is collecting and to be able to make the right decision in any imaginable traffic situation.
+
+Moral decisions are made by everyone daily. When a driver chooses to slam on the brakes to avoid hitting a jaywalker, they are making the moral decision to shift risk from the pedestrian to the people in the car.
+
+Imagine an autonomous car with broken brakes going at full speed towards a grand-mother and a child. By deviating a little, one can be saved.
+
+This time, it is not a human driver who is going to take the decision, but the car's algorithm.
+
+Who would you choose, the grandmother or the child? Do you think there is only one right answer?
+
+This is a typical ethical dilemma, that shows the importance of ethics in the development of technologies.
+
+</details>
+
+中文限定词：刹车失灵、只能救一人、算法作决定；题目同时问选择与“是否只有一个正确答案”。**English reference answer（⚪ 笔记自拟）**: The prompt does not establish one uniquely correct choice. A defensible answer must state missing facts, the ethical principle used, the strongest objection, and how the conclusion changes if survival probabilities, passengers, alternatives, or governing rules change. Age alone does not determine equal human worth.
 
 **课件原文要点**（讲义 p.60，Source: UNESCO）
 
@@ -1667,9 +1927,7 @@ p.58要求能效、资源管理、伦理采购、碳足迹与社区参与。
 
 人类司机是在 0.5 秒内本能反应。
 
-算法的取舍则是在出厂之前、由工程师和产品经理在会议室里定下来的。
-
-这把一次瞬间的悲剧，变成了一个**可预谋、可审计、因而必须被问责**的设计选择——这正是 **W5「问责与责任」**的起点。
+算法运行时会依据传感输入、训练结果、目标、约束和实时控制作出输出；不能把每次取舍简化成工程师在会议室预先写死。可审计的问题是：谁设目标和约束、谁提供数据/模型、谁批准部署、谁监控和干预，以及谁负有解释与补救义务。具体责任需沿控制、知情、权限和职责分配，这是 W5 的起点。
 
 **与 M02 的衔接**
 
@@ -1677,9 +1935,9 @@ M02 开场（讲义 p.4–5）就是**电车难题（The Trolley Problem）**。
 
 UNESCO 这个自驾案例本质上是电车难题的当代技术版。
 
-**M01 用它收尾、M02 用电车难题开场，是有意的接力**——先让你带着一个具体难题离场，下一讲再发给你解决它的七套工具。
+**M01 用它收尾、M02 用电车难题开场，是有意的接力**——先让你带着一个具体难题离场，下一讲再发给你解决它的多类伦理理论工具。
 
-**所以呢**：M01 到此收尾。带着这个"决定被提前搬进会议室"的悬念进入 M02——那一讲会正式发给你一套能拿去分析这类难题的理论工具箱。
+**所以呢**：M01 到此收尾。带着“运行时算法选择如何追溯到设计、部署与监控责任链”的问题进入 M02——下一讲会提供多类伦理理论工具来分析这种难题。
 
 ---
 
@@ -1687,45 +1945,19 @@ UNESCO 这个自驾案例本质上是电车难题的当代技术版。
 
 ### 3.1 本讲的三根柱子
 
-本图回答：三条学习主线该怎样读？
+为什么商科学生要学哲学？本讲从三个方向回答。下表按三条并列的学习主线组织，不是先后发生的因果链；按“核心问题 → 本讲要分清什么 → 后续课程衔接”横向读。
 
-从上/左方开始。
+| 学习主线与来源 | 本讲要分清什么 | 后续课程衔接与边界 |
+|---|---|---|
+| 柱一：AI 是什么（讲义 p.14–23）· 测试 | 图灵测试只测可见行为 | 不能从对话能力直接推得主体资格 |
+| 同一主线 · 概念 | 智能、心灵与意识分开 | 实际问责须核人的控制、知情、权限与义务，再分配组织与个人责任（W5） |
+| 同一主线 · 工程取向 | 把事做对，不要求处处像人 | 与上两行合读，不由拟人行为推内在体验 |
+| 柱二：伦理学是什么（讲义 p.24–34） | 按课件口径区分道德、伦理学与应用伦理学，处理相对主义与言行不一问题，再初步比较四大理论 | M02 继续深化多类伦理理论；分类的具体含义见 §2.3–§2.4，不用名称替代判断理由 |
+| 柱三：商业 AI 全景（讲义 p.36–59） | 用公平、问责、透明与隐私（FATP）检查商业应用 | FATP 对应 W3–W6 的主题目录；理解本讲的伦理分类有助于使用这些标准，但课程衔接不等于 FATP 是某个理论的推论 |
 
-机制图箭头表示分析顺序，结构图表示分类或课程衔接，虚线比较不表示因果。
+**例子走表（笔记补充）**：分析自动驾驶，先分清模型输出能力，再说明采用哪种伦理标准，最后追踪谁能控制系统并承担治理责任。三条主线分别定位问题，不能由拟人行为直接推得主体资格。
 
-内容限原讲义或本节已声明的笔记补充。
-
-
-```mermaid
-flowchart TD
-    Q["为什么商科学生<br/>要学哲学？"] --> A["柱一：AI 是什么<br/>讲义 p.14-23"]
-    Q --> B["柱二：伦理学是什么<br/>讲义 p.24-34"]
-    Q --> C["柱三：商业 AI 全景<br/>讲义 p.36-59"]
-
-    A --> A1["图灵测试<br/>只测行为，不测内在"]
-    A --> A2["智能 ≠ 心灵 ≠ 意识"]
-    A --> A3["工程取向：<br/>做对的事，不必像人"]
-
-    B --> B1["三层：道德 → 伦理学<br/>→ 应用伦理学"]
-    B --> B2["挑战：相对主义<br/>+ 言行不一"]
-    B --> B3["四大理论初览"]
-
-    C --> C1["FATP<br/>= W3-W6 的目录"]
-
-    A2 --> D["对话不证明主体资格<br/>实际责任须追踪人的控制与义务"]
-    A3 --> D
-    D --> E["责任必须回落到人<br/>⇒ W5 问责与责任"]
-    B3 --> F["M02：八类理论深挖"]
-    C1 --> F
-```
-
-
-
-**例子走图（笔记补充）**：自动驾驶决策先分AI输出、伦理标准与治理责任；三支分别定位问题，不由拟人行为推主体资格。
-
-文字替代：三条学习主线须由具体输入、理由与条件支持；图不补出缺失录音、现实权限或精确总体结论。停止或换路条件按对应正文读。
-
-<details><summary>读图自测：模型能说抱歉，是否直接承担了制度责任？</summary>
+<details><summary>读表自测：模型能说抱歉，是否直接承担了制度责任？</summary>
 
 不能。仍需能解释、控制及落实后果的人和组织；能力与地位分开。
 
@@ -1735,7 +1967,7 @@ flowchart TD
 
 本图回答：三层伦理的课程口径该怎样读？
 
-从上/左方开始。
+按从上到下的三层顺序读；虚线只表示课程主题衔接。
 
 机制图箭头表示分析顺序，结构图表示分类或课程衔接，虚线比较不表示因果。
 
@@ -1743,7 +1975,7 @@ flowchart TD
 
 
 ```mermaid
-flowchart LR
+flowchart TD
     subgraph L1["第 1 层 · 道德（道德哲学）"]
         M["关于「对/错的目的」<br/>「好/坏的行为」的理论<br/><br/>功利主义 · 义务论 · 德性伦理"]
     end
@@ -1851,7 +2083,7 @@ Jones & Bergen, *LLMs Pass the Turing Test*, arXiv:2503.23674。
 可测（IQ、认知评估）
 
 
-> ★ 关键差异：**智能可测、心灵难测** —— AI 的全部评估指标只覆盖智能侧。
+> ★ 关键差异：**智能可测、心灵难测** —— 本节列出的常用行为与性能指标主要覆盖智能侧。
 
 **人类智能 vs AI**（讲义 p.22，"Summary of Differences"）
 
@@ -1904,7 +2136,8 @@ M02 会进一步区分效用总量与分配要求。
 | --- | --- | --- | --- |
 | 前习俗 | <9 | 自我 | 1 服从规则避免惩罚 · 2 满足自身需要 |
 | 习俗 | 9–青春期 | 他人 | 3 达成他人期望 · 4 履行义务遵循规范 |
-| 后习俗 | 成年 | 更高层次 | 5 维护群体/文化价值 · 6 依自身信念与情境判断 |
+| 后习俗（讲义 p.34 简化口径） | 成年 | 更高层次 | 5 维护群体/文化价值 · 6 依自身信念与情境判断 |
+| 后习俗（标准操作口径） | 不用年龄认证成熟 | 原则与权利 | 5 社会契约、权利与公共福利 · 6 普遍伦理原则 |
 
 ### 4.7 FATP ★
 
@@ -1955,7 +2188,7 @@ M02 会进一步区分效用总量与分配要求。
 | --- | --- | --- | --- |
 | 善良意志 | Good Will | For Kant, happiness does not equal morality; only a good will has ultimate moral value. | §2.4.4 |
 | 特殊申辩 | Special Pleading | Rationalizing an exception for oneself. | §2.4.4 |
-| 无知之幕 | Veil of Ignorance | Imagine the situation from both points of view. （⚠️ 概念属 Rawls，非 Kant） | §2.4.4 |
+| 无知之幕 | Veil of Ignorance | Choose principles without knowing your own social position, advantages, or personal characteristics. （概念属 Rawls；课件“双方换位”只是过度简化） | §2.4.4 |
 | 伦理困境 | Ethical Dilemma | A situation in which two moral principles conflict and either choice violates one of them. | §2.4.5 |
 | 科尔伯格道德发展阶段 | Kohlberg's Stages of Moral Development | 见说明 9 | §2.5 |
 | 破坏性技术 | Disruptive Technology | A technology that reshapes society, like the steam engine, electricity, or the internet. | §2.6.1 |
@@ -2088,7 +2321,7 @@ There is one and only one supreme moral principle — that we should seek the gr
 
 一个没有意识、没有意图的系统，无法"有意"作恶，也就无法承担道德责任。
 
-这意味着 AI 造成的伤害，责任必须回落到人身上——这是 W5「问责与责任」的起点。
+这意味着 AI 造成伤害后，不能用“算法决定”结束解释；应按控制、知情、权限和义务追踪相关个人与组织，具体分配留待 W5。
 </details>
 
 **2.** 用一句话说清 morality、ethics、applied ethics 的关系，并指出 AI 伦理在哪一层。
@@ -2195,7 +2428,7 @@ M02 的规则功利主义可能反过来支持康德的结论——因为"人们
 **F（公平）**
 - 摄像头装在"所有路口"，但路口的分布本身可能不均——某些区域被更密集地监控
 - 人脸识别在不同族裔、性别上的准确率通常有差异，99% 是**总体**准确率，特定群体的错误率可能显著更高
-- 1% 的错误率乘以巨大基数 = 大量无辜者被误罚
+- 99% 总体准确率若用于 1,000 个案件，只能推出约 990 个判断正确、10 个判断错误；不知道这 10 个是把无辜者误报为违规，还是把违规者漏掉。必须取得四格混淆矩阵、真实正负例基数，以及各群体样本量和误报/漏报率，才能判断公平影响（[NIST FRVT Demographics](https://pages.nist.gov/frvt/html/frvt_demographics.html)，获取日 2026-10-23）
 
 **A（问责）**
 - 罚单是**自动**开出的。误判时，谁负责？开发商、交警、还是算法？
@@ -2215,7 +2448,7 @@ M02 的规则功利主义可能反过来支持康德的结论——因为"人们
 
 第一段是效果良好的执法自动化。
 
-第二段是在没有新授权的情况下，把一套交通系统变成了通用监控网络。
+第二段把交通系统扩展成刑侦监控用途；**若**没有事先告知、同意或其他合法授权，这会构成未经说明的目的扩张。题面未给授权事实，所以结论必须保持条件句。
 
 > ⚠️ 提醒：**这道题就是 9 月 22 日中午截止的正式作业**（讲义 p.85–86）。作业要求用 5 个问题作答（做错了吗 / 谁受益 / 谁受害 / 有什么替代方案 / 还需要什么信息），并且要求 1–2 页。FATP 适合用来快速定位争议，但**正式作答应以 M02 的道德理论为主干**。见 [[IS5113_AI_Ethics_and_Regulations/_meta/作业与DDL|作业与DDL]]。
 </details>
@@ -2243,14 +2476,14 @@ M02 的规则功利主义可能反过来支持康德的结论——因为"人们
 | §2.5 科尔伯格阶段 | p.34 | — |
 | §2.6.1 为什么 AI 需要伦理 | p.35 | — |
 | §2.6.2 FATP | p.45 | — |
-| §2.7 商业 AI 全景速通 | p.36–44, 46–59 | — |
+| §2.7 商业 AI 全景速通 | p.36–44, 46–59；p.38 四行业与 p.42 六行业逐项解释，p.46 孤立标签记入 §9.3 | — |
 | §2.8 UNESCO 自动驾驶案例 | p.60 | — |
 
 > 「课堂覆盖」列本讲整列为 `—`：**本讲无录音**，无法判断教授实际讲了哪些页、跳过了哪些页。
 
-**页面统计**：讲义共 60 页 + 1 空白页。其中课程行政 13 页（22%）、AI 与伦理学核心内容 22 页（37%）、商业 AI 全景 24 页（40%）。
+**页面统计**：原 PDF 共 60 页，不存在额外空白页。p.1 是封面；其余页按行政与课程入口、AI/伦理核心、商业 AI 模板与案例分组，分组若重叠不再用百分比冒充不相交总和。
 
-**✅ 全部 60 页已覆盖。** 曾因纯图片、文本提取为空而遗漏的 4 页（p.17 / 19 / 22 / 60）已于 2026-09-09 用视觉复核方式补齐，内容分别并入 §2.2.1、§2.2.2、§2.8。
+**本轮修订后，60 页均有正文归属；封面/标题页按例外处理。** 商业 AI 模板页已在 §2.7 的逐页对照中补回独有动作，但最终教学与视觉状态仍待独立定向复核，不能由映射表宣称通过。 曾因纯图片、文本提取为空而遗漏的 4 页（p.17 / 19 / 22 / 60）已于 2026-09-09 用视觉复核方式补齐，内容分别并入 §2.2.1、§2.2.2、§2.8。
 
 ---
 
@@ -2274,19 +2507,20 @@ M02 的规则功利主义可能反过来支持康德的结论——因为"人们
 
 **① p.50 是未编辑的模板占位页**
 
-该页图表下方直接印着：*"This is a sample dashboard. Please edit the metrics according to your message"*。图中的数字（Accuracy 95、Precision 0.92、Recall 0.90、F1 0.91，以及柱状图里的 96/95/94/92/89/87/85）**是模板自带的示例数据，不是任何真实模型的指标**。不要去记这些数字。
+该页图表下方直接印着：*"This is a sample dashboard. Please edit the metrics according to your message"*。页面明确写着 sample dashboard；所有数字和图形都只是模板示例，不是任何真实模型的指标。不要誊录或记忆坐标刻度、柱值或仪表值。
 
-**② p.36–59 整段是低信噪比的通用内容**
+**② p.36–59 有重复与模板内容，须区分各图范围**
 
-这 24 页（占全讲 40%）由泛化的行业清单和流程图构成，与本课的伦理主题关联薄弱，且**内部自相矛盾**：
+这 24 页（占全讲 40%）包括行业用途、开发、应用、治理与反馈，部分主题重复。以下四套流程的对象和范围并不相同，不能只数步骤就判断矛盾：
 
 - p.49 给出 8 步流程：Define → Collect → Preprocess → Select → Train → Evaluate → Tune → Deploy
 - p.55 给出 6 步流程：Data → Model → Train → Evaluate → Tune → Deploy
+- p.52 给出 4 步应用流程：Identify → Develop → Implement → Evaluate
 - p.57 给出 7 步反馈环：Data → Processing → Learning → Feedback → Adjustment → Testing → Iteration
 
-三者描述的是同一件事，步数与命名却各不相同。这种冗余是模板拼接的典型特征。
+至少四套图强调不同范围：p.49 是开发到部署，p.52 是业务应用，p.55 是训练升级，p.57 是上线反馈循环。步数不同不等于互相矛盾；先说明所画范围再比较。课件未充分解释它们怎样衔接，本笔记 §2.7 用同一应用例补足读法；“模板拼接”只是对版式的判断，不是对教授制作过程的已知事实。
 
-**结论**：复习时这一段优先级应低于 §2.2–§2.6。**但 p.44（实施挑战）、p.56（AI 治理六件事）、p.58（可持续性）例外**——它们分别预告了 W3–W6、W9、W10。
+**学习处理**：区分流程范围后，按 §2.7 完成各页对应的用途、数据、开发、治理和反馈任务。p.44（实施挑战）、p.56（AI 治理六件事）、p.58（可持续性）还分别衔接 W3–W6、W9、W10；这不是仅保留这三页或降低其他页要求的依据。
 
 **③ p.8 的"our KM course"是复制残留**
 
@@ -2305,6 +2539,10 @@ M02 讲社会契约论（p.62–63）时会把它归还给 Rawls。**答题时�
 **⑥ 官方课程目录与 Course Outline 的 ILO 差异**
 
 官方 CILO 中法律相关内容占 50% 权重，而本讲及 M02 的实际内容几乎全是伦理学理论。详见 [[IS5113_AI_Ethics_and_Regulations/_prep/课程前置资料#4.1 学习目标：显著差异，必须留意|课程前置资料 › 4.1 学习目标：显著差异，必须留意]]。
+
+**⑦ p.46 底部有孤立的 `Humanoid Robot` 标签**
+
+p.46 正文编号只解释 Edge Computing、Human-AI Collaboration、AI Ethics、Generative AI 四项；实际查看原图时，底部另有 `Humanoid Robot` 文字和图片，但没有编号或说明，像模板裁切/排版残留。正文不据此编造第五项趋势，也不把图片当成人形机器人机制已讲解。
 
 ### 9.4 课外补充
 
@@ -2326,7 +2564,7 @@ M02 讲社会契约论（p.62–63）时会把它归还给 Rawls。**答题时�
 
 **③ Michael Quinn《Ethics for the Information Age》⚪**
 
-M02 的理论清单与结构，与该书第 2 章高度吻合（同样的九个理论、同样的 *Case for* / *Case against* 结构、同样的 "workable ethical theory" 提法）。该书不在任何官方书单上，但若某个理论看不懂，它是最直接对得上的补充读物。
+M02 的理论清单与结构，与该书第 2 章高度吻合（同样的多类伦理理论、同样的 *Case for* / *Case against* 结构、同样的 "workable ethical theory" 提法）。该书不在任何官方书单上，但若某个理论看不懂，它是最直接对得上的补充读物。
 
 **⚪ 这是我根据内容结构做的推断，不是教授说的**，仅供参考。详见 [[IS5113_AI_Ethics_and_Regulations/_prep/课程前置资料#8. 延伸发现（⚪ 我的推断，非官方）|课程前置资料 › 8. 延伸发现（⚪ 我的推断，非官方）]]。
 
@@ -2334,7 +2572,7 @@ M02 的理论清单与结构，与该书第 2 章高度吻合（同样的九个�
 
 | # | 事项 | 说明 |
 |---|---|---|
-| 1 | ~~讲义 p.17, 19, 22, 60 为纯图片页，内容未纳入~~ | ✅ **已解决（2026-09-09）**。四页已视觉复核并补入：p.17 → §2.2.1（Jones & Bergen 2025 论文）；p.19 → §2.2.2（智能 vs 心灵五维表）；p.22 → §2.2.2（人类 vs AI 四维表，含红框强调）；p.60 → §2.8（UNESCO 自驾案例）。**全部 60 页现已覆盖** |
+| 1 | ~~讲义 p.17, 19, 22, 60 为纯图片页，内容未纳入~~ | ✅ **已解决（2026-09-09）**。四页已视觉复核并补入：p.17 → §2.2.1（Jones & Bergen 2025 论文）；p.19 → §2.2.2（智能 vs 心灵五维表）；p.22 → §2.2.2（人类 vs AI 四维表，含红框强调）；p.60 → §2.8（UNESCO 自驾案例）。四个低文本页已有正文归属；2026-10-23 全篇及定向复核结果见本次正式回执，不继承旧结论 |
 | 2 | 上课日期 2026-09-01（周二） | 据课件文件时间戳推断，未经确认 |
 | 3 | p.15 与 p.25 的两个 YouTube 链接 | 讲义引用了两段视频（`sXx-PpEBR7k` 关于 AI，`VqfWt2OS4rI` 关于伦理与道德），内容未纳入 |
 | 4 | 官方 Keyword Syllabus 中的三项无对应周次 | 数据所有权与数据治理、在线平台监管、知识产权与版权。见 [[IS5113_AI_Ethics_and_Regulations/_prep/课程前置资料#4.4 大纲主题对照\|课程前置资料 › 4.4 大纲主题对照]] |
@@ -2353,6 +2591,6 @@ M02 的理论清单与结构，与该书第 2 章高度吻合（同样的九个�
 ## 相关
 
 - 上一讲：无（本讲为起点）
-- 下一讲：**M02 · 道德理论及其应用**（把 §2.4 的四大理论展开成七大理论深挖）
+- 下一讲：**M02 · 道德理论及其应用**（把 §2.4 的课件四栏展开成多类伦理理论）
 - 元数据：[[IS5113_AI_Ethics_and_Regulations/_meta/知识层级台账|知识层级台账]] ｜ [[IS5113_AI_Ethics_and_Regulations/_meta/术语表|术语表]] ｜ [[IS5113_AI_Ethics_and_Regulations/_meta/考点库|考点库]] ｜ [[IS5113_AI_Ethics_and_Regulations/_meta/作业与DDL|作业与DDL]]
 - 课程背景：[[IS5113_AI_Ethics_and_Regulations/_prep/课程前置资料|课程前置资料]] ｜ [[IS5113_AI_Ethics_and_Regulations/00-课程总览|00-课程总览]]

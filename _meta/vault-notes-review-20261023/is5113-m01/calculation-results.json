@@ -1,0 +1,40 @@
+{
+  "scope": "synthetic instructional given-output arithmetic; no real system training or deployment evidence",
+  "test_accuracy": 0.75,
+  "test_emergency": {
+    "TP": 1,
+    "FP": 0,
+    "FN": 0,
+    "TN": 3
+  },
+  "validation_thresholds": {
+    "0.7": {
+      "TP": 1,
+      "FP": 0,
+      "FN": 1,
+      "TN": 2
+    },
+    "0.5": {
+      "TP": 2,
+      "FP": 1,
+      "FN": 0,
+      "TN": 1
+    }
+  },
+  "validation_ids": {
+    "0.70": [
+      13
+    ],
+    "0.50": [
+      13,
+      14,
+      15
+    ]
+  },
+  "checks": {
+    "accuracy_75pct": true,
+    "test_confusion": true,
+    "threshold_070": true,
+    "threshold_050": true
+  }
+}

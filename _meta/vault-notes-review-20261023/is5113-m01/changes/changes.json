@@ -1,0 +1,474 @@
+{
+  "candidate_sha256": "3a0f5b9b19c4018254ad7a839fdd885554cc4992897ad3e8cada31f4d51a2eaa",
+  "proposed_sha256": "85012b48545fcdea153f11608f8c1096d0599b3799d3ffcd0c16236df0a23c63",
+  "changes": [
+    {
+      "id": "C01",
+      "defects": [
+        "B1"
+      ],
+      "note": "replace false prerequisites",
+      "old": "本讲是全课起点，不依赖任何前序 module。\n\n只需要具备 [[IS5113_AI_Ethics_and_Regulations/_meta/知识层级台账#L0 · 入场基线|L0 入场基线]]——即 AI / 机器学习的基础概念（监督学习、训练集、模型、准确率、过拟合、LLM 等）。\n\n哲学、伦理学、法律方面**不需要任何基础**，本讲会从零讲起。",
+      "new": "本讲是全课起点。读者只需会四则运算、简单代数和百分数；不假定会 AI、机器学习、统计、哲学或法律。[[IS5113_AI_Ethics_and_Regulations/_meta/知识层级台账#L0 · 入场基线|L0 台账]]只登记依赖，不替代正文教学。\n\n先认一条最小 AI 链：一条人工判断过的“咨询文本→应去部门”叫带标签样本；模型从一批样本中学习输入与答案的对应关系。训练集用来学规则，验证集用来选阈值，最终测试集冻结到最后一次检验。准确率是正确条数除以全部条数；它必须和误报、漏报及群体分项一起读。§2.7 会用 20 条小例把阈值、泄漏、部署、反馈与漂移走完。\n\n哲学、伦理学和法律也从当前案例所需位置起步。"
+    },
+    {
+      "id": "C02",
+      "defects": [
+        "B12"
+      ],
+      "note": "separate 2025 snapshot and 2026 publication",
+      "old": "论文结论：这是**首个\"任何人工系统通过标准三方图灵测试\"的实证证据**。",
+      "new": "论文结论：这是**首个“任何人工系统通过标准三方图灵测试”的实证证据**。\n\n> 🔗 **版本更新（外部资料，获取日 2026-10-23）**：讲义 p.17 展示的是 2025-03-31 的 arXiv 预印本快照，上述两组 5 分钟测试和四系统数字应按该快照保留。论文已于 2026 年在 PNAS 以 *Large language models pass a standard three-party Turing test* 正式发表，并新增第三个 15 分钟研究及更多系统（[PNAS](https://doi.org/10.1073/pnas.2524472123)）。因此不能把“两组、四系统”写成当前正式版研究的全部范围。"
+    },
+    {
+      "id": "C03",
+      "defects": [
+        "B3"
+      ],
+      "note": "separate consciousness and institutional accountability",
+      "old": "实际责任还须追踪可控制和承担义务的人，所以责任必须回落到人（开发者、部署者、使用者）身上。",
+      "new": "现实问责不能由“意识尚未证实”直接推出唯一归属。应沿控制、知情、权限与职责追踪开发者、供应商、部署组织、操作人员和管理者；谁解释、纠正和承担何种后果，要按制度与事实分配，W5 再展开。"
+    },
+    {
+      "id": "C04",
+      "defects": [
+        "B3"
+      ],
+      "note": "replace complete rationality claim",
+      "old": "一个按\"最小化总伤亡\"训练的自动驾驶系统，可能在极端情况下计算出应该牺牲车内乘客——这是完全\"理性\"的。",
+      "new": "一个按“最小化总伤亡”这一预设目标运行的自动驾驶系统，可能在极端情况下算出牺牲车内乘客。这只是相对给定目标与约束的**工具理性**选择，不自动等于道德上正当。"
+    },
+    {
+      "id": "C05",
+      "defects": [
+        "B3"
+      ],
+      "note": "separate tool rationality morality consciousness",
+      "old": "工程取向解释了为什么 AI 的行为需要**外部**的伦理约束：它内部没有任何机制会自发地\"觉得不妥\"。这直接引出 §2.6。\n\n**所以呢**：选工程取向，意味着 AI 内部不会自己\"觉得不对\"——判断对错的责任必须由外部的伦理框架来扛。",
+      "new": "工程系统会执行被写入的目标、约束和更新规则，但不会自动获得一套已经证明正当的伦理标准。系统是否存在主观体验仍未知；工程目标、道德正当和制度责任是三个不同问题。\n\n**所以呢**：工程取向要求外部伦理与治理去审查目标、约束和后果；具体问责按控制、知情、权限和义务分配。"
+    },
+    {
+      "id": "C06",
+      "defects": [
+        "B2"
+      ],
+      "note": "correct duty ethics consequences",
+      "old": "**所以呢**：定言令式用\"能不能普遍化\"当尺子，完全不问后果——下一节的功利主义换了一把完全相反的尺子：只问后果、不问规则本身对不对。",
+      "new": "**所以呢**：定言令式用“能不能普遍化”作为最终对错判据。分析准则和义务冲突时仍须知道可预见伤害、必要性与替代方案；这些事实不会把后果变成唯一标准。下一节的功利主义则以后果作为最终判断中心。"
+    },
+    {
+      "id": "C07",
+      "defects": [
+        "B4"
+      ],
+      "note": "reconcile utilitarianism and conditional EU",
+      "old": "这三个问题看似闲聊，其实在攻击功利主义的**要害**：如果幸福不能被简单加总，那\"最大化总幸福\"这个目标函数就无法计算。",
+      "new": "这三个问题指出功利主义的测量难题：幸福没有一套无争议、可直接相加的单位。若明确利益相关者、期间、尺度、概率与价值假设，可以建立条件性的效用模型；但算出排序不证明这些度量与权重本身道德正当。"
+    },
+    {
+      "id": "C08",
+      "defects": [
+        "B4"
+      ],
+      "note": "bound utilitarian calculation",
+      "old": "**所以呢**：功利主义要求把幸福加总，但\"怎么加总\"这个问题本身就没有答案——下一节回到康德这一边。",
+      "new": "**所以呢**：功利主义要求比较后果，但“谁被计入、算多久、用什么尺度和权重”没有无争议的唯一答案。§2.4.5.1 的数字只是显式假设下的教学模型，不是从题面自动测出的真实幸福。"
+    },
+    {
+      "id": "C09",
+      "defects": [
+        "B10"
+      ],
+      "note": "correct Rawls definition",
+      "old": "| **无知之幕** | Veil of ignorance | 想象自己站在双方的位置上看这件事 |",
+      "new": "| **无知之幕** | Veil of ignorance | 选择规则时不知道自己会处于哪种社会位置、拥有何种优势或个人特征，以限制偏私；不只是站到双方位置换位思考 |"
+    },
+    {
+      "id": "C10",
+      "defects": [
+        "B10"
+      ],
+      "note": "add Rawls operational example",
+      "old": "无知之幕（veil of ignorance）是 John Rawls 在 1971 年提出的，比康德晚近两百年。",
+      "new": "无知之幕（veil of ignorance）是 John Rawls 在 1971 年系统提出的，比康德晚近两百年。它要求选择原则时不知道自己将是富或穷、强或弱、多数或少数的一方；若不知道自己会落在哪个位置，还愿意接受什么规则？这比普通换位思考更严格（[Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/original-position/)，获取日 2026-10-23）。"
+    },
+    {
+      "id": "C11",
+      "defects": [
+        "B10"
+      ],
+      "note": "sync Rawls glossary",
+      "old": "| 无知之幕 | Veil of Ignorance | Imagine the situation from both points of view. （⚠️ 概念属 Rawls，非 Kant） | §2.4.4 |",
+      "new": "| 无知之幕 | Veil of Ignorance | Choose principles without knowing your own social position, advantages, or personal characteristics. （概念属 Rawls；课件“双方换位”只是过度简化） | §2.4.4 |"
+    },
+    {
+      "id": "C12",
+      "defects": [
+        "B5"
+      ],
+      "note": "separate course and standard Kohlberg",
+      "old": "### 2.5 道德是怎么长出来的：科尔伯格阶段",
+      "new": "### 2.5 道德是怎么长出来的：科尔伯格阶段\n\n本节必须分两栏读。**讲义 p.34 的简化口径**把第 5 阶写成维护群体/文化价值、第 6 阶写成依个人信念和情境判断；分类讲义原题时保留此措辞。**标准 Kohlberg 操作口径**通常把第 5 阶写成社会契约、权利与公共福利，把第 6 阶写成普遍伦理原则（[ERIC 教学材料 pp.17–18](https://files.eric.ed.gov/fulltext/ED129718.pdf)，获取日 2026-10-23）。下文练习与速查明确采用哪一栏，不静默混用。"
+    },
+    {
+      "id": "C13",
+      "defects": [
+        "B5"
+      ],
+      "note": "sync Kohlberg quick reference",
+      "old": "| 后习俗 | 成年 | 更高层次 | 5 维护群体/文化价值 · 6 依自身信念与情境判断 |",
+      "new": "| 后习俗（讲义 p.34 简化口径） | 成年 | 更高层次 | 5 维护群体/文化价值 · 6 依自身信念与情境判断 |\n| 后习俗（标准操作口径） | 不用年龄认证成熟 | 原则与权利 | 5 社会契约、权利与公共福利 · 6 普遍伦理原则 |"
+    },
+    {
+      "id": "C14",
+      "defects": [
+        "B1"
+      ],
+      "note": "add novice AI/statistics bridge",
+      "old": "### 2.7 商业 AI 全景速通（讲义 p.36–59）",
+      "new": "### 2.7 商业 AI 全景速通（讲义 p.36–59）\n\n**零基础贯穿例：20 条咨询怎样变成分流系统。** 人工先给 20 条咨询标“财务/选课/紧急支援”。12 条训练模型，4 条验证阈值，最后 4 条只做一次测试。若测试结果为 3 对 1 错，准确率是 $3/4=75\\%$；还要区分把普通件错报为紧急的误报（false positive）和把紧急件漏成普通的漏报（false negative）。降低“紧急”阈值会多抓紧急件，也会增加误报。若先看最终测试再改阈值，测试信息泄漏进开发。上线后每次预测叫推理；低置信度转人工。新课程名使错分上升叫漂移；用户反馈先由人核标签，不能直接喂回模型。模型版本、数据版本和阈值必须留痕；缓存只是复用已有结果，过期或含隐私时要失效。\n\n这条链只演示机制，不代表 20 条足以训练真实系统，也不把 75% 当合格线。后面 p.38–59 的用途、数据、开发、界面、治理、反馈和可持续性都接在这条链上。"
+    },
+    {
+      "id": "C15",
+      "defects": [
+        "B9"
+      ],
+      "note": "avoid using low signal as exclusion",
+      "old": "> ⚠️ **先说清楚**：这 24 页是**低信噪比的模板内容**——泛泛的行业清单、重复的流程图、以及至少一页明显的占位符（讲义 p.50 上直接印着 \"This is a sample dashboard. Please edit the metrics according to your message\"）。详见 [[#9.3 课件自身的问题|§9.3]]。",
+      "new": "> ⚠️ **先说清楚**：p.36–59 有模板化和重复内容，但仍有逐页独有信息，不能用“低信噪比”跳过。以下按学习任务合并，页码逐项保留；p.50 明示为 sample dashboard，其数字不作真实模型结果。"
+    },
+    {
+      "id": "C16",
+      "defects": [
+        "B9"
+      ],
+      "note": "explain metrics without L0",
+      "old": "| p.50 | 性能指标 | Accuracy/Precision/Recall/F1（属 L0）。**此页为模板占位** |",
+      "new": "| p.50 | 性能指标 | Accuracy 是全部判断中正确的比例；Precision 看“报为正”的有多少真为正，Recall 看真实正例抓到多少，F1 综合后二者。阈值会改变误报/漏报；该页是模板占位，数字不可当真实结果 |"
+    },
+    {
+      "id": "C17",
+      "defects": [
+        "B9"
+      ],
+      "note": "cover omitted pages",
+      "old": "#### 2.7.2 有限部署与运营反馈",
+      "new": "**逐页独有信息对照（p.38–59）**\n\n| 页 | 独有动作与边界 |\n|---:|---|\n| 38–39 | 医疗/金融/制造/交通四种行业用途；数据分析、自动化、预测、决策支持、个性化和降本是不同业务动作，不能只写“用了 AI” |\n| 40–42 | 数据、算法、训练、评估、自动化、集成、扩展、伦理；ML 从数据学模式，NLP 处理语言，CV 处理图像；零售、医疗、金融、制造、物流、教育各有具体输入输出 |\n| 43–44 | 客服问题→聊天机器人→响应时间变化；实施还受数据质量、技能、旧系统集成和伦理风险限制 |\n| 46–48 | 边缘计算、人机协作、生成式 AI；专业工具覆盖数据/NLP/图像/预测；收集数据还要核多样性、质量、标注、安全、更新与伦理 |\n| 49 | Define→Collect→Preprocess→Select→Train→Evaluate→Tune→Deploy，强调从问题到生产的八步 |\n| 50–51 | 模板指标不可当证据；真实方案仍要核数据、模型选择和持续学习 |\n| 52–54 | Identify→Develop→Implement→Evaluate；人机协作和界面还涉及个性化、语音、情境与需求预测 |\n| 55–57 | Data→Model→Train→Evaluate→Tune→Deploy；治理六项；Data→Processing→Learning→Feedback→Adjustment→Testing→Iteration 的反馈环 |\n| 58–59 | 能效、资源、伦理采购、碳足迹、社区参与；结论页把 AI 基础、伦理、应用和未来课程分开 |\n\n读一行：p.43 不是说“聊天机器人一定改善满意度”，而是给出问题、方案和待验证结果；要用测试、申诉和 FATP 证据判断。\n\n#### 2.7.2 有限部署与运营反馈"
+    },
+    {
+      "id": "C18",
+      "defects": [
+        "B3"
+      ],
+      "note": "correct autonomous decision and responsibility chain",
+      "old": "算法的取舍则是在出厂之前、由工程师和产品经理在会议室里定下来的。\n\n这把一次瞬间的悲剧，变成了一个**可预谋、可审计、因而必须被问责**的设计选择——这正是 **W5「问责与责任」**的起点。",
+      "new": "算法运行时会依据传感输入、训练结果、目标、约束和实时控制作出输出；不能把每次取舍简化成工程师在会议室预先写死。可审计的问题是：谁设目标和约束、谁提供数据/模型、谁批准部署、谁监控和干预，以及谁负有解释与补救义务。具体责任需沿控制、知情、权限和职责分配，这是 W5 的起点。"
+    },
+    {
+      "id": "C19",
+      "defects": [
+        "B3"
+      ],
+      "note": "sync responsibility diagram",
+      "old": "    D --> E[\"责任必须回落到人<br/>⇒ W5 问责与责任\"]",
+      "new": "    D --> E[\"按控制/知情/权限/义务<br/>分配组织与个人问责 ⇒ W5\"]"
+    },
+    {
+      "id": "C20",
+      "defects": [
+        "B3"
+      ],
+      "note": "sync selftest responsibility",
+      "old": "这意味着 AI 造成的伤害，责任必须回落到人身上——这是 W5「问责与责任」的起点。",
+      "new": "这意味着 AI 造成伤害后，不能用“算法决定”结束解释；应按控制、知情、权限和义务追踪相关个人与组织，具体分配留待 W5。"
+    },
+    {
+      "id": "C21",
+      "defects": [
+        "B6"
+      ],
+      "note": "correct 99 percent inference",
+      "old": "- 1% 的错误率乘以巨大基数 = 大量无辜者被误罚",
+      "new": "- 99% 总体准确率若用于 1,000 个案件，只能推出约 990 个判断正确、10 个判断错误；不知道这 10 个是把无辜者误报为违规，还是把违规者漏掉。必须取得四格混淆矩阵、真实正负例基数，以及各群体样本量和误报/漏报率，才能判断公平影响（[NIST FRVT Demographics](https://pages.nist.gov/frvt/html/frvt_demographics.html)，获取日 2026-10-23）"
+    },
+    {
+      "id": "C22",
+      "defects": [
+        "B6"
+      ],
+      "note": "make authorization conditional",
+      "old": "第二段是在没有新授权的情况下，把一套交通系统变成了通用监控网络。",
+      "new": "第二段把交通系统扩展成刑侦监控用途；**若**没有事先告知、同意或其他合法授权，这会构成未经说明的目的扩张。题面未给授权事实，所以结论必须保持条件句。"
+    },
+    {
+      "id": "C23",
+      "defects": [
+        "B7"
+      ],
+      "note": "remove inconsistent M02 theory count",
+      "old": "M02 把这里一笔带过的义务论、功利主义等展开成八类理论逐一深挖",
+      "new": "M02 把这里一笔带过的义务论、功利主义等展开成多类伦理理论逐一深挖"
+    },
+    {
+      "id": "C24",
+      "defects": [
+        "B7"
+      ],
+      "note": "remove inconsistent M02 theory count",
+      "old": "M02：八类理论深挖",
+      "new": "M02：多类伦理理论深挖"
+    },
+    {
+      "id": "C25",
+      "defects": [
+        "B7"
+      ],
+      "note": "remove inconsistent M02 theory count",
+      "old": "下一讲再发给你解决它的七套工具",
+      "new": "下一讲再发给你解决它的多类伦理理论工具"
+    },
+    {
+      "id": "C26",
+      "defects": [
+        "B7"
+      ],
+      "note": "remove inconsistent M02 theory count",
+      "old": "同样的九个理论",
+      "new": "同样的多类伦理理论"
+    },
+    {
+      "id": "C27",
+      "defects": [
+        "B11"
+      ],
+      "note": "remove miscopied p50 numbers",
+      "old": "图中的数字（Accuracy 95、Precision 0.92、Recall 0.90、F1 0.91，以及柱状图里的 96/95/94/92/89/87/85）**是模板自带的示例数据，不是任何真实模型的指标**。不要去记这些数字。",
+      "new": "页面明确写着 sample dashboard；所有数字和图形都只是模板示例，不是任何真实模型的指标。不要誊录或记忆坐标刻度、柱值或仪表值。"
+    },
+    {
+      "id": "C28",
+      "defects": [
+        "B11"
+      ],
+      "note": "add p52 fourth process",
+      "old": "- p.57 给出 7 步反馈环：Data → Processing → Learning → Feedback → Adjustment → Testing → Iteration\n\n三者描述的是同一件事，步数与命名却各不相同。",
+      "new": "- p.52 给出 4 步应用流程：Identify → Develop → Implement → Evaluate\n- p.57 给出 7 步反馈环：Data → Processing → Learning → Feedback → Adjustment → Testing → Iteration\n\n至少四套图强调不同范围：p.49 是开发到部署，p.52 是业务应用，p.55 是训练升级，p.57 是上线反馈循环。步数不同不等于互相矛盾；先说明所画范围再比较。"
+    },
+    {
+      "id": "C29",
+      "defects": [
+        "C_PAGE_REFERENCES"
+      ],
+      "note": "declare p1 cover",
+      "old": "### 2.1 这门课怎么运作（先把实用信息说完）",
+      "new": "### 2.1 这门课怎么运作（先把实用信息说完）\n\n讲义 p.1 是封面页，仅列课程标题，无独有教学内容；按封面例外处理。"
+    },
+    {
+      "id": "C30",
+      "defects": [
+        "B8-source-p6"
+      ],
+      "note": "add p6 English question and answer",
+      "old": "**学习方式**（讲义 p.6, p.9）",
+      "new": "<details><summary>讲义 p.6 英文任务与管理者反思问题（无选项）</summary>\n\nThe course uses seminars, case learning and discussion, out-of-class sharing via an online discussion forum, teamwork, and an interactive and participative approach. Take the course from the perspective of a responsible business professional: **What changes do you, as a manager, intend to make to yourself, your team, and in the organization?**\n\n</details>\n\n中文限定词：问题要求管理者分别写自己、团队、组织三个层次的改变。**English reference answer（⚪ 笔记自拟）**: I would document my own decision criteria, require my team to record evidence and dissent, and establish an organizational review and appeal process for high-impact AI decisions. The exact controls should depend on the system's risks and authority.\n\n**学习方式**（讲义 p.6, p.9）"
+    },
+    {
+      "id": "C31",
+      "defects": [
+        "B9-admin"
+      ],
+      "note": "cover administrative pages",
+      "old": "授课教师（讲义 p.2）：Prof. Matthew Lee",
+      "new": "**p.3–13 行政页逐页行动入口**\n\n| 页 | 独有信息与学生动作 |\n|---:|---|\n| 3、7、10 | 三张 agenda 逐步展开 Course Objective、Logistics、Seminar、Participation 与 Group Project；用于确认课程要求的组成，不是三份不同任务 |\n| 4–5 | 课程目标是把伦理理论用于商业/社会 AI；六项 ILO 依次要求理论、FATP、商业价值、影响评估、治理政策和批判讨论 |\n| 6、9 | 研讨/案例/线上反思/团队项目；学生要承担小组责任并训练口头、逻辑、批判与写作能力 |\n| 8 | Canvas Modules 下载材料、Assignments 提交；每天查 CityU 邮件，有问题通过邮件约线上或面谈。原页“our KM course”是模板残留 |\n| 11 | 50% 笔试、40% 项目、10% 参与，并要求笔试与持续评估两部分分别及格 |\n| 12 | 两本推荐教材和按主题追加阅读，不等于 compulsory reading |\n| 13 | W1–W13 周次地图：W2 理论，W3–W6 FATP，W7–W11 应用/治理/影响，W12–W13 项目展示 |\n\n读 p.8 的直接动作：材料去 Modules，正式提交只去 Assignments；邮件/预约是沟通渠道，不是提交渠道。\n\n授课教师（讲义 p.2）：Prof. Matthew Lee"
+    },
+    {
+      "id": "C32",
+      "defects": [
+        "R4c"
+      ],
+      "note": "shorten admin table cell",
+      "old": "| 8 | Canvas Modules 下载材料、Assignments 提交；每天查 CityU 邮件，有问题通过邮件约线上或面谈。原页“our KM course”是模板残留 |",
+      "new": "| 8 | Modules 下载、Assignments 提交、邮件/预约沟通（“our KM course”为模板残留） |"
+    },
+    {
+      "id": "C33",
+      "defects": [
+        "R2a"
+      ],
+      "note": "split novice AI bridge",
+      "old": "**零基础贯穿例：20 条咨询怎样变成分流系统。** 人工先给 20 条咨询标“财务/选课/紧急支援”。12 条训练模型，4 条验证阈值，最后 4 条只做一次测试。若测试结果为 3 对 1 错，准确率是 $3/4=75\\%$；还要区分把普通件错报为紧急的误报（false positive）和把紧急件漏成普通的漏报（false negative）。降低“紧急”阈值会多抓紧急件，也会增加误报。若先看最终测试再改阈值，测试信息泄漏进开发。上线后每次预测叫推理；低置信度转人工。新课程名使错分上升叫漂移；用户反馈先由人核标签，不能直接喂回模型。模型版本、数据版本和阈值必须留痕；缓存只是复用已有结果，过期或含隐私时要失效。",
+      "new": "**零基础贯穿例：20 条咨询怎样变成分流系统。**\n\n1. 人工给 20 条咨询标“财务/选课/紧急支援”。\n2. 用 12 条训练模型，4 条验证阈值，最后 4 条只做一次测试。\n3. 若测试 3 对 1 错，准确率是 $3/4=75\\%$。\n4. 普通件错报紧急叫误报；紧急件漏成普通叫漏报。\n5. 降低“紧急”阈值会多抓紧急件，也会增加误报。\n6. 若看完最终测试再改阈值，测试信息就泄漏进开发。\n7. 上线后的每次预测叫推理；低置信度转人工。\n8. 新课程名使错分上升叫漂移；反馈先由人核标签，不能直接喂回模型。\n9. 模型版本、数据版本和阈值要留痕；缓存过期或含隐私时要失效。"
+    },
+    {
+      "id": "C34",
+      "defects": [
+        "R4c"
+      ],
+      "note": "shorten p50 table cell",
+      "old": "| p.50 | 性能指标 | Accuracy 是全部判断中正确的比例；Precision 看“报为正”的有多少真为正，Recall 看真实正例抓到多少，F1 综合后二者。阈值会改变误报/漏报；该页是模板占位，数字不可当真实结果 |",
+      "new": "| p.50 | 性能指标 | 四指标、阈值与两类错误；该页模板数字不可当真实结果 |"
+    },
+    {
+      "id": "C35",
+      "defects": [
+        "R4c"
+      ],
+      "note": "shorten p40-42 table cell",
+      "old": "| 40–42 | 数据、算法、训练、评估、自动化、集成、扩展、伦理；ML 从数据学模式，NLP 处理语言，CV 处理图像；零售、医疗、金融、制造、物流、教育各有具体输入输出 |",
+      "new": "| 40–42 | 数据到评估的核心环节、ML/NLP/CV 三技术，以及六行业的具体输入输出 |"
+    },
+    {
+      "id": "C36",
+      "defects": [
+        "R4c"
+      ],
+      "note": "shorten p46-48 table cell",
+      "old": "| 46–48 | 边缘计算、人机协作、生成式 AI；专业工具覆盖数据/NLP/图像/预测；收集数据还要核多样性、质量、标注、安全、更新与伦理 |",
+      "new": "| 46–48 | 边缘计算、人机协作、生成式 AI、专业工具，以及数据多样性/质量/标注/安全/更新/伦理 |"
+    },
+    {
+      "id": "C37",
+      "defects": [
+        "R4c"
+      ],
+      "note": "shorten p55-57 table cell",
+      "old": "| 55–57 | Data→Model→Train→Evaluate→Tune→Deploy；治理六项；Data→Processing→Learning→Feedback→Adjustment→Testing→Iteration 的反馈环 |",
+      "new": "| 55–57 | 训练升级六步、治理六项与上线反馈七步环 |"
+    },
+    {
+      "id": "C38",
+      "defects": [
+        "R4c"
+      ],
+      "note": "move p50 definitions outside table",
+      "old": "读一行：p.43 不是说“聊天机器人一定改善满意度”，而是给出问题、方案和待验证结果；要用测试、申诉和 FATP 证据判断。",
+      "new": "读一行：p.43 给出问题、方案和待验证结果，并不保证满意度一定改善。要用测试、申诉和 FATP 证据判断。\n\n指标读法：Accuracy 看全部判断中正确的比例；Precision 看报为正的案例有多少真为正；Recall 看真实正例抓到多少；F1 综合 Precision 与 Recall。阈值变化会改变误报和漏报。"
+    },
+    {
+      "id": "C39",
+      "defects": [
+        "B8-source-p27"
+      ],
+      "note": "add p27 English original and answer",
+      "old": "#### 2.3.3.1 准则、事实与相关区别",
+      "new": "#### 2.3.3.1 准则、事实与相关区别\n\n<details><summary>讲义 p.27 完整英文原题与 A–F（无单选答案）</summary>\n\n**To what extent do you think the following individuals are morally inconsistent?**\n\nA. an anti-abortionist who supports the death penalty\n\nB. a vegetarian who buys leather shoes\n\nC. a socialist who educates his children at a private school\n\nD. A politician who advocates family values and has an affair\n\nE. An environmental activist who drives a gasoline SUV\n\nF. Someone who thinks stealing is wrong but makes illegal copies of computer software or music.\n\n</details>\n\n中文限定词是“to what extent”：不是机械判真/假，而要说明准则、事实、时间和例外。**English reference answer（⚪ 笔记自拟）**: Each case may be inconsistent, but the degree depends on relevant facts. State the person's principle, identify the conduct, and test whether timing, necessity, prior ownership, or another morally relevant distinction changes the comparison."
+    },
+    {
+      "id": "C40",
+      "defects": [
+        "B8-source-p30"
+      ],
+      "note": "add p30 English original and answer",
+      "old": "**课件原例**（讲义 p.30）课件用三个问题引导思考幸福的本质：",
+      "new": "<details><summary>讲义 p.30 完整英文开放题（无选项）</summary>\n\nWhat do you think is the relationship between pleasure and happiness? Is happiness just the sum of pleasures, or can you have many pleasures and still be unhappy?\n\nAre the richest nations of the world home to the happiest people in the world?\n\nAccording to Bertrand Russell (1872–1970), “To be without some of the things you want is an indispensable part of happiness.” What did he mean? Do you agree?\n\n</details>\n\n中文限定词：分别回答概念关系、财富是否足以推出幸福、Russell 句意和你的有条件立场。**English reference answer（⚪ 笔记自拟）**: Pleasure can contribute to happiness, but repeated pleasure may coexist with poor health, relationships, or purpose. National wealth alone does not establish happiness without comparable evidence. Russell can be read as saying that limits and continued aspiration may give life meaning; I agree only for non-basic wants, not deprivation of food, housing, or care.\n\n**课件原例**（讲义 p.30）课件用三个问题引导思考幸福的本质："
+    },
+    {
+      "id": "C41",
+      "defects": [
+        "B8-source-p32"
+      ],
+      "note": "add p32 English original and answer",
+      "old": "**讲义 p.32 八个原小问：逐项条件作答（⚪ 笔记参考）**",
+      "new": "<details><summary>讲义 p.32 完整英文题干与 1a–4b</summary>\n\n**Which of the following is a special case that justifies breaking a generally accepted rule?**\n\n1a. You should respect the traffic code, but it is ok to drive through a red light if you are late for work.\n\n1b. You should respect the highway code, but it is ok to drive through a red light if you are taking a critically ill person to the hospital.\n\n2a. You should keep your word, but it is ok to break a social engagement if something more interesting comes up.\n\n2b. You should keep your word, but it is ok to break a social engagement if you have just contracted an infectious disease.\n\n3a. You should pay your taxes, but it is ok not to pay them if you are short of money that year.\n\n3b. You should pay your taxes, but it is ok not to pay them if they are being spent on a nuclear arms program.\n\n4a. Murder is wrong, but it would have been ok to assassinate Hitler in 1942.\n\n4b. Murder is wrong, but it would be OK to kill someone planning a terrorist attack.\n\n</details>\n\n中文限定词：题目问何种事实足以辩护破例，不等于 b 全对、a 全错。**English reference answer（⚪ 笔记自拟）**: Personal convenience alone does not justify an exception. Serious threats to life or public health may create competing duties, but each case still requires evidence, necessity, safer alternatives, and a rule that could apply consistently. Items 3b, 4a, and 4b remain ethically contested rather than automatic permissions.\n\n**讲义 p.32 八个原小问：逐项条件作答（⚪ 笔记参考）**"
+    },
+    {
+      "id": "C42",
+      "defects": [
+        "B8-source-p33"
+      ],
+      "note": "add p33 English original and answer",
+      "old": "#### 2.4.5 伦理困境：遗产案（Ethical Dilemma）",
+      "new": "#### 2.4.5 伦理困境：遗产案（Ethical Dilemma）\n\n<details><summary>讲义 p.33 完整英文原题（货币符号仅作 Markdown 转义）</summary>\n\nAn elderly woman living alone in poor circumstances with few friends or relatives is dying, and you, her friend, are at her bedside. She draws your attention to a small case under her bed, which contains some momentos along with the money she has managed to save over the years, despite her apparent poverty. She asks you to take the case and to promise to deliver its contents, after she dies, to her nephew living in another state. Moved by her plight and by your affection for her, you promise to do as she requests. After a tearful goodbye, you take the case and leave. A few weeks later the old woman dies, and when you open the case, you discover that it contains \\$500,000 dollars. No one else knows about the money, or the promise you made. You learn that the nephew is a compulsive gambler and has a drug addiction.\n\nWhat would Kant say you should do?\n\nWhat would John Stuart Mill say you should do?\n\nWhat would you do? Why?\n\n</details>\n\n中文限定词：分别写 Kant、Mill 和自己的论证；原题没有官方唯一答案。**English reference answer（⚪ 笔记自拟）**: Kant would normally require keeping the promise because a maxim permitting secret promise-breaking would undermine promising. A utilitarian answer is conditional because the prompt gives no probabilities or comparable utilities; it must compare feasible options, harms, trust, and longer-term effects under stated assumptions. My conclusion should identify the missing facts and explain which principle controls it."
+    },
+    {
+      "id": "C43",
+      "defects": [
+        "B8-source-p60"
+      ],
+      "note": "add p60 English original and answer",
+      "old": "**课件原文要点**（讲义 p.60，Source: UNESCO）",
+      "new": "<details><summary>讲义 p.60 完整英文原题（Source: UNESCO）</summary>\n\n**Autonomous car**\n\nAn autonomous car is a vehicle that is capable of sensing its environment and moving with little or no human involvement. For the vehicle to move safely and to understand its driving environment, an enormous amount of data needs to be captured by myriad different sensors across the car at all time. These are then processed by the vehicle's autonomous driving computer system.\n\nThe autonomous car must also undertake a considerable amount of training in order to understand the data it is collecting and to be able to make the right decision in any imaginable traffic situation.\n\nMoral decisions are made by everyone daily. When a driver chooses to slam on the brakes to avoid hitting a jaywalker, they are making the moral decision to shift risk from the pedestrian to the people in the car.\n\nImagine an autonomous car with broken brakes going at full speed towards a grand-mother and a child. By deviating a little, one can be saved.\n\nThis time, it is not a human driver who is going to take the decision, but the car's algorithm.\n\nWho would you choose, the grandmother or the child? Do you think there is only one right answer?\n\nThis is a typical ethical dilemma, that shows the importance of ethics in the development of technologies.\n\n</details>\n\n中文限定词：刹车失灵、只能救一人、算法作决定；题目同时问选择与“是否只有一个正确答案”。**English reference answer（⚪ 笔记自拟）**: The prompt does not establish one uniquely correct choice. A defensible answer must state missing facts, the ethical principle used, the strongest objection, and how the conclusion changes if survival probabilities, passengers, alternatives, or governing rules change. Age alone does not determine equal human worth.\n\n**课件原文要点**（讲义 p.60，Source: UNESCO）"
+    },
+    {
+      "id": "C44",
+      "defects": [
+        "coverage"
+      ],
+      "note": "correct coverage claim",
+      "old": "**✅ 全部 60 页已覆盖。**",
+      "new": "**本轮修订后，60 页均有正文归属；封面/标题页按例外处理。** 商业 AI 模板页已在 §2.7 的逐页对照中补回独有动作，但最终教学与视觉状态仍待独立定向复核，不能由映射表宣称通过。"
+    },
+    {
+      "id": "C45",
+      "defects": [
+        "history"
+      ],
+      "note": "mark historical coverage boundary",
+      "old": "**全部 60 页现已覆盖**",
+      "new": "四个低文本页已有正文归属；本次全篇是否通过仍待独立定向复核"
+    },
+    {
+      "id": "C46",
+      "defects": [
+        "R1a-source"
+      ],
+      "note": "split long English source line without changing words",
+      "old": "An elderly woman living alone in poor circumstances with few friends or relatives is dying, and you, her friend, are at her bedside.",
+      "new": "An elderly woman living alone in poor circumstances with few friends or relatives is dying,\n\nand you, her friend, are at her bedside."
+    },
+    {
+      "id": "C47",
+      "defects": [
+        "R1a-source"
+      ],
+      "note": "split p33 source sentence 2",
+      "old": "bedside. She draws",
+      "new": "bedside.\n\nShe draws"
+    },
+    {
+      "id": "C48",
+      "defects": [
+        "R1a-source"
+      ],
+      "note": "split p33 source sentence 3",
+      "old": "another state. Moved",
+      "new": "another state.\n\nMoved"
+    },
+    {
+      "id": "C49",
+      "defects": [
+        "R1a-source"
+      ],
+      "note": "split p33 source sentence 4",
+      "old": "as she requests. After",
+      "new": "as she requests.\n\nAfter"
+    },
+    {
+      "id": "C50",
+      "defects": [
+        "R1a-source"
+      ],
+      "note": "split p33 source sentence 5",
+      "old": "and leave. A few",
+      "new": "and leave.\n\nA few"
+    },
+    {
+      "id": "C51",
+      "defects": [
+        "R1a-source"
+      ],
+      "note": "split p33 source sentence 6",
+      "old": "woman dies, and when",
+      "new": "woman dies,\n\nand when"
+    },
+    {
+      "id": "C52",
+      "defects": [
+        "R1a-source"
+      ],
+      "note": "split p33 source sentence 7",
+      "old": "made. You learn",
+      "new": "made.\n\nYou learn"
+    }
+  ]
+}

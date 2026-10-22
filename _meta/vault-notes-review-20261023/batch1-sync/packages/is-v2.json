@@ -1,0 +1,111 @@
+{
+  "schema": "is-m01-sync-v1",
+  "patches": [
+    {
+      "id": "R1",
+      "path": "README.md",
+      "old": "**2026-10-23 全库重审交接已准备，正文尚未开始**：新会话按[全库笔记重审任务单](_meta/全库笔记重审任务单-2026-10-23.md)执行。交接盘点43篇M/T及32份待分类的配套学习文档候选；逐篇全审、独立高中知识起点审查，旧PASS不继承；实际进度见[本次台账](_meta/vault-notes-review-20261023/progress.md)。",
+      "new": "**2026-10-23 全库重审进行中**：按[全库笔记重审任务单](_meta/全库笔记重审任务单-2026-10-23.md)执行。43 篇 M/T 中 AC6761 M01、EF5560 M01、IS5113 M01 已完成本次全篇审查并正式写回；AC/EF 两页 Notion 已写入并逐字段回读，其他字段未变，IS5113 M01 尚待依赖与 Notion 同步；其余笔记不因此升级。实际进度见[本次台账](_meta/vault-notes-review-20261023/progress.md)。",
+      "reason": "同步前三篇正式写回和Notion分层状态。",
+      "source_sha256": "dbd9d07370399677c859ef8adc728006664b95e0008b87aab438490a2bede93b"
+    },
+    {
+      "id": "O1",
+      "path": "IS5113_AI_Ethics_and_Regulations/00-课程总览.md",
+      "old": "| 1 | Introduction to AI and Ethics | [[M01-导论-AI与伦理]] | ✅ v0.9 · 无转录（永久） · 2026-09-11 完成预习可读性重写（§2 共 17 小节补齐\"所以呢\"） |",
+      "new": "| 1 | Introduction to AI and Ethics | [[M01-导论-AI与伦理]] | ✅ **v0.9 / transcript:none**（永久无录音）；2026-10-23 全篇教学、来源、原题、计算与图文重审闭合并正式写回。60 页全部保留；p.15/p.25 视频未核，考点置信无红级；材料通过不代表本人已通读 |",
+      "reason": "同步正式M01状态与永久来源边界。",
+      "source_sha256": "9f9c72bf8b3dd798ed552ca290ac2716efbf86fbe540c56babf922a13340682f"
+    },
+    {
+      "id": "K1",
+      "path": "IS5113_AI_Ethics_and_Regulations/_meta/知识层级台账.md",
+      "old": "| 义务伦理 | Duty Ethics | M01 | 看是否履行义务，而非只看后果；义务与权利是一体两面 | 伦理理论 |",
+      "new": "| 义务伦理 | Duty Ethics / Deontology | M01 | 以义务、准则和权利判断行为，不以后果作为最终对错判据；这不等于现实判断完全不问可预见后果 | 伦理理论 |",
+      "reason": "同步义务论边界与权利关系。",
+      "source_sha256": "24b09f0619ac3918a7cd0060f3032127d0c79d127624fd04cb86e1f9a0ce3143"
+    },
+    {
+      "id": "K2",
+      "path": "IS5113_AI_Ethics_and_Regulations/_meta/知识层级台账.md",
+      "old": "| 无知之幕 | Veil of Ignorance | M01（M02 深化；M03 §2.4.2 给出讲义原文定义） | 站在不知自己身份的位置上判断，以求公正 | 伦理理论 |",
+      "new": "| 无知之幕 | Veil of Ignorance | M01（M02 深化；M03 §2.4.2 给出讲义原文定义） | Rawls 的原则选择设置：不知道自己未来的社会位置、优势与个人特征，不是简单与另一方交换位置 | 伦理理论 |",
+      "reason": "同步Rawls真实设定。",
+      "source_sha256": "24b09f0619ac3918a7cd0060f3032127d0c79d127624fd04cb86e1f9a0ce3143"
+    },
+    {
+      "id": "K3",
+      "path": "IS5113_AI_Ethics_and_Regulations/_meta/知识层级台账.md",
+      "old": "| 科尔伯格道德发展阶段 | Kohlberg's Stages of Moral Development | M01 | 1973 年提出，道德发展分前习俗/习俗/后习俗三层各两阶 | 道德 |",
+      "new": "| 科尔伯格道德发展阶段 | Kohlberg's Stages of Moral Development | M01 | 三层各两阶；讲义把第5/6阶简写为群体文化价值/个人信念情境，标准操作口径通常是社会契约与权利/普遍伦理原则，分类时须注明采用哪套口径 | 道德 |",
+      "reason": "同步课程简化与标准口径分栏。",
+      "source_sha256": "24b09f0619ac3918a7cd0060f3032127d0c79d127624fd04cb86e1f9a0ce3143"
+    },
+    {
+      "id": "K4",
+      "path": "IS5113_AI_Ethics_and_Regulations/_meta/知识层级台账.md",
+      "old": "| FATP | Fairness, Accountability, Transparency, Privacy | M01（M03 ✅ F 已深化；M04 ✅ T 已深化；M05–M06 逐一深化） | AI 伦理的四大议题清单：公平、问责、透明、隐私 | AI 伦理 |",
+      "new": "| FATP | Fairness, Accountability, Transparency, Privacy | M01（M03 ✅ F 已深化；M04 ✅ T 已深化；M05–M06 逐一深化） | 公平、问责、透明、隐私四类治理问题；需接到数据—开发—部署—反馈链的具体事实和责任人，不能当四个可互换分数 | AI 伦理 |\n| 算法准确率 | Accuracy | M01 | 正确数除以总数；不能推出误报/漏报构成、各群体错误率、效用、权利影响或法律授权，99%总体准确率也不是每100件必定恰错1件 | AI |",
+      "reason": "同步FATP开发链并登记准确率边界。",
+      "source_sha256": "24b09f0619ac3918a7cd0060f3032127d0c79d127624fd04cb86e1f9a0ce3143"
+    },
+    {
+      "id": "T1",
+      "path": "IS5113_AI_Ethics_and_Regulations/_meta/术语表.md",
+      "old": "| 无知之幕 | Veil of Ignorance | Imagine the situation from both points of view. ⚠️ Rawls (1971), **not Kant** — 课件此处归类有误 | M01 §2.4.4 |",
+      "new": "| 无知之幕 | Veil of Ignorance | Choose principles without knowing your own social position, advantages, or personal characteristics. Rawls (1971), not Kant; this is stricter than swapping viewpoints. | M01 §2.4.4 |",
+      "reason": "同步Rawls定义。",
+      "source_sha256": "950cc054b7f668f2b1bb43ffbd0576b58673606761af57318d9e502a3f22386d"
+    },
+    {
+      "id": "T2",
+      "path": "IS5113_AI_Ethics_and_Regulations/_meta/术语表.md",
+      "old": "| 科尔伯格道德发展阶段 | Kohlberg's Stages of Moral Development | (1973) Three levels — preconventional, conventional, postconventional — each divided into two stages. | M01 §2.5 |",
+      "new": "| 科尔伯格道德发展阶段 | Kohlberg's Stages of Moral Development | Three levels with two stages each; the course wording for stages 5–6 and the standard social-contract/universal-principles wording must be kept distinct. | M01 §2.5 |",
+      "reason": "同步双口径。",
+      "source_sha256": "950cc054b7f668f2b1bb43ffbd0576b58673606761af57318d9e502a3f22386d"
+    },
+    {
+      "id": "T3",
+      "path": "IS5113_AI_Ethics_and_Regulations/_meta/术语表.md",
+      "old": "| FATP | Fairness, Accountability, Transparency, Privacy | The four core ethical considerations in AI. | M01 §2.6.2 |",
+      "new": "| FATP | Fairness, Accountability, Transparency, Privacy | Four categories for examining who is affected, who answers for decisions, what can be explained, and how personal data is handled across the AI lifecycle. | M01 §2.6.2 |",
+      "reason": "补开发链用途。",
+      "source_sha256": "950cc054b7f668f2b1bb43ffbd0576b58673606761af57318d9e502a3f22386d"
+    },
+    {
+      "id": "E1",
+      "path": "IS5113_AI_Ethics_and_Regulations/_meta/考点库.md",
+      "old": "| ⚪ | 科尔伯格三水平六阶段 | 结构清晰，易出简答 | M01 §2.5 |",
+      "new": "| ⚪ | 科尔伯格三水平六阶段 | 结构清晰，易出简答；作答须区分讲义第5/6阶措辞与标准社会契约/普遍原则口径，不静默混用 | M01 §2.5 |",
+      "reason": "同步课程vs标准。",
+      "source_sha256": "d260efee23555b234c7e64249386d1a8de4789fccff5d9c2bef9286f40529a0f"
+    },
+    {
+      "id": "E2",
+      "path": "IS5113_AI_Ethics_and_Regulations/_meta/考点库.md",
+      "old": "| 🟡 | **FATP 四议题**的含义与对应措施 | ILO-2「理解当代 AI 伦理议题（公平、问责、透明、隐私）」 | M01 §2.6.2 |",
+      "new": "| 🟡 | **FATP 四议题**的含义、冲突与数据—开发—部署—反馈落点 | ILO-2「理解当代 AI 伦理议题（公平、问责、透明、隐私）」；无M01转录，不升级教授明示 | M01 §2.6.2、§2.7.3 |",
+      "reason": "同步机制并保持无录音等级上限。",
+      "source_sha256": "d260efee23555b234c7e64249386d1a8de4789fccff5d9c2bef9286f40529a0f"
+    },
+    {
+      "id": "ROOT1",
+      "path": "_meta/术语总表.md",
+      "old": "| **无知之幕 / 差异原则** | Veil of Ignorance / Difference Principle | — | [[M02-道德理论及其应用]] §2.8.3 | — | — | — |",
+      "new": "| **无知之幕 / 差异原则** | Veil of Ignorance / Difference Principle | — | [[M01-导论-AI与伦理]] §2.4.4（仅无知之幕的 Rawls 归属与未知自身位置；差异原则仍见 M02）；[[M02-道德理论及其应用]] §2.8.3；[[M03-偏见与公平]] §2.4 | — | — | — |",
+      "reason": "补正式M01首现与严格定义回链。",
+      "source_sha256": "36d8a0e9945e1c902b6d6bbc565e28cbb385924c289b4d6e181735ba4aa02948"
+    },
+    {
+      "id": "Q1",
+      "path": "_meta/课件题目覆盖台账.md",
+      "old": "| IS5113 M01 | p.30 快乐 / 幸福三问；p.33 遗产案三问 | **完整的开放题示范**：M01 §2.4.3、§2.4.5 逐问作答，个人立场标笔记示范，不冒充教授意见。 |",
+      "new": "| IS5113 M01 | p.6学习/参与动作；p.27 A–F六案；p.30全部问句；p.32 1a–4b八案；p.33遗产情境四问；p.60 UNESCO 两问 | **完整的来源限定作答**：英文题面/编号/限定词、中文逐项推理与完整句英文参考答案均在 §2；无转录或官方答案的结论标笔记参考。p.38四行业、p.42六行业是应用陈述而非原题，已逐项解释输入/动作/输出/边界；p.15/p.25视频未核。 |",
+      "reason": "同步全部原题与行业页状态。",
+      "source_sha256": "fd50782460e4e266318c83d022271b6a9e096b8e26243716f38b4a367e520bef"
+    }
+  ],
+  "formal_sha256": "7523ff5e9c706fb020986e2709408240511ad8744296a1a21f2832ac0fbe2616",
+  "root_note": "README R1 will not be applied: shared README uses root batch1 v2 R01 current 3 formal writes and all 3 Notion verified; ROOT1 clarifies M01 does not introduce Difference Principle."
+}

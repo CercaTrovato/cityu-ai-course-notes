@@ -9,21 +9,27 @@ prerequisites: []
 new_concepts: [Vibe Coding, 六步循环, 六项规格, 桌面编码工具, 代码留痕, 简单收益, 对数收益, 复权价, 拆股, 现金股利, 价格指数, 波动率, 回撤, 基准, 期限利差, 组合权重, 多空组合, 美元中性, 配对交易, 主动收益, 交易成本, 另类数据, 预测时钟, 数据泄漏, 前视偏差, 生存者偏差, 冻结样本池, 时点数据, 参考期vs发布日, 归档日, 数据修订, 发布滞后, 五种泄漏路径, 三行手检, 预测变量, 特征表, 横截面, 面板数据, 动量, 均线偏离, 技术指标, 财务比率四件套, 市值加权, 收益预测R2量级, 市场有效性, 随机游走, 反转, 上证综指vs沪深300, 恒生科技指数]
 tags: [EF5560, fintech, 金融数据, vibe-coding, 数据泄漏, 时点数据]
 status: v1.0
-updated: 2026-10-02
+updated: 2026-10-23
 mechanism_spec: v1
-mechanism_review: pending
-mechanism_review_mode: efficient-20261002
+mechanism_review: passed
+mechanism_review_mode: full-independent-20261023
 mechanism_content: repaired
 
 readability_rules: v2
+teaching_standard: novice-v1
 
-readability_review: pending
+readability_review: passed
+teaching_review_run: vault-notes-review-20261023
+teaching_review_receipt: _meta/vault-notes-review-20261023/ef5560-m01/review.json
+administrative_maintenance: 2026-10-23
+administrative_maintenance_receipt: _meta/vault-notes-review-20261023/batch1-sync/admin-ef5560-m01.json
 ---
 
 # M01 · 金融数据与 Vibe Coding
 
 > **本讲一句话**：这一讲不教你写代码，也不教你建模型——它教你在**让 AI 替你写代码之前**必须先说清楚的那些事，而其中最要命的一件是：**这个数字，在那一天，投资者到底看不看得见？**
-> **原始材料**：`Lec01_Data_and_Vibe_Coding.pdf`（58 页）｜**转录**：`M01-transcript.txt`（`00:01`→`02:15:21`，671 段，文本覆盖范围已知；原音频完整性未认证）｜**状态**：v1.0（讲义 × 转录已合并）
+> ✅ **既有转录合并材料已于 2026-10-23 重审**：`M01-transcript.txt` 当前 scan 为 `00:01`→`02:15:21`、671 段；无 ≥120 秒时间戳空档。首句像讲课中段残句，故开头可能缺失；结尾有明确下课语。此次未新增音源，也不把文本连续写成音频完整。
+> **原始材料**：`Lec01_Data_and_Vibe_Coding.pdf`（58 页）｜**状态**：v1.0（既有讲义 × 转录合并；材料接口重审，教学验收另行）
 
 ---
 
@@ -47,9 +53,13 @@ AI 辅助编码（Vibe Coding）在这里的角色是：它把"写代码"这件�
 
 **如果只记三件事**
 
-1. **日期 ≠ 可知日期。** 文件里的 `2026-06-01` 是那个月的"参考期"，不是投资者知道这个数的日子。教授原话：「the mistake I see **99.9%** [is] missing the date.」（🎙️`02:00:05`）
+1. **日期 ≠ 可知日期。** 文件里的 `2026-06-01` 是那个月的"参考期"，不是投资者知道这个数的日子。教授原话：「the mistake I see… 99.9%… that's missing the date.」（🎙️`02:00:05`）
 2. **数据比模型重要。** 「Data and data and data. **The predictor[s] are way more useful than model[s].**」（🎙️`24:41`）
 3. **AI 写完代码要留痕。** Vibe Coding 最大的隐患不是写错，是错了以后**没有代码可查**（🎙️`01:06:31`，讲义完全没提这条）
+
+**🎙️ 课堂实况**
+
+录音从课程由来与安排开始，前约 20 分钟集中讲课程结构、考试与作业；随后以 AI 工具现场演示串联数据下载、收益口径、基准、时点和泄漏。`01:13:50` 宣布休息，后半段继续讲复权、冻结样本池、宏观/财报发布时间、预测变量和图诊断，`02:13:16` 后布置课后练习与分组，`02:15:21` 明确下课。p.8/11/15/16 等讲义页在现有转录中无可确认对应，状态只能写“未知/无对应”，不能据关键词 0 命中判定教授明确略过并降权。
 
 ---
 
@@ -57,11 +67,11 @@ AI 辅助编码（Vibe Coding）在这里的角色是：它把"写代码"这件�
 
 ### 1.1 你已经有的
 
-本讲是全课起点，不依赖任何前序 module。只需要具备 [[EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账#L0 · 入场基线|L0 入场基线]]：AI/机器学习基础（监督学习、训练/验证/测试、线性回归、R²）、基本统计（均值、标准差、相关、箱线图）、以及 **Python 的基础语法**（会看 `a = f(b, c=1)`）。
+本讲是全课起点。读者只需会四则运算、简单代数和百分数；本篇不假定会金融、统计、机器学习或 Python。[[EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账#L0 · 入场基线|L0 台账]]只用于登记依赖，不能代替正文解释。
 
-**金融方面不需要任何基础。** 收益率、复权价、指数、基准、回撤这些词本讲会从零讲起——这是本课台账写死的口径，理由见台账「判断一」。
+为读懂后面的任务，先认三个角色：**预测变量（predictor）**是决策前已经知道的输入，**目标（target）**是之后才发生、要预测的结果；**训练集（training set）**用来定规则，**测试集（test set）**留到最后，只检验一次。例：用前 8 个月的动量定规则，再用后 2 个月检验；若看完后 2 个月再换变量，它们就不再是独立测试。
 
-**pandas / yfinance / akshare 的具体函数也不需要会。** 讲义里出现的每一行都会解释，但重点永远落在"时点对不对"，不在语法。
+统计和代码也从当前任务所需的最小动作讲起：均值是平均水平，标准差描述一组数围绕均值的起伏；R²、散点图和箱线图在首次承担判断时再就地展开。Python 代码只要求能追踪“输入表 → 选列 → 调函数 → 得到新表/序列”，不要求自己从空白写程序。
 
 ### 1.2 本讲全新引入的概念
 
@@ -79,7 +89,7 @@ AI 辅助编码（Vibe Coding）在这里的角色是：它把"写代码"这件�
 | 动量 · 均线偏离 · 技术指标 · 财务比率四件套 | Momentum / MA gap / Technical indicator / Accounting ratios | §2.7 |
 | 五种泄漏路径 · 三行手检 | Five leakage channels / Three-row check | §2.7 |
 | 市场有效性 · 随机游走 · 反转 · R² 量级 | Market efficiency / Random walk / Reversal / R² magnitude | §2.9 |
-| 多空组合 · 美元中性 · 配对交易 | Long-short / Dollar-neutral / Pairs trade | §2.10（⏭️ 课上略过） |
+| 多空组合 · 美元中性 · 配对交易 | Long-short / Dollar-neutral / Pairs trade | §2.10（❓ 现有转录无可确认对应） |
 
 ### 1.3 为什么这一讲放在这里 · 重排说明
 
@@ -97,11 +107,11 @@ AI 辅助编码（Vibe Coding）在这里的角色是：它把"写代码"这件�
 
 本笔记调整为：
 
-> §2.1 定位（A）→ §2.2 Vibe Coding 方法论（从 B 里抽出 p.9/10/12，将配对案例后移至 §2.10）→ §2.3 金融词汇与数感（从 C、F 里抽出）→ §2.4 下载与检查（C）→ **§2.5 预测时钟（把散在 D、E 里的时点内容合并）** → §2.6 宏观与财务的三种时点（D）→ §2.7 造预测变量（E）→ §2.8 冻结样本池（把 p.24–25 从 C 里抽出来单独成节）→ §2.9 用图诊断（F）→ **§2.10 ⏭️ 配对交易（B，课上完全略过，降级到附录位置）** → §2.11 ⏭️ 工作坊与失败诊断表（p.54–55，课上未执行）→ §2.12 收尾
+> §2.1 定位（A）→ §2.2 Vibe Coding 方法论（从 B 里抽出 p.9/10/12，将配对案例后移至 §2.10）→ §2.3 金融词汇与数感（从 C、F 里抽出）→ §2.4 下载与检查（C）→ **§2.5 预测时钟（把散在 D、E 里的时点内容合并）** → §2.6 宏观与财务的三种时点（D）→ §2.7 造预测变量（E）→ §2.8 冻结样本池（把 p.24–25 从 C 里抽出来单独成节）→ §2.9 用图诊断（F）→ **§2.10 配对交易（B，先补足收益与时点依赖，再读案例）** → §2.11 工作坊与失败诊断表（p.54 转课后尝试；p.55 无逐页课堂对应）→ §2.12 收尾
 
 **三个调整的理由**：
 
-1. **把 PDD-JD 配对交易（p.8、11、15、16 共 4 页）从正文主线搬到 §2.10。** 因为**教授在两个多小时里一次都没提到 PDD 或 JD**（转录全文检索 `PDD` / `JD` / `Pinduoduo` / `Temu` / `food delivery` / `long-short` / `dollar neutral`，命中数全部为 0）。这 4 页是讲义准备了却整段跳过的内容。留着，但明确标注优先级。
+1. **把 PDD-JD 配对交易（p.8、11、15、16 共 4 页）后移到 §2.10。** 先学收益、预测时钟和组合权重，再把这些动作合到案例中，初学者才容易复做。现有转录没有可确认对应；关键词未命中不能证明教授明确略过，因此不据此降低复习优先级。
 2. **把"预测时钟"提取成独立的 §2.5，放在所有数据类型之前。** 讲义把时点问题拆散在 p.27、33、39–40、43、47、48，读者要读到第 43 页才看到统一的图示。但这是本讲**唯一真正的主题**，先讲清楚，后面每种数据只是它的一个实例。
 3. **把 p.24–25（冻结样本池 + 选择题）单独成 §2.8。** 因为教授在这里明说了「**this is one of the exam questions I design**」（🎙️`01:27:47`）——这是全讲可信度最高的考点，不能埋在"市场数据检查"里。
 
@@ -127,11 +137,15 @@ AI 辅助编码（Vibe Coding）在这里的角色是：它把"写代码"这件�
 > **Part I：ML in Finance（Classes 1–5）** ｜ **Part II：FinTech（Classes 6–12）**
 > 讲义原话：「The two parts share a financial setting but address different questions.」（p.2）
 
-**🎙️ 课堂补充**：教授解释了为什么今年把两部分**调换了顺序**——去年先讲 FinTech 公司案例，学生下课后普遍问"我到底学到了什么"，因为案例课没有"做完一道题"的踏实感；今年改成先讲有明确操作的投资部分（`06:37`）。他还说明本课的由来：**AIB 项目 2025 年成立，请 EF 系为其新开一门课，他去年才开始建，今年幻灯片全部推倒重做，而且是用 AI 重做的**（`00:03`–`00:38`）。→ 含义：**这门课没有往届资料可参考，且明年还会变。**
+**🎙️ 课堂补充**：教授解释了为什么今年把两部分**调换了顺序**——去年先讲 FinTech 公司案例，学生下课后普遍问"我到底学到了什么"，因为案例课没有"做完一道题"的踏实感；今年改成先讲有明确操作的投资部分（`06:37`）。
+
+他还说明本课的由来：**AIB 项目 2025 年成立，请 EF 系为其新开一门课，他去年才开始建，今年幻灯片全部推倒重做，而且是用 AI 重做的**（`00:03`–`00:38`）。
+
+→ 边界：这支持今年课件重做，不能推出所有往届资料都不存在，也不能据此预测明年的安排。
 
 **所以呢**：知道了这门课讲什么、怎么分两部分，接下来三节继续把"这门课"本身的背景交代完——一个金融 AI 产品还需要哪些层面、两条建造 AI 的路线、以及最终怎么给你打分。
 
-#### 2.1.2 一个金融 AI 产品需要的不只是模型（讲义 p.3）⏭️
+#### 2.1.2 一个金融 AI 产品需要的不只是模型（讲义 p.3）
 
 上一节的分层表说的是"这门课讲什么"；讲义 p.3 换了一个角度，说的是"做成一个真正能上线的金融 AI 产品，除了模型准不准，还要想清楚哪几件事"——很多学生（以及很多真实项目）只顾着调模型，结果模型很好用却从没改变过任何一个实际决策。讲义把一个产品拆成四层，每层配一个该问的问题，以及不问会有什么后果：
 
@@ -144,7 +158,7 @@ AI 辅助编码（Vibe Coding）在这里的角色是：它把"写代码"这件�
 
 > **Keep in mind（讲义 p.3）**：「Financial value comes from the full system: data, model, decision process, distribution, and controls.」
 
-**⏭️ 课上略过**：转录里没有任何一段对应这张表。它是讲义准备的框架，教授当天没展开。**但它值得记**——它正好是第二板块（FinTech 公司案例）的分析骨架，而案例报告占 30%。
+**❓ 课堂覆盖未知**：现有转录无可确认对应，不能由此判定明确略过。这张表仍须完整学习；它可作为第二板块 FinTech 公司案例的分析骨架（案例报告占 30%）。
 
 **所以呢**：知道了"一个产品需要哪几层"，下一个自然的问题是——**由谁来控制这些层**？这决定了两条建造 AI 路线（下一节）的分野。
 
@@ -250,7 +264,7 @@ flowchart LR
 ⑥确认没问题后修正、保存、并记录这次改了什么。
 
 > 讲义 p.9：「The loop is complete only when the output passes **explicit checks**.」
-> ⏭️ **课上一带而过**：转录 `46:02` 只有一句「This is the six[-]step for [vibe] coding」，随后就切到实操演示了。但这个环里的第 3 步（**先不要动手改代码**）是有讲究的：先原样运行，你才能知道 AI 的原始理解是什么。
+> ◑ **课堂一句带过**：转录 `46:02` 只有一句「This is the six[-]step for [vibe] coding」，随后就切到实操演示了。但这个环里的第 3 步（**先不要动手改代码**）是有讲究的：先原样运行，你才能知道 AI 的原始理解是什么。
 
 **所以呢**：六步循环的第 2 步是"给出精确指令"，但"精确"到底要写清哪几件事？讲义把它拆成了六项规格。
 
@@ -320,6 +334,18 @@ flowchart LR
 
 **代入数字**：价格从 100 涨到 110——简单收益 $r_t = 110/100 - 1 = 10\%$；对数收益 $g_t = \ln(1.1) \approx 9.53\%$。
 
+**先把 $\ln$ 和 $\exp$ 当作一对记账工具**
+
+输入对象是正的资金倍数 $u$。
+
+自然对数 $g=\ln u$ 是满足 $e^g=u$ 的指数，其中 $e\approx2.718$。
+
+反向运算 $\exp(g)=e^g$ 把指数还原成资金倍数。
+
+比如 $\ln(1.1)\approx0.09531$，再算 $\exp(0.09531)\approx1.1$。
+
+因此，正数相乘时，$\ln(1.10\times0.90)=\ln(1.10)+\ln(0.90)$；$\exp$ 再把相加后的结果还原。这里不需要微积分，只需认清输入是正资金倍数、输出是指数记账值。
+
 **为什么需要两个**
 - **简单收益能跨资产相加**：组合收益 $= \sum_i w_i \times r_i$（$w_i$ 是第 $i$ 个资产的权重，$r_i$ 是它的简单收益）。§2.10 的多空组合就必须用它。
 - **对数收益能跨时间相加**：累计对数收益 $G=\sum_t g_t$；累计简单收益 $R=\exp(G)-1$，净值倍数 $\exp(G)$。$N$ 个价格只有 $N-1$ 个相邻收益。画长期走势图、算波动率时用它更方便。
@@ -384,11 +410,15 @@ flowchart LR
 | 月 2 | 99 | −10% | −0.105360516 | 110 | −10% |
 | 月 3 | 108.9 | 10% | 0.095310180 | 110 | −1% |
 
+**复利、峰值与回撤**
+
 步骤 1 从相邻价作比，得到每期资金乘数 $1+r$；步骤 2 逐期更新 $V_t=V_{t-1}(1+r_t)$，到 108.9 即读完三期、停止；步骤 3 每期更新峰值 $H_t=max(H_{t-1},V_t)$，再算回撤。最大回撤取所有 $D_t$ 中最小值，故为 −10%，而不是期末的 −1%。回撤归 0 是当前恢复历史峰值，不要求过去 12 个月每期盈利。
 
 复利依据是相邻比值约分：$\prod_{t=1}^n(P_t/P_{t-1})=P_n/P_0$。取 log 后乘法变加法，所以 $G=\sum g_t=0.085259844$，$R=\exp(G)-1=8.9\%$。简单收益直接相加是 10%，没有反映第二个月在 110 元上损失 11 元。
 
 几何平均每月收益 $\bar r_{\rm geo}=(1.089)^{1/3}-1$，意思是找一个固定月增长率，连乘三次恰好到同一终点。年化复合增长率（CAGR）因此为 $1.089^{12/3}-1=40.640862\%$；这里三个完整月的数值很短，只是演算，不能当稳定年回报预测。算术平均 $\bar r=(0.1-0.1+0.1)/3=3.333333\%$，线性年化为 40%，与 CAGR 不同。
+
+**样本波动与风险年化**
 
 风险计算使用同一组三个月的简单收益，按以下步骤求样本波动：
 
@@ -397,9 +427,9 @@ flowchart LR
 3. 除以 $n-1$，得到样本方差 $s^2=0.0133333$。
 4. 开方，得到样本标准差 $s=0.115470054$。
 
-这里计算的是收益的标准差。先用数据估计了一个均值，因此少一个自由度，分母用 $n-1$。
+这里计算的是收益的标准差。三期偏差相加必须等于 0；知道前两项后，最后一项已被均值约束决定，所以只有 $n-1$ 个可自由变化的偏差，分母用 $n-1$。这就是本例“少一个自由度”的具体含义。
 
-月频年化波动为 $s\sqrt{12}=40\%$。这一步要求零自相关、方差稳定，才能将各月方差加成 $12s^2$。若有相关性，还要加入各期协方差；根号年化不能普遍保证未来一年的风险。
+月频平均收益若只换成一年口径，常写成“月均值 × 12”；复利路径则从 $1.089=(1+m)^3$ 解每月固定增长率 $m$，再把同一倍数延长到 12 个月。风险不同：独立月份的**方差**相加为 12 倍，标准差才变成 $s\sqrt{12}=40\%$。若各月常一起涨跌，就存在协方差，不能只把风险简单相加；因此根号年化要求零自相关、方差稳定。
 
 Sharpe 先扣掉同月无风险收益，再比较平均与起伏。本例假设现金每月收益为 1%。
 
@@ -443,6 +473,21 @@ flowchart TD
 - **拆股（stock split）**：公司把 1 股拆成 2 股，报价从 200 变成 100。**投资者没有任何损失**——你手上从 1 股变成 2 股。
 - **现金股利（cash dividend）**：公司发现金，除息日价格会下跌，**投资者同时拿到现金；总收益须合并价格变化和股利，未必为正**。
 - **复权价（adjusted close）**：把上述两类事件的影响回填进历史价格，使得不同时点的价格在经济意义上可比。
+
+<details><summary>讲义 p.22 英文原题与必要情境（课堂讨论；无选项）</summary>
+
+**Adjusted and Unadjusted Prices Answer Different Questions**
+
+- A stock split changes the quoted price without creating an investor loss.
+- A cash dividend creates a return even though the ex-dividend price falls.
+- An adjusted series tries to place prices on a comparable economic basis.
+- Package defaults and vendor conventions can change; make the choice explicit.
+
+**Class discussion:** What would a 2-for-1 split do to a return computed from unadjusted closing prices?
+
+</details>
+
+中文限定词：`unadjusted` 是未复权收盘价；问题问“计算出来的收益会怎样”，不是投资者真实财富一定怎样。讲义无书面官方答案；中英参考答案为：**It would show an apparent return of about −50%, even though the investor's total value is unchanged because one share becomes two shares.**
 
 **课件原例**（讲义 p.22 的四条 + 课堂讨论题）
 > - 拆股改变报价但不造成投资者损失
@@ -492,7 +537,7 @@ flowchart TD
 
 这一小节是"笔记补充 + 转录"的合成，讲义里没有任何一页集中给这些数字。**教授把这件事列为本课第一优先级**：
 
-> 🎙️`02:12:27`「**Develop a sense for numbers. That's the top priority thing I want [you] to learn from the course.**」
+> 🎙️`02:12:27`「**Develop a sense for numbers. That's the top priority [thing] I want [you] to learn from the course.**」
 
 下表给出价格、收益和风险的数感参照。每行先标量的名称，再列参照值及其来源，避免把不同单位的数字混比。
 
@@ -516,13 +561,32 @@ flowchart TD
 
 💡 用课程数据实测：2006-07→2026-06 S&P 500 价格指数（不含股息）几何年化 9.297018%（240 个价格仅有 239 个间隔，$5.874202734^{12/239}-1$），与"≈ 8%"同一量级。
 
-教授说的是百年口径且含股息再投资，两者不必完全相等。
+课堂 `49:53` 给的是 S&P 过去百年约 8% 的经验量级，未说明股息口径。本例采用课程样本和价格指数，时期及口径与课堂概数并不相同，不能把二者的差额归因于已确认的股息再投资。
 
 ⚠️ 本行曾误写为 7.95%——那是把对数收益当简单收益复利到 4.59× 再年化的结果，正是 §9.3 ① 的坑，2026-09-10 按脚本改正
 
-**股票收益预测的 R² · 参照值**
+**股票收益预测的 R² · 先知道它在比较什么**
 
-**平均 ≈ 1%**。
+先用四个月的人为小例。实际收益的平均值是 0.5%，所以“只报平均值”的基准每月都预测 0.5%。每个月的“实际 − 预测”叫**残差（residual）**；把残差平方后相加，是模型没解释掉的误差。普通最小二乘（OLS）就是选择一条线，使训练样本的残差平方和尽量小。
+
+| 月 | 实际收益 | 模型预测 | 模型残差 | 基准预测 | 基准残差 |
+|---|---:|---:|---:|---:|---:|
+| 1 | 1.0% | 0.8% | 0.2 个百分点 | 0.5% | 0.5 个百分点 |
+| 2 | −1.0% | −0.6% | −0.4 个百分点 | 0.5% | −1.5 个百分点 |
+| 3 | 2.0% | 1.4% | 0.6 个百分点 | 0.5% | 1.5 个百分点 |
+| 4 | 0.0% | 0.4% | −0.4 个百分点 | 0.5% | −0.5 个百分点 |
+
+基准残差平方和是 $0.5^2+(-1.5)^2+1.5^2+(-0.5)^2=5$ 个百分点平方；模型残差平方和是 $0.2^2+(-0.4)^2+0.6^2+(-0.4)^2=0.72$ 个百分点平方。
+
+$R^2$ 比较模型残差平方和与基准残差平方和：
+
+$$
+R^2=1-\frac{0.72}{5}=0.856=85.6\%.
+$$
+
+这个 85.6% 是刻意构造的高拟合教学例，只用来演示算法；它不是本课市场数据的真实预测力，更不是收益率 85.6%。一般地，$R^2=1\%$ 表示样本内平方误差相对基准少约 1%，不能与收益率比较单位。在训练样本上算叫样本内；在未参与选变量或定参数的后来样本上算叫样本外，后者更接近真实预测检验。
+
+**课堂参照：平均 ≈ 1%**。
 
 到 2–3% 被教授视为潜在优势。
 
@@ -535,6 +599,8 @@ S&P 500 → ≈ 600。
 CSI 300 → ≈ 400。
 
 恒生 → ≈ 130
+
+同一 class01 价格表的恒生起终倍数为 1.348215270；240 个价格形成 239 个间隔，故 CAGR 为 $1.348215270^{12/239}-1=0.01511468$，即约 **1.511468%/年**。这是本讲数据与期间的复算值，不写成近似 1.7%。
 
 **最大回撤 · 参照值**
 
@@ -646,7 +712,16 @@ Vibe Coding 的第一步甚至不是分析数据，而是让 AI 把开发环境�
 
 #### 2.4.4 从两个数据源拼一张表（讲义 p.17–18）
 
-§2.3.4 数感表里标普 500、恒生、沪深 300 三个指数 20 年的表现数字是怎么来的？三个市场分散在两个不同的数据源：美股和港股在 Yahoo Finance 能查到完整历史，沪深 300 只能从 AKShare 拿（原因见下表第 3 行）。下面这段代码示范怎么把它们拼到同一张表上：
+§2.3.4 数感表里标普 500、恒生、沪深 300 三个指数 20 年的表现数字是怎么来的？三个市场分散在两个不同的数据源：美股和港股在 Yahoo Finance 能查到完整历史，沪深 300 只能从 AKShare 拿（原因见下表第 3 行）。下面这段代码示范怎么把它们拼到同一张表上。
+
+**只为读代码的最小表模型**：DataFrame 是一张二维表；`index` 是每行标签（这里是日期），`columns` 是列名。选一列如 `df["Close"]` 后得到 Series，可把它想成“带日期标签的一列”。`=` 把右边结果命名；`f(x, option=True)` 是调用函数，括号里先放输入、再放命名参数；点号方法链 `daily.resample("ME").last()` 是把上一步结果继续交给下一个动作。
+
+| index 日期 | Close | Volume |
+|---|---:|---:|
+| 2026-06-01 | 100 | 20 |
+| 2026-06-02 | 102 | 25 |
+
+读 `close = df["Close"]`：从表 `df` 选出 Close 列，把这列 Series 命名为 `close`。`dtype` 是一列的存储类型；`float64` 可做小数运算，`object` 常意味着数字被当成文本，需先停下核对。
 
 ```python
 import akshare as ak
@@ -689,7 +764,7 @@ print(monthly.shape); print(monthly.isna().sum())
 
 | 行 | 在干什么 |
 |---|---|
-| `.resample("ME").last()` | 按**月末**（Month End）取当月最后一个观测，把三个市场统一到同一张月度日历上 |
+| `.resample("ME").last()` | 按**月末**（Month End）分组，并对每一列取该月最后一个非缺失值；pandas `Resampler.last` 默认 `skipna=True`（[官方文档](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.Resampler.last.html)，获取日 2026-10-23） |
 | `.loc["2006-07":"2026-06"]` | 裁到目标的 240 个月 |
 | 四个 `print` | 就是六项规格第 6 项要求的"自报维度与缺失" |
 
@@ -698,13 +773,27 @@ print(monthly.shape); print(monthly.isna().sum())
 
 **🎙️ 课堂补充（`01:24:10`–`01:24:34`）**——教授给了跨市场对齐的具体例子：
 > 「for the National [Day] break… in mainland China you have seven day[s] break, but in Hong Kong you only have one day break… **for Christmas, there's [no holiday] in mainland China, but there's a break in Hong Kong.**」
-> 因此**跨市场表里必然有缺失值**，而这正是他坚持不给学生"洗干净的数据集"的原因：「Other faculties, they will just give you a well[-]clean[ed] data set… But in real world data… you exactly [see] what I show you: **data missing value everywhere.**」（`01:23:47`）
+> 因此**日频 outer join 表**会因各市场假日不同而在某些日期出现 NA；但这不等于月频表必然缺月。只要某市场在该月仍有至少一个有效交易日，逐列 `.last()` 跳过 NA 后，本例月频 `(240,3)` 可以是 0 个缺月。教授在 `01:23:36`–`01:23:58` 强调缺失是现实常态，而本例“日频有空格、月频无缺月”说的是两个不同阶段。这个区别也意味着：若整列整月都缺，`.last()` 仍会得到 NA，不能静默补值。
+>
+> 原课堂表述：跨市场日历会出现缺失值，而这正是他坚持不给学生"洗干净的数据集"的原因：「Other faculties, they will just give you a well[-]clean[ed] data set… But in real world data… you exactly [see] what I show you: **data missing value everywhere.**」（`01:23:47`）
 
 **所以呢**：数据拼好了、也知道了缺失值是常态，但还不能直接拿去算收益——算之前，讲义要求先做四项检查。
 
 #### 2.4.5 算之前先做四项检查（讲义 p.23）
 
-数据拼好了（§2.4.4），还不能马上算收益。讲义坚持要先看一眼数据本身长什么样——列名对不对、有没有缺失、数量级合不合理——这样才能在错误的收益被算出来**之前**发现问题，而不是算完一堆漂亮数字之后才回头怀疑。讲义 p.23 给了一条检查指令，要求 AI 在动手计算前先交出四样东西：
+数据拼好了（§2.4.4），还不能马上算收益。讲义坚持要先看一眼数据本身长什么样——列名对不对、有没有缺失、数量级合不合理——这样才能在错误的收益被算出来**之前**发现问题，而不是算完一堆漂亮数字之后才回头怀疑。讲义 p.23 给了一条检查指令，要求 AI 在动手计算前先交出四样东西。中文读题关键词是“计算前、精确列名和类型、首尾三行、缺失与描述统计”；描述统计至少要看计数、均值、最小/最大值是否符合该市场量级。
+
+<details><summary>讲义 p.23 英文原题（无选项）</summary>
+
+**Data-checking instruction**
+
+Before calculating returns, run Python and show: (1) table dimensions, (2) exact column names and types, (3) the first and last three dated rows, and (4) missing-value and descriptive-statistic summaries.
+
+Reading the output is the part that cannot be delegated. Two questions decide whether to continue: which column is the adjusted economic price, and are the missing observations and magnitudes plausible for this market?
+
+</details>
+
+原题没有官方答案；下文是依据讲义检查要求的中文参考解释：
 
 > **Data-checking instruction**：「Before calculating returns, run Python and show: **(1)** table dimensions, **(2)** exact column names and types, **(3)** the first and last three dated rows, and **(4)** missing-value and descriptive-statistic summaries.」
 
@@ -713,6 +802,8 @@ print(monthly.shape); print(monthly.isna().sum())
 > 「**Reading the output is the part that cannot be delegated.**」
 
 两个问题决定要不要继续：**哪一列是复权后的经济价格？缺失值和数量级对这个市场来说合理吗？**
+
+**English reference answer（⚪ 条件性答案）**: Use the explicitly adjusted-price column only after checking the vendor convention. Continue only when missing observations match the market calendar or a documented source gap and when prices, returns, and dates have plausible magnitudes; otherwise stop and inspect the raw rows. 本讲 AAPL 样本应核 adjusted_close、157 个周价与首行收益缺失；三市场日表允许假日 NA，月表本例为 240×3 且零缺月。
 
 **⚠️ 常见误解**：❌「AI 说没问题就没问题」→ 🎙️`47:16`：「They are numbers[; ] might be everything might be fake. You don't know.」教授明确说 AI 会编造数字，且 AI 自己也在免责声明里承认这点。
 
@@ -768,7 +859,7 @@ $r_{t+1}$ 则是下一周的收益 $P_{t+1}/P_t - 1$，要用 2026-06-26 和 202
 
 **🎙️ 课堂补充（`29:01`–`29:59`、`02:00:05`）**
 > 「At the time point, for example, 2015, if you want to predict return for Hang Seng index [in] 2015 January, **you can only use predictors up to 2014 December**. The rule seems simple. But when you see the data… you'll find that it is **very, very easy to mix up**.」
-> 「**the mistake I see 99.9% [is] missing the date.** It is not the functional form.」
+> 「**the mistake I see… 99.9%… that's missing the date.** It is not the functional form.」
 
 **💡 换个说法（笔记补充）**：把每一行数据想象成一封信，信封上写着"第 t+1 周才准拆"。里面装的所有预测变量，都必须是在封信那一刻（第 t 周末）就已经写好的。**任何一个在第 t+1 周才知道的数字被塞进信封，整封信就作废了。**
 
@@ -801,13 +892,21 @@ $r_{t+1}$ 则是下一周的收益 $P_{t+1}/P_t - 1$，要用 2026-06-26 和 202
 | 4 | 用**后来才观测到**的值去填补缺失 | 未来值倒灌进历史 |
 | 5 | 看完最终测试集表现之后再**回头挑选**预测变量 | 测试集被你用作了选择依据 |
 
+**把 1、2、5 走成能追踪的小例**
+
+- 全样本标准化：训练期数值 `[1,2,3]`，测试期极端值 `100`。若先用四个数求均值 `26.5`，训练期已经“知道”未来有 100；正确做法只用训练期均值 `2` 和训练期标准差变换训练/测试。
+- 居中窗口：假设在 3 月 31 日形成信号，用它预测 4 月收益。若给 3 月计算“三个月居中均值”，窗口可能包含 2 月、3 月和 4 月；4 月在信号时刻尚未发生，已经泄漏。正确的三个月尾部窗口只用 1 月、2 月、3 月，并在 4 月目标实现前冻结。
+- 测试集选变量：前 8 月训练，后 2 月测试。看完后 2 月后在 20 个变量里挑“测试成绩最好”的那个，相当于用答案选题；应在训练/验证期定变量，只对冻结方案使用测试集一次。
+
+路径 3 的财报归档例见 §2.6.3；路径 4 的发布时间/修订例见 §2.6.1。五条的共同检查是：每个处理参数和选择决定由哪一段数据决定？若答案包含最终测试期，它就不再是独立测试。
+
 > **Keep in mind（讲义 p.48）**：「**A predictor formula is not complete until its information date is specified.**」
 
 **所以呢**：第三至第五种泄漏路径都直接与日期有关。
 
 下一节把所有和日期相关的坑，归纳成三种必须分开记的日期。
 
-#### 2.5.4 三种日期，永远分开记（讲义 p.27）★
+#### 2.5.4 三类日期与四个节点，永远分开记（讲义 p.27）★
 
 这张链帮助回答：文件上写3月末，为何4月不能使用报表？箭头表示从所描述期间到公开/可用的时间顺序，不是数值计算或因果关系。
 
@@ -820,6 +919,14 @@ $r_{t+1}$ 则是下一周的收益 $P_{t+1}/P_t - 1$，要用 2026-06-26 和 202
 不能。虽是同一个日历日，公开节点仍晚于决策cutoff；用旧合法值或保留缺失。
 
 </details>
+
+这里说“三类日期”是：
+
+1. 数据描述的参考期或交易期；
+2. 文件标签日；
+3. 真实公开日或归档日。
+
+实际决策还要增加第 4 个比较节点——决策 cutoff。“可用于预测”不是新的数据日期，而是公开时刻与 cutoff 比较后的判断结果。
 
 讲义把"从经济事件到可用信息"画成一条链：
 
@@ -859,6 +966,8 @@ flowchart LR
 
 （`DGS10` = 10 年期美债收益率；`DFF` = 联邦基金利率；`UNRATE` = 失业率；`CPIAUCSL` = CPI 价格指数水平。CPI 是一篮子消费品和服务的价格水平；若把它转成同比，才是在问“相对去年同月上涨了多少百分比”，两者不能混用。）
 
+讲义 p.30 先要求对一条 UNRATE 序列保存两份文件：raw 保留下载原貌和来源证据，cleaned 只做已声明的解析或整理，不能覆盖 raw。预期对象是 2006-07 至 2026-06 的 240 个 observation-month 行，含 observation date 和 UNRATE 值，并保留发布的缺失；这一步不能把参考月当发布日期、把当前 vintage 当实时 vintage，或把缺失当 0。
+
 讲义 p.33 把这条讲透了：
 
 > 一行标注 `2026-06-01` 的数据，**标的是参考月，不是投资者得知失业率的那一天**。
@@ -869,12 +978,32 @@ flowchart LR
 >
 > **Do not do this（讲义 p.33）**：「Do not forward-fill a monthly series from the first day of its reference month and call it a real-time predictor.」
 
+<details><summary>讲义 p.31 英文原题（四问，无选项）</summary>
+
+**Plot FRED, Then Check the Timing**
+
+**Follow-up instruction**
+
+Run Python to plot UNRATE against its observation month. Then repeat for DGS10, DFF, and CPIAUCSL, using monthly means for the daily rate series. Return the chart, the aggregation rule, and a table of missing months.
+
+1. Does the chart use the requested variable and units?
+2. Did daily rates become monthly means rather than month-end values?
+3. Are gaps visible rather than silently filled?
+4. What extra release lag is required before using each series for prediction?
+
+</details>
+
+中文限定词：`observation month` 是参考月；日频利率必须取月均；缺口必须显示；用于预测还要补实际发布滞后。原题无官方答案，以下为课程数据与 p.28–33 支持的参考作答。
+
 **讲义 p.31 的四个检查问题，逐问回答**（✅ 来自课程数据与 p.28–33；发布时间的精确日期未在数据包里，不能编造）：
 
-1. **图里是否用了指定变量与单位？** 应逐图核对 `UNRATE` 是失业率百分比、`DGS10` / `DFF` 是以百分比表示的年化利率、`CPIAUCSL` 是价格指数水平；若画的是课程派生的 `inflation_yoy`，纵轴必须改写“CPI 同比 %”，不能冒称它是 `CPIAUCSL` 指数。读图时先确认纵轴到底是价格篮子水平还是同比变动，再讨论趋势；只看曲线形状不能证明列和单位用对了，需把图例与数据列名、来源元数据对上。
-2. **日频利率是否转为月均，而非月末值？** 对 `DGS10` / `DFF` 应按日观察值所在月份分组取均值，再检查每月的有效日数；课程 `macro_240m.csv` 提供 `dgs10_monthly_mean` / `dff_monthly_mean` 两列。它没有原始日频行，因此**能确认交付列的口径，不能仅凭该 CSV 独立重算每个月均值**；需要原始 FRED 日数据才能完成最后一步核查。
-3. **缺口是否如实可见？** 不对缺值静默插值或前填；课程宏观表的 **2025-10** 行中 `unemployment_rate` 与 `inflation_yoy` 都为空（`code/L01_data/check_exercises.py` 实测），图与缺月表应保留并说明这一行。课程数据的缺口不等于断言当月官方未发布，原因还须回数据源核查。
-4. **用于预测时还需加什么发布滞后？** `UNRATE` 和 CPI 描述参考月，通常要在参考月结束后才公布；月均利率至少要等该月日观察值收齐。逐个预测日查实际发布日与可能的历史修订版本，只允许使用当时已公布的值；没有发布日历时采取清楚说明的保守滞后，不能把 `2026-06-01` 这样的参考月标签当成 6 月 1 日可用。
+**1. 变量与单位。** UNRATE 是失业率百分比；DGS10 / DFF 是以百分比表示的年化利率；CPIAUCSL 是价格指数水平。若画派生的 inflation_yoy，纵轴必须写“CPI 同比 %”。图例、数据列名和来源元数据要互相对上。
+
+**2. 日频转月频。** 对 DGS10 / DFF 应按月份取日观察值均值，并检查有效日数。课程 CSV 只提供月均列，没有原始日频行；因此能确认交付列名，不能独立重算每个月均值。
+
+**3. 缺口。** 不静默插值或前填。课程宏观表 2025-10 的失业率与通胀为空，图和缺月表应保留；缺口原因仍须回数据源核查。
+
+**4. 发布滞后。** UNRATE 和 CPI 的标签是参考月，月均利率也要等当月观察值收齐。逐个预测日查实际发布日和 vintage；没有发布日历时采用并披露保守滞后，不能把 2026-06-01 当成 6 月 1 日可用。
 
 **🎙️ 课堂补充（`01:32:10`–`01:34:38`）——教授现场做了一次演示**
 
@@ -891,6 +1020,13 @@ flowchart LR
 **💡 一个绝佳的真实例子（笔记补充，来自课程数据集）**：`macro_240m.csv` 里 240 个月**只有一个月缺失**——**2025-10**，`unemployment_rate` 和 `inflation_yoy` 同时为空。这正是讲义 p.28 说的「**preserve published missing values**」的实物：文件当月两字段确实为空；没有发布日期或缺失原因，不能据此断言官方未发布。
 
 这个缺口按 2 个月滞后传导到 `spy_monthly_features_240m.csv` 的 **2025-12** 行。**如果当初"顺手填一下"，你就永远看不到这个信号。**
+
+**English reference answers（逐问）**
+
+1. Verify each chart's series ID and units against source metadata; UNRATE is a percent, DGS10/DFF are annualized rates in percent, and CPIAUCSL is an index level.
+2. Aggregate daily rate observations by calendar month using the monthly mean, not the month-end observation.
+3. Keep and report missing months; do not silently interpolate or forward-fill them.
+4. Use the actual release calendar and vintage available before each forecast cutoff. If those records are unavailable, apply and disclose a conservative lag rather than treating the reference month as the release date.
 
 **所以呢**：美国的宏观数据讲完了；中国的宏观数据不在同一个数据源里，下一节换一个接口继续讲同一条规则。
 
@@ -951,8 +1087,8 @@ print(pmi.tail())
 
 **🎙️ 一段讲义没有的制度史（`01:38:40`–`01:39:23`）**
 > 「before 2000, the SEC [still received] **mails** for the financial report… so once they do the earnings announcement, it still takes **a few weeks**… Right now, when they finish the earnings announcement, you will see the report to the SEC **the other day**.」
-> （美国是 SEC，香港是 **SFC**。）
-> → **含义**：做长历史回测（教授说他做过 50 年以上的美股研究）时，2000 年前后的"归档滞后"长度完全不同，不能用同一个假设。
+> 课堂口述在这里把美国 SEC 与香港 SFC 并列。监管机构名称属于课堂事实，但**提交/发布机制不能直接类比**：美国 10-Q/10-K 走 SEC filing；香港上市公司的公告和文件按 HKEX Listing Rules 经电子呈交系统（ESS）提交，并在 HKEXnews 发布。HKEX 明确说明 HKEXnews 是监管信息的首个发布点，ESS 用于提交待发布文件（[HKEX ESS FAQ](https://www.hkex.com.hk/Global/Exchange/FAQ/ESS-All-FAQs/Access-to-eSubmission-System-ESS?sc_lang=en)、[HKEX 投资者 FAQ](https://www.hkex.com.hk/-/media/HKEX-Market/Listing/Rules-and-Guidance/eSubmission-System/Listed-Company-Information-Dissemination-and-Related-Trading-Arrangements/faqinv.pdf)，获取日 2026-10-23）。因此腾讯等港股的可用时点应核实际 HKEXnews 公告发布时间，不能套用美国“向 SEC 归档”的同款规则。
+> → **含义**：做长历史回测（课堂 `01:38:40`–`01:39:23` 提到长期美股研究）时，2000 年前后的"归档滞后"长度完全不同，不能用同一个假设。
 
 **⚠️ 常见误解（★ 教授反复强调）**
 ❌「财报里的日期就是可以用的日期」→ 🎙️`01:39:37`：「**Most people I see when they do stock prediction, they mismatch the day**… You cannot use [information] which [is] released in August to predict return in July.」
@@ -1076,6 +1212,8 @@ p.37 四图横轴均为 **2025Q1→2026Q1**：左上收入/净利柱的纵轴 US
 
 ### 2.7 无泄漏地造预测变量
 
+讲义 p.42 是本节标题分隔页 **“Construct Predictors without Leakage”**，不含独立公式或题目；它给 p.43–48 的预测时钟、变量公式、代码、三行手检和五种泄漏路径划定主题。以下从 p.43 的具体时钟开始。
+
 #### 2.7.1 一行数据可以装三类信息（讲义 p.41）
 
 前面几节分别讲了价格类、宏观类、财务类数据各自的时点规则；真正要拿去建模时，这些数据要合并成一张**特征表（feature table）**——一行代表"一个预测期"，列是各个预测变量加上目标收益。麻烦在于：同一行里的几列，"新鲜度"完全不同——价格几乎实时可知，财务滞后一个季度，而目标收益压根还没发生。讲义 p.41 用一行示例，列出这一行里装的五类列各自的时点规则：
@@ -1147,13 +1285,13 @@ print(momentum_4.head())
 
 **这些核对证明当前快照的计算窗口与所述公式一致，不认证历史发布时点与 vintage。** 包中没有宏观发布日期和历史版本，不能据此称所有 15 列都通过 point-in-time 验收。
 
-**所以呢**：代码写对了不代表结果对了；下一节给出唯一真正可靠的验证方式——拿三行数字出来用手核对。
+**所以呢**：代码写对了不代表结果对了；下一节给出验证窗口方向最直接的方式：拿三行数字出来用手核对；它不能代替发布时点、历史版本与样本池核查。
 
 > 📁 **代码**：[`code/L01_data/04_leakage_audit.py`](../code/L01_data/04_leakage_audit.py) —— 15 个预测变量逐列按"只用 t−1 及更早"的规则重构，最大误差 2.1e-15；同一套验算对 7 种故意做错的构造（不滞后、居中窗口、ddof=0、收益连乘……）全部报出 ≥ 1.3e-2 的误差，说明"误差为 0"不是巧合（`L01_04`）
 > 💡 原辅助图证据文件保留；本轮正文用可编辑表格与流程图解释机制。
 > 📁 每个特征的时间窗画成甘特图：[`code/L01_data/05_prediction_clock.py`](../code/L01_data/05_prediction_clock.py)（`L01_05`，图见 §2.5.4）
 
-#### 2.7.4 三行手检：唯一可靠的验证方式（讲义 p.47）★
+#### 2.7.4 三行手检：验证窗口方向的最后一道防线（讲义 p.47）★
 
 挑三个连续的预测周，**用手核对**：
 
@@ -1165,9 +1303,9 @@ print(momentum_4.head())
 
 讲义 p.45 把它写进了指令模板：「show **three consecutive rows with every source price used in the calculation**」。
 
-**⚠️ 常见误解**：❌「我看了代码，`shift(1)` 写了，所以没问题」→ 讲义的整节存在意义就是反对这一点。`shift` 的方向、`pct_change` 的期数、`rolling` 是否居中——三者任一处错，代码都照跑不误。**只有把三行数字摆出来对着价格算一遍，才能确认。**
+**⚠️ 常见误解**：❌「我看了代码，`shift(1)` 写了，所以没问题」→ 讲义的整节存在意义就是反对这一点。`shift` 的方向、`pct_change` 的期数、`rolling` 是否居中——三者任一处错，代码都照跑不误。对 `shift`、`pct_change` 和 `rolling` 的窗口方向，**把三行数字摆出来对着价格算一遍是最直接的确认**。它不能认证宏观发布日、财报 vintage 或历史成分股；那些仍要查事件时间和点时数据。
 
-**所以呢**：手工验证是最后一道防线。但如果一开始就只用自己算得出来的价量指标，是不是就能完全避开"发布滞后"的问题？下一节教授给了答案。
+**所以呢**：窗口手检是验证窗口方向的最后一道防线；发布、版本与样本池仍须另查。如果一开始就只用自己算得出来的价量指标，是不是就能完全避开"发布滞后"的问题？下一节教授给了答案。
 
 #### 2.7.4a 三行从输入窗口到最终特征（💡 笔记补充）
 
@@ -1278,7 +1416,29 @@ flowchart TD
 
 #### 2.8.2 🔴 讲义 p.25 的选择题——教授明说这是他设计的考题
 
-上一节的热力图用的是冻结不变的 30 只成分股；讲义 p.25 接着这张图出了一道单选题，考的是"如果不冻结、退市了就找新公司来替补，会出什么问题"。教授当堂明说这道题就是他为考试设计的原题：
+上一节的热力图用的是冻结不变的 30 只成分股；讲义 p.25 接着这张图出了一道单选题，考的是“如果不冻结、退市了就找新公司来替补，会出什么问题”。教授当堂明说这道题就是他为考试设计的原题。
+
+<details><summary>讲义 p.25 完整英文原题、全部选项与 Discuss</summary>
+
+**Multiple-Choice Question: What Does a Frozen Universe Protect?**
+
+A researcher starts with the July 2023 HSTECH 30 constituents. When one stock delists, it is replaced by a company that joined the index in 2025 so that every week still has 30 stocks. What is the main problem?
+
+A) Future membership information changes the historical investment universe.
+
+B) Weekly returns can no longer be computed for any surviving stock.
+
+C) The replacement automatically removes all extreme returns.
+
+D) The market index must become equally weighted.
+
+**Discuss:** What should the frozen panel record after the original constituent delists, and why?
+
+</details>
+
+中文限定词：`starts with` 固定 2023-07 起点名单，`joined in 2025` 是未来信息，`main problem` 只选最核心问题。来源地位：A 由课堂讲评确认；Discuss 的具体退市收益处理仍须按可验证来源，不能猜 0 或 −100%。
+
+中文题意与选项如下：
 
 > 一位研究者以 **2023 年 7 月**的 HSTECH 30 成分股为起点。当其中一只股票退市时，他用一家**2025 年才加入指数**的公司替补，好让每一周都还是 30 只股票。**主要问题是什么？**
 >
@@ -1291,11 +1451,13 @@ flowchart TD
 
 **✅ 正确答案：A**
 
+**English reference answer**: A is correct because 2025 membership was not known in July 2023, so the replacement changes the historical investable universe with future information. B, C, and D do not follow. After a constituent delists, keep its verified terminal return or liquidation treatment, record the exit, and leave later panel entries missing rather than replacing it with a future member. If the terminal value is unavailable, mark the result unresolved instead of inventing zero or −100%.
+
 **🔴 教授的原话（`01:27:47`）**——这是本讲可信度最高的一条：
 > 「if someone asked me **what might be the question you see in the exam, this is one of the exam questions I design.**」
 
 **教授对每个选项的讲评（`01:30:24`–`01:31:40`）**：
-- **A 对**：「**you cannot use future information to predict the historical investment universe**, because you don't know [which] stock will be added in 2025. …future information cannot be used if you want to back[]test your strategy.」IPO（initial public offering，首次公开发行上市）例子只能说明：一家公司在 2026 年才上市时，2023 年的可交易股票池不能把它作为后来才知道的成员纳入；这不表示公司在 2023 年不存在或无人知道。
+- **A 对。** 课堂 `01:29:47` 说明不能用未来信息改变历史投资范围，因为当时不知道谁会在 2025 年加入。IPO（首次公开发行上市）例子只说明 2026 年才上市的股票不能被后来塞进 2023 年可交易池；它不表示公司当时不存在或无人知道。
 - **B 错**：任何在指数里（甚至被剔除的）股票，收益都照样算得出来。
 - **C 错**：「The replacement will [not] remove extreme returns… they simply just change the stock list.」他还举了反例——2025 年涨了几十倍的股票进了 CSI 300 成分，替换恰恰会**引入**极端收益。
 - **D 错**：「**most index[es], they are [value]-weighted** — bigger companies take higher weight, smaller compan[ies] take lower weight. If you [own] Alibaba, you take 8%; [others] 0.0X%.」
@@ -1327,7 +1489,22 @@ flowchart TD
 
 #### 2.9.1 四张图，四个不同的问题（讲义 p.49）
 
-前面几节都在讲"怎么把数据做对"；这一节换个角度——数据做完之后，**用眼睛看**是发现问题最快的方法，比等模型跑完再排查要快得多。讲义 p.49 给了四种图，每种回答一个不同的问题，画错了图就等于问错了问题：
+前面几节都在讲"怎么把数据做对"。先保留讲义的完整英文四问，再用中文逐图回答。
+
+<details><summary>讲义 p.49 英文原题（四图四问，无选项）</summary>
+
+**Four Plots, Four Different Questions**
+
+1. **Price through time:** Did the download cover the intended sample? Are adjustments plausible?
+2. **Returns through time:** Are there extreme observations, gaps, or suspicious zeros?
+3. **Rolling volatility:** Does risk vary through time as expected?
+4. **Predictor versus target:** Is the relation visible, nonlinear, dominated by outliers, or simply weak?
+
+</details>
+
+中文限定词：`plausible` 是“看起来合理但仍须回源”，`rolling` 要写窗口终点，`dominated by outliers` 是少数极端点主导图形。原题没有官方答案，下文是基于本讲图的参考判断。
+
+这一节换个角度——数据做完之后，**用眼睛看**是发现问题最快的方法，比等模型跑完再排查要快得多。讲义 p.49 给了四种图，每种回答一个不同的问题，画错了图就等于问错了问题：
 
 | 图 | 它回答的问题 |
 |---|---|
@@ -1339,6 +1516,8 @@ flowchart TD
 **四问的示例判断（讲义 p.49；以本讲现有图为证，不把“图上没看到”写成统计检验）**：① 价格图先查 2006-07 至 2026-06 是否覆盖目标 240 个月，再回原始价格和公司行动核对复权；曲线平滑不等于复权正确。② 收益图上 CSI 300 的 2008 年危机月明显极端（§2.9.2），应查是否真实事件，并逐月检查缺口 / 可疑零值，而非直接删点。
 
 ③ 滚动波动率应在危机期抬高、平静期回落；若用来预测下月，窗口必须截止于预测日之前。④ 预测变量与下月收益的散点云很散（§2.9.3），肉眼看不出强关系；不能因为分箱后线略上升就断言样本外可预测。
+
+**English reference answers（逐图）**: (1) Check start/end dates and corporate-action adjustments against raw data. (2) Investigate extreme returns, calendar gaps, and suspicious zeros before deleting anything. (3) Confirm that rolling risk rises and falls over time and that its window ends before the forecast period. (4) Treat a weak or outlier-driven scatter as diagnostic evidence only; it does not establish out-of-sample predictability.
 
 > **Keep in mind（讲义 p.49）**：「Each plot answers one question. **Decide which question you are asking before you request the chart.**」
 
@@ -1359,7 +1538,15 @@ flowchart TD
 | p.51 | 三市场**回撤**曲线 | 同样的累计收益，路径可以完全不同 |
 | p.52 | 同一套预测变量配方在三个市场的不同表现 | 「Always inspect before modeling」 |
 
+**把 p.20、p.50、p.52 的独有图义补齐**
+
+- p.20 上图把三个市场 2006-07 都归一为 100，只能比较价格指数路径；下图是滞后 12 月滚动年化波动率。2008–2009 三者风险同时抬高，CSI 300 超过 50%；2015–2016 CSI 再现约 40% 高峰，2022–2023 恒生接近 40%。共同危机与各市场独有阶段都存在，不能用一个静态年化波动数替代整条风险路径。
+- p.50 左上月收益围绕 0 高频跳动，右上滞后波动率和左下滞后动量具有连续阶段；右下动量与下月收益仍像散点云。读图要横向比较“预测变量较平滑、目标很噪”，也要纵向核单位：动量和收益是百分比，波动率是年化百分比。持续的 predictor 不等于能预测噪声目标。
+- p.52 同一动量/波动配方在三市场给出不同范围与阶段：S&P 动量大致在 −40% 到 +40%，恒生约 −60% 到 +60%，CSI 300 早期动量接近 +300%；三者波动峰值时点也不同。统一代码只保证公式相同，不保证尺度、分布或模型参数可直接搬用。
+
 **🎙️ 课堂补充：几张图的解读，教授给得比讲义细得多**
+
+**先学会读箱线图**：中间的线是中位数。箱体下边是第一四分位数 $Q_1$，上边是第三四分位数 $Q_3$，覆盖中间 50% 的月份；四分位距为 $IQR=Q_3-Q_1$。常见默认画法先设下围栏 $Q_1-1.5IQR$ 和上围栏 $Q_3+1.5IQR$，再把两根“须”画到围栏范围内最远的实际观测，范围外的点单独标为离群点。讲义只给成图、没有保存绘图参数；这里说明的是常见默认读法，精确须端点仍须查生成代码，不能冒充课件设置已核。离群点先回查事件与数据，不能自动删除。
 
 **① 箱线图（p.21，转录 `01:19:11`–`01:20:33`）**
 > 「there are a lot of outliers for the CSI 300… you have like one, two, three, four, five **20% drop[s] in one month**… The S&P 500, it is more stable, most of them from **negative 10% to 10% per month**.」
@@ -1368,6 +1555,8 @@ flowchart TD
 **② 回撤（p.51，转录 `02:09:27`–`02:11:22`）**——他先讲了个笑话再讲概念：
 > 「my wife would look at my account… **she never asked me how much I [make]. She only asked me how much I lose.** …So she [cares] about **drawdown**.」
 > 「the CSI 300 lose more than 70%… **about 70% in 2007–2008**… for [2015] they lose like 60%… The S&P 500 during the financial crisis, they lose about **50%**, but they come back… **most of the time the drawdown is about zero**, which means that [in] the past 12 months they don't lose any money.」
+>
+> **就地纠正课堂口述**：按本篇 $D_t=V_t/H_t-1$ 的 running-peak 定义，`drawdown = 0` 只表示当前净值回到截至当时的历史峰值；它不能推出过去 12 个月每一期都没亏钱，也不能推出任意 12 个月区间收益非负。保留原话是为了忠实记录，计算与答题按严格定义。
 
 **💡 实测核对（笔记补充）**：用课程数据算最大回撤 → **CSI 300 −70.8%（2008-10）、恒生 −59.1%（2009-02）、S&P 500 −52.6%（2009-02）**（`L01_02`）。教授口述的数字与数据完全对得上。
 
@@ -1398,6 +1587,20 @@ flowchart TD
 
 **⚠️ 常见误解**：❌「散点图看着有点趋势，说明变量有用」→ 讲义 p.53 虽写“Ask four questions”，实际列了**五个**反问：**哪几个观测在驱动这条趋势？单位和年化对不对？滚动统计量有没有偷看未来？散点该用原始值、排序值还是缩尾值？结论有没有说清尺度、基准和预测期限？**
 
+<details><summary>讲义 p.53 英文原题（标题写 four，实际五问；无选项）</summary>
+
+**Read an Explanation against the Evidence**
+
+1. Which observations drive the axes and apparent pattern?
+2. Are the units and annualization correct?
+3. Did the rolling statistic use only past and current data?
+4. Should the scatter use raw, ranked, or winsorized variables?
+5. Does the conclusion identify a scale, benchmark, and forecast horizon?
+
+</details>
+
+中文题意：逐项核观测、单位/年化、窗口时点、变量表示和结论范围。讲义没有给待批改的具体解释或官方答案，以下是参考判断标准。
+
 **讲义 p.53 实为五个核对问句，逐问给判断标准**（⚪ 笔记参考解读；讲义没有提供一份待批改的具体解释文本）：
 
 1. **哪些观测在驱动图形？** 标出极端月及样本两端，例如课程 SPY 的 2008-10、2020-03 / 04（`code/L01_data/check_exercises.py`）；比较有 / 无这些点的散点和斜率，不能看见危机点就自动删掉。
@@ -1406,39 +1609,57 @@ flowchart TD
 4. **原始、排序还是缩尾变量？** 先用未加工点诊断，再只在开发 / 验证期比较预先说明的排序或缩尾规则，报告改变了哪些极端点与斜率；不因测试图不好看才换表示法。
 5. **结论有尺度、基准、期限吗？** 完整表述应指明“用截至上月底的信号预测下月 SPY 收益；图上关系弱；后续样本外成绩相对滞后 MA(12) 评价”，不能只写“散点略向上，所以值得投资”。
 
+**English reference answers（五问）**: Identify influential observations and axis ranges; verify units and annualization; reconstruct one rolling window to exclude future data; compare raw/ranked/winsorized representations only under a predeclared development rule; and state the scale, benchmark, and forecast horizon in the conclusion. The slide supplies questions, not an official worked answer.
+
 **所以呢**：用图诊断数据讲完了，本讲关于"怎么正确处理数据"的内容也讲完了。接下来两节看两个课上完全没讲、但仍要掌握的案例——先是一个具体的多空组合案例。
 
-> 📁 **代码**：[`code/L02_regression/03_r2_scale.py`](../code/L02_regression/03_r2_scale.py) —— 左图是真实的 SPY 月收益 vs 滞后 12 月波动率（240 个月，R² = 1.01%），右图用同一个 x 合成一个 R² = 50% 的关系，同样点数、同样坐标：R² = 1% 时拟合值的波动只有噪声的 0.10 倍，肉眼确实看不出斜率（`L02_03`）
+> 📁 **计算与图源**：当前纵向 SVG 的可编辑脚本是 [r2-scale.py](figures/readability-v2/r2-scale.py)，计算链另见 [`code/L02_regression/03_r2_scale.py`](../code/L02_regression/03_r2_scale.py)。图的排布为上、下两幅： 上图是真实的 SPY 月收益 vs 滞后 12 月波动率（240 个月，R² = 1.01%），下图用同一个 x 合成一个 R² = 50% 的关系，同样点数、同样坐标：R² = 1% 时拟合值的波动只有噪声的 0.10 倍，肉眼确实看不出斜率（`L02_03`）
 **同尺度散点图要回答的问题**：输入和坐标不变时，样本内关系强弱会怎样改变散点的外观？
 
 ![[EF5560_Fintech_and_AI_in_Finance/notes/figures/readability-v2/r2-scale.svg]]
 
-横轴是滞后 12 月年化波动率，小数 0.20 表示 20%。纵轴是月对数收益的百分数表示；每点对应一个月，红线为样本内 OLS 拟合线，即选择一条使训练样本竖直残差平方和最小的直线。本图没有流程箭头。
+横轴是滞后 12 月年化波动率。散点图每个点是一对“输入 x、结果 y”；自相关则比较同一收益序列与自身滞后值，问过去收益和后来收益是否一起变化。非线性表示关系不是一条直线，OLS 直线可能看不见它。样本内只描述用于拟合的这些点；样本外是在冻结规则后用新时期检验。
+
+横轴具体是滞后 12 月年化波动率，小数 0.20 表示 20%。纵轴是月对数收益的百分数表示；每点对应一个月，红线为样本内 OLS 拟合线，即选择一条使训练样本竖直残差平方和最小的直线。本图没有流程箭头。
 
 **走一个点的读法**：先在横轴找到 0.20，再向上读红线的高度，这是该输入下的拟合收益。附近散点高于或低于红线的垂直距离，表示实际值与拟合值的误差。
 
-向右看合成图：同一个输入位置的拟合趋势更陡，散点相对拟合线更集中。右图由 seed 5560 的教学构造形成，保持左图目标的均值与标准差；它不是第二份真实金融样本。
+向下看合成图：同一个输入位置的拟合趋势更陡，散点相对拟合线更集中。下图由 seed 5560 的教学构造形成，保持上图目标的均值与标准差；它不是第二份真实金融样本。
 
-**边界与文字替代**：左图使用 2006-07 至 2026-06 的全部 240 月，样本内 $R^2$ 约 1.01%；右图构造为 50%。图只解释同尺度下关系强弱的外观，不能推导样本外表现、因果或投资价值，也不设“金融 1% 即好”的通用门槛。
+**边界与文字替代**：上图使用 2006-07 至 2026-06 的全部 240 月，样本内 $R^2$ 约 1.01%；下图构造为 50%。图只解释同尺度下关系强弱的外观，不能推导样本外表现、因果或投资价值，也不设“金融 1% 即好”的通用门槛。
 
-**读图自测**：如果把左图的样本内 $R^2$ 提到 2%，能直接说策略赚钱吗？不能，还需独立测试、交易规则、成本与风险证据。可编辑图源为 `notes/figures/readability-v2/r2-scale.py`，输入与计算结果记录在同目录 JSON。
+**读图自测**：如果把上图的样本内 $R^2$ 提到 2%，能直接说策略赚钱吗？不能，还需独立测试、交易规则、成本与风险证据。可编辑图源为 `notes/figures/readability-v2/r2-scale.py`，输入与计算结果记录在同目录 JSON。
 
 
 ---
 
-### 2.10 ⏭️ 课上完全略过：PDD-JD 相对价值交易（讲义 p.8、11、15、16）
+### 2.10 PDD-JD 相对价值交易（讲义 p.8、11、15、16）
 
-**判断依据**：对转录全文检索 `PDD`、`JD`、`Pinduoduo`、`Temu`、`food delivery`、`long-short`、`dollar neutral`、`pair`，**命中数全部为 0**。这 4 页讲义是准备了但整段跳过的。**复习优先级可以降低，但概念本身在 M05（从预测到组合）会重新用到，所以仍需知道。**
+**❓ 材料边界**：现有转录没有可确认的 PDD-JD 对应段。关键词 0 命中可能来自未录到、ASR 漏词或课堂没有逐页讲解，不能证明明确跳过。以下按讲义完整自学，不据此降低优先级；多空组合概念还会用于 M05。
 
 #### 2.10.1 案例设定（讲义 p.8）
 
-本节开始的三个小节，讲的是课上完全跳过的一个案例（判断依据见上方说明）。讲义用两家中国电商公司做了一个"押注谁更强"的具体例子：拼多多母公司 PDD Holdings 和京东 JD.com。两家公司当时都面临同一个变量——外卖业务——但处境不同：
+本节开始的三个小节按讲义展开一个课堂对应状态未知的案例。讲义用两家中国电商公司做了一个"押注谁更强"的具体例子：拼多多母公司 PDD Holdings 和京东 JD.com。两家公司当时都面临同一个变量——外卖业务——但处境不同：
 
 | PDD Holdings（PDD） | JD.com（JD） |
 |---|---|
 | 旗下平台是拼多多和 Temu。投资论点把 PDD 视作**不在外卖竞争之内** | JD 于 **2025 年 2 月**正式上线外卖业务。新业务带来投资与执行风险，但也可能提升客流与交叉销售 |
 
-> **The question（讲义 p.8）**：如果投资者把新增的外卖敞口更多地计入 JD 的定价，**一个美元中性的"做多 PDD / 做空 JD"头寸能否受益？**
+<details><summary>讲义 p.8 英文原题与必要情境（无选项）</summary>
+
+**PDD-JD: A Relative-Value Trade**
+
+PDD Holdings' reported platforms are Pinduoduo and Temu. The investment thesis treats PDD as outside the food-delivery competition. JD.com officially launched Food Delivery in February 2025. The new business adds investment and execution risk, but could also raise customer traffic and cross-selling.
+
+**The question:** Can a dollar-neutral long PDD / short JD position benefit if investors price the new food-delivery exposure more heavily into JD?
+
+</details>
+
+中文限定词：`dollar-neutral` 是多空名义金额相等，`benefit if` 是条件性问题，不保证盈利或因果。讲义无官方答案；下文给中英参考答案和算术条件。
+
+> **中文题意（讲义 p.8）**：如果投资者把新增的外卖敞口更多地计入 JD 的定价，一个美元中性的“做多 PDD / 做空 JD”头寸能否受益？
+>
+> **English reference answer（⚪ 笔记推断）**: It may benefit only if PDD outperforms JD by more than trading and shorting costs over the holding period. Dollar neutrality does not remove every shared risk, and the historical comparison does not prove that food delivery caused the return spread.
 
 **直接回答（⚪ 依据讲义案例的条件性结论）**：**可能受益，但不是“京东跌就一定赚”。** 等额美元头寸的下一周收益为 $0.5r_{\rm PDD}-0.5r_{\rm JD}$；只有当 PDD 的收益**高于** JD（扣交易成本和做空成本后仍高）才盈利。即使两股都上涨，只要 PDD 涨得更多也能赚；两股都下跌时也同理。讲义给出的历史回报只能演示这种相对收益的算术，不能证明“外卖业务导致了价差”或未来继续有效，因为样本窗口从 JD 上线外卖**之前**就开始（p.16）。
 > **Keep in mind**：「**The position direction comes from a business hypothesis, not a price z-score.** Historical data must test the hypothesis.」
@@ -1446,6 +1667,8 @@ flowchart TD
 **所以呢**：设定讲完了，下一节看这个"押注谁更强"的想法具体怎么变成一个可以计算收益的组合。
 
 #### 2.10.2 多空组合怎么算（讲义 p.15）
+
+**做空（short selling）**先借入 JD 股票并卖出，以后买回归还；价格下跌时买回更便宜，空头盈利，价格上涨时空头亏损。因此公式里的负权重不是随意的减号，而是“JD 上涨会拖累组合、JD 下跌会帮助组合”。
 
 只做多 PDD，你没法知道赚的钱是因为"PDD 真的比 JD 强"，还是单纯因为"中国电商这几年整体在涨"——要把后一种共同因素剔除，就得同时做空等额美元的 JD：净美元敞口为 0，但两股对共同因素的敏感度可能不同，不能保证大盘风险被完全剔除。
 
@@ -1527,6 +1750,8 @@ beta 是对市场变动的敏感度；假设 PDD beta 1.4、JD 0.8，净 beta �
 
 #### 2.10.3 历史结果（讲义 p.11、16）
 
+讲义 p.11 不只给终点。两条线都从 2023-06-30 的 100 开始：PDD 在 2024 年多次冲到约 200–225，随后大幅回落再反弹；JD 先跌到约 65–80，2024 年末短暂冲到约 140，之后又走低。相对路径多次改变，不能把起终点差解释成稳定价差。原页明确这是 closing-price comparison，不含股利等 total-return 成分。
+
 本案例的终点收益须与归一化起点、期间数和成本假设一起读；下表报讲义原结果，随后解释路径风险。
 
 | | 数字 |
@@ -1542,20 +1767,38 @@ beta 是对市场变动的敏感度；假设 PDD beta 1.4、JD 0.8，净 beta �
 
 讲义只报了终点，没报路径——这恰好是 §2.9.2 讲的"回撤才是客户真正经历的东西"。**做作业报告业绩时，只给累计收益是不合格的。**
 
-**所以呢**：这个案例课上虽然跳过了，但"多空组合""美元中性""只看终点不看路径"这几个概念，在 M05（从预测到组合）会重新出现。
+**所以呢**：这个案例把多空组合、美元中性与收益路径合在一起；这些概念在 M05（从预测到组合）会重新出现，课堂覆盖未知不影响本节的自学要求。
 
 > 📁 **代码**：[`code/L01_data/03_drawdown.py`](../code/L01_data/03_drawdown.py) —— 跑一遍即可复现本节全部数字：终点 +20.62%（断言 = 讲义 p.16）、归一化终值 110.7 / 74.4（= 讲义 p.11）、最大回撤 −38.66% 与发生日期（`L01_03`）
 > 💡 原辅助图证据文件保留；本轮正文用可编辑表格与流程图解释机制。
 
 ---
 
-### 2.11 ⏭️ 课上未执行的现场工作坊与失败诊断表（讲义 p.54–55）
+### 2.11 现场工作坊与失败诊断表（讲义 p.54–55）
 
-> 这两页在课上**没有执行**——教授把 p.54 的现场工作坊改成"课后自己练"（🎙️`02:13:16`）。但按本库的预习规则，**课上略过恰恰意味着这两页只能靠笔记学**，而 p.55 那张表是你做 ML 作业、自己 vibe coding 时最先用到的东西。
+> p.54 的工作坊可按收尾布置转为课后尝试（🎙️ `02:13:16` 后让学生自行找股票、下载和画图）；p.55 的失败诊断表没有可核的逐页课堂对应。这两种状态分开记录，均不降低自学要求。后者可帮助定位自己运行代码时遇到的失败。
 
 #### 2.11.1 现场工作坊：三道自练题（讲义 p.54）
 
-讲义原设计是**全班选一道题，教授现场贴 prompt、跑一遍、一起看证据**。三道题各对应本讲前面的一节，题面按讲义原文：
+讲义原设计是**全班从三项中选一道**，教授现场贴 prompt、跑一遍、一起看证据；原页第 3 项后悬空 `or` 是版式缺口，不能据此编出第 4 项，也不能写成三题都要求现场运行。
+
+<details><summary>讲义 p.54 英文原题（三选一；无选项字母）</summary>
+
+**Live Prompt Workshop: Change One Element**
+
+The class chooses one task for a live run:
+
+1. compare the weekly returns of two HSTECH 30 constituents while retaining the same 156 forecast weeks;
+2. add one FRED series to the 240-month macro calendar and state its release-time problem;
+3. construct one additional price-based predictor from the AAPL weekly series; or
+
+Keep in mind: First agree on the sample, variable definition, dates, and checks. I then paste the prompt, run it, and we inspect the evidence together. You do not need to type Python in class.
+
+</details>
+
+中文限定词：`chooses one task` 是三选一，`same 156 forecast weeks` 要保持同一预测周，新增 FRED 序列必须说明发布时点。原件无官方结果；任务 1/2 需要指定股票/序列并实际运行，以下只给可执行 prompt、验收条件和条件性答案，不编造现场输出。
+
+三道题各对应本讲前面的一节：
 
 | # | 题目（讲义 p.54） | 练的是哪一节 | 做的时候要卡住什么 |
 |---|---|---|---|
@@ -1563,7 +1806,17 @@ beta 是对市场变动的敏感度；假设 PDD beta 1.4、JD 0.8，净 beta �
 | 2 | 往 240 个月的宏观日历里**加一条 FRED 序列**，并**说明它的发布时间问题** | §2.6.1（参考月 ≠ 发布日） | 写清这条序列的参考期、发布滞后、是否有修订；月度序列不能前填成"实时预测变量" |
 | 3 | 从 AAPL 周频序列里**再造一个基于价格的预测变量** | §2.7.2（三个周频预测变量）、§2.7.5（🎙️ 自己造技术指标） | 只能用 `t` 及之前的价格；造完用 §2.7.4 的三行手检验一次 |
 
-**选第 3 题：新增 2 周动量的可复算参考解**（⚪ 笔记补充，参数变式；不是教授现场产物）。已讲的 4 周动量不是新指标，这里改为 $m_{2,t}=P_{t-1}/P_{t-3}-1$。一行仍按目标周标注，所用源价都早于目标结束。
+**English reference answer (Task 1, conditional)**: The comparison is valid only after selecting two historical constituents, freezing the July-2023 universe, aligning adjusted Friday prices to the same 156 forecast weeks, and hand-checking sample returns. No unique numeric answer exists until the two tickers are specified.
+
+**任务 1 可执行 prompt（未运行）**：`Using the frozen July-2023 HSTECH 30 universe, choose [ticker A] and [ticker B], build adjusted Friday prices and simple weekly returns for the same 156 forecast weeks, print first/last dates, row counts, missing weeks, and three hand-checked returns.` 条件性答案：只有冻结名单、复权口径、共同周历和三行复算都通过，才可比较；缺具体两只股票时没有唯一数值答案。
+
+**English reference answer (Task 2, conditional)**: Preserve the 240-month calendar and missing values, but attach the selected FRED series only after its actual release time and historical vintage are known. The required lag depends on the chosen series, so no unique lag can be stated before the series ID and release calendar are specified.
+
+**任务 2 可执行 prompt（未运行）**：`Add [FRED series ID] to the 2006-07–2026-06 240-month calendar. Preserve missing months; return the observation frequency, aggregation rule, release calendar/vintage requirement, and the first forecast month when each value is usable.` 条件性答案：具体 lag 取决于所选序列的实际发布时间与修订规则；未指定 series ID 时不能给唯一 lag。
+
+**English reference answer (Task 3)**: Define two-week momentum for forecast week t as P(t-1)/P(t-3)-1, so every source price is known before the target week ends. Print three rows with both source dates and recompute them by hand.
+
+**任务 3 中英参考答案：新增 2 周动量的可复算示例**（⚪ 笔记补充，参数变式；不是教授现场产物）。已讲的 4 周动量不是新指标，这里改为 $m_{2,t}=P_{t-1}/P_{t-3}-1$。一行仍按目标周标注，所用源价都早于目标结束。
 
 | 目标周 | 最新已知价（源日） | 更早价（源日） | 2 周动量 |
 |---|---:|---:|---:|
@@ -1593,6 +1846,13 @@ beta 是对市场变动的敏感度；假设 PDD beta 1.4、JD 0.8，净 beta �
 | **Date 日期** | 首尾两个索引值**和它们的类型** | 日期还是没解析的字符串，或两套日历被拼到了一起 |
 | **Type 类型** | `df.dtypes` | 数值列以文本形式到达，算术运算被静默阻断 |
 | **Logic 逻辑** | 出错那一行**之前**的那个对象 | **代码跑通了，但算的不是你要的东西** |
+
+**正常/异常输出的最小样子**
+
+- df.columns 正常可为 Close / Volume；若出现多个 ticker 层级，先确认多级列。
+- 日期 index 应像 2026-06-01 且类型为 datetime；若仍是字符串，不能可靠排序。
+- 价格 dtype 应是 float64 等数值类型；若是 object，先查逗号或文字。
+- 空 DataFrame 会显示 0 行，不能继续计算。方法链每一步都应保留可打印的中间对象。
 
 **讲义 p.55 的收尾句**：「**Change one input, rerun from the top, and record the fix.** The task is to diagnose the evidence, not to guess Python syntax.」——每次只改**一个**输入、从头重跑、把修复记下来；任务是诊断证据，不是猜 Python 语法。
 
@@ -1627,6 +1887,19 @@ Vibe 六步循环的停止条件是已预先写下的单位/日期/行数/关键
 2. 把交易日、宏观发布日、财报归档日**分开记**；用手核对一个 lead 或 lag
 3. **在拟合模型之前，先用图诊断数据**
 
+<details><summary>讲义 p.56 英文原题（四问，无选项）</summary>
+
+**Whole-Class Check: Four Questions**
+
+1. What does one row represent, and which date belongs to the predictor and target?
+2. Are the prices adjusted, and how was that choice verified?
+3. Does each macro or accounting value use its release or filing date?
+4. Can the code regenerate the table and plot from a clean environment?
+
+</details>
+
+中文限定词：一行的粒度、输入/目标日期、复权证据、真实公开时点和从空环境复现。讲义无官方答案，以下为本库数据的条件性参考作答。
+
 **讲义 p.56 的四个自查问题**（现场检查表，可直接用于作业）
 1. 一行代表什么？哪个日期属于预测变量、哪个属于目标？
 2. 价格是复权的吗？这个选择是怎么验证的？
@@ -1637,8 +1910,10 @@ Vibe 六步循环的停止条件是已预先写下的单位/日期/行数/关键
 
 ③ `macro_240m.csv` 的月份标签是参考期，不是发布日；文件不含逐条实际发布日期或财报归档日，故**不能凭这张表证明所有宏观 / 会计值当时可用**，应补发布日历 / 原始归档日再核。④ “能否从干净环境重跑”需要在新环境实际安装依赖、运行代码并比对输出行数、日期、图和关键数字；存在脚本并不等于已完成这个独立验证，课堂现场产物缺失时结论应写“尚未验证”。
 
+**English reference answers（四问）**: One row must have a declared grain and separate predictor/target dates. Adjusted prices require a named vendor convention plus sample checks against raw prices and corporate actions. Macro/accounting values require actual release/filing publication times before the cutoff. Reproducibility requires a fresh environment to rerun the code and match row counts, dates, tables, and plots; the existence of a script alone is insufficient.
+
 **🎙️ 教授版的收尾（`02:12:27`–`02:13:41`）**——重点完全不同：
-> 「**Develop a sense for numbers. That's the top priority thing I want [you] to learn from the course.** …**This is not the course to teach you which model is most powerful, because my answer [is] that most of them are garbage** when [applied to] stock return prediction tests.
+> 「**Develop a sense for numbers. That's the top priority [thing] I want [you] to learn from the course.** …**This is not the course to teach you which model is most powerful, because my answer [is] that most of them are garbage** when [applied to] stock return prediction tests.
 > So it is hard to find [something] useful, but **it is important to remember some historical events and what [happened]**… all those [events] cannot be picked up by machine learning. Machine learning statistical models, **they cannot [predict a] financial crisis**.」
 
 **🎙️ 第一周的"作业"（`02:13:16`）**——不计分，但教授明说了：
@@ -1688,8 +1963,8 @@ flowchart TD
 ```mermaid
 flowchart TD
     A["经济事件<br/>2025 Q1 的经营"] -->|"财季结束"| B["2025-03-31<br/>文件上的日期"]
-    B -->|"公司编报"| C["2025-05-02<br/>10-Q 归档日"]
-    C -->|"可用于预测"| D["2025-05-02 起<br/>预测变量取值"]
+    B -->|"公司编报"| C["2025-05-02<br/>示例归档日"]
+    C -->|"与决策 cutoff 比较"| D["实际公开后首个合法决策<br/>预测变量才取值"]
     B -.->|"🎙️ 参考期加 3 个月近似"| E["2025-06 月末<br/>仍须核实际公开时间与历史版本"]
     B -.->|"❌ 常见错误"| F["按 2025-03-31 匹配<br/>= 数据泄漏"]
     style F fill:#fdd,stroke:#c00
@@ -1774,16 +2049,16 @@ flowchart TD
 | 冻结样本池 | Frozen universe | Fixing the index membership as of a historical date so that later membership changes cannot enter the historical sample. | §2.8 |
 | 时点数据 | Point-in-time data | Data recorded as it stood on each date, rather than the currently revised series. | §2.5.4 |
 | 参考期 | Reference period / observation month | The period a statistic describes — not the day investors could see it. | §2.5.4 |
-| 发布日 / 归档日 | Release date / Filing date | The date a value became public, or the date a 10-Q / 10-K was filed with the regulator. | §2.6.3 |
+| 发布日 / 归档日 | Release date / Filing date | The actual public timestamp: US 10-Q/10-K filing uses SEC records; Hong Kong listed-company announcements use HKEX ESS/HKEXnews publication rather than an assumed SFC-equivalent filing. | §2.6.3 |
 | 数据修订 / 实时版本 | Revision / Vintage (ALFRED) | A current download may contain revised history rather than the vintage seen in real time. | §2.6.1 |
-| 复权收盘价 | Adjusted close | A price series adjusted for splits and dividends to place prices on a comparable economic basis. | §2.3.2 |
+| 复权收盘价 | Adjusted close | A vendor-adjusted series for splits and dividends; cash dividends can offset part of an ex-dividend price fall, but do not guarantee a positive total return. | §2.3.2 |
 | 拆股 | Stock split | A split changes the quoted price without creating an investor loss. | §2.3.2 |
 | 简单收益 | Simple return | `r_t = P_t / P_{t−1} − 1` | §2.3.1 |
 | 对数收益 | Log return | `r_t = ln(P_t / P_{t−1})` | §2.3.1 |
 | 波动率（年化） | Annualized volatility | Standard deviation of returns scaled by the square root of the number of periods per year. | §2.3.4 |
 | 回撤 / 最大回撤 | Drawdown / Maximum drawdown | The cumulative loss from the running peak; the part a client actually lives through. | §2.9.2 |
 | 基准 | Benchmark | The reference return a strategy must beat before its performance means anything. | §2.3.3 |
-| 期限利差 | Term spread | Long-term yield minus short-term rate; a negative spread is read as a recession signal. | §2.9.2 |
+| 期限利差 | Term spread | Long-term yield minus short-term rate; a negative spread is often treated as a risk warning, not a guarantee of recession. | §2.9.2 |
 | 市值加权 | Capitalization-weighted | Bigger companies take higher weight in the index. | §2.8.2 |
 | 动量 | Momentum | `P_{t−1}/P_{t−k−1} − 1`, the cumulative price change known before the forecast period. | §2.7.2 |
 | 均线偏离 | Moving-average gap | `P_{t−1} / mean(P_{t−k..t−1}) − 1`, distance from the recent trend. | §2.7.2 |
@@ -1793,7 +2068,7 @@ flowchart TD
 | 多空组合 / 美元中性 | Long-short / Dollar-neutral | Equal dollar weights long and short, so the net dollar exposure is zero. | §2.10.2 |
 | 相对价值交易 | Relative-value trade | A position whose payoff depends on the relative performance of two related assets. | §2.10.1 |
 | 再平衡 | Rebalance | Resetting portfolio weights to their targets each period. | §2.10.2 |
-| 市场有效性 | Market efficiency | All information up to today is already incorporated into the price. | §2.9.3 |
+| 市场有效性 | Market efficiency | The market-efficiency hypothesis says available information is incorporated into prices; it is a testable hypothesis, not a fact proved by one scatter plot. | §2.9.3 |
 | 随机游走 / 鞅 | Random walk / Martingale | A martingale has conditional expected next value equal to its current value; a random walk adds assumptions about increments. This is a model distinction, not a proven property of every asset. | §2.9.3 |
 | 反转 | Reversal | The slight negative autocorrelation found in realized returns. | §2.9.3 |
 | 另类数据 | Alternative data | Non-public datasets bought by investors to obtain information beyond public sources. | §2.7.5 |
@@ -1807,36 +2082,27 @@ flowchart TD
 
 | 级别 | 含义 |
 |---|---|
-| 🔴 教授明示 | 转录里教授明确说会考 / 要记 —— **引用原话** |
-| 🟡 ILO 反推 | 对应 syllabus ILO / 官方 CILO，官方口径上必须考核 |
-| ⚪ 笔记推断 | 我根据内容重要性与同类课程惯例的判断 |
+| 🔴 教授明示 | 转录中直接出现考试、题型、优先级或明确要求，并保留可核英文原话与原始时间戳 |
+| 🟡 ILO 反推 | 对应 syllabus ILO / 官方 CILO，但教授没有在本段直接明示会考 |
+| ⚪ 笔记推断 | 根据内容重要性、数据或题型作出的笔记判断 |
 
 ### 6.2 考点清单
 
-| 可信度 | 考点 | 依据 | 对应小节 |
+| 可信度 | 考点 | 直接证据 | 对应小节 |
 |---|---|---|---|
-| 🔴🔴 | **冻结样本池 / 前视偏差的选择题**（讲义 p.25 原题） | 🎙️`01:27:47`「**this is one of the exam questions I design**」 | §2.8.2 |
-| 🔴 | 见下方「🔴 · 考点」 | 🎙️`01:15:10`–`01:15:42`「there's no coding test… in CityU we are only allowed to give **60% for multiple[-choice] questions**… I'll also give you some **simple calculation question** for the investment part or some **short question** for the fintech part… I want you to tell me the **business model** for the company」 | 全篇 |
-| 🔴 | **何时该用哪个模型**（不是模型推导） | 🎙️`04:24`「I'm the one trying to teach you **when to use those model[s]**… **And of course you will see this in the exam.** …But I will not [ask] you technical hardcore statistic[al] methods」 | M02–M04 |
-| 🔴 | **数感**：给一个数字判断合不合理 | 🎙️`02:12:27`「Develop a sense for numbers. **That's the top priority**」；`01:18:35`「understanding of numbers… **what kind of product [returns] we expect**」 | §2.3.4、§4.4 |
-| 🔴 | **参考期 vs 发布日 / 归档日** | 🎙️`02:00:05`「the mistake I see **99.9%** [is] missing the date」；`01:39:37`「Most people… **they mismatch the day**」 | §2.5.4、§2.6 |
-| 🟡 | 定义一个金融数据任务的六项规格 | syllabus ILO 1「organize, visualize, and **check the timing** of financial data」 | §2.2.3 |
-| 🟡 | 复权 vs 未复权、拆股对收益的影响（讲义 p.22 是**课堂讨论题**） | ILO 1；讲义明标 "Class discussion" | §2.3.2 |
-| 🟡 | 五种泄漏路径 | ILO 1 的 "check the timing"；讲义整节 | §2.5.3 |
-| ⚪ | 收益率两种口径的区别与各自用途 | 数据集里两种口径并存，且讲义只给了一种 | §2.3.1 |
-| ⚪ | 期限利差为什么会转负、代表什么 | 讲义只画图不解释，全靠课堂；且是宏观常识题的常见形式 | §2.9.2 |
-| ⚪ | 多空 / 美元中性组合的收益公式 | 讲义 p.15 给了公式，虽课上略过，但 M05 会用 | §2.10.2 |
-| ⚪ | Vibe Coding 的风险与控制（权限、留痕） | 课堂强调三次，但不在任何书面 ILO 里 | §2.2.4 |
+| 🔴 | 何时使用模型，而非硬核统计推导 | *"I'm the one [who is] trying to teach you when to use those model[s]… And of course you will see this in the exam."*（`04:24`） | M02–M04 |
+| 🔴（M01 当堂历史；后续已更新） | M01 当堂只说手写考试与小抄待定，后续规则见表后行政更新 | *"Handwritten exam… I might allow you [to bring] one page for [a] hand written cheat sheet… I will tell you later."*（`10:20`） | §9.5 |
+| 🔴 | 无编码题 | *"First of all[,] there's no coding test… Coding is not [a] [part] [of] my course at all."*（`01:15:10`） | 全篇 |
+| 🔴 | MCQ 上限 60%，另有投资计算与 FinTech 简答 | *"In CTU, we are only allowed to give 60% for multiple questions."*（`01:15:22`）；*"I'll also give you some simple calculation question[s] for the investment part or some… short question[s] for the fintech part."*（`01:15:42`） | 全篇 |
+| 🔴 | 冻结样本池选择题 | *"This is one of the exam questions I design."*（`01:27:47`） | §2.8.2 |
+| 🔴 | 预测变量最常见错误是日期错配 | *"The mistake I see… 99.9%… that's missing the date."*（`02:00:05`） | §2.5–§2.7 |
+| 🔴 | 培养数感是最高优先级 | *"Develop a sense for numbers. That's the top priority [thing] I want [you] to learn from the course."*（`02:12:27`） | §2.3.4、§4.4 |
+| 🟡 | 六项数据规格、复权口径、五种泄漏路径 | syllabus ILO 1 与讲义题面 | §2.2–§2.5 |
+| ⚪ | 对数/简单收益、期限利差、多空组合 | 讲义和数据的教学价值推断 | §2.3、§2.9、§2.10 |
 
-**🔴 · 考点**
+**行政更新（后续课堂，不是 M01 当堂已定）**：M01 当堂只说手写考试与小抄待定；后续 M03 `02:53`–`03:17` 确认一张 A4、双面手写，内容不限，不许打印或用 iPad；最终执行仍以 Canvas 为准。
 
-**考试形式**：无编码题。
-
-MCQ 占上限 60%。
-
-ML 部分给简单计算题。
-
-FinTech 部分给简答题，问公司的商业模式
+红级只保留上表中可直接回源的明示；合理推断不升级为教授明示。
 
 ### 6.3 答题框架
 
@@ -1851,10 +2117,11 @@ FinTech 部分给简答题，问公司的商业模式
 
 **框架 B · "给你一个数字，判断合不合理"**
 
-1. 先明确年化口径：算术平均乘 52/12；路径增长用 $\prod(1+r)^{h/n}-1$；同口径收益波动在适用条件下乘 $\sqrt h$，三者不混用
-2. 对照 §4.4 的量级表
-3. 若明显偏高 → **第一嫌疑永远是数据泄漏**（🎙️「if you see very good prediction, then you must [be] us[ing] future information」）
-4. 若明显偏低 → 检查口径（是不是把对数当简单、是不是漏了股息）
+1. 先确认它是什么量：收益、波动、回撤、Sharpe，还是预测 $R^2$；不同单位的百分数不互相比大小。
+2. 投资业绩只与同口径的长期年化收益、波动、回撤、杠杆和成本比较；算术平均乘 52/12、路径增长用 $\prod(1+r)^{h/n}-1$、波动在适用条件下乘 $\sqrt h$。
+3. 模型预测力另与基准误差和样本外 $R^2$ 比较；$R^2=1\%$ 不是收益 1%。
+4. 若同类指标明显偏高 → 优先排查数据泄漏，但数值偏高本身不能证明泄漏（🎙️「if you see very good prediction, then you must [be] us[ing] future information」）
+5. 若明显偏低 → 检查口径（是不是把对数当简单、是不是漏了股息）
 
 **框架 C · "简答：这家 FinTech 公司的商业模式"（第二板块的题型）**
 
@@ -1883,8 +2150,12 @@ FinTech 部分给简答题，问公司的商业模式
 
 因为它远超任何合理的量级参照：
 
-- **S&P 500 长期年化 ≈ 8%**（🎙️`49:53`），一个世纪的美国股市就这个水平
-- **股票收益预测的 R² 平均只有约 1%**（🎙️`01:44:05`）；教授将 R² 到 2–3% 视为潜在优势，不能单凭 R² 保证可交易盈利
+- **S&P 500 长期年化约 8%**（课堂百年经验量级，未说明股息口径）；
+- **本讲恒生价格指数 2006-07 至 2026-06 的 CAGR 约 1.511%/年**（不含股息，239 个间隔）。
+
+两者都是年化收益参照，但期间不同，课堂股息口径未说明，不能直接排名市场优劣。50% 连续多年明显高于这两组同单位参照，应查杠杆、回撤、成本、样本期和泄漏。
+
+$R^2$ 约 1% 属于另一类“预测误差改善”尺度，只能用来检查模型预测力，不能与年化收益直接比较。
 
 教授的两句原话可以直接引用：
 - 「if those people can make 50 a year for multiple years, **they will not be your friend. They will disappear very, very soon**」（`51:45`）
@@ -1915,10 +2186,10 @@ FinTech 部分给简答题，问公司的商业模式
 
 **为什么不报错**：语法完全合法，维度也对得上。这正是讲义 p.47 说的 **Common failure**——「An AI assistant may produce **syntactically valid code with the target shifted in the wrong direction**」，以及 p.55 的第 6 类失败「**Logic: it runs, but computes something you did not specify**」。
 
-**唯一可靠的发现方式**：三行手检（§2.7.4）——把连续三周的预测变量、用到的原始价格、目标收益全部打印出来对一遍。
+**发现窗口错位的直接方法**：三行手检（§2.7.4）——把连续三周的预测变量、用到的原始价格、目标收益全部打印出来对一遍。
 </details>
 
-**5.** 教授说散点图上"看不出规律"是正常的。用一句话解释为什么，并说明这对 ML 板块意味着什么。
+**5.** 课堂 `02:07:24`–`02:09:06` 说明散点图上“看不出规律”是正常现象。用一句话解释为什么，并说明这对 ML 板块意味着什么。
 
 <details><summary>答案</summary>
 
@@ -1961,7 +2232,7 @@ FinTech 部分给简答题，问公司的商业模式
 
 <details><summary>参考思路</summary>
 
-**先用框架 B 判断量级**：年化 42%、夏普 2.1，远超 §4.4 的任何参照（港股 20 年年化约 1.7%，S&P 500 约 8%）。→ **第一嫌疑：数据泄漏。** 不是"我们很厉害"。
+**先用框架 B 判断量级**：年化 42% 应与同口径长期收益、波动、回撤、杠杆和成本比较；夏普 2.1 应与同频差额收益的均值/标准差口径比较。本文没有给出可独立复算的“港股 20 年年化 1.7%”链条，因此不把它当参照。两项都异常强时，**首要核查数据泄漏**，但异常不等于已经证明泄漏。 不是"我们很厉害"。
 
 **然后用框架 A 逐项排查，四类问题：**
 
@@ -1971,7 +2242,7 @@ FinTech 部分给简答题，问公司的商业模式
 - **要做的**：换成 2023-07 的历史成分股名单并冻结；退市的留空而非替补。
 
 **② 时点（→ 前视偏差）**
-- **"最新一期的利润率"**：是按财季期末匹配的还是按 10-Q/中报归档日匹配的？港股是半年报制度，滞后更长。若按期末匹配，就是泄漏路径 ③。
+- **“最新一期的利润率”**：美国样本是否按 SEC filing 的真实时刻匹配？香港样本是否按 HKEXnews 公告发布时间匹配？不能把 10-Q/10-K、SFC 和 HKEX 公告机制混写成一种“归档日”。若只按财季期末匹配，就是泄漏路径 ③。
 - **"上月 CPI 同比"**：CPI 大约在次月第二周发布（🎙️`01:32:53`）。若在 t 月直接用了 t−1 月的 CPI，在 t 月上旬就已经泄漏。教授的做法是**再多滞后一个月**。
 - **"4 周动量"**：有没有 `.shift(1)`？做三行手检。
 
@@ -1999,25 +2270,25 @@ FinTech 部分给简答题，问公司的商业模式
 | 笔记小节 | 讲义页 | 课堂覆盖 | 转录时间 |
 |---|---|---|---|
 | §2.1.1 两块内容 | p.2 | ✅ 详讲 + 🎙️ 大量课外展开（课程由来、顺序调换） | `00:03`–`06:56` |
-| §2.1.2 金融 AI 产品四层 | p.3 | ⏭️ **课上略过**（转录无对应） | — |
+| §2.1.2 金融 AI 产品四层 | p.3 | ❓ 现有转录无明确对应；不能判定略过或降权 | — |
 | §2.1.3 两种 AI 路线 | p.4 | ✅ 详讲 + 🎙️ 成本、开源动因、CityU 订阅 | `32:24`–`38:17`、`01:03:33` |
 | §2.1.4 考核 | p.5 | ✅ 详讲 + 🎙️ 手写小抄、点名规则、取消传统作业 | `09:21`–`16:37` |
 | §2.2.1 Vibe Coding 是什么 | p.6, 7 | ✅ 详讲 + 🎙️ "top 10% 学编程，其余学 vibe coding" | `08:22`、`39:22`–`41:55` |
-| §2.2.2 六步循环 | p.9 | ⏭️ 一句带过 | `46:02` |
+| §2.2.2 六步循环 | p.9 | ✅ 一句带过 | `46:02` |
 | §2.2.3 六项规格 | p.10 | 🎙️ 用现场演示替代（腾讯数据的例子） | `46:02`–`47:10` |
 | §2.2.4 桌面工具/权限/留痕 | **讲义无** | 🎙️ **课外展开** ★ | `43:06`–`45:15`、`01:06:31`–`01:07:31` |
 | §2.3.1 收益率口径 | p.19（部分） | 🎙️ 课外补充"有很多种收益" | `46:42` |
 | §2.3.2 复权价 | p.22 | ✅ 详讲 + 🎙️ 小盘股、债券 ETF 派息例子 | `27:28`、`01:20:47`–`01:21:33` |
 | §2.3.3 指数与基准 | **讲义无独立页** | 🎙️ **课外展开** ★ 上证综指不可交易 | `30:19`–`31:52`、`01:10:59` |
 | §2.3.4 数感量级表 | **讲义无** | 🎙️ **课外展开** ★★ | `49:40`–`52:26`、`01:44:05` |
-| §2.4.1 样本与日期 | p.13 | ⏭️ 略讲 | — |
+| §2.4.1 样本与日期 | p.13 | ❓ 无逐页对应时间；课堂概念有涉及，不可降权 | — |
 | §2.4.2 装环境 | p.12 | ✅ 现场演示 | `53:29`–`55:48` |
 | §2.4.3 156 周收益 | p.14 | ✅ 详讲 + 🎙️ "200 价格→199 收益"检验 | `47:50`–`48:21`、`01:07:31` |
 | §2.4.4 两个数据源 | p.17, 18 | ✅ 详讲 + 🎙️ 跨市场假期差异 | `01:07:45`–`01:09:17`、`01:24:10` |
 | §2.4.5 四项检查 | p.23 | ✅ 详讲 | `01:23:00`–`01:23:36` |
 | §2.5.1 预测时钟 | p.43 | ✅ 详讲 | `29:01`–`29:59`、`01:59:44` |
 | §2.5.2 泄漏与前视偏差 | p.19（部分） | ✅ 详讲 + 🎙️ "crazy returns = leakage" | `30:06`、`01:35:06`、`01:43:57` |
-| §2.5.3 五种泄漏路径 | p.48 | ⏭️ 只强调了第 3 条（日期错配） | `02:00:05` |
+| §2.5.3 五种泄漏路径 | p.48 | ◑ 只确认日期错配；其余四条无逐项课堂对应 | `02:00:05` |
 | §2.5.4 三种日期 | p.27 | ✅ 详讲 | `01:32:10`–`01:34:38` |
 | §2.6.1 宏观时点 | p.28, 30, 31, 32, 33 | ✅ 详讲 + 🎙️ 中国 CPI/GDP 发布节奏、+1 月保守滞后 | `01:32:53`–`01:50:14` |
 | §2.6.2 AKShare | p.29 | ✅ 讲了 | `01:40:04`–`01:40:40` |
@@ -2026,18 +2297,19 @@ FinTech 部分给简答题，问公司的商业模式
 | §2.7.1 三类信息 | p.41 | ✅ 讲了（XT→YT+1 表格） | `01:23:13`、`02:00:35` |
 | §2.7.2 三个预测变量 | p.44 | ✅ 讲了 | `01:57:23` |
 | §2.7.3 代码落地 | p.45, 46 | ✅ 讲了 | `01:58:11`–`02:00:19` |
-| §2.7.4 三行手检 | p.47 | ⏭️ 未逐条讲，但反复强调"检查日期" | `02:00:05` |
+| §2.7.4 三行手检 | p.47 | ❓ 未逐条对齐；课堂强调日期检查，不能判明确略过 | `02:00:05` |
 | §2.7.5 自造技术指标 | p.44（延伸） | 🎙️ **课外展开** ★ 自己算=无发布滞后 | `01:56:14`–`01:58:11` |
 | §2.8.1 HSTECH 热力图 | p.24 | ✅ **详讲** + 🎙️ 成分股名字、怎么读图 | `01:25:43`–`01:27:28` |
 | §2.8.2 冻结样本池选择题 | p.25 | 🔴 **详讲 + 明示是考题 + 逐项讲评** | `01:27:47`–`01:31:48` |
 | §2.9.1 四张图 | p.49 | ✅ 讲了（"plot, plot and plot"） | `02:06:31` |
 | §2.9.2 六页成品图 | p.20, 21, 32, 50, 51, 52 | ✅ **详讲** + 🎙️ 箱线图解读、回撤故事、期限利差、疫情尖峰 | `01:09:28`–`01:13:50`、`01:19:11`、`01:45:19`、`01:48:20`、`02:09:27` |
 | §2.9.3 无模式散点 | p.50（右下）, p.53 | ✅ **详讲** + 🎙️ 市场有效性、Fama、反转 | `01:01:24`–`01:02:49`、`02:07:24`–`02:09:06` |
-| §2.10 PDD-JD 配对交易 | **p.8, 11, 15, 16** | ⏭️ **完全略过**（4 页，转录 0 命中） | — |
+| §2.10 PDD-JD 配对交易 | **p.8, 11, 15, 16** | ❓ 现有转录无可确认对应；关键词 0 命中不证明明确略过，不可降权 | — |
 | §2.12 收尾 | p.56, 57, 58 | 🔀 教授给了**不同的**三条（数感 / 历史事件 / 模型多为 garbage） | `02:12:27`–`02:13:41` |
 | — | p.26, 42（章节分隔页） | 无内容 | — |
-| §2.11 工作坊与失败诊断表 | p.54, 55 | ⏭️ **未执行**——教授改成"课后自己练"；正文已按讲义完整展开（2026-09-10 补） | `02:13:16` |
-| — | p.1（封面） | — | — |
+| §2.11 工作坊与失败诊断表 | p.54、55 | p.54 ↪️ 课后尝试；p.55 ❓ 无逐页课堂对应，不可降权 | `02:13:16` 后 |
+| — | p.1（封面） | ⚪ 封面 | — |
+| **全程材料对齐** | 讲义讲解、行政、AI 工具演示、休息、问答与跑题均纳入 align | ✅ 671 段逐段归入连续块；不等于音频完整 | `00:01`–`02:15:21` |
 
 **页面统计**：讲义共 **58 页**。下列主题按讲解单元列出，部分页面跨主题重复计入，不能把这些数字当作不相交分解：课程行政与定位 6 页（10%）｜Vibe Coding 方法论 5 页｜数据下载与检查 12 页｜宏观与公司财务 15 页｜无泄漏构造变量 7 页｜诊断图与收尾 9 页｜配对交易案例 4 页｜章节分隔与封面 3 页。原材料总页数仍以 58 页为准。
 
@@ -2045,66 +2317,64 @@ FinTech 部分给简答题，问公司的商业模式
 - 无纯图片页被跳过。**全部 58 页已用 Read 工具按页视觉复核**（3 批：1–20、21–40、41–58），文本提取字符数偏低的图表页（p.11、13、16、20、21、24、32、37、50、51、52）均已逐张读图并在正文或本映射表中转写为文字/表格。
 - **明确未纳入正文的只有 3 页**：p.1（封面）、p.26 与 p.42（章节分隔页，各只有一行标题），三页均无实质内容。
 
-**「课堂覆盖」列的判读依据**：标 ⏭️ 的条目，均已对转录全文做过关键词检索（如 PDD/JD/pair、"six step"、五种泄漏路径的措辞）确认无对应内容，而非仅凭印象。判断标准见 [[转录处理规则]] §2。
+**「课堂覆盖」判读边界**：只有明确 skip/翻页证据才标 ⏭️。关键词未命中或没有逐页时间戳只标 ❓/无对应，不能据此降权。当前转录按 14 个连续块覆盖全部 671 段。
+
+**课堂时间分配（按转录 10–15 分钟连续块）**
+
+| 区间 | 主要内容 | 约时长 | 录音占比 |
+|---|---|---:|---:|
+| `00:01`–`09:51` | 课程由来、结构与行政 | 约 10 分钟 | 7.3% |
+| `10:05`–`19:45` | 考试、作业、参与和课程目标 | 约 10 分钟 | 7.1% |
+| `20:01`–`29:59` | 金融 AI 定位、价格收益与预测时钟 | 约 10 分钟 | 7.4% |
+| `30:06`–`39:56` | 基准、模型选择、AI 工具路线与成本 | 约 10 分钟 | 7.3% |
+| `40:10`–`49:53` | Vibe Coding、桌面工具/权限、规格与下载演示 | 约 10 分钟 | 7.2% |
+| `50:07`–`59:51` | 数感量级、环境安装与现场演示 | 约 10 分钟 | 7.2% |
+| `01:00:01`–`01:09:45` | 市场有效性、收益构造、代码留痕和跨源下载 | 约 10 分钟 | 7.2% |
+| `01:10:01`–`01:19:59` | 三市场图、指数基准、休息与考试形式 | 约 10 分钟 | 7.4% |
+| `01:20:13`–`01:29:57` | 复权、数据检查、热力图和冻结样本池 | 约 10 分钟 | 7.2% |
+| `01:30:12`–`01:39:53` | 冻结样本讲评、宏观参考期与财报日期 | 约 10 分钟 | 7.2% |
+| `01:40:04`–`01:49:51` | FRED/AKShare、归档、保守滞后和宏观图 | 约 10 分钟 | 7.2% |
+| `01:50:03`–`01:59:56` | 期限利差、财务比率和预测变量 | 约 10 分钟 | 7.3% |
+| `02:00:05`–`02:09:53` | 日期错配、另类数据、成本和图诊断 | 约 10 分钟 | 7.2% |
+| `02:10:05`–`02:15:21` | 回撤、数感收尾、课后练习与分组 | 约 5 分钟 | 3.9% |
+
+全量对齐证据由本次正式审查包保存。该表的占比按每块首末文本时间戳估算，合计约 98.1%，约 1.9% 段间空隙没有分配；连续材料定位区间覆盖 8,120 秒是另一种索引口径，不能混为逐秒内容覆盖，也不认证原音完整。
 
 ---
 
 ## 9. 延伸与勘误
 
-### 9.1 课件有但课上略过
+### 9.1 课件与课堂覆盖的不确定项
 
-| 讲义页 | 内容 | 判断依据 | 复习建议 |
-|---|---|---|---|
-| **p.8, 11, 15, 16** | **PDD-JD 相对价值交易全案例**（4 页） | 转录全文检索 `PDD`/`JD`/`Pinduoduo`/`Temu`/`food delivery`/`long-short`/`dollar neutral`/`pair`，**命中 0** | ⬇️ 降低优先级。但多空权重公式在 **M05（从预测到组合）** 会重新用到，概念要懂 |
-| **p.3** | 金融 AI 产品的四层（数据/模型/决策分发/控制问责） | 转录无对应讨论 | ⬆️ **反而建议留意**——它是第二板块**案例报告**的现成分析骨架，而案例报告 + 录像占 30% |
-| p.9 | 六步循环图 | 仅 `46:02` 一句带过 | 记住即可，图很简单 |
-| p.10 | 六项规格 | 未逐条讲，用现场演示替代 | ⬆️ **仍要记**——直接对应 syllabus ILO 1 |
-| p.47 | 三行手检表 | 未逐条讲，但"检查日期"被反复强调 | ⬆️ 仍要记，是唯一可靠的验证手段 |
-| p.53 | Read an Explanation against the Evidence（五个反问） | 转录无对应 | 中等优先级 |
-| p.54, 55 | 现场 Prompt 工作坊 + 失败诊断表 | **未执行**。教授改成课后自己练（`02:13:16`） | ⬆️ p.55 的失败分类表实操价值高——已在 §2.11 完整展开，做 ML 作业前读一遍 |
-| p.56 | 全班四问自查 | 转录无对应 | ⬆️ 适合当作业自查表 |
+| 讲义页 | 内容 | 判定 | 依据 | 建议 |
+|---|---|---|---|---|
+| p.3 | 金融 AI 产品四层 | ❓ 转录无明确对应 | 没有逐页时间戳；关键词缺失不足以证明 skip | 保留完整自学，不降权 |
+| p.8, 11, 15, 16 | PDD-JD 案例 | ❓ 转录无可确认对应 | 未找到可靠对应话题，但未录到/ASR 漏词/现场翻页均无法排除 | 保留完整题解，M05 还会使用 |
+| p.9 | 六步循环 | ✅ 一句带过 | `46:02` 出现 six-step 后转入演示 | 记流程，并用演示理解 |
+| p.10 | 六项规格 | ✅ 演示替代逐条讲页 | `46:02`–`47:10` | 仍按讲义六项完整学习 |
+| p.47 | 三行手检 | ❓ 无逐页讲解证据 | `02:00:05` 强调日期错误，但未逐项走 p.47 | 不可降权 |
+| p.53、p.56 | 解释核对/全班四问 | ❓ 无逐页对应 | 现有转录无法确认是否照页讲 | 作为作业自查保留 |
+| p.54、55 | 工作坊与诊断 | p.54 ↪️；p.55 ❓ | `02:13:16` 后布置课后尝试只支持 p.54；p.55 无逐页证据 | 两页完整自学 |
 
-> ⚠️ **"略过"的判读边界**：本讲转录文本覆盖 `00:01`→`02:15:21`、671 段；检索未找到对应话题，但文本连续不能证明原音频无缺口，ASR 也可能漏词。但注意教授大量使用**现场演示**代替讲幻灯片——他常常直接跳到 Codex 窗口做同一件事。所以 ⏭️ 的准确含义是"**没有照着这一页讲**"，不一定是"这个知识点没提到"。
+本次没有找到足以认定课堂明确跳过的页，因此不设置降权型 ⏭️。
 
-### 9.2 课上讲了但课件没有 🎙️（本讲最高价值的部分）
+### 9.2 课上讲了但课件没有 🎙️
 
-按价值排序：
+| # | 纯课堂增量 | 区间/时长 | 原始时间戳 | 对应小节 | 为什么值钱 |
+|---:|---|---|---|---|---|
+| 1 | 何时用模型会进考试 | 约 30 秒 | *"I'm the one [who is] trying to teach you when to use those model[s]… And of course you will see this in the exam."*（`04:24`） | §6.2 | 🔴 直接考试明示 |
+| 2 | 桌面编码工具而非聊天框 | 约 2 分钟 | *"You are going to download the desktop coding tool."*（`43:06`） | §2.2.4 | 决定实际工作方式 |
+| 3 | 每次保存代码 | 约 1 分钟 | *"Every time you ask your AI to create it… please also save the file for the code."*（`01:06:31`） | §2.2.4 | 可追错与复现 |
+| 4 | 指数业绩必须有基准 | 约 2 分钟 | *"The benchmark is also quite important."*（`30:19`） | §2.3.3 | 防止孤立报 5% |
+| 5 | 收益预测最常见错误是日期错配 | 约 1 分钟 | *"The mistake I see… 99.9%… that's missing the date."*（`02:00:05`） | §2.5–§2.7 | 🔴 直接错误模式 |
+| 6 | SEC 归档历史滞后 | 约 1 分钟 | `01:38:40`–`01:39:23` | §2.6.3 | 回测不能跨年代套固定 lag；香港机制另据 HKEX 纠正 |
+| 7 | 宏观 +1 月、财务 +3 月的保守近似 | 约 2 分钟 | `01:41:10`–`01:43:00` | §2.6.1 | 缺发布日历时的课堂近似，不冒充精确规则 |
+| 8 | 上证综指点位不可直接交易 | 约 30 秒 | `01:10:59`–`01:11:26` | §2.3.3 | 区分统计基准与可交易产品 |
+| 9 | 另类数据、交易成本与市场冲击 | 约 4 分钟 | `02:01:14`–`02:05:20` | §2.7.5 | 把教学价量指标放回真实机构边界 |
+| 10 | 数感是最高优先级 | 约 1 分钟 | *"Develop a sense for numbers. That's the top priority [thing] I want [you] to learn from the course."*（`02:12:27`） | §2.3.4、§4.4 | 🔴 直接学习优先级 |
+| 11 | 课程安排的课堂说明 | 约 1 分钟 | `01:17` 无教材；`14:01`、`14:31` 本年 12 讲、因公共假期改录制展示 | §2.1 | 课堂行政说明，当前执行以 Canvas 最新通知为准；不从转录补造具体假期日期 |
 
-**① ★★ 数感量级表**（`49:40`–`52:26`、`01:44:05`–`01:45:19`、`02:07:58`）
-S&P 500 长期 8%/年、美债 4.8%、中债 1.8%、**收益预测 R² ≈ 1%（vs 营销领域的 50%→60%）**，以及教授作为经验警示提出的“年化 50% 很可疑”。这不是仅凭一个百分比就认定欺诈：仍要检查数据时点、费用、风险、回撤与可复现性。讲义**一个数字都没给**，而教授把这列为本课第一优先级学习目标。→ §2.3.4、§4.4
-
-**② ★★ Vibe Coding 的三条操作纪律**（`43:06`–`45:15`、`01:06:31`）
-必须用**桌面编码工具**而非聊天机器人；权限**分级授予、从最保守开始**；**每次都要把代码存档**。讲义 p.12 只讲了装环境，完全没讲工具形态、权限和留痕。**留痕这条直接关系到 ML 作业要交的"reproducible code package"。** → §2.2.4
-
-**③ ★★ 上证综指不可交易**（`01:10:59`–`01:11:26`）
-教授说指数点位本身不可交易；不能扩成“没有跟踪产品”，510210 跟踪上证综指的一手核对见 §2.3.3。教授称这是"评估收益时的常见错误"。讲义完全没有。→ §2.3.3
-
-**④ ★ 宏观与财务的保守滞后做法**（`01:41:10`–`01:43:00`）
-宏观数据 **+1 个月**、公司财务 **+3 个月**。讲义只说"用发布日"，没给具体的稳健性余量。→ §2.6.1
-
-**⑤ ★ 真实归档日案例 + Yahoo Finance 现场演示**（`01:36:59`–`01:39:23`）
-Yahoo Finance 财报页**只显示报告期末**（Jun 30 / Mar 31 / Sep 30 / Dec 31），**不显示公告日**；腾讯 `0700.HK` 8/12 发中报、阿里 8/20、另一家 8/21。另附制度史：**2000 年前美国 SEC 收纸质邮寄财报，从公告到入库要几周**。→ §2.6.3
-
-**⑥ ★ 市场有效性 / 随机游走 / Fama / 反转**（`01:01:24`–`01:02:49`）
-"明天价格的最佳预测就是今天的价格"、Chicago 学派、Eugene Fama、以及实证上的轻微负自相关。讲义完全没有理论背景。→ §2.9.3
-
-**⑦ ★ 自造技术指标减少外部发布滞后；窗口/复权版本/样本选择仍须检查**（`01:56:14`–`01:58:11`）
-宏观/财务受制于外部发布流程，价量派生指标由自己算，只要窗口不越界就没有发布滞后问题。这解释了讲义为什么只选价量类示范变量。→ §2.7.5
-
-**⑧ 课堂问答带出的三个概念**（`02:01:14`–`02:05:20`）
-- **另类数据（alternative data）**：对冲基金买非公开数据集；数据商赞助投资论坛；"无论牛熊 Bloomberg 都赚钱"
-- **交易成本与市场冲击**：**买卖价差是交易成本最简单的代理**；本课假设读者是"tiny potato investor"，行为不影响价格
-- 学生原问：**"公司发新模型这类非周期性事件怎么办？"** 教授答：技术指标只是最简单的公开信息演示，真实机构会买另类数据补足
-→ §2.7.5、§2.3、术语卡
-
-**⑨ 课程元信息**（`00:03`–`14:31`、`22:21`–`23:21`）
-AIB 项目 2025 年成立后请 EF 系新开此课；**今年顺序调换**（去年先 FinTech）；**今年只有 12 讲**（10/01 国庆停课）；**取消现场展示，改录像**；无教材；教授简历（Chicago 2017、金融 + DAO 联合聘任、FBAC 中心主任）。→ [[EF5560_Fintech_and_AI_in_Finance/_prep/课程前置资料|课程前置资料]]
-
-**⑩ 图表的口头解读**（`01:19:11`、`01:45:19`、`01:48:20`、`02:09:27`）
-箱线图怎么读、疫情失业率尖峰、**期限利差的完整解释**（讲义只画了图！）、回撤的具体数字与"太太只问我亏了多少"的段子。→ §2.9.2
-
-**⑪ 考试形式**（`01:15:03`–`01:15:42`）
-见 §6.2 的 🔴 条目。**讲义与 syllabus 都只说"两小时笔试"，MCQ 上限 60%、无编码题、FinTech 考商业模式简答，这三条只有课堂上说过。**
+这里的引文只保留转录可确认词；ASR 损坏处不用猜测补正文。
 
 ### 9.3 课件自身的问题
 
@@ -2133,6 +2403,14 @@ p.43 用「x_t → r_{t+1}」，且明说「The saved row is labelled by forecas
 
 **⑦ 官方课程目录与本讲内容脱节**
 官方 CILO 里**没有任何一条**对应本讲的"AI 辅助编码 + 数据时点纪律"，而官方 Keyword Syllabus 里的「Unsupervised Learning and Clustering」在 2026/27 的 12 讲主题里根本不存在。详见 [[EF5560_Fintech_and_AI_in_Finance/_prep/课程前置资料|课程前置资料]] §3.3。
+
+**⑧ ⚠️ 课堂 drawdown 口述不等于正式定义**
+
+转录 `02:11:31` 把“回撤约为 0”说成“过去 12 个月没有亏钱”。按本篇和讲义图使用的 running-peak 定义，0 只表示当前净值达到截至当时的历史峰值；过去 12 个月仍可能出现过亏损月份或先跌后涨。正文 §2.9.2 已保留原话并就地纠正，答题按严格定义。
+
+**⑨ ⚠️ 美国与香港的披露机制不能只换监管机构名称**
+
+课堂把 SEC 与 SFC 并列，但美国 10-Q/10-K filing 与香港上市公司经 ESS/HKEXnews 发布公告不是同一机制。港股特征可用时点须查实际 HKEXnews 公告发布时间，不能套用美国 filing 规则；正文 §2.6.3 已按 HKEX 官方资料纠正。
 
 ### 9.4 课外补充
 
@@ -2168,26 +2446,34 @@ FRED 的"实时版本"数据库（ALFRED = **A**rchival FRED）。FRED 给你的
 - 其余全部小节：补齐小节结尾"所以呢"（这个概念在漏斗里的位置、为什么接下一节），共新增 40 处；已经合格的小节（如 §2.3.1、§2.11.1、§2.11.2 已有等价的收尾句）未动
 详见任务对话记录；本次改写未发现新的事实错误。
 
-**2026-10-02 本轮修订范围与证据**：利用既有全源审报告一次修复公式、间隔计数、时点边界和核心机制；新增数字例均为笔记补充，计算记录在 `C:/Users/BenLi/.codex/scratchpad/cityu-depth-20260930/ef-draft-medium/calc-results.json`，原课程复算在 `ef-m01-source-audit/recompute-results.json`。未新增转录引文，未读/写个人作业，未更新原材料。完整季度财报、实际发布时刻、宏观 vintage 和原冻结 HSTECH30 面板仍缺，不能以教学补例称原结果已重现。`mechanism_review: passed`；按 2026-10-02 简化流程验收，新增 6 张流程图已实际查看，图 5 已定向改为纵向分层并复看可读；未做独立全量 Q/R 盲读，不补造评分。
+**2026-10-02 本轮修订范围与证据**：利用既有全源审报告一次修复公式、间隔计数、时点边界和核心机制；新增数字例均为笔记补充，计算记录在 `C:/Users/BenLi/.codex/scratchpad/cityu-depth-20260930/ef-draft-medium/calc-results.json`，原课程复算在 `ef-m01-source-audit/recompute-results.json`。未新增转录引文，未读/写个人作业，未更新原材料。完整季度财报、实际发布时刻、宏观 vintage 和原冻结 HSTECH30 面板仍缺，不能以教学补例称原结果已重现。`mechanism_review: passed` 是 2026-10-02 的历史字段，不代表本次全篇独立审查已通过；当时按简化流程验收，新增 6 张流程图已实际查看，图 5 已定向改为纵向分层并复看可读；未做独立全量 Q/R 盲读，不补造评分。
 
 
 ### 9.5 待核对
 
 | # | 事项 | 说明 |
-|---|---|---|
-| 1 | **期末是否允许一页手写小抄** | 🎙️`10:20`「I **might** allow you for one page for hand written cheat sheet. So this thing I will tell you later.」——教授明说待定，**以 Canvas 为准** |
-| 2 | ML 投资作业的实际发布日 | syllabus 说"Week 5 课后"，讲义 p.5 说"Class 5 后"，TA 辅导定在 **9/27**，教授说"late September"——三者在 10/01 停课后无法自洽。见 [[EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL\|作业与DDL]] |
-| 3 | 上课日期 2026-09-03（周四，晚间班） | ⚪ 由文件时间戳 + 转录里的 "8:45 休息" 反推，未经确认 |
-| 4 | 🎙️`02:05:20` 附近学生问答有多处 ASR 严重失真 | 提问者的原话「adjust for the market impact… because the price」可辨，但中间数句无法还原。已按上下文写入 §2.7.5，**未还原的部分没有写进笔记** |
-| 5 | `01:37:56` 教授口述的第三家公司名 | ASR 作 "Zihu"，可能是知乎（`ZH`）或其他公司，**无法确认，笔记里已回避具体公司名** |
-| 6 | 讲义 p.37 图中的季度标签 | 本轮既有源审 200 dpi 已读到 `2025Q1…2026Q1`，季度标签已核；各图只报近似量级，精确原季度表未保存，仍不可精确复算 |
-| 7 | 教授说的"MSF and MS[?]E"（`02:22`） | ASR 不清。指下午班学生的项目来源，与本笔记内容无关 |
+|---:|---|---|
+| 1 | 转录登记 | `M01-transcript.txt`，SHA-256 `025a51821af5f2cf53fb9793900f62e7f9d65953a24fd86e014b93f11beaee33`；671 条带时间戳的段记录、670 个唯一时间戳，`42:28` 连续出现两段（首段中断，次段重复开头后继续）。scan 与 audit 的差值可定位到这一处，不代表少读一段；原转录不改。范围 `00:01`–`02:15:21`、2:15:20，无倒退或 ≥120 秒空档；这些只说明文本时序 |
+| 2 | 开头完整性 | 首句 *"Discourse last year. Okay."*（`00:01`）像中段残句；可能缺问候/开场，不因时间戳从 00:01 开始就认证完整 |
+| 3 | 结尾完整性 | `02:15:21` 有 *"Okay, that's all. See you next week."*，文本结尾完整；仍未逐字核原音 |
+| 4 | 期末小抄 | M01 `10:20` 当时说一页手写小抄仍待定；后续 M03 `02:53`–`03:17` 已确认一张 A4、双面手写、内容不限、不许打印或用 iPad。最终执行仍以 Canvas 为准 |
+| 5 | 学生问答 ASR | `02:05:20` 附近多句损坏，只保留能确认的主题，不还原乱码 |
+| 6 | 第三家公司名 | `01:37:56` ASR 作 “Zihu”，无法确认，正文回避名称 |
+| 7 | MSF/MS[?]E | `02:22` 名称不清且不影响本讲内容，保留 `[?]` |
+| 8 | 未核材料 | 未逐字重听原音；讲义 p.37 精确季度底表、宏观 vintage、完整冻结成分股面板仍缺，不升级为已验证 |
+
+**反方视角**
+
+1. 最薄弱处：现有转录开头可能缺失，且现场屏幕操作不能由 ASR 完整恢复；因此安装/运行细节仍主要靠讲义和保存代码。
+2. 若考试直接问课堂原句：最可能答不稳的是 `02:05:20` 学生问答、`01:37:56` 公司名和 `02:22` 项目名；这些均未强行还原。
+3. 本次推断及其风险：按文本把无对应页标 ❓，而非 ⏭️；若原音实际明确跳页，复习优先级可能偏高，但不会漏学。宏观/财务固定 lag 是课堂近似，不是跨数据源的现实保证。
 
 ### 9.6 变更记录
 
 | 日期 | 变更 |
 |---|---|
 | 2026-09-11 | 链接修复：本文件 1 处 Markdown 形式的同文件锚点（`[§x](#slug)` 写法）改为 Obsidian 双链 `[[#标题原文\|§x]]`——Obsidian 按标题原文匹配，GitHub 式小写连字符 slug 一律点不开（对抗自检清单 9b）。只改链接写法，标题与正文未动 |
+| 2026-10-23 | **重审既有转录合并结果，未新增音源**：重新 scan 原 `M01-transcript.txt`（671 段，`00:01`–`02:15:21`），建立全程 align，复核教授明示与直接引文格式，修正“无对应=略过”的过度判断，并更新 §0、§6、§8、§9.1/9.2/9.5。材料机器结果与教学/视觉验收分开记录 |
 
 ---
 

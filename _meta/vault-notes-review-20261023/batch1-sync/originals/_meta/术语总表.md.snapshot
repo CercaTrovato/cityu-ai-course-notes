@@ -1,0 +1,576 @@
+---
+type: 术语表
+scope: 全库
+updated: 2026-10-22
+---
+
+# 全库术语总表（跨课程）
+
+> 本表只收**跨课程出现**或**容易在不同课里被译得不一致**的术语。
+> 单门课内部的完整术语见各课 `_meta/术语表.md`。
+> **2026-09-10 完成第一次全量合并**：五门课共提交 227 条候选，筛出下面这些。各课的 `_meta/待并入术语总表.md` 保留为提交记录，后续 module 继续往下追加，主 agent 定期再合并。
+
+## 0. 怎么用这张表
+
+| 你要干什么 | 看哪一节 |
+|---|---|
+| 一个概念在**另一门课**也出现了，想找它在那边怎么讲 | §1 共享概念（按主题分五组，链到各课笔记） |
+| **同一个词在两门课里意思对不上** | §2 一词多义 —— **这是本表最值钱的一节** |
+| 写笔记时不确定该译成什么 | §3 统一译名 |
+| 讲义里有个说法和别的课冲突，不知道信谁 | §4 跨课勘误 |
+| 作业能不能用 AI | §5 五门课 GenAI 政策对照 |
+
+**列的顺序**：`IS6400` 放第一列，因为它是唯一的技术实操课，**大部分 AI/ML 术语由它首现**，其他四门是引用方。链接一律用 `[[文件名]] §小节` 的形式，不带锚点（各课笔记的锚点写法不统一，带了反而断链）。
+
+---
+
+## 1. 跨课程共享概念
+
+### A · AI / 机器学习基础（IS6400 首现，其余引用）
+
+| 中文 | English | IS6400 | IS5113 | IS5542 | EF5560 | AC6761 |
+|---|---|---|---|---|---|---|
+| **CRISP-DM 六步** | Cross-Industry Standard Process for Data Mining | [[M01-导论-商业数据分析全景与工具链]] §2.5 项目过程核心；§2.5.1 完整备货执行 | — | — | 隐含在 Lec01 的六步图 | — |
+| **特征 / 特征工程** | Feature / Feature Engineering | [[M01-导论-商业数据分析全景与工具链]] §2.6.1；[[M04-特征工程-特征重要性与降维]] §2.2–2.4 ★ 完整定义（"a set of attributes to describe a complex object"；problem-specific；三大挑战） | — | [[M01-导论-生成式AI基础与企业落地]] §2.4.3（表示学习取代手工特征） | [[M01-金融数据与Vibe-Coding]] §2.7（更常说"预测变量"） | — |
+| **分类 / 聚类** | Classification / Clustering | [[M01-导论-商业数据分析全景与工具链]] §2.6.2、§2.6.4 | M03 算法决策 | [[M01-导论-生成式AI基础与企业落地]] §2.4.2（欺诈检测：**准确率会骗人，0.8% 欺诈率**） | 客户分群 | 欺诈检测 |
+| **线性回归** | Linear Regression | [[M02-预测分析-线性回归]] §2.5 ★ | — | [[M01-导论-生成式AI基础与企业落地]] §2.4.4（"ML 但不是 DL"的例子） | [[M02-回归与样本外设计]] ★ **同周同主题** | — |
+| **因变量 / 自变量** | Dependent / Independent Variable | [[M02-预测分析-线性回归]] §2.2.1（**三个学科三套叫法**） | — | — | [[M02-回归与样本外设计]] | — |
+| **p 值 / 显著性水平** | p-value / Significance Level | [[M02-预测分析-线性回归]] §2.6.2 ⚠️ 讲义定义有错（见 §4）；🎙️ 阈值 **0.05 / 0.1** 只在课上说 | — | — | [[M02-回归与样本外设计]] | 年报分析会用 |
+| **虚拟变量（n−1 规则）** | Dummy Variable | [[M02-预测分析-线性回归]] §2.7.2 🎙️ 全班几乎无人学过，考试信号最强 | — | — | [[M02-回归与样本外设计]] | — |
+| **多重共线性** | Multicollinearity | [[T02-回归实战-从合成数据到Airbnb定价]] §5.5（条件系数与近共线敏感性；负号不是唯一成因的证明） | — | — | [[M02-回归与样本外设计]] 金融数据必遇 | — |
+| **过拟合 / 欠拟合 / 模型容量** | Overfitting / Underfitting / Model Capacity | [[M02-预测分析-线性回归]] §2.9.2（🎙️ 模型容量只在课上讲） | — | — | [[M02-回归与样本外设计]] | — |
+| **训练 / 验证 / 测试集** | Training / Validation / Test Set | [[M02-预测分析-线性回归]] §2.9.3 ⚠️ 讲义红字"验证集≠测试集"，但助教口语混用 | — | [[M02-模型全景-基准评测与提示设计]] §2.11.5 提示迭代也要留出集（没参与调优的案例） | [[M02-回归与样本外设计]]（样本外设计是主线） | — |
+| **样本外** | Out-of-sample (OOS) | [[M02-预测分析-线性回归]] §2.9.3 | — | [[M02-模型全景-基准评测与提示设计]] §2.10.1 评测协议第 4 步「独立留出」——同一纪律换了名字 | [[M02-回归与样本外设计]] ★ 全课主线 | — |
+| **正则化（Ridge / Lasso）** | Regularization | [[M02-预测分析-线性回归]] §2.10 ⚠️ 讲义 p.50 关于 Ridge 有误（见 §4）；🎙️ 拉格朗日乘子解释 λ 从哪来 | — | — | 投资组合优化会用 | — |
+| **梯度下降** | Gradient Descent | [[M02-预测分析-线性回归]] §2.8.4 手算知识已讲；往年考试措辞ASR歧义待回听，不升确定证据 | — | [[M01-导论-生成式AI基础与企业落地]] §2.4.3（训练深层网络的困难） | — | — |
+| **数据泄漏 / 前视偏差** | Data Leakage / Look-ahead Bias | 时间序列部分会讲 | — | — | [[M01-金融数据与Vibe-Coding]] §2.5.2 ★ "**99.9% 的错误是漏了日期**" | — |
+| **基准 / 基线** | Benchmark / Baseline | baseline model（对照模型） | — | [[M02-模型全景-基准评测与提示设计]] §2.7 ★ **十类基准四组**；§2.9 分数是协议下的证据。⚠️ 与 EF5560 的"基准 = 对照策略"含义不同，见 §2 | [[M01-金融数据与Vibe-Coding]] §2.3.3 ⚠️ **含义不同**，见 §2 | — |
+| **R²（决定系数）** | Coefficient of Determination | [[M02-预测分析-线性回归]] §2.9.5：1−SSE/SST，评价目标均值基准，可负；不设跨任务通用“正常”阈值 | — | — | [[M01-金融数据与Vibe-Coding]] §2.3.4：收益预测 **≈1% 就算好** | — |
+| **标准化 / 共同比** | Standardization / Common-Size | [[T02-回归实战-从合成数据到Airbnb定价]]（`StandardScaler`，**只用训练集统计量**）；[[T03-数据探索实战-Iris与Airbnb的描述统计]] §3.4 `StandardScaler` vs `RobustScaler`；PCA 前是否标准化见 [[M04-特征工程-特征重要性与降维]] §2.15 | — | — | [[M02-回归与样本外设计]] | [[M03-年报分析]] §2.3 **共同比分析**——同一个直觉（消掉量纲再比） |
+| **采样偏差 / 数据代表性** | Sampling Bias / Representativeness | [[IS6400_Business_Data_Analytics/_meta/数据集卡片\|数据集卡片]] §5.6：Airbnb **只有美国 6 城，NYC+LA 占 75%**；[[M03-数据类型与描述性分析]] §2.16 代表性样本 / 分层抽样 | [[M03-偏见与公平]] §2.11.4 抽样偏见（"只在一个街区做民调却宣称了解全城"）；§9.4 已引用 IS6400 的 Airbnb 例子 | — | [[M01-金融数据与Vibe-Coding]] §2.8.3 生存者偏差 | — |
+| **相关 ≠ 因果** | Correlation ≠ Causation | [[M02-预测分析-线性回归]] §2.2；[[M03-数据类型与描述性分析]] §2.12 ★（混杂变量；实验 / 准实验；T03 作业 2.4 原题） | [[M03-偏见与公平]] §2.11.4 代理变量（邮编与信用相关不等于因果）；M05 问责 | — | 因子的相关不等于可预测 | — |
+| **属性的四种类型** | Nominal / Ordinal / Interval / Ratio | [[M03-数据类型与描述性分析]] §2.3 ★（四种性质累加；决定能用哪些统计量） | 评分类属性的公平性讨论会用 | — | 金融变量多为比率型 | 会计数据的字段类型 |
+| **偏度 / 峰度** | Skewness / Kurtosis | [[M03-数据类型与描述性分析]] §2.10（pandas 口径：超额峰度，正态 = 0） | — | — | 收益率分布的厚尾 ★ | — |
+| **协方差 / 相关系数** | Covariance / Correlation coefficient | [[M03-数据类型与描述性分析]] §2.11（只抓线性）；[[T03-数据探索实战-Iris与Airbnb的描述统计]] §3.5 热力图 | — | — | 投资组合的协方差矩阵 ★ | — |
+| **关联规则（支持度 / 置信度 / 提升度）** | Association Rules: Support / Confidence / Lift | [[M03-数据类型与描述性分析]] §2.13–2.15 ★（"茶 → 咖啡" 提升度 0.83 的反例） | — | 推荐系统类案例 | — | — |
+| **维度灾难** | Curse of Dimensionality | [[M03-数据类型与描述性分析]] §2.6；[[M04-特征工程-特征重要性与降维]] §2.4 ★（800 GB 算例、$O(1/\epsilon^d)$、CIFAR-10 三角权衡） | — | 嵌入维度 | 因子个数 | — |
+| **特征选择 vs 特征约简** | Feature Selection / Feature Reduction | [[M04-特征工程-特征重要性与降维]] §2.11 ★（子集 · 离散 vs 线性组合 · 连续）；[[T04-特征选择与PCA实战-Iris]] | 哪些特征该被禁用（代理变量） | — | 因子选择 | — |
+| **Gini 指数 / 熵 / 信息增益** | Gini Index / Entropy / Information Gain | [[M04-特征工程-特征重要性与降维]] §2.7–2.8 ★（课堂小测 p.44；决策树分裂准则，W05 复用） | 决策树可解释性 | 语言模型的熵 / 困惑度用同一个熵 | ⚠️ 与"基尼系数"同名不同物，见 §2.1 | 同左 |
+| **过滤模型 / 包装模型（/ 嵌入式）** | Filter / Wrapper (/ Embedded) | [[M04-特征工程-特征重要性与降维]] §2.9（讲义二分法；嵌入式为笔记补充，Lasso 属之） | — | — | — | — |
+| **主成分分析** | Principal Component Analysis (PCA) | [[M04-特征工程-特征重要性与降维]] §2.13–2.15 ★（最小重构误差 = 最大保留方差；$S = D^{\top}D/(m-1)$；特征值 > 1 仅为相关矩阵下的启发式）；[[T04-特征选择与PCA实战-Iris]] §4 | — | — | 收益率因子 / 利率曲线 PCA 是经典应用 ★ | — |
+| **特征值 / 特征向量 / 协方差矩阵** | Eigenvalue / Eigenvector / Covariance Matrix | [[M04-特征工程-特征重要性与降维]] §2.14（完整2×2求解、投影/重构；样本协方差口径与训练变换状态） | — | — | 同左 | — |
+
+> ⚠️ **R² 那一行是本表第一个"同一指标、两套标准"的例子**：金融收益率几乎不可预测，房价由房源属性大量决定。**读者从一门课跳到另一门课时会以为某边写错了——两边都没错。** 详见 §4。
+
+### B · 生成式 AI（IS5542 首现，IS6400 M01 有概览）
+
+| 中文 | English | IS6400 | IS5113 | IS5542 | EF5560 | AC6761 |
+|---|---|---|---|---|---|---|
+| **生成式 AI** | Generative AI | [[M01-导论-商业数据分析全景与工具链]] §2.6.6（生成任务与 DL 方法、NLP 领域分维度） | [[M01-导论-AI与伦理]] §2.7，M08 深化 | **全课主题**；严格定义 [[M01-导论-生成式AI基础与企业落地]] §2.2 | — | [[M01-会计与商业]] §2.2.1（使用者视角） |
+| **LLM / Transformer / 注意力** | Large Language Model / Transformer / Attention | [[M01-导论-商业数据分析全景与工具链]] §2.6.6；§2.6.6.1 单查询缩放点积 / mask 全算例（不等完整 Transformer 训练） | — | [[M01-导论-生成式AI基础与企业落地]] §2.5–2.6 原结构说明；本轮机制验收待完成 | — | — |
+| **幻觉** | Hallucination | — | M08 虚假信息 | [[M01-导论-生成式AI基础与企业落地]] §2.9.2 ★ 机制 + 治理；🎙️ 课堂强调纯参数推理缺独立证据；正文已限范围，RAG非唯一治理且不保证真，工具/引用/人工核验可组合 | [[M01-金融数据与Vibe-Coding]] §2.4.5 | [[M01-会计与商业]] §2.2.2 **三种形态**：编造比率 / 虚构趋势 / **漏掉附注** |
+| **RAG / 接地** | Retrieval-Augmented Generation / Grounding | — | M04 可解释、M08 | [[M01-导论-生成式AI基础与企业落地]] §2.9.3 ★ | — | — |
+| **提示词** | Prompt | [[T01-Jupyter入门与Pandas基础]] §6（教授的 `🤖 AI Prompt` 单元格） | — | [[M02-模型全景-基准评测与提示设计]] §2.11 ★ 四要素 / 零样本与少样本（不改权重）/ 分解四步 / 对话状态 / 版本化迭代 | [[M01-金融数据与Vibe-Coding]] §2.2 | — |
+| **AI 辅助编码** | AI-assisted Coding | **"GenAI for BDA"** [[T01-Jupyter入门与Pandas基础]] §6、[[T02-回归实战-从合成数据到Airbnb定价]] §7 | — | 🎙️ 教授："手写每一行代码 **is old fashioned**" | **"Vibe Coding"** [[M01-金融数据与Vibe-Coding]] §2.2 ★ 三条纪律 | — |
+| **人在环路 / 人工复核** | Human-in-the-loop / Human Review | — | [[M03-偏见与公平]] §2.13.2 首现（人验证或推翻 AI 决定；高风险领域必备）；M05 深化；EU AI Act 核心要求 → M09 | [[M01-导论-生成式AI基础与企业落地]] §2.9.3 🎙️ "**找一个人来承担责任**" | [[M01-金融数据与Vibe-Coding]] §2.1.2 | [[M01-会计与商业]] §2.2.2 🎙️ "**AI is a tool and human makes the decision**" |
+| **模型治理 / 模型风险** | Model Governance / Model Risk | — | ★ 全课主线 | [[M01-导论-生成式AI基础与企业落地]] §2.7.3 可信三支柱 | [[M01-金融数据与Vibe-Coding]] §2.1.2 | M01 §2.2.1 |
+| **开源权重 vs 闭源模型** | Open Weights vs Closed Model | — | — | [[M01-导论-生成式AI基础与企业落地]] §2.4.4 模型全景；[[M02-模型全景-基准评测与提示设计]] §2.4 ★ 七项对比 + bottom line（闭源赢峰值与支持，开放赢成本、控制、定制） | [[M01-金融数据与Vibe-Coding]] §2.1.3 | — |
+| **基准饱和 / 数据污染** | Benchmark Saturation / Data Contamination | — | — | [[M02-模型全景-基准评测与提示设计]] §2.8.1、§2.9.2 ★ 生命周期 2–3 年饱和；污染四级（语义 / 信息 / 数据 / 标签） | [[M02-回归与样本外设计]] 数据挖掘与发表后失效——同一逻辑：**被针对优化的指标会失真** | — |
+| **评测协议 / 每接受任务成本** | Evaluation Protocol / Cost per Accepted Task | 模型评估用留出集 | — | [[M02-模型全景-基准评测与提示设计]] §2.10.1 ★ 任务规格 → 受控比较 → 评分与切片 → 独立留出；成本 = 总费用 / 接受数 | [[M02-回归与样本外设计]] 冻结规格、按时间切分 | — |
+| **pass@k / pass^k** | pass@k / pass^k | — | — | [[M02-模型全景-基准评测与提示设计]] §2.8.3、§2.8.7 ★ "至少一次" vs "全部k次成功"；有限n/c组合估计先逐题再平均，异质独立任务不等整体p的k次幂；τ-bench60%/25%保留为源例 | — | — |
+
+> 💡 **"AI 辅助编码"那一行故意并列了两个名字**：EF5560 叫 Vibe Coding，IS6400 叫 GenAI for BDA。**这个差异本身是信息**——反映两位老师对同一件事的定位不同，不要选一个统一掉。
+
+### C · 伦理与治理（IS5113 首现，其他课各有落点）
+
+| 中文 | English | IS6400 | IS5113 | IS5542 | EF5560 | AC6761 |
+|---|---|---|---|---|---|---|
+| **FATP** | Fairness, Accountability, Transparency, Privacy | — | [[M01-导论-AI与伦理]] §2.6.2 ★ 整门课的目录；F = [[M03-偏见与公平]] 整讲 | Part 3 治理对应 | — | W11 Ethical Considerations（预告） |
+| **算法偏见** | Algorithmic Bias | 统计语境的 bias（见 §2） | M01 §2.6.2；[[M03-偏见与公平]] §2.10–2.11 ★ IBM 定义 + 两套来源分类 + 反馈回路 | [[M01-导论-生成式AI基础与企业落地]] §2.9.7 **偏见的五个入口** | — | [[M01-会计与商业]] §2.2.1 ⚠️ 教授指的是"模型选择偏差"，偏统计侧 |
+| **可解释 AI** | Explainable AI (XAI) | — | M01 §2.6.2；[[M03-偏见与公平]] §2.13.2（SHAP全子集贡献/LIME加权局部代理已完整补例，§2.13.2a）；M04反事实搜索；归因/解释不等真实因果 | [[M01-导论-生成式AI基础与企业落地]] §2.7.2、§2.9.4 ⚠️ **立场更硬**：内部不可完整解释，**可信来自外围证据与控制** | — | — |
+| **问责 / SOX** | Accountability / Sarbanes-Oxley | — | M05 ★ | [[M01-导论-生成式AI基础与企业落地]] §2.9.2 Air Canada 案：**企业要为自家渠道发出的信息负责** | — | [[M01-会计与商业]] §2.5.3 ★ **已成型的先例**：管理层声明 → 独立验证 → 刑事兜底 |
+| **内部控制 / 职责分离** | Internal Control / Segregation of Duties | — | M05 guardrail | — | — | [[M01-会计与商业]] §2.5.3；[[M05-REA业务流程建模]] §2.1.3 ★ **把内控落成数据结构**（"申请人≠批准人"变成一条可执行的查询） |
+| **NIST AI RMF** | NIST AI Risk Management Framework | — | **M09** ★ 放进监管语境 | [[M01-导论-生成式AI基础与企业落地]] §2.10 ★ Govern / Map / Measure / Manage | — | — |
+| **可接受风险 / 残余风险** | Acceptable / Residual Risk | — | M09 | [[M01-导论-生成式AI基础与企业落地]] §2.10 "**目标是可接受风险，不是零风险**" | — | 内控 |
+| **利益相关者** | Stakeholder | — | [[M02-道德理论及其应用]] §2.7.2 | §2.10 MAP | — | W9 会做成一整周的分析框架 |
+| **消极 / 积极权利** | Negative / Positive Right | — | [[M02-道德理论及其应用]] §2.8.2 **隐私是消极权利** | — | — | — |
+| **同意 / 目的外使用** | Consent / Function Creep | — | [[M02-道德理论及其应用]] §2.6.4、§7 题 10；[[M06-隐私与监控-从数据采集到行为影响]] §2.2/2.5，保留旧首现 | [[M01-导论-生成式AI基础与企业落地]] §2.9.6 三星事件 | 金融数据合规 | 审计数据 |
+| **分配公正** | Distributive Justice | — | [[M02-道德理论及其应用]] §2.7.8 ★ 算法公平的哲学原型 | — | 信贷公平 | — |
+| **成本收益分析** | Cost-Benefit Analysis | — | [[M02-道德理论及其应用]] §2.7.4 | — | 会用 | 会用 |
+| **无知之幕 / 差异原则** | Veil of Ignorance / Difference Principle | — | [[M02-道德理论及其应用]] §2.8.3 | — | — | — |
+| **五常** | Confucian Virtues 仁义礼智信 | — | [[M02-道德理论及其应用]] §2.9.4 | — | — | — |
+| **GDPR / EU AI Act** | — | — | [[M04-AI透明-从看得见到信得过]] §2.8.2：法域/主体/用途/适用时间；Article50透明与高风险113分开；M09进一步展开 | Part 3 版权与数据 | 合规 | — |
+| **知识产权与版权** | IP & Copyright | — | 周次待定 | [[M01-导论-生成式AI基础与企业落地]] §2.9.6 **训练数据侧 vs 输出侧** | — | — |
+| **另类数据 / 隐私** | Alternative Data | — | M06 隐私 | — | [[M01-金融数据与Vibe-Coding]] §2.7.5 | — |
+
+### D · 数据与数据库（AC6761 W4–W6 首现，IS6400 引用）
+
+| 中文 | English | IS6400 | IS5113 | IS5542 | EF5560 | AC6761 |
+|---|---|---|---|---|---|---|
+| **关系数据库 / SQL** | Relational Database / SQL | 必用 | — | — | 可能 | [[M06-ACCESS数据库构建与查询]] §2.16 ⚠️ **教的是 Access 方言，见 §4** |
+| **主键 / 外键 / 参照完整性** | Primary / Foreign Key / Referential Integrity | 数据表连接 | — | — | — | [[M04-REA会计模型]] §2.9 精确定义；[[M06-ACCESS数据库构建与查询]] §2.4.3 |
+| **连接（内 / 外）** | Join (Inner / Outer) | pandas `merge(how='left')` | — | — | — | [[M06-ACCESS数据库构建与查询]] §2.13 ★ "**内连接静默丢数据，'零'那一行才是分析重点**" |
+| **空值** | Null | pandas `NaN` | — | — | — | [[M06-ACCESS数据库构建与查询]] §2.20.2 ⚠️ **Null ≠ 0 的会计后果**；三者行为不同，见 §2 |
+| **聚合函数** | Aggregation Function | `groupby` | — | — | 会用 | [[M06-ACCESS数据库构建与查询]] §2.21 |
+| **概念数据建模 / UML 类图** | Conceptual Data Modeling / UML Class Diagram | 数据建模 | — | — | — | [[M04-REA会计模型]] §2.7、[[M05-REA业务流程建模]] §2.6 六步法 ★ |
+| **多重性** | Multiplicity / Cardinality | — | — | — | — | [[M04-REA会计模型]] §2.7.8、[[M05-REA业务流程建模]] §2.5 ⚠️ **读法是"看对面"，读反整张图语义全反** |
+| **审计轨迹** | Audit Trail | — | M05 | §2.9.4 证据链 | — | [[M02-交易的会计处理]]、[[M04-REA会计模型]] §2.9.5、[[M06-ACCESS数据库构建与查询]] §2.5.2（**Cascade Delete 会毁掉它**） |
+| **数据治理** | Data Governance | — | M01 §2.7，M09 | [[M01-导论-生成式AI基础与企业落地]] §2.9.6 全生命周期 | — | [[M01-会计与商业]] §2.2.1 |
+| **数据质量** | Data Quality | 数据清洗 | M01 §2.7 | §2.9.1 "imperfect data" | — | [[M03-年报分析]] §2.5.4 **盈余质量**；[[M06-ACCESS数据库构建与查询]] §2.3.3 Validation Rule |
+| **XBRL** | eXtensible Business Reporting Language | — | — | 财报文本获取 | 财报数据 | [[M04-REA会计模型]] §2.6.1 ★ **"AI 能不能直接读财报"的隐含前提** |
+| **可复现性** | Reproducibility | notebook | M05 | 证据链 | [[M01-金融数据与Vibe-Coding]] §2.2.4 "**每次都要存代码**" | — |
+
+### E · 会计与金融（AC6761 / EF5560 首现）
+
+| 中文 | English | IS6400 | IS5113 | IS5542 | EF5560 | AC6761 |
+|---|---|---|---|---|---|---|
+| **会计等式** | Accounting Equation | — | — | — | 财报基础 | [[M01-会计与商业]] §2.7 ★；[[M05-REA业务流程建模]] REA 里**没有应付账款这个类**（余额是算出来的） |
+| **收入确认 / 权责发生制** | Revenue Recognition / Accrual Basis | — | — | — | 时点数据 | [[M01-会计与商业]] §2.6.3、§2.8.5 T8 ★ "**利润 ≠ 现金**"的起点 |
+| **盈余质量** | Quality of Earnings | — | AI 财务分析可靠性 | — | 收益预测 | [[M03-年报分析]] §2.5.4 |
+| **公允价值** | Fair Value | — | — | — | 资产定价 | [[M03-年报分析]] §2.2.3 |
+| **财务比率** | Financial Ratios | — | — | — | [[M01-金融数据与Vibe-Coding]] §2.6.4 四件套 | [[M03-年报分析]] 核心 |
+| **简单收益 / 对数收益** | Simple / Log Return | — | — | — | [[M01-金融数据与Vibe-Coding]] §2.3.1 ⚠️ 讲义公式与 CSV 口径不一致（见 §4） | — |
+| **波动率 / 回撤** | Volatility / Drawdown | — | M08 风控 | — | [[M01-金融数据与Vibe-Coding]] §2.3.4、§2.9.2 | — |
+| **生存者偏差** | Survivorship Bias | 采样偏差 | **抽样偏差与算法公平的近亲** | — | [[M01-金融数据与Vibe-Coding]] §2.8.3 | — |
+| **时点数据 / 归档日** | Point-in-time Data / Filing Date | — | — | — | [[M01-金融数据与Vibe-Coding]] §2.5.4、§2.6.3（10-Q/10-K） | 财报时效 |
+| **市场有效性** | Market Efficiency | — | — | — | [[M01-金融数据与Vibe-Coding]] §2.9.3 | — |
+| **面板数据** | Panel Data | — | — | — | [[M01-金融数据与Vibe-Coding]] §2.8 | 会计面板 |
+
+> 📌 **EF5560 的 FinTech 板块**（区块链、DeFi、稳定币、CBDC、RegTech、机器人投顾等）**M06 已并入区块链核心译名，其余产品仍保留后续展开占位**（[[EF5560_Fintech_and_AI_in_Finance/_meta/待并入术语总表|EF5560 待并入清单]] §D），M06 已处理本次6项，后续按实际展开继续合并。RegTech 与机器人投顾会与 IS5113 W8/W9 交叉。
+
+---
+## 2. ⚠️ 一词多义：同一个词在不同课里意思不同
+
+> **这是本表最值钱的一节。** 下面每一条都是真实发生过的跨课混淆。跨课阅读时先查这里。
+
+### 2.1 意思完全不同（绝不可互换）
+
+| English | 在这门课里 | 在那门课里 | 怎么办 |
+|---|---|---|---|
+| **Agent** ★★★ | **AC6761 = 参与者**（REA 三要素之一，业务流程中的人或组织） | **IS5542 = 智能体**（可调用工具、能执行动作的 AI 系统，小组项目要求"造一个能跑的 agent"；正式定义见 [[M03-AI-agent-从harness到部署]] §2.4.1：目标 / 行动 / 控制，模型选动作、应用执行并设限）<br>**IS5113 = 道德主体**（moral agent，能承担道德责任的存在者——课程论证 **AI 不能成为 moral agent**）<br>法律语境 = 代理人 | **三门课三个意思，且 IS5542 要你造的正是 IS5113 说造不出的。** 答题写英文原词并注明语境；IS5542 笔记 `agent` 不译 |
+| **Bias** ★★★ | **IS5113 = 偏见**（伦理语境，algorithmic bias） | **IS6400 / EF5560 = 偏差**（统计语境，bias-variance、omitted variable bias）<br>**IS5542 §2.5 = 偏置**（神经网络的 bias 参数） | 三个译名对应三个语境，**写笔记时同页出现两种必须显式区分** |
+| **Data mining** ★★ | **IS6400 = 数据挖掘（褒义）**：从数据里发现模式的学科，课程主线之一 | **EF5560 = 数据挖掘（贬义）= 试到显著为止**：100 个无用的预测变量总有约 5 个 p < 0.05；Welch & Goyal 用它解释"样本内显著、样本外无用"（🎙️ M02 P2 `32:42`–`33:37`，教授特别提醒「in this way, data mining is a negative term」） | 在 EF5560 的作业/考试里写 data mining 一定是贬义；IS6400 里是中性/褒义。跨课答题先说明语境 |
+| **SELECT** | **AC6761 M06 关系代数 = 挑行** | **SQL 的 `SELECT` = 挑列** | ⚠️ **同一讲里两个含义并存**（讲义 p.40 专门用一页说它）。其他课只会遇到 SQL 那个 |
+| **Project** | **AC6761 M06 = 投影**（关系代数算子 = 挑列） | 其他所有课 = **项目**（group project） | AC6761 答题一律写 `Project (relational algebra)` |
+| **Post / Posting** | **AC6761 M02 = 过账**（日记账 → 总账） | **AC6761 M04 = 把主键复制进另一张表当外键**（数据库义） | **同一门课内部就有两义**。术语表已拆成两条互标 |
+| **Stereotype** | **AC6761 M04/M05 = 构造型**（UML 的 `<<…>>` 标记） | **IS5113 = 刻板印象**（偏见，负面概念） | 同形异义词。AC6761 答题写英文原词 |
+| **Duality** | **AC6761 M04/M05 = 二元性**（REA 的经济事件对偶：一得一失） | 优化理论 = 对偶性；哲学 = 二元论 | 目前只有 AC6761 用，其他课出现时回来加警告 |
+| **Evidence** | **IS5542 = 可信三支柱之一**（经批准的数据 + 来源 + 版本 + 评估结果，一个工程/审计概念） | **IS5113 = 伦理论证里的事实依据**（facts, shared values, logic 里的 facts） | IS5542 的 Evidence 是技术术语，不等于日常"证据" |
+| **Key** | **AC6761 = 键**（主键 / 外键 / 复合主键） | IS5542 / IS5113 = API key、加密密钥 | 简短提示即可 |
+| **Event** | **AC6761 REA = 经济事件**（必带时间戳、必关联资源与参与者） | IS6400 = 事件流 / 日志 event；IS5113 = incident | 含义相近可共用"事件"，但 AC6761 的定义更严 |
+| **Anomaly Detection** | **AC6761 = 会计凭证异常检测** | **IS6400 = 通用 outlier detection** | 语境不同，方法相通 |
+
+### 2.2 同一概念、不同标准（两边都没错）
+
+| 概念 | 一边 | 另一边 | 根源 |
+|---|---|---|---|
+| **R²** ★★★ | **EF5560**：收益预测 **≈1% 就算好**，2–3% 已是巨大优势 | **IS6400**：课堂曾以 Airbnb ≈0.4–0.5 作任务对比，属于语境例而非通用合格阈值；营销模型 50%→60% 才算改进（这个对比正是 EF5560 教授本人举的例子） | **金融收益率几乎不可预测，房价由房源属性大量决定。** 读者从一门课跳到另一门课会以为某边写错了 |
+| **Benchmark vs Baseline** | **EF5560 benchmark** = ① **可交易的投资基准**（市场组合、无风险利率）② 预测基准（12 个月移动平均） | **IS6400 baseline** = 一个简单的对照模型 | 金融的 benchmark 多了"**可交易**"这层含义（🎙️ "上证综指不可交易"是常见错误） |
+| **Validation Set vs Test Set** | **讲义**（IS6400 p.41 红字、EF5560）：**严格区分** | **助教口语**（IS6400 🎙️ `02:30:59`）："the test set — which is also called the validation data" | **以书面讲义为准**。多门课的 tutorial 口语都会混用 |
+| **Feature vs Predictor** | IS6400 更常说 **特征** | EF5560 更常说 **预测变量** | 同一物，并列收录 |
+| **Vibe Coding vs GenAI for BDA** | EF5560 | IS6400 | 同一件事两个名字，**差异本身是信息**，不统一 |
+
+### 2.3 翻译陷阱（中文语感与英文含义相反）
+
+| English | 正确含义 | 中文语感会怎么误导 | 出处 |
+|---|---|---|---|
+| **Unqualified opinion** ★★★ | **无保留意见 = 最好**的审计意见；`qualified` = **保留 = 有问题** | "unqualified" 听起来像"不合格" | [[M01-会计与商业]] §2.5.4 |
+| **Debit / Credit** ★★★ | **就是账户的"左"和"右"**，不带任何经济含义（费用增加记**借**方，负债增加记**贷**方） | "借钱 / 贷款"的语感直接导致误解 | [[M02-交易的会计处理]] §2.4.1 |
+| **Materiality** | **重要性**（会计：错报是否大到影响决策） | 与统计的 significance（显著性）不是一回事；港台译"重大性" | AC6761 |
+| **Categorical**（Kant） | **无条件的、绝对的** | 不是"类别" | [[M02-道德理论及其应用]] §2.6.3 |
+| **Utilitarianism** | **平等计入所有人的幸福** | 中文"功利"的贬义（势利、自私）完全误导 | [[M02-道德理论及其应用]] §2.7.1 |
+| **Perfect / Imperfect Duty** | **有无例外** | 不是"好不好" | [[M02-道德理论及其应用]] §2.6.7 |
+| **Null vs 0** | **Null = 余额未知**（内控缺陷）；**0 = 余额为零**（正常业务事实） | 容易当成一回事 | [[M06-ACCESS数据库构建与查询]] §2.20.2 |
+
+---
+
+## 3. 统一译名规范
+
+跨课冲突风险最高的。**全库统一按下表，不要各课各译。**
+
+**总则**（2026-09-10 新增）：**港式 / 台式译法与内地译法冲突时，正文用内地译法，并在该课术语表的「译法约定」一节注明另外两地说法。** AC6761 的完整三地对照表见其 [[AC6761_Artificial_Intelligence_Accounting/_meta/术语表|术语表]] §0。
+
+### 3.1 伦理与哲学（IS5113）
+
+| English | 采用 | 不用 | 理由 |
+|---|---|---|---|
+| Utilitarianism | 功利主义 | 效益主义 | 学界通用；但**首现处必须说明中文"功利"的贬义是误导** |
+| Deontology | 义务论 | 道义论 | 与 Duty Ethics 对应更直接 |
+| Categorical Imperative | 定言令式 | 绝对命令 | 哲学界标准译法 |
+| Hypothetical Imperative | 假言令式 | 假设命令 | 与"定言令式"构词对应 |
+| Mind | 心灵 | 思维、心智 | "思维"会丢掉意识与情绪的含义 |
+| Virtue Ethics | 德性伦理 | 美德伦理 | 与 virtue 的哲学含义更贴 |
+| Virtue / Vice | 德性 / 恶习 | 美德 / 恶德 | 与 Virtue Ethics 保持一致 |
+| Flourishing (eudaimonia) | 繁盛 | 幸福、兴盛 | "幸福"已被 happiness 占用，功利主义与德性伦理并置时会混淆 |
+| Maxim | 准则 | 格言、箴言 | 康德语境下的专门用法 |
+| Perfect / Imperfect Duty | 完全义务 / 不完全义务 | 完美义务 / 不完美义务 | 区别重点是义务的严格性与履行方式/时机的裁量；不完全义务不是可任意不履行；发展才能属不完全义务 |
+| Act / Rule Utilitarianism | 行为功利主义 / 规则功利主义 | 行动 / 准则功利主义 | 与 maxim=准则 区分 |
+| Moral Luck | 道德运气 | 道德运 | 通用译法 |
+| Objectivism | 客观主义 | 客体主义 | 与 Relativism=相对主义 成对 |
+| Workable ethical theory | 可用的伦理理论 | 可行的 / 实用的伦理理论 | "可用"强调"能拿来产出论证" |
+
+### 3.2 治理与商业（跨课）
+
+| English | 采用 | 不用 | 理由 |
+|---|---|---|---|
+| Accountability | 问责 | 责任 | 与 Responsibility（责任）区分 |
+| Transparency | 透明性 | 透明度 | 与 FATP 其他三项构词一致 |
+| Governance | 治理 | 管治、管理 | 与 Management（管理）区分 |
+| Compliance | 合规 | 遵从 | 业界通用 |
+| Stakeholder | 利益相关者 | 干系人 | 商科通用 |
+| Bias | **按语境**：偏见（伦理）/ 偏差（统计）/ 偏置（神经网络） | — | 见 §2.1 |
+| Internal Control | 内部控制 | 内部监控、内控管理 | 香港上市规则用"內部監控"，内地准则与学界通用"内部控制" |
+| Auditor | 审计师 | 核数师、稽核 | 港式"核數師"、台式"稽核"在课程术语表注明 |
+| Materiality | 重要性（水平） | 重大性 | 港台通用"重大性"；⚠️ 与统计"显著性"区分 |
+| Human-in-the-loop | 人在环路 | 人机回环 | 简洁 |
+
+### 3.3 生成式 AI（IS5542）
+
+| English | 采用 | 不用 | 理由 |
+|---|---|---|---|
+| Grounding | **接地** | 落地、扎根 | ⚠️ "落地"在中文商业语境已指 implementation（"AI 落地"），会撞车 |
+| Hallucination | 幻觉 | 臆造、瞎编 | 学界通用，且保留"看起来很真"这层含义 |
+| Foundation Model | 基础模型 | 基座模型 | 官方译法 |
+| Throughput | 吞吐 | 通量、产能 | 与 Latency=延迟 成对 |
+| Effective Context | 有效上下文 | 实际上下文 | 与"最大上下文"成对，两者的区分是考点 |
+| Compound AI | 复合 AI | 组合 AI、混合 AI | 与 Neuro-Symbolic 的"混合系统"区分 |
+| Agent（AI 语境） | **不译，保留英文** | 智能体、代理 | 见 §2.1；两个中文译名都有歧义 |
+
+### 3.4 机器学习与统计（IS6400 / EF5560）
+
+| English | 采用 | 不用 | 理由 |
+|---|---|---|---|
+| Dependent / Independent Variable | 因变量 / 自变量 | 应变量 / 独立变量 | IS6400 讲义列出三学科三套叫法，中文统一用这套 |
+| Validation Set | 验证集 | 校验集、开发集 | ⚠️ 与 Test Set（测试集）严格区分 |
+| Regularization | 正则化 | 规则化、正规化 | ⚠️ 与 **Normal Equations（正规方程）** 区分——都带"正"但无关 |
+| Overfitting / Underfitting | 过拟合 / 欠拟合 | 过度拟合 / 拟合不足 | 学界通用简称 |
+| Feature / Predictor | 特征 / 预测变量 | — | 并列收录，两课各用一个 |
+| Standardization | 标准化 | 规范化 | 与 Normalization（归一化）区分 |
+| Out-of-sample | 样本外 | 外样本 | 通用 |
+| Log Return | 对数收益 | 对数回报 | 与 Simple Return=简单收益 成对 |
+
+### 3.5 数据库（AC6761 W4–W6）
+
+| English | 采用 | 不用 | 理由 |
+|---|---|---|---|
+| Referential Integrity | **参照完整性** | 引用完整性 | 🔧 2026-09-10 裁决：Access 中文版与内地教材主流；"引用"易与 UML reference 混淆。M04 原用"引用完整性"已全部替换 |
+| Multiplicity | **多重性** | 多重度 | 🔧 中文 UML 教材更常用。M05 用了"多重度"，术语表互标别名 |
+| Association / Junction Table | **关联表** | 连接表 | "连接"已被 Join 占用 |
+| Aggregation | 聚合 | 汇总 | 与 SQL 术语一致 |
+| Cardinality | 基数 | 势 | 与 Multiplicity 互标 |
+
+---
+
+## 4. ⚠️ 跨课勘误提示
+
+> 各课讲义里**已确认的知识性错误**，且落在跨课通用的概念上。**读者引用这些词时容易被误导。**
+
+| 概念 | 哪门课讲义 | 讲义怎么说 | 正确是什么 | 课堂口径 | 详见 |
+|---|---|---|---|---|---|
+| **p 值** | IS6400 W2 p.20 | "the probability that the true slope is zero" | p 值 = **P(观察到这么极端的数据 \| 真实系数=0)**，不是 P(真实系数=0 \| 数据)。**条件方向反了** | ⚠️ 教授**原样复述了这句错的**（🎙️ `36:35`）——讲义与课堂一致，但都不对 | [[M02-预测分析-线性回归]] §2.6.2 |
+| **Ridge 回归** | IS6400 W2 p.50 | Ridge "force some coefficients to be **0**" | **那是 Lasso（L1）的性质**。Ridge通常收缩而不作L1式稀疏选择；特定条件下某系数仍可精确0，不能说永不为0 | ✅ 教授口述是对的："become very very small"（🎙️ `01:45:33`）；notebook 15 个系数全非零 | **降级为"讲义单页笔误，课堂正确"** |
+| **左外连接的 SQL** | AC6761 W6 p.44 | `LeftJoin … WHERE` | `WHERE` 会让外连接**退化成内连接**，讲义给的 8 行答案与它自己的 SQL 对不上 | 无转录 | [[M06-ACCESS数据库构建与查询]] §9.3 |
+| **Access SQL 方言** | AC6761 W6 全篇 | 日期 `#7/31/2014#`、文本 `"C-2"` 双引号、`Nz(x,0)`、`EXISTS` 判非空 | 标准 SQL：`DATE '2014-07-31'`、`'C-2'` 单引号、`COALESCE(x,0)`、`IS NOT NULL` | — | ⚠️ **拿 AC6761 的写法去 IS6400 的环境跑必错**。[[M06-ACCESS数据库构建与查询]] §9.3 有对照表 |
+| **收益口径** | EF5560 Lec01 p.19 | 唯一的公式是**简单收益** | 三个月频 CSV **全是对数收益**。按简单收益复利，S&P 500 的 20 年累计会从 5.87 倍算成 4.59 倍 | — | [[M01-金融数据与Vibe-Coding]] §9.3 |
+| **Copilot 的层级** | IS5542 L1 p.55 | 与六个基础模型平铺在一页 | Copilot 是**构建在他人基础模型之上的产品**，不是基础模型 | ✅ 教授当堂纠正 | [[M01-导论-生成式AI基础与企业落地]] §2.4.4 |
+| **"最大多数人的最大善"** | IS5113 M2 p.79/p.83 | 把功利主义描述为 greatest good for the greatest number | 同一讲义 p.56 明说这个口号是**错的**——它偷偷混进了分配要求，效用原则只关心总量 | — | [[M02-道德理论及其应用]] §2.7.8 |
+
+---
+
+## 5. 五门课 GenAI 使用政策对照
+
+> IS6400 与 EF5560 的代理都建议单开这一节。**五门课口径不同，别用一门课的规则去猜另一门。**
+
+| 课程 | 平时作业 | 小组项目 | 期末考 | 附加条件 | 来源 |
+|---|---|---|---|---|---|
+| **IS5113** | ✅ Participation 允许 | ✅ 允许 | ❌ | — | 官方目录 |
+| **IS5542** | ✅ AT1 允许 | ✅ AT2 允许；🎙️ 教授**鼓励**用 AI 写项目代码（"手写每一行 is old fashioned"） | ❌ | 项目仍须自己定义问题、设计工作流、指明数据来源 | 官方目录 + 转录 |
+| **IS6400** | ✅ AT1 允许；ILO 3 把"用 GenAI 写代码"列为**正式学习目标**；🎙️ 助教鼓励把 prompt 丢给 AI | ✅ AT2 允许 | ❓ 未标注（考试不在 ATs 表内；🎙️ 已确认**闭卷**） | notebook 自带 `🤖 AI Prompt` 单元格 | 官方目录 + 转录 |
+| **EF5560** | ✅ Coursework 允许；**但"最终版本必须是自己的，不能复制粘贴 AI 答案"**；须**披露** | ✅ | ❌ **期中测验与期末均禁用** | ⚠️ 官方目录与 syllabus **互补**，三条同时生效 | 官方目录 + syllabus |
+| **AC6761** | ✅ 课堂活动允许检索，**严禁代写** | ✅ 允许，**必须署明并解释为什么采纳该段输出** | ❌ **期中期末一律禁止** | — | 官方目录 = Outline |
+
+> 💡 **共同点**：五门课都**不允许考试用**；都允许小组项目用。
+> ⚠️ **分歧点**：EF5560 和 AC6761 对**平时作业**加了"不能直接复制"/"必须署明"的条件，其余三门没有明写。**保守做法：任何课的作业都披露 AI 使用。**
+
+---
+
+## 6. 变更记录
+
+| 日期 | 变更 |
+|---|---|
+| 2026-09-08 | 建表。登记 IS5113 M01 的 9 个跨课候选概念 + 12 条统一译名 |
+| 2026-09-09 | IS5113 M02 回写：新增 7 个跨课概念 + 8 条统一译名。⚠️ `Flourishing` 必须译"繁盛"不能译"幸福" |
+| **2026-09-10** | **第一次全量合并**。五门课共提交 227 条候选（AC6761 71 / IS6400 63 / EF5560 63 / IS5542 30），筛出：§1 共享概念 **63 条**（按 A–E 五组，加 IS6400 列）；§2 **一词多义** 新设（11 条完全不同 + 5 条不同标准 + 7 条翻译陷阱，**`Agent` 三课三义、`Bias` 三义、R² 两套标准**为最高优先）；§3 译名规范从 21 条扩到 **46 条**，分五组，新增三地译法总则；§4 **跨课勘误** 新设 7 条（含 IS6400 p 值定义错、AC6761 Access SQL 方言表）；§5 **GenAI 政策对照** 新设。<br>🔧 裁决 2 处课内译名冲突：`Referential Integrity` → 参照完整性（M04 已改）；`Multiplicity` → 多重性（M05 互标别名）。<br>各课 `待并入术语总表.md` **保留为提交记录**，后续 module 继续追加 |
+| 2026-09-11 | §2.1 新增 **Data mining**（IS6400 褒义 vs EF5560 贬义），来源 EF5560 M02 转录 |
+| 2026-09-12 | B 表：IS5542 M02 并入——基准 / 样本外 / 训练集 / 提示词 / 开源权重五行补 IS5542 列；新增「基准饱和 / 数据污染」「评测协议 / 每接受任务成本」「pass@k / pass^k」三行（与 EF5560 M02 的样本外纪律、数据挖掘互指） |
+| 2026-09-18 | **尾部恢复**：本文件在 9/12–9/17 之间被截断（止于「利益相关者」半行，§1-C 后半、§2–§6 全部丢失，所有本地备份与 git 初始提交均为截断版）。今日用 iPhone 端 2026-09-12 的完整副本接回截断点之后的 212 行；截断点之前保留电脑端 9/16 的较新内容（M03 / M04 行）。**9/12–9/16 之间若对 §2–§6 有过改动，已随截断丢失，无法核实** |
+| 2026-09-18 | IS5542 M03 v0.9：§2.1 `Agent` 行补本课正式定义的链接；新候选（零信任 / 沙箱与审批门 / 每接受结果成本 / harness · MCP · context rot · human-on-the-loop 译名）记在 `IS5542_GenAI_in_Business/_meta/待并入术语总表.md` F 节，待下次合并 |
+
+## 2026-09-30 T05 谱聚类术语增量
+
+新增谱聚类、相似度矩阵、RBF 相似度、图拉普拉斯、谱嵌入与链接矩阵，定义及来源统一见 [[IS6400_Business_Data_Analytics/_meta/术语表|IS6400 术语表]] 与 [[T05-聚类实战-Kmeans层次密度与谱聚类]] §2.17。既有 M05 的 K-means/层次/DBSCAN 首现位置不改。
+
+### T04课堂机制补充索引（2026-10-01）
+
+[[T04-特征选择与PCA实战-Iris]] §2.2–2.3：χ²非负输入按类特征总和/期望计分，单位可改排序；F组间/组内均方比，常数/零组内方差退化另报，不把调用p值当校准已验。§3.2–3.6：树训练节点贡献→每树归一→平均；SFM对象/阈值/掩码，RFE逐轮重训，SFS候选×折完整状态。§4：PCA保均值/轴输出组合坐标，原列选择保掩码，两类接口不能互套；无标签不免除留出X泄漏，图读须核id。仅课堂公开机制与补例，不包含个人评分成品。
+
+## EF5560 M05 · 可解释机器学习与投资组合决策（2026-10-08）
+
+| 中文 | English | 一句话定义 | 首现与依赖 |
+|---|---|---|---|
+| 预测贡献 | Forecast contribution | 给定观测中单项输入对预测的加数 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.2；标准化、系数 |
+| 置零重要性 | Drop-to-zero importance | 固定模型与同样本逐列置零造成的训练拟合损失 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.5；SSE、零基准 |
+| 条件响应曲线 | Reference-value response curve | 其余输入固定参考值时，某一输入与预测的关系 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.7；固定模型、网格 |
+| 预测排序 | Forecast sort | 按冻结模型的预测排股票次序 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.9；截面、信息时点 |
+| 最高减最低价差 | Top-bottom spread | 最高组均值减最低组均值；单位敞口须说明 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.10；排序、等权 |
+| 只做多授权 | Long-only mandate | 权重非负且全额投资，不能偷偷使用空头 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.11；权重、投资限制 |
+| 金额中性 | Dollar neutrality | 多空金额互抵，不保证市场或行业风险中性 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.11；净敞口、beta |
+| 去均值信号 | Demeaned forecast | 预测减同一形成期截面均值 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.12；预测、截面均值 |
+| 预测加权 | Forecast weighting | 去均值信号除以绝对值总和形成多空权重 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.12；去均值、毛敞口 |
+| 只做多倾斜 | Long-only tilt | 以基准权重加信号倾斜后截断、归一并核限仓 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.12；基准、约束 |
+| 毛敞口 | Gross exposure | 所有持仓权重的绝对值总和 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.13；权重、绝对值 |
+| 净敞口 | Net exposure | 保留正负号的权重总和 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.13；权重、空头 |
+| 波动率目标 | Volatility targeting | 用事前风险估计缩放仓位接近目标波动 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.13；风险频率、杠杆限制 |
+| 累计财富 | Cumulative wealth | 将每期简单收益乘到前一期资本 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.15；简单收益、复利 |
+| 年化算术均值 | Annualized arithmetic mean | 周期均值乘每年周期数，不是复合增长 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.16；均值、频率 |
+| 复合年收益 | Compound annual return | 累计资本增长对应的年几何增长率 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.16；累计财富、持有期 |
+| 夏普比率 | Sharpe ratio | 平均超额收益除以同频超额收益标准差 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.17；超额收益、标准差 |
+| 市场择时 | Market timing | 依据事前预测改变一个市场的逐期仓位 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.19；预测时点、仓位 |
+| 持仓阈值 | Timing threshold | 本例训练均值判持有与现金，不是MA12损失基准 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.21；冻结训练、对数预测 |
+| 风险厌恶 | Risk aversion | 方差惩罚的强度，越大越少承担风险 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.25；方差、目标函数 |
+| 均值方差仓位 | Mean-variance position | 按预期收益和风险之比配市场仓位后裁剪约束 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.25；风险厌恶、方差 |
+| 基点 | Basis point | 1bp为0.01%，10bp为0.001的小数收益 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.28；百分比、百分点 |
+| 换手率 | Turnover | 交易金额占资本比例，须写是否计买加卖或半边 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.28；漂移权重、调仓 |
+| 最大回撤 | Maximum drawdown | 资本相对历史高点的最负跌幅，高点含初始1 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.30；财富、高点状态 |
+| 资本资产定价模型 | CAPM | 以本地市场超额收益和beta给风险补偿基准 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.32；超额收益、本地市场 |
+| 市场 beta | Market beta | 市场超额变动一个百分点时拟合超额变动的幅度 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.32；OLS、市场超额收益 |
+| CAPM alpha | CAPM alpha | 本地市场beta贡献以外的平均回归截距 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.32；OLS截距、标准误 |
+| 单期异常收益 | One-period abnormal return | 一期总收益减同期CAPM风险补偿基准 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.33；CAPM、时点 |
+| Newey–West 标准误 | Newey-West standard error | 按指定滞后校正异方差与序列相关的估计不确定性 | [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策\|M05]] §2.34.1；残差、序列相关 |
+
+## M04 统一译名增量（2026-10-10）
+
+本次只统一容易混用的译名，不宣称这些概念已在其他课讲授。来源：[[IS5542_GenAI_in_Business/notes/M04-设计思维-业务机会识别与AI创意工作坊|IS5542 M04]] §2.3–2.10；本轮全篇教学与同源图文核对闭合，Obsidian 未直接看、声轨未人工听校。
+
+| English | 统一中文 | 使用边界 |
+|---|---|---|
+| Jobs To Be Done (JTBD) | 工作待完成 | 指用户想实现的进展或结果，不是招聘岗位清单；Job Story 统一为“工作故事” |
+| Design Thinking | 设计思维 | 不等于只画外观；五阶段与两菱形已回原图核对，见本讲 §2.6 |
+| How Might We (HMW) | 如何才能问题 | 保留 HMW 缩写；是开放且有边界的问题，不预设唯一产品解法 |
+| Value–Complexity Matrix | 价值×复杂度矩阵 | 本课是组织价值与实施复杂度，不是模型复杂度 |
+| Dot voting | 点投票 | 汇集团队偏好，不代表客户验证、财务批准或本人投票记录 |
+
+## 2026-10-14 IS6400 分类跨课增量
+
+一行是一组在模型应用中容易混淆的概念。
+
+| 中文 | English | 区分 | 展开入口 |
+|---|---|---|---|
+| 折外预测 | Out-of-fold Prediction | 每行预测来自未用该行训练的模型和预处理 | [[IS6400_Business_Data_Analytics/notes/M06-分类-决策树集成SVM与不平衡学习\|M06 分类机制]] §2.8 |
+| 硬投票／平均概率 | Hard Vote / Mean Probability | 数标签与平均类概率可能选出不同类别 | [[IS6400_Business_Data_Analytics/notes/T07-分类实战-信用审批与欺诈识别\|T07 分类实战]] §2.5 |
+| 支持向量／间隔 | Support Vector / Margin | 样本与距离带不是同一种对象 | [[IS6400_Business_Data_Analytics/notes/M06-分类-决策树集成SVM与不平衡学习\|M06 分类机制]] §2.9 |
+| 漏报／误报与阈值 | False Negative / False Positive | 代价和基率决定报警取舍，accuracy 不代替 | [[IS6400_Business_Data_Analytics/notes/M06-分类-决策树集成SVM与不平衡学习\|M06 分类机制]] §2.13–2.14 |
+
+读第一行：折外不是“同一模型训练后再预测自己”，预处理也须在训练折内拟合。方法可迁移到金融与其他业务分类；未对其他课旧篇重新验收。
+
+## EF5560 M05 暴露口径（2026-10-15 并入）
+
+总暴露（gross exposure）是所有持仓权重绝对值之和；净暴露（net exposure）是权重的代数和。例如多头 0.6、空头 −0.4，总暴露为 1.0，净暴露为 0.2。二者不能混用；展开见 [[EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策|EF5560 M05]]。
+
+
+## 2026-10-15 跨课来源与译名增量
+
+下面一行是一组在不同课程的数据治理语境中容易混用的概念；完整定义和条件回到具体笔记，不以词表代替法律判断。
+
+| 统一译名 | English | 本轮定位与边界 |
+|---|---|---|
+| 有意义的同意 | Meaningful consent | [[M06-隐私与监控-从数据采集到行为影响]] §2.2；检查理解与实际拒绝能力，非所有处理的唯一依据 |
+| 用途扩张／目的外使用 | Function creep | 保留IS5113 M02首现；M06 §2.5深化；与AI应用的二次用途、审计数据用途相接 |
+| 合法处理依据／正当利益 | Lawful basis / Legitimate interests | M06 §2.9–2.10；一般依据不替代特殊数据条件，跨课金融/业务数据合规应用仍须核范围 |
+| 特殊类别个人数据 | Special categories of personal data | M06 §2.11；健康等数据额外门槛，不把所有照片自动列为唯一识别生物数据 |
+| 推断隐私 | Inference privacy | M06 §2.3；笔记整理的分析名称，关注普通记录推得的新信息，不冒称教师正式术语 |
+
+IS6400本轮集成、间隔、precision/recall与class_weight已有词条，不造新独立术语；仅补课堂来源及与测试集重平衡的易混边界，详本课术语表与M06/T07。单课内部的寒蝉效应、监控资本主义保留在IS5113课程术语表，不为凑跨课数重复建行。
+
+## M06 · 2026-10-15 新增
+
+本组来自EF5560，本次主要解决技术词与商业含义混淆。Token译“代币/通证”时不能代入LLM“词元”含义。
+
+| 中文 | English | 本课含义 | 来源 |
+|---|---|---|---|
+| 共享账本 | Shared ledger | 多参与方按约定共同使用的业务记录 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.7 |
+| 区块链 | Blockchain | 链接批次记录并按共同规则维护共享历史 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.7 |
+| 代币 | Token | 在账本上记录的数字单位 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.7 |
+| 哈希 | Hash | 按固定算法把字节变成摘要，用可信基线比较 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.10 |
+| 数字签名 | Digital signature | 将特定消息与授权密钥联系并可公开验证 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.11 |
+| 共识 | Consensus | 选择共同承认的一条有效历史的协议规则 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.13 |
+
+## M06 两处解释修补（2026-10-15）
+
+| 中文 | English | 易混边界 | 来源 |
+|---|---|---|---|
+| 哈希碰撞 | Hash collision | 不同输入同摘要；抗碰撞非零碰撞 | [[EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链\|M06]] §2.10 |
+
+有限长度摘要不能给所有文件唯一编号；同摘要只能在算法安全性、可信基线和正确实现条件下支持内容一致，不能称绝对同一证明。
+
+## EF5560 M06 英文应试语境对照（2026-10-15）
+
+不覆盖已有跨课定义，只补本课使用位置与易混边界；对应正文已有中文解释及英文配词。
+
+| 中文／English | 本课语境与易混边界 | 位置 |
+|---|---|---|
+| 访问控制／Access control | 谁可批准和改权限；不能只数批准人 | M06 §2.15 |
+| 对账／Reconciliation | 比较记录并解决差异；不等于消除付款义务 | M06 §2.16 |
+| 流动性／Liquidity | 到期付款时现金可用；不同于全年利润 | M06 §2.23 |
+| 信用风险／Credit risk | 借款人或交易对手不按约付款；不同于处理时间 | M06 §2.2、§2.25 |
+
+详[[EF5560_Fintech_and_AI_in_Finance/_meta/M06-英文原题与术语修复-2026-10-15|英文原题与术语修复记录]]。
+
+## 2026-10-18 · IS5542 M05 跨课增量
+
+| 中文 | English | 定义与跨课边界 | 本轮定位 |
+|---|---|---|---|
+| 任务束 | Task Bundle | 把岗位拆成可分别保持、增强、自动化或新增的任务集合；自动化一个任务不等于整个岗位消失 | IS5542 M05 §2.5 |
+| 成果计价 | Outcome-based Pricing | 按被验证和接受的交付物收费，而非按账号或模型调用收费；可与每接受结果成本一起分析单位经济性 | IS5542 M05 §2.3 |
+| 薪酬总包 | Compensation Package | 可能同时包含现金薪酬、股权与股票期权的整体报酬；未拆分总包不能直接当现金年薪 | IS5542 M05 §2.10 |
+| 现金薪酬 | Cash Compensation | 按月或按年实际支付、可用于当期支出的报酬；可支持当前现金支出 | IS5542 M05 §2.10 |
+| 股权 | Equity | 公司所有权权益；可兑现价值取决于公司价值、稀释、权利与流动性 | IS5542 M05 §2.10 |
+| 股票期权 | Stock Option | 满足归属等条件后按约定行权价购买股份的权利，不等于已经持有现金或股份 | IS5542 M05 §2.10 |
+| 公司纸面估值 | Paper Company Valuation | 私营公司在特定融资或交易口径下的非现金名义估值；本例 US\$20m | IS5542 M05 §2.10 |
+| 个人纸面权益 | Paper Equity Value | 公司估值乘个人权益比例得到的简化名义值；本例 US\$20m × 60% = US\$12m，仍非现金 | IS5542 M05 §2.10 |
+| 收入运行率 | Revenue Run Rate | 把短期收入节奏折算成年度规模；不等于已实现全年收入或利润，也不与未定义 ARR 混用 | IS5542 M05 §2.1 |
+
+EF5560 M06 本批 `cross_rows` 为 0；“共享历史”保留为本课对“共享账本”的课堂表达，**已核无根表增量**。
+
+本次写回与适用同步证据见 [[_meta/制作与融合回执-2026-10-18|制作与融合回执]]。
+
+## 2026-10-20 Canvas 材料增量
+
+统一译名与易混含义的本批增量；各模型完整教学在课程正文。原有同名术语不重复建条，旧条的来源增补见下方跨课说明。
+
+| 中文 | English | 含义/边界 | 本次正文 |
+|---|---|---|---|
+| 时间序列 | Time Series | A sequence of observations indexed in time order, usually at regular intervals. | [[IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性\|M07]] §2.2 |
+| 季节性 | Seasonality | A repeating pattern tied to a fixed and known calendar period. | [[IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性\|M07]] §2.3 |
+| 周期性 | Cyclical pattern | A recurrent rise and fall whose duration is not necessarily fixed. | [[IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性\|M07]] §2.3 |
+| 简单移动平均 | Simple Moving Average | A forecast equal to the arithmetic mean of the most recent fixed window of observations. | [[IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性\|M07]] §2.4 |
+| 简单指数平滑 | Simple Exponential Smoothing | A recursive level forecast that gives exponentially decreasing weights to older observations. | [[IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性\|M07]] §2.4 |
+| 双重移动平均 | Double Moving Average | A trend method that smooths a series twice and uses the difference between the two smooths to estimate level and slope. | [[IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性\|M07]] §2.5 |
+| Holt 线性趋势 | Holt's Linear Trend | An exponential-smoothing method that recursively updates both level and trend. | [[IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性\|M07]] §2.6 |
+| Holt-Winters | Holt-Winters Method | An exponential-smoothing method that updates level, trend, and seasonal states. | [[IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性\|M07]] §2.6 |
+| ETS | Error-Trend-Seasonality | A notation that specifies the error, trend, and seasonal forms of an exponential-smoothing model. | [[IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性\|M07]] §2.7 |
+| 滞后特征 | Lag Feature | A predictor formed from a value observed a fixed number of periods before the forecast origin. | [[IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性\|M07]] §2.10 |
+| 白噪声 | White Noise | A zero-mean, constant-variance sequence with no serial correlation at non-zero lags. | [[IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA\|M08]] §2.2 |
+| 自相关函数 | Autocorrelation Function | The correlation between a series and its lagged values as a function of lag. | [[IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA\|M08]] §2.2 |
+| 偏自相关函数 | Partial Autocorrelation Function | The correlation at lag $k$ after removing the linear effects of the intermediate lags. | [[IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA\|M08]] §2.5 |
+| 随机游走 | Random Walk | A process whose current value equals the previous value plus an unpredictable innovation, optionally with drift. | [[IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA\|M08]] §2.3 |
+| 自回归模型 | Autoregressive Model | A model that predicts the current value from its own past values. | [[IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA\|M08]] §2.4 |
+| 移动平均误差模型 | Moving Average Model | A model that represents the current value as a linear combination of current and past innovations. | [[IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA\|M08]] §2.5 |
+| 弱平稳 | Weak Stationarity | A process with time-invariant mean and variance and autocovariance depending only on lag. | [[IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA\|M08]] §2.6 |
+| 差分 | Differencing | Subtracting lagged observations to remove stochastic trend or seasonal dependence. | [[IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA\|M08]] §2.7 |
+| ARIMA | Autoregressive Integrated Moving Average | An ARMA model fitted to a differenced series. | [[IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA\|M08]] §2.8 |
+| 滚动前推评价 | Rolling-origin Evaluation | A time-ordered evaluation that repeatedly trains on past data and predicts a later origin. | [[IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA\|M08]] §2.9 |
+| 自回归分布滞后 | Autoregressive Distributed Lag | A regression containing lags of the response and current or lagged explanatory variables. | [[IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA\|M08]] §2.10 |
+| 验证 | Verification | Checking a claimed identity against a reference. | [[IS5113_AI_Ethics_and_Regulations/notes/M06-隐私与监控-从数据采集到行为影响\|M06]] §2.4 |
+| 识别 | Identification | Finding an identity among candidates. | [[IS5113_AI_Ethics_and_Regulations/notes/M06-隐私与监控-从数据采集到行为影响\|M06]] §2.4 |
+| 寒蝉效应 | Chilling effect | Reduced lawful activity due to perceived observation. | [[IS5113_AI_Ethics_and_Regulations/notes/M06-隐私与监控-从数据采集到行为影响\|M06]] §2.5 |
+| 合法处理依据 | Lawful basis | A legal ground supporting a specific processing purpose. | [[IS5113_AI_Ethics_and_Regulations/notes/M06-隐私与监控-从数据采集到行为影响\|M06]] §2.9 |
+| 正当利益 | Legitimate interests | Interests subject to necessity and rights balancing. | [[IS5113_AI_Ethics_and_Regulations/notes/M06-隐私与监控-从数据采集到行为影响\|M06]] §2.10 |
+| 监控资本主义 | Surveillance capitalism | Monetising behavioural data and predictive insights. | [[IS5113_AI_Ethics_and_Regulations/notes/M06-隐私与监控-从数据采集到行为影响\|M06]] §2.12 |
+
+跨课对齐：移动平均平滑（M07）与误差移动平均模型（M08 MA(q)）分义；成员推断、模型反演与模型提取分开；提示注入在 IS5113 M06 解释安全边界，与 IS5542 的代理工具控制互参。基学习器（Base Learner）在 EF5560 M04 §2.8 明确：线性基模型的固定线性组合仍是线性函数。EF5560 的 OOS $R^2$ 是误差减少比例，不是投资收益率。
+
+## 2026-10-20 安全与治理术语补齐
+
+定义为笔记参考；原有同名条目不重复，新增来源统一为 [[IS5113_AI_Ethics_and_Regulations/notes/M06-隐私与监控-从数据采集到行为影响|M06]] §5.1及所列首现正文。
+
+| 中文 | English | 英文参考定义 | 首现 |
+|---|---|---|---|
+| AI 攻击面 | AI Attack Surface | The data, models, interfaces and permissions through which an AI system can be attacked. | §2.19 |
+| 对抗样本 | Adversarial Example | An input deliberately perturbed to induce an unwanted model prediction. | §2.19.1 |
+| 数据投毒 | Data Poisoning | Malicious changes to training examples, labels or data pipelines that aim to alter learned behavior. | §2.19.2 |
+| 模型提取 | Model Extraction | Using model queries to approximate or copy its predictive behavior. | §2.19.3 |
+| 模型反演 | Model Inversion | Inferring sensitive attributes or representative input characteristics from model outputs and auxiliary information. | §2.19.4 |
+| 成员推断 | Membership Inference | Inferring whether a particular record was included in a model training set. | §2.19.5 |
+| 提示注入 | Prompt Injection | Untrusted input that attempts to redirect a model across its intended instruction or permission boundary. | §2.19.6 |
+| 代理式失配 | Agentic Misalignment | Agent behavior that pursues an assigned objective using strategies inconsistent with intended human control or constraints. | §2.20 |
+| 可控性测试 | Controllability Testing | Testing whether a system respects shutdown, replacement and permission constraints in specified scenarios. | §2.20 |
+| 负责任 AI 四支柱 | Responsible AI Four Pillars | A continuing control framework connecting governance, technology, people and monitoring. | §2.21 |
+| 数据血缘 | Data Lineage | A record of where data originated and how it was transformed and used. | §2.21 |
+| 红队测试 | Red Teaming | Adversarial testing designed to discover failures, misuse paths and weaknesses. | §2.19/§2.21 |
+
+提示注入等已存在的跨课译名，新增IS5113 M06 §2.19来源参照，不改变原条定义；六种攻击分类保持一致。
+
+## 2026-10-21 G/E实质审修
+
+统计创新与业务创新不是同义；两者虽可写innovation，此处特指预测误差。似然为正，对数似然可为负，不把负的logL当负概率。
+
+| 中文 | English | 定义与边界 | 正文深化 |
+|---|---|---|---|
+| 创新／创新误差 | Innovation | 当前实际观测中，无法由此前可用信息预测到的部分；在给定模型下由实际减一步预测估计。 | M08 §2.5 |
+| 对数似然 | Log-likelihood | 在给定模型及条件下，将数据似然取自然对数形成的估计目标；可为负，最大化方向与正似然相同。 | M07 §2.7 |
+
+## 2026-10-21 · 23 条待核线索闭环
+
+| 中文 | English | 定义与边界 | 正文定位 |
+|---|---|---|---|
+| 原生可解释性 | Intrinsic interpretability | 利用模型自身可读结构理解决定；复杂度和受众仍影响理解 | [[IS5113_AI_Ethics_and_Regulations/notes/M04-AI透明-从看得见到信得过\|IS5113 M04]] §2.2.1；可对读 EF5560 M04 小树 |
+| 事后解释 | Post-hoc explanation | 拟合后分析模型行为；不自动证明因果或公平 | [[IS5113_AI_Ethics_and_Regulations/notes/M04-AI透明-从看得见到信得过\|IS5113 M04]] §2.2.1；可对读 EF5560 M04 置换重要性 |
+
+残差的事后形成时点、训练R²与OOS基准区别、RMSE的配对分母，本次仅补正文和课程条目说明，不另造同义术语或改旧首现。
+
+## 2026-10-21 · 新音源的同意设计与控制边界
+
+| 中文 | English | 与已有词的关系 | 来源 |
+|---|---|---|---|
+| 动态隐私同意 | Dynamic privacy consent | 有意义同意的设计细化：允许按用途和时间调整选择；不等于新增法律处理依据 | IS5113 M06 §2.2／§2.18，T1 44:24–46:15 |
+
+IS5542 M03运行时控制与AC6761模型约束仍沿用既有词条，本次增加课堂来源，不覆盖旧首现。
+
+## 2026-10-21 · IS6400 M07三源课堂来源回填
+
+本次无新跨课术语，不重复建立2026-10-20已有的时间序列、季节性、SMA、SES、双重移动平均、Holt、Holt-Winters、ETS与滞后特征。新增来源边界如下：S15 `03:27`–`06:35`确认时间序列的有序与固定间隔；S15 `22:08`–`27:30`说明历史关系可能不继续；S16 `00:21`–`06:37`及S17 `00:00`–`06:53`讲SES递推；S17 `13:27`–`28:32`讲Holt/Holt-Winters；S17 `41:40`–`43:20`只覆盖p.44 lag/rolling入口，完整滞后方法留到下周，p.45周期／日历编码未录、不可降权。Holt-Winters p.34–35公式免背不等于整章免考；课堂固定参数递推也不覆盖T08软件`fit`的参数估计。三源为独立时钟，接缝长度未知。
+
+## 2026-10-22 Canvas 新材料
+
+本轮 AC6761 新讲义的跨课复用定位如下；不替换其他课定义和原首现。
+
+| 术语 | 本轮用法与边界 | AC6761 位置 |
+|---|---|---|
+| 半监督 / 强化学习 | 少量标签与无标签配合 / 行动反馈学策略 | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术\|M08 AI基础与会计技术]] |
+| 最小二乘 / 残差 | 最小化训练残差平方和；样本内好不保证未来好 | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术\|M08 AI基础与会计技术]] |
+| 应付账款周转天数 DPO | 平均应付除以期间赊购额再乘天数；成本替代须声明 | [[AC6761_Artificial_Intelligence_Accounting/notes/M09-AI财报分析与利益相关者\|M09 AI财报分析与利益相关者]] |
+| 杜邦 / 情景分析 | 同口径分解ROE / 换明确假设重算 | [[AC6761_Artificial_Intelligence_Accounting/notes/M10-AI财务分析与比率核验\|M10 AI财务分析与比率核验]] |
+| 前视偏差 | 混入预测时未公开数据或未成熟标签 | [[AC6761_Artificial_Intelligence_Accounting/notes/M11-财务预测实作与AI伦理\|M11 财务预测实作与AI伦理]] |
+| MAE / 问责 | 留出平均绝对误差 / 指定最终审批与解释责任 | [[AC6761_Artificial_Intelligence_Accounting/notes/M11-财务预测实作与AI伦理\|M11 财务预测实作与AI伦理]] |
+
+稳定词条复用原译名；“可追溯证据的AI分析”为流程描述，不另建专业术语。
+
+## 2026-10-22 · EF5560 M07 跨课译名与应用
+
+| 术语 | English | 本轮区分与去向 |
+|---|---|---|
+| 净资产价值 | Net asset value | 普通股资产扣负债与优先请求权；M07正文已展开 |
+| 托管付款／私钥托管 | Escrow / Custody | 前者为条件持款，后者为密钥控制安排；M07正文已展开 |
+| 智能合约 | Smart contract | 程序执行不自动等于法律合同有效；M07正文已展开 |
+| 预言机 | Oracle | 链外信息接入，不自动证明事实真实；M07正文已展开 |
+| 流动性池／现金流动性 | Liquidity pool / Liquidity | 交易储备与到期现金能力分开；M07正文已展开 |
+| 精确率／误报率 | Precision / False positive rate | 已标记与全部真实正常两个分母；M07正文已展开 |
+
+本次管理者已重读根总表并精确追加 M07 应用，不重写其他课程首现。
+
+[[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式|M07]]：对应 §2.6、§2.12–2.13、§2.19、§2.25；与会计权益、伦理/法律合同及分类指标分别区分，不改变既有课程首现。
+
+## 2026-10-22 · EF5560 M07 库存、杠杆与套利应用
+
+正文先解释动作，再命名术语；原卡40条补为42条（新增套利、杠杆两卡），其余三词在正文就地解释。均为M07应用/深化，不改已登记的首现。
+
+| 中文 | English | 本次就地解释 | 正文位置 |
+|---|---|---|---|
+| 套利 | Arbitrage | 在便宜处买入、贵处卖出以利用价差，仍受费用和执行风险约束 | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.20.6 |
+| 杠杆 | Leverage | 用较少担保资金支持较大计价头寸，价格变化放大投入资金的损益 | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.22 |
+| 库存／储备 | Reserves | 池子当时分别持有的两种币数量，不是交易者个人余额 | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.19 |
+| 保证金 | Margin | 为支持头寸履约而投入的担保资金，须满足平台条件 | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.22 |
+| 清算 | Liquidation | 保证金等条件不足时按规则强制减少或关闭头寸 | [[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式\|M07]] §2.22 |
+
+储备在本例指池子库存；不要与银行法定准备金或会计储备自动混同。五词已在正文具体例解释，表本身不代替教学。
