@@ -1,0 +1,65 @@
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+from urllib.parse import unquote, urlsplit
+import json
+import mimetypes
+
+BASE = Path('E:/app-data/codex/scratchpad/vault-notes-revision-20261023')
+VAULT = Path('D:/上课资料/CityU')
+MODULES = Path('C:/Users/BenLi/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules')
+DIAGRAM = Path('E:/app-data/diagram-tools/node_modules')
+
+HTML = r'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CityU 笔记同源阅读预览</title>
+<link rel="stylesheet" href="/katex/katex.min.css"><style>body{margin:0;background:#f4f5f6;color:#202326;font:17px/1.8 "Microsoft YaHei",sans-serif}header{position:sticky;top:0;background:#fff;padding:10px 24px;border-bottom:1px solid #ddd;z-index:10}main{max-width:940px;margin:20px auto;padding:28px 38px;background:white}h1,h2,h3,h4{line-height:1.45;margin-top:1.8em}h2{border-top:1px solid #ddd;padding-top:20px}table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.65;margin:16px 0}th,td{border:1px solid #ccc;padding:7px;vertical-align:top;overflow-wrap:anywhere}th{background:#f3f5f7}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f4f5f7;padding:14px;font:14px/1.6 Consolas,monospace}code{font-size:.9em}blockquote{margin:15px 0;padding:8px 16px;background:#f4f6f9}details{padding:12px;background:#f9fafb;margin:14px 0}img{max-width:100%;height:auto}.mermaid{margin:20px 0;overflow:auto}.mermaid svg{display:block;max-width:100%;height:auto;margin:auto}.katex-display{overflow-x:auto;overflow-y:hidden}a{color:#145c93}.status{font-size:13px;color:#555}p{margin:.85em 0}</style>
+<header><select id="which"><option value="ac6761-m01">AC6761 M01</option><option value="ef5560-m01">EF5560 M01</option><option value="is5113-m01">IS5113 M01</option></select> <button id="reload">重载候选</button> <span id="status" class="status">loading</span></header><main id="content"></main>
+<script src="/marked/marked.umd.js"></script><script src="/katex/katex.min.js"></script><script type="module">
+import mermaid from '/mermaid/mermaid.esm.min.mjs';
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'neutral',fontFamily:'Microsoft YaHei, sans-serif',flowchart:{htmlLabels:true,useMaxWidth:true}});
+async function show(){let key=document.querySelector('#which').value;let d=await(await fetch('/note/'+key)).json();let t=d.text.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/,'');let codeFragments=[];t=t.replace(/```[\s\S]*?```|`[^`\n]*`/g,m=>{let n=codeFragments.length;codeFragments.push(m);return 'CODEFRAGMENT'+n+'END';});let maths=[];t=t.replace(/(?<!\\)(\$\$[\s\S]+?\$\$|\$[^\n$]+?\$)/g,m=>{let display=m.startsWith('$$');let body=m.slice(display?2:1,display?-2:-1);let n=maths.length;maths.push({body,display});return 'MATHPLACEHOLDER'+n+'END';});t=t.replace(/!\[\[([^\]]+)\]\]/g,(_,s)=>{let path=s.split('|')[0];return '<img alt="教学图" src="/vault-asset/'+encodeURIComponent(path)+'">';});t=t.replace(/\[\[([^\]]+)\]\]/g,(_,s)=>{let a=s.split('|');return '<a href="#">'+(a[1]||a[0])+'</a>';});t=t.replace(/CODEFRAGMENT(\d+)END/g,(_,n)=>codeFragments[Number(n)]);let html=marked.parse(t);html=html.replace(/MATHPLACEHOLDER(\d+)END/g,(_,n)=>{try{return katex.renderToString(maths[n].body,{displayMode:maths[n].display,throwOnError:false});}catch(e){return '<span class="matherror">'+e.message+'</span>';}});document.querySelector('#content').innerHTML=html;document.querySelectorAll('pre code.language-mermaid').forEach((el,i)=>{let div=document.createElement('div');div.className='mermaid';div.dataset.diagram=String(i+1);div.textContent=el.textContent;el.parentElement.replaceWith(div);});window.previewErrors=[];try{await mermaid.run({nodes:document.querySelectorAll('.mermaid')});}catch(e){window.previewErrors.push(String(e));}document.querySelectorAll('details').forEach(d=>d.open=true);let total=document.querySelectorAll('.mermaid').length;document.querySelector('#status').textContent=d.path+' | diagrams='+total+' | errors='+window.previewErrors.length;let requested=new URLSearchParams(location.search).get('diagram');if(requested){let index=Number(requested);let diagrams=Array.from(document.querySelectorAll('.mermaid'));let target=diagrams[index-1];if(target){let headers=Array.from(document.querySelectorAll('h2,h3,h4'));let heading=headers.filter(h=>h.getBoundingClientRect().top<target.getBoundingClientRect().top).slice(-1)[0];let title=document.createElement('h3');title.textContent='图 '+index+' / '+total+' · '+(heading?.textContent||'');let nav=document.createElement('p');nav.innerHTML='<a href="/?note='+key+'&diagram='+Math.max(1,index-1)+'">上一图</a> | <a href="/?note='+key+'&diagram='+Math.min(total,index+1)+'">下一图</a> | <a href="/?note='+key+'">完整正文</a>';document.querySelector('#content').replaceChildren(nav,title,target);}}window.previewReady=true;}
+for(let key of ['ac6761-m02','ac6761-m03','ef5560-m02','ef5560-m03','is5113-m02']){let option=document.createElement('option');option.value=key;option.textContent=key;document.querySelector('#which').append(option);}document.querySelector('#which').value=new URLSearchParams(location.search).get('note')||'ac6761-m01';document.querySelector('#which').onchange=show;document.querySelector('#reload').onclick=show;await show();</script></html>'''
+
+def contained(root, sub):
+    path = (root / sub).resolve()
+    if not path.is_relative_to(root.resolve()):
+        raise ValueError('outside permitted root')
+    return path
+
+class Handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        path = unquote(urlsplit(self.path).path)
+        try:
+            if path == '/':
+                data, mime = HTML.encode(), 'text/html; charset=utf-8'
+            elif path.startswith('/note/'):
+                key = path.split('/')[-1]
+                if key not in ['ac6761-m01','ac6761-m02','ac6761-m03','ef5560-m01','ef5560-m02','ef5560-m03','is5113-m01','is5113-m02']:
+                    raise ValueError('unlisted note')
+                proposed = BASE / key / 'author/proposed.md'
+                target = BASE / key / 'candidate.md'
+                data, mime = json.dumps({'path': target.as_posix(), 'text': target.read_text(encoding='utf-8')}, ensure_ascii=False).encode(), 'application/json'
+            elif path.startswith('/vault-asset/'):
+                rel = path[len('/vault-asset/'):]
+                matches = [p for p in VAULT.glob('*/notes/figures/**/*') if p.is_file() and (p.relative_to(VAULT).as_posix() == rel or p.name == rel)]
+                if len(matches) != 1:
+                    raise ValueError('asset not uniquely allowed')
+                target = matches[0]
+                data, mime = target.read_bytes(), mimetypes.guess_type(target.name)[0] or 'application/octet-stream'
+            else:
+                roots = {'/mermaid/':DIAGRAM/'mermaid/dist','/katex/':DIAGRAM/'katex/dist','/marked/':MODULES/'marked/lib'}
+                prefix = next(p for p in roots if path.startswith(p))
+                target = contained(roots[prefix], path[len(prefix):])
+                data = target.read_bytes()
+                mime = 'text/javascript' if target.suffix in ['.mjs','.js'] else mimetypes.guess_type(target.name)[0] or 'application/octet-stream'
+            self.send_response(200)
+            self.send_header('Content-Type', mime)
+            self.send_header('Cache-Control', 'no-store')
+            self.send_header('Content-Security-Policy', "default-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:")
+            self.end_headers()
+            self.wfile.write(data)
+        except Exception as exc:
+            self.send_error(404, str(exc))
+    def log_message(self, fmt, *args):
+        pass
+
+print('Preview bound to http://127.0.0.1:8767, using existing local libraries only.', flush=True)
+ThreadingHTTPServer(('127.0.0.1', 8767), Handler).serve_forever()

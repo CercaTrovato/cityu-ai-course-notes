@@ -1,0 +1,434 @@
+--- README.md
++++ README.md (main v3)
+@@ -1,12 +1,12 @@
+ ---
+ type: MOC
+ scope: vault 根
+-updated: 2026-10-22
++updated: 2026-10-25
+ ---
+ 
+ # CityU 课程笔记库
+ 
+-**2026-10-23 全库重审进行中**：按[全库笔记重审任务单](_meta/全库笔记重审任务单-2026-10-23.md)执行，真实范围为 69 份教学文件（43 篇 M/T + 26 份配套教学文档/Notebook）。AC6761 M01、EF5560 M01、IS5113 M01 已完成本次全篇审查并正式写回；这三篇对应 Notion 均已写并回读（本人字段未变），其他本地依赖、Notion 与 Git 按[本次台账](_meta/vault-notes-review-20261023/progress.md)分别追踪，不升级其余篇或本人学习状态。
++**2026-10-25 全库重审进行中**：按[全库笔记重审任务单](_meta/全库笔记重审任务单-2026-10-23.md)执行，真实范围为 69 份教学文件（43 篇 M/T + 26 份配套教学文档/Notebook）。AC6761 M01、AC6761 M02、EF5560 M01、IS5113 M01 已完成本次全篇审查并正式写回；四篇对应 Notion 均已写并回读（本人字段未变），本地依赖与 Git 状态按[本次台账](_meta/vault-notes-review-20261023/progress.md)分别追踪，不升级其余篇或本人学习状态。
+ 
+ 
+ **2026-10-22 教学规则重构**：解释统一按高中知识起点，保留课程深度；取消七格/字数等配额替代教学。今后新写、重写及融合受影响教学内容，完稿后必须派未参与写作的独立子代理审查，脚本保留为有限辅助，不能证明可读。见[总规则](_meta/可读性总规则.md)、[制作与独立审查流程](_meta/笔记制作与融合验收流程.md)及[原因与修改回执](_meta/教学规则重构回执-2026-10-22.md)。本次只改规则/相关工具，不代表存量笔记重新验收，材料和本人状态不变。
+@@ -62,7 +62,7 @@
+ 
+ 从课程入口开始阅读：
+ 
+-- [AC6761 · 人工智能会计](AC6761_Artificial_Intelligence_Accounting/00-课程总览.md)：10 篇讲义笔记（M01–M06、M08–M11）；新增四篇为 v0.9。
++- [AC6761 · 人工智能会计](AC6761_Artificial_Intelligence_Accounting/00-课程总览.md)：10 篇讲义笔记（M01–M06、M08–M11）；M01–M02 已完成本次全篇审查并正式写回，新增 M08–M11 仍为 v0.9。
+ - [EF5560 · 金融科技与金融 AI](EF5560_Fintech_and_AI_in_Finance/00-课程总览.md)：7 篇讲义笔记；M07 为 v0.9、转录待补；Class 06 FinTech 概览与区块链为 v1.0，四源独立时钟与三处接缝缺口保留。
+ - [IS5113 · AI 伦理与法规](IS5113_AI_Ethics_and_Regulations/00-课程总览.md)：6 篇笔记，M06 已补111页正式讲义；U1无时间戳、前次课/音频说话人仍未核。
+ - [IS5542 · 商业生成式 AI](IS5542_GenAI_in_Business/00-课程总览.md)：5 篇讲义与嘉宾课笔记（M04 v1.0；本轮教学与同源图文核对闭合，ASR/Obsidian 限制保留）。
+@@ -94,12 +94,12 @@
+ 
+ ## 这里有什么
+ 
+-截至 2026-10-23（按正式笔记 frontmatter 与转录文本文件重新计数）：
++截至 2026-10-25（按正式笔记 frontmatter 与转录文本文件重新计数）：
+ 
+ | | 数量 |
+ |---|---|
+ | 课程 | 5 门（IS5113 AI Ethics · IS5542 GenAI in Business · EF5560 Fintech & AI · AC6761 AI Accounting · IS6400 Business Data Analytics） |
+-| 笔记 | 43 篇；11 篇 v0.9、32 篇 v1.0（2026-10-23 按正式 frontmatter；转录文本仍为 41 个） |
++| 笔记 | 43 篇；11 篇 v0.9、32 篇 v1.0（2026-10-25 重新读取正式 frontmatter；转录文本仍为 41 个） |
+ | 课堂转录 | 41 个文本；M07新增S15/S16/S17三源并保留独立时钟与未知接缝；本机课程音频27个，见[录音索引](_meta/audio-library/录音索引.md) |
+ | 覆盖与引文 | 逐页/逐题语义由主代理回源核实，脚本只辅助查页码与引文线索；以实际来源与审查范围为准，不能由数量推出完整 |
+ | 历史质量基线（2026-09-24） | 当时 26 篇严格复测为 7 篇 PASS、19 篇未通过；后续机制修复和转录融合以各篇验收记录为准，本次未重跑全库 strict，不能把这份旧结果当当前库存判定。见 [历史基线](_meta/全库质量基线-2026-09-24.md) |
+--- AC6761_Artificial_Intelligence_Accounting/00-课程总览.md
++++ AC6761_Artificial_Intelligence_Accounting/00-课程总览.md (main v3)
+@@ -1,12 +1,12 @@
+ ---
+ type: MOC
+ course: AC6761
+-updated: 2026-10-22
++updated: 2026-10-25
+ ---
+ 
+ # AC6761 · Artificial Intelligence Accounting · 课程总览
+ 
+-> **当前材料状态（2026-10-23）**：M01–M05 为材料 v1.0；M06 与 M08–M11 为讲义版 v0.9。M01 已完成本次全篇教学、来源、原题、计算与图文审查并正式写回；依赖同步、Notion 与 Git 状态另记，不升级其他讲。S6 保留同一时钟，前段补 M04 p.30–53，`01:13:52` 起 M05；6 段 Windows 录音机原件已校验迁入课程目录。
++> **当前材料状态（2026-10-25）**：M01–M05 为材料 v1.0；M06 与 M08–M11 为讲义版 v0.9。M01–M02 已完成本次全篇教学、来源、原题、计算与图文审查并正式写回，二者对应 Notion 均已写并回读；本地依赖与 Git 状态按全库重审台账分别追踪，不升级 M03–M11。S6 保留同一时钟，前段补 M04 p.30–53，`01:13:52` 起 M05；6 段 Windows 录音机原件已校验迁入课程目录。
+ 
+ > 本课入口。找什么都从这里点。
+ 
+@@ -101,7 +101,7 @@
+ | 周 | 日期 | Outline 主题 | 讲义 | 笔记 | 状态 |
+ |---|---|---|---|---|---|
+ | **1** | 09-02 | Accounting in Business | `Week 1 PPT.pptx`（83 页） | [[M01-会计与商业]] | ✅ **v1.0**；2026-10-23 全篇重审闭合并正式写回。W1 开头缺失、W2 转录尾部缺失，p.77–83 的课堂覆盖仍未知；材料状态不等于本人已通读 |
+-| **2** | 09-09 | Accounting for Business Transactions | `Week 2 PPT.pptx`（47 页） | [[M02-交易的会计处理]] | ✅ **v1.0**（转录已合并 2026-09-10；2026-09-11 §2 按预习可读性规则重写 13 节）· ⚠️ 录音尾部缺失，p.45–47 试算表未录到 |
++| **2** | 09-09 | Accounting for Business Transactions | `Week 2 PPT.pptx`（47 页） | [[M02-交易的会计处理]] | ✅ **v1.0**；2026-10-25 本次全篇重审闭合并正式写回。W2 本源缺尾且缺失长度不可估；W3 补 Case 2 后段、Quiz 1 布置/课堂活动，以及试算表用途与 AI 演示，未录 p.46 三步原文或 p.47 的 45,300 具体表；材料状态不等于本人已通读 |
+ | **3** | 09-16 | Annual Report Analyses | `Week 3 PPT.pptx`（47 页） | [[M03-年报分析]] | ✅ **v1.0**；原09-16源只到p.27，09-30 S2已补p.28–47；本次更新17格、新增3条明示/反向提醒，具体数字桥仍属笔记验算 |
+ | **4** | 09-30（录音日期核实，讲义模块4） | REA Accounting Model | `Week 4 PPT.pptx`（53 页） | [[M04-REA会计模型]] | ✅ v1.0（S2/S3/S4 + S6；p.2–53均有相应课堂证据；S6续讲至01:13:46） |
+ | **5** | ⚪09-30（原计划） | REA Business Process Modeling | `Week 5 PPT.pptx`（57 页） | [[M05-REA业务流程建模]] | ✅ v1.0（S6 01:13:52–01:48:21；40课堂格；Case 5完整题面、官解对齐与同源双图；实际授课日期待核） |
+@@ -125,8 +125,8 @@
+ | 文件 | 覆盖 | 判定 |
+ |---|---|---|
+ | `transcripts/M01-transcript.txt` | `00:01 → 02:03:38`（356 段，2h03m42s） | ⚠️ **内容不完整**：录音**从讲课中段开始**（第一句就是复式记账流程的半句话），课件 p.1–2 的课程介绍与考核细则**未被录到**。`01:41:09→01:44:57` 的 3分48秒空档**不是课间**——是教授让学生**自己填 Example #2 表格**的课堂练习时间（`01:41:09` 原话："Do that by yourself. Try to finish this table."），**没有内容丢失**。详见 [[M01-会计与商业#9. 延伸与勘误\|M01-会计与商业 › 9. 延伸与勘误]] |
+-| `transcripts/M02-transcript.txt` | `00:02 → 01:38:33`（342 段，1h38m31s） | ⚠️ **开头基本完整、结尾缺失**：第一句就是 W1 顺延的交易 5 开讲（最多缺开场问候）；**前 47 分钟是 W1 内容**（交易 5–11 + 当堂练习），W2 讲义从 `47:45` 起；最后一段 `01:38:33` 是噪声，**p.45–47 试算表与课堂练习 2 的解答没录到**（判定为录音提前中断，依据见 [[M02-交易的会计处理#9.5 待核对\|M02-交易的会计处理 › 9.5 待核对]]）。三处 ≥2 分钟空档（`18:21→20:50`、`29:24→31:57`、`01:35:21→01:38:33`）都是布置/做练习的时间，**不是内容丢失**。W1 讲义 p.77–83 在现有转录中没有可确认对应，实际课堂覆盖未知，不能据关键词未命中判定明确略过。ASR 风险与未核音边界见 M02 §9.5 |
+-| `transcripts/M03-transcript.txt` | `00:01 → 01:54:24`（366 段，1h54m23s） | ⚠️ **缺开头**（首句已在讲 T 账户）；**结尾基本完整但末句被截**（`01:54:24` 有下课语，'group name'半句被截）。**前 49 分钟是 W2 顺延**：课堂练习 2 解答（`00:01`–`17:43`）+ 当堂小测（`17:43`–`40:14`）+ 试算表/AI 演示（`40:14`–`49:04`），已回填 [[M02-交易的会计处理#2.6.4 课堂练习 2 的解答（W3 补讲）\|M02 §2.6.4]]；**W3 讲义从 `49:04` 起，只讲到 p.27**（`01:54:24` 结束），该旧源未覆盖p.28以后；2026-10-07已用09-30 S2补p.28–47，不能再把后半记为整体缺录。5 处 ≥2 分钟空档均为做题/自读时间，非内容丢失 |
++| `transcripts/M02-transcript.txt` | `00:02 → 01:38:33`（342 段，1h38m31s） | ⚠️ **结尾缺失且缺失长度不可估**：首句已在 W1 顺延的交易 5 中，开头是否短缺及长度仍未知；**前 47 分钟是 W1 内容**（交易 5–11 + 当堂练习），W2 讲义从 `47:45` 起；最后一段 `01:38:33` 是噪声，`01:33:20` 刚布置练习 2，W2 本源没有录到其解答或 p.45–47。后到 W3 与官方 `Case 2 with solution.docx` 已补教学/书面题源，但不反推 W2 尾部时长。三处 ≥2 分钟空档位于布置/做练习活动中，不能证明整堂录音完整。W1 p.77–83 的实际课堂覆盖仍未知；ASR 与原音未核边界见 [[M02-交易的会计处理#9.5 待核对\|M02 §9.5]] |
++| `transcripts/M03-transcript.txt` | `00:01 → 01:54:24`（366 段，1h54m23s） | ⚠️ **缺开头**（首句已在讲 T 账户）；**结尾基本完整但末句被截**（`01:54:24` 有下课语，'group name'半句被截）。**前 49 分钟是 W2 顺延**：课堂练习 2 的交易 3–12 与余额方法（`00:01`–`17:43`）+ 当堂小测（`17:43`–`40:14`）+ 试算表内部用途与 AI 演示（`40:14`–`43:54`）；没有录到 p.46 三步原文或 p.47 的 45,300 具体表。`49:04` 起进入 W3 讲义且该旧源只到 p.27；2026-10-07 已用 09-30 S2 补 M03 p.28–47。本行只更新 W2 顺延边界，不改变 M03 的既有教学状态 |
+ 
+ ---
+ 
+--- AC6761_Artificial_Intelligence_Accounting/_meta/知识层级台账.md
++++ AC6761_Artificial_Intelligence_Accounting/_meta/知识层级台账.md (main v3)
+@@ -164,7 +164,7 @@
+ 
+ ### M02 · 交易的会计处理
+ 
+-> ✅ **M02 笔记已升 v1.0**（2026-09-10 合并 W2 转录）。「来源」列已按转录回填：📄🎙️ = 讲义有且课上讲了；📄 = 讲义有但录音里没有（❓ p.5–7、p.45–47 录音未覆盖）；**🎙️** = 只有课堂讲了。<!-- W2转录 -->
++> ✅ **M02 当前为 v1.0，并于 2026-10-25 完成本次全篇重审及正式写回。** 来源列区分 W2 本源、W3 顺延、S2 讲评、官方 DOCX 与笔记补充；W3 还含 Case 2/Quiz 1 顺延；就试算表而言，只补用途/AI 演示，没有录到 p.46 三步原文或 45,300 具体表。📄🎙️ 表示有相应书面与课堂证据，💡 表示笔记整理，不能把它升级成教授原话。<!-- W2转录 -->
+ 
+ | 概念 | English | 首现 | 来源 | 一句话定义 | 依赖 |
+ |---|---|---|---|---|---|
+@@ -181,17 +181,19 @@
+ | 贷（记） | Credit (Cr.) | M02 | 📄🎙️ | **就是"账户的右侧"**。⚠️ 同上。🎙️ *"Credit means right. That's it."* | T 形账户 |
+ | 借方余额 / 贷方余额 | Debit / Credit balance | M02 | 📄🎙️ | 借方金额大于贷方 → 借方余额；反之为贷方余额（`59:51`、`01:04:43`） | 借, 贷 |
+ | 复式记账系统 | Double-Entry System | M02 | 📄🎙️ | 每笔交易做**金额相等的借贷记录**，因此总借方恒等于总贷方，会计等式恒平衡。**这不是额外规定，是"等式必须平衡"的机械化编码**——🎙️ 教授的记忆法（`01:11:21`）：资产在等式左边所以增加记左（借），负债与权益在右边所以增加记右（贷） | 会计等式, 借, 贷 |
+-| 正常余额 | Normal Balance | M02 | 📄 | 本讲普通非抵减账户通常在增加记录侧；实际余额按借累计减贷累计确定，反常余额不必然错误，抵减资产可正常贷余额。**借方：资产·费用·股利 ／ 贷方：负债·股本·收入**（"normal balance" 这个词课上没单独讲；但方向规则讲了四遍） | 复式记账 |
++| 正常余额 | Normal Balance | M02 | 📄🎙️ | 普通非抵减账户通常把“增加的一侧”称正常侧：资产、费用、股利通常为借方，负债、股本、收入通常为贷方。**正常侧是类型规则，实际余额侧要用本账户借贷累计差计算**；反常余额需核业务但不自动等于错误，抵减资产可正常贷余额。S2 只确认本次 Quiz 1 的零余额按正常侧展示 | 复式记账 |
+ | 账户余额 | Account Balance | M02 | 📄🎙️ | 一个账户中**增加与减少之差**（`01:03:41` 现金 36,100 − 31,300 = 4,800 借方余额） | 账户 |
+ | 日记账 | Journal | M02 | 📄🎙️ | 交易的**按时间顺序**的记录；可作事件日志教学类比，实际修改权限与更正规则取决于制度/实现（`01:12:53` 照念） | 复式记账 |
+ | 日记账分录 | Journal Entry | M02 | 📄🎙️ | 四个组成部分：日期、受影响账户名称、借贷金额、交易说明（`01:13:35` A/B/C/D 逐个指）。**借方顶格、贷方缩进**（格式约定课上未口头讲） | 日记账 |
+ | 过账 | Posting | M02 | 📄🎙️ | 把信息从日记账**系统性地誊抄**到总账账户的过程（`01:12:53`、`01:17:37`） | 日记账, 总账 |
+-| 过账参考栏 | PR (Posting Reference) | M02 | 📄 | 过账后把账户编号回填到日记账。**与总账里的 G1 构成双向指针 = 审计轨迹**（课上未讲） | 过账 |
++| 过账参考栏 | PR (Posting Reference) | M02 | 📄 | 过账完成后，把总账账户编号回填到日记账 PR 栏；总账 PR 栏里的 `G1` 表示来源是普通日记账第 1 页。两个方向都要逐行核对，双向指针支持审计轨迹但不自动防止误填或重复过账（笔记补充，课上未讲） | 过账 |
+ | 余额栏式账户 | Balance Column Account | M02 | 📄🎙️ | 实务中使用的总账格式；比 T 形账户多一个**随时更新的 Balance 列**。🎙️ `01:15:35` *"when we try to prepare those financial statements or prepare the trial balance, we rely more on the balance column accounts"* | T 形账户 |
+-| 四步交易处理法 | Identify–Analyze–Record–Post | M02 | 📄🎙️ | 识别（含凭证）→ 用等式分析 → 写分录 → 过账。**讲义 p.28–43 的排版就是答题模板**；🎙️ 教授："the third step is new"（`01:19:22`） | 交易分析 |
++| 四步交易处理法 | Identify–Analyze–Record–Post | M02 | 📄🎙️ | 识别（含凭证）→ 用等式分析 → 写分录 → 过账。讲义 p.28–43 用这四步展示交易，可作为检查是否交齐四个动作的顺序；实际答卷按题目要求，排版不构成满分保证。🎙️ 教授："the third step is new"（`01:19:22`） | 交易分析 |
+ | 预收咨询收入 | Unearned Consulting Revenue | M02 | 📄🎙️ | 预收收入的具体科目（$3,000）。*"No revenue is earned until services are provided."* 🎙️ `01:28:19` *"Remember that this is unearned revenue—liability"*；`53:30` *"Every time you see 'in advance', you should be careful"* | 预收收入 |
+-| 试算表 | Trial Balance | M02 | 📄 | 列出**某一时点**全部总账账户及其余额；账平则借方合计 = 贷方合计。⚠️ **它是校验和，不是正确性证明**——查不出记错科目、整笔漏记、重复记账。（❓ p.45–47 在录音中断前未讲到） | 总账, 正常余额 |
+-| 复合分录 | Compound Journal Entry | M02 | 💡 | 一笔交易涉及三个以上账户时的分录（如交易 #8：一借二贷；课上讲了这笔但没有命名） | 日记账分录 |
++| 试算表 | Trial Balance | M02 | 📄🎙️ | 列出某一时点全部总账账户及其**实际余额侧**；账平则借方合计 = 贷方合计。它是校验和，不是正确性证明。W3 `40:14`–`43:54` 只支持内部用途、披露前调整与 AI 演示；p.46 三步原文和 FastForward 45,300 具体表仍只来自讲义/笔记 | 总账, 正常余额 |
++| 复合分录 | Compound Journal Entry | M02 | 💡 | 一笔交易涉及三个以上账户时仍写成**一笔**分录，并对每一行分别过账；FastForward #8 是一借二贷。课堂讲了该交易，但没有把它命名为 compound journal entry | 日记账分录 |
++| 现金流三分类简称 | CFO = Cash Flows from Operating Activities<br>CFI = Cash Flows from Investing Activities<br>CFF = Cash Flows from Financing Activities | M02 | 💡 | M01 已讲经营、投资、筹资三类；M02 首次用 CFO/CFI/CFF 缩写复算题内现金收付。分类依据是现金流的业务性质，不等于收入/费用分类 | 现金流量表 |
++| 结账 | Closing | M02 | 💡 | 报表编制后的后续步骤：把本期收入、费用、股利/提取等临时账户归零并转入权益；不属于当前 12/16 笔交易的现金分类，资料不足时不自行补做 | 财务报表, 临时账户 |
+ 
+ ### 预告（本讲只给一句话，后面展开）
+ 
+@@ -217,6 +219,7 @@
+ | 2026-09-09 | M01 | 52（其中 🎙️ 仅课堂独有 6 条、讲义+课堂共有 12 条） | 建表；写死「会计零基础」规则 |
+ | 2026-09-09 | M02 | 23 | 笔记为 **v0.9（无转录）**，来源列暂全为 📄；转录合并后回填 🎙️ |
+ | 2026-09-10 | M02（W2 转录合并） | +2（应付票据 🎙️、应付税款 📄🎙️） | 来源列回填：18 条 📄🎙️、4 条 📄（录音未覆盖：账户 p.5–6、正常余额一词、PR 栏、试算表 p.45–47）、1 条 💡。M01 的「赊购/赊销 on credit」条目课上再讲一遍（W2 `06:32`），**存货**在 W2 课堂练习里提前用到（燃油记 inventory，正式展开仍在 M03） <!-- W2转录 --> |
++| 2026-10-25 | M02（本次全篇重审同步） | +2（CFO/CFI/CFF 缩写、Closing）；4 条现有定义收窄 | 正常侧/实际侧、PR/G1、复合分录、试算表课堂范围与正式正文一致；不把 W3/S2 或笔记补充升级成 W2 教授原话 |
+ 
+ 
+ ---
+--- AC6761_Artificial_Intelligence_Accounting/_meta/术语表.md
++++ AC6761_Artificial_Intelligence_Accounting/_meta/术语表.md (main v3)
+@@ -205,7 +205,7 @@
+ 
+ ## M02 · 交易的会计处理
+ 
+-> ✅ M02 笔记已升 **v1.0**（2026-09-10 合并 W2 转录）。🎙️ 标记 = 教授课上给的口头定义（可与讲义原句并用）。教授明说这些术语**不必背**（W2 `58:09`），但定义题仍可能出现。<!-- W2转录 -->
++> ✅ M02 为 **v1.0**，并于 2026-10-25 完成本次全篇重审及正式写回。🎙️ 只表示相应课堂含义有定位；引号内方括号校词仍受“原音未核”限制。教授说不用担心术语（W2 `58:09`、`01:13:15`），只支持降低死记名称的优先级，不证明应用题不会使用这些概念。<!-- W2转录 -->
+ 
+ | 中文 | English | 考试可用的英文定义 | 首现 |
+ |---|---|---|---|
+@@ -223,16 +223,19 @@
+ | 贷（记） | Credit (Cr.) | The act of entering an amount on the **right** side of an account. ⚠️ 与中文"贷款"无关。🎙️ *"Credit means right. That's it."* | §2.4.1 |
+ | 借方余额 / 贷方余额 | Debit balance / Credit balance | When debit amounts exceed the credits an account has a debit balance; when the reverse is true, it has a credit balance. | §2.4.1 |
+ | 复式记账系统 | Double-Entry System | Equal debits and credits are made in the accounts for each transaction; thus total debits always equal total credits and the accounting equation always stays in balance. | §2.4.2 |
+-| 正常余额 | Normal Balance | The usual balance side for ordinary accounts: debit for assets, expenses and dividends; credit for liabilities, stock and revenues. Actual balances may differ, and contra-assets normally have credit balances. | §2.4.3 |
++| 正常余额 | Normal Balance | The usual increase side for an ordinary account: debit for assets, expenses and dividends; credit for liabilities, stock and revenues. It is a type rule, not a substitute for calculating the account's actual balance side. | §2.4.3 |
++| 实际余额侧 | Actual Balance Side | The debit or credit side on which the net balance remains after comparing total debits and total credits; it can differ from the account type's normal side and must not be forced by category. | §2.4.3、§2.7.2 |
+ | 账户余额 | Account Balance | The difference between the increases and decreases in an account. | §2.4.4 |
+ | 日记账 | Journal | A **chronological** record of transactions. | §2.5.1 |
+ | 日记账分录 | Journal Entry | Contains the transaction date, titles of affected accounts, dollar amounts of debits and credits, and a transaction explanation. | §2.5.1 |
+-| 复合分录 | Compound Journal Entry | A journal entry affecting three or more accounts. | §2.6.3 |
++| 复合分录 | Compound Journal Entry | One journal entry affecting three or more accounts; each line is posted separately. FastForward transaction #8 is a one-debit, two-credit example. The class discussed the transaction but did not name this term. | §2.5.2、§2.6.3 |
+ | 过账 | Posting | The process of systematically copying information from the journal to the ledger accounts. | §2.5.2 |
+-| 过账参考栏 | PR (Posting Reference) column | Where the ledger account number is written back into the journal after posting; together with the journal page reference in the ledger it forms the audit trail. | §2.5.2 |
++| 过账参考栏 | PR (Posting Reference) column | After posting, the ledger account number is written back into the journal PR column; in the ledger, `G1` points back to General Journal page 1. The two references support an audit trail but still require line-by-line checking. | §2.5.2 |
+ | 余额栏式账户 | Balance Column Account | The ledger format used in practice; adds a running Balance column. 🎙️ *"when we try to prepare those financial statements or prepare the trial balance, we rely more on the balance column accounts"*（`01:15:35`） | §2.5.3 |
+ | 预收咨询收入 | Unearned Consulting Revenue | Accepting cash obligates the company to perform future services and is a **liability**; no revenue is earned until services are provided. 🎙️ *"unearned revenue is not revenue. It's liability"*（`48:05`）；信号词 *"in advance"*（`53:30`） | §2.6.3 |
+-| 试算表 | Trial Balance | Lists all ledger accounts and their balances at a point in time; if the books are in balance, total debits equal total credits. ⚠️ A checksum, not a proof of correctness. | §2.7.2 |
++| 试算表 | Trial Balance | Lists ledger accounts on their actual balance sides at a point in time; total debits should equal total credits. It is a checksum, not proof that accounts, periods and business facts are correct. W3 covered purpose/AI use, not the p.46 steps or the 45,300 example. | §2.7.2 |
++| 现金流三分类简称 | CFO = Cash Flows from Operating Activities<br>CFI = Cash Flows from Investing Activities<br>CFF = Cash Flows from Financing Activities | Cash receipts and payments are classified by business nature as operating, investing or financing activities; the labels are not the same as revenue and expense categories. | §2.8 |
++| 结账 | Closing | A later step that resets temporary revenue, expense and dividend/withdrawal accounts and transfers their period result into equity after statements are prepared; it is not a cash-flow category. | §2.8 |
+ 
+ ---
+ 
+--- AC6761_Artificial_Intelligence_Accounting/_meta/考点库.md
++++ AC6761_Artificial_Intelligence_Accounting/_meta/考点库.md (main v3)
+@@ -119,9 +119,9 @@
+ 
+ ---
+ 
+-### W2-3. 【格式 · 完整评分要点】当堂练习讲评时逐条给出的 7 条（W2 转录追加）
+-
+-**为什么算教授明示**：W2 课上教授用 29 分钟做了一道 8 笔交易的当堂练习（`18:21`–`47:21`），讲评时逐条说了"答案应该长什么样"——这等价于公布评分标准。
++### W2-3. 【格式 · 讲评要求与建议】当堂练习讲评时逐条提出的 7 条（W2 转录追加）
++
++**来源地位**：W2 课上教授用 29 分钟做一道 8 笔交易的当堂练习（`18:21`–`47:21`），讲评时逐项说明答法。第 3 条有明确“lose some points”；第 1、2 条原话是 `I think` / `I would suggest`，其余是本次答题格式或自检说明。它们不是一份已发布的完整评分 rubric，不能据此承诺满分或固定扣分。
+ 
+ | # | 要点 | 原话（W2 转录） |
+ |---|---|---|
+@@ -167,8 +167,9 @@
+ 
+ ## M02 · 交易的会计处理（✅ v1.0，W2 转录已合并 2026-09-10）<!-- W2转录 -->
+ 
+-> ⚠️ **本讲录音在 `01:38:33` 中断**（最后一页是 p.44，试算表 p.45–47 与课堂练习 2 的解答未录到），所以**试算表没有 🔴 级依据**——不能据此降权，它是本章最后一个学习目标。W2 转录里**没有**再提期中考。
+-> 前 47 分钟是 W1 顺延内容，其 🔴 考点登记在上面 M01 段的 W2-1～W2-3。
++> ⚠️ **W2 本源在 `01:38:33` 中断，缺尾长度不可估。** W3 `40:14`–`43:54` 只补试算表内部用途、披露前调整与 AI 演示，没有录到 p.46 三步原文或 p.47 的 45,300 具体表，因此试算表没有教授明示具体考法的 🔴 依据；它仍是讲义学习目标，不能因缺录降权。前 47 分钟的 W1 顺延登记在上面 W2-1～W2-3。
++> 📄 书面题源已完整：`Case 2 with solution.docx` 和 `Quiz 1 with solution.docx` 均已核；Quiz 1 采用官方广告费 150、偿还应付账款 350。转录文本的 115/315 与书面源冲突，原音未核，不判断成因。
++> 方括号校词边界：`[in advance]`、`[left]`、`[right]`、`[bad]` 依讲义书面术语和同段稳定上下文整理；未听原音，不把方括号词称为逐声确认。
+ 
+ ### 🔴 教授明示（M02 段，5 条）
+ 
+@@ -201,13 +202,13 @@
+ 
+ > **原话**（`01:33:20`）：*"So that's why we have another case [two] here, chapter [2?] practice. **No need to submit.**"*；（`01:35:21`）*"**Tell me the ending balance for each account.**"*
+ 
+-**含义**：写分录 → 过 T 形账户 → 算期末余额，就是本讲 p.28–44 的技能。当堂练的就是考的形式；题面与解答未录到。对应：M02 §2.6、§2.7.1
++**含义**：写分录 → 过 T 形账户 → 算期末余额，是本次课堂练习明确训练的技能；这条原话不能单独证明期中或期末必出同型题。W2 本源未录到完整解答，W3 与官方 Case 2 DOCX 已补后续教学和全题全解。对应：M02 §2.6、§2.7.1
+ 
+ **W2-8. 【反向信号】账户 / 总账 / 科目表 / 日记账这些术语不必背**
+ 
+ > **原话**（`58:09`）：*"So actually **you don't have to memorize the terminology.** It's very [easy] to understand."*；（`01:13:15`）*"let's don't worry about the [terminology] and see some cases."*
+ 
+-**含义**：名词辨析题的权重低；理解即可。对应：M02 §2.2.1、§2.3、§2.5.1
++**含义**：这是降低死记术语名称优先级的反向信号；仍要会用账户、日记账、总账和过账完成交易，不能据此断言应用题不考。对应：M02 §2.2.1、§2.3、§2.5.1
+ 
+ ### 🟡 / ⚪（M02 段）
+ 
+@@ -219,7 +220,7 @@
+ | 🟡 | **编制试算表并验证平衡** | 讲义单列一个学习目标 + 三步法 + 完整范例。❓ 录音中断前未讲到，**不能据此降权** | [[M02-交易的会计处理#2.7.2 试算表（讲义 p.46–47）\|M02 §2.7.2]] |
+ | ⚪ | 应付票据 vs 应付账款 / 应收票据 vs 应收账款：**有无书面票据** | 🎙️ 教授在十例里各讲了一次（`51:43`、`54:59`），课件从不解释 | M02 §2.2.2 ③ |
+ | ⚪ | 日记账 vs 总账（时间序 vs 科目序） | 讲义反复强调 journal is *chronological*；教授照念 | M02 §2.5 |
+-| ⚪ | 四步交易处理法 | **16 页课件全部按这四步排版 —— 排版即答题模板**；教授说 "which we already know" | M02 §2.6.1 |
++| ⚪ | 四步交易处理法 | 16 页讲义按 Identify–Analyze–Record–Post 展示，可作为检查是否交齐四个动作的顺序；实际答卷仍按题目要求，讲义排版不构成满分保证 | [[M02-交易的会计处理#2.6.1 四步交易处理法（讲义 p.27）\|M02 §2.6.1]] |
+ | ⚪ | 预收收入（负债）vs 预付账款（资产）的镜像关系 | 交易 #12/#13 相邻，且讲义只在这两页加了额外解释文字；🎙️ 十例里第 4、5、9 笔 | M02 §2.6.3 |
+ | ⚪ | **试算表查不出哪些错误** | 讲义未讲、课上未录到，但它是理解试算表价值的关键，且直接呼应本课的 AI 主题 | M02 §2.7.2 |
+ 
+@@ -227,7 +228,7 @@
+ 
+ ## 跨 module 的主线（越早认出越好）
+ 
+-本讲埋了两条会贯穿全课的线索。**期末的论述题极可能落在这两条上。**
++本讲埋了两条可贯穿全课的线索，适合作为论述题准备框架；现有材料没有教授承诺期末一定或很可能按这两条出题。
+ 
+ ### 主线 A：传统财务报告体系的三重局限 → 为什么需要 REA（W4–W5）
+ 
+@@ -261,11 +262,11 @@
+ 
+ | 项 | 说明 |
+ |---|---|
+-| ~~M02 的 🔴 级考点~~ | ✅ 2026-09-10 已用 W2 转录补齐（M01 段 W2-1～W2-3、M02 段 W2-4～W2-8）。⚠️ 但 W2 录音在试算表之前中断，**试算表与课堂练习 2 的教授说明缺失** |
+-| **W2 课堂练习的两个文件** | 教授说会上传（W2 `20:50`）：练习 1 题面 + 答题格式（疑即 Word 模板）；练习 2（"chapter 2 practice"）题面与解答。**去 Canvas 找** |
++| M02 的教授明示索引 | ✅ W2 的 W2-4～W2-8 与 S2 Quiz 1 讲评均已登记；Case 2/Quiz 1 书面题源完整。试算表只有 W3 的用途/AI 演示课堂证据，没有 p.46 三步或 45,300 具体表的教授说明，也没有具体考试题型承诺 |
++| **W2 课堂练习书面材料** | ✅ 后到 `Case 1 with solution.docx`、`Case 2 with solution.docx` 与 `Quiz 1 with solution.docx` 已取得并回核。Case 2 提供练习 2 全题全解；Quiz 1 提供官方 150/350 与全部 T 形账户。是否等同教授 `20:50` 所称的特定 Word 格式文件仍未独立确认 |
+ | M03–M06 的考点 | 讲义已全部到手（W3–W6），但笔记未产出。**期中考 W1–W5 全考**，这四讲的考点必须在 10 月 14 日前补齐 |
+ | 小组项目的具体要求 | 除"examine the application of AI in accounting area"和 25–30 分钟展示外，无更多细节。教授对项目的口头说明落在**转录缺口**里（见 [[M01-会计与商业#9.5 待核对\|M01-会计与商业 › 9.5 待核对]]） |
+-| 教授的 Word 答题模板 | W2 课上疑似已用它讲评练习（`35:07` "using this format"），仍需去 Canvas 拿文件，核对 🔴 考点 2 / W2-3 的格式 |
++| 教授的 Word 答题模板身份 | Case 1/Case 2/Quiz 1 官方 DOCX 已在本地，但现有证据未证明哪一个就是 W2 `20:50` / `35:07` 所说的特定 format；不要再写成所有练习文件都缺失，也不要把候选文件身份猜成已确认 |
+ 
+ 
+ ---
+@@ -566,7 +567,7 @@
+ | 🔴 | 审题区分会计等式分析、分录与 T-account；考试可能不附分录 | 🎙️ S2 `06:54`：*"using the accounting equation to show the effect of the transaction, that would be the transaction analysis"*；S2 `06:54`：*"trying to show the T-account, that would be the T-account analysis"*；S2 `07:49`：*"probably I will make the difficulty level a little bit higher without showing you these double entries"* | §2.4.1 |
+ | 🔴 | 预付资产可用通用 Prepaid Expense 名称；不能认作当期费用 | 🎙️ S2 `10:08`：*"You can just use the general word, prepaid expense. That would be also fine."*；S2 `09:48`–`09:55` 提醒 in advance 应为资产 | §2.2.2 |
+ | 🔴 | 各费用账户按题面拆分，不能全部并作一个 Expense | 🎙️ S2 `15:59`：*"So for each expense account, please do not combine them together."* | §2.2.2 |
+-| 🔴 | 此次 T-account 的零余额按正常侧展示：AR 借方、AP 贷方 | 🎙️ S2 `24:13`：*"even if it's zero, we should put it on the left side"*；S2 `24:21`：*"the zero should be put on the credit side"*；S2 `24:30`：*"some students will lose some points in such issues"* | §2.4.3 |
++| 🔴 | 此次 Quiz 1 的 T-account 零余额按正常侧展示：AR 借方、AP 贷方；不推广为所有试算表必须列零 | 🎙️ S2 `24:13`：*"even if it's zero, we should put it on the left side"*；S2 `24:21`：*"the zero should be put on the credit side"*；S2 `24:30` 只支持“这类展示问题可能失分”，不构成固定扣分表 | [[M02-交易的会计处理#2.4.3 权益账户的展开与正常余额（讲义 p.17–18）\|M02 §2.4.3]] |
+ 
+ 
+ ## 🎙️ M03 转录追加（2026-10-07）· 🔴 教授明示（转录追加）
+--- AC6761_Artificial_Intelligence_Accounting/_meta/待并入术语总表.md
++++ AC6761_Artificial_Intelligence_Accounting/_meta/待并入术语总表.md (main v3)
+@@ -248,10 +248,10 @@
+    `| 2026-09-09 | 并入 AC6761 M06：新增 8 条共享概念（关系数据库/SQL/主键外键/Null/Join/聚合函数/笛卡尔积/关系代数）、补 2 条既有行（数据质量、审计轨迹）、新增 4 条歧义警告（SELECT/Project/Key/Null）、1 条课内译名冲突待裁决（参照完整性 vs 引用完整性） |`
+ <!-- /W6 -->
+ 
+-<!-- W2转录 --><!-- 待合并 -->
+-## W2 转录追加（2026-09-10，来源：[[M02-交易的会计处理]] v1.0 / [[M01-会计与商业]] §2.8.5）
+-
+-> AC6761 W2 转录合并后新增的**课程内**术语，均为纯会计科目，**不是跨课共享概念**——只需在总表的 AC6761 专属区（若有）登记，或忽略。列在这里是为了提交记录完整。
++<!-- W2转录 --><!-- 已处理 2026-10-25 -->
++## W2 转录追加（2026-09-10；2026-10-25 本次全篇重审复核）
++
++> 来源：[[M02-交易的会计处理#2.2.2 三类账户里的具体科目（讲义 p.7–9）\|M02 §2.2.2]]、[[M02-交易的会计处理#2.5.2 过账（讲义 p.21, p.25）\|M02 §2.5.2]] 与 [[M01-会计与商业#2.8.5 交易 5–11 逐笔展开（讲义 p.63–75）\|M01 §2.8.5]]。应付票据、应付税款仍是课程内会计科目，不重复进根共享表；Debit/Credit、审计轨迹和 Posting 同词异义已在根 `_meta/术语总表.md` 登记并于本次修成真实标题锚点。M02 新增的 CFO/CFI/CFF 缩写与 Closing 也属于本课已在课程术语表登记的会计流程，不另造根共享概念。
+ 
+ | 中文 | English | 定义（可默写） | 出处 | 是否跨课 |
+ |---|---|---|---|---|
+--- _meta/术语总表.md
++++ _meta/术语总表.md (main v3)
+@@ -114,7 +114,7 @@
+ | **聚合函数** | Aggregation Function | `groupby` | — | — | 会用 | [[M06-ACCESS数据库构建与查询]] §2.21 |
+ | **概念数据建模 / UML 类图** | Conceptual Data Modeling / UML Class Diagram | 数据建模 | — | — | — | [[M04-REA会计模型]] §2.7、[[M05-REA业务流程建模]] §2.6 六步法 ★ |
+ | **多重性** | Multiplicity / Cardinality | — | — | — | — | [[M04-REA会计模型]] §2.7.8、[[M05-REA业务流程建模]] §2.5 ⚠️ **读法是"看对面"，读反整张图语义全反** |
+-| **审计轨迹** | Audit Trail | — | M05 | §2.9.4 证据链 | — | [[M02-交易的会计处理]]、[[M04-REA会计模型]] §2.9.5、[[M06-ACCESS数据库构建与查询]] §2.5.2（**Cascade Delete 会毁掉它**） |
++| **审计轨迹** | Audit Trail | — | M05 | §2.9.4 证据链 | — | [[M02-交易的会计处理#2.5.2 过账（讲义 p.21, p.25）\|M02 §2.5.2]]（日记账 PR 账户号 ↔ 总账 `G1` 日记账页码）、[[M04-REA会计模型#2.9.5 参照完整性实例（讲义 p.40）\|M04 §2.9.5]]、[[M06-ACCESS数据库构建与查询#2.5.2 怎么建：Relationships 窗口与 Edit Relationships 对话框（讲义 p.20–p.21）\|M06 §2.5.2]]（Cascade Delete 风险） |
+ | **数据治理** | Data Governance | — | M01 §2.7，M09 | [[M01-导论-生成式AI基础与企业落地]] §2.9.6 全生命周期 | — | [[M01-会计与商业]] §2.2.1 |
+ | **数据质量** | Data Quality | 数据清洗 | M01 §2.7 | §2.9.1 "imperfect data" | — | [[M03-年报分析]] §2.5.4 **盈余质量**；[[M06-ACCESS数据库构建与查询]] §2.3.3 Validation Rule |
+ | **XBRL** | eXtensible Business Reporting Language | — | — | 财报文本获取 | 财报数据 | [[M04-REA会计模型]] §2.6.1 ★ **"AI 能不能直接读财报"的隐含前提** |
+@@ -152,7 +152,7 @@
+ | **Data mining** ★★ | **IS6400 = 数据挖掘（褒义）**：从数据里发现模式的学科，课程主线之一 | **EF5560 = 数据挖掘（贬义）= 试到显著为止**：100 个无用的预测变量总有约 5 个 p < 0.05；Welch & Goyal 用它解释"样本内显著、样本外无用"（🎙️ M02 P2 `32:42`–`33:37`，教授特别提醒「in this way, data mining is a negative term」） | 在 EF5560 的作业/考试里写 data mining 一定是贬义；IS6400 里是中性/褒义。跨课答题先说明语境 |
+ | **SELECT** | **AC6761 M06 关系代数 = 挑行** | **SQL 的 `SELECT` = 挑列** | ⚠️ **同一讲里两个含义并存**（讲义 p.40 专门用一页说它）。其他课只会遇到 SQL 那个 |
+ | **Project** | **AC6761 M06 = 投影**（关系代数算子 = 挑列） | 其他所有课 = **项目**（group project） | AC6761 答题一律写 `Project (relational algebra)` |
+-| **Post / Posting** | **AC6761 M02 = 过账**（日记账 → 总账） | **AC6761 M04 = 把主键复制进另一张表当外键**（数据库义） | **同一门课内部就有两义**。术语表已拆成两条互标 |
++| **Post / Posting** | **AC6761 M02 = 过账**（[[M02-交易的会计处理#2.5.2 过账（讲义 p.21, p.25）\|日记账 → 总账]]） | **AC6761 M04 = 把主键复制进另一张表当外键**（[[M04-REA会计模型#2.9.1 表、主键与外键（讲义 p.36）\|数据库义]]） | **同一门课内部就有两义**；按对象判断，不能互换 |
+ | **Stereotype** | **AC6761 M04/M05 = 构造型**（UML 的 `<<…>>` 标记） | **IS5113 = 刻板印象**（偏见，负面概念） | 同形异义词。AC6761 答题写英文原词 |
+ | **Duality** | **AC6761 M04/M05 = 二元性**（REA 的经济事件对偶：一得一失） | 优化理论 = 对偶性；哲学 = 二元论 | 目前只有 AC6761 用，其他课出现时回来加警告 |
+ | **Evidence** | **IS5542 = 可信三支柱之一**（经批准的数据 + 来源 + 版本 + 评估结果，一个工程/审计概念） | **IS5113 = 伦理论证里的事实依据**（facts, shared values, logic 里的 facts） | IS5542 的 Evidence 是技术术语，不等于日常"证据" |
+@@ -175,7 +175,7 @@
+ | English | 正确含义 | 中文语感会怎么误导 | 出处 |
+ |---|---|---|---|
+ | **Unqualified opinion** ★★★ | **无保留意见 = 最好**的审计意见；`qualified` = **保留 = 有问题** | "unqualified" 听起来像"不合格" | [[M01-会计与商业]] §2.5.4 |
+-| **Debit / Credit** ★★★ | **就是账户的"左"和"右"**，不带任何经济含义（费用增加记**借**方，负债增加记**贷**方） | "借钱 / 贷款"的语感直接导致误解 | [[M02-交易的会计处理]] §2.4.1 |
++| **Debit / Credit** ★★★ | **就是账户的“左”和“右”**，不带任何经济含义（费用增加记借方，负债增加记贷方） | “借钱 / 贷款”的语感会导致误解；正常侧与实际余额侧仍须分开 | [[M02-交易的会计处理#2.4.1 T 形账户、借与贷（讲义 p.14）\|M02 §2.4.1]] |
+ | **Materiality** | **重要性**（会计：错报是否大到影响决策） | 与统计的 significance（显著性）不是一回事；港台译"重大性" | AC6761 |
+ | **Categorical**（Kant） | **无条件的、绝对的** | 不是"类别" | [[M02-道德理论及其应用]] §2.6.3 |
+ | **Utilitarianism** | **平等计入所有人的幸福** | 中文"功利"的贬义（势利、自私）完全误导 | [[M02-道德理论及其应用]] §2.7.1 |
+--- AC6761_Artificial_Intelligence_Accounting/_meta/作业与DDL.md
++++ AC6761_Artificial_Intelligence_Accounting/_meta/作业与DDL.md (main v3)
+@@ -88,7 +88,7 @@
+ | 周 | 主题 | 笔记 |
+ |---|---|---|
+ | 1 | Accounting in Business | ✅ [[M01-会计与商业]] |
+-| 2 | Accounting for Business Transactions（复式记账、借贷、日记账、过账、试算表） | ⏳ 待产 |
++| 2 | Accounting for Business Transactions（复式记账、借贷、日记账、过账、试算表） | ✅ [[M02-交易的会计处理]] v1.0；2026-10-25 本次全篇重审闭合并正式写回（不代表本人已通读/自测） |
+ | 3 | Annual Report Analyses（四表详解、共同比分析、Nike 案例） | ⏳ 待产 |
+ | 4 | REA Accounting Model | ⏳ 待产 |
+ | 5 | REA Business Process Modeling | ⏳ 待产 |
+@@ -165,11 +165,11 @@
+ | 1 | **小组名单的提交渠道** | 讲义只说"第 3 周末前提交"，未说提交到哪。**去 Canvas 确认**，或直接问教授。<!-- W2转录 --> W2 转录（`00:02`–`01:38:33`）里 `group` / `team` / `submit` 0 命中（唯一的 "No need to submit" 是课堂练习）；**W2 录音尾部缺失**，课末若说过也没录到 |
+ | 2 | **书面报告的格式要求** | 页数、结构、引用格式一律未说明 |
+ | 3 | **是否有个人作业** | 讲义 p.2 的课堂参与里提到 "individual assignment"，但**至今未见任何具体布置**。可能在转录缺口那段说过。<!-- W2转录 --> W2 的两道课堂练习都明说**不收**（`21:04` *"I will not collect"*、`01:33:20` *"No need to submit"*），不是作业 |
+-| 4 | 🎙️ **教授承诺的 Word 答题模板** | 转录 `01:53:19`：*"So this word file… **we upload it**… maybe **next week** after we finish all of them."* —— 交易分析的简化答题格式模板，**W2（2026-09-09）之后去 Canvas 找**。<!-- W2转录 --> **W2 课上疑似已使用**：`20:50` *"[you can download] the format… or I will upload this [to Canvas] later"*、`35:07`–`35:21` *"follow this format… since we only have the eight [transactions], we can [delete] the others here using this format"*（模板行数多于 8）。**仍未见文件，去 Canvas 找** |
++| 4 | 🎙️ **教授提到的 Word 答题格式文件** | M01 `01:53:19` 与 W2 `20:50`、`35:07`–`35:21` 提到会上传/使用 format。后到的 `Transaction analyses for Lecture 1.docx`、Case 1/Case 2/Quiz 1 DOCX 已在本地，但现有证据未确认哪一个就是该特定模板；不再写成所有相关文件均未取得，也不猜文件身份 |
+ | 5 | **期末考的日期与地点** | 学校统一安排，学期后段公布 |
+ | 6 | **及格线的具体百分比** | 三份文件都只说"两部分都要过"，没有数字 |
+ | 7 | 展示的评分是个人分还是小组分 | 讲义只说"每位组员都要参与"，未说明是否分开评分 |
+-| 8 | **9/21 补发的四个 docx 是否计分** | `Case 1 / Case 2 with solution.docx`（带解答的练习）、`Transaction analyses for Lecture 1.docx`（W1 官方解答表）、`2 Analyze balance sheet.docx`（AI 分析提示词）——都是**带答案的练习 / 演示材料**，⚪ 推测为期中考题型预演与 #4 承诺的"答题模板"的一部分，不像计分作业；已并入 M01 / M02 / M03。若 Canvas 有对应提交入口，回填此处 |
++| 8 | **带解答 DOCX 的行政地位** | Case 1/Case 2、`Transaction analyses for Lecture 1.docx`、`2 Analyze balance sheet.docx` 与后到 `Quiz 1 with solution.docx` 均已在本地并用于教学核对。文件存在/带答案不等于计分或提交；现有材料没有确认 Case 1/2 的独立提交入口或截止。Quiz 1 的课堂收取仅作 participation 证据且本次不评分，不推断本人已交 |
+ 
+ ---
+ 
+@@ -184,11 +184,13 @@
+ | 小组名单提交渠道 | ❌ 0 命中 | 见待核对 #1 |
+ | 个人作业 | ❌ | 两道课堂练习都不收 |
+ | **课堂练习 1**（交易分析，8 笔） | ✅ `18:21`–`47:21` | *"I will not collect"*（`21:04`）。题面 + 答题格式教授说会上传（`20:50`）。题面与解答已重建在 [[M01-会计与商业#2.8.5 交易 5–11 逐笔展开（讲义 p.63–75）\|M01 §2.8.5]] |
+-| **课堂练习 2**（"chapter [2] practice"，算各账户期末余额） | ✅ `01:33:20`–`01:38:33` | *"No need to submit"*。题面只剩碎片，**解答未录到** |
+-| 🔴 审题 / 评分规则 | ✅ | 默认现金（`03:04`）、不写 0 扣分（`10:56`、`38:05`）、编号 / 正负号 / 备注不写 / 每笔验平衡（`34:54`–`40:49`）——已登记 [[AC6761_Artificial_Intelligence_Accounting/_meta/考点库\|考点库]] M01 段 W2-1～W2-3 |
+-| 上传承诺 | ✅ | `20:50` *"I will upload this [to Canvas] later"*——练习 1 的题面与格式文件。**去 Canvas 找**（渠道词听不清，按惯例应为 Canvas） |
++| **课堂练习 2 / Case 2**（算各账户期末余额） | ✅ W2 `01:33:20` 起；W3 `00:01`–`17:43` 顺延 | W2 本源说 *"No need to submit"* 且中途截断；W3 只录到交易 3–12 与余额方法。后到官方 `Case 2 with solution.docx` 已补全题面、12 笔分录、12 个账户和试算表；录音缺段仍保留 |
++| 🔴 审题 / 答题讲评 | ✅ | 默认现金有考试语境原话；不写 0 有明确失分原话；编号、正负号、备注和逐笔验平衡包含要求与建议，不合并称完整评分标准。逐项来源见 [[AC6761_Artificial_Intelligence_Accounting/_meta/考点库\|考点库]] W2-1～W2-3 |
++| 上传承诺 | ✅（历史原话） | `20:50` *"I will upload this [to Canvas] later"*。相关官方 DOCX 现已取得；本轮不把未核听的渠道词或具体模板对应关系补成确定事实 |
+ 
+ **历史结论更新**：W2 转录没有新增截止日期；范围仍按 W1 的教授口述为 W1–W5。时段后来由 9 月 22 日公告更新为 10 月 14 日 19:00–21:00；练习文件是否取得另按后续材料记录，不再把本段当当前待找清单。
++
++**2026-10-25 M02 同步结论**：本次全篇重审没有发现新的计分任务、截止或提交渠道。Case 2 明示无需提交；Quiz 1 为课堂参与证据、本次不评分。Notion DDL 只做 fresh read 后的“无增量”核对，不新建任务、不改本人提交/评分状态。
+ 
+ ---
+ 
+--- AC6761_Artificial_Intelligence_Accounting/assignment/practice/练习索引.md
++++ AC6761_Artificial_Intelligence_Accounting/assignment/practice/练习索引.md (main v3)
+@@ -91,14 +91,13 @@
+ 
+ ## P03-w2-class-practice-2 · W2 课堂练习 2
+ 
+-**原件定位**：W2 课堂口述；原题缺失，受阻。本条由全库题目覆盖台账定位，尚需回原件逐字核对题干、多小问、图形与官方答案，并检查 Canvas Modules／Files 是否另行发布；此处暂不声称 Canvas 未发布。
+-
+-### 先读课程知识
+-
+-先读 [[AC6761_Artificial_Intelligence_Accounting/notes/M02-交易的会计处理|M02-交易的会计处理]] 的 §2 和题目来源页。公开讲义笔记是概念与参考解题入口；本题待按讲次回填精读，尚无独立成果。
+-
+-
+-状态：**待回填**。未重新核实的 Canvas 状态保持待核。
++**原件定位**：W2 `01:33:20` 起布置、W3 `00:01`–`17:43` 顺延；完整书面题源为本地 `course_files_export/Case 2 with solution.docx`。W2 录音缺尾且缺失长度不可估，W3 从交易 3 中途开始；书面原件补齐全部 12 笔、12 个 T 形账户与试算表。
++
++### 先读课程知识
++
++先读 [[AC6761_Artificial_Intelligence_Accounting/notes/M02-交易的会计处理#2.6.4 课堂练习 2 的解答（W3 补讲）|M02 §2.6.4]]；既有独立学习解析（仍待本轮重审）见 [[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M02-Case2-T形账户与试算表|Case 2 详细解析]]。原题/官方答案、课堂片段与笔记补充已分开。
++
++状态：**正式 M02 中的 Case 2 教学块已完成本轮重审，官方原件已核**。独立文件 `M02-Case2-T形账户与试算表.md` 仍列本轮待审，旧完成记录不继承。课堂明确无需提交；没有独立计分、DDL 或本人提交证据。
+ 
+ ## P04-w3-nike-questions · W3 Nike 两问
+ 
+@@ -191,9 +190,9 @@
+ 
+ ## P13 · Quiz 1 with solution
+ 
+-Canvas [Files](https://canvas.cityu.edu.hk/courses/70229/files?preview=16067495) 已列 `Quiz 1 with solution.docx`，本地 `course_files_export/` 尚未发现该原件。题目、是否曾计分、官方解答及多小问均待取得文件后核实；不能凭文件名写答案或标「已完成」。
+-
+-状态：**受阻／待回填**。未重新核实的 Canvas 状态保持待核。
++本地 `course_files_export/Quiz 1 with solution.docx` 已回核完整英文题面、12 笔官方分录与全部 T 形账户。正式 M02 §2.6.5 采用官方广告费 150、偿还应付账款 350；S2 转录的 115/315 冲突保留且原音未核。原文件重复的 Service Revenue 表只计一次。
++
++状态：**官方原件与 M02 学习解析已核**。W3 课堂说明本次收取仅作 participation 证据且不评分；未发现独立 DDL，不推断本人已作答或提交。
+ 
+ ## 原始候选清单与受阻信息
+ # 已定位练习候选清单（逐题核对中）
+@@ -204,7 +203,7 @@
+ |---|---|---|---|
+ | P01-w1-blank-transaction-tables | W1 两张空白交易表 | W1 PPT p.47–48 | 待回填（见本页逐题登记）；Canvas 待核 |
+ | P02-w1-transaction-analysis | W1 交易逐笔分析 | W1 PPT p.57–75 | 待回填（见本页逐题登记）；Canvas 待核 |
+-| P03-w2-class-practice-2 | W2 课堂练习 2 | W2 课堂口述；原题缺失，受阻 | 待回填（见本页逐题登记）；Canvas 待核 |
++| P03-w2-class-practice-2 | W2 课堂练习 2 / Case 2 | W2/W3 转录 + 本地官方 `Case 2 with solution.docx` | 官解与正式 M02 题块本轮已核；独立详细解析仍待本轮重审；无需提交，独立计分/DDL 无证据 |
+ | P04-w3-nike-questions | W3 Nike 两问 | W3 PPT p.26–27 | 待回填（见本页逐题登记）；Canvas 待核 |
+ | P05-w4-multiplicity-1 | W4 多重性练习 1 | W4 PPT p.32 | 待回填（见本页逐题登记）；Canvas 待核 |
+ | P06-w4-multiplicity-2 | W4 多重性练习 2 | W4 PPT p.33 | 待回填（见本页逐题登记）；Canvas 待核 |
+@@ -213,8 +212,8 @@
+ | P09-w5-rea-case | W5 REA 案例 | W5 PPT p.19–27 | 待回填（见本页逐题登记）；Canvas 待核 |
+ | P10-w6-accounting-queries | W6 会计查询问题 | W6 PPT p.85–92 | 待回填（见本页逐题登记）；Canvas 待核 |
+ | P11-case-1 | Case 1 with solution | Canvas Files ID 15977669；本地 DOCX | 待回填（见本页逐题登记）；无独立提交入口 |
+-| P12-case-2 | Case 2 with solution | Canvas Files ID 16029176；本地 DOCX | 待回填（见本页逐题登记）；无独立提交入口 |
+-| P13-quiz-1-solution | Quiz 1 with solution | Canvas Files ID 16067495；本地尚缺 DOCX | 待回填（见本页逐题登记）；原件待入库 |
++| P12-case-2 | Case 2 with solution | Canvas Files ID 16029176；本地官方 DOCX | 官解与正式 M02 题块本轮已核；既有详细解析文件本轮待审；无独立提交入口 |
++| P13-quiz-1-solution | Quiz 1 with solution | Canvas Files ID 16067495；本地官方 DOCX | 完整题面/官解已核并入 M02 §2.6.5；本次课堂不评分、无独立 DDL，本人作答/提交未确认 |
+ 
+ ## 2026-10-22 Canvas 新材料
+ 
+--- AC6761_Artificial_Intelligence_Accounting/assignment/00-overview/作业总览.md
++++ AC6761_Artificial_Intelligence_Accounting/assignment/00-overview/作业总览.md (main v3)
+@@ -9,6 +9,9 @@
+ > **Case 5 参考解析（2026-10-07）**：[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M05-Case5-销售与收款REA核心模型|从两页叙述画出销售与收款核心模型]]。6 步、7 类、8 关联、21 属性和 16 个端点均有详细理由，附主图、范围替代、算例及 7 道自测。四个 Canvas 入口均登录受阻；官解及计分／提交条件待核，任务保持 draft。
+ 
+ > **Case 1–4 详细解析（2026-10-07）**：从 [[AC6761_Artificial_Intelligence_Accounting/assignment/practice/练习索引|完整学习入口]] 逐篇阅读。Case 1 的 8 笔、Case 2 的 12 笔与 12 个账户、Case 3 的 46 个百分比、Case 4 的 5 个作答单元都有难句白话、过程、总结和变式。Case 1–3 官解可核；Case 4 官方待核；行政信息及本人学习／提交分别保留原边界。
++
++> **M02 / Quiz 1 来源更新（2026-10-25）**：正式 [[AC6761_Artificial_Intelligence_Accounting/notes/M02-交易的会计处理#2.6.4 课堂练习 2 的解答（W3 补讲）|M02 §2.6.4]] 与 [[AC6761_Artificial_Intelligence_Accounting/notes/M02-交易的会计处理#2.6.5 Quiz 1：3 月辅导公司 12 笔 T 形账户（官方解答）|§2.6.5]] 已按官方 DOCX 保留完整英文题面、12 笔分录和全部 T 形账户；Quiz 1 使用官方 150/350，原音未核的 ASR 冲突另记。Case 2 无需提交；Quiz 1 本次不评分、只作 participation 证据；没有代填本人作答/提交状态。
++> 上述 2026-10-07 段为历史记录；Case 1–4 独立学习解析均仍按本轮逐篇台账重审。本次通过的是正式 M02 题块，不升级独立练习文件或 Case 4 状态。
+ 
+ > **新到案例（2026-10-07）**：[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M04-Case4-多重性与关系表|Case 4：多重性、客户表判断与收款关系转表]]。4题/5作答单元、Excel五页和12项数据库核验已完成；照片版参考作答保持draft，官方解答及计分/提交要求待核。
+ 
+--- _meta/课件题目覆盖台账.md
++++ _meta/课件题目覆盖台账.md (main v3)
+@@ -13,7 +13,7 @@
+ | 课程 / 笔记 | 讲义题目位置 | 当前判定与具体证据 |
+ |---|---|---|
+ | AC6761 M01 | W1 p.47–48 两张空表；p.57–75 交易分析 | **完整**：课堂转录与补发官方解答已回填，逐笔等式见 M01 §2.7.6、§2.8.5。 |
+-| AC6761 M02 | W2 课堂练习 2（讲义外） | **受阻**：W3 转录只重建交易 3–12 与部分账户余额；交易 1–2 及其余期末余额缺原题 / 录音，见 M02 §9.5。 |
++| AC6761 M02 | FastForward 16 笔；W2/W3 课堂练习 2（Case 2）；Quiz 1 | **完整的来源限定作答**：M02 §2.6.3 保留 16 笔英文业务与逐笔四步；§2.6.4/§7 按官方 Case 2 DOCX 补全 12 笔、12 账户与试算表；§2.6.5 按官方 Quiz 1 DOCX 保留完整英文题面、12 笔分录与全部 T 形账户（官方 150/350）。W2/W3 录音缺段及 ASR 冲突仍保留，不把书面完整写成课堂完整。 |
+ | AC6761 M03 | W3 p.26–27 Nike 两问 | **完整**：M03 §2.4.6 逐题说明、数据与课堂确认时间戳。 |
+ | AC6761 M04 | W4 p.32–35 四组多重性练习，各四问 | **完整**：M04 §2.8.1–2.8.4；已再次从原 PPTX 只读导出四页视觉核对，p.32–33 的官方多重性 / 答案与笔记一致，p.34–35 的图和四问确为空白，推断答案保持明确标记。 |
+ | AC6761 M05 | W5 p.19–27 REA 案例 / 六步推导 | **初轮已覆盖**：M05 §2.9 多重度和过程，仍需逐页按新标准最终签收。 |
+@@ -41,7 +41,7 @@
+ ## 收工前仍需解决
+ 
+ 1. 对所有模块做第二轮逐页人工签收，特别是 AC6761 PPTX 的嵌入 OLE（文本提取与幻灯片渲染可能漏内部数据）及 IS5542 M01 的其余图形问句。IS6400 的 T01/T02 教学 Prompt 已按 cell 对照；首轮自动触发数不能当“题目总数”。
+-2. EF5560 M01 p.31 的原日频/FRED vintage 与真实发布时间、p.56 现场运行产物仍属资料缺失型受阻，现有条件性作答不代表原课堂结果已复现；AC6761 M02 课堂练习 2 原题现已取得，解析正在本次重审；IS5542 M02 p.45 缺图、IS6400 M03 p.29 的 49 校表仍保留原资料缺失记录，待各篇本次回源逐项确认，不因首批完成而升级。
++2. EF5560 M01 p.31 的原日频/FRED vintage 与真实发布时间、p.56 现场运行产物仍属资料缺失型受阻，现有条件性作答不代表原课堂结果已复现；AC6761 M02 的 Case 2 与 Quiz 1 已在 2026-10-25 本次全篇重审完成来源限定解析，录音缺段/原音未核边界保留；IS5542 M02 p.45 缺图、IS6400 M03 p.29 的 49 校表仍保留原资料缺失记录，待各篇本次回源逐项确认，不因 M02 完成而升级。
+ 3. IS5113 M02 公开笔记中同题分析与私有 Assignment 1 的边界需单独核查；在确定前不扩写、不提交个人作业成品。
+ 4. 新旧笔记的 `note_quality.py --strict`、链接、完整性与零基础试读要和本台账**分别**验收。机器 PASS 只能说明格式与部分深度，不能替代题意核查。
+ 
+--- _meta/转录处理规则.md
++++ _meta/转录处理规则.md (main v3)
+@@ -234,9 +234,9 @@
+ | 课程 | 文件 | 覆盖 | 录音时长 | 判定 |
+ |---|---|---|---|---|
+ | **AC6761** | `M01-transcript.txt` | `00:01 → 02:03:38`（356 段） | 2h03m42s | ✅ 文件连续无截断 / ⚠️ **缺开头**——见下 |
+-| **AC6761** | `M03-transcript.txt` | `00:01 → 01:54:24`（366 段） | 1h54m23s | ✅ **2026-09-17 已合并进 M03 v1.0**（并顺延回填 M02 §2.6.4/§2.7.2；当日文件截断事故后由原稿重放改动脚本找回，独立验收通过）。**缺开头**（第一句已在讲 T 账户）；结尾有下课语但末句被截；**前 49 分钟确认为 W2 顺延**——`00:01`–`17:43` 是 W2 课堂练习 2 的解答（交易 3–12 + 部分期末余额）、`17:43`–`40:14` 当堂小测（收卷作课堂参与 10% 的证据）、`40:14`–`49:04` 试算表内部用途概念 + AI 演示；**W3 讲义从 `49:04` 起，但录音在 `01:54:24` 结束时只讲到 p.27**（Nike 共同比案例两道练习题答案已确认），该旧源未覆盖p.28以后；2026-10-07已用09-30 S2补p.28–47。5 处 ≥120 秒空档：3 处为小测做题时间，2 处为学生自读 p.20–25（后段疑似无关噪声） |
+-| **AC6761** | `M04-transcript-part1/2/3-partial.txt`（Windows录音机2/3/4，本地Whisper large-v3） | S2 01:19→55:02（258段）；S3 00:00→19:48（130段）；S4 00:00→37:30（235段） | 媒体合计1h55m38s，独立时钟，不等于课堂墙钟时长 | ✅ 2026-10-07已融合M02讲评/M03后半/M04前部；S2有效教学06:09起，34:16→37:47自读；S3视频旁白与教师分开；M04 p.2–29覆盖、p.30–53未直接录到；接缝连续性未知、末尾无正式下课语。初版S2错误REA hotwords已按财会术语重转，初版留库外备查。 |
+-| **AC6761** | `M02-transcript.txt` | `00:02 → 01:38:33`（342 段） | 1h38m31s | ✅ 已合并进 M01 §2.8.5 + M02 v1.0。⚠️ **前 47 分钟是 W1 顺延的交易 5–11**（`47:45` 起才是 W2 讲义）；⚠️ **缺结尾**——最后一段是噪声、无下课语，`01:33:20` 刚布置练习 2，课 ≥2h 只录了 1h38m → 尾部丢约 20 分钟。**W1 p.77–83 四张报表 W2 也没讲**、W2 p.45–47 试算表**未录到**（标 ❓ 不标 ⏭️）。三处 2–3 分钟空档均为课堂练习时间，非丢失 |
++| **AC6761** | `M03-transcript.txt` | `00:01 → 01:54:24`（366 段） | 1h54m23s | ✅ 已合并进 M03 v1.0，并顺延回填 M02 §2.6.4/§2.7.2。缺开头；结尾有下课语但末句被截。前段为 W2 顺延：`00:01`–`17:43` 录到 Case 2 的交易 3–12 与余额方法，`17:43`–`40:14` 为当堂小测，`40:14`–`43:54` 只支持试算表内部用途、披露前调整与 AI 演示；没有录到 p.46 三步原文或 p.47 的 45,300 具体表。`49:04` 起进入 W3 且此旧源只到 p.27；2026-10-07 用 S2 补 M03 p.28–47。前段三处空档位于小测活动；`01:43:33`–`01:47:42` 的 ASR 严重乱码，原音未核、性质未知，不能排除内容缺失。本轮 M02 只核前 49 分钟的适用范围，M03 教学验收另记 |
++| **AC6761** | `M04-transcript-part1/2/3-partial.txt`（S2/S3/S4，独立时钟） | S2 01:19→55:02（258段）；S3 00:00→19:48（130段）；S4 00:00→37:30（235段） | 媒体合计 6938.178166 秒沿旧 `source_manifest.py` 登记，本次未重取音频元数据复算；不是课堂墙钟时长 | ✅ 2026-10-07 已融合本批来源；**只有 S2 `06:09`–`24:54` 含 M02 的 Quiz 1 讲评**，S3/S4 对 M02 仅作同批来源登记。S2 后续补 M03，S3/S4 支持 M03/M04；各源接缝连续性与缺口长度未知。不能把三源媒体时长相加当课堂时长或 M02 教学时长 |
++| **AC6761** | `M02-transcript.txt` | `00:02 → 01:38:33`（342 段） | 1h38m31s（转录首末跨度，不是完整课长） | ✅ 已合并进 M01 §2.8.5 + M02 v1.0。前 47 分钟是 W1 顺延（`47:45` 起才是 W2 讲义）；最后一段为噪声且无下课语，`01:33:20` 刚布置练习 2，故只确认**缺结尾，缺失长度不可估**。W1 p.77–83 的实际课堂覆盖未知，不能写成明确略过；W2 本源未录 p.45–47。后到 W3 补 Case 2 交易 3–12/余额方法和 Quiz 1；就试算表而言，只补用途/AI 演示，未录 p.46 三步或 45,300 具体表。三处 2–3 分钟空档位于课堂练习活动中，但不证明整堂录音完整 |
+ | **EF5560** | `M03-transcript.txt` | `00:56 → 02:24:04`（587 段） | 2h23m08s | ✅ **2026-09-17 已合并进 M03 v1.0**。**缺开头约 1 分钟**（首段已在答学生关于 syllabus 的问题）；**缺结尾**（`02:23:49` 总结刚开始、`02:24:04` 中断，p.56 总结与 Class 4 预告丢失）；**无 W2 顺延**（`08:32` 直接进入本讲正文）；`00:56`–`08:32` 是讲义无对应页的行政段（TA tutorial、期末考形式、评分构成、随机分组），已回写作业与DDL/考点库。35 个 🎙️ 格全部回填（A 29 / B 3 / C 1 / D 2），§6 新增 7 条 🔴；p.26 选择题当堂确认答案 A，p.27/p.38 逻辑经课堂问答印证但字母未明说（维持 ⚪）；p.22 计算题按公式验证为 −20%。0 处 ≥120 秒空档。`audit` PASS |
+ | **EF5560** | `M04-transcript-A-partial.txt` + `M04-transcript-B-partial.txt`（本地 Whisper，同一晚场重叠录音） | A `00:00`→`02:07:31`（1011 段）；B `00:00`→`01:53:39`（837 段） | 两份不可相加；联合课堂约 2h18m | ✅ **2026-09-26 已融合进 M04 v1.0**。B 补 A 课间后约 11 分钟 bagging，A 补 B 约 22 分钟 boosting 与 p.26–28；两源均录到 p.39 停课并说下讲继续，p.40–54 标 ↪️，不可降权；开头行政可能仍缺；政策中英混合句被两份 ASR 过滤，细节待回听。37 个 🎙️ 格、5 条新 🔴／反向；audit、逐源引文、strict quality PASS。 |
+ | **EF5560** | `M01-transcript.txt` | `00:01 → 02:15:21`（671 条记录、670 个唯一时间戳；`42:28` 两段） | 首末跨度 2h15m20s | ✅ 已合并进 M01 v1.0。无倒退或 ≥120 秒时间戳空档；首句像讲课中段残句，开头可能缺失；结尾有下课语。文本时序连续不等于音频逐秒完整，本轮未新增音源、未逐字核听 |

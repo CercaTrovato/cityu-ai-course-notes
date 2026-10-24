@@ -1,0 +1,292 @@
+{
+  "candidate_path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m02\\candidate.md",
+  "candidate_sha256": "265a97ccfe8887731c34c8ef79574f2d268f3d7823ef635b41c9b69a4e76dc3d",
+  "proposed_path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m02\\author\\proposed.md",
+  "proposed_sha256": "b853fdc08db7b6bb02b50a597119c5b8165c42754e6938ce2b0fc3e66e96668f",
+  "patch_count": 31,
+  "patches": [
+    {
+      "id": "C01",
+      "defects": [
+        "B6",
+        "B7"
+      ],
+      "reason": "同步本轮实际取得的三份官方练习材料。",
+      "old": "source: \"Week 2 PPT.pptx（47 页）+ Case 2 with solution.docx（GTech 12 笔 T 形账户案例）\"",
+      "new": "source: \"Week 2 PPT.pptx（47 页）+ Case 1 with solution.docx + Case 2 with solution.docx + Quiz 1 with solution.docx\""
+    },
+    {
+      "id": "C02",
+      "defects": [
+        "B6"
+      ],
+      "reason": "记录本轮作者修订日期。",
+      "old": "updated: 2026-10-07",
+      "new": "updated: 2026-10-23"
+    },
+    {
+      "id": "C03",
+      "defects": [
+        "B6"
+      ],
+      "reason": "将 Quiz 1 从未核状态改为已取得书面官方源，同时保留录音缺口。",
+      "old": "3. W2 原录音在 `01:38:33` 中断；W3 已补课堂练习 2 与试算表用途，见 §2.6.4/§2.7.2。2026-09-30 的 S2 又补 Quiz 1 的审题、费用分账和零余额展示规则；试算表三步法的完整额外要求仍未全录到。",
+      "new": "3. W2 原录音在 `01:38:33` 中断；W3 已补课堂练习 2 与试算表用途，见 §2.6.4/§2.7.2。2026-09-30 的 S2 又补 Quiz 1 的审题、费用分账和零余额展示规则；后到的 `Quiz 1 with solution.docx` 已补齐书面题面、12 笔官方分录与 T 形账户。试算表三步法是否还有未录到的课堂要求仍未知。"
+    },
+    {
+      "id": "C04",
+      "defects": [
+        "B2"
+      ],
+      "reason": "在前置概念表登记正文会实际使用的缩写与现金流分类。",
+      "old": "| 试算表 | Trial Balance | §2.7 |",
+      "new": "| 试算表 | Trial Balance（TB） | §2.7 |\n| 会计常用缩写 | A / L / E / AR / AP / NI | §2.2、§2.8 |\n| 现金流三分类 | CFO / CFI / CFF | §2.8 |"
+    },
+    {
+      "id": "C05",
+      "defects": [
+        "B1"
+      ],
+      "reason": "删除错误伪口诀，改为可执行的左右定位动作。",
+      "old": "记忆钩子：**De`b`it 的 b 让人想到 \"left\" 里没有的字母……** 其实最简单的是：**`Dr.` 和 `Cr.` 这两个缩写里，`Dr.` 短、排在字母表前面，所以在左边。**",
+      "new": "不要用字母顺序、单词长短或中文“借钱／贷款”的语感猜方向；这些都不能推出左右。唯一可靠的起点是 **Debit（Dr.）= 左侧，Credit（Cr.）= 右侧**。做题时先在 T 形账户顶端写好左 `Debit`、右 `Credit`，再按账户类型判断增加或减少落在哪一侧。"
+    },
+    {
+      "id": "C06",
+      "defects": [
+        "B4"
+      ],
+      "reason": "补齐 p.29–43 每笔演示的四步推理和过账动作。",
+      "old": "**表格读法**\n\n按同一个#连接题面/来源页与分录。",
+      "new": "**讲义 p.29–43 的逐笔四步理由**\n\n讲义把每页都写成 `IDENTIFY → ANALYZE → RECORD → POST`。下面逐笔保留这四个动作，`A / L / E` 分别是资产（Assets）、负债（Liabilities）、权益（Equity），`AR` 是应收账款（Accounts Receivable），`AP` 是应付账款（Accounts Payable）。金额单位为美元。\n\n| # / 页 | 1 识别账户 | 2 增减与类型 | 3 由类型推出借贷 | 4 记录并过账 |\n|---|---|---|---|---|\n| 2 / p.29 | Supplies，Cash | 两项都是 A，物料增、现金减 | A 增记 Dr，A 减记 Cr | Dr Supplies 2,500，Cr Cash 2,500，分别过入两账户 |\n| 3 / p.30 | Equipment，Cash | 两项都是 A，设备增、现金减 | A 增记 Dr，A 减记 Cr | Dr Equipment 26,000，Cr Cash 26,000，分别过账 |\n| 4 / p.31 | Supplies，AP | A 物料增，L 应付增，`on account` 表示未付现金 | A 增记 Dr，L 增记 Cr | Dr Supplies 7,100，Cr AP 7,100，分别过账 |\n| 5 / p.32 | Cash，Consulting Revenue | A 现金增，收入使 E 增 | A 增记 Dr，收入增记 Cr | Dr Cash 4,200，Cr Consulting Revenue 4,200，分别过账 |\n| 6 / p.33 | Rent Expense，Cash | 费用增使 E 减，A 现金减 | 费用增记 Dr，A 减记 Cr | Dr Rent Expense 1,000，Cr Cash 1,000，分别过账 |\n| 7 / p.34 | Salaries Expense，Cash | 费用增使 E 减，A 现金减 | 费用增记 Dr，A 减记 Cr | Dr Salaries Expense 700，Cr Cash 700，分别过账 |\n| 8 / p.35 | AR，Consulting Revenue，Rental Revenue | A 应收增 1,900，两项收入合计使 E 增 1,900 | A 增记 Dr，收入增记 Cr | Dr AR 1,900，Cr Consulting Revenue 1,600，Cr Rental Revenue 300，三行分别过账 |\n| 9 / p.36 | Cash，AR | 两项都是 A，收现增、应收减，不是再次赚收入 | A 增记 Dr，A 减记 Cr | Dr Cash 1,900，Cr AR 1,900，分别过账 |\n| 10 / p.37 | AP，Cash | L 应付减，A 现金减 | L 减记 Dr，A 减记 Cr | Dr AP 900，Cr Cash 900，分别过账 |\n| 11 / p.38 | Dividends，Cash | 股利是 E 减项并增加，A 现金减 | 股利增记 Dr，A 减记 Cr | Dr Dividends 200，Cr Cash 200，分别过账 |\n| 12 / p.39 | Cash，Unearned Consulting Revenue | A 现金增，尚未履约使 L 增，不是收入 | A 增记 Dr，L 增记 Cr | Dr Cash 3,000，Cr Unearned Consulting Revenue 3,000，分别过账 |\n| 13 / p.40 | Prepaid Insurance，Cash | 两项都是 A，保障权增、现金减 | A 增记 Dr，A 减记 Cr | Dr Prepaid Insurance 2,400，Cr Cash 2,400，分别过账 |\n| 14 / p.41 | Supplies，Cash | 两项都是 A，物料增、现金减 | A 增记 Dr，A 减记 Cr | Dr Supplies 120，Cr Cash 120，分别过账 |\n| 15 / p.42 | Utilities Expense，Cash | 费用增使 E 减，A 现金减 | 费用增记 Dr，A 减记 Cr | Dr Utilities Expense 305，Cr Cash 305，分别过账 |\n| 16 / p.43 | Salaries Expense，Cash | 下半月工资费用增使 E 减，A 现金减 | 费用增记 Dr，A 减记 Cr | Dr Salaries Expense 700，Cr Cash 700，分别过账 |\n\n每一行的借方合计都等于贷方合计。POST 不是再判断一次，而是把同一交易编号和金额分别抄到相关总账账户的正确一侧，因此 T8 要向一个借方账户和两个贷方账户各过一行。\n\n**表格读法**\n\n按同一个#连接题面/来源页与分录。"
+    },
+    {
+      "id": "C07",
+      "defects": [
+        "B8"
+      ],
+      "reason": "移除拼接式 ASR 伪引文，只保留可确认对象与书面源的优先级。",
+      "old": "题面在本讲转录里只剩碎片：*\"[started the] business… paid 24,000 cash [for] one year of its rent [in advance]… purchase[d]… supplies…\"*。\n\n本讲录音在 `01:38:33` 中断，题目全文与教授的解答本讲没有录到。\n\n✅ 2026-09-17 已从 W3 转录找到解答：`M03-transcript.txt` `00:01`–`17:43` 正是教授继续讲这道练习（交易 3–12 + 期末余额）——W3 录音开始时练习已经在进行中（第 1–2 笔仍缺，见 [[M02-交易的会计处理#2.6.4 课堂练习 2 的解答（W3 补讲）|§2.6.4]]）。\n\n完整重建见 §2.6.4。",
+      "new": "本讲转录在 `01:38:33` 中断。残片只能确认题目涉及开业、预付一年租金 $24,000 和采购等对象；其余词序和交易边界过于破碎，不作为逐字课堂引文。W3 转录 `00:01`–`17:43` 继续讲交易 3–12 与余额方法，但交易 1–2 仍未被任何录音完整覆盖。后到的官方 DOCX 已补齐全部题面和答案，完整书面版本见 §2.6.4；录音缺段仍按事实保留。"
+    },
+    {
+      "id": "C08",
+      "defects": [
+        "B5"
+      ],
+      "reason": "在正文对应练习位置补齐 Case 2 英文原题、限定词、逐账户 POST 和完整英文答案。",
+      "old": "#### 2.6.4 课堂练习 2 的解答（W3 补讲）",
+      "new": "#### 2.6.4 课堂练习 2 的解答（W3 补讲）\n\n**中文读题入口**：GTech Inc. 在 2025 年 1 月开业。题目要求把 12 笔交易逐账户过入 T 形账户，并求每个账户期末余额；关键词是 `show the details of T-accounts`，所以只列分录或只报净余额都不完整。\n\n<details><summary>英文原题全文（官方 Case 2 with solution.docx）</summary>\n\n> Based on the following transactions for GTech inc. in its first month of operation in 2025, please show the details of T-accounts for the affected accounts. Determine the ending balance for each account.\n>\n> 1. Jan 1 - Owner invests \\$40,000 cash to start the business.\n> 2. Jan 2 - Paid \\$24,000 cash for a one-year office rent policy in advance.\n> 3. Jan 3 - Purchased office equipment for \\$8,000 cash.\n> 4. Jan 5 - Purchased office supplies for \\$1,500 on account.\n> 5. Jan 15 - Provided consulting services to a client for \\$9,000 cash.\n> 6. Jan 20 - Provided services to another client for \\$6,000 on account.\n> 7. Jan 22 - Paid \\$800 for a monthly utility bill.\n> 8. Jan 25 - Paid \\$1,000 cash to reduce the amount owed on office supplies.\n> 9. Jan 28 - The owner withdrew \\$2,000 cash for personal use.\n> 10. Jan 29 - Received \\$4,000 cash from the client billed on Jan 20.\n> 11. Jan 30 - Recorded one month of rent expense (\\$2,000) from the prepaid policy.\n> 12. Jan 31 - Recorded \\$1,100 of office supplies expense for the month.\n\n</details>\n\n**逐账户 POST（官方答案）**：括号内数字是交易编号；`—` 表示该侧没有发生额。\n\n| Account | Debit occurrences (transaction #) | Credit occurrences (transaction #) | Ending balance |\n|---|---|---|---|\n| Cash | (1) 40,000, (5) 9,000, (10) 4,000 | (2) 24,000, (3) 8,000, (7) 800, (8) 1,000, (9) 2,000 | 17,200 Dr. |\n| Accounts Receivable | (6) 6,000 | (10) 4,000 | 2,000 Dr. |\n| Prepaid Rent | (2) 24,000 | (11) 2,000 | 22,000 Dr. |\n| Office Supplies | (4) 1,500 | (12) 1,100 | 400 Dr. |\n| Equipment | (3) 8,000 | — | 8,000 Dr. |\n| Accounts Payable | (8) 1,000 | (4) 1,500 | 500 Cr. |\n| Owner's Capital | — | (1) 40,000 | 40,000 Cr. |\n| Owner's Withdraw | (9) 2,000 | — | 2,000 Dr. |\n| Service Revenue | — | (5) 9,000, (6) 6,000 | 15,000 Cr. |\n| Rent Expense | (11) 2,000 | — | 2,000 Dr. |\n| Utilities Expense | (7) 800 | — | 800 Dr. |\n| Supplies Expense | (12) 1,100 | — | 1,100 Dr. |\n\n**English answer（按官方答案整理）**: *The transactions are posted to the affected T-accounts by transaction number. The ending balances are Cash \\$17,200 Dr., Accounts Receivable \\$2,000 Dr., Prepaid Rent \\$22,000 Dr., Office Supplies \\$400 Dr., Equipment \\$8,000 Dr., Accounts Payable \\$500 Cr., Owner's Capital \\$40,000 Cr., Owner's Withdraw \\$2,000 Dr., Service Revenue \\$15,000 Cr., Rent Expense \\$2,000 Dr., Utilities Expense \\$800 Dr., and Supplies Expense \\$1,100 Dr. The trial balance totals \\$55,500 on each side.*\n"
+    },
+    {
+      "id": "C09",
+      "defects": [
+        "B8"
+      ],
+      "reason": "清除第二处拼接式 ASR 引文与基于残片的推断编号。",
+      "old": "这是一家公司的一组交易，\"tell me the ending balance for each account\"（W2 `01:35:21`）。开头两笔（交易 1–2）没有任何一份录音覆盖，W2 转录残片提到 *\"[started the] business… paid 24,000 cash [for] one year of its rent [in advance]… purchase[d]… supplies…\"*，💡 推断可能是：\n\n1. 业主投资现金开业；\n\n2. 预付 24,000 现金作为一年房租（12 个月）。这些录音残片不足以核数；后到官方 DOCX 已确认 T1 现金投入 40,000、T2 预付租金 24,000，原录音缺口仍保留。",
+      "new": "W2 `01:35:21` 可确认教授要求 *\"tell me the ending balance for each account\"*。除此之外，开头两笔没有完整录音；残片仅能确认开业和预付一年租金 $24,000，不足以拼成逐字题面。后到官方 DOCX 明确给出 T1 现金投入 $40,000、T2 预付租金 $24,000，因此书面数值用于解题，录音缺口用于说明课堂覆盖。"
+    },
+    {
+      "id": "C10",
+      "defects": [
+        "B6"
+      ],
+      "reason": "在 §2 新增完整 Quiz 1 原题、逐笔推理、过账、英文答案和源文件重复项说明。",
+      "old": "\n\n### 2.7 总账汇总与试算表",
+      "new": "\n#### 2.6.5 Quiz 1：3 月辅导公司 12 笔 T 形账户（官方解答）\n\n**中文读题入口**：题目要分析公司 3 月的 12 笔交易，并为所有受影响账户画 T 形账户。`all the accounts` 要求零余额账户也展示，本次课堂讲评指定零余额放在该账户正常余额侧。广告费是 $150，应付账款偿还是 $350，这两个数字以官方 DOCX 为准，转录中的 115/315 是 ASR 错误。\n\n<details><summary>英文原题全文（官方 Quiz 1 with solution.docx）</summary>\n\n> Please analyze a company’s transactions in March, and show T account for all the accounts which are affected by these transactions.\n>\n> 1. Transaction 1: Mar 1 - The owner invests \\$8,000 cash to start the business.\n> 2. Transaction 2: Mar 2 - Paid \\$1,800 cash for three months of rent in advance (Prepaid Rent).\n> 3. Transaction 3: Mar 3 - Purchased a laptop (Equipment) for \\$1,200 cash for business use.\n> 4. Transaction 4: Mar 5 - Purchased tutoring supplies for \\$350 on account.\n> 5. Transaction 5: Mar 10 - Provided tutoring services for \\$1,500 cash.\n> 6. Transaction 6: Mar 15 - Provided tutoring services for \\$700 to a student who will pay next week.\n> 7. Transaction 7: Mar 20 - Paid \\$150 for advertising expense in the campus newspaper.\n> 8. Transaction 8: Mar 22 - Paid for the \\$350 owed for the tutoring supplies (from Trans. 4).\n> 9. Transaction 9: Mar 25 - The owner withdrew \\$400 cash for personal use (Owner’s Withdraw).\n> 10. Transaction 10: Mar 28 - Received \\$700 cash from the student billed on Mar 15.\n> 11. Transaction 11: Mar 31 - Recorded one month of rent expense from the prepaid rent.\n> 12. Transaction 12: Mar 31 - Recorded \\$230 of supplies expense used in March.\n\n</details>\n\n**逐笔分析与分录**：每一行先识别两个账户，再由账户类型确定借贷，借贷金额相等后，按交易编号过账。\n\n| # | 账户变化与理由 | Debit | Credit |\n|---|---|---:|---:|\n| 1 | Cash 资产增，Owner's Capital 权益增 | Cash 8,000 | Owner's Capital 8,000 |\n| 2 | Prepaid Rent 资产增，Cash 资产减 | Prepaid Rent 1,800 | Cash 1,800 |\n| 3 | Equipment 资产增，Cash 资产减 | Equipment 1,200 | Cash 1,200 |\n| 4 | Supplies 资产增，AP 负债增，`on account` 不动现金 | Supplies 350 | AP 350 |\n| 5 | Cash 资产增，已提供服务使收入增 | Cash 1,500 | Service Revenue 1,500 |\n| 6 | AR 资产增，已提供服务使收入增 | AR 700 | Service Revenue 700 |\n| 7 | Advertising Expense 费用增，Cash 资产减 | Advertising Expense 150 | Cash 150 |\n| 8 | AP 负债减，Cash 资产减 | AP 350 | Cash 350 |\n| 9 | Owner's Withdraw 权益减项增，Cash 资产减 | Owner's Withdraw 400 | Cash 400 |\n| 10 | Cash 资产增，AR 资产减，不是再认收入 | Cash 700 | AR 700 |\n| 11 | 一个月保障已耗用：Rent Expense 增，Prepaid Rent 资产减 | Rent Expense 600 | Prepaid Rent 600 |\n| 12 | 本月用品已耗用：Supplies Expense 增，Supplies 资产减 | Supplies Expense 230 | Supplies 230 |\n\n**逐账户 POST（官方答案）**：\n\n| Account | Debit occurrences (transaction #) | Credit occurrences (transaction #) | Ending balance |\n|---|---|---|---|\n| Cash | (1) 8,000, (5) 1,500, (10) 700 | (2) 1,800, (3) 1,200, (7) 150, (8) 350, (9) 400 | 6,300 Dr. |\n| Accounts Receivable | (6) 700 | (10) 700 | 0 Dr. |\n| Prepaid Rent | (2) 1,800 | (11) 600 | 1,200 Dr. |\n| Supplies | (4) 350 | (12) 230 | 120 Dr. |\n| Equipment | (3) 1,200 | — | 1,200 Dr. |\n| Accounts Payable | (8) 350 | (4) 350 | 0 Cr. |\n| Service Revenue | — | (5) 1,500, (6) 700 | 2,200 Cr. |\n| Owner's Capital | — | (1) 8,000 | 8,000 Cr. |\n| Owner's Draw | (9) 400 | — | 400 Dr. |\n| Rent Expense | (11) 600 | — | 600 Dr. |\n| Advertising Expense | (7) 150 | — | 150 Dr. |\n| Supplies Expense | (12) 230 | — | 230 Dr. |\n\n**English answer（按官方答案整理）**: *After posting all twelve transactions, Cash has a \\$6,300 debit balance, Accounts Receivable has a zero debit balance, Prepaid Rent has a \\$1,200 debit balance, Supplies has a \\$120 debit balance, Equipment has a \\$1,200 debit balance, Accounts Payable has a zero credit balance, Service Revenue has a \\$2,200 credit balance, Owner's Capital has an \\$8,000 credit balance, Owner's Draw has a \\$400 debit balance, Rent Expense has a \\$600 debit balance, Advertising Expense has a \\$150 debit balance, and Supplies Expense has a \\$230 debit balance.*\n\n**来源说明**：上述题面、分录与 T 形账户均来自官方 `Quiz 1 with solution.docx`。原文件把 Service Revenue 的 T 形账户重复排了两次，本笔记只保留一次，并把这一点当作原件排版勘误，不重复计算。S2 `06:09`–`24:54` 支持审题、费用分账和零余额展示规则，但金额以 DOCX 为准。\n\n---\n\n### 2.7 总账汇总与试算表"
+    },
+    {
+      "id": "C11",
+      "defects": [
+        "B2"
+      ],
+      "reason": "补齐所有首次使用缩写、现金流三分类和 closing 的步骤边界。",
+      "old": "现在我们有的是账户余额，想回答的是“赚了多少、属于谁、还有什么、现金从哪里来”。\n\n输入为原题完整交易与余额，输出为四表在该给定数据范围的汇总。",
+      "new": "现在我们有的是账户余额，想回答的是“赚了多少、属于谁、还有什么、现金从哪里来”。这里首次使用的缩写是：`A` = Assets（资产）、`L` = Liabilities（负债）、`E` = Equity（权益）、`AR` = Accounts Receivable（应收账款）、`AP` = Accounts Payable（应付账款）、`NI` = Net Income（净利润）、`TB` = Trial Balance（试算表）。\n\n输入为原题完整交易与余额，输出为四表在该给定数据范围的汇总。现金流量表把现金变化按业务性质分三类：`CFO`（Cash Flow from Operating Activities，经营活动现金流）记录日常卖服务、收客户款、付租金工资等经营收付；`CFI`（Cash Flow from Investing Activities，投资活动现金流）记录购买或处置长期资产，本例是买设备；`CFF`（Cash Flow from Financing Activities，筹资活动现金流）记录业主或股东投入、借还融资和向所有者分配现金。分类回答“现金为什么变”，不等于收入费用分类。\n\n本节的流程止于根据题内余额整理报表并核现金首尾。`Closing`（结账）是报表编好后的后续步骤：把本期收入、费用和提款／股利等临时账户归零并转入权益；它不属于当前 12/16 笔交易的现金分类，也不能在资料不足时自行补做。"
+    },
+    {
+      "id": "C12",
+      "defects": [
+        "B2"
+      ],
+      "reason": "将现金流桥同步进速查区。",
+      "old": "**一句话**：**试算表是校验和，不是正确性证明。**",
+      "new": "**一句话**：**试算表（TB）是校验和，不是正确性证明。**\n\n**现金流三分类（CFO / CFI / CFF）**：CFO 归集日常经营收付，CFI 归集长期资产买卖，CFF 归集出资、借还融资与对所有者的现金分配。净利润（NI）按已赚收入和已发生费用计算，所以 NI 与 CFO 可以不同。结账（Closing）在报表编制之后把临时账户归零，是后续会计步骤。"
+    },
+    {
+      "id": "C13",
+      "defects": [
+        "B2"
+      ],
+      "reason": "将缩写、三类现金流和结账边界同步到术语卡。",
+      "old": "**预收咨询收入（Unearned Consulting Revenue）** · §2.6.3",
+      "new": "**会计常用缩写（A / L / E / AR / AP / NI / TB）** · §2.2、§2.8\n\n> A = Assets; L = Liabilities; E = Equity; AR = Accounts Receivable; AP = Accounts Payable; NI = Net Income; TB = Trial Balance.\n\n**现金流三分类（CFO / CFI / CFF）** · §2.8\n\n> CFO records operating cash flows, CFI records investing cash flows, and CFF records financing cash flows.\n\n**结账（Closing）** · §2.8\n\n> The post-reporting process that resets temporary revenue, expense, and distribution accounts for the next period.\n\n**预收咨询收入（Unearned Consulting Revenue）** · §2.6.3"
+    },
+    {
+      "id": "C14",
+      "defects": [
+        "B3"
+      ],
+      "reason": "为自测第 8 题增加真实 POST 层和交易编号。",
+      "old": "**各账户余额**",
+      "new": "**POST：按交易编号过入各账户**\n\n| 账户 | 借方发生额（交易号） | 贷方发生额（交易号） | 余额 |\n|---|---|---|---|\n| Cash | (1) 80,000，(3) 5,000，(4) 6,000 | — | 91,000 Dr. |\n| Accounts Receivable | (3) 4,000 | — | 4,000 Dr. |\n| Equipment | (2) 12,000 | — | 12,000 Dr. |\n| Accounts Payable | — | (2) 12,000 | 12,000 Cr. |\n| Unearned Service Revenue | — | (4) 6,000 | 6,000 Cr. |\n| Common Stock | — | (1) 80,000 | 80,000 Cr. |\n| Service Revenue | — | (3) 9,000 | 9,000 Cr. |\n\n**各账户余额**"
+    },
+    {
+      "id": "C15",
+      "defects": [
+        "B3",
+        "B5"
+      ],
+      "reason": "为自测第 10 题补足官方逐交易号 POST 明细。",
+      "old": "**T 形账户余额**",
+      "new": "**逐账户 POST（题目要求的 T-account details）**：\n\n| 账户 | 借方发生额（交易号） | 贷方发生额（交易号） | 期末余额 |\n|---|---|---|---|\n| Cash | (1) 40,000，(5) 9,000，(10) 4,000 | (2) 24,000，(3) 8,000，(7) 800，(8) 1,000，(9) 2,000 | 17,200 Dr. |\n| Accounts Receivable | (6) 6,000 | (10) 4,000 | 2,000 Dr. |\n| Prepaid Rent | (2) 24,000 | (11) 2,000 | 22,000 Dr. |\n| Office Supplies | (4) 1,500 | (12) 1,100 | 400 Dr. |\n| Equipment | (3) 8,000 | — | 8,000 Dr. |\n| Accounts Payable | (8) 1,000 | (4) 1,500 | 500 Cr. |\n| Owner's Capital | — | (1) 40,000 | 40,000 Cr. |\n| Owner's Withdraw | (9) 2,000 | — | 2,000 Dr. |\n| Service Revenue | — | (5) 9,000，(6) 6,000 | 15,000 Cr. |\n| Rent Expense | (11) 2,000 | — | 2,000 Dr. |\n| Utilities Expense | (7) 800 | — | 800 Dr. |\n| Supplies Expense | (12) 1,100 | — | 1,100 Dr. |\n\n**T 形账户余额**"
+    },
+    {
+      "id": "C16",
+      "defects": [
+        "B5"
+      ],
+      "reason": "让自测题明确连接正文中的完整英文原题和两个作答要求。",
+      "old": "（📄 教授 2026-09-21 补发 `Case 2 with solution.docx`，带官方解答）GTech Inc. 2025 年 1 月（开业第一个月）12 笔交易，原题要求写受影响 T 形账户明细及期末余额；",
+      "new": "（📄 教授 2026-09-21 补发 `Case 2 with solution.docx`，带官方解答；英文原题全文见 §2.6.4）GTech Inc. 2025 年 1 月（开业第一个月）12 笔交易，原题要求 *\"show the details of T-accounts for the affected accounts\"* 并 *\"Determine the ending balance for each account\"*；"
+    },
+    {
+      "id": "C17",
+      "defects": [
+        "B7"
+      ],
+      "reason": "关闭 Case 1 文件与燃油金额的旧待核状态。",
+      "old": "| 5 | 🎙️ **课堂练习 1 的两个文件** | 教授说 *\"I will upload this to [Canvas] later\"*（`20:50`）——一是练习题面（8 笔交易，快递公司），二是**答题格式**（`35:07`：*\"we can [delete] the others here using this format\"*，暗示模板行数多于 8 笔，**很可能就是 M01 `01:53:19` 承诺的 Word 模板**）。**去 Canvas 找这两个文件**；题面与教授解答已重建在 M01 §2.8.5 |\n| 6 | 〔?〕**练习 1 第 4 笔燃油的金额** | 转录 `40:23` 作 *\"4,000 for the inventory\"*，但其后三处余额（`40:49` \"21,[000]\"、`42:16` \"24,000\"、`43:45` \"[2]3,200\"）只与 **\\$1,000** 自洽（20,000 + 1,000 = 21,000；+3,000 = 24,000；−800 = 23,200）。本笔记与 M01 按 **\\$1,000** 重建，并标 [?]。**拿到 Canvas 的题面后核对** |",
+      "new": "| 5 | ✅ **课堂练习 1 官方文件已取得** | `Case 1 with solution.docx` 已提供 8 笔 SWIFT 快递公司题面和官方累计分析表；M02 继续精确回链 M01 §2.8.5，不重复整题。课堂 `20:50` 曾说稍后上传，现已不再是待找材料。 |\n| 6 | ✅ **练习 1 第 4 笔燃油金额为 \\$1,000** | 官方 `Case 1 with solution.docx` 已确认 \\$1,000。转录 `40:23` 的 4,000 是 ASR 数字错误；其后 21,000、24,000、23,200 的余额链也与官方数一致。 |"
+    },
+    {
+      "id": "C18",
+      "defects": [
+        "B6"
+      ],
+      "reason": "关闭 Quiz 1 的旧材料缺口并保留源文件排版问题。",
+      "old": "| 15 | ⚠️ Quiz 1 题面与金额回核范围 | 9 月 30 日 S2 `06:09`–`24:54` 讲評的是 3 月辅导服务公司 12 笔，不能与公开 GTech 2025 年 1 月 Case 2 混成同题；当前未见书面 Quiz 1，最终 ASR 广告费出现 150/115、应付偿款出现 350/315 冲突。正文仅收录可核的一般规则，全题金额和余额暂不发布。 |",
+      "new": "| 15 | ✅ Quiz 1 书面题面与金额已回核 | `Quiz 1 with solution.docx` 已确认这是 3 月辅导服务公司 12 笔题，与 GTech Case 2 不是同题；广告费为 \\$150，应付偿款为 \\$350，转录中的 115/315 是 ASR 错误。§2.6.5 已保留完整英文题面、逐笔分录、全部 T 形账户与英文答案。源文件重复了一次 Service Revenue 表，本笔记只计一次。 |"
+    },
+    {
+      "id": "C19",
+      "defects": [
+        "B7"
+      ],
+      "reason": "同步反方视角中的 Case 1 已核事实。",
+      "old": "③ 课堂练习 1 第 4 笔按 \\$1,000 重建（§9.5 #6）——若实为 \\$4,000，第 4 笔后各资产余额差 3,000，**答题方法不变**；④ 编号首位 = 类别、PR 列回填、\"股利不是费用\"三条是笔记补充而非课堂内容——已逐处标明，读者可自行降权。",
+      "new": "③ 课堂练习 1 第 4 笔燃油金额已由官方 DOCX 确认为 \\$1,000，旧转录的 \\$4,000 不再作为金额分支；④ 编号首位 = 类别、PR 列回填、\"股利不是费用\"三条是笔记补充而非课堂内容——已逐处标明，读者可自行降权。"
+    },
+    {
+      "id": "C20",
+      "defects": [
+        "B6"
+      ],
+      "reason": "修正文件尾部旧材料核对结论。",
+      "old": "本次Quiz1仍有150/115和350/315冲突，不据此公开整题余额。",
+      "new": "本次 Quiz 1 已用官方 DOCX 核定广告费 150、偿还应付账款 350，并公开完整题面与官方余额；150/115、350/315 只保留为旧转录的 ASR 冲突记录。"
+    },
+    {
+      "id": "C21",
+      "defects": [
+        "B8"
+      ],
+      "reason": "避免裸货币符号并保持 ASR 限制清楚。",
+      "old": "本讲转录在 `01:38:33` 中断。残片只能确认题目涉及开业、预付一年租金 $24,000 和采购等对象；其余词序和交易边界过于破碎，不作为逐字课堂引文。W3 转录 `00:01`–`17:43` 继续讲交易 3–12 与余额方法，但交易 1–2 仍未被任何录音完整覆盖。后到的官方 DOCX 已补齐全部题面和答案，完整书面版本见 §2.6.4；录音缺段仍按事实保留。",
+      "new": "本讲转录在 `01:38:33` 中断。残片只能确认题目涉及开业、预付一年租金 24,000 美元和采购等对象；其余词序和交易边界过于破碎，不作为逐字课堂引文。W3 转录 `00:01`–`17:43` 继续讲交易 3–12 与余额方法，但交易 1–2 仍未被任何录音完整覆盖。后到的官方 DOCX 已补齐全部题面和答案，完整书面版本见 §2.6.4；录音缺段仍按事实保留。"
+    },
+    {
+      "id": "C22",
+      "defects": [
+        "B8"
+      ],
+      "reason": "避免裸货币符号并区分书面数值与录音覆盖。",
+      "old": "W2 `01:35:21` 可确认教授要求 *\"tell me the ending balance for each account\"*。除此之外，开头两笔没有完整录音；残片仅能确认开业和预付一年租金 $24,000，不足以拼成逐字题面。后到官方 DOCX 明确给出 T1 现金投入 $40,000、T2 预付租金 $24,000，因此书面数值用于解题，录音缺口用于说明课堂覆盖。",
+      "new": "W2 `01:35:21` 可确认教授要求 *\"tell me the ending balance for each account\"*。除此之外，开头两笔没有完整录音；残片仅能确认开业和预付一年租金 24,000 美元，不足以拼成逐字题面。后到官方 DOCX 明确给出 T1 现金投入 40,000 美元、T2 预付租金 24,000 美元，因此书面数值用于解题，录音缺口用于说明课堂覆盖。"
+    },
+    {
+      "id": "C23",
+      "defects": [
+        "B6"
+      ],
+      "reason": "避免裸货币符号。",
+      "old": "广告费是 $150，应付账款偿还是 $350，这两个数字以官方 DOCX 为准",
+      "new": "广告费是 150 美元，应付账款偿还是 350 美元，这两个数字以官方 DOCX 为准"
+    },
+    {
+      "id": "C24",
+      "defects": [
+        "B2"
+      ],
+      "reason": "拆开现金流三分类，使高中起点读者能逐项使用。",
+      "old": "输入为原题完整交易与余额，输出为四表在该给定数据范围的汇总。现金流量表把现金变化按业务性质分三类：`CFO`（Cash Flow from Operating Activities，经营活动现金流）记录日常卖服务、收客户款、付租金工资等经营收付；`CFI`（Cash Flow from Investing Activities，投资活动现金流）记录购买或处置长期资产，本例是买设备；`CFF`（Cash Flow from Financing Activities，筹资活动现金流）记录业主或股东投入、借还融资和向所有者分配现金。分类回答“现金为什么变”，不等于收入费用分类。",
+      "new": "输入为原题完整交易与余额，输出为四表在该给定数据范围的汇总。现金流量表把现金变化按业务性质分三类：\n\n- `CFO`（Cash Flow from Operating Activities，经营活动现金流）：日常卖服务、收客户款、付租金工资等经营收付。\n- `CFI`（Cash Flow from Investing Activities，投资活动现金流）：购买或处置长期资产；本例是买设备。\n- `CFF`（Cash Flow from Financing Activities，筹资活动现金流）：业主或股东投入、借还融资和向所有者分配现金。\n\n这三类回答“现金为什么变”，不等于收入费用分类。"
+    },
+    {
+      "id": "C25",
+      "defects": [
+        "B5"
+      ],
+      "reason": "把 Case 2 英文结果拆成可读完整句。",
+      "old": "**English answer（按官方答案整理）**: *The transactions are posted to the affected T-accounts by transaction number. The ending balances are Cash \\$17,200 Dr., Accounts Receivable \\$2,000 Dr., Prepaid Rent \\$22,000 Dr., Office Supplies \\$400 Dr., Equipment \\$8,000 Dr., Accounts Payable \\$500 Cr., Owner's Capital \\$40,000 Cr., Owner's Withdraw \\$2,000 Dr., Service Revenue \\$15,000 Cr., Rent Expense \\$2,000 Dr., Utilities Expense \\$800 Dr., and Supplies Expense \\$1,100 Dr. The trial balance totals \\$55,500 on each side.*",
+      "new": "**English answer（按官方答案整理）**:\n\n> The transactions are posted to the affected T-accounts by transaction number.\n>\n> The debit balances are Cash USD 17,200, Accounts Receivable USD 2,000, Prepaid Rent USD 22,000, Office Supplies USD 400, Equipment USD 8,000, Owner's Withdraw USD 2,000, Rent Expense USD 2,000, Utilities Expense USD 800, and Supplies Expense USD 1,100.\n>\n> The credit balances are Accounts Payable USD 500, Owner's Capital USD 40,000, and Service Revenue USD 15,000. The trial balance totals USD 55,500 on each side."
+    },
+    {
+      "id": "C26",
+      "defects": [
+        "B6"
+      ],
+      "reason": "把 Quiz 1 英文结果拆成可读完整句。",
+      "old": "**English answer（按官方答案整理）**: *After posting all twelve transactions, Cash has a \\$6,300 debit balance, Accounts Receivable has a zero debit balance, Prepaid Rent has a \\$1,200 debit balance, Supplies has a \\$120 debit balance, Equipment has a \\$1,200 debit balance, Accounts Payable has a zero credit balance, Service Revenue has a \\$2,200 credit balance, Owner's Capital has an \\$8,000 credit balance, Owner's Draw has a \\$400 debit balance, Rent Expense has a \\$600 debit balance, Advertising Expense has a \\$150 debit balance, and Supplies Expense has a \\$230 debit balance.*",
+      "new": "**English answer（按官方答案整理）**:\n\n> After posting all twelve transactions, the debit balances are Cash USD 6,300, Prepaid Rent USD 1,200, Supplies USD 120, Equipment USD 1,200, Owner's Draw USD 400, Rent Expense USD 600, Advertising Expense USD 150, and Supplies Expense USD 230.\n>\n> Accounts Receivable has a zero debit balance, Accounts Payable has a zero credit balance, Service Revenue has a USD 2,200 credit balance, and Owner's Capital has a USD 8,000 credit balance."
+    },
+    {
+      "id": "C27",
+      "defects": [
+        "B2"
+      ],
+      "reason": "把现金流缩写和结账的先后边界同步到 §2.8 流程图。",
+      "old": " A --> I[现金流按经营 投资 筹资归集]\n H --> J[核现金首尾与范围]\n I --> J\n J --> K[输出四表 核必要结账的后续步骤]",
+      "new": " A --> I[\"现金流按 CFO 经营 / CFI 投资 / CFF 筹资归集\"]\n H --> J[核现金首尾与范围]\n I --> J\n J --> K[输出四表]\n K --> CLOSE[\"后续 Closing 结账：临时账户归零并转入权益\"]"
+    },
+    {
+      "id": "C28",
+      "defects": [
+        "B6"
+      ],
+      "reason": "在 §0 分开登记课堂讲评与后到官方书面源。",
+      "old": "> 🎙️ **课堂实况**（2026-09-30（实际课堂追加源））：9 月 30 日 W4 录音 S2 的 `06:09`–`24:54` 用于 Quiz 1 讲评，补充 M02 的审题、预付/费用名称与零余额展示规则；后续 `25:36` 起才进入 M03 利润表。",
+      "new": "> 🎙️ **课堂实况**（2026-09-30（实际课堂追加源））：9 月 30 日 W4 录音 S2 的 `06:09`–`24:54` 用于 Quiz 1 讲评，补充 M02 的审题、预付/费用名称与零余额展示规则；后续 `25:36` 起才进入 M03 利润表。\n>\n> 📄 **书面题源状态（2026-10-23 重审）**：`Quiz 1 with solution.docx` 已取得，§2.6.5 已按原件补全英文题面、12 笔交易、逐账户 T 形账户与英文答案；广告费 150、应付偿款 350 均以该官方文件为准。"
+    },
+    {
+      "id": "C29",
+      "defects": [
+        "B6"
+      ],
+      "reason": "把官方 Quiz 1 的实际输出要求同步到考点表。",
+      "old": "| 🔴 | 此次 T-account 的零余额按正常侧展示：AR 借方、AP 贷方 | 见表后说明6 | §2.4.3 |",
+      "new": "| 🔴 | 此次 T-account 的零余额按正常侧展示：AR 借方、AP 贷方 | 见表后说明6 | §2.4.3 |\n| 🔴 | Quiz 1 要为全部受影响账户展示 T-account；只交分录或净余额不满足题面 | 官方 `Quiz 1 with solution.docx` + S2 `06:09`–`24:54` | §2.6.5 |"
+    },
+    {
+      "id": "C30",
+      "defects": [
+        "B6"
+      ],
+      "reason": "更新 §8 的 Quiz 1 材料状态和正文落点。",
+      "old": "| §2.2.2、§2.4.1、§2.4.3 | —（Quiz 1讲评，无对应页） | S2 `06:09`–`24:54` | ✅ 2026-09-30补讲的一般规则；不公开未核全题金额 |",
+      "new": "| §2.2.2、§2.4.1、§2.4.3、§2.6.5 | —（Quiz 1 讲评与独立 DOCX，无对应讲义页） | S2 `06:09`–`24:54` | ✅ 课堂讲评覆盖审题、费用拆分与零余额规则；官方 `Quiz 1 with solution.docx` 已补齐题面、12 笔分录和全部 T 形账户 |"
+    },
+    {
+      "id": "C31",
+      "defects": [
+        "B6"
+      ],
+      "reason": "在 §9.2 区分课堂增量与后到书面答案。",
+      "old": "| 1 | 🔴 Quiz 1 讲评的审题、费用拆分与零余额扣分规则 | ~18.8 min | S2 `06:09`–`24:54` | §2.2.2、§2.4.1、§2.4.3 | 纠正学生已出现的格式混淆；补充零余额的展示侧，不能只依赖借贷配平 |",
+      "new": "| 1 | 🔴 Quiz 1 讲评的审题、费用拆分与零余额扣分规则 | ~18.8 min | S2 `06:09`–`24:54` | §2.2.2、§2.4.1、§2.4.3、§2.6.5 | 课堂增量纠正格式混淆并补零余额展示侧；完整题面与数值来自官方 DOCX，不把书面答案误标为课堂口述 |"
+    }
+  ],
+  "author_scope": "B1-B8 plus directly affected source state, glossary, quick reference, self-tests and cash-flow bridge",
+  "independent_review_status": "pending targeted re-review; author does not certify teaching acceptance"
+}

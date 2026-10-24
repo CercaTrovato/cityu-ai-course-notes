@@ -1,0 +1,222 @@
+# AC6761 练习索引
+
+## 新增 · 期中模拟卷 A（2026-10-11）
+
+[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/midterm-mock-20261011/开始这里|打开模拟卷：先做试卷，再看答案解析]]。原创 9 题／100 分，建议 120 分钟；按 Week 1–5，非论述 70 分、论述 30 分。含 12 笔分录、12 个账户、16 个共同比和完整 REA 图。所有小问有中文推理、参考英文答法及自评评分点。本人是否已练习未确认，不需要 Canvas 提交。
+
+Case 4、5 官方文件已于 2026-10-11 下载到本地，已作为本卷概念核对来源；此前各自私人教程尚未在本轮完整重审，历史“待官解核对”标签不自动改为通过。
+
+> Case 1–5 均已有实质学习解析，入口如下；其他条目仍是原题定位和待回填登记，不代表教程完成。完整案例保留题号，按知识讲次归档。
+
+可恢复归档：`D:\上课资料\CityU_backups\assignment-readability-20260927`。原件与哈希保存在 `before.zip`、`before-sha256.json`；以下保留每题的来源、缺口与知识链接。
+
+
+## 新到 · Case 5：销售与收款 REA 核心模型（2026-10-07）
+
+[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M05-Case5-销售与收款REA核心模型|打开 Case 5：六步建模、属性归属、双向多重性及白话解析]]
+
+两页题面已读，第二页首行续接第 21 项属性。完整参考解析覆盖 6 步、7 个业务类、8 条关联、16 个端点与全部 21 项属性；讲清分次／合并付款的关联金额、事务参与与客户指派、资源粒度及非客户收款假设，提供主图、替代口径、完整金额例和 7 道迁移自测。补充算例复算及 10 个错误场景核验完成，数字均为教学补充，原题没有金额或币种。
+
+状态：照片版详细参考解析已完成，任务 `draft`；官方答案、计分、DDL、提交格式仍待核。本次 Canvas Files／Assignments／Announcements／Modules 四入口均实际跳转 CityU SSO 登录；不继承旧“禁用”或“未发布”说法。本人学习与提交未确认。
+
+## Case 1–4：完整学习解析入口（2026-10-07）
+
+四份都包含逐问答案、难句白话、推理／计算过程、常见误区、学习总结和改条件练习。Case 1、2 新补独立教程；Case 3、4 在已有教程上定向补最难逻辑。这里的完成指学习材料，不替本人记录已学会或已提交。
+
+### Case 1 · SWIFT 逐笔交易
+
+[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M01-Case1-逐笔交易与会计等式|打开详细解析]]
+
+8 笔原题逐句拆解、8 次完整余额状态；现金 6,200，资产 25,200 = 负债 500 + 权益 24,700。特别解释投入非收入、买资产非即时费用、赊销和部分还债。官方 DOCX 已核；4 道改条件例。
+
+### Case 2 · GTech T 形账户
+
+[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M02-Case2-T形账户与试算表|打开详细解析]]
+
+12 笔分录、12 个 T 账户及全部期末余额；试算表借贷各 55,500。解释借贷左右、预付到费用、回款和收入、还款和耗用、资本和权益；官方 DOCX 已核；4 道改条件例。
+
+### Case 3 · 共同比资产负债表
+
+[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M03-Case3-共同比资产负债表|打开详细解析]]
+
+23 行／46 个百分比及完整原金额代入；解释时点、百万单位、固定分母、金额与占比、舍入和留存收益。官方 DOCX 46 项重新对照一致；已有 Excel 不重复生成。
+
+### Case 4 · 多重性与关系表
+
+[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M04-Case4-多重性与关系表|打开详细解析]]
+
+两页4题／5个作答单元；拆读 without／only／same／different，用编号解释分批和合并、更新异常及逐笔外键。照片版参考解析齐全，官方解答待核，任务保持 draft。
+
+当前 Canvas 登录受阻，计分／期限／提交形式未刷新；Case 1–3 的官方答案内容已能从本地原件核对，不能因此把行政条件写成已确认。其他索引中的待回填练习仍保留原状态。全课程制作要求见 [[课堂练习完成与解析规范]]。
+
+## 新到 · Case 4：多重性与关系表（2026-10-07）
+
+[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M04-Case4-多重性与关系表|Case 4 完整参考作答、零基础解释与自测]] · [Excel关系表与核对](work/case4-relational/Case4-关系表与核对.xlsx)
+
+来源是两张用户提供的课堂照片，共4题/5作答单元。题面与四张表已逐项读取；Q1/Q2双向多重性、Q3两表的身份/设计边界、Q4外键与全部记录已完成。Excel五页、12项SQLite约束核验完成；CashReceipt总1000，F/J各500，G/H/I保留；两个Andy不凭同名同龄合并。
+
+状态为 `draft-照片版参考答案`：Canvas Files当前跳到CityU登录；官方解答、计分、期限与提交形式未核。其他三入口本轮未实际读到，不写“Canvas未发布”。本人已学会/已提交未确认；不改变M04课堂覆盖或源录音缺口。
+
+## 新到 · Case 3：CloudSoft 与 SteelForge 共同比资产负债表
+
+[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M03-Case3-共同比资产负债表|Case 3：直白讲解、完整答案与分析]] · [Excel：计算及核对](work/case3-common-size/Case3-计算与核对.xlsx)
+
+**来源：** 两张课堂照片；[Canvas Case 3 with solution.docx](https://canvas.cityu.edu.hk/courses/70229/files?preview=16135309)，9/30 20:59 发布；用户下载原件 19858 字节，官方答案 p.3–4。按知识归属联系 M03，不据此推断实际发题周次。
+
+**已完成：** 零基础概念与公式读法、逐行完整答案、23 行／46 个百分比与官方一致、原金额独立复算、Excel 四页、三张拓展表及 Figure A1、舍入与减值敏感性解释、自测。
+
+**状态：** 课堂练习答案与讲解已生成；本人已学会未确认。Canvas Assignments／Modules 禁用，公告未写本案例计分／提交／截止，暂不称正式提交成品。
+
+## P01-w1-blank-transaction-tables · W1 两张空白交易表
+
+**原件定位**：W1 PPT p.47–48。本条由全库题目覆盖台账定位，尚需回原件逐字核对题干、多小问、图形与官方答案，并检查 Canvas Modules／Files 是否另行发布；此处暂不声称 Canvas 未发布。
+
+### 先读课程知识
+
+先读 [[AC6761_Artificial_Intelligence_Accounting/notes/M01-会计与商业|M01-会计与商业]] 的 §2 和题目来源页。公开讲义笔记是概念与参考解题入口；本题待按讲次回填精读，尚无独立成果。
+
+
+状态：**待回填**。未重新核实的 Canvas 状态保持待核。
+
+## P02-w1-transaction-analysis · W1 交易逐笔分析
+
+**原件定位**：W1 PPT p.57–75。本条由全库题目覆盖台账定位，尚需回原件逐字核对题干、多小问、图形与官方答案，并检查 Canvas Modules／Files 是否另行发布；此处暂不声称 Canvas 未发布。
+
+### 先读课程知识
+
+先读 [[AC6761_Artificial_Intelligence_Accounting/notes/M01-会计与商业|M01-会计与商业]] 的 §2 和题目来源页。公开讲义笔记是概念与参考解题入口；本题待按讲次回填精读，尚无独立成果。
+
+
+状态：**待回填**。未重新核实的 Canvas 状态保持待核。
+
+## P03-w2-class-practice-2 · W2 课堂练习 2
+
+**原件定位**：W2 `01:33:20` 起布置、W3 `00:01`–`17:43` 顺延；完整书面题源为本地 `course_files_export/Case 2 with solution.docx`。W2 录音缺尾且缺失长度不可估，W3 从交易 3 中途开始；书面原件补齐全部 12 笔、12 个 T 形账户与试算表。
+
+### 先读课程知识
+
+先读 [[AC6761_Artificial_Intelligence_Accounting/notes/M02-交易的会计处理#2.6.4 课堂练习 2 的解答（W3 补讲）|M02 §2.6.4]]；既有独立学习解析（仍待本轮重审）见 [[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M02-Case2-T形账户与试算表|Case 2 详细解析]]。原题/官方答案、课堂片段与笔记补充已分开。
+
+状态：**正式 M02 中的 Case 2 教学块已完成本轮重审，官方原件已核**。独立文件 `M02-Case2-T形账户与试算表.md` 仍列本轮待审，旧完成记录不继承。课堂明确无需提交；没有独立计分、DDL 或本人提交证据。
+
+## P04-w3-nike-questions · W3 Nike 两问
+
+**原件定位**：W3 PPT p.26–27。本条由全库题目覆盖台账定位，尚需回原件逐字核对题干、多小问、图形与官方答案，并检查 Canvas Modules／Files 是否另行发布；此处暂不声称 Canvas 未发布。
+
+### 先读课程知识
+
+先读 [[AC6761_Artificial_Intelligence_Accounting/notes/M03-年报分析|M03-年报分析]] 的 §2 和题目来源页。公开讲义笔记是概念与参考解题入口；本题待按讲次回填精读，尚无独立成果。
+
+
+状态：**待回填**。未重新核实的 Canvas 状态保持待核。
+
+## P05-w4-multiplicity-1 · W4 多重性练习 1
+
+**原件定位**：W4 PPT p.32。本条由全库题目覆盖台账定位，尚需回原件逐字核对题干、多小问、图形与官方答案，并检查 Canvas Modules／Files 是否另行发布；此处暂不声称 Canvas 未发布。
+
+### 先读课程知识
+
+先读 [[AC6761_Artificial_Intelligence_Accounting/notes/M04-REA会计模型|M04-REA会计模型]] 的 §2 和题目来源页。公开讲义笔记是概念与参考解题入口；本题待按讲次回填精读，尚无独立成果。
+
+
+状态：**待回填**。未重新核实的 Canvas 状态保持待核。
+
+## P06-w4-multiplicity-2 · W4 多重性练习 2
+
+**原件定位**：W4 PPT p.33。本条由全库题目覆盖台账定位，尚需回原件逐字核对题干、多小问、图形与官方答案，并检查 Canvas Modules／Files 是否另行发布；此处暂不声称 Canvas 未发布。
+
+### 先读课程知识
+
+先读 [[AC6761_Artificial_Intelligence_Accounting/notes/M04-REA会计模型|M04-REA会计模型]] 的 §2 和题目来源页。公开讲义笔记是概念与参考解题入口；本题待按讲次回填精读，尚无独立成果。
+
+
+状态：**待回填**。未重新核实的 Canvas 状态保持待核。
+
+## P07-w4-multiplicity-3 · W4 多重性练习 3
+
+**原件定位**：W4 PPT p.34。本条由全库题目覆盖台账定位，尚需回原件逐字核对题干、多小问、图形与官方答案，并检查 Canvas Modules／Files 是否另行发布；此处暂不声称 Canvas 未发布。
+
+### 先读课程知识
+
+先读 [[AC6761_Artificial_Intelligence_Accounting/notes/M04-REA会计模型|M04-REA会计模型]] 的 §2 和题目来源页。公开讲义笔记是概念与参考解题入口；本题待按讲次回填精读，尚无独立成果。
+
+
+状态：**待回填**。未重新核实的 Canvas 状态保持待核。
+
+## P08-w4-multiplicity-4 · W4 多重性练习 4
+
+**原件定位**：W4 PPT p.35。本条由全库题目覆盖台账定位，尚需回原件逐字核对题干、多小问、图形与官方答案，并检查 Canvas Modules／Files 是否另行发布；此处暂不声称 Canvas 未发布。
+
+### 先读课程知识
+
+先读 [[AC6761_Artificial_Intelligence_Accounting/notes/M04-REA会计模型|M04-REA会计模型]] 的 §2 和题目来源页。公开讲义笔记是概念与参考解题入口；本题待按讲次回填精读，尚无独立成果。
+
+
+状态：**待回填**。未重新核实的 Canvas 状态保持待核。
+
+## P09-w5-rea-case · W5 REA 案例
+
+**原件定位**：W5 PPT p.19–27。本条由全库题目覆盖台账定位，尚需回原件逐字核对题干、多小问、图形与官方答案，并检查 Canvas Modules／Files 是否另行发布；此处暂不声称 Canvas 未发布。
+
+### 先读课程知识
+
+先读 [[AC6761_Artificial_Intelligence_Accounting/notes/M05-REA业务流程建模|M05-REA业务流程建模]] 的 §2 和题目来源页。公开讲义笔记是概念与参考解题入口；本题待按讲次回填精读，尚无独立成果。
+
+
+状态：**待回填**。未重新核实的 Canvas 状态保持待核。
+
+## P10-w6-accounting-queries · W6 会计查询问题
+
+**原件定位**：W6 PPT p.85–92。本条由全库题目覆盖台账定位，尚需回原件逐字核对题干、多小问、图形与官方答案，并检查 Canvas Modules／Files 是否另行发布；此处暂不声称 Canvas 未发布。
+
+### 先读课程知识
+
+先读 [[AC6761_Artificial_Intelligence_Accounting/notes/M06-ACCESS数据库构建与查询|M06-ACCESS数据库构建与查询]] 的 §2 和题目来源页。公开讲义笔记是概念与参考解题入口；本题待按讲次回填精读，尚无独立成果。
+
+
+状态：**待回填**。未重新核实的 Canvas 状态保持待核。
+
+## P11 · Case 1 with solution
+
+本地 `course_files_export/Case 1 with solution.docx` 已通读全部正文和表格，私人详细教程已回填：[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M01-Case1-逐笔交易与会计等式|Case 1 详细解析]]。原题和官解、通俗推导、改条件例区分；结果与官表核对。
+
+学习解析：详细版完成。官方解答：本地原件已核。任务／行政：`draft`，当前 Canvas 登录受阻，计分、期限与提交要求待核；本人学习／提交未确认。
+
+## P12 · Case 2 with solution
+
+本地 `course_files_export/Case 2 with solution.docx` 已通读全部正文和表格，私人详细教程已回填：[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M02-Case2-T形账户与试算表|Case 2 详细解析]]。原题和官解、通俗推导、改条件例区分；结果与官表核对。
+
+学习解析：详细版完成。官方解答：本地原件已核。任务／行政：`draft`，当前 Canvas 登录受阻，计分、期限与提交要求待核；本人学习／提交未确认。
+
+## P13 · Quiz 1 with solution
+
+本地 `course_files_export/Quiz 1 with solution.docx` 已回核完整英文题面、12 笔官方分录与全部 T 形账户。正式 M02 §2.6.5 采用官方广告费 150、偿还应付账款 350；S2 转录的 115/315 冲突保留且原音未核。原文件重复的 Service Revenue 表只计一次。
+
+状态：**官方原件与 M02 学习解析已核**。W3 课堂说明本次收取仅作 participation 证据且不评分；未发现独立 DDL，不推断本人已作答或提交。
+
+## 原始候选清单与受阻信息
+# 已定位练习候选清单（逐题核对中）
+
+> 来源：`_meta/课件题目覆盖台账.md` 2026-09-25 首轮。每行是一个已定位的原题位置，不等于全部练习已穷尽，也不等于教程完成。Canvas Modules／Files 和原件仍需逐题复核。
+
+| ID | 练习 | 原件位置 | Canvas 与教程状态 |
+|---|---|---|---|
+| P01-w1-blank-transaction-tables | W1 两张空白交易表 | W1 PPT p.47–48 | 待回填（见本页逐题登记）；Canvas 待核 |
+| P02-w1-transaction-analysis | W1 交易逐笔分析 | W1 PPT p.57–75 | 待回填（见本页逐题登记）；Canvas 待核 |
+| P03-w2-class-practice-2 | W2 课堂练习 2 / Case 2 | W2/W3 转录 + 本地官方 `Case 2 with solution.docx` | 官解与正式 M02 题块本轮已核；独立详细解析仍待本轮重审；无需提交，独立计分/DDL 无证据 |
+| P04-w3-nike-questions | W3 Nike 两问 | W3 PPT p.26–27 | 待回填（见本页逐题登记）；Canvas 待核 |
+| P05-w4-multiplicity-1 | W4 多重性练习 1 | W4 PPT p.32 | 待回填（见本页逐题登记）；Canvas 待核 |
+| P06-w4-multiplicity-2 | W4 多重性练习 2 | W4 PPT p.33 | 待回填（见本页逐题登记）；Canvas 待核 |
+| P07-w4-multiplicity-3 | W4 多重性练习 3 | W4 PPT p.34 | 待回填（见本页逐题登记）；Canvas 待核 |
+| P08-w4-multiplicity-4 | W4 多重性练习 4 | W4 PPT p.35 | 待回填（见本页逐题登记）；Canvas 待核 |
+| P09-w5-rea-case | W5 REA 案例 | W5 PPT p.19–27 | 待回填（见本页逐题登记）；Canvas 待核 |
+| P10-w6-accounting-queries | W6 会计查询问题 | W6 PPT p.85–92 | 待回填（见本页逐题登记）；Canvas 待核 |
+| P11-case-1 | Case 1 with solution | Canvas Files ID 15977669；本地 DOCX | 待回填（见本页逐题登记）；无独立提交入口 |
+| P12-case-2 | Case 2 with solution | Canvas Files ID 16029176；本地官方 DOCX | 官解与正式 M02 题块本轮已核；既有详细解析文件本轮待审；无独立提交入口 |
+| P13-quiz-1-solution | Quiz 1 with solution | Canvas Files ID 16067495；本地官方 DOCX | 完整题面/官解已核并入 M02 §2.6.5；本次课堂不评分、无独立 DDL，本人作答/提交未确认 |
+
+## 2026-10-22 Canvas 新材料
+
+Quiz 2 原件已到：基于 ExampleTables1 查询 E-10 的销售，保存 QueryA，并按题面邮件交更新后的数据库。题面未明示计分或截止，本轮未发送、未生成本人已提交记录。解析与实际5行结果：[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M06-Quiz2-按销售员筛选销售|Quiz 2 解析]]。
+
+小组项目文件与本地版本 SHA-256 一致，最新公告仍为10/20：展示从Week11开始，报告11/29前邮件交，具体小时未给。补课10/31 14:00–17:00 LI-4109沿当前公告，未新增其他DDL。Files 28项、Announcements 5条；Assignments禁用；Modules重定向首页。

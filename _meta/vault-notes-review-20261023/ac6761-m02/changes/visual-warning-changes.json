@@ -1,0 +1,178 @@
+{
+  "author": "/root",
+  "from_sha256": "5ffbc1b19162b50cab0d48ee0d7369168f39ca941c973f567c3b6051d8ce3322",
+  "proposal_sha256": "adcd9b950fa09fc96815acaeae692b7f1fd342eaf804ef8a3fdfee2da73adc1b",
+  "changes": [
+    {
+      "old": "于是每笔交易的左侧金额恒等于右侧金额。\n3.",
+      "new": "于是每笔交易的左侧金额恒等于右侧金额。\n\n3.",
+      "occurrences": 1
+    },
+    {
+      "old": "实际系统的凭证修改权限、更正规则与保存方式由制度和实现决定；",
+      "new": "实际业务系统的凭证修改权限、更正规则与保存方式由制度和实现决定；",
+      "occurrences": 1
+    },
+    {
+      "old": "讲义没有证明所有 ERP 都是不可变事件表。",
+      "new": "讲义没有证明所有企业业务系统都使用不可变事件表。",
+      "occurrences": 1
+    },
+    {
+      "old": "具体 ERP 的数据表、已过账与未过账凭证权限和更正路径未由讲义给出，",
+      "new": "具体企业业务系统的数据表、已过账与未过账凭证权限和更正路径未由讲义给出，",
+      "occurrences": 1
+    },
+    {
+      "old": "## 0. 三分钟速览",
+      "new": "**转录读法**：自动语音识别（Automatic Speech Recognition，ASR）把录音转成文字，可能误识。方括号用于标出按书面材料校正的词；本轮未核听原音，无法唯一确认的内容保持未知。\n\n## 0. 三分钟速览",
+      "occurrences": 1
+    },
+    {
+      "old": "**English reference answers（笔记按讲义给定分录整理）**：这些连贯答句不是教授逐字原话；中文理由及各账户 POST 明细见本节与 §2.7.1。",
+      "new": "**English reference answers（笔记按讲义给定分录整理）**：这些连贯答句不是教授逐字原话。USD 是美元（United States Dollar）的缩写；中文理由及各账户过账（POST）明细见本节与 §2.7.1。",
+      "occurrences": 1
+    },
+    {
+      "old": "| 汇总结果缩写 | NI = Net Income（净利润）<br>TB = Trial Balance（试算表） | §2.5–§2.8 |",
+      "new": "| 汇总结果缩写 | NI = Net Income（净利润）<br>TB = Trial Balance（试算表） | §2.5–§2.8 |\n| 本例公司简称 | FF = FastForward（本例公司名称） | §2.8 |",
+      "occurrences": 1
+    },
+    {
+      "old": "中文限定词：`on credit` 不付现；`immediately collects` 是服务与收现同笔；`is billed` 形成应收；`toward the payable of transaction 4` 是偿还旧欠款；`in advance` 且服务未提供形成预收义务；24 个月和 December 1 只属于保险，不能套给预收服务；第 16 笔明确为 12 月下半月。原页 Chas Taylor 与前讲姓名写法差异保留，不自行统一。",
+      "new": "中文限定词逐项读：\n\n- `on credit`：未付现金；`immediately collects`：服务与收现同笔。\n- `is billed`：已向客户开账单，形成应收；`toward the payable of transaction 4`：偿还第 4 笔旧欠款。\n- `in advance` 且服务未提供：形成预收义务。\n- 24 个月和 December 1 只属于保险，不能套给预收服务；第 16 笔明确为 12 月下半月。\n\n原页 Chas Taylor 与前讲姓名写法差异保留，不自行统一。",
+      "occurrences": 1
+    },
+    {
+      "old": "广告费是 150 美元，应付账款偿还是 350 美元，这两个数字以官方 DOCX 为准。转录文本在这两处出现 115/315，与官方书面数值冲突；本轮未听原音，因此不判断是 ASR、教授口误还是其他声学问题。",
+      "new": "\n\n数值口径：广告费为 150 美元，应付账款偿还为 350 美元，以官方 Word 文档（DOCX 格式）为准。转录文本的 115/315 与书面数值冲突；原音未核，不判断错误成因。",
+      "occurrences": 1
+    },
+    {
+      "old": "（append-only 事件日志）",
+      "new": "（事件日志的教学类比）",
+      "occurrences": 1
+    },
+    {
+      "old": "$45,300 = $45,300 ✅",
+      "new": "两栏各 45,300 美元",
+      "occurrences": 1
+    },
+    {
+      "old": "```mermaid\nflowchart TD\n    EQ[\"Assets = Liabilities + Equity<br/>等号左边增加 → 记左（借）<br/>等号右边增加 → 记右（贷）\"]\n    EQ --> A[\"资产 Assets<br/>借 ＋增　贷 −减<br/>正常余额：借方\"]\n    EQ --> L[\"负债 Liabilities<br/>借 −减　贷 ＋增<br/>正常余额：贷方\"]\n    EQ --> E[\"权益 Equity<br/>借 −减　贷 ＋增<br/>正常余额：贷方\"]\n    E --> CS[\"普通股 Common Stock（＋）<br/>借 −　贷 ＋<br/>正常余额：贷方\"]\n    E --> DV[\"股利 Dividends（−）<br/>借 ＋　贷 −<br/>正常余额：借方\"]\n    E --> RV[\"收入 Revenues（＋）<br/>借 −　贷 ＋<br/>正常余额：贷方\"]\n    E --> EX[\"费用 Expenses（−）<br/>借 ＋　贷 −<br/>正常余额：借方\"]\n```",
+      "new": "本节用两张可编辑表呈现原图关系，避免四分支横排把字压得过小。先看 $A=L+E$：约定资产增加记左（借），负债和权益增加记右（贷）。下表“增／减”均指该行账户本身，不是现金收付。\n\n| 大类 | 借方 Debit（左） | 贷方 Credit（右） | 正常余额 |\n|---|---|---|---|\n| 资产 Assets | 增 | 减 | 借方 |\n| 负债 Liabilities | 减 | 增 | 贷方 |\n| 权益 Equity | 减 | 增 | 贷方 |\n\n再展开权益构成。本讲开业简式为 $E=CS-D+R-Exp$；加项同权益方向，减项反向。已有期初留存时还要加该存量，不能把简式当所有企业完整权益。\n\n| 权益子项 | 对权益方向 | 借方 | 贷方 | 正常余额 |\n|---|---|---|---|---|\n| 普通股 Common Stock | 加项 | 减 | 增 | 贷方 |\n| 股利 Dividends | 减项 | 增 | 减 | 借方 |\n| 收入 Revenues | 加项 | 减 | 增 | 贷方 |\n| 费用 Expenses | 减项 | 增 | 减 | 借方 |\n\n读费用行：费用本身增加使权益减少，因此借记费用；它不是先付现金才能记费用。",
+      "occurrences": 1
+    },
+    {
+      "old": "从最上面的等式规则读：资产增加记借，权益增加记贷；沿权益的构成线看“费用”，它是权益减项，因此费用增加记借。",
+      "new": "先读大类表：资产增加记借，权益增加记贷；再读权益子项表的费用行，它是权益减项，因此费用增加记借。",
+      "occurrences": 1
+    },
+    {
+      "old": "图里的构成线不是交易时间顺序。",
+      "new": "两张表表达类别与构成关系，不是交易时间顺序。",
+      "occurrences": 1
+    },
+    {
+      "old": "**读图问题（笔记补充）**：费用为什么借增而权益贷增？实箭头表示下面说明的处理或状态先后；虚线/无向线按关系读，不自动是因果。",
+      "new": "**阅读问题（笔记补充）**：费用为什么借增而权益贷增？两表先看大类，再看权益子项；来源是讲义 p.16–18 的方向规则，本节重新排版。",
+      "occurrences": 1
+    },
+    {
+      "old": "**走图 / 文字替代**：先读大类表：",
+      "new": "**读表**：先读大类表：",
+      "occurrences": 1
+    },
+    {
+      "old": "**格式约定（讲义没有明说，但从图上能读出来，考试必须遵守）**",
+      "new": "**教材示例格式（由讲义图像读取；练习时建议沿用，考试以题目或教师明确要求为准）**",
+      "occurrences": 1
+    },
+    {
+      "old": "### 4.1 借贷规则（考前唯一必背的一张表）",
+      "new": "### 4.1 借贷规则速查",
+      "occurrences": 1
+    },
+    {
+      "old": "**常见扣分点**",
+      "new": "**常见错误（本题为笔记自拟，不是教师评分表）**",
+      "occurrences": 1
+    },
+    {
+      "old": "已在 M01 学过，会背五步即可",
+      "new": "能按顺序说明五步，并指出各步生成的记录",
+      "occurrences": 1
+    },
+    {
+      "old": "⚠️ **考试写分录仍要按这个格式**——它是教科书通行格式",
+      "new": "教材示例格式；练习时建议沿用，考试以题目或教师明确要求为准",
+      "occurrences": 1
+    },
+    {
+      "old": "❓ **录音里没有这段**（中断于 p.44 之后），不能据此降权",
+      "new": "❓ W2 原录音未到 p.46–47；W3 只补用途与 AI 演示，三步原文与 45,300 具体表仍未录到，不据此降权",
+      "occurrences": 1
+    },
+    {
+      "old": "Every time you see 'in advance'",
+      "new": "Every time you see '[in advance]'",
+      "occurrences": 3
+    },
+    {
+      "old": "**A debit is not always good and a credit is not always bad.**",
+      "new": "**A debit is not always good and the credit is not always [bad].**",
+      "occurrences": 1
+    },
+    {
+      "old": "Debit means left",
+      "new": "Debit means [left]",
+      "occurrences": 3
+    },
+    {
+      "old": "Credit means right",
+      "new": "Credit means [right]",
+      "occurrences": 2
+    },
+    {
+      "old": "\"debit is not always good, credit is not always bad\"、\"debit means left, credit means right, that's it\"、\"about direction and balance\"",
+      "new": "借贷不表示好坏、借为左而贷为右、重在方向与平衡（视频含义转述）",
+      "occurrences": 1
+    },
+    {
+      "old": "\"Debit means [left], credit means right\"",
+      "new": "借为左、贷为右（视频含义转述）",
+      "occurrences": 1
+    },
+    {
+      "old": "（`01:07:11`；ASR 把 left/right 识别成 \"less/rate\"）",
+      "new": "（`01:07:11`–`01:07:29`；ASR 为 less/rate，方括号按讲义 p.14 的稳定左右定义校正，未核原音）",
+      "occurrences": 1
+    },
+    {
+      "old": "> \"We just follow this rule. It's very [easy] to make mistake[s]. So let's see some examples later.\"",
+      "new": "> \"We just follow this rule.\"",
+      "occurrences": 1
+    },
+    {
+      "old": "（`01:01:56`）——⚠️ 教授两次说这里\"容易出错\"（另一处是讲交易 6 时，见 §2.6.3），这是他给的重点信号。",
+      "new": "（`01:01:56`）。紧接的 ASR 作 \"very unique ... to make mistake\"，词形不清，未核原音，不据此造“容易出错”的直引或考试信号；T6/T15 的明确提醒见 §2.6.3。",
+      "occurrences": 1
+    },
+    {
+      "old": "`01:01:56`（规则表）：*\"It's very [easy] to make mistake[s].\"*",
+      "new": "`01:01:56`–`01:02:10` 的规则表段词形不清，不作独立重点证据；本行重点由前述 T6/T15 的明确提醒支持。",
+      "occurrences": 1
+    },
+    {
+      "old": "> 💡 **这十笔的读法（笔记补充）**",
+      "new": "> 校词边界：`53:30` 原 ASR 为 `in the long`，直引中的 `[in advance]` 按讲义 p.39 的预收情境校正；原音未核，不能说已听清该词。\n\n> 💡 **这十笔的读法（笔记补充）**",
+      "occurrences": 1
+    },
+    {
+      "old": "（`01:06:16`）",
+      "new": "（`01:06:16`；ASR 为 Back，`[bad]` 依同视频 `01:10:31` 的 good/bad 对照校正，原音未核）",
+      "occurrences": 1
+    }
+  ],
+  "canonical_candidate_not_modified": true
+}

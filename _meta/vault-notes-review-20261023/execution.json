@@ -26,11 +26,11 @@
       "writeback": "已原子写并精确回读",
       "local_sync": "已原子合并并回读；链接/README/完整性问题均为0",
       "notion": "已写并回读（个人字段未变）",
-      "git": "本批提交前核验中",
+      "git": "已提交推送并核远端：6a10b2c",
       "sources": [],
       "blockers": [],
       "reviewer_id": "/root/review_ac6761_m01",
-      "review_stage": "written_all_applicable_sync_verified_pending_git",
+      "review_stage": "complete_for_provided_material_scope_all_sync_and_remote_verified",
       "included": true,
       "scope_classification": "included",
       "scope_reason": "五门课现有 M/T 主笔记，属于任务单明确全篇重审范围。",
@@ -138,7 +138,8 @@
       "dependency_sync_record": "_meta/vault-notes-review-20261023/batch1-sync/apply-log.json",
       "administrative_maintenance": "_meta/vault-notes-review-20261023/batch1-sync/admin-ac6761-m01.json",
       "receipt_location_maintenance": "_meta/vault-notes-review-20261023/ac6761-m01/receipt-location-maintenance.json",
-      "review_receipt_sha256": "ccf75b8840f02d1cb8b26a3dd7684b1eeca180e5599b980308a52e454ae24eaf"
+      "review_receipt_sha256": "ccf75b8840f02d1cb8b26a3dd7684b1eeca180e5599b980308a52e454ae24eaf",
+      "git_commit": "6a10b2cfa651acfc0c401d11ffc4cb691b256978"
     },
     {
       "id": "ac6761-m02",
@@ -148,11 +149,11 @@
       "bytes": 185696,
       "lines": 3136,
       "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ac6761-m02",
-      "teaching_state": "已修待复核",
-      "writeback": "未开始",
-      "local_sync": "未开始",
-      "notion": "未开始",
-      "git": "未开始",
+      "teaching_state": "修订并验收",
+      "writeback": "已原子写并精确回读",
+      "local_sync": "12文件55补丁已写并回读；链接/README/完整性问题均为0（进度快照有意缩写单列allow）",
+      "notion": "已写并回读（旧备注原样保留、其余所有字段未变）",
+      "git": "本批提交前核验中",
       "sources": [],
       "blockers": [],
       "included": true,
@@ -161,10 +162,10 @@
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
-      "review_stage": "targeted_accepted_pending_main_source_visual_full_gate",
+      "review_stage": "all_applicable_local_and_notion_sync_verified_pending_git",
       "reviewer_id": "/root/review_ac6761_m02",
       "independent_review_status": "passed",
-      "candidate_sha256": "d35c518f50354154ebedab561ac224007dd3fd25e52a23a1c54028734e429800",
+      "candidate_sha256": "5c62d4a571b24381593be3300add134edbf5649d8d5e18977edd30e14e1dee5b",
       "evidence_reports": [
         {
           "path": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ac6761-m02/independent-review.md",
@@ -195,7 +196,93 @@
       "author_ids": [
         "/root",
         "/root/scope_classification"
-      ]
+      ],
+      "review_receipt": "_meta/vault-notes-review-20261023/ac6761-m02/review.json",
+      "source_inputs": [
+        {
+          "path": "AC6761_Artificial_Intelligence_Accounting/course_files_export/Week 2 PPT.pptx",
+          "sha256": "4fc4519a5dfb723ac17bb46f53da86adfef5c58cc3043a3bac5318712ffc8057",
+          "bytes": 1967343,
+          "scope": "applicable source; exact ranges in main report"
+        },
+        {
+          "path": "AC6761_Artificial_Intelligence_Accounting/course_files_export/Week 1 PPT.pptx",
+          "sha256": "7d206a305fb826d129db481e0769759abd73c051dfb963b533389ccf32bb1450",
+          "bytes": 1341860,
+          "scope": "applicable source; exact ranges in main report"
+        },
+        {
+          "path": "AC6761_Artificial_Intelligence_Accounting/course_files_export/Case 1 with solution.docx",
+          "sha256": "af790f648a4a0e11e76cb3a7428749f140a00be727c30fffc63a99350cd3bab4",
+          "bytes": 20396,
+          "scope": "applicable source; exact ranges in main report"
+        },
+        {
+          "path": "AC6761_Artificial_Intelligence_Accounting/course_files_export/Transaction analyses for Lecture 1.docx",
+          "sha256": "6ad513243f2c5199ee57e80059a5c82c5f5fb1d34197b4d432479576ba8d4647",
+          "bytes": 14768,
+          "scope": "applicable source; exact ranges in main report"
+        },
+        {
+          "path": "AC6761_Artificial_Intelligence_Accounting/course_files_export/Case 2 with solution.docx",
+          "sha256": "4b4cbeec7927104cada13f00d3341e1db662db33c4032a552f8c0b088c3cffe2",
+          "bytes": 23762,
+          "scope": "applicable source; exact ranges in main report"
+        },
+        {
+          "path": "AC6761_Artificial_Intelligence_Accounting/course_files_export/Quiz 1 with solution.docx",
+          "sha256": "acd159abc59ebd1992fddd04aef0f617178fba9f76584cc9a431d1ffd550646d",
+          "bytes": 22088,
+          "scope": "applicable source; exact ranges in main report"
+        },
+        {
+          "path": "AC6761_Artificial_Intelligence_Accounting/transcripts/M01-transcript.txt",
+          "sha256": "c2206f6eb871b62edc5c81437851719367e0b49d33832187f510d72c72d1cffc",
+          "bytes": 85316,
+          "scope": "applicable source; exact ranges in main report"
+        },
+        {
+          "path": "AC6761_Artificial_Intelligence_Accounting/transcripts/M02-transcript.txt",
+          "sha256": "b91c9fd7437262e2d43d042b1bd2e62de9885fa0635892f2a945cb82479950a6",
+          "bytes": 59908,
+          "scope": "applicable source; exact ranges in main report"
+        },
+        {
+          "path": "AC6761_Artificial_Intelligence_Accounting/transcripts/M03-transcript.txt",
+          "sha256": "d8497e1664b1f902338c09d51ad550c3a59a1c8e97865a3ba8fbb3309822a379",
+          "bytes": 63805,
+          "scope": "applicable source; exact ranges in main report"
+        },
+        {
+          "path": "AC6761_Artificial_Intelligence_Accounting/transcripts/M04-transcript-part1-partial.txt",
+          "sha256": "88fd789bb0ade96be14749f92936da72ae446ce23691056ce2b9d16e19705f8d",
+          "bytes": 34323,
+          "scope": "applicable source; exact ranges in main report"
+        },
+        {
+          "path": "AC6761_Artificial_Intelligence_Accounting/transcripts/M04-transcript-part2-partial.txt",
+          "sha256": "a1b364f121cb6ea935664e3a723b018514a41c99be1c301ed96663dd8f2d64ec",
+          "bytes": 17588,
+          "scope": "S3/S4 batch registration only; no M02 teaching content"
+        },
+        {
+          "path": "AC6761_Artificial_Intelligence_Accounting/transcripts/M04-transcript-part3-partial.txt",
+          "sha256": "63fd0bb5394e2f7a651e4b1e75bd4edbc704e77c712f1a78c8a44f868a182c89",
+          "bytes": 24249,
+          "scope": "S3/S4 batch registration only; no M02 teaching content"
+        }
+      ],
+      "full_gate": {
+        "mechanical": true,
+        "receipt": true,
+        "historical": "FAIL",
+        "C_warn": 0,
+        "R_warn": 205
+      },
+      "writeback_record": "_meta/vault-notes-review-20261023/ac6761-m02/writeback.json",
+      "formal_sha256": "5c62d4a571b24381593be3300add134edbf5649d8d5e18977edd30e14e1dee5b",
+      "notion_evidence": "_meta/vault-notes-review-20261023/ac6761-m02/sync/notion-readback.json",
+      "dependency_sync_record": "_meta/vault-notes-review-20261023/batch2-ac-m02-sync/apply-log.json"
     },
     {
       "id": "ac6761-m03",
@@ -205,7 +292,7 @@
       "bytes": 331669,
       "lines": 4604,
       "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ac6761-m03",
-      "teaching_state": "缺陷待修",
+      "teaching_state": "已修待复核",
       "writeback": "未开始",
       "local_sync": "未开始",
       "notion": "未开始",
@@ -218,8 +305,8 @@
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
-      "review_stage": "targeted_residual_repair_in_progress",
-      "candidate_sha256": "dc630e9deb8c07e857417669fe7b4a7aa29b2e4acb75e40921674dd72c697408",
+      "review_stage": "targeted_residual_accepted_pending_main_visual_and_full_gate",
+      "candidate_sha256": "f3d8b6d29a7ea37061b55e695181be516e934ff65fbdd35ef6c289936fb1a094",
       "evidence_reports": [
         {
           "path": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ac6761-m03/independent-review.md",
@@ -228,6 +315,10 @@
         {
           "path": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ac6761-m03/stage-1.md",
           "sha256": "5323bd3af8822fcfe2812cb9aa64630c33ccb2a84aa46169f0d43eb9e91142be"
+        },
+        {
+          "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m03\\targeted-residual-accepted.md",
+          "sha256": "a7d9d4d3f684e29e66ca7fa461409f1a4318d022f1eb081228f64f410c6acffe"
         }
       ],
       "stage_1": {
@@ -236,7 +327,7 @@
         "full_read_reported": true
       },
       "reviewer_id": "/root/review_ac6761_m03",
-      "independent_review_status": "needs_revision",
+      "independent_review_status": "passed",
       "author_ids": [
         "/root",
         "/root/review_ef5560_m01",
@@ -255,7 +346,7 @@
       "bytes": 302478,
       "lines": 4817,
       "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ac6761-m04",
-      "teaching_state": "未开始",
+      "teaching_state": "已修待复核",
       "writeback": "未开始",
       "local_sync": "未开始",
       "notion": "未开始",
@@ -267,7 +358,27 @@
       "scope_reason": "五门课现有 M/T 主笔记，属于任务单明确全篇重审范围。",
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
-      ]
+      ],
+      "independent_review_status": "needs_revision",
+      "review_stage": "author_v3_four_R5_mirrors_repaired_pending_targeted_recheck_and_main_adoption",
+      "reviewer_id": "/root/review_ac6761_m04",
+      "author_ids": [
+        "/root"
+      ],
+      "stage_1": {
+        "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\stage-1.md",
+        "sha256": "74d48757d1be5e5f44ca60ef0406a9ed49ec55728e27ee3e0cd9779c72a37b9c",
+        "full_read_reported": true,
+        "main_read": true
+      },
+      "evidence_reports": [
+        {
+          "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\independent-review.md",
+          "sha256": "ed3703c4525c7f3af235b3cac1710d1da4a16e6eb72accf95f63ec621607a297"
+        }
+      ],
+      "proposed_candidate_sha256": "8b135c68476893dced0d41dcaaac947d7fea05e6db945e7983b56658eee871cf",
+      "candidate_sha256": "f7c2a949146793a2a752adb83486a84bd05b7721c7f1b2c24cd6a7efcb45bff3"
     },
     {
       "id": "ac6761-m05",
@@ -311,6 +422,9 @@
       "scope_reason": "五门课现有 M/T 主笔记，属于任务单明确全篇重审范围。",
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
+      ],
+      "pending_sync_findings": [
+        "Notion既有AC6761 W06行3d58310b259681c7b451ddb74dec398e笔记路径漏AC6761_前缀，2026-10-25只读查到；到本篇同步时修，不升级当前待审状态。"
       ]
     },
     {
@@ -413,11 +527,11 @@
       "writeback": "已原子写并精确回读",
       "local_sync": "已原子合并并回读；链接/README/完整性问题均为0",
       "notion": "已写并回读（个人字段未变）",
-      "git": "本批提交前核验中",
+      "git": "已提交推送并核远端：6a10b2c",
       "sources": [],
       "blockers": [],
       "reviewer_id": "/root/review_ef5560_m01",
-      "review_stage": "written_all_applicable_sync_verified_pending_git",
+      "review_stage": "complete_for_provided_material_scope_all_sync_and_remote_verified",
       "included": true,
       "scope_classification": "included",
       "scope_reason": "五门课现有 M/T 主笔记，属于任务单明确全篇重审范围。",
@@ -552,7 +666,8 @@
       "dependency_sync_record": "_meta/vault-notes-review-20261023/batch1-sync/apply-log.json",
       "administrative_maintenance": "_meta/vault-notes-review-20261023/batch1-sync/admin-ef5560-m01.json",
       "receipt_location_maintenance": "_meta/vault-notes-review-20261023/ef5560-m01/receipt-location-maintenance.json",
-      "review_receipt_sha256": "faabf81c33acf281800f82c1e3007a20cf805ef18824217b0d89af1743980037"
+      "review_receipt_sha256": "faabf81c33acf281800f82c1e3007a20cf805ef18824217b0d89af1743980037",
+      "git_commit": "6a10b2cfa651acfc0c401d11ffc4cb691b256978"
     },
     {
       "id": "ef5560-m02",
@@ -619,7 +734,7 @@
       "bytes": 314576,
       "lines": 4067,
       "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ef5560-m03",
-      "teaching_state": "审查中",
+      "teaching_state": "已修待复核",
       "writeback": "未开始",
       "local_sync": "未开始",
       "notion": "未开始",
@@ -632,13 +747,31 @@
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
-      "review_stage": "stage1_read_by_main_stage2_source_review_in_progress",
+      "review_stage": "author_v4_independent_accepted_pending_main_full_read_diff_source_visual_adoption",
       "reviewer_id": "/root/review_ef5560_m03",
       "stage_1": {
         "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ef5560-m03\\stage-1.md",
         "sha256": "4e9fba0799ae8ed502240f7bde8b617286e91eb07badafe079ccecdd230874c8",
         "full_read_reported": true,
         "main_read": true
+      },
+      "independent_review_status": "needs_revision",
+      "author_ids": [
+        "/root",
+        "/root/repair_ef5560_m03"
+      ],
+      "evidence_reports": [
+        {
+          "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ef5560-m03\\independent-review.md",
+          "sha256": "a12872dfcc8fa543bce6ef896bf3f745f65ebdb1e5e282e58207a051f9551ee0"
+        }
+      ],
+      "proposed_candidate_sha256": "dbb1b512da9ef0273cb259fd65bbc1def33a5d4d762a8944d897277401e1f7c0",
+      "candidate_sha256": "9c87bf58f595ea64d56a02721aad7aec6aca600389be9846daf9f8f62ca299b7",
+      "proposal_independent_review_status": "passed",
+      "proposal_independent_report": {
+        "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ef5560-m03\\targeted-v4-accepted.md",
+        "sha256": "02c04b72d7a19b8336ff6e188cff6dfcc0f84ff929b846856ea6e52c46608038"
       }
     },
     {
@@ -741,7 +874,7 @@
       "writeback": "已原子写并精确回读",
       "local_sync": "已原子合并并回读；链接/README/完整性问题均为0",
       "notion": "已写并回读（个人字段未变）",
-      "git": "本批提交前核验中",
+      "git": "已提交推送并核远端：6a10b2c",
       "sources": [],
       "blockers": [],
       "included": true,
@@ -750,7 +883,7 @@
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
-      "review_stage": "written_all_applicable_sync_verified_pending_git",
+      "review_stage": "complete_for_provided_material_scope_all_sync_and_remote_verified",
       "reviewer_id": "/root/review_is5113_m01",
       "stage_1": {
         "path": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/is5113-m01/stage-1.md",
@@ -818,7 +951,8 @@
       "formal_sha256": "7523ff5e9c706fb020986e2709408240511ad8744296a1a21f2832ac0fbe2616",
       "dependency_sync_record": "_meta/vault-notes-review-20261023/batch1-sync/apply-log.json",
       "receipt_location_maintenance": "_meta/vault-notes-review-20261023/is5113-m01/receipt-location-maintenance.json",
-      "review_receipt_sha256": "c53e4ef2a6c88f6f993258490180e902fee01ebb320d37d78e9850c1ae94fa56"
+      "review_receipt_sha256": "c53e4ef2a6c88f6f993258490180e902fee01ebb320d37d78e9850c1ae94fa56",
+      "git_commit": "6a10b2cfa651acfc0c401d11ffc4cb691b256978"
     },
     {
       "id": "is5113-m02",
@@ -828,7 +962,7 @@
       "bytes": 250288,
       "lines": 4699,
       "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/is5113-m02",
-      "teaching_state": "缺陷待修",
+      "teaching_state": "已修待复核",
       "writeback": "未开始",
       "local_sync": "未开始",
       "notion": "未开始",
@@ -841,7 +975,7 @@
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
-      "review_stage": "targeted_residual_repair_in_progress",
+      "review_stage": "author_v5_text_D16_accepted_registry_specific_records_under_repair_then_final_recheck",
       "candidate_sha256": "b19f3214529f37acb937240f57aab3677ad2a2d7b5543b6a60703d9777775010",
       "evidence_reports": [
         {
@@ -851,6 +985,10 @@
         {
           "path": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/is5113-m02/stage-1.md",
           "sha256": "999a1ae0246340d35526864ea9fa42c1373e09369171bb7db191a78c6895fc64"
+        },
+        {
+          "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\is5113-m02\\author\\residual-findings.md",
+          "sha256": "a3913010278d15237f9e74eb95e16c49a11f1f4bf84558d965ad1d7ea7c72011"
         }
       ],
       "stage_1": {
@@ -859,10 +997,11 @@
         "full_read_reported": true
       },
       "reviewer_id": "/root/review_is5113_m02",
-      "independent_review_status": "in_progress",
+      "independent_review_status": "needs_revision",
       "author_ids": [
         "/root/repair_is5113_m02_residual"
-      ]
+      ],
+      "proposed_candidate_sha256": "2f4883fbcdc3aea8fb18b0925b796538c6ab5e8a1179d45ba2d51da772b1490b"
     },
     {
       "id": "is5113-m03",
@@ -2296,5 +2435,14 @@
     "Sync-off confirmation carried forward from task; no new on/running evidence"
   ],
   "confirmed_review_total": 69,
-  "latest_checkpoint": "runtime-checkpoint.md"
+  "latest_checkpoint": "runtime-checkpoint.md",
+  "resume_20261025": {
+    "model_verified": "gpt-6.1-sol/xhigh from current rollout turn_context",
+    "reviewer_model": "gpt-5.6-sol strictly lower",
+    "snapshot_label": "vault-review-20261025-resume",
+    "snapshot_files": 327,
+    "head_after_fetch": "6a10b2cfa651acfc0c401d11ffc4cb691b256978",
+    "preexisting_ten_changes_still_excluded": true,
+    "all_target_live_baselines_checked_before_write": "AC M02 exact265a97...; no other new formal note write on resume yet"
+  }
 }

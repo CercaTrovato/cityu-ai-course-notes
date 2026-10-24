@@ -88,7 +88,7 @@ updated: 2026-10-22
 | 周 | 主题 | 笔记 |
 |---|---|---|
 | 1 | Accounting in Business | ✅ [[M01-会计与商业]] |
-| 2 | Accounting for Business Transactions（复式记账、借贷、日记账、过账、试算表） | ⏳ 待产 |
+| 2 | Accounting for Business Transactions（复式记账、借贷、日记账、过账、试算表） | ✅ [[M02-交易的会计处理]] v1.0；2026-10-25 本次全篇重审闭合并正式写回（不代表本人已通读/自测） |
 | 3 | Annual Report Analyses（四表详解、共同比分析、Nike 案例） | ⏳ 待产 |
 | 4 | REA Accounting Model | ⏳ 待产 |
 | 5 | REA Business Process Modeling | ⏳ 待产 |
@@ -165,11 +165,11 @@ gantt
 | 1 | **小组名单的提交渠道** | 讲义只说"第 3 周末前提交"，未说提交到哪。**去 Canvas 确认**，或直接问教授。<!-- W2转录 --> W2 转录（`00:02`–`01:38:33`）里 `group` / `team` / `submit` 0 命中（唯一的 "No need to submit" 是课堂练习）；**W2 录音尾部缺失**，课末若说过也没录到 |
 | 2 | **书面报告的格式要求** | 页数、结构、引用格式一律未说明 |
 | 3 | **是否有个人作业** | 讲义 p.2 的课堂参与里提到 "individual assignment"，但**至今未见任何具体布置**。可能在转录缺口那段说过。<!-- W2转录 --> W2 的两道课堂练习都明说**不收**（`21:04` *"I will not collect"*、`01:33:20` *"No need to submit"*），不是作业 |
-| 4 | 🎙️ **教授承诺的 Word 答题模板** | 转录 `01:53:19`：*"So this word file… **we upload it**… maybe **next week** after we finish all of them."* —— 交易分析的简化答题格式模板，**W2（2026-09-09）之后去 Canvas 找**。<!-- W2转录 --> **W2 课上疑似已使用**：`20:50` *"[you can download] the format… or I will upload this [to Canvas] later"*、`35:07`–`35:21` *"follow this format… since we only have the eight [transactions], we can [delete] the others here using this format"*（模板行数多于 8）。**仍未见文件，去 Canvas 找** |
+| 4 | 🎙️ **教授提到的 Word 答题格式文件** | M01 `01:53:19` 与 W2 `20:50`、`35:07`–`35:21` 提到会上传/使用 format。后到的 `Transaction analyses for Lecture 1.docx`、Case 1/Case 2/Quiz 1 DOCX 已在本地，但现有证据未确认哪一个就是该特定模板；不再写成所有相关文件均未取得，也不猜文件身份 |
 | 5 | **期末考的日期与地点** | 学校统一安排，学期后段公布 |
 | 6 | **及格线的具体百分比** | 三份文件都只说"两部分都要过"，没有数字 |
 | 7 | 展示的评分是个人分还是小组分 | 讲义只说"每位组员都要参与"，未说明是否分开评分 |
-| 8 | **9/21 补发的四个 docx 是否计分** | `Case 1 / Case 2 with solution.docx`（带解答的练习）、`Transaction analyses for Lecture 1.docx`（W1 官方解答表）、`2 Analyze balance sheet.docx`（AI 分析提示词）——都是**带答案的练习 / 演示材料**，⚪ 推测为期中考题型预演与 #4 承诺的"答题模板"的一部分，不像计分作业；已并入 M01 / M02 / M03。若 Canvas 有对应提交入口，回填此处 |
+| 8 | **带解答 DOCX 的行政地位** | Case 1/Case 2、`Transaction analyses for Lecture 1.docx`、`2 Analyze balance sheet.docx` 与后到 `Quiz 1 with solution.docx` 均已在本地并用于教学核对。文件存在/带答案不等于计分或提交；现有材料没有确认 Case 1/2 的独立提交入口或截止。Quiz 1 的课堂收取仅作 participation 证据且本次不评分，不推断本人已交 |
 
 ---
 
@@ -184,11 +184,13 @@ gantt
 | 小组名单提交渠道 | ❌ 0 命中 | 见待核对 #1 |
 | 个人作业 | ❌ | 两道课堂练习都不收 |
 | **课堂练习 1**（交易分析，8 笔） | ✅ `18:21`–`47:21` | *"I will not collect"*（`21:04`）。题面 + 答题格式教授说会上传（`20:50`）。题面与解答已重建在 [[M01-会计与商业#2.8.5 交易 5–11 逐笔展开（讲义 p.63–75）\|M01 §2.8.5]] |
-| **课堂练习 2**（"chapter [2] practice"，算各账户期末余额） | ✅ `01:33:20`–`01:38:33` | *"No need to submit"*。题面只剩碎片，**解答未录到** |
-| 🔴 审题 / 评分规则 | ✅ | 默认现金（`03:04`）、不写 0 扣分（`10:56`、`38:05`）、编号 / 正负号 / 备注不写 / 每笔验平衡（`34:54`–`40:49`）——已登记 [[AC6761_Artificial_Intelligence_Accounting/_meta/考点库\|考点库]] M01 段 W2-1～W2-3 |
-| 上传承诺 | ✅ | `20:50` *"I will upload this [to Canvas] later"*——练习 1 的题面与格式文件。**去 Canvas 找**（渠道词听不清，按惯例应为 Canvas） |
+| **课堂练习 2 / Case 2**（算各账户期末余额） | ✅ W2 `01:33:20` 起；W3 `00:01`–`17:43` 顺延 | W2 本源说 *"No need to submit"* 且中途截断；W3 只录到交易 3–12 与余额方法。后到官方 `Case 2 with solution.docx` 已补全题面、12 笔分录、12 个账户和试算表；录音缺段仍保留 |
+| 🔴 审题 / 答题讲评 | ✅ | 默认现金有考试语境原话；不写 0 有明确失分原话；编号、正负号、备注和逐笔验平衡包含要求与建议，不合并称完整评分标准。逐项来源见 [[AC6761_Artificial_Intelligence_Accounting/_meta/考点库\|考点库]] W2-1～W2-3 |
+| 上传承诺 | ✅（历史原话） | `20:50` *"I will upload this [to Canvas] later"*。相关官方 DOCX 现已取得；本轮不把未核听的渠道词或具体模板对应关系补成确定事实 |
 
 **历史结论更新**：W2 转录没有新增截止日期；范围仍按 W1 的教授口述为 W1–W5。时段后来由 9 月 22 日公告更新为 10 月 14 日 19:00–21:00；练习文件是否取得另按后续材料记录，不再把本段当当前待找清单。
+
+**2026-10-25 M02 同步结论**：本次全篇重审没有发现新的计分任务、截止或提交渠道。Case 2 明示无需提交；Quiz 1 为课堂参与证据、本次不评分。Notion DDL 只做 fresh read 后的“无增量”核对，不新建任务、不改本人提交/评分状态。
 
 ---
 

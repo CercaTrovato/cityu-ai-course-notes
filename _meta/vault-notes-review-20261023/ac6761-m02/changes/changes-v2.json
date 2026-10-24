@@ -1,0 +1,177 @@
+{
+  "candidate_path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m02\\candidate.md",
+  "candidate_sha256": "b853fdc08db7b6bb02b50a597119c5b8165c42754e6938ce2b0fc3e66e96668f",
+  "targeted_review_sha256": "15295c7fae28174c11101ab0c90700d9308d2814946d4a101fb459af6c07dcde",
+  "proposed_path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m02\\author\\proposed-v2.md",
+  "proposed_sha256": "bc6de9539606e975e3be0586b0735de247d2364f506a4f5fb7cf21b13607dad9",
+  "patch_count": 17,
+  "patches": [
+    {
+      "id": "V2-01",
+      "defects": [
+        "B2"
+      ],
+      "reason": "在首次集中入口直接展开全部缩写，而非只列字母和后续链接。",
+      "old": "| 会计常用缩写 | A / L / E / AR / AP / NI | §2.2、§2.8 |\n| 现金流三分类 | CFO / CFI / CFF | §2.8 |",
+      "new": "| 会计等式缩写 | A = Assets（资产）<br>L = Liabilities（负债）<br>E = Equity（权益） | §2.2、§2.8 |\n| 往来账户缩写 | AR = Accounts Receivable（应收账款）<br>AP = Accounts Payable（应付账款） | §2.2、§2.5 |\n| 汇总结果缩写 | NI = Net Income（净利润）<br>TB = Trial Balance（试算表） | §2.5–§2.8 |\n| 现金流三分类 | CFO = 经营活动现金流<br>CFI = 投资活动现金流<br>CFF = 筹资活动现金流 | §2.8 |"
+    },
+    {
+      "id": "V2-02",
+      "defects": [
+        "B2"
+      ],
+      "reason": "避免在 §1.2 定义之前先用 A/L。",
+      "old": "| 扩展会计等式 | `A = L + 股本 − 股利 + 收入 − 费用` | [[M01-会计与商业#2.7.6 扩展会计等式（讲义 p.42, p.47–49）\\|M01 §2.7.6]] |",
+      "new": "| 扩展会计等式 | `资产 = 负债 + 股本 − 股利 + 收入 − 费用` | [[M01-会计与商业#2.7.6 扩展会计等式（讲义 p.42, p.47–49）\\|M01 §2.7.6]] |"
+    },
+    {
+      "id": "V2-03",
+      "defects": [
+        "B2"
+      ],
+      "reason": "纠正“这里首次使用”的事实错误，并做一句唤醒。",
+      "old": "这里首次使用的缩写是：`A` = Assets（资产）、`L` = Liabilities（负债）、`E` = Equity（权益）、`AR` = Accounts Receivable（应收账款）、`AP` = Accounts Payable（应付账款）、`NI` = Net Income（净利润）、`TB` = Trial Balance（试算表）。",
+      "new": "本节统一沿用 §1.2 已定义的缩写：`A / L / E` 表示资产、负债、权益，`AR / AP` 表示应收账款、应付账款，`NI / TB` 表示净利润、试算表。"
+    },
+    {
+      "id": "V2-04",
+      "defects": [
+        "B2"
+      ],
+      "reason": "首次出现不使用未定义的 FF 缩写。",
+      "old": "利润按已赚收入与已耗费用算，现金按实际收付算：FF 预收 3,000 未履约，所以还不是收入，却已经是经营收现；",
+      "new": "利润按已赚收入与已耗费用算：FastForward 预收 3,000 未履约，所以还不是收入，却已经是经营收现；"
+    },
+    {
+      "id": "V2-05",
+      "defects": [
+        "B6"
+      ],
+      "reason": "按官方 Quiz 1 原题删除静默增加的 The。",
+      "old": "> 1. Transaction 1: Mar 1 - The owner invests \\$8,000 cash to start the business.",
+      "new": "> 1. Transaction 1: Mar 1 - Owner invests \\$8,000 cash to start the business."
+    },
+    {
+      "id": "V2-06",
+      "defects": [
+        "B6",
+        "B7"
+      ],
+      "reason": "采用官方数值作答，同时不越证据判断冲突成因。",
+      "old": "**中文读题入口**：题目要分析公司 3 月的 12 笔交易，并为所有受影响账户画 T 形账户。`all the accounts` 要求零余额账户也展示，本次课堂讲评指定零余额放在该账户正常余额侧。广告费是 150 美元，应付账款偿还是 350 美元，这两个数字以官方 DOCX 为准，转录中的 115/315 是 ASR 错误。",
+      "new": "**中文读题入口**：题目要分析公司 3 月的 12 笔交易，并为所有受影响账户画 T 形账户。`all the accounts` 要求零余额账户也展示，本次课堂讲评指定零余额放在该账户正常余额侧。广告费是 150 美元，应付账款偿还是 350 美元，这两个数字以官方 DOCX 为准。转录文本在这两处出现 115/315，与官方书面数值冲突；本轮未听原音，因此不判断是 ASR、教授口误还是其他声学问题。"
+    },
+    {
+      "id": "V2-07",
+      "defects": [
+        "B6"
+      ],
+      "reason": "补充 W3 可核的收取、participation、不评分及姓名学号要求，并保护个人提交状态。",
+      "old": "**来源说明**：上述题面、分录与 T 形账户均来自官方 `Quiz 1 with solution.docx`。原文件把 Service Revenue 的 T 形账户重复排了两次，本笔记只保留一次，并把这一点当作原件排版勘误，不重复计算。S2 `06:09`–`24:54` 支持审题、费用分账和零余额展示规则，但金额以 DOCX 为准。\n\n---",
+      "new": "**来源说明**：上述题面、分录与 T 形账户均来自官方 `Quiz 1 with solution.docx`。原文件把 Service Revenue 的 T 形账户重复排了两次，本笔记只保留一次，并把这一点当作原件排版勘误，不重复计算。S2 `06:09`–`24:54` 支持审题、费用分账和零余额展示规则，但金额以 DOCX 为准。\n\n**课堂收取与评分地位（W3 `20:29`–`21:08`）**\n\n教授在布置 Quiz 1 时补充了书面题面没有写出的行政要求：每个账户还要给 ending balance；答卷会被收取，作为课堂参与（participation）的证据，但本次不会评分；首页要写姓名和学号。这里的“不评分”只描述这一次课堂练习的批改方式，不能推成课程 participation 不计分，也不能推断用户已经完成或提交。\n\n---"
+    },
+    {
+      "id": "V2-08",
+      "defects": [
+        "B8"
+      ],
+      "reason": "删除 transcript audit 唯一低匹配直引，保留可追踪的转述与回链。",
+      "old": "| ① | **Notes Payable** 应付票据 | 负债 | *\"the company [issues] a note… If companies do not use a note, we call it accounts payable\"*（`51:43`） |",
+      "new": "| ① | **Notes Payable** 应付票据 | 负债 | 课堂在 `51:43`–`51:57` 区分正式票据为 Notes Payable、未签票据为 Accounts Payable（低匹配转录，仅作转述，机制见 §2.2.2）。 |"
+    },
+    {
+      "id": "V2-09",
+      "defects": [
+        "B7"
+      ],
+      "reason": "保留官方作答结论，撤回未经核音的错误成因判断。",
+      "old": "| 6 | ✅ **练习 1 第 4 笔燃油金额为 \\$1,000** | 官方 `Case 1 with solution.docx` 已确认 \\$1,000。转录 `40:23` 的 4,000 是 ASR 数字错误；其后 21,000、24,000、23,200 的余额链也与官方数一致。 |",
+      "new": "| 6 | ✅ **练习 1 作答采用燃油 \\$1,000** | 官方 `Case 1 with solution.docx` 明确给出 \\$1,000，后续 21,000、24,000、23,200 的余额链也与该数一致。`M02-transcript.txt` `40:23` 文本为 4,000，二者冲突；本轮未听原音，不能判定是 ASR 错、教授口误或其他声学问题。 |"
+    },
+    {
+      "id": "V2-10",
+      "defects": [
+        "B8"
+      ],
+      "reason": "删除 §9.5 中残留的拼接引文和不确定章节号。",
+      "old": "| 7 | ✅（部分）**课堂练习 2** | `01:33:20` *\"chapter [four?] practice\"*——按语境应是 chapter 2；开头两笔（题面碎片 *\"paid 24,000 cash [for] one year of its rent\"*、*\"purchase[d] supplies\"*）仍不在任何录音里。**2026-09-17 已从 W3 转录（`00:01`–`17:43`）重建交易 3–12 与 Equipment/AP 两个账户的期末余额**，见 [[M02-交易的会计处理#2.6.4 课堂练习 2 的解答（W3 补讲）\\|§2.6.4]]。后到官方 DOCX 已确认全部交易与余额，材料缺口已解除，录音缺段仍保留 |",
+      "new": "| 7 | ✅（书面完整；录音部分）**课堂练习 2** | W2 `01:33:20` 起开始布置练习，`01:35:21` 可确认要求求各账户 ending balance；其后破碎转录只能确认开业、预付一年租金 24,000 和采购等对象，不拼成直引或完整题面。W3 `00:01`–`17:43` 覆盖交易 3–12 与余额方法，官方 DOCX 已确认全部交易与余额；书面材料缺口已解除，录音前两笔缺段仍保留。 |"
+    },
+    {
+      "id": "V2-11",
+      "defects": [
+        "B6"
+      ],
+      "reason": "修正与 Quiz 1 收取要求相反的 §9.5 陈述。",
+      "old": "| 13 | ⚠️ **本讲没有出现的东西**（在转录范围内确认为 0 命中） | 期中考、小组名单提交渠道、个人作业、Canvas 之外的任何提交要求。**W1 缺开头、W2 缺结尾，两次课的行政说明都没录到** |",
+      "new": "| 13 | ⚠️ **行政信息边界** | W3 `20:41`–`21:08` 明确要求收取 Quiz 1 作为 participation 证据，本次不评分，并写姓名和学号；这不证明用户已提交。除这一项外，在已核转录范围内未见新的期中考、小组名单提交渠道或 Canvas 之外的提交要求；W1 缺开头、W2 缺结尾，不能把未录范围写成确定不存在。 |"
+    },
+    {
+      "id": "V2-12",
+      "defects": [
+        "B7"
+      ],
+      "reason": "对 Quiz 1 同类数字冲突使用相同证据边界。",
+      "old": "| 15 | ✅ Quiz 1 书面题面与金额已回核 | `Quiz 1 with solution.docx` 已确认这是 3 月辅导服务公司 12 笔题，与 GTech Case 2 不是同题；广告费为 \\$150，应付偿款为 \\$350，转录中的 115/315 是 ASR 错误。§2.6.5 已保留完整英文题面、逐笔分录、全部 T 形账户与英文答案。源文件重复了一次 Service Revenue 表，本笔记只计一次。 |",
+      "new": "| 15 | ✅ Quiz 1 书面题面与金额已回核 | `Quiz 1 with solution.docx` 已确认这是 3 月辅导服务公司 12 笔题，与 GTech Case 2 不是同题；作答采用官方广告费 \\$150、应付偿款 \\$350。转录文本的 115/315 与书面源冲突，原音未核，不判断错误成因。§2.6.5 已保留完整英文题面、逐笔分录、全部 T 形账户与英文答案；源文件重复的 Service Revenue 表只计一次。 |"
+    },
+    {
+      "id": "V2-13",
+      "defects": [
+        "B7"
+      ],
+      "reason": "同步反方视角中的未核音边界。",
+      "old": "③ 课堂练习 1 第 4 笔燃油金额已由官方 DOCX 确认为 \\$1,000，旧转录的 \\$4,000 不再作为金额分支；④ 编号首位 = 类别、PR 列回填、\"股利不是费用\"三条是笔记补充而非课堂内容——已逐处标明，读者可自行降权。",
+      "new": "③ 课堂练习 1 作答按官方 DOCX 使用燃油 \\$1,000；转录文本的 \\$4,000 不作为作答分支，但原音未核，不能断言冲突成因；④ 编号首位 = 类别、PR 列回填、\"股利不是费用\"三条是笔记补充而非课堂内容——已逐处标明，读者可自行降权。"
+    },
+    {
+      "id": "V2-14",
+      "defects": [
+        "B8"
+      ],
+      "reason": "将带补词的旧直引改为可追溯转述，并收紧空档结论。",
+      "old": "| 2 | ✅ **三处空档均已查明，不是内容丢失** | ① `18:21→20:50`（2m29s）：教授在布置课堂练习 1、打开文件（`20:50` 接着说 *\"I will upload this… try by yourself\"*）；② `29:24→31:57`（2m33s）：处在学生做题时间（`21:04`–`34:38`）之内，前后都是听不清的走动与讨论噪音；③ `01:35:21→01:38:33`（3m12s）：学生做课堂练习 2 的时间，**之后录音中断** |",
+      "new": "| 2 | ✅ **三处空档均已定位** | ① `18:21→20:50`（2m29s）：教授在布置课堂练习 1、打开文件，并在 `20:50` 表示会稍后上传；② `29:24→31:57`（2m33s）：处在学生做题时间（`21:04`–`34:38`）内，前后是走动与讨论噪音；③ `01:35:21→01:38:33`（3m12s）：学生做课堂练习 2，之后录音中断。这里说明空档所在活动，不把空档本身当作录音完整证明。 |"
+    },
+    {
+      "id": "V2-15",
+      "defects": [
+        "B8"
+      ],
+      "reason": "删除噪声伪引文和过强时长推断，仅保留可支持的中断证据。",
+      "old": "| 3 | ⚠️ **结尾判定：录音提前中断（尾部缺失），不是提前下课** —— ⚪ 推断 | 依据：(a) 最后一段 `01:38:33` 是无意义噪声（*\"Gorgeous town. Hall. Take him…\"*），没有任何下课语；(b) `01:35:21` 教授刚布置练习 2（*\"Tell me the ending balance for each account\"*），按练习 1 的节奏（14 分钟做题 + 13 分钟讲评）后面至少还有 20 分钟；(c) **p.45–47 试算表是本章最后一个学习目标，录音里完全没有**，教授不太可能讲到 p.44 就停；(d) W1 录音 2h03m 且还缺开头，本课至少 2 小时以上，本录音只有 1h38m。**后果**：p.46–47 标 ❓ 不标 ⏭️；练习 2 的录音末段缺失；后到官方 DOCX 已补齐书面题面与解答；课末若有作业/期中/组队说明也一并缺失 |",
+      "new": "| 3 | ⚠️ **结尾判定：录音提前中断（尾部缺失），不是提前下课** —— ⚪ 推断 | 依据：(a) 最后一段 `01:38:33` 只有无意义噪声，没有下课语；(b) `01:35:21` 教授刚要求求各账户 ending balance，练习仍在进行；(c) p.45–47 试算表在现有录音中没有出现；(d) 本录音只有 1h38m，且没有自然收尾。**后果**：p.46–47 标 ❓ 不标 ⏭️；练习 2 的录音末段缺失；后到官方 DOCX 已补齐书面题面与解答。课末若有其他行政说明，也可能落在未录范围，不能据当前文本断言有或没有。 |"
+    },
+    {
+      "id": "V2-16",
+      "defects": [
+        "B8"
+      ],
+      "reason": "撤回“全部按讲义还原即等于核音”的过强来源状态。",
+      "old": "| 8 | ✅ **本讲新增的 ASR 错误样本**（已全部按讲义还原） | `empathy / amplitude / aquaticia / agriculture / average / everything` → equity；`counseling` → consulting；`comf` → concepts；`damage / tennis / David(son) / stereotype / embarrassed / pandem(ic) / MSI / RSI / EBIT` → debit(ing)；`satisfied / credit tax / Christian` → credit（`Christian balance` = equation balance）；`cholesterol parameters` → common stock, dividends, revenue and expense；`test / hash / cache / catch` → cash；`fliam / Libra case / livelihood / living space / live nation / likelihood` → liability；`hallucinations` → illustrations；`tier console / tier count / key account / tea count` → T-account；`general letter count / latter count / measure count / leisure` → (general) ledger (account)；`Judah entry / June entry / joint entry / children / general entry` → journal entry；`country receivable / contraceivable / counter receivable / accomplishment level` → accounts receivable；`counter payable / accountability / account table / accommodate` → accounts payable；`conception / convection / confection / construction / conduction` → transaction；`polynomial stomach` → common stock；`crypto account` → equipment account；`random stems` → rent expense；`remedies` → revenues；`splice / spice` → supplies；`imagery / amateur` → inventory；`solvent / solo / dissolve` → thousand；`decar` → detailed；视频里 `less / rate` → left / right、`viabilities` → liabilities |",
+      "new": "| 8 | ⚠️ **本讲 ASR 高风险词映射** | 讲义与上下文支持把多组异常 token 对齐到 equity、debit、credit、cash、liability、T-account、general ledger、journal entry、accounts receivable/payable、transaction、common stock、equipment、rent expense、revenue、supplies、inventory、thousand 等书面术语。该映射用于检索和转述，不代表每一处都已核听原音；无法由讲义和上下文唯一确定的词不作逐字课堂引文。 |"
+    },
+    {
+      "id": "V2-17",
+      "defects": [
+        "B8"
+      ],
+      "reason": "对另一处未核音冲突采用相同证据标准。",
+      "old": "| 9 | `01:16:37` *\"Credit. Assets means increasing assets\"* | 应为 **decreasing**（12/2 那笔现金减少）。口误或 ASR 错，无法区分；规则以讲义 p.16 为准 |",
+      "new": "| 9 | `01:16:37` 的转录文本与该笔现金减少冲突 | 该笔应按讲义 p.16 记资产减少；未听原音，不能区分教授口误、ASR 错误或其他声学问题，不把冲突文本作课堂原话引用。 |"
+    }
+  ],
+  "closed_items_preserved": [
+    "B1",
+    "B3",
+    "B4",
+    "B5"
+  ],
+  "targeted_items": [
+    "B2",
+    "B6",
+    "B7",
+    "B8"
+  ],
+  "review_status": "pending independent targeted re-review"
+}
