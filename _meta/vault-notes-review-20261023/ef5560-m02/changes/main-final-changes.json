@@ -1,0 +1,40 @@
+{
+  "schema": "exact-root-targeted-replacements-v1",
+  "author_id": "/root",
+  "source_file": "main-proposed-v2.md",
+  "source_sha256": "2cb1787ecf4f58438114c9b341ca3d8615c13285926696816ce3a3de918d5689",
+  "candidate_sha256": "31a6336f24cb8f0b9ec1ea36621099cae469ded1c694a24c404340aece833b9d",
+  "changes": [
+    {
+      "old": "$mathrm{SST}=",
+      "new": "$\\mathrm{SST}=",
+      "reason": "恢复作者新增SST公式缺失的LaTeX反斜杠；数学不变。"
+    },
+    {
+      "old": "L0 层面另需：最小二乘、R²、标准误、p 值的基本含义（见 [[EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账|台账]] L0）。**但\"金融里怎么读它们\"不在 L0**，本讲展开。",
+      "new": "本讲会就地解释最小二乘、R²、标准误和 p 值，不要求先从 [[EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账|台账]] L0 掌握大学统计。台账用于定位历史依赖；当前需要的计算和金融读法仍在正文展开。",
+      "reason": "取消以大学统计L0为读者已有掌握的前提，与实际高中起点正文一致。"
+    },
+    {
+      "old": "不能仅靠该信息集系统性获得异常收益。",
+      "new": "不能仅靠该信息集系统性获得异常收益（超过所声明风险调整基准的收益）。",
+      "reason": "就地解释新增EMH定义实际依赖的异常收益。"
+    },
+    {
+      "old": "- **为什么大多数人认为收益根本不可预测**：先给基准定义。",
+      "new": "先给有效市场假说的基准定义。",
+      "reason": "在已有EMH小标题下直接解释定义，避免把定义、信息集和现实判断塞进单个超长列表项。"
+    },
+    {
+      "old": "说明常数真值预测的基准分数为 0，并列出有限样本等边界。",
+      "new": "说明在非恒定目标上，始终预测该评估样本均值的常数模型得分为 0，并列出有限样本等边界。",
+      "reason": "官方文档指预测样本均值的常数模型，不能误写为目标为常数的情况。"
+    },
+    {
+      "old": "**English reference answer（笔记自拟）**: The momentum plots show at most a weak positive pattern, and the simple and multiple regressions estimate imprecise slopes. The reported positive OOS $R^2$ belongs to the joint three-predictor model, so it cannot be attributed to momentum alone. Forecast accuracy also omits direction, trading costs, portfolio constraints, and risk. I would change the conclusion only if a prespecified momentum-only rule delivered stable positive OOS performance and useful net portfolio results on later untouched dates.",
+      "new": "**English reference answer（笔记自拟）**:\n\nThe momentum plots show at most a weak positive pattern, and the simple and multiple regressions estimate imprecise slopes.\n\nThe reported positive OOS $R^2$ belongs to the joint three-predictor model, so it cannot be attributed to momentum alone.\n\nForecast accuracy also omits direction, trading costs, portfolio constraints, and risk.\n\nI would change the conclusion only if a prespecified momentum-only rule delivered stable positive OOS performance and useful net portfolio results on later untouched dates.\n",
+      "reason": "四句英文答题过程按图/联合模型归因/经济价值/改判证据分段；原词、数字、标点和顺序全部保留，分开随后的中文说明。"
+    }
+  ],
+  "status": "pending_independent_targeted_recheck"
+}

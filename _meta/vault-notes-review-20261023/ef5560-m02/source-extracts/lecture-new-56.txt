@@ -1,0 +1,919 @@
+FinTech and AI in Finance
+Class 2: Return Predictability and OOS Design
+
+
+
+Gavin Feng
+Semester A, 2026/27
+City University of Hong Kong
+From the Data Work to the Regression Work
+
+
+   Class 1: Build the data                          Class 2: Predict and evaluate
+   ▶ build the 240-month market and macro           ▶ distinguish several meanings of return
+     tables;                                          predictability;
+   ▶ deﬁne the forecast clock;                      ▶ estimate a transparent regression forecast;
+   ▶ construct momentum, volatility, and            ▶ test it only on later observations; and
+     trend predictors; and                          ▶ carry the frozen forecasts into Class 5 for
+   ▶ plot the raw data and features.                  portfolio construction.
+
+   Keep in mind
+   Start with the ﬁtted relation and its statistical precision. Then ask whether the ﬁtted model
+   improves forecasts and investment decisions in later data.
+
+
+                                                                                                    2/56
+Return Predictability Has Several Meanings
+
+
+
+    Meaning              Question                          Evidence
+    Conditional mean     Does E [rt | xt−1 ] change with   slope, bins, ﬁtted relation
+                         the predictor?
+    Statistical          Is the estimated relation pre-    standard error, conﬁdence interval, p-
+                         cise in the ﬁtted sample?         value
+    Out-of-sample        Does the frozen forecast beat     MSE and OOS R 2 versus lagged MA(12)
+                         a simple forecast later?
+    Direction or state   Does it identify positive or      hit rate versus the relevant base rate
+                         high-return months?
+    Economic             Does a feasible rule improve      strategy return, risk, Sharpe ratio, draw-
+                         an investment outcome?            down, exposure
+
+
+
+
+                                                                                                        3/56
+Regression with AI-Assisted
+Coding
+James Simons: Prediction as a Research Process
+
+
+                                                              Research model                    Left academia in 1978 to build what became Renais-
+                                                                                                sance and apply mathematical modeling to traded
+                                                                                                markets.
+                                                              Research team                     Recruited mathematicians, physicists, and computer
+                                                                                                scientists and organized them around a shared re-
+                                                                                                search process.
+                                                              What we              take         Protect timing, test predictions on later data, and
+        James (Jim) Simons                                    from it                           connect forecasts to a monitored investment rule.
+      Renaissance Technologies
+
+    Keep in mind
+    A regression matters only inside a process that protects timing, testing, execution, and monitoring.
+
+   Sources: Simons Foundation, biography; Simons Foundation, history. Portrait is an AI-generated editorial illustration, not a photograph.
+
+
+
+
+                                                                                                                                                      5/56
+What Regression Can Tell Us
+
+
+   For information xt−1 known before forecast month t:
+
+                                        rt = α + βxt−1 + εt .
+
+
+
+   ▶ α is the ﬁtted monthly market return when xt−1 = 0.
+   ▶ β is the ﬁtted change in next-month return for a one-unit change in xt−1 .
+   ▶ εt is the part not summarized by this line.
+   ▶ The regression describes conditional association in this sample.
+
+   Questions that still remain
+   Is the relation causal, stable, tradable, or useful in a genuinely new period?
+
+
+                                                                                    6/56
+A Clear Instruction Speciﬁes the Regression
+
+
+
+   Tell the coding assistant:
+
+   1. Question: explore association, not claim causality.
+   2. Rows: one forecast month per row, ordered from 2006-07 to 2026-06.
+   3. Target and predictor: the return realized in month t, predicted with information known
+      by month-end t − 1.
+   4. Model and outputs: intercept plus named predictors; return plots, a coeﬃcient table, ﬁt
+      statistics, residual checks, and saved ﬁles.
+   5. Validation: use a date split; never shuﬄe rows.
+
+
+
+
+                                                                                                7/56
+Explore Before You Fit
+Reload the Market Feature Table
+
+
+
+   d = pd.read_csv(
+                                                                Read the logic
+       "market_features.csv",
+                                                                 1. parse dates;
+       parse_dates=["forecast_month"],
+   ).sort_values("forecast_month")                               2. sort explicitly;
+   assert len(d) == 240
+   train = d[d["forecast_month"] < "2021-07-01"].copy()          3. verify 240 rows; and
+                                                                 4. copy the 180 pre-test
+                                                                    months.
+   Keep in mind
+   Recheck the ﬁle at the point of use. A correct Class 1 script does not guarantee that the
+   loaded ﬁle is correct.
+
+
+
+                                                                                               9/56
+Restate the Forecast Clock
+
+
+   At month-end t − 1:
+                                 xt−1    −→     rt = Pt /Pt−1 − 1.
+
+
+
+   ▶ momentum_12: 12-month price change ending at t − 1;
+   ▶ volatility_12: 12-month volatility ending at t − 1;
+   ▶ ma_gap_10: month-end price relative to its trailing 10-month average; and
+   ▶ market_return: return realized during forecast month t.
+
+   Keep in mind
+   The row is labeled by the forecast month; its predictors stop one month earlier.
+
+
+
+                                                                                      10/56
+Ask Codex to Plot before Fitting
+
+
+
+   plt.scatter(
+                                            Four choices matter
+       train["momentum_12"],
+                                            ▶ lagged predictor on the
+       train["market_return"],
+       s=24, alpha=0.55,                      horizontal axis;
+   )
+   plt.xlabel("Lagged 12-month momentum")   ▶ realized return on the vertical
+   plt.ylabel("Next-month market return")     axis;
+                                            ▶ transparency to reveal dense
+                                              regions; and
+                                            ▶ labels that preserve units and
+                                              timing.
+
+
+
+                                                                                11/56
+One Regression Question Looks Diﬀerent across Markets
+
+
+
+
+   Keep in mind
+   The same lagged-momentum regression produces three noisy clouds. The binned relation and
+   ﬁtted slope do not travel automatically across markets.
+
+                                                                                              12/56
+Why Equal-Count Bins Help
+
+
+
+
+  Sort observations by xt−1 , divide them into ten groups of similar size, and compute:
+                                      1 X                    1 X
+                               xj =          xt−1 ,   rj =          rt .
+                                      nj t∈j                 nj t∈j
+
+
+
+   ▶ Each point now summarizes roughly one-tenth of the sample.
+   ▶ The plot reveals monotonicity, curvature, and inﬂuential tails.
+   ▶ Binning is a diagnostic, not a substitute for reporting the raw data.
+
+
+
+
+                                                                                          13/56
+Ask Codex to Build Equal-Count Bins
+
+
+
+
+   train["bin"] = pd.qcut(
+                                      Read the logic
+       train["momentum_12"].rank(
+                                      1. rank the predictor;
+           method="first"),
+       10, labels=False,              2. form ten groups of similar
+   ) + 1
+   bins = train.groupby("bin")[[         size;
+       "momentum_12",
+       "market_return",
+                                      3. average x and r within each
+   ]].mean()                             group; and
+                                      4. plot the ten group means.
+
+
+
+
+                                                                       14/56
+Correlation Is a Useful First Summary
+
+
+   For variables x and y :
+                                                        cov(x , y )
+                                      corr(x , y ) =                 .
+                                                       sd(x ) sd(y )
+   In the 180-month pre-test sample, 2006-07–2021-06:
+
+                                                 Momentum            Volatility   MA gap
+                   Next-month market return                 0.02          0.12      0.05
+
+
+   Keep in mind
+   All three linear associations are small. Short-horizon returns behave this way, so read the size
+   as information about the problem itself.
+
+
+                                                                                                      15/56
+Scale and Outliers Matter
+
+
+
+
+   ▶ A 0.01 change in momentum means one percentage point, not one whole unit.
+   ▶ Volatility is annualized, while the target is a monthly simple return.
+   ▶ A few crisis months can dominate squared-error regression.
+   ▶ Clipping or deleting observations changes the estimand and must be disclosed.
+
+   Class discussion
+   Ask the coding assistant to list the ﬁve largest absolute returns. Should any be removed?
+   What evidence would justify that decision?
+
+
+
+
+                                                                                               16/56
+Simple Regression
+The Fitted Line
+
+
+
+               b and βb to minimize squared residuals:
+   OLS chooses α
+                                              X
+                             (b  b = arg min
+                              α, β)
+                                                                   2
+                                                  (rt − a − bxt−1 ) .
+                                           a,b
+                                                 t∈S
+
+   Then:
+                                 b        b t−1 ,
+                                      b + βx
+                                 rt = α                εbt = rt − b
+                                                                  rt .
+
+
+   Keep in mind
+   The ﬁtted line summarizes this sample. Whether the same line holds next year is a separate
+   question, and one we have not asked yet.
+
+
+
+                                                                                                18/56
+Four Questions to Ask about a Regression
+
+
+
+       Question                 Output to inspect
+       Direction and magni-     slope estimate in economically meaningful units
+       tude
+       Uncertainty              standard error and conﬁdence interval
+       Fit                      ﬁtted values, residuals, and R 2
+       Forecast use             a method that accepts later predictor rows without reﬁtting
+
+
+   Keep in mind
+   Decide which outputs answer your economic and forecasting question, then read only those.
+   A full summary print is where you start looking.
+
+
+                                                                                               19/56
+Fit the Simple Regression
+
+
+
+
+   Estimated on the 180 pre-test months, 2006-07–2021-06:
+
+                                 rt = α + β Momentumt−1 + εt .
+
+
+
+   Keep in mind
+   Write the equation before you ask for the ﬁt. A regression output is only readable once you
+   know which number answers which question.
+
+
+
+
+                                                                                                 20/56
+Interpret the Momentum Coeﬃcient in Units
+
+   For the 180-month pre-test sample:
+
+                               b
+                               rt (%) = 0.8 + 0.6 momentumt−1,12 .
+
+   If momentum rises by 0.10, the ﬁtted next-month return changes by:
+
+                                  0.6 × 0.10 ≈ 6.3 basis points,
+
+   using the unrounded coeﬃcient for the ﬁnal conversion.
+   Poor interpretation
+   “Momentum causes next month’s market return to rise.”
+
+   Better interpretation
+   Within this pre-test sample, a 10-percentage-point increase in lagged 12-month momentum is
+   associated with a 6.3-basis-point higher ﬁtted next-month market return.
+
+                                                                                                21/56
+Reading the Standard Error
+
+
+   For the momentum slope:
+
+                  Coeﬃcient      Estimate    Standard error    t statistic   p-value
+                  Momentum          0.6 pp           2.1 pp          0.31       0.76
+
+
+   ▶ A standard error describes how much an estimate would vary across repeated samples
+     generated by the same process.
+   ▶ The estimate is small relative to its sampling uncertainty.
+   ▶ A large p-value is not proof that the true relation is exactly zero.
+   ▶ A small p-value would not prove stability, causality, or economic value.
+   ▶ Monthly ﬁnancial residuals may still violate the simplest standard-error assumptions.
+
+
+                                                                                             22/56
+R 2 Is a Variance Summary
+
+
+
+
+                                                     P
+                                                          b2t
+                                                         tε
+                                       R =1− P
+                                         2
+                                                                       .
+                                                     t (rt − r )
+                                                                   2
+
+
+   For the simple momentum regression, R 2 ≈ 0.1%: the ﬁtted line explains almost none of the
+   pre-test return variation.
+   Keep in mind
+   Low R 2 is normal for short-horizon returns. It says the signal is weak relative to the noise.
+   Whether a weak signal is still worth trading is a portfolio question, and Class 5 answers it.
+
+
+
+
+                                                                                                    23/56
+Compare the Three Simple Regressions
+
+
+
+
+           Predictor                Slope (pp)   Standard error (pp)   p-value     R2
+           12-month momentum               0.6                   2.1      0.76   0.1%
+           12-month volatility             8.5                   5.2      0.11   1.5%
+           10-month MA gap                 3.0                   4.2      0.48   0.3%
+
+
+   p-values are not a predictor ranking
+   The three variables have diﬀerent units, are correlated with one another, and were examined
+   in the same sample.
+
+
+
+
+                                                                                                 24/56
+Residuals Are Data, Not Waste
+
+
+
+
+   Keep in mind
+   The ﬁtted values stay in a narrow range while realized errors cluster in stressful periods. Ask
+   the AI to list the largest residual dates, but use external evidence before attaching an
+   economic story.
+
+                                                                                                     25/56
+Multiple-Choice Question: Interpreting a Regression Slope
+
+
+   A ﬁtted regression is
+                                            b
+                                            r = 0.20 + 0.30m,
+   where both the return r and momentum m are measured in percentage points.
+   If momentum rises from 2 to 4, how much does the forecast return change?
+
+   A) It rises by 0.30 percentage points.
+
+   B) It rises by 0.80 percentage points.
+
+   C) It rises by 1.40 percentage points.
+
+   D) It rises by 0.60 percentage points.
+
+
+                                                                               26/56
+Multiple-Choice Question: Statistical Precision and Model Fit
+
+
+   A return regression has a slope of 0.40, a standard error of 0.10, and an in-sample R 2 of 0.03.
+   The reported p-value is below 0.05.
+
+   Which interpretation is justiﬁed?
+
+   A) The positive association is statistically signiﬁcant, but the model explains only a small
+      share of return variation.
+
+   B) The model must explain at least 40% of return variation.
+
+   C) The low R 2 means the slope cannot be statistically signiﬁcant.
+
+   D) The signiﬁcant slope establishes that the model will forecast future returns accurately.
+
+
+                                                                                                      27/56
+Multiple Regression
+Why Add More Than One Predictor?
+
+
+                rt = α + β1 Momentumt−1 + β2 Volatilityt−1 + β3 MA gapt−1 + εt .
+
+
+
+   ▶ A simple slope mixes the predictor’s own relation with correlated variables.
+   ▶ Multiple regression asks how returns vary with one predictor while holding the others ﬁxed.
+   ▶ Adding controls can change a slope’s sign and magnitude.
+   ▶ More predictors also increase estimation noise and researcher discretion.
+
+   Keep in mind
+   Putting every available predictor into one regression is the kitchen sink of Welch and Goyal
+   (2008 RFS). In their data it ﬁts the sample best and loses to the historical mean out of
+   sample by a wide margin. Today’s three-predictor model is a small kitchen sink; Class 3 keeps
+   the sink and adds a penalty.
+
+                                                                                                   29/56
+Our Predictors Are Strongly Related
+
+
+
+
+   Keep in mind
+   Momentum and the moving-average gap have a 0.74 pre-test correlation. Their
+   multiple-regression slopes should not be read like independent bets.
+
+                                                                                 30/56
+Correlated Predictors Make Individual Slopes Unstable
+
+   ▶ What you see: a coeﬃcient changes sign or size between the simple and the multiple
+     regression, its standard error widens, and yet R 2 barely moves.
+   ▶ Why: when two predictors move together the data cannot say which one carries the eﬀect,
+     so the ﬁtted line is well determined while the split between them is not.
+   ▶ How to check: reﬁt on a diﬀerent subsample, or drop one of the pair, and see whether the
+     surviving coeﬃcients stay where they were.
+   ▶ What to do here: report the forecast rather than the individual slope, and stop treating
+     one coeﬃcient as the ﬁnding.
+
+   Keep in mind
+   Correlated predictors are not a defect in the data. They are the normal state of ﬁnancial
+   predictors, and Class 3 answers them directly: shrink the slopes, or replace them with a few
+   combinations.
+
+                                                                                                  31/56
+Standardize Using Training Data Only
+
+
+
+
+   For each predictor j:
+                                               xj,t − x j,train
+                                      zj,t =                    .
+                                                   sj,train
+
+
+   ▶ One unit now means one training-sample standard deviation.
+   ▶ Slopes become easier to compare across diﬀerent predictor units.
+   ▶ Use the same training mean and standard deviation on test observations.
+   ▶ Recomputing them on the full sample leaks future distribution information.
+
+
+
+
+                                                                                  32/56
+Compare the Multiple Regression
+
+   Standardize each predictor on the training sample, zt−1 = (xt−1 − x̄train )/strain , then estimate
+                                           mom       vol       gap
+                              rt = α + β1 zt−1 + β2 zt−1 + β3 zt−1 + εt .
+
+
+
+   ▶ Standardizing puts the three slopes in one unit, so their sizes can be compared with each
+     other.
+   ▶ Each βb now answers: how does the forecast move when this predictor rises by one training
+      standard deviation, with the other two held ﬁxed?
+
+   Keep in mind
+   This is the speciﬁcation whose standardized slopes we read later. Estimating it on one sample
+   and rescaling it on another would silently change the question.
+
+                                                                                                        33/56
+What Changed in the Multiple Regression?
+
+
+                    Standardized predictor   Slope    Standard error   p-value
+                    Momentum                  0.4%             0.6%       0.50
+                    Volatility                0.7%             0.4%       0.07
+                    MA gap                    0.0%             0.5%       0.95
+
+                                           2
+                                          Rtrain = 2.2%.
+
+
+   Keep in mind
+   The volatility coeﬃcient becomes the largest standardized slope, and its uncertainty stays
+   substantial. Conditioning on the other predictors moves the estimate, and the standard error
+   tells you how far to trust the new position.
+
+                                                                                                  34/56
+CSI 300 Case: Can China Macro Data Predict Next-Month Returns?
+
+   Target                                                                                              Four China macro predictors
+                                                                                                       ▶ export growth, year on year;
+                        rtCSI300 = α + β ′ xt−2 + εt .
+                                                                                                       ▶ import growth, year on year;
+   The left-hand side is the CSI 300 log return                                                        ▶ OECD composite leading-indicator
+   during forecast month t.                                                                              gap from 100; and
+   Forecast clock                                                                                      ▶ 12-month real eﬀective
+    ▶ Use macro reference-month values through                                                           exchange-rate change.
+      t − 2.
+    ▶ Estimate the ﬁxed model on July 2006–June
+      2021.
+    ▶ Reserve July 2021–June 2026 for a later OOS
+      test.
+   Two-month availability lag; later data revisions remain, so this is not a real-time vintage test.
+
+
+                                                                                                                                            35/56
+CSI 300: Traditional Predictor Signiﬁcance
+
+   Evidence in the 180-month training               Interpretation at this stage
+   sample                                            ▶ The import-growth estimate is
+    ▶ Import growth: βb = −0.15 percentage             statistically distinguishable from zero,
+      points per one percentage-point increase,        conditional on the other predictors.
+      with p = 0.001.                                ▶ The joint test rejects the hypothesis that
+   ▶ The joint F -test has p = 0.026.                  all four slope coeﬃcients are zero.
+   ▶ Training-sample R 2 is 6.1%.                    ▶ These are traditional in-sample results.
+                                                       They do not yet establish performance in
+                                                       a later period.
+   Keep in mind
+   First ask whether the ﬁtted sample contains a precise relation. Next, test the frozen
+   speciﬁcation on later data.
+
+                                                                                                    36/56
+Out-of-Sample Design and Evaluation
+
+
+
+
+                                      37/56
+Keep Financial Time Series in Date Order
+
+
+
+
+    Design                 What the model sees                     Why it matters
+    Random split           a mixture of early and late months      a 2010 test month may be evaluated
+                                                                   using a model ﬁtted with 2025 data
+    Chronological split    earlier dates for ﬁtting, later dates   reproduces the information order faced
+                           for evaluation                          by a real forecaster
+   Keep rows in date order, and estimate transformations, feature choices, and coeﬃcients before
+   evaluating later observations.
+
+
+
+
+                                                                                                            38/56
+Training, Validation, and Test Have Diﬀerent Jobs
+
+
+
+
+    Sample              Use it to                          Do not use it to
+    Training           estimate coeﬃcients, means, and report ﬁnal performance
+                       standard deviations
+    Validation         choose predictors, transforma- repeatedly rewrite the economic ques-
+                       tions, or tuning settings            tion
+    Test               evaluate the frozen design once      select the model or ﬁx a weak result
+   Changing a model after inspecting the test result turns that period into development data.
+
+
+
+
+                                                                                                   39/56
+Use a Fixed Timeline for Today’s Exercise
+
+
+
+
+                     2006-07–2018-06       2018-07–2021-06 2021-07–2026-06
+                       144 develop            36 validate      60 test
+
+
+
+   Develop on 144 months, select on 36 months, reﬁt on all 180 pre-test months, and evaluate on
+           the ﬁnal 60 months. For forecast month t, MA(12) uses only rt−12 , . . . , rt−1 .
+
+
+
+
+                                                                                                  40/56
+Fixed, Expanding, and Rolling Tests Answer Diﬀerent Questions
+
+
+
+
+   Keep in mind
+   A ﬁxed holdout is the simplest ﬁrst check. Expanding and rolling designs make more
+   forecasts, but every valid design preserves time order and ﬁts before evaluating.
+
+                                                                                        41/56
+Tell Codex to Split by Date before Fitting
+
+
+
+
+   develop = d[d["forecast_month"] < "2018-07-01"].copy()
+                                                            The four objects
+   valid = d[(d["forecast_month"] >= "2018-07-01") &
+                                                            ▶ develop: estimate
+             (d["forecast_month"] < "2021-07-01")].copy()
+                                                              candidates;
+   train = d[d["forecast_month"] < "2021-07-01"].copy()
+   test = d[d["forecast_month"] >= "2021-07-01"].copy()     ▶ valid: choose the design;
+                                                            ▶ train: reﬁt the frozen
+                                                              design; and
+                                                            ▶ test: evaluate once.
+
+
+
+
+                                                                                          42/56
+How We Will Judge a Return Forecast
+
+
+
+
+   No single statistic settles whether returns are predictable.
+
+   1. Sample association: slope, uncertainty, and in-sample R 2 .
+   2. Forecast error: MSE, RMSE, and MAE in untouched observations.
+   3. Relative accuracy: improvement over a stated benchmark.
+   4. Direction: whether predicted and realized signs match, relative to the base rate.
+   5. Stability: whether results persist through time and across reasonable designs.
+   6. Economic value: whether a feasible portfolio beneﬁts after costs, which Class 5 evaluates.
+
+
+
+
+                                                                                                   43/56
+Three Forecast Criteria Stay Fixed across Classes 2–4
+
+   For T untouched test months and benchmark forecasts b    rtb :
+                                        1 X
+                           MSEmodel =       (rt − b rt )2 ,
+                                       T t
+                                           P
+                                              t (rt − brt )2
+                               ROOS = 1 −
+                                 2
+                                          P                   ,
+                                             t (rt − brtb )2
+                                        1 X
+                            HitRate =        I{sign(b  rt ) = sign(rt )} .
+                                       T t
+
+
+   ▶ Lower MSE means smaller forecast errors; positive OOS R 2 means beating the stated
+     benchmark.
+   ▶ Directional accuracy must beat the positive-return base rate, not an automatic 50%
+     benchmark.
+   ▶ A model is selected on validation data; these criteria are reported once on the untouched
+     test.
+                                                                                                 44/56
+The OOS R 2 Benchmark Must Match the Prediction Target
+
+     Prediction target        Benchmark forecast            Economic meaning
+                                        P12
+     Monthly market re-       b b
+                              rm,t   1
+                                   = 12  j=1 rm,t−j         MA(12) is a feasible forecast
+     turn                                                   formed from the 12 market re-
+                                                            turns known before month t.
+     Weekly stock active      b b
+                              ai,t =0                       Zero says stock i is expected to
+     return                                                 match its local market; Classes
+                                                            3–4 ask whether characteristics
+                                                            improve on that neutral fore-
+                                                            cast.
+
+   Keep in mind
+   OOS R 2 has no target-free meaning: always state the target, benchmark forecast, and
+   information date together.
+
+                                                                                               45/56
+Let Codex Generate the Frozen Test Forecasts
+
+
+
+
+   test_z = test.copy()
+                                               What must stay frozen
+   test_z[["momentum_z", "volatility_z",
+                                               ▶ predictor names;
+           "ma_gap_z"]] = (
+       test[predictors] - mu                   ▶ training means and standard
+   ) / sd
+   test["prediction"] = fit3.predict(test_z)     deviations;
+                                               ▶ ﬁtted coeﬃcients; and
+                                               ▶ test dates and row order.
+
+
+
+
+                                                                               46/56
+Compare with Lagged MA(12) in Every Market
+
+
+
+
+   Keep in mind
+   The common OLS speciﬁcation has modestly positive OOS R 2 versus MA(12) in all three
+   markets. This loss comparison does not replace the directional base rate or an investment
+   benchmark.
+
+                                                                                               47/56
+SPY Result Walkthrough: Direction Needs a Baseline
+
+
+   Using the hit rate deﬁned above, the test sample gives:
+
+
+                                                  Forecast                                           Directional hit rate
+                                                  Three-predictor regression                                               63.3%
+                                                  Lagged MA(12) forecast                                                   61.7%
+                                                  Always-positive forecast                                                 63.3%
+
+
+    Keep in mind
+    MA(12) benchmarks MSE. Sign accuracy instead competes with the majority sign: positive returns
+    occur in 38 of 60 months, or 63.3%.
+
+   SPY is an adjusted total-return series and includes distributions. The Hang Seng and CSI 300 series are price indices, so the U.S. column carries dividend income that the other
+
+   two do not.
+
+
+
+
+                                                                                                                                                                                      48/56
+Hang Seng and CSI 300: Direction against Their Own Base Rates
+
+
+   The same three-predictor regression, scored on the same 60 test months:
+
+
+                 Market        OOS R 2 vs MA(12)     Hit rate   Positive-month base rate
+                 Hang Seng                   4.4%      41.7%                     46.7%
+                 CSI 300                     4.3%      51.7%                     48.3%
+
+
+   Keep in mind
+   The Hang Seng forecast beats MA(12) on MSE yet calls the sign right in 25 of 60 months, fewer
+   than the 28 positive months, so an always-positive guess would have scored higher. The CSI 300
+   forecast clears its base rate by two months, and SPY only matched its own. A positive OOS R 2 and
+   a useful direction call are diﬀerent claims.
+
+
+
+                                                                                                       49/56
+SPY Result Walkthrough: Forecasts Move Little
+
+
+
+
+   Keep in mind
+   Some months favor the regression and others favor MA(12). Across all 60 test months, the
+   regression’s OOS R 2 versus MA(12) is 6.6%.
+
+                                                                                              50/56
+SPY Result Walkthrough: Read the Full Dashboard
+
+
+
+
+   Read clockwise: weak ﬁtted relation, unstable bins, small forecasts, and a modest cumulative MSE gain over lagged MA(12).
+
+                                                                                                                               51/56
+CSI 300 Macro Model: OOS Evaluation against Lagged MA(12)
+
+
+
+
+   Keep in mind
+   On the untouched test, OOS R 2 = −13.2% versus MA(12), and the hit rate is 48.3% versus
+   56.7%. The signiﬁcant training-sample coeﬃcient did not improve later forecasts.
+
+                                                                                             52/56
+When the Regression Output Looks Wrong
+
+
+
+  Use this order:
+
+   1. print the exact columns and ﬁrst ﬁve regression rows;
+   2. conﬁrm target and predictor dates by hand for three rows;
+   3. check missing values, duplicates, units, and extreme observations;
+   4. ﬁt the simplest one-predictor model;
+   5. compare two Python implementations or compute the slope by formula;
+   6. only then add transformations or more predictors.
+
+  Start with dates, rows, and units before changing the model.
+
+
+
+                                                                            53/56
+Multiple-Choice Question: Would You Use This Forecast?
+
+   A volatility regression has the highest in-sample R 2 among three
+   predictors and a plausible economic story. Which evidence most directly
+   supports using it for real-time market-return prediction?
+   A) Its in-sample coeﬃcient is positive.
+
+   B) Its residuals average to approximately zero in the ﬁtted sample.
+
+   C) Its later forecasts deliver positive OOS R 2 relative to the lagged MA(12) benchmark using
+      information available at each forecast date.
+
+   D) Its predictor has the largest numerical scale.
+
+   Discuss
+   Why do in-sample ﬁt and a plausible story answer a diﬀerent question from real-time forecast
+   performance?
+
+                                                                                                   54/56
+In-Class Check: From Plot to Forecast
+
+
+
+
+   Discuss one candidate predictor using the following evidence:
+
+   ▶ one scatter plot and one binned-mean plot;
+   ▶ one coeﬃcient table for simple and multiple regression;
+   ▶ one return-predictability scorecard compared with the benchmark;
+   ▶ one explanation of why forecast accuracy alone does not establish investment value;
+   ▶ a short interpretation in plain language.
+
+   Which piece of evidence would make you change your conclusion?
+
+
+
+
+                                                                                           55/56
+What to Remember
+
+
+
+
+   1. Plot ﬁrst and read coeﬃcients in their economic units.
+   2. Match the benchmark to the question: lagged MA(12) for market-return forecasts and the
+      positive-return base rate for direction.
+   3. Choose with validation data, evaluate later data once, and carry the frozen forecasts into
+      Class 5 for portfolio construction and comparison with buy-and-hold.
+
+
+
+
+                                                                                                   56/56
+

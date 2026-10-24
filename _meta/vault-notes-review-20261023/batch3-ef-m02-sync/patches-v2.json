@@ -1,0 +1,163 @@
+{
+  "schema": "cityu-sync-targeted-overlay-v2",
+  "scope": "Only independent-review blockers B1-B3; apply after the unchanged 82-patch base proposal or merge into it in memory.",
+  "base": {
+    "patches_json_sha256": "93f62d27d05798ad113cdbe884d295582a607d8c3d528831721ba6f9ad248276",
+    "proposed_diff_sha256": "993e657916dd8a53e0aaf708ca9262240abc0912198cca84f6195613b9454418",
+    "sync_targeted_review_sha256": "ce79b190657369866653be77a5c7a5ed9e9e908eef75c480c5eb57e4b28ea0b3",
+    "formal_note_sha256": "bbe947f74ccc94a15be7d53174701d5c51d6ace378240f711fb4cb9f15e64064"
+  },
+  "notion_readback": {
+    "page_id": "3d58310b2596818a9818c855bf1513c0",
+    "private_evidence": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\notion\\ef-m02-readback-20261025.json",
+    "verified": [
+      "remark equals proposed value",
+      "old remark suffix preserved byte-for-byte",
+      "code path has EF5560_ prefix",
+      "other 15 properties unchanged"
+    ],
+    "effect": "README base patch Notion-readback condition is now satisfied; Git remains pending."
+  },
+  "safety": {
+    "formal_dependencies_modified": false,
+    "base_82_package_modified": false,
+    "review_modified": false,
+    "notion_modified_by_this_subtask": false,
+    "git_used": false
+  },
+  "files": [
+    {
+      "path": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md",
+      "formal_source_sha256": "e73abecca74f3b54bd1f3fc860b5038f769c9d874554957573d37e62b9980c71",
+      "base_proposed_sha256": "113fa87c353b3ef2637cc7152c1d784398df054a962344c0c84cf51ed362a1f7",
+      "revised_proposed_sha256": "eeb06c200dd5bf76ad296960b810589410bd770436d5b3e48f9d2d57a280e117",
+      "changes": [
+        {
+          "old": "| 中性预测（个股） | Zero excess-return benchmark | `r̂^{e,b}_{i,t} = 0`: the stock is forecast to earn the matched risk-free return. This is an excess-return target, not active return (stock minus market). | M02 §2.7.3 | 讲 L2 p.44；目标口径与 M03–M04 数据包一致 |",
+          "new": "| 零主动收益基准 | Zero active-return benchmark | $\\hat a^b_{i,t}=0$: stock i is expected to match its local market because active return is stock return minus local-market return. | M02 §2.7.3 | 讲 L2 p.44 |\n| 零超额收益基准 | Zero excess-return benchmark | $\\hat e^b_{i,t}=0$: stock i is expected to earn the matched risk-free return because the later data target subtracts the period-matched risk-free return. | M02 §2.7.3 口径衔接 | 后续数据包；不是 p.44 目标，仅登记差异，不升级 M03–M05 验收状态 |",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "保留 p.44 合法的 active 零基准，并把后续 excess 零基准另列来源。",
+          "review_item": "B1",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md::v2-01"
+        },
+        {
+          "old": "| 条件均值 | Conditional mean | Does `E[r_t \\| x_{t−1}]` change with the predictor? | M02 §2.1 | 讲 L2 p.3 |",
+          "new": "| 条件均值 | Conditional mean | Does $E[r_t\\mid x_{t-1}]$ change with the predictor? | M02 §2.1 | 讲 L2 p.3 |",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "把本包已触碰的条件均值公式改为表格安全的 LaTeX，不保留反引号公式或 Unicode 负号。",
+          "review_item": "B1",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md::v2-02"
+        }
+      ]
+    },
+    {
+      "path": "EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md",
+      "formal_source_sha256": "13bcc0eb25fc6faf422ef53ae3d9da4973da7e55165e2f47a97c1ff7303bad38",
+      "base_proposed_sha256": "9fffd59b65ddab091dfc5cfeca26c8a3afed707b9f97c8e6e2b56d423771e6d4",
+      "revised_proposed_sha256": "28481cd5fc60a9f9d60d75c15ce4514d3bc8326491fa7ebc5a4ef3d6c82a3bbd",
+      "changes": [
+        {
+          "old": "| 中性预测（个股） | Zero excess-return benchmark | M02 | 本课 Class 3–4 个股目标为个股收益−同期无风险收益，零预测指与无风险持平；active return 才是个股−市场，不混用 | 主动收益 |",
+          "new": "| 零主动收益基准 | Zero active-return benchmark | M02（讲义 p.44） | $\\hat a^b_{i,t}=0$；主动收益目标为个股收益−本地市场收益，零预测表示预期与本地市场持平 | 主动收益 |\n| 零超额收益基准 | Zero excess-return benchmark | M02（与后续数据口径对照） | $\\hat e^b_{i,t}=0$；后续数据的超额收益目标为总收益−同期匹配无风险收益。它不是 p.44 目标；这里只登记差异，不把 M03–M05 的教学验收升级为本次通过 | 超额收益 |",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "台账让 active/excess 两种零基准并存，并显式禁止把口径登记外溢成后续讲次通过。",
+          "review_item": "B1",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md::v2-01"
+        }
+      ]
+    },
+    {
+      "path": "EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL.md",
+      "formal_source_sha256": "fb3e4643b0bb8f84cc83aa76d1f83c559053e29f80c600c526a60771117c830c",
+      "base_proposed_sha256": "dc4390a916106980f72963540fe55cec1159e64a74d111eebfc1b1abfafe931e",
+      "revised_proposed_sha256": "a36bf93c4c3b60bc2511a8897aafeaa5ac5ddb8349b76d495b8a8ef752c7e3b3",
+      "changes": [
+        {
+          "old": "> **🎙️ 第 2 讲课堂实况**（M02 转录 `P1 09:28`–`16:47`）：开场按名单点名；有缺席同学事先发邮件，但这段不能单独建立“缺席必须提前邮件”的新制度。教授说「This **might be** the only way you get bonus point」（`P1 16:20`），保留 might 的不确定语气；整堂另有 4 次当堂提问给分。正式参与规则仍以上表 syllabus 口径为准。",
+          "new": "> **🎙️ 第 2 讲课堂实况**（M02 转录 `P1 09:28`–`16:47`）：开场按名单点名；有缺席同学事先发邮件，但这段不能单独建立“缺席必须提前邮件”的新制度。教授说「This **might be** the only way you get bonus point」（`P1 16:20`），保留 might 的不确定语气。课堂提问题材和实际窗口包括：相关系数与 $R^2$（P1 `58:53`–`01:00:36`）、国债 ETF 派息（P2 `11:15`–`12:31`）、标准化是否改变 $R^2$（P2 `25:28`–`26:30`）；不从时间戳数量推断实际奖励次数。正式参与规则仍以上表 syllabus 口径为准。",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "删除未获逐项来源支持的“四次给分”计数，保留 might 原话并改为可核的题材窗口。",
+          "review_item": "B4-source",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL.md::v2-01"
+        }
+      ]
+    },
+    {
+      "path": "EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md",
+      "formal_source_sha256": "67eacb47b222102a2f22be6af6ac539982334792794aeca827ae9a41d511a256",
+      "base_proposed_sha256": "45b7dd0732f260460e715dae6e0e1934e0f334601af6f55fb0352a4a198c22ec",
+      "revised_proposed_sha256": "4670034d57b3388bc8aaf02114876c6a5232cc234b2bdf976da09ba00ebdb568",
+      "changes": [
+        {
+          "old": "| `spy_test_predictions_monthly.csv` | 60 × 23 | 测试期逐月：15 个特征、forecast、benchmark、两列误差及保存的 weight／timing_return／buy_hold_return | M02 §2.7.4；预测全部为正；保存列不等于已取得可执行策略阈值、成交与成本规则 |",
+          "new": "| `spy_test_predictions_monthly.csv` | 60 × 24 | 测试期逐月：15 个特征、forecast、benchmark、两列误差及保存的 weight／timing_return／buy_hold_return | M02 §2.7.4；预测全部为正；保存列不等于已取得可执行策略阈值、成交与成本规则 |",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "按当前 CSV 实读把 60×23 更正为 60×24。",
+          "review_item": "B2",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md::v2-01"
+        },
+        {
+          "old": "| `three_market_regression_scorecard.csv` | 3 × 8 | 美 / 港 / 中 OOS R²、命中率、正收益占比（即 always-up 分数）与命中数 | M02 §2.7.4；⚠️ SPY 行 **6.739573%** ≠ 单独成绩单 **6.556296%**（测试 MSE 20.63 vs 20.67）；来源未给足规格，不能擅自归因于变量组合 |",
+          "new": "| `three_market_regression_scorecard.csv` | 3 × 8 | 美 / 港 / 中 OOS R²、命中率、正收益占比（即 always-up 分数）与命中数 | M02 §2.7.4；⚠️ SPY 行 **6.739573%** ≠ 单独成绩单 **6.556296%**（`MSE × 10^4`：三市场汇总 **20.63**，单 SPY 成绩单 **20.67**）；来源未给足规格，不能擅自归因于变量组合 |",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "给 20.63/20.67 补 MSE ×10^4 缩放和表格方向。",
+          "review_item": "B2",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md::v2-02"
+        },
+        {
+          "old": "**⑤ 目标 / ⑥ 讲义对应**：见各行。**质量检查**：12 个 sha256 一致；预测表 60 行无缺失；`spy_test_predictions_monthly.csv` 的 `weight` 只取 0 / 1（45 个月在市）。",
+          "new": "**⑤ 目标 / ⑥ 讲义对应**：见各行。**质量检查**：12 个 sha256 一致；预测表 60 行无缺失；`spy_test_predictions_monthly.csv` 的 `weight` 只取 0 / 1（48 个月在市、12 个月空仓）。另一个三市场 timing 表的 SPY 为 45／15，属于不同结果口径，不能移到本表。",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "按单 SPY CSV 更正 48/12，并把 45/15 留在三市场 timing 口径。",
+          "review_item": "B2",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md::v2-03"
+        }
+      ]
+    },
+    {
+      "path": "EF5560_Fintech_and_AI_in_Finance/assignment/practice/练习索引.md",
+      "formal_source_sha256": "c8bd6e9dd17f25734056e45dbff93aea0fa8a32a0eeb1229d58ec5a0bc17c16d",
+      "base_proposed_sha256": "72d0af73d26c36ca171cc49222983b81dcc507609013c691aa34d4ba99ca21dc",
+      "revised_proposed_sha256": "bb5dcfaf7129aafe268bac6490f85d8d724120f3e96fa3c6edd58abeb11055a6",
+      "changes": [
+        {
+          "old": "## P09-m2-p16-outliers · M02 离群值三问\n\n**原件定位**：旧／新 Lec02 p.16。英文三问、中文限定、课程 SPY 数据的五个极端月复算与英文参考答案已回填至 M02 §2.3.5；是否删除须先证明数据错误，真实危机观测不因极端自动删除。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.3.5]]。\n\n状态：**参考解析已回填**；无官方书面答案，Canvas 是否另发独立练习仍待核。",
+          "new": "## P09-m2-p16-outliers · M02 离群值三问\n\n**原件定位**：旧／新 Lec02 p.16。M02 正文 §2.3.5 的对应来源限定解析已核；是否删除须先证明数据错误，真实危机观测不因极端自动删除。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.3.5]]。\n\n状态：**M02 正文对应来源限定解析已核**。独立练习精读文件尚未创建、未独审，69 份配套教学范围状态不升级；已核材料未见官方书面答案，Canvas 是否另发仍待核。",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "只镜像 M02 正文解析，不把索引写成独立配套精读已经完成。",
+          "review_item": "B3",
+          "id": "EF5560_Fintech_and_AI_in_Finance/assignment/practice/练习索引.md::v2-01"
+        },
+        {
+          "old": "## P10-m2-p26-choice-discuss · M02 旧版四选一与讨论\n\n**原件定位**：旧 54 页版 p.26；新版 56 页中移至 p.54。完整英文题面、A–D、中文逐项和英文答案已在 M02 §2.4.7；课堂确认答案 C，且教授明示这种“四选一 + Discuss”是期末题型。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.4.7]]。\n\n状态：**课堂确认的来源限定解析已回填**；不要把此确认挪给新版新增 p.26–27。\n\n## P10a-m2-new-p26-slope · M02 新版斜率单位选择题\n\n**原件定位**：当前 Canvas 56 页版 p.26；旧版无此页。完整题面和 A–D 已在 M02 §2.4.6a；参考答案 D，预测变化为 0.60 个百分点。\n\n状态：**参考解析已回填**；无对应新录音，不是教授课堂确认答案。\n\n## P10b-m2-new-p27-precision-fit · M02 新版精度与拟合度选择题\n\n**原件定位**：当前 Canvas 56 页版 p.27；旧版无此页。完整题面和 A–D 已在 M02 §2.4.6a；参考答案 A，估计精度与低 R² 分开判断。\n\n状态：**参考解析已回填**；无对应新录音，不是教授课堂确认答案。",
+          "new": "## P10-m2-p26-choice-discuss · M02 旧版四选一与讨论\n\n**原件定位**：旧 54 页版 p.26；新版 56 页中移至 p.54。M02 正文 §2.4.7 的对应来源限定解析已核；课堂确认答案 C，且教授明示这种“四选一 + Discuss”是期末题型。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.4.7]]。\n\n状态：**M02 正文对应来源限定解析已核**；旧题答案 C 有课堂确认，不把该确认挪给新版新增 p.26–27。独立练习精读文件尚未创建、未独审，69 份配套教学范围状态不升级；Canvas 是否另发独立练习／书面官答仍待核。\n\n## P10a-m2-new-p26-slope · M02 新版斜率单位选择题\n\n**原件定位**：当前 Canvas 56 页版 p.26；旧版无此页。M02 正文 §2.4.6a 的对应来源限定解析已核；D 是笔记参考答案，预测变化为 0.60 个百分点。\n\n状态：**M02 正文对应来源限定解析已核**；无对应新录音，不是教授课堂确认答案。独立练习精读文件尚未创建、未独审，69 份配套教学范围状态不升级；Canvas 是否另发书面官答仍待核。\n\n## P10b-m2-new-p27-precision-fit · M02 新版精度与拟合度选择题\n\n**原件定位**：当前 Canvas 56 页版 p.27；旧版无此页。M02 正文 §2.4.6a 的对应来源限定解析已核；A 是笔记参考答案，估计精度与低 R² 分开判断。\n\n状态：**M02 正文对应来源限定解析已核**；无对应新录音，不是教授课堂确认答案。独立练习精读文件尚未创建、未独审，69 份配套教学范围状态不升级；Canvas 是否另发书面官答仍待核。",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "分开旧题课堂确认与新版参考答案，同时保留独立配套精读未创建/未独审。",
+          "review_item": "B3",
+          "id": "EF5560_Fintech_and_AI_in_Finance/assignment/practice/练习索引.md::v2-02"
+        },
+        {
+          "old": "## P11-m2-p53-momentum · M02 动量检查\n\n**原件定位**：旧版 p.53／新版 p.55。英文五项检查、中文逐项与英文参考已在 M02 §2.10；以动量演示条件均值、推断、样本外、方向和经济价值证据，不能拿联合三变量 OOS 冒充单变量成绩。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.10]]。\n\n状态：**参考解析已回填**；该页课堂未讲，无教授官方逐项答案。",
+          "new": "## P11-m2-p53-momentum · M02 动量检查\n\n**原件定位**：旧版 p.53／新版 p.55。M02 正文 §2.10 的对应来源限定解析已核；以动量演示条件均值、推断、样本外、方向和经济价值证据，不能拿联合三变量 OOS 冒充单变量成绩。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.10]]。\n\n状态：**M02 正文对应来源限定解析已核**；该页课堂未讲、无教授逐项确认。独立练习精读文件尚未创建、未独审，69 份配套教学范围状态不升级；Canvas 是否另发独立练习／书面官答仍待核。",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "镜像正文范围，同时保留课堂、Canvas 与独立精读边界。",
+          "review_item": "B3",
+          "id": "EF5560_Fintech_and_AI_in_Finance/assignment/practice/练习索引.md::v2-03"
+        },
+        {
+          "old": "| P09-m2-p16-outliers | M02 离群值三问 | 旧／新 p.16 | 参考解析已回填；无书面官答 |\n| P10-m2-p26-choice-discuss | M02 旧版四选一与讨论 | 旧 p.26／新 p.54 | 答案 C 有课堂确认；完整中英解析已回填 |\n| P10a-m2-new-p26-slope | M02 新版斜率单位选择题 | 新 p.26 | 参考 D；无对应新录音 |\n| P10b-m2-new-p27-precision-fit | M02 新版精度与拟合度选择题 | 新 p.27 | 参考 A；无对应新录音 |\n| P11-m2-p53-momentum | M02 动量检查 | 旧 p.53／新 p.55 | 参考解析已回填；课堂未讲 |",
+          "new": "| P09-m2-p16-outliers | M02 离群值三问 | 旧／新 p.16 | M02 正文来源限定解析已核；独立精读未创建/未独审；Canvas／书面官答待核 |\n| P10-m2-p26-choice-discuss | M02 旧版四选一与讨论 | 旧 p.26／新 p.54 | M02 正文来源限定解析已核；C 有课堂确认；独立精读未创建/未独审；Canvas 待核 |\n| P10a-m2-new-p26-slope | M02 新版斜率单位选择题 | 新 p.26 | M02 正文来源限定解析已核；D 为笔记参考；独立精读未创建/未独审；Canvas／书面官答待核 |\n| P10b-m2-new-p27-precision-fit | M02 新版精度与拟合度选择题 | 新 p.27 | M02 正文来源限定解析已核；A 为笔记参考；独立精读未创建/未独审；Canvas／书面官答待核 |\n| P11-m2-p53-momentum | M02 动量检查 | 旧 p.53／新 p.55 | M02 正文来源限定解析已核；课堂未讲；独立精读未创建/未独审；Canvas／书面官答待核 |",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "汇总表同样把正文解析与独立配套教学状态分开。",
+          "review_item": "B3",
+          "id": "EF5560_Fintech_and_AI_in_Finance/assignment/practice/练习索引.md::v2-04"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "git_apply_check_against_reconstructed_base_proposed": "passed",
+    "overlay_change_count": 11,
+    "affected_file_count": 5
+  }
+}

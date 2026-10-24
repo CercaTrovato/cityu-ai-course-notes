@@ -1,0 +1,8 @@
+{
+  "candidate_source_sha256": "4d12ecb52475d06fe73eb4b2dbed385458e9ca409bcac313e338a0ed774b0cd3",
+  "ols_three_row": {"a": 1.1666666667, "b": 0.5, "sse": 0.1666666667, "se_b": 0.2886751346, "t": 1.7320508076, "p": 0.3333333333, "r2": 0.75, "f": 3.0},
+  "ols_four_row": {"a": 0.75, "b1": 1.5, "b2": 2.5, "se_b1": 0.5, "se_b2": 0.5, "t1": 3.0, "t2": 5.0, "sse_u": 0.25, "sse_r": 8.75, "f": 17.0, "f_p": 0.169030851},
+  "fit3_contract": {"train_columns": ["const", "momentum_z", "volatility_z", "ma_gap_z"], "test_rows": 60, "bad_input_columns": 19, "bad_error": "ValueError: shapes (60,19) and (4,) not aligned: 19 (dim 1) != 4 (dim 0)", "repair": "select zcols, add const, reindex to fit3.model.exog_names"},
+  "strategy_bridge": {"log_0_1_to_simple": 0.10517091808, "two_period_terminal": 111.622262726, "half_weight_simple": 0.052585459, "half_weight_log": 0.05124948},
+  "evidence": "Independent review recompute-results.json plus author algebra; source files remain read-only."
+}

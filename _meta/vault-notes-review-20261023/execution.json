@@ -153,7 +153,7 @@
       "writeback": "已原子写并精确回读",
       "local_sync": "12文件55补丁已写并回读；链接/README/完整性问题均为0（进度快照有意缩写单列allow）",
       "notion": "已写并回读（旧备注原样保留、其余所有字段未变）",
-      "git": "本批提交前核验中",
+      "git": "已提交推送并核远端：f1a0fb1",
       "sources": [],
       "blockers": [],
       "included": true,
@@ -162,7 +162,7 @@
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
-      "review_stage": "all_applicable_local_and_notion_sync_verified_pending_git",
+      "review_stage": "complete_for_provided_material_scope_all_sync_and_remote_verified",
       "reviewer_id": "/root/review_ac6761_m02",
       "independent_review_status": "passed",
       "candidate_sha256": "5c62d4a571b24381593be3300add134edbf5649d8d5e18977edd30e14e1dee5b",
@@ -282,7 +282,8 @@
       "writeback_record": "_meta/vault-notes-review-20261023/ac6761-m02/writeback.json",
       "formal_sha256": "5c62d4a571b24381593be3300add134edbf5649d8d5e18977edd30e14e1dee5b",
       "notion_evidence": "_meta/vault-notes-review-20261023/ac6761-m02/sync/notion-readback.json",
-      "dependency_sync_record": "_meta/vault-notes-review-20261023/batch2-ac-m02-sync/apply-log.json"
+      "dependency_sync_record": "_meta/vault-notes-review-20261023/batch2-ac-m02-sync/apply-log.json",
+      "git_commit": "f1a0fb1dfecb32a8a050372aa44a08219de422c3"
     },
     {
       "id": "ac6761-m03",
@@ -305,8 +306,8 @@
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
-      "review_stage": "targeted_residual_accepted_pending_main_visual_and_full_gate",
-      "candidate_sha256": "f3d8b6d29a7ea37061b55e695181be516e934ff65fbdd35ef6c289936fb1a094",
+      "review_stage": "residual_and_three_mechanical_changes_independent_accepted_pending_main_full_read_source_visual_gate",
+      "candidate_sha256": "ef31c17516c9bf3798c877c416a4e1304b2bf6295a029e8e008403681491703b",
       "evidence_reports": [
         {
           "path": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ac6761-m03/independent-review.md",
@@ -319,6 +320,11 @@
         {
           "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m03\\targeted-residual-accepted.md",
           "sha256": "a7d9d4d3f684e29e66ca7fa461409f1a4318d022f1eb081228f64f410c6acffe"
+        },
+        {
+          "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m03\\targeted-mechanical-recheck.md",
+          "sha256": "772f2678d3cab2b232ca3debe2f0b700586710440c15398909779cf5136772ec",
+          "reviewer_id": "/root/review_ac6761_m03_mechanical"
         }
       ],
       "stage_1": {
@@ -327,7 +333,7 @@
         "full_read_reported": true
       },
       "reviewer_id": "/root/review_ac6761_m03",
-      "independent_review_status": "passed",
+      "independent_review_status": "pending",
       "author_ids": [
         "/root",
         "/root/review_ef5560_m01",
@@ -336,7 +342,9 @@
       "source_limitations": [
         "Tesla现场Gemini数值/完整输出未保存，禁止重造教授结果",
         "Nike p24原始负债/权益金额缺失，比例可读但不能伪称所有原额重算"
-      ]
+      ],
+      "proposed_candidate_sha256": "ef31c17516c9bf3798c877c416a4e1304b2bf6295a029e8e008403681491703b",
+      "proposal_independent_review_status": "passed_for_three_mechanical_changes"
     },
     {
       "id": "ac6761-m04",
@@ -360,7 +368,7 @@
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
       "independent_review_status": "needs_revision",
-      "review_stage": "author_v3_four_R5_mirrors_repaired_pending_targeted_recheck_and_main_adoption",
+      "review_stage": "author_v3_independent_residuals_accepted_pending_main_full_diff_source_visual_adoption",
       "reviewer_id": "/root/review_ac6761_m04",
       "author_ids": [
         "/root"
@@ -378,7 +386,12 @@
         }
       ],
       "proposed_candidate_sha256": "8b135c68476893dced0d41dcaaac947d7fea05e6db945e7983b56658eee871cf",
-      "candidate_sha256": "f7c2a949146793a2a752adb83486a84bd05b7721c7f1b2c24cd6a7efcb45bff3"
+      "candidate_sha256": "f7c2a949146793a2a752adb83486a84bd05b7721c7f1b2c24cd6a7efcb45bff3",
+      "proposal_independent_review_status": "passed",
+      "proposal_independent_report": {
+        "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\targeted-v3-recheck.md",
+        "sha256": "959ef5e583c85e9b47112a5fb66d7c2d0adec345500657619ad92eefbbcf7cfa"
+      }
     },
     {
       "id": "ac6761-m05",
@@ -677,11 +690,11 @@
       "bytes": 208482,
       "lines": 2647,
       "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ef5560-m02",
-      "teaching_state": "已修待复核",
-      "writeback": "未开始",
-      "local_sync": "未开始",
-      "notion": "未开始",
-      "git": "未开始",
+      "teaching_state": "修订并验收",
+      "writeback": "已原子写并精确回读",
+      "local_sync": "12文件96条顺序补丁已CAS写并回读；2项无增量；链接/README/完整性问题0（仅任务计划有意缩写allow）",
+      "notion": "已写并回读（备注/正确代码路径；其余15属性未变）",
+      "git": "本批提交前核验中",
       "sources": [],
       "blockers": [],
       "included": true,
@@ -690,9 +703,9 @@
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
-      "review_stage": "targeted_accepted_pending_main_source_visual_full_gate",
+      "review_stage": "all_applicable_local_and_notion_sync_verified_pending_git",
       "reviewer_id": "/root/review_ef5560_m02",
-      "candidate_sha256": "3786742ef1668dfc42c239ef0ab0379cd27751ab654169120ee72ea1d57eb8c3",
+      "candidate_sha256": "bbe947f74ccc94a15be7d53174701d5c51d6ace378240f711fb4cb9f15e64064",
       "independent_review_status": "passed",
       "evidence_reports": [
         {
@@ -723,8 +736,170 @@
       },
       "author_ids": [
         "/root",
-        "/root/review_is5113_m01"
-      ]
+        "/root/review_is5113_m01",
+        "/root/repair_ef5560_m02_main"
+      ],
+      "proposed_candidate_sha256": "31a6336f24cb8f0b9ec1ea36621099cae469ded1c694a24c404340aece833b9d",
+      "main_read_checkpoint": {
+        "candidate_before_new_changes": "3786742ef1668dfc42c239ef0ab0379cd27751ab654169120ee72ea1d57eb8c3",
+        "complete_candidate_read": "1-end inclusive (110,270,300,290,300,315,315,310,340,end chunks)",
+        "baseline_to_candidate_diff_complete": true,
+        "new_changes_read": [
+          63,
+          15,
+          6
+        ],
+        "lecture_old_pages": 54,
+        "lecture_new_pages": 56,
+        "new_version_text_pairs_identical": 54,
+        "actual_source_contact_pages_viewed": 56,
+        "high_resolution_source_pages_viewed": [
+          "old25",
+          "old29",
+          "old36",
+          "old40",
+          "new25"
+        ],
+        "p1_records_read": 379,
+        "p2_records_read": 260,
+        "m01_cross_source_windows_read": [
+          "01:43:57",
+          "02:12:58"
+        ],
+        "main_calculations": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ef5560-m02\\main-source\\main-source-calculations.json",
+        "main_calculations_sha256": "763b46210a6aba8a7ad30db6dbc77827d7bcee5d7e44be7862921f2eef1e7430",
+        "visuals": "inline diagrams1(top/bottom),2(top/bottom),3 viewed; revised4 and static SVG plus final table/formula review pending; not Obsidian screenshot",
+        "current_precheck": "L/C/R hard0; current exit0; C.warn1 and R.warn408 need manual dispositions; historical result not yet final",
+        "source_correction": "same original newPDF SHA95c1299e...; current new56 p25 axis is fixed; old54 remains wrong; historical erroneous receipts preserved"
+      },
+      "review_receipt": "_meta/vault-notes-review-20261023/ef5560-m02/review.json",
+      "source_inputs": [
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/course_files_export/Lec02_Regression_Vibe_Coding.pdf",
+          "sha256": "9b97ce71cd43b176e572c9d6d691d315f154eac4fa5f6f12d56eda85795fa44e",
+          "bytes": 3532072
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/course_files_export/canvas-20261020/Lec02_Regression_Vibe_Coding.pdf",
+          "sha256": "95c1299e9011f35ccb2a20a18b858ddba9ad5db22862dc1cfc3b0b9c8705f676",
+          "bytes": 3532296
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/transcripts/M01-transcript.txt",
+          "sha256": "025a51821af5f2cf53fb9793900f62e7f9d65953a24fd86e014b93f11beaee33",
+          "bytes": 118493
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/transcripts/M02-transcript-part1.txt",
+          "sha256": "d9d66caf5f3926bd0ec241daf6001f462c55304e7d8aeba66ff0753a72475e97",
+          "bytes": 66700
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/transcripts/M02-transcript-part2.txt",
+          "sha256": "fe2a62bc50e9f60ff77bce0b2a3220091e8221997eaaf7f32df59296a69884f4",
+          "bytes": 47218
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/course_files_export/class02/class02/csi300_macro_panel_monthly_240m.csv",
+          "sha256": "740b83d3c9db429d37327754b16491cf83fe1ce5bacf2a0cd49306c17d5d2f63",
+          "bytes": 25870
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/course_files_export/class02/class02/csi300_macro_scorecard.csv",
+          "sha256": "9b7a31c266413a437638a6994cd26a34e38dc6ee527ba37293d624b53e24af55",
+          "bytes": 310
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/course_files_export/class02/class02/csi300_macro_test_predictions.csv",
+          "sha256": "c17b7a5b1b8b8c72b2a1fd4c4d7325aa25822d163270d1f53192cfb76d762a7a",
+          "bytes": 10465
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/course_files_export/class02/class02/macro_monthly_240m.csv",
+          "sha256": "075e2284989361788d6f2204f171d3d872b80312be312a45dec4eb8f4f12a7e8",
+          "bytes": 20228
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/course_files_export/class02/class02/manifest.json",
+          "sha256": "82953c4d925e6e621a57a78f0c6d221de8e962b2f02516d2548ef6559e6ece07",
+          "bytes": 7900
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/course_files_export/class02/class02/market_features.csv",
+          "sha256": "da5bd4c67137707f936c309eb643086200cc0c1556be96375c13cc5224fb600e",
+          "bytes": 76448
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/course_files_export/class02/class02/market_index_returns_monthly_240m.csv",
+          "sha256": "9e1bf4b24e50ec56421cd66c7e4b2e7296361ba2f1738a51b2bf0f9b61582746",
+          "bytes": 22678
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/course_files_export/class02/class02/README.md",
+          "sha256": "30afb586d4aa92b47ab19325fa836b2c86047866fa48f74035f47a017c03510f",
+          "bytes": 4009
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/course_files_export/class02/class02/spy_momentum_bins.csv",
+          "sha256": "57069a051bc0e29d3cd48b5acc57381fa18943b65ee98a220b4225ec69ae9114",
+          "bytes": 475
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/course_files_export/class02/class02/spy_regression_scorecard.csv",
+          "sha256": "87eaf30539323d4ad51789c13c26bee905552807d730997fbb633ca46a85f710",
+          "bytes": 511
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/course_files_export/class02/class02/spy_single_predictor_regressions.csv",
+          "sha256": "0d5d79af2d1dad07cf79c2aaff33503291e25f03ca6d7f58cf5e05de55e353ed",
+          "bytes": 515
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/course_files_export/class02/class02/spy_test_predictions_monthly.csv",
+          "sha256": "6b537e9959ed18140c5d6271f402ab95240ac1e14457cff180f3c6c08d6ea48d",
+          "bytes": 25713
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/course_files_export/class02/class02/three_market_regression_scorecard.csv",
+          "sha256": "107f591827338b8afeb79b3af2e4821c4584ae3c4b2a7198d3ace352aec941a8",
+          "bytes": 492
+        },
+        {
+          "path": "EF5560_Fintech_and_AI_in_Finance/course_files_export/class02/class02/three_market_timing_scorecard.csv",
+          "sha256": "b16e45404afac62ab544cbf4011d9387b7fd25da2c36c897f46dea71c2a57e1a",
+          "bytes": 988
+        }
+      ],
+      "full_gate": {
+        "mechanical": true,
+        "receipt": true,
+        "historical": "FAIL",
+        "C_warn": 2,
+        "R_warn": 413
+      },
+      "writeback_record": "_meta/vault-notes-review-20261023/ef5560-m02/writeback.json",
+      "formal_sha256": "bbe947f74ccc94a15be7d53174701d5c51d6ace378240f711fb4cb9f15e64064",
+      "notion_evidence": {
+        "page_id": "3d58310b2596818a9818c855bf1513c0",
+        "module": "EF5560 Lec02 · Regression and Vibe Coding",
+        "updated_properties": [
+          "卡点/备注",
+          "笔记路径"
+        ],
+        "checks": {
+          "remarks_match": true,
+          "old_remarks_suffix_preserved": true,
+          "correct_code_path": true,
+          "all_other_properties_unchanged": true
+        },
+        "other_properties_checked": 15,
+        "raw_old_remarks_suffix_exactly_preserved": true,
+        "display_normalization": "br tags/newlines and escaped underscores only; raw values also preserved in private proof",
+        "private_evidence": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\notion\\ef-m02-readback-20261025.json",
+        "private_evidence_sha256": "86dd0ffe02cd05a73b7317ebdccfa026a0cb756d7cb78ce7648c33e46e72a9cb",
+        "candidate_sha256": "bbe947f74ccc94a15be7d53174701d5c51d6ace378240f711fb4cb9f15e64064",
+        "not_user_learning_claim": true
+      }
     },
     {
       "id": "ef5560-m03",
@@ -975,7 +1150,7 @@
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
-      "review_stage": "author_v5_text_D16_accepted_registry_specific_records_under_repair_then_final_recheck",
+      "review_stage": "text_v5_and_registry_v6_independent_accepted_pending_main_full_diff_source_visual_adoption",
       "candidate_sha256": "b19f3214529f37acb937240f57aab3677ad2a2d7b5543b6a60703d9777775010",
       "evidence_reports": [
         {
@@ -989,6 +1164,11 @@
         {
           "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\is5113-m02\\author\\residual-findings.md",
           "sha256": "a3913010278d15237f9e74eb95e16c49a11f1f4bf84558d965ad1d7ea7c72011"
+        },
+        {
+          "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\is5113-m02\\targeted-d16-registry-v6-recheck.md",
+          "sha256": "3507b05b837d32e474a959b7bdab776513fc92b3baddc0b73f9436762fb331f3",
+          "reviewer_id": "/root/review_is5113_m02_registry"
         }
       ],
       "stage_1": {
@@ -1001,7 +1181,9 @@
       "author_ids": [
         "/root/repair_is5113_m02_residual"
       ],
-      "proposed_candidate_sha256": "2f4883fbcdc3aea8fb18b0925b796538c6ab5e8a1179d45ba2d51da772b1490b"
+      "proposed_candidate_sha256": "2f4883fbcdc3aea8fb18b0925b796538c6ab5e8a1179d45ba2d51da772b1490b",
+      "proposal_independent_review_status": "all_registered_residuals_closed_registry_v6_18_of_18_accepted",
+      "proposal_registry_sha256": "9f9ab23bdfeeccd745a1ccb74a38a316dcbc3a85add2267b007b95b24cbbc784"
     },
     {
       "id": "is5113-m03",

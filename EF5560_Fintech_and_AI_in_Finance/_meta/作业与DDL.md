@@ -1,7 +1,7 @@
 ---
 type: 作业与DDL
 course: EF5560
-updated: 2026-10-22
+updated: 2026-10-25
 ---
 
 # EF5560 作业与 DDL
@@ -128,7 +128,7 @@ updated: 2026-10-22
 | **计算题题型** | **给两个 SSE（或类似数字）算样本外 R²**；数字会很简单，**不允许用计算器** | 🎙️`05:35`–`06:01`「you will see to calculate out of sample R squared based on the numbers here… if I give you simple numbers like this I will not allow any [calculator]」；若给计算器则数字会更复杂（`06:01`） |
 | **及格情况** | 过去三年只挂过 **3 人**（两人与期末考有关、第三人属特殊情形，细节 ASR 听不清） | 🎙️`06:04`–`06:43`「in the past three years I only failed three students and two of them [?]… the final exam just lower[,] that one is kind of like [?] exam」 |
 
-> 与 M02 转录已记录的"及格线：做完作业 + 出席就很难挂"（本文件 §3）一致，两讲说法互相印证。
+> 与 M02 转录中的**非正式评分经验**一致：教授说完成作业并出席考试者按其过往经验很难被判不及格；这不是正式及格线或自动承诺，制度门槛仍以 syllabus／正式通知为准。
 > ⚠️ 待确认：**"do 60" 的准确语境**——是"选择题固定占 60% 的分数"还是"选择题数量占 60%"，转录原句有歧义，按考点库 §0 的"学校规定最多 60%"口径理解为"用满上限"。
 
 ---
@@ -148,12 +148,12 @@ updated: 2026-10-22
 **🎙️ 教授的原话（`14:43`–`15:37`）**：「I **cold call** from time to time… if I call your name, if you're not here, then you will have [a] deduction. …every student start[s] with five points, five out of ten.」
 另一段（`15:48`）：「for those students who can answer the question, [you get a] bonus point. **If you cannot answer, that's fine too. Nothing loose.**」
 > 转录里确实出现了三次现场点名与加分（`38:17`、`01:29:29`、`02:01:45`），**说明这不是空话**。
-> **🎙️ 第 2 讲再次确认**（M02 转录 `P1 09:28`–`16:47`）：开场按名单点名（缺席的同学提前发了邮件，教授说"我记住这些名字了"）；两位同学被点起来复述 M01 要点；「This might be **the only way you get bonus point**」（`P1 16:20`）——加分只有课上回答/提问这一条路。整堂课又有 4 次当堂提问给分（`P1 59:24`、`P2 11:40`、`P2 25:28`、`P2 26:01`）。
+> **🎙️ 第 2 讲课堂实况**（M02 转录 `P1 09:28`–`16:47`）：开场按名单点名；有缺席同学事先发邮件，但这段不能单独建立“缺席必须提前邮件”的新制度。教授说「This **might be** the only way you get bonus point」（`P1 16:20`），保留 might 的不确定语气。课堂提问题材和实际窗口包括：相关系数与 $R^2$（P1 `58:53`–`01:00:36`）、国债 ETF 派息（P2 `11:15`–`12:31`）、标准化是否改变 $R^2$（P2 `25:28`–`26:30`）；不从时间戳数量推断实际奖励次数。正式参与规则仍以上表 syllabus 口径为准。
 
 **🎙️ 期末的三条口头信息（M02 转录 `P1 01:19:13`–`01:22:02`）**
 - **题型**：每讲讲义里那道"四选一 + Discuss"就是期末题型，「These are the questions you will see」；题库由教授用 AI 按讲义生成
 - **模拟卷**：「At the end of the semester, I will show you practice exam. If you want to do more of them, I always have more.」（与 syllabus 的"11 月中旬发 Canvas"一致）
-- **及格线**：「As long as you finish all homework and show up in exam, it is very hard for me to fail you」——三年挂 3 人：2 人缺考、1 人没做项目展示
+- **非正式评分经验（不是及格线）**：「As long as you finish all homework and show up in exam, it is very hard for me to fail you」；制度要求仍以 syllabus／正式考试通知为准
 
 **🎙️ M03 转录再次确认（`00:56`–`08:32` 行政段）**
 - **参与分 10%** 再次点名：🎙️`06:56`「there's about 10% for participation grade」
@@ -230,7 +230,7 @@ updated: 2026-10-22
 | 4 | Zoom office hour 的**具体周日日期** | Canvas；M03 转录只确认了"周日上午"这一通用格式，没有给出 9/27 之外的新日期 |
 | 5 | TA tutorial 的 Zoom 链接 | 教授说会在会前发（🎙️`12:11`）；M03 转录再次确认"两次 tutorial 都在周日上午、Zoom、不在教室"（`01:34`–`02:20`），但**仍未给出具体链接** |
 | 6 | ~~10/01 是否真的停课~~ | ✅ M04 A `01:13:11`–`01:13:22` 已明确确认 2026-10-01 不上课；本条不再待确认 |
-| 7 | Canvas 上是否有**更新版 Lec02 PDF** | 🎙️ 教授说已修了 p.25 那张图的时间轴（M02 转录 `P1 01:17:45`） |
+| 7 | ~~Canvas 上是否有更新版 Lec02 PDF／p.25 是否已修~~ | ✅ 当前现存 Canvas 版为 56 页，p.25 已显示 2008／2012／2016／2020；旧 54 页版仍为日期序数百分比轴。2026-10-21“两版都错”的记录保留为历史误判；新版 SHA 与原独审登记一致，不能推断具体替换日期 |
 | 8 | 恒生 / CSI 300 的三变量特征表是否在 Canvas | 🎙️ 教授说"数据在 Canvas 上"（`P2 41:03`）；本地 `data/` 只有 SPY 的 |
 | 9 | ✅ **`shared/` 四个面板已随 2026-09-21 的 class04 数据包到位**（数据集卡片 §13.1；M04 已用它们重训三棵树）。`class03/stock_linear_test_predictions.csv` 曾被同步截断（358 / 4,108 行），2026-09-22 用重下的 `class03.zip` 恢复并复核。原记录： | **Canvas 上也没有**（2026-09-17 核实：Lecture 3 只有 PDF + `class03.zip`）；**M03 转录同样没有点名 `shared/`**，教授只说数据在他的 Dropbox / Canvas（`01:18:56`）。等 ML 作业发布时看是否附带；否则邮件问 TA（抄送教授，主题 `[EF5560]`） |
 | 10 | ~~Lec03（9/17）课上有没有更新 ML 作业的发布日 / 数据 / 组队要求~~ | ✅ **已由 M03 转录部分回答**：`02:17:41` 教授明说"I can promise you this is the assignment for your homework"，剧透作业会让学生**自己改训练/验证/测试窗口长度、重新跑股票排序**（呼应 §2.2）；**没有**给出新的具体发布日期，仍按"late September"（⚪，见 §4）与 Week 5 后（syllabus）两说并存 |

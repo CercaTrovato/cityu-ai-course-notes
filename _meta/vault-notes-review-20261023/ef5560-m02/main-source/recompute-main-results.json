@@ -1,0 +1,243 @@
+{
+  "hash_checks": {
+    "market_features.csv": {
+      "manifest": "da5bd4c67137707f936c309eb643086200cc0c1556be96375c13cc5224fb600e",
+      "actual": "da5bd4c67137707f936c309eb643086200cc0c1556be96375c13cc5224fb600e",
+      "match": true
+    },
+    "macro_monthly_240m.csv": {
+      "manifest": "075e2284989361788d6f2204f171d3d872b80312be312a45dec4eb8f4f12a7e8",
+      "actual": "075e2284989361788d6f2204f171d3d872b80312be312a45dec4eb8f4f12a7e8",
+      "match": true
+    },
+    "market_index_returns_monthly_240m.csv": {
+      "manifest": "9e1bf4b24e50ec56421cd66c7e4b2e7296361ba2f1738a51b2bf0f9b61582746",
+      "actual": "9e1bf4b24e50ec56421cd66c7e4b2e7296361ba2f1738a51b2bf0f9b61582746",
+      "match": true
+    },
+    "spy_regression_scorecard.csv": {
+      "manifest": "87eaf30539323d4ad51789c13c26bee905552807d730997fbb633ca46a85f710",
+      "actual": "87eaf30539323d4ad51789c13c26bee905552807d730997fbb633ca46a85f710",
+      "match": true
+    },
+    "spy_test_predictions_monthly.csv": {
+      "manifest": "6b537e9959ed18140c5d6271f402ab95240ac1e14457cff180f3c6c08d6ea48d",
+      "actual": "6b537e9959ed18140c5d6271f402ab95240ac1e14457cff180f3c6c08d6ea48d",
+      "match": true
+    },
+    "csi300_macro_panel_monthly_240m.csv": {
+      "manifest": "740b83d3c9db429d37327754b16491cf83fe1ce5bacf2a0cd49306c17d5d2f63",
+      "actual": "740b83d3c9db429d37327754b16491cf83fe1ce5bacf2a0cd49306c17d5d2f63",
+      "match": true
+    },
+    "csi300_macro_scorecard.csv": {
+      "manifest": "9b7a31c266413a437638a6994cd26a34e38dc6ee527ba37293d624b53e24af55",
+      "actual": "9b7a31c266413a437638a6994cd26a34e38dc6ee527ba37293d624b53e24af55",
+      "match": true
+    },
+    "csi300_macro_test_predictions.csv": {
+      "manifest": "c17b7a5b1b8b8c72b2a1fd4c4d7325aa25822d163270d1f53192cfb76d762a7a",
+      "actual": "c17b7a5b1b8b8c72b2a1fd4c4d7325aa25822d163270d1f53192cfb76d762a7a",
+      "match": true
+    },
+    "spy_single_predictor_regressions.csv": {
+      "manifest": "0d5d79af2d1dad07cf79c2aaff33503291e25f03ca6d7f58cf5e05de55e353ed",
+      "actual": "0d5d79af2d1dad07cf79c2aaff33503291e25f03ca6d7f58cf5e05de55e353ed",
+      "match": true
+    },
+    "spy_momentum_bins.csv": {
+      "manifest": "57069a051bc0e29d3cd48b5acc57381fa18943b65ee98a220b4225ec69ae9114",
+      "actual": "57069a051bc0e29d3cd48b5acc57381fa18943b65ee98a220b4225ec69ae9114",
+      "match": true
+    },
+    "three_market_regression_scorecard.csv": {
+      "manifest": "107f591827338b8afeb79b3af2e4821c4584ae3c4b2a7198d3ace352aec941a8",
+      "actual": "107f591827338b8afeb79b3af2e4821c4584ae3c4b2a7198d3ace352aec941a8",
+      "match": true
+    },
+    "three_market_timing_scorecard.csv": {
+      "manifest": "b16e45404afac62ab544cbf4011d9387b7fd25da2c36c897f46dea71c2a57e1a",
+      "actual": "b16e45404afac62ab544cbf4011d9387b7fd25da2c36c897f46dea71c2a57e1a",
+      "match": true
+    }
+  },
+  "spy": {
+    "simple": {
+      "momentum_12": {
+        "intercept_pct": 0.772215217156443,
+        "slope_pct_per_decimal": 0.6281013167867072,
+        "se_pct_per_decimal": 2.0566471049218977,
+        "t": 0.3054006276932764,
+        "p": 0.7604178842866068,
+        "r2_pct": 0.05237117811054404
+      },
+      "volatility_12": {
+        "intercept_pct": -0.31334152918285746,
+        "slope_pct_per_decimal": 8.493182053147038,
+        "se_pct_per_decimal": 5.2396881745737325,
+        "t": 1.6209327292340234,
+        "p": 0.10680217165695349,
+        "r2_pct": 1.4546090899895558
+      },
+      "ma_gap_10": {
+        "intercept_pct": 0.7289284054387454,
+        "slope_pct_per_decimal": 2.993718792606573,
+        "se_pct_per_decimal": 4.207818713705346,
+        "t": 0.7114657251881334,
+        "p": 0.47772701792041306,
+        "r2_pct": 0.28356635510026207
+      }
+    },
+    "multi_params_pct": {
+      "const": 0.8404413162550066,
+      "momentum_12": 0.3934281844072866,
+      "volatility_12": 0.71000104485994,
+      "ma_gap_10": 0.031276012369098195
+    },
+    "multi_se_pct": {
+      "const": 0.3273095813796374,
+      "momentum_12": 0.5785704805917444,
+      "volatility_12": 0.3900632158390768,
+      "ma_gap_10": 0.5222867396055154
+    },
+    "multi_p": {
+      "const": 0.011067696668128724,
+      "momentum_12": 0.497397637602744,
+      "volatility_12": 0.07042418550301759,
+      "ma_gap_10": 0.9523168897758838
+    },
+    "multi_r2_pct": 2.1872585996889793,
+    "model_mse": 0.002067413867455998,
+    "benchmark_mse": 0.002212469940988762,
+    "oos_r2_pct": 6.5562957871390655,
+    "hits": 38,
+    "positive_months": 38,
+    "negative_predictions": 0,
+    "official_single_scorecard_oos_pct": 6.55629578713905,
+    "official_three_market_oos_pct": 6.739572689983669,
+    "official_prediction_rows_match_recomputed": true
+  },
+  "csi_macro": {
+    "import_beta_target_decimal_per_input_pp": -0.0015098201614254533,
+    "import_beta_target_pp_per_input_pp": -0.15098201614254533,
+    "import_p": 0.0013546612830145975,
+    "f_p": 0.02616265474207302,
+    "train_r2_pct": 6.078164156321753,
+    "model_mse_x1e4": 31.649570771990817,
+    "benchmark_mse_x1e4": 27.966239074122782,
+    "oos_r2_pct": -13.170636523937262,
+    "model_hits": 29,
+    "positive_months": 29,
+    "always_down_hits": 31
+  },
+  "small_ols": {
+    "params": [
+      1.1666666666666665,
+      0.49999999999999967
+    ],
+    "sse": 0.1666666666666668,
+    "se_slope": 0.288675134594813,
+    "t_slope": 1.7320508075688756,
+    "p_slope": 0.3333333333333335,
+    "tcrit_95_df1": 12.706204736432095,
+    "ci_slope": [
+      -3.167965362478786,
+      4.167965362478785
+    ],
+    "r2": 0.7499999999999998,
+    "f": 2.999999999999996
+  },
+  "matrix_ols": {
+    "params": [
+      0.7500000000000002,
+      1.4999999999999993,
+      2.499999999999999
+    ],
+    "resid": [
+      0.24999999999999978,
+      -0.24999999999999956,
+      -0.2499999999999991,
+      0.2500000000000018
+    ],
+    "sse": 0.2500000000000001,
+    "bse": [
+      0.43301270189221935,
+      0.5,
+      0.5
+    ],
+    "tvalues": [
+      1.7320508075688776,
+      2.9999999999999987,
+      4.999999999999998
+    ],
+    "r2": 0.9714285714285714,
+    "f": 16.999999999999993,
+    "f_p": 0.1690308509457034
+  },
+  "strategy_example": {
+    "v1": 110.51709180756477,
+    "v2": 111.62226272564041,
+    "half_simple": 0.052585459037823856,
+    "half_log": 0.05124947951362563
+  },
+  "slide_predict_full_dataframe": {
+    "worked": false,
+    "error": "ValueError: shapes (60,19) and (4,) not aligned: 19 (dim 1) != 4 (dim 0)"
+  },
+  "rolling_oos_r2_pct_2021_07_onward": {
+    "expanding60": 5.494548897506735,
+    "rolling60": -10.387816721110688,
+    "rolling120": 0.7115248340482605,
+    "rolling180": 7.32093371151824
+  },
+  "official_timing": [
+    {
+      "market": "U.S.: SPY",
+      "buy_hold_ann_return": 0.124819546039254,
+      "timing_ann_return": 0.0613689612157003,
+      "buy_hold_ann_volatility": 0.1583051665169962,
+      "timing_ann_volatility": 0.1386679517480415,
+      "buy_hold_sharpe": 0.7884742411477329,
+      "timing_sharpe": 0.4425605227602064,
+      "timing_market_exposure": 0.75,
+      "buy_hold_terminal_wealth": 1.750116996762731,
+      "timing_terminal_wealth": 1.2952073181028083,
+      "months_in_market": 45,
+      "months_in_cash": 15,
+      "in_market_mean_return": 0.0068187734684111,
+      "in_cash_mean_return": 0.0211501949411845
+    },
+    {
+      "market": "HKSAR: Hang Seng",
+      "buy_hold_ann_return": -0.0462075300168603,
+      "timing_ann_return": -0.0665555531912822,
+      "buy_hold_ann_volatility": 0.2407552856867023,
+      "timing_ann_volatility": 0.1954868394154718,
+      "buy_hold_sharpe": -0.1919273750732547,
+      "timing_sharpe": -0.3404605312065558,
+      "timing_market_exposure": 0.4166666666666667,
+      "buy_hold_terminal_wealth": 0.68882377887837,
+      "timing_terminal_wealth": 0.6526725490190165,
+      "months_in_market": 25,
+      "months_in_cash": 35,
+      "in_market_mean_return": -0.0133111106382564,
+      "in_cash_mean_return": 0.0029068604534888
+    },
+    {
+      "market": "Chinese Mainland: CSI 300",
+      "buy_hold_ann_return": -0.0095911244516435,
+      "timing_ann_return": 0.0047065931879704,
+      "buy_hold_ann_volatility": 0.1770164124969827,
+      "timing_ann_volatility": 0.1649728672795383,
+      "buy_hold_sharpe": -0.0541821197049006,
+      "timing_sharpe": 0.0285294986114009,
+      "timing_market_exposure": 0.8333333333333334,
+      "buy_hold_terminal_wealth": 0.8841659106819738,
+      "timing_terminal_wealth": 0.9593578681803536,
+      "months_in_market": 50,
+      "months_in_cash": 10,
+      "in_market_mean_return": 0.000470659318797,
+      "in_cash_mean_return": -0.007148858819807
+    }
+  ]
+}

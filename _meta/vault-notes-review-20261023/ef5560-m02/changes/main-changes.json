@@ -1,0 +1,1019 @@
+{
+  "schema": "exact-replacement-set-v1",
+  "source": "candidate.md",
+  "source_sha256": "3786742ef1668dfc42c239ef0ab0379cd27751ab654169120ee72ea1d57eb8c3",
+  "proposed": "author/main-proposed.md",
+  "proposed_sha256": "caf7cdfa91299939a91dc2cba4cf39328609e9bd955e67e76107d72d93c63e1a",
+  "replacement_count": 63,
+  "changes": [
+    {
+      "id": "R01",
+      "tag": "replace",
+      "old_lines": [
+        52,
+        52
+      ],
+      "new_lines": [
+        52,
+        52
+      ],
+      "old": "于是全讲的结构就是一条不断收紧的漏斗：**画图 → 拟合 → 读系数与标准误 → 加变量 → 冻结规格 → 只在从没碰过的后 60 个月上评一次分**。中间穿插的每一条纪律（按日期切分、只用训练集标准化、验证集选模型、测试集只能用一次），都是为了让最后那一次评分**说的是真话**。",
+      "new": "于是全讲的结构就是一条不断收紧的漏斗：**画图 → 拟合 → 读系数与标准误 → 加变量 → 冻结规格 → 只在从没碰过的后 60 个月上评一次分**。中间穿插的每一条纪律（按日期切分、只用训练集标准化、有候选规格时才用验证集选模型、测试集只能用一次），都是为了让最后那一次评分**说的是真话**。Class 2 课堂明确说本讲没有 validation；144 / 36 / 60 是讲义给出的规范设计，不是本堂已经执行的选模记录。",
+      "old_sha256": "ec8097d0905f1a35beb554aa85c97b48d967d9bb3893392ba8da50b5b5ac875e",
+      "new_sha256": "dd5a677dbb3a05150940658cbffc95422b77bfba17a3da0adb31e71601a76501"
+    },
+    {
+      "id": "R02",
+      "tag": "replace",
+      "old_lines": [
+        54,
+        54
+      ],
+      "new_lines": [
+        54,
+        54
+      ],
+      "old": "最后的结果很诚实：三个市场的样本外 R² 都只有 4–7%，而方向准确率几乎打不过\"永远猜涨\"。",
+      "new": "最后的结果很诚实：三个市场的样本外 R² 都只有 4–7%。方向上，SPY 与 always-up 打平，恒生输给 always-up，CSI 300 比 always-up 多命中 2 个月、但与测试期事后多数方向 always-down 打平；这些比较口径不能混成一句“都打不过”。",
+      "old_sha256": "58e1d87fe9d8f6bcac48becbde63c5903ad8ec1f24e44cdbadf6693d9f98db47",
+      "new_sha256": "9a1aaaf55967810e48d9f3705bd65a02a862a4b4eb73c8854cce7c49fcdcbc24"
+    },
+    {
+      "id": "R03",
+      "tag": "replace",
+      "old_lines": [
+        70,
+        70
+      ],
+      "new_lines": [
+        70,
+        70
+      ],
+      "old": "3. **方向准确率要跟\"基准命中率\"比，不是跟 50% 比。** SPY 测试期 63.3% 的命中率看着不错——但\"永远猜涨\"也是 63.3%。",
+      "new": "3. **方向准确率要跟事前规定、当时可执行的方向基准比，不是自动跟 50% 比。** 正收益月占比只是 always-up 的分数；它不一定等于测试期多数方向的分数，更不能把事后看到的多数方向冒充可部署规则。SPY 测试期 63.3% 的命中率看着不错——但 always-up 也是 63.3%。",
+      "old_sha256": "29597167c8ef25429cfba37aaea53f290bad5c85822a00d13f832a53ed4b0c70",
+      "new_sha256": "6d85f99755b94afc43f597868b1291d2e9e08e5f9a8b546bbda67fa93264dc6b"
+    },
+    {
+      "id": "R04",
+      "tag": "replace",
+      "old_lines": [
+        193,
+        193
+      ],
+      "new_lines": [
+        193,
+        195
+      ],
+      "old": "- **为什么大多数人认为收益根本不可预测**：这叫有效市场假说（Efficient Market Hypothesis，EMH，芝加哥大学 Fama 提出。",
+      "new": "- **为什么大多数人认为收益根本不可预测**：先给基准定义。有效市场假说（Efficient Market Hypothesis，EMH）讨论的是：相对于一个**指定的可得信息集**，价格已经反映其中的信息，因此不能仅靠该信息集系统性获得异常收益。信息集可分弱式、半强式、强式等口径；本段不据此认证现实市场在任何时点都有效。该假说通常与芝加哥大学 Fama 联系在一起。\n\n🔗 定义边界参见 [American Finance Association 的 Nobel Prizes 页面](https://afajof.org/nobel-prizes/)（获取日期 2026-10-25）；这里只用于区分信息集口径，不把课堂的长短期判断升级为一般定义。",
+      "old_sha256": "3eda56b23742c2ce3f925c6b89dea76d53c42570c4c51ba8949f26402c86807b",
+      "new_sha256": "a0468a13bd53425477ef00fac758c12957ccc74f85286482bb5619c0422e0cd6"
+    },
+    {
+      "id": "R05",
+      "tag": "replace",
+      "old_lines": [
+        197,
+        197
+      ],
+      "new_lines": [
+        199,
+        199
+      ],
+      "old": "教授的立场：课堂转述（非逐字引文）：his theory is always true, but this is true on average, in the long run（`07:22`）——看 50–70 年的美国数据，市场确实有效。（P1 `07:22`）",
+      "new": "教授的立场：课堂转述（非逐字引文）：his theory is always true, but this is true on average, in the long run（`07:22`）——看 50–70 年的美国数据，市场确实有效。（P1 `07:22`）这是课堂观点，不改写成 EMH 的一般定义，也未在本轮独立核验该现实判断。",
+      "old_sha256": "ad5b2df978c370d7cdd05f51e60ddd102bb6ebdbf56eb97b9fa1a4462c31d6c0",
+      "new_sha256": "eb5ec8878e0e7c91871a09b5c66d81d942981bb39c710b31fcf9bc3479e1e3df"
+    },
+    {
+      "id": "R06",
+      "tag": "replace",
+      "old_lines": [
+        203,
+        203
+      ],
+      "new_lines": [
+        205,
+        205
+      ],
+      "old": "但信号只能活几天到几个月，一旦被发现并被大家交易，就会消失（`08:13`）——所以\"能不能预测\"这件事本身每年都在变。",
+      "new": "但信号只能活几天到几个月，一旦被发现并被大家交易，就会消失（`08:13`）——所以\"能不能预测\"这件事本身每年都在变。这也是课堂提出的可能机制，不是仅凭后来失效就能确诊的原因。",
+      "old_sha256": "e578e259894de6c94d1574edc5784c2756fc6445be7ca844f9438d807e02ae44",
+      "new_sha256": "f24cb44d0e1519aed0d747d6a1a03c259ae4173df2e47b22271a6c2402b083ed"
+    },
+    {
+      "id": "R07",
+      "tag": "replace",
+      "old_lines": [
+        216,
+        216
+      ],
+      "new_lines": [
+        218,
+        218
+      ],
+      "old": "投资者结构从散户主导变成机构占约 70%（`24:15`–`25:16`）。",
+      "new": "投资者结构从散户主导变成机构占约 70%（`24:15`–`25:16`）。该 70% 是课堂口述数字，本轮未独立核验现实统计。",
+      "old_sha256": "5149758a5707d9e2ec7f8951d03313ab55b92f221f832706220c1016687d07f8",
+      "new_sha256": "4bc7a77814904ffaf94b103db90702715ee21e53d10e5752510f948dd005b457"
+    },
+    {
+      "id": "R08",
+      "tag": "replace",
+      "old_lines": [
+        331,
+        331
+      ],
+      "new_lines": [
+        333,
+        337
+      ],
+      "old": "- **这个方向叫什么**（`32:00`–`34:09`）：不是金融工程/金融数学——那是**绝对定价**，给期权、衍生品算一个\"公平价格\"（业内叫 Q 测度，Q-quant）。本课做的是**相对定价 / 收益预测**（P 测度，P-quant，\"predictive\"），教授称之为 **financial machine learning / financial statistics**。他的一句话：课堂转述（非逐字引文）：I focus on the change of the price, not the price.（P1 `32:00`–`34:09`）",
+      "new": "- **这个方向叫什么**（`32:00`–`34:09`）：课堂用“Q-quant / P-quant”口语区分给期权、衍生品定价与研究价格变化/收益预测。\n\n原 ASR 在 `33:25` / `33:35` 附近有 `kucoin` / `P1` 等破损词，因此这里按语境释读，不把“Q = 绝对定价、P = 相对定价”当成一般、严格、穷尽的职业分类。\n\n可以确认的是：本课侧重**收益预测**，教授称之为 **financial machine learning / financial statistics**。他的一句话：课堂转述（非逐字引文）：I focus on the change of the price, not the price.（P1 `32:00`–`34:09`）",
+      "old_sha256": "b539af19f94a96daf5489a66937b6c19364b1b879dc69881b9a9bf473ca1ac48",
+      "new_sha256": "a9d225f7be28b95012cd77460e0ad7326554b2e5a0f47a091ebaa28d0e3107be"
+    },
+    {
+      "id": "R09",
+      "tag": "replace",
+      "old_lines": [
+        358,
+        358
+      ],
+      "new_lines": [
+        364,
+        364
+      ],
+      "old": "| `parse_dates=[\"forecast_month\"]` | 把日期列真的解析成日期 | 否则日期是字符串，排序按字典序，切片全错（M01 §2.4 的老坑） |",
+      "new": "| `parse_dates=[\"forecast_month\"]` | 把日期列解析成日期类型 | 统一补零的 ISO `YYYY-MM-DD` 字符串按字典序也能保持日期先后，并非所有字符串排序都会错；仍应解析日期，以便校验真实日期、可靠切片和日期运算，未知或混合格式不能盲用字符串排序 |",
+      "old_sha256": "a2b2340a83320df10b23c868f209dc5072d4a7986f3438b10903fb3330c56a41",
+      "new_sha256": "83e539d980fd43edf37aa486812d64c86a4d45a82e450e2566d6f89066b2de90"
+    },
+    {
+      "id": "R10",
+      "tag": "replace",
+      "old_lines": [
+        519,
+        519
+      ],
+      "new_lines": [
+        525,
+        527
+      ],
+      "old": "背后是中心极限定理：取均值后收敛到期望、近似正态，课堂转述（非逐字引文）：that's why finance people love to use average, they love to use regression models（`58:04`–`58:27`）。（P1 `58:04`–`58:27`）",
+      "new": "课堂把“平均能平滑噪声”连到下面这句转述：that's why finance people love to use average, they love to use regression models（`58:04`–`58:27`）。（P1 `58:04`–`58:27`）\n\n**💡 定理边界（笔记补充）**：样本均值在适当条件下趋近期望，属于大数定律一类结论；中心化并按样本量适当缩放后的均值近似正态，才是中心极限定理一类结论。两者通常需要有限方差以及独立或足够弱的依赖等条件。本页把 240 个月按动量排序后分成每箱 24 行，并不能自动保证这些条件；金融时间相关也不能因“取了平均”就被消除。",
+      "old_sha256": "cf39dc65888668be772909a14a696040ef60dfbce45221daa46ec07748ba5f02",
+      "new_sha256": "8322c609c5ab7a53567e448b52a5fbd4c130fae533e3312d1cda420e4b3b7bfb"
+    },
+    {
+      "id": "R11",
+      "tag": "replace",
+      "old_lines": [
+        721,
+        721
+      ],
+      "new_lines": [
+        729,
+        729
+      ],
+      "old": "经典 SE/t/F 依赖误差条件；金融异方差或自相关时要预先声明稳健/HAC 规则。$x$ 恒定时 $S_{xx}=0$，$n\\le k$ 时没有正残差自由度，均须停止相应推断。",
+      "new": "本例把三行 $x$ 视为固定设计，并在设计矩阵满列秩、误差独立同方差、零均值且正态的经典线性模型下，才用上述 t / F 分布作**精确小样本推断**。只有 $n-k>0$ 还不够；缺少这些条件时仍可计算 OLS 拟合与残差，但不能原样把这里的精确 t / F p 值解释搬过去。金融异方差或自相关时要预先声明稳健/HAC 规则。$x$ 恒定时 $S_{xx}=0$，$n\\le k$ 时没有正残差自由度，均须停止相应推断。",
+      "old_sha256": "57afd022240ca4db5c7ab038d8f6089611e080dc6318dc8f33071fb8e933d758",
+      "new_sha256": "de7ee7899ba831897c81028b9d2824e42c707f46c1538c65423b2723e50d87cd"
+    },
+    {
+      "id": "R12",
+      "tag": "replace",
+      "old_lines": [
+        751,
+        751
+      ],
+      "new_lines": [
+        759,
+        759
+      ],
+      "old": "🎙️ 课堂补充（P1 `01:08:25`–`01:09:23`。",
+      "new": "🎙️ 课堂补充：读斜率先看符号是否符合预期——课堂转述（非逐字引文）：if you understand your predictor, it's momentum, then you are not only looking for a [non-zero] beta, you are looking for a **positive** beta。波动率同理，「higher risk, higher return… we do not believe that higher risk, lower return, then no one will buy the stock」。（P1 `01:08:25`–`01:09:11`，核心约 `01:08:39`）",
+      "old_sha256": "3b3d218e811d3a936ccf0f04f35206c4dd17347a4f0a6f37cae0e0cc7169c8dc",
+      "new_sha256": "9111e5c356c16eb754c2d88363d25df4feeb291ec7143b4d43d0ca998bf0fae1"
+    },
+    {
+      "id": "R13",
+      "tag": "replace",
+      "old_lines": [
+        753,
+        755
+      ],
+      "new_lines": [
+        761,
+        761
+      ],
+      "old": "`01:11:41`–`01:12:12`）：读斜率先看符号是否符合预期——课堂转述（非逐字引文）：if you understand your predictor, it's momentum, then you are not only looking for a [non-zero] beta, you are looking for a **positive** beta。（P1 `01:11:41`–`01:12:12`）\n\n波动率同理，「higher risk, higher return… we do not believe that higher risk, lower return, then no one will buy the stock」。数字他当堂代入：$0.8 + 0.6\\times0.10$，「all of you can calculate this」。",
+      "new": "数字代入是另一段：教授当堂代入 $0.8 + 0.6\\times0.10$，并说「all of you can calculate this」。（P1 `01:11:41`–`01:12:12`）",
+      "old_sha256": "953da7afeb79da56a765ec16e77e7207106f8fa8965e15b6404eb18e39c998cc",
+      "new_sha256": "44969a3e0c8dd8c1a73249ea6c7c19ef10cf5bef050163c418158ef0886f2eb3"
+    },
+    {
+      "id": "R14",
+      "tag": "replace",
+      "old_lines": [
+        830,
+        830
+      ],
+      "new_lines": [
+        836,
+        836
+      ],
+      "old": "**⚠️ 跨课提醒**：IS6400 的回归作业里 $R^2$ 动辄 0.5、0.8——那是房价、销量这类可预测的目标。课堂把金融收益预测约 1% 描述为常见量级、把 2–3% 作为可能有价值的弱信号示例，但这只是样本和任务背景下的参照，不能自动保证价值或盈利（见 §2.9 的 `L02_03` 图）。",
+      "new": "**⚠️ 跨课提醒**：不同任务的目标变量、噪声、信息时点与评分基准不同，不能设一个普遍的 $R^2$ “好/坏”阈值。课堂把金融收益预测约 1% 描述为本任务的常见量级、把 2–3% 作为可能有价值的弱信号示例；这只是本样本和任务背景下的参照，不能自动保证价值或盈利，也不据此评价未在本篇复核的 IS6400 作业（见 §2.9 的 `L02_03` 图）。",
+      "old_sha256": "7cc875bdc26a73083e08c690c6bbd034bcd0ad6ea7967a3fa8e6de1e5f1bc4de",
+      "new_sha256": "74bf9c2afd9540705264409540b9e74f09525dd00ec7a57c618624df5cdfd4e0"
+    },
+    {
+      "id": "R15",
+      "tag": "replace",
+      "old_lines": [
+        850,
+        850
+      ],
+      "new_lines": [
+        856,
+        856
+      ],
+      "old": "1.  三个变量单位不同（动量是比例、波动率是年化标准差、均线偏离是比例），斜率 8.5 和 0.6 不可比",
+      "new": "1.  三个变量单位不同（动量是比例、波动率是年化标准差、均线偏离是比例），所以斜率 8.5 和 0.6 不能直接比较经济大小；对同一非退化线性换算，斜率和标准误会一起换单位，t 统计量与 p 值不会因此改变",
+      "old_sha256": "5160aa7211f278dfbed037d0456834a360c819e8cc546c8d82c8457113511898",
+      "new_sha256": "127a272d71fdcfec1b423c6cd02e9ff0a2ed94d4b170beb235b4a1e8616987af"
+    },
+    {
+      "id": "R16",
+      "tag": "replace",
+      "old_lines": [
+        858,
+        858
+      ],
+      "new_lines": [
+        864,
+        864
+      ],
+      "old": "**🎙️ 课堂补充**（P1 `01:15:22`–`01:17:09`）：教授只对波动率那行多说了几句——$R^2$ 1.5%课堂转述（非逐字引文）：is high（在这个领域），系数 8.5 为正符合\"高风险高收益\"，而且**波动率有持续性**（课堂转述（非逐字引文）：if [volatility] for yesterday is high, then… for today might be high too），$p = 0.11$课堂转述（非逐字引文）：marginal significance。他把图上三条线指给大家看：绿色水平线 = 无条件均值，红线 = 条件均值（回归），黑点 = 实际——课堂转述（非逐字引文）：it beats the unconditional [mean] by about 1%。（P1 `01:15:22`–`01:17:09`）",
+      "new": "**🎙️ 课堂补充**（P1 `01:15:22`–`01:17:09`）：教授只对波动率那行多说了几句——$R^2$ 1.5%课堂转述（非逐字引文）：is high（在这个领域），系数 8.5 为正符合\"高风险高收益\"，而且**波动率有持续性**（课堂转述（非逐字引文）：if [volatility] for yesterday is high, then… for today might be high too），$p = 0.11$课堂转述（非逐字引文）：marginal significance。他把图上三条线指给大家看：绿色水平线 = 无条件均值，红线 = 条件均值（回归），黑点 = 实际——课堂转述（非逐字引文）：it beats the unconditional [mean] by about 1%。（P1 `01:15:22`–`01:17:09`）**口径提醒**：未舍入的 $p=0.1068$ 不低于预先声明的 10% 或 5% 阈值；保留课堂的 marginal 说法，但不能把它升级成按这些阈值统计显著。",
+      "old_sha256": "237b5fd93a2e4ea33f9eff9c9694e2bc946e61fff42a2c6393637d4c9d72dc5d",
+      "new_sha256": "69cb63e7fccf427f3d59192316e69db9d1ce428ff6debdf167a1fb884f0c7b9e"
+    },
+    {
+      "id": "R17",
+      "tag": "replace",
+      "old_lines": [
+        870,
+        870
+      ],
+      "new_lines": [
+        876,
+        876
+      ],
+      "old": "**💡 这两张图在说什么（笔记补充）**：右图的横轴（拟合的月度收益）只在 **0% ~ 2.5%** 这个极窄的区间里动，纵轴（残差）却在 **−15% ~ +10%** 之间。**模型几乎在预测一个常数，而现实在剧烈波动。** 这就是\"$R^2$ 只有 1%\"的图像版本。",
+      "new": "**💡 这两张图在说什么（笔记补充）**：右图的横轴（拟合的月度收益）只在 **0% ~ 2.5%** 这个极窄的区间里动，纵轴（残差）约在 **−18% ~ +11%** 之间。该范围是对 p.25 高分辨率图的量级读取，不认证最低/最高点的具体日期。**模型几乎在预测一个常数，而现实在剧烈波动。** 这就是\"$R^2$ 只有 1%\"的图像版本。",
+      "old_sha256": "08008d39c5637c016fe77eedcbc3a17f5ff12038ed8942307ba2c1e22a3596f3",
+      "new_sha256": "2bd32b413918a1aa2e43fbd14bd058d311a7fa693cf61dc162ff2e7db148c73b"
+    },
+    {
+      "id": "R18",
+      "tag": "replace",
+      "old_lines": [
+        1005,
+        1005
+      ],
+      "new_lines": [
+        1011,
+        1011
+      ],
+      "old": "- **B**：**OLS 的残差在拟合样本里必然平均为零**（只要模型有截距）。这是算法的数学性质，**不是任何证据**。这是四个选项里最有迷惑性的一个。",
+      "new": "- **B**：**OLS 的残差在拟合样本里必然平均为零**（只要模型有截距）。这是算法的数学性质，可以用来核对实现是否符合含截距 OLS，但**不是未来预测能力的证据**。这是四个选项里最有迷惑性的一个。",
+      "old_sha256": "d8691835bb345e50adeae57bcb4168dd452ea86eb9306c3b0bafda78b0402799",
+      "new_sha256": "5693d4e4ca48e4cc52a9224e4a4997b41a2415c27a94121548ec9456d302d0c1"
+    },
+    {
+      "id": "R19",
+      "tag": "replace",
+      "old_lines": [
+        1035,
+        1035
+      ],
+      "new_lines": [
+        1041,
+        1041
+      ],
+      "old": "背景：前一天（9/9）美国财政部宣布买入长期国债，30 年期国债收益率跳到约 5.33%–5.4%。教授的问题：**国债收益率的变动能不能预测第二天 SPY 的收益？**",
+      "new": "背景：课堂描述前一天（9/9）美国财政部宣布买入长期国债，30 年期国债收益率跳到约 5.33%–5.4%。这段新闻背景与数字仅保留为课堂描述，本轮未独立核验现实新闻。教授的问题：**国债收益率的变动能不能预测第二天 SPY 的收益？**",
+      "old_sha256": "8bcbadecbefb1b10fa7945f9c1c41a13c25f49072cc218e8e5118f368bf72875",
+      "new_sha256": "a9a92e89a1075a21c1bf1fb485ab05a27d3c7e91248a395503965a69652d18a4"
+    },
+    {
+      "id": "R20",
+      "tag": "replace",
+      "old_lines": [
+        1039,
+        1045
+      ],
+      "new_lines": [
+        1045,
+        1051
+      ],
+      "old": "| ① 起因 | 看新闻，先有经济预期（`01:52`–`02:07`） | — | 课堂转述（非逐字引文）：usually when the treasury yield go[es] up… [stocks] go down——**先想清楚方向，再看数据** |（P2 `01:52`–`02:07`）\n| ② 日频简单回归 | 用**前一天**的收益率变动预测**当天** SPY 收益：$\\text{SPY}_t = \\alpha + \\beta\\,\\Delta y_{t-1}$ | **系数为负，极小，但显著**（`04:26`） | 课堂转述（非逐字引文）：as I expect；但预测 vs 实际的图上课堂转述（非逐字引文）：the variation is very huge |（P2 `04:26`）\n| ③ 换频率 | 周频（课堂只说常按周三到周三；未给理由） | 仍为负，**边际显著；$R^2$ 变高**（`06:30`–`06:42`） | 课堂转述（非逐字引文）：in a lower [frequency], usually the R squared becomes higher |（P2 `06:30`–`06:42`）\n| | 月频 | 正号、不显著（`08:22`） | 课堂转述（非逐字引文）：if you want to see how treasury yield[s] affect SPY returns, probably you need… higher frequency, say weekly |（P2 `08:22`）\n| ④ 多元回归 | 周频，右边**同时**放 30y / 20y / 10y / 5y / 2y / 1y 六个期限的收益率变动（`08:37`–`09:27`） | 见下方课堂转述（非逐字引文）：六斜率课堂结果的读法 | 课堂转述（非逐字引文）：if you are putting more regressors… the R squared always go[es] up. **But it does not mean anything.** |（P2 `08:37`–`09:27`）\n| ⑤ F 检验 | 看整张表的 F 统计量（`13:52`–`15:12`） | **F 显著（$p < 0.05$）** | 课堂转述（非逐字引文）：**Jointly** these six guys together, they can predict SPY return. But if you look at the single predictor coefficients… they cannot predict anything |（P2 `13:52`–`15:12`）\n| ⑥ 为什么单个都不显著 | 算六个变动的方差–协方差表和相关表（`20:14`–`23:53`） | 相关系数 **0.67–0.92** | 课堂转述（非逐字引文）：I cannot believe this p value. I cannot believe this F statistic——各期限收益率**同涨同跌**，只是幅度不同 → **多重共线性**（§2.5.2） |（P2 `20:14`–`23:53`）",
+      "new": "| ① 起因 | 看新闻，先有经济预期（`01:52`–`02:07`） | — | 课堂转述（非逐字引文）：usually when the treasury yield go[es] up… [stocks] go down——**先想清楚方向，再看数据**（P2 `01:52`–`02:07`） |\n| ② 日频简单回归 | 用**前一天**的收益率变动预测**当天** SPY 收益：$\\text{SPY}_t = \\alpha + \\beta\\,\\Delta y_{t-1}$ | **系数为负，极小，但显著**（`04:26`） | 课堂转述（非逐字引文）：as I expect；但预测 vs 实际的图上课堂转述（非逐字引文）：the variation is very huge（P2 `04:26`） |\n| ③ 换频率 | 周频（课堂只说常按周三到周三；未给理由） | 仍为负，**边际显著；$R^2$ 变高**（`06:30`–`06:42`） | 课堂转述（非逐字引文）：in a lower [frequency], usually the R squared becomes higher（P2 `06:30`–`06:42`） |\n|  | 月频 | 正号、不显著（`08:22`） | 课堂转述（非逐字引文）：if you want to see how treasury yield[s] affect SPY returns, probably you need… higher frequency, say weekly（P2 `08:22`） |\n| ④ 多元回归 | 周频，右边**同时**放 30y / 20y / 10y / 5y / 2y / 1y 六个期限的收益率变动（`08:37`–`09:27`） | 见下方课堂转述（非逐字引文）：六斜率课堂结果的读法 | 课堂转述（非逐字引文）：if you are putting more regressors… the R squared always go[es] up. **But it does not mean anything.**（P2 `08:37`–`09:27`） |\n| ⑤ F 检验 | 看整张表的 F 统计量（`13:52`–`15:12`） | **F 显著（$p < 0.05$）** | 课堂转述（非逐字引文）：**Jointly** these six guys together, they can predict SPY return. But if you look at the single predictor coefficients… they cannot predict anything（P2 `13:52`–`15:12`） |\n| ⑥ 为什么单个都不显著 | 算六个变动的方差–协方差表和相关表（`20:14`–`23:53`） | 相关系数 **0.67–0.92** | 课堂转述（非逐字引文）：I cannot believe this p value. I cannot believe this F statistic——各期限收益率**同涨同跌**，只是幅度不同 → **多重共线性**（§2.5.2）（P2 `20:14`–`23:53`） |",
+      "old_sha256": "fcd7174c80e5ccd8208471fd99eca2af6e8673bfe947f11408abc03db2fda92f",
+      "new_sha256": "9cd57916a7417bcf73787c560874d7d1b12366188da2910bf867c18dcef44d01"
+    },
+    {
+      "id": "R21",
+      "tag": "replace",
+      "old_lines": [
+        1058,
+        1058
+      ],
+      "new_lines": [
+        1064,
+        1064
+      ],
+      "old": "F 检验问\"**所有**斜率**同时**是不是零\"。两者可以给出看似矛盾的答案——六个变量合起来有预测力（F 显著），但说不清是哪一个在起作用（t 全不显著）——这两句话不矛盾，而且正是共线性的教科书症状。",
+      "new": "F 检验问\"**所有**斜率**同时**是不是零\"。两者可以给出看似矛盾的答案——六个变量合起来有预测力（F 显著），但说不清是哪一个在起作用（t 全不显著）——这两句话不矛盾。该组合**与共线性一致，是一种可能症状**；单凭“F 显著、t 全不显著”不能确诊共线性，也不能宣布全部统计推断无效，还要看预测变量相关结构、设计矩阵和检验条件。",
+      "old_sha256": "7d2751bc2bd2802e9421cd7ff7c7d1c19877f3937c75ba3ee4886a61964ce18b",
+      "new_sha256": "3df7e8d2084ec75d47cea3cc1aeae6fe4cbd3b6a2721749b05ca0cc5b6f822b3"
+    },
+    {
+      "id": "R22",
+      "tag": "replace",
+      "old_lines": [
+        1133,
+        1133
+      ],
+      "new_lines": [
+        1139,
+        1139
+      ],
+      "old": "同例 $n=4,k=3$，$s^2=0.25/(4-3)=0.25$；$\\operatorname{Var}(\\hat\\beta)=s^2(X^\\top X)^{-1}$。这里单独展示协方差矩阵的教学核对：",
+      "new": "同例 $n=4,k=3$，$s^2=0.25/(4-3)=0.25$；$\\operatorname{Var}(\\hat\\beta)=s^2(X^\\top X)^{-1}$。这里单独展示协方差矩阵的教学核对。和三行例一样，本例只有在固定 $X$、$X$ 满列秩、误差独立同方差、零均值且正态时，才把经典 SE 与 t / F 分布解释为精确小样本推断；$n-k=1$ 只提供正自由度，不自动保证这些条件。条件不满足时仍可算拟合，但不能原样解释下列精确 p 值：",
+      "old_sha256": "6392f252001bdef226a24227382a45a1b81ae6e15f784d4023384d292e08cff7",
+      "new_sha256": "749bdf9ef202ea149b6fd790e9dad3597caa7c8899e29d16a3efc24a28c9eb18"
+    },
+    {
+      "id": "R23",
+      "tag": "replace",
+      "old_lines": [
+        1231,
+        1231
+      ],
+      "new_lines": [
+        1237,
+        1237
+      ],
+      "old": "| $z_{j,t}$ | 标准化后的值：均值 0、标准差 1；**\"一个单位\"现在意味着\"一个训练样本标准差\"** |",
+      "new": "| $z_{j,t}$ | 用训练尺变换后的值；**训练段**的均值为 0、标准差为 1，测试段未必如此，“一个单位”表示一个训练样本标准差 |",
+      "old_sha256": "2efb171fc23403611504f9ed419949929407acea1ff65d01c6092b468d27369c",
+      "new_sha256": "b39296eaf668fd203f786c5761ea275a519cbc7c3ba60235eae6172c97949892"
+    },
+    {
+      "id": "R24",
+      "tag": "replace",
+      "old_lines": [
+        1241,
+        1241
+      ],
+      "new_lines": [
+        1247,
+        1247
+      ],
+      "old": "> ★ **跨课注意**：IS6400 W02 的通用做法可能在全样本上标准化（`StandardScaler().fit_transform(X)`）。**在本课语境下那是泄漏。** 见 [[EF5560_Fintech_and_AI_in_Finance/00-课程总览|00-课程总览]] 的跨课对照表。",
+      "new": "> ★ **跨课注意**：任务的信息时点要分别核对。若任何课程或代码在时间测试切分之前用全样本 `StandardScaler().fit_transform(X)`，对本课这种未来预测任务就是泄漏；若只在训练段拟合再变换测试段，则不是。这里不凭课程名或未复核的对方实现断言其做法错误。见 [[EF5560_Fintech_and_AI_in_Finance/00-课程总览|00-课程总览]] 的跨课对照表。",
+      "old_sha256": "f1b1f629c1ecf48ea60896ff930c096a21ee518a1a7c86fff6ce03a6bc32cf6d",
+      "new_sha256": "97d6bab25a022ca8fd16d38270b6bd3ac7af1d4c113351d946ef0975fa478b53"
+    },
+    {
+      "id": "R25",
+      "tag": "replace",
+      "old_lines": [
+        1245,
+        1245
+      ],
+      "new_lines": [
+        1251,
+        1251
+      ],
+      "old": "用训练样本的均值和标准差（「standardized with the training sample mean and the training sample standard deviation」），标准化后每个 $z$ 均值 0、标准差 1。",
+      "new": "用训练样本的均值和标准差（「standardized with the training sample mean and the training sample standard deviation」），因此是**训练段**每个 $z$ 均值 0、标准差 1；用同一把尺变换测试段后，测试段均值和标准差通常不会恰好是 0 和 1。",
+      "old_sha256": "d077fdd9d7e07954a32a75d9955b1f352f8cffbfc790012d617b357202e835b5",
+      "new_sha256": "2f8cc6f4e72b0ad13c94f5e75f8c283c4b5b44bb55ff5601ed8065be35fa1e21"
+    },
+    {
+      "id": "R26",
+      "tag": "replace",
+      "old_lines": [
+        1317,
+        1317
+      ],
+      "new_lines": [
+        1323,
+        1325
+      ],
+      "old": "  1. **数据挖掘（data mining，这里是贬义）**：$p = 0.05$ 的意思是 100 次里有 5 次纯属巧合——「You have like 100 PhD students testing predictor[s] one by one, then at least five of them can get p value [below] 0.05, even though all those predictors might be useless」。",
+      "new": "  1. **数据挖掘（data mining，这里是贬义）**：若 100 个零假设都真实成立、每项检验都预先使用 5% 阈值，在相应检验条件下，假阳性个数的**期望**是 $100\\times0.05=5$。\n\n这不是说每次恰好或至少 5 个，也不是说某个 $p=0.05$ 表示零假设有 5% 概率为真。教授用下列口语例子说明多重尝试：「You have like 100 PhD students testing predictor[s] one by one, then at least five of them can get p value [below] 0.05, even though all those predictors might be useless」。",
+      "old_sha256": "53cbe3412ed46135182c9a07a3526a8bad25af022e92372905be41278f3340f3",
+      "new_sha256": "f99af7f21aafa4c87a2d95ccf0c38856f4de029e5b55d952a1628d9d7609f266"
+    },
+    {
+      "id": "R27",
+      "tag": "replace",
+      "old_lines": [
+        1322,
+        1322
+      ],
+      "new_lines": [
+        1330,
+        1330
+      ],
+      "old": "  2. **发表后偏差（post-publication bias）**：变量本来管用，但「once a predictor was discovered, traders trade on this, investors invest on this, and then the signal can disappear」——不是变量在样本外失效，是**被交易掉了**。",
+      "new": "  2. **发表后偏差（post-publication bias）**：教授提出一种可能机制——变量本来管用，但「once a predictor was discovered, traders trade on this, investors invest on this, and then the signal can disappear」。这说明信号**可能**被交易压弱；不能仅凭后来样本外失效就认定是交易造成，过拟合、数据挖掘或经济结构变化也能解释。",
+      "old_sha256": "c2769fadb97106f379c7fa5cabbd694c4192ff6f50a5199af8a80557e921eb05",
+      "new_sha256": "3593cbf39d960c6d50def5767135e52631e7c080cd44e4d562b39d4a9f85032d"
+    },
+    {
+      "id": "R28",
+      "tag": "replace",
+      "old_lines": [
+        1325,
+        1325
+      ],
+      "new_lines": [
+        1333,
+        1333
+      ],
+      "old": "（教授原话保留。🔗 [Campbell & Thompson 作者仓储摘要](https://dash.harvard.edu/entities/publication/73120378-7dd1-6bd4-e053-0100007fdf3b)，2026-10-01 源审核对：施加弱经济约束后，许多预测回归可以胜过历史均值；信号小但对特定均值方差投资者有价值。因此课堂“答案 no”不能当论文的绝对结论。未声称通读两文全部实验。）",
+      "new": "（教授原话保留。🔗 [Campbell & Thompson 作者仓储摘要](https://dash.harvard.edu/entities/publication/73120378-7dd1-6bd4-e053-0100007fdf3b)，2026-10-01 源审核对、2026-10-25 再核摘要：施加弱符号或预测约束后，许多预测回归可以胜过历史均值；信号小但对特定均值方差投资者有价值。因此课堂“答案 no”不能当论文的绝对结论。未声称通读两文全部实验。）",
+      "old_sha256": "848d683317d330b11c0f518324046af04c33e734c712e087d71b4cadf9bd3424",
+      "new_sha256": "e396384772e6a7dc2456b0ec57e34165b6dadf657d59d118d2c994c61770fda3"
+    },
+    {
+      "id": "R29",
+      "tag": "replace",
+      "old_lines": [
+        1350,
+        1350
+      ],
+      "new_lines": [
+        1358,
+        1358
+      ],
+      "old": "**⚠️ 常见误解（★ 跨课冲突点）**：❌「用 K 折交叉验证更稳健」→ 在时间序列上，不带时间约束的标准 K 折**不能保证**每个验证时点只使用过去数据。这是 IS6400 那类通用 ML 课程的默认做法，**在本课语境下是泄漏**。",
+      "new": "**⚠️ 常见误解（★ 跨课冲突点）**：❌「不看切分方式，只要写 K 折交叉验证就更稳健」→ 在时间序列上，不带时间约束的标准 K 折**不能保证**每个验证时点只使用过去数据，因此对本课未来预测任务会泄漏。若另一任务没有时间顺序，或使用保持时间先后的交叉验证，结论可不同；这里不凭课程名断言其他课程的具体实现错误。",
+      "old_sha256": "e2ca079a7daf33f0b01ea3e49fc35719318524d37554a3365964d685d1038486",
+      "new_sha256": "a9e5709f595630316ef76bf8cff879305f552c04343cfd710dbb60dc055e577d"
+    },
+    {
+      "id": "R30",
+      "tag": "replace",
+      "old_lines": [
+        1367,
+        1367
+      ],
+      "new_lines": [
+        1375,
+        1375
+      ],
+      "old": "> 💡 换句话说：**你一旦看了测试集再改模型，那段数据就不再是测试集了**，你也就再没有干净的数据可用了。",
+      "new": "> 💡 换句话说：**你一旦看了这 60 个月的测试结果再改模型，这 60 个月就不再是干净测试**；若还要独立评价，必须另留一段从未用于拟合、变换或选择的后续数据。",
+      "old_sha256": "a96b9cec267dc68400f6dd1dc87067dd6a81b948b973b45c4625c4bd72d5b5b2",
+      "new_sha256": "3df37999544798c415191ab9734ab240addbc80ce37dc7ae923a531788453ca1"
+    },
+    {
+      "id": "R31",
+      "tag": "replace",
+      "old_lines": [
+        1556,
+        1556
+      ],
+      "new_lines": [
+        1564,
+        1564
+      ],
+      "old": "| 4 | **方向** | 预测与实现的符号是否一致，**且要相对基准命中率** | ④ |",
+      "new": "| 4 | **方向** | 预测与实现的符号是否一致，并与**事前规定的可执行方向基准**比较；正收益占比只是 always-up 的分数 | ④ |",
+      "old_sha256": "01f7610188d657f3b1c22d7640e05926946fc25122b6592efcb9a7bfedefb943",
+      "new_sha256": "e580b8e6a5136f2518df3e9c44f6f4d3028bab10dc8113472d82cf059a6c171e"
+    },
+    {
+      "id": "R32",
+      "tag": "replace",
+      "old_lines": [
+        1603,
+        1604
+      ],
+      "new_lines": [
+        1611,
+        1612
+      ],
+      "old": "- **命中率**：猜对涨跌的比例。**必须和“正收益月的比例”比，不是和 50% 比**（§2.7.3）。这个正收益占比叫**基准命中率（positive-return base rate）**；“永远猜涨”会自动得到这个分数。\n- **模型在验证集上选定；这三条标准在未被碰过的测试集上只报一次。**",
+      "new": "- **命中率**：猜对涨跌的比例。正收益月占比等于 always-up 的分数，但不自动等于多数方向分数。应与**事前规定、当时可执行**的方向基准比较；测试期事后多数只能描述难度，不能冒充可部署规则，也不能自动拿 50% 当唯一基准（§2.7.3）。\n- **有多个候选规格时，按讲义规范在验证集上选定；选定后，这三条标准在未被碰过的测试集上只报一次。Class 2 课堂明确说本讲没有 validation，不能把规范流程写成本堂已执行事实。**",
+      "old_sha256": "b756e6ba92ee5c6a2b5327a5208ba6e2c43afec3bb8e30bbe690cd685a6db28c",
+      "new_sha256": "545a86b05e628364140c57a3ecee271779e751c0ff8876f35f60e8d79a112ab1"
+    },
+    {
+      "id": "R33",
+      "tag": "replace",
+      "old_lines": [
+        1739,
+        1739
+      ],
+      "new_lines": [
+        1747,
+        1747
+      ],
+      "old": "**所以呢**：三个市场都是\"MSE 小赢、方向打平或输\"。讲义留了一个更狠的反例在下一节——一个**样本内非常漂亮**的模型，样本外直接翻车。",
+      "new": "**所以呢**：三个市场的 MSE 都小赢，但方向口径不同：SPY 与 always-up 打平，恒生输给 always-up，CSI 300 赢 always-up 2 个月、与测试期事后多数 always-down 打平。事后多数只描述难度，不是事前可部署基准。讲义留了一个更狠的反例在下一节——一个**样本内非常漂亮**的模型，样本外直接翻车。",
+      "old_sha256": "13ff29922a964aa6b41540573266515c2170c507466e43cd774f201efc67ad85",
+      "new_sha256": "6778c324549dab2f78540cfcfba9466e3a29686be09f257736242a1a4fc84873"
+    },
+    {
+      "id": "R34",
+      "tag": "replace",
+      "old_lines": [
+        1792,
+        1792
+      ],
+      "new_lines": [
+        1800,
+        1802
+      ],
+      "old": "**🎙️ 课堂补充**（P2 `27:54`–`28:35`）：课堂转述（非逐字引文）：the beta hat for the import growth is negative… **highly significant. The F test is highly significant.** So which means that this[e] four predictors, they can predict CSI 300, particularly for this guy… The R squared for [the] training sample is 6.1%.⚠️ 转录把系数听成了\"negative 0.5%\"，讲义与脚本复现都是 **−0.15 个百分点**（§2.9），以讲义为准。",
+      "new": "**🎙️ 课堂补充**（P2 `27:54`–`28:35`）：课堂转述（非逐字引文）：the beta hat for the import growth is negative… **highly significant. The F test is highly significant.** So which means that this[e] four predictors, they can predict CSI 300, particularly for this guy… The R squared for [the] training sample is 6.1%.\n\n⚠️ ASR 文本记成了\"negative 0.5%\"，而讲义 p.35 与脚本复算为 **−0.15 个百分点**（§2.9）。两份文字来源冲突；未核原音前不能裁定是教授口误还是转写错误，数值教学暂按讲义与复算口径。",
+      "old_sha256": "0877e6ff7085c226def13def2d6f3880c86a4d41d6502a91d8bb584e9b68c70a",
+      "new_sha256": "e51e6fbcbb3d66dd2547945df9b63af6e699770906eb03b032f652855359505e"
+    },
+    {
+      "id": "R35",
+      "tag": "replace",
+      "old_lines": [
+        1806,
+        1806
+      ],
+      "new_lines": [
+        1816,
+        1816
+      ],
+      "old": "**同一个变量，同一个模型，换一段数据，结论完全反过来。** 这就是 §2.4.7 那道选择题为什么选 C，也是 §2.6.3 那句\"看了测试集再改模型就毁了测试集\"为什么必须遵守。",
+      "new": "**同一个变量，同一个模型，换一段数据，结论完全反过来。** 这就是 §2.4.7 那道选择题为什么选 C，也是 §2.6.3 那句“看了这段测试数据再改模型，就会污染这段测试数据”为什么必须遵守。",
+      "old_sha256": "0b09ab242b76dcf2e892023f6d3a1c8bb85305fa85aa2644460386efb9846697",
+      "new_sha256": "99a0fb1095816c95a673cc8377e08bd52bb533d1a3d85339316b3b284f858db1"
+    },
+    {
+      "id": "R36",
+      "tag": "replace",
+      "old_lines": [
+        1899,
+        1899
+      ],
+      "new_lines": [
+        1909,
+        1909
+      ],
+      "old": "> 📁 **代码**：[`code/L02_regression/03_r2_scale.py`](../code/L02_regression/03_r2_scale.py) —— 跨课口径冲突的图像版：真实 SPY 月收益 vs 滞后波动率（$R^2 = 1.01\\%$）与同一个 x 合成的 $R^2 = 50\\%$ 并排，同样 240 个点、同样坐标；$R^2 = 1\\%$ 时拟合值的波动只有噪声的 0.10 倍，这就是\"金融 1% 算好、IS6400 0.5 才正常\"的直观含义（`L02_03`）",
+      "new": "> 📁 **代码**：[`code/L02_regression/03_r2_scale.py`](../code/L02_regression/03_r2_scale.py) —— 不同任务口径的图像版：真实 SPY 月收益 vs 滞后波动率（$R^2 = 1.01\\%$）与同一个 x 合成的 $R^2 = 50\\%$ 并排，同样 240 个点、同样坐标；$R^2 = 1\\%$ 时拟合值的波动只有噪声的 0.10 倍。它说明 $R^2$ 必须结合目标、噪声与基准读，不能推出“金融 1% 普遍算好”或“另一课程 0.5 才正常”（`L02_03`）",
+      "old_sha256": "34cf856557e36bb8d074033b5160318ab118896eca3c38d5fea1a1724833353f",
+      "new_sha256": "446cebf417ed0419bfd655e97f487d0b38a5e8c3561072658978d9cf4a1e5d0f"
+    },
+    {
+      "id": "R37",
+      "tag": "replace",
+      "old_lines": [
+        1902,
+        1902
+      ],
+      "new_lines": [
+        1912,
+        1912
+      ],
+      "old": "**⚠️ 一个前提**：这些复核**用的是数据文件里的对数收益**，而讲义 p.10 和 p.16 写的公式是**简单收益**（$P_t/P_{t-1} - 1$、\"a monthly simple return\"）。**既然用对数收益能精确复现讲义的每一个数字，说明讲义实际上用的就是对数收益，文字表述与数据不一致。** 见 [[#9.3 课件自身的问题|§9.3]]。",
+      "new": "**⚠️ 一个前提**：这些复核**用的是数据文件里的对数收益**，而讲义 p.10 和 p.16 写的公式是**简单收益**（$P_t/P_{t-1} - 1$、\"a monthly simple return\"）。对数收益可复算 SPY 与 CSI 宏观的主要回归组，支持这些组的实际计算口径与讲义文字不一致；但恒生/CSI 三变量、策略规则、逐月 scorecard 与开发/验证选择日志仍缺，不能据此声称精确复现整讲每个数字。见 [[#9.3 课件自身的问题|§9.3]]。",
+      "old_sha256": "744e238bd09198d93015cd940da579b002c1dc964b678b98edd0d6be82f6b10b",
+      "new_sha256": "56aac3fee09dfd0fa7fffa33a5e8ffe0a6db5ac55d2d5b4a9562440cb7b0c1a7"
+    },
+    {
+      "id": "R38",
+      "tag": "replace",
+      "old_lines": [
+        2121,
+        2121
+      ],
+      "new_lines": [
+        2131,
+        2131
+      ],
+      "old": "    T --> S[\"MSE ｜ OOS R² vs MA(12) ｜ 命中率 vs 基准率\"]",
+      "new": "    T --> S[\"MSE ｜ OOS R² vs MA(12) ｜ 命中率 vs 事前方向基准\"]",
+      "old_sha256": "875f8b8cd5acf133f88d0e63342bc63e4b61191ef65b3a26ed2af1c58f505885",
+      "new_sha256": "2a3a90f76fcd6ebc8ea458173ac61d6c6201680ba9a8817aa53906801dd257f2"
+    },
+    {
+      "id": "R39",
+      "tag": "replace",
+      "old_lines": [
+        2123,
+        2123
+      ],
+      "new_lines": [
+        2133,
+        2133
+      ],
+      "old": "你再没有干净数据可用\"]",
+      "new": "另留未参与选择的后续数据\"]",
+      "old_sha256": "4c04167004fe8056ca83a0f9aac3e81f50534afc2e6111dcfc546b3a57012317",
+      "new_sha256": "9479b965d3c303f018308f39392fe9a367389ffb78f5c0ae71cb1ecb8a6af01f"
+    },
+    {
+      "id": "R40",
+      "tag": "replace",
+      "old_lines": [
+        2143,
+        2143
+      ],
+      "new_lines": [
+        2153,
+        2153
+      ],
+      "old": "| 方向 | 能识别正/高收益月吗 | **命中率 vs 基准命中率** |",
+      "new": "| 方向 | 能识别正/高收益月吗 | **命中率 vs 事前规定的方向基准**；正收益占比 = always-up 分数 |",
+      "old_sha256": "3ca984f501fe5a25cdd7058c66d21d903bf566f8ea1d2a745a17ba9f8655e8de",
+      "new_sha256": "dd5aa2fb5b5e24247f54c7a88302fb0c22018a4c9f738024ce726152163cee38"
+    },
+    {
+      "id": "R41",
+      "tag": "replace",
+      "old_lines": [
+        2152,
+        2152
+      ],
+      "new_lines": [
+        2162,
+        2162
+      ],
+      "old": "| 命中率 | $\\frac{1}{T}\\sum_t \\mathbb{1}\\{\\operatorname{sign}(\\hat r_t)=\\operatorname{sign}(r_t)\\}$ | **要跟基准命中率比，不是 50%** |",
+      "new": "| 命中率 | $\\frac{1}{T}\\sum_t \\mathbb{1}\\{\\operatorname{sign}(\\hat r_t)=\\operatorname{sign}(r_t)\\}$ | 跟事前规定的可执行方向基准比；正收益占比只是 always-up 分数，事后多数只描述难度 |",
+      "old_sha256": "7cf828e0d17c9f1a0671ffaaa2b4ac6fc9064122a21a54159ab9c1906798dfb9",
+      "new_sha256": "cfae9765d193a0ce9ae8a28b309b74b2932e0e14e3c1e6959f57dde584c9ba4b"
+    },
+    {
+      "id": "R42",
+      "tag": "replace",
+      "old_lines": [
+        2173,
+        2173
+      ],
+      "new_lines": [
+        2183,
+        2183
+      ],
+      "old": "| 市场 | OOS R² vs MA(12) | 命中率 | 基准命中率 | 判断 |",
+      "new": "| 市场 | OOS R² vs MA(12) | 命中率 | always-up 分数（正收益占比） | 判断 |",
+      "old_sha256": "45cda218a268807445ffb46020fd9edeb2430d474e5ed3e10e90073494632448",
+      "new_sha256": "3a028ea9e4e69360b8298dd842342795db1c5a530c30ad5f478d13097fee734d"
+    },
+    {
+      "id": "R43",
+      "tag": "replace",
+      "old_lines": [
+        2224,
+        2225
+      ],
+      "new_lines": [
+        2234,
+        2235
+      ],
+      "old": "| 命中率 | Hit rate | $\\frac{1}{T}\\sum_t \\mathbb{1}\\{\\operatorname{sign}(\\hat r_t)=\\operatorname{sign}(r_t)\\}$ | §2.7.2 |\n| **基准命中率** | Positive-return base rate | The share of months with a positive return; directional accuracy must beat this, not an automatic 50%. | §2.7.3 |",
+      "new": "| 命中率 | Hit rate | $\\frac{1}{T}\\sum_t \\mathbb{1}\\{\\operatorname{sign}(\\hat r_t)=\\operatorname{sign}(r_t)\\}$; compare it with a prespecified feasible directional rule. | §2.7.2 |\n| **正收益占比 / always-up 分数** | Positive-return base rate | The share of positive-return months equals the score of always predicting up. It is not automatically the majority-sign score or the only valid benchmark. | §2.7.3 |",
+      "old_sha256": "b43175cce479b91c80a0ab9dc7e45c0f62adcce35dc7074baa69651388c52738",
+      "new_sha256": "a6692be3f9d696e86a6f4d0628a66d79e09b8d24f930052b8e3868ed15a87d03"
+    },
+    {
+      "id": "R44",
+      "tag": "replace",
+      "old_lines": [
+        2228,
+        2231
+      ],
+      "new_lines": [
+        2238,
+        2241
+      ],
+      "old": "| 有效市场假说 | Efficient Market Hypothesis (EMH) | Public information is priced in within seconds, so patterns vanish — true on average in the long run, not month by month (🎙️ P1 `07:22`). | §2.1 |\n| F 检验 | F-test (joint significance) | Tests whether **all** slopes are zero at once; can be significant while every single t-test is not — the signature of multicollinearity. | §2.5.0 |\n| 数据挖掘（贬义） | Data mining (as p-hacking) | Trying many predictors until one clears p < 0.05; 100 useless predictors still yield about 5 \"significant\" ones (🎙️ P2 `32:42`). | §2.6.1 |\n| 发表后偏差 | Post-publication bias | Once a predictor is published, traders trade on it and the signal fades. | §2.6.1 |",
+      "new": "| 有效市场假说 | Efficient Market Hypothesis (EMH) | For a specified available information set, prices reflect that information so it cannot by itself systematically earn abnormal returns; weak, semi-strong, and strong forms use different information sets. | §2.1 |\n| F 检验 | F-test (joint significance) | Tests whether **all** slopes are zero at once. A significant F with insignificant individual t-tests is consistent with multicollinearity, but does not diagnose it by itself. | §2.5.0 |\n| 数据挖掘（贬义） | Data mining (as p-hacking) | Trying many predictors until one clears p < 0.05; under 100 true nulls and valid 5% tests, the expected number of false positives is 5, not guaranteed to be exactly or at least 5. | §2.6.1 |\n| 发表后偏差 | Post-publication bias | Trading after publication may weaken a signal; later failure alone cannot distinguish this from overfitting or structural change. | §2.6.1 |",
+      "old_sha256": "8fdc4ec931b69133233746a02de4551cffa6d6cd93797552931d15a7f7dbe87a",
+      "new_sha256": "1fd523151780de9ce9907f20dc65542d0c62e067003a8c168c31049a924b493b"
+    },
+    {
+      "id": "R45",
+      "tag": "replace",
+      "old_lines": [
+        2261,
+        2261
+      ],
+      "new_lines": [
+        2271,
+        2271
+      ],
+      "old": "| ⚪⚪ | **命中率必须对比基准命中率，不是 50%** | 讲义用了 p.46/47/48 三页讲这一件事，且给了\"模型输给永远猜涨\"的反例 | §2.7.3–2.7.4 |",
+      "new": "| ⚪⚪ | **命中率须对比事前规定的可执行方向基准** | 讲义 p.46/47/48 给出 always-up 对照；正收益占比只是该规则分数，测试期事后多数只描述难度 | §2.7.3–2.7.4 |",
+      "old_sha256": "a1eac0176e9b31855359bb6ce582f890007b9bebe0596ab559b1098df5daccc3",
+      "new_sha256": "9f88d5bdcf9eb240385d708f33c04eb27f867e94a3ef22ae3e10de16cd5a56ce"
+    },
+    {
+      "id": "R46",
+      "tag": "replace",
+      "old_lines": [
+        2296,
+        2296
+      ],
+      "new_lines": [
+        2306,
+        2306
+      ],
+      "old": "4. **方向**：命中率对比**正收益基准率**，不是 50%",
+      "new": "4. **方向**：命中率对比事前规定的可执行方向基准；正收益占比只是 always-up 的分数，不自动等于多数方向分数",
+      "old_sha256": "ce5d6b7483a01ed0213fad12d5b0ff889de29f9e508bfb6acc8574bc210bf184",
+      "new_sha256": "8d87b8c8a22c145f173558eaca03e984e6d609fb47575ec6c8bd824e505dee01"
+    },
+    {
+      "id": "R47",
+      "tag": "replace",
+      "old_lines": [
+        2308,
+        2308
+      ],
+      "new_lines": [
+        2318,
+        2318
+      ],
+      "old": "6. **方向**：拿命中率跟基准命中率比了，还是跟 50% 比？",
+      "new": "6. **方向**：拿命中率跟事前规定的可执行方向基准比了吗？有没有把正收益占比、always-up 分数、测试期事后多数混成一个概念？",
+      "old_sha256": "736614fdc8785ecaa2b4ffab83b190c3f23d77458b15b4290dc6ce7cf7ca6c98",
+      "new_sha256": "01838d9fb91b6b95ae329b46f40f0d09c8bc4daa2ba93d9a0766f0a06e7e8c78"
+    },
+    {
+      "id": "R48",
+      "tag": "replace",
+      "old_lines": [
+        2321,
+        2321
+      ],
+      "new_lines": [
+        2331,
+        2331
+      ],
+      "old": "1. **三个变量单位不同**——动量是比例（0.01 = 1 个百分点），波动率是年化标准差，均线偏离是比例。斜率大小不可直接比。",
+      "new": "1. **三个变量单位不同**——动量是比例（0.01 = 1 个百分点），波动率是年化标准差，均线偏离是比例。斜率大小不可直接比；但同一变量作非退化线性换算时，斜率和标准误会一起换单位，t 统计量与 p 值不会因此改变。单位差异限制的是斜率数值的直接经济比较，不是说 p / t 随单位任意变化。",
+      "old_sha256": "f5480292307cb6a99dc92dfe321db480e1b61b0524d2491e232a8edcb85d66f1",
+      "new_sha256": "b08abd3232a36a7f5e7bc9ce9003c67b3d800a754b07fa2fddaf4f049fe35a3e"
+    },
+    {
+      "id": "R49",
+      "tag": "replace",
+      "old_lines": [
+        2352,
+        2352
+      ],
+      "new_lines": [
+        2362,
+        2362
+      ],
+      "old": "讲义 p.47 的原话：「MA(12) benchmarks MSE. **Sign accuracy instead competes with the majority sign.**」",
+      "new": "讲义 p.47 的原话：「MA(12) benchmarks MSE. **Sign accuracy instead competes with the majority sign.**」本题中正收益占 38/60，所以 majority sign 恰好是 up；一般情况下必须把正收益占比（always-up 分数）、测试期事后多数和事前可部署方向基准分开。",
+      "old_sha256": "5d7ec17b81a841eb4a1520e7055a687f87244fceeb4b1582cb0188950395bed1",
+      "new_sha256": "5806a9a32be5a584d5d6a50ea4a94794f873f14fb62950520e7a9ca12be62bf8"
+    },
+    {
+      "id": "R50",
+      "tag": "replace",
+      "old_lines": [
+        2371,
+        2371
+      ],
+      "new_lines": [
+        2381,
+        2381
+      ],
+      "old": "**⚠️ 跨课提醒**：通用 ML 课程（如 IS6400）常在全数据上做 `StandardScaler().fit_transform(X)`。在金融时间序列语境下，那是泄漏。",
+      "new": "**⚠️ 跨课提醒**：若任何代码在时间测试切分前对全数据做 `StandardScaler().fit_transform(X)`，对本课未来预测任务就是泄漏；若只在训练段拟合再变换测试段则不是。这里不凭课程名或未复核实现断言 IS6400 的做法错误。",
+      "old_sha256": "bedffa9f6d89aa9b189abe4c0e10878f6e53124a2286255392031964a467e3e7",
+      "new_sha256": "f46cd8b1a0f74fc7293044153af3d727bcf6c78a22a1d7d2520601ca6a500100"
+    },
+    {
+      "id": "R51",
+      "tag": "replace",
+      "old_lines": [
+        2380,
+        2380
+      ],
+      "new_lines": [
+        2390,
+        2390
+      ],
+      "old": "- **p = 0.001** 说的是：在 2006-07 到 2021-06 这 180 个月里，\"进口增长与下月 CSI 300 收益无关\"这个假设很难成立。**它是一个关于这段历史的陈述。**",
+      "new": "- **p = 0.001** 说的是：若“控制其余三个变量后，进口增长的斜率为 0”且所用检验假设成立，观察到当前这样或更极端统计量的尾概率约为 0.001，因此可在预定阈值下拒绝零斜率。它支持的是这 180 个月里的**样本内条件关联**，不是“完全无关”的泛化判断，也不是零假设为真的概率。",
+      "old_sha256": "3759a8b96dfaa1ecd1b0f892a5a8f0281b162b23c166a1330f7f8df97c8917d6",
+      "new_sha256": "1518f42417dbe404c9692d89a4741b155b96578a99bb7ee51e24e918b0e54d24"
+    },
+    {
+      "id": "R52",
+      "tag": "replace",
+      "old_lines": [
+        2416,
+        2416
+      ],
+      "new_lines": [
+        2426,
+        2426
+      ],
+      "old": "**必须提到的实例（加分点）**：讲义 p.34–35 + p.51 的 CSI 300 宏观模型就是完美反例——**p = 0.001（统计极显著）+ 故事完全讲得通（进口增长反映内需）+ 训练 R² = 6.1%**，样本外却是 **OOS R² = −13.2%，命中率 48.3% 输给基准率 56.7%**。**前两项全过，第三项直接翻车。**",
+      "new": "**必须提到的实例（加分点）**：讲义 p.34–35 + p.51 的 CSI 300 宏观模型就是完美反例——**p = 0.001（统计极显著）+ 故事完全讲得通（进口增长反映内需）+ 训练 R² = 6.1%**，样本外却是 **OOS R² = −13.2%，模型命中率 48.3%，输给滞后 MA(12) 的 56.7%、与正收益占比即 always-up 分数 48.3% 打平**。56.7% 不是正收益月基准。**前两项全过，第三项直接翻车。**",
+      "old_sha256": "13fcc78fb86829bd6b68af885fb55bdbca3de89f83380fa69c123d54a2b293a2",
+      "new_sha256": "3ea085afdbc63750c9f494537eda4c48f44c4795ce2aaf5458f82f4cba699c0a"
+    },
+    {
+      "id": "R53",
+      "tag": "replace",
+      "old_lines": [
+        2443,
+        2445
+      ],
+      "new_lines": [
+        2453,
+        2455
+      ],
+      "old": "**⑤ \"命中率 71%\" 没对比基准命中率 🟡**\n讲义 p.47：要跟**正收益月占比**比。先算测试期有多少个月是涨的。\n**改**：报成「命中率 71% vs 正收益基准率 XX%」。",
+      "new": "**⑤ \"命中率 71%\" 没有方向对照 🟡**\n正收益月占比等于 always-up 的分数，但不自动等于测试期多数方向，也不自动成为事前可部署基准。先报告测试期正收益占比，再说明事前冻结的方向基准及其命中率；测试期事后多数只能描述难度。\n**改**：报成「命中率 71%；always-up 分数 XX%；事前方向基准为……，命中率……」。",
+      "old_sha256": "b77e89a4cb876c0b8ac071cc0d9db91a1eea47e02a3b53b70a5ec9c6c760e2f4",
+      "new_sha256": "70e9b1908ee10172946feabff7695da5c369601d07f9fb95837f6d61028a8181"
+    },
+    {
+      "id": "R54",
+      "tag": "replace",
+      "old_lines": [
+        2455,
+        2455
+      ],
+      "new_lines": [
+        2465,
+        2465
+      ],
+      "old": "给出重跑方案，并预期真实的 OOS R² 会落在个位数百分点甚至为负——syllabus 明确要求「report weak results as weak」。",
+      "new": "给出重跑方案，并如实报告重跑后的 OOS R²；不能预设它必然落在个位数百分点或为负。若结果弱，就按 syllabus 的要求「report weak results as weak」。原数据结果只能提示优先排查，不能预言新设计的数值。",
+      "old_sha256": "e447d2d1479f19cc4f361caaf0c469fd29ce82394839872fec00b3037a2f9128",
+      "new_sha256": "f10ba9d1e0c4b9e66a832df38ddc24aab3a0f84a9e3d3a134e64d95dbd5bea6d"
+    },
+    {
+      "id": "R55",
+      "tag": "replace",
+      "old_lines": [
+        2483,
+        2483
+      ],
+      "new_lines": [
+        2493,
+        2493
+      ],
+      "old": "| §2.4.2 经济单位 | 20–21 | 20–21 | ✅ P1 `01:10:36`–`01:12:12` |",
+      "new": "| §2.4.2 经济单位 | 20–21 | 20–21 | ✅ 正号/风险预期：P1 `01:08:25`–`01:09:11`；数值代入：P1 `01:11:41`–`01:12:12` |",
+      "old_sha256": "2773ef57b7fef3364c9a96b22bc668261ad1c4045f71a02ab6a5a557c9119b91",
+      "new_sha256": "db8a78ce2beacfc90372b88b6c1d68f4b79d1e20619bbe34e713ce69cef14bfe"
+    },
+    {
+      "id": "R56",
+      "tag": "replace",
+      "old_lines": [
+        2556,
+        2556
+      ],
+      "new_lines": [
+        2566,
+        2566
+      ],
+      "old": "| P1 `30:16`–`37:28` | **Simons 只雇数学家不雇经济学家；Q-quant vs P-quant；AI 替代 quant 的职业预警；\"用到脑子锈掉为止\"** | ★★ 世界观 + 职业 | §2.2.3 |",
+      "new": "| P1 `30:16`–`37:28` | **Simons 只雇数学家不雇经济学家；课堂口语 Q-quant vs P-quant（ASR 破损，非严格职业定义）；AI 替代 quant 的职业预警；\"用到脑子锈掉为止\"** | ★★ 世界观 + 职业 | §2.2.3 |",
+      "old_sha256": "213de66c2c78e5c8b7f73baf106b9bf20f8b5bf0dfe45fd3c13572af1e692779",
+      "new_sha256": "c6c1cdd3af54bc921ecec81a29178428dc9c4b8e975bad87075a4b0a23ca0868"
+    },
+    {
+      "id": "R57",
+      "tag": "replace",
+      "old_lines": [
+        2591,
+        2591
+      ],
+      "new_lines": [
+        2601,
+        2601
+      ],
+      "old": "- **而且**：我用对数收益**复算了主要回归数字；另有参考结果表冲突与材料缺口**（见 §2.9；`L02_01` 54 个数字全部对上）——**说明讲义实际用的就是对数收益，p.10 和 p.16 的文字表述与数据不一致。**",
+      "new": "- **而且**：我用对数收益复算了 SPY 与 CSI 宏观的主要回归组；另有恒生/CSI 三变量、策略、scorecard、开发/验证日志等材料缺口（见 §2.9；`L02_01` 的 54 个断言只覆盖其登记的 8 组）——这些复算支持相应回归组实际使用对数收益，不能外推为整讲每个数字都已复现。",
+      "old_sha256": "236c3b5fb3732d9399df67c1f9257d0d0d45c510b6061a5de824eea87223e094",
+      "new_sha256": "38f08848189b1fd07f6e88e503dbe04987294c7b326aafcee9cdde52482b5b62"
+    },
+    {
+      "id": "R58",
+      "tag": "replace",
+      "old_lines": [
+        2612,
+        2613
+      ],
+      "new_lines": [
+        2622,
+        2623
+      ],
+      "old": "**⑦ 转录与讲义的一处数字出入（以讲义为准）**\nP2 `27:54` 转录把 CSI 300 进口增长的系数记成课堂转述（非逐字引文）：negative 0.5%，讲义 p.35 与脚本复现（`L02_01`）都是 **−0.15 个百分点**，且训练 $R^2$ 6.1% 两边一致——判定为语音转写误差，不是教授说错。",
+      "new": "**⑦ 转录与讲义的一处数字出入（原音待核）**\nP2 `27:54` 的 ASR 文本记成课堂转述（非逐字引文）：negative 0.5%，讲义 p.35 与脚本复算（`L02_01`）都是 **−0.15 个百分点**，且训练 $R^2$ 6.1% 两边一致。现有证据只能确认 ASR 文字与讲义/复算冲突；未核原音前不能裁定是教授口误还是转写错误，正文数值教学暂按讲义与复算口径。",
+      "old_sha256": "36071e486dc0b70054458db67e9d9d187dbf6c88b152ac7fae68b52c1ed42b50",
+      "new_sha256": "437278f69746e4d459a560ca29f71cf1ce0e747664f4ce54983ebb6308bb0805"
+    },
+    {
+      "id": "R59",
+      "tag": "replace",
+      "old_lines": [
+        2617,
+        2618
+      ],
+      "new_lines": [
+        2627,
+        2628
+      ],
+      "old": "**① 💡 主要回归可复算，整讲重现边界仍须声明（笔记补充）★**\n我用课程给的两个 CSV 把 §2.9 那张表里的 **8 组数字全部跑通**，包括 p.21 的 6.3 个基点、p.33 的三个标准化斜率、p.47 的 63.3% 命中率、p.51 的 −13.2%（脚本化后是 `L02_01` 的 54 个断言）。**这在教学材料里是很少见的**——它意味着你可以把整讲当作一个可执行的作业来做。**做 ML 投资作业前，强烈建议先把这一讲复现一遍**，因为作业用的就是同一套评价标准。",
+      "new": "**① 💡 主要回归组可复算，整讲仍受材料缺口限制（笔记补充）★**\n我用课程给的两个 CSV 跑通 §2.9 登记的 **8 组主要数字**，包括 p.21 的 6.3 个基点、p.33 的三个标准化斜率、p.47 的 63.3% 命中率、p.51 的 −13.2%（`L02_01` 共 54 个断言）。这提供了可执行的回归练习，但不等于整讲完整复现：恒生/CSI 三变量特征与逐月预测、开发/验证候选记录、策略规则和部分 scorecard 仍缺。做 ML 投资作业前可先复做这些可核步骤，并把未复现范围保留为限制。",
+      "old_sha256": "678610d8d61771e8ea8bab09531c385bcfa00c5c2723da7a8f607f45dbd0a410",
+      "new_sha256": "4d892952266d61791f932145b35d7ff4b66536b745bdea643986f7a6a0eb6dba"
+    },
+    {
+      "id": "R60",
+      "tag": "replace",
+      "old_lines": [
+        2620,
+        2620
+      ],
+      "new_lines": [
+        2630,
+        2630
+      ],
+      "old": "> 📁 **代码**：整讲的复现与延伸共 4 个脚本——[`L02_regression/01_reproduce_lecture.py`](../code/L02_regression/01_reproduce_lecture.py)（讲义数字）、[`02_oos_rolling.py`](../code/L02_regression/02_oos_rolling.py)（滚动 vs 扩展窗口）、[`03_r2_scale.py`](../code/L02_regression/03_r2_scale.py)（R² 尺度）、[`04_hit_rate.py`](../code/L02_regression/04_hit_rate.py)（命中率 vs 多数类）；`cd code && python run_all.py` 一次跑完，图与表在 `code/output/`",
+      "new": "> 📁 **代码**：主要回归复算与延伸共 4 个脚本——[`L02_regression/01_reproduce_lecture.py`](../code/L02_regression/01_reproduce_lecture.py)（已登记讲义数字）、[`02_oos_rolling.py`](../code/L02_regression/02_oos_rolling.py)（滚动 vs 扩展窗口）、[`03_r2_scale.py`](../code/L02_regression/03_r2_scale.py)（R² 尺度）、[`04_hit_rate.py`](../code/L02_regression/04_hit_rate.py)（命中率 vs 多数类）；`cd code && python run_all.py` 一次跑完，图与表在 `code/output/`",
+      "old_sha256": "0ab5bce9964fadab27d4a688b76bc25a3433b67a9ae5a5e0a94c3c5c75dd7c04",
+      "new_sha256": "c4979113927b0a4ef4d19360e945ee0a9dfea8cdf0be28f0b33529893ffb202f"
+    },
+    {
+      "id": "R61",
+      "tag": "replace",
+      "old_lines": [
+        2627,
+        2627
+      ],
+      "new_lines": [
+        2637,
+        2637
+      ],
+      "old": "`sklearn.metrics.r2_score(y_true, y_pred)` 的分母是 **$\\sum_t(y_t-\\bar y_{test})^2$**（测试集自己的均值），而本课定义的分母是 **$\\sum_t(y_t-\\hat r_t^b)^2$**（滞后 MA(12) 的误差）。**两者数值完全不同**，前者用测试均值作事后评分参照，本身不是训练/预测泄漏；只有把测试均值当决策时可生成的预测基准才用了未来信息。**作业里必须自己写这个公式，不能直接调库。**",
+      "new": "`sklearn.metrics.r2_score(y_true, y_pred)` 的分母是 **$\\sum_t(y_t-\\bar y_{test})^2$**（测试集自己的均值），而本课定义的分母是 **$\\sum_t(y_t-\\hat r_t^b)^2$**（滞后 MA(12) 的误差）。两种定义**通常不同，也可能在分母恰好相同等特殊情形下数值偶然相同**。前者用测试均值作事后评分参照，本身不是训练/预测泄漏；只有把测试均值当决策时可生成的预测基准才用了未来信息。作业里须按课程公式自己计算，不能直接拿库函数替代。🔗 [scikit-learn `r2_score` 官方文档](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html)（获取日期 2026-10-25）说明常数真值预测的基准分数为 0，并列出有限样本等边界。",
+      "old_sha256": "bfd324158e4683dc43bc698ef0a57f8890430a104b42ebb12f59fb4f25ca8d35",
+      "new_sha256": "fe4ed298f64f8587ab0c2be3c9830e611c0b6f459ceed012aa35cabc6677a334"
+    },
+    {
+      "id": "R62",
+      "tag": "replace",
+      "old_lines": [
+        2630,
+        2630
+      ],
+      "new_lines": [
+        2640,
+        2640
+      ],
+      "old": "见 [[EF5560_Fintech_and_AI_in_Finance/00-课程总览|00-课程总览]] 的跨课对照表：R² 的好坏标准相反｜标准化的时机不同｜benchmark ≠ baseline。**IS6400 的通用回归讲法可以直接借来理解数学，但它的三条工程习惯在本课语境下都是错的。**",
+      "new": "见 [[EF5560_Fintech_and_AI_in_Finance/00-课程总览|00-课程总览]] 的跨课对照表。跨课比较应逐项核**任务目标、信息时点和评分基准**：没有普遍相反的 R² 好坏标准；标准化是否泄漏取决于在哪一段拟合；benchmark / baseline 的名称也要回到各自公式。IS6400 的回归数学可用于理解本讲，但不能在未审其具体实现时笼统宣布“三条工程习惯都错”。",
+      "old_sha256": "5bdf02fbc7feffb28ddf671caf0433cea7f9ce5ba672a5c47a421283b979fd60",
+      "new_sha256": "a18449115c74fc59630c125621c74fe8da8dce5577d0cbb03cabb2845d74b5b7"
+    },
+    {
+      "id": "R63",
+      "tag": "replace",
+      "old_lines": [
+        2633,
+        2633
+      ],
+      "new_lines": [
+        2643,
+        2643
+      ],
+      "old": "讲义/数据集的收益**不含股息**（`market_index_prices` 是价格指数；SPY 例外，见 p.47 脚注）。教授的补充：对高息股（他举汇丰在恒生指数里的权重、本地投资者\"主要看股息\"），不含股息的收益会系统性低估；某公司两周前宣布不派中期息，股价当天跌 8%，比股息本身多得多——**股息预期本身就是价格的一部分**。「there's actually a better way to [spread] the dividend for each month… ask AI how to do this yourself.」做 ML 作业时若用 Yahoo 的 `Adj Close`，就已经含了股息再投资（M01 §2.3.2）。",
+      "new": "讲义/数据集的收益**不含股息**（`market_index_prices` 是价格指数；SPY 例外，见 p.47 脚注）。教授的补充：对高息股（他举汇丰在恒生指数里的权重、本地投资者\"主要看股息\"），不含股息的收益会系统性低估；某公司两周前宣布不派中期息，股价当天跌 8%，比股息本身多得多——**股息预期本身就是价格的一部分**。「there's actually a better way to [spread] the dividend for each month… ask AI how to do this yourself.」做 ML 作业若用 Yahoo 的 `Adj Close`，必须按当次数据源文档核其拆股、派息与复权口径；复权序列可用于构造含分派调整的收益，但不直接认证真实投资者已按同条件完成股息再投资成交（M01 §2.3.2）。",
+      "old_sha256": "5df37f3151c5c6a002670bca8797b74df7d4a165c49e03f502971b20e0ee30a1",
+      "new_sha256": "fd7c6cb4013c95bd9ec7df7070c4d007d428fa3e0280d266c5ecb4e5407cb50f"
+    }
+  ],
+  "status": "pending_root_source_check_and_independent_targeted_review"
+}

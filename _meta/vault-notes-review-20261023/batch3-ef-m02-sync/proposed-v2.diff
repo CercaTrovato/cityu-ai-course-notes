@@ -1,0 +1,142 @@
+--- a/EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md
++++ b/EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md
+@@ -113,7 +113,7 @@
+ 
+ | 中文（统一译名） | English | 定义 | 首现 | 源 |
+ |---|---|---|---|---|
+-| 条件均值 | Conditional mean | Does `E[r_t \| x_{t−1}]` change with the predictor? | M02 §2.1 | 讲 L2 p.3 |
++| 条件均值 | Conditional mean | Does $E[r_t\mid x_{t-1}]$ change with the predictor? | M02 §2.1 | 讲 L2 p.3 |
+ | 消费者价格指数 | Consumer Price Index (CPI) | A measure of changes in the price level of a basket of consumer goods and services; its reference month and public release date are different facts. | M02 §2.2.1（M01 已登记宏观序列） | 🎙️ 新闻例前的笔记释义 |
+ | 拟合线 | Fitted line | OLS chooses α̂ and β̂ to minimize squared residuals. | M02 §2.4.1 | 讲 L2 p.18 |
+ | 残差 | Residual | `ε̂_t = r_t − r̂_t`; residuals are data, not waste. | M02 §2.4.6 | 讲 L2 p.25 |
+@@ -133,7 +133,8 @@
+ | 命中率 | Hit rate | `(1/T)·Σ 𝟙{sign(r̂_t)=sign(r_t)}` | M02 §2.7.2 | 讲 L2 p.43 |
+ | **正收益占比 / always-up 分数** | Positive-return base rate / always-up score | The share of positive-return months equals the score of always predicting up. It is not automatically the post-hoc majority-sign score or the only prespecified deployable benchmark. | M02 §2.7.3 | 讲 L2 p.47 |
+ | **滞后 MA(12) 基准** | Lagged MA(12) benchmark | `r̂ᵇ_{m,t} = (1/12)·Σ_{j=1..12} r_{m,t−j}`；数据集 `csi300_macro_panel.benchmark_ma12` 就是它 | M02 §2.7.3 | 讲 L2 p.44, 46 |
+-| 中性预测（个股） | Zero excess-return benchmark | `r̂^{e,b}_{i,t} = 0`: the stock is forecast to earn the matched risk-free return. This is an excess-return target, not active return (stock minus market). | M02 §2.7.3 | 讲 L2 p.44；目标口径与 M03–M04 数据包一致 |
++| 零主动收益基准 | Zero active-return benchmark | $\hat a^b_{i,t}=0$: stock i is expected to match its local market because active return is stock return minus local-market return. | M02 §2.7.3 | 讲 L2 p.44 |
++| 零超额收益基准 | Zero excess-return benchmark | $\hat e^b_{i,t}=0$: stock i is expected to earn the matched risk-free return because the later data target subtracts the period-matched risk-free return. | M02 §2.7.3 口径衔接 | 后续数据包；不是 p.44 目标，仅登记差异，不升级 M03–M05 验收状态 |
+ | 有效市场假说 | Efficient Market Hypothesis (EMH) | Prices reflect a specified information set; weak, semi-strong, and strong forms use different sets. The classroom “within seconds” remark is a public-information example, not a claim that every monthly move is efficient. | M02 §2.1 | 🎙️ P1 `07:22` + 笔记限定 |
+ | F 检验（联合显著性） | F-test | Tests whether all slopes are zero at once. A significant F with insignificant individual t-tests is consistent with multicollinearity, but does not diagnose it by itself. | M02 §2.5.0 | 🎙️ 课堂 + 笔记限定 |
+ | 数据挖掘（贬义） | Data mining (p-hacking) | Trying many predictors until one clears p < 0.05; under 100 true nulls and valid 5% tests, the expected number of false positives is 5, not guaranteed to be exactly or at least 5（🎙️ P2 `32:42`）。⚠️ 与 IS6400 里褒义的 data mining 是同一个词 | M02 §2.6.1 | 🎙️ 课堂 + 笔记限定 |
+--- a/EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md
++++ b/EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md
+@@ -217,7 +217,8 @@
+ | 滞后 MA(12) 基准 | Lagged MA(12) benchmark | M02 | 过去 12 个月收益的均值，本身无泄漏；数据集 `benchmark_ma12` 列就是它 | 基准 |
+ | 命中率 | Hit rate | M02 | 预测与实现符号一致的比例 | L0 |
+ | **正收益占比 / always-up 分数** | Positive-return base rate / always-up score | M02 | 正收益月占比恰好等于“每月都猜涨”的分数；它不自动等于测试期事后多数方向分数，也不自动成为事前可部署的唯一方向基准 | 命中率 |
+-| 中性预测（个股） | Zero excess-return benchmark | M02 | 本课 Class 3–4 个股目标为个股收益−同期无风险收益，零预测指与无风险持平；active return 才是个股−市场，不混用 | 主动收益 |
++| 零主动收益基准 | Zero active-return benchmark | M02（讲义 p.44） | $\hat a^b_{i,t}=0$；主动收益目标为个股收益−本地市场收益，零预测表示预期与本地市场持平 | 主动收益 |
++| 零超额收益基准 | Zero excess-return benchmark | M02（与后续数据口径对照） | $\hat e^b_{i,t}=0$；后续数据的超额收益目标为总收益−同期匹配无风险收益。它不是 p.44 目标；这里只登记差异，不把 M03–M05 的教学验收升级为本次通过 | 超额收益 |
+ | 六条评价标准 | Six evaluation criteria | M02 | 样本内关联 / 预测误差 / 相对精度 / 方向 / 稳定性 / 经济价值 | 样本外 R² |
+ | 有效市场假说 | Efficient Market Hypothesis | M02 🎙️ | 对指定可用信息集讨论价格是否已反映信息；弱式、半强式和强式的信息集不同，课堂“秒级消化”是公开信息的口语例，不等于逐月无任何偏离 | 收益可预测性 |
+ | F 检验 | F-test (joint significance) | M02 🎙️ | 检验全部斜率是否同时为零；F 显著而个别 t 不显著可与共线性一致，但不能只靠这一现象诊断共线性 | 多元回归、多重共线性 |
+--- a/EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL.md
++++ b/EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL.md
+@@ -148,7 +148,7 @@
+ **🎙️ 教授的原话（`14:43`–`15:37`）**：「I **cold call** from time to time… if I call your name, if you're not here, then you will have [a] deduction. …every student start[s] with five points, five out of ten.」
+ 另一段（`15:48`）：「for those students who can answer the question, [you get a] bonus point. **If you cannot answer, that's fine too. Nothing loose.**」
+ > 转录里确实出现了三次现场点名与加分（`38:17`、`01:29:29`、`02:01:45`），**说明这不是空话**。
+-> **🎙️ 第 2 讲课堂实况**（M02 转录 `P1 09:28`–`16:47`）：开场按名单点名；有缺席同学事先发邮件，但这段不能单独建立“缺席必须提前邮件”的新制度。教授说「This **might be** the only way you get bonus point」（`P1 16:20`），保留 might 的不确定语气；整堂另有 4 次当堂提问给分。正式参与规则仍以上表 syllabus 口径为准。
++> **🎙️ 第 2 讲课堂实况**（M02 转录 `P1 09:28`–`16:47`）：开场按名单点名；有缺席同学事先发邮件，但这段不能单独建立“缺席必须提前邮件”的新制度。教授说「This **might be** the only way you get bonus point」（`P1 16:20`），保留 might 的不确定语气。课堂提问题材和实际窗口包括：相关系数与 $R^2$（P1 `58:53`–`01:00:36`）、国债 ETF 派息（P2 `11:15`–`12:31`）、标准化是否改变 $R^2$（P2 `25:28`–`26:30`）；不从时间戳数量推断实际奖励次数。正式参与规则仍以上表 syllabus 口径为准。
+ 
+ **🎙️ 期末的三条口头信息（M02 转录 `P1 01:19:13`–`01:22:02`）**
+ - **题型**：每讲讲义里那道"四选一 + Discuss"就是期末题型，「These are the questions you will see」；题库由教授用 AI 按讲义生成
+--- a/EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md
++++ b/EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md
+@@ -433,15 +433,15 @@
+ | 文件 | 形状 | 内容 | 用在哪 |
+ |---|---|---|---|
+ | `spy_regression_scorecard.csv` | 1 × 14 | SPY 三变量回归测试成绩单：OOS R² **6.556296%**、方向命中率及保存的择时／买入持有摘要（9.97% / 13.34% / 0.747 vs 12.48% / 15.83% / 0.788） | M02 §2.7.4；策略列只是 **Class 5 预告输出**，没有阈值、成交与成本契约 |
+-| `spy_test_predictions_monthly.csv` | 60 × 23 | 测试期逐月：15 个特征、forecast、benchmark、两列误差及保存的 weight／timing_return／buy_hold_return | M02 §2.7.4；预测全部为正；保存列不等于已取得可执行策略阈值、成交与成本规则 |
++| `spy_test_predictions_monthly.csv` | 60 × 24 | 测试期逐月：15 个特征、forecast、benchmark、两列误差及保存的 weight／timing_return／buy_hold_return | M02 §2.7.4；预测全部为正；保存列不等于已取得可执行策略阈值、成交与成本规则 |
+ | `csi300_macro_scorecard.csv` | 1 × 9 | CSI 300 四宏观 OLS：train R² 6.08%、OOS R² −13.17%、命中率 48.3% vs 56.7% | M02 §2.8.3 |
+ | `csi300_macro_test_predictions.csv` | 60 × 10 | 测试期逐月预测与 MA(12) | M02 §2.8.3 |
+ | `spy_single_predictor_regressions.csv` | 4 × 6 | return_lag1 / momentum_12 / volatility_12 / ma_gap_10 单变量 OLS（180 训练月） | M02 §2.4.5（p.24 三行 + 讲义未单列的 return_lag1：斜率 10.6 pp、p 0.157） |
+ | `spy_momentum_bins.csv` | 10 × 3 | 训练样本按动量等频十箱的均值动量 / 均值下月收益（每箱 18 月） | M02 §2.3.3（十箱相关 +0.07） |
+-| `three_market_regression_scorecard.csv` | 3 × 8 | 美 / 港 / 中 OOS R²、命中率、正收益占比（即 always-up 分数）与命中数 | M02 §2.7.4；⚠️ SPY 行 **6.739573%** ≠ 单独成绩单 **6.556296%**（测试 MSE 20.63 vs 20.67）；来源未给足规格，不能擅自归因于变量组合 |
++| `three_market_regression_scorecard.csv` | 3 × 8 | 美 / 港 / 中 OOS R²、命中率、正收益占比（即 always-up 分数）与命中数 | M02 §2.7.4；⚠️ SPY 行 **6.739573%** ≠ 单独成绩单 **6.556296%**（`MSE × 10^4`：三市场汇总 **20.63**，单 SPY 成绩单 **20.67**）；来源未给足规格，不能擅自归因于变量组合 |
+ | `three_market_timing_scorecard.csv` | 3 × 14 | 三市场择时 vs 买入持有：年化收益 / 波动 / 夏普、在市比例、终值、在市 / 空仓月数（现金收益与成本为 0） | **Class 5 预告数据**（M02 未用）；SPY 择时年化 6.14% / 夏普 0.443 与成绩单的 9.97% / 0.747 是两套择时规则 |
+ 
+-**⑤ 目标 / ⑥ 讲义对应**：见各行。**质量检查**：12 个 sha256 一致；预测表 60 行无缺失；`spy_test_predictions_monthly.csv` 的 `weight` 只取 0 / 1（45 个月在市）。
++**⑤ 目标 / ⑥ 讲义对应**：见各行。**质量检查**：12 个 sha256 一致；预测表 60 行无缺失；`spy_test_predictions_monthly.csv` 的 `weight` 只取 0 / 1（48 个月在市、12 个月空仓）。另一个三市场 timing 表的 SPY 为 45／15，属于不同结果口径，不能移到本表。
+ 
+ **M02 可复现边界**：现有课程文件足以复算登记的 SPY 与 CSI 宏观回归组，不足以重建恒生／CSI 三变量完整特征表、三市场逐月预测、三变量候选／选择日志，也没有真实策略阈值、成交与成本契约。因此数据包结果表不能被写成“整讲全部复现”或“真实策略已执行”。正收益占比只等于 always-up 分数，不自动等于事后多数方向或事前部署基准。
+ 
+--- a/EF5560_Fintech_and_AI_in_Finance/assignment/practice/练习索引.md
++++ b/EF5560_Fintech_and_AI_in_Finance/assignment/practice/练习索引.md
+@@ -94,45 +94,45 @@
+ 
+ ## P09-m2-p16-outliers · M02 离群值三问
+ 
+-**原件定位**：旧／新 Lec02 p.16。英文三问、中文限定、课程 SPY 数据的五个极端月复算与英文参考答案已回填至 M02 §2.3.5；是否删除须先证明数据错误，真实危机观测不因极端自动删除。
++**原件定位**：旧／新 Lec02 p.16。M02 正文 §2.3.5 的对应来源限定解析已核；是否删除须先证明数据错误，真实危机观测不因极端自动删除。
+ 
+ ### 先读课程知识
+ 
+ 先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.3.5]]。
+ 
+-状态：**参考解析已回填**；无官方书面答案，Canvas 是否另发独立练习仍待核。
++状态：**M02 正文对应来源限定解析已核**。独立练习精读文件尚未创建、未独审，69 份配套教学范围状态不升级；已核材料未见官方书面答案，Canvas 是否另发仍待核。
+ 
+ ## P10-m2-p26-choice-discuss · M02 旧版四选一与讨论
+ 
+-**原件定位**：旧 54 页版 p.26；新版 56 页中移至 p.54。完整英文题面、A–D、中文逐项和英文答案已在 M02 §2.4.7；课堂确认答案 C，且教授明示这种“四选一 + Discuss”是期末题型。
++**原件定位**：旧 54 页版 p.26；新版 56 页中移至 p.54。M02 正文 §2.4.7 的对应来源限定解析已核；课堂确认答案 C，且教授明示这种“四选一 + Discuss”是期末题型。
+ 
+ ### 先读课程知识
+ 
+ 先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.4.7]]。
+ 
+-状态：**课堂确认的来源限定解析已回填**；不要把此确认挪给新版新增 p.26–27。
++状态：**M02 正文对应来源限定解析已核**；旧题答案 C 有课堂确认，不把该确认挪给新版新增 p.26–27。独立练习精读文件尚未创建、未独审，69 份配套教学范围状态不升级；Canvas 是否另发独立练习／书面官答仍待核。
+ 
+ ## P10a-m2-new-p26-slope · M02 新版斜率单位选择题
+ 
+-**原件定位**：当前 Canvas 56 页版 p.26；旧版无此页。完整题面和 A–D 已在 M02 §2.4.6a；参考答案 D，预测变化为 0.60 个百分点。
+-
+-状态：**参考解析已回填**；无对应新录音，不是教授课堂确认答案。
++**原件定位**：当前 Canvas 56 页版 p.26；旧版无此页。M02 正文 §2.4.6a 的对应来源限定解析已核；D 是笔记参考答案，预测变化为 0.60 个百分点。
++
++状态：**M02 正文对应来源限定解析已核**；无对应新录音，不是教授课堂确认答案。独立练习精读文件尚未创建、未独审，69 份配套教学范围状态不升级；Canvas 是否另发书面官答仍待核。
+ 
+ ## P10b-m2-new-p27-precision-fit · M02 新版精度与拟合度选择题
+ 
+-**原件定位**：当前 Canvas 56 页版 p.27；旧版无此页。完整题面和 A–D 已在 M02 §2.4.6a；参考答案 A，估计精度与低 R² 分开判断。
+-
+-状态：**参考解析已回填**；无对应新录音，不是教授课堂确认答案。
++**原件定位**：当前 Canvas 56 页版 p.27；旧版无此页。M02 正文 §2.4.6a 的对应来源限定解析已核；A 是笔记参考答案，估计精度与低 R² 分开判断。
++
++状态：**M02 正文对应来源限定解析已核**；无对应新录音，不是教授课堂确认答案。独立练习精读文件尚未创建、未独审，69 份配套教学范围状态不升级；Canvas 是否另发书面官答仍待核。
+ 
+ ## P11-m2-p53-momentum · M02 动量检查
+ 
+-**原件定位**：旧版 p.53／新版 p.55。英文五项检查、中文逐项与英文参考已在 M02 §2.10；以动量演示条件均值、推断、样本外、方向和经济价值证据，不能拿联合三变量 OOS 冒充单变量成绩。
++**原件定位**：旧版 p.53／新版 p.55。M02 正文 §2.10 的对应来源限定解析已核；以动量演示条件均值、推断、样本外、方向和经济价值证据，不能拿联合三变量 OOS 冒充单变量成绩。
+ 
+ ### 先读课程知识
+ 
+ 先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.10]]。
+ 
+-状态：**参考解析已回填**；该页课堂未讲，无教授官方逐项答案。
++状态：**M02 正文对应来源限定解析已核**；该页课堂未讲、无教授逐项确认。独立练习精读文件尚未创建、未独审，69 份配套教学范围状态不升级；Canvas 是否另发独立练习／书面官答仍待核。
+ 
+ ## P12-m3-p22-calculation · M03 三问计算
+ 
+@@ -259,11 +259,11 @@
+ | P06-m1-p53-five-questions | M01 p.53 五问 | Lec01 p.53 | 待回填（见本页逐题登记）；Canvas 待核 |
+ | P07-m1-p54-aapl | M01 p.54 AAPL 演练 | Lec01 p.54 | 待回填（见本页逐题登记）；Canvas 待核 |
+ | P08-m1-p56-four-questions | M01 p.56 四问 | Lec01 p.56；课堂运行产物缺失 | 待回填（见本页逐题登记）；Canvas 待核 |
+-| P09-m2-p16-outliers | M02 离群值三问 | 旧／新 p.16 | 参考解析已回填；无书面官答 |
+-| P10-m2-p26-choice-discuss | M02 旧版四选一与讨论 | 旧 p.26／新 p.54 | 答案 C 有课堂确认；完整中英解析已回填 |
+-| P10a-m2-new-p26-slope | M02 新版斜率单位选择题 | 新 p.26 | 参考 D；无对应新录音 |
+-| P10b-m2-new-p27-precision-fit | M02 新版精度与拟合度选择题 | 新 p.27 | 参考 A；无对应新录音 |
+-| P11-m2-p53-momentum | M02 动量检查 | 旧 p.53／新 p.55 | 参考解析已回填；课堂未讲 |
++| P09-m2-p16-outliers | M02 离群值三问 | 旧／新 p.16 | M02 正文来源限定解析已核；独立精读未创建/未独审；Canvas／书面官答待核 |
++| P10-m2-p26-choice-discuss | M02 旧版四选一与讨论 | 旧 p.26／新 p.54 | M02 正文来源限定解析已核；C 有课堂确认；独立精读未创建/未独审；Canvas 待核 |
++| P10a-m2-new-p26-slope | M02 新版斜率单位选择题 | 新 p.26 | M02 正文来源限定解析已核；D 为笔记参考；独立精读未创建/未独审；Canvas／书面官答待核 |
++| P10b-m2-new-p27-precision-fit | M02 新版精度与拟合度选择题 | 新 p.27 | M02 正文来源限定解析已核；A 为笔记参考；独立精读未创建/未独审；Canvas／书面官答待核 |
++| P11-m2-p53-momentum | M02 动量检查 | 旧 p.53／新 p.55 | M02 正文来源限定解析已核；课堂未讲；独立精读未创建/未独审；Canvas／书面官答待核 |
+ | P12-m3-p22-calculation | M03 三问计算 | Lec03 p.22 | 待回填（见本页逐题登记）；Canvas 待核 |
+ | P13-m3-p26-choice | M03 选择题 1 | Lec03 p.26 | 待回填（见本页逐题登记）；Canvas 待核 |
+ | P14-m3-p27-choice | M03 选择题 2 | Lec03 p.27 | 待回填（见本页逐题登记）；Canvas 待核 |

@@ -1,0 +1,1067 @@
+{
+  "schema": "cityu-final-sync-cas-proposal-v1",
+  "candidate_sha256": "bbe947f74ccc94a15be7d53174701d5c51d6ace378240f711fb4cb9f15e64064",
+  "source_base_package_sha256": "93f62d27d05798ad113cdbe884d295582a607d8c3d528831721ba6f9ad248276",
+  "targeted_overlay_sha256": "860db432a0b47949513c5b8d24d6ef6c173e940d851258c87caecde13455fbb6",
+  "author_ids": [
+    "/root/draft_ef5560_m02_sync",
+    "/root"
+  ],
+  "prerequisites": {
+    "full_v2_and_formal_writeback_verified": true,
+    "notion_all_four_readback_checks_verified": true,
+    "private_notion_proof_sha256": "86dd0ffe02cd05a73b7317ebdccfa026a0cb756d7cb78ce7648c33e46e72a9cb",
+    "git": "not yet committed/pushed"
+  },
+  "files": [
+    {
+      "path": "EF5560_Fintech_and_AI_in_Finance/00-课程总览.md",
+      "source_sha256": "8d1a3422e366c4ad099c254ff492969e1b9a6cc04fe940aadaf281a73cee97f2",
+      "source_copy": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\target-originals\\EF5560_Fintech_and_AI_in_Finance\\00-课程总览.md",
+      "decision": "patch-proposed",
+      "no_increment_reason": null,
+      "patches": [
+        {
+          "old": "updated: 2026-10-22",
+          "new": "updated: 2026-10-25",
+          "rationale": "更新当前镜像日期。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/00-课程总览.md::01",
+          "stage": "base82"
+        },
+        {
+          "old": "| 2 | Regression, return predictability, and out-of-sample design | [[M02-回归与样本外设计]] | ✅ **v1.0** · 讲义 54 页 · 两段转录已合并（2026-09-11）；2026-10-20 新旧版增量已核（旧54/新56页，两道新增选择题） |",
+          "new": "| 2 | Regression, return predictability, and out-of-sample design | [[M02-回归与样本外设计]] | ✅ **v1.0**；2026-10-25 本次全篇重审闭合并正式写回。旧 54 页／新 56 页均回源，新版新增 p.26–27 两道 MCQ；旧 p.26→新 p.54、旧 p.53–54→新 p.55–56。新版 p.25 日期轴已修、旧版仍错。P1/P2 为两个独立时钟，P1 缺首长度未知；Class 2 无 validation，144/36/60 仅为讲义规范。恒生／CSI 三变量完整特征与预测、候选／选择日志、实际策略契约仍缺，不称整讲全部复现 |",
+          "rationale": "模块状态换成当前 full-v2 后的来源、录音、设计与复现边界。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/00-课程总览.md::02",
+          "stage": "base82"
+        },
+        {
+          "old": "| 讲义 | `Lec02_Regression_Vibe_Coding.pdf`（54 页） | `L2-Linear_Regression.pdf`（53 页）＋ `Week 2 Regression Analysis_With Prompt.ipynb` ＋ 指定阅读 HM Ch.4 |",
+          "new": "| 讲义 | `Lec02_Regression_Vibe_Coding.pdf`（旧 54 页）＋ `canvas-20261020/Lec02_Regression_Vibe_Coding.pdf`（新 56 页；新增 p.26–27） | `L2-Linear_Regression.pdf`（53 页）＋ `Week 2 Regression Analysis_With Prompt.ipynb` ＋ 指定阅读 HM Ch.4 |",
+          "rationale": "跨课对照表绑定两份现存源。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/00-课程总览.md::03",
+          "stage": "base82"
+        },
+        {
+          "old": "| `Lec02_Regression_Vibe_Coding.pdf` | 54 页 | ✅ **全部 54 页已视觉复核** → [[M02-回归与样本外设计]]（**v1.0**） |",
+          "new": "| `Lec02_Regression_Vibe_Coding.pdf`＋`canvas-20261020/Lec02_Regression_Vibe_Coding.pdf` | 旧 54 页＋新 56 页 | ✅ 两版均逐页回源 → [[M02-回归与样本外设计]]（**v1.0**）；新版新增 p.26–27，移动关系见笔记 §8；当前新版 p.25 为 2008／2012／2016／2020，旧版仍为日期序数百分比轴 |",
+          "rationale": "材料清单纠正当前 p.25 版本镜像并补新版页数。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/00-课程总览.md::04",
+          "stage": "base82"
+        },
+        {
+          "old": "| `M02-transcript-part1.txt` + `-part2.txt` | 课间前 `00:01`→`01:22:15`（379 段）+ 课间后 `00:01`→`01:04:47`（260 段） | ✅ 2026-09-11 已合并进 M02 v1.0；part1 首句为半句，开头可能缺 1–3 分钟 |",
+          "new": "| `M02-transcript-part1.txt` + `-part2.txt` | P1 `00:01`→`01:22:15`（379 段）；P2 `00:01`→`01:04:47`（260 段），两个独立时钟 | ✅ 2026-09-11 已合并进 M02 v1.0；P1 首句为半句，缺首长度未知；P2 有收尾。两段各自无倒退或 ≥120 秒空档，不把时长相加证明课堂完整；正文另有两条 M01 转录跨源证据 |",
+          "rationale": "把估计的 1–3 分钟改为未知，并登记独立时钟与跨源证据。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/00-课程总览.md::05",
+          "stage": "base82"
+        },
+        {
+          "old": "| M02 笔记 | ✅ **v1.0**（2026-09-11）：两段转录合并 + 正文按「预习可读性」规则重写（25.5k 字，公式全部 LaTeX，6 条 🔴） |",
+          "new": "| M02 笔记 | ✅ **v1.0**；2026-10-25 本次全篇重审闭合并正式写回。旧 54／新 56 页、P1/P2 双时钟、两条 M01 跨源证据及当前 p.25 版本差异已绑定；现存材料只支持登记的回归复算，不认证完整三市场预测或真实策略执行 |",
+          "rationale": "当前状态表替换 2026-09-11 旧字数／考点摘要。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/00-课程总览.md::06",
+          "stage": "base82"
+        },
+        {
+          "old": "本次核对范围和同步见 [[EF5560_Fintech_and_AI_in_Finance/_meta/M07-可读性修订回执-2026-10-22|可读性修订回执]]；前次整体验收不自动扩展到本次新稿，未改存量不冒称重新全验。",
+          "new": "本次核对范围和同步见 [[EF5560_Fintech_and_AI_in_Finance/_meta/M07-可读性修订回执-2026-10-22|可读性修订回执]]；前次整体验收不自动扩展到本次新稿，未改存量不冒称重新全验。\n\n## 2026-10-25 · M02 全篇重审与当前版本纠正\n\nM02 本次以旧 54 页、新 56 页、P1/P2 两个独立课堂时钟及两条 M01 跨源引用完成全篇重审并正式写回；材料 v1.0 不代表本人已通读或自测。2026-10-21 “两版 p.25 都错”保留为历史判断；当前按两份现存 PDF 重渲染，旧版仍显示日期序数百分比轴，新版已显示 2008／2012／2016／2020，且新版 SHA 与原独审登记相同，不能推断何时替换文件。Class 2 课堂明确无需 validation；144／36／60 是讲义规范，缺候选／选择日志。SPY 成绩单 OOS 为 6.556296%，三市场汇总为 6.739573%，两表差异保留；恒生／CSI 三变量完整特征和预测、实际策略阈值／成交／成本仍缺，不能称整讲全部复现。教学、正式写回、本地同步、Notion 与 Git 仍按各自回读证据分别记录。",
+          "rationale": "追加当前纠正而不追改 2026-10-21 历史段落。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/00-课程总览.md::07",
+          "stage": "base82"
+        }
+      ],
+      "proposed_sha256": "bd14535b725847db777a74821514e40e24889f63b2444488be23a803df9b1155",
+      "proposed_file": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\proposed-final\\EF5560_Fintech_and_AI_in_Finance\\00-课程总览.md.snapshot",
+      "line_endings": "source raw hash retained; normalize CRLF to LF in candidate if present"
+    },
+    {
+      "path": "EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL.md",
+      "source_sha256": "fb3e4643b0bb8f84cc83aa76d1f83c559053e29f80c600c526a60771117c830c",
+      "source_copy": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\target-originals\\EF5560_Fintech_and_AI_in_Finance\\_meta\\作业与DDL.md",
+      "decision": "patch-proposed",
+      "no_increment_reason": null,
+      "patches": [
+        {
+          "old": "updated: 2026-10-22",
+          "new": "updated: 2026-10-25",
+          "rationale": "更新当前行政/待核镜像日期。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL.md::01",
+          "stage": "base82"
+        },
+        {
+          "old": "> 与 M02 转录已记录的\"及格线：做完作业 + 出席就很难挂\"（本文件 §3）一致，两讲说法互相印证。",
+          "new": "> 与 M02 转录中的**非正式评分经验**一致：教授说完成作业并出席考试者按其过往经验很难被判不及格；这不是正式及格线或自动承诺，制度门槛仍以 syllabus／正式通知为准。",
+          "rationale": "不把口头经验升级为及格线。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL.md::02",
+          "stage": "base82"
+        },
+        {
+          "old": "> **🎙️ 第 2 讲再次确认**（M02 转录 `P1 09:28`–`16:47`）：开场按名单点名（缺席的同学提前发了邮件，教授说\"我记住这些名字了\"）；两位同学被点起来复述 M01 要点；「This might be **the only way you get bonus point**」（`P1 16:20`）——加分只有课上回答/提问这一条路。整堂课又有 4 次当堂提问给分（`P1 59:24`、`P2 11:40`、`P2 25:28`、`P2 26:01`）。",
+          "new": "> **🎙️ 第 2 讲课堂实况**（M02 转录 `P1 09:28`–`16:47`）：开场按名单点名；有缺席同学事先发邮件，但这段不能单独建立“缺席必须提前邮件”的新制度。教授说「This **might be** the only way you get bonus point」（`P1 16:20`），保留 might 的不确定语气；整堂另有 4 次当堂提问给分。正式参与规则仍以上表 syllabus 口径为准。",
+          "rationale": "保留 might 与行政来源层级。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL.md::03",
+          "stage": "base82"
+        },
+        {
+          "old": "- **及格线**：「As long as you finish all homework and show up in exam, it is very hard for me to fail you」——三年挂 3 人：2 人缺考、1 人没做项目展示",
+          "new": "- **非正式评分经验（不是及格线）**：「As long as you finish all homework and show up in exam, it is very hard for me to fail you」；制度要求仍以 syllabus／正式考试通知为准",
+          "rationale": "纠正行政标签。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL.md::04",
+          "stage": "base82"
+        },
+        {
+          "old": "| 7 | Canvas 上是否有**更新版 Lec02 PDF** | 🎙️ 教授说已修了 p.25 那张图的时间轴（M02 转录 `P1 01:17:45`） |",
+          "new": "| 7 | ~~Canvas 上是否有更新版 Lec02 PDF／p.25 是否已修~~ | ✅ 当前现存 Canvas 版为 56 页，p.25 已显示 2008／2012／2016／2020；旧 54 页版仍为日期序数百分比轴。2026-10-21“两版都错”的记录保留为历史误判；新版 SHA 与原独审登记一致，不能推断具体替换日期 |",
+          "rationale": "关闭当前 PDF/p.25 待核，不改历史报告。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL.md::05",
+          "stage": "base82"
+        },
+        {
+          "old": "> **🎙️ 第 2 讲课堂实况**（M02 转录 `P1 09:28`–`16:47`）：开场按名单点名；有缺席同学事先发邮件，但这段不能单独建立“缺席必须提前邮件”的新制度。教授说「This **might be** the only way you get bonus point」（`P1 16:20`），保留 might 的不确定语气；整堂另有 4 次当堂提问给分。正式参与规则仍以上表 syllabus 口径为准。",
+          "new": "> **🎙️ 第 2 讲课堂实况**（M02 转录 `P1 09:28`–`16:47`）：开场按名单点名；有缺席同学事先发邮件，但这段不能单独建立“缺席必须提前邮件”的新制度。教授说「This **might be** the only way you get bonus point」（`P1 16:20`），保留 might 的不确定语气。课堂提问题材和实际窗口包括：相关系数与 $R^2$（P1 `58:53`–`01:00:36`）、国债 ETF 派息（P2 `11:15`–`12:31`）、标准化是否改变 $R^2$（P2 `25:28`–`26:30`）；不从时间戳数量推断实际奖励次数。正式参与规则仍以上表 syllabus 口径为准。",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "删除未获逐项来源支持的“四次给分”计数，保留 might 原话并改为可核的题材窗口。",
+          "review_item": "B4-source",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL.md::v2-01",
+          "stage": "targeted-v2"
+        }
+      ],
+      "proposed_sha256": "a36bf93c4c3b60bc2511a8897aafeaa5ac5ddb8349b76d495b8a8ef752c7e3b3",
+      "proposed_file": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\proposed-final\\EF5560_Fintech_and_AI_in_Finance\\_meta\\作业与DDL.md.snapshot",
+      "line_endings": "source raw hash retained; normalize CRLF to LF in candidate if present"
+    },
+    {
+      "path": "EF5560_Fintech_and_AI_in_Finance/_meta/待并入术语总表.md",
+      "source_sha256": "44e26c615b69888dcd9eac699978ca773a93ea12a2cb8646cefda06f3eeb0081",
+      "source_copy": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\target-originals\\EF5560_Fintech_and_AI_in_Finance\\_meta\\待并入术语总表.md",
+      "decision": "patch-proposed",
+      "no_increment_reason": null,
+      "patches": [
+        {
+          "old": "updated: 2026-10-22",
+          "new": "updated: 2026-10-25",
+          "rationale": "更新候选清单日期。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/待并入术语总表.md::01",
+          "stage": "base82"
+        },
+        {
+          "old": "status: 已合并（2026-09-10）",
+          "new": "status: 已合并（2026-09-10 首批；2026-10-25 M02 两项澄清同批并入）",
+          "rationale": "记录本次根术语同步。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/待并入术语总表.md::02",
+          "stage": "base82"
+        },
+        {
+          "old": "> **共 51 条**。",
+          "new": "> **历史首批共 51 条；后续按讲次追加，不再用旧总数冒充当前库存。**",
+          "rationale": "避免首批计数覆盖后续追加。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/待并入术语总表.md::03",
+          "stage": "base82"
+        },
+        {
+          "old": "| ⭐⭐⭐ | 训练 / 验证 / 测试集 | Train / validation / test set | — | M02（预告） | IS6400 |",
+          "new": "| ⭐⭐⭐ | 训练 / 验证 / 测试集 | Train / validation / test set | 训练估计、验证选择、测试只评一次；Class 2 课堂没有实际 validation 选模记录 | M02 §2.6.3 | IS6400 |",
+          "rationale": "把预告改成已展开且保留 Class 2 实际限制。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/待并入术语总表.md::04",
+          "stage": "base82"
+        },
+        {
+          "old": "| ⭐⭐⭐ | 样本外 | Out-of-sample (OOS) | 在没有参与拟合的数据上评估 | M02（预告） | IS6400 |",
+          "new": "| ⭐⭐⭐ | 样本外 | Out-of-sample (OOS) | 在没有参与拟合或选择的数据上评估；须写明目标、时期和可行基准 | M02 §2.6–2.7 | IS6400 |",
+          "rationale": "把预告改成已展开并补比较契约。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/待并入术语总表.md::05",
+          "stage": "base82"
+        },
+        {
+          "old": "| ⭐ | 多重共线性 | Multicollinearity | 预测变量之间高度相关，导致单个系数不稳定 | M02（预告） | IS6400 W02 **同周同主题** |",
+          "new": "| ⭐ | 多重共线性 | Multicollinearity | 高相关使单个斜率／t 检验不稳定；预测组合能否用仍须样本外另验 | M02 §2.5.2 | IS6400 W02 **同周同主题** |",
+          "rationale": "补推断/预测边界。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/待并入术语总表.md::06",
+          "stage": "base82"
+        },
+        {
+          "old": "| ⭐ | 标准化 | Standardization | 减均值除标准差；**必须只用训练集的统计量** | M02（预告） | IS6400 |",
+          "new": "| ⭐ | 标准化 | Standardization | 减训练均值、除训练标准差，再把同一变换套到后续数据 | M02 §2.5.3 | IS6400 |",
+          "rationale": "把预告改成已展开。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/待并入术语总表.md::07",
+          "stage": "base82"
+        },
+        {
+          "old": "| ⭐ | 滚动 / 扩展窗口 | Rolling / expanding window | 时间序列上的两种回测切分方式 | M02（预告） | IS6400（时间序列部分） |",
+          "new": "| ⭐ | 滚动 / 扩展窗口 | Rolling / expanding window | 保持时间顺序、先拟合再评价的两种更新方式；与固定留出并列 | M02 §2.6.3 | IS6400（时间序列部分） |",
+          "rationale": "把预告改成已展开。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/待并入术语总表.md::08",
+          "stage": "base82"
+        },
+        {
+          "old": "| ⏳ **待合并** | 本文件由 EF5560 agent 于 2026-09-09 产出，尚未并入根 `_meta/术语总表.md` |\n| 覆盖范围 | **M01（v1.0）+ M02（v0.9）已写完**；M03–M12 为**占位登记**。后续每写完一篇笔记要回来追加 |",
+          "new": "| ✅ **历史首批已合并** | 2026-09-10 首批已并入根 `_meta/术语总表.md`；后续讲次各自追加并记录合并状态 |\n| 覆盖范围 | M01–M02 已展开为 v1.0；本次只同步 M02 的当前概念与易混边界，不升级 M03 及以后讲次的独立状态 |",
+          "rationale": "修正与 frontmatter 冲突的历史待合并状态和 M02 v0.9。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/待并入术语总表.md::09",
+          "stage": "base82"
+        },
+        {
+          "old": "训练/验证/测试集｜样本外 R²｜多重共线性｜标准化｜滚动 / 扩展窗口｜厨房水槽（kitchen sink，⭐⭐ 新增，Welch & Goyal 2008 的标准术语，IS6400 讲变量选择时也用得上）｜基准命中率（⭐ 新增，本课特有但概念通用：分类问题里的 majority-class baseline）。",
+          "new": "训练／验证／测试集｜样本外 R²｜多重共线性｜标准化｜滚动／扩展窗口｜厨房水槽（kitchen sink）均已展开。方向评价另须区分：正收益占比只等于 always-up 分数，不自动等于测试期事后 majority-sign 分数或唯一可部署基准。",
+          "rationale": "纠正把正收益占比直接等同 majority-class baseline 的旧说明。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/待并入术语总表.md::10",
+          "stage": "base82"
+        },
+        {
+          "old": "---\n\n## D. M03 新增（2026-09-17）<!-- 待合并 -->",
+          "new": "---\n\n## M02 当前易混边界（2026-10-25，随本批并入根总表）\n\n| 优先级 | 中文 | English | 一句话定义 | EF5560 首现 | 可能冲突的课 |\n|---|---|---|---|---|---|\n| ⭐⭐ | 主动收益 vs 超额收益 | Active return vs excess return | 主动收益 = 个股 − 市场；超额收益 = 总收益 − 同期无风险收益。零预测基准必须跟目标口径走 | M02 §2.7.3（并衔接 M03–M05） | IS6400 的 baseline／金融绩效口径 |\n| ⭐⭐ | 正收益占比 / always-up 分数 | Positive-return base rate / always-up score | 正收益占比等于“总猜涨”的实现分数，不自动等于事后多数方向或事前可部署的唯一规则 | M02 §2.7.3–2.7.4 | IS6400 分类 majority-class baseline |\n\n---\n\n## D. M03 新增（2026-09-17）<!-- 待合并 -->",
+          "rationale": "追加两项本次确有跨课混淆价值的 M02 澄清；不升级 M03。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/待并入术语总表.md::11",
+          "stage": "base82"
+        }
+      ],
+      "proposed_sha256": "a6fd3b05bbd8b538032efb2514230c9cb3bc3ef0121b505b4bf9c9bee4d46542",
+      "proposed_file": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\proposed-final\\EF5560_Fintech_and_AI_in_Finance\\_meta\\待并入术语总表.md.snapshot",
+      "line_endings": "source raw hash retained; normalize CRLF to LF in candidate if present"
+    },
+    {
+      "path": "EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md",
+      "source_sha256": "67eacb47b222102a2f22be6af6ac539982334792794aeca827ae9a41d511a256",
+      "source_copy": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\target-originals\\EF5560_Fintech_and_AI_in_Finance\\_meta\\数据集卡片.md",
+      "decision": "patch-proposed",
+      "no_increment_reason": null,
+      "patches": [
+        {
+          "old": "updated: 2026-10-21",
+          "new": "updated: 2026-10-25",
+          "rationale": "更新数据集卡当前核对日期。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md::01",
+          "stage": "base82"
+        },
+        {
+          "old": "> 📁 **代码**：[`code/L02_regression/01_reproduce_lecture.py`](../code/L02_regression/01_reproduce_lecture.py) —— 断言 `benchmark_ma12` = `market_return.shift(1).rolling(12).mean()`，复现 p.35（进口 β −0.151 pp、p 0.0014、F 检验 p 0.026、R² 6.08%）与 p.51（OOS R² −13.17%、命中率 48.3% vs MA(12) 56.7%、MSE 31.65 vs 27.97）（`L02_01`）",
+          "new": "> 📁 **代码**：[`code/L02_regression/01_reproduce_lecture.py`](../code/L02_regression/01_reproduce_lecture.py) —— 断言 `benchmark_ma12` = `market_return.shift(1).rolling(12).mean()`，复现旧 p.35／新 p.36（进口 β **−0.150982 个百分点**、p 0.0014、F 检验 p 0.026、R² 6.08%）与旧 p.51／新 p.52（OOS R² **−13.170637%**、命中率 48.3% vs MA(12) 56.7%、MSE 31.65 vs 27.97）（`L02_01`）。P2 `27:54` 的 ASR 为约 −0.5%，与讲义／复算 −0.15 个百分点冲突，原音待核。",
+          "rationale": "同步 CSI 精确复算与 ASR 冲突。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md::02",
+          "stage": "base82"
+        },
+        {
+          "old": "> loader：`code/common/load.py` 的 `c02_*`；对照脚本 `code/L02_regression/05_official_scorecards.py`——**M02 笔记里的 22 个数字与官方结果表全部一致**（OOS $R^2$ 6.556%、命中率 63.3% vs 61.7%、CSI 300 −13.17% / 48.3% vs 56.7%、三个单变量回归、三市场 4.40% / 4.32%）。",
+          "new": "> loader：`code/common/load.py` 的 `c02_*`；对照脚本 `code/L02_regression/05_official_scorecards.py`。逐表数字可复算，但表间口径不能合并成一个“官方唯一值”：`spy_regression_scorecard.csv` 的 SPY OOS $R^2$ 为 **6.556296%**，`three_market_regression_scorecard.csv` 的 SPY 行为 **6.739573%**，差异保留；CSI 宏观 OOS 为 **−13.170637%**。Class 2 课堂明确不需要 validation；讲义 144／36／60 是规范设计，本包没有三变量候选／选择日志。",
+          "rationale": "移除“22 个数字全部一致”的过度汇总，登记精确差异与缺失日志。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md::03",
+          "stage": "base82"
+        },
+        {
+          "old": "| `spy_regression_scorecard.csv` | 1 × 14 | SPY 三变量回归测试成绩单：model / benchmark MSE、OOS R²、方向命中率、**择时策略 vs 买入持有**的年化收益 / 波动 / 夏普（9.97% / 13.34% / 0.747 vs 12.48% / 15.83% / 0.788） | M02 §2.7.4；择时列是 **Class 5 预告** |",
+          "new": "| `spy_regression_scorecard.csv` | 1 × 14 | SPY 三变量回归测试成绩单：OOS R² **6.556296%**、方向命中率及保存的择时／买入持有摘要（9.97% / 13.34% / 0.747 vs 12.48% / 15.83% / 0.788） | M02 §2.7.4；策略列只是 **Class 5 预告输出**，没有阈值、成交与成本契约 |",
+          "rationale": "补 SPY 精确值并限制策略输出地位。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md::04",
+          "stage": "base82"
+        },
+        {
+          "old": "| `spy_test_predictions_monthly.csv` | 60 × 23 | 测试期逐月：15 个特征、forecast、benchmark、两列误差、weight（择时仓位 0/1）、timing_return、buy_hold_return | M02 §2.7.4（预测全部为正 ✅） |",
+          "new": "| `spy_test_predictions_monthly.csv` | 60 × 23 | 测试期逐月：15 个特征、forecast、benchmark、两列误差及保存的 weight／timing_return／buy_hold_return | M02 §2.7.4；预测全部为正；保存列不等于已取得可执行策略阈值、成交与成本规则 |",
+          "rationale": "避免把结果列升级成可执行策略契约。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md::05",
+          "stage": "base82"
+        },
+        {
+          "old": "| `three_market_regression_scorecard.csv` | 3 × 8 | 美 / 港 / 中 OOS R²、命中率、正收益基准率、命中数 | M02 §2.7.4；⚠️ SPY 行 6.74% ≠ 成绩单 6.56%（测试 MSE 20.63 vs 20.67，⚪ 变量组合不同，文件未说明） |",
+          "new": "| `three_market_regression_scorecard.csv` | 3 × 8 | 美 / 港 / 中 OOS R²、命中率、正收益占比（即 always-up 分数）与命中数 | M02 §2.7.4；⚠️ SPY 行 **6.739573%** ≠ 单独成绩单 **6.556296%**（测试 MSE 20.63 vs 20.67）；来源未给足规格，不能擅自归因于变量组合 |",
+          "rationale": "同步精确 SPY 差异并移除无证据归因。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md::06",
+          "stage": "base82"
+        },
+        {
+          "old": "**⑤ 目标 / ⑥ 讲义对应**：见各行。**质量检查**：12 个 sha256 一致；预测表 60 行无缺失；`spy_test_predictions_monthly.csv` 的 `weight` 只取 0 / 1（45 个月在市）。",
+          "new": "**⑤ 目标 / ⑥ 讲义对应**：见各行。**质量检查**：12 个 sha256 一致；预测表 60 行无缺失；`spy_test_predictions_monthly.csv` 的 `weight` 只取 0 / 1（45 个月在市）。\n\n**M02 可复现边界**：现有课程文件足以复算登记的 SPY 与 CSI 宏观回归组，不足以重建恒生／CSI 三变量完整特征表、三市场逐月预测、三变量候选／选择日志，也没有真实策略阈值、成交与成本契约。因此数据包结果表不能被写成“整讲全部复现”或“真实策略已执行”。正收益占比只等于 always-up 分数，不自动等于事后多数方向或事前部署基准。",
+          "rationale": "集中登记 M02 的数据与策略缺口。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md::07",
+          "stage": "base82"
+        },
+        {
+          "old": "| `spy_test_predictions_monthly.csv` | 60 × 23 | 测试期逐月：15 个特征、forecast、benchmark、两列误差及保存的 weight／timing_return／buy_hold_return | M02 §2.7.4；预测全部为正；保存列不等于已取得可执行策略阈值、成交与成本规则 |",
+          "new": "| `spy_test_predictions_monthly.csv` | 60 × 24 | 测试期逐月：15 个特征、forecast、benchmark、两列误差及保存的 weight／timing_return／buy_hold_return | M02 §2.7.4；预测全部为正；保存列不等于已取得可执行策略阈值、成交与成本规则 |",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "按当前 CSV 实读把 60×23 更正为 60×24。",
+          "review_item": "B2",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md::v2-01",
+          "stage": "targeted-v2"
+        },
+        {
+          "old": "| `three_market_regression_scorecard.csv` | 3 × 8 | 美 / 港 / 中 OOS R²、命中率、正收益占比（即 always-up 分数）与命中数 | M02 §2.7.4；⚠️ SPY 行 **6.739573%** ≠ 单独成绩单 **6.556296%**（测试 MSE 20.63 vs 20.67）；来源未给足规格，不能擅自归因于变量组合 |",
+          "new": "| `three_market_regression_scorecard.csv` | 3 × 8 | 美 / 港 / 中 OOS R²、命中率、正收益占比（即 always-up 分数）与命中数 | M02 §2.7.4；⚠️ SPY 行 **6.739573%** ≠ 单独成绩单 **6.556296%**（`MSE × 10^4`：三市场汇总 **20.63**，单 SPY 成绩单 **20.67**）；来源未给足规格，不能擅自归因于变量组合 |",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "给 20.63/20.67 补 MSE ×10^4 缩放和表格方向。",
+          "review_item": "B2",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md::v2-02",
+          "stage": "targeted-v2"
+        },
+        {
+          "old": "**⑤ 目标 / ⑥ 讲义对应**：见各行。**质量检查**：12 个 sha256 一致；预测表 60 行无缺失；`spy_test_predictions_monthly.csv` 的 `weight` 只取 0 / 1（45 个月在市）。",
+          "new": "**⑤ 目标 / ⑥ 讲义对应**：见各行。**质量检查**：12 个 sha256 一致；预测表 60 行无缺失；`spy_test_predictions_monthly.csv` 的 `weight` 只取 0 / 1（48 个月在市、12 个月空仓）。另一个三市场 timing 表的 SPY 为 45／15，属于不同结果口径，不能移到本表。",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "按单 SPY CSV 更正 48/12，并把 45/15 留在三市场 timing 口径。",
+          "review_item": "B2",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md::v2-03",
+          "stage": "targeted-v2"
+        }
+      ],
+      "proposed_sha256": "4670034d57b3388bc8aaf02114876c6a5232cc234b2bdf976da09ba00ebdb568",
+      "proposed_file": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\proposed-final\\EF5560_Fintech_and_AI_in_Finance\\_meta\\数据集卡片.md.snapshot",
+      "line_endings": "source raw hash retained; normalize CRLF to LF in candidate if present"
+    },
+    {
+      "path": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md",
+      "source_sha256": "e73abecca74f3b54bd1f3fc860b5038f769c9d874554957573d37e62b9980c71",
+      "source_copy": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\target-originals\\EF5560_Fintech_and_AI_in_Finance\\_meta\\术语表.md",
+      "decision": "patch-proposed",
+      "no_increment_reason": null,
+      "patches": [
+        {
+          "old": "updated: 2026-10-22",
+          "new": "updated: 2026-10-25",
+          "rationale": "更新当前术语表日期。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md::01",
+          "stage": "base82"
+        },
+        {
+          "old": "| 条件均值 | Conditional mean | Does `E[r_t \\| x_{t−1}]` change with the predictor? | M02 §2.1 | 讲 L2 p.3 |",
+          "new": "| 条件均值 | Conditional mean | Does `E[r_t \\| x_{t−1}]` change with the predictor? | M02 §2.1 | 讲 L2 p.3 |\n| 消费者价格指数 | Consumer Price Index (CPI) | A measure of changes in the price level of a basket of consumer goods and services; its reference month and public release date are different facts. | M02 §2.2.1（M01 已登记宏观序列） | 🎙️ 新闻例前的笔记释义 |",
+          "rationale": "同步 CPI 在最终候选中的首次实际推理桥，不改变 M01 首现归属。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md::02",
+          "stage": "base82"
+        },
+        {
+          "old": "| 等频分箱 | Equal-count bins | Sort by the predictor, split into ten groups of similar size, and average x and r within each group. **A diagnostic, not a substitute for the raw data.** | M02 §2.3.3 | 讲 L2 p.13 |",
+          "new": "| 等频分箱 | Equal-count bins | Sort by the predictor, split into ten groups of similar size, and average x and r within each group. **A diagnostic, not a substitute for the raw data.** | M02 §2.3.3 | 讲 L2 p.13 |\n| 相关系数与简单回归 R² | Correlation and simple-regression R² | With the same non-missing rows, an intercept, no penalty, and nonzero variance in both columns, simple OLS has $R^2=\\operatorname{corr}(x,y)^2$. | M02 §2.3.4 | 课堂加分题 + 三行笔记教学例 |",
+          "rationale": "登记最终候选的 cov/sd/corr 计算桥与适用条件。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md::03",
+          "stage": "base82"
+        },
+        {
+          "old": "| **厨房水槽（回归）** | Kitchen sink | Putting every available predictor into one regression — Welch and Goyal (2008 RFS); fits best in sample, loses badly out of sample. | M02 §2.5.1 | 讲 L2 p.28 |",
+          "new": "| **厨房水槽（回归）** | Kitchen sink | Putting every available predictor into one regression; Welch and Goyal (2008 RFS) use it to show that stronger in-sample fit need not survive out of sample. | M02 §2.5.1 | 讲 L2 p.28 |",
+          "rationale": "去掉普遍化的 best/worst 断言。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md::04",
+          "stage": "base82"
+        },
+        {
+          "old": "| 多重共线性 | Correlated predictors / multicollinearity | When two predictors move together, the fitted line is well determined but the split between them is not. | M02 §2.5.2 | 讲 L2 p.30 |",
+          "new": "| 多重共线性 | Correlated predictors / multicollinearity | High predictor correlation can make individual slopes and t-tests unstable; a prediction combination may still be usable, but this must be checked out of sample. | M02 §2.5.2 | 讲 L2 p.30 |",
+          "rationale": "同步推断/预测边界。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md::05",
+          "stage": "base82"
+        },
+        {
+          "old": "| **基准命中率** | Positive-return base rate | The share of months with a positive return; **directional accuracy must beat this, not an automatic 50%**. | M02 §2.7.3 | 讲 L2 p.47 |",
+          "new": "| **正收益占比 / always-up 分数** | Positive-return base rate / always-up score | The share of positive-return months equals the score of always predicting up. It is not automatically the post-hoc majority-sign score or the only prespecified deployable benchmark. | M02 §2.7.3 | 讲 L2 p.47 |",
+          "rationale": "纠正 always-up 与其他方向基准的混同。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md::06",
+          "stage": "base82"
+        },
+        {
+          "old": "| 中性预测（个股） | Zero active-return benchmark | `â ᵇ_{i,t} = 0`: stock i is expected to match its local market. | M02 §2.7.3 | 讲 L2 p.44 |",
+          "new": "| 中性预测（个股） | Zero excess-return benchmark | `r̂^{e,b}_{i,t} = 0`: the stock is forecast to earn the matched risk-free return. This is an excess-return target, not active return (stock minus market). | M02 §2.7.3 | 讲 L2 p.44；目标口径与 M03–M04 数据包一致 |",
+          "rationale": "把 excess return 与 active return 分开。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md::07",
+          "stage": "base82"
+        },
+        {
+          "old": "| 有效市场假说 | Efficient Market Hypothesis (EMH) | Public information is priced in within seconds so patterns vanish; true on average in the long run, not month by month（🎙️ P1 `07:22`） | M02 §2.1 | 🎙️ 课堂 |",
+          "new": "| 有效市场假说 | Efficient Market Hypothesis (EMH) | Prices reflect a specified information set; weak, semi-strong, and strong forms use different sets. The classroom “within seconds” remark is a public-information example, not a claim that every monthly move is efficient. | M02 §2.1 | 🎙️ P1 `07:22` + 笔记限定 |",
+          "rationale": "补 EMH 信息集和口语边界。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md::08",
+          "stage": "base82"
+        },
+        {
+          "old": "| F 检验（联合显著性） | F-test | Tests whether **all** slopes are zero at once; can be significant while every single t-test is not — the signature of multicollinearity | M02 §2.5.0 | 🎙️ 课堂 |",
+          "new": "| F 检验（联合显著性） | F-test | Tests whether all slopes are zero at once. A significant F with insignificant individual t-tests is consistent with multicollinearity, but does not diagnose it by itself. | M02 §2.5.0 | 🎙️ 课堂 + 笔记限定 |",
+          "rationale": "去掉单一症状即诊断的表述。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md::09",
+          "stage": "base82"
+        },
+        {
+          "old": "| 数据挖掘（贬义） | Data mining (p-hacking) | Trying many predictors until one clears p < 0.05; 100 useless predictors still yield ~5 \"significant\" ones（🎙️ P2 `32:42`）。⚠️ 与 IS6400 里褒义的 data mining 是同一个词 | M02 §2.6.1 | 🎙️ 课堂 |",
+          "new": "| 数据挖掘（贬义） | Data mining (p-hacking) | Trying many predictors until one clears p < 0.05; under 100 true nulls and valid 5% tests, the expected number of false positives is 5, not guaranteed to be exactly or at least 5（🎙️ P2 `32:42`）。⚠️ 与 IS6400 里褒义的 data mining 是同一个词 | M02 §2.6.1 | 🎙️ 课堂 + 笔记限定 |",
+          "rationale": "把约 5 个写成期望值，不写成保证。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md::10",
+          "stage": "base82"
+        },
+        {
+          "old": "| 发表后偏差 | Post-publication bias | Once a predictor is published, traders trade on it and the signal fades | M02 §2.6.1 | 🎙️ 课堂 |",
+          "new": "| 发表后偏差 | Post-publication bias | Trading after publication may weaken a signal; later failure alone cannot distinguish this from overfitting or structural change. | M02 §2.6.1 | 🎙️ 课堂 + 笔记限定 |",
+          "rationale": "补发表后失效的替代解释。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md::11",
+          "stage": "base82"
+        },
+        {
+          "old": "| 猴子基准 | \"Monkey\" benchmark | Always guessing \"up\"; ≈60% in the US market — the colloquial name for the positive-return base rate | M02 §2.1、§2.7.4 | 🎙️ 课堂 |",
+          "new": "| 猴子基准 | \"Monkey\" benchmark | Always guessing “up”; its realized score equals the positive-return share. It is not automatically the post-hoc majority-sign score or a unique deployable rule. | M02 §2.1、§2.7.4 | 🎙️ 课堂 + 笔记限定 |",
+          "rationale": "同步 always-up 的适用边界。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md::12",
+          "stage": "base82"
+        },
+        {
+          "old": "| 中性预测（个股） | Zero excess-return benchmark | `r̂^{e,b}_{i,t} = 0`: the stock is forecast to earn the matched risk-free return. This is an excess-return target, not active return (stock minus market). | M02 §2.7.3 | 讲 L2 p.44；目标口径与 M03–M04 数据包一致 |",
+          "new": "| 零主动收益基准 | Zero active-return benchmark | $\\hat a^b_{i,t}=0$: stock i is expected to match its local market because active return is stock return minus local-market return. | M02 §2.7.3 | 讲 L2 p.44 |\n| 零超额收益基准 | Zero excess-return benchmark | $\\hat e^b_{i,t}=0$: stock i is expected to earn the matched risk-free return because the later data target subtracts the period-matched risk-free return. | M02 §2.7.3 口径衔接 | 后续数据包；不是 p.44 目标，仅登记差异，不升级 M03–M05 验收状态 |",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "保留 p.44 合法的 active 零基准，并把后续 excess 零基准另列来源。",
+          "review_item": "B1",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md::v2-01",
+          "stage": "targeted-v2"
+        },
+        {
+          "old": "| 条件均值 | Conditional mean | Does `E[r_t \\| x_{t−1}]` change with the predictor? | M02 §2.1 | 讲 L2 p.3 |",
+          "new": "| 条件均值 | Conditional mean | Does $E[r_t\\mid x_{t-1}]$ change with the predictor? | M02 §2.1 | 讲 L2 p.3 |",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "把本包已触碰的条件均值公式改为表格安全的 LaTeX，不保留反引号公式或 Unicode 负号。",
+          "review_item": "B1",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md::v2-02",
+          "stage": "targeted-v2"
+        }
+      ],
+      "proposed_sha256": "eeb06c200dd5bf76ad296960b810589410bd770436d5b3e48f9d2d57a280e117",
+      "proposed_file": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\proposed-final\\EF5560_Fintech_and_AI_in_Finance\\_meta\\术语表.md.snapshot",
+      "line_endings": "source raw hash retained; normalize CRLF to LF in candidate if present"
+    },
+    {
+      "path": "EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md",
+      "source_sha256": "13bcc0eb25fc6faf422ef53ae3d9da4973da7e55165e2f47a97c1ff7303bad38",
+      "source_copy": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\target-originals\\EF5560_Fintech_and_AI_in_Finance\\_meta\\知识层级台账.md",
+      "decision": "patch-proposed",
+      "no_increment_reason": null,
+      "patches": [
+        {
+          "old": "updated: 2026-10-22",
+          "new": "updated: 2026-10-25",
+          "rationale": "更新当前台账日期。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md::01",
+          "stage": "base82"
+        },
+        {
+          "old": "| 收益可预测性的五种含义 | Five meanings of return predictability | M02 | 条件均值 / 统计显著 / 样本外 / 方向 / 经济价值，门槛逐级升高 | 预测变量 |",
+          "new": "| 收益可预测性的五种含义 | Five meanings of return predictability | M02 | 条件均值、统计推断、样本外误差、方向与经济价值是五种不同问题；证据可背离，不把它们写成严格逻辑先后关卡 | 预测变量 |",
+          "rationale": "同步候选五义并非严格逐级门槛的边界。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md::02",
+          "stage": "base82"
+        },
+        {
+          "old": "| 标准误 · p 值的金融读法 | Standard error / p-value | M02 | 大 p 值不证明关系为零，小 p 值不证明稳定性、因果或经济价值 | L0 |",
+          "new": "| 标准误 · p 值的金融读法 | Standard error / p-value | M02 | 大 p 值不证明关系为零，小 p 值不证明稳定性、因果或经济价值；t／p 是推断量，不是预测变量排名工具 | L0 |",
+          "rationale": "补统计量不得承担预测排名的边界。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md::03",
+          "stage": "base82"
+        },
+        {
+          "old": "| 厨房水槽回归 | Kitchen sink | M02 | 把所有变量全塞进一个回归；Welch & Goyal (2008) 证明它样本内最好、样本外惨败 | 多元回归 |",
+          "new": "| 厨房水槽回归 | Kitchen sink | M02 | 把所有可用预测变量塞进同一回归；Welch & Goyal (2008) 用它展示样本内更好看却可能样本外失效，不能写成对所有数据的定理 | 多元回归 |",
+          "rationale": "去掉把文献结论写成普遍证明的过度表述。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md::04",
+          "stage": "base82"
+        },
+        {
+          "old": "| 多重共线性 | Correlated predictors | M02 | 变量同向移动时拟合线确定、但效应归谁不确定；金融预测变量的常态 | 多元回归 |",
+          "new": "| 多重共线性 | Correlated predictors / multicollinearity | M02 | 变量高度相关时单个斜率和 t 检验可能不稳定；某些预测组合仍可稳定，但须在真正样本外另验，F 显著也不能单独诊断共线性 | 多元回归 |",
+          "rationale": "同步推断与预测边界，移除绝对化。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md::05",
+          "stage": "base82"
+        },
+        {
+          "old": "| **基准命中率** | Positive-return base rate | M02 | 正收益月的占比；方向精度必须打败它，**不是 50%** | 命中率 |",
+          "new": "| **正收益占比 / always-up 分数** | Positive-return base rate / always-up score | M02 | 正收益月占比恰好等于“每月都猜涨”的分数；它不自动等于测试期事后多数方向分数，也不自动成为事前可部署的唯一方向基准 | 命中率 |",
+          "rationale": "纠正正收益占比、事后多数与可执行基准的混同。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md::06",
+          "stage": "base82"
+        },
+        {
+          "old": "| 有效市场假说 | Efficient Market Hypothesis | M02 🎙️ | 公开信息秒级被消化，模式消失；长期平均成立，逐月不成立 | 收益可预测性 |",
+          "new": "| 有效市场假说 | Efficient Market Hypothesis | M02 🎙️ | 对指定可用信息集讨论价格是否已反映信息；弱式、半强式和强式的信息集不同，课堂“秒级消化”是公开信息的口语例，不等于逐月无任何偏离 | 收益可预测性 |",
+          "rationale": "把课堂口语放回 EMH 的信息集边界。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md::07",
+          "stage": "base82"
+        },
+        {
+          "old": "| F 检验 | F-test (joint significance) | M02 🎙️ | 检验全部斜率同时为零；F 显著而 t 全不显著 = 共线性症状 | 多元回归、多重共线性 |",
+          "new": "| F 检验 | F-test (joint significance) | M02 🎙️ | 检验全部斜率是否同时为零；F 显著而个别 t 不显著可与共线性一致，但不能只靠这一现象诊断共线性 | 多元回归、多重共线性 |",
+          "rationale": "同步候选的联合检验限制。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md::08",
+          "stage": "base82"
+        },
+        {
+          "old": "| 数据挖掘偏差 / 发表后偏差 | Data mining / post-publication bias | M02 🎙️ | 试到显著为止；被发表后被交易掉——Welch & Goyal 结论的两个解释 | 样本外 R² |",
+          "new": "| 数据挖掘偏差 / 发表后偏差 | Data mining / post-publication bias | M02 🎙️ | 反复试变量会制造假阳性；100 个真实零假设在有效 5% 检验下假阳性的期望数为 5，并非保证恰好或至少 5。信号发表后可能因交易而减弱，但后续失效也可能来自过拟合或结构变化 | 样本外 R² |",
+          "rationale": "同步假阳性期望与发表后偏差的非唯一解释。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md::09",
+          "stage": "base82"
+        },
+        {
+          "old": "| 历史均值基准 | Historical average | M02 🎙️ | 所有斜率为零时的预测 = 样本均值；很难被打败（Campbell & Thompson） | 滞后 MA(12) 基准 |",
+          "new": "| 历史均值基准 | Historical average | M02 🎙️ | 所有斜率设为零的截距型预测；实际样本外形成时只能使用当时已有历史估计，Campbell & Thompson (2008) 用它作难以击败的对照 | 滞后 MA(12) 基准 |",
+          "rationale": "补基准的可行形成时点。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md::10",
+          "stage": "base82"
+        },
+        {
+          "old": "| 等频分箱 | Equal-count bins | M02 | 按预测变量排序切成十个等量组，组内取均值——是诊断工具，不替代原始数据 | 预测变量 |",
+          "new": "| 等频分箱 | Equal-count bins | M02 | 按预测变量排序切成十个等量组，组内取均值——是诊断工具，不替代原始数据 | 预测变量 |\n| 相关系数与简单回归 R² | Correlation and simple-regression R² | M02 | 同一组非缺失行、含截距、无惩罚的简单 OLS 且两列方差非零时，$R^2=\\operatorname{corr}(x,y)^2$；不外推到多元回归或无截距模型 | 相关系数、拟合线 |",
+          "rationale": "登记最终候选已补完整计算桥的相关系数平方关系。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md::11",
+          "stage": "base82"
+        },
+        {
+          "old": "| 常用宏观序列 | DGS10 / DFF / UNRATE / CPIAUCSL | M01 | 10 年期美债收益率／联邦基金利率／失业率／CPI | 联邦基金利率 |",
+          "new": "| 常用宏观序列 | DGS10 / DFF / UNRATE / CPIAUCSL | M01；M02 复用 CPI | 10 年期美债收益率／联邦基金利率／失业率／消费者价格指数（Consumer Price Index, CPI）；M02 用 CPI 搭“数据所属月份 ≠ 公开时间”的信息时点桥 | 联邦基金利率、参考期 vs 发布日 |",
+          "rationale": "同步最终候选 CPI 首次实际推理前的必要释义，同时保留 M01 首现。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md::12",
+          "stage": "base82"
+        },
+        {
+          "old": "| 中性预测（个股） | Zero excess-return benchmark | M02 | 本课 Class 3–4 个股目标为个股收益−同期无风险收益，零预测指与无风险持平；active return 才是个股−市场，不混用 | 主动收益 |",
+          "new": "| 零主动收益基准 | Zero active-return benchmark | M02（讲义 p.44） | $\\hat a^b_{i,t}=0$；主动收益目标为个股收益−本地市场收益，零预测表示预期与本地市场持平 | 主动收益 |\n| 零超额收益基准 | Zero excess-return benchmark | M02（与后续数据口径对照） | $\\hat e^b_{i,t}=0$；后续数据的超额收益目标为总收益−同期匹配无风险收益。它不是 p.44 目标；这里只登记差异，不把 M03–M05 的教学验收升级为本次通过 | 超额收益 |",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "台账让 active/excess 两种零基准并存，并显式禁止把口径登记外溢成后续讲次通过。",
+          "review_item": "B1",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md::v2-01",
+          "stage": "targeted-v2"
+        }
+      ],
+      "proposed_sha256": "28481cd5fc60a9f9d60d75c15ce4514d3bc8326491fa7ebc5a4ef3d6c82a3bbd",
+      "proposed_file": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\proposed-final\\EF5560_Fintech_and_AI_in_Finance\\_meta\\知识层级台账.md.snapshot",
+      "line_endings": "source raw hash retained; normalize CRLF to LF in candidate if present"
+    },
+    {
+      "path": "EF5560_Fintech_and_AI_in_Finance/_meta/考点库.md",
+      "source_sha256": "947156665b83f575dea2cfb1894862a34a979f71d8829424740422d48682abd6",
+      "source_copy": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\target-originals\\EF5560_Fintech_and_AI_in_Finance\\_meta\\考点库.md",
+      "decision": "patch-proposed",
+      "no_increment_reason": null,
+      "patches": [
+        {
+          "old": "updated: 2026-10-22",
+          "new": "updated: 2026-10-25",
+          "rationale": "更新当前考点镜像日期。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/考点库.md::01",
+          "stage": "base82"
+        },
+        {
+          "old": "## 4. M02 考点清单（v1.0 · 2026-09-11 合并转录）",
+          "new": "## 4. M02 考点清单（v1.0 · 2026-10-25 当前重审镜像）",
+          "rationale": "标题指向当前重审，不抹去各条历史来源日期。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/考点库.md::02",
+          "stage": "base82"
+        },
+        {
+          "old": "| 🔴🔴 | 20a | **期末题型 = 讲义里的\"四选一 + Discuss\"**；M02 p.26 那道选 C，M01 p.25 那道选 A | 🎙️`P1 01:21:08`「students ask me what kind of questions you might see in final exam. **These are the questions you will see.**」题库由教授用 AI 按讲义生成；**期末前给 practice exam**（`P1 01:21:35`「At the end of the semester, I will show you practice exam」） | M02 §2.4.7 |",
+          "new": "| 🔴🔴 | 20a | **期末题型 = 讲义里的\"四选一 + Discuss\"**；课堂确认的是旧 54 页 p.26（新 56 页 p.54）选 C，不是新版新增 p.26–27；M01 p.25 选 A | 🎙️`P1 01:21:08`「students ask me what kind of questions you might see in final exam. **These are the questions you will see.**」题库由教授用 AI 按讲义生成；**期末前给 practice exam**（`P1 01:21:35`） | M02 §2.4.7 |",
+          "rationale": "分开旧题课堂确认与新版新增题。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/考点库.md::03",
+          "stage": "base82"
+        },
+        {
+          "old": "| 🔴 | 20b | **及格线（口头）**：做完全部作业 + 出席考试 → 很难挂 | 🎙️`P1 01:21:47`「As long as you finish all homework and show up in exam, it is very hard for me to fail you」；三年挂 3 人：2 人缺考、1 人没做项目展示 | M02 §2.4.7 |",
+          "new": "| 🔴（行政提醒） | 20b | **教授过往评分经验，不是正式及格线**：完成作业并出席考试者按其经验很难被判不及格 | 🎙️`P1 01:21:47`「As long as you finish all homework and show up in exam, it is very hard for me to fail you」；制度门槛仍以 syllabus／正式通知为准 | M02 §2.4.7 |",
+          "rationale": "不把教师经验升级为正式及格线或承诺。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/考点库.md::04",
+          "stage": "base82"
+        },
+        {
+          "old": "| 🔴 | 20c | **样本外评价是金融统计里唯一算数的评价**（Welch & Goyal 的两个原因：数据挖掘、发表后偏差） | 🎙️`P2 34:30`「Out of sample design, out of sample evaluation might be **the only evaluation** for financial [statistics]」 | M02 §2.6.1 |",
+          "new": "| 🔴 | 20c | **教授口述：样本外评价可能是金融统计中唯一算数的评价**；数据挖掘与发表后偏差是两种解释，不排除过拟合或结构变化 | 🎙️`P2 34:30`「Out of sample design, out of sample evaluation might be **the only evaluation** for financial [statistics]」 | M02 §2.6.1 |",
+          "rationale": "保留 might 与替代解释。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/考点库.md::05",
+          "stage": "base82"
+        },
+        {
+          "old": "| 🔴 | 20d | **多重共线性影响推断、不影响预测**：t 那一列不能信，预测那一列可以 | 🎙️`P2 01:04:20`「if you only focus on prediction, that one is not affected」；课上用六个美债收益率演示 F 显著、t 全不显著（`P2 13:52`） | M02 §2.5.0、§2.5.2 |",
+          "new": "| 🔴 | 20d | **共线性主要伤单个斜率推断；预测仍须另做样本外验证**：预测组合可能比单个系数稳定，但不是“必然不受影响” | 🎙️`P2 01:04:20`「if you only focus on prediction, that one is not affected」；六期限现场例 F 显著、个别 t 不显著，只与共线性一致，不能单独诊断 | M02 §2.5.0、§2.5.2 |",
+          "rationale": "给课堂简化语补统计边界。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/考点库.md::06",
+          "stage": "base82"
+        },
+        {
+          "old": "| 🔴 | 20e | **方向准确率跟\"猴子\"（永远猜涨）比，且不能跨市场比** | 🎙️`P1 28:10`「even for a monkey… we can make 60%」；`P2 54:42`「you cannot compare apple to apple」 | M02 §2.1、§2.7.4 |",
+          "new": "| 🔴 | 20e | **方向准确率须对比事前规定的可执行方向规则，且不能跨市场裸比**；正收益占比只等于 always-up 分数，不自动等于事后多数方向或唯一基准 | 🎙️`P1 28:10`「even for a monkey… we can make 60%」；`P2 54:42`「you cannot compare apple to apple」 | M02 §2.1、§2.7.3–2.7.4 |",
+          "rationale": "同步方向基准三分法。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/考点库.md::07",
+          "stage": "base82"
+        },
+        {
+          "old": "| 🔴 | 20f | **金融数据不删离群值**；**比较预测变量看 t 不看 β**（t 无尺度） | 🎙️`P1 01:02:42`「we do not drop [outliers]… we still keep them」；`P1 01:02:04`「the t statistic… is scale free. But beta itself is not」 | M02 §2.3.5 |",
+          "new": "| 🔴 | 20f | **不因极端而删真实金融观测；β 有尺度、t 无尺度，但 t／p 不用于预测变量排名**；选模看事前定义的验证或样本外目标 | 🎙️`P1 01:02:42`「we do not drop [outliers]…」；`P1 01:02:04`「the t statistic… is scale free. But beta itself is not」 | M02 §2.3.5 |",
+          "rationale": "纠正“看 t 排名”这一方向性错误。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/考点库.md::08",
+          "stage": "base82"
+        },
+        {
+          "old": "| ⚪⚪ | 27 | **命中率必须对比\"正收益基准率\"，不是 50%** | 讲义用 p.46/47/48 三页讲这一件事，并给了\"模型输给永远猜涨\"的反例 | M02 §2.7.3–2.7.4 |",
+          "new": "| ⚪⚪ | 27 | **命中率须对比事前规定的可执行方向基准**；正收益占比 = always-up 分数，但不自动等于测试期事后多数方向分数，也不是跨市场通用门槛 | 旧版 p.46–48／新版 p.47–49；模型可输给 always-up，比较时须写清规则和市场 | M02 §2.7.3–2.7.4 |",
+          "rationale": "同步 always-up、majority 与部署基准区别。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/考点库.md::09",
+          "stage": "base82"
+        },
+        {
+          "old": "| ⚪ | 34 | **Welch & Goyal (2008) 的 \"kitchen sink\" 结论** | 讲义 L2 p.28 引用 + p.36 整页贴书目 | M02 §2.5.1、§2.6.1 |",
+          "new": "| ⚪ | 34 | **Welch & Goyal (2008) 的 \"kitchen sink\" 结论** | 讲义旧 p.28／p.36；新版 p.29／p.37 | M02 §2.5.1、§2.6.1 |\n| ⚪ | 34a | **新版 p.26：momentum 增 2 个百分点、斜率 0.30 时预测增 0.60 个百分点，选 D** | 当前 56 页 Canvas 源；完整题面、选项、中英参考在 §2.4.6a；无对应新录音，不升级为教授确认 | M02 §2.4.6a |\n| ⚪ | 34b | **新版 p.27：估计值／标准误／p 值与低 R² 分开读，选 A** | 当前 56 页 Canvas 源；完整题面、选项、中英参考在 §2.4.6a；无对应新录音，不升级为教授确认 | M02 §2.4.6a |",
+          "rationale": "把新版两道 MCQ 纳入主考点清单并保持来源等级。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/考点库.md::10",
+          "stage": "base82"
+        },
+        {
+          "old": "> ✅ **M02 转录已合并（2026-09-11）**。教授**没有**对 CSI 300 案例、命中率基准率、Welch & Goyal 说\"这会考\"；但 p.26 那道题他明说是考试题型（20a），CSI 300 案例是它 Discuss 部分的标准答案素材，Welch & Goyal 是\"为什么只看样本外\"的标准答案（20c）。数字量级他没再给新的（M01 那套数感仍然有效）。\n> **本讲课堂\"清单类\"页面（p.7/19/42/45/52/53/54）教授一页都没念，但考题按讲义出**——这些清单要自己背。",
+          "new": "> ✅ **M02 转录已合并（2026-09-11）**。教授**没有**把 CSI 300 案例、方向基准或 Welch & Goyal 逐项明示为考题；课堂确认的是旧 54 页 p.26（新 56 页 p.54）的题型和答案 C。新版 p.26–27 的 D／A 为来源限定的笔记参考答案，无对应新录音。\n> **旧版清单页 p.7/19/42/45/52/53/54（新版对应 p.7/19/43/46/53/55/56）多未逐条讲**，但不可因此降权。P1 首句为半句，缺首长度未知；P2 有收尾。",
+          "rationale": "更新版本页码、来源等级和录音限制。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/_meta/考点库.md::11",
+          "stage": "base82"
+        }
+      ],
+      "proposed_sha256": "a5a3b71586c591e95d6173a781b8af7c9b37313873dda178ca911adb455e2264",
+      "proposed_file": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\proposed-final\\EF5560_Fintech_and_AI_in_Finance\\_meta\\考点库.md.snapshot",
+      "line_endings": "source raw hash retained; normalize CRLF to LF in candidate if present"
+    },
+    {
+      "path": "EF5560_Fintech_and_AI_in_Finance/assignment/00-overview/作业总览.md",
+      "source_sha256": "7ff281c0fcc913f68ddf42db31a8b44918a3220bd8e33ab59d34d105b4915388",
+      "source_copy": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\target-originals\\EF5560_Fintech_and_AI_in_Finance\\assignment\\00-overview\\作业总览.md",
+      "decision": "checked-no-increment",
+      "no_increment_reason": "M02 本次只有教学、来源与限制更新，没有新增计分任务、截止、提交渠道或本人提交/评分事实。",
+      "patches": [],
+      "proposed_sha256": "7ff281c0fcc913f68ddf42db31a8b44918a3220bd8e33ab59d34d105b4915388",
+      "proposed_file": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\proposed-final\\EF5560_Fintech_and_AI_in_Finance\\assignment\\00-overview\\作业总览.md.snapshot",
+      "line_endings": "source raw hash retained; normalize CRLF to LF in candidate if present"
+    },
+    {
+      "path": "EF5560_Fintech_and_AI_in_Finance/assignment/practice/练习索引.md",
+      "source_sha256": "c8bd6e9dd17f25734056e45dbff93aea0fa8a32a0eeb1229d58ec5a0bc17c16d",
+      "source_copy": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\target-originals\\EF5560_Fintech_and_AI_in_Finance\\assignment\\practice\\练习索引.md",
+      "decision": "patch-proposed",
+      "no_increment_reason": null,
+      "patches": [
+        {
+          "old": "## P09-m2-p16-outliers · M02 离群值三问\n\n**原件定位**：Lec02 p.16。本条由全库题目覆盖台账定位，尚需回原件逐字核对题干、多小问、图形与官方答案，并检查 Canvas Modules／Files 是否另行发布；此处暂不声称 Canvas 未发布。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02-回归与样本外设计]] 的 §2 和题目来源页。公开讲义笔记是概念与参考解题入口；本题待按讲次回填精读，尚无独立成果。\n\n\n状态：**待回填**。未重新核实的 Canvas 状态保持待核。",
+          "new": "## P09-m2-p16-outliers · M02 离群值三问\n\n**原件定位**：旧／新 Lec02 p.16。英文三问、中文限定、课程 SPY 数据的五个极端月复算与英文参考答案已回填至 M02 §2.3.5；是否删除须先证明数据错误，真实危机观测不因极端自动删除。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.3.5]]。\n\n状态：**参考解析已回填**；无官方书面答案，Canvas 是否另发独立练习仍待核。",
+          "rationale": "把 P09 从待回填改为来源限定完成。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/assignment/practice/练习索引.md::01",
+          "stage": "base82"
+        },
+        {
+          "old": "## P10-m2-p26-choice-discuss · M02 四选一与讨论\n\n**原件定位**：Lec02 p.26。本条由全库题目覆盖台账定位，尚需回原件逐字核对题干、多小问、图形与官方答案，并检查 Canvas Modules／Files 是否另行发布；此处暂不声称 Canvas 未发布。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02-回归与样本外设计]] 的 §2 和题目来源页。公开讲义笔记是概念与参考解题入口；本题待按讲次回填精读，尚无独立成果。\n\n\n状态：**待回填**。未重新核实的 Canvas 状态保持待核。",
+          "new": "## P10-m2-p26-choice-discuss · M02 旧版四选一与讨论\n\n**原件定位**：旧 54 页版 p.26；新版 56 页中移至 p.54。完整英文题面、A–D、中文逐项和英文答案已在 M02 §2.4.7；课堂确认答案 C，且教授明示这种“四选一 + Discuss”是期末题型。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.4.7]]。\n\n状态：**课堂确认的来源限定解析已回填**；不要把此确认挪给新版新增 p.26–27。\n\n## P10a-m2-new-p26-slope · M02 新版斜率单位选择题\n\n**原件定位**：当前 Canvas 56 页版 p.26；旧版无此页。完整题面和 A–D 已在 M02 §2.4.6a；参考答案 D，预测变化为 0.60 个百分点。\n\n状态：**参考解析已回填**；无对应新录音，不是教授课堂确认答案。\n\n## P10b-m2-new-p27-precision-fit · M02 新版精度与拟合度选择题\n\n**原件定位**：当前 Canvas 56 页版 p.27；旧版无此页。完整题面和 A–D 已在 M02 §2.4.6a；参考答案 A，估计精度与低 R² 分开判断。\n\n状态：**参考解析已回填**；无对应新录音，不是教授课堂确认答案。",
+          "rationale": "分版登记旧题与两道新增 MCQ。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/assignment/practice/练习索引.md::02",
+          "stage": "base82"
+        },
+        {
+          "old": "## P11-m2-p53-momentum · M02 动量检查\n\n**原件定位**：Lec02 p.53。本条由全库题目覆盖台账定位，尚需回原件逐字核对题干、多小问、图形与官方答案，并检查 Canvas Modules／Files 是否另行发布；此处暂不声称 Canvas 未发布。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02-回归与样本外设计]] 的 §2 和题目来源页。公开讲义笔记是概念与参考解题入口；本题待按讲次回填精读，尚无独立成果。\n\n\n状态：**待回填**。未重新核实的 Canvas 状态保持待核。",
+          "new": "## P11-m2-p53-momentum · M02 动量检查\n\n**原件定位**：旧版 p.53／新版 p.55。英文五项检查、中文逐项与英文参考已在 M02 §2.10；以动量演示条件均值、推断、样本外、方向和经济价值证据，不能拿联合三变量 OOS 冒充单变量成绩。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.10]]。\n\n状态：**参考解析已回填**；该页课堂未讲，无教授官方逐项答案。",
+          "rationale": "把 P11 从待回填改为来源限定完成。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/assignment/practice/练习索引.md::03",
+          "stage": "base82"
+        },
+        {
+          "old": "| P09-m2-p16-outliers | M02 离群值三问 | Lec02 p.16 | 待回填（见本页逐题登记）；Canvas 待核 |\n| P10-m2-p26-choice-discuss | M02 四选一与讨论 | Lec02 p.26 | 待回填（见本页逐题登记）；Canvas 待核 |\n| P11-m2-p53-momentum | M02 动量检查 | Lec02 p.53 | 待回填（见本页逐题登记）；Canvas 待核 |",
+          "new": "| P09-m2-p16-outliers | M02 离群值三问 | 旧／新 p.16 | 参考解析已回填；无书面官答 |\n| P10-m2-p26-choice-discuss | M02 旧版四选一与讨论 | 旧 p.26／新 p.54 | 答案 C 有课堂确认；完整中英解析已回填 |\n| P10a-m2-new-p26-slope | M02 新版斜率单位选择题 | 新 p.26 | 参考 D；无对应新录音 |\n| P10b-m2-new-p27-precision-fit | M02 新版精度与拟合度选择题 | 新 p.27 | 参考 A；无对应新录音 |\n| P11-m2-p53-momentum | M02 动量检查 | 旧 p.53／新 p.55 | 参考解析已回填；课堂未讲 |",
+          "rationale": "同步练习索引总表。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "EF5560_Fintech_and_AI_in_Finance/assignment/practice/练习索引.md::04",
+          "stage": "base82"
+        },
+        {
+          "old": "## P09-m2-p16-outliers · M02 离群值三问\n\n**原件定位**：旧／新 Lec02 p.16。英文三问、中文限定、课程 SPY 数据的五个极端月复算与英文参考答案已回填至 M02 §2.3.5；是否删除须先证明数据错误，真实危机观测不因极端自动删除。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.3.5]]。\n\n状态：**参考解析已回填**；无官方书面答案，Canvas 是否另发独立练习仍待核。",
+          "new": "## P09-m2-p16-outliers · M02 离群值三问\n\n**原件定位**：旧／新 Lec02 p.16。M02 正文 §2.3.5 的对应来源限定解析已核；是否删除须先证明数据错误，真实危机观测不因极端自动删除。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.3.5]]。\n\n状态：**M02 正文对应来源限定解析已核**。独立练习精读文件尚未创建、未独审，69 份配套教学范围状态不升级；已核材料未见官方书面答案，Canvas 是否另发仍待核。",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "只镜像 M02 正文解析，不把索引写成独立配套精读已经完成。",
+          "review_item": "B3",
+          "id": "EF5560_Fintech_and_AI_in_Finance/assignment/practice/练习索引.md::v2-01",
+          "stage": "targeted-v2"
+        },
+        {
+          "old": "## P10-m2-p26-choice-discuss · M02 旧版四选一与讨论\n\n**原件定位**：旧 54 页版 p.26；新版 56 页中移至 p.54。完整英文题面、A–D、中文逐项和英文答案已在 M02 §2.4.7；课堂确认答案 C，且教授明示这种“四选一 + Discuss”是期末题型。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.4.7]]。\n\n状态：**课堂确认的来源限定解析已回填**；不要把此确认挪给新版新增 p.26–27。\n\n## P10a-m2-new-p26-slope · M02 新版斜率单位选择题\n\n**原件定位**：当前 Canvas 56 页版 p.26；旧版无此页。完整题面和 A–D 已在 M02 §2.4.6a；参考答案 D，预测变化为 0.60 个百分点。\n\n状态：**参考解析已回填**；无对应新录音，不是教授课堂确认答案。\n\n## P10b-m2-new-p27-precision-fit · M02 新版精度与拟合度选择题\n\n**原件定位**：当前 Canvas 56 页版 p.27；旧版无此页。完整题面和 A–D 已在 M02 §2.4.6a；参考答案 A，估计精度与低 R² 分开判断。\n\n状态：**参考解析已回填**；无对应新录音，不是教授课堂确认答案。",
+          "new": "## P10-m2-p26-choice-discuss · M02 旧版四选一与讨论\n\n**原件定位**：旧 54 页版 p.26；新版 56 页中移至 p.54。M02 正文 §2.4.7 的对应来源限定解析已核；课堂确认答案 C，且教授明示这种“四选一 + Discuss”是期末题型。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.4.7]]。\n\n状态：**M02 正文对应来源限定解析已核**；旧题答案 C 有课堂确认，不把该确认挪给新版新增 p.26–27。独立练习精读文件尚未创建、未独审，69 份配套教学范围状态不升级；Canvas 是否另发独立练习／书面官答仍待核。\n\n## P10a-m2-new-p26-slope · M02 新版斜率单位选择题\n\n**原件定位**：当前 Canvas 56 页版 p.26；旧版无此页。M02 正文 §2.4.6a 的对应来源限定解析已核；D 是笔记参考答案，预测变化为 0.60 个百分点。\n\n状态：**M02 正文对应来源限定解析已核**；无对应新录音，不是教授课堂确认答案。独立练习精读文件尚未创建、未独审，69 份配套教学范围状态不升级；Canvas 是否另发书面官答仍待核。\n\n## P10b-m2-new-p27-precision-fit · M02 新版精度与拟合度选择题\n\n**原件定位**：当前 Canvas 56 页版 p.27；旧版无此页。M02 正文 §2.4.6a 的对应来源限定解析已核；A 是笔记参考答案，估计精度与低 R² 分开判断。\n\n状态：**M02 正文对应来源限定解析已核**；无对应新录音，不是教授课堂确认答案。独立练习精读文件尚未创建、未独审，69 份配套教学范围状态不升级；Canvas 是否另发书面官答仍待核。",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "分开旧题课堂确认与新版参考答案，同时保留独立配套精读未创建/未独审。",
+          "review_item": "B3",
+          "id": "EF5560_Fintech_and_AI_in_Finance/assignment/practice/练习索引.md::v2-02",
+          "stage": "targeted-v2"
+        },
+        {
+          "old": "## P11-m2-p53-momentum · M02 动量检查\n\n**原件定位**：旧版 p.53／新版 p.55。英文五项检查、中文逐项与英文参考已在 M02 §2.10；以动量演示条件均值、推断、样本外、方向和经济价值证据，不能拿联合三变量 OOS 冒充单变量成绩。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.10]]。\n\n状态：**参考解析已回填**；该页课堂未讲，无教授官方逐项答案。",
+          "new": "## P11-m2-p53-momentum · M02 动量检查\n\n**原件定位**：旧版 p.53／新版 p.55。M02 正文 §2.10 的对应来源限定解析已核；以动量演示条件均值、推断、样本外、方向和经济价值证据，不能拿联合三变量 OOS 冒充单变量成绩。\n\n### 先读课程知识\n\n先读 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|M02 §2.10]]。\n\n状态：**M02 正文对应来源限定解析已核**；该页课堂未讲、无教授逐项确认。独立练习精读文件尚未创建、未独审，69 份配套教学范围状态不升级；Canvas 是否另发独立练习／书面官答仍待核。",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "镜像正文范围，同时保留课堂、Canvas 与独立精读边界。",
+          "review_item": "B3",
+          "id": "EF5560_Fintech_and_AI_in_Finance/assignment/practice/练习索引.md::v2-03",
+          "stage": "targeted-v2"
+        },
+        {
+          "old": "| P09-m2-p16-outliers | M02 离群值三问 | 旧／新 p.16 | 参考解析已回填；无书面官答 |\n| P10-m2-p26-choice-discuss | M02 旧版四选一与讨论 | 旧 p.26／新 p.54 | 答案 C 有课堂确认；完整中英解析已回填 |\n| P10a-m2-new-p26-slope | M02 新版斜率单位选择题 | 新 p.26 | 参考 D；无对应新录音 |\n| P10b-m2-new-p27-precision-fit | M02 新版精度与拟合度选择题 | 新 p.27 | 参考 A；无对应新录音 |\n| P11-m2-p53-momentum | M02 动量检查 | 旧 p.53／新 p.55 | 参考解析已回填；课堂未讲 |",
+          "new": "| P09-m2-p16-outliers | M02 离群值三问 | 旧／新 p.16 | M02 正文来源限定解析已核；独立精读未创建/未独审；Canvas／书面官答待核 |\n| P10-m2-p26-choice-discuss | M02 旧版四选一与讨论 | 旧 p.26／新 p.54 | M02 正文来源限定解析已核；C 有课堂确认；独立精读未创建/未独审；Canvas 待核 |\n| P10a-m2-new-p26-slope | M02 新版斜率单位选择题 | 新 p.26 | M02 正文来源限定解析已核；D 为笔记参考；独立精读未创建/未独审；Canvas／书面官答待核 |\n| P10b-m2-new-p27-precision-fit | M02 新版精度与拟合度选择题 | 新 p.27 | M02 正文来源限定解析已核；A 为笔记参考；独立精读未创建/未独审；Canvas／书面官答待核 |\n| P11-m2-p53-momentum | M02 动量检查 | 旧 p.53／新 p.55 | M02 正文来源限定解析已核；课堂未讲；独立精读未创建/未独审；Canvas／书面官答待核 |",
+          "expected_occurrences_in_base_proposed": 1,
+          "reason": "汇总表同样把正文解析与独立配套教学状态分开。",
+          "review_item": "B3",
+          "id": "EF5560_Fintech_and_AI_in_Finance/assignment/practice/练习索引.md::v2-04",
+          "stage": "targeted-v2"
+        }
+      ],
+      "proposed_sha256": "bb5dcfaf7129aafe268bac6490f85d8d724120f3e96fa3c6edd58abeb11055a6",
+      "proposed_file": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\proposed-final\\EF5560_Fintech_and_AI_in_Finance\\assignment\\practice\\练习索引.md.snapshot",
+      "line_endings": "source raw hash retained; normalize CRLF to LF in candidate if present"
+    },
+    {
+      "path": "README.md",
+      "source_sha256": "8e74633777b9cc10fc3d283d8ded13ec3bfb9086c3c5cafabf961262f55c9270",
+      "source_copy": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\target-originals\\README.md",
+      "decision": "patch-proposed",
+      "no_increment_reason": null,
+      "patches": [
+        {
+          "old": "**2026-10-25 全库重审进行中**：按[全库笔记重审任务单](_meta/全库笔记重审任务单-2026-10-23.md)执行，真实范围为 69 份教学文件（43 篇 M/T + 26 份配套教学文档/Notebook）。AC6761 M01、AC6761 M02、EF5560 M01、IS5113 M01 已完成本次全篇审查并正式写回；四篇对应 Notion 均已写并回读（本人字段未变），本地依赖与 Git 状态按[本次台账](_meta/vault-notes-review-20261023/progress.md)分别追踪，不升级其余篇或本人学习状态。",
+          "new": "**2026-10-25 全库重审进行中**：按[全库笔记重审任务单](_meta/全库笔记重审任务单-2026-10-23.md)执行，真实范围为 69 份教学文件（43 篇 M/T + 26 份配套教学文档/Notebook）。AC6761 M01、AC6761 M02、EF5560 M01、EF5560 M02、IS5113 M01 已完成本次全篇审查并正式写回；五篇对应 Notion 均已写并回读（本人字段未变），本地依赖与 Git 状态按[本次台账](_meta/vault-notes-review-20261023/progress.md)分别追踪，不升级其余篇或本人学习状态。",
+          "rationale": "顶部当前重审清单加入 EF5560 M02；只有 Notion 写后逐字段回读也完成后才应用。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback + local-sync-readback + Notion-readback",
+          "id": "README.md::01",
+          "stage": "base82"
+        },
+        {
+          "old": "- [EF5560 · 金融科技与金融 AI](EF5560_Fintech_and_AI_in_Finance/00-课程总览.md)：7 篇讲义笔记；M07 为 v0.9、转录待补；Class 06 FinTech 概览与区块链为 v1.0，四源独立时钟与三处接缝缺口保留。",
+          "new": "- [EF5560 · 金融科技与金融 AI](EF5560_Fintech_and_AI_in_Finance/00-课程总览.md)：7 篇讲义笔记；M02 本次全篇重审已正式写回，旧 54 页／新 56 页均回源，新版 p.25 日期轴已修而旧版仍错，P1/P2 为两个独立时钟且 P1 缺首长度未知；M07 为 v0.9、转录待补；Class 06 FinTech 概览与区块链为 v1.0，四源独立时钟与三处接缝缺口保留。",
+          "rationale": "课程入口补 M02 当前来源与录音限制，不改库存数或其他讲状态。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "README.md::02",
+          "stage": "base82"
+        },
+        {
+          "old": "| Fintech and AI in Finance | EF5560 | 商业核心 | **M01 v1.0 · M02 v1.0 · M03 v1.0 · M04 v1.0 · M05 v1.0 · M06 v1.0 · M07 v0.9** · 数据集卡 8 + class02/03/04/05 四个数据包 · **`code/` 15 个可复现脚本**；10/21 G/E实修已回读 | M01 ✅ · M02 ✅ · M03 ✅（p.56 原结尾缺，M04 部分回顾）· M04 ✅（A/B 双录音互补；课堂到 p.39，p.40–54 ↪️ 下讲）· M05 ✅（2026-10-10 已融合；M04 p.40–54仍❓不可降权，M05 p.53–54行政未确认） · M06 ✅（四源独立时钟；689段；三处接缝未知；新增2条期末明示）· M07 待转录（54页讲义已制v0.9）  |",
+          "new": "| Fintech and AI in Finance | EF5560 | 商业核心 | **M01 v1.0 · M02 v1.0 · M03 v1.0 · M04 v1.0 · M05 v1.0 · M06 v1.0 · M07 v0.9** · 数据集卡 8 + class02/03/04/05 四个数据包 · **`code/` 15 个可复现脚本**；M02 本次全篇重审已正式写回，旧 54／新 56 页版本边界与未复现范围保留；10/21 G/E实修为历史记录 | M01 ✅ · M02 ✅（P1 379 段 `00:01–01:22:15`；P2 260 段 `00:01–01:04:47`；两个独立时钟，P1 缺首长度未知；另有两条 M01 跨源证据）· M03 ✅（p.56 原结尾缺，M04 部分回顾）· M04 ✅（A/B 双录音互补；课堂到 p.39，p.40–54 ↪️ 下讲）· M05 ✅（2026-10-10 已融合；M04 p.40–54仍❓不可降权，M05 p.53–54行政未确认） · M06 ✅（四源独立时钟；689段；三处接缝未知；新增2条期末明示）· M07 待转录（54页讲义已制v0.9）  |",
+          "rationale": "五门课表补 M02 双时钟和跨源边界；不改其他课程或个人学习状态。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "README.md::03",
+          "stage": "base82"
+        }
+      ],
+      "proposed_sha256": "c9cfb71a8da6841c32139e3bb95446fd79620e0e2217607c715c1af7092654dc",
+      "proposed_file": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\proposed-final\\README.md.snapshot",
+      "line_endings": "source raw hash retained; normalize CRLF to LF in candidate if present"
+    },
+    {
+      "path": "_meta/Notion进度看板.md",
+      "source_sha256": "e7f16768e29e7662d02b88875709aba15bff95fd533b439a58747b646a8895e5",
+      "source_copy": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\target-originals\\_meta\\Notion进度看板.md",
+      "decision": "checked-no-increment",
+      "no_increment_reason": "只读取得学习进度数据库与数据源标识；本子任务不得在本地规则页或 Notion 写入。",
+      "patches": [],
+      "proposed_sha256": "e7f16768e29e7662d02b88875709aba15bff95fd533b439a58747b646a8895e5",
+      "proposed_file": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\proposed-final\\_meta\\Notion进度看板.md.snapshot",
+      "line_endings": "source raw hash retained; normalize CRLF to LF in candidate if present"
+    },
+    {
+      "path": "_meta/术语总表.md",
+      "source_sha256": "6b521fe7a5cb80dcc9912af32f0e519343381480fab5ae0a8a8692e81b15802b",
+      "source_copy": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\target-originals\\_meta\\术语总表.md",
+      "decision": "patch-proposed",
+      "no_increment_reason": null,
+      "patches": [
+        {
+          "old": "updated: 2026-10-22",
+          "new": "updated: 2026-10-25",
+          "rationale": "更新根术语总表日期。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "_meta/术语总表.md::01",
+          "stage": "base82"
+        },
+        {
+          "old": "| **协方差 / 相关系数** | Covariance / Correlation coefficient | [[M03-数据类型与描述性分析]] §2.11（只抓线性）；[[T03-数据探索实战-Iris与Airbnb的描述统计]] §3.5 热力图 | — | — | 投资组合的协方差矩阵 ★ | — |",
+          "new": "| **协方差 / 相关系数** | Covariance / Correlation coefficient | [[M03-数据类型与描述性分析]] §2.11（只抓线性）；[[T03-数据探索实战-Iris与Airbnb的描述统计]] §3.5 热力图 | — | — | [[M02-回归与样本外设计]] §2.3.4 由同一三行算 cov／sd／corr，并限定含截距简单 OLS 的 $R^2=\\operatorname{corr}^2$；投资组合另用协方差矩阵 | — |",
+          "rationale": "把最终候选新增的相关系数计算桥接入跨课总表。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "_meta/术语总表.md::02",
+          "stage": "base82"
+        },
+        {
+          "old": "| **面板数据** | Panel Data | — | — | — | [[M01-金融数据与Vibe-Coding]] §2.8 | 会计面板 |",
+          "new": "| **面板数据** | Panel Data | — | — | — | [[M01-金融数据与Vibe-Coding]] §2.8 | 会计面板 |\n| **主动收益 / 超额收益** | Active Return / Excess Return | 通用建模须按目标列定义，不凭“超额”字样猜分母 | — | — | [[M02-回归与样本外设计]] §2.7.3：主动收益 = 个股 − 市场；超额收益 = 总收益 − 同期无风险收益，零基准跟目标口径走 | 投资／绩效分析会用 |\n| **正收益占比 / always-up 分数** | Positive-return Base Rate / Always-up Score | 分类里的 majority-class baseline 是对已观察标签的描述；部署规则仍须事前规定 | — | — | [[M02-回归与样本外设计]] §2.7.3–2.7.4：正收益占比等于总猜涨分数，不自动等于事后多数方向或唯一可部署基准 | — |",
+          "rationale": "合并 M02 两个跨课高混淆边界。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "_meta/术语总表.md::03",
+          "stage": "base82"
+        },
+        {
+          "old": "| **Data mining** ★★ | **IS6400 = 数据挖掘（褒义）**：从数据里发现模式的学科，课程主线之一 | **EF5560 = 数据挖掘（贬义）= 试到显著为止**：100 个无用的预测变量总有约 5 个 p < 0.05；Welch & Goyal 用它解释\"样本内显著、样本外无用\"（🎙️ M02 P2 `32:42`–`33:37`，教授特别提醒「in this way, data mining is a negative term」） | 在 EF5560 的作业/考试里写 data mining 一定是贬义；IS6400 里是中性/褒义。跨课答题先说明语境 |",
+          "new": "| **Data mining** ★★ | **IS6400 = 数据挖掘（褒义）**：从数据里发现模式的学科，课程主线之一 | **EF5560 = 数据挖掘（贬义）= 试到显著为止**：若 100 个都是真实零假设且检验有效，5% 阈值下假阳性的期望数是 5，并非保证恰好或至少 5；Welch & Goyal 用它解释“样本内显著、样本外无用”（🎙️ M02 P2 `32:42`–`33:37`） | 在 EF5560 的作业/考试里写 data mining 一定是贬义；IS6400 里是中性/褒义。跨课答题先说明语境 |",
+          "rationale": "把假阳性数量写成期望值。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "_meta/术语总表.md::04",
+          "stage": "base82"
+        },
+        {
+          "old": "## 2026-10-22 · EF5560 M07 库存、杠杆与套利应用",
+          "new": "## 2026-10-25 · EF5560 M02 易混口径并入\n\n本批只并入两项跨课高混淆边界：主动收益与超额收益的分母不同；正收益占比只等于 always-up 分数，不自动等于事后多数方向或唯一可部署规则。另将 Data mining 的“约 5 个”澄清为有效 5% 检验下的期望值。来源为 [[EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计|EF5560 M02]]；不改其他讲次首现或教学状态。\n\n## 2026-10-22 · EF5560 M07 库存、杠杆与套利应用",
+          "rationale": "增加根表本批合并记录，不挪动旧记录。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "_meta/术语总表.md::05",
+          "stage": "base82"
+        },
+        {
+          "id": "main-1",
+          "old": "主动收益与超额收益的分母不同",
+          "new": "主动收益与超额收益减去的基准不同",
+          "rationale": "active/excess区别是减数，不是收益分母。",
+          "stage": "main-semantic-precision"
+        },
+        {
+          "id": "main-2",
+          "old": "通用建模须按目标列定义，不凭“超额”字样猜分母",
+          "new": "通用建模须按目标列定义，不凭“超额”字样猜被减去的基准",
+          "rationale": "同一两行易混点的对象须准确。",
+          "stage": "main-semantic-precision"
+        },
+        {
+          "id": "main-3",
+          "old": "在 EF5560 的作业/考试里写 data mining 一定是贬义；IS6400 里是中性/褒义。跨课答题先说明语境",
+          "new": "本讲批评“反复试到显著”为贬义；泛指从数据发现模式时仍可中性。跨课答题按题意和材料说明语境，不凭课程名断言所有场景。",
+          "rationale": "删除本次同一data-mining行仍继承的无条件“一定”断言，不升级未审课程。",
+          "stage": "main-semantic-precision"
+        }
+      ],
+      "proposed_sha256": "82acd94d111be95f0777cb5589d9b9b3cf7ea62c4a1256a259458b299929a0e2",
+      "proposed_file": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\proposed-final\\_meta\\术语总表.md.snapshot",
+      "line_endings": "source raw hash retained; normalize CRLF to LF in candidate if present"
+    },
+    {
+      "path": "_meta/课件题目覆盖台账.md",
+      "source_sha256": "0f0120d5d9c40d275ae6f9d36c73731d38af2e099ab932523a4f9328eb96e5b8",
+      "source_copy": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\target-originals\\_meta\\课件题目覆盖台账.md",
+      "decision": "patch-proposed",
+      "no_increment_reason": null,
+      "patches": [
+        {
+          "old": "updated: 2026-10-22",
+          "new": "updated: 2026-10-25",
+          "rationale": "更新当前题目覆盖台账日期。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "_meta/课件题目覆盖台账.md::01",
+          "stage": "base82"
+        },
+        {
+          "old": "| EF5560 M02 | p.16 离群值三问、p.26 四选一 + Discuss、p.53 课堂检查 | **完整的参考作答**：p.16 五个 SPY 极端月经脚本复算，p.26 有课堂确认，p.53 以动量做五证据演练；联合模型 OOS 不能冒充单变量成绩。 |",
+          "new": "| EF5560 M02 | 旧 p.16 离群值三问；旧 p.26／新 p.54 四选一 + Discuss；旧 p.53／新 p.55 课堂检查；新版 p.26–27 两道 MCQ | **完整的来源限定作答**：旧题保留英文题面／小问／选项、中文解析与英文参考；旧 p.26 课堂确认 C。新版 p.26–27 完整选项与中英参考 D／A，无对应新录音，不升级为教授答案。p.16 极端月经课程数据复算；课堂检查以动量示范五类证据，联合模型 OOS 不冒充单变量成绩。 |",
+          "rationale": "合并新旧页码与全部 M02 公开题面，保持答案来源等级。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "_meta/课件题目覆盖台账.md::02",
+          "stage": "base82"
+        },
+        {
+          "old": "原17源页20单元、12选择选项与全部英文参考保真；p38/39/40中文答案锚点随说明改写更新，原题原文/数字/选项未改。17条显式契约再次通过，仅用于声明源版本与字面锚点；具体余额/小买量/套利新例已实际复算。[[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式|M07]] 仍非新增官解或本人提交。",
+          "new": "原17源页20单元、12选择选项与全部英文参考保真；p38/39/40中文答案锚点随说明改写更新，原题原文/数字/选项未改。17条显式契约再次通过，仅用于声明源版本与字面锚点；具体余额/小买量/套利新例已实际复算。[[EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式|M07]] 仍非新增官解或本人提交。\n\n## 2026-10-25 · EF5560 M02 当前全篇回源\n\n旧 54 页与新 56 页均已逐页回源。新版只新增物理 p.26–27 两道 MCQ；旧 p.26 移至新 p.54，旧 p.53–54 移至新 p.55–56。当前完整原题清单为旧 p.16、旧 p.26／新 p.54、旧 p.53／新 p.55及新版 p.26–27；逐题均在 M02 §2 有英文原题／选项、中文限定与解析、英文参考答案。旧 p.26 的 C 有课堂确认；新版 D／A、离群值与课堂检查属于来源限定参考，不冒充官答。题面完成不代表恒生／CSI 完整预测或实际策略已复现。",
+          "rationale": "追加 current 全篇逐题镜像，不追改历史记录。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "_meta/课件题目覆盖台账.md::03",
+          "stage": "base82"
+        }
+      ],
+      "proposed_sha256": "a2ab0544bbdd13430795d2383ec78e6d84fce74df496ede4eee101191585a98a",
+      "proposed_file": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\proposed-final\\_meta\\课件题目覆盖台账.md.snapshot",
+      "line_endings": "source raw hash retained; normalize CRLF to LF in candidate if present"
+    },
+    {
+      "path": "_meta/转录处理规则.md",
+      "source_sha256": "b049360cffbb8add86740b035af4323ee61c64706ef97d5253f2ca4308d1c378",
+      "source_copy": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\target-originals\\_meta\\转录处理规则.md",
+      "decision": "patch-proposed",
+      "no_increment_reason": null,
+      "patches": [
+        {
+          "old": "updated: 2026-10-20",
+          "new": "updated: 2026-10-25",
+          "rationale": "更新当前转录状态镜像日期。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "_meta/转录处理规则.md::01",
+          "stage": "base82"
+        },
+        {
+          "old": "| **EF5560** | `M02-transcript-part1.txt` + `-part2.txt` | part1 `00:01→01:22:15`（379 段）<br>part2 `00:01→01:04:47`（260 段） | 合计 2h27m<br>共 **639 段** | ✅ 2026-09-11 已合并进 M02 v1.0。**part1 = 课间前、part2 = 课间后**（part1 以\"let's have a break\"结束，part2 以\"end of lecture\"结束）。⚠️ part1 首句是半句，**开头可能缺 1–3 分钟**，但 `02:58` 起已在复习 M01，讲义 p.2–3 都有；转录器给两段各起了一个内容标题，**不是两节课**，已按 §5 改名 |",
+          "new": "| **EF5560** | `M02-transcript-part1.txt` + `-part2.txt` | P1 `00:01→01:22:15`（379 段）<br>P2 `00:01→01:04:47`（260 段） | 两个独立时钟；各自无倒退或 ≥120 秒空档，不相加证明课堂完整 | ✅ 2026-09-11 已合并进 M02 v1.0。P1 = 课间前、P2 = 课间后；P1 以 “let's have a break” 结束，P2 以 “end of lecture” 结束。P1 首句是半句，**缺首长度未知**；P2 有收尾。正文另有两条 M01 转录引用（`01:43:57`、`02:12:58`），须作为跨源证据单列，不能由 P1/P2 audit 代证。 |",
+          "rationale": "纠正时长相加与 1–3 分钟估计，登记 M01 跨源引用。",
+          "expected_occurrences": 1,
+          "apply_after": "full-v2 + formal-writeback",
+          "id": "_meta/转录处理规则.md::02",
+          "stage": "base82"
+        }
+      ],
+      "proposed_sha256": "213e396a40e22b25e4cadcb3432171b910f9de9738af8dfdd93de943d3d69c93",
+      "proposed_file": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\batch3-ef-m02-sync\\proposed-final\\_meta\\转录处理规则.md.snapshot",
+      "line_endings": "source raw hash retained; normalize CRLF to LF in candidate if present"
+    }
+  ],
+  "main_additional_changes": [
+    {
+      "id": "main-1",
+      "old": "主动收益与超额收益的分母不同",
+      "new": "主动收益与超额收益减去的基准不同",
+      "rationale": "active/excess区别是减数，不是收益分母。",
+      "stage": "main-semantic-precision"
+    },
+    {
+      "id": "main-2",
+      "old": "通用建模须按目标列定义，不凭“超额”字样猜分母",
+      "new": "通用建模须按目标列定义，不凭“超额”字样猜被减去的基准",
+      "rationale": "同一两行易混点的对象须准确。",
+      "stage": "main-semantic-precision"
+    },
+    {
+      "id": "main-3",
+      "old": "在 EF5560 的作业/考试里写 data mining 一定是贬义；IS6400 里是中性/褒义。跨课答题先说明语境",
+      "new": "本讲批评“反复试到显著”为贬义；泛指从数据发现模式时仍可中性。跨课答题按题意和材料说明语境，不凭课程名断言所有场景。",
+      "rationale": "删除本次同一data-mining行仍继承的无条件“一定”断言，不升级未审课程。",
+      "stage": "main-semantic-precision"
+    }
+  ],
+  "applied_to_vault": false,
+  "pending_independent_targeted_acceptance": true
+}
