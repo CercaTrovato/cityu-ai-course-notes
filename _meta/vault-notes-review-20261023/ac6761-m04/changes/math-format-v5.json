@@ -1,0 +1,57 @@
+{
+  "source_sha256": "e0d2fa5019bdf485a0cab1c2207217616ff2ed66ada1a9b23dafee4055721398",
+  "candidate_sha256": "8cf8e2ea4f3d663c929f0d294498aea400de84c50eed73817b961cff785e0e98",
+  "ops": [
+    {
+      "old": "`Assets = Liabilities + Equity`",
+      "new": "$\\text{Assets}=\\text{Liabilities}+\\text{Equity}$",
+      "occurrences": 2
+    },
+    {
+      "old": "`A = L + E`",
+      "new": "$A=L+E$（A为资产、L为负债、E为权益）",
+      "occurrences": 1
+    },
+    {
+      "old": "`amount − cost`",
+      "new": "$\\text{amount}-\\text{cost}$",
+      "occurrences": 1
+    },
+    {
+      "old": "`fact = (候选键值, 另一个属性值)`",
+      "new": "$\\text{fact}=(\\text{候选键值},\\text{另一个属性值})$",
+      "occurrences": 1
+    },
+    {
+      "old": "`fact = (候选键值, 另一属性值)`",
+      "new": "$\\text{fact}=(\\text{候选键值},\\text{另一属性值})$",
+      "occurrences": 1
+    },
+    {
+      "old": "```\n资产 ↓8（存货）  =  负债 不变  +  权益 ↓8（费用增加使权益减少）\n```",
+      "new": "存货使资产减少8，费用增加使权益减少8，负债不变。\n\n$$\n\\text{资产变动}=-8,\\qquad \\text{负债变动}=0,\\qquad \\text{权益变动}=-8\n$$\n\n左右核对为 $-8=0+(-8)$。",
+      "occurrences": 1
+    },
+    {
+      "old": "```\n资产 ↑10（应收）  =  负债 不变  +  权益 ↑10（收入增加使权益增加）\n```",
+      "new": "应收使资产增加10，收入使权益增加10，负债不变。\n\n$$\n\\text{资产变动}=10,\\qquad \\text{负债变动}=0,\\qquad \\text{权益变动}=10\n$$\n\n左右核对为 $10=0+10$。",
+      "occurrences": 1
+    },
+    {
+      "old": "资产：−8（存货）+10（应收）= +2\n权益：−8（费用）+10（收入）= +2   ⇒ 这 +2 就是这笔生意的毛利",
+      "new": "- 给货阶段资产净变动 $-8+10=2$：存货减少8、应收增加10。\n- 同阶段权益净变动 $-8+10=2$：费用使其减少8、收入使其增加10；本简例的毛利是2。",
+      "occurrences": 1
+    },
+    {
+      "old": "✅ 等式两边都 +2。**毛利 = 10 − 8 = 2，从等式里自然浮现出来。**",
+      "new": "✅ 两边都增加2，本例毛利为 $10-8=2$。",
+      "occurrences": 1
+    },
+    {
+      "old": "资产：+10（现金）−10（应收）= 0\n负债：不变\n权益：不变",
+      "new": "资产中现金增加10、应收减少10：\n\n$$\n\\text{资产净变动}=10-10=0\n$$\n\n负债和权益均不变。",
+      "occurrences": 1
+    }
+  ],
+  "preservation": "actual SQL/Python and journal-entry formatting retained; original quoted text and case inputs unchanged; sign/object labels explicit; A/L/E wakeup added"
+}

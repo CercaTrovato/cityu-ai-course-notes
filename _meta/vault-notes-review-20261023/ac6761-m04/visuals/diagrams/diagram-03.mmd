@@ -1,0 +1,14 @@
+flowchart LR
+    subgraph GIVE["Give（给出 · 经济减量）"]
+        direction LR
+        INV["Economic Resource<br/><b>Inventory</b>"] --- SALE["Economic Event<br/><b>Sale</b>"]
+        SALE --- EMP1["Inside Agent<br/><b>Employee</b>"]
+        SALE --- CUS1["Outside Agent<br/><b>Customer</b>"]
+    end
+    subgraph GET["Get（得到 · 经济增量）"]
+        direction LR
+        CASH["Economic Resource<br/><b>CASH</b>"] --- CR["Economic Event<br/><b>Cash Receipt</b>"]
+        CR --- CUS2["Outside Agent<br/><b>Customer</b>"]
+        CR --- EMP2["Inside Agent<br/><b>Employee</b>"]
+    end
+    SALE ---|"duality"| CR

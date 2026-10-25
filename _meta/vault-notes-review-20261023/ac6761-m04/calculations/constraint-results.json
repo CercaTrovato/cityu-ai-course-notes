@@ -1,0 +1,114 @@
+{
+  "asof_receivables": {
+    "jan_rows": [
+      [
+        "S1",
+        100,
+        70,
+        30
+      ],
+      [
+        "S2",
+        200,
+        0,
+        200
+      ]
+    ],
+    "jan_total_ar": 230,
+    "feb_rows": [
+      [
+        "S1",
+        100,
+        100,
+        0
+      ],
+      [
+        "S2",
+        200,
+        200,
+        0
+      ]
+    ],
+    "feb_total_ar": 0,
+    "receipt_balances": [
+      [
+        "R1",
+        40,
+        40,
+        0
+      ],
+      [
+        "R2",
+        30,
+        30,
+        0
+      ],
+      [
+        "R3",
+        250,
+        230,
+        20
+      ],
+      [
+        "R4",
+        1000,
+        0,
+        1000
+      ]
+    ]
+  },
+  "one_to_many": {
+    "two_receipts_same_sale": [
+      [
+        "R1",
+        "S1"
+      ],
+      [
+        "R2",
+        "S1"
+      ]
+    ],
+    "null_sale_error": "NOT NULL constraint failed: CashReceipt.saleID",
+    "orphan_sale_error": "FOREIGN KEY constraint failed"
+  },
+  "one_to_one": {
+    "parent_without_child_is_allowed": [
+      [
+        "P2"
+      ]
+    ],
+    "second_child_same_parent_error": "UNIQUE constraint failed: Child.parentID"
+  },
+  "over_allocation": {
+    "rows_allowed_by_local_constraints": [
+      [
+        "S1",
+        "R1",
+        5
+      ]
+    ],
+    "receipt_overallocated_by": 4
+  },
+  "load": {
+    "950_of_1000": 0.95,
+    "30_of_1000": 0.03
+  },
+  "current_fk_mode_clarification": [
+    {
+      "foreign_keys": false,
+      "rejected_orphan": false,
+      "error": null
+    },
+    {
+      "foreign_keys": true,
+      "rejected_orphan": true,
+      "error": "FOREIGN KEY constraint failed"
+    }
+  ],
+  "engine": "3.49.1",
+  "rounding": {
+    "two_of_three_pct": 66.66666666666666,
+    "display_about_67": 67,
+    "three_of_four_pct": 75.0
+  }
+}

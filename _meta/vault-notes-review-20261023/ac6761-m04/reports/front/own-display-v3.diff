@@ -1,0 +1,24 @@
+--- bound-display-v2
++++ display-v3
+@@ -2388,7 +2388,11 @@
+ 
+ **🎙️ 课堂补充**（S6 `30:22`–`31:09`，约 0.8 分钟，B · 讲了同讲义）
+ 
+-教授照 p.36 定义关系数据库、主键与外键：*"a foreign key in the table is the primary key from a different table that has been posted into the table to create a link between the two tables."*（S6 `31:00`）。**这段改变了什么**：补上直接课堂覆盖，定义与正文一致。
++教授照 p.36 定义关系数据库、主键与外键，说明外键取自另一表的主键，再放进本表以连接两表：
++
++> *"a foreign key in the table is the primary key from a different table that has been posted into the table to create a link between the two tables."*（S6 `31:00`）
++
++**这段改变了什么**：补上直接课堂覆盖，定义与正文一致。
+ 
+ **⚠️ 常见误解**
+ - ❌ "外键必须叫和主键一样的名字"。→ 不必，但**实务上通常保持一致**以便阅读。讲义 p.38 的例子里，Salesperson 表的主键叫 `SalespersonID`，过账到 Sale 表里那一列叫 `Salesperson`——**名字就不完全一样**。
+@@ -4728,7 +4732,7 @@
+ 
+ Emily 那一行的 `Degree Earned` 格里其实藏着 3 个事实：`(2, BA)`、`(2, MBA)`、`(2, PhD)`。
+ 
+-**后果**：`WHERE Degree='MBA'` 查不到；统计不了；新增学位要改字符串；格式无法统一。
++**后果**：`WHERE Degree='MBA'` 把整格与 `MBA` 比较，因此 `BS,MBA` 与 `BA,MBA,PhD` 两格都不相等。直接按原字符串分组会把两种组合各算一组，不能直接得到每种学位的人数。仍可另写拆分解析或校验规则，但需要额外处理；新增学位也要改同一字符串。
+ 
+ **改法**：拆成两张表
+ ```

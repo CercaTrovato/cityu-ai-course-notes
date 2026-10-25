@@ -1,0 +1,114 @@
+{
+  "source_sha256": "9f1f03d7c76a5a24f7536d0d4152856d1917de271b8facbc9c919f29b8f9a509",
+  "candidate_sha256": "b7336531f748257e93f7687a4900ac165acc8dc77803bb712d115ab6b5120ec1",
+  "ops": [
+    {
+      "old": "**⚠️ 这道题是四道里最贴近真实企业的**：绝大多数公司都既有赊销、又有分期、又有合并付款、还有销售以外的现金来源。**练习 1 的 `1..1–1..1` 反而是最不现实的。**",
+      "new": "**⚠️ 练习4同时允许四种业务情形，练习1的规则更严格。** 企业应按自身业务规则建模；本讲未给行业占比，不能据此断言绝大多数企业采用哪组端点。"
+    },
+    {
+      "old": "**⇒ 一行有几个非主键的列，就有几个事实。**",
+      "new": "**⇒ 在这个只含本销售属性的简表中，SaleID 分别与三个非键值配对。** 不能把它扩成所有混合表均以本表主键决定每个属性的规则；下面客户例要换到客户对象的身份来判断。"
+    },
+    {
+      "old": "**⭐ 违规点**：\n\n- 事实 `(C422, Andy)`",
+      "new": "**⭐ 先分清两种身份（笔记补充）**：SaleID 标识一次销售，CustomerID 标识一个客户。CustomerID 在 Sale 表可重复，所以**它不是这张 Sale 表的候选键**；它原本可以是 Customer 表的候选键。把客户姓名/地址混进多笔销售，会重复记录同一客户的属性事实。`(8532,C422)` 和 `(14332,C422)` 是两笔不同销售各归哪个客户，不能混成同一个销售事实。\n\n**⭐ 违规点**：\n\n- 事实 `(C422, Andy)`"
+    },
+    {
+      "old": "⇒ ⚠️ **注意 `custID` 这一列仍然重复出现（C422 两次），这不算违规**——因为它是外键，是\"指针\"，不是被复制的事实。**被复制的是 name 和 address，那才是问题。**",
+      "new": "⇒ ⚠️ **Sale 中 custID 可重复**：每个不同 SaleID 指向 C422 是不同的销售归属事实。Customer 表的 `(C422,Andy)`、`(C422,地址)` 只保存一次；不是“任何外键都不代表事实”，也不是“不同客户姓名相同就重复事实”。"
+    },
+    {
+      "old": "`39:18`–`41:22` 为演示空档",
+      "new": "`39:18`–`41:22` 为性质未核的 ASR 空档，未核听，不能判为演示或无讲话"
+    },
+    {
+      "old": "**English reference answer（原件官解）**：Yes. The row for Stephen violates entity integrity because its primary key, CustomerID, is null.",
+      "new": "**官解原文**：`Violate entity integrity.`\n\n**English reference answer（按官解结论自拟完整句）**：Yes. The row for Stephen violates entity integrity because its primary key, CustomerID, is null."
+    },
+    {
+      "old": "**⭐ 规则二（最小多重性）：优先从\"强制参与（最小 = 1）\"的那一侧过账，以避免外键列出现空值。**",
+      "new": "**⭐ 规则二（本讲减少空值的布局偏好）**：在满足最大多重性、可行方向等条件下，优先选择使接收表每行都有外键值的方向。它借用 min 信息比较空值，不等于可放弃业务规定的最小参与次数。"
+    },
+    {
+      "old": "最大多重性规则  ——  硬约束，绝不能违反（违反 = 产生重复组 = 数据库不可用）\n最小多重性规则  ——  业务参与约束，不能因存储布局而放弃；外键/Required 无法执行父侧“至少一个子项”时，还要用额外验证或流程控制",
+      "new": "方向可行性：不能把多端多个键塞入一端单格；可用一端键过账或关联表落实关系\n布局偏好：在可行方案中减少外键空值，可为整体存储方案让步\n业务最小参与：是独立要求，选哪种布局都仍须落实；父侧至少一子项通常另核"
+    },
+    {
+      "old": "**⇒ `1..1` 这两个数字，一个（最小 1）保证非空，一个（最大 1）保证唯一。所以从它过账两全其美。**",
+      "new": "**⇒ 此处最小1要求本行有引用值，最大1要求本行至多一个引用值。** 后者不是整列 UNIQUE；是否一对一及父侧至少一个子项仍须另落实。"
+    },
+    {
+      "old": "**期中考如果考\"给一张表指出问题\"，这个例子的形态最可能被复用。**",
+      "new": "可用它练习“给表指出问题”；这只是笔记选题建议，不是教师对出题概率或题型的承诺。"
+    },
+    {
+      "old": "它是**一笔与任何销售无关的现金流入**——可能是银行贷款、股东注资、利息收入、政府补助、或者卖了一台旧设备。金额 \\$1,000 远大于其他三笔（$10/$15/\\$12），**明显是讲义有意设计的\"异常大额\"，用来暗示它不是日常销售收款**。",
+      "new": "原表只显示 **CR4 没有关联 Sale**，不能由金额1,000较大推断具体来源或作者意图。贷款、注资等只是可能的非销售收款例；要确定本笔性质仍需原业务凭证。它在当前图中无Sale联系，才是讨论可空外键的直接依据。"
+    },
+    {
+      "old": "**历史导向**：报过去业绩，不给实时经营洞察",
+      "new": "**历史导向**：主表着重过去业绩；仅凭该汇总不能回答全部实时运营问题，实际系统可另有实时明细"
+    },
+    {
+      "old": "① **一事多地**：客户姓名在多行重复（p.41）",
+      "new": "① **一事多地**：同一 CustomerID 对应的同一客户姓名/地址在多笔销售行重复（p.41）；不同ID的同名客户另判"
+    },
+    {
+      "old": "- **最小多重性**：它是业务参与约束。存储方向可为减少空值而选择，但若 FK/Required 不能保证父侧至少一个子项，须另用查询、表单流程或约束核验；载荷偏好不改变业务 min",
+      "new": "- **减少空值的布局偏好**：讲义称 minimum rule；可在可行方向中权衡载荷，但不取消业务 min。\n- **业务最小参与**：例如父对象至少一个子项，FK/Required若不能保证，须另用查询、表单流程或约束核验。"
+    },
+    {
+      "old": "考试可用的英文定义（优先讲义原句）：A primary key formed by posting the primary keys of the two related class tables into the association table.",
+      "new": "笔记整理的一般英文定义：A primary key consisting of two or more columns that jointly identify a row. In the lecture's many-to-many conversion example, it combines the foreign keys copied from the related class tables.\n\n一般定义不是“必来自两张主表”：`(saleID,lineNo)`也可为复合主键；完整组合才唯一，不能把其中一列单独当键。"
+    },
+    {
+      "old": "5. 结论：不是替代关系，而是内部系统（REA）喂外部报告（复式记账）",
+      "new": "5. 条件结论：本讲简化科目汇总与事件资料回答不同问题；正确采集的细粒度数据可衔接汇总/对外报告，并非唯一架构，也不自动改变确认与列报规则"
+    },
+    {
+      "old": "**不是同一件事，但同源。** 两者都表达\"经济活动是交换\"这一事实，**但配平的对象不同**：",
+      "new": "**不是同一机制，不能由词根推断同源。** 本曲奇交换例中，借贷核一次记录内的金额平衡；duality关联Sale与CashReceipt，不把两个事件当借和贷："
+    },
+    {
+      "old": "| 约束强度 | 金额必须严格相等 | duality 关联**不要求金额相等**（一笔 \\$10 的销售可以对应两笔 \\$5 的收款） |",
+      "new": "| 约束对象 | 每次记录借方合计等于贷方合计；仍另核漏错 | 销售10先收5尚欠5，再收5才结清；单次关联可只应用部分，累计应用不能超过销售/实收，标结清才要求相等 |"
+    },
+    {
+      "old": "**在 Step 5 起作用**（讲义 p.53）：当关联的一侧或两侧是 `0..1` 时，最大规则要求从 `0..1` 那侧过账，但最小规则说这样会产生空值。冲突时看载荷：",
+      "new": "**在 Step 5 起作用**（讲义 p.53）：先排除 Step2–4 已处理的模式，**剩余**含 `0..1` 的五种模式才比较载荷。最大规则限制可行方向；为减少空值提出的布局偏好可以让步，业务最小参与仍须落实："
+    },
+    {
+      "old": "本题 Sale 端最小参与为 0，所以无需强迫每笔 Sale 已有收款。",
+      "new": "本题**每笔 Sale 可对应0个 CashReceipt，0贴在CR端；Sale端仍为1**。因此不强迫每笔Sale已有收款，不能把“谁的参与次数”与“数字贴谁旁边”混说。"
+    },
+    {
+      "old": "并说明复式记账丢了哪些信息。",
+      "new": "并说明仅凭本题简化的科目金额汇总不能直接回答哪些业务细节。"
+    },
+    {
+      "old": "> - 另有 **2 节是笔记补充**（§2.4.5 REA 版本的曲奇例子、§2.10.12 决策树），无对应讲义页，已在表末单列",
+      "new": "> - 另有 **3 节是笔记补充**（§2.4.5业务行、§2.9.9实现与SQL、§2.10.12决策树），无对应讲义页，已在表末单列"
+    },
+    {
+      "old": "**① 🔴 p.2–p.5 四页含有零宽空格，排版特征与 AI 聊天输出高度一致**\n\n这四页（也**只有**这四页）的文本里含有 **U+200B 零宽空格**，分布如下：p.2 有 7 个、p.3 有 11 个、p.4 有 16 个、p.5 有 26 个；**全份 53 页的其他 49 页一个都没有**。\n\n出现的位置很有规律，例如：\n- `​​Core Principle​​:`（\"Core Principle\" 前后各两个零宽空格 —— 这是 **Markdown 粗体标记 `**…**` 被转换后残留的痕迹**）\n- `​​Limited scope​​:`、`​​Historical focus​​:`、`​​Holistic view​​:` 同样模式\n- 句尾出现**孤立的空格**：`integrates with tax reporting ` / `real-time operational insights ` / `bottlenecks in production ` —— **像是引用角标被删掉后留下的空位**\n\n**⇒ 客观结论**：这四页的文本很可能是从某个支持 Markdown 的对话式工具里**复制粘贴**进 PPT 的，粘贴时粗体标记与引用角标丢失、零宽空格残留。\n\n**⇒ 对学习的影响**：这四页是全章的论点摘要，**内容本身是自洽且合理的**（与 p.9 McCarthy 的原始主张、与 §2.1.2/2.1.4 的分析都对得上），**不需要因此怀疑其正确性**。但**引用其中的具体数字要谨慎**——见下一条。\n\n",
+      "new": "**① p.2–p.5 的文本含零宽空格，来源/转换过程未核**\n\n这些页可观察到 U+200B 零宽空格及部分句尾空格。这只证明文件中存在这些字符，不能由此确定用了什么生成工具、经历了何种粗体转换或删引用过程。\n\n学习时分别回源核每个主张；形式相似或文内自洽都不能认证正确性。下面15%例子仍因缺可追溯证据而保留来源限制，不据排版判它出自某种工具。\n\n\n"
+    },
+    {
+      "old": "而这一页恰恰是 ① 里零宽空格最密集的一页（26 个）。",
+      "new": "排版特征不能补足量化断言的来源。"
+    },
+    {
+      "old": "**⑤ 🟡 p.12–p.16 的曲奇例子与生活常识矛盾**",
+      "new": "**⑤ p.12–p.16 同日两动作不能单独推出信用政策**"
+    },
+    {
+      "old": "> 🔧 **2026-09-11 按「预习可读性」规则重写 §2**",
+      "new": "> **历史验收口径提示**：以下为当时规则下的记录，不代表满足2026-10-22现行独立审查，也不作为本次放行依据。\n>\n> 🔧 **2026-09-11 按「预习可读性」规则重写 §2**"
+    },
+    {
+      "old": "#### 2.9.9 曲奇事件落地：统一 schema 与可执行 SQL（笔记补充）\n\n现在已经学过表、行、列、主键、外键与完整性，才进入实现。以下只使用一套字段名；`Sale` 不另存 `amount`，销售金额由 `SaleLine` 汇总，避免表头金额与明细金额成为两套权威事实。\n\n**一行粒度与键**\n\n| 表 | 一行代表什么 | 主键 | 关键外键/约束 |\n|---|---|---|---|\n| Inventory | 一种商品 | `itemID` | — |\n| Employee | 一名员工 | `empID` | — |\n| Customer | 一名客户 | `custID` | — |\n| CashAccount | 一个现金资源账户 | `cashAccountID` | — |\n| Sale | 一次销售事件 | `saleID` | `empID`、`custID` 均 NOT NULL FK |\n| SaleLine | 一次销售中的一条商品明细 | `(saleID,lineNo)` | `saleID`、`itemID` 为 NOT NULL FK；数量/单价/成本非负 |\n| CashReceipt | 一次收款事件 | `receiptID` | `cashAccountID`、`empID`、`custID` 为 NOT NULL FK；金额非负 |\n| Duality | 一笔收款应用到一笔销售的一次分配 | `(saleID,receiptID)` | 两列均 FK；`amountApplied>0` |\n\n```sql\nPRAGMA foreign_keys = ON;\nCREATE TABLE Inventory(itemID TEXT PRIMARY KEY, description TEXT NOT NULL, currentReferenceCost NUMERIC NOT NULL);\nCREATE TABLE Employee(empID TEXT PRIMARY KEY, name TEXT NOT NULL);\nCREATE TABLE Customer(custID TEXT PRIMARY KEY, name TEXT NOT NULL);\nCREATE TABLE CashAccount(cashAccountID TEXT PRIMARY KEY, name TEXT NOT NULL);\nCREATE TABLE Sale(\n  saleID TEXT PRIMARY KEY, saleDate TEXT NOT NULL, location TEXT NOT NULL,\n  empID TEXT NOT NULL REFERENCES Employee(empID),\n  custID TEXT NOT NULL REFERENCES Customer(custID)\n);\nCREATE TABLE SaleLine(\n  saleID TEXT NOT NULL REFERENCES Sale(saleID), lineNo INTEGER NOT NULL,\n  itemID TEXT NOT NULL REFERENCES Inventory(itemID), quantity NUMERIC NOT NULL CHECK(quantity>0),\n  unitPrice NUMERIC NOT NULL CHECK(unitPrice>=0), unitCost NUMERIC NOT NULL CHECK(unitCost>=0),\n  PRIMARY KEY(saleID,lineNo)\n);\nCREATE TABLE CashReceipt(\n  receiptID TEXT PRIMARY KEY, receiptDate TEXT NOT NULL, amount NUMERIC NOT NULL CHECK(amount>=0),\n  cashAccountID TEXT NOT NULL REFERENCES CashAccount(cashAccountID),\n  empID TEXT NOT NULL REFERENCES Employee(empID), custID TEXT NOT NULL REFERENCES Customer(custID)\n);\nCREATE TABLE Duality(\n  saleID TEXT NOT NULL REFERENCES Sale(saleID),\n  receiptID TEXT NOT NULL REFERENCES CashReceipt(receiptID),\n  amountApplied NUMERIC NOT NULL CHECK(amountApplied>0),\n  PRIMARY KEY(saleID,receiptID)\n);\n```\n\n**曲奇查询**：`JOIN ... ON` 只把键相同的行拼起来；它不会自动把金额相加。\n\n```sql\nSELECT s.saleID, i.description, e.name AS employee, c.name AS customer,\n       sl.quantity,\n       sl.quantity*sl.unitPrice AS revenue,\n       sl.quantity*sl.unitCost AS cost\nFROM Sale AS s\nJOIN SaleLine AS sl ON sl.saleID=s.saleID\nJOIN Inventory AS i ON i.itemID=sl.itemID\nJOIN Employee AS e ON e.empID=s.empID\nJOIN Customer AS c ON c.custID=s.custID\nWHERE s.saleID='S001';\n```\n\n运行输出 `S001 | Cookie | Paul | Joe | 1 | 10 | 8`，所以毛利为 2。\n\n**截止日应收**：先按销售汇总明细金额，再按销售汇总截至 `:asof` 的应用额；两个汇总都变成“每笔销售一行”后才连接，避免把销售金额重复计算。\n\n```sql\nWITH sale_total AS (\n  SELECT s.saleID, s.saleDate, SUM(sl.quantity*sl.unitPrice) AS saleAmount\n  FROM Sale AS s JOIN SaleLine AS sl ON sl.saleID=s.saleID\n  WHERE s.saleDate<=:asof\n    AND s.saleID IN ('S1','S2')\n  GROUP BY s.saleID, s.saleDate\n), applied AS (\n  SELECT d.saleID, SUM(d.amountApplied) AS appliedAmount\n  FROM Duality AS d\n  JOIN CashReceipt AS r ON r.receiptID=d.receiptID\n  WHERE r.receiptDate<=:asof\n  GROUP BY d.saleID\n)\nSELECT st.saleID, st.saleAmount, COALESCE(a.appliedAmount,0) AS applied,\n       st.saleAmount-COALESCE(a.appliedAmount,0) AS accountsReceivable\nFROM sale_total AS st\nLEFT JOIN applied AS a ON a.saleID=st.saleID\nORDER BY st.saleID;\n```\n\n教学变式为 S1=100、S2=200；1 月累计应用 S1=70，S2=0，所以 1 月 31 日应收为 30+200=230。2 月再应用 S1=30、S2=200 后，两笔销售应收均为 0。\n\n**收款未应用余额**也要单独核：\n\n```sql\nSELECT r.receiptID, r.amount, COALESCE(SUM(d.amountApplied),0) AS applied,\n       r.amount-COALESCE(SUM(d.amountApplied),0) AS unapplied\nFROM CashReceipt AS r\nLEFT JOIN Duality AS d ON d.receiptID=r.receiptID\nWHERE r.receiptID IN ('R1','R2','R3','R4')\nGROUP BY r.receiptID, r.amount\nORDER BY r.receiptID;\n```\n\n本例得到 R1 余 0、R2 余 0、R3 余 20、其他来源 R4 余 1,000。`PRIMARY KEY`、`FOREIGN KEY`、`NOT NULL` 和 `CHECK(amountApplied>0)` 仍不足以保证金额守恒：还要在事务或触发器中检查每笔收款的应用合计不超过收款金额、每笔销售的应用合计不超过销售金额；标成已结清时才要求相等。若要保留同一销售–收款配对的多次冲销历史，应改用 `allocationID` 并增加生效时间，不能硬塞进当前双键粒度。\n\n**实跑边界**：上述 schema、曲奇查询、截止日应收和收款余款已在 scratch 的 SQLite 内存库运行，证据见 `author/schema-run-evidence.json`。SQLite 结果不证明 Access 的日期字面量或数据类型语法相同；移植到 Access 时要改物理层语法，逻辑行粒度与键关系不变。\n\n**所以呢**：统一 schema 使商品、人员、销售、收款和分配可以回查；先聚合再连接避免重复金额，金额守恒还需跨行检查。\n\n---\n\n",
+      "new": "#### 2.9.9 曲奇事件落地：统一 schema 与可执行 SQL（笔记补充）\n\n现在已经学过表、行、列、主键、外键与完整性，才进入实现。以下只使用一套字段名；`Sale` 不另存 `amount`，销售金额由 `SaleLine` 汇总，避免表头金额与明细金额成为两套权威事实。\n\n**从零读实现（笔记补充）**：这里是 SQLite 教学演示，不是讲义原题，也不是 Access 原样代码。把数据放进表后，要回答三问：曲奇卖给谁/成本多少、截至某日两笔销售还欠多少、每笔收款还有多少未应用。下面先讲语法和数据，再给查询；折叠块给完整可运行 Python 脚本，只依赖标准库 `sqlite3`。\n\n- `CREATE TABLE` 创建表；`TEXT/NUMERIC/INTEGER` 是本演示选用类型，SQLite类型行为不等同所有数据库。`PRIMARY KEY` 选行身份；这里**显式 NOT NULL**，避免普通SQLite文本主键可能接受NULL的例外。复合键每列也已非空。\n- `REFERENCES 表(列)` 是外键；本演示用 `PRAGMA foreign_keys=ON` 开启检查。`CHECK`检查一行给定条件，例如数量 `>0`、单价/成本 `>=0`；它们不自动核跨行应用总额。\n- `INSERT INTO ... VALUES` 加入给定顺序的一行；单引号包文字（包括日期字符串），逗号分列，分号结束语句。全部日期统一为补零的 `YYYY-MM-DD`，本例才可用文本次序比较日期；不能把任意日期文本都这样比。\n- 读查询先找 `FROM` 的起始表，再按 `JOIN ... ON` 条件拼相同编号的行；`AS s` 给表取短名，`s.saleID` 指这张表的列。接着看 `WHERE` 筛哪些行，`SELECT` 输出哪些列/计算，`AS revenue` 给输出列命名；这只是理解顺序，不承诺数据库物理执行顺序。\n\n**两组输入分开**：S001/R001 是10/8曲奇故事的补充数据库表达；S1/S2与R1–R4是用于截止日/部分应用的自拟变式，不是讲义p.52原表。沿用此前作者实际脚本的输入，现完整放入正文，不要求读者依赖库外隐藏文件。此补例假设分配在收款同日生效且以后不重分配；若真实系统保存重分配历史，须另记分配生效时间，当前表不能完整重建所有历史时点。\n\n**一行粒度与键**\n\n| 表 | 一行代表什么 | 主键 | 关键外键/约束 |\n|---|---|---|---|\n| Inventory | 一种商品 | `itemID` | — |\n| Employee | 一名员工 | `empID` | — |\n| Customer | 一名客户 | `custID` | — |\n| CashAccount | 一个现金资源账户 | `cashAccountID` | — |\n| Sale | 一次销售事件 | `saleID` | `empID`、`custID` 均 NOT NULL FK |\n| SaleLine | 一次销售中的一条商品明细 | `(saleID,lineNo)` | `saleID`、`itemID` 为 NOT NULL FK；数量严格为正，单价/成本可为0 |\n| CashReceipt | 一次收款事件 | `receiptID` | `cashAccountID`、`empID`、`custID` 为 NOT NULL FK；金额非负 |\n| Duality | 一笔收款应用到一笔销售的一次分配 | `(saleID,receiptID)` | 两列均 FK；`amountApplied>0` |\n\n```sql\nPRAGMA foreign_keys = ON;\nCREATE TABLE Inventory(itemID TEXT NOT NULL PRIMARY KEY, description TEXT NOT NULL, currentReferenceCost NUMERIC NOT NULL);\nCREATE TABLE Employee(empID TEXT NOT NULL PRIMARY KEY, name TEXT NOT NULL);\nCREATE TABLE Customer(custID TEXT NOT NULL PRIMARY KEY, name TEXT NOT NULL);\nCREATE TABLE CashAccount(cashAccountID TEXT NOT NULL PRIMARY KEY, name TEXT NOT NULL);\nCREATE TABLE Sale(\n  saleID TEXT NOT NULL PRIMARY KEY, saleDate TEXT NOT NULL, location TEXT NOT NULL,\n  empID TEXT NOT NULL REFERENCES Employee(empID),\n  custID TEXT NOT NULL REFERENCES Customer(custID)\n);\nCREATE TABLE SaleLine(\n  saleID TEXT NOT NULL REFERENCES Sale(saleID), lineNo INTEGER NOT NULL,\n  itemID TEXT NOT NULL REFERENCES Inventory(itemID), quantity NUMERIC NOT NULL CHECK(quantity>0),\n  unitPrice NUMERIC NOT NULL CHECK(unitPrice>=0), unitCost NUMERIC NOT NULL CHECK(unitCost>=0),\n  PRIMARY KEY(saleID,lineNo)\n);\nCREATE TABLE CashReceipt(\n  receiptID TEXT NOT NULL PRIMARY KEY, receiptDate TEXT NOT NULL, amount NUMERIC NOT NULL CHECK(amount>=0),\n  cashAccountID TEXT NOT NULL REFERENCES CashAccount(cashAccountID),\n  empID TEXT NOT NULL REFERENCES Employee(empID), custID TEXT NOT NULL REFERENCES Customer(custID)\n);\nCREATE TABLE Duality(\n  saleID TEXT NOT NULL REFERENCES Sale(saleID),\n  receiptID TEXT NOT NULL REFERENCES CashReceipt(receiptID),\n  amountApplied NUMERIC NOT NULL CHECK(amountApplied>0),\n  PRIMARY KEY(saleID,receiptID)\n);\n```\n\n**完整输入（按上面的列顺序）**：\n\n```sql\nINSERT INTO Inventory VALUES ('C01','Cookie',8),('X01','Example item',0);\nINSERT INTO Employee VALUES ('E01','Paul');\nINSERT INTO Customer VALUES ('U01','Joe');\nINSERT INTO CashAccount VALUES ('CA01','Store cash');\nINSERT INTO Sale VALUES\n ('S001','2013-01-01','Festival Walk 7-11','E01','U01'),\n ('S1','2013-01-02','Example','E01','U01'),\n ('S2','2013-01-03','Example','E01','U01');\nINSERT INTO SaleLine VALUES\n ('S001',1,'C01',1,10,8),('S1',1,'X01',1,100,0),('S2',1,'X01',1,200,0);\nINSERT INTO CashReceipt VALUES\n ('R001','2013-01-01',10,'CA01','E01','U01'),\n ('R1','2013-01-03',40,'CA01','E01','U01'),\n ('R2','2013-01-04',30,'CA01','E01','U01'),\n ('R3','2013-02-01',250,'CA01','E01','U01'),\n ('R4','2013-01-04',1000,'CA01','E01','U01');\nINSERT INTO Duality VALUES\n ('S001','R001',10),('S1','R1',40),('S1','R2',30),('S1','R3',30),('S2','R3',200);\n```\n\nR1的40与R2的30在1月应用给S1；2月R3的250中，30给S1、200给S2，余20；R4没有应用行。编号相近不代表自动配对，Duality每行明确是哪两个事件及应用多少。\n\n**曲奇查询**：`JOIN ... ON` 只把键相同的行拼起来；它不会自动把金额相加。\n\n```sql\nSELECT s.saleID, i.description, e.name AS employee, c.name AS customer,\n       sl.quantity,\n       sl.quantity*sl.unitPrice AS revenue,\n       sl.quantity*sl.unitCost AS cost\nFROM Sale AS s\nJOIN SaleLine AS sl ON sl.saleID=s.saleID\nJOIN Inventory AS i ON i.itemID=sl.itemID\nJOIN Employee AS e ON e.empID=s.empID\nJOIN Customer AS c ON c.custID=s.custID\nWHERE s.saleID='S001';\n```\n\n沿一行走：先筛Sale的S001，按saleID接到一条SaleLine；商品C01接到Cookie，员工E01接到Paul，客户U01接到Joe。数量1×单价10得revenue10，数量1×成本8得cost8；输出 `S001 | Cookie | Paul | Joe | 1 | 10 | 8`，毛利2。`JOIN`若找不到对应键会丢掉该行，不能以查询有输出代替完整性检查。\n\n**读汇总再读应收**：`SUM`把同组金额相加，`GROUP BY`决定一组是谁；`WITH 名称 AS (...)`给临时查询结果命名，不创建持久表。`LEFT JOIN`保留左边每笔销售，即使还没有任何应用；右边缺行会给NULL，`COALESCE(值,0)`在本业务含义下把“尚无应用”当0。`:asof`是运行时要提供的截止日参数，不是表中已有列。\n\n**截止日应收**：先按销售汇总明细金额，再按销售汇总截至 `:asof` 的应用额；两个汇总都变成“每笔销售一行”后才连接，避免把销售金额重复计算。\n\n```sql\nWITH sale_total AS (\n  SELECT s.saleID, s.saleDate, SUM(sl.quantity*sl.unitPrice) AS saleAmount\n  FROM Sale AS s JOIN SaleLine AS sl ON sl.saleID=s.saleID\n  WHERE s.saleDate<=:asof\n    AND s.saleID IN ('S1','S2')\n  GROUP BY s.saleID, s.saleDate\n), applied AS (\n  SELECT d.saleID, SUM(d.amountApplied) AS appliedAmount\n  FROM Duality AS d\n  JOIN CashReceipt AS r ON r.receiptID=d.receiptID\n  WHERE r.receiptDate<=:asof\n  GROUP BY d.saleID\n)\nSELECT st.saleID, st.saleAmount, COALESCE(a.appliedAmount,0) AS applied,\n       st.saleAmount-COALESCE(a.appliedAmount,0) AS accountsReceivable\nFROM sale_total AS st\nLEFT JOIN applied AS a ON a.saleID=st.saleID\nORDER BY st.saleID;\n```\n\n给 `asof=2013-01-31`：sale_total中S1=100、S2=200，每笔一行；applied只有S1=40+30=70，S2没有行。左连接并填0后输出S1:100/70/30、S2:200/0/200，总应收230。给 `2013-02-28`，applied分别变100和200，两笔应收均0。先汇总可避免一笔销售因多条应用行而被重复加总；若直接把原始销售明细与多条应用行交叉连接，同一金额可能出现多次。\n\n**收款未应用余额**也要单独核：从CashReceipt起，LEFT JOIN保留没有任何Duality行的R4；按receiptID及amount分组后求已应用合计，空组补0，最后原实收减已应用。下式对当前已载入的全部记录求余额，不是截至1月31日的历史余额：\n\n```sql\nSELECT r.receiptID, r.amount, COALESCE(SUM(d.amountApplied),0) AS applied,\n       r.amount-COALESCE(SUM(d.amountApplied),0) AS unapplied\nFROM CashReceipt AS r\nLEFT JOIN Duality AS d ON d.receiptID=r.receiptID\nWHERE r.receiptID IN ('R1','R2','R3','R4')\nGROUP BY r.receiptID, r.amount\nORDER BY r.receiptID;\n```\n\n本例得到 R1 余 0、R2 余 0、R3 余 20、未关联销售的 R4 余 1,000（该补例不再推断其具体业务性质）。`PRIMARY KEY`、`FOREIGN KEY`、`NOT NULL` 和 `CHECK(amountApplied>0)` 仍不足以保证金额守恒：还要在事务或触发器中检查每笔收款的应用合计不超过收款金额、每笔销售的应用合计不超过销售金额；标成已结清时才要求相等。若要保留同一销售–收款配对的多次冲销历史，应改用 `allocationID` 并增加生效时间，不能硬塞进当前双键粒度。\n\n<details><summary>完整复做：复制为 m04_sql_demo.py 后用 Python 运行（不需安装包）</summary>\n\n输入就是前述完整表；输出依次为曲奇明细、两个截止日的应收、收款余款。代码先用`connect(':memory:')`建仅本进程存在的空库；`executescript`执行建表/输入SQL；`execute(..., {'asof': cutoff})`把日期绑定到参数，`fetchall()`取全部结果行；循环分别看两日，`sum(row[3]...)`相加每行第4项应收，最后关闭库。SQL正文的关键块已在上面拆开解释，脚本不改课程数据库。\n\n```python\nimport sqlite3\n\n# 输入：以下完整自拟教学表；内存库每次运行从空库开始。\ndb = sqlite3.connect(':memory:')\nschema_sql = r\"\"\"PRAGMA foreign_keys = ON;\nCREATE TABLE Inventory(itemID TEXT NOT NULL PRIMARY KEY, description TEXT NOT NULL, currentReferenceCost NUMERIC NOT NULL);\nCREATE TABLE Employee(empID TEXT NOT NULL PRIMARY KEY, name TEXT NOT NULL);\nCREATE TABLE Customer(custID TEXT NOT NULL PRIMARY KEY, name TEXT NOT NULL);\nCREATE TABLE CashAccount(cashAccountID TEXT NOT NULL PRIMARY KEY, name TEXT NOT NULL);\nCREATE TABLE Sale(\n  saleID TEXT NOT NULL PRIMARY KEY, saleDate TEXT NOT NULL, location TEXT NOT NULL,\n  empID TEXT NOT NULL REFERENCES Employee(empID),\n  custID TEXT NOT NULL REFERENCES Customer(custID)\n);\nCREATE TABLE SaleLine(\n  saleID TEXT NOT NULL REFERENCES Sale(saleID), lineNo INTEGER NOT NULL,\n  itemID TEXT NOT NULL REFERENCES Inventory(itemID), quantity NUMERIC NOT NULL CHECK(quantity>0),\n  unitPrice NUMERIC NOT NULL CHECK(unitPrice>=0), unitCost NUMERIC NOT NULL CHECK(unitCost>=0),\n  PRIMARY KEY(saleID,lineNo)\n);\nCREATE TABLE CashReceipt(\n  receiptID TEXT NOT NULL PRIMARY KEY, receiptDate TEXT NOT NULL, amount NUMERIC NOT NULL CHECK(amount>=0),\n  cashAccountID TEXT NOT NULL REFERENCES CashAccount(cashAccountID),\n  empID TEXT NOT NULL REFERENCES Employee(empID), custID TEXT NOT NULL REFERENCES Customer(custID)\n);\nCREATE TABLE Duality(\n  saleID TEXT NOT NULL REFERENCES Sale(saleID),\n  receiptID TEXT NOT NULL REFERENCES CashReceipt(receiptID),\n  amountApplied NUMERIC NOT NULL CHECK(amountApplied>0),\n  PRIMARY KEY(saleID,receiptID)\n);\"\"\"\ninput_sql = r\"\"\"INSERT INTO Inventory VALUES ('C01','Cookie',8),('X01','Example item',0);\nINSERT INTO Employee VALUES ('E01','Paul');\nINSERT INTO Customer VALUES ('U01','Joe');\nINSERT INTO CashAccount VALUES ('CA01','Store cash');\nINSERT INTO Sale VALUES\n ('S001','2013-01-01','Festival Walk 7-11','E01','U01'),\n ('S1','2013-01-02','Example','E01','U01'),\n ('S2','2013-01-03','Example','E01','U01');\nINSERT INTO SaleLine VALUES\n ('S001',1,'C01',1,10,8),('S1',1,'X01',1,100,0),('S2',1,'X01',1,200,0);\nINSERT INTO CashReceipt VALUES\n ('R001','2013-01-01',10,'CA01','E01','U01'),\n ('R1','2013-01-03',40,'CA01','E01','U01'),\n ('R2','2013-01-04',30,'CA01','E01','U01'),\n ('R3','2013-02-01',250,'CA01','E01','U01'),\n ('R4','2013-01-04',1000,'CA01','E01','U01');\nINSERT INTO Duality VALUES\n ('S001','R001',10),('S1','R1',40),('S1','R2',30),('S1','R3',30),('S2','R3',200);\"\"\"\ncookie_sql = r\"\"\"SELECT s.saleID, i.description, e.name AS employee, c.name AS customer,\n       sl.quantity,\n       sl.quantity*sl.unitPrice AS revenue,\n       sl.quantity*sl.unitCost AS cost\nFROM Sale AS s\nJOIN SaleLine AS sl ON sl.saleID=s.saleID\nJOIN Inventory AS i ON i.itemID=sl.itemID\nJOIN Employee AS e ON e.empID=s.empID\nJOIN Customer AS c ON c.custID=s.custID\nWHERE s.saleID='S001';\"\"\"\nar_sql = r\"\"\"WITH sale_total AS (\n  SELECT s.saleID, s.saleDate, SUM(sl.quantity*sl.unitPrice) AS saleAmount\n  FROM Sale AS s JOIN SaleLine AS sl ON sl.saleID=s.saleID\n  WHERE s.saleDate<=:asof\n    AND s.saleID IN ('S1','S2')\n  GROUP BY s.saleID, s.saleDate\n), applied AS (\n  SELECT d.saleID, SUM(d.amountApplied) AS appliedAmount\n  FROM Duality AS d\n  JOIN CashReceipt AS r ON r.receiptID=d.receiptID\n  WHERE r.receiptDate<=:asof\n  GROUP BY d.saleID\n)\nSELECT st.saleID, st.saleAmount, COALESCE(a.appliedAmount,0) AS applied,\n       st.saleAmount-COALESCE(a.appliedAmount,0) AS accountsReceivable\nFROM sale_total AS st\nLEFT JOIN applied AS a ON a.saleID=st.saleID\nORDER BY st.saleID;\"\"\"\nbalance_sql = r\"\"\"SELECT r.receiptID, r.amount, COALESCE(SUM(d.amountApplied),0) AS applied,\n       r.amount-COALESCE(SUM(d.amountApplied),0) AS unapplied\nFROM CashReceipt AS r\nLEFT JOIN Duality AS d ON d.receiptID=r.receiptID\nWHERE r.receiptID IN ('R1','R2','R3','R4')\nGROUP BY r.receiptID, r.amount\nORDER BY r.receiptID;\"\"\"\ndb.executescript(schema_sql)\ndb.executescript(input_sql)\nprint('cookie:', db.execute(cookie_sql).fetchall())\nfor cutoff in ['2013-01-31', '2013-02-28']:\n    rows = db.execute(ar_sql, {'asof': cutoff}).fetchall()\n    print(cutoff, rows, 'total AR:', sum(row[3] for row in rows))\nprint('receipt balances:', db.execute(balance_sql).fetchall())\ndb.close()\n```\n\n</details>\n\n**实跑边界**：上述 schema、曲奇查询、截止日应收和收款余款已在 scratch 的 SQLite 内存库运行，输入现已完整置于正文，当前候选的实际运行结果另存本次回执；此前 `author/schema-run-evidence.json` 为旧作者证据，不冒称本次新复跑。SQLite 结果不证明 Access 的日期字面量或数据类型语法相同；移植到 Access 时要改物理层语法，逻辑行粒度与键关系不变。\n\n**所以呢**：统一 schema 使商品、人员、销售、收款和分配可以回查；先聚合再连接避免重复金额，金额守恒还需跨行检查。\n\n---\n\n"
+    }
+  ]
+}

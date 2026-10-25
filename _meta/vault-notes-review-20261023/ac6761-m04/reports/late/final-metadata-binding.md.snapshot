@@ -1,0 +1,63 @@
+# M04 晚包 · 最终元数据绑定核对
+
+**结论：最终候选正文与实审 v7 逐字节相同，本包既有审查及缺陷关闭结论可绑定最终 SHA。** 本次只核元数据和发布脚本注释差异，没有重审全篇、评分或重跑计算，也不代签前包、主视觉、发布门槛、正式写回/同步或 Git。
+
+- 审查者：`/root/review_m04_61_late`，沿用调度指定的 `gpt-6.1-sol`，未再派代理。
+- 实审 v7：`../candidate-main-v7.md`，重新实核 SHA256 `f9d6d5669674143d5a5e01953713e2a1c0bd301ee30da4a842ac156cc53b8ef0`。
+- 最终候选：`../candidate-final.md`，实核 SHA256 `57485dd54b7640e1170ffbc4a630d4021f174ee8d970527ec1e0ef4b8de05854`。
+
+## 候选真实差异
+
+自行对两个文件生成完整 unified diff，并与 `final-metadata.diff` / `final-metadata-diff.json` 对照。实际是 **5 个既有字段改值，加 1 个新增字段**，都在 YAML frontmatter：
+
+- `mechanism_review`：pending → passed。
+- `mechanism_review_mode`：efficient-20261002 → full-independent-gpt6.1-20261025。
+- `mechanism_content`：repaired_pending_review → repaired。
+- `mechanism_acceptance`：替换为本次两包独审、定向关闭及主回执定位说明。
+- `readability_review`：pending → passed。
+- 新增 `teaching_standard: novice-v1`。
+
+因此“5 处”若指改值字段可以成立；若按全部变化字段计数应为 6。新增教学框架标签没有改动正文，不构成隐藏的教学内容变化。
+
+直接比较结束 frontmatter 分隔符后的原始 bytes，结果 **完全相等**。并非只看改动摘要或忽略空白的文本 diff；SQL、输入、折叠 Python、图源、原题、术语、自测、映射及来源说明均未发生正文变化。没有发现 frontmatter 之外的差异。
+
+这些元数据只承接真实证据，本身不证明质量。本报告只为本晚包已有结论提供新 SHA 绑定；`mechanism_acceptance` 对两包、主视觉及 full-v2 的整体描述仍由主代理根据其真实证据负责，不能由本次正文相等检查代认证。
+
+## 发布脚本的真实差异
+
+已逐行比较 `main-evidence/constraint-experiments.py` 和 `constraint-experiments-publish.py`，唯一变化为：
+
+```diff
+-# Candidate's as-of receivables example with a canonical schema.
++# Independent simplified as-of receivables example; not the note's Sale/SaleLine schema.
+```
+
+这修正了我在 v7 报告中的非阻塞注释建议：脚本是独立简化约束例，不是笔记的 Sale/SaleLine 完整 schema。自行用 Python `ast.parse` 及 `ast.dump(..., include_attributes=False)` 比较，两文件 AST 完全相同。未执行任一脚本；无需因注释修正重跑计算。
+
+实核 SHA256：
+
+```text
+constraint-experiments.py         6771a326aef0354085d76b1485a69414a8aaaad82f531ba232eeebfb6d5183e8
+constraint-experiments-publish.py 04616b0306be58aca89b1be10344771978cf3c10febe9875fb95b70595e638c0
+constraint-results.json          91524bc98b530c4d99a03eb59f28c041f76062c2f144e1cb5337876aa78a0595
+```
+
+原执行脚本与结果保留，发布副本没有覆盖它们；既有运行结果仍如 v7 报告所记，不伪称发布副本被我重新执行。
+
+## 承接的本包证据链与限制
+
+下列旧报告均保留，重新计算哈希未变：
+
+```text
+stage-1.md               45ff2cd97d3a737af49f4a7cfd257e549516ee6e0166ba210da9465ba345906c
+independent-review.md    7dd39683a050bd76db4aa397399b47eaa3be4f2a21be4cbc967615e8fb6771e8
+targeted-repaired-v1.md  7d0bfb877e90d6f0fef1ac9dbc9a7907e4b25251b48c88ce406567594350c020
+v2-boundary-binding.md   9fec08066093e33b7f950c399b781bf7834bf55d2419e13fa7e05a5a90b4644e
+main-v7-targeted.md      45c7dbc50eaefb9ddf84718f58d671c5252ac61d700fbfc6537de6c355fab6dc
+```
+
+它们依次记录：§2.8 至末完整独立顺读、第二阶段核源与原断点、实际修复和 SQL 复做、后续边界绑定、主代理新发现残余的定向核验及关闭。没有以最终元数据覆盖原先“待修”记录，也不把后来才发现的残余倒写成早先已排除。
+
+本包最新结论仍为：晚包实际变化及必要依赖无剩余教学阻塞。原音未核、完整阅读器最终显示、主门槛与正式发布等限制仍按原报告和主回执分别维护；本次没有把它们升级为已完成。
+
+本次仅新增本文件，候选、旧报告、脚本/结果及正式库未改。

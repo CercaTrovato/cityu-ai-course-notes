@@ -1,0 +1,650 @@
+## PPT SLIDE 2
+Traditional Double-Entry Bookkeeping​
+Core Principle​​:
+
+Records every transaction with dual entries (debit/credit) to maintain the accounting equation: ​​Assets = Liabilities + Equity​​. It focuses on financial outcomes (e.g., profits, cash flows) and uses standardized financial statements (income statement, balance sheet) 
+
+2
+
+## PPT SLIDE 3
+Strengths and limitations
+​Strengths​​:
+Ensures mathematical accuracy through trial balances.
+Simplifies compliance with regulatory standards (e.g., GAAP, IFRS).
+Widely supported by software (e.g., QuickBooks) and integrates with tax reporting 
+
+Limitations​​:
+​​Limited scope​​: Captures only monetary transactions, ignoring non-financial data (e.g., customer satisfaction, production efficiency).
+Historical focus​​: Emphasizes past performance rather than real-time operational insights 
+
+3
+
+## PPT SLIDE 4
+​​REA Accounting Model: A Paradigm Shift
+Core Principle​​:
+
+Models business activities around three core elements:
+​​Resources​​ (e.g., inventory, cash, equipment),
+​​Events​​ (e.g., sales, purchases, production),
+​​Agents​​ (e.g., customers, employees, suppliers).
+
+Unlike double-entry, REA records economic events in their semantic context rather than as debits/credits. For example, a sales event links to the sold resource (product), involved agents (salesperson, customer), and related events (payment, delivery).
+
+4
+
+## PPT SLIDE 5
+Strengths and limitations
+Strengths​​:
+​​Holistic view​​: Integrates financial and non-financial data (e.g., order fulfillment time, resource utilization), enabling multidimensional decision-making.
+​​Process optimization​​: Identifies inefficiencies by mapping event sequences (e.g., bottlenecks in production) 
+Example: A manufacturing firm using REA reduced costs by 15% by analyzing "resource-event" linkages to eliminate waste 
+​​Adaptability​​: Supports real-time data analytics and AI-driven forecasting 
+
+​​Limitations​​:
+​​Complex implementation​​: Requires redesigning databases and training personnel to capture granular event/agent data.
+​​Lack of standardization​​: No universal guidelines for REA-based reporting, complicating audits and cross-company comparisons 
+
+5
+
+## PPT SLIDE 9
+9
+In 1982, Bill McCarthy published a research article explaining his ideas for re-engineering accounting systems
+He didn’t call it re-engineering, but it was
+He focused on natural phenomena common to most enterprises for various types of transactions. 
+He recommended eliminating artifacts such as debits, credits, and accounts 
+Artifacts are manufactured, not naturally occurring
+Accounting artifacts obscure details of business transactions needed for non-accounting purposes
+This course explains and discusses McCarthy’s ideas for developing integrated enterprise systems that can satisfy accounting needs while also satisfying needs of other business areas
+Re-Inventing Accounting Systems
+
+## PPT SLIDE 10
+Bill McCarthy’s example
+Double entry bookkeeping system: “cost of goods sold” and “sales revenue” are two distinct accounts. 
+REA model: the two accounts represent attributes of the same class “sale events”. 
+
+10
+
+## PPT SLIDE 12
+Details
+On Jan 1, 2013, Paul of 7-11 in Festival Walk sold one cookie to customer Joe. 
+Paul give a cookie to Joe.
+Paul gets cash from Joe.
+Specifics:
+Price was $10
+Cost was $8
+
+12
+
+## PPT SLIDE 18
+Duality
+18
+There is usually a pair of events at the heart of REA. One represents a resource being given away or lost, while another represents a resource being received or gained. 
+Two events are linked – a cash receipt occurs in exchange for a sale, and vice versa.
+Could be more complicated – a product conversion occurs in exchange for a usage of raw material, labor cost and overhead. 
+
+## PPT SLIDE 20
+Conceptual model
+Conceptual model is a representation that depicts the important objects and relationships between the objects that must be captured in a database. 
+Different conceptual modeling languages: narrative descriptions, diagrams of various types with different notations, XML (Extensible Markup Language), XBRL (Extensible Business Reporting Language)
+Universal Modeling Language is a widely accepted notation for system analysis and design.
+The class diagrams of UML are appropriate for conceptual modeling of REA concepts. 
+
+20
+
+## PPT SLIDE 26
+Conceptual Modeling Constructs
+Associations
+Relationships between classes
+Association class: there can be only one link between the related entities. 
+Reified association: there can be multiple links between the related entities. 
+26
+
+## PPT SLIDE 28
+28
+Conceptual Modeling Constructs
+Attributes
+Characteristics or elementary properties of classes and/or associations
+Primary key attribute uniquely and universally identifies each instance of a class or association
+Simple (cannot be further decomposed) versus composite attributes (may be decomposed into other attributes)
+Derivable attributes (can be derived / computed from the values of other attributes in the database.
+Static – will not change if new data is entered into system
+Volatile – will change if new data is entered into system
+
+## PPT SLIDE 32
+32
+Interpret Multiplicities: Exercise 1
+Q1: Can at least one sale exist in the database without a related instance of cash receipt?
+Q2: Can at least one sale in the database relate to multiple instances of cash receipt? 
+In other words, all sales are paid for immediately with cash, and sales are the company’s only source of cash
+No – 1 min next to CR
+No – 1 max next to CR
+Q3: Can at least one cash receipt exist in the database without a related instance of sale?
+No – 1 min next to Sale
+Q4: Can at least one cash receipt in the database relate to multiple instances of sale? 
+No – 1 max next to Sale
+
+## PPT SLIDE 33
+33
+Interpret Multiplicities: Exercise 2
+In other words, sales may be made on credit with no partial payments or combined payments accepted, and sales are the company’s only source of cash
+Q1: Can at least one sale exist in the database without a related instance of cash receipt?
+Q2: Can at least one sale in the database relate to multiple instances of cash receipt? 
+Yes – 0 min next to CR
+No – 1 max next to CR
+Q3: Can at least one cash receipt exist in the database without a related instance of sale?
+No – 1 min next to Sale
+Q4: Can at least one cash receipt in the database relate to multiple instances of sale? 
+No – 1 max next to Sale
+
+## PPT SLIDE 34
+34
+Interpret Multiplicities: Exercise 3
+In other words, sales may be made on credit with partial payments but no combined payments accepted, and sales are the company’s only source of cash
+Q1: Can at least one sale exist in the database without a related instance of cash receipt?
+Q2: Can at least one sale in the database relate to multiple instances of cash receipt? 
+Q3: Can at least one cash receipt exist in the database without a related instance of sale?
+Q4: Can at least one cash receipt in the database relate to multiple instances of sale? 
+
+## PPT SLIDE 35
+35
+Interpret  Multiplicities: Exercise 4
+In other words, sales may be made on credit with partial payments and combined payments accepted, and cash comes from sources other than sales
+Q1: Can at least one sale exist in the database without a related instance of cash receipt?
+Q2: Can at least one sale in the database relate to multiple instances of cash receipt? 
+Q3: Can at least one cash receipt exist in the database without a related instance of sale?
+Q4: Can at least one cash receipt in the database relate to multiple instances of sale? 
+
+## PPT SLIDE 36
+36
+Relational Database Model
+A relational database consists of tables (relations) that are linked together via the use of primary and foreign key (attribute)
+A FOREIGN KEY in a table is a primary key from a different table that has been posted into the table to create a link between the two tables
+
+## PPT SLIDE 37
+37
+Relational Database Model
+Relational database tables are made up of rows and columns
+Rows are called the table extension or tuples
+Order does not matter
+Columns are called the table intension or schema
+Order does not matter
+Data format does matter (e.g. date, text, currency, etc.)
+Each cell in a database table (a row-column intersection) can contain only one value 
+no repeating groups are allowed
+
+## PPT SLIDE 38
+38
+Foreign Key Example
+SalespersonID
+Name
+123456
+Fred
+654321
+Francis
+SaleID
+Date
+Amount
+Salesperson
+061401A
+6/14
+$4,218
+123456
+061401B
+6/14
+$6,437
+654321
+061501A
+6/15
+$1,112
+654321
+
+
+## PPT SLIDE 39
+39
+Relational Database Model
+Some principles of the relational model
+Entity Integrity
+A primary key in a table must not contain a null value
+Referential Integrity
+A value for a foreign key in a table must either
+Be null (blank)
+Match exactly a value for the primary key in the table from which it was posted
+One Fact, One Place
+Fact = a pairing of a candidate key attribute value with another attribute value (candidate key attributes are those attributes which can be used as primary key attributes)
+
+## PPT SLIDE 40
+40
+Referential Integrity Example
+
+## PPT SLIDE 41
+41
+One Fact-One Place Violations
+One fact in multiple places
+
+## PPT SLIDE 42
+42
+One Fact-One Place Violations
+Multiple facts in one place
+
+
+
+
+
+1
+2
+3
+4
+5
+Each value of each attribute in a row is paired with the primary key, so if any cell has two or more attribute values, by definition there are multiple facts in one place (also known as a repeating group)
+
+## PPT SLIDE 43
+43
+Converting Conceptual to Relational 
+GOAL:  Make as few tables as necessary, and avoid redundancy (repeating groups or one fact multiple places), and minimize null values 
+Step 1: Create a separate table to represent each class in the conceptual model
+1A: Each attribute of the class becomes a column in the relational table
+2A: Each instance (member) of the class becomes a row in the relational table
+Steps 2-5 (detailed in the next few slides) involve determining whether each association in the conceptual model should be represented as a separate table or as a posted foreign key
+Redundancy and Load are important determinants
+Redundancy = one fact in multiple places or multiple facts in one place
+Load = the percentage of non-null values in a column
+Multiplicities communicate some of the information regarding redundancy and load
+
+## PPT SLIDE 44
+44
+Association Conversion
+Maximum Multiplicities
+The general rule is to post from a “1” class table
+This avoids “repeating groups” redundancy
+You can NEVER post from a * class table
+This causes “repeating groups” redundancy
+Minimum Multiplicities
+The general rule is to post from a “1” (mandatory) class table
+This avoids null values in the foreign key column
+This rule should be violated in some circumstances (to be discussed soon)
+
+## PPT SLIDE 45
+45
+Step 2: Create a separate table to represent each many-to-many association in the conceptual model, I.e., for the following multiplicity patterns 0..*-0..*,   0..*-1..*,    1..*-0..*,    1..*-1..*
+You must create a separate table to represent the association
+The primary keys of the related class tables are posted into the association table to form its primary key.  This kind of primary key is called a composite or concatenated primary key 
+This avoids redundancy
+If you post a foreign key in either direction, redundancy will be a problem for many-to-many associations
+Association Conversion
+
+## PPT SLIDE 46
+46
+Example: Many-Many Associations
+Student#
+Name
+Address
+1
+Tony
+Cleveland
+2
+Emily
+New York
+3
+Leigh
+Birmingham
+Course#
+Description
+Acg4401
+AIS
+Acg3101
+FAR 1
+Course# *
+Acg4401, Acg3101
+Acg4401, Acg3101
+Acg4401, Acg3101
+Student#*
+1, 2, 3
+1, 2, 3
+
+
+Student
+-student# (PK)
+-name
+-address
+
+Course
+-course# (PK)
+-description
+
+1..*
+1..*
+Takes
+
+## PPT SLIDE 47
+47
+Example: Many-Many Association
+Student#
+Name
+Address
+1
+Tony
+Cleveland
+2
+Emily
+New York
+3
+Leigh
+Birmingham
+Course#
+Description
+Acg4401
+AIS
+Acg3101
+FAR 1
+Student#
+Course#
+1
+Acg4401
+1
+Acg3101
+2
+Acg4401
+2
+Acg3101
+3
+Acg3101
+Student
+-student# (PK)
+-name
+-address
+
+Course
+-course# (PK)
+-description
+
+1..*
+1..*
+Takes
+
+## PPT SLIDE 48
+48
+Association Conversion
+Step 3: For multiplicity pattern 1..1 – 1..1, 
+
+- 3A: Post the primary key from one class’ table into the other class’ table as a foreign key
+- 3B: It doesn’t matter which class’ primary key is posted into the other class’ table, but DO NOT post both
+DO NOT make a separate table 
+Redundancy is automatically avoided and load is not an issue when you post a foreign key into either table in a 1..1 – 1..1 association 
+
+## PPT SLIDE 49
+49
+Example: 1..1 – 1..1
+SaleID
+Date
+Amount
+S1
+6/12
+$10
+S2
+6/12
+$15
+S3
+6/13
+$12
+CR-ID
+Date
+Amount
+CR1
+6/12
+$10
+CR2
+6/12
+$15
+CR3
+6/13
+$12
+CR-ID *
+CR1
+CR2
+CR3
+S-ID *
+S1
+S2
+S3
+
+Choose ONE of these; DO NOT do both!!!
+Sale
+-saleID (PK)
+-date
+-amount
+
+Cash Receipt
+-CR-ID (PK)
+-date
+-amount
+
+1..1
+1..1
+Duality
+
+## PPT SLIDE 50
+50
+Association Conversion
+Step 4: For remaining associations that have 1..1 beside one class, post that class’ primary key into the related class’ table as a foreign key
+I.e., for the following multiplicity patterns 0..*-1..1,    1..*-1..1,    1..1-0..*,    1..1-1..*,    0..1-1..1,    1..1-0..1 
+Do NOT make a separate table
+Post a foreign key FROM the 1..1 class’ table INTO the other class’ table
+Redundancy is avoided and load is not an issue if you follow this instruction
+If you post the opposite direction, either redundancy [for * maximums] OR load [for 0 minimums] will be a problem
+Posting FROM a 1..1 guarantees that each related class instance will have a value and that each related class instance will have only one value 
+
+
+## PPT SLIDE 51
+51
+Example 1: Posting From a 1..1
+SaleID
+Date
+Amount
+S1
+6/12
+$10
+S2
+6/12
+$15
+S3
+6/13
+$12
+Cincinnati
+Steven
+C2
+Walnut Creek
+Heather
+C1
+Address
+Name	
+Cust-ID
+
+
+
+
+
+
+
+
+Cust-ID*
+C1
+C2
+C1
+C3
+Dave
+Cincinnati
+S2
+S1, S3
+S-ID*
+
+
+
+
+
+
+
+
+Sale
+-saleID (PK)
+-date
+-amount
+
+Customer
+-cust-ID(PK)
+-name
+-address
+
+0..*
+1..1
+Participation
+1..*
+or
+
+## PPT SLIDE 52
+52
+Example 2: Posting FROM a 1..1
+SaleID
+Date
+Amount
+S1
+6/12
+$10
+S2
+6/12
+$15
+S3
+6/13
+$12
+CR-ID
+Date
+Amount
+CR1
+6/12
+$10
+CR2
+6/12
+$15
+CR3
+6/13
+$12
+CR4
+6/13
+$1,000
+CR-ID*
+CR1
+CR2
+CR3
+S-ID*
+S1
+S2
+S3
+
+
+Sale
+-saleID (PK)
+-date
+-amount
+
+Cash Receipt
+-CR-ID (PK)
+-date
+-amount
+
+0..1
+1..1
+Duality
+
+## PPT SLIDE 53
+53
+Association Conversion
+Step 5: For remaining associations that have 0..1 multiplicities beside one or both classes, consider loadI.e., for the following multiplicity patterns 0..*-0..1,    1..*-0..1,    0..1-0..*,    0..1-1..*,    0..1-0..1
+The rule for maximum multiplicities requires posting from a 0..1 or making a separate table; you CANNOT post into the 0..1
+The rule for minimum multiplicities says you really shouldn’t post from the 0..1 because doing so will create null values that waste valuable space in the database
+However, if a separate table would waste more space, then it is better to follow the maximum rule and break the minimum rule
+5A: Post the 0..1 class’ table into the related class’ table as a foreign key if doing so results in a high load
+5B: Create a separate table for any associations for which posting a foreign key results in low load
+Note: For 0..1-0..1 for step 5A, post whichever direction results in highest load; if neither direction yields high load, then follow step 5B
+
+## ppt/notesSlides/notesSlide9.xml
+33
+
+## ppt/notesSlides/notesSlide6.xml
+29
+
+## ppt/notesSlides/notesSlide17.xml
+41
+
+## ppt/notesSlides/notesSlide8.xml
+32
+
+## ppt/notesSlides/notesSlide18.xml
+42
+
+## ppt/notesSlides/notesSlide19.xml
+43
+
+## ppt/notesSlides/notesSlide16.xml
+40
+
+## ppt/notesSlides/notesSlide5.xml
+28
+
+## ppt/notesSlides/notesSlide15.xml
+39
+
+## ppt/notesSlides/notesSlide11.xml
+35
+
+## ppt/notesSlides/notesSlide3.xml
+25
+
+## ppt/notesSlides/notesSlide2.xml
+6
+
+## ppt/notesSlides/notesSlide12.xml
+36
+
+## ppt/notesSlides/notesSlide4.xml
+27
+
+## ppt/notesSlides/notesSlide13.xml
+37
+
+## ppt/notesSlides/notesSlide14.xml
+38
+
+## ppt/notesSlides/notesSlide10.xml
+34
+
+## ppt/notesSlides/notesSlide27.xml
+51
+
+## ppt/notesSlides/notesSlide28.xml
+52
+
+## ppt/notesSlides/notesSlide29.xml
+53
+
+## ppt/notesSlides/notesSlide7.xml
+31
+
+## ppt/notesSlides/notesSlide20.xml
+44
+
+## ppt/notesSlides/notesSlide26.xml
+50
+
+## ppt/notesSlides/notesSlide25.xml
+49
+
+## ppt/notesSlides/notesSlide21.xml
+45
+
+## ppt/notesSlides/notesSlide22.xml
+46
+
+## ppt/notesSlides/notesSlide23.xml
+47
+
+## ppt/notesSlides/notesSlide24.xml
+48

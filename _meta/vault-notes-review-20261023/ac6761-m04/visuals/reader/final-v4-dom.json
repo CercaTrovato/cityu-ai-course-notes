@@ -1,0 +1,1096 @@
+{
+  "ascii": [
+    {
+      "index": 0,
+      "overflow": false,
+      "text": "Class  ──转换成──▶  Table（表）\nEntity ──转换成──▶  Row（行）\n",
+      "width": 940
+    },
+    {
+      "index": 1,
+      "overflow": false,
+      "text": "┌─────────────────────────┐\n│  <<stereotype>>         │  ← 第一格：构造型（若有）+ 类名\n│  ClassName             ",
+      "width": 940
+    },
+    {
+      "index": 2,
+      "overflow": false,
+      "text": "┌──────────────────┐                          ┌────────────────────────┐\n│   <<Agent>>      │  1..1 ",
+      "width": 940
+    },
+    {
+      "index": 3,
+      "overflow": false,
+      "text": "┌────────────┐   1..*              0..1   ┌──────────────┐\n│  Employee  │──────── assignment ───────",
+      "width": 940
+    },
+    {
+      "index": 4,
+      "overflow": false,
+      "text": "Sale ──[1..1]────── duality ──────[0..*]── Cash Receipt\n",
+      "width": 916
+    },
+    {
+      "index": 5,
+      "overflow": false,
+      "text": "Sale ──[0..*]────── duality ──────[0..*]── Cash Receipt\n",
+      "width": 916
+    },
+    {
+      "index": 6,
+      "overflow": false,
+      "text": "Customer 表（custID 是它的主键）\n┌────────┬───────┐\n│ custID │ name  │\n├────────┼───────┤\n│ U01    │ Joe   │",
+      "width": 940
+    },
+    {
+      "index": 7,
+      "overflow": false,
+      "text": "(2, Emily)        ← 事实：员工 2 叫 Emily\n(2, New York)     ← 事实：员工 2 在纽约办公\n(2, BA)           ← 事实：员工 2 有学",
+      "width": 940
+    },
+    {
+      "index": 8,
+      "overflow": false,
+      "text": "┌────────────────────┐  1..*        1..*  ┌────────────────────┐\n│     Student        │────── Takes ",
+      "width": 940
+    },
+    {
+      "index": 9,
+      "overflow": false,
+      "text": "┌──────────────────┐  1..1              1..1  ┌────────────────────┐\n│      Sale        │──────── Du",
+      "width": 940
+    },
+    {
+      "index": 10,
+      "overflow": false,
+      "text": "┌──────────────────┐  0..*  (or 1..*)     1..1  ┌────────────────────┐\n│      Sale        │─────────",
+      "width": 940
+    },
+    {
+      "index": 11,
+      "overflow": false,
+      "text": "┌──────────────────┐  0..1                1..1  ┌────────────────────┐\n│      Sale        │─────────",
+      "width": 940
+    },
+    {
+      "index": 12,
+      "overflow": false,
+      "text": "Sale ──[1..1]────── duality ──────[0..*]── Cash Receipt\n",
+      "width": 916
+    },
+    {
+      "index": 13,
+      "overflow": false,
+      "text": "Sale ──[0..*]────── duality ──────[0..*]── Cash Receipt     ⭐ 多对多\n",
+      "width": 916
+    }
+  ],
+  "contentWidth": 1016,
+  "details": [
+    {
+      "index": 0,
+      "open": true,
+      "summary": "读图自测：R001 金额是 10，但漏了分配行，能否据此把 S001 应收写成 0？"
+    },
+    {
+      "index": 1,
+      "open": true,
+      "summary": "读图自测：2013-01-01应新建一个参与者类吗？"
+    },
+    {
+      "index": 2,
+      "open": true,
+      "summary": "读图自测：两Employee框能证明两名不同自然人吗？"
+    },
+    {
+      "index": 3,
+      "open": true,
+      "summary": "读图自测：在概念层先定varchar长度，能代替每Sale几个客户的讨论吗？"
+    },
+    {
+      "index": 4,
+      "open": true,
+      "summary": "🎙️ 课堂确认的答案 + 💡 笔记逐端推导"
+    },
+    {
+      "index": 5,
+      "open": true,
+      "summary": "🎙️ 课堂确认的答案 + 💡 笔记逐端推导"
+    },
+    {
+      "index": 6,
+      "open": true,
+      "summary": "完整复做：复制为 m04_sql_demo.py 后用 Python 运行（不需安装包）"
+    },
+    {
+      "index": 7,
+      "open": true,
+      "summary": "读图自测：一收款实收1却分配5，PK/FK成立足够吗？"
+    },
+    {
+      "index": 8,
+      "open": true,
+      "summary": "读图自测：两端1..1能把两边都存对方FK吗？"
+    },
+    {
+      "index": 9,
+      "open": true,
+      "summary": "读图自测：DUALITY能直接连Inventory与Cash吗？"
+    },
+    {
+      "index": 10,
+      "open": true,
+      "summary": "读图自测：把月末两总数放一起能反推每次毛利吗？"
+    },
+    {
+      "index": 11,
+      "open": true,
+      "summary": "读图自测：放saleID在CR后，需要Sale各行都有CR吗？"
+    },
+    {
+      "index": 12,
+      "open": true,
+      "summary": "答案"
+    },
+    {
+      "index": 13,
+      "open": true,
+      "summary": "答案"
+    },
+    {
+      "index": 14,
+      "open": true,
+      "summary": "答案"
+    },
+    {
+      "index": 15,
+      "open": true,
+      "summary": "答案"
+    },
+    {
+      "index": 16,
+      "open": true,
+      "summary": "答案"
+    },
+    {
+      "index": 17,
+      "open": true,
+      "summary": "答案"
+    },
+    {
+      "index": 18,
+      "open": true,
+      "summary": "答案（讲义留白；S6 课堂确认）"
+    },
+    {
+      "index": 19,
+      "open": true,
+      "summary": "答案（讲义留白；S6 课堂确认）"
+    },
+    {
+      "index": 20,
+      "open": true,
+      "summary": "参考思路"
+    },
+    {
+      "index": 21,
+      "open": true,
+      "summary": "参考思路"
+    }
+  ],
+  "diagrams": 12,
+  "height": 866,
+  "mathErrors": [],
+  "maths": [
+    "\\text{Assets}=\\text{Liabilities}+\\text{Equity}",
+    "500-200=300",
+    "\n\\text{资产变动}=-8,\\qquad \\text{负债变动}=0,\\qquad \\text{权益变动}=-8\n",
+    "-8=0+(-8)",
+    "\n\\text{资产变动}=10,\\qquad \\text{负债变动}=0,\\qquad \\text{权益变动}=10\n",
+    "10=0+10",
+    "-8+10=2",
+    "-8+10=2",
+    "10-8=2",
+    "\n\\text{资产净变动}=10-10=0\n",
+    "1\\times10=10",
+    "1\\times8=8",
+    "10-10=0",
+    "\\text{amount}-\\text{cost}",
+    "\\text{fact}=(\\text{候选键值},\\text{另一个属性值})",
+    "\\text{Load}=950/1000=95\\%",
+    "\\text{Load}=30/1000=3\\%",
+    "2/3\\times100\\%\\approx67\\%",
+    "A=L+E",
+    "\\text{fact}=(\\text{候选键值},\\text{另一属性值})",
+    "\\text{Assets}=\\text{Liabilities}+\\text{Equity}"
+  ],
+  "status": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\m04-review-61\\candidate-final-v4.md | diagrams=12 | errors=0",
+  "tables": [
+    {
+      "columns": 3,
+      "headers": "段\t页\t在讲什么",
+      "index": 0,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "概念\t一句话唤醒\t回看",
+      "index": 1,
+      "overflow": false,
+      "rows": 15,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "概念\tEnglish\t展开于",
+      "index": 2,
+      "overflow": false,
+      "rows": 33,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "讲义原顺序\t本笔记\t理由",
+      "index": 3,
+      "overflow": false,
+      "rows": 6,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "讲义原文\t中文\t我们在哪学过",
+      "index": 4,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "元素\t中文\t讲义举例\t回答",
+      "index": 5,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "位置\t图像内容\t代表的时代",
+      "index": 6,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "\t外部使用者\t内部使用者",
+      "index": 7,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "账户\t位置\t金额",
+      "index": 8,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "行\t动词\t说的是",
+      "index": 9,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "信息\t值\t对应 REA 的哪一问\t对应 REA 的哪一类",
+      "index": 10,
+      "overflow": false,
+      "rows": 7,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "Account\tDR\tCR",
+      "index": 11,
+      "overflow": false,
+      "rows": 6,
+      "width": 940
+    },
+    {
+      "columns": 6,
+      "headers": "账户\t类型\t增/减\t借/贷\t金额\t为什么",
+      "index": 12,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 6,
+      "headers": "账户\t类型\t增/减\t借/贷\t金额\t为什么",
+      "index": 13,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "Account\tDR\tCR",
+      "index": 14,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 6,
+      "headers": "账户\t类型\t增/减\t借/贷\t金额\t为什么",
+      "index": 15,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "记录\t一行代表什么\t本例的行",
+      "index": 16,
+      "overflow": false,
+      "rows": 8,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "要素\t中文\t定义（结合 p.4 与 p.17）\t回答",
+      "index": 17,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "\tgive（给出）\tget（得到）",
+      "index": 18,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "检查\t复式记录\tREA 本交换例",
+      "index": 19,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "图上的框\t曲奇故事里的实例",
+      "index": 20,
+      "overflow": false,
+      "rows": 8,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "语言\t中文\t是什么\t优缺点（💡 笔记补充）",
+      "index": 21,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "类型\t中文\t数据怎么组织\t现状（💡 笔记补充）",
+      "index": 22,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "\t概念模型（UML 类图）\t逻辑模型（关系模型）",
+      "index": 23,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "决策\t例子",
+      "index": 24,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 5,
+      "headers": "构件\t中文\t回答什么问题\t讲义页\t本笔记",
+      "index": 25,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "\t实体（Entity，一个个具体的）\t类（Class，它们的集合）",
+      "index": 26,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "构造型\t中文\t用在哪些类上",
+      "index": 27,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "studentID\tcourseID\tgrade\t一行代表什么",
+      "index": 28,
+      "overflow": false,
+      "rows": 2,
+      "width": 940
+    },
+    {
+      "columns": 5,
+      "headers": "enrollmentID\tstudentID\tcourseID\tterm\t一行代表什么",
+      "index": 29,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "学生\t原图当前连到的课程",
+      "index": 30,
+      "overflow": false,
+      "rows": 6,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "\t定义（讲义原文）\t例子（💡 笔记补充）",
+      "index": 31,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "\t讲义原文\t中文\t例子（💡 笔记补充）",
+      "index": 32,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "位置\t取值\t讲义原文\t中文",
+      "index": 33,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "多重性\t读作\t业务含义",
+      "index": 34,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "这对应哪一对数字\t那对数字画在图上的哪一侧",
+      "index": 35,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "业务规则\t这是谁的多重性\t值\t画在哪一侧",
+      "index": 36,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "问题\t问的是\t答案取决于\t位置",
+      "index": 37,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "问题\t讲义答案\t依据",
+      "index": 38,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "问题\t讲义答案\t依据\t与练习 1 相比",
+      "index": 39,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "业务措辞\t对应哪个数字",
+      "index": 40,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "业务措辞\t影响哪个数字\t值",
+      "index": 41,
+      "overflow": false,
+      "rows": 5,
+      "width": 916
+    },
+    {
+      "columns": 3,
+      "headers": "问题\t答案\t依据",
+      "index": 42,
+      "overflow": false,
+      "rows": 5,
+      "width": 916
+    },
+    {
+      "columns": 3,
+      "headers": "业务措辞\t影响哪个数字\t值",
+      "index": 43,
+      "overflow": false,
+      "rows": 5,
+      "width": 916
+    },
+    {
+      "columns": 3,
+      "headers": "问题\t答案\t依据",
+      "index": 44,
+      "overflow": false,
+      "rows": 5,
+      "width": 916
+    },
+    {
+      "columns": 6,
+      "headers": "练习\t业务场景关键词\tSale 侧\tCR 侧\t关联类型\t转成表怎么做（§2.10）",
+      "index": 45,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "讲义术语\t中文\t指什么",
+      "index": 46,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "SalespersonID\tName",
+      "index": 47,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "SaleID\tDate\tAmount\tSalesperson",
+      "index": 48,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "SaleID\tDate\tAmount\tSalesperson",
+      "index": 49,
+      "overflow": false,
+      "rows": 2,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "违例类型\t讲义页\t长什么样",
+      "index": 50,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "SaleID\tDate\tAmount\tSalesperson",
+      "index": 51,
+      "overflow": false,
+      "rows": 6,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "SalespersonID\tName\tTelephone",
+      "index": 52,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "SaleID\tDate\tAmount\tSalesperson",
+      "index": 53,
+      "overflow": false,
+      "rows": 6,
+      "width": 940
+    },
+    {
+      "columns": 6,
+      "headers": "SaleID\tDate\tAmount\tCustomerID\tCustomerName\tCustomerAddress",
+      "index": 54,
+      "overflow": false,
+      "rows": 6,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "EmployeeID\tName\tOffice\tDegree Earned",
+      "index": 55,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "CustomerID\tCustomerName\tCustomerAddress",
+      "index": 56,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "SaleID\tCustomerID\tCustomerName\tCustomerAge",
+      "index": 57,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "CashR#\tAmount",
+      "index": 58,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "Cashier#\tName",
+      "index": 59,
+      "overflow": false,
+      "rows": 6,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "CashR#\tAmount\tCashier#",
+      "index": 60,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "表\t一行代表什么\t主键\t关键外键/约束",
+      "index": 61,
+      "overflow": false,
+      "rows": 9,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "目标\t英文\t意思\t违反了会怎样",
+      "index": 62,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "多重性\t告诉你什么",
+      "index": 63,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "方向\t做法\t结果",
+      "index": 64,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "Student#\tName\tAddress\tCourse# *",
+      "index": 65,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "Course#\tDescription\tStudent# *",
+      "index": 66,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "Student#\tName\tAddress",
+      "index": 67,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "Course#\tDescription",
+      "index": 68,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "Student#\tCourse#",
+      "index": 69,
+      "overflow": false,
+      "rows": 6,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "\t规则",
+      "index": 70,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "SaleID\tDate\tAmount\tCR-ID *",
+      "index": 71,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "CR-ID\tDate\tAmount\tS-ID *",
+      "index": 72,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "\t选项 A\t选项 B",
+      "index": 73,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "讲义原句\t保证了什么\t解决哪个指标",
+      "index": 74,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "对面是\t反向过账的后果",
+      "index": 75,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "SaleID\tDate\tAmount\tCust-ID *",
+      "index": 76,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "Cust-ID\tName\tAddress",
+      "index": 77,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "Cust-ID\tName\tAddress\tS-ID *",
+      "index": 78,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "SaleID\tDate\tAmount\tCR-ID *",
+      "index": 79,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "CR-ID\tDate\tAmount",
+      "index": 80,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "CR-ID\tDate\tAmount\tS-ID *",
+      "index": 81,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "\t例 1（p.51）\t例 2（p.52）",
+      "index": 82,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "分支\t条件\t做法",
+      "index": 83,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 1,
+      "headers": "业务要求",
+      "index": 84,
+      "overflow": false,
+      "rows": 6,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "练习\t多重性\t走哪一步\t结果",
+      "index": 85,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "\t传统复式记账（p.2–3）\tREA 模型（p.4–5）",
+      "index": 86,
+      "overflow": false,
+      "rows": 10,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "概念\t英文\t回答\t例子",
+      "index": 87,
+      "overflow": false,
+      "rows": 9,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "构件\t画法\t要点",
+      "index": 88,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "问题\t看哪个数字",
+      "index": 89,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "业务描述\t影响哪个数字",
+      "index": 90,
+      "overflow": false,
+      "rows": 9,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "原则\t讲义定义\t违例长什么样\t讲义页",
+      "index": 91,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "情形\t多重性模式\t做法\t讲义页",
+      "index": 92,
+      "overflow": false,
+      "rows": 6,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "中文\tEnglish\t首现",
+      "index": 93,
+      "overflow": false,
+      "rows": 44,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "级别\t含义\t本讲数量",
+      "index": 94,
+      "overflow": false,
+      "rows": 4,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "可信度\t考点\t依据\t对应小节",
+      "index": 95,
+      "overflow": false,
+      "rows": 17,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "\t复式记账\tREA",
+      "index": 96,
+      "overflow": false,
+      "rows": 3,
+      "width": 916
+    },
+    {
+      "columns": 4,
+      "headers": "EmployeeID\tName\tOffice\tDegree Earned",
+      "index": 97,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "问题\t答案（照讲义格式）",
+      "index": 98,
+      "overflow": false,
+      "rows": 5,
+      "width": 916
+    },
+    {
+      "columns": 2,
+      "headers": "问题\t答案",
+      "index": 99,
+      "overflow": false,
+      "rows": 5,
+      "width": 916
+    },
+    {
+      "columns": 5,
+      "headers": "讲义页\t类型\t内容\t笔记小节\t课堂覆盖",
+      "index": 100,
+      "overflow": false,
+      "rows": 58,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "类型\t页数\t页码",
+      "index": 101,
+      "overflow": false,
+      "rows": 9,
+      "width": 940
+    },
+    {
+      "columns": 4,
+      "headers": "来源 / 内容块\t时间戳\t用时\t说明",
+      "index": 102,
+      "overflow": false,
+      "rows": 15,
+      "width": 940
+    },
+    {
+      "columns": 5,
+      "headers": "讲义页\t内容\t判定\t依据\t建议",
+      "index": 103,
+      "overflow": false,
+      "rows": 3,
+      "width": 940
+    },
+    {
+      "columns": 6,
+      "headers": "#\t内容\t时长\t时间戳\t小节\t为什么值钱",
+      "index": 104,
+      "overflow": false,
+      "rows": 8,
+      "width": 940
+    },
+    {
+      "columns": 3,
+      "headers": "#\t项目\t说明",
+      "index": 105,
+      "overflow": false,
+      "rows": 18,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "日期\t变更",
+      "index": 106,
+      "overflow": false,
+      "rows": 5,
+      "width": 940
+    },
+    {
+      "columns": 2,
+      "headers": "项目\t本次结果及范围",
+      "index": 107,
+      "overflow": false,
+      "rows": 6,
+      "width": 940
+    }
+  ],
+  "url": "http://127.0.0.1:8804/?note=ac6761-m04",
+  "width": 1699
+}

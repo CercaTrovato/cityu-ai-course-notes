@@ -1,0 +1,1211 @@
+                               An OMG® Unified Modeling Language ® Publication
+
+
+
+
+OMG® Unified Modeling Language® (OMG UML®)
+Version 2.5.1
+
+
+OMG Document Number: formal/2017-12-05
+
+Date:                 December 2017
+
+Normative URL:        https/www.omg.org/spec/UML/
+
+Machine Readable:
+
+        Normative:    https://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi
+                      https://www.omg.org/spec/UML/20161101/UML.xmi
+                      https://www.omg.org/spec/UML/20161101/StandardProfile.xmi
+                      https://www.omg.org/spec/UML/20161101/UMLDI.xmi
+Copyright © 2009-2013 88Solutions
+Copyright © 2009-2010 Artisan Software Tools
+Copyright © 2001-2013 Adaptive
+Copyright © 2009-2010 Armstrong Process Group, Inc.
+Copyright © 2001-2010 Alcatel
+Copyright © 2001-2010 Borland Software Corporation
+Copyright © 2009-2010 Commissariat à l'Energie Atomique
+Copyright © 2001-2010 Computer Associates International, Inc.
+Copyright © 2009-2010 Computer Sciences Corporation
+Copyright © 2009-2013 Data Access Technologies, Inc. (Model Driven Solutions)
+Copyright © 2009-2013 Deere & Company
+Copyright © 2009-2013 European Aeronautic Defence and Space Company
+Copyright © 2001-2013 Fujitsu
+Copyright © 2001-2010 Hewlett-Packard Company
+Copyright © 2001-2010 I-Logix Inc.
+Copyright © 2001-2013 International Business Machines Corporation
+Copyright © 2001-2010 IONA Technologies
+Copyright © 2013 Ivar Jacobson International SA
+Copyright © 2001-2010 Kabira Technologies, Inc.
+Copyright © 2009-2010 Lockheed Martin
+Copyright © 2001-2010 MEGA International
+Copyright © 2009-2010 Mentor Graphics Corporation
+Copyright © 2009-2013 Microsoft Corporation
+Copyright © 2001-2010 Motorola, Inc.
+Copyright © 2009-2010 National Aeronautics and Space Administration
+Copyright © 2009-2013 No Magic, Inc.
+Copyright © 1997-2017 Object Management Group, Inc
+Copyright © 2009-2010 oose Innovative Informatik GmbH
+Copyright © 2001-2010 Oracle Corporation
+Copyright © 2009-2010 Oslo Software, Inc.
+Copyright © 2009-2010 Purdue University
+Copyright © 2012-2013 Simula Research Laboratory
+Copyright © 2009-2010 SINTEF
+Copyright © 2001-2010 SOFTEAM
+Copyright © 2009-2013 Sparx Systems Pty Ltd
+Copyright © 2001-2010 Telefonaktiebolaget LM Ericsson
+Copyright © 2009-2010 THALES
+Copyright © 2001-2013 Unisys
+Copyright © 2001-2010 X-Change Technologies Group, LLC
+
+
+                          USE OF SPECIFICATION - TERMS, CONDITIONS & NOTICES
+The material in this document details an Object Management Group specification in accordance with the terms,
+conditions and notices set forth below. This document does not represent a commitment to implement any portion of
+this specification in any company's products. The information contained in this document is subject to change without
+notice.
+
+
+                                                      LICENSES
+The companies listed above have granted to the Object Management Group, Inc. (OMG) a nonexclusive, royalty-free,
+paid up, worldwide license to copy and distribute this document and to modify this document and distribute copies of
+the modified version. Each of the copyright holders listed above has agreed that no person shall be deemed to have
+infringed the copyright in the included material of any such copyright holder by reason of having used the specification
+set forth herein or having conformed any computer software to the specification.
+
+
+
+ii                                                                                     Unified Modeling Language 2.5.1
+Subject to all of the terms and conditions below, the owners of the copyright in this specification hereby grant you a
+fully-paid up, non-exclusive, nontransferable, perpetual, worldwide license (without the right to sublicense), to use this
+specification to create and distribute software and special purpose specifications that are based upon this specification,
+and to use, copy, and distribute this specification as provided under the Copyright Act; provided that: (1) both the
+copyright notice identified above and this permission notice appear on any copies of this specification; (2) the use of the
+specifications is for informational purposes and will not be copied or posted on any network computer or broadcast in
+any media and will not be otherwise resold or transferred for commercial purposes; and (3) no modifications are made
+to this specification. This limited permission automatically terminates without notice if you breach any of these terms or
+conditions. Upon termination, you will destroy immediately any copies of the specifications in your possession or
+control.
+
+
+                                                        PATENTS
+The attention of adopters is directed to the possibility that compliance with or adoption of OMG specifications may
+require use of an invention covered by patent rights. OMG shall not be responsible for identifying patents for which a
+license may be required by any OMG specification, or for conducting legal inquiries into the legal validity or scope of
+those patents that are brought to its attention. OMG specifications are prospective and advisory only. Prospective users
+are responsible for protecting themselves against liability for infringement of patents.
+This specification is published under the “RF on Limited Terms” IPR mode listed in the OMG Intellectual Property
+Rights Policy Statement, OMG Document ipr/12-09-02, available at: http://doc.omg.org/ipr/12-09-02
+
+
+                                            GENERAL USE RESTRICTIONS
+Any unauthorized use of this specification may violate copyright laws, trademark laws, and communications regulations
+and statutes. This document contains information which is protected by copyright. All Rights Reserved. No part of this
+work covered by copyright herein may be reproduced or used in any form or by any means--graphic, electronic, or
+mechanical, including photocopying, recording, taping, or information storage and retrieval systems--without
+permission of the copyright owner.
+
+
+                                            DISCLAIMER OF WARRANTY
+WHILE THIS PUBLICATION IS BELIEVED TO BE ACCURATE, IT IS PROVIDED "AS IS" AND MAY CONTAIN
+ERRORS OR MISPRINTS. THE OBJECT MANAGEMENT GROUP AND THE COMPANIES LISTED ABOVE
+MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH REGARD TO THIS PUBLICATION,
+INCLUDING BUT NOT LIMITED TO ANY WARRANTY OF TITLE OR OWNERSHIP, IMPLIED WARRANTY
+OF MERCHANTABILITY OR WARRANTY OF FITNESS FOR A PARTICULAR PURPOSE OR USE.
+IN NO EVENT SHALL THE OBJECT MANAGEMENT GROUP OR ANY OF THE COMPANIES LISTED ABOVE
+BE LIABLE FOR ERRORS CONTAINED HEREIN OR FOR DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+CONSEQUENTIAL, RELIANCE OR COVER DAMAGES, INCLUDING LOSS OF PROFITS, REVENUE, DATA
+OR USE, INCURRED BY ANY USER OR ANY THIRD PARTY IN CONNECTION WITH THE FURNISHING,
+PERFORMANCE, OR USE OF THIS MATERIAL, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGES.
+The entire risk as to the quality and performance of software developed using this specification is borne by you. This
+disclaimer of warranty constitutes an essential part of the license granted to you to use this specification.
+
+
+                                           RESTRICTED RIGHTS LEGEND
+Use, duplication or disclosure by the U.S. Government is subject to the restrictions set forth in subparagraph (c) (1) (ii)
+of The Rights in Technical Data and Computer Software Clause at DFARS 252.227-7013 or in subparagraph (c)(1) and
+(2) of the Commercial Computer Software - Restricted Rights clauses at 48 C.F.R. 52.227-19 or as specified in 48
+
+Unified Modeling Language 2.5.1                                                                                          iii
+C.F.R. 227-7202-2 of the DoD F.A.R. Supplement and its successors, or as specified in 48 C.F.R. 12.212 of the Federal
+Acquisition Regulations and its successors, as applicable. The specification copyright owners are as indicated above and
+may be contacted through the Object Management Group, 109 Highland Avenue, Needham, MA 02494, U.S.A.
+
+
+                                                     TRADEMARKS
+CORBA®, CORBA logos®, FIBO®, Financial Industry Business Ontology®, FINANCIAL INSTRUMENT GLOBAL
+IDENTIFIER®, IIOP®, IMM®, Model Driven Architecture®, MDA®, Object Management Group®, OMG®, OMG
+Logo®, SoaML®, SOAML®, SysML®, UAF®, Unified Modeling Language®, UML®, UML Cube Logo®, VSIPL®,
+and XMI® are registered trademarks of the Object Management Group, Inc.
+ For a complete list of trademarks, see: http://www.omg.org/legal/tm_list.htm. All other products or company names
+mentioned are used for identification purposes only, and may be trademarks of their respective owners.
+                                                     COMPLIANCE
+The copyright holders listed above acknowledge that the Object Management Group (acting itself or through its
+designees) is and shall at all times be the sole entity that may authorize developers, suppliers and sellers of computer
+software to use certification marks, trademarks or other special designations to indicate compliance with these
+materials.
+Software developed under the terms of this license may claim compliance or conformance with this specification if and
+only if the software compliance is of a nature fully matching the applicable compliance points as stated in the
+specification. Software developed only partially matching the applicable compliance points may claim only that the
+software was based on this specification, but may not claim compliance or conformance with this specification. In the
+event that testing suites are implemented or approved by Object Management Group, Inc., software developed using
+this specification may claim compliance or conformance with the specification only if the software satisfactorily
+completes the testing suites.
+
+
+
+
+iv                                                                                       Unified Modeling Language 2.5.1
+                   OMG’s Issue Reporting Procedure
+All OMG specifications are subject to continuous review and improvement. As part of this process we encourage
+readers to report any ambiguities, inconsistencies, or inaccuracies they may find by completing the Issue Reporting
+Form listed on the main web page http://www.omg.org, under Documents, Report a Bug/Issue
+(http://www.omg.org/report_issue.htm).
+
+
+
+
+Unified Modeling Language 2.5.1                                                                                       v
+                                                Table of Contents
+1     Scope.............................................................................................................................. 1
+2     Conformance................................................................................................................... 3
+3     Normative References.....................................................................................................5
+4     Terms and Definitions......................................................................................................7
+5     Notational Conventions................................................................................................... 9
+     5.1    Key words for Requirement Statements............................................................................. 9
+     5.2    Annotations on Example Diagrams.................................................................................... 9
+6     Additional Information....................................................................................................11
+     6.1    Specification Simplification............................................................................................... 11
+     6.2    Architectural Alignment.................................................................................................... 12
+     6.3    On the Semantics of UML................................................................................................ 12
+       6.3.1         Models and What They Model............................................................................................. 12
+       6.3.2         Semantic Areas................................................................................................................... 13
+       6.3.3         Stable and Transient Behavioral Semantics........................................................................ 15
+     6.4    How to Read this Specification........................................................................................ 16
+       6.4.1         Specification Format............................................................................................................ 16
+       6.4.2         Diagram Format................................................................................................................... 18
+     6.5    Acknowledgements.......................................................................................................... 19
+       6.5.1         Primary Authors................................................................................................................... 19
+       6.5.2         Technical Support................................................................................................................ 19
+       6.5.3         Reviewers............................................................................................................................ 19
+       6.5.4         Submitters........................................................................................................................... 20
+
+7     Common Structure........................................................................................................ 21
+     7.1    Summary......................................................................................................................... 21
+     7.2    Root................................................................................................................................. 21
+       7.2.1         Summary............................................................................................................................. 21
+       7.2.2         Abstract Syntax................................................................................................................... 21
+       7.2.3         Semantics............................................................................................................................ 22
+       7.2.4         Notation............................................................................................................................... 22
+       7.2.5         Examples............................................................................................................................. 22
+     7.3    Templates........................................................................................................................ 22
+       7.3.1         Summary............................................................................................................................. 22
+       7.3.2         Abstract Syntax................................................................................................................... 23
+       7.3.3         Semantics............................................................................................................................ 24
+       7.3.4         Notation............................................................................................................................... 26
+     7.4    Namespaces.................................................................................................................... 27
+       7.4.1         Summary............................................................................................................................. 27
+       7.4.2         Abstract Syntax................................................................................................................... 27
+       7.4.3         Semantics............................................................................................................................ 27
+       7.4.4         Notation............................................................................................................................... 29
+
+
+vi                                                                                                               Unified Modeling Language 2.5.1
+      7.4.5         Examples............................................................................................................................ 30
+   7.5    Types and Multiplicity....................................................................................................... 32
+      7.5.1        Summary............................................................................................................................. 32
+      7.5.2        Abstract Syntax................................................................................................................... 33
+      7.5.3        Semantics............................................................................................................................ 33
+      7.5.4        Notation............................................................................................................................... 34
+      7.5.5        Examples............................................................................................................................. 35
+   7.6    Constraints....................................................................................................................... 35
+      7.6.1        Summary............................................................................................................................. 35
+      7.6.2        Abstract Syntax................................................................................................................... 36
+      7.6.3        Semantics............................................................................................................................ 36
+      7.6.4        Notation............................................................................................................................... 36
+      7.6.5        Examples............................................................................................................................. 37
+   7.7    Dependencies.................................................................................................................. 37
+      7.7.1        Summary............................................................................................................................. 37
+      7.7.2        Abstract Syntax................................................................................................................... 38
+      7.7.3        Semantics............................................................................................................................ 38
+      7.7.4        Notation............................................................................................................................... 39
+      7.7.5        Examples............................................................................................................................. 39
+   7.8    Classifier Descriptions..................................................................................................... 40
+      7.8.1        Abstraction [Class]............................................................................................................... 40
+      7.8.2        Comment [Class]................................................................................................................. 40
+      7.8.3        Constraint [Class]................................................................................................................ 41
+      7.8.4        Dependency [Class]............................................................................................................ 42
+      7.8.5        DirectedRelationship [Abstract Class]................................................................................. 42
+      7.8.6        Element [Abstract Class]..................................................................................................... 43
+      7.8.7        ElementImport [Class]......................................................................................................... 44
+      7.8.8        MultiplicityElement [Abstract Class]..................................................................................... 45
+      7.8.9        NamedElement [Abstract Class].......................................................................................... 47
+      7.8.10       Namespace [Abstract Class]............................................................................................... 50
+      7.8.11       PackageImport [Class]........................................................................................................ 52
+      7.8.12       PackageableElement [Abstract Class]................................................................................. 52
+      7.8.13       ParameterableElement [Abstract Class].............................................................................. 53
+      7.8.14       Realization [Class]............................................................................................................... 54
+      7.8.15       Relationship [Abstract Class]............................................................................................... 54
+      7.8.16       TemplateBinding [Class]...................................................................................................... 55
+      7.8.17       TemplateParameter [Class]................................................................................................. 55
+      7.8.18       TemplateParameterSubstitution [Class]............................................................................... 56
+      7.8.19       TemplateSignature [Class]................................................................................................... 57
+      7.8.20       TemplateableElement [Abstract Class]................................................................................ 58
+      7.8.21       Type [Abstract Class]........................................................................................................... 59
+      7.8.22       TypedElement [Abstract Class]............................................................................................ 59
+      7.8.23       Usage [Class]...................................................................................................................... 60
+      7.8.24       VisibilityKind [Enumeration]................................................................................................. 60
+   7.9    Association Descriptions.................................................................................................. 61
+      7.9.1        A_actual_templateParameterSubstitution [Association]...................................................... 61
+      7.9.2        A_annotatedElement_comment [Association]..................................................................... 61
+      7.9.3        A_clientDependency_client [Association]............................................................................ 61
+      7.9.4        A_constrainedElement_constraint [Association].................................................................. 61
+
+
+Unified Modeling Language 2.5.1                                                                                                                         vii
+        7.9.5         A_default_templateParameter [Association]........................................................................ 61
+        7.9.6         A_elementImport_importingNamespace [Association]........................................................ 62
+        7.9.7         A_formal_templateParameterSubstitution [Association]...................................................... 62
+        7.9.8         A_importedElement_import [Association]............................................................................ 62
+        7.9.9         A_importedMember_namespace [Association]................................................................... 62
+        7.9.10        A_importedPackage_packageImport [Association]............................................................. 63
+        7.9.11        A_lowerValue_owningLower [Association].......................................................................... 63
+        7.9.12        A_mapping_abstraction [Association].................................................................................. 63
+        7.9.13        A_member_memberNamespace [Association].................................................................... 63
+        7.9.14        A_nameExpression_namedElement [Association].............................................................. 63
+        7.9.15        A_ownedActual_owningTemplateParameterSubstitution [Association]...............................64
+        7.9.16        A_ownedComment_owningElement [Association].............................................................. 64
+        7.9.17        A_ownedDefault_templateParameter [Association]............................................................. 64
+        7.9.18        A_ownedElement_owner [Association]............................................................................... 64
+        7.9.19        A_ownedMember_namespace [Association]....................................................................... 65
+        7.9.20        A_ownedParameter_signature [Association]....................................................................... 65
+        7.9.21        A_ownedParameteredElement_owningTemplateParameter [Association]..........................65
+        7.9.22        A_ownedRule_context [Association]................................................................................... 65
+        7.9.23        A_ownedTemplateSignature_template [Association]........................................................... 65
+        7.9.24        A_packageImport_importingNamespace [Association]....................................................... 66
+        7.9.25        A_parameterSubstitution_templateBinding [Association].................................................... 66
+        7.9.26        A_parameter_templateSignature [Association]....................................................................66
+        7.9.27        A_parameteredElement_templateParameter [Association]................................................. 66
+        7.9.28        A_relatedElement_relationship [Association].......................................................................67
+        7.9.29        A_signature_templateBinding [Association].........................................................................67
+        7.9.30        A_source_directedRelationship [Association]...................................................................... 67
+        7.9.31        A_specification_owningConstraint [Association]..................................................................67
+        7.9.32        A_supplier_supplierDependency [Association].................................................................... 67
+        7.9.33        A_target_directedRelationship [Association]....................................................................... 68
+        7.9.34        A_templateBinding_boundElement [Association]................................................................ 68
+        7.9.35        A_type_typedElement [Association].................................................................................... 68
+        7.9.36        A_upperValue_owningUpper [Association].......................................................................... 68
+
+8      Values............................................................................................................................ 69
+    8.1      Summary......................................................................................................................... 69
+    8.2      Literals............................................................................................................................. 69
+        8.2.1         Summary............................................................................................................................. 69
+        8.2.2         Abstract Syntax................................................................................................................... 69
+        8.2.3         Semantics............................................................................................................................ 69
+        8.2.4         Notation............................................................................................................................... 70
+    8.3      Expressions..................................................................................................................... 70
+        8.3.1         Summary............................................................................................................................. 70
+        8.3.2         Abstract Syntax................................................................................................................... 71
+        8.3.3         Semantics............................................................................................................................ 71
+        8.3.4         Notation............................................................................................................................... 72
+        8.3.5         Examples............................................................................................................................. 72
+    8.4      Time................................................................................................................................. 73
+        8.4.1         Summary............................................................................................................................. 73
+        8.4.2         Abstract Syntax................................................................................................................... 74
+        8.4.3         Semantics............................................................................................................................ 74
+
+
+viii                                                                                                              Unified Modeling Language 2.5.1
+      8.4.4        Notation............................................................................................................................... 75
+      8.4.5        Examples............................................................................................................................. 76
+   8.5    Intervals........................................................................................................................... 76
+      8.5.1        Summary............................................................................................................................. 76
+      8.5.2        Abstract Syntax................................................................................................................... 77
+      8.5.3        Semantics............................................................................................................................ 77
+      8.5.4        Notation............................................................................................................................... 78
+      8.5.5        Examples............................................................................................................................. 78
+   8.6    Classifier Descriptions..................................................................................................... 79
+      8.6.1        Duration [Class]................................................................................................................... 79
+      8.6.2        DurationConstraint [Class]................................................................................................... 79
+      8.6.3        DurationInterval [Class]....................................................................................................... 80
+      8.6.4        DurationObservation [Class]................................................................................................ 80
+      8.6.5        Expression [Class]............................................................................................................... 81
+      8.6.6        Interval [Class]..................................................................................................................... 82
+      8.6.7        IntervalConstraint [Class]..................................................................................................... 82
+      8.6.8        LiteralBoolean [Class].......................................................................................................... 83
+      8.6.9        LiteralInteger [Class]............................................................................................................ 83
+      8.6.10       LiteralNull [Class]................................................................................................................. 84
+      8.6.11       LiteralReal [Class]............................................................................................................... 84
+      8.6.12       LiteralSpecification [Abstract Class].................................................................................... 85
+      8.6.13       LiteralString [Class]............................................................................................................. 85
+      8.6.14       LiteralUnlimitedNatural [Class]............................................................................................ 86
+      8.6.15       Observation [Abstract Class]............................................................................................... 86
+      8.6.16       OpaqueExpression [Class].................................................................................................. 86
+      8.6.17       StringExpression [Class]..................................................................................................... 88
+      8.6.18       TimeConstraint [Class]........................................................................................................ 89
+      8.6.19       TimeExpression [Class]....................................................................................................... 90
+      8.6.20       TimeInterval [Class]............................................................................................................. 90
+      8.6.21       TimeObservation [Class]..................................................................................................... 91
+      8.6.22       ValueSpecification [Abstract Class]..................................................................................... 91
+   8.7    Association Descriptions.................................................................................................. 92
+      8.7.1        A_behavior_opaqueExpression [Association]......................................................................92
+      8.7.2        A_event_durationObservation [Association]........................................................................ 93
+      8.7.3        A_event_timeObservation [Association].............................................................................. 93
+      8.7.4        A_expr_duration [Association]............................................................................................. 93
+      8.7.5        A_expr_timeExpression [Association]................................................................................. 93
+      8.7.6        A_max_durationInterval [Association]................................................................................. 93
+      8.7.7        A_max_interval [Association]............................................................................................... 94
+      8.7.8        A_max_timeInterval [Association]........................................................................................ 94
+      8.7.9        A_min_durationInterval [Association].................................................................................. 94
+      8.7.10       A_min_interval [Association]................................................................................................ 94
+      8.7.11       A_min_timeInterval [Association]......................................................................................... 95
+      8.7.12       A_observation_duration [Association]................................................................................. 95
+      8.7.13       A_observation_timeExpression [Association]...................................................................... 95
+      8.7.14       A_operand_expression [Association].................................................................................. 95
+      8.7.15       A_result_opaqueExpression [Association].......................................................................... 96
+      8.7.16       A_specification_durationConstraint [Association]................................................................ 96
+      8.7.17       A_specification_intervalConstraint [Association]................................................................. 96
+      8.7.18       A_specification_timeConstraint [Association]...................................................................... 96
+
+
+Unified Modeling Language 2.5.1                                                                                                                          ix
+      8.7.19        A_subExpression_owningExpression [Association]............................................................ 97
+
+9    Classification................................................................................................................. 99
+    9.1    Summary......................................................................................................................... 99
+    9.2    Classifiers........................................................................................................................ 99
+      9.2.1         Summary............................................................................................................................. 99
+      9.2.2         Abstract Syntax................................................................................................................... 99
+      9.2.3         Semantics............................................................................................................................ 99
+      9.2.4         Notation............................................................................................................................. 101
+      9.2.5         Examples........................................................................................................................... 103
+    9.3    Classifier Templates....................................................................................................... 103
+      9.3.1         Summary........................................................................................................................... 103
+      9.3.2         Abstract Syntax................................................................................................................. 104
+      9.3.3         Semantics.......................................................................................................................... 104
+      9.3.4         Notation............................................................................................................................. 105
+      9.3.5         Examples........................................................................................................................... 106
+    9.4    Features......................................................................................................................... 107
+      9.4.1         Summary........................................................................................................................... 107
+      9.4.2         Abstract Syntax................................................................................................................. 107
+      9.4.3         Semantics.......................................................................................................................... 107
+      9.4.4         Notation............................................................................................................................. 110
+    9.5    Properties....................................................................................................................... 111
+      9.5.1         Summary............................................................................................................................ 111
+      9.5.2         Abstract Syntax.................................................................................................................. 111
+      9.5.3         Semantics.......................................................................................................................... 111
+      9.5.4         Notation............................................................................................................................. 113
+      9.5.5         Examples........................................................................................................................... 115
+    9.6    Operations..................................................................................................................... 116
+      9.6.1         Summary........................................................................................................................... 116
+      9.6.2         Abstract Syntax.................................................................................................................. 116
+      9.6.3         Semantics.......................................................................................................................... 116
+      9.6.4         Notation............................................................................................................................. 117
+      9.6.5         Examples........................................................................................................................... 119
+    9.7    Generalization Sets........................................................................................................ 119
+      9.7.1         Summary........................................................................................................................... 119
+      9.7.2         Abstract Syntax.................................................................................................................. 119
+      9.7.3         Semantics.......................................................................................................................... 119
+      9.7.4         Notation............................................................................................................................. 120
+      9.7.5         Examples........................................................................................................................... 122
+    9.8    Instances....................................................................................................................... 126
+      9.8.1         Summary........................................................................................................................... 126
+      9.8.2         Abstract Syntax................................................................................................................. 126
+      9.8.3         Semantics.......................................................................................................................... 127
+      9.8.4         Notation............................................................................................................................. 128
+      9.8.5         Examples........................................................................................................................... 128
+    9.9    Classifier Descriptions................................................................................................... 129
+      9.9.1         AggregationKind [Enumeration]......................................................................................... 129
+      9.9.2         BehavioralFeature [Abstract Class]................................................................................... 130
+
+
+x                                                                                                              Unified Modeling Language 2.5.1
+      9.9.3         CallConcurrencyKind [Enumeration].................................................................................. 131
+      9.9.4         Classifier [Abstract Class].................................................................................................. 132
+      9.9.5         ClassifierTemplateParameter [Class]................................................................................. 136
+      9.9.6         Feature [Abstract Class].................................................................................................... 138
+      9.9.7         Generalization [Class]....................................................................................................... 138
+      9.9.8         GeneralizationSet [Class].................................................................................................. 139
+      9.9.9         InstanceSpecification [Class]............................................................................................. 140
+      9.9.10        InstanceValue [Class]........................................................................................................ 141
+      9.9.11        Operation [Class]............................................................................................................... 141
+      9.9.12        OperationTemplateParameter [Class]................................................................................ 144
+      9.9.13        Parameter [Class].............................................................................................................. 145
+      9.9.14        ParameterDirectionKind [Enumeration]............................................................................. 147
+      9.9.15        ParameterEffectKind [Enumeration].................................................................................. 147
+      9.9.16        ParameterSet [Class]........................................................................................................ 148
+      9.9.17        Property [Class]................................................................................................................. 149
+      9.9.18        RedefinableElement [Abstract Class]................................................................................ 153
+      9.9.19        RedefinableTemplateSignature [Class].............................................................................. 154
+      9.9.20        Slot [Class]........................................................................................................................ 155
+      9.9.21        StructuralFeature [Abstract Class]..................................................................................... 156
+      9.9.22        Substitution [Class]............................................................................................................ 156
+   9.10 Association Descriptions................................................................................................ 157
+      9.10.1        A_attribute_classifier [Association].................................................................................... 157
+      9.10.2        A_bodyCondition_bodyContext [Association].................................................................... 157
+      9.10.3        A_classifier_instanceSpecification [Association]............................................................... 157
+      9.10.4        A_classifier_templateParameter_parameteredElement [Association]...............................157
+      9.10.5        A_collaborationUse_classifier [Association]...................................................................... 157
+      9.10.6        A_condition_parameterSet [Association]........................................................................... 158
+      9.10.7        A_constrainingClassifier_classifierTemplateParameter [Association]................................ 158
+      9.10.8        A_contract_substitution [Association]................................................................................ 158
+      9.10.9        A_defaultValue_owningParameter [Association]............................................................... 158
+      9.10.10       A_defaultValue_owningProperty [Association].................................................................. 159
+      9.10.11       A_definingFeature_slot [Association]................................................................................ 159
+      9.10.12       A_extendedSignature_redefinableTemplateSignature [Association].................................159
+      9.10.13       A_feature_featuringClassifier [Association]....................................................................... 159
+      9.10.14       A_general_classifier [Association]..................................................................................... 159
+      9.10.15       A_general_generalization [Association]............................................................................. 160
+      9.10.16       A_generalizationSet_generalization [Association]............................................................. 160
+      9.10.17       A_generalization_specific [Association]............................................................................. 160
+      9.10.18       A_inheritedMember_inheritingClassifier [Association]....................................................... 160
+      9.10.19       A_inheritedParameter_redefinableTemplateSignature [Association]................................. 160
+      9.10.20       A_instance_instanceValue [Association]........................................................................... 161
+      9.10.21       A_method_specification [Association]............................................................................... 161
+      9.10.22       A_operation_templateParameter_parameteredElement [Association]..............................161
+      9.10.23       A_opposite_property [Association].................................................................................... 161
+      9.10.24       A_ownedParameterSet_behavioralFeature [Association].................................................162
+      9.10.25       A_ownedParameter_operation [Association]..................................................................... 162
+      9.10.26       A_ownedParameter_ownerFormalParam [Association].................................................... 162
+      9.10.27       A_ownedTemplateSignature_classifier [Association].........................................................162
+      9.10.28       A_ownedUseCase_classifier [Association]........................................................................ 162
+      9.10.29       A_parameterSet_parameter [Association]......................................................................... 163
+      9.10.30       A_postcondition_postContext [Association]....................................................................... 163
+
+Unified Modeling Language 2.5.1                                                                                                                         xi
+         9.10.31        A_powertypeExtent_powertype [Association].................................................................... 163
+         9.10.32        A_precondition_preContext [Association].......................................................................... 163
+         9.10.33        A_qualifier_associationEnd [Association].......................................................................... 163
+         9.10.34        A_raisedException_behavioralFeature [Association].........................................................164
+         9.10.35        A_raisedException_operation [Association].......................................................................164
+         9.10.36        A_redefinedClassifier_classifier [Association]................................................................... 164
+         9.10.37        A_redefinedElement_redefinableElement [Association].................................................... 164
+         9.10.38        A_redefinedOperation_operation [Association]................................................................. 164
+         9.10.39        A_redefinedProperty_property [Association]..................................................................... 165
+         9.10.40        A_redefinitionContext_redefinableElement [Association].................................................. 165
+         9.10.41        A_representation_classifier [Association].......................................................................... 165
+         9.10.42        A_slot_owningInstance [Association]................................................................................ 165
+         9.10.43        A_specification_owningInstanceSpec [Association].......................................................... 166
+         9.10.44        A_subsettedProperty_property [Association]..................................................................... 166
+         9.10.45        A_substitution_substitutingClassifier [Association]............................................................ 166
+         9.10.46        A_type_operation [Association]......................................................................................... 166
+         9.10.47        A_value_owningSlot [Association]..................................................................................... 166
+
+10 Simple Classifiers........................................................................................................167
+      10.1 Summary....................................................................................................................... 167
+      10.2 DataTypes...................................................................................................................... 167
+         10.2.1         Summary........................................................................................................................... 167
+         10.2.2         Abstract Syntax................................................................................................................. 167
+         10.2.3         Semantics.......................................................................................................................... 167
+         10.2.4         Notation............................................................................................................................. 168
+         10.2.5         Examples........................................................................................................................... 168
+      10.3 Signals........................................................................................................................... 169
+         10.3.1         Summary........................................................................................................................... 169
+         10.3.2         Abstract Syntax................................................................................................................. 169
+         10.3.3         Semantics.......................................................................................................................... 169
+         10.3.4         Notation............................................................................................................................. 170
+         10.3.5         Examples........................................................................................................................... 170
+      10.4 Interfaces....................................................................................................................... 170
+         10.4.1         Summary........................................................................................................................... 170
+         10.4.2         Abstract Syntax................................................................................................................. 171
+         10.4.3         Semantics.......................................................................................................................... 171
+         10.4.4         Notation............................................................................................................................. 172
+         10.4.5         Examples........................................................................................................................... 172
+      10.5 Classifier Descriptions................................................................................................... 174
+         10.5.1         BehavioredClassifier [Abstract Class]................................................................................ 174
+         10.5.2         DataType [Class]............................................................................................................... 174
+         10.5.3         Enumeration [Class].......................................................................................................... 175
+         10.5.4         EnumerationLiteral [Class]................................................................................................. 175
+         10.5.5         Interface [Class]................................................................................................................. 176
+         10.5.6         InterfaceRealization [Class]............................................................................................... 177
+         10.5.7         PrimitiveType [Class]......................................................................................................... 177
+         10.5.8         Reception [Class].............................................................................................................. 178
+         10.5.9         Signal [Class]..................................................................................................................... 178
+      10.6 Association Descriptions................................................................................................ 179
+
+
+xii                                                                                                                Unified Modeling Language 2.5.1
+       10.6.1        A_classifierBehavior_behavioredClassifier [Association]..................................................179
+       10.6.2        A_classifier_enumerationLiteral [Association]................................................................... 179
+       10.6.3        A_contract_interfaceRealization [Association]................................................................... 179
+       10.6.4        A_interfaceRealization_implementingClassifier [Association]............................................179
+       10.6.5        A_nestedClassifier_interface [Association]........................................................................ 180
+       10.6.6        A_ownedAttribute_datatype [Association]......................................................................... 180
+       10.6.7        A_ownedAttribute_interface [Association]......................................................................... 180
+       10.6.8        A_ownedAttribute_owningSignal [Association].................................................................. 180
+       10.6.9        A_ownedBehavior_behavioredClassifier [Association]...................................................... 180
+       10.6.10       A_ownedLiteral_enumeration [Association]....................................................................... 181
+       10.6.11       A_ownedOperation_datatype [Association]....................................................................... 181
+       10.6.12       A_ownedOperation_interface [Association]....................................................................... 181
+       10.6.13       A_ownedReception_interface [Association].......................................................................181
+       10.6.14       A_protocol_interface [Association].................................................................................... 182
+       10.6.15       A_redefinedInterface_interface [Association].................................................................... 182
+       10.6.16       A_signal_reception [Association]....................................................................................... 182
+
+11 Structured Classifiers.................................................................................................. 183
+   11.1 Summary....................................................................................................................... 183
+   11.2 Structured Classifiers..................................................................................................... 183
+       11.2.1        Summary........................................................................................................................... 183
+       11.2.2        Abstract Syntax................................................................................................................. 183
+       11.2.3        Semantics.......................................................................................................................... 184
+       11.2.4        Notation............................................................................................................................. 185
+       11.2.5        Examples........................................................................................................................... 186
+   11.3 Encapsulated Classifiers................................................................................................ 189
+       11.3.1        Summary........................................................................................................................... 189
+       11.3.2        Abstract Syntax................................................................................................................. 190
+       11.3.3        Semantics.......................................................................................................................... 190
+       11.3.4        Notation............................................................................................................................. 191
+       11.3.5        Examples........................................................................................................................... 192
+   11.4 Classes.......................................................................................................................... 194
+       11.4.1        Summary........................................................................................................................... 194
+       11.4.2        Abstract Syntax................................................................................................................. 194
+       11.4.3        Semantics.......................................................................................................................... 194
+       11.4.4        Notation............................................................................................................................. 195
+       11.4.5        Examples........................................................................................................................... 195
+   11.5 Associations................................................................................................................... 199
+       11.5.1        Summary........................................................................................................................... 199
+       11.5.2        Abstract Syntax................................................................................................................. 199
+       11.5.3        Semantics.......................................................................................................................... 199
+       11.5.4        Notation............................................................................................................................. 201
+       11.5.5        Examples........................................................................................................................... 203
+   11.6 Components.................................................................................................................. 208
+       11.6.1        Summary........................................................................................................................... 208
+       11.6.2        Abstract Syntax................................................................................................................. 209
+       11.6.3        Semantics.......................................................................................................................... 209
+       11.6.4        Notation............................................................................................................................. 210
+       11.6.5        Examples........................................................................................................................... 211
+
+
+Unified Modeling Language 2.5.1                                                                                                                         xiii
+  11.7 Collaborations................................................................................................................ 215
+      11.7.1        Summary........................................................................................................................... 215
+      11.7.2        Abstract Syntax................................................................................................................. 215
+      11.7.3        Semantics.......................................................................................................................... 216
+      11.7.4        Notation............................................................................................................................. 217
+      11.7.5        Examples........................................................................................................................... 217
+  11.8 Classifier Descriptions................................................................................................... 219
+      11.8.1        Association [Class]............................................................................................................ 219
+      11.8.2        AssociationClass [Class]................................................................................................... 220
+      11.8.3        Class [Class]...................................................................................................................... 221
+      11.8.4        Collaboration [Class]......................................................................................................... 222
+      11.8.5        CollaborationUse [Class]................................................................................................... 223
+      11.8.6        Component [Class]............................................................................................................ 224
+      11.8.7        ComponentRealization [Class].......................................................................................... 225
+      11.8.8        ConnectableElement [Abstract Class]............................................................................... 226
+      11.8.9        ConnectableElementTemplateParameter [Class].............................................................. 226
+      11.8.10       Connector [Class].............................................................................................................. 227
+      11.8.11       ConnectorEnd [Class]........................................................................................................ 228
+      11.8.12       ConnectorKind [Enumeration]............................................................................................ 229
+      11.8.13       EncapsulatedClassifier [Abstract Class]............................................................................ 230
+      11.8.14       Port [Class]........................................................................................................................ 230
+      11.8.15       StructuredClassifier [Abstract Class]................................................................................. 232
+  11.9 Association Descriptions................................................................................................ 233
+      11.9.1        A_collaborationRole_collaboration [Association]............................................................... 233
+      11.9.2        A_connectableElement_templateParameter_parameteredElement [Association].............233
+      11.9.3        A_contract_connector [Association].................................................................................. 234
+      11.9.4        A_definingEnd_connectorEnd [Association]...................................................................... 234
+      11.9.5        A_endType_association [Association]............................................................................... 234
+      11.9.6        A_end_connector [Association]......................................................................................... 234
+      11.9.7        A_end_role [Association]................................................................................................... 234
+      11.9.8        A_extension_metaclass [Association]............................................................................... 235
+      11.9.9        A_memberEnd_association [Association]......................................................................... 235
+      11.9.10       A_navigableOwnedEnd_association [Association]............................................................ 235
+      11.9.11       A_nestedClassifier_nestingClass [Association]................................................................. 235
+      11.9.12       A_ownedAttribute_class [Association]............................................................................... 236
+      11.9.13       A_ownedAttribute_structuredClassifier [Association]........................................................ 236
+      11.9.14       A_ownedConnector_structuredClassifier [Association]..................................................... 236
+      11.9.15       A_ownedEnd_owningAssociation [Association]................................................................ 236
+      11.9.16       A_ownedOperation_class [Association]............................................................................ 237
+      11.9.17       A_ownedPort_encapsulatedClassifier [Association].......................................................... 237
+      11.9.18       A_ownedReception_class [Association]............................................................................ 237
+      11.9.19       A_packagedElement_component [Association].................................................................237
+      11.9.20       A_partWithPort_connectorEnd [Association]..................................................................... 237
+      11.9.21       A_part_structuredClassifier [Association].......................................................................... 238
+      11.9.22       A_protocol_port [Association]............................................................................................ 238
+      11.9.23       A_provided_component [Association]............................................................................... 238
+      11.9.24       A_provided_port [Association]........................................................................................... 238
+      11.9.25       A_realization_abstraction_component [Association]......................................................... 238
+      11.9.26       A_realizingClassifier_componentRealization [Association]...............................................239
+      11.9.27       A_redefinedConnector_connector [Association]................................................................ 239
+
+
+xiv                                                                                                            Unified Modeling Language 2.5.1
+       11.9.28       A_redefinedPort_port [Association]................................................................................... 239
+       11.9.29       A_required_component [Association]................................................................................ 239
+       11.9.30       A_required_port [Association]............................................................................................ 239
+       11.9.31       A_roleBinding_collaborationUse [Association].................................................................. 240
+       11.9.32       A_role_structuredClassifier [Association].......................................................................... 240
+       11.9.33       A_superClass_class [Association]..................................................................................... 240
+       11.9.34       A_type_collaborationUse [Association]............................................................................. 240
+       11.9.35       A_type_connector [Association]........................................................................................ 240
+
+12 Packages.....................................................................................................................241
+   12.1 Summary....................................................................................................................... 241
+   12.2 Packages....................................................................................................................... 241
+       12.2.1        Summary........................................................................................................................... 241
+       12.2.2        Abstract Syntax................................................................................................................. 241
+       12.2.3        Semantics.......................................................................................................................... 241
+       12.2.4        Notation............................................................................................................................. 248
+       12.2.5        Examples........................................................................................................................... 249
+   12.3 Profiles........................................................................................................................... 252
+       12.3.1        Summary........................................................................................................................... 252
+       12.3.2        Abstract Syntax................................................................................................................. 253
+       12.3.3        Semantics.......................................................................................................................... 253
+       12.3.4        Notation............................................................................................................................. 262
+       12.3.5        Examples........................................................................................................................... 264
+   12.4 Classifier Descriptions................................................................................................... 273
+       12.4.1        Extension [Class]............................................................................................................... 273
+       12.4.2        ExtensionEnd [Class]........................................................................................................ 274
+       12.4.3        Image [Class]..................................................................................................................... 275
+       12.4.4        Model [Class]..................................................................................................................... 275
+       12.4.5        Package [Class]................................................................................................................. 276
+       12.4.6        PackageMerge [Class]...................................................................................................... 278
+       12.4.7        Profile [Class].................................................................................................................... 278
+       12.4.8        ProfileApplication [Class]................................................................................................... 279
+       12.4.9        Stereotype [Class]............................................................................................................. 280
+   12.5 Association Descriptions................................................................................................ 281
+       12.5.1        A_appliedProfile_profileApplication [Association].............................................................. 281
+       12.5.2        A_icon_stereotype [Association]........................................................................................ 281
+       12.5.3        A_mergedPackage_packageMerge [Association]............................................................. 281
+       12.5.4        A_metaclassReference_profile [Association].....................................................................282
+       12.5.5        A_metamodelReference_profile [Association]................................................................... 282
+       12.5.6        A_nestedPackage_nestingPackage [Association]............................................................. 282
+       12.5.7        A_ownedEnd_extension [Association]............................................................................... 282
+       12.5.8        A_ownedStereotype_owningPackage [Association].......................................................... 282
+       12.5.9        A_ownedType_package [Association]............................................................................... 283
+       12.5.10       A_packageMerge_receivingPackage [Association]........................................................... 283
+       12.5.11       A_packagedElement_owningPackage [Association]......................................................... 283
+       12.5.12       A_profileApplication_applyingPackage [Association]........................................................ 283
+       12.5.13       A_profile_stereotype [Association].................................................................................... 284
+       12.5.14       A_type_extensionEnd [Association].................................................................................. 284
+
+13 Common Behavior.......................................................................................................285
+
+Unified Modeling Language 2.5.1                                                                                                                          xv
+   13.1 Summary....................................................................................................................... 285
+   13.2 Behaviors....................................................................................................................... 285
+       13.2.1        Summary........................................................................................................................... 285
+       13.2.2        Abstract Syntax................................................................................................................. 286
+       13.2.3        Semantics.......................................................................................................................... 286
+       13.2.4        Notation............................................................................................................................. 290
+       13.2.5        Examples........................................................................................................................... 290
+   13.3 Events............................................................................................................................ 290
+       13.3.1        Summary........................................................................................................................... 290
+       13.3.2        Abstract Syntax................................................................................................................. 291
+       13.3.3        Semantics.......................................................................................................................... 291
+       13.3.4        Notation............................................................................................................................. 293
+       13.3.5        Examples........................................................................................................................... 294
+   13.4 Classifier Descriptions................................................................................................... 294
+       13.4.1        AnyReceiveEvent [Class].................................................................................................. 294
+       13.4.2        Behavior [Abstract Class].................................................................................................. 294
+       13.4.3        CallEvent [Class]............................................................................................................... 297
+       13.4.4        ChangeEvent [Class]......................................................................................................... 297
+       13.4.5        Event [Abstract Class]....................................................................................................... 297
+       13.4.6        FunctionBehavior [Class]................................................................................................... 298
+       13.4.7        MessageEvent [Abstract Class]......................................................................................... 298
+       13.4.8        OpaqueBehavior [Class].................................................................................................... 299
+       13.4.9        SignalEvent [Class]........................................................................................................... 299
+       13.4.10       TimeEvent [Class].............................................................................................................. 299
+       13.4.11       Trigger [Class]................................................................................................................... 300
+   13.5 Association Descriptions................................................................................................ 301
+       13.5.1        A_changeExpression_changeEvent [Association].............................................................301
+       13.5.2        A_context_behavior [Association]...................................................................................... 301
+       13.5.3        A_event_trigger [Association]............................................................................................ 301
+       13.5.4        A_operation_callEvent [Association]................................................................................. 301
+       13.5.5        A_ownedParameterSet_behavior [Association].................................................................301
+       13.5.6        A_ownedParameter_behavior [Association]...................................................................... 302
+       13.5.7        A_port_trigger [Association]............................................................................................... 302
+       13.5.8        A_postcondition_behavior [Association]............................................................................ 302
+       13.5.9        A_precondition_behavior [Association].............................................................................. 302
+       13.5.10       A_redefinedBehavior_behavior [Association].................................................................... 302
+       13.5.11       A_signal_signalEvent [Association]................................................................................... 303
+       13.5.12       A_when_timeEvent [Association]...................................................................................... 303
+
+14 StateMachines.............................................................................................................305
+   14.1 Summary....................................................................................................................... 305
+   14.2 Behavior StateMachines................................................................................................ 305
+       14.2.1        Summary........................................................................................................................... 305
+       14.2.2        Abstract Syntax................................................................................................................. 306
+       14.2.3        Semantics.......................................................................................................................... 306
+       14.2.4        Notation............................................................................................................................. 319
+       14.2.5        Examples........................................................................................................................... 335
+   14.3 StateMachine Redefinition............................................................................................. 336
+       14.3.1        Summary........................................................................................................................... 336
+
+
+xvi                                                                                                             Unified Modeling Language 2.5.1
+      14.3.2        Abstract Syntax................................................................................................................. 337
+      14.3.3        Semantics.......................................................................................................................... 337
+      14.3.4        Notation............................................................................................................................. 338
+      14.3.5        Examples........................................................................................................................... 339
+   14.4 ProtocolStateMachines.................................................................................................. 340
+      14.4.1        Summary........................................................................................................................... 340
+      14.4.2        Abstract Syntax................................................................................................................. 341
+      14.4.3        Semantics.......................................................................................................................... 341
+      14.4.4        Notation............................................................................................................................. 344
+   14.5 Classifier Descriptions................................................................................................... 345
+      14.5.1        ConnectionPointReference [Class].................................................................................... 345
+      14.5.2        FinalState [Class].............................................................................................................. 346
+      14.5.3        ProtocolConformance [Class]............................................................................................ 347
+      14.5.4        ProtocolStateMachine [Class]............................................................................................ 347
+      14.5.5        ProtocolTransition [Class].................................................................................................. 348
+      14.5.6        Pseudostate [Class]........................................................................................................... 349
+      14.5.7        PseudostateKind [Enumeration]........................................................................................ 351
+      14.5.8        Region [Class]................................................................................................................... 352
+      14.5.9        State [Class]...................................................................................................................... 354
+      14.5.10       StateMachine [Class]......................................................................................................... 357
+      14.5.11       Transition [Class]............................................................................................................... 359
+      14.5.12       TransitionKind [Enumeration]............................................................................................ 362
+      14.5.13       Vertex [Abstract Class]...................................................................................................... 362
+   14.6 Association Descriptions................................................................................................ 364
+      14.6.1        A_conformance_specificMachine [Association]................................................................. 364
+      14.6.2        A_connectionPoint_state [Association].............................................................................. 364
+      14.6.3        A_connectionPoint_stateMachine [Association]................................................................ 365
+      14.6.4        A_connection_state [Association]...................................................................................... 365
+      14.6.5        A_deferrableTrigger_state [Association]............................................................................ 365
+      14.6.6        A_doActivity_state [Association]........................................................................................ 365
+      14.6.7        A_effect_transition [Association]........................................................................................ 366
+      14.6.8        A_entry_connectionPointReference [Association]............................................................. 366
+      14.6.9        A_entry_state [Association]............................................................................................... 366
+      14.6.10       A_exit_connectionPointReference [Association]............................................................... 366
+      14.6.11       A_exit_state [Association].................................................................................................. 366
+      14.6.12       A_extendedRegion_region [Association]........................................................................... 367
+      14.6.13       A_extendedStateMachine_stateMachine [Association]..................................................... 367
+      14.6.14       A_generalMachine_protocolConformance [Association]................................................... 367
+      14.6.15       A_guard_transition [Association]....................................................................................... 367
+      14.6.16       A_incoming_target_vertex [Association]............................................................................ 367
+      14.6.17       A_outgoing_source_vertex [Association]........................................................................... 368
+      14.6.18       A_postCondition_owningTransition [Association].............................................................. 368
+      14.6.19       A_preCondition_protocolTransition [Association].............................................................. 368
+      14.6.20       A_redefinedTransition_transition [Association].................................................................. 368
+      14.6.21       A_redefinedVertex_vertex [Association]............................................................................ 369
+      14.6.22       A_redefinitionContext_region [Association]....................................................................... 369
+      14.6.23       A_redefinitionContext_transition [Association]...................................................................369
+      14.6.24       A_redefinitionContext_vertex [Association]....................................................................... 369
+      14.6.25       A_referred_protocolTransition [Association]...................................................................... 370
+      14.6.26       A_region_state [Association]............................................................................................. 370
+
+
+Unified Modeling Language 2.5.1                                                                                                                       xvii
+        14.6.27      A_region_stateMachine [Association]................................................................................ 370
+        14.6.28      A_stateInvariant_owningState [Association]...................................................................... 370
+        14.6.29      A_submachineState_submachine [Association]................................................................ 370
+        14.6.30      A_subvertex_container [Association]................................................................................. 371
+        14.6.31      A_transition_container [Association].................................................................................. 371
+        14.6.32      A_trigger_transition [Association]...................................................................................... 371
+
+15 Activities...................................................................................................................... 373
+   15.1 Summary....................................................................................................................... 373
+   15.2 Activities......................................................................................................................... 373
+        15.2.1       Summary........................................................................................................................... 373
+        15.2.2       Abstract Syntax................................................................................................................. 374
+        15.2.3       Semantics.......................................................................................................................... 374
+        15.2.4       Notation............................................................................................................................. 379
+        15.2.5       Examples........................................................................................................................... 382
+   15.3 Control Nodes................................................................................................................ 387
+        15.3.1       Summary........................................................................................................................... 387
+        15.3.2       Abstract Syntax................................................................................................................. 387
+        15.3.3       Semantics.......................................................................................................................... 387
+        15.3.4       Notation............................................................................................................................. 391
+        15.3.5       Examples........................................................................................................................... 392
+   15.4 Object Nodes................................................................................................................. 396
+        15.4.1       Summary........................................................................................................................... 396
+        15.4.2       Abstract Syntax................................................................................................................. 396
+        15.4.3       Semantics.......................................................................................................................... 397
+        15.4.4       Notation............................................................................................................................. 399
+        15.4.5       Examples........................................................................................................................... 401
+   15.5 Executable Nodes.......................................................................................................... 403
+        15.5.1       Summary........................................................................................................................... 403
+        15.5.2       Abstract Syntax................................................................................................................. 403
+        15.5.3       Semantics.......................................................................................................................... 403
+        15.5.4       Notation............................................................................................................................. 404
+        15.5.5       Examples........................................................................................................................... 405
+   15.6 Activity Groups............................................................................................................... 405
+        15.6.1       Summary........................................................................................................................... 405
+        15.6.2       Abstract Syntax................................................................................................................. 406
+        15.6.3       Semantics.......................................................................................................................... 406
+        15.6.4       Notation............................................................................................................................. 408
+        15.6.5       Examples........................................................................................................................... 409
+   15.7 Classifier Descriptions.................................................................................................... 411
+        15.7.1       Activity [Class]................................................................................................................... 411
+        15.7.2       ActivityEdge [Abstract Class]............................................................................................. 413
+        15.7.3       ActivityFinalNode [Class]................................................................................................... 414
+        15.7.4       ActivityGroup [Abstract Class]........................................................................................... 414
+        15.7.5       ActivityNode [Abstract Class]............................................................................................. 415
+        15.7.6       ActivityParameterNode [Class].......................................................................................... 417
+        15.7.7       ActivityPartition [Class]...................................................................................................... 418
+        15.7.8       CentralBufferNode [Class]................................................................................................. 419
+        15.7.9       ControlFlow [Class]........................................................................................................... 420
+
+
+xviii                                                                                                           Unified Modeling Language 2.5.1
+      15.7.10       ControlNode [Abstract Class]............................................................................................ 420
+      15.7.11       DataStoreNode [Class]...................................................................................................... 420
+      15.7.12       DecisionNode [Class]........................................................................................................ 421
+      15.7.13       ExceptionHandler [Class].................................................................................................. 422
+      15.7.14       ExecutableNode [Abstract Class]...................................................................................... 424
+      15.7.15       FinalNode [Abstract Class]................................................................................................ 424
+      15.7.16       FlowFinalNode [Class]....................................................................................................... 424
+      15.7.17       ForkNode [Class]............................................................................................................... 425
+      15.7.18       InitialNode [Class].............................................................................................................. 425
+      15.7.19       InterruptibleActivityRegion [Class]..................................................................................... 426
+      15.7.20       JoinNode [Class]............................................................................................................... 426
+      15.7.21       MergeNode [Class]............................................................................................................ 427
+      15.7.22       ObjectFlow [Class]............................................................................................................. 428
+      15.7.23       ObjectNode [Abstract Class].............................................................................................. 429
+      15.7.24       ObjectNodeOrderingKind [Enumeration]........................................................................... 430
+      15.7.25       Variable [Class].................................................................................................................. 431
+   15.8 Association Descriptions................................................................................................ 432
+      15.8.1        A_containedEdge_inGroup [Association].......................................................................... 432
+      15.8.2        A_containedNode_inGroup [Association].......................................................................... 432
+      15.8.3        A_decisionInputFlow_decisionNode [Association].............................................................432
+      15.8.4        A_decisionInput_decisionNode [Association].................................................................... 432
+      15.8.5        A_edge_activity [Association]............................................................................................ 432
+      15.8.6        A_edge_inPartition [Association]....................................................................................... 433
+      15.8.7        A_exceptionInput_exceptionHandler [Association]............................................................ 433
+      15.8.8        A_exceptionType_exceptionHandler [Association]............................................................ 433
+      15.8.9        A_group_inActivity [Association]........................................................................................ 433
+      15.8.10       A_guard_activityEdge [Association].................................................................................. 434
+      15.8.11       A_handlerBody_exceptionHandler [Association]............................................................... 434
+      15.8.12       A_handler_protectedNode [Association]........................................................................... 434
+      15.8.13       A_inInterruptibleRegion_node [Association]...................................................................... 434
+      15.8.14       A_inPartition_node [Association]....................................................................................... 434
+      15.8.15       A_inState_objectNode [Association].................................................................................. 435
+      15.8.16       A_incoming_target_node [Association]............................................................................. 435
+      15.8.17       A_interruptingEdge_interrupts [Association]...................................................................... 435
+      15.8.18       A_joinSpec_joinNode [Association]................................................................................... 435
+      15.8.19       A_node_activity [Association]............................................................................................ 435
+      15.8.20       A_outgoing_source_node [Association]............................................................................ 436
+      15.8.21       A_parameter_activityParameterNode [Association].......................................................... 436
+      15.8.22       A_partition_activity [Association]....................................................................................... 436
+      15.8.23       A_redefinedEdge_activityEdge [Association].................................................................... 436
+      15.8.24       A_redefinedNode_activityNode [Association].................................................................... 437
+      15.8.25       A_represents_activityPartition [Association]...................................................................... 437
+      15.8.26       A_selection_objectFlow [Association]................................................................................ 437
+      15.8.27       A_selection_objectNode [Association]............................................................................... 437
+      15.8.28       A_structuredNode_activity [Association]........................................................................... 437
+      15.8.29       A_subgroup_superGroup [Association]............................................................................. 438
+      15.8.30       A_subpartition_superPartition [Association]...................................................................... 438
+      15.8.31       A_transformation_objectFlow [Association]....................................................................... 438
+      15.8.32       A_upperBound_objectNode [Association]......................................................................... 438
+      15.8.33       A_variable_activityScope [Association]............................................................................. 438
+      15.8.34       A_weight_activityEdge [Association]................................................................................. 439
+
+Unified Modeling Language 2.5.1                                                                                                                     xix
+16 Actions.........................................................................................................................441
+     16.1 Summary....................................................................................................................... 441
+     16.2 Actions........................................................................................................................... 442
+        16.2.1         Summary........................................................................................................................... 442
+        16.2.2         Abstract Syntax................................................................................................................. 442
+        16.2.3         Semantics.......................................................................................................................... 443
+        16.2.4         Notation............................................................................................................................. 446
+        16.2.5         Examples........................................................................................................................... 447
+     16.3 Invocation Actions.......................................................................................................... 450
+        16.3.1         Summary........................................................................................................................... 450
+        16.3.2         Abstract Syntax................................................................................................................. 450
+        16.3.3         Semantics.......................................................................................................................... 450
+        16.3.4         Notation............................................................................................................................. 453
+        16.3.5         Examples........................................................................................................................... 456
+     16.4 Object Actions................................................................................................................ 458
+        16.4.1         Summary........................................................................................................................... 458
+        16.4.2         Abstract Syntax................................................................................................................. 458
+        16.4.3         Semantics.......................................................................................................................... 458
+        16.4.4         Notation............................................................................................................................. 460
+        16.4.5         Examples........................................................................................................................... 460
+     16.5 Link End Data................................................................................................................ 461
+        16.5.1         Summary........................................................................................................................... 461
+        16.5.2         Abstract Syntax................................................................................................................. 461
+        16.5.3         Semantics.......................................................................................................................... 461
+        16.5.4         Notation............................................................................................................................. 462
+        16.5.5         Examples........................................................................................................................... 462
+     16.6 Link Actions.................................................................................................................... 462
+        16.6.1         Summary........................................................................................................................... 462
+        16.6.2         Abstract Syntax................................................................................................................. 463
+        16.6.3         Semantics.......................................................................................................................... 463
+        16.6.4         Notation............................................................................................................................. 465
+        16.6.5         Examples........................................................................................................................... 465
+     16.7 Link Object Actions........................................................................................................ 465
+        16.7.1         Summary........................................................................................................................... 465
+        16.7.2         Abstract Syntax................................................................................................................. 466
+        16.7.3         Semantics.......................................................................................................................... 466
+        16.7.4         Notation............................................................................................................................. 467
+        16.7.5         Examples........................................................................................................................... 467
+     16.8 Structural Feature Actions.............................................................................................. 467
+        16.8.1         Summary........................................................................................................................... 467
+        16.8.2         Abstract Syntax................................................................................................................. 467
+        16.8.3         Semantics.......................................................................................................................... 467
+        16.8.4         Notation............................................................................................................................. 469
+        16.8.5         Examples........................................................................................................................... 469
+     16.9 Variable Actions............................................................................................................. 469
+        16.9.1         Summary........................................................................................................................... 469
+        16.9.2         Abstract Syntax................................................................................................................. 470
+        16.9.3         Semantics.......................................................................................................................... 470
+
+
+xx                                                                                                                Unified Modeling Language 2.5.1
+      16.9.4         Notation............................................................................................................................. 471
+      16.9.5         Examples........................................................................................................................... 472
+   16.10 Accept Event Actions.................................................................................................... 472
+      16.10.1        Summary........................................................................................................................... 472
+      16.10.2        Abstract Syntax................................................................................................................. 472
+      16.10.3        Semantics.......................................................................................................................... 472
+      16.10.4        Notation............................................................................................................................. 474
+      16.10.5        Examples........................................................................................................................... 474
+   16.11 Structured Actions......................................................................................................... 475
+      16.11.1        Summary........................................................................................................................... 475
+      16.11.2        Abstract Syntax................................................................................................................. 476
+      16.11.3        Semantics.......................................................................................................................... 476
+      16.11.4        Notation............................................................................................................................. 480
+      16.11.5        Examples........................................................................................................................... 480
+   16.12 Expansion Regions....................................................................................................... 480
+      16.12.1        Summary........................................................................................................................... 480
+      16.12.2        Abstract Syntax................................................................................................................. 480
+      16.12.3        Semantics.......................................................................................................................... 481
+      16.12.4        Notation............................................................................................................................. 482
+      16.12.5        Examples........................................................................................................................... 484
+   16.13 Other Actions................................................................................................................ 486
+      16.13.1        Summary........................................................................................................................... 486
+      16.13.2        Abstract Syntax................................................................................................................. 486
+      16.13.3        Semantics.......................................................................................................................... 486
+      16.13.4        Notation............................................................................................................................. 487
+      16.13.5        Examples........................................................................................................................... 487
+   16.14 Classifier Descriptions................................................................................................... 488
+      16.14.1        AcceptCallAction [Class]................................................................................................... 488
+      16.14.2        AcceptEventAction [Class]................................................................................................. 489
+      16.14.3        Action [Abstract Class]...................................................................................................... 490
+      16.14.4        ActionInputPin [Class]....................................................................................................... 492
+      16.14.5        AddStructuralFeatureValueAction [Class].......................................................................... 492
+      16.14.6        AddVariableValueAction [Class]......................................................................................... 493
+      16.14.7        BroadcastSignalAction [Class]........................................................................................... 494
+      16.14.8        CallAction [Abstract Class]................................................................................................ 495
+      16.14.9        CallBehaviorAction [Class]................................................................................................ 496
+      16.14.10       CallOperationAction [Class]............................................................................................... 497
+      16.14.11       Clause [Class]................................................................................................................... 498
+      16.14.12       ClearAssociationAction [Class].......................................................................................... 499
+      16.14.13       ClearStructuralFeatureAction [Class]................................................................................ 499
+      16.14.14       ClearVariableAction [Class]............................................................................................... 500
+      16.14.15       ConditionalNode [Class].................................................................................................... 500
+      16.14.16       CreateLinkAction [Class]................................................................................................... 502
+      16.14.17       CreateLinkObjectAction [Class]......................................................................................... 502
+      16.14.18       CreateObjectAction [Class]................................................................................................ 503
+      16.14.19       DestroyLinkAction [Class].................................................................................................. 504
+      16.14.20       DestroyObjectAction [Class].............................................................................................. 504
+      16.14.21       ExpansionKind [Enumeration]........................................................................................... 505
+      16.14.22       ExpansionNode [Class]..................................................................................................... 505
+
+
+Unified Modeling Language 2.5.1                                                                                                                         xxi
+       16.14.23     ExpansionRegion [Class].................................................................................................. 506
+       16.14.24     InputPin [Class]................................................................................................................. 506
+       16.14.25     InvocationAction [Abstract Class]...................................................................................... 507
+       16.14.26     LinkAction [Abstract Class]................................................................................................ 507
+       16.14.27     LinkEndCreationData [Class]............................................................................................. 508
+       16.14.28     LinkEndData [Class].......................................................................................................... 509
+       16.14.29     LinkEndDestructionData [Class]........................................................................................ 510
+       16.14.30     LoopNode [Class].............................................................................................................. 511
+       16.14.31     OpaqueAction [Class]........................................................................................................ 514
+       16.14.32     OutputPin [Class]............................................................................................................... 515
+       16.14.33     Pin [Abstract Class]........................................................................................................... 515
+       16.14.34     QualifierValue [Class]........................................................................................................ 516
+       16.14.35     RaiseExceptionAction [Class]............................................................................................ 516
+       16.14.36     ReadExtentAction [Class].................................................................................................. 517
+       16.14.37     ReadIsClassifiedObjectAction [Class]............................................................................... 517
+       16.14.38     ReadLinkAction [Class]..................................................................................................... 518
+       16.14.39     ReadLinkObjectEndAction [Class]..................................................................................... 520
+       16.14.40     ReadLinkObjectEndQualifierAction [Class]........................................................................521
+       16.14.41     ReadSelfAction [Class]...................................................................................................... 522
+       16.14.42     ReadStructuralFeatureAction [Class]................................................................................ 523
+       16.14.43     ReadVariableAction [Class]............................................................................................... 523
+       16.14.44     ReclassifyObjectAction [Class].......................................................................................... 524
+       16.14.45     ReduceAction [Class]........................................................................................................ 525
+       16.14.46     RemoveStructuralFeatureValueAction [Class]................................................................... 526
+       16.14.47     RemoveVariableValueAction [Class].................................................................................. 527
+       16.14.48     ReplyAction [Class]........................................................................................................... 527
+       16.14.49     SendObjectAction [Class].................................................................................................. 528
+       16.14.50     SendSignalAction [Class].................................................................................................. 529
+       16.14.51     SequenceNode [Class]...................................................................................................... 530
+       16.14.52     StartClassifierBehaviorAction [Class]................................................................................ 530
+       16.14.53     StartObjectBehaviorAction [Class]..................................................................................... 531
+       16.14.54     StructuralFeatureAction [Abstract Class]........................................................................... 532
+       16.14.55     StructuredActivityNode [Class].......................................................................................... 533
+       16.14.56     TestIdentityAction [Class]................................................................................................... 535
+       16.14.57     UnmarshallAction [Class]................................................................................................... 536
+       16.14.58     ValuePin [Class]................................................................................................................ 537
+       16.14.59     ValueSpecificationAction [Class]....................................................................................... 538
+       16.14.60     VariableAction [Abstract Class].......................................................................................... 538
+       16.14.61     WriteLinkAction [Abstract Class]........................................................................................ 539
+       16.14.62     WriteStructuralFeatureAction [Abstract Class]................................................................... 539
+       16.14.63     WriteVariableAction [Abstract Class]................................................................................. 540
+   16.15 Association Descriptions................................................................................................ 541
+       16.15.1      A_argument_invocationAction [Association]...................................................................... 541
+       16.15.2      A_association_clearAssociationAction [Association]......................................................... 541
+       16.15.3      A_behavior_callBehaviorAction [Association].................................................................... 541
+       16.15.4      A_bodyOutput_clause [Association].................................................................................. 542
+       16.15.5      A_bodyOutput_loopNode [Association]............................................................................. 542
+       16.15.6      A_bodyPart_loopNode [Association]................................................................................. 542
+       16.15.7      A_body_clause [Association]............................................................................................. 542
+       16.15.8      A_classifier_createObjectAction [Association]................................................................... 542
+       16.15.9      A_classifier_readExtentAction [Association]...................................................................... 543
+
+xxii                                                                                                         Unified Modeling Language 2.5.1
+      16.15.10   A_classifier_readIsClassifiedObjectAction [Association]................................................... 543
+      16.15.11   A_clause_conditionalNode [Association]........................................................................... 543
+      16.15.12   A_collection_reduceAction [Association]........................................................................... 543
+      16.15.13   A_context_action [Association].......................................................................................... 543
+      16.15.14   A_decider_clause [Association]......................................................................................... 544
+      16.15.15   A_decider_loopNode [Association].................................................................................... 544
+      16.15.16   A_destroyAt_linkEndDestructionData [Association].......................................................... 544
+      16.15.17   A_edge_inStructuredNode [Association]........................................................................... 544
+      16.15.18   A_endData_createLinkAction [Association]....................................................................... 544
+      16.15.19   A_endData_destroyLinkAction [Association]..................................................................... 545
+      16.15.20   A_endData_linkAction [Association].................................................................................. 545
+      16.15.21   A_end_linkEndData [Association]...................................................................................... 545
+      16.15.22   A_end_readLinkObjectEndAction [Association].................................................................545
+      16.15.23   A_exception_raiseExceptionAction [Association].............................................................. 546
+      16.15.24   A_executableNode_sequenceNode [Association]............................................................. 546
+      16.15.25   A_first_testIdentityAction [Association].............................................................................. 546
+      16.15.26   A_fromAction_actionInputPin [Association]....................................................................... 546
+      16.15.27   A_inputElement_regionAsInput [Association].................................................................... 546
+      16.15.28   A_inputValue_linkAction [Association]............................................................................... 547
+      16.15.29   A_inputValue_opaqueAction [Association]........................................................................ 547
+      16.15.30   A_input_action [Association].............................................................................................. 547
+      16.15.31   A_insertAt_addStructuralFeatureValueAction [Association]..............................................547
+      16.15.32   A_insertAt_addVariableValueAction [Association]............................................................. 547
+      16.15.33   A_insertAt_linkEndCreationData [Association].................................................................. 548
+      16.15.34   A_localPostcondition_action [Association]........................................................................ 548
+      16.15.35   A_localPrecondition_action [Association].......................................................................... 548
+      16.15.36   A_loopVariableInput_loopNode [Association].................................................................... 548
+      16.15.37   A_loopVariable_loopNode [Association]............................................................................ 548
+      16.15.38   A_newClassifier_reclassifyObjectAction [Association]...................................................... 549
+      16.15.39   A_node_inStructuredNode [Association]........................................................................... 549
+      16.15.40   A_object_clearAssociationAction [Association]................................................................. 549
+      16.15.41   A_object_readIsClassifiedObjectAction [Association]........................................................549
+      16.15.42   A_object_readLinkObjectEndAction [Association]............................................................. 549
+      16.15.43   A_object_readLinkObjectEndQualifierAction [Association]................................................ 550
+      16.15.44   A_object_reclassifyObjectAction [Association].................................................................. 550
+      16.15.45   A_object_startClassifierBehaviorAction [Association]........................................................550
+      16.15.46   A_object_startObjectBehaviorAction [Association]............................................................ 550
+      16.15.47   A_object_structuralFeatureAction [Association]................................................................ 550
+      16.15.48   A_object_unmarshallAction [Association].......................................................................... 551
+      16.15.49   A_oldClassifier_reclassifyObjectAction [Association]........................................................ 551
+      16.15.50   A_onPort_invocationAction [Association].......................................................................... 551
+      16.15.51   A_operation_callOperationAction [Association]................................................................. 551
+      16.15.52   A_outputElement_regionAsOutput [Association]............................................................... 551
+      16.15.53   A_outputValue_opaqueAction [Association]...................................................................... 552
+      16.15.54   A_output_action [Association]........................................................................................... 552
+      16.15.55   A_predecessorClause_successorClause [Association]..................................................... 552
+      16.15.56   A_qualifier_linkEndData [Association]............................................................................... 552
+      16.15.57   A_qualifier_qualifierValue [Association]............................................................................. 552
+      16.15.58   A_qualifier_readLinkObjectEndQualifierAction [Association]............................................. 553
+      16.15.59   A_reducer_reduceAction [Association].............................................................................. 553
+      16.15.60   A_removeAt_removeStructuralFeatureValueAction [Association].....................................553
+
+
+Unified Modeling Language 2.5.1                                                                                                         xxiii
+       16.15.61 A_removeAt_removeVariableValueAction [Association].................................................... 553
+       16.15.62 A_replyToCall_replyAction [Association]........................................................................... 553
+       16.15.63 A_replyValue_replyAction [Association].............................................................................554
+       16.15.64 A_request_sendObjectAction [Association]....................................................................... 554
+       16.15.65 A_result_acceptEventAction [Association]........................................................................ 554
+       16.15.66 A_result_callAction [Association]....................................................................................... 554
+       16.15.67 A_result_clearStructuralFeatureAction [Association]......................................................... 554
+       16.15.68 A_result_conditionalNode [Association]............................................................................ 555
+       16.15.69 A_result_createLinkObjectAction [Association]................................................................. 555
+       16.15.70 A_result_createObjectAction [Association]........................................................................ 555
+       16.15.71 A_result_loopNode [Association]....................................................................................... 555
+       16.15.72 A_result_readExtentAction [Association]........................................................................... 556
+       16.15.73 A_result_readIsClassifiedObjectAction [Association]........................................................ 556
+       16.15.74 A_result_readLinkAction [Association].............................................................................. 556
+       16.15.75 A_result_readLinkObjectEndAction [Association].............................................................. 556
+       16.15.76 A_result_readLinkObjectEndQualifierAction [Association]................................................556
+       16.15.77 A_result_readSelfAction [Association]............................................................................... 557
+       16.15.78 A_result_readStructuralFeatureAction [Association]......................................................... 557
+       16.15.79 A_result_readVariableAction [Association]........................................................................ 557
+       16.15.80 A_result_reduceAction [Association]................................................................................. 557
+       16.15.81 A_result_testIdentityAction [Association]........................................................................... 557
+       16.15.82 A_result_unmarshallAction [Association]........................................................................... 558
+       16.15.83 A_result_valueSpecificationAction [Association]............................................................... 558
+       16.15.84 A_result_writeStructuralFeatureAction [Association]......................................................... 558
+       16.15.85 A_returnInformation_acceptCallAction [Association]......................................................... 558
+       16.15.86 A_returnInformation_replyAction [Association].................................................................. 558
+       16.15.87 A_second_testIdentityAction [Association]........................................................................ 559
+       16.15.88 A_setupPart_loopNode [Association]................................................................................ 559
+       16.15.89 A_signal_broadcastSignalAction [Association].................................................................. 559
+       16.15.90 A_signal_sendSignalAction [Association].......................................................................... 559
+       16.15.91 A_structuralFeature_structuralFeatureAction [Association]............................................... 559
+       16.15.92 A_structuredNodeInput_structuredActivityNode [Association]........................................... 560
+       16.15.93 A_structuredNodeOutput_structuredActivityNode [Association]........................................ 560
+       16.15.94 A_target_callOperationAction [Association]....................................................................... 560
+       16.15.95 A_target_destroyObjectAction [Association]...................................................................... 560
+       16.15.96 A_target_sendObjectAction [Association].......................................................................... 560
+       16.15.97 A_target_sendSignalAction [Association].......................................................................... 561
+       16.15.98 A_test_clause [Association]............................................................................................... 561
+       16.15.99 A_test_loopNode [Association].......................................................................................... 561
+       16.15.100 A_trigger_acceptEventAction [Association]....................................................................... 561
+       16.15.101 A_unmarshallType_unmarshallAction [Association].......................................................... 561
+       16.15.102 A_value_linkEndData [Association]................................................................................... 562
+       16.15.103 A_value_qualifierValue [Association]................................................................................. 562
+       16.15.104 A_value_valuePin [Association]......................................................................................... 562
+       16.15.105 A_value_valueSpecificationAction [Association]................................................................562
+       16.15.106 A_value_writeStructuralFeatureAction [Association]......................................................... 562
+       16.15.107 A_value_writeVariableAction [Association]........................................................................ 563
+       16.15.108 A_variable_scope [Association]......................................................................................... 563
+       16.15.109 A_variable_variableAction [Association]............................................................................ 563
+
+17 Interactions.................................................................................................................. 565
+
+
+xxiv                                                                                                  Unified Modeling Language 2.5.1
+   17.1 Summary....................................................................................................................... 565
+       17.1.1        Overview............................................................................................................................ 565
+       17.1.2        Basic trace model.............................................................................................................. 565
+       17.1.3        Partial ordering constraints on valid and invalid traces...................................................... 566
+       17.1.4        Interaction Diagram Variants............................................................................................. 566
+   17.2 Interactions.................................................................................................................... 566
+       17.2.1        Summary........................................................................................................................... 566
+       17.2.2        Abstract Syntax................................................................................................................. 567
+       17.2.3        Semantics.......................................................................................................................... 567
+       17.2.4        Notation............................................................................................................................. 568
+       17.2.5        Examples........................................................................................................................... 570
+   17.3 Lifelines.......................................................................................................................... 571
+       17.3.1        Summary........................................................................................................................... 571
+       17.3.2        Abstract Syntax................................................................................................................. 572
+       17.3.3        Semantics.......................................................................................................................... 572
+       17.3.4        Notation............................................................................................................................. 572
+       17.3.5        Examples........................................................................................................................... 573
+   17.4 Messages...................................................................................................................... 573
+       17.4.1        Summary........................................................................................................................... 573
+       17.4.2        Abstract Syntax................................................................................................................. 574
+       17.4.3        Semantics.......................................................................................................................... 574
+       17.4.4        Notation............................................................................................................................. 576
+       17.4.5        Examples........................................................................................................................... 578
+   17.5 Occurrences.................................................................................................................. 579
+       17.5.1        Summary........................................................................................................................... 579
+       17.5.2        Abstract Syntax................................................................................................................. 580
+       17.5.3        Semantics.......................................................................................................................... 580
+       17.5.4        Notation............................................................................................................................. 581
+       17.5.5        Examples........................................................................................................................... 581
+   17.6 Fragments...................................................................................................................... 581
+       17.6.1        Summary........................................................................................................................... 581
+       17.6.2        Abstract Syntax................................................................................................................. 582
+       17.6.3        Semantics.......................................................................................................................... 582
+       17.6.4        Notation............................................................................................................................. 585
+       17.6.5        Examples........................................................................................................................... 586
+   17.7 Interaction Uses............................................................................................................. 590
+       17.7.1        Summary........................................................................................................................... 590
+       17.7.2        Abstract Syntax................................................................................................................. 591
+       17.7.3        Semantics.......................................................................................................................... 591
+       17.7.4        Notation............................................................................................................................. 591
+       17.7.5        Examples........................................................................................................................... 592
+   17.8 Sequence Diagrams...................................................................................................... 595
+       17.8.1        Sequence Diagram Notation.............................................................................................. 595
+       17.8.2        Example Sequence Diagram............................................................................................. 599
+   17.9 Communication Diagrams.............................................................................................. 599
+       17.9.1        Communication Diagram Notation..................................................................................... 599
+       17.9.2        Example Communication Diagram.................................................................................... 601
+   17.10 Interaction Overview Diagrams...................................................................................... 601
+
+Unified Modeling Language 2.5.1                                                                                                                        xxv
+

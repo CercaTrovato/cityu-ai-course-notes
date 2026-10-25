@@ -1,0 +1,321 @@
+11.5          Associations
+11.5.1           Summary
+An Association classifies a set of tuples representing links between typed instances. An AssociationClass is both an
+Association and a Class.
+
+11.5.2           Abstract Syntax
+
+                                                                                                                             Relationship             Classifier
+                                                                                          {subsets featuringClassifier,
+                                             {ordered, subsets feature, subsets
+                                                                                          subsets namespace, subsets
+                                             redefinableElement, subsets
+                                                                                          association, subsets
+                                             memberEnd, subsets
+                                                                                          redefinitionContext}
+                                             ownedMember}
+                                             + ownedEnd                                   + owningAssociation                Association
+                         Property
+                                                                                                         0..1         + isDerived : Boolean = false
+                                             *
+
+                                                 {subsets ownedEnd}                 {subsets owningAssociation}
+                                                 + navigableOwnedEnd                              + association
+                                                 *                                                         0..1
+
+
+
+                                             {ordered, subsets member}             {subsets memberNamespace}
+                                             + memberEnd                                         + association
+                                             2..*                                                              0..1
+                                                                                                                                       {subsets relationship}
+                                    *   + qualifier                                                                             *      + association
+   + associationEnd    0..1                                                       Class
+                                        {ordered, subsets
+   {subsets owner}                      ownedElement}                                                                                   {readOnly, subsets
+                                                                                                                                        relatedElement}
+                                                                                                                               1..*    + /endType
+                                                                        AssociationClass                                            Type
+
+
+
+Figure 11.25 Associations
+
+
+11.5.3           Semantics
+11.5.3.1              Associations
+
+An Association specifies a semantic relationship that can occur between typed instances. It has at least two memberEnds
+represented by Properties, each of which has the type of the end. More than one end of the Association may have the
+same type.
+An Association declares that there can be links between instances whose types conform to or implement the associated
+types. A link is a tuple with one value for each memberEnd of the Association, where each value is an instance whose
+type conforms to or implements the type at the end.
+Not all links need to be classified by an Association.
+When one or more ends of the Association have isUnique=false, it is possible to have several links associating the same
+set of instances. In such a case, links carry an additional identifier apart from their end values.
+When one or more ends of the Association are ordered, links carry ordering information in addition to their end values.
+For an Association with N memberEnds, choose any N-1 ends. Let the Property that constitutes the other end be called
+oep, so that the Classifiers at the chosen N-1 ends are the context for oep (see 9.5.3). Associate specific instances with
+the context ends. Then the collection of links of the Association that refer to these specific instances will identify a set
+
+Unified Modeling Language 2.5.1                                                                                                                                 199
+of instances at oep. The value represented by oep (see 9.5.3) is a collection calculated from this set as follows: All of the
+instances in the set occur in the collection, and nothing else does. If oep is marked as unique, each instance will occur in
+the collection just once, regardless of how many links connect to it. If oep is marked as nonunique, each instance will
+occur in the collection once for each link that connects to it. If oep is marked as ordered, the collection will be ordered
+in accordance with the ordering information in the links. The cardinality of this collection is its size. The multiplicity of
+oep constrains this cardinality, or in the case of qualified associations, the size of the collection partition that may be
+associated with a qualifier value.
+Subsetting of Association ends has the meaning specified for Property (see 9.5.3).
+Specialization is, in contrast to subsetting, a relationship in the domain of intentional semantics, which is to say it
+characterizes the criteria whereby membership in the collection is defined, not by the membership. In the case of
+Associations, specialization means that a link classified by the specializing Association is also classified by the
+specialized Association. Semantically this implies that sets calculated by eliminating duplicates from the collections
+representing the ends of the specializing Association are subsets of the corresponding sets calculated by eliminating
+duplicates from collections representing the ends of the specialized Association; this fact of subsetting may or may not
+be explicitly declared in a model.
+NOTE. For n-ary Associations, the lower multiplicity of an end is typically 0. A lower multiplicity for an end of an n-
+ary Association of 1 (or more) implies that one link (or more) must exist for every possible combination of values for
+the other ends.
+A binary Association may represent a composite aggregation (i.e., a whole/part relationship). Composition is
+represented by the isComposite attribute on the part end of the Association being set to true. See the semantics of
+composition in 9.5.3. An end Property of an Association may only be marked as a shared or composite aggregation if
+the Association is binary and the other end is not marked as a shared or composite aggregation.
+An end Property of an Association that is owned by an end Class or that is a navigableOwnedEnd of the Association
+indicates that the Association is navigable from the opposite ends; otherwise, the Association is not navigable from the
+opposite ends. Navigability means that instances participating in links at runtime (instances of an Association) can be
+accessed efficiently from instances at the other ends of the Association. The precise mechanism by which such efficient
+access is achieved is implementation specific. If an end is not navigable, access from the other ends may or may not be
+possible, and if it is, it might not be efficient.
+NOTE. Tools operating on UML models are not prevented from navigating Associations from non-navigable ends.
+A qualified Association end has qualifiers that partition the instances associated with an instance at that end, the qualified
+instance. Each partition is designated by a qualifier value, which is a tuple comprising one value for each qualifier. The
+multiplicities at the other ends of the association determine the number of instances in each partition. So, for example,
+0..1 means there is at most one instance per qualifier value. If the lower bounds are non-zero, the qualifier values must be a
+finite set, for example because the qualifiers are typed by enumerations.
+The existence of an association may be derived from other information in the model. The logical relationship between
+the derivation of an Association and the derivation of its ends is model-specific.
+
+11.5.3.2        Association Classes
+
+An AssociationClass is a declaration of an Association that has a set of Features of its own. An AssociationClass is both
+an Association and a Class, and preserves the static and dynamic semantics of both. An AssociationClass describes a set
+of objects that each share the same specifications of Features, Constraints, and semantics entailed by the
+AssociationClass as a kind of Class, and correspond to a unique link instantiating the AssociationClass as a kind of
+Association.
+Both Association and Class are Classifiers and hence have a set of common properties, like being able to have Features,
+having a name, etc. These properties are multiply inherited from the same construct (Classifier), and are not duplicated.
+Therefore, an AssociationClass has only one name, and has the set of Features that are defined for Classes and
+Associations. The constraints defined for Class and Association also are applicable for AssociationClass, which implies
+for example that the attributes of the AssociationClass, the memberEnds of the AssociationClass, and the opposite ends of
+Associations connected to the AssociationClass must all have distinct names. Moreover, the specialization and
+
+
+200                                                                                        Unified Modeling Language 2.5.1
+refinement rules defined for Class and Association are also applicable to AssociationClass. Redefinition is applicable to
+an AssociationClass nested in the context of a Classifier just as it is applicable to a nested Class.
+An AssociationClass inherits the composite Properties Class::ownedAttribute and Association::ownedEnd . Values of
+ownedAttribute are Properties that are attributes of the Class, not ends of the AssociationClass owned through
+Association::ownedEnd . Values of Association::ownedEnd are the ends of the Association owned by the AssociationClass, not
+attributes of the AssociationClass. As Association ends, they can be used for navigation between end objects, as in all
+Associations, depending on whether they are navigable (see Navigability in the semantics of Association).
+An instance of an AssociationClass has the characteristics both of a link representing an instantiation of the
+AssociationClass as a kind of Association, and of an object representing an instantiation of the AssociationClass as a
+kind of Class.
+NOTE. Even when all ends of the AssociationClass have isUnique=true, it is possible to have several instances
+associating the same set of instances of the end Classes.
+An AssociationClass cannot be a generalization of an Association or a Class.
+
+11.5.4        Notation
+Any Association may be drawn as a diamond (larger than a terminator on a line) with a solid line for each Association
+memberEnd connecting the diamond to the Classifier that is the end’s type. An Association with more than two ends can
+only be drawn this way.
+A binary Association is normally drawn as a solid line connecting two Classifiers, or a solid line connecting a single
+Classifier to itself (the two ends are distinct). A line may consist of one or more connected segments. The individual
+segments of the line itself have no semantic significance, but they may be graphically meaningful to a tool in dragging
+or resizing an Association symbol.
+An Association symbol may be adorned as follows:
+        The Association’s name can be shown as a name string near the Association symbol, but not near enough to an
+         end to be confused with the end’s name.
+
+        A slash appearing in front of the name of an Association, or in place of the name if no name is shown, marks
+         the Association as being derived.
+
+        A property string may be placed near the Association symbol, but far enough from any end to not be confused
+         with a property string on an end.
+
+On a binary Association drawn as a solid line, a solid triangular arrowhead next to or in place of the name of the
+Association and pointing along the line in the direction of one end indicates that end to be the last in the order of the
+ends of the Association. The arrow indicates that the Association is to be read as associating the end away from the
+direction of the arrow with the end to which the arrow is pointing (see Figure 11.27). This notation is for documentation
+purposes only and has no general semantic interpretation. It is used to capture some application-specific detail of the
+relationship between the associated Classifiers.
+Generalizations between Associations can be shown using a generalization arrow between the Association symbols.
+Other notational options for Generalizations such as “shared target style” (see 9.2.4) and the notations defined in 9.7.4
+may be used for Generalizations between Associations, but a conforming tool is not required to support those options.
+An Association end is the connection between the line depicting an Association and the icon (often a box) depicting the
+connected Classifier. A name string may be placed near the end of the line to show the name of the Association end. The
+name is optional and suppressible.
+Various other notations can be placed near the end of the line as follows:
+        A multiplicity
+
+
+Unified Modeling Language 2.5.1                                                                                       201
+         A <prop-modifier> enclosed in curly braces, where <prop-modifier> is defined in Property (see 9.5.4).
+
+         A <visibility> symbol (see 9.5.4).
+
+NOTE. If no multiplicity is shown on the diagram, no conclusion may be drawn about the multiplicity in the model.
+An open arrowhead on the end of an Association indicates the end is navigable. A small x on the end of an Association
+indicates the end is not navigable.
+If the Association end is derived, this may be shown by putting a slash in front of the name, or in place of the name if no
+name is shown.
+A binary Association may have one end with aggregation = AggregationKind::shared or aggregation =
+AggregationKind::composite. When one end has aggregation = AggregationKind::shared a hollow diamond is added as a
+terminal adornment at the end of the Association line opposite the end marked with aggregation =
+AggregationKind::shared. The diamond shall be noticeably smaller than the diamond notation for Associations. An
+Association with aggregation = AggregationKind::composite likewise has a diamond at the corresponding end, but
+differs in having the diamond filled in.
+Ownership of Association ends by an associated Classifier may be indicated graphically by a small filled circle, which
+for brevity we will term a dot. The dot is to be drawn integral to the graphic path of the line, at the point where it meets
+the Classifier, inserted between the end of the line and the side of the node representing the Classifier. The diameter of
+the dot shall not exceed half the height of the aggregation diamond, and shall be larger than the width of the line. This
+avoids visual confusion with the filled diamond notation while ensuring that it can be distinguished from the line. The
+dot shows that the model includes a Property of the type represented by the Classifier touched by the dot. This Property
+is owned by the Classifier at the other end. In such a case it is normal to suppress the Property from the attributes
+compartment of the owning Classifier.
+The dot may be used in combination with the other graphic line-path notations for Properties of Associations and
+Association ends. These include aggregation type and navigability.
+Explicit end-ownership notation is not mandatory, i.e., a conforming tool may not support it. Where the dot notation is
+used, it shall be applied consistently throughout each diagram, so that the absence of the dot signifies ownership by the
+Association. Stated otherwise, when applying this notation to a binary Association in a user model, the dot will be
+omitted only for ends which are not owned by a Classifier. In this way, in contexts where the notation is used, the
+absence of the dot on certain ends does not leave the ownership of those ends ambiguous.
+The dot is illustrated in Figure 11.26, at the maximum allowed size. The diagram shows endA to be owned by Classifier
+B, and because the notation must be applied consistently throughout the diagram, this diagram also shows
+unambiguously that endB is owned by BinaryAssociationAB.
+
+
+
+
+Figure 11.26 Graphic notation indicating exactly one Association end owned by the Association
+
+Navigability notation was often used in the past according to an informal convention, whereby non-navigable ends were
+assumed to be owned by the Association whereas navigable ends were assumed to be owned by the Classifier at the
+opposite end. This convention is now deprecated. Aggregation type, navigability, and end ownership are separate
+concepts, each with their own explicit notation. Association ends owned by classes are always navigable, while those
+owned by associations may be navigable or not.
+An AssociationClass is shown as a Class symbol attached to the Association path by a dashed line. The Association path
+may include a diamond, in which case the Class symbol shall be shown attached to the diamond by a dashed line. The
+Association path and the AssociationClass symbol represent the same underlying model element, which has a single
+name. The name may be placed on the path, in the Class symbol, or on both, but they must be the same name.
+
+202                                                                                       Unified Modeling Language 2.5.1
+Association end names appear in the same position as regular Associations, not in the attribute compartment of the
+AssociationClass.
+Logically, the AssociationClass and the Association are the same semantic entity; however, they are graphically distinct.
+The AssociationClass symbol can be dragged away from the line, but the dashed line must remain attached to both the
+path and the Class symbol.
+When two association lines cross, a conforming tool may provide the option to show a small semicircular jog to indicate
+that the lines do not intersect (as in electrical circuit diagrams).
+In practice, it is often convenient to suppress some of the arrows and crosses that signify navigability of association
+ends. A conforming tool may provide various options for showing navigation arrows and crosses. As with dot notation,
+these options apply at the level of complete diagrams.
+        Show all arrows and crosses. Navigation and its absence are made completely explicit.
+
+        Suppress all arrows and crosses. No inference can be drawn about navigation.
+
+        Suppress all crosses. Suppress arrows for Associations with navigability in both directions, and show arrows
+         only for Associations with one-way navigability. In this case, the two-way navigability cannot be distinguished
+         from situations where there is no navigation at all; however, the latter case occurs rarely in practice.
+
+If there are two or more aggregations to the same aggregate, a conforming tool may as a purely presentational option
+show them as a tree by merging the aggregation ends into a single segment adorned by the solid or hollow aggregation
+diamond symbol. Any adornments on that single segment apply to all of the aggregation ends. The absence of an
+adornment on a merged segment does not imply that the properties corresponding to the suppressed adornment have
+equal values for all of the aggregation ends.
+A qualifier is shown as a small rectangle attached to the end of an association path between the final path segment and the
+symbol of the Classifier that it connects to. The qualifier rectangle should be smaller than the attached class rectangle,
+unless this is not practical. The qualifier rectangle is part of the association path, not part of the Classifier. The qualifier
+rectangle is attached to the end of the association path that represents the memberEnd that owns the qualifier.
+The multiplicity attached to the target end denotes the possible cardinalities of the set of target instances selected by the
+pairing of a qualified instance and a qualifier value.
+The qualifier attributes are drawn within the qualifier box. There may be one or more attributes, shown one to a line.
+Qualifier attributes have the same notation as Classifier attributes, except that initial value expressions are not
+meaningful.
+It is permissible (although somewhat rare), to have a qualifier on every end of a single association.
+A qualifier may not be suppressed.
+
+11.5.5         Examples
+Figure 11.27 shows a binary Association from Player to Year named PlayedInYear.
+
+
+
+
+Unified Modeling Language 2.5.1                                                                                            203
+Figure 11.27 Binary and ternary Associations
+
+The solid triangle indicates the order of reading: Player PlayedInYear Year. The figure further shows a ternary
+Association between Team, Year, and Player with ends named team, season, and goalie respectively.
+The following example shows Association ends with various adornments.
+
+
+
+
+Figure 11.28 Association ends with various adornments
+
+The following adornments are shown on the four Association ends in Figure 11.28.
+         Names a, b, and d on three of the ends.
+
+         Public visibility marked on the ends a, b and d.
+
+         Multiplicities 0..1 on a, * on b, and 0..1 on d.
+
+         Specification of ordering on b and d.
+
+         Subsetting on d. For an instance of Class C, the collection d is a subset of the collection b. This is equivalent to
+          the OCL constraint:
+
+          context C inv: b->includesAll(d)
+The following examples show notation for ends owned by an association (no dots).
+
+
+
+
+204                                                                                        Unified Modeling Language 2.5.1
+Figure 11.29 Examples of navigable association-owned ends
+
+In Figure 11.29:
+       The top pair AB shows a binary Association with two navigable ends.
+
+       The second pair CD shows a binary Association with two non-navigable ends.
+
+       The third pair EF shows a binary Association with unspecified navigability. In a diagram where arrows are
+        only shown for one-way navigable associations, this probably signifies bidirectional navigability.
+
+       The fourth pair GH shows a binary Association with one end navigable and the other non-navigable.
+
+       The fifth pair IJ shows a binary Association with one end navigable and the other non-navigable, in a diagram
+        where arrows are only shown for one-way navigable associations, and crosses are suppressed.
+
+The following examples show some class-owned ends, where class ownership is indicated by the dot. In Figure 11.30:
+       In the top pair AB, end b is owned by Class A and end a is owned by Class B. Because the ends are class-
+        owned, they are navigable.
+
+       In the second pair CD, end d is owned by Class C, and hence is navigable. End c is owned by the Association,
+        and is marked as navigable.
+
+       In the third pair EF, end f is owned by Class E, and hence is navigable. End e is owned by the Association, and
+        is marked as not navigable, in a diagram where arrows are only shown for one-way navigable associations, and
+        crosses are suppressed.
+
+       In the fourth pair GH, end h is owned by Class G and end g is owned by Class H. Because the ends are class-
+        owned, they are navigable. This is in a diagram where arrows are only shown for one-way navigable
+        associations.
+
+
+
+
+Unified Modeling Language 2.5.1                                                                                     205
+

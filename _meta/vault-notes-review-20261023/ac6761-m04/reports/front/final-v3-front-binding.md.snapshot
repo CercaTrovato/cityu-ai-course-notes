@@ -1,0 +1,27 @@
+# M04 前包：最终 display-v3 绑定
+
+原独立审查者`/root/review_m04_61_front`。本轮仅核两个候选实际差异与前包原字节，不重审全篇，也不代晚包语义签字。
+
+## 实际核对
+
+- 旧候选`../candidate-final-display-v2.md`，SHA-256 `265260200a9c9e7ff1e5b4763825a67bc574ccf3234882e9ca788798d6b4ad53`。
+- 新候选`../candidate-final-display-v3.md`，实际SHA-256 `ea3c65c1802a86ec1c98c34e8895135d0440a066f9bc5254cb12c11e74a693fe`。
+
+已读取`warning-residual-fixes.json/.diff`，并自行从两个原始文件bytes生成[own-display-v3.diff](own-display-v3.diff)。两个old各准确命中一次，按这两项实际替换恰好重构新文件全部bytes，没有清单外差异。
+
+实际差异仅为：
+
+1. 晚包p.36附近S6外键定义长引用改blockquote并在前句补中文读法；英文引文/时间戳保留。
+2. 自测Q5将“统计不了”等绝对短句改为整格相等比较、原字符串分组和另行拆分解析的边界说明。
+
+本报告确认上述差异位置与变化范围，不评价其完整语义和来源忠实性；这些已交晚包原审查者定向复核，不能用本报告代替。
+
+## 前包相同与结论承接
+
+自行对比文件开头至§2.7.9结束、`### 2.8 `开始之前的全部原始bytes：**完全一致**，包括frontmatter；未作换行、空白或Unicode归一化。结果及前包实际字节数/SHA见[final-v3-byte-evidence.json](final-v3-byte-evidence.json)，核对脚本为[final-v3-byte-check.py](final-v3-byte-check.py)。
+
+**接受前包纯绑定。本包先前完整两阶段审查、缺陷关闭链、v7实际变化核对及最终元数据/显示绑定可承接到新SHA `ea3c65c1802a86ec1c98c34e8895135d0440a066f9bc5254cb12c11e74a693fe`。**
+
+前一`final-display-binding.md`SHA仍为`3b935471895455c7836a4bcdb5f2ef7b51699a0b39b960d06102a67f4913fd04`，原报告未覆盖；原发现和关闭链继续保留。候选拟发布passed字段不等于正式写回或gate通过。
+
+本报告不代签晚包Q5/p.36语义、主代理最终视觉、正式门槛、写回、Notion、跨文件同步或Git；跨文件同步草稿本轮尚未提供，未审。只写审查者scratch，候选/vault/原件和旧报告均未修改。

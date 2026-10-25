@@ -1,0 +1,630 @@
+--- main-front-v4
++++ main-v4
+@@ -178,7 +178,7 @@
+ | p.10 McCarthy 的例子（COGS 与 Sales 是同一个类的属性）**紧跟在 p.9 之后** | 保持在 §2.3.2 | ✅ 位置正确 |
+ | p.11–16 曲奇例子只给了**复式记账**版本，**从未给 REA 版本** | **新增 §2.4.5**：把同一个故事用 REA 记一遍 | ⚠️ 讲义的最大缺口：花 6 页讲例子，却只演示了它要批判的那一半。不补上，读者根本看不出 REA 好在哪 |
+ | p.32–35 四道练习，**p.34/p.35 的讲义答案留白** | §2.8.3–2.8.4：🎙️ **结论由 S6 课堂确认**；💡 逐端解释、英文句与转表为笔记补充 | 保留“讲义留白 / 课堂确认 / 笔记解释”三层来源 |
+-| — | **新增 §2.10.12**：五步转换法的**决策树总结** | 讲义把五步散在 p.43–53 共 11 页，没有一页总结。考试要用的是那张决策树 |
++| — | **新增 §2.10.12**：五步转换法的**决策树总结** | 讲义把五步散在 p.43–53 共 11 页，没有一页总结。自学转换和后续W6上机时可借助这张决策树 |
+ 
+ 对应关系逐页可查，见 [[#8. 讲义页码映射|§8 讲义页码映射]]。
+ 
+@@ -2722,7 +2722,7 @@
+ | 2 | Emily | New York | ⚠️ **BA,MBA,PhD** |
+ | 3 | Leigh | Birmingham | BA |
+ 
+-图上有 **5 条彩色弧线**，标着 1、2、3、4、5，把 `EmployeeID` 列与各个属性值一一配对，用来演示"这一行里到底藏了几个事实"。
++原图五条彩弧分别指向Tony的两个学位和Emily的三个学位事实；下面另按Emily整行列出姓名、办公室及三个学位的五个配对。两种“五”对象不同，不把原图五条线说成全指Emily。
+ 
+ **讲义在图下方给的解释（原文照抄）**
+ 
+@@ -2768,14 +2768,14 @@
+    3 | BA
+ ```
+ 
+-**⇒ 这正是 §2.10.3（Step 2）的"多对多关联要建独立表"的另一个面貌**：一个员工有多个学位，一个学位被多个员工持有 ⇒ 多对多 ⇒ 建独立表 + 复合主键。
++**这个修复把员工与各学位值的联系独立存成行。** 本简例用(empID,degree)共同标识，不要求两列都来自别的主表；这里没有另建Degree主表，degree也不会仅因进入复合键就自动成为外键。它与多对多保存联系的思路相通，不能反写成所有复合键必由两外键组成。
+ 
+ **🎙️ 课堂补充**（S6 `47:08`–`48:04`，约 0.9 分钟，A · 课上展开）
+ 
+ 教授把 `EmployeeID = 1, Degree = BS/MBA` 解释为两个事实挤进一个单元格，并总结：*"one fact in multiple places is not acceptable, and multiple facts in one place is not acceptable as well."*（S6 `47:41`–`47:56`）。**这段改变了什么**：给出重复组的直接课堂判据。
+ 
+ **⚠️ 常见误解**
+-- ❌ "只要能看懂，逗号分隔也没关系"。→ **人能看懂，数据库不能。** 数据库的价值就在于能查询、能统计、能保证一致性，重复组把这三样全毁了。
++- ❌ “逗号字符串会自动当作多个学位”。→ 数据库先把整串当一个文本值；可以另写解析，但会增加格式和维护负担，不满足本课关系表的一格一值要求。
+ - ❌ 把 p.41 与 p.42 的两种违例搞混。→ **p.41 是"同一个事实在多行重复"（纵向），p.42 是"多个事实在一格"（横向）**。两者都违反 One Fact One Place，但方向相反。
+ 
+ **所以呢**
+@@ -2810,7 +2810,7 @@
+ 
+ **Case 4 Q2 · Purchase–Purchase Return**
+ 
+-**中文读题**：同一个采购号的不同批次都可能退货，所以一笔 Purchase 可对应多次 Purchase Return；公司通常不退货，所以也可为 0。供应商还允许把不同采购号合并在一次退货中，所以一次 Purchase Return 至少关联一笔、也可能关联多笔 Purchase。
++**中文读题**：题面允许正常无退货及问题批次退货；本题一采购可分多次退货，还由S6 `55:51`–`56:12` 明确确认，不能仅由“有多批次”推成所有业务必允许多次退货。合并不同采购号的退货决定一次Purchase Return可对应多笔Purchase。
+ 
+ > **English original question**
+ >
+@@ -2820,7 +2820,7 @@
+ 
+ **逐端推导**：
+ 
+-1. 固定一笔 Purchase：正常时无退货，所以最小 0；多个问题批次可分开退，所以最大 `*`。贴 Purchase Return 端 `0..*`。
++1. 固定Purchase：正常可无退货，最小0；本题课堂明确允许同采购多次退货，最大*，贴Purchase Return端0..*。
+ 2. 固定一次 Purchase Return：退货不能凭空存在，至少对应一笔 Purchase；combined returns 允许对应多笔。贴 Purchase 端 `1..*`。
+ 3. 结果：`Purchase [1..*] — [0..*] Purchase Return`。
+ 
+@@ -2864,7 +2864,7 @@
+ | 132123 | C125 | Jennifer | 29 |
+ | 313213 | C126 | Arlie | 33 |
+ 
+-**直接答案与理由**：不违反 One Fact, One Place。`(C123, Andy)` 与 `(C124, Andy)` 是不同事实；相同姓名或年龄不足以证明是同一个客户。若题目另证 C123/C124 是同一自然人，才要检查重复身份或主数据合并。
++**直接答案与理由**：按题示当前配对，不违反One Fact, One Place；(C123,Andy)与(C124,Andy)不同，同名同龄不足以证明同一客户。若另证二ID指同一自然人，再查重复身份。本题No不代表可把客户可变属性长期复制到多笔Sale而永远没有冗余风险。
+ 
+ **English reference answer（原件官解结论 + 笔记完整句）**：No. The two rows do not violate One Fact, One Place because the same name and age are paired with different CustomerID values, so they represent different facts.
+ 
+@@ -2910,7 +2910,7 @@
+ | 3 | 300 | C1 |
+ | 4 | 400 | C5 |
+ 
+-最终约束应写全：`Cashier(Cashier# PRIMARY KEY, Name)`；`CashReceipt(CashR# PRIMARY KEY, Amount, Cashier# NOT NULL REFERENCES Cashier(Cashier#))`。`Cashier#` 可重复，因为 F/J 可各经手多笔；不能加 `UNIQUE`。外键和 NOT NULL 约束每笔收款恰有一名有效 Cashier；Cashier 端最小 0 不要求每位收银员必须已有收款。
++最终约束（结构简写）为Cashier主键与CashReceipt中的Cashier# NOT NULL FK；Cashier#不加UNIQUE，因为F/J各可经手多笔。**固定Cashier时可有0笔CashReceipt，0贴CashReceipt端；Cashier端仍为1..1**。不能把参与次数与数字贴在哪端混说。
+ 
+ **English reference answer（原件官解表 + 笔记完整句）**：Post `Cashier#` from Cashier into CashReceipt as a NOT NULL foreign key. The value may repeat, because one cashier may handle many cash receipts. Cash receipts 1 and 3 reference C1, while cash receipts 2 and 4 reference C5.
+ 
+@@ -2926,7 +2926,7 @@
+ 
+ **从零读实现（笔记补充）**：这里是 SQLite 教学演示，不是讲义原题，也不是 Access 原样代码。把数据放进表后，要回答三问：曲奇卖给谁/成本多少、截至某日两笔销售还欠多少、每笔收款还有多少未应用。下面先讲语法和数据，再给查询；折叠块给完整可运行 Python 脚本，只依赖标准库 `sqlite3`。
+ 
+-- `CREATE TABLE` 创建表；`TEXT/NUMERIC/INTEGER` 是本演示选用类型，SQLite类型行为不等同所有数据库。`PRIMARY KEY` 选行身份；这里**显式 NOT NULL**，避免普通SQLite文本主键可能接受NULL的例外。复合键每列也已非空。
++- `CREATE TABLE`创建表；本例TEXT存文字/日期字符串，INTEGER用于行号，NUMERIC用于数量/金额。SQLite的列型并非全面严格输入校验，不等同所有数据库。主键这里显式NOT NULL，避免普通SQLite文本主键可接受NULL的例外；复合键各列也非空。
+ - `REFERENCES 表(列)` 是外键；本演示用 `PRAGMA foreign_keys=ON` 开启检查。`CHECK`检查一行给定条件，例如数量 `>0`、单价/成本 `>=0`；它们不自动核跨行应用总额。
+ - `INSERT INTO ... VALUES` 加入给定顺序的一行；单引号包文字（包括日期字符串），逗号分列，分号结束语句。全部日期统一为补零的 `YYYY-MM-DD`，本例才可用文本次序比较日期；不能把任意日期文本都这样比。
+ - 读查询先找 `FROM` 的起始表，再按 `JOIN ... ON` 条件拼相同编号的行；`AS s` 给表取短名，`s.saleID` 指这张表的列。接着看 `WHERE` 筛哪些行，`SELECT` 输出哪些列/计算，`AS revenue` 给输出列命名；这只是理解顺序，不承诺数据库物理执行顺序。
+@@ -3207,7 +3207,7 @@
+ 实例（Instance）⇒  行（Row）          [2A]
+ ```
+ 
+-⚠️ **注意讲义把两个子步骤写成了 "1A" 和 "2A"**——**编号明显是笔误，应该是 1A 和 1B**。记在 §9.3 ⑩。
++⚠️ 讲义原样编号为1A和2A，两项都放在Step1内。可能存在编号编辑问题，但原件没有确认应改成什么；本笔记按两项映射理解，不冒称已证实笔误。
+ 
+ **⭐ 两个决定性概念**
+ 
+@@ -3219,11 +3219,11 @@
+ >
+ > **💡 举例（笔记补充，讲义只给了定义没给例子）**：
+ > Sale 表有 1,000 行，`Salesperson` 这一列有 950 行有值、50 行是 null
+-> ⇒ **Load = 950 / 1000 = 95%（高载荷）** ✅ 这一列值得存在
++> ⇒ $\text{Load}=950/1000=95\%$，作为相对稠密的示例；不是从这一个百分数就证明方案最优。
+ >
+ > 如果反过来，只有 30 行有值、970 行是 null
+-> ⇒ **Load = 3%（低载荷）** ❌ 这一列 97% 的空间在存"什么都没有"
+-> ⇒ **这时应该建一张只有 30 行的独立关联表**（§2.10.11 Step 5B）
++> ⇒ $\text{Load}=30/1000=3\%$；该列97%的行无关联值，不等于实测97%的磁盘字节都被空值占用。
++> ⇒ 可比较只保存30条关联的独立表方案；还须权衡额外键/表及连接等成本，不能把3%当全库固定分界线。
+ 
+ **⭐ 最后一句是全节的枢纽**
+ 
+@@ -3465,7 +3465,7 @@
+ > - *"**DO NOT make a separate table**"*
+ > - *"**Redundancy is automatically avoided and load is not an issue** when you post a foreign key into either table in a 1..1 – 1..1 association"*
+ 
+-**⭐ 三条禁令与一条自由**
++**⭐ 两条禁令与一条自由**
+ 
+ | | 规则 |
+ |---|---|
+@@ -3481,7 +3481,7 @@
+ - **冗余**：两侧最大都是 1 ⇒ 过账过来每格只有一个值 ⇒ **不会有重复组** ✅
+ - **载荷**：两侧最小都是 1 ⇒ 每一行都必有配对 ⇒ **不会有空值，载荷 100%** ✅
+ 
+-**⇒ 两个指标都完美，所以随便挑一边过账即可。**
++按本讲既定1..1—1..1业务，可任选一边保存外键。落到数据库时还要落实NOT NULL、UNIQUE与参照完整性；来源端每行也至少被引用一次，仍须额外检查，不能由“有外键列”自动保证全部业务成立。
+ 
+ **💡 为什么不能两边都过账（讲义只说了"不要"，没说为什么。笔记补充）**
+ 
+@@ -3498,7 +3498,7 @@
+ 
+ **所以呢**
+ 
+-Step 3 的三条禁令与一条自由记住了，下一节用 Sale 与 Cash Receipt 的例子实际走一遍两个可选方向。
++Step3两条禁令和一个可选方向已列出，下一节对照原表看两个方案。
+ 
+ ---
+ 
+@@ -3668,7 +3668,7 @@
+ **⭐ 这张错误表同时踩了两个坑（这正是 §2.10.8 说的 "either redundancy OR load"，而这个例子两个都占了）**
+ 
+ 1. **C1 那一格塞了 "S1, S3" 两个值** ⇒ **重复组**（因为 Sale 侧最大是 `*`）
+-2. **C3（Dave）那一格是空的** ⇒ **空值，载荷只有 2/3 = 67%**（因为 Sale 侧最小是 `0`——Dave 是个还没买过东西的客户）
++2. C3（Dave）那格为空，非空2行/共3行，载荷约 $2/3\times100\%\approx67\%$；该样本只适用Sale端最小0的分支。
+ 
+ **⭐ 反过来看正确做法：**
+ - Sale 表的 `Cust-ID` 列：**每一行都有值**（3/3 = 100% 载荷），**每一格只有一个值**（无重复组）✅
+@@ -3821,18 +3821,18 @@
+ 
+ **情形一：门店 95% 的销售都由销售员完成**
+ - Sale 表 1,000 行，`salespersonID` 列有 950 个值、50 个 null
+-- **载荷 = 95%（高）** ⇒ **走 5A：过账外键**
+-- 代价：50 个空格（占 5%）—— 完全可以接受
+-- 若改成建表：要多一张 950 行的表 + 每次查询都要 JOIN ⇒ **更亏**
++- 载荷95%是相对稠密的例子；若比较后直接外键方案更合适，可选5A，不把95%定义成通用阈值。
++- 这列有50行没有销售员关联；是否值得另表，须比较完整方案，而非把空行直接当实测空字节。
++- 另建表需保存950条关联及相应键/连接；这是比较成本的输入，没有给出实际字节数，不能仅由行数宣称一定“更亏”。
+ 
+ **情形二：这是一家自助便利店，只有 3% 的销售有销售员参与（大额商品才叫店员）**
+ - Sale 表 1,000 行，`salespersonID` 列只有 30 个值、970 个 null
+-- **载荷 = 3%（低）** ⇒ **走 5B：建独立关联表**
++- 载荷3%作为相对稀疏例，可比较5B的30条关联表；最终选择仍按存储/查询等完整权衡。
+ ```
+ SaleSalesperson(saleID PRIMARY KEY/FK, salespersonID NOT NULL/FK)     ← 只有 30 行；saleID 唯一保证每 Sale 最多一个销售员
+ ```
+ - 代价：多一张表 + JOIN
+-- 收益：**省掉了 Sale 表里 970 个空格子**
++- 这样Sale表不再需要那一可空外键列；少了970个未填关联的单元格，但不等于已测量节省多少实际字节。
+ 
+ **⭐ 载荷多高才算"高"？** ⚠️ **讲义没有给阈值**（既没说 50% 也没说 80%）。**这是讲义的一处实质性空缺**，记在 §9.3 ⑫。
+ 💡 **我的建议**：考试时**不要背一个数字**，而是**说明权衡逻辑**（"如果绝大多数行都有值就过账；如果绝大多数是空的就建表"），并**给出一个具体例子**说明你的判断。**讲义的口径是定性的，答题也应当定性。**
+@@ -3847,7 +3847,7 @@
+ 
+ **所以呢**
+ 
+-五步的具体规则全部讲完了，下一节用一张决策树把它们串成一套可以在考场上直接套用的流程。
++五步规则已讲完，下一节用决策树辅助自学和W6前置练习；不把S6明确排除的转换题重新列为本次考试要求。
+ 
+ ---
+ 
+@@ -3903,7 +3903,7 @@
+ 
+ 
+ 
+-**贯穿小例**：Customer U1/U2，Sale S1→U1、S2→U1。NOT NULL+FK 允许两笔同客，拒绝不存在的 U9 和无客户 Sale；U2 没有销售仍可插入，说明 FK 不保证父至少一个子。若规则选择每 Customer 至少一 Sale，就用 NOT EXISTS 查出 U2 并由事务/业务验收处理，不能悄悄删 U2。另一张一对一 Child.parentID 加 UNIQUE 后，两个 Child 同指 P1 被拒，P2 无 Child 仍可存在。这些差别在 `calc.py` 的 SQLite 内存示例实际运行。
++**贯穿小例（结构与约束说明）**：Customer U1/U2，Sale S1/S2均指U1时，允许同客多售；U2无销售说明仅设FK不保证父对象至少一个子对象。可逐个父对象检查有没有子行引用它，代码可用NOT EXISTS表达，语法不是本段前置。另一个P1/P2—Child的简化实验中，UNIQUE拒绝两个Child同指P1，但仍允许P2无Child。该独立实验及超额分配已本次实际复跑，见[[_meta/vault-notes-review-20261023/ac6761-m04/calculations/constraint-experiments.py|局部约束实验源码]]；它不是§2.9.9的完整schema，旧草稿的calc.py简称不再作为可定位文件。
+ 
+ **金额反例**：收款 OVER 实收1、给销售分配5，复合PK/FK/正金额检查仍允许插入；应当核该收款分配总额≤实收，发现超4。同时核每销售分配≤可结算额、客户/币种一致；并发分配须在事务中核，单次 SQLite 例不证明并发安全。
+ 
+@@ -3940,7 +3940,7 @@
+ 
+ #### 2.10.12 💡 五步转换法决策树（笔记补充，讲义无对应页）
+ 
+-> ⚠️ 讲义把五步散在 p.43–53 共 11 页里，**从头到尾没有一页做总结**。但考场上要用的正是这张决策树。以下为 💡 笔记补充。
++> 讲义把五步放在p.43–53；下图是笔记为顺序执行和后续上机整理的总结。本次考试范围按S6的out of scope保留，不称考场必须使用。
+ 
+ **看图前先问**：面对不同min/max，哪一步先判断？
+ 
+@@ -4031,9 +4031,9 @@
+ 
+ Give 表示企业失去资源，Get 表示企业获得资源。无方向关联分别是 stockflow 或 participation；粗线强调 DUALITY，不表示立即收款。
+ 
+-**沿例子读图（笔记补充）**：从 Give 区的 Sale 找到 Inventory 曲奇、Employee Paul 和 Customer Joe。再沿 DUALITY 到 Get 区的 Cash Receipt CR001，核对 Cash 10 与对应收款角色。此总图不显示具体 min/max，端点答案仍看正文局部模型。
+-
+-**图旁边界**：此总图未标min/max，保留旧标题锚点并在图注解释；内部生产不套外部参与者。
++**沿例子读图（笔记补充）**：Give区的Sale关联Inventory曲奇、Paul与Joe，再沿DUALITY找到同一补例的Cash Receipt R001和现金10。此处是概念图，可列派生金额属性；最终Sale存储仍不另存amount，须由SaleLine汇总。
++
++**图旁边界**：此图只做概念结构定位，未标min/max；Sale.amount等为概念层可导出资料，不是照抄的存储列。内部生产另按自身参与规则。
+ 
+ **文字替代**：总图定位give/get与资源角色，具体min/max必须回局部模型按两方向读。
+ 
+@@ -4055,26 +4055,24 @@
+ 
+ ```mermaid
+ flowchart TD
+-    W["<b>真实世界发生的事</b><br/>1/1 · 又一城7-11 · Paul<br/>卖给 Joe · 一块曲奇<br/>售价 10 · 成本 8"]
+-    O["订单输入（若要算履行时长）<br/>orderDate + 履行关联"]
+-
+-    W -->|"本讲简化科目汇总"| DE["<b>4 行分录</b><br/>Dr COGS 8 / Cr Inventory 8<br/>Dr A/R 10 / Cr Sales 10<br/><br/>❌ 谁 · 谁买 · 哪里 · 什么商品<br/>本讲科目汇总未直接呈现<br/>真实凭证和业务明细可保留"]
+-    W -->|"REA<br/>（显式关系记录）"| REA["<b>Sale + CashReceipt 两条事件</b><br/>连着 Inventory / Employee /<br/>Customer / Cash<br/><br/>✅ 八条事实全保留"]
+-
+-    DE --> FS1["财务报表 ✅"]
+-    DE -.->|"❌ 答不了"| BQ["业务问题<br/>哪个客户最赚钱？<br/>哪个门店毛利高？<br/>订单履行要多久？"]
+-    REA --> FS2["财务报表 ✅<br/>（用 SUM 查询算出来）"]
+-    REA --> BQ2["客户/门店/商品问题 ✅<br/>按已采集关联查询"]
+-    O --> BQ3["订单履行时长 ✅<br/>Order 到 Delivery/Sale"]
+-```
+-
+-箭头表示同一事实被组织为不同表示和查询结果，不是不可逆删除原凭证。
+-
+-**沿例子读图（笔记补充）**：“真实世界发生的事”给售价 10、成本 8 和 Paul、Joe、地点。左路“4 行分录”能算毛利 2；右路“Sale + CashReceipt 两条事件”保留人员及商品关联，便于按键回答业务问题。实际复式凭证若保存交易 ID 和明细，也能保留这些细节。
+-
+-**图旁边界**：仅比较本讲简化科目汇总，不称REA无损或所有传统系统不可查；未采集信息不能自动生成。
+-
+-**文字替代**：简化科目合计不能反推未保存细节；显式事件关系也依赖实际正确采集。
++    W["<b>同一曲奇故事</b><br/>1/1 · 又一城7-11 · Paul → Joe<br/>曲奇1块 · 售价10 · 成本8<br/>同日收现10"]
++    O["如另给订单输入<br/>下单日期、履行日期及对应关系"]
++    W -->|"本题简化会计表示"| DE["<b>六行分录 · 两阶段</b><br/>Dr COGS 8 / Cr Inventory 8<br/>Dr A/R 10 / Cr Sales 10<br/>Dr Cash 10 / Cr A/R 10<br/>这些科目金额不直接呈现人/商品/地点"]
++    W -->|"本例显式事件/关系"| REA["Sale + SaleLine<br/>CashReceipt + Duality<br/>关联商品、员工、客户与现金账户<br/>只表示本例已正确采集的资料"]
++    DE --> FS1["本例科目变动与毛利2"]
++    REA --> FS2["本例可求同样财务影响与毛利2"]
++    DE -.->|"仅凭科目金额不能还原"| BQ["人物、商品、地点<br/>以及其他未提供的业务明细"]
++    REA --> BQ2["可按已采关联回查本例身份<br/>跨客户/门店比较还需对应完整明细"]
++    O --> BQ3["资料齐备并选定起止定义后<br/>才可计算订单履行间隔"]
++```
++
++箭头表示同一完整故事被组织成两种表示，不代表删除原凭证；额外订单问题由另一组必要输入支持。
++
++**沿例子读图（笔记补充）**：会计表示与事件表示都包含给货和收款。本例现金增加10、应收先加10再减10而净变动0、存货减少8、权益净增2。六行分录中的毛利仍为收入10减成本8；事件关系另外保留Paul、Joe、曲奇与地点，不能把只有给货四行的一路与已收现的一路当成同一完整状态。
++
++**图旁边界**：这些是本例财务影响，不是完整财务报表；后者还需期初余额、其他业务及相应确认/计量/调整/列报规则。REA不自动无损或合规，实际复式系统也可另存业务明细。
++
++**文字替代**：同一故事两种表示都要完整；本例的财务影响一致，能否进一步回查业务关系或比较其他对象取决于实际输入。
+ 
+ <details><summary>读图自测：把月末两总数放一起能反推每次毛利吗？</summary>
+ 
+@@ -4217,7 +4215,7 @@
+ 
+ **Step 5 的判断**：先尝试从可选一端过账，载荷高时接受少量空值（5A），低时另建关联表（5B）。两端均为 `0..1` 时比较两种方向，选载荷较高者；两向都低则建表。
+ 
+-**Step 3 的限制**：一对一按本讲规则选一侧存对方主键，不两侧重复过账，也不另建关系表；数据库唯一性与最小参与的约束仍按正文分开落实。
++**Step3的限制**：按本讲规则选一侧存对方键，不两边重复存同一配对，也不另建关联表；实施时相应FK须NOT NULL、UNIQUE并有参照完整性，另一侧每行至少被引用一次仍须额外核验。
+ 
+ **Step 1 的映射**：类变表，属性变列，每个实例变成一行；三者不是三个独立的建表动作。
+ 
+@@ -4234,7 +4232,7 @@
+ 
+ ## 5. 双语术语卡
+ 
+-每行定位一个概念及正文首次展开处。英文原定义移到同名条目，逐项完整保留。
++每行定位名称及首现处。下面英文表达依据讲义、正文和补充来源整理，不把整句都冒称逐字课件原文；需要原句时回§2有页码的引用块。
+ 
+ | 中文 | English | 首现 |
+ | --- | --- | --- |
+@@ -4286,97 +4284,97 @@
+ 
+ **复式记账**
+ 
+-考试可用的英文定义（优先讲义原句）：Records every transaction with dual entries (debit/credit) to maintain the accounting equation `Assets = Liabilities + Equity`; focuses on financial outcomes and uses standardized financial statements.
++笔记整理的考试英文表达：Records every transaction with dual entries (debit/credit) to maintain the accounting equation `Assets = Liabilities + Equity`; focuses on financial outcomes and uses standardized financial statements.
+ 
+ 
+ **REA 会计模型**
+ 
+-考试可用的英文定义（优先讲义原句）：Models business activities around three core elements — Resources, Events and Agents — recording economic events in their **semantic context** rather than as debits/credits.
++笔记整理的考试英文表达：Models business activities around three core elements — Resources, Events and Agents — recording economic events in their **semantic context** rather than as debits/credits.
+ 
+ 
+ **语义语境**
+ 
+-考试可用的英文定义（优先讲义原句）：Recording an event together with the resource exchanged, the agents involved and the related events, instead of translating it into account balances.
++笔记整理的考试英文表达：Recording an event together with the resource exchanged, the agents involved and the related events, instead of translating it into account balances.
+ 
+ 
+ **人工构造物**
+ 
+-考试可用的英文定义（优先讲义原句）：Something **manufactured, not naturally occurring**; debits, credits and accounts are artifacts that **obscure details of business transactions needed for non-accounting purposes**.
++笔记整理的考试英文表达：Something **manufactured, not naturally occurring**; debits, credits and accounts are artifacts that **obscure details of business transactions needed for non-accounting purposes**.
+ 
+ 
+ **经济资源**
+ 
+-考试可用的英文定义（优先讲义原句）：The "what": things of economic value that events increase or decrease (inventory, cash, equipment).
++笔记整理的考试英文表达：The "what": things of economic value that events increase or decrease (inventory, cash, equipment).
+ 
+ 
+ **经济事件**
+ 
+-考试可用的英文定义（优先讲义原句）：The "what, when, where": a business activity that changes resources (sale, purchase, production).
++笔记整理的考试英文表达：The "what, when, where": a business activity that changes resources (sale, purchase, production).
+ 
+ 
+ **经济参与者**
+ 
+-考试可用的英文定义（优先讲义原句）：The "who": persons or organisations participating in events (customers, employees, suppliers).
++笔记整理的考试英文表达：The "who": persons or organisations participating in events (customers, employees, suppliers).
+ 
+ 
+ **内部 / 外部参与者**
+ 
+-考试可用的英文定义（优先讲义原句）：The agent belonging to the enterprise / to the outside party. External exchange events usually involve inside and outside agents; internal events and losses require their own participation rules.
++笔记整理的考试英文表达：The agent belonging to the enterprise / to the outside party. External exchange events usually involve inside and outside agents; internal events and losses require their own participation rules.
+ 
+ 
+ **二元性**
+ 
+-考试可用的英文定义（优先讲义原句）：There is usually **a pair of events** at the heart of REA: one represents a resource being **given away or lost**, another a resource being **received or gained**; the two are linked.
++笔记整理的考试英文表达：There is usually **a pair of events** at the heart of REA: one represents a resource being **given away or lost**, another a resource being **received or gained**; the two are linked.
+ 
+ 
+ **经济减量 / 增量**
+ 
+-考试可用的英文定义（优先讲义原句）：Stereotypes marking events that decrease / increase a resource; in the core exchange pattern, duality usually links a give event with a get event. Credit sales, losses and internal events require their stated participation rules.
++笔记整理的考试英文表达：Stereotypes marking events that decrease / increase a resource; in the core exchange pattern, duality usually links a give event with a get event. Credit sales, losses and internal events require their stated participation rules.
+ 
+ 
+ **概念模型**
+ 
+-考试可用的英文定义（优先讲义原句）：A representation that depicts **the important objects and the relationships between the objects** that must be captured in a database.
++笔记整理的考试英文表达：A representation that depicts **the important objects and the relationships between the objects** that must be captured in a database.
+ 
+ 
+ **逻辑模型**
+ 
+-考试可用的英文定义（优先讲义原句）：A conceptual model converted **once the type of database has been determined** (relational, object-oriented, hierarchical, network).
++笔记整理的考试英文表达：A conceptual model converted **once the type of database has been determined** (relational, object-oriented, hierarchical, network).
+ 
+ 
+ **物理数据库模型**
+ 
+-考试可用的英文定义（优先讲义原句）：Created based on **the specific database software package** in which the database is implemented.
++笔记整理的考试英文表达：Created based on **the specific database software package** in which the database is implemented.
+ 
+ 
+ **XBRL**
+ 
+-考试可用的英文定义（外部正式来源）：XBRL is a global standard for machine-readable digital business reporting. It tags reporting concepts together with their contexts, periods and units. The lecture lists XBRL on a conceptual-modeling slide, but that slide position is not its formal definition.
++笔记据XBRL官方来源整理的英文表达（非逐字引用）：XBRL is a global standard for machine-readable digital business reporting. It tags reporting concepts together with their contexts, periods and units. The lecture lists XBRL on a conceptual-modeling slide, but that slide position is not its formal definition.
+ 
+ 
+ **UML 类图**
+ 
+-考试可用的英文定义（优先讲义原句）：The four constructs: **classes, associations, attributes and multiplicities**; appropriate for conceptual modeling of REA concepts.
++笔记整理的考试英文表达：The four constructs: **classes, associations, attributes and multiplicities**; appropriate for conceptual modeling of REA concepts.
+ 
+ 
+ **实体**
+ 
+-考试可用的英文定义（优先讲义原句）：A real world object that has a **separate existence, either physical or conceptual**.
++笔记整理的考试英文表达：A real world object that has a **separate existence, either physical or conceptual**.
+ 
+ 
+ **类**
+ 
+-考试可用的英文定义（优先讲义原句）：A **set of entities that share the same characteristics**; drawn as a three-compartment box.
++笔记整理的考试英文表达：A **set of entities that share the same characteristics**; drawn as a three-compartment box.
+ 
+ 
+ **构造型**
+ 
+-考试可用的英文定义（优先讲义原句）：A **generalized type of class to which other classes may belong**, written in `<< >>` above the class name.
++笔记整理的考试英文表达：A **generalized type of class to which other classes may belong**, written in `<< >>` above the class name.
+ 
+ 
+ **关联**
+ 
+-考试可用的英文定义（优先讲义原句）：A relationship between classes.
++笔记整理的考试英文表达：A relationship between classes.
+ 
+ 
+ **关联类**
+@@ -4386,112 +4384,112 @@
+ 
+ **具象化关联**
+ 
+-考试可用的英文定义（优先讲义原句）：An association in which there can be **multiple links** between the related entities, so it needs its own identifier.
++笔记整理的考试英文表达：An association in which there can be **multiple links** between the related entities, so it needs its own identifier.
+ 
+ 
+ **属性**
+ 
+-考试可用的英文定义（优先讲义原句）：Characteristics or elementary properties of **classes and/or associations**.
++笔记整理的考试英文表达：Characteristics or elementary properties of **classes and/or associations**.
+ 
+ 
+ **主键**
+ 
+-考试可用的英文定义（优先讲义原句）：An attribute that **uniquely and universally identifies** each instance of a class or association.
++笔记整理的考试英文表达：An attribute that **uniquely and universally identifies** each instance of a class or association.
+ 
+ 
+ **候选键**
+ 
+-考试可用的英文定义（优先讲义原句）：Attributes which **can be used as** primary key attributes.
++笔记整理的考试英文表达：Attributes which **can be used as** primary key attributes.
+ 
+ 
+ **简单 / 复合属性**
+ 
+-考试可用的英文定义（优先讲义原句）：Simple cannot be further decomposed; composite may be decomposed into other attributes.
++笔记整理的考试英文表达：Simple cannot be further decomposed; composite may be decomposed into other attributes.
+ 
+ 
+ **可导出属性**
+ 
+-考试可用的英文定义（优先讲义原句）：Can be derived / computed from the values of other attributes in the database.
++笔记整理的考试英文表达：Can be derived / computed from the values of other attributes in the database.
+ 
+ 
+ **静态 / 易变**
+ 
+-考试可用的英文定义（优先讲义原句）：Static: **will not change** if new data is entered into the system. Volatile: **will change** if new data is entered.
++笔记整理的考试英文表达：Static: **will not change** if new data is entered into the system. Volatile: **will change** if new data is entered.
+ 
+ 
+ **多重性**
+ 
+-考试可用的英文定义（优先讲义原句）：**How many times an instance of a class is allowed to participate in an association**; written `minimum..maximum`.
++笔记整理的考试英文表达：**How many times an instance of a class is allowed to participate in an association**; written `minimum..maximum`.
+ 
+ 
+ **最小多重性**
+ 
+-考试可用的英文定义（优先讲义原句）：The minimum number of times one instance **must** participate. **0 = optional participation**, **1 = mandatory participation**.
++笔记整理的考试英文表达：The minimum number of times one instance **must** participate. **0 = optional participation**, **1 = mandatory participation**.
+ 
+ 
+ **最大多重性**
+ 
+-考试可用的英文定义（优先讲义原句）：The maximum number of times one instance **may** participate. **1 = one-time only**, **\* = as many times as needed, no restrictions**.
++笔记整理的考试英文表达：The maximum number of times one instance **may** participate. **1 = one-time only**, **\* = as many times as needed, no restrictions**.
+ 
+ 
+ **关系数据库**
+ 
+-考试可用的英文定义（优先讲义原句）：Consists of **tables (relations)** linked together via the use of **primary and foreign keys**.
++笔记整理的考试英文表达：Consists of **tables (relations)** linked together via the use of **primary and foreign keys**.
+ 
+ 
+ **外键**
+ 
+-考试可用的英文定义（优先讲义原句）：**A primary key from a different table that has been posted into the table** to create a link between the two tables.
++笔记整理的考试英文表达：**A primary key from a different table that has been posted into the table** to create a link between the two tables.
+ 
+ 
+ **元组**
+ 
+-考试可用的英文定义（优先讲义原句）：A row; the rows are also called the **table extension**. Order does not matter.
++笔记整理的考试英文表达：A tuple is one row. The extension is the collection of rows, whose order does not determine their meaning.
+ 
+ 
+ **表的内涵 / 模式**
+ 
+-考试可用的英文定义（优先讲义原句）：The columns. Order does not matter, but **data format does matter**.
++笔记整理的考试英文表达：A table’s structure, including its column definitions and stated constraints; data types matter, while column position alone does not define the business meaning.
+ 
+ 
+ **空值**
+ 
+-考试可用的英文定义（优先讲义原句）：A blank; means "no value / unknown". Not zero, not an empty string.
++笔记整理的考试英文表达：A marker for missing or unknown information, distinct from numeric zero and an empty string.
+ 
+ 
+ **实体完整性**
+ 
+-考试可用的英文定义（优先讲义原句）：**A primary key in a table must not contain a null value.**
++笔记整理的考试英文表达：**A primary key in a table must not contain a null value.**
+ 
+ 
+ **参照完整性**
+ 
+-考试可用的英文定义（优先讲义原句）：A value for a foreign key must either **be null (blank)** or **match exactly** a value for the primary key in the table from which it was posted.
++笔记整理的考试英文表达：A value for a foreign key must either **be null (blank)** or **match exactly** a value for the primary key in the table from which it was posted.
+ 
+ 
+ **一事一地**
+ 
+-考试可用的英文定义（优先讲义原句）：A **fact = a pairing of a candidate key attribute value with another attribute value**; each fact must appear once and in one place only.
++笔记整理的考试英文表达：A **fact = a pairing of a candidate key attribute value with another attribute value**; each fact must appear once and in one place only.
+ 
+ 
+ **重复组**
+ 
+-考试可用的英文定义（优先讲义原句）：Two or more attribute values in one cell — i.e. **multiple facts in one place**; not allowed.
++笔记整理的考试英文表达：Two or more attribute values in one cell — i.e. **multiple facts in one place**; not allowed.
+ 
+ 
+ **冗余**
+ 
+-考试可用的英文定义（优先讲义原句）：**One fact in multiple places, or multiple facts in one place.**
++笔记整理的考试英文表达：**One fact in multiple places, or multiple facts in one place.**
+ 
+ 
+ **载荷**
+ 
+-考试可用的英文定义（优先讲义原句）：**The percentage of non-null values in a column.**
++笔记整理的考试英文表达：**The percentage of non-null values in a column.**
+ 
+ 
+ **过账（数据库义）**
+ 
+-考试可用的英文定义（优先讲义原句）：To copy a table's primary key into another table as a foreign key. ⚠️ Different from the accounting "posting" (journal → ledger).
++笔记整理的考试英文表达：To copy a table's primary key into another table as a foreign key. ⚠️ Different from the accounting "posting" (journal → ledger).
+ 
+ 
+ **复合主键**
+@@ -4532,7 +4530,7 @@
+ | 🟡 | **复式记账 vs REA 的对比**（原理、强项各 3 条、局限各 2 条） | 讲义用 **4 整页**（p.2–5）对称呈现；CILO 1 | §2.1、§4.1 |
+ | 🟡 | **REA 三要素的定义与 what/when/where/who 对应** | 讲义 p.4、p.17 两处给出；这是模型的名字本身 | §2.5.1 |
+ | 🟡 | **duality（二元性）的定义与 give/get 结构** | 讲义 p.18 整页 + p.19 整页图 | §2.5.2–2.5.3 |
+-| 🔴 | ⭐ **多重性的读法与位置约定** | 🎙️ S6 `19:31`–`20:04`：*"this is the most difficult issue in our class"*；p.32–35 四题均有课堂讲评 | §2.7.7–2.7.9、§2.8 |
++| 🔴 | 多重性读法及概念图填图要求 | S6 `19:31`–`20:04`只说明难点；后续M05段`01:24:30`–`01:24:55`及`01:45:25`–`01:45:55`明确要求填写属性、关联名和多重度，考试依据来自这些后续原话 | §2.7–§2.8 |
+ | 🔴 | **关系模型三原则**（实体完整性、参照完整性、一事一地） | 🎙️ S6 `48:04`：*"these are the three most important principles related to the relational model"*；Entity Integrity 例题信号见 `38:11`–`38:37` | §2.9.4–2.9.7 |
+ | 🔴（反向） | **五步转换法只需理解基本想法，不作为考试题** | 🎙️ S6 `01:04:14`–`01:04:28`：*"it is out of scope, which means that you are not required to [answer] any questions related to this part"*；`01:13:40`–`01:13:46` 再次降权 | §2.10 |
+ | ⚪ | **McCarthy 1982 与 "artifact" 的含义** | 讲义 p.9 整页，且是全章的理论支点 | §2.3.1 |
+@@ -4545,6 +4543,14 @@
+ | ⚪ | **载荷（load）的定义与它在 Step 5 里的作用** | 讲义 p.43 给定义、p.53 用它做判断 | §2.10.1、§2.10.11 |
+ | ⚪ | **REA 与 AI 的关系** | 讲义 p.5 唯一一处 *"AI-driven forecasting"*；课程名里有 AI | §2.1.4 |
+ 
++**后续M05段回提的期中格式（同一S6时钟，非M04当时时段）**：教师说会提供连接好的类骨架，学生补信息：
++
++> *"I will provide the pattern to you by link all the classes together, but you need to determine the attributes."*（S6 `01:24:30`）
++
++> *"You need to put the name for the associations, and you need to determine the multiplicities, okay?"*（S6 `01:24:55`）
++
++S6 `01:32:58`–`01:33:36`、`01:45:25`–`01:45:55`再次说明骨架与要填项目。它支持上述具体题型要求，不保证某张已知图会原样出现或给定分值；“最难”本身仍不是会考承诺。
++
+ **属性举例的课堂要求（S4）**：
+ 
+ > *"you should be able to name some examples."*（`29:06`）
+@@ -4580,7 +4586,7 @@
+ 3. 逐条回答 Q1–Q4（用 §4.4 的对照表）
+ 4. 每个答案都写明依据："No – 1 min next to CR"（照讲义的答案格式）
+ ```
+-⭐ **答案格式一定要照抄讲义 p.32/p.33 的样子**：`Yes/No – [数字] [min/max] next to [类名]`。**教授的答案就是这个格式，照做最安全。**
++笔记建议用 `Yes/No – [数值] [min/max] next to [类名]`清楚写出依据；这是按p.32–33示范整理的答法，不冒称教师规定的唯一英文句式或得分保证。
+ 
+ **标图（给业务标数字）**：
+ ```
+@@ -4688,7 +4694,7 @@
+ - **5B 载荷低** ⇒ **建独立的关联表**
+ - `0..1—0..1` ⇒ 选载荷最高的方向；两向都低则建表
+ 
+-**例**：Sale 表 1,000 行，`salespersonID` 列 950 行有值 ⇒ 载荷 95% ⇒ 走 5A；若只有 30 行有值 ⇒ 载荷 3% ⇒ 走 5B，建一张 30 行的关联表。
++**例**：1000笔销售中950笔有销售员，Load=95%；若只有30笔则Load=3%。前者可作较稠密、后者较稀疏的示例，再比较直接FK和另表成本，不由这两个数定义全局阈值或唯一方案。
+ 
+ ⚠️ **讲义没有给"高/低"的阈值**，答题时说清权衡逻辑即可，不要编一个数字。→ §2.10.1、§2.10.11
+ 
+@@ -4845,7 +4851,7 @@
+ - ❌ **商品是什么**（Inventory 只有一个总额）
+ - ❌ **售价与成本属于同一笔交易的配对关系**（只剩合计时不能反推；若原凭证/明细留存ID仍可回查，§2.3.2）
+ 
+-**保留的只有 3 条**：日期、售价 10、成本 8。
++本题简化表示直接给出了日期、各科目和相关金额；它还包含收款分录，不能把完整故事的财务内容数成只有日期/售价/成本三项。
+ 
+ **⭐ 关键结论**：已正确采集的事件与明细仍能生成会计数字。销售收入来自 `SUM(SaleLine.quantity*unitPrice)`，销货成本来自 `SUM(SaleLine.quantity*unitCost)`；能否反查人员、地点和商品取决于系统是否实际保存并正确关联这些字段。→ §2.9.9
+ 
+@@ -4855,7 +4861,7 @@
+ 
+ <details><summary>参考思路</summary>
+ 
+-用 §6.3 框架 A，四段式，全部用讲义原句：
++可用§6.3框架A组织四段，保留讲义关键术语并说明其范围；逐字引文、中文解释和笔记补充区分，不把机械背整句当理解。
+ 
+ **1. 两者的 Core Principle**（p.2、p.4）—— 一句一个，点出 "financial outcomes" vs "semantic context" 的对立。
+ 
+@@ -5007,7 +5013,7 @@
+ 
+ ### 9.3 课件自身的问题
+ 
+-> 本讲讲义**结构清晰、规则完整**，是六周里技术密度最高的一份。但也发现 **12 处**问题，其中前 3 处比较严重。
++> 下列12项包含明确原文错误、来源待核及已撤回的旧判断，不是12个当前教学阻塞；每项按其真实地位阅读。
+ 
+ **① p.2–p.5 的文本含零宽空格，来源/转换过程未核**
+ 
+@@ -5066,10 +5072,10 @@
+ 
+ **同一门课、隔两周、同一个英文词、完全不同的意思，讲义一个字都没提醒。** 对会计零基础的学生是明确的陷阱。
+ 
+-**⑩ ⚪ p.43 的子步骤编号笔误**
+-
+-写的是 *"**1A**: Each attribute … **2A**: Each instance …"*，两个都属于 Step 1，**应该是 1A 和 1B**。
+-（对照 p.48 的 Step 3 用的是正确的 "3A / 3B"，p.53 的 Step 5 用的是 "5A / 5B"。⇒ **p.43 是笔误无疑。**）
++**⑩ p.43 的子步骤编号原样与疑点**
++
++原文为1A: Each attribute、2A: Each instance，两项均列在Step1内。可将其视作编号编辑疑点，不能在未获更正时冒称已证明必须改为1A/1B。
++p.48和p.53分别使用3A/3B、5A/5B，可作比较；原编号仍保留在引文，不将推测写成官方勘误。
+ 
+ **⑪ ⚪ p.46 与 p.47 的示例数据不一致**
+ 
+@@ -5107,7 +5113,7 @@
+ | 3 | ⚠️ **Step 5 的载荷阈值仍未知** | S6 `01:13:02`–`01:13:30` 只概括从 `0..1` 端过账，没有给 high/low load 百分比；讲义也未给。继续保留未知，不编阈值。 |
+ | 4 | **完整的构造型清单** | 讲义只出现 2 个（§9.3 ⑦）。`<<Resource>>`、`<<economicIncrement>>`、`stockflow` 是我按 REA 通行术语补的，**未经讲义确认**。 |
+ | 5 | ✅ **McCarthy 1982 的文献信息** | 讲义未给完整引用；题名、期刊、卷期、日期和页码已由 AAA DOI 页面核对（获取日期 2026-10-23）。 |
+-| 6 | ✅ **REA 核心模型题的答题格式已部分确认** | S6 `01:24:30`–`01:24:55`、`01:32:58`–`01:33:36`、`01:45:25`–`01:45:55`：考试给出已连接的类骨架，学生填关联名、属性和多重度；构造型和具体分值仍未明示。 |
++| 6 | 后续M05段回提的期中概念图格式 | S6 `01:24:30`–`01:24:55`、`01:32:58`–`01:33:36`、`01:45:25`–`01:45:55`确说明提供类/链接骨架，学生填关联名、属性和多重度；属于M05时段回提而非M04时段。M04段S6 `01:25`已允许省构造型，具体分值未给。 |
+ | 7 | **旧版本曾把上课日期推定为 2026-09-23** | 当前 frontmatter 已按现有三源登记更新为 2026-09-30；09-23 只保留为历史推定记录，不再解释当前字段 |
+ | 8 | ✅ **W5 与本讲的分界已由同一 S6 时钟确认** | M04 在 `01:13:46` 收束转换部分；`01:13:52` 明说 chapter five，`01:14:00` 起进入 Resource / ResourceType。 |
+ | 9 | 2026-09-30 三源登记与范围 | S2 = `M04-transcript-part1-partial.txt`（录音 2，258 段）；S3 = `M04-transcript-part2-partial.txt`（录音 3，130 段）；S4 = `M04-transcript-part3-partial.txt`（录音 4，235 段）。各源独立计时；顺序结合文件日期、课间语和内容衔接核实，接缝连续性及缺口长度未知。 三源媒体时长合计 6938.178166 秒（1h55m38s，`source_manifest.py`），仅为录音长度，不是墙钟课长。S2 `06:09` 起有有效教学，前段噪声/残留幻觉不引用；S2 `34:16`→`37:47` 是教授安排的 Nike 自读；S3 从视频中段开始；S4 `37:30` 后无有效教学转录，末端残留幻觉不作为课堂结尾。 |
+@@ -5123,7 +5129,7 @@
+ **反方视角（2026-10-21 简化流程的来源检查，未做全量 Q/R 盲读）**
+ 
+ 1. **课堂证据最薄弱的内容**：p.44 只得到明确略过信号；Step 5 没有课堂或讲义给出的 high/low load 数值阈值。
+-2. **仍不能从录音确认的要求**：构造型是否计分、各项分值、Step 5 阈值；`39:18`–`41:22` ASR 空档期间是否有未转写口述也未知。
++2. **仍未确认**：具体分值、Step5阈值及ASR空档的真实内容；构造型可省已由S6 `01:25`文字明确，但未经原音核听，不捏造额外评分规则。
+ 3. **本次推断及后果**：p.30–53 已由 S6 补证，不能再记为录音未覆盖；转换题型按教授原话降权但正文保留。`39:18`–`41:22` 仅能说前后同主题，不能判成板书/休息或已查明。
+ 
+ ### 9.6 变更记录
+@@ -5142,5 +5148,5 @@
+ | 正文候选 | 保留旧 S2/S3/S4 的 26 个 A/B 格；S6 更新原 22 个 D 格。候选五态为 A 27 / B 20 / C 1 / D 0 / E 0；p.30–53 §8 覆盖补齐。 |
+ | 来源与原题 | `M04-M05-transcript-source6-partial.txt` 761 段；M04 `00:01`–`01:13:46`。W4 p.32–35 共 16 小问逐源定位，p.34/35 答案为课堂确认；Case 4 Q1–Q3 实讲，Q4 明确不考但官解和表格完整保留于 §2.9.8。 |
+ | 机械作者自查 | Patch JSON 可解析；48 格均已五态化；S6 时间戳/引文预览 audit 为 0 unmatched、A13=0、A14=0。完整候选的 §6/§9 结构、current L/C/R 和视觉仍由主代理集中验收。 |
+-| 保留限制 | `39:18`–`41:22` 空档性质未核；Step 5 载荷阈值未知；构造型/分值未明。S2/S3/S4 独立时钟不与 S6 合成课堂墙钟。 |
++| 保留限制 | `39:18`–`41:22`空档性质未核，Step5阈值未知；构造型可省有ASR文字，具体分值未给。S2/S3/S4和S6不合并为课堂墙钟。 |
+ | 状态 | 2026-10-25 作者修订候选与自查证据已写入 scratch；机制/可读性仍 pending，待原独审者按 7 组范围定向复核。未修改 vault、candidate、baseline、Notion 或 Git。 |

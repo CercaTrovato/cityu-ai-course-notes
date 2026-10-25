@@ -1,0 +1,15 @@
+{
+  "source_sha256": "265260200a9c9e7ff1e5b4763825a67bc574ccf3234882e9ca788798d6b4ad53",
+  "candidate_sha256": "ea3c65c1802a86ec1c98c34e8895135d0440a066f9bc5254cb12c11e74a693fe",
+  "changes": [
+    {
+      "old": "教授照 p.36 定义关系数据库、主键与外键：*\"a foreign key in the table is the primary key from a different table that has been posted into the table to create a link between the two tables.\"*（S6 `31:00`）。**这段改变了什么**：补上直接课堂覆盖，定义与正文一致。",
+      "new": "教授照 p.36 定义关系数据库、主键与外键，说明外键取自另一表的主键，再放进本表以连接两表：\n\n> *\"a foreign key in the table is the primary key from a different table that has been posted into the table to create a link between the two tables.\"*（S6 `31:00`）\n\n**这段改变了什么**：补上直接课堂覆盖，定义与正文一致。"
+    },
+    {
+      "old": "**后果**：`WHERE Degree='MBA'` 查不到；统计不了；新增学位要改字符串；格式无法统一。",
+      "new": "**后果**：`WHERE Degree='MBA'` 把整格与 `MBA` 比较，因此 `BS,MBA` 与 `BA,MBA,PhD` 两格都不相等。直接按原字符串分组会把两种组合各算一组，不能直接得到每种学位的人数。仍可另写拆分解析或校验规则，但需要额外处理；新增学位也要改同一字符串。"
+    }
+  ],
+  "scope": "S6 p36 long quotation formatting with faithful Chinese reading; self-test Q5 repeating-group exact-equality/counting boundary aligned with existing section2.9.7. Late reviewer targeted closure required."
+}

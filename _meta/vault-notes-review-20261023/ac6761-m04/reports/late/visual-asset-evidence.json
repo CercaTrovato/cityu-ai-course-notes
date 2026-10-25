@@ -1,0 +1,384 @@
+{
+  "checks": [
+    {
+      "index": 7,
+      "source_sha256": "f7f71022341154ab6c43426ebccb676bb9125fe1846b50745c770c691b6f578c",
+      "cache_node_label_comparison": [
+        {
+          "id": "B",
+          "expected": "业务四问与每表身份",
+          "svg": "业务四问与每表身份",
+          "matches": true
+        },
+        {
+          "id": "M",
+          "expected": "逐关联按Step2到Step5选择结构",
+          "svg": "逐关联按Step2到Step5选择结构",
+          "matches": true
+        },
+        {
+          "id": "K",
+          "expected": "写PK、FK、UNIQUE、是否可空",
+          "svg": "写PK、FK、UNIQUE、是否可空",
+          "matches": true
+        },
+        {
+          "id": "T",
+          "expected": "试合法行和非法行",
+          "svg": "试合法行和非法行",
+          "matches": true
+        },
+        {
+          "id": "P",
+          "expected": "检查父侧最小参与",
+          "svg": "检查父侧最小参与",
+          "matches": true
+        },
+        {
+          "id": "A",
+          "expected": "核数量、金额、客户和日期",
+          "svg": "核数量、金额、客户和日期",
+          "matches": true
+        },
+        {
+          "id": "X",
+          "expected": "约束和业务事实一致？",
+          "svg": "约束和业务事实一致？",
+          "matches": true
+        },
+        {
+          "id": "R",
+          "expected": "补业务验证或修关系，重核受影响行",
+          "svg": "补业务验证或修关系，重核受影响行",
+          "matches": true
+        },
+        {
+          "id": "O",
+          "expected": "输出表结构及明确剩余限制",
+          "svg": "输出表结构及明确剩余限制",
+          "matches": true
+        }
+      ],
+      "all_node_labels_match": true,
+      "limitation": "label agreement and manual image/edge inspection; cache generation provenance not independently recreated; not full rendered Markdown/Obsidian"
+    },
+    {
+      "index": 8,
+      "source_sha256": "a221f24c747df25cce66818c6d96b2b47d0fce386ccc9a9be44405224332c869",
+      "cache_node_label_comparison": [
+        {
+          "id": "S1",
+          "expected": "Step1每个类→一张表属性→列；实例→行",
+          "svg": "Step1每个类→一张表属性→列；实例→行",
+          "matches": true
+        },
+        {
+          "id": "Q1",
+          "expected": "看这条关联按顺序看两端完整min/max",
+          "svg": "看这条关联按顺序看两端完整min/max",
+          "matches": true
+        },
+        {
+          "id": "S2",
+          "expected": "Step2❗必须建独立关联表主键=两个主键的复合主键",
+          "svg": "Step2❗必须建独立关联表主键=两个主键的复合主键",
+          "matches": true
+        },
+        {
+          "id": "S3",
+          "expected": "Step3任选一侧过账外键外键加UNIQUE；最小参与另核❌不要两边都过❌不要建表",
+          "svg": "Step3任选一侧过账外键外键加UNIQUE；最小参与另核❌不要两边都过❌不要建表",
+          "matches": true
+        },
+        {
+          "id": "S4",
+          "expected": "Step4从1..1那一侧过账主键到对面表❌不要建表",
+          "svg": "Step4从1..1那一侧过账主键到对面表❌不要建表",
+          "matches": true
+        },
+        {
+          "id": "Q5",
+          "expected": "Step5从0..1侧过账后载荷高不高？",
+          "svg": "Step5从0..1侧过账后载荷高不高？",
+          "matches": true
+        },
+        {
+          "id": "S5A",
+          "expected": "5A过账外键（接受少量空值）",
+          "svg": "5A过账外键（接受少量空值）",
+          "matches": true
+        },
+        {
+          "id": "S5B",
+          "expected": "5B建独立关联表各端max=1时分别加UNIQUE",
+          "svg": "5B建独立关联表各端max=1时分别加UNIQUE",
+          "matches": true
+        }
+      ],
+      "all_node_labels_match": true,
+      "limitation": "label agreement and manual image/edge inspection; cache generation provenance not independently recreated; not full rendered Markdown/Obsidian"
+    },
+    {
+      "index": 9,
+      "source_sha256": "5bcb982a283fcda93955143291968c3eb97bffd19b462826300b5f17a443b436",
+      "cache_node_label_comparison": [
+        {
+          "id": "INV",
+          "expected": "<<Resource>>Inventory",
+          "svg": "<<Resource>>Inventory",
+          "matches": true
+        },
+        {
+          "id": "SALE",
+          "expected": "<<economicDecrement>>SalesaleID·date·amount",
+          "svg": "<<economicDecrement>>SalesaleID·date·amount",
+          "matches": true
+        },
+        {
+          "id": "EMP1",
+          "expected": "<<Agent>>InsideEmployee",
+          "svg": "<<Agent>>InsideEmployee",
+          "matches": true
+        },
+        {
+          "id": "CUS1",
+          "expected": "<<Agent>>OutsideCustomer",
+          "svg": "<<Agent>>OutsideCustomer",
+          "matches": true
+        },
+        {
+          "id": "CASH",
+          "expected": "<<Resource>>Cash",
+          "svg": "<<Resource>>Cash",
+          "matches": true
+        },
+        {
+          "id": "CR",
+          "expected": "<<economicIncrement>>CashReceiptreceiptID·date·amount",
+          "svg": "<<economicIncrement>>CashReceiptreceiptID·date·amount",
+          "matches": true
+        },
+        {
+          "id": "EMP2",
+          "expected": "<<Agent>>InsideEmployee",
+          "svg": "<<Agent>>InsideEmployee",
+          "matches": true
+        },
+        {
+          "id": "CUS2",
+          "expected": "<<Agent>>OutsideCustomer",
+          "svg": "<<Agent>>OutsideCustomer",
+          "matches": true
+        }
+      ],
+      "all_node_labels_match": true,
+      "limitation": "label agreement and manual image/edge inspection; cache generation provenance not independently recreated; not full rendered Markdown/Obsidian"
+    },
+    {
+      "index": 10,
+      "source_sha256": "7557970b9d957a58f18b2a9fde0705400e4c4dc128b4b1f3d2ed7537e0f3cca5",
+      "cache_node_label_comparison": [
+        {
+          "id": "W",
+          "expected": "真实世界发生的事1/1·又一城7-11·Paul卖给Joe·一块曲奇售价10·成本8",
+          "svg": "真实世界发生的事1/1·又一城7-11·Paul卖给Joe·一块曲奇售价10·成本8",
+          "matches": true
+        },
+        {
+          "id": "O",
+          "expected": "订单输入（若要算履行时长）orderDate+履行关联",
+          "svg": "订单输入（若要算履行时长）orderDate+履行关联",
+          "matches": true
+        },
+        {
+          "id": "DE",
+          "expected": "4行分录DrCOGS8/CrInventory8DrA/R10/CrSales10❌谁·谁买·哪里·什么商品本讲科目汇总未直接呈现真实凭证和业务明细可保留",
+          "svg": "4行分录DrCOGS8/CrInventory8DrA/R10/CrSales10❌谁·谁买·哪里·什么商品本讲科目汇总未直接呈现真实凭证和业务明细可保留",
+          "matches": true
+        },
+        {
+          "id": "REA",
+          "expected": "Sale+CashReceipt两条事件连着Inventory/Employee/Customer/Cash✅八条事实全保留",
+          "svg": "Sale+CashReceipt两条事件连着Inventory/Employee/Customer/Cash✅八条事实全保留",
+          "matches": true
+        },
+        {
+          "id": "FS1",
+          "expected": "财务报表✅",
+          "svg": "财务报表✅",
+          "matches": true
+        },
+        {
+          "id": "BQ",
+          "expected": "业务问题哪个客户最赚钱？哪个门店毛利高？订单履行要多久？",
+          "svg": "业务问题哪个客户最赚钱？哪个门店毛利高？订单履行要多久？",
+          "matches": true
+        },
+        {
+          "id": "FS2",
+          "expected": "财务报表✅（用SUM查询算出来）",
+          "svg": "财务报表✅（用SUM查询算出来）",
+          "matches": true
+        },
+        {
+          "id": "BQ2",
+          "expected": "客户/门店/商品问题✅按已采集关联查询",
+          "svg": "客户/门店/商品问题✅按已采集关联查询",
+          "matches": true
+        },
+        {
+          "id": "BQ3",
+          "expected": "订单履行时长✅Order到Delivery/Sale",
+          "svg": "订单履行时长✅Order到Delivery/Sale",
+          "matches": true
+        }
+      ],
+      "all_node_labels_match": true,
+      "limitation": "label agreement and manual image/edge inspection; cache generation provenance not independently recreated; not full rendered Markdown/Obsidian"
+    },
+    {
+      "index": 11,
+      "source_sha256": "730ecd84bdb435f9f80e0e694ad15e97cf5f0b22a477d1c74e2632bc9e8c8424",
+      "cache_node_label_comparison": [
+        {
+          "id": "A",
+          "expected": "①业务规则（自然语言）'销售可以赊账，接受分期，不接受合并支付，销售是唯一现金来源'（讲义p.32-35的'Inotherwords'段）",
+          "svg": "①业务规则（自然语言）'销售可以赊账，接受分期，不接受合并支付，销售是唯一现金来源'（讲义p.32-35的'Inotherwords'段）",
+          "matches": true
+        },
+        {
+          "id": "B",
+          "expected": "②概念模型·UML类图Sale[1..1]——duality——[0..*]CashReceipt四构件：类·关联·属性·多重性（讲义p.23-31）",
+          "svg": "②概念模型·UML类图Sale[1..1]——duality——[0..*]CashReceipt四构件：类·关联·属性·多重性（讲义p.23-31）",
+          "matches": true
+        },
+        {
+          "id": "C",
+          "expected": "③逻辑模型·关系表五步转换法决定：外键？还是独立的关联表？（讲义p.43-53）",
+          "svg": "③逻辑模型·关系表五步转换法决定：外键？还是独立的关联表？（讲义p.43-53）",
+          "matches": true
+        },
+        {
+          "id": "D",
+          "expected": "④物理模型·ACCESS字段类型·索引·参照完整性（W6上机）",
+          "svg": "④物理模型·ACCESS字段类型·索引·参照完整性（W6上机）",
+          "matches": true
+        },
+        {
+          "id": "E",
+          "expected": "三条完整性原则实体完整性·参照完整性·一事一地（讲义p.39-42）",
+          "svg": "三条完整性原则实体完整性·参照完整性·一事一地（讲义p.39-42）",
+          "matches": true
+        }
+      ],
+      "all_node_labels_match": true,
+      "limitation": "label agreement and manual image/edge inspection; cache generation provenance not independently recreated; not full rendered Markdown/Obsidian"
+    }
+  ],
+  "viewed_assets": [
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\author\\mermaid-render-v2\\diagram-07-line-3749.svg",
+      "sha256": "5e65aab012616c6ffafa7cec66c98877278677df0194c1f6be07e267a7585aaa"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\author\\mermaid-render-v2\\diagram-07-line-3749.png",
+      "sha256": "6d8d57d517f05661d7c5536aed0f16a8ea28c84830203a368e615ea7bcf5cf04"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\author\\mermaid-render-v2\\diagram-08-line-3784.svg",
+      "sha256": "10e53176c8c3fd32dcce487cbc06d7fd6cf927a514cd88e9b73098792c5ba0d2"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\author\\mermaid-render-v2\\diagram-08-line-3784.png",
+      "sha256": "ec3cae282030d5ad2b481bfd38277622f246ffe39c1ccc45dcd9246b78400f43"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\author\\mermaid-render-v2\\diagram-09-line-3846.svg",
+      "sha256": "69b7ade24392f9b497a7d046dedaa24734d0af8c9cfc5aea95fd03c8578fcc3e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\author\\mermaid-render-v2\\diagram-09-line-3846.png",
+      "sha256": "33345c99528c6ea5e9163b391b6c604e10b1835f46f6523232af0028f2b4ce52"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\author\\mermaid-render-v2\\diagram-10-line-3893.svg",
+      "sha256": "49a5bd93d7aa19124b8bec155f229cd0bf8ea630f78b4b256c7d79fd4830460a"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\author\\mermaid-render-v2\\diagram-10-line-3893.png",
+      "sha256": "503df070155f04aff1eb465d4b6f0a5d0f0ba5162da7cf26aa1b77bdc8a64283"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\author\\mermaid-render-v2\\diagram-11-line-3932.svg",
+      "sha256": "df358bc78402444f878cbdbedcf6484e7b4047d13754fa717ed8a500d7b4b98d"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\author\\mermaid-render-v2\\diagram-11-line-3932.png",
+      "sha256": "192b67543e46fc526dbc5a4b66182e5c3a493d78d6f88666ed1d20ef9d2494d8"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\ppt-pages\\slide-17.png",
+      "sha256": "136aab02c103751628d086568538361d0feabcadc184f054af78bc810a8dd959"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\ppt-pages\\slide-19.png",
+      "sha256": "e1c9e5930feed090be42a076995b403466a9d3a75db83ae5ac22256b9472513a"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\ppt-pages\\slide-32.png",
+      "sha256": "84bc42ff6a81972b128fe57df1557df9bc52c3b81b859239114d7fc3e2f7e13f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\ppt-pages\\slide-33.png",
+      "sha256": "dce0392724c67cc61c8073db984f309f4c8e44a2ee811b3e8b5b42ab26f51e97"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\ppt-pages\\slide-34.png",
+      "sha256": "925be106e6743a8d16df54949e8d7e50bc1e9d2b11170703b6ed45a7a3f3e0e7"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\ppt-pages\\slide-35.png",
+      "sha256": "e79d41f798712ce66a42f32b097dfab3d758cb43c5d93d8fc8cfffccafef9f03"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\ppt-pages\\slide-40.png",
+      "sha256": "d1d5b5af9884ff896208e6be0511ad7780dc686bffc4c2f53b67a7139521820c"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\ppt-pages\\slide-41.png",
+      "sha256": "da8df797a737ba362ad9f3388fddb59515be78502adc502e327e3534a94cfc1c"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\ppt-pages\\slide-42.png",
+      "sha256": "1e44301e09c816f1feab8840dde74c6bc7aeab4f1fe2ab452878abf0f68fc803"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\ppt-pages\\slide-46.png",
+      "sha256": "d13a5915ff7d4a87fc8c68bb21dc177159cc5615a2b57bc632a4c1e01c2335d4"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\ppt-pages\\slide-47.png",
+      "sha256": "5eee62b20c4c88066d692e1e0d8d55a4113ebc0d37f98cb4b7d766e0938aa906"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\ppt-pages\\slide-49.png",
+      "sha256": "74a0396fd3d6106e8dbd16aa809c8b32a194d187afa58cfa0f09cb4cd1bccd73"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\ppt-pages\\slide-51.png",
+      "sha256": "0aba69f35167d76fcad82c5069c967204366dc3c11108732271f43ad983c1a95"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m04\\ppt-pages\\slide-52.png",
+      "sha256": "98bafaf7df13e4e39138bf6f790f4042249ab31ef6887a8c4e4cc1bc9b96bd9b"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\AC6761_Artificial_Intelligence_Accounting\\course_files_export\\case4-case5-photos\\case4-page-01.jpg",
+      "sha256": "d0b67aea23b72ba791ed8e392d475a88bcc0f90b7d1f48e305b0005596ccfdc5"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\AC6761_Artificial_Intelligence_Accounting\\course_files_export\\case4-case5-photos\\case4-page-02.jpg",
+      "sha256": "028e00ef261accd07ca2762b994945cb95991cc9664b3e29af777790afefca02"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+# M04 晚包 · v2 差异边界与结论绑定
+
+**结论：本晚包既有缺陷关闭结论可绑定 v2 新 SHA；此次 §6.1 修改与原 Outline 一致，无新增阻塞。** 这是同一次独审的边界核查，没有重新运行未变 SQL 或重审全篇。
+
+- 审查者：`/root/review_m04_61_late`，本次调度为 `gpt-6.1-sol`，未参与修稿。
+- v1 候选 SHA256：`b7336531f748257e93f7687a4900ac165acc8dc77803bb712d115ab6b5120ec1`，已重新核对。
+- v2 候选 `../candidate-repaired-v2.md` SHA256：`0329684e38a840c7dc2f9526c8a351d14cc2ab1b5b3a5918f6191b8c36fdbb1e`，已重新核对。
+- 被绑定的真实既有报告：`targeted-repaired-v1.md`，SHA256 `7d0bfb877e90d6f0fef1ac9dbc9a7907e4b25251b48c88ce406567594350c020`，未改写。
+
+## 自行核对的完整 diff 边界
+
+直接对 v1/v2 全文件生成 unified diff 并阅读全文，随后对照 `residual-fixes-v2.json` 的 9 项替换。实际变化位于 v1 行 313、323、367–368、393、627、1165、1705、1718–1719、4516；未发现清单外变化。
+
+前八处是前包的比较/汇总/生产边界表述，以及 Student–Course 图中孤例的显示方式；不冒称本报告代前包完成其语义/视觉复核。其中生产段是原晚包 L06 的前置依赖，实际新句把它限定为本页内部转换，承认真实复式系统也可保存生产明细，REA 回答问题仍以确实采集为前提；未推翻晚包已经核过的事件关联与金额约束。
+
+在原晚包连续责任范围（§2.8 至全文末）内，**唯一变化确为 §6.1 的 Keyword Syllabus 段**：v1 行 4516 对应 v2 行 4514。其他晚包文字仅因前面删去两行而顺延；没有第二处实质变化。
+
+另按实际内容比较：
+
+- §2.9.9 从标题至下一 §2.10 标题前，v1/v2 全节字符串完全相同，包括完整 INSERT、五 SQL 块、折叠 Python 脚本、分配生效/历史限制和实跑边界。
+- v1/v2 各含 12 个 Mermaid 源块，晚包第 8–12 块逐块完全相同。
+- 因而不重复运行 SQL、Null 反例或查看未变的晚包图；其真实执行/查看证据仍是 `targeted-repaired-v1.md` 中记录的那些动作，不伪称本次又执行了一遍。
+
+## §6.1 与原 Outline 的定向核源
+
+重新核只读原件 `D:/上课资料/CityU/AC6761_Artificial_Intelligence_Accounting/course_files_export/AC6761 Outline 2627.docx`，SHA256 仍为 `1670db9f7f7eef34b86779366973d8a2f7dc4d91ba4cec3bb8e46480ba6c2fdd`。从其 `word/document.xml` 直接读取段落及表格单元中的文字，核到：
+
+- Abstract：`It develops students’ ability to model business processes and develop accounting information database.`
+- Tentative Schedule：Week 4 为 `REA Accounting Model`；Week 5 为 `REA Business Process Modeling`。
+
+v2 因此准确指出 Abstract/Tentative Schedule 本来包含业务流程建模及 W4/W5 REA 主题，并将“不要信 Keyword Syllabus”改为“具体范围结合课表和教师通知核对；Keyword 列表不列每个细项，不能据此贬低整份官方大纲”。这消除了原 L07 中保留的该项措辞建议，也没有把课表单独当成考试范围通知。
+
+该段仍沿用课程总览所记 W01 转录的 W1–W5 范围；本次只核新增 Outline 表述，**未重新读取 W01 原录音/转录，不新增认证其考试范围来源**。与此前报告中的来源限制一致。
+
+## 绑定后的状态
+
+晚包 L01–L10/N01–N03 的此前阻塞部分仍保持已关闭，无因本次修改新增或重开的阻塞；v1 报告中其余非阻塞建议及未核范围继续保留。可将该真实结论绑定到 v2 SHA，但不能仅重算哈希就把前包、最终阅读器显示、机械门槛、正式写回/同步/Git 状态一并升级。
+
+本次仅新增本报告，未改候选、原阶段报告、原件或正式库。

@@ -1,0 +1,105 @@
+{
+  "candidate_sha256": "b7336531f748257e93f7687a4900ac165acc8dc77803bb712d115ab6b5120ec1",
+  "sqlite_version": "3.49.1",
+  "exact_printed_sql_blocks": 5,
+  "cookie": [
+    [
+      "S001",
+      "Cookie",
+      "Paul",
+      "Joe",
+      1,
+      10,
+      8
+    ]
+  ],
+  "AR": {
+    "2013-01-31": [
+      [
+        "S1",
+        100,
+        70,
+        30
+      ],
+      [
+        "S2",
+        200,
+        0,
+        200
+      ]
+    ],
+    "2013-02-28": [
+      [
+        "S1",
+        100,
+        100,
+        0
+      ],
+      [
+        "S2",
+        200,
+        200,
+        0
+      ]
+    ]
+  },
+  "balances": [
+    [
+      "R1",
+      40,
+      40,
+      0
+    ],
+    [
+      "R2",
+      30,
+      30,
+      0
+    ],
+    [
+      "R3",
+      250,
+      230,
+      20
+    ],
+    [
+      "R4",
+      1000,
+      0,
+      1000
+    ]
+  ],
+  "six_null_pk_probes": [
+    {
+      "table": "Inventory",
+      "null_rejected": true,
+      "error": "NOT NULL constraint failed: Inventory.itemID"
+    },
+    {
+      "table": "Employee",
+      "null_rejected": true,
+      "error": "NOT NULL constraint failed: Employee.empID"
+    },
+    {
+      "table": "Customer",
+      "null_rejected": true,
+      "error": "NOT NULL constraint failed: Customer.custID"
+    },
+    {
+      "table": "CashAccount",
+      "null_rejected": true,
+      "error": "NOT NULL constraint failed: CashAccount.cashAccountID"
+    },
+    {
+      "table": "Sale",
+      "null_rejected": true,
+      "error": "NOT NULL constraint failed: Sale.saleID"
+    },
+    {
+      "table": "CashReceipt",
+      "null_rejected": true,
+      "error": "NOT NULL constraint failed: CashReceipt.receiptID"
+    }
+  ],
+  "limits": "Teaching input, not live course database; does not certify Access or cross-row money constraints"
+}

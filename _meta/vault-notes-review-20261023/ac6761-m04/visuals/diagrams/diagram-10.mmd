@@ -1,0 +1,20 @@
+flowchart TB
+    subgraph GIVE["Give · 经济减量"]
+        INV["&lt;&lt;Resource&gt;&gt;<br/><b>Inventory</b>"]
+        SALE["&lt;&lt;economicDecrement&gt;&gt;<br/><b>Sale</b><br/>saleID · date · amount"]
+        EMP1["&lt;&lt;Agent&gt;&gt; Inside<br/><b>Employee</b>"]
+        CUS1["&lt;&lt;Agent&gt;&gt; Outside<br/><b>Customer</b>"]
+        INV ---|stockflow| SALE
+        SALE ---|participation| EMP1
+        SALE ---|participation| CUS1
+    end
+    subgraph GET["Get · 经济增量"]
+        CASH["&lt;&lt;Resource&gt;&gt;<br/><b>Cash</b>"]
+        CR["&lt;&lt;economicIncrement&gt;&gt;<br/><b>Cash Receipt</b><br/>receiptID · date · amount"]
+        EMP2["&lt;&lt;Agent&gt;&gt; Inside<br/><b>Employee</b>"]
+        CUS2["&lt;&lt;Agent&gt;&gt; Outside<br/><b>Customer</b>"]
+        CASH ---|stockflow| CR
+        CR ---|participation| EMP2
+        CR ---|participation| CUS2
+    end
+    SALE ===|"DUALITY"| CR

@@ -1,0 +1,44 @@
+--- v2
++++ v3
+@@ -1490,7 +1490,15 @@
+ 
+ **🎙️ 课堂补充**（S4 `19:07`–`20:53`，A · 课上展开）
+ 
+-教授以框=class、连接=association、相关特征=attribute来唤醒四构件，把多重性放到模型转成表的困难上：*"And that would be the most difficult issue in the IEA model that we will introduce later."*（S4 `20:31`）。IEA为REA的ASR错误。S4 `20:00` 还口述把曲奇售价与成本放在 Inventory 框；这是该时点的转录口径（原音未核）。**笔记补充另分层**：商品参考资料可在 Inventory；每次成交价与成本快照放 SaleLine；p.10讨论事件的概念资料归属，不直接规定最终存储列。不能把笔记最终模式冒称教师当时逐列给出的模式。**这段改变了什么**：课堂确实把多重性作为学习难点，不能仅因“最难”就升为教授明确会考。
++教授以框=class、连接=association、相关特征=attribute来唤醒四构件，把多重性放到模型转成表的困难上：*"And that would be the most difficult issue in the IEA model that we will introduce later."*（S4 `20:31`）。
++
++IEA为REA的ASR错误。
++
++S4 `20:00` 还口述把曲奇售价与成本放在 Inventory 框；这是该时点的转录口径（原音未核）。
++
++**笔记补充另分层**：商品参考资料可在 Inventory；每次成交价与成本快照放 SaleLine；p.10讨论事件的概念资料归属，不直接规定最终存储列。不能把笔记最终模式冒称教师当时逐列给出的模式。
++
++**这段改变了什么**：课堂确实把多重性作为学习难点，不能仅因“最难”就升为教授明确会考。
+ 
+ **所以呢**
+ 
+@@ -1692,13 +1700,13 @@
+ 
+ **讲义 p.27 实例关系的逐对转录与可编辑重画**
+ 
+-标题 `Example Classes and Association`；中间 Enrollment 标出选课联系。下表每行是原图一条线，不将并排名单误当成一一配对：
++标题 `Example Classes and Association`；中间 Enrollment 标出选课联系。下表每行固定一名学生，右列逐项列出原图中与其相连的课程，不将并排名单误当成一一配对：
+ 
+ | 学生 | 原图当前连到的课程 |
+ |---|---|
+ | Margaret | Accounting 201；Economics 242 |
+ | Joe | Accounting 201；MIS 179 |
+-| Frank | MIS 179；Marketing 153；Economics 242 |
++| Frank | MIS 179、Marketing 153、Economics 242 |
+ | Susie | Accounting 201；MIS 179 |
+ | Hilda | 无 |
+ 
+@@ -2967,6 +2975,8 @@
+   PRIMARY KEY(saleID,receiptID)
+ );
+ ```
++
++建表执行完只产生空表，不会自动出现S001或任何输入记录。下一段才按列次序载入两组教学数据；载入以后，后续查询才可能得到所示输出。
+ 
+ **完整输入（按上面的列顺序）**：
+ 

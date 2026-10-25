@@ -1,0 +1,96 @@
+Case 4
+
+1. Supplier can exist in database without any purchase. One purchase can only be made to one supplier. 
+Required: Decide multiplicities between purchase and supplier using narrative description and common business sense. 
+Purchase 0..*   -------------- 1..1 Supplier
+
+2. Company purchased goods from its supplier. Normally the quality of goods is satisfactory and there is no purchase return. During May of 2015, Company noticed that there are some batches of goods (with the same purchase reference number) with problems and requested purchase returns. The supplier allowed purchase returns for these batches. Noted that: The supplier also allowed combined returns for different purchases (with the different purchase reference number).  
+Required: Decide multiplicities between purchase and purchase return using narrative description and common business sense. 
+Purchase 1..* -------------- 0..* purchase return
+
+3. Do the following examples violate principles of relational model?
+CustomerID
+CustomerName
+CustomerAddress
+05233
+Jack
+123 A street 
+05234
+Sarah
+343 B street
+
+Stephen 
+318 C street
+05235
+Ana
+846 D street
+
+Violate entity integrity.
+SaleID
+CustomerID
+CustomerName
+CustomerAge
+45631
+C123
+Andy
+21
+63123
+C124
+Andy
+21
+132123
+C125
+Jennifer
+29
+313213
+C126
+Arlie
+33
+
+No. 
+
+4. Convert into relational tables
+Cash receipt 0..*  ----- 1..1 Cashier
+CashR#
+Amount
+1
+200
+2
+100
+3
+300
+4
+400
+
+Cashier#
+Name
+C1
+F
+C2
+G
+C3
+H
+C4
+I
+C5
+J
+
+Narrative description:
+Cashier F takes cares of CashR# 1, 3 and  Cashier J takes care of CashR# 2, 4. 
+
+CashR#
+Amount
+Cashier#
+1
+200
+C1
+2
+100
+C5
+3
+300
+C1
+4
+400
+C5
+

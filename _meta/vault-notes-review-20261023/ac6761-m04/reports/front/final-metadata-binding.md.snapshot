@@ -1,0 +1,47 @@
+# M04 前包：最终候选纯元数据绑定
+
+## 实际对象与字节核对
+
+原独立审查者`/root/review_m04_61_front`，沿用本次同一审查身份/模型配置，未另派代理。本轮只作最终纯元数据核对，未重审正文，未改既有报告。
+
+- 已实审v7：`../candidate-main-v7.md`，SHA-256 `f9d6d5669674143d5a5e01953713e2a1c0bd301ee30da4a842ac156cc53b8ef0`。
+- 最终候选：`../candidate-final.md`，SHA-256 `57485dd54b7640e1170ffbc4a630d4021f174ee8d970527ec1e0ef4b8de05854`。
+
+自行从两文件原始bytes定位文件开头的YAML frontmatter结束符，直接比较结束符之后的全部正文，未做换行、空白或Unicode归一化。两个正文均为**333317 bytes，逐字节完全一致**；正文SHA-256均为`f253a21228e178219883ada580605ec2388d654fa76a6c8f25afc82cc160b3f3`。
+
+另自行生成全文件差异：[own-final-metadata.diff](own-final-metadata.diff)，实际变化全部位于frontmatter。可复查数据：[final-metadata-byte-evidence.json](final-metadata-byte-evidence.json)；核对脚本：[final-metadata-check.py](final-metadata-check.py)。正文相同性是实际bytes比较结果，不仅是引用他人diff或替换候选SHA。
+
+## 元数据的准确变化范围
+
+实际为**5个既有字段修改，另新增1个字段，共6项字段差异**：
+
+- `mechanism_review`：`pending` → `passed`。
+- `mechanism_review_mode`：`efficient-20261002` → `full-independent-gpt6.1-20261025`。
+- `mechanism_content`：`repaired_pending_review` → `repaired`。
+- `mechanism_acceptance`：从等待独审复核的说明，改为本次新6.1独审/具体缺陷关闭及主回执定位说明。
+- `readability_review`：`pending` → `passed`。
+- 新增`teaching_standard: novice-v1`。
+
+`passed`和主回执描述在这里仅视为**拟发布元数据**；本报告没有据这些字段倒推教学、图文或正式gate已通过，更没有据此判断已写回正式库。最终是否允许发布，由主代理据真实完整回执和正式门槛另判。
+
+## 本包结论的真实承接链
+
+本次绑定不把未关的旧版本报告改成通过，以下原文/发现全部保留：
+
+1. `stage-1.md`：原候选开头至§2.7.9连续前包候选初读，含全部表、分录、公式、折叠题及图源；先于来源/规则第二阶段提供，披露平台自动上下文。
+2. `independent-review.md`：同次第二阶段逐源/规则核对、全前包学习动作与具体F/S/N问题；其当时结论为待修。
+3. `targeted-repaired-v1.md`：部分关闭，明确保留F1收尾反弹、F3前置结构和N1图线穿Hilda框。
+4. `targeted-repaired-v2.md`：对上述残余实际修文/新图定向核后关闭；没有把源码正确代替看图。
+5. `v3-targeted-binding.md`：四项维护改动和DDL空表初始状态最小依赖核对，前包已审结论承接到v3。
+6. `main-v7-targeted.md`：自行生成v3→v7diff，复核本前包全部37个实际变化片段及必要镜像、公式对象/运算、W01/M05来源时段、新图11对比；本包实际变化接受，结论绑定v7。
+7. 本报告：确认最终候选与v7正文原始字节完全相同，因此上述**本前包及已明确核过的必要镜像范围**可以承接到最终SHA `57485dd54b7640e1170ffbc4a630d4021f174ee8d970527ec1e0ef4b8de05854`。
+
+各原报告SHA已在本轮实际读取并列入`final-metadata-byte-evidence.json`；其中v7报告仍为`aeeb22b5677c208745b0799232cfbb46c71989cfd027cb3290e61921b2faa674`，没有覆盖旧报告或补造一次新的全篇审查。
+
+## 结论与保留边界
+
+**接受这次纯元数据绑定。最终候选正文与v7实审正文完全相同，本包已关闭教学结论可绑定最终候选SHA。**
+
+本报告不扩大为晚包完整SQL/原题/全部图审查，不替主代理最终视觉、正式门槛、写回、同步、Notion或Git签字；不把拟发布字段当已完成正式操作。原有未核原音、显示载体及各包责任边界继续按原报告保留。后续同步草稿尚未提供，本轮未审。
+
+只写本审查者scratch；候选、vault、原件和所有既有报告均未修改。
