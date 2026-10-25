@@ -297,7 +297,12 @@
       "writeback": "已原子写回并精确字节回读",
       "local_sync": "已完成：10文件原子写/精确回读+2项无增量；README/链接/自有完整性收尾已核",
       "notion": "已写并回读/重载核16属性，15非备注属性未变",
-      "git": "ready:仅本批暂存提交推送，待远端核实",
+      "git": {
+        "status": "已提交/推送/远端SHA核实",
+        "commit": "8cc30f148e7aad517159fabae92eb12ba383c5fa",
+        "remote": "refs/heads/main",
+        "receipt": "_meta/vault-notes-review-20261023/ac6761-m03/git-release.json"
+      },
       "sources": [],
       "blockers": [],
       "included": true,
@@ -2805,7 +2810,7 @@
     "Sync-off confirmation carried forward from task; no new on/running evidence"
   ],
   "confirmed_review_total": 69,
-  "latest_checkpoint": "2026-10-25 resumed; M03 local+Notion closed, scoped Git next; M04 v2 independent closed pending main; EF M03 and IS M02 fresh 6.1 full initial reading",
+  "latest_checkpoint": "M03正文/本地/Notion/远端闭环已核8cc30f1；M04主验收继续；EF M03/IS M02新6.1全审首阶段进行中",
   "resume_20261025": {
     "model_verified": "gpt-6.1-sol/xhigh from current rollout turn_context",
     "reviewer_model": "gpt-5.6-sol strictly lower",
