@@ -1,0 +1,603 @@
+=== SLIDE 1 [ppt/slides/slide1.xml] ===
+AC6761 Artificial Intelligence Accounting
+Chapter 8 Introduction of AI
+
+RELS: [{"type": "notesSlide", "target": "ppt/notesSlides/notesSlide1.xml"}, {"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout1.xml"}]
+
+=== SLIDE 2 [ppt/slides/slide2.xml] ===
+What is Artificial Intelligence?
+Artificial Intelligence (AI) refers to computer systems engineered to simulate human cognitive functions—including learning, problem-solving, decision-making, and language understanding—enabling autonomous task execution without explicit programming.  
+2
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 3 [ppt/slides/slide3.xml] ===
+Types
+​
+​Narrow AI​
+​: Excels in specific domains (e.g., Deep Blue playing chess) but cannot transfer knowledge across tasks.
+​
+​Artificial General Intelligence (AGI)​
+​: Human-like adaptability—currently unrealized and debated among researchers.  
+3
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 4 [ppt/slides/slide4.xml] ===
+History of AI Development
+​
+​Foundations (1940s–1950s)​
+​:
+​
+​1943​
+​: Warren McCulloch and Walter Pitts proposed the first artificial neuron model, demonstrating how brain functions could be mathematically simulated.
+​
+​1950​
+​: Alan Turing introduced the ​
+​Turing Test​
+​, defining machine intelligence as the ability to mimic human responses indistinguishably.
+​
+​1956​
+​: The Dartmouth Conference, led by John McCarthy, coined "Artificial Intelligence" and established AI as a formal discipline. 
+4
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 5 [ppt/slides/slide5.xml] ===
+History of AI Development
+​
+​Early Milestones (1960s–1970s)​
+​:
+​
+​1966​
+​: Joseph 
+Weizenbaum’s
+ ELIZA simulated psychotherapy sessions, exposing AI’s reliance on scripted responses.
+​
+​1969​
+​: Stanford’s 
+Shakey
+ became the first robot to autonomously navigate and manipulate objects using perception-planning-action loops.
+​
+​AI Winters & Resurgence (1970s–2000s)​
+​:
+​
+​1973–1980​
+​: The first AI winter began after the 
+Lighthill
+ Report criticized unmet promises, causing funding collapses.
+​
+​1980s​
+​: Expert systems (e.g., XCON for computer configuration) revived commercial interest by automating technical decisions.
+​
+​1986​
+​: Geoffrey Hinton’s backpropagation algorithm enabled efficient training of deep neural networks, reigniting neural network research.
+5
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 6 [ppt/slides/slide6.xml] ===
+History of AI Development
+Modern Breakthroughs (1990s–2020s)​
+​:
+​
+​1997​
+​: IBM’s Deep Blue defeated chess champion Garry Kasparov, showcasing strategic computation.
+​
+​2012​
+​: 
+AlexNet
+ won the ImageNet competition, slashing image recognition errors by 41% and 
+catalyzing
+ the deep learning era.
+​
+​2020–2024​
+​: GPT-3 (2020), 
+ChatGPT
+ (2022), and multimodal models (GPT-4, Gemini) revolutionized generative AI and real-world integration.
+​
+​2024–2025​
+​: The ​
+​MCP (Model Context Protocol)​
+​ emerged, standardizing AI interactions with external tools (e.g., databases, APIs) to solve data silos and enable cross-platform automation.
+6
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 7 [ppt/slides/slide7.xml] ===
+AI
+7
+SMARTART: AI | Machine Learning | Deep Learning
+RELS: [{"type": "diagramLayout", "target": "ppt/diagrams/layout1.xml"}, {"type": "diagramData", "target": "ppt/diagrams/data1.xml"}, {"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}, {"type": "diagramDrawing", "target": "ppt/diagrams/drawing1.xml"}, {"type": "diagramColors", "target": "ppt/diagrams/colors1.xml"}, {"type": "diagramQuickStyle", "target": "ppt/diagrams/quickStyle1.xml"}]
+
+=== SLIDE 8 [ppt/slides/slide8.xml] ===
+Machine Learning vs. Deep Learning​
+Machine Learning (ML)
+Definition
+: ML is a subset of AI that focuses on the development of algorithms that allow computers to learn from and make predictions based on data. 
+Deep Learning (DL)
+Definition
+: DL is a specialized area within ML that uses neural networks with many layers (hence "deep"). These networks are particularly effective for handling large amounts of unstructured data, such as images, audio, and text.
+@
+8
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 9 [ppt/slides/slide9.xml] ===
+Types of machine learning
+Supervised learning
+Unsupervised learning
+Semi-supervised learning
+Reinforcement learning
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 10 [ppt/slides/slide10.xml] ===
+Supervised learning
+Supervised learning is a type of machine learning in which the model is trained on 
+labeled
+ data. Each training example consists of an input and a known correct output (the label). The algorithm learns the mapping from inputs to outputs so that it can predict the correct label for new, unseen data.
+
+RELS: [{"type": "image", "target": "ppt/media/image1.png"}, {"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 11 [ppt/slides/slide11.xml] ===
+Supervised learning – Key characteristics
+Requires 
+labeled
+ historical data (which can be costly or time-consuming to obtain).
+Performance can be measured directly by comparing predictions against known labels.
+Most widely used type of machine learning in business applications today.
+11
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 12 [ppt/slides/slide12.xml] ===
+Supervised learning – Example
+The problem
+Finance teams receive thousands of invoices and credit-card transactions. Manually coding each item to the correct expense account (e.g., Travel, Office Supplies, Marketing, Utilities) is time-consuming and inconsistent.
+How supervised learning helps
+Historical invoices that accountants have already coded become the 
+labeled
+ training data.
+Features used by the model may include vendor name, invoice description, amount, department, and date.
+The model learns patterns such as “Uber or taxi receipts → Travel” or “Adobe subscription → Software / IT.”
+New invoices are automatically suggested a code
+12
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 13 [ppt/slides/slide13.xml] ===
+Supervised learning – Pros and Cons
++ Clear performance metrics (accuracy, precision, etc.)
++ Highly effective when good 
+labeled
+ data exist 
++ Relatively easier to explain and document than some other methods
+Requires substantial 
+labeled
+ historical data 
+Labeling
+ can be costly and time-consuming 
+Performance degrades if the future differs significantly from the training data 
+Less useful for discovering completely new or unexpected patterns
+13
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 14 [ppt/slides/slide14.xml] ===
+Unsupervised learning
+Unsupervised learning works with 
+unlabeled
+ data. The algorithm is not told what the “correct” answer is. Instead, it searches for hidden patterns, groupings, or structures within the data itself.
+
+RELS: [{"type": "image", "target": "ppt/media/image2.png"}, {"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 15 [ppt/slides/slide15.xml] ===
+Unsupervised learning – Key characteristics
+Useful when labels are unavailable, expensive, or when the goal is exploration rather than prediction.
+Results often require human interpretation — the algorithm finds groups, but humans assign meaning.
+Particularly valuable for discovering unexpected patterns that analysts did not anticipate.
+15
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 16 [ppt/slides/slide16.xml] ===
+Unsupervised learning – Example
+The problem
+Large organizations generate millions of journal entries. Manual review of every entry is impossible. Traditional rule-based filters (e.g., “amounts over $10,000”) miss sophisticated or smaller but unusual items.
+How unsupervised learning helps
+The model learns what “normal” looks like across dimensions such as amount, account combinations, timing, user, and description.
+It then flags entries that are statistical outliers or that form unusual clusters.
+No prior 
+labeling
+ of fraudulent entries is required — the system discovers deviations on its own.
+16
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 17 [ppt/slides/slide17.xml] ===
+Unsupervised learning – Pros and Cons
++ No need for 
+labeled
+ data 
++ Excellent for discovering hidden patterns and anomalies  
++ Useful for fraud/error detection and exploratory analysis 
++ Can identify novel issues that have never been 
+labeled
+ before
+Results are harder to evaluate objectively 
+Clusters or anomalies require human interpretation 
+Less precise for tasks that need specific, predefined categories
+17
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 18 [ppt/slides/slide18.xml] ===
+Semi-supervised learning
+Semi-supervised learning sits between supervised and unsupervised approaches. It uses a small amount of 
+labeled
+ data together with a large amount of 
+unlabeled
+ data.
+
+RELS: [{"type": "image", "target": "ppt/media/image3.jpeg"}, {"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 19 [ppt/slides/slide19.xml] ===
+Semi-supervised learning – Key characteristics
+Practical when 
+labeling
+ data is expensive or time-consuming (common in real-world accounting settings).
+Can significantly reduce the amount of manual 
+labeling
+ required to achieve acceptable accuracy.
+Widely used in document classification, image recognition, and text categorization tasks.
+19
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 20 [ppt/slides/slide20.xml] ===
+Semi-supervised learning – Example
+The problem
+A company may have thousands of contracts, but experts only have time to carefully review and label a few hundred. Fully manual classification is impractical; fully unsupervised methods may lack the precision needed for accounting judgments.
+How semi-supervised learning helps
+Experts label a representative sample of contracts (the 
+labeled
+ set).
+The model uses these labels plus the remaining 
+unlabeled
+ contracts to learn better decision boundaries.
+Features may include extracted clauses, parties, payment terms, duration, and keywords.
+The resulting model can classify the remaining contracts with higher accuracy.
+20
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 21 [ppt/slides/slide21.xml] ===
+Semi-supervised learning – Pros and Cons
++ Reduces the amount of 
+labeling
+ required 
++ Often achieves better accuracy than using only a small 
+labeled
+ set 
++ Practical compromise when expert review time is limited 
++ Well suited to document and transaction classification tasks
+Still requires some high-quality 
+labeled
+ data 
+Performance depends on how representative the 
+labeled
+ sample is 
+Risk that errors in the 
+unlabeled
+ data affect the model
+21
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 22 [ppt/slides/slide22.xml] ===
+Reinforcement learning
+Reinforcement learning (RL) is a type of machine learning in which an agent learns to make decisions by interacting with an environment. The agent receives rewards or penalties based on its actions and learns a policy that maximizes cumulative reward over time.
+
+RELS: [{"type": "image", "target": "ppt/media/image4.jpeg"}, {"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 23 [ppt/slides/slide23.xml] ===
+Reinforcement learning – Key characteristics
+Learning occurs through trial and error rather than from 
+labeled
+ examples.
+Well suited to sequential decision-making problems.
+Less commonly used in traditional accounting workflows today, but emerging in optimization and adaptive systems.
+23
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 24 [ppt/slides/slide24.xml] ===
+Reinforcement learning – Example
+The problem
+Traditional audit sampling often uses fixed sample sizes or simple random selection. In complex populations, this can be inefficient: too much effort may be spent on low-risk areas while higher-risk items are under-sampled.
+How reinforcement learning concepts apply
+The “agent” is the sampling strategy.
+The “environment” is the population of transactions or accounts.
+Actions include choosing which item to examine next.
+Rewards can be defined in terms of error detection rate, coverage of high-risk items, or efficiency (errors found per hour of work).
+Over successive audits or simulations, the strategy learns to allocate effort more effectively.
+24
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 25 [ppt/slides/slide25.xml] ===
+Reinforcement learning – Pros and Cons
++ Well suited to sequential decision-making and optimization problems
++ Can improve strategies over time through feedback 
++ Potential for adaptive processes (e.g., dynamic sampling, resource allocation) 
++ Learns from interaction rather than static historical labels
+Requires a well-defined reward signal and environment 
+Can be data- and computation-intensive 
+Harder to explain and audit 
+25
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 26 [ppt/slides/slide26.xml] ===
+Applications of Machine learning
+26
+Recommendation systems (Facebook news feed, amazon product recommendation)
+Natural language processing (Siri, google voice)
+Medical diagnosis (spotting patterns in images)
+Object recognition and tracking (facial recognition, license plate reading, and tracking)
+Mining 'Big Data' - Analytics (stock with this pattern tend to go up)
+Classification and Clustering of data (fraud detection, sequence mining etc.)
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 27 [ppt/slides/slide27.xml] ===
+Predictions using machine learning
+Linear regression is a fundamental concept in machine learning and serves as one of the simplest algorithms for predictive 
+modeling
+. 
+Linear regression is a statistical method used to model the relationship between a dependent variable (target) and one or more independent variables (features) by fitting a linear equation to observed data.
+It is mathematically represented by the following equation: 
+Y= 
+a+b
+*X + e
+Where,
+a = intercept,  b = slope,  e = error term
+27
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 28 [ppt/slides/slide28.xml] ===
+Linear regression
+28
+
+RELS: [{"type": "image", "target": "ppt/media/image5.png"}, {"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 29 [ppt/slides/slide29.xml] ===
+The best-fit line
+The most common method for fitting a regression line is the method of least squares. 
+It calculates the best-fit line for the observed data by minimizing the sum of the squares of the vertical deviations from each data point to the line. 
+29
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 30 [ppt/slides/slide30.xml] ===
+Least squared errors
+30
+
+RELS: [{"type": "image", "target": "ppt/media/image6.jpeg"}, {"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 31 [ppt/slides/slide31.xml] ===
+AI in Daily Life in general
+Smart Home Ecosystems
+AI Thermostats (Nest): Optimize heating/cooling, saving 12–15% on energy bills.
+Security Systems (Ring): Facial recognition for real-time alerts on suspicious activity.
+Robotic Vacuums (iRobot Genius): Efficient cleaning with 99% mapping precision.
+Personal Health Management
+Wearables (Fitbit, Apple Watch): Monitor health metrics, detecting issues with 92% accuracy.
+AI Telemedicine (Babylon Health): Streamline symptom analysis and reduce ER wait times by 30%.
+31
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 32 [ppt/slides/slide32.xml] ===
+AI in Daily Life in general
+Entertainment & Social Interaction
+Netflix: Saves 1 billion hours monthly by curating recommendations based on viewing history.
+TikTok
+: Increases user retention by 47% through personalized feeds based on engagement.
+Transportation & Mobility
+Google Maps: Reduces average commute times by 18% by predicting traffic jams using anonymized location data.
+Tesla: Lowers accident rates by 40% with real-time object detection and collision avoidance.
+32
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 33 [ppt/slides/slide33.xml] ===
+AI in Business in particular
+Customer Service Revolution
+AI Chatbots (Zendesk, Intercom): Resolve 85% of routine queries, reducing response times from 10 minutes to 10 seconds and cutting 
+labor
+ costs by 30%.
+Sentiment Analysis: Detects customer dissatisfaction in emails/social media with 90% accuracy for proactive service recovery.
+Finance & Risk Management
+PayPal: Prevents $4B in fraud annually with real-time transaction pattern analysis.
+Algorithmic Trading (
+Kensho
+): Achieves 20% higher returns than human traders through microsecond trades based on market sentiment.
+33
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 34 [ppt/slides/slide34.xml] ===
+AI in Business in particular
+Retail & Supply Chain Optimization
+Amazon: Generates 35% of sales through hyper-personalized recommendations based on purchase history and browsing 
+behavior
+.
+Walmart: Uses inventory AI to predict demand spikes with 98% accuracy, reducing stockouts and waste by 25%.
+Manufacturing Efficiency
+Siemens: Predictive maintenance sensors identify machinery issues 48 hours in advance, cutting downtime by 45% and saving $1.7M annually per factory.
+Computer Vision: Inspects products at 200 units/minute with 99.9% precision, outperforming human inspectors at 95%.
+34
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 35 [ppt/slides/slide35.xml] ===
+The application of AI in accounting
+Automation of Routine Tasks – e.g., Data Entry and Bookkeeping
+AI Detection – e.g., Anomaly Detection 
+Financial Forecasting and Planning – e.g., AI automates cash flow analysis by identifying patterns in large datasets, providing actionable insights for accurate predictions.
+Risk Assessment and Compliance – e.g., AI automates compliance monitoring and reporting by 
+analyzing
+ large datasets to identify risks and ensure adherence to laws. 
+Data Analytics and Insights – e.g., Trend analysis uncovers patterns in historical data to improve financial performance. 
+35
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 36 [ppt/slides/slide36.xml] ===
+Key Technologies in AI Accounting
+Deep Learning
+Natural Language Processing
+Generative AI
+Robotic Process Automation
+Optical Character Recognition
+36
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 37 [ppt/slides/slide37.xml] ===
+Deep Learning
+Deep Learning is a specialized form of Machine Learning that utilizes 
+multilayered
+ neural networks of artificial neurons. While earlier AI systems have successfully handled tasks like image recognition, natural language processing (NLP), and predictive analytics, deep-learning-based systems consistently outperform these predecessors.
+Enhanced Performance
+: Deep learning significantly improves the effectiveness of various accounting functions discussed in the context of Machine Learning.
+37
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 38 [ppt/slides/slide38.xml] ===
+Natural Language Processing
+Natural Language Processing (NLP) interprets words rather than numerical data. 
+Text Summarization
+: NLP can condense large volumes of text, such as financial news or customer feedback, into structured data that enhances accounting functions. For example, it can 
+analyze
+ thousands of customer reviews to inform reserve estimates for product returns or identify potential inventory shortages.
+Contract Analysis
+: NLP is used to review and extract key points from contracts and legal documents, ensuring compliance with financial agreements and highlighting risks.
+Regulatory Compliance
+: NLP assists in examining regulatory documents from government and accounting authorities, aiding in adherence to compliance requirements.
+@
+38
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 39 [ppt/slides/slide39.xml] ===
+Generative AI
+Generative AI refers to the ability of certain deep-learning models to rapidly create content in response to text prompts. This technology marks a significant advancement in AI, as it can understand and generate natural language.
+Content Creation
+: Generative AI tools can synthesize knowledge from various sources, aiding in problem-solving across multiple domains.
+Application in Accounting
+: In accounting, generative AI can draft reports and financial statements. Additionally, it helps accountants and auditors 
+analyze
+ financial data to identify opportunities for improving financial efficiency.
+39
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 40 [ppt/slides/slide40.xml] ===
+Robotic Process Automation
+Robotic Process Automation (RPA) primarily handles structured data and is best for rules-based transactions.
+Accounts Payable
+: Automates tasks like matching supplier invoices with purchase orders, comparing travel expenses with company policies, and reconciling accounts.
+Accounts Receivable
+: Validates customer invoices for proper authorization and pricing, then automatically posts them to revenue accounts.
+Enhanced Capabilities
+When combined with ML, RPA enables intelligent invoice processing, fraud detection, and automated compliance checks.
+40
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 41 [ppt/slides/slide41.xml] ===
+Optical Character Recognition
+Optical Character Recognition (OCR) is a technology that converts text from scanned or digital documents into machine-readable text. 
+Elimination of Manual Data Entry
+: Both traditional and modern OCR reduce time spent on data entry and minimize human error.
+Enhanced Document Storage
+: OCR digitizes documents, making them searchable and improving document management.
+This functionality is typically integrated into advanced accounting software, especially for automating accounts payable (AP) processes.
+@
+41
+
+RELS: [{"type": "notesSlide", "target": "ppt/notesSlides/notesSlide2.xml"}, {"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 42 [ppt/slides/slide42.xml] ===
+AI-powered tools used in Accounting
+ChatGPT
+Claude,
+Copilot
+Excel
+Python
+Vic.ai
+Truewind
+Karbon
+  …Among others
+42
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 43 [ppt/slides/slide43.xml] ===
+The evolution of AI in accounting
+Manual Bookkeeping Era
+: For decades, accounting relied on detail-oriented individuals to prepare financial statements manually.
+Spreadsheet Introduction (1980s)
+: Tools like VisiCalc, Lotus 1-2-3, and Microsoft Excel automated basic tasks like data entry and expense management, laying the groundwork for future advancements.
+OCR Technology Adoption (1980s)
+: Optical character recognition (OCR) facilitated data extraction from invoices, streamlining workflows.
+Early AI Applications (1990s)
+: Artificial neural networks supported tasks like fraud detection and financial forecasting, though their adoption was limited due to complexity.
+AI Growth Phase (2000s)
+: Improved machine learning algorithms enhanced forecasting, analysis, and risk assessment, leading to wider AI adoption in accounting.
+Rise of NLP-Enhanced Tools (2010s and Beyond)
+: Natural language processing allowed AI to interpret human language, generate reports, 
+analyze
+ real-time financial data, and support decision-making with predictive insights.
+43
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 44 [ppt/slides/slide44.xml] ===
+Advantages of AI in accounting
+Automation
+AI automates tasks like data entry, coding, reconciliation, and invoicing, saving time and allowing you to focus on business strategy, client support, and upskilling.
+Accuracy
+AI 
+analyzes
+ data quickly and accurately, completing repetitive tasks with precision and identifying patterns that may be missed by humans, reducing errors and fraud risk.
+Cost Savings
+By reclaiming time spent on repetitive tasks, AI reduces 
+labor
+ costs and improves efficiency, potentially enabling you to take on more clients.
+Real-Time Insights
+AI provides real-time insights into clients’ financial performance, empowering smarter, data-driven decisions based on current information.
+Enhanced Security
+AI accelerates fraud detection by identifying patterns and anomalies, promptly notifying the right personnel and aiding in fraud prevention. 
+44
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]
+
+=== SLIDE 45 [ppt/slides/slide45.xml] ===
+Disadvantages of AI in accounting
+Learning
+Transitioning to AI-powered software can unlock significant benefits, but it may require leaving behind familiar platforms and learning new ones, which can feel daunting.
+Training
+Investing time in training is essential, and costs can rise if you choose specialist training or are transitioning an entire practice.
+Switching Costs
+Adopting new technology often leads to an initial dip in productivity as users adjust to new processes. While the payback isn't immediate, it typically follows quickly.
+Quality Control
+While automation is powerful, relying too heavily on auto-suggestions can lead to errors. Users must focus on reviewing these suggestions. Fortunately, software tools often include features like find-and-recode to help correct mistakes.
+45
+
+RELS: [{"type": "slideLayout", "target": "ppt/slideLayouts/slideLayout2.xml"}]

@@ -1,0 +1,31 @@
+# AC6761 M08 最终候选 v7 维护绑定
+
+- 原独立审查者：`/root/review_ac_m08_61_full`。仅自行比较实审v6→最终v7的实际维护差异，承接同次全篇审查与缺陷定向关闭；不重新全篇评分，不替主代理签formal gate、正式写回或同步。
+- v6实审候选SHA256：`7ffb68e69d837daad87575a06cc5864932bc8eb4939c22696c72ea8b8c9c8939`。
+- v7拟发布候选：`../candidate-final-v7.md`，970行，SHA256实际为 `286eb8e61ebbd63ead04b67f0d43720f4295639c61f69b47e185ff2fd3550eb5`，与派单一致。
+- 实际读`final-maintenance-v7.json`、v7头部和66条有变动的正文行；自行用`check_final_v7.py`比较两个候选，不以作者JSON的布尔结论替代核对。输出明细在`final-v7-comparison.json`。
+
+## 自行比较结果
+
+- 分离frontmatter后，正文去除全部空白的字符序列相等，正文行数950/950。66条正文变更逐行核对是中文与Latin/数字之间的空格整理，未把原英文单词拆断或合并；标签目标、正负号、运算、条件与来源地位没有变化。
+- 36个Markdown标题、14条讲义原文引用行、8个Mermaid完整源码块、7项wiki链接/嵌入、1项Markdown链接、100个数学片段，逐项原始字符串完全相同。数学正则排除了转义货币符，故未把`\$10,000`误计数学片段。
+- frontmatter仅`mechanism_review`和`readability_review`由pending改passed，并新增`mechanism_review_mode: full-independent-gpt6.1-20261025`、`mechanism_content: repaired`；其他元数据不变，尤其status:v0.9、transcript:pending、date:null没有升级。
+- 上述passed表示拟发布文件的本次教学验收状态，不说明文件已经正式写回、材料已融合或用户本人已学会。没有发现用元数据跳过实际审查的新增状态。
+
+## 承接结论与证据链
+
+**接受这次维护绑定。原N3–N12/S1–S3本次教学缺陷的关闭结论可绑定最终v7，独立教学审查状态可记passed。** N1/N2继续按核源后的报告限缩为非阻塞建议；没有恢复完整分类/异常算法任务。
+
+此结论来自同次审查的连续实际证据，而非只更新哈希：
+
+1. `stage-1.md`：704行初始候选全§0–§9独立顺读、全表/图源/答案与具体断点。
+2. `independent-review.md`：45页原件、图/SmartArt/备注、大纲、计算与英文来源第二阶段核验，首次问题保留并限缩。
+3. `targeted-repaired-v2.md`：实核修复机制、变式与英文，引出唯一合同标签残余。
+4. `targeted-repaired-v3.md`：条款识别目标修正的单点关闭。
+5. `display-v4-binding.md`：公式拥挤与货币符显示整理保真。
+6. `main-graph-v6-targeted.md`：图6新增求斜率前guard两分支与N6条件一致，承接v5空白与v6年份粗体整理。
+7. 本补记：v7验收元数据/空白维护实比，不存在未审的新教学变化。
+
+所有原报告保留，不覆盖初始待修结论。主代理报告的82警告、8图新显示、SVG/正文连续窗口等属于主代理执行证据，本代理没有将其描述为自己完成。本人看过的图像和未看范围仍依原报告：源6图、p7缓存和新增回归PNG实际看过；没有在本轮观看最终Mermaid/SVG/正式Obsidian。
+
+正式gate、最终显示、原子写回/回读、跨文件与Notion同步、Git各自状态仍待主代理按实际执行记录。本补记不授权或认证这些动作已完成；无M08 ASR/核听、实际授课日期和课堂覆盖未知等材料边界继续保留。

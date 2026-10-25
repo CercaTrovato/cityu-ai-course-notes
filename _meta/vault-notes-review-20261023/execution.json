@@ -1,7 +1,7 @@
 {
   "schema": "cityu-notes-revision-execution-v1",
   "date": "2026-10-23",
-  "task_state": "in-progress",
+  "task_state": "in_progress",
   "root_agent": "/root",
   "root_thread": "01a1649a-7ed4-7072-934e-4a6a58c92c13",
   "model_verified": {
@@ -660,14 +660,14 @@
       "path": "AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术.md",
       "kind": "primary",
       "baseline_sha256": "000d4b7d7fc765901c38d7fcb300ddea77821aad1754be726f80e45cd1d2b6f0",
-      "bytes": 35086,
-      "lines": 704,
+      "bytes": 58617,
+      "lines": 970,
       "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ac6761-m08",
-      "teaching_state": "已修待复核",
-      "writeback": "未开始",
-      "local_sync": "未开始",
-      "notion": "未开始",
-      "git": "未开始",
+      "teaching_state": "修订并验收",
+      "writeback": "full-v2 exit0；CAS原子写正文/4新图资产并精确回读",
+      "local_sync": "12 targets:10 atomic/exact readback,2 no increment; independent gpt-6.1-sol all47 ops, F1-F3 actual fixes accepted",
+      "notion": "16属性回读及重载全相等；仅备注前插本次事实，15非备注/个人字段与旧全文不变",
+      "git": "M08本批尚未提交推送；正在链接/README/owned完整性收批",
       "sources": [],
       "blockers": [],
       "included": true,
@@ -676,8 +676,8 @@
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
-      "review_stage": "new_6_1_full_and_targeted_closed_pending_main_visual_mechanical_gate",
-      "independent_review_status": "needs_revision_fresh_6_1",
+      "review_stage": "formal_note_and_dependency_sync_written_notion_readback_git_pending",
+      "independent_review_status": "passed; actual full+targeted chain no old score transfer",
       "new_61_candidate": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ac6761-m08-review-61\\candidate.md",
       "new_61_candidate_sha256": "000d4b7d7fc765901c38d7fcb300ddea77821aad1754be726f80e45cd1d2b6f0",
       "new_61_reports": [
@@ -691,10 +691,24 @@
         }
       ],
       "new_61_reviewer": "/root/review_ac_m08_61_full",
-      "proposed_candidate_sha256": "746965ac0189ced78663f4fa04a7485bcd40c1c73e079fcc20bfb261cb052650",
-      "api_61_repaired_candidate": "E:/app-data/codex/scratchpad/cityu-review-resume-20261025/ac6761-m08-review-61/candidate-repaired-v3.md",
-      "api_61_targeted_report": "E:/app-data/codex/scratchpad/cityu-review-resume-20261025/ac6761-m08-review-61/reviewer/targeted-repaired-v3.md",
-      "main_read": "initial704 lines + all45 source text + actual6 original bitmap images; new943line repair/figures need final main acceptance"
+      "proposed_candidate_sha256": "286eb8e61ebbd63ead04b67f0d43720f4295639c61f69b47e185ff2fd3550eb5",
+      "api_61_repaired_candidate": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ac6761-m08-review-61\\candidate-final-v7.md",
+      "api_61_targeted_report": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ac6761-m08-review-61\\reviewer\\final-v7-binding.md",
+      "main_read": "original704 lines+45source text/6bitmaps+p7, all actual revision ranges and targeted closures;8diagrams+SVG/11continuous regression windows/p43–45/2fold actual, final100math fragments DOM0error; formal full-v2 passed before pause",
+      "candidate_sha256": "286eb8e61ebbd63ead04b67f0d43720f4295639c61f69b47e185ff2fd3550eb5",
+      "formal_sha256": "286eb8e61ebbd63ead04b67f0d43720f4295639c61f69b47e185ff2fd3550eb5",
+      "reviewer_ids": [
+        "/root/review_ac_m08_61_full"
+      ],
+      "author_ids": [
+        "/root"
+      ],
+      "review_receipt": "_meta/vault-notes-review-20261023/ac6761-m08/review.json",
+      "material_limits": "v0.9/transcript pending/date null retained; no ASR/audio/actual teaching/date or original commercial performance verified",
+      "main_evidence": "initial704line +45source text/6bitmaps+p7; full actualchanges;8Mermaid+SVG and11regression reading frames/p43–45/2fold;82warnings/current hard0",
+      "historical_main_read_checkpoint_before_acceptance": "initial704 lines + all45 source text + actual6 original bitmap images; new943line repair/figures need final main acceptance",
+      "dependency_sync_record": "_meta/vault-notes-review-20261023/ac6761-m08/sync/writeback.json",
+      "notion_evidence": "_meta/vault-notes-review-20261023/ac6761-m08/sync/notion-sync.json"
     },
     {
       "id": "ac6761-m09",
@@ -2893,7 +2907,7 @@
     "Sync-off confirmation carried forward from task; no new on/running evidence"
   ],
   "confirmed_review_total": 69,
-  "latest_checkpoint": "M03正文与状态已远端核8cc30f1/953245d；M04主全读5146行完成但新实质残余待修；EF M03/IS M02/M08新6.1两阶段完成均待修；其余59未开始",
+  "latest_checkpoint": "M08 10依赖原子写/回读+2无增量，新6.1独审47操作关闭，Notion16属性重载一致；适用收批与Git待做；69中8已修验收写回/2待修/59未开始",
   "resume_20261025": {
     "model_verified": "gpt-6.1-sol/xhigh from current rollout turn_context",
     "reviewer_model": "gpt-5.6-sol strictly lower",
@@ -2962,5 +2976,19 @@
     "explicit_for_all_new_subagents": true,
     "gpt_5_6_sol": "prohibited",
     "old_model_verified_field": "historical record only; not current selection"
+  },
+  "paused_at": "2026-10-25T18:54:20+08:00",
+  "pause_instruction": "暂停",
+  "live_agents_at_pause": "all visible child agents completed; no review left running",
+  "last_verified_git": {
+    "head": "646cfe195b950dd2f1838116c9a4256fbb02a2de",
+    "remote_last_verified_same": true,
+    "new_commit_after_pause": false
+  },
+  "resumed_20261025_latest": {
+    "user": "继续",
+    "scope": "M08 dependency sync then pending queue",
+    "owned_snapshot": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ac6761-m08-review-61\\integrity-owned-m08-resumed.json",
+    "sync": "已有关闭确认沿用；未见重新开启证据"
   }
 }

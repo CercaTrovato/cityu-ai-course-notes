@@ -1,0 +1,59 @@
+{
+  "source_sha256": "203464dd38f3ebda03d8c2bd6a98d897a352f16fefb624d6d07ede3e23287593",
+  "candidate_sha256": "7ffb68e69d837daad87575a06cc5864932bc8eb4939c22696c72ea8b8c9c8939",
+  "changes": [
+    {
+      "old": "```mermaid\nflowchart TD\n A[整理 x,y] --> B[计算均值]",
+      "new": "**计算流程（笔记补充）**：按刚才的三点例先整理数据，确认输入有变化，才依次求均值、斜率与截距，再逐行计算预测/残差/SSE。若改成所有输入都为2，图在求斜率前暂停；不能先除以0再检查未来适用性。\n\n```mermaid\nflowchart TD\n A[整理 x,y] --> CheckX{至少有两个不同的 x?}\n CheckX -->|是| B[计算均值]\n CheckX -->|否| StopFit[暂停斜率拟合：核数据或另选模型]",
+      "reason": "Actual workflow image omitted the already-taught zero-variation guard before slope division. Mirror N6 condition in the affected graph and reader walk."
+    }
+  ],
+  "format_only_bold_delimiter_spaces": [
+    {
+      "old": "- **1943：**",
+      "new": "- **1943：** "
+    },
+    {
+      "old": "- **1950：**",
+      "new": "- **1950：** "
+    },
+    {
+      "old": "- **1956：**",
+      "new": "- **1956：** "
+    },
+    {
+      "old": "- **1966：**",
+      "new": "- **1966：** "
+    },
+    {
+      "old": "- **1969：**",
+      "new": "- **1969：** "
+    },
+    {
+      "old": "- **1973–1980：**",
+      "new": "- **1973–1980：** "
+    },
+    {
+      "old": "- **1980 年代：**",
+      "new": "- **1980 年代：** "
+    },
+    {
+      "old": "- **1986：**",
+      "new": "- **1986：** "
+    },
+    {
+      "old": "- **1997：**",
+      "new": "- **1997：** "
+    },
+    {
+      "old": "- **2012：**",
+      "new": "- **2012：** "
+    },
+    {
+      "old": "- **2020–2025：**",
+      "new": "- **2020–2025：** "
+    }
+  ],
+  "sources": "No new original claim or calculation. Graph condition already taught in正文 and independentN6; require original reviewer targeted mirror check.",
+  "state": "pending main final checks/targeted graph acceptance; formal unchanged"
+}

@@ -1,0 +1,82 @@
+--- AC6761_Artificial_Intelligence_Accounting/_meta/知识层级台账.md BASE
++++ AC6761_Artificial_Intelligence_Accounting/_meta/知识层级台账.md FINAL
+@@ -14,7 +14,7 @@
+ 
+ | 情况 | 怎么处理 |
+ |---|---|
+-| 在 **L0 入场基线** 里 | 直接用，不解释 |
++| 在 **L0 入场基线** 里 | 一句唤醒；当前核心操作仍须就地解释 |
+ | 在 **L1** 里且 `首现 ≤ N` | 直接用 + `[[回指]]` + **一句话唤醒** |
+ | 在 **L1** 里但 `首现 > N` | 只给一句话预告，标明"第 X 讲展开"，不提前展开 |
+ | **不在表里** | **必须在本 module 就地完整展开**，然后登记回 L1 |
+@@ -57,7 +57,7 @@
+ 
+ ## L0 · 入场基线
+ 
+-读者进门时**已经具备**的知识。以下内容在笔记里可直接使用，不需要解释。
++以下是历史入场登记，不能作为当前读者已掌握的证明。现行从高中知识起点解释；本讲依赖的 ML、公式与会计操作仍须就地搭桥。
+ 
+ **AI / 机器学习基础**
+ - AI 的宽泛直觉（会用 ChatGPT 这类工具）
+@@ -256,8 +256,8 @@
+ | 年报的组成 | Components of Annual Report | M03 | 四表 + 附注 + MD&A |
+ | 采购循环 / 收入循环 | Acquisition / Revenue Cycle | M05 | |
+ | ACCESS键与关系实施 | Implementing keys and relationships | M06 | 主键/外键概念已在M04兑现；这里预告具体软件操作 |
+-| 专家系统 | Expert Systems | M08 | |
+-| RPA / 智能流程自动化 | Robotic Process Automation | M08 | |
++| 专家系统 | Expert Systems | M08 已兑现背景 | 按显式规则处理特定任务；§2.1 的 XCON 发展史背景，不宣称教授讲过或已教完整规则引擎 |
++| 机器人流程自动化 | Robotic Process Automation (RPA) | M08 §2.9 已兑现 | 按规则执行核准的结构化输入；RPA 不必然使用 AI，与智能流程自动化不当作同义词 |
+ 
+ ---
+ 
+@@ -596,19 +596,19 @@
+ 
+ | 概念 | English | 本轮展开 | 一句话定义 |
+ |---|---|---|---|
+-| 人工智能 | Artificial Intelligence | M08（旧首现优先保留） | AI systems simulate functions such as learning, problem-solving, decision-making, and language understanding. |
+-| 窄人工智能 | Narrow AI | M08（旧首现优先保留） | Narrow AI performs specific tasks but does not automatically transfer knowledge to unrelated tasks. |
+-| 人工通用智能 | Artificial General Intelligence | M08（旧首现优先保留） | AGI refers to human-like adaptability across a broad range of tasks. |
+-| 机器学习 | Machine Learning | M08（旧首现优先保留） | ML develops algorithms that learn from data and make predictions. |
+-| 深度学习 | Deep Learning | M08（旧首现优先保留） | DL is a specialized area of ML using neural networks with many layers. |
+-| 监督学习 | Supervised Learning | M08（旧首现优先保留） | It learns a mapping from inputs to known outputs using labeled examples. |
+-| 无监督学习 | Unsupervised Learning | M08（旧首现优先保留） | It searches for patterns or structure in unlabeled data. |
+-| 半监督学习 | Semi-supervised Learning | M08（旧首现优先保留） | It combines a small labeled dataset with a larger unlabeled dataset. |
+-| 强化学习 | Reinforcement Learning | M08（旧首现优先保留） | It learns a policy through interaction with an environment and reward feedback. |
+-| 线性回归 | Linear Regression | M08（旧首现优先保留） | It models a target as a linear function of one or more features. |
+-| 最小二乘法 | Least Squares | M08（旧首现优先保留） | It fits a line by minimizing the sum of squared vertical residuals. |
+-| NLP | Natural Language Processing | M08（旧首现优先保留） | NLP processes human language, for example by summarizing text or extracting contract information. |
+-| 生成式 AI | Generative AI | M08（旧首现优先保留） | Generative AI creates content in response to prompts. |
++| 人工智能 | Artificial Intelligence | M08 本轮展开；L0/旧登记保留 | AI systems simulate functions such as learning, problem-solving, decision-making, and language understanding. |
++| 窄人工智能 | Narrow AI | M08 本轮展开；L0/旧登记保留 | Narrow AI performs specific tasks but does not automatically transfer knowledge to unrelated tasks. |
++| 人工通用智能 | Artificial General Intelligence | M08 本轮展开；L0/旧登记保留 | AGI refers to human-like adaptability across a broad range of tasks. |
++| 机器学习 | Machine Learning | M08 本轮展开；L0/旧登记保留 | ML develops algorithms that learn from data and make predictions. |
++| 深度学习 | Deep Learning | M08 本轮展开；L0/旧登记保留 | DL is a specialized area of ML using neural networks with many layers. |
++| 监督学习 | Supervised Learning | M08 本轮展开；L0/旧登记保留 | It learns a mapping from inputs to known outputs using labeled examples. |
++| 无监督学习 | Unsupervised Learning | M08 本轮展开；L0/旧登记保留 | It searches for patterns or structure in unlabeled data. |
++| 半监督学习 | Semi-supervised Learning | M08 本轮展开；L0/旧登记保留 | It combines a small labeled dataset with a larger unlabeled dataset. |
++| 强化学习 | Reinforcement Learning | M08 本轮展开；L0/旧登记保留 | It learns a policy through interaction with an environment and reward feedback. |
++| 线性回归 | Linear Regression | M08 本轮展开；L0/旧登记保留 | It models a target as a linear function of one or more features. |
++| 最小二乘法 | Least Squares | M08 本轮展开；L0/旧登记保留 | It fits a line by minimizing the sum of squared vertical residuals. |
++| 自然语言处理 | Natural Language Processing | M08 本轮展开；L0/旧登记保留 | NLP processes human language, for example by summarizing text or extracting contract information. |
++| 生成式 AI | Generative AI | M08 本轮展开；L0/旧登记保留 | Generative AI creates content in response to prompts. |
+ | 利益相关者 | Stakeholder | M09（旧首现优先保留） | A party that affects or is affected by an organization and has an interest in its information.（笔记自拟定义） |
+ | 管理层讨论与分析 | Management’s Discussion and Analysis (MD&A) | M09（旧首现优先保留） | A narrative section in which management discusses financial results, drivers, risks, and other matters required or presented in the report.（通用解释；具体要求依制度） |
+ | 流动比率 | Current ratio | M09（旧首现优先保留） | Current assets divided by current liabilities at a specified reporting date.（笔记自拟定义） |
+@@ -646,3 +646,17 @@
+ ## 2026-10-25 M04 本次同步
+ 
+ M04概念表已并入L1，已兑现REA/duality预告移除；核心术语按正式M04修复对象、端点、缓存、fact及复合键边界，来源分层见正文。M05/M06其他历史追加记录不因此视为全篇已审。
++
++## 2026-10-25 M08 本次展开与直接依赖
++
++M08 已按高中知识起点完成本次全篇独立审查、来源/计算与同源图文核对并正式写回；材料仍为 v0.9、transcript pending、date null。45 页讲义已核，课堂转录/授课日期、原生 Obsidian 及商业效果外部核验仍有缺口；本人通读、自测、复习、提交和评分不变。
++
++本轮复用 AI/ML 的历史登记，不推定读者掌握；英语参考定义为笔记自拟。以下条目是当前操作与边界索引，完整理由见正文。
++
++- 半监督（Semi-supervised Learning）：算法须实际利用未标数据；§2.4 用自拟伪标签例，先用 80 份人工标签样本拟合，再对 900 份未标样本预测并示意筛出 60 份伪标签，重训共 140 份；20 份留出不参与拟合，预测不是人工真值，改善未实证。
++- 强化学习（Reinforcement Learning）：状态决定可选行动，奖励反馈用于学策略；§2.5 的两回合抽样与奖励为笔记补充，不证明真实最优。
++- 残差（Residual）：已观测目标减拟合值；未来目标未知时，真实残差也未知。依赖一次函数与减法，见 §2.6。
++- 最小二乘（Least Squares）：比较各直线的残差平方和；本例以平方非负/配方说明最小值。输入至少两个不同 x 才可按该公式识别斜率，未来适用性另核，见 §2.6。
++- OCR/RPA：OCR 先给候选字段，核验/授权后 RPA 执行动作；不是自动满足收入确认。OCR 沿 M04 背景登记复用，见 §2.9。
++- 幂等（Idempotency）：同一获批发票重试也只产生一次应有录入；须核可靠身份及处理状态，具体事务实现未验证，见 §2.9。
++- NLP/GenAI：从原文提出字段或草稿，再由会计人员回源/签核；文本抽取不等于会计判断，见 §2.10。

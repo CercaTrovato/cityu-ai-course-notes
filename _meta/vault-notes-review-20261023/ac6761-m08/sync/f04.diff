@@ -1,0 +1,64 @@
+--- AC6761_Artificial_Intelligence_Accounting/_meta/术语表.md BASE
++++ AC6761_Artificial_Intelligence_Accounting/_meta/术语表.md FINAL
+@@ -250,8 +250,8 @@
+ | 二元性 | Duality | M04 |
+ | 采购循环 / 收入循环 | Acquisition Cycle / Revenue Cycle | M05 |
+ | 主键 / 外键 | Primary Key / Foreign Key | M04已展开；M06作具体实现 |
+-| 专家系统 | Expert Systems | M08 |
+-| 机器人流程自动化 | Robotic Process Automation (RPA) | M08 |
++| 专家系统 | Expert Systems | M08 §2.1 已兑现背景：XCON 按规则支持配置，不代表完整算法教学 |
++| 机器人流程自动化 | Robotic Process Automation (RPA) | M08 §2.9 已兑现：核验/授权后执行规则动作，不必然使用 AI |
+ 
+ 
+ ---
+@@ -1223,19 +1223,19 @@
+ 
+ | 中文 | English | 本轮定义 | 本轮位置 |
+ |---|---|---|---|
+-| 人工智能 | Artificial Intelligence | AI systems simulate functions such as learning, problem-solving, decision-making, and language understanding. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术\|M08 AI基础与会计技术]] |
+-| 窄人工智能 | Narrow AI | Narrow AI performs specific tasks but does not automatically transfer knowledge to unrelated tasks. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术\|M08 AI基础与会计技术]] |
+-| 人工通用智能 | Artificial General Intelligence | AGI refers to human-like adaptability across a broad range of tasks. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术\|M08 AI基础与会计技术]] |
+-| 机器学习 | Machine Learning | ML develops algorithms that learn from data and make predictions. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术\|M08 AI基础与会计技术]] |
+-| 深度学习 | Deep Learning | DL is a specialized area of ML using neural networks with many layers. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术\|M08 AI基础与会计技术]] |
+-| 监督学习 | Supervised Learning | It learns a mapping from inputs to known outputs using labeled examples. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术\|M08 AI基础与会计技术]] |
+-| 无监督学习 | Unsupervised Learning | It searches for patterns or structure in unlabeled data. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术\|M08 AI基础与会计技术]] |
+-| 半监督学习 | Semi-supervised Learning | It combines a small labeled dataset with a larger unlabeled dataset. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术\|M08 AI基础与会计技术]] |
+-| 强化学习 | Reinforcement Learning | It learns a policy through interaction with an environment and reward feedback. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术\|M08 AI基础与会计技术]] |
+-| 线性回归 | Linear Regression | It models a target as a linear function of one or more features. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术\|M08 AI基础与会计技术]] |
+-| 最小二乘法 | Least Squares | It fits a line by minimizing the sum of squared vertical residuals. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术\|M08 AI基础与会计技术]] |
+-| NLP | Natural Language Processing | NLP processes human language, for example by summarizing text or extracting contract information. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术\|M08 AI基础与会计技术]] |
+-| 生成式 AI | Generative AI | Generative AI creates content in response to prompts. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术\|M08 AI基础与会计技术]] |
++| 人工智能 | Artificial Intelligence | AI systems simulate functions such as learning, problem-solving, decision-making, and language understanding. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术#2.1 AI、Narrow AI 与 AGI（讲义 p.2–7）\|M08 2.1]] |
++| 窄人工智能 | Narrow AI | Narrow AI performs specific tasks but does not automatically transfer knowledge to unrelated tasks. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术#2.1 AI、Narrow AI 与 AGI（讲义 p.2–7）\|M08 2.1]] |
++| 人工通用智能 | Artificial General Intelligence | AGI refers to human-like adaptability across a broad range of tasks. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术#2.1 AI、Narrow AI 与 AGI（讲义 p.2–7）\|M08 2.1]] |
++| 机器学习 | Machine Learning | ML develops algorithms that learn from data and make predictions. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术#2.7 ML 应用与 DL（讲义 p.8、26、37）\|M08 2.7]] |
++| 深度学习 | Deep Learning | DL is a specialized area of ML using neural networks with many layers. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术#2.7 ML 应用与 DL（讲义 p.8、26、37）\|M08 2.7]] |
++| 监督学习 | Supervised Learning | It learns a mapping from inputs to known outputs using labeled examples. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术#2.2 监督学习（讲义 p.8–13）\|M08 2.2]] |
++| 无监督学习 | Unsupervised Learning | It searches for patterns or structure in unlabeled data. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术#2.3 无监督学习（讲义 p.14–17）\|M08 2.3]] |
++| 半监督学习 | Semi-supervised Learning | It combines a small labeled dataset with a larger unlabeled dataset. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术#2.4 半监督学习（讲义 p.18–21）\|M08 2.4]] |
++| 强化学习 | Reinforcement Learning | It learns a policy through interaction with an environment and reward feedback. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术#2.5 强化学习（讲义 p.22–25）\|M08 2.5]] |
++| 线性回归 | Linear Regression | It models a target as a linear function of one or more features. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术#2.6 线性回归与最小二乘（讲义 p.27–30）\|M08 2.6]] |
++| 最小二乘法 | Least Squares | It fits a line by minimizing the sum of squared vertical residuals. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术#2.6 线性回归与最小二乘（讲义 p.27–30）\|M08 2.6]] |
++| 自然语言处理 | Natural Language Processing | NLP processes human language, for example by summarizing text or extracting contract information. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术#2.10 NLP、GenAI 与会计控制（讲义 p.36、38–45）\|M08 2.10]] |
++| 生成式 AI | Generative AI | Generative AI creates content in response to prompts. | [[AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术#2.10 NLP、GenAI 与会计控制（讲义 p.36、38–45）\|M08 2.10]] |
+ | 利益相关者 | Stakeholder | A party that affects or is affected by an organization and has an interest in its information.（笔记自拟定义） | [[AC6761_Artificial_Intelligence_Accounting/notes/M09-AI财报分析与利益相关者\|M09 AI财报分析与利益相关者]] |
+ | 管理层讨论与分析 | Management’s Discussion and Analysis (MD&A) | A narrative section in which management discusses financial results, drivers, risks, and other matters required or presented in the report.（通用解释；具体要求依制度） | [[AC6761_Artificial_Intelligence_Accounting/notes/M09-AI财报分析与利益相关者\|M09 AI财报分析与利益相关者]] |
+ | 流动比率 | Current ratio | Current assets divided by current liabilities at a specified reporting date.（笔记自拟定义） | [[AC6761_Artificial_Intelligence_Accounting/notes/M09-AI财报分析与利益相关者\|M09 AI财报分析与利益相关者]] |
+@@ -1273,3 +1273,17 @@
+ ## 2026-10-25 M04 术语同步
+ 
+ 已修AssociationClass正式/课程口径、派生缓存、tuple/schema、一般复合键与参照完整性译名。Load为非空比例且无给定阈值；星号只指最大无固定上限，能否为0看min。对应M04全篇重审不升级M05/M06全篇状态。
++
++## 2026-10-25 M08 复用与新增术语
++
++M08 已按高中知识起点完成本次全篇独立审查、来源/计算与同源图文核对并正式写回；材料仍为 v0.9、transcript pending、date null。45 页讲义已核，课堂转录/授课日期、原生 Obsidian 及商业效果外部核验仍有缺口；本人通读、自测、复习、提交和评分不变。
++
++下列定义是笔记补充；M08 的 16 条英文参考定义在正文 §5，不能当作讲义原句。AI/监督/无监督等沿旧登记复用，OCR 沿 M04 背景首现；不移动其他课首现。
++
++| 中文 | English | 当前含义与位置 |
++|---|---|---|
++| 残差 | Residual | 已观测目标减拟合值；未来真实值未给不能计算真实残差。M08 §2.6 |
++| 幂等 | Idempotency | 同一获批发票重试仍只产生一次应有录入，具体去重/事务实现另验。M08 §2.9 |
++| 机器人流程自动化 | Robotic Process Automation (RPA) | 核准结构化输入后按规则执行系统动作，不必然使用 AI。M08 §2.9 |
++
++半监督必须实际利用无标签样本；本例识别“合同是否含自动续约条款”，不替代合同实际续约决策。线性回归输入须有变化，拟合好不等于未来预测好；OCR 候选字段须校验及授权，自动录入不代替会计确认。

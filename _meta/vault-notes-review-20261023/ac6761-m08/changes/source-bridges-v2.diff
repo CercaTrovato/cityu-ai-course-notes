@@ -1,0 +1,61 @@
+--- repaired v1
++++ repaired v2
+@@ -381,6 +381,10 @@
+ 
+ **是什么**
+ 
++**讲义英文原文（p.27）**：
++
++> Linear regression is a statistical method used to model the relationship between a dependent variable (target) and one or more independent variables (features) by fitting a linear equation to observed data.
++
+ 如果要根据订单批次估计对账工时，可以用直线描述输入与目标的关系。课件给出的观测关系是 $Y=a+bX+e$（p.27）。符号含义如下。
+ 
+ | 符号 | 含义 | 本例读法 |
+@@ -401,6 +405,14 @@
+ 
+ **课件原例**
+ 
++**讲义英文原文（p.29）**：
++
++> The most common method for fitting a regression line is the method of least squares.
++
++**讲义英文原文（p.29）**：
++
++> It calculates the best-fit line for the observed data by minimizing the sum of the squares of the vertical deviations from each data point to the line.
++
+ p.28 图示 X 是输入变量，Y 是待预测的因变量，散点周围画有上升直线。p.29 说明最小二乘法（Least Squares）使观测点到拟合线的竖直偏差平方和最小。p.30 的示意线为 $\hat{Y}=X+4$，箭头表示竖直残差。讲义没有提供绘图数据，因此不能从该图复算参数。p.28、p.30 图已通过原件渲染检查。
+ 
+ **可复算小例（笔记补充）**
+@@ -457,6 +469,17 @@
+ SSE=T-2bS+b^2V
+ =V\left(b-\frac{S}{V}\right)^2+T-\frac{S^2}{V}.
+ $$
++
++下表把配方中暂用的记号对回同一三点例。每行只给一个量的意义、单位和数值；它们是计算中间量，不是又一组原始数据。
++
++| 记号 | 对象与单位 | 本例 |
++|---|---|---|
++| $d_i$ | 每行输入减平均输入，单位批 | $-1,0,1$ |
++| $q_i$ | 每行工时减平均工时，单位小时 | $-4/3,-1/3,5/3$ |
++| $c$ | 平均输入处预测减平均实际，单位小时 | 待选；为最小时取0 |
++| $V$ | 输入偏差平方相加，单位批² | 2 |
++| $S$ | 输入/工时偏差乘积相加，单位批×小时 | 3 |
++| $T$ | 工时偏差平方相加，单位小时² | $14/3$ |
+ 
+ 因为输入不全相同，至少有一个$d_i$非0，所以$V>0$。最后两项不随$b$变，第一项在$b=S/V$时恰为0、否则为正，故这正是最小值。再代回截距式，就得到上面使用的两个公式；本例最小SSE为$14/3-9/2=1/6$，与逐行残差相加一致。
+ 
+@@ -621,6 +644,14 @@
+ ### 2.9 OCR 与 RPA（讲义 p.36、40–41）
+ 
+ **是什么**
++
++**讲义英文原文（p.41）**：
++
++> Optical Character Recognition (OCR) is a technology that converts text from scanned or digital documents into machine-readable text.
++
++**讲义英文原文（p.40）**：
++
++> Robotic Process Automation (RPA) primarily handles structured data and is best for rules-based transactions.
+ 
+ 光学字符识别（Optical Character Recognition, OCR）把扫描或数字文档文字转换为机器可读文本（p.41）。机器人流程自动化（Robotic Process Automation, RPA）按规则处理结构化数据和系统操作（p.40）。
+ 

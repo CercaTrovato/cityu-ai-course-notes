@@ -1,0 +1,4 @@
+flowchart LR
+ A["Agent：抽样策略，按当前状态选动作"] -->|"actions：检查哪项或停止"| E["Environment：交易总体 / 模拟审计"]
+ E -->|"observations：结果、剩余时间"| A
+ E -->|"rewards：预先定义的评价"| A
