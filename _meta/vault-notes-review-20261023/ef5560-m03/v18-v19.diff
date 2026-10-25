@@ -1,0 +1,32 @@
+--- v18
++++ v19
+@@ -1525,8 +1525,12 @@
+ 
+ ```python
+ """L03_03 · 美国市场 Ridge/LASSO 冻结训练入口。
+-讲义 p.25；M03 §2.5.3；读取旧解压面板，只打印选参与测试结果，不写数据/output。
+-验证选参数后在178月pre-test重估；原日行情/vintage不在本入口恢复。
++目的      从指定保存面板验证选参，再重估并输出测试评价。
++讲义      旧56页版 Lec03 p.25（新版同p.25）。
++笔记      M03 §2.5.3。
++输入      旧解压 market_excess_return_panel.csv；月度log总收益减旧simple月rf的保存超额列。
++输出      stdout参数/测试OOS R²；不生成PNG/CSV，不改原数据或output/。
++关键决定  验证选参，178月pre-test重估整链；不切换新版ZIP或重建行情/vintage。
+ """
+ import sys, pathlib
+ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
+@@ -2950,8 +2954,12 @@
+ 
+ ```python
+ """L03_04 · 六模型周度训练及具名股票PCR追踪。
+-讲义 p.50；M03 §2.8.3；读取旧解压面板，只打印结果，不写数据/output。
+-验证选设置、pre-test重估整链、test只评一次；CCB行不参与拟合/选择。
++目的      同一周度切分比较六模型，再追踪一只具名股票的冻结PCR预测。
++讲义      旧56页版 Lec03 p.50（新版p.48）。
++笔记      M03 §2.8.3。
++输入      旧解压 hsi_stock_excess_return_panel.csv；个股周simple总收益减7/365有效simple rf。
++输出      stdout验证设置/测试OOS R²和CCB追踪；不生成PNG/CSV或改原数据/output/。
++关键决定  dev拟合候选、validation选设置、pre-test重估、test只评一次；CCB不参与选择/拟合。
+ """
+ import sys, pathlib
+ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))

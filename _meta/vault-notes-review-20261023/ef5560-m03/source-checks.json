@@ -1,0 +1,206 @@
+{
+  "schema": "note-source-checks-v1",
+  "sources": {
+    "old56": {
+      "path": "../../../EF5560_Fintech_and_AI_in_Finance/course_files_export/Lec03_Linear_Machine_Learning.pdf",
+      "sha256": "8a84e4b1fe9bbe62e0a9fe1b9e41868a6d2cbad28088dfa306bf1c8a895eca44"
+    },
+    "new54": {
+      "path": "../../../EF5560_Fintech_and_AI_in_Finance/course_files_export/canvas-20261020/Lec03_Linear_Machine_Learning.pdf",
+      "sha256": "f15a7e58ed66b633579df7bd26228a3ada2a071f3709c1df344f4b588f88212b"
+    }
+  },
+  "questions": [
+    {
+      "id": "old56-p22",
+      "source_id": "old56",
+      "old_page": 22,
+      "new54_page": 22,
+      "section": "2.5.1",
+      "original": "**Calculation Question: Evaluate the Market Excess-Return Forecast**\nFor a market excess-return forecast, the test-period sum of squared errors is 0.018. The lagged MA(12) benchmark has a sum of squared errors of 0.015. Use $R^2_{OOS}=1-SSE_{model}/SSE_{benchmark}$.\n1. Calculate $R^2_{OOS}$ and show the substitution.\n2. State whether the model improves on the MA(12) benchmark.\n3. Explain why MA(12) must be lagged rather than computed with future returns.\n**Be ready to explain:** What does the sign of OOS $R^2$ tell a portfolio manager about forecast value?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "比值：$0.018 / 0.015 = 1.2$",
+          "english": "$R^2_{OOS}=1-0.018/0.015=-0.20$. The model does not improve on the lagged MA(12) benchmark; its test SSE is 20% larger. MA(12) must use only returns known before the forecast month, because future returns would leak the answer. A negative sign tells the portfolio manager that this model is less accurate than the stated feasible benchmark over the test period."
+        },
+        {
+          "id": "2",
+          "chinese": "模型**没有**改善 MA(12)",
+          "english": "$R^2_{OOS}=1-0.018/0.015=-0.20$. The model does not improve on the lagged MA(12) benchmark; its test SSE is 20% larger. MA(12) must use only returns known before the forecast month, because future returns would leak the answer. A negative sign tells the portfolio manager that this model is less accurate than the stated feasible benchmark over the test period."
+        },
+        {
+          "id": "3",
+          "chinese": "只用 $t-1$ 到 $t-12$ 的收益",
+          "english": "$R^2_{OOS}=1-0.018/0.015=-0.20$. The model does not improve on the lagged MA(12) benchmark; its test SSE is 20% larger. MA(12) must use only returns known before the forecast month, because future returns would leak the answer. A negative sign tells the portfolio manager that this model is less accurate than the stated feasible benchmark over the test period."
+        },
+        {
+          "id": "4",
+          "chinese": "负号表示在相同测试期和目标的平方误差评价下",
+          "english": "$R^2_{OOS}=1-0.018/0.015=-0.20$. The model does not improve on the lagged MA(12) benchmark; its test SSE is 20% larger. MA(12) must use only returns known before the forecast month, because future returns would leak the answer. A negative sign tells the portfolio manager that this model is less accurate than the stated feasible benchmark over the test period."
+        }
+      ],
+      "manual_source_check": "Main read actual old56 source page extraction; fresh6.1 full and fresh6.1 targeted compared rawPDF/current source sha and question/answers. Candidate text used only to preserve normalized Markdown/LaTeX locators after that manual source check; not a machine semantic guarantee."
+    },
+    {
+      "id": "old56-p26",
+      "source_id": "old56",
+      "old_page": 26,
+      "new54_page": 26,
+      "section": "2.5.4",
+      "original": "**Multiple-Choice Question: Choosing a Market Excess-Return Rule**\nCandidate models use the same macro predictors and chronological split. Their validation MSEs are:\n| Model | OLS | Ridge | LASSO | Elastic Net |\n|---|---:|---:|---:|---:|\n| Validation MSE | 0.0025 | 0.0020 | 0.0018 | 0.0019 |\nUnder selection by validation MSE, what should happen next?\nA) Freeze the LASSO settings, refit on development plus validation data, and evaluate on the test period.  \nB) Choose OLS because an unrestricted model uses the most information.  \nC) Compare all test errors first, then decide which model to report as selected.  \nD) Increase the LASSO penalty until the test-period forecast error falls.",
+      "options": {
+        "A": "Freeze the LASSO settings, refit on development plus validation data, and evaluate on the test period.",
+        "B": "Choose OLS because an unrestricted model uses the most information.",
+        "C": "Compare all test errors first, then decide which model to report as selected.",
+        "D": "Increase the LASSO penalty until the test-period forecast error falls."
+      },
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "冻结 LASSO 设置，在 development + validation 上 refit，在测试期评估",
+          "english": "p.26 — A. Freeze the validation-selected LASSO settings, refit on development plus validation data, and evaluate once on the untouched test period. p.27 — D. Fit the means and standard deviations on development data and reuse those values on validation data, so the penalty sees a common scale without test leakage."
+        }
+      ],
+      "manual_source_check": "Main read actual old56 source page extraction; fresh6.1 full and fresh6.1 targeted compared rawPDF/current source sha and question/answers. Candidate text used only to preserve normalized Markdown/LaTeX locators after that manual source check; not a machine semantic guarantee."
+    },
+    {
+      "id": "old56-p27",
+      "source_id": "old56",
+      "old_page": 27,
+      "new54_page": 27,
+      "section": "2.5.4",
+      "original": "**Multiple-Choice Question: Predictor Units and Penalties**\nAn analyst changes inflation from decimal units (0.03) to percentage units (3), but otherwise keeps the observations unchanged. A LASSO model uses the same penalty. Which procedure makes the penalty comparison meaningful across predictor units?\nA) Use means and standard deviations calculated from all dates, including the test period.  \nB) Leave predictors unscaled because the same penalty automatically removes unit effects.  \nC) Re-estimate the scaling separately on the validation sample before comparing forecasts.  \nD) Standardize using development-sample means and standard deviations, then apply those values to validation data.",
+      "options": {
+        "A": "Use means and standard deviations calculated from all dates, including the test period.",
+        "B": "Leave predictors unscaled because the same penalty automatically removes unit effects.",
+        "C": "Re-estimate the scaling separately on the validation sample before comparing forecasts.",
+        "D": "Standardize using development-sample means and standard deviations, then apply those values to validation data."
+      },
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "用 development 样本的均值和标准差标准化，再把这些值套到验证数据上",
+          "english": "p.26 — A. Freeze the validation-selected LASSO settings, refit on development plus validation data, and evaluate once on the untouched test period. p.27 — D. Fit the means and standard deviations on development data and reuse those values on validation data, so the penalty sees a common scale without test leakage."
+        }
+      ],
+      "manual_source_check": "Main read actual old56 source page extraction; fresh6.1 full and fresh6.1 targeted compared rawPDF/current source sha and question/answers. Candidate text used only to preserve normalized Markdown/LaTeX locators after that manual source check; not a machine semantic guarantee."
+    },
+    {
+      "id": "old56-p38",
+      "source_id": "old56",
+      "old_page": 38,
+      "new54_page": 36,
+      "section": "2.6.8",
+      "original": "**Multiple-Choice Question: Which Linear Tool Fits the Job?**\nA desk has 20 predictors in correlated valuation, trend, and liquidity families. It wants a compact rule that retains related signals together. All three models are within one standard error of the lowest validation MSE.\n| Model | Validation MSE | Nonzero | Pattern |\n|---|---:|---:|---|\n| Ridge | 0.0102 | 20 | all signals retained |\n| LASSO | 0.0100 | 4 | some families represented once |\n| Elastic Net | 0.0101 | 9 | several signals per family |\nWhich choice best matches the stated financial job?\nA. Ridge, because retaining every signal is always safest.  \nB. LASSO, because the smallest validation MSE must dominate.  \nC. Elastic Net, because it balances sparsity and grouped retention.  \nD. Choose whichever model has the lowest frozen-test MSE.  \n**Discuss:** Why should a 0.0001 validation-MSE difference not override the implementation goal?",
+      "options": {
+        "A": "Ridge, because retaining every signal is always safest.",
+        "B": "LASSO, because the smallest validation MSE must dominate.",
+        "C": "Elastic Net, because it balances sparsity and grouped retention.",
+        "D": "Choose whichever model has the lowest frozen-test MSE."
+      },
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "因此答案是 Elastic Net（选项 C）",
+          "english": "C. Elastic Net best matches the stated goal because it keeps a compact rule while retaining several related signals. Under the stated condition that all three models are within one standard error of the lowest validation MSE, the given compactness/group pattern supports this choice; the frozen test must not be used for model selection."
+        },
+        {
+          "id": "2",
+          "chinese": "这是一条预先给定的选模规则，不等于对三个模型的损失差异完成了正式显著性检验",
+          "english": "C. Elastic Net best matches the stated goal because it keeps a compact rule while retaining several related signals. Under the stated condition that all three models are within one standard error of the lowest validation MSE, the given compactness/group pattern supports this choice; the frozen test must not be used for model selection."
+        }
+      ],
+      "manual_source_check": "Main read actual old56 source page extraction; fresh6.1 full and fresh6.1 targeted compared rawPDF/current source sha and question/answers. Candidate text used only to preserve normalized Markdown/LaTeX locators after that manual source check; not a machine semantic guarantee."
+    },
+    {
+      "id": "old56-p50",
+      "source_id": "old56",
+      "old_page": 50,
+      "new54_page": 48,
+      "section": "2.8.3",
+      "original": "Using the weekly stock panel and the stated date split, compare OLS, Ridge, LASSO, Elastic Net, PCR, and PLS. Select settings on validation weeks, refit through June 2025, and report test OOS $R^2$ against zero excess return. Ask for a second output: the predicted and realized excess return of one named stock in one test week. Read the model comparison first, then trace the named stock through the fitted rule.",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "先按相同周度面板/时间切分比较六个模型族",
+          "english": "I compare OLS, Ridge, LASSO, Elastic Net, PCR and PLS under the stated weekly split, select settings on validation weeks, and refit the full preprocessing/model pipeline through June 2025 before evaluating the untouched test weeks against zero excess return.\n\nWithin-family validation settings are Ridge alpha=1000, LASSO alpha=0.003, Elastic Net alpha=0.01 with l1_ratio=0.25, PCR K=5, and PLS K=1; OLS has no tuning parameter.\n\nThe comparison selects PCR with five components. Test OOS $R^2$ values against zero are approximately −0.531% (OLS), −0.151% (Ridge), −0.136% (LASSO), −0.136% (Elastic Net), +0.024% (PCR), and +0.054% (PLS).\n\nFor CCB (0939.HK) in the test week 2025-07-04, the frozen PCR rule predicts an excess return of about 0.85%, while the realized excess return is about 2.16%. I read the model comparison before tracing that row; agreement between the manual and pipeline prediction checks implementation consistency, not forecast accuracy or deployability."
+        },
+        {
+          "id": "2",
+          "chinese": "第二项是同一冻结规则的一只具名股票/一个测试周的预测与实现",
+          "english": "I compare OLS, Ridge, LASSO, Elastic Net, PCR and PLS under the stated weekly split, select settings on validation weeks, and refit the full preprocessing/model pipeline through June 2025 before evaluating the untouched test weeks against zero excess return.\n\nWithin-family validation settings are Ridge alpha=1000, LASSO alpha=0.003, Elastic Net alpha=0.01 with l1_ratio=0.25, PCR K=5, and PLS K=1; OLS has no tuning parameter.\n\nThe comparison selects PCR with five components. Test OOS $R^2$ values against zero are approximately −0.531% (OLS), −0.151% (Ridge), −0.136% (LASSO), −0.136% (Elastic Net), +0.024% (PCR), and +0.054% (PLS).\n\nFor CCB (0939.HK) in the test week 2025-07-04, the frozen PCR rule predicts an excess return of about 0.85%, while the realized excess return is about 2.16%. I read the model comparison before tracing that row; agreement between the manual and pipeline prediction checks implementation consistency, not forecast accuracy or deployability."
+        }
+      ],
+      "manual_source_check": "Main read actual old56 source page extraction; fresh6.1 full and fresh6.1 targeted compared rawPDF/current source sha and question/answers. Candidate text used only to preserve normalized Markdown/LaTeX locators after that manual source check; not a machine semantic guarantee."
+    },
+    {
+      "id": "old56-p56",
+      "source_id": "old56",
+      "old_page": 56,
+      "new54_page": 54,
+      "section": "2.9.4",
+      "original": "Linear ML changes how we estimate and combine slopes. Each fitted slope still acts in the same way across observations. The macro results show that shrinkage can reduce large OLS market excess-return forecast errors. The stock results show small MSE differences and different ranking behavior. Class 4 asks whether thresholds and interactions improve these same forecasting tasks. For example, should momentum have the same effect for a liquid, low-volatility stock and an illiquid, high-volatility stock?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "不必相同",
+          "english": "Not necessarily. A linear model applies the same fitted momentum slope across observations. If the effect depends on liquidity or volatility, thresholds or interactions may represent that dependence. This possibility does not establish better forecasts; the models must be compared under the same data, split and benchmark."
+        }
+      ],
+      "manual_source_check": "Main read actual old56 source page extraction; fresh6.1 full and fresh6.1 targeted compared rawPDF/current source sha and question/answers. Candidate text used only to preserve normalized Markdown/LaTeX locators after that manual source check; not a machine semantic guarantee."
+    }
+  ],
+  "manual_scope": "6 explicit source task pages,11 answer units,12 options;old56 andnew54 page mapping. Sources/translation/answers manually checked independently;checker validates only literal presence/hash/locator.",
+  "demonstrations": [
+    {
+      "old56_page": 7,
+      "new54_page": 7,
+      "status": "given demonstration,not invented professor question;inputs/results andChinese mechanisms retained;source English/given result kept"
+    },
+    {
+      "old56_page": 11,
+      "new54_page": 11,
+      "status": "given demonstration,not invented professor question;inputs/results andChinese mechanisms retained;source English/given result kept"
+    },
+    {
+      "old56_page": 16,
+      "new54_page": 16,
+      "status": "given demonstration,not invented professor question;inputs/results andChinese mechanisms retained;source English/given result kept"
+    },
+    {
+      "old56_page": 18,
+      "new54_page": 18,
+      "status": "given demonstration,not invented professor question;inputs/results andChinese mechanisms retained;source English/given result kept"
+    },
+    {
+      "old56_page": 25,
+      "new54_page": 25,
+      "status": "given demonstration,not invented professor question;inputs/results andChinese mechanisms retained;source English/given result kept"
+    },
+    {
+      "old56_page": 42,
+      "new54_page": 40,
+      "status": "given demonstration,not invented professor question;inputs/results andChinese mechanisms retained;source English/given result kept"
+    },
+    {
+      "old56_page": 45,
+      "new54_page": 43,
+      "status": "given demonstration,not invented professor question;inputs/results andChinese mechanisms retained;source English/given result kept"
+    },
+    {
+      "old56_page": 49,
+      "new54_page": 47,
+      "status": "given demonstration,not invented professor question;inputs/results andChinese mechanisms retained;source English/given result kept"
+    },
+    {
+      "old56_page": 54,
+      "new54_page": 52,
+      "status": "given demonstration,not invented professor question;inputs/results andChinese mechanisms retained;source English/given result kept"
+    }
+  ],
+  "known_limits": "No raw audio,vintage chain or full GKX paper estimates verified. This manifest does not certify every source sentence,teaching orvisuals."
+}

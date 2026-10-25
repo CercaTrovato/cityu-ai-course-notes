@@ -1,0 +1,13 @@
+--- v10
++++ v11
+@@ -3065,7 +3065,9 @@
+ 
+ **中文读题与作答位置**：先按相同周度面板/时间切分比较六个模型族，在验证周选设置并重估到 2025 年 6 月，再用对零超额收益的 OOS $R^2$ 报测试结果。第二项是同一冻结规则的一只具名股票/一个测试周的预测与实现，不是再挑一套有利参数。按原页最后一句，先读模型比较，再追踪该股票；本节前面两段完整入口及 CCB 输出分别回答这两项。
+ 
+-**English reference answer（笔记自拟，旧解压目录实跑口径）**: I compare OLS, Ridge, LASSO, Elastic Net, PCR and PLS under the stated weekly split, select settings on validation weeks, and refit the full preprocessing/model pipeline through June 2025 before evaluating the untouched test weeks against zero excess return. The comparison selects PCR with five components. For CCB (0939.HK) in the test week 2025-07-04, the frozen PCR rule predicts an excess return of about 0.85%, while the realized excess return is about 2.16%. I read the model comparison before tracing that row; agreement between the manual and pipeline prediction checks implementation consistency, not forecast accuracy or deployability.
++**English reference answer（笔记自拟，旧解压目录实跑口径）**: I compare OLS, Ridge, LASSO, Elastic Net, PCR and PLS under the stated weekly split, select settings on validation weeks, and refit the full preprocessing/model pipeline through June 2025 before evaluating the untouched test weeks against zero excess return. Within-family validation settings are Ridge alpha=1000, LASSO alpha=0.003, Elastic Net alpha=0.01 with l1_ratio=0.25, PCR K=5, and PLS K=1; OLS has no tuning parameter. The comparison selects PCR with five components. Test OOS $R^2$ values against zero are approximately −0.531% (OLS), −0.151% (Ridge), −0.136% (LASSO), −0.136% (Elastic Net), +0.024% (PCR), and +0.054% (PLS).
++
++For CCB (0939.HK) in the test week 2025-07-04, the frozen PCR rule predicts an excess return of about 0.85%, while the realized excess return is about 2.16%. I read the model comparison before tracing that row; agreement between the manual and pipeline prediction checks implementation consistency, not forecast accuracy or deployability.
+ 
+ **🎙️ 课堂补充**：❓ 录音范围内没有听到教授专门朗读或演示这条"比较六个模型 + 追踪一只股票"的 AI 指令。
+ 

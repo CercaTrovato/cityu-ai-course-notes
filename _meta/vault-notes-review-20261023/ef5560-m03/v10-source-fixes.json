@@ -1,0 +1,32 @@
+[
+  {
+    "reason": "p50 missing final source instruction restored verbatim",
+    "old": "> *\"Using the weekly stock panel and the stated date split, compare OLS, Ridge, LASSO, Elastic Net, PCR, and PLS. Select settings on validation weeks, refit through June 2025, and report test OOS $R^2$ against zero excess return. Ask for a second output: the predicted and realized excess return of one named stock in one test week.\"*",
+    "new": "> *\"Using the weekly stock panel and the stated date split, compare OLS, Ridge, LASSO, Elastic Net, PCR, and PLS. Select settings on validation weeks, refit through June 2025, and report test OOS $R^2$ against zero excess return. Ask for a second output: the predicted and realized excess return of one named stock in one test week. Read the model comparison first, then trace the named stock through the fitted rule.\"*"
+  },
+  {
+    "reason": "p50 original task bilingual answer and output binding",
+    "old": "（讲义 p.50）\n\n**🎙️ 课堂补充**",
+    "new": "（讲义 p.50）\n\n**中文读题与作答位置**：先按相同周度面板/时间切分比较六个模型族，在验证周选设置并重估到 2025 年 6 月，再用对零超额收益的 OOS $R^2$ 报测试结果。第二项是同一冻结规则的一只具名股票/一个测试周的预测与实现，不是再挑一套有利参数。按原页最后一句，先读模型比较，再追踪该股票；本节前面两段完整入口及 CCB 输出分别回答这两项。\n\n**English reference answer（笔记自拟，旧解压目录实跑口径）**: I compare OLS, Ridge, LASSO, Elastic Net, PCR and PLS under the stated weekly split, select settings on validation weeks, and refit the full preprocessing/model pipeline through June 2025 before evaluating the untouched test weeks against zero excess return. The comparison selects PCR with five components. For CCB (0939.HK) in the test week 2025-07-04, the frozen PCR rule predicts an excess return of about 0.85%, while the realized excess return is about 2.16%. I read the model comparison before tracing that row; agreement between the manual and pipeline prediction checks implementation consistency, not forecast accuracy or deployability.\n\n**🎙️ 课堂补充**"
+  },
+  {
+    "reason": "p50 no-gap does not prove recording completeness",
+    "old": "**不能标成 ⏭️ 略过**——本讲 scan 显示 0 处 ≥120 秒空档，更可能是\"确实没有出声演示\"而非\"漏录\"。不可降权：这一页的方法论（指令怎么写、为什么要\"trace the named stock\"）只能靠讲义与本笔记学。",
+    "new": "**不能标成 ⏭️ 略过**：当前可读转录中未找到该完整任务的专门演示，故保留 ❓、不可降权。scan 没有大空档只说明保存的时间序列连续，不能证明录音完整，更不能据此排除漏录。该任务仍按讲义及完整代码入口学习，不推断教授一定没做过。"
+  },
+  {
+    "reason": "trace not unique audit method",
+    "old": "它是验证流水线一致性的唯一手段",
+    "new": "它是验证流水线一致性的一种具体手段，还可结合代码、拟合对象和完整变换日志核查"
+  },
+  {
+    "reason": "negative R2 adjacent summary limit",
+    "old": "负号意味着\"用这个模型不如用过去一年的平均\"",
+    "new": "负号表示在相同测试期和目标的平方误差评价下，模型比滞后一年均值基准差；不据此裁定排序或成本后投资价值"
+  },
+  {
+    "reason": "p38 English includes stated one-SE condition",
+    "old": "A 0.0001 validation-MSE difference is too small to override the prespecified implementation objective, and the frozen test must not be used for model selection.",
+    "new": "Under the stated condition that all three models are within one standard error of the lowest validation MSE, the given compactness/group pattern supports this choice; the frozen test must not be used for model selection."
+  }
+]

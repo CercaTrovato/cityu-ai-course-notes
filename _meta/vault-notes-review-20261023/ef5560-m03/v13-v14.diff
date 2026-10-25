@@ -1,0 +1,46 @@
+--- v13
++++ v14
+@@ -172,6 +172,8 @@
+ 
+ > *"Monthly market excess returns: macro predictors; lagged MA(12) benchmark. Compare OLS, forward selection, Ridge, LASSO, and Elastic Net. Weekly stock excess returns: technical characteristics; zero benchmark. Add PCR and PLS, then compare stock rankings."* （讲义 p.2）
+ 
++下表一行对照一个维度。例如“预测什么”一行：市场列是下个月的大盘超额收益，个股列是单只股票下一周的超额收益；对象和频率都不同。
++
+ | 维度 | 市场任务 | 个股任务 |
+ |---|---|---|
+ | 预测什么 | 一个市场下个月的超额收益 | 一只股票下一周的超额收益 |
+@@ -2534,7 +2536,9 @@
+ 
+ **为什么需要它**
+ 
+-它把 30 个相关输入变成 $K$ 个在拟合样本内互不相关的成分得分，再对这些得分估计收益斜率。互不相关描述的是得分，不是斜率；保留方向有非零方差时可减轻输入共线性，秩不足仍须检查，测试分布也未必相同。$K$ 越小，保留的方向越少。代价（p.41 最后一句）：**PCR 只看 $Z$**——方差大的方向未必预测收益，一个和收益毫无关系但波动很大的特征组合可能被排在第一位。p.43 用真实载荷说明第一主成分是"趋势正载荷 + 波动负载荷"，即"平静的上涨 vs 剧烈波动"的方向。
++它把 30 个相关输入变成 $K$ 个在拟合样本内互不相关的成分得分，再对这些得分估计收益斜率。互不相关描述的是得分，不是斜率；保留方向有非零方差时可减轻输入共线性，秩不足仍须检查，测试分布也未必相同。$K$ 越小，保留的方向越少。
++
++代价（p.41 最后一句）：**PCR 只看 $Z$**——方差大的方向未必预测收益，一个和收益毫无关系但波动很大的特征组合可能被排在第一位。p.43 用真实载荷说明第一主成分是"趋势正载荷 + 波动负载荷"，即"平静的上涨 vs 剧烈波动"的方向。
+ 
+ **课件原例**
+ 
+@@ -2757,7 +2761,9 @@
+ 
+ **💡 换个说法（笔记补充）**
+ 
+-- 回到体检的比方：PCR 先按"人与人差别最大的轴"打分，PLS 先按"最能预测某种病的轴"打分——若假设训练标签确实与血压/胆固醇组合共同变化更强，PLS 首方向可能强调这些输入；实际选什么须从数据计算，模型不会因知道疾病名称就自动获得医学知识，也不保证预测最好。此处仅是数学类比。
++- 回到体检的数学比方：PCR 先按输入中差别较大的方向打分，PLS 则看输入与训练标签的共同变化。
++
++若假设血压/胆固醇组合与训练标签共同变化更强，PLS 首方向可能强调它们。实际选什么仍须从数据计算；知道疾病名称不会使模型自动获得医学知识，也不保证预测最好。
+ - 换个角度：PCR 和 PLS 的差别只在"挑方向时看不看答案"。看答案的好处是方向更有用，坏处是更容易被训练期的巧合带偏。
+ 
+ 所以两者都必须在验证集上选 K。p.47 的测试点估计都接近零，且本题没有做模型差异检验；只能说当前样本未建立稳定优劣排序，不能说已经证明两者没有差别。
+@@ -3067,7 +3073,11 @@
+ 
+ **中文读题与作答位置**：先按相同周度面板/时间切分比较六个模型族，在验证周选设置并重估到 2025 年 6 月，再用对零超额收益的 OOS $R^2$ 报测试结果。第二项是同一冻结规则的一只具名股票/一个测试周的预测与实现，不是再挑一套有利参数。按原页最后一句，先读模型比较，再追踪该股票；本节前面两段完整入口及 CCB 输出分别回答这两项。
+ 
+-**English reference answer（笔记自拟，旧解压目录实跑口径）**: I compare OLS, Ridge, LASSO, Elastic Net, PCR and PLS under the stated weekly split, select settings on validation weeks, and refit the full preprocessing/model pipeline through June 2025 before evaluating the untouched test weeks against zero excess return. Within-family validation settings are Ridge alpha=1000, LASSO alpha=0.003, Elastic Net alpha=0.01 with l1_ratio=0.25, PCR K=5, and PLS K=1; OLS has no tuning parameter. The comparison selects PCR with five components. Test OOS $R^2$ values against zero are approximately −0.531% (OLS), −0.151% (Ridge), −0.136% (LASSO), −0.136% (Elastic Net), +0.024% (PCR), and +0.054% (PLS).
++**English reference answer（笔记自拟，旧解压目录实跑口径）**: I compare OLS, Ridge, LASSO, Elastic Net, PCR and PLS under the stated weekly split, select settings on validation weeks, and refit the full preprocessing/model pipeline through June 2025 before evaluating the untouched test weeks against zero excess return.
++
++Within-family validation settings are Ridge alpha=1000, LASSO alpha=0.003, Elastic Net alpha=0.01 with l1_ratio=0.25, PCR K=5, and PLS K=1; OLS has no tuning parameter.
++
++The comparison selects PCR with five components. Test OOS $R^2$ values against zero are approximately −0.531% (OLS), −0.151% (Ridge), −0.136% (LASSO), −0.136% (Elastic Net), +0.024% (PCR), and +0.054% (PLS).
+ 
+ For CCB (0939.HK) in the test week 2025-07-04, the frozen PCR rule predicts an excess return of about 0.85%, while the realized excess return is about 2.16%. I read the model comparison before tracing that row; agreement between the manual and pipeline prediction checks implementation consistency, not forecast accuracy or deployability.
+ 

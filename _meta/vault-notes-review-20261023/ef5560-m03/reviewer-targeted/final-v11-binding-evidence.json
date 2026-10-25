@@ -1,0 +1,73 @@
+{
+  "candidate_v10_sha256": "7f5267416c85c13729321dfba2f3e4a6173571c39cb6fc57117156b716dcd8e3",
+  "candidate_v11_sha256": "b8cdfcb5ad833e7eb686a1bc1a3f622aeba973642cfcbbde04ecf41abb4339aa",
+  "v11_bytes": 340192,
+  "changes": [
+    {
+      "type": "replace",
+      "before": [
+        3068,
+        3068
+      ],
+      "after": [
+        3068,
+        3070
+      ],
+      "old": [
+        "**English reference answer（笔记自拟，旧解压目录实跑口径）**: I compare OLS, Ridge, LASSO, Elastic Net, PCR and PLS under the stated weekly split, select settings on validation weeks, and refit the full preprocessing/model pipeline through June 2025 before evaluating the untouched test weeks against zero excess return. The comparison selects PCR with five components. For CCB (0939.HK) in the test week 2025-07-04, the frozen PCR rule predicts an excess return of about 0.85%, while the realized excess return is about 2.16%. I read the model comparison before tracing that row; agreement between the manual and pipeline prediction checks implementation consistency, not forecast accuracy or deployability."
+      ],
+      "new": [
+        "**English reference answer（笔记自拟，旧解压目录实跑口径）**: I compare OLS, Ridge, LASSO, Elastic Net, PCR and PLS under the stated weekly split, select settings on validation weeks, and refit the full preprocessing/model pipeline through June 2025 before evaluating the untouched test weeks against zero excess return. Within-family validation settings are Ridge alpha=1000, LASSO alpha=0.003, Elastic Net alpha=0.01 with l1_ratio=0.25, PCR K=5, and PLS K=1; OLS has no tuning parameter. The comparison selects PCR with five components. Test OOS $R^2$ values against zero are approximately −0.531% (OLS), −0.151% (Ridge), −0.136% (LASSO), −0.136% (Elastic Net), +0.024% (PCR), and +0.054% (PLS).",
+        "",
+        "For CCB (0939.HK) in the test week 2025-07-04, the frozen PCR rule predicts an excess return of about 0.85%, while the realized excess return is about 2.16%. I read the model comparison before tracing that row; agreement between the manual and pipeline prediction checks implementation consistency, not forecast accuracy or deployability."
+      ]
+    }
+  ],
+  "scores_from_existing_stdout": [
+    {
+      "model": "OLS",
+      "validation_mse": 0.002662113944238339,
+      "test_oos_r2_percent": -0.5309690944300227,
+      "rounded_percent": "-0.531%"
+    },
+    {
+      "model": "Ridge",
+      "validation_mse": 0.0026430693471260324,
+      "test_oos_r2_percent": -0.15054129717542164,
+      "rounded_percent": "-0.151%"
+    },
+    {
+      "model": "LASSO",
+      "validation_mse": 0.002620617099300481,
+      "test_oos_r2_percent": -0.13599646311717173,
+      "rounded_percent": "-0.136%"
+    },
+    {
+      "model": "Elastic Net",
+      "validation_mse": 0.0026205574585625776,
+      "test_oos_r2_percent": -0.13599646311717173,
+      "rounded_percent": "-0.136%"
+    },
+    {
+      "model": "PCR",
+      "validation_mse": 0.0026197191787925385,
+      "test_oos_r2_percent": 0.0238561258402048,
+      "rounded_percent": "+0.024%"
+    },
+    {
+      "model": "PLS",
+      "validation_mse": 0.0026237498532999835,
+      "test_oos_r2_percent": 0.053795786855115324,
+      "rounded_percent": "+0.054%"
+    }
+  ],
+  "validation_selected": "PCR",
+  "mermaid_equal": true,
+  "mermaid_count": 7,
+  "python_equal": true,
+  "python_count": 4,
+  "display_math_equal": true,
+  "display_math_count": 25,
+  "stdout_sha256": "03109c3b41c0f62fa1ac046b698bf9aa9b54cd5e879da5e9973a6cbf49b6d784",
+  "v10_observation_sha256": "2f7694aeb8ac71d6f1c738ceb91908146611b1d4ee7f9f4aa17eeba516aad0c8"
+}

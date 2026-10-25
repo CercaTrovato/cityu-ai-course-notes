@@ -1,0 +1,44 @@
+--- EF5560_Fintech_and_AI_in_Finance/code/README.md
++++ v4
+@@ -24,7 +24,7 @@
+ **环境**：本机 `D:\anaconda3\python.exe` 为 Python 3.12.3；依赖见 `requirements.txt`（pandas / numpy / matplotlib / statsmodels / scipy / scikit-learn）。运行前核对实际环境，不沿用旧 `/d/python/python` 路径。
+ **Windows 编码**：命令中的 `-X utf8` 防止中文输出遇到 GBK 编码错误。
+ 
+-每个脚本跑完会：
++一般图表脚本运行后会产生下列输出。L03_03/L03_04是只打印stdout的例外，具体输出见§4与末尾运行记录：
+ 1. 在 `output/` 下生成 **同名的 `.png`**（图）和可能的 **`.csv`**（数字表）
+ 2. 在 stdout 打印**笔记里引用的全部关键数字**
+ 
+@@ -42,7 +42,7 @@
+ │   └─ plot.py          统一绘图风格（中文字体、配色、保存）
+ ├─ L01_data/            对应 [[M01-金融数据与Vibe-Coding]]
+ ├─ L02_regression/      对应 [[M02-回归与样本外设计]]
+-├─ L03_linear_ml/       对应 [[M03-线性机器学习与收益预测]]（数据来自 class03 结果表，loader 为 common.load.c03_*）
++├─ L03_linear_ml/       对应 [[M03-线性机器学习与收益预测]]（01/02核保存结果，03/04按固定旧输入训练；loader为common.load.c03_*）
+ ├─ L04_nonlinear/       对应 [[M04-非线性机器学习与收益预测]]（class04 结果表 + 共享面板，loader 为 common.load.c04_*；需 scikit-learn）
+ ├─ L0N_.../             以后每讲一个目录
+ └─ output/              图与表的输出，笔记用 ![[...]] 引用
+@@ -110,6 +110,8 @@
+ | `L02_regression/04_hit_rate.py` | Lec02 p.43–48 | M02 §2.7.4 | 方向命中率 vs 多数类基线：63.3% 到底强不强？ |
+ | `L03_linear_ml/01_reproduce_lecture.py` | Lec03 p.7–55 | M03 §2.2–2.9、§9.5 | 讲义每个数字能否复现：假数算例按公式重算；真数从 class03 五个 CSV 逐格重算（12 个市场 OOS R²、6 个个股 OOS R²、五分组价差与 t）；笔记补充的迷你例子 |
+ | `L03_linear_ml/02_forecast_sort.py` | Lec03 p.47–55 | M03 §2.8.1、§2.9.3 | MSE 看水平、分组看次序：六模型 OOS R² 柱状 + 四个可排序模型的五组收益曲线 |
++| `L03_linear_ml/03_train_market.py` | 旧/新Lec03 p.25 | M03 §2.5.3 | 旧市场面板美国142/36验证选Ridge/LASSO参数，178月重估/60月测试；仅stdout、不写output |
++| `L03_linear_ml/04_train_weekly_and_trace.py` | 旧p.50/新p.48 | M03 §2.8.3 | 六模型完整周度验证与测试、CCB 0939.HK在2025-07-04的冻结PCR追踪；仅stdout、不写output |
+ | `L02_regression/05_official_scorecards.py` | Lec02 p.24 / 33 / 46–51 | M02 §9.5、数据集卡片 §12 | class02 补发的 8 张官方结果表 vs 本库复现：22 项逐格对照全部一致；打印 Class 5 预告的择时成绩单 |
+ | `L04_nonlinear/01_reproduce_lecture.py` | Lec04 p.9–51 | M04 §2.2–2.9、§4.2 | 讲义每个数字能否复现：假数算例（p.11/14/19/23/27/32/33/46）+ 真数（12 + 4 个 OOS R²、CSI 300 子窗口、三棵树的叶子人数、Techtronic、五分组价差与 t）|
+ | `L04_nonlinear/02_refit_trees.py` | Lec04 p.6–10、21–22、43–47 | M04 §2.2.5–2.2.6、§2.6.3、§9.5 | 用共享面板按汇总表设置重训树 / 森林 / 提升：树逐位一致（阈值 2.482 / 2.456 / 0.150），森林 / 提升近似 |
+@@ -150,3 +152,14 @@
+ | 2026-09-10 | 建库。定目录约定、三条硬规则、docstring 格式、9 个脚本的映射表 |
+ | 2026-09-10 | 补齐其余 8 个脚本（L01_02–05、L02_01–04），`run_all.py` 9/9 ✅；映射表小节号校正（L01_02 → §2.9.2、L02_04 → §2.7.4）；`load.spy_features` docstring 的"16 个特征"改为"1 个目标 + 15 个预测变量" |
+ | 2026-09-21 | 加 `L04_nonlinear/` 三个脚本与 `L02_regression/05`；`common/load.py` 加 class02（8）/ class04（16）共 24 个 loader；`requirements.txt` 加 scikit-learn；发现 class03 预测表截断，L03_01 / 02 加断言；`run_all.py` 13/15（L03_01 / 02 按预期失败；9/22 class03 恢复后 15/15） |
++
++## 2026-10-26 · M03 两个教学训练入口
++
++两个新脚本和两个固定旧目录reader已正式写入。实际从本README的 `code/` 工作目录执行03/04均exit0，stdout与既有独立入口输出完全相同；本次未重跑全部run_all，不能据此更新全库运行数。reader只解析日期、保留行序，不切换新ZIP或重建行情/vintage。旧月度市场log总收益减simple月rf的混合保存口径显式保留；个股周度为simple总收益减对应simple rf。
++
++```powershell
++D:\anaconda3\python.exe -X utf8 L03_linear_ml/03_train_market.py
++D:\anaconda3\python.exe -X utf8 L03_linear_ml/04_train_weekly_and_trace.py
++```
++
++正式运行的脚本SHA及stdout/stderr见 `_meta/vault-notes-review-20261023/ef5560-m03/formal-code-runs.json`（相对vault根）；未生成新的PNG/CSV或修改原数据。

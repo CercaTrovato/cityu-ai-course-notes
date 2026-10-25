@@ -1,0 +1,36 @@
+--- EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md
++++ v4
+@@ -1,7 +1,7 @@
+ ---
+ type: 数据集卡
+ course: EF5560
+-updated: 2026-10-25
++updated: 2026-10-26
+ source_dir: "course_files_export/data/ + class02/class02/ + class03/class03/ + class04/class04/（class01 = data/）"
+ ---
+ 
+@@ -377,13 +377,17 @@
+ 
+ ---
+ 
+-## 11. `class03/` 数据包（Lec03，2026-09-17）★ 结果表，不是原始面板
+-
+-> ✅ **2026-09-22 更新**：`class03.zip` 从 Canvas 重下，是**更新版**——15 个 CSV：本节 5 个结果表（sha256 与原版一致）+ 五个共享面板（与 §13.1 class04 的逐字节相同，README 不再引用 `../shared/`）+ 5 个新表 `market_linear_validation.csv`（78 行候选设置与验证损失）、`market_linear_coefficients.csv`（48 行标准化系数）、`stock_linear_validation.csv`（37 行）、`stock_linear_coefficients.csv`（180 行）、`stock_linear_quintiles.csv`（20 行五分组周收益）。`stock_linear_test_predictions.csv` 2026-09-21 曾被同步事故截断为 358 行（根因见根 README），重下后 4,108 行、sha256 一致，M03 §2.8.1 复核成立。新 5 表尚未接 loader（M03 v1.0 不依赖它们）。
+-
+-> 五个文件 + `manifest.json`（含每个文件的 sha256、行数、列名、日期范围，**五个 sha256 本地校验全部一致**）+ `README.md`。数字由 `code/L03_linear_ml/01_reproduce_lecture.py` 与 scratchpad `card_class03.py` 实跑（pandas）。
+-> ⚠️ **它们是模型跑完之后的"结果表"**：验证 / 测试指标、测试期预测、分组价差。**训练用的原始面板**在 README 引用的 `../shared/` 四个文件里（`market_excess_return_panel.csv`、`hsi_stock_excess_return_panel.csv`、`technical_characteristics_dictionary.csv`、`risk_free_yields_monthly.csv`），**导出包里没有，Canvas 上也没有**（2026-09-17 核实：Lecture 3 只有 PDF + `class03.zip`）——见 [[EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL#6. 待确认清单|作业与DDL §6 #9]]。
+-> 读法与全部数字的解释在 [[M03-线性机器学习与收益预测]] §2.4.6、§2.5.2、§2.8.1、§2.9.3；loader 在 `code/common/load.py` 的 `c03_*`。
++## 11. `class03/` 数据包（当前两版本；2026-10-26 核对）
++
++当前旧解压 `class03/class03/` 与 `class03.zip` 均有15个manifest登记CSV，另含README和manifest；两份manifest各对所属15文件有效，不等于两包字节相同。24份本次原输入SHA已重新核实，原件保持只读。旧2026-09-17只有结果表、shared未到位的缺口是历史状态，不再当作当前缺材料；2026-09-22截断恢复记录仍保留。
++
++两包7文件不同：README、manifest、市场面板以及market coefficients/summary/predictions/validation；另10文件相同。旧月度log总收益减旧simple月rf，新ZIP改为本版本rf口径，不能混表或把差异猜成计算失败。完整原始价格、日OHLCV及宏观vintage链未取得，保存面板的日期/滞后不能自动证明上游全链无泄漏。
++
++本节先列5张保存结果表；另外5个输入表为714行市场面板、12480行股周面板、30行指标字典、241行利率、80行固定成员。余5张是市场验证78行/系数48行、个股验证37行/系数180行/五分组20行。成员来自固定2023-07名单，不能据此保证任何生存者或可得性问题全消除。
++
++`common.load.c03_market_panel` / `c03_stock_panel`固定读旧解压输入、解析日期并保持行序。新 `L03_linear_ml/03_train_market.py` 按142/36选参、178重估/60测试；`04_train_weekly_and_trace.py` 按6123/2050选参、8173重估/4108测试并追踪CCB。两个正式code目录入口均已实际运行成功，仅stdout不写output。它们是明确保存规格的完整教学训练，不冒充教师现场AI即时规格；原01/02主要复算保存结果。
++
++读法见M03 §2.5.3、§2.8.3、§2.10；下表属于相应旧解压保存结果，周组差未扣成本、经典t条件见正文，不直接当账户收益或已检验可交易性。
+ 
+ ### 11.1 `market_linear_model_summary.csv`
+ 

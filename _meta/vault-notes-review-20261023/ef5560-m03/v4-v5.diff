@@ -1,0 +1,29 @@
+--- v4
++++ v5
+@@ -2229,7 +2229,7 @@
+ > *"[M]ost signals[,] most characteristics[,] most factors [that were] discover[ed],… expose[d]…this [is called] [look-ahead bias][.]… [D]on't be too surprised[,]… like[,] if other people tell you they can get profit… every year for the past 10 years[,] this is something like [an] expos[ed] finding[.] Can you still use this strategy for [the] next year? We don't know."*（`01:54:11`–`01:55:31`）
+ - 这段改变了什么：教授在 `01:51:47`–`01:51:59` 明确用 "counterintuitive" 形容波动率分组的反常现象——这是笔记用词的教授原声依据，升为 §6.2 🔴。
+ 
+-新增了笔记没有的重要告诫——已发表因子普遍有前视偏差，历史表现好不保证未来有效，已同步进 §6.2 🔴 与 §9.2。
++这段警告站在事后回看历史、再挑好信号，不保证策略未来仍有效；不能把口述升级为“已发表因子普遍使用了未来行情”的实证结论。§6.2 与 §9.2 按此限度登记。
+ 
+ **⚠️ 常见误解**
+ 
+@@ -3713,7 +3713,7 @@
+ | 🔴 | **给两个 SSE 算样本外 $R^2$，是期末考原题型**（教授明说不许用计算器、会给简单数字） | 🎙️ `05:35`–`06:01`：*"you will see to calculate out of sample R squared based on the numbers here… if I give you simple numbers like this I will not allow any [calculator]"* | §2.5.1 |
+ | 🔴 | **香港赢过 MA(12)，联系汇率是课堂提出的一个可能解释**：美国利率与香港利率联动 | 🎙️ `01:09:55`–`01:10:54`：*"there's a [peg] between the Hong Kong dollar and the US dollar… once the US chang[es its] policy[,] Hong Kong must change"* | §2.5.2 |
+ | 🔴 | **波动率分组"高波动、低收益"是教授明确定性的反常结论** | 🎙️ `01:51:47`–`01:51:59`：*"This is something I would… say[:] counterintuitive."* | §2.6.6 |
+-| 🔴 | **已发表因子普遍有"前视偏差"，历史赚钱不保证未来有效** | 🎙️ `01:54:11`–`01:55:31`：*"this [is called] [look-ahead bias]… Can you still use this strategy for [the] next year? We don't know."* | §2.6.6 |
++| 🔴 | **事后回看挑信号可能夸大历史表现，不保证未来有效** | 🎙️ `01:54:11`–`01:55:31`：*"this [is called] [look-ahead bias]… Can you still use this strategy for [the] next year? We don't know."* | §2.6.6 |
+ | 🔴 | **惩罚过大 → 常数预测，是 ML 投资作业最容易踩的坑（教授两次用 "crazy" 强调）** | 🎙️ `02:17:41`–`02:19:00`：*"I can promise you this is the assignment for your homework… Otherwise you will use a single number to predict everything. This is crazy."* | §2.8.4 |
+ | 🔴 | **p.26 选择题答案当堂确认为 A**（验证选完就冻结、refit、测试只评一次） | 🎙️ `01:15:01`–`01:15:16`：*"Can you explain why you chose… A?"* … *"Okay[,] that's correct?"* | §2.5.4 |
+ | 🔴 | **本例系数归零顺序：联邦基金利率最先、通胀最后**（不等同一般重要性排序） | 🎙️ `01:05:54`–`01:06:15`：*"the last one [to] go to zero is inflation"*；后续“最重要”句未完整录到 | §2.4.5 |
+@@ -3915,7 +3915,7 @@
+ | p.11 | 内容 | 前向选择手算表（假数） | §2.3 | ✅ 详讲（同上，现场逐格核对） |
+ | p.12 | 内容 | 收缩的一般形式：损失 + λ·惩罚 | §2.4.1 | ✅ 详讲 `39:12`–`43:43` |
+ | p.13 | 内容 | Ridge 定义、用途、效果 | §2.4.2 | 🎙️ 详讲 + AI 演示 `44:47`–`53:29` |
+-| p.14 | 内容 | Ridge 三步流程；美国 alpha = 100、验证 27.02、OOS −3.2%；software alpha = nλ | §2.4.2 | 🎙️ 详讲（同上，现场跑出结果） |
++| p.14 | 内容 | Ridge 三步流程；保存参数 alpha = 100、验证 27.02、OOS −3.2%；software alpha = nλ | §2.4.2 | 🎙️ 同节现场另有演示，但口述0.1不等于保存100；该参数/成绩不由现场口述确认 |
+ | p.15 | 内容 | LASSO 定义、角、选择告诫 | §2.4.3 | 🎙️ 详讲 + AI 演示 `53:29`–`58:22` |
+ | p.16 | 内容 | LASSO 读系数与预测（假数） | §2.4.3 | 🎙️ 详讲（同上） |
+ | p.17 | 内容 | Elastic Net 定义、λ 与 ρ | §2.4.4 | ✅ 详讲 + AI 演示 `01:03:36`–`01:07:07` |

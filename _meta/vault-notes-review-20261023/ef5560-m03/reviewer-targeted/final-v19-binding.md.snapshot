@@ -1,0 +1,34 @@
+# EF5560 M03 最终v19代码集成绑定
+
+审查者：`/root/review_ef_m03_repairs_61`。日期：2026-10-26。
+
+**最终v19可承接真实全篇审查、修复定向审查及v16警告处置链；此次新增代码发布集成范围的阻塞已关闭，未解决数0。** 本次仅对实际路径/loader/文档/相邻零Python说明定向复核，不重新全篇审查、评分或训练。
+
+## 精确绑定
+
+- `candidate-final-v19.md`：344640 bytes，SHA256 `37930b43924ad377bdf13b2f00010084eaa14954db25c28b06f3b954d07b47ce`。
+- 实际代码集成报告`code-integration-review.md`：SHA256 `78bdd8c8e4c9fe20ba73944cab1c581b1c12a22e562bb18732f056d47f1d88dc`，保留v17/v18初始docstring缺口及v19实修关闭，不倒改历史。
+- `new-assets/load-candidate.py`：SHA256 `5b1eec96fbbf6ba256422a16cfebc364651b8cfa067804736a791507e304c02a`。
+- `new-assets/03_train_market.py`：SHA256 `46686209d4bf2a19a9d18b198959b7d27eb1f7c7860c474cf793cd8d1c5a4f92`。
+- `new-assets/04_train_weekly_and_trace.py`：SHA256 `1c32b2facc4a055b7149e50bd37f2c7a168b8b98d2d56ca23444336b13ec31c2`。
+- 现有正式loader及其真实基线快照在审查末尾仍为SHA256 `97a022cab9a7e8461ba8c02bf88f819cb1f6a170bc93c0f57d3d1fd34257fad2`，不能把候选审查记成已发布。
+
+## 继承与本次实际改变
+
+现有run_all固定cwd=code，原独立入口的vault-root相对DATA确实不能直接满足这一约定。新入口按README既有`__file__`引导导入common.load，两个新增固定旧目录reader不传排序参数，只解析日期，不改变原列、缺失、split、可用标记或行序。
+
+实际核得原loader函数AST全未改，恰新增两个reader；模型主体、CCB追踪和原p.25教师片段不改。v18只拆路径说明段，v19只补script/reader docstrings，语义符合README目的/输入/收益口径/输出/关键决定要求。当前展示块与导出脚本AST一致，去docstrings后的执行主体与已rehearsed版本相同。
+
+前版绑定中“全部代码块字节未变”的结论只限其当时版本，**不能直接跨用到v19**：本次代码确实改变了读取入口/导入/注释，已经另行实审。7个Mermaid仍未变，模型参数/训练测试链/结果数字继承先前真实证据。新代码说明是文件/导入/数据来源桥梁，不增加新的模型课题。
+
+四份两个cwd的rehearsal实际stdout与先前standalone输出逐字节一致，结果记录与旧短docstring版脚本/loader SHA匹配。这是scratch候选加预期正式`__file__`的**预发布模拟**；当前v19注释修复后的执行主体继承已核，未重新训练，不能换掉原运行SHA或称正式文件已运行。
+
+market loader明示保留旧log总收益减旧simple月rf的版本混合。我独立只读核了旧CSV/新ZIP面板714行：总收益列最大差0，excess各自匹配total−本版本rf到约`2.1e−16`以内；没有从原价/vintage复建，没有默换新口径。
+
+## 持续限制与待执行发布责任
+
+原全篇报告`reviewer/independent-review.md`、修复定向`reviewer-targeted/independent-review.md`、各次绑定及`final-warning-audit.md`各自实际范围/发现/关闭继续保留。本代理不是原全篇审查者，不追授原日OHLCV、vintage、当堂AI即时输出、未核原音/说话人/缺首尾、完整外论文精确指标或正式Obsidian显示通过。
+
+主代理还须完成当前候选的新警告位置/register、最终页面/公式/图/宽表、note-review-v2及资产SHA、基线未变核验，原子发布loader/两脚本及笔记后精确回读，再从正式code cwd真实运行新入口。README映射、关联文件、Notion、Git与远端按各自状态记录。
+
+本记录不声称上述发布/正式运行或各端同步已完成。**候选教学/代码集成审查通过与正式写回是两件事。** 本代理只写scratch报告/绑定，未修改正式代码、run_all、README、原件或外部端。

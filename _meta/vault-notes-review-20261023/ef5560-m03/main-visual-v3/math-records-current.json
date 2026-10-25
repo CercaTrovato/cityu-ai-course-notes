@@ -1,0 +1,242 @@
+[
+  {
+    "index": 0,
+    "latex": "L(\\alpha, \\beta) = \\frac{1}{2n}\\sum_{t \\in S}\\left(r_t^{e} - \\alpha - z_t^{\\top}\\beta\\right)^2, \\qquad (\\hat\\alpha, \\hat\\beta)_{\\text{OLS}} = \\arg\\min_{\\alpha,\\beta} L(\\alpha, \\beta)",
+    "rect": {
+      "height": 54.36458587646485,
+      "width": 940,
+      "x": 372,
+      "y": 428.1770935058594
+    }
+  },
+  {
+    "index": 1,
+    "latex": "\\hat r_t^{e} = \\hat\\alpha + \\sum_{j=1}^{p}\\hat\\beta_j z_{jt}",
+    "rect": {
+      "height": 64.01042175292969,
+      "width": 940,
+      "x": 372,
+      "y": 423.8020935058594
+    }
+  },
+  {
+    "index": 2,
+    "latex": "c^2+(1-c)^2=2(c-0.5)^2+0.5.",
+    "rect": {
+      "height": 26.02083396911621,
+      "width": 940,
+      "x": 372,
+      "y": 442.5416870117187
+    }
+  },
+  {
+    "index": 3,
+    "latex": "j^{*}=\\arg\\min_{j\\notin A_k}\\operatorname{MSE}_{\\mathrm{valid}}(A_k\\cup\\{j\\})",
+    "rect": {
+      "height": 38.53125,
+      "width": 940,
+      "x": 372,
+      "y": 436.5208435058594
+    }
+  },
+  {
+    "latex": "(\\hat\\alpha,\\hat\\beta)_{\\mathrm{Ridge}}=\\arg\\min_{\\alpha,\\beta}\\left\\{L(\\alpha,\\beta)+\\frac{\\lambda}{2}\\sum_{j=1}^{p}\\beta_j^2\\right\\}",
+    "rect": {
+      "height": 65.07292175292969,
+      "width": 940,
+      "x": 372,
+      "y": 422.9479370117187
+    },
+    "index": 5
+  },
+  {
+    "latex": "1.1\\beta_1+0.5\\beta_2=0.4,\\qquad0.5\\beta_1+1.1\\beta_2=0.4",
+    "rect": {
+      "height": 26.02083396911621,
+      "width": 940,
+      "x": 372,
+      "y": 442.375
+    },
+    "index": 6
+  },
+  {
+    "latex": "(\\hat\\alpha,\\hat\\beta)_{\\mathrm{LASSO}}=\\arg\\min_{\\alpha,\\beta}\\left\\{L(\\alpha,\\beta)+\\lambda\\sum_{j=1}^{p}|\\beta_j|\\right\\}",
+    "rect": {
+      "height": 65.07292175292969,
+      "width": 940,
+      "x": 372,
+      "y": 422.8333435058594
+    },
+    "index": 7
+  },
+  {
+    "latex": "S(u,\\lambda)=\\operatorname{sign}(u)\\max(|u|-\\lambda,0)",
+    "rect": {
+      "height": 26.02083396911621,
+      "width": 940,
+      "x": 372,
+      "y": 442.5
+    },
+    "index": 8
+  },
+  {
+    "latex": "(\\hat\\alpha, \\hat\\beta)_{\\text{EN}} = \\arg\\min_{\\alpha,\\beta}\\Big\\{L(\\alpha,\\beta) + \\lambda\\Big[\\rho\\sum_{j=1}^{p}\\lvert\\beta_j\\rvert + \\frac{1-\\rho}{2}\\sum_{j=1}^{p}\\beta_j^2\\Big]\\Big\\}",
+    "rect": {
+      "height": 64.01042175292969,
+      "width": 940,
+      "x": 372,
+      "y": 423.8958435058594
+    },
+    "index": 9
+  },
+  {
+    "latex": "R^2_{\\text{OOS}} = 1 - \\frac{\\text{SSE}_{\\text{model}}}{\\text{SSE}_{\\text{benchmark}}}, \\qquad \\text{SSE}_{\\text{model}} = \\sum_{t \\in \\text{test}}\\big(r_t^e - \\hat r_t^e\\big)^2, \\quad \\text{SSE}_{\\text{benchmark}} = \\sum_{t \\in \\text{test}}\\big(r_t^e - \\hat r_t^{e,b}\\big)^2",
+    "rect": {
+      "height": 54.26041793823242,
+      "width": 940,
+      "x": 372,
+      "y": 428.6666870117187
+    },
+    "index": 10
+  },
+  {
+    "latex": "\\{O, H, L, C, V\\}_{i,\\ \\text{through week } t-1} \\;\\longrightarrow\\; x_{i,t-1} \\;\\longrightarrow\\; \\text{rank}_{m,t-1}(x_i) \\;\\longrightarrow\\; \\hat r^{e}_{i,t} \\;\\longrightarrow\\; r^{e}_{i,t}",
+    "rect": {
+      "height": 26.541667938232425,
+      "width": 940,
+      "x": 372,
+      "y": 442.0729370117187
+    },
+    "index": 11
+  },
+  {
+    "latex": "\\text{centered rank} = \\text{within-universe percentile rank} - 0.50",
+    "rect": {
+      "height": 24.6875,
+      "width": 940,
+      "x": 372,
+      "y": 443.6145935058594
+    },
+    "index": 12
+  },
+  {
+    "latex": "r^{e}_{i,t} = r_{i,t} - r_{f,t}, \\qquad \\hat r^{e,b}_{i,t} = 0",
+    "rect": {
+      "height": 28.385417938232425,
+      "width": 940,
+      "x": 372,
+      "y": 441.78125
+    },
+    "index": 13
+  },
+  {
+    "latex": "R^2_{\\text{OOS}} = 1 - \\frac{\\sum_{i,t}\\big(r^{e}_{i,t} - \\hat r^{e}_{i,t}\\big)^2}{\\sum_{i,t}\\big(r^{e}_{i,t}\\big)^2}",
+    "rect": {
+      "height": 67.04167175292969,
+      "width": 940,
+      "x": 372,
+      "y": 422.0416870117187
+    },
+    "index": 14
+  },
+  {
+    "latex": "\\hat r^{e}_{i,t} = \\hat\\alpha + z_{i,t-1}^{\\top}\\hat\\beta",
+    "rect": {
+      "height": 27.58333396911621,
+      "width": 940,
+      "x": 372,
+      "y": 441.8958435058594
+    },
+    "index": 15
+  },
+  {
+    "latex": "w_1 = \\arg\\max_{\\lVert w\\rVert_2 = 1} \\text{Var}_S(Zw), \\qquad c_{ik} = z_i^{\\top}w_k, \\qquad \\hat r^{e}_i = \\hat\\alpha + \\sum_{k=1}^{K}\\hat\\gamma_k c_{ik}, \\quad K < p",
+    "rect": {
+      "height": 64.38542175292969,
+      "width": 940,
+      "x": 372,
+      "y": 423.65625
+    },
+    "index": 16
+  },
+  {
+    "latex": "q=\\frac{\\sum T_-y}{\\sum T_-^2}=\\frac{4\\times0.3873}{4\\times0.3873^2}\\approx2.582",
+    "rect": {
+      "height": 49.26041793823242,
+      "width": 940,
+      "x": 372,
+      "y": 430.9479370117187
+    },
+    "index": 17
+  },
+  {
+    "latex": "c=Z^\\top y/3=(0.3651,-0.3651)",
+    "rect": {
+      "height": 26.02083396911621,
+      "width": 916,
+      "x": 384,
+      "y": 442.8229370117187
+    },
+    "index": 18
+  },
+  {
+    "latex": "p=Z^\\top t/(t^\\top t)=(0.7071,-0.7071)",
+    "rect": {
+      "height": 26.02083396911621,
+      "width": 916,
+      "x": 384,
+      "y": 442.40625
+    },
+    "index": 19
+  },
+  {
+    "latex": "0.3873\\times(0.7071,-0.7071)=(0.2739,-0.2739)",
+    "rect": {
+      "height": 24.6875,
+      "width": 916,
+      "x": 384,
+      "y": 443.0208435058594
+    },
+    "index": 20
+  },
+  {
+    "latex": "1-0.3873\\times2.582\\approx0",
+    "rect": {
+      "height": 24.6875,
+      "width": 916,
+      "x": 384,
+      "y": 443.6354370117187
+    },
+    "index": 21
+  },
+  {
+    "latex": "w_1 = \\arg\\max_{\\lVert w\\rVert_2 = 1}\\ \\text{Cov}_S(Zw,\\ r^e)^2, \\qquad c_{i1} = z_i^{\\top}w_1, \\qquad \\hat r^{e}_i = \\hat\\alpha + \\sum_{k=1}^{K}\\hat\\gamma_k c_{ik}",
+    "rect": {
+      "height": 64.38542175292969,
+      "width": 940,
+      "x": 372,
+      "y": 423.25
+    },
+    "index": 22
+  },
+  {
+    "latex": "\\rho_s=1-\\frac{6\\sum_{i=1}^{n}d_i^2}{n(n^2-1)}.",
+    "rect": {
+      "height": 50.17708587646485,
+      "width": 940,
+      "x": 372,
+      "y": 430.5833435058594
+    },
+    "index": 23
+  },
+  {
+    "latex": "\\rho_s=\\frac{\\text{名次偏差乘积和}}{\\sqrt{\\text{预测偏差平方和}\\times\\text{实际偏差平方和}}}=\\frac{1.5}{\\sqrt{1.5\\times2}}\\approx0.8660.",
+    "rect": {
+      "height": 47.10416793823242,
+      "width": 940,
+      "x": 372,
+      "y": 432.375
+    },
+    "index": 24
+  }
+]

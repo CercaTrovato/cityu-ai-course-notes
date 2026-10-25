@@ -1,0 +1,62 @@
+[
+  {
+    "issue": "constant counterexample source label",
+    "old": "例如两只股票测试收益都为 +1%：",
+    "new": "**💡 数字反例（笔记补充）**：两只股票测试收益都为 +1%："
+  },
+  {
+    "issue": "benchmark names do not prove strength",
+    "old": "个股任务的对手是\"零\"，意思是\"你什么都不知道时就该猜它和无风险资产一样\"。对手越弱，打平越容易，所以个股任务里 OOS $R^2$ 接近零并不奇怪。",
+    "new": "个股任务使用“零超额收益”作为事先给定的基准，即预测股票总收益与无风险代理相同。不能仅凭“零”或“均值”的名称判断哪种基准更强；须在相同目标/测试行上比较实际误差，两个任务的数值不直接跨表比较。"
+  },
+  {
+    "issue": "p22 hypothetical source did not give60 months",
+    "old": "模型在 60 个测试月上的误差平方和是 0.018",
+    "new": "某测试期的误差平方和按题给为 0.018"
+  },
+  {
+    "issue": "survivor direction risk versus universal guarantee",
+    "old": "回测收益会被系统性高估。",
+    "new": "这可能造成偏高的回测表现，但不保证每份样本、每个策略的收益都会升高；偏差风险来自样本选择用了后来信息。"
+  },
+  {
+    "issue": "PCA input variance not target information",
+    "old": "回归真正能利用的是\"六个科室的结论\"，这就是为什么 §2.7 的降维能把 30 列压成几个方向而丢不了多少信息。",
+    "new": "降维会从输入中形成几个综合方向；能保留多少输入变化要看解释方差，而保留输入方差不保证保留收益预测信息。§2.7 的四行反例专门展示高方差方向也可能对目标无用。"
+  },
+  {
+    "issue": "feature provenance does not prove predictability",
+    "old": "这决定了本讲的预测在周频上做，也决定了它的信号天然很弱。",
+    "new": "本课将这些指标用于周频任务；信号是否强弱须看实际验证/测试，不能只从“使用过去价量”推出天然弱或无用。"
+  },
+  {
+    "issue": "PCR uncorrelated object is component scores not slopes",
+    "old": "它把\"30 个相关的斜率\"换成\"K 个互不相关的斜率\"，共线性问题在第一步就被消掉了；K 越小模型越简单。",
+    "new": "它把 30 个相关输入变成 $K$ 个在拟合样本内互不相关的成分得分，再对这些得分估计收益斜率。互不相关描述的是得分，不是斜率；保留方向有非零方差时可减轻输入共线性，秩不足仍须检查，测试分布也未必相同。$K$ 越小，保留的方向越少。"
+  },
+  {
+    "issue": "PLS analogy cannot prescribe selected inputs by domain knowledge",
+    "old": "如果你要预测的是心脏病，PLS 会直接把血压、胆固醇的组合放在第一位，而不是先看身高体重。",
+    "new": "若假设训练标签确实与血压/胆固醇组合共同变化更强，PLS 首方向可能强调这些输入；实际选什么须从数据计算，模型不会因知道疾病名称就自动获得医学知识，也不保证预测最好。此处仅是数学类比。"
+  },
+  {
+    "issue": "PLS covariance objective limits",
+    "old": "PLS 在两者之间折中——既要和收益相关，也要方向本身有足够的波动（太小的方向会不稳）。",
+    "new": "所以方向的相关程度与尺度都会影响目标；它不保证选输入方差最大的方向，也不保证选到经济含义最好的方向。实际方向仍按训练共同变化计算，验证决定是否保留。"
+  },
+  {
+    "issue": "three examples do not establish full-test influence distribution",
+    "old": "这就是为什么 OOS $R^2$ 被少数极端周主导。",
+    "new": "这个三股例说明极端误差可能在 SSE 中占较大份额；不能只凭三股就断言整段测试期一定由少数周主导。"
+  },
+  {
+    "issue": "t statistic interpretation conditional",
+    "old": "3. 显著性：t = 1.46 < 2，按常规标准不显著；",
+    "new": "3. 显著性：沿本节经典标准误及近似双侧 5% 阈值约 2，t = 1.46 未达到拒绝零均值的阈值；若周之间有依赖还须另核稳健标准误，不能把此近似当普遍判定；"
+  },
+  {
+    "issue": "p38 three wrong options plus C correct",
+    "old": "四个错误选项各有一个可以说出口的错。",
+    "new": "三个错误选项各有一个可以说出口的错。"
+  }
+]

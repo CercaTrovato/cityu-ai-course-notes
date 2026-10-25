@@ -1,0 +1,23 @@
+{
+  "note_changes": [
+    {
+      "reason": "market script header follows existing design contract",
+      "old": "\"\"\"L03_03 · 美国市场 Ridge/LASSO 冻结训练入口。\n讲义 p.25；M03 §2.5.3；读取旧解压面板，只打印选参与测试结果，不写数据/output。\n验证选参数后在178月pre-test重估；原日行情/vintage不在本入口恢复。\n\"\"\"",
+      "new": "\"\"\"L03_03 · 美国市场 Ridge/LASSO 冻结训练入口。\n目的      从指定保存面板验证选参，再重估并输出测试评价。\n讲义      旧56页版 Lec03 p.25（新版同p.25）。\n笔记      M03 §2.5.3。\n输入      旧解压 market_excess_return_panel.csv；月度log总收益减旧simple月rf的保存超额列。\n输出      stdout参数/测试OOS R²；不生成PNG/CSV，不改原数据或output/。\n关键决定  验证选参，178月pre-test重估整链；不切换新版ZIP或重建行情/vintage。\n\"\"\""
+    },
+    {
+      "reason": "weekly script header specifies source,target and outputs",
+      "old": "\"\"\"L03_04 · 六模型周度训练及具名股票PCR追踪。\n讲义 p.50；M03 §2.8.3；读取旧解压面板，只打印结果，不写数据/output。\n验证选设置、pre-test重估整链、test只评一次；CCB行不参与拟合/选择。\n\"\"\"",
+      "new": "\"\"\"L03_04 · 六模型周度训练及具名股票PCR追踪。\n目的      同一周度切分比较六模型，再追踪一只具名股票的冻结PCR预测。\n讲义      旧56页版 Lec03 p.50（新版p.48）。\n笔记      M03 §2.8.3。\n输入      旧解压 hsi_stock_excess_return_panel.csv；个股周simple总收益减7/365有效simple rf。\n输出      stdout验证设置/测试OOS R²和CCB追踪；不生成PNG/CSV或改原数据/output/。\n关键决定  dev选候选、validation选设置、pre-test重估、test只评一次；CCB不参与选择/拟合。\n\"\"\""
+    },
+    {
+      "reason": "already applied header wording correction in actual candidate;this record completes exact replay",
+      "old": "关键决定  dev选候选、validation选设置",
+      "new": "关键决定  dev拟合候选、validation选设置"
+    }
+  ],
+  "loader_doc_before": "    \"\"\"旧解压 market_excess_return_panel.csv，714行；月度目标/代理保留源列。\n    risk_free_return沿旧有效月简单收益口径；不自动改用当前ZIP的log月代理。\n    只解析日期并保持源行序；不是从上游行情/vintage重建变量。\"\"\"",
+  "loader_doc_after": "    \"\"\"旧解压 market_excess_return_panel.csv，714行；只保留所供版本列。\n    market_total_return为源声明的月度log总收益；market_excess_return保留旧log总收益\n    减旧有效simple月risk_free_return的版本混合，不重算为一致的新口径。\n    不自动改用当前ZIP的log月rf；只解析日期且保持行序，不重建行情/vintage。\n    两版本保存总收益列逐行相同；上游原价/vintage未提供，不据此验证真实无泄漏。\"\"\"",
+  "executable_ast_unchanged_from_v17": true,
+  "record_correction": "Actual v19 candidate already had correct dev-fits wording;initial JSON omitted this final exact replacement. Original JSON snapshot retained;no candidate/code change."
+}

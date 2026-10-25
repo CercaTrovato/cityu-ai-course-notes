@@ -1,0 +1,68 @@
+# Class 3 data
+
+Linear Machine Learning for Return Prediction
+
+Extract the ZIP and open these CSV files in Excel, R, or Python. This folder contains all the data needed for the examples listed below.
+
+## Start here
+
+1. Start with market_excess_return_panel.csv; compare linear models using the four lagged macro predictors and the supplied split.
+2. Use hsi_stock_excess_return_panel.csv and the characteristic dictionary for the weekly stock exercise.
+3. Choose model settings on validation observations, then compare test errors and forecast-sorted portfolio returns with the reference results.
+
+## Data and definitions
+
+- `market_excess_return_panel.csv`: Three-market monthly excess-return forecasting panel (714 rows; 2006-09-30 to 2026-06-30).
+- `hsi_stock_excess_return_panel.csv`: HSI stock-week panel with 30 characteristics and excess returns (12,480 rows; 2023-07-07 to 2026-06-26).
+- `technical_characteristics_dictionary.csv`: Definitions for the 30 technical characteristics (30 rows).
+- `risk_free_yields_monthly.csv`: Monthly U.S. and Chinese mainland three-month government yields (241 rows; 2006-06-30 to 2026-06-30).
+- `hsi_constituents_2023_07.csv`: Fixed July 2023 constituent list, company names, sectors, and membership source (80 rows).
+
+## Classroom results for comparison
+
+- `market_linear_model_summary.csv`: Validation settings and test evidence for the monthly linear models (15 rows).
+- `market_linear_test_predictions.csv`: Monthly test predictions for the three markets (180 rows; 2021-07-31 to 2026-06-30).
+- `stock_linear_model_summary.csv`: Validation settings and test evidence for the weekly stock models (7 rows).
+- `stock_linear_test_predictions.csv`: Weekly HSI constituent test predictions (4,108 rows; 2025-07-04 to 2026-06-26).
+- `stock_linear_forecast_spreads.csv`: Forecast-sorted weekly high-minus-low portfolio evidence (6 rows).
+- `market_linear_validation.csv`: Validation losses across candidate model settings (78 rows).
+- `market_linear_coefficients.csv`: Fitted standardized coefficients for the market models (48 rows).
+- `stock_linear_validation.csv`: Validation losses for the weekly stock models (37 rows).
+- `stock_linear_coefficients.csv`: Fitted standardized coefficients for the linear stock models (180 rows).
+- `stock_linear_quintiles.csv`: Test-period mean returns by model and forecast quintile, not a weekly time series (20 rows).
+
+## Columns, units, and interpretation
+
+- Start with `market_excess_return_panel.csv`, then move to `hsi_stock_excess_return_panel.csv` and `technical_characteristics_dictionary.csv`. The other files are saved model choices and results for comparison, not additional predictors.
+- In prediction files, `actual` is the realized excess return. Model-name columns contain forecasts. `predicted_excess_return` and `forecast_quintile` refer to the validation-selected stock model.
+- In model summaries, `alpha` is the penalty for Ridge/LASSO/Elastic Net but the selected component count for PCR/PLS. Blank settings mean not applicable. A constant forecast has no defined forecast correlation or usable stock ranking; these blanks are not zero performance.
+- `stock_linear_quintiles.csv` contains test-period average returns for each quintile. `stock_linear_forecast_spreads.csv` summarizes weekly top-minus-bottom returns. The stock-level predictions allow you to recreate those sorts.
+
+## Forecast panels
+
+| Panel | Row key | Development | Validation | Test |
+| --- | --- | --- | --- | --- |
+| Monthly markets | forecast_month + market | Sep 2006-Jun 2018 (142) | Jul 2018-Jun 2021 (36) | Jul 2021-Jun 2026 (60) |
+| Weekly HSI stocks | forecast_week + ticker | 7 Jul 2023-27 Dec 2024 (78) | 3 Jan-27 Jun 2025 (26) | 4 Jul 2025-26 Jun 2026 (52) |
+
+The `split` column records these periods. All stocks from one week belong to the same split.
+The stock grid has 80 July 2023 constituents over 156 weeks (12,480 rows). The stock models use the 12,281 rows with an outcome and all 30 ranked inputs: 6,123 development, 2,050 validation, and 4,108 test rows. Keep unavailable observations blank rather than replacing them with zero.
+
+- Market target: `market_excess_return`; benchmark: `benchmark_ma12_excess_return`. Predictors: `term_spread_lag1`, `fed_funds_lag1`, `unemployment_lag2`, and `inflation_lag2`. Rate and inflation columns are percent; term spread is percentage points.
+- Stock target: `excess_return`; benchmark: zero. The 30 columns ending in `_rank` are the model inputs; their raw indicators and formulas are also supplied.
+- Monthly market total, risk-free, excess, benchmark, and forecast fields are log returns. Weekly stock total, risk-free, excess, and forecast fields are simple returns. Returns are decimals; annual yields are percent. Dates, IDs, outcomes, and benchmarks are not predictors.
+
+The U.S. and HKSAR use the prior month-end U.S. three-month Treasury yield; the Chinese mainland uses the ChinaBond three-month government yield.
+The raw October 2025 U.S. unemployment/inflation gaps were forward-filled before lagging when constructing these shared panels. Model inputs are complete; no future observations were used to fill those gaps.
+The monthly market panel starts in September 2006 and ends in June 2026. Its first 12 months have no MA(12) benchmark; the test period is complete.
+
+## Notes
+
+- The four market predictors are U.S. macro variables in all three markets. Class 2's CSI 300 example uses a different, China-macro specification.
+
+## Sources
+
+- U.S. and HKSAR risk-free proxy: U.S. three-month Treasury yield.
+- Chinese mainland risk-free proxy: ChinaBond three-month government yield.
+
+`manifest.json` is a file inventory for checking the download; you do not need it for the exercises.

@@ -1,0 +1,49 @@
+--- v2
++++ v3
+@@ -1995,11 +1995,13 @@
+ 
+ 额外补充了排序传统的学术渊源（Fama 1992/93 因子研究），让笔记「为什么用排名」的论证有了教授原声支持，不只是讲义书面说法。
+ 
+-**🎙️ 课堂补充：排序怎样变成 SMB/HML（`01:41:00`–`01:42:16`）**
++**🎙️ 课堂补充**（排序怎样变成 SMB/HML，`01:41:00`–`01:42:16`）
+ 
+ 转录在 `01:41:00` 点名 *"SMB, HML"*，随后说 small minus big 与 high minus low；`01:44:01` 又提 small/large、value/growth。这是课堂技术内容，不只是一段历史索引。ASR 把人名和若干词识别错误，未听原音，不能将乱码自动修成教师逐字确认的完整因子公式。
+ 
+-**以下机制是笔记补充，并用一手定义核对**：市值是股价乘发行股份数量，small/big 按市值大小分，不能只看一股贵不贵。SMB（Small Minus Big）比较小市值组收益与大市值组收益；若一周小组 2%、大组 1%，两组收益差是 1 个百分点，不等于任何本金口径下都赚 1%。
++**💡 换个说法（笔记补充）**
++
++以下机制用一手定义核对。市值是股价乘发行股份数量，small/big 按市值大小分，不能只看一股贵不贵。SMB（Small Minus Big）比较小市值组收益与大市值组收益；若一周小组 2%、大组 1%，两组收益差是 1 个百分点，不等于任何本金口径下都赚 1%。
+ 
+ HML（High Minus Low）的高/低在经典定义中按**账面权益/市场权益**比值（book-to-market）区分：账面权益是财务记录中的资产减负债；市场权益是股票市值。例如两公司账面权益同为 100，市场权益分别为 50 与 200，比值是 2 与 0.5。前者属于较高比值（value），后者较低（growth）；不是“股价高减股价低”，也不是高组必然更优秀。
+ 
+@@ -3234,9 +3236,9 @@
+ 
+ 该段课堂用正倍数的不同预测演示“水平评价与排序评价可能不同”；不能扩写成所有常数或任意单调变换都保序。数值例、严格递增条件和反例是笔记补充。
+ 
+-**🎙️ 课堂补充：另一种次序评价（`02:21:08`–`02:21:43`）**
+-
+-教师点名斯皮尔曼等级相关系数（Spearman's rank correlation）：`02:21:28` 的 ASR 含 *"it is called [Spearman's rank] correlation"*。后面关于 1/0 的语句破损，不能据此写成“只要名次不完全一样，相关就必为 0”。以下为笔记补充的读法与算例，不冒称现场计算结果。
++**🎙️ 课堂补充**（另一种次序评价，`02:21:08`–`02:21:43`）
++
++课堂转录在这一段点名斯皮尔曼等级相关系数（Spearman's rank correlation）：`02:21:28` 的 ASR 含 *"it is called [Spearman's rank] correlation"*。后面关于 1/0 的语句破损，不能据此写成“只要名次不完全一样，相关就必为 0”。以下为笔记补充的读法与算例，不冒称现场计算结果。
+ 
+ 一行仍须是**同一股票、同一周**。把预测和实际收益分别换成各自名次，再看两列名次的同向程度。不能把两列各自排序后丢掉股票对应，否则每次都能造出相同名次。
+ 
+@@ -3245,6 +3247,8 @@
+ 无并列名次时，可用下式计算；它用每只股票的名次差平方衡量错位，再换成以同序为 1、反序为 −1 的尺度。
+ 
+ $$\rho_s=1-\frac{6\sum_{i=1}^{n}d_i^2}{n(n^2-1)}.$$
++
++下表每行解释本周比较中的一个量：先确定股票数，再逐只求名次差，最后将错位程度换成相关系数。
+ 
+ | 符号 | 本例读法 |
+ |---|---|
+@@ -3644,6 +3648,8 @@
+ | 预测分组排序 | Forecast sort | Rank stocks by predicted excess return before the holding week, assign groups, and compare realized returns. | §2.9.1 |
+ | 高减低价差 | High-minus-low spread | The realized excess return of the top forecast group minus the bottom group. | §2.9.1 |
+ | 斯皮尔曼等级相关 | Spearman's rank correlation | Correlation between the ranks of matched forecasts and realized outcomes; it measures ordering, not investment return.（笔记自拟） | §2.9.2 |
++| 小市值减大市值因子 | Small Minus Big (SMB) | The mean return of the three small size/value portfolios minus that of the three big portfolios in the stated French construction.（外源定义的笔记自拟英文） | §2.6.4 |
++| 高账面市值比减低账面市值比因子 | High Minus Low (HML) | The mean return of the two value portfolios minus that of the two growth portfolios in the stated French construction.（外源定义的笔记自拟英文） | §2.6.4 |
+ | 做空 | Short selling | Borrow shares, sell them, then buy back and return the same quantity; profits and losses depend on the repurchase price.（笔记自拟） | §2.9.3 |
+ | 总敞口 / 净敞口 | Gross / net exposure | Gross adds the absolute long and short amounts; net subtracts short from long, each relative to stated equity.（笔记自拟） | §2.9.3 |
+ | 预测精度与排序的分离 | Accuracy versus ranking | MSE assesses forecast levels; a sort assesses ordering; the same forecasts can score differently on the two. | §2.9.2 |

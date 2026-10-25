@@ -1,0 +1,47 @@
+[
+  {
+    "reason": "main source task-table model membership",
+    "old": "| 用到的模型 | OLS、前向选择、Ridge、LASSO、Elastic Net | 前五个 + PCR、PLS |",
+    "new": "| 用到的模型 | OLS、前向选择、Ridge、LASSO、Elastic Net | OLS、Ridge、LASSO、Elastic Net、PCR、PLS 六模型；前向选择未参加这场六模型比较 |"
+  },
+  {
+    "reason": "B3 remaining introductory summary",
+    "old": "Ridge 通常把每个斜率都缩小，却没有“弱到某个范围就直接删除”的阈值。",
+    "new": "Ridge 约束系数整体大小，却没有“弱到某个范围就直接删除”的 L1 阈值；相关输入的个别斜率仍可能增加。"
+  },
+  {
+    "reason": "B3 remaining analogy",
+    "old": "Ridge 说\"两个人都别用力过猛\"，于是他们各出一半力，合力差不多，但每个人的动作都看得懂了。",
+    "new": "Ridge 说“两个人都别用力过猛”，让两者按数据与惩罚重新分摊作用；只有特定对称例才各分一半。类比不保证任一系数都变小，也不证明模型已经可解释或正确。"
+  },
+  {
+    "reason": "B3 same-scope SFS contrast",
+    "old": "每个变量都在，只是亮度被压低；LASSO 则是\"调光器调到零就等于关掉\"，兼有两者。",
+    "new": "先将全部候选列留在优化问题中，用惩罚约束整体大小；并非每个斜率都单调变小。LASSO 的阈值可将系数调为零，才相当于把该输入从有效预测中关掉。"
+  },
+  {
+    "reason": "SFS exact limit",
+    "old": "而且\"单独没用、合起来有用\"的组合永远进不来",
+    "new": "而且可能停在不能发现联合信号的路径上，见下方完整反例"
+  },
+  {
+    "reason": "SFS random vs arbitrary",
+    "old": "会在两个几乎相同的变量之间随机挑一个",
+    "new": "可能按微小样本差异或预定平局规则只留其中一个，不一定涉及随机抽样"
+  },
+  {
+    "reason": "B3 single-coordinate condition local",
+    "old": "对比 Ridge（同一 OLS 斜率 0.40）：λ 无论多大，$0.40/(1+\\lambda)$ 都大于零。这就是\"角\"的作用：LASSO 每个斜率被减去一个固定量，减到零就停在零；Ridge 每个斜率被乘以一个小于 1 的因子，永远到不了零。",
+    "new": "对比本节单列、原关联 0.40 且有限 $\\lambda\\ge0$ 的 Ridge 闭式例，$0.40/(1+\\lambda)$ 始终大于零。这是该单列例的相乘规律；LASSO 则在同一条件下向零移动固定距离并截零，不能将两条闭式规则套到相关多列每个系数。"
+  },
+  {
+    "reason": "S3 scene result provenance",
+    "old": "是讲义假数表 p.16 没有的、来自真实美国宏观数据的系数解读。",
+    "new": "这是现场表格的口头解读，不是本次保存结果的可复验确认；当堂输入/目标尺度/完整输出未保存，不能与保存的 alpha 或四项非零结果硬并为同一次运行。"
+  },
+  {
+    "reason": "B3 effective inputs distinction",
+    "old": "前向选择用\"进或出\"控制复杂度。接下来的 §2.4 换一种思路：所有变量都留在模型里，但给大斜率收费",
+    "new": "前向选择用“进或出”控制复杂度。接下来的 §2.4 换一种思路：先让全部候选列进入优化问题，再给斜率收费；L1 型惩罚还可能产生零系数"
+  }
+]

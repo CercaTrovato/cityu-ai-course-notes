@@ -1,0 +1,118 @@
+--- v8
++++ v9
+@@ -168,7 +168,9 @@
+ 
+ **课件原例**
+ 
+-p.2 原文：*"Monthly market excess returns: macro predictors; lagged MA(12) benchmark. Compare OLS, forward selection, Ridge, LASSO, and Elastic Net. Weekly stock excess returns: technical characteristics; zero benchmark. Add PCR and PLS, then compare stock rankings."*（讲义 p.2）
++p.2 原文：
++
++> *"Monthly market excess returns: macro predictors; lagged MA(12) benchmark. Compare OLS, forward selection, Ridge, LASSO, and Elastic Net. Weekly stock excess returns: technical characteristics; zero benchmark. Add PCR and PLS, then compare stock rankings."* （讲义 p.2）
+ 
+ | 维度 | 市场任务 | 个股任务 |
+ |---|---|---|
+@@ -221,7 +223,9 @@
+ 
+ **课件原例**
+ 
+-p.4 原文三条：*"Estimate risk premia as a prediction problem. Linear shrinkage, trees, and neural networks face the same data and OOS test. Evaluate return-forecast accuracy and portfolio performance."*，并给出 DOI `doi.org/10.1093/rfs/hhaa009`。（讲义 p.4）
++p.4 原文三条：
++
++> *"Estimate risk premia as a prediction problem. Linear shrinkage, trees, and neural networks face the same data and OOS test. Evaluate return-forecast accuracy and portfolio performance."* ，并给出 DOI `doi.org/10.1093/rfs/hhaa009`。（讲义 p.4）
+ 
+ **🎙️ 课堂补充**（`10:23`–`13:14`，约 3 分钟，A · 课上展开）
+ 
+@@ -692,7 +696,9 @@
+ 
+ **课件原例**
+ 
+-p.12 原文：*"λ = 0 gives OLS; larger λ puts more weight on small slopes. Standardize predictors on training data; leave the intercept α unpenalized. Choose λ on validation data. Too much shrinkage can remove useful signal. What changes: the estimation objective, while $\hat r^e = \hat\alpha + z^{\top}\hat\beta$ remains linear."*（讲义 p.12）
++p.12 原文：
++
++> *"λ = 0 gives OLS; larger λ puts more weight on small slopes. Standardize predictors on training data; leave the intercept α unpenalized. Choose λ on validation data. Too much shrinkage can remove useful signal. What changes: the estimation objective, while $\hat r^e = \hat\alpha + z^{\top}\hat\beta$ remains linear."* （讲义 p.12）
+ 
+ **数字例子（理论 λ 口径，笔记补充）**：n=100、中心化输入满足 $\sum z^2=100$，$\sum z r^e=40$。目标为 SSE/(2n)+λβ²/2，求导得 $\hat\beta=40/(100+100\lambda)$，而不是 40/(100+λ)。
+ 
+@@ -792,7 +798,9 @@
+ 
+ 验证选出 software alpha = 100，验证 MSE ×10⁴ = 27.02，测试 OOS $R^2$ = −3.2%。
+ 
+-讲义评语：*"Lower test loss than OLS; still worse than lagged MA(12)."* 并提醒 *"With $L = \text{SSE}/(2n)$ above, Ridge's software alpha = $n\lambda$; penalty scales differ across implementations."*（讲义 p.14）
++讲义评语：
++
++> *"Lower test loss than OLS; still worse than lagged MA(12)."* 并提醒 *"With $L = \text{SSE}/(2n)$ above, Ridge's software alpha = $n\lambda$; penalty scales differ across implementations."* （讲义 p.14）
+ 
+ **💡 岭回归从四则运算到矩阵（笔记补充）**
+ 
+@@ -2083,7 +2091,9 @@
+ 
+ **课件原例**
+ 
+-p.34（讲义示例，假数）：一只股票一周收益 2.0%，同期无风险收益 0.1%。原文：*"A zero excess-return forecast and a model forecast of 1.7% give $e_{\text{zero}} = 1.9\%$, $e_{\text{model}} = 0.2\%$. The model has the smaller squared error for this observation."* 全测试期的评分公式：
++p.34（讲义示例，假数）：一只股票一周收益 2.0%，同期无风险收益 0.1%。原文：
++
++> *"A zero excess-return forecast and a model forecast of 1.7% give $e_{\text{zero}} = 1.9\%$, $e_{\text{model}} = 0.2\%$. The model has the smaller squared error for this observation."* 全测试期的评分公式：
+ 
+ $$R^2_{\text{OOS}} = 1 - \frac{\sum_{i,t}\big(r^{e}_{i,t} - \hat r^{e}_{i,t}\big)^2}{\sum_{i,t}\big(r^{e}_{i,t}\big)^2}$$
+ 
+@@ -2186,7 +2196,9 @@
+ - **Realized vol**（实现波动率）：从第 1 组约 +0.17% 降到第 5 组约 −0.28%——波动越大下周越差；
+ - **Amihud**（Amihud 非流动性，价格变动 ÷ 成交额）：从约 +0.30% 降到约 −0.27%，中间起伏。
+ 
+-原文：*"Each development week forms five HSI stock portfolios from one lagged characteristic. Points report the time-series mean of the equal-weighted next-week excess return."*（讲义 p.36）
++原文：
++
++> *"Each development week forms five HSI stock portfolios from one lagged characteristic. Points report the time-series mean of the equal-weighted next-week excess return."* （讲义 p.36）
+ 
+ **怎么读**
+ 
+@@ -2279,7 +2291,9 @@
+ 
+ **课件原例**
+ 
+-p.37 原文：*"Fit one coefficient vector across stock-week observations; z contains training-standardized characteristics… Seventy-nine of the eighty members supply outcomes. Hang Seng Bank contributes none, and those rows are left missing rather than imputed."*（讲义 p.37）
++p.37 原文：
++
++> *"Fit one coefficient vector across stock-week observations; z contains training-standardized characteristics… Seventy-nine of the eighty members supply outcomes. Hang Seng Bank contributes none, and those rows are left missing rather than imputed."* （讲义 p.37）
+ 
+ **数字例子（手把手）**（`code/L03_linear_ml/01_reproduce_lecture.py` B 段核对行数；斜率示例为笔记补充 ⚪）
+ 
+@@ -2785,7 +2799,9 @@
+ | Ridge | 惩罚 1000 | 26.43 | −0.15% |
+ | OLS | 无约束 | 26.62 | −0.53% |
+ 
+-原文：*"Validation selects PCR with five components. PCR and PLS have test OOS $R^2$ only slightly above zero. These small point estimates do not establish persistent improvement. Hang Seng Index panel. Test: 52 weeks, 4,108 stock-week observations. Benchmark: zero excess return."*（讲义 p.47）
++原文：
++
++> *"Validation selects PCR with five components. PCR and PLS have test OOS $R^2$ only slightly above zero. These small point estimates do not establish persistent improvement. Hang Seng Index panel. Test: 52 weeks, 4,108 stock-week observations. Benchmark: zero excess return."* （讲义 p.47）
+ 
+ p.48 四幅图（讲义 p.48，视觉复核）：左上"各族最佳验证损失"六根几乎等高的柱子（26.62 到 26.20）。
+ 
+@@ -3148,7 +3164,9 @@
+ 
+ **课件原例**
+ 
+-p.53 原文四步：*"1. Rank stocks by their predicted excess return before the holding week. 2. Assign five groups using those forecast ranks. 3. Calculate each group's realized excess return during the holding week. 4. Compare the top and bottom groups over all test weeks."*（讲义 p.53）
++p.53 原文四步：
++
++> *"1. Rank stocks by their predicted excess return before the holding week. 2. Assign five groups using those forecast ranks. 3. Calculate each group's realized excess return during the holding week. 4. Compare the top and bottom groups over all test weeks."* （讲义 p.53）
+ 
+ **编号步骤**（输入 → 动作 → 输出）
+ 
+@@ -3224,7 +3242,9 @@
+ | B | 0.2% | 0.4% | 0.8% | 中 |
+ | C | 0.3% | 0.6% | 1.2% | 高 |
+ 
+-原文：*"Model B doubles every forecast. Its squared error is larger, but the high-minus-low return is the same: 0.3% − 0.1% = 0.2%. MSE assesses forecast levels. A sort assesses ordering."*（讲义 p.54）
++原文：
++
++> *"Model B doubles every forecast. Its squared error is larger, but the high-minus-low return is the same: 0.3% − 0.1% = 0.2%. MSE assesses forecast levels. A sort assesses ordering."* （讲义 p.54）
+ 
+ **数字读法**（`code/L03_linear_ml/01_reproduce_lecture.py` A 段）
+ 
+@@ -4191,3 +4211,5 @@
+ ### 9.10 2026-10-20 本次来源更新范围
+ 
+ 本次受影响范围为新增版本说明、正文增量、相关结果表与新旧来源边界。旧正文页码明确按当时原件；新版仅把本次真实变化与现有教学单元对齐。未改变既有transcript材料状态，不增加本人通读/自测记录。本轮作者已完成实质修文并保持 `readability_review: pending`、`mechanism_review: pending`；只有原独审者定向复核和主代理来源核验完成后，状态才可更新。
++
++> **2026-10-25 当前状态说明**：上方 2026-10-02/10-20 等有日期段落中的“本轮”“pending”为当时记录；本次新 6.1 全篇审查与修复定向复核状态见文件头及 [[_meta/vault-notes-review-20261023/ef5560-m03/review.json|本次重审回执]]。正式写回、关联、Notion 和 Git 仍按全库进度台账分别记录，不能由教学字段推定各端完成。

@@ -1,0 +1,53 @@
+--- v9
++++ v10
+@@ -1305,7 +1305,7 @@
+ 
+ 3.  解释为什么 MA(12) 必须是滞后的（用未来 12 个月的均值当基准就等于让基准偷看答案）。
+ 
+-"Be ready to explain" 那句问的是：OOS $R^2$ 的符号对一个组合经理意味着什么——负号意味着"用这个模型不如用过去一年的平均"。
++"Be ready to explain" 那句问的是：OOS $R^2$ 的符号对一个组合经理意味着什么——负号表示在相同测试期和目标的平方误差评价下，模型比滞后一年均值基准差；不据此裁定排序或成本后投资价值。
+ 
+ **课件原例**
+ 
+@@ -2405,7 +2405,7 @@
+ 
+ D. 选冻结测试 MSE 最低的那个。讨论题：*"Why should a 0.0001 validation-MSE difference not override the implementation goal?"*（讲义 p.38）
+ 
+-**English reference answer（笔记自拟）**: C. Elastic Net best matches the stated goal because it keeps a compact rule while retaining several related signals. A 0.0001 validation-MSE difference is too small to override the prespecified implementation objective, and the frozen test must not be used for model selection.
++**English reference answer（笔记自拟）**: C. Elastic Net best matches the stated goal because it keeps a compact rule while retaining several related signals. Under the stated condition that all three models are within one standard error of the lowest validation MSE, the given compactness/group pattern supports this choice; the frozen test must not be used for model selection.
+ 
+ **🎙️ 课堂补充**（`01:57:24`–`02:00:11`，约 2.8 分钟，A · 课上展开，课堂问答）
+ 
+@@ -3059,17 +3059,21 @@
+ 
+ p.50 原文（Instruction）：
+ 
+-> *"Using the weekly stock panel and the stated date split, compare OLS, Ridge, LASSO, Elastic Net, PCR, and PLS. Select settings on validation weeks, refit through June 2025, and report test OOS $R^2$ against zero excess return. Ask for a second output: the predicted and realized excess return of one named stock in one test week."*
++> *"Using the weekly stock panel and the stated date split, compare OLS, Ridge, LASSO, Elastic Net, PCR, and PLS. Select settings on validation weeks, refit through June 2025, and report test OOS $R^2$ against zero excess return. Ask for a second output: the predicted and realized excess return of one named stock in one test week. Read the model comparison first, then trace the named stock through the fitted rule."*
+ 
+ （讲义 p.50）
+ 
++**中文读题与作答位置**：先按相同周度面板/时间切分比较六个模型族，在验证周选设置并重估到 2025 年 6 月，再用对零超额收益的 OOS $R^2$ 报测试结果。第二项是同一冻结规则的一只具名股票/一个测试周的预测与实现，不是再挑一套有利参数。按原页最后一句，先读模型比较，再追踪该股票；本节前面两段完整入口及 CCB 输出分别回答这两项。
++
++**English reference answer（笔记自拟，旧解压目录实跑口径）**: I compare OLS, Ridge, LASSO, Elastic Net, PCR and PLS under the stated weekly split, select settings on validation weeks, and refit the full preprocessing/model pipeline through June 2025 before evaluating the untouched test weeks against zero excess return. The comparison selects PCR with five components. For CCB (0939.HK) in the test week 2025-07-04, the frozen PCR rule predicts an excess return of about 0.85%, while the realized excess return is about 2.16%. I read the model comparison before tracing that row; agreement between the manual and pipeline prediction checks implementation consistency, not forecast accuracy or deployability.
++
+ **🎙️ 课堂补充**：❓ 录音范围内没有听到教授专门朗读或演示这条"比较六个模型 + 追踪一只股票"的 AI 指令。
+ 
+  前后对照：`02:11:28`（PLS 取舍讨论结束）到 `02:12:06`（"now let's see the performance for all these methods"）之间没有间隔，教授像是直接展示已经算好的结果表（p.47），没有像 p.25 那样现场读指令、跑代码、读结果。
+ 
+ 也没有出现"追踪一只指定股票"的现场操作（p.49 的三只股票像是直接引用讲义原表，见 §2.8.2）。
+ 
+-**不能标成 ⏭️ 略过**——本讲 scan 显示 0 处 ≥120 秒空档，更可能是"确实没有出声演示"而非"漏录"。不可降权：这一页的方法论（指令怎么写、为什么要"trace the named stock"）只能靠讲义与本笔记学。
++**不能标成 ⏭️ 略过**：当前可读转录中未找到该完整任务的专门演示，故保留 ❓、不可降权。scan 没有大空档只说明保存的时间序列连续，不能证明录音完整，更不能据此排除漏录。该任务仍按讲义及完整代码入口学习，不推断教授一定没做过。
+ 
+ **💡 换个说法（笔记补充）**
+ 
+@@ -3079,7 +3083,7 @@
+ **⚠️ 常见误解**
+ 
+ - ❌ "指令里说了 six models，AI 就会自动按 p.37 的日期切" → 日期必须在指令里写明（"the stated date split"指的是 p.37 那张表），否则 AI 会自己随机切或按比例切，直接违反时序纪律。
+-- ❌ "附加输出只是演示用" → 它是验证流水线一致性的唯一手段：表里的 OOS $R^2$ 是 4,108 行的汇总，单靠它看不出"标准化用了哪段均值"这类错误。
++- ❌ "附加输出只是演示用" → 它是验证流水线一致性的一种具体手段，还可结合代码、拟合对象和完整变换日志核查：表里的 OOS $R^2$ 是 4,108 行的汇总，单靠它看不出"标准化用了哪段均值"这类错误。
+ 
+ **所以呢**
+ 

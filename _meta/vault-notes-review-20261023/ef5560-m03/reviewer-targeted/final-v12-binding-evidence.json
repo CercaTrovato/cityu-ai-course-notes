@@ -1,0 +1,98 @@
+{
+  "v11_sha256": "b8cdfcb5ad833e7eb686a1bc1a3f622aeba973642cfcbbde04ecf41abb4339aa",
+  "v12_sha256": "85dbcf013d17f45d180fd28d451b37c0230431636172a4875511741fe45e27c8",
+  "v12_bytes": 340777,
+  "changes": [
+    {
+      "type": "replace",
+      "before": [
+        454,
+        454
+      ],
+      "after": [
+        454,
+        454
+      ],
+      "old": [
+        "- 斜率的单位是\"每一个标准差\"：$0.40\\%$ 的意思是\"利差比训练期平均高一个标准差，预测就高 0.40 个百分点\"。这比 M02 里\"利差每高 1 个百分点\"更抽象，但好处是四个斜率可以直接比大小——谁的绝对值大谁影响大。"
+      ],
+      "new": [
+        "- 斜率的单位是\"每一个标准差\"：$0.40\\%$ 的意思是\"利差比训练期平均高一个标准差，预测就高 0.40 个百分点\"。这比 M02 里\"利差每高 1 个百分点\"更抽象，但在其他标准化输入保持不变时，可比较各输入增加一个训练标准差对拟合预测的边际变化；这不等于该变量的总体预测重要性或真实因果效应，相关输入仍会分摊作用。"
+      ]
+    },
+    {
+      "type": "replace",
+      "before": [
+        2132,
+        2132
+      ],
+      "after": [
+        2132,
+        2134
+      ],
+      "old": [
+        "- 模型给所有股票同一个预测 $c$ 时（p.51），$\\text{SSE}_{\\text{model}} = \\sum (r^e - c)^2$，只要 $c$ 接近训练均值就能与零预测打平甚至略胜——这就是常数预测\"在 MSE 上不吃亏\"的来源。"
+      ],
+      "new": [
+        "- 模型给所有股票同一个预测 $c$ 时，$\\text{SSE}_{\\text{model}}=\\sum(r^e-c)^2$。这个固定数若恰好接近测试期实际收益的中心，可能比零预测好；接近**训练期**均值本身不保证样本外打平或胜出。",
+        "",
+        "例如两只股票测试收益都为 +1%：若固定 $c=-1\\%$，每只误差是 2 个百分点，平方是 4；零预测每只误差仅 1 个百分点，平方是 1，反而更好。若事前冻结的 $c=+1\\%$，本例固定预测误差才为零。例子只比较已给输入，不允许观察测试标签后再挑 $c$。本课常数模型虽比 OLS 的平方误差小，测试对零基准的 $R^2$ 仍略负，须照实报告。"
+      ]
+    }
+  ],
+  "constant_forecast_example": [
+    {
+      "c_percent": -1,
+      "errors_pp": [
+        2,
+        2
+      ],
+      "squares_pp_squared": [
+        4,
+        4
+      ],
+      "SSE_pp_squared": 8,
+      "R2_against_zero": -3.0
+    },
+    {
+      "c_percent": 0,
+      "errors_pp": [
+        1,
+        1
+      ],
+      "squares_pp_squared": [
+        1,
+        1
+      ],
+      "SSE_pp_squared": 2,
+      "R2_against_zero": 0.0
+    },
+    {
+      "c_percent": 1,
+      "errors_pp": [
+        0,
+        0
+      ],
+      "squares_pp_squared": [
+        0,
+        0
+      ],
+      "SSE_pp_squared": 0,
+      "R2_against_zero": 1.0
+    }
+  ],
+  "coefficient_conditional_example": {
+    "z_spread_old": 0.5,
+    "z_spread_new": 1.5,
+    "other_z_rate": -1,
+    "old_prediction_pct": 0.7,
+    "new_prediction_pct": 1.1,
+    "change_pp": 0.4
+  },
+  "mermaid_count": 7,
+  "mermaid_bytes_equal": true,
+  "python_count": 4,
+  "python_bytes_equal": true,
+  "display_math_count": 25,
+  "display_math_bytes_equal": true
+}

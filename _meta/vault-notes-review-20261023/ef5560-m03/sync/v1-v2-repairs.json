@@ -1,0 +1,44 @@
+[
+  {
+    "id": "f01",
+    "reason": "A2当前统计与写回真实状态同步",
+    "old": "**2026-10-25 全库重审进行中**：按[全库笔记重审任务单](_meta/全库笔记重审任务单-2026-10-23.md)执行，范围 69 份（43 篇 M/T、24 份配套教学 Markdown、2 份 Notebook）。AC6761 M01–M04、M08，EF5560 M01–M02，IS5113 M01 共 8 篇已完成本次全篇审查并正式写回；2 篇缺陷待修、59 份未开始。M01–M04 等前 7 篇的本地/Notion/Git 已分别闭环；M08 本批各端进度见[台账](_meta/vault-notes-review-20261023/progress.md)。M08 仍为 v0.9，转录及授课日期待核；新 `gpt-6.1-sol` 全篇审查与具体缺陷定向关闭见[M08回执](_meta/vault-notes-review-20261023/ac6761-m08/review.md)。原生 Obsidian、原音及未获证商业数字不升级，旧 5.6 报告不作本次放行依据；本人学习/提交字段不变。",
+    "new": "**2026-10-26 全库重审进行中**：按[全库笔记重审任务单](_meta/全库笔记重审任务单-2026-10-23.md)执行，范围69份（43篇M/T、24份配套教学Markdown、2份Notebook）。AC6761 M01–M04、M08，EF5560 M01–M03，IS5113 M01，共9篇正文已完成本次全篇审查并正式写回；IS5113 M02缺陷待修，59份未开始。前8篇适用各端已闭合；EF5560 M03正文/三代码文件已写并正式运行，Notion16属性已回读，本地关联与本批Git仍按[逐篇台账](_meta/vault-notes-review-20261023/progress.md)分别记录。M08仍v0.9/转录及日期待核；原生Obsidian、原音和未获证商业数字不升级，旧5.6报告不作本次放行依据，本人学习/提交字段不变。"
+  },
+  {
+    "id": "f03",
+    "reason": "主代理发现L0历史登记不能免讲当前依赖",
+    "old": "## ⭐ 本课的两条口径判断（写死，不要每次重新想）",
+    "new": "## 历史口径判断（只用于定位旧依赖）\n\n**2026-10-26 本次M03同步说明**：本节及下方L0保留旧设计登记，不再证明读者已懂AI/ML、统计或Python，也不执行旧“不教for”的豁免。现行读者统一从高中知识起点开始；M03当前要用的名次/统计量/函数/循环/索引均须就地搭桥，不能由登记或回链免讲。这里仅澄清当前依赖用途，不重启规则重构或其他讲次重审。"
+  },
+  {
+    "id": "f03",
+    "reason": "消除当前入场掌握保证",
+    "old": "读者进门时**已经具备**的知识。以下内容在笔记里可直接使用，不需要解释。",
+    "new": "以下是过去登记的依赖清单；**现行不假设读者已经掌握**。用于定位首现/回链，当前核心操作仍须说明，不能直接援引旧“不需要解释”。"
+  },
+  {
+    "id": "f03",
+    "reason": "S1-02范数改LaTex避免表格分栏",
+    "old": "| 软件惩罚参数 | Software alpha | M03 | 在讲义 SSE/(2n)+λ||β||²/2 的 Ridge 口径，sklearn Ridge alpha=nλ；Lasso/ElasticNet 在相应目标下 alpha=λ，原软件alpha实验不改称理论λ | 惩罚项 |",
+    "new": "| 软件惩罚参数 | Software alpha | M03 | 对讲义 $L=\\operatorname{SSE}/(2n)+\\lambda\\lVert\\beta\\rVert_2^2/2$，sklearn Ridge的参数为 $\\alpha_{\\mathrm{software}}=n\\lambda$；Lasso/ElasticNet在相应目标下为 $\\alpha_{\\mathrm{software}}=\\lambda$；原软件alpha实验不改称理论λ | 惩罚项 |"
+  },
+  {
+    "id": "f04",
+    "reason": "A3只用输入的是选方向，收益回归仍用标签",
+    "old": "| 主成分回归 | Principal Component Regression (PCR) | Directions with large variation in the training predictors; then OLS on K component scores; uses Z alone. | M03 §2.7.2 | 讲 L3 p.41 |",
+    "new": "| 主成分回归 | Principal Component Regression (PCR) | Choose directions using variation in training predictors alone, then fit the return regression on their component scores and observed returns. | M03 §2.7.2 | 讲L3 p.41+笔记步骤限定 |"
+  },
+  {
+    "id": "f05",
+    "reason": "S1-01将验证尺度与最终pretest重估分开",
+    "old": "**标准化必须用 development 样本的均值 / 标准差**，否则惩罚不可比",
+    "new": "**验证比较阶段**只用development的均值/标准差并套到validation；选参后按本课规格在pre-test重估scaler、方向（若适用）和斜率，test只复用冻结整链"
+  },
+  {
+    "id": "f14",
+    "reason": "A1补完整引导句",
+    "old": "一般图表脚本跑完会；L03_03/L03_04是下方列明的stdout-only例外：",
+    "new": "一般图表脚本运行后会产生下列输出。L03_03/L03_04是只打印stdout的例外，具体输出见§4与末尾运行记录："
+  }
+]

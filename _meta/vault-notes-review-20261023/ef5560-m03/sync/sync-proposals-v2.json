@@ -1,0 +1,412 @@
+{
+  "parent_note_sha256": "e6dd61a08cfac2b73b6b128d165748cf759622830d9cdcd94394042682c71f4d",
+  "state": "v2 fixes;pending independent targeted closure",
+  "targets": [
+    {
+      "id": "f01",
+      "path": "README.md",
+      "baseline_sha256": "b0a338df1440a3b9b697c49ac0d6f14f6559f4967d6cb902fa5e4311376c9ad0",
+      "bytes": 88290,
+      "lines": 548,
+      "excerpt": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f01.excerpt.txt",
+      "candidate": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\proposals-v2\\f01.md",
+      "candidate_sha256": "55cb12dc5814f9158a06c9b62c21ee16e8b9fcde0984c970ff69dfb921244ace",
+      "operations": [
+        {
+          "reason": "新增当前事实并保留有日期的历史更新",
+          "old": "## 最近更新 · 2026-10-21",
+          "new": "## 本次全库重审 · 2026-10-26\n\nEF5560 [M03 线性机器学习与收益预测](EF5560_Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测.md) 已按所提供两版讲义及现有转录完成本次全篇独审和定向修复，正文与两个完整训练入口已原子写回；正式 `code/` 目录运行两入口成功。完整原题中英、收缩/降维/排序、做空现金与资本分母已保留。原音缺首尾、上游数据 vintage、完整外论文精确指标及原生 Obsidian 显示的限制仍在；材料 v1.0 不表示本人已学习。关联、Notion 与 Git 以[逐篇进度](_meta/vault-notes-review-20261023/progress.md)分别记录，本次尚未全库完成。\n\n## 最近更新 · 2026-10-21"
+        }
+      ],
+      "status": "candidate_pending_independent_review",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f01.resume-baseline.snapshot",
+      "rebased_after_intake": false
+    },
+    {
+      "id": "f02",
+      "path": "EF5560_Fintech_and_AI_in_Finance/00-课程总览.md",
+      "baseline_sha256": "08d138e2ab0443e55a90fc287a19084682855606aef37b5cb2a874dd5150d63c",
+      "bytes": 31348,
+      "lines": 314,
+      "excerpt": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f02.excerpt.txt",
+      "candidate": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\proposals-v2\\f02.md",
+      "candidate_sha256": "ae38bdfb8a00ced86b73147a4eeadd2afdcbeb9970512defbddf216854c68d3a",
+      "operations": [
+        {
+          "reason": "更新M03当前教学/材料与写回范围，不继承旧strict",
+          "old": "| 3 | Linear machine learning for return prediction | [[M03-线性机器学习与收益预测]] | ✅ **v1.0**（2026-09-17，转录已合并，`quality_spec: v1` strict PASS）· 讲义 56 页全覆盖 + `class03/` 5 个 CSV 全部重算 · 35 个 🎙️ 格全部回填，7 条 🔴；2026-10-20 新旧版增量已核（旧56/新54页，PCR讲法与12项保存预测评价） |",
+          "new": "| 3 | Linear machine learning for return prediction | [[EF5560_Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测|M03]] | ✅ **v1.0**；2026-10-26 所提供旧56/新54页与现有ASR范围全篇新6.1独审/修复已验收写回，37课堂块；两完整教学入口正式运行成功。原音缺首尾/上游vintage/外论文精确指标仍待，关联/Notion/Git见重审台账 |"
+        },
+        {
+          "reason": "不把首时间戳推为缺开头时长",
+          "old": "| `M03-transcript.txt` | `00:56`→`02:24:04`，587 段 | ✅ 2026-09-17 已合并进 M03 v1.0；缺开头约 1 分钟、缺结尾（p.56 总结未完） |",
+          "new": "| `M03-transcript.txt` | `00:56`→`02:24:04`，587条记录/585唯一时间点 | ✅ 已融合；缺开头长度未知，末尾p.56口头总结被截。M04 A开头只部分回提；2026-10-26教学重审不恢复原音或原结尾 |"
+        },
+        {
+          "reason": "当前状态取代旧机械完成概括",
+          "old": "| M03 笔记 | ✅ **v1.0**（2026-09-17）：56 页全覆盖、35 个 🎙️ 格，strict PASS；2026-09-22 `class03` 截断文件已恢复复核；2026-09-26 从 M04 开头部分回补 p.56 的后续线索，M03 当堂结尾仍缺 |",
+          "new": "| M03 笔记 | ✅ v1.0；2026-10-26本次全篇教学独审、源/计算/同源图文和full-v2门槛完成，正文及三代码文件原子回读；关联/Notion/Git分别记录。原音/原生Obsidian/外论文精确指标等限制见[[EF5560_Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测|M03]] §9 |"
+        },
+        {
+          "reason": "去除跨课必需前置暗示",
+          "old": "**先读 IS6400 的正则化，EF5560 M03 会省一半力气。**",
+          "new": "**IS6400 可作为正则化的补充材料；EF5560 M03 当前核心计算仍从高中知识起点就地搭桥，不要求先读完另一门课。**"
+        }
+      ],
+      "status": "candidate_pending_independent_review",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f02.resume-baseline.snapshot",
+      "rebased_after_intake": false
+    },
+    {
+      "id": "f03",
+      "path": "EF5560_Fintech_and_AI_in_Finance/_meta/知识层级台账.md",
+      "baseline_sha256": "f976200e7675b2af3a5e99966758c27e4a447ed8c0bad973b8c31d095ee9d7ad",
+      "bytes": 59893,
+      "lines": 530,
+      "excerpt": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f03.excerpt.txt",
+      "candidate": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\proposals-v2\\f03.md",
+      "candidate_sha256": "8f5daf716fb72c7e374b0b259fbf674cc241d1e4d053ded4cf70ef5dce38ce2f",
+      "operations": [
+        {
+          "reason": "同步M03实际机制和条件",
+          "old": "| 惩罚项 · 收缩 | Penalty · Shrinkage | M03 📄🎙️ | 在 OLS 损失后加 λ·P(β)，把斜率往零压；截距不罚；预测式不变 | 拟合线、训练集标准化 |",
+          "new": "| 惩罚项 · 收缩 | Penalty · Shrinkage | M03 📄🎙️ | 给斜率整体大小加代价，预测仍线性、截距不罚；相关输入会重新分摊贡献，不保证每项都比OLS小 | 拟合线、训练集标准化 |"
+        },
+        {
+          "reason": "同步M03实际机制和条件",
+          "old": "| 弹性网 | Elastic Net | M03 📄🎙️ | 两种惩罚按 ρ 混合：能归零且同族相关信号一起保留；λ 与 ρ 都在验证集选 | 岭回归、LASSO |",
+          "new": "| 弹性网 | Elastic Net | M03 📄🎙️ | 在同一目标混合L1与L2代价；可以归零，相关信号可能共同保留但无整族保证；λ与ρ由验证选择 | 岭回归、LASSO |"
+        },
+        {
+          "reason": "同步M03实际机制和条件",
+          "old": "| 系数路径 · 验证曲线 | Coefficient path · Validation curve | M03 📄🎙️ | 斜率随 λ 的走势；验证 MSE 随 λ 的 U 形，最低点 = 选定 λ；课上口头确认归零顺序：联邦基金利率最先、通胀最后（最重要） | 超参数 |",
+          "new": "| 系数路径 · 验证曲线 | Coefficient path · Validation curve | M03 📄🎙️ | 系数路径按参数看各斜率；p.19在178月refit，p.20按142月拟合/36月验证选点。原本例通胀最后归零不构成普遍重要性顺序 | 超参数 |"
+        },
+        {
+          "reason": "同步M03实际机制和条件",
+          "old": "| 固定股票池 | Fixed universe | M03 📄🎙️ | 2023-07 定名单后不再更换；缺失保持缺失——防生存者偏差（M01 §2.8 的冻结样本池） | 生存者偏差 |",
+          "new": "| 固定股票池 | Fixed universe | M03 📄🎙️ | 固定2023-07成员、保留缺失，避免用后来名单替换；不能据此认证全部上游可得性/生存者偏差已消除 | 生存者偏差 |"
+        },
+        {
+          "reason": "同步M03实际机制和条件",
+          "old": "| 截面排名 · 中心化排名 | Cross-sectional / Centered rank | M03 📄🎙️ | 同一周在股票池内的百分位减 0.5，取值 −0.5～+0.5；统一单位、压极端值、只用 t−1 周数据（教授当堂口述\"减 0.5\" `01:38:49`） | 技术指标六族、预测时钟 |",
+          "new": "| 截面排名 · 中心化排名 | Cross-sectional / Centered rank | M03 📄🎙️ | 同周同特征的平均名次除有效股票数再减0.5；有限样本的均值/中位观测不必等于0，只用预测前可知特征 | 技术指标六族、预测时钟 |"
+        },
+        {
+          "reason": "同步M03实际机制和条件",
+          "old": "| 主成分回归 · 载荷 | PCR · Loading | M03 📄🎙️ | 先取训练输入方差最大的 K 个正交方向（载荷 = 各列权重），再 OLS；只看 Z；课上口头解读第一成分正载荷在趋势/振荡器类、负载荷在波动/风险类 | 降维 |",
+          "new": "| 主成分回归 · 载荷 | PCR · Loading | M03 📄🎙️ | 按训练输入方差选方向；载荷为各列权重，先算每行成分得分再回归；得分训练内不相关不等于回归斜率不相关 | 降维 |"
+        },
+        {
+          "reason": "同步M03实际机制和条件",
+          "old": "| 常数预测 | Constant forecast | M03 📄🎙️ | 全部斜率为零、每只股票同一预测；MSE 上不吃亏但无法排序；教授明说这是 ML 作业最容易踩的坑 | LASSO |",
+          "new": "| 常数预测 | Constant forecast | M03 📄🎙️ | 同一模型给同周各股相同值，无法产生模型次序；MSE可能较好也可能较差，不保证胜过零基准 | LASSO |"
+        },
+        {
+          "reason": "同步M03实际机制和条件",
+          "old": "| 预测分组排序 · 高减低价差 | Forecast sort · H−L spread | M03 📄🎙️ | 每周按预测分五组、比较 Q5 与 Q1 的实现超额收益；本课 Ridge +0.48%/周，t = 1.46 | 特征分组组合 |",
+          "new": "| 预测分组排序 · 高减低价差 | Forecast sort · H−L spread | M03 📄🎙️ | 按事前预测分组，再比较Q5与Q1的实现超额收益；Ridge本例约+0.48%/周、经典t约1.46，未扣成本，不天然等于无杠杆账户回报 | 特征分组组合 |"
+        },
+        {
+          "reason": "同步M03实际机制和条件",
+          "old": "| 阈值 · 交互 | Threshold · Interaction | M03（预告） | 斜率随其他变量变化——线性模型做不到，Class 4 的问题；转录缺结尾，课堂没有展开 | — |",
+          "new": "| 阈值 · 交互 | Threshold · Interaction | M03（预告） | 效应随某输入水平/另一输入而变，是Class4的问题；M03 p.56原课堂结尾缺失，M04 A只部分回提，不冒称恢复原话 | 线性组合 |"
+        },
+        {
+          "reason": "登记新补充概念与真实来源",
+          "old": "| 主动收益 | Active return | M03 🎙️ | 个股收益减去大盘收益（不是减无风险收益）；教授口头提及的姊妹概念，本讲正文不用它，只用超额收益 | 超额收益 |",
+          "new": "| 主动收益 | Active return | M03 🎙️ | 个股收益减去大盘收益（不是减无风险收益）；教授口头提及的姊妹概念，本讲正文不用它，只用超额收益 | 超额收益 |\n| 斯皮尔曼等级相关 | Spearman's rank correlation | M03 §2.9.2（笔记补充） | 对同一批股票的预测名次和实现名次计算相关；并列用平均名次，再算偏差乘积，常数列时未定义；不是投资收益 | 名次、相关系数 |\n| 小市值减大市值因子 | Small Minus Big (SMB) | M03 §2.6.4（外源补充） | 按French构造的三个小市值组合平均收益减三个大市值组合平均收益；不是每只小股必胜大股 | 分组、收益差 |\n| 高账面市值比减低账面市值比因子 | High Minus Low (HML) | M03 §2.6.4（外源补充） | 按French构造的两个价值组合平均收益减两个成长组合平均收益；高低指账面/市场价值比 | 账面市值比、分组 |\n| 做空与总/净敞口 | Short selling; gross/net exposure | M03 §2.9.3（笔记补充） | 借股卖出、买回归还；总敞口把两腿绝对金额相加，净敞口相减，都需声明权益分母，卖空所得同时对应欠股 | 现金账、权益、收益 |"
+        }
+      ],
+      "status": "candidate_pending_independent_review",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f03.resume-baseline.snapshot",
+      "rebased_after_intake": false
+    },
+    {
+      "id": "f04",
+      "path": "EF5560_Fintech_and_AI_in_Finance/_meta/术语表.md",
+      "baseline_sha256": "4a9f631c2d99e5ba5dc36308fb299bcf9df306e8f349e78e053c2b9cc70bbf88",
+      "bytes": 62722,
+      "lines": 476,
+      "excerpt": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f04.excerpt.txt",
+      "candidate": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\proposals-v2\\f04.md",
+      "candidate_sha256": "8ce0d5d8c9e6612a32ebeac4934569f019070e468e5c351553423782e0ce0c59",
+      "operations": [
+        {
+          "reason": "更新与已发布正文相同的限定",
+          "old": "| 收缩 | Shrinkage | Add a cost for large slopes to the OLS loss; larger λ puts more weight on small slopes; the forecast remains linear. | M03 §2.4.1 | 讲 L3 p.12 |",
+          "new": "| 收缩 | Shrinkage | Add a penalty for the overall size of slopes; correlated predictors can redistribute contributions, so an individual slope need not fall. | M03 §2.4.1 | 讲义+笔记限定 |"
+        },
+        {
+          "reason": "更新与已发布正文相同的限定",
+          "old": "| 岭回归 | Ridge regression | Squared-slope penalty; stabilizes coefficients; generally retains all predictors. | M03 §2.4.2 | 讲 L3 p.13 🎙️（ASR 几乎每次把 \"ridge\" 听成 \"which/width/weight\"，见 asr-dictionary） |",
+          "new": "| 岭回归 | Ridge regression | A squared-slope penalty without an L1 threshold interval; an individual coefficient may still be exactly zero in special cases. | M03 §2.4.2 | 讲L3 p.13+笔记反例 |"
+        },
+        {
+          "reason": "更新与已发布正文相同的限定",
+          "old": "| 弹性网 | Elastic Net | Both penalties in one objective; ρ is the LASSO share; use when a compact rule should retain several related signals. | M03 §2.4.4 | 讲 L3 p.17 |",
+          "new": "| 弹性网 | Elastic Net | Mix L1 and L2 penalties in one objective; related signals may be retained together, but joint inclusion is not guaranteed. | M03 §2.4.4 | 讲L3 p.17+笔记限定 |"
+        },
+        {
+          "reason": "更新与已发布正文相同的限定",
+          "old": "| 中心化排名 | Centered rank | Within-universe percentile rank − 0.50; zero is the middle of the cross-section. | M03 §2.6.4 | 讲 L3 p.32 🎙️（教授当堂口述\"减 0.5、让 0 在中间\"，`01:38:49`） |",
+          "new": "| 中心化排名 | Centered rank | Average within-date rank divided by the valid stock count, minus 0.50; a finite-sample mean or median observation need not equal zero. | M03 §2.6.4 | 讲L3 p.32、课堂减0.5+笔记例 |"
+        },
+        {
+          "reason": "更新与已发布正文相同的限定",
+          "old": "| 常数预测 | Constant forecast | All slopes zero → identical forecasts; competitive under MSE, no stock ranking. | M03 §2.8.4 | 讲 L3 p.51 🎙️（教授两次用 \"crazy\" 强调，并点名这是 ML 作业最容易踩的坑） |",
+          "new": "| 常数预测 | Constant forecast | Identical forecasts provide no model ranking; their MSE can be better or worse than a zero benchmark. | M03 §2.8.4 | 讲L3 p.51+笔记反例 |"
+        },
+        {
+          "reason": "同步已审术语与外源/笔记地位",
+          "old": "| 主动收益 | Active return | Individual stock return minus the market return (not minus the risk-free rate). | M03 §2.6.5 | 🎙️ 讲义没有，教授口头提及（`01:20:14`），姊妹概念，本讲不用 |",
+          "new": "| 主动收益 | Active return | Individual stock return minus the market return (not minus the risk-free rate). | M03 §2.6.5 | 🎙️ 讲义没有，教授口头提及（`01:20:14`），姊妹概念，本讲不用 |\n| 斯皮尔曼等级相关 | Spearman's rank correlation | Correlation between the ranks of matched forecasts and realized outcomes; it measures ordering, not investment return.（笔记自拟） | M03 §2.9.2 | 见M03当地来源；英文为笔记自拟 |\n| 小市值减大市值因子 | Small Minus Big (SMB) | The mean return of the three small size/value portfolios minus that of the three big portfolios in the stated French construction.（外源定义的笔记自拟英文） | M03 §2.6.4 | 见M03当地来源；英文为笔记自拟 |\n| 高账面市值比减低账面市值比因子 | High Minus Low (HML) | The mean return of the two value portfolios minus that of the two growth portfolios in the stated French construction.（外源定义的笔记自拟英文） | M03 §2.6.4 | 见M03当地来源；英文为笔记自拟 |\n| 做空 | Short selling | Borrow shares, sell them, then buy back and return the same quantity; profits and losses depend on the repurchase price.（笔记自拟） | M03 §2.9.3 | 见M03当地来源；英文为笔记自拟 |\n| 总敞口 / 净敞口 | Gross / net exposure | Gross adds the absolute long and short amounts; net subtracts short from long, each relative to stated equity.（笔记自拟） | M03 §2.9.3 | 见M03当地来源；英文为笔记自拟 |"
+        }
+      ],
+      "status": "candidate_pending_independent_review",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f04.resume-baseline.snapshot",
+      "rebased_after_intake": false
+    },
+    {
+      "id": "f05",
+      "path": "EF5560_Fintech_and_AI_in_Finance/_meta/考点库.md",
+      "baseline_sha256": "0a27a543ff43664fcd86ff6c666540c410bc5aaaa4d9ee2dda9da8443352ed21",
+      "bytes": 41590,
+      "lines": 375,
+      "excerpt": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f05.excerpt.txt",
+      "candidate": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\proposals-v2\\f05.md",
+      "candidate_sha256": "b8f951e105cd8aada2f13c07c0a68427f72d1c5c3a64036d2a1ccaac441e2de1",
+      "operations": [
+        {
+          "reason": "完整同步原题/课堂地位和当前20个考点",
+          "old": "## 5. M03 考点清单（v1.0 · 2026-09-17 转录已合并）\n\n> M02 的 🔴 20a（期末题型 = 讲义\"四选一 + Discuss\"）直接适用：本讲有 **三道四选一（p.26、p.27、p.38）+ 一道计算题（p.22）**，p.26 已由教授**当堂确认答案为 A**；p.27 = D、p.38 = C 的逻辑经课堂问答印证，字母未明说，维持 ⚪；p.22 = −0.20 按公式计算，✅ 已用真实数据交叉验证。**编号说明**：M03 原 v0.9 版把新条目编成 27–39，与 M02 的 27–34 撞号；本次借转录融合一并改为从 35 起，不再冲突（原 27–39 的内容对应关系保留在下表）。\n\n### 🔴 教授明示（M03 段，7 条）\n\n> 定级依据说明（2026-09-18 独立验收后补）：35 / 39 / 40 有\"会考 / 作业 / 考试同款\"原话；36 / 38 没有\"会考\"原话，定 🔴 的依据是 skill 的第三种情形——**教授离开讲义专门展开**（36 是对 p.23 结果的整段经济解释，38 是学生提问后的专门讲解）；37 / 41 依据是教授主动用 counterintuitive / most important 标记。若期末前想收紧口径，36 / 38 可降 🟡。\n\n| 可信度 | # | 考点 | 依据 | 对应小节 |\n|---|---|---|---|---|\n| 🔴 | 35 | **给两个 SSE 算样本外 $R^2$ 是期末考原题型**，不许用计算器、会给简单数字 | 🎙️`05:35`–`06:01`「you will see to calculate out of sample R squared based on the numbers here… I will not allow any [calculator]」 | M03 §2.5.1 |\n| 🔴 | 36 | **只有香港赢过 MA(12)，原因是港币联系汇率**：美国加息到 4.0%，港元次日跟涨到 4.25% | 🎙️`01:09:55`–`01:10:54`「there's a peg between the Hong Kong dollar and the US dollar… once the US chang[es its] policy Hong Kong must change」 | M03 §2.5.2 |\n| 🔴 | 37 | **波动率分组\"高波动、低收益\"，教授明确定性为反常** | 🎙️`01:51:47`–`01:51:59`「This is something I would… say: counterintuitive.」 | M03 §2.6.6 |\n| 🔴 | 38 | **已发表因子普遍有\"前视偏差\"（look-ahead bias）**，历史赚钱不保证未来有效 | 🎙️`01:54:11`–`01:55:31`「this is called look-ahead bias… Can you still use this strategy for next year? We don't know.」 | M03 §2.6.6 |\n| 🔴 | 39 | **惩罚过大 → 常数预测，正是 ML 投资作业最容易踩的坑**（教授两次用 \"crazy\" 强调） | 🎙️`02:17:41`–`02:19:00`「I can promise you this is the assignment for your homework… Otherwise you will use a single number to predict everything. This is crazy.」 | M03 §2.8.4 |\n| 🔴 | 40 | **p.26 选择题答案当堂确认为 A**（验证选完就冻结、refit、测试只评一次） | 🎙️`01:15:01`–`01:15:16`「Can you explain why you chose… A?」…「Okay, that's correct?」 | M03 §2.5.4 |\n| 🔴 | 41 | **系数归零顺序：联邦基金利率最先归零，通胀最后归零（最重要）** | 🎙️`01:05:54`–`01:06:15`「the last one to go to zero is inflation」 | M03 §2.4.5 |\n\n### 🟡 ILO 反推\n\n| 可信度 | # | 考点 | 依据 | 对应小节 |\n|---|---|---|---|---|\n| 🟡 | 42 | **OLS / Ridge / LASSO / Elastic Net 四个目标函数**：只差惩罚项，预测式不变；截距不罚；先标准化 | ILO 2「compare selected regression and ML methods」；讲义 L3 p.6/12/13/15/17 | M03 §2.2.1, §2.4.1–2.4.4 |\n| 🟡 | 43 | **LASSO 软阈值产生稀疏选择；Ridge 通常收缩但特定条件也可有精确0**（绝对值零点的角 / 软阈值） | 讲义 p.15；ILO 2「limits of coefficients」 | M03 §2.4.3 |\n| 🟡 | 44 | **p.22 计算题**：$1 - 0.018/0.015 = -0.20$；符号含义；MA(12) 为什么必须滞后 | 讲义明确的计算题 + \"Be ready to explain\"；🎙️ 教授把同款计算题点名为考题（→ 35） | M03 §2.5.1 |\n| 🟡 | 45 | **验证选完就冻结 → refit → 测试只评一次**；看到测试分数不许换模型（p.26 选 A；p.23 香港例） | 讲义 p.8、p.23、p.26；🎙️ p.26 已当堂确认（→ 40） | M03 §2.2.3, §2.5.2, §2.5.4 |\n| 🟡 | 46 | **标准化只用 development 样本**（p.27 选 D）；否则惩罚随单位变 | 讲义 p.12、p.27；🎙️`01:16:18`–`01:16:59` 逻辑印证 | M03 §2.4.1, §2.5.4 |\n| 🟡 | 47 | **PCR vs PLS**：方向按输入方差 vs 按与收益的协方差；K 验证选 | 讲义 p.41、p.44；🎙️`02:11:05`–`02:11:28` 教授本人取舍判断 | M03 §2.7.2–2.7.3 |\n| 🟡 | 48 | **MSE 看水平、分组看次序**：常数预测排不了序；Ridge OOS R² −0.15% 但价差 +0.48%/周（t 1.46） | 讲义 p.51/54/55；ILO 2「response profiles」；🎙️`02:19:09`–`02:23:38` | M03 §2.8.4, §2.9.2–2.9.3 |\n| 🟡 | 49 | **验证差别微小时按实施目标选模型**（p.38 选 C：Elastic Net） | 讲义 p.38 + 讨论题；🎙️`01:57:24`–`02:00:11` 课堂问答逻辑印证 | M03 §2.6.8 |\n\n### ⚪ 笔记推断\n\n| 可信度 | # | 考点 | 依据 | 对应小节 |\n|---|---|---|---|---|\n| ⚪ | 50 | 读 p.23 / p.47 结果表：谁赢了基准、幅度、能不能下结论 | M02 🔴「会读表」的延续 | M03 §2.5.2, §2.8.1 |\n| ⚪ | 51 | 个股数据构造四件事：固定股票池 / 周度截面排名 / 无风险代理 / 无泄漏时序 | 讲义 p.30–33；ML 作业必用 | M03 §2.6.2–2.6.5 |\n| ⚪ | 52 | Ridge 对讲义 SSE/(2n) 目标 software alpha=nλ；Lasso/EN 相应口径 alpha=λ，需保留原软件alpha实验标签 | 讲义 p.14、p.25 两次提醒；转录未涉及换算细节 | M03 §2.4.2, §2.5.3 |\n| ⚪ | 53 | 三个市场共用四个美国宏观变量、滞后 1–2 月 | 讲义 p.5；🎙️`17:22` 仅简讲 | M03 §2.1.3 |\n| ⚪ | 54 | 线性 ML 的共同限制（同一斜率）→ Class 4 的阈值与交互 | 讲义 p.56；转录缺结尾未覆盖 | M03 §2.9.4 |\n\n> ✅ **M03 转录已合并（2026-09-17）**。`M03-transcript.txt`：`00:56 → 02:24:04`，587 段。缺开头约 1 分钟、缺结尾（p.56 总结未完）。行政段（`00:56`–`08:32`，TA tutorial / 期末考形式 / 评分构成）已回写 [[EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL|作业与DDL]]。\n\n",
+          "new": "## 5. M03 考点清单（v1.0；2026-10-26 本次全篇重审同步）\n\n旧56页/新54页的6个任务页共11个作答单元、12选项与9页给定演示分开。p.22的−0.20来自题给0.018/0.015，不冒称真实面板重新估计值；p.26 A有课堂确认，p.27 D为参考推断；p.38 ASR含C但没有说话人分离，不冒称教授亲口字母。编号35–54沿既有条目顺序保留。7条红级包括明确题型/课堂重视或解释，均保留原话；36、38的课堂解释不等于保证会考或已证因果。\n\n| # | 可信度 | 考点 | 依据 | 对应小节 |\n|---|---|---|---|---|\n| 35 | 🔴 | **给两个 SSE 算样本外 $R^2$，是期末考原题型**（教授明说不许用计算器、会给简单数字） | 🎙️ `05:35`–`06:01`：*\"you will see to calculate out of sample R squared based on the numbers here… if I give you simple numbers like this I will not allow any [calculator]\"* | §2.5.1 |\n| 36 | 🔴 | **香港赢过 MA(12)，联系汇率是课堂提出的一个可能解释**：美国利率与香港利率联动 | 🎙️ `01:09:55`–`01:10:54`：*\"there's a [peg] between the Hong Kong dollar and the US dollar… once the US chang[es its] policy[,] Hong Kong must change\"* | §2.5.2 |\n| 37 | 🔴 | **波动率分组\"高波动、低收益\"是教授明确定性的反常结论** | 🎙️ `01:51:47`–`01:51:59`：*\"This is something I would… say[:] counterintuitive.\"* | §2.6.6 |\n| 38 | 🔴 | **事后回看挑信号可能夸大历史表现，不保证未来有效** | 🎙️ `01:54:11`–`01:55:31`：*\"this [is called] [look-ahead bias]… Can you still use this strategy for [the] next year? We don't know.\"* | §2.6.6 |\n| 39 | 🔴 | **惩罚过大 → 常数预测，是 ML 投资作业最容易踩的坑（教授两次用 \"crazy\" 强调）** | 🎙️ `02:17:41`–`02:19:00`：*\"I can promise you this is the assignment for your homework… Otherwise you will use a single number to predict everything. This is crazy.\"* | §2.8.4 |\n| 40 | 🔴 | **p.26 选择题答案当堂确认为 A**（验证选完就冻结、refit、测试只评一次） | 🎙️ `01:15:01`–`01:15:16`：*\"Can you explain why you chose… A?\"* … *\"Okay[,] that's correct?\"* | §2.5.4 |\n| 41 | 🔴 | **本例系数归零顺序：联邦基金利率最先、通胀最后**（不等同一般重要性排序） | 🎙️ `01:05:54`–`01:06:15`：*\"the last one [to] go to zero is inflation\"*；后续“最重要”句未完整录到 | §2.4.5 |\n| 42 | 🟡 | **写出 OLS / Ridge / LASSO / Elastic Net 的目标函数**，说明只差惩罚项、预测式不变 | ILO 2「compare selected regression and ML methods」；讲义 p.6、12、13、15、17 五页公式 | §2.2.1, §2.4.1–2.4.4 |\n| 43 | 🟡 | **为什么 LASSO 有整段归零阈值，而 Ridge 通常不形成稀疏选择**（绝对值在零点的角 / 软阈值） | 讲义 p.15 \"corner at zero\"；ILO 2「limits of coefficients」 | §2.4.3 |\n| 44 | 🟡 | **计算样本外 $R^2$ 并解释符号**（p.22 原题：$1 - 0.018/0.015 = -0.20$；为什么 MA(12) 必须滞后） | 讲义 p.22 是明确的计算题 + \"Be ready to explain\" | §2.5.1 |\n| 45 | 🟡 | **验证选完就冻结、refit、测试只评一次**；看到测试分数不许换模型 | 讲义 p.8、p.23 加粗句、p.26 选择题 | §2.2.3, §2.5.2, §2.5.4 |\n| 46 | 🟡 | **标准化必须用 development 样本的均值 / 标准差**，否则惩罚不可比 | 讲义 p.12、p.27 选择题 | §2.4.1, §2.5.4 |\n| 47 | 🟡 | **PCR 与 PLS 的区别**：方向由输入方差 vs 由与收益的协方差决定；都要验证选 K | 讲义 p.41、p.44；ILO 2 | §2.7.2, §2.7.3 |\n| 48 | 🟡 | **MSE 看水平、分组看次序**：常数预测为什么排不了序；Ridge 为什么 OOS $R^2$ 负而价差正 | 讲义 p.51、54、55 三页专讲；ILO 2「limits of coefficients… response profiles」 | §2.8.4, §2.9.2, §2.9.3 |\n| 49 | 🟡 | **验证误差差别很小时按实施目标选模型**（p.38 选 Elastic Net 的理由） | 讲义 p.38 选择题 + 讨论题 | §2.6.8 |\n| 50 | ⚪ | 读 p.23 / p.47 的结果表：说出哪个市场 / 模型赢了基准、幅度多大、能不能下结论 | M02 🔴「要会读表」的延续；讲义两张真数表 | §2.5.2, §2.8.1 |\n| 51 | ⚪ | 个股数据构造：固定股票池、周度截面排名、无风险代理、无泄漏时序 | 讲义 p.30–33 四页；ML 作业必用 | §2.6.2–2.6.5 |\n| 52 | ⚪ | Ridge 的 software alpha=nλ，Lasso/EN alpha=λ、不同实现惩罚尺度不同 | 讲义 p.14、p.25 两次提醒 | §2.4.2, §2.5.3 |\n| 53 | ⚪ | 三个市场共用四个美国宏观变量、滞后 1–2 月的原因 | 讲义 p.5；M01 预测时钟的延续 | §2.1.3 |\n| 54 | ⚪ | 线性 ML 的共同限制（同一斜率对所有观测）与 Class 4 的问题 | 讲义 p.56 | §2.9.4 |\n\n本次读表限定：同一目标/测试期/可行基准的负OOS R²只表明平方误差较大，不裁定排序价值或成本后回报；经典t约1.46来自组差周序列，IID等适用条件和HAC未估计边界见M03 §2.9.3。原课堂起止为00:56–02:24:04，缺首长度未知，p.56原结尾未恢复；M04 A只部分回提。37课堂块/519时间戳引用/99引文的audit是材料辅助，不认证原音完整。\n\n"
+        }
+      ],
+      "status": "candidate_pending_independent_review",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f05.resume-baseline.snapshot",
+      "rebased_after_intake": false
+    },
+    {
+      "id": "f06",
+      "path": "EF5560_Fintech_and_AI_in_Finance/_meta/待并入术语总表.md",
+      "baseline_sha256": "9ba2a2f75374628300b50aa485d628eab4ddbec65186d87848edf6593e500d39",
+      "bytes": 19490,
+      "lines": 225,
+      "excerpt": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f06.excerpt.txt",
+      "candidate": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\proposals-v2\\f06.md",
+      "candidate_sha256": "9432bc3f651c957b927599b6d187a0cb167622d4e12cca92b199b79410e0885b",
+      "operations": [
+        {
+          "reason": "修正待并入清单并列根表实际合并范围",
+          "old": "## D. M03 新增（2026-09-17）<!-- 待合并 -->\n\n与 **IS6400 M04**（特征选择 / PCA）直接重叠，合并时以 IS6400 的中文译名为准、EF5560 补\"验证集选超参数\"的口径。\n\n| 优先级 | 中文 | English | 一句话定义 | EF5560 首现 | 可能冲突的课 |\n|---|---|---|---|---|---|\n| ⭐⭐⭐ | 正则化 / 收缩 | Regularization / Shrinkage | 在损失后加斜率惩罚 λ·P(β)，把系数往零压；截距不罚 | M03 §2.4.1 | IS6400 M02（梯度下降与正则化）、IS5542 |\n| ⭐⭐⭐ | 岭回归（L2） | Ridge regression | 平方惩罚，压小不归零 | M03 §2.4.2 | IS6400 |\n| ⭐⭐⭐ | LASSO（L1） | LASSO | 绝对值惩罚，可恰好归零 = 嵌入式特征选择 | M03 §2.4.3 | IS6400 M04（嵌入式方法） |\n| ⭐⭐ | 弹性网 | Elastic Net | L1 + L2 按 ρ 混合 | M03 §2.4.4 | IS6400 |\n| ⭐⭐⭐ | 超参数 | Hyperparameter | 不由拟合估计、只能在验证集上选的设定（λ、ρ、K、树深…） | M03 §2.4.1 | IS6400、IS5542 |\n| ⭐⭐⭐ | 主成分 / 载荷 / 累计方差比 | Principal component / loading / cumulative variance ratio | 输入方差最大的正交方向；本课 3 个成分 = 61% | M03 §2.7.1–2.7.2 | **IS6400 M04（PCA 用特征值语言）** |\n| ⭐⭐ | 主成分回归 vs 偏最小二乘 | PCR vs PLS | 方向按输入方差 vs 按与目标的协方差选 | M03 §2.7.2–2.7.3 | IS6400 |\n| ⭐⭐ | 前向选择 | Forward selection | 逐个加变量、验证误差不再降就停 | M03 §2.3 | IS6400 M04（递归特征选择 / SequentialFeatureSelector） |\n| ⭐ | 截面排名 / 中心化排名 | Cross-sectional / centered rank | 同一时点在所有对象里的百分位减 0.5 | M03 §2.6.4 | IS6400（分位数 / 排名变换） |\n| ⭐ | 预测精度 vs 排序 | Accuracy vs ranking | MSE 看水平、分组看次序 | M03 §2.9.2 | IS6400（分类里的 AUC vs accuracy 是同类区分） |\n| ⭐⭐ | 前视偏差 | Look-ahead bias | 用了预测时刻还拿不到的信息（如用整周数据预测本周）；🎙️ 教授把\"已发表因子回测好看\"也归入此类 | M01 首现，M03 §2.6.4 / §2.8 加课堂证据 | IS6400（train/test 泄漏）、IS5542（数据污染） |\n| ⭐ | 实证资产定价的机器学习框架（Gu–Kelly–Xiu 2020） | Empirical asset pricing via ML | 把\"估计风险溢价\"改写成\"样本外预测比赛\"，统一评估线性 / 非线性模型；EF5560 Lec03–05 的骨架论文，ML 作业依据 | M03 §2.1.2（🎙️ `10:23`–`13:14`） | IS6400（模型比较方法论）——是论文不是术语，合并时可放术语总表的\"参考文献\"段 |\n\n",
+          "new": "## D. M03 当前跨课增量（2026-10-26）\n\n以下12项按当前正文与IS6400等课语境对照。正式合并按根总表精确回读后记录；本候选尚未写入。\n\n| 中文 | English | 定义与边界 | EF5560来源 |\n|---|---|---|---|\n| 正则化 / 收缩 | Regularization / Shrinkage | 对斜率整体加代价，截距不罚；相关输入的单项斜率不保证逐一变小 | M03 §2.4.1 |\n| 岭回归（L2） | Ridge regression | 平方惩罚通常收缩，无L1式归零阈值；特定条件某项仍可精确零 | M03 §2.4.2 |\n| LASSO（L1） | LASSO | 绝对值惩罚可将斜率压零；相关列需联合目标或逐列即时更新，不能普遍逐项套正交公式 | M03 §2.4.3 |\n| 弹性网 | Elastic Net | 一个目标混合L1/L2；相关信号可能一起保留但不保证整族 | M03 §2.4.4 |\n| 超参数 | Hyperparameter | 如λ/ρ/K，由预定候选和验证规则选择，测试开始前冻结 | M03 §2.4.1 |\n| 主成分 / 载荷 / 方差比 | Principal component / loading / variance ratio | 载荷给输入权重，成分得分为逐行乘加；输入方差保留比例不保证目标信息 | M03 §2.7.1–§2.7.2 |\n| 主成分回归 vs 偏最小二乘 | PCR vs PLS | 先按输入方差或与训练目标共同变化选方向，再回归成分得分；重估需整链进行 | M03 §2.7.2–§2.7.3 |\n| 前向选择 | Forward selection | 从无输入起，逐步比较每个未选输入的验证误差，仅严格下降才加入，可漏联合信号 | M03 §2.3 |\n| 截面排名 / 中心化排名 | Cross-sectional / centered rank | 同周平均名次除有效数再减0.5，有限样本均值/中位观测不必为零 | M03 §2.6.4 |\n| 预测精度 vs 排序 | Accuracy vs ranking | MSE看水平误差，名次相关/分组看次序；不直接等于投资回报 | M03 §2.9.2 |\n| 前视偏差 | Look-ahead bias | 使用事前不可得信息；事后挑信号的课堂警告与实务偏差排查仍需具体证据 | M03 §2.6.4、§2.6.6 |\n| 斯皮尔曼等级相关 | Spearman rank correlation | 配对预测/实现名次的相关，并列取平均名次，常数列未定义；不是收益率 | M03 §2.9.2 |\n\n论文属于参考来源：Gu–Kelly–Xiu的p.4截图摘要已读，完整论文精确指标未核；不把它当新增术语或本课实证。SMB/HML及做空细则留本课术语表，避免未经共同规格直接类比其他课。\n\n"
+        }
+      ],
+      "status": "candidate_pending_independent_review",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f06.resume-baseline.snapshot",
+      "rebased_after_intake": false
+    },
+    {
+      "id": "f07",
+      "path": "_meta/术语总表.md",
+      "baseline_sha256": "44144656187c422036e8ab4581c28006c58ecff1eac517320eb0ec16747c3ed5",
+      "bytes": 79836,
+      "lines": 621,
+      "excerpt": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f07.excerpt.txt",
+      "candidate": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\proposals-v2\\f07.md",
+      "candidate_sha256": "1b46af45caa5d23be5a298df3f5ac5c60838432a03586a2d973d57b5a06bc69e",
+      "operations": [
+        {
+          "reason": "同步12项当前边界到根总表",
+          "old": "",
+          "new": "## 2026-10-26 · EF5560 M03 跨课边界\n\n以下为本次已审正文中的适用概念，不升级所链接其他课程笔记的教学状态。完整解释和算例回到M03；一行只登记当前差异。\n\n| 中文 | English | 定义与边界 | 来源 |\n|---|---|---|---|\n| 正则化 / 收缩 | Regularization / Shrinkage | 对斜率整体加代价，截距不罚；相关输入的单项斜率不保证逐一变小 | [[EF5560_Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测|M03]] §2.4.1 |\n| 岭回归（L2） | Ridge regression | 平方惩罚通常收缩，无L1式归零阈值；特定条件某项仍可精确零 | [[EF5560_Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测|M03]] §2.4.2 |\n| LASSO（L1） | LASSO | 绝对值惩罚可将斜率压零；相关列需联合目标或逐列即时更新，不能普遍逐项套正交公式 | [[EF5560_Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测|M03]] §2.4.3 |\n| 弹性网 | Elastic Net | 一个目标混合L1/L2；相关信号可能一起保留但不保证整族 | [[EF5560_Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测|M03]] §2.4.4 |\n| 超参数 | Hyperparameter | 如λ/ρ/K，由预定候选和验证规则选择，测试开始前冻结 | [[EF5560_Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测|M03]] §2.4.1 |\n| 主成分 / 载荷 / 方差比 | Principal component / loading / variance ratio | 载荷给输入权重，成分得分为逐行乘加；输入方差保留比例不保证目标信息 | [[EF5560_Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测|M03]] §2.7.1–§2.7.2 |\n| 主成分回归 vs 偏最小二乘 | PCR vs PLS | 先按输入方差或与训练目标共同变化选方向，再回归成分得分；重估需整链进行 | [[EF5560_Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测|M03]] §2.7.2–§2.7.3 |\n| 前向选择 | Forward selection | 从无输入起，逐步比较每个未选输入的验证误差，仅严格下降才加入，可漏联合信号 | [[EF5560_Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测|M03]] §2.3 |\n| 截面排名 / 中心化排名 | Cross-sectional / centered rank | 同周平均名次除有效数再减0.5，有限样本均值/中位观测不必为零 | [[EF5560_Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测|M03]] §2.6.4 |\n| 预测精度 vs 排序 | Accuracy vs ranking | MSE看水平误差，名次相关/分组看次序；不直接等于投资回报 | [[EF5560_Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测|M03]] §2.9.2 |\n| 前视偏差 | Look-ahead bias | 使用事前不可得信息；事后挑信号的课堂警告与实务偏差排查仍需具体证据 | [[EF5560_Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测|M03]] §2.6.4、§2.6.6 |\n| 斯皮尔曼等级相关 | Spearman rank correlation | 配对预测/实现名次的相关，并列取平均名次，常数列未定义；不是收益率 | [[EF5560_Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测|M03]] §2.9.2 |",
+          "type": "append"
+        }
+      ],
+      "status": "candidate_pending_independent_review",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f07.resume-baseline.snapshot",
+      "rebased_after_intake": false
+    },
+    {
+      "id": "f08",
+      "path": "EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL.md",
+      "baseline_sha256": "4d499f97200be5f3cd8b62916f014b8927f28d603dc6620e49c3b97363d2afbc",
+      "bytes": 28834,
+      "lines": 292,
+      "excerpt": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f08.excerpt.txt",
+      "no_increment_reason": "本次未新增行政/题面/截止事实；已有M03 A4双面等规则不变，本人提交字段保护",
+      "candidate": null,
+      "candidate_sha256": "4d499f97200be5f3cd8b62916f014b8927f28d603dc6620e49c3b97363d2afbc",
+      "operations": [],
+      "status": "checked_no_increment_pending_review",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f08.resume-baseline.snapshot",
+      "rebased_after_intake": false
+    },
+    {
+      "id": "f09",
+      "path": "EF5560_Fintech_and_AI_in_Finance/_prep/课程前置资料.md",
+      "baseline_sha256": "9e1112127195d87556c7e285b087ae9b8dc151538023602c6974c776ba12ea70",
+      "bytes": 16807,
+      "lines": 206,
+      "excerpt": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f09.excerpt.txt",
+      "no_increment_reason": "课程背景/CILO未变；不因重审扩大为新目录校对",
+      "candidate": null,
+      "candidate_sha256": "9e1112127195d87556c7e285b087ae9b8dc151538023602c6974c776ba12ea70",
+      "operations": [],
+      "status": "checked_no_increment_pending_review",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f09.resume-baseline.snapshot",
+      "rebased_after_intake": false
+    },
+    {
+      "id": "f10",
+      "path": "_meta/转录处理规则.md",
+      "baseline_sha256": "949342d0186643ec87cf8b657752fd8c281fad5f313f6030ac13decc689fcceb",
+      "bytes": 46228,
+      "lines": 428,
+      "excerpt": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f10.excerpt.txt",
+      "candidate": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\proposals-v2\\f10.md",
+      "candidate_sha256": "5526b1453e73ef6fed11554cfd01b251fa13a344a738d42df628655518bbf450",
+      "operations": [
+        {
+          "reason": "更新材料辅助数字、缺口与当前验收，保护原音未知",
+          "old": "| **EF5560** | `M03-transcript.txt` | `00:56 → 02:24:04`（587 段） | 2h23m08s | ✅ **2026-09-17 已合并进 M03 v1.0**。**缺开头约 1 分钟**（首段已在答学生关于 syllabus 的问题）；**缺结尾**（`02:23:49` 总结刚开始、`02:24:04` 中断，p.56 总结与 Class 4 预告丢失）；**无 W2 顺延**（`08:32` 直接进入本讲正文）；`00:56`–`08:32` 是讲义无对应页的行政段（TA tutorial、期末考形式、评分构成、随机分组），已回写作业与DDL/考点库。35 个 🎙️ 格全部回填（A 29 / B 3 / C 1 / D 2），§6 新增 7 条 🔴；p.26 选择题当堂确认答案 A，p.27/p.38 逻辑经课堂问答印证但字母未明说（维持 ⚪）；p.22 计算题按公式验证为 −20%。0 处 ≥120 秒空档。`audit` PASS |",
+          "new": "| **EF5560** | `M03-transcript.txt` | `00:56 → 02:24:04`，587记录/585唯一时点 | 时间戳跨度2h23m08s，不认证完整课堂 | ✅ 原融合材料v1.0保留；2026-10-26本次全篇6.1独审/修复与full-v2通过后已正式写回。缺开头长度未知，末尾p.56口头总结被截；M04 A开头只部分回提，无W2顺延。37课堂块/519引用时间戳/99引文的audit无未匹配/A13/A14；p.26 A课堂确认，p.27 D参考推断，p.38 ASR含C但说话人未分离。原音/接缝/上游vintage/外论文指标未核保留；关联/Notion/Git分列全库重审台账 |"
+        }
+      ],
+      "status": "candidate_pending_independent_review",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f10.resume-baseline.snapshot",
+      "rebased_after_intake": false
+    },
+    {
+      "id": "f11",
+      "path": "EF5560_Fintech_and_AI_in_Finance/AGENTS.md",
+      "baseline_sha256": "bdd45f58c9788419dfc8ffc7ab7ae7de6d1f4b04f434d53839d2b82f5ccf350a",
+      "bytes": 7198,
+      "lines": 101,
+      "excerpt": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f11.excerpt.txt",
+      "no_increment_reason": "课程AGENTS已有高中起点入口；本次不重开规则重构",
+      "candidate": null,
+      "candidate_sha256": "bdd45f58c9788419dfc8ffc7ab7ae7de6d1f4b04f434d53839d2b82f5ccf350a",
+      "operations": [],
+      "status": "checked_no_increment_pending_review",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f11.resume-baseline.snapshot",
+      "rebased_after_intake": false
+    },
+    {
+      "id": "f12",
+      "path": "EF5560_Fintech_and_AI_in_Finance/CLAUDE.md",
+      "baseline_sha256": "24eba6a0efca7f0d930ecd180d9faeeba467b129b545aaef176687721c9707cc",
+      "bytes": 8282,
+      "lines": 115,
+      "excerpt": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f12.excerpt.txt",
+      "no_increment_reason": "课程CLAUDE同为入口，本次无规则增量",
+      "candidate": null,
+      "candidate_sha256": "24eba6a0efca7f0d930ecd180d9faeeba467b129b545aaef176687721c9707cc",
+      "operations": [],
+      "status": "checked_no_increment_pending_review",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f12.resume-baseline.snapshot",
+      "rebased_after_intake": false
+    },
+    {
+      "id": "f13",
+      "path": "EF5560_Fintech_and_AI_in_Finance/_meta/数据集卡片.md",
+      "baseline_sha256": "4670034d57b3388bc8aaf02114876c6a5232cc234b2bdf976da09ba00ebdb568",
+      "bytes": 93367,
+      "lines": 980,
+      "excerpt": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f13.excerpt.txt",
+      "candidate": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\proposals-v2\\f13.md",
+      "candidate_sha256": "a82874b165e30380cb83f394cd6a0c3ac75a3536a7b63520a5898ee8e4e2417c",
+      "operations": [
+        {
+          "reason": "替换当前冲突的结果表/缺shared/两包相同断言",
+          "old": "## 11. `class03/` 数据包（Lec03，2026-09-17）★ 结果表，不是原始面板\n\n> ✅ **2026-09-22 更新**：`class03.zip` 从 Canvas 重下，是**更新版**——15 个 CSV：本节 5 个结果表（sha256 与原版一致）+ 五个共享面板（与 §13.1 class04 的逐字节相同，README 不再引用 `../shared/`）+ 5 个新表 `market_linear_validation.csv`（78 行候选设置与验证损失）、`market_linear_coefficients.csv`（48 行标准化系数）、`stock_linear_validation.csv`（37 行）、`stock_linear_coefficients.csv`（180 行）、`stock_linear_quintiles.csv`（20 行五分组周收益）。`stock_linear_test_predictions.csv` 2026-09-21 曾被同步事故截断为 358 行（根因见根 README），重下后 4,108 行、sha256 一致，M03 §2.8.1 复核成立。新 5 表尚未接 loader（M03 v1.0 不依赖它们）。\n\n> 五个文件 + `manifest.json`（含每个文件的 sha256、行数、列名、日期范围，**五个 sha256 本地校验全部一致**）+ `README.md`。数字由 `code/L03_linear_ml/01_reproduce_lecture.py` 与 scratchpad `card_class03.py` 实跑（pandas）。\n> ⚠️ **它们是模型跑完之后的\"结果表\"**：验证 / 测试指标、测试期预测、分组价差。**训练用的原始面板**在 README 引用的 `../shared/` 四个文件里（`market_excess_return_panel.csv`、`hsi_stock_excess_return_panel.csv`、`technical_characteristics_dictionary.csv`、`risk_free_yields_monthly.csv`），**导出包里没有，Canvas 上也没有**（2026-09-17 核实：Lecture 3 只有 PDF + `class03.zip`）——见 [[EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL#6. 待确认清单|作业与DDL §6 #9]]。\n> 读法与全部数字的解释在 [[M03-线性机器学习与收益预测]] §2.4.6、§2.5.2、§2.8.1、§2.9.3；loader 在 `code/common/load.py` 的 `c03_*`。\n\n",
+          "new": "## 11. `class03/` 数据包（当前两版本；2026-10-26 核对）\n\n当前旧解压 `class03/class03/` 与 `class03.zip` 均有15个manifest登记CSV，另含README和manifest；两份manifest各对所属15文件有效，不等于两包字节相同。24份本次原输入SHA已重新核实，原件保持只读。旧2026-09-17只有结果表、shared未到位的缺口是历史状态，不再当作当前缺材料；2026-09-22截断恢复记录仍保留。\n\n两包7文件不同：README、manifest、市场面板以及market coefficients/summary/predictions/validation；另10文件相同。旧月度log总收益减旧simple月rf，新ZIP改为本版本rf口径，不能混表或把差异猜成计算失败。完整原始价格、日OHLCV及宏观vintage链未取得，保存面板的日期/滞后不能自动证明上游全链无泄漏。\n\n本节先列5张保存结果表；另外5个输入表为714行市场面板、12480行股周面板、30行指标字典、241行利率、80行固定成员。余5张是市场验证78行/系数48行、个股验证37行/系数180行/五分组20行。成员来自固定2023-07名单，不能据此保证任何生存者或可得性问题全消除。\n\n`common.load.c03_market_panel` / `c03_stock_panel`固定读旧解压输入、解析日期并保持行序。新 `L03_linear_ml/03_train_market.py` 按142/36选参、178重估/60测试；`04_train_weekly_and_trace.py` 按6123/2050选参、8173重估/4108测试并追踪CCB。两个正式code目录入口均已实际运行成功，仅stdout不写output。它们是明确保存规格的完整教学训练，不冒充教师现场AI即时规格；原01/02主要复算保存结果。\n\n读法见M03 §2.5.3、§2.8.3、§2.10；下表属于相应旧解压保存结果，周组差未扣成本、经典t条件见正文，不直接当账户收益或已检验可交易性。\n\n"
+        }
+      ],
+      "status": "candidate_pending_independent_review",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f13.resume-baseline.snapshot",
+      "rebased_after_intake": false
+    },
+    {
+      "id": "f14",
+      "path": "EF5560_Fintech_and_AI_in_Finance/code/README.md",
+      "baseline_sha256": "3c21810b7f114a769a9dd15112c4763b8958b992eece94d65e15dd2efae487e6",
+      "bytes": 9699,
+      "lines": 152,
+      "excerpt": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f14.excerpt.txt",
+      "candidate": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\proposals-v2\\f14.md",
+      "candidate_sha256": "fbe68476672c11a75ab4b8d1d4d64fae11ddc55ad58cc118f083caf807cce147",
+      "operations": [
+        {
+          "reason": "说明新入口不写output",
+          "old": "每个脚本跑完会：",
+          "new": "一般图表脚本跑完会；L03_03/L03_04是下方列明的stdout-only例外："
+        },
+        {
+          "reason": "区分保存评价与新训练入口",
+          "old": "（数据来自 class03 结果表，loader 为 common.load.c03_*）",
+          "new": "（01/02核保存结果，03/04按固定旧输入训练；loader为common.load.c03_*）"
+        },
+        {
+          "reason": "登记两完整教学入口",
+          "old": "| `L03_linear_ml/02_forecast_sort.py` | Lec03 p.47–55 | M03 §2.8.1、§2.9.3 | MSE 看水平、分组看次序：六模型 OOS R² 柱状 + 四个可排序模型的五组收益曲线 |",
+          "new": "| `L03_linear_ml/02_forecast_sort.py` | Lec03 p.47–55 | M03 §2.8.1、§2.9.3 | MSE 看水平、分组看次序：六模型 OOS R² 柱状 + 四个可排序模型的五组收益曲线 |\n| `L03_linear_ml/03_train_market.py` | 旧/新Lec03 p.25 | M03 §2.5.3 | 旧市场面板美国142/36验证选Ridge/LASSO参数，178月重估/60月测试；仅stdout、不写output |\n| `L03_linear_ml/04_train_weekly_and_trace.py` | 旧p.50/新p.48 | M03 §2.8.3 | 六模型完整周度验证与测试、CCB 0939.HK在2025-07-04的冻结PCR追踪；仅stdout、不写output |"
+        },
+        {
+          "reason": "保存执行边界与命令",
+          "old": "",
+          "new": "## 2026-10-26 · M03 两个教学训练入口\n\n两个新脚本和两个固定旧目录reader已正式写入。实际从本README的 `code/` 工作目录执行03/04均exit0，stdout与既有独立入口输出完全相同；本次未重跑全部run_all，不能据此更新全库运行数。reader只解析日期、保留行序，不切换新ZIP或重建行情/vintage。旧月度市场log总收益减simple月rf的混合保存口径显式保留；个股周度为simple总收益减对应simple rf。\n\n```powershell\nD:\\anaconda3\\python.exe -X utf8 L03_linear_ml/03_train_market.py\nD:\\anaconda3\\python.exe -X utf8 L03_linear_ml/04_train_weekly_and_trace.py\n```\n\n正式运行的脚本SHA及stdout/stderr见 `_meta/vault-notes-review-20261023/ef5560-m03/formal-code-runs.json`（相对vault根）；未生成新的PNG/CSV或修改原数据。",
+          "type": "append"
+        }
+      ],
+      "status": "candidate_pending_independent_review",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\ef5560-m03-review-61\\dependency-sync\\f14.resume-baseline.snapshot",
+      "rebased_after_intake": false
+    }
+  ],
+  "v2_repairs": [
+    {
+      "id": "f01",
+      "reason": "A2当前统计与写回真实状态同步",
+      "old": "**2026-10-25 全库重审进行中**：按[全库笔记重审任务单](_meta/全库笔记重审任务单-2026-10-23.md)执行，范围 69 份（43 篇 M/T、24 份配套教学 Markdown、2 份 Notebook）。AC6761 M01–M04、M08，EF5560 M01–M02，IS5113 M01 共 8 篇已完成本次全篇审查并正式写回；2 篇缺陷待修、59 份未开始。M01–M04 等前 7 篇的本地/Notion/Git 已分别闭环；M08 本批各端进度见[台账](_meta/vault-notes-review-20261023/progress.md)。M08 仍为 v0.9，转录及授课日期待核；新 `gpt-6.1-sol` 全篇审查与具体缺陷定向关闭见[M08回执](_meta/vault-notes-review-20261023/ac6761-m08/review.md)。原生 Obsidian、原音及未获证商业数字不升级，旧 5.6 报告不作本次放行依据；本人学习/提交字段不变。",
+      "new": "**2026-10-26 全库重审进行中**：按[全库笔记重审任务单](_meta/全库笔记重审任务单-2026-10-23.md)执行，范围69份（43篇M/T、24份配套教学Markdown、2份Notebook）。AC6761 M01–M04、M08，EF5560 M01–M03，IS5113 M01，共9篇正文已完成本次全篇审查并正式写回；IS5113 M02缺陷待修，59份未开始。前8篇适用各端已闭合；EF5560 M03正文/三代码文件已写并正式运行，Notion16属性已回读，本地关联与本批Git仍按[逐篇台账](_meta/vault-notes-review-20261023/progress.md)分别记录。M08仍v0.9/转录及日期待核；原生Obsidian、原音和未获证商业数字不升级，旧5.6报告不作本次放行依据，本人学习/提交字段不变。"
+    },
+    {
+      "id": "f03",
+      "reason": "主代理发现L0历史登记不能免讲当前依赖",
+      "old": "## ⭐ 本课的两条口径判断（写死，不要每次重新想）",
+      "new": "## 历史口径判断（只用于定位旧依赖）\n\n**2026-10-26 本次M03同步说明**：本节及下方L0保留旧设计登记，不再证明读者已懂AI/ML、统计或Python，也不执行旧“不教for”的豁免。现行读者统一从高中知识起点开始；M03当前要用的名次/统计量/函数/循环/索引均须就地搭桥，不能由登记或回链免讲。这里仅澄清当前依赖用途，不重启规则重构或其他讲次重审。"
+    },
+    {
+      "id": "f03",
+      "reason": "消除当前入场掌握保证",
+      "old": "读者进门时**已经具备**的知识。以下内容在笔记里可直接使用，不需要解释。",
+      "new": "以下是过去登记的依赖清单；**现行不假设读者已经掌握**。用于定位首现/回链，当前核心操作仍须说明，不能直接援引旧“不需要解释”。"
+    },
+    {
+      "id": "f03",
+      "reason": "S1-02范数改LaTex避免表格分栏",
+      "old": "| 软件惩罚参数 | Software alpha | M03 | 在讲义 SSE/(2n)+λ||β||²/2 的 Ridge 口径，sklearn Ridge alpha=nλ；Lasso/ElasticNet 在相应目标下 alpha=λ，原软件alpha实验不改称理论λ | 惩罚项 |",
+      "new": "| 软件惩罚参数 | Software alpha | M03 | 对讲义 $L=\\operatorname{SSE}/(2n)+\\lambda\\lVert\\beta\\rVert_2^2/2$，sklearn Ridge的参数为 $\\alpha_{\\mathrm{software}}=n\\lambda$；Lasso/ElasticNet在相应目标下为 $\\alpha_{\\mathrm{software}}=\\lambda$；原软件alpha实验不改称理论λ | 惩罚项 |"
+    },
+    {
+      "id": "f04",
+      "reason": "A3只用输入的是选方向，收益回归仍用标签",
+      "old": "| 主成分回归 | Principal Component Regression (PCR) | Directions with large variation in the training predictors; then OLS on K component scores; uses Z alone. | M03 §2.7.2 | 讲 L3 p.41 |",
+      "new": "| 主成分回归 | Principal Component Regression (PCR) | Choose directions using variation in training predictors alone, then fit the return regression on their component scores and observed returns. | M03 §2.7.2 | 讲L3 p.41+笔记步骤限定 |"
+    },
+    {
+      "id": "f05",
+      "reason": "S1-01将验证尺度与最终pretest重估分开",
+      "old": "**标准化必须用 development 样本的均值 / 标准差**，否则惩罚不可比",
+      "new": "**验证比较阶段**只用development的均值/标准差并套到validation；选参后按本课规格在pre-test重估scaler、方向（若适用）和斜率，test只复用冻结整链"
+    },
+    {
+      "id": "f14",
+      "reason": "A1补完整引导句",
+      "old": "一般图表脚本跑完会；L03_03/L03_04是下方列明的stdout-only例外：",
+      "new": "一般图表脚本运行后会产生下列输出。L03_03/L03_04是只打印stdout的例外，具体输出见§4与末尾运行记录："
+    }
+  ]
+}

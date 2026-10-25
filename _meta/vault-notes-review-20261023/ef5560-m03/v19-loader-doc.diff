@@ -1,0 +1,17 @@
+--- v17-loader
++++ v19-loader
+@@ -135,9 +135,11 @@
+ 
+ 
+ def c03_market_panel() -> pd.DataFrame:
+-    """旧解压 market_excess_return_panel.csv，714行；月度目标/代理保留源列。
+-    risk_free_return沿旧有效月简单收益口径；不自动改用当前ZIP的log月代理。
+-    只解析日期并保持源行序；不是从上游行情/vintage重建变量。"""
++    """旧解压 market_excess_return_panel.csv，714行；只保留所供版本列。
++    market_total_return为源声明的月度log总收益；market_excess_return保留旧log总收益
++    减旧有效simple月risk_free_return的版本混合，不重算为一致的新口径。
++    不自动改用当前ZIP的log月rf；只解析日期且保持行序，不重建行情/vintage。
++    两版本保存总收益列逐行相同；上游原价/vintage未提供，不据此验证真实无泄漏。"""
+     df = _read03("market_excess_return_panel.csv")
+     df["forecast_month"] = pd.to_datetime(df["forecast_month"])
+     return df

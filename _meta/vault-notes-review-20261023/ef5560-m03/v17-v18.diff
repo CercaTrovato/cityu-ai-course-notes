@@ -1,0 +1,15 @@
+--- v17
++++ v18
+@@ -1506,7 +1506,11 @@
+ & 'D:\anaconda3\python.exe' -X utf8 'EF5560_Fintech_and_AI_in_Finance/code/L03_linear_ml/04_train_weekly_and_trace.py'
+ ```
+ 
+-两份代码要先按所列文件名保存为 `.py`，再运行；它们通过本库已有的 `common.load` 统一读数据。路径引导里的 `__file__` 是当前脚本文件名，`resolve()` 取绝对位置，`parents[1]` 从 `L03_linear_ml/` 回到 `code/`；`sys.path.insert` 让 Python 找到这里的 `common` 模块。loader 再按自己的文件位置固定读取旧解压目录，不随启动目录改变；因此下列库根命令与现有 `run_all.py` 从 `code/` 调用都能使用同一数据版本。找不到 CSV 时核文件版本/归档路径；缺包先报告缺项，不自动安装。读者也可请 AI 按同一命令运行，自己核四段行数、验证参数、测试结果及追踪等式，不能只看“运行成功”。
++两份代码要先按所列文件名保存为 `.py`，再运行；它们通过本库已有的 `common.load` 统一读数据。
++
++路径引导里的 `__file__` 是当前脚本文件名，`resolve()` 取绝对位置，`parents[1]` 从 `L03_linear_ml/` 回到 `code/`；`sys.path.insert` 让 Python 找到这里的 `common` 模块。
++
++loader 再按自己的文件位置固定读取旧解压目录，不随启动目录改变；因此下列库根命令与现有 `run_all.py` 从 `code/` 调用都能使用同一数据版本。找不到 CSV 时核文件版本/归档路径；缺包先报告缺项，不自动安装。读者也可请 AI 按同一命令运行，自己核四段行数、验证参数、测试结果及追踪等式，不能只看“运行成功”。
+ 
+ **读代码只需先懂这几个动作**：
+ 

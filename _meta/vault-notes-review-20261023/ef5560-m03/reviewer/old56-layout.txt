@@ -1,0 +1,966 @@
+FinTech and AI in Finance
+Class 3: Linear Machine Learning for Return Prediction
+
+
+
+Gavin Feng
+Semester A, 2026/27
+City University of Hong Kong
+Market Return Prediction and Stock Selection
+
+
+
+
+   Two forecasting tasks, with different targets and benchmarks:
+
+   ▶ Monthly market excess returns: macro predictors; lagged MA(12) benchmark. Compare
+     OLS, forward selection, Ridge, LASSO, and Elastic Net.
+   ▶ Weekly stock excess returns: technical characteristics; zero benchmark. Add PCR and
+     PLS, then compare stock rankings.
+
+
+
+
+                                                                                           2/56
+Market Prediction with Linear
+ML
+A Landmark Paper for Machine Learning in Finance
+
+
+                                                                     Gu, Kelly, and Xiu (2020)
+
+                                                                      ▶ Estimate risk premia as a prediction problem.
+                                                                      ▶ Linear shrinkage, trees, and neural networks face
+                                                                        the same data and OOS test.
+                                                                      ▶ Evaluate return-forecast accuracy and portfolio
+                                                                        performance.
+                                                                     The course sequence
+                                                                     Class 3: selection, shrinkage, and dimension reduction.
+                                                                     Class 4: nonlinear interactions, trees, ensembles, and
+                                                                     neural networks.
+                                                                     Class 5 examines characteristic importance and
+                                                                     portfolio performance.
+
+
+       Published version, Review of Financial Studies 33(5), 2020.
+
+                      doi.org/10.1093/rfs/hhaa009
+
+
+
+
+                                                                                                                               4/56
+Four U.S. Macro Predictors across Three Equity Markets
+
+
+
+
+    Predictor                Forecast lag         Economic reading
+    Term spread              one month            monetary and business-cycle conditions
+    Federal funds rate       one month            current policy stance
+    Unemployment rate        two months           labor-market slack with release delay
+    Inflation rate           two months           price pressure with release delay
+
+   Same U.S. predictors for S&P 500, Hang Seng, and CSI 300 monthly excess returns. Class 2
+   used Chinese macro data for its CSI 300 example.
+
+
+
+
+                                                                                              5/56
+Ordinary Least Squares: A Monthly Market Excess-Return Forecast
+
+
+
+   OLS chooses the intercept and slopes to minimize training squared error:
+                             1 X e             2
+                L(α, β) =        rt − α − zt′ β ,           (b  b OLS = arg min L(α, β).
+                                                             α, β)
+                            2n                                              α,β
+                              t∈S
+
+   Here S contains n training months; zt holds standardized inputs known before month t.
+                                                    p
+                                                    X
+                                        rbte = α
+                                               b+         βbj zjt .
+                                                    j=1
+
+   OLS: no slope penalty. Correlated predictors can make coefficients unstable.
+
+
+
+                                                                                           6/56
+OLS: Calculating Next Month’s Market Excess-Return Forecast
+
+
+   Fit the coefficients on training months. Suppose the market excess-return rule is
+
+                                      rbe = 0.20% + 0.40% zspread − 0.30% zrate ,
+
+   where each z is measured in training-sample standard deviations.
+
+   For next month’s forecast, zspread = 0.5 and zrate = −1:
+
+                                 rbe = 0.20% + 0.40%(0.5) − 0.30%(−1) = 0.70%.
+
+   Transform new inputs using the training means and standard deviations.
+
+   Illustrative coefficients and inputs; not estimates from the course dataset.
+
+
+
+                                                                                       7/56
+Freeze the Market Chronology before Comparing Models
+
+                                                            2018-07         2021-07
+                            2006-09–2018-06                 –2021-06        –2026-06
+
+                            develop: 142                  validate: 36      test: 60
+
+
+   OLS clarification: OLS has no tuning parameter. Its validation loss is used only for
+   specification or model comparison.
+
+   After choosing the settings, refit on all 178 pre-test months. Two initial months are used to
+   construct the lagged predictors.
+   Keep in mind
+   All three markets use the same predictors, dates, loss, and lagged MA(12) excess-return
+   benchmark for OOS R 2 .
+
+
+                                                                                                   8/56
+Selection and Shrinkage
+Forward Selection: Building a Short Predictor List
+
+
+
+
+   Start with no predictors, A0 = ∅. At step k, try each unused predictor:
+
+                   j ∗ = arg min MSEvalid (Ak ∪ {j}),     Acandidate = Ak ∪ {j ∗ }.
+                            j ∈A
+                              / k
+
+   Ak : current predictor set. Fit each candidate by OLS on development months; score it on
+   validation months.
+
+   Update: set Ak+1 = Acandidate only if validation MSE falls. Otherwise stop.
+
+   Versus full OLS: select a subset of predictors. Variables that help only jointly may be missed.
+
+
+
+
+                                                                                                     10/56
+Worked Example: Forward Selection Stops when Validation Error Rises
+
+
+
+                        Step     Candidate model            Validation MSE ×104         Decision
+                          0      intercept only                                 30.00   starting point
+                          1      add term spread                                28.70   keep
+                          2      add inflation                                  28.20   keep
+                          3      add unemployment                               28.40   stop
+
+
+    Keep in mind
+    The third predictor improves development-sample fit but worsens validation error. The two-predictor
+    model is frozen.
+
+   Illustrative values for mechanics; not empirical results from the course dataset.
+
+
+
+
+                                                                                                          11/56
+Shrinkage in Market Excess-Return Prediction
+
+
+   Keep the linear market excess-return forecast; add a cost for large slopes to the OLS loss:
+                                                                          
+                                         
+                                                                          
+                                                                           
+                       (b
+                        α, β)
+                           b = arg min          L(α, β)     +λ P(β)           .
+                                     α,β 
+                                               | {z }              | {z } 
+                                                                           
+                                           training squared error   slope penalty
+
+
+
+
+   ▶ λ = 0 gives OLS; larger λ puts more weight on small slopes.
+   ▶ Standardize predictors on training data; leave the intercept α unpenalized.
+   ▶ Choose λ on validation data. Too much shrinkage can remove useful signal.
+
+                                                       b + z ′ βb remains linear.
+   What changes: the estimation objective, while rbe = α
+
+
+                                                                                                 12/56
+Ridge Regression: Keeping Related Signals
+
+
+   Ridge adds a squared-slope penalty to the OLS loss L:
+                                                                  
+                                                
+                                                                  
+                                                                   
+                                                
+                                                            p
+                                                                   
+                                                                   
+                                                         λ X
+                                                                 2
+                                                                   
+                           α, β)Ridge = arg min L(α, β) +
+                          (b  b                                 βj   .
+                                            α,β          2        
+                                                
+                                                           j=1    
+                                                                   
+                                                
+                                                         | {z }  
+                                                                 Ridge penalty
+
+   Larger slopes pay a quadratic cost. Larger λ means stronger shrinkage.
+
+   Use: overlapping predictors, such as the funds rate and term spread.
+
+   Effect: stabilize coefficients; generally retain all predictors.
+
+
+                                                                                 13/56
+Ridge: Choosing the Penalty and Making Predictions
+
+
+   1. Standardize the predictors using the 142 development months.
+
+   2. Fit Ridge at several penalty values; compare market excess-return forecasts on the next 36
+      validation months.
+
+   3. Refit the selected specification on all 178 pre-test months, then forecast the 60 test months.
+
+   In our U.S. example, validation selects software penalty alpha= 100:
+
+                             validation MSE × 104 = 27.02,                 2
+                                                                          ROOS = −3.2%.
+
+   Lower test loss than OLS; still worse than lagged MA(12).
+
+   With L = SSE/(2n) above, Ridge’s software alpha= nλ; penalty scales differ across implementations.
+
+
+
+                                                                                                        14/56
+LASSO: Selecting Signals through Shrinkage
+
+
+   LASSO replaces the squared-slope penalty with absolute values:
+                                                                       
+                                              
+                                                                       
+                                                                        
+                                              
+                                                              p
+                                                                        
+                                                                        
+                                                             X         
+                        α, β)LASSO = arg min L(α, β) + λ
+                       (b  b                                      |βj |   .
+                                          α,β                          
+                                              
+                                                             j=1       
+                                                                        
+                                              
+                                                           | {z }     
+                                                            LASSO penalty
+
+   The absolute-value penalty has a corner at zero: some fitted slopes become exactly zero.
+
+   Effect: βbj = 0 removes predictor j from the forecast.
+
+   Caution: selection among correlated predictors can change across samples.
+
+
+                                                                                              15/56
+LASSO: Reading the Selected Market Excess-Return Forecast
+
+
+   Example coefficients after standardization and validation:
+
+                                                       Term spread          Funds rate        Inflation
+                           OLS coefficient                        0.60              0.50          0.20
+                           LASSO coefficient                      0.48                 0             0
+
+   With intercept 0.10% and standardized spread 0.5:
+
+                                          rbe = 0.10% + 0.48%(0.5) = 0.34%.
+
+   The other inputs contribute zero. With a smaller penalty, more signals may remain.
+
+   Illustrative coefficients in percentage points per standard deviation; not course estimates.
+
+
+                                                                                                          16/56
+Elastic Net: Selection with Correlated Predictors
+
+
+   Elastic Net adds both penalties to the same OLS loss:
+                                                                            
+                                      
+                                                                              
+                                                                               
+                                      
+                                                  X  p                 p    
+                                                                               
+                                                               1 − ρ X
+                                                                            2
+                                                                              
+                   α, β)EN = arg min L(α, β) + λ  ρ
+                  (b  b                                 |βj | +           βj  .
+                                  α,β             j=1            2          
+                                      
+                                                                      j=1     
+                                                                               
+                                      
+                                                   | {z } |          {z    } 
+                                                    LASSO part     Ridge part
+
+   λ ≥ 0 controls total shrinkage; 0 ≤ ρ ≤ 1 is the LASSO share.
+
+                  ρ = 1 : LASSO,       ρ = 0 : Ridge,     0 < ρ < 1 : a mixture.
+
+   Use it when a compact rule should retain several related signals. Choose both λ and ρ on
+   validation data.
+
+
+                                                                                              17/56
+Elastic Net: Choose Both Settings on Validation Data
+
+
+
+   Fit each candidate on development months. Example validation MSE ×104 :
+
+                         LASSO share          Penalty 0.0001          Penalty 0.001      Penalty 0.01
+                         0.25                                33.4                 26.8          27.6
+                         0.75                                34.1                 27.2          28.9
+
+   Select penalty 0.001 and LASSO share 0.25, then refit and forecast.
+
+
+   Illustrative validation grid, not empirical results from the course dataset.
+
+
+
+
+                                                                                                        18/56
+How LASSO Coefficients Change with the Penalty
+
+
+
+
+   Validation selects a penalty that keeps all four slopes nonzero: shrinkage without variable
+   removal.
+                                                                                                 19/56
+Choose the Penalty on Validation Data
+
+
+
+
+   Fit each candidate on 142 development months and compare it on 36 validation months.
+
+                                                                                          20/56
+Worked Example: Validation Chooses U.S. LASSO
+
+
+
+  Using the four macro predictors and the 36-month validation period:
+
+
+                         Model                    Selected penalty     Validation MSE ×104
+                         OLS (kitchen sink)                        –                 29.21
+                         Ridge                                100.00                 27.02
+                         LASSO                                 0.001                 26.93
+                         Elastic Net                           0.001                 27.15
+
+  The loss differences are small; the table shows the model selected before the 60-month test. Course
+  calculation using the 2006–2026 market-prediction sample.
+
+
+
+
+                                                                                                        21/56
+Calculation Question: Evaluate the Market Excess-Return Forecast
+
+
+   For a market excess-return forecast, the test-period sum of squared errors is 0.018. The lagged
+   MA(12) benchmark has a sum of squared errors of 0.015. Use
+
+                                         2             SSEmodel
+                                        ROOS =1−                  .
+                                                     SSEbenchmark
+
+
+                 2
+   1. Calculate ROOS and show the substitution.
+   2. State whether the model improves on the MA(12) benchmark.
+   3. Explain why MA(12) must be lagged rather than computed with future returns.
+
+   Be ready to explain
+   What does the sign of OOS R 2 tell a portfolio manager about forecast value?
+
+
+
+                                                                                                     22/56
+The Same Validation Rule Meets the Test in Three Markets
+
+
+   Test OOS R 2 against lagged MA(12) excess returns over the same 60 months, after the refit:
+
+
+                       Model                   U.S.   HKSAR      Chinese Mainland
+                       OLS (kitchen sink)   -22.1%     -13.7%             -148.2%
+                       Ridge                 -3.2%     +6.1%               -23.9%
+                       LASSO                -16.3%    +10.1%                -0.6%
+                       Elastic Net          -17.6%     +8.4%               -18.3%
+
+
+   Keep in mind
+   Validation choices: U.S.—LASSO; HKSAR—Elastic Net; Chinese Mainland—LASSO.
+   The selected U.S. and Chinese mainland models lose to MA(12); HKSAR beats it. Do not switch to
+   HKSAR LASSO after seeing its higher test score.
+
+
+                                                                                                    23/56
+Market Excess-Return Forecasting Is Difficult in All Three Markets
+
+
+
+
+                                                                     24/56
+Let Codex Fit Ridge and LASSO under One Specification
+
+
+
+
+   candidates = {"ridge": Ridge(alpha=100),
+                 "lasso": Lasso(alpha=0.001, max_iter=100000)}
+
+   for name, estimator in candidates.items():
+       model = make_pipeline(StandardScaler(), estimator)
+       model.fit(train[x_names], train["market_excess_return"])
+       forecast[name] = model.predict(test[x_names])
+
+
+   The pipeline fits scaling on train and reuses it on test. The displayed penalties were chosen on
+   the 36 validation months. In the software, alpha denotes penalty strength.
+
+
+
+
+                                                                                                      25/56
+Multiple-Choice Question: Choosing a Market Excess-Return Rule
+
+   Candidate models use the same macro predictors and chronological split. Their validation
+   MSEs are:
+
+                     Model                OLS      Ridge   LASSO     Elastic Net
+                     Validation MSE     0.0025   0.0020     0.0018        0.0019
+
+   Under selection by validation MSE, what should happen next?
+
+   A) Freeze the LASSO settings, refit on development plus validation data, and evaluate on the
+      test period.
+
+   B) Choose OLS because an unrestricted model uses the most information.
+
+   C) Compare all test errors first, then decide which model to report as selected.
+
+   D) Increase the LASSO penalty until the test-period forecast error falls.
+                                                                                                  26/56
+Multiple-Choice Question: Predictor Units and Penalties
+
+
+   An analyst changes inflation from decimal units (0.03) to percentage units (3), but otherwise
+   keeps the observations unchanged. A LASSO model uses the same penalty.
+
+   Which procedure makes the penalty comparison meaningful across predictor units?
+
+   A) Use means and standard deviations calculated from all dates, including the test period.
+
+   B) Leave predictors unscaled because the same penalty automatically removes unit effects.
+
+   C) Re-estimate the scaling separately on the validation sample before comparing forecasts.
+
+   D) Standardize using development-sample means and standard deviations, then apply those
+      values to validation data.
+
+
+                                                                                                   27/56
+Stock Returns and
+Characteristics
+The Observation Changes from Month to Stock-Week
+
+
+
+  Which stocks will earn higher excess returns next week?
+
+
+       Element              Market problem                Stock problem
+
+       One row              one month                     one stock in one forecast week
+       Target               market excess return          stock excess return over the risk-free rate
+       OOS benchmark        lagged MA(12) excess return   zero excess return
+       Predictors           lagged macro variables        30 lagged technical ranks
+       Sample               238 months                    12,480 grid rows; 12,281 usable rows
+       Validation           chronological months          chronological weeks, all stocks together
+
+
+
+   Keep in mind
+   Same linear methods; new target, frequency, and benchmark.
+
+
+
+
+                                                                                                        29/56
+A Fixed July 2023 Stock Universe
+
+
+
+
+   ▶ The 12,480-row grid covers 2023-07-07–2026-06-26: 156 weeks × 80 Hang Seng Index
+     constituents.
+
+   ▶ Membership is fixed at the start of the exercise, rather than selected using the June 2026
+     list.
+
+   ▶ Missing returns remain missing. Later index additions do not replace the original members.
+
+   This follows a fixed stock sample through time, not the changing composition of an
+   index-tracking fund.
+
+
+
+                                                                                                  30/56
+Six Indicator Families Organize the Thirty Columns
+
+
+    Family                 Beginner examples              Question the signal asks
+    Trend                  20-day momentum;               has the price been rising?
+                           close/SMA
+    Bar geometry           close-location value           where did the close fall inside the day’s
+                                                          range?
+    Activity               log dollar volume              how much money traded?
+    Volatility             realized volatility            how variable were recent returns?
+    Oscillator             RSI                            were recent gains unusually persistent?
+    Market risk            60-day beta                    how strongly did the stock move with its
+                                                          market?
+
+   For example, 20-day momentum is Ct /Ct−20 − 1. Weekly cross-sectional ranks put indicators measured
+   in different units on a common scale.
+
+
+                                                                                                         31/56
+Daily Data Become a Weekly Forecast Row without Leakage
+
+
+  For stock i in forecast week t:
+                                                                                  e       e
+           {O, H, L, C , V }i, through week t−1 −→ xi,t−1 −→ rankm,t−1 (xi ) −→ rbi,t −→ ri,t .
+
+  Ranks are computed inside the Hang Seng Index cross-section. We use
+
+                       centered rank = within-universe percentile rank − 0.50,
+
+  so zero represents the middle of the cross-section. The raw indicators use only prices and
+  volumes available before the forecast week.
+   No leakage
+   The week ending 26 June 2026 uses characteristics through the prior week. Its 19–26 June
+   return is an outcome, not an input.
+
+
+                                                                                                  32/56
+Excess Return and the Risk-Free Proxy
+
+
+
+   The prediction target is the return above a period-matched risk-free return:
+                                                    e                        e,b
+                                                   ri,t = ri,t − rf ,t ,   rbi,t = 0.
+
+
+         Market                                Risk-free yield proxy
+         U.S. and HKSAR                        U.S. 3-month Treasury yield
+         Chinese mainland                      ChinaBond 3-month government-bond yield
+
+   Use the previous calendar month-end yield and convert it to a monthly or seven-day holding return. A
+   zero excess-return forecast means expected total return equals the risk-free return.
+   Sources: FRED DGS3MO; ChinaBond historical yield curves.
+
+
+
+
+                                                                                                          33/56
+Worked Example: Zero Excess Return
+
+
+  Suppose a stock returns 2.0% in one week and the period-matched risk-free return is 0.1%:
+                                                 e
+                                                ri,t = ri,t − rf ,t = 1.9%.
+
+  A zero excess-return forecast and a model forecast of 1.7% give
+
+                                          ezero = 1.9%,           emodel = 0.2%.
+
+  The model has the smaller squared error for this observation. For the full test:
+                                                         e         e 2
+                                               P
+                                  2               i,t (ri,t − rbi,t )
+                                 ROOS = 1 −        P         e 2       .
+                                                       i,t (ri,t )
+
+  Illustrative returns. Zero excess return does not mean a zero total stock return.
+
+
+
+                                                                                              34/56
+Thirty Ranks Describe One Weekly Cross-Section
+
+
+
+
+   Each column is a stock; each row is a characteristic. Colors show ranks within the index, not raw units.
+                                                                                                              35/56
+Characteristic-Sorted Quintile Portfolio Returns
+
+
+
+
+   Each development week forms five HSI stock portfolios from one lagged characteristic. Points report the time-series mean
+   of the equal-weighted next-week excess return.
+
+                                                                                                                              36/56
+Estimate One Linear Rule for the Cross-Section
+
+   Fit one coefficient vector across stock-week observations; z contains training-standardized
+   characteristics:
+                                          i,t    b + z′
+                                           rbe = α   i,t−1β.
+                                                          b
+
+
+                     Block          Forecast weeks           Weeks    Usable rows
+                     Development    2023-07-07–2024-12-27       78          6,123
+                     Validation     2025-01-03–2025-06-27       26          2,050
+                     Refit          2023-07-07–2025-06-27      104          8,173
+                     Test           2025-07-04–2026-06-26       52          4,108
+
+
+   Keep in mind
+   Seventy-nine of the eighty members supply outcomes. Hang Seng Bank contributes none, and those
+   rows are left missing rather than imputed.
+
+                                                                                                    37/56
+Multiple-Choice Question: Which Linear Tool Fits the Job?
+   A desk has 20 predictors in correlated valuation, trend, and liquidity families. It wants a compact rule that
+   retains related signals together. All three models are within one standard error of the lowest validation MSE.
+
+                    Model          Validation MSE     Nonzero                Pattern
+
+                    Ridge              0.0102            20           all signals retained
+                    LASSO              0.0100            4       some families represented once
+                    Elastic Net        0.0101             9        several signals per family
+
+   Which choice best matches the stated financial job?
+
+   A. Ridge, because retaining every signal is always safest.
+   B. LASSO, because the smallest validation MSE must dominate.
+   C. Elastic Net, because it balances sparsity and grouped retention.
+   D. Choose whichever model has the lowest frozen-test MSE.
+
+   Discuss
+   Why should a 0.0001 validation-MSE difference not override the implementation goal?
+
+                                                                                                                    38/56
+Dimension Reduction
+Thirty Characteristics Are Not Thirty Signals
+
+
+
+
+          Mean absolute rank correlation 0.25; 61% of the variance sits in three components and 88% in ten.
+
+
+                                                                                                              40/56
+Principal Component Regression: Summarizing Many Inputs
+
+   PCR first chooses directions with large variation in the training predictors:
+
+                             w1 = arg max VarS (Zw ),             cik = zi′ wk .
+                                       ∥w ∥2 =1
+
+   Z stacks standardized training rows; wk has unit length. Later directions are orthogonal to
+   earlier ones.
+
+   Then fit OLS using K component scores instead of p original predictors:
+                                                K
+                                                X
+                                    rbie = α
+                                           b+         γ
+                                                      bk cik ,   K < p.
+                                                k=1
+
+   PCR uses Z alone: high predictor variance need not predict returns. Select K by validation
+   error.
+
+                                                                                                 41/56
+PCR: Calculating a Stock Excess-Return Forecast
+
+   Suppose PCR summarizes the standardized indicators in two components:
+
+                            PC1 = 0.6zmomentum + 0.8zMA gap ,                     PC2 = zvolatility .
+
+   The fitted weekly excess-return forecast is
+
+                                      rbie = 0.10% + 0.30% PC1,i − 0.20% PC2,i .
+
+   For zmomentum = 1, zMA gap = 0.5, and zvolatility = −0.5:
+
+                                      PC1 = 1.0,         PC2 = −0.5,         rbie = 0.50%.
+
+   For new stocks, apply the fitted scaling, component loadings, and return coefficients in that
+   order.
+   Illustrative loadings and coefficients, not estimates from the course panel.
+
+                                                                                                        42/56
+PCR: What a Component Is Made Of
+
+
+
+
+   Keep in mind
+   PC1 combines positive trend loadings with negative volatility loadings: calm uptrends versus
+   volatile stocks.
+
+                                                                                                  43/56
+Partial Least Squares: Components That Use Returns
+
+
+   PLS uses training excess returns r e when choosing a component. For the first component:
+
+                            w1 = arg max CovS (Zw , r e )2 ,             ci1 = zi′ w1 .
+                                      ∥w ∥2 =1
+
+   Z : standardized training predictors; r e : training excess returns.
+                                                        K
+                                                        X
+                                            rbie = α
+                                                   b+         γ
+                                                              bk cik .
+                                                        k=1
+
+   Extract later components from residual predictor and return information. Select K by
+   validation error.
+
+   PLS uses both Z and r e : returns guide the components; the forecast remains linear.
+
+
+                                                                                              44/56
+PLS: From a Component to a Stock Excess-Return Forecast
+
+
+   After fitting a one-component PLS model on standardized training data, suppose its
+   component and forecast are
+
+                        c = 0.8zmomentum − 0.6zvolatility ,               rbe = 0.10% + 0.30% c.
+
+   For a new stock with zmomentum = 0.5 and zvolatility = −1:
+
+                                 c = 0.8(0.5) − 0.6(−1) = 1.0,                 rbe = 0.40%.
+
+   Choose the component count on validation weeks; refit, then freeze the transformation for
+   testing.
+
+   Illustrative component weights and coefficients, not estimates from the course panel.
+
+
+
+                                                                                                   45/56
+Weekly Prediction Evidence
+Six Linear Models on the Same Stock Panel
+
+
+                  Model                Selected setting     Validation MSE ×104          Test OOS R 2
+                  PCR (selected)       5 components                            26.20           +0.02%
+                  Elastic Net          penalty 0.01                            26.21            -0.14%
+                  LASSO                penalty 0.003                           26.21            -0.14%
+                  PLS                  1 component                             26.24           +0.05%
+                  Ridge                penalty 1000                            26.43            -0.15%
+                  OLS                  unrestricted                            26.62            -0.53%
+
+
+   Validation selects PCR with five components. PCR and PLS have test OOS R 2 only slightly above
+   zero.
+
+   These small point estimates do not establish persistent improvement.
+   Hang Seng Index panel. Test: 52 weeks, 4,108 stock-week observations. Benchmark: zero excess return.
+
+
+                                                                                                          47/56
+Linear Excess-Return Forecasts Remain Weak
+
+
+
+
+                                             48/56
+Three Stock Forecasts from One Test Week
+
+
+   For the week ending 4 July 2025, the validation-selected PCR model produces:
+
+                                                     e                e
+            Stock                         Forecast rbi,t    Realized ri,t    Reading
+            CCB (0939.HK)                      +0.85%           +2.16%       direction and magnitude close
+            Meituan (3690.HK)                   -0.07%           -6.73%      correct direction, small forecast
+            Xinyi Solar (0968.HK)               -0.24%         +20.42%       wrong direction, extreme move
+
+
+    Keep in mind
+    The forecasts stay near zero while realized weekly returns can be much wider. Model evaluation uses
+    all 4,108 stock-week forecasts.
+
+   All figures are excess returns. The period-matched risk-free return was +0.08%, subtracted before rounding.
+
+
+
+                                                                                                                 49/56
+Vibe Coding: Compare Excess-Return Forecasts
+
+
+
+
+   Instruction
+   Using the weekly stock panel and the stated date split, compare OLS, Ridge, LASSO, Elastic
+   Net, PCR, and PLS. Select settings on validation weeks, refit through June 2025, and report
+   test OOS R 2 against zero excess return.
+
+   Ask for a second output: the predicted and realized excess return of one named stock in one
+   test week.
+
+   Read the model comparison first, then trace the named stock through the fitted rule.
+
+
+
+
+                                                                                                 50/56
+A Constant Excess-Return Forecast Cannot Rank Stocks
+
+
+
+   In this stock panel, the selected penalties in LASSO and Elastic Net set all thirty slopes to zero:
+                                       e
+                                     rbi,t =α
+                                            b     for every stock i.
+
+
+   ▶ Predicting near the training mean can be competitive under MSE.
+
+   ▶ Identical excess-return forecasts provide no stock ranking.
+
+   ▶ Breaking ties by ticker or row order creates an arbitrary signal.
+
+   Equal weighting remains feasible; this excess-return forecast supplies no stock ranking.
+
+
+
+                                                                                                         51/56
+Prediction Accuracy and Stock
+Rankings
+Sorting Stocks by Their Return Forecasts
+
+
+
+
+   1. Rank stocks by their predicted excess return before the holding week.
+
+   2. Assign five groups using those forecast ranks.
+
+   3. Calculate each group’s realized excess return during the holding week.
+
+   4. Compare the top and bottom groups over all test weeks.
+
+   The sort asks whether higher forecasts identify better subsequent returns. Class 5 adds position
+   sizes, portfolio constraints, and risk adjustment.
+
+
+
+
+                                                                                                      53/56
+Return Forecast Magnitude and Stock Ranking
+
+
+   Two models can give the same ranking while making different numerical forecasts.
+
+
+                           Stock      Realized excess return   Model A   Model B    Rank
+                           A                          0.1%       0.2%      0.4%       low
+                           B                          0.2%       0.4%      0.8%    middle
+                           C                          0.3%       0.6%      1.2%      high
+
+   Model B doubles every forecast. Its squared error is larger, but the high-minus-low return is the same:
+   0.3% − 0.1% = 0.2%.
+
+   MSE assesses forecast levels. A sort assesses ordering.
+   Illustrative values for one holding week.
+
+
+
+                                                                                                             54/56
+Ridge: Weak Return-Forecast Accuracy, Positive Realized Spread
+
+
+
+              Ridge forecast        Q1        Q2         Q3         Q4          Q5    Q5−Q1
+              Mean weekly
+              excess return     -0.28%    -0.12%    +0.03%     +0.05%      +0.20%     +0.48%
+
+
+   Ridge has OOS R 2 = −0.15% against zero excess return, but its realized top–bottom spread is positive.
+
+   Read the spread carefully
+   52 test weeks; t = 1.46.
+   Mean weekly spread: +0.13% in the first half; +0.83% in the second. Trading costs excluded.
+
+
+   Return-forecast accuracy and portfolio ranking measure different properties of the same forecasts.
+
+
+
+                                                                                                            55/56
+The Question for Nonlinear ML
+
+
+
+   Linear ML changes how we estimate and combine slopes. Each fitted slope still acts in the
+   same way across observations.
+
+   ▶ The macro results show that shrinkage can reduce large OLS market excess-return forecast
+     errors.
+
+   ▶ The stock results show small MSE differences and different ranking behavior.
+
+   ▶ Class 4 asks whether thresholds and interactions improve these same forecasting tasks.
+
+   For example, should momentum have the same effect for a liquid, low-volatility stock and an
+   illiquid, high-volatility stock?
+
+
+
+                                                                                                 56/56
+

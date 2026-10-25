@@ -1,0 +1,17 @@
+[
+  {
+    "reason": "p19 refit versus p20 validation summary phase",
+    "old": "后者的最低点就是验证选出的 λ。两张图都是美国市场超额收益、142 个 development 月份 + 36 个 validation 月份、真实数据。",
+    "new": "验证曲线的最低点是验证选出的参数。两图都来自美国市场的保存数据，但拟合阶段不同：p.19 系数路径用 178 个 pre-test 月份 refit；p.20 验证曲线对每个候选用 142 月 development 拟合、36 月 validation 评分。"
+  },
+  {
+    "reason": "validation selects point not approval of an interval",
+    "old": "虚线左侧的一段就是\"验证集允许的收缩程度\"。",
+    "new": "虚线只标出验证选中的 alpha=0.001 这个点，不表示左侧所有参数都获准或同样好；每个候选仍要按对应验证误差比较。"
+  },
+  {
+    "reason": "validation curve benefit limited to observed validation data",
+    "old": "曲线在水平线之下的区间，就是\"收缩有帮助\"的 λ 范围。",
+    "new": "曲线低于水平线的候选只说明在这段验证样本中误差小于 OLS，不保证测试期或未来仍改善。"
+  }
+]

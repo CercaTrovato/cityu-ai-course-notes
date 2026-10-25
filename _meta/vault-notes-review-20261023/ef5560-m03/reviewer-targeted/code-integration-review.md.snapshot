@@ -1,0 +1,95 @@
+# EF5560 M03 代码发布集成定向审查
+
+审查者：`/root/review_ef_m03_repairs_61`。日期：2026-10-26。使用`karpathy-guidelines`按实际集成问题作最小范围代码/文档审查，未派代理、未重新训练、未运行全库脚本或正式写回。
+
+**当前最终结论：v19已实际补齐§5所列docstring契约项；本次代码集成及受影响教学说明内未解决阻塞为0。** §1–§5保留v17/v18初次观察，§6记录实际关闭与最终资产身份。通过范围是候选的集成逻辑/文档/预发布证据，不代表正式安装和真实code-cwd运行完成。
+
+## 1. v17/v18初次审查与文件身份
+
+**路径/导入/数据版本/模型主体的集成修改成立；尚有一组README硬约定的docstring缺项需补。** 它是发布文档契约问题，不是模型或运行参数缺陷；后续只需实修注释后定向关闭，不要求新训练。这里保留初次发现，最终关闭应追加，不能倒写为初稿本就满足。
+
+- v17候选SHA256：`ba1795415b6dcd153ab7b763aa393a8c37d77aaf67a8c501a165d8a30fb5d7b2`。
+- v18候选SHA256：`87b9dcb28d4230c18e11fdf96b3485347e8f482cb729bab56cd5581fd96f6f0c`，已实际核得。
+- `new-assets/load.py.baseline.snapshot`及当前正式`code/common/load.py`SHA256实际均为`97a022cab9a7e8461ba8c02bf88f819cb1f6a170bc93c0f57d3d1fd34257fad2`；审查时正式loader尚未变。
+- 本次loader候选SHA256：`6e6bfdb48a7874f453db916a77c1f2985e81043746758cc5e71fb85bc298e180`。
+- 新03脚本SHA256：`56f8205e29eee8a4636666275180b5280e7311f3a75d23685aea638754585c93`；新04脚本SHA256：`52eede44e15cac7817240adc26d5420a1ae1ba3d4f18f57d11a86a128a4532fe`。
+
+实际读了现有`code/README.md`、`code/run_all.py`、完整loader候选、两份新脚本、loader真实diff、v16→v17及v17→v18 diff、精确集成说明和四份rehearsal记录/实际输出文件。不是只接受集成JSON中的“兼容”结论。
+
+## 2. 真实问题与实现
+
+现有`run_all.py`通过`ROOT.glob("L*/[0-9][0-9]_*.py")`找脚本，`subprocess.run(..., cwd=ROOT)`固定从`code/`执行。此前两份入口把DATA写成相对vault根的路径，直接从该cwd运行会找到错误位置。README §3①明确所有脚本经`common.load`读数据，§3③给`__file__`路径引导；不是只要从vault根跑过即可视为库内集成完成。
+
+v17/v18采用同一固定引导：脚本文件`parents[1]`为`code/`，加入`sys.path`后导入`common.load`。loader的`CLASS03_DIR`以自身文件`parents[2]`定位课程目录，随后固定旧`course_files_export/class03/class03/`。它不由启动cwd决定，也不自动切换到新版ZIP。
+
+两个新增reader均调用现有`_read03(name)`而**不传date_col**。因此不会走原`_read03`的sort_values分支：market只把forecast_month转datetime，stock只把forecast_week/characteristic_date转datetime，然后返回，保留源行序、原列、缺失、split及可用标记。输入股池/目标/rf/rank均不在loader中重构；无新下载、缓存切换或参数推断。
+
+我用AST比较基线与候选：所有原有函数AST相同，新增函数恰为`c03_market_panel`、`c03_stock_panel`两个，没有修改其他loader算法。既有`ALL`/自检列表尚未纳入新reader属于非阻塞的自检覆盖建议：这两入口直接调用函数，run_all也不经该登记表调函数，因此不能把它误报为本次运行兼容失败；不要求为此扩大重构或新增全库测试。
+
+## 3. 零Python入口与数值主体
+
+笔记已当地要求先保存为所列`.py`，避免在没有`__file__`的临时交互输入中直接粘贴运行。说明`__file__`、resolve、parents[1]、sys.path.insert和统一loader各自职责，能够顺读为“从脚本文件找到code模块，再由loader文件找到固定数据”。缺CSV要核归档版本/位置、缺包报告、不自动安装。不是只写“import后即可用”让初学者猜路径。
+
+v17→v18仅在原完整句间插空行，将保存/导入、路径引导、loader版本与检查分三段；非空白语义没有改变，也没有以分段替代解释。
+
+独立比对显示：教师p.25原片段完全未变；market从`df = df.loc`开始的全部主体与v16相同；weekly从可用标记筛行开始的全部主体也相同；单独CCB trace块完全相同。新03脚本与其展示块去文件末尾空白后相同，新04脚本与展示的weekly+trace组合AST相同。冻结阶段、网格、破平局、行数、列顺序、scaler/PCA/PLS/预测公式均未改变。
+
+stock日期转datetime后仍按源split取同样行，CCB的日期比较在pandas序列中可匹配同日；四份真实rehearsal输出也保留同一个具名行。没有把日期解析当成重新排序的授权。
+
+## 4. 预发布rehearsal与正式运行分开
+
+`code-integration-rehearsal/results.json`记录两个脚本×两个cwd，共4次exit0，实际script/loader SHA与本次候选一致。我逐个比对4份stdout实际bytes，与`main-source-checks/`前次standalone输出**四份全相同**；不是只读`identical_to_prior...=true`字段。
+
+它们明确是scratch候选module加预期正式`__file__`的预发布模拟，不能当成正式3个文件已经原子发布或已从正式code cwd执行。当前正式loader哈希仍是基线，正说明不能虚称正式运行完成。门槛后主代理仍需发布loader及两个脚本，再实际从code cwd运行并回读结果；无需为此修改run_all或全库输出。
+
+本代理没有再次训练两份脚本，以上运行是主代理可定位的实际rehearsal证据；本代理实际做的是源码/AST/路径与输出身份核对。原上游日OHLCV/vintage/当堂AI输出等限制不变。
+
+## 5. 待补的唯一发布文档契约项
+
+现有README §3①要求每个loader docstring写死收益口径；§3④要求脚本头用“目的/讲义/笔记/输入/输出/关键决定”固定职责字段。
+
+- `c03_market_panel`当前只写“月度目标/代理保留源列”，虽明确rf是旧有效简单月收益，却没有明确market_total_return为log总收益、market_excess_return保留原列且等于该log总收益减旧simple月rf。这正是本次数据版本必须固定的口径，不能让脚本用户再猜。
+- 两入口当前短docstring有标题/讲义/小节/只打印/重估阶段，但未按固定字段组织，具体输入CSV名及收益单位/频率没有在脚本头完整出现。README要求让人不读代码也知道来源与关键决定，不能只靠去另一个loader找补。
+
+最小修复只需补三个docstring：market reader明写目标与rf旧版本口径；03/04补固定字段，分别列输入CSV、月度log目标保留旧代理/周度simple超额收益、stdout输出及验证选择→pre-test整链refit→test一次等关键决定。无需改变模型、行序、函数或再训练；展示块/导出文件应同步后核AST主体不变。README映射表新增03/04入口行由主代理适用同步处理，不能从本审查推定已写。
+
+截至此初次记录，路径集成未发现运行逻辑阻塞；这一组docstring契约待实修关闭。本代理只写scratch审查文件，未改正式loader/脚本、run_all、README、原件、Notion或Git。
+
+## 6. v19实际修复、执行主体继承与最终关闭
+
+实际读了`v18-v19.diff`、`v19-loader-doc.diff`、更新后的两个导出脚本头部及`v19-code-docs.json`。最终身份：
+
+- 候选`candidate-final-v19.md`：344640 bytes，SHA256 `37930b43924ad377bdf13b2f00010084eaa14954db25c28b06f3b954d07b47ce`。
+- loader候选：SHA256 `5b1eec96fbbf6ba256422a16cfebc364651b8cfa067804736a791507e304c02a`。
+- `03_train_market.py`：SHA256 `46686209d4bf2a19a9d18b198959b7d27eb1f7c7860c474cf793cd8d1c5a4f92`。
+- `04_train_weekly_and_trace.py`：SHA256 `1c32b2facc4a055b7149e50bd37f2c7a168b8b98d2d56ca23444336b13ec31c2`。
+
+三处docstring实际补全：
+
+1. market reader明确market_total_return为源声明月度log总收益，旧excess保留log总收益减旧有效simple月rf的版本混合，不“修正”为新版一致口径，不切换源，不重建行情/vintage。
+2. 03入口按目的/讲义/笔记/输入/输出/关键决定说明保存CSV、旧混合口径、stdout、验证选择与178月整链refit、上游未恢复；旧/新版p.25定位未混。
+3. 04入口同样给固定字段，输入明确周simple总收益减7/365有效simple rf，输出是验证/测试与CCB追踪，dev拟合、validation选设置、pre-test重估、test只评一次及CCB不得参与拟合/选择均与实际代码相符；旧p.50/新p.48来源页一致。
+
+这填上原README职责要求，未把“从已有代码可以猜到输入”当成头部已说明。没有为通用README输出描述额外造PNG/CSV：本次用户指定的教学入口明确只打印关键数字，头部据实标不生成文件，不改现有分析图脚本职责。
+
+### 主体与展示/导出的一致性
+
+我独立将v18展示块（即已rehearse的v17代码内容）与当前两个导出文件转AST，仅去各自module docstring：两份可执行主体均逐语句相同。当前v19的market展示块与03导出AST一致，weekly+trace组合与04导出AST一致。
+
+对loader，我将当前精确docstring替换回记录中的旧docstring，所得完整文本SHA重新为`6e6bfdb48a7874f453db916a77c1f2985e81043746758cc5e71fb85bc298e180`，与原rehearsal loader SHA相同。不是只比较了若干感兴趣的函数而漏掉其他修改。
+
+所以当前头部变更不改变已核的旧源路径、日期解析/不排序、行序、筛行、模型设置和输出逻辑；没有理由为注释重复训练。7段Mermaid与v16仍完全相同。原p.25教师片段保真，前述零Python路径/导入说明仍有效。
+
+### 数据口径和精确记录
+
+实际读了主代理`main-source-checks/market-total-identity.json`，并用原旧CSV与原ZIP中的对应CSV独立只读核算：714/714行，market_total_return逐行最大差0；旧excess与total−旧rf最大差`1.1102230246251565e−16`，新excess与total−新rf最大差`2.0122792321330962e−16`。它支持保存列的同一性/相减关系，不证明真实原价或宏观vintage链已恢复，也不把源声明的log收益当成本代理新从行情重建。
+
+更新JSON实际披露了初始操作记录漏记最后“dev拟合”字词修正，存在`v19-code-docs-before-wording-record.snapshot`历史快照。当前三项note操作的旧串在顺序应用时各命中1次，逐项重放v18后与实际v19全文一致。候选正文写的是正确的dev拟合/validation选设置，不能以先前JSON漏记为由宣称候选当时用了错误训练逻辑；也不能把修正后的JSON伪称最初记录。
+
+### 最终状态
+
+原四次rehearsal的script/loader SHA属于v17短docstring版本。当前v19的可执行主体相同，但**不能把四次模拟的原脚本SHA改成当前SHA或称已运行当前正式文件**。本次没有新训练，正式门槛后发布三文件并从code cwd实际运行的要求保留。
+
+审查末尾正式`code/common/load.py`实际仍为基线SHA `97a022cab9a7e8461ba8c02bf88f819cb1f6a170bc93c0f57d3d1fd34257fad2`。新reader未正式安装，主代理必须在允许运行新入口前完成loader/两脚本的发布与回读；run_all本体无需为此改写。README映射/输出说明、最终warnings位置/资产/门槛及各端同步亦由主代理适用处理，不在这里虚填完成。
+
+**截至v19，本次路径/统一loader/源版本/日期与行序/展示导出/零Python说明/文档契约均已按实际范围核对并关闭，未解决阻塞为0。** 原全篇及修复定向链、原件/外源/ASR/Obsidian限制继续承接；本代理未写正式vault或任何外部端。

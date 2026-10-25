@@ -118,7 +118,8 @@ def csi300_panel() -> pd.DataFrame:
 
 
 # ---------- ⑨–⑬ class03 数据包（Lec03，2026-09-17） ----------
-# course_files_export/class03/class03/：五个"结果表"，不是原始面板。原始面板在 README 引用的 ../shared/（导出包缺失）。
+# 固定读取旧解压目录 course_files_export/class03/class03/；当前已有保存结果及五个面板/字典输入。
+# 新 class03.zip 的市场面板/rf口径与这里不同，不自动切换源；原日OHLCV与vintage仍未提供。
 CLASS03_DIR = Path(__file__).resolve().parents[2] / "course_files_export" / "class03" / "class03"
 
 
@@ -130,6 +131,27 @@ def _read03(name: str, date_col=None) -> pd.DataFrame:
     if date_col:
         df[date_col] = pd.to_datetime(df[date_col])
         df = df.sort_values(date_col)
+    return df
+
+
+def c03_market_panel() -> pd.DataFrame:
+    """旧解压 market_excess_return_panel.csv，714行；只保留所供版本列。
+    market_total_return为源声明的月度log总收益；market_excess_return保留旧log总收益
+    减旧有效simple月risk_free_return的版本混合，不重算为一致的新口径。
+    不自动改用当前ZIP的log月rf；只解析日期且保持行序，不重建行情/vintage。
+    两版本保存总收益列逐行相同；上游原价/vintage未提供，不据此验证真实无泄漏。"""
+    df = _read03("market_excess_return_panel.csv")
+    df["forecast_month"] = pd.to_datetime(df["forecast_month"])
+    return df
+
+
+def c03_stock_panel() -> pd.DataFrame:
+    """旧解压 hsi_stock_excess_return_panel.csv，12480行；个股周简单超额收益。
+    risk_free_return为年化百分数转7/365有效简单收益；保留缺失/源行序。
+    usable_for_ml与split由调用者按已说明任务筛选，不在loader中重划分。"""
+    df = _read03("hsi_stock_excess_return_panel.csv")
+    df["forecast_week"] = pd.to_datetime(df["forecast_week"])
+    df["characteristic_date"] = pd.to_datetime(df["characteristic_date"])
     return df
 
 
