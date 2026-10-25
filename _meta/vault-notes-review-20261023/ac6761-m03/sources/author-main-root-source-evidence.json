@@ -1,0 +1,111 @@
+{
+  "schema": "main-root-source-evidence-v1",
+  "status": "pending-independent-second-stage",
+  "author_ids": [
+    "/root"
+  ],
+  "candidate": {
+    "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m03\\author\\main-root-proposed.md",
+    "sha256": "36424c649b44e68efec38722986403c46b0e3b6000d2ef1c75e07605d9930540",
+    "role": "33 new source/definition/mirror changes; not canonical"
+  },
+  "changes": {
+    "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m03\\author\\main-root-changes.json",
+    "sha256": "ab158f528881025728315e531f6d9257b579ebf24249ca1fafcc5585a78288b9",
+    "role": "exact old/new, bcccf integration draft base"
+  },
+  "retrieval_date": "2026-10-25",
+  "nike_sources": [
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m03\\main-source\\nike\\nike-2015-form-10k.pdf",
+      "sha256": "c188a1608e2e8e43808d5f7fe57d5d70cb078a018856c0157a1105e10e6ecad7",
+      "role": "FY2015 original PDF48 printed109: 2014 raw liability/equity comparative; original 2015 classification differs from next report",
+      "url": "https://investors.nike.com/_assets/_5c5e7dfb9b8f3a4f8235c64466d81cf9/nike/db/950/9320/annual_report/nike-2015-form-10K.pdf",
+      "actually_read": "BS full selected page via layout text and 150dpi image; no claim to have read all87 pages"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m03\\main-source\\nike\\nike-2016-form-10k.pdf",
+      "sha256": "b163e5e01ac9713d89ccf3b0e3b848fd2d72baa0e81d14cc3cfc8322563ac9bf",
+      "role": "FY2016: PDF46/48 printed99/101 NI/BS, PDF55 printed108 ASU2015-17, PDF63 printed116 EPS Note12",
+      "url": "https://investors.nike.com/_assets/_07be80eb1a0b76dace4543b752eda1f2/nike/db/950/9321/annual_report/nike-2016-form-10K.pdf",
+      "actually_read": "Full selected income/BS/EPS pages and relevant Note1 text including split, historical revenue/expense policies and reclassification. Images46/48/54/55/63 actually viewed; no full85-page annual-report claim"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m03\\main-source\\nike\\p24-independent-recomputation.json",
+      "sha256": "04506bd7e81860aeb7b599521f6444224ca33c72d178cb5adcd92ea275544f80",
+      "role": "75 numeric cells, ClassA dash/na excluded from false exact-zero reconstruction"
+    }
+  ],
+  "facts_and_limits": [
+    "2014 p24 raw amounts use FY2015 original comparative, 2015 uses FY2016 restated comparative, 2016 uses FY2016 current column. 75 roundings match; this is not proof that the full three-year series uses one restated basis.",
+    "FY2015 total2015=21600, current assets15976, deferred/other assets2201; FY2016 comparative total2015=21597, current assets15587, deferred/other2587. ASU2015-17 note gives -389,+386,-2,-1 shifts.",
+    "FY2015 comparative2014 current assets13696 includes separate deferred-tax355, other noncurrent1651. PPT has13341/2006. Same total18594 does not prove fully unified restatement or justify replacing original PPT numbers.",
+    "EPS Note12 has WA1697.9m + dilutive44.6m =1742.5m; 3760/1697.9 rounds2.21 and3760/1742.5 rounds2.16; inverse rounded EPS approx1701m is not official denominator. Note1/12 actual company uses Netincome numerator; not all companies may do so.",
+    "No new claim about Nike 2026 operations or a classroom display. Official external supplements are visibly separated from original lecture values.",
+    "ClassA dash gives no exact underlying value; retain three rounded0.0% and two na from lecture without dividing by zero."
+  ],
+  "standards_primary_support": [
+    {
+      "url": "https://www.ifrs.org/content/dam/ifrs/project/conceptual-framework/fact-sheet-project-summary-and-feedback-statement/conceptual-framework-project-summary.pdf?la=en",
+      "location": "2018 Project Summary chapter4, printedp8",
+      "proposition": "Asset controlled resource, liability present obligation arising from past events, equity residual; removed probability from element definition, separate recognition/measurement. This is official project summary, not a full current standard audit."
+    },
+    {
+      "url": "https://www.ifrs.org/content/dam/ifrs/project/primary-financial-statements/ifrs-standard/reference-material-for-ifrs18.pdf",
+      "location": "IAS1 66/68-71 as reproduced in official reference material",
+      "proposition": "Multiple alternative current criteria, normal cycle, trading, twelve months and cash restriction; liability deferral right separate from asset criteria."
+    },
+    {
+      "url": "https://www.ifrs.org/content/dam/ifrs/publications/pdf-standards/english/2021/issued/part-a/ias-16-property-plant-and-equipment.pdf?bypass=on",
+      "location": "definitions and49-55",
+      "proposition": "PP&E use more than one period, systematic allocation of depreciable amount after residual value, carrying amount after depreciation/impairment, timing available for use; some depreciation absorbed into other assets. Public historical text, not claimed full2026 audit."
+    },
+    {
+      "url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-38-intangible-assets/",
+      "location": "official About summary, identifiability/finite-indefinite/research-development",
+      "proposition": "Identifiable nonmonetary asset, goodwill scope separate, internally generated goodwill not recognised, finite amortisation vs indefinite impairment."
+    },
+    {
+      "url": "https://www.ifrs.org/issued-standards/list-of-standards/ifrs-3-business-combinations/",
+      "location": "official About summary",
+      "proposition": "Acquisition method identifiable assets/liabilities before residual goodwill; root toy100% acquisition expressly excludes earlier interest and other adjustments."
+    }
+  ],
+  "local_dependencies": [
+    {
+      "path": "D:/上课资料/CityU/AC6761_Artificial_Intelligence_Accounting/course_files_export/Week 3 PPT.pptx",
+      "sha256": "ddb1f99b30cdbf7d6474f2c8e9f8e390094267977c6bde2219f91be7bc09b617",
+      "actually_read": "All47 pages of OOXML-extracted text/notes; root actual main image slides14/15/18/22/23/24/34/36/37/43/44/46 and hiddenimage11/image12; fresh read-only PowerPoint/PDF p18 has complete table. Source hash before/after unchanged."
+    },
+    {
+      "path": "D:/上课资料/CityU/AC6761_Artificial_Intelligence_Accounting/notes/M01-会计与商业.md",
+      "sha256": "0e3e5ff47b0b649fc68274a2de30a1f972e41fb5337ce1ce36e056313aac7ad6",
+      "role": "Already formal reviewed M01 local dependency; not used to pretend a new independent review."
+    }
+  ],
+  "main_source_read_checkpoint": {
+    "M03_ASR_records_actually_read": [
+      91,
+      366
+    ],
+    "range": "00:00-00:31 relevant rounding plus next-unit context; not allM04 transcript",
+    "S2_ASR_records_actually_read": [
+      101,
+      258
+    ],
+    "S4_ASR_records_actually_read": [
+      1,
+      6
+    ]
+  },
+  "calculations": {
+    "path": "E:\\app-data\\codex\\scratchpad\\vault-notes-revision-20261023\\ac6761-m03\\main-source\\calculation-checks.json",
+    "sha256": "89cf44973975d6843e2fd76c316c63c1d05a1105c1bcc291ecc1becc344d198d",
+    "role": "Root re-ran source203 checks, 0failed; original OUT changed only, source script unchanged. 75 new p24 cells separate file."
+  },
+  "render_limits": [
+    "Read-only PowerPoint first ExportAsFixedFormat failed COM TypeError; isolated instance closed, then SaveAs PDF32 succeeded, original hash unchanged. Freshp18 PNG/PDF show all cells; old erroneous source report preserved.",
+    "First new-source render filenames lacked report-year prefix, so FY2015 page48 was skipped rather than rendered; fixed source-stem filenames and actually viewed correct FY2015 image. Unprefixed Nike images all derive FY2016 and are not labelled as FY2015.",
+    "No claim to have opened Obsidian reading view or finished12 teaching diagrams; full main visual remains pending."
+  ]
+}

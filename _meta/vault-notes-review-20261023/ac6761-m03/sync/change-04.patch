@@ -1,0 +1,493 @@
+--- a/AC6761_Artificial_Intelligence_Accounting/_meta/术语表.md
++++ b/AC6761_Artificial_Intelligence_Accounting/_meta/术语表.md
+@@ -356,69 +356,427 @@
+ | **Null** | **空值** | 空值 | **空值 / 虛值** | |
+ | **Redundancy** | **冗余** | 冗餘 | **贅餘 / 冗餘** | |
+ 
+-### M03 · 年报分析 —— 术语条目
+-
+-> ✅ **2026-09-17 已合并 W3 转录**。🎙️ 标记 = 教授课上给的口头例子（本讲录音只到 p.27，覆盖 §2.1–§2.4；§2.5 起没有 🎙️ 标记）。
+-
+-| 中文 | English | 考试可用的英文定义（优先讲义原句） | 首现 | 备注 |
+-|---|---|---|---|---|
+-| 年度报告 | Annual Report | A comprehensive annual publication comprising corporate profile, directors' and chairman's statements, MD&A, governance/ESG reports, the auditor's report, four financial statements, notes and supplementary information. | M03 §2.1 | 讲义 p.2 列了 13 项 |
+-| 管理层讨论与分析 | Management's Discussion and Analysis (MD&A) | Management's narrative explanation of the reported figures and outlook. | M03 §2.1 | **不在审计范围** |
+-| 合并财务报表 | Consolidated Financial Statements | Statements combining **100%** of a subsidiary's assets and liabilities with the parent's, eliminating intra-group transactions; the portion not owned by the parent is shown as non-controlling interests. | M03 §2.1.3 | |
+-| 营业周期 | Operating Cycle | The time for a firm to convert cash back into cash (purchase material, manufacture product, sell product, collect cash). | M03 §2.2.2 | |
+-| 流动资产 | Current Assets | Assets that can be converted to cash within **one year or one operating cycle, whichever is longer**. | M03 §2.2.2 | ⚠️ 漏 whichever is longer 会扣分 |
+-| 非流动资产 | Non-Current Assets | Assets that cannot be easily converted to cash. | M03 §2.2.2 | |
+-| 物业、厂房及设备 | Property, Plant & Equipment (PP&E) | Tangible fixed assets, usually illiquid; the percentage of PP&E to total assets **varies by industry**; mostly at historical cost and different from market value. | M03 §2.2.3 | |
+-| 折旧 | Depreciation | The systematic allocation of a tangible fixed asset's cost over its useful life; a **non-cash** expense. | M03 §2.2.3 | 现金流量表要加回；🎙️ 课堂例子：\$10,000 设备、10 年直线折旧，每年 \$1,000（`01:01:50`–`01:03:06`） |
+-| 摊销 | Amortisation | Depreciation applied to intangible assets. | M03 §2.2.3 | |
+-| 账面价值 | Book Value / Carrying Amount | Original cost less accumulated depreciation and impairment. | M03 §2.2.3 | |
+-| 公允价值 | Fair Value | The price that would be received to sell an asset in an orderly transaction between market participants at the measurement date. | M03 §2.2.3 | |
+-| 投资性房地产 | Investment Property | Property held **for rental income or capital appreciation** rather than for own use. | M03 §2.2.3 | 与自用 PP&E 对照 |
+-| 无形资产 | Intangible Assets | Patents, trademarks, copyrights and similar non-physical assets. | M03 §2.2.4 | |
+-| 外购商誉 | Purchased Goodwill | For a simplified 100% business combination, purchase price less the fair value of identifiable net assets; partial acquisitions require the applicable NCI and acquisition accounting. A single-asset premium is not this goodwill residual. | M03 §2.2.4 | Nike 附注：*excess of the purchase price of acquired businesses over the market values of identifiable net assets*；🎙️ 课堂例子：A 收购 B，B 总资产 10M、总负债 8M（净值 2M），因竞购者 C 加入，成交价升到 5M → 商誉 = 5M − 2M = 3M（`01:07:26`） |
+-| 自创商誉 | Internally Generated Goodwill | Customer relationships, trained employee skills, market reputation; **generally not shown as an asset** because they are hard to identify and value in a reliable way. | M03 §2.2.4 | |
+-| 存货 | Inventories | Goods held for sale; **conservatively reported at the lower of historical cost or net realizable value**; could be an easy item for **earnings management or even fraud** (delay impairment, fake inventories). | M03 §2.2.5 | |
+-| 净变现价值 | Net Realizable Value (NRV) | Estimated selling price less estimated costs of completion and of sale. | M03 §2.2.5 | |
+-| 减值 | Impairment | Writing an asset down to its recoverable amount when that is below carrying value. | M03 §2.2.5 | |
+-| 盈余管理 | Earnings Management | Steering reported earnings toward a desired level through accounting estimates and timing choices. | M03 §2.2.5 | 与舞弊是连续谱；🎙️ 课堂数字例子：把折旧方法从直线法（\$1,000/年）换成加速法（首年 \$3,000），净利润当年减少 \$2,000（`01:09:57`–`01:11:33`）——🔴 见考点库 |
+-| 现金及现金等价物 | Cash and Cash Equivalents | **The prime item to verify liquidity**; equivalents are highly liquid investments with an original maturity of about three months or less. | M03 §2.2.6 | ⚠️ 与 BS 的 "cash and bank balances" 口径不同 |
+-| 坏账准备 | Allowance for Doubtful Accounts | The estimated uncollectible portion deducted from gross receivables; hence receivables are reported **net**. | M03 §2.2.6 | 讲义未定义，笔记补充 |
+-| 流动负债 | Current Liabilities | Liabilities settled within one year or operating cycle, whichever is longer: accounts payable, short-term debt, long-term debt come to due, accrued expenses, deferred revenue. | M03 §2.2.7 | |
+-| 一年内到期的长期负债 | Current Portion of Long-term Debt | The part of long-term debt falling due within the next year, reclassified from non-current to current. | M03 §2.2.7 | |
+-| 应计费用 | Accrued Expenses | Expenses already incurred but not yet paid or invoiced. | M03 §2.2.7 | 靠估计、无单据 |
+-| 应付债券 | Bonds Payable | Long-term debt raised by issuing transferable bonds to public investors. | M03 §2.2.7 | |
+-| 优先股 | Preferred Stock | Shares with a fixed dividend and priority over ordinary shares, usually without voting rights. | M03 §2.2.8 | |
+-| 股本溢价 | Additional Paid-in Capital / Share Premium | The amount subscribers pay **in excess of the par (stated) value** of the shares. | M03 §2.2.8 | ⭐ 股东投入 = 股本 + 溢价；🎙️ 课堂例子：10,000 股面值 \$1、按 \$5 发行 → 股本 \$10,000 + 溢价 \$40,000 = 现金 \$50,000（`01:15:35`–`01:16:10`） |
+-| 库存股 | Treasury Stock / Treasury Shares | The company's own repurchased shares held by it; a **deduction from equity**, shown in brackets. | M03 §2.2.8 | 🎙️ 课堂例子：以每股 \$6 买回 1,000 股（`01:16:25`）——ASR 报出的最终金额 "66,000" 与算法（\$6,000）不符，标 [?] |
+-| 其他综合收益累计额 | Accumulated Other Comprehensive Income (AOCI) | Accumulated amounts recognised in OCI under applicable classification rules; an equity stock distinct from current OCI. Unrealised status alone does not determine NI/OCI, and disposal treatment depends on the item. | M03 §2.2.8 | 讲义原例：\$100 买入涨到 \$150，\$50 未实现；🎙️ 教授当堂念了完全相同的数字（`01:18:19`–`01:18:49`） |
+-| 已实现 / 未实现 | Realized / Unrealized | Realized: the transaction is complete. Unrealized: value has changed but the asset has not been sold. | M03 §2.2.8 | |
+-| 少数股东权益 | Non-controlling Interests (NCI) | The share of a subsidiary's equity not owned by the parent; presented within equity, with its share of profit shown separately on the income statement. | M03 §2.2.9 | 讲义 80%/20% 例题；🎙️ 教授照念了同一例题（`01:19:18`–`01:19:57`），ASR 把 "80" 报成 "800" |
+-| 表外项目 | Off-balance-sheet Items | Items **not recognized on the balance sheet** — e.g. research and development ability, intangible assets developed within the firm, contingent lawsuits with uncertainty. | M03 §2.2.10 | 讲义 p.13 Weakness ② |
+-| 使用权资产 | Right-of-use Assets | The lessee's right to use a leased asset, recognised under HKFRS/IFRS 16 from 2019. | M03 §2.2.11 | |
+-| 联营公司 | Associates | Investees over which the investor has **significant influence but not control**; accounted for by the equity method, not consolidated. | M03 §2.2.11 | |
+-| 净流动资产 | Net Current Assets | Current assets less current liabilities (working capital). | M03 §2.2.11 | 港式报表的显式行项目 |
+-| 共同比分析 | Common-Size Analysis | Converts financial statement line items into **percentages of either total sales (income statement) or total assets (balance sheet)**, allowing comparison across firms, across time, across currencies and across sizes. | M03 §2.3 | ⭐ 分母口径要背 |
+-| 百分比变动分析 | Percentage Change Analysis | `(current − prior) ÷ prior`; measures the growth of an item over time. | M03 §2.4.3 | ⚠️ 讲义用了 3 页却从未定义 |
+-| 销货成本 | Cost of Revenue / Cost of Sales / COGS | The direct cost of goods or services sold. | M03 §2.5.2 | |
+-| 毛利 | Gross Profit | `Revenue − Cost of Revenue`; reflects the **ability to generate profits from revenue**. | M03 §2.5.2 | |
+-| 分销费用 | Distribution Costs | Costs incurred while delivering products for sales. | M03 §2.5.3 | |
+-| 管理费用 | Administrative Expenses | Costs to maintain daily operations, such as salary expense. | M03 §2.5.3 | |
+-| 财务费用 | Finance Costs | Costs incurred in maintaining debt finances (bank loans, etc.). | M03 §2.5.3 | |
+-| 营业利润 | Profit from Operations / Operating Income | Gross profit plus other income and gains, less distribution, administration and other expenses. | M03 §2.5.2 | |
+-| 税前利润 | Profit before Tax | Profit from operations less finance costs. | M03 §2.5.2 | |
+-| 每股收益 | Earnings Per Share (EPS) | Profit attributable to ordinary equity holders **of the parent** divided by the weighted average number of shares outstanding; reported basic and diluted. | M03 §2.5.2 | |
+-| 利得 / 损失 | Gains / Losses | Results of **non-operating or incidental activities** outside the core business. `Net Income = Revenues − Expenses + Gains − Losses`. | M03 §2.5.1 | ⚠️ M01 的公式在此升级 |
+-| 经常性 / 非经常性项目 | Recurring / Nonrecurring Items | Items that will / will not repeat; only recurring items can be extrapolated to the future. | M03 §2.5.4 | |
+-| 盈余质量 | Quality of Earnings | The extent to which reported earnings are real, sustainable and cash-backed; *"Figures could be manipulated: the quality of earnings may be low."* | M03 §2.5.4 | |
+-| 直接法 | Direct Method | Partitions cash receipts and cash payments into logical categories, such as cash collected from customers, paid to suppliers, and paid to employees. | M03 §2.7.1 | |
+-| 间接法 | Indirect Method | Reconciles reported net income to cash flows from operations by **"unraveling" noncash (i.e., accrual) components of earnings**; *almost all firms use it*. | M03 §2.7.1 | |
+-| 经营活动现金流 | Cash Flow from Operating Activities (CFO) | Cash from regular business activities involving the production and delivery of goods or services. | M03 §2.7.2 | |
+-| 投资活动现金流 | Cash Flow from Investing Activities (CFI) | Cash relating to the acquisition and disposal of assets such as plant and equipment and investments in securities; **a negative value reflects spending cash on investment**. | M03 §2.7.2 | |
+-| 筹资活动现金流 | Cash Flow from Financing Activities (CFF) | Cash received from and paid to capital providers such as banks, other lending institutions and shareholders; **reflects capital structure management**. | M03 §2.7.2 | |
+-| 缴入资本 | Contributed Capital | Common stock, preferred stock, additional paid-in capital and treasury stock. | M03 §2.8.1 | |
+-| 赚得资本 | Earned Capital | Retained earnings and accumulated other comprehensive income (AOCI). | M03 §2.8.1 | |
+-| 报表附注 | Notes to the Accounts | Details about items appearing in the financial statements, **specified by the Companies Ordinance**; **Note 1 (sometimes Note 2) summarizes the firm's accounting policies** such as valuation method. | M03 §2.9 | |
+-| 《公司条例》 | Companies Ordinance | The Hong Kong statute specifying what must be disclosed in the notes to the accounts. | M03 §2.9 | |
++### M03 · 年报分析
++
++> **2026-10-25 同步**：以下实文逐字复制本次已验收 M03 §5。此区的“§2.x/§4/§7”均指 [[M03-年报分析]] 内的小节；不是本术语文件的小节。原文、历史政策与当前补充的区别以正文为准，不把笔记整理的英文改称官方答案。
++
++术语表先用于定位名称和首现单元。**来源说明**：下方每条英文定义都是把讲义术语、正文机制和必要边界整理成考试可用完整句，统一标“笔记整理”，**不冒充逐字讲义原句**。需要背讲义原文时，回到“首现”小节的引用块；正文中明确标出的讲义原句仍保持原貌。
++
++| 中文 | English | 首现 |
++| --- | --- | --- |
++| 年度报告 | Annual Report | §2.1 |
++| 合并财务报表 | Consolidated Financial Statements | §2.1.3 |
++| 管理层讨论与分析 | Management's Discussion and Analysis (MD&A) | §2.1.2 |
++| 资产 | Assets | §2.2.1 |
++| 负债 | Liabilities | §2.2.1 |
++| 权益 | Equity | §2.2.1 |
++| 营业周期 | Operating Cycle | §2.2.2 |
++| 流动资产 | Current Assets | §2.2.2 |
++| 非流动资产 | Non-Current Assets | §2.2.2 |
++| 物业、厂房及设备 | Property, Plant & Equipment (PP&E) | §2.2.3 |
++| 折旧 | Depreciation | §2.2.3 |
++| 摊销 | Amortisation | §2.2.3 |
++| 账面价值 | Book Value / Carrying Amount | §2.2.3 |
++| 公允价值 | Fair Value | §2.2.3 |
++| 无形资产 | Intangible Assets | §2.2.4 |
++| 外购商誉 | Purchased Goodwill | §2.2.4 |
++| 自创商誉 | Internally Generated Goodwill | §2.2.4 |
++| 存货 | Inventories | §2.2.5 |
++| 净变现价值 | Net Realizable Value (NRV) | §2.2.5 |
++| 减值 | Impairment | §2.2.5 |
++| 盈余管理 | Earnings Management | §2.2.5 |
++| 现金及现金等价物 | Cash and Cash Equivalents | §2.2.6 |
++| 预期信用损失 | Expected Credit Loss (ECL) | §2.2.5、§2.2.6 |
++| 一年内到期的长期负债 | Current Portion of Long-term Debt | §2.2.7 |
++| 应计费用 | Accrued Expenses | §2.2.7 |
++| 递延收入 | Deferred / Unearned Revenue | §2.2.7 |
++| 应付债券 | Bonds Payable | §2.2.7 |
++| 优先股 | Preferred Stock | §2.2.8 |
++| 股本溢价 | Additional Paid-in Capital / Share Premium | §2.2.8 |
++| 库存股 | Treasury Stock / Treasury Shares | §2.2.8 |
++| 其他综合收益累计额 | Accumulated Other Comprehensive Income (AOCI) | §2.2.8 |
++| 已实现 / 未实现 | Realized / Unrealized | §2.2.8 |
++| 少数股东权益 | Non-controlling Interests (NCI) | §2.2.9 |
++| 表外项目 | Off-balance-sheet Items | §2.2.10 |
++| 使用权资产 | Right-of-use Assets | §2.2.11 |
++| 联营公司 | Associates | §2.2.11 |
++| 共同比分析 | Common-Size Analysis | §2.3 |
++| 百分比变动分析 | Percentage Change Analysis | §2.4.3 |
++| 毛利 | Gross Profit | §2.5.2 |
++| 销货成本 | Cost of Revenue / Cost of Sales / COGS | §2.5.2 |
++| 营业利润 | Profit from Operations / Operating Income | §2.5.2 |
++| 财务费用 | Finance Costs | §2.5.3 |
++| 每股收益 | Earnings Per Share (EPS) | §2.5.2 |
++| 利得 / 损失 | Gains / Losses | §2.5.1 |
++| 经常性 / 非经常性项目 | Recurring / Nonrecurring Items | §2.5.4 |
++| 盈余质量 | Quality of Earnings | §2.5.4 |
++| 直接法 | Direct Method | §2.7.1 |
++| 间接法 | Indirect Method | §2.7.1 |
++| 经营活动现金流 | Cash Flow from Operating Activities (CFO) | §2.7.2 |
++| 投资活动现金流 | Cash Flow from Investing Activities (CFI) | §2.7.2 |
++| 筹资活动现金流 | Cash Flow from Financing Activities (CFF) | §2.7.2 |
++| 缴入资本 | Contributed Capital | §2.8.1 |
++| 赚得资本 | Earned Capital | §2.8.1 |
++| 报表附注 | Notes to the Accounts | §2.9 |
++
++上表三列分别是中文名、英文名和首次解释位置，无金额单位；用首现位置回到具体例子。英文实文保留，但定义中的教学简化须结合正文条件。
++
++**年度报告**
++
++笔记整理的考试英文表达（非逐字讲义原句）：A comprehensive report published annually, comprising corporate profile, directors' and chairman's statements, MD&A, governance/ESG reports, the auditor's report, four financial statements, notes, and supplementary information.
++
++
++**合并财务报表**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Statements that combine 100% of a subsidiary's assets and liabilities with the parent's, eliminating intra-group transactions, with the portion not owned by the parent shown as non-controlling interests.
++
++
++**管理层讨论与分析**
++
++笔记整理的考试英文表达（非逐字讲义原句）：The management's narrative explanation of reported figures, results and outlook.
++
++Its status should be distinguished from the financial statements covered by the auditor's opinion, and any separate assurance must be checked in the relevant report.
++
++
++**资产**
++
++笔记整理的考试英文表达（非逐字讲义原句）：An economic resource controlled by the entity as a result of past events, with the potential to produce economic benefits.
++
++Legal ownership is not always required; recognition and measurement follow the applicable requirements.
++
++
++**负债**
++
++笔记整理的考试英文表达（非逐字讲义原句）：A present obligation to transfer an economic resource as a result of past events.
++
++The obligation need not have a fixed interest return or low risk; its terms, amount and timing must be examined.
++
++
++**权益**
++
++笔记整理的考试英文表达（非逐字讲义原句）：The residual interest in recognised assets after deducting recognised liabilities.
++
++It is a book amount, not automatically the market value of the company.
++
++
++**营业周期**
++
++笔记整理的考试英文表达（非逐字讲义原句）：The time for a firm to convert cash back into cash (purchase material, manufacture product, sell product, and collect cash).
++
++
++**流动资产**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Under the IAS 1 context used here, meeting any applicable criterion makes an asset current.
++
++The criteria include realisation, sale or consumption in the normal operating cycle; trading purpose; or expected realisation within twelve months.
++
++Cash or cash equivalents are also current, unless restricted from exchange or use to settle a liability for at least twelve months after the reporting period.
++
++现金及现金等价物通常为流动；若兑换或用于清偿负债的限制持续到报告期后至少 12 个月，则不适用这一现金条件。其他条件及例外见 §2.2.2。
++
++
++**非流动资产**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Assets that do not meet the applicable current-asset criteria.
++
++Ease of sale alone does not determine the classification.
++
++
++**物业、厂房及设备**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Tangible assets held for production, supply, rental or administration and expected to be used for more than one period.
++
++Subsequent carrying amounts depend on the applicable cost or revaluation model, depreciation and impairment; land and other non-depreciable components need separate consideration.
++
++
++**折旧**
++
++笔记整理的考试英文表达（非逐字讲义原句）：The systematic allocation of an asset's depreciable amount, after estimated residual value, over its useful life.
++
++Depreciation itself is a non-cash allocation; the original purchase may have required cash.
++
++
++**摊销**
++
++笔记整理的考试英文表达（非逐字讲义原句）：The systematic allocation of the depreciable amount of a finite-life intangible asset over its useful life.
++
++Indefinite-life intangible assets and acquisition goodwill do not follow this annual amortisation rule in the IFRS context explained here.
++
++
++**账面价值**
++
++笔记整理的考试英文表达（非逐字讲义原句）：The amount at which an asset is recognised after applicable accumulated depreciation or amortisation and impairment adjustments.
++
++Cost less those adjustments is the cost-model example, not the only measurement basis.
++
++
++**公允价值**
++
++笔记整理的考试英文表达（非逐字讲义原句）：The price that would be received to sell an asset in an orderly transaction between market participants at the measurement date.
++
++
++**无形资产**
++
++笔记整理的考试英文表达（非逐字讲义原句）：An identifiable non-monetary asset without physical substance.
++
++Identifiability may arise from separability or contractual/legal rights; acquired goodwill is considered separately.
++
++
++**外购商誉**
++
++笔记整理的考试英文表达（非逐字讲义原句）：A residual recognised in a business combination after identifying and measuring the acquired assets and assumed liabilities.
++
++In this section's simplified 100% acquisition with no previous holding or other adjustments, goodwill equals consideration less the fair value of identifiable net assets.
++
++
++**自创商誉**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Internally generated goodwill is not recognised as an asset.
++
++This does not mean that every internally developed intangible must be expensed: recognition of other items depends on their own applicable criteria and must be assessed separately.
++
++
++**存货**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Inventories are assets held for sale, in the process of production for sale, or materials or supplies to be consumed in production or in rendering services.
++
++They are measured at the **lower of cost and net realisable value**. Delaying a required write-down or recording fictitious inventory can overstate assets and profit.
++
++
++**净变现价值**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Estimated selling price less the estimated costs of completion and of sale.
++
++
++**减值**
++
++笔记整理的考试英文表达（非逐字讲义原句）：A reduction in an asset's carrying amount under the applicable measurement rule.
++
++Inventories use cost versus NRV, IAS 36 non-financial assets use recoverable amount, and receivables use expected credit losses.
++
++
++**盈余管理**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Using estimates, methods or timing choices to influence reported earnings.
++
++Reasonable estimates are necessary; knowingly delaying a required impairment or recording fictitious inventory may be an error, material misstatement or fraud rather than a permitted choice.
++
++
++**现金及现金等价物**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Cash is cash on hand and demand deposits.
++
++Cash equivalents are short-term, highly liquid investments held for short-term cash commitments, readily convertible to known amounts of cash and subject to an insignificant risk of changes in value; the usual three-month guide runs from acquisition to maturity.
++
++
++**预期信用损失**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Expected credit loss (ECL) is a probability-weighted estimate of credit losses that uses reasonable and supportable information about past events, current conditions and forecasts.
++
++A loss allowance reduces the net carrying amount of applicable receivables.
++
++
++**一年内到期的长期负债**
++
++笔记整理的考试英文表达（非逐字讲义原句）：The current portion of long-term debt is the part of long-term financing that meets any current-liability criterion, for example because it is due within twelve months after the reporting period.
++
++A liability is also current if the entity has no reporting-date right to defer settlement for at least twelve months.
++
++
++**应计费用**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Liabilities for goods or services already received, or expenses already incurred, that have not yet been paid, invoiced or formally agreed; the amount may require a reasonable estimate under the accrual basis.
++
++
++**递延收入**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Consideration received or due before the entity transfers the promised goods or services; it is presented as a **contract liability** until the related performance obligation is satisfied.
++
++
++**应付债券**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Debt raised by issuing bonds to investors under specified contractual terms.
++
++Bonds may be publicly offered or privately placed; transferability, maturity and issue size depend on the arrangement.
++
++
++**优先股**
++
++笔记整理的考试英文表达（非逐字讲义原句）：In the simplified equity-classified, non-participating case, preference shares carry a fixed dividend preference and rank ahead of ordinary shares in distributions and liquidation, often with limited voting rights.
++
++Classification depends on contractual cash and redemption obligations, not the legal label alone.
++
++
++**股本溢价**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Under a par-value share regime, share premium is the amount subscribers pay above par or stated value.
++
++A no-par regime may credit the full issue proceeds to share capital instead.
++
++
++**库存股**
++
++笔记整理的考试英文表达（非逐字讲义原句）：The entity's own equity instruments repurchased and held without cancellation; under IAS 32 they are generally deducted from equity.
++
++Whether shares may be held or cancelled also depends on the applicable legal and contractual setting.
++
++
++**其他综合收益累计额**
++
++笔记整理的考试英文表达（非逐字讲义原句）：A cumulative equity balance at the reporting date for amounts recognised in other comprehensive income under the applicable rules.
++
++Current-period OCI is a flow; AOCI is the accumulated balance.
++
++Whether an amount is later reclassified to profit or loss depends on the item and category.
++
++
++**已实现 / 未实现**
++
++笔记整理的考试英文表达（非逐字讲义原句）：In this securities example, realized means the security has been sold, while unrealized means it remains held despite a value change.
++
++This status alone does not determine whether the change goes to profit or loss or OCI.
++
++
++**少数股东权益**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Equity in a controlled subsidiary that is not attributable, directly or indirectly, to the parent.
++
++It is a real ownership interest rather than a balancing plug, and its share of profit and OCI is attributed separately.
++
++
++**表外项目**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Resources, obligations or risks not recognised as line items on the balance sheet.
++
++Whether they are disclosed in the notes depends on the applicable standard, materiality and facts; remote contingent liabilities are generally not disclosed under IAS 37.
++
++
++**使用权资产**
++
++笔记整理的考试英文表达（非逐字讲义原句）：An asset representing a lessee's right to use an underlying leased asset during the lease term.
++
++IFRS 16 requires a lessee to recognise the right-of-use asset and the related lease liability under its general model.
++
++The A-company 2019 presentation is compatible with a lease-accounting transition, but the specific bridge still requires Note 15; a general effective date alone does not prove this company's balance movement. 🔗 [IFRS 16 official page](https://www.ifrs.org/issued-standards/list-of-standards/ifrs-16-leases/), accessed 2026-10-25.
++
++
++**联营公司**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Investees over which the investor has **significant influence**, after first excluding control or joint control.
++
++A holding of 20% or more of voting power creates a rebuttable presumption, not a hard 20%–50% rule; associates are generally accounted for using the equity method.
++
++
++**共同比分析**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Converts line items into percentages of **total sales** for an income statement or **total assets** for a balance sheet, making structure easier to compare while retaining the need to inspect absolute size, accounting policies, periods and underlying risks.
++
++
++**百分比变动分析**
++
++笔记整理的考试英文表达（非逐字讲义原句）：$(\text{current period}-\text{prior period})\div\text{prior period}\times100\%$; expresses the change relative to the prior-period amount as a percentage, without removing scale, currency, accounting-policy or base-value limitations.
++
++
++**毛利**
++
++笔记整理的考试英文表达（非逐字讲义原句）：$\text{Revenue}-\text{Cost of revenue}$; reflects the ability to generate profits from revenue.
++
++
++**销货成本**
++
++笔记整理的考试英文表达（非逐字讲义原句）：The cost attributable to the goods or services sold; for manufactured inventory it can include direct materials, direct labour and allocated production overhead.
++
++
++**营业利润**
++
++笔记整理的考试英文表达（非逐字讲义原句）：In this lecture's format, gross profit plus other income and gains, less distribution, administration and other expenses. The actual subtotal depends on the entity's applicable presentation.
++
++
++**财务费用**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Costs incurred in maintaining debt finances (bank loans, etc.).
++
++
++**每股收益**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Basic EPS divides profit attributable to ordinary equity holders of the parent by weighted-average ordinary shares outstanding.
++
++Diluted EPS adjusts both numerator and denominator for dilutive potential ordinary shares and excludes anti-dilutive instruments. See §2.5.2 for the example and limits.
++
++
++**利得 / 损失**
++
++笔记整理的考试英文表达（非逐字讲义原句）：The lecture's labels for results typically arising from non-operating or incidental activities; in the broader conceptual framework they are categories within income or expenses, not separate financial-statement elements.
++
++
++**经常性 / 非经常性项目**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Items assessed by whether their nature, frequency and magnitude represent an ongoing pattern.
++
++Recurring items can inform forecasts after adjustment; nonrecurring items should be explained separately rather than automatically deleted.
++
++
++**盈余质量**
++
++笔记整理的考试英文表达（非逐字讲义原句）：The extent to which reported earnings are supported by verifiable activity, neutral estimates, understandable disclosures, repeatable sources and explainable cash conversion.
++
++
++**直接法**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Reports major classes of gross operating cash receipts and gross operating cash payments, such as cash collected from customers and cash paid to suppliers and employees.
++
++It is a method of presenting CFO, not a different method for CFI or CFF.
++
++
++**间接法**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Reconciles the applicable profit subtotal to CFO by adjusting non-cash items, operating deferrals and accruals, and profit-or-loss items whose cash effects are investing or financing.
++
++The lecture's “almost all firms” wording is historical and does not establish a current universal usage rate.
++
++
++**经营活动现金流**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Cash flows from the entity's principal revenue-producing activities and other activities that are not investing or financing.
++
++Positive CFO is evidence of operating cash generation, not automatic proof of profitability or earnings quality.
++
++
++**投资活动现金流**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Cash flows from acquiring and disposing of long-term assets and investments not included in cash equivalents, subject to the applicable trading/dealing scope.
++
++A negative net amount means investing outflows exceeded inflows; it does not by itself prove expansion or value creation.
++
++
++**筹资活动现金流**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Cash flows that change the size or composition of contributed equity and borrowings, such as issuing shares, obtaining or repaying borrowings, and payments to owners.
++
++The sign shows net financing direction, not whether financing is good or bad.
++
++
++**缴入资本**
++
++笔记整理的考试英文表达（非逐字讲义原句）：The lecture's contributed-capital grouping includes common stock, equity-classified preferred stock, additional paid-in capital and treasury stock; actual columns depend on the applicable capital regime and transactions.
++
++
++**赚得资本**
++
++笔记整理的考试英文表达（非逐字讲义原句）：The lecture groups retained earnings and accumulated other comprehensive income as earned capital. This grouping does not make the balance cash received or automatically distributable.
++
++
++**报表附注**
++
++笔记整理的考试英文表达（非逐字讲义原句）：Notes are an integral part of the financial statements and provide applicable details, accounting policies, estimates and risks.
++
++The governing disclosure requirements and note numbering depend on the reporting framework, issuer and jurisdiction; notes do not guarantee an answer to every business or legal question.
++
++
++
++---
++
++**其他既有名称定位**：投资性房地产见 M03 §2.2.3；坏账准备/净额见 §2.2.6；流动负债见 §2.2.7；净流动资产见 §2.2.11；税前利润、分销费用和管理费用见 §2.5.2–§2.5.3；《公司条例》的适用边界见 §2.9。这些索引不以旧简写覆盖本次正文条件。
+ 
+ ### M04 · REA 会计模型 —— 术语条目
+ 

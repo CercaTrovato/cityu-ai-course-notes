@@ -1,0 +1,38 @@
+{
+  "time": "2026-10-25T14:21:11",
+  "checks": [
+    {
+      "tool": "link_check.py",
+      "exit_code": 0
+    },
+    {
+      "tool": "readme_check.py",
+      "exit_code": 1
+    },
+    {
+      "tool": "integrity_check.py with owned manifest",
+      "passed": true
+    }
+  ],
+  "limits": "Link/README/integrity helpers do not assess teaching. Changes outside own set are recorded and preserved, not silently adopted.",
+  "readme_correction": {
+    "exit_code": 0,
+    "log": "readme_check-sync-corrected.txt",
+    "reason": "explicit module range and merged-material notation; original failure log retained"
+  },
+  "final_status": {
+    "links": {
+      "exit_code": 0,
+      "scanned_files": 365
+    },
+    "README": {
+      "exit_code": 0,
+      "note": "7 literal range/material marker errors corrected; original failure preserved"
+    },
+    "integrity": {
+      "passed": true,
+      "owned_manifest": true
+    },
+    "teaching": "Independent real reports, not established by scripts"
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "schema": "source-evidence-increment-v1",
+  "status": "pending-targeted-recheck",
+  "author_id": "/root/repair_ac6761_m03_main_intro",
+  "base_candidate": {
+    "path": "author/main-middle-proposed.md",
+    "sha256": "b9410072cf827f79c478459b67927f83a2e59144c68f8f0f312b73ddcd7cc8f3"
+  },
+  "base_source_evidence": {
+    "path": "author/main-middle-source-evidence.json",
+    "sha256": "dbb93bbb60794c44bc9d355d0f744a454667b8a88a449ae6d69df1ca630966ec"
+  },
+  "independent_review": {
+    "path": "main-middle-independent-review.md",
+    "sha256": "1e96aca3a26808804dd4f0e93529f48d5658ed54c4d8b900e29394626c75c873",
+    "reviewer_id": "/root/review_ac6761_m03_middle"
+  },
+  "local_evidence": [
+    {
+      "path": "D:/上课资料/CityU/AC6761_Artificial_Intelligence_Accounting/course_files_export/Week 3 PPT.pptx",
+      "sha256": "ddb1f99b30cdbf7d6474f2c8e9f8e390094267977c6bde2219f91be7bc09b617",
+      "used_for": "Historical lecture wording and all unchanged source quotes."
+    },
+    {
+      "path": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ac6761-m03/sources/slides/slide-34.png",
+      "sha256": "5af8473ff214eff61238dfb8c849f2f0ace32f2a931cb16cda1ae6533220d164",
+      "used_for": "R&D is visibly an indented 'Including' subline under Other expenses, so it must not be deducted again."
+    },
+    {
+      "path": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ac6761-m03/sources/slides/slide-36.png",
+      "sha256": "6bfc7afc353ea92a077fd17b6241e50e08aa52818e66163dc303a8f135844f66",
+      "used_for": "2014 and 2016 operating income, net interest, other net income/expense, tax and net income numerators."
+    },
+    {
+      "path": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ac6761-m03/sources/slides/slide-37.png",
+      "sha256": "e32261c4835e28f317f7591e3019b8ac347bd785c2cb895c78b1e23bbed0f7a1",
+      "used_for": "Reported common-size and percentage-change outputs used to cross-check the percentage-point bridge."
+    },
+    {
+      "path": "D:/上课资料/CityU/AC6761_Artificial_Intelligence_Accounting/transcripts/M03-transcript.txt",
+      "sha256": "d8497e1664b1f902338c09d51ad550c3a59a1c8e97865a3ba8fbb3309822a379",
+      "used_for": [
+        "01:34:45-01:35:55 net-current-assets/non-current-liabilities/full-equation source boundary",
+        "01:40:04-01:40:23 Nike p.20-p.25 self-reading instruction; the self-reading interval itself still starts after 01:40:23"
+      ]
+    }
+  ],
+  "official_external_sources": [
+    {
+      "id": "ias37-recognition-criteria",
+      "issuer": "IFRS Foundation",
+      "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ias37.html#IAS37_14",
+      "proposition": "Provision recognition requires a present legal or constructive obligation from a past event, probable outflow and a reliable estimate; probable outflow alone is insufficient.",
+      "search_id": "01a16fa4-209f-758b-ae10-b74bf7bf6c51",
+      "retrieval_date": "2026-10-25"
+    },
+    {
+      "id": "ias28-equity-method",
+      "issuer": "IFRS Foundation",
+      "url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-28-investments-in-associates-and-joint-ventures/",
+      "proposition": "The investor's share of investee profit or loss changes both investor profit or loss and the investment carrying amount; distributions reduce the carrying amount.",
+      "search_id": "01a16fa4-0454-729e-8708-576924f6359b",
+      "retrieval_date": "2026-10-25"
+    },
+    {
+      "id": "ifrs16-right-of-use",
+      "issuer": "IFRS Foundation",
+      "url": "https://www.ifrs.org/issued-standards/list-of-standards/ifrs-16-leases/",
+      "proposition": "A right-of-use asset represents the lessee's right to use the underlying leased asset; the related lease liability represents the obligation to make lease payments.",
+      "search_id": "01a16fa4-04f5-76d1-b79d-d95f56e49ace",
+      "retrieval_date": "2026-10-25"
+    }
+  ],
+  "calculation_checks": {
+    "a_company_2019_other_expenses_percent": 10.560,
+    "a_company_2019_rd_percent": 9.898,
+    "rd_is_subset_of_other_expenses": true,
+    "nike_2014_to_2016_operating_margin_contribution_pp": 0.667,
+    "nike_2014_to_2016_net_interest_contribution_pp": 0.060,
+    "nike_2014_to_2016_other_net_contribution_pp": 0.803,
+    "nike_2014_to_2016_tax_contribution_pp": 0.396,
+    "nike_2014_to_2016_total_bridge_pp": 1.926,
+    "nike_2014_to_2016_net_margin_change_pp": 1.926,
+    "bridge_matches": true
+  },
+  "scope_clarification": {
+    "item": "Section 2.4.4 AOCI interpretation",
+    "original_report_routing": "The report section 3.2 described this as an equity-package dependency.",
+    "main_agent_correction": "The equity author had not changed this paragraph, so the main agent explicitly reassigned only this paragraph to the present targeted author pass.",
+    "integrity_note": "The independent-review report was not edited, and this reassignment is not presented as an original reviewer instruction."
+  },
+  "excluded": [
+    "The main agent's separate 33-item terminology/framework/Nike source package is not merged here.",
+    "Cash and HKEX later-section packages remain outside this v2 author scope.",
+    "No canonical, vault, Notion or Git write occurred."
+  ]
+}

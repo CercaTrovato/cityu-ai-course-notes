@@ -1,0 +1,199 @@
+{
+  "source_sha256": "89d10b1738d4c0cf58a01702d5a0ff9c8da45c3ea48b7b7356123b843b57187d",
+  "candidate_sha256": "f2f23f4fdf403cf4f8e73ae0926dfa60b774b309cfdcc766da4a909e262f451f",
+  "changes": [
+    {
+      "id": "61-FRONT-source-p2",
+      "old": "讲义 p.2 的旧时段是 19:30–21:30",
+      "new": "`Week 1 PPT.pptx` p.2 的旧时段是 19:30–21:30"
+    },
+    {
+      "id": "61-FRONT-F1-pe",
+      "old": "P/E 必须让分子、分母使用一致的普通股口径：\n\n$$\nP/E=\\frac{\\text{每股市价}}{\\text{EPS}}\n=\\frac{\\text{母公司普通股总市值}}{\\text{归属于母公司普通股股东的利润}}\n$$\n\n",
+      "new": "**市盈率（Price-to-Earnings Ratio, P/E）**把普通股价格与对应的每股盈利相比；它是一种估值比例，不是“这么多年一定回本”的承诺。这里先用正利润说明，亏损时不套普通正倍数直觉。\n\n**先分清两个股数**：基本 EPS 使用利润所属期间的加权平均在外普通股数；总市值通常使用估值日当时的普通股数。两者都要匹配同一普通股类别与利润归属，但股数的时点仍可能不同：\n\n$$\nP/E_{\\text{每股口径}}=\\frac{\\text{估值日每股市价}}{\\text{基本 EPS}},\n\\qquad\nP/E_{\\text{总额口径}}=\\frac{\\text{估值日普通股总市值}}{\\text{同期间归普通股利润}}.\n$$\n\n只有总市值所用股数与基本 EPS 的加权股数一致等条件齐备，才能把两种写法直接画等号。年中增发、回购或报告期后股数变化时，要先对齐股数基础，不能机械互换。\n\n**改股数看区别（💡 笔记补充）**：假设年度普通股利润为 100、该年度加权股数为 100，基本 EPS 为 1。估值日已在增发后，当时有 200 股、每股市价为 10；股价除 EPS 为 10，而总市值 $200\\times10=2,000$ 除年度利润为 20。两个数的差来自股数时点口径，不是 NCI 被扣了两次。\n\n"
+    },
+    {
+      "id": "61-FRONT-F3-graph",
+      "old": " A[成本 残值 寿命 方法与可使用日] --> B{已可使用且仍须分摊吗}\n B -->|否| Z[不计本期折旧或报告缺条件]\n B -->|是| C[按本期使用时段求 d]\n C --> D[借费用 贷累计折旧 更新账面]\n D --> E{估计发生变更吗}\n E -->|是| F[以当前账面扣新残值 分剩余寿命]\n E -->|否| G[核未折穿残值及本期已处理]\n F --> G\n G --> H[输出费用 累计折旧 净设备 NI 与 E]",
+      "new": " A[期初或变更时点账面 原估计 可使用日] --> B{已可使用且仍须分摊吗}\n B -->|否| Z[不计本期折旧或报告缺条件]\n B -->|是| C{本时段按新估计生效吗}\n C -->|否| D[沿用本时段的残值与剩余寿命]\n C -->|是| E[先用变更时点账面扣新残值 分新剩余寿命]\n D --> F[按本时段长度求 d]\n E --> F\n F --> G[借费用 贷累计折旧 只更新本时段一次]\n G --> H[核未折穿残值且未重复计提]\n H --> I[输出费用 累计折旧 净设备 NI 与 E]"
+    },
+    {
+      "id": "61-FRONT-F3-time",
+      "old": "累计 270,000、账面 730,000；新的残值 80,000、剩余寿命 5 年。",
+      "new": "累计 270,000、账面 730,000；在第 4 年开始前已取得新信息，新残值 80,000、剩余寿命 5 年从第 4 年起生效。"
+    },
+    {
+      "id": "61-FRONT-F3-walk",
+      "old": "先在“已可使用且仍须分摊吗”走“是”，按时段求全年 90,000、本期半年 45,000。然后借折旧费用、贷累计折旧，更新账面。另一组状态是假设三完整年后估计变更：从“估计发生变更吗”走“是”，按新估计求未来每年 130,000。",
+      "new": "先在“已可使用且仍须分摊吗”走“是”。没有新估计，沿用原残值和寿命，求全年 90,000、本期半年 45,000，再更新账面一次。另一组状态从第 4 年期初账面 730,000 开始，新估计已在此时生效，先用新残值与剩余寿命算 130,000，再记第 4 年折旧，期末为 600,000；不能先扣旧折旧 90,000 再重算。"
+    },
+    {
+      "id": "61-FRONT-F3-boundary",
+      "old": "**图旁边界**：半年比例与估计变更是两组明确教学状态；10月可使用改3/12，缺约定不称官方45,000。",
+      "new": "**图旁边界**：半年例与第 4 年期初变更例是两组教学状态。若年中变更，先按原估计处理变更前时段，再以变更时点账面进入新时段；不得重复计提。10 月可使用改为 3/12，缺约定不称官方 45,000。"
+    },
+    {
+      "id": "61-FRONT-S1-equity",
+      "old": "股东投的，不用还，稀释控制权",
+      "new": "发行权益取得股东投入；向新投资者发行可能稀释原股东比例或投票权，须看认购与股类条款"
+    },
+    {
+      "id": "61-FRONT-S2-route",
+      "old": "部分年折旧与估计变更、存货减记后的销售与转回、FVPL/FVOCI 分类、取得控制后的合并抵销",
+      "new": "部分年折旧与估计变更、存货减记后的销售与转回、按已给定 FVPL/FVOCI 类别比较计量和列报、取得控制后的合并抵销"
+    },
+    {
+      "id": "61-FRONT-S2-FVPL",
+      "old": "原历史 available-for-sale 示例将变动计入 OCI；**不能因没出售便禁止进利润表**。FVPL 类别的未实现公允价值变动恰恰计入损益。",
+      "new": "原历史 available-for-sale 示例将变动计入其他综合收益（Other Comprehensive Income, OCI）；**不能因没出售便禁止进利润表**。以公允价值计量且变动计入损益（Fair Value through Profit or Loss, FVPL）的未实现价值变动恰恰计入损益。"
+    },
+    {
+      "id": "61-FRONT-S2-FVOCI",
+      "old": "IFRS 9 下选 FVOCI 的权益投资累计 OCI 不回收至损益",
+      "new": "IFRS 9 下选以公允价值计量且变动计入其他综合收益（Fair Value through Other Comprehensive Income, FVOCI）的权益投资，累计 OCI 不回收至损益"
+    },
+    {
+      "id": "61-FRONT-S3-notes",
+      "old": "2. **每一行右边都有一个 Note 编号。** 13、14、15…… 这就是 §2.9 附注的接口：想知道 PP&E 里到底有什么，翻附注 13。**这是\"报表是索引、附注是正文\"的具体体现。**",
+      "new": "2. **许多具体项目旁列有 Note 编号。** 例如 PP&E 按附注 13 查组成。小计及部分项目没有号，不等于漏抄或不需解释；主表与附注共同提供财务信息，不把其中一个当成只有目录、另一个才是全部正文。"
+    },
+    {
+      "id": "61-FRONT-F2-newlines",
+      "old": "**这一页要读出来的五件事**",
+      "new": "**先认清本页新增行（💡 笔记补充）**\n\n前文讲过应收、预付和公允价值。下面两张真实表还用了几组新名字；先认对象，再读金额，不能把一串英文当成已解释。\n\n| 原表项目 | 它在问什么 | 本例查证入口 |\n|---|---|---|\n| Trade and bills receivables / payables 贸易应收／应付及票据 | 除普通赊销赊购款，还合列按票据条款到期收付的款项 | 收款看 Note 23，付款看 Note 26 |\n| Prepayments, other receivables and other assets 预付款、其他应收及其他资产 | 几类项目合并列示，不能全读成客户欠款 | Note 24 已有拆分，见下文 |\n| Financial assets at FVPL 以公允价值计量且变动入损益的金融资产 | 名称说明计量和变动去向，不说明具体持有哪些工具 | 按本行附注 20 查工具与风险 |\n| Deferred tax assets / liabilities 递延税项资产／负债 | 会计与税务计入的时间不同，可能影响以后抵税或交税 | Note 30；不等于当前 Tax payable |\n| Deferred government grants 递延政府补助 | 补助已按政策处理，但相关收益可能随以后成本分期确认 | Note 29；不是客户预付款 |\n\n**票据先当作有条款的收付权利理解**：普通贸易应收／应付来自赊销赊购；改以票据约定金额、到期日等收付时，仍要看票据及承兑人的条款与信用风险。合并行只给总额，不能据名字认定全部由银行无条件保障。\n\n**混合行确实不只含预付款**：原年报 Note 24（物理页 140）把 2019 流动合计 6,903,251 拆为预付款 805,925、其他应收 479,175、理财产品投资 5,618,104、预付费用 47；四项相加才是本行。这里按附注给实际组成，没有把整行当成普通销售应收。\n\n**递延税的最小时间差例（笔记补充，金额单位：元）**：假设税率为 25%，公司会计上今年已确认一项费用 100，但税务只能等以后实际支付才扣。这会使今年应纳税利润相对会计口径多 100、当前税多 25；若满足准则的确认条件，以后那 100 可抵税所对应的 25，可能形成递延税项资产。\n\n反过来，若税务比会计更早扣掉 100，且该暂时差异以后会转回，本简例现在少交的 25 对应以后税额影响，可能形成递延税项负债。它与已经按本期税单计出的应付税款不是同一时间问题；税率、例外、可抵扣利润和抵销条件仍须按准则与公司事实核。本例不是 A 公司税率或 Note 30 余额的推算。\n\n**政府补助为什么可先列递延项目**：IAS 20 要求合理确信会满足条件并收到补助，再按相关成本成为费用的期间系统确认补助收益。与资产有关的补助可按递延收益方式列示，也可按准则规定抵减相关资产。因而“收到补助”不自动等于当期全额利润，也不等同客户尚未履约的合同负债；本公司的具体条件与摊转表仍按 Note 29 查。\n\n🔗 一般规则据 [IAS 12 官方简介](https://www.ifrs.org/issued-standards/list-of-standards/ias-12-income-taxes/)与 [IAS 20 官方简介](https://www.ifrs.org/issued-standards/list-of-standards/ias-20-accounting-for-government-grants-and-disclosure-of-government-assistance/)，获取日 2026-10-25；Note 24 组成据中国生物制药 2019 年报。没有据一般规则给本公司补造税务或补助明细。\n\n**这一页要读出来的五件事**"
+    },
+    {
+      "id": "61-FRONT-F2-label-12",
+      "old": "Prepayments, other receivables and other assets | 24",
+      "new": "Prepayments, other receivables and other assets 预付款、其他应收及其他资产 | 24"
+    },
+    {
+      "id": "61-FRONT-F2-label-13",
+      "old": "Financial assets at FVPL | 20",
+      "new": "Financial assets at FVPL 以公允价值计量且变动计入损益的金融资产 | 20"
+    },
+    {
+      "id": "61-FRONT-F2-label-14",
+      "old": "| Trade and bills payables | 26",
+      "new": "| Trade and bills payables 贸易应付款及应付票据 | 26"
+    },
+    {
+      "id": "61-FRONT-F2-label-15",
+      "old": "| Deferred government grants | 29",
+      "new": "| Deferred government grants 递延政府补助 | 29"
+    },
+    {
+      "id": "61-FRONT-F2-label-16",
+      "old": "| Deferred tax liabilities | 30",
+      "new": "| Deferred tax liabilities 递延税项负债 | 30"
+    },
+    {
+      "id": "61-MID-T1",
+      "old": "| **Revenues / Expenses** | **核心业务**（core business） | 卖鞋收到的钱／买原料、发工资 | 收入 / 费用 |",
+      "new": "| **Revenues / Expenses** | **核心业务**（core business） | 已按条件确认的卖鞋收入／本期已售商品成本、已发生工资 | 收入 / 费用 |\n\n收入确认与收现分开：例如先交货并已满足确认条件、客户下月付款，本期可以有收入和应收而尚无收现。买入未售商品也不自动全变成本期费用；本期工资按已经取得的员工服务确认，不以是否已经付现判断。"
+    },
+    {
+      "id": "61-MID-T2-dilution",
+      "old": "**先看舍入为何不能倒推出官方精确股数**",
+      "new": "**为什么还要看稀释 EPS（💡 笔记补充）**\n\n基本 EPS 只使用期间实际在外普通股的加权股数。有些合同在条件满足时可能变成普通股，例如可转换债券或股票期权；这些是**潜在普通股（potential ordinary shares）**，还不是本期已经在外的股数。\n\n稀释 EPS 问的是：若按准则假定这些工具转换，每股盈利会不会被更多股份分薄？先设一个只展示分母机制的小例：持续经营普通股利润为 100、加权普通股为 100，基本 EPS 为 $100/100=1$；若符合稀释条件的有效股数增量为 25，且本例无需调整利润分子，假定后为 $100/(100+25)=0.8$。\n\n这里的 25 是按适用方法得到的有效增量，不是把任何 25 份期权直接当成 25 股。真实工具还可能改变分子，例如转换债券后利息处理会不同；必须同时核两端。\n\n**反稀释（anti-dilution）**指按相应控制利润及工具条款计算后，假定转换反而提高每股盈利、或减轻每股亏损的情况。这样的工具不能混入稀释结果。本例只示范盈利且无已终止经营部分的简化情形，不替代 IAS 33 的逐工具筛选；Nike 的 44.6 百万股来自其披露，不冒称已重建每项期权。\n\n**先看舍入为何不能倒推出官方精确股数**"
+    },
+    {
+      "id": "61-MID-T2-basic-label",
+      "old": "$$\\text{EPS} = \\text{归属于母公司普通股股东的净利润} \\div \\text{加权平均在外普通股股数}$$",
+      "new": "下式是基本每股收益（Basic EPS）的笔记整理公式，课件 p.30 只给出利润归属方向：\n\n$$\\text{Basic EPS} = \\text{归属于母公司普通股股东的净利润} \\div \\text{加权平均在外普通股股数}$$"
+    },
+    {
+      "id": "61-MID-T2-table-attribution",
+      "old": "| 符号（讲义原文即符号） | 是什么 | 本例取值 |",
+      "new": "| 本式项目（笔记解释） | 是什么 | 本例取值 |"
+    },
+    {
+      "id": "61-MID-T3",
+      "old": "**💡 利润为什么比资产负债表更容易被操纵（笔记补充）**",
+      "new": "**💡 为什么要检查利润的确认时点与估计依据（笔记补充）**"
+    },
+    {
+      "id": "61-MID-T3-formula",
+      "old": "再加上 §2.2.5 那条恒等式 `COGS = 期初存货 + 采购 − 期末存货`：**只要动一下期末存货，利润就动。**",
+      "new": "再看 §2.2.5 的商品买卖简例：$\\text{销货成本}=\\text{期初存货}+\\text{净采购}-\\text{期末存货}$。在该节固定其他项目的条件下，期末存货错报会同时影响资产和利润；这不证明利润表一定比资产负债表更容易被操纵。"
+    },
+    {
+      "id": "61-MID-T4",
+      "old": "四项合计约 $0.667+0.060+0.803+0.396=1.926$ 个百分点，与净利率 $11.614\\%-9.687\\%=1.926$ 个百分点对上。",
+      "new": "四项分别按三位小数显示后，合计约 $0.667+0.060+0.803+0.396=1.926$ 个百分点。直接用原额先算差、最后舍入，也得到约 1.926 个百分点：\n\n$$\n\\left(\\frac{3,760}{32,376}-\\frac{2,693}{27,799}\\right)\\times100\n\\approx1.926142\\text{ 个百分点}.\n$$\n\n若先把两期净利率分别舍入成 11.614% 和 9.687%，再相减会得 1.927 个百分点；0.001 个百分点的差来自中间舍入。复算保留原额到最后一步，不能把显示数不成立的等号写成严格相等。"
+    },
+    {
+      "id": "61-MID-S1-context",
+      "old": "",
+      "new": "**先把英文情境读成人话（据 Case 3 DOCX 完整版译解）**：两张照片保存的背景更短；下面的完整业务情境以 `Case 3 with solution.docx` 为准，不冒称照片也写了全部背景。你是股票分析员，比较两家上市公司截至 2025 年 12 月 31 日最近财年的简化合并资产负债表，单位为百万港元，两家公司采用同一会计准则。\n\nCloudSoft 提供通过云端使用的企业软件，即软件即服务（Software as a Service, SaaS）。题面给定它实物资产少，重视研发（Research and Development, R&D）与收购，以股权和留存收益支持增长。SteelForge 则生产钢铁和机械，需要较多工厂、设备与存货，传统上较依赖债务。它们是题面背景，不是仅凭一个比例反推的已证实原因。\n\n",
+      "before": "Case3 first details"
+    },
+    {
+      "id": "61-MID-S2-pp",
+      "old": "是增加 1.5 个百分点，不能再概括成“杠杆几乎没变”而忽略结构变化。",
+      "new": "是增加 1.5 个百分点：百分点指两个百分比直接相减，即 $42.7\\%-41.2\\%=1.5$ 个百分点，不是再以上期占比为分母的增长率。不能再概括成“杠杆几乎没变”而忽略结构变化。"
+    },
+    {
+      "id": "61-LATE01-receivables",
+      "old": "",
+      "new": "\n\n**应收这一行先按“现金桥调整”读（原表文字歧义）**：课件 p.43 与原年报印的是 `Increase/(decrease)`，2019 却列正数 196,309，2018 列括号 (436,208)。正文保留原行名和数；在这张间接现金桥里，2019 是加 196,309、2018 是减 436,208。\n\n通常经营性应收增加要从利润扣回、减少则加回；原行名的增减排列与数值符号存在张力，不能机械把 2019 叫“应收增加所以加回”。也不能仅凭此行把两张资产负债表的应收净额变化定为同额；并购、非现金及其他范围变化仍须相应附注。",
+      "after": "working-capital table"
+    },
+    {
+      "id": "61-LATE03-N",
+      "old": "    N1 --> N2[",
+      "new": "    N --> N2["
+    },
+    {
+      "id": "61-LATE03-F2",
+      "old": "    F1 --> F2[",
+      "new": "    F --> F2["
+    },
+    {
+      "id": "61-LATE03-F3",
+      "old": "    F2 --> F3[",
+      "new": "    F --> F3["
+    },
+    {
+      "id": "61-LATE04-EPS-card",
+      "old": "Profit attributable to ordinary equity holders **of the parent**, divided by the weighted average number of shares outstanding; reported as basic and diluted.",
+      "new": "Basic EPS divides profit attributable to ordinary equity holders of the parent by weighted-average ordinary shares outstanding.\n\nDiluted EPS adjusts both numerator and denominator for dilutive potential ordinary shares and excludes anti-dilutive instruments. See §2.5.2 for the example and limits."
+    },
+    {
+      "id": "61-LATE-S1-op-card",
+      "old": "笔记整理的考试英文表达（非逐字讲义原句）：Gross profit plus other income and gains, less distribution, administration and other expenses.",
+      "new": "笔记整理的考试英文表达（非逐字讲义原句）：In this lecture's format, gross profit plus other income and gains, less distribution, administration and other expenses. The actual subtotal depends on the entity's applicable presentation."
+    },
+    {
+      "id": "61-LATE-S1-capital-card",
+      "old": "笔记整理的考试英文表达（非逐字讲义原句）：Common stock, preferred stock, additional paid-in capital and treasury stock.",
+      "new": "笔记整理的考试英文表达（非逐字讲义原句）：The lecture's contributed-capital grouping includes common stock, equity-classified preferred stock, additional paid-in capital and treasury stock; actual columns depend on the applicable capital regime and transactions."
+    },
+    {
+      "id": "61-LATE-S1-earned-card",
+      "old": "笔记整理的考试英文表达（非逐字讲义原句）：Retained earnings and accumulated other comprehensive income.",
+      "new": "笔记整理的考试英文表达（非逐字讲义原句）：The lecture groups retained earnings and accumulated other comprehensive income as earned capital. This grouping does not make the balance cash received or automatically distributable."
+    },
+    {
+      "id": "61-LATE05-ratio-subject",
+      "old": "**⚠️ 实务含义**：Basic EPS 的分子先从归属于母公司所有者的利润出发，再调整为归属于普通股股东的金额。§2.5.5 的 A 公司若把集团净利润 4,694,374 错当归母利润 2,706,794，在这一层错误分母会高约 73.4%。量纲一致地写：$P/E=\\text{每股市价}/EPS$，或 $P/E=\\text{母公司普通股总市值}/\\text{归属于母公司普通股股东的利润}$；同一股权价值下，错用集团利润会使 P/E 偏低。利润也不等于现金、已宣告股利或当然可分配金额。→ §2.2.9",
+      "new": "**⚠️ 先明确是哪一个比率**：Basic EPS 的利润在分子。暂不考虑其他普通股调整、固定加权股数，若把集团利润 4,694,374 错当归母利润 2,706,794，EPS 的利润分子及所算 EPS 都会高约 73.4%。\n\n**再切换到估值比率**：若采用“普通股总市值 ÷ 对应普通股利润”，利润改在分母，错误放大利润会使该比率偏低。股价除基本 EPS 与总市值除利润只有在股数基础一致等条件齐备时才相等，不能忽略估值日股数与期间加权股数的差别，见 §2.2.9 的 100 股／200 股例。利润也不等于现金、已宣告股利或当然可分配金额。"
+    },
+    {
+      "id": "61-LATE-source-IFRS18",
+      "old": "有特定主要业务的企业须按修订规则把每类有关项目统一列入一个类别。",
+      "new": "有特定主要业务的企业，利息收入、利息支出和股利收入各按修订规则列入一个类别；股利支出仍列筹资。这里不能把三项的适用安排扩成所有现金项目都可任选类别。"
+    },
+    {
+      "id": "61-LATE-source-IFRS18-cite",
+      "old": "**比较动作**：先确认企业采用的生效版本、主要业务判断与政策",
+      "new": "**比较动作**：上述分类另据 [IFRS Foundation 的 IFRS 18 Effects Analysis 第 27 页 Table 4](https://www.ifrs.org/content/dam/ifrs/publications/amendments/english/2024/effect-analysis-ifrs18-april2024.pdf)（获取 2026-10-25）。先确认企业采用的生效版本、主要业务判断与政策"
+    },
+    {
+      "id": "61-LATE-S2-historical",
+      "old": "| 21 | ⚠️ 本分片图片/法律来源边界 | 本次读取 PPT 全部页文字及 notes；图片页沿用现有笔记视觉与复算证据，未新回看图片；未扩写法律/准则结论 |",
+      "new": "| 21 | ⚠️ 历史追加源分片记录（S2/S3/S4 融合阶段） | 当时作者自述：读取 PPT 全部页文字及 notes，图片页沿用既有视觉与复算证据，未新回看；未扩写法律/准则。此行为历史分片边界，不代表 2026-10-25 全篇查看状态。 |"
+    }
+  ],
+  "status": "pending new 6.1 targeted review; reserve-column part follows"
+}

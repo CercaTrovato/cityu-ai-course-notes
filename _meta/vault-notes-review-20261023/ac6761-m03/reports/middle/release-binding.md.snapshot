@@ -1,0 +1,42 @@
+# M03 中段：正式候选元数据绑定
+
+审查者：`/root/review_m03_61_middle`，与本次两阶段独审及定向复核为同一未参与候选撰写的审查者。本次仅做版本/元数据绑定，没有重新全篇审查或评分，也未改候选、vault、原件、Notion 或 Git。
+
+## 实际核验
+
+直接读取两份候选的原始字节、独立计算 SHA-256，并读取 `m03-release-metadata-diff.json`，未仅采用其中 `body_byte_identical` 自述：
+
+- 已审 v9：`3f3e0f1f0aa27712c63c87d80b09fd92247f22e5de65279fb35c52dd1f546a37`。
+- 正式候选 `m03-release-candidate.md`：`be9380cad12dbc3d652484218fe49f60e261f08fba3117e706a5613fd763aa20`。
+- 元数据 diff 文件：`94456998d49f811aaeca5d06a5992ed20ed46ddd84cf499cf2221baee42be5b7`。
+
+逐一把 JSON 中的五项 old/new 替换应用于 v9 的 YAML 原字节，结果与正式候选 YAML 完全相符，没有未登记的 header 差异：
+
+1. `updated` 改为 `2026-10-25`。
+2. `mechanism_review` 从 `pending` 改为 `passed`。
+3. `mechanism_review_mode` 改为 `full-independent-gpt6.1-20261025`。
+4. `readability_review` 从 `pending` 改为 `passed`。
+5. `new_concepts` 登记已在正文出现的新增术语。
+
+分别按起始/结束 YAML 分隔线切出正文，原始字节逐字比较结果相同：两者正文均为 **430,984 bytes**，共同 SHA-256 为：
+
+`9496a97211ad98889222cd2b3eaf5d2f5338dbe220fbf891d59d710c824fa01d`
+
+自己的核验脚本/结果分别为 `check-release-binding.py`、`release-binding-proof.json`。正文未变化意味着本中段及此前明示的 EPS/P/E 依赖、原题、数字、公式、折叠块和图源码均未被本次元数据操作改变；不需要重新打开教学审查。
+
+## 沿用的独立证据与最终绑定
+
+以下旧报告原文保留：
+
+- `stage-1.md`，SHA `6f70afbbfb0f602f8d54baf129772e33fb4371d6de519aef004bf32b572cc60e`：完整连续顺读 §2.3–§2.6。
+- `independent-review.md`，SHA `b76e69287e68f2a8e6ee8acc77ac28b1c8d8cdcaa6a24965b9201993bab086bd`：第二阶段回源及首轮问题保留。
+- `targeted-v8.md`，SHA `e28d4f02bf27d3656e51da172426607c5267ccd64011b8134089abf4e097027c`：T1–T4 实质修复定向复核关闭，S1/S2 已采纳。
+- `targeted-v9-boundary.md`，SHA `e87903961cbdfa4597a05324565fb2d0bfee8aaafed6ea98ccd9b6d1579f988e`：中段与必要 P/E 依赖未变，结论已绑定 v9。
+
+本代理连续中段 **§2.3 共同比分析开头至 §2.6.3 结束、§2.7 之前** 的独立教学审查及原定向关闭结论，现绑定正式候选 SHA：
+
+`be9380cad12dbc3d652484218fe49f60e261f08fba3117e706a5613fd763aa20`
+
+在此责任范围内，T1–T4 均已关闭、S1/S2 已采纳，无剩余教学阻塞。本次读取 `new_concepts` 及全篇 review 字段不表示本代理重新审查或独自认证其他包；全篇并集由主代理汇总。原音、Nike 逐工具完整重建、未证实融资目的等原报告限制不因 YAML 改为 passed 而消失。
+
+此绑定不证明正式写回、机器门槛、其他包的最终视觉、跨文件同步、Notion 或 Git 已完成；它只把本代理已有真实审查证据连接到正文未变的正式候选。

@@ -1,0 +1,159 @@
+{
+  "time": "2026-10-25T14:20:12",
+  "M03_sha256": "7bb375d37754debc13e37cf0ee6ad3f5f249ba755f0de0f6f20e53a8d73cc6f8",
+  "review": "same independent two-stage sync review; five fixes closed v2, source metadata bound v3, final two text{} formula changes checked by main without semantic change",
+  "review_reports": {
+    "reviewer-sync-stage1.md": "3305bc6e2ad41015637aa19cae0afba846e862bf608c4981474475787280985b",
+    "reviewer-sync-independent.md": "21a7c4f0c8d75117d1504e180bfa3406184b3bc7a193bb19b447f5b49bb76158",
+    "reviewer-sync-targeted-v2.md": "a8069fea06463ba38edc256c1264b2acf10a0169080a5bc9142ecdd491d6751b",
+    "reviewer-sync-v3-binding.md": "bd4569607586083fa7518723476cd26ecb55b892cbdbe01159b4aa6a94ac5ec1"
+  },
+  "format_maintenance": {
+    "reason": "KaTeX unicodeTextInMathMode warnings: wrap Chinese text only; same numbers/operators/meaning; no new teaching change",
+    "ops": [
+      {
+        "id": 3,
+        "old": "$((本期-上期)\\div 上期)\\times100\\%$",
+        "new": "$((\\text{本期}-\\text{上期})\\div\\text{上期})\\times100\\%$"
+      },
+      {
+        "id": 3,
+        "old": "$营业收入-销货成本$",
+        "new": "$\\text{营业收入}-\\text{销货成本}$"
+      }
+    ]
+  },
+  "resume_metadata_maintenance": {
+    "checked_at": "2026-10-25T14:20:12",
+    "notes": 43,
+    "transcript_txt": 47,
+    "ops": [
+      {
+        "old": "当前 45 个转录 TXT",
+        "new": "当前 47 个转录 TXT"
+      },
+      {
+        "old": "M07 待转录（54页讲义已制v0.9）",
+        "new": "M07 新部分转录已到位（R2/R3；现笔记仍v0.9，融合/教学待另核）"
+      },
+      {
+        "old": "新增 M05/M06 转录与 M05 笔记正在由并发任务处理",
+        "new": "新增 M05/M06/M07 转录与相应笔记正在由并发任务处理"
+      }
+    ],
+    "limits": "New files indicate material availability only; no transfer of fusion/teaching approval or personal status."
+  },
+  "visuals": "Main actually viewed final 940px course table and L1 table + new table + two math expressions. GFM/KaTeX carrier; native Obsidian not opened.",
+  "items": [
+    {
+      "id": 1,
+      "path": "README.md",
+      "source_sha256": "c9cfb71a8da6841c32139e3bb95446fd79620e0e2217607c715c1af7092654dc",
+      "status": "written_atomic_exact_readback",
+      "formal_sha256": "b53d3ece040d7eaacc20bfa40b0ede5535995c3891d8bc7366a9d259996b058a",
+      "candidate_sha256": "b53d3ece040d7eaacc20bfa40b0ede5535995c3891d8bc7366a9d259996b058a",
+      "patch": "change-01.patch",
+      "written_candidate_before_notation_fix": "7a0e5a58dc0d3e458d18139f71ebaa46484672a841ac2a43de1ce1ca8a491bf2",
+      "candidate_file": "candidate-01-final.md.snapshot",
+      "post_write_non_teaching_maintenance": "readme-notation-maintenance.json"
+    },
+    {
+      "id": 2,
+      "path": "AC6761_Artificial_Intelligence_Accounting/00-课程总览.md",
+      "source_sha256": "f097d558a230ce18052fe757a7ea2b5409ab275cc3c25fd0ef2d5632d8d152dc",
+      "status": "written_atomic_exact_readback",
+      "formal_sha256": "f9f87fd5816f6ad17261465980e9229c0405d932d19e421eaaa0f169db884964",
+      "candidate_sha256": "f9f87fd5816f6ad17261465980e9229c0405d932d19e421eaaa0f169db884964",
+      "patch": "change-02.patch"
+    },
+    {
+      "id": 3,
+      "path": "AC6761_Artificial_Intelligence_Accounting/_meta/知识层级台账.md",
+      "source_sha256": "411d5ee2007db2681dfff503adf2ea0e54886e6de96be6a90f4281f642cec854",
+      "status": "written_atomic_exact_readback",
+      "formal_sha256": "fa668cc9199c49eed8f0442e25c7a5939ee2dc6ab5daa8cbaa9f09950f0b1fb1",
+      "candidate_sha256": "fa668cc9199c49eed8f0442e25c7a5939ee2dc6ab5daa8cbaa9f09950f0b1fb1",
+      "patch": "change-03.patch"
+    },
+    {
+      "id": 4,
+      "path": "AC6761_Artificial_Intelligence_Accounting/_meta/术语表.md",
+      "source_sha256": "b8a1b58ab0bd60764e8658145047fe58ec318bea196dc4a075e34c9d98d4ddda",
+      "status": "written_atomic_exact_readback",
+      "formal_sha256": "5a77de8e65e922aa6bdd2ecf2cada807acb5f633f850fa755ddc2bdca05cbac6",
+      "candidate_sha256": "5a77de8e65e922aa6bdd2ecf2cada807acb5f633f850fa755ddc2bdca05cbac6",
+      "patch": "change-04.patch"
+    },
+    {
+      "id": 5,
+      "path": "AC6761_Artificial_Intelligence_Accounting/_meta/考点库.md",
+      "source_sha256": "257829883047a87e75b79dedada23587dc65ccf4f268fc208491968ea1ac0772",
+      "status": "written_atomic_exact_readback",
+      "formal_sha256": "dd9c538f00bb69e155f5b27dc7f8d932241b37d7c585b00f3b3b6e795682a74b",
+      "candidate_sha256": "dd9c538f00bb69e155f5b27dc7f8d932241b37d7c585b00f3b3b6e795682a74b",
+      "patch": "change-05.patch"
+    },
+    {
+      "id": 6,
+      "path": "AC6761_Artificial_Intelligence_Accounting/_meta/待并入术语总表.md",
+      "source_sha256": "4f39fa26c61f1245db6dd84854d2612f433e8620200830f1baaf67bcb6ffcd98",
+      "status": "written_atomic_exact_readback",
+      "formal_sha256": "929e13e67e02d97c75934d1a107264e2ee726a09440e0f2f410e71644bc9585a",
+      "candidate_sha256": "929e13e67e02d97c75934d1a107264e2ee726a09440e0f2f410e71644bc9585a",
+      "patch": "change-06.patch"
+    },
+    {
+      "id": 7,
+      "path": "AC6761_Artificial_Intelligence_Accounting/_meta/作业与DDL.md",
+      "source_sha256": "9553f0395bcbbf053355848c9da3b27666860bea5cf22ac06b969bf8b29c4b79",
+      "status": "checked_no_delta",
+      "reason": "无新增行政要求；Case3本次笔记题块不升级独立练习/本人提交",
+      "formal_sha256": "9553f0395bcbbf053355848c9da3b27666860bea5cf22ac06b969bf8b29c4b79"
+    },
+    {
+      "id": 8,
+      "path": "AC6761_Artificial_Intelligence_Accounting/assignment/00-overview/作业总览.md",
+      "source_sha256": "c6dc251058c8f6eca311f689b1ab6571763fbc7c4aa075103e7a681aa7136381",
+      "status": "checked_no_delta",
+      "reason": "无新增行政要求；Case3本次笔记题块不升级独立练习/本人提交",
+      "formal_sha256": "c6dc251058c8f6eca311f689b1ab6571763fbc7c4aa075103e7a681aa7136381"
+    },
+    {
+      "id": 9,
+      "path": "_meta/术语总表.md",
+      "source_sha256": "82acd94d111be95f0777cb5589d9b9b3cf7ea62c4a1256a259458b299929a0e2",
+      "status": "written_atomic_exact_readback",
+      "formal_sha256": "9f4deaaf03b1d8cf035133d6e442a061f6d882ca31a48364d9acf99fc5b45db4",
+      "candidate_sha256": "9f4deaaf03b1d8cf035133d6e442a061f6d882ca31a48364d9acf99fc5b45db4",
+      "patch": "change-09.patch"
+    },
+    {
+      "id": 10,
+      "path": "_meta/课件题目覆盖台账.md",
+      "source_sha256": "a2ab0544bbdd13430795d2383ec78e6d84fce74df496ede4eee101191585a98a",
+      "status": "written_atomic_exact_readback",
+      "formal_sha256": "3e5a635d8017921812a3338c6066fb7fc659e2a9e7be3e915b17054fc6d843b7",
+      "candidate_sha256": "3e5a635d8017921812a3338c6066fb7fc659e2a9e7be3e915b17054fc6d843b7",
+      "patch": "change-10.patch"
+    },
+    {
+      "id": 11,
+      "path": "_meta/转录处理规则.md",
+      "source_sha256": "8d57ed35d46949390ed9794b18fe722d352ce458e126e758da04d55537087209",
+      "status": "written_atomic_exact_readback",
+      "formal_sha256": "8145f0eb5a1a146cc3c27f1d09f4f644280499f92ae3a17cfbe014a97a3f0ed0",
+      "candidate_sha256": "8145f0eb5a1a146cc3c27f1d09f4f644280499f92ae3a17cfbe014a97a3f0ed0",
+      "patch": "change-11.patch"
+    },
+    {
+      "id": 12,
+      "path": "_meta/Notion进度看板.md",
+      "source_sha256": "e7f16768e29e7662d02b88875709aba15bff95fd533b439a58747b646a8895e5",
+      "status": "written_atomic_exact_readback",
+      "formal_sha256": "c075ac40bd031692b793a9acbd6ea31581df2ed54f0604b7bc4ada4954972558",
+      "candidate_sha256": "c075ac40bd031692b793a9acbd6ea31581df2ed54f0604b7bc4ada4954972558",
+      "patch": "change-12.patch"
+    }
+  ],
+  "git": "pending"
+}

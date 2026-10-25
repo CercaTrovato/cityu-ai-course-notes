@@ -22,9 +22,9 @@ status: in-progress
 ## 本次真实统计
 
 - 未开始：60。
-- 审查中：0。
+- 审查中：1。
 - 缺陷待修：0。
-- 已修待复核：4。
+- 已修待复核：3。
 - 已全审无须语义改文：0。
 - 修订并验收：5。
 - 受阻：0。
@@ -36,7 +36,7 @@ status: in-progress
 |---|---|---|---|---|
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/notes/M01-会计与商业.md` | 修订并验收 | complete_for_provided_material_scope_all_sync_and_remote_verified | 已原子写并精确回读 / 已原子合并并回读；链接/README/完整性问题均为0 / 已写并回读（个人字段未变） / 已提交推送并核远端：6a10b2c |
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/notes/M02-交易的会计处理.md` | 修订并验收 | complete_for_provided_material_scope_all_sync_and_remote_verified | 已原子写并精确回读 / 12文件55补丁已写并回读；链接/README/完整性问题均为0（进度快照有意缩写单列allow） / 已写并回读（旧备注原样保留、其余所有字段未变） / 已提交推送并核远端：f1a0fb1 |
-| AC6761 | `AC6761_Artificial_Intelligence_Accounting/notes/M03-年报分析.md` | 已修待复核 | residual_and_three_mechanical_changes_independent_accepted_pending_main_full_read_source_visual_gate | 未开始 / 未开始 / 未开始 / 未开始 |
+| AC6761 | `AC6761_Artificial_Intelligence_Accounting/notes/M03-年报分析.md` | 审查中 | restarted_full_note_with_gpt_6_1_sol_three_continuous_packages_stage1 | 未开始 / 未开始 / 未开始 / 未开始 |
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/notes/M04-REA会计模型.md` | 已修待复核 | author_v3_independent_residuals_accepted_pending_main_full_diff_source_visual_adoption | 未开始 / 未开始 / 未开始 / 未开始 |
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/notes/M05-REA业务流程建模.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/notes/M06-ACCESS数据库构建与查询.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
@@ -162,7 +162,7 @@ status: in-progress
 
 ## 继续推进的5篇（含 EF M02 同步收尾）
 
-- AC6761 M03：canonical ef31c17516c9bf3798c877c416a4e1304b2bf6295a029e8e008403681491703b；原独审targeted-residual-accepted a7d9d4d...已关IR残余。主代理全文/来源重要数/全部12图和full-v2/写回同步尚待；三处1L3/2R硬项已修，targeted-mechanical-recheck772f2678接受；root全文/源/12图仍待。原音、Tesla现场完整输出和Nike少量原额缺口继续明确。
+- AC6761 M03：canonical ef31c17516c9bf3798c877c416a4e1304b2bf6295a029e8e008403681491703b，root本轮真实顺读1–4719，下一行4720；三组新片段均未采纳。intro作者v2 a34e0ddc已送原独审仅复核8项；assets db3dfb11独审需B1–B7/S1–S3，equity aa7f3d82独审需B1–B6，均已交原作者定向修。root继续全文及中段新发现核源，完整diff/47源页/计算/12图/full-v2/正式写回同步仍待。原音与Tesla现场完整输出缺口保留；Nike单位和原额正查官方2014–16历史版本，不从舍入百分比反造。全库5篇闭合、4篇仍审修、60未开始。
 - EF5560 M02：最终正文/回读SHA bbe947f74ccc94a15be7d53174701d5c51d6ace378240f711fb4cb9f15e64064；full/v2和完整来源/计算/4图+SVG、本次87项教学/来源/版面变更与最终5元数据独审均已完成，current硬0/Cwarn2/Rwarn413、historicalFAIL、源题机器未manifest保留。新56p25轴已修、旧54仍错，旧误判回执不改。Notion正确Lec02备注/代码路径回读4true，旧raw suffix原样、其他15属性未变；DDL6行核无新增。依赖最终包14c46fa8...已独审接受，12文件96ops已CAS原子写/精确回读，另2项无增量；active/excess分别保留、数据卡60x24与48/12/缩放已纠正、独立配套不升级、不给时间戳凑给分次数、减去基准非分母。链接0（358文件）/README0/完整性0；首次integrity仅task_plan807→579有意精简，已完整核5步/UTF8/尾并精确allow该path复核，初始FAIL日志保留；Git内容commit bf70c05d9feb51247c6b97cb05a8baed0a9491b3已推并核远端main/150blob逐字节，10原差异未动未纳入；证据batch3-git.json。完整Notion只在E private，D中slim。
 - EF5560 M03：canonical/baseline仍原始CRLF9c87bf58...。作者v4dbb1b512da9ef0273cb259fd65bbc1def33a5d4d762a8944d897277401e1f7c0，原独审targeted-v4-accepted02c04b72...接受全审+定向并集；新数学桥、六模型冻结链与CCB单股PCR K5完整trace已独立实跑同SHA，预测0.00852937945/actual0.02158802872；时长1340秒−314秒=1026秒，非连续演示。root已完整读各报告/回执和最后4patch，但尚未完整接收200+21+4diff、整篇源/图/警告；不得先采纳/发布。v2链在LF规范化文本上回放，rawCRLF/LF与4处old重复首替换边界已披露。
 - AC6761 M04：canonical/baseline仍f7c2a949...。作者v3 8b135c68476893dced0d41dcaaac947d7fea05e6db945e7983b56658eee871cf；原独审R1–4已关闭，v3只修R5四句/镜像，targeted-v3-recheck.md959ef5e5已接受四处，独审登记项全部关闭。Case4全5单元、SQL正文原样执行、S6状态等已核；root仍待全部83+28+4diff/53源页/重要计算/11图实际查看与full-v2，不升级。
@@ -173,3 +173,56 @@ status: in-progress
 只由root正式写，原件只读，同步关闭沿任务单已有确认，无重新开启证据。所有临时均E盘，主模型本轮rollout核gpt-6.1-sol/xhigh、代理5.6-sol严格较低。旧checkpoint/prepare脚本含阶段硬编码，不无更新重跑，特别不要重建已写M01/M02包或重放已应用55补丁。
 
 前批AC M02 commit f1a0fb1及远端124blob已核；本批EF M02正文/全部适用同步/收批与内容Git bf70c05d9feb51247c6b97cb05a8baed0a9491b3远端150blob已闭合。之后继续其余4篇主验收并启动其余60份。没有已确认的独审工具阻塞；具体源音/视频/底表/现场输出缺口逐篇列。全库未完成，不把待审、作者稿或有来源限制算作完整课堂。
+
+
+## 2026-10-25 API 接续 · 当前最新断点
+
+旧会话 JSONL 只读解析，没有修改归属、服务商、历史或导入加密状态。本轮实际核 69 个正式目标均吻合台账基线／正式哈希；5 篇验收、4 篇已修待主复核、60 份未开始。旧 10 差异与 3 进度差异均保存；fetch 后 HEAD/origin/main 为 `3a93024eb72a76b3450b581d49c0d212d622d10c`。新 snapshot `vault-review-20261025-api-resume`：359 文件。
+
+M03 实际文件较旧 checkpoint 更新：中段 v2 与后段 96 项包已存在，尚未闭合最终独审。中段 v2 回执引用的 `main-middle-changes-v2.json` 实际缺失；本轮从 v1/v2 原字节生成 27 hunk diff，明确是当前主代理推导，没有补造旧作者文件。scratch 整合 156 项（153 精确操作＋3 处已记录重叠取舍），再修 7 处 root 初读问题、6 处具体机械／布局问题、14 处本轮审查与来源精度问题；v4 另仅拆 37 处段落，非空白字符序列不变。三位新独审已各完成候选先读并落盘，现按完整指定范围核源和定向复核，尚未把任何未完成报告标通过。
+
+当前待核稿 `E:/app-data/codex/scratchpad/cityu-review-resume-20261025/m03-resume-candidate-v4.md`，SHA `b3e935ed9842806cfdaf1df5c4f14d2000a4bbf4d828833d626e30a97fba339a`。canonical 仍 `ef31c175...`，正式正文仍 `632d4af7...`；未写正文、未做本批本地关联／Notion 同步、未提交推送。本轮 47 页新鲜 OOXML 与 speaker notes 核查已做（0 非空 notes），23 项源文件哈希无不符。v4 当前预检 L/C/R 硬0，C.warn1、R.warn496；时间审计 PASS，A10两提示、A13 `guarantee` 一提示、A14=0，仍须主代理按原 ASR 逐项处置。机械通过不是教学／视觉通过。
+
+本地同源浏览器 `127.0.0.1:8796` 已渲染 v2 的 12 个 Mermaid；截图已去除预览 sticky header 遮盖。v3 改图5标题后，最终 v4 精确图文仍待刷新、实际观看与绑定。原音／Tesla 现场完整输出、借款60,058／股利68,140／回购1差额保留未知。下一步为三份第二阶段报告与定向关闭、主验收全部真实 diff／源／图／警告、full-v2，然后 CAS 原子写回及 §6 全部适用同步；不重放已应用 M01/M02 批次。
+
+模型规则：三位本轮独审在用户更新前按旧规派出 `gpt-5.6-sol/high`，按新指示继续、不重启。用户 2026-10-25 更新后，新派代理显式用 `gpt-6.1-sol`，不可用记录并报告、不自行回退。该当次指示优先于旧任务单／规则内的低层级文字；本任务不因此重构规则。
+
+
+## 2026-10-25 用户最新模型指示 · 覆盖上方当前派单状态
+
+用户要求停止现有 5.6 审查并重新用 6.1，禁止使用 `gpt-5.6-sol`。已对三位旧代理调用 interrupt；root/middle 此前已完成，late 当时为 running，其随后到达的 v6 报告仍只保留为历史证据，不作当前放行依据。未删除、改写或冒称旧报告由 6.1 产出。
+
+已真实设置全局 `agents.default_subagent_model = "gpt-6.1-sol"`，TOML 回读且除该键外语义不变；全局 AGENTS 与本库两入口、制作流程/任务单的模型冲突已精确更新。配置备份在 `E:/app-data/codex/config-backups/20261025-subagent-model-6-1-sol/`，不在公开库内。此前其他项目/历史审查事实不追改。
+
+当前 M03 候选为 `m03-resume-candidate-v6.md`，SHA `89d10b1738d4c0cf58a01702d5a0ff9c8da45c3ea48b7b7356123b843b57187d`；在 v5 后仅修一处现金/CFF 残留过强解释、两处长引文引用块格式。已新派 `/root/review_m03_61_front`、`/root/review_m03_61_middle`、`/root/review_m03_61_late`，全部显式 `model=gpt-6.1-sol`、`reasoning_effort=high`、`fork_turns=none`。三包连续并集覆盖全篇，第一阶段只读候选后落盘，再给来源/规则/diff；没有沿用旧 5.6 PASS，也没有做全库评分。
+
+本次统计仍为69份：5篇历史批次验收/写回已闭合，1篇正在新6.1全审，3篇候选待新政策下主验收，60份未开始。M03 正式正文未变，本批未做关联/Notion写入或Git提交推送；下一步继续3份6.1初读、第二阶段回源与定向闭合，然后正式门槛/原子写回/同步。
+
+## 2026-10-25 最新真实断点 · M03 已写回，关联同步待核
+
+M03 最终候选 `7bb375d37754debc13e37cf0ee6ad3f5f249ba755f0de0f6f20e53a8d73cc6f8` 已完成三位新 `gpt-6.1-sol` 的全篇连续独审、全部必要缺陷定向关闭、实际图文和来源/计算核对，正式 full-v2 门槛 exit 0；CAS 核正式基线632d4af7未变，`safe_write.atomic_write` 写回434,713字节并精确回读。当前 current L/C/R硬0，C.warn1、R.warn508保留逐位证据；audit PASS，A10/A13已据真实相邻时间戳/原词处置。旧5.6报告不作放行。库内证据在 `ac6761-m03/`，原始报告以 `.md.snapshot` 保留原字节。
+
+Notion正确W03页面仅前插备注，旧备注及富文本保留；逐16属性回读且重载匹配，除备注外15项/个人字段不变。完整DOM/截图在库外，仅slim哈希回执入库。本地12个依赖已制10候选，2项无新增行政事实；派原前包6.1审查者核本次同步增量，尚未正式写入这些候选。Git本批仍未提交推送。
+
+M04两位新6.1已完成两阶段全篇并集回源，报告为待修；SQL输入/语法、SQLite文本主键NULL、fact/最小参与桥、自测方向、英文官解来源以及源图/口述与补充模式分层等待集中修。没有用旧PASS替代。M05及M06出现并发新稿/转录，保护真实字节，不覆盖、不混入本批Git；按篇开工时重读并合并真实基线。自有完整性快照360文件，避开另一任务全局manifest；跨盘打印异常发生在文件成功生成之后，已验证自有JSON。
+
+当前69份：6篇教学验收并写回（其中M03本地同步/Git尚待闭合），M04缺陷待修，EF5560 M03/IS5113 M02旧候选仍待新政策下验收，60份教学审查未开始。下一步闭合M03同步、链接/README/自有完整性与授权Git，再集中修M04；不把写回数当全库完成。
+
+## 用户主动暂停 · 2026-10-25T14:15:40
+
+用户原话：“先暂停，之后继续”。已停止推进，仅保存断点。当前可见子代理全部完成，均按6.1调度；本任务新启动的本地8801预览服务已停止。暂停后没有写入10份同步候选、没有提交/推送或继续新审查。
+
+- **M03正文**：正式SHA `7bb375d37754debc13e37cf0ee6ad3f5f249ba755f0de0f6f20e53a8d73cc6f8`，full-v2正式门槛及原子写/精确回读已完成。Notion正确W03备注已前插，旧文本精确保留，2个旧富文本叶节点markup保留；逐16属性/重载核对，15非备注值与复选框未变。完整DOM/截图在库外，slim/hash在库内。
+- **M03本地依赖**：12目标中10份最终scratch候选、2行政无增量。同步独审两阶段已完成，v2五类问题全部关闭，v3四处M06材料元数据事实维护已绑定；v4只把两处公式中文包text，主代理核精确替换并看最终940px表格/公式。最终清单 `E:\app-data\codex\scratchpad\cityu-review-resume-20261025\m03-dependency-sync\sync-proposals-final.json`，候选在proposals-v4；尚未正式写回，须逐目标重读CAS、原子写、回读，再链接/README/自有完整性及授权Git。原v1/v2/v3和全部报告保留。
+- **M04**：最终待主验收候选 `E:\app-data\codex\scratchpad\cityu-review-resume-20261025\m04-review-61\candidate-repaired-v2.md`，SHA `0329684e38a840c7dc2f9526c8a351d14cc2ab1b5b3a5918f6191b8c36fdbb1e`。新6.1两阶段全篇连续并集完成，前/晚包所有教学阻塞均已定向关闭并绑定v2；这不代替主验收。72项v1修复后另9项残余，原源/候选/报告均保留。p27九关系已独立逐线核，图7移出孤例框后已看且不再遮线；Hilda/Physics仍在紧邻表/句保留。SQL五块/完整脚本与6表NULL反例已实跑，1月AR230/2月0/R3余20/R4余1000；未核Access。12张精确v2图已渲染，主代理只新看图7，其他11张最终阅读尺寸并集尚待主看。未跑最终current/full-v2门槛、未正式写M04、未关联/Notion/Git同步。
+- **并发**：M05当前aaefdae5…、M06当前42a27531…，本任务未改/未暂存其内容；已按实际哈希另存库外精确snapshot。M06当前merged/v1.0但mechanism/readability均pending，本次教学重审未开始，不能从材料版本推教学完成。原10差异及新增音频任务规则/源/工具继续保护，不能git add -A。
+
+总范围69：6篇教学验收并写回（M03本地同步/Git未闭合），3篇旧/新候选待主验收，60份未开始。**本批Git尚未提交推送**。恢复后从M03关联同步闭环继续，再M04主验收；不重做已完成两阶段/定向审查，不沿用5.6报告放行，不重开全库评分。
+
+## 2026-10-25 已按用户要求恢复 · M03 本地闭环完成
+
+用户明确“没事继续吧”。暂停状态已撤销，继续原69份任务，不创建定时任务。M03正式7bb375d3与12同步基线重新核实；10文件原子写/精确字节回读，2行政无增量，Notion既有16属性重载证据保留。同步首轮五类缺陷已由原6.1独审定向关闭并绑定，最终两处公式text包装和暂停后M07两部分源到位的库存维护由主代理核精确差异；没有新增教学含义。README现43篇（33 v1.0/10 v0.9）、47转录TXT，M06/M07材料与教学pending分开。
+
+链接检查365文件0问题；README首次7处字面范围/材料标记不匹配，改成显式逐M版本及已并入部分源标记后0问题，原失败日志保留；自有完整性0问题。不用这些机械结果替代独审。M03本地/Notion闭环已完成，Git尚待只纳本批提交/推送及远端核实。同期M05/M06及音频规则/工具、新作业目录和新增M07来源保持他任务所有，不覆盖/混提。
+
+另外已新派两位显式gpt-6.1-sol/high、fork_turns=none独审，分别开始EF5560 M03与IS5113 M02完整候选先读；来源/diff/旧作者结论隔离到第二阶段，旧PASS不沿用。M04真实v2候选0329684e及新6.1两包关闭报告未变，主验收/最终门槛/写回仍待完成。

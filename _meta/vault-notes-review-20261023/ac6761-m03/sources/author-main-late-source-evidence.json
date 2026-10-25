@@ -1,0 +1,136 @@
+{
+  "schema": "source-evidence-v1",
+  "status": "pending-independent-review",
+  "scope": "AC6761 M03 late-section author package: 2.7, selected 2.8, 2.9, 2.10, direct diagrams/summaries/terms/frameworks/self-tests, and required cash/source mirrors",
+  "retrieval_date": "2026-10-25",
+  "baseline": {
+    "path": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ac6761-m03/main-integration-draft.md",
+    "sha256": "bcccfbe2b367b27d71ed64b6be08737e536e980f5723ab66c9d884f23c34ba6f",
+    "status": "root mechanical integration draft; not accepted and not a teaching pass"
+  },
+  "intake": {
+    "path": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ac6761-m03/main-intake.md",
+    "sha256": "670093b5ee2cda5be4e2c172552fc8451cc995a49ce612983fc8757971f57215",
+    "used_for": "Root full-read findings, scope boundaries and unresolved source/visual/teaching states."
+  },
+  "local_course_sources": [
+    {
+      "path": "D:/上课资料/CityU/AC6761_Artificial_Intelligence_Accounting/course_files_export/Week 3 PPT.pptx",
+      "sha256": "ddb1f99b30cdbf7d6474f2c8e9f8e390094267977c6bde2219f91be7bc09b617",
+      "used_for": [
+        "p.39-p.42 historical cash-flow wording",
+        "p.43-p.44 cropped cash-flow images",
+        "p.45-p.47 historical equity and notes wording",
+        "p.14-p.15 and p.34/p.46 statement images"
+      ],
+      "boundary": "Historical lecture wording is retained as lecture material and is not silently replaced by current IFRS or external annual-report evidence."
+    },
+    {
+      "path": "D:/上课资料/CityU/AC6761_Artificial_Intelligence_Accounting/transcripts/M03-transcript.txt",
+      "sha256": "d8497e1664b1f902338c09d51ad550c3a59a1c8e97865a3ba8fbb3309822a379",
+      "used_for": "Existing early M03 classroom evidence; no original-audio claim added."
+    },
+    {
+      "path": "D:/上课资料/CityU/AC6761_Artificial_Intelligence_Accounting/transcripts/M04-transcript-part1-partial.txt",
+      "sha256": "88fd789bb0ade96be14749f92936da72ae446ce23691056ce2b9d16e19705f8d",
+      "alias": "S2",
+      "used_for": "Historical p.28-p.47 continuation, including cash-flow, equity and notes classroom quotations."
+    },
+    {
+      "path": "D:/上课资料/CityU/AC6761_Artificial_Intelligence_Accounting/transcripts/M04-transcript-part3-partial.txt",
+      "sha256": "63fd0bb5394e2f7a651e4b1e75bd4edbc704e77c712f1a78c8a44f868a182c89",
+      "alias": "S4",
+      "used_for": "Historical common-size rounding classroom evidence; unchanged in this package."
+    }
+  ],
+  "new_primary_source": {
+    "path": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ac6761-m03/main-source/sino-2019/hkex-2019-annual-report.pdf",
+    "sha256": "f4ebe43aea14f8963ddf8073931d9c020f8112a36e47acdf20e0be2853cdd64d",
+    "pages": 167,
+    "source_name": "Sino Biopharmaceutical Limited Annual Report 2019",
+    "source_identity": "Sino Biopharmaceutical Limited, 1177.HK; incorporated in the Cayman Islands",
+    "identity_evidence": [
+      "Physical pages 69, 71-76 carry the Sino Biopharmaceutical Limited footer and match the lecture statement images.",
+      "Physical page 77, printed page 76, Note 1 states that the company was incorporated in the Cayman Islands.",
+      "The independent auditor's report states preparation under HKFRSs and compliance with the disclosure requirements of the Hong Kong Companies Ordinance."
+    ],
+    "slide_mapping": [
+      {"pdf_physical_page": 69, "printed_page": 68, "lecture_slide": 34, "statement": "Consolidated Statement of Profit or Loss"},
+      {"pdf_physical_page": 71, "printed_page": 70, "lecture_slide": 14, "statement": "Consolidated Statement of Financial Position - assets/current liabilities"},
+      {"pdf_physical_page": 72, "printed_page": 71, "lecture_slide": 15, "statement": "Consolidated Statement of Financial Position - non-current liabilities/equity"},
+      {"pdf_physical_pages": [73, 74], "printed_pages": [72, 73], "lecture_slide": 46, "statement": "Consolidated Statement of Changes in Equity; image11 is the complete 2018 comparative period within the 2019 annual report, identified by row dates"},
+      {"pdf_physical_page": 75, "printed_page": 74, "lecture_slide": 43, "statement": "Consolidated Statement of Cash Flows - CFO"},
+      {"pdf_physical_page": 76, "printed_page": 75, "lecture_slide": 44, "statement": "Consolidated Statement of Cash Flows - CFI/CFF and cash composition; the lecture screenshot crops the composition rows"}
+    ],
+    "cash_evidence": {
+      "physical_page_76_printed_75": {
+        "2019_unrestricted_cash": 4340181,
+        "2019_under_three_month_deposits": 6291029,
+        "2019_cash_equivalents": 10631210,
+        "2018_unrestricted_cash": 3956986,
+        "2018_under_three_month_deposits": 2278043,
+        "2018_cash_equivalents": 6235029
+      },
+      "physical_page_140_printed_139_note_25": {
+        "2019_over_three_month_deposits": 1280000,
+        "2019_cash_and_bank_balances": 11911210,
+        "2018_over_three_month_deposits": 441013,
+        "2018_cash_and_bank_balances": 6676042
+      },
+      "conclusion": "For this company and these two years, the balance-sheet versus cash-flow cash difference is confirmed as time deposits with original maturity of more than three months. This is external source verification dated 2026-10-25, not lecture confirmation and not a universal definition of cash and bank balances."
+    },
+    "unresolved_bridges": [
+      "Bank-borrowing balance versus borrowing cash-flow difference 60,058: Note 28 has not supplied a complete non-cash bridge; no cause inferred.",
+      "Declared-versus-paid dividend difference 68,140: Note 11 figures are not used to guess the bridge.",
+      "Share-repurchase difference 1: no rounding or other cause inferred.",
+      "Note 28 contains an HK$'000 label in a maturity subtable while the main borrowing table is RMB'000; the source inconsistency is preserved and not converted."
+    ]
+  },
+  "official_external_sources": [
+    {
+      "id": "ias7-current-methods-and-categories",
+      "issuer": "IFRS Foundation",
+      "url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-7-statement-of-cash-flows/",
+      "supporting_public_text": "https://www.ifrs.org/content/dam/ifrs/publications/pdf-standards/english/2022/issued/part-a/ias-7-statement-of-cash-flows.pdf?bypass=on",
+      "locations": ["IAS 7 paragraphs 6-9", "IAS 7 paragraphs 16-21"],
+      "propositions": [
+        "The statement explains changes in cash and cash equivalents and classifies cash flows as operating, investing and financing.",
+        "Direct and indirect methods are alternative presentations of operating cash flows; direct method reports major gross receipts/payments, indirect method adjusts profit or loss.",
+        "IAS 7 encourages the direct method; the lecture's almost-all wording is not a current universal usage statistic.",
+        "Investing cash flows cover long-term assets and investments outside cash equivalents, subject to dealing/trading scope; investing and financing gross receipts/payments are not changed by the CFO presentation method."
+      ]
+    },
+    {
+      "id": "ifrs18-cash-flow-amendments",
+      "issuer": "IFRS Foundation",
+      "url": "https://www.ifrs.org/issued-standards/list-of-standards/ifrs-18-presentation-and-disclosure-in-financial-statements/",
+      "effective_date": "Annual periods beginning on or after 1 January 2027; earlier application permitted.",
+      "supporting_effects_analysis": "https://www.ifrs.org/content/dam/ifrs/publications/amendments/english/2024/effect-analysis-ifrs18-april2024.pdf",
+      "propositions": [
+        "The indirect-method starting point changes to operating profit or loss.",
+        "For entities without specified main business activities, interest received and dividends received are investing; interest paid and dividends paid are financing.",
+        "Entities with specified main business activities apply the amended single-category requirements for the relevant items."
+      ]
+    }
+  ],
+  "calculation_checks": {
+    "cash_2019": "4,340,181 + 6,291,029 = 10,631,210; + 1,280,000 = 11,911,210",
+    "cash_2018": "3,956,986 + 2,278,043 = 6,235,029; + 441,013 = 6,676,042",
+    "over_three_month_change": "1,280,000 - 441,013 = 838,987",
+    "cash_rollforward_2019": "6,235,029 + 5,324,634 - 3,824,344 + 2,800,837 + 95,054 = 10,631,210",
+    "ni_to_cfo": "4,694,374 / 5,324,634 = approximately 0.88; reciprocal CFO/NI = approximately 1.13"
+  },
+  "visual_review": {
+    "changed_diagram": "Section 3 Figure 2 cash/equity bridge",
+    "mermaid_change": "Added opening cash equivalents, net CFO+CFI+CFF, foreign-exchange effect, ending cash equivalents and Note 25 bridge to balance-sheet cash.",
+    "exact_mermaid_browser_status": "Blocked: the available Browser Use URL policy rejected local file URLs; no policy bypass or alternate browser workaround was attempted.",
+    "local_semantic_preview": {
+      "method": "Same nodes, labels, amounts and edges rendered locally as a Graphviz 16.1.0 semantic mirror, rasterised to 1600x882 PNG with librsvg and viewed at original detail.",
+      "svg_sha256": "be8b795d3552bdb16b7ab5bda8dae47d125c0ab631d6488baa2cb4060371fabe",
+      "png_sha256": "1a23d5b5dc76483da41111128492f59c51a71fcf4ed86ddb9ae3f79363fe27c8",
+      "finding": "All nodes, labels and arrows were readable with no overlap; both equity and cash paths terminate visibly at their balance-sheet totals. Graphviz reported Chinese font-width fallback warnings, but the rasterised labels were visibly legible."
+    },
+    "remaining": "The final Mermaid block still requires exact rendering in the root review environment before formal acceptance."
+  },
+  "source_boundary": "Lecture wording, ASR, later external annual-report verification and current IFRS supplements remain separately labelled. Source matching does not imply the professor named the company, and official summaries do not certify the whole note."
+}
