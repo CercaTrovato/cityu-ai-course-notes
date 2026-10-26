@@ -9,7 +9,7 @@ prerequisites: [M01, M02, M03]
 new_concepts: [JTBD, job story, Design Thinking, HMW, value-complexity matrix, dot voting]
 tags: [IS5542, guest-workshop, Design-Thinking, JTBD, prompting]
 status: v1.0
-updated: 2026-10-10
+updated: 2026-10-27
 readability_rules: v2
 mechanism_spec: v1
 mechanism_review: passed
@@ -22,6 +22,8 @@ mechanism_review: passed
 > 本稿保留既有 `transcript: merged`，它只表示材料融合。嘉宾姓名、工具名、活动间隔及媒体尾段的限制见 §9.5，不能把标签当作来源已经全部确认。
 >
 > 本地讲义标题是 CityU AI Workshop / Use Case Ideation，日期写 October, 2026。PDF 未写课程码、M04 或姓名。课程归属沿用库内登记；ASR 中说话者自称 Michael Yong、Google Cloud strategic advisor，身份未独立核实。
+
+> **阅读边界**：课堂英文按现有 ASR 保留，未核音逐字确认；讲义原文、嘉宾经验、其他发言者／学生观点和笔记参考分别标明。文中的 Gemini、注册／安装／给 TA 发消息等是课堂材料或练习要求，本次没有实际执行。既有 Canvas 行政核实按其日期与证据承接，私人反思仍为 draft，不能推断本人出席、已学会或已提交。
 
 ## 0. 三分钟速览
 
@@ -39,12 +41,14 @@ mechanism_review: passed
 
 ## 1. 开始之前 · 知识衔接
 
-### 1.1 你已有的
+### 1.1 当前需要的最短前置
 
-提示词是给模型的任务指令；上下文是模型作答时能看到的信息。M02 已讲怎样指定输出，M03 已讲应用怎样管理上下文。本讲用这两项能力帮助人发现业务问题。
+提示词是给模型的任务指令；上下文是模型作答时能看到的信息。本讲不要求你已经学会 M02、M03，也不默认会编程或机器学习。把模型当作能按给定文字生成候选的组件：人给任务与材料，模型给输出，人按预先约定的条件检查。输出契约（output contract）就是约定要交哪些字段、几项内容和什么格式；验收（validation）是拿输出逐项对照这些条件，而不是看到流畅就算成功。
 
 - [[M02-模型全景-基准评测与提示设计|M02]]：唤醒角色、示例和输出契约。契约就是预先约定交付长什么样。
 - [[M03-AI-agent-从harness到部署|M03]]：唤醒人工评估。模型产生候选，人核来源、成本和风险。
+
+这些回链供复习已教细节；当前工作故事、矩阵与原型任务仍在本篇解释，不以“前课讲过”跳过当前判断。
 
 ### 1.2 本讲全新概念
 
@@ -69,6 +73,14 @@ mechanism_review: passed
 如果一开始就说“做一个聊天机器人”，团队已经提前选了方案。工作坊先改善描述，再发现机会、定义问题和挑选下一步。
 
 p.1 是标题页。p.2 用举手、拍手、喊名字唤醒参与者。p.3 安排提示 15 分钟、JTBD 30 分钟、问题定义 45 分钟、分享 30 分钟、方案构思 15 分钟。合计 135 分钟，不包含未标时长的介绍和结尾。
+
+**p.2 热身原指令（讲义给定动作）**：
+
+> Raise your right hand! Then, left hand!
+> Clap your hands!
+> 3, 2, 1 … Shout out your name!
+
+中文题意是先举右手再举左手、拍手、倒数后喊名字，用来让参与者转入互动状态；这是课堂热身，不是本人的动作记录，也没有学术标准答案。English description: “The warm-up asks participants to raise their hands, clap, and say their names. It prepares the room for interaction; the note does not record that the reader performed it.”
 
 **为什么需要它**
 
@@ -115,8 +127,16 @@ p.4 切入提示练习。p.5 要求 15 秒描述图片。以下逐页观察来�
 - p.6：侧面高速赛车图，文字识别为 McLaren Formula 1，MCL36 或后续演化车型。
 - p.7：papaya orange 是车身橙色；黑色部分与青色点缀组成涂装。Logo 拼写为 Android、Google Chrome、Tezos、Dewalt、Alteryx。
 - p.8：轮罩有彩虹圆环效果，讲义关联到 Chrome 配色。
-- p.9：泛光灯与深色背景支持“夜间赛道”。Bahrain 或 Saudi Arabia 是讲义中的 likely 推测。
+- p.9：讲义将场景描述为夜间赛道，并用 likely 猜 Bahrain 或 Saudi Arabia；照片具体拍摄时段与地点没有独立元数据，保留讲义解释与推测地位。
 - p.10：跟拍让车较清楚、背景横向模糊。文字将底盘火花解释为钛制滑块接触赛道，属于本页说明。
+
+**p.5 观察练习：原任务与参考作答**
+
+原文：“Describe what you see … 15 seconds”。题面图片是一张侧面橙黑赛车、赛道背景的照片；上面 p.6–10 的说明是后续讲义解读，不是观察者已经确认的车辆元数据。中文任务是先描述能看到什么，再区分推测；15 秒是活动时限，不是性能测试。
+
+⚪ 参考作答：画面可描述为橙黑单座赛车的侧面、轮圈彩色环、较模糊的赛道背景和底部火花。具体车型、拍摄地点、火花成因及品牌关系按讲义陈述或推测，不能仅凭“AI sees”标题认证真实。English reference: “I see a side view of an orange-and-black single-seater race car, coloured wheel rings, a blurred track background, and sparks beneath the car. The exact model, location, and physical explanation require evidence beyond this description.”
+
+若照片没有清楚的夜空或灯光，不能只因后续提示写“night”就把夜间视为图像独立确认；应写“讲义按夜间赛道解读”。
 
 p.11 将字段合成提示。这里完整保留其文本，方便复用后逐项检查。
 
@@ -152,6 +172,8 @@ p.12 先放原图。p.13 加生成图形成对照。p.14 才写限制。两图�
 - “描述用了 5 秒，所以准确率已测过。”这只是嘉宾演示速度，无独立评测数据。
 - “likely 就是已确认地点。”这里没有照片元数据，地点仍是推测。
 
+**🎙️ 招聘观点的来源与边界**（`07:41`–`08:14`）：嘉宾称美国提示工程师岗位更偏好语言学背景，甚至说计算机／信息系统学士“won't get a job”。这只是讲者当堂经验性主张；未给招聘样本、时间范围、职位定义或录用数据，不能据此断言相关学历不能求职。可迁移的学习点是描述任务与理解语言也重要，专业资格和录用仍须具体岗位证据；不把这段做成本人的职业事实或通用建议。
+
 **与其他概念的关系**
 
 观察字段是后面业务提示的起点：先将模型需要猜的内容显式化，再验收输出。
@@ -176,7 +198,7 @@ p.12 先放原图。p.13 加生成图形成对照。p.14 才写限制。两图�
 
 ```text
 Create an image storyboard for young boy becoming a superhero
-and saving people. I give you the creative freedom to make up the story.
+and saving people. I give you the creative freedom to make up the story
 ```
 
 第一句规定主角与故事结果，第二句开放具体情节。页面静态图不能证明视频实际播放质量。
@@ -235,6 +257,8 @@ p.19 另外把 Get visual 列为可选建议：要求图像辅助沟通。它没
 
 无关背景会挤掉真正目标。给同一字段两条冲突要求，例如“只输出文字”和“必须生成图片”，应先澄清，别无限重试。
 
+**🎙️ “镜像效应”是讲者的表达**（`12:20`–`12:32`）：嘉宾用小学／大学提问风格作对比，称更高水平的问法会获得更好的回答。这里没有受控实验或固定算法规则；角色和受众可能改变措辞与任务选择，不保证答案更正确。实际应固定题目和资料，按同一标准比较准确、完整与可用性，而不是只把语气写得专业。
+
 **与其他概念的关系**
 
 JTBD 会检验受众真正需要什么，因此这里的用户与约束只是初步设定。
@@ -253,11 +277,20 @@ Design a 21” carry-on suitcase
 
 **为什么需要它**
 
-这句话只给尺寸和品类，模型不知道要优先满足取物、外观还是耐用。每次补一个字段，就增加一个检查条件。
+这句话只给尺寸和品类，未指定要优先满足取物、外观还是耐用；模型仍可能生成内容，但其自行补定的目标未必符合用户。每次补一个字段，就增加一个检查条件。
 
 **课件原例与逐问参考作答**
 
-原题有两个动作：设计提示。测试提示。下面的改写取自 p.22–23。实际测试结果使用课件展示，不冒称本人运行过 Gemini。
+**p.20 完整原题（另保留图中名义21英寸箱子示意，不将其当尺寸认证）**：
+
+> Exercise:
+> Original Prompt:
+> Design a 21” carry-on suitcase
+> Design your prompt and test it with Gemini
+
+中文限定：设计的是提示（prompt），还要求测试（test），不是仅复述一句箱子需求。本次只给可审核文本及测试方案，未登录、发送或实跑平台，因而不把“测试动作”标为本人已完成。
+
+原题有两个动作：设计提示。测试提示。下面完整文本取 p.23 的更新提示；p.22 是较早增量版本，两页不能悄悄拼成不存在的原句。p.24 是课件给定输出，非本轮平台测试记录。
 
 ```text
 You’re Casetify Travel accessories designer and going to design 21” carry-on suitcase.
@@ -278,6 +311,20 @@ The name and idea should be separated by a dash.
 4. 开放材料选择，同时要求三个编号方向和各自功能清单，输出变得可比较。
 5. 对输出逐条查硬约束，再查三个方向是否真正不同。缺一项就指出缺项后重写。
 
+**逐动作英文参考答案（⚪ 笔记自拟）**：
+
+1. 改写动作：使用下方 p.23 的角色、受众、功能约束与三个编号方向格式，说明哪些必须满足，哪些如材料可自由探索。English reference: “Specify the designer role, young IT-professional audience, customisable front, lock and laptop-access requirements, and three numbered ideas with separate feature lists. Keep material choice open, and check whether the ideas differ in mechanism rather than colour alone.”
+2. 测试动作：先记录提示及模型／工具版本，再逐条检查约束、三个方向差异、图文是否相符；给出缺项并修订。这里只有课件输出与参考核对，缺实际发送／输出日志，不能宣称测试通过。English reference: “A test should preserve the prompt, model version and output, then check each requirement and compare the three ideas. Revise missing or conflicting features. This note supplies a test plan and lecture examples; it does not report a new Gemini run.”
+
+**p.22 较早版本原文（与p.23分开）**
+
+> You’re Casetify Travel accessories designer and going to design carry-on suitcase.
+> The target customers are those young IT professionals.
+> The new design suitcase shall be able to customize the color, the logo and font on the front of the suitcase. In addition, there be a TSA-approved lock and easy to retrieve laptop computer.
+> Design a 21” carry-on suitcase
+
+这一版先加角色、受众与约束；下一版把21英寸整合进首句，再加材料选择和输出格式。语法按讲义保留，不把译解校正冒充原句。
+
 TSA 是美国 Transportation Security Administration。课件用 TSA-approved 描述锁的需求；它没有提供认证文件。21 英寸只是名义尺寸，不能据此确认所有航空公司允许。
 
 p.21 实际是 **05:00 倒计时图**，对应试做时间，不是纯空白机密页。p.22 左列是新增上下文，右列是更新提示。p.23 继续增加材料自由与输出格式，模型输入是右列完整委托单。
@@ -297,11 +344,44 @@ Please improve the prompt below:
 Design a 21” carry-on suitcase
 ```
 
+**p.26 原任务原句**：
+
+> Please improve the prompt below:
+> Design a 21” carry-on suitcase
+
+这里要求输出改进后的提示，不是直接输出产品设计；上方代码块供复制，引用块保留完整原文位置。
+
 p.27–29 展示三种改写方向，每一方向都有不同优化目标：
 
 - 工业设计：频繁商务旅客，耐用与空间效率；外置电脑仓、静音轮和压缩内仓服务该目标。
 - 生活方式：Gen Z 旅客的外观和开箱体验；单色哑光、USB-C 充电接口与把手秤属于候选功能。
 - 问题解决：减少过度打包和安检延迟；快取液体与电子用品、回收材料和内部容量服务该目标。
+
+<details><summary>p.27–29 三种给定改写的完整英文（讲义展示答案，非本轮模型输出）</summary>
+
+**1. The Industrial Designer Approach (Functional & Technical)**
+
+> Act as an industrial designer.
+> Design a 21-inch hardshell carry-on suitcase optimized for the frequent business traveler.
+> Focus on space efficiency and durability. Include features like a dedicated external laptop compartment, silent 360-degree spinner wheels, and a modular interior compression system.
+> Describe the materials used (e.g., polycarbonate, aerospace-grade aluminum) and provide a list of technical specifications.
+
+**2. The Lifestyle & Aesthetic Approach (Visual & Trendy)**
+
+> Create a design concept for a 21-inch luxury carry-on suitcase targeted at Gen Z travelers.
+> The design should be minimalist yet bold, using a monochromatic color palette with matte finishes.
+> Incorporate smart technology, such as a built-in USB-C charging port and a digital weight scale in the handle.
+> Describe the visual silhouette and the 'unboxing' experience for the customer.
+
+**3. The Problem-Solver Approach (Innovation-Focused)**
+
+> Design a 21-inch carry-on suitcase specifically meant to solve the problem of over-packing and airport security delays.
+> Propose an innovative layout that allows for 'quick-access' to liquids and electronics without opening the main compartment.
+> Suggest a sustainable material (like recycled ocean plastics) and explain how the design maximizes the interior volume to meet strict airline dimensions.
+
+</details>
+
+三段是“改善提示”这一任务的给定输出，不是三个箱子的合格证明。English reference comparison: “The first prompt prioritises functional durability, the second visual experience and smart features, and the third a packing/security problem. They make different trade-offs. A generated request for a charging port or sustainable material does not establish battery compliance, certification or lifecycle benefit.”
 
 p.30 收束为上下文关键、AI 可帮助改提示。三个方向都需要人重新选择目标，而不能拼成一条互相冲突的规格。
 
@@ -324,7 +404,8 @@ flowchart TD
  C -- 否 --> D[澄清或暂停，保留文本草稿]
  D --> B
  C -- 是 --> E[要求三个编号方向]
- E --> F{逐项满足硬约束？}
+ E --> GEN[生成候选或读取课件给定输出]
+ GEN --> F{逐项满足硬约束？}
  F -- 否 --> G[指出缺项，改提示]
  G --> B
  F -- 是 --> H[人工比较，留下方向与待验证项]
@@ -332,7 +413,7 @@ flowchart TD
 
 走图例：缺“易取电脑”时，在 F 走“否”，将缺项交回 B。若工具不可用，在 C 暂停；不会把没生成的图写成成功。到 H 时只完成概念选择，生产安全仍在图外。
 
-读图自测：三个输出只有颜色不同，应该在哪里处理？在 E 后的人工作品比较中要求机制不同，因为三个编号不等于三个独立方向。
+读图自测：三个输出只有颜色不同，应该在哪里处理？在 GEN 后的输出比较中要求机制不同，因为三个编号不等于三个独立方向。
 
 **常见误解**
 
@@ -363,11 +444,28 @@ p.34 的定义是 **"A job is the specific task or outcome a customer is trying 
 
 p.35–36 给出北美员工早晨在 drive-thru 买奶昔后开车上班。drive-thru 指不下车的点餐取餐方式。两页问同样三个问题，p.36 的杯子新增 McDonald's 标识。
 
+**p.35–36 完整题面（两页文字相同，第二页杯上增加品牌标识）**：
+
+> A Job example
+> In North America, a company finds every morning workers buy milkshake in Drive-Thru and then drive to work
+> They want to know why - What is the Job of this?
+> More importantly, what are the struggles? What are the alternatives?
+
+中文题意：北美员工早晨买奶昔再开车上班，问要完成的任务、遇到的困难和替代选择。题面不是对驾驶中吃喝的安全许可；下面只解释案例，现实可改为出发前完成早餐。
+
 **原题逐问答案**
 
 1. What is the Job？课堂解释是驾车时完成早餐，同时能单手操作、不弄脏车。用“喜欢奶昔”回答会遗漏使用情境。
 2. What are the struggles？饼干、可颂可能掉碎屑；需要双手或容易洒的食物影响驾驶中的进食。这是嘉宾的情境解释，不推广为安全驾驶建议。
 3. What are the alternatives？可参考香蕉、其他便携饮品或先吃完再出发。要比较单手性、饱腹和洒漏；这些替代清单是笔记补充，并非客户调研结果。
+
+**逐问英文参考答案（课堂情境＋笔记补充，非额外官方答案）**：
+
+1. “In the lecture’s morning scenario, the job is to have a convenient, filling breakfast with little mess during a commute. The product is a means to that outcome, not the job itself.”
+2. “Crumbs, spills and handling requirements can make alternative breakfasts inconvenient. These are scenario-specific struggles; the example does not establish that eating while driving is safe.”
+3. “Possible alternatives include eating before departure, a banana or another portable breakfast. Compare them against the outcome and relevant safety constraints rather than only against other milkshakes.”
+
+若把情境改成下午接孩子，就重写受益者与期望体验，不沿用早晨“当早餐”的唯一目标；故事不是已核销量或客户研究。
 
 **🎙️ 课堂补充**（`20:53`–`31:41`，A · 课上展开）
 
@@ -417,6 +515,24 @@ so I can [Expected Outcome].
 - p.40：拍 vlog 或长曝光日落 → 壳兼容三脚架或 MagSafe 磁吸配件 → 稳定拍摄，减少装架麻烦。vlog 是视频日志。
 - p.41：去拥挤酒吧或演唱会 → 壳安全放 ID 和一张信用卡 → 不带笨重钱包，也不丢必需品。ID 指身份证件。
 
+<details><summary>p.40–41 给定工作故事完整原文（不是自拟参考）</summary>
+
+**p.40 — Job Stories examples, for content creator**
+
+> When I am filming a vlog or taking a long-exposure sunset photo,
+> I want a case that integrates seamlessly with tripods or MagSafe accessories,
+> so I can capture stable, high-quality content without fumbling with awkward mounts
+
+**p.41 — Job Stories examples, for “Night Out”**
+
+> When I am going out to a crowded bar or a concert,
+> I want my phone case to securely hold my ID and one credit card,
+> so I can leave my bulky wallet at home and move around freely without losing my essentials
+
+</details>
+
+MagSafe 在本例是磁吸配件接口名称，三脚架是固定相机／手机的支架；课件要求“无缝结合”，没有展示特定壳的兼容认证。English reference analysis: “The creator story links a filming situation to stable capture, while the night-out story links a crowded setting to carrying essentials without a wallet. The feature should be judged against its stated outcome; neither example proves that a particular product already works.”
+
 **为什么需要它**
 
 两个情境都用手机壳，成功条件却不同。把字段拆开，就能说明三脚架接口为何服务拍摄、卡槽为何服务出门。
@@ -462,6 +578,26 @@ Please prepare in the format of "When [situation], I want to [motivation],
 so I can [expected outcome]".
 ```
 
+**先保留 p.42–46 的完整原任务，再作角色替换**：
+
+> You're a [Role] of XYZ, an international mobile accessories company, what likely will be the job stories?
+> Please prepare in the format of "When [situation], I want to [motivation], so I can [expected outcome]?
+> Roles - Mobile phone case Designer, Travel suitcase Designer, Airpod case Designer, Pixel 11 Pro Fold Designer
+
+p.43 活动原文：
+
+> Teams / Individual to find the Job Stories, with help from AI
+> Roles - Mobile phone case Designer, Travel suitcase Designer, Airpod case Designer, Pixel 11 Pro Fold Designer
+> With Gemini, try the prompt following
+> Record and number the job stories as “When _____ I want to _______ So I can ______”
+> You have 10 minutes, each pick the most important job story from the list
+> You're a Role of XYZ, an international mobile accessories company, what likely will be the job stories? Please prepare in the format of "When [situation], I want to [motivation], so I can [expected outcome]?
+
+p.44 输出：“Each Team / Individual with the most important job story”。
+p.45 标题：“Define the job stories (Opportunities) for each of the roles”，列同样四角色及10分钟计时、同一提示；p.45–46 另写：“Copy down the Job Story to your clipboard / notebook”。
+
+中文限定：原页面保留 for each of the roles 的总范围，p.43／课堂活动允许个人先选其中一角色。下方旅行箱是完整主例，其他角色参考各给一条；这些都是未验证的机会假设，不需要为时限虚构十条现场输出。原提示未闭合引号、末尾问号原样保留，解释时按“三字段格式”理解，不把语法当新的任务条件。
+
 这是将课件 Role 替换为旅行箱的参考输入。用法是先请求候选，再由人核查：
 
 1. 选角色：旅行箱设计师。边界是旅行取物，不改成耳机本体制造。
@@ -475,6 +611,18 @@ so I can [expected outcome]".
 - J1：When I reach airport security, I want to access my laptop quickly, so I can keep the queue moving.
 - J2：When I pack for a long journey, I want to know whether my luggage is overweight, so I can repack before reaching the airport.
 - J3：When I collect a suitcase among similar bags, I want to recognise mine quickly, so I can leave without taking someone else's bag.
+
+**其余三角色的参考故事（⚪ 笔记补充，不是本人的现场作答）**：
+
+- 手机壳：“When I need to watch a tutorial on a small wet bathroom counter, I want to position my phone without holding it, so I can follow the tutorial while keeping it away from water.” 中文：湿小台面下免手持观看，需实测固定和防水边界，不由故事断定吸盘一定可用。
+- 耳机盒：“When I change trains while carrying several bags, I want to retrieve and secure my earbud case easily, so I can avoid losing it during transfers.” 中文：对象是盒的携带／取用，不是耳机音质或降噪。
+- 折叠手机：“When I switch between a compact screen and an unfolded work view, I want to protect the device without obstructing the hinge, so I can change modes reliably.” 中文：铰链是连接两侧、允许开合的结构，保护与开合兼容待工程验证；课件型号只是角色设定，不能推出产品已发布。
+
+**p.43–46 逐动作英文参考**：
+
+1. “Choose one of the listed roles for the timed individual exercise and generate numbered situation–motivation–outcome candidates. Keep the product boundary explicit.”
+2. “Select one story, explain why it is a useful opportunity hypothesis, and save the chosen story and alternatives. User research is still required before calling it the most important real customer need.”
+3. “For the suitcase example, provisionally choose J1 because laptop retrieval is observable and relates to the prior prompt. This is a reason for a testable hypothesis, not evidence that all travellers rank it first.”
 
 暂选 J1：它直接对应前一题的“易取电脑”，现场动作也容易观察。J2 同样合理，但是否优先需重量需求与用户频率证据。J3 的识别收益可能较小，仍须用户证据才能比较。
 
@@ -546,6 +694,19 @@ p.50 的黄色虚线主要圈出 Define 与 Ideate，边界贴近前后阶段，
 
 本课压缩活动在 p.51–52：先大量写问题，再排序选前三，最后汇报。p.52 给起草十分钟、排序五分钟，其余介绍与汇报并未各写精确分钟。
 
+**p.51–52 原流程与逐项解释**：
+
+> What are we gonna do in next 20 minutes?
+> Briefing of Steps 1 - 3
+> Step 1 — Draft as many Problem Statement as possible
+> Step 2 — Prioritize the Problem Statement to select the top 3
+> Present Your Selected Solution
+> 10 minutes / 5 minutes
+
+中文：先听简报，10分钟起草问题，5分钟排序选三条，再汇报。页面最后写 Solution，而p.67明确要汇报 Opportunity and Top HMW Statements；保留这个来源用词差异，本阶段的交付按后文具体任务是机会和问题，不把尚未构思的产品当已选方案。
+
+English reference: “Draft a range of problem statements, prioritise three, and present the opportunity and selected HMW statements. The slide’s ‘Selected Solution’ label is broader than the later problem-presentation task; solution mechanisms are explored in the following stage.”
+
 **🎙️ 课堂补充**（`54:00`–`57:35`，A · 课上展开）
 
 *"And today, we will focus on these two, define and ideate"*（`56:18`）。意思是本场重点为定义与构思。`54:32` 明说跳过部分步骤，所以本课的 AI 候选不能冒称完整用户研究。
@@ -594,6 +755,37 @@ For [Stakeholder]
 In order to [What change? / Achieve What Job]
 ```
 
+**p.54–56 原模板与给定示例（原词保留）**：
+
+> How Might We (Action)
+> (What)
+> For (Stakeholder)
+> In order to (What change?)
+
+p.54 给定示例：
+
+> How Might We improve
+> the design of the mobile phone case
+> For executive
+> In order to increase revenue?
+
+p.55–56 将最后一行改为 “In order to (Achieve What Job)”，并保留早期泛化示例：
+
+> How Might We improve
+> the design of the product
+> For executive
+> In order to increase revenue?
+
+p.56 的 Job A 版本：
+
+> How Might We improve
+> the design of the product
+> For executive
+> In order to Achieve Job A
+> (When I am xxxx, I want to yyyy, so I can zzzz)
+
+上方代码式模板是笔记合并读法，以上引用才是课件逐版原词；xxxx等是待填内容，不是实际客户事实。管理者可以是相关方，内部收益也可以是目标；关键是说明其与所选job的连接。当前练习沿用前面的外部用户故事，因此不能只换“for executive”而忽略用户要完成什么。
+
 第一行说明要改变什么。第二行说明帮助谁。第三行说明改变服务哪个结果。p.53 是 C1 子部分分隔，p.54 用为 executive 改手机壳以增加收入举例。executive 是管理层，未必是实际使用者。
 
 p.55 把泛泛的 change 改成 achieve what job；p.56 补 Job A 的故事占位符。占位符不是实际客户研究，不照抄 xxxx、yyyy、zzzz 当答案。
@@ -603,6 +795,20 @@ p.55 把泛泛的 change 改成 achieve what job；p.56 补 Job A 的故事占�
 “增加收入”可能是组织目标，却没说明用户为何购买。把选定 job 带入 HMW，才能检查方案如何服务用户，而不仅是内部收入愿望。
 
 **原题逐问参考作答**
+
+**p.57–59 完整活动要求与英文参考**：
+
+> Define HMW Statements At Scale
+> Go for quantity
+> Write Headlines
+> Go for big ideas
+> Be judgemental, later
+> Each Team / Individual with lots of HMW statements
+> #1 - Prepare As Many HMW Statement As Possible
+
+p.59 再给上述 Action／What／Stakeholder／What change 模板、Job A示例及10分钟图。中文：先多写简短而相关的问题，允许探索，延后成本筛选；并非彻底放弃逻辑或角色边界。“later”改变的是评判时机，不是永远不评判。
+
+English reference: “Use the selected job story to draft several concise HMW questions. Preserve the stakeholder and intended outcome, explore different obstacles, and defer feasibility ranking to the next stage. H1–H3 below are reference questions, not verified customer findings.”
 
 p.57–59 要大量写简短 HMW、暂缓评判并保留结果。对 J1 可交以下三条完整问题，都是笔记补充：
 
@@ -675,19 +881,65 @@ p.61 要站在 executive sponsor，即支持项目的管理者视角看价值。
 
 p.62 原图把 #1、#3 放绿色，#2 放蓝色，#4 放黄色，#5 放红色。编号仅是占位问题，并没有给这些问题的具体内容或真实成本。需要时询问 IT 团队或 Googlers，不能凭图的位置倒推出业务事实。
 
+**p.61–66 原任务及图形读法**：
+
+> Use the large paper, draw up the following 2x2 matrix,
+> Value to your organization
+> Take the lens of your exec sponsor?
+> Complexity to the implementation
+> How difficult it is to implement? Data avail? Need to involve multiple parties? Can it be done within 3-6-9-12 months?
+> Ideal - Pick HMW Statements in Green -> then either Blue (long term strategic project) or Yellow (low lying fruit, hopefully can reap productivity gains). Bypass Red.
+
+二维图就是上方四象限表：向上组织价值高，向右实施复杂度高。颜色与#1–#5占位关系已逐项列出，没有数值坐标或客观分数。
+
+p.62 指令：“Stick the HMW statements, according to value and complexity. Check with IT team or Googlers if needed”。
+
+p.63 完整选取规则：
+
+> Pick the top 3 HMW statements
+> 1. Check the GREEN quadrant
+> 2. If there are exactly 3 HMW Statements, just pick these 3
+> 3. If there are more than 3 HMW Statements, use dot voting to pick the top 3 (each team members can vote with the color dots provided)
+> 4. If there are less than 3 HMW Statements, pick others from the BLUE quadrant (use dot voting if required)
+
+p.64 输出：“Each team / individual with one 2x2 matrix and 3 top HMW statements”。
+
+p.65 操作原文：
+
+> 1. Draw up the 2x2 table with the large white paper
+> 2. Put up the HMW Statements on top of the table
+> 3. Select the top 3 by dot voting
+
+本页还给05:00计时图，p.66说明投票是 optional。中文限定：p.61的一般建议允许绿色后走蓝色或黄色；p.63这道具体练习只指定绿色不足时从蓝色补。二者用途不同，不将练习规则推广成“永远不能选黄色”，也不擅改p.63原题。
+
 **为什么需要它**
 
 一种方案能省时间，却要接入十个系统，可能不宜先做。另一种只换颜色很容易，但没解决核心障碍。二维判断让团队明确争议在收益还是实施条件。
 
 **参考完整例与逐问答案**
 
-以下五个 HMW 延续 J1。收益和难度理由是假设，所有位置为暂定，不是用户调查或供应商报价。
+先固定组织：本例是**虚构旅行箱品牌的配件团队**，当前目标是减少目标客群因安检取电脑困难产生的弃购、咨询与退货，并保持产品吸引力。J1仍是“安检时快取电脑、让队伍顺畅”，不是任意旅行箱功能。
 
-1. P1：如何减少安检时翻开主仓？假设频繁发生，普通前仓可实现 → 高价值、低复杂度，绿色。
-2. P2：如何让物品位置自动显示？假设能明显省查找，但需要传感器和电源 → 高价值、高复杂度，蓝色。
-3. P3：如何区分电脑与其他物品？假设隔层标识足以减少翻找 → 高价值、低复杂度，绿色。
-4. P4：如何让箱体装饰更容易更换？假设用户收益较小、现成面板可用 → 低价值、低复杂度，黄色。
-5. P5：如何让箱子自主跟随旅客？假设该用户收益较小，却需导航、电源和安全工程 → 低价值、高复杂度，红色。
+下面的研究／客服记录、实现路径和收益判断全是**教学假设**，不是现场调研、真实公司记录或报价。本例先约定：能触及当前主要弃购／售后原因的改进暂列高价值；只改善已基本可用环节、尚未见明显购买或成本影响的改进暂列低价值。这是本例相对分类口径，不是课件规定的分数线。
+
+用户结果不会直接跳成组织收益。要逐条走“安检哪步改善 → 哪项购买／服务／成本结果可能改变 → 本组织为什么暂时重视 → 还缺什么验证”。若现实只知道用户说方便，不知道上述连接，就把组织价值标待核，不自动放到上排。
+
+以下五条都先通过J1相关性检查，再按同一组织目标暂定位置：
+
+**P1–P3：主要障碍怎样连接组织目标**
+
+1. **P1：如何减少安检取电脑时翻开主仓？** 假设客服／退货材料已把“需翻衣物取电脑”识别为主要抱怨，解决它可能减少重复咨询和退货，并减少因此放弃购买。因它直接触及当前组织目标，暂判高价值；若普通前仓可用现有部件实现，暂判低复杂度，绿色。真实判断仍需核投诉原因、使用改善及后续退货／购买变化。
+2. **P2：如何帮助旅客快速知道电脑和必取电子用品的位置？** 问题本身不指定传感器。假设“找不到物品”的困扰同样造成弃购／服务负担，能减少查找会服务品牌目标，暂判高价值；此处**仅以传感器＋电源的一种可能路径估难**，暂判高复杂度，蓝色。若简单定位卡或透明分区已足够，就重新估难，不能把高复杂度永久贴在问题上。
+3. **P3：如何让旅客在打开后立即区分电脑与其他物品？** 假设常见咨询来自混装后拿错、反复翻找，清楚分区可能减少这类咨询并使目标用户更愿购买，因而暂判高价值；若隔层标签用现成配件即可改善，暂判低复杂度，绿色。要另核辨认错误、咨询量与购买证据，不能只用标签好看来证明收益。
+
+**P4–P5：相关但边际价值暂低的情形**
+
+4. **P4：如何减少取出电脑后重新对准外仓拉链的轻微不便？** 它仍服务J1的取物后收回与队伍通行；但假设当前已大多能顺利闭合，新增触感标记只是小改善，暂未见明显购买／售后影响，所以组织价值暂低。若仅改现成拉链拉片，复杂度暂低，黄色。若新证据显示此处才是主要卡点，价值应上调，不能因原来标黄而拒绝证据。
+5. **P5：如何进一步减少把电脑从外仓递到安检托盘的搬拿步骤？** 仍与J1同一取电脑情境有关；假设普通前仓已经让该动作基本顺畅，额外减少少量搬拿并未显著影响弃购或服务成本，所以价值暂低。若此时提出机械自动递出路径，电源、夹持、防跌落和工程验证使复杂度暂高，红色；这只是路径假设，更简单方案出现时要重估。
+
+**先排相关性，再谈矩阵位置**
+
+“更换箱体图案”和“自主跟随旅客”虽属于旅行箱主题，但未说明怎样服务当前安检取电脑故事，应先退回相关性检查或登记为另一条job，不能为了凑四色直接塞入本矩阵。
 
 P1 和 P3 先进入队列，绿色只有两条。按 p.63 从蓝色补一条 P2，输出 P1、P3、P2；同时留下 P2 的实施调查，不能把“补足前三”当作可立即开发。
 
@@ -699,11 +951,20 @@ P1 和 P3 先进入队列，绿色只有两条。按 p.63 从蓝色补一条 P2�
 - 绿色多于三条：用点投票选前三。
 - 绿色少于三条：从蓝色补足，需要时再投票。
 
+**逐动作英文参考答案（⚪ 对应P1–P5假设）**：
+
+1. “Draw a matrix with organisational value increasing upward and implementation complexity increasing to the right. Record evidence and assumptions separately for each axis.”
+2. “Under the fictional suitcase-brand objective, P1 and P3 address assumed major purchase/support obstacles, while P4 and P5 add marginal benefits to already usable steps. Place P1 and P3 in green, P2 in blue, P4 in yellow and P5 in red only under the stated evidence and implementation-path assumptions. The positions are not measured scores or approvals.”
+3. “For the page-63 exercise, select P1 and P3, then supplement with P2 from blue. If more than three green candidates exist, use an agreed voting rule. Report missing candidates or unresolved evidence rather than inventing a complete set.”
+4. “Deliver the matrix, three selected HMW statements where supported, and the implementation limitations. General strategic guidance may also consider yellow; that is distinct from the page-63 supplementation instruction.”
+
+两轴理由必须各有证据。例如“有现成技术”只支持某个实施环节较容易，不能独自证明本组织有权限、预算、数据或高价值。
+
 若蓝色也不足，输出不足三条与缺口，不编造问题凑数。无价值或复杂度证据时标“待核”，先询问有关人员；不要画精确坐标冒充计算结果。
 
 ```mermaid
 flowchart TD
- A[逐条写价值与复杂度理由] --> B{证据足以暂定位置？}
+ A[先查问题服务所选job 再写组织价值链与复杂度理由] --> B{证据足以暂定位置？}
  B -- 否 --> C[标待核，向用户、IT 或业务求证]
  C --> A
  B -- 是 --> D[放四象限，数绿色条数 n]
@@ -713,16 +974,18 @@ flowchart TD
  E -- 少于 3 --> H[从蓝色补足，必要时投票]
  F --> I[交矩阵、前三与限制]
  G --> I
- H --> I
+ H --> AVAILABLE{可支持的蓝色足以补到三条？}
+ AVAILABLE -- 是 --> I
+ AVAILABLE -- 否 --> SHORT[交已有条目与缺口 不虚构前三]
 ```
 
-图按 p.61–63 和参考限制重画。P1–P5 走少于三条分支，输出两绿一蓝。读图自测：绿色四条但管理者已选好三条，可直接跳 F 吗？不能按本练习这样跳；应走 G，并说明投票规则。
+图按 p.61–63 和参考限制重画。先检查与J1的相关性，再比较组织价值与实施路径；P1–P5在给定假设下走少于三条分支，输出两绿一蓝。读图自测：绿色四条但管理者已选好三条，可直接跳 F 吗？不能按本练习这样跳；应走 G，并说明投票规则。另一个变式：客户说“方便”，却没查它怎样影响本组织目标，应先在B走否补证据，不能自动归高价值；换箱体图案则更早在A退回job相关性检查。
 
 **点投票的可复算小例（笔记补充）**
 
 点投票（dot voting）是每人用标记表达选择，再按票数形成队列。票数反映成员偏好，需要结合前面的证据。
 
-这里用 G1–G4 编号代表四条绿色候选。若原有 G1、G2，再新增 G3、G4，就有四条。假设四人每人两票、每条最多一票，这是本例规则，不是课件规定票数。
+这里用 G1–G4 编号代表四条绿色候选。若原有 G1、G2，再新增 G3、G4，就有四条。假设四人每人两票、每人对每条最多一票，这是本例规则，不是课件规定票数。
 
 - 甲投 G1、G2。乙投 G1、G3。丙投 G2、G3。丁投 G1、G4。
 - 合计 G1 三票、G2 两票、G3 两票、G4 一票，总数八票。
@@ -739,7 +1002,7 @@ p.64 要一个矩阵和三个问题。p.65 要画、放、选，并给五分钟�
 
 **💡 换个说法（笔记补充）**
 
-矩阵先回答要不要投入，投票才回答团队先选哪条。老板先投、其他人跟投时，票数只是权力影响的结果，不能解释为独立意见。
+矩阵先回答要不要投入，投票才回答团队先选哪条。老板先投可能影响他人的表达，不能把后续票数自动解释为彼此独立的偏好；但也不能断言每一票都仅由权力影响。
 
 **常见误解**
 
@@ -764,9 +1027,19 @@ HMW 仍是问题，矩阵位置依赖可能的实施路径。进入 ideation 后
 
 **课件原例与参考作答**
 
-旅行箱角色可汇报：我们暂选 J1。前三问题是 P1、P3、P2。绿色依据是现成结构能减少开箱，蓝色依据是传感器依赖。正式报价与用户验证未做，因此没有承诺实施。
+旅行箱角色可汇报：我们暂选J1，组织是虚构品牌团队。假设安检开箱／混装困扰是主要弃购或售后原因，P1、P3可能减少这些成本并保持购买意愿；加上现成结构／标签的实现路径，两者暂绿。P2同样可能服务组织目标，但此处传感器路径暂蓝，所以前三是P1、P3、P2。真实用户／售后证据和报价未取得，没有承诺实施；只听用户说方便而无组织结果连接时，价值仍待核。
 
 这是 p.67–68 交付要求的参考示范。与 p.3 计划分享三十分钟相比，p.68 是每队计时；本场实际为个人分享，不能强行让两种时间相等。
+
+**p.67–68 原汇报任务与英文参考**：
+
+> Time To Present Your Opportunity and Top HMW Statements
+> Mobile phone case Designer, Travel suitcase Designer, Airpod case Designer, Pixel 11 Pro Fold Designer
+> Each Team:
+
+p.68显示05:00。中文：说明角色、机会和已选问题，按每队计时，不是要求此时汇报已验证产品；课堂个人安排见开场，不能据题面替本人记录发言。
+
+English reference: “Our role is travel-suitcase designer for the fictional brand team. Under the stated assumptions, P1 and P3 address major causes of abandoned purchases or support/returns, so they may advance the organisation’s objective. Existing-part implementations make them provisionally green. P2 is provisionally blue only under the sensor-and-power pathway. Select P1, P3 and P2, but verify both the user-to-business link and implementation before committing resources.”
 
 **🎙️ 课堂补充**（`01:28:23`–`01:39:24`，A · 课上展开）
 
@@ -776,7 +1049,11 @@ HMW 仍是问题，矩阵位置依赖可能的实施路径。进入 ideation 后
 
 分享还涉及音乐识别、耳机盒挂带、座椅、敏感信息可见性。音乐识别“低复杂度”来自学生引用 AI 的理由，未经独立评测；已有功能也不证明该方案已实现。座椅等跑出原角色，嘉宾在 `01:34:59`–`01:35:10` 追问为什么与手机或箱子无关。
 
-客服讨论提出先分流、再按问题复杂度等条件转人工。客户终身价值指对客户关系未来收益的估计。该课堂建议没有提供模型、公平性或合法性证据，不作为默认上线规则。PII 指能识别个人的信息。嘉宾称其平台会阻挡 PII，没有范围与实测依据，不能推广成所有 AI 的能力。
+另一位发言者在 `01:37:15`–`01:37:36` 建议先分流，并用客户终身价值和问题复杂度决定真人坐席或FAQ（常见问题）机器人。客户终身价值（customer lifetime value）指对客户关系未来收益的估计，不是客户自身的人的价值。
+
+该课堂建议没有提供模型、公平性或合法性证据，不作为默认上线规则；若按估计收益分配人工服务，可能让低收入或估计不准的用户失去必要支持，需看后果、服务义务、申诉与公平目标。问题复杂且影响重大时，不能仅因估计价值低而拒绝必要人工处理。
+
+个人可识别信息（personally identifiable information，PII）指能识别个人的信息。嘉宾称其平台会阻挡 PII，没有范围与实测依据，不能推广成所有 AI 的能力。
 
 **💡 换个说法（笔记补充）**
 
@@ -804,6 +1081,17 @@ HMW 仍是问题，矩阵位置依赖可能的实施路径。进入 ideation 后
 
 **课件原例与逐问参考作答**
 
+**p.69–70 原指令与来源边界**：
+
+> What’s Next? Ideate Possible Solutions
+> Use AI to ideate
+> How Might We (Action)
+> (What)
+> For (Stakeholder)
+> In order to (Achieve What Job)
+
+课件把已选问题、相关方和job交到方案阶段；五或十个点子的数量来自课堂后续说明，不是原页另列的官方评分标准。中文：在同一目标下提出不同作用机制，再核依赖和失败；以下原型是笔记参考闭环，不是现场已执行。
+
 以 P1 为输入，以下是笔记补充的完整练习，不声称实际生成或试验过。
 
 ```text
@@ -818,13 +1106,23 @@ Keep the 21-inch carry-on constraint. Mark feasibility assumptions.
 
 五个参考方向：
 
-1. 外层电脑袋：独立口直接取电脑。依赖袋口尺寸。风险是碰撞保护弱。用模型测取物与固定性。
+1. 外层电脑袋：独立口直接取电脑。依赖袋口尺寸。风险是碰撞保护弱。用物理样品测取物与固定性。
 2. 上抽托盘：电脑沿导轨抽出。依赖导轨和锁定结构。风险是卡住。测不同电脑宽度。
 3. 可拆内套：整包取出。依赖扣件。风险是漏装回去。测取出和回装步骤。
 4. 平铺折开仓：局部翻开而不暴露衣物。依赖铰链。风险是排队占空间。测狭窄通道操作。
 5. 可见分区与标识：让使用者快速定位。依赖简单隔层。风险是只改善寻找、不改善取出。分别测两段时间。
 
 人工先排除目标不相关方向，比较剩余方案的结构和风险。暂选方向一，因为最低成本纸板模型就能测试“减少翻衣物”；这不证明最终防盗或承重已满足。
+
+**p.70 英文参考作答（⚪ 与上方五个中文机制逐项对应）**：
+
+1. “An external laptop pocket creates a separate access path; test opening size, retention and impact protection.”
+2. “A slide-out tray changes the extraction motion; test laptop widths, jamming and locking.”
+3. “A removable sleeve allows the whole protected unit to be removed; test removal and replacement errors.”
+4. “A locally opening panel avoids exposing clothes; test the space needed in a narrow queue.”
+5. “Visible zones and labels reduce search time; measure search and extraction separately because labels may not improve extraction.”
+
+选择与测试理由：“Provisionally prototype the external pocket because a simple physical mock-up can test reduced unpacking. Compare retrieval time and failures against a baseline under the same conditions. Reject or redesign a version that fails a predeclared safety condition, even if it is faster.” 不以生成图片代替实物或合规证据。
 
 **原型实验的完整过程（笔记补充）**
 
@@ -933,7 +1231,7 @@ flowchart TD
 本讲没有可核的“必考此题”课堂原话。嘉宾强调重要，也不自动等于教授考试明示。
 
 - 🔴 教授考试明示：0 条。
-- 🟡 课程目标和讲义反推：4 类，提示改写、JTBD、HMW、优先级分析。
+- 🟡 课程目标反推：4 类，提示改写、JTBD、HMW、优先级分析。Syllabus 的 “Apply GenAI tools and techniques” 支持提示实践；“Analyze GenAI applications across business functions” 与 “Develop strategic recommendations for GenAI adoption” 支持从业务机会、问题到优先级的分析。具体如何归入四类是笔记映射，目标不保证每类必考。
 - ⚪ 笔记推断：1 类，方案到测试的完整设计题。
 
 ### 6.2 答题链
@@ -958,7 +1256,7 @@ flowchart TD
 
 1. 加受众和使用目标，要求三个不同机制并分别列功能。编号解决格式，机制要求解决同质化，见 §2.2.4。
 2. 在角色边界检查返回，重新写耳机携带、保护或取用结果。耳机音质是耳机本体属性，见课堂 `46:28` 与 §2.5。
-3. 没完成开放探索。先改问题句为用户进展，再允许不同方案；九条颜色变化不会增加问题空间，见 §2.7。
+3. 没完成开放探索。先改问题句为用户进展，再允许不同方案；同一种AI仓的九种表述不会扩大问题空间，见 §2.7。
 
 </details>
 
@@ -1028,7 +1326,7 @@ flowchart TD
 
 读第一行：开场跨度 213 秒，占全部 6,247 秒的约 3.4%。
 
-逐列读法：内容块按主题归并。区间按相邻边界相减。秒数是跨度，含等待。占比是该秒数除 6,247 再乘 100%，保留一位小数。总秒数可加，圆整占比合计可能有误差。计算见任务 scratch 的 `verify_examples.py`。
+逐列读法：内容块按主题归并。区间按相邻边界相减。秒数是跨度，含等待。占比是该秒数除 6,247 再乘 100%，保留一位小数。总秒数可加，圆整占比合计可能有误差。旧计算证据为2026-10-10任务scratch中的 `verify_examples.py`／examples-results.json；本次数值和条件未改变时按真实SHA承接，不冒称新的现场计时。
 
 ## 9. 延伸与勘误
 
@@ -1064,6 +1362,8 @@ flowchart TD
 5. p.51 用 Selected Solution 描述汇报，但前后要求选 HMW 问题。这里按上下文区分问题和方案，并保留措辞差异。
 6. p.19 和 p.18 的七项建议并非完全一致；Get visual 是前者的可选项。
 7. 旧稿 JTBD、故事和 HMW 的多段时间错位已按全文修正；不把旧的 28 分 30 秒等估计当作主题起点。
+
+本次补记：p.61一般优先建议“绿色后蓝或黄”，p.63具体补足前三只写蓝；p.51–52末项写Selected Solution，而p.67明确汇报机会和问题。原文与当前学习阶段分列，不静默统一成同一个任务。
 
 ### 9.4 课外补充的范围
 
@@ -1124,10 +1424,10 @@ flowchart TD
 |---|---|
 | 2026-10-10 | 保留历史材料 v1.0；本轮合并转录并通读 644 段，重做时间对齐、课堂引文、逐问解析和局部流程；修 p.21、33、37、38 的视觉遗漏及重复 §9.2。没有人工听校声轨，未变造个人学习状态 |
 
-### 9.7 本轮核对与同步边界
+### 9.7 历史核对与本次审修边界
 
-全部 71 页原 PDF 已在本地渲染后实际查看，重点原图另放大。候选全篇按 2026-10-02 简化流程做一次实质核对，未做独立 Q/R 盲读或真人评分。13 个正文课堂格含 19 条短直引，7 幅 Mermaid 在同源本地浏览器实际查看，中文、分支和返回边可读。Obsidian 阅读视图未直接查看。
+2026-10-10历史核对：全部71页原PDF在本地渲染后实际查看，重点原图另放大。当时按2026-10-02简化流程做实质核对，未做独立Q/R盲读或真人评分；这段是历史事实，不作为2026-10-27独立审查已经完成的证明。历史13个正文课堂格含19条短直引，7幅Mermaid在当时同源本地浏览器实际查看，中文、分支和返回边可读。Obsidian 阅读视图未直接查看。
 
 候选语义、R 疑点、来源限制和门禁的绑定记录在任务 scratch 的 `review.md`、`review.json`。声轨未经人工听校，材料限制继续有效；本轮没有把身份或猜测工具名升级为确认事实。
 
-本篇候选交由管理者决定发布。正式写回、README、课程总览、术语、考点、台账、DDL、Notion 与 Git 是独立状态，未完成同步时不能称全任务完成。用户已通读、自测和提交状态不因本稿改变。
+本篇本轮审修候选仅在scratch准备，正式写回由指定主写者完成。正式写回、README、课程总览、术语、考点、台账、DDL、Notion 与 Git 是独立状态，未完成同步时不能称全任务完成。用户已通读、自测和提交状态不因本稿改变。

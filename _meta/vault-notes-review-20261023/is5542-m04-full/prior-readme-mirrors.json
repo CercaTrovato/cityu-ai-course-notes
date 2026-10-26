@@ -1,0 +1,30 @@
+{
+  "reason": "Prior selective Git merges left two source-summary clauses older than already accepted/committed notes; correcting only those clauses now. Historical Git/review receipts retained.",
+  "guards": [
+    {
+      "note": "EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式.md",
+      "local_and_HEAD_sha256": "f039b2dfee8d3d9ad7b96b5078da0e2e8285f55e3125384ff4f4a3d35776136e",
+      "existing_actual_full_review_receipt": "ef5560-m07-full/review.json"
+    },
+    {
+      "note": "IS5113_AI_Ethics_and_Regulations/notes/M06-隐私与监控-从数据采集到行为影响.md",
+      "local_and_HEAD_sha256": "01b01300317a610d9d88e0a3039ea7de500f5904721c9eed28770b1420d2c441",
+      "existing_actual_full_review_receipt": "is5113-m06-full/review.json"
+    }
+  ],
+  "changes": [
+    {
+      "target": "README.md",
+      "field_prefix": "- [EF5560 ·",
+      "old": "M07 为 v0.9、转录待补",
+      "new": "M07 已融合R2/R3为v1.0，27单元本批独审与写回完成，接缝/外部事实限制保留"
+    },
+    {
+      "target": "README.md",
+      "field_prefix": "- [IS5113 ·",
+      "old": "M06 已补111页正式讲义；U1无时间戳、前次课/音频说话人仍未核。",
+      "new": "M06 已补日期未知 S5 前部；U1 无时间戳、说话人与源间接缝限制保留。"
+    }
+  ],
+  "does_not_upgrade_unreviewed_notes": true
+}

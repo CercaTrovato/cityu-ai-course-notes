@@ -29,11 +29,12 @@ tags:
   - enterprise-AI
   - career
 status: v1.0
-updated: 2026-10-18
+updated: 2026-10-27
 readability_rules: v2
 mechanism_spec: v1
-mechanism_review: passed
-mechanism_review_date: 2026-10-18
+teaching_standard: novice-v1
+mechanism_review: passed # 2026-10-27 全篇候选，真实独审以本次回执为准
+mechanism_review_date: 2026-10-18 # 保留历史日期，不代替本次审查
 ---
 
 # M05 · 代理式 AI 时代与前线部署工程师
@@ -42,7 +43,7 @@ mechanism_review_date: 2026-10-18
 >
 > **原始材料**：A=`IS5542 - GuestLecture2-Navigating the Agentic AI Era - CityU.pdf`（12 个物理页；页脚 1/13、2/13、3/13 后跳至 5/13）｜B=`IS5542 - GuestLecture2-FDE Sharing — Eddie Chan (Google Slides).pdf`（22 页）｜**转录**：`merged`（`M05-transcript-partial.txt`，668 段，`00:00`–`01:50:24`）
 >
-> ✅ **材料 v1.0**：讲义全页已进入正文与 §8，source13 已全文对齐。录音首句已在 Eddie 的 FDE 讲授中段，缺正式开场；末尾 Warren 刚邀请一两题便截断，后续 Q&A 未知。本文不把讲义中的 2026 数字、倍率或市场判断写成已独立核验事实。本次全篇教学、来源、R 疑点与同源图文核对已完成；材料原有缺口保留。
+> ✅ **材料 v1.0**：讲义全页已进入正文与 §8，source13 已全文对齐。录音首句已在 Eddie 的 FDE 讲授中段，缺正式开场；末尾 Warren 刚邀请一两题便截断，后续 Q&A 未知。本文不把讲义中的 2026 数字、倍率或市场判断写成已独立核验事实。2026-10-18 曾完成当时的全篇核对；该历史记录不替代本次独立教学审查，材料原有缺口保留。
 
 > **来源图例**：📄 表示两份讲义；🎙️ 嘉宾观点表示 Eddie / Warren 的经验与判断；🎙️ 课堂互动表示学生提问与现场回答；📚 课程既定结论只用于既有 CILO、Canvas 或教授已确认的课程要求；💡 表示笔记为教学补的机制、例子或边界。嘉宾观点不会自动升级为 📚 课程结论。
 
@@ -85,7 +86,7 @@ mechanism_review_date: 2026-10-18
 | 工作待完成 | 从用户想完成的任务和结果找机会，不从功能倒推 | [[IS5542_GenAI_in_Business/notes/M04-设计思维-业务机会识别与AI创意工作坊#2.3 用户到底想完成什么 讲义 p.31至38\|M04 §2.3]]；本讲用于诊断痛点 |
 | 价值×复杂度 | 同时看组织价值和实施复杂度，避免只追最炫方案 | [[IS5542_GenAI_in_Business/notes/M04-设计思维-业务机会识别与AI创意工作坊#2.8 值得做与做得成 讲义 p.60至66\|M04 §2.8]]；本讲接到部署 |
 
-读第一行：M03 已解释 harness 的组件；M05 不重讲组件定义，而是问这些组件怎样改变商业交付方式。
+读第一行：harness 负责把模型的候选动作接到工具、权限与验证；M05 会就地恢复当前机制所需解释，再问它怎样改变商业交付方式，不用“前课讲过”跳过本讲关键操作。
 
 ### 1.2 本讲全新引入的概念
 
@@ -132,6 +133,10 @@ B2 的六章议程原文如下，完整保留标题和副标题：
 
 **是什么**
 
+本节先把三个核心词落到对象上。模型权重（Model weights）是模型训练后用于计算输出的一组数值；开放权重（Open weights）表示可取得这些数值并在许可范围内自行部署或修改，不等于训练数据、全部源码或无限制商用都开放。静态基准（Static benchmark）使用相对固定的题目与评分规则；模型不断进步而同一套题接近满分时，这套题的区分力会下降。
+
+商品化（Commoditization）是指某种能力越来越容易从多个供应商取得，单靠“拥有它”不容易维持差异；不表示所有模型能力、价格或可靠性都相同。Source A 正是在主张这种趋势，尚不是本笔记独立证实的市场结论。
+
 Source A 把 2026 年的代理式 AI 时代分成三条主线：前沿能力与开放权重、创业与应用打法、职业与个人成长（A1–A2）。A3 再用“三家实验室竞争”“开放权重份额上升”和“静态基准快速饱和”支持“原始模型能力正在商品化”的核心论点。
 
 **为什么需要它**
@@ -140,9 +145,13 @@ Source A 把 2026 年的代理式 AI 时代分成三条主线：前沿能力与�
 
 **课件原例**
 
-材料声称 Claude Opus 5.5、GPT-6 Astra 与 Gemini 4 Argon 构成“三家前沿竞争”。A3 四根柱分别是：三家前沿模型族 42%、中国开放权重模型族 31%、美国开放权重模型族 23%，以及中国开放权重模型在 2024 年的基线 9%。这些柱来自 2026 年 arXiv AI research paper mentions 的讲义统计；年份、模型族和论文提及口径必须一起读。
+材料声称 Claude Opus 5.5、GPT-6 Astra 与 Gemini 4 Argon 构成“三家前沿竞争”。A3 四根柱分别是：三家前沿模型族 42%、中国开放权重模型族 31%、美国开放权重模型族 23%，以及中国开放权重模型在 2024 年的基线 9%。这里前三根柱是 2026 年分组，第四根是跨年的对照，不是同年四组；不能把四根相加当成 100%。这些柱来自 2026 年 arXiv AI research paper mentions 的讲义统计；年份、模型族和论文提及口径必须一起读。
 
-同页还称最难数学套件在 14 个月内由 22% 上升到 100%，ARC-AGI-3 发布 5 个月内被解决。A3 另写 OpenAI 与 Anthropic 合计 US\$105B revenue run rate。收入运行率（revenue run rate）是把某一段收入节奏折算成年度规模，不等于已经实现的全年收入，也不等于利润。该数属于 A3 的 frontier-lab 叙述，不归到 A6 的 SaaS 页面。
+同页还称最难数学套件在 14 个月内由 22% 上升到 100%，ARC-AGI-3 发布 5 个月内被解决。A3 另写 OpenAI 与 Anthropic 合计 US\$105B revenue run rate。收入运行率（Revenue run rate）把某一段收入节奏折算成年度规模。
+
+它与已经实现的全年收入、扣成本后的利润分别对应不同问题。同一个 US\$105B 也重复出现在 A6 的 agentic outcome 栏；两个页面都没有提供可独立复算的收入明细。
+
+金额单位中 B 表示十亿、T 表示万亿，US\$ 表示美元；因此 105B 是 1,050 亿美元的年度化节奏，不是本讲核实的全年收入。
 
 这些数据在本讲只能支持“静态榜单可能迅速失去区分力”这一材料论点。讲义没有在页内给出完整样本、计算方法和可复算数据，所以不能把百分比延伸成整个市场的确定结论。
 
@@ -151,7 +160,7 @@ Source A 把 2026 年的代理式 AI 时代分成三条主线：前沿能力与�
 - Warren 用三支柱说明议程：前沿实验室、应用与创业、个人职业影响（`49:07`–`50:47`）。
 - 他把美国路线概括为专有模型，把中国路线概括为开放模型，并用 Windows / Linux 作类比（`52:49`–`55:19`）。
 - 他主动限定自己的解释：*"there's no definite answer"*（`59:09`）。所以本节将中美路径写成嘉宾分析，不写成课程的唯一结论。
-- **这段改变了什么**：确认 A2–A3 是 Warren 的报告框架，但 A3 份额、revenue run rate 和地缘解释仍未获得可复算来源。Warren 后续课堂提到 ARR，却没有给稳定定义或核验口径，本稿不把 ARR 与 revenue run rate 混成同一指标。
+- **这段改变了什么**：确认 A2–A3 是 Warren 的报告框架，但 A3 份额、revenue run rate 和地缘解释仍未获得可复算来源。Warren 在 `55:56` 明确展开 ARR 为 *"Annual recurring revenue"*（中文：年度经常性收入）；其具体公司数字的合同范围、计算日期和核验依据仍未给出。本稿不把它与 revenue run rate 混成同一指标。
 
 **💡 换个说法（笔记补充）**
 
@@ -177,7 +186,7 @@ Source A 把 2026 年的代理式 AI 时代分成三条主线：前沿能力与�
 
 **是什么**
 
-Harness 是模型周围的执行层。它决定模型看到什么上下文、可以调用什么工具、在哪个沙箱里执行、怎样保存状态、失败后怎样恢复，以及结果怎样验证。Source A 用“模型是芯片，harness 是操作系统”概括这种分工（A4、A7）。
+Harness 是模型周围的执行层。上下文（Context）是本次交给模型参考的指令、资料和当前状态；沙箱（Sandbox）是限制代码可访问资源的隔离运行环境。模型提出动作，harness 决定这些动作是否获准、到哪里执行及怎样检查结果。它决定模型看到什么上下文、可以调用什么工具、在哪个沙箱里执行、怎样保存状态、失败后怎样恢复，以及结果怎样验证。Source A 用“模型是芯片，harness 是操作系统”概括这种分工（A4、A7）。
 
 递归自我改进（Recursive Self-Improvement, RSI）在 A4 指系统让 AI 提出、执行并评估改动，再把通过的改动保留下来。它不是“模型自己无限变聪明”的口号；必须有受保护的评估器、资源上限和人工监督。
 
@@ -187,9 +196,19 @@ Harness 是模型周围的执行层。它决定模型看到什么上下文、可
 
 **课件原例**
 
+A4 还把 Karpathy 的 autoresearch 作为自动研发原例，称其一晚自主执行 100 次以上训练改动。该数没有实验日志供本次重做，也不是本任务跑过的训练。A4 左侧 6x 强调固定模型权重下改 harness，右侧自动研发却涉及训练改动；这是并列的两类主张，不能混成同一个控制变量实验。
+
 A4 列出三组 2026 报告性主张：harness 升级带来 `6x` 提升、Claude 在监督下执行 Anthropic 内部模型研发的 26%、可验证奖励论文同比增长 10.4 倍。A5 再把能力边界拉回现实资源：人形机器人、仿真到现实训练、数据中心用电、芯片与电网接入。
 
-A5 的三个大数分别指不同对象。67% 是讲义所称中国人形机器人风险投资（VC）份额；统计分母、地区归属与观察窗口仍未完整给出。4 小时是仿真到现实强化学习（Reinforcement Learning, RL，用奖励反馈改进行为）的训练叙述，讲义例子是机器人在仿真中学会爬楼梯。US\$733B 是讲义所称 2026 年 hyperscaler 资本开支（capex）。这三个数都没有由本笔记独立核验，不能互相当分母或拼成同一统计。
+A5 的三个大数分别指不同对象。67% 是讲义所称中国人形机器人风险投资（VC）份额；统计分母、地区归属与观察窗口仍未完整给出。
+
+4 小时是仿真到现实强化学习（Reinforcement Learning, RL，用奖励反馈改进行为）的训练叙述，讲义例子是机器人在仿真中学会爬楼梯。
+
+US\$733B 是讲义所称 2026 年超大规模云服务商（Hyperscaler）资本开支（capex）。TPU 是 Google 的张量处理器（Tensor Processing Unit），属于面向模型计算的专用芯片；这里关注芯片、电力和电网接入是否可得，不要求读者设计芯片。这三个数都没有由本笔记独立核验，不能互相当分母或拼成同一统计。
+
+风险投资（Venture Capital，VC）是投资机构向企业投入权益资本的融资方式；资本开支（Capital expenditure，capex）是建设数据中心、设备等长期资产的投入，不是模型收入或利润。
+
+A5 还举 Gemini Robotics Model 2 的跨任务表现、Unitree 生态、Waymo 的 220M rider-only miles 与 500k weekly rides。M 表示百万、k 表示千，所以后两项分别是 2.2 亿英里与每周 50 万次乘车的材料叙述；里程与次数不能直接相加。页面另将美国 US\$733B 资本开支与欧洲 €1B 承诺并列，并提 Google TPU Ironwood 等定制芯片与电网接入。这些只是讲义例子，币种、地区、承诺范围和时期未对齐，不能由两数直接推出投入比例或部署能力。
 
 **机制：一个受控自我改进循环怎样运行**
 
@@ -250,7 +269,7 @@ Harness 把“模型会做”变成“系统可控地做”。下一节继续问
 
 **是什么**
 
-传统按席位软件（Per-seat SaaS）向每个用户账号收费，客户仍要自己点击表单、搬数据和完成工作。代理式结果模式（Agentic Outcome Model）把输入的业务请求变成可核验交付物，例如解决一张工单、完成一次审计检查或生成一笔待审批交易。
+传统按席位软件（Per-seat Software as a Service，SaaS，即按账号订阅的软件服务）向每个用户账号收费，客户仍要自己点击表单、搬数据和完成工作。代理式结果模式（Agentic Outcome Model）把输入的业务请求变成可核验交付物，例如解决一张工单、完成一次审计检查或生成一笔待审批交易。
 
 成果计价（Outcome-based Pricing）按完成并被接受的成果收费。它要求先定义什么算“完成”，再记录失败、人工复核和返工；没有验收口径，就没有可结算的成果。
 
@@ -267,8 +286,26 @@ A6 把两种模式并列：旧模式按每席位每月 50 美元收费；新模�
 1. **输入**：客户提交“重复扣款”工单，系统读取账号、交易记录和退款政策。
 2. **执行**：agent 核对两笔交易是否同商户、同金额、同一结算周期。
 3. **分支**：证据齐全且金额低于审批上限，生成退款草案；证据冲突就升级给人工。
-4. **验证**：检查退款草案引用的交易号、金额、政策版本和审批人。
-5. **输出**：只有客户收到正确处理、审计轨迹完整且没有返工时，才记为一个 accepted outcome。
+4. **验证**：检查退款草案引用的交易号、金额、政策版本和应由谁审批；通过验证只说明草案符合当前检查，不表示已经退款。
+5. **批准与执行**：有权限的人确认后，由获授权支付系统执行并核对回执。支付失败或未获批准时，状态仍不能记为完成。
+6. **输出**：只有客户收到正确处理、审计轨迹完整并满足约定验收条件时，才记为一个已接受成果（Accepted outcome）。本例把未解决返工单排除；现实合同也须先定义何时计费与退回规则。
+
+下面箭头是请求的控制路径；草案、付款与已验收结果是不同状态。
+
+```mermaid
+flowchart TD
+ A[重复扣款工单] --> B{证据与政策条件齐全吗}
+ B -- 否 --> C[补资料或转人工，尚未完成]
+ B -- 是 --> D[生成退款草案并验证]
+ D --> E{草案通过且有权限人批准吗}
+ E -- 否 --> C
+ E -- 是 --> F[授权支付系统执行并核回执]
+ F --> G{付款成功且满足验收吗}
+ G -- 否 --> C
+ G -- 是 --> H[登记已接受成果及审计轨迹]
+```
+
+用本例走图：草案正确但审批人还没确认，停在待审批；审批通过后支付接口报错，则转人工处理，不能按成功工单计费。文字替代：先核证据，再核草案和批准，执行后还要验收，最后才计成果。
 
 这个过程的状态包括“待处理、需补资料、待人工审批、已完成、被退回”。把“模型已回复”当作“工单已解决”会夸大成果。
 
@@ -303,19 +340,21 @@ A6 把两种模式并列：旧模式按每席位每月 50 美元收费；新模�
 
 **是什么**
 
-本节沿用 M03 的定义：harness 是模型外负责路由、工具、状态、权限和验证的运行时层。A7 把产品栈分成三层。最上层是 harness 操作系统，包括 agent router、memory、skills、code sandbox、policy guard、eval 与 permissions；中层是不同模型与领域检索；底层是计算、轨迹数据和多模态资料。
+本节沿用 M03 的定义：harness 是模型外负责路由、工具、状态、权限和验证的运行时层。A7 把产品栈分成三层。最上层 harness 决定怎样执行：路由器（Agent router）按任务、权限和成本选择模型或工具；记忆（Memory）保存任务状态或经允许复用的历史；技能（Skills）保存可重复操作的方法；代码沙箱隔离执行；策略护栏（Policy guard）与权限决定允许哪些动作；评测（Evaluation，eval）按约定案例检查结果。
+
+中层是可调用的不同模型，以及领域检索增强生成（Domain RAG）：先取回当前企业任务需要的证据，再交模型据证据回答。底层提供计算资源、运行轨迹和图像／视频／传感器等多模态资料。上层做选择与控制，中层提出候选，底层提供可计算、可核的材料，三者不是三个相互替代的模型。
 
 A8 把产品设计从固定场景转向生成能力。它建议先定义 agent 能完成的开放式循环，再决定界面或硬件形态。A9 再把这种产品方式放进大湾区（Greater Bay Area, GBA）的工程、供应链与全球市场组合。
 
 **为什么需要它**
 
-只封装一个模型 API，竞争者更换同一模型就能复制。工作流轨迹、用户记忆、领域权限和失败处理来自持续运行，复制成本更高。它们也能让团队在模型升级时保留业务逻辑。
+应用程序编程接口（Application Programming Interface，API）是系统约定的调用入口：输入请求，按约定返回数据或结果。只封装一个模型 API 而没有额外业务能力，竞争者接入相同模型就容易复制主要功能。工作流轨迹、用户记忆、领域权限和失败处理来自持续运行，复制成本更高。它们也能让团队在模型升级时保留业务逻辑。
 
 **课件原例**
 
 A7 的“harness moat”要求跨 Claude、GPT-6、Gemini 与 Qwen 灵活路由，并用隔离沙箱防止 agent 逃逸。A8 引用 Loopit 与 Ambi 的讲义观点：面向生成能力做开放式引擎，先定义 agent loop，再设计眼镜、传感器或其他形态。
 
-A9 的“GBA formula”把深圳硬件原型速度、香港资本与合规入口、3–5 人 AI 原生团队组合起来。页内的“up to US\$350k Google Cloud credits”是讲义陈述；是否适用于某团队需另核项目、资格与日期。
+A9 的“GBA formula”把深圳硬件原型速度、香港资本与合规入口、3–5 人 AI 原生团队组合起来。讲义把创业成本概括成 Engineers + APIs + Power，分别是人员、模型/服务调用与用电等资源，不是已给出可复算预算。高 ARPU（Average Revenue Per User，每位用户平均收入）市场只是讲义的目标市场建议；SEA 是东南亚、MENA 是中东及北非。它们不能单凭地名保证某个产品收入高。页内的“up to US\$350k Google Cloud credits”是讲义陈述；是否适用于某团队需另核项目、资格与日期。
 
 **机制：模型可替换时，哪些状态要留在产品里**
 
@@ -324,6 +363,8 @@ A9 的“GBA formula”把深圳硬件原型速度、香港资本与合规入口
 3. **策略状态**：权限、成本上限、允许与禁止动作。
 4. **评测状态**：哪些输入失败、修复后是否回归。
 5. **用户反馈**：哪些成果被接受、退回或改写。
+
+💡 笔记补充路由例：客户请求总结公开产品说明，可先送低成本模型；涉及受限客户资料时，先查许可范围，只能送获批处理该类资料的模型。若模型报错，路由器可在已批准范围换另一个模型重试，同时保留原任务号、资料版本与待审批状态；不能因换模型清掉审批或越权发送。没有合规备选时就停下转人工，而非保证切换必成功。
 
 模型替换时，这五类状态仍可用。反过来，如果所有知识只藏在提示词里，换模型或换员工都会丢失组织记忆。
 
@@ -358,7 +399,9 @@ A9 的“GBA formula”把深圳硬件原型速度、香港资本与合规入口
 
 **是什么**
 
-任务束（Task Bundle）把一个岗位看成多个可分开的活动，例如收集数据、解释需求、写代码、验证结果和处理例外。A10 采用 Anthropic 的四类任务：不变、增强、自动化与新增任务。
+任务束（Task Bundle）把一个岗位看成多个可分开的活动，例如收集数据、解释需求、写代码、验证结果和处理例外。A10 采用 Anthropic 的四类任务：不变、增强、自动化与新增任务。分类针对某项任务在给定流程里的完成方式，不给整个岗位永久贴标签。
+
+💡 笔记补充：以客服岗位为同一情境，安抚客户、协商责任仍由人完成，暂列不变；坐席自己判断、AI 提供草案或证据，列增强；AI 按已批准规则完成订单状态查询这项子任务，列自动化；部署 agent 后新增的日志抽查与失效测试，列新增。人工批准仍是单独的人类任务，不能因为前面有 AI 就把整条流程称全自动。若后来让 AI 在规则内独立完成查询并回报结果，变化的是查询子任务的分类，不代表高风险批准也自动化。
 
 群体编排（Swarm Orchestration）指一个人把不同子任务分给多个 AI agent，再整合和验证结果。A11 把工程师角色写成“AI 群体的产品经理和技术负责人”，重点从手写语法转向规格、接口与验证。
 
@@ -372,7 +415,9 @@ A10 给出四个 2030 场景，并报告美国国内生产总值（Gross Domesti
 
 这些百分比不能从同表 US\$30.0T 直接算出。例如 $(34.1-30.0)/30.0\approx13.7\%$，不是 1.6%。三行增长率反推的比较基准也不一致，可能混用了其他时点或口径。原报告尚未核，因此本稿保留全部原值并登记疑点。劳动份额是国民收入中归劳动的比例，不是失业率。
 
-A11 报告超过 50% Claude 会话用于编码之外的业务操作，并称实验室中接近一半的 agent “done” 声称隐藏缺陷。A12 因此提出 30–60–90 天路线：审计自己的任务束、建立评测、连接真实感知，再上线解决真实工作流的 agent。
+A11 报告超过 50% Claude 会话用于编码之外的业务操作，并称实验室中接近一半的 agent “done” 声称隐藏缺陷。A12 因此提出 30–60–90 天路线：第 1–30 天审计任务束并学习 harness；第 31–60 天建立评测、检查边界/失败并连接机器人、传感器或金融业务资料；第 61–90 天发布能解决真实流程的 agent，并保持重新学习。这里的“连接真实感知”指系统把输入与真实对象/环境对上，不是只生成看似正确的文本。
+
+A10 另称重度 AI 用户收入增长快 3 倍，A11 称高收益电商 agent 在欺诈压力测试中失败，均未给可复算样本；它们适合提示“效率与抗失效要分别评估”，不能当实际增长保证。A12 的“静态 GitHub repo 已过时”也是嘉宾路线主张，不能推成课程作业或静态源码没有价值；可复现代码与安全的实际演示可服务不同目的。
 
 **机制：一项客户报告怎样交给 AI 群体**
 
@@ -394,11 +439,11 @@ flowchart TD
 
 一家零售商要做“上周退货原因”报告。
 
-1. 人先规定输出：按品类列退货率、前三个原因、数据截止日和可追溯查询。
-2. 研究 agent 读取订单与退货表，发现 120 笔退货，但 8 笔缺原因码。
-3. 分析 agent 计算时把 8 笔列为“原因未知”，不把它们静默删除。
-4. 写作 agent 生成草稿；验证 agent 重新查询总退货数，发现草稿把 120 写成 112，因此判失败。
-5. 人决定修正分母，并要求报告同时显示“已知原因 112 笔、未知原因 8 笔”。最后由负责人批准。
+1. 人先规定输出：按品类列退货率、原因分布、数据截止日和可追溯查询。设本例只有一个品类，窗口内 1,000 笔有效订单，其中 120 笔退货；统一按订单计一次，避免把件数混入订单数。
+2. 研究 agent 读取订单与退货表，确认 120 笔退货中 8 笔缺原因码；因此有已知原因 112 笔。
+3. 分析 agent 先算退货率 $120/1{,}000=12\%$。再单独算退货原因覆盖：已知原因 $112/120\approx93.3\%$，未知原因 $8/120\approx6.7\%$。后两项的分母是退货订单，不是全部订单。
+4. 写作 agent 把总退货错写成 112，导致退货率变成 11.2%。验证 agent 用同一查询条件重查 120，拒绝草稿。
+5. 人要求恢复正确总数和相应分母，并同时显示已知 112、未知 8。若只在已知 112 笔中比较某种原因，必须写“已知原因子样本内占比”，不能把它叫总体退货率。最后由负责人批准。
 
 本例的新增状态是“未知原因”，它阻止 agent 用看似完整的百分比掩盖数据缺口。
 
@@ -446,7 +491,7 @@ flowchart TD
 
 **课件原例**
 
-B3–B5 是 Eddie Chan 的个人路径：中文与古典文献训练、竹简文本分析、2016 年 AlphaGo 的 Move 37 触发转向，自学 Python、机器学习与数据科学，再进入全栈和前线部署工程。B4 还说明他继续学习工程、电商、商业管理与咨询，形成“代码 + 战略”的双语能力。
+B3–B5 是 Eddie Chan 的个人路径（其中 SWE 为软件工程师，Software Engineer）：中文与古典文献训练、竹简文本分析、2016 年围棋程序 AlphaGo 对弈李世石时的第 37 手（Move 37）触发转向，自学 Python、机器学习与数据科学，再进入全栈和前线部署工程。B4 还说明他继续学习工程、电商、商业管理与咨询，形成“代码 + 战略”的双语能力。
 
 这些页面是讲者自述，不代表非计算机专业一定能复刻同一路线。B5 的 `1-in-10,000 Creative Move` 同样是讲义叙述，本稿不扩展为已核概率结论。
 
@@ -486,7 +531,7 @@ B3–B5 是 Eddie Chan 的个人路径：中文与古典文献训练、竹简文
 
 **与其他概念的关系**
 
-FDE 把 M04 的 empathy、JTBD 与 HMW 接到 M03 的架构、工具、权限和评测。它不是一套新模型，而是一种跨业务与工程边界的交付角色。
+FDE 把 M04 的同理理解（Empathy，先理解使用者处境）、待完成工作（Jobs to Be Done，JTBD，用户真正想完成的任务）与“我们可以如何”（How Might We，HMW，把观察改写为开放问题），接到 M03 的架构、工具、权限和评测。它不是一套新模型，而是一种跨业务与工程边界的交付角色。
 
 **所以呢**
 
@@ -519,12 +564,16 @@ B7 用三组讲义主张解释 2026 FDE 热度：AI 实验室扩张 FDE、80% �
 
 > **English reference answer（笔记自拟；非官方原句）**: The deck argues that AI labs need client-facing engineers to close the production gap, because demonstrations are easier than deployment and measurable business outcomes are scarcer than coding syntax.
 
-B10 把业务流利度与深层技术相乘：损益与投资回报、管理层对齐、工作流采用，连接全栈、云、agent、检索增强生成（RAG，先检索企业证据再生成答案）和数据科学。B11 再把旧六人团队与“一名 FDE + AI coding agents”比较，写 `3–6 months` 到 `3–6 days`、`10x` 等叙述；这些是讲者的比较框架，不是普遍生产率保证。
+B10 用“业务 × 技术”强调互补：只会写代码却选错问题，系统能运行也未必产生价值；只懂痛点却无法安全实现，也交付不了结果。它是讲义框架，不是有单位、能据此算出 10 倍产出的数值公式。损益（Profit and loss，P&L）看收入与费用相抵后的结果；管理层对齐是让决策者认可目标和限制；全栈（Full-stack）指能够衔接前端界面、后端逻辑与数据接口。
+
+讲义把这些业务能力与云、agent、RAG（先检索企业证据再生成答案）及数据科学放在一起；它没有证明每个 FDE 都能使客户利润提高 10 倍。
+
+B11 再把标题为“旧六人团队”的安排与“一名 FDE + AI coding agents”比较，写 `3–6 months` 到 `3–6 days`、`10x` 等叙述；这些是讲者的比较框架，不是普遍生产率保证。B11 列出的角色是 1 名产品经理（Product Manager，PM）、1 名业务分析师（Business Analyst，BA）、3 名后端／前端软件工程师，合计 5 人，与标题“6-Person”不一致；讲义没有列第六人，本稿不补造其职责。
 
 **机制图：四步如何闭环**
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[1 诊断<br/>观察用户与流程] --> B[2 原型<br/>在真实数据上快速构建]
     B --> C[3 部署<br/>安全 RBAC 评测与护栏]
     C --> D[4 产品化<br/>抽取可复用模块]
@@ -597,6 +646,8 @@ FDE 像既会问诊又会做手术、还会把术式写进医院流程的人。�
 
 B13 提出三种习惯：边做边学、借助 AI、用创业者心态承担端到端结果。B16 将它们变成四步 48 小时循环：摄入与制图（Ingest & Map）、追问（Interrogate）、快速构建（Build Fast）、两分钟陈述（2-Min Pitch）。
 
+B16 的 Build Fast 还明确写 “Scaffold with AI agents” 和 “Code core logic yourself”：可让 agent 搭初始结构，但学习者须亲手编写核心逻辑并能解释，不能把只复制一个可运行结果称为掌握。B13 的 “Ship 80% v1 today” 是讲者关于先做第一版的建议，不表示可以少做 20% 的安全、权限或真实性核查。
+
 这个循环的输出不是“掌握整个领域”，而是一个可检查的架构图、一个小型原型、已识别的权衡，以及能用业务语言说明价值的短陈述。
 
 **为什么需要它**
@@ -632,7 +683,7 @@ flowchart TD
 
 1. **摄入与制图**：读产品文档和现有客服流程，画出问题 → 检索 → 证据 → 回答。未知清单包括文档更新频率、权限和引用要求。
 2. **追问**：让 AI 比较关键词检索与向量检索，但要求每个结论给失败情境。自己核对关键文档，不把回答当来源。
-3. **构建**：用 20 条公开 FAQ 做最小检索原型，记录 top-k 结果。发现“取消订单”与“取消订阅”经常混淆。
+3. **构建**：用 20 条公开 FAQ 做最小检索原型，记录 top-k 结果，也就是每个问题返回最接近的 k 条候选文档；FAQ 是常见问题与答案（Frequently Asked Questions）。发现“取消订单”与“取消订阅”经常混淆。
 4. **两分钟陈述**：说明原型能缩短查找，但必须加产品类别过滤；20 条 FAQ 不能证明生产准确率。
 
 完成边界是能展示端到端路径和已知缺口，不是 48 小时后自称专家。
@@ -763,11 +814,19 @@ B17 的左栏把 Engineering Manager 写成日历、会议和组织政治，右�
 
 **B22 课堂 Q&A 原题与参考答案（累计 p.34）**
 
-以下英文按自动语音识别（ASR）文本保留，语法不静默美化；听不清处只保留可辨部分。答案是对 Eddie 当场回答的中文整理，英文句为笔记自拟参考答案。
+B22 页面原文为 “Q & A — Ask Me Anything!”、“Thank You! Let’s Talk About Your Career & Questions”，主题列为 Career Pivot、Self-Learning SWE、FDE Interviews、Gemini Study Workflow。它们是开放邀请，不是四道已有固定答案的题。
 
-**Q1 · 项目创意（`29:15`–`29:49`）**
+以下英文按自动语音识别（ASR）文本逐段保留，语法不静默美化；听不清处只保留可辨部分。答案是对 Eddie 当场回答的中文整理，英文句为笔记自拟参考答案。
 
-   > *"I'm trying to do this but I find it's very hard to find a suitable or interesting project to work on… so I wonder how to find an interesting project."*
+#### Q1 · 项目创意（29:15–29:49）
+
+   > *"you, I think your experience very inspired me and I noticed you have published projects on Github, I'm trying to do this but I find it's very hard to find a suitable or interesting project to work on and I'm really not a creative person so I wonder how to"*（`29:15`）
+
+   > *"find an interesting project."*（`29:15`）
+
+   > *"uh after i finished my project i find it's very a poor thing i can't recommend it to my friends or"*（`29:42`）
+
+   > *"post it in the github so i want to you share a detailed method"*（`29:49`）
 
    中文题意：不知道做什么项目，也担心做完后无法推荐给朋友或公开到 GitHub，怎样开始？
 
@@ -775,9 +834,9 @@ B17 的左栏把 Engineering Manager 写成日历、会议和组织政治，右�
 
    > **English reference answer（笔记自拟）**: Start from a recurring problem in your own life, build a small solution, test it with someone who shares the problem, and publish what you learn.
 
-**Q2 · PM、BA 与 FDE 分工（`31:23`–`31:52`）**
+#### Q2 · PM、BA 与 FDE 分工（31:23–31:52）
 
-   > *"How exactly you interact with them, or what is the responsibility among three functions of you?"*
+   > *"You mentioned that in your routine work, you work with PM and BA also. I'd like to know how exactly you interact with them or what is the responsibility among three functions of you?"*（`31:23`）
 
    中文题意：三种角色在一个项目里怎样互动，职责边界是什么？
 
@@ -785,29 +844,35 @@ B17 的左栏把 Engineering Manager 写成日历、会议和组织政治，右�
 
    > **English reference answer（笔记自拟）**: The boundary is organization-specific. PMs and BAs may own product coordination and business analysis, while the FDE contributes technical feasibility, prototypes, and direct decision-maker communication.
 
-**Q3 · 古文字与 AI（`33:04`–`34:06`）**
+#### Q3 · 古文字与 AI（33:04–34:06）
 
-   > *"Your original background is Chinese language. I saw you have a picture that there was bamboo with the ancient language…"*
+   > *"Your original background is Chinese language. I saw you have a picture that there was bamboo with the ancient language in Shenzhen"*（`33:04`）
 
-   中文题意：古文字背景是否与后来的 AI 工作发生联系？ASR 没有保留完整问句。
+   > *"I'm interested in"*（`33:12`）
+
+   中文题意：古文字背景是否与后来的 AI 工作发生联系？ASR 只保留到 “I’m interested in” 附近，未保留完整问句；上文仅给中文可辨题意，不补造缺失英文。
 
    课堂回答：Eddie 看见古文字图像分析与图像识别的共同点，也曾与导师讨论用 AI 解决古汉语问题；目前没有成果（`33:24`–`34:06`）。
 
    > **English reference answer（笔记自拟）**: He saw a possible connection between ancient-text image analysis and computer vision, but he explicitly said that the exploration had not produced an outcome yet.
 
-**Q4 · AI 写代码后，人还需写多少（`34:20`–`34:35`）**
+#### Q4 · AI 写代码后，人还需写多少（34:20–34:35）
 
-   > *"In which extent will we work with the programming code typed by AI? We just need to review and modify them, or should we do the programming code by ourselves?"*
+   > *"okay hi Eddie I'm curious about the FDE in which extent will we work with the programming code"*（`34:20`）
 
-   中文题意：未来主要审查 AI 代码，还是仍需亲自编程？
+   > *"typed by AI we just need to review and modify them or should we do the programming code or by"*（`34:28`）
+
+   > *"ourselves"*（`34:35`）
+
+   中文题意：未来主要审查 AI 代码，还是仍需亲自编程？`34:35` 同段在 “ourselves” 后夹入回答与主持语，本处仅收此前可辨问句，未逐声确认说话人切换。
 
    课堂回答：AI 会完成越来越多代码，但人仍要理解底层、判断方案是否正确，并具备写代码的能力（`34:46`–`35:57`）。
 
    > **English reference answer（笔记自拟）**: AI may generate most boilerplate, but an engineer still needs enough programming knowledge to inspect architecture, diagnose failures, and verify that the generated code is correct.
 
-**Q5 · 零基础工具（`35:57`–`36:12`）**
+#### Q5 · 零基础工具（35:57–36:12）
 
-   > *"Which tools do you think are helpful for us to solve real-world problems for those students who didn't have any programming background?"*
+   > *"I want to know, in the current AI background, which tools do you think are helpful for us to solve real-world problems for those students who didn't have any programming background?"*（`35:57`）
 
    中文题意：没有编程基础的学生，可用什么工具进入真实问题？
 
@@ -815,9 +880,13 @@ B17 的左栏把 Engineering Manager 写成日历、会议和组织政治，右�
 
    > **English reference answer（笔记自拟）**: Use an AI tutor to create a goal-specific learning path and quizzes, then apply each lesson in a small project. The tool accelerates practice but does not replace practice.
 
-**Q6 · GitHub 初学者怎样成长（`37:44`–`38:13`）**
+#### Q6 · GitHub 初学者怎样成长（37:44–38:13）
 
-   > *"As a beginner, what do you think is the most important part… and what can help develop some capacity for the beginner, like coding skills or create an interesting project?"*
+   > *"Hi, I'm very curious about the GitHub experience as you mentioned, because I'm also doing some projects on the GitHub, so as a beginner, what do you think is the most important part for the beginner, and what can help develop some capacity for the beginner, like coding skills or"*（`37:44`）
+
+   > *"create..."*（`37:44`）
+
+   > *"created an interesting project, and so on."*（`38:13`）
 
    中文题意：初学者做 GitHub 时，什么最重要，怎样通过项目提高能力？
 
@@ -825,9 +894,15 @@ B17 的左栏把 Engineering Manager 写成日历、会议和组织政治，右�
 
    > **English reference answer（笔记自拟）**: Publish your work, ask maintainers specific questions, contribute issues or fixes, and use feedback to refine both the project and your learning goal.
 
-**Q7 · Agent 与只会回答的 bot 有何边界（`39:48`–`40:35`）**
+#### Q7 · Agent 与只会回答的 bot 有何边界（39:48–40:35）
 
-   > *"I want to make an AI agent, but actually I only get a silly robot… What's the border between AI agent and robot? What makes this happen? Is it a large amount of data training?"*
+   > *"I'm doing my own project and I want to make an AI agent, but actually I only get a silly robot."*（`39:48`）
+
+   > *"answer, but it only"*（`40:09`）
+
+   > *"answer what I give it. And I want to know what's the border between AI agent and robot. What makes this happen? Is it a large amount of data?"*（`40:16`）
+
+   > *"training or just to something I don't know I want to know this it should be"*（`40:35`）
 
    中文题意：系统只对输入作答，为什么不算可行动的 agent？差异是否只是数据量？
 
@@ -835,9 +910,13 @@ B17 的左栏把 Engineering Manager 写成日历、会议和组织政治，右�
 
    > **English reference answer（笔记自拟）**: More training data alone does not make a chatbot an agent. An agent needs a goal, state or memory, tool-mediated actions, observations, and a controlled loop that decides what to do next.
 
-**Q8 · 为什么第一份工作选 startup（`41:55`–`42:14`）**
+#### Q8 · 为什么第一份工作选 startup（41:55–42:14）
 
-   > *"What makes you choose a startup for your first job instead of a big company? And looking back, do you think your personal projects or your work experience help you more in getting into Google?"*
+   > *"I'm really curious about your career journey."*（`41:55`）
+
+   > *"What makes you choose a startup for your first job instead of a big company?"*（`41:58`）
+
+   > *"And looking back, do you think your personal projects or your work experience help you more in getting into Google?"*（`42:05`）
 
    中文题意：第一份工作为什么是 startup，个人项目与工作经历哪个更帮助进入 Google？
 
@@ -992,7 +1071,7 @@ flowchart TD
 | FDE 循环怎样走？ | 诊断 → 原型 → 部署 → 产品化 → 再反馈 | §2.7 | 风险高时不能压缩安全门 |
 | 48 小时循环交付什么？ | 架构图、假设、原型、失败记录和两分钟说明 | §2.8 | 不等于两天成为专家 |
 | 怎样判断职业适配？ | 用真实小项目检验偏好，不按热门岗位自评 | §2.9 | B19 是讲者建议 |
-| 纸面权益能当现金吗？ | 不能；要等归属、行权与可变现事件 | §2.10 | 先分币种、频率与资产状态 |
+| 纸面权益能当现金吗？ | 先分股份／期权，按条款核归属、期权行权与变现条件 | §2.10 | 股份本身不统一要求行权 |
 
 读第一行：同一个模型在不同 harness 里，能调用的工具、看到的证据和可执行权限不同，所以业务结果也会不同。
 
@@ -1029,8 +1108,8 @@ flowchart TD
 | 级别 | 含义 | 本讲数量 |
 |---|---|---:|
 | 教授明示 | 只有转录明确说会考、要记或规定答题方式才成立 | 0 条 |
-| 🟡 CILO 反推 | 客座内容进入期末，且对应 CILO-2 / CILO-6 | 4 条 |
-| ⚪ 笔记推断 | 按材料主线与案例重要性推断 | 3 条 |
+| 🟡 CILO 反推 | 客座内容进入期末，且对应课程学习目标（CILO） | 4 条 |
+| ⚪ 笔记推断 | 按材料主线与案例重要性推断 | 4 条 |
 
 嘉宾观点不自动升级为教授考试明示。source13 全文已对齐，仍未发现真实“教授明示会考／规定答题方式”，所以本讲列 0 条 🔴。
 
@@ -1042,7 +1121,7 @@ flowchart TD
 | 🟡 | 用业务成果重写软件价值单位 | CILO-6；A6 | §2.3 |
 | 🟡 | 解释 FDE 四步循环怎样处理企业 AI 失败 | 客座案例进入期末；B7–B12 | §2.7 |
 | 🟡 | 判断任务自动化、增强与人工责任 | CILO-2/6；A10–A12 | §2.5 |
-| 🟡 | 区分现金薪酬、股权、期权与纸面估值 | 嘉宾课堂 `01:11:24`–`01:23:06` | §2.10 |
+| ⚪ | 区分现金薪酬、股权、期权与纸面估值 | 嘉宾课堂案例；笔记按理解价值收录，非教授明示或特定 CILO 映射 | §2.10 |
 | ⚪ | 评价 GBA 组合优势及适用条件 | A9 讲义主张 | §2.4 |
 | ⚪ | 设计陌生领域的 48 小时学习计划 | B13–B16 | §2.8 |
 | ⚪ | 用证据评价自己是否适合 FDE | B17–B20 | §2.9 |
@@ -1220,9 +1299,10 @@ flowchart TD
 
 1. Source A 物理页连续，共 12 页；页脚从 3/13 跳到 5/13，未见标 4/13 的一页。无法区分导出缺页与页脚编排问题，本稿不补造内容。
 2. A10 的 GDP 水平与括号增长率不能用同表 US\$30.0T 统一复算；原报告未核。全部原值保留，见 §2.5。
-3. A3 的 42% / 31% / 23% / 9% 是 arXiv AI research paper mentions 的模型族份额，不是市场份额；A3 的 US\$105B 也不属于 A6。A4–A6、A9–A11 的 6x、26%、10.4x、67%、US\$285B、US\$733B、10x、3–6 days 等仍属讲义主张，未独立核验。
-4. B14 截图清楚显示 GitHub `2,107 contributions in the last year` 和 LeetCode `284/4073 Solved`、`Submissions in 2022`。统计窗口不同，不能据此推断当前账号数字或独立认证能力。
-5. B17–B18 是讲者的个人职业对照，含明显价值判断；不能作为工程经理或核心 SWE 的普遍定义。
+3. A3 的 42% / 31% / 23% / 9% 是 arXiv AI research paper mentions 的模型族份额，不是市场份额；US\$105B 在 A3 与 A6 均出现，是重复的讲义报告性主张，不因重复出现而获得外部核验。A4–A6、A9–A11 的 6x、26%、10.4x、67%、US\$285B、US\$733B、10x、3–6 days 等仍属讲义主张，未独立核验。
+4. B11 的旧六人标题与所列 1＋1＋3＝5 人不一致，未给第六人的来源，不补造角色。
+5. B14 截图清楚显示 GitHub `2,107 contributions in the last year` 和 LeetCode `284/4073 Solved`、`Submissions in 2022`。统计窗口不同，不能据此推断当前账号数字或独立认证能力。
+6. B17–B18 是讲者的个人职业对照，含明显价值判断；不能作为工程经理或核心 SWE 的普遍定义。
 
 ### 9.4 课外补充
 
@@ -1238,7 +1318,7 @@ source13 音频媒体时长约 6628 秒（约 1 小时 50 分 28 秒），SHA-25
 
 本场没有真实“教授明示会考／规定答题方式”，§6.2 因而保留 0 条 🔴。`transcript_check.py audit` 无参数的原始检查会因 A8 要求至少一条 🔴 而 FAIL；本工具已提供 `--no-red` 正式分支，用于“真实无红线考点”的课堂。带该参数时只把 A8 降为 WARN，不改写或伪造嘉宾话语。
 
-**课程行政（主代理实际核 Canvas，2026-10-17）**
+**课程行政（以下为 2026-10-17／18 的既有核查记录，本次未重开当前 Canvas）**
 
 - `Reflection for Guest lecture 2`：Assignment `338082`，页面显示 `Due Oct 31 by 11:59pm`、3 points、file upload；页面没有额外详情。任务页未标时区，但 2026-10-18 已只读核到 Canvas 账号 Settings 的 Time Zone 为 Hong Kong，因此截止为 2026-10-31 23:59 HKT（UTC+8）。
 - 同日两位讲者／两份讲义目前对应同一个 Guest Lecture 2 正式入口，不能擅自拆成两份 reflection。
@@ -1249,7 +1329,7 @@ source13 音频媒体时长约 6628 秒（约 1 小时 50 分 28 秒），SHA-25
 
 1. A10 情景表的原始报告基准与增长率口径。
 2. Warren 讲座后的后续 Q&A 是否存在，以及内容是什么。
-3. 即席数字与专名：讲者使用 ARR，但材料没有给出稳定定义或可核口径，不能与 revenue run rate 混用；Anthropic、Moonshot、公司估值与 PAXINI／[?] 等数字或专名也未经外部或声轨核实。
+3. 即席数字与专名：讲者在 `55:56` 将 ARR 展开为 Annual recurring revenue（年度经常性收入），但具体公司数字的计算日期、合同范围与可核口径仍缺，不能与 revenue run rate 无条件混用；Anthropic、Moonshot、公司估值与 PAXINI／[?] 等数字或专名也未经外部或声轨核实。
 4. A deck 页脚 4/13 跳号的来源原因。
 
 **反方视角**
@@ -1264,10 +1344,12 @@ source13 音频媒体时长约 6628 秒（约 1 小时 50 分 28 秒），SHA-25
 |---|---|
 | 2026-10-18 | **合并 M05 转录**（`M05-transcript-partial.txt`，`00:00`–`01:50:24`，668 段）：新建两份 GuestLecture2 合堂 M05；完成 A 12 页、B 22 页正文覆盖、原题台账、十个 🎙️ 格、四个局部机制图与一张总览图。补入讲义外 startup 现金／股权机制。全篇教学、来源、R 疑点和同源图文核对完成；未直接查看原生 Obsidian |
 
-### 9.7 本轮验收与发布边界
+### 9.7 历史验收与本次审查边界
 
-本执行者实际查看 A/B 全部物理页的 Poppler contact sheet，并对讲义低文本／图表页进行逐页核对；PyMuPDF/fitz 在现有 Python 环境不可用。正文内共有 5 幅 Mermaid，全部是可编辑源码；主代理已实际查看 5 幅同源图、10 个课堂格、8 组 Q&A、现金与权益表及迁移题。原生 Obsidian 阅读视图未直接查看，声轨未逐声人工听校。
+**本节下列文字（含末段 13／22 条引文审计）均为 2026-10-18 的历史记录，其中 5 图只指当时版本；本次新增退款流程后共有 6 图，当前实际显示与独审见本次交接回执。历史事实不追改为新执行。**
 
-本篇已完成本轮全篇实质核对，按 2026-10-02 简化流程验收，未做独立 Q/R 或真人试读。L/R 机械硬项为 0，旧 G/E 原始诊断单列。正式写回、跨文件与 Notion 回读分别见 [[_meta/制作与融合回执-2026-10-18|本次制作与融合回执]]；材料缺失、讲者主张与个人学习状态不因发布而升级。
+当时执行者实际查看 A/B 全部物理页的 Poppler contact sheet，并对讲义低文本／图表页进行逐页核对；PyMuPDF/fitz 在现有 Python 环境不可用。正文内共有 5 幅 Mermaid，全部是可编辑源码；主代理已实际查看 5 幅同源图、10 个课堂格、8 组 Q&A、现金与权益表及迁移题。原生 Obsidian 阅读视图未直接查看，声轨未逐声人工听校。
+
+以下仅为 2026-10-18 历史验收事实：当时按 2026-10-02 简化流程核对，未做独立 Q/R 或真人试读；它不替代本次全篇独立高中知识起点审查。L/R 机械硬项为 0，旧 G/E 原始诊断单列。正式写回、跨文件与 Notion 回读分别见 [[_meta/制作与融合回执-2026-10-18|本次制作与融合回执]]；材料缺失、讲者主张与个人学习状态不因发布而升级。
 
 标准 audit 识别 13 条规范行引文；本轮另直接枚举全文 22 条斜体直引（包含原问在上一行定位的课堂 Q&A），逐条核对对应来源窗口，未发现缺失。ASR 原始 668 段，审计解析为 666 个唯一秒值，未删除重复秒值的原段。
