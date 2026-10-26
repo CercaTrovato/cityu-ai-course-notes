@@ -1,0 +1,17 @@
+{
+  "source_sha256": "039a80d2f2f7ac61dd3e774eea7117866b9de6aefe1238ce2304535815972332",
+  "candidate_sha256": "6e069882927ce4f4c7c9c9dec514cc152d139b6af1442ffb188bb9f4f03b5440",
+  "operations": [
+    {
+      "reason": "p9 source-specific scoring and scale boundaries",
+      "old": "- **异常与比较分析**：交易评分、总账异常和时间序列分析把偏离常态的项目列为调查对象。Deloitte 分录测试、KPMG 交易评分、PwC 异常分析、EY Helix 可在这一组理解；“全量”说的是所分析数据范围，不等于每条警报都是错报或每笔交易均已取到充分证据。",
+      "new": "- **异常与比较分析**：交易评分、总账异常和时间序列分析把偏离常态的项目列为调查对象。Deloitte 分录测试、KPMG 交易评分、PwC 异常分析、EY Helix 可在这一组理解；“全量”说的是所分析数据范围，不等于每条警报都是错报或每笔交易均已取到充分证据。\n\np.9还声称KPMG有自动质量评分（automated quality scoring），但没有给评分对象、标准或标签，分数不能当质量已证。该页另称Audit Chat记录“millions of conversations”、异常分析涉及“billions of journal entries”；这仅保留课件规模声称，不证明准确率或审计质量。"
+    },
+    {
+      "reason": "p11 distinct predictive output;no newalgorithm/example",
+      "old": "- **文档和任务编排**：从已有证据草拟备忘、底稿、看板或分派后续核查；输出是供人复核的草稿/任务状态。多代理（multi-agent）是在同一工作流中让不同代理分担搜集、分析、起草等任务，前一步错误可能传到后一步，代理数量不等于独立证据数量。",
+      "new": "- **文档和任务编排**：从已有证据草拟备忘、底稿、看板或分派后续核查；输出是供人复核的草稿/任务状态。多代理（multi-agent）是在同一工作流中让不同代理分担搜集、分析、起草等任务，前一步错误可能传到后一步，代理数量不等于独立证据数量。\n\np.11还单列预测分析（predictive analytics）：它对尚未观察到的结果作预测性估计，与查已有记录异常或核加总是不同输出。原页未给预测目标、模型、输入和评价结果，不能把这个功能名称当作已证实的预测能力。"
+    }
+  ],
+  "bounds": "only two finalsource paragraphs;fiveprompt/diagram/assumedcalcsunchanged"
+}

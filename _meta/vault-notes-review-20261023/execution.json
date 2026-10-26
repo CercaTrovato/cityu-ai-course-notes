@@ -719,11 +719,11 @@
       "bytes": 56359,
       "lines": 590,
       "scratch": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\ac6761-m09",
-      "teaching_state": "缺陷待修",
-      "writeback": "未开始",
-      "local_sync": "未开始",
-      "notion": "未开始",
-      "git": "未开始",
+      "teaching_state": "修订并验收",
+      "writeback": "full-v2教学v5+nonteaching状态/空行维护均CAS原子写并精确回读",
+      "local_sync": "14目标：9写并回读/5无增量，root先写/待并入最后维护",
+      "notion": "正确M09仅前插备注，16属性保存/重载、其他15及旧全文不变；日期未知保留",
+      "git": "本批内容待提交推送",
       "sources": [],
       "blockers": [],
       "included": true,
@@ -732,9 +732,9 @@
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
-      "review_stage": "new61 full two-stage andsource38pages complete;5concentrated groups require author repair",
+      "review_stage": "full61 original + actualB1-B5repair61 + finalbytebindingv5 + main gate0/source/calcs/actualdisplay + CASdone",
       "reviewer_id": "/root/review_ac_m09_61",
-      "independent_review_status": "five teachinggroups pending;sourcefull verified;not pass",
+      "independent_review_status": "passed real two-stage fullandaffectedrepair;no realAppleanswerclaim",
       "latest_candidate": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\ac6761-m09\\candidate.md",
       "latest_candidate_sha256": "ad86337f06d141a822417cd30b702db2a9d69e473160795899760880c597280a",
       "stage_1": {
@@ -748,7 +748,15 @@
           "sha256": "fdcc461761914ffd3a4ab8b82f8dbbfc765b58d9fc7145af2b00e05717a777e5",
           "reviewer_id": "/root/review_ac_m09_61"
         }
-      ]
+      ],
+      "formal_sha256": "f54e2a6b0c6610d9fe5a4fbbeda878b714be49a4af242bdf53947f1a9d690351",
+      "candidate_sha256": "6898451507f5aec8b282e4f748e734e10f5b4c0e1308fddc373470af15459bc8",
+      "review_receipt": "_meta/vault-notes-review-20261023/ac6761-m09/review.json",
+      "review_receipt_sha256": "efa631d91b949e6a6b2d8c926df306e593f0abb467d929c83b810ce91d359ca6",
+      "writeback_record": "_meta/vault-notes-review-20261023/ac6761-m09/writeback.json",
+      "dependency_sync_record": "_meta/vault-notes-review-20261023/ac6761-m09/dependency-sync.json",
+      "notion_evidence": "_meta/vault-notes-review-20261023/ac6761-m09/notion-slim.json",
+      "maintenance_record": "_meta/vault-notes-review-20261023/ac6761-m09/metadata-maintenance.json"
     },
     {
       "id": "ac6761-m10",
@@ -2728,8 +2736,8 @@
       "baseline_sha256": "f562833a48177422f43856bbf246dc4616ac05bd531d6ebb1273587f7636afbd",
       "bytes": 27742,
       "lines": 462,
-      "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ac6761-f681c11e8528",
-      "teaching_state": "未开始",
+      "scratch": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\ac6761-case1",
+      "teaching_state": "审查中",
       "writeback": "未开始",
       "local_sync": "未开始",
       "notion": "未开始",
@@ -2741,7 +2749,11 @@
       "scope_reason": "203 项扫描发现的遗漏教学文档；不在原 75 项中，但正文承担完整题解/复盘教学。",
       "teaching_sections": [
         "全文：8 笔交易、会计等式、变式与学习总结"
-      ]
+      ],
+      "reviewer_id": "/root/review_ac_case1_61",
+      "review_stage": "new61 fullcandidate stage1 inprogress;oldmateriallabelnotapproval",
+      "latest_candidate": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\ac6761-case1\\candidate.md",
+      "latest_candidate_sha256": "f562833a48177422f43856bbf246dc4616ac05bd531d6ebb1273587f7636afbd"
     },
     {
       "id": "ac6761-4e38cf5bc63a",
@@ -2948,7 +2960,7 @@
     "Sync-off confirmation carried forward from task; no new on/running evidence"
   ],
   "confirmed_review_total": 69,
-  "latest_checkpoint": "IS M02内容d8851a2已推远端，89blob逐SHA及62其他文件保护已核；10篇正文/适用各端闭合。AC M09新6.1两阶段/38源页完成，5组缺陷集中待修；58份未开始。流程规则eed176c已推，不重新开启全篇评分。",
+  "latest_checkpoint": "IS M02内容d8851a2/状态4d416b9已推；M09当前f54e2a6b、full-v2/维护/14关联9写5无增量/Notion16-15-旧全文回读已完成，本批Git待保存。新增同源Case1配套解析新6.1全篇审查中。全69为11正文验收写回、1审查中、57未开始。",
   "resume_20261025": {
     "model_verified": "gpt-6.1-sol/xhigh from current rollout turn_context",
     "reviewer_model": "gpt-5.6-sol strictly lower",
