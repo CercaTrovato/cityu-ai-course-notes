@@ -1,0 +1,1080 @@
+<!DOCTYPE html><html lang="zh-CN"><meta charset="utf-8"><title>M11 最终同源检查</title><link rel="stylesheet" href="/runtime/katex/dist/katex.min.css"><style>
+body{font:17px/1.85 "Microsoft YaHei",sans-serif;color:#243348;background:#f4f6f9;margin:0}main{max-width:940px;margin:32px auto;background:white;padding:42px 54px}h1,h2,h3,h4{line-height:1.4;color:#113654}h2{margin-top:2.5em;border-bottom:1px solid #ccd8e4;padding-bottom:12px}p{margin:1em 0}table{border-collapse:collapse;width:100%;font-size:15px;margin:1em 0}th,td{border:1px solid #ccd6df;padding:7px 10px;text-align:left;vertical-align:top}th{background:#eef3f7}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f5f7;padding:18px;font:14px/1.5 Consolas,monospace}blockquote{border-left:4px solid #7c9bb6;padding-left:18px;color:#405366}img,svg{max-width:100%;height:auto}a{color:#1a6396}details{background:#f8fafc;padding:12px;margin:1em 0}summary{cursor:pointer}nav{position:fixed;top:8px;right:8px;background:white;padding:8px;font-size:12px}.katex-display{overflow-x:auto}.mermaid{background:white;text-align:center;padding:0}
+</style><style>nav{display:none}</style><nav>当前候选同源预览 · Obsidian 未直接查看</nav><main><h1>M11 · 财务预测实作、AI 伦理与未来趋势</h1>
+<h2 id="heading-0">0. 三分钟速览</h2>
+<p>一家企业希望用财报预测未来，再把模型用于日常会计。本讲沿着“数据能否用、模型怎样算、结果谁负责”走一遍。</p>
+<ul>
+<li>分清预测价格、价格收益与包含股息的总收益。</li>
+<li>检查财报公开时间，发现未来信息泄漏。</li>
+<li>用讲义 10 行广告与销售数据复算线性回归。</li>
+<li>读出系数表的方向、不确定性与证据边界。</li>
+<li>给隐私、偏差、解释和问责问题安排具体控制。</li>
+</ul>
+<p>材料是提前发布的讲义。本地没有本讲转录，不能据此确认已经上课、教授实际演示成功或考试明示。</p>
+<h2 id="heading-1">1. 开始之前 · 知识衔接</h2>
+<h3 id="heading-2">1.1 先唤醒已有概念</h3>
+<p>下表一行是一项本讲会实际用到的前置知识。第一列给对象，第二列说明作用，第三列给复习入口。</p>
+<table>
+<thead>
+<tr>
+  <th>概念</th>
+  <th>一句话唤醒</th>
+  <th>入口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>财务报表</td>
+  <td>把一段经营活动整理为可追溯数字</td>
+  <td><a href="/vault/AC6761_Artificial_Intelligence_Accounting/notes/M03-%E5%B9%B4%E6%8A%A5%E5%88%86%E6%9E%90%5C">M03</a></td>
+</tr>
+<tr>
+  <td>监督学习</td>
+  <td>从已有输入与答案学习对应关系</td>
+  <td><a href="/vault/AC6761_Artificial_Intelligence_Accounting/notes/M08-AI%E5%9F%BA%E7%A1%80%E4%B8%8E%E4%BC%9A%E8%AE%A1%E6%8A%80%E6%9C%AF%5C">M08</a></td>
+</tr>
+<tr>
+  <td>比率</td>
+  <td>用一个财务数除以另一个数</td>
+  <td><a href="/vault/AC6761_Artificial_Intelligence_Accounting/notes/M10-AI%E8%B4%A2%E5%8A%A1%E5%88%86%E6%9E%90%E4%B8%8E%E6%AF%94%E7%8E%87%E6%A0%B8%E9%AA%8C%5C">M10</a></td>
+</tr>
+</tbody>
+</table>
+<p>读第一行：财报提供特征，但还要核对这些特征何时对市场公开。</p>
+<h3 id="heading-3">1.2 本讲新概念</h3>
+<p>预测时点和标签成熟在 §2.1–2.3 展开。线性回归的训练与误差在 §2.5 走完整例。系数表在 §2.6 解释。隐私、公平、解释与责任在 §2.7–2.10 分开处理。</p>
+<h3 id="heading-4">1.3 为什么这样重排</h3>
+<p>讲义先列 SAS 流程，再给 Python 代码，随后讨论伦理。笔记先固定“到底预测什么、何时已知”，再审 SAS 示意，最后运行数据齐全的 Python 例子。这样可以先发现数据口径错误，避免把软件运行成功当作有效预测。</p>
+<h2 id="heading-5">2. 正文</h2>
+<h3 id="heading-6">2.1 从人工规则到学习模型（讲义 p.2–6）</h3>
+<p>如果输入今年的财报，模型能告诉我们明年会怎样吗？先要把可见输入和未来答案分开。</p>
+<p><strong>是什么</strong>：传统程序由人给规则，再将规则应用到数据。监督学习（supervised learning）在训练阶段同时看到历史特征和历史答案，估计一个模型；预测阶段只输入新特征。</p>
+<p><strong>为什么需要它</strong>：财务指标往往同时变化。手写一条“盈利越高，股票必涨”的规则，会遗漏价格中已有的预期。</p>
+<p><strong>课件原例</strong>：p.6 的输入是账面市值比、公司规模、盈利能力；输出是下一年的股票收益（Stock Return）。p.4 用预测价格作引子，p.6 又写收益。两者必须在建模前统一。</p>
+<p><strong>💡 换个说法（笔记补充）</strong>：价格是某时点每股值多少钱；收益率是持有一段时间后，相对期初投入增加或减少了多少比例。价格收益（Price Return）只计股价变化。股息（Dividend）是持有期间公司另外分给股东的现金；计入这笔现金的总收益（Total Return）与价格收益不同。§2.4 用同一起点算出两种口径。</p>
+<p>用 <span class="math">X</span> 表示预测时点已知的特征，用 <span class="math">Y</span> 表示其后实际发生的目标。训练所得函数记作 <span class="math">f</span>：</p>
+<div class="math math-block">\widehat Y=f(X)</div>
+<p>这里的帽子表示“预测值”。它是模型算出的答案，与事后真实 <span class="math">Y</span> 要另行比较。</p>
+<p>下面的图说明训练和预测为何不能混为一条输入管道。箭头表示数据和模型的流向。</p>
+<pre class="mermaid" id="diagram-1">flowchart LR
+ A[历史时点已知的特征] --&gt; C[训练模型]
+ B[历史时点之后实现的答案] --&gt; C
+ C --&gt; D[固定模型]
+ E[当前已公开特征] --&gt; F[生成未来预测]
+ D --&gt; F
+ F --&gt; G[未来实现后核对误差]
+</pre>
+<p><strong>💡 换个说法（笔记补充）</strong>：先用旧年份的财报与后来收益训练。今天预测时，只能放入今天已经发布的财报。未来实际收益要等到观察期结束后才能用于评估。</p>
+<p>看不到图时，可以记成“旧数据教模型，当前数据出预测，未来答案查预测”。如果把明年利润塞进当前输入，图的时间边界就被破坏。</p>
+<p><strong>🎙️ 课堂补充</strong>：待转录补充。</p>
+<p><strong>常见误解</strong>：输入里有历史答案，不表示实际预测时也能知道答案。训练和使用是两个阶段。</p>
+<p><strong>与其他概念的关系</strong>：承接 M08 的学习类型，也给 §2.3 的泄漏检查提供时间线。</p>
+<p><strong>所以呢</strong>：先写出预测对象和时间，才能决定哪些列可以进入模型。</p>
+<h3 id="heading-7">2.2 把财务特征变成有定义的输入（讲义 p.6、p.10–12）</h3>
+<p>“用财报预测”还不够具体。每行数据究竟是一家公司的一年，还是一只股票的一个月，会改变目标和连接方式。</p>
+<p><strong>是什么</strong>：特征（feature）是预测时可观察的输入。目标（target）是模型要预测的量。本例的业务计划是收集多公司、多年的财务特征，训练后对一家公司打分。</p>
+<p><strong>为什么需要它</strong>：同名的 ROE 若使用不同的权益分母，或者股票拆分前后价格未经调整，模型会学习到口径变化。</p>
+<p><strong>课件原例</strong>：p.12 给五类候选特征。下面保留其经济方向，但这些是研究动机，不是本次数据验证的收益规律。</p>
+<table>
+<thead>
+<tr>
+  <th>讲义字段与中英名称</th>
+  <th>含义与课件计算口径</th>
+  <th>本讲边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>BM：账面市值比（Book-to-Market Ratio，原页 B/M）</td>
+  <td>每股账面价值除以股价</td>
+  <td>股价与账面时点须相配</td>
+</tr>
+<tr>
+  <td>ROE：净资产收益率（Return on Equity）</td>
+  <td>净利润除以股东权益</td>
+  <td>p.13 使用权益期末值</td>
+</tr>
+<tr>
+  <td>AG：资产增长（Asset Growth）</td>
+  <td>资产相对上一期的增长</td>
+  <td>必须是同一家公司</td>
+</tr>
+<tr>
+  <td>MOM：前一年股票收益（Prior 1-Year Return）</td>
+  <td>前一年股票收益</td>
+  <td>观察窗须在预测前结束</td>
+</tr>
+<tr>
+  <td>SIZE：市值对数（Log of Market Capitalization）</td>
+  <td>市值的对数</td>
+  <td>须明确币种和对数底数</td>
+</tr>
+</tbody>
+</table>
+<p>一行是一种输入，第二列解释数值如何产生，第三列说明何种条件会改变它。读 AG 行：资产从 100 增加至 110，增长率是 10%；前提是两期属于同一家公司且口径可比。</p>
+<p>为什么考虑这五项？p.12 的 Rationale（选变量理由）分别提出以下研究动机。下面英文引号内保留原页措辞，中文解释它如何支持选变量：</p>
+<ul>
+<li>Value（价值）：高 BM 的“价值股”往往表现较好，原文为 “High B/M (&quot;value&quot; stocks) often outperform.”，因此把 BM 列为候选。</li>
+<li>Profitability（盈利能力）：原文 “More profitable firms should have higher returns.”，把较高盈利与较高收益的设想连接到 ROE。</li>
+<li>Investment（投资）：原文 “Firms growing assets too fast may have lower future returns.”，所以 AG 用来研究资产扩张过快是否与较低未来收益相关。</li>
+<li>Momentum（动量）：原文 “Stocks with good recent performance may continue.”，所以 MOM 用前一年表现研究近期走势是否延续。</li>
+<li>Size（规模）：原文 “Smaller firms may have higher expected returns.”，所以 SIZE 用来研究较小公司是否有较高预期收益。</li>
+</ul>
+<p>这些都是讲义提出的研究理由；本材料没有回测来验证它们，不能把 should、may 或 often 读成每家公司都会兑现的投资保证。</p>
+<p><strong>💡 换个说法（笔记补充）</strong>：市值（Market Capitalization）是股价乘以所选口径的股数。取对数（Log）可把相差很多倍的规模压缩到较小数值范围。例如仅假设用以 10 为底的对数，100 对应 2、1,000 对应 3；这只是读法小例，不是原 SAS 指定的底数、币种或 SIZE 数值。</p>
+<p><strong>💡 换个说法（笔记补充）</strong>：若一家公司净利润 15、权益 100，讲义口径 ROE 为 15%。另一家公司权益为负时，算出的比值不宜直接按“越高越好”排序。</p>
+<p><strong>🎙️ 课堂补充</strong>：待转录补充。</p>
+<p><strong>常见误解</strong>：高账面市值比、高盈利或小规模不保证下一年回报更高。讲义 p.12 是选变量的经济理由，不是一个已经检验通过的策略。</p>
+<p><strong>与其他概念的关系</strong>：M10 的比率定义先决定输入口径，本讲再决定它何时进入模型。</p>
+<p><strong>所以呢</strong>：每列至少交代定义、单位、时点和缺失处理，才是一份可训练的数据。</p>
+<h3 id="heading-8">2.3 数据准备：时间与身份要同时对齐（讲义 p.13–14）</h3>
+<p>把两张表按相同数字连接，是否就配对成功了？公司代码和股票代码可能恰好长得一样，却代表不同体系。</p>
+<p><strong>是什么</strong>：数据连接（join）是按身份与时间把两张表的记录配在一起。时间泄漏（look-ahead bias）是把预测时还不知道的信息混入训练或评估。</p>
+<p><strong>为什么需要它</strong>：一个“神准”的模型，可能只是提前看到未来答案。跨公司算资产增长，也会把另一家公司的规模误当作本公司的上一期。</p>
+<p><strong>课件原例与校正</strong>：原文 p.13 用 <code>by gvkey fyear</code>，再用 <code>lag(at)</code> 算资产增长。p.14 用 <code>lead(price, 12)</code>，并以 <code>permno = gvkey</code>、<code>date = fyear</code> 合并。以下是逐处需要补齐的条件。</p>
+<ol>
+<li><code>gvkey</code> 表示财务公司身份，<code>permno</code> 表示证券身份。需有经过验证的映射及生效区间，不能直接当同一编码。</li>
+<li><code>date</code> 通常是具体日期，<code>fyear</code> 是财年标签。需先定义预测日与财报公开日，再按时间匹配。</li>
+<li>SAS 的 <code>lag</code> 从调用队列取旧值。必须先排序，并处理公司组首行，避免跨公司串值。</li>
+<li>向前 12 行只有在每行一个连续月份时才对应一年。缺月、多证券或日频数据都使这个解释失效。</li>
+<li>价格比值只表示价格收益。若目标是总收益，还要处理股息及拆股等公司行动。</li>
+</ol>
+<p><strong>💡 换个说法（笔记补充）</strong>：A 公司最后一期资产 100，下一行是 B 公司第一期资产 500。简单取上一行会算出 400% 增长；B 的正确增长率其实未知，因为缺 B 的上期资产。</p>
+<p>再看时间：2025 财年年报若到 2026 年 3 月才公开，就不能用于 2026 年 1 月的预测。财年结束不等于数据已公开。</p>
+<p>下面是补充版核验流程，箭头代表检查顺序。它不是原 SAS 代码已经实现的控制。</p>
+<pre class="mermaid" id="diagram-2">flowchart TD
+ A[固定预测日和未来观察窗] --&gt; B{公司与证券映射有效?}
+ B --&gt;|否| X[停止该行并登记缺口]
+ B --&gt;|是| C{财报在预测日前已公开?}
+ C --&gt;|否| X
+ C --&gt;|是| D[核同公司前期及收益频率]
+ D --&gt; E[形成特征与未来标签]
+ E --&gt; F[按可见时间分训练与测试]
+</pre>
+<p>走图例：B 公司无上期资产时停在“核同公司前期”，先将 AG 留缺失，按明确规则处理；不能拿 A 公司资产补值。图外还要检查停牌、退市和幸存者偏差。</p>
+<p><strong>🎙️ 课堂补充</strong>：待转录补充。</p>
+<p><strong>常见误解</strong>：按年份分训练/测试仍可能泄漏。训练样本的未来标签也必须在训练截止前已经实现；否则在当时无法知道该标签。</p>
+<p><strong>与其他概念的关系</strong>：数据质量在模型拟合之前；§2.5 的随机划分只复现课堂小数据，不作为时序策略验证。</p>
+<p><strong>所以呢</strong>：先验证身份和可见时间，再检查公式；这两关不能靠调模型补救。</p>
+<details><summary>原课件演示全文（保真来源；校正版另列）</summary>
+<p>讲义 p.13：</p>
+<pre><code class="language-text">Step 2 — SAS Code: Data Preparation
+
+/* 1. Import stock price data (e.g., from CRSP database) */ proc import datafile=&quot;/data/stock_prices.csv&quot; out=prices dbms=csv replace; run;
+
+/*2. Import financial statement data (e.g., from Compustat) */ proc import datafile=&quot;/data/financials.csv&quot; out=financials dbms=csv replace; run;
+
+/* 3. Calculate the features (X variables) for each firm-year */ data features; set financials; by gvkey fyear; /* Group by firm and fiscal year */ /* Calculate predictor variables */ BM = bkvlps / prcc_f; /* Book-to-Market Ratio */ ROE = ni / she; /* Return on Equity */ AG = (at / lag(at)) - 1; /* Asset Growth */ /* ... calculate other variables ... */ keep gvkey fyear BM ROE AG; run;
+13
+</code></pre>
+<p>讲义 p.14：</p>
+<pre><code class="language-text">/* 4. Calculate the target (Y variable): Next year's stock return */ data target; set prices; by permno date; /* Group by stock and date */ /* Calculate return from today to one year in the future */ FutureReturn = ( (lead(price, 12) / price) - 1 ); keep permno date FutureReturn; run;
+
+/* 5. Merge features and target into one dataset for modeling */ proc sql; create table model_data as select a.*, b.BM, b.ROE, b.AG from target as a left join features as b on a.permno = b.gvkey and a.date = b.fyear; quit;
+14
+</code></pre>
+</details>
+<h3 id="heading-9">2.4 SAS 示意：从模型选择到价格换算（讲义 p.7–9、p.15–18）</h3>
+<p>软件可以帮我们训练，但软件名称不会消除数据问题。本节先辨认讲义想做什么，再界定哪些结果尚不能复现。</p>
+<p><strong>是什么</strong>：SAS 用 <code>PROC</code> 调用分析过程。p.7 还列 Python、R 和 Stata：分别强调通用编程、统计原型、商业分析及计量/面板分析。这是讲义工具概览，不是当前产品性能排名。</p>
+<p><strong>为什么需要它</strong>：同一业务问题可用不同工具实现。选择工具后，仍需明确数据准备、训练、验证和部署的具体步骤。</p>
+<p><strong>课件原例</strong>：四个过程的作用分别如下。</p>
+<ul>
+<li><code>PROC REG</code>：线性回归。</li>
+<li><code>PROC LOGISTIC</code>：分类模型。</li>
+<li><code>PROC GLMSELECT</code>：变量选择。</li>
+<li><code>PROC HPFOREST</code>：随机森林。</li>
+</ul>
+<p>后三种算法在本讲只作工具背景，不声称已训练。</p>
+<p>p.15 按 <code>fyear &lt;= 2020</code> 留训练集，再用 <code>selection=lar (choose=sbc)</code>。正文注释称它是 LASSO，但 LAR 和 LASSO 不是同一选项。变量选择只是降低过拟合风险的一种手段，不能保证泛化。</p>
+<p>若采用 LASSO（最小绝对收缩与选择），它在拟合误差之外限制系数大小，可能把部分系数压到零。本讲不运行该算法；应先把目标、特征及验证窗补全，才能选择具体程序和参数。</p>
+<p><strong>研究问题英文原文（p.10）</strong>：</p>
+<blockquote>
+<p>Can we use a firm's financial characteristics today to predict its stock price one year from now?</p>
+</blockquote>
+<p>中文题意：只用今天已经知道的公司财务特征，研究能否预测一年后的价格。这里的 today 限定输入可见时间，one year 固定目标跨度。</p>
+<p><strong>⚪ 参考答案（笔记推断）</strong>：可以建立并检验这种模型，但本材料缺少真实数据与有效测试，不能断言已准确预测。正文后续给的是收益建模，再按指定条件换成价格，须保持目标一致。</p>
+<p><strong>英文参考答案（笔记自拟）</strong>：A predictive model can be investigated using financial information available today, but its usefulness must be evaluated on unseen future observations. The slides do not provide enough data or validation to establish accurate one-year price forecasts.</p>
+<p><strong>逐行意图与缺口</strong>：</p>
+<ul>
+<li><code>data training testing</code>：产生两份数据，旧年份训练，新年份留作检验。当前原表没有给出，无法核样本数与标签成熟。</li>
+<li><code>model FutureReturn = BM ROE AG SIZE MOM</code>：指定未来收益和五个特征。但 p.13 的 <code>keep</code> 没保存 SIZE、MOM，原片段缺少它们的计算。</li>
+<li><code>output ... p=PredictedReturn</code>：保存拟合值；它本身不是测试集评估。</li>
+<li><code>store work.forecast_model</code>：保存 item store 供后续评分，<code>WORK</code> 通常是会话临时库，不能理解为已永久部署。</li>
+<li><code>proc plm ... score</code>：用已有模型给新数据评分；本轮没有 SAS 运行环境和训练数据，不将这步记成已成功。</li>
+</ul>
+<p><strong>课件给定结果的算术核对</strong>：p.17 写当前价格 150 美元、预测收益 8.2%、预测价格 162.30 美元。</p>
+<div class="math math-block">\widehat P_{t+1}=P_t(1+\widehat r)</div>
+<p>一行公式只有三个量。下表逐一解释。</p>
+<table>
+<thead>
+<tr>
+  <th>符号</th>
+  <th>含义</th>
+  <th>单位/本例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><span class="math">P_t</span></td>
+  <td>当前价格</td>
+  <td>150 美元/股</td>
+</tr>
+<tr>
+  <td><span class="math">\widehat r</span></td>
+  <td>预测价格收益</td>
+  <td>小数 0.082</td>
+</tr>
+<tr>
+  <td><span class="math">\widehat P_{t+1}</span></td>
+  <td>未来预测价格</td>
+  <td>美元/股</td>
+</tr>
+</tbody>
+</table>
+<p>先将 8.2% 转成 0.082，再以 150 乘以 1.082，得到 162.30。这是把给定收益按价格收益解释后的算术核对；原代码 p.14 也只使用价格比值，没有构造含股息总收益。</p>
+<p id="returns"><strong>💡 换个说法（笔记补充）：同一起点，两种收益口径。</strong> 设持有一股股票，期初价格为 <span class="math">P_t</span>，期末价格为 <span class="math">P_{t+1}</span>；期间另收到每股现金股息 <span class="math">D</span>。两种收益的分母都是期初投入 <span class="math">P_t</span>，区别在于分子有没有计入股息：</p>
+<div class="math math-block">r_{\mathrm{price}}=\frac{P_{t+1}-P_t}{P_t},\qquad
+r_{\mathrm{total}}=\frac{P_{t+1}-P_t+D}{P_t}</div>
+<p>这里 <span class="math">r_{\mathrm{price}}</span> 是价格收益，<span class="math">r_{\mathrm{total}}</span> 是简化的持有期总收益；<span class="math">D</span> 是期间股息，单位为美元/股，其他价格单位与上表相同。此例假设股数不变、股息不再投资，没有拆股、费用或税费；不将此简化式推广到更复杂的收益数据。</p>
+<p>若额外假设总收益为 8.2%、期间现金股息为 3 美元/股，则每股最终财富是 <span class="math">150\times1.082=162.30</span> 美元，包含期末股票与另收的 3 美元现金。先扣现金，才能得到期末股价：</p>
+<div class="math math-block">P_{t+1}=150\times1.082-3=159.30\text{ 美元/股}</div>
+<p>核对：股价只涨了 9.30 美元，价格收益为 <span class="math">9.30/150=6.2\%</span>；再加股息收益 <span class="math">3/150=2\%</span>，总收益才是 8.2%。若只知道总收益、不知道股息，便不能唯一还原期末价格。这组股息条件是笔记补充，不是讲义 p.17 的事实，也不能据此称原模型为总收益模型。</p>
+<p>p.15 给的部分系数与 p.16 的特征只能算出已展示三项的贡献：<span class="math">0.05\times0.85+0.03\times0.15-0.08\times0.05=0.043</span>。SIZE、MOM、截距及完整模型均未给，无法从 4.3% 推出 8.2%。</p>
+<p><strong>💡 换个说法（笔记补充）</strong>：若给定收益改为 −10%，同一换算得到 135 美元。换算正确只证明乘法正确，不证明 −10% 的预测可靠。</p>
+<p><strong>🎙️ 课堂补充</strong>：待转录补充。</p>
+<p><strong>常见误解</strong>：p.16 注释把 XYZ 的输入称为“actual”，但没有公司身份与来源，本笔记将其作为讲义示意输入。</p>
+<p><strong>与其他概念的关系</strong>：p.18 的“历史模式可能失效”对应分布变化；数据质量是必要条件，还需模型、验证和市场环境相配。</p>
+<p><strong>所以呢</strong>：本节验证了价格换算，没有验证 SAS 模型训练或真实股票预测。</p>
+<details><summary>原课件演示全文（保真来源；校正版另列）</summary>
+<p>讲义 p.15：</p>
+<pre><code class="language-text">Step 3 — SAS Code: Building the ML Model​
+
+/* Split data into Training set (to build model) and Testing set (to validate it) */ data training testing; set model_data; if fyear &lt;= 2020 then output training; /* Use older data to train */ else output testing; /* Reserve recent data for testing */ run;
+
+/* Use PROC GLMSELECT to train the model with LASSO */ /* This procedure automatically selects the most important variables */ proc glmselect data=training; model FutureReturn = BM ROE AG SIZE MOM / /* List of X variables */ selection=lar (choose=sbc) stb; /* Use LASSO to avoid overfitting */ output out=model_out p=PredictedReturn; /* Save the model's predictions */ store work.forecast_model; /* Save the model to disk */ run;
+
+​​Key Output:​​ A formula (model) like:
+Predicted Return = 0.05*BM + 0.03*ROE - 0.08*AG + ...
+15
+</code></pre>
+<p>讲义 p.16：</p>
+<pre><code class="language-text">Step 4 — Making the Forecast for 2026​
+
+/* Create a dataset with Company XYZ's latest financials (2025) */ data xyz_2025; input BM ROE AG SIZE MOM; datalines; 0.85 0.15 0.05 23.1 0.10 ; /* These are XYZ's actual 2025 financial ratios */ run;
+
+/* Use the PROCPLM to score (predict for) the new data */ proc plm restore=work.forecast_model; /* Load the trained model */ score data=xyz_2025 out=xyz_scored predicted=PredReturn2026; /* Make prediction! */ run;
+
+/* Calculate the predicted 2026 price */ data final_forecast; set xyz_scored; CurrentPrice2025 = 150; /* Assume current price is $150 */ PredictedPrice2026 = CurrentPrice2025 * (1 + PredReturn2026); run;
+
+/* Print the result */ proc print data=final_forecast; var CurrentPrice2025 PredReturn2026 PredictedPrice2026; run;
+16
+</code></pre>
+</details>
+<h3 id="heading-10">2.5 Python：把十行数据真正跑到误差（讲义 p.19–20）</h3>
+<p>广告费增加时，销售额通常怎样变化？本例数据齐全，可以实际拟合，再比较留出的两行。</p>
+<p><strong>是什么</strong>：线性回归（linear regression）用一条直线给定广告费对应的销售额。参数由训练数据确定，测试数据只用来核预测误差。</p>
+<p><strong>为什么需要它</strong>：肉眼看见向上趋势，还不能回答每增加一单位广告费，模型预计销售增加多少。</p>
+<p><strong>课件原例数据</strong>：下表每行是一条观察。两列都是讲义数值，币种、频率和企业身份未给，不补造为真实月度数据。</p>
+<table>
+<thead>
+<tr>
+  <th>广告支出</th>
+  <th>销售额</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1,000</td>
+  <td>2,000</td>
+</tr>
+<tr>
+  <td>1,500</td>
+  <td>2,500</td>
+</tr>
+<tr>
+  <td>2,000</td>
+  <td>3,000</td>
+</tr>
+<tr>
+  <td>2,500</td>
+  <td>4,000</td>
+</tr>
+<tr>
+  <td>3,000</td>
+  <td>4,500</td>
+</tr>
+</tbody>
+</table>
+<p>剩余五行延续同一列口径。</p>
+<table>
+<thead>
+<tr>
+  <th>广告支出</th>
+  <th>销售额</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>3,500</td>
+  <td>5,000</td>
+</tr>
+<tr>
+  <td>4,000</td>
+  <td>6,000</td>
+</tr>
+<tr>
+  <td>4,500</td>
+  <td>6,500</td>
+</tr>
+<tr>
+  <td>5,000</td>
+  <td>7,000</td>
+</tr>
+<tr>
+  <td>5,500</td>
+  <td>8,000</td>
+</tr>
+</tbody>
+</table>
+<p>第一列是输入金额，第二列是要预测的金额；量纲沿用未命名的原始单位。读首行：广告支出 1,000 对应已观察销售 2,000。</p>
+<p><strong>原代码不能直接运行的原因</strong>：原文使用弯引号；建表列是 <code>advertising expenditure</code> 与 <code>销售额sales</code>，取列却写 <code>advertisement expenditure</code> 与 <code>sales</code>。先统一引号和列名，才能到训练步骤。</p>
+<p id="entry"><strong>安全运行入口（笔记补充）</strong>：下面两块 Python 是同一个小程序的上半段和下半段，只打印结果，不写图或结果文件。先把它们按顺序放进同一个文件，再整体运行，变量才能在同一次解释器会话中接续使用。</p>
+<ol>
+<li>在 <code>E:\app-data\codex\scratchpad\</code> 下新建空目录 <code>m11-sales-practice-01</code>；若已有同名目录，换一个未使用的英文编号，不覆盖旧文件。</li>
+<li>用已有的纯文本编辑器新建 <code>sales-practice.py</code>，先复制下面第一块，再接第二块，只复制代码块内部内容。保存为 UTF-8；确认文件名末尾是 <code>.py</code>，不是 <code>.py.txt</code>。</li>
+<li>打开 Windows PowerShell，先检查本机约定的解释器路径。下面命令输出 <code>True</code> 才继续；若是 <code>False</code>，先确认实际 Python 路径，不默认其他软件已经安装。</li>
+</ol>
+<pre><code class="language-powershell">Test-Path -LiteralPath 'D:\anaconda3\python.exe'
+</code></pre>
+<ol start="4">
+<li>保存文件后，在 PowerShell 运行下面命令。<code>&amp;</code> 表示调用后面的程序，<code>-X utf8</code> 让本次 Python 使用 UTF-8，最后一个路径是刚保存的代码文件。若使用了其他新目录编号，同步替换该路径。</li>
+</ol>
+<pre><code class="language-powershell">&amp; 'D:\anaconda3\python.exe' -X utf8 'E:\app-data\codex\scratchpad\m11-sales-practice-01\sales-practice.py'
+</code></pre>
+<p>正常结束会显示两条测试记录、系数、MAE 和基线 MAE，然后回到 PowerShell 提示符。本例需要已有 <code>pandas</code> 和 <code>scikit-learn</code>；若出现 <code>ModuleNotFoundError</code>，记录缺少的包，须本人允许后才安装。若是 <code>NameError</code>，检查是否漏了第一块或在新会话中只运行第二块。</p>
+<p><strong>第一块：加载工具、建表并划分。</strong> <code>import</code> 加载已安装的工具；<code>as pd</code> 给 <code>pandas</code> 起短名。<code>from ... import ...</code> 从工具中取出所需功能。<code>=</code> 是把右边结果保存到左边变量，不是代数等式；如 <code>X = ...</code> 保存输入表，后面才能用 <code>X</code>。第一块不打印内容，整体运行时会继续进入第二块。</p>
+<p><code>DataFrame</code> 是带列名的数据表；<code>df['sales']</code> 取一列销售数据，<code>df['advertising_expenditure'](/vault/%27advertising_expenditure%27)</code> 用双层方括号保留“10 行、1 列”的二维输入。下面保留原数据和划分参数。</p>
+<pre><code class="language-python">import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+
+df = pd.DataFrame({
+    'advertising_expenditure': [1000,1500,2000,2500,3000,3500,4000,4500,5000,5500],
+    'sales': [2000,2500,3000,4000,4500,5000,6000,6500,7000,8000]
+})
+X = df[['advertising_expenditure']]
+y = df['sales']
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42)
+</code></pre>
+<ul>
+<li><code>X</code> 形状是 10 行、1 列；<code>y</code> 是 10 个销售额。</li>
+<li><code>test_size=0.2</code> 留出 2 行，训练用其余 8 行。</li>
+<li><code>random_state=42</code> 固定本次随机划分，以便复算；它不能保证真实未来表现。</li>
+</ul>
+<p>第二块接收训练表，估计系数，再预测留出的广告支出。</p>
+<pre><code class="language-python">model = LinearRegression()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+result = X_test.copy()
+result['actual_sales'] = y_test
+result['predicted_sales'] = y_pred
+result['residual'] = result['actual_sales'] - result['predicted_sales']
+mae = result['residual'].abs().mean()
+baseline = y_train.mean()
+baseline_mae = (y_test - baseline).abs().mean()
+
+print(result.round(6).to_string())
+print('slope:', model.coef_[0], 'intercept:', model.intercept_)
+print('MAE:', mae)
+print('baseline prediction:', baseline, 'baseline MAE:', baseline_mae)
+</code></pre>
+<ul>
+<li>第一行建立待训练的直线模型。</li>
+<li><code>fit</code> 只看 8 个训练输入及答案，确定斜率与截距。</li>
+<li><code>predict</code> 接收 2 个测试输入，输出 2 个预测数。</li>
+<li><code>result</code> 从测试输入复制一张结果表，按同一测试行顺序放入实际值、预测值；<code>residual</code> 保存“实际减预测”。这样不会把第 8 行的预测错配给第 1 行。</li>
+<li><code>.abs()</code> 取绝对值，<code>.mean()</code> 求平均，所以 <code>mae</code> 是两条测试绝对误差的平均。<code>baseline</code> 只用训练销售均值，不能偷看测试答案来定基线。</li>
+<li><code>print</code> 把结果显示在窗口；<code>.round(6)</code> 只把显示保留到小数点后 6 位，不改变模型。<code>model.coef_[0]</code> 取唯一输入的斜率，<code>model.intercept_</code> 是截距。</li>
+</ul>
+<p>输出表最左边的 <code>8</code>、<code>1</code> 是从 0 开始的原始行编号；列依次是广告支出、实际销售、预测销售和残差。应看到第 8 行的预测约 7,228.448276、残差约 −228.448276；第 1 行的预测约 2,521.551724、残差约 −21.551724。随后输出斜率约 1.344828、截距约 504.310345、MAE 约 125、基线预测 4,875 和基线 MAE 2,250。浮点打印可能多出极小尾差；数值的手算含义在下面展开。</p>
+<p><strong>为什么这样拟合</strong>：对每条训练数据，先算预测与实际的差，称为残差（residual）。将残差平方后相加，选使总和最小的直线。</p>
+<div class="math math-block">\widehat y_i=a+b x_i</div>
+<p>这里每个符号的对象固定如下。</p>
+<table>
+<thead>
+<tr>
+  <th>符号</th>
+  <th>含义</th>
+  <th>单位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><span class="math">x_i</span></td>
+  <td>第 <span class="math">i</span> 行广告支出</td>
+  <td>原金额单位</td>
+</tr>
+<tr>
+  <td><span class="math">\widehat y_i</span></td>
+  <td>该行预测销售</td>
+  <td>原金额单位</td>
+</tr>
+<tr>
+  <td><span class="math">a</span></td>
+  <td>广告支出为零时的直线截距</td>
+  <td>销售单位</td>
+</tr>
+<tr>
+  <td><span class="math">b</span></td>
+  <td>支出增加一单位时的预测变化</td>
+  <td>销售/支出</td>
+</tr>
+</tbody>
+</table>
+<p>对同一条候选直线，目标量是训练集的残差平方和。</p>
+<div class="math math-block">SSE=\sum_{i\in\mathrm{train}}(y_i-a-bx_i)^2</div>
+<p><span class="math">y_i</span> 是实际销售，<code>train</code> 表示只加总训练行。平方让正负误差不会相互抵消，也使大误差受到更多惩罚。</p>
+<p>对任一给定斜率，把直线穿过训练均值点，可使该斜率下的残差平方和最小，因此截距写为 <span class="math">a=\bar y-b\bar x</span>。将它代入后，可用高中“平方非负与配方”找出使总和最小的斜率，得到下面的公式。完整配方桥梁见 <a href="/vault/AC6761_Artificial_Intelligence_Accounting/notes/M08-AI%E5%9F%BA%E7%A1%80%E4%B8%8E%E4%BC%9A%E8%AE%A1%E6%8A%80%E6%9C%AF%232.6%20%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%8E%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%EF%BC%88%E8%AE%B2%E4%B9%89%20p.27%E2%80%9330%EF%BC%89">M08 §2.6</a>；本例按给定公式代入，不要求先掌握导数。</p>
+<div class="math math-block">b=\frac{\sum(x_i-\bar x)(y_i-\bar y)}{\sum(x_i-\bar x)^2}</div>
+<p>横线表示训练均值。分子累计两个变量共同偏离均值的程度；分母累计广告支出自己的变化。只有分母非零时，这个单变量公式才可用。</p>
+<p><strong>从划分走到输出</strong>：</p>
+<ol>
+<li>按原始表从 0 开始编号，测试行为 8、1，即支出 5,000 与 1,500。训练行为 5、0、7、2、9、4、3、6。</li>
+<li>训练广告均值为 3,250，销售均值为 4,875。</li>
+<li>分母偏差平方和为 14,500,000；分子交叉乘积和为 19,500,000。</li>
+<li>相除得到斜率 1.344827586；用均值关系得到截距 504.310344828。</li>
+<li>对支出 5,000，预测为 7,228.448276；对支出 1,500，预测为 2,521.551724。</li>
+<li>两个真实值为 7,000 与 2,500。以“实际减预测”定义残差，分别约 −228.448276、−21.551724。</li>
+</ol>
+<p>平均绝对误差（mean absolute error，MAE）回答每条测试记录平均错多少个销售单位。</p>
+<div class="math math-block">MAE=\frac{1}{n}\sum_{i=1}^{n}|y_i-\widehat y_i|</div>
+<p>这里 <span class="math">n=2</span>，两项绝对误差相加为 250，所以 MAE 为 125。只猜训练平均销售 4,875 的基线，MAE 为 2,250；此处直线在这两条记录上更准，不能推到真实企业未来。</p>
+<p>下图由同一训练结果生成。圆点是训练观察，方块是测试实际值，叉号是测试预测值；线只由训练集拟合。</p>
+<img src="/vault/AC6761_Artificial_Intelligence_Accounting/notes/figures/m11-forecast/sales-regression.svg" alt="教学回归图">
+<p>沿横轴找到 5,000，叉号高于实际方块约 228.45，表示高估。若看不到图，前述两条预测与残差已给出同一结论。横纵轴均沿用来源未命名的金额单位。</p>
+<p><strong>边界与失败</strong>：</p>
+<ul>
+<li>若所有训练支出一样，分母为零，不能用上述手算斜率公式。</li>
+<li>在 1,000–5,500 之外预测属于外推；直线趋势未被这些数据验证。</li>
+<li>若这 10 行其实按时间排列，随机拆分可能将未来混入过去。应按时间划分，且另留验证期选模型。</li>
+<li>广告支出与销售相关不证明广告造成全部增长；季节、价格、渠道可能同时变化。</li>
+</ul>
+<p><strong>💡 换个说法（笔记补充）</strong>：同一已拟合直线把输入增加 500，预测增加约 672.41。这个数由斜率乘 500 得到，不是已证明的广告投资回报。</p>
+<p><strong>🎙️ 课堂补充</strong>：待转录补充。</p>
+<p><strong>常见误解</strong>：原片段画两条测试点之间的连线，容易被看成全范围预测趋势。校正版按排序网格画拟合线，测试点单独显示。</p>
+<p><strong>与其他概念的关系</strong>：M08 给最小二乘直觉，这里补实际数据、训练状态、留出误差与边界。</p>
+<p><strong>所以呢</strong>：本例可以复算，结论范围只有讲义这 10 行及两条留出记录。</p>
+<details><summary>原课件演示全文（保真来源；校正版另列）</summary>
+<p>讲义 p.19：</p>
+<pre><code class="language-text">Example of Python analyses
+Predicting sales using linear regression
+
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+
+#
+data = {
+    ‘advertising expenditure': [1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500],
+    ‘销售额sales': [2000, 2500, 3000, 4000, 4500, 5000, 6000, 6500, 7000, 8000]
+}
+df = pd.DataFrame(data)
+
+#
+X = df[[‘advertisement expenditure']]
+y = df[‘sales']
+
+#
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+19
+</code></pre>
+<p>讲义 p.20：</p>
+<pre><code class="language-text">#
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+#
+y_pred = model.predict(X_test)
+
+#
+plt.scatter(X, y, color='blue', label=‘actual sales data')
+plt.plot(X_test, y_pred, color='red', label=‘predicted sales data')
+plt.xlabel(‘advertisement expenditure')
+plt.ylabel(‘sales')
+plt.legend()
+plt.title(‘sales prediction')
+plt.show()
+
+#
+print(f’regression coefficient: {model.coef_[0]}, intercept: {model.intercept_}’)
+
+@
+
+20
+</code></pre>
+</details>
+<h3 id="heading-11">2.6 系数表与时间图：能读出什么（讲义 p.21–23）</h3>
+<p>一张系数表出现负数，是否说明政策一定降低了选择四大的概率？还要先辨认变量和模型。</p>
+<p><strong>是什么</strong>：系数（coefficient）描述其他已纳入变量保持相同时，一个输入与模型输出的条件关系。标准误（standard error）描述该系数估计的不确定性。</p>
+<p><strong>为什么需要它</strong>：方向、量纲、统计证据和因果解释是四个不同问题；只读一个负号会把它们混起来。</p>
+<p><strong>课件原例</strong>：p.21 的式子如下，副标题为选择 Big 4 的可能性。</p>
+<div class="math math-block">\mathrm{AuditorChoice}=\beta_1\mathrm{SPOSTTREAT}+\mathrm{Controls}</div>
+<p>Big 4 指四大会计师事务所这一类别，<code>AuditorChoice</code> 是模型要解释的审计师选择。<span class="math">\beta_1</span> 是待估的 SPOSTTREAT 系数；<code>Controls</code> 表示另纳入的控制变量，用来比较模型中其他条件相同时的关系。原页没有定义 SPOSTTREAT 所指事件、编码或政策，不能靠名字猜。</p>
+<p>p.22 原图没有完整列标题、样本量和模型类型；<code>B</code> 列的含义未交代。</p>
+<p>下表按原图顺序保留数值。列 3–6 暂按“估计值、标准误、检验量、p 值”的常见布局读，属于参考解释；未经完整输出核实。<code>B</code> 列及独立的 <code>1</code> 不重新命名为确定的模型参数。</p>
+<table>
+<thead>
+<tr>
+  <th>原变量</th>
+  <th>原附列</th>
+  <th>估计值</th>
+  <th>标准误</th>
+  <th>检验量</th>
+  <th>p 值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Intercept</td>
+  <td>B</td>
+  <td>8.73167</td>
+  <td>0.54131</td>
+  <td>16.13</td>
+  <td>&lt;0.0001</td>
+</tr>
+<tr>
+  <td>sposttreat</td>
+  <td>B</td>
+  <td>−0.02199</td>
+  <td>0.00365</td>
+  <td>−6.03</td>
+  <td>&lt;0.0001</td>
+</tr>
+<tr>
+  <td>size</td>
+  <td>B</td>
+  <td>0.05115</td>
+  <td>0.000627</td>
+  <td>81.56</td>
+  <td>&lt;0.0001</td>
+</tr>
+<tr>
+  <td>invrec</td>
+  <td>B</td>
+  <td>−0.05604</td>
+  <td>0.0054</td>
+  <td>−10.38</td>
+  <td>&lt;0.0001</td>
+</tr>
+<tr>
+  <td>nbs</td>
+  <td>1</td>
+  <td>−0.02366</td>
+  <td>0.00271</td>
+  <td>−8.73</td>
+  <td>&lt;0.0001</td>
+</tr>
+<tr>
+  <td>ngs</td>
+  <td>B</td>
+  <td>0.02789</td>
+  <td>0.00286</td>
+  <td>9.76</td>
+  <td>&lt;0.0001</td>
+</tr>
+</tbody>
+</table>
+<p>后半表延续原字段名和显示精度。</p>
+<table>
+<thead>
+<tr>
+  <th>原变量</th>
+  <th>原附列</th>
+  <th>估计值</th>
+  <th>标准误</th>
+  <th>检验量</th>
+  <th>p 值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>mb</td>
+  <td>B</td>
+  <td>0.000341</td>
+  <td>0.000126</td>
+  <td>2.7</td>
+  <td>0.0069</td>
+</tr>
+<tr>
+  <td>loss</td>
+  <td>B</td>
+  <td>0.02176</td>
+  <td>0.00248</td>
+  <td>8.77</td>
+  <td>&lt;0.0001</td>
+</tr>
+<tr>
+  <td>lev</td>
+  <td>1</td>
+  <td>−0.03956</td>
+  <td>0.0034</td>
+  <td>−11.65</td>
+  <td>&lt;0.0001</td>
+</tr>
+<tr>
+  <td>merge</td>
+  <td>B</td>
+  <td>0.07243</td>
+  <td>0.01184</td>
+  <td>6.12</td>
+  <td>&lt;0.0001</td>
+</tr>
+<tr>
+  <td>ffinance</td>
+  <td>B</td>
+  <td>−0.00235</td>
+  <td>0.00224</td>
+  <td>−1.05</td>
+  <td>0.2948</td>
+</tr>
+<tr>
+  <td>unemploy</td>
+  <td>B</td>
+  <td>0.00833</td>
+  <td>0.00189</td>
+  <td>4.41</td>
+  <td>&lt;0.0001</td>
+</tr>
+<tr>
+  <td>population</td>
+  <td>B</td>
+  <td>−0.64119</td>
+  <td>0.03949</td>
+  <td>−16.24</td>
+  <td>&lt;0.0001</td>
+</tr>
+</tbody>
+</table>
+<p>一行是一个原输出变量，不能把各行系数直接相加。读 <code>sposttreat</code>：在上述列解释成立时，估计方向为负，量级约 −0.022。用显示值相除约为 −6.02，与表中 −6.03 的细差可来自舍入。</p>
+<p><strong>💡 换个说法（笔记补充）：从样本波动走到统计证据。</strong> 下面是常见零系数检验的读表直觉，仍以本表暂定列解释成立为前提，不推定其抽样、标准误算法或具体检验分布。</p>
+<h4 id="heading-12">系数估计会怎样波动</h4>
+<p>系数由当前样本估计；如果按相同设计换一批样本，估计可能略有不同，甚至正负改变。标准误（Standard Error，SE）衡量这种系数估计波动的尺度，单位与系数相同。</p>
+<p>它不是一条销售预测错多少，也不是 §2.5 的 MAE；后者比较的是预测销售和实际销售。</p>
+<h4 id="heading-13">先假设系数为零，再比较观察结果</h4>
+<p>零假设（Null Hypothesis，<span class="math">H_0</span>）在这里是假设该变量的真实系数为零：模型中其他条件相同时，没有该项系数关系。即使这个假设成立，有限样本也可能估出小正数或小负数；所以负号本身不足以否定零。</p>
+<h4 id="heading-14">离零有多少个标准误</h4>
+<p>在常见布局下，检验量（Test Statistic）用“估计系数减零，再除以标准误”，看估计离零有多少个 SE。<code>sposttreat</code> 的显示值给出 <span class="math">(-0.02199-0)/0.00365\approx-6.02</span>，即在零下约 6 个 SE。</p>
+<p>表中 −6.03 的微差可来自未显示位数的舍入。检验量不带原变量单位；具体是不是 t 检验仍未知。</p>
+<h4 id="heading-15">零假设下，这样的结果有多常见</h4>
+<p>p 值（p-value）是假设零系数和相应检验模型成立时，出现至少同样极端检验结果的概率。“极端”指按该检验定义离零同样远或更远；若为双侧检验，还会计入另一方向。</p>
+<p>小 p 值表示这种结果在上述假设下较少见，因此可成为反对零假设的证据；它不是“真实系数为零的概率”。原表缺检验细节，本笔记不另算 p 值。</p>
+<p id="statistics-tail">改一个条件便能检验这条逻辑：仍假设系数估计为 −0.02199，但 SE 扩大 10 倍到 0.0365。标准化距离变成约 −0.602，只离零约 0.6 个 SE。同一负数相对于估计波动变小了，单靠负号更不能认定有稳定负关系。此例只比较距离，不补造新的 p 值、自由度或显著结论。</p>
+<p><code>ffinance</code> 保留原图的两个 <code>f</code>，含义未知。该行 p 值 0.2948 的有限判断见下文。样本量、估计方法和假设未给，不能补出置信区间或因果解释。</p>
+<p>仅以 <code>sposttreat</code> 行作条件式读法：若模型是线性概率模型，且 <code>sposttreat</code> 编码由 0 变 1，其系数 −0.02199 约对应 −2.199 个百分点；若模型是 Logit，该系数作用在对数胜算上，不能直接作百分点解释。原页不足以判定采用哪一种，不能把这段的 −0.02199 套到刚提到的 <code>ffinance</code> 行。</p>
+<p><code>ffinance</code> 一行的 p 值为 0.2948。若事先选用常见的 5% 显著性阈值（Significance Level，即 0.05），只有 p 值低于该阈值才按这条规则拒绝零假设。0.2948 大于 0.05，因此在对应检验假设下，证据不足以拒绝系数为零；这不是证明它没有作用。其他变量的缩写、政策定义与控制组也没有提供，不猜名称。</p>
+<p>p.23 是时间相对位置图。横轴从 <code>t-4</code> 到 <code>=t+5</code>，纵轴约 −0.08 至 0.02，红线是零，圆点是估计，竖线是不确定性区间。原片未给精确坐标和区间置信水平，不能从像素重建精确数据。</p>
+<p><strong>读图步骤</strong>：</p>
+<ol>
+<li>先找到零线，再看每个圆点在它上方还是下方。</li>
+<li>再看竖线是否跨过零；靠近 <code>t-3</code> 的点虽接近零，区间仍覆盖多种正负值。</li>
+<li>后段圆点总体更负，<code>t+1</code> 之后若干区间在零线下；这只是原图的定性视觉读法。</li>
+<li>要判断政策因果效应，还需事件定义、参照期、样本、模型及识别假设，原图没有给齐。</li>
+</ol>
+<p><strong>💡 换个说法（笔记补充）</strong>：若估计值为 −0.02、区间从 −0.05 到 0.01，方向估计虽负，区间仍容许零和正值；不能只看圆点就说作用已确定。</p>
+<p><strong>🎙️ 课堂补充</strong>：待转录补充；这些嵌入图已回看原页，不是空白页。</p>
+<p><strong>常见误解</strong>：拟合、显著与因果不相同。置信区间重叠零也不是“作用一定为零”。</p>
+<p><strong>与其他概念的关系</strong>：与 §2.5 的预测误差互补：系数检验关注参数证据，测试误差关注新样本预测。</p>
+<p><strong>所以呢</strong>：能读数不代表能替缺失的模型与变量定义补结论。</p>
+<h3 id="heading-16">2.7 隐私与安全：先控制资料去哪（讲义 p.24–26）</h3>
+<p>发票里可能有银行账号和客户身份。把原件交给 AI 前，先决定谁可以处理什么。</p>
+<p><strong>是什么</strong>：隐私（privacy）关注个人资料的使用目的与范围；安全（security）关注防止未授权读取、修改和泄漏。</p>
+<p><strong>为什么需要它</strong>：一次访问控制失败，可能让用于预测的财务数据变成对外泄漏资料。单独加密不能决定谁有权解密。</p>
+<p><strong>课件原例</strong>：客户数据、交易记录属于敏感输入；风险包括泄漏、越权和滥用。p.26 提出加密、严格访问控制、定期安全审查。</p>
+<p><strong>💡 换个说法（笔记补充）</strong>：分析员只需要月份、品类、金额，就先删除姓名和账号。传输和存储加密。分析员仅有这些列的读取权限，并保留访问日志。复核者再抽查权限是否与工作相符。</p>
+<p>如果确实要核发票身份，另外使用授权流程和受控原件。不能用“所有人都可看”来换取模型方便。</p>
+<p><strong>🎙️ 课堂补充</strong>：待转录补充。</p>
+<p><strong>常见误解</strong>：去姓名仍可能经交易组合识别个人。加密、最小化、权限和日志分别处理不同风险。</p>
+<p><strong>与其他概念的关系</strong>：输入范围会约束 §2.8 公平审查可收集的属性；是否需要这些属性须单独确定目的与权限。</p>
+<p><strong>所以呢</strong>：先缩小输入和访问范围，再用记录证明控制实际执行。</p>
+<h3 id="heading-17">2.8 偏差与公平：总体准不代表每组都准（讲义 p.27–29）</h3>
+<p>模型可能在大多数交易上正确，却总把某一类正常交易标成异常。总体准确率会把这个问题藏起来。</p>
+<p><strong>是什么</strong>：偏差（bias）可来自训练数据覆盖不均、历史标签问题或不适当的判断规则。公平（fairness）要求明确受影响对象、比较指标与可接受差异。</p>
+<p><strong>为什么需要它</strong>：错误标记可能增加某类客户的检查负担。若训练数据只反映一类群体，模型未必适用于其他群体。</p>
+<p><strong>课件原例</strong>：p.27–28 用代表性不足解释招聘、贷款或审计的歧视风险；p.29 建议数据多样性、统计审查与多元团队。</p>
+<p><strong>💡 换个说法（笔记补充）</strong>：A 类 100 笔正常交易中误报 5 笔，B 类 20 笔正常交易中误报 4 笔。比较原始误报数会说 A 更多，但误报比例分别为 5% 与 20%。</p>
+<p>先固定分母为“本组实际正常交易”，再以误报笔数除以该分母。B 的比例高 15 个百分点，但样本只有 20 笔，应报告不确定性并检查交易条件是否可比。</p>
+<p><strong>处理顺序</strong>：确认标签真实性，分组查误报与漏报，再调查覆盖差异。重新采样或改阈值后，须同时看其他组与业务成本，不能只追求一个公平指标相等。</p>
+<p><strong>🎙️ 课堂补充</strong>：待转录补充。</p>
+<p><strong>常见误解</strong>：换成多元团队不自动修好模型；仍需量化诊断、具体改动与复查。</p>
+<p><strong>与其他概念的关系</strong>：与数据质量相连，但公平还涉及业务影响；不是只看一项模型得分。</p>
+<p><strong>所以呢</strong>：先写清比较谁、分母是什么，再讨论差异是否有合理业务解释。</p>
+<h3 id="heading-18">2.9 透明与解释：让人能复核理由（讲义 p.30–31）</h3>
+<p>财务团队收到一条高风险提示后，需要知道该查哪张凭证。只显示“模型分数很高”无法指导工作。</p>
+<p><strong>是什么</strong>：透明性（transparency）让人知道数据、模型、适用范围和责任安排。可解释性（explainability）帮助说明输出与哪些输入或规则有关。</p>
+<p><strong>为什么需要它</strong>：复核者必须判断结果是否由正确依据产生。复杂模型可能更难解释，但复杂不保证更准。</p>
+<p><strong>课件原例</strong>：p.30 讨论黑箱与准确性/解释的取舍；p.31 建议简单模型、特征重要性图与全面文档。</p>
+<p><strong>💡 换个说法（笔记补充）</strong>：§2.5 的直线可解释为“广告支出增加 500，预测销售增加约 672.41”。再给训练范围与测试误差，读者才知道这句解释支持什么。</p>
+<p>若某模型把供应商编号当成强预测变量，应检查是否只是记住供应商，而非识别交易风险。特征重要性可以提示检查方向，不能证明该变量造成风险。</p>
+<p><strong>🎙️ 课堂补充</strong>：待转录补充。</p>
+<p><strong>常见误解</strong>：模型生成一段流畅理由不等于解释忠实。要能回到输入、版本和可核计算。</p>
+<p><strong>与其他概念的关系</strong>：解释材料给 §2.10 的审核责任提供证据；缺日志时，事后很难重现。</p>
+<p><strong>所以呢</strong>：解释要帮助复核一个具体输出，而不只是描述模型的名字。</p>
+<h3 id="heading-19">2.10 责任与问责：谁有权确认结果（讲义 p.32–33）</h3>
+<p>如果 AI 把正常交易标成违规，不能只说“机器决定了”。应先有清楚的复核人与升级路径。</p>
+<p><strong>是什么</strong>：责任（responsibility）是执行某项工作；问责（accountability）是对最终决策和解释承担明确的组织职责。</p>
+<p><strong>为什么需要它</strong>：管理者、开发者、数据人员各掌握不同环节。没有分工，问题会在交接时无人处理。</p>
+<p><strong>课件原题</strong>：</p>
+<blockquote>
+<p>Clarify accountability for AI-driven decisions: should it lie with management, developers, or data scientists?</p>
+</blockquote>
+<p>中文题意：AI 决策的问责应放在管理者、开发者还是数据科学家？原题要求澄清分工，没有给唯一指定角色。</p>
+<p><strong>⚪ 参考作答（笔记推断）</strong>：</p>
+<ol>
+<li>管理层指定业务决策负责人，确定用途、容许风险与最终审批权。</li>
+<li>开发者负责实现、版本和技术故障处置，保存可复现日志。</li>
+<li>数据人员负责数据质量、建模与分组评估，说明已知限制。</li>
+<li>业务复核者检查具体凭证，有权暂停自动流程并升级异常。</li>
+</ol>
+<p>这不是替某种法域作法律责任划分。p.33 提出的框架、定期审核与审计，是落实组织问责的控制。</p>
+<p><strong>英文参考答案（笔记自拟）</strong>：</p>
+<blockquote>
+<p>Accountability should be explicitly assigned to an authorized business owner, while developers and data scientists retain defined responsibilities for implementation, data quality and validation. Human review, escalation and audit records should support each consequential decision.</p>
+</blockquote>
+<p><strong>💡 换个说法（笔记补充）</strong>：发票编码系统发现异常，只进入复核队列；财务负责人确认后才入账。若复核员没有暂停权限，“人在流程里”仍可能只是形式。</p>
+<p><strong>🎙️ 课堂补充</strong>：待转录补充。</p>
+<p><strong>常见误解</strong>：多人参与不代表无人最终负责；也不代表某一个人承担全部技术、数据和业务工作。</p>
+<p><strong>与其他概念的关系</strong>：隐私、公平和解释分别是问责者要查的证据维度。</p>
+<p><strong>所以呢</strong>：先明确谁审批、谁修复、谁能停止，再让系统进入业务流程。</p>
+<h3 id="heading-20">2.11 未来趋势：把愿景改成可验条件（讲义 p.34–39）</h3>
+<p>讲义展望自动化与实时分析。判断一个未来方案是否有用，要看它需要哪些前提。</p>
+<p><strong>是什么</strong>：本节是课件提出的发展方向，不是截至下载日已实现的产品保证。</p>
+<p><strong>为什么需要它</strong>：技术愿景可以启发项目选题，但不能取代部署证据和效果评估。</p>
+<p><strong>课件原例与条件</strong>：</p>
+<ul>
+<li><p>p.35 自动化：从发票提取到入账减少重复操作。仍需校验金额、重复票和审批；岗位可能转向复核与分析，转型需要培训。</p>
+</li>
+<li><p>p.36 预测分析：大数据、实时指标和情景分析支持决策。输入延迟或口径不一致时，“实时”只会更快传播旧错误。</p>
+</li>
+<li><p>p.37 AI 与区块链结合（Integration with Blockchain technology）：链上交易记录进入 AI 分析，系统标出异常或潜在欺诈，交给审计人员复核。原页的 Security and Fraud Prevention（安全与欺诈预防）、Audit Efficiency（审计效率）提出实时发现与加快核查的用途；可追溯记录帮助复核者回查交易，智能合约按预定条件执行。</p>
+<p>这里描述的是讲义愿景，没有实测速度或部署证据。异常提示不证明欺诈，仍须核原始凭证和业务事实；链上记录可追溯不证明链下发票真实，合约和权限也可能有漏洞。原页的“确保合规”表述不能当成 AI 或区块链自动保证合规。</p>
+</li>
+<li><p>p.38 个性化服务：按客户情况解释财务信息、回应查询。建议需核来源、适用条件与授权；自然语言回复不能保证准确。</p>
+</li>
+<li><p>p.39 持续学习：从新数据和反馈更新系统。需批准更新、隔离评估、保留旧版和回滚，不能自动假定越学越好。</p>
+</li>
+</ul>
+<p>下面是笔记补充的受控更新流程，箭头代表版本处理顺序。</p>
+<pre class="mermaid" id="diagram-3">flowchart TD
+ A[收集新数据和纠错反馈] --&gt; B[检查标签与权限]
+ B --&gt; C[训练候选版本]
+ C --&gt; D{独立验证满足要求?}
+ D --&gt;|否| E[保留旧版并查原因]
+ D --&gt;|是| F[授权发布并监控]
+ F --&gt; G{出现重大偏差?}
+ G --&gt;|是| H[回滚并登记事故]
+ G --&gt;|否| A
+</pre>
+<p><strong>💡 换个说法（笔记补充）</strong>：新模型对一种发票更准，却把另一类正常票的误报率从 5% 提到 20%。应在独立验证处停下，先分析代价，而不是自动上线。</p>
+<p>看不到图时，主线就是“收集、检查、候选、验证、批准、监控”。反馈必须重新经过验证，不能直接改动生产决策。</p>
+<p><strong>🎙️ 课堂补充</strong>：待转录补充。</p>
+<p><strong>常见误解</strong>：区块链不保证原始事实真实；持续训练也不保证公平、准确或自动合规。</p>
+<p><strong>与其他概念的关系</strong>：把 §2.7–2.10 的控制放进模型生命周期，才构成可管理的系统。</p>
+<p><strong>所以呢</strong>：评估趋势时同时写出依赖、失败路径和负责的人。</p>
+<h2 id="heading-21">3. 一图看懂</h2>
+<p>下面每行是项目从想法到使用的一关。第二列是要回答的问题，第三列是应留下的证据。</p>
+<table>
+<thead>
+<tr>
+  <th>阶段</th>
+  <th>核心问题</th>
+  <th>证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>定任务</td>
+  <td>预测价格还是收益？</td>
+  <td>目标与观察窗</td>
+</tr>
+<tr>
+  <td>备数据</td>
+  <td>当时是否已经知道？</td>
+  <td>身份/公开时点</td>
+</tr>
+<tr>
+  <td>训模型</td>
+  <td>怎样得到参数？</td>
+  <td>代码/训练版本</td>
+</tr>
+<tr>
+  <td>核结果</td>
+  <td>对未见记录错多少？</td>
+  <td>留出误差/基线</td>
+</tr>
+<tr>
+  <td>入流程</td>
+  <td>错了谁处理？</td>
+  <td>权限/复核/日志</td>
+</tr>
+<tr>
+  <td>再更新</td>
+  <td>新版真的更合适？</td>
+  <td>验证/批准/回滚</td>
+</tr>
+</tbody>
+</table>
+<p>读“核结果”一行：模型不能只报训练系数，还要用未参加拟合的记录检验误差。</p>
+<h2 id="heading-22">4. 速查表</h2>
+<p>下表供复习定位；每行给问题、最短操作和正文位置。</p>
+<table>
+<thead>
+<tr>
+  <th>问题</th>
+  <th>操作</th>
+  <th>位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>目标混用</td>
+  <td>固定价格或收益定义</td>
+  <td>§2.1–2.2</td>
+</tr>
+<tr>
+  <td>身份错配</td>
+  <td>先映射，再按公开时点配对</td>
+  <td>§2.3</td>
+</tr>
+<tr>
+  <td>模型太准</td>
+  <td>查未来特征与未成熟标签</td>
+  <td>§2.3</td>
+</tr>
+<tr>
+  <td>价格换算</td>
+  <td>先辨收益口径；简化总收益反推价须扣现金股息</td>
+  <td>§2.4</td>
+</tr>
+<tr>
+  <td>代码报错</td>
+  <td>同一文件顺序运行；查依赖、引号和列名</td>
+  <td>§2.5</td>
+</tr>
+<tr>
+  <td>结果失信</td>
+  <td>分开方向、误差与因果</td>
+  <td>§2.6</td>
+</tr>
+<tr>
+  <td>伦理控制</td>
+  <td>查资料、分组、理由、责任</td>
+  <td>§2.7–2.10</td>
+</tr>
+</tbody>
+</table>
+<h2 id="heading-23">5. 双语术语卡</h2>
+<p>一行是一项本讲术语；英文定义为笔记自拟，首次位置可回到完整例子。</p>
+<table>
+<thead>
+<tr>
+  <th>中文</th>
+  <th>English</th>
+  <th>考试可用英文定义</th>
+  <th>首现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>特征</td>
+  <td>Feature</td>
+  <td>An input available at the prediction time.</td>
+  <td>§2.2</td>
+</tr>
+<tr>
+  <td>目标</td>
+  <td>Target</td>
+  <td>The outcome a model is designed to predict.</td>
+  <td>§2.2</td>
+</tr>
+<tr>
+  <td>前视偏差</td>
+  <td>Look-ahead bias</td>
+  <td>Use of information unavailable at the forecast date.</td>
+  <td>§2.3</td>
+</tr>
+<tr>
+  <td>残差</td>
+  <td>Residual</td>
+  <td>The observed outcome minus its fitted or predicted value.</td>
+  <td>§2.5</td>
+</tr>
+<tr>
+  <td>平均绝对误差</td>
+  <td>MAE</td>
+  <td>The mean absolute difference between actual and predicted outcomes.</td>
+  <td>§2.5</td>
+</tr>
+<tr>
+  <td>问责</td>
+  <td>Accountability</td>
+  <td>Explicit ownership of a decision and its justification.</td>
+  <td>§2.10</td>
+</tr>
+</tbody>
+</table>
+<h2 id="heading-24">6. 考点预判与答题框架</h2>
+<p>本讲无转录，未登记教授明示考点。以下为 🟡 ILO 反推或 ⚪ 笔记推断，不能当作考试通知。</p>
+<ul>
+<li>🟡 结合会计与 AI：用“目标—输入—训练—预测—验证”回答一项财务预测如何完成。</li>
+<li>🟡 解释 AI 会计应用：指出输入口径、时间泄漏和人类复核的作用。</li>
+<li>⚪ 代码诊断：原 Python 列名错误与原 SAS 连接条件是适合自测的材料缺陷。</li>
+<li>⚪ 伦理案例：先说受影响对象，再给风险机制、具体控制和剩余限制。</li>
+</ul>
+<p>英文参考框架（笔记自拟）：</p>
+<blockquote>
+<p>Define the target and the forecast date first. Use only information available at that date, fit the model on historical data, and evaluate it on unseen observations. Report errors, limitations and the human review process before applying the output.</p>
+</blockquote>
+<h2 id="heading-25">7. 自测</h2>
+<p><strong>1. 训练/预测图中，新输入能带未来答案吗？为什么？</strong></p>
+<details><summary>答案</summary>
+<p>不能。未来答案要等观察窗结束后才知道；它用于评估而非实际预测输入。若包含它，走图时破坏了预测日边界。</p>
+</details>
+<p><strong>2. B 公司第一行能直接用上一行 A 的资产算 AG 吗？</strong></p>
+<details><summary>答案</summary>
+<p>不能。A 的资产不是 B 的前期。应按公司与时间排序，组首行处理为缺前期；还要核连续期间。</p>
+</details>
+<p><strong>3. 150 美元乘以 1.082 得到什么？若 8.2% 改为总收益且另收现金股息 3 美元/股，怎样还原期末价？能证明模型准确吗？</strong></p>
+<details><summary>答案</summary>
+<p>得到 162.30 美元。若 8.2% 是对应期间价格收益，它才是这样换算的期末价格。若改为简化总收益，且股数不变、股息不再投资、没有拆股/费用/税费，则 162.30 是股票加现金的最终财富；扣去 3 美元现金，期末价为 159.30 美元/股。价格收益为 6.2%，股息收益为 2%，合计 8.2%。股息条件是笔记补充，不能改称原模型的口径；乘法正确也不验证模型和输入。</p>
+</details>
+<p><strong>4. 不重新训练，只把广告输入从 3,000 改为 3,500，预测变化多少？</strong></p>
+<details><summary>答案</summary>
+<p>约增加 672.41 个原销售单位。用斜率 1.344827586 乘以 500。这里是模型内变化，不证明因果回报。</p>
+</details>
+<p><strong>5. p.23 的圆点为负，但竖线穿过零，可以写“确定负效应”吗？</strong></p>
+<details><summary>答案</summary>
+<p>不能。点估计为负，而不确定性范围仍允许零或正值。原图还缺区间水平与模型，不能补出因果结论。</p>
+</details>
+<p><strong>6. A 正常交易误报 5/100，B 误报 4/20，哪组比例更高？</strong></p>
+<details><summary>答案</summary>
+<p>B 为 20%，A 为 5%，相差 15 个百分点。需继续查可比性和小样本不确定性，不能只比较误报笔数。</p>
+</details>
+<p><strong>7. 更新图中，新版整体误差更小、但一组误报明显变差，应走哪条路？</strong></p>
+<details><summary>答案</summary>
+<p>先在独立验证处检查预定的分组与风险要求。未满足则保留旧版、查原因，不能仅凭总误差直接发布。</p>
+</details>
+<h2 id="heading-26">8. 讲义页码映射</h2>
+<p>下表覆盖 39 页；页码为 PowerPoint 幻灯片序号。封面和议程单独列明，其他页均有 §2 解释。</p>
+<table>
+<thead>
+<tr>
+  <th>源页</th>
+  <th>内容</th>
+  <th>正文位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>p.1</td>
+  <td>封面</td>
+  <td>标题；封面例外</td>
+</tr>
+<tr>
+  <td>p.2</td>
+  <td>三项议程</td>
+  <td>§0、§2.1 开始</td>
+</tr>
+<tr>
+  <td>p.3–6</td>
+  <td>学习过程与金融预测</td>
+  <td>§2.1–2.2</td>
+</tr>
+<tr>
+  <td>p.7–9</td>
+  <td>工具与 SAS 过程</td>
+  <td>§2.4</td>
+</tr>
+<tr>
+  <td>p.10–12</td>
+  <td>预测任务与特征</td>
+  <td>§2.2</td>
+</tr>
+<tr>
+  <td>p.13–14</td>
+  <td>数据准备原示意</td>
+  <td>§2.3</td>
+</tr>
+<tr>
+  <td>p.15–18</td>
+  <td>训练、评分、给定结果与限制</td>
+  <td>§2.4</td>
+</tr>
+<tr>
+  <td>p.19–20</td>
+  <td>Python 广告与销售</td>
+  <td>§2.5</td>
+</tr>
+<tr>
+  <td>p.21–23</td>
+  <td>SAS 系数与 Stata 图</td>
+  <td>§2.6</td>
+</tr>
+<tr>
+  <td>p.24–26</td>
+  <td>伦理概览与隐私安全</td>
+  <td>§2.7</td>
+</tr>
+<tr>
+  <td>p.27–29</td>
+  <td>偏差、公平及缓解</td>
+  <td>§2.8</td>
+</tr>
+<tr>
+  <td>p.30–31</td>
+  <td>透明、解释及改进</td>
+  <td>§2.9</td>
+</tr>
+<tr>
+  <td>p.32–33</td>
+  <td>责任问题与框架</td>
+  <td>§2.10</td>
+</tr>
+<tr>
+  <td>p.34–39</td>
+  <td>五类趋势</td>
+  <td>§2.11</td>
+</tr>
+</tbody>
+</table>
+<h2 id="heading-27">9. 延伸与勘误</h2>
+<h3 id="heading-28">9.1 课堂覆盖边界</h3>
+<p>无本讲转录，不能判断哪页课上略过。讲义提前发布与本人实际出席分别记录。</p>
+<h3 id="heading-29">9.2 课上讲了但课件没有</h3>
+<p>待转录补充。本轮没有补造教授原话或考试暗示。</p>
+<h3 id="heading-30">9.3 原课件缺陷</h3>
+<ul>
+<li>p.10–11 写预测价格，p.14–17 实际按收益训练/换算；须统一目标。</li>
+<li>p.13–14 的公司/证券身份、财年/日期不能未经映射直接等同。</li>
+<li><code>lag</code> 需要排序及组边界；<code>lead(price,12)</code> 不能视作已验证的普通 SAS DATA step 语法。</li>
+<li>p.13 未形成 SIZE/MOM；p.15 注释 LASSO 与实际 <code>selection=lar</code> 不同。</li>
+<li>p.15–17 没有完整数据、模型系数或真实 SAS 运行记录，8.2% 无法由给定部分模型推出。</li>
+<li>p.19–20 弯引号及列名不一致已在教学副本校正，原件保持只读。</li>
+<li>p.22 缺列标题/模型/样本及缩写定义；p.23 缺精确数据、置信水平与事件定义。保留未知。</li>
+</ul>
+<h3 id="heading-31">9.4 外部核对与可复现附件</h3>
+<p>🔗 SAS 官方 <a href="https://support.sas.com/documentation/cdl/en/lefunctionsref/63354/HTML/default/n0l66p5oqex1f2n1quuopdvtcjqb.htm">LAG 文档</a>说明队列与调用条件；<a href="https://support.sas.com/kb/36/199.html">LEAD 等价实现</a>展示前瞻取行的替代方法；<a href="https://support.sas.com/documentation/cdl/en/statug/63033/HTML/default/statug_glmselect_a0000000217.htm">LASSO 选择文档</a>区分该选择方法。获取日：2026-10-22。它们核对语法机制，不证明本讲原 SAS 已成功运行。</p>
+<p>本讲已有 Python 校正版与结果：<a href="/vault/AC6761_Artificial_Intelligence_Accounting/notes/figures/m11-forecast/sales-regression.py">绘图复算脚本</a>、<a href="/vault/AC6761_Artificial_Intelligence_Accounting/notes/figures/m11-forecast/sales-regression-results.json">已有实际结果</a>。该绘图脚本会在脚本所在目录写图和 JSON，不要直接在正式图目录运行；本次新手入口使用 §2.5 的只打印程序。历史本地 Anaconda 结果及本次入口实跑分别留证，均未安装新环境。MAE 约 125、基线 MAE 2,250；SAS/Stata 未运行。</p>
+<h3 id="heading-32">9.5 原题及演示完成边界</h3>
+<p>p.10 研究问题在 §2.1–2.4 给出条件式回答：可建立预测研究，但材料不足以证明真实有效性。p.32 问责题已保留英文与完整参考作答。p.13–20 属给定演示，原代码全文另保留在相邻折叠块；校正版与原文分别标注。p.21–23 的实证模型细节受阻，不将定性读图写成精确复现。</p>
+<h3 id="heading-33">9.6 视觉与材料状态</h3>
+<p>原讲义 39 页已导出检查版面，p.19–23 已逐页放大回看。原件中的嵌入图有正文转录/解释，不把文本抽取为空当作没有内容。新图与正文最终显示按本批实质核对记录登记；浏览器同源预览与 Obsidian 实际阅读视图分别记录。</p>
+<h3 id="heading-34">9.7 变更记录</h3>
+<p>2026-10-22：新建讲义版 v0.9，39 页映射；Python 数据例已实际运行，价格换算已复算；未融合转录、未验证真实金融策略、未代填本人学习状态。</p>
+</main><script src="/runtime/katex/dist/katex.min.js"></script><script>
+window.mathErrors=[];document.querySelectorAll('.math').forEach(el=>{try{katex.render(el.textContent,el,{displayMode:el.classList.contains('math-block'),throwOnError:true,strict:false})}catch(e){window.mathErrors.push(String(e))}});
+</script><script type="module">import mermaid from '/runtime/mermaid/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'neutral',flowchart:{htmlLabels:true}});window.diagramErrors=[];try{await mermaid.run({querySelector:'.mermaid'})}catch(e){window.diagramErrors.push(String(e))}window.previewReady=true;</script></html>

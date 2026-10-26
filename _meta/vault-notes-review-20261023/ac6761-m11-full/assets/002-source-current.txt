@@ -1,0 +1,617 @@
+=== p.1 ===
+AC6761 Artificial Intelligence Accounting
+Chapter 11 Hands-on AI Application, Ethical Considerations and Future Trends 
+of AI
+
+=== p.2 ===
+Machine Learning for Financial Forecasting
+Ethics in AI
+Future Trend of AI
+2
+Agenda
+
+=== p.3 ===
+What is Machine Learning?​
+Traditional Programming:​
+​​
+​Input:​
+​ Data + Rules/Program
+​
+​Output:​
+​ Answers
+​
+​Machine Learning:​
+​​
+​Input:​
+​ Data + Answers
+​
+​Output:​
+​ Rules/Model
+3
+
+=== p.4 ===
+Financial Forecast & Machine Learning
+E.g., 
+Forecasting Stock Price:​
+​ Using historical data where we know the final price to predict future prices. 
+Supervised Learning: Algorithm learns from ​
+​labelled data​
+​. 
+The relationship between historical financial data and stock price (labelled data) is used to train AI. 
+Financial forecast is a typical application of Supervised Learning. 
+4
+
+=== p.5 ===
+The Supervised Learning Process​
+Core Idea:​​ Learn a function (a ​​model​​) that maps input variables (X) to an output variable (Y).
+Process Flowchart:​​​​
+Historical Data:​​ Collect data where we know both the ​​Features (X variables)​​ and the ​​Target (Y variable)​​.
+​​Training:​​ The algorithm 
+analyzes
+ the data to find the "best" mathematical relationship between X and Y. This creates the ​​model​​.
+​​Prediction:​​ Use the trained model with ​​new X data​​ (where Y is unknown) to ​​forecast the future Y​​.
+5
+
+=== p.6 ===
+Example
+​​X Variables (Features):​​ [Book-to-Market Ratio, Company Size, Profitability]
+​​Y Variable (Target):​​ Next Year's Stock Return
+​​Model:​​ Predicted Return = f(Book-to-Market, Size, Profitability)
+6
+
+=== p.7 ===
+Tools for Machine Learning Forecasting​
+Tool
+Type
+Key Feature for Forecasting
+​
+​Python
+Open-Source Programming
+Highly flexible, vast library of algorithms, industry standard for AI research.
+​
+​R​
+​
+Open-Source Programming
+Excellent for statistical analysis and prototyping new models.
+​
+​SAS​
+​
+Commercial Software
+​
+​Enterprise-grade reliability​
+​, excellent for handling large datasets, strong emphasis on model validation and deployment.
+​
+​Stata​
+​
+Commercial Software
+Popular in econometrics, strong for panel data analysis, but less focused on modern ML.
+7
+
+=== p.8 ===
+Introduction to SAS for Machine Learning
+What is SAS?​​
+A software suite for ​​advanced analytics, multivariate analysis, and predictive 
+modeling
+​​.
+Uses a procedural language where you call pre-defined routines (​​PROCEDURES​​ or ​​PROCs​​).
+8
+
+=== p.9 ===
+Key SAS Procedures for Machine Learning:​
+PROC Name
+Purpose
+​​PROC REG​​
+Linear Regression
+The foundational predictive model.
+​​PROC LOGISTIC​​
+Classification (e.g., bankrupt/not bankrupt)
+​​PROC GLMSELECT​​
+​​Advanced regression with variable selection​​ (e.g., LASSO). ​​Prevents overfitting.​​
+​​PROC HPFOREST​​
+Random Forests - a powerful, non-linear ML algorithm.
+9
+
+=== p.10 ===
+Case Study: Predicting a Firm's Stock Price​
+Research Question:​​
+Can we use a firm's financial characteristics today to predict its stock price one year from now?
+10
+
+=== p.11 ===
+Our plan
+​​Define the Target (Y):​​ Stock Price in One Year
+​​Define the Features (X):​​ Firm's financial ratios from its annual report.
+​​Collect Data:​​ Historical data for many firms over many years.
+​​Train a Model:​​ Use SAS to find the relationship between X and Y.
+​​Make a Prediction:​​ Apply the model to a specific firm's latest data.
+11
+
+=== p.12 ===
+Step 1 — Defining Features (X) from Financial Theory​
+Category
+Predictor Variable (X)
+Rationale
+​
+​Value​
+​
+Book-to-Market Ratio (B/M)
+High B/M ("value" stocks) often outperform.
+​
+​Profitability​
+​
+Return on Equity (ROE)
+More profitable firms should have higher returns.
+​
+​Investment​
+​
+Asset Growth (AG)
+Firms growing assets too fast may have lower future returns.
+​
+​Momentum​
+​
+Prior 1-Year Return (MOM)
+Stocks with good recent performance may continue.
+​
+​Size​
+​
+Log of Market Capitalization (SIZE)
+Smaller firms may have higher expected returns.
+12
+
+=== p.13 ===
+Step 2 — SAS Code: Data Preparation
+/* 1. Import stock price data (e.g., from CRSP database) */
+ proc import datafile="/data/stock_prices.csv" out=prices 
+dbms
+=csv replace; run; 
+/*2. Import financial statement data (e.g., from 
+Compustat
+) */
+ proc import datafile="/data/financials.csv" out=financials 
+dbms
+=csv replace; run; 
+/* 3. Calculate the features (X variables) for each firm-year */
+ data features; set financials; by 
+gvkey
+ 
+fyear
+; 
+/* Group by firm and fiscal year */
+ 
+/* Calculate predictor variables */
+ BM = 
+bkvlps
+ / 
+prcc_f
+; 
+/* Book-to-Market Ratio */
+ ROE = 
+ni
+ / she; 
+/* Return on Equity */
+ AG = (at / lag(at)) - 1; 
+/* Asset Growth */
+ 
+/* ... calculate other variables ... */
+ keep 
+gvkey
+ 
+fyear
+ BM ROE AG; run;
+13
+
+=== p.14 ===
+/* 4. Calculate the target (Y variable): Next year's stock return */
+ data target; set prices; by 
+permno
+ date; 
+/* Group by stock and date */
+ 
+/* Calculate return from today to one year in the future */
+ 
+FutureReturn
+ = ( (lead(price, 12) / price) - 1 ); keep 
+permno
+ date 
+FutureReturn
+; run; 
+/* 5. Merge features and target into one dataset for 
+modeling
+ */
+ proc 
+sql
+; create table 
+model_data
+ as select a.*, b.BM, 
+b.ROE
+, b.AG from target as a left join features as b on 
+a.permno
+ = 
+b.gvkey
+ and 
+a.date
+ = 
+b.fyear
+; quit;
+14
+
+=== p.15 ===
+Step 3 — SAS Code: Building the ML Model​
+/* Split data into Training set (to build model) and Testing set (to validate it) */
+ data training testing; set 
+model_data
+; if 
+fyear
+ <= 2020 then output training; 
+/* Use older data to train */
+ else output testing; 
+/* Reserve recent data for testing */
+ run; 
+/* Use PROC GLMSELECT to train the model with LASSO */
+ 
+/* This procedure automatically selects the most important variables */
+ proc 
+glmselect
+ data=training; model 
+FutureReturn
+ = BM ROE AG SIZE MOM / 
+/* List of X variables */
+ selection=lar (choose=
+sbc
+) 
+stb
+; 
+/* Use LASSO to avoid overfitting */
+ output out=
+model_out
+ p=
+PredictedReturn
+; 
+/* Save the model's predictions */
+ store 
+work.forecast_model
+; 
+/* Save the model to disk */
+ run;
+​​Key Output:​​ A formula (model) like:
+Predicted Return = 0.05*BM + 0.03*ROE - 0.08*AG + ...
+15
+
+=== p.16 ===
+Step 4 — Making the Forecast for 2026​
+/* Create a dataset with Company XYZ's latest financials (2025) */
+ data xyz_2025; input BM ROE AG SIZE MOM; 
+datalines
+; 0.85 0.15 0.05 23.1 0.10 ; 
+/* These are XYZ's actual 2025 financial ratios */
+ run; 
+/* Use the PROCPLM to score (predict for) the new data */
+ proc 
+plm
+ restore=
+work.forecast_model
+; 
+/* Load the trained model */
+ score data=xyz_2025 out=
+xyz_scored
+ predicted=PredReturn2026; 
+/* Make prediction! */
+ run; 
+/* Calculate the predicted 2026 price */
+ data 
+final_forecast
+; set 
+xyz_scored
+; CurrentPrice2025 = 150; 
+/* Assume current price is $150 */
+ PredictedPrice2026 = CurrentPrice2025 * (1 + PredReturn2026); run; 
+/* Print the result */
+ proc print data=
+final_forecast
+; var CurrentPrice2025 PredReturn2026 PredictedPrice2026; run;
+16
+
+=== p.17 ===
+Final Output​​
+Current Price (2025)
+Predicted Return
+​​Predicted Price (2026)​​
+$150
++ 8.2%
+​
+​$162.30​
+17
+
+=== p.18 ===
+Summary & Caveats
+​
+​ML is Pattern Recognition:​
+​ We used historical patterns to inform a future prediction.
+​
+​SAS is an ML Tool:​
+​ It provides powerful, validated procedures for building predictive models.
+​
+​Process is Key:​
+​ Define target → Choose features → Prepare data → Train model → Predict.
+The Forecast is Not a Guarantee:​
+​ It is a statement based on historical relationships.
+​
+​Garbage In, Garbage Out:​
+​ The model's accuracy depends entirely on the quality of the data and the relevance of the chosen features.
+​
+​Markets Change:​
+​ Relationships that held in the past may break down in the future.
+@
+18
+
+=== p.19 ===
+Example of Python analyses
+Predicting sales using linear regression
+import pandas as pd
+import 
+numpy
+ as np
+from 
+sklearn.model_selection
+ import 
+train_test_split
+from 
+sklearn.linear_model
+ import 
+LinearRegression
+import 
+matplotlib.pyplot
+ as 
+plt
+# 
+data = {
+    ‘advertising expenditure': [1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500],
+    ‘
+销售额
+sales
+': [2000, 2500, 3000, 4000, 4500, 5000, 6000, 6500, 7000, 8000]
+}
+df = 
+pd.DataFrame
+(data)
+#
+X = df[[‘advertisement expenditure']]
+y = df[‘
+sales
+']
+# 
+X_train
+, 
+X_test
+, 
+y_train
+, 
+y_test
+ = 
+train_test_split
+(X, y, 
+test_size
+=0.2, 
+random_state
+=42)
+19
+
+=== p.20 ===
+# 
+model = 
+LinearRegression
+()
+model.fit
+(
+X_train
+, 
+y_train
+)
+#
+y_pred
+ = 
+model.predict
+(
+X_test
+)
+#
+plt.scatter
+(X, y, color='blue', label=‘
+actual sales data
+')
+plt.plot
+(
+X_test
+, 
+y_pred
+, color='red', label=‘
+predicted sales data
+')
+plt.xlabel
+(‘
+advertisement expenditure
+')
+plt.ylabel
+(‘
+sales
+')
+plt.legend
+()
+plt.title
+(‘sales prediction')
+plt.show
+()
+#
+print(
+f’regression
+ coefficient: {
+model.coef
+_[0]}, 
+intercept
+: {
+model.intercept
+_}’)
+@
+20
+
+=== p.21 ===
+Example of SAS analyses
+21
+
+=== p.22 ===
+Example of SAS analyses
+22
+
+=== p.23 ===
+Example of STATA analyses
+23
+
+=== p.24 ===
+Ethics in AI
+Data privacy and security
+Bias and fairness
+Transparency and explainability  
+Responsibility and accountability
+@ 
+24
+
+=== p.25 ===
+Data privacy and security – Key concerns
+AI systems often rely on large datasets, including sensitive financial information such as client data and transaction records.
+Risks include data breaches, unauthorized access, and misuse of sensitive information.
+25
+
+=== p.26 ===
+Data privacy and security – Best practices
+Implement data encryption to protect sensitive information.
+Establish strict access controls to limit who can view and manipulate data.
+Conduct regular security audits to identify and remediate vulnerabilities.
+26
+
+=== p.27 ===
+Bias and fairness - concept
+Bias in AI can arise from unrepresentative training data, leading to unfair or discriminatory outcomes.
+Example: An AI model trained predominantly on data from one demographic may not perform well for others, resulting in biased decisions.
+27
+
+=== p.28 ===
+Bias and fairness - Impact
+Biased algorithms can lead to discriminatory practices in areas like hiring, lending, or auditing, undermining trust in AI systems.
+Stakeholders may lose confidence in the accounting process if biases are detected.
+28
+
+=== p.29 ===
+Bias and fairness – Strategies for mitigation
+Use diverse datasets to train AI models, ensuring representation across different demographics.
+Regularly audit algorithms for bias using statistical methods and fairness metrics.
+Engage with diverse teams to provide varied perspectives during model development.
+29
+
+=== p.30 ===
+Transparency and explainability  - Challenges
+Complexity of Models
+Advanced AI models, like deep learning algorithms, can be highly complex, making it challenging to understand their decision-making processes.
+Trade-Offs Between Accuracy and Interpretability
+There’s often a trade-off between accuracy and interpretability. Complex models may perform better but are harder to explain. For example, a deep learning model may outperform a linear regression model in accuracy but lacks its interpretability.
+“Black Box” Nature of AI
+Many AI systems operate as “black boxes,” with internal workings that are not transparent to users. This lack of visibility can lead to 
+skepticism
+ and resistance to adoption.
+30
+
+=== p.31 ===
+Transparency and explainability  - Improvement
+Use simpler models, such as linear regression or decision trees, when possible for better interpretability.
+Create visualizations (e.g., feature importance graphs) to illustrate how decisions are derived.
+Provide comprehensive documentation of algorithms, the data used, and the rationale behind model choices.
+31
+
+=== p.32 ===
+Responsibility and accountability – who is responsible?
+Clarify accountability for AI-driven decisions: should it lie with management, developers, or data scientists?
+Establish clear guidelines on how responsibilities are allocated in AI applications.
+32
+
+=== p.33 ===
+Responsibility and accountability – Guidelines
+Develop a framework outlining roles and responsibilities regarding AI use and decision-making.
+Implement accountability measures such as regular reviews and audits of AI systems to ensure ethical compliance.
+33
+
+=== p.34 ===
+Key Trends Shaping the Future of AI in Accounting
+Increased automation
+Enhanced predictive analytics
+Integration with Blockchain technology
+Personalized client services
+Continuous learning and adaption
+34
+
+=== p.35 ===
+Increased automation
+Routine Task Automation
+ 
+AI will increasingly handle repetitive tasks such as data entry, invoice processing, and bank reconciliations, reducing the time and effort required from accountants.
+Example: Automated invoice processing systems that extract data from invoices and input it into accounting software with minimal human intervention.
+Impact on Workforce
+ 
+Traditional roles will evolve, leading to a shift in job responsibilities. Accountants will spend less time on mundane tasks and more on strategic activities.
+Reskilling Opportunities: Accountants will need training in AI tools, data analysis, and strategic advisory to adapt to new roles.
+35
+
+=== p.36 ===
+Enhanced predictive analytics
+Leveraging Big Data
+AI will utilize vast datasets to 
+analyze
+ trends, enabling firms to make informed predictions about financial performance.
+Machine Learning Models: Algorithms will identify patterns and forecast future outcomes, such as cash flow trends or revenue growth.
+Real-Time Insights
+Businesses will benefit from real-time analytics, allowing for timely decision-making based on current data rather than historical reports.
+Scenario Analysis: AI can simulate various financial scenarios, helping firms prepare for potential market changes or economic fluctuations.
+36
+
+=== p.37 ===
+Integration with Blockchain technology
+Improved Transparency
+Combining AI with blockchain technology can enhance the transparency of financial transactions, making it easier to track and verify transactions.
+Example: Smart contracts that automatically execute transactions when predefined conditions are met, reducing the need for manual oversight.
+Security and Fraud Prevention
+Blockchain’s decentralized nature adds a layer of security, making it harder for fraud to occur. AI can 
+analyze
+ blockchain data to detect anomalies and potential fraud in real time.
+Audit Efficiency: AI tools can quickly 
+analyze
+ blockchain records, streamlining the audit process and ensuring compliance.
+@
+37
+
+=== p.38 ===
+Personalized client services
+Tailored Recommendations
+AI will enable accountants to offer personalized financial advice by 
+analyzing
+ individual client data and preferences.
+Example: AI-driven platforms can suggest optimal investment strategies or tax-saving opportunities based on a client’s unique financial situation.
+Enhanced Communication
+Natural Language Processing (NLP) will facilitate more intuitive interactions between clients and AI systems, allowing clients to ask questions and receive instant, accurate responses.
+Chatbots and Virtual Assistants: These tools can handle client inquiries, provide updates on financial status, and assist with basic accounting tasks.
+38
+
+=== p.39 ===
+Continuous learning and adaption
+AI Systems that Learn
+Machine learning algorithms will continuously learn from new data, improving their accuracy and effectiveness over time.
+Adaptability: As market conditions and regulations change, AI systems can adjust their models to remain compliant and effective.
+Feedback Mechanisms
+Incorporating feedback loops into AI systems will allow for ongoing refinement and improvement, ensuring that the tools remain relevant and useful.
+User Engagement: Encouraging user feedback on AI outputs can help enhance system performance and address any ethical concerns.
+39
+
+=== SPEAKER NOTES ===
+[
+  {
+    "part": "ppt/notesSlides/notesSlide1.xml",
+    "text": ""
+  }
+]

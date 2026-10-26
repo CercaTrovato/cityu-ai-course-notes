@@ -1,0 +1,141 @@
+{
+  "shared_inputs": {
+    "revenue": "1000",
+    "cogs": "600",
+    "ni": "80",
+    "ca": "300",
+    "cl": "150",
+    "inventory_begin": "90",
+    "inventory_end": "110",
+    "prepaid": "20",
+    "cash_end": "110",
+    "ar_begin": "40",
+    "ar_end": "60",
+    "assets_begin": "800",
+    "assets_end": "1000",
+    "equity_begin": "450",
+    "equity_end": "550",
+    "liabilities_begin": "350",
+    "liabilities_end": "450",
+    "debt_end": "400",
+    "ebit": "120",
+    "interest": "20",
+    "tax": "20",
+    "shares_avg": "40",
+    "shares_end": "40",
+    "price": "30"
+  },
+  "balance_checks": "begin/end balance sheets and CA composition agree; total debt 400 is subset of liabilities 450; not a full cash-flow statement",
+  "ratios": {
+    "average_inventory": "100",
+    "average_ar": "50",
+    "average_assets": "900",
+    "average_equity": "500",
+    "current": "2",
+    "quick": "1.133333333333333333333333333333333333333",
+    "gross_margin": "0.4",
+    "roe": "0.16",
+    "roa": "0.08888888888888888888888888888888888888889",
+    "debt_equity_report_date": "0.7272727272727272727272727272727272727273",
+    "interest_coverage": "6",
+    "inventory_turnover": "6",
+    "inventory_days": "60.83333333333333333333333333333333333333",
+    "receivables_turnover_revenue_proxy": "20",
+    "dso_revenue_proxy": "18.25",
+    "basic_eps": "2",
+    "book_value_per_share": "13.75",
+    "pe": "15",
+    "pb": "2.181818181818181818181818181818181818182",
+    "market_equity": "1200",
+    "pb_total_check": "2.181818181818181818181818181818181818182",
+    "dupont": "0.1600000000000000000000000000000000000000"
+  },
+  "independent_z_inputs": {
+    "assets": "1000",
+    "liabilities": "500",
+    "book_equity": "500",
+    "ca": "300",
+    "cl": "150",
+    "retained": "200",
+    "ebit": "120",
+    "price": "15",
+    "shares": "50",
+    "sales": "1000"
+  },
+  "z_components": [
+    "0.15",
+    "0.2",
+    "0.12",
+    "1.5",
+    "1"
+  ],
+  "z_contributions": [
+    "0.180",
+    "0.28",
+    "0.396",
+    "0.90",
+    "1"
+  ],
+  "z": "2.756",
+  "z_ebit_200": "3.020",
+  "scenario_assumptions": "price and product mix constant, all costs proportional to volume, raw materials half baseline cost",
+  "scenarios": {
+    "base": {
+      "revenue": "1050.00",
+      "cost": "630.00",
+      "gross": "420.00",
+      "gross_margin": "0.4",
+      "cash_receipts": "945.000",
+      "closing_ar": "105.000",
+      "cash_proxy": "315.000"
+    },
+    "bull": {
+      "revenue": "1150.00",
+      "cost": "690.00",
+      "gross": "460.00",
+      "gross_margin": "0.4",
+      "cash_receipts": "1035.000",
+      "closing_ar": "115.000",
+      "cash_proxy": "345.000"
+    },
+    "bear": {
+      "revenue": "900.0",
+      "cost": "594.00",
+      "gross": "306.00",
+      "gross_margin": "0.34",
+      "cash_receipts": "810.00",
+      "closing_ar": "90.00",
+      "cash_proxy": "216.00"
+    }
+  },
+  "bear_price_cut_only": {
+    "revenue": 900,
+    "cogs": 660,
+    "gross": 240,
+    "gross_margin": "0.2666666666666666666666666666666666666667"
+  },
+  "self_test": {
+    "average_ar": 50,
+    "turnover": "18",
+    "dso": "20.27777777777777777777777777777777777778",
+    "changed_average_ar": 70,
+    "changed_turnover": "12.85714285714285714285714285714285714286",
+    "changed_dso": "28.38888888888888888888888888888888888888",
+    "wrong_rounded_dso": "28.38258164852255054432348367029548989114"
+  },
+  "cash_bridges": {
+    "old_inventory_paid": "0",
+    "current_inventory_cash": "-60",
+    "current_inventory_credit": "0",
+    "immediate_customer_cash_old_inventory": "100"
+  },
+  "inventory_end_130_days": "66.91666666666666666666666666666666666666",
+  "supplier_cost_example": {
+    "initial_margin": "0.4",
+    "increased_component_margin": "0.3"
+  },
+  "regression_given_model": {
+    "x20": 50,
+    "x25": 60
+  }
+}

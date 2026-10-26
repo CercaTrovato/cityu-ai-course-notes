@@ -1,0 +1,220 @@
+{
+  "command": [
+    "D:\\anaconda3\\python.exe",
+    "-X",
+    "utf8",
+    "D:\\上课资料\\CityU\\_meta\\tools\\note_release_gate.py",
+    "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m11-final\\candidate.md",
+    "--note",
+    "AC6761_Artificial_Intelligence_Accounting/notes/M11-财务预测实作与AI伦理.md",
+    "--source",
+    "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m11-final\\baseline.md.snapshot",
+    "--scope",
+    "full",
+    "--pages",
+    "39",
+    "--source-checks",
+    "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m11-final\\source-checks.json",
+    "--review",
+    "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m11-final\\review.json"
+  ],
+  "returncode": 0,
+  "stdout_file": "gate-output.txt",
+  "full_gate_passed": true,
+  "candidate_sha256": "f48b9a48b8c23d4efe362121efcc6a6cb3dad734b59ac110e7038ec96f1b12da",
+  "review_sha256": "3b3bda62f0f3efa4cb87e9b1bda92ef8f8a378732dc75b6a8ceed03986b6e3ea",
+  "draft_only": true,
+  "L": 0,
+  "C_hard": 0,
+  "C_warn": 0,
+  "R_hard": 0,
+  "R_warn": 48,
+  "source_coverage": {
+    "status": "manifest_contract_passed",
+    "checked_questions": 2,
+    "hard": [],
+    "warnings": [],
+    "page_references": {
+      "requested_total": 39,
+      "declared_totals": [
+        39
+      ],
+      "status": "reference_check_only"
+    }
+  },
+  "historical": {
+    "spec": "2026-09-16",
+    "G": {
+      "G1 密度 §2 字/内容页 ≥ 250": [
+        241,
+        false
+      ],
+      "G2a 粒度 术语数/leaf 小节 ≤ 1.6": [
+        0.4,
+        true
+      ],
+      "G2b 粒度 内容页/leaf 小节 ≤ 2.5": [
+        2.53,
+        false
+      ],
+      "G2c 承载术语的小节 ≥ 150 字": [
+        [],
+        true
+      ],
+      "G3a 小节首元素为段落": [
+        [],
+        true
+      ],
+      "G3b 公式有符号表（或符号已在前文解释）": [
+        [
+          [
+            "2.1",
+            "$$ \\widehat Y=f(X) $$",
+            [
+              "\\widehat"
+            ]
+          ]
+        ],
+        false
+      ],
+      "G3c 有公式的小节有数字例子": [
+        [],
+        true
+      ],
+      "G3d 代码三件套": [
+        [],
+        true
+      ],
+      "G6 ### 单元「所以呢」覆盖率 ≥ 0.80": [
+        [
+          0.71,
+          [
+            "2.6",
+            "系数估计会怎样波动",
+            "先假设系数为零，再比较观察结果",
+            "离零有多少个标准误"
+          ]
+        ],
+        false
+      ]
+    },
+    "E": [
+      [
+        "全篇",
+        "术语首现",
+        [
+          "§5 术语在首现小节就地解释率 0.83 < 0.90：前视偏差（§2.3 内未出现）"
+        ]
+      ],
+      [
+        "全篇",
+        "先修唤醒",
+        [
+          "先修概念首次使用无一句话唤醒：p 值（行 527）、置信区间（行 578）、自由度（行 576）、标准化（行 576）"
+        ]
+      ],
+      [
+        "2.2",
+        "定义型",
+        [
+          "常见误解 0 条 < 2",
+          "「是什么」自己的话 < 80 字"
+        ]
+      ],
+      [
+        "2.3",
+        "代码型",
+        [
+          "「是什么」自己的话 < 80 字"
+        ]
+      ],
+      [
+        "2.5",
+        "代码型",
+        [
+          "「是什么」自己的话 < 80 字"
+        ]
+      ],
+      [
+        "2.6",
+        "公式型",
+        [
+          "缺 ⚠️ 常见误解",
+          "缺 所以呢",
+          "换个说法角度 1 < 2",
+          "数字例子没有算式（只给结果不算手把手）",
+          "缺「为什么公式长这样」",
+          "缺 极端/边界情况"
+        ]
+      ],
+      [
+        "系数估计会怎样波动",
+        "定义型",
+        [
+          "缺 是什么",
+          "缺 为什么需要它",
+          "缺 💡 换个说法",
+          "缺 ⚠️ 常见误解",
+          "缺 所以呢"
+        ]
+      ],
+      [
+        "先假设系数为零，再比较观察结果",
+        "定义型",
+        [
+          "缺 是什么",
+          "缺 为什么需要它",
+          "缺 💡 换个说法",
+          "缺 ⚠️ 常见误解",
+          "缺 所以呢"
+        ]
+      ],
+      [
+        "离零有多少个标准误",
+        "定义型",
+        [
+          "缺 是什么",
+          "缺 为什么需要它",
+          "缺 💡 换个说法",
+          "缺 ⚠️ 常见误解",
+          "缺 所以呢"
+        ]
+      ],
+      [
+        "零假设下，这样的结果有多常见",
+        "定义型",
+        [
+          "缺 是什么",
+          "缺 为什么需要它",
+          "换个说法角度 0 < 2",
+          "常见误解 0 条 < 2"
+        ]
+      ],
+      [
+        "2.7",
+        "定义型",
+        [
+          "换个说法角度 1 < 2",
+          "常见误解 0 条 < 2"
+        ]
+      ],
+      [
+        "2.8",
+        "定义型",
+        [
+          "常见误解 0 条 < 2"
+        ]
+      ],
+      [
+        "2.10",
+        "定义型",
+        [
+          "换个说法角度 1 < 2",
+          "常见误解 0 条 < 2",
+          "「是什么」自己的话 < 80 字"
+        ]
+      ]
+    ],
+    "verdict": "FAIL"
+  }
+}

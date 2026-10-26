@@ -1,0 +1,188 @@
+{
+  "source": "D:\\上课资料\\CityU\\AC6761_Artificial_Intelligence_Accounting\\course_files_export\\Week 11 PPT.pptx",
+  "source_sha256": "b86253fbeb3fc39dba4ea4b68ba89630db6fea97d1bfabe46b43554bd7442cef",
+  "candidate_sha256": "c8558e48477cd1ffdb9079242aab827708fb7f06239a3dbd0c5b76e489da2c53",
+  "slides": {
+    "1": {
+      "text": "AC6761 Artificial Intelligence Accounting\nChapter 11 Hands-on AI Application, Ethical Considerations and Future Trends \nof AI",
+      "text_run_count": 3
+    },
+    "2": {
+      "text": "Machine Learning for Financial Forecasting\nEthics in AI\nFuture Trend of AI\n2\nAgenda",
+      "text_run_count": 5
+    },
+    "3": {
+      "text": "What is Machine Learning?​\nTraditional Programming:​\n​​\n​Input:​\n​ Data + Rules/Program\n​\n​Output:​\n​ Answers\n​\n​Machine Learning:​\n​​\n​Input:​\n​ Data + Answers\n​\n​Output:​\n​ Rules/Model\n3",
+      "text_run_count": 17
+    },
+    "4": {
+      "text": "Financial Forecast & Machine Learning\nE.g., \nForecasting Stock Price:​\n​ Using historical data where we know the final price to predict future prices. \nSupervised Learning: Algorithm learns from ​\n​labelled data​\n​. \nThe relationship between historical financial data and stock price (labelled data) is used to train AI. \nFinancial forecast is a typical application of Supervised Learning. \n4",
+      "text_run_count": 10
+    },
+    "5": {
+      "text": "The Supervised Learning Process​\nCore Idea:​​ Learn a function (a ​​model​​) that maps input variables (X) to an output variable (Y).\nProcess Flowchart:​​​​\nHistorical Data:​​ Collect data where we know both the ​​Features (X variables)​​ and the ​​Target (Y variable)​​.\n​​Training:​​ The algorithm \nanalyzes\n the data to find the \"best\" mathematical relationship between X and Y. This creates the ​​model​​.\n​​Prediction:​​ Use the trained model with ​​new X data​​ (where Y is unknown) to ​​forecast the future Y​​.\n5",
+      "text_run_count": 9
+    },
+    "6": {
+      "text": "Example\n​​X Variables (Features):​​ [Book-to-Market Ratio, Company Size, Profitability]\n​​Y Variable (Target):​​ Next Year's Stock Return\n​​Model:​​ Predicted Return = f(Book-to-Market, Size, Profitability)\n6",
+      "text_run_count": 5
+    },
+    "7": {
+      "text": "Tools for Machine Learning Forecasting​\nTool\nType\nKey Feature for Forecasting\n​\n​Python\nOpen-Source Programming\nHighly flexible, vast library of algorithms, industry standard for AI research.\n​\n​R​\n​\nOpen-Source Programming\nExcellent for statistical analysis and prototyping new models.\n​\n​SAS​\n​\nCommercial Software\n​\n​Enterprise-grade reliability​\n​, excellent for handling large datasets, strong emphasis on model validation and deployment.\n​\n​Stata​\n​\nCommercial Software\nPopular in econometrics, strong for panel data analysis, but less focused on modern ML.\n7",
+      "text_run_count": 26
+    },
+    "8": {
+      "text": "Introduction to SAS for Machine Learning\nWhat is SAS?​​\nA software suite for ​​advanced analytics, multivariate analysis, and predictive \nmodeling\n​​.\nUses a procedural language where you call pre-defined routines (​​PROCEDURES​​ or ​​PROCs​​).\n8",
+      "text_run_count": 7
+    },
+    "9": {
+      "text": "Key SAS Procedures for Machine Learning:​\nPROC Name\nPurpose\n​​PROC REG​​\nLinear Regression\nThe foundational predictive model.\n​​PROC LOGISTIC​​\nClassification (e.g., bankrupt/not bankrupt)\n​​PROC GLMSELECT​​\n​​Advanced regression with variable selection​​ (e.g., LASSO). ​​Prevents overfitting.​​\n​​PROC HPFOREST​​\nRandom Forests - a powerful, non-linear ML algorithm.\n9",
+      "text_run_count": 13
+    },
+    "10": {
+      "text": "Case Study: Predicting a Firm's Stock Price​\nResearch Question:​​\nCan we use a firm's financial characteristics today to predict its stock price one year from now?\n10",
+      "text_run_count": 4
+    },
+    "11": {
+      "text": "Our plan\n​​Define the Target (Y):​​ Stock Price in One Year\n​​Define the Features (X):​​ Firm's financial ratios from its annual report.\n​​Collect Data:​​ Historical data for many firms over many years.\n​​Train a Model:​​ Use SAS to find the relationship between X and Y.\n​​Make a Prediction:​​ Apply the model to a specific firm's latest data.\n11",
+      "text_run_count": 7
+    },
+    "12": {
+      "text": "Step 1 — Defining Features (X) from Financial Theory​\nCategory\nPredictor Variable (X)\nRationale\n​\n​Value​\n​\nBook-to-Market Ratio (B/M)\nHigh B/M (\"value\" stocks) often outperform.\n​\n​Profitability​\n​\nReturn on Equity (ROE)\nMore profitable firms should have higher returns.\n​\n​Investment​\n​\nAsset Growth (AG)\nFirms growing assets too fast may have lower future returns.\n​\n​Momentum​\n​\nPrior 1-Year Return (MOM)\nStocks with good recent performance may continue.\n​\n​Size​\n​\nLog of Market Capitalization (SIZE)\nSmaller firms may have higher expected returns.\n12",
+      "text_run_count": 30
+    },
+    "13": {
+      "text": "Step 2 — SAS Code: Data Preparation\n/* 1. Import stock price data (e.g., from CRSP database) */\n proc import datafile=\"/data/stock_prices.csv\" out=prices \ndbms\n=csv replace; run; \n/*2. Import financial statement data (e.g., from \nCompustat\n) */\n proc import datafile=\"/data/financials.csv\" out=financials \ndbms\n=csv replace; run; \n/* 3. Calculate the features (X variables) for each firm-year */\n data features; set financials; by \ngvkey\n \nfyear\n; \n/* Group by firm and fiscal year */\n \n/* Calculate predictor variables */\n BM = \nbkvlps\n / \nprcc_f\n; \n/* Book-to-Market Ratio */\n ROE = \nni\n / she; \n/* Return on Equity */\n AG = (at / lag(at)) - 1; \n/* Asset Growth */\n \n/* ... calculate other variables ... */\n keep \ngvkey\n \nfyear\n BM ROE AG; run;\n13",
+      "text_run_count": 40
+    },
+    "14": {
+      "text": "/* 4. Calculate the target (Y variable): Next year's stock return */\n data target; set prices; by \npermno\n date; \n/* Group by stock and date */\n \n/* Calculate return from today to one year in the future */\n \nFutureReturn\n = ( (lead(price, 12) / price) - 1 ); keep \npermno\n date \nFutureReturn\n; run; \n/* 5. Merge features and target into one dataset for \nmodeling\n */\n proc \nsql\n; create table \nmodel_data\n as select a.*, b.BM, \nb.ROE\n, b.AG from target as a left join features as b on \na.permno\n = \nb.gvkey\n and \na.date\n = \nb.fyear\n; quit;\n14",
+      "text_run_count": 33
+    },
+    "15": {
+      "text": "Step 3 — SAS Code: Building the ML Model​\n/* Split data into Training set (to build model) and Testing set (to validate it) */\n data training testing; set \nmodel_data\n; if \nfyear\n <= 2020 then output training; \n/* Use older data to train */\n else output testing; \n/* Reserve recent data for testing */\n run; \n/* Use PROC GLMSELECT to train the model with LASSO */\n \n/* This procedure automatically selects the most important variables */\n proc \nglmselect\n data=training; model \nFutureReturn\n = BM ROE AG SIZE MOM / \n/* List of X variables */\n selection=lar (choose=\nsbc\n) \nstb\n; \n/* Use LASSO to avoid overfitting */\n output out=\nmodel_out\n p=\nPredictedReturn\n; \n/* Save the model's predictions */\n store \nwork.forecast_model\n; \n/* Save the model to disk */\n run;\n​​Key Output:​​ A formula (model) like:\nPredicted Return = 0.05*BM + 0.03*ROE - 0.08*AG + ...\n15",
+      "text_run_count": 40
+    },
+    "16": {
+      "text": "Step 4 — Making the Forecast for 2026​\n/* Create a dataset with Company XYZ's latest financials (2025) */\n data xyz_2025; input BM ROE AG SIZE MOM; \ndatalines\n; 0.85 0.15 0.05 23.1 0.10 ; \n/* These are XYZ's actual 2025 financial ratios */\n run; \n/* Use the PROCPLM to score (predict for) the new data */\n proc \nplm\n restore=\nwork.forecast_model\n; \n/* Load the trained model */\n score data=xyz_2025 out=\nxyz_scored\n predicted=PredReturn2026; \n/* Make prediction! */\n run; \n/* Calculate the predicted 2026 price */\n data \nfinal_forecast\n; set \nxyz_scored\n; CurrentPrice2025 = 150; \n/* Assume current price is $150 */\n PredictedPrice2026 = CurrentPrice2025 * (1 + PredReturn2026); run; \n/* Print the result */\n proc print data=\nfinal_forecast\n; var CurrentPrice2025 PredReturn2026 PredictedPrice2026; run;\n16",
+      "text_run_count": 32
+    },
+    "17": {
+      "text": "Final Output​​\nCurrent Price (2025)\nPredicted Return\n​​Predicted Price (2026)​​\n$150\n+ 8.2%\n​\n​$162.30​\n17",
+      "text_run_count": 9
+    },
+    "18": {
+      "text": "Summary & Caveats\n​\n​ML is Pattern Recognition:​\n​ We used historical patterns to inform a future prediction.\n​\n​SAS is an ML Tool:​\n​ It provides powerful, validated procedures for building predictive models.\n​\n​Process is Key:​\n​ Define target → Choose features → Prepare data → Train model → Predict.\nThe Forecast is Not a Guarantee:​\n​ It is a statement based on historical relationships.\n​\n​Garbage In, Garbage Out:​\n​ The model's accuracy depends entirely on the quality of the data and the relevance of the chosen features.\n​\n​Markets Change:​\n​ Relationships that held in the past may break down in the future.\n@\n18",
+      "text_run_count": 20
+    },
+    "19": {
+      "text": "Example of Python analyses\nPredicting sales using linear regression\nimport pandas as pd\nimport \nnumpy\n as np\nfrom \nsklearn.model_selection\n import \ntrain_test_split\nfrom \nsklearn.linear_model\n import \nLinearRegression\nimport \nmatplotlib.pyplot\n as \nplt\n# \ndata = {\n    ‘advertising expenditure': [1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500],\n    ‘\n销售额\nsales\n': [2000, 2500, 3000, 4000, 4500, 5000, 6000, 6500, 7000, 8000]\n}\ndf = \npd.DataFrame\n(data)\n#\nX = df[[‘advertisement expenditure']]\ny = df[‘\nsales\n']\n# \nX_train\n, \nX_test\n, \ny_train\n, \ny_test\n = \ntrain_test_split\n(X, y, \ntest_size\n=0.2, \nrandom_state\n=42)\n19",
+      "text_run_count": 50
+    },
+    "20": {
+      "text": "# \nmodel = \nLinearRegression\n()\nmodel.fit\n(\nX_train\n, \ny_train\n)\n#\ny_pred\n = \nmodel.predict\n(\nX_test\n)\n#\nplt.scatter\n(X, y, color='blue', label=‘\nactual sales data\n')\nplt.plot\n(\nX_test\n, \ny_pred\n, color='red', label=‘\npredicted sales data\n')\nplt.xlabel\n(‘\nadvertisement expenditure\n')\nplt.ylabel\n(‘\nsales\n')\nplt.legend\n()\nplt.title\n(‘sales prediction')\nplt.show\n()\n#\nprint(\nf’regression\n coefficient: {\nmodel.coef\n_[0]}, \nintercept\n: {\nmodel.intercept\n_}’)\n@\n20",
+      "text_run_count": 56
+    },
+    "21": {
+      "text": "Example of SAS analyses\n21",
+      "text_run_count": 2,
+      "relationships": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\"><Relationship Id=\"rId2\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/image\" Target=\"../media/image1.png\"/><Relationship Id=\"rId1\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout\" Target=\"../slideLayouts/slideLayout2.xml\"/></Relationships>"
+    },
+    "22": {
+      "text": "Example of SAS analyses\n22",
+      "text_run_count": 2,
+      "relationships": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\"><Relationship Id=\"rId2\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/image\" Target=\"../media/image2.png\"/><Relationship Id=\"rId1\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout\" Target=\"../slideLayouts/slideLayout2.xml\"/></Relationships>"
+    },
+    "23": {
+      "text": "Example of STATA analyses\n23",
+      "text_run_count": 2,
+      "relationships": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\"><Relationship Id=\"rId2\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/image\" Target=\"../media/image3.emf\"/><Relationship Id=\"rId1\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout\" Target=\"../slideLayouts/slideLayout2.xml\"/></Relationships>"
+    },
+    "24": {
+      "text": "Ethics in AI\nData privacy and security\nBias and fairness\nTransparency and explainability  \nResponsibility and accountability\n@ \n24",
+      "text_run_count": 7
+    },
+    "25": {
+      "text": "Data privacy and security – Key concerns\nAI systems often rely on large datasets, including sensitive financial information such as client data and transaction records.\nRisks include data breaches, unauthorized access, and misuse of sensitive information.\n25",
+      "text_run_count": 4
+    },
+    "26": {
+      "text": "Data privacy and security – Best practices\nImplement data encryption to protect sensitive information.\nEstablish strict access controls to limit who can view and manipulate data.\nConduct regular security audits to identify and remediate vulnerabilities.\n26",
+      "text_run_count": 5
+    },
+    "27": {
+      "text": "Bias and fairness - concept\nBias in AI can arise from unrepresentative training data, leading to unfair or discriminatory outcomes.\nExample: An AI model trained predominantly on data from one demographic may not perform well for others, resulting in biased decisions.\n27",
+      "text_run_count": 4
+    },
+    "28": {
+      "text": "Bias and fairness - Impact\nBiased algorithms can lead to discriminatory practices in areas like hiring, lending, or auditing, undermining trust in AI systems.\nStakeholders may lose confidence in the accounting process if biases are detected.\n28",
+      "text_run_count": 4
+    },
+    "29": {
+      "text": "Bias and fairness – Strategies for mitigation\nUse diverse datasets to train AI models, ensuring representation across different demographics.\nRegularly audit algorithms for bias using statistical methods and fairness metrics.\nEngage with diverse teams to provide varied perspectives during model development.\n29",
+      "text_run_count": 5
+    },
+    "30": {
+      "text": "Transparency and explainability  - Challenges\nComplexity of Models\nAdvanced AI models, like deep learning algorithms, can be highly complex, making it challenging to understand their decision-making processes.\nTrade-Offs Between Accuracy and Interpretability\nThere’s often a trade-off between accuracy and interpretability. Complex models may perform better but are harder to explain. For example, a deep learning model may outperform a linear regression model in accuracy but lacks its interpretability.\n“Black Box” Nature of AI\nMany AI systems operate as “black boxes,” with internal workings that are not transparent to users. This lack of visibility can lead to \nskepticism\n and resistance to adoption.\n30",
+      "text_run_count": 10
+    },
+    "31": {
+      "text": "Transparency and explainability  - Improvement\nUse simpler models, such as linear regression or decision trees, when possible for better interpretability.\nCreate visualizations (e.g., feature importance graphs) to illustrate how decisions are derived.\nProvide comprehensive documentation of algorithms, the data used, and the rationale behind model choices.\n31",
+      "text_run_count": 5
+    },
+    "32": {
+      "text": "Responsibility and accountability – who is responsible?\nClarify accountability for AI-driven decisions: should it lie with management, developers, or data scientists?\nEstablish clear guidelines on how responsibilities are allocated in AI applications.\n32",
+      "text_run_count": 4
+    },
+    "33": {
+      "text": "Responsibility and accountability – Guidelines\nDevelop a framework outlining roles and responsibilities regarding AI use and decision-making.\nImplement accountability measures such as regular reviews and audits of AI systems to ensure ethical compliance.\n33",
+      "text_run_count": 4
+    },
+    "34": {
+      "text": "Key Trends Shaping the Future of AI in Accounting\nIncreased automation\nEnhanced predictive analytics\nIntegration with Blockchain technology\nPersonalized client services\nContinuous learning and adaption\n34",
+      "text_run_count": 7
+    },
+    "35": {
+      "text": "Increased automation\nRoutine Task Automation\n \nAI will increasingly handle repetitive tasks such as data entry, invoice processing, and bank reconciliations, reducing the time and effort required from accountants.\nExample: Automated invoice processing systems that extract data from invoices and input it into accounting software with minimal human intervention.\nImpact on Workforce\n \nTraditional roles will evolve, leading to a shift in job responsibilities. Accountants will spend less time on mundane tasks and more on strategic activities.\nReskilling Opportunities: Accountants will need training in AI tools, data analysis, and strategic advisory to adapt to new roles.\n35",
+      "text_run_count": 10
+    },
+    "36": {
+      "text": "Enhanced predictive analytics\nLeveraging Big Data\nAI will utilize vast datasets to \nanalyze\n trends, enabling firms to make informed predictions about financial performance.\nMachine Learning Models: Algorithms will identify patterns and forecast future outcomes, such as cash flow trends or revenue growth.\nReal-Time Insights\nBusinesses will benefit from real-time analytics, allowing for timely decision-making based on current data rather than historical reports.\nScenario Analysis: AI can simulate various financial scenarios, helping firms prepare for potential market changes or economic fluctuations.\n36",
+      "text_run_count": 10
+    },
+    "37": {
+      "text": "Integration with Blockchain technology\nImproved Transparency\nCombining AI with blockchain technology can enhance the transparency of financial transactions, making it easier to track and verify transactions.\nExample: Smart contracts that automatically execute transactions when predefined conditions are met, reducing the need for manual oversight.\nSecurity and Fraud Prevention\nBlockchain’s decentralized nature adds a layer of security, making it harder for fraud to occur. AI can \nanalyze\n blockchain data to detect anomalies and potential fraud in real time.\nAudit Efficiency: AI tools can quickly \nanalyze\n blockchain records, streamlining the audit process and ensuring compliance.\n@\n37",
+      "text_run_count": 13
+    },
+    "38": {
+      "text": "Personalized client services\nTailored Recommendations\nAI will enable accountants to offer personalized financial advice by \nanalyzing\n individual client data and preferences.\nExample: AI-driven platforms can suggest optimal investment strategies or tax-saving opportunities based on a client’s unique financial situation.\nEnhanced Communication\nNatural Language Processing (NLP) will facilitate more intuitive interactions between clients and AI systems, allowing clients to ask questions and receive instant, accurate responses.\nChatbots and Virtual Assistants: These tools can handle client inquiries, provide updates on financial status, and assist with basic accounting tasks.\n38",
+      "text_run_count": 10
+    },
+    "39": {
+      "text": "Continuous learning and adaption\nAI Systems that Learn\nMachine learning algorithms will continuously learn from new data, improving their accuracy and effectiveness over time.\nAdaptability: As market conditions and regulations change, AI systems can adjust their models to remain compliant and effective.\nFeedback Mechanisms\nIncorporating feedback loops into AI systems will allow for ongoing refinement and improvement, ensuring that the tools remain relevant and useful.\nUser Engagement: Encouraging user feedback on AI outputs can help enhance system performance and address any ethical concerns.\n39",
+      "text_run_count": 8
+    }
+  },
+  "source_code_coverage": {
+    "13": {
+      "missing_text_runs": []
+    },
+    "14": {
+      "missing_text_runs": []
+    },
+    "15": {
+      "missing_text_runs": []
+    },
+    "16": {
+      "missing_text_runs": []
+    },
+    "19": {
+      "missing_text_runs": []
+    },
+    "20": {
+      "missing_text_runs": []
+    }
+  },
+  "historic_extraction_mismatches": {},
+  "slide_count": 39
+}
