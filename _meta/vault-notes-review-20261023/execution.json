@@ -719,7 +719,7 @@
       "bytes": 56359,
       "lines": 590,
       "scratch": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\ac6761-m09",
-      "teaching_state": "审查中",
+      "teaching_state": "缺陷待修",
       "writeback": "未开始",
       "local_sync": "未开始",
       "notion": "未开始",
@@ -732,15 +732,23 @@
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
-      "review_stage": "new61 full stage1 complete;source stage2 in progress;main source check parallel",
+      "review_stage": "new61 full two-stage andsource38pages complete;5concentrated groups require author repair",
       "reviewer_id": "/root/review_ac_m09_61",
-      "independent_review_status": "pending secondstage",
+      "independent_review_status": "five teachinggroups pending;sourcefull verified;not pass",
       "latest_candidate": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\ac6761-m09\\candidate.md",
       "latest_candidate_sha256": "ad86337f06d141a822417cd30b702db2a9d69e473160795899760880c597280a",
       "stage_1": {
         "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\ac6761-m09\\reviewer\\stage-1.md",
         "sha256": "c452244f8eb07d4c277417f79a727e3d92671e0666446a93fcdc05766f2e81e1"
-      }
+      },
+      "independent_report": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\ac6761-m09\\reviewer\\independent-review.md",
+      "evidence_reports": [
+        {
+          "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\ac6761-m09\\reviewer\\independent-review.md",
+          "sha256": "fdcc461761914ffd3a4ab8b82f8dbbfc765b58d9fc7145af2b00e05717a777e5",
+          "reviewer_id": "/root/review_ac_m09_61"
+        }
+      ]
     },
     {
       "id": "ac6761-m10",
@@ -1423,7 +1431,7 @@
       "writeback": "已CAS原子写回并精确回读；v13教学+纯状态维护",
       "local_sync": "14目标：12写回/2无增量；均精确回读",
       "notion": "正确M02：16属性保存/重载回读，14其他/旧全文4图不变；DDL已核无增量",
-      "git": "本批待提交推送",
+      "git": "内容提交已推送并核远端，89blob逐SHA一致，62其他文件保留",
       "sources": [],
       "blockers": [],
       "included": true,
@@ -1504,7 +1512,9 @@
       "writeback_record": "_meta/vault-notes-review-20261023/is5113-m02/writeback.json",
       "dependency_sync_record": "_meta/vault-notes-review-20261023/is5113-m02/dependency-sync.json",
       "notion_evidence": "_meta/vault-notes-review-20261023/is5113-m02/notion-slim.json",
-      "maintenance_record": "_meta/vault-notes-review-20261023/is5113-m02/metadata-maintenance.json"
+      "maintenance_record": "_meta/vault-notes-review-20261023/is5113-m02/metadata-maintenance.json",
+      "git_commit": "d8851a2266814df99de4f67deb4adb582b92e11f",
+      "git_evidence": "_meta/vault-notes-review-20261023/is5113-m02/batch-git.json"
     },
     {
       "id": "is5113-m03",
@@ -2938,7 +2948,7 @@
     "Sync-off confirmation carried forward from task; no new on/running evidence"
   ],
   "confirmed_review_total": 69,
-  "latest_checkpoint": "流程8文件eed176c已推远端；IS M02正文v13/full-v2及metadata维护、14关联12写2无增量、Notion16/14/旧全文4图回读完成，本批Git待。AC M09新6.1全篇stage1完成，第二阶段与主核源并行。69范围10正文验收写回、1审查中、58未开始。",
+  "latest_checkpoint": "IS M02内容d8851a2已推远端，89blob逐SHA及62其他文件保护已核；10篇正文/适用各端闭合。AC M09新6.1两阶段/38源页完成，5组缺陷集中待修；58份未开始。流程规则eed176c已推，不重新开启全篇评分。",
   "resume_20261025": {
     "model_verified": "gpt-6.1-sol/xhigh from current rollout turn_context",
     "reviewer_model": "gpt-5.6-sol strictly lower",
