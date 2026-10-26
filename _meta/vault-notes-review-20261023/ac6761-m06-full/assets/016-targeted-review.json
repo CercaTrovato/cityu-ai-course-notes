@@ -1,0 +1,254 @@
+{
+  "reviewer_id": "/root/recheck_ac_m06_repairs_61",
+  "author": false,
+  "scope": "targeted B1-B8/N1-N5 plus affected dependencies; replacement independent reviewer because original unavailable; not new full review",
+  "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+  "candidate_bytes": 424809,
+  "original_report_sha256": "746692fe4a5bea8a4f434dcf47f619687ed1bba678c3495010e621d46b5b929a",
+  "status": "pending_targeted_repair_R1",
+  "closed_original_items": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7",
+    "B8",
+    "N1",
+    "N2",
+    "N3",
+    "N4",
+    "N5",
+    "E1-source-state"
+  ],
+  "unit_count": 34,
+  "english_units": [
+    {
+      "id": "U01",
+      "line": 1354,
+      "excerpt": "**英文参考答案（笔记自拟，U01）**\n\n> Build Sale with SaleID as its primary key and Salesperson as a foreign key to Salesperson.SalespersonID. Use the four Sale fields and the three Salesperson fields shown in the task, keep related key types compatible, enforce referential integrity, enable cascade updates as illustrated, and leave cascade deletes unchecked. A required salesperson also needs a non-null requirement; the relationship line alone does not impose it.\n\n### 2.6 例 2：多对多怎么落地 —— 连接表与复合主键（讲义 p.24–p.28）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U02",
+      "line": 1725,
+      "excerpt": "**英文参考答案（笔记自拟，U02）**\n\n> Create Student, Course, and the association table Takes (named StudentTakesCourse in the Access example). Use StudentID and CourseID together as the association table’s primary key, link each to its parent table, and store Grade earned on the student–course combination. The composite key prevents duplicate combinations in this exercise; repeated enrolments would require an additional distinguishing key.\n\n### 2.7 第二部分导言：用 ACCESS 查询信息（讲义 p.29–p.30）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U03",
+      "line": 2339,
+      "excerpt": "**英文参考答案（笔记自拟，U03）**\n\n> Selecting Cash Receipt rows for customer C-2 returns RA-1, RA-2, and RA-5. The result has three rows and all six receipt fields; RA-2 is dated 26 July in the current source.\n\n### 2.12 关系代数 PROJECT：挑列（讲义 p.35）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U04",
+      "line": 2422,
+      "excerpt": "**英文参考答案（笔记自拟，U04）**\n\n> Project the customer number, name, and salesperson number for each customer. The given data produce five rows and three columns; no repeated projected tuples occur in this example.\n\n### 2.13 连接类型：内连接与外连接（讲义 p.36）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U05",
+      "line": 2637,
+      "excerpt": "**英文参考答案（笔记自拟，U05）**\n\n> Join Customer and Salesperson where the customer’s assigned salesperson number equals the employee number. The given data produce five rows and seven columns. E-78 is absent because that salesperson has no matching customer; row order is not guaranteed without sorting.\n\n### 2.15 关系代数 Left Outer Join：一行都不丢（讲义 p.38）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U06",
+      "line": 2866,
+      "excerpt": "**英文参考答案（笔记自拟，U06）**\n\n> A left outer join from Sale to the allocation table returns eight rows and eight columns while retaining every sale. S-2 appears twice because it has two allocations, whereas S-6 and S-7 have Null allocation fields. To calculate a sale balance, aggregate its allocations first; the two row differences of 8,334 for S-2 are not its unpaid balance.\n\n### 2.16 SQL：结构化查询语言（讲义 p.39–p.40）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U07",
+      "line": 3295,
+      "excerpt": "**英文参考答案（笔记自拟，U07）**\n\n> The condition Balance >= 50000 selects BA-8 with a balance of 75,000. Selecting only Account# and Balance gives one row and two columns; a Null balance does not satisfy this comparison.\n\n#### 2.18.3 文本比较的例子（讲义 p.47）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U08",
+      "line": 3357,
+      "excerpt": "**英文参考答案（笔记自拟，U08）**\n\n> Sales not made by E-10 are S-1 for 7,200 and S-7 for 23,000. The p.47 SQL projects two columns, while the p.72 QBE result also shows SalesRepNumber and has three columns. The selected sales are the same, but the complete outputs are not identical.\n\n### 2.19 逻辑运算符 AND / OR / NOT（讲义 p.48）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U09",
+      "line": 3577,
+      "excerpt": "**英文参考答案（笔记自拟，U09）**\n\n> The inclusive date range from July 1 through July 31 selects S-1 through S-5 from the supplied date-only records. BETWEEN includes both stated boundaries; when dates contain times, a half-open interval ending before August 1 avoids losing transactions later on July 31.\n\n#### 2.20.2 IS NULL 与 EXISTS：空值（讲义 p.50–p.51）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U10",
+      "line": 3696,
+      "excerpt": "**英文参考答案（笔记自拟，U10）**\n\n> Balance IS NULL returns BA-6 and BA-7, giving two rows and four columns when all Cash fields are selected. These blanks represent missing or inapplicable values under the source rules, not known zero balances.\n\n**英文参考答案（笔记自拟，U11）**",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U11",
+      "line": 3700,
+      "excerpt": "**英文参考答案（笔记自拟，U11）**\n\n> Use Balance IS NOT NULL to select BA-8 and BA-9. BA-9 qualifies because its balance is the known value zero. The source phrase Balance EXISTS is not a valid substitute for IS NOT NULL; EXISTS tests a subquery rather than whether a field has a value.\n\n### 2.21 聚合函数（讲义 p.52）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U12",
+      "line": 4545,
+      "excerpt": "**英文参考答案（笔记自拟，U12）**\n\n> Place Date < #7/31/2014# and SalesRepNumber = \"E-10\" on the same Criteria row. Both conditions must hold, so the given result is S-2, S-3, and S-4, with three rows and four displayed columns. S-5 is excluded because July 31 is not before July 31.\n\n#### 2.23.7 查询 ⑦ —— OR：7/31 前或 E-10 做的销售（讲义 p.76–p.78，3 页）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U13",
+      "line": 4687,
+      "excerpt": "**英文参考答案（笔记自拟，U13）**\n\n> Place the date and salesperson conditions on separate criteria lines to express OR. A sale qualifies if it is before July 31 or was made by E-10. The given result is S-1 through S-6, with six rows and four displayed columns; a row satisfying both conditions is still returned once.\n\n#### 2.23.8 查询 ⑧ —— 聚合 SUM + BETWEEN：7/15–7/31 的销售总额（讲义 p.79–p.84，6 页）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U14",
+      "line": 4867,
+      "excerpt": "**英文参考答案（笔记自拟，U14）**\n\n> Filter dates inclusively from July 15 through July 31, set Date to Where, and set Amount to Sum. The four amounts total 52,600, producing one row and one column. Grouping the full dates instead would give four daily totals, not a single period total.\n\n#### 2.23.9 Quiz 2：筛选 E-10 的销售（当前原件补齐）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U15",
+      "line": 5187,
+      "excerpt": "**英文参考答案（笔记自拟，U15）**\n\n> For the displayed inputs, assuming complete records establish that the missing receipt total means no relevant receipts, accounts receivable is 8,455 minus zero minus 140, or 8,315 in the source monetary units. The screenshot does not prove that assumption or provide the upstream definitions, so the original full query cannot yet be reproduced.\n\n#### 2.24.2 应付账款余额（讲义 p.87）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U16",
+      "line": 5278,
+      "excerpt": "**英文参考答案（笔记自拟，U16）**\n\n> The displayed purchases, purchase-related disbursements, and purchase returns give accounts payable of 35,270 minus 28,450 minus 480, or 6,340 in the source monetary units. This verifies the displayed arithmetic, not the missing transaction details or upstream queries.\n\n#### 2.24.3 畅销与滞销存货（讲义 p.88）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U17",
+      "line": 5401,
+      "excerpt": "**英文参考答案（笔记自拟，U17）**\n\n> For May 1–7, 2015, the displayed result identifies BIS1 as the highest seller and MIN1 and TTP12 as tied for the lowest. For May 8–14, MIN1 is highest and all the other displayed items tie for the lowest only if complete records establish that their Null totals mean no sales. Without that completeness condition, the Null totals remain unknown; taking MIN over non-null values alone would miss the intended zero-sales comparison.\n\n#### 2.24.4 存货加权平均单位成本（讲义 p.89）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U18",
+      "line": 5625,
+      "excerpt": "**英文参考答案（笔记自拟，U18）**\n\n> Divide each item’s displayed purchase cost total by its displayed purchase quantity. The source results are 20 for BIS1, 54.25 for MIN1, and 10 for TTP12 per unit, for May 1–31, 2015. These are management reference figures marked not for Financial Statement use; the missing purchase detail and accounting policy prevent certification as financial-statement inventory costs.\n\n#### 2.24.5 订单履行天数（讲义 p.90）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U19",
+      "line": 5743,
+      "excerpt": "**英文参考答案（笔记自拟，U19）**\n\n> The displayed second step averages DaysToFill and returns 2.5 days. Its upstream records, sample size, and fulfilment grain are not supplied, so this is the stated result rather than a reconstructed order-level calculation. A customer-level average first requires a verified customer key and a defined order or fulfilment grain.\n\n#### 2.24.6 找出没有正面反馈的存货（讲义 p.91）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U20",
+      "line": 5870,
+      "excerpt": "**英文参考答案（笔记自拟，U20）**\n\n> Preserve all inventory items, outer join them to the positive-reaction set, and select items whose matching non-null identity key is Null after the join. This identifies no recorded positive reaction, which does not necessarily mean a negative reaction. The actual item IDs cannot be determined because the source supplies neither the result nor the complete upstream data.\n\n#### 2.24.7 每个销售员的拜访次数（讲义 p.92）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U21",
+      "line": 6026,
+      "excerpt": "**英文参考答案（笔记自拟，U21）**\n\n> The displayed result for May 1–15, 2015 is two calls for E23, one for E26, and zero for E30. A reference implementation filters calls to the period before outer joining all salespeople and counts a non-null call ID. The source design is missing, so this is a supported reconstruction rather than a verified original query.\n\n## 3. 一图看懂",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U22",
+      "line": 3059,
+      "excerpt": "**English reference answer（笔记参考答案）**：The query returns all six columns and one row: RA-4, 32,600, BA-7, 15 Aug, C-5, E-39. The asterisk selects all columns; the WHERE condition keeps only the C-5 record.\n\n老师在 R1 `01:41` 明说“不等于”，`01:44` 明说保留 C-1 与 C-5；这是口述结果证据。屏幕上具体敲入的完整字段／代码未录，笔记据当前客户查询重建为 `Customer Number <> \"C-2\"`，由原表复算为 RA-3 和 RA-4 两行、全部六列。英文参考：For the reconstructed not-equal-to-C-2 condition, keep RA-3 and RA-4 with all six columns; this agrees with the spoken C-1/C-5 result. 重建 SQL 与已录到的口述输出分开，不把它当逐字课堂代码。\n\n</details>",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U23",
+      "line": 3061,
+      "excerpt": "老师在 R1 `01:41` 明说“不等于”，`01:44` 明说保留 C-1 与 C-5；这是口述结果证据。屏幕上具体敲入的完整字段／代码未录，笔记据当前客户查询重建为 `Customer Number <> \"C-2\"`，由原表复算为 RA-3 和 RA-4 两行、全部六列。英文参考：For the reconstructed not-equal-to-C-2 condition, keep RA-3 and RA-4 with all six columns; this agrees with the spoken C-1/C-5 result. 重建 SQL 与已录到的口述输出分开，不把它当逐字课堂代码。\n\n</details>\n\n#### 2.17.2 SQL 的 Project：挑列（讲义 p.42）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U24",
+      "line": 4925,
+      "excerpt": "**英文参考答案（笔记自拟，U24）**：\n\n> Select SaleNumber, Amount, and SalesRepNumber from Sale where SalesRepNumber equals 'E-10', and save the query as QueryA as the original task requires. The current supplied data return five rows: S-2 for 10,000, S-3 for 16,000, S-4 for 10,000, S-5 for 16,600, and S-6 for 35,000; all have SalesRepNumber E-10. The historical instruction to send the updated database is part of the task text and has not been executed in this review.\n\n### 2.24 扩展 REA 模型上的七个会计查询（讲义 p.85–p.92）",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U25",
+      "line": 6782,
+      "excerpt": "**英文参考答案（笔记自拟，U25）**\n\n> Related key fields need compatible data types and relevant key properties; matching characters on screen are not enough. In this example, the two text key fields use the same teaching configuration. Changing display format alone does not change a stored value, so the source sentence must not be interpreted as requiring every field property to be identical.\n\n</details>",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U26",
+      "line": 6804,
+      "excerpt": "**英文参考答案（笔记自拟，U26）**\n\n> UML multiplicity specifies the minimum and maximum related instances, whereas the Access 1 and infinity markers describe uniqueness and repeated foreign-key values. Both optional and mandatory salesperson assignments can show the same 1-to-many relationship line. To require a salesperson for every sale, a non-null requirement must also be imposed.\n\n</details>",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U27",
+      "line": 6823,
+      "excerpt": "**英文参考答案（笔记自拟，U27）**\n\n> Use an association table to store one student–course combination per row. Its composite key prevents duplicate combinations in this exercise, and Grade earned belongs to that combination. This avoids repeating course columns or duplicating student details; repeated enrolments would need an extra distinguishing key.\n\n</details>",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U28",
+      "line": 6844,
+      "excerpt": "**英文参考答案（笔记自拟，U28）**\n\n> They are different operations. Relational-algebra Select filters rows and corresponds to SQL WHERE, while SQL SELECT chooses columns and corresponds to relational-algebra Project. SQL duplicate handling must also be aligned when comparing complete results.\n\n</details>",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U29",
+      "line": 6863,
+      "excerpt": "**英文参考答案（笔记自拟，U29）**\n\n> BA-9 appears in the non-null result because zero is a known balance, not an unknown value. BA-6 and BA-7 have Null balances whose meaning requires source rules. Use IS NOT NULL for the executable condition; the source phrase Balance EXISTS is not the correct field test. Replacing an unknown balance with zero would invent a fact and can misstate cash.\n\n</details>",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U30",
+      "line": 6886,
+      "excerpt": "**英文参考答案（笔记自拟，U30）**\n\n> An outer join is useful when unmatched subjects must remain in the answer. Examples include all sales with any allocations, all inventory items including those with no sales in a period, and all salespeople including those with zero recorded calls. The no-positive-reaction query also preserves all items before testing for a missing match. No match alone does not establish that a partly completed transaction has no remaining balance.\n\n</details>",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U31",
+      "line": 6944,
+      "excerpt": "**英文参考答案（笔记自拟，U31）**\n\n> For the supplied records through August 31, assuming no opening balance, returns, or other adjustments, sales total 117,800 and applied receipts total 53,132, giving receivables of 64,668. S-2 contributes 6,668, S-6 contributes 35,000, and S-7 contributes 23,000. The empty customer balance field illustrates deriving a balance from events; a controlled cache is also possible. The incomplete example does not certify a real company balance.\n\n</details>",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U32",
+      "line": 6968,
+      "excerpt": "**英文参考答案（笔记自拟，U32）**\n\n> Two possible causes are an inner join that removes E30, or a post-join date filter that rejects E30’s Null call date. Preserve all salespeople and join them to calls already filtered to the reporting period. Count a non-null call ID rather than COUNT(*), so an unmatched salesperson is counted as zero. This diagnoses reference implementations; the original design is unavailable.\n\n</details>",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U33",
+      "line": 7004,
+      "excerpt": "**英文参考答案（笔记自拟，U33）**\n\n> Left join Customer to SaleOrder on the verified customer key, preserve every customer, and select rows whose matching non-null OrderID is Null. A raw WHERE OrderCount = 0 cannot work unless that count has first been produced. Alternatively, group a preserving outer join by customer and retain groups whose COUNT(OrderID) is zero; COUNT(*) would incorrectly count a padded row as one.\n\n</details>",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    },
+    {
+      "id": "U34",
+      "line": 7024,
+      "excerpt": "**英文参考答案（笔记自拟，U34）**\n\n> The slide explicitly marks the figure as not for Financial Statement use. Before using it for reporting, verify opening inventory where required by the method, consistent treatment of returns, the applicable cost components, and the costing policy and period. The missing upstream details do not prove that these items were omitted; they prevent certification. The displayed purchase average can still be a management reference.\n\n</details>",
+      "result": "complete_sentence_reference_read; source versus reconstruction limits retained"
+    }
+  ],
+  "findings": [
+    {
+      "id": "R1",
+      "severity": "blocking_targeted_dependency",
+      "lines": [
+        5840,
+        5846,
+        6244
+      ],
+      "location": "§2.24.6 商业问题/滞销类型；§4.8 第6行",
+      "problem": "无正面反馈集合包含从未推介的商品；该查询本身不能区分已推介但没有正面反馈与根本未推介。正文/U20已有正确边界，但商业问句“我们推了但从来没人说好”及速查“区分推了没人要与压根没推”将这项能力重新写成直接成果。",
+      "minimal_fix": "商业问句改为哪些商品没有已记录的正面反馈；两类滞销表前说明这只是后续调查分类，需另核推介/拜访记录；§4.8改为识别无正面反馈，推介状态及原因另核。不要改原英文题面。"
+    }
+  ],
+  "limitations": [
+    "No new full blind reading or full scoring",
+    "No Access UI/IIf/Nz execution; ACE evidence inherited from original reviewer",
+    "No full candidate rendered display; parent must finish required display/gate",
+    "Only RA2 source image viewed anew; original 30 source image checks inherited, not claimed new",
+    "No audio listening/privacy audit; no vault/Notion/Git/shared snapshot writes"
+  ],
+  "numeric_evidence": "numeric-recheck.json"
+}

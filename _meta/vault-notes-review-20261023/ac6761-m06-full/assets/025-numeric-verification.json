@@ -1,0 +1,130 @@
+{
+  "execution": "SQLite in-memory plus Decimal; not ACE or Access UI",
+  "source_data_evidence": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\ac6761-m06-full\\reviewer\\db-current-dotnet-read.json",
+  "source_data_evidence_sha256": "91b822531a2190b6c5686bf201cae00ac51aa66e1eb2f31d1a18e8ccbc094601",
+  "candidate_sql_exact": "SELECT s.id, s.amt, COALESCE(a.applied,0) AS applied,\n       s.amt-COALESCE(a.applied,0) AS AR\nFROM Sale AS s LEFT JOIN (\n SELECT d.sale, SUM(d.amt) AS applied\n FROM Applied AS d JOIN CR AS r ON d.ra=r.id\n WHERE r.dt<=:asof GROUP BY d.sale\n) AS a ON s.id=a.sale\nWHERE s.dt<=:asof;",
+  "cutoff_results": {
+    "2014-07-31": {
+      "rows": [
+        [
+          "S-1",
+          7200,
+          0,
+          7200
+        ],
+        [
+          "S-2",
+          10000,
+          1666,
+          8334
+        ],
+        [
+          "S-3",
+          16000,
+          0,
+          16000
+        ],
+        [
+          "S-4",
+          10000,
+          10000,
+          0
+        ],
+        [
+          "S-5",
+          16600,
+          0,
+          16600
+        ]
+      ],
+      "total": 48134
+    },
+    "2014-08-31": {
+      "rows": [
+        [
+          "S-1",
+          7200,
+          7200,
+          0
+        ],
+        [
+          "S-2",
+          10000,
+          3332,
+          6668
+        ],
+        [
+          "S-3",
+          16000,
+          16000,
+          0
+        ],
+        [
+          "S-4",
+          10000,
+          10000,
+          0
+        ],
+        [
+          "S-5",
+          16600,
+          16600,
+          0
+        ],
+        [
+          "S-6",
+          35000,
+          0,
+          35000
+        ],
+        [
+          "S-7",
+          23000,
+          0,
+          23000
+        ]
+      ],
+      "total": 64668
+    }
+  },
+  "daily": [
+    [
+      "2014-07-21",
+      10000
+    ],
+    [
+      "2014-07-22",
+      16000
+    ],
+    [
+      "2014-07-26",
+      10000
+    ],
+    [
+      "2014-07-31",
+      16600
+    ]
+  ],
+  "monthly": [
+    [
+      "2014",
+      "07",
+      52600
+    ]
+  ],
+  "full_july": 59800,
+  "S2_wrong_per_match": [
+    8334,
+    8334
+  ],
+  "S2_right_balance": 6668,
+  "WAUC": {
+    "cost": "2000.10",
+    "quantity": 100,
+    "unit_cost": "20.001"
+  },
+  "screenshot_ar": 8315,
+  "screenshot_ap": 6340,
+  "access_ace_evidence_inherited": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\ac6761-m06-full\\reviewer\\ace-targeted-results.json",
+  "access_ui_executed": false
+}

@@ -1,10 +1,13 @@
 ---
 course: AC6761
-type: classroom-exercise
+type: 课堂练习解析
 status: draft
 learning_status: 参考解析已制作，结果已只读核验
 official_solution: 题面给出操作步骤；无独立官方结果表
-updated: 2026-10-22
+updated: 2026-10-27
+readability_rules: v2
+teaching_standard: novice-v1
+readability_review: passed
 source: Quiz 2.docx + ExampleTables1.accdb
 ---
 
@@ -32,7 +35,7 @@ source: Quiz 2.docx + ExampleTables1.accdb
 > 6. Run
 > 7. Save as QueryA
 > 8. Close ExampleTables1
-> 9. Send the updated ExampleTables1 to xindozhu@cityu.edu.hk
+> 9. Send the updated ExampleTables1 to [CONTACT REDACTED IN PUBLIC COPY; SEE LOCAL ORIGINAL]
 
 中文读题：`made by E-10` 指一笔销售由哪位销售员经手。这里限定的是 `Sale` 表里的 `SalesRepNumber`，不等于客户平时被指派给哪位销售员。
 
@@ -40,7 +43,7 @@ source: Quiz 2.docx + ExampleTables1.accdb
 
 ## 先看数据库里究竟有什么
 
-源数据库有 8 张用户表。下面每行是一张表，行数来自本次 ODBC 只读枚举，不包括 Access 系统表。
+源数据库有 8 张用户表。下面每行是一张表，行数沿用 2026-10-22 的只读数据库检查记录，不包括 Access 系统表；本轮核对源库哈希未变，并承接已有同哈希 ACE 只读证据，没有重新枚举。
 
 | 表 | 记录数 | 业务含义 |
 |---|---|---|
@@ -59,17 +62,19 @@ source: Quiz 2.docx + ExampleTables1.accdb
 
 ## 一步一步完成查询
 
-先保留原始数据库，另做工作副本。副本用于练习，课程 `course_files_export/ExampleTables1.accdb` 原件保持只读。
+先保留原始数据库，另做工作副本。副本用于练习，课程 `course_files_export/ExampleTables1.accdb` 原件保持只读。下面的菜单步骤需要桌面版 Microsoft Access；库外只读结果核验不等于已替你在桌面程序保存查询。
 
 1. 在 Access 中打开工作副本 `ExampleTables1.accdb`。
 2. 选择 `Create` → `Query Design`，进入查询设计视图。
-3. 添加 `Sale` 表，关闭添加表窗口。
-4. 第一列选实际字段 `SaleNumber`，勾选 `Show`。
-5. 第二列选 `Amount`，勾选 `Show`。
-6. 第三列选 `SalesRepNumber`，勾选 `Show`。
+3. 添加 `Sale` 表，关闭添加表窗口。查询设计窗口上半部是已添加表的字段列表，下半部是设计网格：每一列安排一个要显示的字段，每一行指定字段名、是否显示或筛选条件。
+4. 在下半部网格第一列的 `Field`（字段）行点下拉框，选实际字段 `SaleNumber`；同列的 `Show`（显示）保持勾选。
+5. 在网格第二列的 `Field` 行选 `Amount`，保持 `Show` 勾选。
+6. 在网格第三列的 `Field` 行选 `SalesRepNumber`，保持 `Show` 勾选。
 7. 在第三列的 `Criteria` 行输入 `"E-10"`；保留普通半角连字符。
 8. 点击 `Run`，查看数据表视图中的筛选结果。
-9. 保存查询名称为 `QueryA`，关闭工作副本后再核保存状态。
+9. 在当前查询页按 `Ctrl+S`，在保存名称框输入 `QueryA` 并确认。若提示已有同名查询，先取消并核对工作副本，不能覆盖本人其他练习。
+
+保存后关闭并重新打开**同一个工作副本**。在左侧导航窗格选择 `Queries`（查询）分类，双击 `QueryA`：应能再次显示三列和下文五行结果；切回 `Design View`（设计视图），确认第三列 `SalesRepNumber` 的 `Criteria` 仍是 `"E-10"`。能在重开后找到并执行，才说明查询定义保存在该副本中；只保留截图或临时结果页不能证明已保存。
 
 每步为何这样做：
 
@@ -98,7 +103,7 @@ Access 设计器可能自动添加表名前缀、方括号或括号，这些显�
 
 ## 本次实际结果与核对
 
-在库外副本用 Access ODBC 驱动执行参数化等价查询，得到以下 5 行。下表按销售编号整理以便阅读；原题未要求排序，SQL 也未保证排序。
+下表沿用 2026-10-22 库外只读副本的 ODBC 修正查询记录；原记录同时保留初次错误、带参数占位符的修正 SQL 和五行输出。本轮核对源库哈希未变，并承接现存同哈希 ACE 只读结果，没有重新运行 ODBC，也没有在原生 Access 中保存 `QueryA`。下表按销售编号整理以便阅读；原题未要求排序，SQL 也未保证排序。
 
 | SaleNumber | Amount | SalesRepNumber |
 |---|---|---|
@@ -144,11 +149,11 @@ Access 设计器可能自动添加表名前缀、方括号或括号，这些显�
 
 ## Canvas 与本人状态边界
 
-2026-10-22 已检查四入口：Files 28 项，含 `Quiz 2.docx`（file 16328652）和数据库（file 16324717）；Announcements 5 条，最新为 10/20 小组项目；Assignments 显示该课程已禁用；Modules 访问重定向课程首页，无可访问独立模块列表。
+2026-10-22 历史材料清单记载四入口情况：Files 28 项，含 `Quiz 2.docx`（file 16328652）和数据库（file 16324717）；Announcements 5 条，最新为 10/20 小组项目；Assignments 当时显示该课程已禁用；Modules 当时重定向课程首页，无可访问独立模块列表。本轮只读核对该历史清单，没有重新登录四入口，也未逐项补核当时的原始浏览器回执；这些记录不代表当前线上状态。
 
 Quiz 2 文件未写计分、截止日或具体提交时刻。不能因名称是 Quiz 就补造分数，也不能因没有 Canvas 提交入口就断言不计分。邮件要求按原题保留，实际发送属于独立动作，本轮没有发送。
 
-`status: draft` 表示行政与本人提交条件仍待核。学习解析、数据库结果核验、本人已练习、保存过 QueryA 和本人已提交分别记录；后四项本轮不代填。
+`status: draft` 表示行政与本人提交条件仍待核。学习解析与数据库结果核验属于资料工作；本人是否已练习、保存过 `QueryA` 以及本人已提交属于个人操作状态，三项分别记录，本轮均不代填。
 
 ## 来源与本轮记录
 
@@ -157,3 +162,5 @@ Quiz 2 文件未写计分、截止日或具体提交时刻。不能因名称是 
 本次只读检查使用库外副本，8 表、50 行用户记录（各表相加），不把跨表记录数当销售笔数。源库 7 笔销售，筛选 5 笔。原始 SHA-256 与核验范围见本次 Canvas 材料清单；没有改变原件。
 
 2026-10-22：制作参考解析、核对实际字段与 5 行结果、补最小变式。未改变本人学习、提交和评分状态。
+
+2026-10-27：本篇全篇独审后补设计网格定位、保存重开验收、材料与本人状态分工及历史核验边界；未重新执行数据库查询、未操作原生Access、未发送或提交。原2026-10-22核验记录与同哈希证据承接，独审及各端发布状态另见本批回执。

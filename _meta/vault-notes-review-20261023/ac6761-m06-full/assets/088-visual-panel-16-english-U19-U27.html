@@ -1,0 +1,43 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M06 frozen candidate visual completion</title><link rel="stylesheet" href="/deps/katex/katex.min.css"><style>body{margin:0;background:#f2f2f2;color:#202020;font:18px/1.65 "Microsoft YaHei",sans-serif}header{position:sticky;top:0;background:#fff;border-bottom:1px solid #aaa;padding:8px 20px;z-index:2;font-size:13px}main{max-width:1040px;margin:auto;background:#fff;padding:24px 42px}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;font-size:16px;width:100%;table-layout:auto}td,th{border:1px solid #bbb;padding:8px;text-align:left}blockquote{border-left:4px solid #789;padding-left:18px;margin:20px 0;background:#f7f9fb}pre{background:#f1f3f5;padding:15px;overflow:auto;font-size:15px;line-height:1.5}code{font-family:Consolas,monospace}h1,h2,h3,h4{line-height:1.4;scroll-margin-top:55px}summary{font-weight:bold;cursor:pointer}.mermaid{background:white;text-align:center;white-space:normal;overflow:visible}.mermaid svg{max-width:100%;height:auto}.katex-display{overflow-x:auto;overflow-y:hidden}details{padding:8px;border-left:2px solid #ddd}</style></head><body><header>冻结候选 ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4 · 同源浏览器显示，非 Obsidian/Access UI · <span id="render-state">rendering</span></header><main><h1>16-english-U19-U27</h1><p><strong>英文参考答案（笔记自拟，U19）</strong></p>
+<blockquote>
+<p>The displayed second step averages DaysToFill and returns 2.5 days. Its upstream records, sample size, and fulfilment grain are not supplied, so this is the stated result rather than a reconstructed order-level calculation. A customer-level average first requires a verified customer key and a defined order or fulfilment grain.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U20）</strong></p>
+<blockquote>
+<p>Preserve all inventory items, outer join them to the positive-reaction set, and select items whose matching non-null identity key is Null after the join. This identifies no recorded positive reaction, which does not necessarily mean a negative reaction. The actual item IDs cannot be determined because the source supplies neither the result nor the complete upstream data.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U21）</strong></p>
+<blockquote>
+<p>The displayed result for May 1–15, 2015 is two calls for E23, one for E26, and zero for E30. A reference implementation filters calls to the period before outer joining all salespeople and counts a non-null call ID. The source design is missing, so this is a supported reconstruction rather than a verified original query.</p>
+</blockquote>
+<hr />
+<p><strong>English reference answer（笔记参考答案）</strong>：The query returns all six columns and one row: RA-4, 32,600, BA-7, 15 Aug, C-5, E-39. The asterisk selects all columns; the WHERE condition keeps only the C-5 record.</p>
+<hr />
+<p><strong>U23 · 英文参考（原口述与重建边界）</strong></p>
+<p>老师在 R1 <code>01:41</code> 明说“不等于”，<code>01:44</code> 明说保留 C-1 与 C-5；这是口述结果证据。屏幕上具体敲入的完整字段／代码未录，笔记据当前客户查询重建为 <code>Customer Number &lt;&gt; "C-2"</code>，由原表复算为 RA-3 和 RA-4 两行、全部六列。英文参考：For the reconstructed not-equal-to-C-2 condition, keep RA-3 and RA-4 with all six columns; this agrees with the spoken C-1/C-5 result. 重建 SQL 与已录到的口述输出分开，不把它当逐字课堂代码。</p>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U24）</strong>：</p>
+<blockquote>
+<p>Select SaleNumber, Amount, and SalesRepNumber from Sale where SalesRepNumber equals 'E-10', and save the query as QueryA as the original task requires. The current supplied data return five rows: S-2 for 10,000, S-3 for 16,000, S-4 for 10,000, S-5 for 16,600, and S-6 for 35,000; all have SalesRepNumber E-10. The historical instruction to send the updated database is part of the task text and has not been executed in this review.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U25）</strong></p>
+<blockquote>
+<p>Related key fields need compatible data types and relevant key properties; matching characters on screen are not enough. In this example, the two text key fields use the same teaching configuration. Changing display format alone does not change a stored value, so the source sentence must not be interpreted as requiring every field property to be identical.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U26）</strong></p>
+<blockquote>
+<p>UML multiplicity specifies the minimum and maximum related instances, whereas the Access 1 and infinity markers describe uniqueness and repeated foreign-key values. Both optional and mandatory salesperson assignments can show the same 1-to-many relationship line. To require a salesperson for every sale, a non-null requirement must also be imposed.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U27）</strong></p>
+<blockquote>
+<p>Use an association table to store one student–course combination per row. Its composite key prevents duplicate combinations in this exercise, and Grade earned belongs to that combination. This avoids repeating course columns or duplicating student details; repeated enrolments would need an extra distinguishing key.</p>
+</blockquote></main><script src="/deps/mermaid.min.js"></script><script src="/deps/katex/katex.min.js"></script><script src="/deps/katex/contrib/auto-render.min.js"></script><script>window.visualReady=false;window.visualErrors=[];
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'default',fontFamily:'Microsoft YaHei'});
+(async()=>{try{await mermaid.run({querySelector:'.mermaid'});}catch(e){window.visualErrors.push(String(e));}
+try{renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredTags:['script','noscript','style','textarea','pre','code']});}catch(e){window.visualErrors.push(String(e));}
+window.visualReady=true;document.querySelector('#render-state').textContent='render complete; '+window.visualErrors.join('; ');})();</script></body></html>

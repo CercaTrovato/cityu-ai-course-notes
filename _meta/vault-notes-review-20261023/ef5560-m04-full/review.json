@@ -1,0 +1,585 @@
+{
+  "schema": "note-review-v2",
+  "note": "EF5560_Fintech_and_AI_in_Finance/notes/M04-非线性机器学习与收益预测.md",
+  "scope": "full",
+  "source_sha256": "c2bcfcde266fc64fe09b584ef1c19830f12c03595a1f393548a8720949a0f57a",
+  "candidate_sha256": "a555b07747ba3798dd70f392fc507772155043f4a8b67b12bb976358c82138ec",
+  "review_file": "review.md",
+  "review_sha256": "2bb320aa00dd4d2584a803024e81682a06a5ec69a300177453e026f6eb7ad754",
+  "checks": {
+    "understanding": {
+      "status": "passed",
+      "evidence": "reviewer/stage-1.md完整42单元、independent-review.md来源阶段、targeted-recheck.md S1–S10关闭；程序不认证独立性/语义。"
+    },
+    "sources": {
+      "status": "passed",
+      "evidence": "source-inventory-final.json；question-audit.md/source-checks.json；calculation-results.json/additional-calculations.json与独审独立源算术。只限本次提供材料范围，既有原音/日数据/vintage/训练契约缺口保留。"
+    },
+    "warnings": {
+      "status": "passed",
+      "evidence": "quality-final.json/机械门槛硬项0；504 R提示与5 C疑点见warning-ledger-final.json及warnings-resolution.md；真实断点已修，历史E仍FAIL。"
+    },
+    "visuals": {
+      "status": "passed",
+      "evidence": "visual-binding.json及当前浏览器预览，11图/566公式；实际看必要源图和阅读视口，图5已定向修复。未直接看Obsidian。"
+    }
+  },
+  "independent_review": {
+    "author_ids": [
+      "01a17880-c969-7903-8d68-5ede38386267"
+    ],
+    "reviewer_id": "01a178a1-5f93-7c53-aaf5-2a07452315ed",
+    "perspective": "high-school-beginner",
+    "status": "passed",
+    "candidate_sha256": "a555b07747ba3798dd70f392fc507772155043f4a8b67b12bb976358c82138ec",
+    "report_file": "reports/131-independent-review.md",
+    "report_sha256": "5071651f3abf4d4d0abbd157b388a0d305c379e92eaef7c35c57be6ec7ccbdf2"
+  },
+  "assets": [
+    {
+      "path": "assets/000-model-check.json",
+      "sha256": "7edee05255bf055e4eae8bd107b9f6b690d219f3877a7505321082b839d8ee6a"
+    },
+    {
+      "path": "assets/001-model-check-closeout.json",
+      "sha256": "0ff58f787e765d46a12724bb059873dbd8c191672fdd3a44cba9555fb24de3d8"
+    },
+    {
+      "path": "assets/002-baseline-check.json",
+      "sha256": "c57ed419a994b016eb9896b8d54cb7f5819bb9cceabadb9810ccb72673ad37ec"
+    },
+    {
+      "path": "assets/003-candidate-frozen.md",
+      "sha256": "f480156907c14b6af02a59d6570cfa53721a465df6d3143ecbb6a2f60e34611b"
+    },
+    {
+      "path": "assets/004-candidate-frozen.diff",
+      "sha256": "6b50288d8befd9b020b0cb9d5e2ce3975f4e079e88d8dcc8308b6638856b6c43"
+    },
+    {
+      "path": "assets/005-candidate.diff",
+      "sha256": "4759dc2c441985ae9d14729e7d825b0f55b6f5b11c0e514afdf2c2cf4c9957de"
+    },
+    {
+      "path": "assets/006-repair.diff",
+      "sha256": "179a6ac3e836e508534153fe319f2ea2ba1c0f873f1290528f7589b5c0765241"
+    },
+    {
+      "path": "assets/007-source-checks.json",
+      "sha256": "c1f061ab4e370eefeade00cba8ea40bc2f4a7a833aee9235435f5d05d18856a7"
+    },
+    {
+      "path": "assets/008-question-audit.md",
+      "sha256": "43e696e9de795747e8af500cec6b4e47310bc021cc498838ba4f78a473959a24"
+    },
+    {
+      "path": "assets/009-source-inventory-final.json",
+      "sha256": "17fc5bf5a66c49b6be5eb5ba18966aa0ff4b7234535e5fd2a6e4e02a9574ca02"
+    },
+    {
+      "path": "assets/010-inherited-evidence.json",
+      "sha256": "8566a0024eaf6b32a4e6633f39b941e465685c7520cdfeea9c40568f4b8080cc"
+    },
+    {
+      "path": "assets/011-calculation-results.json",
+      "sha256": "f660d850b0c8f53fa0d27ea6ee6e6d326f791a66df0fc0a9cf87e0478305d025"
+    },
+    {
+      "path": "assets/012-additional-calculations.json",
+      "sha256": "c792d41f688310c424da54a30efc7419215d9763b2010e2bb84a8d18751c2f38"
+    },
+    {
+      "path": "assets/013-preflight-summary.json",
+      "sha256": "e8c8653dfbfc73929e1db46c74b91e6146c834a3dd26acc8428e06682ad9cbd2"
+    },
+    {
+      "path": "assets/014-quality-final.json",
+      "sha256": "6c5cf25e554ef58965b586b519894da55d7ca872d32a254765388382123735eb"
+    },
+    {
+      "path": "assets/015-mechanical-final.txt",
+      "sha256": "08631b5b1f8b20f213b2681be7167bfb4879c4cc49cca22da2f3fb4099d81461"
+    },
+    {
+      "path": "assets/016-transcript-final.txt",
+      "sha256": "7b12ec7711da1cfeb97d3782d2b399d2e9885e79cb1bafb5aa078297de51595b"
+    },
+    {
+      "path": "assets/017-link-check.json",
+      "sha256": "1b2ae964f9371c5dd09dacb04bbc811606f7dc9944a608c706dc494ef0002f5e"
+    },
+    {
+      "path": "assets/018-warning-ledger-final.json",
+      "sha256": "7f41c626b44ddfa3b699afacab29c95fba3115161c313fb22b627a99718b00cb"
+    },
+    {
+      "path": "assets/019-warnings-resolution.md",
+      "sha256": "ad78198a79c8eecc359244b24ab1a237f8e9211a9417047189c300613ad7c383"
+    },
+    {
+      "path": "assets/020-visual-binding.json",
+      "sha256": "96f730b0766a47d80ac460cf0f4053009a13dc8e7e20ca17adfab0b92cd9b5f3"
+    },
+    {
+      "path": "assets/021-render-inventory.json",
+      "sha256": "ea48de7f374eaf2dd6e4ba6f0d553caa0447ea67007950890f977c1e3509388e"
+    },
+    {
+      "path": "assets/022-diagram-sources.json",
+      "sha256": "8253b8742a04aec8b8056307c4e8c6d021148443a82084689a0cc8bddc5fee76"
+    },
+    {
+      "path": "assets/023-browser-render-report.json",
+      "sha256": "d6caed73421552e5f4d72532dec14fb46de8596b4a1558b3275fb032aff7dc7c"
+    },
+    {
+      "path": "assets/024-preview.html",
+      "sha256": "b3397e719bbd4db4e446cd70997bd7e02f3d417deacb278ae12eca0e38ed41bb"
+    },
+    {
+      "path": "assets/025-integrity-verify.json",
+      "sha256": "61b32a8f7b915f0790d0b059d741346d19f89ed04e59ccd189659a5f9b8825aa"
+    },
+    {
+      "path": "assets/026-sync-draft.json",
+      "sha256": "c215d2e87ba76fba324b8b928dbc9fa4e51cf862e44eac3d6e9dfafc9407cccd"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\ef5560-m04-full\\027-sync-baselines-final.json",
+      "sha256": "acb38a836e62ae71f573bc6be9b0eb462b273a1ec5ec8155b78edb2ccf19a5d4"
+    },
+    {
+      "path": "assets/028-model-check.json",
+      "sha256": "19e0a9c0059d117008982e6dc73bb7db1e7f1f97c0a2dbdf525c2735d5aedbe1"
+    },
+    {
+      "path": "assets/029-stage-1.md",
+      "sha256": "ff96f8c9d59b5e1ed89375904c5edcee64d5204ca4b59dd226d8df67bcfab4e4"
+    },
+    {
+      "path": "assets/030-independent-review-source-stage.md",
+      "sha256": "174325f747dfc177d406ede4fd599af501daafc5e06fab0eba42318b290e6aca"
+    },
+    {
+      "path": "assets/031-source-arithmetic-stage-2.json",
+      "sha256": "b58bdbeaa647bfc188146573eca9f72cb2422dbd60f9342e1d5ab290ac6d9e33"
+    },
+    {
+      "path": "assets/032-stage-2-evidence.json",
+      "sha256": "bdec415fcf200529e883a1d574179ae9df820d120063addc1304408edc5f2be3"
+    },
+    {
+      "path": "assets/033-targeted-recheck.md",
+      "sha256": "8f30d9fdf498a6fa4b1bfbae1bd376f987555937a90573489b1974504877dbe5"
+    },
+    {
+      "path": "assets/034-targeted-evidence.json",
+      "sha256": "1e88d0b8a34a5e716be77b8b3dbc2a2b173df0c50ebc2f052643c0e6bac109c7"
+    },
+    {
+      "path": "assets/035-diagram-01.png",
+      "sha256": "e3bfffbf9223c8c8f3c3435854078ac91c1528cd01b538bc15c5734d98ecad5e"
+    },
+    {
+      "path": "assets/036-diagram-02.png",
+      "sha256": "27ca1ef98745ff98ef8ccd9656014486e6367c3df055b4354b4adcfe9a87b7e2"
+    },
+    {
+      "path": "assets/037-diagram-03.png",
+      "sha256": "9d725ae509e6b9ec3248ab7e4f43bb702ad2a32503c0480fcd3f2e78db20e2d5"
+    },
+    {
+      "path": "assets/038-diagram-04.png",
+      "sha256": "e0cc9fe222da9a420d51e5d6a3ab55c5d85c24a842a5790f1dbf9cffee2e57d3"
+    },
+    {
+      "path": "assets/039-diagram-05.png",
+      "sha256": "93f732a9f79cab563469a943bcc9c058d15a7a96400395491e087f7981dc953c"
+    },
+    {
+      "path": "assets/040-diagram-06.png",
+      "sha256": "4783c4d05bd59eef766057f7722394e1051901237138a53c2b6b36ef77d1d292"
+    },
+    {
+      "path": "assets/041-diagram-07.png",
+      "sha256": "c36d9decec6bf564a02a9fab79ca6fe58004258d38048cf7aea064e037307781"
+    },
+    {
+      "path": "assets/042-diagram-08.png",
+      "sha256": "932017cfdb22586aae417567bf1437bba09d2133ff0f8971aa930b2ebcfe020f"
+    },
+    {
+      "path": "assets/043-diagram-09.png",
+      "sha256": "35e7f0609b67c6d68e12d2f36de0e7f5429e361a5852b05f493b4b126fdb989c"
+    },
+    {
+      "path": "assets/044-diagram-10.png",
+      "sha256": "2c1bbaad1a0fe885bbf6ef20abaacf6b79127342e7c89721eb86df7fb0474dd1"
+    },
+    {
+      "path": "assets/045-diagram-11.png",
+      "sha256": "c001d728f8543fa38babffb4f93c08f1a0559a42afedbd893cd70c6ea4535d41"
+    },
+    {
+      "path": "assets/046-view-boost.png",
+      "sha256": "23f29c5d5aa441508c375d076d540471e8223e0de32678774ff9433304386c04"
+    },
+    {
+      "path": "assets/047-view-intro.png",
+      "sha256": "53ef08a8012e3a09d36ccb4dbfeb691ba5f39636c3487118c4f3abdaa2563978"
+    },
+    {
+      "path": "assets/048-view-linear-tree.png",
+      "sha256": "5eb975db739d2906fcf74ce026c944eff21078926e3f737b4a774cb9ff77007b"
+    },
+    {
+      "path": "assets/049-view-network.png",
+      "sha256": "6a60a05cf0f49e4f94dc08e66e66c784e1737b79bb222b83d5316c288a4bea9f"
+    },
+    {
+      "path": "assets/050-view-one-week.png",
+      "sha256": "cf9537f88399a5355ae144a6e34b4bef25a6c60d1aee6aa55f0a57ce83eb23f7"
+    },
+    {
+      "path": "assets/051-view-source-version.png",
+      "sha256": "02618c6c3aeee0b46d0c436cd0957f0b6dfec8b8f4dfdd44b8d5ebe2a6355c3c"
+    },
+    {
+      "path": "assets/052-view-statistics.png",
+      "sha256": "2023cbda611f3e2b2a02b2af0ce1721170a29528b21520e74bdf08539a474aba"
+    },
+    {
+      "path": "assets/053-view-test-answer.png",
+      "sha256": "ae80b21583ca5decec3cad7a17b8879b9ae11727c92d4b68e9348812e15592ca"
+    },
+    {
+      "path": "assets/054-view-tree.png",
+      "sha256": "c134d1a414e62d3c8c2ad5a24b80b82ece2f919558cc815169a9528b744b2fca"
+    },
+    {
+      "path": "assets/055-csi300_recent_window_summary.csv",
+      "sha256": "022730956ecb9c3d8ee51022f4ce982e203d9a55a07c3c4ba016fae0047ec0c3"
+    },
+    {
+      "path": "assets/056-hsi_constituents_2023_07.csv",
+      "sha256": "fa00fcbe00a85bb1a892c618f410bb6392e876f5d1ed4552bbc0d20a7d834736"
+    },
+    {
+      "path": "assets/057-hsi_stock_excess_return_panel.csv",
+      "sha256": "91dd515feed25d87a0b6745b691b5c83d66e9d0b21b596bb3d33e24c6edd6179"
+    },
+    {
+      "path": "assets/058-manifest.json",
+      "sha256": "b5438f62ec53f2752b3022e10a67620a21d7872ae4aa581c319301dda3608534"
+    },
+    {
+      "path": "assets/059-market_excess_return_panel.csv",
+      "sha256": "5ef790cdcad70111e3145566acc5851d587d75c4e3c8569a88b26c6d3b80b2a8"
+    },
+    {
+      "path": "assets/060-market_nonlinear_feature_importance.csv",
+      "sha256": "1586e7deea35ab7fb3d7a969b9a78be0444ddf7e8a5336263342bef97c145516"
+    },
+    {
+      "path": "assets/061-market_nonlinear_model_summary.csv",
+      "sha256": "92499c3e36935f1876ff02d426055845d5d95f526c7e15e37fd40d0dd0ca62e5"
+    },
+    {
+      "path": "assets/062-market_nonlinear_test_predictions.csv",
+      "sha256": "d10a9ef60e3ea95181d00ae1c116ac2d8b5b7741c4ba7ba2961f8c81bebdd58e"
+    },
+    {
+      "path": "assets/063-market_nonlinear_validation.csv",
+      "sha256": "42397dda63fcd2aaf2fe6121df1ee20198962ada46f24694d39443df18d44f0d"
+    },
+    {
+      "path": "assets/064-README.md",
+      "sha256": "920dde6875580d315d10b06198821c1a25118f06f6698df5e5f5062bc9d471ed"
+    },
+    {
+      "path": "assets/065-risk_free_yields_monthly.csv",
+      "sha256": "fc44461476c234809533c3e6342c377954cf0707e9a57b5182880c18e6dcdcc1"
+    },
+    {
+      "path": "assets/066-stock_nonlinear_feature_importance.csv",
+      "sha256": "cb73a465fb8b63e16e526e92203ea7bc11b32c33a5fc19c846fe6b9bbb13638f"
+    },
+    {
+      "path": "assets/067-stock_nonlinear_forecast_spreads.csv",
+      "sha256": "48793badbe5e5e3009686df949b7a5d4f15d509fe6ae0f44e37ec167c20232df"
+    },
+    {
+      "path": "assets/068-stock_nonlinear_model_summary.csv",
+      "sha256": "66347039f3e6501cea0ea73d22cd4d474989bb29e502f156513bbab3d67e7458"
+    },
+    {
+      "path": "assets/069-stock_nonlinear_quintiles.csv",
+      "sha256": "be972fb57a89ff18ab74e4d75f855f94438c4c53e751ad5a8c65b57ade09410a"
+    },
+    {
+      "path": "assets/070-stock_nonlinear_test_predictions.csv",
+      "sha256": "fbcfd3bbfb5659a9bb8d4e54859a1c4e0a78defbb10b03242324d7b9bd0b84ea"
+    },
+    {
+      "path": "assets/071-stock_nonlinear_validation.csv",
+      "sha256": "46abd3ae390055ae347c158cfa2f038dac7c266fbccfcb172ecceffb719a452d"
+    },
+    {
+      "path": "assets/072-technical_characteristics_dictionary.csv",
+      "sha256": "fb6cced643a5476414aa2bcd2948189c437796d702f20d37734d7b20405b1e77"
+    },
+    {
+      "path": "../../../EF5560_Fintech_and_AI_in_Finance/course_files_export/Lec04_Nonlinear_Machine_Learning.pdf",
+      "sha256": "62ca1f9191290baf426f4e950271723a2ae8baeac996fabd4b4c293350de187d"
+    },
+    {
+      "path": "../../../EF5560_Fintech_and_AI_in_Finance/course_files_export/canvas-20261020/Lec04_Nonlinear_Machine_Learning.pdf",
+      "sha256": "d68f19775d74f9ca455f214a6ef1c0906da9a03e1a3f75d96ae123ef590f5c44"
+    },
+    {
+      "path": "../../../EF5560_Fintech_and_AI_in_Finance/course_files_export/class04.zip",
+      "sha256": "4645863dc709effa4e1b2ab99814af60173d0e037c2b986df343541782bd2a23"
+    },
+    {
+      "path": "../../../EF5560_Fintech_and_AI_in_Finance/transcripts/M04-transcript-A-partial.txt",
+      "sha256": "50c9266261ea977cfa2f72590b06b611444f64fbcb958d721c9a149ab5a89350"
+    },
+    {
+      "path": "../../../EF5560_Fintech_and_AI_in_Finance/transcripts/M04-transcript-B-partial.txt",
+      "sha256": "eea55340519a862e2cfd9855becde628dd94ca1187e15a061dcfd791cef8c425"
+    },
+    {
+      "path": "assets/078-old-p04.png",
+      "sha256": "1813a2e54e53d86f0be9c006d089c204152c53f02192031439f31c2e355679f8"
+    },
+    {
+      "path": "assets/079-old-p08.png",
+      "sha256": "67044d24ae4ffabc03cab115a54b60204651812cf9b06ba02f3204c2a8cd376f"
+    },
+    {
+      "path": "assets/080-old-p10.png",
+      "sha256": "0f348c2b1cd1246d1e44a01e4c90c52576d935a461f5087709329a0c0c351f0d"
+    },
+    {
+      "path": "assets/081-old-p22.png",
+      "sha256": "02ff15c907058390eb82ef5636b2e69134cb965f916b38604e60a4c748de22d9"
+    },
+    {
+      "path": "assets/082-old-p30.png",
+      "sha256": "4dfd99fb87a1db10ce1cabab18dd575784d0f134385c899dc6660ec9d1b474ea"
+    },
+    {
+      "path": "assets/083-old-p32.png",
+      "sha256": "99a47eb5a653e4875d85f558bf3c409c87a9e251fd3a4ce1f388e210484ad62f"
+    },
+    {
+      "path": "assets/084-old-p36.png",
+      "sha256": "14622354ff505901fe0f52e9af18a50344e404af77c38347051ea25269ec21bb"
+    },
+    {
+      "path": "assets/085-old-p37.png",
+      "sha256": "92cc3fca350744a72e7720b4526d702ff1d1f26827d3d13d2fb34430cafd8ae9"
+    },
+    {
+      "path": "assets/086-old-p43.png",
+      "sha256": "385c058af31c40e7a398a7e41b6c8033b02fe1a9fd40e6a609315741b15a1dda"
+    },
+    {
+      "path": "assets/087-old-p48.png",
+      "sha256": "8618f72cae4f8336b9014a029df7c111068d2f5c2863a823dead39a9ad3b884a"
+    },
+    {
+      "path": "assets/088-old-pages-01.png",
+      "sha256": "fa1d6bcfd92c550f0f7e17333bbda5ed0116c128b6d20fa8c6239c3aa5b270cd"
+    },
+    {
+      "path": "assets/089-old-pages-07.png",
+      "sha256": "a0d45c34aa3f2cc88b7858c0d22a4b9bb8ab518dd14d15f6025477d2cf625253"
+    },
+    {
+      "path": "assets/090-old-pages-13.png",
+      "sha256": "3657edff1285c6171f8175f6f211f4e0b81d3a64ccfabec63dcf2a2c8dd2152f"
+    },
+    {
+      "path": "assets/091-old-pages-19.png",
+      "sha256": "b06068b2bae28281620a1968aec8c2091ea21062213ea640f4752cc0a4462b71"
+    },
+    {
+      "path": "assets/092-old-pages-25.png",
+      "sha256": "b0333b3dee5d859f79cbf161dc23afebb7e9c33bc03464f95282e0956037eede"
+    },
+    {
+      "path": "assets/093-old-pages-31.png",
+      "sha256": "1247046749d71124e5e2861216fbc528b4e4cf6b18334337aad7821d467f0a28"
+    },
+    {
+      "path": "assets/094-old-pages-37.png",
+      "sha256": "9f4f085ef81f362bea5b937514410399445141ae51807b46bb83d400e049bc95"
+    },
+    {
+      "path": "assets/095-old-pages-43.png",
+      "sha256": "9dd378b89c6ce66426b2323d09c1f13a14ed56cf5e5193d384eb5e85fb34c216"
+    },
+    {
+      "path": "assets/096-old-pages-49.png",
+      "sha256": "2cdc704c11d540bc5e5520e4534a16d65d84b7d1d7ebeb06294dff157b6d7829"
+    },
+    {
+      "path": "assets/097-new-p06.png",
+      "sha256": "4f67a46c9093b2b3da8255677d9b06b1e85cd7c45f43b37ed2ebf9880298eb92"
+    },
+    {
+      "path": "assets/098-new-p08.png",
+      "sha256": "15ff325e875a20647fa618d6d0092838dc58331f6bf614a4366019d78b7fbb4f"
+    },
+    {
+      "path": "assets/099-new-p09.png",
+      "sha256": "1f845e9d4f4528d3d143f2beb42f0f34a44d58094fd08b98c43ac15665755c8e"
+    },
+    {
+      "path": "assets/100-new-p19.png",
+      "sha256": "b4484a868973e9b6c8f2aee167dcda74406a653133d0208335ee19323e982cad"
+    },
+    {
+      "path": "assets/101-new-p20.png",
+      "sha256": "a8ba2c360766d0384af67a7585b5f92c211f98d45ed51bf0e5229c68234a1ac4"
+    },
+    {
+      "path": "assets/102-new-p22.png",
+      "sha256": "78ccaeab6790d323d02dd2c9d9f3bf604dea3ee4d9d7b4a10e993509961432be"
+    },
+    {
+      "path": "assets/103-new-p24.png",
+      "sha256": "d0727228635f1720903896502d9f6a170a6639dd415ad6996f260115d8fa39c1"
+    },
+    {
+      "path": "assets/104-new-p27.png",
+      "sha256": "0a1644e146a3c95c8e4371ff18af287998981273a5eb46236907634c62d163bf"
+    },
+    {
+      "path": "assets/105-new-p32.png",
+      "sha256": "ae6d43063ae776546cd316023909bfa1adb2ad3e15296e794480536697ddcb30"
+    },
+    {
+      "path": "assets/106-new-p33.png",
+      "sha256": "831102debd4ed0706b1f480cca8ebf118d8f0e9744e30f91a82276db4703a9c1"
+    },
+    {
+      "path": "assets/107-new-p38.png",
+      "sha256": "baf5b83df2f97d78e3e057240c29e6bad74f81b724b245551a7f8ade6fdd8bcb"
+    },
+    {
+      "path": "assets/108-new-pages-01.png",
+      "sha256": "dbea7823f6b8c1abbf20ba0d5e455b1bbc5be57d09aad3fb35f714dfed36376c"
+    },
+    {
+      "path": "assets/109-new-pages-07.png",
+      "sha256": "12ca495e8ec0fd8c92c9c2071a6c48bdde95c35d25110e384a5f165d74fb6645"
+    },
+    {
+      "path": "assets/110-new-pages-13.png",
+      "sha256": "8bd09776fde83077853d15be75126e2fc9e8ce38d57548add9b21515bf22df19"
+    },
+    {
+      "path": "assets/111-new-pages-19.png",
+      "sha256": "6e545c4a63835b8b34dc7887f425bf1b68f7befdcf4f18203fe595b187dd6fc2"
+    },
+    {
+      "path": "assets/112-new-pages-25.png",
+      "sha256": "fa75fe4848072a285eae4aebb61013a0eb28e3d5d8b21cff3b6527a94d7788ec"
+    },
+    {
+      "path": "assets/113-new-pages-31.png",
+      "sha256": "d24e1265f8cb63d350ea746c2428b730b4aa52d47833ebd3375aafc4c239059d"
+    },
+    {
+      "path": "assets/114-new-pages-37.png",
+      "sha256": "24550729b725bf03eb8011f6e2b359bc1e2c277aba159cb293766a0eabbe6cae"
+    },
+    {
+      "path": "assets/115-new-pages-43.png",
+      "sha256": "0d0316120bbc683091d4d49d84d50869ab17a652b6c97769f36b472d59b92958"
+    },
+    {
+      "path": "assets/116-new-pages-49.png",
+      "sha256": "f904e69dbfddf123d0e18d8d0278178877a12ae863955def0b199599702ce89b"
+    },
+    {
+      "path": "assets/117-new-pages-55.png",
+      "sha256": "8acdd797de38384292c02ff3f38e8be552c98dc86e6d97c4b965ec18476a531a"
+    },
+    {
+      "path": "assets/118-page-26.png",
+      "sha256": "fae425e08d20ce1beab463b1d0434e26a0df3ab67595d7af1de014df699190da"
+    },
+    {
+      "path": "assets/119-page-27.png",
+      "sha256": "cde78befca8d8f04b573455b0b084041e3dfe05914306e98cd64d1be216d0ca0"
+    },
+    {
+      "path": "assets/120-page-28.png",
+      "sha256": "1024c6a08b19c08b643d5f7b01609c6e1accc1164014b29eb458d51f3c039511"
+    },
+    {
+      "path": "assets/121-page-35.png",
+      "sha256": "2371ad2e783dd0bd03068f4bdcebead4d4081e45ec59582d97207536445bb7f5"
+    },
+    {
+      "path": "assets/122-page-46.png",
+      "sha256": "1875c831ec227ca02c5fc9a55f8557ff1b1c56184551d3e5ced6b2b66c9aec03"
+    },
+    {
+      "path": "assets/123-page-53.png",
+      "sha256": "faf0ddd0e6780b31b91601cedff3ad639c8b250addb278854cdc854a48482bce"
+    },
+    {
+      "path": "assets/124-page-28.png",
+      "sha256": "d5f0968f28d1e12616e9f5b1504c41e524ba7eba868b6a701c582b51da30a1a7"
+    },
+    {
+      "path": "assets/125-page-29.png",
+      "sha256": "75455f9bc8ec864e57c0f101abf0105412f370e86802303e81c34ea280823d70"
+    },
+    {
+      "path": "assets/126-page-30.png",
+      "sha256": "f60f040c2f58b84fdb8b47ace22e5e2453110639ee9570c732e327fb7719f4df"
+    },
+    {
+      "path": "assets/127-page-38.png",
+      "sha256": "503ecacfc7dc103e0769eea4e3517d6e7e6e0d2577955f43ee742db005882d74"
+    },
+    {
+      "path": "assets/128-page-48.png",
+      "sha256": "4759e84047f34b98a64bb6bb56cb7c9e030798d75f6d023fe4aaae239a950518"
+    },
+    {
+      "path": "assets/129-page-50.png",
+      "sha256": "09f0c1495fea2b0d4c9ade87390ead57d4e283baf64ad9c0d5b32fc42b1572bc"
+    },
+    {
+      "path": "assets/130-page-55.png",
+      "sha256": "370240b3cdcdc98bce5ae04d8788a7b8c1b65ff1dba76f576fc42ec1ade1c1f5"
+    },
+    {
+      "path": "reports/131-independent-review.md",
+      "sha256": "5071651f3abf4d4d0abbd157b388a0d305c379e92eaef7c35c57be6ec7ccbdf2"
+    }
+  ],
+  "unresolved": [],
+  "known_material_limitations": [
+    "无课程神经网络实证；小例为笔记补充",
+    "森林/提升原训练契约不足以精确复现，原日OHLCV与发布vintage仍缺",
+    "原声轨未本轮重新逐声核听，混合政策句/缺首/历史去重时长限制保留",
+    "M04旧p40–54本堂明确顺延，不把参考答案升级课堂确认",
+    "仅同源浏览器实际显示，原生Obsidian未直接看"
+  ],
+  "dispatch_boundary": "No vault write, shared state change, Notion/Canvas mutation, Git commit/push or configuration change.",
+  "root_acceptance": {
+    "writer": "/root",
+    "source_baseline_live": true,
+    "all_bound_assets_live": true,
+    "independent_reports": "actual original full and exact targeted closure retained, no new full-review claim",
+    "evidence": "source/important calculation and necessary actual visual evidence prepared by named actual worker; root checked current hashes/report chain and scope",
+    "writeback": "separate writeback.json"
+  }
+}

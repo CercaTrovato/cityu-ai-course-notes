@@ -1,0 +1,22 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M06 frozen candidate visual completion</title><link rel="stylesheet" href="/deps/katex/katex.min.css"><style>body{margin:0;background:#f2f2f2;color:#202020;font:18px/1.65 "Microsoft YaHei",sans-serif}header{position:sticky;top:0;background:#fff;border-bottom:1px solid #aaa;padding:8px 20px;z-index:2;font-size:13px}main{max-width:1040px;margin:auto;background:#fff;padding:24px 42px}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;font-size:16px;width:100%;table-layout:auto}td,th{border:1px solid #bbb;padding:8px;text-align:left}blockquote{border-left:4px solid #789;padding-left:18px;margin:20px 0;background:#f7f9fb}pre{background:#f1f3f5;padding:15px;overflow:auto;font-size:15px;line-height:1.5}code{font-family:Consolas,monospace}h1,h2,h3,h4{line-height:1.4;scroll-margin-top:55px}summary{font-weight:bold;cursor:pointer}.mermaid{background:white;text-align:center;white-space:normal;overflow:visible}.mermaid svg{max-width:100%;height:auto}.katex-display{overflow-x:auto;overflow-y:hidden}details{padding:8px;border-left:2px solid #ddd}</style></head><body><header>冻结候选 ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4 · 同源浏览器显示，非 Obsidian/Access UI · <span id="render-state">rendering</span></header><main><h1>12-framework</h1><h4 id="c-rea">框架 C · 「解释为什么 REA 数据库能回答这个问题而传统总账不能」</h4>
+<p><strong>四段式</strong>：</p>
+<pre><code>① 指出这个问题需要什么数据
+   例：订单履行天数需要「下单日期」
+
+② 说明传统复式记账为什么没有这个数据
+   · 复式记账只记「影响会计等式、且能用货币计量」的事项（M01 货币计量假设 + M02 复式记账）
+   · 下单通常不产生总账分录，所以仅查总账得不到订单日期；订单系统、ERP或辅助业务记录仍可能保存该数据
+
+③ 说明本 REA 设计怎样取得数据
+   · REA 可建模起因 / 承诺 / 经济 / 冲销事件；只有设计并实际捕获的记录才可查询
+   · 本题还须确认销售订单表、日期字段与履行关联真实存在；ERP/CRM 也可能提供这些明细
+
+④ 说明怎么查出来
+   · 通过 Fulfillment 关联连接 SaleOrder 与 Sale
+   · DateDiff(&quot;d&quot;, OrderDate, Date) → 再取 Avg
+</code></pre>
+<p><strong>⚠️ 可以套用这个框架的题目</strong>：订单履行天数（p.90）、销售拜访次数（p.92）、客户产品反馈（p.91）、在手订单、每笔销售的实际售价（p.33 的 <code>Actual Price</code>）。</p></main><script src="/deps/mermaid.min.js"></script><script src="/deps/katex/katex.min.js"></script><script src="/deps/katex/contrib/auto-render.min.js"></script><script>window.visualReady=false;window.visualErrors=[];
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'default',fontFamily:'Microsoft YaHei'});
+(async()=>{try{await mermaid.run({querySelector:'.mermaid'});}catch(e){window.visualErrors.push(String(e));}
+try{renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredTags:['script','noscript','style','textarea','pre','code']});}catch(e){window.visualErrors.push(String(e));}
+window.visualReady=true;document.querySelector('#render-state').textContent='render complete; '+window.visualErrors.join('; ');})();</script></body></html>

@@ -1,0 +1,502 @@
+﻿[
+    {
+        "name":  "Cash",
+        "sql":  "SELECT * FROM Cash",
+        "columns":  [
+                        "AccountNumber",
+                        "Type",
+                        "Bank",
+                        "Balance"
+                    ],
+        "rows":  [
+                     [
+                         "BA-6",
+                         "Checking",
+                         "Boston5",
+                         null
+                     ],
+                     [
+                         "BA-7",
+                         "Checking",
+                         "Shawmut",
+                         null
+                     ],
+                     [
+                         "BA-8",
+                         "Draft",
+                         "Shawmut",
+                         75000
+                     ],
+                     [
+                         "BA-9",
+                         "Checking",
+                         "MassNat",
+                         0.0000
+                     ]
+                 ],
+        "row_count":  4,
+        "status":  "executed_read_only_ACE_E_copy"
+    },
+    {
+        "name":  "CashReceipt",
+        "sql":  "SELECT * FROM CashReceipt",
+        "columns":  [
+                        "RemittanceAdviceNumber",
+                        "Amount",
+                        "BankAccountNumber",
+                        "Date",
+                        "CustomerNumber",
+                        "CashierNumber"
+                    ],
+        "rows":  [
+                     [
+                         "RA-1",
+                         1666,
+                         "BA-6",
+                         "2014-07-25T00:00:00",
+                         "C-2",
+                         "E-39"
+                     ],
+                     [
+                         "RA-2",
+                         10000,
+                         "BA-7",
+                         "2014-07-26T00:00:00",
+                         "C-2",
+                         "E-39"
+                     ],
+                     [
+                         "RA-3",
+                         7200,
+                         "BA-7",
+                         "2014-08-15T00:00:00",
+                         "C-1",
+                         "E-39"
+                     ],
+                     [
+                         "RA-4",
+                         32600,
+                         "BA-7",
+                         "2014-08-15T00:00:00",
+                         "C-5",
+                         "E-39"
+                     ],
+                     [
+                         "RA-5",
+                         1666,
+                         "BA-6",
+                         "2014-08-25T00:00:00",
+                         "C-2",
+                         "E-39"
+                     ]
+                 ],
+        "row_count":  5,
+        "status":  "executed_read_only_ACE_E_copy"
+    },
+    {
+        "name":  "Customer",
+        "sql":  "SELECT * FROM Customer",
+        "columns":  [
+                        "CustomerNumber",
+                        "Name",
+                        "Accounts Receivable Balance",
+                        "SalespersonNumber"
+                    ],
+        "rows":  [
+                     [
+                         "C-1",
+                         "Bill",
+                         null,
+                         "E-12"
+                     ],
+                     [
+                         "C-2",
+                         "Mick",
+                         null,
+                         "E-10"
+                     ],
+                     [
+                         "C-3",
+                         "Keith",
+                         null,
+                         "E-10"
+                     ],
+                     [
+                         "C-4",
+                         "Charlie",
+                         null,
+                         "E-99"
+                     ],
+                     [
+                         "C-5",
+                         "Ron",
+                         null,
+                         "E-10"
+                     ]
+                 ],
+        "row_count":  5,
+        "status":  "executed_read_only_ACE_E_copy"
+    },
+    {
+        "name":  "Inventory",
+        "sql":  "SELECT * FROM Inventory",
+        "columns":  [
+                        "ItemID",
+                        "Description",
+                        "StdUnitCost"
+                    ],
+        "rows":  [
+                     [
+                         "A-1",
+                         "Small A",
+                         1200
+                     ],
+                     [
+                         "A-2",
+                         "Medium A",
+                         2200
+                     ],
+                     [
+                         "A-3",
+                         "Extra Small A",
+                         600
+                     ],
+                     [
+                         "A-4",
+                         "Tiny A",
+                         250
+                     ],
+                     [
+                         "A-5",
+                         "Large A",
+                         2800
+                     ],
+                     [
+                         "A-6",
+                         "Extra Large A",
+                         3600
+                     ]
+                 ],
+        "row_count":  6,
+        "status":  "executed_read_only_ACE_E_copy"
+    },
+    {
+        "name":  "Stockflow",
+        "sql":  "SELECT * FROM [Inventory-SaleStockflow]",
+        "columns":  [
+                        "InventoryItemID",
+                        "SaleNumber",
+                        "Quantity",
+                        "ActualPrice"
+                    ],
+        "rows":  [
+                     [
+                         "A-1",
+                         "S-1",
+                         3,
+                         2000
+                     ],
+                     [
+                         "A-1",
+                         "S-3",
+                         1,
+                         2000
+                     ],
+                     [
+                         "A-2",
+                         "S-5",
+                         2,
+                         3000
+                     ],
+                     [
+                         "A-2",
+                         "S-6",
+                         10,
+                         3500
+                     ],
+                     [
+                         "A-3",
+                         "S-3",
+                         6,
+                         1000
+                     ],
+                     [
+                         "A-4",
+                         "S-1",
+                         2,
+                         600
+                     ],
+                     [
+                         "A-4",
+                         "S-5",
+                         2,
+                         300
+                     ],
+                     [
+                         "A-5",
+                         "S-3",
+                         2,
+                         4000
+                     ],
+                     [
+                         "A-5",
+                         "S-7",
+                         3,
+                         3000
+                     ],
+                     [
+                         "A-6",
+                         "S-2",
+                         2,
+                         5000
+                     ],
+                     [
+                         "A-6",
+                         "S-4",
+                         2,
+                         5000
+                     ],
+                     [
+                         "A-6",
+                         "S-5",
+                         2,
+                         5000
+                     ],
+                     [
+                         "A-6",
+                         "S-7",
+                         2,
+                         7000
+                     ]
+                 ],
+        "row_count":  13,
+        "status":  "executed_read_only_ACE_E_copy"
+    },
+    {
+        "name":  "Sale",
+        "sql":  "SELECT * FROM Sale",
+        "columns":  [
+                        "SaleNumber",
+                        "Amount",
+                        "Date",
+                        "CustomerNumber",
+                        "SalesRepNumber"
+                    ],
+        "rows":  [
+                     [
+                         "S-1",
+                         7200,
+                         "2014-07-01T00:00:00",
+                         "C-1",
+                         "E-12"
+                     ],
+                     [
+                         "S-2",
+                         10000,
+                         "2014-07-21T00:00:00",
+                         "C-2",
+                         "E-10"
+                     ],
+                     [
+                         "S-3",
+                         16000,
+                         "2014-07-22T00:00:00",
+                         "C-5",
+                         "E-10"
+                     ],
+                     [
+                         "S-4",
+                         10000,
+                         "2014-07-26T00:00:00",
+                         "C-2",
+                         "E-10"
+                     ],
+                     [
+                         "S-5",
+                         16600,
+                         "2014-07-31T00:00:00",
+                         "C-5",
+                         "E-10"
+                     ],
+                     [
+                         "S-6",
+                         35000,
+                         "2014-08-15T00:00:00",
+                         "C-3",
+                         "E-10"
+                     ],
+                     [
+                         "S-7",
+                         23000,
+                         "2014-08-21T00:00:00",
+                         "C-4",
+                         "E-99"
+                     ]
+                 ],
+        "row_count":  7,
+        "status":  "executed_read_only_ACE_E_copy"
+    },
+    {
+        "name":  "Duality",
+        "sql":  "SELECT * FROM [Sale-CashRecDuality]",
+        "columns":  [
+                        "SaleNumber",
+                        "RemittanceAdviceNumber",
+                        "Applied"
+                    ],
+        "rows":  [
+                     [
+                         "S-1",
+                         "RA-3",
+                         7200
+                     ],
+                     [
+                         "S-2",
+                         "RA-1",
+                         1666
+                     ],
+                     [
+                         "S-2",
+                         "RA-5",
+                         1666
+                     ],
+                     [
+                         "S-3",
+                         "RA-4",
+                         16000
+                     ],
+                     [
+                         "S-4",
+                         "RA-2",
+                         10000
+                     ],
+                     [
+                         "S-5",
+                         "RA-4",
+                         16600
+                     ]
+                 ],
+        "row_count":  6,
+        "status":  "executed_read_only_ACE_E_copy"
+    },
+    {
+        "name":  "Salesperson",
+        "sql":  "SELECT * FROM Salesperson",
+        "columns":  [
+                        "EmployeeNumber",
+                        "QuarterlySalesAmount",
+                        "CommissionRate"
+                    ],
+        "rows":  [
+                     [
+                         "E-10",
+                         null,
+                         "10%"
+                     ],
+                     [
+                         "E-12",
+                         null,
+                         "12%"
+                     ],
+                     [
+                         "E-78",
+                         0.0000,
+                         "15%"
+                     ],
+                     [
+                         "E-99",
+                         null,
+                         "10%"
+                     ]
+                 ],
+        "row_count":  4,
+        "status":  "executed_read_only_ACE_E_copy"
+    },
+    {
+        "name":  "Quiz2",
+        "sql":  "SELECT SaleNumber, Amount, SalesRepNumber FROM Sale WHERE SalesRepNumber=\u0027E-10\u0027",
+        "columns":  [
+                        "SaleNumber",
+                        "Amount",
+                        "SalesRepNumber"
+                    ],
+        "rows":  [
+                     [
+                         "S-2",
+                         10000,
+                         "E-10"
+                     ],
+                     [
+                         "S-3",
+                         16000,
+                         "E-10"
+                     ],
+                     [
+                         "S-4",
+                         10000,
+                         "E-10"
+                     ],
+                     [
+                         "S-5",
+                         16600,
+                         "E-10"
+                     ],
+                     [
+                         "S-6",
+                         35000,
+                         "E-10"
+                     ]
+                 ],
+        "row_count":  5,
+        "status":  "executed_read_only_ACE_E_copy"
+    },
+    {
+        "name":  "NonE10",
+        "sql":  "SELECT SaleNumber, Amount FROM Sale WHERE SalesRepNumber\u003c\u003e\u0027E-10\u0027",
+        "columns":  [
+                        "SaleNumber",
+                        "Amount"
+                    ],
+        "rows":  [
+                     [
+                         "S-1",
+                         7200
+                     ],
+                     [
+                         "S-7",
+                         23000
+                     ]
+                 ],
+        "row_count":  2,
+        "status":  "executed_read_only_ACE_E_copy"
+    },
+    {
+        "name":  "NonE10WithRep",
+        "sql":  "SELECT SaleNumber, Amount, SalesRepNumber FROM Sale WHERE SalesRepNumber\u003c\u003e\u0027E-10\u0027",
+        "columns":  [
+                        "SaleNumber",
+                        "Amount",
+                        "SalesRepNumber"
+                    ],
+        "rows":  [
+                     [
+                         "S-1",
+                         7200,
+                         "E-12"
+                     ],
+                     [
+                         "S-7",
+                         23000,
+                         "E-99"
+                     ]
+                 ],
+        "row_count":  2,
+        "status":  "executed_read_only_ACE_E_copy"
+    },
+    {
+        "name":  "CutoffAR",
+        "sql":  "SELECT s.SaleNumber,s.Amount,Nz(a.AppliedTotal,0) AS AppliedTotal,s.Amount-Nz(a.AppliedTotal,0) AS AR FROM Sale AS s LEFT JOIN (SELECT SaleNumber,SUM(AppliedAmount) AS AppliedTotal FROM [Sale-CashRecDuality] GROUP BY SaleNumber) AS a ON s.SaleNumber=a.SaleNumber",
+        "error":  "Exception calling \"ExecuteReader\" with \"0\" argument(s): \"表达式中 \u0027Nz\u0027 函数未定义。\"",
+        "status":  "error_not_Access_UI_equivalence"
+    }
+]

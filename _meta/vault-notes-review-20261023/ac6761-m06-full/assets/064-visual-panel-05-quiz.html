@@ -1,0 +1,82 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M06 frozen candidate visual completion</title><link rel="stylesheet" href="/deps/katex/katex.min.css"><style>body{margin:0;background:#f2f2f2;color:#202020;font:18px/1.65 "Microsoft YaHei",sans-serif}header{position:sticky;top:0;background:#fff;border-bottom:1px solid #aaa;padding:8px 20px;z-index:2;font-size:13px}main{max-width:1040px;margin:auto;background:#fff;padding:24px 42px}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;font-size:16px;width:100%;table-layout:auto}td,th{border:1px solid #bbb;padding:8px;text-align:left}blockquote{border-left:4px solid #789;padding-left:18px;margin:20px 0;background:#f7f9fb}pre{background:#f1f3f5;padding:15px;overflow:auto;font-size:15px;line-height:1.5}code{font-family:Consolas,monospace}h1,h2,h3,h4{line-height:1.4;scroll-margin-top:55px}summary{font-weight:bold;cursor:pointer}.mermaid{background:white;text-align:center;white-space:normal;overflow:visible}.mermaid svg{max-width:100%;height:auto}.katex-display{overflow-x:auto;overflow-y:hidden}details{padding:8px;border-left:2px solid #ddd}</style></head><body><header>冻结候选 ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4 · 同源浏览器显示，非 Obsidian/Access UI · <span id="render-state">rendering</span></header><main><h1>05-quiz</h1><h4 id="2239-quiz-2-e-10">2.23.9 Quiz 2：筛选 E-10 的销售（当前原件补齐）</h4>
+<p>中文入口：题目给 ExampleTables1，要求查“由 E-10 做的销售”，结果三列，保存名为 QueryA。它用等于，不是前面 Query 5 的不等于。以下全文来自当前 <code>course_files_export/Quiz 2.docx</code>，不是由音频重建。</p>
+<details open="open">
+<p><summary>英文原题与全部九步（原样保留；历史发送指令不构成本次执行授权）</summary></p>
+<blockquote>
+<p>Quiz 2
+Based on the ACCESS database “ExampleTables1”, construct a query: Sales made by E-10.
+1. Open ExampleTables1
+2. Create query design
+3. Choose sale table
+4. Select Sale Number, Amount, and SalesRepNumber
+5. Criteria is E-10
+6. Run
+7. Save as QueryA
+8. Close ExampleTables1
+9. Send the updated ExampleTables1 to [CONTACT REDACTED IN PUBLIC COPY; SEE LOCAL ORIGINAL]</p>
+</blockquote>
+</details>
+<p>中文逐步对照：</p>
+<ol>
+<li>打开题定 ExampleTables1，确保使用题定副本；本次只读核查没有修改原库。</li>
+<li>在 Create 中选 Query Design，进入查询设计视图。</li>
+<li>添加 Sale 表。它是销售事件表，每行一笔销售。</li>
+<li>依次把 SaleNumber、Amount、SalesRepNumber 加入 Field 行，三列 Show 均勾选。原题的 Sale Number 对应当前库字段 SaleNumber。</li>
+<li>在 SalesRepNumber 的 Criteria 行填 <code>"E-10"</code>。这是文本相等条件；不要加 <code>&lt;&gt;</code>，也不要填到 Amount 列。</li>
+<li>运行查询。筛行后只输出刚才选定三列，不把 Date、CustomerNumber 自动加入。</li>
+<li>原题要求将查询保存为 QueryA；保存查询定义与导出结果表是两件不同的事。</li>
+<li>原题要求关闭 ExampleTables1。</li>
+<li>原题要求发送更新后的 ExampleTables1，收件地址保留在上方原文。这里仅解释历史任务要求，本次未保存查询、修改附件或发送邮件；本人是否提交、截止、分值仍未知。</li>
+</ol>
+<p>已有独立练习材料见 Quiz 2 学习解析；本段仍就地保留完整题面和答案，不替换本人草稿或提交字段。</p>
+<p><strong>参考解法（笔记自拟，使用当前字段名）</strong>：SQL 可用下面的等价表达检查筛行和挑列。SELECT 决定三列，FROM 指定 Sale，WHERE 只保留销售员为 E-10 的行；字符串两侧用引号。该 SELECT 的只读 ACE 结果承接原独审对 E 盘副本的实际执行，不冒称本线程操作了 Access 界面。</p>
+<pre><code class="language-sql">SELECT SaleNumber, Amount, SalesRepNumber
+FROM Sale
+WHERE SalesRepNumber = 'E-10';
+</code></pre>
+<p>下表每行是一笔符合条件的销售，Amount 单位沿用当前源库；无 ORDER BY 时显示顺序不保证。</p>
+<table>
+<thead>
+<tr>
+<th>SaleNumber</th>
+<th style="text-align: right;">Amount</th>
+<th>SalesRepNumber</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S-2</td>
+<td style="text-align: right;">10,000</td>
+<td>E-10</td>
+</tr>
+<tr>
+<td>S-3</td>
+<td style="text-align: right;">16,000</td>
+<td>E-10</td>
+</tr>
+<tr>
+<td>S-4</td>
+<td style="text-align: right;">10,000</td>
+<td>E-10</td>
+</tr>
+<tr>
+<td>S-5</td>
+<td style="text-align: right;">16,600</td>
+<td>E-10</td>
+</tr>
+<tr>
+<td>S-6</td>
+<td style="text-align: right;">35,000</td>
+<td>E-10</td>
+</tr>
+</tbody>
+</table>
+<p>例如 S-2 的 SalesRepNumber 为 E-10，所以保留；S-1 为 E-12，被筛掉。结果是 5 行 × 3 列。若改为 <code>&lt;&gt; 'E-10'</code>，则变成前面 S-1、S-7 的另一道题，不能沿用本题答案。</p>
+<p><strong>英文参考答案（笔记自拟，U24）</strong>：</p>
+<blockquote>
+<p>Select SaleNumber, Amount, and SalesRepNumber from Sale where SalesRepNumber equals 'E-10', and save the query as QueryA as the original task requires. The current supplied data return five rows: S-2 for 10,000, S-3 for 16,000, S-4 for 10,000, S-5 for 16,600, and S-6 for 35,000; all have SalesRepNumber E-10. The historical instruction to send the updated database is part of the task text and has not been executed in this review.</p>
+</blockquote></main><script src="/deps/mermaid.min.js"></script><script src="/deps/katex/katex.min.js"></script><script src="/deps/katex/contrib/auto-render.min.js"></script><script>window.visualReady=false;window.visualErrors=[];
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'default',fontFamily:'Microsoft YaHei'});
+(async()=>{try{await mermaid.run({querySelector:'.mermaid'});}catch(e){window.visualErrors.push(String(e));}
+try{renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredTags:['script','noscript','style','textarea','pre','code']});}catch(e){window.visualErrors.push(String(e));}
+window.visualReady=true;document.querySelector('#render-state').textContent='render complete; '+window.visualErrors.join('; ');})();</script></body></html>

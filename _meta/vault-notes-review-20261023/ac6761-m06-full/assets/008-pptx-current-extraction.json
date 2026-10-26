@@ -1,0 +1,1446 @@
+{
+  "slides": [
+    {
+      "page": 1,
+      "text": "AC6761 Artificial Intelligence Accounting\nChapter 6 Accounting Information \nQuerying with ACCESS\n "
+    },
+    {
+      "page": 2,
+      "text": "Construct database using ACCESS\n2"
+    },
+    {
+      "page": 3,
+      "text": "Microsoft Access\nWhen you start a new database, Access automatically opens a new table for you, which is opened in datasheet view.\nDatasheet view assumes you want to create table simply by entering data. In contrast, design view gives you control over all choices that need to be made during table creation, such as specifying data types and field properties for each attribute in the table. \nA data type or field property determines what kind of data values may be entered into a database table’s column. Examples include text, numbers, currency, date/time, etc.\n3"
+    },
+    {
+      "page": 4,
+      "text": "Microsoft Access\nChange the datasheet view to design view by clicking on the View icon near the top left corner of the Table Tools window and then click on Design View. \n4"
+    },
+    {
+      "page": 5,
+      "text": "Table Tools\n5\nWhen you create a blank database, Access assumes you want to create a table in datasheet view, and it assigns Table1 as a default name for the table\nTo refuse the suggestion and instead create the table in design view, click on this View icon\nA popup window will prompt you to save the table before switching to design view; we’ll name the table Sale"
+    },
+    {
+      "page": 6,
+      "text": "6\nMicrosoft Access Table Design View\nSection 1:  table design grid\nSection 2: field properties panel"
+    },
+    {
+      "page": 7,
+      "text": "Microsoft Access\nSection 1 shows the overall layout of the table.\nThe attributes/fields of the table are listed on the left.\nThe appropriate data type for each attribute could be chosen in the middle column (e.g. text, currency, date, number, \netc\n). \nThe description of attribute is provided in the right-hand column (maybe left blank). \n7"
+    },
+    {
+      "page": 8,
+      "text": "Microsoft Access\nIn section 2, additional properties for each field should be set, such as field size, customized format, default value, validation rules, or a specification as to whether the field is required to contain data (or whether it’s ok to have null values). \n8"
+    },
+    {
+      "page": 9,
+      "text": "9\nExample 1\nSalespersonID\nName\nTelephone\n123456\nFred\n555-0063\n654321\nFrancis\n555-0007\nSaleID\nDate\nAmount\nSalesperson\n061401A\n6/14\n$4,218\n123456\n061401B\n6/14\n$6,437\n654321\n061501A\n6/15\n$1,112\n654321\n061501B\n6/15\n$3,300\n061501C\n6/15\n$1,776"
+    },
+    {
+      "page": 10,
+      "text": "Example 1\nEnter the four fields (\nSaleID\n, Date, Amount, and Salesperson) in the leftmost column and change each data type to its appropriate value. \nA rule of thumb: if the data type is not a date, and you do not need to be able to perform calculations with it, then set the data type as text; if you do need to perform calculations with it, then set the data type as number, unless it is a dollar value in which case you should set it as currency\n. \n10"
+    },
+    {
+      "page": 11,
+      "text": "Example 1\nSaleID\n – text\nDate – Date/Time (change the name from Date to \nSaleDate\n because date is a reserved word). \nAmount – Currency\nSalesperson – text\n11"
+    },
+    {
+      "page": 12,
+      "text": "Example Sale table design\n12"
+    },
+    {
+      "page": 13,
+      "text": "Field properties\nNote: if the properties of two fields are different, then Access considers the values in those fields to be different even if the content is the same.\nRecall referential integrity principle – for a data value entered in the Salesperson filed in the Sale table as a foreign key to be acceptable, it must either be null or it must match exactly a data value in the \nSalespersonID\n field in the Salesperson table. \nThe data type or field property are part of the value of the data. \n13"
+    },
+    {
+      "page": 14,
+      "text": "Primary Key\nThe small key symbol at the gray box immediately to the left of \nSaleID\n represents primary key attribute. \nIf you deleted the first line and added \nSaleID\n as a new field, you may not have a key icon.\nClick on the small grey box to the immediate left of the field and then click on the Primary key icon near the top left corner of the \nTableTools\n window. \n14"
+    },
+    {
+      "page": 15,
+      "text": "Save\nFile – Save\nClose.  \n15"
+    },
+    {
+      "page": 16,
+      "text": "Create Salesperson table\nCreate – Table design\nEnter three fields: \nSalespersonID\n, \nSalespersonName\n, \nSalespersonTelephoneNumber\n.\nDo not change the data type or any field properties.\nSet \nSalespersonID\n as the primary key. \nSave the table as “Salesperson”. \nClose.\n16"
+    },
+    {
+      "page": 17,
+      "text": "Save\nFile – Save\nClose.  \n17"
+    },
+    {
+      "page": 18,
+      "text": "Database window after designing Sale and Salesperson tables\n18"
+    },
+    {
+      "page": 19,
+      "text": "Link between tables\nThe way to communicate foreign keys (and concatenated primary keys that are formed from posting two different class’ primary keys into an association table) to Access is by establishing a relationship between the two tables. \nGo to the “relationship layout”\nDatabase Tools and then click on the icon labeled Relationships. \n19"
+    },
+    {
+      "page": 20,
+      "text": "20\nConnecting Access Tables\nFirst, click here (on \nSalespersonID\n)\nThen,drag\n to the matching attribute (Salesperson)\nClick to enforce \nClick to enable \n "
+    },
+    {
+      "page": 21,
+      "text": "Link between tables\nShow Table window\nHighlight both tables and add them to the layout, and then close Show Table window\nClick on \nSalespersonID\n in Salesperson table and drag to the matching attribute in Sale table.\n“Edit Relationships” window shows.\nAllow you to enforce referential integrity\nCascade updated related fields – if you change the value of a primary key such as \nSalespersonID\n then you want the corresponding posted foreign key values to also be changed, such as the Salesperson values in the Sale table. \n21"
+    },
+    {
+      "page": 22,
+      "text": "Connected Tables\n22"
+    },
+    {
+      "page": 23,
+      "text": "Link between tables\nThe 1 and ∞ symbols on the Relationship Layout seem to be multiplicities, but they are not exactly the same concept. \nIt resembles how many times the same data value can be stored in that field of the table to which the symbol is connected. \nThe same data value for \nSalespersonID\n can exist in the Salesperson table only one time; may exist multiple times in the Sale table. \n23"
+    },
+    {
+      "page": 24,
+      "text": "Example 2\nStudent – \nStudentID\n, Name (\nStudentName\n), Address (\nStudentAddress\n)\nCourse – \nCourseID\n, Description, Credits\nTakes – \nStudentID\n, \nCourseID\n, Grade earned\nCreate a new blank database, save as Database2\nCreate the three tables and indicate the relationship\n24\nStudent\n-\nStudentID\n-Name\n-Address\nCourse\n-\nCourseID\n-Description\n-Credits\nTakes\n0..*\n0..*\n-grade earned"
+    },
+    {
+      "page": 25,
+      "text": "Concatenated primary key\nClick on the grey box immediately to the left of \nStudentID\n. Hold the shift key and click on the grey box immediately to the left of \nCourseID\n. Click the key icon. \n25"
+    },
+    {
+      "page": 26,
+      "text": "26"
+    },
+    {
+      "page": 27,
+      "text": "Relationships\t\nClose all the tables\nDatabase Tools – Relationships – Add all the tables – drag \nStudentID\n from Student table to \nStudentTakesCourse\n table; drag \nCourseID\n from Course table to \nStudentTakesCourse\n table.\n27"
+    },
+    {
+      "page": 28,
+      "text": "Relationships between tables versus relationships between classes\n28"
+    },
+    {
+      "page": 29,
+      "text": "Information Querying using ACCESS\n29"
+    },
+    {
+      "page": 30,
+      "text": "30\nWhat is Querying?\nIt is asking questions about the data in the database and manipulating or combining the data in different ways\nWe can isolate certain rows in tables, we can isolate certain columns in tables, we can join tables together, we can create calculations based on various data items, etc."
+    },
+    {
+      "page": 31,
+      "text": "31\nThree Query Languages\nRelational Algebra\nThree main operators:  Select, Project, Join\nProvides the conceptual basis for SQL and QBE \nStructured Query Language (SQL)\nThe user enters commands according to a pre-defined syntax to retrieve desired data.\n \nQuery By Example (QBE)\nThe user starts with a sample of the table(s) columns and marks the fields he or she wants to include in the answer. Defaults are available for summarizing and manipulating the data."
+    },
+    {
+      "page": 32,
+      "text": "32\nRelational Algebra\nSelect\nincludes only certain rows from a database table in its “answer”.\n  \nProject\n \nincludes only certain columns from a database table in its “answer”\nJoin\ncombines two or more database tables on the basis of one or more common attributes "
+    },
+    {
+      "page": 33,
+      "text": "33\nExample Tables (Incomplete Enterprise Database)\nfrom Dunn & McCarthy working paper"
+    },
+    {
+      "page": 34,
+      "text": "34\nRelational Algebra SELECT\n    Find the cash receipts from Customer #2 (keeping all the details of those cash receipts)\nSelect Cash Receipt Where Customer Number = C-2 Giving Answer"
+    },
+    {
+      "page": 35,
+      "text": "35\nRelational Algebra PROJECT\nFind the customer number, name, and salesperson number for all customers\nProject Customer Over (Customer#, Name, SP#) Giving Answer"
+    },
+    {
+      "page": 36,
+      "text": "36\nJoin Types\nInner join\nincludes only the records from both tables that have the exact same values in the fields that are joined\nI.e., \nOuter join\nincludes all records from one table, and matches those records from the other table for which values in the joined fields are equal\nI.e., \nLeft Outer Join\nRight Outer Join"
+    },
+    {
+      "page": 37,
+      "text": "37\nRelational Algebra Inner Join\nFind all details of all customers and all available details of each customer’s salesperson\nJoin Customer, Salesperson Where Customer.SP# = [Salesperson.Employee Number] Giving Answer"
+    },
+    {
+      "page": 38,
+      "text": "38\nRelational Algebra Left Outer Join\nFind all details of all sales and the cash receipt number and amount applied of any cash receipts related to those sales\nLeft Outer Join Sale, [Sale - CashRecDuality] Where [Sale.Sale#] = [Sale - CashRecDuality.Sale#] Giving Answer"
+    },
+    {
+      "page": 39,
+      "text": "39\nSQL (Structured Query Language)\nEach query statement follows the same structure:\nSELECT\n \nattribute name(s)\nFROM\n \ntable name(s)\nWHERE\n criteria is met\n;"
+    },
+    {
+      "page": 40,
+      "text": "40\nSQL Statements and Relational Algebra\nSQL’s SELECT component isolates columns\ni.e., relational algebra’s project\nSQL’s FROM component is used for identifying the table(s) involved\nSQL’s WHERE component isolates rows\ni.e., relational algebra’s select\nmay be left blank for single-table queries that retrieve all rows"
+    },
+    {
+      "page": 41,
+      "text": "41\n    Find the cash receipts from Customer #2 (keeping all the details of those cash receipts)\nSQL and Relational Algebra SELECT\nSelect *\nFrom [Cash Receipt]\nWhere [Customer Number] = C-2;\n(note: the brackets are needed because of spaces in the table and field names; also note * is a wild card indicating all columns should be included)"
+    },
+    {
+      "page": 42,
+      "text": "42\nSQL and Relational Algebra PROJECT\nSelect Customer#, Name, SP# \nFrom Customer;\nFind the customer number, name, and salesperson number for all customers"
+    },
+    {
+      "page": 43,
+      "text": "43\nSQL and Relational Algebra Inner Join\nSelect *\nFrom Customer, Salesperson\nWhere Customer.SP# = [Salesperson.Employee Number];\nFind all details of all customers and all available details of each customer’s salesperson"
+    },
+    {
+      "page": 44,
+      "text": "44\nSQL and Relational Algebra Outer Join\nFind all details of all sales and the cash receipt number and amount applied of any cash receipts related to those sales\nSelect *\nFrom Sale LeftJoin [Sale-CashRecDuality]\nWhere [Sale.Sale#]=[Sale-CashRecDuality.Sale#];"
+    },
+    {
+      "page": 45,
+      "text": "45\nMathematical Comparison Operators\nSQL Queries may include mathematical comparison operators such as \n= equal to\n< less than\n<= less than or equal to\n> greater than\n>= greater than or equal to\n<> not equal to (or != in some software)\nMathematical comparison operators are typically included in the WHERE clause of the SQL statement, and may be used on all types of fields\nFor date fields, dates that are earlier in time are “less than” dates that are later in time.\nFor text fields, A < B < C, etc."
+    },
+    {
+      "page": 46,
+      "text": "46\nSQL Mathematical \nComparison Operators\n    Select Account#, Balance\nFrom Cash\nWhere Balance>=50000;"
+    },
+    {
+      "page": 47,
+      "text": "47\nSQL Mathematical Comparison \nOperators on Character Attributes\n    Select Sale#, Amount\nFrom Sale\nWhere SalesRep# <> E-10;"
+    },
+    {
+      "page": 48,
+      "text": "48\nQueries with Logical Operators\nQueries may include logical operators AND, OR, and NOT\nAND accomplishes a set intersection – answer includes all instances that meet BOTH conditions\nOR accomplishes a set union – answer includes all instances that meet one condition and all instances that meet the other condition\nNOT identifies instances that do not meet one or more conditions "
+    },
+    {
+      "page": 49,
+      "text": "49\nQueries with Special Operators\nBETWEEN is used to define the range limits.\nThe end points of the range are included\nSelect Sale#, Amount, Date\nFrom Sale\nWhere Date BETWEEN 7/1 and 7/31;"
+    },
+    {
+      "page": 50,
+      "text": "50\nQueries with Special Operators\nIS NULL is used to retrieve attributes for which the value is null.\nSelect *\nFrom Cash\nWhere Balance IS NULL;"
+    },
+    {
+      "page": 51,
+      "text": "51\nQueries with Special Operators\nEXISTS is used to retrieve attributes for which the value is not null.\nSelect *\nFrom Cash\nWhere Balance EXISTS;"
+    },
+    {
+      "page": 52,
+      "text": "52\nAggregation Functions in Queries\nAn aggregation function summarizes the data values within a field (column)\nCOUNT\n summarizes the number of rows that contain a given value in the field\nAVERAGE\n computes the arithmetic mean value of all rows included in the answer\nSUM\n computes the arithmetic sum of all rows included in the answer\nMIN\n identifies the minimum (lowest) attribute value for the field\nMAX\n identifies the maximum (greatest) attribute value for the field"
+    },
+    {
+      "page": 53,
+      "text": "53\nQueries with Horizontal Calculations\n“Horizontal” calculations mathematically combine values from different fields for each row"
+    },
+    {
+      "page": 54,
+      "text": "54\nRelational Algebra SELECT in QBE  \nCash Receipts from Customer C-2"
+    },
+    {
+      "page": 55,
+      "text": "55\nRelational Algebra “Select” QBE Example: \nCash Receipts from Customer C-2"
+    },
+    {
+      "page": 56,
+      "text": "56\nRelational Algebra SELECT in QBE \nCash Receipts from Customer C-2\nEnter =“C-2” as Criteria in the Customer Number field"
+    },
+    {
+      "page": 57,
+      "text": "57\nRelational Algebra SELECT in QBE \nCash Receipts from Customer C-2"
+    },
+    {
+      "page": 58,
+      "text": "58\nResult\nRelational Algebra SELECT in QBE \nCash Receipts from Customer C-2"
+    },
+    {
+      "page": 59,
+      "text": "59\nRelational Algebra PROJECT in QBE\nCustomer#, name, salesperson#"
+    },
+    {
+      "page": 60,
+      "text": "60\nRelational Algebra PROJECT in QBE\nCustomer#, name, salesperson#"
+    },
+    {
+      "page": 61,
+      "text": "61\nRelational Algebra PROJECT in QBE\nCustomer#, name, salesperson#"
+    },
+    {
+      "page": 62,
+      "text": "62\nRelational Algebra PROJECT in QBE\nCustomer#, name, salesperson#\nResult"
+    },
+    {
+      "page": 63,
+      "text": "63\nRelational Algebra Inner Join in QBE: \nAll details of customers and their salespeople"
+    },
+    {
+      "page": 64,
+      "text": "64\nRelational Algebra Inner Join in QBE: \nAll details of customers and their salespeople"
+    },
+    {
+      "page": 65,
+      "text": "65\nRelational Algebra Inner Join in QBE: \nAll details of customers and their salespeople"
+    },
+    {
+      "page": 66,
+      "text": "66\nRelational Algebra Inner Join in QBE: \nAll details of customers and their salespeople\nResult"
+    },
+    {
+      "page": 67,
+      "text": "67\nQBE with Mathematical Comparison Operator\nCash Account# and Balances >=$50,000"
+    },
+    {
+      "page": 68,
+      "text": "68\nQBE with Mathematical Comparison Operator\nCash Account# and Balances >=$50,000"
+    },
+    {
+      "page": 69,
+      "text": "69\nQBE with Mathematical Comparison Operator\nCash Account# and Balances >=$50,000\nResult"
+    },
+    {
+      "page": 70,
+      "text": "70\nQBE with Mathematical Comparison on Character Attribute: Sales Not made by E-10"
+    },
+    {
+      "page": 71,
+      "text": "71\nQBE with Mathematical Comparison on Character Attribute: Sales Not made by E-10"
+    },
+    {
+      "page": 72,
+      "text": "72\nQBE with Mathematical Comparison on Character Attribute: Sales Not made by E-10\nResult"
+    },
+    {
+      "page": 73,
+      "text": "73\nAND operator in QBE: Sales made before July 31 by Sales Rep E-10"
+    },
+    {
+      "page": 74,
+      "text": "74\nAND operator in QBE: Sales made before July 31 by Sales Rep E-10\nEnter selection criteria on same line to accomplish logical “AND”"
+    },
+    {
+      "page": 75,
+      "text": "75\nAND operator in QBE: Sales made before July 31 by Sales Rep E-10\nResult"
+    },
+    {
+      "page": 76,
+      "text": "76\nOR operator in QBE: Sales made \nbefore July 31 OR by Sales Rep E-10"
+    },
+    {
+      "page": 77,
+      "text": "77\nOR operator in QBE: Sales made \nbefore July 31 OR by Sales Rep E-10\nEnter selection criteria on separate lines to accomplish logical “OR”"
+    },
+    {
+      "page": 78,
+      "text": "78\nOR operator in QBE: Sales made \nbefore July 31 OR by Sales Rep E-10\nResult"
+    },
+    {
+      "page": 79,
+      "text": "79\nAggregation SUM and Special Operator BETWEEN \nin QBE: Total Sales between July 15 and July 31"
+    },
+    {
+      "page": 80,
+      "text": "80\nBring only the fields you need into the query grid\nAggregation SUM and Special Operator BETWEEN \nin QBE: Total Sales between July 15 and July 31"
+    },
+    {
+      "page": 81,
+      "text": "81\nEnter Criteria with BETWEEN operator\nClick on summation symbol to add “Total” line to query grid (used for aggregations)\nAggregation SUM and Special Operator BETWEEN \nin QBE: Total Sales between July 15 and July 31"
+    },
+    {
+      "page": 82,
+      "text": "82\nAggregation SUM and Special Operator BETWEEN \nin QBE: Total Sales between July 15 and July 31\nTotal line defaults to “Group By” for each field; Change the Amount field to “Sum” and change the Date field to “Where”"
+    },
+    {
+      "page": 83,
+      "text": "83\nAggregation SUM and Special Operator BETWEEN \nin QBE: Total Sales between July 15 and July 31"
+    },
+    {
+      "page": 84,
+      "text": "84\nAggregation SUM and Special Operator BETWEEN \nin QBE: Total Sales between July 15 and July 31\nResult"
+    },
+    {
+      "page": 85,
+      "text": "Other questions related to an expanded RAE model\n85"
+    },
+    {
+      "page": 86,
+      "text": "86\nAdjusted Accounts Receivable Step 4 (using Nz to control null values)\nNow it Works!!"
+    },
+    {
+      "page": 87,
+      "text": "87\nAccounts Payable Query Steps\nCalculate Purchases – Cash \nDisb\n for Purchases – Purchase Returns "
+    },
+    {
+      "page": 88,
+      "text": "88\nQuery to identify highest and lowest selling inventory during a specific time period\nResults for May 1-7, 2015 (could refine further with Max and Min on \nSumOfExtSaleAmt\n column if too many items to easily see highest is BIS1 and lowest is a tie between MIN1 and TTP12)\nResults for May 8-14, 2015 (could refine further with Max and Min on \nSumOfExtSaleAmt\n column if too many items to easily see highest is MIN1 and lowest is a tie between all others)"
+    },
+    {
+      "page": 89,
+      "text": "89\nQuerying for Inventory Weighted Average Unit Cost\n  \n(not for Financial Statement use)\nDivide total line item extensions by total purchase quantities for each item\nResult for \nMay 1-31, 2015"
+    },
+    {
+      "page": 90,
+      "text": "90\nQuery to calculate number of days to fill selected sales orders\nStep 2: Calculate average of days to fill orders\nResult of Step 2"
+    },
+    {
+      "page": 91,
+      "text": "91\nQuery to identify inventory items with no positive customer reactions\nStep 2: Outer join inventory type to positive reactions result; use “Is Null” operator to identify those without positive reactions."
+    },
+    {
+      "page": 92,
+      "text": "92\nQuery for number of sales calls made by each salesperson during a time period\nResult for May 1-15, 2015"
+    }
+  ],
+  "old_text_comparison": [
+    {
+      "page": 1,
+      "text_equal": true
+    },
+    {
+      "page": 2,
+      "text_equal": true
+    },
+    {
+      "page": 3,
+      "text_equal": true
+    },
+    {
+      "page": 4,
+      "text_equal": true
+    },
+    {
+      "page": 5,
+      "text_equal": true
+    },
+    {
+      "page": 6,
+      "text_equal": true
+    },
+    {
+      "page": 7,
+      "text_equal": true
+    },
+    {
+      "page": 8,
+      "text_equal": true
+    },
+    {
+      "page": 9,
+      "text_equal": true
+    },
+    {
+      "page": 10,
+      "text_equal": true
+    },
+    {
+      "page": 11,
+      "text_equal": true
+    },
+    {
+      "page": 12,
+      "text_equal": true
+    },
+    {
+      "page": 13,
+      "text_equal": true
+    },
+    {
+      "page": 14,
+      "text_equal": true
+    },
+    {
+      "page": 15,
+      "text_equal": true
+    },
+    {
+      "page": 16,
+      "text_equal": true
+    },
+    {
+      "page": 17,
+      "text_equal": true
+    },
+    {
+      "page": 18,
+      "text_equal": true
+    },
+    {
+      "page": 19,
+      "text_equal": true
+    },
+    {
+      "page": 20,
+      "text_equal": true
+    },
+    {
+      "page": 21,
+      "text_equal": true
+    },
+    {
+      "page": 22,
+      "text_equal": true
+    },
+    {
+      "page": 23,
+      "text_equal": true
+    },
+    {
+      "page": 24,
+      "text_equal": true
+    },
+    {
+      "page": 25,
+      "text_equal": true
+    },
+    {
+      "page": 26,
+      "text_equal": true
+    },
+    {
+      "page": 27,
+      "text_equal": true
+    },
+    {
+      "page": 28,
+      "text_equal": true
+    },
+    {
+      "page": 29,
+      "text_equal": true
+    },
+    {
+      "page": 30,
+      "text_equal": true
+    },
+    {
+      "page": 31,
+      "text_equal": true
+    },
+    {
+      "page": 32,
+      "text_equal": true
+    },
+    {
+      "page": 33,
+      "text_equal": true
+    },
+    {
+      "page": 34,
+      "text_equal": true
+    },
+    {
+      "page": 35,
+      "text_equal": true
+    },
+    {
+      "page": 36,
+      "text_equal": true
+    },
+    {
+      "page": 37,
+      "text_equal": true
+    },
+    {
+      "page": 38,
+      "text_equal": true
+    },
+    {
+      "page": 39,
+      "text_equal": true
+    },
+    {
+      "page": 40,
+      "text_equal": true
+    },
+    {
+      "page": 41,
+      "text_equal": true
+    },
+    {
+      "page": 42,
+      "text_equal": true
+    },
+    {
+      "page": 43,
+      "text_equal": true
+    },
+    {
+      "page": 44,
+      "text_equal": true
+    },
+    {
+      "page": 45,
+      "text_equal": true
+    },
+    {
+      "page": 46,
+      "text_equal": true
+    },
+    {
+      "page": 47,
+      "text_equal": true
+    },
+    {
+      "page": 48,
+      "text_equal": true
+    },
+    {
+      "page": 49,
+      "text_equal": true
+    },
+    {
+      "page": 50,
+      "text_equal": true
+    },
+    {
+      "page": 51,
+      "text_equal": true
+    },
+    {
+      "page": 52,
+      "text_equal": true
+    },
+    {
+      "page": 53,
+      "text_equal": true
+    },
+    {
+      "page": 54,
+      "text_equal": true
+    },
+    {
+      "page": 55,
+      "text_equal": true
+    },
+    {
+      "page": 56,
+      "text_equal": true
+    },
+    {
+      "page": 57,
+      "text_equal": true
+    },
+    {
+      "page": 58,
+      "text_equal": true
+    },
+    {
+      "page": 59,
+      "text_equal": true
+    },
+    {
+      "page": 60,
+      "text_equal": true
+    },
+    {
+      "page": 61,
+      "text_equal": true
+    },
+    {
+      "page": 62,
+      "text_equal": true
+    },
+    {
+      "page": 63,
+      "text_equal": true
+    },
+    {
+      "page": 64,
+      "text_equal": true
+    },
+    {
+      "page": 65,
+      "text_equal": true
+    },
+    {
+      "page": 66,
+      "text_equal": true
+    },
+    {
+      "page": 67,
+      "text_equal": true
+    },
+    {
+      "page": 68,
+      "text_equal": true
+    },
+    {
+      "page": 69,
+      "text_equal": true
+    },
+    {
+      "page": 70,
+      "text_equal": true
+    },
+    {
+      "page": 71,
+      "text_equal": true
+    },
+    {
+      "page": 72,
+      "text_equal": true
+    },
+    {
+      "page": 73,
+      "text_equal": true
+    },
+    {
+      "page": 74,
+      "text_equal": true
+    },
+    {
+      "page": 75,
+      "text_equal": true
+    },
+    {
+      "page": 76,
+      "text_equal": true
+    },
+    {
+      "page": 77,
+      "text_equal": true
+    },
+    {
+      "page": 78,
+      "text_equal": true
+    },
+    {
+      "page": 79,
+      "text_equal": true
+    },
+    {
+      "page": 80,
+      "text_equal": true
+    },
+    {
+      "page": 81,
+      "text_equal": true
+    },
+    {
+      "page": 82,
+      "text_equal": true
+    },
+    {
+      "page": 83,
+      "text_equal": true
+    },
+    {
+      "page": 84,
+      "text_equal": true
+    },
+    {
+      "page": 85,
+      "text_equal": true
+    },
+    {
+      "page": 86,
+      "text_equal": true
+    },
+    {
+      "page": 87,
+      "text_equal": true
+    },
+    {
+      "page": 88,
+      "text_equal": true
+    },
+    {
+      "page": 89,
+      "text_equal": true
+    },
+    {
+      "page": 90,
+      "text_equal": true
+    },
+    {
+      "page": 91,
+      "text_equal": true
+    },
+    {
+      "page": 92,
+      "text_equal": true
+    }
+  ],
+  "embedded_objects": [
+    {
+      "name": "ppt/embeddings/oleObject6.bin",
+      "bytes": 21504,
+      "sha256": "20f67705fa2799b8c530c74bb1aebb5bdde1dee3e3e872045cffbaac29a5f954"
+    },
+    {
+      "name": "ppt/embeddings/oleObject36.bin",
+      "bytes": 32256,
+      "sha256": "b4090f66c35e81e2259134005de41f495ec28b2f9ad7bfd64dd0c81c282ee499"
+    },
+    {
+      "name": "ppt/embeddings/oleObject37.bin",
+      "bytes": 47616,
+      "sha256": "122889568ca734942ccd85eb3cf49f1d17b8700cd225b75934386b77110bbd36"
+    },
+    {
+      "name": "ppt/embeddings/oleObject5.bin",
+      "bytes": 23552,
+      "sha256": "790417d1878024776533ce931d4199015dc5e0be320d420b97f2a5aadc3c005f"
+    },
+    {
+      "name": "ppt/embeddings/oleObject7.bin",
+      "bytes": 31744,
+      "sha256": "7267a7fe80baba6d267cedf60a70995fa0fae195ef6f9d27c0fe4d648fcdc11e"
+    },
+    {
+      "name": "ppt/embeddings/oleObject35.bin",
+      "bytes": 47616,
+      "sha256": "122889568ca734942ccd85eb3cf49f1d17b8700cd225b75934386b77110bbd36"
+    },
+    {
+      "name": "ppt/embeddings/oleObject32.bin",
+      "bytes": 32768,
+      "sha256": "555073ada53962d67b58367f137146bf7678eb2188b778cf20b6d7fab5a57c95"
+    },
+    {
+      "name": "ppt/embeddings/oleObject33.bin",
+      "bytes": 21504,
+      "sha256": "458be575f1474a62cabc3967285b2afaf510c8cf820eb7f35d4abaee0bd88e70"
+    },
+    {
+      "name": "ppt/embeddings/oleObject34.bin",
+      "bytes": 25600,
+      "sha256": "d5c73b0037d32f0de141706ab692fe21e3322b90486677bf8591c1f80bb6154b"
+    },
+    {
+      "name": "ppt/embeddings/oleObject38.bin",
+      "bytes": 28672,
+      "sha256": "558aba6835064d89b8ceb5753f6b1a85eedb0b95f7bcf4f381049b59748a8bf6"
+    },
+    {
+      "name": "ppt/embeddings/oleObject39.bin",
+      "bytes": 21504,
+      "sha256": "458be575f1474a62cabc3967285b2afaf510c8cf820eb7f35d4abaee0bd88e70"
+    },
+    {
+      "name": "ppt/embeddings/oleObject1.bin",
+      "bytes": 56832,
+      "sha256": "c60acb959e66abd7a1cc51c59e86f229c81a1fcaa3114e0ca68ab93e6e0f4e6a"
+    },
+    {
+      "name": "ppt/embeddings/oleObject4.bin",
+      "bytes": 22016,
+      "sha256": "ebb2be25ba473d1c424bcab985cf7b99d42769b66108af0c4e2dc1ff218405eb"
+    },
+    {
+      "name": "ppt/embeddings/oleObject40.bin",
+      "bytes": 20480,
+      "sha256": "bc42de67c3c4e32261c695a997b1acb5631b1ac48f57a0659295cc11d8eb56ef"
+    },
+    {
+      "name": "ppt/embeddings/oleObject41.bin",
+      "bytes": 21504,
+      "sha256": "458be575f1474a62cabc3967285b2afaf510c8cf820eb7f35d4abaee0bd88e70"
+    },
+    {
+      "name": "ppt/embeddings/oleObject3.bin",
+      "bytes": 21504,
+      "sha256": "4d7c80564bae7b4b21cdd1a934ef608490b1b8f4ba6fda88508d7c392ad47062"
+    },
+    {
+      "name": "ppt/embeddings/oleObject2.bin",
+      "bytes": 47616,
+      "sha256": "122889568ca734942ccd85eb3cf49f1d17b8700cd225b75934386b77110bbd36"
+    },
+    {
+      "name": "ppt/embeddings/oleObject11.bin",
+      "bytes": 21504,
+      "sha256": "48cd0c0dc92362d44eca4eedc32b0e7a30608cd9c4e2e0472c5a94b78ed13e21"
+    },
+    {
+      "name": "ppt/embeddings/oleObject20.bin",
+      "bytes": 22528,
+      "sha256": "71e8426fcedb6a8d05e0408cbb1fa14521e14a8b2ba64a5ad1b5ee7e279bb1e3"
+    },
+    {
+      "name": "ppt/embeddings/oleObject21.bin",
+      "bytes": 22016,
+      "sha256": "ebb2be25ba473d1c424bcab985cf7b99d42769b66108af0c4e2dc1ff218405eb"
+    },
+    {
+      "name": "ppt/embeddings/oleObject22.bin",
+      "bytes": 23552,
+      "sha256": "790417d1878024776533ce931d4199015dc5e0be320d420b97f2a5aadc3c005f"
+    },
+    {
+      "name": "ppt/embeddings/oleObject12.bin",
+      "bytes": 22016,
+      "sha256": "ebb2be25ba473d1c424bcab985cf7b99d42769b66108af0c4e2dc1ff218405eb"
+    },
+    {
+      "name": "ppt/embeddings/oleObject19.bin",
+      "bytes": 21504,
+      "sha256": "4d7c80564bae7b4b21cdd1a934ef608490b1b8f4ba6fda88508d7c392ad47062"
+    },
+    {
+      "name": "ppt/embeddings/oleObject18.bin",
+      "bytes": 47616,
+      "sha256": "122889568ca734942ccd85eb3cf49f1d17b8700cd225b75934386b77110bbd36"
+    },
+    {
+      "name": "ppt/embeddings/oleObject14.bin",
+      "bytes": 25600,
+      "sha256": "1e2b0a34aa1cc06262d6895f3f5cca55d59bc91a1d47457efb488f7d5f5b74e7"
+    },
+    {
+      "name": "ppt/embeddings/oleObject15.bin",
+      "bytes": 22016,
+      "sha256": "ebb2be25ba473d1c424bcab985cf7b99d42769b66108af0c4e2dc1ff218405eb"
+    },
+    {
+      "name": "ppt/embeddings/oleObject16.bin",
+      "bytes": 31744,
+      "sha256": "7267a7fe80baba6d267cedf60a70995fa0fae195ef6f9d27c0fe4d648fcdc11e"
+    },
+    {
+      "name": "ppt/embeddings/oleObject13.bin",
+      "bytes": 31744,
+      "sha256": "7267a7fe80baba6d267cedf60a70995fa0fae195ef6f9d27c0fe4d648fcdc11e"
+    },
+    {
+      "name": "ppt/embeddings/oleObject17.bin",
+      "bytes": 30208,
+      "sha256": "07870fc80fefaaa652576745b63169bcb4f00905fe3e65e48f9727be0b95d8f0"
+    },
+    {
+      "name": "ppt/embeddings/oleObject9.bin",
+      "bytes": 22016,
+      "sha256": "ebb2be25ba473d1c424bcab985cf7b99d42769b66108af0c4e2dc1ff218405eb"
+    },
+    {
+      "name": "ppt/embeddings/oleObject29.bin",
+      "bytes": 29184,
+      "sha256": "f2f58665403b31905299526ed4febd63be29ab8e316120efd9698f075dd5a882"
+    },
+    {
+      "name": "ppt/embeddings/oleObject30.bin",
+      "bytes": 47616,
+      "sha256": "122889568ca734942ccd85eb3cf49f1d17b8700cd225b75934386b77110bbd36"
+    },
+    {
+      "name": "ppt/embeddings/oleObject31.bin",
+      "bytes": 21504,
+      "sha256": "4d7c80564bae7b4b21cdd1a934ef608490b1b8f4ba6fda88508d7c392ad47062"
+    },
+    {
+      "name": "ppt/embeddings/oleObject8.bin",
+      "bytes": 22528,
+      "sha256": "66ac2f4bfb1b10c6f24f38ea3884639c48255fd1036370e8fb61e035a48a2d5c"
+    },
+    {
+      "name": "ppt/embeddings/oleObject28.bin",
+      "bytes": 31744,
+      "sha256": "7267a7fe80baba6d267cedf60a70995fa0fae195ef6f9d27c0fe4d648fcdc11e"
+    },
+    {
+      "name": "ppt/embeddings/oleObject27.bin",
+      "bytes": 22016,
+      "sha256": "ebb2be25ba473d1c424bcab985cf7b99d42769b66108af0c4e2dc1ff218405eb"
+    },
+    {
+      "name": "ppt/embeddings/oleObject26.bin",
+      "bytes": 25600,
+      "sha256": "bd43f3be7b51a547be82b8a3ad964f84456118fed4f392b7f9c78ed5acb0b7ad"
+    },
+    {
+      "name": "ppt/embeddings/oleObject23.bin",
+      "bytes": 21504,
+      "sha256": "a9dce50c0395ed3996db2b5341fd6d155a6442c6bf8e07f991f7dbb0c71eb816"
+    },
+    {
+      "name": "ppt/embeddings/oleObject24.bin",
+      "bytes": 22016,
+      "sha256": "ebb2be25ba473d1c424bcab985cf7b99d42769b66108af0c4e2dc1ff218405eb"
+    },
+    {
+      "name": "ppt/embeddings/oleObject25.bin",
+      "bytes": 31744,
+      "sha256": "7267a7fe80baba6d267cedf60a70995fa0fae195ef6f9d27c0fe4d648fcdc11e"
+    },
+    {
+      "name": "ppt/embeddings/oleObject10.bin",
+      "bytes": 23552,
+      "sha256": "790417d1878024776533ce931d4199015dc5e0be320d420b97f2a5aadc3c005f"
+    }
+  ],
+  "image_checks": [
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p005-image1.png",
+      "matches_current_pptx_media": true,
+      "sha256": "7a4f5c9eacb2b4b65c356559a2cd57f6c36dec890a887a8e094ad8fa48c5f09e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p005-image2.png",
+      "matches_current_pptx_media": true,
+      "sha256": "706480ab7a6a28235576c9988d625ab03b59c463639baaafec3b52600cfb57d0"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p006-image3.png",
+      "matches_current_pptx_media": true,
+      "sha256": "adda710b058dcf9d328598db266922a76983ceaed2946078253824f2f3f6eb83"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p012-image4.png",
+      "matches_current_pptx_media": true,
+      "sha256": "82fa8e09819f988188f6c2d59e05338dce1a50806efaebacfb62dfb58e28db09"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p018-image5.png",
+      "matches_current_pptx_media": true,
+      "sha256": "96defa243a1addd7eb47e86852e44ba6cc1e184c7a910032ddd00253fe8da72e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p020-image6.png",
+      "matches_current_pptx_media": true,
+      "sha256": "fdc0c6da83eecf1cfcbb251d84ab4d470e4bcfded5d29948ed033e2a08199e1e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p020-image7.png",
+      "matches_current_pptx_media": true,
+      "sha256": "6b8d81d50bcdf2dfa99e383e7e82df741e5c40966f182aeabf265a31c4f95bbd"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p020-image8.png",
+      "matches_current_pptx_media": true,
+      "sha256": "44304907213db8c2d2c065bcf467bbe1c19da41f0aebbaba48c0d45a8cfd5066"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p020-image9.png",
+      "matches_current_pptx_media": true,
+      "sha256": "d7c52676f6f2bc150e91798a7d4335659a8679592ce9aa8ec64c7581047b8fb4"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p022-image10.png",
+      "matches_current_pptx_media": true,
+      "sha256": "836804d7c3599351ff55e8e97768014286c962c43c88a23886d3331ae25d8cc0"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p026-image11.png",
+      "matches_current_pptx_media": true,
+      "sha256": "585996a19b323e6d0ff5df3b5be99d445c3cf8f69be5b12081554a417360b2b9"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p028-image12.png",
+      "matches_current_pptx_media": true,
+      "sha256": "48c89e4165e17d2972f462b551bde2beb4ce23d3d288199f57e382cad5ea3bb8"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p033-image13.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "1aea46d282413f496c49c39c70dd0b0bc0af509f1094d801c3972595fe0a4d9b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p033-image14.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "c5445c9488a1ff364765fd59f47d485c53b1e12b5eb145a8dd5d5364fbf3ae27"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p033-image15.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "ed4295b1ff00e096eaa419036602ef784bb8b7cc6b4c01f072759987166aad27"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p033-image16.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "f69140bca0fec9027408dff7c069d906ec6ed9054c1d2b5560bc4a5cfb8c564e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p033-image17.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "3efd2afa44ca4bcd22f36133880920c1f7be533ef690f3d885aca2e0ad1115a0"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p033-image18.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "229b4603a86db8814f650eec29fc6c9232db7b0f29139afc865458c093706297"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p033-image19.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "79a88923f383f165fb21ec2436925525b5ef1f85ca2f7e4660d290deac1566e7"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p034-image16.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "f69140bca0fec9027408dff7c069d906ec6ed9054c1d2b5560bc4a5cfb8c564e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p034-image17.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "3efd2afa44ca4bcd22f36133880920c1f7be533ef690f3d885aca2e0ad1115a0"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p034-image20.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "759f402eb2d53d67b3983c1a5cffae447e9955579d9a3c3d32f03f85dc563cd4"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p035-image16.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "f69140bca0fec9027408dff7c069d906ec6ed9054c1d2b5560bc4a5cfb8c564e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p035-image19.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "79a88923f383f165fb21ec2436925525b5ef1f85ca2f7e4660d290deac1566e7"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p035-image21.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "00cc09284584cd7a5ba7ec9e8c96fe1826ae3aa16fccc61c2eced9c2cabf95f7"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p037-image16.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "f69140bca0fec9027408dff7c069d906ec6ed9054c1d2b5560bc4a5cfb8c564e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p037-image19.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "79a88923f383f165fb21ec2436925525b5ef1f85ca2f7e4660d290deac1566e7"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p037-image22.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "77ea0df4185bfb4e8e665894beac3e8a188682e0c06b2e9af50a702e96326684"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p038-image14.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "c5445c9488a1ff364765fd59f47d485c53b1e12b5eb145a8dd5d5364fbf3ae27"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p038-image15.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "ed4295b1ff00e096eaa419036602ef784bb8b7cc6b4c01f072759987166aad27"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p038-image23.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "474bc6442f40249d693498b660e082f200a8f1c6ae42e4268b42bbcc23f70d22"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p041-image16.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "f69140bca0fec9027408dff7c069d906ec6ed9054c1d2b5560bc4a5cfb8c564e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p041-image17.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "3efd2afa44ca4bcd22f36133880920c1f7be533ef690f3d885aca2e0ad1115a0"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p041-image24.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "e4f8b440d9063ce46f320dc469b864bb2d91361d9ce4b21bd7df0bba55de687d"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p042-image16.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "f69140bca0fec9027408dff7c069d906ec6ed9054c1d2b5560bc4a5cfb8c564e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p042-image19.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "79a88923f383f165fb21ec2436925525b5ef1f85ca2f7e4660d290deac1566e7"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p042-image25.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "0ff12e90632418792e6d2c3cd51f663d3bdaa3e5c28e867dbf235657fa95f3f3"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p043-image16.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "f69140bca0fec9027408dff7c069d906ec6ed9054c1d2b5560bc4a5cfb8c564e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p043-image19.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "79a88923f383f165fb21ec2436925525b5ef1f85ca2f7e4660d290deac1566e7"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p043-image26.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "3e3668056fcbab79fb5756e443f44cf902be6d61a73bdf500cc8801a2dd4eba7"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p044-image14.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "c5445c9488a1ff364765fd59f47d485c53b1e12b5eb145a8dd5d5364fbf3ae27"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p044-image15.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "ed4295b1ff00e096eaa419036602ef784bb8b7cc6b4c01f072759987166aad27"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p044-image27.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "a65e96a767920920e9247683ecb14bc7c4117a1097cac1a022571b40034119ad"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p046-image28.emf",
+      "matches_current_pptx_media": true,
+      "sha256": "4e3b9217af904bf784f062567de4fdadac25c2a98d8be1010aea9848b66dba7a"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p046-image29.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "ea2b481e790cf15c8ce6c7bff0e31c79eedb148cb6d4cdfd04e272dca2ae280c"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p047-image14.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "c5445c9488a1ff364765fd59f47d485c53b1e12b5eb145a8dd5d5364fbf3ae27"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p047-image30.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "f39c80458e6ee4a3057a6eae2ea02accf10a2b8209424fc9541a8f26ba9ba5b1"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p049-image14.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "c5445c9488a1ff364765fd59f47d485c53b1e12b5eb145a8dd5d5364fbf3ae27"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p049-image31.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "bfa3f29addbbc8a3d050ffa9c53a4e3e55f372c3f08f6bfb29452b989f1fe24b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p050-image29.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "ea2b481e790cf15c8ce6c7bff0e31c79eedb148cb6d4cdfd04e272dca2ae280c"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p050-image32.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "5ed69c8a24571ddf887a6b2995aa924458c5f916d775df4489ee8ca1c6275f91"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p051-image29.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "ea2b481e790cf15c8ce6c7bff0e31c79eedb148cb6d4cdfd04e272dca2ae280c"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p051-image33.wmf",
+      "matches_current_pptx_media": true,
+      "sha256": "8408e270e4a3efcfa801f9a966b2676d28968d1ffe731db6fa9f3510b9342a8b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p054-image34.png",
+      "matches_current_pptx_media": true,
+      "sha256": "de22431e48e22b10789e8fb8d240055f045e23e342da586938bacab2a14e4600"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p054-image35.png",
+      "matches_current_pptx_media": true,
+      "sha256": "d0831f23c22cf3490846472e0e9c7c7817e7933f70224e8b15ee029773010106"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p055-image36.png",
+      "matches_current_pptx_media": true,
+      "sha256": "054da5e82f35e7b0e66530b753e34ce063044d4dccad1c1d2859d04472ffd952"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p056-image37.png",
+      "matches_current_pptx_media": true,
+      "sha256": "02a117ddb020a6674afc29271e08ff60c48af4624cc8b575b3853f89140510de"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p057-image38.png",
+      "matches_current_pptx_media": true,
+      "sha256": "61ffd57592919649ceedbe307f54792e391ed61c873d35cb01d351d3aea5bf7f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p058-image39.png",
+      "matches_current_pptx_media": true,
+      "sha256": "cec79d5eb92f3c49e7c60e920db3f2b6433a9d2342684786c5558581f67468d0"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p059-image40.png",
+      "matches_current_pptx_media": true,
+      "sha256": "eb46e61088062965ba567582d5fbc1883a09d54d0639263818203c147b9bf89e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p060-image41.png",
+      "matches_current_pptx_media": true,
+      "sha256": "420d86e5845a7053d88c1b60339530ab36044fd1d5cdfa62144c04c48ecb92cd"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p061-image42.png",
+      "matches_current_pptx_media": true,
+      "sha256": "42422d976e5f38224d84a79be8bfd62a4a28655e0ad040a1f3b832fb3020c3f3"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p062-image43.png",
+      "matches_current_pptx_media": true,
+      "sha256": "18180ab6f34dbdaab3692bb2bf68c6ab22864fe0867f88ff1de1da974b49d45d"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p063-image44.png",
+      "matches_current_pptx_media": true,
+      "sha256": "72913aef78e0fbc5a6269af35b70eb107784606798e10d1c0d305072c0ce52cb"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p064-image45.png",
+      "matches_current_pptx_media": true,
+      "sha256": "65f0e4c5da602627727306fca8b27ad785f8f09dd0371fd2cc5a2a600c82714f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p065-image46.png",
+      "matches_current_pptx_media": true,
+      "sha256": "4ec9048c4085ffae6160df1b053bffb394bc4b8c65bd07674cacd4375a399b9d"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p066-image47.png",
+      "matches_current_pptx_media": true,
+      "sha256": "612e4a8935a0d5e022f625e498f9555f9b62906647dc852fc684ab27e6ab4c9b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p067-image48.png",
+      "matches_current_pptx_media": true,
+      "sha256": "6d5b4f5ff94e2cb0e163c8c51945e1d5c89e155dbff24f0f2015966458362ae4"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p068-image49.png",
+      "matches_current_pptx_media": true,
+      "sha256": "7f612c4d0f670310f14a517b1c733fa4091450f4ac50b135cb1e29dcf9aaca75"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p069-image50.png",
+      "matches_current_pptx_media": true,
+      "sha256": "e9c26c4a4e7199ce01f39e4dc9794ce67d11e7f9e8c1c7b2369bbe8c36780820"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p070-image51.png",
+      "matches_current_pptx_media": true,
+      "sha256": "043325f68174ed3c3aa85df911b5648b8d30253cd61c3ccbd1733179b024c8cb"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p071-image52.png",
+      "matches_current_pptx_media": true,
+      "sha256": "bffbb0edb4d903945310be061a6929011bc160b5d2114fb4aadf83b6f3683e5f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p072-image53.png",
+      "matches_current_pptx_media": true,
+      "sha256": "e858a978fed081ce911f1cb18e87f2cda9eb928c4023331555f20e26353220b8"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p073-image54.png",
+      "matches_current_pptx_media": true,
+      "sha256": "10c6713509d06dda6c8892a748f14c6af72548b6dd516b601ff7bfdea2c91d7c"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p074-image55.png",
+      "matches_current_pptx_media": true,
+      "sha256": "b9c663d2e10000cf5553a08a337878262b0e6f2c2500acd56647e1319d59b98f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p075-image56.png",
+      "matches_current_pptx_media": true,
+      "sha256": "44778a8fb05ae5046ba2fe3a7f18d22b653e0e6fdc129f2f29fb10bfcec7615f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p076-image54.png",
+      "matches_current_pptx_media": true,
+      "sha256": "10c6713509d06dda6c8892a748f14c6af72548b6dd516b601ff7bfdea2c91d7c"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p077-image57.png",
+      "matches_current_pptx_media": true,
+      "sha256": "f015f24185fcb6f30ddd0ae5a95f3de0fc96b9fe17267dcff706985bcfa8d68b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p078-image58.png",
+      "matches_current_pptx_media": true,
+      "sha256": "2736426cb55236e0ea8bed596c8289f814bab35c5614966e4a3c8d573d36a8df"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p079-image54.png",
+      "matches_current_pptx_media": true,
+      "sha256": "10c6713509d06dda6c8892a748f14c6af72548b6dd516b601ff7bfdea2c91d7c"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p080-image59.png",
+      "matches_current_pptx_media": true,
+      "sha256": "764adafab7a74a3bae9d927daebcb7bf05a6d1fe249679b5400279f89a2cd2d2"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p081-image60.png",
+      "matches_current_pptx_media": true,
+      "sha256": "6debd0b1d75b5869a3d0cd76e680fa98bbc648448295ef0e995c8f51ae9e0d00"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p082-image61.png",
+      "matches_current_pptx_media": true,
+      "sha256": "ee5a72eb1db0e3d334f3059d39808c25e6798f2be7cf3a5f694875228d8855df"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p083-image62.png",
+      "matches_current_pptx_media": true,
+      "sha256": "6e8f8aa992519d0fcc78be7d8533a2d92c4160e87eabd33ba74ea79acb2818ee"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p084-image63.png",
+      "matches_current_pptx_media": true,
+      "sha256": "7edf938fe744f57419fb23019fdd7842febc09098f37993b865d9589ed732014"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p086-image64.png",
+      "matches_current_pptx_media": true,
+      "sha256": "b809d4b02e314053ba0940d3fa0c2603ce7a44177888a3ba7de4ef3e9e55b41a"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p086-image65.png",
+      "matches_current_pptx_media": true,
+      "sha256": "b9ecfc79d2e36b8e5d237c0230acddd053838e218ca8d7cdca3af06148ec7965"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p086-image66.png",
+      "matches_current_pptx_media": true,
+      "sha256": "04cb357be6f6be3d8b82a49e1e55be2958262021920e1d2fefe6c19b995231ca"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p087-image67.png",
+      "matches_current_pptx_media": true,
+      "sha256": "a2b6f5c049c61e868815406b606b323ddcd66ce37bdd05b59d484efa29e794ee"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p087-image68.png",
+      "matches_current_pptx_media": true,
+      "sha256": "b0051dd643f4a82921035b2798ec5b53e814b266cc6605052559f2b8d47bb243"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p087-image69.png",
+      "matches_current_pptx_media": true,
+      "sha256": "8799bf8b86509a329ddea39480deed16e98bad33e2d1c6f2eec3f7c776b6f405"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p088-image70.png",
+      "matches_current_pptx_media": true,
+      "sha256": "74df3665747bcb26f49ea6200d6b48b7f4095c32fd4ec9afe5e9b3fb4cc742dd"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p088-image71.png",
+      "matches_current_pptx_media": true,
+      "sha256": "8f4194da1423c52c172e3fa275db7b17188f6fad95a0db1b01ba93bbaf816c70"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p089-image72.png",
+      "matches_current_pptx_media": true,
+      "sha256": "d94178ec303b9672189e6a0da4fe1e2691f864bd856a8a65957534278b29ace5"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p089-image73.png",
+      "matches_current_pptx_media": true,
+      "sha256": "9e65ec5cd4573e90f6f939b8d57b5fcb728d537d3b047f98fbdb4419dd75447e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p090-image74.png",
+      "matches_current_pptx_media": true,
+      "sha256": "994e6edcd686e552fa9a58623d9977a2d2faaa95ceeeb30310894cc5bcc9b8ee"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p090-image75.png",
+      "matches_current_pptx_media": true,
+      "sha256": "7fa91a477f95729ba236d0956cf2fb68e51748bcbc08a9e7f7dcc2a6ff0c77f5"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p091-image76.png",
+      "matches_current_pptx_media": true,
+      "sha256": "986b8f29b3cf3699ab30e1b67bfd31830764c1e7eca71e0b02e467e771122227"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\sources\\ac-week6\\p092-image77.png",
+      "matches_current_pptx_media": true,
+      "sha256": "76382dc1892eb65b1582b3749e420cb5eb9c1c626401f430efcff9c67f381fd1"
+    }
+  ]
+}

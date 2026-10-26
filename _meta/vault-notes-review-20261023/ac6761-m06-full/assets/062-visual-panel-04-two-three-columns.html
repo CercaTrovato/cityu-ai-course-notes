@@ -1,0 +1,51 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M06 frozen candidate visual completion</title><link rel="stylesheet" href="/deps/katex/katex.min.css"><style>body{margin:0;background:#f2f2f2;color:#202020;font:18px/1.65 "Microsoft YaHei",sans-serif}header{position:sticky;top:0;background:#fff;border-bottom:1px solid #aaa;padding:8px 20px;z-index:2;font-size:13px}main{max-width:1040px;margin:auto;background:#fff;padding:24px 42px}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;font-size:16px;width:100%;table-layout:auto}td,th{border:1px solid #bbb;padding:8px;text-align:left}blockquote{border-left:4px solid #789;padding-left:18px;margin:20px 0;background:#f7f9fb}pre{background:#f1f3f5;padding:15px;overflow:auto;font-size:15px;line-height:1.5}code{font-family:Consolas,monospace}h1,h2,h3,h4{line-height:1.4;scroll-margin-top:55px}summary{font-weight:bold;cursor:pointer}.mermaid{background:white;text-align:center;white-space:normal;overflow:visible}.mermaid svg{max-width:100%;height:auto}.katex-display{overflow-x:auto;overflow-y:hidden}details{padding:8px;border-left:2px solid #ddd}</style></head><body><header>冻结候选 ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4 · 同源浏览器显示，非 Obsidian/Access UI · <span id="render-state">rendering</span></header><main><h1>04-two-three-columns</h1><p><strong>结果</strong>（讲义 p.72 截图）</p>
+<table>
+<thead>
+<tr>
+<th>SaleNumber</th>
+<th>Amount</th>
+<th>SalesRepNumber</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S-1</td>
+<td>\$7,200.00</td>
+<td>E-12</td>
+</tr>
+<tr>
+<td>S-7</td>
+<td>\$23,000.00</td>
+<td>E-99</td>
+</tr>
+</tbody>
+</table>
+<p><strong>筛出的销售相同，输出列数不同</strong>：p.47 SQL 是 S-1、S-7 的 2 行 × 2 列；本 QBE 是相同销售的 2 行 × 3 列，多显示 SalesRepNumber。不能称整个结果完全一致。</p>
+<p><strong>⚠️ 本组最重要的发现：QBE 截图里的引号，纠正了 SQL 页的错误</strong></p>
+<table>
+<thead>
+<tr>
+<th>讲义页</th>
+<th>写法</th>
+<th>对不对</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>p.47（SQL）</strong></td>
+<td><code>Where SalesRep# &lt;&gt; E-10;</code></td>
+<td>❌ <strong>缺引号</strong></td>
+</tr>
+<tr>
+<td><strong>p.71（QBE）</strong></td>
+<td><code>&lt;&gt; "E-10"</code></td>
+<td>✅ <strong>有引号</strong></td>
+</tr>
+</tbody>
+</table>
+<p>p.47 的文本常量缺引号，p.71 的 QBE 条件带引号。两张材料可据此对照正确字面量写法，不能由截图推测作者抄写过程。考试写文本常量须加引号。见 §9.3。</p>
+<p><strong>⚠️ 注意 <code>SalesRepNumber</code> 的 Show 是打勾的</strong>，虽然它只是用来筛选。<strong>如果不想在结果里看到销售员号，取消它的勾即可</strong>（p.81 那个例子就是这么做的）。</p></main><script src="/deps/mermaid.min.js"></script><script src="/deps/katex/katex.min.js"></script><script src="/deps/katex/contrib/auto-render.min.js"></script><script>window.visualReady=false;window.visualErrors=[];
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'default',fontFamily:'Microsoft YaHei'});
+(async()=>{try{await mermaid.run({querySelector:'.mermaid'});}catch(e){window.visualErrors.push(String(e));}
+try{renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredTags:['script','noscript','style','textarea','pre','code']});}catch(e){window.visualErrors.push(String(e));}
+window.visualReady=true;document.querySelector('#render-state').textContent='render complete; '+window.visualErrors.join('; ');})();</script></body></html>

@@ -1,0 +1,83 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M06 frozen candidate visual completion</title><link rel="stylesheet" href="/deps/katex/katex.min.css"><style>body{margin:0;background:#f2f2f2;color:#202020;font:18px/1.65 "Microsoft YaHei",sans-serif}header{position:sticky;top:0;background:#fff;border-bottom:1px solid #aaa;padding:8px 20px;z-index:2;font-size:13px}main{max-width:1040px;margin:auto;background:#fff;padding:24px 42px}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;font-size:16px;width:100%;table-layout:auto}td,th{border:1px solid #bbb;padding:8px;text-align:left}blockquote{border-left:4px solid #789;padding-left:18px;margin:20px 0;background:#f7f9fb}pre{background:#f1f3f5;padding:15px;overflow:auto;font-size:15px;line-height:1.5}code{font-family:Consolas,monospace}h1,h2,h3,h4{line-height:1.4;scroll-margin-top:55px}summary{font-weight:bold;cursor:pointer}.mermaid{background:white;text-align:center;white-space:normal;overflow:visible}.mermaid svg{max-width:100%;height:auto}.katex-display{overflow-x:auto;overflow-y:hidden}details{padding:8px;border-left:2px solid #ddd}</style></head><body><header>冻结候选 ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4 · 同源浏览器显示，非 Obsidian/Access UI · <span id="render-state">rendering</span></header><main><h1>09-quick-join</h1><h3 id="43">4.3 三种查询语言写法对照</h3>
+<table>
+<thead>
+<tr>
+<th>要做的事</th>
+<th>关系代数</th>
+<th>SQL</th>
+<th>QBE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>挑列</td>
+<td><code>Project 表 Over (列…)</code></td>
+<td><code>SELECT 列…</code></td>
+<td>Field 行拖字段 + Show 打勾</td>
+</tr>
+<tr>
+<td>挑所有列</td>
+<td>——</td>
+<td><code>SELECT *</code></td>
+<td>拖 <code>*</code>，或把字段全拖进来</td>
+</tr>
+<tr>
+<td>挑行</td>
+<td><code>Select 表 Where 条件</code></td>
+<td><code>WHERE 条件</code></td>
+<td>Criteria 行填条件</td>
+</tr>
+<tr>
+<td>指定表</td>
+<td>（算子的操作数）</td>
+<td><code>FROM 表…</code></td>
+<td>上半屏拖表进来</td>
+</tr>
+<tr>
+<td>内连接</td>
+<td><code>Join A, B Where A.k=B.k</code></td>
+<td><code>FROM A, B WHERE A.k=B.k</code> 或 <code>FROM A INNER JOIN B ON A.k=B.k</code></td>
+<td>两表间拖连接线（默认内连接）</td>
+</tr>
+<tr>
+<td>左外连接</td>
+<td><code>Left Outer Join A, B Where …</code></td>
+<td><code>FROM A LEFT JOIN B ON A.k=B.k</code></td>
+<td>Join Properties 选全保留 A 的完整文字，不背编号</td>
+</tr>
+<tr>
+<td>AND</td>
+<td>——</td>
+<td><code>WHERE a AND b</code></td>
+<td><strong>两个条件写同一行</strong></td>
+</tr>
+<tr>
+<td>OR</td>
+<td>——</td>
+<td><code>WHERE a OR b</code></td>
+<td><strong>两个条件写不同行</strong></td>
+</tr>
+<tr>
+<td>聚合</td>
+<td>——</td>
+<td><code>SUM(x)</code> + <code>GROUP BY</code></td>
+<td>点 Σ → Total 行选 <code>Sum</code> / <code>Group By</code></td>
+</tr>
+<tr>
+<td>只筛不显示</td>
+<td>——</td>
+<td><code>WHERE</code>（而非 <code>HAVING</code>）</td>
+<td>Total 行选 <strong><code>Where</code></strong> + 取消 Show</td>
+</tr>
+<tr>
+<td>横向计算</td>
+<td>——</td>
+<td><code>表达式 AS 别名</code></td>
+<td>Field 行写 <strong><code>别名: 表达式</code></strong></td>
+</tr>
+</tbody>
+</table></main><script src="/deps/mermaid.min.js"></script><script src="/deps/katex/katex.min.js"></script><script src="/deps/katex/contrib/auto-render.min.js"></script><script>window.visualReady=false;window.visualErrors=[];
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'default',fontFamily:'Microsoft YaHei'});
+(async()=>{try{await mermaid.run({querySelector:'.mermaid'});}catch(e){window.visualErrors.push(String(e));}
+try{renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredTags:['script','noscript','style','textarea','pre','code']});}catch(e){window.visualErrors.push(String(e));}
+window.visualReady=true;document.querySelector('#render-state').textContent='render complete; '+window.visualErrors.join('; ');})();</script></body></html>

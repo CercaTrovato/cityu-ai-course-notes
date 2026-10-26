@@ -1,0 +1,50 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M06 frozen candidate visual completion</title><link rel="stylesheet" href="/deps/katex/katex.min.css"><style>body{margin:0;background:#f2f2f2;color:#202020;font:18px/1.65 "Microsoft YaHei",sans-serif}header{position:sticky;top:0;background:#fff;border-bottom:1px solid #aaa;padding:8px 20px;z-index:2;font-size:13px}main{max-width:1040px;margin:auto;background:#fff;padding:24px 42px}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;font-size:16px;width:100%;table-layout:auto}td,th{border:1px solid #bbb;padding:8px;text-align:left}blockquote{border-left:4px solid #789;padding-left:18px;margin:20px 0;background:#f7f9fb}pre{background:#f1f3f5;padding:15px;overflow:auto;font-size:15px;line-height:1.5}code{font-family:Consolas,monospace}h1,h2,h3,h4{line-height:1.4;scroll-margin-top:55px}summary{font-weight:bold;cursor:pointer}.mermaid{background:white;text-align:center;white-space:normal;overflow:visible}.mermaid svg{max-width:100%;height:auto}.katex-display{overflow-x:auto;overflow-y:hidden}details{padding:8px;border-left:2px solid #ddd}</style></head><body><header>冻结候选 ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4 · 同源浏览器显示，非 Obsidian/Access UI · <span id="render-state">rendering</span></header><main><h1>06-wauc</h1><p><strong>那么这件商品“一件平均多少钱”？</strong> 本节只比较两种平均，不展开存货成本流转政策。下表输入都是刚才三批补充数据，金额单位为美元、数量单位为件。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>每批的影响</th>
+<th style="text-align: right;">结果（美元/件）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>简单平均（simple average）</td>
+<td>三批单价各占三分之一</td>
+<td style="text-align: right;">约 20.22333</td>
+</tr>
+<tr>
+<td>数量加权平均（weighted average）</td>
+<td>分别按 40、30、30 件加权</td>
+<td style="text-align: right;">20.001</td>
+</tr>
+</tbody>
+</table>
+<p>例如第一批的 40 件比第二批 30 件更多，所以对整体每件均价影响也更大。本节不讨论其他成本流转方法；给定三批采购只用于比较两种平均。</p>
+<p><strong>加权平均单位成本 = 采购总金额 ÷ 采购总数量。</strong></p>
+<p>"加权"的意思是：<strong>买得多的那次价格，对平均值的影响更大</strong>。（简单平均是 (18+22+20.67)/3 = 20.22，与自给例精确加权平均20.001不同，因为三次数量不一样。）</p>
+<p>💡 <strong>先读函数，再看安全分母</strong>：<code>IIf(条件, 条件真返回值, 条件假返回值)</code> 有三个参数。它根据条件选择一个返回值；Access 的 IIf 仍可能求值两个分支，所以危险的除法不要藏在某个分支中。这里让分支只返回 Null 或数量，再在外面相除。</p>
+<p>令 q 是汇总数量、cost 是汇总金额。<code>Nz(q,0)=0</code> 在 q 为 0 或 Null 时成立，第二参数返回 Null，表示本例单位成本不能定义；q 为 100 时条件为假，第三参数返回 100，cost 为 2,000.10 时可除得 20.001。cost 若未知，不能自动改为免费成本零。</p>
+<p>参考 QBE Field 表达式为 <code>WAUC: [SumOfLineItemExtension] / IIf(Nz([SumOfQuantityPurchased],0)=0, Null, [SumOfQuantityPurchased])</code>。输入是一商品一行的汇总结果，两字段分别是总金额和总数量；WAUC 是新列别名。它是笔记参考式，未在 Access UI 运行；下文给边界及来源。</p>
+<p><strong>安全除法与Access边界</strong>：IIf的两分支都会求值，不把 <code>IIf(q=0,0,cost/q)</code> 当可靠防除零。危险除法放在外面，分母分支只返回Null或数量：</p>
+<pre><code class="language-text">WAUC: [SumOfLineItemExtension] /
+      IIf(Nz([SumOfQuantityPurchased],0)=0,
+          Null,[SumOfQuantityPurchased])
+</code></pre>
+<p>q为100/cost为2,000.10→20.001；q为0或Null→单位成本未定义，保留Null及说明；cost为Null→不能编为免费成本0。这里Nz只将分母缺失与0合并为“不可除”，不把成本缺失自动补0。该建议依据<a href="https://support.microsoft.com/en-gb/access/functions/iif-function">Microsoft IIf文档</a>，获取2026-10-02，<strong>Access原生未运行</strong>。微软<a href="https://support.microsoft.com/en-us/access/examples-of-expressions">表达式示例</a>给出同级Sum/Sum运算，分两保存查询便于检查而非强制；不混单行qty与整组Sum，也不写一层嵌套Avg(Sum)。</p>
+<p><strong>看图前先问</strong>：数量为零或成本未知时，还能输出单位成本吗？</p>
+<pre class="mermaid">flowchart TD
+ A[&quot;商品、采购日期、数量、单位成本&quot;] --&gt; B[&quot;先筛同期间/单位/币种&quot;]
+ B --&gt; C[&quot;逐行qty乘cost，再按商品各自SUM&quot;]
+ C --&gt; D{&quot;qty已知且非0，cost已知？&quot;}
+ D --&gt;|否| N[&quot;输出Null与缺失/不适用原因&quot;]
+ D --&gt;|是| V[&quot;总成本除总数量；保留精度&quot;]
+ V --&gt; R[&quot;核逐行总额、数量与单位&quot;]
+ R --&gt; O[&quot;期间采购管理均价及来源限制&quot;]
+</pre>
+<p>箭头是输入核条件和计算控制；“qty 已知且非 0，cost 已知吗”的出口由已知/非零条件决定。</p>
+<p><strong>沿例子读图（笔记补充）</strong>：先核补例的期间、单位和币种，逐行相乘后汇总数量 100、成本 2,000.10。在“qty 已知且非 0，cost 已知”走是，除得 20.001，再核总额和单位后输出。如果数量为 0，走“输出 Null 与缺失/不适用原因”，不能输出零成本。</p></main><script src="/deps/mermaid.min.js"></script><script src="/deps/katex/katex.min.js"></script><script src="/deps/katex/contrib/auto-render.min.js"></script><script>window.visualReady=false;window.visualErrors=[];
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'default',fontFamily:'Microsoft YaHei'});
+(async()=>{try{await mermaid.run({querySelector:'.mermaid'});}catch(e){window.visualErrors.push(String(e));}
+try{renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredTags:['script','noscript','style','textarea','pre','code']});}catch(e){window.visualErrors.push(String(e));}
+window.visualReady=true;document.querySelector('#render-state').textContent='render complete; '+window.visualErrors.join('; ');})();</script></body></html>

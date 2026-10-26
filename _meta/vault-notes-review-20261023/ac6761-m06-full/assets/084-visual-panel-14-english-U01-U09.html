@@ -1,0 +1,48 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M06 frozen candidate visual completion</title><link rel="stylesheet" href="/deps/katex/katex.min.css"><style>body{margin:0;background:#f2f2f2;color:#202020;font:18px/1.65 "Microsoft YaHei",sans-serif}header{position:sticky;top:0;background:#fff;border-bottom:1px solid #aaa;padding:8px 20px;z-index:2;font-size:13px}main{max-width:1040px;margin:auto;background:#fff;padding:24px 42px}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;font-size:16px;width:100%;table-layout:auto}td,th{border:1px solid #bbb;padding:8px;text-align:left}blockquote{border-left:4px solid #789;padding-left:18px;margin:20px 0;background:#f7f9fb}pre{background:#f1f3f5;padding:15px;overflow:auto;font-size:15px;line-height:1.5}code{font-family:Consolas,monospace}h1,h2,h3,h4{line-height:1.4;scroll-margin-top:55px}summary{font-weight:bold;cursor:pointer}.mermaid{background:white;text-align:center;white-space:normal;overflow:visible}.mermaid svg{max-width:100%;height:auto}.katex-display{overflow-x:auto;overflow-y:hidden}details{padding:8px;border-left:2px solid #ddd}</style></head><body><header>冻结候选 ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4 · 同源浏览器显示，非 Obsidian/Access UI · <span id="render-state">rendering</span></header><main><h1>14-english-U01-U09</h1><p><strong>英文参考答案（笔记自拟，U01）</strong></p>
+<blockquote>
+<p>Build Sale with SaleID as its primary key and Salesperson as a foreign key to Salesperson.SalespersonID. Use the four Sale fields and the three Salesperson fields shown in the task, keep related key types compatible, enforce referential integrity, enable cascade updates as illustrated, and leave cascade deletes unchecked. A required salesperson also needs a non-null requirement; the relationship line alone does not impose it.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U02）</strong></p>
+<blockquote>
+<p>Create Student, Course, and the association table Takes (named StudentTakesCourse in the Access example). Use StudentID and CourseID together as the association table’s primary key, link each to its parent table, and store Grade earned on the student–course combination. The composite key prevents duplicate combinations in this exercise; repeated enrolments would require an additional distinguishing key.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U03）</strong></p>
+<blockquote>
+<p>Selecting Cash Receipt rows for customer C-2 returns RA-1, RA-2, and RA-5. The result has three rows and all six receipt fields; RA-2 is dated 26 July in the current source.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U04）</strong></p>
+<blockquote>
+<p>Project the customer number, name, and salesperson number for each customer. The given data produce five rows and three columns; no repeated projected tuples occur in this example.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U05）</strong></p>
+<blockquote>
+<p>Join Customer and Salesperson where the customer’s assigned salesperson number equals the employee number. The given data produce five rows and seven columns. E-78 is absent because that salesperson has no matching customer; row order is not guaranteed without sorting.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U06）</strong></p>
+<blockquote>
+<p>A left outer join from Sale to the allocation table returns eight rows and eight columns while retaining every sale. S-2 appears twice because it has two allocations, whereas S-6 and S-7 have Null allocation fields. To calculate a sale balance, aggregate its allocations first; the two row differences of 8,334 for S-2 are not its unpaid balance.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U07）</strong></p>
+<blockquote>
+<p>The condition Balance &gt;= 50000 selects BA-8 with a balance of 75,000. Selecting only Account# and Balance gives one row and two columns; a Null balance does not satisfy this comparison.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U08）</strong></p>
+<blockquote>
+<p>Sales not made by E-10 are S-1 for 7,200 and S-7 for 23,000. The p.47 SQL projects two columns, while the p.72 QBE result also shows SalesRepNumber and has three columns. The selected sales are the same, but the complete outputs are not identical.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U09）</strong></p>
+<blockquote>
+<p>The inclusive date range from July 1 through July 31 selects S-1 through S-5 from the supplied date-only records. BETWEEN includes both stated boundaries; when dates contain times, a half-open interval ending before August 1 avoids losing transactions later on July 31.</p>
+</blockquote></main><script src="/deps/mermaid.min.js"></script><script src="/deps/katex/katex.min.js"></script><script src="/deps/katex/contrib/auto-render.min.js"></script><script>window.visualReady=false;window.visualErrors=[];
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'default',fontFamily:'Microsoft YaHei'});
+(async()=>{try{await mermaid.run({querySelector:'.mermaid'});}catch(e){window.visualErrors.push(String(e));}
+try{renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredTags:['script','noscript','style','textarea','pre','code']});}catch(e){window.visualErrors.push(String(e));}
+window.visualReady=true;document.querySelector('#render-state').textContent='render complete; '+window.visualErrors.join('; ');})();</script></body></html>

@@ -1,0 +1,418 @@
+{
+  "original_sha256": "25ccd123ee4a1548e867980ec4afec4e237e502dcca63f77901805c25955674e",
+  "tables": {
+    "Cash": {
+      "columns": [
+        {
+          "name": "AccountNumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Bank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Balance",
+          "type": "CURRENCY"
+        }
+      ],
+      "count": 4,
+      "sample": [
+        [
+          "BA-6",
+          "Checking",
+          "Boston5",
+          "None"
+        ],
+        [
+          "BA-7",
+          "Checking",
+          "Shawmut",
+          "None"
+        ],
+        [
+          "BA-8",
+          "Draft",
+          "Shawmut",
+          "75000.0000"
+        ],
+        [
+          "BA-9",
+          "Checking",
+          "MassNat",
+          "0.0000"
+        ]
+      ]
+    },
+    "CashReceipt": {
+      "columns": [
+        {
+          "name": "RemittanceAdviceNumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Amount",
+          "type": "CURRENCY"
+        },
+        {
+          "name": "BankAccountNumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date",
+          "type": "DATETIME"
+        },
+        {
+          "name": "CustomerNumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CashierNumber",
+          "type": "VARCHAR"
+        }
+      ],
+      "count": 5,
+      "sample": [
+        [
+          "RA-1",
+          "1666.0000",
+          "BA-6",
+          "2014-07-25 00:00:00",
+          "C-2",
+          "E-39"
+        ],
+        [
+          "RA-2",
+          "10000.0000",
+          "BA-7",
+          "2014-07-26 00:00:00",
+          "C-2",
+          "E-39"
+        ],
+        [
+          "RA-3",
+          "7200.0000",
+          "BA-7",
+          "2014-08-15 00:00:00",
+          "C-1",
+          "E-39"
+        ],
+        [
+          "RA-4",
+          "32600.0000",
+          "BA-7",
+          "2014-08-15 00:00:00",
+          "C-5",
+          "E-39"
+        ]
+      ]
+    },
+    "Customer": {
+      "columns": [
+        {
+          "name": "CustomerNumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Accounts Receivable Balance",
+          "type": "CURRENCY"
+        },
+        {
+          "name": "SalespersonNumber",
+          "type": "VARCHAR"
+        }
+      ],
+      "count": 5,
+      "sample": [
+        [
+          "C-1",
+          "Bill",
+          "None",
+          "E-12"
+        ],
+        [
+          "C-2",
+          "Mick",
+          "None",
+          "E-10"
+        ],
+        [
+          "C-3",
+          "Keith",
+          "None",
+          "E-10"
+        ],
+        [
+          "C-4",
+          "Charlie",
+          "None",
+          "E-99"
+        ]
+      ]
+    },
+    "Inventory": {
+      "columns": [
+        {
+          "name": "ItemID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "StdUnitCost",
+          "type": "CURRENCY"
+        }
+      ],
+      "count": 6,
+      "sample": [
+        [
+          "A-1",
+          "Small A",
+          "1200.0000"
+        ],
+        [
+          "A-2",
+          "Medium A",
+          "2200.0000"
+        ],
+        [
+          "A-3",
+          "Extra Small A",
+          "600.0000"
+        ],
+        [
+          "A-4",
+          "Tiny A",
+          "250.0000"
+        ]
+      ]
+    },
+    "Inventory-SaleStockflow": {
+      "columns": [
+        {
+          "name": "InventoryItemID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SaleNumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Quantity",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ActualPrice",
+          "type": "CURRENCY"
+        }
+      ],
+      "count": 13,
+      "sample": [
+        [
+          "A-1",
+          "S-1",
+          "3",
+          "2000.0000"
+        ],
+        [
+          "A-1",
+          "S-3",
+          "1",
+          "2000.0000"
+        ],
+        [
+          "A-2",
+          "S-5",
+          "2",
+          "3000.0000"
+        ],
+        [
+          "A-2",
+          "S-6",
+          "10",
+          "3500.0000"
+        ]
+      ]
+    },
+    "Sale": {
+      "columns": [
+        {
+          "name": "SaleNumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Amount",
+          "type": "CURRENCY"
+        },
+        {
+          "name": "Date",
+          "type": "DATETIME"
+        },
+        {
+          "name": "CustomerNumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SalesRepNumber",
+          "type": "VARCHAR"
+        }
+      ],
+      "count": 7,
+      "sample": [
+        [
+          "S-1",
+          "7200.0000",
+          "2014-07-01 00:00:00",
+          "C-1",
+          "E-12"
+        ],
+        [
+          "S-2",
+          "10000.0000",
+          "2014-07-21 00:00:00",
+          "C-2",
+          "E-10"
+        ],
+        [
+          "S-3",
+          "16000.0000",
+          "2014-07-22 00:00:00",
+          "C-5",
+          "E-10"
+        ],
+        [
+          "S-4",
+          "10000.0000",
+          "2014-07-26 00:00:00",
+          "C-2",
+          "E-10"
+        ]
+      ]
+    },
+    "Sale-CashRecDuality": {
+      "columns": [
+        {
+          "name": "SaleNumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "RemittanceAdviceNumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Applied",
+          "type": "CURRENCY"
+        }
+      ],
+      "count": 6,
+      "sample": [
+        [
+          "S-1",
+          "RA-3",
+          "7200.0000"
+        ],
+        [
+          "S-2",
+          "RA-1",
+          "1666.0000"
+        ],
+        [
+          "S-2",
+          "RA-5",
+          "1666.0000"
+        ],
+        [
+          "S-3",
+          "RA-4",
+          "16000.0000"
+        ]
+      ]
+    },
+    "Salesperson": {
+      "columns": [
+        {
+          "name": "EmployeeNumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "QuarterlySalesAmount",
+          "type": "CURRENCY"
+        },
+        {
+          "name": "CommissionRate",
+          "type": "VARCHAR"
+        }
+      ],
+      "count": 4,
+      "sample": [
+        [
+          "E-10",
+          "None",
+          "10%"
+        ],
+        [
+          "E-12",
+          "None",
+          "12%"
+        ],
+        [
+          "E-78",
+          "0.0000",
+          "15%"
+        ],
+        [
+          "E-99",
+          "None",
+          "10%"
+        ]
+      ]
+    }
+  },
+  "sale_columns": [
+    "SaleNumber",
+    "Amount",
+    "Date",
+    "CustomerNumber",
+    "SalesRepNumber"
+  ],
+  "query_sql": "SELECT [Sale Number], [Amount], [SalesRepNumber] FROM [Sale] WHERE [SalesRepNumber] = ?",
+  "query_error": "('07002', '[07002] [Microsoft][ODBC Microsoft Access Driver] 参数不足，期待是 2。 (-3010) (SQLExecDirectW)')",
+  "corrected_query": "SELECT [SaleNumber], [Amount], [SalesRepNumber] FROM [Sale] WHERE [SalesRepNumber] = ?",
+  "corrected_result": [
+    [
+      "S-2",
+      "10000.0000",
+      "E-10"
+    ],
+    [
+      "S-3",
+      "16000.0000",
+      "E-10"
+    ],
+    [
+      "S-4",
+      "10000.0000",
+      "E-10"
+    ],
+    [
+      "S-5",
+      "16600.0000",
+      "E-10"
+    ],
+    [
+      "S-6",
+      "35000.0000",
+      "E-10"
+    ]
+  ]
+}

@@ -1,0 +1,704 @@
+{
+  "schema": "cityu-visual-completion-v1",
+  "time": "2026-10-26T23:30:05.441846+08:00",
+  "session_id": "01a17880-c4a8-7b10-9572-04671414dc20",
+  "author_role": "visual operator only; not independent teaching reviewer",
+  "candidate": {
+    "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\candidate-v2.md",
+    "sha256": "d9d556997ffb6ba936d8aabbb610242a45f24eb7a463fca90bad68d7086c4a5c",
+    "bytes": 424975,
+    "frozen_unchanged": true
+  },
+  "inherited_v1": {
+    "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\candidate-v1.md",
+    "sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+    "v1_to_v2_diff": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\candidate-v1-to-v2.diff",
+    "exactly_three_changed_lines": [
+      {
+        "v1_line": 5840,
+        "v1": "> **\"哪些产品，我们推了但从来没人说好？\"**",
+        "v2": "> **\"哪些商品没有已记录的正面反馈？\"**"
+      },
+      {
+        "v1_line": 5842,
+        "v1": "**这个问题的商业价值极高**：它区分了两种滞销：",
+        "v2": "这个反连接查询只能识别“没有已记录的正面反馈”，不能单独判断是否推介过。下表是后续调查的两类线索，须另核拜访／推介及反馈记录，不能由本查询结果直接分类："
+      },
+      {
+        "v1_line": 6244,
+        "v1": "| 6 | p.91 | 无正面反馈的存货 | **外连接 + `Is Null`**（反连接） | 区分\"推了没人要\"与\"压根没推\" | 讲义未给结果 |",
+        "v2": "| 6 | p.91 | 无正面反馈的存货 | **外连接 + `Is Null`**（反连接） | 识别无正面反馈；推介状态及原因另核 | 讲义未给结果 |"
+      }
+    ],
+    "code_blocks_and_mermaid_unchanged": true,
+    "all_32_new_english_answer_blocks_unchanged": true,
+    "treatment": "v1截图仅承接未变内容；v2三处改动另行截图，不冒作全部重新渲染v2"
+  },
+  "browser": {
+    "surface": "IAB",
+    "owned_tabs": [
+      "2",
+      "3"
+    ],
+    "http_url": "http://127.0.0.1:8814/visual-completion-preview.html",
+    "requested_port": 8813,
+    "used_port": 8814,
+    "port_reason": "8813 already occupied by EF04 serve.py pid69680; not stopped or modified",
+    "server_pid": 43948,
+    "binding": "127.0.0.1 only",
+    "served_scope": "preview HTML plus explicitly mapped local Mermaid/KaTeX assets; no directory listing or original files",
+    "outside_network_upload": false,
+    "prior_file_policy": "earlier file: denial preserved; this turn user expressly requested supported localhost HTTP, IAB accepted the HTTP URL; no browser flags/configuration/CDP workaround used"
+  },
+  "actual_scope": {
+    "v1_first_viewports": [
+      "top title",
+      "§0 outcome7",
+      "Inventory current attachment table",
+      "cutoff context",
+      "§2.22 per-match calculation",
+      "CommissionRate current storage",
+      "monthly grouping",
+      "Quiz2 opening"
+    ],
+    "focused_panels": [
+      "01-cutoff",
+      "02-permatch",
+      "03-sql",
+      "04-two-three-columns",
+      "05-quiz",
+      "06-wauc",
+      "07-order-grain",
+      "08-antijoin",
+      "09-quick-join",
+      "10-quick-queries-v2",
+      "11-definitions",
+      "12-framework",
+      "18-v2-question-table",
+      "13-source-errors",
+      "14-english-U01-U09",
+      "15-english-U10-U18",
+      "16-english-U19-U27",
+      "17-english-U28-U34"
+    ],
+    "english_answer_units": "U01-U34, four same-source display panels; semantic review remains separate",
+    "graphs_actually_viewed": [
+      "cutoff data-dependency flow",
+      "WAUC safe-division control flow",
+      "anti-join flow plus original-layout ASCII direction"
+    ],
+    "graphs_only_rendered_not_newly_visual_certified": {
+      "full_v1_svg_count": 18,
+      "treatment": "full page DOM confirmed18 SVGs, but do not call all18 newly actually viewed"
+    },
+    "v2_three_changes_actually_viewed": [
+      "§2.24.6 commercial question",
+      "§2.24.6 text before follow-up investigation table",
+      "§4.8 query6 business-meaning cell"
+    ],
+    "native_Obsidian_viewed": false,
+    "Access_UI_viewed": false,
+    "new_independent_teaching_review_performed": false
+  },
+  "findings": [
+    {
+      "id": "V1",
+      "severity": "nonblocking_display_advisory",
+      "candidate_scope": "§2.23.9 original Quiz2 nine steps",
+      "observation": "在Python Markdown/CommonMark同源浏览器中，连续引用行被合为同一段；九步全文都在，但逐步定位较拥挤。中文九步、SQL、五行三列表和英文答案均完整可见。",
+      "evidence": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-05-quiz.png",
+      "suggestion": "如主写者采纳纯排版维护，可在原引用各步间加入空引用行/显式换行而不改原字词；本线程未改候选。",
+      "limit": "未查看原生Obsidian，不能断言其具体软换行设置与当前预览完全相同。"
+    },
+    {
+      "id": "V2",
+      "severity": "renderer_only_resolved",
+      "observation": "初版全页预览的KaTeX auto-render脚本路径404，已仅修预览器为contrib/auto-render.min.js；随后全页DOM有31个KaTeX元素且无katex-error。候选未变。"
+    },
+    {
+      "id": "V3",
+      "severity": "renderer_only_not_source_defect",
+      "observation": "浏览器Python Markdown会显示部分货币转义符\\$和表中代码字面**ON**；相关内容未被吞掉，也不改变来源文本。不要为消除浏览器差异删Obsidian所需的美元转义。"
+    },
+    {
+      "id": "V4",
+      "severity": "no_blocking_clipping_observed_in_checked_windows",
+      "observation": "18个分窗的实际截图中未见裁切、覆盖或表格/段落横向溢出；中文、英文、SQL与三张核心图可读，v2三处边界文字与邻表位置清楚。",
+      "limit": "仅限本次明确列出的显示范围，不等于全篇教学通过或原生Obsidian全篇显示认证。"
+    }
+  ],
+  "capture_recovery": {
+    "full_v1_document_height": 221166,
+    "problem": "在超长全篇页尝试定位/裁剪英文截图时截图失败，随后Page.getFrameTree超时。",
+    "resolution": "保留已得8视口截图；使用同一IAB浏览器的新专用tab3，同源分成18个较短窗口，fullPage截图成功。未重启浏览器或其他进程。"
+  },
+  "status": "completed_supported_IAB_HTTP_scope_with_nonblocking_display_advisory",
+  "screenshots": [
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-01-top.png",
+      "sha256": "d3f0ea9f9fc918ef0d00707fcc1ad5190c534980a7db384b1ba33a1fb3504d58",
+      "bytes": 170139,
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "actually_viewed": true,
+      "scope": "earlier full-page viewport before focused panels"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-02-outcome.png",
+      "sha256": "dd184f07220082397f06f2499a2ced9b4f31c7734c232a9dcec93a3db8a5f307",
+      "bytes": 157802,
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "actually_viewed": true,
+      "scope": "earlier full-page viewport before focused panels"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-03-inventory.png",
+      "sha256": "90a101e62882043ad72e1b9b28e1411f8d68db08ffc985d84188e15d09c1692f",
+      "bytes": 104869,
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "actually_viewed": true,
+      "scope": "earlier full-page viewport before focused panels"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-04-cutoff-code.png",
+      "sha256": "5c7792f61939d540fde99a48b030e0bab97f4ef0c15b0dbf46892728e725ee62",
+      "bytes": 93414,
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "actually_viewed": true,
+      "scope": "earlier full-page viewport before focused panels"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-05-permatch.png",
+      "sha256": "8f1e92c707000d12efb00c43f527747403a92a3c85370a2787594bdbac29b2c9",
+      "bytes": 152032,
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "actually_viewed": true,
+      "scope": "earlier full-page viewport before focused panels"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-06-percent.png",
+      "sha256": "69ddee1f3a0113298b785082c468bed17ffad42cb7077336d4ee14bc4e352e90",
+      "bytes": 158714,
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "actually_viewed": true,
+      "scope": "earlier full-page viewport before focused panels"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-07-monthly.png",
+      "sha256": "a2b8f82c0ddf93e5a9590c4c7f8f27dfb0ee44c4c8ec6ba152b30ebd62359bd5",
+      "bytes": 150958,
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "actually_viewed": true,
+      "scope": "earlier full-page viewport before focused panels"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-08-quiz.png",
+      "sha256": "9cb725ca00abde6aa46809e93197253306de467b489379724f834e21ee02dbea",
+      "bytes": 123454,
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "actually_viewed": true,
+      "scope": "earlier full-page viewport before focused panels"
+    },
+    {
+      "name": "01-cutoff",
+      "version": "v1",
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-01-cutoff.html",
+      "html_sha256": "027581b143ae6b463e4b8f434b82566c78c608471f1c453a83935ec14e25e775",
+      "source_excerpt_sha256": "2e477661e6d51ea2808468f3f51f4f8277e75e8c7dd697562947a6415b19b7bb",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-01-cutoff.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 2697,
+          "w": 1265
+        },
+        "ready": "render complete; ",
+        "svg": 1,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "0ddda855ffb829ebdf7cc3274330bcc3ae61e17659f19347dfc7d568bda4c2be",
+      "screenshot_bytes": 415946,
+      "actually_viewed": true
+    },
+    {
+      "name": "02-permatch",
+      "version": "v1",
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-02-permatch.html",
+      "html_sha256": "1f95440246bed36b7829eb9ef4bf35a3e3d65e69b7eb45ce5311c02b120b5f92",
+      "source_excerpt_sha256": "0b55c08a9a53ce299168c9b86d937870ecacc4c0c92e98f6f079f340aa8fb39f",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-02-permatch.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 720,
+          "w": 1280
+        },
+        "ready": "render complete; ",
+        "svg": 0,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "c1f559da0400b992de36e419e99fb3de57778a48d50879f3d26e5a561ef9dc6a",
+      "screenshot_bytes": 141008,
+      "actually_viewed": true
+    },
+    {
+      "name": "03-sql",
+      "version": "v1",
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-03-sql.html",
+      "html_sha256": "27a900dec4364a401393d1b8d595582cefd965e37dddf2c54efed78d094ad6ed",
+      "source_excerpt_sha256": "26fd536da621c946ad607659ed4f458dc78aa420b8da044f3002d899fde9195b",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-03-sql.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 2508,
+          "w": 1265
+        },
+        "ready": "render complete; ",
+        "svg": 0,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "7de6032713b63c942133b371cff5d4d4b4a91baf45587b363d1905643f6e6a32",
+      "screenshot_bytes": 374813,
+      "actually_viewed": true
+    },
+    {
+      "name": "04-two-three-columns",
+      "version": "v1",
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-04-two-three-columns.html",
+      "html_sha256": "a3fc6895641b6f4d8df063b955149007a875a23cdedcd3244ef2261b8801889a",
+      "source_excerpt_sha256": "1515419ff9ce0a335edb1302db6959f046cff9c5c4853f84ae2628c8411247c0",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-04-two-three-columns.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 812,
+          "w": 1265
+        },
+        "ready": "render complete; ",
+        "svg": 0,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "3a3dbaa80367d1432ac4cdf408658d40de2819937fdb0be3e9956eb369e54d90",
+      "screenshot_bytes": 102540,
+      "actually_viewed": true
+    },
+    {
+      "name": "05-quiz",
+      "version": "v1",
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-05-quiz.html",
+      "html_sha256": "58964c4c12a3e858a83ee26c8931c5c8c5904685bc31e0577193281ca92dfa41",
+      "source_excerpt_sha256": "5d53e12319d01e74e79c7243a3184d8c4df041d3b36cc459150fe642b1683279",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-05-quiz.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 1791,
+          "w": 1265
+        },
+        "ready": "render complete; ",
+        "svg": 0,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "ed92f5c88319956a6b5adbb5ff04b54d14d5aa3d5eb788a1167a87e24b76134b",
+      "screenshot_bytes": 307711,
+      "actually_viewed": true
+    },
+    {
+      "name": "06-wauc",
+      "version": "v1",
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-06-wauc.html",
+      "html_sha256": "e5d60bf48fb00918865e63f5ece043d2d42d393cf817b317ed9b69d6ffcd0bbf",
+      "source_excerpt_sha256": "7d2237ca98abbf081d8d666689dc496a683a07ffd96c136deb9894be1aa5395b",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-06-wauc.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 2421,
+          "w": 1265
+        },
+        "ready": "render complete; ",
+        "svg": 1,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "653950e447644e2c4726366b70ff378d7fd9d02e2440c6c77cdaf180b091ebef",
+      "screenshot_bytes": 312930,
+      "actually_viewed": true
+    },
+    {
+      "name": "07-order-grain",
+      "version": "v1",
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-07-order-grain.html",
+      "html_sha256": "ef5a059bf441d40e17223deb8128119f81dd5c36e75405a04307d896336452cd",
+      "source_excerpt_sha256": "4b8a09a3d8951a91e31662224608fdb0139ae26872e7f98b54e8b8c79d418f58",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-07-order-grain.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 720,
+          "w": 1280
+        },
+        "ready": "render complete; ",
+        "svg": 0,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "3951a0ed6abb1701934a8531517b06030eb4a91094fcbc5058b8a5e615781f22",
+      "screenshot_bytes": 81336,
+      "actually_viewed": true
+    },
+    {
+      "name": "08-antijoin",
+      "version": "v1",
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-08-antijoin.html",
+      "html_sha256": "f3617ae55484221760f5c6af8357f7f0cd13360b2f3c32793f49fdce2b217578",
+      "source_excerpt_sha256": "b556b37d8988c7113fe8b1de283f292ea494ca9fc8d6f1c2f38f74106786f635",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-08-antijoin.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 2608,
+          "w": 1265
+        },
+        "ready": "render complete; ",
+        "svg": 1,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "302592629c504891da2f3720b878118584e66faac9bbc4b03675592811115ca0",
+      "screenshot_bytes": 313711,
+      "actually_viewed": true
+    },
+    {
+      "name": "09-quick-join",
+      "version": "v1",
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-09-quick-join.html",
+      "html_sha256": "9101b86440c00763423aa54a5b1613c8ad8ae25afd8e0d822a1ecdb25c1fe62b",
+      "source_excerpt_sha256": "b00df1b35f0046ea8283da1a1654a5cbb4ea57492e803aed75825cd05b0504ac",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-09-quick-join.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 848,
+          "w": 1265
+        },
+        "ready": "render complete; ",
+        "svg": 0,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "01f6e51b5cb1ca58dc6933c24adee486134e1ecf1036cac0b8f2222ef435ac1b",
+      "screenshot_bytes": 104956,
+      "actually_viewed": true
+    },
+    {
+      "name": "10-quick-queries-v2",
+      "version": "v2",
+      "candidate_sha256": "d9d556997ffb6ba936d8aabbb610242a45f24eb7a463fca90bad68d7086c4a5c",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-10-quick-queries-v2.html",
+      "html_sha256": "1581e343fac9caf604b8ee8b9543a0e4d8a93465ea45d60cff3c900f3e443c5f",
+      "source_excerpt_sha256": "ab6fda1241d78bf5bbe65b80a17b2621e4a2735869ca12a9052091b10432575e",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-10-quick-queries-v2.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 720,
+          "w": 1280
+        },
+        "ready": "render complete; ",
+        "svg": 0,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "e609f54da944afc89a88e09b52f3b6d92317873a697b82a6387f27b44a6652de",
+      "screenshot_bytes": 104419,
+      "actually_viewed": true
+    },
+    {
+      "name": "11-definitions",
+      "version": "v1",
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-11-definitions.html",
+      "html_sha256": "1dda57aed46ae71fc7dd87f122bfd7d8523e295be51c7d850d284f0acee30071",
+      "source_excerpt_sha256": "2047d64134e6a0a590a9f367cbf7f7aad0799803224982c41225a10f29d1fab3",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-11-definitions.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 1245,
+          "w": 1265
+        },
+        "ready": "render complete; ",
+        "svg": 0,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "7c4a799e78ff0c0720fda4e82c512a6c966bc335b20d8c5dd2be89001c0b69fa",
+      "screenshot_bytes": 179288,
+      "actually_viewed": true
+    },
+    {
+      "name": "12-framework",
+      "version": "v1",
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-12-framework.html",
+      "html_sha256": "bab983c1aadcb03a772bf6f52ad9ec82866a9656c6370f92b3878beadb745774",
+      "source_excerpt_sha256": "cf7c124063d3ba03c7a1a2ae04369fbcb138faef5d5bf9c265874c90d71f387e",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-12-framework.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 723,
+          "w": 1265
+        },
+        "ready": "render complete; ",
+        "svg": 0,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "65e61d67cc2702108a2628c00c68c61ca1981a5b4ad33d91daac3159f30b1fbe",
+      "screenshot_bytes": 94506,
+      "actually_viewed": true
+    },
+    {
+      "name": "18-v2-question-table",
+      "version": "v2",
+      "candidate_sha256": "d9d556997ffb6ba936d8aabbb610242a45f24eb7a463fca90bad68d7086c4a5c",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-18-v2-question-table.html",
+      "html_sha256": "d81743a6a9d5c1d3d1917dbb716575d41b5ec07f6fb753d11c69e590b68e10e0",
+      "source_excerpt_sha256": "9adc58fa846f785b2e3f412284fe3ff8173a538f7845caa1bcc2971fd7d21be3",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-18-v2-question-table.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 720,
+          "w": 1280
+        },
+        "ready": "render complete; ",
+        "svg": 0,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "88600fc79dd32ad4630b03f327a8394b59312f24c5fbe2ef876dfd3d550ef864",
+      "screenshot_bytes": 117796,
+      "actually_viewed": true
+    },
+    {
+      "name": "13-source-errors",
+      "version": "v1",
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-13-source-errors.html",
+      "html_sha256": "930831b758b54073d5bf5d647dadb64b6a4c261c3a6ac4aff69991c4f56b6164",
+      "source_excerpt_sha256": "3e1b47885d0fc409634815f9e5d0491f3c63e2ceabdf0037c58ad0281e538818",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-13-source-errors.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 1118,
+          "w": 1265
+        },
+        "ready": "render complete; ",
+        "svg": 0,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "12d347201317564441b48ff643c1c4a37df513ca1eed1499677cbd00933fd6e1",
+      "screenshot_bytes": 191899,
+      "actually_viewed": true
+    },
+    {
+      "name": "14-english-U01-U09",
+      "version": "v1",
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-14-english-U01-U09.html",
+      "html_sha256": "f30da52a0f1ceaffa5fb70124677f7b0eec55ae811c53a6bdfd56011ff16c38d",
+      "source_excerpt_sha256": "ba40ef9d7bf6afcfeb4e23ecc2c441fcfbef8c944a5be7212eda6f393a8bc46a",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-14-english-U01-U09.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 1739,
+          "w": 1265
+        },
+        "ready": "render complete; ",
+        "svg": 0,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "a4eee4d1568bc598bed613fa8f3f65439f6ebc7bc1376b8b6b092daa4cfe282e",
+      "screenshot_bytes": 317163,
+      "actually_viewed": true
+    },
+    {
+      "name": "15-english-U10-U18",
+      "version": "v1",
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-15-english-U10-U18.html",
+      "html_sha256": "967ac4b69e31f2e364f80343b37a2467cafe7585c540a27a0056ce02cd22287e",
+      "source_excerpt_sha256": "1b65a5af41048035c6156167431d8ce0ef7ebd92d07e3416dae8e015dc5d0220",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-15-english-U10-U18.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 1828,
+          "w": 1265
+        },
+        "ready": "render complete; ",
+        "svg": 0,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "8a0773c1fe7960a4174d6cdcc313c780fe79b461ca03bcc43297f7095929cb31",
+      "screenshot_bytes": 330112,
+      "actually_viewed": true
+    },
+    {
+      "name": "16-english-U19-U27",
+      "version": "v1",
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-16-english-U19-U27.html",
+      "html_sha256": "1fa26f652b4ef1ecbcf813054b3dd731fc2955f6448ac36754e8bfbae9714969",
+      "source_excerpt_sha256": "f394a04e64433535bac37a8bb6e1dbd2326007893cfea8b517674ab80e8a5918",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-16-english-U19-U27.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 1834,
+          "w": 1265
+        },
+        "ready": "render complete; ",
+        "svg": 0,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "e93c5ce4e5029be573bca58f5f2e39643f7cc740090e90e521818e0a34df612f",
+      "screenshot_bytes": 370446,
+      "actually_viewed": true
+    },
+    {
+      "name": "17-english-U28-U34",
+      "version": "v1",
+      "candidate_sha256": "ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4",
+      "html": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-m06-repair\\visual-panel-17-english-U28-U34.html",
+      "html_sha256": "d18b5ca401b90c29905b80bb70e39a76c01390247b725db8246c2f9fc1c21c5a",
+      "source_excerpt_sha256": "1a087d801f043cd6fc4da9796d373f573cae916dc30aab5cad3624a741e0f004",
+      "screenshot": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-m06-repair/visual-panel-17-english-U28-U34.png",
+      "state": {
+        "errors": [],
+        "math": 0,
+        "overflow": [],
+        "page": {
+          "h": 1591,
+          "w": 1265
+        },
+        "ready": "render complete; ",
+        "svg": 0,
+        "viewport": {
+          "h": 720,
+          "w": 1280
+        }
+      },
+      "screenshot_sha256": "a5156f0f332571367ae74821a4c714ce16bb4adfc9b27af0d2e1bd9c9b8f0d81",
+      "screenshot_bytes": 314285,
+      "actually_viewed": true
+    }
+  ],
+  "screenshot_count": 26,
+  "no_mutations": {
+    "candidate_v1_and_v2": true,
+    "vault": true,
+    "Notion": true,
+    "Git": true,
+    "shared_integrity_snapshot": true,
+    "other_threads_or_review_agents_spawned": true
+  },
+  "supersedes": "原handoff中的candidate_browser_view=blocked_not_viewed，仅就本次列明显示范围由本回执续完；旧失败证据不删除、不追改。",
+  "remaining": "教学定向复核/写回/同步/正式绑定由主会话；本线程没有代签或改变其状态。",
+  "cleanup": {
+    "owned_tabs_2_and_3_closed": true,
+    "own_server_pid43948_stopped_after_exact_commandline_check": true,
+    "other_service_8813_not_stopped": true
+  }
+}

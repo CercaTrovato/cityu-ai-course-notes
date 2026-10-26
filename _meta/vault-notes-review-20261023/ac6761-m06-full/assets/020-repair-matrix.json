@@ -1,0 +1,100 @@
+[
+  {
+    "id": "B1",
+    "scope": "§2.22 例3；§2.15；U06",
+    "implemented": "逐匹配差额改为失败例；先按销售归集再相减；S-2=6668，不是两行8334。",
+    "evidence": "numeric-verification.json；原 ace-targeted-results.json",
+    "status": "author_repaired_pending_original_reviewer_targeted_recheck"
+  },
+  {
+    "id": "B2",
+    "scope": "§2.15 可选代码；§2.24.4",
+    "implemented": "三表最小输入、字段映射、别名、内外层、参数、COALESCE、中间结果；IIf三参数/双求值边界。",
+    "evidence": "修稿包精确SQLite语句已执行；IIf/Nz未运行Access UI",
+    "status": "author_repaired_pending_original_reviewer_targeted_recheck"
+  },
+  {
+    "id": "B3",
+    "scope": "§2.23.8；§2.24.5；U14/U19",
+    "implemented": "先生成年度/月份键；区分半月52600与全月59800；先补客户身份并核订单/履行粒度。",
+    "evidence": "numeric-verification.json；原Monthly/Daily ACE证据",
+    "status": "author_repaired_pending_original_reviewer_targeted_recheck"
+  },
+  {
+    "id": "B4",
+    "scope": "§2.23.5；U08",
+    "implemented": "同两笔销售，SQL2列/QBE3列分别列清；不称完全一致。",
+    "evidence": "原只读NonE10/NonE10WithRep",
+    "status": "author_repaired_pending_original_reviewer_targeted_recheck"
+  },
+  {
+    "id": "B5",
+    "scope": "§2.24.5/.7；§4.8；§5.1/.3；§6框架C；§7英文",
+    "implemented": "Nz称空值替代且条件补零；属性原句/自拟修正分开；Draft待核；总账与ERP/CRM/REA范围一致。",
+    "evidence": "本次diff及原报告",
+    "status": "author_repaired_pending_original_reviewer_targeted_recheck"
+  },
+  {
+    "id": "B6",
+    "scope": "§2.23.2；§2.24.6；§4.3；§7第9题；§9.6",
+    "implemented": "全保留对象决定含义；逻辑SQL左右与画布位置分清；取消固定2/3口诀。",
+    "evidence": "原p91来源实看承接；图源未变；当前文字待原独审定向核",
+    "status": "author_repaired_pending_original_reviewer_targeted_recheck"
+  },
+  {
+    "id": "B7",
+    "scope": "§2.24.4",
+    "implemented": "删除LIFO/FIFO端点单价两行，只比简单/数量加权平均。",
+    "evidence": "Decimal 2000.10/100=20.001",
+    "status": "author_repaired_pending_original_reviewer_targeted_recheck"
+  },
+  {
+    "id": "B8",
+    "scope": "§0目标7；§2.24总结；U15–U21",
+    "implemented": "承诺改为能解释/复算给定输入；缺库与前置定义继续保留。",
+    "evidence": "source限制未升级",
+    "status": "author_repaired_pending_original_reviewer_targeted_recheck"
+  },
+  {
+    "id": "N1",
+    "scope": "U01–U34，§2及§7",
+    "implemented": "新增32处完整句英文答案，承接2处口头变式英文；补三QBE原英文标题；原题与自拟答案分开。",
+    "evidence": "question-coverage-v1.json；changed-source-excerpts.json",
+    "status": "author_repaired_pending_original_reviewer_targeted_recheck"
+  },
+  {
+    "id": "N2",
+    "scope": "§2.23.9；§2.23.5课堂边界；§9.5",
+    "implemented": "保留完整Quiz2九步；等于E-10/QueryA/5x3；链接既有权威练习；未执行发送。",
+    "evidence": "当前DOCX XML逐条包含核验；原ACE结果",
+    "status": "author_repaired_pending_original_reviewer_targeted_recheck"
+  },
+  {
+    "id": "N3",
+    "scope": "§2.22佣金补例；§2.23.3",
+    "implemented": "CommissionRate当前是字符串百分数；数值0.10示例仅假设；运算前需核类型/转换。",
+    "evidence": "原CommissionType证据及当前库原件哈希",
+    "status": "author_repaired_pending_original_reviewer_targeted_recheck"
+  },
+  {
+    "id": "N4",
+    "scope": "§2.17.3/.4；§8p44；§9.3",
+    "implemented": "撤销整体括号必错；p44两处明确语法问题；原6/7撤销并把当前问题数改19。",
+    "evidence": "原4个整体/分开括号ACE SELECT；原p44未执行",
+    "status": "author_repaired_pending_original_reviewer_targeted_recheck"
+  },
+  {
+    "id": "N5",
+    "scope": "§2.10后；§2.15截止日及变式",
+    "implemented": "同hash媒体RA2=26July；撤旧25July冲突；25July仅明确假设变式。",
+    "evidence": "本次实际查看RA2来源图；当前原件哈希一致",
+    "status": "author_repaired_pending_original_reviewer_targeted_recheck"
+  },
+  {
+    "id": "E1-来源状态",
+    "scope": "§2.10.1/.2；§8p33；source字段",
+    "implemented": "当前附件Inventory6行已得，补给定行且不冒作p33图；出纳/采购/扩展查询仍缺。p86当前源已得与完整公式仍缺分开。",
+    "evidence": "原当前八表读取JSON；新增当前来源核验",
+    "status": "author_repaired_pending_original_reviewer_targeted_recheck"
+  }
+]

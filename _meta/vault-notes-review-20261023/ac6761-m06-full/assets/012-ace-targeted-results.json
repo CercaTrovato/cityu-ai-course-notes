@@ -1,0 +1,414 @@
+﻿[
+    {
+        "sql":  "SELECT EmployeeNumber,CommissionRate FROM Salesperson",
+        "name":  "CommissionType",
+        "rows":  [
+                     [
+                         "E-10",
+                         "10%"
+                     ],
+                     [
+                         "E-12",
+                         "12%"
+                     ],
+                     [
+                         "E-78",
+                         "15%"
+                     ],
+                     [
+                         "E-99",
+                         "10%"
+                     ]
+                 ],
+        "fields":  [
+                       {
+                           "dotnet_type":  "System.String",
+                           "name":  "EmployeeNumber",
+                           "provider_type":  "DBTYPE_WVARCHAR"
+                       },
+                       {
+                           "dotnet_type":  "System.String",
+                           "name":  "CommissionRate",
+                           "provider_type":  "DBTYPE_WVARCHAR"
+                       }
+                   ],
+        "row_count":  4
+    },
+    {
+        "sql":  "SELECT s.SaleNumber,s.Amount,d.Applied,s.Amount-d.Applied AS Unpaid FROM Sale AS s LEFT JOIN [Sale-CashRecDuality] AS d ON s.SaleNumber=d.SaleNumber",
+        "name":  "UnpaidPerMatch",
+        "rows":  [
+                     [
+                         "S-1",
+                         7200,
+                         7200,
+                         0.0000
+                     ],
+                     [
+                         "S-2",
+                         10000,
+                         1666,
+                         8334
+                     ],
+                     [
+                         "S-2",
+                         10000,
+                         1666,
+                         8334
+                     ],
+                     [
+                         "S-3",
+                         16000,
+                         16000,
+                         0.0000
+                     ],
+                     [
+                         "S-4",
+                         10000,
+                         10000,
+                         0.0000
+                     ],
+                     [
+                         "S-5",
+                         16600,
+                         16600,
+                         0.0000
+                     ],
+                     [
+                         "S-6",
+                         35000,
+                         null,
+                         null
+                     ],
+                     [
+                         "S-7",
+                         23000,
+                         null,
+                         null
+                     ]
+                 ],
+        "fields":  [
+                       {
+                           "dotnet_type":  "System.String",
+                           "name":  "SaleNumber",
+                           "provider_type":  "DBTYPE_WVARCHAR"
+                       },
+                       {
+                           "dotnet_type":  "System.Decimal",
+                           "name":  "Amount",
+                           "provider_type":  "DBTYPE_CY"
+                       },
+                       {
+                           "dotnet_type":  "System.Decimal",
+                           "name":  "Applied",
+                           "provider_type":  "DBTYPE_CY"
+                       },
+                       {
+                           "dotnet_type":  "System.Decimal",
+                           "name":  "Unpaid",
+                           "provider_type":  "DBTYPE_CY"
+                       }
+                   ],
+        "row_count":  8
+    },
+    {
+        "sql":  "SELECT * FROM Customer,Salesperson WHERE Customer.SalespersonNumber=[Salesperson.EmployeeNumber]",
+        "name":  "DottedBracket",
+        "rows":  [
+                     [
+                         "C-2",
+                         "Mick",
+                         null,
+                         "E-10",
+                         "E-10",
+                         null,
+                         "10%"
+                     ],
+                     [
+                         "C-3",
+                         "Keith",
+                         null,
+                         "E-10",
+                         "E-10",
+                         null,
+                         "10%"
+                     ],
+                     [
+                         "C-5",
+                         "Ron",
+                         null,
+                         "E-10",
+                         "E-10",
+                         null,
+                         "10%"
+                     ],
+                     [
+                         "C-1",
+                         "Bill",
+                         null,
+                         "E-12",
+                         "E-12",
+                         null,
+                         "12%"
+                     ],
+                     [
+                         "C-4",
+                         "Charlie",
+                         null,
+                         "E-99",
+                         "E-99",
+                         null,
+                         "10%"
+                     ]
+                 ],
+        "fields":  [
+                       {
+                           "dotnet_type":  "System.String",
+                           "name":  "CustomerNumber",
+                           "provider_type":  "DBTYPE_WVARCHAR"
+                       },
+                       {
+                           "dotnet_type":  "System.String",
+                           "name":  "Name",
+                           "provider_type":  "DBTYPE_WVARCHAR"
+                       },
+                       {
+                           "dotnet_type":  "System.Decimal",
+                           "name":  "Accounts Receivable Balance",
+                           "provider_type":  "DBTYPE_CY"
+                       },
+                       {
+                           "dotnet_type":  "System.String",
+                           "name":  "SalespersonNumber",
+                           "provider_type":  "DBTYPE_WVARCHAR"
+                       },
+                       {
+                           "dotnet_type":  "System.String",
+                           "name":  "EmployeeNumber",
+                           "provider_type":  "DBTYPE_WVARCHAR"
+                       },
+                       {
+                           "dotnet_type":  "System.Decimal",
+                           "name":  "QuarterlySalesAmount",
+                           "provider_type":  "DBTYPE_CY"
+                       },
+                       {
+                           "dotnet_type":  "System.String",
+                           "name":  "CommissionRate",
+                           "provider_type":  "DBTYPE_WVARCHAR"
+                       }
+                   ],
+        "row_count":  5
+    },
+    {
+        "sql":  "SELECT * FROM Customer,Salesperson WHERE Customer.SalespersonNumber=Salesperson.[EmployeeNumber]",
+        "name":  "SeparateBracket",
+        "rows":  [
+                     [
+                         "C-2",
+                         "Mick",
+                         null,
+                         "E-10",
+                         "E-10",
+                         null,
+                         "10%"
+                     ],
+                     [
+                         "C-3",
+                         "Keith",
+                         null,
+                         "E-10",
+                         "E-10",
+                         null,
+                         "10%"
+                     ],
+                     [
+                         "C-5",
+                         "Ron",
+                         null,
+                         "E-10",
+                         "E-10",
+                         null,
+                         "10%"
+                     ],
+                     [
+                         "C-1",
+                         "Bill",
+                         null,
+                         "E-12",
+                         "E-12",
+                         null,
+                         "12%"
+                     ],
+                     [
+                         "C-4",
+                         "Charlie",
+                         null,
+                         "E-99",
+                         "E-99",
+                         null,
+                         "10%"
+                     ]
+                 ],
+        "fields":  [
+                       {
+                           "dotnet_type":  "System.String",
+                           "name":  "CustomerNumber",
+                           "provider_type":  "DBTYPE_WVARCHAR"
+                       },
+                       {
+                           "dotnet_type":  "System.String",
+                           "name":  "Name",
+                           "provider_type":  "DBTYPE_WVARCHAR"
+                       },
+                       {
+                           "dotnet_type":  "System.Decimal",
+                           "name":  "Accounts Receivable Balance",
+                           "provider_type":  "DBTYPE_CY"
+                       },
+                       {
+                           "dotnet_type":  "System.String",
+                           "name":  "SalespersonNumber",
+                           "provider_type":  "DBTYPE_WVARCHAR"
+                       },
+                       {
+                           "dotnet_type":  "System.String",
+                           "name":  "EmployeeNumber",
+                           "provider_type":  "DBTYPE_WVARCHAR"
+                       },
+                       {
+                           "dotnet_type":  "System.Decimal",
+                           "name":  "QuarterlySalesAmount",
+                           "provider_type":  "DBTYPE_CY"
+                       },
+                       {
+                           "dotnet_type":  "System.String",
+                           "name":  "CommissionRate",
+                           "provider_type":  "DBTYPE_WVARCHAR"
+                       }
+                   ],
+        "row_count":  5
+    },
+    {
+        "sql":  "SELECT CustomerNumber FROM Customer WHERE [Customer.Accounts Receivable Balance] IS NULL",
+        "name":  "SpaceDotted",
+        "rows":  [
+                     [
+                         "C-1"
+                     ],
+                     [
+                         "C-2"
+                     ],
+                     [
+                         "C-3"
+                     ],
+                     [
+                         "C-4"
+                     ],
+                     [
+                         "C-5"
+                     ]
+                 ],
+        "fields":  [
+                       {
+                           "dotnet_type":  "System.String",
+                           "name":  "CustomerNumber",
+                           "provider_type":  "DBTYPE_WVARCHAR"
+                       }
+                   ],
+        "row_count":  5
+    },
+    {
+        "sql":  "SELECT CustomerNumber FROM Customer WHERE Customer.[Accounts Receivable Balance] IS NULL",
+        "name":  "SpaceSeparate",
+        "rows":  [
+                     [
+                         "C-1"
+                     ],
+                     [
+                         "C-2"
+                     ],
+                     [
+                         "C-3"
+                     ],
+                     [
+                         "C-4"
+                     ],
+                     [
+                         "C-5"
+                     ]
+                 ],
+        "fields":  [
+                       {
+                           "dotnet_type":  "System.String",
+                           "name":  "CustomerNumber",
+                           "provider_type":  "DBTYPE_WVARCHAR"
+                       }
+                   ],
+        "row_count":  5
+    },
+    {
+        "sql":  "SELECT [Date],Sum(Amount) AS TotalAmount FROM Sale WHERE [Date] BETWEEN #7/15/2014# AND #7/31/2014# GROUP BY [Date]",
+        "name":  "Daily",
+        "rows":  [
+                     [
+                         "2014-07-21T00:00:00",
+                         10000
+                     ],
+                     [
+                         "2014-07-22T00:00:00",
+                         16000
+                     ],
+                     [
+                         "2014-07-26T00:00:00",
+                         10000
+                     ],
+                     [
+                         "2014-07-31T00:00:00",
+                         16600
+                     ]
+                 ],
+        "fields":  [
+                       {
+                           "dotnet_type":  "System.DateTime",
+                           "name":  "Date",
+                           "provider_type":  "DBTYPE_DATE"
+                       },
+                       {
+                           "dotnet_type":  "System.Decimal",
+                           "name":  "TotalAmount",
+                           "provider_type":  "DBTYPE_CY"
+                       }
+                   ],
+        "row_count":  4
+    },
+    {
+        "sql":  "SELECT Year([Date]) AS YY,Month([Date]) AS MM,Sum(Amount) AS TotalAmount FROM Sale WHERE [Date] BETWEEN #7/15/2014# AND #7/31/2014# GROUP BY Year([Date]),Month([Date])",
+        "name":  "Monthly",
+        "rows":  [
+                     [
+                         2014,
+                         7,
+                         52600
+                     ]
+                 ],
+        "fields":  [
+                       {
+                           "dotnet_type":  "System.Int16",
+                           "name":  "YY",
+                           "provider_type":  "DBTYPE_I2"
+                       },
+                       {
+                           "dotnet_type":  "System.Int16",
+                           "name":  "MM",
+                           "provider_type":  "DBTYPE_I2"
+                       },
+                       {
+                           "dotnet_type":  "System.Decimal",
+                           "name":  "TotalAmount",
+                           "provider_type":  "DBTYPE_CY"
+                       }
+                   ],
+        "row_count":  1
+    }
+]

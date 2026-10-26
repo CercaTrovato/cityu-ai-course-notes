@@ -1,0 +1,31 @@
+{
+  "reviewer_id": "/root/review_ac_quiz2_full_61",
+  "author_ids": ["/root"],
+  "perspective": "high-school-beginner",
+  "candidate_sha256": "7939adad25da18d627073e5de81465a3125e7a46a6f2af52a52339675d5d831d",
+  "scope": "full",
+  "status": "pending_targeted_fixes",
+  "report_file": "independent-review.md",
+  "stage1_file": "stage-1.md",
+  "findings": [
+    {"id":"F1","priority":"P2","status":"open","lines":[65,72],"summary":"设计网格定位及保存后重开验收步骤缺失"},
+    {"id":"F2","priority":"P2","status":"open","lines":[151,151],"summary":"后四项误含已完成的数据库结果核验"},
+    {"id":"F3","priority":"source","status":"pending_evidence","lines":[43,147],"summary":"历史ODBC参数化方法及Canvas四入口原日志待父代理补证或缩窄措辞"}
+  ],
+  "source_hashes_verified": {
+    "Quiz 2.docx":"585c37d3772d0f6c75cce1fe56883c55f348306f20f4c488a8d978c0dcd387b4",
+    "ExampleTables1.accdb":"25ccd123ee4a1548e867980ec4afec4e237e502dcca63f77901805c25955674e"
+  },
+  "checks": {
+    "full_candidate_read":true,
+    "all_nine_source_steps_compared":true,
+    "eight_tables_and_five_rows_supported_by_same_hash_ACE_evidence":true,
+    "total_87600_recalculated":true,
+    "variant_three_rows_67600_recalculated":true,
+    "access_ui_executed":false,
+    "database_executed_by_this_reviewer":false,
+    "historical_canvas_logs_verified":false,
+    "formal_render_verified":false
+  },
+  "limitations":["平台带入用户规则，非完全无上下文盲审","ACE执行证据承接真实同源记录，不冒称本代理重执行","未发送邮件或写正式数据库","尚需作者修复后定向复核"]
+}

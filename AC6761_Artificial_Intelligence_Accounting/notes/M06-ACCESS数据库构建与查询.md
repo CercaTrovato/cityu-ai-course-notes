@@ -2,39 +2,40 @@
 course: AC6761
 module: 6
 week: 6
-date: 2026-10-07
-source: "Week 6 PPT.pptx（92 页）"
-transcript: pending
+date: 2026-10-21
+source: "Week 6 PPT.pptx（92 页）；Quiz 2.docx；ExampleTables1.accdb（当前附件）"
+transcript: merged
 prerequisites: [M01, M02, M03, M04, M05]
 new_concepts: [数据表视图, 设计视图, 数据类型, 字段属性, 保留字, 主键, 外键, 参照完整性, 级联更新, 级联删除, 关系布局, 一对多符号, 复合主键, 连接表, 查询, 关系代数, 选择, 投影, 连接, 内连接, 外连接, 左外连接, 右外连接, 笛卡尔积, SQL, QBE, 通配符, 数学比较运算符, 逻辑运算符, BETWEEN, IS_NULL, EXISTS, 空值, 聚合函数, COUNT, SUM, AVERAGE, MIN, MAX, 横向计算, 汇总行, GroupBy, Nz函数, 行项目金额, 加权平均单位成本, 汇款通知, 佣金率, 资产负债表日, 订单履行天数, 在手订单查询]
 tags: [AC6761, ACCESS, 关系数据库, SQL, QBE, 关系代数, REA落地, 上机课, 期末范围]
-status: v0.9
-updated: 2026-10-02
-mechanism_review: pending
+status: v1.0
+updated: 2026-10-26
+mechanism_review: passed
 mechanism_review_mode: efficient-20261002
 mechanism_content: repaired
 mechanism_spec: mechanism-v1
 readability_rules: v2
-readability_review: pending
+readability_review: passed
+teaching_standard: novice-v1
 ---
 
 # M06 · ACCESS 数据库构建与信息查询（Accounting Information Querying with ACCESS）
 
 > **本讲一句话**：M04 教你**画** REA 概念模型，M05 教你**怎么画得对**；这一讲把那张图**真正落成一个能跑的数据库**——先用 Microsoft Access 把类变成表、把关联变成外键和连接表，再用三种查询语言（关系代数 / SQL / QBE）把会计信息**问出来**，最后示范七个真实的会计问题（应收账款余额、应付账款余额、畅销滞销品、加权平均成本、订单履行天数、无人问津的存货、销售拜访次数）怎么用查询算出来。
-> **原始材料**：`Week 6 PPT.pptx`（92 页，**全课六份讲义中最大的一份**） ｜ **转录**：`pending`（本讲尚未融合课堂转录）
+> **原始材料**：`Week 6 PPT.pptx`（92 页，**全课六份讲义中最大的一份**） ｜ **转录**：S19 后段、R1、S21（三源原时钟；10 月 21 日由本人确认）。R1 专指本次 Windows 录音机片段；文中的旧 W1 专指第一周 `M01-transcript.txt`，两者不是同一份音频
 
-> ⚠️ **本笔记为 v0.9**：正文全部来自讲义与讲义截图的视觉复核，**本讲没有课堂转录**。七格微结构里的「🎙️ 课堂补充」一律写「待转录补充」——这是有意留的欠债标记，不是遗漏。回填清单见 [[#9.2 课上讲了但课件没有|§9.2]]。
+> ✅ **本笔记为材料 v1.0**：融合 10 月 21 日 S19 `09:30` 后段、R1 的课堂段 `00:01`–`15:57`、S21 `00:00`–`09:17`。三份来源分别从零计时；S19 与 M05 共用整份音频，不能在这里重置。R1 的 16 分钟后是课间私人交谈，公开转录与公开音频副本已排除，完整原件仅留本机。
 >
-> ⚠️ **考点可信度封顶 🟡**。没有转录就没有"教授明示"，[[#6.2 考点清单|§6.2 考点清单]]里 **🔴 级为 0 条**。全文出现 🔴 标记的只有一处，是 [[#1.1 你已经有的|§1.1]] 回指 **M01 的交易分析答题格式**——那条依据的是 **W1 的真实转录**（`01:53:06` / `01:54:30`），不是本讲的。本讲另外引用的两段 W1 转录（期中考范围 `13:28`、本讲的定位 `12:20`–`12:56`）一律标 🎙️ 并注明是 **W1 的录音**。
+> 🔴 **现在有本讲课堂范围证据**：要读懂给定 SQL、根据给定表写查询结果（R1 `00:16`–`00:59`）；外连接在这次基础 SQL 题型中降权（R1 `01:10`）。软件点击操作用当堂 Quiz 2 练习，与纸笔读 SQL 题分开，不能据“纸笔期末”推断整章都不考。
 
 > 📌 **W6 不在期中考范围内，但这不代表可以略读。**
 > 🎙️ W1 转录 `13:28`：*"the midterm test in Week 7 will cover the content from Week 1 to Week 5."* —— 期中考（2026-10-14）到 W5 为止。
-> **但本讲 92 页是全课最厚的一讲，且它是 W4–W5 REA 模型的"落地"环节**，几乎必然落在期末范围里。本笔记按**完整精读**处理，不因"不考期中"而降详略。
+> **本讲是把 REA 模型落成数据库的环节**。现已获得本讲 SQL 读题与范围证据，详见 §6；其余讲义内容仍完整自学，不能用页数预测分值或把缺录页直接当免考。
 
 > 🎙️ **这一讲为什么存在**（W1 转录 `12:20`–`12:56`，教授解释整学期安排时说的）：
 > > *"we will introduce the theoretical model of \[AIS\]. But if the just-theoretical is too difficult, too difficult to understand and too boring, right? So that's why we plan in week \[6\], we try to convert from the conceptual model into … the database, which is so-called Access, so that's why we have this computer room."*
 >
-> ⚠️ 两处校正：ASR 把 "AIS" 听成 "IA"；教授口述的周次是 "week 3"，但**课程表上 ACCESS 是第 6 周**（`Week 6 PPT.pptx`），此处按课程表为准，视为口误或 ASR 误听。**这段引用来自 W1 的转录，不是 W6 的**——本讲本身无录音。
+> ⚠️ 两处校正：ASR 把 "AIS" 听成 "IA"；教授口述的周次是 "week 3"，但**课程表上 ACCESS 是第 6 周**（`Week 6 PPT.pptx`），此处按课程表为准，视为口误或 ASR 误听。**这段引用来自 W1 的转录，不是 W6 的**——这段仍不是本讲录音；本次新增的 S19/R1/S21 另行定位。
 
 ---
 
@@ -76,7 +77,7 @@ readability_review: pending
 4. **用关系代数的三个算子描述任意一个查询需求**，并写出对应的 SQL 语句
 5. **在 QBE 网格里正确摆放条件**：同一行 = AND，不同行 = OR；哪些字段勾 Show、哪些字段的 Total 行选 Where 而不是 Group By
 6. **区分 `IS NULL` 与 `= 0`**，并解释为什么外连接 + `Is Null` 是"找出没有发生过某事的实体"的标准套路
-7. **独立复现七个会计查询**：应收账款、应付账款、畅销/滞销品、加权平均单位成本、平均订单履行天数、无正面反馈的存货、每人销售拜访次数
+7. **解释七类会计问题的查询思路并复算给定结果**；对于缺失的扩展库和前置查询，列出必要字段、条件与待核事项。原库中七个查询的完整复现仍待材料和实际环境。
 
 **如果只记三件事**
 
@@ -91,6 +92,8 @@ readability_review: pending
    黄底 “Now it Works!!” 标出课件显示的结果，不足以证明 Null 的业务原因，也不能据此推测作者之前的操作经历。
 
 ---
+
+> 🎙️ **课堂实况**：S19 先补 M05，`09:30` 后进入 Access；R1 接 SQL 比较与 Query 1，并在 `15:57` 宣布休息；S21 复述后做 Query 2–4，转 Quiz 2 上传。课程日期为本人确认的 10 月 21 日。三份保留各自零点，接缝没有共同声轨锚点；R1 16 分钟后的私谈不公开，S21 结尾没有正式下课语。未录 p.19–23 的完整一对多演示，以及 p.70–92 的后续讲解，不据此降权。
 
 ## 1. 开始之前 · 知识衔接
 
@@ -170,7 +173,9 @@ readability_review: pending
 
 ### 1.3 为什么这一讲放在这里 · 重排说明
 
-**为什么放在 W5 之后、期中考之前的最后一周**
+**为什么学完 M05 后再学 Access**
+
+这里的 Week 6 是讲义编号，不是本次实课日期。本人确认的课堂是 10 月 21 日，已在 10 月 14 日期中之后；旧 W1 录音只说明最初课程动机，不能据原排期把本次课重新放到期中前。
 
 课程的五周主线是：`W1 会计是什么 → W2 怎么记账 → W3 怎么读报表 → W4 REA 的世界观 → W5 REA 的施工手册`。到 W5 结束，你手里有一张画得很漂亮的 REA 类图，但那张图**存在于纸上**。
 
@@ -289,9 +294,13 @@ Microsoft Access 打开一张表有两种模式：
 
 讲义 p.3 举的数据类型例子：*"text, numbers, currency, date/time, etc."`（讲义 p.3）
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（10 月 21 日；S19 `13:19`–`17:16`；A · 课上展开）
 
-待转录补充（本讲无录音）。
+先创建空白数据库，再切到设计视图，明确表属于数据库，而不是一个表等于一个独立的 Office 文件。打开已有表通常先显示数据表视图；要改字段结构，须再切回设计视图。
+
+*"But the design view gives you control over all the choices."*（S19 `17:01`）
+
+中文：设计视图控制结构选择。它与输入每行数据的视图承担不同任务，先设结构再输入数据能减少类型混乱。
 
 **💡 换个说法（笔记补充）**
 
@@ -442,6 +451,14 @@ Microsoft Access 打开一张表有两种模式：
 
 屏幕的两个区先有了整体印象，下面两节分别细看每一区具体在做什么，先看上半屏。
 
+**🎙️ 课堂补充**（10 月 21 日；S19 `18:33`–`21:01`；A · 课上展开）
+
+上部设计网格填写字段名与数据类型；下部面板设置字段属性。老师为本次入门演示省略描述列和下部细项，集中上部两列；这只是课堂简化，不能据此取消真实数据库的必填、校验或参照完整性。
+
+*"We only care about the Faction 1, we can ignore the Faction 2."*（S19 `20:23`）
+
+中文：这次演示只操作第一区，省略第二区。Faction 按讲义理解为 section；正文仍讲清字段属性为何会影响合法值。
+
 #### 2.3.2 Section 1：表设计网格（讲义 p.7）
 
 **是什么**
@@ -560,7 +577,7 @@ Section 1 就是**这张表的骨架定义**。你在这里写下的三列，等
 
 **这个例子的数据（讲义 p.9）**
 
-⚠️ 讲义 p.9 只有两张表和一根红色箭头，文本提取拿不到箭头信息。视觉复核结果：**红色箭头从 Sale 表的 `Salesperson` 列指向 Salesperson 表的 `SalespersonID` 列**，且两列里的值（`123456`、`654321`）**都被标成红色** —— 这是在图示**外键关系**。
+⚠️ 讲义 p.9 只有两张表和一根红色箭头，文本提取拿不到箭头信息。视觉复核结果：**红色箭头连接 Sale.Salesperson 与 Salesperson.SalespersonID 两列**，两列的 `123456`、`654321` 值标红，说明它们的对应；图上箭头方向不能被误读成外键语义方向，外键仍是 Sale.Salesperson 引用 Salesperson.SalespersonID。
 
 **Sale 表**（讲义 p.9）
 
@@ -660,9 +677,13 @@ flowchart TD
 
 **⚠️ 讲义自己没遵守这条规则**：p.33 之后的示例数据库里，Sale 表的日期字段就叫 **`Date`**（见 p.55、p.71、p.74 的截图，字段列表里赫然是 `Date`），而 §2.24 的另一个库里也有 `Date` 字段（p.90）。**同一份讲义前面说"不要叫 Date"，后面的示例库自己全叫 Date。** 见 [[#9.3 课件自身的问题|§9.3]]。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（10 月 21 日；S19 `21:09`–`25:46`；A · 课上展开）
 
-待转录补充（本讲无录音）。
+课堂为 Sale 逐行设置 SaleID、SaleDate、SaleAmount 和销售员 ID。ID 即使像数字，也是在识别对象，求和没有业务意义，本例用 Short Text；日期用 Date/Time，金额用 Currency。不要把本例改写成所有数据库的 ID 都必须是文本。
+
+*"ID is not a number, it's text."*（S19 `22:21`）
+
+中文：本次课堂的 ID 字段按文本处理。SaleDate/SaleAmount 也用于减少名称与系统词的潜在冲突，不推广成所有版本的 Amount 都是保留字。
 
 **💡 换个说法（笔记补充）**
 
@@ -796,9 +817,13 @@ Sale 表的骨架搭好了，下一节讲这一大段建库部分最核心的理
 
 **这就是为什么讲义 p.16 会特意说"建 Salesperson 表时不要改数据类型或任何字段属性"**（见 §2.4.6）——因为 Sale 表的 `Salesperson` 也是默认的 Text(255)，两边不动才能保证完全一致。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（10 月 21 日；S19 `26:11`–`26:45`；B · 讲了同讲义）
 
-待转录补充（本讲无录音）。
+外键和它指向的主键除了内容要对应，字段类型也须兼容。老师复述了讲义的 Null 或匹配情形；若业务要求每笔销售必须有销售员，还要设置 Required 等约束，不能只靠两个字段同名。
+
+*"data type is also considered by the system to compare the two variables or two data."*（S19 `26:45`）
+
+中文：系统比较两个值时也考虑数据类型。课堂 ASR 在 Null 那句不稳定，合法情形以本节讲义原文与约束说明为准。
 
 **💡 换个说法（笔记补充）**
 
@@ -879,6 +904,15 @@ Sale 表的骨架搭好了，下一节讲这一大段建库部分最核心的理
 
 主键设好了，Sale 表的设计基本完工，下一节是收尾动作——保存，但 Access 的保存语义有一处反直觉的地方要先弄清楚。
 
+**🎙️ 课堂补充**（10 月 21 日；S19 `26:57`–`28:51`；A · 课上展开）
+
+老师删除并重新插入 ID 行，演示主键图标会消失；选中该字段整行后右键选择 Primary Key，图标才恢复。重新打上字段名并不自动恢复“唯一且非空”的主键约束。
+
+*"The key symbol disappears, right?"*（S19 `28:00`）
+
+中文：重新插入这一行后，主键符号消失了。操作后要核图标和约束，而不只核字段名是否存在。
+
+
 ---
 
 #### 2.4.5 保存（讲义 p.15）
@@ -908,6 +942,15 @@ Sale 表的骨架搭好了，下一节讲这一大段建库部分最核心的理
 **所以呢**
 
 Sale 表建完了，下一节用同样的流程建第二张表 Salesperson——外键要指向的那张表。
+
+**🎙️ 课堂补充**（10 月 21 日；S19 `29:08`–`30:10`；A · 课上展开）
+
+课堂在表标签上右键保存并关闭，再双击重新打开。重开默认是数据表视图；看到行数据时不表示设计已丢失，要切到 Design View 检查字段。
+
+*"every time if you double-click something, they are showing in the data sheet view."*（S19 `29:50`）
+
+中文：双击表后通常先显示数据表视图。这里的保存是课堂表设计操作，不等于本人已创建或提交数据库。
+
 
 ---
 
@@ -972,6 +1015,15 @@ Sale 表建完了，下一节用同样的流程建第二张表 Salesperson——
 **所以呢**
 
 两张表都建完了，下一节看它们此刻在数据库窗口里是什么状态——以及为什么"建完表"和"建好关系"是两件事。
+
+**🎙️ 课堂补充**（10 月 21 日；S19 `30:19`–`31:30`；B · 简讲并留时间操作）
+
+另一张 Salesperson 表包含 ID、姓名和电话，这些在本例都用 Short Text；电话是标识性文字，不拿来做数值运算。老师让学生自行建表、指定 ID 主键，再保存。
+
+*"The default type would be the short text"*（S19 `31:14`）
+
+中文：这些字段可沿用短文本类型。默认类型适合本例，仍要核实际任务，不能对所有新字段一律不检查。
+
 
 ---
 
@@ -1171,9 +1223,11 @@ flowchart TD
 
 💡 实测经验（笔记补充）：Access 其实两个方向都接受，它会根据"谁是主键"自动判断哪边是"一"。**但按讲义的方向拖，Edit Relationships 对话框里左右两栏的位置是符合直觉的**（左 = 主表 Salesperson，右 = 相关表 Sale），不容易看错。**建议照讲义的方向。**
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（10 月 21 日；S19 `31:30`–`32:11` 前后的材料接缝；D · 本次未录到完整讲解）
 
-待转录补充（本讲无录音）。
+前面还在让学生建 Salesperson，随后已转入多对多的学生选课例。没有找到 p.19–23 一对多 Relationships 操作的完整课堂展开，不能把后面的三表操作当成这五页已讲完。
+
+本节保留讲义步骤与约束解释，课堂状态为 ❓、不可降权；几十秒 ASR 间隔本身不足以判断老师跳过或音频漏句。
 
 **⚠️ 常见误解**
 
@@ -1296,6 +1350,10 @@ M05 §2.5 引 W4 p.31 的原话：*"Minimum participation of employee = 0 (**put
 一对多的建库流程（例 1）走完了，下一节处理更难的情形——多对多在物理层要怎么落地。
 
 ---
+
+**英文参考答案（笔记自拟，U01）**
+
+> Build Sale with SaleID as its primary key and Salesperson as a foreign key to Salesperson.SalespersonID. Use the four Sale fields and the three Salesperson fields shown in the task, keep related key types compatible, enforce referential integrity, enable cascade updates as illustrated, and leave cascade deletes unchecked. A required salesperson also needs a non-null requirement; the relationship line alone does not impose it.
 
 ### 2.6 例 2：多对多怎么落地 —— 连接表与复合主键（讲义 p.24–p.28）
 
@@ -1514,6 +1572,15 @@ classDiagram
 
 复合主键怎么设、为什么这么设都讲完了，下一节把这张中间表真正与另外两张表连起来。
 
+**🎙️ 课堂补充**（10 月 21 日；S19 `32:11`–`40:38`；A · 课上展开）
+
+学生表和课程表各有自己的 ID；Takes 表的一行表示一个学生修一门课，grade earned 属于这对组合。选中 StudentID 与 CourseID 两行并设主键，两个钥匙图标共同代表一项复合主键，不是两个互不相关的主键。
+
+*"composite primary key attribute, also called the concatenated primary key here."*（S19 `38:55`）
+
+中文：这里称复合主键，也称连接主键。S19 `33:21` 先给学生时间做两张表，`33:54`–`37:08` 的长空档与当场操作相邻，不直接当作教学丢失。
+
+
 ---
 
 #### 2.6.3 建两条关系（讲义 p.27）
@@ -1568,6 +1635,15 @@ S001 修读 AC6761，成绩为 A。按图中的三个产物分别检查：
 **所以呢**
 
 三张表、两条关系、一个复合主键都建好了，下一节退一步总结：为什么概念层的一条线在物理层要拆成这么多东西。
+
+**🎙️ 课堂补充**（10 月 21 日；S19 `40:49`–`43:09`；A · 课上展开）
+
+关闭表后进入 Relationships，加入 Student、Course、Takes；把两个父表的 ID 分别拖到 Takes 对应字段。中间表保留两条外键，使“学生—选课记录—课程”的两步关系能够落实。
+
+*"we have the three tables on the left."*（S19 `40:52`）
+
+中文：此时已经有三张表。课堂快速说选择前两项；具体含义仍按本节的参照完整性与级联更新说明理解，不把位置提示当成所有版本通用的按钮编号。
+
 
 ---
 
@@ -1646,6 +1722,10 @@ Relationships 布局窗口（库 `Database2`），三个字段列表框，**两�
 - 保存 Relationships 布局与建立约束不同。取消布局保存，不自动撤销已建立的约束。
 - 金额非负、日期不晚于今天是可选输入政策。退款、credit、未来承诺需要各自条件。
 
+**英文参考答案（笔记自拟，U02）**
+
+> Create Student, Course, and the association table Takes (named StudentTakesCourse in the Access example). Use StudentID and CourseID together as the association table’s primary key, link each to its parent table, and store Grade earned on the student–course combination. The composite key prevents duplicate combinations in this exercise; repeated enrolments would require an additional distinguishing key.
+
 ### 2.7 第二部分导言：用 ACCESS 查询信息（讲义 p.29–p.30）
 
 #### 2.7.1 分隔页（讲义 p.29）
@@ -1701,9 +1781,13 @@ Relationships 布局窗口（库 `Database2`），三个字段列表框，**两�
 
 讲义 p.30 没有给具体例子，只列了四种动作。第一个具体例子在 p.34。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（10 月 21 日；S19 `43:37`–`44:37`；A · 课上展开）
 
-待转录补充（本讲无录音）。
+设计好表后，在数据表视图输入行值；有了数据，查询才能按需要挑行、挑列、拼表和计算。先把数据保存成可关联的表，再问具体业务问题，这正是模型落地的用途。
+
+*"we can isolate certain columns, and we can join the different tables together"*（S19 `44:27`）
+
+中文：可以挑出列，也可以拼接不同表；这里谈的是对已有数据的提问，不是凭 AI 补造缺失记录。
 
 **💡 换个说法（笔记补充）**
 
@@ -1790,9 +1874,13 @@ RA→SQL/QBE 表示概念到表达方式；虚线双向箭头表示 Access 可�
 
 讲义 p.31 没给例子，三种语言的例子分别在 p.34、p.41、p.54 之后。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（10 月 21 日；S19 `44:39`–`45:29`；B · 讲了同讲义）
 
-待转录补充（本讲无录音）。
+关系代数说明基本动作，SQL 用语句表达查询，QBE 用界面点选表达查询。老师分别介绍三者，再通过同一组表演示，不表示所有写法在 Null、重复行和连接类型上天然完全等价。
+
+*"The second one is the so-called structured query language, SQL."*（S19 `44:53`）
+
+中文：第二种是结构化查询语言 SQL。后续课堂把读 SQL 作为纸笔任务重点，不能把三种语言平均分配考试权重。
 
 **💡 换个说法（笔记补充）**
 
@@ -1878,9 +1966,13 @@ RA→SQL/QBE 表示概念到表达方式；虚线双向箭头表示 Access 可�
 
 三个算子的完整例子在 p.34（Select）、p.35（Project）、p.37（Inner Join）、p.38（Left Outer Join）。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（10 月 21 日；S19 `45:33`–`45:57`；B · 讲了同讲义）
 
-待转录补充（本讲无录音）。
+三种动作按对象记：Select 筛行，Project 挑列，Join 按条件组合两张表。这里的 Select 是关系代数术语，SQL 的 SELECT 对应挑列，名称相同但所指动作不同。
+
+*"Select means that include certain rows."*（S19 `45:41`）
+
+中文：关系代数的 Select 是挑行。读题时先看在哪一种语言中，避免把它与 SQL SELECT 混为一谈。
 
 **💡 换个说法（笔记补充）**
 
@@ -1916,9 +2008,9 @@ Select / Project / Join 三个算子定义好了，下一节看它们后面要�
 
 讲义 p.33 的标题：*"Example Tables (**Incomplete** Enterprise Database) **from Dunn & McCarthy working paper**"*
 
-⚠️ 视觉复核确认：p.33 展示**七张表**；后p.54列表共八表，但Inventory主数据未给。下面完整转写实际可见七表，缺源不编第八表。
+⚠️ p.33 展示七张表，后续表列表共八表。下面先转写讲义可见七表；第八张 Inventory 在 p.33 未画出，当前 ExampleTables1 附件已提供其三字段六行，另标附件补充，不把它冒作 p.33 原图。
 
-#### 2.10.1 七张可见表的数据与第八表缺口（讲义 p.33）
+#### 2.10.1 七张可见表与当前附件补充（讲义 p.33）
 
 **① Sale（销售）** —— 经济减量事件
 
@@ -2084,11 +2176,24 @@ Sale, Sale-CashRecDuality, Salesperson
 
 （视觉复核 p.54、p.59、p.63、p.67、p.70、p.73、p.76、p.79 的 Show Table 列表，八次列出的表名完全一致。）
 
-**⚠️ 讲义标题里的 "Incomplete" 是诚实的**：这个库确实不完整——**没有 Inventory 表的内容、没有 Employee 表（E-39 出纳只出现在外键里）、没有采购侧的任何东西**。它只是为了教查询而截取的一小块。
+**当前附件补充（ExampleTables1，不是 p.33 图中第八张表）**：原独审已在 E 盘副本用 ACE 只读取得 Inventory。下表一行一个商品类型，ItemID 是身份，Description 是描述，StdUnitCost 是该库的标准单位成本字段，金额单位沿源库，不另补币种。
+
+| ItemID | Description | StdUnitCost |
+|---|---|---:|
+| A-1 | Small A | 1,200 |
+| A-2 | Medium A | 2,200 |
+| A-3 | Extra Small A | 600 |
+| A-4 | Tiny A | 250 |
+| A-5 | Large A | 2,800 |
+| A-6 | Extra Large A | 3,600 |
+
+例如 A-1 的标准单位成本为 1,200；它不是每次实际销售价，也不能替代 p.89 的期间采购均价。
+
+这个基础例库仍没有 Employee/出纳目标主表，也没有采购侧和 p.86–92 的扩展原查询。标题 Incomplete 所指的范围限制继续存在，但不能再说本地完全没有 Inventory 内容。
 
 **所以呢**
 
-七张表的数据已列；第八张Inventory仅后续列表证明存在，字段行仍缺，下一节把它们与 M05 学过的 REA 概念对上号，这样后面每个查询例子才知道自己在问什么业务问题。
+讲义可见七表与当前附件的第八表补充分开记录。下一节把它们与 M05 的 REA 对象对上；出纳主数据及扩展库缺口继续保留。
 
 #### 2.10.2 这八张表怎么对应 REA 模型（💡 笔记补充）
 
@@ -2123,7 +2228,7 @@ flowchart TD
 
 **沿例子读图（笔记补充）**：从 Sale S1 找 Customer C1、Salesperson E12；经 Stockflow 找商品A4/A1；经Duality找RA3；RA3引用BA7现金账户。
 
-**图旁边界**：Inventory主表内容缺源；E39的Cashier/Employee目标主数据也未提供，不把E39强连Salesperson。
+**图旁边界**：p.33 未画 Inventory 主表，当前附件内容已在 §2.10.1 单列补充；E-39 的 Cashier/Employee 目标主表仍未提供，不把 E-39 强连 Salesperson。
 
 **文字替代**：Sale连接商品和参与者，Duality连接销售与收款；原缺出纳主数据继续缺。
 
@@ -2160,7 +2265,7 @@ Duality给出S3分16,000、S5分16,600；不能把全额各减一次。
 
 ---
 
-⚠️ **原数据来源差异**：p.33/34/41旧WMF预览RA-2=25July；41个Word OLE中对应正文及当前只读PPT呈现为26July，后p.58也26。正文保留26，未来任意截止查询须注明选择；Cashier E-39未在Salesperson四行中，原材料未提供其目标主表，不把CashierNumber强连Salesperson。
+⚠️ **当前原件核对**：p.33/34/41 使用的同哈希 WMF 媒体中，RA-1 为 25 July、RA-2 为 26 July；当前 ExampleTables1 的 RA-2 也为 2014-07-26，两者一致。未取得另一份 RA-2 为 25 July 的异源媒体，不保留该冲突断言。Cashier E-39 不在 Salesperson 四行中；原材料未提供其目标主表，不把 CashierNumber 强连 Salesperson。
 
 ### 2.11 关系代数 SELECT：挑行（讲义 p.34）
 
@@ -2206,9 +2311,13 @@ Select <表名> Where <条件> Giving <结果表名>
 
 这是**对账（reconciliation）**的第一步：客户说"我付过三笔钱"，你要能立刻调出他所有的付款记录来核对。M01 讲的审计轨迹（audit trail）在数据库里的体现，就是这种"能按任意维度切出原始凭证"的能力。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（10 月 21 日；S19 `46:53`–`47:51`；B · 同讲义原例）
 
-待转录补充（本讲无录音）。
+在 Cash Receipt 中找 C-2 的收款：先固定源表，再检查每行 Customer#，保留匹配的行与原有全部列。课堂口述第一、第二和最后一行；正式 ID 和金额以本节原表为准。
+
+*"where customer number equal to C2"*（S19 `47:43`）
+
+中文：条件是客户号等于 C-2。ASR 的 C2 与书面 C-2 是同一课堂对象的校词，不能改变表内键值。
 
 **💡 换个说法（笔记补充）**
 
@@ -2226,6 +2335,10 @@ Select ≈ **Excel 的筛选（Filter）**。你在 `Customer Number` 那一列�
 挑行（Select）会了，下一节看关系代数的第二个算子——挑列（Project）。
 
 ---
+
+**英文参考答案（笔记自拟，U03）**
+
+> Selecting Cash Receipt rows for customer C-2 returns RA-1, RA-2, and RA-5. The result has three rows and all six receipt fields; RA-2 is dated 26 July in the current source.
 
 ### 2.12 关系代数 PROJECT：挑列（讲义 p.35）
 
@@ -2279,9 +2392,13 @@ Project <表名> Over (<要保留的列，逗号分隔>) Giving <结果表名>
 
 ⚠️ **但 SQL 默认不去重**！SQL 要去重必须写 `SELECT DISTINCT`。**这是关系代数与 SQL 的一处真实差异，讲义没有提。** 考试如果考"关系代数的 Project 与 SQL 的 SELECT 有什么区别"，**去重行为**是标准答案之一。见 [[#9.4 课外补充|§9.4]]。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（10 月 21 日；S19 `48:01`–`48:41`；B · 同讲义原例）
 
-待转录补充（本讲无录音）。
+题目要全部客户，但只要编号、姓名与销售员编号三列，所以保留全部客户行，只缩减列。没有额外行条件，不能丢掉姓名重复或销售员相同的客户。
+
+*"it isolate columns."*（S19 `48:28`）
+
+中文：Project 挑列。其结果与 SQL 的列清单相对应；是否去重须看实际语言语义，正文中的区别继续保留。
 
 **💡 换个说法（笔记补充）**
 
@@ -2301,6 +2418,10 @@ Project ≈ **Excel 里隐藏列 / 只复制某几列出来**。
 挑行、挑列都会了，下一节看第三个也是最后一个算子——Join，以及它最重要的一个分支：内连接与外连接的区别。
 
 ---
+
+**英文参考答案（笔记自拟，U04）**
+
+> Project the customer number, name, and salesperson number for each customer. The given data produce five rows and three columns; no repeated projected tuples occur in this example.
 
 ### 2.13 连接类型：内连接与外连接（讲义 p.36）
 
@@ -2493,9 +2614,13 @@ Join <表1>, <表2> Where <连接条件> Giving <结果表名>
 
 `Customer.SP# = Salesperson.EmployeeNumber` 这条关系，在 M05 的语言里是 **Assignment（指派）**：客户归哪个销售员负责。做这个连接，实际是在回答**"这个客户的账，找谁问？"** —— 这是应收账款催收（collection）的第一步。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（10 月 21 日；S19 `50:30`–`51:44`；A · 课上展开）
 
-待转录补充（本讲无录音）。
+把 Customer 中的销售员编号与 Salesperson 的员工编号比较，只有匹配组合进入内连接结果。只在销售员表出现、没有匹配客户的 E-78 不会进入结果；先找连接键，再逐行配对。
+
+*"this E-78 is only in the salesperson table"*（S19 `51:37`）
+
+中文：E-78 只在销售员表中出现。课堂说明它为何消失，但书面答案仍按原表 ID 核对；内连接并不保证行数与任一输入表相同。
 
 **💡 换个说法（笔记补充）**
 
@@ -2508,6 +2633,10 @@ Inner Join ≈ **Excel 的 VLOOKUP**，但更强：
 内连接会丢数据这一点看清楚了，下一节看外连接怎么把这些数据留下来。
 
 ---
+
+**英文参考答案（笔记自拟，U05）**
+
+> Join Customer and Salesperson where the customer’s assigned salesperson number equals the employee number. The given data produce five rows and seven columns. E-78 is absent because that salesperson has no matching customer; row order is not guaranteed without sorting.
 
 ### 2.15 关系代数 Left Outer Join：一行都不丢（讲义 p.38）
 
@@ -2605,9 +2734,13 @@ Giving Answer
 
 讲义写的是 `Left Outer Join Sale, [Sale - CashRecDuality]`，表名中间**带空格**（`Sale - CashRecDuality`）。而 p.44 的 SQL 版写的是 `[Sale-CashRecDuality]`（**无空格**），p.54 的 Access 截图里实际表名是 **`Sale-CashRecDuality`**（无空格）。见 [[#9.3 课件自身的问题|§9.3]]。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（10 月 21 日；S19 `51:51`–`54:08`；R1 `01:10`；A · 解释后降权）
 
-待转录补充（本讲无录音）。
+外连接保留左边销售表；同一销售对应多条收款分配时，结果会重复显示销售号。重复是不同匹配组合，不代表源销售被复制成另一笔；不能把结果行的销售金额直接相加当收入。
+
+*"we have the two lines of S2 because we have different results"*（S19 `53:17`）
+
+中文：S-2 对应不同收款分配，所以出现两行。R1 `01:10` 又说本次基础 SQL 要求可忽略 outer join；这是考试降权，完整自学机制仍保留。
 
 **💡 换个说法（笔记补充）**
 
@@ -2631,8 +2764,7 @@ Left Outer Join ≈ **VLOOKUP 但把 `#N/A` 留着**。
 
 这次把“截至 7 月底”和“截至 8 月底”分开算。输入是 p.33 的七笔销售、五笔 RA 收款和六条 Applied 分配。
 
-- RA-2 日期采用既有抄源记录中的 26 July。
-- 旧 WMF 缓存写 25 July，属于真实来源差异，继续保留，不能用它覆盖正文。
+- RA-2 日期为 26 July，当前 PPTX 同哈希 WMF 与当前例库一致。RA-1 才是 25 July。
 - 无期初、退回和其他事项只是假设本限定算例中为 0。原库题名 Incomplete，不能认证现实企业完整性。
 
 先判断一笔销售是否已发生，再判断有效收款中有多少应用到它。两次筛选必须用同一个截止日。
@@ -2661,17 +2793,40 @@ Left Outer Join ≈ **VLOOKUP 但把 `#N/A` 留着**。
 
 RA4 的 32,600 分给 S3 的 16,000 和 S5 的 16,600。不能把收款全额分别从两张销售单扣掉。
 
+<details><summary>可选的 SQLite 参考实现：先读 SQL 骨架与聚合；不是 Access 原查询</summary>
+
+💡 下面把前面六步写成代码，供学完 §2.16 和 §2.21 后对照。它的任务是输出每笔截至日销售的金额、已应用额与余额；不要求先会这段代码才能理解上面的手算。
+
+输入是三张教学表。每行分别代表一笔销售、一笔收款、或一笔收款对一笔销售的分配。字段是为代码简化而取的名字，不是当前 Access 字段名。
+
+| 教学表及字段 | 原表对应字段 | 本段用途 |
+|---|---|---|
+| Sale(id, amt, dt) | SaleNumber、Amount、Date | 销售身份、金额、日期 |
+| CR(id, dt) | RemittanceAdviceNumber、Date | 收款身份及收款日期 |
+| Applied(sale, ra, amt) | Duality 的 SaleNumber、RemittanceAdviceNumber、Applied | 哪笔收款分给哪笔销售多少金额 |
+
+最小输入只保留 S-2：Sale 中一行 `(S-2, 10000, 2014-07-21)`；CR 中两行 `(RA-1, 2014-07-25)`、`(RA-5, 2014-08-25)`；Applied 中两行 `(S-2, RA-1, 1666)`、`(S-2, RA-5, 1666)`。金额沿用原表单位；日期在这份教学实现中统一存为 `YYYY-MM-DD` 文本。
+
+代码里的 `s`、`r`、`d` 是表别名（table alias），即 Sale、CR、Applied 的短名；`s.id` 就是 Sale 的 id，不是新字段。`AS applied` 给求和结果命名。括号中的 `SELECT` 先产生一张中间结果，括号后的 `a` 是这张结果的名字，所以外层才能读 `a.applied`。
+
 ```sql
-SELECT s.id,s.amt,COALESCE(a.applied,0) AS applied,
+SELECT s.id, s.amt, COALESCE(a.applied,0) AS applied,
        s.amt-COALESCE(a.applied,0) AS AR
-FROM Sale s LEFT JOIN (
- SELECT d.sale,SUM(d.amt) AS applied
- FROM Applied d JOIN CR r ON d.ra=r.id
+FROM Sale AS s LEFT JOIN (
+ SELECT d.sale, SUM(d.amt) AS applied
+ FROM Applied AS d JOIN CR AS r ON d.ra=r.id
  WHERE r.dt<=:asof GROUP BY d.sale
-) a ON s.id=a.sale WHERE s.dt<=:asof;
+) AS a ON s.id=a.sale
+WHERE s.dt<=:asof;
 ```
 
-这是SQLite教学字段名（id/amt/dt），原Sale#/RA#/Applied在代码抄源时对应它们；`:asof`统一YYYY-MM-DD文本，不是Access日期认证。内层由付款事实聚合，外层保留零付款销售，结果7/31 48,134、8/31 64,668在calc.py实际复算；Access可分保存查询并以Nz(applied,0)算差，但原生环境尚未执行。
+按内层到外层读：先用 `d.ra=r.id` 取得每条分配所属的收款日期，筛到截止日，再按 `d.sale` 求和，每笔销售最多一行。外层筛销售发生日，保留全部合格销售，再减各自的应用额。`COALESCE(x,0)` 只在 x 为 Null 时返回 0；这里补零的业务前提是这份限定明细完整且确无有效分配，不能把漏录款项当零。
+
+`:asof` 是调用查询时绑定的参数（parameter），不是表里的字段，也不是让用户照抄的日期字符串。用 SQLite 调用端将它绑定为 `2014-07-31`：内层 S-2 得 1666，外层得 `(S-2, 10000, 1666, 8334)`。改绑 `2014-08-31`，内层得 3332，外层余额变为 6668。必须替换两处同名参数的同一个值，不能销售筛到七月、收款筛到八月。
+
+用本节七笔完整给定销售复算，两截至日合计分别为 48,134 与 64,668；本次独立 SQLite 教学复算证据保存在修稿包。它没有打开或运行 Access UI；Access 可分成保存查询实现同一流程，`Nz` 的原生上下文仍须另核。无期初、退货及其他事项是假设，结果不能认证现实企业完整余额。
+
+</details>
 
 **看图前先问**：截止日余额为什么先汇总 Applied 再连销售？
 
@@ -2701,12 +2856,16 @@ S2的销售额10,000会出现两次；不能用SUM(DISTINCT金额)补救，因�
 
 **失败机制与迁移题**：裸JOIN重复S2销售额10,000，117,800+10,000−53,132=74,668错；只找完全没付款Sale得S6/S7 58,000，漏S2尚欠6,668。SUM(DISTINCT sale amount)也不行，S2/S4真实两张都10,000会被错误去重，应按SaleID而非金额去重。
 
-<details><summary>改截止7/25，为什么必须声明RA2用哪条日期来源？</summary>
+<details><summary>假设变式：若把 RA-2 改为 7/25，截止日判断要检查什么？</summary>
 
-采用正文26July，RA2不纳入；旧缓存25July会将它提前扣10,000。但S4销售在26July还未发生，若允许提前收款须另存预收/应用生效，不能仅凭关联将未来Sale提前纳入。原异源差异应显式记录，历史分配重写还需有效时点/版本。
+当前原件 RA-2 为 7/26；改成 7/25 只是笔记假设，不是已发现的来源冲突。S-4 销售在 7/26 才发生，截止 7/25 不能提前纳入该销售。若真实存在提前收款，须另核预收性质及分配何时生效；不能仅凭一条关联就把未来销售提前计入应收。
 </details>
 
 **所以呢**：JOIN用于保存/拼接关联，余额要按业务键和截止时点归集；从无关联只表示零次关联，不能表示所有部分欠款。
+
+**英文参考答案（笔记自拟，U06）**
+
+> A left outer join from Sale to the allocation table returns eight rows and eight columns while retaining every sale. S-2 appears twice because it has two allocations, whereas S-6 and S-7 have Null allocation fields. To calculate a sale balance, aggregate its allocations first; the two row differences of 8,334 for S-2 are not its unpaid balance.
 
 ### 2.16 SQL：结构化查询语言（讲义 p.39–p.40）
 
@@ -2802,9 +2961,13 @@ SQL：       WHERE  = 挑行        SELECT  = 挑列
 
 ⚠️ **讲义 p.44 的写法有语法错误**：标准 SQL 应该是 `FROM Sale LEFT JOIN [Sale-CashRecDuality] **ON** Sale.Sale# = ...`，用 **`ON`** 而不是 `WHERE`，而且 `LeftJoin` 应该是两个词 `LEFT JOIN`。**讲义写的 `LeftJoin` + `WHERE` 在真正的 Access 里跑不通。** 见 [[#9.3 课件自身的问题|§9.3]]。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（10 月 21 日；S19 `54:08`–`55:32`；R1 `00:16`–`01:10`；A · 课上展开与考试要求）
 
-待转录补充（本讲无录音）。
+SQL 的 SELECT 选列、FROM 指定表、WHERE 筛行。课堂要求根据给定语句与给定表写查询结果；因此要同时核列清单、行条件与必要的连接键，不能只背三段名称。
+
+*"You need to understand the code and write down the answer, query result, based on the table I will provide to you."*（R1 `00:28`）
+
+中文：要理解代码，并根据给定表写出查询结果。它没有要求在纸笔期末打开 Access 点按钮；S19 的软件操作说明不能被扩大成整章免考。
 
 **⚠️ 常见误解**
 
@@ -2822,6 +2985,8 @@ SQL 与关系代数的对应关系理清了，下一节把 §2.11–§2.15 那�
 ⚠️ **这四页是 p.34–p.38 那四个关系代数例子的"SQL 重做"**，题目、数据、答案全部相同。本笔记只写 SQL 语句和差异点，答案表不再重复（回看 §2.11–§2.15）。
 
 #### 2.17.1 SQL 的 Select：挑行（讲义 p.41）
+
+本节口头 C-5 变式（U22）和非 C-2 重建变式（U23）的原话、中文与英文参考答案保留在下方折叠。R1 录到的是不等于及 C-1/C-5；完整非 C-2 SQL 是笔记重建，不把二者混作教授逐字题面。
 
 **问题**：与 p.34 相同 —— 找出客户 C-2 的所有收款明细。
 
@@ -2867,6 +3032,36 @@ Where [Customer Number] = 'C-2';   -- ✅ 标准 SQL 写法
 
 SQL 版的 Select 会写了，下一个例子看 SQL 怎么表达 Project。
 
+**🎙️ 课堂补充**（10 月 21 日；S19 `55:32`–`56:36`；R1 `00:38`–`00:59`；A · 课上展开与口头变式）
+
+`SELECT *` 保留源表全部列，WHERE 决定哪些行留下。讲义例是 C-2，老师另把条件换成 C-5，说明会得到一行；这是一道条件变化的口头练习，不把两个客户号混成同一答案。
+
+*"because C5, only one row meets the condition."*（R1 `00:51`）
+
+中文：C-5 只有一行符合。直接答案为原 Cash Receipt 表中 Customer# = C-5 的整行；本节讲义原表仍按 C-2 的三行作答，变式不覆盖原题。
+
+<details><summary>10 月 21 日口头变式：换成 C-5，会留下什么？</summary>
+
+**课堂原语言题意**（R1 `00:38`，ASR 原文，C5 对应原表 C-5）：
+
+> *"For example, I will provide the customer and cash receipt table to you and select the star from cash receipt where customer number is equal to C5."*（R1 `00:38`）
+
+中文读题：给定客户表与收款表，在收款表中取 Customer# 为 C-5 的记录，并保留全部列。`*` 是全部列，条件中的 C-5 决定保留哪行。
+
+按 §2.10 原始 Cash Receipt 表逐行核：RA-1、RA-2、RA-5 属于 C-2，不保留；RA-3 属于 C-1，不保留；只有 RA-4 属于 C-5，所以保留这一整行。金额只复制原表，不对它求和或取反。
+
+| 汇款通知号 | Amount | Bank Account# | Date | Customer Number | Cashier Number |
+|---|---:|---|---|---|---|
+| RA-4 | 32,600 | BA-7 | 15 Aug | C-5 | E-39 |
+
+表中每列沿用原例字段，日期是原表显示值，币种未补造。读这一行：C-5 的 RA-4 收款金额 32,600，存入 BA-7，日期 15 Aug，由 E-39 处理。
+
+**English reference answer（笔记参考答案）**：The query returns all six columns and one row: RA-4, 32,600, BA-7, 15 Aug, C-5, E-39. The asterisk selects all columns; the WHERE condition keeps only the C-5 record.
+
+老师在 R1 `01:41` 明说“不等于”，`01:44` 明说保留 C-1 与 C-5；这是口述结果证据。屏幕上具体敲入的完整字段／代码未录，笔记据当前客户查询重建为 `Customer Number <> "C-2"`，由原表复算为 RA-3 和 RA-4 两行、全部六列。英文参考：For the reconstructed not-equal-to-C-2 condition, keep RA-3 and RA-4 with all six columns; this agrees with the spoken C-1/C-5 result. 重建 SQL 与已录到的口述输出分开，不把它当逐字课堂代码。
+
+</details>
+
 #### 2.17.2 SQL 的 Project：挑列（讲义 p.42）
 
 **问题**：与 p.35 相同 —— 所有客户的编号、姓名、销售员号。
@@ -2889,6 +3084,14 @@ From Customer;
 
 Select、Project 都用 SQL 写完了，下一个例子看 SQL 怎么表达内连接——也是笛卡尔积陷阱最容易发作的地方。
 
+**🎙️ 课堂补充**（10 月 21 日；S19 `56:42`–`57:21`；B · 同讲义原例）
+
+三列来自 Customer，题目要求全部客户，没有 WHERE 就不按客户筛行。课堂指出结果仍有五行；读结果时同时检查三列与五行，两个维度不能混。
+
+*"since there is no condition so we contain all the rows"*（S19 `57:09`）
+
+中文：没有条件，所以保留所有行。这里是原表有限例，不是所有查询省略 WHERE 都只有五行。
+
 #### 2.17.3 SQL 的 Inner Join（讲义 p.43）
 
 **问题**：与 p.37 相同 —— 所有客户及其销售员的全部明细。
@@ -2907,13 +3110,21 @@ Where Customer.SP# = [Salesperson.Employee Number];
 2. **连接条件写在 `WHERE` 里** —— `Customer.SP# = Salesperson.EmployeeNumber`。**这个等号就是连接条件**，不是筛选条件。
 3. **`表名.字段名` 的点号写法** —— 多表查询里必须指明字段属于哪张表，否则字段重名时 SQL 不知道你说的是哪一个。
 
-⚠️ **讲义的方括号位置有误**：写的是 `[Salesperson.Employee Number]`（把表名和字段名一起括起来）。**正确写法是 `Salesperson.[Employee Number]`**（只括有空格的那部分）。讲义那样写，SQL 会以为有个字段就叫 `Salesperson.Employee Number`。见 [[#9.3 课件自身的问题|§9.3]]。
+⚠️ **方括号是方言与可读性问题，不是一概语法错**：当前 ACE 只读副本接受整体写法 `[Salesperson.EmployeeNumber]`，也接受分开写法 `Salesperson.[EmployeeNumber]`；含空格字段的两个有限测试也均成功。为看清表与字段，本文推荐 `表.[字段]`。这些测试不认证所有 SQL 方言，也不消除讲义字段名与当前库字段名的差别；见 §9.3。
 
 **⚠️ 再次提醒笛卡尔积陷阱**：这条语句如果漏掉 `WHERE` 那一行，会返回 5 × 4 = **20 行**笛卡尔积结果，包含正确配对和错误配对，不能称20行全部错误，而且**不报任何错**。这是隐式连接写法最大的风险，也是现代 SQL 推荐用显式 `JOIN ... ON` 的原因。
 
 **所以呢**
 
 内连接的 SQL 写法会了，最后一个例子看外连接——这里讲义自己的写法就有语法错误，正好用来讲清楚 `ON` 和 `WHERE` 的真正区别。
+
+**🎙️ 课堂补充**（10 月 21 日；S19 `57:28`–`58:09`；R1 `00:01`；B · 同讲义原例）
+
+SQL 内连接仍用两个表的销售员 ID 对应，`*` 取双方列。S19 在匹配说明后截断，R1 开头接着说合起来五行；内容支持先后，但没有共同音频锚点，接缝连续性未知。
+
+*"totally we have the five rows."*（R1 `00:01`）
+
+中文：这个示例的结果共五行。先按原表逐个匹配再数行，不把五行当内连接的通用性质。
 
 #### 2.17.4 SQL 的 Outer Join（讲义 p.44）
 
@@ -2927,13 +3138,12 @@ From Sale LeftJoin [Sale-CashRecDuality]
 Where [Sale.Sale#]=[Sale-CashRecDuality.Sale#];
 ```
 
-⚠️ **这条语句有三处问题**（详见 [[#9.3 课件自身的问题|§9.3]]）：
+⚠️ **这条语句有两处明确语法问题**（详见 [[#9.3 课件自身的问题|§9.3]]）。以下每行分别核一个问题；整体方括号不再计错。
 
 | 问题 | 讲义写的 | 应该是 |
 |---|---|---|
 | ① 连接关键字拼在一起 | `LeftJoin` | `LEFT JOIN`（两个词） |
-| ② 连接条件用了 WHERE | `Where ...` | `ON ...` |
-| ③ 方括号位置 | `[Sale.Sale#]` | `Sale.[Sale#]` |
+| ② 缺少连接条件引导词 | `Where ...` | 此处用 `ON ...` 指定匹配 |
 
 **正确的 Access SQL**（💡 笔记补充）：
 
@@ -2957,6 +3167,15 @@ ON Sale.[Sale#] = [Sale-CashRecDuality].[Sale#];
 **所以呢**
 
 三种语言（关系代数、SQL）都用同一批例子跑过了，下面几节补上写 WHERE 条件时要用到的具体运算符，从比较运算符开始。
+
+**🎙️ 课堂补充**（10 月 21 日；R1 `00:07`–`01:10`；C · 明确降权）
+
+老师表示外连接较复杂，这次基础 SQL 题型先要求理解给定语句并作答，可忽略 outer join。讲义的外连接解释和后面的会计应用仍完整保留。
+
+*"And for the outer zone, we can ignore that."*（R1 `01:10`）
+
+中文：这次可以忽略外连接。outer zone 是 ASR 对 outer join 的误识别；没有删掉原题，也不推广成真实业务中外连接不重要。
+
 
 ---
 
@@ -3017,6 +3236,16 @@ ON Sale.[Sale#] = [Sale-CashRecDuality].[Sale#];
 
 六个比较运算符、以及数字/日期/文本三种字段各自的"小于"含义都讲完了，下一个例子用一个数值筛选把它跑通。
 
+**🎙️ 课堂补充**（10 月 21 日；R1 `01:14`–`03:35`；A · 课上展开）
+
+比较运算符放在 WHERE 中筛行，先看正在比较的字段类型：金额按数值，日期按先后，文本按排序规则。老师将客户条件改为“不等于”，借此说明改变运算符会改变留下的行。
+
+*"means not equal to."*（R1 `01:41`）
+
+中文：这个符号表示不等于。R1 `01:41` 说“不等于”，`01:44` 直接说保留 C-1 与 C-5；但完整字段和现场代码未录。按当前客户查询重建为“非 C-2”可得到同样两行，这条 SQL 是笔记重建，与 §2.17.1 地位相同。
+
+这里保留客户号不同于指定值的行；金额按原表复制，不做符号取反。
+
 #### 2.18.2 数值比较的例子（讲义 p.46）
 
 **问题**：找出余额 ≥ 50,000 的现金账户及其余额。
@@ -3062,6 +3291,10 @@ Where Balance>=50000;
 **所以呢**
 
 数值比较连着 Null 的第一课都讲完了（`Null >= 50000` 是 Null 不是 False），下一个例子换成文本比较，再看一次同样的 Null 陷阱。
+
+**英文参考答案（笔记自拟，U07）**
+
+> The condition Balance >= 50000 selects BA-8 with a balance of 75,000. Selecting only Account# and Balance gives one row and two columns; a Null balance does not satisfy this comparison.
 
 #### 2.18.3 文本比较的例子（讲义 p.47）
 
@@ -3120,6 +3353,10 @@ Where SalesRep# <> "E-10" OR SalesRep# IS NULL;
 单个条件的比较运算符都讲完了，下一节看条件多起来之后怎么组合——AND / OR / NOT。
 
 ---
+
+**英文参考答案（笔记自拟，U08）**
+
+> Sales not made by E-10 are S-1 for 7,200 and S-7 for 23,000. The p.47 SQL projects two columns, while the p.72 QBE result also shows SalesRepNumber and has three columns. The selected sales are the same, but the complete outputs are not identical.
 
 ### 2.19 逻辑运算符 AND / OR / NOT（讲义 p.48）
 
@@ -3255,6 +3492,15 @@ AND / OR 在 QBE 里的实现方式非常直观且是必考点：**同一行 = A
 
 AND/OR/NOT 和三值逻辑讲完了，下一节看三个更专门的运算符——BETWEEN、IS NULL、EXISTS，它们全部与 Null 直接相关。
 
+**🎙️ 课堂补充**（10 月 21 日；R1 `03:46`–`04:18`；B · 讲了同讲义）
+
+AND 要两个条件同时成立，OR 允许至少一个成立，NOT 取反。老师在这里简讲后说稍后例子再看；本次来源没有录到 p.73–78 的完整 QBE AND/OR 实操，不冒称已逐屏演示。
+
+*"we need to meet both conditions."*（R1 `03:58`）
+
+中文：AND 需要同时满足两项条件。原有真值表和例题仍是自学机制，不把它们改成课堂口述答案。
+
+
 ---
 
 ### 2.20 特殊运算符：BETWEEN / IS NULL / EXISTS（讲义 p.49–p.51）
@@ -3319,6 +3565,18 @@ Where Date BETWEEN #7/1/2014# AND #7/31/2014#;
 **所以呢**
 
 BETWEEN 端点包含的规则记住了，下一节正式讲清楚 Null 是什么、以及取空值和取非空值该怎么写。
+
+**🎙️ 课堂补充**（10 月 21 日；R1 `04:25`–`05:13`；A · 课上展开）
+
+BETWEEN 包含起点和终点。课堂以 7 月 1 日到 7 月 31 日的销售为例，特别要求把“终点包含”补成“两端都包含”；只排除起点会漏掉 7 月 1 日那行。
+
+*"the starting point and the ending point are included"*（R1 `04:55`）
+
+中文：起点与终点都包含。日期若带具体时刻，还要按本节给定数据与边界写法判断，不能据日期标签就假定一天内所有时刻都已纳入。
+
+**英文参考答案（笔记自拟，U09）**
+
+> The inclusive date range from July 1 through July 31 selects S-1 through S-5 from the supplied date-only records. BETWEEN includes both stated boundaries; when dates contain times, a half-open interval ending before August 1 avoids losing transactions later on July 31.
 
 #### 2.20.2 IS NULL 与 EXISTS：空值（讲义 p.50–p.51）
 
@@ -3412,9 +3670,13 @@ Where Balance EXISTS;        -- ❌ 讲义写法，Access 里跑不通
 
 ⚠️ 顺带一提：讲义 p.91 用的是 **`Is Null`**（QBE 写法，两个词，首字母大写），那才是 Access 里实际能用的形式。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（10 月 21 日；R1 `05:17`–`06:06`；A · 课上展开；保留语法勘误）
 
-待转录补充（本讲无录音）。
+Null 表示缺值，0 是一个已知数值。找缺失余额和找已存在余额会得到两组不同记录；老师特别提醒余额 0 的那行属于非空。
+
+*"zeros there exist, not missing"*（R1 `05:52`）
+
+中文：0 存在，不是缺失。课堂沿用了课件的 `balance exists` 说法；可执行 SQL 检查非空应使用 `IS NOT NULL`，SQL `EXISTS` 则判断子查询是否有行，不能把原课件错误升级成正确语法。
 
 **⚠️ 常见误解**
 
@@ -3430,6 +3692,14 @@ Where Balance EXISTS;        -- ❌ 讲义写法，Access 里跑不通
 Null 的判定运算符讲完了，下一节看竖着算一整列的工具——聚合函数，以及它们各自怎么对待 Null。
 
 ---
+
+**英文参考答案（笔记自拟，U10）**
+
+> Balance IS NULL returns BA-6 and BA-7, giving two rows and four columns when all Cash fields are selected. These blanks represent missing or inapplicable values under the source rules, not known zero balances.
+
+**英文参考答案（笔记自拟，U11）**
+
+> Use Balance IS NOT NULL to select BA-8 and BA-9. BA-9 qualifies because its balance is the known value zero. The source phrase Balance EXISTS is not a valid substitute for IS NOT NULL; EXISTS tests a subquery rather than whether a field has a value.
 
 ### 2.21 聚合函数（讲义 p.52）
 
@@ -3491,6 +3761,8 @@ S-6    35,000   │  MIN ↓ = 7,200
 S-7    23,000   ┘  COUNT ↓ = 7
 ```
 
+上框每行是一笔销售的金额，输入一共七个已知数。SUM 沿列加得 117,800；AVG 再把这个合计除以 7，得到约 16,828.57；MAX 和 MIN 分别从同七个数中取最大与最小，COUNT 在这里数七行。它们都没有把两个不同字段在同一行相乘。
+
 **为什么需要它**
 
 因为**会计报表几乎全是聚合的产物**：
@@ -3507,7 +3779,7 @@ S-7    23,000   ┘  COUNT ↓ = 7
 
 讲义写 `AVERAGE`，但 **Access 的 Total 行下拉里叫 `Avg`**（见 p.82、p.83 的截图，选项是 `Group By / Sum / Avg / Min / Max / Count / StDev / Var / First / Last / Expression / Where`）。**标准 SQL 里也是 `AVG()`，没有 `AVERAGE`。**
 
-**⚠️ 聚合函数怎么处理 Null**（💡 笔记补充，讲义完全没提，但这是必考的细节）：
+**⚠️ 聚合函数怎么处理 Null**（💡 笔记补充，讲义未展开，但这是正确解释本节空值结果所需的细节）：
 
 **除了 `COUNT(*)`，所有聚合函数都忽略 Null。**
 
@@ -3530,9 +3802,13 @@ S-7    23,000   ┘  COUNT ↓ = 7
 
 **讲义没有讲 `GROUP BY` 这个 SQL 关键字**，只在 QBE 界面里让你选 `Group By`。**这是一个讲义结构上的缺口**：学生学到了怎么点，但没学到 SQL 里怎么写。见 [[#9.4 课外补充|§9.4]]。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（10 月 21 日；R1 `06:06`–`06:32`；B · 讲了同讲义）
 
-待转录补充（本讲无录音）。
+老师快速对应计数、平均、求和、最小与最大。先明确要汇总哪一列、按什么组汇总，再选函数；`COUNT(*)` 与 `COUNT(字段)` 在有 Null 时可能不同，正文区别仍保留。
+
+*"An aggregation function summarizes the data values within a field"*（R1 `06:14`）
+
+中文：聚合函数汇总某个字段的数据。ASR 的 mean/min 混淆按讲义 MIN 与 AVG 的书面定义校正，不用口误替代正式函数名。
 
 **⚠️ 常见误解**
 
@@ -3554,6 +3830,8 @@ S-7    23,000   ┘  COUNT ↓ = 7
 ```sql
 SELECT DISTINCT [Cust#] FROM Sale WHERE [Cust#] IS NOT NULL;
 ```
+
+先排除客户号未知的行，再对已有客户号去重，把结果保存为 QDistinctCustomer。原七笔销售中的客户号重复，结果只剩五个不同的已知客户；下一条语句会数这个五行结果，而不是直接数七笔销售。
 
 ```sql
 SELECT Count(*) AS CustomerCount FROM QDistinctCustomer;
@@ -3622,18 +3900,23 @@ Extension: [Quantity] * [Actual Price]
 Commission: [Quarterly Sales $] * [Comm rate]
 ```
 
-E-12 的季度销售如果是 100,000，佣金率 0.12，则佣金是 12,000。
+E-12 的季度销售如果是 100,000，且参与计算的佣金率已确认为数值 0.12，则佣金是 12,000。这里用 p.33 的数值比例作补例；当前附件 CommissionRate 是文本百分数，须先核类型并受控转换，不能照此假定可直接相乘（§2.23.3）。
 示例中的 E-12、E-10、E-99 季度销售额是 Null，三人的佣金结果仍是 Null。
 
 E-78 的季度销售额已知为 0，佣金率为 0.15，计算结果为 0。不能把四行都说成 Null，也不能把前三行的未知业绩填成 0。
 
-**例 3：未收金额**
+**例 3：逐匹配行减法为什么不是销售未收余额（笔记补充）**
 
-```
-Unpaid: [Amount] - [Applied]
-```
+任务是求每笔销售还欠多少。先看一种会失败的写法：以 §2.15 的八行外连接结果为输入，在 Field 行计算 `PerMatchDifference: [Amount] - [Applied]`。这个别名刻意只叫“本匹配差额”，不能叫销售余额。
 
-⚠️ 对 §2.15 那张外连接结果表，S-6 的 `Applied` 是 Null → `35,000 - Null = **Null**`，不是 35,000。在明细完整且无有效应用收款的前提下，可写 `[Amount] - Nz([Applied], 0)`。这个前提不能由空单元格本身确认。
+S-2 有两条匹配，分别应用 1,666。逐行减法给两行 8,334；两行都不是 S-2 的实际未收 6,668，相加为 16,668 更错。对 S-6 而言，Applied 是 Null，直接减法仍为 Null。`Nz([Applied],0)` 只能处理空单元格，不能把两条匹配合成一笔销售。
+
+正确流程分两步（参考 QBE 改造，不冒作原演示）：
+
+1. 输入 Sale-CashRecDuality（前文简称 Duality）的 SaleNumber 和 Applied。打开 Totals，前者选 `Group By`，后者选 `Sum`；保存为 `AppliedBySale`。中间结果每笔销售最多一行，S-2 的应用额是 3,332。
+2. 将 Sale 保留全部记录，按 SaleNumber 外连接 AppliedBySale。在输出每笔销售一行后，Field 行写 `Unpaid: [Amount] - Nz([SumOfApplied],0)`；SumOfApplied 是上一步 Applied 求和的默认列名，若自设别名须同步改引用。S-2 得 10,000 减 3,332，即 6,668；S-6 在限定完整记录中确无应用额，才按零减得 35,000。
+
+若分配金额漏填，先查原记录，不能把未知当成无收款。余额汇总还须对齐截止日、期初、退回及其他调整；完整限定算例见 §2.15，原 p.86 的扩展前置查询仍缺。
 
 **在 Access 里怎么写横向计算**（💡 笔记补充，讲义直到 p.86 才第一次展示语法）：
 
@@ -3668,9 +3951,13 @@ WAUC: [SumOfLineItemExtension]/[SumOfQuantityPurchased]
 | 净应收 | 应收 − 坏账准备 |
 | 折旧额 | (原值 − 残值) ÷ 年限 |
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（10 月 21 日；R1 `06:39`–`07:02`；B · 简讲同讲义）
 
-待转录补充（本讲无录音）。
+横向计算在同一行中用不同字段算一个新值，纵向聚合才是跨多行汇总。老师这里只说可将两个变量相乘，没有给出实际课堂金额；本节数量乘单价的完整数例仍标笔记补充。
+
+*"we can make some horizontal calculations."*（R1 `06:39`）
+
+中文：也可以进行横向计算。不能把正文自给数例或未录到的后续演示改成教师报出的结果。
 
 **⚠️ 常见误解**
 
@@ -3832,7 +4119,25 @@ QBE 网格六行的作用都认清楚了，下面八个查询逐一实操，第�
 
 QBE 里怎么挑行（做 Select）会了，下一个查询看 QBE 里怎么挑列（做 Project）。
 
+**🎙️ 课堂补充**（10 月 21 日；R1 `07:07`–`15:57`；A · 课上展开）
+
+打开已在 Canvas 提供的 Example Tables 1，在 Create 中选 Query Design，加入 Cash Receipt 表。上部选数据来源，下部列字段并在 Customer# 的 Criteria 中输入 C-2，运行后得到三条匹配收款；老师随后保存 Query 1 并宣布休息。
+
+*"we have the sixth column and only three rows meet this condition"*（R1 `14:28`）
+
+中文：这个结果有六列、三行。sixth 按原表理解为 six columns；原表客户键含连字符，课堂 ASR 的 C2 只作校词。R1 后续私谈不进入课堂笔记。
+
+
 ---
+
+**第一次从设计网格运行并保存查询**（p.57 按钮图与课堂；弹窗说明为笔记操作补充）：
+
+1. 填好条件后，留在查询设计界面。课件 p.57 顶部的 Query Tools → Design 中，点击左侧红色叹号 **Run（运行）**。
+2. 结果切到数据表显示。按 p.58 核对六列与 C-2 的三条记录；不要把底部供新增记录的星号空行算成已有收款。
+3. 结果不对时，用 **View（视图）→ Design View（设计视图）** 返回网格，再检查 CustomerNumber 下的 Criteria。R1／S21 的纠错叙述提供这个回路，具体菜单位置随版本核对。
+4. 需要保留这条查询定义时，点左上角保存图标，或按课堂的查询标签右键保存。首次命名窗口若出现，输入 `Query1` 后确认，再关闭查询标签。课堂 R1 `15:27`–`15:37` 保存 Query 1；窗口细节是版本相关的操作补充，未宣称录到了该弹窗。
+
+保存的是可重新运行的查询定义，不能由此推断已经替本人建库或提交作业。后续 Query 2–4 复用这套“运行→查结果→回设计修正→保存命名”步骤。
 
 #### 2.23.2 查询 ② —— PROJECT in QBE：客户三列（讲义 p.59–p.62，4 页）
 
@@ -3911,17 +4216,26 @@ QBE 里怎么挑行（做 Select）会了，下一个查询看 QBE 里怎么挑�
 
 1. 两张表拖进来（`Sale` 和 `Sale-CashRecDuality`）
 2. 在 `Sale.SaleNumber` 和 `Sale-CashRecDuality.SaleNumber` 之间**拖一条连接线**（若已建关系会自动出现）
-3. **双击那条连接线** → 弹出 `Join Properties` 对话框，三个单选项：
-   - `1: Only include rows where the joined fields from both tables are equal.` → **内连接**（默认）
-   - `2: Include ALL records from 'Sale' and only those records from 'Sale-CashRecDuality' where the joined fields are equal.` → **左外连接**（本题要选这个）
-   - `3: Include ALL records from 'Sale-CashRecDuality' and only those from 'Sale'…` → 右外连接
-4. 选 `2` → 确定 → **连接线会变成带箭头的线**（箭头指向"只保留匹配项"的那一侧）
+3. **双击连接线**，打开 `Join Properties`。按保留对象读完整选项，不背固定编号。
+   - `Only include rows where the joined fields from both tables are equal.` 表示仅保留匹配。
+   - 本题选择含 `Include ALL records from 'Sale'`，并仅带入匹配 Duality 记录的选项。
+   - 若改为保留 Duality 全部记录，含义就变了，不是本题所需。
+4. 确定后检查：Sale 是全保留对象，箭头指向只保留匹配的一侧。对话框编号和具体措辞依对象次序及版本核对；此处没有原对话框截图或本次 Access UI 实操。
 
 ⚠️ **p.91 的截图里那条带箭头的连接线，就是这么来的**（箭头从 `InventoryType` 指向 `InventoryWithPositiveSalesCallReactions`）。**这是全讲唯一一处能看到外连接箭头的截图。**
 
 **所以呢**
 
 挑行、挑列在 QBE 里都会了，也补上了讲义没展示的外连接做法；下一个查询看 QBE 怎么把两张表拼起来。
+
+**🎙️ 课堂补充**（10 月 21 日；S21 `00:00`–`01:41`；B · 同讲义实操）
+
+休息后先复述 C-2 收款，再做 Query 2：加入 Customer，选择客户号、姓名、销售员号三列，不加行条件，运行并保存。语义上是挑列，不能误当筛掉部分客户。
+
+*"we select the three columns with all the rows from the customer table."*（S21 `01:19`）
+
+中文：选择三列，同时保留客户表的全部行。这里的“全部”指行，不表示把源表全部列也选上。
+
 
 ---
 
@@ -3981,7 +4295,9 @@ QBE 里怎么挑行（做 Select）会了，下一个查询看 QBE 里怎么挑�
    ⚠️ **重要结论：不写 `Sort`（SQL 的 `ORDER BY`），结果顺序就是不确定的。** 会计报表要求固定顺序时，**必须显式排序**。讲义从未提到这一点。（💡 笔记补充）
 
 2. **佣金率显示成 `10%` / `12%`，不是 `.10` / `.12`。**
-   💡 **原因**：`CommissionRate` 字段的 **Format 属性**被设成了 `Percent`（§2.3.3 讲的字段属性）。**存的是 0.10，显示成 10%。** ⚠️ **显示格式不改变存储值**——做计算时用的仍是 0.10。这是 §2.3.3 那句"Format 只管显示"的活例子。
+   图上只能确认显示。当前 ExampleTables1 经 ACE 只读查询，CommissionRate 的类型是 `System.String / DBTYPE_WVARCHAR`，值为文本 `10%`、`12%`、`15%`；不能说当前库存的是 0.10，或由截图断定 Format=Percent。p.33 的小数比例与文本百分数可表达同一业务比例，但存储类型不同。
+
+   💡 格式教学示例：**如果**字段实际为数值 0.10，Percent 格式可以显示 10%，这不改变数值。这个示例不能冒作 p.66 的已证存储实现。佣金计算前先核数据类型；文本 `12%` 需经过受控转换并核为数值 0.12，才能拿去乘销售额，不能假定字符串已经可直接参加数值运算。截图所用库与当前附件是否完全同版仍未确认。
 
 3. **`E-78` 不在结果里。** 内连接把这个"没有客户归他管"的销售员扔掉了。**这就是 §2.13 反复强调的那件事。**
 
@@ -3999,6 +4315,15 @@ QBE 里怎么挑行（做 Select）会了，下一个查询看 QBE 里怎么挑�
 **所以呢**
 
 QBE 里的连接会做了，下一个查询回到最基础的条件筛选——用数值比较运算符做一次 Project + 筛选。
+
+**🎙️ 课堂补充**（10 月 21 日；S21 `02:14`–`04:52`；A · 课上展开）
+
+Query 3 加入 Customer 和 Salesperson，利用已有销售员编号关系；要求双方全部字段时，老师演示可各选 `表名.*`，得到与逐列选择相同的例题结果。已有连接线不能省略：去掉匹配条件会变成错误组合。
+
+*"We have the five rows, and we have the one, two, three, four, seven columns."*（S21 `03:54`）
+
+中文：老师数出结果五行、七列。以讲义原表七个字段及实际连接结果核对；该快捷写法只适用于要全部列的当前例，不替代题目明确的列清单。
+
 
 ---
 
@@ -4055,6 +4380,15 @@ QBE 里的连接会做了，下一个查询回到最基础的条件筛选——�
 
 数值条件的写法会了，下一个查询换成文本条件——这里会发现讲义 SQL 页漏写的引号，QBE 页反而写对了。
 
+**🎙️ 课堂补充**（10 月 21 日；S21 `05:04`–`07:33`；A · 课上展开与纠错）
+
+现金账户查询只取账号和余额两列，在余额字段的 Criteria 行填 `>=50000`。老师运行时先出现不符预期的结果，再返回设计视图检查输入；关键是同时核对列、条件所在字段与比较方向。
+
+*"you can click this view choice go to the design view again so you can check your original input"*（S21 `07:20`）
+
+中文：结果不对时返回设计视图检查原输入。ASR 把 Run 识成 wrong、Query 4 识成 query form，正文按原界面校正，不据口述补造当场具体键入的错误字符。
+
+
 ---
 
 #### 2.23.5 查询 ⑤ —— 文本比较：不是 E-10 做的销售（讲义 p.70–p.72，3 页）
@@ -4097,7 +4431,7 @@ QBE 里的连接会做了，下一个查询回到最基础的条件筛选——�
 | S-1 | \$7,200.00 | E-12 |
 | S-7 | \$23,000.00 | E-99 |
 
-**与 p.47 的 SQL 答案完全一致** ✅
+**筛出的销售相同，输出列数不同**：p.47 SQL 是 S-1、S-7 的 2 行 × 2 列；本 QBE 是相同销售的 2 行 × 3 列，多显示 SalesRepNumber。不能称整个结果完全一致。
 
 **⚠️ 本组最重要的发现：QBE 截图里的引号，纠正了 SQL 页的错误**
 
@@ -4106,7 +4440,7 @@ QBE 里的连接会做了，下一个查询回到最基础的条件筛选——�
 | **p.47（SQL）** | `Where SalesRep# <> E-10;` | ❌ **缺引号** |
 | **p.71（QBE）** | `<> "E-10"` | ✅ **有引号** |
 
-**同一个查询，讲义在 SQL 页写错、在 QBE 页写对。** 这说明作者**实际操作时是加了引号的**，SQL 页只是照抄教科书的简写。**考试写 SQL 一定要加引号。** 见 [[#9.3 课件自身的问题|§9.3]]。
+p.47 的文本常量缺引号，p.71 的 QBE 条件带引号。两张材料可据此对照正确字面量写法，不能由截图推测作者抄写过程。考试写文本常量须加引号。见 [[#9.3 课件自身的问题|§9.3]]。
 
 **⚠️ 注意 `SalesRepNumber` 的 Show 是打勾的**，虽然它只是用来筛选。**如果不想在结果里看到销售员号，取消它的勾即可**（p.81 那个例子就是这么做的）。
 
@@ -4114,11 +4448,22 @@ QBE 里的连接会做了，下一个查询回到最基础的条件筛选——�
 
 单个条件的查询都做完了，下一个查询开始组合条件——先看两个条件都要满足时（AND）怎么在 QBE 里填。
 
+**🎙️ 课堂补充**（10 月 21 日；S21 `07:47`–`09:17`；D · 只录到题目入口与 Quiz 2 行政）
+
+老师刚提出“不是 E-10 做的销售”这一查询，就转去上传 Quiz 2 及附件。没有获得该题后续逐屏执行，不能把正文已有完整解法标为课堂演示答案。
+
+❓ 本节“非 E-10”与 Quiz 2“E-10”是不同题。当前 Quiz 2.docx 的完整题面与参考解析已列 §2.23.9；截止、分值及本人提交状态仍未知，不能从上传操作推定。
+
+
 ---
 
 #### 2.23.6 查询 ⑥ —— AND：7/31 前且 E-10 做的销售（讲义 p.73–p.75，3 页）
 
 **目标**：`Date < 7/31/2014` **AND** `SalesRepNumber = "E-10"`
+
+**英文原演示标题（讲义 p.73–74，不是新增教授问句）**：
+
+> AND operator in QBE: Sales made before July 31 by Sales Rep E-10
 **保存的查询名**：`SalesByE10BeforeJuly31`
 
 **逐页操作**
@@ -4197,7 +4542,15 @@ AND 的填法（同一行）会了，下一个查询换成 OR——同样两个�
 
 ---
 
+**英文参考答案（笔记自拟，U12）**
+
+> Place Date < #7/31/2014# and SalesRepNumber = "E-10" on the same Criteria row. Both conditions must hold, so the given result is S-2, S-3, and S-4, with three rows and four displayed columns. S-5 is excluded because July 31 is not before July 31.
+
 #### 2.23.7 查询 ⑦ —— OR：7/31 前或 E-10 做的销售（讲义 p.76–p.78，3 页）
+
+**英文原演示标题（讲义 p.76–77，不是新增教授问句）**：
+
+> OR operator in QBE: Sales made before July 31 OR by Sales Rep E-10
 
 **目标**：`Date < 7/31/2014` **OR** `SalesRepNumber = "E-10"`
 **保存的查询名**：`SalesByE10ORBeforeJuly31`
@@ -4331,7 +4684,15 @@ AND、OR 在 QBE 里的填法都对照着做完了，最后一个查询把聚合
 
 ---
 
+**英文参考答案（笔记自拟，U13）**
+
+> Place the date and salesperson conditions on separate criteria lines to express OR. A sale qualifies if it is before July 31 or was made by E-10. The given result is S-1 through S-6, with six rows and four displayed columns; a row satisfying both conditions is still returned once.
+
 #### 2.23.8 查询 ⑧ —— 聚合 SUM + BETWEEN：7/15–7/31 的销售总额（讲义 p.79–p.84，6 页）
+
+**英文原演示标题（讲义 p.79–80，不是新增教授问句）**：
+
+> Aggregation SUM and Special Operator BETWEEN in QBE: Total Sales between July 15 and July 31
 
 > ⚠️ **这是全讲最复杂的一个查询，讲义给了 6 页**（其他查询都只有 3–5 页）。它同时用到了**聚合、汇总行、Group By/Where 的选择、BETWEEN、Show 取消勾选**五个知识点。
 
@@ -4407,7 +4768,7 @@ AND、OR 在 QBE 里的填法都对照着做完了，最后一个查询把聚合
 
 ---
 
-**⭐ 本查询的四个核心知识点（这一节的重点）**
+**⭐ 本查询的五个核心知识点（这一节的重点）**
 
 **① 为什么要点 Σ（Totals）按钮**
 
@@ -4479,11 +4840,15 @@ Access 自动把聚合结果命名为 `函数名Of字段名`。💡 想改名的
 
 M01 讲的**会计分期假设**在这里变成了具体操作：报表要报"一段期间"的数，所以必须有日期范围筛选（`WHERE Date BETWEEN`）；报的是"总数"，所以必须聚合（`SUM`）。**一个 `BETWEEN` + 一个 `SUM`，就是一张利润表最核心的那一行。**
 
-而如果把 `Date` 改成 `Group By`（月份），得到的就是**月度收入趋势**；再加上 `SalesRepNumber` 的 Group By，得到的就是**分销售员业绩表**。**同一个查询骨架，换一下 Group By 的字段，就是不同的管理报表。**
+💡 要看月度趋势，先**生成年度和月份分组键**，不能只把原 Date 的 Total 改为 Group By。参考 QBE 新建两列：`SalesYear: Year([Date])`、`SalesMonth: Month([Date])`，两列的 Total 均选 `Group By`；Amount 选 `Sum`，原日期条件列仍选 `Where`。`Year` 取年份，`Month` 取 1–12 的月份；2014-07-21、07-22、07-26、07-31 都变成同一键 `(2014,7)`，所以合成一行 52,600。只按 Month 分组会把不同年份七月混在一起。
 
-**🎙️ 课堂补充**
+这个 52,600 仍是原筛选区间 7/15–7/31 的合计；要报完整七月，应把范围改为 7/1 起、8/1 前，本给定七笔销售下为 59,800。需要分销售员时再加入 SalesRepNumber 分组。生成键、日期范围和分组字段分别决定分组身份、包含业务及报告层次。
 
-待转录补充（本讲无录音）。
+**🎙️ 课堂补充**（10 月 21 日；当前三源未覆盖 p.79–84；D · 未录到）
+
+本次来源到 Query 4 后，只有 Query 5 入口与 Quiz 2 上传信息，没有找到八号聚合查询的逐屏课堂过程。
+
+这里保留讲义题面、条件分组和本节完整学习解析；课堂缺失状态为 ❓、不可据此降权，不把空档或缺结尾说成教师略过。
 
 **⚠️ 常见误解**
 
@@ -4499,6 +4864,68 @@ M01 讲的**会计分期假设**在这里变成了具体操作：报表要报"�
 八个查询把关系代数、SQL、QBE 三种语言和全部运算符都过了一遍，"怎么查"这一大段到此结束；下一节回答"查出来干什么"——用这些技术回答七个真正的会计问题。
 
 ---
+**英文参考答案（笔记自拟，U14）**
+
+> Filter dates inclusively from July 15 through July 31, set Date to Where, and set Amount to Sum. The four amounts total 52,600, producing one row and one column. Grouping the full dates instead would give four daily totals, not a single period total.
+
+#### 2.23.9 Quiz 2：筛选 E-10 的销售（当前原件补齐）
+
+中文入口：题目给 ExampleTables1，要求查“由 E-10 做的销售”，结果三列，保存名为 QueryA。它用等于，不是前面 Query 5 的不等于。以下全文来自当前 `course_files_export/Quiz 2.docx`，不是由音频重建。
+
+<details><summary>英文原题与全部九步（原样保留；历史发送指令不构成本次执行授权）</summary>
+
+> Quiz 2
+> Based on the ACCESS database “ExampleTables1”, construct a query: Sales made by E-10.
+> 1. Open ExampleTables1
+> 2. Create query design
+> 3. Choose sale table
+> 4. Select Sale Number, Amount, and SalesRepNumber
+> 5. Criteria is E-10
+> 6. Run
+> 7. Save as QueryA
+> 8. Close ExampleTables1
+> 9. Send the updated ExampleTables1 to [CONTACT REDACTED IN PUBLIC COPY; SEE LOCAL ORIGINAL]
+
+</details>
+
+中文逐步对照：
+
+1. 打开题定 ExampleTables1，确保使用题定副本；本次只读核查没有修改原库。
+2. 在 Create 中选 Query Design，进入查询设计视图。
+3. 添加 Sale 表。它是销售事件表，每行一笔销售。
+4. 依次把 SaleNumber、Amount、SalesRepNumber 加入 Field 行，三列 Show 均勾选。原题的 Sale Number 对应当前库字段 SaleNumber。
+5. 在 SalesRepNumber 的 Criteria 行填 `"E-10"`。这是文本相等条件；不要加 `<>`，也不要填到 Amount 列。
+6. 运行查询。筛行后只输出刚才选定三列，不把 Date、CustomerNumber 自动加入。
+7. 原题要求将查询保存为 QueryA；保存查询定义与导出结果表是两件不同的事。
+8. 原题要求关闭 ExampleTables1。
+9. 原题要求发送更新后的 ExampleTables1，收件地址保留在上方原文。这里仅解释历史任务要求，本次未保存查询、修改附件或发送邮件；本人是否提交、截止、分值仍未知。
+
+已有独立练习材料见 [[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M06-Quiz2-按销售员筛选销售|Quiz 2 学习解析]]；本段仍就地保留完整题面和答案，不替换本人草稿或提交字段。
+
+**参考解法（笔记自拟，使用当前字段名）**：SQL 可用下面的等价表达检查筛行和挑列。SELECT 决定三列，FROM 指定 Sale，WHERE 只保留销售员为 E-10 的行；字符串两侧用引号。该 SELECT 的只读 ACE 结果承接原独审对 E 盘副本的实际执行，不冒称本线程操作了 Access 界面。
+
+```sql
+SELECT SaleNumber, Amount, SalesRepNumber
+FROM Sale
+WHERE SalesRepNumber = 'E-10';
+```
+
+下表每行是一笔符合条件的销售，Amount 单位沿用当前源库；无 ORDER BY 时显示顺序不保证。
+
+| SaleNumber | Amount | SalesRepNumber |
+|---|---:|---|
+| S-2 | 10,000 | E-10 |
+| S-3 | 16,000 | E-10 |
+| S-4 | 10,000 | E-10 |
+| S-5 | 16,600 | E-10 |
+| S-6 | 35,000 | E-10 |
+
+例如 S-2 的 SalesRepNumber 为 E-10，所以保留；S-1 为 E-12，被筛掉。结果是 5 行 × 3 列。若改为 `<> 'E-10'`，则变成前面 S-1、S-7 的另一道题，不能沿用本题答案。
+
+**英文参考答案（笔记自拟，U24）**：
+
+> Select SaleNumber, Amount, and SalesRepNumber from Sale where SalesRepNumber equals 'E-10', and save the query as QueryA as the original task requires. The current supplied data return five rows: S-2 for 10,000, S-3 for 16,000, S-4 for 10,000, S-5 for 16,600, and S-6 for 35,000; all have SalesRepNumber E-10. The historical instruction to send the updated database is part of the task text and has not been executed in this review.
+
 ### 2.24 扩展 REA 模型上的七个会计查询（讲义 p.85–p.92）
 
 > ⭐ **这 8 页是全讲会计含量最高的部分**，也是把 W6 接回 W1–W5 的地方。前面 84 页教的是"怎么查"，这 8 页回答的是"**查出来干什么**"。
@@ -4727,9 +5154,11 @@ Nz(8455, 0) - Nz(Null, 0) - Nz(140, 0)
 
 **这就是 REA 相对复式记账的核心卖点，而它需要的全部技术就是本讲教的查询。**
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（10 月 21 日；当前三源未覆盖 p.85–92；D · 未录到）
 
-待转录补充（本讲无录音）。
+没有获得扩展 REA 数据库七个会计查询的这次课堂讲解。图上给定结果和正文的参考实现仍须分开，不能因前面有上机录音就把七题推断升级成官答。
+
+❓ p.86–92 的缺失设计、表达式和数据库事实仍按 §9 保留限制；本次转录没有消除这些历史缺口。
 
 **⚠️ 常见误解**
 
@@ -4754,6 +5183,10 @@ Nz(8455, 0) - Nz(Null, 0) - Nz(140, 0)
 
 不能。缺录金额与不存在收款不同，应补凭证，输出待核；否则会高估应收。一个Null传染算式与一整行被内连接丢掉是不同故障，前者可按语义替值，后者先修连接/主体。
 </details>
+
+**英文参考答案（笔记自拟，U15）**
+
+> For the displayed inputs, assuming complete records establish that the missing receipt total means no relevant receipts, accounts receivable is 8,455 minus zero minus 140, or 8,315 in the source monetary units. The screenshot does not prove that assumption or provide the upstream definitions, so the original full query cannot yet be reproduced.
 
 #### 2.24.2 应付账款余额（讲义 p.87）
 
@@ -4841,6 +5274,10 @@ Nz([SumPurchaseReturnsThroughEndDate.SumOfDollarAmount])
 资产负债表的两个流动项目都能现算出来了，下一节换一个问题类型——不是算余额，而是找出"卖得最好"和"卖得最差"的商品，外连接会再次登场。
 
 ---
+
+**英文参考答案（笔记自拟，U16）**
+
+> The displayed purchases, purchase-related disbursements, and purchase returns give accounts payable of 35,270 minus 28,450 minus 480, or 6,340 in the source monetary units. This verifies the displayed arithmetic, not the missing transaction details or upstream queries.
 
 #### 2.24.3 畅销与滞销存货（讲义 p.88）
 
@@ -4961,6 +5398,10 @@ MIN1 和 TTP12 的销售额是**空的**，不是 \$0.00。因为：
 
 ---
 
+**英文参考答案（笔记自拟，U17）**
+
+> For May 1–7, 2015, the displayed result identifies BIS1 as the highest seller and MIN1 and TTP12 as tied for the lowest. For May 8–14, MIN1 is highest and all the other displayed items tie for the lowest only if complete records establish that their Null totals mean no sales. Without that completeness condition, the Null totals remain unknown; taking MIN over non-null values alone would miss the intended zero-sales comparison.
+
 #### 2.24.4 存货加权平均单位成本（讲义 p.89）
 
 ⚠️ **讲义 p.89 有两张截图 + 两个蓝底说明**。视觉复核结果：
@@ -5023,13 +5464,14 @@ MIN1 和 TTP12 的销售额是**空的**，不是 \$0.00。因为：
 
 （💡 上表是本笔记为说明原理编的示意数据，**不是讲义数据**，数量合计100，但真实金额2,000.10，与原讲义2,000不同；不为凑原输出截去0.10。）
 
-**那么这件商品"一件多少钱"？** 有几种答法：
+**那么这件商品“一件平均多少钱”？** 本节只比较两种平均，不展开存货成本流转政策。下表输入都是刚才三批补充数据，金额单位为美元、数量单位为件。
 
-| 方法 | 英文 | 怎么算 | 会计上叫 |
-|---|---|---|---|
-| 用最后一次的价 | LIFO-ish | \$20.67 | 后进先出的近似 |
-| 用最早一次的价 | FIFO-ish | \$18 | 先进先出的近似 |
-| **总成本 ÷ 总数量** | **Weighted Average** | **本自给例 $2,000.10/100=20.001$，显示两位20.00不等底层精确20** | **加权平均法** |
+| 方法 | 每批的影响 | 结果（美元/件） |
+|---|---|---:|
+| 简单平均（simple average） | 三批单价各占三分之一 | 约 20.22333 |
+| 数量加权平均（weighted average） | 分别按 40、30、30 件加权 | 20.001 |
+
+例如第一批的 40 件比第二批 30 件更多，所以对整体每件均价影响也更大。本节不讨论其他成本流转方法；给定三批采购只用于比较两种平均。
 
 **加权平均单位成本 = 采购总金额 ÷ 采购总数量。**
 
@@ -5092,7 +5534,11 @@ flowchart TD
 - 除以 0 → Access 报 **"Division by zero"** 错误，整个查询挂掉
 - 除以 Null → 结果是 Null，不报错但结果空白
 
-💡 **稳妥写法**：`WAUC: [SumOfLineItemExtension] / IIf(Nz([SumOfQuantityPurchased],0)=0, Null, [SumOfQuantityPurchased])`
+💡 **先读函数，再看安全分母**：`IIf(条件, 条件真返回值, 条件假返回值)` 有三个参数。它根据条件选择一个返回值；Access 的 IIf 仍可能求值两个分支，所以危险的除法不要藏在某个分支中。这里让分支只返回 Null 或数量，再在外面相除。
+
+令 q 是汇总数量、cost 是汇总金额。`Nz(q,0)=0` 在 q 为 0 或 Null 时成立，第二参数返回 Null，表示本例单位成本不能定义；q 为 100 时条件为假，第三参数返回 100，cost 为 2,000.10 时可除得 20.001。cost 若未知，不能自动改为免费成本零。
+
+参考 QBE Field 表达式为 `WAUC: [SumOfLineItemExtension] / IIf(Nz([SumOfQuantityPurchased],0)=0, Null, [SumOfQuantityPurchased])`。输入是一商品一行的汇总结果，两字段分别是总金额和总数量；WAUC 是新列别名。它是笔记参考式，未在 Access UI 运行；下文给边界及来源。
 
 **⚠️ 结果只有三个商品，不是六个**
 
@@ -5176,6 +5622,10 @@ flowchart TD
 
 **所以呢**：聚合粒度、输入单价含义和零/未知边界决定公式是否适用，SQL能返回数字不等财报成本规则已满足。
 
+**英文参考答案（笔记自拟，U18）**
+
+> Divide each item’s displayed purchase cost total by its displayed purchase quantity. The source results are 20 for BIS1, 54.25 for MIN1, and 10 for TTP12 per unit, for May 1–31, 2015. These are management reference figures marked not for Financial Statement use; the missing purchase detail and accounting policy prevent certification as financial-statement inventory costs.
+
 #### 2.24.5 订单履行天数（讲义 p.90）
 
 ⚠️ **讲义 p.90 有两张截图 + 两个蓝底说明**。视觉复核结果：
@@ -5231,7 +5681,7 @@ Sale Order（承诺事件）  ──── Fulfillment（履行关联） ──�
 
 ⚠️ 本模型明确保存订单与交付关系可计算；传统业务/ERP明细也可记录，不是REA独占。
 
-**为什么**：传统总账（M02）**根本不记订单**。订单不影响会计等式（没有资源转移），所以复式记账系统里没有它的位置。**订单日期这个数据在传统系统里根本不存在，指标自然无从算起。**
+**为什么仅查总账通常不够**：下单本身通常不产生总账分录，所以总账分录本身通常不含订单日期。订单系统、ERP、CRM 或辅助业务记录仍可能保存日期和履行事实。计算指标需要取得这些明细及可核的关联，不能说“传统系统根本没有订单日期”。
 
 **这正是 M04/M05 反复强调的那个论点的最强证据**：REA旨在显式记录所设计并捕获的业务事件，不自动无损记录所有事件（起因、承诺、经济、冲销），而不只是"影响会计等式的那些"。
 
@@ -5259,7 +5709,9 @@ DaysToFill: DateDiff("d", [OrderDate], [Date])
 - **Total 选 `Avg`** → 求平均
 - 结果 `AvgOfDaysToFill = 2.5` —— 平均 2.5 天发货
 
-💡 **如果想看"每个客户的平均履行天数"**，只要再拖一个 `CustomerID` 进来、Total 选 `Group By` 即可。**一个字段的差别，就从公司级指标变成客户级指标。**
+💡 **按客户计算之前，先补齐合法上游身份**：本页 Step 1 输出只展示 OrderDate、Date、DaysToFill，没有 CustomerID，不能直接从它拖出客户字段。若原数据库可得，先核订单键和订单所属客户，再在 Step 1 保留客户身份，或按唯一订单键补回客户；核每个订单/履行记录只出现应有次数后，才按客户 `Group By` 并对 DaysToFill 取 `Avg`。
+
+还要先选分母粒度：每条交付、每张订单首次发货、或每张已交齐订单。它们可能给不同平均，不能因多连一张客户表就悄悄复制订单。本地缺原 Step 1 和扩展库，所以这是有条件的参考改造，不声称已能在现输入对象上直接完成。下方完整补例分别演示 3、2、4 天。
 
 **⚠️ 2.5 天这个数字要小心解读（💡 笔记补充）**
 
@@ -5288,6 +5740,10 @@ DaysToFill: DateDiff("d", [OrderDate], [Date])
 
 ---
 
+**英文参考答案（笔记自拟，U19）**
+
+> The displayed second step averages DaysToFill and returns 2.5 days. Its upstream records, sample size, and fulfilment grain are not supplied, so this is the stated result rather than a reconstructed order-level calculation. A customer-level average first requires a verified customer key and a defined order or fulfilment grain.
+
 #### 2.24.6 找出没有正面反馈的存货（讲义 p.91）
 
 > ⭐ **这是"外连接 + Is Null"套路最纯粹的一次演示。**
@@ -5312,7 +5768,7 @@ DaysToFill: DateDiff("d", [OrderDate], [Date])
                                                    └─────────────────────┘
 ```
 
-⚠️ **箭头指向左边的 `InventoryWithPositiveSalesCallReactions`** —— 在 Access 里，**箭头指向的那一侧是"只保留匹配项"的表**，另一侧（`InventoryType`）是"全部保留"的表。**这就是外连接。**（对应 §2.23.2 里说的 Join Properties 第 3 个选项。）
+⚠️ **画布中 InventoryType 在右，箭头指向左侧正面集合**。这表明全保留的是 InventoryType；不由左右摆放决定 SQL 的 LEFT/RIGHT，也不能从本图认定 Join Properties 必为第 3 项。应核完整文字中全保留对象为 InventoryType。
 
 网格三列：
 
@@ -5340,11 +5796,11 @@ flowchart TD
 
 箭头代表先筛正面集合、再连全部商品、再查无匹配的操作顺序。
 
-**沿例子读图（笔记补充）**：教学商品 I1 有正面记录，I2 没有。在 Step 1 先取得 I1 的正面商品键；Step 2a 保留全部商品 I1、I2 并外连接；Step 2b 检查右侧匹配时必非空的身份键。最终仅留下 I2，表示无正面记录，不能直接解释为负面评价。
+**沿例子读图（笔记补充）**：教学商品 I1 有正面记录，I2 没有。先取得 I1 的正面商品键，再保留全体商品 I1、I2 外连接该集合，检查匹配时必非空的身份键。最终留下 I2，表示无正面记录，不等于明确负面。这里把主体逻辑写在左边便于读法，与原画布摆放无关。
 
 **图旁边界**：p.91没给结果；I1/I2仅教学例。无正面记录也可能尚未拜访，不等于客户明确否定。
 
-**文字替代**：先筛正面记录、保留全部商品，再查右侧身份键无匹配；无正面不同于明确负面。
+**文字替代**：先筛正面记录、保留全部商品，再查匹配侧身份键无匹配；“匹配侧”不等于屏幕固定右侧。
 
 <details><summary>读图自测：右侧有记录但tag为Null，用tag判断缺匹配安全吗？</summary>
 
@@ -5365,8 +5821,8 @@ flowchart TD
 
 | 点 | 说明 |
 |---|---|
-| **本例采用左外连接** | 保留左表所有行，为未匹配行补空；内连接不会保留这些零匹配行 |
-| **`Is Null` 检查右表的身份键** | 选匹配时必非 Null 的键；右表普通字段可能本来就为空，左表被保留也不代表其每列非空 |
+| **参考逻辑把 InventoryType 写在左侧** | 以 `InventoryType LEFT JOIN 正面集合` 表达全保留主体；原画布主体在右，两者不矛盾 |
+| **`Is Null` 检查匹配侧身份键** | 选匹配时必非 Null 的键，不能用本来可空的普通字段代替 |
 | **写法是 `Is Null`（两个词），不是 `= Null`** | 见 §2.20.2。`= Null` 永远查不出东西 |
 
 **⚠️ 讲义 p.51 的 `EXISTS` 与这里的 `Is Null` 是一对**：p.51 说 `EXISTS` 取"非空"（但那个写法是错的），p.91 用 `Is Null` 取"空"。**`Is Null` 才是 Access 里真正能用的写法**（p.91 的截图证明了这一点）。
@@ -5381,9 +5837,9 @@ flowchart TD
 
 ⚠️ **仅凭总账分录无法读出客户对产品的反应。** 销售拜访本身通常不触发资源转移分录，但传统企业的 CRM 或 ERP 仍可保存拜访记录。REA 将这些业务关系明确建模，因此在相关数据完整时可以查询：
 
-> **"哪些产品，我们推了但从来没人说好？"**
+> **"哪些商品没有已记录的正面反馈？"**
 
-**这个问题的商业价值极高**：它区分了两种滞销：
+这个反连接查询只能识别“没有已记录的正面反馈”，不能单独判断是否推介过。下表是后续调查的两类线索，须另核拜访／推介及反馈记录，不能由本查询结果直接分类：
 
 | 滞销类型 | 表现 | 应对 |
 |---|---|---|
@@ -5410,6 +5866,10 @@ flowchart TD
 ⚠️ **这可能是本讲最实用、最该背下来的一个技术套路。**
 
 ---
+
+**英文参考答案（笔记自拟，U20）**
+
+> Preserve all inventory items, outer join them to the positive-reaction set, and select items whose matching non-null identity key is Null after the join. This identifies no recorded positive reaction, which does not necessarily mean a negative reaction. The actual item IDs cannot be determined because the source supplies neither the result nor the complete upstream data.
 
 #### 2.24.7 每个销售员的拜访次数（讲义 p.92）
 
@@ -5479,7 +5939,7 @@ flowchart TD
 | **绩效管理** | 拜访次数是销售人员的过程指标（结果指标是销售额） |
 | **内控** | 有销售额却无拜访记录，应追查订单来源与记录范围 |
 | **成本分摊** | 销售费用按拜访次数分摊到产品线 |
-| **REA 的价值** | ⚠️ **拜访次数在传统会计系统里完全不存在**——它不产生分录 |
+| **REA 的价值** | 总账分录本身通常不含拜访次数；REA 可显式建模已捕获的拜访，ERP/CRM 等也可保存相关记录 |
 
 **内控追问**：订单从哪里来，拜访记录是否完整？还应查是否存在关联交易或回扣线索；“零拜访”本身不是舞弊证据。
 
@@ -5498,7 +5958,7 @@ flowchart TD
 
 **所以呢**
 
-七个会计查询全部做完，§2 到此结束——从建库到查询、从关系代数到 SQL 到 QBE、从抽象规则到七个真实的会计问题，整讲的内容都已展开完毕。下面用几张图把全讲的框架收束一遍。
+七类问题的给定画面、参考思路与可复算部分已展开。p.86–92 的扩展库和部分上游定义仍缺；这不等于七个原查询均已独立复现。下面的图、速查与自测帮助核对已有机制，原库复现单列待源。
 
 ---
 
@@ -5562,6 +6022,10 @@ E99已匹配Apr30，右侧不是Null、日期条件又不满足，行被淘汰�
 </details>
 
 **停止与限制**：当前未打开用户DB、未运行Access/ACE，SQLite验证只覆盖公开数据抄源及新增有限例，不能认证全部Access日期/Null/IIf行为。原p.86–92缺前置库/明细继续明确待核；不把图齐、SQL可跑当全部会计机制正确。
+
+**英文参考答案（笔记自拟，U21）**
+
+> The displayed result for May 1–15, 2015 is two calls for E23, one for E26, and zero for E30. A reference implementation filters calls to the period before outer joining all salespeople and counts a non-null call ID. The source design is missing, so this is a supported reconstruction rather than a verified original query.
 
 ## 3. 一图看懂
 
@@ -5711,7 +6175,7 @@ flowchart TD
 | 挑行 | `Select 表 Where 条件` | `WHERE 条件` | Criteria 行填条件 |
 | 指定表 | （算子的操作数） | `FROM 表…` | 上半屏拖表进来 |
 | 内连接 | `Join A, B Where A.k=B.k` | `FROM A, B WHERE A.k=B.k` 或 `FROM A INNER JOIN B ON A.k=B.k` | 两表间拖连接线（默认内连接） |
-| 左外连接 | `Left Outer Join A, B Where …` | `FROM A LEFT JOIN B ON A.k=B.k` | 双击连接线 → Join Properties → 选项 2 |
+| 左外连接 | `Left Outer Join A, B Where …` | `FROM A LEFT JOIN B ON A.k=B.k` | Join Properties 选全保留 A 的完整文字，不背编号 |
 | AND | —— | `WHERE a AND b` | **两个条件写同一行** |
 | OR | —— | `WHERE a OR b` | **两个条件写不同行** |
 | 聚合 | —— | `SUM(x)` + `GROUP BY` | 点 Σ → Total 行选 `Sum` / `Group By` |
@@ -5772,12 +6236,12 @@ flowchart TD
 
 | # | 讲义页 | 问题 | 技术要点 | 会计意义 | 结果 |
 |---|---|---|---|---|---|
-| 1 | p.86 | 应收账款余额 | **`Nz()`** + 三个聚合查询相减 | 资产负债表**资产**项 | \$8,315 |
-| 2 | p.87 | 应付账款余额 | 同上，结构对称 | 资产负债表**负债**项 | \$6,340 |
+| 1 | p.86 | 应收账款余额 | 聚合相减；数值补零须先核业务 | 资产项；原前置定义缺源 | 条件下 8,315 |
+| 2 | p.87 | 应付账款余额 | 同主体、同截止日的三项相减 | 负债项；仅核给定算术 | 6,340 |
 | 3 | p.88 | 畅销/滞销存货 | **外连接**（否则零销售的商品消失） | 存货管理、跌价准备 | 见 §2.24.3 |
 | 4 | p.89 | 加权平均单位成本 | 先聚合**再**相除（顺序决定"加权"） | ⚠️ **不能用于财报** | \$20 / \$54.25 / \$10 |
 | 5 | p.90 | 平均订单履行天数 | `DateDiff` + Total 选 `Avg` | 需订单/交付明细，不限REA | 2.5 天 |
-| 6 | p.91 | 无正面反馈的存货 | **外连接 + `Is Null`**（反连接） | 区分"推了没人要"与"压根没推" | 讲义未给结果 |
+| 6 | p.91 | 无正面反馈的存货 | **外连接 + `Is Null`**（反连接） | 识别无正面反馈；推介状态及原因另核 | 讲义未给结果 |
 | 7 | p.92 | 每人销售拜访次数 | 外连接 + **`Count(字段)`** 而非 `Count(*)` | 绩效与内控；零拜访必须显示 | E23=2, E26=1, **E30=0** |
 
 ---
@@ -5862,9 +6326,17 @@ flowchart TD
 考试可用的英文定义：*"for a data value entered … as a foreign key to be acceptable, it must either be **null** or it must **match exactly** a data value in the \[primary key\] field in the \[referenced\] table."*
 
 
-**（属性即值的一部分）**
+**字段类型兼容与显示属性**
 
-考试可用的英文定义：*"The data type and relevant key properties must be compatible for related fields; display format is not part of the stored value"*; *"if the properties of two fields are different, then Access considers the values in those fields to be different even if the content is the same."*
+英文参考答案（笔记自拟）：
+
+> Related key fields must have compatible data types and relevant key properties. Different display formats alone do not make equal stored values unequal.
+
+讲义 p.13 原句另作辨析，不能当无条件规则：
+
+> "if the properties of two fields are different, then Access considers the values in those fields to be different even if the content is the same."
+
+这句过度概括了 properties。只改变同一日期的 Format 不会因此改变存储值；建关系须核实际兼容性，不能要求所有显示属性相同。
 
 
 **强制参照完整性**
@@ -6050,11 +6522,11 @@ flowchart TD
 | 汇总行 | Total row | §2.23.8 |
 | 分组 | Group By | §2.23.8 |
 | Where（Total 行选项） | Where | §2.23.8 |
-| 空值转零函数 | `Nz()` | §2.24.1 |
+| 空值替代函数 | `Nz()` | §2.24.1 |
 | 资产负债表日 | Balance Sheet Date | §2.24.1 |
 | 汇款通知 | Remittance Advice | §2.10.1 |
 | 佣金率 | Commission Rate | §2.10.1 |
-| 支票账户 / 汇票账户 | Checking / Draft (account type) | §2.10.1 |
+| 支票账户 / Draft（原标签，含义待核） | Checking / Draft | §2.10.1 |
 | 行项目金额 | Line Item Extension | §2.22, §2.24.3 |
 | 加权平均单位成本 | Weighted Average Unit Cost (WAUC) | §2.24.4 |
 | 订单履行天数 | Days to Fill (a sale order) | §2.24.5 |
@@ -6088,9 +6560,9 @@ flowchart TD
 考试可用的英文定义：Marks a column as **filter-only**: it takes part in the WHERE clause but not in the output or the grouping. Its Show box must be unchecked
 
 
-**空值转零函数**
+**空值替代函数**
 
-考试可用的英文定义：Access function converting Null to 0 (or to a supplied substitute). Standard-SQL equivalent: `COALESCE(x, 0)`
+英文参考定义（笔记自拟）：Nz replaces Null with a specified value. If the replacement argument is omitted, the result depends on the context; this note uses `Nz(x,0)` only when zero has been justified by the business facts. `COALESCE(x,0)` is a comparable SQL expression, not an Access UI execution claim.
 
 
 **资产负债表日**
@@ -6108,9 +6580,11 @@ flowchart TD
 考试可用的英文定义：💡 The percentage of sales paid to a salesperson as compensation
 
 
-**支票账户 / 汇票账户**
+**支票账户 / Draft 原标签**
 
-考试可用的英文定义：💡 Two kinds of bank account in the Cash table
+英文参考定义（笔记自拟）：Checking is a checking-account label in the Cash table. Draft is another original type label, but its precise meaning is not established by the supplied field documentation.
+
+不把 Draft 直接译定为“汇票账户”，也不据标签断定两者的完整银行产品类型。
 
 
 **行项目金额**
@@ -6145,21 +6619,25 @@ flowchart TD
 
 ### 6.1 可信度分级
 
-| 级别 | 含义 | 本讲数量 |
-|---|---|---|
-| 🔴 教授明示 | 转录里教授明确说过会考 / 要记 —— **必须引用原话** | **0 条** |
-| 🟡 CILO 反推 | 对应课程官方 CILO，口径上必须考核 | **7 条** |
-| ⚪ 笔记推断 | 根据内容重要性、页数分配、题型惯例的判断 | **11 条** |
+本次有四条课堂范围信号，分开说明“读查询”“采用哪种语言”“免哪种操作”，不按课件页数预测分值。
 
-> ⚠️ **本讲无转录，🔴 级为 0 是硬约束**（[[对抗自检清单]] 第 7 项）。
-> ⚠️ 本课的 CILO **没有分配权重**（官方目录与 Outline 的 Weighting 列都是空的），所以 🟡 级无法按百分比排序。
->
-> 🎙️ **唯一与本讲相关的教授原话**（W1 转录 `13:28`）：*"the midterm test in Week 7 will cover the content from **Week 1 to Week 5**."* —— **本讲不在期中考范围**，但页数是全课之最（92 页），**期末大概率考**。
+| 可信度 | 当前范围 | 来源 |
+|---|---|---|
+| 🔴 | 给表和 SQL，写出查询结果 | R1 `00:16`–`00:59` |
+| 🔴 | 未来相关测试采用 SQL，关系代数作概念基础 | S19 `54:08`–`54:15` |
+| 🔴（反向） | 当前基础 SQL 题型可忽略 outer join | R1 `00:07`–`01:10` |
+| 🔴（反向） | 软件建库操作由当堂 Quiz 2 练习，纸笔期末不直接进行电脑点击 | S19 `12:22`–`12:40` |
+
+最后一项只限定操作载体。纸笔仍可给数据表和代码要求手算结果；外连接完整机制和其他讲义自学内容都保留。具体分值、最终卷面和是否另有调整仍待正式要求，不能根据这些原话推断本人出席或已提交 Quiz。
 
 ### 6.2 考点清单
 
 | 可信度 | 考点 | 依据 | 对应小节 |
 |---|---|---|---|
+| 🔴 | 给定表和 SQL，写查询结果 | *"You need to understand the code and write down the answer, query result, based on the table I will provide to you."*（R1 `00:28`） | §2.16.2、§2.17.1 |
+| 🔴 | 相关测试使用 SQL | *"if we have any tests in the future we only use the SQL language"*（S19 `54:15`） | §2.16.2 |
+| 🔴（反向） | 当前基础题型外连接降权 | *"And for the outer zone, we can ignore that."*（R1 `01:10`） | §2.17.4 |
+| 🔴（反向） | 软件操作与纸笔题分开 | *"our final examination is paper-based instead of the computer-based"*（S19 `12:29`） | §2.2.1、§6.1 |
 | 🟡 | **把一张 REA 类图转换成表结构**：说清一对多变外键、多对多变连接表+复合主键、关联属性归入连接表 | 课程官方 CILO 涉及"设计并实现会计信息系统"；讲义用 p.19–p.28 共 10 页专讲 | §2.5、§2.6 |
 | 🟡 | **表间关系 vs 类间关系的区别** | 讲义 p.28 用**整整一页的标题**提出这个对比 | §2.6.4 |
 | 🟡 | **关系代数三算子的定义与应用**（Select / Project / Join） | 讲义 p.31 说它 *"provides the conceptual basis for SQL and QBE"*；p.32–p.38 七页展开 | §2.9、§2.11–§2.15 |
@@ -6178,6 +6656,10 @@ flowchart TD
 | ⚪ | **`Nz()` 的作用与使用条件** | p.86 黄底标出结果，不能证明作者经历或 Null 成因 | §2.24.1 |
 | ⚪ | **加权平均单位成本 "not for Financial Statement use"** | 讲义把这句话写进了 p.89 的**标题**里，是刻意的提醒 | §2.24.4 |
 | ⚪ | **外连接 + `Is Null` 找"什么没发生"** | 讲义 p.91 的蓝底说明把这个套路讲得非常明确 | §2.24.6 |
+
+**10 月 21 日新增的应试例**：老师把收款查询条件从 C-2 改成 C-5（R1 `00:38`–`00:59`）。先看 `*`：结果保留全部六列；再逐行检查 Customer#：只保留 C-5 那一行。若改成 `<> "C-2"`，则保留 C-1 与 C-5 对应的行，不是对金额取反。完整原表及每行值见 §2.10 与 §2.17.1。
+
+课堂直引：*"You need to understand the code and write down the answer, query result, based on the table I will provide to you."*（R1 `00:28`）。中文：读懂代码，根据给定表写结果。上表的关系代数、外连接、后段七个会计查询保留作学习清单，不能自动称为本次明示题型。
 
 ### 6.3 答题框架
 
@@ -6253,9 +6735,9 @@ flowchart TD
    · 复式记账只记「影响会计等式、且能用货币计量」的事项（M01 货币计量假设 + M02 复式记账）
    · 下单通常不产生总账分录，所以仅查总账得不到订单日期；订单系统、ERP或辅助业务记录仍可能保存该数据
 
-③ 说明 REA 为什么有
-   · REA 记录全部业务事件：起因 / 承诺 / 经济 / 冲销（M05 扩展模型）
-   · 销售订单是「承诺事件」，有自己的表和日期字段
+③ 说明本 REA 设计怎样取得数据
+   · REA 可建模起因 / 承诺 / 经济 / 冲销事件；只有设计并实际捕获的记录才可查询
+   · 本题还须确认销售订单表、日期字段与履行关联真实存在；ERP/CRM 也可能提供这些明细
 
 ④ 说明怎么查出来
    · 通过 Fulfillment 关联连接 SaleOrder 与 Sale
@@ -6297,6 +6779,10 @@ flowchart TD
 
 **本例操作**：按 p.16 保持默认 Text(255)，与 Sale 的外键使用同一教学配置。这不表示所有关系字段的所有显示属性必须相同。
 
+**英文参考答案（笔记自拟，U25）**
+
+> Related key fields need compatible data types and relevant key properties; matching characters on screen are not enough. In this example, the two text key fields use the same teaching configuration. Changing display format alone does not change a stored value, so the source sentence must not be interpreted as requiring every field property to be identical.
+
 </details>
 
 **2.** 讲义 p.23 说 Relationship Layout 上的 `1` 和 `∞` *"seem to be multiplicities, but they are not exactly the same concept"*。这两者到底有什么区别？举一个能证明它们不同的例子。
@@ -6315,6 +6801,10 @@ flowchart TD
 
 **结论**：UML 的一个 `1..1`，在 Access 里要**拆成两处设置**——关系管"最多"，字段属性管"最少"。
 
+**英文参考答案（笔记自拟，U26）**
+
+> UML multiplicity specifies the minimum and maximum related instances, whereas the Access 1 and infinity markers describe uniqueness and repeated foreign-key values. Both optional and mandatory salesperson assignments can show the same 1-to-many relationship line. To require a salesperson for every sale, a non-null requirement must also be imposed.
+
 </details>
 
 **3.** 为什么 `0..* — 0..*` 的关联在关系数据库里必须拆成一张单独的表？不拆会怎样？
@@ -6328,7 +6818,11 @@ flowchart TD
 
 **拆表之后**：学生信息存一份、课程信息存一份、组合信息存在连接表；加课只加一行，不动结构。
 
-**另外，关联属性（如 `grade earned`）没有别的地方可放**：它不属于学生本人（每门课成绩不同），也不属于课程本身（每个学生成绩不同），只属于"这个学生 × 这门课"这个**组合**。
+**另外，本例关联属性（如 `grade earned`）应放在连接表**：它不属于学生本人（每门课成绩不同），也不属于课程本身（每个学生成绩不同），只属于"这个学生 × 这门课"这个**组合**。
+
+**英文参考答案（笔记自拟，U27）**
+
+> Use an association table to store one student–course combination per row. Its composite key prevents duplicate combinations in this exercise, and Grade earned belongs to that combination. This avoids repeating course columns or duplicating student details; repeated enrolments would need an extra distinguishing key.
 
 </details>
 
@@ -6347,6 +6841,10 @@ flowchart TD
 
 **记忆法**：盯着 `SELECT` 后面跟的是什么——跟的是**列名**，所以它挑列。
 
+**英文参考答案（笔记自拟，U28）**
+
+> They are different operations. Relational-algebra Select filters rows and corresponds to SQL WHERE, while SQL SELECT chooses columns and corresponds to relational-algebra Project. SQL duplicate handling must also be aligned when comparing complete results.
+
 </details>
 
 **5.** 讲义 p.50 用 `IS NULL` 查出 BA-6、BA-7；p.51 用 `EXISTS`（非空）查出 BA-8 **和 BA-9**。BA-9 的 Balance 是 `0`，为什么它出现在第二个结果里而不是第一个？这在会计上意味着什么？
@@ -6362,6 +6860,10 @@ flowchart TD
 
 **混淆的后果**：把“未知”强填为 0 会掩盖不确定性；只有真实余额为正时才会少报现金，若真实值为负或 0，错报方向不同。把已知 0 当未知则会制造无谓调查。审计上前者是重大错报风险，后者是完整性问题。
 
+**英文参考答案（笔记自拟，U29）**
+
+> BA-9 appears in the non-null result because zero is a known balance, not an unknown value. BA-6 and BA-7 have Null balances whose meaning requires source rules. Use IS NOT NULL for the executable condition; the source phrase Balance EXISTS is not the correct field test. Replacing an unknown balance with zero would invent a fact and can misstate cash.
+
 </details>
 
 **6.** 什么情况下必须用外连接？给出三个本讲出现过的例子。
@@ -6372,7 +6874,7 @@ flowchart TD
 
 题目里通常有 `all` / `any` / `no` / `without` / `never` 这些词。
 
-**本讲的三个例子**：
+**本讲的四个例子**：
 
 1. **p.38**：所有销售 + 任何相关的收款 → S-6、S-7 一分钱没收，用内连接会消失，而它们正是应收账款
 2. **p.88**：某期间各商品销售额 → MIN1、TTP12 零销售，用内连接会消失，而"销售额最低"问的就是它们
@@ -6380,6 +6882,10 @@ flowchart TD
 4. **p.92**：每人销售拜访次数 → E30 零拜访，用内连接会消失，而"谁没干活"正是重点
 
 **一句话**：内连接只保留已匹配事实；外连接还能保留零匹配主体。未收金额、未交数量和呆滞程度仍须用完整明细计算，不能把“没有任何匹配”直接等同“尚未完成”。
+
+**英文参考答案（笔记自拟，U30）**
+
+> An outer join is useful when unmatched subjects must remain in the answer. Examples include all sales with any allocations, all inventory items including those with no sales in a period, and all salespeople including those with zero recorded calls. The no-positive-reaction query also preserves all items before testing for a missing match. No match alone does not establish that a partly completed transaction has no remaining balance.
 
 </details>
 
@@ -6435,6 +6941,10 @@ $$\text{应收账款} = \sum \text{销售金额} - \sum \text{已收款金额}$$
 
 **这正是讲义 p.86 那个 `AcctsReceivableFinal` 查询在做的事。**
 
+**英文参考答案（笔记自拟，U31）**
+
+> For the supplied records through August 31, assuming no opening balance, returns, or other adjustments, sales total 117,800 and applied receipts total 53,132, giving receivables of 64,668. S-2 contributes 6,668, S-6 contributes 35,000, and S-7 contributes 23,000. The empty customer balance field illustrates deriving a balance from events; a controlled cache is also possible. The incomplete example does not certify a real company balance.
+
 </details>
 
 **8.** 一个学生做了 p.92 那个查询（每个销售员的拜访次数），但结果里只有 E23 和 E26 两行，没有 E30。请诊断可能的原因（至少两个），并说明怎么改。
@@ -6455,6 +6965,10 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 
 **顺带一个不会导致 E30 消失、但会导致答案错误的问题**：如果用 `Count(*)` 而不是 `Count([SalesCallID])`，E30 那一行会被数成 **1** 而不是 0（因为 `Count(*)` 数行数，不看值是不是 Null）。**结果列名 `CountOfSalesCallID` 支持使用 `Count([SalesCallID])` 的推断，但原设计视图缺失，仍标为参考实现。**
 
+**英文参考答案（笔记自拟，U32）**
+
+> Two possible causes are an inner join that removes E30, or a post-join date filter that rejects E30’s Null call date. Preserve all salespeople and join them to calls already filtered to the reporting period. Count a non-null call ID rather than COUNT(*), so an unmatched salesperson is counted as zero. This diagnoses reference implementations; the original design is unavailable.
+
 </details>
 
 **9.** 你的经理想知道"哪些客户从来没有下过订单"。请设计这个查询（说明用哪些表、什么连接、什么条件），并解释为什么不能用 `WHERE 订单数 = 0`。
@@ -6466,7 +6980,7 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 ```
 表：  Customer（左，全保留）   SaleOrder（右）
 连接：Customer.CustomerID  LEFT OUTER JOIN  SaleOrder.CustomerID
-      （双击连接线 → Join Properties → 选项 2）
+      （Join Properties 选 Include ALL records from Customer 的完整选项，编号依对象次序核）
 字段：Customer.CustomerID  ☑Show
       Customer.Name        ☑Show
       SaleOrder.OrderID    ☑Show   Criteria: Is Null
@@ -6487,6 +7001,10 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 
 **两种写法都对，`Is Null` 那种更简单也更不容易错。**
 
+**英文参考答案（笔记自拟，U33）**
+
+> Left join Customer to SaleOrder on the verified customer key, preserve every customer, and select rows whose matching non-null OrderID is Null. A raw WHERE OrderCount = 0 cannot work unless that count has first been produced. Alternatively, group a preserving outer join by customer and retain groups whose COUNT(OrderID) is zero; COUNT(*) would incorrectly count a padded row as one.
+
 </details>
 
 **10.** 讲义 p.89 的标题里写了 "(not for Financial Statement use)"。请解释为什么这个加权平均单位成本不能用于财务报表，至少给出三条理由。
@@ -6503,110 +7021,114 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 
 **一句话总结**：**数据库能算出来的数，不等于会计上能用的数。**
 
+**英文参考答案（笔记自拟，U34）**
+
+> The slide explicitly marks the figure as not for Financial Statement use. Before using it for reporting, verify opening inventory where required by the method, consistent treatment of returns, the applicable cost components, and the costing policy and period. The missing upstream details do not prove that these items were omitted; they prevent certification. The displayed purchase average can still be a management reference.
+
 </details>
 
 ---
 
 ## 8. 讲义页码映射
 
-> **「课堂覆盖」列**：本讲**无转录**，整列写 `—`。
+> **「课堂覆盖」列**：按本次 S19、R1、S21 的独立时钟更新；有讲、明确降权和未录到分开。媒体没有覆盖的页不据此降权。
 > **「页面性质」列**：🖼️ = 纯图页或图占主体（**已逐页视觉复核**）；📕 = 封面页；🚩 = 章节分隔页；文字 = 可从文本提取拿到全部内容。
 > ✅ **全部 92 页在 §2 正文里都有实质讲解**，唯一的例外是 **p.1（封面页）**，已按 [[对抗自检清单]] 第 1 项显式标注。**本讲没有"学习目标页"。**
 
 | 讲义页 | 笔记小节 | 页面性质 | 课堂覆盖 |
 |---|---|---|---|
 | **p.1** | §2.0 | **📕 封面页**（本讲唯一仅登记不展开的页） | — |
-| p.2 | §2.1 | 🚩 章节分隔页（"Construct database using ACCESS"） | — |
-| p.3 | §2.2.1、§2.2.2 | 文字 | — |
-| p.4 | §2.2.3 | 文字（视觉复核确认无图） | — |
-| p.5 | §2.2.3 | 🖼️ 截图 + 3 个批注框 | — |
-| p.6 | §2.3.1 | 🖼️ 纯图（Section 1 / Section 2 标注） | — |
-| p.7 | §2.3.2 | 文字 | — |
-| p.8 | §2.3.3 | 文字 | — |
-| p.9 | §2.4（例 1 数据） | 🖼️ 两张表 + 红色外键箭头 | — |
-| p.10 | §2.4.1 | 文字（数据类型选择规则） | — |
-| p.11 | §2.4.1 | 文字（四个字段的类型 + `Date` 保留字） | — |
-| p.12 | §2.4.2 | 🖼️ 纯图（Sale 表设计成品 + 字段属性面板） | — |
-| p.13 | §2.4.3 | 文字（⭐ 参照完整性 + "属性是值的一部分"） | — |
-| p.14 | §2.4.4 | 文字（设主键 + 删行会丢主键的坑） | — |
-| p.15 | §2.4.5 | 文字（"Save / File – Save / Close."）⚠️ **与 p.17 完全相同** | — |
-| p.16 | §2.4.6 | 文字（建 Salesperson 表六条指令） | — |
-| p.17 | §2.4.6 | 文字 ⚠️ **与 p.15 完全相同（真重复页）** | — |
-| p.18 | §2.4.7 | 🖼️ 纯图（数据库窗口，两张表并存） | — |
-| p.19 | §2.5.1 | 文字（为什么要显式建关系） | — |
-| p.20 | §2.5.2 | 🖼️ **信息密度最高的一页**：三窗口截图 + 4 批注（Edit Relationships 三个复选框） | — |
-| p.21 | §2.5.2 | 文字（六条操作说明 + Cascade Update 解释） | — |
-| p.22 | §2.5.3 | 🖼️ 纯图（连好之后的 1 —— ∞ 连线） | — |
-| p.23 | §2.5.4 | 文字（⭐ `1`/`∞` 不是多重度） | — |
-| p.24 | §2.6.1 | 🖼️ UML 类图（`0..*—0..*` + 关联属性 `grade earned`）+ 文字 | — |
-| p.25 | §2.6.2 | 文字（Shift 多选设复合主键） | — |
-| p.26 | §2.6.2 | 🖼️ **纯图，连标题都没有**（全讲文本最少的一页，2 字符）⚠️ 但它是 p.25 的成果图 | — |
-| p.27 | §2.6.3 | 文字（建两条关系） | — |
-| p.28 | §2.6.4 | 🖼️ 纯图（⭐ 表间关系 vs 类间关系） | — |
-| p.29 | §2.7.1 | 🚩 章节分隔页（"Information Querying using ACCESS"） | — |
-| p.30 | §2.7.2 | 文字（查询的定义 + 四种动作） | — |
-| p.31 | §2.8 | 文字（三种查询语言） | — |
-| p.32 | §2.9 | 文字（Select / Project / Join 定义） | — |
-| p.33 | §2.10.1、§2.10.2 | 🖼️ **七张可见表数据；第八Inventory仅后续列表见，内容缺源**（已逐格转写 + 一致性验算） | — |
-| p.34 | §2.11 | 表 + 关系代数表达式（Select） | — |
-| p.35 | §2.12 | 表 + 关系代数表达式（Project）⚠️ 多画了一张无关的 Salesperson 表 | — |
-| p.36 | §2.13 | 文字 + 🖼️ **三张 Venn 图**（⚠️ 排版错位，Inner join 的图压在 Outer join 文字上） | — |
-| p.37 | §2.14 | 表 + 关系代数表达式（Inner Join） | — |
-| p.38 | §2.15 | 表 + 关系代数表达式（Left Outer Join，8 行答案） | — |
-| p.39 | §2.16.1 | 文字（SQL 三段式骨架） | — |
-| p.40 | §2.16.2 | 文字（⭐ SQL 成分 ↔ 关系代数对应） | — |
-| p.41 | §2.17.1 | 表 + SQL（Select）+ 通配符与方括号说明 | — |
-| p.42 | §2.17.2 | 表 + SQL（Project） | — |
-| p.43 | §2.17.3 | 表 + SQL（Inner Join） | — |
-| p.44 | §2.17.4 | 表 + SQL（Outer Join）⚠️ 语句有三处语法错误 | — |
-| p.45 | §2.18.1 | 文字（六个比较运算符 + 日期/文本也能比大小） | — |
-| p.46 | §2.18.2 | 表 + SQL（Balance >= 50000） | — |
-| p.47 | §2.18.3 | 表 + SQL（SalesRep# <> E-10）⚠️ 缺引号 | — |
-| p.48 | §2.19 | 文字（AND = 交集 / OR = 并集 / NOT） | — |
-| p.49 | §2.20.1 | 表 + SQL（BETWEEN，端点包含） | — |
-| p.50 | §2.20.2 | 表 + SQL（IS NULL） | — |
-| p.51 | §2.20.2 | 表 + SQL（EXISTS）⚠️ 该写法在 Access 里不成立 | — |
-| p.52 | §2.21 | 文字（五个聚合函数的定义） | — |
-| p.53 | §2.22 | 文字（横向计算定义）⚠️ **只有定义，一个例子都没有** | — |
-| p.54 | §2.23.1 | 🖼️ Show Table 对话框（八张表清单首次完整出现） | — |
-| p.55 | §2.23.1 | 🖼️ CashReceipt 已加入，网格空 | — |
-| p.56 | §2.23.1 | 🖼️ 六字段已拖入 + 批注"在 CustomerNumber 填 ="C-2"" | — |
-| p.57 | §2.23.1 | 🖼️ 条件 `="C-2"` 已填好 | — |
-| p.58 | §2.23.1 | 🖼️ **结果**（3 行；⚠️ 日期显示为 2014 年） | — |
-| p.59 | §2.23.2 | 🖼️ Show Table，**只选 Customer** | — |
-| p.60 | §2.23.2 | 🖼️ Customer 已加入，网格空 | — |
-| p.61 | §2.23.2 | 🖼️ 三字段已拖入 + ⭐ **左侧泄露了全部十个查询名** | — |
-| p.62 | §2.23.2 | 🖼️ **结果**（5 行） | — |
-| p.63 | §2.23.3 | 🖼️ Show Table，**同时选中两张表**（与 p.59 的唯一区别） | — |
-| p.64 | §2.23.3 | 🖼️ ⭐ 两表已加入，**连接线自动出现**（1 — ∞） | — |
-| p.65 | §2.23.3 | 🖼️ 七字段已全部拖入 | — |
-| p.66 | §2.23.3 | 🖼️ **结果**（5 行；⚠️ 行序与 p.37 不同；佣金率显示为 10%/12%） | — |
-| p.67 | §2.23.4 | 🖼️ Show Table，选 Cash | — |
-| p.68 | §2.23.4 | 🖼️ 两字段 + Criteria `>=50000` | — |
-| p.69 | §2.23.4 | 🖼️ **结果**（1 行 BA-8） | — |
-| p.70 | §2.23.5 | 🖼️ Show Table，选 Sale | — |
-| p.71 | §2.23.5 | 🖼️ 三字段 + Criteria **`<> "E-10"`**（⚠️ 带引号，纠正了 p.47） | — |
-| p.72 | §2.23.5 | 🖼️ **结果**（2 行 S-1、S-7） | — |
-| p.73 | §2.23.6 | 🖼️ Show Table，选 Sale | — |
-| p.74 | §2.23.6 | 🖼️ ⭐ **两条件写同一行 = AND** + 红箭头批注 | — |
-| p.75 | §2.23.6 | 🖼️ **结果**（3 行；⚠️ S-5 因 `<` 严格小于被排除） | — |
-| p.76 | §2.23.7 | 🖼️ Show Table，选 Sale | — |
-| p.77 | §2.23.7 | 🖼️ ⭐ **两条件写不同行 = OR** + 两条红箭头批注 | — |
-| p.78 | §2.23.7 | 🖼️ **结果**（6 行；⚠️ S-5、S-6 靠销售员条件入选） | — |
-| p.79 | §2.23.8 | 🖼️ Show Table，选 Sale | — |
-| p.80 | §2.23.8 | 🖼️ **只拖两个字段** + 批注 "Bring only the fields you need" | — |
-| p.81 | §2.23.8 | 🖼️ BETWEEN 条件 + Date 的 Show 已取消 + 指出 Σ 按钮 | — |
-| p.82 | §2.23.8 | 🖼️ ⭐ Total 行出现，下拉展开（12 个选项），`Where` 高亮 + 批注 | — |
-| p.83 | §2.23.8 | 🖼️ 第二个下拉展开，`Sum` 高亮 | — |
-| p.84 | §2.23.8 | 🖼️ **结果**（`SumOfAmount = \$52,600.00`，已验算） | — |
-| p.85 | §2.24.0 | 🚩 章节分隔页（"Other questions related to an expanded **RAE** model"）⚠️ RAE 应为 REA | — |
-| p.86 | §2.24.1 | 🖼️ ⭐ **全讲最重要的一页**：应收账款 + `Nz()` + 黄底「Now it Works!!」 | — |
-| p.87 | §2.24.2 | 🖼️ 应付账款（与 p.86 完美镜像，表达式已逐字读出） | — |
-| p.88 | §2.24.3 | 🖼️ 两周对比的畅销/滞销存货（外连接） | — |
-| p.89 | §2.24.4 | 🖼️ 加权平均单位成本（⚠️ 标题注明 not for Financial Statement use） | — |
-| p.90 | §2.24.5 | 🖼️ 平均订单履行天数（`AvgOfDaysToFill = 2.5`） | — |
-| p.91 | §2.24.6 | 🖼️ ⭐ 外连接 + `Is Null` 反连接（全讲唯一能看到外连接箭头的截图） | — |
-| p.92 | §2.24.7 | 🖼️ 每人销售拜访次数（⭐ E30 = **0**） | — |
+| p.2 | §2.1 | 🚩 章节分隔页（"Construct database using ACCESS"） | ✅ S19 `13:19`–`21:01`；界面/字段/属性；本次演示简化下区 |
+| p.3 | §2.2.1、§2.2.2 | 文字 | ✅ S19 `13:19`–`21:01`；界面/字段/属性；本次演示简化下区 |
+| p.4 | §2.2.3 | 文字（视觉复核确认无图） | ✅ S19 `13:19`–`21:01`；界面/字段/属性；本次演示简化下区 |
+| p.5 | §2.2.3 | 🖼️ 截图 + 3 个批注框 | ✅ S19 `13:19`–`21:01`；界面/字段/属性；本次演示简化下区 |
+| p.6 | §2.3.1 | 🖼️ 纯图（Section 1 / Section 2 标注） | ✅ S19 `13:19`–`21:01`；界面/字段/属性；本次演示简化下区 |
+| p.7 | §2.3.2 | 文字 | ✅ S19 `13:19`–`21:01`；界面/字段/属性；本次演示简化下区 |
+| p.8 | §2.3.3 | 文字 | ✅ S19 `13:19`–`21:01`；界面/字段/属性；本次演示简化下区 |
+| p.9 | §2.4（例 1 数据） | 🖼️ 两张表 + 红色外键箭头 | ✅ S19 `21:09`–`31:30`；建表、类型与主键 |
+| p.10 | §2.4.1 | 文字（数据类型选择规则） | ✅ S19 `21:09`–`31:30`；建表、类型与主键 |
+| p.11 | §2.4.1 | 文字（四个字段的类型 + `Date` 保留字） | ✅ S19 `21:09`–`31:30`；建表、类型与主键 |
+| p.12 | §2.4.2 | 🖼️ 纯图（Sale 表设计成品 + 字段属性面板） | ✅ S19 `21:09`–`31:30`；建表、类型与主键 |
+| p.13 | §2.4.3 | 文字（⭐ 参照完整性 + "属性是值的一部分"） | ✅ S19 `21:09`–`31:30`；建表、类型与主键 |
+| p.14 | §2.4.4 | 文字（设主键 + 删行会丢主键的坑） | ✅ S19 `21:09`–`31:30`；建表、类型与主键 |
+| p.15 | §2.4.5 | 文字（"Save / File – Save / Close."）⚠️ **与 p.17 完全相同** | ✅ S19 `21:09`–`31:30`；建表、类型与主键 |
+| p.16 | §2.4.6 | 文字（建 Salesperson 表六条指令） | ✅ S19 `21:09`–`31:30`；建表、类型与主键 |
+| p.17 | §2.4.6 | 文字 ⚠️ **与 p.15 完全相同（真重复页）** | ✅ S19 `21:09`–`31:30`；建表、类型与主键 |
+| p.18 | §2.4.7 | 🖼️ 纯图（数据库窗口，两张表并存） | ✅ S19 `21:09`–`31:30`；建表、类型与主键 |
+| p.19 | §2.5.1 | 文字（为什么要显式建关系） | ❓ 没有完整一对多实操对应；接缝未知 |
+| p.20 | §2.5.2 | 🖼️ **信息密度最高的一页**：三窗口截图 + 4 批注（Edit Relationships 三个复选框） | ❓ 没有完整一对多实操对应；接缝未知 |
+| p.21 | §2.5.2 | 文字（六条操作说明 + Cascade Update 解释） | ❓ 没有完整一对多实操对应；接缝未知 |
+| p.22 | §2.5.3 | 🖼️ 纯图（连好之后的 1 —— ∞ 连线） | ❓ 没有完整一对多实操对应；接缝未知 |
+| p.23 | §2.5.4 | 文字（⭐ `1`/`∞` 不是多重度） | ❓ 没有完整一对多实操对应；接缝未知 |
+| p.24 | §2.6.1 | 🖼️ UML 类图（`0..*—0..*` + 关联属性 `grade earned`）+ 文字 | ✅ S19 `32:11`–`43:09`；学生/课程/Takes 与复合主键 |
+| p.25 | §2.6.2 | 文字（Shift 多选设复合主键） | ✅ S19 `32:11`–`43:09`；学生/课程/Takes 与复合主键 |
+| p.26 | §2.6.2 | 🖼️ **纯图，连标题都没有**（全讲文本最少的一页，2 字符）⚠️ 但它是 p.25 的成果图 | ✅ S19 `32:11`–`43:09`；学生/课程/Takes 与复合主键 |
+| p.27 | §2.6.3 | 文字（建两条关系） | ✅ S19 `32:11`–`43:09`；学生/课程/Takes 与复合主键 |
+| p.28 | §2.6.4 | 🖼️ 纯图（⭐ 表间关系 vs 类间关系） | ✅ S19 `32:11`–`43:09`；学生/课程/Takes 与复合主键 |
+| p.29 | §2.7.1 | 🚩 章节分隔页（"Information Querying using ACCESS"） | ✅ S19 `43:37`–`46:44`；三种语言、基本动作与例表 |
+| p.30 | §2.7.2 | 文字（查询的定义 + 四种动作） | ✅ S19 `43:37`–`46:44`；三种语言、基本动作与例表 |
+| p.31 | §2.8 | 文字（三种查询语言） | ✅ S19 `43:37`–`46:44`；三种语言、基本动作与例表 |
+| p.32 | §2.9 | 文字（Select / Project / Join 定义） | ✅ S19 `43:37`–`46:44`；三种语言、基本动作与例表 |
+| p.33 | §2.10.1、§2.10.2 | 🖼️ **七张图中可见表；当前附件 Inventory 补充另标来源**（原图与附件不混同） | ✅ S19 `43:37`–`46:44`；三种语言、基本动作与例表 |
+| p.34 | §2.11 | 表 + 关系代数表达式（Select） | ✅ S19 `46:53`–`48:41`；关系代数挑行/挑列 |
+| p.35 | §2.12 | 表 + 关系代数表达式（Project）⚠️ 多画了一张无关的 Salesperson 表 | ✅ S19 `46:53`–`48:41`；关系代数挑行/挑列 |
+| p.36 | §2.13 | 文字 + 🖼️ **三张 Venn 图**（⚠️ 排版错位，Inner join 的图压在 Outer join 文字上） | ✅ S19 `48:51`–`54:08`；内外连接及重复匹配 |
+| p.37 | §2.14 | 表 + 关系代数表达式（Inner Join） | ✅ S19 `48:51`–`54:08`；内外连接及重复匹配 |
+| p.38 | §2.15 | 表 + 关系代数表达式（Left Outer Join，8 行答案） | ✅ S19 `48:51`–`54:08`；内外连接及重复匹配 |
+| p.39 | §2.16.1 | 文字（SQL 三段式骨架） | ✅ S19 `54:08`–`58:09`、R1 `00:01`–`01:10`；SQL 与读结果 |
+| p.40 | §2.16.2 | 文字（⭐ SQL 成分 ↔ 关系代数对应） | ✅ S19 `54:08`–`58:09`、R1 `00:01`–`01:10`；SQL 与读结果 |
+| p.41 | §2.17.1 | 表 + SQL（Select）+ 通配符与方括号说明 | ✅ S19 `54:08`–`58:09`、R1 `00:01`–`01:10`；SQL 与读结果 |
+| p.42 | §2.17.2 | 表 + SQL（Project） | ✅ S19 `54:08`–`58:09`、R1 `00:01`–`01:10`；SQL 与读结果 |
+| p.43 | §2.17.3 | 表 + SQL（Inner Join） | ✅ S19 `54:08`–`58:09`、R1 `00:01`–`01:10`；SQL 与读结果 |
+| p.44 | §2.17.4 | 表 + SQL（Outer Join）；两处明确语法问题，整体括号不计错 | ⏭️ R1 `01:10` 当前基础题型外连接明确降权 |
+| p.45 | §2.18.1 | 文字（六个比较运算符 + 日期/文本也能比大小） | ✅ R1 `01:14`–`04:18`；比较与逻辑 |
+| p.46 | §2.18.2 | 表 + SQL（Balance >= 50000） | ✅ R1 `01:14`–`04:18`；比较与逻辑 |
+| p.47 | §2.18.3 | 表 + SQL（SalesRep# <> E-10）⚠️ 缺引号 | ✅ R1 `01:14`–`04:18`；比较与逻辑 |
+| p.48 | §2.19 | 文字（AND = 交集 / OR = 并集 / NOT） | ✅ R1 `01:14`–`04:18`；比较与逻辑 |
+| p.49 | §2.20.1 | 表 + SQL（BETWEEN，端点包含） | ✅ R1 `04:25`–`06:06`；两端包含、Null/0；EXISTS 语法错误仍保留 |
+| p.50 | §2.20.2 | 表 + SQL（IS NULL） | ✅ R1 `04:25`–`06:06`；两端包含、Null/0；EXISTS 语法错误仍保留 |
+| p.51 | §2.20.2 | 表 + SQL（EXISTS）⚠️ 该写法在 Access 里不成立 | ✅ R1 `04:25`–`06:06`；两端包含、Null/0；EXISTS 语法错误仍保留 |
+| p.52 | §2.21 | 文字（五个聚合函数的定义） | ✅ R1 `06:06`–`07:02`；聚合/横向计算简讲 |
+| p.53 | §2.22 | 文字（横向计算定义）⚠️ **只有定义，一个例子都没有** | ✅ R1 `06:06`–`07:02`；聚合/横向计算简讲 |
+| p.54 | §2.23.1 | 🖼️ Show Table 对话框（八张表清单首次完整出现） | ✅ R1 `07:07`–`15:57`；QBE1 后休息 |
+| p.55 | §2.23.1 | 🖼️ CashReceipt 已加入，网格空 | ✅ R1 `07:07`–`15:57`；QBE1 后休息 |
+| p.56 | §2.23.1 | 🖼️ 六字段已拖入 + 批注"在 CustomerNumber 填 ="C-2"" | ✅ R1 `07:07`–`15:57`；QBE1 后休息 |
+| p.57 | §2.23.1 | 🖼️ 条件 `="C-2"` 已填好 | ✅ R1 `07:07`–`15:57`；QBE1 后休息 |
+| p.58 | §2.23.1 | 🖼️ **结果**（3 行；⚠️ 日期显示为 2014 年） | ✅ R1 `07:07`–`15:57`；QBE1 后休息 |
+| p.59 | §2.23.2 | 🖼️ Show Table，**只选 Customer** | ✅ S21 `00:00`–`01:41`；QBE2 |
+| p.60 | §2.23.2 | 🖼️ Customer 已加入，网格空 | ✅ S21 `00:00`–`01:41`；QBE2 |
+| p.61 | §2.23.2 | 🖼️ 三字段已拖入 + ⭐ **左侧泄露了全部十个查询名** | ✅ S21 `00:00`–`01:41`；QBE2 |
+| p.62 | §2.23.2 | 🖼️ **结果**（5 行） | ✅ S21 `00:00`–`01:41`；QBE2 |
+| p.63 | §2.23.3 | 🖼️ Show Table，**同时选中两张表**（与 p.59 的唯一区别） | ✅ S21 `02:14`–`04:52`；QBE3 |
+| p.64 | §2.23.3 | 🖼️ ⭐ 两表已加入，**连接线自动出现**（1 — ∞） | ✅ S21 `02:14`–`04:52`；QBE3 |
+| p.65 | §2.23.3 | 🖼️ 七字段已全部拖入 | ✅ S21 `02:14`–`04:52`；QBE3 |
+| p.66 | §2.23.3 | 🖼️ **结果**（5 行；⚠️ 行序与 p.37 不同；佣金率显示为 10%/12%） | ✅ S21 `02:14`–`04:52`；QBE3 |
+| p.67 | §2.23.4 | 🖼️ Show Table，选 Cash | ✅ S21 `05:04`–`07:33`；QBE4 与检查错误 |
+| p.68 | §2.23.4 | 🖼️ 两字段 + Criteria `>=50000` | ✅ S21 `05:04`–`07:33`；QBE4 与检查错误 |
+| p.69 | §2.23.4 | 🖼️ **结果**（1 行 BA-8） | ✅ S21 `05:04`–`07:33`；QBE4 与检查错误 |
+| p.70 | §2.23.5 | 🖼️ Show Table，选 Sale | ❓ S21 `07:47` 只到 QBE5 题目入口，未录执行 |
+| p.71 | §2.23.5 | 🖼️ 三字段 + Criteria **`<> "E-10"`**（⚠️ 带引号，纠正了 p.47） | ❓ S21 `07:47` 只到 QBE5 题目入口，未录执行 |
+| p.72 | §2.23.5 | 🖼️ **结果**（2 行 S-1、S-7） | ❓ S21 `07:47` 只到 QBE5 题目入口，未录执行 |
+| p.73 | §2.23.6 | 🖼️ Show Table，选 Sale | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.74 | §2.23.6 | 🖼️ ⭐ **两条件写同一行 = AND** + 红箭头批注 | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.75 | §2.23.6 | 🖼️ **结果**（3 行；⚠️ S-5 因 `<` 严格小于被排除） | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.76 | §2.23.7 | 🖼️ Show Table，选 Sale | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.77 | §2.23.7 | 🖼️ ⭐ **两条件写不同行 = OR** + 两条红箭头批注 | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.78 | §2.23.7 | 🖼️ **结果**（6 行；⚠️ S-5、S-6 靠销售员条件入选） | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.79 | §2.23.8 | 🖼️ Show Table，选 Sale | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.80 | §2.23.8 | 🖼️ **只拖两个字段** + 批注 "Bring only the fields you need" | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.81 | §2.23.8 | 🖼️ BETWEEN 条件 + Date 的 Show 已取消 + 指出 Σ 按钮 | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.82 | §2.23.8 | 🖼️ ⭐ Total 行出现，下拉展开（12 个选项），`Where` 高亮 + 批注 | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.83 | §2.23.8 | 🖼️ 第二个下拉展开，`Sum` 高亮 | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.84 | §2.23.8 | 🖼️ **结果**（`SumOfAmount = \$52,600.00`，已验算） | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.85 | §2.24.0 | 🚩 章节分隔页（"Other questions related to an expanded **RAE** model"）⚠️ RAE 应为 REA | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.86 | §2.24.1 | 🖼️ ⭐ **全讲最重要的一页**：应收账款 + `Nz()` + 黄底「Now it Works!!」 | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.87 | §2.24.2 | 🖼️ 应付账款（与 p.86 完美镜像，表达式已逐字读出） | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.88 | §2.24.3 | 🖼️ 两周对比的畅销/滞销存货（外连接） | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.89 | §2.24.4 | 🖼️ 加权平均单位成本（⚠️ 标题注明 not for Financial Statement use） | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.90 | §2.24.5 | 🖼️ 平均订单履行天数（`AvgOfDaysToFill = 2.5`） | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.91 | §2.24.6 | 🖼️ ⭐ 外连接 + `Is Null` 反连接（全讲唯一能看到外连接箭头的截图） | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.92 | §2.24.7 | 🖼️ 每人销售拜访次数（⭐ E30 = **0**） | ❓ 当前三源未获得对应课堂，不可降权 |
 
 > ✅ **全部 92 页已覆盖。**
 > **例外声明**：仅 **p.1** 为封面页，只登记不展开（[[对抗自检清单]] 第 1 项允许的两类例外之一）。**本讲无学习目标页。**
@@ -6614,40 +7136,53 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 
 ---
 
+
+**本次课堂时序**：S19 先补 M05，再进入本讲；之后 R1 讲 SQL 与 Query 1，宣布休息；S21 复述 Query 1 后做 Query 2–4，转入 Quiz 2 上传。源间内容支持这个顺序，没有共同音频锚点，不标无缝，也不把媒体时长相加为整堂课长度。S19 `33:54`–`37:08` 与学生自行操作相邻，R1 `08:25`–`10:25` 与下载例库相邻；R1 `15:57` 后是休息，16 分钟后的私谈不公开。
+
+**课堂时间分配**（本批脚本按本源区间求差，含跟做/下载停顿，不是纯讲课分钟；源间缺口和不确定性见下节）：
+
+| 来源 | 内容 | 区间 | 区间长度 |
+|---|---|---|---:|
+| S19 | 切章、目的与建库入口 | S19 `09:30`–`13:19` | 229 秒 |
+| S19 | 建表、类型、主键 | S19 `13:19`–`31:30` | 1091 秒 |
+| S19 | 三表/复合主键/关系 | S19 `32:11`–`43:09` | 658 秒 |
+| S19 | 三语言与SQL基础 | S19 `43:09`–`58:09` | 900 秒 |
+| R1 | SQL范围与运算符 | R1 `00:01`–`07:07` | 426 秒 |
+| R1 | QBE1、下载例库与休息 | R1 `07:07`–`15:57` | 530 秒 |
+| S21 | QBE2 | S21 `00:00`–`01:41` | 101 秒 |
+| S21 | QBE3 | S21 `02:14`–`04:52` | 158 秒 |
+| S21 | QBE4纠错 | S21 `05:04`–`07:33` | 149 秒 |
+| S21 | QBE5入口及Quiz2上传 | S21 `07:47`–`09:17` | 90 秒 |
+
 ## 9. 延伸与勘误
 
 ### 9.1 课件有但课上略过
 
-**本讲无转录，无法判断课堂上略过了什么。**
-
-⚠️ 但有一点可以确定：**本讲是机房上机课**（🎙️ W1 转录 `12:56`：*"that's why we have this computer room so we have that access software"*）。上机课的常见形态是**教师演示 + 学生跟做**，很可能并不逐页讲 PPT。
-
-**因此本笔记对 92 页全部按"课上没讲"处理，逐页完整展开** —— 这正是 [[对抗自检清单]] 第 2 项要求的做法：**课上略过恰恰意味着这部分只能靠笔记学。**
-
-**唯一一处可以论证降低详略的地方**（按第 2 项的要求写出论证）：
-
-**p.15 与 p.17 是完全相同的两页**（"Save / File – Save / Close."）。本笔记在 §2.4.5 完整讲了保存的语义（含 Access 与 Excel 的差别），§2.4.6 末尾只用一句话交代 p.17 是同一内容的重复。**理由**：两页文本一字不差、视觉复核确认无任何图形差异，重复展开只会稀释信息密度。**这不是跳过，是合并。**
+| 页码／内容 | 判定 | 证据与处理 |
+|---|---|---|
+| p.19–23 一对多实操 | ❓ 没有完整对应 | S19 建第二张表后已转多对多，不能倒推前五页逐项讲过 |
+| p.44 外连接 SQL | ⏭️ 当前基础题型降权 | R1 `01:10` 明说可忽略；完整自学机制保留 |
+| p.70–72 Query 5 | ❓ 只有题目入口 | S21 `07:47` 后转上传 Quiz 2，未获后续执行 |
+| p.73–92 后续查询与会计应用 | ❓ 本次未录到 | S21 无正式下课语，不能写成教授略过／永久免考 |
 
 ### 9.2 课上讲了但课件没有
 
-**本讲无转录，无法比对。**
+每行是一项课堂增量，区间长度含操作停顿，按本批脚本时间差计算；不合并成课堂总长。
 
-⚠️ **转录到手后需要重点回填的问题清单**（按优先级排序）：
+| # | 内容 | 区间长度 | 时间戳 | 小节 | 价值 |
+|---|---|---|---|---|---|
+| 1 | 空白数据库、表与视图的层次 | 237 秒 | S19 `13:19`–`17:16` | §2.2.1 | 表属于数据库，重开表不等设计丢失 |
+| 2 | 删除再插 ID 行，重新指定主键 | 86 秒 | S19 `27:25`–`28:51` | §2.4.4 | 字段名称恢复不代表约束自动恢复 |
+| 3 | C-5 与不等于的口头变式 | 70 秒 | R1 `00:38`–`01:48` | §2.17.1、§2.18.1 | 原语言、完整行答案和重建代码地位分开 |
+| 4 | Query 3 可选表名.* | 47 秒 | S21 `03:34`–`04:21` | §2.23.3 | 快捷取全列仍依赖正确连接 |
+| 5 | 错误结果返回 Design View 查输入 | 43 秒 | S21 `06:44`–`07:27` | §2.23.4 | 不猜未录清的具体误键 |
+| 6 | Quiz 2 使用例库并上传附件 | 多源，不合并时长 | S19 `12:22`–`12:40`；R1 `08:15`；S21 `08:04`–`09:17` | §9.5 | 准确题面/截止/分值/本人提交仍待任务资料 |
 
-| # | 待确认的问题 | 为什么重要 |
-|---|---|---|
-| 1 | **本讲考不考？以什么形式考？** 期末会不会要求手写 SQL / 画 QBE 网格 / 做上机题？ | 92 页是全课之最，但期中不考。**期末的考法完全未知**，直接决定复习策略 |
-| 2 | **有没有配套的 Access 文件发下来？** 讲义用的 `Dunn3-SeChapter6Examples.accdb` 与 `Dunn4eChps10-11withqueries.accdb` 学生能不能拿到？ | 上机课如果不给库文件，91 页截图只能看不能练 |
-| 3 | **有没有上机作业 / 小测？** | 本讲讲义**一个字都没提作业与截止日期**（已全文检索 deadline / due / submit / assignment），但上机课经常有课堂练习 |
-| 4 | **p.53「横向计算」有没有在课上补例子？** | 讲义只给了定义，例子完全缺失（那个 `SaleInventoryLineExtensions` 查询只在 p.61 的列表里出现过名字） |
-| 5 | **p.86–p.92 的前置步骤（Step 1–3）课上演示了吗？** | 七个会计查询全部只给了最后一步，中间步骤是本笔记反推的 |
-| 6 | **外连接在 QBE 里怎么做，课上演示了吗？** | 讲义 84 页里**从没展示** Join Properties 对话框，但 p.91 的结果显然用了它 |
-| 7 | **教授对 `Nz()` 那个黄底「Now it Works!!」说了什么？** | 那是全讲唯一带情绪的标记，很可能对应一段口头解释 |
-| 8 | **Access 的版本与语言** | 截图是 Access 2010 英文版；考试/上机用的是哪个版本？菜单位置会变 |
+前五行分别为可定位演示片段；第六行只记录行政线索，不能由上传声音推断本人已交。
 
 ### 9.3 课件自身的问题
 
-> ⚠️ **本课前几讲已累计发现 29 处讲义问题**（M01 九处、M02 九处、M05 十一处）。本讲又发现 **21 处**。
+> ⚠️ 本节按当前来源重新分类：保留原 1–21 定位号方便追溯；原 6、7 两项整体方括号错误断言撤销，故现列 **19 项问题/缺口**。这是材料与写法核查，不是教学分数；历史“21 处”不再作为当前错误总数。
 > **信噪比评价**：本讲的**截图部分质量很高**（操作步骤清晰、批注到位），但**文字部分的 SQL 语句错误密集**——如果照着 p.41–p.51 的 SQL 敲进 Access，**六条里有五条跑不通**。
 
 #### A. SQL 语法错误（5 处，最严重的一类）
@@ -6658,14 +7193,13 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 | 2 | **p.47** | `Where SalesRep# <> E-10;` | `<> "E-10"` | 同上。⚠️ **p.71 的 QBE 截图里是带引号的**，说明作者实操时加了 |
 | 3 | **p.49** | `Where Date BETWEEN 7/1 and 7/31;` | `BETWEEN #7/1/2014# AND #7/31/2014#` | 日期缺 `#` 与年份 → 被当成除法运算。⚠️ **p.81 的截图里写法是对的** |
 | 4 | **p.51** | `Where Balance EXISTS;` | `Where Balance IS NOT NULL;` | `EXISTS` 在标准 SQL 里是**子查询谓词**，不能这样用。⚠️ **p.91 用的 `Is Null` 才是对的写法** |
-| 5 | **p.44** | `From Sale LeftJoin […] Where […]` | `FROM Sale LEFT JOIN […] ON […]` | 三处错：`LeftJoin` 应是两个词；连接条件应用 `ON` 不是 `WHERE`。⚠️ **用 `WHERE` 会让外连接退化成内连接**，讲义给出的 8 行答案与它自己的 SQL 对不上 |
+| 5 | **p.44** | `From Sale LeftJoin […] Where […]` | `FROM Sale LEFT JOIN […] ON […]` | 两处明确语法问题：关键字需分词、连接条件需 ON。原语句无效，不能虚构其实际结果；完整外连接后再在 WHERE 写排除空值的右侧条件，才是另一个会丢行的问题 |
 
-#### B. 方括号位置错误（2 处）
+#### B. 整体方括号的 ACE 方言核查（原 6、7 撤销）
 
-| # | 页 | 讲义写的 | 应该是 |
-|---|---|---|---|
-| 6 | p.37、p.43 | `[Salesperson.Employee Number]` | `Salesperson.[Employee Number]` |
-| 7 | p.38、p.44 | `[Sale.Sale#]`、`[Sale-CashRecDuality.Sale#]` | `Sale.[Sale#]`、`[Sale-CashRecDuality].[Sale#]` |
+旧稿将 p.43 的 `[Salesperson.Employee Number]` 和 p.44 的 `[Sale.Sale#]` 一概判错，这个普遍结论撤销。当前 E 盘只读 ACE 副本中，整体限定标识符和分开括号都返回相同五行七列；含空格的 `[Customer.Accounts Receivable Balance]` 也与 `Customer.[Accounts Receivable Balance]` 一样返回五行。
+
+推荐 `表.[字段]` 是为了清楚，不能把推荐写法当成 ACE 唯一接受的语法。该有限测试使用当前字段名；p.44 仍需分别修 LeftJoin 与缺 ON，不据方括号测试声称整段原 SQL 已成功运行。
 
 #### C. 命名与拼写不一致（6 处）
 
@@ -6751,12 +7285,12 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 |---|---|---|
 | 1 | ✅ **M04 的小节锚点已补** | §1.1 的 M04 引用已换成标题原文锚点，涵盖 REA 动机、三层模型、UML、主外键、参照完整性与五步转换法。M04 讲转换规则，本讲在 Access 中操作；正式发布前由发布者核目标标题仍一致。 |
 | 2 | ✅ **历史译名冲突已修** | M04 与本讲当前均用「参照完整性（referential integrity）」。该译名对齐 Access 中文界面；旧稿诊断不再代表现状，术语登记仍见 [[AC6761_Artificial_Intelligence_Accounting/_meta/待并入术语总表\|待并入术语总表]] 的 W6-D 区块。 |
-| 3 | **`Nz()` 表达式的第三项** | p.86 的 Zoom 框只显示到第二项就被截断了。本笔记按 p.87 的对称结构推断第三项是 `-Nz([SumSaleReturnsThroughBSDate.SumOfDollarAmount])`，标了 💡 笔记推断。**若拿到讲义源文件或 Access 库可核实** |
+| 3 | **`Nz()` 表达式的第三项** | 当前 PPTX 已取得：Zoom 框仍截断，框外可见销售退回汇总字段；完整第三项表达式仍按对称结构给参考推断。需原查询定义才能核其精确写法，不再把“讲义源文件未取得”当缺口 |
 | 4 | **p.91 的查询结果** | 讲义只给了设计视图，没给结果。**六种商品里哪几种没有正面反馈，无法确认** |
 | 5 | **p.92 的查询设计视图** | 讲义只给了结果。本笔记根据 `CountOfSalesCallID` 这个列名反推出用的是外连接 + `Count([SalesCallID])`，标了 💡 笔记推断 |
 | 6 | **p.86–p.92 的 Step 1–3** | 七个会计查询的前置步骤全部缺失，本笔记根据查询名反推。**若拿到 `Dunn4eChps10-11withqueries.accdb` 可完全核实** |
 | 8 | **双链锚点的写法（全库问题）** | 本笔记用 **Obsidian 原生写法** `[[文件#完整标题文字\|显示名]]` —— Obsidian 按**标题原文**匹配，可以正常解析。早期候选曾诊断 M05 使用 GitHub 式 slug；当前跨篇链接已按 Obsidian 标题原文或文件级回指修正。正式 vault 仍由发布者做一次链接核对 |
-| 7 | **本讲有没有作业** | 已对讲义全文检索 `deadline` / `due` / `submit` / `assignment` / `group` / `exam`，**零命中**。因此**未在 `作业与DDL.md` 中新增任何条目**。⚠️ 上机课常有课堂练习，转录到手后须复核 |
+| 7 | **本讲当堂 Quiz 2** | 当前 Quiz 2.docx 已得：E-10 等于查询、三列、保存 QueryA，原题全文与解析见 §2.23.9。截止、分值、本人是否提交仍未知；题定发送步骤不构成本次执行授权 |
 
 ### 9.6 ⚠️ 反方视角（对抗自检清单第 12 项）
 
@@ -6779,7 +7313,7 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 
 **「在 Access 的 QBE 界面里，具体怎么把一个内连接改成左外连接？」**
 
-本笔记 §2.23.2 给出了操作步骤（双击连接线 → Join Properties → 选选项 2），**但这个步骤讲义从头到尾没有展示过任何截图**。本笔记的描述来自对 Access 界面的一般了解，**没有材料支撑**。如果考试要求描述具体对话框的文字（三个单选项的准确措辞），**我给出的措辞可能与实际版本有出入**。
+本笔记 §2.23.2 说明双击连接线后，选择完整文字中全保留目标表的选项；不再背固定选项 2/3。原讲义未展示这个对话框，本次也未操作 Access UI，具体版本的编号与措辞仍须在实际对话框核对。
 
 **第二个答不上来的**：**Access 2010 之后版本的界面变化。** 讲义截图全是 Access 2010（Show Table 是一个独立对话框）。**Access 2016/2019/365 的界面已经改了**（Show Table 变成右侧任务窗格，叫 "Add Tables"）。如果上机用的是新版，**本笔记描述的很多点击位置会对不上**。
 
@@ -6797,9 +7331,13 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 | 6 | **§2.10.2 的 REA 对应图**（八张表对应到 Resource / Event / Agent 与七条关联） | 若某条对应错了，读者会把 W6 与 M05 错误地接起来 | 🟡 中。**讲义完全没画这张图**，是本笔记根据表名和外键结构重建的。`Customer.SP#` 对应 Assignment 这一条**特别值得怀疑**——它也可能只是一个冗余字段 |
 | 7 | **§2.4.5 关于 Access "数据即时落盘、结构才需保存"的说明** | 若记错，读者会以为数据也要手动保存 | 🟢 低。这是 Access 的基本行为 |
 | 8 | **§2.15 与 §7 第 7 题那张"逐笔未收余额"表**（合计已收 53,132、未收 **64,668**） | 若加错，读者会记住一个错的应收余额 | 🟢 低，但**这一条是自检时真实抓到过一次错的地方**：初稿把已收总额加成了 53,932、未收算成 63,868。现已用**两条独立路径交叉验算**（逐笔相加 vs 总额相减；Duality 表的 Applied 合计 vs CashReceipt 表的 Amount 合计），四个数全部收敛到 53,132 / 64,668 |
-| 9 | **本讲"很可能在期末范围内"** | 若期末也不考 W6，读者会浪费复习时间 | 🟡 中。**依据只有"92 页是全课最厚"这一条间接证据**。🎙️ 教授只明确说了期中范围是 W1–W5，**期末范围从未提及**。**必须去 Canvas 或课上确认** |
+| 9 | **旧版以页数预测期末范围** | 容易将整章一概当考点 | 已由 10 月 21 日证据替换：重点是给表读 SQL 写结果，软件点击操作与外连接的限定见 §6，具体分值仍未知 |
 
 **⚠️ 第 8 条是本笔记在自检过程中真实发现并修正的一处算错。** 保留这条记录，是为了提醒读者：**§2.15 里那张表的数字请以 §7 第 7 题为准。**
+
+**本次来源与缺口**：S19 原始 527 段跨 M05/M06，本讲从 `09:30` 切章后开始；R1 原始 207 段，仅前 130 段课堂可公开，最后教师语句始于 `15:57`、约在 15:58 结束（词末时间，不是另一个段首定位），公开音频取前 16:00；S21 为 83 段，尾部停在上传附件，没有正式下课语。原始转录、私人片段、媒体时长与校词记录分开保存；ASR 将 Access 识成 XSense/Express，把 SQL/QBE、Sale、Run 及字段名识错，正式拼写以讲义和例表为准。本次没有逐字人工听校，ASR 扫描不等于全音频隐私保证。
+
+**本次反方视角**：后段 p.70–92 仍无课堂回答，原数据库／原查询定义的限制没有因升级材料版本而消失。课堂 `balance exists` 仍是伪 SQL，不能直接运行；本例 Short Text 不可推广为所有数据库 ID 类型。跨设备接缝只有内容顺序证据，没有精确遗漏时长。
 
 ### 9.7 变更记录
 
@@ -6807,6 +7345,9 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 |---|---|
 | 2026-09-11 | 链接修复：本文件 39 处 Markdown 形式的同文件锚点（`[§x](#slug)` 写法）改为 Obsidian 双链 `[[#标题原文\|§x]]`——Obsidian 按标题原文匹配，GitHub 式小写连字符 slug 一律点不开（对抗自检清单 9b）。只改链接写法，标题与正文未动 |
 | 2026-10-02 | 按简化流程完成机制修复与验收：沿用根代理既有实际图形检查证据（5 张新增/改变图、1 个显示式，解析问题 0）及 `calc.py` / `results.json` 的 SQLite、Decimal 复算结果；本代理未重看图。按 2026-10-02 简化流程验收，未做独立全量 Q/R。SQLite 复算不冒充 Access 原生运行，`IIf` / `Nz` / 用户数据库与缺失查询步骤限制继续保留；原 `status: v0.9`、`transcript: pending` 与来源限制不变。 |
+
+| 2026-10-26 | 按原全篇独审 B1–B8/N1–N5 集中修订正文及受影响摘要、速查、词表、框架和自测，补当前 Quiz 2 原题和逐问英文参考。候选仅待原独审者定向复核，不将作者修复或机械预检记为教学通过。 |
+| 2026-10-25 | 首次合并本人确认的 10 月 21 日 S19/R1/S21 转录，材料升 v1.0；更新课堂格、SQL 纸笔题与操作边界、逐页覆盖和 Quiz 2 线索，保留 p.19–23／p.70–92 及源间未知缺口；R1 私谈只留本机。 |
 
 ---
 

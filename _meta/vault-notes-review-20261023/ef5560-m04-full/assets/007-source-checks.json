@@ -1,0 +1,201 @@
+{
+  "schema": "note-source-checks-v1",
+  "sources": {
+    "old": {
+      "path": "D:\\上课资料\\CityU\\EF5560_Fintech_and_AI_in_Finance\\course_files_export\\Lec04_Nonlinear_Machine_Learning.pdf",
+      "sha256": "62ca1f9191290baf426f4e950271723a2ae8baeac996fabd4b4c293350de187d"
+    },
+    "new": {
+      "path": "D:\\上课资料\\CityU\\EF5560_Fintech_and_AI_in_Finance\\course_files_export\\canvas-20261020\\Lec04_Nonlinear_Machine_Learning.pdf",
+      "sha256": "d68f19775d74f9ca455f214a6ef1c0906da9a03e1a3f75d96ae123ef590f5c44"
+    }
+  },
+  "questions": [
+    {
+      "id": "old-p26",
+      "source_id": "old",
+      "page": 26,
+      "section": "2.3.6",
+      "original": "**Short-Answer Question: Is This Threshold Investable?**\n\nA tree splits at inflation = 2.5%. Pre-test diagnostics:\n\n| Diagnostic | Evidence |\n|---|---|\n| Leaf support | Only four months support the high-inflation leaf. |\n| Leaf-size sensitivity | Minimum leaf size 12 removes the split. |\n| Time stability | A later pre-test refit gives a different split. |\n\n1. Identify two warning signs in the diagnostics.\n2. Explain whether the threshold is credible enough to guide a financial decision.\n3. Propose one additional validation check without looking at the frozen test.\n\nInterpretability alone does not establish a stable regime.",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "指出两个警告信号",
+          "english": "The four-month leaf has weak support"
+        },
+        {
+          "id": "2",
+          "chinese": "目前不可信，不能仅凭这条规则配置资金",
+          "english": "The threshold is not yet credible enough"
+        },
+        {
+          "id": "3",
+          "chinese": "做按时间向前的验证",
+          "english": "Use forward validation on later pre-test dates"
+        }
+      ]
+    },
+    {
+      "id": "old-p27",
+      "source_id": "old",
+      "page": 27,
+      "section": "2.3.6",
+      "original": "**Multiple-Choice Question: Reading a Regression Tree**\n\nSuppose a fitted tree uses the following weekly forecasting rule:\n\n| Condition | Forecast return |\n|---|---:|\n| Volatility > 2% | −0.8% |\n| Volatility ≤ 2%, momentum > 0 | +0.6% |\n| Volatility ≤ 2%, momentum ≤ 0 | −0.2% |\n\nA stock has volatility 1.5% and momentum −0.4%. What is its forecast?\n\nA) −0.8%  \nB) −0.4%  \nC) −0.2%  \nD) +0.6%",
+      "options": {
+        "A": "−0.8%",
+        "B": "−0.4%",
+        "C": "−0.2%",
+        "D": "+0.6%"
+      },
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "答案 C（−0.2%）",
+          "english": "C, because 1.5% goes to the low-volatility branch"
+        }
+      ]
+    },
+    {
+      "id": "old-p28",
+      "source_id": "old",
+      "page": 28,
+      "section": "2.3.6",
+      "original": "**Multiple-Choice Question: Why Randomize Predictor Selection?**\n\nAn analyst averages many trees fitted to bootstrap samples. Nearly every tree uses the same dominant predictor for its first split, and their forecast errors are strongly correlated. Why might random predictor subsets improve the ensemble?\n\nA) They ensure that each individual tree has a lower training error.  \nB) They can reduce correlation among tree forecasts, making averaging more effective.  \nC) They ensure that the strongest predictor appears at the root of every tree.  \nD) They remove the need to choose complexity on validation data.",
+      "options": {
+        "A": "They ensure that each individual tree has a lower training error.",
+        "B": "They can reduce correlation among tree forecasts, making averaging more effective.",
+        "C": "They ensure that the strongest predictor appears at the root of every tree.",
+        "D": "They remove the need to choose complexity on validation data."
+      },
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "答案 B：随机子集能降低树间相关",
+          "english": "B, because lower forecast correlation can make averaging more effective"
+        }
+      ]
+    },
+    {
+      "id": "old-p35",
+      "source_id": "old",
+      "page": 35,
+      "section": "2.4.5",
+      "original": "**Short-Answer Question: How Should We Split a Stock Panel?**\n\nAn analyst has 30 stocks observed over 156 weeks: 4,680 stock-week rows. She randomly splits the rows into training and test sets, then argues that the large sample justifies a large neural network.\n\n1. Why do 4,680 rows not represent 4,680 independent market episodes?\n2. Why is this random split unsuitable for evaluating forecasts of future returns?\n3. Describe a better sample split and how you would choose the network size.",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "同一周 30 只股票一起受市场新闻",
+          "english": "The 4,680 rows contain only 156 market dates"
+        },
+        {
+          "id": "2",
+          "chinese": "它可能把同一周的一些股票放进训练",
+          "english": "A random row split can put one week on both sides"
+        },
+        {
+          "id": "3",
+          "chinese": "按整周、按时间顺序划分开发",
+          "english": "Keep weeks intact in chronological development"
+        }
+      ]
+    },
+    {
+      "id": "old-p46",
+      "source_id": "old",
+      "page": 46,
+      "section": "2.6.4",
+      "original": "**Multiple-Choice Question: Which Nonlinear Model Was Selected?**\n\nThree models are tuned before the frozen test period. Their mean squared errors are:\n\n| Model | Validation MSE | Test MSE |\n|---|---:|---:|\n| Shallow tree | 0.0024 | 0.0019 |\n| Random forest | 0.0021 | 0.0023 |\n| Boosting | 0.0022 | 0.0018 |\n\nWhich model should be reported as the preselected evaluation model?\n\nA. Shallow tree, because it has the lowest test MSE among the trees.  \nB. Random forest, because it has the lowest validation MSE.  \nC. Boosting, because it has the lowest test MSE.  \nD. Average the tree and boosting after observing the test results.  \n\n**Discuss:** Separate model selection from final evaluation. Why cannot the test-period winner replace the model frozen after validation?",
+      "options": {
+        "A": "Shallow tree, because it has the lowest test MSE among the trees.",
+        "B": "Random forest, because it has the lowest validation MSE.",
+        "C": "Boosting, because it has the lowest test MSE.",
+        "D": "Average the tree and boosting after observing the test results."
+      },
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "答案 B（随机森林，验证 MSE 最低）",
+          "english": "Random forest was selected by the lowest validation MSE"
+        },
+        {
+          "id": "2",
+          "chinese": "模型选择发生在验证阶段",
+          "english": "replacing the frozen model with the test winner would use the test period"
+        }
+      ]
+    },
+    {
+      "id": "old-p53",
+      "source_id": "old",
+      "page": 53,
+      "section": "2.7.5",
+      "original": "**Short-Answer Question: Forecast Accuracy and Stock Ranking**\n\nSuppose a stock excess-return model has a test OOS $R^2$ of −1% against a zero forecast. Its top-minus-bottom portfolio has a mean weekly return of +0.08% before costs over the same test period.\n\n1. Explain how negative OOS $R^2$ and a positive mean portfolio return can coexist.\n2. Is the positive mean return enough to recommend investing? Give two additional checks and explain what each would tell you.",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "两项指标回答的不是同一个问题",
+          "english": "Negative OOS $R^2$ means the numerical forecasts have larger squared errors"
+        },
+        {
+          "id": "2",
+          "chinese": "足以推荐投资吗？不够",
+          "english": "First, estimate its standard error or confidence interval"
+        }
+      ]
+    },
+    {
+      "id": "new-p28",
+      "source_id": "new",
+      "page": 28,
+      "section": "2.3.6",
+      "original": "**Short-Answer Question: Is This Threshold Investable?**\n\nA tree splits at inflation = 2.5%. Pre-test diagnostics:\n\n| Diagnostic | Evidence |\n|---|---|\n| Leaf support | Only four months support the high-inflation leaf. |\n| Leaf-size sensitivity | Minimum leaf size 12 removes the split. |\n| Time stability | A later pre-test refit gives a different split. |\n\n1. Identify two warning signs in the diagnostics.\n2. Explain whether the threshold is credible enough to guide a financial decision.\n3. Propose one additional validation check without looking at the frozen test.\n\nInterpretability alone does not establish a stable regime.",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "指出两个警告信号",
+          "english": "The four-month leaf has weak support"
+        },
+        {
+          "id": "2",
+          "chinese": "目前不可信，不能仅凭这条规则配置资金",
+          "english": "The threshold is not yet credible enough"
+        },
+        {
+          "id": "3",
+          "chinese": "做按时间向前的验证",
+          "english": "Use forward validation on later pre-test dates"
+        }
+      ]
+    },
+    {
+      "id": "new-p48",
+      "source_id": "new",
+      "page": 48,
+      "section": "2.6.4",
+      "original": "**Multiple-Choice Question: Which Nonlinear Model Was Selected?**\n\nThree models are tuned before the frozen test period. Their mean squared errors are:\n\n| Model | Validation MSE | Test MSE |\n|---|---:|---:|\n| Shallow tree | 0.0024 | 0.0019 |\n| Random forest | 0.0021 | 0.0023 |\n| Boosting | 0.0022 | 0.0018 |\n\nWhich model should be reported as the preselected evaluation model?\n\nA. Shallow tree, because it has the lowest test MSE among the trees.  \nB. Random forest, because it has the lowest validation MSE.  \nC. Boosting, because it has the lowest test MSE.  \nD. Average the tree and boosting after observing the test results.  \n\n**Discuss:** Separate model selection from final evaluation. Why cannot the test-period winner replace the model frozen after validation?",
+      "options": {
+        "A": "Shallow tree, because it has the lowest test MSE among the trees.",
+        "B": "Random forest, because it has the lowest validation MSE.",
+        "C": "Boosting, because it has the lowest test MSE.",
+        "D": "Average the tree and boosting after observing the test results."
+      },
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "答案 B（随机森林，验证 MSE 最低）",
+          "english": "Random forest was selected by the lowest validation MSE"
+        },
+        {
+          "id": "2",
+          "chinese": "模型选择发生在验证阶段",
+          "english": "replacing the frozen model with the test winner would use the test period"
+        }
+      ]
+    }
+  ],
+  "manual_notes": "旧版6题共12个作答单元；新版仍为问句的p28/p48与旧题同文，共5个重复作答单元。新版p29/p30/p38/p55已为给定演示/说明，按实际地位核。题面含Markdown表格为显示转写，PDF文本与源图另存，不靠正则认证语义。"
+}

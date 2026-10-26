@@ -1,0 +1,38 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M06 frozen candidate visual completion</title><link rel="stylesheet" href="/deps/katex/katex.min.css"><style>body{margin:0;background:#f2f2f2;color:#202020;font:18px/1.65 "Microsoft YaHei",sans-serif}header{position:sticky;top:0;background:#fff;border-bottom:1px solid #aaa;padding:8px 20px;z-index:2;font-size:13px}main{max-width:1040px;margin:auto;background:#fff;padding:24px 42px}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;font-size:16px;width:100%;table-layout:auto}td,th{border:1px solid #bbb;padding:8px;text-align:left}blockquote{border-left:4px solid #789;padding-left:18px;margin:20px 0;background:#f7f9fb}pre{background:#f1f3f5;padding:15px;overflow:auto;font-size:15px;line-height:1.5}code{font-family:Consolas,monospace}h1,h2,h3,h4{line-height:1.4;scroll-margin-top:55px}summary{font-weight:bold;cursor:pointer}.mermaid{background:white;text-align:center;white-space:normal;overflow:visible}.mermaid svg{max-width:100%;height:auto}.katex-display{overflow-x:auto;overflow-y:hidden}details{padding:8px;border-left:2px solid #ddd}</style></head><body><header>冻结候选 ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4 · 同源浏览器显示，非 Obsidian/Access UI · <span id="render-state">rendering</span></header><main><h1>17-english-U28-U34</h1><p><strong>英文参考答案（笔记自拟，U28）</strong></p>
+<blockquote>
+<p>They are different operations. Relational-algebra Select filters rows and corresponds to SQL WHERE, while SQL SELECT chooses columns and corresponds to relational-algebra Project. SQL duplicate handling must also be aligned when comparing complete results.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U29）</strong></p>
+<blockquote>
+<p>BA-9 appears in the non-null result because zero is a known balance, not an unknown value. BA-6 and BA-7 have Null balances whose meaning requires source rules. Use IS NOT NULL for the executable condition; the source phrase Balance EXISTS is not the correct field test. Replacing an unknown balance with zero would invent a fact and can misstate cash.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U30）</strong></p>
+<blockquote>
+<p>An outer join is useful when unmatched subjects must remain in the answer. Examples include all sales with any allocations, all inventory items including those with no sales in a period, and all salespeople including those with zero recorded calls. The no-positive-reaction query also preserves all items before testing for a missing match. No match alone does not establish that a partly completed transaction has no remaining balance.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U31）</strong></p>
+<blockquote>
+<p>For the supplied records through August 31, assuming no opening balance, returns, or other adjustments, sales total 117,800 and applied receipts total 53,132, giving receivables of 64,668. S-2 contributes 6,668, S-6 contributes 35,000, and S-7 contributes 23,000. The empty customer balance field illustrates deriving a balance from events; a controlled cache is also possible. The incomplete example does not certify a real company balance.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U32）</strong></p>
+<blockquote>
+<p>Two possible causes are an inner join that removes E30, or a post-join date filter that rejects E30’s Null call date. Preserve all salespeople and join them to calls already filtered to the reporting period. Count a non-null call ID rather than COUNT(*), so an unmatched salesperson is counted as zero. This diagnoses reference implementations; the original design is unavailable.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U33）</strong></p>
+<blockquote>
+<p>Left join Customer to SaleOrder on the verified customer key, preserve every customer, and select rows whose matching non-null OrderID is Null. A raw WHERE OrderCount = 0 cannot work unless that count has first been produced. Alternatively, group a preserving outer join by customer and retain groups whose COUNT(OrderID) is zero; COUNT(*) would incorrectly count a padded row as one.</p>
+</blockquote>
+<hr />
+<p><strong>英文参考答案（笔记自拟，U34）</strong></p>
+<blockquote>
+<p>The slide explicitly marks the figure as not for Financial Statement use. Before using it for reporting, verify opening inventory where required by the method, consistent treatment of returns, the applicable cost components, and the costing policy and period. The missing upstream details do not prove that these items were omitted; they prevent certification. The displayed purchase average can still be a management reference.</p>
+</blockquote></main><script src="/deps/mermaid.min.js"></script><script src="/deps/katex/katex.min.js"></script><script src="/deps/katex/contrib/auto-render.min.js"></script><script>window.visualReady=false;window.visualErrors=[];
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'default',fontFamily:'Microsoft YaHei'});
+(async()=>{try{await mermaid.run({querySelector:'.mermaid'});}catch(e){window.visualErrors.push(String(e));}
+try{renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredTags:['script','noscript','style','textarea','pre','code']});}catch(e){window.visualErrors.push(String(e));}
+window.visualReady=true;document.querySelector('#render-state').textContent='render complete; '+window.visualErrors.join('; ');})();</script></body></html>

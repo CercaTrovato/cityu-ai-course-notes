@@ -1,0 +1,53 @@
+{
+  "execution_claim": "Historical saved result, not rerun in this task",
+  "readback_hashes": {
+    "EF5560_Fintech_and_AI_in_Finance\\code\\common\\load.py": "5b1eec96fbbf6ba256422a16cfebc364651b8cfa067804736a791507e304c02a",
+    "EF5560_Fintech_and_AI_in_Finance\\code\\output\\L04_01_reproduce_lecture.csv": "effc9e8a11313cfe6cdc28c4931aec231369e8c04aebb6b3ed0c383b58e05048",
+    "EF5560_Fintech_and_AI_in_Finance\\code\\output\\L04_02_refit_trees.csv": "a135f8182ffec8cfcb87e3f6d2075710240834b74ea7e0c59e1585d05b993f48",
+    "EF5560_Fintech_and_AI_in_Finance\\code\\output\\L04_03_market.png": "c8cee3923428e98d1161b3ec7095214f61f6b6287ebdca0051d532a35b23c739",
+    "EF5560_Fintech_and_AI_in_Finance\\code\\output\\L04_03_nonlinear_sort.csv": "31aa60f18a9853a7b1a3b12b1374fde813d3d626f42dcc8dc84aa2b4348974f4",
+    "EF5560_Fintech_and_AI_in_Finance\\code\\output\\L04_03_stock.png": "8bf29a55b4452fcb096417cde6445db59fa3b8e78e35152fd334560e477db323"
+  },
+  "inputs": "Current hashes of old unpacked class04/class04 are recorded in source-inventory.json; common.load.CLASS04_DIR points there, not current ZIP.",
+  "no_false_inheritance": "No historical per-run hash manifest was located; current byte hashes prove which files are being referenced now, not that a historical process ran exactly these bytes. Full earlier training is kept as historical claim and its implementation mismatch remains explicit.",
+  "scope": "Old L04_01/L04_02/L04_03 results only support old extracted-package discussion. Current ZIP MSE/R2 audit uses saved predictions in calculation-results.json and reviewer/source-arithmetic-stage-2.json; no training of current ZIP is claimed.",
+  "old_tree_output_rows": [
+    {
+      "task": "market",
+      "group": "U.S.",
+      "model": "Decision tree",
+      "val_mse_x1e4": "25.99",
+      "val_table": "25.99",
+      "oos_pct": "-2.6",
+      "oos_table": "-2.6"
+    },
+    {
+      "task": "market",
+      "group": "HKSAR",
+      "model": "Decision tree",
+      "val_mse_x1e4": "23.41",
+      "val_table": "23.41",
+      "oos_pct": "4.7",
+      "oos_table": "4.7"
+    },
+    {
+      "task": "market",
+      "group": "Chinese Mainland",
+      "model": "Decision tree",
+      "val_mse_x1e4": "27.39",
+      "val_table": "27.39",
+      "oos_pct": "-176.3",
+      "oos_table": "-176.3"
+    },
+    {
+      "task": "stock",
+      "group": "HSI",
+      "model": "Decision tree",
+      "val_mse_x1e4": "26.3",
+      "val_table": "26.3",
+      "oos_pct": "-0.142",
+      "oos_table": "-0.142"
+    }
+  ],
+  "known_stale_code_comment": "L04_01 docstring still mentions class03 358/4108 truncation. Actual current class03 prediction file has 4108 rows; no source code edits authorized in this dispatch."
+}

@@ -1,0 +1,103 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M06 frozen candidate visual completion</title><link rel="stylesheet" href="/deps/katex/katex.min.css"><style>body{margin:0;background:#f2f2f2;color:#202020;font:18px/1.65 "Microsoft YaHei",sans-serif}header{position:sticky;top:0;background:#fff;border-bottom:1px solid #aaa;padding:8px 20px;z-index:2;font-size:13px}main{max-width:1040px;margin:auto;background:#fff;padding:24px 42px}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;font-size:16px;width:100%;table-layout:auto}td,th{border:1px solid #bbb;padding:8px;text-align:left}blockquote{border-left:4px solid #789;padding-left:18px;margin:20px 0;background:#f7f9fb}pre{background:#f1f3f5;padding:15px;overflow:auto;font-size:15px;line-height:1.5}code{font-family:Consolas,monospace}h1,h2,h3,h4{line-height:1.4;scroll-margin-top:55px}summary{font-weight:bold;cursor:pointer}.mermaid{background:white;text-align:center;white-space:normal;overflow:visible}.mermaid svg{max-width:100%;height:auto}.katex-display{overflow-x:auto;overflow-y:hidden}details{padding:8px;border-left:2px solid #ddd}</style></head><body><header>冻结候选 ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4 · 同源浏览器显示，非 Obsidian/Access UI · <span id="render-state">rendering</span></header><main><h1>08-antijoin</h1><p><strong>截图：查询设计视图</strong>（窗口标题 <code>InventoryWithoutPositiveSalesCallReactions</code>）</p>
+<p>上半屏两个对象，<strong>中间一条带箭头的连接线</strong>：</p>
+<pre><code>┌ InventoryWithPositiveSalesCallReactions ┐        ┌ InventoryType ──────┐
+│  *                                      │        │  *                  │
+│  ItemID                                 │ ◀───── │ 🔑 ItemID           │
+│  CustomerReactiontoProduct              │        │    Description      │
+└─────────────────────────────────────────┘        │    UnitOfMeasure    │
+                                                   │    StandardCost     │
+                                                   │    ListPrice        │
+                                                   └─────────────────────┘
+</code></pre>
+<p>⚠️ <strong>画布中 InventoryType 在右，箭头指向左侧正面集合</strong>。这表明全保留的是 InventoryType；不由左右摆放决定 SQL 的 LEFT/RIGHT，也不能从本图认定 Join Properties 必为第 3 项。应核完整文字中全保留对象为 InventoryType。</p>
+<p>网格三列：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>列 1</th>
+<th>列 2</th>
+<th>列 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Field</strong></td>
+<td><code>ItemID</code></td>
+<td><code>Description</code></td>
+<td><code>CustomerReactiontoProduct</code></td>
+</tr>
+<tr>
+<td><strong>Table</strong></td>
+<td><code>InventoryType</code></td>
+<td><code>InventoryType</code></td>
+<td><strong><code>InventoryWithPositiveSalesCallReactions</code></strong></td>
+</tr>
+<tr>
+<td><strong>Show</strong></td>
+<td>☑</td>
+<td>☑</td>
+<td>☑</td>
+</tr>
+<tr>
+<td><strong>Criteria</strong></td>
+<td></td>
+<td></td>
+<td><strong><code>Is Null</code></strong> ⭐</td>
+</tr>
+</tbody>
+</table>
+<p>⚠️ <strong>讲义没有给这个查询的结果截图。</strong> 见 §9.3。</p>
+<p><strong>⭐ 这一页在教什么 —— "找出什么没发生"的标准三步套路</strong></p>
+<p><strong>看图前先问</strong>：怎样找全体商品中没有正面反馈的那些？</p>
+<pre class="mermaid">flowchart TD
+    A[&quot;Step 1：先找出&lt;br/&gt;『有正面反馈的商品』&lt;br/&gt;InventoryWithPositiveSalesCallReactions&quot;]
+    B[&quot;Step 2a：把全部商品表&lt;br/&gt;InventoryType&lt;br/&gt;外连接到 Step 1 的结果&quot;]
+    C[&quot;Step 2b：在 Step 1 那一侧的字段上&lt;br/&gt;加条件 Is Null&quot;]
+    D[&quot;结果：全部商品里&lt;br/&gt;没有出现在 Step 1 结果中的那些&quot;]
+    A --&gt; B --&gt; C --&gt; D
+</pre>
+<p>箭头代表先筛正面集合、再连全部商品、再查无匹配的操作顺序。</p>
+<p><strong>沿例子读图（笔记补充）</strong>：教学商品 I1 有正面记录，I2 没有。先取得 I1 的正面商品键，再保留全体商品 I1、I2 外连接该集合，检查匹配时必非空的身份键。最终留下 I2，表示无正面记录，不等于明确负面。这里把主体逻辑写在左边便于读法，与原画布摆放无关。</p>
+<p><strong>图旁边界</strong>：p.91没给结果；I1/I2仅教学例。无正面记录也可能尚未拜访，不等于客户明确否定。</p>
+<p><strong>文字替代</strong>：先筛正面记录、保留全部商品，再查匹配侧身份键无匹配；“匹配侧”不等于屏幕固定右侧。</p>
+<details open="open">
+<p><summary>读图自测：右侧有记录但tag为Null，用tag判断缺匹配安全吗？</summary></p>
+<p>不安全。应检测匹配时必非Null的身份键；未知tag不能证明右记录不存在。</p>
+</details>
+<p><strong>这个套路有个正式名字：反连接（anti-join）</strong>（💡 笔记补充，讲义未提这个术语）。</p>
+<p><strong>逐步理解它为什么有效</strong>：</p>
+<ol>
+<li><strong>外连接之后</strong>，<code>InventoryType</code> 的<strong>每一行都在</strong>（六种商品全在）</li>
+<li>有正面反馈的商品，右侧 <code>CustomerReactiontoProduct</code> <strong>有值</strong></li>
+<li><strong>没有</strong>正面反馈的商品，右侧 <code>CustomerReactiontoProduct</code> 是 <strong>Null</strong>（外连接没匹配上）</li>
+<li>在右表<strong>匹配时必非 Null 的身份键</strong>上加 <code>Is Null</code> → 只留下没有右侧匹配的行 = 没有正面反馈的商品</li>
+</ol>
+<p><strong>⚠️ 三个关键点</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>点</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>参考逻辑把 InventoryType 写在左侧</strong></td>
+<td>以 <code>InventoryType LEFT JOIN 正面集合</code> 表达全保留主体；原画布主体在右，两者不矛盾</td>
+</tr>
+<tr>
+<td><strong><code>Is Null</code> 检查匹配侧身份键</strong></td>
+<td>选匹配时必非 Null 的键，不能用本来可空的普通字段代替</td>
+</tr>
+<tr>
+<td><strong>写法是 <code>Is Null</code>（两个词），不是 <code>= Null</code></strong></td>
+<td>见 §2.20.2。<code>= Null</code> 永远查不出东西</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⚠️ 讲义 p.51 的 <code>EXISTS</code> 与这里的 <code>Is Null</code> 是一对</strong>：p.51 说 <code>EXISTS</code> 取"非空"（但那个写法是错的），p.91 用 <code>Is Null</code> 取"空"。<strong><code>Is Null</code> 才是 Access 里真正能用的写法</strong>（p.91 的截图证明了这一点）。</p></main><script src="/deps/mermaid.min.js"></script><script src="/deps/katex/katex.min.js"></script><script src="/deps/katex/contrib/auto-render.min.js"></script><script>window.visualReady=false;window.visualErrors=[];
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'default',fontFamily:'Microsoft YaHei'});
+(async()=>{try{await mermaid.run({querySelector:'.mermaid'});}catch(e){window.visualErrors.push(String(e));}
+try{renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredTags:['script','noscript','style','textarea','pre','code']});}catch(e){window.visualErrors.push(String(e));}
+window.visualReady=true;document.querySelector('#render-state').textContent='render complete; '+window.visualErrors.join('; ');})();</script></body></html>

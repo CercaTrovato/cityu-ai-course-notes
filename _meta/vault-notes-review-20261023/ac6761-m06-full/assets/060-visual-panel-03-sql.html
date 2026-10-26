@@ -1,0 +1,90 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M06 frozen candidate visual completion</title><link rel="stylesheet" href="/deps/katex/katex.min.css"><style>body{margin:0;background:#f2f2f2;color:#202020;font:18px/1.65 "Microsoft YaHei",sans-serif}header{position:sticky;top:0;background:#fff;border-bottom:1px solid #aaa;padding:8px 20px;z-index:2;font-size:13px}main{max-width:1040px;margin:auto;background:#fff;padding:24px 42px}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;font-size:16px;width:100%;table-layout:auto}td,th{border:1px solid #bbb;padding:8px;text-align:left}blockquote{border-left:4px solid #789;padding-left:18px;margin:20px 0;background:#f7f9fb}pre{background:#f1f3f5;padding:15px;overflow:auto;font-size:15px;line-height:1.5}code{font-family:Consolas,monospace}h1,h2,h3,h4{line-height:1.4;scroll-margin-top:55px}summary{font-weight:bold;cursor:pointer}.mermaid{background:white;text-align:center;white-space:normal;overflow:visible}.mermaid svg{max-width:100%;height:auto}.katex-display{overflow-x:auto;overflow-y:hidden}details{padding:8px;border-left:2px solid #ddd}</style></head><body><header>冻结候选 ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4 · 同源浏览器显示，非 Obsidian/Access UI · <span id="render-state">rendering</span></header><main><h1>03-sql</h1><h4 id="2173-sql-inner-join-p43">2.17.3 SQL 的 Inner Join（讲义 p.43）</h4>
+<p><strong>问题</strong>：与 p.37 相同 —— 所有客户及其销售员的全部明细。</p>
+<p><strong>SQL 语句</strong>（讲义 p.43）</p>
+<pre><code class="language-sql">Select *
+From Customer, Salesperson
+Where Customer.SP# = [Salesperson.Employee Number];
+</code></pre>
+<p><strong>三个观察</strong>：</p>
+<ol>
+<li><strong><code>FROM</code> 后面两张表用逗号并列</strong> —— 这是<strong>旧式隐式连接</strong>写法。</li>
+<li><strong>连接条件写在 <code>WHERE</code> 里</strong> —— <code>Customer.SP# = Salesperson.EmployeeNumber</code>。<strong>这个等号就是连接条件</strong>，不是筛选条件。</li>
+<li><strong><code>表名.字段名</code> 的点号写法</strong> —— 多表查询里必须指明字段属于哪张表，否则字段重名时 SQL 不知道你说的是哪一个。</li>
+</ol>
+<p>⚠️ <strong>方括号是方言与可读性问题，不是一概语法错</strong>：当前 ACE 只读副本接受整体写法 <code>[Salesperson.EmployeeNumber]</code>，也接受分开写法 <code>Salesperson.[EmployeeNumber]</code>；含空格字段的两个有限测试也均成功。为看清表与字段，本文推荐 <code>表.[字段]</code>。这些测试不认证所有 SQL 方言，也不消除讲义字段名与当前库字段名的差别；见 §9.3。</p>
+<p><strong>⚠️ 再次提醒笛卡尔积陷阱</strong>：这条语句如果漏掉 <code>WHERE</code> 那一行，会返回 5 × 4 = <strong>20 行</strong>笛卡尔积结果，包含正确配对和错误配对，不能称20行全部错误，而且<strong>不报任何错</strong>。这是隐式连接写法最大的风险，也是现代 SQL 推荐用显式 <code>JOIN ... ON</code> 的原因。</p>
+<p><strong>所以呢</strong></p>
+<p>内连接的 SQL 写法会了，最后一个例子看外连接——这里讲义自己的写法就有语法错误，正好用来讲清楚 <code>ON</code> 和 <code>WHERE</code> 的真正区别。</p>
+<p><strong>🎙️ 课堂补充</strong>（10 月 21 日；S19 <code>57:28</code>–<code>58:09</code>；R1 <code>00:01</code>；B · 同讲义原例）</p>
+<p>SQL 内连接仍用两个表的销售员 ID 对应，<code>*</code> 取双方列。S19 在匹配说明后截断，R1 开头接着说合起来五行；内容支持先后，但没有共同音频锚点，接缝连续性未知。</p>
+<p><em>"totally we have the five rows."</em>（R1 <code>00:01</code>）</p>
+<p>中文：这个示例的结果共五行。先按原表逐个匹配再数行，不把五行当内连接的通用性质。</p>
+<h4 id="2174-sql-outer-join-p44">2.17.4 SQL 的 Outer Join（讲义 p.44）</h4>
+<p><strong>问题</strong>：与 p.38 相同 —— 所有销售 + 相关收款（有则带上）。</p>
+<p><strong>SQL 语句</strong>（讲义 p.44 原文照录）</p>
+<pre><code class="language-sql">Select *
+From Sale LeftJoin [Sale-CashRecDuality]
+Where [Sale.Sale#]=[Sale-CashRecDuality.Sale#];
+</code></pre>
+<p>⚠️ <strong>这条语句有两处明确语法问题</strong>（详见 §9.3）。以下每行分别核一个问题；整体方括号不再计错。</p>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>讲义写的</th>
+<th>应该是</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 连接关键字拼在一起</td>
+<td><code>LeftJoin</code></td>
+<td><code>LEFT JOIN</code>（两个词）</td>
+</tr>
+<tr>
+<td>② 缺少连接条件引导词</td>
+<td><code>Where ...</code></td>
+<td>此处用 <code>ON ...</code> 指定匹配</td>
+</tr>
+</tbody>
+</table>
+<p><strong>正确的 Access SQL</strong>（💡 笔记补充）：</p>
+<pre><code class="language-sql">SELECT *
+FROM Sale LEFT JOIN [Sale-CashRecDuality]
+ON Sale.[Sale#] = [Sale-CashRecDuality].[Sale#];
+</code></pre>
+<p><strong>为什么 <code>ON</code> 和 <code>WHERE</code> 不能互换 —— 这是外连接的核心陷阱</strong>（💡 笔记补充，讲义完全没提，但极其重要）：</p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>执行逻辑</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LEFT JOIN … **ON** A.k = B.k</code></td>
+<td>先连接（左表全保留），<strong>连接条件在连接时生效</strong></td>
+<td>S-6、S-7 <strong>保留</strong>，右侧 Null ✅</td>
+</tr>
+<tr>
+<td><code>FROM A, B WHERE A.k = B.k</code></td>
+<td>逗号连接先形成组合，再按等值条件筛选；这是内连接语义</td>
+<td>没有匹配的 S-6、S-7 不会产生补 Null 行，因此被排除 ❌</td>
+</tr>
+</tbody>
+</table>
+<p><strong>换句话说：把外连接的条件写在 WHERE 里，外连接会"退化成"内连接。</strong> 这是 SQL 里最经典的隐蔽 bug 之一。原p.44语句有LeftJoin/ON/标识符等语法问题，不能给无效原SQL虚构实际运行6行。补成有效内连接的另设反例才有6行；官方意图输出为8行。</p>
+<p><strong>答案</strong>：讲义 p.44 的 Query Result 与 p.38 的 Answer 完全一致（8 行），见 §2.15。</p>
+<p><strong>所以呢</strong></p>
+<p>三种语言（关系代数、SQL）都用同一批例子跑过了，下面几节补上写 WHERE 条件时要用到的具体运算符，从比较运算符开始。</p>
+<p><strong>🎙️ 课堂补充</strong>（10 月 21 日；R1 <code>00:07</code>–<code>01:10</code>；C · 明确降权）</p>
+<p>老师表示外连接较复杂，这次基础 SQL 题型先要求理解给定语句并作答，可忽略 outer join。讲义的外连接解释和后面的会计应用仍完整保留。</p>
+<p><em>"And for the outer zone, we can ignore that."</em>（R1 <code>01:10</code>）</p>
+<p>中文：这次可以忽略外连接。outer zone 是 ASR 对 outer join 的误识别；没有删掉原题，也不推广成真实业务中外连接不重要。</p>
+<hr /></main><script src="/deps/mermaid.min.js"></script><script src="/deps/katex/katex.min.js"></script><script src="/deps/katex/contrib/auto-render.min.js"></script><script>window.visualReady=false;window.visualErrors=[];
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'default',fontFamily:'Microsoft YaHei'});
+(async()=>{try{await mermaid.run({querySelector:'.mermaid'});}catch(e){window.visualErrors.push(String(e));}
+try{renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredTags:['script','noscript','style','textarea','pre','code']});}catch(e){window.visualErrors.push(String(e));}
+window.visualReady=true;document.querySelector('#render-state').textContent='render complete; '+window.visualErrors.join('; ');})();</script></body></html>

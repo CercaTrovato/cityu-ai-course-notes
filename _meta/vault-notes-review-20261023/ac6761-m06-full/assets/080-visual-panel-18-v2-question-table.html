@@ -1,0 +1,31 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M06 frozen candidate visual completion</title><link rel="stylesheet" href="/deps/katex/katex.min.css"><style>body{margin:0;background:#f2f2f2;color:#202020;font:18px/1.65 "Microsoft YaHei",sans-serif}header{position:sticky;top:0;background:#fff;border-bottom:1px solid #aaa;padding:8px 20px;z-index:2;font-size:13px}main{max-width:1040px;margin:auto;background:#fff;padding:24px 42px}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;font-size:16px;width:100%;table-layout:auto}td,th{border:1px solid #bbb;padding:8px;text-align:left}blockquote{border-left:4px solid #789;padding-left:18px;margin:20px 0;background:#f7f9fb}pre{background:#f1f3f5;padding:15px;overflow:auto;font-size:15px;line-height:1.5}code{font-family:Consolas,monospace}h1,h2,h3,h4{line-height:1.4;scroll-margin-top:55px}summary{font-weight:bold;cursor:pointer}.mermaid{background:white;text-align:center;white-space:normal;overflow:visible}.mermaid svg{max-width:100%;height:auto}.katex-display{overflow-x:auto;overflow-y:hidden}details{padding:8px;border-left:2px solid #ddd}</style></head><body><header>冻结候选 d9d556997ffb6ba936d8aabbb610242a45f24eb7a463fca90bad68d7086c4a5c · 同源浏览器显示，非 Obsidian/Access UI · <span id="render-state">rendering</span></header><main><h1>18-v2-question-table</h1><p>⚠️ <strong>仅凭总账分录无法读出客户对产品的反应。</strong> 销售拜访本身通常不触发资源转移分录，但传统企业的 CRM 或 ERP 仍可保存拜访记录。REA 将这些业务关系明确建模，因此在相关数据完整时可以查询：</p>
+<blockquote>
+<p><strong>"哪些商品没有已记录的正面反馈？"</strong></p>
+</blockquote>
+<p>这个反连接查询只能识别“没有已记录的正面反馈”，不能单独判断是否推介过。下表是后续调查的两类线索，须另核拜访／推介及反馈记录，不能由本查询结果直接分类：</p>
+<table>
+<thead>
+<tr>
+<th>滞销类型</th>
+<th>表现</th>
+<th>应对</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>推了但没人喜欢</strong></td>
+<td>有拜访记录，但反应不正面</td>
+<td><strong>产品问题</strong> → 改产品或下架</td>
+</tr>
+<tr>
+<td><strong>压根没推过</strong></td>
+<td>连拜访记录都没有</td>
+<td><strong>销售问题</strong> → 加强推广</td>
+</tr>
+</tbody>
+</table>
+<p>⚠️ 单看销量不能判断原因；即使加入拜访次数或反馈，也只能增加线索。还需核库存可得性、价格、促销、客户结构、反馈记录完整性等证据，才能判断商品或人员问题。这说明 REA 会把拜访、反馈等管理事件显式纳入同一模型。传统总账分录本身通常没有这些字段，但 CRM / ERP / 辅助系统可能另行保存，不能概括成“传统系统丢掉”。</p></main><script src="/deps/mermaid.min.js"></script><script src="/deps/katex/katex.min.js"></script><script src="/deps/katex/contrib/auto-render.min.js"></script><script>window.visualReady=false;window.visualErrors=[];
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'default',fontFamily:'Microsoft YaHei'});
+(async()=>{try{await mermaid.run({querySelector:'.mermaid'});}catch(e){window.visualErrors.push(String(e));}
+try{renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredTags:['script','noscript','style','textarea','pre','code']});}catch(e){window.visualErrors.push(String(e));}
+window.visualReady=true;document.querySelector('#render-state').textContent='render complete; '+window.visualErrors.join('; ');})();</script></body></html>

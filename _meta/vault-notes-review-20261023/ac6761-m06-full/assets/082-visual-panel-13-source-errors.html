@@ -1,0 +1,61 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M06 frozen candidate visual completion</title><link rel="stylesheet" href="/deps/katex/katex.min.css"><style>body{margin:0;background:#f2f2f2;color:#202020;font:18px/1.65 "Microsoft YaHei",sans-serif}header{position:sticky;top:0;background:#fff;border-bottom:1px solid #aaa;padding:8px 20px;z-index:2;font-size:13px}main{max-width:1040px;margin:auto;background:#fff;padding:24px 42px}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;font-size:16px;width:100%;table-layout:auto}td,th{border:1px solid #bbb;padding:8px;text-align:left}blockquote{border-left:4px solid #789;padding-left:18px;margin:20px 0;background:#f7f9fb}pre{background:#f1f3f5;padding:15px;overflow:auto;font-size:15px;line-height:1.5}code{font-family:Consolas,monospace}h1,h2,h3,h4{line-height:1.4;scroll-margin-top:55px}summary{font-weight:bold;cursor:pointer}.mermaid{background:white;text-align:center;white-space:normal;overflow:visible}.mermaid svg{max-width:100%;height:auto}.katex-display{overflow-x:auto;overflow-y:hidden}details{padding:8px;border-left:2px solid #ddd}</style></head><body><header>冻结候选 ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4 · 同源浏览器显示，非 Obsidian/Access UI · <span id="render-state">rendering</span></header><main><h1>13-source-errors</h1><h3 id="93">9.3 课件自身的问题</h3>
+<blockquote>
+<p>⚠️ 本节按当前来源重新分类：保留原 1–21 定位号方便追溯；原 6、7 两项整体方括号错误断言撤销，故现列 <strong>19 项问题/缺口</strong>。这是材料与写法核查，不是教学分数；历史“21 处”不再作为当前错误总数。
+<strong>信噪比评价</strong>：本讲的<strong>截图部分质量很高</strong>（操作步骤清晰、批注到位），但<strong>文字部分的 SQL 语句错误密集</strong>——如果照着 p.41–p.51 的 SQL 敲进 Access，<strong>六条里有五条跑不通</strong>。</p>
+</blockquote>
+<h4 id="a-sql-5">A. SQL 语法错误（5 处，最严重的一类）</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>页</th>
+<th>讲义写的</th>
+<th>应该是</th>
+<th>后果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>p.41</strong></td>
+<td><code>Where [Customer Number] = C-2;</code></td>
+<td><code>= "C-2"</code></td>
+<td>文本值缺引号 → Access 弹参数输入框</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>p.47</strong></td>
+<td><code>Where SalesRep# &lt;&gt; E-10;</code></td>
+<td><code>&lt;&gt; "E-10"</code></td>
+<td>同上。⚠️ <strong>p.71 的 QBE 截图里是带引号的</strong>，说明作者实操时加了</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>p.49</strong></td>
+<td><code>Where Date BETWEEN 7/1 and 7/31;</code></td>
+<td><code>BETWEEN #7/1/2014# AND #7/31/2014#</code></td>
+<td>日期缺 <code>#</code> 与年份 → 被当成除法运算。⚠️ <strong>p.81 的截图里写法是对的</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>p.51</strong></td>
+<td><code>Where Balance EXISTS;</code></td>
+<td><code>Where Balance IS NOT NULL;</code></td>
+<td><code>EXISTS</code> 在标准 SQL 里是<strong>子查询谓词</strong>，不能这样用。⚠️ <strong>p.91 用的 <code>Is Null</code> 才是对的写法</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>p.44</strong></td>
+<td><code>From Sale LeftJoin […] Where […]</code></td>
+<td><code>FROM Sale LEFT JOIN […] ON […]</code></td>
+<td>两处明确语法问题：关键字需分词、连接条件需 ON。原语句无效，不能虚构其实际结果；完整外连接后再在 WHERE 写排除空值的右侧条件，才是另一个会丢行的问题</td>
+</tr>
+</tbody>
+</table>
+<h4 id="b-ace-67">B. 整体方括号的 ACE 方言核查（原 6、7 撤销）</h4>
+<p>旧稿将 p.43 的 <code>[Salesperson.Employee Number]</code> 和 p.44 的 <code>[Sale.Sale#]</code> 一概判错，这个普遍结论撤销。当前 E 盘只读 ACE 副本中，整体限定标识符和分开括号都返回相同五行七列；含空格的 <code>[Customer.Accounts Receivable Balance]</code> 也与 <code>Customer.[Accounts Receivable Balance]</code> 一样返回五行。</p>
+<p>推荐 <code>表.[字段]</code> 是为了清楚，不能把推荐写法当成 ACE 唯一接受的语法。该有限测试使用当前字段名；p.44 仍需分别修 LeftJoin 与缺 ON，不据方括号测试声称整段原 SQL 已成功运行。</p></main><script src="/deps/mermaid.min.js"></script><script src="/deps/katex/katex.min.js"></script><script src="/deps/katex/contrib/auto-render.min.js"></script><script>window.visualReady=false;window.visualErrors=[];
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'default',fontFamily:'Microsoft YaHei'});
+(async()=>{try{await mermaid.run({querySelector:'.mermaid'});}catch(e){window.visualErrors.push(String(e));}
+try{renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredTags:['script','noscript','style','textarea','pre','code']});}catch(e){window.visualErrors.push(String(e));}
+window.visualReady=true;document.querySelector('#render-state').textContent='render complete; '+window.visualErrors.join('; ');})();</script></body></html>

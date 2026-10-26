@@ -1,0 +1,71 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M06 frozen candidate visual completion</title><link rel="stylesheet" href="/deps/katex/katex.min.css"><style>body{margin:0;background:#f2f2f2;color:#202020;font:18px/1.65 "Microsoft YaHei",sans-serif}header{position:sticky;top:0;background:#fff;border-bottom:1px solid #aaa;padding:8px 20px;z-index:2;font-size:13px}main{max-width:1040px;margin:auto;background:#fff;padding:24px 42px}p,li{overflow-wrap:anywhere}table{border-collapse:collapse;font-size:16px;width:100%;table-layout:auto}td,th{border:1px solid #bbb;padding:8px;text-align:left}blockquote{border-left:4px solid #789;padding-left:18px;margin:20px 0;background:#f7f9fb}pre{background:#f1f3f5;padding:15px;overflow:auto;font-size:15px;line-height:1.5}code{font-family:Consolas,monospace}h1,h2,h3,h4{line-height:1.4;scroll-margin-top:55px}summary{font-weight:bold;cursor:pointer}.mermaid{background:white;text-align:center;white-space:normal;overflow:visible}.mermaid svg{max-width:100%;height:auto}.katex-display{overflow-x:auto;overflow-y:hidden}details{padding:8px;border-left:2px solid #ddd}</style></head><body><header>冻结候选 ef8dd59794d5eba4b0a52a545c9db589775cf3ca536208e31d798af57763d8c4 · 同源浏览器显示，非 Obsidian/Access UI · <span id="render-state">rendering</span></header><main><h1>01-cutoff</h1><details open="open">
+<p><summary>可选的 SQLite 参考实现：先读 SQL 骨架与聚合；不是 Access 原查询</summary></p>
+<p>💡 下面把前面六步写成代码，供学完 §2.16 和 §2.21 后对照。它的任务是输出每笔截至日销售的金额、已应用额与余额；不要求先会这段代码才能理解上面的手算。</p>
+<p>输入是三张教学表。每行分别代表一笔销售、一笔收款、或一笔收款对一笔销售的分配。字段是为代码简化而取的名字，不是当前 Access 字段名。</p>
+<table>
+<thead>
+<tr>
+<th>教学表及字段</th>
+<th>原表对应字段</th>
+<th>本段用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sale(id, amt, dt)</td>
+<td>SaleNumber、Amount、Date</td>
+<td>销售身份、金额、日期</td>
+</tr>
+<tr>
+<td>CR(id, dt)</td>
+<td>RemittanceAdviceNumber、Date</td>
+<td>收款身份及收款日期</td>
+</tr>
+<tr>
+<td>Applied(sale, ra, amt)</td>
+<td>Duality 的 SaleNumber、RemittanceAdviceNumber、Applied</td>
+<td>哪笔收款分给哪笔销售多少金额</td>
+</tr>
+</tbody>
+</table>
+<p>最小输入只保留 S-2：Sale 中一行 <code>(S-2, 10000, 2014-07-21)</code>；CR 中两行 <code>(RA-1, 2014-07-25)</code>、<code>(RA-5, 2014-08-25)</code>；Applied 中两行 <code>(S-2, RA-1, 1666)</code>、<code>(S-2, RA-5, 1666)</code>。金额沿用原表单位；日期在这份教学实现中统一存为 <code>YYYY-MM-DD</code> 文本。</p>
+<p>代码里的 <code>s</code>、<code>r</code>、<code>d</code> 是表别名（table alias），即 Sale、CR、Applied 的短名；<code>s.id</code> 就是 Sale 的 id，不是新字段。<code>AS applied</code> 给求和结果命名。括号中的 <code>SELECT</code> 先产生一张中间结果，括号后的 <code>a</code> 是这张结果的名字，所以外层才能读 <code>a.applied</code>。</p>
+<pre><code class="language-sql">SELECT s.id, s.amt, COALESCE(a.applied,0) AS applied,
+       s.amt-COALESCE(a.applied,0) AS AR
+FROM Sale AS s LEFT JOIN (
+ SELECT d.sale, SUM(d.amt) AS applied
+ FROM Applied AS d JOIN CR AS r ON d.ra=r.id
+ WHERE r.dt&lt;=:asof GROUP BY d.sale
+) AS a ON s.id=a.sale
+WHERE s.dt&lt;=:asof;
+</code></pre>
+<p>按内层到外层读：先用 <code>d.ra=r.id</code> 取得每条分配所属的收款日期，筛到截止日，再按 <code>d.sale</code> 求和，每笔销售最多一行。外层筛销售发生日，保留全部合格销售，再减各自的应用额。<code>COALESCE(x,0)</code> 只在 x 为 Null 时返回 0；这里补零的业务前提是这份限定明细完整且确无有效分配，不能把漏录款项当零。</p>
+<p><code>:asof</code> 是调用查询时绑定的参数（parameter），不是表里的字段，也不是让用户照抄的日期字符串。用 SQLite 调用端将它绑定为 <code>2014-07-31</code>：内层 S-2 得 1666，外层得 <code>(S-2, 10000, 1666, 8334)</code>。改绑 <code>2014-08-31</code>，内层得 3332，外层余额变为 6668。必须替换两处同名参数的同一个值，不能销售筛到七月、收款筛到八月。</p>
+<p>用本节七笔完整给定销售复算，两截至日合计分别为 48,134 与 64,668；本次独立 SQLite 教学复算证据保存在修稿包。它没有打开或运行 Access UI；Access 可分成保存查询实现同一流程，<code>Nz</code> 的原生上下文仍须另核。无期初、退货及其他事项是假设，结果不能认证现实企业完整余额。</p>
+</details>
+<p><strong>看图前先问</strong>：截止日余额为什么先汇总 Applied 再连销售？</p>
+<pre class="mermaid">flowchart TD
+ A[&quot;截至t的销售&quot;] --&gt; J[&quot;左连每Sale一行的应用额&quot;]
+ R[&quot;截至t的收款及Applied&quot;] --&gt; G[&quot;按SaleID聚合分配额&quot;]
+ G --&gt; J
+ J --&gt; D[&quot;每笔销售额−应用额；无业务匹配为0&quot;]
+ D --&gt; V[&quot;逐笔总额对总销售−总应用&quot;]
+ V --&gt; O[&quot;限定数据的截至日应收与缺源说明&quot;]
+</pre>
+<p>箭头是数据筛选、聚合与连接的依赖；两输入在左连每 Sale 一行的应用额汇合。</p>
+<p><strong>沿例子读图（笔记补充）</strong>：截至 8/31，先筛收款与 Applied，找出 S2 的 RA1、RA5。在“按 SaleID 聚合分配额”算 1,666+1,666=3,332，再左连回 S2 一行。用销售额 10,000 减应用额得 6,668，核逐笔合计与总体差额后，输出限定数据下的余额。</p>
+<p><strong>图旁边界</strong>：日期采用当前正文RA2=26July；S6/S7在7/31尚未发生；未知输入不能补造。</p>
+<p><strong>文字替代</strong>：先按销售键汇总有效分配，再左连截至日销售，每张单只减自己的应用额。</p>
+<details open="open">
+<p><summary>读图自测：若先裸JOIN再SUM(销售金额)，什么会重复？</summary></p>
+<p>S2的销售额10,000会出现两次；不能用SUM(DISTINCT金额)补救，因为S4也真实为10,000。</p>
+</details>
+<p><strong>失败机制与迁移题</strong>：裸JOIN重复S2销售额10,000，117,800+10,000−53,132=74,668错；只找完全没付款Sale得S6/S7 58,000，漏S2尚欠6,668。SUM(DISTINCT sale amount)也不行，S2/S4真实两张都10,000会被错误去重，应按SaleID而非金额去重。</p>
+<details open="open">
+<p><summary>假设变式：若把 RA-2 改为 7/25，截止日判断要检查什么？</summary></p>
+<p>当前原件 RA-2 为 7/26；改成 7/25 只是笔记假设，不是已发现的来源冲突。S-4 销售在 7/26 才发生，截止 7/25 不能提前纳入该销售。若真实存在提前收款，须另核预收性质及分配何时生效；不能仅凭一条关联就把未来销售提前计入应收。</p>
+</details></main><script src="/deps/mermaid.min.js"></script><script src="/deps/katex/katex.min.js"></script><script src="/deps/katex/contrib/auto-render.min.js"></script><script>window.visualReady=false;window.visualErrors=[];
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'default',fontFamily:'Microsoft YaHei'});
+(async()=>{try{await mermaid.run({querySelector:'.mermaid'});}catch(e){window.visualErrors.push(String(e));}
+try{renderMathInElement(document.querySelector('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredTags:['script','noscript','style','textarea','pre','code']});}catch(e){window.visualErrors.push(String(e));}
+window.visualReady=true;document.querySelector('#render-state').textContent='render complete; '+window.visualErrors.join('; ');})();</script></body></html>

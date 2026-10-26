@@ -1,0 +1,161 @@
+{
+  "schema": "cityu-dispatch-handoff-v1",
+  "dispatch": "dispatch-ef04",
+  "prepared_at": "2026-10-26T23:27:37.400496+08:00",
+  "source_thread_id": "01a17103-659b-7ad2-81ea-dc814266007f",
+  "worker_thread_id": "01a17880-c969-7903-8d68-5ede38386267",
+  "target": "EF5560_Fintech_and_AI_in_Finance/notes/M04-非线性机器学习与收益预测.md",
+  "status": "ready_for_main_writer",
+  "expected_baseline_sha256": "c2bcfcde266fc64fe09b584ef1c19830f12c03595a1f393548a8720949a0f57a",
+  "actual_current_vault_sha256": "c2bcfcde266fc64fe09b584ef1c19830f12c03595a1f393548a8720949a0f57a",
+  "candidate_sha256": "a555b07747ba3798dd70f392fc507772155043f4a8b67b12bb976358c82138ec",
+  "review_schema": "note-review-v2",
+  "gate_exit_code": 0,
+  "done": [
+    "实际主/独审每个可见turn均为gpt-6.1-sol，model-check存档",
+    "真实原始字节/期望hash一致；自有完整性快照不覆盖共享manifest",
+    "完整42单元及两版110页材料/双源文本回源，保留来源缺口",
+    "原独审两阶段+批量实质修复+40hunk定向复核；S1–S10全部关闭",
+    "12市场/4股票保存预测指标与新修改关键量核算，未重训真实模型",
+    "11图/566公式同源浏览器必要实看；Obsidian未直接看",
+    "L/C.hard/R.hard=0；8源页契约通过；24双链0问题；历史E FAIL如实保留",
+    "准备本地10项当前基线原字节/hash及§6同步增量草稿；共享文件未写"
+  ],
+  "not_done": [
+    "vault正式CAS原子写与写后精确回读",
+    "README/课程总览/台账/术语/考点等本次同步执行与回读",
+    "Notion远端M04实际行基线读取及任何写入/回读",
+    "Git fetch/commit/push/远端核对",
+    "本人通读/自测/复习/提交/评分状态操作"
+  ],
+  "candidate_blockers": [],
+  "main_writer_prerequisites": [
+    "确认沿用的自动同步关闭状态",
+    "写前重读正式目标，SHA必须仍为expected_baseline_sha256；不同则不覆盖，合并并发变化",
+    "原子写候选后按candidate_sha256精确回读",
+    "共享文档按sync-baselines-final.json重新核hash并精确合并，不能覆盖并发资料",
+    "读取Notion实际M04行，保护个人字段，再按授权同步并回读",
+    "按主会话实际Git授权独立完成保存；本分派无Git动作"
+  ],
+  "material_limitations": [
+    "无课程神经网络实证；小例为笔记补充",
+    "森林/提升原训练契约不足以精确复现，原日OHLCV与发布vintage仍缺",
+    "原声轨未本轮重新逐声核听，混合政策句/缺首/历史去重时长限制保留",
+    "M04旧p40–54本堂明确顺延，不把参考答案升级课堂确认",
+    "仅同源浏览器实际显示，原生Obsidian未直接看"
+  ],
+  "sync_draft": "sync-draft.json",
+  "sync_current_baseline_index": "sync-baselines-final.json",
+  "source_and_evidence_index": "source-inventory-final.json",
+  "concurrent_vault_observations": {
+    "changed_existing": 14,
+    "added": 125,
+    "read_errors": 0,
+    "shrinks_over20percent": 0,
+    "target_unchanged": true,
+    "details": "integrity-verify.json"
+  },
+  "model_capacity_event": {
+    "error": "Selected model is at capacity. Please try a different model.",
+    "handling": "原独审中断一次；用户明确恢复，随后原gpt-6.1-sol继续并完成。没有回退或修改provider/模型/配置。"
+  },
+  "artifacts": {
+    "candidate.md": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\candidate.md",
+      "sha256": "a555b07747ba3798dd70f392fc507772155043f4a8b67b12bb976358c82138ec"
+    },
+    "baseline.md": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\baseline.md",
+      "sha256": "c2bcfcde266fc64fe09b584ef1c19830f12c03595a1f393548a8720949a0f57a"
+    },
+    "candidate.diff": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\candidate.diff",
+      "sha256": "4759dc2c441985ae9d14729e7d825b0f55b6f5b11c0e514afdf2c2cf4c9957de"
+    },
+    "repair.diff": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\repair.diff",
+      "sha256": "179a6ac3e836e508534153fe319f2ea2ba1c0f873f1290528f7589b5c0765241"
+    },
+    "review.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\review.json",
+      "sha256": "e55b5764e05413f7ba59ed2c572683e3f8812d1045362fc0897fbdfcfd0a853d"
+    },
+    "review.md": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\review.md",
+      "sha256": "2bb320aa00dd4d2584a803024e81682a06a5ec69a300177453e026f6eb7ad754"
+    },
+    "gate-final.txt": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\gate-final.txt",
+      "sha256": "de82ecd568a035c69d15545d94a772126db34ff05b7eb58465749a0f0cc56be0"
+    },
+    "reviewer/stage-1.md": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\reviewer\\stage-1.md",
+      "sha256": "ff96f8c9d59b5e1ed89375904c5edcee64d5204ca4b59dd226d8df67bcfab4e4"
+    },
+    "reviewer/independent-review.md": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\reviewer\\independent-review.md",
+      "sha256": "5071651f3abf4d4d0abbd157b388a0d305c379e92eaef7c35c57be6ec7ccbdf2"
+    },
+    "reviewer/targeted-recheck.md": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\reviewer\\targeted-recheck.md",
+      "sha256": "8f30d9fdf498a6fa4b1bfbae1bd376f987555937a90573489b1974504877dbe5"
+    },
+    "source-inventory-final.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\source-inventory-final.json",
+      "sha256": "17fc5bf5a66c49b6be5eb5ba18966aa0ff4b7234535e5fd2a6e4e02a9574ca02"
+    },
+    "calculation-results.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\calculation-results.json",
+      "sha256": "f660d850b0c8f53fa0d27ea6ee6e6d326f791a66df0fc0a9cf87e0478305d025"
+    },
+    "additional-calculations.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\additional-calculations.json",
+      "sha256": "c792d41f688310c424da54a30efc7419215d9763b2010e2bb84a8d18751c2f38"
+    },
+    "visual-binding.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\visual-binding.json",
+      "sha256": "96f730b0766a47d80ac460cf0f4053009a13dc8e7e20ca17adfab0b92cd9b5f3"
+    },
+    "source-checks.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\source-checks.json",
+      "sha256": "c1f061ab4e370eefeade00cba8ea40bc2f4a7a833aee9235435f5d05d18856a7"
+    },
+    "sync-draft.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\sync-draft.json",
+      "sha256": "c215d2e87ba76fba324b8b928dbc9fa4e51cf862e44eac3d6e9dfafc9407cccd"
+    },
+    "sync-baselines-final.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\sync-baselines-final.json",
+      "sha256": "acb38a836e62ae71f573bc6be9b0eb462b273a1ec5ec8155b78edb2ccf19a5d4"
+    },
+    "integrity-verify.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\integrity-verify.json",
+      "sha256": "61b32a8f7b915f0790d0b059d741346d19f89ed04e59ccd189659a5f9b8825aa"
+    },
+    "model-check.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\model-check.json",
+      "sha256": "7edee05255bf055e4eae8bd107b9f6b690d219f3877a7505321082b839d8ee6a"
+    },
+    "model-check-closeout.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\model-check-closeout.json",
+      "sha256": "0ff58f787e765d46a12724bb059873dbd8c191672fdd3a44cba9555fb24de3d8"
+    },
+    "usage-local.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef04\\usage-local.json",
+      "sha256": "45db8be53438359df135ac37c57c157b4196cdbc883146e89bb9cc4f66e5d52a"
+    }
+  },
+  "cleanup": {
+    "status": "not_executed_policy_block",
+    "evidence": "cleanup-result.json",
+    "tool_error": "exec_command CreateProcess rejected: blocked by policy",
+    "command_executed": false,
+    "task_preview_port": 8813,
+    "task_preview_pid_at_start": 69680,
+    "profile": "browser-profile/",
+    "contexts_closed_by_scripts": true,
+    "review_artifacts_affected": false
+  },
+  "prohibited_writes_performed": false,
+  "cross_thread_message_sent": false
+}
