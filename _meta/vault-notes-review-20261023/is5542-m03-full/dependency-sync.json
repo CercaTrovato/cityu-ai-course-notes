@@ -1,0 +1,405 @@
+{
+  "items": [
+    {
+      "target": "_meta/术语总表.md",
+      "path": "_meta/术语总表.md",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\root-is5542-m03-publication\\plan-sync-00.baseline",
+      "before_sha256": "71936a32f5b4a014e09d144459e5af7c7c614f2115c42e6c3d4814a23f13c516",
+      "after_sha256": "53c9ee242e073d1ce3f2534a489db87087532b0c85eaa88a1aaa982f79f7d853",
+      "status": "已写并精确回读",
+      "operations": [
+        {
+          "type": "append",
+          "text": "\n\n## 2026-10-27 IS5542 M03 当前复用边界\n\n来源：[[IS5542_GenAI_in_Business/notes/M03-AI-agent-从harness到部署|M03]] §2.7–§2.10。保留本课agent不译、harness不译、MCP模型上下文协议、context rot上下文腐烂、human-on-the-loop人在环上的既有词形；环上可运行监控/干预，原图最终审阅不是通用排他定义。工具提示不授予权限，hash不等批准；幂等键与请求ID分工，同内容换键不保证去重；CAS核版/提交须原子或单主写者串行。API是接口，不等外部状态固定；bpb是同评分目标总bits/bytes，不是业务正确率。缓存须核实现条件和usage，清理先保留证据/版本/硬约束；每接受成本含失败尝试和必要审核，完整TCO另报固定成本。九组件凑法、原图/课堂/笔记补充、旧产品数值与当前事实分别看，不改变其他课程首现。\n"
+        }
+      ]
+    },
+    {
+      "target": "IS5542_GenAI_in_Business/00-课程总览.md",
+      "path": "IS5542_GenAI_in_Business/00-课程总览.md",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\root-is5542-m03-publication\\plan-sync-01.baseline",
+      "before_sha256": "9338970b3de7e18d0d48f6075299a21f89454fbf8f3fe911191d7a4b067bd3cb",
+      "after_sha256": "090b866fac9edec1f7098c1c1f842c73967ab037110562f411e093bb64e79e23",
+      "status": "已写并精确回读",
+      "operations": [
+        {
+          "type": "replace_exact",
+          "old": "⚠️ **L2 实际讲的不是 M01 预告的 prompt / RAG / fine-tuning / function calling**，而是模型全景 + 基准评测 + 提示与上下文；**L3 讲义（80 页）已到：agent 占绝大部分，RAG 只有一页，微调 / function calling 仍未出现**。M03 笔记是课前预习版，🎙️ 格全空，9/19 录完后合并。",
+          "new": "⚠️ **L2 实际内容与早期预告不同**：模型全景＋基准评测＋提示/上下文；M03 现有 80 页 agent/harness 讲义及784段部分转录已融合。RAG 书面一页、课堂展开反馈回路/证据与主动学习；切块/索引/重排完整工程链、微调和 function calling 没有课堂完整展开。笔记补充和真实课堂分开，旧“课前稿/课堂格空”不作当前状态。"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 9/19 | M1 | **AI agent**：harness 六元组 · 三种架构 · 七个领域 · 评测与上线（RAG 只有 p.32 一页） | [[M03-AI-agent-从harness到部署]] | ✅ v1.0（2026-10-21融合784段；57课堂格，p.80完整英文三题及中英参考答案；缺开头、结尾完整性未证） |",
+          "new": "| 9/19 | M1 | AI agent：harness、三架构、领域适配、评测与上线 | [[M03-AI-agent-从harness到部署]] | ✅ 材料保持 v1.0 / merged；80 页讲义＋784 条原转录（784 唯一秒值），文本 `00:00–02:14:37`。缺开头、结尾无明确下课语，原音完整性未证；已有音频时长沿旧登记未重取。本次 2026-10-27 全篇两阶段独审及 B1–B6/V1 定向关闭；来源、重要教学算术和必要同源图文已核，原生 Obsidian 未直接看。教师公司/职业观点、材料快照、模拟与真实部署分开，未实际发送/上传/安装/登录/交易或训练。20原问保真与中英参考、12 Mermaid＋1既有Graphviz必要显示已核；独审不代本人已学会。 |"
+        },
+        {
+          "type": "append",
+          "text": "\n\n## 2026-10-27 M03 全篇审修\n\n材料保持 v1.0 / merged；80 页讲义＋784 条原转录（784 唯一秒值），文本 `00:00–02:14:37`。缺开头、结尾无明确下课语，原音完整性未证；已有音频时长沿旧登记未重取。本次 2026-10-27 全篇两阶段独审及 B1–B6/V1 定向关闭；来源、重要教学算术和必要同源图文已核，原生 Obsidian 未直接看。教师公司/职业观点、材料快照、模拟与真实部署分开，未实际发送/上传/安装/登录/交易或训练。M01新§2.9.1标题的纯链接维护已接续；不回退前序融合和更晚已核行政。源题20项、原图12信息图/73内容口径、授权对象/原子CAS、bpb对数、API状态条件和复习限定以 [[IS5542_GenAI_in_Business/notes/M03-AI-agent-从harness到部署|M03]] 为准。链接维护、教学验收、正文写回、本地/Notion同步与Git分别回读。\n"
+        }
+      ]
+    },
+    {
+      "target": "IS5542_GenAI_in_Business/AGENTS.md",
+      "path": "IS5542_GenAI_in_Business/AGENTS.md",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\root-is5542-m03-publication\\plan-sync-02.baseline",
+      "before_sha256": "ac0bdb94a8175f4bacd3daa11af746c87b69160a64d1699fc2979a4bdd12c33e",
+      "after_sha256": "8b515dcef89b71638b4568443fc711d453dc65eb1946b47a7fbb41ee71f2a902",
+      "status": "已写并精确回读",
+      "operations": [
+        {
+          "type": "replace_exact",
+          "old": "| `IS5542-Lecture 3.pdf`（80 页，4.6MB，PptxGenJS 导出，无备注；13 页 NotebookLM 信息图） | ✅ 已成笔记 `notes/M03-AI-agent-从harness到部署.md`（**v1.0**，2026-10-21融合）。784段转录已纳入；RAG课堂展开反馈回路与学习方法，但切块/向量索引/重排、微调/function calling仍未作为完整工程链讲授 |",
+          "new": "| `IS5542-Lecture 3.pdf`（80 页，4.6MB，PptxGenJS 导出，无备注；12 页 NotebookLM 信息图） | ✅ [[IS5542_GenAI_in_Business/notes/M03-AI-agent-从harness到部署\\|M03]]，v1.0 / merged；784条部分转录保留缺首/尾未证。本次2026-10-27全篇独审、定向修复及必要同源图文闭合；原音、最新产品/外部实现未另核，不推定本人学习或部署。RAG书面一页、课堂回路已展开；完整工程链/微调/function calling仍未讲完整。 |"
+        }
+      ]
+    },
+    {
+      "target": "IS5542_GenAI_in_Business/CLAUDE.md",
+      "path": "IS5542_GenAI_in_Business/CLAUDE.md",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\root-is5542-m03-publication\\plan-sync-03.baseline",
+      "before_sha256": "5873b973420da10633c7fedbc05df224610b4392ce14333ddd511a161739384e",
+      "after_sha256": "609e306099f8c89b948460b0ac5d981369b41231bbbd3be361df2d7cc4352d77",
+      "status": "已写并精确回读",
+      "operations": [
+        {
+          "type": "replace_exact",
+          "old": "| `IS5542-Lecture 3.pdf`（80 页，4.6MB，PptxGenJS 导出，无备注；13 页 NotebookLM 信息图） | ✅ 已成笔记 `notes/M03-AI-agent-从harness到部署.md`（**v1.0**，2026-10-21融合）。784段转录已纳入；RAG课堂展开反馈回路与学习方法，但切块/向量索引/重排、微调/function calling仍未作为完整工程链讲授 |",
+          "new": "| `IS5542-Lecture 3.pdf`（80 页，4.6MB，PptxGenJS 导出，无备注；12 页 NotebookLM 信息图） | ✅ [[IS5542_GenAI_in_Business/notes/M03-AI-agent-从harness到部署\\|M03]]，v1.0 / merged；784条部分转录保留缺首/尾未证。本次2026-10-27全篇独审、定向修复及必要同源图文闭合；原音、最新产品/外部实现未另核，不推定本人学习或部署。RAG书面一页、课堂回路已展开；完整工程链/微调/function calling仍未讲完整。 |"
+        }
+      ]
+    },
+    {
+      "target": "IS5542_GenAI_in_Business/_meta/可读性返工进度.md",
+      "path": "IS5542_GenAI_in_Business/_meta/可读性返工进度.md",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\root-is5542-m03-publication\\plan-sync-04.baseline",
+      "before_sha256": "d5f72aca1c4de968aff5ce43b7956e704b76d01736e9d856bd0fc363274df51d",
+      "after_sha256": "36ad043ba344ef52f5754810e26527758923ed612ef6e90e2791b978e018d6ed",
+      "status": "已写并精确回读",
+      "operations": [
+        {
+          "type": "append",
+          "text": "\n\n## 2026-10-27 M03 全篇审修\n\n材料保持 v1.0 / merged；80 页讲义＋784 条原转录（784 唯一秒值），文本 `00:00–02:14:37`。缺开头、结尾无明确下课语，原音完整性未证；已有音频时长沿旧登记未重取。本次 2026-10-27 全篇两阶段独审及 B1–B6/V1 定向关闭；来源、重要教学算术和必要同源图文已核，原生 Obsidian 未直接看。教师公司/职业观点、材料快照、模拟与真实部署分开，未实际发送/上传/安装/登录/交易或训练。57教学小节及全部复习/来源层由唯一新gpt-6.1-sol两阶段全篇审查，B1–B6/V1集中修后原审定向关闭。最终纯排版维护（CAS空行、说明分段/列表、字段标点及导航标签），原审报告与差异保留；机器/视觉/写回/Notion/Git在本批回执分列，不改本人学习字段。\n"
+        }
+      ]
+    },
+    {
+      "target": "IS5542_GenAI_in_Business/_meta/术语表.md",
+      "path": "IS5542_GenAI_in_Business/_meta/术语表.md",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\root-is5542-m03-publication\\plan-sync-05.baseline",
+      "before_sha256": "1a0059d902447577ce4b1e41cf6b4545aa933a3c39611d1361f37eb084232009",
+      "after_sha256": "e59380f1d3e5cf37603b58b6d9e0c6254af1bf896f9ebaed3ac6d833ee97afe8",
+      "status": "已写并精确回读",
+      "operations": [
+        {
+          "type": "replace_exact",
+          "old": "> 来自 [[M03-AI-agent-从harness到部署]] v0.9（无转录，英文定义取讲义原句）。\"强化学习\"为本讲用到、L0 里没有的背景词。",
+          "new": "> 当前 M03 为 v1.0 / merged，80页讲义＋784条部分转录。下表保留首现；本次只镜像已审英文卡与限定。历史“无转录”失效，源快照/外部实现/原音限制仍在正文。"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 人在环上 | Human-on-the-loop | Supervision by reviewing final outputs rather than approving each step; contrasted with human-in-the-loop. | M03 §2.4.5 |",
+          "new": "| 人在环上 | Human-on-the-loop | Oversight without approving every step, potentially including monitoring and intervention. The lecture’s L3 diagram emphasizes final-output review; high-risk actions may still require prior approval. | M03 §2.4.5 |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 深度 Q 网络 | Deep Q-Network (DQN) | DeepMind (2013): the first artificial agent to combine representation learning with reinforcement learning end to end — learning Atari from pixels. | M03 §2.3.2 |",
+          "new": "| 深度 Q 网络 | Deep Q-Network (DQN) | A DeepMind system reported in 2013 that combined deep representation learning with reinforcement learning to learn Atari from pixels. The lecture’s historical “first” claim is not independently established here. | M03 §2.3.2 |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 计算机使用 | Computer use | A model that can see a screen, move a cursor, click and type — generalising the tool interface to any GUI software (Anthropic, Oct 2024). | M03 §2.3.3 |",
+          "new": "| 计算机使用 | Computer use | A system using screen observations and cursor/keyboard actions to operate supported GUI tasks. The lecture cites Anthropic’s October 2024 release; actual software support, access and reliability must be checked. | M03 §2.3.3 |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 上下文工程 | Context engineering | Managing what enters the model's window across a task — replacing \"prompt engineering\" as the named practice. | M03 §2.3.4 |",
+          "new": "| 上下文工程 | Context engineering | Managing what enters the model’s window across a task, including instructions, history, retrieved evidence and tool results. It includes prompt design rather than proving prompt engineering obsolete. | M03 §2.3.4 |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| harness 工程 | Harness engineering | Designing the scaffolding around the model, not the weights — now the dominant lever on reliability. | M03 §2.3.4 |",
+          "new": "| harness 工程 | Harness engineering | Designing and diagnosing the runtime around a model. The lecture argues this is an important reliability lever; its contribution depends on the task and comparison settings. | M03 §2.3.4 |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 上下文腐烂 | Context rot | Performance degrades as context grows, because attention cost scales quadratically and models are trained predominantly on shorter sequences. | M03 §2.7.6 |",
+          "new": "| 上下文腐烂 | Context rot | Possible performance degradation as accumulated context makes relevant information harder to use. Standard full-attention cost grows quadratically, but this alone does not prove an accuracy loss or a universal failure threshold. | M03 §2.7.6 |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 工具结果清理 | Tool-result clearing | The cheapest safe first move: drop old tool-result bodies, keep the fact they happened. | M03 §2.7.6 |",
+          "new": "| 工具结果清理 | Tool-result clearing | Remove unneeded tool-result bodies from the active window after preserving necessary evidence, source/version pointers and confirmed constraints. Safety depends on what is retained. | M03 §2.7.6 |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 审批门 | Approval gate | A required human confirmation before irreversible actions. | M03 §2.7.9 |",
+          "new": "| 审批门 | Approval gate | An enforced check that waits for an authorized person’s approval before a configured sensitive or high-impact action. Tool hints and model text do not grant approval. | M03 §2.7.9 |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 可靠性差距 | Reliability gap | The remaining ~10% of failures at 80–90% success that prevents fully autonomous deployment in critical infrastructure. | M03 §2.7.10 |",
+          "new": "| 可靠性差距 | Reliability gap | Residual failures that may make unsupervised high-stakes use unacceptable. At 80–90% binary success, failure is 10–20%; the diagram’s 10% matches only the 90% endpoint. | M03 §2.7.10 |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 环内验证 | In-loop verification | The agent runs tests / a linter / a critic model and iterates until they pass — the single biggest driver of quality in coding agents. | M03 §2.7.14 |",
+          "new": "| 环内验证 | In-loop verification | Checks performed during a task to guide bounded revision. Tests, linters and critic models have different coverage and limitations; a pass is not proof of complete real-world correctness. | M03 §2.7.14 |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 编排 | Orchestration | Arranging sub-agents: hierarchical (lead + workers), parallel (fan out, fan in), sequential (pipeline); costs ~15× tokens and requires concrete briefs. | M03 §2.8.1 |",
+          "new": "| 编排 | Orchestration | Arranging sub-agents hierarchically, in parallel or sequentially, with concrete objectives, boundaries and return formats. The lecture’s ~15× token figure belongs to a reported research setup, not every orchestration. | M03 §2.8.1 |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 领域不对称模式 | Domain-asymmetry pattern | Agents succeed where the environment is deterministic and feedback is unambiguous, and struggle wherever it is organisational, tacit and contested. | M03 §2.9.11 |",
+          "new": "| 领域不对称模式 | Domain-asymmetry pattern | The lecture’s suitability heuristic favors bounded tasks with controllable environments and checkable feedback. It is not a sufficient launch rule or a universal impossibility claim. | M03 §2.9.11 |"
+        },
+        {
+          "type": "append",
+          "text": "\n\n## 2026-10-27 M03 当前限定\n\n仅镜像 [[IS5542_GenAI_in_Business/notes/M03-AI-agent-从harness到部署|M03]]：工具提示标签不授予权限；内容hash不是批准，幂等键不同于request_id，同内容换键不保证去重；CAS核版和写入须不可插入。bpb是同评分对象的总bits/bytes，非业务正确率。API是接口，不保证状态不变；缓存要核厂商条件和实际usage，清理要保留证据/版本/硬约束。p34成功80–90%的失败范围是10–20%，旧原图10%仅对应90%端点；人审也须核证据与责任。\n"
+        }
+      ]
+    },
+    {
+      "target": "IS5542_GenAI_in_Business/_meta/知识层级台账.md",
+      "path": "IS5542_GenAI_in_Business/_meta/知识层级台账.md",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\root-is5542-m03-publication\\plan-sync-06.baseline",
+      "before_sha256": "a3992eee8f2ce403dd126234e8c8ea3717ed50a11f0de20e8c83d58ef1bc7e9d",
+      "after_sha256": "8a640f45471ceb53df75ae153259e6237d85962aeed4981978b6b22c89e2b5df",
+      "status": "已写并精确回读",
+      "operations": [
+        {
+          "type": "replace_exact",
+          "old": "> 笔记：[[M03-AI-agent-从harness到部署]]（**v1.0**，2026-10-21融合784段；原课前稿2026-09-18）。按 [[IS5542_GenAI_in_Business/_meta/术语表|术语表]] 译名规范，agent 不译。13 页 NotebookLM 信息图上的概念（范式转移、四支柱、自主性等级、记忆四层、Petrov 规则、身份蔓延等）照常登记，但其独有数字标 ⚪。",
+          "new": "> 笔记：[[M03-AI-agent-从harness到部署]]，材料仍v1.0/merged，原2026-10-21融合784段保留。本次2026-10-27全篇审修闭合；主要信息图清单实际12页，未注原源的独有断言/数字按来源读，不升级成当前实证。首现保持。"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 自主性等级 · 人在环上 | Autonomy levels L1–L4 · Human-on-the-loop | M03 §2.4.5 | 链式自动化 → 工作流 agent → 部分自主（有界领域 + 审阅最终输出）→ 完全自主；环上 = 只审输出、可叫停 | 人工复核（M01） |",
+          "new": "| 自主性等级 · 人在环上 | Autonomy levels L1–L4 · Human-on-the-loop | M03 §2.4.5 | L1–L4是本课信息图框架，不是汽车/行业标准；图中L3强调有界/审结果，现实环上可监控和干预，高风险仍可事前审批。 | 人工复核（M01） |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 强化学习（背景）· 认知架构 · 深度 Q 网络 | Reinforcement learning · Cognitive architecture · DQN | M03 §2.3.2 | 在环境里试动作看奖励；ACT-R / Soar；DQN 2013 首个端到端表示学习 + RL 的 agent；旧 agent 不能用语言指挥、不能迁移 | 表示学习（M01） |",
+          "new": "| 强化学习（背景）· 认知架构 · 深度 Q 网络 | Reinforcement learning · Cognitive architecture · DQN | M03 §2.3.2 | RL按动作/奖励学习；DQN/旧单环境实例不证明所有RL无迁移，first历史主张未另认证；偏好训练不全等RL。 | 表示学习（M01） |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 计算机使用 · A2A 协议 | Computer use · Agent2Agent | M03 §2.3.3 | 模型看屏幕点鼠标，工具接口泛化到任何 GUI；agent 间交换任务的协议（Google 2025-04，v1.0 2026-03） | — |",
+          "new": "| 计算机使用 · A2A 协议 | Computer use · Agent2Agent | M03 §2.3.3 | 界面观察和鼠标/键盘操作支持的GUI任务；具体软件/权限/可靠性须核。A2A交换任务，取消请求不等取消成功或回滚，协议日期沿材料快照。 | — |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 上下文工程 · harness 工程 | Context engineering · Harness engineering | M03 §2.3.4 | 管理每次请求给模型看什么；设计模型周围整个运行时——\"脚手架而非权重是可靠性的主杠杆\" | 对话状态（M02） |",
+          "new": "| 上下文工程 · harness 工程 | Context engineering · Harness engineering | M03 §2.3.4 | 管理模型可见信息与周围运行时；讲义建议先查外围，不能据报告排除模型或量化普遍贡献率。 | 对话状态（M02） |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 工具层 | Tool layer | M03 §2.7.2 | 带类型的操作目录；精简策展、错误可读、命名无歧义（参数是提示表面）、只读 / 破坏性标注 | agent |",
+          "new": "| 工具层 | Tool layer | M03 §2.7.2 | 带类型操作目录；工具名/参数是选择信息；readOnlyHint/destructiveHint仅线索，host另核身份/对象/范围/批准与实际行为。 | agent |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 上下文腐烂 · 上下文管理五手法 | Context rot · Compaction · Tool-result clearing · Just-in-time retrieval · Progressive disclosure · Prompt caching | M03 §2.7.6 | 注意力平方成本 + 训练分布偏短 → 越长越糊涂；压缩 / 清理工具结果 / 即时检索 / 渐进披露 / 提示缓存 | 有效上下文（M01）、缓存输入（M02） |",
+          "new": "| 上下文腐烂 · 上下文管理五手法 | Context rot · Compaction · Tool-result clearing · Just-in-time retrieval · Progressive disclosure · Prompt caching | M03 §2.7.6 | 无关信息累积可能降低表现；平方成本不独自证明准确率下降，20分钟/1M非通用失效线。压缩/清理先留必要证据/来源/硬约束，缓存条件与usage另核。 | 有效上下文（M01）、缓存输入（M02） |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 权限与沙箱（执行沙箱 · 审批门 · 容器逃逸） | Permissions & sandboxing · Execution sandbox · Approval gate · Container escape | M03 §2.7.9 | 默认只读、不可逆动作过审批门、允许清单、支出上限；15–35% 逃逸率；完全自主不是目标 | 纵深防御（M01） |",
+          "new": "| 权限与沙箱（执行沙箱 · 审批门 · 容器逃逸） | Permissions & sandboxing · Execution sandbox · Approval gate · Container escape | M03 §2.7.9 | 隔离/最小权限、配置审批、清单和硬预算组合；只读亦须授权，高风险不由工具标签放行。15–35%为讲义未给分母的逃逸率转述，非系统占比。 | 纵深防御（M01） |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 可靠性差距 · Petrov 规则 | Reliability gap · The Petrov Rule | M03 §2.7.10 | 80–90% 成功之外的 10% 阻止关键设施全自主（⚪ 信息图）；高风险决定必须人类确认，永远留一个能\"等一等\"并承担责任的人 | 责任归人（IS5113 M01 §2.2.2） |",
+          "new": "| 可靠性差距 · Petrov 规则 | Reliability gap · The Petrov Rule | M03 §2.7.10 | 成功80–90%对应二分失败10–20%；原图10%仅对应90%端点。高风险执行前核有效人审，不把历史警报等同自动发射或有人就保证正确。 | 责任归人（IS5113 M01 §2.2.2） |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 生命周期钩子 · 可观测性 · 轨迹日志 | Lifecycle hooks · Observability · Trajectory logging | M03 §2.7.13 | 每次调用前后的注入点（认证 / 日志 / 策略 / 脱敏 / 成本）；事后能答做了什么、为什么、花了多少、错在哪；非确定性 → 没轨迹就没法调试 | 证据链（M01） |",
+          "new": "| 生命周期钩子 · 可观测性 · 轨迹日志 | Lifecycle hooks · Observability · Trajectory logging | M03 §2.7.13 | 调用前后可挂认证/日志/策略/脱敏/费用，留当次输入/版本/返回/批准帮助追溯；不证明真实内部思维，也不保证全部错误可复现。 | 证据链（M01） |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 环内验证 · 离线评估 · 评估效度 | In-loop verification · Offline evaluation · Evaluation validity | M03 §2.7.14 | 循环里跑测试 / linter / 批评者直到过（编程 agent 质量最大驱动）；固定评测集 + CI + 回归门；效度是栈里最弱组件 | 任务级评测协议（M02） |",
+          "new": "| 环内验证 · 离线评估 · 评估效度 | In-loop verification · Offline evaluation · Evaluation validity | M03 §2.7.14 | 任务中在硬预算内依测试/linter/批评者反馈修订；过检不等完整正确。离线用固定案例/回归；效度指是否测到业务关心的结果。 | 任务级评测协议（M02） |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 九个组件与\"脚手架要拆\" | Nine components · Scaffolding comes down | M03 §2.7.15 | 六元组 + 权限沙箱 + 系统提示组装 + 子 agent 编排（⚪ 凑法推断）；每个缺了坏在哪；组件会随模型进步变得不必要 | harness |",
+          "new": "| 九个组件与\"脚手架要拆\" | Nine components · Scaffolding comes down | M03 §2.7.15 | 六元组、p39七行及九标题保留源差；加系统提示/编排凑九是笔记推断。模型进步后须重新验证能简化什么，不保证每代都能拆某项。 | harness |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 领域不对称模式 | Domain-asymmetry pattern | M03 §2.9.11 | 环境确定 + 反馈明确处成功；组织性 / 隐性 / 有争议处挣扎；五行对照表 | 输出分布评估（M01） |",
+          "new": "| 领域不对称模式 | Domain-asymmetry pattern | M03 §2.9.11 | 有界、条件可控、反馈可核、动作风险、时程和知识成文程度是调查线索，非充分上线规则。API/结构化不等状态固定；缺成功标准须先定义/缩任务，不是加人点头就够。 | 输出分布评估（M01） |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 瓶颈转移 · 三个开放问题 | Bottleneck moved · Sandboxing & security / Evaluation validity / Context beyond ~1M | M03 §2.10.2 | 2026 制约从模型能力转到 harness 质量、评估效度、权限、数据凌乱度 | harness |",
+          "new": "| 瓶颈转移 · 三个开放问题 | Bottleneck moved · Sandboxing & security / Evaluation validity / Context beyond ~1M | M03 §2.10.2 | 讲义认为外围工程更常成为限制；各项目仍须查模型/运行层/数据/任务，不能由调查边际比例唯一归因。沙箱/效度/上下文问题按原来源限制读。 | harness |"
+        },
+        {
+          "type": "append",
+          "text": "\n\n## 2026-10-27 M03 复用机制\n\n既有首现不改。[[IS5542_GenAI_in_Business/notes/M03-AI-agent-从harness到部署|M03]] §2.7.1/§2.8.3补host、JSON/schema、payload、hash、批准对象和幂等/CAS的可追踪记录，§2.8.4从2的幂读负log并按同目标bits/bytes算bpb。20项显式问题原文/中英参考、57课堂块均在本次全篇范围；教学不推定本人学习。\n"
+        }
+      ]
+    },
+    {
+      "target": "IS5542_GenAI_in_Business/_meta/考点库.md",
+      "path": "IS5542_GenAI_in_Business/_meta/考点库.md",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\root-is5542-m03-publication\\plan-sync-07.baseline",
+      "before_sha256": "66b62873454b619c357ec1a790dc7fbbf7ea6dc4c791693d788466ac863e3f15",
+      "after_sha256": "288e69acd2fa4f5cb44969990e757717f561d8823cbafeeea9744777a5979535",
+      "status": "已写并精确回读",
+      "operations": [
+        {
+          "type": "replace_exact",
+          "old": "本讲无转录，暂无。",
+          "new": "本讲已有784条部分转录，未发现明确考试通知；红级为0，不能把课堂强调、讨论重述或final result当作考试明示。"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| **1** (30%) | **agency 四支柱与自主性四级**；人在环中 vs 环上；L3 = 有界领域 + 审阅最终输出 | p.17–18 两整页（信息图 ⚪） | §2.4.4、§2.4.5 |",
+          "new": "| **1** (30%) | agency四支柱与本课自主性四级；图与口头分法区分，环上可监控/干预，高风险可事前审批 | p.17–18；信息图框架不作行业标准 | §2.4.4、§2.4.5 |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| **1** (30%) / 3 | **上下文管理五手法 + 记忆四层 + context rot 两个原因** | p.29–31 三页 | §2.7.5–2.7.7 |",
+          "new": "| **1** (30%) / 3 | 上下文五手法/四层记忆；平方成本不独证准确率退化，缓存/清理保留关键条件 | p.29–31，正文与自测限定一致 | §2.7.5–2.7.7 |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| **3** (20%) | **\"harness 比模型更决定可靠性\"的三个证据**（6.7%→68.3%、−80% 工具、+90%/15×）+ 推论\"agent 失败时模型通常不是第一个该换的\" | p.6、p.22 各一整页；p.79 主题二再引 | §2.2.1、§2.5.2 |",
+          "new": "| **3** (20%) | 解释讲义三报告为何支持检查harness，不能推15模型普遍同幅提升、15×固定价差或排除模型 | p.6/p.22转述设置，原报告未本轮重跑 | §2.2.1、§2.5.2 |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| **3** (20%) | **三种架构的输出 / 控制循环 / 成功证据**；给业务任务选架构并写成功信号 | p.51 整页比较表；论述题含案例应用 | §2.8.5 |",
+          "new": "| **3** (20%) | 按输出/循环/成功证据比较架构并说明边界，可混合；案例应用题型可准备 | p.51；讲义暂定Essay50%，正式格式待教师确认 | §2.8.5 |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| 2 (20%) | **七个领域 + 领域不对称模式**：用五行判断一个场景今天能否交给 agent | p.53、p.69 | §2.9.1、§2.9.11 |",
+          "new": "| 2 (20%) | 七领域与五项适配线索；API不等环境固定，缺证据可缩任务/暂停，不凭行业或五个标签自动放行 | p.53/p.69原词与正文条件分开 | §2.9.1、§2.9.11 |"
+        },
+        {
+          "type": "append",
+          "text": "\n\n## 2026-10-27 M03 题目与来源复核\n\n本批20项显式问题（p4×1、p5×6、p6/p13/p20各1、p28×4、p47/p50/p63各1、p80×3）在§2有完整原问、中文解释和自拟英文参考；没有选择选项，未造第21题。三讨论题无正式教师答案/考试承诺。既有更晚考试/作业规则保持；论述50%只沿讲义暂定地位，不能代最终格式。详见 [[IS5542_GenAI_in_Business/notes/M03-AI-agent-从harness到部署|M03]] §6、§9及本批回执。\n"
+        }
+      ]
+    },
+    {
+      "target": "README.md",
+      "path": "README.md",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\root-is5542-m03-publication\\plan-sync-08.baseline",
+      "before_sha256": "ebd9816e18ad089d8f461d5ce90d0da61eb808d5a568a0232a2d6b8bd582f8b7",
+      "after_sha256": "17589432a83cb2ff3cb468f4611ec7355dc0530a1639aee64617e2337a3613f9",
+      "status": "已写并精确回读",
+      "operations": [
+        {
+          "type": "replace_exact",
+          "old": "| ✅ | ~~产 IS5542 M03 笔记（课前预习版）~~ —— **v0.9**（2026-09-18）：`IS5542-Lecture 3.pdf` 80 页全覆盖（内容页 69），13 页 NotebookLM 信息图逐页视觉复核并转写；57 个小节、66 条术语、12 🟡 + 4 ⚪ 考点；`note_quality.py --strict` PASS、`link_check` 0；p.76 数字由 `code/m03_cost_per_accepted.py` 复算。转录尚未入库，待取得后合并升 v1.0 |",
+          "new": "| ✅ | ~~产 IS5542 M03 笔记~~ —— 2026-09-18 建稿、2026-10-21 原转录融合为历史；材料保持 v1.0 / merged；80 页讲义＋784 条原转录（784 唯一秒值），文本 `00:00–02:14:37`。缺开头、结尾无明确下课语，原音完整性未证；已有音频时长沿旧登记未重取。本次 2026-10-27 全篇两阶段独审及 B1–B6/V1 定向关闭；来源、重要教学算术和必要同源图文已核，原生 Obsidian 未直接看。教师公司/职业观点、材料快照、模拟与真实部署分开，未实际发送/上传/安装/登录/交易或训练。当前 7 页纯封面/章节标题、其余73页含导航判断/视频入口/教学；主要信息图清单12页。20项显式原问及中英参考齐，讨论题不是教师正式答案；旧13页/69内容页和旧评分不作本次证明。本人通读、自测、提交与成绩不变。 |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "| GenAI in Business | IS5542 | AI 核心必修 | M01 v1.0（本次全篇审修及正文原子写回／精确回读已完成；同步见本批回执） · M02 v1.0 · M03 v1.0 · M04 v1.0（本次71页全篇重审已写回）（本次全篇独审／来源／图文与定向修复候选完成，正式写回同步另记） · M05 v1.0（本次34页全篇重审已写回） | M01 ✅（文本00:00–02:04:19，原音首尾／课间完整性未核） · M02 ✅ · M03 ✅（缺首、尾部完整性未证）· M04 ✅（原首尾／五长间隔／身份工具等限制保留） · M05 ✅（原缺口保留） |",
+          "new": "| GenAI in Business | IS5542 | AI 核心必修 | M01 v1.0（本次全篇审修及正文原子写回／精确回读已完成；同步见本批回执） · M02 v1.0 · M03 v1.0（本次全篇审修闭合；原音/外源限制保留） · M04 v1.0（本次71页全篇重审已写回）（本次全篇独审／来源／图文与定向修复候选完成，正式写回同步另记） · M05 v1.0（本次34页全篇重审已写回） | M01 ✅（文本00:00–02:04:19，原音首尾／课间完整性未核） · M02 ✅ · M03 ✅（784记录；缺首、尾部完整性未证）· M04 ✅（原首尾／五长间隔／身份工具等限制保留） · M05 ✅（原缺口保留） |"
+        },
+        {
+          "type": "replace_exact",
+          "old": "- [IS5542 · 商业生成式 AI](IS5542_GenAI_in_Business/00-课程总览.md)：5 篇讲义与嘉宾课笔记（M04 v1.0；本轮教学与同源图文核对闭合，ASR/Obsidian 限制保留）。",
+          "new": "- [IS5542 · 商业生成式 AI](IS5542_GenAI_in_Business/00-课程总览.md)：5 篇讲义与嘉宾课笔记（M04 v1.0；本轮教学与同源图文核对闭合，ASR/Obsidian 限制保留）。 M03 本次全篇审修闭合；材料仍 v1.0，旧外部实现/原音与原生 Obsidian 未核范围保留。"
+        }
+      ]
+    },
+    {
+      "target": "_meta/课件题目覆盖台账.md",
+      "path": "_meta/课件题目覆盖台账.md",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\root-is5542-m03-publication\\plan-sync-09.baseline",
+      "before_sha256": "fec75bec3cd9791a5e5ab80923a620d9e0346b3474dcb647bc78049022399f29",
+      "after_sha256": "bf1d89ffbfcdd4c4d0905f9bb268fead84e5e06aeb74907983a99def06637d3c",
+      "status": "已写并精确回读",
+      "operations": [
+        {
+          "type": "replace_exact",
+          "old": "| IS5542 M03 | p.47 / p.50 两个设计决策、p.80 三道讨论 | **完整的参考作答**：M03 §2.8.3–2.8.4、§2.11.2；均标为笔记立场，无本讲转录。 |",
+          "new": "| IS5542 M03 | 当前80页20项显式问题：p4缩略图1、p5路线6、p6/p13/p20各1、p28设计4、p47/p50/p63各1、p80讨论3；p23/p40给定例另保真 | 本次2026-10-27全篇独审/定向关闭；完整原问、中文解释与自拟英文参考在§2，无选择选项；已有784条partial转录，无正式讨论答案/考试明示，原音/外源限制保留。 |"
+        }
+      ]
+    },
+    {
+      "target": "_meta/转录处理规则.md",
+      "path": "_meta/转录处理规则.md",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\root-is5542-m03-publication\\plan-sync-10.baseline",
+      "before_sha256": "0824858f315c18b64b127f640aff096ec75e93ff9fa7466f7a55aebb379cb823",
+      "after_sha256": "d691ea1736daf28d6e5cf3f886d8b4e8c6cdb7643a31c6f32fde491f19bd89d1",
+      "status": "已写并精确回读",
+      "operations": [
+        {
+          "type": "replace_exact",
+          "old": "| IS5542 M03-transcript-partial.txt | M03 | 784段，00:00–02:14:37 | 已融合；缺开头、结尾完整性未证；考试明示0 |",
+          "new": "| IS5542 M03-transcript-partial.txt | M03 | 784条记录／784唯一秒值，00:00–02:14:37（文本跨度） | 原2026-10-21融合材料v1.0/merged保留；缺开头、末无下课语、原音未听不认证完整。2026-10-27本批全篇两阶段独审/定向修复闭合，20显式原问与必要图文已核；57课堂块、638时间引用/64引文的audit无未匹配/A13/A14，含明确标识的M02跨讲引用且分别回源。考试明示0，Dify/DeFi具体名与项目URL待核；正文/同步/Notion/Git另记。 |"
+        }
+      ]
+    },
+    {
+      "target": "IS5542_GenAI_in_Business/_meta/待并入术语总表.md",
+      "path": "IS5542_GenAI_in_Business/_meta/待并入术语总表.md",
+      "baseline": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\root-is5542-m03-publication\\plan-sync-11.baseline",
+      "before_sha256": "4590c9f9a456148e49cd6c82736d03334a549e7f0aa06d3e6a9ad2783764e03a",
+      "after_sha256": "2b44a984e86805092f812c1791f3b16ec629d58c1d4a112e326846b41c43ba9e",
+      "status": "已写并精确回读",
+      "operations": [
+        {
+          "type": "replace_exact",
+          "old": "## F · M03 追加（2026-09-18）<!-- 待合并 -->",
+          "new": "## F · M03 追加（2026-09-18 历史候选；本批根表回读后关闭）"
+        },
+        {
+          "type": "append",
+          "text": "\n\n## 2026-10-27 M03 本批并入完成记录\n\n本批适用词形及机制边界已由单一发布者精确合并根 `_meta/术语总表.md` 的“2026-10-27 IS5542 M03 当前复用边界”并逐字回读后登记。F节原候选保留为历史，不再表示本批待合并；首次及其他课状态不变。只镜像已审内容，不从新词形推定新技术部署或本人学习。\n"
+        }
+      ]
+    }
+  ],
+  "no_increment": [
+    {
+      "path": "AGENTS.md",
+      "reason": "本次不向根规则添加进度。"
+    },
+    {
+      "path": "CLAUDE.md",
+      "reason": "本次不向根规则添加进度。"
+    },
+    {
+      "path": "IS5542_GenAI_in_Business/_meta/作业与DDL.md",
+      "reason": "M03原音只给学习/项目参考，没有新增正式行政事实；保持已有更晚已核公告/反思/项目规则，不用本轮未查降级。"
+    },
+    {
+      "path": "_meta/Notion进度看板.md",
+      "reason": "本地库/字段定位规则未变；外部M03行备注仍另列待执行。"
+    },
+    {
+      "path": "IS5542_GenAI_in_Business/_prep/课程前置资料.md",
+      "reason": "本次无新增行政/官方课程目录事实；继承已有CILO、考试暂定比例及更晚公告，不回退。"
+    },
+    {
+      "path": "IS5542_GenAI_in_Business/code/m03_cost_per_accepted.py",
+      "reason": "本任务保护用户代码；原算术脚本只核正分母例，零产出在笔记规范中明示未实现，不修改代码。"
+    },
+    {
+      "path": "IS5542_GenAI_in_Business/notes/M01-导论-生成式AI基础与企业落地.md",
+      "reason": "M01正式修订由主写者完成，本任务只核链接目标；不另写该教学文件。"
+    },
+    {
+      "path": "IS5542_GenAI_in_Business/notes/M02-模型全景-基准评测与提示设计.md",
+      "reason": "仅作为明确M02跨源引文的只读来源，不扩为M02全篇审修或写回。"
+    }
+  ],
+  "root_glossary_first": true,
+  "precise_rebase_exceptions": [],
+  "Notion": "pending actual row readback",
+  "Git": "pending"
+}

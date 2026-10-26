@@ -21,7 +21,7 @@
 | `IS5542 GenAI in Business Syllabus 2026 Sem A.pdf` | ✅ 已读，见 `_prep/课程前置资料.md` |
 | `GenAI in Business IS5542-Lecture 1.pptx`（15MB） | ✅ 已成笔记 `notes/M01-…`（v1.0，转录已合并） |
 | `IS5542-Lecture 2.pdf`（88 页，3.8MB，macOS 导出，无备注） | ✅ 已成笔记 `notes/M02-模型全景-基准评测与提示设计.md`（**v1.0**，转录已合并 2026-09-15）。⚠️ 页脚显示它只是源 deck 的 Part 1 / 1B / 2；🎙️ 9/19 讲 agent + RAG |
-| `IS5542-Lecture 3.pdf`（80 页，4.6MB，PptxGenJS 导出，无备注；13 页 NotebookLM 信息图） | ✅ 已成笔记 `notes/M03-AI-agent-从harness到部署.md`（**v1.0**，2026-10-21融合）。784段转录已纳入；RAG课堂展开反馈回路与学习方法，但切块/向量索引/重排、微调/function calling仍未作为完整工程链讲授 |
+| `IS5542-Lecture 3.pdf`（80 页，4.6MB，PptxGenJS 导出，无备注；12 页 NotebookLM 信息图） | ✅ [[IS5542_GenAI_in_Business/notes/M03-AI-agent-从harness到部署\|M03]]，v1.0 / merged；784条部分转录保留缺首/尾未证。本次2026-10-27全篇独审、定向修复及必要同源图文闭合；原音、最新产品/外部实现未另核，不推定本人学习或部署。RAG书面一页、课堂回路已展开；完整工程链/微调/function calling仍未讲完整。 |
 | `IS5542 Project Template.pptx`（9 页） | ✅ 已转写进 `_meta/作业与DDL.md` §2 |
 | `Announcementscreenshot/`（Canvas 公告截图 ×2，9/11） | ✅ 已并入 `_meta/作业与DDL.md`、`00-课程总览.md`（项目 11/28 录像提交；六场客座主题、强制出席、反思 3%、内容进期末） |
 
