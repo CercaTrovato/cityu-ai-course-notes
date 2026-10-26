@@ -634,3 +634,8 @@ Notebook 第 23 格（0 起算 cell 22）三题内部 50／30／20 共 100 分�
 | 当日Participation／Quiz操作 | 教授说当天没有实际quiz，但会在Canvas建立quiz项；到场学生不要提交，不提交得到当天attendance 1分，提交反而会损失部分attendance分 | S17 `02:18`–`03:24`：*"Today we have no quiz"*、*"do not submit"*、*"if you do not submit, you get one point for today's attendance"*。这是当日特殊操作，不推广为其他周规则；没有替本人点击或登记提交 |
 | 历年Quiz练习 | 课堂展示上一年SMA/SES题并给3–4分钟尝试；讲义已在Canvas，无需拍照 | S17 `02:52`–`06:46`；是课堂参考题型，不等于本日需要提交，也不冒充final真题 |
 | Tutorial时段 | lecture在S17 `43:25`结束，`43:29`说明*"we have a tutorial at 2pm"* | 只确认该次课堂的2pm tutorial提示；本次未取得tutorial录音，T08继续pending |
+
+
+## 2026-10-27 · M01 书面来源冲突补核
+
+本次交叉核本地 Syllabus 3 页与 Project Guideline 2 页：讲义/指南 max6 与 Syllabus max5 并存；指南 Briefing End of Week5、最多5页PPT/3分钟，讲义暂定表列Week6；报告模板 May1 11:59PM 不可直接用于本学期。指南展示8+2分钟、报告20–25页/11号字/双倍行距等均为该版本书面条件，不认证最新Canvas或本组安排。M01保留来源差异，不由本次审修新填绝对截止、成员、本人提交或可提交。

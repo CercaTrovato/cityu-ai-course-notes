@@ -1,0 +1,193 @@
+{
+  "schema": "cityu-scratch-review-handoff-v1",
+  "task": "dispatch-ef-guides",
+  "source_thread_id": "01a17103-659b-7ad2-81ea-dc814266007f",
+  "model": "gpt-6.1-sol",
+  "date": "2026-10-27",
+  "finished_utc": "2026-10-26T18:21:20.860922+00:00",
+  "scope_corrected": true,
+  "excluded_A02_counted": false,
+  "reviewed_included_items": 2,
+  "items": [
+    {
+      "item": "a01",
+      "target": "EF5560_Fintech_and_AI_in_Finance/assignment/graded/A01-ml-investment/notes/开始这里.md",
+      "baseline_sha256": "c74273e3074be427776d95bb13d0d84378314d7a7a013fe9ef27ca8c36873074",
+      "candidate": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\a01\\candidate.md",
+      "candidate_sha256": "21e6136331e28d1c1def1a419d85ef6eb583fe283cb146e2b18332869f574f38",
+      "diff": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\a01\\candidate.diff",
+      "independent_text_teaching": "passed_full_scope",
+      "source_review": "passed_dated_scope_not_current_canvas",
+      "visual": "passed_same_source_browser_not_native_jupyter",
+      "gate": {
+        "exit_code": 0,
+        "current_L_C_R_gate": "passed",
+        "source_contract_machine": "unverified_without_manifest_due_H2_locator_limit",
+        "human_source_review": "passed",
+        "independent_text_review": "passed"
+      },
+      "ready_to_write": true,
+      "pending": [
+        "官方原题契约对H2指南定位不适配，未记其PASS；完整原题及来源已由人工回源与独审确认，详source-contract-limit.json"
+      ],
+      "formal_writeback": "not_done",
+      "sync": "not_done"
+    },
+    {
+      "item": "notebook",
+      "target": "EF5560_Fintech_and_AI_in_Finance/assignment/graded/A01-ml-investment/work/EF5560-A01-逐步实操.ipynb",
+      "baseline_sha256": "2a5687f762e59e53afe0a8cb9b1cea0c66fea071f4c5822c315cf61683f7aeeb",
+      "candidate": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\notebook\\candidate.ipynb",
+      "candidate_sha256": "b5eb88fbeceb2c590f3b3eef1cb75ea7314540408edca58e6e16cd3ab032e786",
+      "diff": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\notebook\\source-cell.diff",
+      "independent_text_teaching": "passed_full_scope",
+      "source_review": "passed_dated_scope_not_current_canvas",
+      "visual": "passed_same_source_browser_not_native_jupyter",
+      "gate": {
+        "note_release_gate_quality": "unsupported_for_native_ipynb_not_run",
+        "review_binding_passed": true,
+        "native_static_checks": "passed_listed_in_native-checks.json",
+        "native_jupyter_interaction": "not_newly_tested",
+        "publication_publisher_decision_required": true
+      },
+      "ready_to_write": false,
+      "pending": [
+        "主写者确认原生Notebook验收/发布路径；现有Markdown质量门槛不支持ipynb，不能算其PASS",
+        "原生Jupyter交互未本次测试；代码/输出/metadata未变，旧执行范围已说明"
+      ],
+      "formal_writeback": "not_done",
+      "sync": "not_done"
+    }
+  ],
+  "ready_to_write_all": false,
+  "done": [
+    "A01导览完整重审",
+    "Notebook115cell完整审/36code全部旧输出读取",
+    "一次全包独审、源核及实际缺陷集中修复后定向复核",
+    "20Markdown变化、95格不变，code/output/count/metadata精确保持",
+    "原件/旧执行hash与输入身份",
+    "标准HTML/公式/5旧图及新流程图实际显示",
+    "publication-plan逐目标当前baseline/hash与精确append/replace/create文件payload"
+  ],
+  "not_done": [
+    "原生Notebook统一质量门槛路径未由现有工具支持",
+    "原生Jupyter交互未本次执行",
+    "vault写回/CAS回读",
+    "共享同步/Notion/Canvas/Git/配置写入",
+    "指南官方源题契约H2定位不适配，保留失败记录；没有改规则/工具，人工回源记录单列"
+  ],
+  "publication_plan": {
+    "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\publication-plan.json",
+    "sha256": "99e10dda4df76c8d4a6c44e265b5d8d0f20b123fc271843895d2aaa9517a26e1"
+  },
+  "A02_stop_record": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\scope-correction.json",
+  "M06_two_source_blockers": "unchanged, not queried",
+  "files": {
+    "model-check.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\model-check.json",
+      "sha256": "3fd838c7e43ec2412428e8270474f9916fef7c428ea43a7764d3025ec7856d76"
+    },
+    "source-review.md": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\source-review.md",
+      "sha256": "b63880ee288b3afa446293e6488171c0341b454e052a7356c970dfd25c368025"
+    },
+    "visual-review.md": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\visual-review.md",
+      "sha256": "f382b5ad8f42a00666e03c8b3b6a04ad9550a8c70c67d2bc7686821c1480ff47"
+    },
+    "stage-1.md": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\stage-1.md",
+      "sha256": "4102391fba4e6b547ff2fadd79b9b2e016b34e35eef2ae99e8086f3181736e0d"
+    },
+    "notebook-stage-1.md": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\notebook-stage-1.md",
+      "sha256": "31580619c5d77e904e6c55f40dcef6d26cd79da463c60db7884e7a55157c50e6"
+    },
+    "independent-review.md": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\independent-review.md",
+      "sha256": "e739b057e012af44131910f2d19d44deafb80d406764b0b90fb6ca5c94ad6967"
+    },
+    "integrity-final.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\integrity-final.json",
+      "sha256": "3df0e5842d28ca8f85c2ccdfa64a506affd0490e8147f3261ffd7956acbb5dcd"
+    },
+    "publication-plan.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\publication-plan.json",
+      "sha256": "99e10dda4df76c8d4a6c44e265b5d8d0f20b123fc271843895d2aaa9517a26e1"
+    },
+    "link-checks.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\link-checks.json",
+      "sha256": "cd6159b26aac919dc60f8fde717230fcfc8ee07a5e5b79a2f5c55f3c474ff512"
+    },
+    "native-check.py": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\native-check.py",
+      "sha256": "8e1431c449049fc564ff536b30969a90e17dfcfd6f4c828109bc281f971c870f"
+    },
+    "supplement-calculations.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\supplement-calculations.json",
+      "sha256": "18ae8add4e7a39fbcfaa61be8d64b2beccc3c7c64b9056ee998129ea548216a0"
+    },
+    "input-identity.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\input-identity.json",
+      "sha256": "13b57fb8c06ea773e057ba8fb4a7bd2c48021d1687da6f525ebb264fd6d8a8f5"
+    },
+    "a01/review.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\a01\\review.json",
+      "sha256": "05e9064e84b1f5c828c5959c72e4e5fc2e99793ba8b3e3ced5e90d5726743ab2"
+    },
+    "notebook/review.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\notebook\\review.json",
+      "sha256": "c31b7a4c9da839bd9b164f7d74adbb0c2b4ee0dd2668d49bf7c5a9f77363f243"
+    },
+    "notebook/native-checks.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\notebook\\native-checks.json",
+      "sha256": "0f4326e34f4f1fe27ece4a4f917d45d31f22150e18c0736818a62316511435cf"
+    },
+    "a01/gate-final.txt": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\a01\\gate-final.txt",
+      "sha256": "0465800779a182a8834fde051459c3e3dce1d9774a5d0292c00f7f080ead4652"
+    },
+    "notebook/gate-status.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\notebook\\gate-status.json",
+      "sha256": "f884189447e31530ddfab37c5bf9c0ce5eae7f1a1f408dd6e90a33d16e0b3e03"
+    },
+    "a01/source-contract-limit.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\a01\\source-contract-limit.json",
+      "sha256": "3bdfaa5cc9be9e22e35d1ff32ab464351ee83fee3a4f4b82df25e5f7536d786a"
+    },
+    "a01/warnings-final.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\a01\\warnings-final.json",
+      "sha256": "477244fb075cd88f4efa755b75edb0a7c0ebbb4bcc55ace62caee350c92008e1"
+    },
+    "a01/gate-status.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\a01\\gate-status.json",
+      "sha256": "ded83c2e5d094838e89469f3839f18ac2b6543490fe76a5531f36a955a997eab"
+    },
+    "a01/gate-source-contract-attempt.txt": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\a01\\gate-source-contract-attempt.txt",
+      "sha256": "ab670e0de162c75e9209cc0bd6754f96f4ffb92143a8cce2810c9827ff0e6ab7"
+    },
+    "notebook/cell-preservation.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\notebook\\cell-preservation.json",
+      "sha256": "0f4326e34f4f1fe27ece4a4f917d45d31f22150e18c0736818a62316511435cf"
+    },
+    "notebook/source-cell.diff": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\notebook\\source-cell.diff",
+      "sha256": "ef8964b868085e20fd729f96e48be7e22af4f384f964fc5b610ad4ab399c23c9"
+    },
+    "notebook/source-cell-changes.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\notebook\\source-cell-changes.json",
+      "sha256": "ad91f546b361eef413042b2cdd5947f42a208ba761ddbc531cecb34eeda760ae"
+    },
+    "scope-correction.json": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\scope-correction.json",
+      "sha256": "4d43b8a48fbd8aea17a508bd7d87c600d6c6db43440d35cc310bc6ca50666d48"
+    },
+    "a01/review-binding-final.txt": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef-guides\\a01\\review-binding-final.txt",
+      "sha256": "5364532cfb563ede7613163e12d19952740bb309dfc596afbba5038a03c90efc"
+    }
+  },
+  "next_action": "原主写者分别核两项候选/审查与Notebook原生工具边界，先明确Notebook发布验收路径；按publication-plan重读currenthash精确合并，保护用户字段，不自动更新formal报告/ZIP或重训。",
+  "metadata_closeout": "主报告30条R提示文字修正及hash更新，review_gate实查passed，不重复运行质量检查；教学内容候选未变"
+}

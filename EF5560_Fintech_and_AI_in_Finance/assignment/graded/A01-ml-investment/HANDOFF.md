@@ -57,3 +57,8 @@ D:\anaconda3\python.exe -X utf8 EF5560_Fintech_and_AI_in_Finance\assignment\grad
 2. 提交前重新核 Canvas Assignments、Announcements、Files、Modules。本轮没有重新联网核行政信息：此前记录正式截止 2026-10-15 14:00 香港时间，PDF 写 12:00，内部按 12:00。原 ZIP SHA-256 `CE4B9E0ECCB4BBBA5468DACC3D501A05DE7A2D3D9AEDBCDC24E03956B31F8CD9`。
 3. 本轮没有更新 Notion 外部看板，计分状态未改变。可手动记：EF5560 A01 状态 draft；学习入口＝Obsidian 导览＋Notebook；分析/报告/权重复现已通过；下一步＝团队复核与身份补齐；提交状态不变。其他四课保持各自既有状态。
 4. 后续按课逐讲补练习精读，先取得原题与官方解答，优先有明确材料的条目；受阻项保持受阻。当前不创建空壳 Mxx 文件。
+
+
+## 2026-10-27 · A01 本次教学重审记录
+
+A01导览与115格实操Notebook已分别完成全范围独审及原审定向复核；新增原题中英对照、模型手例与行业上限流程图。仅20格Markdown source变化，全部代码/保存输出/执行计数/metadata保持；未重训或改正式报告/CSV/ZIP。结构/AST与实际标准HTML显示已核，主写者已在隔离副本补核原生JupyterLab的LASSO公式、旧输出与行业cap流程；Markdown检查器仍不支持ipynb，不冒称其PASS。原生结构/36代码AST/全cell保持性、实际独审与原生必要显示构成本次适用验收，不代表新执行。10/21既有邮件库记录已见10/12提交，本次不改本人状态；当前Canvas/评分/上传附件未新核。原主写者已接受真实候选并完成CAS原子写回/精确回读；原发布计划内两个整文件candidate_file为过期副本，已按同计划operations.source及真实独审SHA使用最终原字节，未使用过期副本。新增SVG仅尺寸维护530×1662，节点/边/文字不变。
