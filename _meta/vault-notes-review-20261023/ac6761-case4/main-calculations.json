@@ -1,0 +1,499 @@
+{
+  "workbook_sha256": "417a3f03b32b3354e7d8150c464a43668e0fa0a200a98028b3fc4bc34262d93f",
+  "formula_cells": [
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "A6",
+      "formula": "=\"05233\"",
+      "computed_from_inputs": "05233",
+      "cached": "05233"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "D6",
+      "formula": "=IF(A6=\"\",\"缺主键\",IF(COUNTIF($A$6:$A$9,A6)>1,\"重复主键\",\"非空且唯一\"))",
+      "computed_from_inputs": "非空且唯一",
+      "cached": "非空且唯一"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "A7",
+      "formula": "=\"05234\"",
+      "computed_from_inputs": "05234",
+      "cached": "05234"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "D7",
+      "formula": "=IF(A7=\"\",\"缺主键\",IF(COUNTIF($A$6:$A$9,A7)>1,\"重复主键\",\"非空且唯一\"))",
+      "computed_from_inputs": "非空且唯一",
+      "cached": "非空且唯一"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "D8",
+      "formula": "=IF(A8=\"\",\"缺主键\",IF(COUNTIF($A$6:$A$9,A8)>1,\"重复主键\",\"非空且唯一\"))",
+      "computed_from_inputs": "缺主键",
+      "cached": "缺主键"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "A9",
+      "formula": "=\"05235\"",
+      "computed_from_inputs": "05235",
+      "cached": "05235"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "D9",
+      "formula": "=IF(A9=\"\",\"缺主键\",IF(COUNTIF($A$6:$A$9,A9)>1,\"重复主键\",\"非空且唯一\"))",
+      "computed_from_inputs": "非空且唯一",
+      "cached": "非空且唯一"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "E14",
+      "formula": "=IF(COUNTIF($A$14:$A$17,A14)=1,\"唯一\",\"重复\")",
+      "computed_from_inputs": "唯一",
+      "cached": "唯一"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "E15",
+      "formula": "=IF(COUNTIF($A$14:$A$17,A15)=1,\"唯一\",\"重复\")",
+      "computed_from_inputs": "唯一",
+      "cached": "唯一"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "E16",
+      "formula": "=IF(COUNTIF($A$14:$A$17,A16)=1,\"唯一\",\"重复\")",
+      "computed_from_inputs": "唯一",
+      "cached": "唯一"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "E17",
+      "formula": "=IF(COUNTIF($A$14:$A$17,A17)=1,\"唯一\",\"重复\")",
+      "computed_from_inputs": "唯一",
+      "cached": "唯一"
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "C6",
+      "formula": "=COUNTIF($H$6:$H$9,A6)",
+      "computed_from_inputs": 2,
+      "cached": 2
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "D6",
+      "formula": "=SUMIF($H$6:$H$9,A6,$G$6:$G$9)",
+      "computed_from_inputs": 500,
+      "cached": 500
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "C7",
+      "formula": "=COUNTIF($H$6:$H$9,A7)",
+      "computed_from_inputs": 0,
+      "cached": 0
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "D7",
+      "formula": "=SUMIF($H$6:$H$9,A7,$G$6:$G$9)",
+      "computed_from_inputs": 0,
+      "cached": 0
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "C8",
+      "formula": "=COUNTIF($H$6:$H$9,A8)",
+      "computed_from_inputs": 0,
+      "cached": 0
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "D8",
+      "formula": "=SUMIF($H$6:$H$9,A8,$G$6:$G$9)",
+      "computed_from_inputs": 0,
+      "cached": 0
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "C9",
+      "formula": "=COUNTIF($H$6:$H$9,A9)",
+      "computed_from_inputs": 0,
+      "cached": 0
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "D9",
+      "formula": "=SUMIF($H$6:$H$9,A9,$G$6:$G$9)",
+      "computed_from_inputs": 0,
+      "cached": 0
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "C10",
+      "formula": "=COUNTIF($H$6:$H$9,A10)",
+      "computed_from_inputs": 2,
+      "cached": 2
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "D10",
+      "formula": "=SUMIF($H$6:$H$9,A10,$G$6:$G$9)",
+      "computed_from_inputs": 500,
+      "cached": 500
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "I6",
+      "formula": "=IFERROR(VLOOKUP(H6,$A$6:$B$10,2,FALSE),\"未知编号\")",
+      "computed_from_inputs": "F",
+      "cached": "F"
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "I7",
+      "formula": "=IFERROR(VLOOKUP(H7,$A$6:$B$10,2,FALSE),\"未知编号\")",
+      "computed_from_inputs": "J",
+      "cached": "J"
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "I8",
+      "formula": "=IFERROR(VLOOKUP(H8,$A$6:$B$10,2,FALSE),\"未知编号\")",
+      "computed_from_inputs": "F",
+      "cached": "F"
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "I9",
+      "formula": "=IFERROR(VLOOKUP(H9,$A$6:$B$10,2,FALSE),\"未知编号\")",
+      "computed_from_inputs": "J",
+      "cached": "J"
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "D12",
+      "formula": "=SUM(D6:D10)",
+      "computed_from_inputs": 1000,
+      "cached": 1000
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "G12",
+      "formula": "=SUM(G6:G9)",
+      "computed_from_inputs": 1000,
+      "cached": 1000
+    },
+    {
+      "sheet": "核对与边界",
+      "cell": "B6",
+      "formula": "=COUNTBLANK('Q3原表与拆分'!A6:A9)",
+      "computed_from_inputs": 1,
+      "cached": 1
+    },
+    {
+      "sheet": "核对与边界",
+      "cell": "B7",
+      "formula": "=COUNTIFS('Q3原表与拆分'!C14:C17,\"Andy\",'Q3原表与拆分'!D14:D17,21)",
+      "computed_from_inputs": 2,
+      "cached": 2
+    },
+    {
+      "sheet": "核对与边界",
+      "cell": "B8",
+      "formula": "=SUM('Q4关系表'!G6:G9)",
+      "computed_from_inputs": 1000,
+      "cached": 1000
+    },
+    {
+      "sheet": "核对与边界",
+      "cell": "B9",
+      "formula": "=SUM('Q4关系表'!D6:D10)",
+      "computed_from_inputs": 1000,
+      "cached": 1000
+    },
+    {
+      "sheet": "核对与边界",
+      "cell": "B10",
+      "formula": "=COUNTA('Q4关系表'!A6:A10)",
+      "computed_from_inputs": 5,
+      "cached": 5
+    },
+    {
+      "sheet": "核对与边界",
+      "cell": "B11",
+      "formula": "=COUNTIF('Q4关系表'!C6:C10,\">0\")",
+      "computed_from_inputs": 2,
+      "cached": 2
+    }
+  ],
+  "formula_count": 33,
+  "SQL_current_run": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\ac6761-case4\\sql-execution\\recheck-20261026-154906\\Case4-核验结果.json",
+  "SQL_result": {
+    "checks": [
+      {
+        "check": "Q3b拆分JOIN无损还原，保留两个Andy编号",
+        "actual": [
+          [
+            "45631",
+            "C123",
+            "Andy",
+            21
+          ],
+          [
+            "63123",
+            "C124",
+            "Andy",
+            21
+          ],
+          [
+            "132123",
+            "C125",
+            "Jennifer",
+            29
+          ],
+          [
+            "313213",
+            "C126",
+            "Arlie",
+            33
+          ]
+        ],
+        "expected": [
+          [
+            "45631",
+            "C123",
+            "Andy",
+            21
+          ],
+          [
+            "63123",
+            "C124",
+            "Andy",
+            21
+          ],
+          [
+            "132123",
+            "C125",
+            "Jennifer",
+            29
+          ],
+          [
+            "313213",
+            "C126",
+            "Arlie",
+            33
+          ]
+        ],
+        "passed": true
+      },
+      {
+        "check": "Q4五个收银员保留及分组汇总",
+        "actual": [
+          [
+            "C1",
+            "F",
+            2,
+            500
+          ],
+          [
+            "C2",
+            "G",
+            0,
+            0
+          ],
+          [
+            "C3",
+            "H",
+            0,
+            0
+          ],
+          [
+            "C4",
+            "I",
+            0,
+            0
+          ],
+          [
+            "C5",
+            "J",
+            2,
+            500
+          ]
+        ],
+        "expected": [
+          [
+            "C1",
+            "F",
+            2,
+            500
+          ],
+          [
+            "C2",
+            "G",
+            0,
+            0
+          ],
+          [
+            "C3",
+            "H",
+            0,
+            0
+          ],
+          [
+            "C4",
+            "I",
+            0,
+            0
+          ],
+          [
+            "C5",
+            "J",
+            2,
+            500
+          ]
+        ],
+        "passed": true
+      },
+      {
+        "check": "Q4金额总数",
+        "actual": 1000,
+        "expected": 1000,
+        "passed": true
+      },
+      {
+        "check": "Q3a编号前导零保留",
+        "actual": [
+          "05233",
+          "05234",
+          "05235"
+        ],
+        "expected": [
+          "05233",
+          "05234",
+          "05235"
+        ],
+        "passed": true
+      },
+      {
+        "check": "Q3a Stephen主键NULL拒绝",
+        "actual": true,
+        "expected": true,
+        "passed": true
+      },
+      {
+        "check": "Q3a空字符串主键拒绝",
+        "actual": true,
+        "expected": true,
+        "passed": true
+      },
+      {
+        "check": "Q4悬空Cashier外键拒绝",
+        "actual": true,
+        "expected": true,
+        "passed": true
+      },
+      {
+        "check": "Q4收款缺Cashier拒绝",
+        "actual": true,
+        "expected": true,
+        "passed": true
+      },
+      {
+        "check": "Q4重复CashR主键拒绝",
+        "actual": true,
+        "expected": true,
+        "passed": true
+      },
+      {
+        "check": "同名同龄可保留为不同客户",
+        "actual": 2,
+        "expected": 2,
+        "passed": true
+      },
+      {
+        "check": "PK/FK整体检查",
+        "actual": [],
+        "expected": [],
+        "passed": true
+      },
+      {
+        "check": "Q2无关联退货头需业务核对（FK不自动防止）",
+        "actual": [
+          "R-EMPTY"
+        ],
+        "expected": [
+          "R-EMPTY"
+        ],
+        "passed": true
+      }
+    ],
+    "cashier_summary": [
+      [
+        "C1",
+        "F",
+        2,
+        500
+      ],
+      [
+        "C2",
+        "G",
+        0,
+        0
+      ],
+      [
+        "C3",
+        "H",
+        0,
+        0
+      ],
+      [
+        "C4",
+        "I",
+        0,
+        0
+      ],
+      [
+        "C5",
+        "J",
+        2,
+        500
+      ]
+    ],
+    "checks_passed": 12,
+    "currency": "not specified by question",
+    "q2_example_is_supplement": true,
+    "official_solution_verified": false
+  },
+  "amount_total": 1000,
+  "six_checks": [
+    1,
+    2,
+    1000,
+    1000,
+    5,
+    2
+  ],
+  "variant_receipt1_to_C2": {
+    "C1": [
+      1,
+      300
+    ],
+    "C2": [
+      1,
+      200
+    ],
+    "C5": [
+      2,
+      500
+    ],
+    "total": 1000
+  },
+  "limit": "33 expected outputs independently built from verified inputs plus actual formula/range review;not a general Excel engine;12 SQL checks copied source in E only,not rerun in vault"
+}

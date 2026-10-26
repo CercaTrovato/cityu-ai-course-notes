@@ -1,0 +1,272 @@
+{
+  "baseline_sha256": "417a3f03b32b3354e7d8150c464a43668e0fa0a200a98028b3fc4bc34262d93f",
+  "candidate_sha256": "a9896ee44d63ae1f0bce1c9c0f33ee386a549f57e03a34b44c2a48d06f40207a",
+  "changed_cells": [
+    {
+      "sheet": "答题总览",
+      "cell": "A3",
+      "before": "两页照片逐项转录；官方解答及计分/提交要求待 Canvas 核实。编号按文本保留。",
+      "after": "2026-10-26：本地官方 Word 与两照片逐项核对；计分/DDL/提交要求未实时核 Canvas。编号按文本保留。"
+    },
+    {
+      "sheet": "答题总览",
+      "cell": "D6",
+      "before": "照片1 Q1；已发生采购",
+      "after": "官解Q1端点已核；已发生采购"
+    },
+    {
+      "sheet": "答题总览",
+      "cell": "D7",
+      "before": "照片1 Q2；分批/合并事件",
+      "after": "官解Q2端点已核；批次与事件分清"
+    },
+    {
+      "sheet": "答题总览",
+      "cell": "D8",
+      "before": "照片1表；ID为主键假设",
+      "after": "官解：Violate entity integrity."
+    },
+    {
+      "sheet": "答题总览",
+      "cell": "B9",
+      "before": "客户与销售分表；不合并两个 Andy",
+      "after": "No：按当前四行不违反；拆表另属设计扩展"
+    },
+    {
+      "sheet": "答题总览",
+      "cell": "C9",
+      "before": "Store customer attributes in Customer and reference CustomerID from Sale. Equal names and ages do not prove C123 and C124 identify the same person. The rows do not show a duplicate SaleID; referential integrity needs the customer master.",
+      "after": "No. Matching names and ages under different CustomerID values do not establish repeated facts about the same customer. Separating customer details from sales is a separate design extension for repeated purchases."
+    },
+    {
+      "sheet": "答题总览",
+      "cell": "D9",
+      "before": "照片2表；依赖/身份须分清",
+      "after": "官解：No.；拆表为笔记设计扩展"
+    },
+    {
+      "sheet": "答题总览",
+      "cell": "D10",
+      "before": "照片2 Q4；不建关联表",
+      "after": "官解Q4四行外键已核"
+    },
+    {
+      "sheet": "核对与边界",
+      "cell": "A18",
+      "before": "来源状态：两页照片原题已逐项读取；Canvas Files 跳到 CityU 登录页。官方解答、计分、DDL和提交格式未取得；本工作簿是私有练习参考，保持 draft。",
+      "after": "2026-10-26来源：两照片及Case 4 with Solution.docx已核；旧Canvas受阻是10/7历史，本轮未实时核计分/DDL/提交格式。保持draft，不代表本人已学会/提交。"
+    }
+  ],
+  "all33formulas_and_caches_unchanged": true,
+  "formula_cells": [
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "A6",
+      "formula": "=\"05233\"",
+      "cached": "05233"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "D6",
+      "formula": "=IF(A6=\"\",\"缺主键\",IF(COUNTIF($A$6:$A$9,A6)>1,\"重复主键\",\"非空且唯一\"))",
+      "cached": "非空且唯一"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "A7",
+      "formula": "=\"05234\"",
+      "cached": "05234"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "D7",
+      "formula": "=IF(A7=\"\",\"缺主键\",IF(COUNTIF($A$6:$A$9,A7)>1,\"重复主键\",\"非空且唯一\"))",
+      "cached": "非空且唯一"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "D8",
+      "formula": "=IF(A8=\"\",\"缺主键\",IF(COUNTIF($A$6:$A$9,A8)>1,\"重复主键\",\"非空且唯一\"))",
+      "cached": "缺主键"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "A9",
+      "formula": "=\"05235\"",
+      "cached": "05235"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "D9",
+      "formula": "=IF(A9=\"\",\"缺主键\",IF(COUNTIF($A$6:$A$9,A9)>1,\"重复主键\",\"非空且唯一\"))",
+      "cached": "非空且唯一"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "E14",
+      "formula": "=IF(COUNTIF($A$14:$A$17,A14)=1,\"唯一\",\"重复\")",
+      "cached": "唯一"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "E15",
+      "formula": "=IF(COUNTIF($A$14:$A$17,A15)=1,\"唯一\",\"重复\")",
+      "cached": "唯一"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "E16",
+      "formula": "=IF(COUNTIF($A$14:$A$17,A16)=1,\"唯一\",\"重复\")",
+      "cached": "唯一"
+    },
+    {
+      "sheet": "Q3原表与拆分",
+      "cell": "E17",
+      "formula": "=IF(COUNTIF($A$14:$A$17,A17)=1,\"唯一\",\"重复\")",
+      "cached": "唯一"
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "C6",
+      "formula": "=COUNTIF($H$6:$H$9,A6)",
+      "cached": 2
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "D6",
+      "formula": "=SUMIF($H$6:$H$9,A6,$G$6:$G$9)",
+      "cached": 500
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "I6",
+      "formula": "=IFERROR(VLOOKUP(H6,$A$6:$B$10,2,FALSE),\"未知编号\")",
+      "cached": "F"
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "C7",
+      "formula": "=COUNTIF($H$6:$H$9,A7)",
+      "cached": 0
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "D7",
+      "formula": "=SUMIF($H$6:$H$9,A7,$G$6:$G$9)",
+      "cached": 0
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "I7",
+      "formula": "=IFERROR(VLOOKUP(H7,$A$6:$B$10,2,FALSE),\"未知编号\")",
+      "cached": "J"
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "C8",
+      "formula": "=COUNTIF($H$6:$H$9,A8)",
+      "cached": 0
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "D8",
+      "formula": "=SUMIF($H$6:$H$9,A8,$G$6:$G$9)",
+      "cached": 0
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "I8",
+      "formula": "=IFERROR(VLOOKUP(H8,$A$6:$B$10,2,FALSE),\"未知编号\")",
+      "cached": "F"
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "C9",
+      "formula": "=COUNTIF($H$6:$H$9,A9)",
+      "cached": 0
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "D9",
+      "formula": "=SUMIF($H$6:$H$9,A9,$G$6:$G$9)",
+      "cached": 0
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "I9",
+      "formula": "=IFERROR(VLOOKUP(H9,$A$6:$B$10,2,FALSE),\"未知编号\")",
+      "cached": "J"
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "C10",
+      "formula": "=COUNTIF($H$6:$H$9,A10)",
+      "cached": 2
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "D10",
+      "formula": "=SUMIF($H$6:$H$9,A10,$G$6:$G$9)",
+      "cached": 500
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "D12",
+      "formula": "=SUM(D6:D10)",
+      "cached": 1000
+    },
+    {
+      "sheet": "Q4关系表",
+      "cell": "G12",
+      "formula": "=SUM(G6:G9)",
+      "cached": 1000
+    },
+    {
+      "sheet": "核对与边界",
+      "cell": "B6",
+      "formula": "=COUNTBLANK('Q3原表与拆分'!A6:A9)",
+      "cached": 1
+    },
+    {
+      "sheet": "核对与边界",
+      "cell": "B7",
+      "formula": "=COUNTIFS('Q3原表与拆分'!C14:C17,\"Andy\",'Q3原表与拆分'!D14:D17,21)",
+      "cached": 2
+    },
+    {
+      "sheet": "核对与边界",
+      "cell": "B8",
+      "formula": "=SUM('Q4关系表'!G6:G9)",
+      "cached": 1000
+    },
+    {
+      "sheet": "核对与边界",
+      "cell": "B9",
+      "formula": "=SUM('Q4关系表'!D6:D10)",
+      "cached": 1000
+    },
+    {
+      "sheet": "核对与边界",
+      "cell": "B10",
+      "formula": "=COUNTA('Q4关系表'!A6:A10)",
+      "cached": 5
+    },
+    {
+      "sheet": "核对与边界",
+      "cell": "B11",
+      "formula": "=COUNTIF('Q4关系表'!C6:C10,\">0\")",
+      "cached": 2
+    }
+  ],
+  "merged_ranges_unchanged": true,
+  "data_input_cells_unchanged": true,
+  "six_checks": [
+    1,
+    2,
+    1000,
+    1000,
+    5,
+    2
+  ],
+  "display_limit": "artifact preview renders digit strings without leading zeros in Q3 despite exported string-cache05233/05234/05235 and format@.Actual source-based text preview required;not native Excel viewed. Initial original checks PNG rendering was blank;later final checks PNG readable,do not call initial passed."
+}

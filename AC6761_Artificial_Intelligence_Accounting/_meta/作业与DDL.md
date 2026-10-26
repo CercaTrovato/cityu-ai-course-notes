@@ -340,3 +340,8 @@ Core pattern、给骨架填关联名/属性/PK/多重度、关联属性降权及
 Quiz 2 原件已到：基于 ExampleTables1 查询 E-10 的销售，保存 QueryA，并按题面邮件交更新后的数据库。题面未明示计分或截止，本轮未发送、未生成本人已提交记录。解析与实际5行结果：[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M06-Quiz2-按销售员筛选销售|Quiz 2 解析]]。
 
 小组项目文件与本地版本 SHA-256 一致，最新公告仍为10/20：展示从Week11开始，报告11/29前邮件交，具体小时未给。补课10/31 14:00–17:00 LI-4109沿当前公告，未新增其他DDL。Files 28项、Announcements 5条；Assignments禁用；Modules重定向首页。
+
+
+## 2026-10-26 Case4 来源核对更新
+
+[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M04-Case4-多重性与关系表|Case4独立解析]]与本地官方Word已逐问对照：Q1/Q2端点、Q3a实体完整性、Q3b No、Q4四行外键均一致；正文与工作簿完成本次全篇审修。下方/上方10月历史“逐题待核”仅保留当时事实；Case5仍待逐篇核。此次没有新增计分/截止/格式/提交证据，Canvas四入口未实时刷新，不创建未知DDL、不改本人提交/评分。
