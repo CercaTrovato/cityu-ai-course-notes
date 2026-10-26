@@ -1,0 +1,121 @@
+{
+  "total": 57,
+  "scope": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    31,
+    54,
+    55
+  ],
+  "slides": [
+    {
+      "page": 2,
+      "text": "2\nCore REA Classes\nResources\n and Resource Types\nWhether the individual instances will be interchangeable, for example cookies (resource type) and diamonds \n(resource)\nEconomic Events\nEvents in which a resource is either given up or taken\nIncrement economic event results in resource inflow\nIn quantity or value\nDecrement economic event results in resource outflow\nIn quantity or value\nAgents\nInternal agents act on behalf of the enterprise\nExternal agents are external business partners",
+      "notes": "",
+      "shape_count": 3
+    },
+    {
+      "page": 3,
+      "text": "3\nCore REA Primary Associations\nDuality\nLinks increment and decrement economic events\nStockflow\n \nLinks economic events and resources or resource types\nInflow links increment event to resource or resource type\nOutflow links decrement event to resource or resource type\nParticipation\nLinks economic events and agents (internal and external)",
+      "notes": "",
+      "shape_count": 3
+    },
+    {
+      "page": 4,
+      "text": "4\nCore REA Secondary Associations \nCustody\nLinks Agents and Resources such that agent has physical control over the resource or controls access to the resource\nAssignment \nLinks Internal Agent to External Agent\nUse only when relationship between internal agent and external agent exists independently of their mutual participation in an event\nResponsibility \nLinks Internal Agent to Internal Agent\nUse when one internal agent is responsible for another, independent of their mutual participation in an event",
+      "notes": "",
+      "shape_count": 3
+    },
+    {
+      "page": 5,
+      "text": "5\nDetermine whether the attribute describes just one thing (class) or a combination of things (association)\nResource attributes typically include an identifier, description, and attributes indicating value or dimensions\nEvent attributes typically include an identifier, a date/time (or beginning and ending dates/times), and attributes indicating value or other dimensions\nAgent attributes typically include an identifier, name, address, telephone, other contact information\nAssigning Attributes",
+      "notes": "",
+      "shape_count": 3
+    },
+    {
+      "page": 6,
+      "text": "6\nMultiplicity Assignment\nNarrative descriptions / business common sense / \nreasonable assumptions\nRules that usually (but don’t always) apply\nResource Type 1..* – 0..* Economic Event\nResource 1..* – 0..1 Economic Event\nEconomic Event 0..* – 1..1 Agent",
+      "notes": "",
+      "shape_count": 3
+    },
+    {
+      "page": 7,
+      "text": "7\nSteps to Create a REA Business Process Level \n*Core* \nModel\nStep 1: Identify Economic Exchange Events\nCreate each economic exchange event as a class and create a duality association between them\nStep 2: Attach Resources to the Economic Events\nCreate each resource as a class and create a stockflow association between it and the related economic event\nStep 3: Attach External Agents to Economic Events\nCreate as a class the external agent from whom resources are obtained in each economic increment event and create a participation association between the event and agent\nCreate as a class the external agent to whom resources are transferred in each economic decrement event and create a participation association between the event and agent",
+      "notes": "",
+      "shape_count": 3
+    },
+    {
+      "page": 8,
+      "text": "8\nStep 4: Attach internal agents to economic events\nCreate as classes the internal agents who process, accomplish, or authorize each economic increment event and create participation associations between the events and agents\nCreate as classes the internal agents who process, accomplish, or authorize each economic decrement event and create participation associations between the events and agents\nStep 5: Assign attributes to classes and associations\nStep 6: Assign multiplicities\nSteps to Create a REA Business Process Level \n*Core* \nModel",
+      "notes": "",
+      "shape_count": 3
+    },
+    {
+      "page": 16,
+      "text": "Acquisition Core Pattern Example\nRobert Scott Woodwind Shop (RSWS)\nStep 5\nAssign Attributes\nSpecial cases: association attributes\nitem-\nqty\n-\npurch\n (stockflow1)\n-item-unit-cost (stockflow1)\noh-\nqty\n-\npurch\n (stockflow2)\n-cd-\nacq\n-applied (duality)\n16",
+      "notes": "",
+      "shape_count": 3
+    },
+    {
+      "page": 17,
+      "text": "17\n<<InternalAgent>>\nManager\n \n-Mgr-id (PK)\n-Mgr-name\n-Mgr-degree\n<<EconomicIncrement>>\nPurchase\n \n-Acq-ID (PK)\n-Acq-date\n-Acq-amt\n<<EconomicDecrement>>\nCash Disbursement\n \n-CD-id (PK)\n-CD-date\n-CD-amt\n<<ResourceType>>\nOverhead\n \n-OH-id (PK)\n-OH-desc\n<<\nResourceType\n>>\nInventory Type\n-Item-id(PK)\n-Item-\ndesc\n-Item-\nstd\n-cost\n-Item-list-price\n-Item-\nqoh\n<<ResourceType>>\nCash\n \n-AcctNum (PK)\n-AcctType\n-AcctLoc\n-AcctBal\nStockflow3\n \n<<InternalAgent>>\nPurchase Agent\n \n-PA-id (PK)\n-PA-name\n-PA-limit\n<<ExternalAgent>>\nSupplier\n \n-SupNum (PK)\n-Sup-name\n-Sup-add\n-Sup-rating\n<<InternalAgent>>\nA/P Clerk\n \n-AP-id (PK)\n-AP-name\n-AP-bond\nParticipation\n \nParticipation2\n \nParticipation3\n \nParticipation4\n \nParticipation5\n \nStockflow2\n \n-oh-\nqty\n-\npurch\nDuality\n -cd-\nacq\n-applied\nStockflow1\n-item-\nqty\n-\npurch\n-item-unit-cost",
+      "notes": "",
+      "shape_count": 19
+    },
+    {
+      "page": 18,
+      "text": "Acquisition Core Pattern Example\nRobert Scott Woodwind Shop (RSWS)\nStep 6\nAssign Multiplicities\n18",
+      "notes": "",
+      "shape_count": 3
+    },
+    {
+      "page": 19,
+      "text": "Acquisition Core Pattern Example\nNarrative descriptions:\n1. Information on company resources and agents can be stored in database prior to any transactions.\n2. Cash disbursement can be linked to one and only one cash account.\n3. Credit purchase is allowed; partial and combined payment is allowed; company needs cash to pay other utilities.\n4. Both purchase and cash disbursement can be handled by one and only one internal agent.\n19",
+      "notes": "",
+      "shape_count": 3
+    },
+    {
+      "page": 20,
+      "text": "20\n1..1\n1..1\n0..1\n1..1\n0..*\n0..*\n0..*\n0..*\n0..*\n0..*\n0..*\n0..*\n0..*\n0..*\n1..1\n0..*\n0..*\n1..1\n<<\nEconomicIncrement\n>>\nPurchase\n \n-\nAcq\n-ID (PK)\n-\nAcq\n-date\n-\nAcq-amt\n<<\nEconomicDecrement\n>>\nCash Disbursement\n \n-CD-id (PK)\n-CD-date\n-CD-\namt\n<<\nResourceType\n>>\nOverhead\n \n-OH-id (PK)\n-OH-\ndesc\n<<\nResourceType\n>>\nInventory Type\n \n-Item-id (PK)\n-Item-\ndesc\n-Item-\nstd\n-cost\n-Item-list-price\n-Item-\nqoh\n<<\nResourceType\n>>\nCash\n \n-\nAcctNum\n (PK)\n-\nAcctType\n-\nAcctLoc\n-\nAcctBal\nStockflow3\n \nStockflow1\n \n-Item-\nqty\n-\npurch\n-Item-unit-cost\n \n<<\nInternalAgent\n>>\nPurchase Agent\n \n-PA-id (PK)\n-PA-name\n-PA-limit\n<<\nExternalAgent\n>>\nSupplier\n-\nSupNum\n (PK)\n-Sup-name\n-Sup-add\n-Sup-rating\n<<\nInternalAgent\n>>\nA/P Clerk\n \n-AP-id (PK)\n-AP-name\n-AP-bond\n<<\nInternalAgent\n>>\nManager\n \n-\nMgr\n-id (PK)\n-\nMgr\n-name\n-\nMgr\n-degree\nParticipation\n \nParticipation2\n \nParticipation3\n \nParticipation4\n \nParticipation5\n \nStockflow2\n \n-oh-\nqty\n-\npurch\nDuality\n-cd-\nacq\n-applied\n ",
+      "notes": "",
+      "shape_count": 37
+    },
+    {
+      "page": 21,
+      "text": "Revenue Core Pattern \n21\nParticipation4\nDuality\nParticipation3\nParticipation2\nParticipation1\nStockflow2\nStockflow1\n<<Resource>> or <<ResourceType>>\nGoods or Services \n<<Resource>>\nCash Account\n<<InternalAgent>>\nSalesperson\n<<InternalAgent>>\nCashier\n<<ExternalAgent>>\nCustomer\n<<EconomicIncrement>>\nCash Receipt\n<<EconomicDecrement>>\nSale or Service Engagement or Rental",
+      "notes": "",
+      "shape_count": 16
+    },
+    {
+      "page": 31,
+      "text": "31\nAdditional Associations\nAgent-Agent relationships\nAssignment (link internal agent to external agent)\nUse only when relationship between internal agent and external agent exists independently of their mutual participation in an event\nResponsibility (link internal agent to internal agent)\nUse when one internal agent is responsible for another, independent of their mutual participation in an event\nResource-Agent relationships\nCustody (link resource and internal agent)\nUse when an internal agent’s responsibility for a resource needs to be tracked independently of any event\nExpansions to the Core REA Business Process level model",
+      "notes": "",
+      "shape_count": 3
+    },
+    {
+      "page": 54,
+      "text": "54\nSale Event\nAn economic decrement event in which title (ownership) of one or more products is transferred from the enterprise to a customer. The transfer may take place in person (e.g. a sale of a t-shirt at a campus bookstore) or in transit (e.g. a shipment of a video game from an enterprise with a web-based storefront)",
+      "notes": "",
+      "shape_count": 3
+    },
+    {
+      "page": 55,
+      "text": "55\nSales/Collection Process Events\nEconomic Increment Events in the Revenue Cycle\nAlmost always is a \nCash Receipt \nevent\nAn economic increment event in which an external agent transfers ownership of cash (or a cash equivalent) to the enterprise",
+      "notes": "",
+      "shape_count": 3
+    }
+  ],
+  "all_notes_nonempty": [],
+  "reader": "read-only zip/XML in presentation relation order;python-pptx missing,no install"
+}

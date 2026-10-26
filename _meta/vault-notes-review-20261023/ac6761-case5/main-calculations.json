@@ -1,0 +1,309 @@
+{
+  "input": {
+    "customers": [
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "salespeople": [
+      "SP1",
+      "SP2"
+    ],
+    "cashiers": [
+      "K1",
+      "K2"
+    ],
+    "accounts": [
+      "CA1",
+      "CA2"
+    ],
+    "boards": [
+      "B1",
+      "B2",
+      "B3",
+      "B4"
+    ],
+    "assign": {
+      "C1": "SP1",
+      "C2": "SP1",
+      "C3": "SP2"
+    },
+    "sales": {
+      "S1": {
+        "boards": [
+          "B1"
+        ],
+        "customer": "C1",
+        "seller": "SP1",
+        "amount": 1000
+      },
+      "S2": {
+        "boards": [
+          "B2"
+        ],
+        "customer": "C1",
+        "seller": "SP1",
+        "amount": 600
+      },
+      "S3": {
+        "boards": [
+          "B3"
+        ],
+        "customer": "C2",
+        "seller": "SP1",
+        "amount": 300
+      }
+    },
+    "receipts": {
+      "R1": {
+        "customer": "C1",
+        "cashier": "K1",
+        "account": "CA1",
+        "amount": 400
+      },
+      "R2": {
+        "customer": "C1",
+        "cashier": "K1",
+        "account": "CA1",
+        "amount": 800
+      },
+      "R3": {
+        "customer": null,
+        "cashier": "K1",
+        "account": "CA1",
+        "amount": 50
+      }
+    },
+    "applied": [
+      [
+        "R1",
+        "S1",
+        400
+      ],
+      [
+        "R2",
+        "S1",
+        600
+      ],
+      [
+        "R2",
+        "S2",
+        200
+      ]
+    ]
+  },
+  "states": [
+    {
+      "cash_CA1": 0,
+      "sales_open": {
+        "S1": 1000,
+        "S2": 600,
+        "S3": 300
+      },
+      "customer_AR": {
+        "C1": 1600,
+        "C2": 300,
+        "C3": 0
+      }
+    },
+    {
+      "cash_CA1": 400,
+      "sales_open": {
+        "S1": 600,
+        "S2": 600,
+        "S3": 300
+      },
+      "customer_AR": {
+        "C1": 1200,
+        "C2": 300,
+        "C3": 0
+      }
+    },
+    {
+      "cash_CA1": 1200,
+      "sales_open": {
+        "S1": 0,
+        "S2": 400,
+        "S3": 300
+      },
+      "customer_AR": {
+        "C1": 400,
+        "C2": 300,
+        "C3": 0
+      }
+    },
+    {
+      "cash_CA1": 1250,
+      "sales_open": {
+        "S1": 0,
+        "S2": 400,
+        "S3": 300
+      },
+      "customer_AR": {
+        "C1": 400,
+        "C2": 300,
+        "C3": 0
+      }
+    }
+  ],
+  "totals": {
+    "sales": 1900,
+    "cash": 1250,
+    "applied": 1200,
+    "unsettled": 700,
+    "other_receipts": 50
+  },
+  "R4": {
+    "cash": 1650,
+    "applied": 1600,
+    "customer_AR": {
+      "C1": 0,
+      "C2": 300,
+      "C3": 0
+    }
+  },
+  "ten_current_rejected_examples": [
+    {
+      "input_change": "sale missing customer",
+      "rejected_for": [
+        "sale needs known customer",
+        "cross-customer allocation",
+        "cross-customer allocation"
+      ]
+    },
+    {
+      "input_change": "receipt missing cashier",
+      "rejected_for": [
+        "receipt needs cashier"
+      ]
+    },
+    {
+      "input_change": "receipt unknown account",
+      "rejected_for": [
+        "receipt needs known account"
+      ]
+    },
+    {
+      "input_change": "board sold twice",
+      "rejected_for": [
+        "physical board sold twice"
+      ]
+    },
+    {
+      "input_change": "empty sale",
+      "rejected_for": [
+        "sale needs board"
+      ]
+    },
+    {
+      "input_change": "salesperson no customer",
+      "rejected_for": [
+        "salesperson needs assigned customer"
+      ]
+    },
+    {
+      "input_change": "customer unassigned",
+      "rejected_for": [
+        "customer needs assignment",
+        "salesperson needs assigned customer"
+      ]
+    },
+    {
+      "input_change": "negative allocation",
+      "rejected_for": [
+        "negative allocation"
+      ]
+    },
+    {
+      "input_change": "receipt allocations900 over800",
+      "rejected_for": [
+        "receipt over-allocation"
+      ]
+    },
+    {
+      "input_change": "cross-customer application",
+      "rejected_for": [
+        "cross-customer allocation"
+      ]
+    }
+  ],
+  "Q7_two_errors": [
+    "receipt over-allocation",
+    "sale over-allocation"
+  ],
+  "official_manual_manifest": {
+    "E1": [
+      "Sale",
+      "0..*",
+      "CashReceipt",
+      "0..*"
+    ],
+    "E2": [
+      "Surfboard",
+      "1..*",
+      "Sale",
+      "0..1"
+    ],
+    "E3": [
+      "CashAccount",
+      "1..1",
+      "CashReceipt",
+      "0..*"
+    ],
+    "E4": [
+      "Salesperson",
+      "1..1",
+      "Sale",
+      "0..*"
+    ],
+    "E5": [
+      "Cashier",
+      "1..1",
+      "CashReceipt",
+      "0..*"
+    ],
+    "E6": [
+      "Customer",
+      "1..1",
+      "Sale",
+      "0..*"
+    ],
+    "E7": [
+      "Customer",
+      "0..1",
+      "CashReceipt",
+      "0..*"
+    ],
+    "E8": [
+      "Salesperson",
+      "1..1",
+      "Customer",
+      "1..*"
+    ]
+  },
+  "attributes": [
+    "Surfboard#",
+    "Surfboard description",
+    "Surfboard Sell-price",
+    "Cash Account#",
+    "Cash account type",
+    "Bank name",
+    "Cash balance",
+    "Cashier #",
+    "Cashier name",
+    "Cash receipt #",
+    "Cash receipt total amount",
+    "Customer #",
+    "Customer name",
+    "Customer account receivable",
+    "Salesperson #",
+    "Salesperson name",
+    "Salesperson-comm-rate",
+    "Sale#",
+    "Sale total amount",
+    "Sale no. of items",
+    "Cash receipt amount applied to sale"
+  ],
+  "structure_unchanged": true,
+  "scope": "current run of explicit pedagogic examples,in E;not claiming replay of unknown10/7script or production constraints"
+}

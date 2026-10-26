@@ -4,15 +4,20 @@ module: M05-Case5
 type: practice-guide
 status: draft
 learning_status: detailed-analysis-complete
-official_solution: pending
+official_solution: checked
 administrative_status: pending
 date: 2026-10-07
-updated: 2026-10-07
+updated: 2026-10-26
+readability_rules: v2
+teaching_standard: novice-v1
 source:
   - case4-case5-photos/case5-page-01.jpg
   - case4-case5-photos/case5-page-02.jpg
+  - Case 5.docx
+  - Solution of Case 5.pdf
+  - Week 5 PPT.pptx
 transcript: none
-review_method: 2026-10-02-simplified
+review_method: full-independent-gpt61-20261026
 prerequisites: [REA三要素, 双向多重性, 主键与外键]
 new_concepts: [销售收款分配金额, 事务参与与客户指派的区别]
 tags: [AC6761, REA, Case5, private-practice, reference-analysis]
@@ -22,7 +27,9 @@ tags: [AC6761, REA, Case5, private-practice, reference-analysis]
 
 这家店卖冲浪板。有时板已经交给顾客，钱还没收齐；有时顾客一次付款还清几笔购买；收到的钱也不全来自卖冲浪板。题目要求把这些事情、涉及的人和资源画成一张业务模型，并把题目给出的属性和“至少几个、最多几个”的限制放对位置。
 
-本篇是私人学习解析与参考作答，不是正式提交稿或官方答案。照片给出了建模步骤、21 项属性和业务叙述，没有金额、币种或 Case 5 官方解答。2026-10-07 核对当前 Canvas Files、Assignments、Announcements、Modules 四入口时，均跳转 CityU SSO 登录；因此 Canvas 原件、官解、计分、截止、提交入口和 AI 使用条件均未核，不能记录为“未发布”。本人是否已学会、是否已提交均未确认。
+本篇是学习解析，不是正式提交稿。题面来自两张照片及本地 `Case 5.docx`；本轮已对照单页扫描官图 `Solution of Case 5.pdf`，主模型的7类、8关联、16端点及21属性与官图一致。中文解释、英文完整句、补充金额和自测仍是笔记自拟，原题没有金额或币种。
+
+2026-10-07四个Canvas入口跳转SSO是历史观察；2026-10-26本轮只核本地原件，没有实时重查四入口。计分、截止、提交入口与AI使用条件仍待确认，任务保持draft，不代填本人已学会/已提交。按现行公开授权可发布本人练习，Git实际状态另列。
 
 [[AC6761_Artificial_Intelligence_Accounting/assignment/00-overview/作业总览|回作业总览]] · [[AC6761_Artificial_Intelligence_Accounting/assignment/practice/练习索引|Case 1–5 练习入口]]
 
@@ -30,13 +37,98 @@ tags: [AC6761, REA, Case5, private-practice, reference-analysis]
 
 要交出的核心成果是收入流程层级的 REA Core model：7 个业务类、8 条关联、16 个方向的端点限制，以及 21 项属性的归属。这里的“类”是同一类对象的记录结构，例如 Customer 类里可以保存许多个客户；不是“画一个框就只代表一个客户”。
 
-照片将 Step 3 and 4 合写，第二张照片开头是 Step 5 的最后一项属性，不能丢掉。为了跟 Week 5 PPT p.7–8 的六步方法对齐，本篇分成：①经济事件；②资源；③外部参与者；④内部参与者及指派；⑤属性；⑥多重性。
+照片将 Step 3 and 4 合写，第二张照片开头是 Step 5 的最后一项属性，不能丢掉。为了跟 Week 5 PPT p.7–8 的六步方法对齐，本篇按下列顺序展开：
 
-来源分三层：标“题面”的结论来自两张照片；标“讲义方法”的定义来自 Week 5 PPT；标“常识／假设”的限制是题目允许的 common business sense 或 reasonable assumptions，并非照片逐字给出。所有数值样例均为“💡 笔记补充”，不能冒充原题数据。
+1. 找经济事件。
+2. 连实际改变的资源。
+3. 连外部参与者。
+4. 连内部参与者及独立指派。
+5. 安放属性。
+6. 给每条关联的两端填写多重性。
+
+来源分三层：标“题面”的结论来自两张照片；标“讲义方法”的定义来自 Week 5 PPT；标“常识／假设”的限制是题目允许的 common business sense 或 reasonable assumptions，并非照片逐字给出。所有数值样例均为“💡 笔记补充”，不能冒充原题数据。common business sense是原题Step6的用词；reasonable assumptions是讲义p.6的方法提醒，不能冒充题面另写的条件。
 
 对应讲义方法：p.2–4 的 REA 类与关联，p.5–6 的属性和多重性，p.7–8 的六步，p.21 的收入流程核心模式。更完整背景可读 [[AC6761_Artificial_Intelligence_Accounting/notes/M05-REA业务流程建模|M05：REA 业务流程建模]]，但本篇会把做题所需方法就地解释。
 
+
+
+### 1.1 完整英文原题（官方Word，与两照片对照）
+
+先用上面的中文任务入口定位要做的事，再展开查英文。保留原文Step 3 and 4的合写、21属性与最后的Require，不把官图答案混入题面。
+
+<details><summary>Case 5英文题面全文</summary>
+
+Case 5
+
+Step 1: Sale and Cash receipt
+
+Step 2: Attach Cash to Cash receipt; Attach Surfboard inventory to Sale
+
+Step 3 and 4: Attach Salesperson to Sale; Attach Cashier to Cash receipt; Attach Salesperson to Customer (Assignment); Attach Customer to Sale and Cash Receipt
+
+Step 5: Assign Attributes
+
+-Surfboard#
+
+-Surfboard description
+
+-Surfboard Sell-price
+
+-Cash Account#
+
+-Cash account type
+
+-Bank name
+
+-Cash balance
+
+-Cashier #
+
+-Cashier name
+
+-Cash receipt #
+
+-Cash receipt total amount
+
+-Customer #
+
+-Customer name
+
+-Customer account receivable
+
+-Salesperson #
+
+-Salesperson name
+
+-Salesperson-comm-rate
+
+-Sale#
+
+-Sale total amount
+
+-Sale no. of items
+
+-Cash receipt amount applied to sale
+
+Step 6: Assign Multiplicities (using narrative description and common business sense)
+
+Credit sale is allowed; Partial payment is allowed; Combined payment is allowed; Sale of surfboard inventory is not the only source of cash receipt.
+
+There are some surfboards available for sale. Sale can be made by one and only one salesperson.
+
+Every cash receipt has to be deposited into one and only one cash account. Cash receipt can be handled by one and only one cashier.
+
+The data on employees and customers can enter system without any transactions.
+
+One customer must be assigned with one and only one salesperson. One salesperson must be assigned to one customer and can be assigned to multiple customers.
+
+Require: Create a revenue process level Core model.
+
+</details>
+
 ## 2. 最难的业务句子，先翻成人话
+
+每行拆解一条业务条件：先确定谁做什么，再看它把哪一方向的最少或最多改掉，最后列出这句话本身没有证明的结论。表里的短句是读题提示，完整原文已在§1.1保留；端点结果另外与官图逐项对照。
 
 | 题面关键句 | 谁做什么、最简单的意思 | 直接改变哪一步 | 没有说明什么 |
 |---|---|---|---|
@@ -145,7 +237,7 @@ Salesperson 还必须连 Customer，标 Assignment（指派）。它问“客户
 
 照片没有日期、地址、电话、真实佣金金额，不作为题内属性补进去。讲义 p.5 说事件通常有日期，并不等于 Case 5 已给日期。佣金率需要对应计提基数和条件才能算佣金；题面没有说明按销售额还是到账额计算，所以不擅自计算真实佣金。
 
-编号可用作 PK（Primary Key，主键）：使同类记录中每一条都可唯一识别。本题概念图不必额外塞满 FK（Foreign Key，外键）。落数据库时，FK 才用另一类的编号连接对象，例如一笔收款保存一个账户编号。用于关联金额的组合键见 §8。
+编号可用作 PK（Primary Key，主键）：使同类记录中每一条都可唯一识别。本题概念图不必额外塞满 FK（Foreign Key，外键）。落数据库时，FK 才用另一类的编号连接对象，例如一笔收款保存一个账户编号。用于关联金额的组合键见 §6。
 
 所以呢：先问“只知道这个对象能不能确定该值”，再放属性；不能把所有带 cash receipt 的文字都塞进 CashReceipt。
 
@@ -155,7 +247,16 @@ Multiplicity（多重性）写成 min..max。`0` 是可以没有关联记录，`
 
 最容易读反的是端点位置：写在 A 旁边的数字，表示固定一个 B 时，可以有多少个 A。例如 `Surfboard "1..*" -- "0..1" Sale`：固定 Sale，数 Surfboard，至少一块；固定 Surfboard，数 Sale，零次或一次。不是“固定 Surfboard 就看 Surfboard 边上的数字”。
 
-每条线按同一操作推：①固定一条记录；②明确数另一端什么单位；③找允许零的句子；④找至少一的句子；⑤找 exactly one 或 many 的上限；⑥把数值放到被数对象旁。没有足够题面依据时标明常识／假设，不把一般模板当定理。
+每条线按同一操作推：
+
+1. 固定一条记录。
+2. 明确数另一端什么单位。
+3. 找允许零的句子。
+4. 找至少一的句子。
+5. 找exactly one或many决定的上限。
+6. 把数值放到被数对象旁。
+
+没有足够题面依据时标明常识／假设，不把一般模板当定理。
 
 ## 4. 完整主图：7 类、8 关联、20 类属性与 1 关联属性
 
@@ -169,9 +270,9 @@ Multiplicity（多重性）写成 min..max。`0` 是可以没有关联记录，`
 
 ![Case5 REA 全属性图：原21项属性全部归位](work/case5-revenue-core/case5.svg)
 
-两图来自同一份 [JSON 语义清单](work/case5-revenue-core/case5.model.json)，[完整 DOT 图源](work/case5-revenue-core/case5.dot) 可重画；版本与实际核对见 [图示记录](work/case5-revenue-core/Case5-图示核对记录.json)。在 vault 根复做，可运行 `node _meta/tools/render_concept_graph.mjs --input AC6761_Artificial_Intelligence_Accounting/assignment/practice/work/case5-revenue-core/case5.model.json --output E:/app-data/codex/scratchpad/case5-redraw/model`，加 `--overview` 出结构图。重做先输出 scratch，核对后原子发布，不直接覆盖已有图。
+两图来自同一份 [JSON 语义清单](work/case5-revenue-core/case5.model.json)，[完整 DOT 图源](work/case5-revenue-core/case5.dot) 可重画；版本与实际核对见 [本轮图示核对](work/case5-revenue-core/case5-review-20261026.json)（[2026-10-07历史记录](work/case5-revenue-core/Case5-图示核对记录.json)保留原文）。在 vault 根复做，可运行 `node _meta/tools/render_concept_graph.mjs --input AC6761_Artificial_Intelligence_Accounting/assignment/practice/work/case5-revenue-core/case5.model.json --output E:/app-data/codex/scratchpad/case5-redraw/model`，加 `--overview` 出结构图。重做先输出 scratch，核对后原子发布，不直接覆盖已有图。
 
-主图范围仍是单块实物且无退回再售，允许非客户来源的其他收款；§7 的型号／客户来源替代条件继续保留。图示改进只改变显示与图源管理，不把参考答案升级成官方确认。
+主图范围仍是单块实物且无退回再售，允许非客户来源的其他收款；§7 的型号／客户来源替代条件继续保留。本轮已逐项核对官方图给出的端点和字段；中文解释及改条件变式不因此变成教师原话。官图的Cash框对应本文CashAccount，Surfboard Inventory对应本文Surfboard，命名更明确但没有多造或少画业务类。
 
 图中的 Duality 线旁直接标 AppliedAmount，表示对偶关联的关联属性；AppliedAmount 对应原题末项 `Cash receipt amount applied to sale`，属于线上的 Sale–CashReceipt 组合，未放进任何类框。真实 UML 可以在线旁标原属性全名，或用关联类展示该金额。即使转换成单独的关联表，也不是第三种经济事件，更不是把本题改成 8 个业务类。
 
@@ -179,7 +280,7 @@ Multiplicity（多重性）写成 min..max。`0` 是可以没有关联记录，`
 
 ## 5. 16 个端点逐方向反解
 
-下表每行先固定一条左列记录，再数右列对象。“端点”写在被数对象旁，务必和主图交叉读。它把模型变回业务句子，便于发现看反的数字。
+下表每行先固定一条左列记录，再数右列对象。“端点”写在被数对象旁，务必和主图交叉读。它把模型变回业务句子，便于发现看反的数字。本轮16个值均与官方PDF图逐条一致；来源列仍解释文字本身的依据或常识假设，不能把官图给定值反说成每个条件都在文字里明写。
 
 | 固定谁 | 数谁 | 最少 | 最多 | 被数对象旁端点 | 为什么；来源边界 |
 |---|---|---:|---:|---|---|
@@ -232,13 +333,13 @@ Multiplicity（多重性）写成 min..max。`0` 是可以没有关联记录，`
 
 如果教师将 Surfboard# 定义为一种型号／SKU，而不是每块实物，它应是 ResourceType。一个型号可以反复出现在不同销售中，因此改为 `Surfboard "1..*" -- "0..*" Sale`。同一 SKU 在一笔销售中卖几块需要销售明细数量表达；题面给出的 Sale no. of items 是整笔件数，不能自动当每种 SKU 的数量。主答案不在未说明时补造这些题内属性。
 
-讲义 p.2 区分可互换品类与独立实物，p.6 给两种常用端点。本题照片未进一步解释编号粒度，故主模型与替代条件都保留。不能把 0..1 宣称为完全不依赖假设的唯一官解。
+讲义 p.2 区分可互换品类与独立实物，p.6 给两种常用端点。本题照片未进一步解释编号粒度，故主模型与替代条件都保留。官方图本次采用Sale端0..1，与单块实物的主图一致；SKU是改变编号粒度后的替代题设，不再把已取得的官图结果写成“未知官解”。图能给定本题采用值，仍不能证明所有业务范围都必须这样建模。
 
 ### 7.2 每次收款都必须来自 Customer 吗？
 
-题面明确“销售冲浪板不是收款的唯一来源”，只直接推出固定 CashReceipt 可没有 Sale。主模型进一步允许其他钱来自非客户，因此 Customer 端为 0..1。
+题面明确“销售冲浪板不是收款的唯一来源”，只直接推出固定 CashReceipt 可没有 Sale。官方图在Customer–CashReceipt关联的Customer端明确给0..1，主模型与它一致。解释这个可空端点时，本文采用允许非客户其他来源的业务范围；“非销售收款必来自非客户”仍不是文字逻辑必然结论。
 
-另一种合理范围是：其他来源也来自登记的客户，所有收款都有一个 Customer。这时将 `Customer "0..1" -- "0..*" CashReceipt` 改为 `Customer "1..1" -- "0..*" CashReceipt`；Sale–CashReceipt 仍然保持 0..* 对 0..*，因为收款是否对应销售与是否来自客户是两回事。
+若把题设改成“其他来源也全部来自登记客户”，所有收款都有一个Customer。这时将 `Customer "0..1" -- "0..*" CashReceipt` 改为 `Customer "1..1" -- "0..*" CashReceipt`；Sale–CashReceipt 仍然保持 0..* 对 0..*，因为收款是否对应销售与是否来自客户是两回事。
 
 讲义 p.19–20 的采购样例含支付其他 utilities 的情境，可作“业务范围改变事件参与端点”的方法参考；它不是 Case 5 官方解答，不能直接拿采购付款方的数字证明本题客户端必须为 0。
 
@@ -291,6 +392,8 @@ R3 的“无客户”是为演示 §7.2 主模型假设，不是原题确定的�
 
 令 $T_s$ 表示销售 $s$ 的总额；$A_{r,s}$ 表示收款 $r$ 用于销售 $s$ 的应用金额；没有连接则视作 0。$AR_s$ 是这笔销售的未结清金额，不是在主图新加一个类。
 
+求和号（summation symbol）$\sum$的意思是“把指定记录范围内的数逐项相加”。下标不是乘方，而是在告诉你是哪条记录；哪个编号写在求和号下面，就让哪个编号逐个变化，其余编号保持固定。例如$\sum_r A_{r,s}$固定一笔销售$s$，逐次找不同收款$r$给它分配的金额：对S1就是R1的400加R2的600。
+
 $$
 AR_s=T_s-\sum_r A_{r,s}
 $$
@@ -315,7 +418,18 @@ $$
 
 因此 C1 应收为 $0+400=400$，C2 为 300，C3 没有销售，求和结果为 0。不是把全公司的 700 随意分给某个客户。
 
-现金余额则要看账户，不看销售应收。$B_{a,0}$ 为账户 $a$ 的期初余额，$R_r$ 为收到的总金额，$D_d$ 为从该账户付出的金额；本题没有 CashDisbursement 类，但完整现金余额需要付款数据。无付款的教学样例才能直接只加收款。
+现金余额则要看账户，不看销售应收。本题没有CashDisbursement类，但完整现金余额需要期初余额、收款和付款数据，不能只凭销售额得到。先把下面各量和记录名单对上：
+
+| 符号 | 记录什么 | 本例值或名单 |
+|---|---|---|
+| $a,r,d$ | 账户、收款、付款各自的编号 | CA1是账户，R1是收款，本例没有付款记录 |
+| $B_{a,0}$ | 账户$a$的期初余额 | CA1期初为0 |
+| $R_r$ | 收款$r$实际收到的总金额 | R1为400、R2为800、R3为50 |
+| $D_d$ | 从该账户付出的金额 | 本例无付款，付款合计为0 |
+| $Receipts(a)$ | 存入账户$a$的收款编号名单 | CA1对应R1、R2、R3 |
+| $Disbursements(a)$ | 从账户$a$付出的付款编号名单 | 本例是空名单 |
+
+这些括号是在说“与哪个账户相关”，不是额外相乘。符号$\in$读作“属于”，所以只加相应名单内的记录。只有本例明确没有付款时，才可直接只加收款。
 
 $$
 B_a=B_{a,0}+\sum_{r\in Receipts(a)}R_r-\sum_{d\in Disbursements(a)}D_d
@@ -348,6 +462,13 @@ $$
 $$
 A_{r,s}\ge 0,\qquad \sum_s A_{r,s}\le R_r,\qquad \sum_r A_{r,s}\le T_s
 $$
+
+上面两个求和方向不能交换着读。下面一行是一项核对：先固定要查的记录，再沿另一个编号逐项加；金额单位与本节样例相同。
+
+| 核对什么 | 固定谁 | 逐个变化谁 | 本例展开及上限 |
+|---|---|---|---|
+| R2有没有分出超过实收的钱 | 收款$r=R2$ | 销售$s$，本例S1/S2 | $600+200=800\le800$ |
+| S1有没有被结算超过销售总额 | 销售$s=S1$ | 收款$r$，本例R1/R2 | $400+600=1000\le1000$ |
 
 例如把 R2 对 S2 的分配从 200 写成 300，总分配就成为 900，超过实收 800。关联数量仍符合多对多，图不会自动报错，金额检查却能抓到问题。若把 R2 分给 C2 的 S3，端点仍可能合法，但违反本篇普通单客户付款的同客户约束。
 
@@ -433,17 +554,35 @@ Assignment 的 Customer 端由 1..* 改为 0..*，因为固定 Salesperson 可�
 
 本题最重要的结果是：Sale 与 CashReceipt 多对多，客户付款用于某笔销售的金额属于 Duality；Salesperson–Customer 的 Assignment 独立于交易，销售员至少负责一个客户。账款是尚未结清销售的汇总，账户余额是资金收付的汇总，不能把每次收款都当作当次销售收入。
 
-常见错误可以这样发现：漏掉第 21 属性就查第二张照片开头；把 AppliedAmount 放进 CashReceipt 就拿 R2 的 600／200 反问；读反端点就说完整句“固定一笔 Sale，有几块板”；Assignment 写 0 就回看 salesperson 的 must；把 Customer 端 0 写成题面必然结论就区分“非销售钱”与“非客户钱”；把 250 的 B4 算进销售，就查它有没有 Sale 连接。
+常见错误可以分别这样查：
 
-本篇参考解析覆盖六步、21 属性、8 关联及 16 端点。重要数值以 §8 的完整表和恒等式公开，本次已实际运行补充数据及 R4 变式复算，并检查金额、身份和最小参与错误；具体结果见下方核对记录。新增图形的实际显示在收尾记录单列，不以代码写出来作为显示通过。没有虚构读者评分，没有将官方或行政条件标成已确认。
+- 漏掉第21属性，查第二张照片开头。
+- 把AppliedAmount放进CashReceipt，用R2的600／200反问各自结算哪笔销售。
+- 读反端点，先说完整句“固定一笔Sale，有几块板”。
+- Assignment的Customer端写0，回看salesperson的must。
+- 把Customer端0当文字必然结论，区分“非销售钱”与“非客户钱”，再对照本题官图采用值。
+- 把B4的250算进销售，先查它有没有Sale连接。
 
-## 11. 英文精简参考表达（照片版条件，非提交确认）
+本篇解析覆盖六步、21属性、8关联及16端点；重要数值在§8保留完整表和恒等式。2026-10-26本轮另存实际复算、独审、来源与必要图文记录；官图已核，计分/提交等行政条件仍待确认。历史程序/显示记录保留当时范围，不冒称本轮重跑，且不推断本人已学会。
 
-> Reference answer based on the two Case 5 photos; official solution and submission requirements remain unverified.
+## 11. 英文参考表达（对照官图，非提交确认）
+
+> Reference explanation based on the Case 5 question and the checked official diagram. The English sentences are written for these notes; assessment and submission requirements remain unverified.
 
 Resources: Surfboard and CashAccount. Economic events: Sale (decrement) and CashReceipt (increment). Agents: Salesperson and Cashier (internal), and Customer (external). Connect Sale to CashReceipt by Duality; attach Surfboard to Sale and CashAccount to CashReceipt by Stockflow; add four event-agent Participation associations and a Salesperson–Customer Assignment association.
 
-Place the 20 object attributes in their respective seven classes. Place “Cash receipt amount applied to sale” on the Sale–CashReceipt Duality association, because it depends on both identifiers. Use the 16 directional multiplicities in §5. Under the stated assumptions, each Surfboard is an individual physical board sold at most once, and a non-sales cash receipt may come from a non-customer. If Surfboard# identifies a resource type, allow multiple sales per type. If all cash receipts must come from registered customers, require exactly one Customer per CashReceipt.
+Place the 20 object attributes in their respective seven classes. Place “Cash receipt amount applied to sale” on the Sale–CashReceipt Duality association, because it depends on both identifiers. The official diagram uses the following directional multiplicities:
+
+1. A Sale contains one or more Surfboards; each individual Surfboard may be linked to zero or one Sale.
+2. Each CashReceipt is deposited into exactly one CashAccount; a CashAccount may have zero or many CashReceipts.
+3. A Sale may have zero or many CashReceipts; a CashReceipt may apply to zero or many Sales.
+4. Each Sale is handled by exactly one Salesperson; a Salesperson may handle zero or many Sales.
+5. Each CashReceipt is handled by exactly one Cashier; a Cashier may handle zero or many CashReceipts.
+6. Each Sale has exactly one Customer; a Customer may have zero or many Sales.
+7. A CashReceipt may be linked to zero or one Customer; a Customer may have zero or many CashReceipts.
+8. Each Customer is assigned exactly one Salesperson; each Salesperson is assigned one or more Customers.
+
+Under the stated assumptions, each Surfboard is an individual physical board sold at most once, and a non-sales cash receipt may come from a non-customer. If the question is changed so that Surfboard# identifies a resource type, allow multiple Sales per type. If it is changed to require all cash receipts to come from registered Customers, require exactly one Customer per CashReceipt. These are condition changes, not replacements for the checked official diagram.
 
 Each Customer must be assigned exactly one Salesperson, and each Salesperson must be assigned one or more Customers. Employees and Customers may have zero economic transactions; that does not remove the required Assignment.
 
@@ -458,10 +597,15 @@ Each Customer must be assigned exactly one Salesperson, and each Salesperson mus
 
 原 `Week 5 PPT.pptx` 共 57 页的文字和备注已读取，备注正文均为空；这里只引用与本题相关的 p.2–8、p.16–21、p.31、p.54–55 方法，不把讲义中的采购例子称为 Case 5 官方解答。PPT 原件 SHA-256：`9c0c1bb05e4100a02bb07355e8a04bdf20f6069cca22f81eefbefe6cc28bd8d5`。
 
-本次实际复算：补充数据的销售合计 1,900、收款 1,250、用于销售的应用金额 1,200、其他来源 50、未结清销售 700；C1/C2/C3 应收 400/300/0，CA1/CA2 现金 1,250/0。新增 R4 后现金 1,650、应用金额 1,600、应收合计 300。10 个有明确错误原因的变式实际被拒绝；它们是教学范围内的程序核验，不是已建生产数据库或官方检查器通过。
+2026-10-07历史复算记录：补充数据的销售合计 1,900、收款 1,250、用于销售的应用金额 1,200、其他来源 50、未结清销售 700；C1/C2/C3 应收 400/300/0，CA1/CA2 现金 1,250/0。新增 R4 后现金 1,650、应用金额 1,600、应收合计 300。10 个有明确错误原因的变式实际被拒绝；它们是教学范围内的程序核验，不是已建生产数据库或官方检查器通过。
 
-完整建模与难句解释、21 项归属、16 个端点、汇总读法及 7 道自测已完成。现阶段为照片版参考解析：本次 Canvas 四入口均实见 CityU SSO 登录，官方版本、计分、DDL、提交及 AI 使用条件未核。没有直接 Obsidian 阅读视图或独立真人 Q/R 评分；不替本人记录已通读、自测通过或已提交。Notion 作业看板规则只跟踪计分任务，不为这份待核课堂练习新建行，也不改 M05 的课程笔记／转录状态。
+2026-10-07记录的完成范围为建模/难句、21属性、16端点、汇总及7道自测；该次Canvas四入口均见SSO，官方与行政未核。2026-10-26本轮已核本地Word和官图，未实时重查Canvas四入口；计分、DDL、提交及AI使用条件仍待核。没有直接 Obsidian 阅读视图或独立真人 Q/R 评分；不替本人记录已通读、自测通过或已提交。Notion 作业看板规则只跟踪计分任务，不为这份待核课堂练习新建行，也不改 M05 的课程笔记／转录状态。
 
 收尾显示核对（2026-10-07）：同源浏览器预览实际查看完整核心模型、六步流程图及金额表／公式，2 张 Mermaid 图完成渲染，27 个数学表达式均显示，0 数学错误；7 个折叠自测答案齐全。Mermaid 按自动布局显示，数字端点同时逐项写在 §5 的 16 行表中供反解。未直接操作 Obsidian 阅读视图。原照片哈希一致，Week 5 PPT 与原有 Case 1–4 全文哈希和开工备份一致。
 
 2026-10-07 图示流程落实：以同一语义 JSON 改用 Graphviz 结构图与完整属性图，7 类／8 关联、20 类属性＋1 关联属性和16端点与原解析一致；实际查看最终矢量图与字体、连线、端点和图注，语义及原有范围假设未变。旧 Mermaid 的渲染记录保留为当时事实；本次不改官方／行政待核或本人学习状态。
+
+
+### 2026-10-26 本轮补证入口
+
+[完整英文题源Case 5.docx](../../course_files_export/Case%205.docx)与[单页官方模型Solution of Case 5.pdf](../../course_files_export/Solution%20of%20Case%205.pdf)本轮逐项核对。PDF为扫描图，不能用空文本当没有答案；本轮实际看过校正方向的全图及左右裁片。当前图源沿用原7类/8关联/16端点/21属性，更新来源与图注，历史图示报告不追改为新PASS。正文/图源/当前审查/原子回读及各端状态见逐篇台账。

@@ -1,0 +1,345 @@
+{
+  "schema": "cityu-concept-graph-v1",
+  "diagram_type": "uml-rea",
+  "title": "Case 5: revenue core model (reference)",
+  "scope": "Physical individually identified surfboards; Sale is completed surfboard sale, no returns/resale lifecycle; non-customer other receipts allowed as an explicit reference-answer assumption.",
+  "assumptions": [
+    "Surfboard IDs identify individual physical boards; no returns/resale lifecycle is represented.",
+    "Sale represents completed surfboard sales with one ordinary buyer; each sale contains at least one board.",
+    "A cash receipt has at most one ordinary paying Customer, and this scope also allows other receipts from non-customers.",
+    "A cash account may exist before it has receipts.",
+    "The assigned customer owner and the actual selling salesperson are not forced equal without an additional business rule."
+  ],
+  "alternatives": {
+    "product_type_SurfboardNo": "Surfboard 1..* -- 0..* Sale; quantity per type belongs to sale-type association if needed, outside original 21 attributes.",
+    "all_cash_receipts_are_customer_receipts": "Customer 1..1 -- 0..* CashReceipt; other customer receipts can still link to zero surfboard Sales.",
+    "commission_base": "No commission payable computed; sales basis versus collections basis and recognition timing unspecified.",
+    "assignment_equal_actual_seller": "Not imposed: source does not explicitly require actual selling salesperson to equal the assigned salesperson."
+  },
+  "figure_caption": "Physical individual boards; no resale lifecycle.\nOfficial diagram checked: all 16 endpoints and 21 attributes.\nInterpretive scope and changed-condition alternatives remain explicit.",
+  "sources": [
+    {
+      "name": "case4-case5-photos/case5-page-01.jpg",
+      "sha256": "767145b90420fdeb281d1965d63b09adabbbb2a31b3f3f66cf48246bf8fdc5a6"
+    },
+    {
+      "name": "case4-case5-photos/case5-page-02.jpg",
+      "sha256": "907c6990a22903d091a69ea8fd387a292d79d3e6df71a5199a36f6e6fcd88125"
+    },
+    {
+      "name": "Case 5.docx",
+      "sha256": "8e24f6b4e9da310a033fb4d88d29813e9999dad5fb07d74b1114628f63d24093"
+    },
+    {
+      "name": "Solution of Case 5.pdf",
+      "sha256": "d430cc2c0ba210b17fe237645fff069ddf4af132b1067fa5247f71824ae483d8"
+    }
+  ],
+  "layout": {
+    "columns": [
+      [
+        "Surfboard",
+        "CashAccount"
+      ],
+      [
+        "Sale",
+        "CashReceipt"
+      ],
+      [
+        "Salesperson",
+        "Customer",
+        "Cashier"
+      ]
+    ]
+  },
+  "nodes": [
+    {
+      "id": "Surfboard",
+      "label": "Surfboard",
+      "kind": "Resource",
+      "source": "Case5 Steps 1-4; role interpretation supported by Week5 PPT p2-p4 and p21",
+      "status": "reference",
+      "attributes": [
+        {
+          "id": "Surfboard-1",
+          "name": "Surfboard#",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        },
+        {
+          "id": "Surfboard-2",
+          "name": "Surfboard description",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        },
+        {
+          "id": "Surfboard-3",
+          "name": "Surfboard Sell-price",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "CashAccount",
+      "label": "CashAccount",
+      "kind": "Resource",
+      "source": "Case5 Steps 1-4; role interpretation supported by Week5 PPT p2-p4 and p21",
+      "status": "reference",
+      "attributes": [
+        {
+          "id": "CashAccount-1",
+          "name": "Cash Account#",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        },
+        {
+          "id": "CashAccount-2",
+          "name": "Cash account type",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        },
+        {
+          "id": "CashAccount-3",
+          "name": "Bank name",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        },
+        {
+          "id": "CashAccount-4",
+          "name": "Cash balance",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "Cashier",
+      "label": "Cashier",
+      "kind": "InternalAgent",
+      "source": "Case5 Steps 1-4; role interpretation supported by Week5 PPT p2-p4 and p21",
+      "status": "reference",
+      "attributes": [
+        {
+          "id": "Cashier-1",
+          "name": "Cashier #",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        },
+        {
+          "id": "Cashier-2",
+          "name": "Cashier name",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "CashReceipt",
+      "label": "CashReceipt",
+      "kind": "EconomicIncrement",
+      "source": "Case5 Steps 1-4; role interpretation supported by Week5 PPT p2-p4 and p21",
+      "status": "reference",
+      "attributes": [
+        {
+          "id": "CashReceipt-1",
+          "name": "Cash receipt #",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        },
+        {
+          "id": "CashReceipt-2",
+          "name": "Cash receipt total amount",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "Customer",
+      "label": "Customer",
+      "kind": "ExternalAgent",
+      "source": "Case5 Steps 1-4; role interpretation supported by Week5 PPT p2-p4 and p21",
+      "status": "reference",
+      "attributes": [
+        {
+          "id": "Customer-1",
+          "name": "Customer #",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        },
+        {
+          "id": "Customer-2",
+          "name": "Customer name",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        },
+        {
+          "id": "Customer-3",
+          "name": "Customer account receivable",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "Salesperson",
+      "label": "Salesperson",
+      "kind": "InternalAgent",
+      "source": "Case5 Steps 1-4; role interpretation supported by Week5 PPT p2-p4 and p21",
+      "status": "reference",
+      "attributes": [
+        {
+          "id": "Salesperson-1",
+          "name": "Salesperson #",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        },
+        {
+          "id": "Salesperson-2",
+          "name": "Salesperson name",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        },
+        {
+          "id": "Salesperson-3",
+          "name": "Salesperson-comm-rate",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "Sale",
+      "label": "Sale",
+      "kind": "EconomicDecrement",
+      "source": "Case5 Steps 1-4; role interpretation supported by Week5 PPT p2-p4 and p21",
+      "status": "reference",
+      "attributes": [
+        {
+          "id": "Sale-1",
+          "name": "Sale#",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        },
+        {
+          "id": "Sale-2",
+          "name": "Sale total amount",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        },
+        {
+          "id": "Sale-3",
+          "name": "Sale no. of items",
+          "source": "Case5 photo attribute list p1-p2",
+          "status": "source"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "E1",
+      "a": "Sale",
+      "b": "CashReceipt",
+      "a_multiplicity": "0..*",
+      "b_multiplicity": "0..*",
+      "label": "Duality",
+      "source": "explicit narrative for credit,partial,combined,other source",
+      "status": "reference",
+      "direction": "none",
+      "attributes": [
+        {
+          "id": "AppliedAmount",
+          "name": "AppliedAmount",
+          "source": "Case5 photo2 first line: Cash receipt amount applied to sale",
+          "status": "source"
+        }
+      ]
+    },
+    {
+      "id": "E2",
+      "a": "Surfboard",
+      "b": "Sale",
+      "a_multiplicity": "1..*",
+      "b_multiplicity": "0..1",
+      "label": "Stockflow",
+      "source": "available unsold explicit; physical item and no returns/resale reasonable assumptions",
+      "status": "assumption",
+      "direction": "none",
+      "attributes": []
+    },
+    {
+      "id": "E3",
+      "a": "CashAccount",
+      "b": "CashReceipt",
+      "a_multiplicity": "1..1",
+      "b_multiplicity": "0..*",
+      "label": "Stockflow",
+      "source": "one cash account explicit; no prior receipts reasonable assumption; repeat receipts business sense",
+      "status": "assumption",
+      "direction": "none",
+      "attributes": []
+    },
+    {
+      "id": "E4",
+      "a": "Salesperson",
+      "b": "Sale",
+      "a_multiplicity": "1..1",
+      "b_multiplicity": "0..*",
+      "label": "Participation",
+      "source": "one salesperson and agents without transactions explicit; repeats business sense",
+      "status": "reference",
+      "direction": "none",
+      "attributes": []
+    },
+    {
+      "id": "E5",
+      "a": "Cashier",
+      "b": "CashReceipt",
+      "a_multiplicity": "1..1",
+      "b_multiplicity": "0..*",
+      "label": "Participation",
+      "source": "one cashier and agents without transactions explicit; repeats business sense",
+      "status": "reference",
+      "direction": "none",
+      "attributes": []
+    },
+    {
+      "id": "E6",
+      "a": "Customer",
+      "b": "Sale",
+      "a_multiplicity": "1..1",
+      "b_multiplicity": "0..*",
+      "label": "Participation",
+      "source": "one customer per sale business sense; zero transactions explicit",
+      "status": "reference",
+      "direction": "none",
+      "attributes": []
+    },
+    {
+      "id": "E7",
+      "a": "Customer",
+      "b": "CashReceipt",
+      "a_multiplicity": "0..1",
+      "b_multiplicity": "0..*",
+      "label": "Participation",
+      "source": "zero transactions explicit; optional customer is scope assumption with 1..1 alternative",
+      "status": "assumption",
+      "direction": "none",
+      "attributes": []
+    },
+    {
+      "id": "E8",
+      "a": "Salesperson",
+      "b": "Customer",
+      "a_multiplicity": "1..1",
+      "b_multiplicity": "1..*",
+      "label": "Assignment",
+      "source": "exactly one assigned salesperson per customer and at least one customer per salesperson explicit",
+      "status": "reference",
+      "direction": "none",
+      "attributes": []
+    }
+  ]
+}

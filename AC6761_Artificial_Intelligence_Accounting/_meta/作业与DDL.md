@@ -345,3 +345,7 @@ Quiz 2 原件已到：基于 ExampleTables1 查询 E-10 的销售，保存 Query
 ## 2026-10-26 Case4 来源核对更新
 
 [[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M04-Case4-多重性与关系表|Case4独立解析]]与本地官方Word已逐问对照：Q1/Q2端点、Q3a实体完整性、Q3b No、Q4四行外键均一致；正文与工作簿完成本次全篇审修。下方/上方10月历史“逐题待核”仅保留当时事实；Case5仍待逐篇核。此次没有新增计分/截止/格式/提交证据，Canvas四入口未实时刷新，不创建未知DDL、不改本人提交/评分。
+
+## 2026-10-26 Case5 本地官图与解析核对更新
+
+[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M05-Case5-销售与收款REA核心模型|Case5完整原题/模型/中英解读]]已全篇审修，并与本地Case5.docx及SolutionofCase5.pdf逐项核对7类/8关联/16端点/21属性。10月旧“逐题待核”保留当时事实，当前本项本地官图核对已完成；没有新增计分/截止/格式/提交证据，Canvas四入口未实时刷新。不新建未知DDL、不改本人提交评分，也不升级M05主笔记审查。

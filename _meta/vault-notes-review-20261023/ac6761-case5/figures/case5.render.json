@@ -1,0 +1,108 @@
+{
+  "schema": "cityu-concept-graph-v1",
+  "title": "Case 5: revenue core model (reference)",
+  "implementation": "@viz-js/viz",
+  "implementation_version": "3.31.0",
+  "graphviz_version": "16.1.0",
+  "source_sha256": "96012833ea2257054be4b240ab26f2203fe4124aee80b3bd346a3c12ba58a5f5",
+  "nodes": 7,
+  "associations": 8,
+  "multiplicity_endpoints": 16,
+  "node_attributes": 20,
+  "association_attributes": 1,
+  "overview": false,
+  "shown_node_attributes": 20,
+  "warnings": [],
+  "endpoint_mapping": [
+    {
+      "edge_id": "E1",
+      "a": "Sale",
+      "a_multiplicity": "0..*",
+      "b": "CashReceipt",
+      "b_multiplicity": "0..*",
+      "draw_tail": "Sale",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "CashReceipt",
+      "draw_head_multiplicity": "0..*"
+    },
+    {
+      "edge_id": "E2",
+      "a": "Surfboard",
+      "a_multiplicity": "1..*",
+      "b": "Sale",
+      "b_multiplicity": "0..1",
+      "draw_tail": "Surfboard",
+      "draw_tail_multiplicity": "1..*",
+      "draw_head": "Sale",
+      "draw_head_multiplicity": "0..1"
+    },
+    {
+      "edge_id": "E3",
+      "a": "CashAccount",
+      "a_multiplicity": "1..1",
+      "b": "CashReceipt",
+      "b_multiplicity": "0..*",
+      "draw_tail": "CashAccount",
+      "draw_tail_multiplicity": "1..1",
+      "draw_head": "CashReceipt",
+      "draw_head_multiplicity": "0..*"
+    },
+    {
+      "edge_id": "E4",
+      "a": "Salesperson",
+      "a_multiplicity": "1..1",
+      "b": "Sale",
+      "b_multiplicity": "0..*",
+      "draw_tail": "Sale",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "Salesperson",
+      "draw_head_multiplicity": "1..1"
+    },
+    {
+      "edge_id": "E5",
+      "a": "Cashier",
+      "a_multiplicity": "1..1",
+      "b": "CashReceipt",
+      "b_multiplicity": "0..*",
+      "draw_tail": "CashReceipt",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "Cashier",
+      "draw_head_multiplicity": "1..1"
+    },
+    {
+      "edge_id": "E6",
+      "a": "Customer",
+      "a_multiplicity": "1..1",
+      "b": "Sale",
+      "b_multiplicity": "0..*",
+      "draw_tail": "Sale",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "Customer",
+      "draw_head_multiplicity": "1..1"
+    },
+    {
+      "edge_id": "E7",
+      "a": "Customer",
+      "a_multiplicity": "0..1",
+      "b": "CashReceipt",
+      "b_multiplicity": "0..*",
+      "draw_tail": "CashReceipt",
+      "draw_tail_multiplicity": "0..*",
+      "draw_head": "Customer",
+      "draw_head_multiplicity": "0..1"
+    },
+    {
+      "edge_id": "E8",
+      "a": "Salesperson",
+      "a_multiplicity": "1..1",
+      "b": "Customer",
+      "b_multiplicity": "1..*",
+      "draw_tail": "Salesperson",
+      "draw_tail_multiplicity": "1..1",
+      "draw_head": "Customer",
+      "draw_head_multiplicity": "1..*"
+    }
+  ],
+  "semantic_review": "required: source contract validation does not verify business facts",
+  "visual_review": "required: actual rendered labels and connections must be checked"
+}

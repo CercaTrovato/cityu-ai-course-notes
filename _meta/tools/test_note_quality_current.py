@@ -47,6 +47,18 @@ class CurrentChecks(unittest.TestCase):
         empty = '---\ntype: 课堂练习解析\n---\n\n## 2. 条件\n\n## 3. 步骤\n'
         self.assertTrue(q.assess_current(empty, 'case2.md')['hard'])
 
+    def test_standalone_guide_scans_real_steps_after_section2(self):
+        prefix = '---\ntype: practice-guide\n---\n\n'
+        explained = (prefix + '## 2. 题面条件\n\n'
+                     '| 条件 | 含义 |\n|---|---|\n| 分次付款 | 一次销售可对应多次收款 |\n\n'
+                     '## 3. 六步做题\n\n### Step 1：拆开两种事件\n\n'
+                     '先将交付资源的销售与收到现金的收款分开。已售出并不表示已经到账。\n')
+        self.assertNotIn('C_STRUCTURE', codes(q.assess_current(explained, 'case5.md')))
+        later_code = explained + '\n## 8. 运行\n\n' + FENCE + 'python\nprint(1)\n' + FENCE + '\n'
+        self.assertIn('C_CODE_EXPLANATION', codes(q.assess_current(later_code, 'case5.md')))
+        empty = prefix + '## 2. 条件\n\n## 3. 步骤\n'
+        self.assertTrue(q.assess_current(empty, 'case5.md')['hard'])
+
     def test_unlabelled_short_but_explained_does_not_fail_quota(self):
         text = note('窗口均值用来平滑短期变化。\n\n先求过去三期的平均：$M=(2+4+6)/3=4$。\n\n若窗口包含未来销量，就会泄漏待预测的答案。')
         self.assertFalse(q.assess_current(text, 'M01.md')['hard'])
