@@ -1,0 +1,67 @@
+--- v2
++++ v3
+@@ -11,7 +11,7 @@
+ tags: [AC6761, REA, 业务流程建模, UML类图, 采购循环, 收入循环, 期中考范围]
+ status: v1.0
+ updated: 2026-10-26
+-mechanism_review: pending
++mechanism_review: _meta/vault-notes-review-20261023/ac6761-m05-full/review.json
+ mechanism_review_mode: efficient-20261002
+ mechanism_content: repaired
+ mechanism_acceptance: "2026-10-02 简化流程；3 图实看；12 行关系表逐行读取且按 source/table 记录；未做独立全量 Q/R；transcript pending 与来源限制保留"
+@@ -1705,7 +1705,7 @@
+ 
+ **文字替代**：Purchase 连货/Overhead 与采购角色，付款连现金与执行/批准角色，两事件用 Duality 保存分配关系。金额守恒、至少一种资源明细、角色自然人分离，都不是18端点自动保证的。
+ 
+-**来源与边界**：p.17–20及本篇既有逐项转写。Cash 保留该原图的 ResourceType 标签，与 p.11/p.21 的 Resource CashAccount 冲突不归一化；原 RSWS 未给全交易金额，不据图输出官方 AP。`AP-bond` 细义未知，Overhead 没有原单价字段。SVG 已在 scratch 渲染；本轮未实际查看最终 SVG，visual_review 与 semantic_review 均 pending。
++**来源与边界**：p.17–20及本篇既有逐项转写。Cash 保留该原图的 ResourceType 标签，与 p.11/p.21 的 Resource CashAccount 冲突不归一化；原 RSWS 未给全交易金额，不据图输出官方 AP。`AP-bond` 细义未知，Overhead 没有原单价字段。2026-10-26 全篇重审已将两张 SVG 与同源讲义 p.17/p.20 的既有导出图重新对照，并实际查看其结构、属性、端点与阅读尺寸；本次未改图源，未重新导出 PPT，具体证据见本轮回执。
+ 
+ <details><summary>读图自测：一笔 Purchase 既没有 Stockflow1 也没有 Stockflow2，能仅凭每条边最小0说业务有效吗？</summary>
+ 
+@@ -1891,7 +1891,7 @@
+ 
+ </details>
+ 
+-**来源与假设边界**：七类、八关联、二十个类属性、一个关联属性和十六端点来自官方 Word 与官方手绘答案。题面本身未独立决定的端点照官方图保留，不用通用 REA 默认规则补猜。`Cash` 按官方答案写成 Cash Account；渲染器报告无 warning，但正式 SVG 的实际观看与视觉通过仍待主代理完成。
++**来源与假设边界**：七类、八关联、二十个类属性、一个关联属性和十六端点来自官方 Word 与官方手绘答案。题面本身未独立决定的端点照官方图保留，不用通用 REA 默认规则补猜。`Cash` 按官方答案写成 Cash Account；2026-10-26 全篇重审已实际查看两张正式 SVG，核 7 类、8 关联、20+1 属性与 16 端点；官题/官图来源证据按未变哈希承接，不冒称本次重新导出官解，原生 Obsidian 未直接查看。
+ 
+ - **这段改变了什么**：M05 不再只是讲义 RSWS 示例；新增一个完整收入循环课堂案例，并明确期中给骨架、要求填关联名、属性和多重度（S6 `01:32:58`–`01:33:36`、`01:45:25`–`01:45:55`）。
+ 
+@@ -3362,8 +3362,8 @@
+ 
+ **表示一：传统会计的三列交易分析**（🔴 **教授指定的期中考格式**，见 [[M01-会计与商业#2.8.3 🔴 教授规定的答题格式（本讲最重要的应试信息）|M01 §2.8.3]]）
+ 
+-> 🔴 教授原话（W1 转录 `01:54:08`–`01:54:55`）：
+-> > *"since you are not accounting students, we make it simple. We just decide whether it affects assets, or it affects liabilities, or it affects equity. But **you need to determine whether it's positive or negative**. **That is my request for you** when you answer such questions. **You must indicate whether it's positive or negative.**"*
++> 🔴 课堂要求（W1 转录 `01:54:30` 直引，ASR 断句保留，未逐字核音）：
++> > *"But you need to determine whether it's positive or negative. That is my request for you when you answer such questions. You must. Indicate whether it's positive or negative."*
+ 下表一行是一笔交易，后三列分别记录资产、负债、权益的变化；正负号按本企业增减读，不是现金流方向。
+ 
+ | 交易 | Assets | Liabilities | Equity |
+@@ -3486,7 +3486,7 @@
+ 
+ **从手算到查询（可选实现预览，笔记补充）**：当前建模/会计任务用上表即可完成，不要求先会 SQL。若要读下面实现，输入就是本例四张表，输出为截至 9/30 每张采购的取得额、已应用付款、认可贷项和未清金额；没有借用官方 RSWS 的未知交易。
+ 
+-先认字段：编号是文本，dt 是 `YYYY-MM-DD` 日期文本，amt 是 HKD 金额。下表每行说明一张输入表及本例的全部记录；括号内各值依列顺序排列。
++先认字段：编号是文本，dt 是 `YYYY-MM-DD` 日期文本，amt 是 HKD 金额。下面四张表列出本例全部记录，每行一条记录，各列按字段名读取。
+ 
+ **Purchase：一行是一笔取得；金额单位 HKD。**
+ 
+@@ -4148,9 +4148,9 @@
+ 
+ #### 框架 C · 🔴 交易分析题的答题格式（从 M01 继承，整个期中考通用）
+ 
+-> 🔴 **教授原话**（W1 转录 `01:53:06` / `01:54:08`–`01:54:55`）：
+-> > *"in the future exercise or **the midterm or the final examination**, if we are testing such transaction analysis, **let's follow this format**."*
+-> > *"...**you need to determine whether it's positive or negative**. **That is my request for you** when you answer such questions. **You must indicate whether it's positive or negative.**"*
++> 🔴 **课堂要求**（W1 转录 `01:53:06` / `01:54:30` 直引，未逐字核音）：
++> > *"So in the future exercise or the midterm or the final examination if we are testing such transaction analysis, let's follow this format."*
++> > *"But you need to determine whether it's positive or negative. That is my request for you when you answer such questions. You must. Indicate whether it's positive or negative."*
+ 
+ **格式**：
+ 
+@@ -4778,3 +4778,4 @@
+ | 2026-10-21 | **首次合并跨 M04/M05 的 S6 新转录**（M05 段 `01:13:52`–`01:48:21`）→ v1.0：40 个 🎙️ 格全部五态化，§8 补课堂覆盖，新增 Case 5 完整课堂题与教授明示/反向考点；扩展模型按原话降权但正文保留。 |
+ | 2026-10-21 | 融合 S6（全源761段，M04/M05共用原时钟）：40个课堂格，补齐本篇实际覆盖、课堂题解与考试范围信号；保留原有材料及ASR/开头缺口，教学与视觉验收另见本次回执。 |
+ | 2026-10-25 | 增补本人确认的 10 月 21 日 S18/S19 续讲：更新扩展模型课堂格、当前考试边界、逐页覆盖与来源缺口；S19 后段仍归 M06。材料继续 v1.0，独立审查／写回证据见本批回执，不推断本人通读。 |
++| 2026-10-26 | 按现行高中知识起点完成本次全篇独审与缺陷定向关闭；统一资源次数/比较范围/派生余额/给定属性与骨架口径，补最小 SQL 输入、中间结果、日期假设及逐单元英文答案。原件/原题/官方端点/图源保持；S6/S18/S19 原始时钟与缺口保留，未改本人状态。W1 两处转录引文回到实际字面，显示与来源新回执分别记录。 |

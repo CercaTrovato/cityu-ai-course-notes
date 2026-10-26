@@ -1,0 +1,39 @@
+# AC6761 M05 v3 引用来源定向复核
+
+审查者：`/root/review_ac_m05_full_61`。日期：2026-10-26。
+
+**结论：v3 的三段 W1 引文均与所标时点的转录字面相符，原格式要求的教学含义未变；没有新增教学或来源阻塞。此前 v2 的全部已关闭范围继续承接。** 这里只确认转录文字保真，没有重新核听录音，不把 ASR 文本等同逐字音频认证。
+
+## 冻结版本与本次范围
+
+- 文件：`candidate-v3.md`，实测 306822 bytes。
+- 最终 SHA-256：`77b1dc456f280180503e87976ff40a5648827d2b22cba829e3b1115a6a0a54cb`。
+- 已读完整 `v2-v3.diff`、`v3-changes.json`；只定向核三段引文、两个时点、相邻转录与本次维护变化。没有重新盲读全篇或已关闭机制，没有训练、执行 SQL/Access、另派代理或改写候选/vault。
+- 原件：`D:\上课资料\CityU\AC6761_Artificial_Intelligence_Accounting\transcripts\M01-transcript.txt`。
+- 本次实测原转录 SHA-256：`c2206f6eb871b62edc5c81437851719367e0b49d33832187f510d72c72d1cffc`。
+- 原 `stage-1.md`、`independent-review.md`、`targeted-review.md`、`targeted-review-v2.md` 全部保留。以 v2→v3 的真实最小差异承接未变教学，不把以前的来源误引追改为当时已正确。
+
+## 引文逐项核对
+
+| v3 位置 | 所标时间与原转录位置 | 真实核对结果 |
+|---|---|---|
+| L3365–3366，§2.16.1 | `01:54:30`；原转录 L962–963 | `But you need to determine whether it's positive or negative. That is my request for you when you answer such questions. You must. Indicate whether it's positive or negative.` 是该段连续原文片段，保留 `You must. Indicate` 的 ASR 断句，没有再冒充为原转录没有的 `since you are not accounting students...` |
+| L4151–4152，框架 C 第一引文 | `01:53:06`；原转录 L947–948 | `So in the future exercise or the midterm or the final examination if we are testing such transaction analysis, let's follow this format.` 是该时点的连续完整句，没有把整理后的相同含义句仍作为直引 |
+| L4151、L4153，框架 C 第二引文 | `01:54:30`；原转录 L962–963 | 与 §2.16.1 相同的原文连续片段，定位正确；没有引用不存在的组合时间段或静默重写 ASR 断句 |
+
+除人工读相邻原转录外，本次也将三段实际引文提取为字符串，逐项检查是否为原转录连续子串，三项均为 true。首次检查脚本因第二个正则覆盖 PowerShell `$Matches` 得到空捕获，已修正为先保存引文再判断；空捕获结果未作为内容不符证据。
+
+## 教学含义与边界
+
+- `01:53:06` 明确 future exercise / midterm / final 在测试 transaction analysis 时沿用所示格式。
+- 紧邻 `01:53:20`（原转录 L953–954）写三列为会计等式三部分 assets / liability / equity；`01:54:30` 明确须判 positive / negative；`01:54:55` 举 plus 30000 的写法。因此现有“三列、写清增减符号”的教学含义有相邻转录支持，不依赖被删除的 `accounting students` 整理引文。
+- 新标签明确“直引、ASR 断句保留／未逐字核音”，比把流畅改写句冒作原话更准确。省去未准确引用的引言不改变本例 HKD40000 的资产/负债方向、格式框架、数值或后续 REA 对照。
+- 这里只核与这次引文修正相关的要求，不由该两段额外认证任何新评分细则，也不重新推断个人学习/提交状态。
+
+## 其他差异与承接
+
+- 四表引导已改为“下面四张表列出本例全部记录，每行一条记录，各列按字段名读取”，关闭 v2 的非阻塞旧引导维护提示。
+- 两组 SVG 的当前显示状态、元数据报告指针和变更记录属于证据状态维护，未见 diff 改动图源、代码、金额或业务条件。主代理报告已实际查看相应图，本审查者没有看图，**不将主代理实际查看写成审查者实看**。
+- v2 的 R1a/R1b 与之前 F1–F7、E2/E3、A1–A3 关闭结论不受本次差异影响；全篇独立教学审查证据依次由初读、来源/规则核查、v1 定向、v2 定向和本次来源复核组成。
+
+最终适用版本为上述 v3 SHA，本独立审查范围没有剩余实质阻塞。最终源题/数值/运行、阅读尺寸图文、机械门槛、原子写与精确回读及各端同步，仍由主代理以自己的真实执行记录验收；本报告不代替这些记录。

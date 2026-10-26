@@ -1,0 +1,366 @@
+[
+  {
+    "anchor": "一切以货币单位表达 —— **其推论是：不能用钱衡量的信息被系统性排除**，这正是 REA 的出发点",
+    "occurrences": 1,
+    "replacement": "本讲金额分录以货币计量；数量、人员等可另存凭证/辅助系统。REA 把这些业务对象显式关联"
+  },
+  {
+    "anchor": "复式记账只记\"影响会计等式且能用钱衡量\"的事，把**谁做的、在哪做的、用了哪台设备**全部丢掉了",
+    "occurrences": 1,
+    "replacement": "本讲简化分录不直接列人员/设备/业务关系；真实凭证、辅助账或 ERP 可以保存。REA 将其纳入显式事件关系"
+  },
+  {
+    "anchor": "M04 指出这套范式丢掉了大量信息（谁做的、什么时候、在哪台机器上、还没成交的订单），并给出替代方案 REA，同时把画图的语法（UML 类图 + 多重度）教完了。",
+    "occurrences": 1,
+    "replacement": "M04 对比的是本讲简化金额分录与显式业务数据模型：分录本身不列全部人员、数量或订单关系，真实凭证/ERP 仍可另存。REA 将资源、事件、角色及其关系直接组织起来；本篇会就地恢复 UML 类图与端点读法。"
+  },
+  {
+    "anchor": "在复式记账里你只会看到 `借：应付账款 / 贷：现金`，**哪笔钱对应哪张单是丢失的**（要靠账龄分析表另行维护）。REA 把它直接建进了模型。",
+    "occurrences": 1,
+    "replacement": "在本讲简化分录 `借：应付账款 / 贷：现金` 中，总额不直接显示每笔分配；真实应付明细也能保存对应关系。REA 的优势是把付款×采购分配显式建成业务关联。"
+  },
+  {
+    "anchor": "销售订单（sale order）是\"公司下个月能收多少钱\"的证据，上市公司财报里叫 **backlog（在手订单）**，分析师极其看重。**传统总账里没有这个数，REA 数据库里有。**",
+    "occurrences": 1,
+    "replacement": "销售订单（sale order）记录未来交付与付款承诺；未履行部分可形成**在手订单（backlog）**。它不是保证下个月到账的现金，仍受履行、取消及收款安排影响。简化总账分录不直接列订单余量，业务系统可以另存；REA 把订单及后续履行显式连接。"
+  },
+  {
+    "anchor": "**答案：它不是被存起来的，而是被算出来的。**",
+    "occurrences": 1,
+    "replacement": "**答案：给定采购模型没有单独的 AP 类；在已知期初及完整业务范围内，可以从取得、付款分配和认可贷项推算。** 实现也可保存受控派生余额/缓存，但须与事件事实对账，不能把“可推导”误解成“禁止存余额”。"
+  },
+  {
+    "anchor": "**待求**——它不是存在任何一张表里的字段，是查询算出来的数",
+    "occurrences": 1,
+    "replacement": "**待求**——在给定模型中由完整业务事实计算；若保存派生缓存，仍须核维护与对账"
+  },
+  {
+    "anchor": "**这两个数字都不是存在数据库里的字段，而是每次要看时现查现算的结果。**",
+    "occurrences": 1,
+    "replacement": "**在本例给定表中，这两个余额由查询推导；保存受控缓存是实现选择，不能代替原始事件及对账。**"
+  },
+  {
+    "anchor": "**账户余额是从事件数据推导出来的视图，而不是原始记录。** 传统系统存\"余额\"，REA 存\"事件\"，余额随时可以算。",
+    "occurrences": 1,
+    "replacement": "**余额可以从事件事实推导，不能与原始取得/付款记录混为一项。** 传统系统也能保存交易明细并计算余额；REA 强调以资源、事件和角色关系组织原始业务事实。"
+  },
+  {
+    "anchor": "**算出来，不是存出来。**",
+    "occurrences": 1,
+    "replacement": "**在给定采购模型中从完整事件事实推导；也可保存受控缓存并与事实对账。**"
+  },
+  {
+    "anchor": "5. 局限四：账户余额是被存起来的，口径事先写死\n   → REA：余额是从事件算出来的视图（§2.16.2 的应付账款公式）",
+    "occurrences": 1,
+    "replacement": "5. 比较实现：本讲简化金额汇总不直接列全部业务维度；真实传统系统也能保存明细/计算余额\n   → REA：将对象和事件关系显式组织，可按已保存事实推导余额，也可维护受控缓存（§2.16.2）"
+  },
+  {
+    "anchor": "3. 局限二：丢掉了 non-monetary 信息（货币计量假设）",
+    "occurrences": 1,
+    "replacement": "3. 局限二：本讲金额分录本身不直接展示全部 non-monetary 信息；真实明细系统仍可另存"
+  },
+  {
+    "anchor": "它是\"REA 能记而复式记账记不了\"的**最有商业说服力的例子**，比\"记录销售员姓名\"更有分量。",
+    "occurrences": 1,
+    "replacement": "它说明 REA 能把订单与后续履行显式关联；不能推成传统订单/ERP 系统不能记录 backlog，也不能由 backlog 保证未来现金。"
+  },
+  {
+    "anchor": "一颗特定的钻石**最多只能被卖掉一次**（`0..1`），而\"曲奇\"这个品类**可以被卖无数次**（`0..*`）。这个差别会直接写进图里。",
+    "occurrences": 1,
+    "replacement": "在当前“售出后不退回再售”的销售关联中，一颗特定钻石最多对应一次 Sale（`0..1`），而曲奇品类可出现在多笔 Sale（`0..*`）。这是具体关联的次数，不是同一资源一生只能参加一次经济事件；它仍可先采购、后销售，分别参加不同关系。若允许退回再售或租用，须按业务另定。"
+  },
+  {
+    "anchor": "**一个具体资源最多出现在 1 个事件中**",
+    "occurrences": 1,
+    "replacement": "**在该通常规则适用的具体关联内，最多对应 1 个事件**"
+  },
+  {
+    "anchor": "通俗说法：一颗特定的钻石最多被卖掉一次\n\n为什么：**这就是 Resource 与 Resource Type 的差别落到图上的地方**",
+    "occurrences": 1,
+    "replacement": "通俗说法：在本例不含退回再售的销售关联内，一颗具体钻石最多连一次 Sale；先采购后销售属于另一条关系，不受该销售端点一并限制。\n\n为什么：个体记录与品类记录让业务能规定不同次数；最终上限仍由该关联的业务范围决定。"
+  },
+  {
+    "anchor": "专属的资源只能卖一次（`0..1`），批量的资源能卖很多次（`0..*`）",
+    "occurrences": 1,
+    "replacement": "在本例无退回再售的销售关联内，单件资源最多一次（`0..1`）、品类可多次（`0..*`）"
+  },
+  {
+    "anchor": "**一个具体资源最多进 1 次事件**",
+    "occurrences": 1,
+    "replacement": "**当前通常规则所指的具体关联最多连 1 次事件，业务变化须重定**"
+  },
+  {
+    "anchor": "某一颗特定的钻石**最多只能被交易一次**（卖掉就没了）",
+    "occurrences": 1,
+    "replacement": "在不含退回再售的当前销售关联中，某颗钻石最多连一次 Sale；同一钻石先采购后销售属于不同关联"
+  },
+  {
+    "anchor": "也就是说：**事件端的最大值，Resource 是 1，Resource Type 是 `*`。**",
+    "occurrences": 1,
+    "replacement": "这些是特定销售场景的通常端点。Resource 是否唯一编号不能独自决定其所有关联上限；允许退回再售或多次租用时，须重新定义相应关联/履历，不能套“一生一次”。"
+  },
+  {
+    "anchor": "这就是会计上**先进先出 / 加权平均**（可互换商品）与**个别计价法**（不可互换商品）的区别，只不过 REA 把它提前到了**数据建模阶段**就做掉。你去金铺买一条 999 足金链子，店家按克重收钱（可互换 → 类",
+    "occurrences": 1,
+    "replacement": "可以先问仓库究竟要追踪“某品类有多少件”，还是“编号 D1 这颗钻石在哪”。前者按品类记录，后者逐件记录。先进先出/加权平均/个别计价是成本计量方法，与记录粒度有关但不是同一个规则；按克重定价也不能独自证明每条金链可互换。"
+  },
+  {
+    "anchor": "**叙述 3（utilities）** + 叙述 1",
+    "occurrences": 1,
+    "replacement": "原 p.20 端点＋本模型 Supplier 范围；叙述 1"
+  },
+  {
+    "anchor": "它是叙述 3 最后半句（`company needs cash to pay other utilities`）的唯一产物。**改卷人最可能盯这一个格子。**",
+    "occurrences": 1,
+    "replacement": "原 p.20 明示此端点；other utilities 只能在本模型把相应收款方列在 Supplier 类外时说明最小 0，不能一般推出电力公司不是供应商。最大 1 另依原图/一笔付款最多一个本模型供应商的范围。"
+  },
+  {
+    "anchor": "| 3 | \"**钱货可不可以不同步？**\" | Duality 两端 + Participation3 |",
+    "occurrences": 1,
+    "replacement": "| 3 | \"**钱货可不可以不同步？是否有采购外付款？**\" | Duality 两端；Participation3 还须原图及 Supplier 类范围 |"
+  },
+  {
+    "anchor": "| \"有些付款与供应商无关\" | 外部参与者端最小值 = **0** → `0..1` |",
+    "occurrences": 1,
+    "replacement": "| \"有些付款没有本模型 Supplier 引用\" | 只说明 Supplier 端最小值 0；最大值仍另判，RSWS 原图给 1 |"
+  },
+  {
+    "anchor": "\"还有别的用途/例外\"           → 该端最小值降为 0（如 0..1）",
+    "occurrences": 1,
+    "replacement": "\"还有本模型对手方以外的用途\"   → 核类范围后可说明最小0；最大值仍须另判"
+  },
+  {
+    "anchor": "**事件属性一定有日期**，资源和参与者属性一般没有。这是 REA \"以事件为中心、保留时间信息\"的直接体现——你在图上看到一个方框里有 `-date`，它八成是个事件。",
+    "occurrences": 1,
+    "replacement": "**事件通常需要日期/时间**，用于定位何时发生；这是讲义的 typically，不是“只凭有 date 就认定事件”的充分判据。具体日期也可描述资源或人员。Case 5 是给定属性归类题，其清单没有 Sale/CashReceipt 日期，不能自补字段冒充原题；实际系统设计可另提出补充时间字段。"
+  },
+  {
+    "anchor": "identifier(PK) + 该类型的标准属性（事件必带 date）",
+    "occurrences": 1,
+    "replacement": "identifier(PK) + 给定/所需属性；实际事件通常需时间，给定属性题不擅自补 date"
+  },
+  {
+    "anchor": "**为什么核心模型不画多重度、实例才画** | 反映\"模式（pattern）vs 实例（instance）\"的区别",
+    "occurrences": 1,
+    "replacement": "**通用骨架为什么暂未填属性/多重度** | p.11/p.21 未给具体约束；按具体业务完成的核心模型仍须填属性和多重度（六步法 Step 5–6）"
+  },
+  {
+    "anchor": "**真正查询步骤**：先筛至截止的Purchase；按采购分别聚合付款分配、认可credit，再左连回采购；无应用/贷项补0，逐张求差再按supplier归集。SQLite内存实际SQL如下，Access未运行。",
+    "occurrences": 1,
+    "replacement": "**从手算到查询（可选实现预览，笔记补充）**：当前建模/会计任务用上表即可完成，不要求先会 SQL。若要读下面实现，输入就是本例四张表，输出为截至 9/30 每张采购的取得额、已应用付款、认可贷项和未清金额；没有借用官方 RSWS 的未知交易。\n\n先认字段：编号是文本，dt 是 `YYYY-MM-DD` 日期文本，amt 是 HKD 金额。下表每行说明一张"
+  },
+  {
+    "anchor": "WITH paid AS (\n SELECT a.acq,SUM(a.amt) AS amt FROM Applied a JOIN CD c ON c.cd=a.cd\n WHERE c.dt<=:cutoff GROU",
+    "occurrences": 1,
+    "replacement": "WITH paid AS (\n SELECT ap.acq,SUM(ap.amt) AS amt FROM Applied ap JOIN CD cd ON cd.cd=ap.cd\n WHERE cd.dt<=:cutoff GROUP BY ap.acq\n), credit AS (\n SELECT acq,SUM(amt) AS amt FROM Ret"
+  },
+  {
+    "anchor": "WITH定义两个先聚合结果；GROUP BY acq使每采购最多一行；JOIN以键连接实际付款，LEFT JOIN保留仍未付采购，COALESCE按本例无业务匹配变0；参数cutoff为统一ISO文本日期。所有列及CTE",
+    "occurrences": 1,
+    "replacement": "为什么不能先把所有原始行一起连接再求和？另设一个纯演示变式：P1 有付款 10000、6000 两行，又有贷项 100、200 两行。只按 P1 连接会形成四对：10000×100、10000×200、6000×100、6000×200；每个付款和贷项都重复两次。应先各自合为付款 16000、贷项 300，各一行再连接，得 24000−16000−300=7"
+  },
+  {
+    "anchor": "**Step 1 — 经济交换事件（一对）**\n- `<<EconomicDecrement>> Service Delivery`",
+    "occurrences": 1,
+    "replacement": "**先声明本参考模型的补充假设**：题面未给员工岗位、审批和账户政策。以下只选一种设计：教练提供服务，财务人员处理扣款，每笔实际扣款只进一个银行账户；如果企业另要求经理批准退款，再加入 Manager 角色及批准关系，不是“提到退款就必有经理”。销售/前台角色、是否执行资金预留也须另有业务依据；本答案不把它们当唯一题意。\n\n**Step 1 — 经济交换事件"
+  },
+  {
+    "anchor": "- `<<InternalAgent>> Manager`（**批准**退款——别忘了 authorize 这个角色）",
+    "occurrences": 1,
+    "replacement": "- `<<InternalAgent>> Manager`（仅在上述“经理批准退款”的额外假设下加入；没有此政策时另按实际经办/授权角色）"
+  },
+  {
+    "anchor": "- Reservation2 → Cash Account",
+    "occurrences": 1,
+    "replacement": "- Reservation2 → Cash Account：可选的资金计划设计假设，题面未给，不据此认定现金已经冻结"
+  },
+  {
+    "anchor": "- `<<EconomicReversal>> Refund / Membership Cancellation`（7 天退会退款）",
+    "occurrences": 1,
+    "replacement": "- `Membership Cancellation`：取消尚未履行的承诺，另记状态；`<<EconomicReversal>> Refund`：实际现金退款，按本补充模型关联原收款"
+  },
+  {
+    "anchor": "- 每笔扣款一个账户 → Cash Account 端 = `1..1`",
+    "occurrences": 1,
+    "replacement": "- 在本答案额外声明“每笔扣款进一个账户”的假设下，Cash Account 端 = `1..1`；不能从“每月一次”独自推出账户唯一"
+  },
+  {
+    "anchor": "**5 处写 `<<Resource>>`，4 处写 `<<ResourceType>>`",
+    "occurrences": 1,
+    "replacement": "**表内 4 处写 `<<Resource>>`，RSWS 4 处写 `<<ResourceType>>`"
+  },
+  {
+    "anchor": "高亮图页（同一张全景图的 11 次高亮）",
+    "occurrences": 1,
+    "replacement": "高亮图页（p.22 全景之外的 10 页）"
+  },
+  {
+    "anchor": "**这 11 张\"全景图\"页的文字内容完全一样，差别只在颜色。**",
+    "occurrences": 1,
+    "replacement": "**这组全景页的大部分节点/关联文字重复，主要通过颜色高亮组织学习；p.30/p.36 等还有“未画某关联”的独有标注，页码也不同，不能将文字判成完全相同。**"
+  },
+  {
+    "anchor": "这 11 页**文字提取出来一模一样**，差别**只在颜色**",
+    "occurrences": 1,
+    "replacement": "这 11 页主体文字大量重复，颜色高亮与 p.30/p.36 等独有说明仍须逐页保留"
+  },
+  {
+    "anchor": "p.22, 24, 26, 28, 29, 30, 32, 33, 34, 36, 37 的文字提取结果**一字不差**（都是同一组 `<<...>>` 标签和关联名），差别**只在颜色**。",
+    "occurrences": 1,
+    "replacement": "p.22, 24, 26, 28, 29, 30, 32, 33, 34, 36, 37 的主体节点/关联文字大量重复，颜色高亮不同；p.30 的 Reciprocal not shown、p.36 的 Linkage not shown 等独有文字及页码也不同，不能按文字去重跳过。"
+  },
+  {
+    "anchor": "与 p.4 几乎逐字相同，但**多了一条 Custody**",
+    "occurrences": 1,
+    "replacement": "与 p.4 都包含三条次关联；本页把 Custody 的内部角色和独立记录条件说得更具体"
+  },
+  {
+    "anchor": "本讲 57 页**没有任何一页写了演讲者备注**（与 W1–W4、W6 一致；本课六份 pptx 共 379 页，一页备注都没有）。",
+    "occurrences": 1,
+    "replacement": "本次逐页检查 Week 5 的 57 页：41 页 notes XML 有页码占位，但没有实质演讲者备注。不能把“非空字段”当备注正文，也不以本次 Week 5 核查替其他五份课件重新认证。"
+  },
+  {
+    "anchor": "把这张表展开写就是满分答案。",
+    "occurrences": 1,
+    "replacement": "这张表可作为一种参考答题结构；实际得分仍取决于题目、论证和教师评分标准。"
+  },
+  {
+    "anchor": "口径上必须考核",
+    "occurrences": 1,
+    "replacement": "课程目标相关，不保证某个具体知识点出题"
+  },
+  {
+    "anchor": "考试可用的英文定义（优先讲义原句）：",
+    "occurrences": 40,
+    "replacement": "英文参考定义（笔记整理，沿用讲义术语，非统一逐字引文）："
+  },
+  {
+    "anchor": "2. **把 p.39–47 的事件定义提到 p.38 的全图之前讲**（本笔记 §2.12 在 §2.11 之后，但正文里先解释每个方框的含义再读图）。理由：讲义先甩一张有 14 个方框、21 条连线的大图，再花 9 ",
+    "occurrences": 1,
+    "replacement": "2. **在 p.38/p.48 全图前先列“泛型类→业务名称”的中文短释**，详细事件定义仍分别放在后续 §2.12/§2.14。不是已经把详细定义整体搬到图前；遇到不熟名称，可沿该短释及精确小节回看。"
+  },
+  {
+    "anchor": "REA 把交付方式建进模型，就是为了能回答这个问题；传统总账里只有一个入库日期。",
+    "occurrences": 1,
+    "replacement": "REA 可通过事件时间和业务条件追踪这个问题；真实传统系统的凭证/业务明细也能分别保存日期，不能说它必然只有一个入库日期。"
+  },
+  {
+    "anchor": "所有权在交货那一刻转移，**时点明确**",
+    "occurrences": 1,
+    "replacement": "若合同规定当面交付即转移所有权，才采用该时点；不能只凭当面交货保证"
+  },
+  {
+    "anchor": "所有权在**哪一刻**转移取决于合同条款（FOB 起运地 / FOB 目的地），**时点可能不是收货那天**",
+    "occurrences": 1,
+    "replacement": "所有权转移依已知合同/业务条件，不能只凭发货或收货日期补定；本讲未给具体运输条款"
+  },
+  {
+    "anchor": "（🔗 FOB 条款属于会计常识，本课讲义未展开，2026-09-09）",
+    "occurrences": 1,
+    "replacement": "（💡 这是说明为何需要明确权利转移条件的笔记补充；本讲未给具体运输条款，不据此判断某个真实合同。）"
+  },
+  {
+    "anchor": "**在途**：网店发一份电子游戏 —— 所有权在运输途中的某一刻转移",
+    "occurrences": 1,
+    "replacement": "**在途**：网店寄送一份电子游戏产品；须依题面合同判断货权时点，不能由“已发货”自动推出转移"
+  },
+  {
+    "anchor": "而采购员的工作在下 PO 时就结束了，收货是另一个人的事。",
+    "occurrences": 1,
+    "replacement": "而该图将下单与收货分给不同角色。这个可能解释属于笔记补充，不表示所有企业采购员的工作都在下 PO 后结束。"
+  },
+  {
+    "anchor": "业务上讲得通（销售员要按成交额提成，采购员的活在下 PO 时就完了），但**讲义完全没有解释**，读者会以为其中一张漏画了。",
+    "occurrences": 1,
+    "replacement": "一种可能解释是该图按成交归属与下单/收货分工设置角色；这不是讲义给出的理由或所有企业的事实。保留原图差别，不强行补边，也不把“未解释”当作已证实的漏画。"
+  },
+  {
+    "anchor": "`资产 = 负债 + 权益`",
+    "occurrences": 1,
+    "replacement": "$\\text{资产}=\\text{负债}+\\text{权益}$"
+  },
+  {
+    "anchor": "`+40,000 = +40,000 + 0`",
+    "occurrences": 2,
+    "replacement": "$+40{,}000=+40{,}000+0$"
+  },
+  {
+    "anchor": "`Assets = Liabilities + Equity`",
+    "occurrences": 1,
+    "replacement": "$Assets=Liabilities+Equity$"
+  },
+  {
+    "anchor": "| ① 9/30 赊购单簧管 HK\\$40,000 | **+40,000**（存货） | **+40,000**（应付账款） | 0 |",
+    "occurrences": 1,
+    "replacement": "| ① 9/30 赊购单簧管 HK\\$40,000 | **+40,000**（存货） | **+40,000**（应付账款） | +0 |"
+  },
+  {
+    "anchor": "| **本笔累计变化** | **+40,000** | **+40,000** | **0** |",
+    "occurrences": 2,
+    "replacement": "| **本笔累计变化** | **+40,000** | **+40,000** | **+0** |"
+  },
+  {
+    "anchor": "| ① 9/30 赊购单簧管 5 支 @ 8,000 | **+40,000** | **+40,000** | **0** |",
+    "occurrences": 1,
+    "replacement": "| ① 9/30 赊购单簧管 5 支 @ 8,000 | **+40,000** | **+40,000** | **+0** |"
+  },
+  {
+    "anchor": "因为 duality **就是复式记账的\"借贷相等\"在 REA 里的对应物**（M04 已论证）。",
+    "occurrences": 1,
+    "replacement": "Duality 保存经济交换两端的事件联系，可与复式记账记录同一业务的金额影响作对照；它不等于一条“借贷相等”的金额约束。"
+  },
+  {
+    "anchor": "现实里几乎总是多对多。",
+    "occurrences": 1,
+    "replacement": "是否一对一或多对多仍按具体业务，不作所有现实企业的频率断言。"
+  },
+  {
+    "anchor": "**REA 的关联属性 = 单据的明细行。**",
+    "occurrences": 1,
+    "replacement": "单据明细是关联属性的一种例子；付款×采购分配同样描述组合，不要求一定存在一张叫明细单的纸。"
+  },
+  {
+    "anchor": "- 连线两端的**多重度**（`0..*`、`1..1`）→ 将来数据库的**完整性约束**：允不允许空、能不能重复",
+    "occurrences": 1,
+    "replacement": "- 连线两端的**多重度**（`0..*`、`1..1`）→ 记录关联数量的业务约束，部分可用外键非空/唯一性表达，不能只靠这两种约束实现全部最小参与。\n\n例如 Customer 每行有一个非空 Salesperson 外键，能保证每客户指向一位存在的销售员；仍可插入一个尚无客户的 Salesperson。若题目规定每个已登记销售员至少一客户，须另作业务校验"
+  },
+  {
+    "anchor": "SQLite 实际运行与结果另留核对记录，Access 未运行。",
+    "occurrences": 1,
+    "replacement": "SQLite 实际运行与结果另留核对记录，Access 未运行。本简化数据中，Applied 与相应付款在 CD.dt 同日生效，且没有事后重分配。因此本例可按付款日期筛应用；若 9/20 预付、10/2 才应用某采购，一般历史查询须另存并筛 Applied 的应用生效日，不能在 9/30 因付款已发生就提前扣 AP。前面的“预付 2000 但未应用”变式没"
+  },
+  {
+    "anchor": "**⚠️ 三个必须注意的点**",
+    "occurrences": 1,
+    "replacement": "**英文参考作答（笔记自拟，对应原图九条关系/十八端点）**\n\n1. Stockflow1: A Purchase may involve zero or many Inventory Types; an Inventory Type may appear in zero or many Purchases.\n2. Stockflow2: A Purchas"
+  },
+  {
+    "anchor": "**可编辑模型图**",
+    "occurrences": 1,
+    "replacement": "**英文属性归属参考（笔记自拟，不增添原题未给的日期）**\n\n1. SurfboardInventory contains Surfboard# as its primary key, Surfboard description and Surfboard Sell-price.\n2. CashAccount contains Cash Account# a"
+  },
+  {
+    "scope": "E2/E3/E4",
+    "action": "9RSWS bilingualrelationanswers;7Case5attribute+8relationanswers;8concept+3caseEnglishresponses"
+  },
+  {
+    "anchor": "（🔗 依据术语与例题的高度吻合推断，2026-09-09）",
+    "occurrences": 1,
+    "replacement": "（💡 2026-09-09 的笔记推断线索；未取得该书原文对照，不确认它就是讲义底本，也不将该推断作为本次事实依据。）"
+  },
+  {
+    "anchor": "在真实的上市公司财报里，backlog 是一个**在附注或 MD&A 里披露、但不在四张报表里**的指标（因为它不满足收入确认原则，见 [[M01-会计与商业#2.6.3 四大原则（讲义 p.32–33 + Accoun",
+    "occurrences": 1,
+    "replacement": "本篇用 backlog 指尚未履行的订单余量；实际公司可能在 MD&A 或附注按各自口径披露，但此处未回源任何真实公司的定义或数据。它不等于已确认收入，也不保证将来现金；本次可执行的数量例以 §2.10 的明确假设为准。"
+  },
+  {
+    "anchor": "updated: 2026-10-25",
+    "occurrences": 1,
+    "replacement": "updated: 2026-10-26"
+  },
+  {
+    "anchor": "readability_review: pending",
+    "occurrences": 1,
+    "replacement": "readability_review: _meta/vault-notes-review-20261023/ac6761-m05-full/review.json\nteaching_standard: novice-v1"
+  }
+]

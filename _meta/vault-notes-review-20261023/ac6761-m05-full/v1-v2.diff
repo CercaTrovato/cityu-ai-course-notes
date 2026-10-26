@@ -1,0 +1,120 @@
+--- v1
++++ v2
+@@ -79,9 +79,9 @@
+ | 交易分析 · 🔴 三列答题格式 | 三列 `Assets / Liabilities / Equity`，**每个数字必须带 + 或 −** | [[M01-会计与商业#2.8.3 🔴 教授规定的答题格式（本讲最重要的应试信息）\|M01 §2.8.3]] |
+ | 应付账款 / 赊购 | 已买入但还没付钱；`on account` = **不涉及现金** | [[M01-会计与商业#2.7.3 负债（讲义 p.40）\|M01 §2.7.3]] |
+ | 复式记账、借与贷 | 每笔交易借贷金额相等；借 = 左、贷 = 右 | [[M02-交易的会计处理#2.4.2 复式记账系统（讲义 p.15–16）\|M02 §2.4.2]] |
+-| 货币计量假设 | 本讲金额分录以货币计量；数量、人员等可另存凭证/辅助系统。REA 把这些业务对象显式关联 | [[M01-会计与商业#2.6.4 四大假设（讲义 p.34–35）\|M01 §2.6.4]] |
++| 货币计量假设 | 金额分录以货币计量；REA 显式关联资源/事件/角色，业务明细亦可另存于真实系统 | [[M01-会计与商业#2.6.4 四大假设（讲义 p.34–35）\|M01 §2.6.4]] |
+ | 存货 / 销货成本 | 待售的商品；卖出时结转为成本 | [[M03-年报分析]] |
+-| REA 模型的动机 | 本讲简化分录不直接列人员/设备/业务关系；真实凭证、辅助账或 ERP 可以保存。REA 将其纳入显式事件关系 | [[M04-REA会计模型]] |
++| REA 模型的动机 | 简化分录未列全部业务关系，不等于真实系统不能保存；REA 将对象与事件显式关联 | [[M04-REA会计模型]] |
+ | 资源 / 事件 / 参与者（REA 三要素） | 事件回答 what/when/where，资源回答 what，参与者回答 who | [[M04-REA会计模型]] |
+ | 二元性 duality | REA 的核心：一对事件，一个"给出"、一个"得到" | [[M04-REA会计模型]] |
+ | 概念模型 / 逻辑模型 / 物理模型 | 三层建模：先画概念图（UML），再转成关系表，最后落成真实数据库 | [[M04-REA会计模型]] |
+@@ -1755,7 +1755,7 @@
+ |---|---|---|
+ | 1 | "**能不能先有档案、后有交易？**" | 所有**事件端**的最小值 |
+ | 2 | "**钱从哪个口袋出？**" | Stockflow3 的资源端 |
+-| 3 | "**钱货可不可以不同步？是否有采购外付款？**" | Duality 两端；Participation3 还须原图及 Supplier 类范围 |
++| 3 | "**钱货是否同步及有无采购外付款**" | Duality 两端；Participation3 还须原图及 Supplier 类范围 |
+ | 4 | "**一件事几个人签字？**" | 内部参与者端 |
+ 
+ > 🟡 **答题框架（可直接套用）**：见 [[#6.3 答题框架|§6.3 框架 B]]。
+@@ -3488,12 +3488,36 @@
+ 
+ 先认字段：编号是文本，dt 是 `YYYY-MM-DD` 日期文本，amt 是 HKD 金额。下表每行说明一张输入表及本例的全部记录；括号内各值依列顺序排列。
+ 
+-| 表与列顺序 | 本例记录 |
+-|---|---|
+-| Purchase(acq, dt, amt) | (P1, 2026-09-20, 24000)；(P2, 2026-09-22, 16000) |
+-| CD(cd, dt, amt) | (C1, 2026-09-23, 10000)；(C2, 2026-09-25, 15000)；(U1, 2026-09-26, 1000)；(C3, 2026-10-02, 3000) |
+-| Applied(acq, cd, amt) | (P1, C1, 10000)；(P1, C2, 6000)；(P2, C2, 9000)；(P1, C3, 3000) |
+-| ReturnCredit(acq, dt, amt) | (P2, 2026-09-30, 2000) |
++**Purchase：一行是一笔取得；金额单位 HKD。**
++
++| acq | dt | amt |
++|---|---|---:|
++| P1 | 2026-09-20 | 24000 |
++| P2 | 2026-09-22 | 16000 |
++
++**CD：一行是一笔付款，含不应用采购的 U1 和截止后的 C3。**
++
++| cd | dt | amt |
++|---|---|---:|
++| C1 | 2026-09-23 | 10000 |
++| C2 | 2026-09-25 | 15000 |
++| U1 | 2026-09-26 | 1000 |
++| C3 | 2026-10-02 | 3000 |
++
++**Applied：一行是一对采购/付款及应用金额，同笔 C2 可分成两行。**
++
++| acq | cd | amt |
++|---|---|---:|
++| P1 | C1 | 10000 |
++| P1 | C2 | 6000 |
++| P2 | C2 | 9000 |
++| P1 | C3 | 3000 |
++
++**ReturnCredit：一行是已生效的供应商认可贷项，不能用未确认的实物退回替代。**
++
++| acq | dt | amt |
++|---|---|---:|
++| P2 | 2026-09-30 | 2000 |
+ 
+ acq 是采购编号，cd 是付款编号；Applied 一行只说“这笔付款对这张采购应用多少”。U1 没有 Applied 行，因而不会冲采购应付。`:cutoff` 是执行时提供的截止值，本次为 `2026-09-30`；ISO 日期格式固定后可按同格式文本先后比较，不能混入 `9/2/26`。
+ 
+@@ -3506,7 +3530,13 @@
+ 
+ 然后把中间结果接回两张采购。`LEFT JOIN` 的“左”是保留全部 Purchase，即使尚未付款也不丢采购；`ON` 说明用相同采购编号配对。没有匹配行产生 NULL（缺值），本例确认没有该业务记录后，`COALESCE(...,0)` 才把它按 0 处理；不能把未知的缺失原件也填 0。结果为 P1：24000−16000−0=8000，P2：16000−9000−2000=5000。
+ 
+-下面 `WITH` 为两个中间结果命名；`GROUP BY acq` 将同一采购的分配合成一行；`SELECT` 选择输出列。`p`、`pa`、`cr` 分别是 Purchase、paid、credit 的短别名，例如 `p.amt` 是采购金额。paid 内的 `ap`、`cd` 仅是 Applied 和 CD 的别名，用 `ap.cd=cd.cd` 找到每笔分配对应的付款日期。SQLite 实际运行与结果另留核对记录，Access 未运行。本简化数据中，Applied 与相应付款在 CD.dt 同日生效，且没有事后重分配。因此本例可按付款日期筛应用；若 9/20 预付、10/2 才应用某采购，一般历史查询须另存并筛 Applied 的应用生效日，不能在 9/30 因付款已发生就提前扣 AP。前面的“预付 2000 但未应用”变式没有新增 Applied 行，故 AP 不变。
++下面 `WITH` 为两个中间结果命名；`GROUP BY acq` 将同一采购的分配合成一行；`SELECT` 选择输出列。
++
++`p`、`pa`、`cr` 分别是 Purchase、paid、credit 的短别名，例如 `p.amt` 是采购金额。paid 内的 `ap`、`cd` 仅是 Applied 和 CD 的别名，用 `ap.cd=cd.cd` 找到每笔分配对应的付款日期。SQLite 实际运行与结果另留核对记录，Access 未运行。
++
++本简化数据中，Applied 与相应付款在 CD.dt 同日生效，且没有事后重分配。因此本例可按付款日期筛应用。
++
++若 9/20 预付、10/2 才应用某采购，一般历史查询须另存并筛 Applied 的应用生效日，不能在 9/30 因付款已发生就提前扣 AP。前面的“预付 2000 但未应用”变式没有新增 Applied 行，故 AP 不变。
+ 
+ ```sql
+ WITH paid AS (
+@@ -4173,7 +4203,7 @@
+ 
+ 这些是特定销售场景的通常端点。Resource 是否唯一编号不能独自决定其所有关联上限；允许退回再售或多次租用时，须重新定义相应关联/履历，不能套“一生一次”。
+ 
+-英文参考答案（笔记自拟）：The distinction is whether individual instances are interchangeable. A type groups interchangeable units, while an individually identified resource preserves its identity. A zero-or-one Sale limit applies only to the stated no-resale association; the same resource can participate in a separate Purchase association, and changed return/rental rules require a new multiplicity decision.
++英文参考答案（笔记自拟）：The distinction is whether individual instances are interchangeable. A type groups interchangeable units and may appear in zero or many Sales in the stated sales model. An individually identified resource preserves its identity; its no-resale Sale association permits zero or one Sale. A zero-or-one Sale limit applies only to the stated no-resale association; the same resource can participate in a separate Purchase association, and changed return/rental rules require a new multiplicity decision.
+ 
+ </details>
+ 
+@@ -4404,7 +4434,19 @@
+ 
+ **评分要点**：能否识别出「试课 = 起因事件」「合同 = 承诺事件」「退款冲的是增量不是减量」这三点。
+ 
+-英文参考答案（笔记自拟）：One reference design uses ServiceDelivery and CashReceipt linked by Duality, ServiceType and CashAccount linked by Stockflow, and Member plus the declared internal roles linked by Participation. TrialClass initiates the process and proposes a ServiceType; MembershipContract records the mutual commitment, with Fulfillment to actual service and actual receipts. Its future twelve payments require a schedule, not twelve existing receipts. Cancellation changes unperformed commitments; an actual Refund records cash leaving and refers to the relevant receipt. Trainer, finance staff, any approving manager, a single account per receipt and optional funds planning are declared design assumptions. Attributes identify each event and the relevant service/receipt allocation; multiplicities follow the narrative and explicit assumptions, not an invented universal staffing policy.
++英文参考答案（笔记自拟）：
++
++Step 1–2: Use ServiceDelivery and CashReceipt as economic events linked by Duality. Stockflow links ServiceDelivery to MembershipServiceType and CashReceipt to CashAccount.
++
++Step 3–4: Participation links the events to Member and to the declared Trainer or finance role. Include a Manager approval role only under the explicitly added refund-approval policy; the narrative does not uniquely specify these employees.
++
++Expanded events and associations: TrialClass is an instigation event. Proposition links TrialClass to MembershipServiceType, and Fulfillment1 links TrialClass to MembershipContract. Fulfillment2 links MembershipContract to actual ServiceDelivery; Fulfillment3 links it to actual CashReceipt. Reservation1 links the contract to MembershipServiceType. Reservation2 to CashAccount is an optional, declared funds-planning assumption, not evidence that cash is already locked.
++
++Separate MembershipCancellation, which changes unperformed commitments, from an actual Refund. Reversal links Refund to the relevant CashReceipt, and Stockflow links Refund to CashAccount to represent cash leaving. Participation records the Member and actual processing/approval roles; cancelling future service does not automatically reverse service already delivered.
++
++Step 5: Identify ServiceDelivery by an ID and record its date and duration; identify CashReceipt by an ID and record date and amount. The service–receipt applied amount belongs to Duality, and sessions-used describes the service-resource pair. Two-way many-to-many limits require both business directions; a monthly schedule alone does not establish them.
++
++Step 6: A trial may lead to no contract, so the Contract-end minimum is zero. A contract may currently have no receipts despite its twelve planned instalments, so the Receipt-end minimum can be zero in the stated lifecycle scope. Under the added single-account assumption, each receipt uses exactly one CashAccount. Refund occurrence is optional, so the refund-end minimum of Reversal is zero; other endpoints still require the narrative and declared assumptions.
+ 
+ </details>
+ 
+@@ -4655,7 +4697,7 @@
+ 
+ 一种可能解释是该图按成交归属与下单/收货分工设置角色；这不是讲义给出的理由或所有企业的事实。保留原图差别，不强行补边，也不把“未解释”当作已证实的漏画。
+ 
+-**⑩ 11 张"全景图 + 高亮"幻灯片的文本层完全相同**
++**⑩ 11 张全景页的主体重复，但独有标注不能省略**
+ 
+ p.22, 24, 26, 28, 29, 30, 32, 33, 34, 36, 37 的主体节点/关联文字大量重复，颜色高亮不同；p.30 的 Reciprocal not shown、p.36 的 Linkage not shown 等独有文字及页码也不同，不能按文字去重跳过。
+ 

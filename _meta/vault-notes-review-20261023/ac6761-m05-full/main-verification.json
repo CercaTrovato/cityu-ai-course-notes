@@ -1,0 +1,164 @@
+{
+  "candidate_sha256": "95165dde3e1fa7cb3edd7c14a1ab710a97bd901a2df057749ce3cbde00f19a35",
+  "source_snapshot": "source-inventory.json",
+  "inherited_source_hashes_rechecked": true,
+  "unchanged_original_case5": true,
+  "unchanged_source_quotes": 158,
+  "unchanged_mermaid_blocks": 19,
+  "unchanged_svg_assets": [
+    {
+      "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-rsws/rsws-overview.svg",
+      "sha256": "e82ae8ff6fb74dbda6477d57d943475b1b6c8c290e6d77ca4a3d481673e40470"
+    },
+    {
+      "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-rsws/rsws-full.svg",
+      "sha256": "c963f2e5b15383b40ed0af8e74a520604cc55ef1ef0b66a9024b60fd334c27a9"
+    },
+    {
+      "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/case5-classroom/case5-overview.svg",
+      "sha256": "d89bce66bec9ebb9d9cbf5fc79a86cff03a90970e7c3a61c0b2c1ad29f1b0485"
+    },
+    {
+      "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/case5-classroom/case5-full.svg",
+      "sha256": "ce748d5a51c948dd640131327cc5e2047f86917a190af052d4f8e9980f5cdefb"
+    }
+  ],
+  "actual_new_execution": {
+    "engine": "SQLite 3.49.1",
+    "database": ":memory:",
+    "query_exact_from_candidate": true,
+    "query": "WITH paid AS (\n SELECT ap.acq,SUM(ap.amt) AS amt FROM Applied ap JOIN CD cd ON cd.cd=ap.cd\n WHERE cd.dt<=:cutoff GROUP BY ap.acq\n), credit AS (\n SELECT acq,SUM(amt) AS amt FROM ReturnCredit\n WHERE dt<=:cutoff GROUP BY acq\n)\nSELECT p.acq,p.amt,COALESCE(pa.amt,0) AS paid,\n COALESCE(cr.amt,0) AS credit,\n p.amt-COALESCE(pa.amt,0)-COALESCE(cr.amt,0) AS balance\nFROM Purchase p LEFT JOIN paid pa ON pa.acq=p.acq\nLEFT JOIN credit cr ON cr.acq=p.acq WHERE p.dt<=:cutoff;\n",
+    "Purchase": [
+      [
+        "P1",
+        "2026-09-20",
+        24000
+      ],
+      [
+        "P2",
+        "2026-09-22",
+        16000
+      ]
+    ],
+    "CD": [
+      [
+        "C1",
+        "2026-09-23",
+        10000
+      ],
+      [
+        "C2",
+        "2026-09-25",
+        15000
+      ],
+      [
+        "U1",
+        "2026-09-26",
+        1000
+      ],
+      [
+        "C3",
+        "2026-10-02",
+        3000
+      ]
+    ],
+    "Applied": [
+      [
+        "P1",
+        "C1",
+        10000
+      ],
+      [
+        "P1",
+        "C2",
+        6000
+      ],
+      [
+        "P2",
+        "C2",
+        9000
+      ],
+      [
+        "P1",
+        "C3",
+        3000
+      ]
+    ],
+    "ReturnCredit": [
+      [
+        "P2",
+        "2026-09-30",
+        2000
+      ]
+    ],
+    "results": {
+      "2026-09-22": [
+        [
+          "P1",
+          24000,
+          0,
+          0,
+          24000
+        ],
+        [
+          "P2",
+          16000,
+          0,
+          0,
+          16000
+        ]
+      ],
+      "2026-09-30": [
+        [
+          "P1",
+          24000,
+          16000,
+          0,
+          8000
+        ],
+        [
+          "P2",
+          16000,
+          9000,
+          2000,
+          5000
+        ]
+      ],
+      "2026-10-02": [
+        [
+          "P1",
+          24000,
+          19000,
+          0,
+          5000
+        ],
+        [
+          "P2",
+          16000,
+          9000,
+          2000,
+          5000
+        ]
+      ]
+    },
+    "cash_20260930": 24000,
+    "cash_20261002": 21000,
+    "fanout_correct": 7700,
+    "fanout_wrong": -8600,
+    "Access_run": false,
+    "timing_assumption": "each Applied effective same date as related CD;no subsequent reallocation;generally need separate applicationeffective date"
+  },
+  "inherited_unmodified_calculation_evidence": [
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-depth-20260930\\ac-m05-source-audit\\recompute-results.json",
+      "sha256": "d7aa281ca03fc78063119090f2815f022b768626df28fabd22b144d3eeb050b0",
+      "scope": "true historical execution for unchanged source18endpoints/hand AP/state/quantityvariants;not a new rerun"
+    },
+    {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-audio-batch-20261025\\m05\\calculation-check.json",
+      "sha256": "18af7414ad2d3e833cb5c767a32b01c1d7beb920d396918b655d0e5c3c455dbf",
+      "scope": "true historical execution for unchanged source18endpoints/hand AP/state/quantityvariants;not a new rerun"
+    }
+  ],
+  "teaching": "machine does not certify learning"
+}
