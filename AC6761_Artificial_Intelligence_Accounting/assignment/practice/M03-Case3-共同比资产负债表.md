@@ -12,8 +12,10 @@ status: draft
 learning_status: detailed-analysis-complete
 official_solution: checked
 administrative_status: pending
-review_method: 2026-10-02-simplified
-updated: 2026-10-07
+review_method: full-independent-gpt61-20261026
+updated: 2026-10-26
+readability_rules: v2
+teaching_standard: novice-v1
 prerequisites: [资产负债表, 百分比]
 new_concepts: [共同比分析, 舍入差异, 总负债与借款口径, 减值敏感性]
 tags: [AC6761, Case3, 共同比, 私有练习]
@@ -39,19 +41,72 @@ tags: [AC6761, Case3, 共同比, 私有练习]
 
 **来源层次**：§1 的题意及 §4 结果来自两张照片与老师后来发布的 `Case 3 with solution.docx`；官方解答在 Canvas 预览第 3–4 页。逐行结果已复算并与官方两张表核对。讲解、Excel 操作、额外比率和假设情景是 **💡 笔记补充**，不冒称老师布置或课堂确认。
 
-**任务状态**：2026-09-30 已检查 Canvas Files、Announcements、Assignments、Modules。Files 有官方带解答文件；Assignments 和 Modules 被课程禁用；三条公告为小组／考试、停课与补课，未见 Case 3 单独的提交或截止说明。暂归私有课堂练习，**是否计分、是否交给老师、截止及格式仍未明示**，不能据此写“已提交”或保证一个提交格式。
+**任务状态（历史核查）**：2026-09-30 已检查 Canvas Files、Announcements、Assignments、Modules。Files 有官方带解答文件；Assignments 和 Modules 被课程禁用；三条公告为小组／考试、停课与补课，未见 Case 3 单独的提交或截止说明。本轮未重新实时核查 Canvas。现归课堂练习，按现行公开规则可发布；**是否计分、是否交给老师、截止及格式仍未明示**，不能据此写“已提交”或保证一个提交格式。
 
 这份文件按知识归属放在 M03，并不推断它一定是在第三周发放。收件／处理日期是 2026-09-30，报表日则是 2025-12-31，两者不同。
 
 ## 1. 先把题目翻成人话
 
+### 1.0 完整英文原题（官方 DOCX）
+
+下面保留老师文件的完整背景、原金额表及 Required，便于与中文解释逐句对照。DOCX 的背景比照片更详细；此处采用 DOCX 原文，分组、金额与单位不改。长题可展开查阅。
+
+<details><summary>英文原题全文与两公司原金额</summary>
+
+Common Size Analyses
+
+You are an equity analyst comparing two listed companies at the end of their most recent financial year (31 December 2025):
+
+CloudSoft Ltd is a software-as-a-service (SaaS) company that develops and sells cloud-based enterprise software. It has relatively few physical assets, invests heavily in R&D and acquisitions of other tech firms, and finances growth mainly through equity and retained earnings.
+
+SteelForge Ltd is a heavy industrial manufacturer of steel products and machinery. It requires large investments in factories, equipment and inventory, and traditionally uses a higher proportion of debt financing.
+
+Both companies report under the same accounting standards. You have been given their simplified consolidated balance sheets below (all figures in HK$ million).
+
+Simplified Balance Sheets as at 31 December 2025
+
+| Item | CloudSoft | SteelForge |
+|---|---:|---:|
+| Assets |  |  |
+| Cash and cash equivalents | 1,800 | 450 |
+| Accounts receivable | 1,200 | 1,350 |
+| Inventories | 150 | 2,700 |
+| Other current assets | 350 | 300 |
+| Total current assets | 3,500 | 4,800 |
+| Property, plant and equipment (net) | 800 | 9,600 |
+| Intangible assets (including goodwill) | 4,200 | 600 |
+| Long-term investments | 1,000 | 400 |
+| Other non-current assets | 500 | 600 |
+| Total non-current assets | 6,500 | 11,200 |
+| Total assets | 10,000 | 16,000 |
+|  |  |  |
+| Liabilities and Equity |  |  |
+| Accounts payable | 600 | 1,600 |
+| Short-term borrowings | 200 | 1,200 |
+| Other current liabilities | 700 | 800 |
+| Total current liabilities | 1,500 | 3,600 |
+| Long-term debt | 1,000 | 5,600 |
+| Other non-current liabilities | 500 | 800 |
+| Total non-current liabilities | 1,500 | 6,400 |
+| Share capital and share premium | 3,500 | 2,000 |
+| Retained earnings | 3,200 | 3,600 |
+| Other equity (including NCI) | 300 | 400 |
+| Total equity | 7,000 | 6,000 |
+| Total liabilities and equity | 10,000 | 16,000 |
+
+Required:
+
+Prepare common-size balance sheets for both companies. Convert every line item into a percentage of total assets. Round to one decimal place.
+
+</details>
+
 ### 1.1 你扮演谁，比较什么
 
-你是股票分析员，比较两家上市公司的合并资产负债表。**合并**是把母公司和受控制的子公司视作一个集团来报；集团内部往来通常要抵销，不能把集团内部同一笔资源重复算进规模。本题已经提供简化合并数，不需要你再做合并分录。
+你是股票分析员（equity analyst），比较两家上市公司的合并资产负债表（consolidated balance sheets）。合并（consolidated）是把母公司和受控制的子公司视作一个集团来报；集团内部往来通常要抵销，不能把集团内部同一笔资源重复算进规模。本题已经提供简化合并数，不需要你再做合并分录。
 
 CloudSoft 提供 SaaS（Software as a Service，软件即服务）：客户通过云端使用企业软件。照片只给行业；当前官方 DOCX 进一步说明它较少依赖实物资产、研发及收购投入较多，并主要靠权益和留存收益融资。SteelForge 制造钢材和机械，官方说明它需要工厂、设备及存货，并较多依赖债务融资。这些背景是题目给定事实，不是从公司名字猜出来的。
 
-两家公司遵守同一会计准则，但题目没有指明是 IFRS、HKFRS 还是其他准则。相同准则提高比较基础，仍不代表资产结构、具体估计和经营风险相同。
+两家公司遵守同一会计准则（accounting standards），但题目没有指明具体准则名称。相同准则提高比较基础，仍不代表资产结构、具体估计和经营风险相同。
 
 ### 1.2 老师真正要求的交付
 
@@ -122,12 +177,14 @@ $$
 
 ### 2.3 把每一类具体科目认识清楚
 
+下面每行是一类报表科目：第一列保留中英名称，第二列说明公司拥有或承担什么，第三列限制可以从该行推出的结论。例如，应收是客户欠公司，应付则是公司欠供应商，方向相反。
+
 | 术语（English） | 直白理解与本题读法 | 最容易误解的地方 |
 |---|---|---|
 | 现金及现金等价物（cash and cash equivalents） | 现金以及期限短、容易换成确定金额且价值风险很低的投资 | 不能把全部长期投资都当现金等价物 |
 | 应收账款（accounts receivable） | 客户已经欠公司的钱，通常来自先交货或服务后收款 | 确认应收不等于现金已到账，还要看坏账与账龄 |
 | 存货（inventories） | 为销售、生产或经营消耗持有的货品、原料等 | 比例高不自动等于积压；行业和周转速度要一起看 |
-| 物业、厂房及设备（PP&E, net） | 土地、厂房、机器等长期经营资产，题目给的是净账面额 | 净额不等于市场卖价，账龄及折旧政策也影响比例 |
+| 物业、厂房及设备（property, plant and equipment, PP&E, net） | 土地、厂房、机器等长期经营资产，题目给的是净账面额 | 净额不等于市场卖价，账龄及折旧政策也影响比例 |
 | 无形资产（intangible assets） | 没有实物形态的可确认资源，如某些软件、专利、权利 | 没实物不代表无价值，也不能把所有研发支出都确认成资产 |
 | 商誉（goodwill） | 收购中超出可辨认净资产的部分，和被收购业务整体收益能力有关 | 本题把它并在无形资产内，不能假设 4,200 全是商誉或全是研发 |
 | 长期投资（long-term investments） | 公司为较长期目的持有的投资 | 不能仅凭名称推断具体资产类别、收益或可变现金额 |
@@ -289,7 +346,11 @@ $$
 | **Total equity（权益合计）** | 70.0% | 37.5% |
 | **Total liabilities and equity（负债及权益总额）** | 100.0% | 100.0% |
 
-**Rounding note.** Totals are calculated from original amounts. Rounding may cause displayed components not to add exactly to totals.
+**英文参考作答（笔记自拟，数值按官方解答）**：
+
+> Table 1 presents the common-size balance sheets as at 31 December 2025. Each percentage is the line item's share of the same company's total assets: 10,000 million Hong Kong dollars for CloudSoft and 16,000 million Hong Kong dollars for SteelForge. The figures are rounded to one decimal place. For example, cash and cash equivalents represent 18.0% and 2.8% of total assets, respectively; the same reading applies to every row in the table. Totals are calculated from original amounts, so rounding may cause displayed components not to add exactly to totals.
+
+这段是完整表格的英文读法和口径说明：每行仍需保留表内的英文名称、两公司结果及百分比单位；它不替代表中任何一行。
 
 **用法**：这张表就是题目要求的计算答案。下面的行业解释和附录是理解与补充；若老师只收表，先保留这张完整表及精度说明，按老师指定格式交，不能未经核实就认定 Excel 是正式提交格式。
 
@@ -352,9 +413,29 @@ Excel 中一个格子叫单元格，`B7` 是 B 列第 7 行。`=Source!B7` 表�
 
 这个代码块是 **Excel 可输入的公式语法**，不是用代码块替代数学排版。它取“现金÷总资产”，内部结果为 0.18，单元格数字格式 `0.0%` 将其显示为 18.0%。**不要再乘 100 然后设置百分比格式**，否则会显示 1,800.0%。
 
-`$B$17` 中两处 `$` 固定列和行。将公式向下复制时，B7 会跟着变为 B8、B9，但分母仍是 B17。如果写 `=B7/B17` 而复制，后续分母会变成 B18，错把应付账款当总资产。SteelForge 在 `E7` 使用 `=D7/$D$17`。
+上述公式的两个美元符号分别固定 B 列和第 17 行。将公式向下复制时，B7 会跟着变为 B8、B9，但分母仍是 B17。如果写 `=B7/B17` 而复制，后续分母会变成 B18，错把应付账款当总资产。SteelForge 在 E7 使用下式，固定 D 列和第 17 行：
 
-比例公式保留未舍入值，单元格只展示一位小数。`Checks` 另用 `ROUND(比例*100,1)/100` 与官方显示值核对；`ROUND` 第二参数 1 是保留一位小数。这将“计算值”和“显示值”分开，避免后续比率被早期舍入影响。
+```excel
+=D7/$D$17
+```
+
+**第一次实际输入与向下复制（💡 Excel 操作补充）**：这份工作簿已经填有公式，以下供你在另存的练习副本重做，不改 `Source` 原金额。
+
+1. 打开计算表，点击底部 `Answer` 标签。点击左上方名称框（通常显示当前格地址），输入 `C7` 并按 Enter，选中 CloudSoft 现金百分比格。
+2. 输入上面的现金公式并按 Enter。初始可能显示 0.18，这是正确的内部比值。
+3. 在名称框输入 `C7:C29` 并按 Enter，选择第一格及下面 22 格。按 Ctrl+D 向下填充：每行分子随行变化，分母固定为总资产。
+4. 保持这片区域选中，按 Ctrl+1 打开“设置单元格格式”，在“数字”页选“百分比”，把小数位数设为 1，点“确定”。C7 应显示 18.0%，C29 为 100.0%。
+5. 同样在 E7 输入 SteelForge 公式，选择 E7:E29 按 Ctrl+D，再按相同步骤设百分比、一位小数。E7 应显示 2.8%，E29 为 100.0%。
+
+若界面语言不同，名称框、`Answer` 标签、单元格地址和快捷键仍是定位依据；格式窗口中的 Percentage 对应“百分比”。
+
+比例公式保留未舍入值，单元格只展示一位小数。`Checks` 另外计算用于比较的显示值；例如真实 D32 公式如下，不含未定义的“比例”占位名称：
+
+```excel
+=ROUND(Answer!C7*100,1)/100
+```
+
+它先从 Answer!C7 取 0.18，乘 100 得到 18，再由 ROUND 的第二参数 1 将它保留一位小数，最后除 100 回到可设百分比格式的 0.18。SteelForge 的 0.028125 同样先变成 2.8125，再舍入为 2.8，最后为 0.028；它只用于同官方展示值核对，不替换 Answer 的未舍入比值。这样后续比率仍用原值计算。
 
 ### 6.3 自己核一次，而不是看见 0 就相信
 
@@ -363,7 +444,7 @@ Excel 中一个格子叫单元格，`B7` 是 B 列第 7 行。`=Source!B7` 表�
 | 现象 | 常见原因 | 排查动作 |
 |---|---|---|
 | 现金显示 1,800.0% | 乘了 100 又使用百分比格式 | 内部比例保持 0.18，只设 `0.0%` |
-| 拖下来以后全部不对 | 分母没用绝对引用 | 核 `$B$17`／`$D$17` |
+| 拖下来以后全部不对 | 分母没用绝对引用 | 核各公司总资产格的列、行都已锁定 |
 | 所有公司共用 10,000 | 用错公司的总资产 | 逐列固定各自分母 |
 | 有 `#DIV/0!` | 总资产空白或零 | 回原始数据，不把错误格改成 0% |
 | 金额不再平衡 | 明细或报告合计改了、重复求和 | 用 Checks 对照 Source 的报告值，再核原件 |
@@ -375,7 +456,7 @@ Excel 中一个格子叫单元格，`B7` 是 B 列第 7 行。`=Source!B7` 表�
 
 ### 7.1 Table A1：短期偿债及融资口径
 
-先问“短期义务由哪些资源覆盖”，再算比率。流动比率把全部流动资产除以流动负债。严格口径速动比率这里只取现金和应收：未知的其他流动资产可能含预付款，资料不足时不直接算成可立即偿债资源。现金比率则只取现金。**速动比率存在不同口径；此处已定义，不将一种口径冒充唯一标准。**
+先问“短期义务由哪些资源覆盖”，再算比率。流动比率（current ratio）把全部流动资产除以流动负债。本例严格口径速动比率（quick ratio）这里只取现金和应收：未知的其他流动资产可能含预付款，资料不足时不直接算成可立即偿债资源。现金比率（cash ratio）则只取现金。**速动比率存在不同口径；此处已定义，不将一种口径冒充唯一标准。**
 
 $$
 \text{流动比率}=\frac{\text{流动资产}}{\text{流动负债}},\qquad
@@ -387,12 +468,16 @@ $$
 | 流动比率 | 2.333 | 1.333 | 倍，原金额计算 |
 | 严格口径速动比率 | 2.000 | 0.500 | 倍，只计现金与应收 |
 | 现金比率 | 1.200 | 0.125 | 倍，现金／流动负债 |
-| 净营运资本 | 2,000 | 1,200 | 百万港元，流动资产－流动负债 |
+| 净营运资本（net working capital） | 2,000 | 1,200 | 百万港元，流动资产－流动负债 |
 | 全部负债／资产 | 30.0% | 62.5% | 所有负债，不只借款 |
 | 明确列示借款／资产 | 12.0% | 42.5% | 短期 borrowings + long-term debt |
 | 全部负债／权益 | 0.429 | 1.667 | 倍，不把它叫另一口径的借款权益比 |
 
-代入核对：CloudSoft 流动比率 $3{,}500/1{,}500=2.333$，严格速动 $3{,}000/1{,}500=2.000$；SteelForge 是 $4{,}800/3{,}600=1.333$ 和 $1{,}800/3{,}600=0.500$。现金比率则分别由 $1{,}800/1{,}500$ 和 $450/3{,}600$ 得到。
+代入核对（展示三位小数，计算保留原值）：
+
+- CloudSoft 流动比率为 $3{,}500/1{,}500\approx2.333$；严格速动为 $3{,}000/1{,}500=2.000$。
+- SteelForge 流动比率为 $4{,}800/3{,}600\approx1.333$；严格速动为 $1{,}800/3{,}600=0.500$。
+- CloudSoft 现金比率为 $1{,}800/1{,}500=1.200$；SteelForge 为 $450/3{,}600=0.125$。
 
 所以，钢铁公司的流动比率超过 1，并不代表现金或快速可变现资源同样足够；差异很大一部分来自存货。是否真正吃紧还要看收款与付款时间、存货销量、可用授信、受限现金及长期融资。比率是检查线索，不是确定结论。
 
@@ -400,11 +485,18 @@ $$
 
 Excel 中将资产合并成互不重叠的四组：流动资产、PP&E、无形资产及商誉、其余非流动资产。分别按原金额画图，而不是把流动资产合计与它的现金明细重复画成可相加的组。
 
+**最后一组的标签要特别读清**：Excel 的 Table A2 与 Figure A1 写 `Other non-current assets`，这里指“其余非流动资产分组”，合并了长期投资和原表的其他非流动资产，不是 Table 1 中那个同名的单独项目。
+
+- CloudSoft 分组为 $(1{,}000+500)/10{,}000=15.0\%$；原表单独的其他非流动资产仍为 5.0%。
+- SteelForge 分组为 $(400+600)/16{,}000=6.25\%$，一位小数显示 6.3%；原表单独项目仍显示 3.8%。
+
+图的分组没有改变原表金额或百分比；用原表核图时，应先按上述方式合并。
+
 CloudSoft 主线是无形资产及商誉 **42.0%**、流动资产 **35.0%**；SteelForge 主线是 PP&E **60.0%**。图上纵轴是占总资产比例，两种颜色分别表示两家公司；柱子高是相对占比，不是金额或利润。这个图辅助解释 Table 1，不能替代完整表。
 
 ### 7.3 Table A3：资产减值，为什么现金比例可能“变好”
 
-💡 **明确假设**：两家公司无形资产及商誉的合并账面金额各下调 20.0%；无现金支付，负债不变，暂忽略税与 NCI 分配，在集团层面权益承受相同账面损失。20.0% 是教学压力测试输入，不是判断真实减值、也不是老师要求的预测。两家公司采用何种具体准则未指名。
+💡 **明确假设**：减值（impairment）在本情景里指下调账面金额。两家公司无形资产及商誉的合并账面金额各下调 20.0%；无现金支付，负债不变，暂忽略税与 NCI 分配，在集团层面权益承受相同账面损失。20.0% 是教学压力测试输入，不是判断真实减值、也不是老师要求的预测。两家公司采用何种具体准则未指名。
 
 设损失为 $D$，比例为 $s$，无形资产账面额为 $I$。本情景中
 
@@ -412,7 +504,7 @@ $$
 D=sI,\qquad A'=A-D,\qquad L'=L,\qquad E'=E-D.
 $$
 
-撇号表示假设后的数值；$A,L,E$ 与 §2 相同，全部金额为百万港元。资产和权益同额下降，所以 $A'-L'-E'=0$ 仍成立。这里是对账面变化的教学简化，不直接指定每一项减值的会计分录或判断某个 CGU 的真实可收回金额。
+撇号表示假设后的数值；$A,L,E$ 与 §2 相同，全部金额为百万港元。资产和权益同额下降，所以 $A'-L'-E'=0$ 仍成立。这里是对账面变化的教学简化，不直接指定每一项减值的会计分录或判断某个现金产生单位（cash-generating unit, CGU，即产生相对独立现金流入的最小资产组）的真实可收回金额。
 
 | Table A3 · 假设后的项目 | CloudSoft | SteelForge |
 |---|---:|---:|
@@ -432,9 +524,9 @@ CloudSoft 损失 $4{,}200\times20.0\%=840$，新的分母 $10{,}000-840=9{,}160$
 
 先解释两个动作：**费用化（expensing）**是在适用期间确认费用；**资本化（capitalisation）**是满足确认条件时先记录资产，之后按适用规则确认摊销或减值。摊销就是将有限寿命无形资产的可摊销金额分期计入费用，并不是“放进资产就永远不影响利润”。
 
-🔗 外部补充：IFRS 的 IAS 38 对可确认无形资产设条件，研究支出通常费用化，开发支出需满足条件才资本化；收购商誉的核算属于 IFRS 3 范围。因此不能从“科技公司投研发”推断全部费用变成资产。参见 [IFRS Foundation · IAS 38](https://www.ifrs.org/issued-standards/list-of-standards/ias-38-intangible-assets/)，获取日期 2026-09-30。
+🔗 外部补充：国际财务报告准则（International Financial Reporting Standards, IFRS）中的《国际会计准则第 38 号——无形资产》（IAS 38） 对可确认无形资产设条件，研究支出确认为费用，开发支出需满足条件才资本化；收购商誉的核算属于 IFRS 3 范围。因此不能从“科技公司投研发”推断全部费用变成资产。参见 [IFRS Foundation · IAS 38](https://www.ifrs.org/issued-standards/list-of-standards/ias-38-intangible-assets/)，获取日期 2026-09-30；2026-10-26 回读该官方概览核对研究／开发及商誉范围。
 
-🔗 在 IFRS 的 IAS 36 下，减值判断涉及账面额与可收回金额，商誉通常联系到产生现金流的单位，不能只凭一个资产占比判定发生减值。参见 [IFRS Foundation · IAS 36](https://www.ifrs.org/issued-standards/list-of-standards/ias-36-impairment-of-assets/)，获取日期 2026-09-30。本题未指名采用 IFRS，以上是理解边界的参考，不写成两家公司的已知会计政策。
+🔗 在 IFRS 的《国际会计准则第 36 号——资产减值》（IAS 36）下，减值判断涉及账面额与可收回金额，商誉通常联系到产生现金流的单位，不能只凭一个资产占比判定发生减值。参见 [IFRS Foundation · IAS 36](https://www.ifrs.org/issued-standards/list-of-standards/ias-36-impairment-of-assets/)，获取日期 2026-09-30；2026-10-26 回读该官方概览核对减值、资产组与商誉范围。本题未指名采用 IFRS，以上是理解边界的参考，不写成两家公司的已知会计政策。
 
 一张时点资产负债表不能证明利润高低、现金流强弱、资产可变现值、增长前景或股票便宜程度；还缺收入、利润、现金流、历史趋势、附注、市场价格等资料。本例可以比较结构，并提出下一步要检查的线索，不能完成投资估值或评价真实公司的优劣。
 
@@ -502,9 +594,9 @@ SteelForge 股本及溢价为 2,000。同学用权益合计 6,000 作分母，�
 
 本案例向 [[AC6761_Artificial_Intelligence_Accounting/notes/M03-年报分析#2.2 资产负债表（Balance Sheet）|M03 §2.2]] 回链科目与恒等式，向 [[AC6761_Artificial_Intelligence_Accounting/notes/M03-年报分析#2.3 共同比分析（讲义 p.16–18）|M03 §2.3]] 回链比例方法。工作区里仍只有一份计算工作簿，全部教程、答案、直白解读和自测集中在这篇笔记。
 
-入口放在私有作业总览、练习索引和知识地图。公开 M03 保持通用概念笔记，不反链完整私有解答。
+入口保留在作业总览、练习索引和知识地图。按 2026-10-21 现行公开规则，本人练习解析可公开，M03 可链接本篇完整答案；是否已进入 GitHub 以本次远端回执为准。公开授权不等于代交作业，也不改变本人学习状态。
 
-### 9.2 四项可核的验收
+### 9.2 历史自检范围（2026-09-30）
 
 - **复述**：输入是两家公司同日、同单位的报表项目；输出是每行占本公司总资产的一位小数百分比。机制是先核金额、固定公司分母、逐行转换、最后展示和复核。
 - **执行**：23 行／46 个输入金额与 DOCX 一致；46 个百分比与官方解答一致；14 个小计及合计关系独立复算；§8 小例子的完整中间状态已手算核对。
@@ -513,13 +605,13 @@ SteelForge 股本及溢价为 2,000。同学用权益合计 6,000 作分母，�
 
 这是计算与模型阅读自检，不冒称真人初学者已试读或本人已学会。Excel 四张表已渲染查看，关键金额／比率／图形无错位；导出文件的 219 条公式及缓存值已核，0 公式错误，23 行官方对照差额均为 0。原生图表 1 张。
 
-最终同源浏览器预览检查：47 处数学表达式（8 处独立公式），0 数学渲染错误；Mermaid 流程图 10 节点／10 连线，零分母停止、逐行循环和正常结束的分支可见；展开自测后数字及推导显示正常。Obsidian 本机 CLI 不可用，本轮未直接查看其阅读视图，不把浏览器检查说成已看过 Obsidian。
+2026-09-30 的同源浏览器预览记录：47 处数学表达式（8 处独立公式），0 数学渲染错误；Mermaid 流程图 10 节点／10 连线，零分母停止、逐行循环和正常结束的分支可见；展开自测后数字及推导显示正常。Obsidian 本机 CLI 不可用，本轮未直接查看其阅读视图，不把浏览器检查说成已看过 Obsidian。
 
 ### 9.3 材料完整性与未确认事项
 
 老师文件来自用户下载，归档时未改变字节；照片命名已按授权完成，文件内容未改。正式是否提交、计分、截止、格式仍未明示；若后来布置提交，再以当前 Canvas／老师要求核定交付，本次没有代提交。
 
-本案例的百分比是一位小数，附录比率三位小数、金额整数；同指标在正文、表格及 Excel 保持相同展示口径，计算始终用原值。最后链接检查扫描 156 个 Markdown 文件，0 问题；README 检查 0 问题；相对本任务私有开工快照的完整性检查 0 问题。
+本案例的百分比是一位小数，附录比率三位小数、金额整数；同指标在正文、表格及 Excel 保持相同展示口径，计算始终用原值。2026-09-30 收尾的链接检查扫描 156 个 Markdown 文件，0 问题；README 检查 0 问题；相对本任务私有开工快照的完整性检查 0 问题。
 
 本地官方 DOCX SHA-256：`15a0cc87f13fd8952490088a66d849c6416e1634cc317415ce053464d6191d1a`。
 
@@ -536,4 +628,4 @@ SteelForge 股本及溢价为 2,000。同学用权益合计 6,000 作分母，�
 
 同期完整性清单中的 IS6400 M03／M05 和全库 `_meta/转录处理规则.md` 三处变化不是本案例脚本所写，已保留，没有恢复或覆盖。尚未确认本案例计分／提交要求，也没有提交 Canvas 或 Git。
 
-2026-10-07 定向补充：§1.4 拆解题干难句，§3.5 写出官方全部 23 行、46 个原金额代入与结果，§8.5 提炼独立重做顺序及等比例扩大例。当前原 DOCX 的两表重新对照，46 个一位小数结果一致；旧工作簿与 2026-09-30 的视觉／公式验收记录保留，未冒称本次又做了那些检查。当前 Canvas 登录受阻，行政信息仍未刷新。
+2026-10-07 定向补充：§1.4 拆解题干难句，§3.5 写出官方全部 23 行、46 个原金额代入与结果，§8.5 提炼独立重做顺序及等比例扩大例。当前原 DOCX 的两表重新对照，46 个一位小数结果一致；旧工作簿与 2026-09-30 的视觉／公式验收记录保留，未冒称本次又做了那些检查。该次（2026-10-07）Canvas 登录受阻，行政信息未刷新；2026-10-26 本轮未重新实时核查 Canvas，不将旧受阻或旧四入口核查当作当前事实。
