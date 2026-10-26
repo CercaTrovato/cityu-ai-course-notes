@@ -5,13 +5,16 @@ type: 课堂练习解析
 date: 2026-10-07
 source: ["Case 2 with solution.docx"]
 transcript: none
-review_method: 2026-10-02-simplified
+review_method: full-independent-gpt61-20261026
 tags: [AC6761, Case2, 私有练习]
 status: draft
 learning_status: detailed-analysis-complete
 official_solution: checked
 administrative_status: pending
-updated: 2026-10-07
+updated: 2026-10-26
+readability_rules: v2
+teaching_standard: novice-v1
+readability_review: passed
 ---
 
 # M02 · Case 2：T 形账户与试算表，从每笔生意读到账户余额
@@ -22,6 +25,27 @@ updated: 2026-10-07
 
 ## 1. 题目要做什么，应该交出什么
 
+<details><summary>完整英文原题（任务与12笔交易；原大小写/用词保留）</summary>
+
+> Based on the following transactions for GTech inc. in its first month of operation in 2025, please show the details of T-accounts for the affected accounts. Determine the ending balance for each account.
+>
+> Jan 1 - Owner invests \$40,000 cash to start the business.
+> Jan 2 - Paid \$24,000 cash for a one-year office rent policy in advance.
+> Jan 3 - Purchased office equipment for \$8,000 cash.
+> Jan 5 - Purchased office supplies for \$1,500 on account.
+> Jan 15 - Provided consulting services to a client for \$9,000 cash.
+> Jan 20 - Provided services to another client for \$6,000 on account.
+> Jan 22 - Paid \$800 for a monthly utility bill.
+> Jan 25 - Paid \$1,000 cash to reduce the amount owed on office supplies.
+> Jan 28 - The owner withdrew \$2,000 cash for personal use.
+> Jan 29 - Received \$4,000 cash from the client billed on Jan 20.
+> Jan 30 - Recorded one month of rent expense (\$2,000) from the prepaid policy.
+> Jan 31 - Recorded \$1,100 of office supplies expense for the month.
+
+</details>
+
+原题中的policy按官方Prepaid Rent口径解释；Inc.与业主Capital/Withdraw账户组合属于原件口径，保留原文，不据此重建法律形式。
+
 官方题面是 GTech Inc. 在 2025 年开业第一个月的 12 笔交易。题目明确要求：为受影响的账户列出 T 形账户明细，并求每个账户的期末余额。这里的期末是 2025 年 1 月 31 日。题目用 `$` 表示金额，未明示具体币种，本解析保留这一符号，不自行认定 USD 或 HKD。
 
 “show the details of T-accounts for the affected accounts” 意思是：哪些账户受这 12 笔交易影响，就分别为它们开一个账户；列出每一次金额在哪边，不只写最后余额。“Determine the ending balance for each account” 意思是：两边分别合计，再取差，说明余额落在借方还是贷方。
@@ -30,7 +54,7 @@ updated: 2026-10-07
 
 来源：只读原始文件 `AC6761_Artificial_Intelligence_Accounting/course_files_export/Case 2 with solution.docx` 的完整题面与官方解答。下文的日期、12 笔金额、分录、T 账户和试算表均与该文件核对；通俗解释、计算推导、变式与排错属于私人学习补充。配套原理可读 [[AC6761_Artificial_Intelligence_Accounting/notes/M02-交易的会计处理|M02：交易的会计处理]]，但本篇不要求先跳出去读完。
 
-当前只表示官题解法已核、私人教程可用于学习。根据本次主任务的核对状态，Canvas 登录受阻，计分、DDL 和提交条件待核；不能据此记“可提交”，也不能替本人记“已学会”。
+当前只表示官题解法已核、私人教程可用于学习。2026-10-07制作时曾记录Canvas登录受阻；本轮未实时核查登录/行政要求，计分、DDL和提交条件仍待可靠来源确认；不能据此记“可提交”，也不能替本人记“已学会”。
 
 ## 2. 先读懂英文，再选账户
 
@@ -69,7 +93,7 @@ $$
 A=L+E
 $$
 
-其中 $A$ 是资产，$L$ 是负债，$E$ 是业主权益；本篇各数值单位都是 `$`。权益不只有原始投入：赚到收入使权益增加，经营费用和私人提款使权益减少。因此本题在结账前可写成扩展等式：
+其中 $A$ 是资产，$L$ 是负债，$E$ 是业主权益（Equity）：公司控制的资产扣除对外负债后，归业主的剩余份额。它不是独立现金账户，也不必等于最初投入的Capital；本篇各数值单位都是 `$`。权益不只有原始投入：赚到收入使权益增加，经营费用和私人提款使权益减少。因此本题在结账前可写成扩展等式：
 
 $$
 A=L+C+R-X-W
@@ -155,7 +179,7 @@ flowchart TD
 |---|---|
 | Equipment \$8,000 | Cash \$8,000 |
 
-不能因为“花了钱”就记本月费用：花钱可能是买资产、还债或提款。设备会继续提供用途，官方记 Equipment；本题没有给折旧政策或折旧金额，不能随意把 8,000 全部转成费用。也没有欠供应商，所以不记 Accounts Payable。处理后现金 8,000，设备 8,000，总资产仍为 40,000。
+这笔支出取得仍有未来用途的Equipment，官方按设备资产记录；现金降8,000、设备升8,000。费用、还债和提款是不同业务路径，应按题面选择。本题没有折旧政策/金额或欠款条件，因此保留设备8,000，不额外记费用或应付。处理后现金8,000，总资产仍40,000。
 
 ### T4 · 2025 年 1 月 5 日：赊购办公用品 \$1,500
 
@@ -165,7 +189,9 @@ flowchart TD
 |---|---|
 | Office Supplies \$1,500 | Accounts Payable \$1,500 |
 
-不能贷 Cash，因为还没付款；不能借 Accounts Receivable，因为这次是我们欠人，不是人欠我们。也不能当下全部借 Supplies Expense：购买说明拿到用品，未说全部耗用；本月耗用量将由 T12 给出。处理后用品资产 1,500、欠供应商 1,500，现金仍为 8,000。
+不能贷 Cash，因为还没付款；不能借 Accounts Receivable，因为这次是我们欠人，不是人欠我们。
+
+也不能当下全部借 Supplies Expense：购买说明拿到用品，未说全部耗用；本月耗用量将由 T12 给出。处理后用品资产 1,500、欠供应商 1,500，现金仍为 8,000。
 
 ### T5 · 2025 年 1 月 15 日：提供咨询服务，当场收现 \$9,000
 
@@ -268,6 +294,8 @@ flowchart TD
 
 现金余额是 $53{,}000-35{,}800=17{,}200$，为借方余额 \$17,200。它表示期末还有多少现金，不是本月利润。
 
+**English reference（笔记自拟；余额/方向依官方表）**: Cash has an ending debit balance of 17,200 on January 31, 2025.
+
 ### 5.2 Accounts Receivable · 应收账款（资产）
 
 本账户先记录客户欠我们 6,000，再扣客户已还 4,000。
@@ -278,6 +306,8 @@ flowchart TD
 | 借方合计：\$6,000 | 贷方合计：\$4,000 |
 
 余额为 $6{,}000-4{,}000=2{,}000$，借方 \$2,000；这是客户还欠的金额，不是未来才赚的收入。
+
+**English reference（笔记自拟；余额/方向依官方表）**: Accounts Receivable has an ending debit balance of 2,000 on January 31, 2025.
 
 ### 5.3 Prepaid Rent · 预付租金（资产）
 
@@ -290,6 +320,8 @@ flowchart TD
 
 余额为 $24{,}000-2{,}000=22{,}000$，借方 \$22,000；表示尚未享用的租赁服务价值，不是银行里另存的现金。
 
+**English reference（笔记自拟；余额/方向依官方表）**: Prepaid Rent has an ending debit balance of 22,000 on January 31, 2025.
+
 ### 5.4 Office Supplies · 办公用品（资产）
 
 用品资产反映还没用完的用品，与欠款是否还清分开。
@@ -300,6 +332,8 @@ flowchart TD
 | 借方合计：\$1,500 | 贷方合计：\$1,100 |
 
 余额为 $1{,}500-1{,}100=400$，借方 \$400；表示剩余用品。T8 偿还 1,000 不放此账户，因为它没有改变用品数量或价值。
+
+**English reference（笔记自拟；余额/方向依官方表）**: Office Supplies has an ending debit balance of 400 on January 31, 2025.
 
 ### 5.5 Equipment · 设备（资产）
 
@@ -312,6 +346,8 @@ flowchart TD
 
 余额为 $8{,}000-0=8{,}000$，借方 \$8,000。这里保留全额是依照题目与官解的处理范围，不表示设备在所有真实报表中永远不折旧。
 
+**English reference（笔记自拟；余额/方向依官方表）**: Equipment has an ending debit balance of 8,000 on January 31, 2025.
+
 ### 5.6 Accounts Payable · 应付账款（负债）
 
 欠款新增放贷方，还款减少放借方。因此左边有 1,000，并不是“又欠了一笔”。
@@ -322,6 +358,8 @@ flowchart TD
 | 借方合计：\$1,000 | 贷方合计：\$1,500 |
 
 余额为 $1{,}500-1{,}000=500$，贷方 \$500；表示还须向供应商偿还的金额。
+
+**English reference（笔记自拟；余额/方向依官方表）**: Accounts Payable has an ending credit balance of 500 on January 31, 2025.
 
 ### 5.7 Owner's Capital · 业主资本（权益中的投入）
 
@@ -334,6 +372,8 @@ flowchart TD
 
 余额为 $40{,}000-0=40{,}000$，贷方 \$40,000。这不等于期末全部业主权益，原因见 §7。
 
+**English reference（笔记自拟；余额/方向依官方表）**: Owner's Capital has an ending credit balance of 40,000 on January 31, 2025.
+
 ### 5.8 Owner's Withdraw · 业主提款（权益减项）
 
 提款用独立账户保留“业主私人取走多少”的信息。
@@ -344,6 +384,8 @@ flowchart TD
 | 借方合计：\$2,000 | 贷方合计：\$0 |
 
 余额为 $2{,}000-0=2{,}000$，借方 \$2,000。账户本身增加 2,000，在权益总额里要减去 2,000。
+
+**English reference（笔记自拟；余额/方向依官方表）**: Owner's Withdraw has an ending debit balance of 2,000 on January 31, 2025.
 
 ### 5.9 Service Revenue · 服务收入（权益增项）
 
@@ -357,6 +399,8 @@ flowchart TD
 
 余额为 $15{,}000-0=15{,}000$，贷方 \$15,000。T10 的回款不是第三次提供服务，不能再加入 4,000。
 
+**English reference（笔记自拟；余额/方向依官方表）**: Service Revenue has an ending credit balance of 15,000 on January 31, 2025.
+
 ### 5.10 Rent Expense · 租金费用（权益减项）
 
 本月只耗用一年租金中的一个月。
@@ -367,6 +411,8 @@ flowchart TD
 | 借方合计：\$2,000 | 贷方合计：\$0 |
 
 余额为 $2{,}000-0=2{,}000$，借方 \$2,000。T2 的 24,000 不进本账户，因为那笔先取得未来服务权利。
+
+**English reference（笔记自拟；余额/方向依官方表）**: Rent Expense has an ending debit balance of 2,000 on January 31, 2025.
 
 ### 5.11 Utilities Expense · 水电费用（权益减项）
 
@@ -379,6 +425,8 @@ flowchart TD
 
 余额为 $800-0=800$，借方 \$800；本题这笔费用与现金付款恰好同月发生，但其他费用不一定如此。
 
+**English reference（笔记自拟；余额/方向依官方表）**: Utilities Expense has an ending debit balance of 800 on January 31, 2025.
+
 ### 5.12 Supplies Expense · 办公用品费用（权益减项）
 
 本账户只记本月已用掉的用品，不记购入总额，也不记偿还欠款的金额。
@@ -389,6 +437,8 @@ flowchart TD
 | 借方合计：\$1,100 | 贷方合计：\$0 |
 
 余额为 $1{,}100-0=1{,}100$，借方 \$1,100。与用品资产剩余 400 合起来，刚好对应原始购入 1,500。
+
+**English reference（笔记自拟；余额/方向依官方表）**: Supplies Expense has an ending debit balance of 1,100 on January 31, 2025.
 
 ## 6. 从账户净余额编试算表
 
@@ -473,11 +523,15 @@ $$
 | 具体错误 | 为什么可能两边仍相等 | 发现后怎样补救 |
 |---|---|---|
 | T3 错借 Equipment Expense 8,000，贷 Cash 8,000 | 错选账户仍然借贷同额 | 回读“购设备”，核资产仍有未来用途；在本题范围内应把错误费用转回 Equipment，而不是只改试算表数字 |
-| T10 错借 Cash 4,000，贷 Service Revenue 4,000 | 多记收入同时多记贷方，单笔仍平 | 核客户欠款的来路与 T6；应把贷记收入改为贷记 Accounts Receivable，保持现金回款原记录 |
-| 整笔漏 T11 | 少一项借方费用，也少一项贷方资产减少，两边一起少 | 对照 12 笔清单找月末调整；补借 Rent Expense 2,000、贷 Prepaid Rent 2,000，再重算余额 |
+| T10 错借 Cash 4,000，贷 Service Revenue 4,000 | 分录同额但科目错；净余额差异见表后“回款错科目例” | 回读T6，正确贷Accounts Receivable；修分录/账户后重算 |
+| 整笔漏 T11 | 漏借费用/贷预付同时改变两个借方净余额，见表后“漏调整例” | 对照12笔清单，补借Rent Expense 2,000、贷Prepaid Rent 2,000 |
 | T8 错借 Supplies Expense 1,000，贷 Cash 1,000 | 同额放错借方账户，不影响左右总额 | 回读 reduce amount owed，并查 T4 欠款；改为借 Accounts Payable，重新核欠款仍应剩 500 |
 | 同一笔 T5 过账两次 | 借贷双方若都重复，表仍平 | 用交易号逐笔点名，确认一个 T5 仅各入一次；撤回重复条目后再合计 |
 | 一边用 6,000、一边抄成 600 | 两边不再同额，通常试算表不平 | 找差额对应的交易，回源确认 6,000；修分录与账户明细，再重算，而不是随意加一个“平衡数” |
+
+**回款错科目例（笔记补充）**：T10正确是借Cash 4,000、贷Accounts Receivable 4,000。错贷Service Revenue时，这一笔仍是借贷各4,000，不能说分录发生额一边多了。错账中应收净余额从正确2,000变成6,000（借方多4,000），收入净余额从15,000变成19,000（贷方多4,000）；试算表两栏因而从55,500同时变成59,500，仍然相等。它平衡但高估了应收和收入。
+
+**漏调整例（笔记补充）**：若只漏T11，预付租金借方净余额会是24,000而非22,000，多2,000；租金费用借方净余额为0而非2,000，少2,000。同在试算表借方的一增一减抵消，借方合计仍55,500，贷方也仍55,500。变化的是借方资产/费用构成；不能把“分录少一借一贷”直接说成“试算表两栏一起少2,000”。
 
 修错有两条安全做法：练习草稿可以回到明确错误的原条目更正并重算；若是已正式保存的真实账簿，应按规定作可追踪的更正分录。上表解释正确方向，不代替真实组织的更正程序。诊断顺序是“业务与原记录 → 正确分录 → T 账户 → 试算表”；不能只在最后一张表上改到相等。
 
@@ -499,6 +553,8 @@ $$
 
 借方多现金 8,000，贷方多应付 8,000，新试算表两边各为 63,500。资产由 49,600 增至 57,600，负债由 500 增至 8,500，权益仍 49,100，满足 $57{,}600=8{,}500+49{,}100$。借贷相等不要求与原题合计相同。
 
+**English reference（笔记自拟变式答案）**: Debit Equipment 8,000 and credit Accounts Payable 8,000 for the revised T3. Ending cash is 25,200, equipment is 8,000 and accounts payable is 8,500; trial balance totals are 63,500 on each side, while equity remains 49,100.
+
 </details>
 
 ### 变式 2：T10 客户只还 \$3,000，而不是 \$4,000
@@ -510,6 +566,8 @@ $$
 借 Cash 3,000，贷 Accounts Receivable 3,000。应收为 $6{,}000-3{,}000=3{,}000$；现金比原题少收到 1,000，所以期末为 16,200。
 
 收入仍是已经提供服务赚得的 15,000，利润仍 11,100。少收 1,000 只改变“现金”和“应收”的组合：现金少 1,000、应收多 1,000，资产总额仍 49,600，试算表两边仍各 55,500。题面没有说客户不能还款，不能自动加坏账费用。
+
+**English reference（笔记自拟变式答案）**: The revised collection debits Cash 3,000 and credits Accounts Receivable 3,000. Ending cash is 16,200 and receivables are 3,000; revenue remains 15,000, profit remains 11,100, and each trial balance total remains 55,500.
 
 </details>
 
@@ -525,6 +583,8 @@ T2 仍借 Prepaid Rent 24,000、贷 Cash 24,000：首次付款金额未变。服
 
 这里明确改变了服务期及月末耗用条件，所以替换原 T11 的给定 2,000。不能在原题未改条件时忽视官题已指定的耗用金额。
 
+**English reference（笔记自拟变式答案）**: The initial prepayment remains 24,000, but the monthly expense becomes 1,000 over 24 months. Ending prepaid rent is 23,000, rent expense is 1,000 and profit is 12,100; each trial balance total remains 55,500.
+
 </details>
 
 ### 变式 4：月末用品盘点剩余 \$700，而不是给定耗用 \$1,100
@@ -539,6 +599,8 @@ T2 仍借 Prepaid Rent 24,000、贷 Cash 24,000：首次付款金额未变。服
 
 这里是把原 T12 的已知条件替换为“盘点剩余”，不是把两个互相冲突的耗用量同时记录。
 
+**English reference（笔记自拟变式答案）**: Supplies used are 1,500 less 700, or 800. Debit Supplies Expense 800 and credit Office Supplies 800; ending supplies are 700, accounts payable remains 500, cash remains 17,200, and profit is 11,400.
+
 </details>
 
 ## 10. 做完后把业务故事讲回来
@@ -547,12 +609,20 @@ T2 仍借 Prepaid Rent 24,000、贷 Cash 24,000：首次付款金额未变。服
 
 | 一组容易混淆的事实 | 本题应该讲出的关系 |
 |---|---|
-| 支付租金与本月租金费用 | T2 先付一年，取得资产；T11 只把用掉的一个月转为费用。钱只付一次，成本按耗用进入本月 |
-| 买用品、还货款、用用品 | T4 得到用品并形成欠款；T8 还钱减欠款；T12 用掉用品减资产、增费用。三笔不能合并成“花钱买办公用品” |
-| 提供服务与客户回款 | T6 服务做完即认收入和应收；T10 回款把应收换成现金。客户还钱不意味着又赚一次 |
-| 设备与本月费用 | T3 的设备尚有未来用途，先列资产；本题没有要求自行猜折旧。现金流出不能单独证明当月费用 |
+| 支付租金与本月租金费用 | 见紧邻表后“租金例”完整解释 |
+| 买用品、还货款、用用品 | 见紧邻表后“用品例”完整解释 |
+| 提供服务与客户回款 | 见紧邻表后“服务例”完整解释 |
+| 设备与本月费用 | 见紧邻表后“设备例”完整解释 |
 | 资本、利润与提款 | 投入 40,000 是起点，利润 11,100 是经营增加，提款 2,000 是私人减少，期末权益 49,100；资本账户未结账仍为 40,000 |
 | 账户与试算表 | 分录决定每笔左右位置，T 账户留下明细并求净余额，试算表只汇总这些余额。55,500 是借贷余额合计，不是资产或利润 |
+
+**租金例**：T2 先付一年，取得资产；T11 只把用掉的一个月转为费用。钱只付一次，成本按耗用进入本月
+
+**用品例**：T4 得到用品并形成欠款；T8 还钱减欠款；T12 用掉用品减资产、增费用。三笔不能合并成“花钱买办公用品”
+
+**服务例**：T6 服务做完即认收入和应收；T10 回款把应收换成现金。客户还钱不意味着又赚一次
+
+**设备例**：T3 的设备尚有未来用途，先列资产；本题没有要求自行猜折旧。现金流出不能单独证明当月费用
 
 实际复算得到的官题结果：12 笔分录、12 个账户余额与官解一致；借贷发生额各 \$99,400；试算表借贷余额各 \$55,500；补充恒等式复算得资产 \$49,600、负债 \$500、期末权益 \$49,100、利润 \$11,100。这说明本篇计算已核，不说明当前行政要求已确认或本人已经掌握。
 

@@ -1,0 +1,152 @@
+{
+  "source_sha256": "305787dbddf5d5415ad862a7092bdc48bfe74dabab65cdf892a749afc9c595c7",
+  "candidate_sha256": "330a3f286480cf99e8740e8b5aff4cca4d609681a2a4944812047a85d280cd75",
+  "operations": [
+    {
+      "reason": "framework not personalstate",
+      "old": "updated: 2026-10-07",
+      "new": "updated: 2026-10-26\nreadability_rules: v2\nteaching_standard: novice-v1\nreadability_review: pending"
+    },
+    {
+      "reason": "B5 historicaladmin not currentclaim",
+      "old": "根据本次主任务的核对状态，Canvas 登录受阻，计分、DDL 和提交条件待核；",
+      "new": "2026-10-07制作时曾记录Canvas登录受阻；本轮未实时核查登录/行政要求，计分、DDL和提交条件仍待可靠来源确认；"
+    },
+    {
+      "reason": "B1 equity local meaning",
+      "old": "其中 $A$ 是资产，$L$ 是负债，$E$ 是业主权益；",
+      "new": "其中 $A$ 是资产，$L$ 是负债，$E$ 是业主权益（Equity）：公司控制的资产扣除对外负债后，归业主的剩余份额。它不是独立现金账户，也不必等于最初投入的Capital；"
+    },
+    {
+      "reason": "B3 wholeoriginaltask and12dates context",
+      "old": "官方题面是 GTech Inc. 在 2025 年开业第一个月的 12 笔交易。",
+      "new": "<details><summary>完整英文原题（任务与12笔交易；原大小写/用词保留）</summary>\n\n> Based on the following transactions for GTech inc. in its first month of operation in 2025, please show the details of T-accounts for the affected accounts. Determine the ending balance for each account.\n>\n> Jan 1 - Owner invests \\$40,000 cash to start the business.\n> Jan 2 - Paid \\$24,000 cash for a one-year office rent policy in advance.\n> Jan 3 - Purchased office equipment for \\$8,000 cash.\n> Jan 5 - Purchased office supplies for \\$1,500 on account.\n> Jan 15 - Provided consulting services to a client for \\$9,000 cash.\n> Jan 20 - Provided services to another client for \\$6,000 on account.\n> Jan 22 - Paid \\$800 for a monthly utility bill.\n> Jan 25 - Paid \\$1,000 cash to reduce the amount owed on office supplies.\n> Jan 28 - The owner withdrew \\$2,000 cash for personal use.\n> Jan 29 - Received \\$4,000 cash from the client billed on Jan 20.\n> Jan 30 - Recorded one month of rent expense (\\$2,000) from the prepaid policy.\n> Jan 31 - Recorded \\$1,100 of office supplies expense for the month.\n\n</details>\n\n原题中的policy按官方Prepaid Rent口径解释；Inc.与业主Capital/Withdraw账户组合属于原件口径，保留原文，不据此重建法律形式。\n\n官方题面是 GTech Inc. 在 2025 年开业第一个月的 12 笔交易。"
+    },
+    {
+      "reason": "B2 journalturnover versus nettrialbalance",
+      "old": "| T10 错借 Cash 4,000，贷 Service Revenue 4,000 | 多记收入同时多记贷方，单笔仍平 | 核客户欠款的来路与 T6；应把贷记收入改为贷记 Accounts Receivable，保持现金回款原记录 |",
+      "new": "| T10 错借 Cash 4,000，贷 Service Revenue 4,000 | 分录同额但科目错；净余额差异见表后“回款错科目例” | 回读T6，正确贷Accounts Receivable；修分录/账户后重算 |"
+    },
+    {
+      "reason": "B2 missedadjustment side distinction",
+      "old": "| 整笔漏 T11 | 少一项借方费用，也少一项贷方资产减少，两边一起少 | 对照 12 笔清单找月末调整；补借 Rent Expense 2,000、贷 Prepaid Rent 2,000，再重算余额 |",
+      "new": "| 整笔漏 T11 | 漏借费用/贷预付同时改变两个借方净余额，见表后“漏调整例” | 对照12笔清单，补借Rent Expense 2,000、贷Prepaid Rent 2,000 |"
+    },
+    {
+      "reason": "B2 explicit wrongnetbalances and total probes",
+      "old": "修错有两条安全做法：",
+      "new": "**回款错科目例（笔记补充）**：T10正确是借Cash 4,000、贷Accounts Receivable 4,000。错贷Service Revenue时，这一笔仍是借贷各4,000，不能说分录发生额一边多了。错账中应收净余额从正确2,000变成6,000（借方多4,000），收入净余额从15,000变成19,000（贷方多4,000）；试算表两栏因而从55,500同时变成59,500，仍然相等。它平衡但高估了应收和收入。\n\n**漏调整例（笔记补充）**：若只漏T11，预付租金借方净余额会是24,000而非22,000，多2,000；租金费用借方净余额为0而非2,000，少2,000。同在试算表借方的一增一减抵消，借方合计仍55,500，贷方也仍55,500。变化的是借方资产/费用构成；不能把“分录少一借一贷”直接说成“试算表两栏一起少2,000”。\n\n修错有两条安全做法："
+    },
+    {
+      "reason": "replace dense negatives by actualclassification action",
+      "old": "不能因为“花了钱”就记本月费用：花钱可能是买资产、还债或提款。设备会继续提供用途，官方记 Equipment；本题没有给折旧政策或折旧金额，不能随意把 8,000 全部转成费用。也没有欠供应商，所以不记 Accounts Payable。处理后现金 8,000，设备 8,000，总资产仍为 40,000。",
+      "new": "这笔支出取得仍有未来用途的Equipment，官方按设备资产记录；现金降8,000、设备升8,000。费用、还债和提款是不同业务路径，应按题面选择。本题没有折旧政策/金额或欠款条件，因此保留设备8,000，不额外记费用或应付。处理后现金8,000，总资产仍40,000。"
+    },
+    {
+      "reason": "B4 English ending account12",
+      "old": "endofaccountunit",
+      "new": "**English reference（笔记自拟；余额/方向依官方表）**: Supplies Expense has an ending debit balance of 1,100 on January 31, 2025.\n"
+    },
+    {
+      "reason": "B4 English ending account11",
+      "old": "endofaccountunit",
+      "new": "**English reference（笔记自拟；余额/方向依官方表）**: Utilities Expense has an ending debit balance of 800 on January 31, 2025.\n"
+    },
+    {
+      "reason": "B4 English ending account10",
+      "old": "endofaccountunit",
+      "new": "**English reference（笔记自拟；余额/方向依官方表）**: Rent Expense has an ending debit balance of 2,000 on January 31, 2025.\n"
+    },
+    {
+      "reason": "B4 English ending account9",
+      "old": "endofaccountunit",
+      "new": "**English reference（笔记自拟；余额/方向依官方表）**: Service Revenue has an ending credit balance of 15,000 on January 31, 2025.\n"
+    },
+    {
+      "reason": "B4 English ending account8",
+      "old": "endofaccountunit",
+      "new": "**English reference（笔记自拟；余额/方向依官方表）**: Owner's Withdraw has an ending debit balance of 2,000 on January 31, 2025.\n"
+    },
+    {
+      "reason": "B4 English ending account7",
+      "old": "endofaccountunit",
+      "new": "**English reference（笔记自拟；余额/方向依官方表）**: Owner's Capital has an ending credit balance of 40,000 on January 31, 2025.\n"
+    },
+    {
+      "reason": "B4 English ending account6",
+      "old": "endofaccountunit",
+      "new": "**English reference（笔记自拟；余额/方向依官方表）**: Accounts Payable has an ending credit balance of 500 on January 31, 2025.\n"
+    },
+    {
+      "reason": "B4 English ending account5",
+      "old": "endofaccountunit",
+      "new": "**English reference（笔记自拟；余额/方向依官方表）**: Equipment has an ending debit balance of 8,000 on January 31, 2025.\n"
+    },
+    {
+      "reason": "B4 English ending account4",
+      "old": "endofaccountunit",
+      "new": "**English reference（笔记自拟；余额/方向依官方表）**: Office Supplies has an ending debit balance of 400 on January 31, 2025.\n"
+    },
+    {
+      "reason": "B4 English ending account3",
+      "old": "endofaccountunit",
+      "new": "**English reference（笔记自拟；余额/方向依官方表）**: Prepaid Rent has an ending debit balance of 22,000 on January 31, 2025.\n"
+    },
+    {
+      "reason": "B4 English ending account2",
+      "old": "endofaccountunit",
+      "new": "**English reference（笔记自拟；余额/方向依官方表）**: Accounts Receivable has an ending debit balance of 2,000 on January 31, 2025.\n"
+    },
+    {
+      "reason": "B4 English ending account1",
+      "old": "endofaccountunit",
+      "new": "**English reference（笔记自拟；余额/方向依官方表）**: Cash has an ending debit balance of 17,200 on January 31, 2025.\n"
+    },
+    {
+      "reason": "English variantcomplete4",
+      "old": "beforeclose",
+      "new": "**English reference（笔记自拟变式答案）**: Supplies used are 1,500 less 700, or 800. Debit Supplies Expense 800 and credit Office Supplies 800; ending supplies are 700, accounts payable remains 500, cash remains 17,200, and profit is 11,400.\n\n"
+    },
+    {
+      "reason": "English variantcomplete3",
+      "old": "beforeclose",
+      "new": "**English reference（笔记自拟变式答案）**: The initial prepayment remains 24,000, but the monthly expense becomes 1,000 over 24 months. Ending prepaid rent is 23,000, rent expense is 1,000 and profit is 12,100; each trial balance total remains 55,500.\n\n"
+    },
+    {
+      "reason": "English variantcomplete2",
+      "old": "beforeclose",
+      "new": "**English reference（笔记自拟变式答案）**: The revised collection debits Cash 3,000 and credits Accounts Receivable 3,000. Ending cash is 16,200 and receivables are 3,000; revenue remains 15,000, profit remains 11,100, and each trial balance total remains 55,500.\n\n"
+    },
+    {
+      "reason": "English variantcomplete1",
+      "old": "beforeclose",
+      "new": "**English reference（笔记自拟变式答案）**: Debit Equipment 8,000 and credit Accounts Payable 8,000 for the revised T3. Ending cash is 25,200, equipment is 8,000 and accounts payable is 8,500; trial balance totals are 63,500 on each side, while equity remains 49,100.\n\n"
+    },
+    {
+      "reason": "R4c preserve explanation outside densecell",
+      "old": "| 支付租金与本月租金费用 | T2 先付一年，取得资产；T11 只把用掉的一个月转为费用。钱只付一次，成本按耗用进入本月 |",
+      "new": "| 支付租金与本月租金费用 | 见紧邻表后“租金例”完整解释 |"
+    },
+    {
+      "reason": "R4c preserve explanation outside densecell",
+      "old": "| 买用品、还货款、用用品 | T4 得到用品并形成欠款；T8 还钱减欠款；T12 用掉用品减资产、增费用。三笔不能合并成“花钱买办公用品” |",
+      "new": "| 买用品、还货款、用用品 | 见紧邻表后“用品例”完整解释 |"
+    },
+    {
+      "reason": "R4c preserve explanation outside densecell",
+      "old": "| 提供服务与客户回款 | T6 服务做完即认收入和应收；T10 回款把应收换成现金。客户还钱不意味着又赚一次 |",
+      "new": "| 提供服务与客户回款 | 见紧邻表后“服务例”完整解释 |"
+    },
+    {
+      "reason": "R4c preserve explanation outside densecell",
+      "old": "| 设备与本月费用 | T3 的设备尚有未来用途，先列资产；本题没有要求自行猜折旧。现金流出不能单独证明当月费用 |",
+      "new": "| 设备与本月费用 | 见紧邻表后“设备例”完整解释 |"
+    },
+    {
+      "reason": "R4c four preserved relations aftertable",
+      "old": "实际复算得到的官题结果：",
+      "new": "**租金例**：T2 先付一年，取得资产；T11 只把用掉的一个月转为费用。钱只付一次，成本按耗用进入本月\n\n**用品例**：T4 得到用品并形成欠款；T8 还钱减欠款；T12 用掉用品减资产、增费用。三笔不能合并成“花钱买办公用品”\n\n**服务例**：T6 服务做完即认收入和应收；T10 回款把应收换成现金。客户还钱不意味着又赚一次\n\n**设备例**：T3 的设备尚有未来用途，先列资产；本题没有要求自行猜折旧。现金流出不能单独证明当月费用\n\n实际复算得到的官题结果："
+    }
+  ],
+  "scope": "B1-B5 + Englishvariants/actualpresentationharditems;allofficialnumbers/transactions/12Taccounts directions preserved;admin/personalnotupgraded"
+}

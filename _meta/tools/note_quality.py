@@ -1060,12 +1060,13 @@ SECTION_NUMBER = r'\d+(?:\.\d+)*[a-z]?'
 PLACEHOLDER = re.compile(r'^(?:待补(?:充)?|待完善|略|同理|见(?:讲义|课件|上文)|TODO|TBD|N/?A)[。.!！\s]*$', re.I)
 
 
-def content_sections(body):
+def content_sections(body, include_level2=False):
     """保留真实标题、a后缀和全局行号；父节包含子节，空容器不算缺正文。"""
     lines = body.splitlines()
     kinds = classify(lines)
     heads = [(n, len(l)-len(l.lstrip('#')), re.sub(r'^#+\s*', '', l))
-             for n, (l, k) in enumerate(zip(lines, kinds)) if k == 'head' and re.match(r'^#{3,4} ', l)]
+             for n, (l, k) in enumerate(zip(lines, kinds))
+             if k == 'head' and re.match(r'^#{2,4} ' if include_level2 else r'^#{3,4} ', l)]
     result = []
     for n, (start, level, heading) in enumerate(heads):
         end = next((a for a, lev, _ in heads[n+1:] if lev <= level), len(lines))
@@ -1242,8 +1243,9 @@ def source_contract_checks(body, manifest_path):
 
 
 def assess_current(t, fn, total=0, tut=False, source_checks=None):
-    body = body_T(t) if tut else body_M(t)
-    sections = content_sections(body)
+    learning_document = frontmatter(t).get('type', '').strip('\"\'') == '课堂练习解析'
+    body = t if learning_document else (body_T(t) if tut else body_M(t))
+    sections = content_sections(body, include_level2=learning_document)
     hard, warnings = [], []
     if not sections:
         hard.append(dict(code='C_STRUCTURE', section='§2', line=0,

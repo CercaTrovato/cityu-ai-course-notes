@@ -32,6 +32,21 @@ class CurrentChecks(unittest.TestCase):
         text='---\ncourse: IS6400\n---\n\n## 2. 正文\n\n## 3. 一图看懂\n'
         self.assertIn('C_STRUCTURE',codes(q.assess_current(text,'M01.md')))
 
+    def test_practice_document_does_not_require_subheadings_in_section2(self):
+        text = ('---\ntype: 课堂练习解析\n---\n\n'
+                '## 1. 任务\n\n先把本题每笔交易留下的资源与欠款分开。\n\n'
+                '## 2. 英文条件\n\non account要先辨认谁欠谁，再选择应收或应付账户。\n\n'
+                '## 3. 实际步骤\n\n从本次业务动作判断账户增减，再转为借贷并保留交易号。\n')
+        self.assertNotIn('C_STRUCTURE', codes(q.assess_current(text, 'case2.md')))
+
+    def test_practice_document_still_checks_later_naked_code_and_empty_units(self):
+        text = ('---\ntype: 课堂练习解析\n---\n\n'
+                '## 2. 条件\n\n先分清公司购买和公司提供服务这两个方向。\n\n'
+                '## 3. 运行\n\n' + FENCE + 'python\nprint(1)\n' + FENCE + '\n')
+        self.assertIn('C_CODE_EXPLANATION', codes(q.assess_current(text, 'case2.md')))
+        empty = '---\ntype: 课堂练习解析\n---\n\n## 2. 条件\n\n## 3. 步骤\n'
+        self.assertTrue(q.assess_current(empty, 'case2.md')['hard'])
+
     def test_unlabelled_short_but_explained_does_not_fail_quota(self):
         text = note('窗口均值用来平滑短期变化。\n\n先求过去三期的平均：$M=(2+4+6)/3=4$。\n\n若窗口包含未来销量，就会泄漏待预测的答案。')
         self.assertFalse(q.assess_current(text, 'M01.md')['hard'])
