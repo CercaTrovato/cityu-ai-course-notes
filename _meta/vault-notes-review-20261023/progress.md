@@ -21,9 +21,8 @@ status: in-progress
 
 ## 本次真实统计（2026-10-26，按 execution.json 当前逐项状态）
 
-- 已教学验收并正式写回：25；22适用各端闭合，M06/EF04/Quiz2本批Git待。
-- 已启动未写回：10（含2待主接包、EF06两法源阻塞及新派短指南小包）。
-- 未开始：34。合计69；44份未正式写回，全库未完成。
+- 已教学验收并正式写回：27；25份适用各端闭合，本批EF07/IS05 Git待。
+- 已启动未写回：11；未开始：31。合计69，42份未正式写回，全库未完成。
 
 ## 69 份逐篇进度
 
@@ -34,7 +33,7 @@ status: in-progress
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/notes/M03-年报分析.md` | 修订并验收 | gpt6.1_full_three_packages_closed_full_gate_passed_written | 已原子写回并精确字节回读 / 已完成：10文件原子写/精确回读+2项无增量；README/链接/自有完整性收尾已核 / 已写并回读/重载核16属性，15非备注属性未变 / {'status': '已提交/推送/远端SHA核实', 'commit': '8cc30f148e7aad517159fabae92eb12ba383c5fa', 'remote': 'refs/heads/main', 'receipt': '_meta/vault-notes-review-20261023/ac6761-m03/git-release.json'} |
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/notes/M04-REA会计模型.md` | 修订并验收 | full_6_1_main_gate_atomic_local12_notion16_and_content_git_remote_closed | 已CAS核基线、atomic_write并精确字节回读 / 11文件CAS原子写/精确回读，1DDL已核无增量；链接/README/自有完整性问题0 / 正确W04仅前插事实备注，16属性重载；其他15/旧文本/4富文本token精确保留 / 内容提交3af316d048812ba1b7e2740b0fd4ca544bd5a044已推送，远端main相同；11共享文件仅M04增量 |
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/notes/M05-REA业务流程建模.md` | 修订并验收 | allsemanticclosed+sources/math/visuals/gate0/formalwrite;syncpending | full-v2 gate0/CAS atomic/精确回读 / 13目标7写回/6无增量 / 已仅备注前插并重载16属性回读；旧后缀/格式保留，8文本字段相同，未点7个人/材料复选框，最终值比对先前已核回执；初次bool取值限制另列 / 已提交推送并核远端 main |
-| AC6761 | `AC6761_Artificial_Intelligence_Accounting/notes/M06-ACCESS数据库构建与查询.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS atomic/精确字节回读；实际维护映射见receipt / 8共享目标CAS原子增量合并并精确回读；其余无新增事实；详dependency-sync.json / 16属性真实重开回读：拟写前缀与旧后缀精确，其他15含checkbox值逐一保持；完整重载DOM.checked与原日期保持；截图已存 / 本批待保存 |
+| AC6761 | `AC6761_Artificial_Intelligence_Accounting/notes/M06-ACCESS数据库构建与查询.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS atomic/精确字节回读；实际维护映射见receipt / 8共享目标CAS原子增量合并并精确回读；其余无新增事实；详dependency-sync.json / 16属性真实重开回读：拟写前缀与旧后缀精确，其他15含checkbox值逐一保持；完整重载DOM.checked与原日期保持；截图已存 / 已推送69bec8e0…并核远端main；205提交blobs逐SHA一致，公开联系方式变体另有映射 |
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/notes/M08-AI基础与会计技术.md` | 修订并验收 | full_new61_review_targeted_source_visual_gate_atomic_local_notion_content_git_closed | full-v2 exit0；CAS原子写正文/4新图资产并精确回读 / 12 targets:10 atomic/exact readback,2 no increment; independent gpt-6.1-sol all47 ops, F1-F3 actual fixes accepted / 16属性回读及重载全相等；仅备注前插本次事实，15非备注/个人字段与旧全文不变 / 本批内容commit ee30cb66e45e6e0a1d2351351eb8fdfebacd8407 已推送并核远端main同SHA；142blob逐SHA核对，2处仅既有Git属性CRLF转LF，88绑定资产逐字节匹配；10共享目标只暂存本批增量 |
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/notes/M09-AI财报分析与利益相关者.md` | 修订并验收 | full61 original + actualB1-B5repair61 + finalbytebindingv5 + main gate0/source/calcs/actualdisplay + CASdone | full-v2教学v5+nonteaching状态/空行维护均CAS原子写并精确回读 / 14目标：9写并回读/5无增量，root先写/待并入最后维护 / 正确M09仅前插备注，16属性保存/重载、其他15及旧全文不变；日期未知保留 / 内容已推送并核远端，65blob逐SHA一致，64其他文件保留 |
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/notes/M10-AI财务分析与比率核验.md` | 修订并验收 | full two-stage + original targeted acceptance + delegated final source/calculation/display + root binding | CAS atomic/精确字节回读；M10三处状态走non-teaching维护 / 8共享目标本批合并/精确回读；逐篇适用项见dependency-sync / 正确既有页16属性重载：仅备注前插，旧后缀精确，其他15属性含checked逐值不变 / 已提交推送并核远端main；146blobs逐SHA一致，79其他文件保留 |
@@ -42,20 +41,20 @@ status: in-progress
 | EF5560 | `EF5560_Fintech_and_AI_in_Finance/notes/M01-金融数据与Vibe-Coding.md` | 修订并验收 | complete_for_provided_material_scope_all_sync_and_remote_verified | 已原子写并精确回读 / 已原子合并并回读；链接/README/完整性问题均为0 / 已写并回读（个人字段未变） / 已提交推送并核远端：6a10b2c |
 | EF5560 | `EF5560_Fintech_and_AI_in_Finance/notes/M02-回归与样本外设计.md` | 修订并验收 | complete_for_provided_material_scope_all_sync_and_remote_verified | 已原子写并精确回读 / 12文件96条顺序补丁已CAS写并回读；2项无增量；链接/README/完整性问题0（仅任务计划有意缩写allow） / 已写并回读（备注/正确代码路径；其余15属性未变） / 已提交推送并核远端：bf70c05 |
 | EF5560 | `EF5560_Fintech_and_AI_in_Finance/notes/M03-线性机器学习与收益预测.md` | 修订并验收 | v23_new61_full_and_targeted_all_scope_source_visual_gate_atomic_local14_notion16_content_git_remote_closed | v22正文/三代码文件原子回读并正式code cwd运行；v23仅摘要一行经原独审定向关闭及full-v2后CAS原子回读 / 10文件CAS原子写/精确回读，4无增量；新6.1两阶段及定向关闭；链接373文件0/README0/自有完整性15计划变动问题0 / 已仅前插本次事实，逐16属性/重载一致，15其他属性/旧全文/8富文本图片不变 / 内容提交ca93c6222f67fd4d58768dfece97c92c0ba8f2c1已推送，远端main同SHA；451blob逐SHA一致，10共享文件仅本批delta；63其他文件字节保留 |
-| EF5560 | `EF5560_Fintech_and_AI_in_Finance/notes/M04-非线性机器学习与收益预测.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS atomic/精确字节回读；实际维护映射见receipt / 8共享目标CAS原子增量合并并精确回读；其余无新增事实；详dependency-sync.json / 16属性真实重开回读：拟写前缀与旧后缀精确，其他15含checkbox值逐一保持；实际AX回读与写前DOM.checked比对，连接断开后无新截图 / 本批待保存 |
+| EF5560 | `EF5560_Fintech_and_AI_in_Finance/notes/M04-非线性机器学习与收益预测.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS atomic/精确字节回读；实际维护映射见receipt / 8共享目标CAS原子增量合并并精确回读；其余无新增事实；详dependency-sync.json / 16属性真实重开回读：拟写前缀与旧后缀精确，其他15含checkbox值逐一保持；实际AX回读与写前DOM.checked比对，连接断开后无新截图 / 已推送69bec8e0…并核远端main；205提交blobs逐SHA一致，公开联系方式变体另有映射 |
 | EF5560 | `EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策.md` | 修订并验收 | 6.1-sol full2stage + original B1–B3 targeted closed; real format-only maintenance mapping | CAS atomic/精确字节回读 / 11共享增量原子合并并精确回读；无新增译名，根表应用条件先合并 / 既有页16属性重载：仅备注/材料版本与3材料复选框；其他11含个人字段不变 / 已推送d795ce9a…并核远端；101blobs逐SHA一致，77其他文件保持 |
 | EF5560 | `EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链.md` | 候选待法源补核 | parallel independentthread started;author preparation then new61independentreview;formal pending | 未开始 / 未开始 / 未开始 / 未开始 |
-| EF5560 | `EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式.md` | 候选待主验收 | new full/targeted/gate package received; not formally written | 未开始 / 未开始 / 未开始 / 未开始 |
+| EF5560 | `EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确字节回读；纯状态维护独立映射 / 8目标已CAS原子增量写/精确回读，4无增量；根表先合并，课程队列后执行 / 既有学习行16属性重载回读：前插精确、旧后缀保留、其他15属性含真实checked保持 / 本批待保存 |
 | IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M01-导论-AI与伦理.md` | 修订并验收 | complete_for_provided_material_scope_all_sync_and_remote_verified | 已原子写并精确回读 / 已原子合并并回读；链接/README/完整性问题均为0 / 已写并回读（个人字段未变） / 已提交推送并核远端：6a10b2c |
 | IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M02-道德理论及其应用.md` | 修订并验收 | full61+targetedthroughv13 accepted;main source/calcs/visual/warnings/fullgate+CAS done | 已CAS原子写回并精确回读；v13教学+纯状态维护 / 14目标：12写回/2无增量；均精确回读 / 正确M02：16属性保存/重载回读，14其他/旧全文4图不变；DDL已核无增量 / 内容提交已推送并核远端，89blob逐SHA一致，62其他文件保留 |
-| IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M03-偏见与公平.md` | 审修中 | existing 6.1-sol independent thread scratch full task dispatched | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M04-AI透明-从看得见到信得过.md` | 审修中 | existing 6.1-sol independent thread scratch full task dispatched | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M05-AI问责-责任链治理与救济.md` | 候选待主验收 | new full/targeted/gate package received; not formally written | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M03-偏见与公平.md` | 候选待主验收 | full/targeted/gate package ready, not formally written | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M04-AI透明-从看得见到信得过.md` | 候选待主验收 | full/targeted/gate package ready, not formally written | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M05-AI问责-责任链治理与救济.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确字节回读；纯状态维护独立映射 / 12目标已CAS原子增量写/精确回读，0无增量；根表先合并，课程队列后执行 / 既有学习行16属性重载回读：前插精确、旧后缀保留、其他15属性含真实checked保持；既有项目9属性只前插要求摘要、其他8含截止/状态/模块关联逐值不变；旧Group17A17B17分配明确保留，仅本轮未重查 / 本批待保存 |
 | IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M06-隐私与监控-从数据采集到行为影响.md` | 审修中 | existing gpt-6.1-sol thread full scratch task dispatched | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS5542 | `IS5542_GenAI_in_Business/notes/M01-导论-生成式AI基础与企业落地.md` | 审修中 | gpt-6.1-sol existing independent thread scratch full task dispatched | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS5542 | `IS5542_GenAI_in_Business/notes/M02-模型全景-基准评测与提示设计.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS5542 | `IS5542_GenAI_in_Business/notes/M03-AI-agent-从harness到部署.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS5542 | `IS5542_GenAI_in_Business/notes/M04-设计思维-业务机会识别与AI创意工作坊.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS5542 | `IS5542_GenAI_in_Business/notes/M01-导论-生成式AI基础与企业落地.md` | 候选待主验收 | full/targeted/gate package ready, not formally written | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS5542 | `IS5542_GenAI_in_Business/notes/M02-模型全景-基准评测与提示设计.md` | 审修中 | existing gpt-6.1-sol thread new full scratch task dispatched | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS5542 | `IS5542_GenAI_in_Business/notes/M03-AI-agent-从harness到部署.md` | 审修中 | existing gpt-6.1-sol thread new full scratch task dispatched | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS5542 | `IS5542_GenAI_in_Business/notes/M04-设计思维-业务机会识别与AI创意工作坊.md` | 审修中 | existing gpt-6.1-sol thread new full scratch task dispatched | 未开始 / 未开始 / 未开始 / 未开始 |
 | IS5542 | `IS5542_GenAI_in_Business/notes/M05-Agentic-AI时代与FDE实践.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
 | IS6400 | `IS6400_Business_Data_Analytics/notes/M01-导论-商业数据分析全景与工具链.md` | 审修中 | existing gpt-6.1-sol thread full scratch task dispatched | 未开始 / 未开始 / 未开始 / 未开始 |
 | IS6400 | `IS6400_Business_Data_Analytics/notes/M02-预测分析-线性回归.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
@@ -93,7 +92,7 @@ status: in-progress
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/assignment/practice/M03-Case3-共同比资产负债表.md` | 修订并验收 | full61 two-stage + targetedB1-B5closed;main source/calculation/visual/warnings/fullv2/CASdone | full-v2/CAS/atomic/exactread / 13目标9已写回/4无增量；已审内容镜像与纯状态维护 / 不适用：无模块新材料/确定计分或DDL / 内容已推送并核远端；62blob逐SHA一致，77其他文件保留 |
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/assignment/practice/M04-Case4-多重性与关系表.md` | 修订并验收 | full61 two-stage + targeted B1/B2/T1closed;currentgate0/source/calcs/actualdisplay/CASdone | full-v2/CAS/atomic/exactread;note35081 and workbook9textcells / 13目标10已写回/3无增量；已审镜像/状态维护；工作簿另已CAS回读 / 不适用：无新模块材料/确定计分DDL / 内容已推并核远端；60blob逐SHA一致，76其他文件保留 |
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/assignment/practice/M05-Case5-销售与收款REA核心模型.md` | 修订并验收 | full61 two-stage+targetedF1-F3closed;realofficialvisual/nums/C4R53dispositions/gate0/exactrawresume done | full-v2/CAS/atomic/exactread;note46085+8currentgraphicassets / 13目标10已写回/3无增量；图源8另已CAS；历史图示报告原文保留 / 不适用：无模块新材料/确定计分DDL，主M05状态不升级 / 内容已推并核远端；84blob逐SHA一致，76其他文件保留 |
-| AC6761 | `AC6761_Artificial_Intelligence_Accounting/assignment/practice/M06-Quiz2-按销售员筛选销售.md` | 修订并验收 | new full2stage + original targeted F1-F3 closed; YAML-only mapping exact | CAS atomic/精确字节回读；实际维护映射见receipt / 4适用目标已写并精确回读；其余无新增术语/考试/行政/材料/转录；源题索引补原件和解析链接 / 不适用：独立练习无新module或已确认计分/DDL，不新建行、不改本人字段、不冒称额外在线回读 / 本批待保存 |
+| AC6761 | `AC6761_Artificial_Intelligence_Accounting/assignment/practice/M06-Quiz2-按销售员筛选销售.md` | 修订并验收 | new full2stage + original targeted F1-F3 closed; YAML-only mapping exact | CAS atomic/精确字节回读；实际维护映射见receipt / 4适用目标已写并精确回读；其余无新增术语/考试/行政/材料/转录；源题索引补原件和解析链接 / 不适用：独立练习无新module或已确认计分/DDL，不新建行、不改本人字段、不冒称额外在线回读 / 已推送69bec8e0…并核远端main；205提交blobs逐SHA一致，公开联系方式变体另有映射 |
 | EF5560 | `EF5560_Fintech_and_AI_in_Finance/assignment/graded/A01-ml-investment/work/EF5560-A01-逐步实操.ipynb` | 审修中 | existing gpt-6.1-sol thread full scratch task dispatched | 未开始 / 未开始 / 未开始 / 未开始 |
 | IS6400 | `IS6400_Business_Data_Analytics/assignment/00-overview/前三周作业复盘.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
 | IS6400 | `IS6400_Business_Data_Analytics/assignment/00-overview/官方参考答案对照与复盘-2026-10-20.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
@@ -510,3 +509,13 @@ AC M06正式b3d76516…（教学d9d55699…＋2状态维护），EF M04正式a55
 ## 2026-10-27 三份收尾批次准备
 
 AC M06 b3d76516…、EF M04 a555b077…、独立Quiz2 ba6b5106…10711bytes均已CAS原子精确写回；Quiz2实际独审教学6715436a…后仅YAML类型/框架字段维护，正文相同，初次分类/缺v2失败保留，未改检查器。F1–F3原审定向关闭，历史ODBC初错与corrected成功、当前ACE同hash证据承接，不冒充重跑或本人保存/提交；9步完整原题保留。M06/EF04本地各8目标、Quiz2四目标已增量合并/回读。M06 Notion重载16/其他15保持；EF04重开成功，真实工具AX输出第17898行已程序提取，旧后缀与另15字段精确，拟写前缀逐字一致，未重复写；扩展再次断开，图片未补，不造截图。完整值/AX仅E私有，库内slim哈希。Quiz2 Notion无新module/确认评分DDL，理由不适用，非额外回读。25/69正文写回、22端闭合；34未开始，10已启动未写（EF07/IS05包已齐，EF06法源仍阻塞）。两完成会话/一个受阻会话已接IS5113M06、IS6400M01、EF两短指南，六流继续；正式主写者唯一。原件/本人状态/其他任务保护。
+
+
+## 2026-10-27 三份内容远端闭合：25/69
+
+内容commit 69bec8e0660305ac4cb40d78283b2aa6791c3d54已推并核远端main；205提交blobs逐SHA一致，15共享目标仅本批/已完整核过的本任务材料状态增量。非本批203文件保持，其中130为本批阅读源图的本地私有副本、73为其他原工作区文件；53609条源码/归档空白诊断限定核对，正常钩子、本人署名、无force/AI署名。11个含联系方式文本只在公开副本脱敏，130不自动认证隐私的源图保留E持久副本/哈希，不造图；本地完整英文原文、正式源稿与v2绑定字节均未改，公开SHA映射单独记录，未重写远端旧历史。M06/EF04 Notion均已真实回读16属性/其他15不变；EF04通过成功重开实际AX记录提取，旧后缀/拟写前缀逐字相同，扩展再次断开仅未补截图，未重复写。Quiz2 Notion不适用理由完整；draft/个人状态保护。现25/69适用各端闭合，44未写（10已启动＋34未开始）。EF07/IS05新包待接；EF06两法源仍阻塞。A02纯行政错派已停止，未纳入完成/计数，正确小包为原范围内EFA01指南＋实操Notebook。状态回执本地随下一批Git，不另审纯状态。
+
+
+## 2026-10-27 两份新全篇写回：27正文
+
+EF07教学c33b7422…／正式f039b2df…155365bytes、IS05教学4406b2bb…／正式8fb876e6…218676bytes已CAS原子/精确回读，随后仅审查状态元数据维护。二者新全篇两阶段/原审定向、来源/必要图文/机器完整gate按实际身份和hash承接，不重算未变项目、不重训。EF07本地8增量/4无增量，IS05本地12增量；根表先合并/队列后，源p6旧班名单和原始大证据只E私有，公开v2指真实原报告与hash，不冒新审。两学习行各16属性重载，旧后缀/其他15真checked保持；IS项目行9属性只要求摘要前插/另8含关联和日期状态保持。已显式保留10/9/10/21的Group17A17B17，未重查当前MyGroups不等于取消旧核实；“展示后7天”只历史对照，不覆盖已核12/1统一截止。个人通过/提交不改。当前27/69正文，25端闭合；34未开始，8已启动未写。原始文件、旧报告、录音空档/外源局限保留，EF06两法源仍受阻。本批Git待。

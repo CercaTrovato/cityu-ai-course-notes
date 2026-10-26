@@ -656,7 +656,7 @@
       "writeback": "CAS atomic/精确字节回读；实际维护映射见receipt",
       "local_sync": "8共享目标CAS原子增量合并并精确回读；其余无新增事实；详dependency-sync.json",
       "notion": "16属性真实重开回读：拟写前缀与旧后缀精确，其他15含checkbox值逐一保持；完整重载DOM.checked与原日期保持；截图已存",
-      "git": "本批待保存",
+      "git": "已推送69bec8e0…并核远端main；205提交blobs逐SHA一致，公开联系方式变体另有映射",
       "sources": [],
       "blockers": [],
       "included": true,
@@ -698,7 +698,11 @@
       "targeted_reviewer": "/root/recheck_ac_m06_repairs_61",
       "formal_sha256": "b3d76516796f909917dc54d972f344ea1562f04483161afdc2cf6e42c9e4fd44",
       "review_receipt": "ac6761-m06-full/review.json",
-      "writeback_receipt": "ac6761-m06-full/writeback.json"
+      "writeback_receipt": "ac6761-m06-full/writeback.json",
+      "git_commit": "69bec8e0660305ac4cb40d78283b2aa6791c3d54",
+      "git_remote_confirmed_at_content_save": "69bec8e0660305ac4cb40d78283b2aa6791c3d54",
+      "published_note_sha256": "28e159b8bb0957312d720b30140c3cb42fbd6ce467f0e85408f81da5667ca452",
+      "git_receipt": "ac6761-m06-full/batch-git.json"
     },
     {
       "id": "ac6761-m08",
@@ -1368,7 +1372,7 @@
       "writeback": "CAS atomic/精确字节回读；实际维护映射见receipt",
       "local_sync": "8共享目标CAS原子增量合并并精确回读；其余无新增事实；详dependency-sync.json",
       "notion": "16属性真实重开回读：拟写前缀与旧后缀精确，其他15含checkbox值逐一保持；实际AX回读与写前DOM.checked比对，连接断开后无新截图",
-      "git": "本批待保存",
+      "git": "已推送69bec8e0…并核远端main；205提交blobs逐SHA一致，公开联系方式变体另有映射",
       "sources": [],
       "blockers": [],
       "included": true,
@@ -1393,7 +1397,11 @@
       "candidate_sha256": "a555b07747ba3798dd70f392fc507772155043f4a8b67b12bb976358c82138ec",
       "formal_sha256": "a555b07747ba3798dd70f392fc507772155043f4a8b67b12bb976358c82138ec",
       "review_receipt": "ef5560-m04-full/review.json",
-      "writeback_receipt": "ef5560-m04-full/writeback.json"
+      "writeback_receipt": "ef5560-m04-full/writeback.json",
+      "git_commit": "69bec8e0660305ac4cb40d78283b2aa6791c3d54",
+      "git_remote_confirmed_at_content_save": "69bec8e0660305ac4cb40d78283b2aa6791c3d54",
+      "published_note_sha256": "a555b07747ba3798dd70f392fc507772155043f4a8b67b12bb976358c82138ec",
+      "git_receipt": "ef5560-m04-full/batch-git.json"
     },
     {
       "id": "ef5560-m05",
@@ -1476,11 +1484,11 @@
       "bytes": 119797,
       "lines": 2434,
       "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ef5560-m07",
-      "teaching_state": "候选待主验收",
-      "writeback": "未开始",
-      "local_sync": "未开始",
-      "notion": "未开始",
-      "git": "未开始",
+      "teaching_state": "修订并验收",
+      "writeback": "CAS原子/精确字节回读；纯状态维护独立映射",
+      "local_sync": "8目标已CAS原子增量写/精确回读，4无增量；根表先合并，课程队列后执行",
+      "notion": "既有学习行16属性重载回读：前插精确、旧后缀保留、其他15属性含真实checked保持",
+      "git": "本批待保存",
       "sources": [],
       "blockers": [],
       "included": true,
@@ -1489,13 +1497,17 @@
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
-      "review_stage": "new full/targeted/gate package received; not formally written",
+      "review_stage": "original complete two-stage + all actual targeted defects closed; original identities/scopes preserved",
       "parallel_thread": {
         "id": "01a17880-c4a8-7b10-9572-04671414dc20",
         "output": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef07",
         "permissions": "scratchonly;root sole formal writer"
       },
-      "handoff": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef07\\handoff-final.json"
+      "handoff": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef07\\handoff-final.json",
+      "candidate_sha256": "c33b7422e6fa4f04d640c3d7ab3b88721b04414fa60f93647d6f0a86d3e74ab5",
+      "formal_sha256": "f039b2dfee8d3d9ad7b96b5078da0e2e8285f55e3125384ff4f4a3d35776136e",
+      "review_receipt": "ef5560-m07-full/review.json",
+      "writeback_receipt": "ef5560-m07-full/writeback.json"
     },
     {
       "id": "is5113-m01",
@@ -1694,62 +1706,6 @@
       "bytes": 336794,
       "lines": 5697,
       "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/is5113-m03",
-      "teaching_state": "审修中",
-      "writeback": "未开始",
-      "local_sync": "未开始",
-      "notion": "未开始",
-      "git": "未开始",
-      "sources": [],
-      "blockers": [],
-      "included": true,
-      "scope_classification": "included",
-      "scope_reason": "五门课现有 M/T 主笔记，属于任务单明确全篇重审范围。",
-      "teaching_sections": [
-        "全文：现有全部教学章节、折叠答案、图与自测"
-      ],
-      "review_stage": "existing 6.1-sol independent thread scratch full task dispatched",
-      "parallel_thread": {
-        "id": "01a1787d-ea2e-7092-b7b4-68d964200cd5",
-        "output": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is5113-m03",
-        "permissions": "scratchonly; main sole formal writer"
-      }
-    },
-    {
-      "id": "is5113-m04",
-      "path": "IS5113_AI_Ethics_and_Regulations/notes/M04-AI透明-从看得见到信得过.md",
-      "kind": "primary",
-      "baseline_sha256": "ee9f0ae7bc90252ffe6b3266c72f99c1ea9bf97c5c57c392dca1b0695b5a4e2b",
-      "bytes": 367839,
-      "lines": 6012,
-      "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/is5113-m04",
-      "teaching_state": "审修中",
-      "writeback": "未开始",
-      "local_sync": "未开始",
-      "notion": "未开始",
-      "git": "未开始",
-      "sources": [],
-      "blockers": [],
-      "included": true,
-      "scope_classification": "included",
-      "scope_reason": "五门课现有 M/T 主笔记，属于任务单明确全篇重审范围。",
-      "teaching_sections": [
-        "全文：现有全部教学章节、折叠答案、图与自测"
-      ],
-      "review_stage": "existing 6.1-sol independent thread scratch full task dispatched",
-      "parallel_thread": {
-        "id": "01a17880-c07b-76e3-a087-e32899fef38a",
-        "output": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is5113-m04",
-        "permissions": "scratchonly; main sole formal writer"
-      }
-    },
-    {
-      "id": "is5113-m05",
-      "path": "IS5113_AI_Ethics_and_Regulations/notes/M05-AI问责-责任链治理与救济.md",
-      "kind": "primary",
-      "baseline_sha256": "80bbba2f6525a915006525daf3866a821c74f5afa137af91b70b2728adc53e91",
-      "bytes": 181356,
-      "lines": 3353,
-      "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/is5113-m05",
       "teaching_state": "候选待主验收",
       "writeback": "未开始",
       "local_sync": "未开始",
@@ -1763,13 +1719,75 @@
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
-      "review_stage": "new full/targeted/gate package received; not formally written",
+      "review_stage": "full/targeted/gate package ready, not formally written",
+      "parallel_thread": {
+        "id": "01a1787d-ea2e-7092-b7b4-68d964200cd5",
+        "output": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is5113-m03",
+        "permissions": "scratchonly; main sole formal writer"
+      },
+      "handoff": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is5113-m03\\handoff.json"
+    },
+    {
+      "id": "is5113-m04",
+      "path": "IS5113_AI_Ethics_and_Regulations/notes/M04-AI透明-从看得见到信得过.md",
+      "kind": "primary",
+      "baseline_sha256": "ee9f0ae7bc90252ffe6b3266c72f99c1ea9bf97c5c57c392dca1b0695b5a4e2b",
+      "bytes": 367839,
+      "lines": 6012,
+      "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/is5113-m04",
+      "teaching_state": "候选待主验收",
+      "writeback": "未开始",
+      "local_sync": "未开始",
+      "notion": "未开始",
+      "git": "未开始",
+      "sources": [],
+      "blockers": [],
+      "included": true,
+      "scope_classification": "included",
+      "scope_reason": "五门课现有 M/T 主笔记，属于任务单明确全篇重审范围。",
+      "teaching_sections": [
+        "全文：现有全部教学章节、折叠答案、图与自测"
+      ],
+      "review_stage": "full/targeted/gate package ready, not formally written",
+      "parallel_thread": {
+        "id": "01a17880-c07b-76e3-a087-e32899fef38a",
+        "output": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is5113-m04",
+        "permissions": "scratchonly; main sole formal writer"
+      },
+      "handoff": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is5113-m04\\handoff.json"
+    },
+    {
+      "id": "is5113-m05",
+      "path": "IS5113_AI_Ethics_and_Regulations/notes/M05-AI问责-责任链治理与救济.md",
+      "kind": "primary",
+      "baseline_sha256": "80bbba2f6525a915006525daf3866a821c74f5afa137af91b70b2728adc53e91",
+      "bytes": 181356,
+      "lines": 3353,
+      "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/is5113-m05",
+      "teaching_state": "修订并验收",
+      "writeback": "CAS原子/精确字节回读；纯状态维护独立映射",
+      "local_sync": "12目标已CAS原子增量写/精确回读，0无增量；根表先合并，课程队列后执行",
+      "notion": "既有学习行16属性重载回读：前插精确、旧后缀保留、其他15属性含真实checked保持；既有项目9属性只前插要求摘要、其他8含截止/状态/模块关联逐值不变；旧Group17A17B17分配明确保留，仅本轮未重查",
+      "git": "本批待保存",
+      "sources": [],
+      "blockers": [],
+      "included": true,
+      "scope_classification": "included",
+      "scope_reason": "五门课现有 M/T 主笔记，属于任务单明确全篇重审范围。",
+      "teaching_sections": [
+        "全文：现有全部教学章节、折叠答案、图与自测"
+      ],
+      "review_stage": "original complete two-stage + all actual targeted defects closed; original identities/scopes preserved",
       "parallel_thread": {
         "id": "01a17880-ce9e-7390-876c-f980eae405af",
         "output": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is5113-m05",
         "permissions": "scratchonly; main sole formal writer"
       },
-      "handoff": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is5113-m05\\handoff.json"
+      "handoff": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is5113-m05\\handoff.json",
+      "candidate_sha256": "4406b2bb8a5b26830eab68c74fdbd1418fe2d73b0c56ccb10ba1513e550c8f83",
+      "formal_sha256": "8fb876e6ebadf0a95c1eab3b61570ef0422d0212834d58f43d5169c1345203ba",
+      "review_receipt": "is5113-m05-full/review.json",
+      "writeback_receipt": "is5113-m05-full/writeback.json"
     },
     {
       "id": "is5113-m06",
@@ -1807,6 +1825,35 @@
       "bytes": 215084,
       "lines": 3756,
       "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/is5542-m01",
+      "teaching_state": "候选待主验收",
+      "writeback": "未开始",
+      "local_sync": "未开始",
+      "notion": "未开始",
+      "git": "未开始",
+      "sources": [],
+      "blockers": [],
+      "included": true,
+      "scope_classification": "included",
+      "scope_reason": "五门课现有 M/T 主笔记，属于任务单明确全篇重审范围。",
+      "teaching_sections": [
+        "全文：现有全部教学章节、折叠答案、图与自测"
+      ],
+      "review_stage": "full/targeted/gate package ready, not formally written",
+      "parallel_thread": {
+        "id": "01a17880-c969-7903-8d68-5ede38386267",
+        "output": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is5542-m01",
+        "permissions": "scratchonly; root sole formal writer"
+      },
+      "handoff": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is5542-m01\\handoff.json"
+    },
+    {
+      "id": "is5542-m02",
+      "path": "IS5542_GenAI_in_Business/notes/M02-模型全景-基准评测与提示设计.md",
+      "kind": "primary",
+      "baseline_sha256": "2e8e43ff24d101f36bed647ec905fbae83dcd58e887481b223d59f3d201761ef",
+      "bytes": 262390,
+      "lines": 4768,
+      "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/is5542-m02",
       "teaching_state": "审修中",
       "writeback": "未开始",
       "local_sync": "未开始",
@@ -1820,34 +1867,12 @@
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
-      "review_stage": "gpt-6.1-sol existing independent thread scratch full task dispatched",
+      "review_stage": "existing gpt-6.1-sol thread new full scratch task dispatched",
       "parallel_thread": {
-        "id": "01a17880-c969-7903-8d68-5ede38386267",
-        "output": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is5542-m01",
-        "permissions": "scratchonly; root sole formal writer"
+        "id": "01a1787d-ea2e-7092-b7b4-68d964200cd5",
+        "output": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is5542-m02",
+        "permissions": "scratchonly;root sole writer"
       }
-    },
-    {
-      "id": "is5542-m02",
-      "path": "IS5542_GenAI_in_Business/notes/M02-模型全景-基准评测与提示设计.md",
-      "kind": "primary",
-      "baseline_sha256": "2e8e43ff24d101f36bed647ec905fbae83dcd58e887481b223d59f3d201761ef",
-      "bytes": 262390,
-      "lines": 4768,
-      "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/is5542-m02",
-      "teaching_state": "未开始",
-      "writeback": "未开始",
-      "local_sync": "未开始",
-      "notion": "未开始",
-      "git": "未开始",
-      "sources": [],
-      "blockers": [],
-      "included": true,
-      "scope_classification": "included",
-      "scope_reason": "五门课现有 M/T 主笔记，属于任务单明确全篇重审范围。",
-      "teaching_sections": [
-        "全文：现有全部教学章节、折叠答案、图与自测"
-      ]
     },
     {
       "id": "is5542-m03",
@@ -1857,7 +1882,7 @@
       "bytes": 375221,
       "lines": 6460,
       "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/is5542-m03",
-      "teaching_state": "未开始",
+      "teaching_state": "审修中",
       "writeback": "未开始",
       "local_sync": "未开始",
       "notion": "未开始",
@@ -1869,7 +1894,13 @@
       "scope_reason": "五门课现有 M/T 主笔记，属于任务单明确全篇重审范围。",
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
-      ]
+      ],
+      "review_stage": "existing gpt-6.1-sol thread new full scratch task dispatched",
+      "parallel_thread": {
+        "id": "01a17880-c07b-76e3-a087-e32899fef38a",
+        "output": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is5542-m03",
+        "permissions": "scratchonly;root sole writer"
+      }
     },
     {
       "id": "is5542-m04",
@@ -1879,7 +1910,7 @@
       "bytes": 68375,
       "lines": 1133,
       "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/is5542-m04",
-      "teaching_state": "未开始",
+      "teaching_state": "审修中",
       "writeback": "未开始",
       "local_sync": "未开始",
       "notion": "未开始",
@@ -1891,7 +1922,13 @@
       "scope_reason": "五门课现有 M/T 主笔记，属于任务单明确全篇重审范围。",
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
-      ]
+      ],
+      "review_stage": "existing gpt-6.1-sol thread new full scratch task dispatched",
+      "parallel_thread": {
+        "id": "01a17880-c969-7903-8d68-5ede38386267",
+        "output": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is5542-m04",
+        "permissions": "scratchonly;root sole writer"
+      }
     },
     {
       "id": "is5542-m05",
@@ -3285,7 +3322,7 @@
       "writeback": "CAS atomic/精确字节回读；实际维护映射见receipt",
       "local_sync": "4适用目标已写并精确回读；其余无新增术语/考试/行政/材料/转录；源题索引补原件和解析链接",
       "notion": "不适用：独立练习无新module或已确认计分/DDL，不新建行、不改本人字段、不冒称额外在线回读",
-      "git": "本批待保存",
+      "git": "已推送69bec8e0…并核远端main；205提交blobs逐SHA一致，公开联系方式变体另有映射",
       "sources": [],
       "blockers": [],
       "included": true,
@@ -3301,7 +3338,11 @@
       "candidate_sha256": "ba6b51069abd38fa75bf86356f08ea11f7c5cce83718c4f24432f3186262bb61",
       "formal_sha256": "ba6b51069abd38fa75bf86356f08ea11f7c5cce83718c4f24432f3186262bb61",
       "review_receipt": "ac6761-quiz2-full/review.json",
-      "writeback_receipt": "ac6761-quiz2-full/writeback.json"
+      "writeback_receipt": "ac6761-quiz2-full/writeback.json",
+      "git_commit": "69bec8e0660305ac4cb40d78283b2aa6791c3d54",
+      "git_remote_confirmed_at_content_save": "69bec8e0660305ac4cb40d78283b2aa6791c3d54",
+      "published_note_sha256": "9b6346b2f6cd975de78345a565c229cd4c98e1845737ca7366fb97b3f8d629d9",
+      "git_receipt": "ac6761-quiz2-full/batch-git.json"
     },
     {
       "id": "ef5560-c4ac9c2773e7",
@@ -3405,14 +3446,14 @@
   ],
   "confirmed_review_total": 69,
   "latest_checkpoint": {
-    "time": "2026-10-27T01:49:28.707828+08:00",
-    "formal_written": 25,
-    "all_applicable_closed": 22,
-    "remaining_formal": 44,
-    "unstarted": 34,
-    "working": 10,
-    "next": "save M06/EF04/Quiz2 batch; receive EF07/IS05; six threads reused for remaining work; EF06 law blockers retained",
-    "sync_closed": "PC/mobile prior confirmation inherited, no re-enable evidence"
+    "time": "2026-10-27T03:58:44.664434+08:00",
+    "formal_written": 27,
+    "all_applicable_closed": 25,
+    "remaining_formal": 42,
+    "unstarted": 31,
+    "working": 11,
+    "next": "save EF07/IS05; receive IS03/IS04/IS54M01; six streams advance other included items, EF06 law hold",
+    "sync_closed": "PC/mobile inherited confirmation, no re-enable evidence"
   },
   "resume_20261025": {
     "model_verified": "gpt-6.1-sol/xhigh from current rollout turn_context",
@@ -3486,7 +3527,7 @@
   "paused_at": "2026-10-25T18:54:20+08:00",
   "pause_instruction": "暂停",
   "live_agents_at_pause": "all visible child agents completed; no review left running",
-  "last_verified_git": "d795ce9a9b20fa1e013e5322f83beeee60859abf",
+  "last_verified_git": "69bec8e0660305ac4cb40d78283b2aa6791c3d54",
   "resumed_20261025_latest": {
     "user": "继续",
     "scope": "M08 dependency sync then pending queue",

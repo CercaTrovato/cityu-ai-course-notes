@@ -12,16 +12,18 @@ status: v1.0
 quality_spec: v1
 mechanism_spec: v1
 mechanism_review: passed
-updated: 2026-09-30
+updated: 2026-10-26
+teaching_standard: novice-v1
+date_basis: 2026-09-29 为讲义页脚日期；实际授课日期仍未由本次来源独立确认
 readability_rules: v2
-readability_review: pending
+readability_review: passed
 ---
 
 # M05 · AI 问责：谁解释、谁审查、谁纠正
 
-> **本轮候选状态**：readability v2 作者候选，集中教学语义与最终视觉验收 pending。材料 status/transcript 保留原值；下方旧机制/验收记录属于历史版本，不代表本候选已通过。
+> **材料与教学状态分开**：本篇保留材料 v1.0／转录 merged。2026-10-26 全篇重审的候选、独立报告、来源与显示证据由本批回执绑定；下方 2026-09-30 的评分和验收属于历史，不能作为本次教学放行。本人通读、自测与提交状态不由笔记生成推定。
 
-> **原始材料**：`Module 5 - AI Accountability.pdf`（93 页）和 `IS5113 Group Project.pdf`（6 页）。**转录**：`merged`，来源 `M05-transcript-partial.txt`；已完成本篇严格质量与8组机制迁移的代理阅读检验，仍保留材料缺口。源共 721 段，其中 12 段为自动过滤后恢复的候选，候选未逐段回听，详同名 provenance 文件。应用原英文转录未修改。
+> **原始材料**：`Module 5 - AI Accountability.pdf`（93 页）和 `IS5113 Group Project.pdf`（6 页）。**转录**：`merged`，来源 `M05-transcript-partial.txt`；2026-09-30 历史记录曾完成严格质量与 8 组迁移阅读检验，本次不沿用其教学通过结论；材料缺口保留。源共 721 段，其中 12 段为自动过滤后恢复的候选，候选未逐段回听，详同名 provenance 文件。应用原英文转录未修改。
 > **先知道三项边界**：
 
 1.  开头已在讲小组项目，开课前文未录到；
@@ -136,7 +138,7 @@ p.6 的分组截图、p.76 六原则图、p.90 论文首页、p.91–92 两表�
 
 - 法律现状与公司新版原则用外部来源及核对日期。
 
-个人评分项目只登记通用要求，不公开团队完整答案。
+个人完整作答仍在作业区单独组织，按现行《备份与公开发布规则》处理；本篇不替团队选题或确认成员行为。
 
 本文没有把假设案例当真实判例，也没有把企业原则当法律。
 
@@ -163,6 +165,8 @@ p.6 的分组截图、p.76 六原则图、p.90 论文首页、p.91–92 两表�
 两部分各不超过 15 页；页数上限不是目标长度。
 
 M05 p.1 的 5–7 人口径已由课堂纠正为最多 8 人。
+
+项目与期末笔试必须分别通过，不能用另一部分高分补偿其中一项未通过。讲义 p.1 和独立项目文件 p.1 都写明这一点，课堂 `01:28`–`01:36` 再次强调。这里没有给出 pass 的具体分数线，不按旧版本或模型猜数值；本人是否已通过也不由材料制作推定。
 
 **为什么需要它**：知道公平、透明和问责的定义，还不等于能治理真实业务。
 
@@ -208,7 +212,270 @@ p.6 是 Canvas 分组操作示意，截图属于旧学期；用途是说明应�
 
 **与其他概念的关系**：项目把 [[M03-偏见与公平]] 的公平判断和 [[M04-AI透明-从看得见到信得过]] 的解释要求放进本讲的责任链。
 
-**所以呢**：先确认分组、分配题目与展示日期，再建立证据表和行动清单；个人完整作答留在私有作业目录。
+**所以呢**：先确认分组、分配题目与展示日期，再建立证据表和行动清单；个人完整作答在作业目录单独组织，公开范围按现行规则。
+
+<details><summary>项目原件 Appendix A / B：完整 18 个主题与 18 个行业选项（英文）</summary>
+
+APPENDIX A: Current AI ethics topics
+
+
+#### 1. Algorithmic Bias in Hiring Platforms
+
+中文题意：研究招聘平台如何筛选求职者、为什么可能复制偏见；分析现实案例并提出公平招聘的伦理框架。
+
+Investigate how AI-driven recruitment tools may perpetuate bias. Analyze real-world cases and
+propose ethical frameworks for fair hiring.
+
+#### 2. Ethical Implications of AI in Financial Decision-Making
+
+中文题意：研究信用评分、贷款批准与投资建议中的 AI，比较歧视风险和决定是否可被理解、质询。
+
+Explore how AI is used in credit scoring, loan approvals, and investment advice. Assess risks of
+discrimination and transparency.
+
+#### 3. AI and Consumer Privacy in E-Commerce
+
+中文题意：研究电商推荐与定向广告怎样使用个人资料，提出资料处理的伦理指引。
+
+Evaluate how recommendation engines and targeted advertising use personal data. Propose ethical
+guidelines for data handling.
+
+#### 4. Surveillance and Workplace Monitoring
+
+中文题意：研究雇主用 AI 监控员工的边界，同时考虑法律条件与对员工心理的影响。
+
+Analyze the ethical boundaries of AI-powered employee monitoring systems. Include legal and
+psychological perspectives.
+
+#### 5. Autonomous Vehicles and Corporate Responsibility
+
+中文题意：研究自动驾驶决定中的伦理冲突，分别讨论安全、公司问责与法律后果。
+
+Study ethical dilemmas in self-driving car decision-making. Discuss liability, safety, and business
+accountability.
+
+#### 6. Deepfakes and Brand Reputation
+
+中文题意：研究深度伪造（deepfake，即用生成技术合成逼真假影像或声音）怎样损害品牌信誉，并提出识别与应对政策。
+
+Investigate how deepfake technology can impact businesses. Develop a policy framework for
+detection and response.
+
+#### 7. AI in Healthcare Startups: Ethics of Diagnosis
+
+中文题意：研究医疗初创公司的 AI 诊断工具，关注准确性、患者知情同意与责任分担。
+
+Examine ethical concerns in AI diagnostic tools used by health tech startups. Focus on accuracy,
+consent, and liability.
+
+#### 8. Ethical Supply Chain Management with AI
+
+中文题意：研究 AI 优化采购、生产和运输等供应链过程时，对劳动者、环境持续性及透明的风险。
+
+Explore how AI is used to optimize supply chains. Assess ethical risks related to labor, sustainability,
+and transparency.
+
+#### 9. AI and Misinformation in Marketing
+
+中文题意：研究营销生成内容怎样产生或传播错误信息，并提出内容制作的伦理标准。
+
+Analyze how generative AI can be used (or misused) in marketing campaigns. Propose ethical
+standards for content creation.
+
+#### 10. Predictive Policing and Corporate Vendors
+
+中文题意：研究向警方销售预测工具的公司；预测警务（predictive policing）用历史资料推测风险地点或对象，需检查种族刻画与问责问题。
+
+Study companies that sell predictive policing tools. Evaluate ethical concerns around racial profiling
+and accountability.
+
+#### 11. AI Ethics in Customer Service Chatbots
+
+中文题意：研究客服聊天机器人如何处理敏感资料和用户情绪，提出伦理设计原则。
+
+Assess how chatbots handle sensitive customer data and emotional interactions. Propose ethical
+design principles.
+
+#### 12. Corporate Governance and AI Ethics Boards
+
+中文题意：研究企业内部 AI 伦理委员会是否真正能审查和改变行动，评价效果并提出改进。
+
+Research how companies are setting up internal AI ethics boards. Evaluate effectiveness and
+propose improvements.
+
+#### 13. AI in Gig Economy Platforms
+
+中文题意：研究平台怎样用算法派单、评价或约束零工；零工经济（gig economy）指以按单任务为主的平台劳动，重点是公平与劳动者自主。
+
+Explore ethical issues in algorithmic management of gig workers (e.g., Uber, Deliveroo). Focus on
+fairness and autonomy.
+
+#### 14. Environmental Impact of AI Infrastructure
+
+中文题意：研究训练和运行 AI 所需服务器、能源等基础设施的碳排放，提出环境持续性策略。
+
+Investigate the carbon footprint of AI systems in business. Propose ethical sustainability strategies.
+
+#### 15. Cross-Cultural Ethics in Global AI Deployment
+
+中文题意：研究跨文化部署中伦理规范为何不同，为跨国公司建立有共同底线又考虑本地情境的框架。
+
+Analyze how ethical norms vary across cultures in AI applications. Develop a framework for
+multinational companies.
+
+#### 16. Ethics of Emotion Recognition in Retail
+
+中文题意：研究零售店用 AI 推测顾客情绪时的同意、操控与心理影响，不把表情推断直接当真实情绪事实。
+
+Study the use of AI to analyze customer emotions in stores. Discuss consent, manipulation, and
+psychological impact.
+
+#### 17. AI Ethics in Financial Trading Algorithms
+
+中文题意：研究高频交易等金融算法的伦理风险；高频交易（high-frequency trading）以自动程序极快地连续交易，关注透明和公平。
+
+Explore ethical risks in high-frequency trading and algorithmic decision-making. Focus on
+transparency and fairness.
+
+#### 18. Corporate Use of Generative AI for Internal Communications
+
+中文题意：研究企业用生成式 AI 写备忘录、报告和人事通信的错误信息与信任风险。
+
+Assess ethical risks of using generative AI for memos, reports, and HR communications. Discuss
+misinformation and trust.
+
+APPENDIX B: AI ethics policy development for a specific industry or sector
+
+
+#### 1. Finance: Ethical AI Policy for Credit Scoring
+
+中文题意：为银行或金融科技公司的信用评分制定政策，落实公平、透明与问责。
+
+Develop a policy to ensure fairness, transparency, and accountability in AI-driven credit scoring
+systems used by banks and fintech firms.
+
+#### 2. Healthcare: AI Ethics Policy for Diagnostic Tools
+
+中文题意：为医院或医疗初创公司的诊断工具制定政策，覆盖知情同意、隐私与偏见缓解。
+
+Create a policy framework for startups or hospitals using AI for medical diagnosis, focusing on
+consent, data privacy, and bias mitigation.
+
+#### 3. Retail: Responsible AI Use in Customer Behavior Prediction
+
+中文题意：为零售顾客行为预测制定政策，处理监控、操控与资料使用。
+
+Draft a policy for retailers that use AI to predict customer behavior, addressing ethical concerns
+about surveillance, manipulation, and data use.
+
+#### 4. Human Resources: AI Ethics in Automated Hiring
+
+中文题意：为自动招聘制定政策，防止不合理差别、说明筛选过程并保护申请者权利。
+
+Design a policy for companies using AI in recruitment to prevent discrimination, ensure
+transparency, and uphold candidate rights.
+
+#### 5. Transportation: Ethics Policy for Autonomous Vehicle Decision-Making
+
+中文题意：为车辆制造商或车队制定自动驾驶决策政策，明确伦理判断与责任机制。
+
+Propose a policy for manufacturers or fleet operators to guide ethical decision-making in
+autonomous vehicle algorithms.
+
+#### 6. Education: AI Ethics in Adaptive Learning Platforms
+
+中文题意：为自适应学习平台制定政策；平台按学习记录调整内容，需检查机会公平、数据保护与推荐是否可理解。
+
+Create a policy for ed-tech companies using AI to personalize learning, focusing on equity, data
+protection, and algorithmic transparency.
+
+#### 7. Legal Services: AI Ethics in Predictive Legal Analytics
+
+中文题意：为预测法律案件结果的工具制定政策，关注公平与误用，不把统计预测当成法律裁决。
+
+Draft a policy for law firms or legal tech startups that use AI to predict case outcomes, ensuring
+fairness and preventing misuse.
+
+#### 8. Insurance: AI Ethics in Risk Assessment and Claims Processing
+
+中文题意：为保险风险评估与理赔制定政策，检查偏见、决定解释与客户权利。
+
+Develop a policy for insurers using AI to assess risk and process claims, addressing bias,
+explainability, and customer rights.
+
+#### 9. Real Estate: AI Ethics in Property Valuation and Market Forecasting
+
+中文题意：为房产估价和市场预测制定政策，说明资料来源、利益冲突与公平影响。
+
+Create a policy for real estate platforms that use AI to value properties and forecast trends, with a
+focus on transparency and fairness.
+
+#### 10. Media & Entertainment: AI Ethics in Content Recommendation
+
+中文题意：为媒体内容推荐制定政策，处理过滤气泡（反复只看到同类观点）、操控与文化偏见。
+
+Design a policy for AI-driven streaming platforms to recommend content, addressing filter bubbles,
+manipulation, and cultural bias.
+
+#### 11. Cybersecurity: AI Ethics in Threat Detection Systems
+
+中文题意：为网络威胁检测制定政策，比较把正常活动错当威胁的误报、隐私和人工监督。
+
+Draft a policy for cybersecurity firms using AI to detect threats, focusing on false positives, privacy,
+and human oversight.
+
+#### 12. Manufacturing: AI Ethics in Predictive Maintenance
+
+中文题意：为预测维护制定政策；预测维护（predictive maintenance）用设备状态资料预判故障，关注工人安全、数据真实性和自动化后果。
+
+Create a policy for manufacturers using AI to predict equipment failures, addressing worker safety,
+data integrity, and automation ethics.
+
+#### 13. Hospitality: AI Ethics in Guest Experience Personalization
+
+中文题意：为酒店个性化服务制定政策，处理顾客同意、隐私和文化敏感性。
+
+Develop a policy for hotels using AI to personalize guest experiences, ensuring consent, privacy, and
+cultural sensitivity.
+
+#### 14. Logistics: AI Ethics in Route Optimization and Delivery Automation
+
+中文题意：为路线优化与自动配送制定政策，关注劳动条件和算法分配是否公平。
+
+Draft a policy for logistics firms that use AI to optimize routes and automate deliveries, addressing
+labor impacts and algorithmic fairness.
+
+#### 15. Gaming: AI Ethics in Player Behavior Prediction
+
+中文题意：为游戏预测和影响玩家行为制定政策，防止利用成瘾倾向，保障公平与知情同意。
+
+Create a policy for gaming companies using AI to predict and influence player behavior, focusing on
+addiction, fairness, and consent.
+
+#### 16. Government Services: AI Ethics in Public Service Automation
+
+中文题意：为政府公共服务自动化制定政策，保证机会公平、决定透明并能向公众说明和接受审查。
+
+Design a policy for government agencies using AI to automate services, ensuring equity,
+transparency, and public accountability.
+
+#### 17. Fashion: AI Ethics in Trend Forecasting and Design Automation
+
+中文题意：为时尚趋势预测和设计自动化制定政策，讨论原创、文化挪用与持续性；文化挪用（cultural appropriation）指使用他人文化元素时可能忽略其意义、利益或不平等关系的争议，需结合具体事实判断。
+
+Propose a policy for fashion brands that use AI to forecast trends and automate design, addressing
+issues of originality, cultural appropriation, and sustainability.
+
+#### 18. Telecommunications: AI Ethics in Network Optimization and Customer Support
+
+中文题意：为电信网络优化与自动客服制定政策，落实公平、隐私与不同用户都能获得服务的可达性。
+
+Develop a policy for telecom companies that use AI to manage networks and automate customer
+service, with a focus on fairness, privacy, and accessibility.
+
+</details>
+
+上述为原件完整分配选项，不是要求本篇替团队完成全部 36 项作答。本人被分配的主题、行业、成员与展示日期仍须由实际安排确认。
 
 ### 2.2 评分表怎样变成写作检查表（讲义 p.4–5）
 
@@ -258,6 +525,8 @@ p.5 增加政策框架、利益相关者和实施策略。
 
 ### 2.3 问责是一种关系，不只是“出了事找谁”（讲义 p.10–11、p.40–41）
 
+
+
 <!-- 类型: 定义型 -->
 
 假设银行系统拒绝贷款，申请人问“为什么”，银行只回答“模型算的”。
@@ -270,6 +539,12 @@ p.5 增加政策框架、利益相关者和实施策略。
 
 讲义定义的关键词是解释、正当化与后果。
 
+讲义 p.11 的完整定义是：
+
+> “a relationship between an actor and a forum, in which the actor has an obligation to explain and to justify his or her conduct, the forum can pose questions and pass judgment, and the actor may face consequences.”
+
+中文意思：主体要说明自己做了什么以及为什么有理由这样做；问责方能够提问和判断，主体可能面对后果。这里的“可能”不表示每次解释都会受处罚。
+
 英文短定义可记为：“An obligation to explain and justify conduct to a forum and face consequences.”（笔记概括，不冒称逐字讲义。）
 
 **为什么需要它**：复杂 AI 系统由数据、模型、流程与组织共同构成。
@@ -280,6 +555,25 @@ p.5 增加政策框架、利益相关者和实施策略。
 
 只有主体、没有问责方，容易变成内部自我宣告。
 
+下面保留对应页的完整英文题面与给定提示。先用前面的中文对象和规则读题，再跟随下文逐问分析；英文参考答案用于理解后的应试对照。
+
+<details><summary>英文原题与给定提示 · p.40</summary>
+
+A PRACTICAL FRAMEWORK FOR  
+ACCOUNTABILITY  
+When evaluating any AI system, ask five questions:  
+1.   Who is responsible? (Is ownership clearly assigned?)  
+2.   Who is affected? (Which individuals or groups may  
+experience benefits or harms)  
+3.   How is the system monitored? (Are performance and  
+risks continuously assessed?)  
+4.   Can decisions be explained? (Is there a mechanism  
+for justification and appeal?)  
+5.   What happens if things go wrong? (Are there  
+remediation and governance processes?)
+
+</details>
+
 **课件原例**：p.11 将决策者、开发者、用户都放进社会技术系统。
 
 问责可能针对代码的一部分，也可能针对整个系统。
@@ -287,6 +581,14 @@ p.5 增加政策框架、利益相关者和实施策略。
 p.40 的五问依次是：谁负责、谁受影响、怎样监测、能否解释、出错怎么办。
 
 p.41 把设计、部署、运行和后果连为一条生命周期链。
+
+**p.40 五问的中文参考作答（笔记补充）**：沿用拒贷例，不把以下角色分配当各机构统一法定制度。
+
+1. 谁负责：贷款业务负责人说明该用途和批准理由，数据/模型团队提供其控制环节证据，独立复核者审查异议。
+2. 谁受影响：申请人及同类申请者可能失去机会；他们没有登录模型也可能受影响。
+3. 怎样监测：指定人员持续查看误拒、群体差异、投诉和输入变化；触发异常后交有权者调查与限制风险，而不是只展示指标。
+4. 能否解释：给申请人可核对资料和关键理由，给授权复核者适当版本与测试证据，并保留质询渠道。
+5. 出错怎么办：保全事实、纠正已证错误、按情境实施救济并核执行结果；发现同类问题还要扩大检查。
 
 **机制与完整例子（笔记补充）**
 
@@ -312,19 +614,23 @@ p.41 把设计、部署、运行和后果连为一条生命周期链。
 
 
 ```mermaid
-flowchart LR
+flowchart TD
  A[争议决定与记录] --> B[确认主体和问责方]
  B --> C[取证并解释理由]
- C --> D[问责方提问与判断]
- D --> E{证据是否充分且决定可支持}
- E -->|否| F[补证或纠正与救济]
- F --> D
- E -->|是| G[记录结论并告知复核渠道]
+ C --> D{关键证据充分吗}
+ D -->|否| P[保全并补证 保留待核]
+ P --> C
+ D -->|是| E[问责方按标准提问与判断]
+ E --> F{原决定可支持吗}
+ F -->|是| G[维持并说明依据]
+ F -->|否| H[纠正并评估相应救济]
+ G --> I[核实际执行并告知后续渠道]
+ H --> I
 ```
 
 
 
-**例子走图（笔记补充）**：申请人收入被误录，先受理/取当时版本，再由复核者质询；若证据不足走补证，若确认录错走更正并核实际结果。
+**例子走图（笔记补充）**：申请人收入被误录，先受理/取当时版本，再由复核者质询；若证据不足，只补证并保留待核，不能据缺证直接判错；证据充分后才判断是否维持，确认录错则更正、评估相应救济并核实际结果。
 
 文字替代：每一步要有对象、证据和有权行动者；“补证”“更正”“恢复”有不同完成条件。未知事实、未录到范围与法律待核都继续保留。
 
@@ -333,6 +639,8 @@ flowchart LR
 都不能。先保全/补证并保留待核，责任角色仍需明确。
 
 </details>
+
+英文参考答案 · p.40（笔记自拟，非教授逐字答案）：(1) Assign a named owner for each decision and control. (2) Identify people who benefit or bear harms, including non-users. (3) Monitor performance, risk and complaints with a responsible responder. (4) Provide justified explanations and an accessible review route. (5) Preserve evidence, correct errors and verify appropriate remedies. These are five checks, not proof of compliance.
 
 **🎙️ 课堂补充**（`20:01`–`24:13`，A · 课上展开）：
 
@@ -371,6 +679,8 @@ flowchart LR
 
 ### 2.4 三种责任：做事、说明、承担法律后果（讲义 p.15、p.43）
 
+
+
 中文的“负责”容易把三个不同问题混成一个。
 
 面对事故时，先区分应当完成的工作、必须向谁说明以及法律后果，才不会把一名程序员推成所有问题的唯一承担者。
@@ -401,11 +711,29 @@ flowchart LR
 
 - 法律责任则必须核对适用法域、具体义务、事实与因果关系，不能由笔记直接判赔。
 
+下面保留对应页的完整英文题面与给定提示。先用前面的中文对象和规则读题，再跟随下文逐问分析；英文参考答案用于理解后的应试对照。
+
+<details><summary>英文原题与给定提示 · p.43</summary>
+
+FOUNDATIONAL QUESTIONS
+
+What is the difference between accountability, responsibility, and liability?
+
+| Concept | Meaning |
+|---|---|
+| Responsibility | Duty to perform a task |
+| Accountability | Obligation to explain and justify actions |
+| Liability | Legal consequences when harm occurs |
+
+</details>
+
 **课件原例与逐问回答**：p.43 问三词的差别，直接答案是“履职—说明与接受审查—法律后果”。
 
 p.15 的 AI 语境把设计部署的伦理职责、决策解释及违法/伤害后果分开。
 
 若要解一道案例题，先列谁有何职责，再列谁必须向谁解释，最后独立讨论满足哪些法律条件时可能产生责任，不能用同一段定义代答三问。
+
+英文参考答案 · p.43（笔记自拟，非教授逐字答案）：Responsibility concerns performing duties appropriately; accountability concerns explaining and justifying conduct to a forum and accepting scrutiny; liability concerns legal consequences under applicable rules. One actor can have all three, so job titles alone do not determine the allocation.
 
 **🎙️ 课堂补充**（`34:53`–`38:40`、`01:43:53`–`01:45:11`，A · 课上展开）：教师用银行贷款系统区分三词，*"the data scientists building the model has the responsibility"*（`01:44:05`），而：
 
@@ -438,6 +766,8 @@ p.15 的 AI 语境把设计部署的伦理职责、决策解释及违法/伤害�
 
 ### 2.5 问责为什么能支持信任（讲义 p.12、p.44）
 
+
+
 你可能相信某系统大多数时候算得准，却仍不愿让它决定重要事情，因为一次错误就可能无法申诉。
 
 信任不只来自平均性能，也来自出错后仍有人接手。
@@ -456,6 +786,23 @@ p.15 的 AI 语境把设计部署的伦理职责、决策解释及违法/伤害�
 
 这里包含预防、发现和纠正三条因果路径，不能只写“问责提高信任”就结束。
 
+下面保留对应页的完整英文题面与给定提示。先用前面的中文对象和规则读题，再跟随下文逐问分析；英文参考答案用于理解后的应试对照。
+
+<details><summary>英文原题与给定提示 · p.44</summary>
+
+FOUNDATIONAL QUESTIONS  
+Why is accountability considered a  
+prerequisite for trustworthy AI?  
+Users trust systems when they know:  
+- Someone is overseeing them  
+- Errors can be corrected  
+- Decisions can be challenged  
+- Harm can be remedied  
+Accountability creates trust because it ensures that  
+someone remains answerable for outcomes.
+
+</details>
+
 **课件原例与逐问回答**：p.44 问为什么问责是可信 AI 的前提。
 
 答案是它给监督、纠错、挑战与救济提供明确承担者，使信任有程序支撑。
@@ -463,6 +810,8 @@ p.15 的 AI 语境把设计部署的伦理职责、决策解释及违法/伤害�
 p.12 进一步列信任、合规、降低偏见风险、声誉及竞争优势。
 
 注意这些是机制与预期收益，并非保证每家公司都因此盈利；如果所谓复核无权改变结果，挂牌“问责机制”仍不能建立合理信任。
+
+英文参考答案 · p.44（笔记自拟，非教授逐字答案）：Accountability supports warranted trust by assigning oversight, enabling challenges, correcting errors and providing remedies. Prevention, detection and correction make reliance more reasonable, but do not guarantee perfect performance or universal user trust.
 
 **🎙️ 课堂补充**（`24:35`–`26:16`、`01:45:18`–`01:47:25`，A · 课上展开）：教师把作用分成 *"One is prevention"*（`01:46:49`）、*"Second is detection"*（`01:46:55`）和 *"thirdly is corrections"*（`01:47:11`）。
 
@@ -913,13 +1262,17 @@ p.22 分两条线：高风险 AI 系统涉及风险管理、技术文档、符�
 
 `01:15:30` 将成员国执法报告与公司的报告义务混在同段，笔记不据此断言所有公司每年提交同一法定报告。
 
-🔗 现行材料核对（2026-09-30）：欧委会当前页面及 AI Act Service Desk 将附件 III 高风险规则列为 2027-12-02、嵌入受监管产品的高风险规则列为 2028-08-02，并说明 2026 年修订。
+先分清两条高风险适用线。附件 III（Annex III）是法规列举某些敏感用途的清单，例如招聘和就业相关用途；III 是附件编号，不是“第三级风险”。另一条涉及受产品安全规则管理的产品中的高风险 AI 系统，欧委会实施说明举电梯、玩具等产品为例。
+
+教学定位：招聘候选人筛选可从敏感用途清单这条线开始核查；某受监管产品的 AI 安全组成部分则可能需要从产品规则这条线核查。它们不能只因同叫“高风险”就共用一个日期。这里不是宣布所有招聘工具或所有带 AI 的玩具自动落入该类：还要核系统功能、角色、法定条件、例外及过渡条款。
+
+🔗 一手实施说明核对（2026-10-26）：欧委会当前页面及 AI Act Service Desk 将附件 III 高风险规则列为 2027-12-02、嵌入受监管产品的高风险规则列为 2028-08-02，并说明 2026 年修订。
 
 因此不能再把“到 2027 年全部完成”当作现行时程。
 
 来源：[欧委会 AI Act](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)、[实施时间说明](https://ai-act-service-desk.ec.europa.eu/en/ai-act/faq/when-does-enforcement-start)。
 
-这只是本次核对，后续使用仍须查当前版本。
+2026-10-26 已直接取得这两份欧委会页面，二者对上述日期一致；页面还注明一般适用日 2026-08-02、禁止做法与 AI 素养义务 2025-02-02、治理与 GPAI 义务 2025-08-02 的阶段差别。不要把某类高风险过渡期当所有义务都可延后。EUR-Lex 本次响应为空（HTTP 202），未取得修订公报全文；这里是官方实施说明核对，不能冒称逐条法律文本认证。真实个案仍须查适用条文、版本与过渡条件。
 
 **💡 换个说法（笔记补充）**：假设某教学案例给“营业额”和“利润”，先确认条款需要哪个基数，再核金额上限与企业类别，最后计算。
 
@@ -1013,7 +1366,7 @@ p.27 列董事会、伦理委员会和审计。
 
 非约束框架是自身不产生可强制执行义务的指导体系；它是关于自动化系统的原则蓝图，强调安全、公平、隐私、通知解释与人工替代。
 
-课件明确标注 non-binding，意思是蓝图自身不具有法律强制执行地位；它也不能代替对具体行业法律的核查。
+课件明确标注 non-binding，意思是蓝图自身不具有法律强制执行地位；它也不能代替对具体行业法律的核查。2026-10-26 已取得原始白皮书，p.2 的 Legal Disclaimer 还明确说它不构成美国政府政策、不取代现有规则，也不自行创设可强制执行的权利。本节以 2022 历史文件的性质与五原则为学习对象，不将其等同今天全部联邦政策。
 
 **为什么需要它**：原则文件可以提供设计检查表，让机构用共同语言讨论风险，并影响自愿标准或政策讨论。
 
@@ -1359,6 +1712,8 @@ p.36 强调可达的渠道与人的判断。
 
 ### 2.20 AI 本身能被问责吗（讲义 p.42）
 
+
+
 系统能输出“对不起”，不表示它像人或机构一样理解后果、接受质询并承担制裁。语言表现与问责地位要分开。
 
 **是什么**：p.42 的问题是：问责能否落在 AI 自身，还是必须落在人与组织？
@@ -1373,6 +1728,18 @@ p.36 强调可达的渠道与人的判断。
 
 责任链必须延伸到具有权力与义务的人和机构。
 
+下面保留对应页的完整英文题面与给定提示。先用前面的中文对象和规则读题，再跟随下文逐问分析；英文参考答案用于理解后的应试对照。
+
+<details><summary>英文原题与给定提示 · p.42</summary>
+
+FOUNDATIONAL QUESTIONS  
+Can an AI system ever be held  
+accountable, or must accountability  
+always rest with humans and  
+organizations? Why?
+
+</details>
+
 **课件原题逐问回答**：能否让 AI 被问责？
 
 在本讲当前人本治理框架下，不能把 AI 当作人的完整替代。
@@ -1384,6 +1751,8 @@ p.36 强调可达的渠道与人的判断。
 最强反方是未来系统可能表现出更强自主和反思能力，但仅提高智能不自动赋予法律人格或解决救济问题。
 
 条件改变时需重新讨论制度设计，而不是直接宣布“超级智能必然负责”。
+
+英文参考答案 · p.42（笔记自拟，非教授逐字答案）：Under the human-centred framework used here, people and organizations remain answerable for AI use. Producing an explanation or apology does not itself give AI institutional standing or the ability to provide remedies. Future capacities raise an open question; intelligence alone would not settle legal status.
 
 🎙️ 课堂补充（`01:41:09`–`01:43:33`，A · 课上展开）：*"So right now, still human needs to be responsible"*（`01:43:25`）。
 
@@ -1410,6 +1779,8 @@ AI 比温度计复杂得多，这个类比只能说明“工具输出”和“�
 
 ### 2.21 没人预料到的伤害：共同责任如何避免无人负责（讲义 p.45）
 
+
+
 “谁都没想到”可能是真的，也可能意味着应当做的风险检查根本没做。判断之前要区分无法合理预见与疏于检查。
 
 **是什么**：p.45 讨论有害决定未被任何人预料时的问责分配。
@@ -1426,6 +1797,23 @@ AI 比温度计复杂得多，这个类比只能说明“工具输出”和“�
 
 只说全体负责，又让每个角色都能推给别人。
 
+下面保留对应页的完整英文题面与给定提示。先用前面的中文对象和规则读题，再跟随下文逐问分析；英文参考答案用于理解后的应试对照。
+
+<details><summary>英文原题与给定提示 · p.45</summary>
+
+ETHICAL AND GOVERNANCE  
+QUESTIONS  
+If an AI system makes a harmful decision  
+that no human anticipated, who should  
+be held accountable?  
+Potential contributors:  
+- Developers who designed the system  
+- Data scientists who selected training data  
+- Managers who approved deployment  
+- Organizations that failed to monitor risks
+
+</details>
+
 课件原例与原题直接回答（参考作答，笔记推断）：先保全事实并纠正当前伤害。
 
 再依据职责、控制能力、可预见性、注意义务和实际治理措施分配解释与整改任务。
@@ -1441,6 +1829,8 @@ AI 比温度计复杂得多，这个类比只能说明“工具输出”和“�
 - 依次定位数据、模型、阈值及人工作用，比较各角色应做与实做的检查，指定纠正负责人并独立验证。若日志缺失，结论标不确定并修补记录机制
 
 - 不得用缺证据反过来证明没人有责任。
+
+英文参考答案 · p.45（笔记自拟，非教授逐字答案）：Preserve evidence and protect affected people, then investigate each actor's duties, control, reasonable foreseeability and actual safeguards. Allocate explanation and corrective work explicitly. Unforeseeable harm may alter blame, but does not remove the need to investigate and respond; legal liability requires separate analysis.
 
 🎙️ 课堂补充（`01:47:51`–`01:52:36`，A · 课上展开）：教师以 foreseeable、negligence、governance controls 等角度讨论分配。
 
@@ -1469,6 +1859,8 @@ AI 案例还涉及组织规则与法域，类比不提供法律责任比例。
 
 ### 2.22 更准确的黑箱和更易解释的模型怎样选（讲义 p.46）
 
+
+
 “准确率更高就选它”和“黑箱一律不能用”都跳过了关键条件：错在哪里、谁承担错误、解释能怎样改变决定。
 
 **是什么**：p.46 提出准确性与可解释性的条件权衡。
@@ -1483,6 +1875,25 @@ AI 案例还涉及组织规则与法域，类比不提供法律责任比例。
 
 选择应结合用途、错误代价、证据质量、可补偿性、复核能力和法律要求，而不是仅比较一个百分数。
 
+下面保留对应页的完整英文题面与给定提示。先用前面的中文对象和规则读题，再跟随下文逐问分析；英文参考答案用于理解后的应试对照。
+
+<details><summary>英文原题与给定提示 · p.46</summary>
+
+ETHICAL AND GOVERNANCE  
+QUESTIONS  
+Should organizations use black-box AI if it  
+is more accurate than explainable  
+alternatives?  
+Arguments for:  
+- Better outcomes may save lives or reduce costs.  
+- Some deep learning systems outperform interpretable models.  
+Arguments against:  
+- Lack of explainability may undermine trust.  
+- Errors become difficult to investigate.  
+- Regulatory compliance may be challenging.
+
+</details>
+
 课件原例与原题直接回答（参考作答，笔记推断）：可以有条件采用更准确黑箱。
 
 但须先证明相关任务上的增益、评估关键与分组错误、满足适用要求，并具备足够监测和复核。
@@ -1490,6 +1901,8 @@ AI 案例还涉及组织规则与法域，类比不提供法律责任比例。
 高后果且无法有效挑战的情境，应优先补足解释与控制，不能仅用平均性能压过权利。
 
 若可解释模型同样可靠，则没有必要制造虚假取舍。
+
+英文参考答案 · p.46（笔记自拟，非教授逐字答案）：Use a more accurate black box only conditionally: establish relevant benefits, examine severe and group-specific errors, meet applicable requirements and provide effective monitoring and review. High-stakes, hard-to-challenge decisions demand stronger safeguards. If an equally suitable explainable model exists, the apparent trade-off may disappear.
 
 🎙️ 课堂补充（`01:52:51`–`01:57:51`，A · 课上展开）：课堂举 A 为 95%、B 为 90% 的假设比较（`01:52:57`–`01:53:18`），并说 *"There's no absolute answer, the answer depends"*（`01:54:34`）。
 
@@ -1524,6 +1937,8 @@ AI 案例还涉及组织规则与法域，类比不提供法律责任比例。
 
 ### 2.23 披露多少：足以问责，不等于公开一切（讲义 p.47）
 
+
+
 公司说“商业机密”不能终止所有质询；要求透明也不意味着将全部代码、个人数据和安全细节放到网上。
 
 **是什么**：适量透明是围绕具体受众与目的，提供足以理解、质询和复核的信息。
@@ -1538,11 +1953,31 @@ p.47 列系统目的、资料类型、已知限制、风险缓解与申诉复核
 
 判断标准不是文档页数，而是受众能否据此提出有意义的问题、审查证据并获得纠正。
 
+下面保留对应页的完整英文题面与给定提示。先用前面的中文对象和规则读题，再跟随下文逐问分析；英文参考答案用于理解后的应试对照。
+
+<details><summary>英文原题与给定提示 · p.47</summary>
+
+ETHICAL AND GOVERNANCE  
+QUESTIONS  
+How much transparency should  
+companies provide?  
+Companies need not reveal every line of source code.  
+They should normally disclose:  
+- Purpose of the AI system  
+- Types of data used  
+- Known limitations  
+- Risk mitigation measures  
+- Mechanisms for appeal and review
+
+</details>
+
 课件原例与原题直接回答（讲义要点＋笔记推理）：通常无需公开每行源代码，应至少说明目的、资料类别、限制、防护和挑战途径。
 
 对监管者或授权审计者可提供更细证据。
 
 若拒绝披露某项内容，应解释具体保护理由并寻找替代核验，例如分层访问或独立审计，而不是笼统拒绝所有说明。
+
+英文参考答案 · p.47（笔记自拟，非教授逐字答案）：Provide enough relevant information to explain and challenge decisions: purpose, data types, limitations, risk controls and review routes. Full public source-code disclosure is not always necessary. Legitimate confidentiality should be addressed through proportionate disclosure and authorized independent review, not a blanket refusal to account.
 
 🎙️ 课堂补充（`01:57:54`–`01:59:57`，A · 课上展开）：*"a level of transparency which is sufficient for accountability"*（`01:58:52`）概括课堂立场。
 
@@ -1577,6 +2012,8 @@ p.47 列系统目的、资料类型、已知限制、风险缓解与申诉复核
 
 ### 2.24 挑战 AI 决定的权利：从不满意到可核复审（讲义 p.48）
 
+
+
 模型决定影响你时，能够提出异议并不保证结果一定改变；它保证的是有机会核对事实与理由，而不是只能接受一个分数。
 
 **是什么**：挑战决定是要求解释、提供相关证据并请求复核的过程。
@@ -1591,11 +2028,29 @@ p.48 给出公平、正当程序、人的尊严和纠错四种理由。
 
 有效挑战能揭示个案错误，也可能发现批量问题，但需要真实可达的流程。
 
+下面保留对应页的完整英文题面与给定提示。先用前面的中文对象和规则读题，再跟随下文逐问分析；英文参考答案用于理解后的应试对照。
+
+<details><summary>英文原题与给定提示 · p.48</summary>
+
+ETHICAL AND GOVERNANCE  
+QUESTIONS  
+Should people have the right to  
+challenge AI-generated decisions?  
+Reasons supporting this right:  
+- Fairness  
+- Due process  
+- Human dignity  
+- Error correction
+
+</details>
+
 **课件原例与原题直接回答（参考作答，笔记推断）**：原则上，显著影响个人机会或利益的 AI 决定应有相称的质询与复核机制。
 
 理由是错误可能损害公平，个人需要知道重要决定的依据，并获得纠正机会。
 
 实现时可按风险和影响设置材料要求、时限与独立复核，防止程序被滥用；不能因此把所有申诉一律自动驳回。
+
+英文参考答案 · p.48（笔记自拟，非教授逐字答案）：People should generally have proportionate opportunities to challenge consequential AI-assisted decisions, because errors can affect fairness, dignity and opportunities. Supply accessible evidence-based review and correction. This ethical position does not by itself establish an unlimited legal right in every jurisdiction.
 
 **🎙️ 课堂补充**（`02:00:25`–`02:02:24`，A · 课上展开）：
 
@@ -1630,6 +2085,10 @@ p.48 给出公平、正当程序、人的尊严和纠错四种理由。
 
 ### 2.25 招聘案例：不要只删一个敏感字段（讲义 p.49、p.70）
 
+
+
+
+
 公司发现招聘筛选对某些群体不利时，第一反应往往是删去性别字段。
 
 但模型可能已经从工作经历、学校或其他变量学到类似关联，因此纠正必须沿完整决策链展开。
@@ -1645,6 +2104,42 @@ p.70 以 Amazon 招聘算法作为案例，要求分析根因、问责与缓解�
 若不定位机制，只改表面字段，可能保留同一偏差。
 
 若只重新训练，也可能漏掉被错误排除者已经失去的机会。
+
+下面保留对应页的完整英文题面与给定提示。先用前面的中文对象和规则读题，再跟随下文逐问分析；英文参考答案用于理解后的应试对照。
+
+<details><summary>英文原题与给定提示 · p.49</summary>
+
+CASE STUDY  
+AI Recruitment System  
+Scenario  
+A company uses AI to shortlist candidates.  
+The system is later found to disadvantage  
+certain demographic groups.  
+Questions  
+- Who is accountable?  
+- What controls should have existed?  
+- How should affected applicants be treated?
+
+</details>
+
+<details><summary>英文原题与给定提示 · p.70</summary>
+
+CASE STUDY: AMAZON HIRING  
+ALGORITHM  
+Bias in Hiring Algorithm  
+Amazon's algorithm showed gender bias, unfairly disadvantaging women candidates  
+during hiring processes.  
+Company Response  
+Amazon conducted an internal review and took steps to address and correct the bias  
+issues in its AI system.  
+Lessons Learned  
+The case underscores the need for AI fairness, transparency, and ethical oversight in  
+automated decision-making.  
+Analysis Exercise  
+Analyze the root causes for this failure, accountability, and suggest strategies to  
+mitigate AI bias in hiring.
+
+</details>
 
 **课件原例与原题逐问作答（⚪ 参考作答，笔记推断）**：
 
@@ -1682,6 +2177,10 @@ M05 p.70 本页未提供原始训练数据，不能据此唯一判定真实系�
 
 停止条件是相应错误得到验证性纠正并有后续监测，不是删词后重新运行成功。
 
+英文参考答案 · p.49（笔记自拟，非教授逐字答案）：(1) The deploying company must provide an accountable contact and investigate developers, data and approval roles according to control and evidence. (2) Controls should include representative data, label checks, group-error testing, proxy analysis, monitoring and meaningful review. (3) Preserve affected decisions, give relevant reasons, receive correction evidence and provide authorized review and appropriate remedies under the facts and applicable rules.
+
+英文参考答案 · p.70（笔记自拟，非教授逐字答案）：(1) Investigate historical labels, sample composition, proxy features, objectives and deployment oversight as possible causes; the slide does not supply internal data proving every cause. (2) Allocate explanation and corrective duties across the company and relevant control roles, without treating a job title as a legal verdict. (3) Improve data and objectives, test group-specific errors and proxies, constrain use and review affected applicants. Removing a gender column alone is insufficient.
+
 **🎙️ 课堂补充**：❓ 本源在 `02:02:24` 的 p.48 讨论中结束，未录到 p.49/p.70 的案例讲解。不可降权；以上逐问答案依据课件与笔记推理，不标作教授答案。
 
 **💡 换个说法（笔记补充）**：成绩单如果复制了过去老师的偏见，训练“预测老师会选谁”便不等于训练“谁能胜任工作”。
@@ -1707,6 +2206,8 @@ M05 p.70 本页未提供原始训练数据，不能据此唯一判定真实系�
 
 ### 2.26 医疗案例：建议、临床判断与组织监督（讲义 p.50）
 
+
+
 课件设想诊断工具建议不适当治疗。这里不是要求你决定病人接受什么治疗，而是检查从模型建议到医疗决定之间应有哪些问责环节。
 
 **是什么**：系统提供建议、专业人员作临床判断、机构选择部署方式，是不同层级的活动。
@@ -1718,6 +2219,23 @@ M05 p.70 本页未提供原始训练数据，不能据此唯一判定真实系�
 只检查算法准确率会漏掉流程。
 
 只责怪医生则可能忽略医院采购、培训及风险告知的职责。
+
+下面保留对应页的完整英文题面与给定提示。先用前面的中文对象和规则读题，再跟随下文逐问分析；英文参考答案用于理解后的应试对照。
+
+<details><summary>英文原题与给定提示 · p.50</summary>
+
+CASE STUDY  
+Healthcare AI  
+Scenario  
+An AI diagnostic tool recommends an  
+inappropriate treatment.  
+Discussion Questions  
+- Who bears responsibility?  
+- Should doctors be allowed to rely solely  
+on AI?  
+- What safeguards are necessary?
+
+</details>
 
 **课件原例与原题逐问作答（⚪ 参考作答，笔记推断）**：
 
@@ -1738,6 +2256,8 @@ M05 p.70 本页未提供原始训练数据，不能据此唯一判定真实系�
 反方会指出人工同样会错、过多审批可能延误服务，因此目标不是无限增加签字，而是把有能力的复核放在高风险与不确定处。
 
 这一平衡须由真实医疗制度和专业人员落实。
+
+英文参考答案 · p.50（笔记自拟，非教授逐字答案）：(1) Investigate design, validation, data entry, clinical use and institutional oversight before allocating duties or legal liability. (2) In this high-stakes scenario, clinicians should not treat an unverified AI recommendation as the sole basis for treatment. (3) Validate intended populations and limitations, train users, provide escalation and records, monitor outcomes and respond to incidents. This is governance analysis, not medical advice.
 
 **🎙️ 课堂补充**：❓ p.50 的完整案例在本源中未录到，结尾停在 p.48。
 
@@ -1766,6 +2286,8 @@ M05 p.70 本页未提供原始训练数据，不能据此唯一判定真实系�
 
 ### 2.27 自动驾驶案例：事故归因与法律责任分开（讲义 p.51）
 
+
+
 自动驾驶事故可能牵涉传感器、模型、软件版本、车辆维护、部署区域及人的操作。找到一个技术故障，是问责调查的一部分，不是完整法律裁决。
 
 **是什么**：p.51 的三个问题分别问谁被问责、问责与法律责任有何不同、问责是否提升公众信任。
@@ -1775,6 +2297,24 @@ M05 p.70 本页未提供原始训练数据，不能据此唯一判定真实系�
 **为什么需要它**：如果未保存运行模式和接管记录，事故后很难还原谁当时掌握控制。
 
 不同自主程度和使用条件可能导致不同职责，不能把课堂简化情境套到所有车型和法域。
+
+下面保留对应页的完整英文题面与给定提示。先用前面的中文对象和规则读题，再跟随下文逐问分析；英文参考答案用于理解后的应试对照。
+
+<details><summary>英文原题与给定提示 · p.51</summary>
+
+CASE STUDY  
+Autonomous Vehicles  
+Scenario  
+A self-driving vehicle causes a serious  
+accident.  
+Discussion Questions  
+- Who is accountable?  
+- What is the difference between  
+accountability and liability?  
+- Would greater accountability improve  
+public trust?
+
+</details>
 
 **课件原例与原题逐问作答（⚪ 参考作答，笔记推断）**：
 
@@ -1797,6 +2337,8 @@ M05 p.70 本页未提供原始训练数据，不能据此唯一判定真实系�
 先保全日志，再查控制状态与适用范围，再比对每方应做的监测和响应，最后形成技术原因、组织改进和法律待判断事项三份结论。
 
 证据缺失必须显示在结论中，不能靠事故叙述补出不存在的传感器记录。
+
+英文参考答案 · p.51（笔记自拟，非教授逐字答案）：(1) Manufacturers, system providers, operators, maintainers and users may need to account for their control points; establish the actual mode and records first. (2) Accountability involves explanations, scrutiny and correction, whereas liability depends on applicable legal conditions. (3) Effective investigation and remedies can support warranted public trust; a statement that someone is responsible is insufficient.
 
 **🎙️ 课堂补充**：❓ 本源未录到 p.51 案例。
 
@@ -1823,6 +2365,8 @@ M05 p.70 本页未提供原始训练数据，不能据此唯一判定真实系�
 
 ### 2.28 生成式 AI 供应商与用户怎样分担（讲义 p.52）
 
+
+
 用户输入提示、供应商提供能力、部署者设计业务流程，三者可能共同影响输出的后果。责任不能仅按“最后按发送键的人”划分。
 
 **是什么**：p.52 提出平衡路径：供应商设置防护、观察误用模式、提供指引并回应风险。
@@ -1837,6 +2381,27 @@ M05 p.70 本页未提供原始训练数据，不能据此唯一判定真实系�
 
 若下游把已知不可靠结果直接用于重要决定，上游的提示也无法替代其判断。
 
+下面保留对应页的完整英文题面与给定提示。先用前面的中文对象和规则读题，再跟随下文逐问分析；英文参考答案用于理解后的应试对照。
+
+<details><summary>英文原题与给定提示 · p.52</summary>
+
+EMERGING ISSUES  
+Should AI providers be accountable for  
+how users employ generative AI?  
+A balanced approach is needed.  
+Providers should:  
+- Implement safeguards  
+- Monitor misuse patterns  
+- Provide user guidance  
+- Respond to identified risks  
+Users should:  
+- Follow policies  
+- Verify outputs  
+- Accept responsibility for decisions made using AI-generated  
+content
+
+</details>
+
 课件原例与原题直接回答（⚪ 参考作答，笔记推断）：供应商应对可控制、可合理预见的风险采取相称防护并回应已知问题。
 
 不宜将所有用途的全部后果无条件归给它，也不应让它通过“仅提供工具”免除自己环节的问责。
@@ -1850,6 +2415,8 @@ M05 p.70 本页未提供原始训练数据，不能据此唯一判定真实系�
 输出出现错误，先停止继续传播，保存提示/检索/模型版本/人工改动，再定位知识、生成或流程问题，分别修正并重测。
 
 结束时仍保留未覆盖场景，不声称过滤器保证零误用。
+
+英文参考答案 · p.52（笔记自拟，非教授逐字答案）：Providers should address risks they control and can reasonably foresee through safeguards, misuse monitoring, guidance and response. Users and deployers must verify outputs and their uses. Allocate duties by control, information, conduct and ability to correct, rather than making either party unconditionally responsible for everything.
 
 **🎙️ 课堂补充**：❓ 本源结尾尚在 p.48，未录到本页讨论。不可降权；以上是按 p.52 要点形成的参考分析，不能写成教授给定的责任比例。
 
@@ -1876,6 +2443,8 @@ M05 p.70 本页未提供原始训练数据，不能据此唯一判定真实系�
 
 ### 2.29 Agentic AI：能行动、能委派，让问责链变长（讲义 p.53）
 
+
+
 <!-- 类型: 定义型 -->
 
 只生成建议的系统与能够调用工具、改变外部状态的代理不同。后者不仅可能说错，还可能把错误传给下一个系统并执行。
@@ -1895,6 +2464,25 @@ M05 p.70 本页未提供原始训练数据，不能据此唯一判定真实系�
 只记录最终答案，无法还原哪一步授予权限、产生错误或触发外部影响。
 
 委派还可能把监督者看不到的风险藏进子流程。
+
+下面保留对应页的完整英文题面与给定提示。先用前面的中文对象和规则读题，再跟随下文逐问分析；英文参考答案用于理解后的应试对照。
+
+<details><summary>英文原题与给定提示 · p.53</summary>
+
+EMERGING ISSUES  
+Will current accountability frameworks  
+remain adequate for agentic AI?  
+Probably not entirely.  
+Future AI agents may:  
+- Initiate actions autonomously  
+- Delegate tasks  
+- Interact with multiple systems  
+Challenges include:  
+- Attribution of actions  
+- Monitoring autonomous decisions  
+- Defining oversight mechanisms
+
+</details>
 
 **课件原例与原题直接回答（⚪ 参考作答，笔记推断）**：既有问责原则仍有用，但仅针对单次预测的检查可能不足。
 
@@ -1953,6 +2541,8 @@ flowchart TD
 
 </details>
 
+英文参考答案 · p.53（笔记自拟，非教授逐字答案）：Existing principles remain relevant but single-prediction checks are insufficient for agents that act and delegate. Add tool permission boundaries, linked action and delegation records, authorization checks for consequential effects, stopping conditions and feasible remedies. Delegation does not expand authority or remove organizational accountability.
+
 **🎙️ 课堂补充**：❓ p.53 未录到，不能把上图说成教授讲授的架构。不可降权；图为依据本页风险点构建的笔记补充。
 
 **💡 换个说法（笔记补充）**：让人写购物清单与让人拿卡下单需要不同权限。
@@ -1980,6 +2570,10 @@ flowchart TD
 
 ### 2.30 强制审计与创新：讨论成本，也讨论谁承担风险（讲义 p.54–55）
 
+
+
+
+
 审计可能增加时间和成本，但不审计的错误也会把成本转给用户与社会。讨论创新时，应同时比较这两类成本。
 
 **是什么**：p.54 问政府是否应要求强制 AI 审计，列安全、公平、信任方面的支持理由，以及成本、速度和小机构负担方面的反方。
@@ -1991,6 +2585,39 @@ p.55 问严格问责是否兼容创新，并提出风险相称的设计。
 若所有系统一律适用最重程序，又可能让低风险试验难以开展。
 
 问题不是抽象的“审计好不好”，而是什么对象、由谁审、按什么证据和频率审。
+
+下面保留对应页的完整英文题面与给定提示。先用前面的中文对象和规则读题，再跟随下文逐问分析；英文参考答案用于理解后的应试对照。
+
+<details><summary>英文原题与给定提示 · p.54</summary>
+
+EMERGING ISSUES  
+Should governments require mandatory  
+AI audits?  
+Arguments in favor:  
+- Increased safety  
+- Reduced bias  
+- Greater public trust  
+Arguments against:  
+- Higher compliance costs  
+- Slower innovation  
+- Burden on small organizations
+
+</details>
+
+<details><summary>英文原题与给定提示 · p.55</summary>
+
+EMERGING ISSUES  
+Is strict accountability compatible with  
+innovation?  
+Yes, provided accountability is risk-based.  
+Poorly designed regulations can stifle innovation.  
+However:  
+- Aviation  
+- Banking  
+- Healthcare  
+demonstrate that innovation and accountability can coexist.
+
+</details>
 
 **课件原例与原题逐问作答（⚪ 参考作答，笔记推断）**：① 是否强制审计？
 
@@ -2007,6 +2634,10 @@ p.55 问严格问责是否兼容创新，并提出风险相称的设计。
 审计输出应包含发现、证据限制、整改责任和复核结果；若只发一个证书、不跟踪整改，则不能完成问责。
 
 条件改变为系统已出现严重事故时，即使原先低风险也应重评。
+
+英文参考答案 · p.54（笔记自拟，非教授逐字答案）：Require proportionate independent audits where potential harm, opacity or rights impacts justify them, while using lighter controls for lower-risk settings. Balance safety and fairness against cost, delay and burdens on small organizations, and check audit quality, access and follow-up rather than assuming a certificate ensures accountability.
+
+英文参考答案 · p.55（笔记自拟，非教授逐字答案）：Strict accountability can coexist with innovation when requirements are predictable, risk-proportionate and support bounded experimentation and learning. Poorly designed requirements can impose real costs. Examples from aviation, banking and healthcare show compatibility is possible, not that every regulatory design is effective.
 
 **🎙️ 课堂补充**：❓ p.54–55 没有录到直接讨论。前段关于企业竞争与监管的评论可以作为相关背景，不能把它当作本题的正式答案。不可降权。
 
@@ -2031,6 +2662,8 @@ p.55 问严格问责是否兼容创新，并提出风险相称的设计。
 
 ### 2.31 人在环是否足够：从签字走向有意义控制（讲义 p.56、p.61）
 
+
+
 在流程图里加一个“人工确认”方框很容易，让确认者真正发现错误、敢于推翻结果却很难。
 
 **是什么**：人在环（Human-in-the-loop）把人类判断纳入系统流程；有意义的人类控制则进一步要求理解相关信息、具有实际干预能力，并能在合适时间行动。
@@ -2044,6 +2677,20 @@ p.56 列自动化偏误、过度依赖和责任扩散，p.61 提醒速度与问�
 于是“人参与过”成了免责表述，实际错误却继续传递。
 
 这正是形式监督失效的机制。
+
+下面保留对应页的完整英文题面与给定提示。先用前面的中文对象和规则读题，再跟随下文逐问分析；英文参考答案用于理解后的应试对照。
+
+<details><summary>英文原题与给定提示 · p.56</summary>
+
+EMERGING ISSUES  
+Is human-in-the-loop oversight sufficient  
+to guarantee AI accountability?  
+-   Automation bias  
+-   Over-reliance on AI  
+-   Meaningful human control  
+-   Responsibility diffusion
+
+</details>
 
 **课件原例与原题直接回答（⚪ 参考作答，笔记推断）**：人在环不足以保证问责。
 
@@ -2060,6 +2707,8 @@ p.56 列自动化偏误、过度依赖和责任扩散，p.61 提醒速度与问�
 复核样本定期由独立人员检查，若发现过度照抄模型，调整培训、界面和工作量。
 
 停止条件是形成可解释且可复核的决定；超出权限或证据不足时升级，不被迫猜测。
+
+英文参考答案 · p.56（笔记自拟，非教授逐字答案）：Human involvement is not sufficient by itself. Reviewers need relevant evidence, competence, time, independence and authority to change or escalate decisions. Test for automation bias and workload incentives; placing a signature at the end of an opaque process does not create meaningful control.
 
 **🎙️ 课堂补充**：❓ 本源未覆盖 p.56/p.61，不能说教授已经逐项讲过自动化偏误。
 
@@ -2082,6 +2731,8 @@ p.56 列自动化偏误、过度依赖和责任扩散，p.61 提醒速度与问�
 
 ### 2.32 首席 AI 官的治理方案：从五问走到闭环（讲义 p.57–58、p.69）
 
+
+
 <!-- 类型: 定义型 -->
 
 如果你负责跨国企业的 AI 治理，第一份成果不应只是原则宣言，而应让团队知道每个系统怎样被登记、批准、监测和纠正。
@@ -2099,6 +2750,39 @@ p.56 列自动化偏误、过度依赖和责任扩散，p.61 提醒速度与问�
 统一框架应定义最低证据和升级规则，同时允许业务按实际风险补充控制。
 
 它既要防止没人负责，也要避免所有小事都堆到最高负责人。
+
+下面保留对应页的完整英文题面与给定提示。先用前面的中文对象和规则读题，再跟随下文逐问分析；英文参考答案用于理解后的应试对照。
+
+<details><summary>英文原题与给定提示 · p.58</summary>
+
+YOU ARE THE CHIEF AI OFFICER
+
+You are responsible for governing AI within a multinational organization. How would you design an AI accountability framework?
+
+Elements to Consider:
+
+Governance
+- AI Ethics Committee
+- Executive oversight
+
+Risk Management
+- Risk assessment
+- AI audits
+
+Technical Controls
+- Documentation
+- Explainability
+- Bias testing
+
+Monitoring
+- Continuous review
+- Incident reporting
+
+Human Oversight
+- Appeals process
+- Human decision review
+
+</details>
 
 **课件原例与原题参考方案（⚪ 笔记推断）**
 
@@ -2130,7 +2814,7 @@ p.56 列自动化偏误、过度依赖和责任扩散，p.61 提醒速度与问�
 
 
 ```mermaid
-flowchart LR
+flowchart TD
  A[登记用途与责任人] --> B[识别风险和适用规则]
  B --> C[测试文档与申诉设计]
  C --> D{批准条件满足吗}
@@ -2154,6 +2838,8 @@ flowchart LR
 不是。须按批准范围和恢复权限，保持未满足项及监测安排。
 
 </details>
+
+英文参考答案 · p.58（笔记自拟，非教授逐字答案）：Create a lifecycle framework: register systems, owners and affected people; assess risk and applicable rules; require appropriate documentation, testing and appeal design; assign independent review and approval; monitor changes and incidents; investigate and remedy harm; and verify corrections before authorized restoration. Define triggers, evidence and escalation roles, rather than listing committees alone.
 
 **🎙️ 课堂补充**：❓ p.57–58/p.69 未录到。五问基础在 `01:38:20`–`01:40:34` 已讲，但上面的实施方案为笔记补充，不能冒称教授给出的完整组织制度；不可降权。
 
@@ -2395,7 +3081,7 @@ p.79 将 Google Cloud、Vertex AI、Workspace 与工具化治理联系，但它�
 
 不能从课件四个短标题推断 Google 实际已完整做到这些。
 
-**🔗 版本核对（2026-09-30）**：Google 2018 七原则页面注明后续更新；2025 年新版采用 Bold innovation、Responsible development and deployment、Collaborative progress, together 三项总纲。
+**🔗 版本核对（2026-10-26）**：Google 2018 七原则页面注明后续更新；2025 年新版采用 Bold innovation、Responsible development and deployment、Collaborative progress, together 三项总纲。
 
 这里保留七原则作为课堂历史版本，不能说它仍是现行全文。
 
@@ -2422,6 +3108,10 @@ p.79 将 Google Cloud、Vertex AI、Workspace 与工具化治理联系，但它�
 
 ### 2.37 危机角色扮演：先保护受影响者，再查责任（讲义 p.67–68）
 
+
+
+
+
 公司发现 AI 错误拒绝医疗保障时，如果各部门只忙着证明自己没错，伤害还会继续。危机处置必须有顺序。
 
 **是什么**：p.67 设置医疗保障拒绝场景，角色包括 CEO、伦理负责人、公关、法律顾问和数据科学家。
@@ -2433,6 +3123,46 @@ p.68 要求反思问责缺口、领导伦理和文化。
 **为什么需要它**：技术团队掌握日志，管理层能调资源，沟通人员联系受影响者，法律与伦理角色核程序和权利。
 
 若没有共同证据和权限规则，各方容易互相等待或给出矛盾说法。
+
+下面保留对应页的完整英文题面与给定提示。先用前面的中文对象和规则读题，再跟随下文逐问分析；英文参考答案用于理解后的应试对照。
+
+<details><summary>英文原题与给定提示 · p.67</summary>
+
+ROLE PLAY: AI CRISIS  
+MANAGEMENT SIMULATION  
+Interactive Crisis Simulation  
+Students engage in a hands-on role play addressing AI errors in healthcare  
+coverage denial scenarios.  
+Cross-Functional Roles  
+Participants take on diverse roles like CEO, Ethics Officer, PR Lead, Legal  
+Counsel, and Data Scientist to respond effectively.  
+Ethical Leadership and Collaboration  
+The exercise highlights ethical leadership and teamwork in managing AI  
+failures and accountability gaps.  
+Reflection and Improvement  
+Debriefing encourages reflection on successes and failures to enhance AI  
+governance frameworks.
+
+</details>
+
+<details><summary>英文原题与给定提示 · p.68</summary>
+
+REFLECTION: WHAT WOULD YOU  
+DO DIFFERENTLY?  
+Identifying Accountability Gaps  
+Students reflect on missing accountability measures revealed during role plays and case  
+studies to improve AI oversight.  
+Leadership's Ethical Role  
+Discussion centers on leadership fostering ethical AI practices and building a culture of  
+responsible innovation.  
+Strategic and Cultural Accountability  
+Accountability is viewed as strategic and cultural, deeply tied to organizational values  
+beyond technical fixes.  
+Empowering Personal Responsibility  
+Students gain understanding of their role in shaping ethical AI systems and accountable  
+practices in their careers.
+
+</details>
 
 **课件原例与任务参考作答（⚪ 笔记推断）**
 
@@ -2463,6 +3193,10 @@ p.68 要求反思问责缺口、领导伦理和文化。
 - 问责是战略与文化问题，因为用途选择、利益取舍和激励会决定技术控制是否执行
 
 - 个人应核验自己使用的输出、保留证据并报告超出权限的风险，不能把责任全部推给AI。
+
+英文参考答案 · p.67（笔记自拟，非教授逐字答案）：In the simulated healthcare-coverage crisis, leadership coordinates containment and resources; technical staff preserve evidence and assess scope; ethics and legal roles examine affected people and applicable duties; communications staff use verified facts. Provide human review, investigate, correct and remedy affected decisions, then verify recovery. Do not invent classroom participation or unverified causes.
+
+英文参考答案 · p.68（笔记自拟，非教授逐字答案）：(1) Identify missing ownership, evidence, escalation or review controls. (2) Leadership must resource corrections and protect good-faith reporting. (3) Accountability is strategic and cultural because incentives and business choices determine whether controls operate. (4) Individuals should verify outputs, retain evidence and report risks beyond their authority. For each gap, specify a changed action and evidence of improvement.
 
 **🎙️ 课堂补充**：❓ 本次录音未覆盖角色扮演，不能虚构课堂分组、学生回答或老师点评。不可降权；这里给可自学的模拟分析流程。
 
@@ -2526,7 +3260,7 @@ p.79 的产品化治理：课件 Microsoft 半页说这些要求进入 Azure AI�
 
 这不是经实测得到的企业优劣排名。
 
-🔗 版本核对（2026-09-30）：微软官方仍列六原则，Responsible AI Standard v2 将原则落为目标与要求。
+🔗 版本核对（2026-10-26）：微软官方仍列六原则，Responsible AI Standard v2 将原则落为目标与要求。
 
 课件六项与官方原则层一致。
 
@@ -2675,7 +3409,9 @@ AI 治理的激励问题具有类似结构。
 
 Entity 的182/51更大，也不能说明“主体”比其他主题重要。
 
-维度的完整原定义保留在下方分组表与表后说明，不能只背计数。
+编码（Coding）是研究者把文献中相关内容标记并归到分析类别的动作。笔记方法示意：一篇文章同时讨论误拒和数据偏见，可以出现多次标记，而文章仍只计一篇。因此编码数与文章数不是同一分母。这里没有取得原研究的完整编码手册，不能据此断言原表每一次编码的精确单位、同篇重复规则或重算52这个数。
+
+原表共有 $3+3+1+2+2+2=13$ 个维度：Trigger 3、Entity 3、Situation 1、Forum 2、Criteria 2、Sanctions 2。Algorithmic actors 只在 Entity 下，不能复制到 Forum 多算成十四项。维度定义保留在下方分组表与表后说明，不能只背计数。
 
 “AI 应负责”太笼统，无法用于研究或调查。课件末尾两张表帮助把这句话拆成可识别的维度。
 
@@ -2694,10 +3430,10 @@ Entity 的182/51更大，也不能说明“主体”比其他主题重要。
 | 学科 | 研究关注 | 原表例举研究（未阅读全文） | 与问责的连接 |
 | --- | --- | --- | --- |
 | Computer Science | 技术框架及负责系统的开发治理 | Naja et al., 2022；Sokol et al., 2022 | 怎样保留、检验和解释技术证据 |
-| Law and Policy | 比较法律或提出政策路径 | 表10说明1 | 什么规则可以要求主体说明与承担后果 |
-| Information Systems | 被问责对个体感知与行为的影响 | 表10说明2 | 制度怎样改变真实组织行为 |
+| Law and Policy | 比较法律或提出政策路径 | 表 1 说明1 | 什么规则可以要求主体说明与承担后果 |
+| Information Systems | 被问责对个体感知与行为的影响 | 表 1 说明2 | 制度怎样改变真实组织行为 |
 
-**表10说明1 · Law and Policy / 原表例举研究（未阅读全文）**
+**表 1 说明1 · Law and Policy / 原表例举研究（未阅读全文）**
 
 - Kaminski, 2018
 
@@ -2705,7 +3441,7 @@ Entity 的182/51更大，也不能说明“主体”比其他主题重要。
 
 - Oswald, 2022
 
-**表10说明2 · Information Systems / 原表例举研究（未阅读全文）**
+**表 1 说明2 · Information Systems / 原表例举研究（未阅读全文）**
 
 - Léon et al., 2021
 
@@ -2716,30 +3452,31 @@ Entity 的182/51更大，也不能说明“主体”比其他主题重要。
 
 **课件表 2 重画（p.92）**：
 
+以下重画主题、计数和维度定义；原表 Example Sources 例引列省略，完整作者例引仍见讲义 p.92。不把未读论文例引当已读证据。
+
 | 主题 | 编码数/文章数 | 维度及含义 |
 | --- | --- | --- |
-| Trigger 触发 | 52/36 | 表11说明1 |
+| Trigger 触发 | 52/36 | 表 2 说明1 |
 | Entity 主体 | 182/51 | 见说明 1 |
 | Situation 情境 | 29/19 | AI lifecycle：从构思、设计、开发到部署、使用的全程；问责不能等上线出事才开始 |
-| Forum 问责方 | 55/27 | 表11说明2 |
-| Criteria 标准 | 69/41 | 表11说明3 |
-| Sanctions 后果 | 38/24 | 表11说明4 |
+| Forum 问责方 | 55/27 | 表 2 说明2 |
+| Criteria 标准 | 69/41 | 表 2 说明3 |
+| Sanctions 后果 | 38/24 | 表 2 说明4 |
 
-**表11说明1 · Trigger 触发 / 维度及含义**
+**表 2 说明1 · Trigger 触发 / 维度及含义**
 
 - **Errors and biases**：系统未达到预期或标准。
 - **AI consequences**：系统带来的后果，表中主要讨论负面伤害。
 - **Violations**：违反合同或法律要求，可涉及不伦理决定或侵权。
 
-**表11说明2 · Forum 问责方 / 维度及含义**
+**表 2 说明2 · Forum 问责方 / 维度及含义**
 
 | Forum 类别 | 含义 |
 | --- | --- |
-| Individuals | 用户和受害人；接受说明、提出质询或评价行为的自然人／法人参与者 |
+| Individuals | 使用系统者与因使用系统而受不利影响的人，例如受害者 |
 | Organizations | 运营组织、传统监管机构或专门监管机构；与 Individuals 并列，不是其子类 |
-| Algorithmic actors | 研究中的分析类别，用来表示算法作为直接行为或伤害来源；不等于自然人或法人，也不自动拥有法律人格 |
 
-**表11说明3 · Criteria 标准 / 维度及含义**
+**表 2 说明3 · Criteria 标准 / 维度及含义**
 
 Laws：可执行的要求。
 
@@ -2747,7 +3484,7 @@ Standards：表中主要指缺乏强制法律效力的伦理建议。
 
 具体效力仍须查适用法律和合同，不能普遍断言标准从不具有约束力
 
-**表11说明4 · Sanctions 后果 / 维度及含义**
+**表 2 说明4 · Sanctions 后果 / 维度及含义**
 
 Punitive measures：事后解释或辩护不足时的惩罚。
 
@@ -3311,13 +4048,13 @@ p.93 强调奖励合乎伦理的行为、鼓励报告，并用文化支持技术
 
 ### 9.4 外部资料与使用范围
 
-外部资料仅用于校正版本和边界，不把整篇法规或企业宣传搬成课堂内容。获取日期均为2026-09-30。
+外部资料仅用于校正版本和边界。2026-10-26 本次已直接回读欧委会框架/实施说明、2022 美国蓝图原始 PDF、Google 历史页与现行三原则 PDF、微软原则页；真实响应与哈希在本批来源回执。没有全文研读整部法规或蓝图全部技术附录，不将企业宣传当产品实效。
 
 | 来源 | 用途 | 限制 |
 |---|---|---|
 | [欧委会AI Act](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai) | 实施时间与框架现状 | 简介不能替代具体法律条文 |
 | [AI Act Service Desk](https://ai-act-service-desk.ec.europa.eu/en/ai-act/faq/when-does-enforcement-start) | 对核高风险适用时间 | 按具体条款和过渡情形判断 |
-| [美国2022蓝图档案](https://bidenwhitehouse.archives.gov/wp-content/uploads/2022/10/Blueprint-for-an-AI-Bill-of-Rights.pdf) | 历史非约束框架 | 主代理直接抓取受限，不声称已独立逐页复核；课程与代理回源一致 |
+| [美国2022蓝图档案](https://bidenwhitehouse.archives.gov/wp-content/uploads/2022/10/Blueprint-for-an-AI-Bill-of-Rights.pdf) | 历史非约束框架 | 本次取得原始 PDF，定向核免责声明与原则；未逐页研读全部技术附录 |
 | [Google历史原则](https://blog.google/innovation-and-ai/products/ai-principles/) | 核2018及2025更新提示 | 不能当现行七条全文 |
 | [微软原则](https://www.microsoft.com/en/ai/principles-and-approach) | 六原则与治理层级 | 企业声明不等于所有产品效果已验证 |
 
@@ -3335,16 +4072,18 @@ p.93 强调奖励合乎伦理的行为、鼓励报告，并用文化支持技术
 | 4 | 休息处理 | `01:40:50`宣布十分钟休息，`01:41:09`已继续讲；音频时钟只差十九秒，不能视为实际课间十九秒 |
 | 5 | 过滤候选 | 12条来自dropped.json，原词原时钟恢复作审查素材，未回听；`01:42:25`自相矛盾不引用；候选不能自动当可靠答案 |
 | 6 | ASR待核 | influence/inference混淆、unanswerable反义、治理词误作accountancy、若干语句残缺；解释按讲义与上下文，引用改词用方括号 |
-| 7 | 法律原文核验限制 | EUR-Lex主代理直取出现机器人验证；不绕过。代理提供条文回源候选，但本文不把未独立核条款细节作为确定新结论 |
-| 8 | Canvas | 当前Modules/Files有新附件；Assignments未见项目提交项，Announcements被禁用；附件副本下载受客户端拦截，未完成哈希比对 |
+| 7 | 法律原文核验限制 | 本次 EUR-Lex 返回 HTTP 202 空正文，未取得修订法律全文；欧委会实施说明已直接核到，二者证据层级分开 |
+| 8 | Canvas | 2026-09-30 历史核查：Modules/Files有附件、Assignments未见项目提交项、Announcements不可用；本次未访问Canvas，不把旧观察说成当前状态 |
 | 9 | 本组资料 | 题目/行业/成员/展示日期未知，项目登记保持待核；不得代用户猜测或提交 |
-| 10 | 机制与质量 | strict L/G/E与转录audit均PASS；三图实际渲染无解析问题并看图；8组机制迁移32项R1–R4均2分。独立代理仅看去答案笔记，主代理回源核对；法律词和两套六项表的歧义已修。具体答题证据见审修台账 |
+| 10 | 机制与质量 | 2026-09-30 历史记录曾为strict/audit通过及8组迁移评分；不能据此认证本次。2026-10-26 本批完整独审、当前L/C/R与实际显示另见绑定回执，原始缺口不清零 |
 
 **反方视角**：最薄弱部分是p.49–93的课堂证据以及未回听候选，不是讲义正文可以省略的理由。若问本组确切题目或展示DDL，当前无法回答。主要推断是音频缺尾；即使实际教师在此提前结束，当前也无下课证据，仍不能把后半页标略过。法律版本核查受限的细节保留待核，不用课堂简化替代现实结论。
 
 **所以呢**：本篇可用程度由具体证据决定；待核项必须随新材料更新，不因脚本PASS消失。
 
 ### 9.6 变更记录
+
+以下保留当时实际范围；旧评分不自动转为现行教学认证。
 
 | 日期 | 变更 |
 |---|---|
