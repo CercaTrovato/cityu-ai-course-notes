@@ -718,8 +718,8 @@
       "baseline_sha256": "ad86337f06d141a822417cd30b702db2a9d69e473160795899760880c597280a",
       "bytes": 56359,
       "lines": 590,
-      "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/ac6761-m09",
-      "teaching_state": "未开始",
+      "scratch": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\ac6761-m09",
+      "teaching_state": "审查中",
       "writeback": "未开始",
       "local_sync": "未开始",
       "notion": "未开始",
@@ -731,7 +731,16 @@
       "scope_reason": "五门课现有 M/T 主笔记，属于任务单明确全篇重审范围。",
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
-      ]
+      ],
+      "review_stage": "new61 full stage1 complete;source stage2 in progress;main source check parallel",
+      "reviewer_id": "/root/review_ac_m09_61",
+      "independent_review_status": "pending secondstage",
+      "latest_candidate": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\ac6761-m09\\candidate.md",
+      "latest_candidate_sha256": "ad86337f06d141a822417cd30b702db2a9d69e473160795899760880c597280a",
+      "stage_1": {
+        "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\ac6761-m09\\reviewer\\stage-1.md",
+        "sha256": "c452244f8eb07d4c277417f79a727e3d92671e0666446a93fcdc05766f2e81e1"
+      }
     },
     {
       "id": "ac6761-m10",
@@ -1410,11 +1419,11 @@
       "bytes": 250288,
       "lines": 4699,
       "scratch": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/is5113-m02",
-      "teaching_state": "缺陷待修",
-      "writeback": "未开始",
-      "local_sync": "未开始",
-      "notion": "未开始",
-      "git": "未开始",
+      "teaching_state": "修订并验收",
+      "writeback": "已CAS原子写回并精确回读；v13教学+纯状态维护",
+      "local_sync": "14目标：12写回/2无增量；均精确回读",
+      "notion": "正确M02：16属性保存/重载回读，14其他/旧全文4图不变；DDL已核无增量",
+      "git": "本批待提交推送",
       "sources": [],
       "blockers": [],
       "included": true,
@@ -1423,8 +1432,8 @@
       "teaching_sections": [
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
-      "review_stage": "fresh_gpt6.1_two_stage_full_review_complete_concrete_defects_pending",
-      "candidate_sha256": "b19f3214529f37acb937240f57aab3677ad2a2d7b5543b6a60703d9777775010",
+      "review_stage": "full61+targetedthroughv13 accepted;main source/calcs/visual/warnings/fullgate+CAS done",
+      "candidate_sha256": "3cfa2de18a4f6bda2f4e7d869b954a823ed76e61db0172faa74546f1e6498c24",
       "evidence_reports": [
         {
           "path": "E:/app-data/codex/scratchpad/vault-notes-revision-20261023/is5113-m02/independent-review.md",
@@ -1450,12 +1459,12 @@
         "full_read_reported": true
       },
       "reviewer_id": "/root/review_is5113_m02",
-      "independent_review_status": "needs_revision_fresh_6_1",
+      "independent_review_status": "passed actualfull+targeted61 throughv13;metadata maintained separately",
       "author_ids": [
         "/root/repair_is5113_m02_residual",
         "/root/repair_is5113_m02_sources"
       ],
-      "proposed_candidate_sha256": "2f4883fbcdc3aea8fb18b0925b796538c6ab5e8a1179d45ba2d51da772b1490b",
+      "proposed_candidate_sha256": "3cfa2de18a4f6bda2f4e7d869b954a823ed76e61db0172faa74546f1e6498c24",
       "proposal_independent_review_status": "all_registered_residuals_closed_registry_v6_18_of_18_accepted",
       "proposal_registry_sha256": "9f9ab23bdfeeccd745a1ccb74a38a316dcbc3a85add2267b007b95b24cbbc784",
       "model_policy_20261025": {
@@ -1477,7 +1486,25 @@
           "path": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\is5113-m02-review-61\\reviewer\\independent-review.md",
           "sha256": "831ca409319ae9dc2ce12b1abd70702e9571fb56583bc23fbc53e68b5c4b4748"
         }
-      ]
+      ],
+      "latest_candidate": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\is5113-m02-review-61\\author-repairs\\candidate-repaired-v13.md",
+      "latest_candidate_sha256": "3cfa2de18a4f6bda2f4e7d869b954a823ed76e61db0172faa74546f1e6498c24",
+      "main_checkpoint": "E:\\app-data\\codex\\scratchpad\\cityu-continue-20261026\\runtime-checkpoint.json",
+      "new_61_targeted_reports": [
+        {
+          "path": "E:\\app-data\\codex\\scratchpad\\cityu-review-resume-20261025\\is5113-m02-review-61\\reviewer-repairs\\final-v13-binding.md",
+          "sha256": "0f3e4efe6382c1e49f74f31c6a40285815f249403b6722ce0619dfe1f426115d",
+          "reviewer_id": "/root/review_is_m02_repairs_61",
+          "scope": "v12-v13 fiveactualQ3Q4changes and dependencies;not new full review"
+        }
+      ],
+      "formal_sha256": "e390911e217b45d502872ddf3c7989e22d45992ef26b44a3eec7d62f6f2d34ad",
+      "review_receipt": "_meta/vault-notes-review-20261023/is5113-m02/review.json",
+      "review_receipt_sha256": "a50e85184a2a23f9fcde57ca6604a09be195995290c630addd0278d08234f087",
+      "writeback_record": "_meta/vault-notes-review-20261023/is5113-m02/writeback.json",
+      "dependency_sync_record": "_meta/vault-notes-review-20261023/is5113-m02/dependency-sync.json",
+      "notion_evidence": "_meta/vault-notes-review-20261023/is5113-m02/notion-slim.json",
+      "maintenance_record": "_meta/vault-notes-review-20261023/is5113-m02/metadata-maintenance.json"
     },
     {
       "id": "is5113-m03",
@@ -2911,7 +2938,7 @@
     "Sync-off confirmation carried forward from task; no new on/running evidence"
   ],
   "confirmed_review_total": 69,
-  "latest_checkpoint": "EF M03内容ca93c62已推且核远端，451blob逐SHA一致，最终v23正文54251c42/三代码/14关联/Notion16/links373/README/自有完整性闭环。69份9已写回各端闭环、IS M02已知缺陷待修、59未开始。接续IS M02真实新6.1全篇报告，不重开规则或全库评分。",
+  "latest_checkpoint": "流程8文件eed176c已推远端；IS M02正文v13/full-v2及metadata维护、14关联12写2无增量、Notion16/14/旧全文4图回读完成，本批Git待。AC M09新6.1全篇stage1完成，第二阶段与主核源并行。69范围10正文验收写回、1审查中、58未开始。",
   "resume_20261025": {
     "model_verified": "gpt-6.1-sol/xhigh from current rollout turn_context",
     "reviewer_model": "gpt-5.6-sol strictly lower",
