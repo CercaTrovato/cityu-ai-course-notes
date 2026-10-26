@@ -255,5 +255,33 @@ class ReleaseConsumer(unittest.TestCase):
                 self.assertFalse(gate.quality_gate(candidate,'M01.md',source)[0])
 
 
+class StandaloneCLI(unittest.TestCase):
+    def run_cli(self, text, *extra):
+        import contextlib, io, sys
+        SCRATCH.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=SCRATCH) as temp:
+            path = Path(temp) / 'guide.md'
+            path.write_text(text, encoding='utf-8')
+            output = io.StringIO()
+            with patch.object(sys, 'argv', ['note_quality.py', str(path), '--json', *extra]), contextlib.redirect_stdout(output):
+                result = q.main()
+            return result, output.getvalue()
+
+    def test_question_headings_work_but_later_bare_code_still_fails(self):
+        text = '---\nassignment: mock\nreadability_rules: v2\n---\n## Q1\n客户支付旧欠款，只把应收换为现金，因此不再确认收入。\n'
+        code, out = self.run_cli(text)
+        self.assertEqual(code, 0)
+        payload = json.loads(out.split('JSON:')[1])
+        self.assertEqual(payload['historical']['verdict'], 'not_applicable_without_module_section2')
+        code, out = self.run_cli(text + '\n## Q9\n' + FENCE + 'python\nprint(1)\n' + FENCE)
+        self.assertEqual(code, 1)
+        self.assertIn('C_CODE_EXPLANATION', out)
+
+    def test_empty_standalone_and_primary_module_cannot_get_pass(self):
+        self.assertEqual(self.run_cli('---\nassignment: mock\n---\n')[0], 1)
+        self.assertEqual(self.run_cli('---\nassignment: mock\nmodule: M01\n---\n## Q1\n解释\n')[0], 2)
+        self.assertEqual(self.run_cli('---\nassignment: mock\n---\n## Q1\n解释\n', '--profile', 'historical')[0], 2)
+
+
 if __name__=='__main__':
     unittest.main()

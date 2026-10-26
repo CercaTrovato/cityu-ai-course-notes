@@ -1,0 +1,28 @@
+..................................D:\上课资料\CityU\_meta\tools\note_quality.py:1338: ResourceWarning: unclosed file <_io.TextIOWrapper name='E:\\app-data\\codex\\scratchpad\\note-quality-current-tests\\tmpr6m0t270\\guide.md' mode='r' encoding='utf-8'>
+  t = io.open(fn, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\上课资料\CityU\_meta\tools\note_quality.py:1338: ResourceWarning: unclosed file <_io.TextIOWrapper name='E:\\app-data\\codex\\scratchpad\\note-quality-current-tests\\tmpxbs6ogdm\\guide.md' mode='r' encoding='utf-8'>
+  t = io.open(fn, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\上课资料\CityU\_meta\tools\note_quality.py:1338: ResourceWarning: unclosed file <_io.TextIOWrapper name='E:\\app-data\\codex\\scratchpad\\note-quality-current-tests\\tmpy_pn10as\\guide.md' mode='r' encoding='utf-8'>
+  t = io.open(fn, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.D:\上课资料\CityU\_meta\tools\note_quality.py:1338: ResourceWarning: unclosed file <_io.TextIOWrapper name='E:\\app-data\\codex\\scratchpad\\note-quality-current-tests\\tmplgd0pa49\\guide.md' mode='r' encoding='utf-8'>
+  t = io.open(fn, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\上课资料\CityU\_meta\tools\note_quality.py:1338: ResourceWarning: unclosed file <_io.TextIOWrapper name='E:\\app-data\\codex\\scratchpad\\note-quality-current-tests\\tmprunap2gn\\guide.md' mode='r' encoding='utf-8'>
+  t = io.open(fn, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+F
+======================================================================
+FAIL: test_question_headings_work_but_later_bare_code_still_fails (test_note_quality_current.StandaloneCLI.test_question_headings_work_but_later_bare_code_still_fails)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\上课资料\CityU\_meta\tools\test_note_quality_current.py", line 278, in test_question_headings_work_but_later_bare_code_still_fails
+    self.assertIn('C_CODE_WITHOUT_EXPLANATION', out)
+AssertionError: 'C_CODE_WITHOUT_EXPLANATION' not found in '====================================================================================================\n笔记质量量表   guide.md   模式: current/legacy   status: ?\n----------------------------------------------------------------------------------------------------\n【L 合规检查】\n   L5_围栏数 : 2\n   L5_details : [0, 0]\n   ✓ 七项无问题（L1 未讲解页见上，封面/目标页允许）\n【现行内容检查】字数/固定标签/类比配额不计FAIL\n   ✗ C_EXPLANATION 行8 §Q9 未找到作者解释；标题、原题、标签和占位句不能代替讲解\n   ✗ C_CODE_PURPOSE 行8 §Q9 代码前未找到任务/输入说明或有效行注释\n   ✗ C_CODE_EXPLANATION 行8 §Q9 代码后未找到动作/输出/关键行解释\n   原题清单: unverified_without_manifest 核对题数: 0\n   范围: 机检通过不代表解释正确或读者已理解；页码引述不证明该页已实质讲解。\n   范围: 纯数字等式只核支持的四则/幂/开方及显示精度；不执行代码、不验证符号推导或模型结果。\n   范围: 无显式源题清单时，无法验证漏整题/原文保真；有清单也只核其字面契约，清单抄写与逐问语义仍需回源。\n   历史G/E统计已保存；查看旧配额详情用 --profile historical\n【R 可读性】 计入判定（规则：_meta/可读性总规则.md）\n   语义检查仅为 △ 疑点；PASS 不表示读者已理解。\n   表格: 最多 0 列，最大单元格 0 单元（行 —）\n   句长（阅读单元）: 1 句  均值 26.0  中位 26  p90 26  最长 26  >80: 0（0.0%）  >120: 0  豁免块: 0\n   ✗ 0 项  △ 0 项\n【汇总】 {\'total_pages\': 0, \'content_pages\': 0}\n【判定】 FAIL（现行内容阻塞3项） \n【教学边界】本脚本未评估教学可读性；须独立子代理按高中知识起点审查，零报错不能作为教学质量指标。\n====================================================================================================\nJSON:{"file": "E:\\\\app-data\\\\codex\\\\scratchpad\\\\note-quality-current-tests\\\\tmprunap2gn\\\\guide.md", "profile": "current", "teaching_assessment": "not_assessed_by_script", "C": {"spec": "2026-10-21", "hard": [{"code": "C_EXPLANATION", "section": "Q9", "line": 8, "message": "未找到作者解释；标题、原题、标签和占位句不能代替讲解", "evidence": ""}, {"code": "C_CODE_PURPOSE", "section": "Q9", "line": 8, "message": "代码前未找到任务/输入说明或有效行注释", "evidence": ""}, {"code": "C_CODE_EXPLANATION", "section": "Q9", "line": 8, "message": "代码后未找到动作/输出/关键行解释", "evidence": ""}], "warn": [], "source_coverage": {"status": "unverified_without_manifest", "checked_questions": 0, "hard": [], "warnings": []}, "limits": ["机检通过不代表解释正确或读者已理解；页码引述不证明该页已实质讲解。", "纯数字等式只核支持的四则/幂/开方及显示精度；不执行代码、不验证符号推导或模型结果。", "无显式源题清单时，无法验证漏整题/原文保真；有清单也只核其字面契约，清单抄写与逐问语义仍需回源。"]}, "historical": {"spec": "2026-09-16", "G": {}, "E": [], "verdict": "not_applicable_without_module_section2"}, "verdict": "FAIL（现行内容阻塞3项）", "legacy_problems": [], "legacy_info": {"L5_围栏数": 2, "L5_details": [0, 0]}, "G": {}, "E": [], "summary": {"file": "E:\\\\app-data\\\\codex\\\\scratchpad\\\\note-quality-current-tests\\\\tmprunap2gn\\\\guide.md", "total_pages": 0, "content_pages": 0}, "sections": [], "R": {"strict": true, "stats": {"sentences": 1, "mean": 26.0, "p50": 26, "p90": 26, "max": 26, "over80": 0, "over120": 0, "long_share": 0.0, "exempt": 0, "table_max_columns": 0, "table_max_cell_units": 0, "table_max_cell_line": 0, "measurement_version": "v2"}, "hard": [], "warn": []}}\n'
+
+----------------------------------------------------------------------
+Ran 36 tests in 0.054s
+
+FAILED (failures=1)

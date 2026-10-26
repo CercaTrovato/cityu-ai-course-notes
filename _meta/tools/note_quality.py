@@ -1345,7 +1345,15 @@ def main():
     strict = (a.strict or 'quality_spec' in fm) and not a.legacy
     probs, info = legacy_checks(t, TOTAL, tut)
     res = evaluate_T(t, fn, strict) if tut else evaluate_M(t, fn, TOTAL, strict)
-    if res is None: print('找不到 §2 正文，无法评估'); return 2
+    if res is None:
+        primary_module = bool(re.fullmatch(r'[MT]\d{2}', fm.get('module', '').strip().strip("\"'")))
+        standalone = not primary_module and (bool(fm.get('assignment', '').strip()) or fm.get('type', '').strip("\"'") in {'课堂练习解析', 'practice-guide'})
+        if a.profile != 'current' or not standalone:
+            print('找不到 §2 正文，无法评估'); return 2
+        # Standalone exercises keep their real question headings. Historical
+        # module-only G/E is unavailable, not a fabricated historical PASS.
+        res = dict(G={}, E=[], verdict='not_applicable_without_module_section2',
+                   summary=dict(file=fn, total_pages=TOTAL, content_pages=0), rows=[])
     historical = dict(spec=SPEC_DATE, G=res['G'], E=res['E'], verdict=res['verdict'])
     C = None
     if a.profile == 'current':
