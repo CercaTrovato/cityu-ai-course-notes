@@ -1,0 +1,92 @@
+{
+  "schema": "cityu-scratch-handoff-v1",
+  "task": "EF5560 M05 全篇重审修订",
+  "owner_chat": "01a17880-ce9e-7390-876c-f980eae405af",
+  "formal_writer": "原笔记重审会话；本任务未写回",
+  "finished_at": "2026-10-26T22:49:58.564934+08:00",
+  "model": "gpt-6.1-sol",
+  "note": "D:\\上课资料\\CityU\\EF5560_Fintech_and_AI_in_Finance\\notes\\M05-可解释机器学习与投资组合决策.md",
+  "baseline": {
+    "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef05\\baseline.md",
+    "sha256": "278688109be29ba9c4cc1531e66ddfecc12252f00c9364eb77a8d809e33bcb7b",
+    "live_source_matches": true
+  },
+  "candidate": {
+    "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef05\\candidate.md",
+    "sha256": "365c6086f9f03d173b1ecbcfbf9c9a4020fb36c309c9bd10c81e3478e25d44a3"
+  },
+  "diff": {
+    "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef05\\candidate.diff",
+    "sha256": "148e85c802e8322fca1c2fa951868d058936049e1e455250fa9d29ca91bd9da1"
+  },
+  "review_record": {
+    "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef05\\review.json",
+    "sha256": "9a940256db2e389e4160ab2415df6cf4120b30828b7c210e858c1b5bfd0b27a5",
+    "assets_count": 104
+  },
+  "independent_review": {
+    "stage1": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef05\\reviewer\\stage-1.md",
+    "full": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef05\\reviewer\\independent-review.md",
+    "targeted": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef05\\reviewer\\targeted-recheck.md",
+    "blockers": 0,
+    "post_review_format_mapping": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef05\\maintenance-mapping.json",
+    "claim": "原全篇独审+实质修复定向复核+主代理纯维护差异核对；不伪造审查者看过新hash"
+  },
+  "checks": {
+    "mechanical_gate": "PASS",
+    "C_hard": 0,
+    "R_hard": 0,
+    "R_warn": 451,
+    "historical": "FAIL",
+    "source_questions": 6,
+    "answer_units": 14,
+    "transcript_audit": "PASS",
+    "transcript_segments": 867,
+    "timestamps": 364,
+    "quotes": 73,
+    "wiki_links": 49,
+    "link_issues": 0,
+    "scoped_integrity_files": 37,
+    "scoped_changed_files": 0,
+    "visuals": "新增/受影响内容浏览器实际查看；未变图文同hash承接历史证据；原生Obsidian未直接查看"
+  },
+  "done": [
+    "54页讲义与完整867段转录、§0–§9全部学习范围重审",
+    "集中修复旧无转录/日期/首尾/时间戳/行政/中英题面等真实问题",
+    "独立两阶段全篇审查；B1-B3一次批修并由原审定向关闭",
+    "6页完整原题与14作答单元中英文对照",
+    "来源/必要新计算/实际显示/现行门槛与note-review-v2绑定",
+    "适用同步增量草稿及当前本地基线hash"
+  ],
+  "not_done": [
+    "未正式写回vault或改变本人学习/提交字段",
+    "未写全库进度/README/Notion/Canvas/Git或配置",
+    "未重训未变模型、未重跑旧来源计算",
+    "未逐声听校原音、未联网核课堂网页行情/公司识别/外部论文当前状态",
+    "未核当前8/15页作业公告和附件冲突",
+    "未直接查看原生Obsidian"
+  ],
+  "limitations": [
+    "授课日期仍未知；date/week null",
+    "原森林和p12响应网格缺失，目测近似不是逐点复算",
+    "课堂网页演示数字与未知股名保持未核",
+    "37标准课堂格之外新增3课堂应用段；不混计",
+    "旧historical FAIL保留；机器PASS不是教学证明"
+  ],
+  "sync_draft": {
+    "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef05\\sync-draft.md",
+    "sha256": "40419375e95cd3bab9c10b25dc51f44d0b9f52aec13f94685dd6f436e95da16b",
+    "baselines": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef05\\sync-baselines.json",
+    "current_cas_status": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-ef05\\sync-cas-status.json",
+    "state": "prepared_not_applied",
+    "notion_live_values": "未实时读取，不能当写前值；主写会话需实际读写回读"
+  },
+  "next": [
+    "原主写者读取review.md、review.json及独审报告，不重复全文评分",
+    "写前核正式笔记仍匹配baseline SHA；不同则停止相应项、核并发来源",
+    "按safe_write.atomic_write正式写回并精确回读候选SHA",
+    "重读共享同步目标精确合并增量及Notion逐字段回读",
+    "按原主会话保存授权处理Git，分别记录发布状态"
+  ],
+  "blocking_for_scratch_completion": []
+}

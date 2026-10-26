@@ -1,0 +1,162 @@
+{
+  "schema": "note-source-checks-v1",
+  "sources": {
+    "lecture54": {
+      "path": "D:\\上课资料\\CityU\\EF5560_Fintech_and_AI_in_Finance\\course_files_export\\Lec05_Interpretable_Machine_Learning_and_Portfolio_Decisions.pdf",
+      "sha256": "02eb0d14e1ada91fe73d3c1f933aa7d1e4c96b17297e0c855f33b8ef675f731f"
+    }
+  },
+  "questions": [
+    {
+      "id": "p21",
+      "source_id": "lecture54",
+      "page": 21,
+      "section": "2.14",
+      "original": "**Calculation Question: Forecast-Weighted Positions**\n\nSuppose four stocks have the following forecasts and subsequent returns:\n\n| Stock | A | B | C | D |\n|---|---:|---:|---:|---:|\n| Forecast excess return | 0.8% | 0.4% | −0.2% | −0.6% |\n| Next-week realized return | 2% | −1% | 1% | −3% |\n\nUse $s_i=\\hat r_i^e-\\overline{\\hat r^e}$ and $w_i=s_i/\\sum_j|s_j|$.\n\n1. Calculate the mean forecast, the demeaned forecasts, and the four weights.\n2. Calculate gross exposure and net exposure.\n3. Calculate the spread return $\\sum_i w_i r_i$, ignoring transaction costs.",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "第 1 问要求先算平均",
+          "english": "(1) The mean forecast is 0.1%. The demeaned forecasts are (0.7%, 0.3%, −0.3%, −0.7%), giving weights (0.35, 0.15, −0.15, −0.35). (2) Gross exposure is 1 and net exposure is 0. (3) The realized spread return is 1.45% before transaction costs."
+        },
+        {
+          "id": "2",
+          "chinese": "第 2 问分别算两种暴露",
+          "english": "(1) The mean forecast is 0.1%. The demeaned forecasts are (0.7%, 0.3%, −0.3%, −0.7%), giving weights (0.35, 0.15, −0.15, −0.35). (2) Gross exposure is 1 and net exposure is 0. (3) The realized spread return is 1.45% before transaction costs."
+        },
+        {
+          "id": "3",
+          "chinese": "第 3 问用题面下一周实际收益",
+          "english": "(1) The mean forecast is 0.1%. The demeaned forecasts are (0.7%, 0.3%, −0.3%, −0.7%), giving weights (0.35, 0.15, −0.15, −0.35). (2) Gross exposure is 1 and net exposure is 0. (3) The realized spread return is 1.45% before transaction costs."
+        }
+      ],
+      "manual_source_check": "已读真实 PDF 对应完整英文题面/选项/数据与条件；本字段只作人工核对声明，机器不认证语义。原文统一连字、断行和公式 LaTeX。"
+    },
+    {
+      "id": "p25",
+      "source_id": "lecture54",
+      "page": 25,
+      "section": "2.17",
+      "original": "**Multiple-Choice Question: Annualized Sharpe Ratio**\n\nA weekly strategy has an average return of 0.30%, a constant weekly risk-free return of 0.05%, and return volatility of 1.80%. Ignore serial correlation and use\n\n$$\\mathrm{Sharpe}=\\frac{\\overline R_p-R_f}{s(R_p)}\\sqrt{52}.$$\n\nWhat is the annualized Sharpe ratio?\n\nA. 0.14  \nB. 1.00  \nC. 1.20  \nD. 7.22\n\n**Discuss**  \nIdentify the errors behind using total return instead of excess return, or multiplying a weekly Sharpe ratio by 52 instead of $\\sqrt{52}$.",
+      "options": {
+        "A": "0.14",
+        "B": "1.00",
+        "C": "1.20",
+        "D": "7.22"
+      },
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "选 B，约 1.00",
+          "english": "Choose B. The weekly mean excess return is 0.25%, and the annualized Sharpe ratio is approximately 1.00. Using total return overstates the risk premium and gives about 1.20. Multiplying the weekly ratio by 52 instead of its square root overstates annualization and gives about 7.22; 0.14 is only the weekly ratio."
+        },
+        {
+          "id": "2",
+          "chinese": "Discuss 第 1 问",
+          "english": "Choose B. The weekly mean excess return is 0.25%, and the annualized Sharpe ratio is approximately 1.00. Using total return overstates the risk premium and gives about 1.20. Multiplying the weekly ratio by 52 instead of its square root overstates annualization and gives about 7.22; 0.14 is only the weekly ratio."
+        },
+        {
+          "id": "3",
+          "chinese": "Discuss 第 2 问",
+          "english": "Choose B. The weekly mean excess return is 0.25%, and the annualized Sharpe ratio is approximately 1.00. Using total return overstates the risk premium and gives about 1.20. Multiplying the weekly ratio by 52 instead of its square root overstates annualization and gives about 7.22; 0.14 is only the weekly ratio."
+        }
+      ],
+      "manual_source_check": "已读真实 PDF 对应完整英文题面/选项/数据与条件；本字段只作人工核对声明，机器不认证语义。原文统一连字、断行和公式 LaTeX。"
+    },
+    {
+      "id": "p26",
+      "source_id": "lecture54",
+      "page": 26,
+      "section": "2.18",
+      "original": "**Multiple-Choice Question: Drop-to-Zero Importance**\n\nOn the same observations, the zero-forecast benchmark has squared error 200. A fitted model has squared error 80. Setting one centered characteristic to zero raises the error to 100, with the model otherwise unchanged.\n\nWhat is the reduction in fitted $R^2$?\n\nA) 0.10, or 10 percentage points.  \nB) 0.20, or 20 percentage points.  \nC) 0.40, or 40 percentage points.  \nD) 0.50, or 50 percentage points.",
+      "options": {
+        "A": "0.10, or 10 percentage points.",
+        "B": "0.20, or 20 percentage points.",
+        "C": "0.40, or 40 percentage points.",
+        "D": "0.50, or 50 percentage points."
+      },
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "选 A，$0.10$",
+          "english": "Choose A. Fitted $R^2$ falls from 0.60 to 0.50, a reduction of 0.10, or 10 percentage points, using the same benchmark error of 200 without refitting."
+        }
+      ],
+      "manual_source_check": "已读真实 PDF 对应完整英文题面/选项/数据与条件；本字段只作人工核对声明，机器不认证语义。原文统一连字、断行和公式 LaTeX。"
+    },
+    {
+      "id": "p27",
+      "source_id": "lecture54",
+      "page": 27,
+      "section": "2.18",
+      "original": "**Multiple-Choice Question: Portfolio Weights and Exposure**\n\nSuppose a portfolio has weights (0.30, 0.20, −0.25, −0.25). The four stocks return (2%, 4%, −2%, 0%) over the next period. Ignore costs.\n\nWhich pair gives the portfolio’s gross exposure and return?\n\nA) Gross exposure 0 and return 1.90%.  \nB) Gross exposure 1.00 and return 1.90%.  \nC) Gross exposure 1.00 and return 0.90%.  \nD) Gross exposure 0 and return 0.90%.",
+      "options": {
+        "A": "Gross exposure 0 and return 1.90%.",
+        "B": "Gross exposure 1.00 and return 1.90%.",
+        "C": "Gross exposure 1.00 and return 0.90%.",
+        "D": "Gross exposure 0 and return 0.90%."
+      },
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "选 B，总暴露 1.00",
+          "english": "Choose B. Gross exposure is the sum of absolute weights, 1.00. The realized portfolio return is 1.90%; the third stock's fall contributes positively because its position is short. A and D confuse net and gross exposure; C reverses the short position's gain."
+        }
+      ],
+      "manual_source_check": "已读真实 PDF 对应完整英文题面/选项/数据与条件；本字段只作人工核对声明，机器不认证语义。原文统一连字、断行和公式 LaTeX。"
+    },
+    {
+      "id": "p43",
+      "source_id": "lecture54",
+      "page": 43,
+      "section": "2.29",
+      "original": "**Calculation Question: Trading Costs and Sharpe Ratios**\n\nA strategy buys 30% and sells 30% of portfolio value each week. Each purchase or sale costs 10 bp of traded value.\n\nIts gross weekly return has mean 0.30% and standard deviation 1.80%. The weekly risk-free return is a constant 0.05%. The same percentage cost is deducted each week, so volatility is unchanged.\n\nUse $SR_{\\mathrm{annual}}=\\sqrt{52}(\\bar r_p-r_f)/s(r_p)$.\n\n1. Calculate weekly trading costs as a percentage of portfolio value.\n2. Calculate the mean net return and the mean net excess return.\n3. Calculate annualized Sharpe ratios before and after costs.",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "每周成本为 0.06%",
+          "english": "(1) Weekly cost is 0.06% of portfolio value, or 6 bp. (2) Mean net total return is 0.24%, and mean net excess return is 0.19%. (3) Gross and net annualized Sharpe ratios are approximately 1.00 and 0.76. Volatility remains 1.80% because both deductions are constant each week."
+        },
+        {
+          "id": "2",
+          "chinese": "净总收益均值为 0.24%",
+          "english": "(1) Weekly cost is 0.06% of portfolio value, or 6 bp. (2) Mean net total return is 0.24%, and mean net excess return is 0.19%. (3) Gross and net annualized Sharpe ratios are approximately 1.00 and 0.76. Volatility remains 1.80% because both deductions are constant each week."
+        },
+        {
+          "id": "3",
+          "chinese": "毛/净年化 Sharpe 约 1.00 / 0.76",
+          "english": "(1) Weekly cost is 0.06% of portfolio value, or 6 bp. (2) Mean net total return is 0.24%, and mean net excess return is 0.19%. (3) Gross and net annualized Sharpe ratios are approximately 1.00 and 0.76. Volatility remains 1.80% because both deductions are constant each week."
+        }
+      ],
+      "manual_source_check": "已读真实 PDF 对应完整英文题面/选项/数据与条件；本字段只作人工核对声明，机器不认证语义。原文统一连字、断行和公式 LaTeX。"
+    },
+    {
+      "id": "p49",
+      "source_id": "lecture54",
+      "page": 49,
+      "section": "2.33",
+      "original": "**Calculation Question: What Is the CAPM Benchmark Return?**\n\nIn one week, $R_f=0.10\\%$ and $MKT-RF=1.00\\%$. A portfolio has a market beta of 1.10 and a realized return of 1.40%.\n\n$$R^{\\mathrm{CAPM}}=R_f+\\beta_M(MKT-RF),\\qquad \\text{abnormal return}=R_p-R^{\\mathrm{CAPM}}.$$\n\n1. Calculate the CAPM benchmark return and show the substitution.\n2. Calculate the portfolio’s one-week abnormal return.\n3. Explain why one positive week does not establish a positive CAPM alpha.\n\n**Show your reasoning**  \nSeparate the benchmark calculation from the interpretation of performance.",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "CAPM 基准总收益为 1.20%",
+          "english": "(1) The CAPM benchmark total return is 0.10% + 1.10 × 1.00% = 1.20%. (2) The one-week abnormal return is 1.40% − 1.20% = 0.20%. (3) Abnormal return contains both alpha and the period's residual; one positive observation cannot establish a positive average intercept. Multiple aligned observations and appropriate inference are required."
+        },
+        {
+          "id": "2",
+          "chinese": "单周异常收益为 +0.20%",
+          "english": "(1) The CAPM benchmark total return is 0.10% + 1.10 × 1.00% = 1.20%. (2) The one-week abnormal return is 1.40% − 1.20% = 0.20%. (3) Abnormal return contains both alpha and the period's residual; one positive observation cannot establish a positive average intercept. Multiple aligned observations and appropriate inference are required."
+        },
+        {
+          "id": "3",
+          "chinese": "不能据此建立正 CAPM alpha",
+          "english": "(1) The CAPM benchmark total return is 0.10% + 1.10 × 1.00% = 1.20%. (2) The one-week abnormal return is 1.40% − 1.20% = 0.20%. (3) Abnormal return contains both alpha and the period's residual; one positive observation cannot establish a positive average intercept. Multiple aligned observations and appropriate inference are required."
+        }
+      ],
+      "manual_source_check": "已读真实 PDF 对应完整英文题面/选项/数据与条件；本字段只作人工核对声明，机器不认证语义。原文统一连字、断行和公式 LaTeX。"
+    }
+  ]
+}

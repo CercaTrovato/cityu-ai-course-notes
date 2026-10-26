@@ -1,0 +1,985 @@
+--- baseline.md
++++ candidate.md
+@@ -1,9 +1,9 @@
+ ---
+ course: EF5560
+ module: 5
+-week: 6
+-date: 2026-10-08
+-date_basis: 课件下载日与课程周四安排，课堂实际日期待转录确认
++week: null
++date: null
++date_basis: 实际授课日期未由现有来源确认；不按下载日或文件名推定
+ source: "Lec05_Interpretable_Machine_Learning_and_Portfolio_Decisions.pdf（54 页）+ class05/class05/（20 个 CSV、README、manifest）"
+ transcript: merged
+ prerequisites: [M01, M02, M03, M04]
+@@ -16,7 +16,8 @@
+ readability_spec: sentence-table-v1
+ readability_review: pending
+ mechanism_review_mode: efficient-20261002
+-updated: 2026-10-10
++updated: 2026-10-26
++teaching_standard: novice-v1
+ 
+ readability_rules: v2
+ ---
+@@ -25,7 +26,7 @@
+ 
+ > 一句话：模型可以预测股票可能赚多少，但投资者还要决定买哪只、买多少。本讲先解释模型的预测，再把预测变成持仓，最后检查实际赚了多少、亏得有多大、交易费会拿走多少钱。
+ >
+-> 材料为讲义 54 页及 Class 05 数据；本讲尚无本地转录，因此是讲义与数据版，所有课堂补充待回填。本文的题目答案是明确标注的参考作答，不能视为教师确认。
++> 材料为 54 页讲义、Class 05 数据和本地 `M05-transcript-partial.txt`。材料融合版本为 v1.0；本次全篇教学重审与显示状态见独立回执，材料版本不代替教学通过。原题答案分清讲义给定、课堂讨论与笔记参考作答。转录未逐声全听校，实际授课日期仍未确认。
+ 
+ ## 0. 三分钟速览
+ 
+@@ -41,7 +42,7 @@
+ 
+ 讲义 p.53 的评分作业另有一套模拟数据：80只股票、17个信号。本讲解释真实股票时用了30个指标；这些数据不能拿来替代作业文件。
+ 
+-> 🎙️ **课堂实况**（2026-10-09）：前 18 分钟为作业/TA/AI 行政；M05 正式导入 22:16。
++> 🎙️ **课堂实况**：开头 `00:00`–`06:30` 已讨论作业报告、复现代码和 AI 使用；随后为工具与课堂互动，`18:01`–`22:03` 回顾树与线性/非线性区别，`22:16` 正式进入 M05。`01:16:02`–`01:25:04` 为课间与行政讨论。末尾 `02:26:34` 明示 alpha/beta 会在期末出现，`02:26:46`–`02:26:51` 有结束语。未见 M04 p.40–54 的实质补讲，不能降权。
+ 
+ 
+ ## 1. 开始之前 · 知识衔接
+@@ -237,15 +238,46 @@
+ 
+ **为什么需要它**：一个输入如果只能让误差减少很少，留下它的斜率却要增加惩罚，总目标反而可能更大。把这个系数设为零就可能更划算。这解释了为什么 LASSO 的零来自预测目标，而不是来自 p 值。
+ 
+-下面给一个能算到底的简化推导（笔记补充）。假设每列已经减去均值，各列相互正交，也就是任意两列逐行相乘后加总为零；每列自身平方和为 $n$。在这些条件下，各列的系数可以分别求。对于其中一列，目标可化为 $\tfrac12(b-b_{\mathrm{OLS}})^2+\lambda|b|$ 加上不随 $b$ 改变的常数。$b$ 是要找的 LASSO 斜率，$b_{\mathrm{OLS}}$ 是这列的 OLS 斜率；第一项要求 $b$ 不要离原来的 OLS 斜率太远，第二项要求 $b$ 不要太大。
+-
+-在 $b$ 非零时，对这两项求导并令导数为零，得到 $b=b_{\mathrm{OLS}}-\lambda\operatorname{sign}(b)$。$\operatorname{sign}$ 表示符号：正数取 $+1$，负数取 $-1$。
+-
+-因此正系数减去惩罚强度，负系数向零增加同样大小。如果 OLS 系数的绝对值连惩罚强度都没有超过，最小值就落在零。
+-
+-合起来是：$b=\operatorname{sign}(b_{\mathrm{OLS}})\max(|b_{\mathrm{OLS}}|-\lambda,0)$。$\max$ 要求取两个数中较大的一个，避免把缩过头的系数推到相反方向。
+-
+-这个操作叫软阈值。
++下面给一个能算到底的简化推导（笔记补充），先公开这次用的四行数据。两列已经减去均值，列平方和都为 $n=4$；两列对应项相乘再相加为 $1-1-1+1=0$，这叫正交。它让两列共同影响误差的交叉项相抵。本例收益按“百分数值”计算，$0.1$ 表示 $0.1\%$；不是讲义未公开的真实训练矩阵。
++
++| 行 $i$ | 输入 $z_1$ | 输入 $z_2$ | 实际收益 $y$（%） |
++|---|---:|---:|---:|
++| 1 | −1 | −1 | −0.1 |
++| 2 | −1 | +1 | −0.5 |
++| 3 | +1 | −1 | +0.5 |
++| 4 | +1 | +1 | +0.1 |
++
++1. 先不惩罚：斜率取 $b_1=0.30,b_2=-0.20$、截距取零，每一行预测 $b_1z_1+b_2z_2$ 都恰好等于 $y$。例如行1为 $-0.30+0.20=-0.10$；四行平方误差都为零，已经达到 OLS 最小值。四行平均收益与两列均值都为零，因此本例任何斜率下最佳截距仍为零。
++2. 现在允许斜率改变，记 $A=0.30-b_1$、$B=-0.20-b_2$。它们分别记录“原精确斜率减现在斜率”。四行实际减预测的误差依次是 $-A-B,-A+B,A-B,A+B$。
++3. 把四个误差平方相加。$(A+B)^2=A^2+2AB+B^2$，$(A-B)^2=A^2-2AB+B^2$；正负交叉项抵消。四行总和为 $4A^2+4B^2$，再除以原目标的 $2n=8$，就得到两个单列平方目标之和。
++
++加回 LASSO 惩罚，本例完整目标因此恰好为：
++
++$$\frac12(b_1-0.30)^2+\frac12(b_2+0.20)^2+\lambda(|b_1|+|b_2|).$$
++
++两列不再有混在一起的项，可以各自选最小值。一般正交且列平方和为 $n$ 时，可同样化为各列 $\tfrac12(b-b_{\mathrm{OLS}})^2+\lambda|b|$ 加与 $b$ 无关的常数；上面四行给出了本次用到的完整展开，不能把这个正交条件偷偷套给相关输入。
++
++先看动量那一列，$b_{\mathrm{OLS}}=0.30,\lambda=0.06$。在 $b\ge0$ 一侧，绝对值就是 $b$，合并并配平方：
++
++$$\frac12(b-0.30)^2+0.06b=\frac12b^2-0.24b+0.045=\frac12(b-0.24)^2+0.0162.$$
++
++平方不可能小于零，所以这一侧在 $b=0.24$ 取得最小值 $0.0162$。
++
++在 $b\le0$ 一侧，绝对值为 $-b$，目标是 $\tfrac12(b-0.36)^2-0.0198$；允许的负数中，离正数 $0.36$ 最近的是端点零，目标为 $0.045$。
++
++两侧比较，$0.0162\lt0.045$，因此全局选 $0.24$。
++
++再看易错的负斜率边界：$b_{\mathrm{OLS}}=-0.20$，这次把惩罚改成 $\lambda=0.25$。在 $b\le0$ 一侧，目标为：
++
++$$\frac12(b+0.20)^2-0.25b=\frac12b^2-0.05b+0.02=\frac12(b-0.05)^2+0.01875.$$
++
++配平方中心是正数 $0.05$，但这一侧只允许 $b\le0$；不能把越界中心当答案。允许范围内离它最近的是零，目标为 $0.02$。在 $b\ge0$ 一侧，目标改为 $\tfrac12(b+0.45)^2-0.08125$；中心为负，允许范围内同样只能在零取最小值 $0.02$。两侧都选零，所以不会从负斜率收缩成正 $0.05$。
++
++把正、负斜率和零端点的结果合并，就得到软阈值（Soft thresholding）：
++
++$$b=\operatorname{sign}(b_{\mathrm{OLS}})\max(|b_{\mathrm{OLS}}|-\lambda,0).$$
++
++$\operatorname{sign}$ 保留原正负方向，$\max$ 取两数中较大者：先从斜率绝对值减惩罚，若减成负数就改零，再放回原符号。输入正交且已按上述尺度处理，才可以逐列直接这样求；相关列的真实数据仍需数值求解。此处用配平方说明规则，没有要求先会微积分。
+ 
+ **课件原例**：p.5 在验证数据中选定惩罚后，动量由 $+0.30$ 缩小为 $+0.24$，波动率由 $-0.20$ 变为 $0$。单位仍是每训练标准差对应的预测收益百分点。动量输入为 1 时，预测为 $0.10\%+0.24\%\times1=0.34\%$；波动率现在不再增加或减少预测，因为乘上零后贡献始终为零。讲义没有提供训练矩阵、惩罚数值和求解过程，所以我们可以读这个结果，不能声称已经重新求出了这组系数，也不能从波动率的 p 值反推出它为什么归零。
+ 
+@@ -533,9 +565,13 @@
+ - 市场 beta 面板：从左向右看，大部分低、中排名的预测约为 $0.16\%$。到第 80 百分位附近，预测明显下降，最高排名端约为 $0.09\%$。这表示在其他输入固定零时，模型对很高的市场跟随程度给出较低预测；不是说原始 beta 的值等于 80。
+ - 成交额趋势面板：从较低排名向较高排名移动，预测总体从约 $0.11\%$ 增加到 $0.22\%$。有些区间暂时不变，随后又增加，不能说输入每升一格预测都增加同样多。
+ - 短长波动率比面板：约第 30–35 百分位附近，预测从约 $0.11\%$ 抬到 $0.15\%$，后面较缓地上升。30–35 是这个比值的排名位置，不是波动率为 35%。
+-- 标准化真实波幅 NATR 面板：多数排名区间的预测约为 $0.16\%$，到极高端才突然下降，最后接近零。NATR 先按每日价格范围计算真实波幅，再平均并除以价格，反映相对价格的波动范围；它不等于对收益求标准差的波动率。这个面板标题中的“标准化”也不能理解为 §2.1 的训练均值标准化，模型此处仍使用 NATR 的中心化排名。
+-
+-**🎙️ 课堂补充**（`44:27`–`50:38`）：beta 只在大 beta 区间起作用，predictor 只在部分位置有用（`44:52`–`45:28`）；50:38 后进入 §2.9。
++- 标准化真实波幅 NATR 面板：多数排名区间的预测约为 $0.16\%$，到极高端才突然下降，最后接近零。
++
++NATR 先按每日价格范围计算真实波幅，再平均并除以价格，反映相对价格的波动范围；它不等于对收益求标准差的波动率。本节使用已提供的相对波幅排名来读曲线，不要求重新计算 ATR（Average true range，平均真实波幅）的日价格算法，也不把上述一句话当完整算法。
++
++这个面板标题中的“标准化”也不能理解为 §2.1 的训练均值标准化，模型此处仍使用 NATR 的中心化排名。
++
++**🎙️ 课堂补充**（`44:27`–`50:38`）：beta 只在大 beta 区间起作用，predictor 只在部分位置有用（`44:52`–`45:28`）；`50:38` 后进入 §2.9。
+ 
+ **💡 换个说法（笔记补充）**：假如我们想问“波动率本来很高时，动量提高会怎样”，就不能直接照搬当前动量曲线。应先把波动率固定在一个明确的高排名，再逐个改变动量、重新让模型预测。这里重新计算的是固定模型的预测，不是重新训练模型；这样才得到了另一个条件下的曲线。
+ 
+@@ -622,11 +658,18 @@
+ 
+ 从图顶端往下读：先取得周开始前的资料，再选“看一个输入”或“让模型综合预测”。两条路之后都要分组、定权重、等待下一周收益。图没有让实际收益返回去决定本周选谁，因为选股时还不知道下一周赚亏多少。
+ 
+-**🎙️ 课堂补充**（A，00:50:38–01:02:18）
+-先解释 zero-cost / dollar-neutral 与 excess return。
++**🎙️ 课堂补充**（A，`00:50:38`–`01:02:18`）
++先解释 zero-cost / dollar-neutral 与 excess return（超额收益）。ASR 指 Automatic speech recognition，即自动语音识别，原转录可能有误。
+ 
+ 再从 characteristic sorting 过渡到 forecast-implied top-bottom strategy。
+-*"what is a zero-cost portfolio ... they call dollar neutrality"*（00:50:38）；*"you borrow ... and then you buy something"*（00:50:38）；*"those factors, they are sort-on characteristics"*（00:58:33）；*"I can use [?] to create a forecast. I can use Lasso to create a forecast"*（00:58:43）；*"you only need to forecast who will be the winners, who will be the losers"*（00:59:53）。ASR 的 “OLX / Farmer French / asset return” 均不作为校正后的英文专名；正文按讲义术语回写。教授随后在 01:00:19–01:02:18 明确 top-bottom 只需预测排序，并说这是 homework goal。
++*"what is a zero-cost portfolio […] they call dollar neutrality"*（`00:50:38`）；*"you borrow […] and then you buy something"*（`00:50:38`）；*"those factors, they are sort-on characteristics"*（`00:58:33`）；*"I can use [?] to create a forecast. I can use Lasso to create a forecast"*（`00:58:43`）；*"you only need to forecast who will be the winners, who will be the losers"*（`00:59:53`）。ASR 的 “OLX / Farmer French / asset return” 均不作为校正后的英文专名；正文按讲义术语回写。教授随后在 `01:00:19`–`01:02:18` 明确 top-bottom 只需预测排序，并说这是 homework goal。
++
++**🎙️ 课堂特征组合演示**（`56:33`–`58:33`）：动量之外，教授还示范按公司特征分组，而不是按模型预测分组。
++
++- 规模组合（Small minus big，SMB）：按公司规模比较小公司和大公司，买入小公司组、做空大公司组。它问“小公司组后来是否比大公司组赚得多”，不是问模型预测哪组赚得多。
++- 价值／成长组合（High minus low，HML）：课堂把高价值特征组称为价值股票、低价值特征组称为成长股票，买高价值组、空低价值组。这里 high/low 指价值特征的高低，不是本讲预测收益高低。转录没有完整给出分组门槛、规模与价值交叉构造或再平衡规则，不能凭这段自行重建正式因子。
++
++*"those factors, they are sort-on characteristics there"*（`58:33`）把上述特征组合连回当前问题；`58:43` 再转到让模型综合输入给出预测排序。库名／人名的 ASR 为“Farmer French”，此处只记为课堂展示的因子资料库 `[?]`，不凭语音猜正式署名。网页读数出现多个期间与收益数字，但本次未取得当堂网页快照，也未联网核其定义，不列为已验证绩效，更不将其搬成 Class 05 的策略成绩。
+ 
+ **💡 换个说法（笔记补充）**
+ 
+@@ -780,9 +823,9 @@
+ 
+ 最后两条“常数预测”的意思是：LASSO 与 Elastic Net 给所有股票同一个预测值，所有斜率都为零。模型没有说哪只更好，就不能硬从相同预测中挑高低组。随意按文件行次序分组，也只是在比较行次序，不是在检验模型选股。
+ 
+-**🎙️ 课堂补充**（A，01:01:09–01:03:50）
+-四分位/五分位组合的平均 spread 可以为正，但 t 统计量低于 1.96 时不能称为显著。
+-*"they do predict the ranking of stocks quite well"*（01:01:39）；*"you need to perform the student's t-test"*（01:03:08）；*"all of them are insignificant because they are lower than 1.96"*（01:03:34）。课上把“有正平均收益”和“有统计证据”明确分开。
++**🎙️ 课堂补充**（A，`01:01:09`–`01:03:50`）
++五分位组合的平均价差可以为正。教授用 1.96 作常见大样本双侧界值；本笔记上文另给 51 自由度的 2.007584，不能把 1.96 当所有 t 检验的固定界值。
++*"they do predict the ranking of stocks quite well"*（`01:01:39`）；*"you need to perform the student's t-test"*（`01:03:08`）；*"all of them are insignificant because they are lower than 1.96"*（`01:03:34`）。课上把“有正平均收益”和“有统计证据”明确分开。
+ 
+ **💡 换个说法（笔记补充）**
+ 
+@@ -828,9 +871,9 @@
+ 
+ 挑不同股票也会改变账户跟着市场涨跌的程度。只做多不是每个组合都跟市场一样，多空金额相等也不是两边市场风险自动相消，原因与上一节的例子相同。
+ 
+-**🎙️ 课堂补充**（A，01:04:18–01:04:47）
++**🎙️ 课堂补充**（A，`01:04:18`–`01:04:47`）
+ long-only 只买赢家并放弃输家；long-short 买赢家、做空输家。教授给出的现实原因是做空可能困难且成本高。
+-*"if we do long short portfolio, we allow the short position"*（01:04:26）；*"if you are going to do long-only strategy, you will long the winner and forget the losers"*（01:04:26）。这也是作业要求比较的策略口径。
++*"if we do long short portfolio, we allow the short position"*（`01:04:26`）；*"if you are going to do long-only strategy, you will long the winner and forget the losers"*（`01:04:26`）。这也是作业要求比较的策略口径。
+ 
+ **💡 换个说法（笔记补充）**
+ 
+@@ -949,9 +992,11 @@
+ 
+ 图从计算平均开始，然后判断本周是否所有预测相同。若相同，就直接采用规定的回退结果；若不同，才进入三种分钱办法。三条路最后都查账户限制。若不满足限制，只能按事前已经规定的办法调整或停止，不能反复尝试直到这周实际收益最高。这里不是重新训练模型，没有拟合循环。
+ 
+-**🎙️ 课堂补充**（A，01:05:21–01:07:26）
++**🎙️ 课堂补充**（A，`01:05:21`–`01:07:26`）
+ 教授口头区分去均值 forecast-weighted 和基准倾斜权重：信号高于横截面均值的股票增配，低于均值的减配；基准倾斜要求权重和为 1。
+-*"De-mean means ... each stock within forecast subtracts the cross-sectional mean"*（01:05:21–01:05:34）；*"the benchmark is the index"*（01:07:08）。讲到 benchmark weight 加信号倾斜时，强调并非所有信号权重天然归一。
++*"De-mean means […] each stock within forecast subtracts the cross-sectional mean"*（`01:05:21`–`01:05:34`）；*"the benchmark is the index"*（`01:07:08`）。讲到 benchmark weight 加信号倾斜时，强调并非所有信号权重天然归一。
++
++**课堂边界**：`01:06:26` 教授对只做多倾斜规则说 *"I don't like this one, forget this"*，随后仍简讲公式。这里保留完整教学以覆盖讲义，但不把它标成教授推荐策略。
+ 
+ **💡 换个说法（笔记补充）**
+ 
+@@ -1034,9 +1079,9 @@
+ 
+ 执行时先保留上一节的原权重。用截止 $t-1$ 的收益估风险，确认历史资料足够且分母不是零，再算 $k$。把原权重乘这个倍数之后，重新检查是否需要融资、能否留现金、个股是否超上限，最后才保存本周权重。下一周结束再看收益。每周倍数都可能改变，全年实现风险也不能直接用某一周目标代替。
+ 
+-**🎙️ 课堂补充**（A，01:07:46–01:08:54）
++**🎙️ 课堂补充**（A，`01:07:46`–`01:08:54`）
+ gross exposure 是权重绝对值之和，net exposure 是权重代数和；volatility targeting 通过调整总暴露达到投资者预设波动率。
+-*"the gross exposure will simply just take the absolute sum"*（01:07:46）；*"the net exposure is simply just the sum of them"*（01:07:46）；*"you need to tilt the weight to meet the volatility target"*（01:08:45）。
++*"the gross exposure will simply just take the absolute sum"*（`01:07:46`）；*"the net exposure is simply just the sum of them"*（`01:07:46`）；*"you need to tilt the weight to meet the volatility target"*（`01:08:45`）。
+ 
+ **💡 换个说法（笔记补充）**
+ 
+@@ -1091,6 +1136,31 @@
+ 
+ 下一周四股实际收益为 $(2,1,-1,-2)\%$。按股票逐项乘权重，得到贡献 $(0.75,0.125,0.125,0.75)$ 个百分点，最后相加得到 $1.75\%$。例如 C 的贡献是 $(-0.125)(-0.01)=0.00125=0.125\%$。C 股票本身跌了 1%，但我们做空了资本的 12.5%，因此给整个组合赚到 0.125 个百分点；不能说 C 股票涨了 $0.125\%$。
+ 
++先读完整英文题面。这里 subsequent / next-week 表示先定权重、下一周结束才得到实际收益；ignoring transaction costs 只免除题面的交易费，不改变空头方向。
++
++<details><summary>英文原题 · p.21（完整题面；公式转为 LaTeX）</summary>
++
++**Calculation Question: Forecast-Weighted Positions**
++
++Suppose four stocks have the following forecasts and subsequent returns:
++
++| Stock | A | B | C | D |
++|---|---:|---:|---:|---:|
++| Forecast excess return | 0.8% | 0.4% | −0.2% | −0.6% |
++| Next-week realized return | 2% | −1% | 1% | −3% |
++
++Use $s_i=\hat r_i^e-\overline{\hat r^e}$ and $w_i=s_i/\sum_j|s_j|$.
++
++1. Calculate the mean forecast, the demeaned forecasts, and the four weights.
++2. Calculate gross exposure and net exposure.
++3. Calculate the spread return $\sum_i w_i r_i$, ignoring transaction costs.
++
++</details>
++
++中文题意：第 1 问先求共同平均再算四股权重；第 2 问分别按绝对值和带符号求和；第 3 问用下一周实际收益结算，不能用预测代替实际。
++
++英文参考答案（笔记自拟）：(1) The mean forecast is 0.1%. The demeaned forecasts are (0.7%, 0.3%, −0.3%, −0.7%), giving weights (0.35, 0.15, −0.15, −0.35). (2) Gross exposure is 1 and net exposure is 0. (3) The realized spread return is 1.45% before transaction costs.
++
+ 讲义 p.21 三问，以下均为 ⚪ 参考作答（笔记推断）；支撑为 p.18–p.21 权重公式与题面，未见官方答案。
+ 
+ 第 1 问要求先算平均，再算每只股票偏离平均多少，最后得到权重。四股预测相加后除以 4，均值是 $\overline{\hat r^e}=(0.8+0.4-0.2-0.6)\%/4=0.1\%$。
+@@ -1116,9 +1186,9 @@
+ 
+ 四项贡献依次为 $+0.70,-0.15,-0.15,+1.05$ 个百分点。A 买入后上涨，给组合赚钱；B 买入后下跌，亏掉 0.15 个百分点；C 做空后上涨，买回股票要花更多钱，也亏掉 0.15 个百分点；D 做空后下跌，买回更便宜，赚到 1.05 个百分点。相加得到 1.45%。股票预测为负，不保证最后空头赚钱，还要看它后来实际上涨还是下跌。
+ 
+-**🎙️ 课堂补充**（A，01:09:05–01:11:33）
++**🎙️ 课堂补充**（A，`01:09:05`–`01:11:33`）
+ 课堂算例用去均值预测 0.3、0.1、−0.1、−0.3，先求权重，再求 realized return、gross/net exposure 和 spread return；暂不计交易成本。
+-*"the D-mean forecast ... 0.3, 0.1, negative 0.1, negative 0.3"*（01:09:05）；*"you can calculate the gross exposure ... the net exposure ... the spread return"*（01:11:16–01:11:25）。
++*"the D-mean forecast […] 0.3, 0.1, negative 0.1, negative 0.3"*（`01:09:05`）；*"you can calculate the gross exposure […] the net exposure […] the spread return"*（`01:11:16`–`01:11:25`）。
+ 
+ **💡 换个说法（笔记补充）**
+ 
+@@ -1192,9 +1262,9 @@
+ 
+ 上方图按这份动量组合的周收益重画。High–Low 仍采用“买高组一份、做空低组一份”的比例，也就是总暴露 2；交易成本与融资如何支付没有在本页展开。图中没有混入六模型预测排序结果。
+ 
+-**🎙️ 课堂补充**（A，01:11:47–01:12:11）
++**🎙️ 课堂补充**（A，`01:11:47`–`01:12:11`）
+ 教授用 low/middle/high 组合比较说明：排序策略要看财富路径和各组后续表现，不能只看某一周的排名。
+-*"we calculate the low middle high portfolios"*（01:11:47–01:12:11）。该段随后转入课堂互动，原话没有给出完整数表。
++*"we calculate the low middle high portfolios"*（`01:11:47`–`01:12:11`）。该段随后转入课堂互动，原话没有给出完整数表。
+ 
+ **💡 换个说法（笔记补充）**
+ 
+@@ -1263,9 +1333,7 @@
+ 
+ 风险也可以逐步算。两个月平均为零，因此两个偏差为 0.1 和 -0.1。平方、相加、除以 $2-1$、开方，月样本标准差为 $\sqrt{(0.1^2+(-0.1)^2)/(2-1)}=14.142136\%$；再乘 $\sqrt{12}$ 得年化约 $48.989795\%$。只有两个观测，这个数字用于演示公式，不足以说明长期风险稳定在这个水平。
+ 
+-**🎙️ 课堂补充**（A，01:15:52–01:16:31）
+-周频均值、标准差与年化必须统一频率；教授说明波动率就是标准差，并用平方根 52 年化。
+-*"volatility means standard deviation"*（01:15:52）；*"standard deviation, multiply with square root ... 52"*（01:16:02）。时间戳来自转录区间，具体秒点需主代理在候选合并时回核。
++**🎙️ 课堂补充**（`01:13:09`–`01:15:52`）：教授区分平均收益与复利，并要求统一年化频率。*"volatility means standard deviation"*（`01:13:54`）。`01:15:00` 说复合年收益“might not test you”，是当堂降低重点的口头信号，不代表永久排除考试；正文仍完整讲解。
+ 
+ **💡 换个说法（笔记补充）**
+ 
+@@ -1325,6 +1393,32 @@
+ 
+ **课件原例**
+ 
++先读题中的 constant（每周固定）与 Ignore serial correlation（忽略周间相关）：前者使总收益与超额收益的标准差相同，后者支持平方根年化。
++
++<details><summary>英文原题 · p.25（题干、全部选项及 Discuss）</summary>
++
++**Multiple-Choice Question: Annualized Sharpe Ratio**
++
++A weekly strategy has an average return of 0.30%, a constant weekly risk-free return of 0.05%, and return volatility of 1.80%. Ignore serial correlation and use
++
++$$\mathrm{Sharpe}=\frac{\overline R_p-R_f}{s(R_p)}\sqrt{52}.$$
++
++What is the annualized Sharpe ratio?
++
++A. 0.14  
++B. 1.00  
++C. 1.20  
++D. 7.22
++
++**Discuss**  
++Identify the errors behind using total return instead of excess return, or multiplying a weekly Sharpe ratio by 52 instead of $\sqrt{52}$.
++
++</details>
++
++中文题意：四个选项都是无单位比值。A 为 0.14，B 为 1.00，C 为 1.20，D 为 7.22；先求年化结果，再分别解释两种错误算法。下文按 A–D 逐项解释。
++
++英文参考答案（笔记自拟）：Choose B. The weekly mean excess return is 0.25%, and the annualized Sharpe ratio is approximately 1.00. Using total return overstates the risk premium and gives about 1.20. Multiplying the weekly ratio by 52 instead of its square root overstates annualization and gives about 7.22; 0.14 is only the weekly ratio.
++
+ 讲义 p.25 选择题给三个周度数字：策略的平均总收益 $0.30\%$，每周都一样的无风险收益 $0.05\%$，策略收益标准差 $1.80\%$。题目忽略周之间相关性，问年化 Sharpe。
+ 
+ ⚪ 参考作答（笔记推断）：选 B，约 1.00。按三个动作算：第一，扣无风险得到周平均超额 $0.30\%-0.05\%=0.25\%$；第二，除以周波动，得到周 Sharpe $0.25/1.80=0.1388889$；第三，乘 $\sqrt{52}=7.2111026$ 转成年化。用小数写完整代入是：
+@@ -1341,9 +1435,7 @@
+ 
+ 若直接把周 Sharpe 乘 52，就是只放大收益，却仍用周波动衡量风险，错误得到 $0.1388889\times52=7.222222$，对应 D。两个 Discuss 答案均为 ⚪ 参考作答（笔记推断），依据 p.23、p.25，未见官方答案。
+ 
+-**🎙️ 课堂补充**（A，01:16:02–01:16:31）
+-Sharpe 用超额收益除以超额收益波动，再按同一频率年化；课堂强调公式可放在双面 A4 cheat sheet。
+-*"the Sharpe ratio ... excess of return divided by ... standard deviation"*（01:16:11）；*"you should have this formula on your tissue"*（01:16:24）。ASR 中 Sharpe 多次识别为 “shock ratio”，正文应按术语校正，原引文保留 [?] 标记。
++**🎙️ 课堂补充**（`01:14:23`）：教授说明超额收益均值除以其标准差，再乘年化平方根；同段提到把公式放在速查纸。*"you should have this formula on your tissue"*（`01:14:23`，ASR 将 cheat sheet 记成 tissue）。双面 A4 的明确依据是 `01:11:04`。`01:25:08`–`01:26:14` 回到 p.25 选择题，课堂确认答案接近 1；具体算到 1.001542 的步骤为笔记复算。
+ 
+ **💡 换个说法（笔记补充）**
+ 
+@@ -1389,6 +1481,27 @@
+ 
+ **课件原题与逐问答案**
+ 
++先分清 reduction（减少量）与归零后剩下的 $R^2$：本题求前后之差。
++
++<details><summary>英文原题 · p.26（完整题面及全部选项）</summary>
++
++**Multiple-Choice Question: Drop-to-Zero Importance**
++
++On the same observations, the zero-forecast benchmark has squared error 200. A fitted model has squared error 80. Setting one centered characteristic to zero raises the error to 100, with the model otherwise unchanged.
++
++What is the reduction in fitted $R^2$?
++
++A) 0.10, or 10 percentage points.  
++B) 0.20, or 20 percentage points.  
++C) 0.40, or 40 percentage points.  
++D) 0.50, or 50 percentage points.
++
++</details>
++
++中文题意：同一批观测、固定模型，只把一列改零。A–D 分别表示减少 10、20、40、50 个百分点；不是收益百分比，也不是占全部重要性的份额。
++
++英文参考答案（笔记自拟）：Choose A. Fitted $R^2$ falls from 0.60 to 0.50, a reduction of 0.10, or 10 percentage points, using the same benchmark error of 200 without refitting.
++
+ 讲义 p.26 已给三个误差数字。零预测基准的做法是每条收益都预测为零，它的平方误差为 200；原模型的误差为 80；把某个中心化输入归零但不重新训练，误差上升到 100。题目问 $R^2$ 少了多少，而不是问归零后 $R^2$ 还剩多少。
+ 
+ ⚪ 参考作答（笔记推断）：选 A，$0.10$，即 10 个百分点。先用同一个 200 作分母，分别算改动前后模型相对零预测减少了多少误差，再相减：
+@@ -1406,6 +1519,27 @@
+ 
+ $R^2$ 从 $60\%$ 到 $50\%$，相减是 10 个百分点。若说相对原来的 60% 降低多少，则要另除以 60%，结果不是 $10\%$；若说占总重要性的 $10\%$，还需要另一个“所有重要性总和”的分母，本题没有这样定义。
+ 
++下一题先看 gross（绝对金额合计），不能拿 net（买入减做空）替代。
++
++<details><summary>英文原题 · p.27（完整题面及全部选项）</summary>
++
++**Multiple-Choice Question: Portfolio Weights and Exposure**
++
++Suppose a portfolio has weights (0.30, 0.20, −0.25, −0.25). The four stocks return (2%, 4%, −2%, 0%) over the next period. Ignore costs.
++
++Which pair gives the portfolio’s gross exposure and return?
++
++A) Gross exposure 0 and return 1.90%.  
++B) Gross exposure 1.00 and return 1.90%.  
++C) Gross exposure 1.00 and return 0.90%.  
++D) Gross exposure 0 and return 0.90%.
++
++</details>
++
++中文选项：A 为“总暴露 0、收益 1.90%”；B 为“总暴露 1、收益 1.90%”；C 为“总暴露 1、收益 0.90%”；D 为“总暴露 0、收益 0.90%”。股票与权重一一对应，负权重表示做空。
++
++英文参考答案（笔记自拟）：Choose B. Gross exposure is the sum of absolute weights, 1.00. The realized portfolio return is 1.90%; the third stock's fall contributes positively because its position is short. A and D confuse net and gross exposure; C reverses the short position's gain.
++
+ 讲义 p.27 按第一、第二、第三、第四只股票的顺序，给权重 $(0.30,0.20,-0.25,-0.25)$，下一期收益 $(2,4,-2,0)\%$，忽略成本。前两只买入，后两只做空。每个权重只能乘对应那一只股票的收益。
+ 
+ ⚪ 参考作答（笔记推断）：选 B，总暴露 1.00、收益 $1.90\%$。先检查净暴露：$0.30+0.20-0.25-0.25=0$，买入 50% 与做空 50% 相等。题目问的是总暴露，要去掉负号再加：$0.30+0.20+0.25+0.25=1$。随后逐只乘权重与实际收益：
+@@ -1418,9 +1552,9 @@
+ 
+ 第四只虽然没涨跌，但仍有 25% 的做空金额，因此计入总暴露。A 与 D 把净暴露零误写为总暴露零；C 的 $0.90\%$ 来自把第三项错算成负 $0.50$ 个百分点，相当于忘了做空方向。
+ 
+-**🎙️ 课堂补充**（A，01:10:22–01:10:35）
++**🎙️ 课堂补充**（A，`01:10:22`–`01:10:35`）
+ forecast-weighted portfolio 的手算题可能出现在考试；禁止计算器，所以数字会设置为可手算，允许双面 A4 cheat sheet。
+-*"this is also some question you might see from your exam"*（01:10:22）；*"I ban calculator in exams, so the numbers must be simple"*（01:10:30）；*"I allow you a double-sided A4 cheat sheet"*（01:11:04）。
++*"this is also some question you might see from your exam"*（`01:10:22`）；*"I ban calculator in exams, so the numbers must be simple"*（`01:10:30`）；*"I allow you a double-sided A4 cheat sheet"*（`01:11:04`）。
+ 
+ **💡 换个说法（笔记补充）**
+ 
+@@ -1478,9 +1612,9 @@
+ 
+ **课件原例**：p.29 的择时问题是“how much market exposure now?”，也就是“现在有多少资金跟着市场涨跌”。择时数据的一行记录一个市场的一个日期；模型预测这个市场下一期的对数收益，之后把预测转成那一期持有市场的资金比例。选股问题是“which assets should receive more weight?”：一行记录某日期的一只股票；模型预测这只股票下一期比现金多赚多少，再比较同一日期的股票。两种数据的一行代表的对象不同，不能拿它们的行数或命中率直接作比较。
+ 
+-**🎙️ 课堂补充**（A，01:28:53–01:29:14）
++**🎙️ 课堂补充**（A，`01:28:53`–`01:29:14`）
+ 市场择时把问题从“选哪只股票”转成“股票、债券或其他资产之间投多少比例”。
+-*"we are changing from ... stock selection to the market timing"*（01:28:56–01:29:00）；*"How much money you want to invest in the stock market? How much ... in the bond market?"*（01:29:14）。
++*"we are changing from […] stock selection to the market timing"*（`01:28:56`–`01:29:00`）；*"How much money you want to invest in the stock market? How much […] in the bond market?"*（`01:29:14`）。
+ 
+ **💡 换个说法（笔记补充）**：如果这个月要投股票，选股决定 100 元中哪些股票各分多少；择时先决定这 100 元有多少投股票、多少留现金。二者可以配合，但前一步得到股票排名，不会自动给出后一步的入场金额。
+ 
+@@ -1516,11 +1650,11 @@
+ 
+ 讲义用同一市场代理、同一 60 个测试月，比较 Class 2 三变量 OLS 择时与 BH。两者都不计交易费；本例现金月收益假设为零（p.30）。
+ 
+-**🎙️ 课堂补充**（A，01:33:21–01:35:19）
++**🎙️ 课堂补充**（A，`01:33:21`–`01:35:19`）
+ buy-and-hold 是把 100% 配到市场并长期不调整的朴素基准；教授用“forget your password”比喻没有 turnover。
+-*"you just buy the stock market, 100% in the stock market and do nothing"*（01:33:29）；*"you invest 100% into the stock market and forget your password"*（01:34:58）。
+-
+-**💡 换个说法（笔记补充）**：如果模型数据写月对数收益 0.02，先算 $\exp(0.02)=1.020201$，这是钱增长的倍数；再减 1 得简单收益 0.020201，即约 2.0201%。因此 100 元月底变成 $100\exp(0.02)=102.0201$ 元，而非精确 102 元。
++*"you just buy the stock market, 100% in the stock market and do nothing"*（`01:33:29`）；*"you invest 100% into the stock market and forget your password"*（`01:34:58`）。
++
++**💡 换个说法（笔记补充）**：如果模型数据写月对数收益 0.02，先算 $\exp(0.02)=1.020201$，这是钱增长的倍数；再减 1 得简单收益 0.020201，即约 2.0201%。因此 100 元月底变成 $100\exp(0.02)=102.0201$ 元，而非精确 102 元。指数与分数次方的具体数值可用计算器或软件求；这里先理解给定金额倍数和连乘。考试禁计算器的口头要求不意味着必须心算这些函数，实际手算题范围以教师明示为准。
+ 
+ 再看跨期：先涨 10%，100 元成为 110 元；随后跌 10%，亏的是新本金 110 元的 10%，最后是 99 元。写成初始 1 元就是 $1\times1.1\times0.9=0.99$。
+ 
+@@ -1562,9 +1696,9 @@
+ 
+ **课件原例**：p.31 的“Fit and evaluate in log returns; invest using simple returns.”告诉我们：训练模型和比较预测误差时用对数收益；计算本月账户赚赔时，把真实对数收益转为简单收益。课件另行明确：买入门槛是训练均值，不是 MA(12)。
+ 
+-**🎙️ 课堂补充**（A，01:36:05–01:36:47）
++**🎙️ 课堂补充**（A，`01:36:05`–`01:36:47`）
+ 0/1 择时规则：若预测市场收益高于训练样本均值就持有 100% 股票，否则持有 0% 股票（转入短期利率债券）。
+-*"if his forecast ... beyond the average from a training sample, then he puts 100% in the stock market. Otherwise, he puts zero"*（01:36:05）；*"the zero means ... short-term interest bond"*（01:36:33）。
++*"if his forecast […] beyond the average from a training sample, then he puts 100% in the stock market. Otherwise, he puts zero"*（`01:36:05`）；*"the zero means […] short-term interest bond"*（`01:36:33`）。
+ 
+ **💡 换个说法（笔记补充）**：固定训练均值为 0.4%。月末预测 0.6% → 仓位 1；下月实际对数收益 −2% → 简单收益 $\exp(-0.02)-1=-1.9801\%$，组合承受该损失。次月末预测 0.3% → 仓位 0；再下一月市场实际上涨 3% → 组合仍赚 0%。两个决策先做、两个真实结果后揭示，完整运行到测试期末才统计表现。
+ 
+@@ -1645,9 +1779,9 @@
+ 
+ 年化算术均值是月简单收益均值乘 12，不是五年财富的年复合增幅。例如美国择时年化 7.0984% 对应月均约 $7.0984\%/12=0.5915\%$。
+ 
+-**🎙️ 课堂补充**（A，01:37:07–01:39:17）
++**🎙️ 课堂补充**（A，`01:37:07`–`01:39:17`）
+ 三市场表格显示：正的样本外预测能力不保证择时收益超过 buy-and-hold；美国约 7.1% 对 13.8%，中国内地约 1.8%，香港择时更差。
+-*"the market timing strategy ... only gives you 7.1% for the U.S. market, but 1.8% for the Chinese mainland market"*（01:38:10）；*"the positive outcomes are not as good as the buy-and-hold strategy"*（01:39:17）。数字需以讲义表格为准，录音仅作课堂口径证据。
++*"the market timing strategy […] only gives you 7.1% for the U.S. market, but 1.8% for the Chinese mainland market"*（`01:38:10`）；*"the positive outcomes are not as good as the buy-and-hold strategy"*（`01:39:17`）。数字需以讲义表格为准，录音仅作课堂口径证据。
+ 
+ **💡 换个说法（笔记补充）**：假设两个月预测误差分别从 2、2 降至 1、1，误差评分改善了；但若交易规则在阈值附近把一次大涨误判成现金，资金结果仍可能恶化。分数和交易之间还有一道决策门槛。
+ 
+@@ -1671,9 +1805,9 @@
+ 
+ **课件原例**：美国择时策略的年化算术均值是 7.1%，始终持有为 13.8%（p.34）。从初始 1 元逐月结算到最后，BH 得到 1.866561 元，择时得到 1.359130 元，分别累计增加约 86.66% 和 35.91%。不能拿 13.8% 或 7.1% 简单乘 5 来恢复这些终值：账户每月赚赔后，本金都会改变。
+ 
+-**🎙️ 课堂补充**（A，01:39:48–01:43:14）
++**🎙️ 课堂补充**（A，`01:39:48`–`01:43:14`）
+ 择时平均只有约 75% 月份持有股票，最近 18 个月因担心 AI bubble 而错过上涨；buy-and-hold 作为廉价 benchmark，不代表理论最优。
+-*"they only have 75% invest in the stock market"*（01:39:48）；*"I'm not saying that the buy-and-hold strategy is the best one ... a very cheap benchmark"*（01:42:03–01:42:11）。
++*"they only have 75% invest in the stock market"*（`01:39:48`）；*"I'm not saying that the buy-and-hold strategy is the best one […] a very cheap benchmark"*（`01:42:03`–`01:42:11`）。
+ 
+ **💡 换个说法（笔记补充）**：先涨 10%，再涨 10%，BH 从 1 到 1.1 再到 1.21；只持有第一月从 1 到 1.1 再停在 1.1。少参与一次上涨就少一次复利。若第二月跌 10%，现金反而让财富停在 1.1，BH 降至 0.99；效果取决于漏掉哪月。
+ 
+@@ -1701,9 +1835,9 @@
+ 
+ 这个步骤可以恢复算术均值，却不能恢复终值；终值要把每个月的真实增长倍数依次相乘。原 CSV 未舍入终值见块末核验记录。
+ 
+-**🎙️ 课堂补充**（A，01:43:25–01:44:18）
++**🎙️ 课堂补充**（A，`01:43:25`–`01:44:18`）
+ 香港与内地样本中，择时持有股票的月份平均表现不同；教授用此说明错误择时会在真正上涨期减仓。
+-*"the average gain for the Hong Kong market is negative 0.9%"*（01:43:41）；*"when they predict the stock go up ... the stock actually go down"*（01:44:18）。
++*"the average gain for the Hong Kong market is negative 0.9%"*（`01:43:41`）；*"when they predict the stock go up […] the stock actually go down"*（`01:44:18`）。
+ 
+ **💡 换个说法（笔记补充）**：恒生“在现金时市场平均 +0.4%”的人话是：没有买市场的那些月，市场本来平均涨了 0.4%。本策略在那些月赚的是 0%，不是 +0.4%。
+ 
+@@ -1741,7 +1875,9 @@
+ 
+ **为什么需要它**：把资金比例从 $w$ 增大一点，可以多拿一点预期市场超额收益，但也会让账户更随市场起伏。组合超额收益是 $w(r_m-r_f)$：100 元中只有比例 $w$ 承担市场涨跌，所以预期超额收益乘 $w$。标准差也乘 $w$，而方差是标准差的平方，所以组合方差乘 $w^2$。这解释了目标式为什么一项是 $w$，另一项是 $w^2$。
+ 
+-接下来找在哪个比例继续加仓已不值得。对目标式求一阶导数，得到 $\hat\mu-\gamma w\hat\sigma^2$；它表示再加一点仓位时，预计多赚的部分减去新增风险惩罚。
++先用配平方理解最优比例，不要求会微积分（笔记补充）。设未约束比例 $\tilde w=\hat\mu/(\gamma\hat\sigma^2)$，目标可以改写成“一个不随 $w$ 改变的数，减去 $\tfrac{\gamma\hat\sigma^2}{2}(w-\tilde w)^2$”。只要方差正、风险厌恶为正，后面的系数就为正；因此 $w$ 离 $\tilde w$ 越远，扣掉的平方越多。允许区间中离它最近的点就是最佳仓位：在区间内取它本身，超过 1 取 1，小于 0 取 0。
++
++接下来用微积分简写这一判断。“一阶导数”表示比例增加一点时目标的变化率；“二阶导数为负”表示变化率逐渐下降、曲线向下弯。对目标式求一阶导数，得到 $\hat\mu-\gamma w\hat\sigma^2$；它表示再加一点仓位时，预计多赚的部分减去新增风险惩罚。
+ 
+ 让它等于零，得到 $\tilde w=\hat\mu/(\gamma\hat\sigma^2)$。$\tilde w$ 的波浪号表示暂时还没有检查持仓限制。
+ 
+@@ -1759,9 +1895,9 @@
+ 
+ 也不能自行改变分子的转换方式后继续把新结果说成课件原结果。尤其 $\exp(E[\ell])-1$ 一般不等于 $E[\exp(\ell)-1]$：$E$ 表示平均/期望，“先平均再取指数”和“先对每个可能结果取指数再平均”会得到不同数，精确转换还要知道未来收益的分布。
+ 
+-**🎙️ 课堂补充**（A，01:46:24–01:47:36）
++**🎙️ 课堂补充**（A，`01:46:24`–`01:47:36`）
+ 连续仓位使用 mean-variance utility，在预测收益与风险之间权衡；若闭式解超过 1，则截断到 1。
+-*"everyone want to have a portfolio with a higher mean and ... lower risk"*（01:46:30–01:46:35）；*"if this guy happen to be larger than 1, then we just make it 1"*（01:46:52）。
++*"everyone want to have a portfolio with a higher mean and […] lower risk"*（`01:46:30`–`01:46:35`）；*"if this guy happen to be larger than 1, then we just make it 1"*（`01:46:52`）。
+ 
+ **💡 换个说法（笔记补充）**：预测为 0.6%、月波动率 4%、$\gamma=5$，未约束仓位 $0.006/(5\times0.04^2)=0.75$；限制内无需裁剪。若预测翻倍为 1.2%，原值 1.5 截为 1；若预测 −0.6%，原值 −0.75 截为 0。
+ 
+@@ -1818,9 +1954,9 @@
+ 
+ 等价式 $r_f+w(r_m-r_f)$ 则是先让全账户赚现金利息，再加上买市场部分相对现金多赚或少赚的部分。原始数据未舍入的数见块末折叠，不必先读文件路径才理解这一步。
+ 
+-**🎙️ 课堂补充**（A，01:47:09–01:47:36）
++**🎙️ 课堂补充**（A，`01:47:09`–`01:47:36`）
+ 算例：月度 forecast 0.337%、年化 volatility 19.09、gamma=5，得到约 22.2% 权重；月度预测与年化波动要先统一频率。
+-*"the forecast 0.337%, ... volatility like 19.09, ... gamma equal to 5 ... weight ... 22.2%"*（01:47:09）；*"volatility ... annualized ... divided by square root 12"*（01:47:36）。
++*"the forecast 0.337%, […] volatility like 19.09, […] gamma equal to 5 […] weight […] 22.2%"*（`01:47:09`）；*"volatility […] annualized […] divided by square root 12"*（`01:47:36`）。
+ 
+ **💡 换个说法（笔记补充）**：100 元里约 22.16 元承担 SPY 下跌，其余 77.84 元获得现金利息；两项几乎抵消。22.16% 是分配资金，0.3366% 是预测收益，不能把两者互相替换。
+ 
+@@ -1889,9 +2025,9 @@
+ 
+ 以 BH 为例，初始 1 元最后为 1.866561 元，固定年增长率是 $1.866561^{1/5}-1=13.2944\%$。boosting 从 1 元到 1.696256 元，年复合收益 11.1471%、Sharpe 0.814789；因此本样本里它赚得比 BH 少，但平均超额回报相对其波动更高。注意表中的波动列算的是总收益，而 Sharpe 分母算的是扣现金后的超额收益。现金收益逐月变化时，两种标准差可以不同，不能随手把波动列塞进 Sharpe 式。
+ 
+-**🎙️ 课堂补充**（A，01:48:12–01:50:39）
+-LASSO 组合约 4.9% 平均收益、2.3% 波动、Sharpe 0.57、turnover 4.6%；gradient boosting 约 11.1% 收益、9.1% 波动、Sharpe 0.81、turnover 23.2%。教授明确更看重风险调整后的 Sharpe。
+-*"which criterion is more important, I always tell you [?] ratio is more important than expected return"*（01:50:12）；*"the gradient boosting ... 0.81"*（01:49:43–01:50:39）。ASR “shock ratio”按 [?] 处理。
++**🎙️ 课堂补充**（A，`01:48:12`–`01:50:39`）
++教授口头把 4.9% 和 11.1% 称 mean，讲义 p.38 的列标题实际是复合年收益；正文依讲义与 CSV 的复合定义。其余为波动 2.3%／9.1%、Sharpe 0.57／0.81、换手 4.6%／23.2%。教授明确更看重风险调整后的 Sharpe。
++*"which criterion is more important, I always tell you [?] ratio is more important than expected return"*（`01:50:12`）；*"the gradient boosting […] 0.81"*（`01:49:43`–`01:50:39`）。ASR “shock ratio”按 [?] 处理。
+ 
+ **💡 换个说法（笔记补充）**：钱增长多少像走了多远，风险调整指标像每单位颠簸换来多少距离；后者高不代表终点一定更远。
+ 
+@@ -1915,9 +2051,9 @@
+ 
+ **课件原例**：p.40 的规则是：预测为正时，估计方差越大，同样预测对应的买入比例越小；预测为负时市场比例为零，资金留现金。p.39 中 LASSO 最后约 1.27 元、boosting 约 1.70 元、BH 约 1.87 元；精确终值分别 1.273230、1.696256、1.866561。路径最深回撤分别约 −0.86%、−8.07%、−23.93%，计算方法见 §2.30。这些是该五年样本的结果，不是未来保证。
+ 
+-**🎙️ 课堂补充**（A，01:52:44–02:02:10）
++**🎙️ 课堂补充**（A，`01:52:44`–`02:02:10`）
+ 择时策略在 2022 年市场下跌期间回撤较小；教授解释回撤触发基金强制卖出，10%–12% 损失可能触发投资者赎回。
+-*"the drawdown for S&P 500 is huge, more than 20%, more than 24%"*（01:54:48）；*"if they lose 10%, 12% ... their investors will require them to do fire sales"*（01:55:19）。ASR “file sales”应校正为 fire sales。
++*"the drawdown for S&P 500 is huge, more than 20%, more than 24%"*（`01:54:48`）；*"if they lose 10%, 12% […] their investors will require them to do [fire] sales"*（`01:55:19`）。ASR “file sales”应校正为 fire sales。
+ 
+ **💡 换个说法（笔记补充）**：预测和风险厌恶 $\gamma$ 不变，月波动率从 4% 增至 8% 是翻倍；方差从 $0.04^2$ 到 $0.08^2$ 是四倍。因为仓位公式用方差作分母，未触及 0–1 限制时，买入比例从 75% 降为 18.75%。具体动作是每 100 元原买 75 元，后来只买 18.75 元，其余转现金。这里不是只把比例减半。
+ 
+@@ -1955,9 +2091,9 @@
+ 
+ **课件原例**：p.41 的权重都是扣费前的比例。A 由 50% 增至 70%，要买账户价值的 20%；B 由 50% 减至 30%，要卖账户价值的 20%。所以总交易额比例 $q=0.20+0.20=0.40$。费率 $c=0.001$，费用占账户 $C=0.001\times0.40=0.0004=0.04\%=4\text{ bp}$。如果账户为 HK\$1,000,000，买卖交易额合计 HK\$400,000，乘 0.001 后费用为 HK\$400。账户的钱没有变多，仍发生了两笔收费交易。
+ 
+-**🎙️ 课堂补充**（A，02:03:01–02:03:54）
+-交易成本算例把 10 bp 视为 0.1%；从 A/B 各 50% 调整到 A 增 20%、B 减 10%，成本约 0.04%，100 万 HKD 约 400 HKD。
+-*"10BP is 0.1%"*（02:03:01）；*"if you buy 1 million HKD portfolio ... about 400 HKD"*（02:03:39）。
++**🎙️ 课堂补充**（A，`02:03:01`–`02:03:54`）
++交易成本算例把 10 bp 视为 0.1%；原转录 `02:03:01` 记为买 A 20%、卖 B 10%，但 p.41 明写卖 B 20%。转录口径若按 10% 算只得 3 bp，与其后 4 bp／400 HKD 不一致；正文按讲义两边各 20% 计算，口误或 ASR 差异待核音。
++*"10BP is 0.1%"*（`02:03:01`）；*"if you buy 1 million HKD portfolio […] about 400 HKD"*（`02:03:39`）。
+ 
+ **💡 换个说法（笔记补充）**：像卖一件物品要付手续费、买另一件也要付手续费；银行卡净余额变化可能为零，收费仍发生。若以“单边换手”记作交易额总和的一半，此例是 20%，须先乘 2 才匹配每笔买卖费率。
+ 
+@@ -1978,6 +2114,28 @@
+ 于是毛/净年化 Sharpe 是 $\sqrt{52}(0.20/2.00)=0.7211$、$\sqrt{52}(0.16/2.00)=0.5769$，显示为 0.72 和 0.58。52 是一年约有 52 个周收益期，不是样本必然只有 52 周。
+ 
+ **为什么需要它**：标准差看每周收益离平均收益多远。如果每周都扣同一个常数，平均收益也会扣掉这个常数，所以“本周减新平均”仍和扣费前相同，标准差不变。例如从每周收益都扣 0.04%，新均值同样降低 0.04%，两者差距不变。费用若随交易量每周改变，各周被扣掉的量不同，收益差距也可能改变，必须重新算净收益标准差。
++
++本题这次给 gross return（毛总收益），还要扣 risk-free return（无风险收益）；与 p.42 已经给超额收益的题面不同。
++
++<details><summary>英文原题 · p.43（全部条件与三问）</summary>
++
++**Calculation Question: Trading Costs and Sharpe Ratios**
++
++A strategy buys 30% and sells 30% of portfolio value each week. Each purchase or sale costs 10 bp of traded value.
++
++Its gross weekly return has mean 0.30% and standard deviation 1.80%. The weekly risk-free return is a constant 0.05%. The same percentage cost is deducted each week, so volatility is unchanged.
++
++Use $SR_{\mathrm{annual}}=\sqrt{52}(\bar r_p-r_f)/s(r_p)$.
++
++1. Calculate weekly trading costs as a percentage of portfolio value.
++2. Calculate the mean net return and the mean net excess return.
++3. Calculate annualized Sharpe ratios before and after costs.
++
++</details>
++
++中文题意：每笔买与卖均收费，费用占总账户而不是单笔交易；相同费用比例每周扣除，现金收益也固定，因此本题扣费与扣现金后标准差不变。
++
++英文参考答案（笔记自拟）：(1) Weekly cost is 0.06% of portfolio value, or 6 bp. (2) Mean net total return is 0.24%, and mean net excess return is 0.19%. (3) Gross and net annualized Sharpe ratios are approximately 1.00 and 0.76. Volatility remains 1.80% because both deductions are constant each week.
+ 
+ **课件原例**：p.43 给每周买 30%、卖 30%，每笔费率 10 bp。题目这次给的是毛“总收益”均值 0.30%、标准差 1.80%，并另给固定现金周收益 0.05%。因此从总收益到超额收益时必须扣这 0.05%。题目要求成本、净总/超额均值、毛/净年化 Sharpe，下面逐问作答。三问均为 **⚪ 参考作答（笔记推断）**，未取得官方解答。
+ 
+@@ -1985,9 +2143,9 @@
+ 2. **净总收益均值为 0.24%，净超额均值为 0.19%**。先从毛总收益扣成本：$0.30\%-0.06\%=0.24\%$。这是实际净赚多少。再扣掉原本留现金可赚的 0.05%：$0.24\%-0.05\%=0.19\%$，这是比现金多赚多少。先求毛超额 $0.30\%-0.05\%=0.25\%$ 再扣 0.06%，也得到 0.19%。
+ 3. **毛/净年化 Sharpe 约 1.00 / 0.76**。毛超额均值 0.25%，所以 $SR_{gross}=\sqrt{52}(0.25\%/1.80\%)=1.001542$；净超额均值 0.19%，所以 $SR_{net}=\sqrt{52}(0.19\%/1.80\%)=0.761172$。$SR$ 是均值除标准差的比值，没有百分号，不能读成赚 1.00% 或命中 76%。本题现金收益和费用都是固定常数，扣掉它们不改变各周偏离平均数的大小，因此两个分母都仍为 1.80%。如果任何一项逐周变化，就要重算相应标准差。
+ 
+-**🎙️ 课堂补充**（A，02:04:13–02:04:47）
+-成本只影响收益分子，不改变波动率分母；课上给 before-cost Sharpe 0.72、after-cost 0.58，并明确跳过题目要求回家自行计算。
+-*"the cost only affects the nominator"*（02:04:19）；*"the cost does not affect the denominator"*（02:04:28）；*"I must skip the question ... calculate this question yourself"*（02:04:40）。
++**🎙️ 课堂补充**（A，`02:04:13`–`02:04:47`）
++课上给出成本前后 Sharpe 0.72、0.58，并跳过 p.43 题目要求回家计算。“只影响分子”的口头说法仅在本题每周扣相同常数费用时成立；费用随周变化就要重算分母。
++*"the cost only affects the nominator"*（`02:04:19`）；*"the cost does not affect the denominator"*（`02:04:28`）；*"I must skip the question […] calculate this question yourself"*（`02:04:40`）。
+ 
+ **💡 换个说法（笔记补充）**：把每周收入都固定扣同样金额，收入之间的差距不会改变；这里扣的是固定收益比例，逻辑相同。费用若在糟糕周特别高，就会改变均值和波动，不能说仅影响分子。
+ 
+@@ -2017,9 +2175,9 @@
+ 
+ **课件原例**：p.44 横轴为测试月份，纵轴为回撤百分比；黑色 BH、蓝色 LASSO、红色 boosting。在线上找到最低点，就是该策略最大回撤。0% 表示当时账户已达到截至该月最高金额，并不表示账户月收益为零。本例最大回撤为 BH −23.9272%、LASSO −0.8595%、boosting −8.0701%；必须看整条路径，不能只拿最后一月的回撤。
+ 
+-**🎙️ 课堂补充**（A，02:04:51–02:05:07）
++**🎙️ 课堂补充**（A，`02:04:51`–`02:05:07`）
+ 最大回撤是峰值到随后谷值的最大跌幅，多段回撤取其中最大的一段。
+-*"the maximum drawdown is the peak to the bottom"*（02:04:51）；*"for multiple drawdowns ... the maximum one"*（02:04:58）。
++*"the maximum drawdown is the peak to the bottom"*（`02:04:51`）；*"for multiple drawdowns […] the maximum one"*（`02:04:58`）。
+ 
+ **💡 换个说法（笔记补充）**：四期简单收益为 −10%、+10%、+10%、−20%，完整状态如下。
+ 
+@@ -2073,15 +2231,15 @@
+ 
+ William Sharpe 对应 CAPM、beta、切点组合和市场基准。他的框架帮助比较回报与承担的市场风险。
+ 
+-切点组合是在同时考虑现金与风险资产时，确定风险资产分配的重要基准。本讲随后实际做绩效回归，不在此计算完整的多资产有效前沿或切点。
++切点组合是在同时考虑现金与风险资产时，确定风险资产分配的重要基准。本讲随后实际做绩效回归，此处只需识别这两个背景名称，不在此计算多资产有效前沿或切点。
+ 
+ **为什么需要它**：选择持仓与评价持仓是两个步骤。均值—方差方法先问“多拿一点股票收益，要多承担多少风险”；CAPM 绩效回归在赚赔已经发生后，问“这份回报能有多少由跟随市场解释”。先讲这个区分，后面才不会把“风险更大所以赚得多”自动说成特殊投资能力。
+ 
+ **课件原例**：讲义把 Markowitz 和 Sharpe 标作 1990 laureate，并注明该年奖项由两人与 Merton Miller 共同分享；这里按课件记录，未另行联网核对。p.46 还明确说人像是 **AI-generated editorial illustrations，非照片**。因此可以把这些图当作课堂插图，不能说看到了历史人物的真实照片。
+ 
+-**🎙️ 课堂补充**（A，02:05:15–02:07:29）
++**🎙️ 课堂补充**（A，`02:05:15`–`02:07:29`）
+ 教授以 Markowitz 与 William Sharpe 引入 alpha/beta，并把 CAPM 作为股票定价与资本成本的基准。
+-*"now we need to think about something for alpha and beta"*（02:06:26）；*"this is the CAP-M model ... the benchmark for pricing equities"*（02:07:09）。
++*"now we need to think about something for alpha and beta"*（`02:06:26`）；*"this is the CAP-M model […] the benchmark for pricing equities"*（`02:07:09`）。
+ 
+ **💡 换个说法（笔记补充）**：先定如何分配风险，再问赚到的钱是否超出了已承担的风险所能解释的部分。历史人物只是这个学习转折的入口，图像不是理论成立的证明。
+ 
+@@ -2160,9 +2318,29 @@
+ 
+ **课件原例**：p.48 设月 alpha 为 0.2%，beta 为 1.10。市场超额为 −2% 时，市场贡献是 $1.10\times(-2\%)=-2.2\%$，再加平均截距 +0.2%，拟合组合超额为 −2.0%。市场超额为 0% 时，市场贡献零，拟合超额仍为 +0.2%。市场超额为 +2% 时，市场贡献 +2.2%，拟合超额为 +2.4%。三次都先乘 beta，再加 alpha；如果要拟合总收益，还要加同月现金收益。实际收益与这个拟合数的差，就是本月残差。
+ 
+-**🎙️ 课堂补充**（A，02:07:44–02:12:33）
++**🎙️ 课堂补充**（A，`02:07:44`–`02:12:33`）
+ CAPM 回归把组合超额收益分解为 alpha、beta×市场超额收益和误差；beta=2/3 可理解为市场暴露倍数，alpha 是控制市场风险后的表现。
+-*"If alpha equal to zero ... something multiplied with the market portfolio"*（02:07:50–02:08:04）；*"alpha represents the risk-adjusted performance"*（02:09:31）。
++*"If alpha equal to zero […] something multiplied with the market portfolio"*（`02:07:50`–`02:08:04`）；*"alpha represents the risk-adjusted performance"*（`02:09:31`）。
++
++**🎙️ 课堂应用：市场倍数与额外收费**（`02:08:20`–`02:12:13`）
++
++教授展示杠杆与反向 ETF，用来说明“收益幅度大”可能只是买了更多市场暴露。ETF（Exchange-traded fund）是在交易所买卖的基金；杠杆表示把市场响应放大，反向表示市场上升时朝相反方向变化。`02:08:43` 讨论两倍、三倍及负两倍、负三倍市场方向。
++
++笔记补充的理想化单期例：暂设现金收益、费用与残差均为零，市场超额上涨 1 个百分点。beta 为 2 的直线给组合超额上涨 2 个百分点；beta 为 −2 则给 −2 个百分点。若市场改跌 1 个百分点，两者分别为 −2 和 +2。幅度和方向由 beta 改变，不需要另加正 alpha 才会出现这些数字。
++
++这只是本讲直线里的暴露示意，不是某只真实 ETF 的产品承诺。真实杠杆／反向产品可能按日重置，并有费用、跟踪误差和跨期复利差异，不能把每日倍数直接当作整月或多年固定倍数；课堂没给产品条款，本笔记不重建其长期收益。
++
++`02:11:26`–`02:12:13` 把问题用于基金评价：如果经理主要复制市场暴露，投资者就要问额外管理费换来了什么。这里是评价问题，不据课堂口头费率认定某产品贵或某经理没有技能；仍要对齐收益、费用、市场基准与样本后估 alpha 及其不确定性。
++
++**🎙️ 课堂应用：单股解释与事前预测**（`02:14:10`–`02:16:58`）
++
++*"They're not doing prediction. They're doing comparison."*（`02:14:10`）说明当前把同期间市场收益放到右侧，是在解释已经发生的收益。
++
++教授随后比较一只名称听不清的股票 A `[?]`（口头 beta 约 1.46，`02:14:28`）和转录识别为 NVIDIA 的示例（beta 约 2.22，`02:15:53`），用网页价格涨幅讨论前者的变化似乎更难只靠市场倍数解释。这些 beta、价格与公司识别均是当堂演示读数，未独立核验；不将其写成已证的股票 alpha、错误定价或投资推荐。
++
++为什么还不能只看价格跨度就算 alpha？价格首尾变化可能跨多年，beta 可能来自另一估计窗口；价格是否含分红、同期间现金与市场超额是多少也未对齐。先把股票与市场换成同日期、同频率的超额收益，再用回归估截距与标准误，才能作本讲的平均绩效判断。一个很大的单期残差也不能直接叫长期 alpha，这与 §2.33 的题目是同一边界。
++
++`02:16:50`–`02:16:58` 另说：若能事先预测右侧市场超额收益，也可以代入形成模型隐含预测（Model-implied forecast）。这时用的是预测市场量，不是事后真实市场量；仍会叠加市场预测误差和回归残差，不能把同期解释成功当作未来预测已验证。
+ 
+ **💡 换个说法（笔记补充）**：三个月的市场超额收益 $x=(-1,0,1)\%$，组合超额收益 $y=(-0.8,0.1,1.3)\%$。用这三个点完整找一次直线：
+ 
+@@ -2226,15 +2404,38 @@
+ 
+ **为什么需要它**：计算基准回答“按已知市场跟随程度，本周对应多少总收益”；用真实结果减基准回答“本周多了多少”。估计 alpha 则要把许多期放在一起，找它们平均超过市场贡献多少。一个月或一周可能偶然赚得多，因此单期差额和跨期平均不能互相替代。
+ 
++先看 one week / one positive week：题目只给单周结果，不能由它估出跨周平均 alpha。
++
++<details><summary>英文原题 · p.49（完整情境、公式与三问）</summary>
++
++**Calculation Question: What Is the CAPM Benchmark Return?**
++
++In one week, $R_f=0.10\%$ and $MKT-RF=1.00\%$. A portfolio has a market beta of 1.10 and a realized return of 1.40%.
++
++$$R^{\mathrm{CAPM}}=R_f+\beta_M(MKT-RF),\qquad \text{abnormal return}=R_p-R^{\mathrm{CAPM}}.$$
++
++1. Calculate the CAPM benchmark return and show the substitution.
++2. Calculate the portfolio’s one-week abnormal return.
++3. Explain why one positive week does not establish a positive CAPM alpha.
++
++**Show your reasoning**  
++Separate the benchmark calculation from the interpretation of performance.
++
++</details>
++
++中文题意：先代入求基准总收益，再计算实际减基准，最后解释单周异常收益为何不足以证明平均 alpha。市场项已扣现金，不能再减一次。
++
++英文参考答案（笔记自拟）：(1) The CAPM benchmark total return is 0.10% + 1.10 × 1.00% = 1.20%. (2) The one-week abnormal return is 1.40% − 1.20% = 0.20%. (3) Abnormal return contains both alpha and the period's residual; one positive observation cannot establish a positive average intercept. Multiple aligned observations and appropriate inference are required.
++
+ **课件原例**：下列三问按 p.49 的输入计算，均为 **⚪ 参考作答（笔记推断）**，不是教师官方解答。先算基准，再算差额，最后解释这个差额能够和不能够说明什么。
+ 
+ 1. **CAPM 基准总收益为 1.20%**。$R^{CAPM}=R_f+\beta_M(MKT-RF)=0.10\%+1.10\times1.00\%=1.20\%$。$MKT-RF$ 已是超额收益，不再减一次 $R_f$。
+ 2. **单周异常收益为 +0.20%**。$R_p-R^{CAPM}=1.40\%-1.20\%=0.20\%$，即 0.20 个百分点或 20 bp，表示这一周超过市场暴露基准的部分。
+ 3. **不能据此建立正 CAPM alpha**。在带 alpha 的回归中，单期基准差额为 $\alpha+\varepsilon_t$。只观察 +0.20%，无法区分平均截距与当周随机残差。需要足够多共同频率观测、同期无风险收益和当地市场，估计截距及标准误，再判断其是否能与零区分；仍受样本和遗漏风险暴露限制。
+ 
+-**🎙️ 课堂补充**（A，02:17:06–02:19:29）
++**🎙️ 课堂补充**（A，`02:17:06`–`02:19:29`）
+ 课堂三问：无 alpha 信息时按 0 处理；CAPM implied return = risk-free rate + beta×market excess return；单周 abnormal return = alpha + epsilon，单次为正不能证明 alpha 为正。
+-*"If I do not tell you alpha, then there's no alpha here"*（02:17:21）；*"the CAPM-implied return is the risk-free ... plus beta ... excess market return"*（02:17:41）；*"one positive ... does not mean the alpha is positive"*（02:19:06–02:19:24）。
++*"If I do not tell you alpha, then there's no alpha here"*（`02:17:21`）；*"the CAPM-implied return is the risk-free […] plus beta […] excess market return"*（`02:17:41`）；*"one positive […] does not mean the alpha is positive"*（`02:19:06`–`02:19:24`）。
+ 
+ **💡 换个说法（笔记补充）**：一次考试超出预期不等于长期水平永远高于预期。同理一周异常 +0.20% 可以出现在 alpha 为零、当周残差为 +0.20% 的策略中。
+ 
+@@ -2308,9 +2509,9 @@
+ 
+ 内地这一行年化 alpha 虽为 +1.10%，但 $t=0.40$，估计只约等于其标准误的四成，因此这 60 个月没有提供足够证据确认长期截距为正。美国与香港的 $t$ 也都离通常双侧 5% 的约 2 界值较远。本表三组都不能把 alpha 与零区分；结论是“证据不足”，不是“已经证明三组 alpha 都为零”。月 alpha 乘 12 是收益单位换算，不是把截距逐月复利。各组未舍入复算值集中见块末。
+ 
+-**🎙️ 课堂补充**（A，02:19:45–02:23:22）
++**🎙️ 课堂补充**（A，`02:19:45`–`02:23:22`）
+ 三市场择时 alpha：S&P 约 −4、香港约 −5、内地约 +1.1%，但内地 alpha 的 t statistic 约 0.4、统计上不显著；正负数不能自动等于 skill。
+-*"Asia market, 1.1%"*（02:20:25）；*"this alpha is insignificant ... key statistic, point four"*（02:21:34）。
++*"Asia market, 1.1%"*（`02:20:25`）；*"this alpha is insignificant […] key statistic, point four"*（`02:21:34`）。
+ 
+ **💡 换个说法（笔记补充）**：用一把有较大刻度误差的尺测到 +1 mm，不能据此断言物体真实变长。标准误是模型条件下的估计精度，不是给未来收益加减一个保证区间。
+ 
+@@ -2404,9 +2605,9 @@
+ 
+ 按常见大样本双侧 5% 检验作粗略判断，$|t|$ 约超过 2 才有较强证据把截距与零区分。这里汇丰 3.61、建行 2.19 提供较强正截距证据；腾讯 0.37、阿里 0.13、友邦 −0.32 没有。这里的绝对值是检验向零两侧偏离多远，负号只说明估计方向为负。约 2 是在相应检验假设下的近似界值，不是所有样本和标准误方法的固定保证，也不保证这些股票未来仍有相同 alpha。
+ 
+-**🎙️ 课堂补充**（A，02:23:27–02:26:11）
++**🎙️ 课堂补充**（A，`02:23:27`–`02:26:11`）
+ 五只恒生大盘股示例强调 beta 与 alpha 必须一起看：HSBC/CCB beta 约 0.5、alpha 较大；Alibaba beta 约 1.59 且 alpha 不显著；科技股 beta 往往高、银行/公用事业较低。
+-*"the HSBC and the CCB, they have huge alpha ... small beta"*（02:23:57）；*"for ... Alibaba, the beta is relatively large 1.59"*（02:24:50）；*"when you talk about beta, you must think about alpha"*（02:26:11）。
++*"the HSBC and the CCB, they have huge alpha […] small beta"*（`02:23:57`）；*"for […] Alibaba, the beta is relatively large 1.59"*（`02:24:50`）；*"when you talk about beta, you must think about alpha"*（`02:26:11`）。
+ 
+ **💡 换个说法（笔记补充）**：五只股票指数权重合计 33.95%，这只表示五行是部分大盘股，不表示把它们按该比例买入已得到完整、满仓组合。2026 年权重也不能倒灌进 2023 年交易决策。
+ 
+@@ -2416,9 +2617,9 @@
+ 
+ **所以呢**：最后把这些评价思路对应到课程投资项目的通用规则，个人评分答案另行保存。
+ 
+-### 2.35 ML 投资项目：公开规则、私人答案与待核行政条件（讲义 p.53–54）
+-
+-课程项目要求你先比较模型，再让模型给每周 80 只股票分配资金，最后交报告、逐周权重文件和能够重做结果的代码。本节只讲公开要求与操作顺序，个人评分答案仍保存在私有作业区。
++### 2.35 ML 投资项目：通用规则、个人答案与待核行政条件（讲义 p.53–54）
++
++课程项目要求你先比较模型，再让模型给每周 80 只股票分配资金，最后交报告、逐周权重文件和能够重做结果的代码。本节只讲公开要求与操作顺序，个人评分答案单独保存在作业区，按现行公开规则处理。
+ 
+ **是什么**：p.53 的数据有 80 只股票、17 个模拟信号。模型要预测下周股票总收益减现金收益 $r-r_f$，即股票比现金多赚多少。每行记录一只股票在某一周的数据；不是每行都代表一只新的股票。第 1–78 周给训练，共 6,240 股周行；第 79–104 周给公开验证，共 2,080 行；第 105–260 周是私人评估，共 12,480 行，后者的下一周真实收益不提供给学生。同一周的股票必须放进同一个数据阶段，不能把一些放训练、另一些放测试来提前看这一周的答案。
+ 
+@@ -2430,15 +2631,15 @@
+ 
+ 本页评分各项是项目总分 100 中的分值，不是收益百分比：数据与基准 10 分、模型比较 35 分、解释 15 分、组合证据 15 分、可复现 5 分、私人表现 20 分。合计 100 分；项目得到多少分还要按课程权重 20% 计入课程成绩。不要把“私人表现 20 分”读成要求投资赚 20%。
+ 
+-**行政冲突须保留**：新课件 p.54 写“PDF report: max. 8 pages + optional appendix”；旧作业包 brief 的口径为 8 页含封面加 1 页附录，两者附录限制已有差异。本次实际读到本地邮件核验记录的“10 月 5 日报告格式公告”：正文最多 15 页，必需表图放正文，字体 10–12 pt，行距 1.0–1.5，额外附录不限页数；原记录对应 [Canvas 公告](https://canvas.cityu.edu.hk/courses/70898/announcements/637830)，并注明当时要求附件未打开。
+-
+-本次 Canvas 登录受阻，当前项目/公告入口未重核。因此这里不能自行选择 8 页或 15 页，也不能仅凭课件日期更晚认定其撤销公告；需要当前题面/公告或教师澄清。
++**行政冲突须保留**：新课件 p.54 写“PDF report: max. 8 pages + optional appendix”；旧作业包 brief 的口径为 8 页含封面加 1 页附录，两者附录限制已有差异。历史制作记录曾核本地邮件核验记录的“10 月 5 日报告格式公告”：正文最多 15 页，必需表图放正文，字体 10–12 pt，行距 1.0–1.5，额外附录不限页数；原记录对应 [Canvas 公告](https://canvas.cityu.edu.hk/courses/70898/announcements/637830)，并注明当时要求附件未打开。
++
++历史制作时 Canvas 登录受阻；本次仅只读本地资料，未重新访问官网，当前项目/公告入口仍未重核。因此这里不能自行选择 8 页或 15 页，也不能仅凭课件日期更晚认定其撤销公告；需要当前题面/公告或教师澄清。
+ 
+ 上述截止、文件格式、大小与评分是 p.54 展示，正式条件按实际核定；本节不把项目登记成“可提交”。
+ 
+-**🎙️ 课堂补充**（C，02:26:27–02:26:27）
+-录音末尾只说“not much chance for you to discuss alpha and beta”，未出现作业提交、截止或 p.53–54 行政确认；因此不得据此推断课堂已覆盖作业规则。
+-*"I think there are not much chance for you to discuss alpha and beta"*（02:26:27）。录音在此结束，p.53–54 作业行政口径待核。
++**🎙️ 课堂补充**（`00:00`–`06:30`；`02:26:27`–`02:26:51`）：开头已经讲过作业行政：报告以图、表和解释文字为主，不在正文粘贴代码或代码截图（`01:39`–`02:20`）；`02:42` 和 `03:35` 明说 eight pages；`03:08` 沿用 10 MB 代码包上限。*"just eight pages"*（`02:42`）与已登记的 10/5 公告 15 页口径仍冲突，不能用本次转录自行裁决当前要求。`05:21`–`06:30` 允许用 AI 辅助审稿的口头态度，不豁免课程书面披露和本人负责要求。
++
++末尾并非止于 `02:26:27`：*"I believe that you will see them in the final exam"*（`02:26:34`），上下文的 them 指 alpha/beta。`02:26:46`–`02:26:51` 有结束语并提醒去 TA 答疑。开头及末尾没有逐条重讲 p.53 的全部数据规则；“行政部分有录到”与“p.53–54 全部条件已确认”须区分。
+ 
+ **💡 换个说法（笔记补充）**：一周 80 股等权是 80 个 1.25%，和为 100%；若把一股提高至 10%，必须从其余股票移走合计 8.75 个百分点，才能仍满仓。checker 可查格式与限制，却不能证明权重来自无泄漏模型、报告判断正确或本人已经学会。
+ 
+@@ -2450,7 +2651,7 @@
+ 
+ 看到 checker 通过不等于行政冲突解决，更不等于已经提交。
+ 
+-**与其他概念的关系**：通用规则登记见 [[EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL|作业与 DDL]]；详细提交与私人学习材料按 [[作业规范]] 和 [[EF5560_Fintech_and_AI_in_Finance/_meta/EF5560作业制作规范|本课作业制作规范]] 分开维护。
++**与其他概念的关系**：通用规则登记见 [[EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL|作业与 DDL]]；详细提交与个人学习材料按 [[作业规范]] 和 [[EF5560_Fintech_and_AI_in_Finance/_meta/EF5560作业制作规范|本课作业制作规范]] 分开维护。
+ 
+ **所以呢**：做投资时，先让模型用已经知道的数据预测，再在下一期开始前决定每个投资对象分到多少钱，并检查这些金额是否符合限制。等下一期真实涨跌出现，再算账户实际赚赔，随后看费用扣掉多少、账户曾从高点跌掉多少，以及收益中有多少能由当地市场解释。课程项目要把这些操作和结果交代清楚；真正准备提交时，还必须先解决报告页数等当前要求的冲突。
+ 
+@@ -2551,11 +2752,11 @@
+ 
+ ### 6.1 🔴 课堂明示数量与来源
+ 
+-本讲录音确认 5 条教授明示，详见 §6.2。
++本讲录音记录 9 条课堂明示（含行政、评价偏好及反向信号，不全部等于考试题），详见 §6.2。
+ 
+ | 数量 | 来源 | 说明 |
+ |---:|---|---|
+-| 5 | M05 转录 | 均带英文原话与时间戳。 |
++| 9 | M05 转录 | 均带英文原话与时间戳。 |
+ 
+ ### 6.2 🔴 教授明示与反向信号
+ 
+@@ -2567,7 +2768,11 @@
+ | 🔴 | 作业策略（`01:04:18`）：*"I believe that in the homework, I ask you to do something for long-only strategy"*；作业含 long-only 口径 | §2.11 |
+ | 🔴 | 考试计算（`01:10:22`–`01:11:04`）：*"this is also some question you might see from your exam"*；禁止计算器、允许双面 A4 cheat sheet | §2.18 |
+ | 🔴 | 评价标准（`01:50:12`–`01:50:39`）：*"[?] ratio is more important than expected return"*；gradient boosting Sharpe 约 0.81 | §2.27 |
+-| 🔴 | 题目状态（`02:04:40`）：*"I must skip the question ... calculate this question yourself"*；交易成本题未完整讲完 | §2.29 |
++| 🔴 | 题目状态（`02:04:40`）：*"I must skip the question […] calculate this question yourself"*；交易成本题未完整讲完 | §2.29 |
++| 🔴 | 期末范围（`02:26:34`）：*"I believe that you will see them in the final exam"*；them 指前文 alpha/beta | §2.32–2.34.1 |
++| 🔴（反向） | 复合年收益（`01:15:00`）：*"I might not test you"*；当堂降低重点，仍须会读 | §2.16 |
++| 🔴（反向） | 只做多倾斜（`01:06:26`）：*"I don't like this one, forget this"*；不写成教师推荐 | §2.12 |
++| 🔴 | 报告格式（`02:42`）：*"just eight pages"*；与已登记 15 页公告冲突仍待核 | §2.35 |
+ | 🟡 | 系数、变量选择与重要性的差别 | p.3–11：先说问题，注明单位和固定条件，再给贡献或 SSE 变化 |
+ | 🟡 | 排序、敞口与权重 | p.14–21：明确授权→预测去均值→归一→$G/N$→下一期收益 |
+ | 🟡 | 财富与夏普 | p.22–27：区分算术／几何→超额收益→同频标准差→平方根年化 |
+@@ -2624,7 +2829,7 @@
+ 
+ ## 8. 讲义页码映射
+ 
+-页码采用 PDF 的 1–54 页。课堂覆盖统一为“—（无转录）”，不推断哪些页实际讲过。标题页也解释了学习衔接，只有 p.1 封面不要求七格正文。
++页码采用 PDF 的 1–54 页。下列时间均为本地转录的原始音频时钟。✅ 表示内容可对应，不表示每句讲义均逐字讲过；⏭️ 为明确跳过，❓ 为仍无对应证据。章节标题页由相邻正文说明转折，p.1 为封面。
+ 
+ | 笔记小节 | 讲义页 | 内容与原题 | 课堂覆盖 |
+ |---|---|---|---|
+@@ -2640,99 +2845,108 @@
+ | §2.7 | p.10 | Response Curves: How Predictions Change | ✅ `40:53`–`44:27` |
+ | §2.7 | p.11 | Response Curves: Calculating One Curve | ✅ `40:53`–`44:27` |
+ | §2.8 | p.12 | Response Curves in Our Fitted Stock Model | ✅ `44:27`–`50:38` |
+-| §2.9 | p.13 | 章节标题页；正文解释学习衔接 | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.10 | p.14 | A Top-Bottom Spread Tests a Ranking | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.9 | p.15 | Replace the Characteristic with a Forecast | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.10 | p.16 | Class 3’s Six Forecasts, Sorted | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.11 | p.17 | Long-Only and Long-Short Answer Diﬀerent Mandates | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.12 | p.18 | Three Ways to Turn One Forecast into Weights | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.13 | p.19 | Put the Three Rules on the Same Footing | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.14 | p.20 | Worked Example: Forecast-Weighted Positions | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.14 | p.21 | Calculation Question: Forecast-Weighted Positions | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.15 | p.22 | Cumulative Wealth Shows the Path, Not Just the Average | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.16 / §2.17 | p.23 | Return and Risk at a Common Frequency | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.16 | p.24 | Worked Example: Average Return and Compounded Wealth | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.17 | p.25 | Multiple-Choice Question: Annualized Sharpe Ratio | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.18 | p.26 | Multiple-Choice Question: Drop-to-Zero Importance | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.18 | p.27 | Multiple-Choice Question: Portfolio Weights and Exposure | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.19 | p.28 | 章节标题页；正文解释学习衔接 | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.19 | p.29 | Switching from Stock Selection to Market Timing | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.20 | p.30 | Buy-and-Hold as the Investment Benchmark | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.21 | p.31 | One Forecast Sets Next Month’s Market Weight | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.22 | p.32 | One Forecast, Two Benchmarks, Three Markets | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.23 | p.33 | One Timing Rule Creates Three Investment Paths | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.23 | p.34 | U.S. Timing Still Trails Buy-and-Hold | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.24 | p.35 | Hang Seng and CSI 300: The Same Rule, Opposite Outcomes | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.25 | p.36 | Position Sizing with the Current Market Excess-Return Forecasts | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.26 | p.37 | Worked Example: Forecast and Risk Determine the Weight | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.27 | p.38 | Continuous Weights Change Return and Risk | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.27.1 | p.39 | Portfolio Outcomes over the Same Market Path | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.27.1 | p.40 | Forecasts and Volatility Jointly Determine Weights | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.28 | p.41 | Transaction Costs: A 10 bp Example | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.29 | p.42 | Gross and Net Sharpe Ratios | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.29 | p.43 | Calculation Question: Trading Costs and Sharpe Ratios | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.30 | p.44 | Maximum Drawdown Measures the Largest Peak-to-Trough Loss | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.31 | p.45 | 章节标题页；正文解释学习衔接 | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.31 | p.46 | Two People behind the Portfolio Framework | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.32 | p.47 | Alpha and Beta Separate Performance from Market Exposure | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.32 | p.48 | Beta Moves with the Market; Alpha Shifts the Fitted Return | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.33 / §2.33 | p.49 | Calculation Question: What Is the CAPM Benchmark Return? | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.34 | p.50 | CAPM Alpha Must Use a Local Market Benchmark | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.34 | p.51 | Interpreting Estimated CAPM Alpha | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.34.1 | p.52 | Alpha and Beta for Five Large HSI Constituents | ✅ 课堂讲解（具体页码需主代理按录音对齐） |
+-| §2.35 | p.53 | Assignment Data and Portfolio Rules | ❓ 未确认：录音末尾未给出作业行政口径 |
+-| §2.35 | p.54 | The ML Investment Assignment | ❓ 未确认：录音末尾未给出作业行政口径 |
+-
+-**课堂时间分配**（按转录，按时间戳）：
+-
+-| 内容块 | 时间戳 | 用时 | 占比 |
++| §2.9 | p.13 | 章节标题页；正文解释学习衔接 | ✅ `50:38`–`01:00:19` |
++| §2.10 | p.14 | A Top-Bottom Spread Tests a Ranking | ✅ `55:06`–`56:13` |
++| §2.9 | p.15 | Replace the Characteristic with a Forecast | ✅ `58:33`–`01:00:19` |
++| §2.10 | p.16 | Class 3’s Six Forecasts, Sorted | ✅ `01:00:28`–`01:03:50` |
++| §2.11 | p.17 | Long-Only and Long-Short Answer Diﬀerent Mandates | ✅ `01:04:18`–`01:04:47` |
++| §2.12 | p.18 | Three Ways to Turn One Forecast into Weights | ✅ `01:05:13`–`01:07:26` |
++| §2.13 | p.19 | Put the Three Rules on the Same Footing | ✅ `01:07:46`–`01:08:54` |
++| §2.14 | p.20 | Worked Example: Forecast-Weighted Positions | ✅ `01:09:05`–`01:10:07` |
++| §2.14 | p.21 | Calculation Question: Forecast-Weighted Positions | ✅ `01:10:18`–`01:11:33` |
++| §2.15 | p.22 | Cumulative Wealth Shows the Path, Not Just the Average | ✅ `01:11:41`–`01:13:06` |
++| §2.16 / §2.17 | p.23 | Return and Risk at a Common Frequency | ✅ `01:13:09`–`01:14:53` |
++| §2.16 | p.24 | Worked Example: Average Return and Compounded Wealth | ✅ `01:15:00`–`01:15:52` |
++| §2.17 | p.25 | Multiple-Choice Question: Annualized Sharpe Ratio | ✅ `01:25:08`–`01:26:14` |
++| §2.18 | p.26 | Multiple-Choice Question: Drop-to-Zero Importance | ✅ `01:26:52`–`01:27:42` |
++| §2.18 | p.27 | Multiple-Choice Question: Portfolio Weights and Exposure | ✅ `01:27:44`–`01:28:51`；ASR 答案数值不清，参考计算保留 |
++| §2.19 | p.28 | 章节标题页；正文解释学习衔接 | ✅ `01:28:53`–`01:29:14` |
++| §2.19 | p.29 | Switching from Stock Selection to Market Timing | ✅ `01:28:53`–`01:33:21` |
++| §2.20 | p.30 | Buy-and-Hold as the Investment Benchmark | ✅ `01:33:21`–`01:35:59` |
++| §2.21 | p.31 | One Forecast Sets Next Month’s Market Weight | ✅ `01:36:05`–`01:36:47` |
++| §2.22 | p.32 | One Forecast, Two Benchmarks, Three Markets | ✅ `01:36:55`–`01:39:48` |
++| §2.23 | p.33 | One Timing Rule Creates Three Investment Paths | ✅ `01:40:24`–`01:43:14` |
++| §2.23 | p.34 | U.S. Timing Still Trails Buy-and-Hold | ✅ `01:40:24`–`01:43:14` |
++| §2.24 | p.35 | Hang Seng and CSI 300: The Same Rule, Opposite Outcomes | ✅ `01:43:25`–`01:44:50` |
++| §2.25 | p.36 | Position Sizing with the Current Market Excess-Return Forecasts | ✅ `01:46:13`–`01:47:05` |
++| §2.26 | p.37 | Worked Example: Forecast and Risk Determine the Weight | ✅ `01:47:09`–`01:48:02` |
++| §2.27 | p.38 | Continuous Weights Change Return and Risk | ✅ `01:48:12`–`01:52:03` |
++| §2.27.1 | p.39 | Portfolio Outcomes over the Same Market Path | ✅ `01:52:25`–`02:02:37`（含离题故事） |
++| §2.27.1 | p.40 | Forecasts and Volatility Jointly Determine Weights | ✅ `02:02:43`–`02:03:01`；简讲 |
++| §2.28 | p.41 | Transaction Costs: A 10 bp Example | ✅ `02:03:01`–`02:03:54` |
++| §2.29 | p.42 | Gross and Net Sharpe Ratios | ✅ `02:04:13`–`02:04:37` |
++| §2.29 | p.43 | Calculation Question: Trading Costs and Sharpe Ratios | ⏭️ `02:04:40` 明确跳过，回家自行计算 |
++| §2.30 | p.44 | Maximum Drawdown Measures the Largest Peak-to-Trough Loss | ✅ `02:04:51`–`02:05:07` |
++| §2.31 | p.45 | 章节标题页；正文解释学习衔接 | ✅ `02:05:15`–`02:06:26` |
++| §2.31 | p.46 | Two People behind the Portfolio Framework | ✅ `02:05:15`–`02:07:29` |
++| §2.32 | p.47 | Alpha and Beta Separate Performance from Market Exposure | ✅ `02:07:44`–`02:12:33` |
++| §2.32 | p.48 | Beta Moves with the Market; Alpha Shifts the Fitted Return | ✅ `02:12:46`–`02:13:56` |
++| §2.33 | p.49 | Calculation Question: What Is the CAPM Benchmark Return? | ✅ `02:17:06`–`02:19:29` |
++| §2.34 | p.50 | CAPM Alpha Must Use a Local Market Benchmark | ✅ `02:19:45`–`02:22:12` |
++| §2.34 | p.51 | Interpreting Estimated CAPM Alpha | ✅ `02:22:12`–`02:23:13` |
++| §2.34.1 | p.52 | Alpha and Beta for Five Large HSI Constituents | ✅ `02:23:22`–`02:26:22` |
++| §2.35 | p.53 | Assignment Data and Portfolio Rules | 部分对应：开头 `00:00`–`06:30` 讲行政；非逐项确认全部规则 |
++| §2.35 | p.54 | The ML Investment Assignment | 部分对应：开头 `00:00`–`06:30` 讲行政；非逐项确认全部规则 |
++
++**课堂覆盖与时间分配**：p.2–42、p.44–52 的内容可对齐；p.43 明确跳过，仍在 §2.29 完整解答；p.53–54 行政有开头对应，数据与所有提交条件未逐项口头确认。没有把时钟连续当作整堂内容完整证明。
++
++以下各区间按同一音频时钟连续划分，分母为 `00:00`–`02:26:51` 共 8,811 秒；最后一句起点不等于媒体结束时间。区间包含内部停顿，不能解释成纯授课秒数。
++
++| 内容块 | 时间戳 | 秒数 | 占比 |
++|---|---|---:|---:|
++| 作业/工具行政与前课互动 | `00:00`–`22:16` | 1336 | 15.16% |
++| 模型解释与课堂演示 | `22:16`–`50:38` | 1702 | 19.32% |
++| 组合构造、年化与复利 | `50:38`–`01:16:02` | 1524 | 17.30% |
++| 课间与行政讨论 | `01:16:02`–`01:25:08` | 546 | 6.20% |
++| 三道选择题互动 | `01:25:08`–`01:28:53` | 225 | 2.55% |
++| 市场择时与连续仓位 | `01:28:53`–`01:52:44` | 1431 | 16.24% |
++| 回撤、成本、CAPM 与结束 | `01:52:44`–`02:26:51` | 2047 | 23.23% |
++
++## 9. 延伸与勘误
++
++### 9.1 课件有但课上略过
++
++下表区分有跳过证据与未录到；未录到不代表教授没讲。
++
++| 讲义页 | 内容 | 判定与依据 | 笔记处理 |
+ |---|---|---|---|
+-| 行政通知 | – | ~18.0 min | 15.8% |
+-| 组合构造与多空/权重 | 00:50:38–01:28:51 | ~38.2 min | 33.6% |
+-| 市场择时与 buy-and-hold/mean-variance | 01:28:53–01:52:38 | ~23.8 min | 20.9% |
+-| 回撤、交易成本、CAPM alpha/beta | 01:52:44–02:26:27 | ~33.7 min | 29.6% |
+-
+-
+-
+-## 9. 延伸与勘误
+-
+-### 9.1 课件有但课上略过
+-
+-| 讲义页 | 内容 | 课上处理 | 笔记处理 |
+-|---|---|---|---|
+-| M04 p.40–54 | 上一讲顺延内容 | ❓ 未录到；不可降权 | 00:00–22:16 未补讲，保留讲义自学内容 |
+-| M04 p.40–54 | 上一讲顺延内容 | ❓ 未录到；不可降权 | 00:00–22:16 未补讲；保留讲义自学内容 |
+-| p.53–54 | 作业数据与组合规则 | ❓ 未录到；不可降权 | 录音至 02:26:27 未出现明确讲解 |
++| M04 p.40–54 | 上一讲顺延 | ❓ 本录音未见实质补讲 | 不可降权，保留上一讲缺口 |
++| M05 p.43 | 成本与 Sharpe 三问 | ⏭️ `02:04:40` 明确跳过 | §2.29 仍完整解答 |
++| M05 p.53–54 | 数据与行政 | 开头已讲部分行政，未逐条确认全页 | §2.35 分开记已录内容与当前行政冲突 |
+ 
+ ### 9.2 课上讲了但课件没有
+ 
+-M05 转录已融合。正文课堂补充均按时间戳回填；未录到的 M04 p.40–54 与 M05 p.53–54 行政信息仍保留 ❓，不可降权。本文数字复算、类比和推导属于数据核对或笔记补充。
++M05 转录已融合。正文课堂补充均按时间戳回填；M04 p.40–54 未补讲的缺口仍保留 ❓、不可降权；M05 行政开头已录到，页数冲突继续保留。本文数字复算、类比和推导属于数据核对或笔记补充。
+ 
+ 
+ | # | 内容 | 时长 | 时间戳 | 小节 | 为什么值钱 |
+ |---|---|---|---|---|---|
+ | 1 | zero-cost / dollar-neutral、excess return 与 forecast-implied strategy | 约 10 分钟 | `00:50:38`–`01:00:19` | §2.9 | 补足策略构造前置课堂内容 |
+ | 2 | 排序预测比精确收益预测更适合 top-bottom spread | 约 2 分钟 | `01:00:19`–`01:02:18` | §2.9–2.10 | 直接改变策略目标 |
+-| 3 | 回撤触发强制卖出与交易成本只改变收益分子 | 约 9 分钟 | `01:55:19`–`02:04:28` | §2.27.1–2.29 | 风险解释与计算边界 |
++| 3 | 回撤触发强制卖出与固定费用例中交易成本只改变收益分子 | 约 9 分钟 | `01:55:19`–`02:04:28` | §2.27.1–2.29 | 风险解释与计算边界 |
++| 4 | 规模/价值特征组合与预测排序的区别 | 约 2 分钟 | `56:33`–`58:33` | §2.9 | 课堂新例已实质回填；网页读数未核 |
++| 5 | 杠杆/反向ETF、基金收费与单股CAPM解释 | 约 10 分钟（中含网页演示） | `02:08:20`–`02:16:58` | §2.32 | 保留实际应用与推断/预测边界，不认证网页读数 |
+ 
+ ### 9.3 课件自身的问题与口径差异
+ 
+-1. **作业页数冲突**：10 月 8 日课件 p.54 写 PDF 最多 8 页 + optional appendix；旧发布包 brief p.4 写 8 页含封面 + 1 页附录。本次已读到本地邮件知识库对 **2026-10-05 17:10 教师格式公告**的正文核验记录：正文最多 15 页、必需表图在正文、字体 10–12 pt、行距 1.0–1.5、附录不限。公告入口为 [Canvas 格式公告](https://canvas.cityu.edu.hk/courses/70898/announcements/637830)，[要求附件](https://canvas.cityu.edu.hk/courses/70898/files/16095479?wrap=1) 在邮件核验当时未打开。本次 Canvas 到达登录页，未取得当前公告或附件。不能仅凭较新课件日期推断教师撤回 15 页规则。保留三种记录，提交前以当前 Canvas 明示核定。
++1. **作业页数冲突**：10 月 8 日课件 p.54 写 PDF 最多 8 页 + optional appendix；旧发布包 brief p.4 写 8 页含封面 + 1 页附录。历史制作记录曾核本地邮件知识库对 **2026-10-05 `17:10` 教师格式公告**的正文核验记录：正文最多 15 页、必需表图在正文、字体 10–12 pt、行距 1.0–1.5、附录不限。公告入口为 [Canvas 格式公告](https://canvas.cityu.edu.hk/courses/70898/announcements/637830)，[要求附件](https://canvas.cityu.edu.hk/courses/70898/files/16095479?wrap=1) 在邮件核验当时未打开。2026-10-08 历史核验到达 Canvas 登录页；本次未重新访问官网或取得当前公告附件。不能仅凭较新课件日期推断教师撤回 15 页规则。保留三种记录，提交前以当前 Canvas 明示核定。
+ 2. **现金口径不同**：p.30–35 的 0/1 OLS 择时让现金赚零；p.36–40 的连续仓位让现金赚同期国债收益。两套夏普的分子不同，即使买入持有的收益相同，也不能不加说明横向比较 0.87 与 0.65。
+ 3. **log 预测近似**：p.36–37 将月度 log 超额预测直接作均值方差的预期超额收益输入；数据 README 也保留 log 预测。教学近似与 simple 实现收益分开写，不把近似说成精确恒等式。
+ 4. **排序和图的范围**：p.16 为 52 周模型预测五分位，p.22 为 156 周动量三分位；p.14 单边单位敞口的 spread 是 gross=2，p.18–21 的权重 gross=1。比较前须匹配，不能把图终值当六模型成绩。
+ 5. **图片数据限制**：p.12 经验响应曲线有原图，但包中无对应网格点表或序列化森林。本文解释方向和阈值，只将目测值称近似，不声称逐点重现该模型。可重现的响应数值图使用 p.11 明示玩具规则，另有补充参考值，标注清楚。
+ 6. **历史成分与当时可知性**：p.52 用 2026 年 8 月权重选 5 家大股作历史 CAPM 示例，不能把该名单说成 2023 年事前投资策略；p.46 头像是课件标明的 AI 插图，不是真人照片。
+ 
++7. **课堂与书面差异**：`34:47`–`34:59` 口头说置零后 SSE 必须增加，但讲义 p.7 明示分数可能为负；固定模型的训练未必实现无约束全局最优，不能把“必增”当恒等式。`29:25` 将 LASSO 说成失去所有推断，准确边界是普通 OLS 的推断不能直接照搬，并非所有专门推断都不可能。`01:36:33` 把零仓位解释为短债，而 p.30–35 实验仍设现金收益零；真实短债通常不等于零收益。本讲按明示计算设定复现。`01:48:44` 的 mean 口头名称、`02:03:01` 卖出比例与 p.38／p.41 的差异也在当地标清。
++
+ ### 9.4 课外补充
+ 
+-🔗 [Gu、Kelly 与 Xiu（2020）作者提供的正式论文](https://dachxiu.chicagobooth.edu/download/ML.pdf)，本次 2026-10-08 定向读取 §1.9 与 §2.3：方法用固定模型将一列输入置零，并用其余列参考值为零的截面看预测变化。论文样本、尺度与本课不同，不能将论文整体收益结论搬到 Class 05 数据。
+-
+-🔗 [Nobel Prize 1990 官方说明](https://www.nobelprize.org/prizes/economic-sciences/1990/summary/)，2026-10-08 核对三位共享获奖者为 Markowitz、Miller 与 Sharpe。只用于 p.46 背景人物，不构成策略绩效证据。
++🔗 [Gu、Kelly 与 Xiu（2020）作者提供的正式论文](https://dachxiu.chicagobooth.edu/download/ML.pdf)，历史记录为 2026-10-08 定向读取 §1.9 与 §2.3：方法用固定模型将一列输入置零，并用其余列参考值为零的截面看预测变化。论文样本、尺度与本课不同，不能将论文整体收益结论搬到 Class 05 数据。
++
++🔗 [Nobel Prize 1990 官方说明](https://www.nobelprize.org/prizes/economic-sciences/1990/summary/)，历史记录为 2026-10-08 核对三位共享获奖者为 Markowitz、Miller 与 Sharpe。只用于 p.46 背景人物，不构成策略绩效证据。
+ 
+ ### 9.5 待核对与来源边界
+ 
+-- M05 课堂实际日期、教师强调、原题答案和略过页，待本堂转录；下载日期不等于已录音。
++- M05 实际授课日期仍未确认；教师强调、选择题互动和略过页已按本地转录核对，不能继续写“等待转录”。下载日不能证明授课日期。
+ - Canvas Assignments、Announcements、Files、Modules 本次未完成核验：作业直达页被导向 CityU SSO 登录，后三入口未打开，不能写“未发布”。评分作业并未被本次笔记制作标为可提交。
+ - p.12 森林条件响应的精确网格与原模型缺失；p.9 包内分数可核，但未提供原森林及训练预测，因此不能冒称从原模型重算全部重要性。
+ - 本地邮件记录只证明先前已核到 10/5 公告正文，本次未重读原邮件或要求附件。正文冲突单列并已登记作业元信息。
+@@ -2741,12 +2955,10 @@
+ 
+ | # | 事项 | 说明 |
+ |---|---|---|
+-| 转录登记 | transcript.txt / transcript.srt；00:00:00–02:26:53.632；867 段 | 连续录音，无 ≥120 秒空档 |
+-| 缺口 | M04 p.40–54、M05 p.53–54 未录到 | 不可降权；末尾未确认作业行政 |
+-| 转录登记 | transcript.txt / transcript.srt；00:00:00–02:26:53.632；867 段 | 连续录音，无 ≥120 秒空档 |
+-| 缺口 | M04 p.40–54、M05 p.53–54 未录到 | 不可降权；末尾未确认作业行政 |
+-| 补查窗口 | `00:50:38`–`01:00:19` 有实质 M05 §2.9 内容 | 已回填 §2.9 |
+-| ASR 风险 | Sharpe/fire sales/CAPM/OLS 等风险词 | 按 [?] 或讲义术语校正 |
++| 转录登记 | `M05-transcript-partial.txt`；`00:00`–`02:26:51`，867 段／865 个唯一秒值 | 两处同秒段保留，正文原时钟不合并；媒体总长的历史记录为 2h26m53.632s，非当前文本最后起点 |
++| 缺口 | 开头直接进入作业提醒；末尾有结束语 | 未证全部课堂范围完整；无 ≥120 秒时间空档也不能证明内容无缺 |
++| 已回源修复 | `01:13:54` 年化；`01:14:23` Sharpe；`02:26:34` 考试明示 | 旧时间误指课间、末尾截断判断已改 |
++| ASR 风险 | Sharpe / fire sales / CAPM / OLS；交易卖出 10% 与讲义 20% 差异 | 英文误识别只作原转录证据，正文按讲义；未逐声听校 |
+ 
+ **反方视角**：最薄弱的是 p.53–54 作业行政条件，录音未确认；考试计算题若忽略成本分子/波动分母，容易答错；本次对 Sharpe、fire sales 等 ASR 词做了术语校正，若原音不同需回听。
+ 
+@@ -2762,9 +2974,11 @@
+ | p.49 | CAPM①基准②异常③不证明alpha（3 项） | §2.33 | 基准1.20%；单周异常0.20%；一周不证明平均alpha | ⚪参考作答；过程与改条件例已核、官方待核 |
+ 
+ 
+-答案均为“⚪ 参考作答（笔记推断）”，依据相邻讲义公式和题面计算。没有教师答案键或 M05 转录，所以“过程已核”与“官方已核”分开。评分作业 p.53–54 只讲通用任务与行政规则，不公开个人完整成品。
+-
+-### 9.7 本次制作与核验记录
++答案均为“⚪ 参考作答（笔记推断）”，依据相邻讲义公式和题面计算。未见独立教师答案键。p.25 与 p.26 有课堂选项确认，p.27 互动的 ASR 数值不清；p.49 有概念讲解，不冒称全部数字获官方确认。p.53–54 的个人完整作答仍单独组织，是否公开按现行规则，不能把个人材料一概称为禁止公开。
++
++### 9.7 历史制作与核验记录
++
++以下为 2026-10-08／10-10 历史记录，不代表 2026-10-26 新教学认证；旧当时状态、旧路径和旧核对范围按日期承接，本次新证据由独立回执绑定。
+ 
+ 共 54 页：正文关联 53 页（含 4 章标题页的衔接说明），另 1 页封面；37 个正文学习单元，29 条双语卡，6 道原题／14 个作答单元。全 54 页已通过联系表视觉查看，图表与低文本重点页另作放大核对。20 个 CSV 已读取字段、行列、缺失与范围；manifest 的 20 项 SHA-256 与字节数一致。
+ 
+@@ -2798,5 +3012,5 @@
+ |---|---|
+ | 2026-10-08 | 首次制作 M05：讲义与 Class 05 数据版，逐页正文与原题解析；转录待补。采用 2026-10-02 简化流程，未做独立 Q/R 盲读、未补造评分 |
+ | 2026-10-08 | 用户反馈后全文改写教学句子，并补t/SE/标准差/自由度/表格逐列解释；采用sentence-table-v1，旧可读性验收撤回，保留当时数值检查事实 |
+-| 2026-10-10 | **合并 M05 转录**（transcript.txt，00:00:00–02:26:53.632，867 段）→ v1.0：回填课堂补充、§6、§8、§9；M04 p.40–54 仍 ❓ 未录到，不可降权 |
+-
++| 2026-10-10 | **合并 M05 转录**（transcript.txt，`00:00:00`–2h26m53.632s，867 段）→ v1.0：回填课堂补充、§6、§8、§9；M04 p.40–54 仍 ❓ 未录到，不可降权 |
++
