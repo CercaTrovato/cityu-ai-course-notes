@@ -3,7 +3,7 @@ course: IS5113
 module: 4
 week: 4
 date: 2026-09-22
-source: "Module 4 - AI Transparency.pdf（旧版 50 页）＋course_files_export/canvas-20261020/Module 4 - AI Transparency.pdf（新版 79 页）"
+source: "当前新版 79 页：course_files_export/canvas-20261020/Module 4 - AI Transparency.pdf；旧版对照：Module 4 - AI Transparency.pdf（50 slides）；课堂：M04-transcript.txt"
 transcript: merged
 prerequisites: [M01, M03]
 new_concepts: [AI 透明, 可解释性, 原生可解释性, 事后解释, 数据透明, 模型透明, 决策可追溯性, 局限披露, 用户知情, 信任转移, U 形效应, 认知过载, 透明三维度, 信任信念, 充分条件与必要条件, AI 披露效应, 正当性感知, 算法厌恶, 透明悖论, 黑箱问题, 自适应透明, 受众定制披露, 反事实解释, 隐私审查量表, 透明度报告, 不确定性标记, 来源引用, 基础模型透明度指数, 卓越中心, 算法问责, 审计追踪, 透明审计, 可解释模型]
@@ -16,137 +16,56 @@ source_update_review_date: 2026-10-20
 ge_review: passed
 ge_review_scope: G/E diagnostics and consequent changes
 ge_review_date: 2026-10-21
-updated: 2026-10-21
+updated: 2026-10-27
 mechanism_spec: v1
 mechanism_review: passed
 mechanism_review_mode: efficient-20261002
 mechanism_content: repaired
 readability_rules: v2
-readability_review: pending
+readability_review: passed
+teaching_standard: novice-v1
 ---
 
 # M04 · AI 透明：从"看得见"到"信得过"
 
 ### 阅读前：材料与版本边界
 
-> **当前局部核对状态**：2026-10-20 双源／页码增量及 2026-10-21 G/E 实修均已写回，记录分别见本篇 §9 的对应范围说明与 [[G-E诊断与实质修复回执-2026-10-21|G/E 回执]]。本次再核 9 条待核线索；下方整篇 pending 标记不因局部核对自动升级。材料 status/transcript 和本人学习状态保留原值。
+本讲研究：人怎样获得足够信息，核查、使用和挑战 AI 的结果。透明（Transparency）是信息条件；信任是人的反应，公平/安全要靠验证，问责还要有权处置的人与救济程序。它们不能自动画等号。
 
-> **版本说明**：正文原有“讲义 p.X”均指旧版 50 页讲义，旧引用锚点保留。新版 79 页讲义在 p.29–52 正式加入 Amazon、COMPAS、Apple Card、Air Canada 与四案比较；这些案例此前已经由课堂转录进入正文。本轮不重复案例叙事，只把四案升级为“新版讲义＋转录”双源，并在 §8.1 给出新旧页码对照。
+**当前来源**：旧版 50 张幻灯片、新版 79 页讲义和 `M04-transcript.txt`。正文既有“讲义 p.X”继续指旧版，以保护原引用；“新版 p.X”明确指 79 页版。既有标题中的“讲义无对应页”仅指旧版，当前对应页紧邻说明和 §8.1 列出。新版 p.25–28 是复习，p.29–52 收入四案及比较，旧版 p.25–50 对应新版 p.54–79。
 
-> **本讲一句话**：FATP 的第二个字母 **T（Transparency）**。上一讲讲"公平"时已经用到"可解释 AI"和"模型卡"这两件工具，这一讲把"透明"整个拆开——它由哪六个构件组成、它和"信任"是什么关系（不是越透明越好，三篇 2023–2025 年的论文都说"有条件"）、为什么难做、新思路是什么，然后用十几个企业案例和一个"伦理 / 法律 / 商业"三面框架收束。
-> **原始材料**：`Module 4 - AI Transparency.pdf`（50 页，PowerPoint 导出；**大部分页面是"标题 + 三四条短句"的 AI 生成式版式，每页只有 30–60 个英文词**）｜ **转录**：`merged`（`M04-transcript.txt`，本地 Whisper，`00:00 → 02:11:34`，969 段，2026-09-23 合并）｜ **状态**：**v1.0**（按 [[笔记质量规范]] v1 写，strict 模式）
+**课堂与书面材料分开**：四个案例现在多为新版讲义＋转录双源；口述例子和分析仍按原时钟定位。新版增加 Model Transparency 为复习五维度之一，课堂另有四项展开，不能以口述少展开一项删去书面内容。旧 p.26／新 p.55 有审查元数据和五个评分图，不是只有标题。
+
+**录音边界**：转录从 `00:00` 开场至 `02:11:34` 下课，969 个时间戳记录、968 个唯一时刻（`01:46:32`有两条）；有两次课间公告。时间戳连续、未见大空档，只说明转录结构，不证明原音无漏录或墙钟连续。本轮未逐声核音，不把“完整无缺口”当作已证。`date: 2026-09-22` 沿既有登记，本轮未另核实际授课日，更不代表本人出席。
+
+**事实与证据**：公司宣传、讲义中 ensure 等措辞按原文保留，不能当作实测效果或自动合规。法规按法域、主体、用途和日期核；论文只用所供首页/摘要和图，缺原数据的效果、阈值和模型不补造。现稿含旧局部 PASS 和历史评分，它们只记旧范围，不是本次全篇放行，也不填写本人通读/自测/提交状态。
 
 #### 旧版课堂记录怎样读
 
-> ✅ **本笔记为 v1.0**（2026-09-22 讲义版 v0.9 → 2026-09-23 合并转录）。录音**完整**（开场白与下课语俱在，0 处空档），但**这份转录有三个必须先知道的特殊之处**：
-> 1. **教授基本没按讲义的案例章节讲**。`02:07:45` 他说 *"this is computing here, you can look at it later when you have time"*，把讲义 **p.25–43**（ChatGPT、Bard、医疗、金融、八家公司）整段留给学生自读，只在最后约 3.5 分钟泛讲"各大公司都在官网讲自己怎么做透明"。§2.5–§2.7 的 11 个 🎙️ 格因此是 **B（点名带过）3 个 + C（⏭️ 自读）8 个**，正文保留但降为参考。
-> 2. **他改用了四个讲义上完全没有的真实案例**，四案合计约 50 分钟（10.6 + 16.5 + 7.3 + 15.4，按时间戳）：**Amazon 招聘算法**（§2.5.4）、**COMPAS 再犯风险评分**（§2.5.5）、**Apple Card 信用额度**（§2.6.3）、**Air Canada 聊天机器人**（§2.6.4），并在 `02:03:36` 用一张"summary"表把四案串成 AI 透明的十年演进（§2.6.5）。**这五节加上 §2.4.4、§2.4.5、§2.9.3 共 8 个小节全部是 🎙️ 纯课堂内容**，只有到场的人才有。
-> 3. 本地检索曾未命中论文二的 `clinician` / `breast` / `cancer` / `diagnos` 关键词；后续定向回看发现临床医生实验线索，因此不能把旧的"检索为零"当成结论。§2.3.4 保持**存疑**，不据此降权。判断依据见 [[#9.5 待核对|§9.5]]。
+本讲已有材料 v1.0／transcript merged，不因全篇审修重新“升版”。`02:07:45` 的自读提示和 `02:09:53` 的 “Forget about details” 用来识别本次课堂如何安排企业实践，不能一并推出所有公司/法规页不考。论文二的临床口述线索与论文三的披露情境有交叉，对应不确定，不能据关键词未命中断言没讲。
 
----
 
 ## 0. 三分钟速览
 
-**这一讲讲了什么**
+一位申请人被 AI 拒贷后，问的是“依据是什么、数据有没有错、找谁复核”，而不是只想下载模型权重。本讲用六种信息、三项信任研究、四个案例和企业实践回答这些问题。
 
-讲义分五段（p.3 / p.6 / p.24 / p.44 / p.48 五张章节页）：
+学完可尝试完成以下动作：
 
-**导论（p.3–5）**
+1. 对同一拒贷记录区分可解释性、数据/模型透明、决策可追溯、局限披露和用户知情，并说出各自缺什么证据。
+2. 区分必要条件、充分条件和有限样本关联，说明三篇论文为什么不能拼成普遍信任曲线。
+3. 在明确冻结模型、距离和可行域后复算最小反事实；输入间有关联时重算派生比例。
+4. 用 Amazon、COMPAS、Apple Card、Air Canada 识别数据、过程、个案和内容的调查起点，不把四案当互斥技术世代。
+5. 逐项读历史隐私审查与公司声明，区分“政策写明”“实际做到”“合法”和“用户信任”。
+6. 按受众准备理由、来源、限制、日志与有权复核入口；法律结论先核适用条件。
 
-- 先用一页复习 AI 是什么（p.4），再一页给出"AI 透明"的三句话定义——它包括可解释性、数据与模型透明、决策可追溯
+正文保留旧页码导航；新版 p.44 四问、p.50–51 两组四案问题和旧 p.27–29 的 21 项审查原文在对应位置给中英解释。研究规模 N=978、28 位临床医生、13 个实验只来自所供论文摘要，未重新运行这些研究。
 
-- 它带来信任、问责与合规
-
-- 它对商业人士的价值是沟通、风险管理与战略对齐（p.5）。
-
-2. **透明的核心概念（p.6–23）**：这是本讲的主体。
-
-这一段按四个问题展开：
-1. **构件（p.7–12）**：可解释性、数据透明、模型透明、决策可追溯、局限披露、用户知情。
-2. **研究（p.13–19）**：最低透明水平、临床解释效果、披露AI使用的代价，分别看各研究条件。
-3. **组织行为（p.20）**：透明悖论漫画讨论监视如何改变人的行为。
-4. **设计（p.21–23）**：先辨障碍，再讨论自适应透明、受众定制与反事实解释。
-
-讲义所称U形效应是情境依赖的提醒，不把这些材料拼成共同实测曲线。
-
-3. 应用与案例（p.24–43）：ChatGPT（含一份第三方隐私审查量表截图，p.25–29）、Google Bard 与透明度报告（p.30–31）、医疗与金融两个行业（p.32–33）。
-
-  以及八家公司的做法——Adobe、Microsoft、Salesforce、Intesa Sanpaolo、Kredito、Google、IBM、Anthropic & Amazon、Accenture（p.34–43）。
-
-4. **伦理、法律与商业含义（p.44–47）**：三面各一页。
-
-5. **挑战、方案与收束（p.48–50）**：四个挑战、四条最佳实践。
-
-这一讲的骨架其实是一句话：透明不是"把一切摊开"，而是"让对的人在对的时候看懂对的东西"。
-
-六个构件告诉你"摊开什么"，信任研究告诉你"摊开多少、给谁"，案例告诉你"别人怎么做"，三面框架告诉你"为什么必须做"。
-
-**学完你应该能**
-
-1. **说清** AI 透明的六个构件各自指什么、解决什么问题，并能把一个真实产品（如 ChatGPT）按六个构件逐项打分
-2. 解释透明为什么能建立信任（四条机制）、为什么又可能伤害信任（U 形效应、AI 披露效应、透明悖论）。
-
-  并用"充分 vs 必要"说清三篇论文各自的贡献
-3. **区分**可解释性与透明、模型透明与数据透明、"解释"与"披露"
-4. **给出**反事实解释的定义与三个特征，并能为一个贷款拒绝案例写出一句合格的反事实解释
-5. **用**伦理 / 法律 / 商业三面框架分析一个企业该不该、以及怎样公开它的 AI
-6. **列举**至少五个企业案例并说出每个案例对应的是哪一个透明构件
-
-**如果只记三件事**
-
-- 透明 = 六个构件：可解释性（为什么这样决定）、数据透明（用了什么数据）、模型透明（模型长什么样）、决策可追溯（每一步有记录）、局限披露（哪里不行）、用户知情（你正在和 AI 打交道）。
-
-  考试拿到任何一个案例，先按这六项拆。
-- **透明与信任要按情境分析**：讲义用 U 形效应提醒信息过载与怀疑；它不是本课三篇论文共同测得的通用曲线。
-
-披露"我用了 AI"本身就可能降低别人对你的信任（Schilke & Reimann 2025，13 个实验）。
-
-所以方案是**自适应透明**——按受众和任务调整解释的深度。
-- 透明是"被要求的"，不只是"值得做的"：GDPR 与 EU AI Act 都有透明条款（p.46），金融与医疗监管把可解释性当合规门槛（p.32–33、p.38）。
-
-  商业上它换来客户信任、差异化与风险降低（p.47）。
-
-**课堂实况：讲解阶段与材料覆盖**
-
-**🎙️ 课堂实况（2026-09-22 周二晚课）**
-
-- 开场用约 5.7 分钟回顾 AI 定义与类型（含一段 AGI/超级智能的展开），随后按 p.5–p.23 顺序讲六构件与信任研究
-
-- 讲到 p.12 用户知情之前，教授先花约 4.7 分钟脱稿展开了「信任三要素」（Mayer 模型），是本片最长的单段展开。
-
-信任研究部分（p.13–19，约 14 分钟）明显偏向论文一（必要非充分）与论文三（披露悖论），全文检索未见论文二（临床医生 + 乳腺癌）的专门段落
-
-- p.23 反事实解释只用约 0.6 分钟带过并被教授明确降权，`51:31` 起第一次课间。
-
-本片段（`52:37`–`01:32:27`，约 40 分钟）教授完全没有按讲义 p.25–33 的产品/行业案例讲。
-
-而是先给出自己的透明定义与四维度框架。
-
-再用两个讲义完全没有的真实案例（Amazon 招聘算法、COMPAS 再犯风险评分）把 §2.2 六构件、§2.4 挑战与新思路串成一条完整的因果链。
-
-最后用几句话预告下周小组项目启动。
-
-本段（`01:32:32`–`02:11:34`，约 39 分钟）是本讲案例部分的下半场。
-
-先用约 23 分钟讲完两个讲义完全没有的案例（Apple Card `01:32:43`–`01:39:59`、Air Canada `01:40:45`–`01:56:09`）。
-
-再用约 8 分钟把四个案例（含 shard_2 的 Amazon、COMPAS）收束成一张对比表（`01:56:09`–`02:04:22`）。
-
-随后用约 3 分钟讲生成式 AI 的透明悖论并预告后续课程的奇点专题（`02:04:24`–`02:07:41`）。
-
-教授在 `02:07:41`–`02:07:48` 明确宣布讲义 p.25–43 的案例章节留给学生自读，只用剩下约 3.7 分钟泛讲了当前行业实践。
-
-点名 ChatGPT、Google、Adobe、Microsoft、Accenture 但均一带而过，Salesforce / Intesa Sanpaolo / Kredito / IBM 全程未被提及
-
-- p.44–50（伦理 / 法律 / 商业含义 + 挑战与最佳实践）在本讲录音范围内完全没有被讲到，直接以下课语和下周预告（M05 问责）收尾。
-
----
 
 ## 1. 开始之前 · 知识衔接
 
 ### 1.1 你已经有的
 
-M01、M03 发过的词，本讲直接用，只给一句话唤醒。
+下面只帮助定位前文；历史登记不证明已经掌握。当前计算、判断和程序所需知识仍在本讲就地解释。
 
 | 概念 | 一句话唤醒 | 回看 |
 | --- | --- | --- |
@@ -165,7 +84,9 @@ M01、M03 发过的词，本讲直接用，只给一句话唤醒。
 | --- | --- | --- |
 | 程序正义 | 决策过程的公平：发声、中立、可信、尊重——"信任"在 M03 里是它的四要素之一 | [[M03-偏见与公平#2.4.1 两条原则与优先次序（讲义 p.7–10）\|M03 §2.4]] |
 | EU AI Act（预告过） | 对高风险 AI 系统要求透明、人类监督、公平；条文在 M09 展开 | [[M03-偏见与公平#2.14.1 偏见对企业的四类影响与监管环境（讲义 p.78–79）\|M03 §2.14.1]] |
-| 监督学习 · 训练集 · 准确率 · 神经网络 · LLM | L0 入场基线，不解释 | [[IS5113_AI_Ethics_and_Regulations/_meta/知识层级台账\|知识层级台账]] |
+| 监督学习 · 训练集 · 准确率 · 神经网络 · LLM | 必要概念见表后的唤醒，操作处继续解释 | [[IS5113_AI_Ethics_and_Regulations/_meta/知识层级台账\|知识层级台账]] |
+
+**必要概念唤醒**：监督学习（Supervised Learning）用历史输入与已有答案学习对应关系。训练集（Training Set）是用于学习的记录；准确率（Accuracy）是正确判断数除以总判断数。神经网络（Neural Network）用可学习参数进行计算；大语言模型（Large Language Model, LLM）生成语言。后文实际判断时再交代输入、输出和限制。
 
 ### 1.2 本讲全新引入的概念
 
@@ -211,7 +132,7 @@ M03 深挖了第一项"公平"，并在缓解手段里第一次用到两件"透�
 
 **本讲就是把那两件工具所属的整个议题展开**：公平回答"AI 有没有偏袒"，透明回答"AI 的决定能不能被看见、被理解、被追究"。
 
-两者的关系是：没有透明，公平就无法被验证——你连模型用了哪些特征都不知道，怎么审计它有没有歧视？
+两者的关系是：相关信息可帮助验证公平：有群体、真实结果和输出时，可以先查错误率差异；内部特征/数据/版本再帮助解释差异来源。无需把“全部源码公开”当每种公平审计的前提。
 
 所以本讲是 M03 的方法论支撑，也是 M05"问责"的前置：**问责要求先能追溯**（本讲 §2.2.4 决策可追溯），否则出了事也不知道该找谁。
 
@@ -237,9 +158,9 @@ M03 深挖了第一项"公平"，并在缓解手段里第一次用到两件"透�
 - p.1：封面。
 - p.2：副标题 "Exploring clarity and openness in artificial intelligence"。
 - p.3、p.6、p.24、p.44、p.48：五张章节标题页。
-- p.26："DATA PRIVACY VETTING"，为p.27–29截图的章节标题。
+- p.26 不列例外：它还包含产品、审查日期、图例和五个评分图，正文 §2.5.2 展开。
 
-共8页标为非内容页，其余42页的讲解在§2。这里保留原材料分类，供对应页码回查。
+本轮按当前原件重核：旧版 7 页非内容、43 页内容。p.26 已回到内容页；历史回执的 8/42 留在历史记录，不作当前统计。
 
 ---
 
@@ -264,9 +185,7 @@ M03 深挖了第一项"公平"，并在缓解手段里第一次用到两件"透�
 > **AI in Business** — AI enhances efficiency, automates processes, and supports data-driven decision-making in businesses.（AI 提升效率、自动化流程、支持数据驱动决策）
 > **Importance for Students** — Understanding AI helps business students with strategic planning, customer engagement, and operational optimization.（理解 AI 有助于商科学生做战略规划、客户互动与运营优化）
 
-三种类型里，今天所有商用系统都是窄 AI（narrow AI，也叫弱 AI）：ChatGPT 再能聊天也只是"在文本上做预测"这一件事。
-
-通用 AI（general AI / AGI）和超级智能（superintelligence）目前都不存在，讲义列出它们只是为了把坐标系画全。
+本课按任务范围区分窄 AI（Narrow AI）、通用 AI（Artificial General Intelligence, AGI）与超级智能（Superintelligence）。它是课程分类，不是本轮对所有现有产品的能力测试。会写多领域文本不单独证明已达到 AGI；反过来，也不能把多模态或工具操作能力删成“只会文本”。
 
 **为什么需要它**
 
@@ -321,17 +240,13 @@ M01 §2.1 讲过 AI 的定义与"理性地思考 / 行动"两种取向，这里�
 - 超级智能是比老板还强的实习生（科幻）。
 
 本讲问的是——对那个只会做一件事的实习生，公司该不该、怎样公开他是怎么做决定的。
-- 从"透明"的角度看三种类型：越是窄 AI，越容易说清楚它在做什么（任务边界清楚），也越应该说清楚——因为它已经在真实业务里替人做事了。
+- 从"透明"的角度看三种类型：任务边界较窄，较容易先说明用途；内部模型仍可能复杂，不能推成任务越窄越容易解释。当前业务应说清关键依据——因为它已经在真实业务里替人做事了。
 
 **⚠️ 常见误解**
 
 - ❌ "ChatGPT 已经是通用 AI 了。
 
-  " → 它能回答各种领域的问题，但做的仍然只是一件事——按训练数据的模式生成文本。
-
-  它不能自己开车、不能操作实验设备。
-
-  按讲义的三分法它仍是窄 AI，"看起来什么都会"不等于"能执行任何智力任务"。
+  " → 多领域回答、特定工具操作与“能执行任何智力任务”不是同一个标准。这里依据课程定义区分，不据本页判断某个当前产品绝无工具或多模态能力。
 - ❌ "既然商用 AI 都是窄 AI，透明就很容易——把规则写出来就行。
 
   " → 恰恰相反。
@@ -518,13 +433,13 @@ p.6 是章节页，p.7–12 每页一个构件；六个词是后面所有案例�
 
 **为什么需要它**
 
-它是六个构件里**最直接面向决策对象**的一个：另外五项讲的是系统整体，可解释性讲的是"这一次决定"。
+本节聚焦个案理由；其他构件也可面向个人，例如告知AI、该次决策日志或自己的数据来源。因此六构件按信息功能区分，不是按“个案/整体”互斥划分。
 
 讲义把它排第一、又在 p.22 说"新思路的重点是 explainability"，因为没有它。
 
 其他透明都不落地——你可以公开训练数据和模型结构（数据 / 模型透明），但一个被拒贷的人要的是"我这一笔为什么被拒"。
 
-M03 §2.12 的公平指标也靠它：要查模型是否用了种族的代理变量，先得知道它依赖哪些特征。
+公平输出指标可先比较群体真实结果与预测；要进一步调查代理变量和产生差异的机制，才需要相关特征、数据与模型证据。可解释性帮助调查，不替代实际指标。
 
 **课件原例**
 
@@ -559,7 +474,7 @@ M03 §2.12 的公平指标也靠它：要查模型是否用了种族的代理变
   可解释性追求的是一个人类尺度的理由："收入低于门槛"三个词，比一百万个数字更透明。
 
   §2.4.3 反事实解释就是往这个方向走。
-- **判定口诀**：能不能用一句人话回答"这个决定为什么是这样"——能，就是可解释；只能说"模型算出来的"，就不是。
+- **判定口诀**：给出的理由能否被核对、与实际输入/版本相符、对该受众有用？一句流畅理由本身还不能证明忠实解释；“模型算的”也没有提供够用依据。
 
 **⚠️ 常见误解**
 
@@ -617,7 +532,7 @@ M03 §2.12 的公平指标也靠它：要查模型是否用了种族的代理变
 
 M03 §2.11 讲过偏见的七个入口，其中数据、抽样、标签、测量四个都在数据层。
 
-如果训练数据不公开，这四种偏见外人永远查不到——亚马逊的招聘工具（M03 §2.11.2）之所以能被发现歧视女性，是因为内部有人看到了训练数据是"过去十年以男性为主的简历"。
+如果缺少相应数据与处理记录，外部调查会受限；但经授权的受控审查、输出比较与独立测试仍可能发现问题，不必向全体公众开放原始训练数据。课程案例中——亚马逊的招聘工具（M03 §2.11.2）之所以能被发现歧视女性，是因为内部有人看到了训练数据是"过去十年以男性为主的简历"。
 
 数据透明就是把这种"内部才看得到"变成"外部也能查"。
 
@@ -706,7 +621,7 @@ M06 隐私会再从另一面（不该公开什么）讨论数据。
 
 讲义给的第二条理由是**工程上的**——透明的模型好调试，这是对内的价值；第一、三条是对外的——外部专家能审、利益相关者能信。
 
-对本课更重要的是：**模型透明是可解释性的"上游"**。
+对本课更重要的是：**模型信息可以帮助某些解释和审计，但不是一切解释的普遍前置条件**。
 
 如果连模型类型都不公开，外部审计者只能做"黑箱测试"（喂输入看输出），无法确认它内部有没有用禁用的特征。
 
@@ -792,7 +707,7 @@ M06 隐私会再从另一面（不该公开什么）讨论数据。
 > **Importance for Auditing and Compliance** — Traceability is critical for auditing, compliance, and understanding AI system behavior effectively.（对审计、合规与理解系统行为至关重要）
 > **Business Benefits** — Supports accountability, error analysis, and transparency to improve customer interactions and trust.（支持问责、错误分析与透明，改善客户互动与信任）
 
-关键词是 **each step** 和 **documents**：不是"能解释"，而是"有记录"。它与可解释性的区别在于时态——可解释性是当下给理由，可追溯性是事后能复盘。
+关键词是 **each step** 和 **documents**：不是只问“能否给理由”，还问“是否有足以复盘的记录”。二者按功能区分：可解释性关注理由是否可理解且忠实，可追溯性关注当时记录能否复盘。理由可在事后分析，日志也可在运行时查看，不能按“当下/事后”硬分。
 
 **为什么需要它**
 
@@ -823,11 +738,7 @@ M06 隐私会再从另一面（不该公开什么）讨论数据。
 - 可追溯性像快递的物流记录：你不需要懂分拣算法（那是可解释性的事），但每一站"几点到、谁签收"都有记录，丢件时才能定位到哪一站。
 
   AI 决策的"物流记录"包括：输入数据快照、模型版本号、中间分数、人工干预记录。
-- 换个角度：可解释性面向当事人（我为什么被拒），可追溯性面向审查者（这套系统三个月来是怎么运作的）。
-
-  前者是一次性的一句话，后者是持续的一本账。
-
-  两者都叫"透明"，但服务的人不同——这又回到 §2.4.2 的"受众"。
+- 换个角度：当事人常问个案理由，审计者常查持续记录，但两类人都可同时需要理由和日志。可解释性按理由的可理解/忠实程度判断，可追溯性按是否能复盘当时记录判断；不是一方一次性、另一方只能持续——这又回到 §2.4.2 的"受众"。
 
 **⚠️ 常见误解**
 
@@ -914,11 +825,9 @@ M03 §2.13.3 模型卡记录的是模型整体，可追溯记录的是每一次�
   没有这一栏的药你不敢吃。
 
   AI 的"禁忌"就是领域约束，"不良反应"就是失效模式，"用量"就是准确率阈值。
-- 另一个角度：披露局限反而增加信任——这与直觉相反。
+- 另一个角度：披露局限可能帮助用户判断适用范围，但心理信任会升还是降，要看受众和证据。
 
-  §2.3.3 那篇论文把"accuracy（如实说明系统有多准）"列为信任的必要条件之一：一个承认自己会错的系统。
-
-  比一个号称从不出错的系统更可信，因为前者的话可以被验证。
+  §2.3.3 那篇论文把"accuracy（披露信息本身是否正确；如实报告系统表现只是可能的一项内容）"列为信任的必要条件之一：如实说明局限是信息正确性的一部分；仍须核实际表现。一个会说“我不确定”的系统，未标记的其他回答也可能经常错。
 
 **⚠️ 常见误解**
 
@@ -1105,7 +1014,7 @@ p.13–20 的答案是"一般会，但有条件"——这一段是本讲最有�
 
 边界：模型自称“信心 90%”不能填补政策缺证。
 
-若系统输出概率 $S=0.72$，还须按相应人群与时段，在同分数桶中比较实际兑现频率。
+若自拟例中 $S=0.72$ 预测的是“一年内按期还款”，可把预测约0.72、条件相近的记录放在一组（分数桶），比较实际按期还款比例。须固定人群与观察时段；不是直接认证某人有72%把握。
 
 输出 0.72 本身没有提供校准证据。
 
@@ -1152,13 +1061,13 @@ p.14 "How transparency builds trust" 的四条：
 
 更重要的是，p.13 那段话的后半句已经埋下转折：**excessive transparency → cognitive overload and suspicion**。
 
-理解了正面机制，才能理解下一节为什么"过度"会翻转：不确定性降到零之后再给信息，就只剩负担。
+理解了正面机制，才能理解下一节为什么"过度"会翻转：无关或过多信息可能增加处理负担；本材料没有证明不确定性已降到零或之后的信息全无价值。
 
 **课件原例**
 
 讲义 p.13–14 无具体案例，是综述式陈述。
 
-**🎙️ 课堂补充**（`24:52`–`29:30` + `31:38`–`31:59`，约 6.0 分钟，A · 课上展开）
+**🎙️ 课堂补充**（`24:52`–`29:30` + `31:38`–`31:59`，约 5.0 分钟，按两区间时间轴相加，A · 课上展开）
 
 - 对"信任"本身的定义，先于四条机制展开：
 
@@ -1183,9 +1092,9 @@ p.14 "How transparency builds trust" 的四条：
 
 因此课堂是在理论框架之后应用到AI；它比四个词组更具体。
 
-⚠️ `34:54` 教授说 *"I wrote this paper 20 years ago"*——这句话与本讲三篇论文（均 2023–2025 年）对不上。
+⚠️ `34:54` 教授说 *"I wrote this paper 20 years ago"*——这句话与本讲本讲三篇论文（所供p.15未标第一篇发表年）对不上。
 
-很可能是 ASR 把 "read" 记成了 "wrote"，实指他多年前读过的经典信任研究（如 Mayer 等人 1995 年的三要素模型）。
+本轮未核原音和所指论文；不猜成 read，也不把这句话归到 Mayer 1995 或任何作者名下。
 
 已标 `[?]`，不作为教授本人发表过论文的事实使用。
 
@@ -1246,7 +1155,7 @@ AI 的"解释"相当于他把收入证明拿给你看（能力），"公平与�
 这里解释的是坐标与名称的对应，不是声称三篇论文测得了同一条曲线或最佳点。
 合适的信息量仍要按受众和应用判断：数据科学家与贷款申请人需要的信息不同。
 
-）第二条把"最优点在哪"进一步相对化：**它随受众和应用而变**——给数据科学家的最优透明度和给贷款申请人的完全不同。
+第二条要求按受众和应用判断信息是否有用；它没有在本讲数据中估出一个人人适用的“最优点”。
 
 **为什么需要它**
 
@@ -1288,14 +1197,14 @@ AI 的"解释"相当于他把收入证明拿给你看（能力），"公平与�
 
 **⚠️ 常见误解**
 
-- ❌ "U 形效应说明透明有害，所以少做为妙。" → U 形是两头都差：透明太少同样没人信。它否定的是"越多越好"，不是透明本身。
+- ❌ "U 形效应说明透明有害，所以少做为妙。" → 讲义是在提醒信息过少或过多都可能造成问题，并未证明所有人的两端都差。它不支持“因此取消透明”，也不提供统一最佳点。
 - ❌ "找到最优透明度后固定下来就行。
 
   " → 第二条说最优点随应用与用户而变。
 
   而且 §2.4.1 第五条挑战说模型本身在演化。
 
-  最优透明度是一个需要持续调整的目标，不是一次性的设定。
+  信息设计需随用途、受众及版本复核；这里未实测一个可直接固定的最优值。
 
 **与其他概念的关系**
 
@@ -1352,6 +1261,35 @@ p.16 的研究模型（Figure 1）把透明和信任分别拆为三个维度。
 | 信任信念 | Reliability 可靠性 | 表现是否稳定 |
 
 一行是一项问卷概念；没有直接的金额或概率单位。维度名来自 p.16，读法是中文解释。读 Disclosure 行：它问信息是否提供，不是在给系统准确率评分。
+
+**原图路径怎样读（旧/新 p.16）**：下面重现原图能辨认的五条透明维度路径，以及控制项指向三种信任信念的关系。箭头表示拟研究关联，H1–H3是研究假设组，不是本课估出的因果效应、系数或显著性。
+
+```mermaid
+%%{init: {"flowchart": {"subGraphTitleMargin": {"top": 10, "bottom": 28}}}}%%
+flowchart LR
+ subgraph TI["Transparency：透明信息维度"]
+  D["Disclosure 披露"]
+  C["Clarity 清晰"]
+  A["Accuracy 信息正确"]
+ end
+ subgraph TB["Trusting Beliefs：信任信念"]
+  F["Functionality 功能性"]
+  H["Helpfulness 有用性"]
+  R["Reliability 可靠性"]
+ end
+ D -->|H1| H
+ D -->|H1| R
+ C -->|H2| F
+ A -->|H3| F
+ A -->|H3| R
+ K["Controls 控制项<br/>Gender 性别 / Age 年龄<br/>Education 教育<br/>Faith in General Technology 一般技术信心"] -.-> F
+ K -.-> H
+ K -.-> R
+```
+
+沿Disclosure→Helpfulness读：论文正文认为，当用户觉得相关信息已提供，可能预期后续也能得到支持；这是研究理由，不保证真实帮助或信任已发生。Disclosure还连Reliability，Clarity连Functionality，Accuracy连Functionality与Reliability。不能把它改成一一配对或九条全连接。
+
+改条件读图：若只考察Clarity，应先追原图到Functionality的路径；不能仅凭“都叫透明”新增它到其余两个结果的箭头。控制项指三种信任信念，表示研究另考虑这些因素；原页未给权重或完整量表。排版左右不代表时间先后。
 
 H1–H3 是三个透明维度与信任信念关系的研究假设。控制变量包括性别、年龄、教育和对一般技术的信心。
 
@@ -1429,7 +1367,7 @@ p.16 正文还提出一条路径：若人认为所有相关信息都已披露，
 - “上限以上也无信任”不是它提供的统一结论。
 - ❌ "三个维度里'披露'最重要，把信息全放出来就行。
 
-  " → 三个维度是并列的必要条件，而且"清晰"直接对抗过度披露：信息全放出来但没人看得懂，清晰度为零，信任照样建不起来。
+  " → 在所供论文的模型和样本口径中，作者报告各维度的最低水平；不能从“公开了信息”推出“人人看懂并信任”。本讲没有足以替其他用户计算清晰度为零或共同门槛的数据。
 
 **与其他概念的关系**
 
@@ -1443,7 +1381,7 @@ p.16 正文还提出一条路径：若人认为所有相关信息都已披露，
 
 论文二、三也不能为论文一补上统一曲线的上界。
 
-**所以呢**：透明是信任的门槛。但过了门槛之后，"再多给一点解释"是否继续有帮助？第二篇论文（p.17）在医疗场景里给出否定的答案。
+**所以呢**：论文一在其研究条件下支持候选最低水平。论文二另问临床解释条件是否改善表现；两篇的对象与设计不同，不把后一篇放在前一篇门槛之后当同一条曲线。
 
 ---
 
@@ -1470,7 +1408,7 @@ p.16 正文还提出一条路径：若人认为所有相关信息都已披露，
 
 SEM需说明测量模型、系数与控制假设，正系数不证明有X就必有Y。
 
-NCA 需拟合天花板/瓶颈，并核对显著性（statistical significance）。这里的“显著”是问：若真实数据没有这种约束，随机波动是否仍很容易产生同样强的结果；它不是说图上的空白“看起来很明显”。还要同时核测量与样本支持，不能看到空白就下逻辑定理。
+这里“天花板”是研究设定下某披露水平对应的信任上缘，“瓶颈”是达到目标信任所需的候选最低披露；都依赖测量与拟合范围。NCA还需核统计显著性（statistical significance）。这里的“显著”是问：若真实数据没有这种约束，随机波动是否仍很容易产生同样强的结果；它不是说图上的空白“看起来很明显”。还要同时核测量与样本支持，不能看到空白就下逻辑定理。
 
 两者的统计证据不能由互补故事替代。
 
@@ -1478,7 +1416,7 @@ NCA 需拟合天花板/瓶颈，并核对显著性（statistical significance）
 
 原叫法保留并注明坐标/口径，三篇论文也未共同测出一个普遍最优点。
 
-**迁移题**：披露提高后信任平均升，能否说它是充分条件？
+**迁移题**：在某样本中披露提高后信任平均升，能否说它是充分条件？
 
 高信任只在高披露出现能否推所有未来用户也如此？
 
@@ -1536,23 +1474,11 @@ p.17 引的这篇论文说：不一定。
 
 （数字取自论文摘要誊录，非本库脚本复算。）
 
-**🎙️ 课堂补充**（B · 存疑，本讲全文检索未见专门段落）
+**🎙️ 课堂补充**（存疑，不据此降权）
 
-- 全文检索确认：`clinician` 全讲只出现 1 次（`36:59`，且是"电话问诊病人"举例里的用词，不是这篇论文"临床医生 + 乳腺癌诊断"的实验场景）。
+`36:59` 出现 clinicians／patients 和远程问诊；`36:45`–`45:40` 主要谈告知 AI 使用后信任怎样变化。它与论文三的披露问题较接近，但不能只凭关键词数量断言教授没有讲论文二，也不能猜他把论文混在一起。
 
-  `breast`、`cancer`、`diagnos` 在全部 969 段转录里 0 命中。
-- `36:45`–`45:40` 那一大段教授讲的是"病人被告知自己在和 AI 而非真人医生对话，信任会不会下降、会不会因为后来发现而降得更多"。
-
-  内容主题更贴合 §2.3.5 的论文三（披露悖论），而不是本节论文二（给临床医生不同层级的 AI 解释、测信任与诊断准确率）。
-- 这段改变了什么：无法确认教授本讲专门讲过这篇论文——他可能把两篇论文的结论混在一起口述了。
-
-  也可能确实没有展开这一篇的具体实验设计（28 名临床医生、乳腺癌诊断、分层解释）。
-
-按 SKILL §3.1，这不构成"有证据的略过"（⏭️），只能标记为存疑：正文暂按讲义 p.17 截图内容保留。
-
-🎙️ 格注明"转录里没有专门对应本论文的独立段落，`36:45`–`45:40` 的口述内容已计入 §2.3.5，避免重复计分"。
-
-**不可因此降权**——只是没找到专门段落，不等于教授没讲。
+本转录没有足够清楚地把 28 位临床医生、乳腺癌诊断和具体解释层级连成该实验设计。正文保留讲义 p.17 的摘要和研究限制，口述与论文的精确对应待核原音；同一口述不重复计算为两次独立证据。
 
 **💡 换个说法（笔记补充）**
 
@@ -1684,9 +1610,9 @@ p.19 的 "Interesting Findings!" 把研究发现提炼为六项：
 
 ⚠️ `45:08` 教授明说：
 
-> *"these are some of the findings of these cases, which I am not going to have you test [on] a little bit"*（ASR 原文如此）
+> *"these are some of the findings of these cases, which I am not going to have you test a little bit"*（ASR 原文如此）
 
-**这是一处降权信号**：具体的实验设计与统计数字不要求记，只要记住"披露有代价、被曝光代价更大"这个结论（已加入 §6.2「🔴（反向）」）。
+这句 ASR 语法不完整，且本轮未核原音，不能据此确认具体设计/数字“不考”。只保留待核课堂线索；复习重点可由 ILO 和内容任务推断，不能冒充教授排除范围。
 
 **💡 换个说法（笔记补充）**
 
@@ -1753,11 +1679,7 @@ p.20 是一张 Sketchplanations 漫画（已视觉复核誊录）：
 
 画面是一间开放式工作区，两个坐在前排的人正在桌子底下悄悄传递一个小东西。
 
-漫画注明来源是 Ethan Bernstein——哈佛商学院教授，2012 年发表的研究（🔗 公开资料常识，2026-09-22，⚪ 细节据记忆）。
-
-他在一家手机组装厂观察到，工人在被全程监视时会隐藏自己发明的更快的操作方法。
-
-给生产线拉上帘子、减少可见度之后，产量反而提高了 10%–15%。
+漫画注明 From Ethan Bernstein。原笔记另记过工厂实验和 10%–15% 产量变化，但该数字只有旧记忆说明、没有随本讲提供可核研究页或原数据；本轮不把它作为讲义事实或量化效果证据。当前可直接读出的，是工作区可见性与私下行为的漫画对照。
 
 "透明悖论"就是：把一切暴露在观察之下，会促使被观察者更隐蔽地行事，透明的目的（看清真实情况）反而落空。
 
@@ -2000,7 +1922,7 @@ Google 模型卡、Kredito 实时解释与 Salesforce 不确定性标记是本�
 
   " → 讲义第三条给了一个低成本的通用形式——反事实解释："如果你的收入再高一些。
 
-  贷款就会通过"——它既不需要暴露模型内部，又对任何受众都有用。
+  贷款就会通过"——它不必公开全部内部参数，但是否对该受众有用及实现成本，须按用途验证。
 
   下一节展开。
 
@@ -2024,7 +1946,7 @@ Google 模型卡、Kredito 实时解释与 Salesforce 不确定性标记是本�
 
 被拒贷的人不关心模型有几层，只关心一件事：我要怎样才能通过？
 
-反事实解释就是直接回答这个问题——"如果你的收入再高一些，贷款就会批准"。
+反事实解释研究的是：在冻结模型和明确条件下，哪些可行输入变化能改变模型输出。讲义用“收入提高则贷款通过”作引子；现实批准还取决于实际政策、资料与复核，不能把一句建议当承诺。
 
 讲义 p.23：
 
@@ -2084,7 +2006,7 @@ $$D=\frac{|I-40000|}{5000}+\frac{|d-0.45|}{0.07}$$
 
 5. 找到 $(45000,0.45)$ 与 $(40000,0.38)$，两者距离均为 1。
 
-预定 tie 规则是同时提供两条路径。
+这里的并列（Tie）指多条候选达到相同的最小距离；并列最小解集合（Tie Set）要把本域这些候选收齐。本例预定规则是同时提供两条路径，而不只找一个最小值。
 
 6. 枚举完 9 格，结束有限搜索。
 
@@ -2129,10 +2051,10 @@ $$D=\frac{|I-40000|}{5000}+\frac{|d-0.45|}{0.07}$$
 flowchart TD
  A["原事实、冻结版本与拒绝输出"] --> B["定义可行动变量/不可改变量/距离/因果约束"]
  B --> C["枚举或搜索候选，重算派生变量"]
- C --> D{"可行且新模型输出翻转？"}
+ C --> D{"可行且冻结模型输出翻转？"}
  D -->|否| E["剔除，记录原因"]
  D -->|是| F["算距离，更新最小候选与tie集合"]
- E --> G{"候选域已完成或已证距离下界？"}
+ E --> G{"本例九格候选已全部检查？"}
  F --> G
  G -->|否| C
  G -->|是| H["输出最小可行解释/无可行解与限制"]
@@ -2148,13 +2070,13 @@ flowchart TD
 
 3. 继续搜索，发现收入 40000、比例 0.38 也批准且距离为 1；保留 tie 集合。
 
-4. 枚举完有限域，并在上述独立特征域证明下界 1 后输出两候选。
+4. 枚举完九格，才确认所有达到最小距离的候选均已收集；两候选的距离都为1，另由下界1确认其最小性。
 
-文字替代：先固定规则，再筛可行且翻转的输入，最后才比距离。派生比例必须另按因果约束重算；无可行解、预算结束和精确最小是不同状态。
+文字替代：先固定规则和目标，再筛可行且翻转的输入、比较距离。本例承诺收全九格域的等距最小解，故须遍历完；达到已证下界只足以确认一个解的最小值，不能单独证明tie集合完整。派生比例另按行动约束重算；无解、预算结束与精确最小不同。
 
 <details><summary>读图自测：V2 改成“且”时，单改收入候选会在哪一步被剔除？</summary>
 
-在“可行且新模型输出翻转？
+在“可行且冻结模型输出翻转？
 
 ”节点，比例 0.45 不达 0.38 条件，输出未翻转。
 
@@ -2185,7 +2107,7 @@ flowchart TD
 
 它是本讲唯一展开讲的具体解释技术，也是 §2.4.2 "understandable and useful" 的样板。
 
-它不暴露模型内部（绕开黑箱与商业利益两个障碍），用户不需要任何技术知识就能理解（自适应），而且直接告诉人下一步做什么（有用）。
+反事实可在不公开全部内部参数的条件下提供一种输出对照；是否忠实、可行且有用，仍须核冻结模型、距离和现实行动，不能一概声称绕开黑箱或适合所有受众。
 
 它还有一个法律上的价值：GDPR 要求对自动化决定提供"有意义的信息"（§2.8.2），反事实解释被提出作为一种可能的解释方式。
 
@@ -2216,7 +2138,7 @@ M03 §2.12.2 的"反事实公平"（把敏感属性换掉结果是否变）用�
 - 他把心理学渊源留给读者自读，这是该部分的降权信号。
 - 讲义仍要求理解最小改变、可行动、现实与贴近；这些定义不因自读而删除。
 
-对应的反向提示保留在§6.2。
+自读安排与考试排除分别记录，见 §6.2；不能从讲得短推断不考。
 
 **💡 换个说法（笔记补充）**
 
@@ -2284,7 +2206,7 @@ M03 §2.12.2 的"反事实公平"（把敏感属性换掉结果是否变）用�
 
 > *"…the transparency is like a spectrum, so transparency refers to the extent which this information can be made, can be disclosed."*
 
-教授随后当场给出四个可操作的"维度"（`55:56`–`58:26`），并各举一例：
+课堂随后对以下四项给出可定位的展开；新版 p.27 书面列表另列 Model Transparency（模型透明），共五项，模型部分回到 §2.2.3。这里不能以口头展开四项替代完整书面列表。以下四项（`55:56`–`58:26`），并各举一例：
 
 - **Disclosure（披露）**：
 
@@ -2302,7 +2224,7 @@ M03 §2.12.2 的"反事实公平"（把敏感属性换掉结果是否变）用�
 
 > *"It's not always necessary or practical to provide true information … [you] might not be able to disclose the entire program in an open setting because of internal security concerns"*（`57:54`）
 
-数据透明有内部安全的边界，不等于原始数据集全公开。
+数据透明有内部安全的边界，不等于原始数据集全公开。 `57:54` 的 “true information” 读音/ASR 存疑，不能将它解释为允许提供不真实信息。安全边界约束公开范围，披露内容仍须真实。
 - **Decision Transparency（决策透明）**：
 
 > *"organizations should be able to explain the factors and logic that contribute[] to a prediction, recommendation, or decision"*（`58:26`）
@@ -2415,7 +2337,14 @@ M03 §2.12.2 的"反事实公平"（把敏感属性换掉结果是否变）用�
 
 这一段是教授把"透明"从"六个构件的清单"升级成"一条因果链"的地方——它回答了"为什么企业要做透明"这个更根本的问题。
 
-不是为了合规打勾，而是因为没有透明，人在环路、问责、挑战这三件事全部无法成立。
+上述是教授的治理论点，操作上还须分清信息、权限与动作（笔记补充）。
+
+1. 申请人 R17 得到理由和自己的数据，才能针对具体错误提出异议；无需先读懂所有模型参数。
+2. 复核者须有权暂停、补证、重算或推翻，光有解释不产生这些权限。
+3. 紧急停止、独立凭证或输出对比，也可能先于完整机制解释发现并阻止损害。因此“不能解释每个内部步骤”不等于“不能否决或启动申诉”。
+4. 若只有人点确认却看不到所需证据、没有处置权，才是本案警惕的形式人审。
+
+透明支持有根据的监督与质询，但不是问责或公平自动成立的充分条件。
 
 教授最后把它拔高到治理层面：
 
@@ -2430,18 +2359,13 @@ M03 §2.12.2 的"反事实公平"（把敏感属性换掉结果是否变）用�
 
   教授这段把"透明"立成前提、把"人在环路/问责/可挑战"立成结果，是一条讲义没有的因果论证，直接服务于紧接着的 COMPAS 案例分析。
 
-**💡 换个说法（笔记补充）**
+**💡 所需信息与处置权分别核对（笔记补充）**
 
-- 这就像一个黑箱陪审团——如果陪审团完全不说明判决理由，被告没法上诉、法官没法复核、社会没法监督。
+复核员只看到“高风险”分数，缺个案资料和可核依据，会难以判断具体错在哪里；信息因此有用。可是收到理由不等于已有推翻权限。
 
-  "人可以推翻错误判决"这件事就名存实亡。
+若有独立凭证表明输入录错，或群体输出比较显示错误率差异，组织可以先暂停、补证或启动申诉，不必等完整解释每个内部参数。能否完成有根据的复核，还要看资料、授权、时限与救济程序。
 
-  AI 系统如果不透明，"人在环路"也是同样的空壳：人坐在监督席上，却看不懂屏幕上发生了什么，根本无从行使否决权。
-- 把教授"透明→问责"这条链倒过来看更清楚——先问"如果这个系统做错了，谁该负责、怎么发现它错了"。
-
-  答案通常是"审计的人""被拒的人""监管者"，而这三种人能不能做到，全部取决于他们能不能看懂系统给出的信息。
-
-  所以透明不是加分项，是问责机制能不能运转的开关。
+这区分“解释不足造成调查困难”和“任何质询/停用都不可能”。教授的强表述保留为课堂观点，作者不将其当无例外定理。
 
 **⚠️ 常见误解**
 
@@ -2466,17 +2390,28 @@ M03 §2.12.2 的"反事实公平"（把敏感属性换掉结果是否变）用�
 
 **所以呢**
 
-这条"透明→人在环路→问责→可挑战"的因果链。
+这条课堂组织的“信息支持监督、责任与质询”论证，须与实际权限、独立证据和救济共同使用。
 
 正是教授接下来分析 COMPAS 案时反复回来的框架——COMPAS 案会把"可挑战"具体化成一项法律权利：正当程序（due process）。
 
 ---
 
+
+**新版 p.25–28 复习怎样用于同一拒贷例**：p.25定义关注用途、运作、来源、能力/局限和决定过程是否让使用、管理或受影响者理解；本例先问R17得到了哪些信息。
+
+p.26列五项价值：让用户知道AI怎样参与可帮助信任判断；错误/偏差信息支持问责调查；依据是否恰当支持公平检查；监管/组织/研究者获得相应信息以监督；数据/决定的相关说明支持知情同意。每条都需要实际资料与相应行动，不是自动效果。
+
+p.27的五维度为Disclosure、Explainability、Data Transparency、Model Transparency、Decision Transparency；对应本篇不同信息需求，不与六构件或论文三维度当成同一量表。p.28指出复杂性、外行难读以及隐私/安全/知识产权权衡；不必公开全部专有源码或数据集，仍须真实、可用地告知所需信息。
+
 ### 2.5 应用 I：两个生成式 AI 产品（讲义 p.24–31）
+
+**新版定位**：p.53 是行业实践过渡页，提示接下来按产品及公司分析信息；不是新的效果证据。
 
 p.24 章节页，p.25–29 ChatGPT（含隐私审查截图），p.30–31 Google Bard。
 
 #### 2.5.1 ChatGPT：一个黑箱产品的透明答卷（讲义 p.25）
+
+**新版定位**：p.54 对应旧 p.25 的 ChatGPT 产品描述。
 
 **是什么**
 
@@ -2497,7 +2432,7 @@ ChatGPT 是本讲第一个案例，因为它是读者最熟悉、同时也是最
 
 这里评价的是课件所载材料，不代表本轮核验了产品当前全部能力。
 
-三条"做法"里，**反馈机制**（用户对回答点赞 / 点踩）是生成式 AI 特有的透明手段——它不解释模型，但让模型的错误被看见、被统计。
+三条"做法"里，**反馈机制**（用户对回答点赞 / 点踩）是本页列出的反馈手段，其他软件和预测系统也可采用它——它不解释模型，但让模型的错误被看见、被统计。
 
 **为什么需要它**
 
@@ -2515,9 +2450,9 @@ ChatGPT 是本讲第一个案例，因为它是读者最熟悉、同时也是最
 
 本片段完整覆盖 `52:37`–`01:32:27`（含 Amazon、COMPAS 两案与前后过渡），全文检索 "ChatGPT" 命中 0 次——教授没有回到这一页。
 
-而是直接讲了两个讲义完全没有的真实案例（§2.5.4 Amazon、§2.5.5 COMPAS）。
+而是直接讲了两个旧版讲义没有、当前新版已收入的真实案例（§2.5.4 Amazon、§2.5.5 COMPAS）。
 
-教授后面（`02:07:41`，见 shard_3 段）明说案例章节：
+教授后面（`02:07:41`，见 本篇转录后段 段）明说案例章节：
 
 > *"you can look at it later when you have time"*
 
@@ -2534,9 +2469,7 @@ ChatGPT 是本讲第一个案例，因为它是读者最熟悉、同时也是最
 "透明"对他意味着：至少要贴一张"我可能会错"的告示（局限披露 + 用户知情）。
 
 让你能投诉（反馈机制），并让第三方来查他的书单是否合规（下一节的审查）。
-- 换个角度：生成式 AI 的透明问题比信贷模型更难，因为它没有一个"决定"可以解释——信贷模型输出"拒绝"，可以给反事实解释。
-
-  ChatGPT 输出一段话，"为什么这句话"没有可行动的答案。
+- 换个角度：生成式输出常含多条陈述和建议，须逐条核来源、依据和限制，而非只核一个批准/拒绝标签。仍可核一条结论或一次工具选择；不等于生成系统没有可解释对象，也不证明所有此类任务都更难。
 
 所以它的透明手段偏向"元层面"（指南、模型卡、反馈），而不是逐次解释。
 
@@ -2551,7 +2484,7 @@ ChatGPT 是本讲第一个案例，因为它是读者最熟悉、同时也是最
   按六构件它做到的是局限披露与用户知情，数据透明与可解释性都很弱。
 - ❌ "反馈机制只是收集用户满意度。
 
-  " → 它是这类产品少有的"决策可追溯"替代品：每次点踩都留下一条"这里出了问题"的记录，让错误模式能被事后分析（§2.2.4 的错误分析）。
+  " → 反馈可成为审查线索，但不能替代输入、来源、版本和处理记录组成的决策追踪。它是：每次点踩都留下一条"这里出了问题"的记录，让错误模式能被事后分析（§2.2.4 的错误分析）。
 
   它不解释，但它留痕。
 
@@ -2567,108 +2500,256 @@ ChatGPT 是本讲第一个案例，因为它是读者最熟悉、同时也是最
 
 - §2.5.3 Bard 是同类产品的另一份答卷。
 
-**所以呢**：讲义没有停在"ChatGPT 自己说了什么"，而是插入三页第三方的隐私审查截图——**透明的最高形式不是自述，是让别人来查**。
+**所以呢**：讲义没有停在"ChatGPT 自己说了什么"，而是插入三页第三方的隐私审查截图——**透明材料可以接受独立核查，但第三方身份本身不保证审查完整或结论正确**。
 
 ---
 
 #### 2.5.2 隐私审查量表：第三方怎样给 ChatGPT 打分（讲义 p.26–29，纯图片页）
 
-**是什么**
+采购人员看到一张全绿的评分图，能否据此认定系统安全？先问它测的是政策文字、实际控制，还是当前法律合规。
 
-一家公司自称透明没有意义，要看**外部机构按固定清单逐条核对的结果**。
+**讲义原图与读法**：旧版 p.26（新版 p.55）写 Product: ChatGPT，Vetted by Data Privacy Team at 1EdTech on 2023-04-05，App Vetting Capability: Expert (Self Rated)。五个饼图是 Data Collection、Security、3rd Party Data、Advertising、Certified；图例绿 MEETS、橙 PARTIAL、红 UNMET、灰 N/A。它不只有标题，不能排除为非内容页。
 
-p.26 是章节页"DATA PRIVACY VETTING"，p.27–29 是三张截图（已视觉复核誊录）。
+数据收集和第三方领域各有一块部分满足，安全/广告图为满足，Certified 为未满足。认证明细没有给出，不能由该图推断所有第三方认证或产品今天状态。一般条目 GEN1 在明细中另列，不能把五个图的扇区当作全部 21 题的同一分母。
 
-来自 1EdTech（教育技术标准组织）的应用审查报告：产品 ChatGPT，由 1EdTech 数据隐私团队于 2023-04-05 审查，审查能力自评为 Expert。
+旧 p.27–29（新 p.56–58）给 21 个条目：GEN1＋五个 DCQ＋五个 SECQ＋五个 SHRQ＋五个 ADVQ，合计 21。按截图各行判定数出 18 MEETS、3 PARTIALLY MEETS、0 DOESN'T MEET。三个部分满足为 GEN1、DCQ5、SHRQ5，18＋3＝21；这不是 Certified 领域的独立认证结果。
 
-**怎么读**（p.27 顶部总览 + p.27–29 明细）：
+多因素认证（Multi-Factor Authentication, MFA）使用不同种类的认证因素；单点登录（Single Sign-On, SSO）让用户一次登录进入多个系统，二者不是同一个问题。
 
-- 总览是五个饼图，每个代表一个领域——数据收集（Data Collection）、安全（Security）、第三方数据（3rd Party Data）、广告（Advertising）、认证（Certified）。
+学习工具互操作规范（Learning Tools Interoperability, LTI）的launch是教学工具启动方式。这里无需实现协议，只需看清它作为评分分支，不能由启动方式推得具体MFA控制已启用。
 
-  颜色含义：绿 = 满足（MEETS）、黄 = 部分满足（PARTIAL）、红 = 不满足（UNMET）、灰 = 不适用。
+**先读一行**：SECQ4 问两步/多因素认证，截图答案却允许 SSO、LTI、无需账户或豁免等不同分支。读到 MEETS 时只能说该历史量表给了这一档，不能认定每个 ChatGPT 用户已启用 MFA。OR 表示任一分支；截图没有逐项说明实际采用哪个分支。
 
-截图里：数据收集大部分绿、一小块黄；安全全绿；第三方数据大部分绿、一小块黄；广告全绿；**认证全红**。
-- **明细是逐题表**，每题三列（Meets / Partially Meets / Doesn't Meet）打一个标记，题下有一行"ANSWER"说明判定依据。誊录如下：
+下面保留所有英文题与 ANSWER；ANSWER 是截图显示的评判说明，不能冒充已独立核验的产品事实。中文是笔记读法，英文参考为自拟。原句的重复 or OR 据实保留。
 
-| 领域 | 题目（编号） | 问的是什么 | 判定 |
-| --- | --- | --- | --- |
-| 一般 | GEN1 | 关键政策变更如何管理 | ⚠️ 部分满足（"变更前会通知用户"） |
-| 数据收集 | DCQ1–DCQ4 | 是否列出收集的全部数据 / 怎样收集 / 谁拥有数据 / 用户能否完全删除 | ✅ 全部满足 |
-| 数据收集 | DCQ5 | 是否说明数据保留期限 | ⚠️ 部分满足（只有笼统说明，无期限） |
-| 安全 | SECQ1–SECQ5 | 数据如何保护 / 敏感信息是否全程加密 / 是否强制强密码 / 是否支持两步验证 / 是否说明 cookie 用途 | ✅ 全部满足 |
-| 第三方数据 | SHRQ1–SHRQ4 | 是否说明使用第三方 / 与每个第三方共享什么 / 用户能否退出共享 / 是否要求第三方遵守同样条款 | ✅ 全部满足 |
-| 第三方数据 | SHRQ5 | 第三方变更时是否通知用户 | ⚠️ 部分满足 |
-| 广告 | ADVQ1–ADVQ5 | 是否展示广告 / 是否定向 / 第三方是否为广告追踪 / 是否用 web beacon 等追踪 / 用户能否退出向广告商共享 | ✅ 全部满足（"不展示广告"） |
+<details><summary>原审查题全文与逐项中英读法：旧 p.27–29／新 p.56–58</summary>
 
-（认证领域的明细不在截图内，总览显示为红色 = 未满足，即 ChatGPT 当时没有通过该组织的隐私认证。）
+**GEN1 · 旧 p.27／新 p.56 · 部分满足**
 
-**为什么需要它**
+> How are changes to key policies managed?
+>
+> ANSWER: Notification is provided to the user in advance of a change
 
-它是本讲**唯一一份"透明被量化"的材料**：透明不是形容词，是 20 多道是非题的逐条得分。
+中文题意与解析：政策重要变更怎样管理？截图给的是变更前通知用户，仍评为部分满足；通知一句话不能证明变更程序完整。
 
-三点值得学：
+英文参考（笔记自拟）：The screenshot rates GEN1 as partially meets. Its displayed ANSWER states: Notification is provided to the user in advance of a change. Advance notification alone does not establish a complete change-management process.
 
-1.  审查问的全是政策文件里写没写清楚（"Do the policies state…"）——第三方无法打开黑箱。
+**DCQ1 · 旧 p.27／新 p.56 · 满足**
 
-  能查的是公司说了什么、说得够不够具体，这正是 §2.3.3 的"披露 + 清晰"两个维度。
+> Do the policies list all data collected?
+>
+> ANSWER: Policies list the data collected OR policies state no data is collected
 
-2.  三个"部分满足"都是同一类问题——**变更与期限没说清**（政策变更、数据保留期、第三方变更），对应 §2.4.1 的"动态性"障碍；
+中文题意与解析：是否列出收集的全部数据？原标准有两个分支：列清数据，或声明不收集数据。Meets不能单独告诉我们采用了哪一个分支。
 
-3.  这份审查来自教育行业组织，说明**行业标准正在填补"无全球标准"的空白**（§2.4.1 第四条）。
+英文参考（笔记自拟）：The screenshot rates DCQ1 as meets. Its displayed ANSWER states: Policies list the data collected OR policies state no data is collected. Meeting this criterion does not reveal which collection or no-collection branch was used.
 
-**课件原例**
+**DCQ2 · 旧 p.27／新 p.56 · 满足**
 
-讲义 p.27–29 就是这三张截图。
+> Do the policies indicate how data is collected?
+>
+> ANSWER: Policies state specifically how data is collected OR policies state no data collected
 
-讲义没有文字解读，上表为笔记誊录。
+中文题意与解析：是否说明怎样收集？写清收集方式，或声明不收集，均是截图列出的满足路径；不是实地采集审计。
 
-（各题判定为截图誊录，非本库脚本计算；"20 多道"为数出的题数：GEN1 + DCQ1–5 + SECQ1–5 + SHRQ1–5 + ADVQ1–5 = 21 道，⚪ 心算。）
+英文参考（笔记自拟）：The screenshot rates DCQ2 as meets. Its displayed ANSWER states: Policies state specifically how data is collected OR policies state no data collected. The recorded policy statement is not an observation of actual collection behaviour.
 
-**🎙️ 课堂补充**：⏭️ 这几页课上没讲。
+**DCQ3 · 旧 p.27／新 p.56 · 满足**
 
-依据同 §2.5.1——本片段 `52:37`–`01:32:27` 全文未提及 1EdTech 审查、隐私量表或任何饼图/是非题内容。
+> Do the policies state who owns the data?
+>
+> ANSWER: Policies state the user owns the data alone OR policies state no data collected
 
-教授把这部分留给学生自读（`02:07:41`，见 shard_3 段，此处不重复引用）。
+中文题意与解析：是否写明谁拥有数据？标准允许用户独有数据或不收集数据两条路径，不凭该勾选判断全部法律权利归属。
 
-**建议**：了解即可；若要练习"用清单量化透明"的方法，这几页仍是本讲唯一的具体操作化例子。
+英文参考（笔记自拟）：The screenshot rates DCQ3 as meets. Its displayed ANSWER states: Policies state the user owns the data alone OR policies state no data collected. This does not by itself settle every legal ownership or usage right.
 
-**⚠️ 常见误解**（图会怎么骗人）
+**DCQ4 · 旧 p.27／新 p.56 · 满足**
 
-- ❌ "四个饼图几乎全绿，说明 ChatGPT 的隐私做得很好。
+> Do the policies allow users to delete their data entirely?
+>
+> ANSWER: Policies allow users to delete data entirely after a period of time OR policies state no data collected
 
-  " → 审查的是隐私政策文本是否完整，不是实际做法是否合规——一家公司可以写得很全、做得很差。
+中文题意与解析：是否允许完全删除？原标准含等待一段时间后删除，或不收集数据；不能改写成任何数据都可立即彻底删除。
 
-  而且"认证"一项全红：它没有通过第三方认证。
+英文参考（笔记自拟）：The screenshot rates DCQ4 as meets. Its displayed ANSWER states: Policies allow users to delete data entirely after a period of time OR policies state no data collected. Deletion may occur after a period, or no data may be collected; immediate deletion is not established.
 
-  绿色饼图 ≠ 安全。
-- ❌ "2023 年 4 月的审查结果现在仍然有效。
+**DCQ5 · 旧 p.27／新 p.56 · 部分满足**
 
-  " → 三个"部分满足"都指向变更管理。
+> Do the policies state the retention of data?
+>
+> ANSWER: Policies state a 90-day (or greater) retention policy OR policies give a general statement of data retention with no time period specified
 
-  生成式 AI 产品的政策一年改好几次（§2.4.1 动态性）。
+中文题意与解析：是否说明保留期限？截图的部分满足标准列出至少90天，或只有笼统保留说明。不能只由此勾选断言真实期限，也不能说原图完全没有出现90天。
 
-  这份截图是某一天的快照，讲义用它是为了展示方法，不是给出结论。
-- ❌ "全绿的'广告'一栏说明 ChatGPT 不追踪用户。
+英文参考（笔记自拟）：The screenshot rates DCQ5 as partially meets. Its displayed ANSWER states: Policies state a 90-day (or greater) retention policy OR policies give a general statement of data retention with no time period specified. The partial-rating criterion allows a retention period of 90 days or more, or a general statement without a specified period; the selected branch is unknown.
 
-  " → ANSWER 写的是"no ads are displayed"——不展示广告，所以广告类追踪的题都自动满足。
+**SECQ1 · 旧 p.28／新 p.57 · 满足**
 
-  这不代表产品不收集使用数据（数据收集一栏另算）。
+> Do the policies state how data is protected?
+>
+> ANSWER: Policies list the steps taken to protect data or OR policies state no data collected
 
-**本课材料画出来长什么样**：见上文誊录——五个饼图四绿一红，21 道题 18 满足、3 部分满足、0 不满足。
+中文题意与解析：是否说明如何保护数据？原ANSWER有重复的or OR，照录为原文排版；实质标准包括列出保护步骤或不收集数据，不等于已做渗透测试。
 
-**与其他概念的关系**
+英文参考（笔记自拟）：The screenshot rates SECQ1 as meets. Its displayed ANSWER states: Policies list the steps taken to protect data or OR policies state no data collected. A policy description or a no-collection statement is not a penetration-test result.
 
-- 它是 §2.2.2 数据透明的第三方审查形态、§2.3.3 "披露 + 清晰"维度的操作化、M03 §2.13.1 偏见审计的隐私版
+**SECQ2 · 旧 p.28／新 p.57 · 满足**
 
-- M06 隐私会展开"数据收集 / 保留 / 第三方共享"这些题背后的法律要求
+> Do the policies state all confidential & sensitive information is encrypted throughout?
+>
+> ANSWER: Data encrypted throughout OR passes an encryption test with no vulnerabilities OR policies state no data collected
 
-- §2.8.2 的 GDPR 是这些题的法律来源之一。
+中文题意与解析：是否声称机密与敏感信息全程加密？标准还允许通过加密测试或不收集数据。该勾选没有给测试报告，不能证明ChatGPT当前所有数据链路均加密。
 
-**所以呢**：ChatGPT 的答卷看完了。讲义接着给它的直接竞品——Google Bard——的做法，再附一张 Google 透明度报告页面。
+英文参考（笔记自拟）：The screenshot rates SECQ2 as meets. Its displayed ANSWER states: Data encrypted throughout OR passes an encryption test with no vulnerabilities OR policies state no data collected. The alternatives include throughout encryption, a passed encryption test, or no collection; the rating alone does not identify the implemented control.
 
----
+**SECQ3 · 旧 p.28／新 p.57 · 满足**
+
+> Do the policies state whether or not it enforces strong password creation?
+>
+> ANSWER: Supplier enforces strong password creation OR supplier user base exempt from password requirements or OR no account creation required
+
+中文题意与解析：是否强制强密码？标准包括强密码、用户群获豁免或无需账户；因此Meets不必然表示每个用户都设了强密码。原文or OR重复保留。
+
+英文参考（笔记自拟）：The screenshot rates SECQ3 as meets. Its displayed ANSWER states: Supplier enforces strong password creation OR supplier user base exempt from password requirements or OR no account creation required. Strong passwords, an exempt user base, or no account requirement are alternatives; universal strong-password enforcement is not established.
+
+**SECQ4 · 旧 p.28／新 p.57 · 满足**
+
+> Do the policies indicate whether or not it leverages 2 step (or other forms of multifactor) authentication?
+>
+> ANSWER: Supplier uses SSO or an LTI launch OR no account creation is required OR supplier user base exempt from 2-step authentication requirements
+
+中文题意与解析：是否使用两步或多因素认证？原ANSWER列单点登录（SSO）、LTI启动、无需账户或豁免，不能据此证明本产品当时或现在给每人启用了MFA。
+
+英文参考（笔记自拟）：The screenshot rates SECQ4 as meets. Its displayed ANSWER states: Supplier uses SSO or an LTI launch OR no account creation is required OR supplier user base exempt from 2-step authentication requirements. SSO or LTI launch, no account requirement, and exempt users are allowed alternatives; the rating does not prove that every user enabled MFA.
+
+**SECQ5 · 旧 p.28／新 p.57 · 满足**
+
+> Do the policies state the use of cookies?
+>
+> ANSWER: Policies list all cookies used and each cookie's purpose OR policies state that it only uses cookies that are crucial for app functionality
+
+中文题意与解析：是否说明cookie用途？列清全部cookie与用途，或只用核心功能所需cookie，是两种满足路径；勾选不代表没有cookie。
+
+英文参考（笔记自拟）：The screenshot rates SECQ5 as meets. Its displayed ANSWER states: Policies list all cookies used and each cookie's purpose OR policies state that it only uses cookies that are crucial for app functionality. Listing cookies and purposes, or using only essential cookies, does not imply that no cookies exist.
+
+**SHRQ1 · 旧 p.28／新 p.57 · 满足**
+
+> Do the policies state the use of third parties?
+>
+> ANSWER: Policies list each third party separately OR policies state third party use strictly for app functionality OR policies state that they do not use third parties
+
+中文题意与解析：是否说明第三方？标准允许逐个列出、仅用于应用功能或声明不用第三方，不能把满足统一读作完全没有第三方。
+
+英文参考（笔记自拟）：The screenshot rates SHRQ1 as meets. Its displayed ANSWER states: Policies list each third party separately OR policies state third party use strictly for app functionality OR policies state that they do not use third parties. Listing third parties, using them only for functionality, or using none are different allowed branches.
+
+**SHRQ2 · 旧 p.28／新 p.57 · 满足**
+
+> Do the policies state what information is shared with each 3rd party?
+>
+> ANSWER: Policies list the data it shares with each third party separately OR policies state that it does not share any data with any third party
+
+中文题意与解析：是否说明各方收到哪些信息？可逐方列出，也可声明完全不共享；需要原政策才能确定具体共享内容。
+
+英文参考（笔记自拟）：The screenshot rates SHRQ2 as meets. Its displayed ANSWER states: Policies list the data it shares with each third party separately OR policies state that it does not share any data with any third party. The criterion allows per-party disclosure or no sharing; the actual shared fields require further evidence.
+
+**SHRQ3 · 旧 p.28／新 p.57 · 满足**
+
+> Do the policies state whether or not users can opt out of 3rd party data sharing?
+>
+> ANSWER: Policies include an easy opt out process for users OR policies state that it does not share any data with any third party
+
+中文题意与解析：是否能退出第三方共享？便捷退出和完全不共享均可满足；不能据此断言所有已发生共享都能撤销。
+
+英文参考（笔记自拟）：The screenshot rates SHRQ3 as meets. Its displayed ANSWER states: Policies include an easy opt out process for users OR policies state that it does not share any data with any third party. An easy opt-out process or no sharing meets the stated criterion, but it does not prove all past sharing is reversible.
+
+**SHRQ4 · 旧 p.28／新 p.57 · 满足**
+
+> Do the policies state if the supplier requires 3rd parties to adhere to the terms of the vendor/customer agreement?
+>
+> ANSWER: Supplier claims responsibility for third party privacy practices OR policies state that it does not share any data with any third party
+
+中文题意与解析：是否要求第三方遵守约定？标准是供应方声称承担第三方隐私实践责任，或不共享；它不是第三方实际履约审计。
+
+英文参考（笔记自拟）：The screenshot rates SHRQ4 as meets. Its displayed ANSWER states: Supplier claims responsibility for third party privacy practices OR policies state that it does not share any data with any third party. A supplier claim of responsibility or no sharing is not an audit of third-party compliance.
+
+**SHRQ5 · 旧 p.28／新 p.57 · 部分满足**
+
+> Do the policies state whether or not user is notified of a change in third parties?
+>
+> ANSWER: Supplier changes third party with no mention of terms OR policies are unclear on data sharing terms with the new third parties
+
+中文题意与解析：第三方变更是否通知？部分满足ANSWER写的是未提条款，或新第三方共享条款不清楚；不能改写成已经明确提前通知。
+
+英文参考（笔记自拟）：The screenshot rates SHRQ5 as partially meets. Its displayed ANSWER states: Supplier changes third party with no mention of terms OR policies are unclear on data sharing terms with the new third parties. The partial criterion concerns missing terms or unclear sharing terms with new parties, rather than confirmed advance notification.
+
+**ADVQ1 · 旧 p.29／新 p.58 · 满足**
+
+> Do the policies indicate if advertisements are displayed?
+>
+> ANSWER: No ads are displayed
+
+中文题意与解析：是否展示广告？截图ANSWER为不展示广告，是该历史量表的记录，不是对产品今天商业模式的判断。
+
+英文参考（笔记自拟）：The screenshot rates ADVQ1 as meets. Its displayed ANSWER states: No ads are displayed. The displayed answer says no ads were displayed in this dated assessment, not in every later product version.
+
+**ADVQ2 · 旧 p.29／新 p.58 · 满足**
+
+> Do the policies indicate whether or not users are targeted for advertisement?
+>
+> ANSWER: Policies guarantee no ad targeting OR Policies state no ads are used on its platform
+
+中文题意与解析：是否定向广告？无广告定向或平台不用广告均满足，不能据此推断产品不收集任何用户行为数据。
+
+英文参考（笔记自拟）：The screenshot rates ADVQ2 as meets. Its displayed ANSWER states: Policies guarantee no ad targeting OR Policies state no ads are used on its platform. No targeting or no ads are allowed branches; neither establishes the absence of all behavioural data collection.
+
+**ADVQ3 · 旧 p.29／新 p.58 · 满足**
+
+> Do the policies indicate whether or not any 3rd parties track or collect information for advertisement?
+>
+> ANSWER: Policies state third parties are not used for ads or tracking
+
+中文题意与解析：第三方是否为广告追踪或收集？截图是政策声明，不是抓包检查，也不覆盖所有非广告数据用途。
+
+英文参考（笔记自拟）：The screenshot rates ADVQ3 as meets. Its displayed ANSWER states: Policies state third parties are not used for ads or tracking. The displayed policy statement concerns advertising or tracking uses by third parties, not all other data uses.
+
+**ADVQ4 · 旧 p.29／新 p.58 · 满足**
+
+> Do the policies indicate whether or not web beacons or other tracking methods are used for ad purposes?
+>
+> ANSWER: Policies state that it only tracks interactions within its application OR Policies state that it does not use any tracking technologies for ads
+
+中文题意与解析：是否为广告使用网络信标等追踪？仅跟踪应用内交互，或不用广告追踪技术，都在标准中；不表示一切追踪都不存在。
+
+英文参考（笔记自拟）：The screenshot rates ADVQ4 as meets. Its displayed ANSWER states: Policies state that it only tracks interactions within its application OR Policies state that it does not use any tracking technologies for ads. In-app interaction tracking and no advertising tracking are different branches; neither proves the absence of every tracking method.
+
+**ADVQ5 · 旧 p.29／新 p.58 · 满足**
+
+> Do the policies state whether or not users can opt out of sharing data with advertisers?
+>
+> ANSWER: Policies state in detail how users can opt out of sharing data with advertisers OR policies state no ads are used on its platform
+
+中文题意与解析：能否退出与广告商共享？详细退出方法或平台不用广告都可满足；不能据此推出所有第三方共享均可退出。
+
+英文参考（笔记自拟）：The screenshot rates ADVQ5 as meets. Its displayed ANSWER states: Policies state in detail how users can opt out of sharing data with advertisers OR policies state no ads are used on its platform. Detailed opt-out instructions or no ads are allowed branches, not a universal opt-out from all third-party sharing.
+
+</details>
+
+**为什么这样读**：一行“政策说明会保护”不能替代真实控制的测试、样本、版本和执行记录。DCQ4 不表示立即删除，DCQ5 的部分满足说明含“90-day (or greater)”或未给期限的两支，SHRQ5 也不能改读成已明确提前通知。把 OR 分支吞掉会改变结论。
+
+**🎙️ 课堂补充**：`02:07:45` 让读者自行看该批材料，`02:08:18` 说明公司材料取自官网。现有转录未明确逐项讲解这 21 题，本节按讲义原图自学；不由一个关键词零命中证明从未讲过，也不推断考试排除。
+
+**改条件练习（笔记补充）**：若某题因“无需账户”而满足，后来产品改成必须登录，旧勾选还可直接使用吗？不能。应重新核账户与认证控制、政策版本和新评判依据，而非沿用旧日期截图。
+
+这张图支持学习“按相同清单复查文档”的方法；写得全、做得对、合法和用户信任，是四个不同判断。本轮未检查产品当前隐私设置或实际安全实现。
+
 
 #### 2.5.3 Google Bard 与透明度报告（讲义 p.30–31）
+
+**新版定位**：p.59–60 对应旧 p.30–31 的 Bard 描述和公司透明度报告截图。
+
+本节“公司做法”指讲义在既定日期的描述。原件没有当前产品版本、SDK适用模型或实测日志；引用 ensure/default 等措辞不能认证所有产品、所有用户或今天的配置。
 
 **是什么**
 
@@ -2728,7 +2809,7 @@ p.31 是公司层——定期、格式固定、面向公众的报告，内容不
 
 - ❌ "Bard 强调'事实准确'，所以它比 ChatGPT 透明。
 
-  " → 准确是 §2.3.3 的一个维度，但两个产品在数据来源、模型细节上的公开程度相近（都只到架构一级）。
+  " → 披露信息的正确性是 §2.3.3 的一个维度，产品本身的事实准确率与它不是同一量，但两个产品在数据来源、模型细节上的公开程度相近（都只到架构一级）。
 
   讲义没有做比较，读者也不应据此排名。
 - ❌ "透明度报告是 AI 透明的一部分。
@@ -2759,7 +2840,7 @@ p.31 是公司层——定期、格式固定、面向公众的报告，内容不
 | 当事方 | 招聘团队与求职者 |
 | 发生了什么 | 见下方原材料经过 |
 | 争议点 | 历史模式使女性候选人不利 |
-| 结果 | 转录未说后续修正/暂停/继续 |
+| 结果 | 转录未说后续；新版 p.39 的组织回应列写 System discontinued（停用），两源分开 |
 | 本讲用来说明 | 数据来源与内部审计 |
 
 卡片左列是定位问题；右列来自本节课堂引用。未知和版本冲突继续保留，下文叙事不因此变成独立核验事实。
@@ -2786,6 +2867,16 @@ p.31 是公司层——定期、格式固定、面向公众的报告，内容不
 
 模型学到的是"你是女性 → 你不太可能成功"这个相关关系（`01:02:21`–`01:02:53`）——*"the system learns and replicates past hiring biases"*（`01:02:53`）。
 
+**新版 p.31 给定示意表（原文）**：页上说明 Without transparency, recruiters would only see a candidate ranking。下表一行一名示意申请人，AI Score是给定分数，原页没有分值单位、真实性样本、性别或决定门槛。
+
+| Candidate | AI Score |
+|---|---|
+| Applicant A | 92 |
+| Applicant B | 74 |
+| Applicant C | 61 |
+
+中文读法：A的显示分数高于B、C，但只有排序不能说明依据是否与岗位有关、是否公平，或谁有资格。课堂另说cutoff80是流程口头示意，不是此原表给定规则，不能静默合成“原表只有A合格”。
+
 系统会给每份简历打分并设截止线，教授举例说明流程（⚪ 教授口头举例，非确认的真实截止分数）：
 
 > *"the AI system will give you a score after it does all these... let's give you a score, cut off with 80, those who are below 80s will not be shortlisted"*（`01:03:16`–`01:03:23`）
@@ -2798,7 +2889,7 @@ p.31 是公司层——定期、格式固定、面向公众的报告，内容不
 
 结果如何：转录中教授只说到"透明帮助揭露了模型其实是在复制历史歧视模式，而不是真的在识别人才"（`01:04:23`–`01:04:38`）。
 
-没有提到系统后续是被修正、暂停还是继续使用——这是本片段的一个事实空白，笔记不替转录补上结论。
+这段转录没有交代后续；新版 p.39 的 Comparative Analysis 在 Organizational Response 列写 “System discontinued”。可以补为讲义书面结论，但不能改写成教授在上述时段说过，也不冒称已取得实际部署/停用档案。
 
 **暴露的是透明的哪一环**：教授在后面的两案对比里明确定性：
 
@@ -2848,7 +2939,7 @@ AI 系统学到的不是"性别决定能力"，而是"性别和过去的招聘�
 
   而是"这套系统的参数和数据流程对内部审计是透明的"。
 
-如果 Amazon 把这套系统当黑箱，连自己的审计团队都看不懂它，这个偏见可能永远不会被发现——透明先于纠正，没有透明连"知道自己错在哪"都做不到。
+内部数据与过程记录帮助本案定位历史模式；但黑箱输出的群体比较也可能先发现异常。发现差异、解释原因与执行纠正是不同动作，不能把完全公开内部机制当全部动作的必要前提。
 
 **⚠️ 常见误解**
 
@@ -2875,13 +2966,21 @@ AI 系统学到的不是"性别决定能力"，而是"性别和过去的招聘�
 
 Amazon 案是数据透明出问题。
 
-下一个案例 COMPAS 换了一个更高风险的领域（刑事司法），暴露的是另一种透明——问题不在数据，而在"系统没法解释自己是怎么得出结论的"。
+下一个案例 COMPAS 换了一个更高风险的领域（刑事司法），暴露的是另一种透明——本课更聚焦过程解释与可挑战性；这不排除本案同时有数据偏差或误报/漏报争议。
 
 ---
 
 #### 2.5.5 🎙️ 案例二：COMPAS 再犯风险评分（讲义无对应页）
 
 **双源状态**：新版讲义把本案定位为 accountability，并区分 developer、user、subject 三层透明；课堂转录补出正当程序与可挑战性。新版 p.42 的跨案结论属于讲义总结，不改写成教授逐字原话。
+
+新版 p.37–38 的批评具体涉及两类错误：事后未再犯却被判高风险，属于误报；事后再犯却被判低风险，属于漏报。误报率的分母是事后实际未再犯者，漏报率的分母是事后实际再犯者；全体高风险比例又以所有受评者为分母，三者不能混用。课堂 9/10 与 1/10 只作口述概略例，缺样本、观察窗与原始结果，不当作本轮确认统计。
+
+**补充计数例（非COMPAS实证）**：先假设固定了同一观察窗。某组30人中，20人事后未再犯，其中4人被判高风险；另10人事后再犯，其中3人被判低风险。
+
+$$\text{误报率}=4/20=20\%,\qquad\text{漏报率}=3/10=30\%$$
+
+这里正确判高风险的实际再犯者为10−3＝7人，所以全体判高风险共有4＋7＝11人，以30人为分母约36.7%。同一组数据出现20%、30%和36.7%，因为每个比例回答不同问题；它们都不是课堂口述9/10或1/10的实测来源。
 
 **先定位这个案例**：高风险评分能否在个案中解释与挑战。以下是依据本节已保存材料整理的案例卡，不能代替原话和经过。
 
@@ -2898,11 +2997,9 @@ Amazon 案是数据透明出问题。
 
 **是什么**
 
-COMPAS 是美国部分州法院和监狱系统实际在用的一套 AI 工具。
+在讲义与课堂叙述中，COMPAS 是美国部分司法场景采用的风险评估工具；本轮没有核验各州今天的部署状态。
 
-专门用来预测"这名囚犯如果被假释，会不会再次犯罪"——但公开的统计结果显示。
-
-它对黑人被告和白人被告给出的"高风险"判定比例差距巨大。
+本课以假释举例说明再犯风险评估；新版p.36的范围是估计刑事被告再犯可能，不能把一个课堂场景当工具唯一用途——新版讲义转述针对两组误报/漏报的批评；课堂另用两组高风险比例作概略说明。二者分母不同，原件未给可在本篇重现的原始统计，不能混为同一实测结果。
 
 教授的介绍（`01:14:46`–`01:15:07`）：COMPAS 全称 **Correctional Offender Management Profiling for Alternative Sanctions**（转录中教授先简称为 "Criminal Risk Assessment System"，刑事风险评估系统，`01:14:50`，后于 `01:15:01` 给出完整展开）。
 
@@ -2920,7 +3017,7 @@ COMPAS 是美国部分州法院和监狱系统实际在用的一套 AI 工具。
 
 已在美国部分州投入使用（`01:17:37`）。
 
-**问题**（`01:17:50`–`01:18:03`）：从结果统计上看，：
+**课堂问题说明**（`01:17:50`–`01:18:03`）：以下是教授的口述概略，不是本轮重建的统计率：
 
 > *"it seems to exhibit racial disparities... if you are black, probably[,] 9 out of 10 times you will be rated as high for [parole review]. If you are white, probably... only 1 in 10."*（`01:18:09`–`01:18:19`，"political review" 疑似 ASR 对 "parole review" 的误识别，已按 [ ] 还原；教授给的是口头概略数字，⚪ 非精确统计值，用来说明差距之大）
 
@@ -2982,7 +3079,7 @@ COMPAS 案把"透明为什么重要"从 Amazon 案的**公平**问题，升级�
 
   教授完全跳过，改用 COMPAS 这个真实的刑事司法案例，把"透明"和一个具体的法律概念（正当程序）绑定。
 
-  这是讲义完全没有的角度——正当程序在整份讲义里没有出现过。
+  这是讲义完全没有的角度——新版 p.39 比较表和 COMPAS 页面现已写出 due process；课堂另给个案权利与复核的口头展开。
 
 **💡 换个说法（笔记补充）**
 
@@ -2990,7 +3087,7 @@ COMPAS 案把"透明为什么重要"从 Amazon 案的**公平**问题，升级�
 
   但不告诉法官这个数字是怎么算出来的。
 
-法官如果只看数字签字，等于把定罪或放人的实质判断外包给了一个说不清理由的机器。
+法官如果只看数字签字，会有未经充分复核就依赖风险建议的问题；再犯风险评估不是判定有罪或无罪，本课以假释说明可能影响自由的决定。
 
 这在只涉及财产或机会的场景里已经有问题，涉及到关不关人的自由时问题就升级成了法律权利问题。
 - 这个案例最值得记住的一点是"统计上准 ≠ 每个个案都对"。教授反复强调：
@@ -3027,7 +3124,7 @@ COMPAS 案把"透明为什么重要"从 Amazon 案的**公平**问题，升级�
 
 教授用一句话把两案的价值定住——透明既是认识论功能（让人看懂 AI 在做什么）也是治理功能（让用系统的组织保持可问责）（`01:30:23`–`01:30:46`）。
 
-课间之后，教授会再讲两个案例（Apple Card、Air Canada 聊天机器人），把"透明的哪一环"继续往前推——那是 shard_3 的范围。
+课间之后，教授会再讲两个案例（Apple Card、Air Canada 聊天机器人），把"透明的哪一环"继续往前推——那是 本篇转录后段 的范围。
 
 ---
 
@@ -3036,6 +3133,8 @@ COMPAS 案把"透明为什么重要"从 Amazon 案的**公平**问题，升级�
 两页格式相同：AI 用在哪、透明为什么重要、挑战、解法。
 
 #### 2.6.1 医疗 AI：病人安全与临床信任（讲义 p.32）
+
+**新版定位**：p.61 对应旧 p.32 的医疗用途、挑战和三项解决方向。
 
 **是什么**
 
@@ -3069,9 +3168,9 @@ AI 在医院里做的事——看片、定治疗方案、盯监护数据——�
 
 **🎙️ 课堂补充**：⏭️ 这一页课上没讲。
 
-本片段 `52:37`–`01:32:27` 全文检索 "healthcare" 命中 0 次——教授把这段时间全部用在 Amazon（招聘）与 COMPAS（刑事司法）两个讲义外案例上，没有回到医疗行业页。
+本片段 `52:37`–`01:32:27` 全文检索 "healthcare" 命中 0 次——教授把这段时间全部用在 Amazon（招聘）与 COMPAS（刑事司法）两个旧版讲义外、当前新版已收入的案例上，没有回到医疗行业页。
 
-按任务单排查，唯一一句 healthcare 提及在 `02:09:00`（不在本片段范围，属 shard_3）。
+按任务单排查，唯一一句 healthcare 提及在 `02:09:00`（不在本片段范围，属 本篇转录后段）。
 
 **建议**：了解即可；医疗"可解释模型 + 严格验证 + 利益相关者参与"三件套仍要记，它和 §2.6.2 金融的三件套是本讲仅有的两个行业级框架。
 
@@ -3111,6 +3210,8 @@ AI 透明的挑战不是从零建规则，而是**让 AI 的透明证据能被�
 
 #### 2.6.2 金融服务：公平、合规与审计追踪（讲义 p.33）
 
+**新版定位**：p.62 对应旧 p.33 的金融用途、追踪和沟通。
+
 **是什么**
 
 银行用 AI 决定给不给你贷款、哪笔交易是欺诈、买什么资产——这些决定不仅要对，还要能向监管和客户说清楚，否则就是歧视与违规的嫌疑。
@@ -3124,7 +3225,7 @@ AI 透明的挑战不是从零建规则，而是**让 AI 的透明证据能被�
 
 三个挑战对应 §2.2 的三个构件（数据透明、模型透明、决策可追溯）。
 
-三个解法也一一对应——可解释 AI 对模型不透明、审计追踪（audit trail，每一笔决定的完整记录，可供事后逐步复查）对可追溯、清晰沟通对客户知情。
+这些解法可交叉作用，不是与前面三个挑战严格一一配对——可解释 AI 对模型不透明、审计追踪（audit trail，每一笔决定的完整记录，可供事后逐步复查）对可追溯、清晰沟通对客户知情。
 
 与医疗相比，金融的透明理由第一条是公平：信贷歧视是 M03 讲过的老问题（红线划定、代理变量）。
 
@@ -3132,9 +3233,9 @@ AI 透明的挑战不是从零建规则，而是**让 AI 的透明证据能被�
 
 **为什么需要它**
 
-它是本讲与 M03 衔接最紧的一页：M03 §2.12 的公平性指标要在信贷模型上算，前提是模型对审计者透明。
+它是本讲与 M03 衔接最紧的一页：公平性输出指标需要相应真实结果、群体与预测记录；不必先公开全部模型内部。解释工具可再帮助调查差异从何产生。
 
-M03 §2.11 的代理变量问题（邮编 = 种族），要靠特征层面的可解释性才能发现。
+代理变量问题可用输入关系、群体输出、独立验证和解释分析调查；邮编可能与群体相关，但不等于群体属性本身。
 
 它也是"透明作为**合规**要求"的样板——医疗讲安全、金融讲合规，两个行业合起来覆盖了 §2.1.2 定义里"信任 / 问责 / 合规"三个理由。
 
@@ -3174,7 +3275,7 @@ M03 §2.11 的代理变量问题（邮编 = 种族），要靠特征层面的可
 
   " → 可解释 AI 回答"这笔为什么拒"，审计追踪回答"这三个月每一笔是怎么处理的、用的哪个版本"。
 
-  前者面向客户，后者面向审计——§2.2.1 与 §2.2.4 的区别。
+  这是常见使用情境，不是排他定义。客户也可调取自己的记录，审计者也可要求个案解释；按 §2.2.1 的理由功能与 §2.2.4 的复盘功能区分。
 
 **与其他概念的关系**
 
@@ -3214,7 +3315,7 @@ M03 §2.11 的代理变量问题（邮编 = 种族），要靠特征层面的可
 
 **是什么**
 
-先想一个生活场景：两口子一起去银行办信用卡，收入、资产、还款记录都差不多。
+先想一个生活场景：两位配偶认为自己财务状况相近，一起申请信用卡；表面相近不证明信用档案完全相同。
 
 结果一个人批下来的额度是另一个人的十几倍——这正是 2019 年苹果信用卡（Apple Card）爆出的真实争议。
 
@@ -3228,7 +3329,7 @@ M03 §2.11 的代理变量问题（邮编 = 种族），要靠特征层面的可
 
 > *"even though she has a stronger credit history than him."*（`01:33:47`）
 
-Apple 的信用审批由高盛（Goldman Sachs）代为做风控、用 AI 系统评估风险并据此定额度（`01:34:01`–`01:34:24`）。
+课堂把风险评估叙述为高盛（Goldman Sachs）的系统计算；本轮 NYDFS 报告确认 Goldman Sachs Bank USA 的承保角色，具体模型机制并未由本课数据重现，据其评估定额度（`01:34:01`–`01:34:24`）。
 
 核心问题不是坐实了性别偏见（转录只说性别是"被问到的其中一个变量"），而是**用户完全不知道决定是怎么做出来的**：
 
@@ -3240,15 +3341,15 @@ Apple 的信用审批由高盛（Goldman Sachs）代为做风控、用 AI 系统
 
 **为什么需要它**
 
-它填上了本讲案例序列里唯一"个体层面"的一环。
+本课用它突出个案理由；Amazon申请人和COMPAS受影响者同样可能提出个案解释与申诉要求，因此不是唯一的个体层问题。
 
-前两案（Amazon、COMPAS，见 shard_2 §2.5.4–2.5.5）分别问"训练数据有没有偏""系统运行过程能不能被追责"，Apple Card 问的是完全不同的问题：
+前两案（Amazon、COMPAS，见 本篇转录中段 §2.5.4–2.5.5）分别问"训练数据有没有偏""系统运行过程能不能被追责"，Apple Card突出另一个调查焦点，可能与前两案共享数据、过程和申诉问题：
 
 > *"The system actually was making decisions quite fairly, but it didn't explain in a sufficient way that the user [could] understand."*（`01:36:29`）
 
-**模型可能是公平的，用户仍然有理由不满**，因为他拿不到一个够格的理由。
+**未发现特定违法歧视证据，不等于完整认证模型公平；用户仍可能缺少够用解释**，因为他拿不到一个够格的理由。
 
-这直接印证了 §2.1.2 定义里"透明是信任的必要条件"：
+这提供一个课堂案例来讨论解释不足与用户争议，不证明对所有用户都成立的逻辑必要条件：
 
 > *"if I am a user affected by this decision, I am not happy about it. Can I challenge it? Can I question it? Can I appeal it?"*（`01:35:40`）
 
@@ -3287,10 +3388,10 @@ challenge / question / appeal 这三个动词，正是 §2.2.6 用户知情与 �
 
 > *"2019 is more recent… Apple users… publicly reported receiving significantly different credit limits[,]… despite having very similar financial profiles."*（`01:32:43`–`01:33:15`）
 
-审批链条——Apple 发卡、高盛做风控：
+课堂审批链条与监管角色区分：Apple 是品牌合作方，高盛为承担承保的银行；不能从课堂口语写成 Apple 自身是发卡银行。
 
 > *"credit analysis was made… by a company on their behalf, by Goldman Sachs… we use the AI system to help us do this risk assessment, and from the result of the risk assessment, we determined the credit limit."*（`01:34:01`–`01:34:24`）
-- 教授的定性：模型公平但解释不够：
+- 教授的定性：课堂称模型公平、但本轮不认证全部公平性；个人解释不足：
 
 > *"The system actually was making decisions quite fairly, but it didn't explain in a sufficient way that the user [could] understand."*（`01:36:29`）
 
@@ -3308,7 +3409,7 @@ challenge / question / appeal 这三个动词，正是 §2.2.6 用户知情与 �
 
 **💡 换个说法（笔记补充）**
 
-- 可以把这件事想成两个邻居去同一家银行贷款，条件几乎一样，结果一个批得多一个批得少——银行如果只说"是系统算的"，谁都不会服气。
+- 可以把这件事想成两个邻居去同一家银行贷款，表面条件相近但信用档案是否相同尚未核，结果一个批得多一个批得少——银行如果只说"是系统算的"，谁都不会服气。
 
   哪怕系统真的没有偏心，"不肯说为什么"这件事本身就会被当成心虚的证据。
 
@@ -3342,7 +3443,7 @@ Apple Card案例连接以下概念：
 
 它与Air Canada一起进入§2.6.5四案对照。
 
-**所以呢**：Apple Card 说明"模型公平 ≠ 用户满意"，问题出在个人这一层。
+**所以呢**：Apple Card 提醒“未发现违法歧视证据”不等于认证模型在所有公平标准下完全公平；个人解释和申诉仍需单独检查。
 
 下一案 Air Canada 把同样的问题搬到生成式 AI 上——当决定不再是一个数字而是一段话，透明还要多管一件事：这段话能不能信。
 
@@ -3350,7 +3451,7 @@ Apple Card案例连接以下概念：
 
 #### 2.6.4 🎙️ 案例四：Air Canada 聊天机器人（讲义无对应页）
 
-**双源状态**：新版讲义明确写 Jake Moffatt、2024 与“90 天内申请”的 chatbot 说法，并把透明问题拆为来源、置信度、AI 披露、解释、升级和审计。课堂转录此前的人名、年份和 “19 days” 为 ASR/口述冲突；官方裁决现可校正为事件发生于 2022 年、裁决发布于 2024 年、chatbot 写 90 天。
+**双源状态**：新版讲义明确写 Jake Moffatt、2024 与“90 天内申请”的 chatbot 说法，并把透明问题拆为来源、置信度、AI 披露、解释、升级和审计。 本课把本案用于生成式 AI 讨论，但所供原件没有足够技术材料独立证明当年 chatbot 的具体模型架构，不据课堂类别推定实际底层就是某 LLM。课堂转录此前的人名、年份和 “19 days” 为 ASR/口述冲突；官方裁决现可校正为事件发生于 2022 年、裁决发布于 2024 年、chatbot 写 90 天。
 
 **先定位这个案例**：机器人给错优惠申请时点。以下是依据本节已保存材料整理的案例卡，不能代替原话和经过。
 
@@ -3376,7 +3477,7 @@ Apple Card案例连接以下概念：
 
 书面裁决当事人为 Jake Moffatt；课堂的 “Mofat/Moffat” 只保留为 ASR 读音记录。他询问的是 bereavement travel discount（丧亲票价优惠）（`01:40:37`–`01:40:58`）。
 
-聊天机器人书面内容写可在出票后 90 天内申请；课堂 `01:41:12`–`01:41:18` 的 “19 days” 是 ASR 错误。实际网页政策不允许出行完成后再追溯申请（裁决 ¶15–17）。
+聊天机器人书面内容写可在出票后 90 天内申请；课堂 `01:41:12`–`01:41:18` 的 “19 days” 与书面90天冲突；未核原音，不能确定是ASR误识还是口误。实际网页政策不允许出行完成后再追溯申请（裁决 ¶15–17）。
 
 他照聊天机器人说的买了票，事后申请被拒，于是起诉。
 
@@ -3386,17 +3487,17 @@ Apple Card案例连接以下概念：
 
 British Columbia Civil Resolution Tribunal 在 *Moffatt v. Air Canada*, 2024 BCCRT 149 中认定 negligent misrepresentation。裁决认为 chatbot 是 Air Canada 网站的一部分，公司须为网站信息负责；最终命令支付 C\$650.88 损害赔偿、C\$36.14 判前利息和 C\$125 CRT 费用，合计 C\$812.02。[CanLII 裁决全文（来源：Civil Resolution Tribunal of British Columbia）](https://www.canlii.org/en/bc/bccrt/doc/2024/2024bccrt149/2024bccrt149.html)
 
-它暴露的是六构件里生成式 AI 特有的一层。
+本课用该案强调生成内容的来源、可靠性与权威性；这些问题也可存在于规则式客服或人工答复，不能仅由案例标题认定其架构。
 
 用户根本无法判断这段话"权威不权威、可不可信"（§2.6.5 会把它定名为"第四代：内容真实性透明"）。
 
 **为什么需要它**
 
-它是本讲唯一一个**法律已经有判例**的案例，直接把"透明"从原则问题变成真金白银的责任问题：
+它是本讲引用了具体损害赔偿裁决的案例，直接把"透明"从原则问题变成真金白银的责任问题：
 
 > *"the customer reasonably assumed the chatbot represented [the company]'s official position… the information turned out to be wrong and the customer suffer[ed]… [and] sue[d] the company for damage[s]."*（`01:44:04`–`01:44:37`）
 
-它也回答了 §2.5.1 留下的问题——"生成式 AI 没有单一决定可以解释，那还能做什么"。
+它把 §2.5.1 的来源、依据和责任要求落实到“可以事后退差价”这一条具体陈述。
 
 教授给了一份可操作的六项清单（来源、置信度、AI 披露、可解释性、升级、审计）。
 
@@ -3471,7 +3572,7 @@ British Columbia Civil Resolution Tribunal 在 *Moffatt v. Air Canada*, 2024 BCC
 用户会依据回答作真实决定。任一环节缺失都可能留下不同风险，不能用一句流畅回答代替六项控制。
 - 换个角度看这场纠纷：裁决不是宣布所有 chatbot 文字都自动成为合同承诺，而是在本案事实下认定 negligent misrepresentation，并拒绝公司把 chatbot 当作独立法律实体。
 
-这意味着以后任何公司在官网挂一个客服机器人，都要把它当成会说话的员工来管理。
+从治理上可以据此要求组织管理官方机器人渠道；法律责任仍按各案依赖、错误信息、损失及适用法判断，不能由这一裁决推广到所有国家和所有输出。
 
 而不是当成"免责的自动回复"，这直接改变了企业部署生成式 AI 客服的风险计算。
 
@@ -3486,7 +3587,7 @@ British Columbia Civil Resolution Tribunal 在 *Moffatt v. Air Canada*, 2024 BCC
 
 > *"[w]hile disclosure alone would not eliminate organizational responsibility completely, it would at least improve users' understanding."*（`01:51:06`–`01:51:16`）
 
-免责声明只是六项里的一项（AI 披露），能降低责任但**不能完全免除**，需要来源、置信度、升级、审计等其他机制配合。
+免责声明只是六项里的一项（AI 披露）；是否减轻责任取决于法域、内容、呈现与实际事实，不能把改善理解直接当成已经减责。它不能自动免除责任，需要来源、置信度、升级、审计等其他机制配合。
 
 **与其他概念的关系**
 
@@ -3500,7 +3601,7 @@ British Columbia Civil Resolution Tribunal 在 *Moffatt v. Air Canada*, 2024 BCC
 
 **所以呢**：Apple Card 与 Air Canada 分别把"透明为什么重要"落到了个人决定与生成内容两个新场景。
 
-接下来把 Amazon、COMPAS（shard_2 已整理）与这两案放在一张表里对比，能看清十年来"透明"这个词到底在指什么在变化。
+接下来把 Amazon、COMPAS（本篇转录中段 已整理）与这两案放在一张表里对比，能看清十年来"透明"这个词到底在指什么在变化。
 
 ---
 
@@ -3508,25 +3609,38 @@ British Columbia Civil Resolution Tribunal 在 *Moffatt v. Air Canada*, 2024 BCC
 
 **双源状态**：新版 p.49–51 现已正式呈现四案的 domain、failure、governance issue、stakeholder question、transparency dimension 和四代演进；课堂 `02:03:36` 明确说这是总结。这里保留原课堂表述，同时把页码加入映射，不另复制一张同内容表。
 
-<details><summary>English original pages · 新版 p.50–51（两组案例问题标签）</summary>
+<details><summary>English original pages · 新版 p.50–51（完整比较表上下文）</summary>
 
-**p.50 Stakeholder Question**
+**p.50 Comparing Four Cases**
 
-- Amazon Recruiting: “Is the model fair?”
-- COMPAS: “Can I challenge the decision?”
-- Apple Card: “Why did I receive this result?”
-- Air Canada Chatbot: “Can I trust this information?”
+| Case | Primary Transparency Problem | Stakeholder Question | Transparency Dimension |
+|---|---|---|---|
+| Amazon Recruiting | Hidden bias in training data | Is the model fair? | Data transparency |
+| COMPAS | Opaque risk assessments | Can I challenge the decision? | Decision transparency |
+| Apple Card | Limited explanation of outcomes | Why did I receive this result? | User transparency |
+| Air Canada Chatbot | Unclear reliability of AI-generated answers | Can I trust this information? | Output transparency (Source and confidence) |
 
-**p.51 Core Question**
+**p.51 Evolution of AI Transparency**
 
-- Amazon: “Was the system trained fairly?”
-- COMPAS: “How was this decision made?”
-- Apple Card: “Why did this happen to me?”
-- Air Canada: “Why should I trust this answer?”
+| Generation | Case | Transparency Focus | Core Question |
+|---|---|---|---|
+| 1st Generation | Amazon | Data and model inputs | Was the system trained fairly? |
+| 2nd Generation | COMPAS | Decision logic and accountability | How was this decision made? |
+| 3rd Generation | Apple Card | Individual explanation | Why did this happen to me? |
+| 4th Generation | Air Canada | AI-generated content and trustworthiness | Why should I trust this answer? |
 
 </details>
 
 **中文题意**：p.50 从当事人要解决的问题命名四案；p.51 再把同一问题压成训练公平、决策过程、个体结果与内容可信四个透明焦点。两页是比较表，不是八个互不相干的新案例。
+
+**中文直接答案（笔记自拟，同案共答两页问法）**：
+
+1. **Amazon**：本课案例报告了训练历史偏差，不能只看分数/排名就认定模型或训练公平。应核资料来源、岗位相关因素、群体表现与更正措施；本讲没有足以认证所有部署公平或违法的原始数据。
+2. **COMPAS**：课堂和讲义提出应能理解决定并挑战；只有专有分数还不够。须核个案因素、程序、适当资料和有权复核途径。现材料未列某个被告实际可用的具体申诉入口，不能把规范建议写成已提供的程序。
+3. **Apple Card**：材料不能给某位用户额度差异的唯一原因。发卡机构应说明个案主要因素和更正/复核办法；NYDFS未发现特定违法歧视证据，不等于全面公平认证或已向每位用户充分解释。
+4. **Air Canada**：一段话流畅、出现在公司网站，不足以证明该条信息正确。应核权威政策、版本、适用条件及可靠性证据，并有升级和记录；这些是治理要求，不是本材料已经证明公司逐项做到。
+
+下面英文四句按同一顺序对应两页的同案问法；原表的Generation是课程分析分类，不排除同案同时涉及其他构件。
 
 **English reference answers (note-authored, not official):**
 
@@ -3539,7 +3653,7 @@ British Columbia Civil Resolution Tribunal 在 *Moffatt v. Air Canada*, 2024 BCC
 
 **是什么**
 
-把 Amazon 招聘算法、COMPAS 再犯风险评分（均见 shard_2 §2.5.4–2.5.5）、Apple Card、Air Canada 四个案例摆在一起看。
+把 Amazon 招聘算法、COMPAS 再犯风险评分（均见 本篇转录中段 §2.5.4–2.5.5）、Apple Card、Air Canada 四个案例摆在一起看。
 
 会发现"透明"这个词在十年里问的其实是四个不同的问题——教授在收尾时明确把它当成一张表来讲：
 
@@ -3553,16 +3667,16 @@ British Columbia Civil Resolution Tribunal 在 *Moffatt v. Air Canada*, 2024 BCC
 
 | 案例 | 年份（据转录，⚪ 部分推算） | Transparency Focus（透明聚焦） | Core Question Asked（核心问题） |
 | --- | --- | --- | --- |
-| ① Amazon 招聘算法（shard_2 §2.5.4） | ⚪ 约 12 年前（`01:56:22` "12 years old"，据本堂课时点推算约 2014 年） | 训练数据、特征选择、不同群体的输出差异（`01:57:07`–`01:57:15`） | 见说明 1 |
-| ② COMPAS 再犯风险评分（shard_2 §2.5.5） | `[?]`（转录未给具体年份） | 可审计性、正当程序、可解释性（`01:57:53` *"auditability, procedural justice, and explainability"*） | 见说明 2 |
+| ① Amazon 招聘算法（本篇转录中段 §2.5.4） | ⚪ 约 12 年前（`01:56:22` "12 years old"，据本堂课时点推算约 2014 年） | 训练数据、特征选择、不同群体的输出差异（`01:57:07`–`01:57:15`） | 见说明 1 |
+| ② COMPAS 再犯风险评分（本篇转录中段 §2.5.5） | `[?]`（转录未给具体年份） | 可审计性、正当程序、可解释性（`01:57:53` *"auditability, procedural justice, and explainability"*） | 见说明 2 |
 | ③ Apple Card（§2.6.3） | 2019（`01:32:43`） | 用可理解、可解释的方式向用户说明决定（`01:58:28`–`01:58:37`） | *"can users understand why a decision was made?"*（`01:58:12`） |
 | ④ Air Canada 聊天机器人（§2.6.4） | 见说明 3 | 来源、置信度、人类监督、AI 身份披露（`01:59:26`–`02:00:15`） | *"can users determine whether AI generated content is reliable and authoritative"*（`01:59:16`） |
 
-**说明 1 · ① Amazon 招聘算法（shard_2 §2.5.4） / Core Question Asked（核心问题）**
+**说明 1 · ① Amazon 招聘算法（本篇转录中段 §2.5.4） / Core Question Asked（核心问题）**
 
 *"whether the system is treating different groups fairly"*（`01:57:00`），*"whether there is bias"*（`01:57:22`）
 
-**说明 2 · ② COMPAS 再犯风险评分（shard_2 §2.5.5） / Core Question Asked（核心问题）**
+**说明 2 · ② COMPAS 再犯风险评分（本篇转录中段 §2.5.5） / Core Question Asked（核心问题）**
 
 > *"have individuals affected by the decision… challenged the AI's decision because due process is required"*（`01:57:35`）
 
@@ -3590,9 +3704,7 @@ British Columbia Civil Resolution Tribunal 在 *Moffatt v. Air Canada*, 2024 BCC
 
 这张表把它们拼回一条线——透明关心的对象，从"数据"一路移到"过程"、"个人"、最后到"内容本身"。
 
-这条线也解释了为什么生成式 AI（Air Canada）让透明问题变得更难：前三代都还有一个具体的"决定"可以拿来解释。
-
-第四代（生成内容）连"决定"本身都是一段话，没有单一的判定点——这是 §2.9.3 接下来要讲的"透明悖论"的直接铺垫。
+这条课堂分析线把调查对象从数据、过程、个案扩到生成陈述。自然语言可包含多条主张，仍能逐条选定“可以事后申请”之类结论核对，不是没有可解释对象——这是 §2.9.3 接下来要讲的"透明悖论"的直接铺垫。
 
 **🎙️ 课堂补充**（`01:56:09`–`02:04:22`，约 8.2 分钟，A · 课上展开）
 
@@ -3613,11 +3725,11 @@ British Columbia Civil Resolution Tribunal 在 *Moffatt v. Air Canada*, 2024 BCC
 > *"[T]ransparency… is no longer limited to reviewing how algorithms make decisions[;] [t]hey must also communicate the provenance… authenticity… confidence level, the limitations[,] and the accountability of AI-generated content."*（`02:01:50`–`02:02:12`）
 
 > *"[E]ffective transparency… requires organisations to make AI outputs not only explainable but also verifiable, trustworthy and contestable."*（`02:02:17`–`02:02:29`）
-- 这段改变了什么：讲义完全没有这四案，也没有这张对比表——它是本讲唯一一次教授明确说（`02:03:36`）"这是总结（summary）"的内容。
+- 这段改变了什么：旧版讲义没有这四案和对比表；当前新版 p.29–52 已正式收入——它是本讲唯一一次教授明确说（`02:03:36`）"这是总结（summary）"的内容。
 
   等于把整个案例部分（本应是 p.25–43 十九页）用一张自制表格取代了。
 
-备考时这张表比 p.25–43 任何一页单独的内容都更可能被考。
+可用此课堂总结组织复习；没有足够考试通知据此比较每页被考概率。
 
 
 **💡 换个说法（笔记补充）**
@@ -3632,26 +3744,24 @@ British Columbia Civil Resolution Tribunal 在 *Moffatt v. Air Canada*, 2024 BCC
 换个角度，前三案多围绕分数或分类结果，Air Canada围绕自然语言回答。
 生成内容要求同时核出处、真实性与适用政策，解释工作因此有不同对象。
 这个区别说明该案的难点，不推断所有生成式系统都比所有早期系统难解释。
-- 判断口诀：拿到一个新的 AI 透明案例，先问"用户想质疑的是数据、是过程、是我这个人的结果，还是这段话本身"——落在哪一代。
-
-  决定了该用六构件里的哪一项去分析它。
+- 判断口诀：拿到一个新的 AI 透明案例，先问当前最急需调查的是数据、过程、个案理由还是一条输出，再检查其余相关构件。它是调查起点，不是只能选择一个世代或一个构件的分类。
 
 **⚠️ 常见误解**
 
 - ❌ "四个案例是随便挑的四个例子，没有内在顺序。
 
-" → 教授明确用一句话把四案串成一条演进线（`02:03:54`–`02:04:22`），排序依据是"数据→过程→个人→内容"这条分析逻辑（见上表 Transparency Focus 列），不是随机举例；具体年份上 Air Canada 案转录本身前后矛盾（见上表 `[?]`），但这不影响教授给出的四代顺序本身。
+" → 教授明确用一句话把四案串成一条演进线（`02:03:54`–`02:04:22`），排序依据是"数据→过程→个人→内容"这条分析逻辑（见上表 Transparency Focus 列），不是随机举例。
+
+具体年份上 Air Canada 案转录本身前后矛盾（见上表 `[?]`），但只把该顺序作为课堂分析安排，不当作互斥、精确或普遍的技术历史分期。
 - ❌ "第四代（Air Canada）只是第三代（Apple Card）的升级版，本质一样。
 
-" → 第三代问题是"有一个具体决定，但用户看不懂解释"；第四代问题是"根本没有一个可以拿来解释的单一决定。
+" → 第三代问题是"有一个具体决定，但用户看不懂解释"；第四类问题是“自然语言包含多条可单独核查的陈述，不能只给一个总体分数”（`01:42:23`–`01:42:57`）。
 
-输出是一整段自然语言"（`01:42:23`–`01:42:57`）。
-
-这是质变而不是程度加深，也是为什么 §2.7.3 Salesforce 案例要用"来源引用 + 不确定性标记"这类全新机制，而不是延用信贷案例的反事实解释。
+这是本课选择的调查重点差异，不是对所有系统作技术分代定理，也是为什么 §2.7.3 Salesforce 案例要用"来源引用 + 不确定性标记"这类全新机制，而不是延用信贷案例的反事实解释。
 
 **与其他概念的关系**
 
-- 接 §2.6.3（案例三）、§2.6.4（案例四）与 shard_2 §2.5.4–2.5.5（案例一、二）
+- 接 §2.6.3（案例三）、§2.6.4（案例四）与 本篇转录中段 §2.5.4–2.5.5（案例一、二）
 
 - 六构件对照见 §2.2
 
@@ -3672,6 +3782,8 @@ British Columbia Civil Resolution Tribunal 在 *Moffatt v. Air Canada*, 2024 BCC
 读法：每家问"它做的是六构件里的哪一项、面向哪一层受众"。
 
 #### 2.7.1 Adobe Firefly：公开全部训练数据来源（讲义 p.34–35）
+
+**新版定位**：p.63–64 对应旧 p.34–35 的 Firefly 声明与九项承诺。
 
 本节读的是讲义所载公司的来源承诺。
 
@@ -3709,7 +3821,7 @@ p.35 是 Adobe 官网截图（纯图片页，已视觉复核誊录）"Our approa
 
 9.  明令禁止并采取措施防止第三方用托管在 Adobe 服务器（如 Behance）上的客户内容训练。
 
-这是六构件里**数据透明**（§2.2.2）做到极致的例子：不只披露来源，还承诺来源的合法性、付酬、不抓取——每一条都是可被外部核对的具体陈述。
+这是六构件里**数据来源说明**（§2.2.2）的一组可核声明：不只披露来源，还承诺来源的合法性、付酬、不抓取——每一条都是可被外部核对的具体陈述。
 
 **为什么需要它**
 
@@ -3717,7 +3829,7 @@ p.35 是 Adobe 官网截图（纯图片页，已视觉复核誊录）"Our approa
 
 Adobe 用数据透明把这种恐惧变成了产品差异化（§2.8.3 商业含义里的"竞争优势"）。
 
-它也回应了 §2.4.1 的两个障碍——商业利益（Adobe 选择公开而非保密）与数据问题（用"只用有权的"绕过隐私与版权）。
+它也回应了 §2.4.1 的两个障碍——商业利益（Adobe 选择公开而非保密）与数据问题（声明来源许可可能帮助核版权风险，隐私、输出侵权与实际履约仍须分别验证）。
 
 第⑧条 CAI 是另一种透明：给生成的内容打上"它是怎么来的"的标签——这是**输出端**的透明，前面讲的都是输入与模型端。
 
@@ -3758,7 +3870,7 @@ Adobe 用数据透明把这种恐惧变成了产品差异化（§2.8.3 商业含
 
   " → 公开的是来源类别与承诺（自有库、公有领域、付酬），不是把几亿张图片放出来让人下载。
 
-  数据透明要求的是可核对的来源说明（§2.2.2），这就够了。
+  可核来源说明是数据透明证据之一（§2.2.2）；够不够仍取决于用途、审计问题和实际风险，不能仅由声明下结论。
 - ❌ "这九条承诺是法律义务。
 
   " → 它们是公司自愿声明。
@@ -3771,15 +3883,19 @@ Adobe 用数据透明把这种恐惧变成了产品差异化（§2.8.3 商业含
 
 §2.2.2 数据透明的标杆案例；CAI 接 M06 / IS5542 关于生成内容标识的讨论；对照 §2.5.1 ChatGPT（数据来源不公开）；商业价值接 §2.8.3。
 
-**所以呢**：Adobe 管的是**输入端**（数据）。下一家微软管的是**输出端**——让每个模型默认自带解释。
+**所以呢**：Adobe 管的是**输入端**（数据）。下一家微软管的是**输出端**——讲义提出默认包含解释的设计主张，实际支持范围另核。
 
 ---
 
 #### 2.7.2 Microsoft：把可解释性做成默认值（讲义 p.36）
 
+**新版定位**：p.65 对应旧 p.36，读平台默认值这一设计主张，不认证当前SDK。
+
+本节“公司做法”指讲义在既定日期的描述。原件没有当前产品版本、SDK适用模型或实测日志；引用 ensure/default 等措辞不能认证所有产品、所有用户或今天的配置。
+
 **是什么**
 
-如果解释功能要开发者自己去装，多数人不会装；微软的做法是让它**默认打开**。讲义 p.36：
+讲义用“默认包含解释”说明平台设计思路。本材料没有开发者采用率数据，也没有覆盖全部 Azure SDK 版本或模型的运行记录，不能推成每种产品都默认打开。讲义 p.36：
 
 > **AI Transparency Integration** — Microsoft's Azure SDK includes model_explainability by default to increase AI transparency and decision clarity.（Azure SDK 默认包含 model_explainability）
 > **Support for Fairness and Accountability** — Explainability features help developers ensure AI fairness and accountability in model predictions.（解释功能帮助开发者保证公平与问责）
@@ -3788,13 +3904,13 @@ Adobe 用数据透明把这种恐惧变成了产品差异化（§2.8.3 商业含
 
 `model_explainability` 是 Azure 机器学习自动化训练里的一个开关（🔗 公开资料常识，2026-09-22）：打开后。
 
-训练出的每个模型都附带特征重要性等解释结果（M03 §2.13.2 讲过的那类工具）。
+在支持该配置的产品、版本与模型范围内，可能生成特征重要性等解释结果；本轮未执行该SDK，不能断言每个模型都具备这些输出（M03 §2.13.2 讲过的那类工具）。
 
 讲义强调的是"**by default**"——这是一种**平台层的设计选择**：不是要求开发者透明，而是让不透明需要额外动作。
 
 **为什么需要它**
 
-它是本讲唯一一个"透明由**工具**而非由**政策**推动"的案例，对应 §2.4.1 黑箱障碍的技术解法。
+它是本讲一个平台设计主张；后文模型卡/AIF360等也涉及工具，不能称这是唯一工具路线，对应 §2.4.1 黑箱障碍的技术解法。
 
 它的思路来自行为设计里的"默认效应"（人倾向于接受默认选项——M03 §2.7 讲认知偏差时的框架效应是近亲）。
 
@@ -3810,7 +3926,7 @@ Adobe 用数据透明把这种恐惧变成了产品差异化（§2.8.3 商业含
 
 > *"So have a look at Microsoft. [Explainability]. Transparency is the number one priority. We have [explainability] by default built into every aspect of our system and that's the statement."*（`02:09:34`–`02:09:38`；ASR 把 "explainability" 听成 "expandability"，已按语境校正，见词典追加）
 
-"by default built into every aspect of our system"与正文 "model_explainability 默认打开"的判断一致，说明教授确实在读这一页的标题句。
+口述by default与讲义“默认包含解释”的设计主张相符，但没有因此核验某个SDK/版本/模型的实际默认配置，也不能只由措辞确定教授当时指哪页。
 
 但没有展开 Azure SDK 的具体机制、也没有提到与公平 / 问责的关联（p.36 第二条）。
 
@@ -3822,7 +3938,7 @@ Adobe 用数据透明把这种恐惧变成了产品差异化（§2.8.3 商业含
 
 - 像汽车厂把安全带提醒做成默认开启：不是禁止你不系，但不系会一直响。
 
-  微软把解释做成默认，开发者要"不解释"反而要多做一步。
+  若某平台确将相应解释功能设为默认，它可能降低启用门槛；本课没有核所有版本/模型的配置，不能把这层设计类比当已跑出的产品事实。
 
   透明从"美德"变成"惯性"。
 - 换个角度：这个案例的受众是开发者，不是终端用户。
@@ -3837,7 +3953,7 @@ Adobe 用数据透明把这种恐惧变成了产品差异化（§2.8.3 商业含
 
   " → 默认给出的是特征重要性一类的事后解释，模型本身仍可能是黑箱（§2.4.1）。
 
-  而且"默认"可以被关掉。
+  本课也未给某个实际版本可否关闭/如何关闭的完整配置资料。
 
   它降低了门槛，没有消除问题。
 - ❌ "这是一个技术细节，与商科无关。
@@ -3850,11 +3966,15 @@ Adobe 用数据透明把这种恐惧变成了产品差异化（§2.8.3 商业含
 
 §2.2.1 可解释性的平台化；特征重要性接 M03 §2.13.2；"默认"接 M03 §2.7 框架效应；与 §2.7.6 Accenture 的培训路线对照；公平与问责接 M03 / M05。
 
-**所以呢**：微软让模型**能**解释。下一家 Salesforce 处理的是另一个问题：生成式 AI 的回答**该不该信**——用来源引用和不确定性标记回答。
+**所以呢**：微软页提出让解释能力更易获得的设计主张，实际支持范围仍待核。下一家 Salesforce 处理的是另一个问题：生成式 AI 的回答**该不该信**——用来源引用和不确定性标记回答。
 
 ---
 
 #### 2.7.3 Salesforce：来源引用与不确定性标记（讲义 p.37）
+
+**新版定位**：p.66 对应旧 p.37，读来源与不确定性两种不同信息。
+
+本节“公司做法”指讲义在既定日期的描述。原件没有当前产品版本、SDK适用模型或实测日志；引用 ensure/default 等措辞不能认证所有产品、所有用户或今天的配置。
 
 **是什么**
 
@@ -3873,11 +3993,11 @@ Adobe 用数据透明把这种恐惧变成了产品差异化（§2.8.3 商业含
 
 **为什么需要它**
 
-它解决 §2.5.1 提到的生成式 AI 特有难题——"没有一个决定可以解释"。
+它解决 §2.5.1 提到的生成内容常含多个待核陈述的问题。
 
-既然无法解释"为什么写出这句话"，就退一步做两件可做的事：给证据、给置信度。
+可选择一条具体陈述核其依据，再提供来源和有证据支持的不确定性提示。给出信心措辞不等于得到校准概率，也不能替代解释或核实。
 
-它也是 §2.3.3 "准确"维度和 §2.3.4 论文的实践回应：**让信任与模型的实际可靠程度对齐**（该信的信、不该信的不信），而不是一味增加信任。
+来源说得真不真，可用 §2.3.3 的信息 Accuracy 思路检查；预测可靠与否、解释是否有用仍是其他证据问题。它也可与 §2.3.4 并列讨论：**让信任与模型的实际可靠程度对齐**（该信的信、不该信的不信），而不是一味增加信任。
 
 对企业客户（Salesforce 的用户是销售与客服团队）这尤其重要——一条错误的客户信息会直接造成损失。
 
@@ -3904,9 +4024,7 @@ Adobe 用数据透明把这种恐惧变成了产品差异化（§2.8.3 商业含
 - 像一位好的研究助理：给你结论时附上参考文献（来源引用），并在自己不确定的地方标"待核实"（不确定性标记）。
 
   标出"待核实"可以帮助排序核查工作，但不能免除对关键结论、来源和上下文的复查；成本是否下降取决于风险和审计范围。
-- 换个角度：不确定性标记是把 §2.3.2 的 U 形效应用到极致的设计——它不增加信息量（不解释模型）。
-
-  只增加一个信号（可信 / 存疑），受众的认知负担几乎为零，却能让行为改变（去核实）。
+- 换个角度：不确定性标记增加了一种可见信号，可能引导用户核实；是否易懂、是否促成核实、会增加多少负担，都须在实际任务中检验。本课没有这项产品行为实验。
 
   这是"自适应透明"的极简形态。
 
@@ -3919,17 +4037,17 @@ Adobe 用数据透明把这种恐惧变成了产品差异化（§2.8.3 商业含
   引用的价值是让核实成为可能，不是免除核实。
 - ❌ "不确定性标记会让用户不敢用产品。
 
-  " → 讲义第四条说它建立信任：一个会说"我不确定"的系统，它说"确定"的时候才可信。
+  " → 讲义第四条说它建立信任：一个会说“不确定”的系统不因此证明其余回答正确。标记与未标记输出都须验证，用户的信任也不能代替可靠性证据。
 
-  这与 §2.2.5 的逻辑相同——承认局限反而增加可信度。
+  说明局限可能帮助判断适用范围；是否增加信任或值得依赖仍须验证，不能代替 §2.2.5 的表现证据。
 
 **与其他概念的关系**
 
 - 不确定性标记是 §2.2.5 局限披露的逐次版
 
-- 来源引用是生成式 AI 里 §2.2.4 可追溯的替代
+- 来源引用可补充 §2.2.4 的记录链，不能代替输入、版本、来源选择和人工处置日志
 
-- 对应 §2.3.3 "准确"维度、§2.3.4 "信任要与可靠性对齐"
+- 披露的信息应真实；另以表现/校准证据检查实际可靠性，不能把它等同论文一的信息Accuracy。§2.3.4另比较解释条件
 
 - IS5542 讲 RAG（检索增强生成）时会遇到同一个机制。
 
@@ -3938,6 +4056,10 @@ Adobe 用数据透明把这种恐惧变成了产品差异化（§2.8.3 商业含
 ---
 
 #### 2.7.4 Intesa Sanpaolo 与 Kredito：可解释的信贷决定（讲义 p.38–39）
+
+**新版定位**：p.67–68 对应旧 p.38–39 的两家信贷机构。
+
+本节“公司做法”指讲义在既定日期的描述。原件没有当前产品版本、SDK适用模型或实测日志；引用 ensure/default 等措辞不能认证所有产品、所有用户或今天的配置。
 
 **是什么**
 
@@ -3959,15 +4081,13 @@ p.39 Kredito（金融科技公司，讲义未说明所在地）：
 
 差异在于 Kredito 强调"实时（real-time）**"与"**差异化"——对金融科技公司，解释速度本身是产品体验，透明是竞争手段而不只是合规成本。
 
-讲义没有说明两家用的解释技术，但"说清批准 / 拒绝原因"最常见的形式就是 §2.4.3 的反事实解释（⚪ 推断）。
+讲义没有说明两家实际采用哪种解释技术。主要原因、规则路径或反事实都可能服务不同任务；本讲反事实只是可供设计的例子，不能推定这两家已部署它。
 
 **为什么需要它**
 
-它把 §2.6.2 金融行业的抽象要求落到两家机构，并展示 §2.8.3 商业含义里的三条同时成立：客户信任、合规、竞争优势。
+它把 §2.6.2 金融行业的抽象要求落到两家机构，并列举 §2.8.3 的三类预期作用或企业主张：客户信任、合规、竞争优势；本课未给三者已同时实现的效果证据。
 
-它还说明传统机构与新兴机构对透明的动机不同——银行首先是合规（p.38 第三条）。
-
-金融科技首先是差异化（p.39 第四条）——同一个透明手段，在不同商业模式里扮演不同角色。
+它还说明传统机构与新兴机构对透明的动机不同——讲义为传统银行列了合规，为金融科技列了差异化等用途；没有给两家内部决策资料，不能据条目排列确定动机优先级——同一个透明手段，在不同商业模式里扮演不同角色。
 
 这是案例分析题里很好用的对比轴。
 
@@ -4007,7 +4127,7 @@ p.39 Kredito（金融科技公司，讲义未说明所在地）：
 
   " → 在贷款场景里，解释的时效决定当事人能否据此行动（补材料、改申请）——晚三天给理由，机会可能已经过去。
 
-  实时性是可行动性（§2.4.3）的前提。
+  在某些有时限的业务中，及时解释影响能否行动；其他情境中事后解释仍可能可行动，不能把“实时”当所有情境的必要条件。
 
 **与其他概念的关系**
 
@@ -4018,6 +4138,10 @@ p.39 Kredito（金融科技公司，讲义未说明所在地）：
 ---
 
 #### 2.7.5 Google 模型卡与 IBM AI Fairness 360：透明的公共工具（讲义 p.40–41）
+
+**新版定位**：p.69–70 对应旧 p.40–41 的模型卡与AIF360工具。
+
+本节“公司做法”指讲义在既定日期的描述。原件没有当前产品版本、SDK适用模型或实测日志；引用 ensure/default 等措辞不能认证所有产品、所有用户或今天的配置。
 
 **是什么**
 
@@ -4101,6 +4225,8 @@ AIF360 是让偏见可见的工具（偏见审计的技术手段）——两者�
 
 #### 2.7.6 透明度指数与制度化：Anthropic & Amazon、Accenture（讲义 p.42–43）
 
+**新版定位**：p.71–72 对应旧 p.42–43 的评分描述与组织制度。
+
 先区分外部评分与内部能力：指数回答公开了什么。
 
 制度回答谁持续提供和检查信息。
@@ -4119,7 +4245,7 @@ AIF360 是让偏见可见的工具（偏见审计的技术手段）——两者�
 
 从时间点与描述看，它是斯坦福大学基础模型研究中心发布的基础模型透明度指数（Foundation Model Transparency Index, FMTI）（🔗 公开资料常识，2026-09-22；⚪ 具体分值据记忆：2023 年 10 月版 Anthropic 36 分、Amazon 12 分；2024 年 5 月版分别为 51 分与 41 分，与讲义"+15 分""三倍多"相符）。
 
-该指数用一百个左右的细项给大模型公司打分，覆盖训练数据、模型细节、使用政策、下游影响等——它就是六构件的量化版。
+该指数用一百个左右的细项给大模型公司打分，覆盖训练数据、模型细节、使用政策、下游影响等——该类指数与本课六构件可以对照，但本材料没有逐指标对应依据，不能说它恰好就是六构件的量化实现。
 
 评的主要是数据透明与模型透明。
 
@@ -4136,7 +4262,7 @@ p.43 Accenture（咨询公司）把透明**制度化**：
 
 **为什么需要它**
 
-p.42 回答"透明能否被外部衡量"——能，而且公司会为了分数改进（这是 §2.3.1 信任转移 + §2.8.3 竞争优势的合力：排名公开，落后有代价）。
+p.42 回答"透明能否被外部衡量"——本页叙述评分可变化；它没有提供公司为何改变或变化由何措施造成的证据（公开排名可能形成激励，是可讨论的假说；不能据此确认该页分值变化的实际原因）。
 
 p.43 回答"透明怎样在大组织里落地"——靠框架（规则）+ 卓越中心（组织）+ 培训（人）。
 
@@ -4160,7 +4286,7 @@ p.43 回答"透明怎样在大组织里落地"——靠框架（规则）+ 卓�
 
 > *"[ChatGPT], for example, the company actually has a matrix to say, well, you know, we're making progress on privacy… [i]f they score on their own transparency, AI transparency, and every year they show that there is improvement in the score."*（`02:08:25`–`02:08:41`；ASR 把 "ChatGPT" 听成 "Chez GVD"，已按语境校正）
 
-⚠️ 这不是 p.42 的原始内容：p.42 说的是斯坦福透明度指数对 Anthropic 与 Amazon 的外部评分（+15 分、三倍多）。
+⚠️ 这不是 p.42 的原始内容：p.42 只给Anthropic增加15分、Amazon三倍多，并没有标评分来源。FMTI只是原笔记的候选来源推断，不能把它与具体指数直接画等号。
 
 教授举的例子是 ChatGPT 自己给自己打分，公司与评分性质（外部指数 vs 自评）都不同。
 
@@ -4212,7 +4338,7 @@ p.43 回答"透明怎样在大组织里落地"——靠框架（规则）+ 卓�
   讲义第四条强调的是三者合起来的"可规模化模型"。
 - ❌ "透明度指数评的是 AI 产品对用户的解释。
 
-  " → 它评的是公司公开了多少关于模型的信息（数据、架构、政策），主要是模型透明与数据透明，几乎不涉及单次决策的可解释性。
+  " → 它评的是公司公开了多少关于模型的信息（数据、架构、政策），主要是模型透明与数据透明，具体指标覆盖什么，须取得该指数版本后逐项核，不能仅凭讲义的两个变化数给全套指标下结论。
 
 **与其他概念的关系**
 
@@ -4230,9 +4356,13 @@ p.43 回答"透明怎样在大组织里落地"——靠框架（规则）+ 卓�
 
 ### 2.8 伦理、法律与商业含义（讲义 p.44–47）
 
+**新版定位**：p.73 是伦理/法律/商业三面章节页，正文依次展开三种理由，三者不能互相替代。
+
 p.44 章节页，p.45–47 三面各一页——这是本讲的"为什么必须做"。
 
 #### 2.8.1 伦理考量：偏见、隐私、治理、声誉（讲义 p.45）
+
+**新版定位**：p.74 对应旧 p.45 的伦理考量。
 
 **是什么**
 
@@ -4247,15 +4377,15 @@ p.44 章节页，p.45–47 三面各一页——这是本讲的"为什么必须�
 
 第三条是 A（问责，M05——伦理审计、利益相关者咨询、框架都是问责机制），第四条回到 T 自身的价值（信任与声誉）。
 
-这一页在说：透明不是 FATP 的一项，而是让其他三项能被实现的条件——偏见要被看见才能缓解。
+这一页在说：透明属于FATP的信息议题，也能为其他议题提供证据；公平控制、隐私保护与责任安排仍须各自成立，不能由披露自动推出。
 
-隐私做法要被公开才能被信任，问责要有记录才能追究。
+隐私实践可用相称披露和受控审查供核对；问责需要足够证据、主体义务和救济，记录有帮助而非自动分配责任。
 
 **为什么需要它**
 
 它把本讲拉回这门课的主线——伦理。
 
-前面 40 页讲透明"有什么用、怎么做"，这一页回答"为什么它是伦理上应当的"：因为它是其他伦理要求的前提。
+前面 40 页讲透明"有什么用、怎么做"，这一页回答"为什么它是伦理上应当的"：因为相关信息有助知情、复核和纠错；具体义务仍需按理论与事实论证。
 
 **用三种伦理理论展开理由（笔记推断）**
 - **义务论**：当决定影响一个人时，给出可理解理由有助尊重其理性判断。这里依据康德“人是目的”，不以后果好坏作为唯一标准。
@@ -4266,7 +4396,7 @@ p.44 章节页，p.45–47 三面各一页——这是本讲的"为什么必须�
 
 三派的完整定义见 M02 §2.7–2.9。
 
-三条理论在"应当透明"上难得一致——考试若问"用伦理理论论证 AI 透明"，这就是答案的骨架（⚪ 笔记推断，讲义未做此对应）。
+三条理论在具体案例中可给不同透明理由，也可能对隐私、保密与后果发生分歧；这里给的是可辩论的论证起点——考试若问"用伦理理论论证 AI 透明"，这就是答案的骨架（⚪ 笔记推断，讲义未做此对应）。
 
 **课件原例**
 
@@ -4334,6 +4464,23 @@ p.44 章节页，p.45–47 三面各一页——这是本讲的"为什么必须�
 
 没有案情时，只能给条件分析。
 
+**先分清法规、机构、角色与日期（笔记补充）**
+
+GDPR（General Data Protection Regulation，欧盟《通用数据保护条例》）处理个人数据权利与义务；EU AI Act（欧盟《人工智能法》）按系统用途、风险和角色设置要求。香港 PDPO 是《个人资料（私隐）条例》；PCPD 是个人资料私隐专员公署这一监管机构；DPP 是条例下保障资料原则，不能把机构、原则与法规当作三部同类法律。
+
+Article 是条、Chapter 是章、Section 是节，Annex 是附录，作用是定位规则和清单。Omnibus 在此指修改 AI 法的一组简化修订，不是新监管机构或自动豁免许可。Deep fake（深度伪造）指生成/操纵得让人误认真实的人物、物体、地点或事件的图像、音频、视频；普通生成文本另按其款项分析。
+
+提供者（Provider）是开发或委托开发、并以自己名义/商标投放或投入使用的主体；部署者（Deployer）是在自身权限下使用系统的主体，个人非职业活动另有排除。本轮依据欧委会服务 Article 3 读这些角色，不以“哪个人按了按钮”简单归属。
+
+**同一银行假设**：若供应商开发并以其品牌供应客服系统，供应商可能是提供者，银行在其业务权限下使用时是部署者。若银行自研并以自身名义投入使用，还可能兼有提供者角色；实际合同/开发与品牌安排未给就待核。提供贷款评分与使用客服是不同用途，不能从“银行”两字给所有系统贴同一风险标签。
+
+**怎样读两类高风险分期**：Article 6(1) 的产品路线须同时核系统/安全部件是否属于附录 I 产品法规范围，以及是否须第三方合格评定，并检查现行排除边界。医疗或硬件名称本身不够。Article 6(2) 是附录 III 所列用途路线，还须按 Article 6 检查相关条件/例外；也不能仅凭“有贷款或客服”就宣布完成分类。
+
+例如：若核定某产品落入 Article 6(1)／Annex I，相关第 III 章第1–3节分期看2028-08-02；若核定某用途落入 Article 6(2)／Annex III，则相应分期看2027-12-02。这里教分条件读日期，不替缺资料的现实系统定性。该分期不包括第6(5)，也不能把第 III 章第4节等规则统统延后；Article 50 的互动/内容透明要求又须单独看。
+
+来源：[Article 3](https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-3)、[Article 6](https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-6)、[Article 113](https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-113)，本轮2026-10-27只读取得。对未提供的完整附录、个别系统与过渡情形，保留待法律核定。
+
+
 **是什么**
 
 透明不只是"应该"，在越来越多的司法辖区它是"必须"。讲义 p.46：
@@ -4349,12 +4496,12 @@ p.44 章节页，p.45–47 三面各一页——这是本讲的"为什么必须�
 | GDPR：2016生效，2018-05-25起适用；Article3范围 | 欧盟设立下处理，或非欧盟组织向欧盟境内个人提供商品/服务、监测其行为等联系需核；Article13/14/15涉及自动化决定逻辑/意义/后果信息 | 任一欧盟国籍者数据或任一AI辅助流程都自动违法 |
 | GDPR Article22及例外 | 纯自动化个人数据决定且具法律/相当重大影响时进入限制；合同必要、法律授权、明确同意等例外与保障分别核，适用时需人工介入、表达观点和异议渠道 | 有一个人点“同意”即有实质监督；解释器一条话自动满足全部权利 |
 | EU AI Act Article50：2026-08-02起适用 | 按提供者/部署者与互动/生成/发布用途判断告知或标记 | 所有AI内容无条件加同样标签 |
-| 高风险ChapterIII不同时间 | 见说明 1 | 2026-10-02已对所有信贷/医疗/招聘全面施行相同高风险要求 |
+| 高风险第III章第1–3节分期（第6(5)除外） | 见说明 1 | 2026-10-02已对所有信贷/医疗/招聘全面施行相同高风险要求 |
 | 香港PDPO与PCPD AI框架 | 处理个人资料要核收集目的/准确保留/用途/安全/透明与访问更正等DPP；2024-06-11公布AI框架提供治理/风险/监督/沟通建议 | 欧盟Article22直接等同香港条款；PCPD最佳实践框架本身是一部新AI法规 |
 
 **说明 1 · 高风险ChapterIII不同时间 / 本讲能支持的具体判断**
 
-当前修订Article113(c)：AnnexIII Article6(2)相关义务2027-12-02，AnnexI Article6(1)2028-08-02；2026-07-27 Omnibus已生效调整
+本轮取得的修订Article113(c)限定第III章第1–3节、排除第6(5)：Article6(2)/AnnexIII路线为2027-12-02，Article6(1)/AnnexI路线为2028-08-02。第4节等按其他款项另核；2026-07-27 Omnibus生效调整不是整个高风险章节一起延后。
 
 GDPR一手：[欧委会自动化决定与个人请求说明](https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/dealing-requests-individuals_en)、[适用范围](https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/application-gdpr_en)、[生效/适用日期](https://commission.europa.eu/law/law-topic/data-protection/legal-framework-eu-data-protection_en)。
 
@@ -4375,29 +4522,29 @@ GDPR一手：[欧委会自动化决定与个人请求说明](https://commission.
 
 一手：[欧委会Article50现FAQ](https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act)、[官方条文服务50](https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50)、[修订Article113](https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-113)、[Omnibus生效公告](https://digital-strategy.ec.europa.eu/en/news/ai-omnibus-enters-force)。
 
-FAQ开头某处将互动告知写50(2)，与其后文和条文50(1)不一致，本篇按条文区分；服务50页另提示尚未完全反映Omnibus，过渡时间交叉用现FAQ/113。
+旧核对记录曾记FAQ款号表述冲突和服务50页更新限制，不能当本轮页面状态。本轮取得的50页自述基于2026-07-27合并版本，并标出50(7)修订；各款按本轮所得正文区分。FAQ和Article111的具体过渡条款本轮未重取，保留原日期记录，不冒称新核验。
 
-2026-08-02前已上市系统，仅50(2)标记/检测至2026-12-02的有限宽限，不将全部透明义务统统延后；旧生成内容无需追溯加标签。
+原FAQ核对曾记既有系统50(2)有限宽限和旧内容不追溯处理；本轮未重取FAQ/Article111，不把它用于直接判某现实系统豁免。涉及上市时间与过渡安排时，须补核当前对应条文，不将全部透明义务延后。
 
 香港一手：[PCPD六DPP](https://www.pcpd.org.hk/english/data_privacy_law/6_data_protection_principles/principles.html)、[2024AI框架发布说明](https://www.pcpd.org.hk/english/news_events/media_statements/press_20240611.html)。
 
-本轮EUR-Lex动态页无法抽得全文，未伪称逐条通读最新合并文本。
+原核验未取得EUR-Lex动态全文。本轮2026-10-26重新只读取得欧委会服务Article50、113及Omnibus公告，核过本节分角色/分期内容；没有据此声称逐条通读完整合并法规。
 
 **第二条的三个词**
 
-- 算法问责（algorithmic accountability）——能确定一个算法决定该由谁负责、并让其承担后果，法律上以"能说明理由"为前提
+- 算法问责（Algorithmic Accountability）关注谁在何种义务下负责、如何调查和纠正。适用的信息义务可支持调查；责任也可能依据合同、独立证据和损害事实判断，不以完整解释所有内部机制为统一前提
 
 - 消费者权利——知情、申诉、要求人工复核
 
 - 清楚的用户披露——§2.2.6 用户知情的法律版。
 
-第三条把 §2.2.4 可追溯性变成了**法律风险管理**：没有记录，出了争议无法自证。
+第三条把 §2.2.4 可追溯性变成了**法律风险管理**：缺记录会增加查清经过的困难；仍须按全部可得证据调查，不是仅此就无法确定任何责任。
 
 **为什么需要它**
 
 特定法域、主体、用途和适用日期下，透明可能是法律义务；不能把所有伦理上应做事项都等同“不做即违法”。
 
-这对 §2.4.1 的两个障碍是决定性的——**商业利益**不再是拒绝透明的理由（法律要求高于竞争考虑），**无标准**正在被填补（AI Act 就是标准）。
+这对 §2.4.1 的两个障碍是决定性的——在具体信息义务适用时，不能以保密为由一概取消它；同时须按规则协调隐私、安全与知识产权，而不是把法名当公开一切的许可证。不同法域/角色的规则仍须分别定位。
 
 它也解释了案例里为什么金融机构（§2.7.4）和微软 / Google（§2.7.2 / 2.7.5）都提到 "regulatory readiness"——法规生效前先把透明做好，是风险管理。
 
@@ -4407,7 +4554,7 @@ FAQ开头某处将互动告知写50(2)，与其后文和条文50(1)不一致，�
 
 **🎙️ 课堂补充**：⏭️ 这一页课上没有讲到。
 
-依据同 §2.8.1：`02:07:41`–`02:11:34` 全程检索不到 "GDPR"、"AI Act" 字样（本讲全篇转录同样搜不到这两个词，说明不仅本段没讲，整堂课都没有点名法律条文，与 shard_1 / shard_2 的检索结果应一致核对）。
+依据同 §2.8.1：`02:07:41`–`02:11:34` 全程检索不到 "GDPR"、"AI Act" 字样（本讲全篇转录同样搜不到这两个词，说明不仅本段没讲，整堂课都没有点名法律条文，未见能清楚对应这页具体条款讲解的段落；不由关键词未中证明一切相关法律都没讲）。
 
 **建议**：本页只能靠讲义与笔记自学；GDPR / AI Act 的条文细节仍待 M09 展开，§9.5 待核对表已有此条不变。
 
@@ -4415,9 +4562,7 @@ FAQ开头某处将互动告知写50(2)，与其后文和条文50(1)不一致，�
 
 - 法律考量像食品安全法之于餐厅：在法律之前，公开配料是"好餐厅的做法"。
 
-  法律之后，不公开是"违法"，而且监管上门时你要能拿出进货记录（可审计性）。
-
-  AI Act 对高风险系统做的就是把透明从"好做法"变成"许可条件"。
+  若某项告知/标签/文档义务确实适用，不履行可能违法；并非任何信息不公开都违法。高风险系统还须核其具体合格评定、文档与监督规则，不能以透明一个词替代全部条件。
 - 换个角度：法律要求的透明是**最低限度**——GDPR 的"有意义的信息"、AI Act 的"使用说明"都是底线，不是 §2.3.2 的最优点。
 
 合规不等于赢得信任；§2.3.3 说信任还需要清晰与准确，法律还涉及用途、权利、责任等不同保障；不能化约成只保证披露。
@@ -4435,19 +4580,19 @@ FAQ开头某处将互动告知写50(2)，与其后文和条文50(1)不一致，�
 讲义把它们当全球参照写。
 - ❌ "算法问责 = 出了事罚公司。
 
-  " → 问责的前提是能说明谁在什么环节做了什么决定——没有可追溯性，连该罚谁都定不了。
+  " → 问责的前提是能说明谁在什么环节做了什么决定——缺少追踪资料可能妨碍调查，但合同、证人或其他独立证据也可能支持责任判断；不能把一份日志当作唯一归责开关。
 
   所以讲义把"documenting AI processes"放在法律考量里：记录是问责的基础设施，M05 展开。
 
 **与其他概念的关系**
 
-- 接 §2.2.4 可追溯（可审计性）、§2.2.6 用户知情（披露义务）、§2.4.3 反事实解释（满足"有意义的信息"的低成本方式）、§2.4.1 商业利益与无标准两个障碍
+- 接 §2.2.4 可追溯（可审计性）、§2.2.6 用户知情（披露义务）、§2.4.3 反事实解释（是否满足具体信息义务仍需核用途、效果与法规）、§2.4.1 商业利益与无标准两个障碍
 
 - M03 §2.14.1 预告过 AI Act
 
 - M05 问责、M09 法规展开条文。
 
-**所以呢**：伦理上应当、法律上必须——那商业上呢？p.47 说：**透明还是资产**。
+**所以呢**：伦理上应当、法律上须核适用条件——那商业上呢？p.47 说：**透明还是资产**。
 
 ---
 
@@ -4457,7 +4602,7 @@ FAQ开头某处将互动告知写50(2)，与其后文和条文50(1)不一致，�
 
 2. 决定：若系统纯自动拒贷且重大影响，核Article22条件、例外和保障；若有实质人工自主评估，不能直接套“纯自动”结论，其他个人数据义务仍需核；
 
-3. 角色：谁提供客服系统、谁在业务权限下部署分别登记；
+3. 角色：在供应商以自己品牌开发/供应、银行用于业务的假设下，供应商是候选提供者，银行是部署者；若自研/改品牌投入使用，还须核兼任角色，不能省略事实；
 
 4. 用途：客服人机互动核50(1)，生成公开公益金融文本核50(4)与实质审阅/责任例外，底层生成标记核50(2)；
 
@@ -4476,6 +4621,8 @@ FAQ开头某处将互动告知写50(2)，与其后文和条文50(1)不一致，�
 **所以呢**：法律分析先问适用条件，透明治理再按条件落措施，而不是把法规名当万能合规证据。
 
 #### 2.8.3 商业含义：信任、决策、差异化、风险与创新（讲义 p.47）
+
+**新版定位**：p.76 对应旧 p.47 的商业假说与可能收益。
 
 **是什么**
 
@@ -4500,13 +4647,13 @@ FAQ开头某处将互动告知写50(2)，与其后文和条文50(1)不一致，�
 
 **本讲的论证链是**
 
-- 透明 → 信任（§2.3.1 四条机制）→ 客户与合作方愿意用（收入）
+- 相关信息可能帮助判断和信任，进而影响采用；本材料没有公司采用/收入数据来证明该链已兑现
 
-- 透明 → 可追溯（§2.2.4）→ 事故成本低（风险）
+- 可追溯记录可能帮助发现与处理问题，事故概率及成本是否降低仍需实际证据
 
-- 透明 → 差异化（§2.7.1 / 2.7.4）→ 定价权。
+- 透明也可成为差异化主张；没有价格/需求数据，不能推已形成定价权。
 
-反过来，§2.3.5 的披露效应提醒：这条链在**披露方式不当**时会断——所以商业上的透明也要是自适应的（§2.4.2）。
+反过来，§2.3.5 的披露效应提醒：即使换过几种披露方式，所述研究仍观察到信任代价；不能将差异全归因于措辞不当——所以商业上的透明也要是自适应的（§2.4.2）。
 
 **课件原例**
 
@@ -4528,7 +4675,7 @@ FAQ开头某处将互动告知写50(2)，与其后文和条文50(1)不一致，�
 
 - 透明作为商业资产，像餐厅的"明厨亮灶"：装玻璃墙有成本。
 
-  但顾客更愿意来（信任）、老板自己也更容易看出哪个环节慢（决策）、和隔壁不装的店区分开了（差异化）、卫生事故的概率和赔偿都低了（风险）。
+  但顾客更愿意来（信任）、老板自己也更容易看出哪个环节慢（决策）、和隔壁不装的店区分开了（差异化）、可能更便于检查与处置；是否降低事故概率或赔偿须实证（风险）。
 
   四条回报对应的正是讲义的四条。
 - 换个角度：四条回报里有三条（信任、差异化、风险）依赖**外部**怎么看你，只有"战略决策"是**内部**的。
@@ -4541,7 +4688,7 @@ FAQ开头某处将互动告知写50(2)，与其后文和条文50(1)不一致，�
 
 - ❌ "透明是成本中心，只有合规部门关心。
 
-  " → 第二、三条是收入侧的论据：可解释的模型让战略决策更敢做、透明让产品卖得出溢价。
+  " → 第二、三条是收入侧的论据：可解释的模型让战略决策更敢做、透明可能影响产品选择，但本课没有溢价实测证据。
 
   讲义把商业含义单列一页，就是反对"成本中心"这个默认。
 - ❌ "既然透明有商业价值，市场会自动让企业透明，不需要法律。
@@ -4567,6 +4714,8 @@ FAQ开头某处将互动告知写50(2)，与其后文和条文50(1)不一致，�
 p.48 章节页，p.49 四个挑战（与 p.21 五个挑战对读），p.50 四条最佳实践。
 
 #### 2.9.1 实现透明的四大挑战 vs p.21 的五大挑战：两份清单对读（讲义 p.49）
+
+**新版定位**：p.78 对应旧 p.49 的四项挑战，与前文五项比较。
 
 **是什么**
 
@@ -4597,7 +4746,7 @@ p.48 章节页，p.49 四个挑战（与 p.21 五个挑战对读），p.50 四�
 
 它给本讲的"挑战"收口，并教一个读讲义的方法：同一作者的两份相似清单，要放在一起看差异，差异往往是最有信息的地方。
 
-对考试：若问"实现 AI 透明的挑战"，答四条或五条都对。
+对考试：若问"实现 AI 透明的挑战"，应按题面指定的来源与比较要求回答，不能预先保证任何考试中答四条或五条都得分。
 
 但能指出"隐私法规与透明的冲突"和"动态演化在执行层被遗漏"，才显示出理解而不是背诵。
 
@@ -4611,7 +4760,7 @@ p.48 章节页，p.49 四个挑战（与 p.21 五个挑战对读），p.50 四�
 
 也没有提到 p.21 与 p.49 两份清单的关系。
 
-**建议**：§2.9.1 的对照表与"原理层 vs 执行层"判断口诀全部是笔记推断，课堂没有验证也没有反驳；备考仍以笔记给出的五条 + 四条对照为准。
+**建议**：§2.9.1 的对照表与"原理层 vs 执行层"判断口诀全部是笔记推断，课堂没有验证也没有反驳；复习可用两份对照；实际作答按题面来源和问法，不把笔记组织变成教师评分要求。
 
 **💡 换个说法（笔记补充）**
 
@@ -4627,9 +4776,9 @@ p.48 章节页，p.49 四个挑战（与 p.21 五个挑战对读），p.50 四�
 
 - ❌ "p.49 只有四条，说明动态演化不重要。
 
-  " → 更可能是遗漏（⚪ 推断）：§2.5.2 隐私审查里三个"部分满足"都是变更管理问题，说明动态性在执行层恰恰很突出。
+  " → 无法仅凭两页清单判断是遗漏还是有意取舍（⚪ 待核）：§2.5.2 隐私审查里三个“部分满足”分别涉及政策变更、保留期限与第三方变更；保留多久不等于变更管理。其中两项涉及变更，另一项是保留政策的明确程度，须分别评价。
 
-  备考时以五条为准。
+  按题面指定的清单及范围回答，不将五条当所有题的统一要求。
 - ❌ "隐私法规阻碍透明，所以两者必须二选一。
 
   " → 冲突只出现在"把原始数据交给外部审计"这一种透明方式上。
@@ -4647,6 +4796,8 @@ p.21 版见 §2.4.1；"向利益相关者解释"接 §2.4.2 受众定制；"闭�
 ---
 
 #### 2.9.2 四条最佳实践与全讲收束（讲义 p.50）
+
+**新版定位**：p.79 对应旧 p.50 的四项实践，不把措施清单当效果保证。
 
 **是什么**
 
@@ -4716,9 +4867,9 @@ p.21 版见 §2.4.1；"向利益相关者解释"接 §2.4.2 受众定制；"闭�
 
 是一处值得记的降权信号：教授把"记住重点、别纠结细节"作为全讲最后一句正式内容。
 
-等于明说 p.34–50 这一大段（公司案例 + 三面含义 + 挑战与最佳实践）不是本讲的记忆重点，四个新案例（§2.6.3–2.6.5）与六个核心构件（§2.2）才是。
+这反映课末对公司实践细节的安排，不能扩成旧p.34–50所有伦理、法律、挑战与实践均被明确排除或降权。六构件/四案可作学习主线，是笔记组织建议。
 
-**建议**：p.50 四条仍按讲义原文掌握，但备考优先级应低于 §2.2 六构件与 §2.6 四案例。
+**建议（笔记推断）**：可先用六构件和四案建立学习主线，再复做p.50四项；本轮没有覆盖全部p.34–50的考试排除证据。
 
 **💡 换个说法（笔记补充）**
 
@@ -4729,7 +4880,7 @@ p.21 版见 §2.4.1；"向利益相关者解释"接 §2.4.2 受众定制；"闭�
   没有哪一条是"一次性工程"。
 - 换个角度看"嵌入治理"这条为什么放最后：前三条都可以由一个项目组做完，第四条要求组织改变——它决定前三条能不能持续。
 
-  这也是 §2.3.6 透明悖论的解法：把透明做成流程的一部分，员工就不会把它当监视。
+  这也是 §2.3.6 透明悖论的解法：把检查纳入流程可能改善持续性；员工会否感到被监视仍须看权限、用途、参与和具体执行，不能保证悖论消失。
 
 **⚠️ 常见误解**
 
@@ -4853,7 +5004,9 @@ T 讲完了，FATP 还剩 A（问责，M05）与 P（隐私，M06）——本讲
 语言流畅只提升了**表面可读性**，不提升**过程可理解性**，两者在生成式 AI 上正在脱钩。
 - ❌ "教授讲的'关不掉的开关'和'奇点'是危言耸听、与商科无关的科幻话题。
 
-" → 教授特意用了一个真实的当下事件做佐证（Anthropic 员工因风险过高辞职，`02:06:11`）并明说这是后续课程会正式展开的内容（`02:07:29`），不是临时发挥；对商科学生，这直接关系到"要不要投资 / 部署一个连自己都关不掉的系统"这类治理决策。
+" → 教授口述了一则当时事件，本轮未核实名、日期及原报道；不能把它当独立已核现实证据。
+
+`02:07:29` 预告后续继续讨论。对当前学习任务，可先问关键系统由谁批准、谁能停止、怎样处置后果；不能据此判断某现实系统确已无法关闭。
 - ❌ "本节的'透明悖论'和 §2.3.6 讲的'透明悖论'是同一回事。
 
 " → 两者同名不同义：§2.3.6（Bernstein 版）说的是组织监视式透明的悖论（被看着的人会改变行为）；本节说的是模型复杂度导致的透明悖论（说得越流畅、内部越难懂）。
@@ -5034,7 +5187,7 @@ clearly stating what the AI system can and cannot do；accuracy thresholds, doma
 | 论文一 Czernietzki 等 | 研究样本内三维度与信任正关联，并呈现候选最低水平约束 | 样本最低水平约束 | N = 978，两情境，SEM + NCA |
 | 论文二 Rezaeian 等 2025 | 提高 AI 解释层级**不总能**提升临床医生的信任或诊断准确 | 解释条件效果 | 28 名临床医生，乳腺癌诊断实验 |
 | 论文三 Schilke & Reimann 2025 | 表23说明1 | 披露代价 | 13 个实验 |
-| p.20 漫画 Bernstein | 透明悖论：工作场所越透明，人行事越隐蔽 | 副作用 | 田野研究 |
+| p.20 漫画 Bernstein | 工作区可见性与私下行为的漫画对照 | 组织观察情境 | 本课所供漫画/课堂叙述，未供原研究数据 |
 
 **表23说明1 · 论文三 Schilke & Reimann 2025 / 一句话结论**
 
@@ -5072,8 +5225,8 @@ clearly stating what the AI system can and cannot do；accuracy thresholds, doma
 
 | 面 | 四条要点 | 一句话 |
 | --- | --- | --- |
-| 伦理 p.45 | 偏见与公平 · 隐私 · 伦理治理（审计、咨询、框架）· 信任与声誉 | 透明是 F / A / P 得以实现的条件 |
-| 法律 p.46 | GDPR 与 AI Act 合规 · 算法问责 / 消费者权利 / 用户披露 · 记录与可审计降低法律风险 | 透明已是义务 |
+| 伦理 p.45 | 偏见与公平 · 隐私 · 伦理治理（审计、咨询、框架）· 信任与声誉 | 相关信息支持F/A/P的核查，权限、保护与纠错另核 |
+| 法律 p.46 | GDPR 与 AI Act 合规 · 算法问责 / 消费者权利 / 用户披露 · 记录与可审计降低法律风险 | 特定主体/用途/时间下有法定义务 |
 | 商业 p.47 | 客户信任 · 战略决策 · 竞争优势 · 风险缓解与创新 | 透明是资产 |
 
 ### 4.5 案例 → 构件对照（讲义 p.25–43）
@@ -5086,7 +5239,7 @@ clearly stating what the AI system can and cannot do；accuracy thresholds, doma
 | 医疗 | p.32 | 可解释模型、严格验证、参与 | 医生 |
 | 金融 | p.33 | 可解释 AI、审计追踪、清晰沟通 | 监管 / 客户 |
 | Adobe Firefly | p.34–35 | 数据透明（九条承诺、CAI） | B 端客户 |
-| Microsoft | p.36 | 可解释性默认开启 | 开发者 |
+| Microsoft | p.36 | 讲义称默认包含解释功能；实际版本/模型未跑 | 开发者 |
 | Salesforce | p.37 | 来源引用、不确定性标记 | 企业用户 |
 
 本组沿用上表列名，继续列后面的条目。
@@ -5131,7 +5284,7 @@ clearly stating what the AI system can and cannot do；accuracy thresholds, doma
 
 ## 5. 双语术语卡
 
-> 考试用英文作答。「英文定义」优先抄讲义原句（标页码）；讲义只给名字没给定义的，用论文摘要或公开资料的通行说法（标 🔗）。
+> 本表是英文复习定义。正文引文块保留逐字来源；本表没有引号的定义均为笔记概括，页码指依据，不表示教师逐字原句。研究结论仍限相应样本和情境，法律仍须核适用条件。
 
 | 中文 | English | 考试可用的英文定义 | 首现 |
 | --- | --- | --- | --- |
@@ -5242,7 +5395,7 @@ Informing users about AI interactions and explaining system functions clearly; p
 
 **说明 10 · 知情同意 / 考试可用的英文定义**
 
-Agreement given by a person who knows what they are agreeing to; impossible without knowing that one is interacting with AI.（p.12；🔗 通行说法）
+Agreement based on relevant information and a meaningful choice; knowing AI is involved may be required for the particular consent decision, but a label alone is insufficient.（p.12；🔗 通行说法）
 
 **说明 11 · 信任三要素 / 考试可用的英文定义**
 
@@ -5258,7 +5411,7 @@ The state in which information exceeds what a user can process, causing disengag
 
 **说明 14 · 必要条件 / 考试可用的英文定义**
 
-A condition without which the outcome cannot occur; without minimum levels of transparency dimensions, trust in AI is fundamentally unachievable.（p.15）
+A condition required for an outcome. The cited study reports minimum transparency constraints within its research setting; this is not an exceptionless theorem for all users.（p.15）
 
 **说明 15 · 透明的三个维度 / 考试可用的英文定义**
 
@@ -5266,7 +5419,7 @@ The three transparency dimensions in the Czernietzki et al. model: all relevant 
 
 **说明 16 · AI 披露效应 / 考试可用的英文定义**
 
-Actors who disclose their AI usage are trusted less than those who do not; it raises attention and produces doubt rather than mere algorithm aversion.（p.18–19）
+In the reported experiments, actors who disclosed AI use were trusted less; this disclosure effect goes beyond mere algorithm aversion.（p.18–19）
 
 **说明 17 · 正当性 / 考试可用的英文定义**
 
@@ -5278,7 +5431,7 @@ The tendency to trust algorithms less than humans, especially after seeing them 
 
 **说明 19 · 透明困境 / 考试可用的英文定义**
 
-Disclosing AI use is ethically and legally expected, yet it erodes trust—while being exposed by a third party erodes it more.（p.18–19）
+Disclosing AI use is ethically and legally expected, yet the reported experiments found a trust penalty, with stronger effects under third-party exposure.（p.18–19）
 
 **说明 20 · 黑箱问题 / 考试可用的英文定义**
 
@@ -5334,7 +5487,7 @@ A dedicated team that supports embedding ethical AI practices throughout enterpr
 
 **说明 33 · 算法问责 / 考试可用的英文定义**
 
-Being able to determine who is responsible for an algorithmic decision and hold them to account; transparency ensures it.（p.46）
+Being able to determine who is responsible for an algorithmic decision and hold them to account; transparency can support it, but authority and remedies must also be established.（讲义 p.46 主题；笔记概括）
 
 **说明 34 · 透明审计 / 考试可用的英文定义**
 
@@ -5346,151 +5499,38 @@ An audit that checks how far a system meets the components of transparency; cond
 
 ### 6.1 可信度分级
 
-| 级别 | 含义 |
-| --- | --- |
-| 🔴 教授明示 | 转录里教授明确说过会考 / 要记 / 不用记——**7 条**（含 2 条「🔴（反向）」降权） |
-| 🟡 ILO 反推 | 对应课程 ILO，官方口径上必须考核 |
-| ⚪ 笔记推断 | 根据内容重要性与同类课程惯例的判断 |
+本篇现有转录没有足以确认“某题必考”或整批页数被排除的明确考试通知。本次不沿用旧表“7 条🔴”作为考试认证。
 
-> ✅ 转录已合并（2026-09-23）。7 条 🔴 见 §6.2 表首；**两条反向信号**（教授明说不展开 / 不考）已把对应条目降权，写在同表。
+- 🎙️ **课堂强调/安排**：教授确实讲或总结了什么，有原时钟；不自动成为考试承诺。
+- 🟡 **ILO 反推**：与本课学习目标相连，适合准备；不是题型或分值保证。
+- ⚪ **笔记推断**：根据学习任务设计的练习和答题框架。
 
 ### 6.2 考点清单
 
-| 可信度 | 考点 | 依据 | 对应小节 |
-| --- | --- | --- | --- |
-| 🔴（反向） | **论文三（p.18–19）具体实验设计与统计数字不要求记** | 见说明 1 | §2.3.5 |
-| 🔴（反向） | **反事实解释（p.23）的心理学渊源不要求展开** | 见说明 2 | §2.4.3 |
-| 🔴 | **"没有透明就没有治理"——透明是问责得以成立的前提，可作为论述题的核心论点** | 见说明 3 | §2.6.3 |
-| 🔴 | **四案对比表（Amazon → COMPAS → Apple Card → Air Canada）是教授亲自给出的"总结"，案例分析题最可能考的骨架** | 见说明 4 | §2.6.5 |
-| 🔴 | **COMPAS 案的核心法律概念是"正当程序"（due process），不是"截止日期"——ASR 的 "due" 在这里是这个意思** | 见说明 5 | §2.6.5 |
-| 🔴 | **Air Canada 聊天机器人案：加拿大仲裁庭判公司为 AI 提供的信息负责并赔偿——不透明要担实际法律责任的真实判例** | 见说明 6 | §2.6.4 |
-| 🔴（反向） | **教授明说"记住重点、别纠结公司案例细节"——p.34–50（八家公司做法 + 伦理/法律/商业三面 + 挑战与最佳实践）备考优先级低于四个新案例与六构件** | 见说明 7 | §2.7、§2.8、§2.9 |
-| 🟡 | **AI 透明的定义与核心元素**（可解释性、数据与模型透明、决策可追溯）+ 六个构件各自的定义与区别 | ILO-2「理解当代 AI 伦理议题（透明）」；M01 FATP 的 T | §2.1.2、§2.2 |
+**课堂证据怎样使用**：
 
-本组沿用上表列名，继续列后面的条目。
+1. `02:03:36` “This is the summary.” 把四案作为课堂总结。可用它组织案例比较，不能据 summary 断言“最可能考”。
+2. `01:39:51` “Without transparency there can be no governance” 是课堂论点；正文区分信息与授权/纠错，不能当作已证明的无例外逻辑定理。
+3. `01:57:35` 的 due process 是正当程序语境，不是截止日期。它支持案例理解，不是考试时间通知。
+4. `01:44:37`–`01:44:55` 是 Air Canada 课堂责任叙述；现实裁决的核对范围和未核部分见 §2.6.4。
+5. `02:09:53` 原话 “Forget about details. You can look at the details later on” 对应公司实践细节的阅读安排。不能延伸为旧 p.34–50 所有概念或法律内容不考。
+6. `45:08` 的 “which I am not going to have you test a little bit” ASR 语法不完整，须核原音，不登记为具体实验设计/数字不考。
+7. `51:31` 把心理学背景留给读者看，并进入课间；不等于正式排除反事实定义、特征或题目。
 
-| 可信度 | 考点 | 依据 | 对应小节 |
-| --- | --- | --- | --- |
-| 🟡 | **可解释性 vs 透明、模型透明 vs 数据透明、可解释 vs 可追溯**的区分——给一个案例判断它做到了哪一项 | ILO-2；ILO-6「批判性思辨」 | §2.2.1–2.2.4、§4.5 |
-| 🟡 | **透明怎样建立信任的四条机制**（降不确定 / 展示能力 / 公平感 / 信任转移）与**信任三要素** | ILO-3「伦理 AI 的商业价值」 | §2.3.1 |
-| 🟡 | **U 形效应**与情境依赖：为什么过度透明伤信任 | ILO-2、ILO-6 | §2.3.2 |
-| 🟡 | **"充分 vs 必要"**：论文一的结论（三维度是信任的必要条件）及其管理含义 | ILO-6；讲义用箭头标出的唯一一句 | §2.3.3 |
-| 🟡 | **AI 披露效应 / 透明困境**：13 个实验的结论、机制（正当性）、"被曝光比自己披露更糟"、对"用户知情"的两难 | ILO-2、ILO-6 | §2.3.5 |
-| 🟡 | **透明为什么难**：五大挑战（黑箱 / 商业利益 / 数据 / 无标准 / 动态）与 p.49 四条的对应 | ILO-2 | §2.4.1、§2.9.1 |
-| 🟡 | **自适应透明 / 受众定制**：为什么不追求最大透明；**反事实解释**的定义与三个特征，能为一个案例写一句 | ILO-5「设计治理机制」；p.22–23 是讲义唯一展开的技术 | §2.4.2–2.4.3 |
-| 🟡 | **伦理 / 法律 / 商业三面**：各四条要点；GDPR 与 AI Act 对透明的要求（点名级） | ILO-3、ILO-5 | §2.8 |
+**🟡 ILO 对应的复习任务**：定义六构件并区分对象；用三项研究分别讨论最低信息、解释增量与披露代价；按冻结规则复算最小反事实及现实可行性；对四案识别信息缺口；按受众安排信息、监督和申诉；将伦理理由、法律适用条件和商业假说分开。
 
-本组沿用上表列名，继续列后面的条目。
-
-| 可信度 | 考点 | 依据 | 对应小节 |
-| --- | --- | --- | --- |
-| 🟡 | **四条最佳实践**（可解释模型 / 文档与参与 / 审计与评审 / 嵌入治理）及各自对应的挑战 | ILO-5 | §2.9.2 |
-| ⚪ | 用 M02 三大理论论证"AI 应当透明"（义务论 / 功利 / 德性各一句） | 笔记推断：本课评分强调 application with critical thinking | §2.8.1 |
-| ⚪ | 案例题：给一家公司的做法（Adobe / Salesforce / Kredito / Accenture…），要求指出对应构件、受众、绕开的障碍 | 笔记推断：p.24–43 占讲义 40% | §2.5–2.7、§4.5 |
-| ⚪ | 透明悖论（Bernstein）在 AI 治理里的含义：监视式透明 vs 嵌入式透明 | 笔记推断 | §2.3.6、§2.9.2 |
-| ⚪ | 生成式 AI 的透明为什么特殊（没有单个"决定"可解释 → 指南 / 模型卡 / 反馈 / 来源引用 / 不确定性标记） | 笔记推断：ChatGPT、Bard、Salesforce 三个案例的共同点 | §2.5.1、§2.7.3 |
-| ⚪ | 第三方审查作为透明的最高形式（1EdTech 量表、透明度指数） | 笔记推断 | §2.5.2、§2.7.6 |
-
-**说明 1 · 🔴（反向） / 依据**
-
-🎙️`45:08`：
-
-> *"these are some of the findings of these cases, which I am not going to have you test [on] a little bit"*（ASR 原文如此，语义为「这些具体发现不细考」）
-
-→ 原 ⚪「13 个实验的稳健性清单」降为**只需记住「披露伤信任、被曝光更伤」这一结论，无需背设计细节**
-
-**说明 2 · 🔴（反向） / 依据**
-
-🎙️`51:23`–`51:31`：
-
-> *"It's a psychology, which basically says that … I have a word, it's from Wikipedia, you can read it, I don't even need to explain it"*
-
-→ 原 ⚪「反事实解释背后的心理学理论」降为**只需记住定义与三特征（可行动/现实/贴近），心理学渊源不必展开**
-
-**说明 3 · 🔴 / 依据**
-
-🎙️ `01:39:51`–`01:39:57`：
-
-> *"Without transparency there can be no governance[,] because all the other principles do not exist[,] or it enables all the other principles."*
-
-**说明 4 · 🔴 / 依据**
-
-🎙️ `02:03:36`–`02:04:22`：
-
-> *"This is the summary. Cases, transparency focus, core questions asked… from understanding what data drives AI decisions… to how decisions are produced… to why an individual receives specific outcomes… and finally to whether AI-generated information itself is trustworthy [and authoritative]."*
-
-**说明 5 · 🔴 / 依据**
-
-🎙️ `01:57:35`：
-
-> *"individuals affected by the decision… challenged the AI's decision because due process is required[,] because it's making important decisions infringing on the liberty of the individual."*
-
-**说明 6 · 🔴 / 依据**
-
-🎙️ `01:44:37`–`01:44:55`：
-
-> *"a tribunal in Canada agreed that Air Canada was responsible for information provided by this AI system… has to pay the damage to the user."*
-
-**说明 7 · 🔴（反向） / 依据**
-
-🎙️ `02:11:21`–`02:11:29`：
-
-> *"I already mentioned those, so I don't need to repeat myself. This is just a conclusion, summary, recap. The important thing is to save your time. So that you will remember."*
+**⚪ 笔记自拟练习**：按21项历史审查说明“Meets”不能证明什么；比较公司承诺的证据层级；用M02理论讨论一个具体透明方案的理由和反例。没有考试通知，不补造权重。
 
 ### 6.3 答题框架
 
-**框架 A · 定义 + 区分题**（"What is AI transparency? Distinguish explainability from transparency."）
+定义/比较题：先固定对象与要解决的问题，再给中文（English）术语和来源；用同一拒贷例区分理由、数据、模型、记录、局限和告知。
 
-- 一句总定义（p.5 原句）
+研究题：先写谁、怎样观察、发现什么，再写不能推出什么。不同样本与测量不能拼成共同曲线；统计关联、候选必要约束与逻辑充分保证分别处理。
 
-- 2. 列六个构件，每个一句英文定义 + 各回答什么问题
+案例题：先列已知/未知事实，再选构件与受众；解释缺口怎样导致当前判断失败，给核实或纠正措施。法律先核法域、主体、用途、门槛、例外和时间；“AI”或“拒贷”两个词不能直接决定违法。
 
-- 3. 指出被问的那一对的区别（用"时态"或"对象"区分：解释是当下的理由，可追溯是事后的记录；模型透明是结构公开，可解释是决定可懂）
+设计题：比较模型/文档/参与/审计/治理措施，说明各解决哪种缺口、由谁负责、怎样验证和申诉；频率按风险设定。不要只列工具名称或声称四项做齐就已合规。
 
-- 4. 一个案例各举一例。
-
-**框架 B · "透明是否总能建立信任"论述题**
-
-1. 立场：透明一般有助信任，但效果取决于对象、任务与信息（p.13）。
-
-2. 展开四条正面机制（p.14）。
-
-3. 分别介绍论文一的候选最低水平、论文二的解释增量效果、论文三的披露代价；各列研究对象和限制，不把它们拼成共同曲线。
-
-4. 组织监视下的 Bernstein 悖论又是另一情境，说明可见性会改变行为。
-
-5. 结论：按受众设计真实、可核的信息（p.22）。
-
-英文原句仍见 §4.6。
-
-**框架 C · 案例分析题**（给一家公司 / 一个产品）
-
-按四步：
-
-1.  **拆构件**——六项各做到了几分（用 §4.1 的表）；
-
-2.  **定受众**——面向用户 / 开发者 / 监管 / 同行的哪一层，是否自适应；
-
-3.  **对障碍**——绕开或撞上了五大挑战里的哪几个；
-
-4.  三面评估——伦理上（F/A/P 是否因此可实现）、法律上（GDPR / AI Act 哪条相关）、商业上（信任 / 决策 / 差异化 / 风险哪一条成立）。
-
-  并指出披露效应下这样做的风险。
-
-最后给一条改进建议（通常落在 p.50 四条之一）。
-
-**框架 D · 设计题**（"Design a transparency policy for an enterprise AI system."）
-
-设计题可按p.50展开四项：
-1. 比较适用的可解释模型及验证证据。
-2. 准备模型卡、数据表，安排利益相关者评审。
-3. 设计透明审计与伦理评审；原骨架的年度频率是方案示例，需按风险说明。
-4. 把责任与检查写进开发和治理流程，例如卓越中心或伦理委员会。
-
-随后补监管、专家、用户三种披露层次。
-若引用GDPR“有意义的信息”或AI Act高风险义务，必须按本篇记录的法域、主体、用途与日期核适用条件。
-
----
 
 ## 7. 自测
 
@@ -5578,9 +5618,7 @@ Schilke & Reimann 的 13 个实验：披露自己使用 AI 的人被信任得更
 
 三特征：可行动（actionability）、现实（realism）、贴近原数据（proximity）。
 
-合格示例："如果你过去 12 个月的信用卡使用率从 80% 降到 50% 以下，申请就会通过。
-
-"（⚪ 示意）"年轻十岁"不可行动，违反第一特征。
+合格的教学示例可直接用 §2.4.3 的 V1：在独立特征教学域，当前收入40000、d=0.45被拒；收入改45000即可使冻结V1输出批准，D=1。它不是银行承诺，现实中还须核d=B/I及收入行动可行性。“年轻十岁”不可行动，不能作为补救建议。
 
 （§2.4.3）
 
@@ -5617,7 +5655,7 @@ p.49 指出隐私法规会限制向审计者共享敏感数据，这是真实的
 
 **GDPR**
 
-- 自动化决定要提供"有意义的信息"并允许人工介入 → 可解释性、人在环路
+先核个人数据处理是否落入Article3范围。相关自动化决定信息义务涉及逻辑、意义与后果；Article22还须核纯自动化且有法律/同等重大影响的门槛、例外与保障。适用时，人工介入/表达观点/异议保障可与本课解释和监督相连；不是每种AI辅助都自动适用同一套权利。
 
 - AI Act：须核风险类别/主体/适用日期
 
@@ -5630,7 +5668,7 @@ p.49 指出隐私法规会限制向审计者共享敏感数据，这是真实的
 10. 微软"默认可解释"与 Accenture"框架 + 卓越中心 + 培训"分别是什么路线？各自的局限？
 <details><summary>答案</summary>
 
-微软：技术 / 平台路线——改默认值，让不透明需要额外动作；局限是只解决可解释性供给，不保证解释传到用户、也可被关掉。
+微软页的设计主张是技术/平台路线：若支持且设为默认，可降低解释功能的启用门槛。本课没有跑SDK，不能确认所有版本/模型或关闭设置；解释即使产生，也不保证传给正确受众且足够忠实。
 
 Accenture：制度 / 组织路线——规则、专门团队、培训；局限是没有工具支撑会流于形式。
 
@@ -5642,18 +5680,18 @@ Accenture：制度 / 组织路线——规则、专门团队、培训；局限�
 
 ### 案例分析题
 
-1. **一家港资银行**打算用 AI 做个人贷款初审，拒绝时只回"系统判定不通过"。用本讲的框架 C 评估并提出改进方案。
+1. **一家港资银行**打算用 AI 做个人贷款初审，拒绝时只回"系统判定不通过"。用本讲 §6.3 的案例题框架 评估并提出改进方案。
 <details><summary>参考思路</summary>
 
 1.  拆构件：题面只明确显示用户得到"系统判定不通过"。至少可确认解释和申诉信息不足；数据、模型、日志、局限披露及是否告知 AI 均需补证，不能由一句拒绝推断六项全部缺失。
 
-2.  受众：客户层零透明；监管层未知。
+2. 受众：客户至少知道有一次拒绝，但没有足够个案理由和申诉信息；监管层/日志是否透明未知。
 
-3.  障碍：撞上"商业利益 / 专有算法"（怕公开被套利）与"黑箱"。
+3. 障碍：黑箱、专有信息或沟通设计均为待查可能；题面没有给公司保密动机，不能当已确认事实。
 
 **三面**
 
-- 伦理上，无解释则偏见不可见（M03 代理变量）、程序正义的"发声 / 申诉"要素缺失
+- 伦理上，缺解释会妨碍个案理解和代理变量调查；群体输出差异仍可由适当数据审查发现（M03 代理变量）、程序正义的"发声 / 申诉"要素缺失
 
 - 法律上，若GDPR范围适用且为纯自动化重大影响决定，还须核Article22例外和保障
 
@@ -5661,7 +5699,7 @@ Accenture：制度 / 组织路线——规则、专门团队、培训；局限�
 
 本地行业要求需有具体监管规则，未给规则不作结论；商业上，客户信任与差异化机会都放弃了（对照 Kredito）。
 
-披露效应提醒：解释的措辞要避免"这是 AI 判的"式的单薄披露，应给出可行动的理由。
+披露效应提醒要评估用户反应，但不能据研究保证某种措辞消除信任代价。治理上应给真实、可核的依据和纠错入口。
 
 改进：给客户反事实解释（"负债率降到 X 以下即可"）+ 内部审计追踪 + 模型卡供监管 + 透明审计年检 + 把解释生成写进上线流程。
 
@@ -5672,13 +5710,13 @@ Accenture：制度 / 组织路线——规则、专门团队、培训；局限�
 2. **你在一家咨询公司**，用生成式 AI 起草了一份客户报告。要不要在报告里说明？用 §2.3.5 与 §2.2.6 论证。
 <details><summary>参考思路</summary>
 
-论文说披露会降低信任（正当性下降），但被曝光更糟；伦理上（用户知情、知情同意）与法律上（AI Act 对生成内容的标识要求趋势）都指向披露。
+论文说披露会降低信任（正当性下降），但被曝光更糟；伦理上（用户知情、知情同意）与法律上要先核发布目的、提供者/部署者角色及Article50例外；一份私人客户报告不因用了AI就自动适用全部公开内容标记义务。合同/机构政策也另核。
 
 所以答案是"披露，但设计披露方式"。
 
 说明 AI 用于哪个环节（起草 / 检索）、人做了什么（核实、修改、负责）、来源在哪（来源引用）——把披露从"我用了 AI"变成"我如何负责任地用了 AI"。
 
-用正当性框架化解正当性损失。
+这可能帮助说明用途与责任，但现有研究并未证明这套措辞能够消除正当性或信任损失。
 
 同时公司层面应有政策（Accenture 式），让"用 AI"成为被认可的正当做法。
 
@@ -5691,13 +5729,13 @@ Accenture：制度 / 组织路线——规则、专门团队、培训；局限�
 
 - 量表审的是"政策文本是否写清楚"（Do the policies state…），不是实际做法
 
-- "认证"一项全红说明未通过第三方认证
+- Certified域在该历史量表中未满足；认证机制和范围未给，不推断所有第三方认证均未取得
 
-- 三个"部分满足"都指向变更管理（政策变更、保留期、第三方变更），正是动态演化障碍
+- 三个部分满足分别涉及政策变更、保留期限和第三方变更；其中保留期限也可能是静态政策说明不足，不能一概称变更管理
 
 - 审查日期 2023-04，生成式 AI 政策变动频繁。
 
-结论应改为："截至 2023-04，其隐私政策在数据收集 / 安全 / 第三方 / 广告四方面披露较完整，但未获认证，变更管理不明，且披露完整不等于实践合规。
+结论应改为："截至 2023-04，其隐私政策在数据收集 / 安全 / 第三方 / 广告四方面披露较完整，但该量表Certified域未满足、政策变更/保留期限/第三方变更三项部分满足；细项OR分支未指明实际采用哪支，披露完整不等于实践合规。
 
 "（§2.5.2）
 
@@ -5708,13 +5746,13 @@ Accenture：制度 / 组织路线——规则、专门团队、培训；局限�
 
 Adobe：九条可证伪承诺（只用自有 / 授权 / 公有领域、不抓取、付酬、CAI 标识），面向 B 端法律风险。
 
-绕开数据问题（用干净来源）与商业利益（把透明当卖点）。
+按讲义承诺可调查来源权利与披露安排；不能仅凭“有权来源”认证数据没有隐私/偏差问题，也没有本轮证据证明商业利益障碍已消失。
 
 ChatGPT：只说"diverse datasets"，来源不公开；撞上数据问题（网络抓取含个人信息、版权）与商业利益。
 
-更可能成标准的是 Adobe 式"来源承诺 + 内容标识"——因为 AI Act 对生成内容标识有要求、版权诉讼压力大、且它不要求公开原始数据（与隐私不冲突）。
+一种可讨论的方向是“来源说明＋内容标识”，但本材料不能预测它一定或更可能成为行业标准——因为 AI Act 对生成内容标识有要求、版权诉讼压力大、且它不要求公开原始数据（与隐私不冲突）。
 
-但通用大模型难以复制"只用自有数据"，标准更可能是"披露来源类别 + 数据表"而非"只用自有"。
+但通用大模型难以复制"只用自有数据"，可讨论的方案是“披露来源类别＋数据表”，而非要求所有通用模型“只用自有”；是否会成为标准，本材料不能预测。
 
 （§2.2.2、§2.5.1、§2.7.1、§2.8.2）
 
@@ -5746,15 +5784,15 @@ ChatGPT：只说"diverse datasets"，来源不公开；撞上数据问题（网�
 | §2.3.3 | p.16 | 论文一研究模型图：三维度 → 三信念（纯图片页，已誊录） | ✅ 简讲，随 p.15 一并带过，研究模型图（Figure 1）未展开 |
 | §2.3.4 | p.17 | "AI explanations do not always build trust!" + 论文二首页（Rezaeian 等，纯图片页，已誊录） | ⚠️ 存疑：全文检索未见专门对应本论文的段落（`clinician`/`breast`/`cancer` 均未命中论文特征），`36:45`–`45:40` 的口述内容已计入 p.18–19，不可标 ⏭️ |
 | §2.3.5 | p.18 | 论文三首页（Schilke & Reimann，纯图片页，已誊录） | ✅ 详讲 `36:45`–`44:49`（约 8.1 分钟）+ 🎙️ 电话问诊例子、ChatGPT 过 NY Bar 考题外话 |
-| §2.3.5 | p.19 | Interesting findings 六条 | ✅ 详讲 `45:16`–`45:40`（约 0.4 分钟）+ `45:08` 🔴（反向）降权信号 |
+| §2.3.5 | p.19 | Interesting findings 六条 | 课堂 `45:16`–`45:40`；`45:08`语法存疑，不能确认为考试排除 |
 | §2.3.6 | p.20 | 透明悖论漫画（Bernstein / Sketchplanations，纯图片页，已誊录） | ✅ 详讲 `45:46`–`47:43`（约 2.0 分钟）+ 🎙️ 英国机构不录音例子 |
 | §2.4.1 | p.21 | 透明为什么难：五大挑战 | ✅ 简讲 `47:47`–`48:35`（约 0.8 分钟），五条里四条被点名，「动态演化」未在本段复述 |
 | §2.4.2 | p.22 | 新思路：自适应透明、受众定制、聚焦可解释性 | ✅ 详讲 `48:35`–`50:56`（约 2.4 分钟）+ 🎙️ 隐私旋钮例子 |
-| §2.4.3 | p.23 | 反事实解释 | ⚠️ 简讲且明确降权 `50:56`–`51:31`（约 0.6 分钟），🔴（反向）见 §6.2 |
+| §2.4.3 | p.23 | 反事实解释 | 课堂简讲 `50:56`–`51:31`，自读背景不等于考试排除；见 §6.2 |
 | —（章节标题页） | p.24 | "Applications and Case Studies" | — |
 | §2.5.1 | p.25 | ChatGPT 案例 | ⏭️ 课上没讲（`52:37`–`01:32:27` 内 "ChatGPT" 命中 0 次），教授改讲 Amazon/COMPAS 两案 → §2.5.4/§2.5.5 |
-| —（章节标题页） | p.26 | "Data Privacy Vetting"（后面三张审查截图的章节标题页） | ⚪ 章节标题页，未受课堂影响 |
-| §2.5.2 | p.27 | 1EdTech 审查：总览五饼图 + GEN1 / DCQ1–5（纯图片页，已誊录） | ⏭️ 课上没讲，依据同 p.25 |
+| §2.5.2 | p.26 | Data Privacy Vetting：产品、2023-04-05日期、图例和五个评分图 | 讲义内容页；不据标题排除 |
+| §2.5.2 | p.27 | 1EdTech 明细：GEN1 / DCQ1–5（五饼图在p.26）（纯图片页，已誊录） | ⏭️ 课上没讲，依据同 p.25 |
 | §2.5.2 | p.28 | SECQ1–5、SHRQ1–5（纯图片页，已誊录） | ⏭️ 课上没讲，依据同 p.25 |
 | §2.5.2 | p.29 | ADVQ1–5（纯图片页，已誊录） | ⏭️ 课上没讲，依据同 p.25 |
 | §2.5.3 | p.30 | Google Bard 案例（含装饰性配图） | ⏭️ 课上没讲（"Bard" 命中 0 次），依据同 p.25 |
@@ -5777,7 +5815,7 @@ ChatGPT：只说"diverse datasets"，来源不公开；撞上数据问题（网�
 | §2.8.3 | p.47 | 商业含义四条 | ⏭️ 未讲，仅有方向一致的即兴总结（`02:10:09`），未逐条展开 |
 | —（章节标题页） | p.48 | "Challenges, Solutions, and Engagement" | —（章节标题页；本段确认全程未被提及） |
 | §2.9.1 | p.49 | 实现透明的四大挑战 | ⏭️ 未讲，`02:07:41`–`02:11:34` 全程无对应内容 |
-| §2.9.2 | p.50 | 解决方案与最佳实践四条 | ⏭️ 未讲；教授反而在下课前明说"记重点、别纠结细节"（`02:11:27`–`02:11:29`），侧面确认此页优先级低 |
+| §2.9.2 | p.50 | 解决方案与最佳实践四条 | ⏭️ 未讲；教授反而在下课前明说"记重点、别纠结细节"（`02:11:27`–`02:11:29`），不能由这句确认该页考试优先级 |
 | §2.4.4 | **（讲义无对应页）** | 教授版的透明定义与四维度 / 三层次框架 | 🎙️ `52:37`–`58:26`，约 5.8 分钟 |
 | §2.4.5 | **（讲义无对应页）** | 透明是人在环路 / 可问责 / 可挑战的前提 | 🎙️ `01:10:09`–`01:14:23`，约 4.2 分钟 |
 | §2.5.4 | **（讲义无对应页）** | 案例一：Amazon 招聘 AI 筛选系统 | 🎙️ `58:49`–`01:09:25`，约 10.6 分钟 |
@@ -5787,38 +5825,38 @@ ChatGPT：只说"diverse datasets"，来源不公开；撞上数据问题（网�
 | §2.6.5 | **（讲义无对应页）** | 四个案例的对比与 AI 透明的十年演进 | 🎙️ `01:56:09`–`02:04:22`，约 8.2 分钟 |
 | §2.9.3 | **（讲义无对应页）** | 生成式 AI 的透明悖论与「关不掉的开关」 | 🎙️ `02:04:24`–`02:07:33`，约 3.2 分钟 |
 
-**覆盖统计**：50 页 = 8 页非内容（封面 2 + 章节标题页 6）+ 42 页内容，内容页全部在 §2 有小节归属；12 页低文本 / 纯图片页（p.15、16、17、18、20、26、27、28、29、31、35 + p.30 配图）已逐页用 Read 工具视觉复核，其中 10 页有实质内容并已誊录进正文。
+**覆盖统计**：50 页 = 7 页非内容（封面/副标题 2 + 章节过渡 5）+ 43 页内容，内容页全部在 §2 有小节归属；12 页低文本 / 纯图片页（p.15、16、17、18、20、26、27、28、29、31、35 + p.30 配图）已逐页用 Read 工具视觉复核，其中 10 页有实质内容并已誊录进正文。
 
-**课堂时间分配**（总录音 `00:00 → 02:11:34`，约 131.6 分钟，按时间戳）：
+**转录时间轴区间表**（总跨度 `00:00 → 02:11:34` 为7894秒，约131.6分钟；各行用时/占比只按给定端点计算，区间间隙另留，不是墙钟或已确认实际讲授时长）：
 
 | 内容块 | 时间戳 | 用时 | 占比 |
 |---|---|---|---|
-| 开场 + p.4 AI 回顾（含 AGI 展开） | `00:00`–`05:40` | ~5.7 min | 4.4% |
-| p.5 透明三层定义 | `05:40`–`09:45` | ~4.1 min | 3.1% |
-| p.7 可解释性 | `09:45`–`12:26` | ~2.7 min | 2.1% |
-| p.8 数据透明 | `12:26`–`17:06` | ~4.7 min | 3.6% |
-| p.9 模型透明 | `17:06`–`20:44` | ~3.6 min | 2.8% |
-| p.10 决策可追溯 | `20:44`–`22:20` | ~1.6 min | 1.2% |
-| p.11 局限披露 | `22:20`–`24:52` | ~2.5 min | 1.9% |
-| 信任三要素展开（先于 p.12 讲） | `24:52`–`29:34` | ~4.7 min | 3.6% |
-| p.12 用户知情 | `29:34`–`31:38` | ~2.1 min | 1.6% |
-| p.13–14 信任建立机制 + U 形效应 | `31:38`–`36:12` | ~4.6 min | 3.5% |
-| p.15–16 论文一（必要非充分） | `36:12`–`36:45` | ~0.6 min | 0.5% |
-| p.18–19 论文三 + ChatGPT 过 Bar 考题外话 | `36:45`–`45:46` | ~9.0 min | 6.9% |
-| p.20 透明悖论 + 英国机构例子 | `45:46`–`47:47` | ~2.0 min | 1.5% |
-| p.21 五大挑战 | `47:47`–`48:35` | ~0.8 min | 0.6% |
-| p.22–23 自适应透明 + 反事实解释（降权） | `48:35`–`51:31` | ~2.9 min | 2.2% |
-| 第一次课间公告（课间本身归下一片） | `51:31`–`52:33` | ~1.0 min | 0.8% |
-| 教授版透明定义 + 四维度框架 | `52:37`–`58:26` | ~5.8 min | 4.5% |
-| 案例一：Amazon 招聘 AI 筛选系统（讲义无对应页） | `58:26`–`01:09:25` | ~11.0 min | 8.4% |
-| 透明→人在环路→问责→可挑战 | `01:09:25`–`01:14:23` | ~5.0 min | 3.8% |
-| 案例二：COMPAS 再犯风险评分（讲义无对应页） | `01:14:23`–`01:30:52` | ~16.5 min | 12.6% |
-| 小组项目预告 + 课间 | `01:30:52`–`01:32:27` | ~1.6 min | 1.2% |
-| 案例三：Apple Card 信用额度 | `01:32:43`–`01:39:59` | ~7.3 min | 5.6% |
-| 案例四：Air Canada 聊天机器人 | `01:40:45`–`01:56:09` | ~15.4 min | 11.8% |
-| 四案对比与十年演进 | `01:56:09`–`02:04:22` | ~8.2 min | 6.3% |
-| 生成式 AI 透明悖论 + 奇点题外话 | `02:04:24`–`02:07:41` | ~3.3 min | 2.5% |
-| 八家公司做法泛讲（仅 3 家点名） | `02:07:53`–`02:11:34` | ~3.7 min | 2.8% |
+| 开场 + p.4 AI 回顾（含 AGI 展开） | `00:00`–`05:40` | 5.7 min | 4.3% |
+| p.5 透明三层定义 | `05:40`–`09:45` | 4.1 min | 3.1% |
+| p.7 可解释性 | `09:45`–`12:26` | 2.7 min | 2.0% |
+| p.8 数据透明 | `12:26`–`17:06` | 4.7 min | 3.5% |
+| p.9 模型透明 | `17:06`–`20:44` | 3.6 min | 2.8% |
+| p.10 决策可追溯 | `20:44`–`22:20` | 1.6 min | 1.2% |
+| p.11 局限披露 | `22:20`–`24:52` | 2.5 min | 1.9% |
+| 信任三要素展开（先于 p.12 讲） | `24:52`–`29:34` | 4.7 min | 3.6% |
+| p.12 用户知情 | `29:34`–`31:38` | 2.1 min | 1.6% |
+| p.13–14 信任建立机制 + U 形效应 | `31:38`–`36:12` | 4.6 min | 3.5% |
+| p.15–16 论文一（必要非充分） | `36:12`–`36:45` | 0.6 min | 0.4% |
+| p.18–19 论文三 + ChatGPT 过 Bar 考题外话 | `36:45`–`45:46` | 9.0 min | 6.9% |
+| p.20 透明悖论 + 英国机构例子 | `45:46`–`47:47` | 2.0 min | 1.5% |
+| p.21 五大挑战 | `47:47`–`48:35` | 0.8 min | 0.6% |
+| p.22–23 自适应透明 + 反事实解释（降权） | `48:35`–`51:31` | 2.9 min | 2.2% |
+| 第一次课间公告（课间本身归下一片） | `51:31`–`52:33` | 1.0 min | 0.8% |
+| 教授版透明定义 + 四维度框架 | `52:37`–`58:26` | 5.8 min | 4.4% |
+| 案例一：Amazon 招聘 AI 筛选系统（讲义无对应页） | `58:26`–`01:09:25` | 11.0 min | 8.3% |
+| 透明→人在环路→问责→可挑战 | `01:09:25`–`01:14:23` | 5.0 min | 3.8% |
+| 案例二：COMPAS 再犯风险评分（讲义无对应页） | `01:14:23`–`01:30:52` | 16.5 min | 12.5% |
+| 小组项目预告 + 课间 | `01:30:52`–`01:32:27` | 1.6 min | 1.2% |
+| 案例三：Apple Card 信用额度 | `01:32:43`–`01:39:59` | 7.3 min | 5.5% |
+| 案例四：Air Canada 聊天机器人 | `01:40:45`–`01:56:09` | 15.4 min | 11.7% |
+| 四案对比与十年演进 | `01:56:09`–`02:04:22` | 8.2 min | 6.2% |
+| 生成式 AI 透明悖论 + 奇点题外话 | `02:04:24`–`02:07:41` | 3.3 min | 2.5% |
+| 八家公司做法泛讲（仅 3 家点名） | `02:07:53`–`02:11:34` | 3.7 min | 2.8% |
 
 ### 8.1 新版 79 页讲义与旧版 50 页对照
 
@@ -5848,7 +5886,7 @@ ChatGPT：只说"diverse datasets"，来源不公开；撞上数据问题（网�
 
 **新版覆盖统计**：79/79 页均可通过上述对照进入正文。新增实质页 p.25–52 已在 §2.5.4–§2.6.5 或既有概念单元中解释；p.29–52 的四案不再标作“讲义无对应页”。旧版映射、课堂覆盖和所有旧页码引用保留，方便对回历史原件。
 
-**仍待集中视觉核**：新版 p.29–52 的版面和两张比较表需要在最终载体实际查看；本候选只依据已抽取全文与现成 p.25/p.26 图证据确认新增块存在，未声称 Obsidian 视觉通过。
+**显示证据分列**：本批来源页和同源候选显示按真实主验收记录定位，不沿用旧“待集中视觉核”或旧已看声明代替本轮动作。原生 Obsidian 未直接查看。
 
 
 ---
@@ -5861,7 +5899,7 @@ ChatGPT：只说"diverse datasets"，来源不公开；撞上数据问题（网�
 
 | 讲义页 | 内容 | 判定与依据 | 建议 |
 |---|---|---|---|
-| p.25 | ChatGPT 案例 | ⏭️ 未讲：本片段 `52:37`–`01:32:27` 全文检索 "ChatGPT" 命中 0 次；教授改讲 Amazon/COMPAS 两个讲义外案例；`02:07:41`（shard_3 段）教授明说案例章节留给学生自读 | 了解即可，重点放§2.5.4/§2.5.5 |
+| p.25 | ChatGPT 案例 | ⏭️ 未讲：本片段 `52:37`–`01:32:27` 全文检索 "ChatGPT" 命中 0 次；教授改讲 Amazon/COMPAS 两个旧版讲义外、当前新版已收入的案例；`02:07:41`（本篇转录后段 段）教授明说案例章节留给学生自读 | 了解即可，重点放§2.5.4/§2.5.5 |
 | p.26–29 | 1EdTech 隐私审查量表 | ⏭️ 未讲：同 p.25 依据，全文未提及审查、饼图、是非题 | 了解即可 |
 | p.30–31 | Google Bard 案例 | ⏭️ 未讲：全文检索 "Bard" 命中 0 次 | 了解即可 |
 | p.32 | 医疗 AI 案例 | ⏭️ 未讲：全文检索 "healthcare" 命中 0 次；教授改讲 COMPAS | 了解即可，三件套（可解释模型/严格验证/利益相关者参与）仍要记 |
@@ -5878,13 +5916,13 @@ ChatGPT：只说"diverse datasets"，来源不公开；撞上数据问题（网�
 | p.46 | 法律考量（GDPR、AI Act） | ⏭️ 未讲：同上；本段及全篇转录检索不到 "GDPR"/"AI Act" | 按讲义自学，条文细节待 M09 |
 | p.47 | 商业含义四条 | ⏭️ 未讲：同上；仅有一句方向一致的即兴总结（`02:10:09` trust/regulation），未逐条展开 | 按讲义原文掌握 |
 | p.49 | 实现透明的四大挑战 | ⏭️ 未讲：同上，全程无对应内容 | 按讲义 + §2.9.1 对照表自学 |
-| p.50 | 最佳实践四条 | ⏭️ 未讲：同上；教授反而在下课前明说"别纠结细节、记重点"（`02:11:27`–`02:11:29`），侧面确认这几页优先级低 | 按讲义原文掌握，备考优先级让位于 §2.2、§2.6 |
+| p.50 | 最佳实践四条 | ⏭️ 未讲：同上；教授反而在下课前明说"别纠结细节、记重点"（`02:11:27`–`02:11:29`），不能由这句确认所有这些页的考试优先级 | 按讲义原文掌握，备考优先级让位于 §2.2、§2.6 |
 
 ### 9.2 课上讲了但课件没有
 
 **版本更新**：本标题描述 2026-09-23 合并旧版 50 页讲义时的差集。2026-10-20 新版 79 页讲义已把 Amazon、COMPAS、Apple Card、Air Canada 与四案比较加入 p.29–52，因此这些项目现在是双源，不再属于“新版讲义没有”。教授版透明四维度、透明→人在环路→问责链和生成式 AI “关不掉的开关”等仍主要来自转录。
 
-v0.9 列的五个"合并时的重点"，逐条结果：**①** 教授对透明困境给了**长达约 9 分钟的个人版叙事**（`36:45`–`45:40`，用"电话问诊病人"的情境讲"自己披露伤信任、被发现伤更重"），见 §2.3.5；**②** **没有**给 GDPR / AI Act 的条款号，法律面只在四个案例里以"公司要为 AI 的输出负责"的形式出现（Air Canada 案 `01:44:37`–`01:44:55`），条文仍待 M09；**③** 三篇论文**一个具体数字都没给**（无样本量、无效应量、无阈值），只给结论句，且 `45:08` 明说不考这些细节；**④** **没有**点名本课考试形式——`42:58` 那处 "final / test" 是 ChatGPT 通过纽约州律师资格考的题外话，**不是本课期末考**；**⑤** 与小组项目的关系是**直接的行政信息**：`01:31:18` 宣布下周启动项目、最多 8 人、发邮件报成员与 coordinator（见 [[IS5113_AI_Ethics_and_Regulations/_meta/作业与DDL|作业与DDL]]）。
+v0.9 列的五个"合并时的重点"，逐条结果：**①** 教授对透明困境给了**长达约 9 分钟的个人版叙事**（`36:45`–`45:40`，用"电话问诊病人"的情境讲"自己披露伤信任、被发现伤更重"），见 §2.3.5；**②** **没有**给 GDPR / AI Act 的条款号，法律面只在四个案例里以"公司要为 AI 的输出负责"的形式出现（Air Canada 案 `01:44:37`–`01:44:55`），条文仍待 M09；**③** 三篇论文**一个具体数字都没给**（无样本量、无效应量、无阈值），只给结论句，`45:08` 的ASR不完整，不能确认为具体细节不考；**④** **没有**点名本课考试形式——`42:58` 那处 "final / test" 是 ChatGPT 通过纽约州律师资格考的题外话，**不是本课期末考**；**⑤** 与小组项目的关系是**直接的行政信息**：`01:31:18` 宣布下周启动项目、最多 8 人、发邮件报成员与 coordinator（见 [[IS5113_AI_Ethics_and_Regulations/_meta/作业与DDL|作业与DDL]]）。
 
 下表按价值排序列出课上讲了、讲义没有的内容。
 
@@ -5898,7 +5936,7 @@ v0.9 列的五个"合并时的重点"，逐条结果：**①** 教授对透明�
 | 5 | 神经网络 vs 确定性程序的机制类比 | ~1.3 min | `12:44`–`14:03` | §2.2.2 | 解释了「为什么数据透明重要」的机制层原因，讲义只给了三条动作没给原理 |
 | 6 | 英国机构「不录音才敢讲真话」的例子（透明悖论） | ~0.4 min | `46:44`–`47:10` | §2.3.6 | 讲义 p.20 只有一张漫画，这是一个具体的组织案例，且带出「不透明也有代价」的反面提醒 |
 | 7 | 🎙️ **Amazon 招聘 AI 筛选系统案完整案情（2014，数据透明失败）** | ~10.6 min | `58:49`–`01:09:25` | §2.5.4 | 讲义 p.25–33 完全没有这个案例；是本讲唯一完整走完"问题→发现→影响→意义"全流程的真实案例，且直接示范 §2.2 六构件怎么套用 |
-| 8 | 🎙️ **COMPAS 再犯风险评分案 + 正当程序（due process）概念** | ~16.5 min | `01:14:23`–`01:30:52` | §2.5.5 | 把"透明"升级到基本人权层面；"正当程序"这个概念在整份讲义里完全没出现过，是本讲最重要的新增法律概念 |
+| 8 | 🎙️ **COMPAS 再犯风险评分案 + 正当程序（due process）概念** | ~16.5 min | `01:14:23`–`01:30:52` | §2.5.5 | 把"透明"升级到基本人权层面；"正当程序"这个概念在旧版讲义里没有展开；新版已列入相应案例，是本讲最重要的新增法律概念 |
 | 9 | 🎙️ **教授版透明定义 + 四维度 + 三层次框架** | ~6 min（另见 `01:27:09`、`01:28:25`） | `52:37`–`58:26` | §2.4.4 | 比讲义 p.5 的三层抽象定义更可操作，是后面两个案例分析时实际使用的分析工具 |
 | 10 | 🎙️ **透明→人在环路→问责→可挑战 的因果链** | ~4 min | `01:10:09`–`01:14:23` | §2.4.5 | 讲义 §2.2 只平行列出六构件，没讲清它们之间的依赖关系；这条因果链是讲义完全没有的论证 |
 | 11 | 🔴 **Air Canada 聊天机器人案：六项透明补救机制 + 加拿大仲裁判赔** | ~15.4 min | `01:40:45`–`01:56:09` | §2.6.4 | 讲义 §2.7.3 只给两个机制，这里给六个并逐一配话术模板；还有讲义完全没有的真实判例——不透明的法律责任具体化 |
@@ -5915,7 +5953,7 @@ v0.9 列的五个"合并时的重点"，逐条结果：**①** 教授对透明�
 
 - **p.1 标题拼写错误**："TRANSPARANCY" 应为 "TRANSPARENCY"（PDF 元数据标题同样拼错）。考试作答写正确拼写。
 - **p.4–12、p.25、p.30、p.32–47 是同一种"标题 + 三四条短句"的生成式版式**，每页只有 30–60 个英文词，句式高度雷同（"X enhances trust / ensures compliance / builds trust"），大量内容是同义反复（几乎每页都以"建立信任"收尾）。**这些页的信息密度很低**，本笔记的解释绝大部分是 💡 笔记补充；读者不要把每条短句当作独立知识点背。
-- **p.21 与 p.49 是两份重叠的挑战清单**，讲义未说明关系；p.49 缺"动态演化"一条。本笔记 §2.9.1 做了对照，备考以五条为准。
+- **p.21 与 p.49 是两份重叠的挑战清单**，讲义未说明关系；p.49 缺"动态演化"一条。本笔记 §2.9.1 做了对照，依题面和指定来源选取四/五清单，并说明差异，不预先保证哪套总是评分标准。
 - **p.30 Bard 案例已过时**：Bard 于 2024 年 2 月更名为 Gemini，底层模型也早已不是 LaMDA（🔗 公开资料常识，2026-09-22）。讲义描述的是 2023 年的状态。考试若问 Bard，按讲义写即可，但知道这一点。
 - **p.42 "透明度评分"未注明来源**：本笔记推断为斯坦福基础模型透明度指数（分值与"+15 分""三倍多"相符，⚪），讲义应注明。
 - **p.39 Kredito 未说明是哪家公司、在哪个市场**；p.38 Intesa Sanpaolo 未说明使用的解释技术。两页只能作为"可解释信贷"的泛例。
@@ -5935,13 +5973,15 @@ v0.9 列的五个"合并时的重点"，逐条结果：**①** 教授对透明�
 - 🔗 **透明悖论**：Bernstein (2012), "The Transparency Paradox: A Role for Privacy in Organizational Learning and Operational Control", *Administrative Science Quarterly*——p.20 漫画的出处（⚪ 细节据记忆）。
 - 🔗 **基础模型透明度指数**：Stanford CRFM，Bommasani et al.，2023-10 首版、2024-05 更新——p.42 数字的可能来源（⚪）。
 - 🔗 **信任三要素**：Mayer, Davis & Schoorman (1995), "An Integrative Model of Organizational Trust", *Academy of Management Review*——p.14 "ability / benevolence / integrity" 的出处。
-- **小组项目可用素材**：本讲 12 个案例（§4.5）可作企业透明实践的对照组；1EdTech 量表（§2.5.2）可作为"给一个 AI 产品做透明审查"的现成模板；框架 D（§6.3）可直接改成项目的政策建议章节。
+- **小组项目可用素材**：本讲 12 个案例（§4.5）可作企业透明实践的对照组；1EdTech 量表（§2.5.2）可作为"给一个 AI 产品做透明审查"的现成模板；§6.3 的设计题框架（§6.3）可直接改成项目的政策建议章节。
 - **跨课**：EF5560 M04 用置换重要性解释树模型（那门课 §2.5.1）——是本讲"特征重要性"在金融预测里的实例；IS5542 讲 RAG 时的"来源引用"与本讲 §2.7.3 同一机制；AC6761 的审计追踪概念与本讲 §2.6.2 同名同义。
 
 **2026-10-02修文证据与验收状态**：复用已有50页全文与源审，保留原案例、引文、原题与映射；补反事实冻结模型/全部候选/距离下界/可行动因果边界、六构件系统记录、SEM/NCA证据范围、法律角色/用途/日期/例外。原企业案例仍区分教师叙事、课件声称与可核记录，本轮法律页不替代现实判例裁判。数字复算见任务scratch `M04-calc-results.json`，出处及法律核对日为2026-10-02。按 2026-10-02 简化流程验收；新增/改变的反事实搜索图及 3 个行内公式已实际查看，枚举、可行性、最小候选、停止/无解出口清楚，中文与数学可读，无裁切或横向溢出。未新增独立全量 Q/R 盲读；原 `status: v1.0`、`transcript: merged` 与法律/案例来源限制不变。
 
 
 ### 9.5 待核对
+
+本表含旧回执的当时判断。其“完整/无空档/已核”只代表原记录的具体方法，不升级为本轮原音或全部法律复核。当前来源、日期及仍未核范围以 §9.13 和真实独立报告为准；不由旧勾号覆盖新的疑点。
 
 | # | 事项 | 说明 |
 |---|---|---|
@@ -5952,10 +5992,10 @@ v0.9 列的五个"合并时的重点"，逐条结果：**①** 教授对透明�
 | 5 | GDPR / AI Act适用边界 | 本轮已补Article3/13–15/22、AIAct50/113角色与适用日期；现实案具体法域/角色/例外仍需个案材料 |
 | 6 | p.13 综述段出处 | 未注明；若教授说明来源，补进 §9.3 |
 | 7 | ✅ **本片转录范围已登记**（`00:00`–`52:33`） | 主代理 scan：全文 969 段、`00:00→02:11:34`，无时序倒退、无 ≥120 秒空档；本片对应前 `52:33`，段落 [0]–[389] |
-| 8 | ✅ **第一次课间紧邻本片末尾** | `51:31` *"we take 10 minutes break, and come back in 15"*；`51:58` *"we take a break until 8.15, ok?"*——**时间戳在 `51:31`–`52:33` 之间连续推进，但这是本地 Whisper 录音暂停造成的假象，墙钟并不连续**（课间约 15 分钟未被录音，`52:33` 之后紧接着已经是课间结束后的内容，归 shard_2）。不可把 `51:31`–`52:33` 的时长当成实际课堂时长使用 |
+| 8 | ✅ **第一次课间紧邻本片末尾** | `51:31` *"we take 10 minutes break, and come back in 15"*；`51:58` *"we take a break until 8.15, ok?"*——**时间戳在 `51:31`–`52:33` 之间连续推进，但这是本地 Whisper 录音暂停造成的假象，墙钟并不连续**（课间约 15 分钟未被录音，`52:33` 之后紧接着已经是课间结束后的内容，归 本篇转录中段）。不可把 `51:31`–`52:33` 的时长当成实际课堂时长使用 |
 | 9 | ⚪ **待用户核对**：`28:17` "Boon trust"、`36:45` "a bioeconomist"、`19:51` "employer models"、`05:26` "human noise" 四处 ASR 拿不准，均已标 `[?]`、列入 asr-dictionary 追加区，未强行猜测原词 |  |
 | s2-1 | ✅ **第二次课间**（`01:31:10`–`01:32:27`） | 教授在讲完小组项目要求后说 *"So let's take a little break here, and come back again."*（`01:32:27`）；`01:31:10` 前一句是 *"So let's take a 10 minutes break and we'll come back"*——**时间戳连续不代表墙钟连续**，这 10 分钟休息在录音文件里只占 1 分 17 秒（转录不间断录制，休息时长以教授口头 "10 minutes" 为准，非按时间戳差值折算） |
-| 11 | ✅ **本段转录完整、无空档** | `01:32:32`–`02:11:34`，约 39 分钟，无时序倒退，无 ≥120 秒空档；两次课间休息均在 `01:31:10` 之前（属 shard_2），本段不含课间 |
+| 11 | ✅ **本段转录完整、无空档** | `01:32:32`–`02:11:34`，约 39 分钟，无时序倒退，无 ≥120 秒空档；两次课间休息均在 `01:31:10` 之前（属 本篇转录中段），本段不含课间 |
 | 12 | ✅ **§2.7 六格全部落到 B / C，无 D** | 依据 `02:07:41`–`02:07:48`"you can look at it later when you have time… section of the example of current industrial practice"，以及随后 `02:07:53`–`02:11:34` 的逐句检索（Adobe/Microsoft/Accenture 被点名 = B，Salesforce/Intesa/Kredito/IBM 未点名 = C） |
 | 13 | ✅ **§2.8、§2.9 五格全部判 ⏭️（C），非 ❓** | 依据：录音连续到 `02:11:34` 自然下课（"next week... accountability"），教授全程在场，只是把时间用在了四个新案例与泛讲公司实践上，从未提及 p.45–50 关键词；这是"教授在场、翻页翻过去了"的证据，不是录音缺失 |
 | 14 | ✅ **Apple Card 当事人姓名的课程书面口径** | 新版讲义 p.43 写 David Heinemeier Hansson；课堂 `01:33:42` 的 “David Hanson” 保留为 ASR 读音记录，不再用于正文姓名 |
@@ -5966,12 +6006,14 @@ v0.9 列的五个"合并时的重点"，逐条结果：**①** 教授对透明�
 
 ### 9.6 反方视角（对抗自检第 12 项）
 
-1. **最薄弱的一节**：§2.7 的八家公司案例（p.34–43）。讲义每页只有三四句宣传式短语，没有任何可核的数据、技术细节或时间点；本笔记的"为什么需要它""换个说法"几乎全是笔记补充，案例之间的"对照"（技术路线 vs 制度路线、B 端 vs C 端）是我的组织而不是讲义的。转录到位后若教授给了细节，这一段要重写。
-2. **现在答不上来的考点**：若考完整高风险义务清单，本笔记只给本讲必要的角色/用途/透明与适用时间链（§2.8.2），不冒称完整法规注释——这是 M09 的内容，但讲义 p.46 点了名。
-3. **"因为材料没有所以推断"的判断**：① p.42 评分 = FMTI（若错，只影响 §2.7.6 的一段补充与 §9.5 #1）；② p.21 / p.49 是同一清单两版、p.49 遗漏动态演化（若讲义有意为之，§2.9.1 的"遗漏"判断改为"取舍"）；③ 用 M02 三大理论论证透明（§2.8.1）是我的延伸，讲义没做；④ 两家信贷机构用的是反事实式解释（§2.7.4，⚪）。
-4. **转录合并后这条风险已经兑现，而且方向更极端**：讲义信息密度低的判断是对的，但"教授实际讲了什么"不是"比讲义多"，而是**换了一套内容**——p.25–43 十九页案例整段自读（§2.7 有 8 个格是 ⏭️），换成四个讲义上没有的真实案例。**因此本笔记现在有两个来源不同的层**：讲义层（p.4–23 的六构件与信任研究，教授逐页讲了，可信）与课堂层（四案 + 三节题外话，只有转录一个来源，人名 / 年份 / 判决细节多处标 `[?]`）。考试若考案例，课堂层的权重应当更高；但课堂层的**事实细节可靠性低于讲义层**，引用时要回听录音或另行查证。
+1. **最薄弱证据**：公司实践多是讲义短句/公司声明，没有本轮版本配置、实验或效果数据。可分析其提出什么信息与控制，不能认证SDK普遍默认、机构已部署反事实、版权许可解决隐私或真实商业收益。
+2. **目前答不全的任务**：真实系统的全部法律分类、例外和适用义务，仍需完整案情及法源。本篇能分角色/用途/时间读所核条款，不能替代完整法律评估。
+3. **仍属于推断的地方**：FMTI只是评分来源候选，讲义未标；两挑战清单为何不同不明；用M02理论论证具体透明方案是笔记补充。错误率微例和反事实阈值都是教学设定，不是COMPAS或银行真实数据。
+4. **当前来源分层**：旧50页、新79页与原转录三源分别定位；四案现有书面＋口述双源。NYDFS原报告本轮已取得；Air Canada裁决本轮两站403，只保留原引用和算术核对，不冒称重新证实全部现实案情。无完整原音、微观研究数据、真实产品运行或原生Obsidian证据，就明确列未核；不由材料完成推断本人通读/自测/提交。
 
 #### 9.6.1 零基础试读（rubric）
+
+以下是2026-09-22历史评分原记录，仅为历史，不作为本次高中知识起点独立审查的通过证据。旧统计/工具结论不追改，也不推断本人已懂。
 
 <!-- 由独立 sonnet 子代理只读本笔记逐小节打分后回填；见 _meta/笔记质量规范 §8 -->
 
@@ -6010,3 +6052,12 @@ v0.9 列的五个"合并时的重点"，逐条结果：**①** 教授对透明�
 H02–H09 逐项核到子节；父标题导读句未命中理由词，不等于后续解释缺失。H04 实核另发现“全部解释技术都是事后解释”与 §2.2.1 的小树路线冲突，本次已在两处区分原生与事后解释，并给模型规模改变的边界。
 
 H10 保留旧 50／新 79 页的真实版本提示；另纠正顶部过期“候选 pending”告示，不冒称整篇已验。原题、课堂时钟及源版本不改。见 [[待核线索核实与修复回执-2026-10-21|23 条线索回执]]。
+
+
+### 9.13 2026-10-26 全篇候选的来源与状态
+
+本轮候选按真实两阶段全篇独审集中修复，具体关闭和主验收以当前回执为准；历史局部审查/评分不作本次放行。已重新核旧50页/新79页和原转录版本，旧p26有评分图与元数据，改为内容页；补完整21审查题、原ANSWER及各题实质英文读法，纠正OR分支及Meets的证据边界。原时钟、原题数据、材料v1.0/merged和本人学习/提交字段不升级。
+
+法律补充本轮只读取得欧委会Article50、Article113与Omnibus公告；Article113文字支持其第III章第1–3节（第6(5)除外）的2027-12-02/2028-08-02分期；不是整个章节一并延后。Apple链接实际重定向至NYDFS19页原PDF，已取得；CanLII裁决链接本轮HTTP403，未获取当前全文。原笔记所引2024裁决、日期与赔偿分项按原引用保留，金额加总可另验，不冒称本轮又读到裁决全文。EUR-Lex合并法律文本未另逐条核。
+
+旧版、新版共同页面的全部原嵌入图经解码像素哈希相同；文字仅旧19/新19标题单复数与旧24/新53过渡标题不同。新25–52的书面内容已按实际页码补入对应正文，版面与最终显示依本批图文证据记录。原生Obsidian及全部原音未直接查看/逐字核听。

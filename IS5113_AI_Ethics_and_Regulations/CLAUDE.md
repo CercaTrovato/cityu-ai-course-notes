@@ -102,7 +102,7 @@
 | 1 | Introduction to AI and Ethics | [[M01-导论-AI与伦理]] | ✅ v0.9（无转录） |
 | 2 | Ethical Theories | [[M02-道德理论及其应用]] | ✅ v1.0（三段转录已合并） |
 | 3 | Bias and Fairness | [[M03-偏见与公平]] | ✅ v1.0（2026-09-18 转录已合并，缺结尾） |
-| 4 | Transparency and Explainability | [[M04-AI透明-从看得见到信得过]] | ✅ v1.0（2026-09-23 转录已合并；讲义外四个案例） |
+| 4 | Transparency and Explainability | [[M04-AI透明-从看得见到信得过]] | ✅ v1.0（原转录已融合；旧 50／新 79 页并存，四案为新版讲义＋转录双源，原音完整性未证；2026-10-27 本次全篇审修闭合） |
 | 5–11 | 见 [[IS5113_AI_Ethics_and_Regulations/_prep/课程前置资料#5. 13 周地图（Tentative）\|课程前置资料 › 5. 13 周地图（Tentative）]] | | 待课件 |
 | 12–13 | Project Presentation | — | 无笔记，产出为项目 |
 

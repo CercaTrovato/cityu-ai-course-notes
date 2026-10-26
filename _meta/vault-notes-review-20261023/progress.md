@@ -21,8 +21,8 @@ status: in-progress
 
 ## 本次真实统计（2026-10-26，按 execution.json 当前逐项状态）
 
-- 已教学验收并正式写回：27；25份适用各端闭合，本批EF07/IS05 Git待。
-- 已启动未写回：11；未开始：31。合计69，42份未正式写回，全库未完成。
+- 已教学验收并正式写回：30；27份适用各端闭合，本批3份Git待。
+- 已启动未写回：8；未开始：31。合计69，39份未正式写回，全库未完成。
 
 ## 69 份逐篇进度
 
@@ -44,14 +44,14 @@ status: in-progress
 | EF5560 | `EF5560_Fintech_and_AI_in_Finance/notes/M04-非线性机器学习与收益预测.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS atomic/精确字节回读；实际维护映射见receipt / 8共享目标CAS原子增量合并并精确回读；其余无新增事实；详dependency-sync.json / 16属性真实重开回读：拟写前缀与旧后缀精确，其他15含checkbox值逐一保持；实际AX回读与写前DOM.checked比对，连接断开后无新截图 / 已推送69bec8e0…并核远端main；205提交blobs逐SHA一致，公开联系方式变体另有映射 |
 | EF5560 | `EF5560_Fintech_and_AI_in_Finance/notes/M05-可解释机器学习与投资组合决策.md` | 修订并验收 | 6.1-sol full2stage + original B1–B3 targeted closed; real format-only maintenance mapping | CAS atomic/精确字节回读 / 11共享增量原子合并并精确回读；无新增译名，根表应用条件先合并 / 既有页16属性重载：仅备注/材料版本与3材料复选框；其他11含个人字段不变 / 已推送d795ce9a…并核远端；101blobs逐SHA一致，77其他文件保持 |
 | EF5560 | `EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链.md` | 候选待法源补核 | parallel independentthread started;author preparation then new61independentreview;formal pending | 未开始 / 未开始 / 未开始 / 未开始 |
-| EF5560 | `EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确字节回读；纯状态维护独立映射 / 8目标已CAS原子增量写/精确回读，4无增量；根表先合并，课程队列后执行 / 既有学习行16属性重载回读：前插精确、旧后缀保留、其他15属性含真实checked保持 / 本批待保存 |
+| EF5560 | `EF5560_Fintech_and_AI_in_Finance/notes/M07-比特币以太坊与加密金融商业模式.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确字节回读；纯状态维护独立映射 / 8目标已CAS原子增量写/精确回读，4无增量；根表先合并，课程队列后执行 / 既有学习行16属性重载回读：前插精确、旧后缀保留、其他15属性含真实checked保持 / 已推送39b91856…并核远端main；66blobs逐SHA一致/17共享仅本批增量/211非本批文件保持 |
 | IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M01-导论-AI与伦理.md` | 修订并验收 | complete_for_provided_material_scope_all_sync_and_remote_verified | 已原子写并精确回读 / 已原子合并并回读；链接/README/完整性问题均为0 / 已写并回读（个人字段未变） / 已提交推送并核远端：6a10b2c |
 | IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M02-道德理论及其应用.md` | 修订并验收 | full61+targetedthroughv13 accepted;main source/calcs/visual/warnings/fullgate+CAS done | 已CAS原子写回并精确回读；v13教学+纯状态维护 / 14目标：12写回/2无增量；均精确回读 / 正确M02：16属性保存/重载回读，14其他/旧全文4图不变；DDL已核无增量 / 内容提交已推送并核远端，89blob逐SHA一致，62其他文件保留 |
-| IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M03-偏见与公平.md` | 候选待主验收 | full/targeted/gate package ready, not formally written | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M04-AI透明-从看得见到信得过.md` | 候选待主验收 | full/targeted/gate package ready, not formally written | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M05-AI问责-责任链治理与救济.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确字节回读；纯状态维护独立映射 / 12目标已CAS原子增量写/精确回读，0无增量；根表先合并，课程队列后执行 / 既有学习行16属性重载回读：前插精确、旧后缀保留、其他15属性含真实checked保持；既有项目9属性只前插要求摘要、其他8含截止/状态/模块关联逐值不变；旧Group17A17B17分配明确保留，仅本轮未重查 / 本批待保存 |
+| IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M03-偏见与公平.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确字节回读；纯状态维护独立映射 / 9目标精确增量/CAS原子写/回读；11无增量或不适用，详dependency-sync.json / 既有学习页16属性重载回读；前插精确、旧后缀保持；路径课程码前缀已校正，其余14属性含真checked/关联保持 / 本批待保存 |
+| IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M04-AI透明-从看得见到信得过.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确字节回读；纯状态维护独立映射 / 10目标精确增量/CAS原子写/回读；4无增量或不适用，详dependency-sync.json / 既有学习页16属性重载回读；前插精确、旧后缀保持；其余15属性含真checked保持 / 本批待保存 |
+| IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M05-AI问责-责任链治理与救济.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确字节回读；纯状态维护独立映射 / 12目标已CAS原子增量写/精确回读，0无增量；根表先合并，课程队列后执行 / 既有学习行16属性重载回读：前插精确、旧后缀保留、其他15属性含真实checked保持；既有项目9属性只前插要求摘要、其他8含截止/状态/模块关联逐值不变；旧Group17A17B17分配明确保留，仅本轮未重查 / 已推送39b91856…并核远端main；66blobs逐SHA一致/17共享仅本批增量/211非本批文件保持 |
 | IS5113 | `IS5113_AI_Ethics_and_Regulations/notes/M06-隐私与监控-从数据采集到行为影响.md` | 审修中 | existing gpt-6.1-sol thread full scratch task dispatched | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS5542 | `IS5542_GenAI_in_Business/notes/M01-导论-生成式AI基础与企业落地.md` | 候选待主验收 | full/targeted/gate package ready, not formally written | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS5542 | `IS5542_GenAI_in_Business/notes/M01-导论-生成式AI基础与企业落地.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确字节回读；纯状态维护独立映射 / 10目标精确增量/CAS原子写/回读；1无增量或不适用，详dependency-sync.json / 既有学习页16属性重载回读；前插精确、旧后缀保持；路径课程码前缀已校正，其余14属性含真checked/关联保持 / 本批待保存 |
 | IS5542 | `IS5542_GenAI_in_Business/notes/M02-模型全景-基准评测与提示设计.md` | 审修中 | existing gpt-6.1-sol thread new full scratch task dispatched | 未开始 / 未开始 / 未开始 / 未开始 |
 | IS5542 | `IS5542_GenAI_in_Business/notes/M03-AI-agent-从harness到部署.md` | 审修中 | existing gpt-6.1-sol thread new full scratch task dispatched | 未开始 / 未开始 / 未开始 / 未开始 |
 | IS5542 | `IS5542_GenAI_in_Business/notes/M04-设计思维-业务机会识别与AI创意工作坊.md` | 审修中 | existing gpt-6.1-sol thread new full scratch task dispatched | 未开始 / 未开始 / 未开始 / 未开始 |
@@ -519,3 +519,13 @@ AC M06 b3d76516…、EF M04 a555b077…、独立Quiz2 ba6b5106…10711bytes均�
 ## 2026-10-27 两份新全篇写回：27正文
 
 EF07教学c33b7422…／正式f039b2df…155365bytes、IS05教学4406b2bb…／正式8fb876e6…218676bytes已CAS原子/精确回读，随后仅审查状态元数据维护。二者新全篇两阶段/原审定向、来源/必要图文/机器完整gate按实际身份和hash承接，不重算未变项目、不重训。EF07本地8增量/4无增量，IS05本地12增量；根表先合并/队列后，源p6旧班名单和原始大证据只E私有，公开v2指真实原报告与hash，不冒新审。两学习行各16属性重载，旧后缀/其他15真checked保持；IS项目行9属性只要求摘要前插/另8含关联和日期状态保持。已显式保留10/9/10/21的Group17A17B17，未重查当前MyGroups不等于取消旧核实；“展示后7天”只历史对照，不覆盖已核12/1统一截止。个人通过/提交不改。当前27/69正文，25端闭合；34未开始，8已启动未写。原始文件、旧报告、录音空档/外源局限保留，EF06两法源仍受阻。本批Git待。
+
+
+## 2026-10-27 EF07/IS05 远端闭合：27/69
+
+内容commit39b91856fe8e93fdc943a79b7e3c41725aa3115a已推并核远端main，66blobs逐SHA一致、17共享目标仅本批增量、211非本批文件保持；6324归档/源码空白诊断按范围核，正常钩子/本人署名/无force和AI署名。EF07正式f039b2df…，IS05正式8fb876e6…；实际原审教学稿c33b7422…/4406b2bb…及纯状态维护映射、必要显示与源限制分别保留。两学习页16属性各回读/其他15保持，项目页9属性只摘要/另8保持，Group17A17B17旧核实保留，旧7天不覆已核12/1。原始班级截图、原source文本和完整真实独审只在E持久证据，公开v2以真实hash指原报告，不冒新审、不给source隐私作自动认证。现在27/69适用各端闭合；42未写（11已启动、31未开始），其中3包已齐待主写，EF06两一手法源仍阻塞。状态回执本地随下一批Git，不为纯状态另审。
+
+
+## 2026-10-27 三份全篇写回与各端收尾：30正文
+
+IS5113 M03／M04与IS5542 M01分别完成真实原6.1全篇独审及13／17／12组实质修复和维护关闭；原报告与来源／计算／必要同源图文和最终门槛均按真实身份、候选SHA及维护映射承接。正式SHA5c4146f5…／96c77488…／1f126f77…，CAS原子写与精确字节回读；pending及M03候选告示纯状态维护单列，未冒称独审读过维护版。共29次共享文件增量、18唯一目标，根表先合／队列后；README只重基本篇精确差异，保留并发M05增量。Notion三既有页各16属性重载，备注前插与旧后缀保持；M03／IS54M01纠正路径课程码，其余14属性，M04其余15含true checked均保持；IS54关联真实加载后才冻结。M04初次重载短暂读旧值后收敛，未重复写。原音／原生Obsidian与显式外源缺口保留，EF06两法源仍hold；本人学习／提交不改。现30/69正文写回，27适用各端闭合，本批Git待；余39（8工作中／31未开始）。
