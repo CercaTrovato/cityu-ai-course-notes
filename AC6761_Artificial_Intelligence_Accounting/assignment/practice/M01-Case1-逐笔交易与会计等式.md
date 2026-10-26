@@ -5,20 +5,23 @@ type: 课堂练习解析
 date: 2026-10-07
 source: ["Case 1 with solution.docx"]
 transcript: none
-review_method: 2026-10-02-simplified
+review_method: full-independent-gpt61-20261026
 tags: [AC6761, Case1, 私有练习]
 status: draft
 learning_status: detailed-analysis-complete
 official_solution: checked
 administrative_status: pending
-updated: 2026-10-07
+updated: 2026-10-26
+readability_rules: v2
+teaching_standard: novice-v1
+readability_review: passed
 ---
 
 # M01 · Case 1：逐笔交易与会计等式
 
 SWIFT 是一家送货服务公司。你要追踪它从开业到完成 8 笔交易后，手里有什么、欠别人多少、属于所有者的份额是多少。每做一笔都要更新余额，并证明两边仍相等；不是只算最后剩下多少现金。
 
-本篇是私人学习与核验材料。原题与官方答案来自 `AC6761_Artificial_Intelligence_Accounting/course_files_export/Case 1 with solution.docx`。官方逐笔金额已核对；下文账户拆分、白话解释与迁移题是学习补充。Canvas 当前登录受阻，是否需要提交、是否计分、DDL 和提交方式均待核。本篇可供练习，不代表个人是否已经学会得到验证。
+本篇是私人学习与核验材料。原题与官方答案来自 `AC6761_Artificial_Intelligence_Accounting/course_files_export/Case 1 with solution.docx`。官方逐笔金额已核对；下文账户拆分、白话解释与迁移题是学习补充。2026-10-07制作时曾记录Canvas登录受阻；本轮未实时核查登录、计分、DDL或提交要求，行政条件仍待可靠来源确认。本篇可供练习，不代表个人是否已经学会得到验证。
 
 [[AC6761_Artificial_Intelligence_Accounting/assignment/00-overview/作业总览|回作业总览]] · [[AC6761_Artificial_Intelligence_Accounting/assignment/practice/练习索引|Case 1–4 解析入口]]
 
@@ -60,11 +63,13 @@ SWIFT 是一家送货服务公司。你要追踪它从开业到完成 8 笔交�
 
 ### 2.3 权益：扣除外部债务后，归所有者的剩余份额
 
-权益（Equity）是资产中扣除负债后的剩余权益。它不是某个单独的钱袋，也不等于银行现金。所有者投入资本会增加权益；经营收入减去费用得到的利润也会增加权益。本题没有所有者提款，因此两条增加路径要分开算：
+权益（Equity）是资产中扣除负债后的剩余权益。它不是某个单独的钱袋，也不等于银行现金。所有者投入资本会增加权益；经营收入减去费用得到的利润（Profit）也会增加权益。本题没有所有者提款，因此两条增加路径要分开算：
 
 $$
 E = C + R - X
 $$
+
+下表一行解释一个符号，三列分别给出记号、意思与本题对应内容；各金额沿用同一题面单位。
 
 | 符号 | 含义 | 本题对应内容 |
 |---|---|---|
@@ -125,21 +130,29 @@ flowchart TD
 
 ## 4. 8 笔原题逐句拆解，并保留每一步状态
 
-开始前各账户为 0。本题描述开业后这 8 笔交易，因此从这个初始状态顺序更新。下面每笔的 A / L / E 总额都与官方 `After` 行核对；分账户状态是根据原题动作拆出的学习辅助。
+开始前各账户为 0。本题描述开业后这 8 笔交易，因此从这个初始状态顺序更新。下面每笔的 A / L / E 总额都与官方 `After` 行核对；分账户状态是根据原题动作拆出的学习辅助。 每笔状态分成两表：资产表列Cash、Vehicle、Supplies、Fuel、AR；另一表列AP、Capital、累计收入和累计费用。一行都是该笔完成后的余额，列中的0是余额0，不是“无交易影响”的空白。第二表的权益仍须用资本加累计收入减累计费用计算。
 
 ### 第 1 笔：老板投入现金，不是公司做生意赚的钱
 
 > On January 1, 2025, Eddie Johnson invested \$20,000 cash to start the business.
 
-`On January 1, 2025` 是发生日期；`Eddie Johnson invested` 指 Eddie 以所有者身份投入；`$20,000 cash` 是实际投入公司现金；`to start the business` 说明目的是开业。白话：1 月 1 日，老板把 20,000 现金交给 SWIFT 作为开业资本。
+`On January 1, 2025` 是发生日期；`Eddie Johnson invested` 指 Eddie 以所有者身份投入；*\$20,000 cash* 是实际投入公司现金；`to start the business` 说明目的是开业。白话：1 月 1 日，老板把 20,000 现金交给 SWIFT 作为开业资本。
 
 输入：所有者投入现金 20,000。动作：Cash 增 20,000，Capital 增 20,000。因此资产增 20,000、权益增 20,000、负债不变。
 
-为什么不是收入？SWIFT 没有为此向 Eddie 提供送货服务；钱来自所有者投入，而不是经营赚取。为什么不是负债？题面说 invested，没有说借款或约定偿还。若题面改成 borrowed，才会走负债路径。不能只因都是收进现金就混用。
+这笔的经济来源是所有者投入：SWIFT没有为此向Eddie提供送货服务，题面又写 invested、没有借款或偿还约定。因此计入Capital，而不是Revenue或AP。若将事实改成 borrowed，就应记借款负债；同样收到现金，权利义务可以不同。
 
-| 交易后账户 | Cash | Vehicle | Supplies | Fuel | AR | AP | Capital | 累计收入 | 累计费用 |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 第 1 笔后 | 20,000 | 0 | 0 | 0 | 0 | 0 | 20,000 | 0 | 0 |
+资产账户余额如下；相加得到该笔后的资产总额。
+
+| 交易后状态 | Cash | Vehicle | Supplies | Fuel | AR |
+|---|---:|---:|---:|---:|---:|
+| 第 1 笔后 | 20,000 | 0 | 0 | 0 | 0 |
+
+负债、投入资本及累计经营项目如下；它们与上一表属于同一时点。
+
+| 同一交易后状态 | AP | Capital | 累计收入 | 累计费用 |
+|---|---:|---:|---:|---:|
+| 第 1 笔后 | 0 | 20,000 | 0 | 0 |
 
 $$
 A=20,000,\quad L=0,\quad E=20,000;\qquad 20,000=0+20,000
@@ -147,19 +160,31 @@ $$
 
 这一步建立了后续购买资产的资金基础；接下来花掉现金不一定让权益减少。
 
+**English reference answer（笔记自拟；金额/总额依官方表，英文说明不是官方逐字答案）**：
+
+> Cash and contributed capital each increase by 20,000, with no liability created. After transaction 1, assets are 20,000, liabilities are 0, and equity is 20,000.
+
 ### 第 2 笔：现金换车，资源总额不变
 
 > Purchased a delivery van for \$15,000 cash.
 
-`Purchased` 是已经购买；`a delivery van` 是送货车；`for $15,000 cash` 表示这次用 15,000 现金买车。白话：公司花 15,000 现金得到一辆送货车，没有在本笔留下一笔欠款。
+`Purchased` 是已经购买；`a delivery van` 是送货车；*for \$15,000 cash* 表示这次用 15,000 现金买车。白话：公司花 15,000 现金得到一辆送货车，没有在本笔留下一笔欠款。
 
 输入：原来 Cash 20,000，用 15,000 买车。动作：Cash 减 15,000 成为 5,000；Vehicle 增 15,000。资产变化是 $-15,000+15,000=0$；负债和权益均不变。
 
-为什么不是立即产生 15,000 费用？公司取得了以后可用来送货的车，并没有在这一刻把车全部耗用掉。比如把钱换成一台可以使用多年的机器，不能因付款就说全部价值当日消失。未来可能产生折旧费用，但本题没有年限、残值、期间等条件，也没有要求计提折旧，因此不能额外扣除。
+为什么不是立即产生 15,000 费用？公司取得了以后可用来送货的车，并没有在这一刻把车全部耗用掉。比如把钱换成一台可以使用多年的机器，不能因付款就说全部价值当日消失。未来可能产生折旧（Depreciation）费用，但本题没有年限、残值、期间等条件，也没有要求计提折旧，因此不能额外扣除。
 
-| 交易后账户 | Cash | Vehicle | Supplies | Fuel | AR | AP | Capital | 累计收入 | 累计费用 |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 第 2 笔后 | 5,000 | 15,000 | 0 | 0 | 0 | 0 | 20,000 | 0 | 0 |
+资产账户余额如下；相加得到该笔后的资产总额。
+
+| 交易后状态 | Cash | Vehicle | Supplies | Fuel | AR |
+|---|---:|---:|---:|---:|---:|
+| 第 2 笔后 | 5,000 | 15,000 | 0 | 0 | 0 |
+
+负债、投入资本及累计经营项目如下；它们与上一表属于同一时点。
+
+| 同一交易后状态 | AP | Capital | 累计收入 | 累计费用 |
+|---|---:|---:|---:|---:|
+| 第 2 笔后 | 0 | 20,000 | 0 | 0 |
 
 $$
 A=5,000+15,000=20,000;\qquad 20,000=0+20,000
@@ -167,19 +192,31 @@ $$
 
 这一步提醒你：现金余额与资产总额必须分别看，否则会误以为公司只剩 5,000 的资产。
 
+**English reference answer（笔记自拟；金额/总额依官方表，英文说明不是官方逐字答案）**：
+
+> Cash decreases by 15,000 and the delivery vehicle increases by 15,000. Total assets remain 20,000, liabilities remain 0, and equity remains 20,000.
+
 ### 第 3 笔：买办公用品，还没有题面证据说已经用完
 
 > Purchased office supplies for \$500 cash.
 
-`office supplies` 是办公用品，如可供以后使用的纸张；`for $500 cash` 表示当场支付 500 现金。白话：用 500 现金换来办公用品。
+`office supplies` 是办公用品，如可供以后使用的纸张；*for \$500 cash* 表示当场支付 500 现金。白话：用 500 现金换来办公用品。
 
 输入：Cash 5,000，购买用品 500。动作：Cash 减到 4,500，Supplies 从 0 增到 500。资产内部一减一增；资产总额、负债与权益不变。
 
 为什么不是办公费用？原题只说买入，没有说本月耗用了多少，官方也明确写资产 $-500+500$。例如买入一箱纸尚放在柜里，它仍是未来可用的资源；后来真正用了其中价值 100 的纸，才可以按该使用条件讨论 Supplies 减 100 和用品费用增 100。这个使用例子是补充，不是原题第 3 笔的事实。
 
-| 交易后账户 | Cash | Vehicle | Supplies | Fuel | AR | AP | Capital | 累计收入 | 累计费用 |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 第 3 笔后 | 4,500 | 15,000 | 500 | 0 | 0 | 0 | 20,000 | 0 | 0 |
+资产账户余额如下；相加得到该笔后的资产总额。
+
+| 交易后状态 | Cash | Vehicle | Supplies | Fuel | AR |
+|---|---:|---:|---:|---:|---:|
+| 第 3 笔后 | 4,500 | 15,000 | 500 | 0 | 0 |
+
+负债、投入资本及累计经营项目如下；它们与上一表属于同一时点。
+
+| 同一交易后状态 | AP | Capital | 累计收入 | 累计费用 |
+|---|---:|---:|---:|---:|
+| 第 3 笔后 | 0 | 20,000 | 0 | 0 |
 
 $$
 A=4,500+15,000+500=20,000;\qquad 20,000=0+20,000
@@ -187,11 +224,15 @@ $$
 
 这里与买车同样是资产交换，但不要因此忽略用品以后可能被耗用；本题只记录已给出的购买动作。
 
+**English reference answer（笔记自拟；金额/总额依官方表，英文说明不是官方逐字答案）**：
+
+> Cash decreases by 500 and office supplies increase by 500 under the stated purchase-only assumption. Assets remain 20,000, liabilities remain 0, and equity remains 20,000.
+
 ### 第 4 笔：赊购燃油，得到资产也欠供应商钱
 
 > Purchased fuel on credit for \$1,000 from FuelCo.
 
-`Purchased fuel` 是购入燃油；`on credit` 修饰购买条件，指现在拿到燃油、暂不付款；`for $1,000` 是燃油交易金额；`from FuelCo` 表示供应商是 FuelCo。白话：向 FuelCo 买来 1,000 的燃油，这次先欠着货款。
+`Purchased fuel` 是购入燃油；`on credit` 修饰购买条件，指现在拿到燃油、暂不付款；*for \$1,000* 是燃油交易金额；`from FuelCo` 表示供应商是 FuelCo。白话：向 FuelCo 买来 1,000 的燃油，这次先欠着货款。
 
 输入：购入 1,000 燃油、未付款。动作：Fuel 增 1,000，AP 增 1,000；Cash 仍为 4,500。资产与负债同增 1,000，权益不变。
 
@@ -199,9 +240,17 @@ $$
 
 例如赊购一桶尚未使用的油，公司多了油，也多了付款义务；以后用掉油才涉及耗用。若题面明确说燃油已全部耗用，答案就需要另作处理，见迁移题。欠款增加本身不会降低权益：公司同时得到等值资源。
 
-| 交易后账户 | Cash | Vehicle | Supplies | Fuel | AR | AP | Capital | 累计收入 | 累计费用 |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 第 4 笔后 | 4,500 | 15,000 | 500 | 1,000 | 0 | 1,000 | 20,000 | 0 | 0 |
+资产账户余额如下；相加得到该笔后的资产总额。
+
+| 交易后状态 | Cash | Vehicle | Supplies | Fuel | AR |
+|---|---:|---:|---:|---:|---:|
+| 第 4 笔后 | 4,500 | 15,000 | 500 | 1,000 | 0 |
+
+负债、投入资本及累计经营项目如下；它们与上一表属于同一时点。
+
+| 同一交易后状态 | AP | Capital | 累计收入 | 累计费用 |
+|---|---:|---:|---:|---:|
+| 第 4 笔后 | 1,000 | 20,000 | 0 | 0 |
 
 $$
 A=4,500+15,000+500+1,000=21,000;\qquad 21,000=1,000+20,000
@@ -209,19 +258,31 @@ $$
 
 这笔建立了 FuelCo 的应付账款。第 8 笔的 partial payment 就是在偿还这里产生的欠款。
 
+**English reference answer（笔记自拟；金额/总额依官方表，英文说明不是官方逐字答案）**：
+
+> Fuel increases by 1,000 and accounts payable to FuelCo increase by 1,000; no cash is paid. Assets become 21,000, liabilities become 1,000, and equity remains 20,000.
+
 ### 第 5 笔：服务已完成并收现，现金与收入同时增加
 
 > Provided delivery services and received \$3,000 cash.
 
-`Provided delivery services` 指送货服务已经提供；`and received $3,000 cash` 指同时收到 3,000 现金。白话：公司完成送货，客户当场付了 3,000。
+`Provided delivery services` 指送货服务已经提供；*and received \$3,000 cash* 指同时收到 3,000 现金。白话：公司完成送货，客户当场付了 3,000。
 
 输入：已完成服务、已收现金。动作：Cash 增 3,000，从 4,500 到 7,500；服务收入增 3,000，使权益增 3,000。负债不变。
 
 与第 1 笔的收款不同，这次客户付钱是为了公司已经提供的服务，所以属于经营收入。也不是客户预付款：原题写的是 provided，服务已经提供；不能把它误写为“公司仍欠客户未来服务”的负债。服务收入使公司增加净资源，而无需承担等额偿还义务，因此增加所有者剩余份额。
 
-| 交易后账户 | Cash | Vehicle | Supplies | Fuel | AR | AP | Capital | 累计收入 | 累计费用 |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 第 5 笔后 | 7,500 | 15,000 | 500 | 1,000 | 0 | 1,000 | 20,000 | 3,000 | 0 |
+资产账户余额如下；相加得到该笔后的资产总额。
+
+| 交易后状态 | Cash | Vehicle | Supplies | Fuel | AR |
+|---|---:|---:|---:|---:|---:|
+| 第 5 笔后 | 7,500 | 15,000 | 500 | 1,000 | 0 |
+
+负债、投入资本及累计经营项目如下；它们与上一表属于同一时点。
+
+| 同一交易后状态 | AP | Capital | 累计收入 | 累计费用 |
+|---|---:|---:|---:|---:|
+| 第 5 笔后 | 1,000 | 20,000 | 3,000 | 0 |
 
 $$
 A=24,000,\quad E=20,000+3,000=23,000;\qquad 24,000=1,000+23,000
@@ -229,11 +290,15 @@ $$
 
 服务是否已提供决定收入路径；现金是否已收到决定现金还是应收路径。第 7 笔会把这两个判断分开。
 
+**English reference answer（笔记自拟；金额/总额依官方表，英文说明不是官方逐字答案）**：
+
+> Cash and service revenue each increase by 3,000 because the delivery service has been provided. Assets become 24,000, liabilities remain 1,000, and equity becomes 23,000.
+
 ### 第 6 笔：已发生的租金费用，使现金与权益减少
 
 > Paid rent expense for office space \$800 cash.
 
-`Paid` 指已经支付；`rent expense for office space` 明确是办公室租金费用；`$800 cash` 是这次付出 800 现金。白话：公司用现金支付办公室租金费用 800。
+`Paid` 指已经支付；`rent expense for office space` 明确是办公室租金费用；*\$800 cash* 是这次付出 800 现金。白话：公司用现金支付办公室租金费用 800。
 
 输入：已发生租金费用且付现。动作：Cash 减 800，到 6,700；累计费用增 800。费用从收入中扣减，所以权益减少 800，成为 $20,000+3,000-800=22,200$。
 
@@ -241,9 +306,17 @@ $$
 
 注意“费用增加”与“权益减少”是同一记录的两个观察角度，不能把权益再扣两次。费用账户累计 800，权益公式中减去这 800。
 
-| 交易后账户 | Cash | Vehicle | Supplies | Fuel | AR | AP | Capital | 累计收入 | 累计费用 |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 第 6 笔后 | 6,700 | 15,000 | 500 | 1,000 | 0 | 1,000 | 20,000 | 3,000 | 800 |
+资产账户余额如下；相加得到该笔后的资产总额。
+
+| 交易后状态 | Cash | Vehicle | Supplies | Fuel | AR |
+|---|---:|---:|---:|---:|---:|
+| 第 6 笔后 | 6,700 | 15,000 | 500 | 1,000 | 0 |
+
+负债、投入资本及累计经营项目如下；它们与上一表属于同一时点。
+
+| 同一交易后状态 | AP | Capital | 累计收入 | 累计费用 |
+|---|---:|---:|---:|---:|
+| 第 6 笔后 | 1,000 | 20,000 | 3,000 | 800 |
 
 $$
 A=23,200,\quad E=22,200;\qquad 23,200=1,000+22,200
@@ -251,21 +324,33 @@ $$
 
 目前利润是 $3,000-800=2,200$，与现金 6,700 不相等；现金里仍包含老板投入和购买资产的影响。
 
+**English reference answer（笔记自拟；金额/总额依官方表，英文说明不是官方逐字答案）**：
+
+> Cash decreases by 800 and rent expense increases by 800, reducing equity once by 800. Assets become 23,200, liabilities remain 1,000, and equity becomes 22,200.
+
 ### 第 7 笔：赊销服务，有收入但还没有现金
 
 > Provided delivery services on credit for \$2,500 to a customer.
 
-`Provided delivery services` 指已经完成服务；`on credit` 指给客户赊账，允许客户以后支付；`for $2,500` 是服务价款；`to a customer` 明确客户是欠钱的一方。白话：送货已完成，赚到 2,500，但客户暂未付款。
+`Provided delivery services` 指已经完成服务；`on credit` 指给客户赊账，允许客户以后支付；*for \$2,500* 是服务价款；`to a customer` 明确客户是欠钱的一方。白话：送货已完成，赚到 2,500，但客户暂未付款。
 
 输入：已完成服务 2,500、尚未收钱。动作：AR 增 2,500，Cash 保持 6,700；累计收入增到 5,500，使权益再增 2,500，达到 24,700。
 
-为什么 AR 是资产？公司已经取得向客户收取价款的权利，虽然这项权利尚未变成现金。为什么收入现在就记？本题按已提供服务确认收入的口径处理，即权责发生制：收入确认不机械等到收钱。若送货完成后客户下周付款，本周仍已完成赚钱的服务；下周只是把应收变成现金，不能同一服务赚两遍。
+为什么 AR 是资产？公司已经取得向客户收取价款的权利，虽然这项权利尚未变成现金。为什么收入现在就记？本题按已提供服务确认收入的口径处理，即权责发生制（Accrual basis）：收入确认不机械等到收钱。若送货完成后客户下周付款，本周仍已完成赚钱的服务；下周只是把应收变成现金，不能同一服务赚两遍。
 
 为什么不是 AP？这一笔是客户欠 SWIFT，方向与第 4 笔 SWIFT 欠 FuelCo 相反。`on credit` 单独出现不告诉你应收还是应付，必须一起读“公司买了什么”或“公司提供了什么”。
 
-| 交易后账户 | Cash | Vehicle | Supplies | Fuel | AR | AP | Capital | 累计收入 | 累计费用 |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 第 7 笔后 | 6,700 | 15,000 | 500 | 1,000 | 2,500 | 1,000 | 20,000 | 5,500 | 800 |
+资产账户余额如下；相加得到该笔后的资产总额。
+
+| 交易后状态 | Cash | Vehicle | Supplies | Fuel | AR |
+|---|---:|---:|---:|---:|---:|
+| 第 7 笔后 | 6,700 | 15,000 | 500 | 1,000 | 2,500 |
+
+负债、投入资本及累计经营项目如下；它们与上一表属于同一时点。
+
+| 同一交易后状态 | AP | Capital | 累计收入 | 累计费用 |
+|---|---:|---:|---:|---:|
+| 第 7 笔后 | 1,000 | 20,000 | 5,500 | 800 |
 
 $$
 A=25,700,\quad E=20,000+5,500-800=24,700;\qquad 25,700=1,000+24,700
@@ -273,25 +358,41 @@ $$
 
 这笔说明赚到的利润与收到的现金不是同一个数字。期末的应收账款也因此必须列入资产。
 
+**English reference answer（笔记自拟；金额/总额依官方表，英文说明不是官方逐字答案）**：
+
+> Accounts receivable and service revenue each increase by 2,500 because services have been provided on credit; cash does not change. Assets become 25,700, liabilities remain 1,000, and equity becomes 24,700.
+
 ### 第 8 笔：partial payment 是部分还旧债，不是再买一次燃油
 
 > Paid FuelCo \$500 cash for partial payment.
 
-`Paid FuelCo` 是付给供应商 FuelCo；`$500 cash` 是实际支付金额；`for partial payment` 表示部分清偿，结合第 4 笔可确定是偿还原来的 1,000 燃油欠款中的 500。白话：这次还掉一半，剩余 500 继续欠着。不能把 partial 理解为这次购买半份新燃油。
+`Paid FuelCo` 是付给供应商 FuelCo；*\$500 cash* 是实际支付金额；`for partial payment` 表示部分清偿，结合第 4 笔可确定是偿还原来的 1,000 燃油欠款中的 500。白话：这次还掉一半，剩余 500 继续欠着。不能把 partial 理解为这次购买半份新燃油。
 
 输入：AP 原来 1,000，偿还 500。动作：Cash 从 6,700 减为 6,200；AP 从 1,000 减为 500。资产减 500、负债减 500；权益不变，Fuel 仍是 1,000。
 
 为什么不是再记 500 费用？钱付出去的原因是解除之前已记录的付款义务，没有给出新的资源耗用。第 4 笔已经记录了购入燃油；第 8 笔只是结清其中一部分欠款。若再增加燃油资产，就会把同一批燃油重复记入；若再扣费用，就会把偿债误作新经营成本。
 
-| 交易后账户 | Cash | Vehicle | Supplies | Fuel | AR | AP | Capital | 累计收入 | 累计费用 |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 第 8 笔后 | 6,200 | 15,000 | 500 | 1,000 | 2,500 | 500 | 20,000 | 5,500 | 800 |
+资产账户余额如下；相加得到该笔后的资产总额。
+
+| 交易后状态 | Cash | Vehicle | Supplies | Fuel | AR |
+|---|---:|---:|---:|---:|---:|
+| 第 8 笔后 | 6,200 | 15,000 | 500 | 1,000 | 2,500 |
+
+负债、投入资本及累计经营项目如下；它们与上一表属于同一时点。
+
+| 同一交易后状态 | AP | Capital | 累计收入 | 累计费用 |
+|---|---:|---:|---:|---:|
+| 第 8 笔后 | 500 | 20,000 | 5,500 | 800 |
 
 $$
 A=25,200,\quad L=500,\quad E=24,700;\qquad 25,200=500+24,700
 $$
 
 8 笔已全部记录，到这里结束。接下来用分账户复算确认没有漏项，而不是继续添加推测中的业务。
+
+**English reference answer（笔记自拟；金额/总额依官方表，英文说明不是官方逐字答案）**：
+
+> Cash and accounts payable each decrease by 500 to settle part of the existing FuelCo debt; no new fuel or expense is recorded. Assets become 25,200, liabilities become 500, and equity remains 24,700.
 
 ## 5. 官方三列表与自己算出的细账怎样对上
 
@@ -300,8 +401,8 @@ $$
 | 交易 | 资产变化 $\Delta A$ | 负债变化 $\Delta L$ | 权益变化 $\Delta E$ | 交易后 A | 交易后 L | 交易后 E |
 |---|---:|---:|---:|---:|---:|---:|
 | 1 | +20,000 | 0 | +20,000 | 20,000 | 0 | 20,000 |
-| 2 | −15,000 +15,000 = 0 | 0 | 0 | 20,000 | 0 | 20,000 |
-| 3 | −500 +500 = 0 | 0 | 0 | 20,000 | 0 | 20,000 |
+| 2 | $-15,000+15,000=0$ | 0 | 0 | 20,000 | 0 | 20,000 |
+| 3 | $-500+500=0$ | 0 | 0 | 20,000 | 0 | 20,000 |
 | 4 | +1,000 | +1,000 | 0 | 21,000 | 1,000 | 20,000 |
 | 5 | +3,000 | 0 | +3,000 | 24,000 | 1,000 | 23,000 |
 | 6 | −800 | 0 | −800 | 23,200 | 1,000 | 22,200 |
@@ -371,17 +472,17 @@ $$
 | partial payment to supplier | 偿还旧应付的一部分 | Cash ↓，AP ↓ | 不是新购货或新费用 |
 | only（条件阅读补充） | “只有 / 仅”，限制范围 | 要看 only 限定的对象 | 原题这 8 句没有 only，不能自行补入限制 |
 
-例如补充句 “received only $1,000 of the $2,500 due” 指只收回欠款中的 1,000，剩余 AR 为 1,500，不表示本次新赚收入 1,000。only 不能脱离它修饰的金额和对象单独记成规则。
+例如补充句 “received only \$1,000 of the \$2,500 due” 指只收回欠款中的 1,000，剩余 AR 为 1,500，不表示本次新赚收入 1,000。only 不能脱离它修饰的金额和对象单独记成规则。
 
 解题时的两类警讯：一是等式不平衡，可能漏了对应账户或算错方向；二是等式平衡但经济含义错误，例如把资本当收入、把还债当费用。前者回查数值，后者回读 invested、provided、on credit、partial payment 等条件。不能单靠给一边补一个数字让等式看起来平衡。
 
 ## 7. 改变条件后，能不能独立重做
 
-以下均为笔记补充的迁移题，不是官方新增交易。每题独立从原题第 8 笔结束状态开始，不能将不同题的改变连着累加。建议先写出涉及账户与中间余额，再展开答案。
+以下均为笔记补充的迁移题，不是官方新增交易。四题彼此独立，不连着累加：题1、题2从原题第8笔结束状态新增事项；题3从开业重新算8笔，只替换第1笔；题4从原第7笔后出发，只替换第8笔。建议先写出涉及账户与中间余额，再展开答案。
 
 ### 题 1：客户只付回部分欠款
 
-新增一句：“The customer paid only $1,000 of the $2,500 owed for delivery services.” 公司已收现金 1,000。此时 Cash、AR、资产总额、利润、权益分别怎样变？
+新增一句：“The customer paid only \$1,000 of the \$2,500 owed for delivery services.” 公司已收现金 1,000。此时 Cash、AR、资产总额、利润、权益分别怎样变？
 
 <details><summary>答案与理由</summary>
 
@@ -393,11 +494,15 @@ $$
 
 only 限定收到的金额，所以不能把 AR 全部清成 0。如果再加收入 1,000，就是对已经在第 7 笔确认的服务重复记收入。
 
+**English reference（笔记自拟变式答案，非官方新增题解）**：
+
+> Collecting 1,000 increases cash to 7,200 and reduces accounts receivable to 1,500. Assets remain 25,200, liabilities remain 500, profit remains 4,700, and equity remains 24,700; the collection creates no new revenue.
+
 </details>
 
 ### 题 2：新增信息说燃油已经耗用 600
 
-题目另补充：“By month-end, $600 of the fuel had been used.” 不再付现金，也没有新燃油采购。Fuel、Cash、费用、利润与权益怎样变？
+题目另补充：“By month-end, \$600 of the fuel had been used.” 不再付现金，也没有新燃油采购。Fuel、Cash、费用、利润与权益怎样变？
 
 <details><summary>答案与理由</summary>
 
@@ -413,15 +518,19 @@ $$
 
 这是耗用时确认费用，不是偿债时确认费用。原题没有这句，因此不能把此变化偷偷加入官方答案。
 
+**English reference（笔记自拟变式答案，非官方新增题解）**：
+
+> Using 600 of fuel reduces the fuel asset to 400 and increases total expenses to 1,400, without changing cash or accounts payable. Assets become 24,600, liabilities remain 500, profit becomes 4,100, and equity becomes 24,100.
+
 </details>
 
 ### 题 3：第 1 笔如果是借款，其他 7 笔照旧
 
-把第 1 笔改成“SWIFT borrowed $20,000 cash from Eddie Johnson, to be repaid.” 从开业起完整重新计算，期末现金、负债、利润、权益是多少？
+把第 1 笔改成“SWIFT borrowed \$20,000 cash from Eddie Johnson, to be repaid.” 从开业起完整重新计算，期末现金、负债、利润、权益是多少？
 
 <details><summary>答案与理由</summary>
 
-收到的钱有偿还义务，因此第 1 笔改为 Cash +20,000、Loan payable +20,000；Capital 为 0。其他现金动作不变，Cash 仍 6,200，资产总额仍 25,200。
+收到的钱有偿还义务，因此第 1 笔改为 Cash +20,000、应付借款（Loan payable）+20,000；Capital 为 0。其他现金动作不变，Cash 仍 6,200，资产总额仍 25,200。
 
 AP 仍是 FuelCo 的 500，但负债总额还要加借款 20,000：$L=20,500$。服务收入与费用不变，利润仍 4,700；没有投入资本，权益为 4,700。
 
@@ -430,6 +539,10 @@ $$
 $$
 
 借款与投资都使 Cash 增加，但债权人的份额与所有者的份额不同。按原资本口径保留 E=24,700，会把同一份资源权利算两遍。这个改写只给偿还义务，未给利息条件，因此不自行加利息费用。
+
+**English reference（笔记自拟变式答案，非官方新增题解）**：
+
+> Starting again from the beginning of the business, the 20,000 receipt creates a loan payable rather than contributed capital. Ending cash is 6,200, assets are 25,200, liabilities are 20,500, profit is 4,700, and equity is 4,700; no interest is added without a stated condition.
 
 </details>
 
@@ -446,6 +559,10 @@ A=5,700+15,000+500+1,000+2,500=24,700=0+24,700
 $$
 
 相对原题期末，现金和负债都再少 500，利润不变。不能从原第 8 笔后的 6,200 又减 1,000，那样会重复还原先的 500。
+
+**English reference（笔记自拟变式答案，非官方新增题解）**：
+
+> Starting after transaction 7, paying the full 1,000 reduces cash from 6,700 to 5,700 and accounts payable to zero. Assets become 24,700, liabilities are zero, equity remains 24,700, and profit remains 4,700.
 
 </details>
 

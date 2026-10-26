@@ -1,0 +1,167 @@
+{
+  "source_sha256": "f562833a48177422f43856bbf246dc4616ac05bd531d6ebb1273587f7636afbd",
+  "candidate_sha256": "4ab419f295c592ffe48d73bb3170ff9206a87c39326312ae480d0af385ae9fb8",
+  "operations": [
+    {
+      "reason": "current scopeframework not personallearning",
+      "old": "updated: 2026-10-07",
+      "new": "updated: 2026-10-26\nreadability_rules: v2\nteaching_standard: novice-v1\nreadability_review: pending"
+    },
+    {
+      "reason": "S2-02 historical login not current assertion",
+      "old": "Canvas 当前登录受阻，是否需要提交、是否计分、DDL 和提交方式均待核。",
+      "new": "2026-10-07制作时曾记录Canvas登录受阻；本轮未实时核查登录、计分、DDL或提交要求，行政条件仍待可靠来源确认。"
+    },
+    {
+      "reason": "S2-01 current coreterm",
+      "old": "经营收入减去费用得到的利润也会增加权益。",
+      "new": "经营收入减去费用得到的利润（Profit）也会增加权益。"
+    },
+    {
+      "reason": "S2-01 first actualuse English",
+      "old": "即权责发生制：",
+      "new": "即权责发生制（Accrual basis）："
+    },
+    {
+      "reason": "S2-01 explain loanaccount",
+      "old": "Cash +20,000、Loan payable +20,000；",
+      "new": "Cash +20,000、应付借款（Loan payable）+20,000；"
+    },
+    {
+      "reason": "background terminology only",
+      "old": "未来可能产生折旧费用，",
+      "new": "未来可能产生折旧（Depreciation）费用，"
+    },
+    {
+      "reason": "S1-01 exact starting states",
+      "old": "每题独立从原题第 8 笔结束状态开始，不能将不同题的改变连着累加。",
+      "new": "四题彼此独立，不连着累加：题1、题2从原题第8笔结束状态新增事项；题3从开业重新算8笔，只替换第1笔；题4从原第7笔后出发，只替换第8笔。"
+    },
+    {
+      "reason": "R4d prose bridge before symboltable",
+      "old": "| 符号 | 含义 | 本题对应内容 |",
+      "new": "下表一行解释一个符号，三列分别给出记号、意思与本题对应内容；各金额沿用同一题面单位。\n\n| 符号 | 含义 | 本题对应内容 |"
+    },
+    {
+      "reason": "replace repetitive negatives with positive classification chain",
+      "old": "为什么不是收入？SWIFT 没有为此向 Eddie 提供送货服务；钱来自所有者投入，而不是经营赚取。为什么不是负债？题面说 invested，没有说借款或约定偿还。若题面改成 borrowed，才会走负债路径。不能只因都是收进现金就混用。",
+      "new": "这笔的经济来源是所有者投入：SWIFT没有为此向Eddie提供送货服务，题面又写 invested、没有借款或偿还约定。因此计入Capital，而不是Revenue或AP。若将事实改成 borrowed，就应记借款负债；同样收到现金，权利义务可以不同。"
+    },
+    {
+      "reason": "explain splitstate columns once",
+      "old": "下面每笔的 A / L / E 总额都与官方 `After` 行核对；分账户状态是根据原题动作拆出的学习辅助。",
+      "new": "下面每笔的 A / L / E 总额都与官方 `After` 行核对；分账户状态是根据原题动作拆出的学习辅助。 每笔状态分成两表：资产表列Cash、Vehicle、Supplies、Fuel、AR；另一表列AP、Capital、累计收入和累计费用。一行都是该笔完成后的余额，列中的0是余额0，不是“无交易影响”的空白。第二表的权益仍须用资本加累计收入减累计费用计算。"
+    },
+    {
+      "reason": "split10columnstate row8;allcellsretained",
+      "old": "| 交易后账户 | Cash | Vehicle | Supplies | Fuel | AR | AP | Capital | 累计收入 | 累计费用 |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|\n| 第 8 笔后 | 6,200 | 15,000 | 500 | 1,000 | 2,500 | 500 | 20,000 | 5,500 | 800 |",
+      "new": "资产账户余额如下；相加得到该笔后的资产总额。\n\n| 交易后状态 | Cash | Vehicle | Supplies | Fuel | AR |\n|---|---:|---:|---:|---:|---:|\n| 第 8 笔后 | 6,200 | 15,000 | 500 | 1,000 | 2,500 |\n\n负债、投入资本及累计经营项目如下；它们与上一表属于同一时点。\n\n| 同一交易后状态 | AP | Capital | 累计收入 | 累计费用 |\n|---|---:|---:|---:|---:|\n| 第 8 笔后 | 500 | 20,000 | 5,500 | 800 |"
+    },
+    {
+      "reason": "split10columnstate row7;allcellsretained",
+      "old": "| 交易后账户 | Cash | Vehicle | Supplies | Fuel | AR | AP | Capital | 累计收入 | 累计费用 |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|\n| 第 7 笔后 | 6,700 | 15,000 | 500 | 1,000 | 2,500 | 1,000 | 20,000 | 5,500 | 800 |",
+      "new": "资产账户余额如下；相加得到该笔后的资产总额。\n\n| 交易后状态 | Cash | Vehicle | Supplies | Fuel | AR |\n|---|---:|---:|---:|---:|---:|\n| 第 7 笔后 | 6,700 | 15,000 | 500 | 1,000 | 2,500 |\n\n负债、投入资本及累计经营项目如下；它们与上一表属于同一时点。\n\n| 同一交易后状态 | AP | Capital | 累计收入 | 累计费用 |\n|---|---:|---:|---:|---:|\n| 第 7 笔后 | 1,000 | 20,000 | 5,500 | 800 |"
+    },
+    {
+      "reason": "split10columnstate row6;allcellsretained",
+      "old": "| 交易后账户 | Cash | Vehicle | Supplies | Fuel | AR | AP | Capital | 累计收入 | 累计费用 |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|\n| 第 6 笔后 | 6,700 | 15,000 | 500 | 1,000 | 0 | 1,000 | 20,000 | 3,000 | 800 |",
+      "new": "资产账户余额如下；相加得到该笔后的资产总额。\n\n| 交易后状态 | Cash | Vehicle | Supplies | Fuel | AR |\n|---|---:|---:|---:|---:|---:|\n| 第 6 笔后 | 6,700 | 15,000 | 500 | 1,000 | 0 |\n\n负债、投入资本及累计经营项目如下；它们与上一表属于同一时点。\n\n| 同一交易后状态 | AP | Capital | 累计收入 | 累计费用 |\n|---|---:|---:|---:|---:|\n| 第 6 笔后 | 1,000 | 20,000 | 3,000 | 800 |"
+    },
+    {
+      "reason": "split10columnstate row5;allcellsretained",
+      "old": "| 交易后账户 | Cash | Vehicle | Supplies | Fuel | AR | AP | Capital | 累计收入 | 累计费用 |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|\n| 第 5 笔后 | 7,500 | 15,000 | 500 | 1,000 | 0 | 1,000 | 20,000 | 3,000 | 0 |",
+      "new": "资产账户余额如下；相加得到该笔后的资产总额。\n\n| 交易后状态 | Cash | Vehicle | Supplies | Fuel | AR |\n|---|---:|---:|---:|---:|---:|\n| 第 5 笔后 | 7,500 | 15,000 | 500 | 1,000 | 0 |\n\n负债、投入资本及累计经营项目如下；它们与上一表属于同一时点。\n\n| 同一交易后状态 | AP | Capital | 累计收入 | 累计费用 |\n|---|---:|---:|---:|---:|\n| 第 5 笔后 | 1,000 | 20,000 | 3,000 | 0 |"
+    },
+    {
+      "reason": "split10columnstate row4;allcellsretained",
+      "old": "| 交易后账户 | Cash | Vehicle | Supplies | Fuel | AR | AP | Capital | 累计收入 | 累计费用 |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|\n| 第 4 笔后 | 4,500 | 15,000 | 500 | 1,000 | 0 | 1,000 | 20,000 | 0 | 0 |",
+      "new": "资产账户余额如下；相加得到该笔后的资产总额。\n\n| 交易后状态 | Cash | Vehicle | Supplies | Fuel | AR |\n|---|---:|---:|---:|---:|---:|\n| 第 4 笔后 | 4,500 | 15,000 | 500 | 1,000 | 0 |\n\n负债、投入资本及累计经营项目如下；它们与上一表属于同一时点。\n\n| 同一交易后状态 | AP | Capital | 累计收入 | 累计费用 |\n|---|---:|---:|---:|---:|\n| 第 4 笔后 | 1,000 | 20,000 | 0 | 0 |"
+    },
+    {
+      "reason": "split10columnstate row3;allcellsretained",
+      "old": "| 交易后账户 | Cash | Vehicle | Supplies | Fuel | AR | AP | Capital | 累计收入 | 累计费用 |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|\n| 第 3 笔后 | 4,500 | 15,000 | 500 | 0 | 0 | 0 | 20,000 | 0 | 0 |",
+      "new": "资产账户余额如下；相加得到该笔后的资产总额。\n\n| 交易后状态 | Cash | Vehicle | Supplies | Fuel | AR |\n|---|---:|---:|---:|---:|---:|\n| 第 3 笔后 | 4,500 | 15,000 | 500 | 0 | 0 |\n\n负债、投入资本及累计经营项目如下；它们与上一表属于同一时点。\n\n| 同一交易后状态 | AP | Capital | 累计收入 | 累计费用 |\n|---|---:|---:|---:|---:|\n| 第 3 笔后 | 0 | 20,000 | 0 | 0 |"
+    },
+    {
+      "reason": "split10columnstate row2;allcellsretained",
+      "old": "| 交易后账户 | Cash | Vehicle | Supplies | Fuel | AR | AP | Capital | 累计收入 | 累计费用 |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|\n| 第 2 笔后 | 5,000 | 15,000 | 0 | 0 | 0 | 0 | 20,000 | 0 | 0 |",
+      "new": "资产账户余额如下；相加得到该笔后的资产总额。\n\n| 交易后状态 | Cash | Vehicle | Supplies | Fuel | AR |\n|---|---:|---:|---:|---:|---:|\n| 第 2 笔后 | 5,000 | 15,000 | 0 | 0 | 0 |\n\n负债、投入资本及累计经营项目如下；它们与上一表属于同一时点。\n\n| 同一交易后状态 | AP | Capital | 累计收入 | 累计费用 |\n|---|---:|---:|---:|---:|\n| 第 2 笔后 | 0 | 20,000 | 0 | 0 |"
+    },
+    {
+      "reason": "split10columnstate row1;allcellsretained",
+      "old": "| 交易后账户 | Cash | Vehicle | Supplies | Fuel | AR | AP | Capital | 累计收入 | 累计费用 |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|\n| 第 1 笔后 | 20,000 | 0 | 0 | 0 | 0 | 0 | 20,000 | 0 | 0 |",
+      "new": "资产账户余额如下；相加得到该笔后的资产总额。\n\n| 交易后状态 | Cash | Vehicle | Supplies | Fuel | AR |\n|---|---:|---:|---:|---:|---:|\n| 第 1 笔后 | 20,000 | 0 | 0 | 0 | 0 |\n\n负债、投入资本及累计经营项目如下；它们与上一表属于同一时点。\n\n| 同一交易后状态 | AP | Capital | 累计收入 | 累计费用 |\n|---|---:|---:|---:|---:|\n| 第 1 笔后 | 0 | 20,000 | 0 | 0 |"
+    },
+    {
+      "reason": "S2-01 complete English unit8",
+      "old": "unit end",
+      "new": "**English reference answer（笔记自拟；金额/总额依官方表，英文说明不是官方逐字答案）**：\n\n> Cash and accounts payable each decrease by 500 to settle part of the existing FuelCo debt; no new fuel or expense is recorded. Assets become 25,200, liabilities become 500, and equity remains 24,700.\n"
+    },
+    {
+      "reason": "S2-01 complete English unit7",
+      "old": "unit end",
+      "new": "**English reference answer（笔记自拟；金额/总额依官方表，英文说明不是官方逐字答案）**：\n\n> Accounts receivable and service revenue each increase by 2,500 because services have been provided on credit; cash does not change. Assets become 25,700, liabilities remain 1,000, and equity becomes 24,700.\n"
+    },
+    {
+      "reason": "S2-01 complete English unit6",
+      "old": "unit end",
+      "new": "**English reference answer（笔记自拟；金额/总额依官方表，英文说明不是官方逐字答案）**：\n\n> Cash decreases by 800 and rent expense increases by 800, reducing equity once by 800. Assets become 23,200, liabilities remain 1,000, and equity becomes 22,200.\n"
+    },
+    {
+      "reason": "S2-01 complete English unit5",
+      "old": "unit end",
+      "new": "**English reference answer（笔记自拟；金额/总额依官方表，英文说明不是官方逐字答案）**：\n\n> Cash and service revenue each increase by 3,000 because the delivery service has been provided. Assets become 24,000, liabilities remain 1,000, and equity becomes 23,000.\n"
+    },
+    {
+      "reason": "S2-01 complete English unit4",
+      "old": "unit end",
+      "new": "**English reference answer（笔记自拟；金额/总额依官方表，英文说明不是官方逐字答案）**：\n\n> Fuel increases by 1,000 and accounts payable to FuelCo increase by 1,000; no cash is paid. Assets become 21,000, liabilities become 1,000, and equity remains 20,000.\n"
+    },
+    {
+      "reason": "S2-01 complete English unit3",
+      "old": "unit end",
+      "new": "**English reference answer（笔记自拟；金额/总额依官方表，英文说明不是官方逐字答案）**：\n\n> Cash decreases by 500 and office supplies increase by 500 under the stated purchase-only assumption. Assets remain 20,000, liabilities remain 0, and equity remains 20,000.\n"
+    },
+    {
+      "reason": "S2-01 complete English unit2",
+      "old": "unit end",
+      "new": "**English reference answer（笔记自拟；金额/总额依官方表，英文说明不是官方逐字答案）**：\n\n> Cash decreases by 15,000 and the delivery vehicle increases by 15,000. Total assets remain 20,000, liabilities remain 0, and equity remains 20,000.\n"
+    },
+    {
+      "reason": "S2-01 complete English unit1",
+      "old": "unit end",
+      "new": "**English reference answer（笔记自拟；金额/总额依官方表，英文说明不是官方逐字答案）**：\n\n> Cash and contributed capital each increase by 20,000, with no liability created. After transaction 1, assets are 20,000, liabilities are 0, and equity is 20,000.\n"
+    },
+    {
+      "reason": "S2-01 variantEnglish4",
+      "old": "before details close",
+      "new": "**English reference（笔记自拟变式答案，非官方新增题解）**：\n\n> Starting after transaction 7, paying the full 1,000 reduces cash from 6,700 to 5,700 and accounts payable to zero. Assets become 24,700, liabilities are zero, equity remains 24,700, and profit remains 4,700.\n\n"
+    },
+    {
+      "reason": "S2-01 variantEnglish3",
+      "old": "before details close",
+      "new": "**English reference（笔记自拟变式答案，非官方新增题解）**：\n\n> Starting again from incorporation, the 20,000 receipt creates a loan payable rather than contributed capital. Ending cash is 6,200, assets are 25,200, liabilities are 20,500, profit is 4,700, and equity is 4,700; no interest is added without a stated condition.\n\n"
+    },
+    {
+      "reason": "S2-01 variantEnglish2",
+      "old": "before details close",
+      "new": "**English reference（笔记自拟变式答案，非官方新增题解）**：\n\n> Using 600 of fuel reduces the fuel asset to 400 and increases total expenses to 1,400, without changing cash or accounts payable. Assets become 24,600, liabilities remain 500, profit becomes 4,100, and equity becomes 24,100.\n\n"
+    },
+    {
+      "reason": "S2-01 variantEnglish1",
+      "old": "before details close",
+      "new": "**English reference（笔记自拟变式答案，非官方新增题解）**：\n\n> Collecting 1,000 increases cash to 7,200 and reduces accounts receivable to 1,500. Assets remain 25,200, liabilities remain 500, profit remains 4,700, and equity remains 24,700; the collection creates no new revenue.\n\n"
+    },
+    {
+      "reason": "summary arithmetic LaTex",
+      "old": "| 2 | −15,000 +15,000 = 0 |",
+      "new": "| 2 | $-15,000+15,000=0$ |"
+    },
+    {
+      "reason": "summary arithmetic LaTex",
+      "old": "| 3 | −500 +500 = 0 |",
+      "new": "| 3 | $-500+500=0$ |"
+    }
+  ],
+  "scope": "S1-01/S2-01/S2-02 plus mechanicaltable/formattings;officialnumbers andpersonal/adminstatus preserved"
+}
