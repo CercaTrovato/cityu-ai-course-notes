@@ -59,6 +59,17 @@ class CurrentChecks(unittest.TestCase):
         empty = prefix + '## 2. 条件\n\n## 3. 步骤\n'
         self.assertTrue(q.assess_current(empty, 'case5.md')['hard'])
 
+    def test_assignment_guide_scope_and_primary_module_guard(self):
+        prefix = '---\ncourse: AC6761\nassignment: A01-project\n---\n\n'
+        body = ('## 2. 教师原文\n\nPrepare a report.\n\n'
+                '## 3. 准备动作\n\n先按同一年度收集两家公司报表，记录单位和集团范围，避免把母公司与集团混用。\n')
+        self.assertNotIn('C_STRUCTURE', codes(q.assess_current(prefix+body, 'guide.md')))
+        naked = prefix+body+'\n## 4. 运行\n\n'+FENCE+'python\nprint(1)\n'+FENCE+'\n'
+        self.assertIn('C_CODE_EXPLANATION', codes(q.assess_current(naked, 'guide.md')))
+        self.assertTrue(q.assess_current(prefix+'## 2. 条件\n\n## 3. 步骤\n', 'guide.md')['hard'])
+        primary = prefix.replace('assignment:', 'module: M01\nassignment:')
+        self.assertIn('C_STRUCTURE', codes(q.assess_current(primary+body, 'M01.md')))
+
     def test_unlabelled_short_but_explained_does_not_fail_quota(self):
         text = note('窗口均值用来平滑短期变化。\n\n先求过去三期的平均：$M=(2+4+6)/3=4$。\n\n若窗口包含未来销量，就会泄漏待预测的答案。')
         self.assertFalse(q.assess_current(text, 'M01.md')['hard'])

@@ -1243,7 +1243,10 @@ def source_contract_checks(body, manifest_path):
 
 
 def assess_current(t, fn, total=0, tut=False, source_checks=None):
-    learning_document = frontmatter(t).get('type', '').strip('\"\'') in {'课堂练习解析', 'practice-guide'}
+    fm = frontmatter(t)
+    primary_module = bool(re.fullmatch(r'[MT]\d{2}', fm.get('module', '').strip().strip("\"'")))
+    standalone_assignment = bool(fm.get('assignment', '').strip()) and not primary_module
+    learning_document = fm.get('type', '').strip("\"'") in {'课堂练习解析', 'practice-guide'} or standalone_assignment
     body = t if learning_document else (body_T(t) if tut else body_M(t))
     sections = content_sections(body, include_level2=learning_document)
     hard, warnings = [], []

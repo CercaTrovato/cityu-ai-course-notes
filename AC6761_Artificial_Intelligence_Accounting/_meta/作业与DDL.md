@@ -349,3 +349,7 @@ Quiz 2 原件已到：基于 ExampleTables1 查询 E-10 的销售，保存 Query
 ## 2026-10-26 Case5 本地官图与解析核对更新
 
 [[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M05-Case5-销售与收款REA核心模型|Case5完整原题/模型/中英解读]]已全篇审修，并与本地Case5.docx及SolutionofCase5.pdf逐项核对7类/8关联/16端点/21属性。10月旧“逐题待核”保留当时事实，当前本项本地官图核对已完成；没有新增计分/截止/格式/提交证据，Canvas四入口未实时刷新。不新建未知DDL、不改本人提交评分，也不升级M05主笔记审查。
+
+## 2026-10-26 A01 准备指南与来源边界
+
+[[AC6761_Artificial_Intelligence_Accounting/assignment/graded/A01-ai-accounting-project/notes/任务说明|A01 准备指南]] 已全篇审修及原子回读；本轮校读项目 Word/Outline 并仅核本人名册行，Group 11/11/18 未变，报告不晚于 11/29、无小时。本项目须满足团队批判判断及 Outline 小组项目 20% 行的 GenAI 披露/为何采纳；10% 课堂活动行的禁写限制不泛套。四个 Canvas 入口本轮均 SSO，未获得最新公告或附件，不能由旧禁用/下载记录推断现在无变更；任务仍 draft，未代选公司、未制作/发出团队报告，不更改本人提交/评分。
