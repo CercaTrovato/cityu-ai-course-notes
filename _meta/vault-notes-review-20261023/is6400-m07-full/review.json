@@ -1,0 +1,669 @@
+{
+  "schema": "note-review-v2",
+  "note": "IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性.md",
+  "scope": "full",
+  "source_sha256": "29da4ab6ec77ded3a90d96c343628cdc37e8c8239b5819ec9453fdc3924a9396",
+  "candidate_sha256": "ff97002c421c4941229d952ebbd9d3907705a440f5af26d4765d3a2495cc6ecc",
+  "review_file": "review.md",
+  "review_sha256": "1bb7f8486d203e543acc4cb25315b1cb081e20656be71212398dc487665d1e47",
+  "checks": {
+    "understanding": {
+      "status": "passed",
+      "evidence": "review.md 身份/范围与独审关闭；原reviewer全篇两阶段v1 + resume-independent-61/targeted-review.md对22组变化及依赖关闭B1/B2。未声称新代理全文重读。"
+    },
+    "sources": {
+      "status": "passed",
+      "evidence": "review.md 来源/原题/重要计算；source-index/source-checks；resume-source-rule-hashes.json原件7/7；旧全篇逐源与缓存实际复做承接；resume-rolling-calculation.json本次运算及新独审另复做。"
+    },
+    "warnings": {
+      "status": "passed",
+      "evidence": "resume-warning-dispositions.json/.md列齐147条R.warn的18类、全部行号/原句/具体解释；precheck-v3 L/C.hard/C.warn/R.hard均0；旧G/E保留FAIL，不以机械结果证明教学。"
+    },
+    "visuals": {
+      "status": "passed",
+      "evidence": "resume-visual-review.md及assets；作者实际Edge3最终v3同源显示、4图分窗/12截图；新独审实看12截图并核18/18资产。原生Obsidian未看，未冒称413公式逐个实看。"
+    }
+  },
+  "independent_review": {
+    "author_ids": [
+      "thread:01a17880-c07b-76e3-a087-e32899fef38a",
+      "/root/resume_is6400_m07_author_61"
+    ],
+    "reviewer_id": "/root/review_is6400_m07_resume_61",
+    "perspective": "high-school-beginner",
+    "status": "passed",
+    "candidate_sha256": "ff97002c421c4941229d952ebbd9d3907705a440f5af26d4765d3a2495cc6ecc",
+    "report_file": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\013-targeted-review.md",
+    "report_sha256": "f2756872cbcc9fbee866e4a88f5df3dd69e686b699a2026e36195d86b40f60c5",
+    "scope_evidence": "Original v1 full review unchanged scope inherited; replacement reviewer covered all22 change groups and affected dependencies, not fresh unchanged full rereading. Original reports bound in assets.",
+    "original_full_reviewer_id": "/root/review_is6400_m07_full_61"
+  },
+  "assets": [
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\000-candidate-v1.md",
+      "sha256": "6f34621ed0a246034c10c5b1779add5c4b183823c309c90da29e1692854ff88d"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\001-candidate-v1-frozen.json",
+      "sha256": "792308d08ba60e4335de5f0d447176ec9c0240f8ee206bdb384ab2e45ecbf733"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\002-candidate-v2.md",
+      "sha256": "3cb16060cca9e6fd3b778f3fc675930df533a1f0081c45811da867f7e9145354"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\003-candidate-v2-frozen.json",
+      "sha256": "9d655269f685c304a26e42ff8f8b5f34d02389c37461ca25eebe6dad35635e55"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\004-candidate-v3-frozen.json",
+      "sha256": "5835061aede2767a9cc56ec4e35a69ddb5bf6e699d8b5644af6ed905c51da6f6"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\005-baseline-to-v1.diff",
+      "sha256": "6b10c578d34526d61b4db62af83fa4dfb9fb4428056de593ebe494048ea4628f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\006-v1-to-v2.diff",
+      "sha256": "54109d4c865e26069a4bc9497223632dbc732301d45757126f8fcce079deb58b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\007-v2-to-v3.diff",
+      "sha256": "424e6780fc63edcf88f41a6ad9d4bfc9ecfc090edafdd4b6b9dc799298f99263"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\008-v1-to-v3.diff",
+      "sha256": "51d0af6eb50745084a241e3ac601e8a9429cf9525f4fa313d7766cc6509fd656"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\009-baseline-to-v3.diff",
+      "sha256": "5e263978672478aba670ab453e9cda7e759d3f2021af26091a8c85891439ed0c"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\010-stage-1.md",
+      "sha256": "295488bf6efa8a0f8ebcd70f3db7c365440f7ab4d7164b770b2992f30c9b9034"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\011-independent-review.md",
+      "sha256": "f6dae477b82d9219936843ea015957b79909ce9c20ff59dd4d8d45ad64115ca6"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\012-stage-1.md",
+      "sha256": "97078f490cd7b594278ac3136ca88814ceba5cdacb87ab92d995e5d638e63341"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\013-targeted-review.md",
+      "sha256": "f2756872cbcc9fbee866e4a88f5df3dd69e686b699a2026e36195d86b40f60c5"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\014-evidence-checks.json",
+      "sha256": "888a610ee4c63fb0efee84af696ac6c57cd659919906369e741198fb45e5c49e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\015-visual-asset-checks.json",
+      "sha256": "342069321ec44dd2ed8e886fff38a92c49d57b463b9a2828e982e951af16f03a"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\016-v1-to-v2-independently-derived.diff",
+      "sha256": "5b911bb5d1def6729147e73fb07d452abdeba3fb224ac3b5531c5f67f2606c90"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\017-v1-to-v3-independently-derived.diff",
+      "sha256": "51d0af6eb50745084a241e3ac601e8a9429cf9525f4fa313d7766cc6509fd656"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\018-v2-to-v3-independently-derived.diff",
+      "sha256": "424e6780fc63edcf88f41a6ad9d4bfc9ecfc090edafdd4b6b9dc799298f99263"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\019-source-index.json",
+      "sha256": "b15c9bf558070bcb06235d9f5515c773b93816606008e96ea57284222095042b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\020-source-checks.json",
+      "sha256": "e7018d9c2b330ee35e2b1af70b62bb601fc48eeeb06121ee0ab9811d02ca1622"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\021-rules-index.json",
+      "sha256": "04839112feed1ce9eb4e976d4bb60e7ab7a3479ceb1151902784b3e3be0771f7"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\022-source-visual-panels.json",
+      "sha256": "1d008c81d9b97d62269af83221d36f9f90361e65c63d8ce320e1d89e9622a8fb"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\023-calculation-results.json",
+      "sha256": "4c8f0baa05de4b79dd2223702a4aeadfd51fc31ed05d65017a434a68806be297"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\024-workbook-formula-check.json",
+      "sha256": "9cc368ad9881a234f0df40861040f663c4b76fa43133d542362975ff1658073e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\025-resume-rolling-calculation.json",
+      "sha256": "af2e03187fcd5b15d943b081e0edc3554d28c72313febd292ec3c343707af7b2"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\026-resume-source-rule-hashes.json",
+      "sha256": "2ef744c605b82bdd17cbfd28054e933b4b29eafdf36b0a0ff0a96f446348bfdd"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\027-precheck-v1.json",
+      "sha256": "a8a5feeb22704358b146ff47f4a780ab4595346d2b15712aa8eac22542689bea"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\028-precheck-v3.json",
+      "sha256": "167b446fbae021f59450b4bebae0baf97644a272337fc484014797c87dfd0e42"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\029-precheck-v3-binding.json",
+      "sha256": "c2c8f207bad555fac344f39b0227fa5c273e677c4ee3a1d763a0b0f7bc76f690"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\030-transcript-audit-v3.json",
+      "sha256": "0ad90748d61d190225701a44fa578099e6141b1f6224a538a655974b7db338ec"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\031-transcript-audit-v3-binding.json",
+      "sha256": "80faaec60be22fac7c5f281d252c6e61fe2a60ca23a3d2c734d33faa50c85da9"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\032-resume-link-check.json",
+      "sha256": "3e67df4c55949541d5264ab57e297355bfd09b3b85f9936de592c769c866b529"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\033-resume-warning-dispositions.json",
+      "sha256": "4f8f829af22246a7d8e8a05b081080da1e38b173a0b9ce5d3a7f3f8639125114"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\034-resume-warning-dispositions.md",
+      "sha256": "b168f1bd232e9538909e68c83399a3fa644482217dbb9122d3188b64a9d5e509"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\035-resume-visual-review.md",
+      "sha256": "0332e36ced4efab0cbffbbba4ce745079a8a0c900e4c2ce93c8d5a19e0b43528"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\036-resume-visual-assets.json",
+      "sha256": "99850101f009e95c0b0065b6a31b486730115a2f78ff2c9a687858b6f99f39d8"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\037-resume-browser-metrics.json",
+      "sha256": "3bb7835759f76eeafebe58a410aa2bf87c839abe03238e88d7dcb0be31b48080"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\038-resume-preview.py",
+      "sha256": "f96ab7be3b2bcdd27d3a1b54c60056f0f86764259f2faf98587af3e77cab57a6"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\039-resume-preview.html",
+      "sha256": "6241ccd1162695498cda32cbf63f5f0b094216f7f5dcc17abc1b049600fd0340"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\040-resume-diagrams.html",
+      "sha256": "10f3d9646ea98b92bf3f24825eb2fa5d627b14d551141d21d88ad7b916316cd6"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\041-00-AGENTS.md",
+      "sha256": "b0ff3babef19ecac670f51747903cc4aee113a6430e1cacfa09b59459299977d"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\042-01-CLAUDE.md",
+      "sha256": "ef0e8bf369ade4dbc87d4282418769d3330d8c7d2f8abd6f49b225b0dd2ab833"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\043-02-AGENTS.md",
+      "sha256": "c41fa02a8a630f3085d6952f756b67f4d4171240e025644cdfbf33f36d17c9bb"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\044-03-CLAUDE.md",
+      "sha256": "4dc17adb939e7341846a9a3eef4898e2a9cfb0f9bea7147512605f8f60cad6da"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\045-04-可读性总规则.md",
+      "sha256": "4017395a8fa55ffc8779f4466a04c4327153162df11465523216a1b398e03c9b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\046-05-IS6400可读性细则.md",
+      "sha256": "93426d1a852bc24d9abbfe71c4dcda8d617293c214dc65658c066233a45be3bc"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\047-06-机制理解与可读性标准.md",
+      "sha256": "854a709b43ccd4d024a81c4bfa1852c8498adcb9dfc59ca54a5bcbb7596e2a02"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\048-07-笔记模板.md",
+      "sha256": "90d0fb2daefd961519c0a1dd88aa937f03ad4e07378810ece777a17908cb335f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\049-08-笔记制作与融合验收流程.md",
+      "sha256": "c8445bcad55e20d2ca503b76f8fe01385ee693eb2ea5622bd435772c1c79ddb0"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\050-09-笔记质量规范.md",
+      "sha256": "cdbfd61f1d5d1f3b39f78842994fe89e0dfcc9db6b8de70685f74b7cf817682c"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\051-10-笔记检查器说明.md",
+      "sha256": "bacd2796cbd66564f8a201b961de7b6c06e3962bfead55afaa54d9ad6e0a38a3"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\052-11-课件题目处理规则.md",
+      "sha256": "cbf91099ae926dd50370dc8e535bf5a809b03cb4471d0bf1547fb53db36876b7"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\053-12-课堂练习完成与解析规范.md",
+      "sha256": "ca9e6978a46ddbd5a482e3323d322a42718aa4a9044ee00d4cb0a1d114ac72f6"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\054-13-教学图示规范.md",
+      "sha256": "7620718b0b52409a21cf01431a368a7b36231b9700f721ab753d322f6d3c6738"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\055-14-教学图示工具流程.md",
+      "sha256": "0402d4f85513dd5795e16937a98d1d883f1aee6410d5282650a86b5f462793d6"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\056-15-材料处理规则.md",
+      "sha256": "53af307507085356beb585cd9ddc4d0e984ae1dce18f8afa34c75c095e0e075b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\057-16-备份与公开发布规则.md",
+      "sha256": "928cb854f5c81ecb0d06df5500dc7ad1aef6ef44d05ea972a3c928b6fee20c40"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\058-17-SKILL.md",
+      "sha256": "645d6751123c24f3bf206a6d7763e461ce7d358f71ceeeabbcfe0792c4b81821"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\059-18-formats.md",
+      "sha256": "fcaee6e3d521f9f9270602ce75ccae4f4289071e88261bd6d93e8f367180897d"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\060-19-asr-dictionary.md",
+      "sha256": "b9b91783bb750c9dbc53708c08c3ffd1b09150545e8616ab242e24182195d403"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\061-20-课程前置资料.md",
+      "sha256": "cdfcdc065e4ed23ae1e62db4afdd6f82d447121e2d772f081c5ca14a43594146"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\062-21-知识层级台账.md",
+      "sha256": "5f60b06775807b6b58786674d23ff7e73d231e37770436a679889c6a8fac4c6f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\063-22-IS6400作业制作规范.md",
+      "sha256": "d00d166eb2abeddb94ba4de263aa4566bddb4faf87eae75acf073a28ee8f8f60"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\064-lecture-pages.json",
+      "sha256": "e307fe1ada8e4f167150c2b8a72508bf67e6ab26f9e9f0c63e1f9368e174ff4b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\065-lecture.txt",
+      "sha256": "1ece2bd67eefe6ac050a4d3add454bad804ec7b89a8cbdb7382e6ae02f7f9015"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\066-M07-transcript-provenance.json.snapshot",
+      "sha256": "5bbedfcfdccea41398289ca1848937cd20912d39c3039cae252791675323a6bb"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\067-M07-transcript-source15-partial.txt.snapshot",
+      "sha256": "2fc527eb5a56e80d71a2c6bc3ee40a78c90c883091cd8cbc826d78161d4754b7"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\068-M07-transcript-source16-partial.txt.snapshot",
+      "sha256": "1b39a5d75cd082fbaa4f48e716c522438ff91e0fd0a1389087bcbd2a4e762040"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\069-M07-transcript-source17-partial.txt.snapshot",
+      "sha256": "fd6de1e4c2c78abd52e9548a4c5fe18941990a68addc703a4c4bd96b78074597"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\070-notebook-index.json",
+      "sha256": "59d04ffdfabfe4a30bacc370e0fa41f7195c31bcb7058d636af872c8c384c06d"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\071-workbook-1-artifact.json",
+      "sha256": "9303898127f4f89f6b56eb386a947ec7d89d756bcabba957d070880cabee052d"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\072-workbook-1-raw-xml.json",
+      "sha256": "fb101f1339a859bb9cd9fef7c29a22b5d2ac5f6c9bd99401d7183cc4f5ab22cd"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\073-workbook-2-artifact.json",
+      "sha256": "2d5b3d5226af7b964f71cf63eb2a6cc1962e042d1e51661f95807280b105afe6"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\074-workbook-2-raw-xml.json",
+      "sha256": "c8eef2ce6dbe9b6ed3c3b41477e96fc076fed083241c88aff968db9f2bdcf883"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\075-p-01.png",
+      "sha256": "4d2cf2ca671af354a04189b518b84e4109fb6e4bb501c8dd4a93efb861d29610"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\076-p-02.png",
+      "sha256": "f9bbe5660b7245990197c66ba428af495e611c4c307840a50c79266abc5699f9"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\077-p-03.png",
+      "sha256": "9491c1997776c702eb06b28802ac43ba314e3093f05aae3f1001c11ad2f4e8b5"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\078-p-04.png",
+      "sha256": "35a5f31f1127b7606c9c317c6b5f815e64b4a21eae8134d3ac42ad502dac3c3f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\079-p-05.png",
+      "sha256": "6d35d6db1ec5cf1e1f5c6b6c149c2dfd892c49d4b4ecd952af1cc23196fc9089"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\080-p-06.png",
+      "sha256": "5b87f36d12cd02048ed1298fad418565dbcb7cab82b5b127f5d50f25dfefa777"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\081-p-07.png",
+      "sha256": "f19961616016ac671e475ba35420116209b2e406c36ef5c5c8d344fa9b60535a"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\082-p-08.png",
+      "sha256": "5f86426122a88940565faf6ff5a94874d9ea28032d158d855c1253343d5900d8"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\083-p-09.png",
+      "sha256": "b8fc6daf136dac5dfea030f5c32f734d07e30264c65f057937d2a7404506aab3"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\084-p-10.png",
+      "sha256": "823d059a70d532451687d6c5e703acc928269544f0130cf2855eb2cee243035f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\085-p-11.png",
+      "sha256": "c0131e28986b1d0842ef53916b7ae25367bddb2369e204fa29ccc550467c38ec"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\086-p-12.png",
+      "sha256": "cb3e4b5ae214886489656feb1ef8c783bd83fd533127baee65c373136123ff7a"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\087-p-13.png",
+      "sha256": "72db0a28f7b03f472708eab1ab0d614654bb2be2df18df1cf31bd7f403e80e96"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\088-p-14.png",
+      "sha256": "17e9e6ef80dc9165fb55d1b8dc9a7fa59ecf258bcd1ea932f07b6cb017d4f246"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\089-p-15.png",
+      "sha256": "b7d9ae2295927b7adc4b9c87f75310a99ab605062df7f468d82599ea34ce9809"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\090-p-16.png",
+      "sha256": "23c751b424bd578068bbf7de3f724688e85ed54ead3c8a887346c333c051bee6"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\091-p-17.png",
+      "sha256": "93de68c79eba304997a05ebe599e7435cad7cc04df3ea66f8abdc0853699f45e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\092-p-18.png",
+      "sha256": "aa0ff7c0b3a7a4799485c71fb0f744fb4f46268b2cadb0bf8e0f469162517a33"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\093-p-19.png",
+      "sha256": "ffc7838544b7304a49527c630a0826d9b2708ca1d1f5dafa785833912c46fc03"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\094-p-20.png",
+      "sha256": "9250f6305a88b681f36f188a03dff90645e6df6493974a5c44e4a812a81b64e6"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\095-p-21.png",
+      "sha256": "6ffcadab15dde232eb1f2b29a259e18e153ef6993d2513c8d073e32fc7f55dc2"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\096-p-22.png",
+      "sha256": "86ee800528540b64cd8f1724196fc5c217d635dead18d0822356cbf9e2a7fce2"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\097-p-23.png",
+      "sha256": "805d71c46674ddd21aab45e4faa032e11c8a7304de22d027d704f749dac6f1a4"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\098-p-24.png",
+      "sha256": "e17764f365ec8e02b21fe182a2dbf04d2344febdd0cc18253563bae9a435eb20"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\099-p-25.png",
+      "sha256": "37af58da5363f728b57fc9981bfc20762d4339c2036934adf56d73baddf80281"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\100-p-26.png",
+      "sha256": "0e0d08199d9cb58832f67a28dd943dbff95eba3d74de119057214a03e339ed05"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\101-p-27.png",
+      "sha256": "74d2fcdd824c4103802abd43dbe40ae019f1035bae3bf972b3e09d729405db8c"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\102-p-28.png",
+      "sha256": "b42214c5216aa339109def36e9b397cbf24da4c5a35b6ba65b6bb59cbb73116e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\103-p-29.png",
+      "sha256": "5251bb5ae6e1f55d5abefdff19ff3e561e491b0d3d71da6f6ae39574abb3ebc5"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\104-p-30.png",
+      "sha256": "5692ae66a874c9121965aff4a547f20feff536809006413b1269e34cece6fe9a"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\105-p-31.png",
+      "sha256": "f5d39fb3f3e99ee7bd6fae8134296842ef51727c3eb7779080bb85e8f25f86d1"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\106-p-32.png",
+      "sha256": "486763bad85253e6aa95d79427e111ef78990f90212efe371f05c05508ef30ad"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\107-p-33.png",
+      "sha256": "8f36df3d224d98f29bfe2304817547716e66f25a4249907f5c258a5d9ab2fc04"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\108-p-34.png",
+      "sha256": "d046fe0e28325cfee92a839e1346ed956dd79d51052824eac7e12ca72667cafb"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\109-p-35.png",
+      "sha256": "601481c283a16af27000b55e0eae8fa8fd116a4e34ba1a72978602921e39fd75"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\110-p-36.png",
+      "sha256": "3a74d97c2c66ea12d9f0157cadbbc689e4a7571dfb95de68fa3dbb9228c5d472"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\111-p-37.png",
+      "sha256": "14e5cd41bb3f6b92ececa14eca41bfa41c80dcd19f78ad0d56e7322b12539300"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\112-p-38.png",
+      "sha256": "c3ff624d262edb2e7cba1a7d6bc39b0abc3b8cfc26c9c15fe202b36694422b01"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\113-p-39.png",
+      "sha256": "cc05ab5c2192b95ff454912806b89047abbd7893673fdc4c250e2eb5f5ade8b5"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\114-p-40.png",
+      "sha256": "4162031656dafffa3ecb0f4abbdb94c9176b1e2531229e9ebc011bf195933618"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\115-p-41.png",
+      "sha256": "582ecd41713a5eccdf1d6139392f43e7f968b2e5e287065ff18a2d65ac588191"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\116-p-42.png",
+      "sha256": "9482749852a4bd42df306ffa40f897956eb1c02eaf4ef07fb331c1c583080efb"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\117-p-43.png",
+      "sha256": "306649cc662f0eb12a9469775575965b782528eba2422a0936a4b5d34d6c3d9c"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\118-p-44.png",
+      "sha256": "c67041129cb49099c4296d8bcf1c16a3f8d92f837aebab4580e0f2632ef95a40"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\119-p-45.png",
+      "sha256": "a724e170ac6d8f23b9952e56ce3e4479d290690e983ee72a352dc45ac8d4761e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\120-panel-01.png",
+      "sha256": "3516ad313a52861bfe3fdec50079bfb1c79978d5fcbef88dd6cde1f347bac059"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\121-panel-05.png",
+      "sha256": "05f8f2aff398cf7ffc1a7da0628d5a0c552785f3c089dc88d19f25bcf2557923"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\122-panel-09.png",
+      "sha256": "4f8c27f67126c7ffb488d4b4cc73d91955b1b33574c5bbd3bf3f5e8e3313c8aa"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\123-panel-13.png",
+      "sha256": "8b21d91520f60f22243c2f62d5a58af73b88946d8a7c4ce973428e0bd1bfc8e7"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\124-panel-17.png",
+      "sha256": "c745fad9a6ad44304480ccebfa45ddb3ed266fe2b5c7c74bd01ae3499dc70ec9"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\125-panel-21.png",
+      "sha256": "10faa33c30e196eb53742c13f7536391ea7c5ba0336aec47c66c2a37e452d3c1"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\126-panel-25.png",
+      "sha256": "35ed10a0a4f0ba482717e116ac4da6ba7b48fd5e9083fcd6b2f97c1d6bd3cfc2"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\127-panel-29.png",
+      "sha256": "c6ce73ce2f7024cff1753117ddea0c82480d1ec44bd4d556a439a05173b8a6af"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\128-panel-33.png",
+      "sha256": "b74c850257377a130c6ff63fa55d30aa9519c8acc009d4b210cf82a4013e62a4"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\129-panel-37.png",
+      "sha256": "4ae043076f2ee45e7772386058c3067fa6d4b70a8d70897fc55d294e16989783"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\130-panel-41.png",
+      "sha256": "123124c6341424002c02f302ea735fe4ac64f69ace75dabd9ec5e66d5da2fb79"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\131-panel-45.png",
+      "sha256": "c641d7470306e505543dfcf401682d9407b8795e55d8ae692c4d5a5aa284665a"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\132-workbook-1.png",
+      "sha256": "09a44f4ac4f668a2df5eb67387500dcee52bcf439b174c38e1d9b50033a21d91"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\133-workbook-2.png",
+      "sha256": "11117b6e5e34351154afe86a18d331f9b23d4ba4b19c5b6da310fbb572e3fc95"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\134-resume-visual-hw-formulas.png",
+      "sha256": "12c1b3537a5bfc2beea93029829f727a04f4eb52f9b8a3e819146f0684a84129"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\135-resume-visual-lag.png",
+      "sha256": "d1d273f9482ee259214a343fda69ffe7a3f066822fcc73df9ee2436d30df58dc"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\136-resume-visual-likelihood.png",
+      "sha256": "d996ee7300c3c0b0b4b00d08d6fa4578261621ac88b851ac1056c88a48c8089f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\137-resume-visual-loop-bottom.png",
+      "sha256": "84485b77eb4af59d005b20bbbd8fed2e080ac224d953de6ce9f4da6fff019a6d"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\138-resume-visual-loop-init.png",
+      "sha256": "234417f355845ab326f52b6a71238290c69eb81da08308b7f91b7b2ee5f4c988"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\139-resume-visual-loop-mid.png",
+      "sha256": "a5289f5ae4d26d3c3bcd9fe7793d651f36f6ccc2b5e82f74190356054aaf7dd2"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\140-resume-visual-loop-top.png",
+      "sha256": "19ecc93b6c7560dbf5d30d1f37942237f85c5c693c788bb25d25b7c8bb1d1092"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\141-resume-visual-rolling-table.png",
+      "sha256": "b8e418d2d51d2aa8ebdf01601ad00158868e1a57fd8d1b37ec97d72c59a71966"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\142-resume-visual-selection-bottom.png",
+      "sha256": "58c984b84c6fedbbd9a892dd4d343ddd1a58456603779885078a4f97b8a99055"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\143-resume-visual-selection-top.png",
+      "sha256": "73dbfa44f6acb9cf44f734db5b926cce74652b7226e8fe8c4ed828b5006d8a18"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\144-resume-visual-test.png",
+      "sha256": "816be247f48e1474cf173c7787c76e7719fb176aac06a1012e34d4cca0da9ede"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\145-resume-visual-tree.png",
+      "sha256": "e7f425d239668e688420dcd8929e297fb64e06ffaf0e5eca0f7e056d1fc98ce2"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\146-IS6400-L8-time series1-new.pdf",
+      "sha256": "5583530f3b6165deb406841eb8e1f54cae384f4341037304d5a7490ffacca939"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\147-M07-transcript-source15-partial.txt",
+      "sha256": "2fc527eb5a56e80d71a2c6bc3ee40a78c90c883091cd8cbc826d78161d4754b7"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\148-M07-transcript-source16-partial.txt",
+      "sha256": "1b39a5d75cd082fbaa4f48e716c522438ff91e0fd0a1389087bcbd2a4e762040"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\149-M07-transcript-source17-partial.txt",
+      "sha256": "fd6de1e4c2c78abd52e9548a4c5fe18941990a68addc703a4c4bd96b78074597"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\150-M07-transcript-provenance.json",
+      "sha256": "5bbedfcfdccea41398289ca1848937cd20912d39c3039cae252791675323a6bb"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\151-Why Double Moving Average Works.xlsx",
+      "sha256": "c58e903e5534910aa1df267f9d77afa5c208a80a79d861452783f4e7400b6cc7"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m07-full\\152-model lagged term in sklearn.xlsx",
+      "sha256": "6ee0a8bf214ddd91e4097ed2d69aeb94964e47c7b174e00388dde94ef0c2ee20"
+    }
+  ],
+  "unresolved": [],
+  "known_material_limits": [
+    "S15/S16/S17独立时钟/接缝和课堂日期未知；缺录页不可降权",
+    "原音/Drive权限与字节未新增核；原生Obsidian未看",
+    "64期回归未重拟合，T08未重跑；个人学习提交评分不改"
+  ],
+  "root_acceptance": {
+    "writer": "/root",
+    "source_baseline_live": true,
+    "all_bound_assets_live": true,
+    "independent_reports": "actual original full and exact targeted closure retained, no new full-review claim",
+    "evidence": "source/important calculation and necessary actual visual evidence prepared by named actual worker; root checked current hashes/report chain and scope",
+    "writeback": "separate writeback.json"
+  }
+}
