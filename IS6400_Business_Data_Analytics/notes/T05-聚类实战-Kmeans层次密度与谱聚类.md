@@ -2,7 +2,8 @@
 course: IS6400
 module: 5
 readability_rules: v2
-readability_review: pending
+readability_review: passed
+teaching_standard: novice-v1
 type: tutorial
 week: 5
 date: 2026-09-30
@@ -16,10 +17,10 @@ prerequisites: [M03, T03, M04, T04, M05]
 new_concepts: [KMeans.fit, labels_, cluster_centers_, predict, scipy.cluster.hierarchy.linkage, dendrogram, AgglomerativeClustering, linkage, DBSCAN, eps, min_samples, core_sample_indices_, SpectralClustering, affinity, gamma]
 tags: [IS6400, tutorial, clustering, KMeans, hierarchical-clustering, DBSCAN, spectral-clustering, scipy, sklearn]
 status: v1.0
-updated: 2026-09-30
+updated: 2026-10-27
 quality_spec: v1
 mechanism_spec: v1
-mechanism_review: pending
+mechanism_review: passed
 ---
 
 # T05 · 聚类实战：K-means、层次、密度与谱聚类
@@ -59,6 +60,52 @@ notebook **原 metadata** 是 Python 3.13.5、kernel `conda-base-py`；2026-09-3
 2. **scipy 层次函数**：`Z = hierarchy.linkage(X, method)` 直接返回合并记录，再 `hierarchy.dendrogram(Z)` 画树。这里 `Z` 不是模型对象，而是 `(n-1, 4)` 的 linkage matrix。
 
 🎙️ **考试范围**（tutorial 讲解者，B `01:05:30`–B `01:07:20`）：要知道 library、function / model call、怎样运行模型和关键参数；B `01:16:14`–B `01:16:22` 又说明树状图绘图代码不用背，并特别提醒 K-means 与 spectral clustering。
+
+### 1.3 先能追踪一行数据，再读模型调用
+
+这里的聚类（clustering）是按选定的相似性把对象分组；没有一列正确答案交给模型。一个样本是一行对象，一个特征是一列测量。电影表有 6 行用户和 4 列评分，因此数值输入是 6×4；用户名只负责认人。
+
+先用最小语法读后面的代码。`k = 2` 把数值保存在名字 `k` 下，`k == 2` 才是比较。`['x', 'y']` 是装两个名字的列表；`[[0, 1], [2, 3]]` 是两行两列。引号内是文字，`#` 后是给人看的注释。`import numpy as np` 加载工具库并给它一个短名字。
+
+函数像接收输入后做事的工具。`KMeans(n_clusters=2)` 先建立一个带配置的模型对象；`n_clusters` 是参数名，2 是本次选的值。`model.fit(X)` 才让模型读取 X 并学习；`model.labels_` 读取已经算出的结果。点号表示取对象的功能或属性；尾部下划线提示这个属性来自拟合。未运行 `fit` 就取结果，会缺少相应属性。
+
+数组的形状（shape）按“行×列”读；`(6,)` 是长度 6 的一维数组，还不是 6×1 的二维列。`X[:, 0]` 中冒号取全部行，0 取第一列；Python 从 0 编号。`reshape(-1, 1)` 要求变成一列，让程序从总元素数推回行数；不会重新算标签。`axis=1` 在删列和横向拼表时都指列轴，但具体动作取决于前面的函数。
+
+布尔掩码（Boolean mask）是逐行的真假选择。例如标签 `[0, -1, 0]` 与 -1 比较，得到 `[False, True, False]`；用它取行，只留下第二个点。`np.zeros_like(labels, dtype=bool)` 先建同形状的全 False 数组，再把核心点的位置改 True。它保存的是身份，不能只因一个点已有簇号就把它也标为核心。
+
+`for k in [2, 3]` 会先令 k=2、执行缩进块，再令 k=3、再执行一次。`enumerate(...)` 同时给出位置和该项内容；`for i, (name, X, K) in ...` 是把一项内的三个值分给三个名字。下面 cell 23 的外层每次取一种数据，内层每次取一种链接，所以一共做 4×4 次拟合。`with warnings.catch_warnings()` 让临时警告设置只在缩进范围生效。
+
+### 1.4 距离、尺度和停止分别回答什么
+
+欧氏距离（Euclidean distance）是在每列上求差、平方、相加后开方。例如两个二维点 (1,2)、(4,6)，平方差为 9 和 16，距离为 $\sqrt{9+16}=5$。比较最近中心时可直接比较平方距离，开方不会改变大小顺序。平方误差和（sum of squared errors，SSE）把各点到所属中心的平方距离相加；它不是正确率。
+
+若把某一列的单位放大 100 倍，其平方差就放大 10,000 倍，分组依据也随之改变。标准化（standardisation）用每列的均值和标准差换单位：原值 7、均值 5、标准差 2，换后为 $(7-5)/2=1$，表示比均值高一个标准差。标准差衡量这一列围绕均值分散的尺度；零标准差列没有区分力，不能手工除以 0。换尺度不会保证数据变成正态分布。
+
+K-means 固定成员后为什么取平均？以成员 0、2 为例，中心为 c 时平方账单为 $c^2+(2-c)^2=2(c-1)^2+2$。第一项最小只能是 0，故 c=1 最好。多维时对各列分别做同一件事；成员重新分配后，再按新成员求均值。
+
+最近分配和均值更新都不增加当前 SSE，但不同初中心仍可能停在不同结果。中心不变是小例的明确停止条件；软件还可能因变化足够小或达到最大轮数而停，后两者不等于找到全局最低 SSE。
+
+下面一行是一项配置。默认值按历史执行环境 scikit-learn 1.5.1 说明；原 cell 的实参继续原样保留。
+
+| 配置 | 当前用途 | 改动的影响 |
+|---|---|---|
+| `n_clusters` | K，由使用者指定的簇数 | 改 K 会改变要找几个中心 |
+| `init='k-means++'` | 原 cell 省略，历史环境采用此默认 | 影响第一组中心如何选取 |
+| `n_init='auto'` | 原 cell 省略，配 k-means++ 时是一组初始化 | 显式增加次数会多试起点并取最小 SSE |
+| `max_iter` | 原电影例是每次最多 50 轮 | 加大只放宽上限，不保证更好 |
+| `tol=1e-4` | 原 cell 省略的变化容差 | 较小通常要求更精细的数值停止 |
+| `random_state` | 固定随机过程的种子 | 换种子可诊断初始化敏感性 |
+
+初始化（initialisation）只选起点。k-means++ 先随机选一个数据点，随后计算每点到已有最近中心的距离 D，按 D 的平方占总平方和的比例抽下个中心。远点权重大，不等于一定中选；新中心加入后还要重算最近距离。scikit-learn 的默认实现会试探候选中心；它不是“永远选最远点”。本篇 §2.3 的完整手算明确给定 john/mary 起点，未声称还原这个随机过程。
+
+选择 K（模型的超参数，即拟合前指定的设置）还需要任务和诊断。K 越大，允许更多中心，最优 SSE 通常越低，所以不能单凭最小 SSE 宣布 K 最好。§2.18 用轮廓系数比较分离程度，并把噪声覆盖和业务解释一起检查。
+
+### 1.5 这份笔记的阅读顺序和证据边界
+
+正文沿原 notebook 的 16 个代码单元，先小表再层级、密度和谱方法；最后 §2.18 对原 cell 35 五题给中英作答入口。先补语法和距离，是让后面的 `fit`、索引和输出能顺读；没有删掉原 cell 或更改其超参数。
+
+原件为 35 cells，评分作答文件为另外的 72-cell Notebook。正文记载的 2026-09-30 执行、后续同源绘图，以及 2026-10-06 作业运行，均为各自历史记录。本轮只核当前源代码、保存输出与真实文件指纹，不重新训练；“独立执行”指历史运行，不是本轮独立教学审查通过。
+
 
 ## 2. 逐 code cell 讲解
 
@@ -201,6 +248,8 @@ pd.DataFrame(centroids,columns=data.columns)
 **逐行说明与数据形状**：`cluster_centers_` 的形状是 `(K, p) = (2, 4)`；每行一个簇，每列一部电影。把它包成 DataFrame 只是恢复列名，数值没有变化。簇 0 的质心约为 `[4.33, 4.67, 3.00, 2.00]`，簇 1 约为 `[1.67, 1.67, 4.00, 4.67]`。
 
 **输出说明**：簇 0 对前两部片评分更高，簇 1 对后两部片评分更高，因此更稳妥的名字是“偏好前两部片”和“偏好后两部片”。课堂以动作/恐怖作简化说明；本例不核定每部影片的题材。名字由人根据质心解释，模型只交出数字。
+
+**原件勘误**：原 cell 10 写 “Observe that cluster 0 has higher ratings for the horror movies whereas cluster 1 has higher ratings for action movies.” 这句把 0 / 1 偏好写反，与该原件 cell 9 自己保存的质心表冲突；以四列值为准。B `01:10:36` 的简化口述也是簇 0 前两部动作片、簇 1 后两部恐怖片，不是本轮随机换号造成的差异。
 
 **为什么均值是中心**：这里的 SSE 是把每位用户到本组中心的四维欧氏距离平方相加，汇总所有簇。四列都是评分，因此 SSE 的单位是评分单位的平方。
 
@@ -427,7 +476,7 @@ plt.show()
 
 ![[IS6400_Business_Data_Analytics/notes/figures/t05-readability/animal-ward.svg]]
 
-纵轴动物名，横轴合并高度；线表示合并关系，不是因果箭头。komodo 与 turtle 距离平方为 1，人数各 1；SSE 增量为 (1×1/2)×1=0.5。SciPy 高度为 sqrt(2×0.5)=1，人数 2、新 ID18。
+纵轴动物名，横轴合并高度；线表示合并关系，不是因果箭头。komodo 与 turtle 距离平方为 1，人数各 1；SSE 增量为 $(1\times1/2)\times1=0.5$。SciPy 高度为 $\sqrt{2\times0.5}=1$，人数 2、新 ID18。
 
 文字替代：从这两叶向右走到相接位置，读横轴高度，再回 Z 核人数。数据和默认欧氏度量与 single 相同，改变的仅是链接规则；共用读图题见 §2.7。
 
@@ -450,7 +499,7 @@ Ward 的 A 有 2 点、中心 1，P3 有 1 点、中心 5，所以 Δ=2/3×(1−
 
 最后一次：single 的 {P1,P2,P3} 到 P4 取最近距离 4；average 取 (9+7+4)/3=20/3。complete 两簇 {P1,P2}/{P3,P4} 最远距离 9；Ward 两中心 1/7、人数 2/2，增量 36。
 
-四点每轮少一簇，三次合并后只剩一簇，完整树结束。single 高度为 2/3/4，complete 为 2/4/9，average 为 2/4/20÷3；Ward 三次增量 2/8/36，显示高度另取 sqrt(2Δ)。
+四点每轮少一簇，三次合并后只剩一簇，完整树结束。single 高度为 2/3/4，complete 为 2/4/9，average 为 2/4/20÷3；Ward 三次增量 2/8/36，显示高度另取 $\sqrt{2\Delta}$。
 
 <details><summary>机制自测：average 第二轮为何不能把“到两个旧簇的距离”无条件除以 2？</summary>
 
@@ -496,6 +545,15 @@ datasets = [
     ("Aniso", X_aniso, 3)
 ]
 
+```
+
+先生成四份点云，以上各行的输入数与随机种子保持原样。`make_moons` / `make_blobs` 返回两项：点坐标和生成时的类别标签；`moons[0]` 取第一项坐标。`X, _ = ...` 把第一项存为 X，第二项由 `_` 接住但后续不用，不把生成标签送入拟合。
+
+**一行坐标怎样变成 Aniso（笔记补充）**：`np.dot(X, transformation)` 是 1000×2 的 X 右乘给定 2×2 矩阵，每个原点仍保留一行。原行 $(x,y)$ 分别与矩阵的两列相乘求和，得到 $(0.6x-0.4y,\,-0.6x+0.8y)$。
+
+例如原行 (1,2)，新第一列为 $0.6\times1-0.4\times2=-0.2$，新第二列为 $-0.6\times1+0.8\times2=1$，所以变为 (−0.2,1)。这是原点的坐标变换，不是新增对象或使用类别答案；随后才逐列标准化。下面只设置同一比较图的画布和列名，还没有拟合。
+
+```python
 # 2. Set up the plot
 plt.figure(figsize=(16, 12))
 plt.subplots_adjust(left=0.08, right=0.98, bottom=0.02, top=0.90, wspace=0.05, hspace=0.1)
@@ -503,6 +561,11 @@ plt.subplots_adjust(left=0.08, right=0.98, bottom=0.02, top=0.90, wspace=0.05, h
 plot_num = 1
 algorithms = ["Single Link", "Average Link", "Complete Link", "Ward's Method"]
 
+```
+
+最后用两层循环对每份点云逐一拟合四种链接，读标签并放到对应格子。缩进内的动作会重复，后面的解释按状态顺序展开。
+
+```python
 # 3. Loop through datasets and algorithms
 for i, (name, X, n_clusters) in enumerate(datasets):
     X = StandardScaler().fit_transform(X)
@@ -533,6 +596,11 @@ for i, (name, X, n_clusters) in enumerate(datasets):
         
         plot_num += 1
 
+```
+
+两层循环结束后，最后只补总标题并显示整图；它不会再拟合模型。
+
+```python
 plt.suptitle("Comparing Linkage Methods on 4 Toy Datasets", fontsize=24, y=0.95, fontweight='bold')
 plt.show()
 ```
@@ -559,7 +627,7 @@ Varied 三团原尺度不同，K=3；single 本次 998/1/1，两个单点组无�
 
 ![[IS6400_Business_Data_Analytics/notes/figures/t05-readability/linkage-aniso.svg]]
 
-Aniso 是原 blob 经过给定矩阵拉伸，再统一缩放。走倾斜长团时，紧凑合并与连通合并看见的“近”不同；average 本次 323/304/373，Ward 为 497/327/176。
+Aniso 是原 blob 按本节给出的逐行右乘规则变换，再统一缩放；行数和对象身份不变。走倾斜长团时，紧凑合并与连通合并看见的“近”不同；average 本次 323/304/373，Ward 为 497/327/176。
 
 文字替代：月牙考察连通，圆团考察紧凑，Varied 考察密度差，Aniso 考察拉伸。以上是这次同源运行，完整标签/坐标/参数在 expanded-results.json，未恢复未知课堂编辑。
 
@@ -577,7 +645,7 @@ Aniso 是原 blob 经过给定矩阵拉伸，再统一缩放。走倾斜长团�
 
 **循环与状态展开（原 cell 23）**：先准备四组数据，再逐行、逐列生成比较结果。
 
-1. `make_moons` / `make_blobs` 生成四组点；矩阵乘法把其中一组拉成倾斜形状。
+1. `make_moons` / `make_blobs` 返回点和生成标签，本例只拟合点；上面的右乘规则将其中一组逐行变成倾斜形状。
 2. `datasets` 重新绑定为四项列表。此后该变量不再是 sklearn 模块。
 3. 外层取一组 X 与该行的簇数。Scaler 只在这组数据上拟合，把每列换成 z-score；这不保证分布正态。
 4. 内层创建一个链接模型，fit 同一 X，读出每点标签。下一列创建新模型，不能复用上一列的拟合结果。
@@ -644,7 +712,36 @@ plt.show()
 
 **输出说明**：独立执行的标签计数与核心数来自 `t05-execution/report.json`，原 notebook 图像本身没有打印这些数。复核时应同时看 9 个非负簇号、125 个 -1 和 1731 个核心点，不能只看颜色数量。
 
-**本轮补充图：用点形区分身份**。原 cell 27 建了 core mask，却只按簇号上色。下面沿用原数据、eps=15.5、min_samples=5，补上核心圆点、边界三角与噪声叉号；这是补充绘图版本，未恢复课堂未保存的改图。
+**从邻域到完整标签（笔记补充）**：先用一维位置 0、0.1、0.2、2，半径 0.15、`min_samples=3`。邻域把恰好等于半径的点也算入，并且含自身。四点邻域人数依次为 2、3、2、1；只有 0.1 是核心点（core point）。0 和 0.2 虽不够密，却都在这个核心的邻域内，成为边界点（border point）；2 无法从任何核心到达，最后是噪声点（noise point）。
+
+从 0 开始扫描时，先发现它不够核心，只能暂记候选噪声。扫描到 0.1 后建立新簇，把其邻域的 0、0.2 也加入；0 可以从暂记噪声改为边界。检查这两个边界时不继续从它们扩展，因为其自身邻域不足 3 点。队列清空后此簇完成，再扫尚未处理的 2；没有新核心，最终标签为 `[0,0,0,-1]`。
+
+下面的回边是扩展队列中的下一个点；外层还要扫描剩余点。每个点首次查询后标已访问，有限点集处理完即结束。标签号可以换名，核心/边界/噪声的判断依据不变。
+
+```mermaid
+flowchart TD
+ D0["固定点集、距离、eps和min_samples"] --> D1{"还有未访问点？"}
+ D1 -->|否| DZ["输出所有标签；未入簇者为噪声"]
+ D1 -->|是| D2["取一点标已访问，查含自身邻域"]
+ D2 --> D3{"达到核心门槛？"}
+ D3 -->|否| D4["暂记噪声；后续可被核心吸收"]
+ D4 --> D1
+ D3 -->|是| D5["开新簇；邻居放入待处理队列"]
+ D5 --> D6{"队列还有点？"}
+ D6 -->|否| D1
+ D6 -->|是| D7["取邻居；未访问则查邻域并标访问"]
+ D7 --> D8{"该邻居是核心？"}
+ D8 -->|是| D9["把尚待处理的邻居加入队列"]
+ D8 -->|否| D10["不从此点扩展"]
+ D9 --> D11["尚未归簇或暂记噪声则加入当前簇"]
+ D10 --> D11
+ D11 --> D6
+```
+
+若一个边界同时靠近两个不同的核心连通簇，具体扫描顺序可能决定它归哪一簇；边界不会靠自己把两个核心簇连接起来。减小半径可能让核心失去足够邻居；增大半径也可能把本应分开的区域连起来，所以代码跑完后还要核噪声数、簇规模和图。
+
+
+**既有补充图：用点形区分身份**。原 cell 27 建了 core mask，却只按簇号上色。下面沿用原数据、eps=15.5、min_samples=5，补上核心圆点、边界三角与噪声叉号；这是补充绘图版本，未恢复课堂未保存的改图。
 
 ![[IS6400_Business_Data_Analytics/notes/figures/t05-readability/dbscan-roles.svg]]
 
@@ -827,7 +924,7 @@ $$
 |---|---|---|
 | $W$ | 点与点的相似权重表 | 4 × 4，非负对称、对角 0 |
 | $d_i$ | 第 i 行权重和 | 每点 1.1，无单位教学权重 |
-| $D$ | 将各度放到对角 | $1.1I$，4 × 4 |
+| 度矩阵 D | 将各度放到对角 | 本例对角均为 1.1 的 4 × 4 表 |
 | $I$ | 对角 1、其余 0 的单位矩阵 | 4 × 4 |
 | $D^{-1/2}$ | 每个对角取 $1/\sqrt{d_i}$ | 只在度正时可直接照算 |
 | $L_{\mathrm{sym}}$ | 归一化图拉普拉斯 | 下一式算得，4 × 4 |
@@ -837,6 +934,15 @@ $$
 $$L_{\mathrm{sym}}=I-D^{-1/2}WD^{-1/2}.$$
 
 这一步把联系放到各点自身总联系的尺度上。孤立点度为 0 时，逆平方根不能直接套用，须先声明处理策略。
+
+**先会算矩阵怎样作用，才能核特征方向（笔记补充）**：把一列数 v 看成“每个点一个暂定新坐标”。矩阵乘 v 时，一行输出等于这一行的数分别乘 v 的相应项再相加。比如行 (1,−10/11,−1/11,0) 乘 v=(1/2,1/2,−1/2,−1/2)，得到 $1/2-5/11+1/22=1/11$。若输出整列都等于原列乘同一个倍数，这列就是这个矩阵的特征向量。
+
+上标 T 表示转置，即把列转为行；$v^Tv$ 把各坐标平方后相加。平方和开方是向量长度；长度为 1 称单位长度。两向量逐项相乘再相加等于 0，称正交（orthogonal），用于防止重复选择同一方向。例如 (1,1,1,1)/2 和 (1,1,−1,−1)/2 的长度均为 1，两者逐项乘积相加为 0。
+
+度为正时，$D^{-1/2}$ 是对角表，每个对角值取相应度平方根的倒数。左乘 W 会缩放行，右乘会缩放列，因此归一化后的每格为 $W_{ij}/\sqrt{d_i d_j}$。四点例每个度都是 1.1，故原权重 1 变为 10/11，0.1 变为 1/11；从单位矩阵减去它，得到后面明确列出的拉普拉斯表。
+
+行归一化是把 U 的一行除以该行长度，使每行长度为 1。例如 (0.5,0.5) 长度是 $\sqrt{0.5}$，换后两个坐标均为 $1/\sqrt2$。它改变坐标尺度，保留每个点的行身份；本篇把它作为教学变式，不当成当前 sklearn API 的逐行内部源码。
+
 
 “特征向量”是矩阵作用后方向不变、只被倍乘的向量：$Lv=\lambda v$，倍数 $\lambda$ 就是特征值。读者可将后面给出的向量代入矩阵逐行相乘核验，不必凭名称接受结论。为什么取较小特征值？对任意列向量 $v$，展开下式，利用 $d_i=\sum_jW_{ij}$，平方项合成 $v^Tv$，交叉项合成归一化相似项：
 
@@ -963,6 +1069,145 @@ graph LR
 🔗 [scikit-learn官方接口说明](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.SpectralClustering.html)（核对2026-09-30）：确认RBF构图、归一化拉普拉斯嵌入与默认K-means标签策略；在线文档为1.9.1，本次执行环境为1.5.1。教学推导与四点构图为笔记补充，不声称在线版本与本机每个默认参数完全相同。
 
 
+### 2.18 【cell 35】五道原题、中文限定词与英文参考答案
+
+五题依次要求 Iris K-means、二分法、密度调参、四种形状的链接判断和项目算法选择。完整个人代码与图仍在 [[IS6400_Business_Data_Analytics/assignment/graded/A07-week5/notes/开始这里|A07 学习入口]]；下面直接给每问的答案与理由，不用索引代替讲解。题面内部 10/20/20/20/30 共 100 分；Canvas 历史行政核对和本人待审状态留在 A07，本轮未登录复核或提交。
+
+#### Q1：四列拟合和两轴画图是两项任务
+
+先按下面的中文解析明确所做动作；英文原题逐字保留如下。
+
+<details><summary>原题 Q1（原 notebook cell 35）</summary>
+
+1. Apply KMeans (K=3) to the **Iris dataset** (excluding the "class" attribute). Use 'petal width' and 'sepal length' to create a scatter plot and use cluster label as color. [10 points]
+
+</details>
+
+⚪ 以下数值是当前个人答卷的保存结果，解释为参考分析；不是本轮新运行。
+
+中文题意：排除 class 后，用 Iris 四个测量做 K=3 的 K-means；画图时只选花瓣宽度（petal width）和萼片长度（sepal length），颜色表示每行的聚类标签。四列都是厘米，当前作答采用原尺度；同单位不代表改成标准化后分组不变。
+
+现有作答 Notebook 的 cell 41 建立 150×4 的 `X_iris`；cell 43 用 `KMeans(n_clusters=3, n_init=20, random_state=42, max_iter=300, tol=1e-4)` 及 `fit_predict(X_iris)` 得到标签。cell 45 只拿两列画 Figure 1，没有重新拟合两列模型。20 次初始化中取 SSE 最小的一次；种子控制随机过程，300 是单次上限，实际选中运行是 4 轮。
+
+**先完整走过分配和更新（笔记补充）**
+
+一维点 0、2、8、10，明确初中心 0、8。第一轮按距离平方比较后分成 {0,2} 和 {8,10}，中心改为 1、9；第二轮重新分配，成员和中心均不变，所以停。四点到所属中心的平方距离各为 1，SSE=4。固定成员 {0,2}、中心为 c 时，账单 $c^2+(2-c)^2=2(c-1)^2+2$，故均值 c=1 最低；多维对各列各算一次。这是给定初中心的完整教学例，不冒称还原种子 42。
+
+参考结果为 62、50、38 个成员，SSE 78.940841，轮廓系数 0.552592。编号可以换，成员分组才是结果。class 是物种标签，本题要观察四测量本身怎样分组，不能把它作为距离特征。二维投影把另两列藏起来，所以图上重叠不能直接判定四维分组错误。
+
+英文参考答案（本人保存分析，非官方唯一答案）：I fitted K-means with K=3 to all four Iris measurements after removing class. The clusters contain 62, 50 and 38 flowers, with SSE 78.940841 and silhouette 0.552592. Figure 1 plots petal width against sepal length and colours each flower by its fitted cluster; it is a projection of the four-feature fit.
+
+#### Q2：二分保留分支约束，不是只拟合一次 K=2
+
+先按下面的中文解析明确所做动作；英文原题逐字保留如下。
+
+<details><summary>原题 Q2（原 notebook cell 35）</summary>
+
+2. Apply BisectingKMeans (K=3) to the **Iris dataset** (excluding the "class" attribute). Briefly explain how its hierarchical partitioning mechanism differs from standard K-means. Reference link: [BisectingKMeans](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.BisectingKMeans.html#sklearn.cluster.BisectingKMeans) [20 points]
+
+</details>
+
+⚪ 以下数值是当前个人答卷的保存结果，解释为参考分析；不是本轮新运行。
+
+中文题意：同样排除 class、用四列 Iris 分成三组；另解释二分 K-means（Bisecting K-means）的层次划分与标准 K-means 的区别。
+
+标准 K-means 同时维护三个中心，每轮所有点都能在三中心之间重新选择。二分版本先把全部点当一簇，拆成两簇，再选其中一簇拆成两簇；总叶子数由 1→2→3，到三组才停。已有分支保留下来，后续只在被选分支内重新分配。这是由粗到细的分裂式层次方法，与 §2.7 从单点逐次合并的凝聚式方向相反。
+
+现有 cell 48 使用 `n_clusters=3, n_init=20, random_state=42, max_iter=300, bisecting_strategy='biggest_inertia'`。`biggest_inertia` 按簇当前 SSE 选待拆分支，不是按人数最多选；每次二分内部仍运行 K-means 的分配和均值更新。输出人数 53、38、59，SSE 84.224507，轮廓 0.540391。与 Q1 同一四维输入相比，当前普通 K-means 更紧凑；不能推广成任何数据上都更好。
+
+英文参考答案（本人保存分析）：Bisecting K-means starts with one group and repeatedly splits a selected group into two until three leaf groups remain. I used biggest_inertia to split the group with the greatest SSE. Ordinary K-means updates three centres jointly, whereas later bisecting steps are restricted by earlier branches. Here the bisecting SSE is 84.224507, compared with 78.940841 for ordinary K-means.
+
+#### Q3：先规定保留比例，再比较轮廓和噪声
+
+先按下面的中文解析明确所做动作；英文原题逐字保留如下。
+
+<details><summary>原题 Q3（原 notebook cell 35）</summary>
+
+3. Choose one density-based clustering algorithm and present the clustering results on the **Iris dataset** (excluding the "class" attribute). Tune its parameters and identify how many data points are classified as noise (-1). [20 points]
+
+</details>
+
+⚪ 以下数值是当前个人答卷的保存结果，解释为参考分析；不是本轮新运行。
+
+中文题意：选一种密度聚类，排除 class，实际调参数，展示 Iris 结果，并数出标签 -1 的噪声点。本作答选 DBSCAN（基于密度的带噪声空间聚类，Density-Based Spatial Clustering of Applications with Noise）。
+
+Q3 的四列先各自减均值、除以标准差，再调用模型。半径 0.7 因此是在标准化后的四维距离中，不是 0.7 厘米。半径内含自身至少达到 min_samples 才是核心；边界可以被核心吸收，但不接力扩展。补充例：位置 0、0.1、0.2、2，eps=0.15、min_samples=3，邻域人数依次为 2、3、2、1。只有 0.1 是核心，吸收边界 0 和 0.2；边界不继续扩展，2 最终为噪声，所以标签为 `[0,0,0,-1]`。先扫到 0 时即便暂记噪声，后来仍能被核心吸收。
+
+cell 51 的外层门槛为 `[4,5,8,10]`，内层半径为 `[0.3,0.4,0.5,0.6,0.7,0.8]`，共 24 组。每组都拟合同一 150×4 标准化输入。标签不等于 -1 才算 assigned；这些点数除以 150 是覆盖率（coverage）。先要求至少两簇、覆盖率至少 0.9，再按保留点轮廓降序选择；同分按 eps、min_samples 升序。这是本人明确选择的分析协议，非题目指定的 90% 规则。
+
+**轮廓系数（silhouette coefficient）到底比较什么**：对某一点，a 是它到同簇其余点的平均距离；分别计算到每个别簇成员的平均距离，取最小的一个为 b。单点得分为 $(b-a)/\max(a,b)$，整体再平均。补充例：组 A={0,2}、组 B={8,10}，点 0 的 a=2，b=(8+10)/2=9，所以得分为 7/9，表示比起同组，别组远得多；不是 7/9 的分类准确率。负值提示它平均更靠近某个别组。
+
+至少要有两个非噪声标签，且标签数小于保留点数才能计算本协议的轮廓；单成员簇的样本轮廓按库约定记 0。全噪声或一簇没有可比较的别簇，返回 NaN（未定义），不能填成 0。
+
+**保留点和全体点必须一起读**
+
+现有输出选 eps=0.700000、min_samples=5，两簇人数 48、94，噪声 8。覆盖率为 142/150=0.946667，保留点轮廓 0.610388。Figure 3 用黑叉标出八个噪声。反例 eps=0.5、min_samples=10 虽得 0.709636，却把 89/150 点排为噪声，只保留 61/150=0.406667，未通过覆盖约束。不同参数可能留下不同点集，故分数仍不能当完全同一评价样本的严格排名。
+
+英文参考答案（本人保存分析）：I tuned DBSCAN over 24 settings on the four standardised Iris features. I required at least two non-noise groups and coverage of at least 90%, then compared silhouette among assigned points. The selected eps=0.7 and min_samples=5 produce two groups of 48 and 94 flowers and eight noise points. Coverage is 0.946667 and assigned-point silhouette is 0.610388. A higher silhouette that discards most flowers does not satisfy my selection rule.
+
+#### Q4：按同一网格解释四种链接，不背固定排名
+
+先按下面的中文解析明确所做动作；英文原题逐字保留如下。
+
+<details><summary>原题 Q4（原 notebook cell 35）</summary>
+
+4. Based on the 4x4 grid plot in Section 2.5 of the tutorial (Moons, Blobs, Varied, Aniso), summarize which linkage method (Single, Average, Complete, or Ward's) is most suitable for which type of data shape, and state your final rule of thumb for selecting a linkage method. [20 points]
+
+</details>
+
+⚪ 以下数值是当前个人答卷的保存结果，解释为参考分析；不是本轮新运行。
+
+中文题意：看 tutorial §2.5 的 4×4 图，对 Moons、Blobs、Varied、Aniso 四种形状逐一选择链接方法，再写最终经验规则。原网格在本篇 §2.11 按形状拆成四张同源图。
+
+**把四种合并规则接回图**
+
+单链接（single linkage）取所有跨簇点对的最短距离，适合明确分离的连续曲线，却容易被桥接点串起来。全链接（complete linkage）取最长跨簇距离，限制新簇直径，可能切开长条或弥散团。平均链接（average linkage）取全部跨簇点对的平均距离；新簇大小不同时必须按成员数加权。Ward 方法（Ward's method）选全体 SSE 新增最少的合并，偏好紧凑欧氏簇。四者都先从单点起步，每次合并一对，完整树到只剩一簇；指定 K 的标签在相应层次停止。
+
+**当前四种形状的答案**
+
+本图参考选择：Moons 用 Single，能沿两条月牙的近邻链；Blobs 用 Ward，圆团分界清楚；Varied 用 Average，适应这次不同散布，Ward 很接近；Aniso 也用 Average，但仍有混合。Single 在后两组各产生 998、1、1 的簇，说明“细长就选 Single”会出错。
+
+附录 cell 67 只在拟合之后用合成数据的已知生成标签核对：调整兰德指数（adjusted Rand index，ARI）比较点对是否同组，并扣除随机巧合；1 表示两份分组完全一致，换簇号不会改变它，接近 0 表示接近随机参照，也可能为负。Moons 的 Single 得 1.000000，Blobs 的 Ward 得 0.997002，Varied 和 Aniso 的 Average 分别得 0.949926、0.699463。它支持本图判断，不是给 Olist 的准确率。
+
+英文参考答案（本人保存分析）：For this grid I choose Single for Moons, Ward for Blobs, and Average for Varied and Aniso. Single follows separated curves but can chain groups through bridging points. Ward favours compact Euclidean groups. Average is a useful starting point when spreads and shapes differ, while Complete is useful when limiting diameter matters. I would inspect geometry and group sizes before deciding; the anisotropic example shows that elongation alone does not justify Single.
+
+#### Q5：Olist 用全量买家拟合，把样本诊断和业务结论分开
+
+先按下面的中文解析明确所做动作；英文原题逐字保留如下。
+
+<details><summary>原题 Q5（原 notebook cell 35）</summary>
+
+5. Review and compare different clustering algorithms and choose one clustering algorithm for your course project dataset. Reference link: [Clustering Algorithms](https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html#sphx-glr-auto-examples-cluster-plot-cluster-comparison-py) [30 points]
+
+</details>
+
+⚪ 以下数值是当前个人答卷的保存结果，解释为参考分析；不是本轮新运行。
+
+中文题意：比较聚类方法，再结合本人 course project 数据选一个并说明理由。现有答卷使用 A06 既有 Olist 电商数据，选择 K-means 作为数值客户分群的起点；这是个人分析建议，不代记团队决定。
+
+**先固定数据粒度**
+
+先固定一行是谁：订单表每行一个订单，支付表一订单可有多行，客户记录中的 customer_unique_id 识别同一买家。cell 57 先把支付按 order_id 求和，再与已送达订单和客户连接；`many_to_one` 要求多笔订单可对应一客户记录，`one_to_one` 要求订单与已汇总支付不重复。若不先汇总就和商品明细多对多连接，会重复金额。例如同订单两个商品、两笔支付 40 和 60，直接笛卡尔配对会加出 200；先汇总才得到正确的 100 BRL（笔记补充）。
+
+排除 1 笔缺支付的已送达订单后，保存结果为 96,477 笔订单、93,357 位买家。最近购买间隔（recency，R）是参照时点减最近购买时间的完整天数；频次（frequency，F）是不同订单数；金额（monetary value，M）是累计 BRL 支付，可能含运费，不是利润。参照日 2018-08-30 来自最晚保留购买日期的下一天；使用全库最终送达状态，属于回顾描述，不能说当时已知道未来送达状态。
+
+**全量拟合、两个抽样入口**
+
+cell 59 先 `np.log1p(rfm)`，即对每个非负数算 log(1+x)，再逐列标准化。比如 0、9、99 变为约 0、2.303、4.605，压缩极大值，同时保留 0 可计算。每个 K=2–6 都对全部 `Z_rfm` 的 93,357×3 行列拟合，种子 42、20 次初始化、最多 300 轮。没有把模型缩成 5,000 人训练。
+
+轮廓函数单独设置 `sample_size=5000, random_state=42`，每个 K 从相同顺序的全数据抽同一 5,000 人，在这个样本内部计算距离诊断。它减少两两距离成本，但不是独立测试集：这些人已经参加拟合，分数还被拿来选择 K。Figure 4 另外用 default_rng(42) 抽 5,000 人展示；两个抽样入口不同，不能因种子同为 42 就声称是同一批行。
+
+**结果怎样限制业务判断**
+
+保存的 K=2–6 轮廓依次为 0.705053、0.418818、0.403256、0.359208、0.358145。按当前协议选 K=2 后，交叉表显示它恰好等于 90,556 位一次买家与 2,801 位复购买家的规则划分。这个几何分离没有自动带来新的业务发现。改种子 0、1、7、99 的四次 K=2 结果，与种子 42 的 ARI 都是 1.000000，只证明这些起点下分组一致。
+
+K=3 会把一次买家再分近期 19,093 人、较早 71,463 人，R 中位数分别为 44 和 270 天；2,801 位复购买家仍一起。轮廓下降，所以只有业务需要这一区分时才考虑；不能改口说数值更优。
+
+选择取舍：K-means 在这里能完成全量拟合且中心容易解释；二分法适合要嵌套层级但早分支受限；凝聚层次和稠密谱图的大规模两两关系代价高；DBSCAN 允许噪声却对密度和半径敏感，稀少高消费买家不应自动视为无价值。MiniBatch K-means 是数据更大时的近似选项，本答卷没有基准测试全部替代方法。
+
+英文参考答案（本人保存分析）：I chose K-means as an interpretable starting point for numeric Olist RFM segmentation after log1p transformation and standardisation. Each candidate K was fitted to all 93,357 retained buyers; silhouette was calculated on the same 5,000-row diagnostic sample. K=2 scored 0.705053, but its groups exactly match one-time and repeat buyers. This provides limited additional discovery and does not establish future stability or the causal effect of a retention campaign.
+
+
 ## 3. 完整流程串讲
 
 这 16 个 code cells 可以压成一条共同工作流：先把 ID / 真实类别从 X 拆掉，再按数据几何选择模型；拟合后先确认输出形状与特殊标签，最后才解释颜色。四个算法的“模型对象”不同，不能把所有结果都当 `predict`。
@@ -1009,16 +1254,16 @@ DBSCAN 的 `labels_ == -1` 有特殊意义，sklearn 的原生 DBSCAN 不提供�
 
 | 检查 | 实际结果 |
 |---|---|
-| 环境 | Python 3.12.3；sklearn 1.5.1；numpy 1.26.4；pandas 2.3.3；scipy 1.13.1 |
-| 全部 code cells | 16 / 16 PASS；10 张 PNG；原输入 hash 全未改 |
+| 环境 | Python 3.12.3 / sklearn 1.5.1 / numpy 1.26.4 / pandas 2.3.3 / scipy 1.13.1 |
+| 全部 code cells | 16 / 16 完成、10 张 PNG，原输入 hash 全未改 |
 | K-means | labels = `[0,0,0,1,1,1]`；SSE / inertia = 9.333333333333334 |
 | 新用户 | labels = `[0,1,0,1,0]`；拼接展示表因含用户名而整体转字符串 dtype |
 | 层次 | 4 个 Z 都是 14×4；四张 dendrogram 正常生成 |
-| DBSCAN | 1971 点；9 簇；125 noise；1731 core |
+| DBSCAN | 1971 点中有 9 簇、125 个噪声、1731 个核心 |
 | K-means 对照 | 2000 点分 1028/972；1000 点分 512/488 |
-| 谱聚类 | 2000 点分 963/1037；1000 点分 500/500；这些不是 accuracy |
+| 谱聚类 | 2000 点分 963/1037，1000 点分 500/500，计数不是准确率 |
 
-这次执行验证的是“代码能在当前环境完整跑完、输出形状与关键数量可重现”。它不能单独证明哪种聚类在业务上最好；层次和谱聚类的图仍要结合数据形状阅读。
+该历史执行验证的是“代码能在当时环境完整跑完、输出形状与关键数量可重现”。它不能单独证明哪种聚类在业务上最好；层次和谱聚类的图仍要结合数据形状阅读。
 
 ## 5. 自己动手：改参数前先预测
 
@@ -1052,17 +1297,15 @@ DBSCAN 的 `labels_ == -1` 有特殊意义，sklearn 的原生 DBSCAN 不提供�
 | `labels_ == -1` | 最终未归入核心连通簇的噪声 | M05 §2.9.3 |
 | `SpectralClustering(affinity='rbf', gamma=...)` | 从欧氏坐标转成 RBF 相似图，再在谱嵌入中分组 | 本篇 §2.16–2.17 |
 
-## 7. Week 5 Assignment（cell 35，只登记要求）
+## 7. 原题复习与迁移
 
-评分作业只记录题目、方法与交付检查，不在公开 T05 提供个人成品。课堂录音没有给截止时间；不得把推算日期写成已确认。
+原题五问及完整原文、中英作答已在 §2.18 就地展开。个人答卷是另一文件；是否本人已学会、是否已提交仍由本人状态确认，不由本篇教学修订代记。
 
-| 题 | 分值 | 要做什么 | 方法提醒 |
-|---|---:|---|---|
-| Q1 | 10 | Iris 去掉 `class`，做 `KMeans(K=3)`；用 `petal width` 与 `sepal length` 画按 cluster label 上色的散点 | 先确认列名 / 列序，图上注明颜色是聚类标签 |
-| Q2 | 20 | Iris 上做 `BisectingKMeans(K=3)`；简述它与标准 K-means 的层次划分区别 | 回链 M05 §2.5.3；不要只贴代码 |
-| Q3 | 20 | 自选一种密度聚类，调参，展示 Iris 结果，统计 noise `-1` 数 | 写参数选择依据与噪声数；不能照抄 chameleon 参数 |
-| Q4 | 20 | 根据 cell 23 的 4×4 网格比较 Single / Average / Complete / Ward 适合的数据形状，并给选法规则 | 必须实际读 16 格，不只背一句“Ward 最好” |
-| Q5 | 30 | 比较聚类算法，为自己的 course project 数据选一种 | 用数据规模、形状、密度、噪声、是否要层级来论证 |
+<details><summary>迁移自测：把 Olist 只抽 5,000 人拟合，再沿用当前 0.705053，可以吗？</summary>
+
+不可以。当前保存结果是全量 93,357 人拟合、同 5,000 人抽样诊断。改拟合行会改变中心、标签及评价对象，必须作为新实验重算并另记来源；当前记录不能替新实验担保。即使保留全量拟合，这个分数也已用于选 K，不能称独立测试成绩。
+
+</details>
 
 🎙️ **课堂要求**（B `01:30:45`–B `01:32:20`）：tutorial 讲解者逐项概括五题，并要求“运行每段代码、展示结果、解释并保存 HTML”。B `01:35:24` 还有下课后的有效补充：已提交者若命中课堂指出的问题，可检查后尝试重交。
 
@@ -1100,12 +1343,13 @@ DBSCAN 的 `labels_ == -1` 有特殊意义，sklearn 的原生 DBSCAN 不提供�
 |---|---|
 | cell 2 | ❓ 原录音未逐行解释 warning / CPU 设置；正文按原代码补全，不认定课堂跳过 |
 | cell 23 | 四行四列整体有讲；并非每个参数与循环逐行说明，正文补状态和控制流程 |
-| cell 33 | 课堂说明调用与 gamma；谱分解推导和四点数值例是明确标注的笔记补充 |
+| cell 33 | 课堂可核库名、调用、K 与 fit；gamma 见原代码，衰减机制为笔记补充，现 ASR 未录到明确口述 |
 
 ### 9.2 课堂有但 notebook 没保存，以及实现差异
 
 | B 时间 | 课堂内容或实现边界 | 本篇处理 |
 |---|---|---|
+| 原 notebook cell 10（文字）/ cell 9（保存表） | cell 10 说簇 0 偏恐怖、簇 1 偏动作，与原件已保存的四列质心相反 | §2.4 按列值解释，并明确原文写反；不是本轮随机换号 |
 | B `01:12:32`–B `01:15:03` | 原 6 人与新 5 人合并后重新做 K-means | 原文件只有 predict；解释两种任务不同，不编造未保存代码或结果 |
 | B `01:25:37`–B `01:26:53` | 用 core mask 单画核心点 | cell 27 建立 mask 但最终散点未使用；正文区别两者 |
 | B `01:01:47`–B `01:05:09` | 要运行代码、保留输出、逐题定位、检查 AI 占位内容 | 记录为通用课堂反馈，不伪装成原 cell 35 的文字 |
@@ -1119,9 +1363,9 @@ B `01:32:20` 已明确下课，B `01:35:24` 的作业提醒仍有效；B `01:36:
 
 ### 9.4 对抗自检与反方视角
 
-原 notebook 35 cells 已逐一读取：16 code 单元均保留完整代码、逐行/控制流程说明和输出；19 markdown 单元的导言、文档链接、段落标题及最后五题已纳入相应节。§2.17 的谱机制是笔记补充而非教授原话。独立读者已对 7 组 R1–R4 实际作答，主代理核对数值与来源，记录在机制台账；这不代表用户本人已通读或学会。全部 16 code 单元已执行，四个数据文件与 notebook 原件 hash 前后不变；四点谱算例和变式另用 numpy / sklearn 复算。10 张独立执行 PNG 已逐张查看；两张 Mermaid、4 个独立公式、66 个行内公式在 IAB 实际渲染，解析问题 0。原图中的连续色标只是绘图方式，cluster ID 是离散标签，不能把色标中间刻度当新簇。
+原 notebook 35 cells 已逐一读取：16 code 单元均保留完整代码、逐行/控制流程说明和输出；19 markdown 单元的导言、文档链接、段落标题及最后五题已纳入相应节。§2.17 的谱机制是笔记补充而非教授原话。历史机制台账曾记录 7 组 R1–R4 作答，保留为当时证据；它不作为 2026-10-27 候选的本轮独审放行，也不代表本人通读或学会。全部 16 code 单元已执行，四个数据文件与 notebook 原件 hash 前后不变；四点谱算例和变式另用 numpy / sklearn 复算。10 张独立执行 PNG 已逐张查看；两张 Mermaid、4 个独立公式、66 个行内公式在 IAB 实际渲染，解析问题 0。原图中的连续色标只是绘图方式，cluster ID 是离散标签，不能把色标中间刻度当新簇。
 
-**反方视角**：最容易误判的是把无监督标签数量当准确率，或把改变 gamma 后的彩色图当稳定结论。本篇只解释当前图与参数，未证明业务上的真实类别；原文件没有新旧用户合并重新拟合的现场代码，所以不能宣称复现了那个现场结果。录音从中段开始，T05 只核 tutorial 时段；全课覆盖与 PC/手机衔接见 M05，不能用本篇约 25 分钟的映射冒充覆盖整场约 99 分钟手机录音。评分作业保留为独立个人任务，截止日期尚待 Canvas 可访问后核实。
+**反方视角**：最容易误判的是把无监督标签数量当准确率，或把改变 gamma 后的彩色图当稳定结论。本篇只解释当前图与参数，未证明业务上的真实类别；原文件没有新旧用户合并重新拟合的现场代码，所以不能宣称复现了那个现场结果。录音从中段开始，T05 只核 tutorial 时段；全课覆盖与 PC/手机衔接见 M05，不能用本篇约 25 分钟的映射冒充覆盖整场约 99 分钟手机录音。评分作业仍为独立个人任务；A07 已保留 2026-10-06 的行政核对，不能把本篇旧待核文字当成今日重新查过 Canvas。
 
 机器验收说明：本篇 §8 是逐 cell 的时间映射，不是讲义页表，A6 的“无课堂时间分配表”属格式提示；A8 的代码考试明示集中登记在配套 M05；A12 的 23% 是本篇 tutorial 片段占整份 B 音源的比例，不表示漏读其余时段，其余已由 M05 全程对齐。
 
@@ -1129,4 +1373,5 @@ B `01:32:20` 已明确下课，B `01:35:24` 的作业提醒仍有效；B `01:36:
 
 | 日期 | 变更 |
 |---|---|
+| 2026-10-27 | 候选补语法、尺度、DBSCAN 完整扩展、谱矩阵桥梁和原题五问中英解析；历史运行按指纹承接，本轮未重训，独立教学审查待执行 |
 | 2026-09-30 | 从 35-cell notebook、B tutorial 转录与实际执行报告机械起草；16 个 code cells 各有三件套、形状、输出、理论回链与课堂定位；评分作业只登记要求；§2.17 补全谱聚类机制、完整四点例与 gamma 变式，已独立数值复算 |

@@ -1,0 +1,70 @@
+{
+  "schema": "notebook-native-acceptance-v1",
+  "note": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/olist-data-guide.ipynb",
+  "source_sha256": "20c86c0fc743bd9e47a14b5e45edcb84de146a2a3a998d61417e697e7183b1c4",
+  "candidate_sha256": "2456bb0bb4bedc7f7f46b2b79919fdfb1c31206298c2b204cb19e8b11c7f13e6",
+  "author_id": "/root/author_is6400_olist_a06_61",
+  "reviewer_id": "/root/review_is6400_olist_a06_full_61",
+  "accepting_main_agent": "/root",
+  "status": "accepted_applicable_native_checks_by_root",
+  "applicable": [
+    {
+      "check": "all 35 cells semantic review",
+      "status": "passed",
+      "evidence": "independent-61/stage-1.md; notebook-independent-review.md; targeted-closure.md"
+    },
+    {
+      "check": "B1 defect closure final hash",
+      "status": "passed",
+      "evidence": "independent-61/targeted-closure.md"
+    },
+    {
+      "check": "nbformat validation and 16 code AST / complete preservation",
+      "status": "passed",
+      "evidence": "preservation-report-v2.json; final-preservation.json"
+    },
+    {
+      "check": "real CSV/ZIP key arithmetic",
+      "status": "passed",
+      "evidence": "source-audit-v1.json; independent-61/phase-2-independent-audit.json"
+    },
+    {
+      "check": "necessary native display",
+      "status": "passed",
+      "evidence": "native-visual-v2.json; root-native-acceptance-instruction.md; native-preview-v2/b1-native.png"
+    },
+    {
+      "check": "static standard same-source HTML export",
+      "status": "passed_static_only",
+      "evidence": "html-export-manifest.json; actual HTML final view remains root responsibility"
+    }
+  ],
+  "not_applicable": [
+    {
+      "check": "M/T Markdown section structure for native .ipynb",
+      "reason": "Notebook keeps its actual 35-cell section 1–13 structure; proxy C_STRUCTURE FAIL retained in notebook-v2-markdown-proxy-precheck.json, no false PASS."
+    },
+    {
+      "check": "note_release_gate.py quality/full CLI for .ipynb",
+      "reason": "Existing quality gate is Markdown-only. Only its review_gate binding function is used here; no .ipynb formal fullgate claimed."
+    }
+  ],
+  "not_run": [
+    {
+      "check": "clean-kernel rerun / training / grading",
+      "reason": "This is Markdown-only repair; user prohibits cell/kernel/model execution. All code and stored execution state exact; historical execution is not claimed as new."
+    },
+    {
+      "check": "Obsidian final navigation / HTML browser render",
+      "reason": "No further UI after explicit Not allowed. Prior entry formal-path links exist; native Markdown Preview is accepted only as observed, not Obsidian navigation. Root final derived HTML acceptance separate."
+    }
+  ],
+  "limitations": [
+    "CUA later refused AX/close action with Not allowed; no UI retry or interface bypass, own service stopped with empty kernels/sessions and HTTP200.",
+    "Initial loading screenshot retained but excluded from acceptance; three loaded screenshots bind accepted evidence.",
+    "Materials draft and all personal/team/Canvas statuses unchanged."
+  ],
+  "formal_writeback": "not performed",
+  "notion": "N/A existing learning guides create no new tracked fact, status or material version; no write/readback claimed",
+  "git": "not performed"
+}

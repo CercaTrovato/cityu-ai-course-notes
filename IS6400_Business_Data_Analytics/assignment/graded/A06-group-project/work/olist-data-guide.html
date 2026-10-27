@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Notebook</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>olist-data-guide</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7516,12 +7516,12 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Olist-%E6%95%B0%E6%8D%AE%E5%85%A8%E6%99%AF%EF%BC%9A%E4%BB%8E%E4%B9%9D%E5%BC%A0%E8%A1%A8%E5%88%B0%E5%85%AD%E4%B8%AA%E5%95%86%E4%B8%9A%E9%97%AE%E9%A2%98">Olist 数据全景：从九张表到六个商业问题<a class="anchor-link" href="#Olist-%E6%95%B0%E6%8D%AE%E5%85%A8%E6%99%AF%EF%BC%9A%E4%BB%8E%E4%B9%9D%E5%BC%A0%E8%A1%A8%E5%88%B0%E5%85%AD%E4%B8%AA%E5%95%86%E4%B8%9A%E9%97%AE%E9%A2%98">¶</a></h1><p>这是 <strong>数据熟悉与选题教程（draft）</strong>，不是已经完成的 Briefing 或模型报告。适用于没看过这些数据、Python 和 pandas 刚入门的读者。</p>
-<p><strong>你们已定 Olist，6 人各自探索一个角度；下面六个方向只是候选，不替你们锁题。</strong> 每个人都先理解相同的表、统计单位和限制，再决定研究问题。</p>
-<p>学完应能：辨认每张表的一行是什么；区分订单、商品明细与买家；安全连接两张表；解释支付、时间、评价的限制；为一个商业问题找出字段与验证办法。</p>
-<p>阅读顺序：① 文件和表 → ② 字段与关系 → ③ 时间/金额/评价 → ④ 数据质量 → ⑤ 六个角度。第一次先读每节文字，再按 <code>Shift+Enter</code> 运行代码。Jupyter 的 Kernel → Restart Kernel and Run All Cells 可检验能否从头重做。</p>
-<p>来源：<a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce">Olist 官方 Kaggle 数据集</a>。2026-09-30 下载；版本 2；许可 CC BY-NC-SA 4.0。平台更新时间 2021-10-01，不是业务发生年份。所有数字由本 Notebook 从 CSV 计算，所有解释与题目建议属于教学分析。</p>
-<p>Canvas 最新行政信息未完成核验（当前浏览器跳转到登录）；本地 Guideline 与此前公告仅作暂存依据。这里不声明可提交，也不记录任何组员已经学会。</p>
+<h1 id="Olist-%E6%95%B0%E6%8D%AE%E5%85%A8%E6%99%AF%EF%BC%9A%E4%BB%8E%E4%B9%9D%E5%BC%A0%E8%A1%A8%E5%88%B0%E5%85%AD%E4%B8%AA%E5%95%86%E4%B8%9A%E9%97%AE%E9%A2%98">Olist 数据全景：从九张表到六个商业问题<a class="anchor-link" href="#Olist-%E6%95%B0%E6%8D%AE%E5%85%A8%E6%99%AF%EF%BC%9A%E4%BB%8E%E4%B9%9D%E5%BC%A0%E8%A1%A8%E5%88%B0%E5%85%AD%E4%B8%AA%E5%95%86%E4%B8%9A%E9%97%AE%E9%A2%98">¶</a></h1><p>这是数据熟悉与选题教程（draft），不是已经完成的 Briefing 或模型报告。读者只需会四则运算；本篇会在使用前解释必要的 Python 和 pandas 操作。</p>
+<p>2026-09-30 的团队准备记录是：已定 Olist，6 人各自探索一个角度。下面六个方向是当时整理的候选，不代表目前成员分工或最终组题，也不替团队作决定。</p>
+<p>读完可以自己检查：能否认出九张表的一行是什么；跟着一笔订单连接与汇总；解释时间、金额、评价和复购的分母；为一个业务问题找到可用字段和不能下的结论。</p>
+<p>先读文字和已保存输出，再决定是否在自己的副本按 <code>Shift+Enter</code> 顺序运行。单元格（cell）是 Notebook 中独立的一块文字或代码；内核（kernel）保存运行产生的变量。若跳格，后面可能找不到前面的变量。<code>Restart Kernel and Run All Cells</code> 会清空变量并从头执行，适合之后自己验证；本次教学修订没有运行这些代码，也没有改动保存输出。输出记录的环境是 Python 3.12.3、pandas 2.3.3，不表示你当前电脑一定相同。</p>
+<p>阅读顺序：文件和表 → 字段与连接 → 数据质量 → 时间、交付、金额、评价、买家 → 选题与自测。来源是 <a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce">Olist 官方 Kaggle 数据集</a> 和本地来源清单：2026-09-30 下载、版本 2、许可 CC BY-NC-SA 4.0。平台更新时间 2021-10-01 不等于交易年份。保存输出来自原有代码执行；本篇解释、候选方向和理解题属于笔记补充，不是教师官方答案。</p>
+<p>Canvas 行政信息只保留 2026-09-30 未完成核验的记录，不把旧登录跳转说成今天的核查。学习、组题、Briefing 完成及提交状态均不由本篇确认。</p>
 </div>
 </div>
 </div>
@@ -7532,9 +7532,10 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.-%E4%BB%8E%E6%96%87%E4%BB%B6%E5%BC%80%E5%A7%8B%EF%BC%9A%E5%85%88%E8%AF%BB%EF%BC%8C%E4%B8%8D%E6%B8%85%E6%B4%97%E5%8E%9F%E4%BB%B6">1. 从文件开始：先读，不清洗原件<a class="anchor-link" href="#1.-%E4%BB%8E%E6%96%87%E4%BB%B6%E5%BC%80%E5%A7%8B%EF%BC%9A%E5%85%88%E8%AF%BB%EF%BC%8C%E4%B8%8D%E6%B8%85%E6%B4%97%E5%8E%9F%E4%BB%B6">¶</a></h2><p>CSV 是用逗号分隔的表格文件，DataFrame 是 pandas 在内存中表示表格的对象。原始文件放 <code>data/raw/</code>；本 Notebook <strong>只读取原件，计算都在内存中</strong>。</p>
-<p>Python 的 <code>=</code> 把右边结果存到左边的变量名；<code>Path</code> 表示路径，路径之间的 <code>/</code> 是拼接目录；引号包住文字。<code>import</code> 导入工具；<code>pd</code> 是 pandas 的简称。<code>display</code> 把结果展示成表。</p>
-<p>下面默认从 Notebook 所在目录启动。若报 <code>FileNotFoundError</code>，把 <code>WORK_DIR</code> 改成你电脑上本 Notebook 的完整目录；只改这一处，不需要把原始数据搬到别处。</p>
+<h2 id="1.-%E4%BB%8E%E6%96%87%E4%BB%B6%E5%BC%80%E5%A7%8B%EF%BC%9A%E5%85%88%E8%AF%BB%EF%BC%8C%E4%B8%8D%E6%B8%85%E6%B4%97%E5%8E%9F%E4%BB%B6">1. 从文件开始：先读，不清洗原件<a class="anchor-link" href="#1.-%E4%BB%8E%E6%96%87%E4%BB%B6%E5%BC%80%E5%A7%8B%EF%BC%9A%E5%85%88%E8%AF%BB%EF%BC%8C%E4%B8%8D%E6%B8%85%E6%B4%97%E5%8E%9F%E4%BB%B6">¶</a></h2><p>现在要把电脑上的表读入内存，得到可以计算的表格对象。CSV 是用逗号分隔字段的文件；pandas 是处理表格的工具库，数据表对象（DataFrame）有行和列。原始文件在 <code>data/raw/</code>；下面代码只读文件，计算结果保存在内存变量中。</p>
+<p>先读懂本格最小语法：<code>import pandas as pd</code> 导入工具并起简称 <code>pd</code>；<code>x = 3</code> 把右边结果交给变量 <code>x</code>，以后写 <code>x</code> 就能取回 3。引号包住文本，圆括号表示调用一个功能，括号内是它收到的参数。例如 <code>print('目录', WORK_DIR)</code> 把文字与路径显示出来。</p>
+<p><code>Path</code> 是表示文件位置的对象。<code>Path.cwd()</code> 取当前工作目录，未必自动等于 Notebook 所在目录；<code>WORK_DIR / 'data' / 'raw'</code> 逐级接成子目录。请先看下面输出的“数据目录”是否指向 A06 的 <code>work/data/raw</code>。若从别处启动而报 <code>FileNotFoundError</code> 或断言错误，可在自己的副本把 <code>WORK_DIR = Path.cwd()</code> 改为 <code>WORK_DIR = Path('D:/上课资料/CityU/IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work')</code>；其他电脑改成自己的真实路径，不搬动原件。</p>
+<p><code>manifest</code> 是来源清单：<code>read_text(encoding='utf-8')</code> 读取文字，<code>json.loads(...)</code> 把 JSON 文字转成可按名称取值的对象。<code>display</code> 显示表格；<code>pd.set_option</code> 只控制最多显示多少列和文字，不删除数据。<code>matplotlib.pyplot</code> 用来画后面的两幅统计图，<code>hashlib</code> 用来核文件指纹，<code>sys</code> 用来显示环境版本。</p>
 </div>
 </div>
 </div>
@@ -7588,10 +7589,10 @@ Python: 3.12.3 | pandas: 2.3.3
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>怎么读输出：</strong>它告诉你实际从哪个目录读取，以及运行环境版本。<code>assert</code> 是检查条件，不满足就停止，避免悄悄读取错误的数据。</p>
-<p><strong>所以呢：</strong>先确认来源位置，之后所有结论才能追溯到同一份数据。</p>
-<h3 id="1.1-%E5%85%88%E6%A0%B8%E9%AA%8C%E5%8E%9F%E5%A7%8B%E6%96%87%E4%BB%B6">1.1 先核验原始文件<a class="anchor-link" href="#1.1-%E5%85%88%E6%A0%B8%E9%AA%8C%E5%8E%9F%E5%A7%8B%E6%96%87%E4%BB%B6">¶</a></h3><p>SHA-256 是文件字节的指纹。我们把下载包中每个 CSV 的指纹记在来源清单里；相同指纹说明当前文件与保存的来源副本字节一致，<strong>不说明内容没有业务错误</strong>。</p>
-<p><code>for</code> 逐项重复处理；<code>item['name']</code> 从字典里取文件名；<code>.read_bytes()</code> 读取字节。下面的循环只检查，不改 CSV。</p>
+<p>输出先给出实际目录，再给出当次执行的软件版本。代码中的 <code>assert DATA_DIR.is_dir()</code> 要求目录存在；条件不成立就停下。它能阻止读错目录，但不能保证目录里的内容就是正确版本，所以下一步核文件指纹。</p>
+<h3 id="1.1-%E5%85%88%E6%A0%B8%E9%AA%8C%E5%8E%9F%E5%A7%8B%E6%96%87%E4%BB%B6">1.1 先核验原始文件<a class="anchor-link" href="#1.1-%E5%85%88%E6%A0%B8%E9%AA%8C%E5%8E%9F%E5%A7%8B%E6%96%87%E4%BB%B6">¶</a></h3><p>SHA-256 是按文件全部字节计算的指纹。把当前 CSV 的指纹与下载时来源清单比较，一致说明两份字节相同；不说明原数据没有缺失或业务错误。</p>
+<p>下面 <code>manifest['files']</code> 取出清单里的文件列表。列表是有顺序的一组东西，<code>[]</code> 是空列表；字典用名称找值，例如 <code>{'name': 'a.csv'}</code> 中 <code>item['name']</code> 得到 <code>a.csv</code>。<code>for item in ...:</code> 每次取一份文件信息，缩进的行随该文件重复执行；<code>append(...)</code> 把检查结果添到列表末尾。</p>
+<p><code>.read_bytes()</code> 读取该文件，<code>hashlib.sha256(...).hexdigest()</code> 得到指纹文字；<code>==</code> 比较是否相同，产生真值 <code>True</code> 或假值 <code>False</code>。最后 <code>pd.DataFrame(hash_checks)</code> 把九份结果排成表，<code>.all()</code> 要求九项“指纹一致”全为真。表中“字节”来自清单，当前字节一致由完整指纹比较支持。</p>
 </div>
 </div>
 </div>
@@ -7714,10 +7715,11 @@ Python: 3.12.3 | pandas: 2.3.3
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>9 个文件应全部为 True。来源包和原始 CSV 已备份，后续不要直接保存清洗结果覆盖这些文件。</p>
-<p><strong>所以呢：</strong>你和组员用同一版本，结果出现差异时才能检查计算方法，而不是猜谁拿错了文件。</p>
-<h2 id="2.-%E4%B9%9D%E5%BC%A0%E8%A1%A8%E4%B8%8D%E6%98%AF%E4%B9%9D%E4%BB%BD%E7%8B%AC%E7%AB%8B%E6%95%B0%E6%8D%AE%E9%9B%86">2. 九张表不是九份独立数据集<a class="anchor-link" href="#2.-%E4%B9%9D%E5%BC%A0%E8%A1%A8%E4%B8%8D%E6%98%AF%E4%B9%9D%E4%BB%BD%E7%8B%AC%E7%AB%8B%E6%95%B0%E6%8D%AE%E9%9B%86">¶</a></h2><p>可以把它看成围绕订单建立的档案：买家下单，订单包含商品，商品来自卖家，订单有支付记录、交付时间和评价。地理位置与品类翻译帮助解释这些记录。</p>
-<p>下面 <code>FILES</code> 是“短名称 → 文件名”的字典。<code>pd.read_csv</code> 将 CSV 读成表；<code>dtype='string'</code> 保留邮编前导零。<code>tables[name]</code> 用短名称取出对应表，<code>.shape</code> 返回行数和列数。</p>
+<p>保存输出的 9 行“指纹一致”均为 True。例如客户表在清单中为 9,033,957 字节；其指纹比较为真表示当前读取版本与来源副本一致。若任何一项为 False，应先定位版本差异，不能修改清单来迁就文件。后续清洗结果要另存新文件，不能覆盖原始 CSV。</p>
+<h2 id="2.-%E4%B9%9D%E5%BC%A0%E8%A1%A8%E4%B8%8D%E6%98%AF%E4%B9%9D%E4%BB%BD%E7%8B%AC%E7%AB%8B%E6%95%B0%E6%8D%AE%E9%9B%86">2. 九张表不是九份独立数据集<a class="anchor-link" href="#2.-%E4%B9%9D%E5%BC%A0%E8%A1%A8%E4%B8%8D%E6%98%AF%E4%B9%9D%E4%BB%BD%E7%8B%AC%E7%AB%8B%E6%95%B0%E6%8D%AE%E9%9B%86">¶</a></h2><p>先想同一笔购买：订单表记“哪笔订单、何时下单”；明细表记“该订单买了哪些商品”；支付表记“分哪几笔付款”。它们观察同一业务的不同对象，不能把行数混作订单量。</p>
+<p>下面 <code>FILES</code> 字典用短名找文件名，例如 <code>FILES['orders']</code> 是订单文件名；<code>GRAIN</code> 记录每张表的一行代表什么，这叫数据粒度（grain）。<code>tables</code> 则用相同短名保存读好的表，因此 <code>tables['orders']</code> 取回的是表，不是文件名。</p>
+<p><code>for name, filename in FILES.items()</code> 每次同时拿到短名和文件名。先以 <code>nrows=0</code> 只读表头，再找名字含 <code>zip_code_prefix</code> 的列，把其读取类型设为文本 <code>string</code>，避免 <code>01234</code> 变成数字 1234。这段 <code>{c: 'string' for c in header.columns if ...}</code> 是字典推导式：逐个检查列名 <code>c</code>，只为符合条件的列记下文本类型。</p>
+<p>第二次 <code>pd.read_csv</code> 才读取所有行，结果存进 <code>tables[name]</code>。末尾方括号内的推导式为每张表生成一份摘要：<code>len(df)</code> 是行数，<code>df.columns</code> 是列名集合，<code>len(df.columns)</code> 是列数。读下一张输出时，每行代表一张表。</p>
 </div>
 </div>
 </div>
@@ -7871,9 +7873,8 @@ Python: 3.12.3 | pandas: 2.3.3
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>你应看到：订单和客户表各 99,441 行；商品明细 112,650 行；支付 103,886 行；评价 99,224 行；商品 32,951 行；卖家 3,095 行；地理位置 1,000,163 行；翻译 71 行。</p>
-<p>不能把这些行数相加叫“订单量”。地理表一百万行也不代表一百万客户。</p>
-<p><strong>所以呢：</strong>分析的第一步是确定统计单位，例如研究延迟时通常以订单为单位，研究运费则先确认是明细运费还是订单合计。</p>
+<p>保存输出有九行：订单和客户表各 99,441 行；商品明细 112,650 行；支付 103,886 行；评价 99,224 行；商品 32,951 行；卖家 3,095 行；地理位置 1,000,163 行；翻译 71 行。</p>
+<p>例如 <code>items</code> 行说明 112,650 条商品明细、每条 7 个字段。一个订单可买多件商品，所以这不是 112,650 笔订单。九表行数也不能相加称“订单量”，地理表一百万行更不等于一百万客户。后面研究延迟用订单作单位，研究运费先分清明细金额和订单合计。</p>
 </div>
 </div>
 </div>
@@ -7884,8 +7885,9 @@ Python: 3.12.3 | pandas: 2.3.3
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.-%E5%AD%97%E6%AE%B5%E5%AD%97%E5%85%B8%EF%BC%9A%E5%88%97%E5%90%8D%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%80%E8%B5%B7%E7%9C%8B">3. 字段字典：列名和数据类型一起看<a class="anchor-link" href="#3.-%E5%AD%97%E6%AE%B5%E5%AD%97%E5%85%B8%EF%BC%9A%E5%88%97%E5%90%8D%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%80%E8%B5%B7%E7%9C%8B">¶</a></h2><p><code>dtype</code> 是程序读取的数据类型，不一定等于业务类型：邮编或 ID 即使看起来是数字，也不是拿来求平均的量。<code>object</code> 通常是文本；日期列最初也可能只是文本，要转成日期对象才能算时间差。</p>
-<p>下面是全部 52 个“表—字段”位置（连接键在不同表重复出现）。含义依据发布方字段说明与实际表结构整理；主键等角色由本 Notebook 另行检验。快照字段没有完整历史版本，不能自动认定在过去每个预测日都可用。</p>
+<h2 id="3.-%E5%AD%97%E6%AE%B5%E5%AD%97%E5%85%B8%EF%BC%9A%E5%88%97%E5%90%8D%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%80%E8%B5%B7%E7%9C%8B">3. 字段字典：列名和数据类型一起看<a class="anchor-link" href="#3.-%E5%AD%97%E6%AE%B5%E5%AD%97%E5%85%B8%EF%BC%9A%E5%88%97%E5%90%8D%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%80%E8%B5%B7%E7%9C%8B">¶</a></h2><p>现在要知道“每列能回答什么问题”，再选择计算方法。程序读取类型（dtype）不等于业务含义：ID、州代码和邮编是分类标识，不能因为看起来像数字就求平均。<code>object</code> 在本数据中主要是文本；<code>int64</code> 是整数；<code>float64</code> 可含小数；<code>string</code> 明确是文本。时间最初读为文本，§6 再转换后才能算时间差。</p>
+<p>下表列出全部 52 个“表—字段”位置，同一连接键在不同表会重复出现。<code>FIELD_MEANINGS</code> 用列名查含义；两层 <code>for</code> 先选表，再逐列添加字段说明。<code>df[col]</code> 取一列，<code>df[col].dtype</code> 读取该列的程序类型，<code>str(...)</code> 把类型名称变成文字；<code>with pd.option_context(...)</code> 暂时允许显示 60 行，离开缩进块即恢复原显示设置。</p>
+<p>例如订单的 <code>order_id</code> 用来找同一订单，<code>price</code> 则是 BRL 金额，二者的用途不同。字段含义依据发布方说明与本地表结构整理；键是否唯一在下一节用数据检查。快照没有完整字段历史，不能默认某个字段在过去下单时就已经可用。</p>
 </div>
 </div>
 </div>
@@ -8321,10 +8323,9 @@ Python: 3.12.3 | pandas: 2.3.3
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>怎么读：</strong><code>BILL</code> 等其他数据集的字段没有出现在这里，Olist 也没有利润、曝光、购物车、客服干预日志。分析不能凭需要补出不存在的字段。</p>
-<p><strong>所以呢：</strong>现在可以先区分现成变量、需要计算的变量，以及这个数据集根本不支持的变量。</p>
-<h2 id="4.-%E4%B8%BB%E9%94%AE%E4%B8%8E%E8%BF%9E%E6%8E%A5%EF%BC%9A%E5%85%88%E5%BC%84%E6%B8%85%E6%A5%9A%E2%80%9C%E4%B8%80%E5%AF%B9%E5%87%A0%E2%80%9D">4. 主键与连接：先弄清楚“一对几”<a class="anchor-link" href="#4.-%E4%B8%BB%E9%94%AE%E4%B8%8E%E8%BF%9E%E6%8E%A5%EF%BC%9A%E5%85%88%E5%BC%84%E6%B8%85%E6%A5%9A%E2%80%9C%E4%B8%80%E5%AF%B9%E5%87%A0%E2%80%9D">¶</a></h2><p>主键是能唯一辨认一行的字段；复合键用两个字段一起辨认。外键是指向另一张表的编号。<code>is_unique</code> 检查单列是否唯一，<code>duplicated</code> 检查重复。</p>
-<p>关系地图（箭头表示去找对应信息，不是复制数据）：</p>
+<p>读字段表时，例如 <code>orders / order_purchase_timestamp / object</code> 表示“订单下单时间目前以文本保存”，不是说它没有时间意义。商品的 <code>product_description_lenght</code> 是描述长度，不是完整描述正文；拼写沿用原列名。Olist 没有利润、曝光、购物车或客服干预日志，不能为了一个选题假设它们存在。</p>
+<h2 id="4.-%E4%B8%BB%E9%94%AE%E4%B8%8E%E8%BF%9E%E6%8E%A5%EF%BC%9A%E5%85%88%E5%BC%84%E6%B8%85%E6%A5%9A%E2%80%9C%E4%B8%80%E5%AF%B9%E5%87%A0%E2%80%9D">4. 主键与连接：先弄清楚“一对几”<a class="anchor-link" href="#4.-%E4%B8%BB%E9%94%AE%E4%B8%8E%E8%BF%9E%E6%8E%A5%EF%BC%9A%E5%85%88%E5%BC%84%E6%B8%85%E6%A5%9A%E2%80%9C%E4%B8%80%E5%AF%B9%E5%87%A0%E2%80%9D">¶</a></h2><p>要给订单加上客户或商品信息，需要连接（join / merge）：按相同编号配对。主键（primary key）要能唯一辨认一行；复合键（composite key）把两列合起来辨认，例如 <code>order_id</code> 加 <code>order_item_id</code>；外键（foreign key）则指向另一表的编号。下面 <code>.is_unique</code> 检查一列有没有重复，<code>duplicated([...]).any()</code> 检查指定列组合是否至少重复一次，前面的 <code>not</code> 把结果反过来。</p>
+<p>这张关系表从左向右读：固定一个起点记录，到右表可能找到几条。它描述匹配数量，不是执行顺序或因果。</p>
 <table>
 <thead>
 <tr>
@@ -8363,11 +8364,13 @@ Python: 3.12.3 | pandas: 2.3.3
 <td>customers / sellers</td>
 <td>邮编前缀</td>
 <td>geolocation</td>
-<td>地理表前缀有重复，不能直接当多对一</td>
+<td>一个前缀可能对应多行地理记录</td>
 </tr>
 </tbody>
 </table>
-<p>买家在数据中的可追踪身份用 <code>customer_unique_id</code>。同一买家第二次下单，不应因为新 <code>customer_id</code> 被当作新买家。</p>
+<p>例如一条明细有一个 <code>product_id</code>，应去商品表找该商品；许多不同明细可以指向同一商品，这就是多对一。客户表的 <code>customer_id</code> 是订单侧编号，跨订单跟踪匿名买家用 <code>customer_unique_id</code>；同一买家再次下单可能有新 <code>customer_id</code>。编号仍不保证能识别真实自然人。</p>
+<p>这里 <code>orders.order_id</code> 是点写取列：在这种合法且不与表的属性冲突的列名下，等价于 <code>orders['order_id']</code>，先取订单号这一列；接着 <code>.is_unique</code> 检查它是否唯一。<code>.sum()</code> 中的括号则表示执行求和操作，不是在取名为 <code>sum</code> 的列。一般取列用方括号更稳妥，例如列名含空格或与已有属性同名时应写 <code>df['列名']</code>。</p>
+<p>下格 <code>orders = tables['orders'].copy()</code> 复制订单表，之后转换内存中的时间列不会改原始 CSV。<code>pd.Series({...})</code> 把一组带名称的检查结果放成一列；<code>.to_frame('检查结果')</code> 再变成有列名的表。<code>.nunique()</code> 数不同非空编号。</p>
 </div>
 </div>
 </div>
@@ -8485,9 +8488,10 @@ customer_unique_id 数： 96096
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>你会看到 99,441 个订单侧客户编号对应 <strong>96,096 个买家编号</strong>；评价编号和地理邮编前缀也不能都直接当唯一键。不要遇到重复就整表去重，否则可能删掉业务上不同的记录。</p>
-<p><strong>所以呢：</strong>接下来用一笔真实订单，观察错误连接如何让金额翻倍。</p>
-<h3 id="4.1-%E4%B8%80%E7%AC%94%E8%AE%A2%E5%8D%95%E7%9A%84%E8%BF%9E%E6%8E%A5%E9%99%B7%E9%98%B1">4.1 一笔订单的连接陷阱<a class="anchor-link" href="#4.1-%E4%B8%80%E7%AC%94%E8%AE%A2%E5%8D%95%E7%9A%84%E8%BF%9E%E6%8E%A5%E9%99%B7%E9%98%B1">¶</a></h3><p><code>groupby('order_id').size()</code> 数每笔订单有多少行；<code>merge</code> 按键连接；<code>query</code> 按条件挑行；<code>iloc[0]</code> 取第一项。示例选择同时有多条商品与支付记录的订单，只展示这一笔，不运行全库的错误连接。</p>
+<p>保存输出显示：订单、客户、商品和卖家的单列编号唯一；订单加明细序号、订单加支付序号的组合也唯一。评价编号与地理邮编前缀不是唯一键。99,441 个订单侧客户编号对应 96,096 个匿名买家编号，不能把二者都称为人数。键重复时先确认对象与关系，不要直接整表去重。</p>
+<h3 id="4.1-%E4%B8%80%E7%AC%94%E8%AE%A2%E5%8D%95%E7%9A%84%E8%BF%9E%E6%8E%A5%E9%99%B7%E9%98%B1">4.1 一笔订单的连接陷阱<a class="anchor-link" href="#4.1-%E4%B8%80%E7%AC%94%E8%AE%A2%E5%8D%95%E7%9A%84%E8%BF%9E%E6%8E%A5%E9%99%B7%E9%98%B1">¶</a></h3><p>这次要看：同一订单的多条商品和多条支付按订单号配对后，为什么金额会放大。<code>groupby('order_id').size()</code> 先把同编号放一组，再数该组行数；<code>.rename(...)</code> 给计数起名。<code>pd.concat([...], axis=1)</code> 按订单编号把两列计数并排放。</p>
+<p><code>.query('商品明细数 &gt; 1 and 支付记录数 &gt; 1')</code> 只留下两项都大于 1 的订单；<code>.index[0]</code> 取筛选后第一个订单号，Python 的位置从 0 开始。若换成没有这种订单的数据，这里会因没有第一项而失败，应先查筛选是否为空，不能猜一笔订单。</p>
+<p><code>items.order_id.eq(example_id)</code> 对每行判断订单号是否相同，得到一串 True / False。<code>.loc[条件, ['order_id', ...]]</code> 只保留 True 的行和列名清单指定的列；例如 <code>[True, False]</code> 只保留第一行。下格仅演示这一笔订单的直接连接，不执行全库的多对多展开。</p>
 </div>
 </div>
 </div>
@@ -8602,8 +8606,11 @@ customer_unique_id 数： 96096
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>这笔订单 2 条商品 × 2 条支付变成 4 行，每条记录被复制。连接成功不等于统计正确。</p>
-<p><strong>正确办法：</strong>先把商品、支付分别汇总成“一行一订单”，再连接。<code>agg</code> 指定汇总；<code>sum</code> 求和，<code>nunique</code> 数不同编号；<code>validate='one_to_one'</code> 要求两边键都唯一。<code>how='left'</code> 保留所有订单，未匹配字段会是缺失值，不能自动填成 0。</p>
+<p>这笔真实订单 <code>03ecec245220b63fd7f68c1737ba99ba</code> 有两条商品，金额为 189.00 和 109.90 BRL；两条支付为 56.39 和 319.34 BRL。连接只给 <code>on='order_id'</code>，所以每条商品都会和该订单的两条支付各配一次。</p>
+<p>保存表的四行可按配对读：商品 1 配支付 2、商品 1 配支付 1、商品 2 配支付 2、商品 2 配支付 1。商品原合计 298.90 变成 597.80 BRL，支付原合计 375.73 变成 751.46 BRL。重复来自本次多对多配对；不能推成“所有直接连接都会重复支付”。若订单表一行一订单去连两条支付，会有两行，但每条支付只出现一次；重复的是订单层字段，是否可求和仍要看统计对象。</p>
+<p>目标若是“一行一订单”，先沿两条支路各自汇总，再连接。商品支路把本单两行合为商品 298.90、运费 76.83 BRL；支付支路把两行合为支付 375.73 BRL，最后两边各一行配对。</p>
+<p><code>agg</code> 定义各输出列如何汇总，例如 <code>item_value=('price','sum')</code> 表示输出名 <code>item_value</code>，输入列 <code>price</code>，操作求和；<code>size</code> 数行，<code>nunique</code> 数不同卖家。<code>.reset_index()</code> 把分组用的订单编号恢复成普通列，供后面的 <code>merge</code> 找键。</p>
+<p><code>how='left'</code> 保留左边全部订单，右边无匹配就留缺失值；<code>validate='one_to_one'</code> 要求两边订单号都唯一，违反就报错。它防止数量关系写错，不保证业务金额无误。最后断言同时检查行数仍为 99,441、订单号仍唯一，<code>and</code> 要求两项一起成立。</p>
 </div>
 </div>
 </div>
@@ -8700,9 +8707,10 @@ customer_unique_id 数： 96096
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>这里只生成内存中的演示表，不保存清洗后的完整数据。评价需要单独确定选择规则，地理位置需要先确定邮编聚合方法，本节没有强行拼成一张万能宽表。</p>
-<p><strong>所以呢：</strong>六个人可以各自选题，但订单单位与连接规则必须一致。</p>
-<h2 id="5.-%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F%EF%BC%9A%E7%BC%BA%E5%A4%B1%E4%B8%8D%E9%83%BD%E6%98%AF%E9%94%99%E8%AF%AF%EF%BC%8C%E9%87%8D%E5%A4%8D%E4%B8%8D%E9%83%BD%E5%BA%94%E5%88%A0%E9%99%A4">5. 数据质量：缺失不都是错误，重复不都应删除<a class="anchor-link" href="#5.-%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F%EF%BC%9A%E7%BC%BA%E5%A4%B1%E4%B8%8D%E9%83%BD%E6%98%AF%E9%94%99%E8%AF%AF%EF%BC%8C%E9%87%8D%E5%A4%8D%E4%B8%8D%E9%83%BD%E5%BA%94%E5%88%A0%E9%99%A4">¶</a></h2><p><code>.isna().sum()</code> 数缺失值；除以行数是缺失比例。<code>.nunique()</code> 数不同非空取值。缺失评论正文不等于没有评分；缺少送达时间可能和订单状态有关。先解释，再决定清洗规则。</p>
+<p>输出的一行仍是原订单：<code>item_rows=2</code>、商品金额 298.90、运费 76.83、支付金额 375.73、<code>payment_records=2</code>。这里两侧金额恰好一致：商品加运费为 375.73 BRL；§8 会检查全体订单，不能由这一笔推出每笔都相等。计数显示为 2.0 是连接中存在缺失值时的数值类型表现，不代表半条记录。</p>
+<p><code>order_view</code> 只是内存中的订单视图，没有写回 CSV。评价需要选多评规则，地理位置需要选邮编代表坐标，本节没有把所有表拼成一张万能表；若改为商品明细分析，可以保留明细粒度，但不能再把重复的订单总额逐行相加。</p>
+<h2 id="5.-%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F%EF%BC%9A%E7%BC%BA%E5%A4%B1%E4%B8%8D%E9%83%BD%E6%98%AF%E9%94%99%E8%AF%AF%EF%BC%8C%E9%87%8D%E5%A4%8D%E4%B8%8D%E9%83%BD%E5%BA%94%E5%88%A0%E9%99%A4">5. 数据质量：缺失不都是错误，重复不都应删除<a class="anchor-link" href="#5.-%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F%EF%BC%9A%E7%BC%BA%E5%A4%B1%E4%B8%8D%E9%83%BD%E6%98%AF%E9%94%99%E8%AF%AF%EF%BC%8C%E9%87%8D%E5%A4%8D%E4%B8%8D%E9%83%BD%E5%BA%94%E5%88%A0%E9%99%A4">¶</a></h2><p>现在问每个字段缺多少，分母必须是该字段所属表的行数。<code>df[col].isna()</code> 为每个值标“是否缺失”；真值求和就是缺失数，真值均值就是缺失比例。例如补充小例 <code>[True, False, False, True]</code> 有 2 个缺失，比例为 2 除以 4，即 50%。下格乘 100 显示百分数，<code>.round({'缺失率%':2})</code> 只把显示值保留两位小数。</p>
+<p><code>for col in df</code> 逐个取列名；<code>int(...)</code> 把计数转整数；<code>.nunique()</code> 数不同非空值。<code>.loc[quality['缺失数'].gt(0)]</code> 只显示缺失数大于 0 的字段，没出现的字段是本次没有缺失，不代表整张表不需检查。</p>
 </div>
 </div>
 </div>
@@ -8887,9 +8895,10 @@ customer_unique_id 数： 96096
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>地理表有 <strong>261,831 条完整重复行</strong>和 <strong>19,015 个不同邮编前缀</strong>。即使删除完整重复行，一个邮编仍可能有多个坐标；邮编位置是近似代表位置，不是客户精确地址。</p>
-<p><strong>所以呢：</strong>做区域分析可以先用州级别；是否加入地图取决于研究问题，而不是因为数据里恰好有经纬度。</p>
-<h3 id="5.1-%E6%A3%80%E6%9F%A5%E8%BF%9E%E6%8E%A5%E7%BC%BA%E5%8F%A3">5.1 检查连接缺口<a class="anchor-link" href="#5.1-%E6%A3%80%E6%9F%A5%E8%BF%9E%E6%8E%A5%E7%BC%BA%E5%8F%A3">¶</a></h3><p><code>isin</code> 判断编号是否存在于另一表，前面的 <code>~</code> 表示取反；<code>sum()</code> 数出缺口。没有匹配记录不等于字段值为零。</p>
+<p>例如商品品类缺失 610 条，占商品表 32,951 行的约 1.85%；不能除以订单数。评价正文缺失 58,247 条，占评价记录约 58.70%，但这些记录可能仍有评分，直接删行会改变评分分析样本。</p>
+<p>地理表有 261,831 条完整重复行和 19,015 个不同邮编前缀。<code>.duplicated()</code> 在没有指定列时按整行内容检查，并把每组第一行以后的重复行计数。即使删除完全相同的行，一个邮编仍可能有多个不同坐标，因此不能直接当唯一地址表。邮编位置只可作为近似代表位置，不能冒充客户精确地址；区域入门可以先按州分析。</p>
+<h3 id="5.1-%E6%A3%80%E6%9F%A5%E8%BF%9E%E6%8E%A5%E7%BC%BA%E5%8F%A3">5.1 检查连接缺口<a class="anchor-link" href="#5.1-%E6%A3%80%E6%9F%A5%E8%BF%9E%E6%8E%A5%E7%BC%BA%E5%8F%A3">¶</a></h3><p>下面分别检查记录找不找得到。<code>orders.order_id.isin(items.order_id)</code> 对每笔订单问“它的编号有没有出现在明细表”；前面的 <code>~</code> 对每个真值取反，所以最后 <code>.sum()</code> 数的是没有明细的订单。缺记录不等于金额为零。</p>
+<p><code>reviews.groupby('order_id').size().gt(1).sum()</code> 则先数每单评价行，再数有多少订单多于一条；卖家检查把中间的“行数”换成“不同卖家数”。两者分母都是订单而不是评价/明细行。</p>
 </div>
 </div>
 </div>
@@ -8997,9 +9006,11 @@ customer_unique_id 数： 96096
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>应看到 <strong>775 笔订单无明细、1 笔无支付、768 笔无评价</strong>；有 <strong>547 笔订单多条评价、1,278 笔订单多个卖家</strong>。这些都影响分析范围。多卖家订单的一条订单评价不能随意完全归咎于其中某一个卖家。</p>
-<p><strong>所以呢：</strong>报告必须列出样本排除数量与理由，不能只说“完成数据清洗”。</p>
-<h2 id="6.-%E6%97%B6%E9%97%B4%E4%B8%8E%E7%8A%B6%E6%80%81%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%B8%8D%E6%98%AF%E5%AE%8C%E6%95%B4%E7%9A%84%E6%AF%8F%E6%9C%88%E5%B8%82%E5%9C%BA%E7%BB%9F%E8%AE%A1">6. 时间与状态：数据不是完整的每月市场统计<a class="anchor-link" href="#6.-%E6%97%B6%E9%97%B4%E4%B8%8E%E7%8A%B6%E6%80%81%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%B8%8D%E6%98%AF%E5%AE%8C%E6%95%B4%E7%9A%84%E6%AF%8F%E6%9C%88%E5%B8%82%E5%9C%BA%E7%BB%9F%E8%AE%A1">¶</a></h2><p><code>pd.to_datetime</code> 将时间文本转换成时间对象；<code>errors='coerce'</code> 把无法解释的值标为 NaT（时间缺失），下面同时核对是否出现新增解析失败。<code>.dt.to_period('M')</code> 将每笔订单归到月份。</p>
+<p>保存结果是：订单缺客户 0 笔；无商品明细 775 笔；无支付 1 笔；无评价 768 笔。明细找不到订单、商品、卖家的数量均为 0。另有 547 笔订单多条评价、1,278 笔订单多个卖家。</p>
+<p>这些数字回答不同问题：无评价影响订单评分的覆盖率；一单多评影响把哪条评价分给订单；一单多卖家则使订单评价难以完全归责于某位卖家。选研究样本时应写明排除了哪些订单和理由，不能只报“清洗完成”。</p>
+<h2 id="6.-%E6%97%B6%E9%97%B4%E4%B8%8E%E7%8A%B6%E6%80%81%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%B8%8D%E6%98%AF%E5%AE%8C%E6%95%B4%E7%9A%84%E6%AF%8F%E6%9C%88%E5%B8%82%E5%9C%BA%E7%BB%9F%E8%AE%A1">6. 时间与状态：数据不是完整的每月市场统计<a class="anchor-link" href="#6.-%E6%97%B6%E9%97%B4%E4%B8%8E%E7%8A%B6%E6%80%81%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%B8%8D%E6%98%AF%E5%AE%8C%E6%95%B4%E7%9A%84%E6%AF%8F%E6%9C%88%E5%B8%82%E5%9C%BA%E7%BB%9F%E8%AE%A1">¶</a></h2><p>为了把订单按月计数，需要先把日期文本转换为时间对象。<code>pd.to_datetime(..., errors='coerce')</code> 遇到无法解析的值会记成时间缺失 <code>NaT</code>，所以每列转换前后都核缺失数；若新增缺失就停下，不把解析失败默默当成原缺失。</p>
+<p><code>.dt</code> 访问一列时间的功能，<code>.to_period('M')</code> 把每个时间归到月份。按月份分组再 <code>.size()</code> 得到每月记录数；<code>.reindex(...)</code> 把最早到最晚之间所有月份补齐，<code>fill_value=0</code> 只表示本地数据中该月没有记录。</p>
+<p><code>.plot.bar(figsize=(11,3))</code> 把月份计数画成柱形图，<code>figsize</code> 是图的宽高英寸，<code>color</code> 是颜色；返回的 <code>ax</code> 是图的坐标区，用 <code>set_xlabel</code> 等设置坐标与标题。<code>plt.tight_layout()</code> 调整边距，<code>plt.show()</code> 显示图。图中每根柱代表该月的订单记录数，不代表独立买家数或全市场销量。</p>
 </div>
 </div>
 </div>
@@ -9189,8 +9200,9 @@ customer_unique_id 数： 96096
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>日期边界为 <strong>2016-09-04 至 2018-10-17</strong>。但 2018 年 9 月只有 <strong>16 笔</strong>，10 月只有 <strong>4 笔</strong>；2016 年也稀疏。图的横轴是下单月份，纵轴是记录数，末尾骤降首先提示样本覆盖限制，不能直接叫业务崩盘。图中的 0 仅表示提取数据内没有记录，不保证企业当月没有订单。</p>
-<p><strong>所以呢：</strong>研究时间趋势或训练测试划分前，先挑选有足够覆盖且标签成熟的区间，再解释排除的边界月份。</p>
+<p>日期边界为 2016-09-04 至 2018-10-17。图从左到右按下单月排列，纵轴为订单记录数：2017 年 11 月有 7,544 笔，2018 年 9 月仅 16 笔，10 月仅 4 笔；2016 年也稀疏。末尾骤降首先提示覆盖限制，不能直接解释成业务崩盘。2016 年 11 月的 0 只表示提取数据内无记录，不能证明企业当月无订单。</p>
+<p>研究趋势前应说明采用哪些月份及排除理由；若以后预测未来订单，还要保证训练期早于评估期。标签成熟是指所需结果已被观察完，例如晚期下单者可能还没有足够时间发生后续购买。这里仅展示覆盖，没有替团队锁定可用时间窗口。</p>
+<p>下一格 <code>.value_counts()</code> 数各状态出现次数；除以 <code>len(orders)</code> 再乘 100，给出占全部 99,441 笔订单的百分比。状态是提取时看到的结果，不是订单确认时一定能知道的信息。</p>
 </div>
 </div>
 </div>
@@ -9298,10 +9310,11 @@ customer_unique_id 数： 96096
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>共有 <strong>96,478 笔状态为 delivered 的订单</strong>。其余含 shipped、canceled、unavailable 等；不能把没有送达记录的订单当成“没有延迟”。当前订单状态是提取时结果，不是下单时能预知的信息。</p>
-<p><strong>所以呢：</strong>“全部订单”和“可评价送达的订单”是两个分母。</p>
-<h2 id="7.-%E4%BA%A4%E4%BB%98%E5%BB%B6%E8%BF%9F%EF%BC%9A%E5%90%8C%E4%B8%80%E4%B8%AA%E8%AF%8D%E5%BF%85%E9%A1%BB%E7%BB%99%E6%98%8E%E7%A1%AE%E5%8F%A3%E5%BE%84">7. 交付延迟：同一个词必须给明确口径<a class="anchor-link" href="#7.-%E4%BA%A4%E4%BB%98%E5%BB%B6%E8%BF%9F%EF%BC%9A%E5%90%8C%E4%B8%80%E4%B8%AA%E8%AF%8D%E5%BF%85%E9%A1%BB%E7%BB%99%E6%98%8E%E7%A1%AE%E5%8F%A3%E5%BE%84">¶</a></h2><p>预计交付字段通常存日期的零点。例如预计 5 月 10 日，实际 5 月 10 日下午送达：按日历日期算没有晚，直接比较完整时间戳却会晚。</p>
-<p>本节并列展示两种口径，<strong>不是代替你们或老师规定标签</strong>。示例主口径采用实际送达日期晚于预计日期；只统计 delivered 且两日期齐全的订单。<code>normalize()</code> 去掉时分秒但保留日期，<code>gt()</code> 比较大于；布尔值 True 的均值就是比例。</p>
+<p>状态表每行是一种提取时状态。例如 <code>delivered</code> 为 96,478 笔，占全部订单约 97.02%；其余包括 shipped（已发货）、canceled（已取消）、unavailable（无法供货）、invoiced（已开票）、processing（处理中）、created（已创建）和 approved（已批准）。<code>approved</code> 的 2 笔显示 0.00% 是两位小数舍入，不是没有记录。</p>
+<p>没有送达记录的订单不能直接当作“没有延迟”。全部订单回答订单状态结构；可判断送达的订单才回答本节的交付延迟问题，二者分母不同。</p>
+<h2 id="7.-%E4%BA%A4%E4%BB%98%E5%BB%B6%E8%BF%9F%EF%BC%9A%E5%90%8C%E4%B8%80%E4%B8%AA%E8%AF%8D%E5%BF%85%E9%A1%BB%E7%BB%99%E6%98%8E%E7%A1%AE%E5%8F%A3%E5%BE%84">7. 交付延迟：同一个词必须给明确口径<a class="anchor-link" href="#7.-%E4%BA%A4%E4%BB%98%E5%BB%B6%E8%BF%9F%EF%BC%9A%E5%90%8C%E4%B8%80%E4%B8%AA%E8%AF%8D%E5%BF%85%E9%A1%BB%E7%BB%99%E6%98%8E%E7%A1%AE%E5%8F%A3%E5%BE%84">¶</a></h2><p>预计交付字段通常存日期的零点。例如预计 5 月 10 日，实际当天 15:00 送达：按日历日期没有晚，直接比较完整时间戳却比零点晚。</p>
+<p>本节并列两种定义，不替团队或老师规定标签。先用 <code>.eq('delivered')</code> 留下已交付状态，再 <code>.dropna(subset=[...])</code> 删除两项必要日期中任一缺失的订单；复制后得到 <code>valid_delivery</code>。两种定义都用这个相同样本，才能把差异归到定义本身。</p>
+<p><code>.dt.normalize()</code> 把时间设为当天零点，保留日期；<code>.gt(...)</code> 逐行判断实际值是否大于预计值。<code>late_calendar</code>、<code>late_timestamp</code> 都是一行一订单的真假值：True 表示该定义下延迟。真值求和是延迟单数，均值乘 100 是延迟百分比。</p>
 </div>
 </div>
 </div>
@@ -9397,10 +9410,10 @@ customer_unique_id 数： 96096
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>应得到 <strong>6,534 / 96,470 ≈ 6.7731%</strong> 与 <strong>7,826 / 96,470 ≈ 8.1124%</strong>。分母缺了 delivered 中的 8 笔日期不全订单。差异不是模型造成的，而是标签定义造成的。</p>
-<p>若六人各自研究，也必须在汇报中说清延迟、金额、复购各自口径。不要只贴一个百分数。</p>
-<p><strong>所以呢：</strong>业务定义在建模之前，标签不清楚时模型再精确也无法解释。</p>
-<h2 id="8.-%E9%87%91%E9%A2%9D%EF%BC%9A%E6%88%90%E4%BA%A4%E3%80%81%E6%94%AF%E4%BB%98%E3%80%81%E8%BF%90%E8%B4%B9%E4%B8%8E%E5%B9%B3%E5%8F%B0%E8%90%A5%E6%94%B6%E4%B8%8D%E6%98%AF%E5%90%8C%E4%B8%80%E4%B8%AA%E9%87%8F">8. 金额：成交、支付、运费与平台营收不是同一个量<a class="anchor-link" href="#8.-%E9%87%91%E9%A2%9D%EF%BC%9A%E6%88%90%E4%BA%A4%E3%80%81%E6%94%AF%E4%BB%98%E3%80%81%E8%BF%90%E8%B4%B9%E4%B8%8E%E5%B9%B3%E5%8F%B0%E8%90%A5%E6%94%B6%E4%B8%8D%E6%98%AF%E5%90%8C%E4%B8%80%E4%B8%AA%E9%87%8F">¶</a></h2><p><code>price</code> 与 <code>freight_value</code> 在明细表；<code>payment_value</code> 在支付表。以 BRL（巴西雷亚尔）为单位。下面计算全表总和，包含不同订单状态，<strong>不是仅已交付订单金额，更不是扣退款后的净收入或平台利润</strong>。</p>
+<p>日历日期口径为 6,534 除以 96,470，约 6.7731%；完整时间戳口径为 7,826 除以 96,470，约 8.1124%。原 96,478 笔 delivered 中有 8 笔必要日期不齐，分母因此是 96,470。两种定义差了 1,292 笔，来源是日期比较方式，不是模型表现。</p>
+<p>若实际为 5 月 11 日凌晨、预计为 5 月 10 日零点，两种口径都会算延迟；若同在 5 月 10 日下午，只有时间戳口径算延迟。这是笔记补充的条件变式。把定义、排除数量和分母一并写出，单报一个百分数无法比较不同人的结果。</p>
+<h2 id="8.-%E9%87%91%E9%A2%9D%EF%BC%9A%E6%88%90%E4%BA%A4%E3%80%81%E6%94%AF%E4%BB%98%E3%80%81%E8%BF%90%E8%B4%B9%E4%B8%8E%E5%B9%B3%E5%8F%B0%E8%90%A5%E6%94%B6%E4%B8%8D%E6%98%AF%E5%90%8C%E4%B8%80%E4%B8%AA%E9%87%8F">8. 金额：成交、支付、运费与平台营收不是同一个量<a class="anchor-link" href="#8.-%E9%87%91%E9%A2%9D%EF%BC%9A%E6%88%90%E4%BA%A4%E3%80%81%E6%94%AF%E4%BB%98%E3%80%81%E8%BF%90%E8%B4%B9%E4%B8%8E%E5%B9%B3%E5%8F%B0%E8%90%A5%E6%94%B6%E4%B8%8D%E6%98%AF%E5%90%8C%E4%B8%80%E4%B8%AA%E9%87%8F">¶</a></h2><p><code>price</code> 与 <code>freight_value</code> 是明细金额；<code>payment_value</code> 是支付记录金额，单位均为巴西雷亚尔（BRL）。下格各自在原表求和，所以不会受前面的错误连接放大；它包含不同订单状态，不是仅已交付、扣退款后的净收入或平台利润。</p>
+<p>第二部分在订单视图中，只保留商品、运费、支付三项齐全的订单，按“支付减商品再减运费”算差额。<code>.abs()</code> 取绝对值，忽略正负，检查金额是否对得上；<code>&gt;0.010001</code> 是代码实际阈值，在一分 BRL 外加很小余量以避开浮点表示误差，不把它说成已证明的业务容差。</p>
 </div>
 </div>
 </div>
@@ -9501,9 +9514,10 @@ customer_unique_id 数： 96096
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>全明细商品金额 <strong>13,591,643.70 BRL</strong>，运费 <strong>2,251,909.54 BRL</strong>，全支付金额 <strong>16,008,872.12 BRL</strong>。总额不完全相等，需逐订单检查记录覆盖、支付形式与异常，而不是强制调平。</p>
-<p><strong>所以呢：</strong>如果选择运费或支付角度，可以研究结构和关联，但没有毛利、平台抽成和完整退款信息，就不能称为盈利分析。</p>
-<h2 id="9.-%E8%AF%84%E4%BB%B7%EF%BC%9A%E8%AF%84%E5%88%86%E4%B8%8D%E7%AD%89%E4%BA%8E%E6%96%87%E6%9C%AC%EF%BC%8C%E4%B9%9F%E4%B8%8D%E4%B8%80%E5%AE%9A%E4%B8%80%E5%8D%95%E4%B8%80%E8%AF%84">9. 评价：评分不等于文本，也不一定一单一评<a class="anchor-link" href="#9.-%E8%AF%84%E4%BB%B7%EF%BC%9A%E8%AF%84%E5%88%86%E4%B8%8D%E7%AD%89%E4%BA%8E%E6%96%87%E6%9C%AC%EF%BC%8C%E4%B9%9F%E4%B8%8D%E4%B8%80%E5%AE%9A%E4%B8%80%E5%8D%95%E4%B8%80%E8%AF%84">¶</a></h2><p>下面 <code>.value_counts().sort_index()</code> 按星级统计。分母是评价行数，不是全部订单，更不是平台所有消费者。</p>
+<p>总额表每行是一种金额：全明细商品金额 13,591,643.70 BRL，运费 2,251,909.54 BRL，相加为 15,843,553.24 BRL；全支付金额为 16,008,872.12 BRL，相差 165,318.88 BRL。这个全表差额不能直接解释成利润、退款或损失，因为两侧记录覆盖和订单状态不同。</p>
+<p>逐订单检查样本有 98,665 笔，其中 303 笔的差额绝对值超过代码阈值。§4 的示例订单差额是 375.73 − 298.90 − 76.83，即 0 BRL；这是单笔核对方式。其他订单需要核具体记录与规则，不能为了总额相等强制调平。现有字段可研究支付与运费结构，但缺完整退款、抽成和成本资料，不能据此做盈利结论。</p>
+<h2 id="9.-%E8%AF%84%E4%BB%B7%EF%BC%9A%E8%AF%84%E5%88%86%E4%B8%8D%E7%AD%89%E4%BA%8E%E6%96%87%E6%9C%AC%EF%BC%8C%E4%B9%9F%E4%B8%8D%E4%B8%80%E5%AE%9A%E4%B8%80%E5%8D%95%E4%B8%80%E8%AF%84">9. 评价：评分不等于文本，也不一定一单一评<a class="anchor-link" href="#9.-%E8%AF%84%E4%BB%B7%EF%BC%9A%E8%AF%84%E5%88%86%E4%B8%8D%E7%AD%89%E4%BA%8E%E6%96%87%E6%9C%AC%EF%BC%8C%E4%B9%9F%E4%B8%8D%E4%B8%80%E5%AE%9A%E4%B8%80%E5%8D%95%E4%B8%80%E8%AF%84">¶</a></h2><p>现在以评价记录为单位数星级。<code>.value_counts()</code> 数每个分数的记录数，<code>.sort_index()</code> 按 1 到 5 星排列；除以 <code>len(reviews)</code> 得到占 99,224 条评价记录的比例。该分母既不是全部订单，也不是平台所有消费者。</p>
+<p><code>.mean()</code> 对星级求均值，<code>.notna().mean()</code> 对正文是否非空求比例；后者只检验有无文字，不判断语言、情感或文本质量。下面柱形图的横轴为评分，纵轴为评价行数，一根柱对应一个分数。</p>
 </div>
 </div>
 </div>
@@ -9615,10 +9629,10 @@ customer_unique_id 数： 96096
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>五星 <strong>57,328 条</strong>、一星 <strong>11,424 条</strong>。大量有评分记录没有正文；情感分析只能覆盖有文本的子集，还需核语言与自动分类质量。不能把空正文当作中性评论。</p>
-<p>如果研究延迟与低评分，需要先给多评价订单定规则（例如按时间选一条，并用其他规则作敏感性检查）；物流、品类、价格等也可能相互关联，所以观察到相关性不能直接说“延迟导致差评”。</p>
-<p><strong>所以呢：</strong>“评价记录占比”和“订单低评分比例”必须分清，后者需要先把评价统一到订单层面。</p>
-<h2 id="10.-%E4%B9%B0%E5%AE%B6%E5%A4%8D%E8%B4%AD%EF%BC%9A%E8%BF%99%E4%B8%AA%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E8%A7%82%E5%AF%9F%E8%BE%B9%E7%95%8C">10. 买家复购：这个数据集的观察边界<a class="anchor-link" href="#10.-%E4%B9%B0%E5%AE%B6%E5%A4%8D%E8%B4%AD%EF%BC%9A%E8%BF%99%E4%B8%AA%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E8%A7%82%E5%AF%9F%E8%BE%B9%E7%95%8C">¶</a></h2><p>先按 customer_id 给每笔订单找 customer_unique_id，再数每个买家有几笔订单。本节包含全部订单状态；若研究有效购买复购，应重新限定有效订单，不能直接复用这个数。</p>
+<p>保存图中五星柱最高，为 57,328 条，占评价记录约 57.78%；一星为 11,424 条，约 11.51%。星级均值 4.0864 是对记录逐条取平均，一单多评会让该订单出现多次。正文非空仅 41.30%，不能把空正文当作中性或不满意；情感分析先限定有文本子集，再检查语言和分类质量。</p>
+<p>若研究延迟与低评分，先统一到订单层面。笔记补充的可选规则是按评价答复时间留一条；但“最早”与“最晚”可能得到不同结果，应再换规则检查结论是否变化，这叫敏感性检查（sensitivity check）。未评价者与已评价者也可能不同。物流、品类、金额等同时变化，所以这里即使找到关联，也不能直接证明“延迟导致差评”。</p>
+<h2 id="10.-%E4%B9%B0%E5%AE%B6%E5%A4%8D%E8%B4%AD%EF%BC%9A%E8%BF%99%E4%B8%AA%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E8%A7%82%E5%AF%9F%E8%BE%B9%E7%95%8C">10. 买家复购：这个数据集的观察边界<a class="anchor-link" href="#10.-%E4%B9%B0%E5%AE%B6%E5%A4%8D%E8%B4%AD%EF%BC%9A%E8%BF%99%E4%B8%AA%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E8%A7%82%E5%AF%9F%E8%BE%B9%E7%95%8C">¶</a></h2><p>现在要从订单数换成买家数。<code>orders[['order_id','customer_id']]</code> 中外层方括号取列，内层列表指定两列；先用 <code>customer_id</code> 与客户表一对一连接，给每笔订单附上跨订单的 <code>customer_unique_id</code>，然后按买家编号 <code>.groupby(...).size()</code> 数各买家订单。</p>
+<p><code>.gt(1)</code> 判断是否至少两笔，求和得到这类买家数，求均值乘 100 得到占买家的百分比。末尾 <code>buyer_counts.value_counts().sort_index()</code> 再数“有 1 笔、2 笔……订单的买家各多少”，输出左列索引是订单数，右列才是买家数。本节包括全部订单状态，若只研究有效购买，应先另定状态筛选再重算，不能直接沿用。</p>
 </div>
 </div>
 </div>
@@ -9730,82 +9744,75 @@ customer_unique_id 数： 96096
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>96,096 个买家编号中，2,997 个有至少两笔订单，约 3.1188%。</strong> 这是数据内、全部状态下的重复下单观察；不能称为 Olist 全市场真实复购率，也不能把没有第二次记录等同流失。末期客户观察时间较短，平台外购买也不可见。</p>
-<p><strong>所以呢：</strong>比起零售两年完整交易类数据，Olist 的客户留存题需要更谨慎；物流与评价可能更容易得到有足够样本的结果。</p>
-<h2 id="11.-%E5%85%AD%E4%B8%AA%E4%BA%BA%E5%90%84%E8%87%AA%E5%8F%AF%E6%8E%A2%E7%B4%A2%E4%BB%80%E4%B9%88">11. 六个人各自可探索什么<a class="anchor-link" href="#11.-%E5%85%AD%E4%B8%AA%E4%BA%BA%E5%90%84%E8%87%AA%E5%8F%AF%E6%8E%A2%E7%B4%A2%E4%BB%80%E4%B9%88">¶</a></h2><p>你们计划每人先做一个角度。建议用相同模板比较候选：决策者、业务问题、统计单位、目标、字段、简单对照、评价方式、边界。下面都是候选方案，没有任何一个被预设为最终组题。</p>
+<p>96,096 个买家编号中，2,997 个有至少两笔订单，比例约 3.1188%。分布表第一行读作“93,099 个买家各只有 1 笔订单”，第二行是“2,745 个买家各有 2 笔”，不是第二笔订单发生在第 2 个月。这只是数据覆盖范围内、全部状态下的重复下单观察。</p>
+<p>没有第二次记录不等于流失：末期买家观察时间更短，平台外购买不可见，也没有统一跟踪周期。比如笔记补充小例：甲在数据结束前一天才首次下单，乙在一年前下单，即使都只出现一次，也不能说他们经历了同样长的无复购观察。若要改为“首次购买后 90 天是否再买”，需先限定有完整 90 天后续覆盖的买家；此处未实施该任务。</p>
+<h2 id="11.-%E5%85%AD%E4%B8%AA%E4%BA%BA%E5%90%84%E8%87%AA%E5%8F%AF%E6%8E%A2%E7%B4%A2%E4%BB%80%E4%B9%88">11. 六个人各自可探索什么<a class="anchor-link" href="#11.-%E5%85%AD%E4%B8%AA%E4%BA%BA%E5%90%84%E8%87%AA%E5%8F%AF%E6%8E%A2%E7%B4%A2%E4%BB%80%E4%B9%88">¶</a></h2><p>下面保留六个候选方向，未替团队锁题。每行从“谁要作什么决定”出发，再选统计单位、字段、比较方法和可验证结果。预测是用当时已知信息估计以后结果；事后解释是整理已发生结果，两者用信息的时间不同。</p>
 <table>
 <thead>
 <tr>
 <th>角度</th>
-<th>明确问题</th>
-<th>主要表与粒度</th>
-<th>可验证结果</th>
-<th>最大限制</th>
+<th>业务问题</th>
+<th>统计单位与表</th>
+<th>入门验证与边界</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>交付风险</td>
-<td>订单确认时，能否识别以后晚于承诺日期的订单？</td>
-<td>orders/items/products/sellers/customers；订单</td>
-<td>时间留出上的延迟识别、复核名单覆盖</td>
-<td>排除未来交付状态，历史信息按当时可得构造</td>
+<td>确认订单时，哪些单要优先跟进？</td>
+<td>订单；orders/items/products/sellers/customers</td>
+<td>先与“所有单均不延迟”比较，再在更晚订单检查延迟识别；输入不能含未来交付结果</td>
 </tr>
 <tr>
 <td>客户体验</td>
 <td>哪些订单特征与低评分相关？</td>
-<td>reviews+orders+items；订单</td>
-<td>低评分关联、不同口径下稳定性</td>
-<td>多评规则、未评选择、不能声称因果</td>
+<td>订单；reviews/orders/items</td>
+<td>先定义低分阈值，统一多评规则，再比较延迟与未延迟组；未评选择与其他差异限制因果结论</td>
 </tr>
 <tr>
 <td>运费与区域</td>
-<td>哪些地区/品类的运费负担高，交付又慢？</td>
-<td>items/products/customers/sellers；先明细再订单或区域</td>
-<td>运费占比与交付分布、同类对照</td>
-<td>不知道真实物流成本或实际路线，不能算利润</td>
+<td>哪些地区或品类运费负担高、送达慢？</td>
+<td>先明细后订单/区域；items/products/customers/sellers/orders</td>
+<td>同类订单比较运费占比和交付天数；须先说明占比的分母，缺实际物流成本不能算利润</td>
 </tr>
 <tr>
 <td>卖家履约</td>
-<td>哪些卖家在相近订单条件下值得优先排查？</td>
-<td>sellers/items/orders；卖家及订单</td>
-<td>样本量充分的履约差异、未来时期检验</td>
-<td>多卖家订单归属、少样本排名不稳定</td>
+<td>哪些卖家值得优先排查？</td>
+<td>卖家及订单；sellers/items/orders</td>
+<td>先在相近订单条件下比较延迟比例并列样本量；多卖家归属和少样本排名需处理</td>
 </tr>
 <tr>
 <td>品类与需求结构</td>
-<td>哪些品类的订单金额/记录量变化值得关注？</td>
-<td>orders/items/products/translation；品类月份</td>
-<td>时间走势、结构变化及边界月份检查</td>
-<td>不等于全市场需求，没有库存/曝光分母</td>
+<td>哪些品类的记录量或金额变化值得关注？</td>
+<td>品类月份；orders/items/products/translation</td>
+<td>先比较完整月份的结构，说明跨品类订单如何计数；缺库存与曝光不能推全市场需求</td>
 </tr>
 <tr>
 <td>支付与分期</td>
-<td>不同金额和品类的订单使用哪些支付与分期方式？</td>
-<td>payments+订单聚合items；订单</td>
-<td>使用结构及控制条件后的关联</td>
-<td>分期不是多行支付，没有信贷损失，不能称提高转化</td>
+<td>不同金额或品类订单如何支付？</td>
+<td>订单；payments/订单聚合items/products</td>
+<td>比较相近金额订单的支付结构；多种支付需另定归类规则，分期不是多行支付，缺信贷损失不能推转化收益</td>
 </tr>
 </tbody>
 </table>
-<p>可以额外考虑买家复购，但上节提示其观察样本稀疏，需要先验证可行性。</p>
-<p><strong>预测任务</strong>必须在未来结果发生前取输入；<strong>事后解释任务</strong>可使用已发生的交付结果，但不得伪装成提前预测。每个角度都应说明一个最简单的比较对象，而不是直接列模型名称。</p>
-<h2 id="12.-%E5%9B%9B%E4%B8%AA%E7%90%86%E8%A7%A3%E6%A3%80%E6%9F%A5">12. 四个理解检查<a class="anchor-link" href="#12.-%E5%9B%9B%E4%B8%AA%E7%90%86%E8%A7%A3%E6%A3%80%E6%9F%A5">¶</a></h2><p>先自己回答，再展开。文件跑通不代表你本人已经掌握；本轮不把这些题记为你已完成。</p>
+<p>例如选客户体验，可先规定 1–2 星为低分，再比较延迟组和未延迟组中“低分订单数 ÷ 有可用评价订单数”；这是笔记补充的候选办法，不是已算出的结果。若两组品类不同，低分差异也可能来自品类，要进一步对照。这样一个简单可解释的比较，比先堆模型名称更能说明研究能否落地。</p>
+<p>交付风险行的“更晚订单检查”是未来预测任务的候选评估方式，本数据学习 Notebook 没有实施模型训练或测试。买家复购还可另选，但需先处理 §10 的观察窗口，不能由文件存在推定成员已经研究过。</p>
+<h2 id="12.-%E5%9B%9B%E4%B8%AA%E7%90%86%E8%A7%A3%E6%A3%80%E6%9F%A5">12. 四个理解检查<a class="anchor-link" href="#12.-%E5%9B%9B%E4%B8%AA%E7%90%86%E8%A7%A3%E6%A3%80%E6%9F%A5">¶</a></h2><p>这是本篇自拟的学习题，不是教师评分原题；先尝试自己回答，再展开参考作答。本轮不记为你已完成。</p>
 <ol>
-<li>一笔订单有 3 条商品和 2 条支付，直接按订单号连接会有几行？</li>
+<li>一笔订单有 3 条商品和 2 条支付，直接按订单号连接会有几行？若改为一行一订单去连支付，支付会被复制吗？</li>
 <li>为什么 99,441 行客户表不等于 99,441 个独立买家？</li>
 <li>预计 5 月 10 日送达、实际当天 15:00 送达，按两个口径分别是否延迟？</li>
-<li>没有评价正文的订单能否标成“不满意”？没有第二笔订单能否标成“流失”？</li>
+<li>没有评价正文能否标成“不满意”？没有第二笔订单能否标成“流失”？</li>
 </ol>
-<details><summary>展开参考答案</summary>
+<details><summary>展开参考作答（笔记补充）</summary>
 <ol>
-<li>3×2＝6 行，每条商品复制两次、每条支付复制三次。先各自按订单汇总，再用唯一键连接。</li>
-<li>customer_id 是订单侧客户编号；跨订单的匿名买家用 customer_unique_id。需明确统计层级。</li>
-<li>按日历日没有晚；若预计字段为当天零点，直接比较完整时间戳会算晚。因此报告必须明确标签口径。</li>
-<li>都不能。空正文可能仍有五星评分；没有复购记录可能因为观察窗口短或发生在数据覆盖范围之外。</li>
+<li>商品表每行与两条支付配对，所以 3 乘 2 得到 6 行；商品各出现 2 次，支付各出现 3 次。若目标是一行一订单，先各自汇总再连。若左边已经是一行一订单，连两条支付得 2 行，支付各出现一次；重复的是订单层字段，不能再逐行相加订单金额。</li>
+<li><code>customer_id</code> 是订单侧编号，可能给同一买家的多笔订单不同编号；<code>customer_unique_id</code> 才是跨订单匿名买家标识。应按后者计不同值，仍不能确认真实自然人数。</li>
+<li>日期都是 5 月 10 日，日历口径不晚；若预计时间是当天零点，15:00 大于 00:00，时间戳口径算晚。若改为 11 日凌晨，则两种都晚。</li>
+<li>都不能。空正文可能仍有五星评分，文本缺失不等于态度；没有第二笔记录可能因为观察时间短或数据覆盖外购买，缺少证据不能确定流失。</li>
 </ol>
 </details>
-<p><strong>下一步：</strong>先挑一个你最想解释的现象，用一两句话写出“谁、什么决策、何时知道什么”。之后再单独做该方向的分析 Notebook；不要把六套未经论证的方法都堆到同一份 3 分钟汇报里。</p>
+<p>下一步先写一个具体问题：“谁要作什么决定、何时能知道哪些字段？”再查需要哪些表、合并后每行是什么、分母是谁和结果在哪个时间观察。之后在另一个分析副本研究；不要把六套尚未验证的方法都塞进 3 分钟 Briefing。</p>
 </div>
 </div>
 </div>
@@ -9816,7 +9823,8 @@ customer_unique_id 数： 96096
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="13.-%E5%8E%9F%E4%BB%B6%E4%BF%9D%E6%8A%A4%E4%B8%8E%E5%A4%8D%E7%8E%B0%E6%A3%80%E6%9F%A5">13. 原件保护与复现检查<a class="anchor-link" href="#13.-%E5%8E%9F%E4%BB%B6%E4%BF%9D%E6%8A%A4%E4%B8%8E%E5%A4%8D%E7%8E%B0%E6%A3%80%E6%9F%A5">¶</a></h2><p>最后重新计算文件指纹，确认本次运行没有修改原始数据。本 Notebook 不联网、不写 CSV、不训练模型，也不导出提交件。</p>
+<h2 id="13.-%E5%8E%9F%E4%BB%B6%E4%BF%9D%E6%8A%A4%E4%B8%8E%E5%A4%8D%E7%8E%B0%E6%A3%80%E6%9F%A5">13. 原件保护与复现检查<a class="anchor-link" href="#13.-%E5%8E%9F%E4%BB%B6%E4%BF%9D%E6%8A%A4%E4%B8%8E%E5%A4%8D%E7%8E%B0%E6%A3%80%E6%9F%A5">¶</a></h2><p>最后循环重新核九个 CSV 的 SHA-256，和 §1 用同一份来源清单比较。若指纹有变，断言停止；若都一致，保存输出打印确认。指纹一致证明原始字节保持，不证明你已经理解、选好题或提交作业。</p>
+<p>本 Notebook 的代码不联网、不写 CSV、不训练模型、不导出提交件。本次只修订教学文字，保留原代码和原有执行输出，没有新运行；你之后是否自己运行、学会或提交应分别记录。完整复现仍需自己在正确目录、合适环境和空内核按顺序执行，不能把这份保存输出当作今天已重跑。</p>
 </div>
 </div>
 </div>
@@ -9855,4 +9863,3 @@ Notebook 执行完成；本人学习、选题决定与 Canvas 提交仍须分别
 </main>
 </body>
 </html>
-

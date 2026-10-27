@@ -1,0 +1,284 @@
+====================================================================================================
+笔记质量量表   candidate-display-v4.md   模式: current/strict   status: v1.0
+----------------------------------------------------------------------------------------------------
+【L 合规检查】
+   L1_未讲解页 : []
+   L1_省略前缀连写 : ["p.8、15"]
+   L5_围栏数 : 24
+   L5_details : [15, 15]
+   ✓ 七项无问题（L1 未讲解页见上，封面/目标页允许）
+【现行内容检查】字数/固定标签/类比配额不计FAIL
+   △ C_CALCULATION_STEPS 行528 §2.4 单棵树的局限与回归树（讲义物理 p.19–23） 本单元有计算公式但未找到数字代入过程；给定结果或API调用不能替代可复算例。本篇其他单元有代入，请核是否为同一机制及是否需就近回指：2.3, 2.3.2, 2.6, 2.7, 2.7.1, 2.8, 2.9, 2.10, 2.11, 2.11.1, 2.12, 2.13, 2.14, 2.15
+   △ C_CALCULATION_STEPS 行616 §2.5 集成为何可能优于单模型（讲义物理 p.24–30） 本单元有计算公式但未找到数字代入过程；给定结果或API调用不能替代可复算例。本篇其他单元有代入，请核是否为同一机制及是否需就近回指：2.3, 2.3.2, 2.6, 2.7, 2.7.1, 2.8, 2.9, 2.10, 2.11, 2.11.1, 2.12, 2.13, 2.14, 2.15
+   △ C_CALCULATION_STEPS 行2050 §2.16 训练折内的重采样（讲义 p.86、p.89–92） 本单元有计算公式但未找到数字代入过程；给定结果或API调用不能替代可复算例。本篇其他单元有代入，请核是否为同一机制及是否需就近回指：2.3, 2.3.2, 2.6, 2.7, 2.7.1, 2.8, 2.9, 2.10, 2.11, 2.11.1, 2.12, 2.13, 2.14, 2.15
+   ✓ 未报确定性阻塞；不是教学完整证明
+   原题清单: manifest_contract_passed 核对题数: 12
+   范围: 机检通过不代表解释正确或读者已理解；页码引述不证明该页已实质讲解。
+   范围: 纯数字等式只核支持的四则/幂/开方及显示精度；不执行代码、不验证符号推导或模型结果。
+   范围: 无显式源题清单时，无法验证漏整题/原文保真；有清单也只核其字面契约，清单抄写与逐问语义仍需回源。
+   历史G/E统计已保存；查看旧配额详情用 --profile historical
+【逐小节明细】
+   num | cjk | pages | formula_n | numex_step | first_kind
+   2.1 | 1116 | 6 | 1 | 0 | text
+   2.2 | 860 | 9 | 0 | 0 | text
+   2.3 | 1337 | 3 | 2 | 7 | text
+   2.3.1 | 627 | 0 | 0 | 0 | bq
+   2.3.2 | 586 | 1 | 0 | 2 | text
+   2.4 | 1048 | 5 | 1 | 0 | text
+   2.4.1 | 329 | 0 | 0 | 0 | text
+   2.5 | 1102 | 7 | 1 | 0 | bq
+   2.6 | 2207 | 9 | 2 | 9 | text
+   2.7 | 1871 | 8 | 3 | 14 | text
+   2.7.1 | 477 | 0 | 1 | 1 | text
+   2.8 | 1652 | 6 | 1 | 2 | text
+   2.9 | 2648 | 11 | 2 | 10 | text
+   2.10 | 1583 | 3 | 2 | 11 | text
+   2.11 | 1796 | 5 | 5 | 4 | text
+   2.11.1 | 392 | 0 | 0 | 4 | text
+   2.12 | 1003 | 1 | 1 | 3 | bq
+   2.13 | 1335 | 10 | 4 | 10 | text
+   2.14 | 1142 | 5 | 4 | 4 | text
+   2.15 | 1628 | 2 | 1 | 3 | text
+   2.16 | 1587 | 5 | 1 | 0 | text
+【R 可读性】 计入判定（规则：_meta/可读性总规则.md）
+   语义检查仅为 △ 疑点；PASS 不表示读者已理解。
+   表格: 最多 6 列，最大单元格 27 单元（行 93）
+   句长（阅读单元）: 1300 句  均值 26.0  中位 24  p90 46  最长 111  >80: 4（0.3%）  >120: 0  豁免块: 0
+   ✗ 0 项  △ 210 项
+     R1a  单句长度           ✗ 0    △ 4
+     R1c  一句多个分号         ✗ 0    △ 30
+     R1d  括号插入语过长        ✗ 0    △ 1
+     R1e  否定澄清堆叠         ✗ 0    △ 2
+     R2a  段落长度 / 句数      ✗ 0    △ 4
+     R2b  列表项长度          ✗ 0    △ 3
+     R3a  连续正文块过长        ✗ 0    △ 1
+     R4c  单元格句数          ✗ 0    △ 25
+     R5a  一段行内公式过多       ✗ 0    △ 26
+     R5b  一个公式块多个等式      ✗ 0    △ 7
+     R6a  一段术语注释过密       ✗ 0    △ 2
+     R7a  主线混入核验细节       ✗ 0    △ 5
+     R8a  §2 标题缺页码       ✗ 0    △ 4
+     R8b  小节首段过长         ✗ 0    △ 2
+     R4f  表头说明线索待核       ✗ 0    △ 40
+     R6b  句内术语密度待核       ✗ 0    △ 8
+     R6d  术语首用解释待核       ✗ 0    △ 38
+     R8c  误解解释待核         ✗ 0    △ 8
+   △ R4c 行90 单元格 2 句
+   △ R4c 行91 单元格 2 句
+   △ R8b 行125 小节首段 4 句；首段 ≤ 3 句，先给问题或结论
+   △ R5a 行137 一段 5 个不同行内公式
+   △ R1c 行228 2 个分号：决策树由三种对象组成：内部节点提出属性测试；分支表示测试结果；叶节点给出…
+   △ R4c 行333 单元格 2 句
+   △ R5a 行346 一段 5 个不同行内公式
+   △ R5b 行350 一个 $$ 块放了多个等式；拆开并在中间加一句话
+   △ R5b 行358 一个 $$ 块放了多个等式；拆开并在中间加一句话
+   △ R2a 行394 169 单元 / 4 句：💡 实现边界（笔记补充）：合法切分必须把当前非空记录分成至少两个非空组，…
+   △ R8a 行421 #### 2.3.1 从候选分数到完整小树（笔记补充）
+   △ R1d 行485 括号内 36 单元：保留原语言；无原题编号，来源 A 18:16 So please tel…
+   △ R4c 行497 单元格 2 句
+   △ R4c 行498 单元格 2 句
+   △ R7a 行515 3 个时间戳；移到 §9 或折叠「复算与来源」
+   △ R5a 行559 一段 5 个不同行内公式
+   △ R8a 行584 #### 2.4.1 回归树的四点完整计算（笔记补充）
+   △ R1c 行633 2 个分号：p.29 把过程拆成三步：从原数据 $D$ 产生多个数据集 $D_1,\…
+   △ R5a 行633 一段 4 个不同行内公式
+   △ R5a 行648 一段 4 个不同行内公式
+   △ R7a 行650 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R5a 行709 一段 4 个不同行内公式
+   △ R5a 行727 一段 4 个不同行内公式
+   △ R7a 行757 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R7a 行763 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R2a 行782 153 单元 / 4 句：第 5 轮在 0.35 与 0.8 的子熵相同，原图选择 0.35；复现…
+   △ R1c 行818 2 个分号：题意有三个动作：填 $x=0.9$ 一列；给最终预测；判断模型能否很好拟…
+   △ R4c 行840 单元格 2 句
+   △ R4c 行842 单元格 2 句
+   △ R4c 行843 单元格 2 句
+   △ R4c 行844 单元格 2 句
+   △ R4c 行845 单元格 2 句
+   △ R4c 行846 单元格 2 句
+   △ R4c 行847 单元格 2 句
+   △ R4c 行848 单元格 2 句
+   △ R2b 行862 100 单元：3. 能否很好拟合原数据：对 p.34 列出的十个原点，p.38 的集成…
+   △ R5b 行920 一个 $$ 块放了多个等式；拆开并在中间加一句话
+   △ R5a 行928 一段 4 个不同行内公式
+   △ R5b 行934 一个 $$ 块放了多个等式；拆开并在中间加一句话
+   △ R2a 行993 155 单元 / 4 句：💡 这张图是在讲义上补充端点和重试预算的教学策略，不冒称 scikit-…
+   △ R1c 行1023 2 个分号：这里预定最多三轮；第三轮集成在本例四条记录上全对；标准 AdaBoost…
+   △ R8a 行1090 #### 2.7.1 为什么 alpha 是这个对数比（笔记补充）
+   △ R1a 行1133 90 单元：p.50 的伪码流程是：把训练集分成 $K$ 折；每个基模型轮流在 $K…
+   △ R1c 行1133 5 个分号：p.50 的伪码流程是：把训练集分成 $K$ 折；每个基模型轮流在 $K…
+   △ R5b 行1174 一个 $$ 块放了多个等式；拆开并在中间加一句话
+   △ R1c 行1253 2 个分号：p.49 的对比可记为：Bagging 并行重抽样后平均；Boostin…
+   △ R8b 行1259 小节首段 4 句；首段 ≤ 3 句，先给问题或结论
+   △ R5a 行1261 一段 5 个不同行内公式
+   △ R5a 行1267 一段 5 个不同行内公式
+   △ R5a 行1273 一段 4 个不同行内公式
+   △ R5a 行1275 一段 5 个不同行内公式
+   △ R5a 行1333 一段 4 个不同行内公式
+   △ R5a 行1335 一段 5 个不同行内公式
+   △ R1e 行1337 一段 3 处否定澄清
+   △ R7a 行1339 复算记录；移到 §9 或折叠「复算与来源」
+   △ R1c 行1355 2 个分号：文字替代：先输入带 $-1/+1$ 标签的数据并缩放特征；若数据线性可分…
+   △ R2b 行1371 124 单元：- 第一，支持向量不是“方向向量”，而是训练样本。第二，讲义 p.64 …
+   △ R5a 行1371 一段 4 个不同行内公式
+   △ R5a 行1408 一段 4 个不同行内公式
+   △ R1c 行1451 2 个分号：逐列读法：符号进入本节目标式；含义说明调整的对象；末列区分输入参数与待算…
+   △ R1c 行1455 3 个分号： $\xi_i=0$ 表示样本在正确的间隔边界上或外侧；$01$ 表示越…
+   △ R5a 行1455 一段 4 个不同行内公式
+   △ R2a 行1459 167 单元 / 5 句：$C$ 的方向。 $C$ 大时，每单位违约更贵，优化会更重视减少训练违约…
+   △ R5a 行1461 一段 4 个不同行内公式
+   △ R5a 行1471 一段 5 个不同行内公式
+   △ R1c 行1483 2 个分号： 输入为缩放后的 $X$、标签 $y$、$C$ 和惩罚阶数／损失形式；求…
+   △ R5a 行1483 一段 4 个不同行内公式
+   △ R1c 行1487 2 个分号： p.65 用蓝圈标出互相穿插的样本；p.66 给出松弛变量、目标和约束…
+   △ R1c 行1541 2 个分号：这里 $\Phi$ 读作 phi，只是“转换坐标的规则”的名字；$\ga…
+   △ R5a 行1541 一段 4 个不同行内公式
+   △ R5a 行1543 一段 5 个不同行内公式
+   △ R5a 行1545 一段 5 个不同行内公式
+   △ R1a 行1600 107 单元： p.68 展示一维点经二次映射后可被直线分开；p.69 给出圆形边界；…
+   △ R1c 行1600 4 个分号： p.68 展示一维点经二次映射后可被直线分开；p.69 给出圆形边界；…
+   △ R1e 行1610 一段 3 处否定澄清
+   △ R8a 行1648 #### 2.11.1 二次映射走到最终分类（笔记补充）
+   △ R6a 行1685 一段 3 处括号英文注释（约等于 3 个新术语）
+   △ R1c 行1728 2 个分号：⚪ 参考作答（笔记推断）：先定义超平面与两侧间隔约束，再最小化 $\lV…
+   △ R5b 行1758 一个 $$ 块放了多个等式；拆开并在中间加一句话
+   △ R1a 行1769 81 单元： 精确率（Precision）的分母是“模型报正的全部记录”，回答报警有…
+   △ R1c 行1769 2 个分号： 精确率（Precision）的分母是“模型报正的全部记录”，回答报警有…
+   △ R5b 行1773 一个 $$ 块放了多个等式；拆开并在中间加一句话
+   △ R1c 行1809 6 个分号： p.75 列欺诈、入侵、制造缺陷；p.76 把稀有类比作草堆里的针；p…
+   △ R1c 行1817 2 个分号： Accuracy 像问“保安对所有进门者判断对了多少”；Recall …
+   △ R6a 行1848 一段 3 处括号英文注释（约等于 3 个新术语）
+   △ R5a 行1862 一段 4 个不同行内公式
+   △ R5a 行1883 一段 4 个不同行内公式
+   △ R1c 行1911 2 个分号： 输入为与实际正类频率大致相符的类别概率（校准含义与 20% 小例见 §…
+   △ R1c 行1915 3 个分号： p.84 定义成本矩阵和总成本；p.85 对 $M_1/M_2$ 给出…
+   △ R1c 行1929 2 个分号： 调阈值不改变训练样本；类别权重可能改变训练边界；重采样改变训练分布。
+   △ R1a 行1949 111 单元： RIPPER 的经典思路是：把数据分为 grow set 与 prun…
+   △ R1c 行1949 5 个分号： RIPPER 的经典思路是：把数据分为 grow set 与 prun…
+   △ R3a 行2008 587 单元无隔断
+   △ R1c 行2054 2 个分号： 欠采样（under-sampling）减少多数类；过采样（over-s…
+   △ R1c 行2087 2 个分号：可操作地说：先统计每个少数类点邻域内多数类比例 $r_i$；把合成预算更…
+   △ R1c 行2111 3 个分号： p.89 给欠采样与过采样并强调测试分布不变；p.90 区分 prot…
+   △ R2b 行2123 97 单元：- 第一，SMOTE／ADASYN 不是简单复制；讲义 p.91 的 “…
+   △ R1c 行2125 2 个分号： 重采样改变训练数据；类别权重改变损失；阈值改变预测决策。
+   △ R1c 行2158 2 个分号：文字替代：数据进入后，按边界和解释需求选择树、集成或 SVM；SVM 按…
+   △ R4c 行2168 单元格 2 句
+   △ R4c 行2169 单元格 2 句
+   △ R4c 行2173 单元格 2 句
+   △ R4c 行2175 单元格 2 句
+   △ R4c 行2177 单元格 2 句
+   △ R1c 行2216 3 个分号：逐列读法：中文给统一译名；English 给考试关键词；英文定义是可用答…
+   △ R4c 行2234 单元格 2 句
+   △ R1c 行2236 3 个分号：逐列读法：可信度表示推断来源；考法是复习任务；过程列是答卷需写的中间步骤…
+   △ R1c 行2259 2 个分号：SVM 的状态是 $\mathbf{w},b,\xi$；RIPPER 的…
+   △ R5a 行2322 一段 4 个不同行内公式
+   △ R1c 行2338 3 个分号：先按时间或生产批次划分训练、验证和原分布测试集；训练折内比较类别权重、S…
+   △ R4c 行2351 单元格 2 句
+   △ R4c 行2355 单元格 2 句
+   △ R4c 行2357 单元格 2 句
+   △ R4c 行2360 单元格 2 句
+   △ R4c 行2362 单元格 2 句
+   △ R4c 行2379 单元格 2 句
+   △ R6b 行200 一句 5 个术语（决策树、SVM、Bagging、Random Forest、Stacking）：Base classifier 包括决策树、规则、近邻、神经网络、朴素贝…
+   △ R6d 行200 缩写“SVM”首用未识别到中文说明；人工核对
+   △ R6b 行312 一句 5 个术语（CART、ID3、C4、SLIQ、SPRINT）：p.16 列出 Hunt、CART、ID3、C4.5、SLIQ 与 SP…
+   △ R6d 行312 缩写“CART”首用未识别到中文说明；人工核对
+   △ R6d 行312 缩写“ID3”首用未识别到中文说明；人工核对
+   △ R6d 行312 缩写“C4”首用未识别到中文说明；人工核对
+   △ R6d 行312 缩写“SLIQ”首用未识别到中文说明；人工核对
+   △ R6d 行312 缩写“SPRINT”首用未识别到中文说明；人工核对
+   △ R6d 行400 缩写“ASR”首用未识别到中文说明；人工核对
+   △ R6b 行579 一句 4 个术语（Bagging、随机森林、分类、回归树）：§2.6 的 Bagging 与随机森林可以组合许多分类树，也可以组合回…
+   △ R6d 行648 缩写“AB”首用未识别到中文说明；人工核对
+   △ R6d 行648 缩写“AC”首用未识别到中文说明；人工核对
+   △ R6d 行648 缩写“BC”首用未识别到中文说明；人工核对
+   △ R6d 行673 缩写“ASR”首用未识别到中文说明；人工核对
+   △ R6d 行1021 缩写“SAMME”首用未识别到中文说明；人工核对
+   △ R6d 行1071 缩写“ASR”首用未识别到中文说明；人工核对
+   △ R6d 行1119 缩写“LR”首用未识别到中文说明；人工核对
+   △ R6d 行1125 缩写“OOF”首用未识别到中文说明；人工核对
+   △ R6d 行1223 “数据泄漏”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒
+   △ R6d 行1239 缩写“TA”首用未识别到中文说明；人工核对
+   △ R6d 行1259 缩写“SVM”首用未识别到中文说明；人工核对
+   △ R6d 行1363 缩写“B1”首用未识别到中文说明；人工核对
+   △ R6d 行1371 “标准化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒
+   △ R6d 行1384 缩写“L6”首用未识别到中文说明；人工核对
+   △ R6d 行1384 缩写“PNG”首用未识别到中文说明；人工核对
+   △ R6d 行1384 缩写“B2”首用未识别到中文说明；人工核对
+   △ R6d 行1440 缩写“SVM”首用未识别到中文说明；人工核对
+   △ R6d 行1473 缩写“SLSQP”首用未识别到中文说明；人工核对
+   △ R6d 行1533 缩写“RBF”首用未识别到中文说明；人工核对
+   △ R6d 行1563 缩写“SVM”首用未识别到中文说明；人工核对
+   △ R6d 行1606 缩写“ASR”首用未识别到中文说明；人工核对
+   △ R6d 行1623 缩写“L6”首用未识别到中文说明；人工核对
+   △ R6d 行1623 缩写“PNG”首用未识别到中文说明；人工核对
+   △ R6d 行1679 缩写“LR”首用未识别到中文说明；人工核对
+   △ R6d 行1679 缩写“SVM”首用未识别到中文说明；人工核对
+   △ R6b 行1819 一句 4 个术语（TN、精确率、召回率、Precision、Recall、PR）：$F_1$ 不使用 TN，因此也不是万能指标；若正确放行的价值或总体成本…
+   △ R6d 行1819 缩写“PR”首用未识别到中文说明；人工核对
+   △ R6b 行1854 一句 4 个术语（TP、FN、FP、TN）：答案：TP/FN/FP/TN 会随正类定义重排，指标的业务解释也完全改变…
+   △ R6d 行1941 缩写“RIPPER”首用未识别到中文说明；人工核对
+   △ R6d 行1993 缩写“FOIL”首用未识别到中文说明；人工核对
+   △ R6d 行2022 缩写“AND”首用未识别到中文说明；人工核对
+   △ R6d 行2074 缩写“IHT”首用未识别到中文说明；人工核对
+   △ R6d 行2089 缩写“ENN”首用未识别到中文说明；人工核对
+   △ R6b 行2111 一句 5 个术语（欠采样、过采样、SMOTE、ADASYN、ENN）： p.89 给欠采样与过采样并强调测试分布不变；p.90 区分 prot…
+   △ R6b 行2117 一句 4 个术语（IHT、SMOTE、ADASYN、ENN）：现有转录未逐项展开 p.90–92 的 IHT、SMOTE、ADASYN…
+   △ R6b 行2338 一句 4 个术语（SMOTE、recall、precision、PR）：先按时间或生产批次划分训练、验证和原分布测试集；训练折内比较类别权重、S…
+   △ R8c 行1371 未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求
+   △ R8c 行1495 未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求
+   △ R8c 行1610 未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求
+   △ R8c 行1722 未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求
+   △ R8c 行1819 未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求
+   △ R8c 行1927 未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求
+   △ R8c 行2042 未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求
+   △ R8c 行2123 未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求
+   △ R4f 行171 表头“Attrib1”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行171 表头“Attrib2”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行171 表头“Attrib3”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行171 表头“Class”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行186 表头“Attrib1”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行186 表头“Attrib2”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行186 表头“Attrib3”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行186 表头“Class”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行238 表头“ID”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行238 表头“HomeOwner”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行238 表头“MaritalStatus”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行238 表头“AnnualIncome”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行238 表头“DefaultedBorrower”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行495 表头“p.18状态”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行495 表头“训练准确率”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行654 表头“期待得到的差异”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行723 表头“x”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行731 表头“抽到的十个x（原图从小到大排列）”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行748 表头“加权子熵（bit）”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行822 表头“SplitPoint”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行822 表头“LeftClass”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行822 表头“RightClass”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行838 表头“x=0.9落点”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行1007 表头“轮后权重”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行1317 表头“y(wx+b)”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行1317 表头“是否满足ge1”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行1463 表头“候选(w,b)”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行1463 表头“松弛量boldsymbolxi”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行1463 表头“C=0.1的目标”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行1463 表头“C=1的目标”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行1572 表头“平方距离”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行1572 表头“K=exp(-0.5d^2)”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行1699 表头“LogisticRegression”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行1699 表头“线性SVM”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行1874 表头“TP”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行1874 表头“FN”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行1874 表头“FP”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行1874 表头“TN”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行1973 表头“win”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行2060 表头“主要收益”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+【汇总】 {'total_pages': 92, 'noncontent': [68], 'content_pages': 91, 'sec2_cjk': 26326, 'note_cjk': 34105, 'leaf_n': 21, 'concept_n': 21, 'terms_n': 27, 'strict': True}
+【判定】 PASS（机器可验证项；仍须教学、计算运行与原题回源核对） 
+【教学边界】本脚本未评估教学可读性；须独立子代理按高中知识起点审查，零报错不能作为教学质量指标。
+====================================================================================================
+JSON:{"file": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m06\\candidate-display-v4.md", "profile": "current", "teaching_assessment": "not_assessed_by_script", "C": {"spec": "2026-10-21", "hard": [], "warn": [{"code": "C_CALCULATION_STEPS", "section": "2.4 单棵树的局限与回归树（讲义物理 p.19–23）", "line": 528, "message": "本单元有计算公式但未找到数字代入过程；给定结果或API调用不能替代可复算例。本篇其他单元有代入，请核是否为同一机制及是否需就近回指：2.3, 2.3.2, 2.6, 2.7, 2.7.1, 2.8, 2.9, 2.10, 2.11, 2.11.1, 2.12, 2.13, 2.14, 2.15", "evidence": ""}, {"code": "C_CALCULATION_STEPS", "section": "2.5 集成为何可能优于单模型（讲义物理 p.24–30）", "line": 616, "message": "本单元有计算公式但未找到数字代入过程；给定结果或API调用不能替代可复算例。本篇其他单元有代入，请核是否为同一机制及是否需就近回指：2.3, 2.3.2, 2.6, 2.7, 2.7.1, 2.8, 2.9, 2.10, 2.11, 2.11.1, 2.12, 2.13, 2.14, 2.15", "evidence": ""}, {"code": "C_CALCULATION_STEPS", "section": "2.16 训练折内的重采样（讲义 p.86、p.89–92）", "line": 2050, "message": "本单元有计算公式但未找到数字代入过程；给定结果或API调用不能替代可复算例。本篇其他单元有代入，请核是否为同一机制及是否需就近回指：2.3, 2.3.2, 2.6, 2.7, 2.7.1, 2.8, 2.9, 2.10, 2.11, 2.11.1, 2.12, 2.13, 2.14, 2.15", "evidence": ""}], "source_coverage": {"status": "manifest_contract_passed", "checked_questions": 12, "hard": [], "warnings": [], "page_references": {"requested_total": 92, "declared_totals": [92], "status": "reference_check_only"}}, "limits": ["机检通过不代表解释正确或读者已理解；页码引述不证明该页已实质讲解。", "纯数字等式只核支持的四则/幂/开方及显示精度；不执行代码、不验证符号推导或模型结果。", "无显式源题清单时，无法验证漏整题/原文保真；有清单也只核其字面契约，清单抄写与逐问语义仍需回源。"]}, "historical": {"spec": "2026-09-16", "G": {"G1 密度 §2 字/内容页 ≥ 250": [289, true], "G2a 粒度 术语数/leaf 小节 ≤ 1.6": [1.29, true], "G2b 粒度 内容页/leaf 小节 ≤ 2.5": [4.33, false], "G2c 承载术语的小节 ≥ 150 字": [[], true], "G3a 小节首元素为段落": [[], true], "G3b 公式有符号表（或符号已在前文解释）": [[["2.11", "$$ K(\\mathbf{x},\\mathbf{z})=\\tanh(k\\math", ["\\delta", "\\tanh"]], ["2.12", "$$ \\ell=\\max(0,1-ys). $$", ["\\ell"]]], false], "G3c 有公式的小节有数字例子": [["2.1"], false], "G3d 代码三件套": [[], true], "G6 ### 单元「所以呢」覆盖率 ≥ 0.80": [[1.0, []], true]}, "E": [["全篇", "术语首现", ["§5 术语在首现小节就地解释率 0.74 < 0.90：集成学习（§2.5 内未出现）；硬间隔（§2.9 行 1166 未就地解释）；RBF 核（§2.11 内未出现）；代价敏感分类（§2.14 行 1741 未就地解释）；SMOTE（§2.16 行 1948 未就地解释）；ADASYN（§2.16 行 1949 未就地解释）；F1 分数（§2.13 内未出现）"]], ["全篇", "先修唤醒", ["先修概念首次使用无一句话唤醒：对数（行 809）、矩阵（行 522）、转置（行 1154）、特征值（行 1162）、导数（行 415）、标准化（行 1252）、条件概率（行 1578）、贝叶斯（行 81）"]], ["2.1", "公式型", ["换个说法角度 1 < 2", "数字例子没有算式（只给结果不算手把手）", "缺「为什么公式长这样」", "缺 极端/边界情况"]], ["2.2", "代码型", ["「是什么」自己的话 < 80 字"]], ["2.3.1", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]], ["2.3.2", "案例数据型", ["缺 是什么", "缺 为什么需要它", "缺 ⚠️ 常见误解", "数字例子未标脚本来源"]], ["2.4", "公式型", ["换个说法角度 1 < 2", "数字例子没有算式（只给结果不算手把手）", "缺「为什么公式长这样」"]], ["2.4.1", "代码型", ["缺 是什么", "缺 所以呢"]], ["2.5", "公式型", ["换个说法角度 1 < 2", "数字例子没有算式（只给结果不算手把手）", "缺「为什么公式长这样」", "缺 极端/边界情况", "「是什么」自己的话 < 80 字"]], ["2.7.1", "公式型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺「为什么公式长这样」", "缺 极端/边界情况"]], ["2.10", "公式型", ["换个说法角度 0 < 2", "常见误解 0 条 < 2", "缺「为什么公式长这样」"]], ["2.11.1", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]], ["2.12", "公式型", ["缺 为什么需要它", "换个说法角度 0 < 2", "常见误解 0 条 < 2", "缺「为什么公式长这样」"]], ["2.14", "公式型", ["换个说法角度 0 < 2", "常见误解 0 条 < 2", "缺「为什么公式长这样」"]], ["2.16", "代码型", ["「是什么」自己的话 < 80 字"]]], "verdict": "FAIL"}, "verdict": "PASS（机器可验证项；仍须教学、计算运行与原题回源核对）", "legacy_problems": [], "legacy_info": {"L1_未讲解页": [], "L1_省略前缀连写": ["p.8、15"], "L5_围栏数": 24, "L5_details": [15, 15]}, "G": {}, "E": [["2.4 单棵树的局限与回归树（讲义物理 p.19–23）", "待核线索", ["本单元有计算公式但未找到数字代入过程；给定结果或API调用不能替代可复算例。本篇其他单元有代入，请核是否为同一机制及是否需就近回指：2.3, 2.3.2, 2.6, 2.7, 2.7.1, 2.8, 2.9, 2.10, 2.11, 2.11.1, 2.12, 2.13, 2.14, 2.15"]], ["2.5 集成为何可能优于单模型（讲义物理 p.24–30）", "待核线索", ["本单元有计算公式但未找到数字代入过程；给定结果或API调用不能替代可复算例。本篇其他单元有代入，请核是否为同一机制及是否需就近回指：2.3, 2.3.2, 2.6, 2.7, 2.7.1, 2.8, 2.9, 2.10, 2.11, 2.11.1, 2.12, 2.13, 2.14, 2.15"]], ["2.16 训练折内的重采样（讲义 p.86、p.89–92）", "待核线索", ["本单元有计算公式但未找到数字代入过程；给定结果或API调用不能替代可复算例。本篇其他单元有代入，请核是否为同一机制及是否需就近回指：2.3, 2.3.2, 2.6, 2.7, 2.7.1, 2.8, 2.9, 2.10, 2.11, 2.11.1, 2.12, 2.13, 2.14, 2.15"]]], "summary": {"file": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m06\\candidate-display-v4.md", "total_pages": 92, "noncontent": [68], "content_pages": 91, "sec2_cjk": 26326, "note_cjk": 34105, "leaf_n": 21, "concept_n": 21, "terms_n": 27, "strict": true}, "sections": [{"sec": "2.1 分类问题与训练／使用两阶段（讲义物理 p.1–6）", "num": "2.1", "level": 3, "cjk": 1116, "chars": 2518, "own_cjk": 1042, "bq_ratio": 0.0, "code_blocks": 0, "pages": [1, 2, 3, 4, 5, 6], "labels": ["what", "why", "orig", "mic", "alt", "misc", "rel", "so"], "type": "公式型", "what_cjk": 94, "why_cjk": 68, "alt_angles": 1, "alt_nodigit": 1, "alt_cjk": 60, "misc_n": 3, "misc_reason": 3, "formula_n": 1, "symtab_syms": "set()", "prose_syms": "{'f', 'y', 'Y', 'x', 'X'}", "formulas": [[10, "$$ \\hat f:\\mathcal{X}\\rightarrow \\mathcal{Y},\\qquad \\hat y=\\hat f(x), $$", false]], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 518, "terms": 1, "need_cjk": 384, "E_miss": ["换个说法角度 1 < 2", "数字例子没有算式（只给结果不算手把手）", "缺「为什么公式长这样」", "缺 极端/边界情况"]}, {"sec": "2.2 沿一棵决策树完成推断（讲义物理 p.7–15）", "num": "2.2", "level": 3, "cjk": 860, "chars": 1989, "own_cjk": 860, "bq_ratio": 0.0, "code_blocks": 1, "pages": [7, 8, 9, 10, 11, 12, 13, 14, 15], "labels": ["what", "why", "orig", "mic", "alt", "misc", "rel", "so"], "type": "代码型", "what_cjk": 60, "why_cjk": 45, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 38, "misc_n": 3, "misc_reason": 3, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 3, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 1, "has_step_table": 1, "has_cmp_table": 1, "has_script": 1, "orig_cjk": 391, "terms": 1, "need_cjk": 1390, "E_miss": ["「是什么」自己的话 < 80 字"]}, {"sec": "2.3 Hunt 递归、CART 与 Gini／熵分裂（讲义物理 p.16–18）", "num": "2.3", "level": 3, "cjk": 1337, "chars": 2832, "own_cjk": 1258, "bq_ratio": 0.0, "code_blocks": 1, "pages": [16, 17, 18], "labels": ["what", "why", "orig", "mic", "alt", "misc", "rel", "so"], "type": "代码型", "what_cjk": 92, "why_cjk": 59, "alt_angles": 1, "alt_nodigit": 1, "alt_cjk": 45, "misc_n": 3, "misc_reason": 3, "formula_n": 2, "symtab_syms": "{'\\\\Delta', 'I', 'p'}", "prose_syms": "{'p', 'y', 'D', 'G'}", "formulas": [[44, "$$ G(t)=1-\\sum_j p_j^2, \\qquad H(t)=-\\sum_j p_j\\log_2p_j. $$", true], [52, "$$ I_{\\text{children}}=\\sum_{i=1}^{m}\\frac{n_i}{n}I(t_i), \\qquad \\Delta I=I(t)-I_{\\text{children}}. $$", true]], "numex_step": 7, "numex_any": 13, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 1, "has_step_table": 1, "has_cmp_table": 1, "has_script": 1, "orig_cjk": 813, "terms": 0, "need_cjk": 0, "E_miss": []}, {"sec": "2.3.1 从候选分数到完整小树（笔记补充）", "num": "2.3.1", "level": 4, "cjk": 627, "chars": 1331, "own_cjk": 625, "bq_ratio": 0.05, "code_blocks": 0, "pages": [], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 16, "code_bad": 0, "first_kind": "bq", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]}, {"sec": "2.3.2 课堂小测：四阶段准确率（讲义 p.18）", "num": "2.3.2", "level": 4, "cjk": 586, "chars": 1529, "own_cjk": 512, "bq_ratio": 0.11, "code_blocks": 0, "pages": [18], "labels": ["so"], "type": "案例数据型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 2, "numex_any": 1, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 ⚠️ 常见误解", "数字例子未标脚本来源"]}, {"sec": "2.4 单棵树的局限与回归树（讲义物理 p.19–23）", "num": "2.4", "level": 3, "cjk": 1048, "chars": 1677, "own_cjk": 1048, "bq_ratio": 0.0, "code_blocks": 0, "pages": [19, 20, 21, 22, 23], "labels": ["what", "why", "orig", "mic", "alt", "misc", "rel", "so"], "type": "公式型", "what_cjk": 177, "why_cjk": 73, "alt_angles": 1, "alt_nodigit": 1, "alt_cjk": 42, "misc_n": 3, "misc_reason": 3, "formula_n": 1, "symtab_syms": "set()", "prose_syms": "{'x', 'L', 'R', 'y', 'c'}", "formulas": [[12, "$$ \\hat y(x)=\\frac{1}{|R_j|}\\sum_{i:x_i\\in R_j}y_i, \\qquad x\\in R_j. $$", false]], "numex_step": 0, "numex_any": 5, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 1, "has_step_table": 0, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 324, "terms": 1, "need_cjk": 202, "E_miss": ["换个说法角度 1 < 2", "数字例子没有算式（只给结果不算手把手）", "缺「为什么公式长这样」"]}, {"sec": "2.4.1 回归树的四点完整计算（笔记补充）", "num": "2.4.1", "level": 4, "cjk": 329, "chars": 500, "own_cjk": 329, "bq_ratio": 0.0, "code_blocks": 1, "pages": [], "labels": [], "type": "代码型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 7, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 1, "has_step_table": 1, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 所以呢"]}, {"sec": "2.5 集成为何可能优于单模型（讲义物理 p.24–30）", "num": "2.5", "level": 3, "cjk": 1102, "chars": 2344, "own_cjk": 1014, "bq_ratio": 0.01, "code_blocks": 0, "pages": [24, 25, 26, 27, 28, 29, 30], "labels": ["what", "why", "orig", "mic", "alt", "misc", "rel", "so"], "type": "公式型", "what_cjk": 66, "why_cjk": 60, "alt_angles": 1, "alt_nodigit": 1, "alt_cjk": 49, "misc_n": 3, "misc_reason": 3, "formula_n": 1, "symtab_syms": "set()", "prose_syms": "{'\\\\binom', 'D', 'C', '\\\\varepsilon', 'X'}", "formulas": [[27, "$$ P(X\\ge 13)=\\sum_{i=13}^{25}\\binom{25}{i}\\varepsilon^i(1-\\varepsilon)^{25-i} \\approx0.06044. $$", false]], "numex_step": 0, "numex_any": 5, "code_bad": 0, "first_kind": "bq", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 435, "terms": 1, "need_cjk": 648, "E_miss": ["换个说法角度 1 < 2", "数字例子没有算式（只给结果不算手把手）", "缺「为什么公式长这样」", "缺 极端/边界情况", "「是什么」自己的话 < 80 字"]}, {"sec": "2.6 Bootstrap、Bagging 与随机森林（讲义物理 p.31–39）", "num": "2.6", "level": 3, "cjk": 2207, "chars": 5731, "own_cjk": 2108, "bq_ratio": 0.04, "code_blocks": 1, "pages": [31, 32, 33, 34, 35, 36, 37, 38, 39], "labels": ["what", "why", "orig", "mic", "alt", "misc", "rel", "so"], "type": "代码型", "what_cjk": 230, "why_cjk": 56, "alt_angles": 1, "alt_nodigit": 1, "alt_cjk": 58, "misc_n": 4, "misc_reason": 4, "formula_n": 2, "symtab_syms": "set()", "prose_syms": "{'y', 'D', 'C', 'x'}", "formulas": [[10, "$$ C^*(x)=\\arg\\max_y\\sum_{i=1}^{k}\\mathbf{1}[C_i(x)=y]. $$", false], [64, "$$ H_{children}=\\frac{4}{10}(0)+\\frac{6}{10}\\left[-\\frac{2}{6}\\log_2\\frac{2}{6}-\\frac{4}{6}\\log_2\\frac{4}{6}\\right]=0.550978. $$", false]], "numex_step": 9, "numex_any": 68, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 1, "has_step_table": 1, "has_cmp_table": 1, "has_script": 1, "orig_cjk": 1502, "terms": 3, "need_cjk": 43, "E_miss": []}, {"sec": "2.7 AdaBoost：错例加权与加权投票（讲义物理 p.40–47）", "num": "2.7", "level": 3, "cjk": 1871, "chars": 4212, "own_cjk": 1862, "bq_ratio": 0.0, "code_blocks": 1, "pages": [40, 41, 42, 43, 44, 45, 46, 47], "labels": ["what", "why", "orig", "mic", "alt", "misc", "rel", "so"], "type": "代码型", "what_cjk": 319, "why_cjk": 65, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 39, "misc_n": 3, "misc_reason": 3, "formula_n": 3, "symtab_syms": "set()", "prose_syms": "{'\\\\alpha', 'w', 'C', 'F', 'x', '\\\\varepsilon', 'h', 'y', 'Z', 'a'}", "formulas": [[19, "$$ \\varepsilon_i=\\sum_{j=1}^{N}w_j^{(i)}\\mathbf{1}[C_i(x_j)\\ne y_j], \\qquad \\alpha_i=\\frac12\\ln\\frac{1-\\varepsilon_i}{\\varepsilon_i}. $$", false], [33, "$$ w_j^{(i+1)}=\\frac{w_j^{(i)}\\exp[-\\alpha_i y_j C_i(x_j)]}{Z_i}, \\qquad Z_i=\\sum_jw_j^{(i)}\\exp[-\\alpha_i y_j C_i(x_j)]. $$", false], [55, "$$ F(0.1)=-1.738+2.7784+4.1195=5.1599, $$", false]], "numex_step": 14, "numex_any": 31, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 1, "has_step_table": 1, "has_cmp_table": 1, "has_script": 1, "orig_cjk": 1195, "terms": 1, "need_cjk": 129, "E_miss": []}, {"sec": "2.7.1 为什么 alpha 是这个对数比（笔记补充）", "num": "2.7.1", "level": 4, "cjk": 477, "chars": 888, "own_cjk": 477, "bq_ratio": 0.0, "code_blocks": 0, "pages": [], "labels": ["so"], "type": "公式型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 1, "symtab_syms": "set()", "prose_syms": "{'\\\\alpha', '\\\\varepsilon'}", "formulas": [[8, "$$ Z(\\alpha)=(1-\\varepsilon)e^{-\\alpha}+\\varepsilon e^\\alpha. $$", false]], "numex_step": 1, "numex_any": 3, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 0, "has_script": 1, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺「为什么公式长这样」", "缺 极端/边界情况"]}, {"sec": "2.8 Stacking：用折外预测训练元模型（讲义物理 p.48–53）", "num": "2.8", "level": 3, "cjk": 1652, "chars": 3138, "own_cjk": 1637, "bq_ratio": 0.0, "code_blocks": 1, "pages": [48, 49, 50, 51, 52, 53], "labels": ["what", "why", "orig", "mic", "alt", "misc", "rel", "so"], "type": "代码型", "what_cjk": 124, "why_cjk": 64, "alt_angles": 1, "alt_nodigit": 1, "alt_cjk": 61, "misc_n": 3, "misc_reason": 3, "formula_n": 1, "symtab_syms": "set()", "prose_syms": "{'z', 'y', 'K', 'x', 'P'}", "formulas": [[57, "$$ z=-4+3\\,p_{LR}+2\\,p_{Tree}, \\qquad P(y=1)=\\sigma(z)=\\frac{1}{1+e^{-z}}. $$", false]], "numex_step": 2, "numex_any": 18, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 1, "has_step_table": 1, "has_cmp_table": 1, "has_script": 1, "orig_cjk": 1113, "terms": 2, "need_cjk": 0, "E_miss": []}, {"sec": "2.9 线性 SVM 与最大间隔（讲义 p.54–64）", "num": "2.9", "level": 3, "cjk": 2648, "chars": 5556, "own_cjk": 2508, "bq_ratio": 0.02, "code_blocks": 1, "pages": [54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64], "labels": ["what", "why", "orig", "mic", "alt", "misc", "rel", "so"], "type": "代码型", "what_cjk": 376, "why_cjk": 961, "alt_angles": 1, "alt_nodigit": 1, "alt_cjk": 66, "misc_n": 0, "misc_reason": 0, "formula_n": 2, "symtab_syms": "{'w', 'x', 'b', 'y'}", "prose_syms": "{'s', 'w', 'B', 'x', 'R', 'b', 'y'}", "formulas": [[6, "$$ \\mathbf{w}^{\\top}\\mathbf{x}+b=0. $$", true], [38, "$$ \\min_{\\mathbf{w},b}\\ \\frac{1}{2}\\lVert\\mathbf{w}\\rVert^2 \\quad\\text{s.t.}\\quad y_i(\\mathbf{w}^{\\top}\\mathbf{x}_i+b)\\ge 1,\\; i=1,\\ldots,N. $$", true]], "numex_step": 10, "numex_any": 20, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 1, "has_step_table": 0, "has_cmp_table": 1, "has_script": 1, "orig_cjk": 58, "terms": 3, "need_cjk": 102, "E_miss": []}, {"sec": "2.10 软间隔、松弛量与惩罚参数（讲义 p.65–67）", "num": "2.10", "level": 3, "cjk": 1583, "chars": 3347, "own_cjk": 1508, "bq_ratio": 0.01, "code_blocks": 0, "pages": [65, 66, 67], "labels": ["what", "why", "orig", "mic", "alt", "misc", "rel", "so"], "type": "公式型", "what_cjk": 323, "why_cjk": 640, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 33, "misc_n": 0, "misc_reason": 0, "formula_n": 2, "symtab_syms": "{'C', '\\\\xi'}", "prose_syms": "{'w', '\\\\xi', 'C', 'B', 'x', 'b', 'y', 'X'}", "formulas": [[6, "$$ y_i(\\mathbf{w}^{\\top}\\mathbf{x}_i+b)\\ge1-\\xi_i. $$", true], [12, "$$ \\min_{\\mathbf{w},b,\\boldsymbol{\\xi}}\\; \\frac12\\lVert\\mathbf{w}\\rVert^2+C\\sum_{i=1}^{N}\\xi_i^k, \\qquad \\xi_i\\ge0. $$", true]], "numex_step": 11, "numex_any": 16, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 1, "has_step_table": 1, "has_cmp_table": 1, "has_script": 1, "orig_cjk": 46, "terms": 2, "need_cjk": 0, "E_miss": ["换个说法角度 0 < 2", "常见误解 0 条 < 2", "缺「为什么公式长这样」"]}, {"sec": "2.11 非线性映射与核函数（讲义 p.68–72）", "num": "2.11", "level": 3, "cjk": 1796, "chars": 4064, "own_cjk": 1760, "bq_ratio": 0.02, "code_blocks": 1, "pages": [68, 69, 70, 71, 72], "labels": ["what", "why", "orig", "mic", "alt", "misc", "rel", "so"], "type": "代码型", "what_cjk": 123, "why_cjk": 767, "alt_angles": 1, "alt_nodigit": 1, "alt_cjk": 51, "misc_n": 0, "misc_reason": 0, "formula_n": 5, "symtab_syms": "set()", "prose_syms": "{'z', '\\\\gamma', 'u', '\\\\sigma', 'C', 'x', 'K', '\\\\Phi', 'v'}", "formulas": [[6, "$$ \\mathbf{w}^{\\top}\\Phi(\\mathbf{x})+b=0. $$", false], [12, "$$ K(\\mathbf{x}_i,\\mathbf{x}_j)=\\Phi(\\mathbf{x}_i)^{\\top}\\Phi(\\mathbf{x}_j). $$", false], [18, "$$ K(\\mathbf{x},\\mathbf{z})=\\exp\\left(-\\gamma\\lVert\\mathbf{x}-\\mathbf{z}\\rVert^2\\right), $$", false], [34, "$$ K(\\mathbf{x},\\mathbf{z})=(\\mathbf{x}^{\\top}\\mathbf{z}+1)^p. $$", false], [42, "$$ K(\\mathbf{x},\\mathbf{z})=\\tanh(k\\mathbf{x}^{\\top}\\mathbf{z}-\\delta). $$", false]], "numex_step": 4, "numex_any": 14, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 1, "has_step_table": 0, "has_cmp_table": 1, "has_script": 1, "orig_cjk": 96, "terms": 2, "need_cjk": 0, "E_miss": []}, {"sec": "2.11.1 二次映射走到最终分类（笔记补充）", "num": "2.11.1", "level": 4, "cjk": 392, "chars": 640, "own_cjk": 392, "bq_ratio": 0.0, "code_blocks": 0, "pages": [], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "{'s', 'z', 'b', 'w', 'u', 'K', 'x'}", "formulas": [], "numex_step": 4, "numex_any": 9, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 1, "has_step_table": 1, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]}, {"sec": "2.12 逻辑回归与 SVM 的区别（讲义 p.73）", "num": "2.12", "level": 3, "cjk": 1003, "chars": 2107, "own_cjk": 854, "bq_ratio": 0.04, "code_blocks": 0, "pages": [73], "labels": ["what", "orig", "mic", "alt", "misc", "rel", "so"], "type": "公式型", "what_cjk": 525, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 28, "misc_n": 0, "misc_reason": 0, "formula_n": 1, "symtab_syms": "set()", "prose_syms": "{'w', '\\\\sigma', 'x', 'b', 'y', 'P', 'X'}", "formulas": [[19, "$$ \\ell=\\max(0,1-ys). $$", false]], "numex_step": 3, "numex_any": 5, "code_bad": 0, "first_kind": "bq", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 1, "has_step_table": 1, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 14, "terms": 0, "need_cjk": 0, "E_miss": ["缺 为什么需要它", "换个说法角度 0 < 2", "常见误解 0 条 < 2", "缺「为什么公式长这样」"]}, {"sec": "2.13 99.9% accuracy 为什么可能毫无用处？（讲义 p.74–83）", "num": "2.13", "level": 3, "cjk": 1335, "chars": 3629, "own_cjk": 1261, "bq_ratio": 0.05, "code_blocks": 1, "pages": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83], "labels": ["what", "orig", "mic", "alt", "misc", "rel", "so"], "type": "代码型", "what_cjk": 546, "why_cjk": 0, "alt_angles": 1, "alt_nodigit": 1, "alt_cjk": 40, "misc_n": 0, "misc_reason": 0, "formula_n": 4, "symtab_syms": "set()", "prose_syms": "{'b', 'F', 'c', 'a'}", "formulas": [[22, "$$ \\text{Accuracy}=\\frac{TP+TN}{TP+TN+FP+FN}, $$", true], [26, "$$ \\text{Precision}=\\frac{TP}{TP+FP},\\qquad \\text{Recall}=\\frac{TP}{TP+FN}, $$", true], [31, "$$ F_1=\\frac{2\\,\\text{Precision}\\,\\text{Recall}} {\\text{Precision}+\\text{Recall}} =\\frac{2TP}{2TP+FP+FN}. $$", true], [41, "$$ \\text{Accuracy}=\\frac{999}{1000}=99.9\\%,\\quad \\text{Recall}=0. $$", false]], "numex_step": 10, "numex_any": 15, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 1, "has_step_table": 1, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 51, "terms": 4, "need_cjk": 1165, "E_miss": []}, {"sec": "2.14 代价矩阵与决策阈值（讲义 p.84–88）", "num": "2.14", "level": 3, "cjk": 1142, "chars": 2240, "own_cjk": 1137, "bq_ratio": 0.0, "code_blocks": 0, "pages": [84, 85, 86, 87, 88], "labels": ["what", "why", "orig", "mic", "alt", "misc", "rel", "so"], "type": "公式型", "what_cjk": 83, "why_cjk": 469, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 27, "misc_n": 0, "misc_reason": 0, "formula_n": 4, "symtab_syms": "set()", "prose_syms": "{'M', 'q', 'P', 'C', 'x', 'R'}", "formulas": [[6, "$$ R(j\\mid\\mathbf{x})=\\sum_i P(i\\mid\\mathbf{x})C(i,j). $$", false], [35, "$$ R(+)=q(-1)+(1-q)(1)=1-2q. $$", false], [41, "$$ R(-)=q(100)+(1-q)(0)=100q. $$", false], [47, "$$ 1-2q<100q\\Rightarrow q>\\frac1{102}\\approx0.009804. $$", false]], "numex_step": 4, "numex_any": 9, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 1, "has_step_table": 1, "has_cmp_table": 1, "has_script": 1, "orig_cjk": 47, "terms": 1, "need_cjk": 108, "E_miss": ["换个说法角度 0 < 2", "常见误解 0 条 < 2", "缺「为什么公式长这样」"]}, {"sec": "2.15 RIPPER 的有序规则学习（讲义 p.86–87）", "num": "2.15", "level": 3, "cjk": 1628, "chars": 2875, "own_cjk": 1587, "bq_ratio": 0.0, "code_blocks": 1, "pages": [86, 87], "labels": ["what", "why", "orig", "mic", "alt", "misc", "rel", "so"], "type": "代码型", "what_cjk": 108, "why_cjk": 1190, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 32, "misc_n": 0, "misc_reason": 0, "formula_n": 1, "symtab_syms": "{'p'}", "prose_syms": "set()", "formulas": [[56, "$$ \\operatorname{Gain}=p_1\\left[\\log_2\\frac{p_1}{p_1+n_1}-\\log_2\\frac{p_0}{p_0+n_0}\\right]. $$", true]], "numex_step": 3, "numex_any": 7, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 1, "has_step_table": 1, "has_cmp_table": 1, "has_script": 1, "orig_cjk": 31, "terms": 1, "need_cjk": 0, "E_miss": []}, {"sec": "2.16 训练折内的重采样（讲义 p.86、p.89–92）", "num": "2.16", "level": 3, "cjk": 1587, "chars": 2673, "own_cjk": 1369, "bq_ratio": 0.0, "code_blocks": 1, "pages": [86, 89, 90, 91, 92], "labels": ["what", "why", "orig", "mic", "alt", "misc", "rel", "so"], "type": "代码型", "what_cjk": 39, "why_cjk": 1055, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 32, "misc_n": 0, "misc_reason": 0, "formula_n": 1, "symtab_syms": "set()", "prose_syms": "{'r', 'F', 'x', '\\\\lambda'}", "formulas": [[30, "$$ \\mathbf{x}_{new}=\\mathbf{x}_i+\\lambda(\\mathbf{x}_{nn}-\\mathbf{x}_i) =(2,2)+0.25(2,1)=(2.5,2.25). $$", false]], "numex_step": 0, "numex_any": 1, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 1, "has_whyf": 0, "has_edge": 1, "has_step_table": 0, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 34, "terms": 4, "need_cjk": 0, "E_miss": ["「是什么」自己的话 < 80 字"]}], "R": {"strict": true, "stats": {"sentences": 1300, "mean": 26.0, "p50": 24, "p90": 46, "max": 111, "over80": 4, "over120": 0, "long_share": 0.003, "exempt": 0, "table_max_columns": 6, "table_max_cell_units": 27, "table_max_cell_line": 93, "measurement_version": "v2"}, "hard": [], "warn": [["R4c", 90, "单元格 2 句"], ["R4c", 91, "单元格 2 句"], ["R8b", 125, "小节首段 4 句；首段 ≤ 3 句，先给问题或结论"], ["R5a", 137, "一段 5 个不同行内公式"], ["R1c", 228, "2 个分号：决策树由三种对象组成：内部节点提出属性测试；分支表示测试结果；叶节点给出…"], ["R4c", 333, "单元格 2 句"], ["R5a", 346, "一段 5 个不同行内公式"], ["R5b", 350, "一个 $$ 块放了多个等式；拆开并在中间加一句话"], ["R5b", 358, "一个 $$ 块放了多个等式；拆开并在中间加一句话"], ["R2a", 394, "169 单元 / 4 句：💡 实现边界（笔记补充）：合法切分必须把当前非空记录分成至少两个非空组，…"], ["R8a", 421, "#### 2.3.1 从候选分数到完整小树（笔记补充）"], ["R1d", 485, "括号内 36 单元：保留原语言；无原题编号，来源 A 18:16 So please tel…"], ["R4c", 497, "单元格 2 句"], ["R4c", 498, "单元格 2 句"], ["R7a", 515, "3 个时间戳；移到 §9 或折叠「复算与来源」"], ["R5a", 559, "一段 5 个不同行内公式"], ["R8a", 584, "#### 2.4.1 回归树的四点完整计算（笔记补充）"], ["R1c", 633, "2 个分号：p.29 把过程拆成三步：从原数据 $D$ 产生多个数据集 $D_1,\\…"], ["R5a", 633, "一段 4 个不同行内公式"], ["R5a", 648, "一段 4 个不同行内公式"], ["R7a", 650, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R5a", 709, "一段 4 个不同行内公式"], ["R5a", 727, "一段 4 个不同行内公式"], ["R7a", 757, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R7a", 763, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R2a", 782, "153 单元 / 4 句：第 5 轮在 0.35 与 0.8 的子熵相同，原图选择 0.35；复现…"], ["R1c", 818, "2 个分号：题意有三个动作：填 $x=0.9$ 一列；给最终预测；判断模型能否很好拟…"], ["R4c", 840, "单元格 2 句"], ["R4c", 842, "单元格 2 句"], ["R4c", 843, "单元格 2 句"], ["R4c", 844, "单元格 2 句"], ["R4c", 845, "单元格 2 句"], ["R4c", 846, "单元格 2 句"], ["R4c", 847, "单元格 2 句"], ["R4c", 848, "单元格 2 句"], ["R2b", 862, "100 单元：3. 能否很好拟合原数据：对 p.34 列出的十个原点，p.38 的集成…"], ["R5b", 920, "一个 $$ 块放了多个等式；拆开并在中间加一句话"], ["R5a", 928, "一段 4 个不同行内公式"], ["R5b", 934, "一个 $$ 块放了多个等式；拆开并在中间加一句话"], ["R2a", 993, "155 单元 / 4 句：💡 这张图是在讲义上补充端点和重试预算的教学策略，不冒称 scikit-…"], ["R1c", 1023, "2 个分号：这里预定最多三轮；第三轮集成在本例四条记录上全对；标准 AdaBoost…"], ["R8a", 1090, "#### 2.7.1 为什么 alpha 是这个对数比（笔记补充）"], ["R1a", 1133, "90 单元：p.50 的伪码流程是：把训练集分成 $K$ 折；每个基模型轮流在 $K…"], ["R1c", 1133, "5 个分号：p.50 的伪码流程是：把训练集分成 $K$ 折；每个基模型轮流在 $K…"], ["R5b", 1174, "一个 $$ 块放了多个等式；拆开并在中间加一句话"], ["R1c", 1253, "2 个分号：p.49 的对比可记为：Bagging 并行重抽样后平均；Boostin…"], ["R8b", 1259, "小节首段 4 句；首段 ≤ 3 句，先给问题或结论"], ["R5a", 1261, "一段 5 个不同行内公式"], ["R5a", 1267, "一段 5 个不同行内公式"], ["R5a", 1273, "一段 4 个不同行内公式"], ["R5a", 1275, "一段 5 个不同行内公式"], ["R5a", 1333, "一段 4 个不同行内公式"], ["R5a", 1335, "一段 5 个不同行内公式"], ["R1e", 1337, "一段 3 处否定澄清"], ["R7a", 1339, "复算记录；移到 §9 或折叠「复算与来源」"], ["R1c", 1355, "2 个分号：文字替代：先输入带 $-1/+1$ 标签的数据并缩放特征；若数据线性可分…"], ["R2b", 1371, "124 单元：- 第一，支持向量不是“方向向量”，而是训练样本。第二，讲义 p.64 …"], ["R5a", 1371, "一段 4 个不同行内公式"], ["R5a", 1408, "一段 4 个不同行内公式"], ["R1c", 1451, "2 个分号：逐列读法：符号进入本节目标式；含义说明调整的对象；末列区分输入参数与待算…"], ["R1c", 1455, "3 个分号： $\\xi_i=0$ 表示样本在正确的间隔边界上或外侧；$01$ 表示越…"], ["R5a", 1455, "一段 4 个不同行内公式"], ["R2a", 1459, "167 单元 / 5 句：$C$ 的方向。 $C$ 大时，每单位违约更贵，优化会更重视减少训练违约…"], ["R5a", 1461, "一段 4 个不同行内公式"], ["R5a", 1471, "一段 5 个不同行内公式"], ["R1c", 1483, "2 个分号： 输入为缩放后的 $X$、标签 $y$、$C$ 和惩罚阶数／损失形式；求…"], ["R5a", 1483, "一段 4 个不同行内公式"], ["R1c", 1487, "2 个分号： p.65 用蓝圈标出互相穿插的样本；p.66 给出松弛变量、目标和约束…"], ["R1c", 1541, "2 个分号：这里 $\\Phi$ 读作 phi，只是“转换坐标的规则”的名字；$\\ga…"], ["R5a", 1541, "一段 4 个不同行内公式"], ["R5a", 1543, "一段 5 个不同行内公式"], ["R5a", 1545, "一段 5 个不同行内公式"], ["R1a", 1600, "107 单元： p.68 展示一维点经二次映射后可被直线分开；p.69 给出圆形边界；…"], ["R1c", 1600, "4 个分号： p.68 展示一维点经二次映射后可被直线分开；p.69 给出圆形边界；…"], ["R1e", 1610, "一段 3 处否定澄清"], ["R8a", 1648, "#### 2.11.1 二次映射走到最终分类（笔记补充）"], ["R6a", 1685, "一段 3 处括号英文注释（约等于 3 个新术语）"], ["R1c", 1728, "2 个分号：⚪ 参考作答（笔记推断）：先定义超平面与两侧间隔约束，再最小化 $\\lV…"], ["R5b", 1758, "一个 $$ 块放了多个等式；拆开并在中间加一句话"], ["R1a", 1769, "81 单元： 精确率（Precision）的分母是“模型报正的全部记录”，回答报警有…"], ["R1c", 1769, "2 个分号： 精确率（Precision）的分母是“模型报正的全部记录”，回答报警有…"], ["R5b", 1773, "一个 $$ 块放了多个等式；拆开并在中间加一句话"], ["R1c", 1809, "6 个分号： p.75 列欺诈、入侵、制造缺陷；p.76 把稀有类比作草堆里的针；p…"], ["R1c", 1817, "2 个分号： Accuracy 像问“保安对所有进门者判断对了多少”；Recall …"], ["R6a", 1848, "一段 3 处括号英文注释（约等于 3 个新术语）"], ["R5a", 1862, "一段 4 个不同行内公式"], ["R5a", 1883, "一段 4 个不同行内公式"], ["R1c", 1911, "2 个分号： 输入为与实际正类频率大致相符的类别概率（校准含义与 20% 小例见 §…"], ["R1c", 1915, "3 个分号： p.84 定义成本矩阵和总成本；p.85 对 $M_1/M_2$ 给出…"], ["R1c", 1929, "2 个分号： 调阈值不改变训练样本；类别权重可能改变训练边界；重采样改变训练分布。"], ["R1a", 1949, "111 单元： RIPPER 的经典思路是：把数据分为 grow set 与 prun…"], ["R1c", 1949, "5 个分号： RIPPER 的经典思路是：把数据分为 grow set 与 prun…"], ["R3a", 2008, "587 单元无隔断"], ["R1c", 2054, "2 个分号： 欠采样（under-sampling）减少多数类；过采样（over-s…"], ["R1c", 2087, "2 个分号：可操作地说：先统计每个少数类点邻域内多数类比例 $r_i$；把合成预算更…"], ["R1c", 2111, "3 个分号： p.89 给欠采样与过采样并强调测试分布不变；p.90 区分 prot…"], ["R2b", 2123, "97 单元：- 第一，SMOTE／ADASYN 不是简单复制；讲义 p.91 的 “…"], ["R1c", 2125, "2 个分号： 重采样改变训练数据；类别权重改变损失；阈值改变预测决策。"], ["R1c", 2158, "2 个分号：文字替代：数据进入后，按边界和解释需求选择树、集成或 SVM；SVM 按…"], ["R4c", 2168, "单元格 2 句"], ["R4c", 2169, "单元格 2 句"], ["R4c", 2173, "单元格 2 句"], ["R4c", 2175, "单元格 2 句"], ["R4c", 2177, "单元格 2 句"], ["R1c", 2216, "3 个分号：逐列读法：中文给统一译名；English 给考试关键词；英文定义是可用答…"], ["R4c", 2234, "单元格 2 句"], ["R1c", 2236, "3 个分号：逐列读法：可信度表示推断来源；考法是复习任务；过程列是答卷需写的中间步骤…"], ["R1c", 2259, "2 个分号：SVM 的状态是 $\\mathbf{w},b,\\xi$；RIPPER 的…"], ["R5a", 2322, "一段 4 个不同行内公式"], ["R1c", 2338, "3 个分号：先按时间或生产批次划分训练、验证和原分布测试集；训练折内比较类别权重、S…"], ["R4c", 2351, "单元格 2 句"], ["R4c", 2355, "单元格 2 句"], ["R4c", 2357, "单元格 2 句"], ["R4c", 2360, "单元格 2 句"], ["R4c", 2362, "单元格 2 句"], ["R4c", 2379, "单元格 2 句"], ["R6b", 200, "一句 5 个术语（决策树、SVM、Bagging、Random Forest、Stacking）：Base classifier 包括决策树、规则、近邻、神经网络、朴素贝…"], ["R6d", 200, "缩写“SVM”首用未识别到中文说明；人工核对"], ["R6b", 312, "一句 5 个术语（CART、ID3、C4、SLIQ、SPRINT）：p.16 列出 Hunt、CART、ID3、C4.5、SLIQ 与 SP…"], ["R6d", 312, "缩写“CART”首用未识别到中文说明；人工核对"], ["R6d", 312, "缩写“ID3”首用未识别到中文说明；人工核对"], ["R6d", 312, "缩写“C4”首用未识别到中文说明；人工核对"], ["R6d", 312, "缩写“SLIQ”首用未识别到中文说明；人工核对"], ["R6d", 312, "缩写“SPRINT”首用未识别到中文说明；人工核对"], ["R6d", 400, "缩写“ASR”首用未识别到中文说明；人工核对"], ["R6b", 579, "一句 4 个术语（Bagging、随机森林、分类、回归树）：§2.6 的 Bagging 与随机森林可以组合许多分类树，也可以组合回…"], ["R6d", 648, "缩写“AB”首用未识别到中文说明；人工核对"], ["R6d", 648, "缩写“AC”首用未识别到中文说明；人工核对"], ["R6d", 648, "缩写“BC”首用未识别到中文说明；人工核对"], ["R6d", 673, "缩写“ASR”首用未识别到中文说明；人工核对"], ["R6d", 1021, "缩写“SAMME”首用未识别到中文说明；人工核对"], ["R6d", 1071, "缩写“ASR”首用未识别到中文说明；人工核对"], ["R6d", 1119, "缩写“LR”首用未识别到中文说明；人工核对"], ["R6d", 1125, "缩写“OOF”首用未识别到中文说明；人工核对"], ["R6d", 1223, "“数据泄漏”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"], ["R6d", 1239, "缩写“TA”首用未识别到中文说明；人工核对"], ["R6d", 1259, "缩写“SVM”首用未识别到中文说明；人工核对"], ["R6d", 1363, "缩写“B1”首用未识别到中文说明；人工核对"], ["R6d", 1371, "“标准化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"], ["R6d", 1384, "缩写“L6”首用未识别到中文说明；人工核对"], ["R6d", 1384, "缩写“PNG”首用未识别到中文说明；人工核对"], ["R6d", 1384, "缩写“B2”首用未识别到中文说明；人工核对"], ["R6d", 1440, "缩写“SVM”首用未识别到中文说明；人工核对"], ["R6d", 1473, "缩写“SLSQP”首用未识别到中文说明；人工核对"], ["R6d", 1533, "缩写“RBF”首用未识别到中文说明；人工核对"], ["R6d", 1563, "缩写“SVM”首用未识别到中文说明；人工核对"], ["R6d", 1606, "缩写“ASR”首用未识别到中文说明；人工核对"], ["R6d", 1623, "缩写“L6”首用未识别到中文说明；人工核对"], ["R6d", 1623, "缩写“PNG”首用未识别到中文说明；人工核对"], ["R6d", 1679, "缩写“LR”首用未识别到中文说明；人工核对"], ["R6d", 1679, "缩写“SVM”首用未识别到中文说明；人工核对"], ["R6b", 1819, "一句 4 个术语（TN、精确率、召回率、Precision、Recall、PR）：$F_1$ 不使用 TN，因此也不是万能指标；若正确放行的价值或总体成本…"], ["R6d", 1819, "缩写“PR”首用未识别到中文说明；人工核对"], ["R6b", 1854, "一句 4 个术语（TP、FN、FP、TN）：答案：TP/FN/FP/TN 会随正类定义重排，指标的业务解释也完全改变…"], ["R6d", 1941, "缩写“RIPPER”首用未识别到中文说明；人工核对"], ["R6d", 1993, "缩写“FOIL”首用未识别到中文说明；人工核对"], ["R6d", 2022, "缩写“AND”首用未识别到中文说明；人工核对"], ["R6d", 2074, "缩写“IHT”首用未识别到中文说明；人工核对"], ["R6d", 2089, "缩写“ENN”首用未识别到中文说明；人工核对"], ["R6b", 2111, "一句 5 个术语（欠采样、过采样、SMOTE、ADASYN、ENN）： p.89 给欠采样与过采样并强调测试分布不变；p.90 区分 prot…"], ["R6b", 2117, "一句 4 个术语（IHT、SMOTE、ADASYN、ENN）：现有转录未逐项展开 p.90–92 的 IHT、SMOTE、ADASYN…"], ["R6b", 2338, "一句 4 个术语（SMOTE、recall、precision、PR）：先按时间或生产批次划分训练、验证和原分布测试集；训练折内比较类别权重、S…"], ["R8c", 1371, "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"], ["R8c", 1495, "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"], ["R8c", 1610, "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"], ["R8c", 1722, "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"], ["R8c", 1819, "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"], ["R8c", 1927, "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"], ["R8c", 2042, "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"], ["R8c", 2123, "未发现 ❌ 标记；核对是否已用文字写清错误理解及理由，标记本身不是要求"], ["R4f", 171, "表头“Attrib1”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 171, "表头“Attrib2”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 171, "表头“Attrib3”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 171, "表头“Class”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 186, "表头“Attrib1”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 186, "表头“Attrib2”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 186, "表头“Attrib3”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 186, "表头“Class”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 238, "表头“ID”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 238, "表头“HomeOwner”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 238, "表头“MaritalStatus”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 238, "表头“AnnualIncome”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 238, "表头“DefaultedBorrower”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 495, "表头“p.18状态”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 495, "表头“训练准确率”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 654, "表头“期待得到的差异”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 723, "表头“x”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 731, "表头“抽到的十个x（原图从小到大排列）”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 748, "表头“加权子熵（bit）”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 822, "表头“SplitPoint”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 822, "表头“LeftClass”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 822, "表头“RightClass”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 838, "表头“x=0.9落点”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 1007, "表头“轮后权重”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 1317, "表头“y(wx+b)”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 1317, "表头“是否满足ge1”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 1463, "表头“候选(w,b)”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 1463, "表头“松弛量boldsymbolxi”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 1463, "表头“C=0.1的目标”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 1463, "表头“C=1的目标”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 1572, "表头“平方距离”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 1572, "表头“K=exp(-0.5d^2)”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 1699, "表头“LogisticRegression”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 1699, "表头“线性SVM”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 1874, "表头“TP”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 1874, "表头“FN”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 1874, "表头“FP”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 1874, "表头“TN”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 1973, "表头“win”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 2060, "表头“主要收益”未识别到专门说明；核对含义、算法或来源、单位和一行读法"]]}}
+
+发布机械门槛：PASS（不代表教学或视觉通过）
+
+记录完整且版本一致；程序不认证独立身份、教学语义或视觉，须核真实代理执行与报告

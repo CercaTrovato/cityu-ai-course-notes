@@ -2,10 +2,10 @@
 course: IS6400
 module: 3
 readability_rules: v2
-readability_review: pending
+readability_review: passed
 type: tutorial
 week: 3
-date: 2026-09-16
+date: null
 source: "Week 3 Description.ipynb（48 cells：28 markdown / 20 code）"
 runtime: "Python 3.13.5 · kernel conda-base-py"
 libraries: [pandas, numpy, matplotlib, seaborn, scikit-learn]
@@ -15,12 +15,17 @@ prerequisites: [M01, T01, M02, T02, M03]
 new_concepts: [read_csv(header=None), 自定义描述函数, quantile(), mode(), skew(), kurt(), value_counts(normalize=True), groupby().agg(), hist(bins=), boxplot(), 分组散点图, parallel_coordinates, isna().sum(), SimpleImputer, KNNImputer, fit_transform, IQR 离群点规则, Z 分数离群点规则, StandardScaler, RobustScaler, cov(), corr(), sns.heatmap, sort_values(key=abs)]
 tags: [IS6400, tutorial, pandas, seaborn, sklearn, 描述统计, 缺失值, 离群点, 标准化, iris, Airbnb]
 status: v1.0
-updated: 2026-10-01
+updated: 2026-10-27
+teaching_standard: novice-v1
 mechanism_spec: v1
-mechanism_review: pending
+mechanism_review: passed
 ---
 
 # T03 · 数据探索实战：Iris 与 Airbnb 的描述统计
+
+> 本轮状态（2026-10-27）：完整候选，待独立教学审查与正式发布门槛。材料 v1.0、历史运行与本人学习状态分开记录；本轮只读原件，不重新执行 Notebook／评分代码或完整 KNN。
+>
+> 真实授课日期未在本任务确认，frontmatter 留空；原 2026-09-16 为历史课表／下载推算口径。下文带日期的融合／运行记录保留当时事实，不冒称本日新跑。
 
 > **本讲一句话**：这个 notebook 把 [[M03-数据类型与描述性分析]] 的"描述性分析"部分**全部变成代码**——前半段用 150 行的 Iris 练手（描述统计、分位数、偏度峰度、分组、四种图），后半段换到 68,133 行的 Airbnb 处理**真实的脏数据**（缺失值三种填法、离群点两种规则、标准化两种尺度、相关矩阵与热力图）。notebook 自己说它是"**aligned with the Week 3 assignment difficulty**"——**它就是作业的模板**，作业第 2 题几乎逐条对应 cell 25–42。
 > **原始材料**：`Week 3 Description.ipynb`（48 cells）｜ **配套讲义**：[[M03-数据类型与描述性分析]]｜ **数据**：[[IS6400_Business_Data_Analytics/_meta/数据集卡片#iris.txt|数据集卡片 › iris.txt]] · [[IS6400_Business_Data_Analytics/_meta/数据集卡片#Airbnb.csv|数据集卡片 › Airbnb.csv]] ｜ **转录**：`merged`（`M03-transcript.txt` 的 tutorial 段 `01:45:33`–`02:13:18`，2026-09-18 合并）
@@ -71,7 +76,7 @@ StandardScaler vs RobustScaler。
 
 讲义没讲"标准化"，段 B 的 cell 35–37 是新增内容（为 M04 的 PCA 和 W04 的聚类铺路——这两者都对尺度敏感）。
 
-> 🎙️ **课堂实况**（2026-09-16 周三课，tutorial 段）：tutorial 段（`01:45:33`–`02:13:18`，约 28 分钟） 由教授本人主讲（不是助教），全程带着 Iris 与 Airbnb 两个 notebook 逐 cell 跑；时间最集中在 cell 28（三种缺失值填补，尤其 KNN 的 GPA 近邻类比，约 5.1 分钟）与 cell 5–8（描述统计函数与偏度峰度，约 3.8 分钟）；作业在最后约 2.9 分钟口头交代，重点是 Q3 由 TA 出题、同组必须用不同变量组合。
+> 🎙️ **课堂实况**（本份课堂转录的 tutorial 段；实际授课日未核）：tutorial 段（`01:45:33`–`02:13:18`，约 28 分钟） 由教授本人主讲（不是助教），全程带着 Iris 与 Airbnb 两个 notebook 逐 cell 跑；时间最集中在 cell 28（三种缺失值填补，尤其 KNN 的 GPA 近邻类比，约 5.1 分钟）与 cell 5–8（描述统计函数与偏度峰度，约 3.8 分钟）；作业在最后约 2.9 分钟口头交代，重点是 Q3 由 TA 出题、同组必须用不同变量组合。
 
 
 ---
@@ -128,6 +133,31 @@ seaborn 封装了 matplotlib 的统计绘图，本篇用它画热力图。原 me
 
 ---
 
+### 1.4 先固定“一行是什么”，再认识代码
+
+Iris 的一行是一朵花，四个测量列是这朵花的萼片长、萼片宽、花瓣长、花瓣宽，单位都是 cm；`class` 是已知品种标签。Airbnb 的一行是一条房源记录，`id` 标识房源；它不是一次入住、一晚的交易或一个房东。本文件 68,133 个 `id` 互不重复，但仅凭这一点不能知道抓取日期，也不能把房源数当成交量。这就是数据粒度（data granularity）：每一行代表的被数对象。
+
+数据表（DataFrame）像有行列标签的表格；一列（Series）是其中一个字段。`air['beds']` 取一列；`air[['beds', 'bedrooms']]` 用两个方括号保留二维小表，供 sklearn 接收“行 × 特征”的矩阵。`.shape` 返回行数和列数，`.head(10)` 只显示前 10 行，不只读入 10 行。
+
+代码里 `=` 将右边结果保存给左边名字；`df[col]` 按列名取数据，点号后的 `mean()` 等调用计算工具。`def describe_col(df, col):` 把一组动作起名，缩进的内容属于函数；调用时传表与列名，`return` 交回结果。`for name, group in ...` 每次接收一个组名和对应子表，重复缩进中的画图动作。先能说清输入和返回形状，再看 API 名，不要求先背语法。
+
+### 1.5 把原始价格和 log 价格分开
+
+`log_price` 是价格的自然对数（natural logarithm），`np.exp` 是逆变换。自然对数回答“以 $e\approx2.718$ 为底，要乘幂多少次得到该价格”；指数函数（exponential function）把这个数还原。教学例：价格 100 的 log 约 4.605，价格 200 的 log 约 5.298；两者相差约 0.693，对应价格乘 2。
+
+$$\text{log\_price}=\ln(\text{price}),\qquad \text{price}=\exp(\text{log\_price}).$$
+
+这里 price 是原价格数值，log_price 是变换后的数，必须先有正价格才能取对数。log 差可以解释价格比：$\ln(200)-\ln(100)=\ln 2$。但是 $5.298/4.605$ 不等于原价格比 2，所以 log_price 用区间尺度（interval scale）：差有意义，数值本身的比不保留原价格比。不能因所有观测 log 值恰好为正，就把它归为比率尺度（ratio scale）。原数据未给完整价格口径，本篇写“原价格单位”，不擅自补收费期间或汇率。
+
+`np.exp(air['log_price'])` 对每一行单独还原，保留房源配对。先求均值再 exp 得到的是几何平均意义的量；它通常不等于先还原每一行再取算术平均。分位数还涉及软件插值，见 §7.3.1 的完整两点例。
+
+**本篇用到的首次术语**：四分位距（interquartile range，IQR）是第 75% 与第 25% 分位之差，描述中间一半数据的跨度；K 近邻填补（K-nearest-neighbor imputation，KNN）用相似行中已观察的值估计缺失项，§3.2 展开。标准化（standardization）按指定中心和尺度换尺子，不会自动改变分布形状。
+
+本篇沿 cell 顺序先用小 Iris 解释机制，再将同一动作移到 Airbnb；作业原题仍按源编号放在 §7。M03 提供数据类型与统计理论，当前操作所需的分母、索引和插值仍在本篇就地展开。PCA（principal component analysis，主成分分析）和聚类（clustering）这里只预告后续用途，当前不执行。
+
+
+---
+
 ## 2. 逐块讲解 · 段 A：Iris（cell 1–24）
 
 ### 2.1 【cell 3】读数据、命名列、看前 10 行
@@ -162,7 +192,7 @@ data.head(10)
 12,3,2,0.7,B
 ```
 
-按 `header=None`，逗号拆成每行5字段，所有行都作数据，先得到2×5表；列标签暂为0/1/2/3/4，行标签为0/1。再赋原代码的五个列名：第0行的`sepal length=10`、`petal width=.5`、`class='A'`；第1行对应12/0.7/B。`head(10)`实际只返回现有两行，不造另外八行。
+按 `header=None`，逗号拆成每行5字段，所有行都作数据，先得到2×5表；列标签暂为0/1/2/3/4，行标签为0/1。再赋原代码的五个列名：第0行的`sepal length=10`、`petal width=0.5`、`class='A'`；第1行对应12/0.7/B。`head(10)`实际只返回现有两行，不造另外八行。
 
 ```mermaid
 flowchart TD
@@ -193,7 +223,7 @@ flowchart TD
 
 ### 2.2 【cell 5–7】自定义描述函数：一次算 12 个统计量
 
-**这块在干什么**：`describe()` 只给 8 个数（count/mean/std/min/25%/50%/75%/max），作业要求 11 个（加众数、Q1/Q3、极差、IQR、偏度、峰度）。notebook 自己写了一个函数补齐。
+**这块在干什么**：默认数值列 `describe()` 给 count、mean、std、min、25%、50%、75%、max。作业要求 11 项；原 `describe_col` 额外给 range，所以输出 12 项。25%／50%／75% 已分别是 Q1／中位数／Q3，不是再加三项新统计。
 
 ```python
 def describe_col(df, col):
@@ -208,13 +238,35 @@ def describe_col(df, col):
 describe_col(data, 'sepal length')
 ```
 
-**逐行**：`s.mode()` 返回的是一个 **Series**（众数可能不止一个），所以要 `.iloc[0]` 取第一个；`pd.Series({...})` 把字典变成一列带名字的数，方便后面拼成表。cell 6 用**字典推导式**对四列各调一次再 `.T` 转置成"一行一个属性"的表；cell 7 用 `data[cols].quantile([0.25, 0.5, 0.75, 0.9, 0.95, 0.99])` 一次出六个分位数。
+**逐行**：`s.mode()` 返回的是一个 **Series**（众数可能不止一个），所以要 `.iloc[0]` 取第一个；`pd.Series({...})` 把字典变成一列带名字的数，方便后面拼成表。cell 6 的四列字典汇总与转置、cell 7 的显式四列选择在下方给出完整关键片段。
+
+**从单列汇总到四列汇总（源 cell 6）**：前面的 `describe_col` 已定义好，现在把四个列名依次送进去。下面是源 Notebook 的关键片段，本轮只展示，不重新执行原 Notebook。
+
+```python
+# Full table for all numeric attributes
+pd.DataFrame({col: describe_col(data, col) for col in
+              ['sepal length', 'sepal width', 'petal length', 'petal width']}).T
+```
+
+`{col: describe_col(data, col) for col in [...]}` 是字典推导式（dictionary comprehension）。`for` 依次把四个名字交给 `col`；冒号左侧用当前名字作键，右侧调用函数得到对应统计 Series。第一轮就相当于保存 `'sepal length': describe_col(data, 'sepal length')`，随后为其余三列各保存一份，原数据仍是 150 行。
+
+`pd.DataFrame(...)` 先把四份 Series 按统计量标签对齐：12 个统计量是行，四个原属性名是列，形状 12×4。`.T` 是转置（transpose），交换行列，最终成为四行属性、十二列统计量的 4×12 表；它没有再计算一次均值，也没有把 150 朵花变成四朵。
+
+**六个分位怎样建立（源 cell 7）**：`percentiles` 是六个比例的列表；这里沿原代码直接列出四个 Iris 属性，不使用尚未定义的 `cols`。
+
+```python
+# Percentiles
+percentiles = [0.25, 0.50, 0.75, 0.90, 0.95, 0.99]
+data[['sepal length', 'sepal width', 'petal length', 'petal width']].quantile(percentiles)
+```
+
+内层列表选四列，`quantile(percentiles)` 对每列各取六个分位。返回表的行标签是 0.25 等比例，四个列标签仍是原属性，形状 6×4。比如 0.90 行、petal width 列读作“花瓣宽的第 90% 分位”；后面 Airbnb 两列的 `cols` 是另一处变量，不能拿来代替这四列。
 
 **输出**（cell 5，`sepal length`）：mean 5.843、median 5.80、mode 5.0、std 0.828、min 4.3、max 7.9、Q1 5.1、Q3 6.4、range 3.6、IQR 1.3、skew 0.315、kurt −0.552。
 （cell 6 四列汇总）：petal length 的 std 最大（1.764）、IQR 最大（3.5）、峰度最负（−1.402）；这些数可提示进一步查分组，但单独不证明三个品种混合或有三个峰。
-（cell 7）：petal width 的 90% 分位 2.2、99% 分位 2.5 = 最大值——**最大的 1% 花瓣宽度都是 2.5**。
+（cell 7）：petal width 的 90% 分位为 2.2、99% 分位为 2.5，后者等于最大值。分位阈值不代表恰有 1% 观察大于它；有并列值时，位于最大值的比例可以超过 1%。
 
-**为什么这么写**：作业第 1 题的原话是 "mean, median, mode, std, min, max, Q1, Q3, IQR, skewness, kurtosis"——**正好是这个函数的输出**。cell 8 的 markdown 给了读数规则：偏度近0只表示三阶偏斜较小，不保证对称；正偏通常提示右尾较长；峰度近 0 像正态尾、大正值重尾（M03 §2.10）。
+**为什么这么写**：作业第 1 题的原话是 "mean, median, mode, std, min, max, Q1, Q3, IQR, skewness, kurtosis"——这 11 项均在函数输出中，另有一个 range。cell 8 的 markdown 给了读数规则：偏度近0只表示三阶偏斜较小，不保证对称；正偏通常提示右尾较长；峰度近 0 像正态尾、大正值重尾（M03 §2.10）。
 
 **⚠️ 易错点**：
 - `s.std()` 是样本标准差（分母 n−1），与讲义 p.30 样本协方差口径一致；numpy 的 `np.std` 默认分母 n，两者会差一点。
@@ -240,12 +292,16 @@ Q3 位置 3.75，两端 4、9，故 $4+0.75(9-4)=7.75$，IQR=5.75。
 
 Q99 位置 4.95，结果 9.95，**并非最大值 10**。
 3. 频数表为 1→1 次、2→2 次、4/9/10→各 1 次，众数为 2。若改成 `[1,1,2,2]`，`mode()` 返回两个众数 1、2；`.iloc[0]` 只保留第一个，不等于只有一个众数。
-4. 均值处的偏差依次 $-11/3,-8/3,-8/3,-2/3,13/3,16/3$，平方和 $226/3$。样本方差除以 $n-1=5$，为 $226/15$，开根得到 std≈3.881580。总体口径除以 6 得到不同的数，不能混用。
+4. 每项减均值得到偏差，平方让正负偏离不互相抵消；平方偏差的平均是方差，开根回到原单位就是标准差（standard deviation）。把这六项当完整研究对象时可除以 6；把它们当来自更大总体的样本并用样本均值估计中心时，偏差和已被约束为 0，通常用 $n-1$ 校正总体方差估计。
+
+均值处的偏差依次 $-11/3,-8/3,-8/3,-2/3,13/3,16/3$，平方和 $226/3$。样本方差除以 $n-1=5$，为 $226/15$，开根得到 std≈3.881580。总体口径除以 6 得到不同的数，不能混用。
 5. 偏度与超额峰度不是“再看均值大小”：它们读取三、四次方偏差及样本校正。
 
 本例三次方和 $1310/9$、四次方和 $38982/27$。
 
 除以 6 得 $m_3,m_4$，平方和除以 6 得 $m_2$。
+
+三次方保留正负号，所以右侧大偏差可拉出正偏度；四次方不保留方向，更强调远离均值的值。下式先以 $m_2$ 消除量纲，再做有限样本校正，是 pandas 的统计量约定，不是“看峰有多尖”。
 
 pandas 的样本偏度是 $\sqrt{n(n-1)}m_3/[(n-2)m_2^{3/2}]$。
 
@@ -276,6 +332,8 @@ flowchart TD
 **所以呢**：统计函数先明确有效数据与位置，再给单列汇总；下一步按类别把数据拆开，重新计算每一组的有效分母。
 
 **🎙️ 课堂补充**（`01:49:04`–`01:52:51`，约 3.8 分钟，A · 课上展开）
+
+中文译意：pandas 已有多数统计函数；自定义函数把它们组织成一份汇总。课堂的 describe 预告不表示它涵盖众数、偏度和峰度等全部项目。
 
 - 强调 pandas 已经内置了这些统计量的计算：*"[M]ost of the summary statistics calculations have been supported by the Pandas Data Frame."*（`01:49:15`–`01:49:26`）
 - Q1/Q3 与 IQR 的口头公式：*"Q1, Q3, we will calculate it using S dot quantile. So this is a 25 quantile or 75 quantile. ... [F]or the IQR, it is Q3 minus Q1."*（`01:50:01`–`01:50:09`）
@@ -342,6 +400,8 @@ flowchart TD
 
 **🎙️ 课堂补充**（`01:52:51`–`01:55:48`，约 3.0 分钟，A · 课上展开）
 
+中文译意：归一化频数约为各 33.3%；银行例说明少数类可能很少，应先检查标签比例再选方法。欺诈一词仍保留 ASR 不确定标记。
+
 - `value_counts(normalize=True)` 的口头解释与结果（ASR 把 setosa 识别成 "cytosine"）：*"[I]f we put in the value count[s] and do the normalization, and keep the three decimals here[,] then you will tell you that about 33.3% is the data point belonging to your [setosa]."*（`01:53:26`–`01:53:41`）
 - 🔴 **notebook 和讲义都没有的增量：用银行“正常交易 vs 欺诈交易”举例讲类别不平衡**（ASR 把 fraud 识别成 "board"）：
 
@@ -404,7 +464,7 @@ cell 21 的结论：两个变量的关系可以"strong and **nonlinear** when a 
 本图能直接支持的是组分布不同及两类有重叠，具体函数关系需再检验。
 - **平行坐标**（cell 23）：`parallel_coordinates(data, 'class')` 第二个参数是**类别列名**，用来着色；输出与讲义 p.70 左图一致（轴序 sepal length → sepal width → petal length → petal width），三类在 petal 两根轴上分成三束。
 
-**本轮将四个输出放到读法旁边**：同一 iris.txt 定向生成，散点另配点形，其余保原统计口径；不是旧保存像素。图源 figures/t03-readability/figures.py。
+**历史配图（2026-10-01）**：同一 iris.txt 定向生成，散点另配点形，其余保原统计口径；不是旧保存像素。图源 figures/t03-readability/figures.py。
 
 **直方图：花瓣宽度集中在哪些区间？**
 
@@ -443,7 +503,7 @@ cell 21 的结论：两个变量的关系可以"strong and **nonlinear** when a 
 
 **输出核对（2026-09-30 实跑）**：`render-t03-plots.py` 按原 Iris 数据生成并实际查看了四张图。20个直方箱计数合计150；平行坐标150条样本线直接使用原行的四个数，首行为5.1/3.5/1.4/0.2。散点中setosa分离较明显，另两类重叠，不能说三类完全分开。箱线图是petal length的IQR最大，sepal width较窄并有单独点。中间核对见`t03-plot-check.json`，图像为临时验收材料，不嵌入正文替代可编辑代码与解释。
 
-**为什么这么写**：作业第 2.3 题要求"每个特征与 log_price 一个统计量 + 一张图，带标题、轴标签、2–3 句解释"，**且 "at least 8 plots"**——这四个 cell 每个都示范了"`plt.title` + `plt.xlabel` + `plt.ylabel` + 一段 markdown 解释"的完整格式，照着来。
+**为什么这么写**：作业第 2.3 题要求每个指定特征配一个统计量和一张图；全题至少 8 张图，每张都需标题、轴标签及 2–3 句解释。这四种图示范“先画数据、再补标题和轴、最后显示”的顺序；具体解释应由当前数据支持。
 
 **⚠️ 易错点**：
 - `plt.show()` 之后再调 `plt.title` 无效（图已经画完了）；标题和轴标签要在 `show()` **之前**。
@@ -472,19 +532,33 @@ pandas默认直接使用这些数，**不会自动给每轴做独立缩放**。
 
 **四图的机制数据流（笔记补充）**：下图分支接收同一原表，但各图建立的中间表示不同。先明确有效数值、缺失处理、行身份和轴单位；没有有效观察时应报告空数据，不能从空图推断没有异常。
 
+四条分支分别画，避免并排后文字缩小。四图仍接收同一原表；箭头是各自从原行到图形的转换。
+
 ```mermaid
 flowchart TD
-    P0[原表；行身份；数值列；类别；尺度] --> PH[直方：选一列与箱边界]
+    PH0[原表；行身份；数值列；尺度] --> PH[直方：选一列与箱边界]
     PH --> PH1[逐观察分箱；末箱含右端；各箱计数]
     PH1 --> PH2[柱位置为区间；柱高为频数]
-    P0 --> PB[箱线：取一列有效观察并排序]
+```
+
+```mermaid
+flowchart TD
+    PB0[原表；行身份；数值列；尺度] --> PB[箱线：取一列有效观察并排序]
     PB --> PB1[算Q1/中位/Q3；IQR围栏]
     PB1 --> PB2[取围栏内最远观察为须；超界值单列]
     PB2 --> PB3[画盒、须、中位线及单独点]
-    P0 --> PS[散点：同一原行的两列与类别]
+```
+
+```mermaid
+flowchart TD
+    PS0[原表；行身份；数值列；类别；尺度] --> PS[散点：同一原行的两列与类别]
     PS --> PS1[保留共同有效行；形成x/y/类的配对]
     PS1 --> PS2[每行一个点；类别只决定颜色]
-    P0 --> PP[平行：指定轴顺序与原值或显式缩放值]
+```
+
+```mermaid
+flowchart TD
+    PP0[原表；行身份；数值列；类别；尺度] --> PP[平行：指定轴顺序与原值或显式缩放值]
     PP --> PP1[每行取得各轴对应值；保留行身份]
     PP1 --> PP2[连接同一行的各轴点；按类别着色]
 ```
@@ -492,6 +566,8 @@ flowchart TD
 直方箱边界、箱须规则、类别色标与显式尺度都属于需要记录的输入约定；改它们会改变图形，原行不因此变化。
 
 **🎙️ 课堂补充**（`01:55:48`–`01:59:12`，约 3.4 分钟，A · 课上展开）
+
+中文译意：bins=20 划 20 个区间；箱线图口述的百分位规则与软件默认不同；散点已知类别有重叠，平行坐标每条线是一朵花。
 
 - 直方图 bin 数与读图：*"[L]et me show you that there are 20 intervals here[,] because [bins equals] 20... [M]ost of the records[,] they have their petal width value to be very small."*（`01:56:09`–`01:56:41`）
 - 🔴 **箱线图离群点边界，口头说法是百分位而非 1.5×IQR——与本笔记 §9.5 ⑤ 的疑问对上了**：*"[S]o the threshold[,] together with some outliers here[:] the outlier[s] above the [90th?] percentile or below the 10th percentile[,] they were labeled outliers."*（`01:56:58`–`01:57:07`）
@@ -501,7 +577,7 @@ flowchart TD
 
 新增一条与本笔记 §9.5 ⑤ 直接相关的证据——教授口头描述箱线图须用的是 10/90 百分位，与 `data.boxplot()` 实际默认的 1.5×IQR **不是同一套口径**。
 
-作业里若按讲义 10/90 百分位算须会与 notebook 输出的箱线图对不上，建议以 `boxplot()` 的 1.5×IQR 为准并注明。
+本篇复现 `boxplot()` 时按默认 1.5×IQR；若需 10/90 百分位须，必须显式设置并注明。原 ASR 的 90th 仍为 [?]，未重听音频，不把推定修词当作已核原话。
 
 ---
 ## 3. 逐块讲解 · 段 B：Airbnb 的脏数据（cell 25–42）
@@ -533,7 +609,7 @@ pd.DataFrame({'missing': missing, 'ratio': missing_ratio})[missing > 0]
 
 **为什么这么写**：作业第 2.1 题第一条就是 "Missing-value report for all columns"——这三行就是模板。⚠️ 注意 `bedrooms` **没有缺失**，但 cell 28 仍然把它和 `review_scores_rating` 一起填补——见 §3.2 的坑。
 
-**⚠️ 易错点**：`head()` 的第 4 行 `review_scores_rating` 已经是 `NaN`（该房源 `number_of_reviews = 0`）——**评分缺失的机制是"没评论就没评分"**，不是随机缺失（数据集卡片 §3.1）。这一点在作业里写出来是加分项：它说明"用中位数填"是在给没有记录评分的房源一个"典型"评分，得说清这个假设。
+**⚠️ 易错点**：`head()` 的第 4 条房源记录缺评分，且评论数为 0。它提示“尚无评论”和缺评分可能有关；单个例子不能证明全列缺失机制。填中位数是在估计未知评分，必须说明这个假设。
 
 没有记录评论不等于无人入住。已核 15,275 条缺评分中，14,434 条评论数为 0；其余 841 条的缺评分原因仍未核，不能统称“没人住过”。
 
@@ -549,7 +625,7 @@ pd.DataFrame({'missing': missing, 'ratio': missing_ratio})[missing > 0]
 
 1. 布尔表按原行分别是(F,F,F)/(T,F,T)/(F,T,F)，形状仍3×3。缺失判断检验表示标记，不在猜测某个评分是否合理。
 2. 每列True求和均为1；n=3，各比例1/3，保留四位小数为.3333，即约33.33%。类别列也可检查缺失，不必先变数值。
-3. 合成以字段名为索引的3×2报告：三行都是`missing=1,ratio=.3333`；筛`missing>0`后仍三行。原表仍三行，原行12/50没被删除。
+3. 合成以字段名为索引的3×2报告：三行都是`missing=1,ratio=0.3333`；筛`missing>0`后仍三行。原表仍三行，原行12/50没被删除。
 
 ```mermaid
 flowchart TD
@@ -568,6 +644,8 @@ flowchart TD
 **所以呢**：缺失报告只是定位范围，下一步须判断缺失机制与处理代价，再选择删除、保留标记或填补。
 
 **🎙️ 课堂补充**（`01:59:12`–`02:01:20`，约 2.1 分钟，A · 课上展开）
+
+中文译意：缺失少且删除不改变关心的模式时可以考虑删除；若需保留重要记录则考虑填补。仅缺失比例小不保证删除无偏。
 
 - 切换数据集与确认缺失列（ASR 把 Airbnb 识别成 "LBNB"）：*"[W]e switch to the real data set of [Airbnb], and we know that it contains some missing values in the review[s] [scores] rating..."*（`01:59:19`–`01:59:34`）
 - 🎙️ **notebook 没写的处理框架——“删除”与“填补”两条路怎么选**：
@@ -610,7 +688,25 @@ air['bedrooms_knn'] = knn_vals[:, 1]
 - `KNNImputer(n_neighbors=5)`：对每个有缺失的行，在**其他列**上找 5 个最像的行，用它们该列的均值填。这里 `cols` 只有两列，所以填 `review_scores_rating` 时只看 `bedrooms` 像不像——**邻居的定义很弱**（见易错点）。
 - `knn_vals[:, 0]`：numpy 二维数组取第 0 列。
 
-然后 `summary()` 函数对六个新列各算 mean / std / min / max / skew：
+**把填补结果送回同一张比较表（源 cell 28 后半）**：前段已建立三种评分新列和三种卧室新列，现在用 `summary` 逐列汇总；它接收列名字符串，读取当前 `air` 的那一列，交回五项带标签的 Series。
+
+```python
+def summary(col):
+    s = air[col]
+    return pd.Series({'mean': s.mean(), 'std': s.std(),
+                      'min': s.min(), 'max': s.max(), 'skew': s.skew()})
+
+pd.DataFrame({
+    'review_mean': summary('review_scores_rating_mean'),
+    'review_median': summary('review_scores_rating_median'),
+    'review_knn': summary('review_scores_rating_knn'),
+    'bed_mean': summary('bedrooms_mean'),
+    'bed_median': summary('bedrooms_median'),
+    'bed_knn': summary('bedrooms_knn'),
+}).T
+```
+
+字典的六个键如 `review_mean` 是比较表里的方法名称，不是原字段名；右边传入 `review_scores_rating_mean` 才定位真正要汇总的新列。构表先得到五行统计量×六列方法，`.T` 再转成六行方法×五列统计量，便于同一列纵向比较 mean/std/skew。每个已观察评分保持原值，只有原 NaN 位置被替换；比较表也不能告诉我们这些缺失项的真值。
 
 **输出**：
 
@@ -636,15 +732,24 @@ std 按样本分母 n−1 计算，n 是该列填补后有效数。读 review_me
 - `bedrooms` 三种结果**一模一样**，因为它**本来就没有缺失值**（cell 27 的报告里没有它）——三个 Imputer 什么都没填。
 - notebook 的选择：**两列都用中位数**（"simple and robust"），KNN 是"valid alternative if local similarity matters"。
 
-cell 30 建 `air_clean`：复制一份，把两列替换成中位数版本，`isna().sum()` 确认为 0。
+**先建立后文使用的 `air_clean`（源 cell 30）**：此时 `cols` 已在 cell 28 定义为评分和卧室两列，三种新列也已存在。保留原表的各方法结果，另复制一张表用于后续离群与相关分析。
 
-**为什么这么写**：作业第 2.1 题原话："Comparison of mean, median, and KNN (k=5) imputation for `review_scores_rating` and `bedrooms`. Report mean, std, and skewness for each method, and justify your preferred choice."——cell 28–29 就是答案模板。但**作业要你自己写 justify**——照抄 cell 29 那三句会被看出来。
+```python
+air_clean = air.copy()
+air_clean['review_scores_rating'] = air_clean['review_scores_rating_median']
+air_clean['bedrooms'] = air_clean['bedrooms_median']
+air_clean[cols].isna().sum()
+```
+
+`air.copy()` 产生新表对象；随后两个赋值只把新表的指定字段替换为对应中位数版本，原 `air` 的评分列仍保留 NaN。这里沿用相同索引，替换值对应同一房源；`air_clean[cols].isna().sum()` 只检查评分/卧室两列，源保存结果都为 0，两个 host 字段各 180 个缺失仍在。后文使用 `air_clean` 前必须先完成此步，不能只定义一个名字却没有建立对象。
+
+**为什么这么写**：作业第 2.1 题原话："Comparison of mean, median, and KNN (k=5) imputation for `review_scores_rating` and `bedrooms`. Report mean, std, and skewness for each method, and justify your preferred choice."——cell 28–29 就是答案模板。但**作业要你自己写 justify**；说明选法依据、缺失机制假设及无法确认真值的边界。
 
 **⚠️ 易错点**：
 - **`bedrooms` 没有缺失**——作业题干说 "It contains missing values in `review_scores_rating` and `bedrooms`" 是错的（notebook cell 25 也这么说）。作业里如实指出"bedrooms 无缺失，三种方法结果相同"是正确做法，不要硬编一个差异。
 - KNN 的邻居只在 `cols` 那两列里找。
 
-要让 KNN 有意义，应该把 `accommodates`、`bathrooms`、`beds` 等也放进去（`KNNImputer` 会用所有传入的列算距离）。
+可把 `accommodates`、`bathrooms`、`beds` 等作为候选相似性字段再比较（`KNNImputer` 会用所有传入列算距离）；多加列本身不保证估计更好。
 
 **KNN距离对参与列的尺度敏感**。
 
@@ -744,6 +849,8 @@ flowchart TD
 
 **🎙️ 课堂补充**（`02:01:20`–`02:06:26`，约 5.1 分钟，A · 课上展开）
 
+中文译意：mean／median 先从非缺失值估计中心，再填空位；KNN 改用邻近供体 GPA 的平均。GPA（grade point average）指平均绩点，这里是课堂类比，不是 Airbnb 字段。
+
 - `sklearn.impute` 库的口头介绍（ASR “costiller” = scikit-learn）：
 
 > *"[Scikit-learn] dot impute. [B]ut the impute is a library that we can use[,] ... [and] so many tools in the library to impute or to fill the missing values in your data set. So there are two big imputer[s]. One is a simple imputer[,] the other is the K[NN] imputer."*
@@ -807,9 +914,20 @@ Q1 = 4.29，Q3 = 5.19，IQR = 0.90。
 
 两端都有长尾
 
-cell 33：`log_price` 的 IQR 离群比例 = **0.0213**（1,453 / 68,133）；这个 `outlier_iqr` 列留在 `air_clean` 里（作业要求 "keep an `outlier_iqr` flag column"）。
+**保存逐行标记并算比例（源 cell 33）**：上一段已经定义 `iqr_flag`，`air_clean` 已由 cell 30 建立。现在把每行结果存进题目指定名字，再汇总。
+
+```python
+air_clean['outlier_iqr'] = iqr_flag(air_clean['log_price'])
+air_clean['outlier_iqr'].mean().round(4)
+```
+
+右侧 `iqr_flag(air_clean['log_price'])` 返回与房源索引配对的布尔列；赋值给左侧新列 `outlier_iqr`，没有删除房源。布尔求平均时 True 按 1、False 按 0，所以本例均值就是 1,453 除以 68,133，约 0.0213；这是约 2.13%，不是 0.0213%。
+
+本列原数据无缺失，分母为全部 68,133 行；换成带缺失的新数据时应另保留“未判断”状态，不能把比较 NaN 得到的 False 自动算成正常。保留 flag 使后续可以对原行定向核查，而不是靠一个总比例找异常。
 
 **读法**（cell 34 原文）："IQR usually flags more points because it does not assume a normal distribution. Z-score assumes an approximately Gaussian variable, so it can miss heavy-tail outliers and over-flag variables that are not normal."
+
+中文译解：原文称 IQR 通常标更多，并把 Z 关联到近似正态。这里须区分算法与概率解释：Z 的计算不要求正态，三倍标准差尾概率才依赖正态；IQR 标得更多也只是本数据观察，非一般定理。
 
 **为什么这么写**：作业第 2.1 题原话："Outlier detection on `log_price`, `accommodates`, and `bathrooms` using **both IQR (1.5 × IQR)** and **Z-score (threshold 3)**. Compare the two methods."——这三个数就是答案，但**比较**要你自己写。
 
@@ -853,6 +971,8 @@ IQR=0 并非程序无法运行，两界会重合；这样可能把离散变量�
 **所以呢**：标记给出可检查的原行，方法差异应回到分母、分布与参数解释；选择缩放器时继续保留这些区别。
 
 **🎙️ 课堂补充**（`02:06:26`–`02:07:42`，约 1.3 分钟，B · 讲了同讲义）：教授只是简讲了一遍 IQR 与 Z 分数两条离群点规则的公式，没有给出 Airbnb 三列（`log_price` / `accommodates` / `bathrooms`）任何具体计数或对比结论——
+
+中文译意：IQR 用分位边界标记，Z 用离均值多少个标准差标记。课堂“产生正态”的口头说法须限制：只换中心和尺度不会把任意分布变为正态。
 
 > *"[I]f we want to identify some [outlier] data points, we can use the IQR. I already informed [you] that IQR is Q3 minus Q1. ... [A]lternatively we can use this kind of Z-score[:] ... the X value minus mean value divided by the standard deviation."*
 
@@ -900,14 +1020,15 @@ $$z=\frac{x-\text{median}}{\text{IQR}}.$$
 **逐行**：`fit_transform` 返回 numpy 数组 → 用 `pd.DataFrame(..., columns=[f + '_std' for f in feats])` 接回列名（列表推导式，T02 §3 助教讲过）。
 
 **输出**（StandardScaler）：五列 mean 全是 `e-17` 量级（就是 0，浮点误差）、std 全是 1.000007（分母 n−1 的微小差）；`review_scores_rating_std` 的 min 是 **−10.7**（评分 20 分的房源离均值 10 个标准差），max 只有 0.80。
-（RobustScaler）：`accommodates_rob` mean 0.57、min −0.5、max 7；`bathrooms_rob` std 0.56——⚠️ 按定义 IQR = 0 应该除零，sklearn 遇到 IQR = 0 会**把分母置 1**，所以 `bathrooms_rob = bathrooms − 1`，没有报错但也没有"缩放"。
+（RobustScaler）：`accommodates_rob` mean 0.57、min −0.5、max 7。bathrooms 与 bedrooms 的训练 IQR 都为 0，sklearn 将有效尺度置为 1；两列都主要是减去中位数 1。没有报错不代表实现了非退化 IQR 缩放。
 
 **读法**（cell 37 原文）：StandardScaler 用于"roughly symmetric and outliers are rare"；RobustScaler 用于"have outliers or skewed distributions"。
 
 **为什么这么写**：作业第 2.2 题原话："Apply `StandardScaler` and `RobustScaler` to at least five numerical features (excluding `log_price`). Report mean, std, min, max for both scalers. Explain when each scaler is preferable."——cell 36 输出就是那张表。**讲义 M03 没有讲标准化**，它是为 M04 PCA（对方差敏感，尺度大的列会霸占第一主成分）和 W04 聚类（距离对尺度敏感）铺路的。
 
 **⚠️ 易错点**：
-- 标准化**不改变分布形状**（偏度不变），只改位置和尺度；左偏的评分标准化后还是左偏。
+- 按正尺度做这种线性标准化不改变分布形状（偏度不变），只改位置和尺度；左偏的评分标准化后还是左偏。
+- StandardScaler 不要求输入正态，也不会把它变正态；RobustScaler 也不保证极差或最大绝对值更小。
 - `fit_transform` 用全表统计量，同样有训练 / 测试泄漏问题。
 - 标准化后列名要自己接，否则一堆无名数组（cell 36 的 `columns=` 就是在做这件事）。
 
@@ -963,6 +1084,8 @@ flowchart TD
 
 **🎙️ 课堂补充**（`02:07:42`–`02:08:48`，约 1.1 分钟，B · 讲了同讲义）：只念了两个公式，没有展开“何时用哪个”的取舍标准，也没有提 Airbnb 五个特征的具体输出——
 
+中文译意：两种变换分别减均值／中位数并除相应尺度；零方差或零 IQR 的列有退化政策。均值 0、总体 std 1 只对非退化训练列成立。
+
 > *"[F]or the standardization... the actual value [minus] the mean divided by the standard deviation. ... [A]fter... standardization[,] all the columns' mean value will become zero, and the standard deviation will become one. ... [W]e can use... robust scaler... [subtracting] median and divid[ing] it by the IQR."*
 
 （`02:07:56`–`02:08:40`）与笔记 §3.4 的两个公式一致。
@@ -987,7 +1110,7 @@ air_clean[corr_cols].corr()['log_price'].drop('log_price').sort_values(key=abs, 
 
 **逐行**：`df.cov()` / `df.corr()` 一次算所有列两两的协方差 / Pearson 相关（M03 §2.11 的公式，分母 n−1）。
 
-`sns.heatmap(annot=True, fmt='.2f', cmap='coolwarm')`——在格子里标数、两位小数、采用coolwarm色带。
+`sns.heatmap(annot=True, fmt='0.2f', cmap='coolwarm')`——在格子里标数、两位小数、采用coolwarm色带。
 
 原代码自动色域不保证零居中，颜色先读色标再读数值。
 
@@ -1094,7 +1217,7 @@ flowchart TD
 
 **术语唤醒（笔记补充）**：条件系数是回归中在其余输入固定的模型条件下解释的系数，不自动等于因果效应。多重共线性是输入列存在完全或较强线性依赖，使分别估计各系数的信息不足或不稳定；两列相关高是线索，不能单独证明某个系数的负号来源。
 
-**原热力图的实际色域检查（笔记补充，2026-10-01）**：本轮用原Airbnb及中位数填补评分后重算7×7矩阵，原代码自动色域为约−0.040035至1；价格/评分相关约+0.08却画成蓝色。因此不能只凭“蓝”判负相关。固定−1至1并以0为中心后，弱正相关才接近中性的浅红色。原notebook和课堂引文保持原样；以下是明确改色域的补充代码，不冒称原代码已有这些参数。
+**原热力图的实际色域检查（笔记补充，2026-10-01）**：当时用原 Airbnb 及中位数填补评分后重算 7×7 矩阵，原代码自动色域为约−0.040035至1；价格/评分相关约+0.08却画成蓝色。因此不能只凭“蓝”判负相关。固定−1至1并以0为中心后，弱正相关才接近中性的浅红色。原notebook和课堂引文保持原样；以下是明确改色域的补充代码，不冒称原代码已有这些参数。
 
 ```python
 plt.figure(figsize=(8, 6))
@@ -1107,6 +1230,8 @@ plt.show()
 **逐行**：新建画布；沿用同一`corr_matrix`，三个新增参数只固定颜色映射，不重算相关；最后设置标题再显示。**输出**：实际两版对照已渲染并查看，色域分别为[−0.040035,1]/[−1,1]，矩阵数字相同；见临时`t03-heatmap-check.py`和`t03-heatmap-check.json`。课堂关于红正蓝负的描述可作为零居中图的读法，不能当作此原代码默认色域已保证的性质。
 
 **🎙️ 课堂补充**（`02:08:48`–`02:09:51`，约 1.1 分钟，A · 课上展开）
+
+中文译意：课堂用红蓝说明正负相关，并提醒低相关不保证没有关系；颜色仍需以实际色标为准，因果还需单独依据。
 
 - 热力图颜色编码的口头说明（notebook 只写了 `cmap='coolwarm'`，没有解释）：*"[T]o see... all the correlation metrics, the [heatmap][:] if they are positively correlated, it's closer to the red[;] if they are negatively correlated... it will be close to the dark blue."*（`02:09:15`–`02:09:24`）
 - 相关系数低 ≠ 无关系的补充（ASR "field correlation" 疑为 "zero correlation"）：*"[Z]ero[?] correlation does not mean they do not have [a] relationship[;] maybe they have non-linear correlation, non-linear relationship."*（`02:09:36`–`02:09:41`）
@@ -1148,25 +1273,52 @@ flowchart TD
 
 ---
 
-## 5. 自己动手 —— 改哪个参数会发生什么
+## 5. 双语速查与自己动手
+
+下表给可用于英文复述的笔记自拟定义；正文对应位置已解释动作，不把词表当先修替代。
+
+| 中文 | English | 英文复述 | 展开 |
+|---|---|---|---|
+| 数据粒度 | data granularity | The entity or event represented by one row. | §1.4 |
+| 分位数 | quantile | A rank-based threshold defined by a stated sample rule. | §2.2 |
+| 线性插值 | linear interpolation | A weighted average between adjacent ordered observations. | §2.2／§7.3.1 |
+| 样本标准差 | sample standard deviation | The square root of squared deviations divided by n minus one. | §2.2 |
+| 四分位距 | interquartile range | The difference between the 75th and 25th percentiles. | §2.2 |
+| 缺失值填补 | missing-value imputation | Replacing missing entries by estimates while retaining observed entries. | §3.2 |
+| 标准化 | standardization | Re-expressing values using a specified centre and scale. | §3.4 |
+| 混杂变量 | confounding variable | A variable that can influence both compared quantities. | §7.3.2 |
+
+### 5.1 参数变式
+
+每行对应原 cell 的一个改动；“会看到”区分确定关系和需实际再看的预测。本轮没有执行这些参数实验。
 
 | 改什么 | 改成 | 会看到 | 学到 |
 |---|---|---|---|
-| cell 14 `bins=20` | `bins=5` / `bins=50` | 5 箱看不到多峰；50 箱全是锯齿 | 直方图形状随箱数变（M03 p.63） |
+| cell 14 `bins=20` | `bins=5` / `bins=50` | 少箱合并细节，多箱更细碎；实际形状需看图 | 分箱改变图形，不改变原观察 |
 | cell 20 分组散点的两列 | `sepal length` × `sepal width` | 三类混在一起 | 特征的"可分性"不同 → M04 特征重要性 |
-| cell 23 列顺序 | `data[['sepal width','sepal length','petal length','petal width','class']]` | 三束从第二根轴就分开（讲义 p.70 右图） | 平行坐标轴序重要 |
-| cell 28 `KNNImputer` 的输入 | 加上 `accommodates, bathrooms, beds` | `review_knn` 的 mean / skew 会变 | KNN 的"邻居"由传入的列决定 |
-| cell 28 `n_neighbors=5` | 1 / 50 | 1 个邻居噪声大；50 个邻居趋近全局均值 | k 的偏差–方差权衡 |
+| cell 23 列顺序 | 将 sepal width 放在第一轴 | 连线走向和交叉改变，三组是否分离仍看原值 | 轴序改外观，不保证分类成功 |
+| cell 28 `KNNImputer` 的输入 | 加上 `accommodates, bathrooms, beds` | 邻居与结果可能改变，需另核尺度和实际输出 | 传入列决定可用距离 |
+| cell 28 `n_neighbors=5` | 1 / 50 | 一个供体更受该行影响，较多供体更平滑 | 50 仍是局部均值，不保证接近全局 |
 | cell 32 `k=1.5` | `k=3` | IQR 标记数大幅下降 | 须的倍数是主观门槛 |
 | cell 32 `threshold=3` | `2` | 按固定参照尺度，降阈值会使标记数不减少；Airbnb实际比例须复算，约4.6%仅是理想正态下的理论双尾比例 | 正态下 2σ 外约 4.6% |
-| cell 32 的列 | 加 `number_of_reviews` | IQR 会标出几千个 | 右偏计数变量的"离群点"其实是长尾 |
-| cell 36 `feats` | 加 `log_price` | 也被标准化——但作业明说 excluding `log_price` | 目标变量通常不标准化（要保留可解释性） |
+| cell 32 的列 | 加 `number_of_reviews` | 先按本列四分位算界，再核实际标记数 | 长尾值不自动等于错误 |
+| cell 36 `feats` | 加 `log_price` | 目标也被缩放，不符本题 excluding 限制 | 是否变换目标由具体任务决定 |
 | cell 40 `cmap` | `'RdBu_r'`，加 `vmin=-1, vmax=1` | 颜色与相关值固定对应 | 多图可比 |
 | cell 41 `key=abs` | 去掉 | `number_of_reviews`（−0.025）排到最后 | 负相关也是相关 |
 
 ---
 
 ## 6. 与讲义理论的对应
+
+### 6.1 答题边界与置信度
+
+🟡 ILO 反推：本课要求发现模式和解释结果，因此应能从原行说到统计量、从统计量说到受限结论。⚪ 笔记推断：读输出时最易混用样本／总体分母、原观察／填补估计、原价格／log 价格与关联／因果；并非教授宣布的必考清单。
+
+英文答题顺序（笔记自拟）：“State the observational unit and processing status, define the statistic and denominator, report the numerical result, and explain what it does and does not establish.”
+
+### 6.2 cell 与理论索引
+
+下表的 cell 为源 Notebook 从 1 起编号；讲义列给 M03 物理页，用于定位理论，不代替本篇操作解释。
 
 | notebook cell | 讲义 M03 页 | 概念 |
 |---|---|---|
@@ -1256,38 +1408,299 @@ flowchart TD
 2. **提交两个文件**：`.ipynb` **和** `.html`（T01 只要 HTML、T02 要 html + pdf，每周不一样）。导出：`File → Save and Export Notebook As → HTML`；交之前 `Kernel → Restart & Run All`，让 cell 编号从 1 连续到底（"all cells executed"）。
 3. **Q3 要你自己的项目数据**——也就是说**到 W3 就必须已经有一份候选数据集**（[[IS6400_Business_Data_Analytics/_meta/作业与DDL|作业与DDL]] §3.5 的选题）。没有的话至少先从 Kaggle / UCI 下一份能代表你选题方向的公开数据；且"不同组员用不同变量"，组内先分工。
 
-### 7.3 逐题攻略
+### 7.3 逐问学习解析
 
-**Q1（35 分）—— 用 M03 §2.3 + T03 §2.2–2.3**
+#### 7.3.1 Q1：每种输出回答一个具体问题
 
-| 要求 | 用哪个 cell 改 | 坑 |
+中文读题：**every column** 要覆盖原 15 列；标识符仍需分类，但不能当金额算均值。**percentage** 需说明分母，**both log_price and price** 需两套分位，**at least 5 insights** 需至少五个有数值证据的结论。下面是学习参考解析，不是修改后的个人提交稿。
+
+**属性类型的直接答案。** 名义尺度（nominal）只区分类别；序数尺度（ordinal）可排先后但差距未必等大；区间尺度（interval）允许比较差；比率尺度（ratio）另有有意义的零点，才可比较倍数。离散（discrete）按分开的取值或计数记录，连续（continuous）按测量量建模，不能仅凭 Python dtype 判断。
+
+二元属性（binary attribute）只有两种有效状态。对称（symmetric）把两种状态同等对待；非对称（asymmetric）是具体相似性任务对某状态更关心，并不由频数少就自动决定。本描述报告三种二元字段按对称编码展示；若以后做异常匹配，须另声明正类用途。
+
+| 原列 | 量尺 | 离散／连续 | 本题理由 |
+|---|---|---|---|
+| id | 名义 nominal | 离散 | 房源标签，不是数量 |
+| log_price | 区间 interval | 连续近似 | log 差对应价格比，log 值之比不代表原价比 |
+| property_type | 名义 nominal | 离散 | 房型没有共同大小次序 |
+| accommodates | 比率 ratio | 离散 | 可住人数计数 |
+| bathrooms | 比率 ratio | 当前半间刻度为离散 | 0.5 间仍是有步长计数 |
+| bed_type | 名义 nominal | 离散 | 床型名称 |
+| cancellation_policy | 序数 ordinal | 离散 | 按放宽到严格的政策顺序，不将等级当等距 |
+| cleaning_fee | 名义 nominal | 二元，对称 | 仅表示是否收费，不是费用金额 |
+| city | 名义 nominal | 离散 | 城市标签 |
+| host_has_profile_pic | 名义 nominal | 二元，对称 | t/f 表示是否有头像 |
+| host_identity_verified | 名义 nominal | 二元，对称 | t/f 表示是否认证 |
+| number_of_reviews | 比率 ratio | 离散 | 评论次数 |
+| review_scores_rating | 区间 interval | 连续评分近似 | 分差可读，不能把 100 分说成 50 分两倍好 |
+| bedrooms | 比率 ratio | 离散 | 卧室数，0 不自动当缺失 |
+| beds | 比率 ratio | 离散 | 床数，0 不自动当缺失 |
+
+这里量尺与连续性采用明确的测量解释；官方把 bathrooms 当连续近似也可理解为建模约定，但本文件实际按半间记录，需说清口径。取消政策只作宽严次序，原有 super_strict_30/60 的天数标签不能直接当严格程度的等距分数。
+
+英文参考答案（笔记自拟）：“Classify all 15 original attributes by what their values mean, not by storage dtype. IDs and unordered categories are nominal; cancellation policy is ordinal under the stated strictness interpretation. Counts have ratio scales. Log price has an interval scale because differences correspond to price ratios, whereas ratios of log values do not. State the binary-role and recorded-resolution conventions explicitly.”
+
+**完整数值统计。** 以下三张窄表共用七个原数值字段；未填补时评分有效数为 52,858，其余各为 68,133，统计忽略 NaN。mean／median／mode 分别是算术平均、排序中间、最常出现；std 用 n−1，kurt 是正态参照为 0 的超额峰度（excess kurtosis）。源原件只读，本轮用独立描述算术核数，不执行个人答卷代码。
+
+| 字段 | mean | median | 首个 mode | std |
+|---|---|---|---|---|
+| log_price | 4.774962 | 4.700480 | 5.010635 | 0.711940 |
+| accommodates | 3.144996 | 2.000000 | 2.000000 | 2.134786 |
+| bathrooms | 1.230160 | 1.000000 | 1.000000 | 0.562762 |
+| number_of_reviews | 20.830258 | 6.000000 | 0.000000 | 37.493498 |
+| review_scores_rating | 94.012789 | 96.000000 | 100.000000 | 7.832125 |
+| bedrooms | 1.271733 | 1.000000 | 1.000000 | 0.855334 |
+| beds | 1.703506 | 1.000000 | 1.000000 | 1.233412 |
+
+读评分行：已观察评分平均约 94.013、中位数 96、众数 100；std 约 7.832 是原观察分散程度，与填补后 std 不同。众数有多项时应列齐；这里“首个 mode”沿源函数口径。
+
+下面每行仍是同一字段，min/max 是极值，Q1/Q3 是两分位，IQR 是后者之差。
+
+| 字段 | min | max | Q1 | Q3 | IQR |
+|---|---|---|---|---|---|
+| log_price | 1.609438 | 7.600402 | 4.290459 | 5.192957 | 0.902497 |
+| accommodates | 1.000000 | 16.000000 | 2.000000 | 4.000000 | 2.000000 |
+| bathrooms | 0.000000 | 8.000000 | 1.000000 | 1.000000 | 0.000000 |
+| number_of_reviews | 0.000000 | 532.000000 | 1.000000 | 23.000000 | 22.000000 |
+| review_scores_rating | 20.000000 | 100.000000 | 92.000000 | 100.000000 | 8.000000 |
+| bedrooms | 0.000000 | 10.000000 | 1.000000 | 1.000000 | 0.000000 |
+| beds | 0.000000 | 18.000000 | 1.000000 | 2.000000 | 1.000000 |
+
+读 bathrooms：Q1=Q3=1，所以中间一半跨度为 0；这不表示全部房源都只有一间浴室。下表的 skew/kurt 无单位；正负偏度与尾部形状解释见 §2.2，不从单个峰度推断群数。
+
+| 字段 | skew | kurt |
 |---|---|---|
-| 属性类型表（15 列，三套标签 + 一句理由） | 手写 markdown 表 | 三套标签都要：名义/序数/区间/比率、离散/连续、**对称/非对称二元**（`cleaning_fee`、`host_has_profile_pic` 是二元——"是否收清洁费"两个值同等重要 → 对称；⚪ 若把"有头像"当作只有 1 才重要也可论证为非对称，写理由即可）。`id` 名义、`log_price` 区间、`price` 比率、`cancellation_policy` 序数。答案骨架见 M03 §2.3 💡 与 §7 概念题 1 |
-| 全部数值列 11 个统计量 | cell 5–6 的 `describe_col`，把 `cols` 换成 Airbnb 的数值列（`log_price, accommodates, bathrooms, number_of_reviews, review_scores_rating, bedrooms, beds`；`id` 不算） | `review_scores_rating` 有 NaN，pandas 统计会自动跳过，但要说明 |
-| 类别列频数 + 百分比 | cell 10，对 `property_type, bed_type, cancellation_policy, cleaning_fee, city, host_has_profile_pic, host_identity_verified` 各做一次 | `value_counts(normalize=True)` 是比例，乘 100 才是百分比 |
-| `log_price` 与 `price` 六个分位数 + 解释 | cell 7，`air['price'] = np.exp(air['log_price'])` | ⚠️ **题设有坑，见下** |
-| 按 `city` / `property_type` 的 mean / median / std / IQR | cell 11 的 `groupby().agg`，IQR 要自定义：`lambda s: s.quantile(.75) - s.quantile(.25)` | 实跑（`verify_airbnb.py`）：**中位数最高的城市是 SF（5.075 → 约 \$160）**，**标准差最高的城市是 DC（0.816）**；**中位数最高的房型是 Loft（4.977）**，**IQR 最大的房型是 House（1.173）**——把这些数写进 insight |
-| ≥ 5 条 insight，每条引一个数 | — | 例："22.4% 的房源没有评分，其中 94% 是零评论房源"；"SF 中位价最高但 DC 价差最大"；"评分与价格相关仅 0.08" |
+| log_price | 0.525675 | 0.623047 |
+| accommodates | 2.177671 | 7.064857 |
+| bathrooms | 3.451624 | 18.479762 |
+| number_of_reviews | 3.631558 | 19.544238 |
+| review_scores_rating | -3.327538 | 19.422916 |
+| bedrooms | 2.005283 | 7.613667 |
+| beds | 3.238493 | 18.474284 |
 
-⚠️ **分位数换算要区分样本事实与一般规则**：本轮只读复算Airbnb六个指定分位数，`price.quantile(q)`与`exp(log_price.quantile(q))`在这份数据上相等（73/110/180/299/412/950）；这是相关排序位置的取值/并列情况，不是所有pandas线性插值都与exp交换。💡反例：log值[0,2]，先在价格[1,exp(2)]上取中位数，得(1+exp(2))/2≈4.194528；先取log中位1再exp，得exp(1)≈2.718282。exp单调保证排序不变，但不保证两种插值相同。报告应保留实际数据相等结果，同时解释一般为何可能不同；均值与标准差另有不同的换算问题，不能把“题干真正想考什么”当事实。复算材料：`airbnb-quantile-recheck.json`与`verify_t03_mechanisms.py`。
+英文参考答案（笔记自拟）：“Compute the 11 requested statistics for each meaningful numerical field using available observations. The rating statistics use 52,858 observed values; the other six fields use 68,133. For log price, the mean is 4.774962, the median is 4.700480 and skewness is 0.525675, so the saved data retain right skewness.”
 
-**Q2（45 分，分值最重）—— 几乎就是 cell 25–42**
+**类别频数与百分比。** 每行是一种字段取值，分母统一为原 68,133 行；host 缺失另列 Missing，因此同一字段的计数相加能回到总数。百分比是 count 除以总行数再乘 100，与默认排除缺失的 normalize 分母不同。
 
-| 小题 | cell | 必须自己加的 |
+| 字段 | 取值 | count | percentage |
+|---|---|---|---|
+| property_type | Apartment | 48772 | 71.583520% |
+| property_type | House | 16432 | 24.117535% |
+| property_type | Townhouse | 1690 | 2.480443% |
+| property_type | Loft | 1239 | 1.818502% |
+| bed_type | Real Bed | 66250 | 97.236288% |
+| bed_type | Futon | 687 | 1.008322% |
+| bed_type | Pull-out Sofa | 528 | 0.774955% |
+| bed_type | Airbed | 433 | 0.635522% |
+| bed_type | Couch | 235 | 0.344914% |
+| cancellation_policy | strict | 29798 | 43.735048% |
+| cancellation_policy | flexible | 20790 | 30.513848% |
+| cancellation_policy | moderate | 17432 | 25.585252% |
+| cancellation_policy | super_strict_30 | 105 | 0.154110% |
+| cancellation_policy | super_strict_60 | 8 | 0.011742% |
+| cleaning_fee | true | 50142 | 73.594294% |
+| cleaning_fee | false | 17991 | 26.405706% |
+| city | NYC | 31232 | 45.839755% |
+| city | LA | 19936 | 29.260417% |
+| city | SF | 5542 | 8.134091% |
+| city | DC | 5210 | 7.646808% |
+| city | Chicago | 3195 | 4.689358% |
+| city | Boston | 3018 | 4.429572% |
+| host_has_profile_pic | t | 67745 | 99.430526% |
+| host_has_profile_pic | f | 208 | 0.305285% |
+| host_has_profile_pic | Missing | 180 | 0.264189% |
+| host_identity_verified | t | 45895 | 67.360897% |
+| host_identity_verified | f | 22058 | 32.374914% |
+| host_identity_verified | Missing | 180 | 0.264189% |
+
+读 property_type 的 Apartment：48,772 个房源占 71.583520%，并非 71.58% 的预订。两个 host 字段各 180 个缺失不能改成 f，因为未知不等于“否”。
+
+英文参考答案（笔记自拟）：“Report the count and percentage of every categorical level, retaining missing host values as a separate category. Use all 68,133 listings as the denominator. Apartments account for 48,772 listings, so the percentage describes the sample composition rather than booking demand.”
+
+**六个分位与插值。** 线性插值（linear interpolation）是按小数位置，将相邻排序值加权平均。§2.2 的位置 h=(n−1)q 决定两个权重；先后次序虽被 exp 保留，两端之间的直线平均未必被保留。下表两种计算均在原数据上完成，近似显示六位。
+
+| 百分位 | log_price 分位 | price 分位 | exp(log 分位) |
+|---|---|---|---|
+| 25 | 4.290459 | 73.000000 | 73.000000 |
+| 50 | 4.700480 | 110.000000 | 110.000000 |
+| 75 | 5.192957 | 180.000000 | 180.000000 |
+| 90 | 5.700444 | 299.000000 | 299.000000 |
+| 95 | 6.021023 | 412.000000 | 412.000000 |
+| 99 | 6.856462 | 950.000000 | 950.000000 |
+
+读 50% 行：log 中位约 4.700480，原价中位为 110；本数据六行两种结果均在数值精度内相等，不能为了附和题干说它们不同。相等来自这些位置的并列取值；一般规则需用反例辨别。
+
+笔记补充反例用两项 log 值 0、2。50% 的零起算位置 h=0.5，两个权重各 0.5。先插值 log 得 1，再 exp 得约 2.718282；先还原两端为 1、7.389056，再插值得约 4.194528。这就是“插值与非线性变换不交换”，不是排序发生颠倒。
+
+```mermaid
+flowchart TD
+    Q0[教学两点：log值0和2；中位权重各一半] --> Q1[先在log尺度插值：得到1]
+    Q1 --> Q2[再exp：约2.718]
+    Q0 --> Q3[先exp两端：1和约7.389]
+    Q3 --> Q4[再在原价尺度插值：约4.195]
+    Q2 --> Q5[两条路径排序相同；中点不同]
+    Q4 --> Q5
+```
+
+图从同一两点分叉：左路先插值，右路先还原；箭头表示操作顺序。它是笔记补充，不是 Airbnb 六个实际分位的差异图。若两端 log 值都改为 2，两路都得到 exp(2)，正是并列时相等的一个原因。
+
+英文参考答案（笔记自拟）：“All six requested price quantiles in this dataset equal the exponentiated log-price quantiles within numerical precision: 73, 110, 180, 299, 412 and 950. A strictly increasing transformation preserves ranks, but default sample linear interpolation need not commute with exp. For log values 0 and 2, the two median calculations give approximately 2.718282 and 4.194528.”
+
+**按城市和房型比较。** 一行是一组房源，n 是组行数；mean/median/std/IQR 均在 log_price 尺度。先比较同一列，不把中位数最高与离散程度最大混为一个问题。
+
+| 城市 | n | mean | median | std | IQR |
+|---|---|---|---|---|---|
+| Boston | 3018 | 4.863506 | 4.867534 | 0.671552 | 0.927616 |
+| Chicago | 3195 | 4.599758 | 4.595120 | 0.688402 | 0.891631 |
+| DC | 5210 | 4.983441 | 4.828314 | 0.815965 | 0.973449 |
+| LA | 19936 | 4.726429 | 4.605170 | 0.736160 | 0.916291 |
+| NYC | 31232 | 4.712627 | 4.653960 | 0.657184 | 0.916291 |
+| SF | 5542 | 5.157632 | 5.075174 | 0.681189 | 0.896488 |
+
+| 房型 | n | mean | median | std | IQR |
+|---|---|---|---|---|---|
+| Apartment | 48772 | 4.759221 | 4.744932 | 0.641154 | 0.847298 |
+| House | 16432 | 4.798188 | 4.605170 | 0.876550 | 1.172720 |
+| Loft | 1239 | 5.006105 | 4.976734 | 0.745645 | 0.944749 |
+| Townhouse | 1690 | 4.833932 | 4.691348 | 0.799160 | 1.049822 |
+
+读 SF 行：5,542 个房源的 log 中位为 5.075174，还原约 160 原价格单位。城市中位最高是 SF，std 与 IQR 最高都是 DC；房型中位最高是 Loft，std 与 IQR 最高都是 House。与房屋组成、地段有关的样本差异不能直接当城市或房型的因果效应。
+
+英文参考答案（笔记自拟）：“SF has the highest city median log price (5.075174), while DC has the highest city standard deviation (0.815965) and IQR (0.973449). Lofts have the highest property-type median (4.976734); houses have the highest standard deviation (0.876550) and IQR (1.172720). These are group descriptions of this sample.”
+
+**至少五项 insight 的参考作答（笔记补充）。** 以下每条都能回到上表，不借官方文字的旧值：
+
+1. log_price 偏度约 0.526，仍有右偏；log 变换不能被说成必然造出正态分布。
+2. 价格中位为 110，99% 分位为 950，后者约为前者 8.64 倍，原价仍有长上尾。
+3. 评论均值约 20.830、中位仅 6、偏度约 3.632，多数房源与少数高评论房源不能用均值一概代表。
+4. 评分已观察数为 52,858，缺 15,275；中心统计只描述已观察者，不能说全部房源评分已知。
+5. Apartment 占约 71.58%，房型不平衡；Loft 的高组中位不等于它有最多房源。
+6. SF 组中位最高，DC 组 std 最大；“贵”和“分散”是两种不同结论。
+
+英文参考答案（笔记自拟）：“The data retain right skewness in log price (0.526), a long raw-price upper tail (99th percentile 950 versus median 110), and a strongly right-skewed review count (mean 20.830 versus median 6). Ratings are unavailable for 15,275 listings. Apartments dominate the sample at approximately 71.58%. SF has the highest typical price, whereas DC has the greatest within-city variability.”
+
+#### 7.3.2 Q2：把数据质量、换尺子和关系连成报告
+
+中文读题：**all columns** 要求缺失报告保留缺失数为 0 的字段；**both** 要两种离群规则；**excluding log_price** 不把目标混入五个缩放特征；**one statistic and one plot** 对六个指定特征分别执行；**at least 8 plots** 是整题总数，热力图也只算一张。
+
+**2.1 的直接答案与理由。** 原 15 列只有评分缺 15,275，两个 host 字段各缺 180，其余 12 列缺失均为 0。先统计原表再生成填补列，避免把新增列混进“原 15 列”。评分三法的 mean/std/skew 见 §3.2；卧室三法完全相同，不能用“算法更稳健”编造变化。
+
+本学习示例选择评分中位数 96，是透明的中心值估计；缺评分房源与已评分房源是否同分布仍未知。`air_clean` 复制原表并替换指定评分列，`outlier_iqr` 保存 log_price 的布尔标记，原行不删除。只检查这两列缺失为 0，不等于整表两个 host 缺失也已消失。
+
+IQR 与 Z 对 log_price 标记 1,453/453，对 accommodates 标记 3,299/1,378，对 bathrooms 标记 14,307/1,878。`bathrooms` 的 IQR 为 0 是两界退化的重要原因；两规则在别的数据上不保证 IQR 总标更多。原 notebook 使用样本 std；正态下 3 个标准差外约 0.27% 是概率解释的前提，不是计算 Z 的前提。
+
+英文参考答案（笔记自拟）：“Report missingness for all 15 original columns. Ratings have 15,275 missing values, whereas bedrooms has none. I use a rating median of 96 as a transparent imputation assumption, retain every listing, and add a log-price IQR flag. IQR and Z-score flags differ because their reference statistics and thresholds differ; neither rule proves that a flagged listing is erroneous.”
+
+**2.2 的直接答案与理由。** 五个指定输入取 accommodates、bathrooms、bedrooms、beds、review_scores_rating。以下表每行是一列缩放后的特征，四个数来自源 cell 36 保存输出；它们无原单位。mean 接近 0 的浮点残差按 0 展示，std 用 pandas 的样本口径。
+
+| StandardScaler 特征 | mean | std | min | max |
+|---|---:|---:|---:|---:|
+| accommodates | 0.000000 | 1.000007 | −1.004790 | 6.021728 |
+| bathrooms | 0.000000 | 1.000007 | −2.185948 | 12.029751 |
+| bedrooms | 0.000000 | 1.000007 | −1.486837 | 10.204586 |
+| beds | 0.000000 | 1.000007 | −1.381144 | 13.212629 |
+| review_scores_rating | 0.000000 | 1.000007 | −10.716411 | 0.797588 |
+
+读最后一行：最低评分在新尺子上约 −10.716，说明缩放没有消除极端值。总体尺度标准差为 1 与这张样本 std 约 1.000007 不矛盾，见 §3.4。
+
+以下仍是相同五列、相同保存运行，改用 RobustScaler。mean/std 不要求为 0/1；它瞄准的是中位数与 IQR。
+
+| RobustScaler 特征 | mean | std | min | max |
+|---|---:|---:|---:|---:|
+| accommodates | 0.572498 | 1.067393 | −0.500000 | 7.000000 |
+| bathrooms | 0.230160 | 0.562762 | −1.000000 | 7.000000 |
+| bedrooms | 0.271733 | 0.855334 | −1.000000 | 9.000000 |
+| beds | 0.703506 | 1.233412 | −1.000000 | 17.000000 |
+| review_scores_rating | −0.256948 | 1.158019 | −12.666667 | 0.666667 |
+
+读 bathrooms：本来 IQR=0，软件尺度设为 1，输出等于原数减 1；bedrooms 也相同退化。若希望中心和尺度少受极端观察拉动，可比较 RobustScaler；若采用均值和总体标准差作距离参照，可用 StandardScaler。二者都能对非正态数据计算，选择需要与后续距离或模型表现一起检查。
+
+英文参考答案（笔记自拟）：“StandardScaler centres the five inputs on their training means and scales by population standard deviations. RobustScaler instead uses medians and IQRs. Bathrooms and bedrooms have zero IQRs, so their effective scales are 1. Robust scaling can reduce the influence of extreme observations on the reference scale, but it does not guarantee smaller transformed ranges or better predictions.”
+
+**2.3 的直接答案与读图方法。** 以下每行是一项题面指定特征。数值相关采用中位数填补评分后的同一 `air_clean`，类别只作分组，不能随意编码成 0/1/2 后解释 Pearson r。房源行是散点的单位，箱线图的一箱则汇总一组房源。
+
+| 特征 | 一个统计量 | 对应图怎样读 |
 |---|---|---|
-| 2.1 缺失报告 | 27 | 报**所有列**（含缺失为 0 的）：`air.isna().sum()` 不加 `[missing > 0]` |
-| 2.1 三种填补比较 | 28–29 | **如实写 `bedrooms` 无缺失、三法相同**；对 `review_scores_rating` 用偏度（−3.78 / −3.88 / −3.83）和"缺失机制 = 无评论"论证选中位数；⚪ 加分：KNN 时把 `accommodates, bathrooms, beds` 也传进去，看结果怎么变 |
-| 2.1 离群点两法比较 | 32–33 | 解释 `bathrooms` 14,307 是 IQR = 0 的退化；Z可计算于任何非退化数值列；正态条件只支持3倍std约0.27%的尾概率解释；`accommodates` 的 IQR 把 ≥ 8 人全标掉（3,299 个） |
-| 2.1 `air_clean` + `outlier_iqr` | 30, 33 | 列名必须叫 `outlier_iqr`（题干原话） |
-| 2.2 两种 scaler | 36–37 | 五列 mean/std/min/max 两张表；说明 `bathrooms` 的 IQR = 0 让 RobustScaler 退化为减 1 |
-| 2.3 六个特征 × (一个统计量 + 一张图) | 11 + 14/17/20 | `property_type` → 分组中位数 + 分组箱线图；五个数值特征 → 相关系数 + 散点图（`alpha` 调低）或按取值分组的箱线图（`accommodates` 只有 1–16 这几个值，分组箱线图比散点清楚）。**每图 title / xlabel / ylabel + 2–3 句** |
-| 2.4 相关矩阵 + 热力图 + top 3 + 混杂变量 | 39–42 | top 3 = accommodates 0.578、bedrooms 0.483、beds 0.470；混杂变量写**地段 / 城市**（大房子集中在贵城市）或**房型**；顺手指出 accommodates–beds 0.829 的共线性 |
-| ≥ 8 张图 | — | 2.3 就有 6 张 + 热力图 + 至少 1 张分布图（`log_price` 直方图）= 8；每张都要解释 |
+| property_type | Loft 的 log_price 中位数 4.976734 最高 | 横轴房型、纵轴 log_price，比较箱中线 |
+| accommodates | Pearson r=0.578068 | 横轴可住人数、纵轴该人数组 log_price 中位数 |
+| bathrooms | Pearson r=0.376758 | 横轴浴室数、纵轴该取值组 log_price 中位数 |
+| review_scores_rating | Pearson r=0.080912 | 保存图抽 5,000 行画评分与 log_price 散点 |
+| bedrooms | Pearson r=0.482682 | 横轴卧室数、纵轴该组 log_price 中位数 |
+| beds | Pearson r=0.469700 | 横轴床数、纵轴该组 log_price 中位数 |
 
-**Q3（20 分）—— 用 Q1 的方法套自己的数据**
+读 accommodates：r 约 0.578 是按原房源行计算的线性关联；对应保存折线的每个点却汇总该容量组，不是一条房源。横轴是人数，不是时间；13 人组的中位数低于 12 人组，不能说每增加一人价格都上升。
 
-- `df.shape`、`df.dtypes`、`df.isna().sum()` 三行；属性类型表（两套标签）；**最多三个**变量，用 `describe_col` + 一两张图（分布 + 关系）；150–200 词的段落——写"看到了什么分布 / 关系 / 质量问题，所以建模时打算怎么处理（取对数？填补？删列？）"。
-- 这题其实是 **Project Proposal 的 Dataset Description 部分**（Guideline 要求"字段名 + 数据类型"）的预演——写好了直接复用。
+浴室、卧室和床数的保存图也按取值分组画中位数，且稀少高值组更易波动；原行 Pearson r 与这些组中位点不是同一批计算单位。评分图另抽 5,000 行画散点并配拟合线，横轴填补后评分、纵轴同房源 log_price；96 处可能包含填入值，图样本与全表相关也要分清。
+
+六张关系图的现成保存输出在 [本人历史 HTML 的 Q2 区域](../assignment/graded/A04-week3/submission/IS6400_Week3_60234350_LI_Binxiong.html#Question-2-%E2%80%93-Data-Quality,-Visualization,-and-Relationships-with-log_price-(45-points))。该链接同时保留原代码、标题、轴与原解释；本轮不重新生成一份提交报告。至少 8 张的可核组合为六张特征关系图、一张带数字相关热图、一张缺失比例条形图；每张都要说明数据状态，不能用同图换标题凑数。
+
+**六张保存图各自的 2–3 句解释（笔记补充，不改本人提交 HTML）**
+
+**property_type · 房型箱线图。** 横轴四种房型，纵轴是各房源 log_price；Loft 的组中位数 4.976734 最高，House 的 IQR 1.172720 最大，分别回答“典型水平”和“中间一半分散程度”。本人保存图设置 `showfliers=False`，只是不显示单独的离群点，不能据此说原数据没有极端观察。
+
+英文参考：“Lofts have the highest median log price (4.976734), while houses have the widest IQR (1.172720). The saved boxplot hides individual outlier markers, so their absence from the picture does not establish that no extreme listings exist.”
+
+**accommodates · 容量组中位折线。** 横轴可住人数，每个点汇总相同人数房源的 log_price 中位数，整体较高容量组通常有更高水平，全表房源 Pearson r 为 0.578068。12 人组中位约 6.107，13 人组约 5.808，且两组分别有 241 与 34 行；这一下降说明折线并非处处递增，小组波动也不能当同一房源增容后的变化。
+
+英文参考：“Capacity is positively associated with log price across listings (r=0.578068). In the saved group-median plot, the 13-guest group has a lower median than the 12-guest group, and its sample is much smaller; the curve does not show the effect of adding a guest to the same listing.”
+
+**bathrooms · 浴室组中位折线。** 横轴浴室数，纵轴相同取值组的 log_price 中位数，较多浴室组整体水平较高，全表房源 Pearson r 为 0.376758。高浴室数组的折线仍有上下波动，且稀少取值组较小；不能把这些组中位点解释成每多一间浴室必然增加的价格。
+
+英文参考：“Bathrooms has a positive listing-level linear association with log price (r=0.376758). The saved plot shows medians for bathroom-count groups, with fluctuations among rare high-count groups; it does not establish a fixed price increase per additional bathroom.”
+
+**review_scores_rating · 抽样评分散点。** 横轴填补后评分、纵轴同一房源 log_price，保存代码抽取 5,000 行并加拟合线；全表中位数填补后的 r 为 0.080912，线性关联较弱。评分 96 处可能含填入值，图样本也小于全表，因此点云不能证明原未知评分是真实观察，更不能从弱 r 推出所有关系都不存在。
+
+英文参考：“The median-filled rating has only a weak linear association with log price (full-table r=0.080912). The saved scatterplot uses 5,000 sampled listings and may include imputed ratings at 96, so the plot must be read as a processed sample rather than entirely observed ratings.”
+
+**bedrooms · 卧室组中位折线。** 横轴卧室数，纵轴同一卧室数组的 log_price 中位数，全表 Pearson r 为 0.482682。0 卧室组中位反而高于 1 卧室组，较大卧室数组也有波动；组间房型与地点组成不同，不能按这条线断言卧室数每加 1 就涨价。
+
+英文参考：“Bedrooms is positively associated with log price across listings (r=0.482682). The saved group-median curve is not monotonic: the zero-bedroom group has a higher median than the one-bedroom group, so its points should not be read as within-listing changes.”
+
+**beds · 床数组中位折线。** 横轴床数，纵轴相同床数组的 log_price 中位数，全表 Pearson r 为 0.469700，略低于 bedrooms 的 0.482682。高床数组折线仍有上下波动，且稀少组可能受少量房源影响；它支持本样本中总体正关联的描述，不能证明床数比卧室数更强或新增一张床会带来固定收益。
+
+英文参考：“Beds has a positive listing-level correlation with log price (r=0.469700), slightly below the correlation for bedrooms. The saved medians fluctuate at high bed counts, so they do not demonstrate a uniform price gain from adding a bed.”
+
+**2.4 的直接答案与理由。** §3.5 展示七列矩阵及格子来源，热力图是矩阵的颜色编码。前三项为 accommodates 0.578068、bedrooms 0.482682、beds 0.469700；按绝对值排强度并保留正负号，去掉 log_price 与自己的 1。
+
+混杂变量（confounding variable）会同时影响所比较的两项：例如房屋实际面积可同时增加容量和价格，因此看到容量与价格正相关，不能知道仅改容量标签会怎样。面积在该 CSV 中未记录，这只是说明为什么因果尚未识别的具体机制，不是已经控制面积后的结果。
+
+英文参考答案（笔记自拟）：“The three largest absolute correlations with log price are accommodates (0.578068), bedrooms (0.482682), and beds (0.469700). Property size can influence both capacity and price, so the capacity–price association does not show that changing stated capacity would raise the price. The heatmap visualises associations rather than causal directions.”
+
+#### 7.3.3 Q3：沿用本人保存结果，分清字段类型与后续模型
+
+中文读题：**your own project dataset** 要换数据；**at most three** 限制用于关系探索的变量最多三项，不是把 16 列类型表只做三行；**150–200 word** 是英文总结字数；同组不能用完全相同变量组合。原课堂 `02:12:56` 举例允许 1/2/3 和 1/2/5，不能误读为组员任何变量都不得重叠。
+
+本人保存的 Q3 使用 `NIC_clean_dataset_v2.csv`，输出 10,000 行、16 列，无缺失。行以 student_id 标识一条学生主题记录；来源真实性和采集过程未在本任务认证，不能把它当作已核真实学生总体。当前学习解析复用保存输出，不把官方 5,000 × 12 占位段落当本人数据。
+
+完整类型表和 dtype 保留在 [本人历史 HTML 的 Q3 区域](../assignment/graded/A04-week3/submission/IS6400_Week3_60234350_LI_Binxiong.html#Question-3-%E2%80%93-Project-Dataset-Exploration-(20-points))。下面一行对应一个原字段，量尺给允许怎样比较，取值类型给当前记录口径；bool 或 object 是存储方式，不能代替统计身份。
+
+| 原字段 | 量尺 | 记录口径及理由 |
+|---|---|---|
+| student_id | 名义 nominal | 离散标签，编号差不是能力差 |
+| age | 比率 ratio | 整岁计数，离散 |
+| programme_level | 名义 nominal | 类别，未建立共同次序 |
+| nationality_group | 名义 nominal | 类别，无大小顺序 |
+| boarding_status | 名义 nominal | 住宿类别 |
+| attendance_rate | 比率 ratio | 出勤次数占应出勤次数的比例，连续近似 |
+| assessment_completion_rate | 比率 ratio | 完成次数占应完成次数的比例，连续近似 |
+| current_grade | 区间 interval | 评分差可比较，80 不表示学习量是 40 的两倍 |
+| lms_engagement_score | 区间 interval | 综合评分，连续近似 |
+| wellbeing_flag | 名义 nominal | 离散二元标记 |
+| safeguarding_flag | 名义 nominal | 离散二元标记 |
+| intervention_count | 比率 ratio | 干预次数，离散 |
+| guardian_contact_complete | 名义 nominal | 离散二元标记 |
+| record_completeness_score | 比率 ratio（沿保存稿比例口径） | 完整度比例近似；构造仍待独立核源 |
+| access_review_overdue_flag | 名义 nominal | 离散二元标记 |
+| academic_risk_level | 序数 ordinal | 风险等级可排次序，等级差不当等距 |
+
+探索只选 attendance_rate、assessment_completion_rate、current_grade 三列。原保存数值给成绩均值约 78.75、样本 std 约 9.40；与成绩的 r 分别约 0.440、0.593，两种行为之间约 0.451。两张行为—成绩散点和相关摘要仍在上述 HTML；图源抽 3,000 行，横纵取同一原行，全表相关与图样本分开。正趋势是描述关联，不能从图推断干预效果。
+
+英文参考答案（笔记自拟，沿用本人保存数值；179 words）：
+
+> The project file contains 10,000 records and 16 attributes. Its saved missing-value report shows no missing entries, although completeness alone does not establish accuracy or representativeness. I examined attendance rate, assessment completion rate and current grade, keeping the exploration within the three-variable limit. Current grade averaged approximately 78.75, with a standard deviation of 9.40. Its correlation with assessment completion was about 0.593, compared with 0.440 for attendance. The two engagement measures were also correlated at approximately 0.451. These results suggest that assessment completion has the stronger linear association with grade in this file, while the two predictors contain partly overlapping information. A later prediction exercise could compare their separate and joint contributions using held-out data. It should also check whether nonlinear patterns matter and whether the recorded variables would be available at prediction time. The associations do not demonstrate that increasing attendance or completion would cause a higher grade. Prior attainment, course difficulty and access to support could influence both engagement and performance. The source and construction of the records require separate verification.
+
+**学习总结与改条件检查**：先固定每行对象和字段，再决定分母、变换和作图单位；最后将结论限制在证据支持范围。若新数据多一列缺失，Q3 的“无需填补”结论必须重审；若只把 attendance_rate 从 0–1 写成 0–100，相关不变，均值和 std 同乘 100，不能把单位变化当行为变化。
+
 
 ### 7.4 提交前自查
 
@@ -1381,7 +1794,7 @@ flowchart TD
 | cell 12 | insight（petal length 比 sepal width 更能区分品种） | ⏭️ 没有专门念这句结论，`01:55:11`→`01:55:18` 直接跳到 groupby 演示 | ⚪ 内容仍成立，读者按 notebook 原句理解即可 |
 | cell 15 | “多峰=可能是混合总体”读法 | ⏭️ 讲完直方图后 `01:56:41` 直接转箱线图，没有念这条解读 | ⚪ 保留在正文，属于笔记补充性质的解读，不降权 |
 | cell 18 | “No obvious extreme outliers” | ⏭️ 没有念，`01:57:10` 直接进入散点图 | ⚪ 原notebook这一读图判断可保留，但默认1.5×IQR与教授口头10/90百分位不是同一须口径（见§2.4），不据此宣称二者相符 |
-| cell 21 | “strong and nonlinear”结论 | ⏭️ 没有念，`01:58:00` 直接转平行坐标 | ⚪ 与 §3.5 🎙️ 里“低相关不代表无关系”的口头提醒逻辑一致，保留 |
+| cell 21 | “strong and nonlinear”原解释 | ⏭️ 没有念，`01:58:00` 直接转平行坐标 | 保留源说法位置；本图只显示组分布差异和部分重叠，未由此证明非线性 |
 | cell 29 | 选中位数而非均值/KNN 的理由 | ⏭️ 只讲了 SimpleImputer/KNNImputer 怎么操作，没有口头给出“为什么选中位数” | ⚠️ 作业要求自己 justify，教授没有代劳，读者仍需自己论证（笔记 §3.2 已给论证） |
 | cell 33/41 | `outlier_iqr` 比例、top 5 相关系数等具体输出数字 | ⏭️ 只讲操作步骤和公式，没有口头核对任何具体数字 | ⚪ 以 notebook 输出与 `verify_airbnb.py` 复核结果为准 |
 
@@ -1407,7 +1820,7 @@ flowchart TD
 | ④ | 36 | `bathrooms_rob` 的分母 IQR = 0，sklearn 静默置 1 | notebook 未解释 |
 | ⑤ | 28 | KNN只传两列，填评分时仅靠卧室定义邻居；这一单一观察维度的正缩放不改变邻居顺序，增加多列后须检查尺度 | §3.2 易错点 |
 | ⑥ | 3 | `np.random.seed(42)` 在本 notebook 里没有被任何随机操作用到 | 无害；作业模板 |
-| ⑦ | 1 | 自称 "follows the original 'Week 3 - Description' notebook"——说明这是**改写版**，原版（可能带 AI Prompt cell）没有发 | 与 T01/T02 风格不同的原因 |
+| ⑦ | 1 | 自称 "follows the original 'Week 3 - Description' notebook"——说明这是**改写版**，本次未取得其所称原版，不能据此推断原版是否带 AI Prompt cell | 与 T01/T02 风格不同的原因 |
 | ⑧ | 35 | 旧记录列 Week 4 kernel 为 Python 3.7.6，本周为 3.13.5；版本不同不能证明制作年份 | 保留历史版本记录；当前 T04 的 43-cell 源 metadata 为 Python 3.9.12，详见 [[T04-特征选择与PCA实战-Iris]] §9.3 |
 
 ### 9.4 课外补充
@@ -1418,8 +1831,18 @@ flowchart TD
 | `KNNImputer` | 用 `nan_euclidean` 距离在传入的所有列上找邻居；`weights='distance'` 可按距离加权；对尺度敏感，通常先标准化 | 🔗 同上 |
 | RobustScaler 的默认分位 | 默认 `quantile_range=(25.0, 75.0)` 即 IQR；IQR = 0 的列分母置 1（`_handle_zeros_in_scale`） | 🔗 同上 |
 | 相关矩阵与多重共线性 | accommodates–beds 0.829 等三对 > 0.7，可作为T02 §5.5条件系数诊断的候选线索，不能仅凭相关数证明负号原因；可用方差膨胀因子（VIF，`statsmodels.stats.outliers_influence.variance_inflation_factor`）量化 | 本库 + 🔗 统计通识 |
-| Jensen 不等式 | 对凸函数 exp，$E[e^X] \ge e^{E[X]}$，所以 mean(price) = 158.6 > exp(mean(log_price)) = 118.5；分布分位的保序性质与样本线性插值须区分；样本中位数也可能不与exp交换（§7.3给反例） | 🔗 概率论通识，2026-09-16 |
+| 平均路径的补充解释 | 先逐项 exp 再平均，与先平均 log 再 exp 不同；下方用已有两点例解释 | 笔记补充；不冒称原课件推导 |
 | 本笔记的实跑 | `verify_airbnb.py`：分位数、缺失、离群点计数、相关、分组统计全部在原始 `Airbnb.csv` 上复核与 notebook 输出一致 | scratchpad |
+
+**Jensen 名称与 E 怎样读（笔记补充）**：这里 $X$ 表示 log 价格，$E$ 在有限数据比较里可先读作“把各项加起来除以项数”的平均；一般概率论中称期望（expectation）。$E[e^X]$ 是先把每项 $X$ 还原为原价再平均，$e^{E[X]}$ 是先平均 log 再还原，符号的内外顺序代表不同动作。
+
+用 §7.3.1 已有两项 log 值 0、2：先还原得到 1 和约 7.389，平均约 4.195；先平均 log 得 1，再还原约 2.718。指数曲线向上弯，称为凸（convex）；以 log 中心 1 为参照，向上增加 1 带来的价格上升，大于向下减少 1 带来的价格下降。因此这两个等权观察的平均原价高于“中心 log 对应的原价”。
+
+对具有这些平均值的 exp 一般写成下面的不等式，称 Jensen 不等式（Jensen's inequality）；这里解释其读法和使用方向，不作完整数学证明。
+
+$$E[e^X]\ge e^{E[X]}.$$
+
+若两项 log 都改为 1，左右都等于 $e$，得到相等边界。本 Airbnb 数据的 mean(price)约 158.547，exp(mean(log_price))约 118.506；这是均值路径的区别，不能拿它替代原题六分位的插值解释。
 
 ### 9.5 待核对
 
@@ -1428,7 +1851,7 @@ flowchart TD
 | ① | ~~Week 3 作业截止日、Canvas 占分~~ | ✅ 9/25（五）23:59，Canvas 10 分（2026-09-16 截图）；上传的文件类型限制待上传时看 |
 | ② | ~~转录~~ | ✅ 2026-09-18 已合并 tutorial 段（`01:45:33`–`02:13:18`）：§8 课堂覆盖列、§9.1–9.2、9 个 🎙️ 格 |
 | ③ | Q1 分位数题的出题本意 | 实跑分位数一致；是出题人笔误还是想考均值 / 插值——**建议课上或 Canvas 讨论区问一句**，答题时两种可能都覆盖（§7.3） |
-| ④ | Q3 的项目数据集 | 需要用户自己的选题；本笔记无法代写 |
+| ④ | Q3 的项目数据集 | 本人保存稿已用 NIC 10,000 × 16；§7.3.3 复盘，数据采集／构造未在本轮认证 |
 | ⑤ | 讲义 p.65 须（10/90 百分位）与 notebook 箱线图（1.5×IQR）口径不同 | 作业里注明用哪种 |
 | ⑥ | ✅ **本片段转录已核对（shard_3，`01:45:33`–`02:13:18`）** | 段 [1056]–[1359]，共 304 段，时长约 27 分 45 秒；无时序倒退；本片段内无 ≥120 秒空档 |
 | ⑦ | 〔?〕`review_scores_rating` 缺失计数被 ASR 压缩，听不出具体数字 | `02:00:55`–`02:01:07` 只留下“review score 18”一类残缺读数，与[[IS6400_Business_Data_Analytics/_meta/数据集卡片#Airbnb.csv\|数据集卡片]] §3 的 15,275（22.42%）明显不符；笔记数字以数据集卡片与 `verify_airbnb.py` 复核结果为准，转录原文标 [?] 不采信 |
@@ -1444,7 +1867,9 @@ flowchart TD
 
 **历史中间检查点（2026-09-30，非当前验收状态）**：上述迷你数据均标为笔记补充；脚本位于`C:/Users/BenLi/.codex/scratchpad/cityu-depth-20260930/verify_t03_mechanisms.py`，结果`t03-mechanism-results.json`。六组机制的独立数值/恒等式检查通过，另只读核原数据68133×15、评分缺15275、卧室缺0、观察评分mean94.012789/median96。原48cells的20个code已通读；完整KNN68k原输出本轮未重跑，不能把历史输出写成新实跑。旧strict、全部渲染与隔离R1–R4仍待验收，`mechanism_review: pending`。
 
-### 9.6.1 本轮机制理解验收（2026-10-01）
+### 9.6.1 历史机制理解验收（2026-10-01）
+
+以下原样保留旧验收记录及当时分数，不是 2026-10-27 独审结论；其来源、候选及实际适用范围须按当前证据承接。
 
 独立只读`t03_final_reader`不继承作者上下文，只读成稿，在内存实际做九主题R1–R4。每项各2分，不按平均抵消。原文后的五处冲突、四处未唤醒词和四图数据流均修正后复验；全篇9个leaf的Q1–Q6各6分。代理阅读检验不是真人试读，原源/图形由主代理另核。
 
@@ -1452,9 +1877,9 @@ flowchart TD
 |---|---|---|
 | CSV读取与列身份，§2.1 | 2/2/2/2 | 新3行×5字段：header=None保3×5，默认表头吞首行成2×5；赋6列名实际Length mismatch；路径由kernel工作目录决定 |
 | 描述统计，§2.2 | 2/2/2/2 | 新0/1/1/3/7/NaN：有效5、mean2.4、sample variance7.8、std2.792848、median1、Q3=3、mode1；全缺失mode索引实际失败 |
-| 分组，§2.3 | 2/2/2/2 | key A/A/B/B/缺失、x2/NaN/4/8/10：size2/2、count1/2、mean2/6；默认类别比例.5/.5；保未知组则比例.4/.4/.2 |
+| 分组，§2.3 | 2/2/2/2 | key A/A/B/B/缺失、x2/NaN/4/8/10：size2/2、count1/2、mean2/6；默认类别比例.5/0.5；保未知组则比例.4/0.4/0.2 |
 | 四图，§2.4 | 2/2/2/2 | 新0/1/1/2/3/18与箱界−1/1/3/5/18：计数1/3/1/1、最后箱含18；箱须0/3不是围栏；散点/折线保持原行配对 |
-| 缺失报告，§3.1 | 2/2/2/2 | 新4×3缺失布尔表，缺失数2/1/0、比例.5/.25/0；筛报告只剩2字段，不删除原4行；空表比例未定义 |
+| 缺失报告，§3.1 | 2/2/2/2 | 新4×3缺失布尔表，缺失数2/1/0、比例.5/0.25/0；筛报告只剩2字段，不删除原4行；空表比例未定义 |
 | 填补，§3.2 | 2/2/2/2 | 新4×3矩阵：缺失距离按共同列3/m校正，k2目标单元填7/2/1；全缺失新行回退1/3/9；填入估计不回流为观察值 |
 | IQR/Z，§3.3 | 2/2/2/2 | 新0/1/1/2/3/18：Q1=1/Q3=2.75，围栏−1.625/5.375，仅18标；Z样本std6.853223，阈3全不标、阈2标18；计算不等于正态假设 |
 | Scaler，§3.4 | 2/2/2/2 | 训练5/15/25→新35：mean15、总体scale8.164966，new z2.44949；robust center15/scale10→2；inverse35；遗漏索引31/12/50重建join实际全NaN |
@@ -1464,16 +1889,27 @@ flowchart TD
 
 主代理独立复算`verify_t03_mechanisms.py`与`verify_t03_reader_cases.py`通过，结果为`t03-mechanism-results.json`和`t03-reader-case-results.json`。两阶段代理哈希DE2079A0…及C66A3C54…分别对应完整复验和四图/术语增补；后续纵排、Z退化出口、热图色域澄清由主代理核，不改变九个变式数值。
 
-原48cells（20code/28markdown）均已通读；当前原数据68133×15，评分缺15275、卧室缺0，median96。四张实际Iris图已重画并查看，hist总150/parallel原行150核对；Airbnb热图两版实际渲染，原自动色域−.040035至1使+.08也蓝，补版固定−1至1，不改矩阵。未重跑原68k全KNN输出，相关历史数字仍标历史依据，不冒称新实跑。
+原48cells（20code/28markdown）均已通读；当前原数据68133×15，评分缺15275、卧室缺0，median96。四张实际Iris图已重画并查看，hist总150/parallel原行150核对；Airbnb热图两版实际渲染，原自动色域−0.040035至1使+0.08也蓝，补版固定−1至1，不改矩阵。未重跑原68k全KNN输出，相关历史数字仍标历史依据，不冒称新实跑。
 
 IAB实际解析10个Mermaid、2个独立公式、57段行内数学，错误0/横向溢出0；全部10图实际看图，线性图改竖排以避免字体压小。源码绘图可编辑，不用临时位图代替正文。旧strict结构PASS：20code cells、9leaf、逐块中文9481（474/code cell）；结构不代替R证据。
 
 转录机器复核PASS：9课堂格、186时戳、26引文，未匹配0、数字改写0。A8提示为tutorial无独立§6.2，要求在配套M03登记；A12的21%是本篇约27:40 tutorial段除整堂2:13:18，非本篇漏掉79%。只覆盖原有tutorial时段，未自行重合并转录。§7.1原题逐字保留，不产出个人评分成品。所有脚本/图和锁定候选在`C:/Users/BenLi/.codex/scratchpad/cityu-depth-20260930/`。
 
+### 9.6.2 本次来源边界与待核（2026-10-27）
+
+本轮只读重核 48 个源 cell、官方与本人 HTML 保存输出及 tutorial ASR 段。原数据独立描述算术核出 68,133 × 15、评分缺 15,275、卧室缺 0；未重跑完整 KNN。KNN 保存证据须分三层：教程数值表的 mean/std/skew 为 94.380791／6.958347／−3.834034，官方表按三位显示为 94.381／6.958／−3.834；本人 HTML 保留的 tutorial 数值表为 94.095534／6.910205／−3.795248，个人 Q2 表（In[114]）同组按四位显示为 94.0955／6.9102／−3.7952；本人 Q2 解释段却另写 94.4006／6.9418／−3.8709。
+
+因此不仅教程与本人表有差异，同一本人 HTML 内的表与文字也不一致。当前复盘优先引用可定位的保存数值表，同时保留冲突段落的原值；没有证据把三层自动认成三次运行，也未确认版本、顺序等是否解释差异。原 HTML 和明确标为历史的旧回执保持原样，不能以重跑覆盖历史来“对齐”它们。
+
+官方 log_price 的 ratio 分类、偏度／城市中位／房型／相关名单等文字冲突，已在 §7.3 和 [[IS6400_Business_Data_Analytics/assignment/graded/A04-week3/notes/任务说明|A04 对照段]] 解释。课堂 Z 标准化口头提到“产生正态”不能作一般数学结论；换尺子不改形状。ASR 不是原音频逐字核听，原 [?] 不确定性保留。
+
+本次候选待独立审查、主代理来源与显示接受、正式 gate、写回及适用同步；不从下方历史评分推当前通过。
+
 ### 9.7 变更记录
 
 | 日期 | 变更 |
 |---|---|
+| 2026-10-27 | 全篇作者候选：补粒度、量尺、分母、log／插值、中英逐问解析与官方／本人保存输出分层；修强结论及整表无缺失误述，待独审 |
 | 2026-10-01 | 机制-v1验收：九主题R各2、九leaf Q各6；补完整数据流/算例/迁移、修缺失分母/距离供体/尺度口径/索引/插值/图色域/全篇旧解释；10图与数学实际预览、原48cells核对；保留原题与转录引文 |
 | 2026-09-16 | v0.9 建稿：20 个 code cell 逐块讲解；notebook 全部数值输出用 `verify_airbnb.py` / `verify_w3w4.py` 在原始数据上复核一致；发现题干两处与数据不符（`bedrooms` 无缺失、分位数 exp 一致）；无转录，无 AI Prompt cell |
 | 2026-09-18 | **合并 W3 转录 tutorial 段**（`M03-transcript.txt` `01:45:33 → 02:13:18`，本地 Whisper）→ v1.0：新增 9 个 🎙️ 格（A 7 / B 2 / C 0 / D 0）；§8 48 个 cell 加课堂覆盖列与时间分配表；§9.1 / 9.2 / 9.5 重写；作业口头规则回写 `作业与DDL` 与考点库 |

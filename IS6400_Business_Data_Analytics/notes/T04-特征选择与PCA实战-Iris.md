@@ -2,18 +2,19 @@
 course: IS6400
 module: 4
 readability_rules: v2
-readability_review: pending
+readability_review: passed
 type: tutorial
 week: 4
 date: 2026-09-23
 transcript: merged
 status: v1.0
-updated: 2026-10-07
+updated: 2026-10-27
+teaching_standard: novice-v1
 quality_spec: v1
 mechanism_spec: v1
-mechanism_review: pending
+mechanism_review: passed
 source: Week4_Feature_Engineering_Tutorial.ipynb（43 cells；课堂前缀1–37：17 markdown / 20 code；评分部分隔离）
-runtime: 源保存metadata：Python 3.9.12 / PyCharm (Substitution)；本轮专用kernel：Python 3.12.3 / sklearn 1.5.1 / pandas 2.3.3 / NumPy 1.26.4
+runtime: 源保存 metadata 为 Python 3.9.12 / PyCharm (Substitution)；历史复算环境为 Python 3.12.3 / sklearn 1.5.1 / pandas 2.3.3 / NumPy 1.26.4；2026-10-27 未执行 Notebook 或重训
 libraries: [pandas, seaborn, matplotlib, scikit-learn]
 data: iris.txt（150 × 5）· 作业第 4 题用 Airbnb.csv（68,133 × 15）
 prerequisites: [M01, T01, M02, T02, M03, T03, M04]
@@ -32,6 +33,8 @@ tags: [IS6400, tutorial, sklearn, 特征选择, 特征重要性, PCA, chi2, f_cl
 
 > **版本边界（2026-09-30 更新）**：本轮课堂 §1–6 / §8–9 已按当前 `Week4_Feature_Engineering_Tutorial.ipynb` 的1–37课堂前缀修复；旧37-cell版本的个人评分历史段保持原样并隔离。当前 Canvas 是 `Week4_Feature_Engineering_Tutorial.ipynb`（43 cells）；新版 Q1／Q2／Q3／Q4 为 ANOVA／SFS／Airbnb F 回归八列／森林 RFE 八列，20／40／20／20 共 100 内部分。正式截止 10/2 23:59（香港时间），交 HTML 或 PDF。下方 §7 的旧题与旧计算保留作历史教学，**不用于当前作业提交**；现行行政要求见 [[IS6400_Business_Data_Analytics/_meta/作业与DDL|作业与DDL]]。本次课堂来源对齐不改变原个人评分段，也不以课堂机制验收认证个人提交完成。
 
+> **2026-10-27 阅读边界**：本次整篇审修沿用文件中注明日期的历史执行记录；下文“本轮／本机这次”的数值执行均指原 2026-09-30／10-01 核验，2026-10-07 为转录融合，本次没有运行课堂或评分 Notebook。当前原文件的 43 个 cell、保存输出与适用转录重新只读核对。历史验收段保留原结论与限制，不能作为本次独立教学审查的放行记录。
+
 ## 0. 这个 notebook 在教什么
 
 拿到四列花的测量值，先回答两种不同问题：哪些原列值得留下？能否把四列压成两个新坐标？
@@ -40,8 +43,8 @@ tags: [IS6400, tutorial, sklearn, 特征选择, 特征重要性, PCA, chi2, f_cl
 
 | 段 | 当前课堂 cell | 方法 / 动作 | 输出范围 |
 |---|---|---|---|
-| A | 2–12 | 读原150×5表；pairplot；SelectKBest(chi2,k=2) | 150×2原花瓣列；f_classif作为替代尺子就地讲 |
-| A 的分裂补充 | 13–17 | 单独二分类 is_setosa；两阈值 Gini/熵增益；图读 | 两条件的计数、加权不纯度与原解释勘误 |
+| A | 2–12 | 读原 150×5 表 → 配对图 → SelectKBest(chi2,k=2) | 150×2原花瓣列；f_classif作为替代尺子就地讲 |
+| A 的分裂补充 | 13–17 | 独立二分类 is_setosa → 两阈值分裂评价 → 图读 | 两条件的计数、加权不纯度与原解释勘误 |
 | B | 18–29 | ExtraTrees50树重要性、SFM、RFE | 已训模型分数、原列掩码和最终RFE模型，不是同一份状态 |
 | C | 30–37 | 原四列PCA2、投影、接回表、按class上色 | 150×2新坐标与均值/方向；不认证独立预测成绩 |
 | 公开补充 | §3.6 | 六行自给SFS与明确3折、一层树协议 | 15次候选折拟合及原列掩码；不是当前课堂原调用或个人评分成品 |
@@ -56,6 +59,20 @@ tags: [IS6400, tutorial, sklearn, 特征选择, 特征重要性, PCA, chi2, f_cl
 ## 1. 前置
 
 ### 1.1 需要哪些库
+
+第一次实际操作时，从 Anaconda Prompt 或 PowerShell 进入课程原材料目录，再启动原 Notebook；这里展示的是操作入口，本次审修没有执行它：
+
+```powershell
+Set-Location -LiteralPath 'D:\上课资料\CityU\IS6400_Business_Data_Analytics\course_files_export'
+& 'D:\anaconda3\python.exe' -m jupyter notebook 'Week4_Feature_Engineering_Tutorial.ipynb'
+```
+
+Notebook 的 code cell 执行 Python，Markdown cell 显示说明。内核（kernel）保存本次运行的变量；`Shift+Enter` 执行当前格，`[*]` 表示尚在工作。先保存自己的副本再学习，原课件保持只读。下面相对路径 `iris.txt` 从启动目录寻找；从别处打开文件不保证工作目录正确。
+
+本篇需要的语法先用一个小例恢复：`a = [1, 3]` 是把列表交给变量 a；`a[0]` 取第一个值 1，Python 从 0 编号。`import pandas as pd` 为表工具起短名；`pd.read_csv(...)` 调用其中的读表功能，括号内是输入。`df[['A','B']]` 用列名列表取两列，保留二维表；`df['A']` 取一列。`for name, group in groups:` 每次取一组名称与子表，缩进部分对该组执行。
+
+创建选择器相当于先写好规则；`.fit(X,y)` 用训练表学习分数或模型状态；`.transform(X)` 按已有规则改变表。函数名后面的 `_`，如 `scores_`，通常标识拟合后才产生的属性。`fit_transform` 会执行新的 fit，不能当成只读旧规则。后面各节说明具体保存了什么。
+
 
 ```python
 import pandas as pd
@@ -306,6 +323,8 @@ $$F_f=\frac{SS_B/(C-1)}{SS_W/(n-C)}.$$
 | B | 5 / 5 | 5 / 5 | $0/5+0/5$ | 0 |
 | C | 4 / 6 | 5 / 5 | $1/5+1/5$ | .4 |
 
+下面换用同一四行表计算 ANOVA；每行是一列测量，先列均值，再列两种平方和及自由度。
+
 | 特征 | 类均值 / 全均值 | $SS_B$ | $SS_W$ | 两自由度与 F |
 |---|---|---:|---:|---|
 | A | 1.5、4.5 / 3 | 9 | 1 | $df_B=1,df_W=2;\ F=9/(1/2)=18$ |
@@ -500,6 +519,8 @@ G_{\mathrm{split}}=\frac{n_L}{n}G(L)+\frac{n_R}{n}G(R),\qquad
 IG=H(P)-\left[\frac{n_L}{n}H(L)+\frac{n_R}{n}H(R)\right].
 $$
 
+下面把分裂公式的符号对应到各堆对象；人数均指本次完整有效输入中的行数。
+
 | 符号 | 解释 |
 |---|---|
 | $P,L,R$ | 父节点、按本次条件形成的左/右子节点 |
@@ -656,7 +677,7 @@ y.shape
 **逐行 / 输出**：输出(150,)，不是150×1；这个检查核的是数据形状，不是模型已经拟合。
 
 
-**逐行**：`ExtraTreesClassifier` = "极端随机树"，是 M01 §2.6.4 提过的**集成学习**——训练很多棵决策树（每棵在分裂时随机选特征、随机选阈值），投票预测；这里不用它预测，只用它顺带算出的 `feature_importances_`。`X.values` 把 DataFrame 变成 `(150, 4)` 的数组；`y.values` 是 `(150, 1)`，`ravel()` 压成 `(150,)`——本源采用单标签一维形式；部分方法会接受二维单列并警告，实际行为依估计器/版本核。
+**逐行**：`ExtraTreesClassifier` = "极端随机树"，是 M01 §2.6.4 提过的**集成学习**——训练很多棵决策树（每棵在分裂时随机选特征、随机选阈值），预测时平均各树类别概率再选最大者；这里不用它预测，只用它顺带算出的 `feature_importances_`。`X.values` 把 DataFrame 变成 `(150, 4)` 的数组；`y.values` 是 `(150, 1)`，`ravel()` 压成 `(150,)`——本源采用单标签一维形式；部分方法会接受二维单列并警告，实际行为依估计器/版本核。
 
 **输出**：当前 cell 22 `(150,)`。
 
@@ -1152,11 +1173,13 @@ display(z[:5, :])
 **逐行 / 输出**：首行约(-2.684207,0.326607)，这是新坐标而非某两原列；每行身份仍依原读取顺序。
 
 
-**逐行**：`PCA(n_components=2)` 建模型，只要前 2 个主成分。`fit(X)` 做讲义 p.66–67 的事：**每列减均值 → 协方差矩阵 → 特征值分解 → 取前 2 个特征向量**；`transform(X)` 做 $z = U_{\text{reduce}}^{\top}(x - \bar{x})$。注意 **没有 y**——PCA 是无监督的，类别标签没有传给PCA均值/主轴拟合；末图着色仍使用class（对比前两段的 `fit(X, y)`）。也**没有标准化**：源选择原厘米尺度；同单位也不保证各方差公平，这是度量选择（M04 §2.15 的"相关矩阵 vs 协方差矩阵"）。
+`PCA(n_components=2)` 建模型，只要前 2 个主成分。`fit(X)` 学训练均值与主轴。数学上可以用“中心化 → 样本协方差 → 特征分解 → 取两根轴”描述；具体软件也可直接分解中心化表，不必显式形成协方差。
+
+`transform(X)` 对每朵花先减训练均值，再与保存的主轴点乘。这里没有传 y，标签不进入均值或主轴拟合；末图才用 class 着色。原调用也没有 StandardScaler：它选择原厘米尺度，同单位仍可能有不同方差，见下方尺度变式。
 
 **输出**：`z[:5]` = `[[-2.684, 0.327], [-2.715, -0.170], [-2.890, -0.137], [-2.746, -0.311], [-2.729, 0.334]]`——前五朵 setosa 的 z1 都在 −2.7 附近。本轮独立中心化/协方差分解与API对核一致，按数值误差比较。
 
-**该看却没看的三个属性**（💡 补，作业第 2 题讲"PCA 与选择的区别"要用）：
+**该看却没看的三个属性**（💡 笔记补充；对应 §7 的旧版比较题，不是当前新版 Q2 的要求）：
 
 ```python
 pca.explained_variance_ratio_   # [0.9246, 0.0530]  → 前两个主成分保留 97.8% 方差
@@ -1178,6 +1201,10 @@ PCA 的输入为训练数值表、列顺序、选择的尺度/度量与分量数
 训练表 $X$ 的形状是 $n\times d$，本源为 150×4。
 
 训练各列的均值组成 $\mu$。中心化表 $D$ 的第 $i$ 行为 $x_i-\mu$。
+
+先恢复这里的数学操作。矩阵就是按行列排列的数表；转置（transpose）把行和列交换。点乘（dot product）把同位置数相乘再相加，例如 (2,1) 与 (1,0) 的点乘是 2，表示沿横向单位轴的坐标。矩阵乘法就是对每行和每列重复这种点乘。
+
+协方差（covariance）先让两列各减均值，再把每行两偏差相乘并平均；同向偏离会正贡献，反向会负贡献。一列和自身这样做就是方差（variance），衡量该列围绕均值的分散程度。样本口径除 n−1；换成除 n 会同比缩放特征值，但不改变本例主轴和解释比例。
 
 用样本协方差描述数学过程：
 
@@ -1206,6 +1233,8 @@ $$Z=D U.$$
 | $u_j,\lambda_j$ | 单位主轴（平方长度1）及该方向的训练方差；按方差降序取轴 |
 | $U$ / `components_.T` | 4×2主轴列式；API `components_` 的每行是一根轴，shape=(2,4) |
 | $Z$ | 150×2坐标；新单对象输入1×4，输出1×2 |
+
+特征向量（eigenvector）是被 S 乘过后仍沿原方向的箭头；其倍率 λ 为特征值（eigenvalue）。PCA 取单位长度的这些箭头，λ 就是沿该轴的样本方差。下面四行矩形的 S 为对角表，乘横轴 (1,0) 得 (16/3,0)，所以横轴不转弯、倍率 16/3；纵轴倍率只有 4/3，先取横轴。
 
 **为什么这个方向最优**：把中心化行沿单位方向 $u$ 投影，样本方差是 $u^{\top}S u$。在协方差的正交特征方向上，把 $u$ 展开，各平方系数非负且总和1，方差便是各 $\lambda_j$ 的加权平均，不超过最大特征值；取最大轴达到上界。后续轴与已取轴正交，再取剩余最大方差。这证明最大化的是所声明尺度下的**输入方差**，不是类别区分或预测准确率。
 
@@ -1330,11 +1359,11 @@ plt.show()
 
 **逐行**：把 numpy 数组的两列接回 DataFrame 当新列（T03 §3.4 接回 scaler 输出的同一手法）。`groupby("class")` 迭代得到 `(类别名, 子表)`，每类画一次 `scatter` 并加 `label`，`legend()` 就有三色图例——这是 T03 §2.4 分组散点的紧凑写法。
 
-**输出（当前 cell 37 图）**：横轴 z1 从 −3 到 4：setosa 独占左侧（z1 ≈ −2.7 附近一团），versicolor 在中间、virginica 在右侧，两者在 z1 ≈ 1.5 处有少量重叠；纵轴 z2 范围只有 −1.5 到 1.5，三类在 z2 上仍有重叠，不据此断言毫无区分信息。**读图**：一个主成分（z1）就把三类基本分开——它保留了 92.5% 的方差，而类间差异恰好也在这个方向上。
+**输出（当前 cell 37 图）**：横轴 z1 从 −3 到 4：setosa 独占左侧（z1 ≈ −2.7 附近一团），versicolor 在中间、virginica 在右侧，两者在 z1 ≈ 1.5 处有少量重叠；纵轴 z2 范围只有 −1.5 到 1.5，三类在 z2 上仍有重叠，不据此断言毫无区分信息。**读图**：第一轴将 Setosa 与其余两类明显拉开，后两类仍有重叠；该轴保留约 92.5% 输入方差，但方差比例不能当作区分三类的准确率。
 
-**为什么这么写**：这是讲义 p.58、p.64 几何图的实测版；也是作业第 2 题"PCA 与选择有什么不同"的直观证据——横轴不是任何一列原始特征。
+**为什么这么写**：这是讲义 p.58、p.64 几何关系在源保存数据中的展示；也帮助回答 §7 的旧版比较题。横轴是多列投影后的新坐标，不是某一原始测量列。
 
-**⚠️ 易错点**：PCA 没用标签却分开了类，是**巧合于数据**（类间差异方向 = 方差最大方向），不是 PCA 的功能；换一份"类别差异在小方差方向上"的数据，PCA 可能把类别混在一起——可考虑与任务相匹配的监督表示/选择并在同协议评价，不能保证某种替代方法必修好。
+**⚠️ 易错点**：PCA 的训练目标是输入方差。图上部分花种分开，说明本数据某些类间差异也落在大方差方向。若类别只在小方差方向不同，降维可能把类别混合；后面的四行矩形给出完整反例。选监督表示或原列子集时，应在同一评估协议比较，不能保证替代方法一定改善。
 
 **所以呢**：图看起来分开不保证未来效果，下一节把中心化、方向和比例的目标限制一起核。
 
@@ -1516,7 +1545,13 @@ print(selector.scores_)                                   # [119.26, 47.36, 1179
 print([features[i] for i in selector.get_support(indices=True)])   # ['petal-L', 'petal-W']
 ```
 
-要写的三句话：① `f_classif` = 对每个特征做**单因素方差分析（ANOVA）的 F 值**——F = 类间方差 / 类内方差，越大说明该特征在三类之间差异越大（p 值越小，对应讲义 p.32 的 Univariate Score $-\log p$）；② 结果与 `chi2` 相同：petal-L、petal-W（数值见 §2.2 表，脚本 `verify_t04.py`）；③ 这是**过滤模型（filter）**——不涉及任何学习算法，只用数据的统计性质打分（讲义 p.25、p.50）。加分：说明 `chi2` 要求非负而 `f_classif` 不要求。
+本题要回答三个作答单元，英文句子为笔记自拟，不是教师公布原句：
+
+1. `f_classif` 逐列计算单因素方差分析（ANOVA）的 F 值：组间均方除以组内均方，具体自由度见 §2.2。同一种检验、自由度相同时，F 越大对应越小的尾概率。
+2. 原文件所得两列是 petal-L、petal-W，数值见 §2.2；两种尺子在本数据结果相同，不能推广到所有表。
+3. 这是过滤法（filter）：用标签统计量学习选列规则，不反复训练下游分类器来比较候选子集。过滤法使用 y，仍有监督信息，不能称“完全没有学习”。
+
+英文参考答案：`f_classif` computes a one-way ANOVA F statistic for each feature. The selected measurements are petal length and petal width. This is a filter method because it ranks features by a statistical test rather than evaluating subsets through a fitted classifier.
 
 **Q2 · 三种方法的区别（10 分）**
 
@@ -1527,11 +1562,13 @@ print([features[i] for i in selector.get_support(indices=True)])   # ['petal-L',
 | 类型 | 特征**选择**，过滤模型 | 特征**选择**，包装 / 嵌入式（用模型的重要性） | 特征**约简** |
 | 输入 | X 和 y | X 和 y（要先训练模型） | 只有 X（无监督） |
 | 打分 | 每个特征**独立**做统计检验（F / 卡方） | 模型训练得到的重要性（树 = Gini 减少量；线性 = 系数） | 不打分：找方差最大的方向 |
-| 输出 | 原始特征的子集（k 个，列名不变） | 原始特征的子集（阈值决定几个） | 新特征 z = 所有原始特征的线性组合，不可解释 |
-| 快慢 | 最快 | 要训练一次模型 | 一次特征分解，快 |
+| 输出 | 原始特征的子集（k 个，列名不变） | 原始特征的子集（阈值决定几个） | 新坐标 z = 中心化原列的线性组合，结合载荷与尺度解释 |
+| 计算工作 | 每列计算统计量 | 先拟合模型再按分数取列 | 学均值与主轴；成本随形状和求解器变 |
 | 缺点 | 不考虑特征间的组合 / 冗余 | 依赖所选模型 | 丢掉列名；对量纲敏感 |
 
-结尾一句：三者在 Iris 上殊途同归（前两者选 petal-L / petal-W，PCA 的 z1 主要由 petal-L 构成，§4.1）。
+前两种方法在此保存结果中选中花瓣两列；PCA 得到多列组合，输出含义不同，不能称为同一结果。
+
+英文参考答案（笔记自拟）：Univariate selection ranks original features one at a time. SelectFromModel selects original features using importance from a fitted model. PCA instead learns new orthogonal directions of high input variance; its coordinates combine centred measurements and must be interpreted through the loadings and scale.
 
 **Q3 · `SequentialFeatureSelector`（40 分）**
 
@@ -1545,17 +1582,25 @@ sfs = SequentialFeatureSelector(est, n_features_to_select=2, direction='forward'
 print([features[i] for i in sfs.get_support(indices=True)])
 ```
 
-脚本 `verify_t04.py` 用三种估计器（LogisticRegression、KNN(5)、ExtraTrees random_state=0）× 前向 / 后向共六种组合，**全部得到 petal-L、petal-W**。第一轮各单特征的 5 折准确率（LogReg）：sepal-L 0.753、sepal-W 0.560、petal-L 0.953、**petal-W 0.960** → 先选 petal-W；第二轮在其基础上加 petal-L 最好。报告里把这两轮的分数列出来，就是讲义 p.54 那张三轮表的实测版。加分：跑一次 `direction='backward'` 对比；说明 `n_features_to_select='auto'` + `tol` 可以让它自己决定个数。
+历史 `verify_t04.py` 记录过六种配置同选花瓣两列；原完整分折与运行资产本次未重放，不能把这些近似分数当当前所有配置的保证。上面代码没有标准化，不能与 A05 当前“标准化逻辑回归、打乱分层五折”的结果混用；后者保存名单为 sepal-L、petal-W。
+
+英文参考答案（笔记自拟）：Forward SFS starts from an empty set, evaluates each possible addition with the specified estimator and cross-validation score, and keeps the best addition at each step until two features remain selected. Its feature names depend on the estimator, preprocessing and folds. It is a greedy wrapper and does not guarantee the best subset across all settings.
+
+若采用自动个数与容差，必须另说明停止规则；本题固定留两列，第二轮即使不提高分数也会选满两列。
 
 **Q4 · Airbnb 选 3 个特征预测价格（20 分）**
 
 目标是 `log_price`（T02 的口径），任务是**回归**，所以打分函数换 `f_regression` / 相关系数 / 回归模型的重要性。建议流程（"interpret your steps with codes"——每步一句解释）：
 
-1. 读数据，`log_price` 为 y；先只用数值列（`accommodates, bathrooms, bedrooms, beds, number_of_reviews, review_scores_rating`），类别列（`city, property_type, room_type` 等）若要用需先 one-hot（T02 §3.2）。
+1. 读数据，`log_price` 为 y；先只用数值列（`accommodates, bathrooms, bedrooms, beds, number_of_reviews, review_scores_rating`），类别列（本文件如 `city`、`property_type`、`bed_type`）若要用需先 one-hot（T02 §3.2）；本份 15 列 CSV 没有 `room_type`。
 2. 处理缺失（T03 §3.2：`review_scores_rating` 缺 15,275 个，填中位数或先 `dropna`），说明你的选择。
 3. 过滤：`SelectKBest(f_regression, k=3)`。脚本 `verify_t04.py`（`dropna` 后 52,858 行）F 值：accommodates 29,208 > bedrooms 17,277 > beds 16,875 > bathrooms 8,316 > review_scores_rating 415 > number_of_reviews 0.7 → **accommodates、bedrooms、beds**；与 T03 的相关系数排序一致（0.578 / 0.483 / 0.470）。
-4. 用第二种方法交叉验证：`SequentialFeatureSelector(LinearRegression(), n_features_to_select=3, cv=5)`。脚本 `verify_t04.py` 在同一 52,858 行、6 个数值列上的实跑结果：**accommodates、review_scores_rating、bedrooms**——前向选择**没选 beds**（它与 accommodates 相关 0.83，是冗余特征，M03 §2.11 / M04 §2.4），反而把单变量分数很低的 review_scores_rating 选了进来（它带的是与房源规模无关的**新信息**）。两种方法答案不同正是讲义 p.49–50 / p.52 的要点：**单变量打分不看冗余，包装模型看**。
-5. 结论一段：选定的 3 个 + 为什么（业务含义：可住人数、卧室数直接决定定价；beds 与 accommodates 冗余故不重复选；评分带来独立信息），并注明"最有代表性"是相对于**线性预测 log_price** 这个任务（讲义 p.15 problem-specific）。
+4. 历史第二种方法为 `SequentialFeatureSelector(LinearRegression(), n_features_to_select=3, cv=5)`。原记录在相同 52,858 行、六个数值列上保留 accommodates、review_scores_rating、bedrooms，没有保留 beds。
+
+   beds 与 accommodates 的相关约 0.83，可能提供重复信息；评分则可能在该组合中有补充预测价值。名单不能证明评分与规模独立，更不能证明价格因果。单变量评分与条件子集评价使用不同证据。
+5. 结论列出采用方法下的三个名字、处理政策及预测用途。容量与价格在此样本有关，不能据相关或选择名单声称“直接决定定价”。beds 与 accommodates 相关较高，可能互相替代；评分是否有额外价值取决于已选组合和验证设置。
+
+英文参考答案（笔记自拟）：For the historical six-numeric-column, complete-case analysis, univariate F selection retained accommodates, bedrooms and beds. The recorded forward linear-model selection instead retained accommodates, review_scores_rating and bedrooms. These are conditional predictive selections, not causal pricing effects or the answer to the current eight-feature questions.
 
 ### 7.4 提交前自查
 
@@ -1571,7 +1616,7 @@ print([features[i] for i in sfs.get_support(indices=True)])
 
 ## 8. 当前 cell ↔ 课堂正文映射
 
-当前43-cell文件的课堂前缀1–37已逐cell核：17 markdown / 20非空code。≥38为评分部分，本轮不读/不执行；旧§7保留历史用途，不把它当当前原题解答。本次已按录音逐内容映射课堂覆盖；保存字节与现场编辑的区别见§9.5，不认证全部源码逐字现场运行。
+当前43-cell文件的课堂前缀1–37已逐cell核：17 markdown / 20非空code。cells 38–43 为当前评分部分，本次只读核题，不执行；完整现行题面、输出解释与评分边界在 A05 学习导览，旧 §7 继续保留历史用途。本次已按录音逐内容映射课堂覆盖；保存字节与现场编辑的区别见§9.5，不认证全部源码逐字现场运行。
 
 | 当前cell | 类型 | 源内容 | 正文 | 课堂覆盖 |
 |---|---|---|---|---|
@@ -1613,7 +1658,7 @@ print([features[i] for i in sfs.get_support(indices=True)])
 | 36 | md | 新空间图 | §4.2 | ✅ 接投影列/groupby/散点与类间重叠 `02:06:11`–`02:07:53` |
 | 37 | code | 按class画图 | §4.2 | ✅ 接投影列/groupby/散点与类间重叠 `02:06:11`–`02:07:53` |
 
-| ≥38 | 隔离 | 当前评分部分；不混入课堂统计 | 原§7为历史保护 | 未审 |
+| 38–43 | 当前评分题面 | Q1–Q4 及空作答格，不混入 37-cell 课堂统计 | 本次只读核题；详见 A05 学习导览 | 当前题目一般要求见 `02:09:28`–`02:11:54`，不认证个人评分完成 |
 
 **课堂时间分配**（本表仅对应本篇录音片段；全源时钟00:00–02:12:01，媒体7975.547208秒，不代表无课间暂停，按时间戳）：
 
@@ -1688,7 +1733,7 @@ print([features[i] for i in sfs.get_support(indices=True)])
 | ⑤ | **原始 PDF 完整性** | 9/16损坏为历史记录；本轮M04完整69页已回源/看图，当前hash与源完整性另核，不重复宣告现文件仍截断 |
 | ⑥ | ✅ W04 tutorial转录回填范围 | `M04-transcript-partial.txt`；lecture至`01:36:05`，tutorial从`01:36:11`恢复至`02:12:01`明确下课；源缺开头，独立教学阶段中无≥120秒空档。课间停录/墙钟间隔未知，不把时间连续等同未休息。 |
 | ⑦ | 当前notebook家族与现场编辑 | `01:48:23`–`01:58:37`有Gini/IG新块，且`02:09:28`–`02:11:54`按新版Q1/Q2/Q3/Q4路由，可与当前43cell家族对应；不证明录音时文件逐字等于当前保存字节。新增ravel、复制iris_filter、删除X.values和改图标签按课堂事实另记。 |
-| ⑧ | 当前作业的一般要求 | `02:08:24`用模板修改调用和参数，不需从头写库函数；`02:09:30`Q2读SequentialFeatureSelector官方文档、选两特征、解释机制；`02:10:30`Q3 log_price/F回归八列，`02:11:14`Q4 RandomForestRegressor+RFE八列。当前完整题面/分值/期限以已核Canvas为准，§7旧历史段原字节保护。 |
+| ⑧ | 当前作业的一般要求 | `02:08:24`用模板修改调用和参数，不需从头写库函数；`02:09:30`Q2读SequentialFeatureSelector官方文档、选两特征、解释机制；`02:10:30`Q3 log_price/F回归八列，`02:11:14`Q4 RandomForestRegressor+RFE八列。当前完整题面/分值/期限以已核Canvas为准，§7 的旧原题及行政/提交段保留，教学说明按现行机制修正。 |
 | ⑨ | ⚠️ F回归口误/ASR限制 | `02:10:30`前半明确log_price、F-regressions，后半却说cannot use ... F-regressions；`02:11:08`又要求解释chi-square与F分类为何不适用。按连续目标/当前书面题面核方法，冲突转述并标[?]，不伪造一段无冲突的英文直引。 |
 | ⑩ | 具体数字与执行限制 | 课堂未逐项核当前随机森林保存向量、RFE删除轨迹、PCA方差比例或本篇补例；已有源保存输出/本机复算证据保持独立，本次融合不认证重新运行或个人作业完成。 |
 
@@ -1709,7 +1754,7 @@ print([features[i] for i in sfs.get_support(indices=True)])
 
 ---
 
-### 9.6.2 本轮课堂机制理解验收（2026-10-01）
+### 9.6.2 历史课堂机制理解验收（2026-10-01，非本次放行依据）
 
 这是代理阅读检验，不是真人初学者试读。正式15教学单元累计Q90/90：首轮87，前移目的句后88，补范数/L1与SVD/白化角色后实际复答两问到90。10核心R1–R4各2，共40项；最后仅定向解释变化，不冒称重跑全部。读者只读移除个人评分及折叠参考答案的冻结稿。v8字节SHA为edf00374e78d1e799443bd65fd1633ca9abbb2bb38f48bb5ff5ed5e5578bd1b9；最后总览布局v11实读字节SHA为e03d11afc628f4792159fde2576280cb2118bf6ebd81a251ec4e09100c455d20，初误报LF内存hash的差异已独立核为CRLF转换并保留记录。
 
@@ -1734,6 +1779,14 @@ print([features[i] for i in sfs.get_support(indices=True)])
 
 **保留限制**：原无seed森林/RFE不能从保存输出还原具体随机轨迹；原metadata3.9.12与本机3.12.3/sklearn1.5.1分别记录。原PCA人为k2、累计97.7631775%事后得，标准化是另管线，M04的77×13/k4不是Iris。ANOVA正式尾概率需更完整推断假设，当前只认证统计量/退化，不作现实p值有效性背书。2026-10-01当时无转录，保持v0.9/pending；本次W04课堂证据追加不改变该日机制验收的历史范围，个人评分继续排除。机制通过不代表五门课审修已完成。
 
+
+### 9.9 2026-10-27 作者修订范围与待核
+
+本次重新读取当前 43-cell 原件、旧 37-cell 原题、官方 Week 4 HTML、本人保存 Notebook/HTML 与 tutorial 的适用 ASR。只读核源和手工数学复算，未执行评分代码、未重训。当前评分的四题为 ANOVA／SFS／F 回归八列／森林 RFE 八列，分别 20／40／20／20；A05 导览保存逐题完整英文、中文解析及自拟英文参考答案。
+
+Q2 和 Q4 官方明确允许设置不同而名单不同。Q3 官方列八个参考编码列，每缺一个扣 2 分，不能把“预处理不同”当作保证认可的理由；本人保存 Q3 缺 `bed_type_Real Bed`、多 `cancellation_policy_flexible`。本人 Notebook、HTML、行政/提交记录均未改动。详见 [[IS6400_Business_Data_Analytics/assignment/graded/A05-week4/notes/开始这里|A05 学习导览]]。
+
+本次候选仍待独立高中知识起点审查与主代理正式门槛。旧报告、源随机输出、本次数学复核与实际显示分别记录，不从历史分数推定本次教学已过；原音未核、源缺开头及现场代码无法逐字重建的限制继续保留。
 
 ## 相关
 

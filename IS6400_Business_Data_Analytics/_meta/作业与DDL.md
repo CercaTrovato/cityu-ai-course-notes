@@ -54,7 +54,7 @@ tags: [IS6400, DDL, 作业]
 | 交什么 | notebook 明写：**`.ipynb` + 导出的 `.html`**（W2 的 Canvas 页限 html + pdf；本周 Canvas 页的文件类型限制截图未显示，**上传前看一眼**） |
 | 逐题攻略 | [[T03-数据探索实战-Iris与Airbnb的描述统计#7. 本次作业：Week 3 Assignment（notebook cell 44–48 原文）\|T03 › 7. 本次作业]] —— §7.3 逐题、§7.4 自查 |
 
-**三个坑**（详见 T03 §7.3）：① Q1 要求解释"price 的百分位数**不是** exp(log_price 百分位数)"——**实跑两者完全相等**（单调变换保序），要如实写并解释；② Q2 要求比较 `bedrooms` 的三种填补——**该列没有缺失值**，要说明；③ Q3 需要小组已经选好数据集——**先定项目数据**。
+**学习口径**（详见 T03 §7.3）：① 本数据六个指定 price 分位与 exp(log 分位)在数值精度内相等；单调保序不保证样本线性插值与 exp 普遍交换。② `bedrooms` 无缺失，三种填补不改变该列。③ 本人历史 Q3 已用 NIC 10,000×16 数据，来源真实性未在本轮认证；原提交及评分记录不变。
 
 ### ✅ Week 4 Assignment —— **2026-10-02（周五）23:59，香港时间**
 
@@ -98,7 +98,7 @@ tags: [IS6400, DDL, 作业]
 
 **题目在哪**：Canvas 页面没有题目，**题干在 notebook `Week 2 Regression Analysis_With Prompt.ipynb` 的 cell 38**——4 道题，notebook 内部标注满分 100，对应 Canvas 上的 10 分。
 
-> ⚠️ **没有任何课堂提示可依赖**：🎙️ W02 录音**结尾缺约 13–15 分钟**，cell 38 的作业在整份转录里**从未被提及**（`assignment / homework / due / deadline / submit / grade` 全文检索命中 0）。详见 [[M02-预测分析-线性回归]] §9.5。
+> 所供 W02 转录未覆盖 cell 38；实际结尾缺失时长和作业口头宣布情况未知，不以关键词零命中证明课上从未布置。行政沿已有 Canvas 记录，本轮未在线重核。
 
 **做题前先记住三条**（都来自课堂，讲义没有）：
 
@@ -246,7 +246,7 @@ Minimum Examination Passing Requirement (%)             20
 
 > ⚠️ **助教在 cell 23 上只停了 37 秒，`sqrt(MAE)` 的 bug 和"在训练集上选 alpha"这两个问题一个都没提。**
 > ⚪ 由于**课上没有给出任何相反的口径**，两种做法都能自圆其说。
-> ⭐ **风险最小的写法**：照 notebook 的方法做一遍（这样和课堂口径一致），**再加一段说明**"更严谨的做法是从训练集里再切一份验证集来选 alpha，因为在训练集上比较必然选出惩罚最小的那个"。**既不违背课堂，又展示了你懂 [[M02-预测分析-线性回归#2.9.3 验证集 ≠ 测试集（讲义 p.41）⭐ 容易混|M02 §2.9.3]]。**
+> 学习复盘应分别报告训练内比较与验证选择；没有“必选最小 alpha”或采用验证一定加分的保证。见 T02 §8.1 Q3 与 A02 官方对照。
 
 **题目**（notebook 原文）：
 
@@ -255,15 +255,15 @@ Minimum Examination Passing Requirement (%)             20
 3. **(40 分)** Ridge Regression：在 "Section 3.4" 里试 `alpha` = **0.001 / 0.01 / 0.1**，比较三个模型的表现，**指出哪个 alpha 最好**
 4. **(40 分)** Airbnb Price Prediction：在 "Section 3.6" 里**加入 `cancellation_policy` 作为新的自变量**，评估新模型并**与原模型比较**
 
-**⚠️ 四个坑**（详见 [[T02-回归实战-从合成数据到Airbnb定价#8.1 逐题攻略|T02-回归实战-从合成数据到Airbnb定价 › 8.1 逐题攻略]]）：
+**读题与协议限制**（详见 [[T02-回归实战-从合成数据到Airbnb定价#8.1 逐题读题、答案来源与复盘|T02 §8.1]]）：
 
 | 题 | 坑 |
 |---|---|
-| 1 | 题目**没写噪声项 ε**。不加噪声的话回归是精确解、MAE = 0，第 2 题就没意义。**必须加噪声并说明** |
-| 3 | ⚠️ **notebook cell 23 的做法是错的** —— 它在**训练集**上比较 alpha，必然选出最小的 0.001。**正确做法是切出验证集再比较**。照抄会得出反教学目的的结论 |
+| 1 | 原题未写噪声；官方参考选择加噪声，不能反写为必须。历史个人训练式调换斜率/截距，学习复盘已明确 |
+| 3 | 原 tutorial 未缩放训练内比较；官方缩放后训练内最佳 0.001，个人固定留出验证最佳 0.01。必须连着协议说，训练内分数不单独证明泛化最佳 |
 | 3 | notebook 里**根本没有 "Section 3.4"**（只有一个 "3.6"）。指的是 Ridge 那一段（cell 16–24） |
 | 4 | `cancellation_policy` 有 5 个类别，其中 **`super_strict_60` 只有 8 行**（0.012%）。⚪ 建议先合并稀有类别 |
-| 4 | "compare it with the original model" —— **必须给出两个模型的指标对照**，最好再加一个"永远预测中位数"的基线（MAE = 0.5571） |
+| 4 | 在相同留出行比较原/新模型。保存 MAE 0.438920→0.437968，按显示值相对下降约 0.217%；两份全表先 fit 编码器的限制保留 |
 
 ### W03 / W04 个人作业（已发布，见上方 ⏰ 最近的截止）
 
@@ -294,7 +294,7 @@ Minimum Examination Passing Requirement (%)             20
 
 ## 3. 小组项目（合计 30%）
 
-> **A06 项目准备（2026-09-30）**：用户已定 Olist，6 人各自探索角度；官方数据和九表全景教学放在本地私有 `assignment/graded/A06-group-project/`。状态 draft；下一步 数据熟悉与选题比较。Canvas 本轮访问跳转登录，未完成现行行政要求核验；本人学习与提交状态不变。
+> **A06 项目准备**：2026-09-30 记录为已定 Olist、6 人各自探索角度；官方数据和九表学习导览位于 `assignment/graded/A06-group-project/`，入口为 [[IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/notes/开始这里|Olist A06 学习入口]]。35-cell Notebook 仅修订教学 Markdown，原代码与保存输出不变；本次没有运行单元格或训练模型。项目 draft、本人学习/团队分工/提交状态不变；Canvas 登录跳转是 2026-09-30 的历史记录，未作今天现行要求核验。教学发布与 HTML 重新标准导出的完成状态见本批回执。
 
 
 出处：`IS6400 Project Guideline.pdf`（2 页）+ Syllabus + W1 讲义 p.11
@@ -588,7 +588,7 @@ Notebook cell 35：Iris KMeans（10）、BisectingKMeans（20）、密度聚类�
 
 ## Week 7 分类作业（2026-10-14 材料登记）
 
-Notebook 第 23 格（0 起算 cell 22）三题内部 50／30／20 共 100 分：五分类器与五项评估；机制／性能比较；同一分类器有无 class_weight 的比较。使用 creditcard-reduced.csv；不能照搬合成例的“0 是少数类”编码。公开方法见 [[IS6400_Business_Data_Analytics/notes/T07-分类实战-信用审批与欺诈识别|T07 分类实战]]，完整个人答案保持私有，本轮未制作或提交。
+Notebook 第 23 格（0 起算 cell 22）三题内部 50／30／20 共 100 分：五分类器与五项评估；机制／性能比较；同一分类器有无 class_weight 的比较。使用 creditcard-reduced.csv；不能照搬合成例的“0 是少数类”编码。题面与方法见 [[IS6400_Business_Data_Analytics/notes/T07-分类实战-信用审批与欺诈识别|T07 分类实战]]；按2026-10-21现行规则，本人完整答案允许公开。此处材料登记未生成或提交个人评分结果；允许公开、教学解析、本人提交与成绩分别记录。
 
 本次已只读核 Canvas [Assignments](https://canvas.cityu.edu.hk/courses/71457/assignments)、[Announcements](https://canvas.cityu.edu.hk/courses/71457/announcements)、[Modules](https://canvas.cityu.edu.hk/courses/71457/modules) 与 Files。Week 7 模块含五附件；Assignments 可见列表与模块未见独立提交入口；Files 列表重定向课程首页，已从 HTML 文件预览核题面。10/1 [通用公告](https://canvas.cityu.edu.hk/courses/71457/discussion_topics/637007) 要求执行全部代码、展示输出、Markdown 解释、HTML 提交及逐题定位。专属截止、Canvas points、允许文件类型和额外 rubric 仍待核，不按上周日期规律推算，也不称未发布。
 
@@ -644,3 +644,13 @@ Notebook 第 23 格（0 起算 cell 22）三题内部 50／30／20 共 100 分�
 ## 2026-10-27 · M02 本地源与当前行政条件分开
 
 本地39-cell Week 2 Regression Analysis_With Prompt.ipynb 的cell38列Week 2 Assignment四问（10+10+40+40），明确代码和结果导出HTML上传Canvas，未给绝对截止。这是本地源版本事实；本次未重新核当前Canvas最新题面、截止或提交字段。631段中due/submit各1次只是一般业务叙述，未见完整作业宣布，不能据缺尾断言课上没布置。保护原任务说明和本人已确认/已提交/成绩，不用本篇材料审修升级或降级。
+
+
+## 2026-10-27 · A02 学习复盘增量
+
+A02 任务说明现有官方对照教学段补齐四题英文原题、中文条件/机制与英文自拟复盘；T02 §8 对应互链。原 Canvas 10 points、2026-09-18 23:59、Submitted! 与成绩待核等本人/行政历史字段保持，不将学习解析等同可提交或重新提交。
+
+
+## 2026-10-27 · Week 7 题面重审范围
+
+原Cell22三问英文全文、中文限定词与方法、英文参考框架见T07§2.14；第一问原文误拼credictcard-reduced.csv，实际文件为creditcard-reduced.csv。三问真实五模型训练／比较／权重实验结果本批未制作，不据方法解释称答卷完成。上方Canvas与Notion回读是2026-10-14历史记录，本轮未刷新当前DDL/points/rubric；本人学习/提交/评分不动。

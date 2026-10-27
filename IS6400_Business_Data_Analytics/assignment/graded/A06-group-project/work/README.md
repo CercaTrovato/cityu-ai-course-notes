@@ -6,7 +6,7 @@
 
 1. 用 Jupyter 打开 `olist-data-guide.ipynb`。从本目录启动时无需改路径；否则在第一格设置 `WORK_DIR`。
 2. 首次阅读先看 §1–4：文件、九张表、52 个字段位置、连接关系；再读时间、金额、评价与六个方向。
-3. `olist-data-guide.html` 是同一 Notebook 的标准 nbconvert 导出，只读即可看已有输出；不是提交版。
+3. `olist-data-guide.html` 是此前 Notebook 的标准 nbconvert 导出，不是提交版。本次修订教学文字后，须以发布回执核对是否已重新标准导出；未重新导出时 HTML 仍是旧文案，不能称与当前 Notebook 同源。
 
 ## 文件
 
@@ -16,7 +16,7 @@
 - `olist-data-guide.ipynb`：完整教学及可运行探索；运行不联网、不写原始数据、不建模。
 - `olist-data-guide.html`：同源阅读版。
 
-正式分析后续另开 Notebook；不要把清洗数据或结果当作官方原件。团队内部使用按 CC BY-NC-SA 4.0 保留归属；本目录被 Git 忽略，不公开个人完整作业。
+正式分析后续另开 Notebook；不要把清洗数据或结果当作官方原件。使用数据须按 CC BY-NC-SA 4.0 保留归属；本人材料的现行公开范围按根《备份与公开发布规则》执行，实际 Git 保存与远端覆盖由主发布者另核。
 
 ## 边界
 
