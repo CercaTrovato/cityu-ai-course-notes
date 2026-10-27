@@ -1,7 +1,7 @@
 {
   "schema": "cityu-notes-revision-execution-v1",
   "date": "2026-10-23",
-  "task_state": "in_progress",
+  "task_state": "69_formal_and_local_notion_closed_git_pending",
   "root_agent": "/root",
   "root_thread": "01a1649a-7ed4-7072-934e-4a6a58c92c13",
   "model_verified": {
@@ -1448,19 +1448,37 @@
       "path": "EF5560_Fintech_and_AI_in_Finance/notes/M06-FinTech概览与区块链.md",
       "kind": "primary",
       "baseline_sha256": "d38f4bdaaf37b494147594981a90c3eb432ef356204a10e1f86d1e969a200dd2",
-      "bytes": 147791,
+      "bytes": 154886,
       "lines": 2529,
       "scratch": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-ef06/",
-      "teaching_state": "候选待法源补核",
-      "writeback": "未开始",
-      "local_sync": "未开始",
-      "notion": "未开始",
-      "git": "未开始",
-      "sources": [],
-      "blockers": [
-        "CSRC/PBOC银发〔2026〕42号准确全文/适用条款与截至当前效力未取得",
-        "最高法在线诉讼规则/解释准确全文/适用条款与截至当前效力未取得"
+      "teaching_state": "原全篇独审承接＋新法源定向独审通过",
+      "writeback": "已原子写回并精确回读",
+      "local_sync": "适用9目标写回及2无增量核对完成",
+      "notion": "既有页已精确前插／重载，旧后缀与其他15属性保持",
+      "git": "本批内容保存待执行",
+      "sources": [
+        {
+          "source_url": "https://www.csrc.gov.cn/csrc/c100028/c7614318/content.shtml",
+          "raw_response_sha256": "28d52e78c49f5bb55b43fd6bb62340821a7ec602f79980dd0e46c08f3ad9245c",
+          "acquisition": "Jina Reader intermediary"
+        },
+        {
+          "source_url": "https://www.pbc.gov.cn/tiaofasi/144941/3581332/2026020619591971323/index.html",
+          "raw_response_sha256": "b9adcec57be3a94ca3e1fc64102e17ce84c3c84d3bc01776f9e2658eadf6185f",
+          "acquisition": "Jina Reader intermediary"
+        },
+        {
+          "source_url": "https://www.court.gov.cn/fabu/xiangqing/309551.html",
+          "raw_response_sha256": "1388a270f35cefe19c29b451154e45d0be93754ff2a6034c60b43e2da71dd641",
+          "acquisition": "Jina Reader intermediary"
+        },
+        {
+          "source_url": "https://www.court.gov.cn/zixun/xiangqing/309561.html",
+          "raw_response_sha256": "598e35d730a765c3de37d5f4d7efd0dec02a17210a0bbff7959b0c0a7f003271",
+          "acquisition": "Jina Reader intermediary"
+        }
       ],
+      "blockers": [],
       "included": true,
       "scope_classification": "included",
       "scope_reason": "五门课现有 M/T 主笔记，属于任务单明确全篇重审范围。",
@@ -1468,7 +1486,7 @@
         "全文：现有全部教学章节、折叠答案、图与自测"
       ],
       "resume_baseline_sha256": "d38f4bdaaf37b494147594981a90c3eb432ef356204a10e1f86d1e969a200dd2",
-      "review_stage": "parallel independentthread started;author preparation then new61independentreview;formal pending",
+      "review_stage": "old full semantic evidence plus new law delta two-stage independent review; final full gate passed",
       "parallel_thread": {
         "id": "01a17880-d3de-7923-a4d8-028461b01eda",
         "title": "CityU EF5560 M06 全篇审修",
@@ -1478,9 +1496,16 @@
         "model_evidence_timestamp": "2026-10-26T13:58:12.757Z",
         "permissions": "scratchonly;originals/vault/sharedstate/Notion/Gitreadonly;mainsoleformalwriter"
       },
-      "runtime_state": "source_hold_unresolved",
-      "latest_source_refresh": "E:/app-data/codex/scratchpad/cityu-workflow-rollout-20261026/dispatch-ef06/law-refresh-20261027/law-refresh-report.md",
-      "no_new_full_review_needed": "existing full semantic and directed review preserved; only exact legal-source dependency and affected assertions remain"
+      "runtime_state": "formal_and_local_notion_closed_git_pending",
+      "latest_source_refresh": "ef5560-m06-final/source-verification.json",
+      "no_new_full_review_needed": "existing full semantic and directed review preserved; only exact legal-source dependency and affected assertions remain",
+      "source_hold_notion_receipt": "ef5560-m06-source-hold/notion-source-hold-readback.json",
+      "formal_sha256": "ee55bc961b3c7a0f86520c50131a85ecb71ebaab903e517c4f8afd86afd946ce",
+      "final_sha256": "ee55bc961b3c7a0f86520c50131a85ecb71ebaab903e517c4f8afd86afd946ce",
+      "candidate_sha256": "ee55bc961b3c7a0f86520c50131a85ecb71ebaab903e517c4f8afd86afd946ce",
+      "review_record": "ef5560-m06-final/review.json",
+      "notion_receipt": "ef5560-m06-final/notion-readback.json",
+      "source_boundary": "exact acquired official texts via Reader verified; no exhaustive later-amendment/repeal certification"
     },
     {
       "id": "ef5560-m07",
@@ -2622,7 +2647,7 @@
       "writeback": "CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接",
       "local_sync": "10精确共享增量/原子回读；3无增量；同源计划一次应用",
       "notion": "既有学习页16属性重载；备注前插/旧后缀精确，其他15含真checked/关系保持",
-      "git": "本批待保存",
+      "git": "已推送3b2ced96…并核远端main；87blobs精确/10共享增量/229非本批文件保持",
       "sources": [],
       "blockers": [],
       "included": true,
@@ -2642,7 +2667,10 @@
       "candidate_sha256": "75e5cadd021bf5c865dd8548dd4a4edbc810130d93f530482cd8fb7fd27944ca",
       "formal_sha256": "3f7204978763ca95acea20ced394d3b841491f1ecf0990d0dc9125cc260a6d0d",
       "review_receipt": "is6400-t08-full/review.json",
-      "writeback_receipt": "is6400-t08-full/writeback.json"
+      "writeback_receipt": "is6400-t08-full/writeback.json",
+      "git_commit": "3b2ced969a04a4e21302959a1b870f6dd84ae373",
+      "git_remote_confirmed_at_content_save": "3b2ced969a04a4e21302959a1b870f6dd84ae373",
+      "git_receipt": "is6400-t08-full/batch-git.json"
     },
     {
       "id": "ac6761-9ac77e0e7c8b",
@@ -3505,7 +3533,7 @@
       "writeback": "CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接",
       "local_sync": "10精确共享增量/原子回读；3无增量；同源计划一次应用",
       "notion": "既有作业页9属性重载；要求摘要前插/旧后缀精确，其他8含提交/评分/截止/关系保持",
-      "git": "本批待保存",
+      "git": "已推送3b2ced96…并核远端main；87blobs精确/10共享增量/229非本批文件保持",
       "sources": [],
       "blockers": [],
       "included": true,
@@ -3525,7 +3553,10 @@
       "candidate_sha256": "cf3787b2eb40f3b1940b7b7f515a7d7652b321c227211838c136a24c7be9a4b9",
       "formal_sha256": "cf3787b2eb40f3b1940b7b7f515a7d7652b321c227211838c136a24c7be9a4b9",
       "review_receipt": "is6400-2b350fbb7c44-full/review.json",
-      "writeback_receipt": "is6400-2b350fbb7c44-full/writeback.json"
+      "writeback_receipt": "is6400-2b350fbb7c44-full/writeback.json",
+      "git_commit": "3b2ced969a04a4e21302959a1b870f6dd84ae373",
+      "git_remote_confirmed_at_content_save": "3b2ced969a04a4e21302959a1b870f6dd84ae373",
+      "git_receipt": "is6400-2b350fbb7c44-full/batch-git.json"
     },
     {
       "id": "is6400-3a475b3e3d54",
@@ -3539,7 +3570,7 @@
       "writeback": "CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接",
       "local_sync": "10精确共享增量/原子回读；3无增量；同源计划一次应用",
       "notion": "既有作业页9属性重载；要求摘要前插/旧后缀精确，其他8含提交/评分/截止/关系保持",
-      "git": "本批待保存",
+      "git": "已推送3b2ced96…并核远端main；87blobs精确/10共享增量/229非本批文件保持",
       "sources": [],
       "blockers": [],
       "included": true,
@@ -3559,7 +3590,10 @@
       "candidate_sha256": "7111551e00535cbcd1aad193d0b8028d69fc432cfa3990421016bff74c29f697",
       "formal_sha256": "7111551e00535cbcd1aad193d0b8028d69fc432cfa3990421016bff74c29f697",
       "review_receipt": "is6400-3a475b3e3d54-full/review.json",
-      "writeback_receipt": "is6400-3a475b3e3d54-full/writeback.json"
+      "writeback_receipt": "is6400-3a475b3e3d54-full/writeback.json",
+      "git_commit": "3b2ced969a04a4e21302959a1b870f6dd84ae373",
+      "git_remote_confirmed_at_content_save": "3b2ced969a04a4e21302959a1b870f6dd84ae373",
+      "git_receipt": "is6400-3a475b3e3d54-full/batch-git.json"
     },
     {
       "id": "is6400-97e6d2526513",
@@ -4074,14 +4108,16 @@
   ],
   "confirmed_review_total": 69,
   "latest_checkpoint": {
-    "time": "2026-10-27T17:00:55.455418+08:00",
-    "formal_written": 68,
-    "all_applicable_closed": 65,
-    "remaining_formal": 1,
+    "time": "2026-10-27T20:33:22.747495+08:00",
+    "formal_written": 69,
+    "all_applicable_closed": 68,
+    "remaining_formal": 0,
     "unstarted": 0,
     "working": 1,
-    "next": "only EF5560 M06 two official legal full-text/exact-clause/currentness dependencies source_hold; existing candidate/full review/directed records preserved; no other content review/writeback/sync remains",
-    "sync_closed": "PC/mobile prior confirmation retained; no re-enable evidence"
+    "next": "only this final batch Git save and remote verification",
+    "sync_closed": "existing PC/mobile confirmation retained; PC Obsidian absent at live read-only check",
+    "all_subagents_completed": true,
+    "last_verified_content_commit": "3b2ced969a04a4e21302959a1b870f6dd84ae373"
   },
   "resume_20261025": {
     "model_verified": "gpt-6.1-sol/xhigh from current rollout turn_context",
@@ -4155,7 +4191,7 @@
   "paused_at": "2026-10-25T18:54:20+08:00",
   "pause_instruction": "暂停",
   "live_agents_at_pause": "all visible child agents completed; no review left running",
-  "last_verified_git": "d4aecec2dc67ffc9cb3e9b344bcc4cabde9b5ad9",
+  "last_verified_git": "3b2ced969a04a4e21302959a1b870f6dd84ae373",
   "resumed_20261025_latest": {
     "user": "继续",
     "scope": "M08 dependency sync then pending queue",
