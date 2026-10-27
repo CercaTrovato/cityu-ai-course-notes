@@ -1,0 +1,44 @@
+====================================================================================================
+笔记质量量表   maintenance.md   模式: current/strict   status: 已提交
+----------------------------------------------------------------------------------------------------
+【L 合规检查】
+   L5_围栏数 : 10
+   L5_details : [2, 2]
+   ✓ 七项无问题（L1 未讲解页见上，封面/目标页允许）
+【现行内容检查】字数/固定标签/类比配额不计FAIL
+   ✓ 未报确定性阻塞；不是教学完整证明
+   原题清单: unverified_without_manifest 核对题数: 0
+   范围: 机检通过不代表解释正确或读者已理解；页码引述不证明该页已实质讲解。
+   范围: 纯数字等式只核支持的四则/幂/开方及显示精度；不执行代码、不验证符号推导或模型结果。
+   范围: 无显式源题清单时，无法验证漏整题/原文保真；有清单也只核其字面契约，清单抄写与逐问语义仍需回源。
+   历史G/E统计已保存；查看旧配额详情用 --profile historical
+【逐小节明细】
+   num | cjk | pages | formula_n | numex_step | first_kind
+   2.1 | 253 | 0 | 0 | 0 | text
+【R 可读性】 计入判定（规则：_meta/可读性总规则.md）
+   语义检查仅为 △ 疑点；PASS 不表示读者已理解。
+   表格: 最多 3 列，最大单元格 26 单元（行 28）
+   句长（阅读单元）: 127 句  均值 28.8  中位 28  p90 47  最长 62  >80: 0（0.0%）  >120: 0  豁免块: 0
+   ✗ 0 项  △ 9 项
+     R1c  一句多个分号         ✗ 0    △ 5
+     R4c  单元格句数          ✗ 0    △ 1
+     R7a  主线混入核验细节       ✗ 0    △ 2
+     R8a  §2 标题缺页码       ✗ 0    △ 1
+   △ R4c 行27 单元格 2 句
+   △ R1c 行45 4 个分号：中文限定词：`current time` 要运行时读时钟；`the in…
+   △ R7a 行55 绝对路径；移到 §9 或折叠「复算与来源」
+   △ R8a 行65 ### 2.1 本题输入、操作与输出
+   △ R1c 行138 2 个分号：`>` 比较是否更晚；`len(table)` 取行数；`== 2` 比…
+   △ R7a 行142 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R1c 行235 2 个分号：分数和 $75+85=160$；列和 `[160,5]`；全和 165。
+   △ R1c 行236 2 个分号：`=` 保存值；`==` 比较相等；`assert` 在条件为假时报错停…
+   △ R1c 行241 2 个分号：来源核查范围：完整题面来自源 notebook cell 24；API …
+【汇总】 {'total_pages': 0, 'noncontent': [], 'content_pages': 0, 'sec2_cjk': 253, 'note_cjk': 3115, 'leaf_n': 1, 'concept_n': 1, 'terms_n': 0, 'strict': True}
+【判定】 PASS（机器可验证项；仍须教学、计算运行与原题回源核对） 
+【教学边界】本脚本未评估教学可读性；须独立子代理按高中知识起点审查，零报错不能作为教学质量指标。
+====================================================================================================
+JSON:{"file": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\root-is6400-c18c4ad269d7-publication\\maintenance.md", "profile": "current", "teaching_assessment": "not_assessed_by_script", "C": {"spec": "2026-10-21", "hard": [], "warn": [], "source_coverage": {"status": "unverified_without_manifest", "checked_questions": 0, "hard": [], "warnings": []}, "limits": ["机检通过不代表解释正确或读者已理解；页码引述不证明该页已实质讲解。", "纯数字等式只核支持的四则/幂/开方及显示精度；不执行代码、不验证符号推导或模型结果。", "无显式源题清单时，无法验证漏整题/原文保真；有清单也只核其字面契约，清单抄写与逐问语义仍需回源。"]}, "historical": {"spec": "2026-09-16", "G": {"G1 密度 §2 字/内容页 ≥ 250": [null, null], "G2a 粒度 术语数/leaf 小节 ≤ 1.6": [0.0, true], "G2b 粒度 内容页/leaf 小节 ≤ 2.5": [0, null], "G2c 承载术语的小节 ≥ 150 字": [[], true], "G3a 小节首元素为段落": [[], true], "G3b 公式有符号表（或符号已在前文解释）": [[], true], "G3c 有公式的小节有数字例子": [[], true], "G3d 代码三件套": [["2.1"], false], "G6 ### 单元「所以呢」覆盖率 ≥ 0.80": [[0.0, ["2.1"]], false]}, "E": [["2.1", "代码型", ["缺 是什么", "缺 所以呢"]]], "verdict": "FAIL"}, "verdict": "PASS（机器可验证项；仍须教学、计算运行与原题回源核对）", "legacy_problems": [], "legacy_info": {"L5_围栏数": 10, "L5_details": [2, 2]}, "G": {}, "E": [], "summary": {"file": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\root-is6400-c18c4ad269d7-publication\\maintenance.md", "total_pages": 0, "noncontent": [], "content_pages": 0, "sec2_cjk": 253, "note_cjk": 3115, "leaf_n": 1, "concept_n": 1, "terms_n": 0, "strict": true}, "sections": [{"sec": "2.1 本题输入、操作与输出", "num": "2.1", "level": 3, "cjk": 253, "chars": 727, "own_cjk": 253, "bq_ratio": 0.16, "code_blocks": 1, "pages": [], "labels": [], "type": "代码型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 0, "code_bad": 1, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 所以呢"]}], "R": {"strict": true, "stats": {"sentences": 127, "mean": 28.8, "p50": 28, "p90": 47, "max": 62, "over80": 0, "over120": 0, "long_share": 0.0, "exempt": 0, "table_max_columns": 3, "table_max_cell_units": 26, "table_max_cell_line": 28, "measurement_version": "v2"}, "hard": [], "warn": [["R4c", 27, "单元格 2 句"], ["R1c", 45, "4 个分号：中文限定词：`current time` 要运行时读时钟；`the in…"], ["R7a", 55, "绝对路径；移到 §9 或折叠「复算与来源」"], ["R8a", 65, "### 2.1 本题输入、操作与输出"], ["R1c", 138, "2 个分号：`>` 比较是否更晚；`len(table)` 取行数；`== 2` 比…"], ["R7a", 142, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R1c", 235, "2 个分号：分数和 $75+85=160$；列和 `[160,5]`；全和 165。"], ["R1c", 236, "2 个分号：`=` 保存值；`==` 比较相等；`assert` 在条件为假时报错停…"], ["R1c", 241, "2 个分号：来源核查范围：完整题面来自源 notebook cell 24；API …"]]}}
+
+发布机械门槛：PASS（不代表教学或视觉通过）
+
+仅机械预检；尚未验教学记录，不构成发布授权。

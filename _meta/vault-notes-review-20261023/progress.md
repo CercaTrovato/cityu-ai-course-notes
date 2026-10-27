@@ -21,8 +21,8 @@ status: in-progress
 
 ## 本次真实统计（2026-10-26，按 execution.json 当前逐项状态）
 
-- 已教学验收并正式写回：43；42份适用各端闭合，本批Git待。
-- 已启动未写回：13；未开始：13。合计69，26份未正式写回，全库未完成。
+- 已教学验收并正式写回：52；43份适用各端闭合，本批Git待。
+- 已启动未写回：17；未开始：0。合计69，17份未正式写回，全库未完成。
 
 ## 69 份逐篇进度
 
@@ -57,36 +57,36 @@ status: in-progress
 | IS5542 | `IS5542_GenAI_in_Business/notes/M04-设计思维-业务机会识别与AI创意工作坊.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 10目标精确增量/CAS原子写/回读；3无增量或不适用，详dependency-sync.json / 既有学习页16属性重载；备注前插/旧后缀精确，其他15含真checked/已加载关联保持 / 已推送7ef1f012…并核远端main；59blobs精确/10共享增量/223非本批文件保持 |
 | IS5542 | `IS5542_GenAI_in_Business/notes/M05-Agentic-AI时代与FDE实践.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 5精确增量/CAS原子回读；4无增量 / 既有学习页16属性重载；备注前插/旧后缀精确，其他15含真checked/已加载关联保持 / 已推送7ef1f012…并核远端main；59blobs精确/10共享增量/223非本批文件保持 |
 | IS6400 | `IS6400_Business_Data_Analytics/notes/M01-导论-商业数据分析全景与工具链.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确字节回读；适用元数据/资产尺寸维护单列 / 9精确增量已CAS原子/回读；4无增量 / 既有学习页16属性，备注前插/旧后缀保持；路径两课程码前缀校正，M01/T01双入口保留，其余14含真checked保持 / 已推送018e60ff…并核远端main；105blobs精确/24共享增量/216非本批文件保持；IS64M01仅公开副本脱敏1教师邮箱 |
-| IS6400 | `IS6400_Business_Data_Analytics/notes/M02-预测分析-线性回归.md` | 审修中 | replacement targeted independent, original full evidence retained | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS6400 | `IS6400_Business_Data_Analytics/notes/M02-预测分析-线性回归.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 16精确增量/CAS原子回读，0无增量或不适用；同源共用计划只应用一次 / 既有学习页16属性重载；备注前插/旧后缀精确，路径课程码校正，其他14含真checked/关系保持 / 本批待保存 |
 | IS6400 | `IS6400_Business_Data_Analytics/notes/M03-数据类型与描述性分析.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 11精确增量/原子回读；2无增量；根表先合队列后；共享小节表格空行纯维护 / 既有学习页16属性重载；备注前插/旧后缀精确，路径课程码校正，其他14含真checked/加载关联保持 / 已推送eaf50f7e…并核远端main；41blobs精确/11共享增量/224非本批文件保持 |
-| IS6400 | `IS6400_Business_Data_Analytics/notes/M04-特征工程-特征重要性与降维.md` | 审修中 | resume author repair, original full reviewer defects pending targeted closure | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS6400 | `IS6400_Business_Data_Analytics/notes/M04-特征工程-特征重要性与降维.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 10精确增量/CAS原子回读，3无增量或不适用；同源共用计划只应用一次 / 既有学习页16属性重载；备注前插/旧后缀精确，其他15含真checked/关系保持 / 本批待保存 |
 | IS6400 | `IS6400_Business_Data_Analytics/notes/M05-聚类-Kmeans层次与DBSCAN.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 6共享增量已应用一次并回读；4无增量或不适用 / 既有学习页16属性重载；备注前插/旧后缀精确，其他15含真checked/已加载关联保持 / 已推送273d21e6…并核远端main；59blobs精确/9共享增量/226非本批文件保持 |
 | IS6400 | `IS6400_Business_Data_Analytics/notes/M06-分类-决策树集成SVM与不平衡学习.md` | 审修中 | resume frozen author candidate; prior reviewer only stage1, full review incomplete | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS6400 | `IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 9精确增量/CAS原子回读；7无增量 / 既有学习页16属性重载；备注前插/旧后缀精确，其他15含真checked/已加载关联保持 / 本批待保存 |
-| IS6400 | `IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA.md` | 审修中 | resume baseline/source-only author task | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS6400 | `IS6400_Business_Data_Analytics/notes/T01-Jupyter入门与Pandas基础.md` | 审修中 | new author, same-source pack but per-item full scopes | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS6400 | `IS6400_Business_Data_Analytics/notes/M07-时间序列I-平滑趋势与季节性.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 9精确增量/CAS原子回读；7无增量 / 既有学习页16属性重载；备注前插/旧后缀精确，其他15含真checked/已加载关联保持 / 本批M02标题纯回链维护待保存 |
+| IS6400 | `IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 8精确增量/CAS原子回读，5无增量或不适用；同源共用计划只应用一次 / 既有学习页16属性重载；备注前插/旧后缀精确，其他15含真checked/关系保持 / 本批待保存 |
+| IS6400 | `IS6400_Business_Data_Analytics/notes/T01-Jupyter入门与Pandas基础.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 8精确增量/CAS原子回读，4无增量或不适用；同源共用计划只应用一次 / 既有学习页16属性重载；备注前插/旧后缀精确，其他15含真checked/关系保持 / 本批待保存 |
 | IS6400 | `IS6400_Business_Data_Analytics/notes/T02-回归实战-从合成数据到Airbnb定价.md` | 审修中 | current API explicitly gpt-6.1-sol author scratch task started; independent review separately required | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS6400 | `IS6400_Business_Data_Analytics/notes/T03-数据探索实战-Iris与Airbnb的描述统计.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS6400 | `IS6400_Business_Data_Analytics/notes/T04-特征选择与PCA实战-Iris.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS6400 | `IS6400_Business_Data_Analytics/notes/T05-聚类实战-Kmeans层次密度与谱聚类.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS6400 | `IS6400_Business_Data_Analytics/notes/T07-分类实战-信用审批与欺诈识别.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS6400 | `IS6400_Business_Data_Analytics/notes/T08-时间序列实战-销量与季度季节性.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS6400 | `IS6400_Business_Data_Analytics/notes/T03-数据探索实战-Iris与Airbnb的描述统计.md` | 审修中 | current API author full candidate ready or independent pipeline pending; actual reports/scope separate | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS6400 | `IS6400_Business_Data_Analytics/notes/T04-特征选择与PCA实战-Iris.md` | 审修中 | current API author full candidate ready or independent pipeline pending; actual reports/scope separate | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS6400 | `IS6400_Business_Data_Analytics/notes/T05-聚类实战-Kmeans层次密度与谱聚类.md` | 审修中 | current API author full candidate ready or independent pipeline pending; actual reports/scope separate | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS6400 | `IS6400_Business_Data_Analytics/notes/T07-分类实战-信用审批与欺诈识别.md` | 审修中 | current API author full candidate ready or independent pipeline pending; actual reports/scope separate | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS6400 | `IS6400_Business_Data_Analytics/notes/T08-时间序列实战-销量与季度季节性.md` | 审修中 | current API author full candidate ready or independent pipeline pending; actual reports/scope separate | 未开始 / 未开始 / 未开始 / 未开始 |
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/assignment/graded/A01-ai-accounting-project/notes/任务说明.md` | 修订并验收 | complete_for_provided_material_scope_all_sync_and_remote_verified | full-v2 cfec teaching+spacing nonteachingD1/CAS/atomic/exactread / 14目标9已写回/5无增量 / 两既有行只前插要求摘要；重载九属性回读，旧摘要及其余8字段/未开始/日期均保持 / 已提交推送并核远端：a73cb54a4c7a9cd617e52a22c89a2a953871ab76 |
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/assignment/practice/midterm-mock-20261011/答案与中文解析.md` | 修订并验收 | complete_for_provided_material_scope_all_sync_and_remote_verified | full-v2/CAS/atomic/exactread / 13目标6写回/7无增量 / 原创非计分模拟卷，不是教师任务或module材料，无新增DDL/本人学习事实；依Notion规则仅练习本地索引，不创建行或更改已过考试/成绩。本轮未外部回读，不冒称Notion新同步。 / 已提交推送并核远端：2977f39b5df37e41da87821f69b2213897589edd |
 | EF5560 | `EF5560_Fintech_and_AI_in_Finance/assignment/graded/A01-ml-investment/notes/开始这里.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确字节回读；适用元数据/资产尺寸维护单列 / 6精确增量已CAS原子/回读；7无增量 / 既有作业页9属性，只摘要前插/旧后缀保持，其余8含已提交/截止/关联/来源链接逐值不变 / 已推送018e60ff…并核远端main；105blobs精确/24共享增量/216非本批文件保持；IS64M01仅公开副本脱敏1教师邮箱 |
-| IS5113 | `IS5113_AI_Ethics_and_Regulations/assignment/graded/A01-traffic-camera/notes/tutorial.md` | 审修中 | new author started, no prior pass | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS5113 | `IS5113_AI_Ethics_and_Regulations/assignment/graded/A02-group-project/notes/任务说明.md` | 审修中 | new author started, no prior pass | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS5542 | `IS5542_GenAI_in_Business/assignment/graded/A02-design-thinking-reflection/notes/reflection-review-notes.md` | 审修中 | current API explicitly gpt-6.1-sol author scratch task started; independent review separately required | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS5542 | `IS5542_GenAI_in_Business/assignment/graded/A03-venture-capital-reflection/notes/反思阅读与来源说明.md` | 审修中 | current API explicitly gpt-6.1-sol author scratch task started; independent review separately required | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A01-week1/notes/tutorial.md` | 审修中 | new author, same-source pack but per-item full scopes | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS5113 | `IS5113_AI_Ethics_and_Regulations/assignment/graded/A01-traffic-camera/notes/tutorial.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 9精确增量/CAS原子回读，0无增量或不适用；同源共用计划只应用一次 / 既有作业页9属性重载；要求摘要前插/旧后缀精确，其他8含提交/评分/截止/关系保持 / 本批待保存 |
+| IS5113 | `IS5113_AI_Ethics_and_Regulations/assignment/graded/A02-group-project/notes/任务说明.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 9精确增量/CAS原子回读，0无增量或不适用；同源共用计划只应用一次 / 既有作业页9属性重载；要求摘要前插/旧后缀精确，其他8含提交/评分/截止/关系保持 / 本批待保存 |
+| IS5542 | `IS5542_GenAI_in_Business/assignment/graded/A02-design-thinking-reflection/notes/reflection-review-notes.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 6精确增量/CAS原子回读，8无增量或不适用；同源共用计划只应用一次 / 不适用：既有来源阅读导览审修，无新增所追踪材料/版本/路径/任务或DDL/本人状态；导览正文不复制看板，未声称外部回读 / 本批待保存 |
+| IS5542 | `IS5542_GenAI_in_Business/assignment/graded/A03-venture-capital-reflection/notes/反思阅读与来源说明.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 6精确增量/CAS原子回读，8无增量或不适用；同源共用计划只应用一次 / 不适用：既有来源阅读导览审修，无新增所追踪材料/版本/路径/任务或DDL/本人状态；导览正文不复制看板，未声称外部回读 / 本批待保存 |
+| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A01-week1/notes/tutorial.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 8精确增量/CAS原子回读，4无增量或不适用；同源共用计划只应用一次 / 既有作业页9属性重载；要求摘要前插/旧后缀精确，其他8含提交/评分/截止/关系保持 / 本批待保存 |
 | IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A02-week2/notes/任务说明.md` | 审修中 | current API explicitly gpt-6.1-sol author scratch task started; independent review separately required | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A04-week3/notes/任务说明.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A05-week4/notes/开始这里.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/notes/开始这里.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A07-week5/notes/学习与复现补充.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A07-week5/notes/开始这里.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A09-week8/notes/任务说明.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
-| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A09-week8/notes/开始这里.md` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A04-week3/notes/任务说明.md` | 审修中 | current API author full candidate ready or independent pipeline pending; actual reports/scope separate | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A05-week4/notes/开始这里.md` | 审修中 | current API author full candidate ready or independent pipeline pending; actual reports/scope separate | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/notes/开始这里.md` | 审修中 | current API author full candidate ready or independent pipeline pending; actual reports/scope separate | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A07-week5/notes/学习与复现补充.md` | 审修中 | current API author full candidate ready or independent pipeline pending; actual reports/scope separate | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A07-week5/notes/开始这里.md` | 审修中 | current API author full candidate ready or independent pipeline pending; actual reports/scope separate | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A09-week8/notes/任务说明.md` | 审修中 | current API author full candidate ready or independent pipeline pending; actual reports/scope separate | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A09-week8/notes/开始这里.md` | 审修中 | current API author full candidate ready or independent pipeline pending; actual reports/scope separate | 未开始 / 未开始 / 未开始 / 未开始 |
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/assignment/practice/M01-Case1-逐笔交易与会计等式.md` | 修订并验收 | full61+targetedv2,main sources/calc/visual/warnings/fullgate0/writebackdone | full-v2/CAS/atomic/exactread;two metadatafields nonteachingmaintained / 13适用目标4进度维护已回读，9无增量；无新概念/原数变化 / 不适用：无新module材料或确定计分/DDL，不为独立练习新建行 / 内容已推送并核远端；37blob逐SHA一致，69其他文件保留 |
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/assignment/practice/M02-Case2-T形账户与试算表.md` | 修订并验收 | full61+targetedB1-B5closedv2;main source/nums/visual/warnings/gate0/CASdone | full-v2/CAS/atomic/exactread;two framework metadatafields separatelymaintained / 13目标4纯进度维护已回读/9无增量 / 不适用：无新模块材料或确定计分/DDL，不为练习新增行 / 内容已推送并核远端；40blob逐SHA一致，70其他文件保留 |
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/assignment/practice/M03-Case3-共同比资产负债表.md` | 修订并验收 | full61 two-stage + targetedB1-B5closed;main source/calculation/visual/warnings/fullv2/CASdone | full-v2/CAS/atomic/exactread / 13目标9已写回/4无增量；已审内容镜像与纯状态维护 / 不适用：无模块新材料/确定计分或DDL / 内容已推送并核远端；62blob逐SHA一致，77其他文件保留 |
@@ -94,9 +94,9 @@ status: in-progress
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/assignment/practice/M05-Case5-销售与收款REA核心模型.md` | 修订并验收 | full61 two-stage+targetedF1-F3closed;realofficialvisual/nums/C4R53dispositions/gate0/exactrawresume done | full-v2/CAS/atomic/exactread;note46085+8currentgraphicassets / 13目标10已写回/3无增量；图源8另已CAS；历史图示报告原文保留 / 不适用：无模块新材料/确定计分DDL，主M05状态不升级 / 内容已推并核远端；84blob逐SHA一致，76其他文件保留 |
 | AC6761 | `AC6761_Artificial_Intelligence_Accounting/assignment/practice/M06-Quiz2-按销售员筛选销售.md` | 修订并验收 | new full2stage + original targeted F1-F3 closed; YAML-only mapping exact | CAS atomic/精确字节回读；实际维护映射见receipt / 4适用目标已写并精确回读；其余无新增术语/考试/行政/材料/转录；源题索引补原件和解析链接 / 不适用：独立练习无新module或已确认计分/DDL，不新建行、不改本人字段、不冒称额外在线回读 / 已推送69bec8e0…并核远端main；205提交blobs逐SHA一致，公开联系方式变体另有映射 |
 | EF5560 | `EF5560_Fintech_and_AI_in_Finance/assignment/graded/A01-ml-investment/work/EF5560-A01-逐步实操.ipynb` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确字节回读；适用元数据/资产尺寸维护单列 / 与A01指南共同6目标精确增量/7无增量；2图源资产先写，native-acceptance与svg-maintenance单列 / 既有作业页9属性，只摘要前插/旧后缀保持，其余8含已提交/截止/关联/来源链接逐值不变 / 已推送018e60ff…并核远端main；105blobs精确/24共享增量/216非本批文件保持；IS64M01仅公开副本脱敏1教师邮箱 |
-| IS6400 | `IS6400_Business_Data_Analytics/assignment/00-overview/前三周作业复盘.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 5共享增量已应用一次并回读；7无增量或不适用 / 不适用：既有assignment复盘解释审修，无新增M/T条目、行政事实或个人状态增量；未声称外部回读 / 已推送273d21e6…并核远端main；59blobs精确/9共享增量/226非本批文件保持 |
-| IS6400 | `IS6400_Business_Data_Analytics/assignment/00-overview/官方参考答案对照与复盘-2026-10-20.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 5共享增量已应用一次并回读；7无增量或不适用 / 不适用：既有assignment复盘解释审修，无新增M/T条目、行政事实或个人状态增量；未声称外部回读 / 已推送273d21e6…并核远端main；59blobs精确/9共享增量/226非本批文件保持 |
-| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/olist-data-guide.ipynb` | 未开始 | 未开始 | 未开始 / 未开始 / 未开始 / 未开始 |
+| IS6400 | `IS6400_Business_Data_Analytics/assignment/00-overview/前三周作业复盘.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 5共享增量已应用一次并回读；7无增量或不适用 / 不适用：既有assignment复盘解释审修，无新增M/T条目、行政事实或个人状态增量；未声称外部回读 / 本批grade来源局部修正待保存 |
+| IS6400 | `IS6400_Business_Data_Analytics/assignment/00-overview/官方参考答案对照与复盘-2026-10-20.md` | 修订并验收 | original complete two-stage + all actual targeted defects closed; original identities/scopes preserved | CAS原子/精确回读；原审/作者维护/主写状态维护按真实SHA分别承接 / 5共享增量已应用一次并回读；7无增量或不适用 / 不适用：既有assignment复盘解释审修，无新增M/T条目、行政事实或个人状态增量；未声称外部回读 / 本批grade来源局部修正待保存 |
+| IS6400 | `IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/olist-data-guide.ipynb` | 审修中 | current API author full candidate ready or independent pipeline pending; actual reports/scope separate | 未开始 / 未开始 / 未开始 / 未开始 |
 
 ## 原候选中排除的 16 份
 
@@ -609,3 +609,20 @@ M05正式4d2d9f44…，原独审教学14d5eb02…与后续状态/图验收说明
 M07真实教学候选ff97002c…，原两阶段全篇未变范围接替代新独审全部22组变化/依赖定向关闭（非重新全文）；仅审核状态字段维护后正式7ef73845…。45物理页/42内容页、3明确原题契约、7源、4图/必要同源窗口已按真实报告/源/重要计算核；B1两候选/两验证起点/冻结后独立测试和B2水平突变反例已修并独立复算，S16引文/approximately/lag169/选模图本次同步关闭。153绑定资产实核，原报告身份/变化diff/实际显示与147软提示逐类处置均保留；full gate一次exit0、L/C.hard/C.warn/R.hard0、历史G/E FAIL及原音/原生Obsidian等限制保留。CAS原子/精确回读，本地9精确增量7无增量，根表先合/队列后。Notion旧用户标签骨架屏/0width且reload无效；同一浏览器新标签实际加载成功后才定位M07（W08）真实行，16属性基线/备注前插/旧后缀与其他15属性重载核对，T08路径/本人行为不改。旧六本地403为真实历史，用户已确认额度恢复；当前API并行实际推进，新IS54两导览及T02/A02已启动，状态非完成。M04最终全篇/定向包已齐待root写，M08/T01两文已独审关闭待最终绑定；IS51两指南及IS54 A03按集中缺陷修，不重开全篇。M06新v3语义待定向，必要显示被Computer Use因Windows当前URL无法可靠判断而明确安全停止，未换接口绕过；不以DOM或旧图称显示通过。
 
 当前43/69正文写回，42适用各端闭合，本批Git待；26未写（13工作中/13未开始）。
+
+
+## 2026-10-27 IS6400 M07 内容远端闭合：43/69
+
+内容commit 6785bae91b5528924665c5f2ccf0fefedd2cac8e 已推并核远端main，36blobs逐SHA一致，9共享目标仅本批及已声明关联修复增量，224非本批文件原字节保持；3214条归档/源码/CRLF诊断按范围核，正常钩子/本人署名/无force或AI署名。原独审、作者维护与主写状态维护分别按真实身份/字节/来源承接，不冒新全文审读；本地适用同步及Notion16属性回读均闭合，个人字段不改。链接/README/完整性0。现43/69各端闭合，26未写（13工作中/13未开始）；EF06两法源仍hold。状态回执本地随下一内容批次Git，不另审纯状态。
+
+
+## 2026-10-27 九份正式写回已落盘，52正文/43各端闭合
+
+M02/M04/M08/T01/A01及IS5113两指南、IS5542两反思导览共9份，原全篇与真实独立定向链/一次正式full门槛及774绑定资产已核，全部正式基线未漂移后CAS原子/精确回读。4份仅审核状态维护单列，其余保持受审原字节；6共用同步计划已先模拟全部唯一锚点，57次精确共享增量仅本篇合并，根表先合/队列后、同源计划不重复。三grade来源语义摘录按独审/changed门槛只改两旧复盘，原全篇证据保留，新增完成数0。九份适用Notion/各端Git收尾中，不能记全端完成。剩17未写全部已开始：T02/A02缺陷定向、其余13份同源作者/独审pipeline、M06文字通过但UI安全停止的显示hold、EF06法源hold；没有未开始项。旧作者包/失败及LF/CRLF更正如实保存，原件/个人学习提交/评分不改，当前进度状态本地待本批Git。
+
+
+## 2026-10-27 九份正文及适用各端同步收尾：52正文
+
+新增M02/M04/M08/T01/A01与IS5113两指南、IS5542两反思阅读导览共9份正式写回。774绑定资产、现场原件/候选/源基线和真实全篇/定向身份并集已核；每篇一次正式fullgate，原失败/源题机器契约未验证/历史G-E均据实保留。M02原审完整范围加替代31处来源与考频残句关闭；M04配方中心化与p30/p39源页残项关闭；M08完整46页和四桥关闭并保LF/CRLF真实更正链；T01三语法桥/图8与A01原四题逐文审定；IS51五问/真实历史稿与6页36菜单/33评分细项/链接时点分别核；IS54保本人状态，A03部署漏步已实修和同审闭合。九正文均CAS原子/精确回读，四份纯审核状态维护单列，未冒审者重读维护字节；6共用计划模拟全锚唯一后57次精确共享增量，根表先合队列后、同源只应用一次。两旧复盘3个grade来源语义摘录独审核+changed gate后只局部修，原全篇证据/完成数保持；M07/T02等入链纯维护按当前正式基线精确rebase，历史审计只修链接不改历史结论。七适用Notion页真实查询/旧备注保留/重载字段核，四学习页16属性（M02路径前缀校正其余14、其他15保持）、三作业页9属性要求摘要且其他8含本人已提交/已评分/截止保持；两IS54导览Notion不适用，不假回读。根最终链接发现1历史锚已精确修，README/完整性按本批真实核，不以机械代教学。现69份全部启动、52正文/43旧各端已闭合，本批Git待；剩17包含完整已审包待写、缺陷定向与M06/EF06真实外部hold，用户已明确允许从已确认本机URL的内置浏览器恢复M06只读显示。
+
+当前52/69正文写回，43适用各端闭合，本批Git待；17未写（17工作中/0未开始）。

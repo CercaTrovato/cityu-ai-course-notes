@@ -1,0 +1,703 @@
+{
+  "schema": "note-review-v2",
+  "note": "IS6400_Business_Data_Analytics/notes/M02-预测分析-线性回归.md",
+  "scope": "full",
+  "source_sha256": "1ff1af31bf735e3c7efb34d24277aa1b0b8cf6a53e18d38184f9981fd3835ee6",
+  "candidate_sha256": "33f7e95e2cf29567be10c5b4a37d24bf98195f87e29229969f2b2566dd3848d2",
+  "review_file": "root-review.md",
+  "review_sha256": "0207b6b56469a2243450707df84a44d3d34b3a1024369d43bda64d9882096f86",
+  "unresolved": [],
+  "checks": {
+    "understanding": {
+      "status": "passed",
+      "evidence": "original reviewer full two-stage + replacement exact targeted closure; root-review.md"
+    },
+    "sources": {
+      "status": "passed",
+      "evidence": "source-inventory/calculation-evidence/source-checks-final and root-version-checks.json; explicit missing data retained"
+    },
+    "warnings": {
+      "status": "passed",
+      "evidence": "warnings-final.json and original full classification/independent actual source certainty closure"
+    },
+    "visuals": {
+      "status": "passed",
+      "evidence": "actual original display records plus root-v7-visual three final windows, unchanged figure/code source hashes; no native Obsidian claim"
+    }
+  },
+  "independent_review": {
+    "author_ids": [
+      "thread:01a17880-ce9e-7390-876c-f980eae405af",
+      "/root"
+    ],
+    "reviewer_id": "/root/resume_is6400_m02_targeted_61",
+    "perspective": "high-school-beginner",
+    "status": "passed",
+    "candidate_sha256": "33f7e95e2cf29567be10c5b4a37d24bf98195f87e29229969f2b2566dd3848d2",
+    "report_file": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\097-final-targeted-closure.md",
+    "report_sha256": "5c6f755e8b71853bbec271161e2759af0af1db94ec0bc7ceb20bf9f6a4ad0266",
+    "scope_union": "original full and first targeted unmodified evidence plus all31 source/exam-summary fixes and direct mappings independently closed; replacement not full reread"
+  },
+  "assets": [
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\000-L2-Linear_Regression.pdf",
+      "sha256": "04ed352014cf2e4eadf63e091a7b087b798c2b171c2944857441b180b2a66790"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\001-Week 2 Regression Analysis_With Prompt.ipynb",
+      "sha256": "e9c3d37f6dda1bf7a41e43f87ac21bd793787d501656c24edbdfa7fe5669575d"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\002-M02-transcript.txt",
+      "sha256": "252aa63e839c369e17842c69178bafb8c1c8715718f6c60c565c57b29d29a2a3"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\003-lecture-07.png",
+      "sha256": "4781a6dd69e43e118d42a5b7441db82e2ef79832a97535100b077a6f145d70c0"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\004-lecture-18.png",
+      "sha256": "c08da671f712747e052c3cb84000b2d3da2af7cea9129659cb42435ace51c585"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\005-lecture-40.png",
+      "sha256": "506723df4de6f09c9d0699c434f4e4d4fb721f968a0f19dae57cca02ed9b919f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\006-lecture-42.png",
+      "sha256": "b5c3d991d7f091b2264b73f50c36bec167b1d15294d32c3647b61405aee6f6eb"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\007-lecture-43.png",
+      "sha256": "87c2727497c45d05e67f5aaab011360c2caa69cf7cd3bcd0c93f5db45486e1fd"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\008-lecture-52.png",
+      "sha256": "2b3f8c9a9a7ebe1e22e94403e4e54b7f1ffb15e3388bee984668c3cdc28bae48"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\009-align.md",
+      "sha256": "dd17bfcd8223e35dbcf8a2225a593fade0eda3a7040466d58c3e7f4e77080966"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\010-author-applied.json",
+      "sha256": "3359a5d61445cc358f9f511a8411e8b9deb7d0af18fbb5c4c014f972e4675df8"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\011-author-findings.md",
+      "sha256": "1b2c197d38c699a3d229dbfe05bda1a3db157da221ef0e0fe25d85ba7af573cc"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\012-author-repairs.diff",
+      "sha256": "dabd0a663e962ac73a1b18658ad34182082a6d2795c5abaf6b5d933afe5b0232"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\013-baseline-precheck.txt",
+      "sha256": "d5c1cfbb16a3b1db93e452508f18532c6a505654f35088e0a9d0839fb5b4ab0a"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\014-baseline.md",
+      "sha256": "1ff1af31bf735e3c7efb34d24277aa1b0b8cf6a53e18d38184f9981fd3835ee6"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\015-calculation-evidence.json",
+      "sha256": "0076b9df793420043a0f354bb9391e0b9bda828274df2ee50ac3407d49ec7cc7"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\016-candidate-frozen-v1.md",
+      "sha256": "808a0cf64d980c7ebddb57c74c620bd9b591181e81a4f0fd3c2ed7538aa8231c"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\017-candidate-precheck.txt",
+      "sha256": "80de78abc80db58bd31c8c1767f4ca56444a97a9d5b8bf01c23eb2ffefca95bf"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\018-candidate-repair-draft.md",
+      "sha256": "01f3e35fb970c75ef6ca1c6dd5d9591d280b641505534a1853e3240258c28f36"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\019-candidate-root-v4.md",
+      "sha256": "876abbccac72539320e3139a6fc991ebc0b9ef6b7300e6a5519f898bc75b3c6c"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\020-candidate-root-v5.md",
+      "sha256": "15a22c3b73db1e3aeb6f323711caa935e066aaf963d4a6450fc52413f41041b6"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\021-candidate-root-v6.md",
+      "sha256": "1fd7a6ef8f7acd90b6fd0f056861b0650f0cf5b9f7334d493573331475a8774a"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\022-candidate-root-v7.md",
+      "sha256": "33f7e95e2cf29567be10c5b4a37d24bf98195f87e29229969f2b2566dd3848d2"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\023-candidate-stage1.md",
+      "sha256": "49830b1656d1412af820767b6b276b1ebca0fa2b99dbf62adf746704da3ac514"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\024-candidate.diff",
+      "sha256": "8ea4d2788184c0930591043975b6d76cf6fc443408322911eff592a57b9d353a"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\025-candidate.md",
+      "sha256": "72c0e36fffeb2865ee2ec73e61fb0ed40f108321e3bf97fcefdf439ba6e091d7"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\026-classroom-quotation-classification.json",
+      "sha256": "c48f06c7df87cf67088e3e9f87b7011c54bf36815453426baf39aaba8233f829"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\027-elasticnet-installed-doc.txt",
+      "sha256": "722b3cddcb05f16cc303465a819ae24abf05cda68867cd94eb750d3d72a3c725"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\028-frozen-precheck.txt",
+      "sha256": "cf47b4a8f613ec5791a7365afd072643644b2f8515db34ebf81a11c112cdcb9e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\029-graph-01.mmd",
+      "sha256": "0ada701993c180abaae3b078596430d7fdce670d42b42f39c6a5653044905f8f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\030-graph-02.mmd",
+      "sha256": "4133a400b14ccd09b8678c5d26aad37f0cfefdb45b031b6485fdcc8973923770"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\031-graph-03.mmd",
+      "sha256": "c8be5800a0c86d444a037fd793b722df5c4a2e4d0e1cd3446385ebe30f2c0116"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\032-graph-04.mmd",
+      "sha256": "503b13a7f6d8d7ca3049ae08674abefaf94ce92cf7dc731dca4c0499d7d1e08e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\033-graph-05.mmd",
+      "sha256": "a476ecc77729b9016bbe3920ea5b98edcf05a619f7b4aab223e32747d0724c17"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\034-graph-06.mmd",
+      "sha256": "5bee788668242f80034acdcbca74f3c053a35c489c47533f5351e5c647afa2fe"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\035-graph-07.mmd",
+      "sha256": "fc2f2106c79feb700abddc9347812fcb927bafbaca993c3d01bbac3f8d6f0ef3"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\036-graph-08.mmd",
+      "sha256": "4500c188ccc8b55113b7d61805381caf31410a60a85211e9a9521a4f2b972f05"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\037-graph-09.mmd",
+      "sha256": "9dcd91764a4e35325522ef4da35be9990e4efc7f1fb179780f56bbe6ae1db11b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\038-graph-10.mmd",
+      "sha256": "f73950d89ed74c6ace755df0409523cd5126c5c399a87ef1cfc8cbfc3cc4e74c"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\039-graph-11.mmd",
+      "sha256": "afccf803145bc883ac820388e1b363e09673827fc3ad01f70032a1b3fbe660c3"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\040-graph-12.mmd",
+      "sha256": "133d452f65350aae96739b4f961191c4faa0492a2d80c7cf06899167f292ca97"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\041-graph-13.mmd",
+      "sha256": "23f85e9ac193a78c0e567517f0a9f311eb98e93dd1a4f95646037a49044b3092"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\042-graph-14.mmd",
+      "sha256": "7ad983a410c3f1f4ee4154df03587d04df756b26302c95a13bea1b0c58354111"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\043-graph-15.mmd",
+      "sha256": "bbfe8ef1eb4a8f4c9d38c02e4beda506522ea6fb9b065d07a973c786ee016b1f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\044-graph-16.mmd",
+      "sha256": "4bf75e36aa2bd4efb6ddccd889c5e5635bb592376c8c2ef608cde2b878841135"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\045-graph-17.mmd",
+      "sha256": "fd59ea4bf689b275f467386a73803008b2c564e8bd39b917d20726b62e3a4dd3"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\046-graph-18.mmd",
+      "sha256": "2912c34b993543210ce837ea28fee97199848d62293e3ab02e74b77988dca343"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\047-graph-19.mmd",
+      "sha256": "ba0d02ef98194b832b442e395d7d50e1c6eec3ae4ad9807bc5379ab7775b884b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\048-graph-20.mmd",
+      "sha256": "d58e94db547a48c2a96f22e6427bbf5c495f7ad8d06d9139b4492231aad738a9"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\049-graph-21.mmd",
+      "sha256": "6f35b7d084b81cd4477f81583b77ec8a227901e4811184948aa57a8ed0fe50f1"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\050-graph-sources.json",
+      "sha256": "e78851b5a30f07c40dc5058217cecac615296f5a61e3dc40af9409e37027e379"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\051-heading-dependent-links.json",
+      "sha256": "6e98fd02f3632e6ba42bb9130a19430739f1ed33577615107d871056dff777d3"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\052-heading-repairs.json",
+      "sha256": "4e32f9919bd2047dac965c7ecc90d5ed03c12940e5531e9ab2e5385c929831eb"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\053-historical-to-current.diff",
+      "sha256": "08d362ade654f626f0217f3f743a3d8b7ca85fa164ddaf93d12e7f65048c3233"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\054-figure-figures.py",
+      "sha256": "23224683a39fe19cf94b8f165896871ad64ac3c2ea1262276c95956da20bf380"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\055-figure-gd-states.svg",
+      "sha256": "b77ce95e1db250bc155801385216c784cb047127f94fabcdbeb047dc52cea1f2"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\056-figure-README.md",
+      "sha256": "6442afca309b196793a5923fb3d2fe4d83bd79183c8c66a5cdb9e1da13fb8a13"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\057-figure-regularization-paths.svg",
+      "sha256": "4924a32b718d8f74b160e19c28b316a13cef148df490de0e8d3949a9cd91c290"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\058-figure-results.json",
+      "sha256": "69e46b4411c77385908379117771e04cd3148043743aec933e5fe18eeb1ea69a"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\059-final-source-closure-v20.md",
+      "sha256": "84322ed25603c05bc953c55cb7cb0ec93ac8097a900c27d8caeccfd9140ad7bb"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\060-m02-added-mechanisms-results.json",
+      "sha256": "395f9b1bfe602559f6ea94a77613c342e15c4a636816d5f6b27005b58da30e95"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\061-m02-independent-r-check.py",
+      "sha256": "4b2951ffc69325561d09051b930b37d567c74b0fce030cf3fbb269e6d765973d"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\062-m02-independent-r-results.json",
+      "sha256": "a34116420400b988c61852e3da8cc1a0d06f308947a897cf647d6ab130e33f31"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\063-m02-lasso-coordinate-results.json",
+      "sha256": "65281f5fef57ad2b99855ae23dbcc3afaf964b1467bacf4444eb01a8a771db00"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\064-m02-mechanism-results.json",
+      "sha256": "b0ccc0e7c97ecb1ff4a6dd2275c0ff4e52aca45e94ec17c47fd15cb6fe62be1c"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\065-recomputed.json",
+      "sha256": "60eb0ffad578611efb90adb87156ae0b85fcff976a2b4191f24f072b520084fd"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\066-source-index.json",
+      "sha256": "36f86f17413d942e35728e9c6c3433e6583e11340a28500eaf9b8dabaec237ce"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\067-verify_m02_added_mechanisms.py",
+      "sha256": "0f8611a6ee778b12eb7babe4feee8b32e80f0a5703bb42a8e28cd4d20a627f79"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\068-verify_m02_lasso_coordinates.py",
+      "sha256": "4c987caa2a0dd699b98881f8a5da0355bd090baf1368751ab7880a3f5f77d3ee"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\069-verify_m02_mechanisms.py",
+      "sha256": "54fa7c38a251ad23bfdc4101a0b897bdeb5f2f532fca8803288db9ced7d1f008"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\070-inherited-evidence.json",
+      "sha256": "594ce1e7bfa6e84e1c3e8d192f4a42a801c573254989300f08cc93c9e7ad4db9"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\071-integrity-final.json",
+      "sha256": "7e2085463171910d26f0a8610df05ae79f6dcdcb10128dcde7eb28ac304e3417"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\072-integrity-snapshot.json",
+      "sha256": "36ae46a71f3ee72222823b8ac924e721b77ffa81b2878b85da059a6aeac721d1"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\073-lecture-numbered.txt",
+      "sha256": "a339cc53677cbef70784d5b5d581df9056de27f83a1d21a8ea5037a592d15a0b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\074-lecture.txt",
+      "sha256": "0e10e14d4772d4972eb5a0fbb13e19bee474fe8ea8329058c9adf59b088a1cdf"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\075-links.json",
+      "sha256": "3bfa35466b2f1fa763157ca8a63a0d3cb3171149bee0a0a71db44d3ceaaf2963"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\076-model-check.json",
+      "sha256": "043498bf84a5f1484573c985f221d63497870d01bb6df3403333847e43493185"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\077-notebook-code.txt",
+      "sha256": "96309f6430c7a4c54b9b7ee76d821413957054657443bccecf63cd9478274925"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\078-notebook-output-evidence.json",
+      "sha256": "5ef4dd443cc30b7200c34c7ec7f9b1b1a0ceb4caec39084f5f079ff0ba43aebd"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\079-notebook-output-public.json",
+      "sha256": "df5451cfb1d4bba1740c055b58cd6dcd8cdddbe1b0e1dfe83d7e0bdfe2fa43a6"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\080-notebook-source.json",
+      "sha256": "2ea6f151eea5ed1c3289e14e3028036c0e78ec08b6f1780a39de4991baed1176"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\081-parallel-findings.md",
+      "sha256": "27068adfa6bf07e41b9fee60e12b311dbb47367c1f7a52eae58b6ec90f3a7f1e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\082-PROGRESS.md",
+      "sha256": "853cc2083f0a7c93b250ad8f94c4cfc629d69872ffdf96cd38b6fd0e9ce5ce90"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\083-publication-plan-preliminary.json",
+      "sha256": "5d35c8e8b0f4b5337b1d6bd4218385a30beaf024899992c62fd13cb3d9af8f02"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\084-publication-plan-validation.json",
+      "sha256": "40e58fdf126d8f8e6ab0ad940f4fb841273bdf4b6673bc92775aaa2386e5a822"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\085-publication-plan.json",
+      "sha256": "d84731fb16dadd393a96da328ee4275826440bf722ad0c4aa5315b2b9c052154"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\086-qa-inventory.json",
+      "sha256": "554154267873a71d367211b2116766836c704f6b10ffd2a8de8c92e64d4b1db6"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\087-question-pack.diff",
+      "sha256": "07a8b776383a019f7725cae4b120bfe3bb39de8333ac8be9505025b9bdbd5df6"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\088-quote-inventory.json",
+      "sha256": "bae1f798708caedf08cac47701faf8cf9f93b166d1c03761c98443566ba3a17f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\089-repair-acceptance.md",
+      "sha256": "c8819831f1a2d56d3ac4424186b36fe9785bbe8883e9ea38c677fb2da30a0046"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\090-repair-cleanup.diff",
+      "sha256": "63f4e8d7cd40fe94e0af3b95ffb77dd990c24a8bb7eb5a76eb26b771ec0af644"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\091-repair-draft.diff",
+      "sha256": "6b44957bf33e70b396ea64924129a2f93ddff41e6cc291cdb5f06a5a7ffff8a4"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\092-repair-v1.diff",
+      "sha256": "a17e1938d169f3ce7572f66c995614e180c2c875de991839e82b36a5d1ab8d3f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\093-repaired-precheck-closed.txt",
+      "sha256": "cd270bdab88ec82ad9975bcffd9f77deabfef4d0286ad879ab0acae448022723"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\094-repaired-precheck.txt",
+      "sha256": "bdf55c3258d896d038b4f5e03002e5f5a2c1e4ed43911e110369633a9956adcd"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\095-residual-scope-fix.diff",
+      "sha256": "88b9610695b70692df1bbd4cea184019b8eefdb679f90abdc7ff2ae77269317d"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\096-residual-scope-fix.json",
+      "sha256": "08e49dd079f062f6d213049689fdf42511f0904e3990015f25e720011258fd4b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\097-final-targeted-closure.md",
+      "sha256": "5c6f755e8b71853bbec271161e2759af0af1db94ec0bc7ceb20bf9f6a4ad0266"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\098-final-verification.json",
+      "sha256": "87332eda72ca59149bd674ba61624210da427e30f59b875586b6d2c120619f87"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\099-make-patch.py",
+      "sha256": "d59eadda3ada46a1314d5572745a23419748b0c1e1d97e838f3662e137a08612"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\100-mapping-dependency-residuals.json",
+      "sha256": "976c913eaa7b939f92a36a0fb8068fc035dd7d0f448b434c8d76f8584caeb9f8"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\101-stage-1.md",
+      "sha256": "3d575425fd821165c3ee868dcd0aff3a4b83452891ecaa6ebfd54a0003e49f24"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\102-targeted-patch.json",
+      "sha256": "52125a7fb8c3bf14838c7a41bf774802d762c79b93d9ef9fb877a77536fa2209"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\103-targeted-review.md",
+      "sha256": "23017d64db61ec13b13160a332c78ac690e7402f3922c6d54c6b0113bf21a08f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\104-v5-verification.json",
+      "sha256": "4b3e61fefe119f86bc84edb5d84ea42e6f4a2ba8c23e091e74ad99271e3e5c4f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\105-verify-v5.py",
+      "sha256": "32b64fae247b19e2eb4904a853c4da606d01b080a1eaf4c0d2a48d41b1ac84ec"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\106-verify-v7.py",
+      "sha256": "090d54900e50aefd855aa5fc8ad3f49e9fda3239987dd7b1ae05b236d6c63c42"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\107-baseline-to-frozen.diff",
+      "sha256": "afe106810b365c7ce28efab14f9534b1823561ed485f335de8bfc522ddecd3cc"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\108-independent-review.md",
+      "sha256": "18db6bfb202c8bffa293c60292ce66d0d7ca295e3e8a7a325c0a0afe53f4e5a2"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\109-model-evidence-stage2.json",
+      "sha256": "7065b20c68b957ac62e10c8aad91c3011c88205145e1a7c617e83da3e00c4da1"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\110-model-evidence-targeted.json",
+      "sha256": "38bb9a69054b36da736282cbb072aafda7250e12e2c928aa985e4a7a91a55928"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\111-reviewer-arithmetic.json",
+      "sha256": "cd5b107a301b499ff44f641099a51c80e9a09e897f460eee1f05b5752d131817"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\112-reviewer-arithmetic.py",
+      "sha256": "14f9a263540202d61de05b47026d7f4614a7440994ce4550200fbe78756e0365"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\113-stage-1.md",
+      "sha256": "eb7d7a72dcae557bd6d8ae97aadcc9fe336d99e1b4c8b00537fa064780b725a6"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\114-stage2-evidence.json",
+      "sha256": "030c57dda260932dab441c61fcd438c2c217f2c7ee0f15984297705a8b7cbf7d"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\115-stage2-evidence.py",
+      "sha256": "620fff5a98aa050148f1f505c8bf796820fda9a430da6ae17fbeb592a257f54b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\116-targeted-evidence.json",
+      "sha256": "a6b533e59be986b48cb113a9484b8ee447643b33c96c10538b4b2c2a3c189589"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\117-targeted-evidence.py",
+      "sha256": "15a3eeb0640f8453e0d99f88cc4e887db055a047c34a9bd59cbfb9fbcfef1d95"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\118-targeted-recheck.md",
+      "sha256": "a9d70d064683e6cd3e2279853618ad208579ac2da01f57801c79417dd09a4c82"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\119-warning-dispositions.json",
+      "sha256": "7a9cf48c068b7c277c0bd93a216774a989a1d51d0cd670300b9a225213559fb9"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\120-root-version-checks.json",
+      "sha256": "cfe2c9a1569dc5bde07c3b7b2c4e820dcf062e4ec51aaf0650c7f0a41f905174"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\121-warnings-final.json",
+      "sha256": "c8fb60647bb6883c6d5d29a7fdc102503ecd2e11e9e77a7b2738b111d9325cae"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\122-root-v4-repair.json",
+      "sha256": "d30a480999b547646b7a66f6cced5e98bc60b17b69e9baeb5f83511e649107b8"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\123-root-v4.diff",
+      "sha256": "d41d106c6cffa42b110f8b89e462a859d2a320a7153bace23988eaac0fa390e4"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\124-root-v5-v6.diff",
+      "sha256": "3daa98e3234da178156ba97dd9f3cfdd8679abe2616e5c8ce625cd5a7c8f7978"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\125-root-v5.diff",
+      "sha256": "bb97b19a6cf34cedad306dc6b834593588eb278c8c6ae3b7854acf1b7f43086e"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\126-root-v6-v7.diff",
+      "sha256": "c410c2626c64d1b6f453844deca418622f5fbfd5bb77da0ce30b68271082e872"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\127-root-v6.diff",
+      "sha256": "02237f7ab6615842d10f9dffe49f77beb986cdaf5fba431c05868569520726ee"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\128-core-reading.png",
+      "sha256": "15ede0e40fe227b22c33b724858f4b6bc408f2dfd2eb9dc0bedfd064e8feaea6"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\129-dom.json",
+      "sha256": "84b6754230f4d764fe206d7ff7326340d0e237b5f2deef1a8ab2af0eaa21eff8"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\130-mapping-source.png",
+      "sha256": "f524f8e0b1710e16f6482273d90e4291c1ce254d59b4e237c3b8543951431ee0"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\131-validation-source.png",
+      "sha256": "075d10cd137783d8edfc8756f20e1fd1c259188105022295b2719570a33fa74b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\132-root-v7.diff",
+      "sha256": "dbe26153f7bb62bf473d19312e4924bbc15b9bee21ae85f03c64b4cb216df6a3"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\133-runtime-checkpoint.json",
+      "sha256": "3bf2b92cab9ffe034ef214bf52231afe6579e4c2fb3d9b6bd63e2cd96fa8ce8f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\134-scope.json",
+      "sha256": "a0201e86aac0e3cd65e33a2408bd7d929242617271d3a25aa59059ca65028683"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\135-self-check-repairs.diff",
+      "sha256": "91bec85da9615234b7a7dfeabc346e9ffd6f804e5a75dfdd98f94da343735806"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\136-server-stderr.txt",
+      "sha256": "b1912f02d700b1c785947c86c679b0314a52387c750674bbffa96ea86ca2f224"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\137-server-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\138-source-checks-final.json",
+      "sha256": "79f88d7782187110ac8ccba5c50bab83078595d5018558893fba9795617c88fe"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\139-source-checks.json",
+      "sha256": "79f88d7782187110ac8ccba5c50bab83078595d5018558893fba9795617c88fe"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\140-source-inventory.json",
+      "sha256": "dff5a6ca6dfa398cb758bfa70369d2d6a21d4e754a8f2dae28179ae40d8fe899"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\141-source-scope-cleanup.diff",
+      "sha256": "d5a3e5ff4ad2eafbf8165bb90676da6cdef89aae404259a3b9b218f2aa59d083"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\142-source-visuals.json",
+      "sha256": "6366fb0640ee88b71fcfc9e3256bcb7b7c7214f20447a15fad9b99a8a6d6ae92"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\143-stage1-view.json",
+      "sha256": "a48c99d9aaed423bb122453a9701bc2bddabdc0a22cb659784e17be9f6be5fcb"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\144-sync-draft.json",
+      "sha256": "fe2db69f3af4379a3a3b1631fba6e282be9f4b449ff43f47d6d0864f0ce23772"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\145-sync-draft.md",
+      "sha256": "299633a45ee4778d213daad44d3bc1cf6f63d555bf345727f4a164ef1ff81241"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\146-t-reference-bridge.md",
+      "sha256": "ca3a01e5aefdc317dbc3ceb5fae6f6ad467cebaf2764624fdcdc85cae319d4ad"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\147-t-reference-results.json",
+      "sha256": "b755ed351657af520bc4964ae9d14474dc909233a99ab69e7239448250d63b25"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\148-transcript-audit-frozen.txt",
+      "sha256": "37cc944b58966d7ee5820e275b205a6755c66b626058433b258c54a0d435bf42"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\149-transcript-audit-initial.txt",
+      "sha256": "08d931b4c16dab2122c62100fd3e9eb272549c46877007450cd892e30a09dca5"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\150-transcript-condensed.txt",
+      "sha256": "118e5b49badae7b6d9a4a634aef90c893fca4114d84b1f91aecebde6998ba5bd"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\151-transcript-keyword-check.json",
+      "sha256": "a247f4ad7dff50af8e3107948784aad8a60b3b2e4e8d0bcad6a97aad705175c3"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\152-transcript-scan.txt",
+      "sha256": "cbc2cbe138bd4edbf8c9ba1ef15773fe60851f9e4bd2957e2ebc872681f5494a"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\153-visual-gd.svg.png",
+      "sha256": "3458a194768420ac9dadc44d5de6eaf5f9bc0261c09ed58f18ecf82a25154f98"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\154-visual-graph-20.png",
+      "sha256": "1e81ce1a0fd258255772597994d11e990643b82c27960340ebf1d16fd692250d"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\155-visual-graph-3.png",
+      "sha256": "21581831de60e693dff8dd1028d1ecb0c0646643c817b2d94200ea1bfb8a8f4f"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\156-visual-lasso-entry.png",
+      "sha256": "b6538c665652e15895ea1db0d57f35569a99f093b9b82066c2c9cec5acece33d"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\157-visual-p40-correction.png",
+      "sha256": "464e7ca9a8a68bc7f4da7c66dc77ad573ae613bd51181f6c3d895fe9eccc9a8b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\158-visual-regularization.svg.png",
+      "sha256": "97f913a8d83ec490e95d44633c34e1db830e1aef4cab5c4fb3ec51c61d76f88b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\159-visual-t-reference.png",
+      "sha256": "293b7e260fb9d34e893bf40964ef512165a8fac35e9d13660af9aa5ca5360b7b"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\160-visual-task-choice.png",
+      "sha256": "9f9e963391e9c7d7d1652b3c4f69c1b5115214baa6e595daae8a85fe6bfb7854"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\161-warnings-disposition.md",
+      "sha256": "27bdee1d7ff01b40c509f804ab59d536ace414659a867d54d478fc571257827d"
+    },
+    {
+      "path": "E:\\app-data\\codex\\review-evidence\\vault-notes-review-20261023\\is6400-m02-full\\162-warnings-grouped.json",
+      "sha256": "136239adc7e05c728921968c54f174b397fe179fb2ec62d82d94069a5e546b37"
+    }
+  ],
+  "root_acceptance": {
+    "writer": "/root",
+    "source_baseline_live": true,
+    "all_bound_assets_live": true,
+    "independent_reports": "actual original full and exact targeted closure retained, no new full-review claim",
+    "evidence": "source/important calculation and necessary actual visual evidence prepared by named actual worker; root checked current hashes/report chain and scope",
+    "writeback": "separate writeback.json"
+  }
+}
