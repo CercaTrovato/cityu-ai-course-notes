@@ -1,0 +1,135 @@
+{
+  "schema": "cityu-scratch-handoff-v1",
+  "task": "IS6400 M03 full note review",
+  "completed_at": "2026-10-27T06:32:47.258983+08:00",
+  "source_thread": "01a17103-659b-7ad2-81ea-dc814266007f",
+  "mode": "scratch_only",
+  "author_ids": [
+    "/root",
+    "session:01a17880-c4a8-7b10-9572-04671414dc20"
+  ],
+  "reviewer_id": "/root/review_is6400_m03_full_61",
+  "baseline": {
+    "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m03\\baseline.md",
+    "sha256": "6c8930a63fbd925070cb19f20f4d7145936bf818256be8f49f347f829d7775eb",
+    "bytes": 365245,
+    "formal_live_same": true
+  },
+  "candidate": {
+    "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m03\\candidate-final.md",
+    "sha256": "4bfddd66fc656ae7a20e29b20cc470b5b41bf7b0eadc94a04756f53c456f528a",
+    "bytes": 395082,
+    "lines": 6199
+  },
+  "semantic_candidate_before_currency_maintenance": {
+    "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m03\\candidate-v3.md",
+    "sha256": "90c560b8903a29c7d6bd1a4c5823ce62a55f5e2adf7897dbeeb8dd75e7bd9592",
+    "derivation": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m03\\currency-maintenance.json",
+    "only_two_dollar_escape_characters": true
+  },
+  "diff": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m03\\candidate-final.diff",
+  "review": {
+    "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m03\\review.json",
+    "sha256": "274a625a3cae63f1ffbbc0f45d58e4be49cb258ff50df5c366b287291a36a6a8",
+    "schema": "note-review-v2",
+    "scope": "full"
+  },
+  "independent_review": {
+    "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m03\\reviewer\\independent-review.md",
+    "sha256": "0ec480f983b48aa86aeebf5f8f344c2794ab97005e6eb9a461bf53bc3f5ab9db",
+    "status": "passed_full",
+    "stage1": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m03\\reviewer\\stage-1.md",
+    "targeted": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m03\\reviewer\\targeted-review.md",
+    "remaining_teaching_blockers": 0,
+    "non_teaching_final_binding": "revieweracknowledgedexactcurrencydiff, no extra fullreading/scoring"
+  },
+  "gate": {
+    "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m03\\full-gate-summary.json",
+    "sha256": "2af75ab1127b2461ab652db692cd981d551a16ffa7246c066bf941a6cf66d960",
+    "exit": 0,
+    "L": 0,
+    "C_hard": 0,
+    "C_warn": 3,
+    "R_hard": 0,
+    "R_soft": 460,
+    "source_contract_groups": 13,
+    "answer_units": 24,
+    "first_L3_fail_retained": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m03\\first-full-gate-summary.json",
+    "historical_G_E": "FAIL retained"
+  },
+  "coverage": {
+    "PDF_physical_pages": 72,
+    "content_pages": 69,
+    "leaf_units": 28,
+    "note_authored_checks": 47,
+    "Mermaid": 20,
+    "editable_SVG": 2,
+    "source_question_PNG": 3,
+    "lecture_questions": 21,
+    "answerable_reference_questions": 13,
+    "full_data_blocked_questions": 8,
+    "spoken_quiz_questions": 3,
+    "p49_independent_question": "notprovided"
+  },
+  "visual": {
+    "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m03\\visual-review.json",
+    "sha256": "1e0056b732a0d9d9e86f44fbde8cec086569f8208b61d2a68d06b1d17469835c",
+    "DOMpanels": 38,
+    "not_native_Obsidian": true,
+    "unchanged_diagram_sources_carried_by_hash": 20
+  },
+  "publication_plan": {
+    "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m03\\publication-plan.json",
+    "sha256": "dd3607c3b33da3c089a96a411a2fbb4b774ac40140685220315d14b79676f999",
+    "source_assets": 3,
+    "local_targets": 13,
+    "proposed_changes": 11,
+    "verified_no_delta": 2,
+    "current_drift": []
+  },
+  "root_order": [
+    "verify live note baseline and asset target states",
+    "copy3originalquestionPNGs orreuseexactsamehash; readback",
+    "safe_write.atomic_write note + exact SHA readback",
+    "root glossary merge/readback before course queue closure",
+    "precise13localtargetsync/readback",
+    "existingNotionrowread/appendM03remark/readbackwithoutpersonalchange",
+    "Gitonlyunderrootcurrentauthorization; fetch/noAItrailer/no-force/no-no-verify"
+  ],
+  "actual_status": {
+    "teaching": "passedfull",
+    "source": "checkedwithinexplicitmissingdataboundaries",
+    "visual": "necessaryactualviewingplusDOMchecked",
+    "formal_note_write": "notperformed",
+    "assets_formally_published": "notperformed",
+    "local_sync": "draftsonly",
+    "Notion": "notperformed",
+    "Git": "notperformed",
+    "global_progress": "notwrittenorrecomputed",
+    "personal_fields": "unchanged"
+  },
+  "efficiency": {
+    "new_reviewers": 1,
+    "full_two_stage_reviews": 1,
+    "content_repair_batch": 1,
+    "one_remaining_B2_sentence_pair_targeted": true,
+    "currency_maintenance_only": true,
+    "model_training_repeated": 0,
+    "provider_token_usage": "notexposed;notestimatedasbill"
+  },
+  "remaining_limits": [
+    "Actual class date unconfirmed, Canvas archival week retained and note date null",
+    "Recording missing opening; actual break wallclock lengths unknown; timedmappingunion66% retained",
+    "49school and p35fullbusinessdata missing, p49independent题干missing",
+    "No fresh full-dataset run/audio listening; historical unchanged execution inherited by realhash",
+    "T03/gradedassignment ownreview/personalsubmission notupgraded",
+    "Rootmustpublishthreeplannedsourceassetlinksbeforenoteandverifyalllivebaselines"
+  ],
+  "cleanup": {
+    "port8824_still_listening": false,
+    "own_tabs6and7_closed": true,
+    "other_processes_stopped": false,
+    "pid": 40012,
+    "own_process_stopped": true
+  }
+}
