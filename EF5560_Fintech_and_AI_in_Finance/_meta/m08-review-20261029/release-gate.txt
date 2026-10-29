@@ -1,0 +1,159 @@
+====================================================================================================
+笔记质量量表   candidate.md   模式: current/strict   status: v0.9
+----------------------------------------------------------------------------------------------------
+【L 合规检查】
+   L1_未讲解页 : [1]
+   L1_省略前缀连写 : ["p.19、21", "p.23、25", "p.24、28", "p.24、29", "p.24、30", "p.28、34", "p.28、30", "p.27、31", "p.40、45"]
+   L5_围栏数 : 16
+   L5_details : [9, 9]
+   ✓ 七项无问题（L1 未讲解页见上，封面/目标页允许）
+【现行内容检查】字数/固定标签/类比配额不计FAIL
+   ✓ 未报确定性阻塞；不是教学完整证明
+   原题清单: manifest_contract_passed 核对题数: 8
+   范围: 机检通过不代表解释正确或读者已理解；页码引述不证明该页已实质讲解。
+   范围: 纯数字等式只核支持的四则/幂/开方及显示精度；不执行代码、不验证符号推导或模型结果。
+   范围: 无显式源题清单时，无法验证漏整题/原文保真；有清单也只核其字面契约，清单抄写与逐问语义仍需回源。
+   历史G/E统计已保存；查看旧配额详情用 --profile historical
+【逐小节明细】
+   num | cjk | pages | formula_n | numex_step | first_kind
+   2.1 | 761 | 4 | 0 | 0 | text
+   2.2 | 729 | 3 | 0 | 3 | text
+   2.2.1 | 353 | 2 | 0 | 0 | text
+   2.3 | 858 | 6 | 0 | 0 | text
+   2.4 | 552 | 3 | 0 | 1 | text
+   2.5 | 314 | 5 | 0 | 0 | text
+   2.5.1 | 441 | 1 | 0 | 0 | text
+   2.5.2 | 293 | 1 | 0 | 2 | text
+   2.5.3 | 333 | 1 | 0 | 0 | text
+   2.6 | 574 | 1 | 0 | 4 | text
+   2.7 | 940 | 1 | 1 | 1 | text
+   2.8 | 1117 | 1 | 0 | 1 | text
+   2.9 | 905 | 5 | 0 | 5 | text
+   2.10 | 562 | 3 | 0 | 3 | text
+   2.11 | 436 | 2 | 0 | 3 | text
+   2.12 | 297 | 3 | 0 | 1 | text
+   2.12.1 | 479 | 1 | 1 | 2 | text
+   2.12.2 | 380 | 1 | 0 | 4 | text
+   2.13 | 307 | 3 | 0 | 2 | text
+   2.13.1 | 259 | 1 | 0 | 0 | text
+   2.13.2 | 164 | 1 | 0 | 0 | text
+   2.14 | 959 | 4 | 0 | 0 | text
+【R 可读性】 计入判定（规则：_meta/可读性总规则.md）
+   语义检查仅为 △ 疑点；PASS 不表示读者已理解。
+   表格: 最多 4 列，最大单元格 19 单元（行 47）
+   句长（阅读单元）: 586 句  均值 28.3  中位 27  p90 46  最长 98  >80: 2（0.3%）  >120: 0  豁免块: 0
+   ✗ 0 项  △ 93 项
+     R1a  单句长度           ✗ 0    △ 2
+     R1c  一句多个分号         ✗ 0    △ 11
+     R1e  否定澄清堆叠         ✗ 0    △ 1
+     R2b  列表项长度          ✗ 0    △ 1
+     R3a  连续正文块过长        ✗ 0    △ 9
+     R4c  单元格句数          ✗ 0    △ 2
+     R5a  一段行内公式过多       ✗ 0    △ 2
+     R6a  一段术语注释过密       ✗ 0    △ 4
+     R8b  小节首段过长         ✗ 0    △ 9
+     R4f  表头说明线索待核       ✗ 0    △ 6
+     R6b  句内术语密度待核       ✗ 0    △ 2
+     R6d  术语首用解释待核       ✗ 0    △ 44
+   △ R4c 行47 单元格 2 句
+   △ R1a 行53 98 单元：DeFi 和总锁仓价值在 §2.1–2.2；NFT 的权利分层在 §2.…
+   △ R1c 行53 4 个分号：DeFi 和总锁仓价值在 §2.1–2.2；NFT 的权利分层在 §2.…
+   △ R1c 行59 2 个分号：讲义 p.26 的 TVL 题移到 §2.2；p.25 的基金交易接 p…
+   △ R3a 行65 595 单元无隔断
+   △ R1c 行93 2 个分号：讲义给出三种使用动机：从钱包直接交换资产；以已有加密资产借到可支用代币，…
+   △ R8b 行101 小节首段 4 句；首段 ≤ 3 句，先给问题或结论
+   △ R3a 行101 731 单元无隔断
+   △ R1c 行154 2 个分号：第一栏的供应者把 ETH／USDC 放入池子，交易者使用共同池子；第二栏…
+   △ R6a 行154 一段 3 处括号英文注释（约等于 3 个新术语）
+   △ R1c 行156 2 个分号：共享池减少逐一匹配的需要；公开记录方便核查已发生的动作；程序规则让满足条…
+   △ R8b 行170 小节首段 5 句；首段 ≤ 3 句，先给问题或结论
+   △ R1c 行194 2 个分号：挑战可按三问检查：真要卖时有没有可执行买价；能否安全控制和转移；发行方究…
+   △ R3a 行184 553 单元无隔断
+   △ R6a 行206 一段 3 处括号英文注释（约等于 3 个新术语）
+   △ R8b 行206 小节首段 4 句；首段 ≤ 3 句，先给问题或结论
+   △ R1c 行220 3 个分号：p.16 原图还把角色分开：发行人与法律团队确定条款；托管人／管理人处理…
+   △ R3a 行206 536 单元无隔断
+   △ R3a 行248 637 单元无隔断
+   △ R8b 行285 小节首段 4 句；首段 ≤ 3 句，先给问题或结论
+   △ R1a 行303 82 单元：代币持有人可能取得该安排中的受益请求权，而不是直接登记为房产或金条所有人…
+   △ R8b 行352 小节首段 5 句；首段 ≤ 3 句，先给问题或结论
+   △ R1c 行382 2 个分号：这里 $F$ 为面值，单位港元；$c$ 为一年票息率；$I$ 为一年利息…
+   △ R5a 行382 一段 4 个不同行内公式
+   △ R3a 行396 542 单元无隔断
+   △ R2b 行438 84 单元：1. 可选的一个节省是减少对账人工：共同使用可核的交易记录，可能减少多机…
+   △ R3a 行425 539 单元无隔断
+   △ R6a 行454 一段 3 处括号英文注释（约等于 3 个新术语）
+   △ R8b 行464 小节首段 4 句；首段 ≤ 3 句，先给问题或结论
+   △ R8b 行547 小节首段 4 句；首段 ≤ 3 句，先给问题或结论
+   △ R1c 行549 3 个分号：p.43 四格图依次为：供应者把 USDC 放入池子；借款人锁入抵押物；…
+   △ R3a 行547 646 单元无隔断
+   △ R8b 行583 小节首段 4 句；首段 ≤ 3 句，先给问题或结论
+   △ R1e 行629 一段 3 处否定澄清
+   △ R8b 行670 小节首段 4 句；首段 ≤ 3 句，先给问题或结论
+   △ R5a 行680 一段 5 个不同行内公式
+   △ R6a 行682 一段 3 处括号英文注释（约等于 3 个新术语）
+   △ R1c 行715 2 个分号：讲义 p.50 的生态分析分三层：钱包和比较服务帮助接入；GHO 是 A…
+   △ R3a 行775 545 单元无隔断
+   △ R1c 行821 3 个分号：例如，拿这张图走基金份额：它代表基金权益；资产组合产生收益；退出可以赎回…
+   △ R4c 行829 单元格 2 句
+   △ R6b 行53 一句 10 个术语，核对是否需要拆解（总锁仓价值、NFT、资产代币化、赎回、券款对付、LTV、健康因子、清算奖励、资金利用率、跨链桥）：DeFi 和总锁仓价值在 §2.1–2.2；NFT 的权利分层在 §2.…
+   △ R6d 行73 “换手”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒
+   △ R6d 行101 缩写“TVL”首用未识别到中文说明；人工核对
+   △ R6d 行105 缩写“USD”首用未识别到中文说明；人工核对
+   △ R6d 行105 “显著”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒
+   △ R6d 行154 缩写“ETH”首用未识别到中文说明；人工核对
+   △ R6d 行154 缩写“USDC”首用未识别到中文说明；人工核对
+   △ R6d 行170 缩写“NFT”首用未识别到中文说明；人工核对
+   △ R6d 行174 缩写“A1”首用未识别到中文说明；人工核对
+   △ R6d 行174 缩写“B4”首用未识别到中文说明；人工核对
+   △ R6d 行234 缩写“RWA”首用未识别到中文说明；人工核对
+   △ R6d 行238 缩写“PAX”首用未识别到中文说明；人工核对
+   △ R6d 行285 缩写“ETF”首用未识别到中文说明；人工核对
+   △ R6d 行328 缩写“NAV”首用未识别到中文说明；人工核对
+   △ R6d 行338 “基点”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒
+   △ R6d 行340 “年化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒
+   △ R6d 行344 缩写“SFC”首用未识别到中文说明；人工核对
+   △ R6d 行370 缩写“TVL”首用未识别到中文说明；人工核对
+   △ R6b 行372 一句 4 个术语（GS、DAP、HKD、CNY）：平台也不是一直相同：2023 年试点采用 Goldman Sachs 的…
+   △ R6d 行372 缩写“GS”首用未识别到中文说明；人工核对
+   △ R6d 行372 缩写“DAP”首用未识别到中文说明；人工核对
+   △ R6d 行372 缩写“HKD”首用未识别到中文说明；人工核对
+   △ R6d 行372 缩写“CNY”首用未识别到中文说明；人工核对
+   △ R6d 行386 缩写“DIGIT”首用未识别到中文说明；人工核对
+   △ R6d 行388 缩写“CMU”首用未识别到中文说明；人工核对
+   △ R6d 行446 缩写“HKSAR”首用未识别到中文说明；人工核对
+   △ R6d 行454 缩写“CSRC”首用未识别到中文说明；人工核对
+   △ R6d 行511 缩写“USDC”首用未识别到中文说明；人工核对
+   △ R6d 行535 缩写“DAO”首用未识别到中文说明；人工核对
+   △ R6d 行549 缩写“USDC”首用未识别到中文说明；人工核对
+   △ R6d 行583 缩写“ETH”首用未识别到中文说明；人工核对
+   △ R6d 行583 缩写“USDC”首用未识别到中文说明；人工核对
+   △ R6d 行597 “敞口”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒
+   △ R6d 行597 缩写“DAI”首用未识别到中文说明；人工核对
+   △ R6d 行603 缩写“LTV”首用未识别到中文说明；人工核对
+   △ R6d 行603 缩写“LT”首用未识别到中文说明；人工核对
+   △ R6d 行605 缩写“HF”首用未识别到中文说明；人工核对
+   △ R6d 行633 缩写“V3”首用未识别到中文说明；人工核对
+   △ R6d 行633 缩写“V4”首用未识别到中文说明；人工核对
+   △ R6d 行672 缩写“USDC”首用未识别到中文说明；人工核对
+   △ R6d 行725 缩写“DAI”首用未识别到中文说明；人工核对
+   △ R6d 行725 缩写“USDS”首用未识别到中文说明；人工核对
+   △ R6d 行736 “年化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒
+   △ R6d 行738 缩写“ETH”首用未识别到中文说明；人工核对
+   △ R6d 行792 缩写“LAND”首用未识别到中文说明；人工核对
+   △ R6d 行795 缩写“HKSAR”首用未识别到中文说明；人工核对
+   △ R4f 行135 表头“题设计入TVL”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行360 表头“发行金额：十亿港元等值”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行589 表头“卖出5ETH”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行623 表头“ETH单价：美元”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行623 表头“实际LTV”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行731 表头“收益首先从哪里来”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+【汇总】 {'total_pages': 54, 'noncontent': [1], 'content_pages': 53, 'sec2_cjk': 12013, 'note_cjk': 16389, 'leaf_n': 22, 'concept_n': 22, 'terms_n': 26, 'strict': True}
+【判定】 PASS（机器可验证项；仍须教学、计算运行与原题回源核对） 
+【教学边界】本脚本未评估教学可读性；须独立子代理按高中知识起点审查，零报错不能作为教学质量指标。
+====================================================================================================
+JSON:{"file": "E:\\app-data\\codex\\scratchpad\\ef5560-m08-20261029\\candidate.md", "profile": "current", "teaching_assessment": "not_assessed_by_script", "C": {"spec": "2026-10-21", "hard": [], "warn": [], "source_coverage": {"status": "manifest_contract_passed", "checked_questions": 8, "hard": [], "warnings": [], "page_references": {"requested_total": 54, "declared_totals": [], "status": "reference_check_only"}}, "limits": ["机检通过不代表解释正确或读者已理解；页码引述不证明该页已实质讲解。", "纯数字等式只核支持的四则/幂/开方及显示精度；不执行代码、不验证符号推导或模型结果。", "无显式源题清单时，无法验证漏整题/原文保真；有清单也只核其字面契约，清单抄写与逐问语义仍需回源。"]}, "historical": {"spec": "2026-09-16", "G": {"G1 密度 §2 字/内容页 ≥ 250": [227, false], "G2a 粒度 术语数/leaf 小节 ≤ 1.6": [1.18, true], "G2b 粒度 内容页/leaf 小节 ≤ 2.5": [2.41, true], "G2c 承载术语的小节 ≥ 150 字": [[], true], "G3a 小节首元素为段落": [[], true], "G3b 公式有符号表（或符号已在前文解释）": [[], true], "G3c 有公式的小节有数字例子": [[], true], "G3d 代码三件套": [[], true], "G6 ### 单元「所以呢」覆盖率 ≥ 0.80": [[0.0, ["2.1", "2.2", "2.3", "2.4", "2.5", "2.6", "2.7", "2.8", "2.9", "2.10", "2.11", "2.12", "2.13", "2.14"]], false]}, "E": [["全篇", "术语首现", ["§5 术语在首现小节就地解释率 0.88 < 0.90：净资产价值（§2.6 内未出现）；贷款回收缺口（§2.11 内未出现）；清算奖励（§2.12 内未出现）"]], ["2.1", "代码型", ["缺 是什么", "缺 所以呢", "「是什么」自己的话 < 80 字"]], ["2.2", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]], ["2.2.1", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]], ["2.3", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]], ["2.4", "代码型", ["缺 是什么", "缺 所以呢", "「是什么」自己的话 < 80 字"]], ["2.5", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]], ["2.5.1", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]], ["2.5.2", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]], ["2.5.3", "对比型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]], ["2.6", "代码型", ["缺 是什么", "缺 所以呢", "「是什么」自己的话 < 80 字"]], ["2.7", "公式型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "缺「为什么公式长这样」", "缺 极端/边界情况", "「是什么」自己的话 < 80 字"]], ["2.8", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]], ["2.9", "代码型", ["缺 是什么", "缺 所以呢", "「是什么」自己的话 < 80 字"]], ["2.10", "代码型", ["缺 是什么", "缺 所以呢", "「是什么」自己的话 < 80 字"]], ["2.11", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]], ["2.12", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]], ["2.12.1", "公式型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "缺「为什么公式长这样」"]], ["2.12.2", "代码型", ["缺 是什么", "缺 所以呢"]], ["2.13", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]], ["2.13.1", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]], ["2.13.2", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]], ["2.14", "代码型", ["缺 是什么", "缺 所以呢", "「是什么」自己的话 < 80 字"]]], "verdict": "FAIL"}, "verdict": "PASS（机器可验证项；仍须教学、计算运行与原题回源核对）", "legacy_problems": [], "legacy_info": {"L1_未讲解页": [1], "L1_省略前缀连写": ["p.19、21", "p.23、25", "p.24、28", "p.24、29", "p.24、30", "p.28、34", "p.28、30", "p.27、31", "p.40、45"], "L5_围栏数": 16, "L5_details": [9, 9]}, "G": {}, "E": [], "summary": {"file": "E:\\app-data\\codex\\scratchpad\\ef5560-m08-20261029\\candidate.md", "total_pages": 54, "noncontent": [1], "content_pages": 53, "sec2_cjk": 12013, "note_cjk": 16389, "leaf_n": 22, "concept_n": 22, "terms_n": 26, "strict": true}, "sections": [{"sec": "2.1 从钱包换币开始理解 DeFi（讲义 p.2–5）", "num": "2.1", "level": 3, "cjk": 761, "chars": 1083, "own_cjk": 761, "bq_ratio": 0.0, "code_blocks": 1, "pages": [2, 3, 4, 5], "labels": ["mic"], "type": "代码型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 1, "need_cjk": 239, "E_miss": ["缺 是什么", "缺 所以呢", "「是什么」自己的话 < 80 字"]}, {"sec": "2.2 TVL：合约里的资产不等于新投入的钱（讲义 p.6–8、26）", "num": "2.2", "level": 3, "cjk": 729, "chars": 1949, "own_cjk": 688, "bq_ratio": 0.25, "code_blocks": 0, "pages": [6, 7, 8], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "{'s'}", "formulas": [], "numex_step": 3, "numex_any": 3, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 1, "has_script": 1, "orig_cjk": 0, "terms": 1, "need_cjk": 21, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]}, {"sec": "2.2.1 三类价值与三类风险（讲义 p.7–8）", "num": "2.2.1", "level": 4, "cjk": 353, "chars": 467, "own_cjk": 353, "bq_ratio": 0.0, "code_blocks": 0, "pages": [7, 8], "labels": ["mic"], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 0, "need_cjk": 147, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]}, {"sec": "2.3 NFT：唯一编号、媒体内容和持有人权利分开（讲义 p.9–14）", "num": "2.3", "level": 3, "cjk": 858, "chars": 1167, "own_cjk": 759, "bq_ratio": 0.0, "code_blocks": 0, "pages": [9, 10, 11, 12, 13, 14], "labels": ["mic"], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "terms": 2, "need_cjk": 642, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]}, {"sec": "2.4 RWA 先识别债权，再看记录技术（讲义 p.15–17）", "num": "2.4", "level": 3, "cjk": 552, "chars": 786, "own_cjk": 552, "bq_ratio": 0.0, "code_blocks": 1, "pages": [15, 16, 17], "labels": ["mic"], "type": "代码型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 1, "numex_any": 5, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 2, "need_cjk": 198, "E_miss": ["缺 是什么", "缺 所以呢", "「是什么」自己的话 < 80 字"]}, {"sec": "2.5 代币化黄金与仓库题：链上历史不能盘点金库（讲义 p.18–22）", "num": "2.5", "level": 3, "cjk": 314, "chars": 424, "own_cjk": 314, "bq_ratio": 0.0, "code_blocks": 0, "pages": [18, 19, 20, 21, 22], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 2, "need_cjk": 936, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]}, {"sec": "2.5.1 仓库原题：编号唯一仍需链外核验（讲义 p.20）", "num": "2.5.1", "level": 4, "cjk": 441, "chars": 1275, "own_cjk": 439, "bq_ratio": 0.38, "code_blocks": 0, "pages": [20], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]}, {"sec": "2.5.2 费表和实收费用要分开（讲义 p.21）", "num": "2.5.2", "level": 4, "cjk": 293, "chars": 489, "own_cjk": 293, "bq_ratio": 0.0, "code_blocks": 0, "pages": [21], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 2, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]}, {"sec": "2.5.3 三种资产关联结构（讲义 p.22）", "num": "2.5.3", "level": 4, "cjk": 333, "chars": 431, "own_cjk": 214, "bq_ratio": 0.0, "code_blocks": 0, "pages": [22], "labels": ["mic"], "type": "对比型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]}, {"sec": "2.6 货币市场基金：份额回报来自资产，交易价来自买方（讲义 p.23、25）", "num": "2.6", "level": 3, "cjk": 574, "chars": 1144, "own_cjk": 574, "bq_ratio": 0.0, "code_blocks": 1, "pages": [23], "labels": ["mic"], "type": "代码型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 4, "numex_any": 8, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 3, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 所以呢", "「是什么」自己的话 < 80 字"]}, {"sec": "2.7 香港数字绿色债券：平台、债务人与绿色用途（讲义 p.24、28–30、34）", "num": "2.7", "level": 3, "cjk": 940, "chars": 1730, "own_cjk": 902, "bq_ratio": 0.0, "code_blocks": 0, "pages": [24], "labels": ["mic"], "type": "公式型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 1, "symtab_syms": "set()", "prose_syms": "{'F', 'c', 'I'}", "formulas": [[28, "$$ I=F\\times c=1{,}000{,}000\\times4.05\\%=40{,}500\\text{ 港元}。 $$", true]], "numex_step": 1, "numex_any": 6, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 1, "has_script": 1, "orig_cjk": 0, "terms": 1, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "缺「为什么公式长这样」", "缺 极端/边界情况", "「是什么」自己的话 < 80 字"]}, {"sec": "2.8 可转让、可成交与合法请求权（讲义 p.27、31–33）", "num": "2.8", "level": 3, "cjk": 1117, "chars": 3068, "own_cjk": 1113, "bq_ratio": 0.29, "code_blocks": 0, "pages": [27], "labels": ["mic"], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 1, "numex_any": 1, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 1, "has_step_table": 1, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 2, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]}, {"sec": "2.9 Sky：储蓄回报需要收入和分配规则（讲义 p.35–39）", "num": "2.9", "level": 3, "cjk": 905, "chars": 1451, "own_cjk": 905, "bq_ratio": 0.0, "code_blocks": 1, "pages": [35, 36, 37, 38, 39], "labels": ["mic"], "type": "代码型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 5, "numex_any": 6, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 1, "need_cjk": 345, "E_miss": ["缺 是什么", "缺 所以呢", "「是什么」自己的话 < 80 字"]}, {"sec": "2.10 Maker 旧机制与 DAO 投票：足额和决策权都要量化（讲义 p.40–42）", "num": "2.10", "level": 3, "cjk": 562, "chars": 879, "own_cjk": 562, "bq_ratio": 0.0, "code_blocks": 1, "pages": [40, 41, 42], "labels": ["mic"], "type": "代码型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 3, "numex_any": 4, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 1, "has_step_table": 1, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 2, "need_cjk": 188, "E_miss": ["缺 是什么", "缺 所以呢", "「是什么」自己的话 < 80 字"]}, {"sec": "2.11 抵押贷款：担保资产能卖多少才决定回收（讲义 p.43–44）", "num": "2.11", "level": 3, "cjk": 436, "chars": 1299, "own_cjk": 434, "bq_ratio": 0.3, "code_blocks": 0, "pages": [43, 44], "labels": ["mic"], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 3, "numex_any": 4, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 1, "need_cjk": 64, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]}, {"sec": "2.12 Aave 同一笔贷款：卖出、借入与清算（讲义 p.45–47）", "num": "2.12", "level": 3, "cjk": 297, "chars": 641, "own_cjk": 265, "bq_ratio": 0.0, "code_blocks": 0, "pages": [45, 46, 47], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 1, "numex_any": 7, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "terms": 5, "need_cjk": 453, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]}, {"sec": "2.12.1 借款上限与健康因子回答不同问题（讲义 p.46）", "num": "2.12.1", "level": 4, "cjk": 479, "chars": 1053, "own_cjk": 427, "bq_ratio": 0.0, "code_blocks": 0, "pages": [46], "labels": [], "type": "公式型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 1, "symtab_syms": "{'D', 'C', '\\\\theta'}", "prose_syms": "{'P'}", "formulas": [[6, "$$ HF=\\frac{C\\times\\theta}{D}。 $$", true]], "numex_step": 2, "numex_any": 10, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 1, "has_step_table": 0, "has_cmp_table": 1, "has_script": 1, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "缺「为什么公式长这样」"]}, {"sec": "2.12.2 清算人替谁还债，又拿走谁的 ETH（讲义 p.47）", "num": "2.12.2", "level": 4, "cjk": 380, "chars": 797, "own_cjk": 380, "bq_ratio": 0.0, "code_blocks": 1, "pages": [47], "labels": ["mic"], "type": "代码型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 4, "numex_any": 9, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 所以呢"]}, {"sec": "2.13 供应利率、提款现金与治理生态（讲义 p.48–50）", "num": "2.13", "level": 3, "cjk": 307, "chars": 660, "own_cjk": 307, "bq_ratio": 0.0, "code_blocks": 0, "pages": [48, 49, 50], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "{'r', 'f', 'u'}", "formulas": [], "numex_step": 2, "numex_any": 7, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 2, "need_cjk": 443, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]}, {"sec": "2.13.1 提款原题：抵押物不是即时现金（讲义 p.49）", "num": "2.13.1", "level": 4, "cjk": 259, "chars": 1041, "own_cjk": 257, "bq_ratio": 0.46, "code_blocks": 0, "pages": [49], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 4, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]}, {"sec": "2.13.2 产品、治理与多网络服务（讲义 p.50）", "num": "2.13.2", "level": 4, "cjk": 164, "chars": 203, "own_cjk": 164, "bq_ratio": 0.0, "code_blocks": 0, "pages": [50], "labels": ["mic"], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 0, "need_cjk": 86, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]}, {"sec": "2.14 改设计、跨链与三种持有人权利（讲义 p.51–54）", "num": "2.14", "level": 3, "cjk": 959, "chars": 2665, "own_cjk": 876, "bq_ratio": 0.15, "code_blocks": 1, "pages": [51, 52, 53, 54], "labels": ["mic"], "type": "代码型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "terms": 1, "need_cjk": 41, "E_miss": ["缺 是什么", "缺 所以呢", "「是什么」自己的话 < 80 字"]}], "R": {"strict": true, "stats": {"sentences": 586, "mean": 28.3, "p50": 27, "p90": 46, "max": 98, "over80": 2, "over120": 0, "long_share": 0.003, "exempt": 0, "table_max_columns": 4, "table_max_cell_units": 19, "table_max_cell_line": 47, "measurement_version": "v2"}, "hard": [], "warn": [["R4c", 47, "单元格 2 句"], ["R1a", 53, "98 单元：DeFi 和总锁仓价值在 §2.1–2.2；NFT 的权利分层在 §2.…"], ["R1c", 53, "4 个分号：DeFi 和总锁仓价值在 §2.1–2.2；NFT 的权利分层在 §2.…"], ["R1c", 59, "2 个分号：讲义 p.26 的 TVL 题移到 §2.2；p.25 的基金交易接 p…"], ["R3a", 65, "595 单元无隔断"], ["R1c", 93, "2 个分号：讲义给出三种使用动机：从钱包直接交换资产；以已有加密资产借到可支用代币，…"], ["R8b", 101, "小节首段 4 句；首段 ≤ 3 句，先给问题或结论"], ["R3a", 101, "731 单元无隔断"], ["R1c", 154, "2 个分号：第一栏的供应者把 ETH／USDC 放入池子，交易者使用共同池子；第二栏…"], ["R6a", 154, "一段 3 处括号英文注释（约等于 3 个新术语）"], ["R1c", 156, "2 个分号：共享池减少逐一匹配的需要；公开记录方便核查已发生的动作；程序规则让满足条…"], ["R8b", 170, "小节首段 5 句；首段 ≤ 3 句，先给问题或结论"], ["R1c", 194, "2 个分号：挑战可按三问检查：真要卖时有没有可执行买价；能否安全控制和转移；发行方究…"], ["R3a", 184, "553 单元无隔断"], ["R6a", 206, "一段 3 处括号英文注释（约等于 3 个新术语）"], ["R8b", 206, "小节首段 4 句；首段 ≤ 3 句，先给问题或结论"], ["R1c", 220, "3 个分号：p.16 原图还把角色分开：发行人与法律团队确定条款；托管人／管理人处理…"], ["R3a", 206, "536 单元无隔断"], ["R3a", 248, "637 单元无隔断"], ["R8b", 285, "小节首段 4 句；首段 ≤ 3 句，先给问题或结论"], ["R1a", 303, "82 单元：代币持有人可能取得该安排中的受益请求权，而不是直接登记为房产或金条所有人…"], ["R8b", 352, "小节首段 5 句；首段 ≤ 3 句，先给问题或结论"], ["R1c", 382, "2 个分号：这里 $F$ 为面值，单位港元；$c$ 为一年票息率；$I$ 为一年利息…"], ["R5a", 382, "一段 4 个不同行内公式"], ["R3a", 396, "542 单元无隔断"], ["R2b", 438, "84 单元：1. 可选的一个节省是减少对账人工：共同使用可核的交易记录，可能减少多机…"], ["R3a", 425, "539 单元无隔断"], ["R6a", 454, "一段 3 处括号英文注释（约等于 3 个新术语）"], ["R8b", 464, "小节首段 4 句；首段 ≤ 3 句，先给问题或结论"], ["R8b", 547, "小节首段 4 句；首段 ≤ 3 句，先给问题或结论"], ["R1c", 549, "3 个分号：p.43 四格图依次为：供应者把 USDC 放入池子；借款人锁入抵押物；…"], ["R3a", 547, "646 单元无隔断"], ["R8b", 583, "小节首段 4 句；首段 ≤ 3 句，先给问题或结论"], ["R1e", 629, "一段 3 处否定澄清"], ["R8b", 670, "小节首段 4 句；首段 ≤ 3 句，先给问题或结论"], ["R5a", 680, "一段 5 个不同行内公式"], ["R6a", 682, "一段 3 处括号英文注释（约等于 3 个新术语）"], ["R1c", 715, "2 个分号：讲义 p.50 的生态分析分三层：钱包和比较服务帮助接入；GHO 是 A…"], ["R3a", 775, "545 单元无隔断"], ["R1c", 821, "3 个分号：例如，拿这张图走基金份额：它代表基金权益；资产组合产生收益；退出可以赎回…"], ["R4c", 829, "单元格 2 句"], ["R6b", 53, "一句 10 个术语，核对是否需要拆解（总锁仓价值、NFT、资产代币化、赎回、券款对付、LTV、健康因子、清算奖励、资金利用率、跨链桥）：DeFi 和总锁仓价值在 §2.1–2.2；NFT 的权利分层在 §2.…"], ["R6d", 73, "“换手”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"], ["R6d", 101, "缩写“TVL”首用未识别到中文说明；人工核对"], ["R6d", 105, "缩写“USD”首用未识别到中文说明；人工核对"], ["R6d", 105, "“显著”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"], ["R6d", 154, "缩写“ETH”首用未识别到中文说明；人工核对"], ["R6d", 154, "缩写“USDC”首用未识别到中文说明；人工核对"], ["R6d", 170, "缩写“NFT”首用未识别到中文说明；人工核对"], ["R6d", 174, "缩写“A1”首用未识别到中文说明；人工核对"], ["R6d", 174, "缩写“B4”首用未识别到中文说明；人工核对"], ["R6d", 234, "缩写“RWA”首用未识别到中文说明；人工核对"], ["R6d", 238, "缩写“PAX”首用未识别到中文说明；人工核对"], ["R6d", 285, "缩写“ETF”首用未识别到中文说明；人工核对"], ["R6d", 328, "缩写“NAV”首用未识别到中文说明；人工核对"], ["R6d", 338, "“基点”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"], ["R6d", 340, "“年化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"], ["R6d", 344, "缩写“SFC”首用未识别到中文说明；人工核对"], ["R6d", 370, "缩写“TVL”首用未识别到中文说明；人工核对"], ["R6b", 372, "一句 4 个术语（GS、DAP、HKD、CNY）：平台也不是一直相同：2023 年试点采用 Goldman Sachs 的…"], ["R6d", 372, "缩写“GS”首用未识别到中文说明；人工核对"], ["R6d", 372, "缩写“DAP”首用未识别到中文说明；人工核对"], ["R6d", 372, "缩写“HKD”首用未识别到中文说明；人工核对"], ["R6d", 372, "缩写“CNY”首用未识别到中文说明；人工核对"], ["R6d", 386, "缩写“DIGIT”首用未识别到中文说明；人工核对"], ["R6d", 388, "缩写“CMU”首用未识别到中文说明；人工核对"], ["R6d", 446, "缩写“HKSAR”首用未识别到中文说明；人工核对"], ["R6d", 454, "缩写“CSRC”首用未识别到中文说明；人工核对"], ["R6d", 511, "缩写“USDC”首用未识别到中文说明；人工核对"], ["R6d", 535, "缩写“DAO”首用未识别到中文说明；人工核对"], ["R6d", 549, "缩写“USDC”首用未识别到中文说明；人工核对"], ["R6d", 583, "缩写“ETH”首用未识别到中文说明；人工核对"], ["R6d", 583, "缩写“USDC”首用未识别到中文说明；人工核对"], ["R6d", 597, "“敞口”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"], ["R6d", 597, "缩写“DAI”首用未识别到中文说明；人工核对"], ["R6d", 603, "缩写“LTV”首用未识别到中文说明；人工核对"], ["R6d", 603, "缩写“LT”首用未识别到中文说明；人工核对"], ["R6d", 605, "缩写“HF”首用未识别到中文说明；人工核对"], ["R6d", 633, "缩写“V3”首用未识别到中文说明；人工核对"], ["R6d", 633, "缩写“V4”首用未识别到中文说明；人工核对"], ["R6d", 672, "缩写“USDC”首用未识别到中文说明；人工核对"], ["R6d", 725, "缩写“DAI”首用未识别到中文说明；人工核对"], ["R6d", 725, "缩写“USDS”首用未识别到中文说明；人工核对"], ["R6d", 736, "“年化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒"], ["R6d", 738, "缩写“ETH”首用未识别到中文说明；人工核对"], ["R6d", 792, "缩写“LAND”首用未识别到中文说明；人工核对"], ["R6d", 795, "缩写“HKSAR”首用未识别到中文说明；人工核对"], ["R4f", 135, "表头“题设计入TVL”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 360, "表头“发行金额：十亿港元等值”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 589, "表头“卖出5ETH”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 623, "表头“ETH单价：美元”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 623, "表头“实际LTV”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 731, "表头“收益首先从哪里来”未识别到专门说明；核对含义、算法或来源、单位和一行读法"]]}}
+
+发布机械门槛：PASS（不代表教学或视觉通过）
+
+记录完整且版本一致；程序不认证独立身份、教学语义或视觉，须核真实代理执行与报告
