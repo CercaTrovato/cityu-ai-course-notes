@@ -1,0 +1,42 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:1050px;margin:20px auto;padding:0 24px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}table{border-collapse:collapse;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;padding:12px}svg{max-width:100%;height:auto}.katex-display{overflow:auto}h2,h3{line-height:1.4}details{border:1px solid #ddd;padding:8px}</style><body><h3>2.1 先把工作拆开：AI 做草稿，人管理什么</h3>
+<p>设想银行员工要准备一份研究材料。过去，他可能自己查资料、写分析、整理图表。接入 AI 后，“查找”和“起草”可以交给不同 agent；员工仍须决定要回答的业务问题，以及什么证据足够支持结论。否则，只是更快地产出了一份无法负责的文字。</p>
+<p>嘉宾将未来管理对象描述为“人和智能的组合”（A <code>03:35</code>–<code>04:29</code>）。他用研究 agent、代码 agent、审计 agent 举例：研究者收集材料，代码工具帮助实现，另一角色检查结果；人定义问题、判断标准和控制框架（A <code>04:34</code>–<code>05:53</code>）。这是一种工作组织设想，不是本批已验证的银行部署。</p>
+<p>下表每行是同一工作中的一个职责。关键是分清产出与批准。</p>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>接收什么</th>
+<th>交出什么</th>
+<th>谁承担下一步判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>研究 agent</td>
+<td>明确问题、允许访问的资料</td>
+<td>带来源的草稿</td>
+<td>员工核事实及适用性</td>
+</tr>
+<tr>
+<td>代码 agent</td>
+<td>所需功能、约束</td>
+<td>代码或运行结果</td>
+<td>员工核是否解决业务问题</td>
+</tr>
+<tr>
+<td>检查 agent</td>
+<td>草稿及检查标准</td>
+<td>问题清单或评分</td>
+<td>人核标准及遗漏风险</td>
+</tr>
+<tr>
+<td>业务负责人</td>
+<td>证据、风险、例外</td>
+<td>接受、退回或停止的决定</td>
+<td>组织按既定职责负责</td>
+</tr>
+</tbody>
+</table>
+<p>例如，检查 agent 给“通过”，只能说明它按当前标准没找出问题。若标准根本没检查数据是否过期，错误仍会进入后续流程。人的职责包含制定标准、查看证据和处理例外，不能缩成点击一次“同意”。这是对课堂分工的笔记补充。</p>
+<p><strong>🎙️ 课堂补充</strong>（A <code>03:35</code>–<code>05:53</code>，课上展开）：<em>"So human in the middle is still the model we're going to run"</em>（A <code>05:53</code>，原段后还有未来范围限定）。嘉宾的判断限定于其能预见的未来，尤其是银行场景；不能推成所有工作永远必须采用同一种审核方式。</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script src="/mermaid.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'neutral'});</script></body>

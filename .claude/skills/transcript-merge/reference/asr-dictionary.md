@@ -75,10 +75,8 @@
 | SEAR / CER / share / fair | Sale | AC6761 S6 |
 | cash reimbursement | Cash Disbursement | AC6761 S6 |
 | marketable interest / particularities | multiplicities | AC6761 S6 |
-| IE / IEA / IE model | REA / REA model | AC6761 S6 |
 | share / fair / SEAR | Sale | AC6761 S6 |
 | billboard inventory / support | Surfboard inventory / Surfboard | AC6761 S6 Case 5 |
-| cash reimbursement | Cash Disbursement | AC6761 S6 |
 | AP clerk 误听片段 | A/P Clerk | AC6761 S6 |
 
 ## IS5542 · GenAI in Business
@@ -268,8 +266,8 @@
 | reach / which regression | Ridge regression | M04 A `23:34`，回顾 M03 时沿用旧 ASR 错例 |
 | WETLOO / wet-loose / red-loop | ReLU | EF5560 M04 A `01:54:30`–`01:56:27`、B `01:40:25`–`01:42:36`；按讲义 p.32 书面拼写 |
 | PVOC / SEC | PBOC 等机构名 `[?]` | EF5560 M04 A `02:03:46`、B `01:49:41`；B 支持 PBOC，后句仍需回听，不硬改细则 |
-| 01:49–02:04 | Sharpe → “shock ratio”；fire sales → “file sales” | 按语境与讲义校正，必要处标 [?] |
 | 00:58:43–00:59:53 | “OLX”“Farmer French”“asset return”是 ASR 风险词 | 不把它们当校正后的英文原话；使用 `[?]` 或按讲义术语回写（OLS / Fama-French / excess return 需主代理回源核对） |
+| 01:49–02:04 | Sharpe → “shock ratio”；fire sales → “file sales” | 按语境与讲义校正，必要处标 [?] |
 
 ## IS6400 T02 定点校词复核（2026-10-01）
 
@@ -280,7 +278,6 @@
 | one cortic coder | OneHotEncoder | 02:27:45 | 原cell29接口；引文写[OneHotEncoder] |
 | automatically draw the first one | automatically [drop] the first one | 02:27:45 | 同句已说will drop，原cell29 drop='first'；非逐字原话 |
 | house locked and downhouse | house[,] [loft] and [townhouse] | 02:27:59 | 原categories_与输出列，Loft/Townhouse为校词 |
-
 
 
 ## IS6400 M06/T07 · 2026-10-14 来源增量（2026-10-15核对）
@@ -336,3 +333,28 @@ A股票名、B阈值/映射、TA200/15marks仍不确定，不作为确定校词�
 | 13.1 | 原表为 183.1；未逐字核听，保留识别／口述差异 | S17 `05:05` 对照讲义 p.26；不改原话数字 |
 
 最初批处理在 S15/S17 漏词并复读；本次用同一模型顺序解码恢复全源。仍有碎句，不把自动转录当逐字听校或完整课堂证明。
+
+
+## 2026-10-31 · S20 / S22–S27 本批校词与保留项
+
+仅校正文解释，不覆盖规范转录原字节。数字冲突以讲义/数据复算为准，不把校正后的整句冒作原话。
+
+| 源与原转写 | 校正或边界 | 依据与定位 |
+|---|---|---|
+| S20 first / fourth differencing | first-order differencing | S20 57:49–58:02、01:52:14及T09 Cell29 `.diff()`；不是四阶 |
+| S20 223 / 266 | 讲义p.17的226 | M08 §2.2课堂滞后示例；保留ASR/口述差异 |
+| S20 C→B / C→D | 采用末次明确C→D指令 | S20 59:51；不覆盖讲义原两问 |
+| S22 IEA / AE、success | REA、Access | 扩展模型及数据库语境，Week6书面模型；S22 04:12–06:34 |
+| S22/S23 Grok相关多种误词 | 工具名依局部演示语境归Grok，不改原话 | M06 §2.25；不校任何不清产品名 |
+| S23 make / mic；case | Mick；Keith | Customer原表C2/C3；S23 01:08、13:09–13:25 |
+| S22 6,349 | 课件p.87为6,340 | 35,270−28,450−480=6,340，口述/识别差异保留 |
+| S23 MCT、neutral networks | MCP、neural networks | Week8 p.6及书面术语；M08 §2.1/§2.7 |
+| S23 Nature Language、Optimal Character Recognition | Natural Language、Optical Character Recognition | Week8 p.38/41；S23 01:33:48后语言/OCR段 |
+| S23 auditing / odyssey（费用表语境） | AuditFee | PredictAuditFee.xlsx字段，01:13:06后 |
+| S23 1998.903 | 198.903345374 | 01:23:13与01:28:05冲突；25行OLS独立复算支持后者 |
+| S25 six（DAO票权） | 讲义p.42为sixty / 60 | S25 01:25:35与前文/书面示例核对，40对60 |
+| S25 10,000、0.4%、400 | 三者算术冲突，正确费用40 | 26:34；不认证产品费率，400对应4% |
+| S25 weeks（贷款风险） | risks，按讲义解释，不改原话 | S25 01:29:08与卖出/借入对照 |
+| S26/S27 法规编号、manual对象、AI编码词、角色拼写 | [?]，不恢复为确定术语 | IS5542 M07 §9.3/9.5；缺讲义/原影片，官方局部外核与原话分开 |
+
+本批S24两条、S25一条含中文的过滤段已按原文恢复；隐私占位不是ASR校词。未逐字人工核听。两词典本次保留已有REA条目并归一，重复条目不再复制；没有无声丢弃互斥解释。

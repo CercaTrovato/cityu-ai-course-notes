@@ -1,0 +1,31 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:1050px;margin:20px auto;padding:0 24px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}table{border-collapse:collapse;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;padding:12px}svg{max-width:100%;height:auto}.katex-display{overflow:auto}h2,h3{line-height:1.4}details{border:1px solid #ddd;padding:8px}</style><body><h3>2.10 CHO：从聊天到有来源、有时间的共同记忆</h3>
+<p>一个人的行动信息不一定先进入日历，常散落在聊天、语音和照片中。CHO（Chief Household Officer，家庭事务主管）演示先把这些信息整理为可用资料，再让不同角色的 agent 围绕它工作（B <code>00:00</code>–<code>04:04</code>）。这部分含私人信息，正文只讲机制。</p>
+<p>知识图谱（knowledge graph）把对象和关系明确保存，例如“某人—参与—某活动”“某事项—发生于—某日”。这里还要保留来源与有效时间：过去正确的事实不一定现在仍正确；一句提议也不等于已确认事件。B <code>01:16</code>–<code>01:50</code> 介绍了事件、人物信息、重要性、确定程度及时间变化，但具体数据结构未展示。</p>
+<p>影片自称有九个 agent（B <code>00:05</code>）。现有 ASR 可以辨认读照片/语音、分析、人物关系、日历、待办、项目、资料保护、设备维护等职责；没有足够清楚的完整九员名册，因此不补造第九个角色。角色的拟人姓名是界面设定，不能证明这些是九个独立模型或九台机器。</p>
+<p>下图从消息向下读，显示本稿依据影片重建的简化资料流。虚构角色名省略；真正程序、数据表和权限实现未取得。</p>
+<pre class="mermaid">flowchart TD
+  I[允许读取的聊天 照片 语音] --&gt; X[识别文字及转录]
+  X --&gt; E[抽取人物 事件 待办 时间 确定程度]
+  E --&gt; Q[另一模型检查提取结果]
+  Q --&gt; G[保存共同图谱及来源]
+  G --&gt; C[日历 待办 项目等角色读取]
+  C --&gt; D{需要本人决定或存在冲突吗}
+  D -- 是 --&gt; H[进入待决定收件箱]
+  H --&gt; A[本人接受 拒绝或撤销]
+  D -- 否 --&gt; P[整理计划及候选事项]
+  A --&gt; P
+  G --&gt; N[夜间重新整理与检查]
+  N --&gt; P
+</pre>
+<p>一个明确标为笔记补充的小例可以把它走完：</p>
+<ol>
+<li>输入：“周六有个活动，要不要参加？”提取器建立候选事件，并保存原消息位置。</li>
+<li>因为“要不要”尚未决定，状态保持“提议”。不得直接记为本人承诺出席。</li>
+<li>日历角色发现同一时段已有另一活动，把冲突交到本人收件箱。</li>
+<li>本人选择不参加，计划显示拒绝；若误点，撤销（undo）恢复此前状态。影片展示可撤销，但没有证明任何外部发送或付款也都可撤回。</li>
+<li>夜间任务再检查图谱、下一周和天气，提出需要更新的事项。天气变化可以影响建议，不能越权代替本人作新的承诺。</li>
+</ol>
+<p>影片原过程包含：准备角色承担照片/语音整理，分析角色理解消息，另一个较大模型复核（B <code>00:55</code>–<code>01:32</code>）。共同图谱连接角色，计划中的事件与任务能追到来源聊天。本人处理少数只可由自己决定的事项，夜间任务重新整理资料和未来安排（B <code>01:50</code>–<code>03:21</code>）。</p>
+<p>“复核模型”仍会出错，图谱也可能保存错误。要让人能回到原消息纠正，而非把结构化结果当成天然事实。</p>
+<p>B <code>00:30</code>–<code>00:48</code> 的影片宣称应用与模型在其本机运行、个人信息不离开设备、通过私人网络由手机访问。这是作者对其个人系统的自述；本批没有检查代码、网络流量或设备，所以不认证“绝无外传”。本地运行减少哪些网络流转，要看实际实现；也不自动解决被错误授权的人读取资料的问题。</p>
+<p><strong>🎙️ 课堂补充</strong>（B <code>00:00</code>–<code>04:04</code> 影片；<code>04:12</code>–<code>07:26</code> 现场解释）：<em>"Take the stream of everyday conversations and turn it into a knowledge graph."</em>（B <code>03:40</code>）；<em>"and keep a human in charge."</em>（B <code>03:44</code>，原段尾连续短语）。嘉宾随后提出把家庭聊天换为企业邮件、会议和文档的迁移设想；这说明设计相似，不能省去企业权限、隐私、审计和业务验证。</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script src="/mermaid.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'neutral'});</script></body>

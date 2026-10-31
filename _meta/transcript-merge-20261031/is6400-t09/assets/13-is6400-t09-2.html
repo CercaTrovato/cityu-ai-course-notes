@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>is6400-t09-2</title><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:900px;margin:25px auto;padding:0 26px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}h1,h2,h3,h4{line-height:1.4}h2{margin-top:1.4em;border-bottom:1px solid #cbd8df}table{border-collapse:collapse;max-width:100%;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;margin:15px 0;padding:8px 15px;border-left:4px solid #577686}img,svg{max-width:100%;height:auto}.katex-display{overflow-x:auto}code{font-size:.9em}section{margin-bottom:28px}</style><body><h1>is6400-t09 · 新增课堂内容 3–4</h1>
+<h3>2.3</h3>
+<p><strong>🎙️ 课堂补充</strong>（S20 <code>01:43:19</code>–<code>01:45:42</code>）</p>
+<p>教程要求留住变换参数，方便把预测恢复为需求。S20 <code>01:44:12</code>：<em>"So the lambda will tell you how to reverse this one"</em>。中文：模型若预测变换尺度，就要用对应λ做反向恢复；只画出较平稳曲线还没有得到原需求预测。</p>
+<p>口述将Box-Cox与更接近正态形状联系。这里仍按正文界定：改变边际分布或稳定方差，不保证没有趋势、季节或自相关，也不等于KPSS检验会把数据变成正态。</p>
+<h3>2.4</h3>
+<p><strong>🎙️ 课堂补充</strong>（S20 <code>01:45:42</code>–<code>01:52:05</code>）</p>
+<p>教程按月份分组、求 Box-Cox 需求均值，再按 month 合回原表。S20 <code>01:49:57</code>：<em>"demand of each month and then we merge this data set to our original data set here by the month, right?"</em> 它把12个“月份位置的平均”贴回逐月行，再相减；负值是低于该月份平均。</p>
+<p>这确认实际处理的列是 demand_BC，不能对原需求均值和变换后需求混减。原教程此处仍用全198月，课堂后面对选阶的更正没有自动修好预处理泄漏，训练侧修正方案仍见正文。</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});</script></body></html>

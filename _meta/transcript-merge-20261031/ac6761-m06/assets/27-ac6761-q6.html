@@ -1,0 +1,52 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:1050px;margin:20px auto;padding:0 24px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}table{border-collapse:collapse;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;padding:12px}svg{max-width:100%;height:auto}.katex-display{overflow:auto}h2,h3{line-height:1.4}details{border:1px solid #ddd;padding:8px}</style><body><h4>2.25.6 Q6：按销售金额，哪种商品最畅销？</h4>
+<p><strong>英文原题（DOCX，保留原编号）</strong>：</p>
+<blockquote>
+<p>6.Which product is the best-selling one with the highest sale amount?</p>
+</blockquote>
+<p>中文读题：best-selling 被 highest sale amount 限定为“销售金额最高”，不等于卖出件数最多。先对每条商品销售行算数量乘实际单价，再按商品把这些行金额相加。</p>
+<p>下表每行是一种商品，件数与销售金额分别汇总自同一组 Stockflow 行。</p>
+<table>
+<thead>
+<tr>
+<th>商品</th>
+<th style="text-align: right;">累计数量</th>
+<th style="text-align: right;">累计销售金额</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A-1 Small A</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">8,000</td>
+</tr>
+<tr>
+<td>A-2 Medium A</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">41,000</td>
+</tr>
+<tr>
+<td>A-3 Extra Small A</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6,000</td>
+</tr>
+<tr>
+<td>A-4 Tiny A</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1,800</td>
+</tr>
+<tr>
+<td>A-5 Large A</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">17,000</td>
+</tr>
+<tr>
+<td>A-6 Extra Large A</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">44,000</td>
+</tr>
+</tbody>
+</table>
+<p>复做 A-6：S-2、S-4、S-5 各两件乘 5,000，另 S-7 两件乘 7,000；金额合计 10,000 + 10,000 + 10,000 + 14,000 = 44,000。它最高，且与 S23 <code>14:06</code>–<code>14:19</code> 的课堂口述一致。数量最高却是 A-2 的 12 件；改题目指标就要改排名。</p>
+<p>所有商品金额合计 117,800，与七笔 Sale.Amount 合计一致。这是“先横向算行金额，再纵向按商品汇总”的独立对账，不能把 13 条商品行直接称 13 笔销售。</p>
+<p><strong>English reference answer（原表复算）</strong>：A-6, Extra Large A, has the highest sales amount at 44,000, from eight units. Its four line amounts are 10,000, 10,000, 10,000 and 14,000. A-2 leads by quantity at twelve units, so the answer depends on the requested sales-amount measure.</p>
+<p><strong>学习总结与改条件练习（笔记补充）</strong>：找身份沿键追踪，找账期保留每条分配，找排名先定义指标和粒度。若 Q5 改问“已收现金最多的客户”，应在 CashReceipt 按客户汇总，不能继续用 Sale.Amount；本例 C-5 已收 32,600，而 C-3 尚无收款记录，答案会改变。</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script src="/mermaid.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'neutral'});</script></body>

@@ -1,0 +1,38 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:1050px;margin:20px auto;padding:0 24px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}table{border-collapse:collapse;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;padding:12px}svg{max-width:100%;height:auto}.katex-display{overflow:auto}h2,h3{line-height:1.4}details{border:1px solid #ddd;padding:8px}</style><body><h3>2.4 怎样检查而不把省下的工作全做回来</h3>
+<p>假设原任务需要很久，AI 很快形成草稿。如果审核者必须从头重做全部工作才能确认，生成阶段省下的时间就可能被审核吃掉。嘉宾以“过去数小时、AI 数秒、人工仍需数小时”的例子说明这个矛盾（A <code>25:37</code>–<code>26:08</code>）；这些时间是口头示意，不能当成已测性能。</p>
+<p>人在环内（human-in-the-loop）指人在约定环节检查或决定。它是否有效取决于人看什么、能否发现错误，以及能否退回或停止。盲目签字只有形式，没有解决问题。</p>
+<p>另一种办法是让 AI 检查 AI。生成者给候选，评审者（AI judge）按标准判断通过、改写或转人工。嘉宾影片的聊天回复案例在客户看到答案之前评分（A <code>34:13</code>–<code>34:25</code>）；他也提醒某些监测只会事后发现问题（A <code>26:12</code>–<code>26:38</code>）。<strong>事前拦截与事后监测的作用时间不同</strong>，不能合成一个“总能阻止错误”的保证。</p>
+<p>下表一行是一种检查方式，比较它在哪个时点起作用。</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>能帮忙做什么</th>
+<th>仍可能漏什么</th>
+<th>代价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>人从头复做</td>
+<td>对照关键证据重新判断</td>
+<td>人也可能疲劳或缺专业能力</td>
+<td>时间可能很高</td>
+</tr>
+<tr>
+<td>发布前 AI 评审</td>
+<td>按规则拦住部分不合格输出</td>
+<td>规则缺项、模型共同错误</td>
+<td>额外计算及维护</td>
+</tr>
+<tr>
+<td>发布后监测</td>
+<td>找已发生的异常并触发处理</td>
+<td>首次影响可能已发生</td>
+<td>响应与补救成本</td>
+</tr>
+</tbody>
+</table>
+<p>💡 笔记补充：一个费用回答中，生成者和评审者若都读了过期文件，二者一致不能证明当前费用正确。可以增加文件版本检查、金额计算规则和人工升级；这些检查对应不同错误来源。再加一个模型不是独立事实来源。</p>
+<p>嘉宾在 A <code>36:53</code>–<code>37:59</code> 讨论误报与漏报，但 ASR 对两者取舍破碎。这里不将其转写成确定阈值。误报（false positive）是把正常事项判为异常；漏报（false negative）是没有发现真实异常。笔记补充例：把正常付款拦住会打扰客户，放过欺诈可能造成损失。应比较这两类后果，而不是追求没有说明分母的“准确率高”。</p>
+<p><strong>🎙️ 课堂补充</strong>（A <code>25:21</code>–<code>26:41</code>；<code>34:13</code>–<code>37:59</code>，课上展开）：<em>"you can't possibly have a human to revalidate everything"</em>（A <code>26:04</code>）；<em>"Every chatbot answer is scored before the customer sees it."</em>（A <code>34:17</code>，影片）。前者指出审核资源限制；后者是特定案例流程，不是所有银行都已如此运行。</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script src="/mermaid.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'neutral'});</script></body>

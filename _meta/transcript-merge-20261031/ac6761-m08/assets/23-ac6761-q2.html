@@ -1,0 +1,53 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:1050px;margin:20px auto;padding:0 24px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}table{border-collapse:collapse;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;padding:12px}svg{max-width:100%;height:auto}.katex-display{overflow:auto}h2,h3{line-height:1.4}details{border:1px solid #ddd;padding:8px}</style><body><h4>2.25.2 Q2：S-2 卖了什么、多少、成本与售价如何、谁买的？</h4>
+<p><strong>英文原题（DOCX）</strong>：</p>
+<blockquote>
+<p>What exact quantities and physical items of inventory were sold under Sale #S-2, what was their standard cost versus actual selling price, and who purchased them?</p>
+</blockquote>
+<p>中文读题：须分别回答商品身份、数量、标准单位成本、实际销售单价和购买客户。“标准成本”和“成交价”不是同一字段。</p>
+<ol>
+<li>用 S-2 筛 Stockflow，得到 A-6、数量 2、ActualPrice 5,000。</li>
+<li>用 A-6 查 Inventory，读出 Extra Large A 与 StdUnitCost 3,600。</li>
+<li>用 S-2 查 Sale，得到客户 C-2；再用 C-2 查 Customer，得到 Mick。</li>
+</ol>
+<p>每行是一种单位口径；数量为 2 件，金额仍沿源库，不补币种。</p>
+<table>
+<thead>
+<tr>
+<th>对象或口径</th>
+<th>原字段</th>
+<th>本题值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>商品</td>
+<td>Inventory.ItemID / Description</td>
+<td>A-6 / Extra Large A</td>
+</tr>
+<tr>
+<td>数量</td>
+<td>Stockflow.Quantity</td>
+<td>2</td>
+</tr>
+<tr>
+<td>每件标准成本</td>
+<td>Inventory.StdUnitCost</td>
+<td>3,600</td>
+</tr>
+<tr>
+<td>每件实际售价</td>
+<td>Stockflow.ActualPrice</td>
+<td>5,000</td>
+</tr>
+<tr>
+<td>客户</td>
+<td>Sale.CustomerNumber → Customer.Name</td>
+<td>C-2 / Mick</td>
+</tr>
+</tbody>
+</table>
+<p>读“每件实际售价”一行：每件 5,000，所以两件的销售总额是 10,000，与 Sale.Amount 相符。若另算两件标准成本，是 7,200；不能把 3,600 误当两件合计，也不能由标准成本直接认证实际销售毛利。</p>
+<p>课堂从 S22 <code>19:48</code> 讲到其末尾 S22 <code>22:39</code>，S23 <code>00:00</code> 继续核 A-6；S23 <code>01:08</code> 核 C-2 的姓名。两源内容支持先后，但没有共同声轨锚点，缺漏长度未知。</p>
+<p><em>"Inventory table for A6, okay, so the description is extra large A, and the standard unit cost is 3,600, which is correct."</em>（S23 <code>00:00</code>）</p>
+<p>中文：存货表 A-6 的描述为 Extra Large A，标准单位成本为 3,600。原键值以数据库书面拼写为准。</p>
+<p><strong>English reference answer（原表复算）</strong>：S-2 sold two units of A-6, Extra Large A. The standard unit cost is 3,600, compared with an actual selling price of 5,000 per unit. Customer C-2, Mick, bought them; the sales total is 10,000.</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script src="/mermaid.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'neutral'});</script></body>

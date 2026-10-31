@@ -3,12 +3,12 @@ course: AC6761
 module: M08
 week: 8
 date: null
-source: ["AC6761_Artificial_Intelligence_Accounting/course_files_export/Week 8 PPT.pptx（45 页）"]
-transcript: pending
+source: ["Week 8 PPT.pptx（45 页）", "PredictAuditFee.xlsx（25 行）", "Excel.pptx（1 页）", "Key_AI_Tools_in_Accounting.docx"]
+transcript: merged
 prerequisites: [高中四则运算与一次函数]
 new_concepts: [Narrow AI, AGI, 半监督学习, 强化学习, 线性回归, 最小二乘法, OCR, RPA, NLP]
 tags: [AC6761, AI, machine-learning]
-status: v0.9
+status: v1.0
 readability_rules: v2
 mechanism_spec: v1
 mechanism_review: passed
@@ -16,10 +16,15 @@ mechanism_review_mode: full-independent-gpt6.1-20261025
 mechanism_content: repaired
 readability_review: passed
 teaching_standard: novice-v1
-updated: 2026-10-25
+updated: 2026-10-31
+current_merge_review: independent-teaching-review-completed
 ---
 
 # M08 · AI 基础与会计技术
+
+> ✅ **材料 v1.0（2026-10-31 融合）**：S23=`M06-M08-transcript-source23-partial.txt`，948 段，`00:00`–`01:46:24`。原时钟不重置：`00:00`–`20:20` 是 M06 六题续讲、项目及补课要求，已回填 M06 §2.25–§2.26；`20:27` 后转 M08，`20:39` 明确新章开场，`01:46:24` 有下课告别。源首缺完整课堂开头，不能称整堂课完整。实际授课日期未知，保留 `date: null`。本次新增及受影响教学内容的独立审查已完成；执行证据分别记录，写回与同步状态不由此推定。旧全篇审查仍只覆盖原有范围。
+>
+> **影片与教授分开**：S23 `22:32`–`28:22` 图灵测试影片、`31:14`–`35:48` AI/ML/DL 影片、`01:34:13`–`01:38:27` NLP 影片、`01:41:21`–`01:42:43` OCR 影片，均不当作教授本人逐字原话或考试明示。
 
 ## 0. 三分钟速览
 
@@ -34,6 +39,8 @@ updated: 2026-10-25
 - 说明 OCR、RPA、NLP、生成式 AI 的输入输出、失败方式和控制点。
 
 课程前置材料将 W8 对应 CILO 2：识别会计中的 AI 技术与模型。课程没有为 CILO 分配权重，不能据此推断考试比重。
+
+> 🎙️ **课堂实况**：S23 `20:39` 起介绍 AI 与历史；四类学习用发票、分录、合同、审计抽样说明，`01:13:06` 后新增 Excel/Grok 回归演示；末段通过影片和工具附件介绍会计技术。p.43–45 未逐页录到，不能标略过，也不由“周六细讲工具”推定这三页全部明确顺延。
 
 ## 1. 开始之前 · 知识衔接
 
@@ -108,9 +115,13 @@ flowchart TB
 
 从外向内读：一个 DL 方法属于 ML，因而也属于 AI；反过来，规则式专家系统可以属于 AI，却不必属于 DL。这个变式只检验集合包含，不由“更里面”推出更强。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（S23 `20:39`–`29:56`；A · 讲义与图灵测试影片）
 
-待转录补充。讲者备注全空，没有可用课堂转录，因此不能断言教授是否讲过或略过。
+教授先介绍定义和能力范围，再播放图灵测试（Turing Test）影片。这个测试让评判者仅凭文字对话分辨人或机器；不能可靠分辨表示机器在这次对话表现得像人，不直接证明理解、意识或所有任务能力。
+
+影片 S23 `22:32`–`28:22` 补充测试流程、聊天机器人例与局限；它提到中文房间（Chinese room）论证，用来质疑“按符号回应看起来正确”是否足以证明理解。本讲只需知道它提出的区别，不从影片推出某个现有模型已通过测试或具有人类意识。
+
+教授回到现场：*"although the Turing test is not perfect at all"*（S23 `28:26`）。中文：图灵测试并不完美。随后按讲义概述 AI 冬天、Deep Blue、现代模型与 MCP；ASR 的 MCT 按 p.6 校为 MCP，历史说法仍保留前文的来源边界。
 
 **💡 换个说法（笔记补充）**
 
@@ -171,9 +182,13 @@ flowchart LR
 
 课件称监督学习可直接比较预测和标签、标签良好时有效、相对容易解释；缺点是标签成本高、未来分布变化时退化，且不善于发现未定义的新模式（p.11、13）。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（S23 `36:18`–`44:14`；A · 发票编码与评价）
 
-待转录补充。
+教授用已贴水果名称的图片解释标签，再把同一机制用于核准过科目的发票：历史描述、供应商等是输入，已确认科目是训练标签，新单据输出建议科目。
+
+课堂举 Adobe 订阅归入软件/IT 费用（S23 `42:18`–`42:28`）。*"New invoice is automatically suggested a code"* 是 p.12 的讲义表述，不能冒作音频直引。现场原话为 *"that this belongs to travel expense"*（S23 `42:08`），中文：这种收据归差旅费用；具体书面例仍按 p.12。新供应商或新政策不在旧训练中时，建议可能错，不能只因能自动给码就直接过账。
+
+课堂 S23 `42:49`–`44:05` 说明标签良好时有效、可以比较预测与答案；标签成本高、未来不同于训练会退化。准确率（accuracy）看全部预测中答对比例，精确率（precision）看被模型判为某类别的记录中有多少真属该类别；二者分母不同，不能混报。
 
 **💡 换个说法（笔记补充）**
 
@@ -227,9 +242,13 @@ flowchart LR
 
 课件称其不需标签、适合发现隐藏模式和新型异常；但客观评估难、群组需人工解释，对预定义类别未必精确（p.15、17）。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（S23 `44:14`–`52:12`；A · 分组、异常及答题要求）
 
-待转录补充。
+教授在 S23 `44:24`–`45:57` 说明未贴名称的水果可以按特征分组，但算法并不知道组名。会计上从分录金额、科目、时点、用户和摘要学常见结构，再标离群线索；不是先提供全部舞弊标签。
+
+教授以现金/总资产很低作为调查线索（S23 `48:16`–`49:08`）。这个比率是现金占资产比例，低现金可能提示支付压力，但不能单凭该比率确认破产：还须查到期债务、融资、现金流及行业背景。该段的“无成本”口语也不改变模型/数据/人工调查有成本。
+
+*"at least two of each, you should be familiar"*（S23 `51:59`）。中文：监督与无监督的优点、缺点要分别熟悉至少两项。S23 `52:06`–`52:12` 又点名无监督的 two pros and two cons；这是明确答题数量要求，不是承诺原题必考。详见 §6 的可作答对照。
 
 **💡 换个说法（笔记补充）**
 
@@ -292,9 +311,11 @@ flowchart TD
 
 课件称其可减少标注量，适合文档分类；仍依赖高质量、具代表性的少量标签，无标签噪声也会影响结果（p.19、21）。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（S23 `52:13`–`59:19`；A · 少量标签与合同例）
 
-待转录补充。
+教授用 10% 标注、90% 未标作示意，再说明专家只能检查几百份合同，模型联合这些标签与剩余文本学习分类。10/90 是课堂示例，不是半监督定义的固定比例；要如前文真正利用未标材料，不能只把它放在文件夹里。
+
+*"a representative sample of contracts"*（S23 `56:43`）。中文：标注样本要有代表性。现场 S23 `57:40`–`58:26` 曾调整“更准确”的比较句，ASR 的基准不稳定；这里只保留条件结论：在数据分布和方法适当时，利用未标数据可能比只用少量标签好，但不保证胜过大量高质量标签，也不保证每轮都改善。
 
 **💡 换个说法（笔记补充）**
 
@@ -359,9 +380,11 @@ flowchart LR
 
 如果只奖励“发现数量”，策略可能总查容易发现的小错而忽略重大风险；模拟环境不代表真实总体时，策略也会失效。课件列出优点为适合序列决策和反馈优化；缺点是奖励和环境难定义、计算成本与解释/审计困难（p.23、25）。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（S23 `59:19`–`01:05:31`；B · 狗训练类比与审计抽样）
 
-待转录补充。
+教授以狗对指令反应后获得食物/奖励说明行动反馈，再映射到审计：抽样策略是智能体，交易总体是环境，选择下一项检查是动作；错误发现、高风险覆盖或效率可作为设计奖励的线索。真实审计不应探索未经授权的危险动作。
+
+*"learning occurs through trial and error rather than from labelled examples"*（S23 `01:01:06`）。中文：主要从尝试与反馈学习，而非固定标签。奖励必须预先定清且符合审计目的；课堂没有提供已训练模型或真实效果，本节两回合数值仍是笔记补例。
 
 **💡 换个说法（笔记补充）**
 
@@ -535,9 +558,11 @@ flowchart TD
 
 平方使大残差权重更高，极端值会影响拟合。SSE 最小只说明样本内按该目标拟合较好，不证明因果，也不保证未来准确。小样本、弯曲关系、结构变化和超范围外推都可能误导；应看散点、残差模式和留出数据，并限定预测范围。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（S23 `01:05:41`–`01:13:06`；A · 预测、散点与竖直误差）
 
-待转录补充。
+教授从预测用途进入回归：每个点是一对输入与目标，直线概括样本中的关系，通常不能穿过全部点。最小二乘比较同一输入处的竖直差，平方后相加再最小化，不能改成点到线的斜向最短距离。
+
+*"minimizing the sum of the squares of the vertical"*（S23 `01:11:52`）是语句片段，意思是最小化竖直偏差平方和；完整机制见本节。S23 `01:11:44` 同时出现 just for your information 与 you'll have to memorize，ASR/语境冲突，未逐字核听，不登记为必背或免背。
 
 **💡 换个说法（笔记补充）**
 
@@ -554,6 +579,113 @@ flowchart TD
 **所以呢**
 
 能复算拟合值仍需判断样本是否适合未来业务，不能把预测当承诺。
+
+#### 2.6.1 Excel 实课：从 25 年数据拟合到条件预测
+
+现在把前面的三点教学例换成真实课堂附件。问题是：已知公司治理指数（Corporate Governance Index, CGI），怎样估计审计费用（AuditFee）？输入来自 `PredictAuditFee.xlsx` 的 25 行历史记录，年份为 2000–2024。CGI 是输入 $x$，AuditFee 是目标 $y$；Year 只标识记录，本次没有作为第二个解释变量。
+
+原表没有给 AuditFee 的货币或缩放单位，因此下文只写原表数值单位。CGI 指标的构造、公司身份与收集方法也未给；不能把这些数当经外部验证的真实公司样本。
+
+<details><summary>全部 25 行原始数据（XLSX 单元格；无额外预测行）</summary>
+
+每行是一年，左列标识年，后两列分别是模型输入与实际目标。
+
+| Year | CGI | AuditFee |
+|---:|---:|---:|
+| 2000 | 1.8 | 206 |
+| 2001 | 3.3 | 150 |
+| 2002 | 2.5 | 162 |
+| 2003 | 3.6 | 127 |
+| 2004 | 1.9 | 188 |
+| 2005 | 2.8 | 128 |
+| 2006 | 4.5 | 105 |
+| 2007 | 3.2 | 111 |
+| 2008 | 5.6 | 100 |
+| 2009 | 6.1 | 108 |
+| 2010 | 3.0 | 156 |
+| 2011 | 6.6 | 88 |
+| 2012 | 2.8 | 129 |
+| 2013 | 1.9 | 138 |
+| 2014 | 5.8 | 112 |
+| 2015 | 7.6 | 90 |
+| 2016 | 2.6 | 190 |
+| 2017 | 3.2 | 186 |
+| 2018 | 2.5 | 176 |
+| 2019 | 4.7 | 123 |
+| 2020 | 3.0 | 136 |
+| 2021 | 2.5 | 138 |
+| 2022 | 5.3 | 102 |
+| 2023 | 3.9 | 158 |
+| 2024 | 5.6 | 116 |
+
+例如 2000 年的输入为 1.8、实际费用为 206。这是一对训练时同时已知的数，不是用 2000 年份数值预测 206。
+
+</details>
+
+**🎙️ 课堂补充**（S23 `01:13:06`–`01:29:34`；A · Excel 与 AI 的 OLS 演示）
+
+老师用 Excel 的 Regression 功能拟合，再将相同数据与明确模型提示交给 AI。关键是两边使用同一数据、同一因变量/自变量和同一估计方法，而不是比较两个不明模型的数字。
+
+*"I explicitly set the instruction here, which is independent, which is dependent, and which model we should use."*（S23 `01:27:38`–`01:27:44`）
+
+中文：提示中要明确哪个变量是输入、哪个变量是目标，以及使用什么模型。课堂口头说不同工具模型可能不同是一种排查解释，未展示各工具完整输出，不能当作所有差异原因已证实。
+
+**原附件完整步骤与提示词（`Excel.pptx`，1 页）**：下面逐行照录，自动换行合并成原句。
+
+> Predicting audit fee using Excel
+>
+> Excel – File - Options – Add-ins – Excel Add-ins – Analysis ToolPak
+>
+> Data – Data Analysis – Regression
+>
+> Y and X range – Labels - Line Fit Plots – OK
+>
+> Design – Add Chart – Trendline
+>
+> Y = a + bX (a= intercept; b=coefficient)
+>
+> AI prompt: Based on the excel data, using CGI as independent variable and auditfee as dependent variable, show regression results of OLS estimation.
+
+**实际跟做的动作**（界面名称沿附件；本次笔记核算未操作用户的 Excel）：
+
+1. 先查看 Data 是否有 Data Analysis。没有时，按附件在 File → Options → Add-ins → Excel Add-ins 中启用 Analysis ToolPak；已启用就不重复操作。S23 `01:16:11` 说不用跟该步，只针对教室机器已经装好，不等于所有机器都不需插件。
+2. 打开原表，Data → Data Analysis → Regression，进入回归设置窗口。
+3. Input Y Range 选择 `C1:C26`，即 AuditFee 标题及 25 个目标值。Y 是要预测的费用，不能选 Year。
+4. Input X Range 选择 `B1:B26`，即 CGI 标题及 25 个输入值。X/Y 要覆盖相同 25 条记录，不漏最后一行。
+5. 因为范围含标题，勾 Labels；按附件勾 Line Fit Plots 后确认。若只选 `B2:B26`、`C2:C26`，就不勾 Labels。标题是否纳入与该开关必须一致。
+6. 输出中先看系数表：Intercept 是截距 $a$，CGI 行的 coefficient 是斜率 $b$。需要显示线时按附件 Chart Design → Add Chart Element → Trendline 选 Linear；具体菜单随版本核对。
+7. 核图的横轴是否确为 CGI，核散点来自原始 AuditFee；原始观测、拟合值和新条件预测应分别标记。增加趋势线不替代读取回归系数，更不能由线好看断言未来准确。
+
+普通最小二乘（Ordinary Least Squares, OLS）就是前节按竖直残差平方和选择 $a,b$ 的拟合规则。本批作者从原 XLSX 单元格重新用精确分数计算，得到：
+
+$$\widehat{\mathrm{AuditFee}}=198.903345374-16.091211156\times\mathrm{CGI}.$$
+
+本式左边是模型预测费用；右边截距与费用同单位，斜率表示 CGI 每加 1，模型预测费用约少 16.0912 个原表单位。它是这 25 行的统计拟合，不证明治理指数使费用下降；“自变量”不等于变量由自身变化或具有已识别因果效应。
+
+**用已教公式核系数**：25 行的 $\sum x=96.3$、$\sum y=3,423$、$\sum x^2=434.51$、$\sum xy=12,162.6$。这些分别是输入相加、目标相加、每行输入平方后相加、每行输入乘目标后相加。代入前节等价斜率式，分母不为零：
+
+$$b=\frac{25\times12,162.6-96.3\times3,423}{25\times434.51-96.3^2}=-16.091211156,$$
+
+$$a=\frac{3,423}{25}-b\frac{96.3}{25}=198.903345374.$$
+
+S23 `01:23:13` 把截距识成 1998.903；后 S23 `01:28:05` 明确为 198.9033，且原数据复算一致，所以笔记采用 198.9033，不改写原转录。用错 1998 会使预测多约 1,800，不能按“差不多”保留。
+
+下图每个点是一年原始观测，横轴是 CGI、纵轴是 AuditFee 原表数值；实线是同 25 行的 OLS 拟合线。星号仅表示 CGI=5 时的条件预测，没有真实未来费用，不给它画已知残差。
+
+![[AC6761_Artificial_Intelligence_Accounting/notes/figures/m08-source23/auditfee-ols.svg]]
+
+可编辑图源和完整数据：[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m08-source23/plot-auditfee.py|plot-auditfee.py]]。例如左侧 CGI=1.8 的点为费用 206；沿同一横坐标看直线可读拟合值，二者的竖直差才是该行残差。图线下降不构成因果证据，也没有在横轴表示年份。
+
+**把“下年 CGI=5”作为条件，走完预测**：老师在 S23 `01:22:05`–`01:22:43` 先假设或可靠估计新输入为 5，再预测目标；5 不是已确认未来事实。
+
+$$\widehat{\mathrm{AuditFee}}=198.903345374-16.091211156\times5\approx118.447289593.$$
+
+先算斜率乘 5，得约 −80.4561；再加截距，得约 118.4473 个原表单位。如果 CGI 改为 6，则同一拟合线给约 102.3561，减少量与斜率一致。实际 CGI 或业务关系改变时，条件预测也变；不能说已经预测“下一年一定收费 118.45”。
+
+**训练、输出与验证分开**：训练输入是历史 CGI 和已知 AuditFee；学习输出是 $a,b$。使用时给新的 CGI，输出费用预测。原表 25 行都参与拟合，样本内残差平方和约 10,485.8136；没有留出新样本，所以没有据此完成样本外预测验证。费用还可能受公司规模、风险和审计范围等因素影响，这些这里只是遗漏变量提醒，不是已建多元模型。
+
+**English reference answer（笔记复算）**：Using the 25 supplied observations and an intercept, the OLS model is predicted AuditFee = 198.903345374 − 16.091211156 × CGI. Conditional on CGI being 5, the prediction is about 118.4473 in the source data units. This is a fitted statistical association, not proof of causality or validated future accuracy.
+
 
 ### 2.7 ML 应用与 DL（讲义 p.8、26、37）
 
@@ -579,9 +711,13 @@ flowchart TD
 
 p.26 列的是用途目录：推荐把历史互动变成候选排序；语音处理把声音变成文字/指令；图像诊断寻找影像模式供专业复核；目标识别/跟踪寻找图像中的对象及其随帧变化；大数据分析从历史特征找预测线索；分类输出已定义类别、聚类输出待解释群组。名称与产品是讲义示例，具体实现和成效未核。p.37 称 DL 持续胜过早期系统，但没有比较对象、任务或指标，不能推广为普遍结论。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（S23 `30:02`–`35:52`；`01:05:41`–`01:06:18`；`01:33:11`–`01:33:41`；A · 现场与影片分开）
 
-待转录补充。
+教授先讲 AI 包含 ML、ML 包含 DL，接着播放 S23 `31:14`–`35:48` 影片；之后在 ML 用途和会计技术段再回到预测与 DL。影片的学校类比只帮助看层级，不能理解为“DL 是最聪明学生，所以永远更好”。
+
+现场原话：*"Machine learning is within the area of AI, and deep learning is within the area of machine learning."*（S23 `30:47`）。中文：ML 在 AI 范围内，DL 又在 ML 范围内。
+
+影片谈推荐、图像识别和自动驾驶，且有“数据越多越好”的宽泛说法。它不是本班实验；数据质量、分布、任务与评价仍决定效果，不能当作持续改进保证。
 
 **💡 换个说法（笔记补充）**
 
@@ -648,9 +784,11 @@ p.35 的五项会计用途没有效果数字，下面逐项读它们解决什么
 
 教学工作流：发票进入系统→OCR 提取→规则/ML 校验→低置信或不匹配时人工复核→获授权后 RPA 录入→保存凭证与审批日志。此为笔记补充，不代表课件报告的部署。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（S23 `01:29:54`–`01:32:46`；B · 按用途概述）
 
-待转录补充。
+教授把日常/商业应用称为信息性例子，依次点到智能家居、健康、推荐、交通、客服、金融、零售与制造，再讲会计例行自动化、异常、预测、合规和趋势。
+
+*"Actually, this is just for information"*（S23 `01:29:59`）。中文：这里是用途介绍。这不等于宣布整段不考，更不能把课件品牌效果数字升级成已核事实。会计合规仍需适用规则和人工判断，不由自动扫描保证守法。
 
 **💡 换个说法（笔记补充）**
 
@@ -722,9 +860,13 @@ flowchart TD
 
 </details>
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（S23 `01:39:52`–`01:43:46`；A · RPA 与 OCR 影片）
 
-待转录补充。
+教授在 S23 `01:39:52`–`01:40:21` 说明 RPA 处理规则化结构数据，并可结合 ML；OCR 把扫描文字变为机器文本。现场 ASR 的 Optimal Character Recognition 应按 p.41 校为 Optical Character Recognition，不能照误词背。
+
+S23 `01:41:21`–`01:42:43` 是影片旁白：先矫正/去噪与二值化图像，再分行/字符，按笔画特征或整体模式匹配字符。二值图像是只保留黑白两种值的图；把字符像素排成 0/1 网格后再比较，是影片的传统方法示意，不代表所有现代 OCR 都采用同一流程。
+
+现场 *"making them searchable and improving document management"*（S23 `01:43:28`）。中文：转成可搜索文字有助文档管理。S23 `01:41:02` 的 without error 属宽泛口语；模糊、小数点、字体与排版仍会误识，必须沿本节核验分支处理。
 
 **💡 换个说法（笔记补充）**
 
@@ -808,9 +950,11 @@ p.42 列 ChatGPT、Claude、Copilot、Excel、Python、Vic.ai、Truewind、Karbo
 
 合同原文进入系统后，NLP 分段并提出金额、期限、续约和付款字段；模型输出候选字段与原文位置；GenAI 可据此生成摘要草稿。若扫描不清、附录遗漏或把“不得续约”读成“可续约”，摘要会误导。会计人员需逐条打开原文，核实政策并签核。无法回到原文的句子不应采纳。保存版本、访问记录和审批证据。
 
-**🎙️ 课堂补充**
+**🎙️ 课堂补充**（S23 `01:33:48`–`01:39:52`；`01:43:46`–`01:46:24`；A · 语言影片、生成草稿与工具分类）
 
-待转录补充。
+教授介绍 NLP 处理合同与其他非结构文本，GenAI 生成报告草稿，再播放 NLP 影片并介绍工具附件。S23 `01:34:13`–`01:38:27` 为影片，不作为教授本人考试明示。影片末只有 “Here is a question for you” 的入口，未录到完整选项；不能补造一道选择题和官答。
+
+*"There's no need to memorize them."*（S23 `01:44:32`）。中文：这里的工具名称不必死背。老师 S23 `01:46:17` 说详细讨论留周六，但并未逐页点名 p.43–45 都顺延；这三页仍按讲义保留，课堂状态为未逐页录到。
 
 **💡 换个说法（笔记补充）**
 
@@ -827,6 +971,94 @@ OCR 先把图像转成文本，NLP 处理文本，GenAI 生成草稿，RPA 执�
 **所以呢**
 
 专业判断与签核责任仍需落在人，模型输出必须可核、可退回、可记录。
+
+#### 2.10.5 NLP 影片里的处理动作怎样用于合同
+
+先有一份合同，再将文本变成可分析的片段和字段；各动作来自 S23 `01:36:28`–`01:38:24` 的影片。下面用同一句付款条款解释，例句和风险判断为笔记补充，不是影片给定合同。
+
+设原文是 “Acme Ltd shall not renew the contract after 31 December.”，意思是 Acme Ltd 不得在 12 月 31 日之后续约。当前任务要提取交易方、日期与是否可续约，不能先删掉决定含义的 not。
+
+| 影片术语 | 对文本做什么 | 当前用途 |
+|---|---|---|
+| 句子切分（sentence segmentation） | 将文档分成句子 | 保留本条及相关上下文 |
+| 分词（tokenization） | 把句子拆成词或其他文本单元 | 定位 Acme、not、renew 等成分 |
+| 停用词（stop words）处理 | 某些传统任务删除常见低信息词 | 否定词影响本题结论，不能盲删 |
+| 词干提取（stemming） | 截取相近词的简化词干 | 合并 renew/renewed 等线索 |
+| 词形还原（lemmatization） | 按词形与语境还原词典形式 | 用规范词形查相关条款 |
+| 词性标注（part-of-speech tagging） | 标记名词、动词等角色 | 辅助区分人/组织与动作 |
+| 命名实体识别（named entity recognition） | 标记组织、日期等名称实体 | 提出 Acme Ltd 和 31 December |
+
+读最后一行：识别组织与日期只产生候选字段，不证明合同允许续约；还要在原句内处理 shall not，并读附录/例外条款。影片称 named entity tagging，正文用常见完整名称说明同类任务，未把新名称当原话。
+
+这些是传统 NLP 的处理动作，不是所有语言模型必须依次执行的固定清单。对合同抽取，清洗若删掉 not 会把禁止变成允许；字段和摘要均应保留原文定位，再由人核实际条款。前文 OCR 错字也会传入 NLP，故不能把文本已转换等同内容已理解。
+
+#### 2.10.6 课堂工具附件：九类任务、样例与核验边界
+
+`Key_AI_Tools_in_Accounting.docx` 按任务分类。以下一行是一个任务类别，例名沿原附件；用途是该附件的介绍，不是本次产品版本测试或推荐排名。
+
+| 类别 | 附件例名 | 主要用途 |
+|---|---|---|
+| 日常助手 | ChatGPT、Claude、Copilot | 草拟邮件/备忘、解释规则、摘要与公式建议 |
+| 电子表格 | Excel with Copilot | 公式、趋势和图表 |
+| 定制数据工作 | Python with pandas / scikit-learn | 清洗/连接、重复处理、异常检查 |
+| 记账与文档采集 | Dext、Hubdoc；QuickBooks / Xero auto-coding | 读取单据、输入与已识别交易编码 |
+| 发票与付款 AP | Vic.ai、Ramp、BILL | 发票编码/订单匹配、审批与风险线索 |
+| 月末关账/对账 | FloQast、BlackLine、Numeric、Truewind | 关账清单、匹配、对账和差异草稿 |
+| 审计与鉴证分析 | MindBridge、DataSnipper | 交易分析、证据链接、异常线索 |
+| 税务 | Blue Dot、Blue J、CoCounsel | 税费/费用处理与附引用的研究辅助 |
+| 事务所管理 | Karbon | 工作/期限、资料催收、邮件摘要与计费支持 |
+
+例如“发票与付款”处理收到的供应商发票；“审计分析”检查交易与证据。这是工作目的的区分，不表示一个产品只能做表中任务。
+
+附件说审计工具可测试每笔交易、税务工具可适用跨境规则，这些是来源中的功能概括；仍须核数据接入、范围、权限、适用规则和证据，不能保证全量覆盖、正确税务结果或每个输出都有真实引用。Python 是编程语言，Excel 是表格平台，不因能搭载 AI 就都变成单一 AI 模型。
+
+<details><summary>附件英文全文与原链接（来源原样；本批未播放链接或实测产品）</summary>
+
+> Key AI-Powered Tools Used in Accounting
+> Category (examples)
+> What it does
+> Everyday assistants(ChatGPT, Claude, Copilot)
+> Drafts emails and memos, explains an accounting rule in plain English, summarises long documents, suggests formulas.
+> 
+> 
+> Spreadsheets (Excel with Copilot)
+> Writes and explains formulas, spots trends, builds quick charts — inside a file you already use.
+> 
+> 
+> Custom data work(Python with pandas / scikit-learn)
+> Cleans and joins large datasets, repeats tasks automatically, builds tailor-made anomaly checks.
+> 
+> 
+> Bookkeeping & document capture(Dext, Hubdoc; auto-coding in QuickBooks / Xero)
+> Reads receipts, bills and bank statements, types the data in, and codes the transactions it recognises.
+> 
+> 
+> Invoices & payments (AP)(Vic.ai, Ramp, BILL)
+> Reads supplier invoices, codes them, matches them to purchase orders, chases approvals, flags possible fraud.
+> 
+> 
+> Month-end close & reconciliation(FloQast, BlackLine, Numeric, Truewind)
+> Runs the close checklist, matches bank items, prepares reconciliations, drafts the explanation for a variance.
+> 
+> 
+> Audit & assurance analytics(MindBridge, DataSnipper)
+> Tests every transaction instead of a sample, links each number back to the source document, flags odd patterns.
+> 
+> 
+> Tax(Blue Dot for VAT/GST & expenses; Blue J, CoCounsel for research)
+> Recovers tax on expenses, applies cross-border rules, answers research questions with citations attached.
+> 
+> 
+> Practice management(Karbon)
+> Tracks jobs and deadlines, chases clients for documents, summarises email threads, supports billing.
+> 
+> Python with pandas   https://www.youtube.com/watch?v=8ES3x9xcCno&list=PLd23aGPYGa_CnoIsF6-x4aRRI--N_ZxSu&index=7
+> 
+> Vic.ai    https://www.youtube.com/watch?v=P9D1sGGOpdk
+
+</details>
+
+附件链接指向 pandas 和 Vic.ai 视频；仅存原出处，未据链接推定课堂实际播放。现场只按类别简述（S23 `01:44:41`–`01:46:17`），更详细讨论留后课。
 
 ## 3. 一图看懂
 
@@ -887,9 +1119,33 @@ flowchart LR
 
 - 🟡 ILO 反推：CILO 2 要求识别会计中的 AI 技术和模型；课程前置资料没有权重，不能推算考试概率。
 - ⚪ 笔记推断：学习方式比较、回归拟合步骤、OCR/RPA 流程控制适合检验理解。
-- 无转录，当前没有教授明示考点。
+- 🔴 教授明示答题格式：监督与无监督的优缺点，分别至少熟悉两项（S23 `51:51`–`52:12`）。
+- 🔴（反向）本次工具名称不用背（S23 `01:44:32`），不扩大为不必理解用途。
+- S23 `01:11:44` 最小二乘的 memorize 语句有 ASR/语境冲突，不作明示。
 
 ### 6.2 考点清单
+
+本次两条明示及其范围：
+
+| 可信度 | 要求 | 原话与时间 | 对应 |
+|---|---|---|---|
+| 🔴 | 监督/无监督各至少两优两缺 | *"at least two of each, you should be familiar"*（S23 `51:59`） | §2.2–§2.3 |
+| 🔴（反向） | 工具名称不必背 | *"There's no need to memorize them."*（S23 `01:44:32`） | §2.10.6 |
+
+**课堂明确的“两优两缺”怎样作答**：下表每行是一种学习方式，例子仍用正文发票或分录，不以只报术语代替理由。
+
+| 方式 | 至少两个优点 | 至少两个缺点 |
+|---|---|---|
+| 监督 | 有真标签可直接比较预测；优质标签下适合已定义分类 | 标注费时且有成本；未来分布变动会退化 |
+| 无监督 | 无需预先标舞弊标签；可找未预期的群组/异常 | 缺真答案使客观评价更难；群组/异常须人工解释 |
+
+例如监督的标签成本是人工逐笔确认科目，不是只把文件上传的时间；无监督能发现异常也不意味着异常必是错误。
+
+现场原话：*"you should be able to discuss two pros and two cons related to the unsupervised"*（S23 `52:06`）。中文：至少能讨论无监督的两优两缺，后一句 `52:12` 续完 learning。这个数量要求不等于宣布确定试题。
+
+**English reference answer（笔记自拟）**：Supervised learning offers direct evaluation against known labels and can be effective for well-defined tasks with good labels. However, labeling is costly and performance can degrade under distribution changes. Unsupervised learning needs no prior fraud labels and can discover unexpected anomalies, but its results are harder to evaluate objectively and require human interpretation.
+
+下列仍是学习任务清单，不全部升级为教授明示：
 
 1. 根据训练信号判断四种学习方式，说明会计用途和限制。
 2. 说明异常检测结果为何需要人工调查。
@@ -927,28 +1183,76 @@ flowchart LR
 
 ## 8. 讲义页码映射
 
-| 小节 | 页码 | 覆盖内容 | 课堂状态 |
-|---|---:|---|---|
-| §2.1 | 2–7 | AI 定义、类型、发展史、SmartArt | 待转录 |
-| §2.7 | 8、26、37 | ML/DL、ML 应用、DL | 待转录 |
-| §2.2–§2.5 | 9–25 | 四类学习、特点、例子和优缺点 | 待转录 |
-| §2.6 | 27–30 | 线性回归、拟合/竖直残差原图说明及三点补图 | 待转录；图像核对不证明已讲授 |
-| §2.8 | 31–35 | 生活/商业/会计案例 | 待转录；数字未核源 |
-| §2.9–§2.10 | 36、38–45 | 技术输入输出、工具类别、六阶段演变、五优势与四成本/控制 | 待转录 |
+每行将同一讲解单元的页码并列；课堂覆盖是实讲深度，不把概述写成逐页详讲。
 
-p.1 是封面，且 §2 开头明确说明不属内容页；p.2–45 均有正文覆盖。
+| 小节 | 页码 | 内容 | 课堂覆盖（S23 原时钟） |
+|---|---|---|---|
+| §2 开头 | 1 | 封面 | ⚪ 封面，无需展开 |
+| §2.1 | p.2–7 | AI 定义、类型、历史、包含图 | ✅ `20:39`–`29:56`，图灵影片另标 |
+| §2.7 | 8 | ML / DL 定义 | ✅ `30:02`–`35:52`，含影片 |
+| §2.2–§2.5 | 9 | 四类学习入口 | ✅ `36:00`–`36:18` |
+| §2.2 | p.10–13 | 监督定义、特点、发票、优缺 | ✅ `36:18`–`44:14` |
+| §2.3 | p.14–17 | 无监督、分录异常、优缺 | ✅ `44:14`–`52:12` |
+| §2.4 | p.18–21 | 半监督、合同、优缺 | ✅ `52:13`–`59:19` |
+| §2.5 | p.22–25 | RL、反馈、抽样例、优缺 | ✅ `59:19`–`01:05:31` |
+| §2.7 | p.26 | ML 应用入口 | ✅ `01:05:41`–`01:06:18` 简讲 |
+| §2.6 | p.27–30 | 回归、散点、最小二乘 | ✅ `01:06:25`–`01:13:06` |
+| §2.6.1 | 讲义无对应页 | Excel 25 行与 OLS/预测 | 🎙️ `01:13:06`–`01:29:34`，Excel 附件 |
+| §2.8 | p.31–34 | 生活与商业例子 | ✅ `01:29:54`–`01:31:31` 用途概述；数字未核 |
+| §2.8 | p.35 | 会计应用 | ✅ `01:31:37`–`01:32:46` |
+| §2.7、§2.9–§2.10 | p.36 | 会计技术入口 | ✅ `01:32:46`–`01:33:11` |
+| §2.7 | p.37 | DL | ✅ `01:33:11`–`01:33:41` |
+| §2.10、§2.10.5 | p.38 | NLP 与合同 | ✅ `01:33:48`–`01:38:51`，含影片 |
+| §2.10 | p.39 | GenAI | ✅ `01:38:51`–`01:39:52` |
+| §2.9 | p.40 | RPA | ✅ `01:39:52`–`01:40:21` |
+| §2.9 | p.41 | OCR | ✅ `01:40:21`–`01:43:46`，含影片 |
+| §2.10.1、§2.10.6 | p.42 | 工具名单与附件 | ✅ `01:43:46`–`01:46:24` 分类简述 |
+| §2.10.2 | p.43 | 六阶段演变 | ❓ 未逐页录到，不降权 |
+| §2.10.3 | p.44 | 五项优势 | ❓ 未逐页录到，不降权 |
+| §2.10.4 | p.45 | 成本与控制 | ❓ 未逐页录到，不降权 |
+| → M06 §2.25–§2.26 | M06 与课堂附件 | 六题续讲、项目、补课 | ✅ `00:00`–`20:20`，本篇仅索引 |
 
-复算附件：[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m08-checks/regression_recalc.py|三点回归脚本]] 与 [[AC6761_Artificial_Intelligence_Accounting/notes/figures/m08-checks/regression_recalc_result.txt|精确分数结果]]。
+**课堂覆盖统计**：45 页中，p.1 封面，p.2–42 共 41 页有定义/案例/概述对应，p.43–45 共 3 页未逐页录到；明确略页为 0，明确点名顺延页为 0。所有 44 内容页在 §2 保留讲解。数字是按页码映射计算，不证明每页得到相同讲解时长。
+
+**课堂时间分配**：仅按 S23 已记录端点差，不把源首 M06 内容计作 M08 新章讲解；区间含阅读/等待及影片。
+
+| 内容 | S23 区间 | 区间秒数 |
+|---|---|---:|
+| M06 续讲、行政（跨篇） | `00:00`–`20:27` | 1,227 |
+| AI 范围/历史与图灵影片 | `20:27`–`29:56` | 569 |
+| AI/ML/DL、四类学习入口 | `29:56`–`36:18` | 382 |
+| 四类学习、案例与阅读 | `36:18`–`01:05:41` | 1,763 |
+| 预测与回归原理 | `01:05:41`–`01:13:06` | 445 |
+| Excel/AI 的 OLS 演示 | `01:13:06`–`01:29:54` | 1,008 |
+| 应用、技术、影片与工具 | `01:29:54`–`01:46:24` | 990 |
+
+本篇区间 `20:27`–`01:46:24` 为 5,157 秒，包含边界转场；端点差不证明录音涵盖整堂课。完整对齐与算术保留在本批作者工作包。
+
+复算附件：原三点[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m08-checks/regression_recalc.py|三点回归脚本]] 与 [[AC6761_Artificial_Intelligence_Accounting/notes/figures/m08-checks/regression_recalc_result.txt|精确分数结果]]仍保留，新 25 点图/数据见 §2.6.1。
 
 ## 9. 延伸与勘误
 
 ### 9.1 课件有但课上略过
 
-转录缺失，待核，不能判断哪些内容略过。
+每行是一组课堂没有逐页录到的内容，不作略过或免考判断。
+
+| 讲义页 | 内容 | 判定 | 依据与建议 |
+|---|---|---|---|
+| p.43–45 | 演变、优势、成本与控制 | ❓ 未逐页录到 | S23 末段在工具分类，未逐页讲这些内容；不可降权 |
+
+S23 `01:46:17` 只说工具详细讨论留周六，不足以断言三页全明确顺延；本讲没有可靠的整页略过证据。
 
 ### 9.2 课上讲了但课件没有
 
-转录缺失，待核；speaker notes 全空。
+下表按本次学习价值排列；秒数是区间端点差，影片不归为教授原话。
+
+| # | 内容 | 区间长度 | S23 时间 | 小节 | 价值 |
+|---|---|---:|---|---|---|
+| 1 | Excel 原表、OLS 与条件预测 | 988 秒 | `01:13:06`–`01:29:34` | §2.6.1 | 数据、操作、参数和预测均可复做 |
+| 2 | 两优两缺答题数量 | 21 秒 | `51:51`–`52:12` | §6 | 明确区分两类学习并分别回答 |
+| 3 | NLP 影片的文本处理动作 | 254 秒 | `01:34:13`–`01:38:27` | §2.10.5 | 解释合同文本如何变候选字段 |
+
+原末段端点 `01:38:27` 为影片问题入口；上表取近似播放区间的端点差用于定位，不当精确播放时长。
 
 ### 9.3 课件自身的问题
 
@@ -965,6 +1269,16 @@ p.1 是封面，且 §2 开头明确说明不属内容页；p.2–45 均有正�
 
 ### 9.5 待核对
 
-- 转录到位后核验课堂讲授、略过和新增内容，并填课堂状态。
-- 课件历史、公司效果、产品数字需回源核口径后才能引用。
-- Week 8 PPT 现已在 course_files_export 归档，本次只读核 SHA 与 45 页/图/SmartArt；没有待归档缺口。实际授课日期、课堂是否讲过/略过及转录仍未知。
+**转录登记**：S23 共 948 段，`00:00`–`01:46:24`，无时序倒退。唯一至少 120 秒的段首空档为 `01:42`→`06:37`，4:55；前句让学生自试 Q3，后句进入讲评，支持 M06 练习等待判断，不保证每秒无漏录。本源开头已续讲 Q2，缺课堂起点；结尾有下课语。S22/S23 接缝仍未知，不据时间连续或告别判整个课堂完整。
+
+**ASR 与来源冲突**：Turing's past→Turing Test，MCT→MCP，neutral networks→neural networks，Nature Language→Natural Language，Optimal Character Recognition→Optical Character Recognition，auditing/odyssey→AuditFee（按原表）。`01:23:13` 的 1998.903 与后 `01:28:05` 的 198.9033 冲突，按原 25 行复算取后者；`01:11:44` 的 memorize 语句不作考试范围明示。
+
+**缺口仍在**：实际授课日、影片出处/版本与完整播放画面未核；本次依据转录识别影片区间，不称重新观看原片。p.31–34 产品效果数字、历史简化口径及品牌实际能力未回外部原始资料。p.43–45 没有逐页录到，仍保留讲义自学内容。
+
+**反方视角**：最薄弱的是公司效果与工具现实能力，来源只有课件/附件概述；如果要证明这些效果，需要原研究、版本与测试，当前答不上。回归的 118.4473 是 CGI=5 条件预测，若输入或关系变动，数值不能沿用。二 AI 一致不能独立消除幻觉，也不能把本次原表拟合称样本外验证。
+
+### 9.6 变更记录
+
+| 日期 | 变更 |
+|---|---|
+| 2026-10-31 | 合并 S23 转录的 M08 段，材料升 v1.0；10 个原课堂格全部回填，补 25 行 Excel、原步骤/完整 prompt、九类工具与 NLP 影片过程。两条明确答题/反向信号与一条有疑语句分开，授课日仍未知；新增及受影响教学内容的独立审查已完成；执行证据分别记录，写回与同步状态不由此推定。 |

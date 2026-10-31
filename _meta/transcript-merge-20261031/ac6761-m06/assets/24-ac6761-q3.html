@@ -1,0 +1,68 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:1050px;margin:20px auto;padding:0 24px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}table{border-collapse:collapse;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;padding:12px}svg{max-width:100%;height:auto}.katex-display{overflow:auto}h2,h3{line-height:1.4}details{border:1px solid #ddd;padding:8px}</style><body><h4>2.25.3 Q3：每笔销售到每次对应收款隔几天？有分期分配吗？</h4>
+<p><strong>英文原题（DOCX）</strong>：</p>
+<blockquote>
+<p>What is the exact time lag (in days) between a sale event and its corresponding cash collection event for each customer, and are partial payments being applied to specific invoices?</p>
+</blockquote>
+<p>中文读题：题目同时问“相隔天数”和“是否将部分付款分配到指定发票”。一个客户可能有多笔销售，一笔销售也可能收多次，不能给客户一个未定义的平均账期冒充完整答案。</p>
+<p>先用 Duality 的 SaleNumber 连 Sale，再用 RemittanceAdviceNumber 连 CashReceipt；每条分配保留自己的两个日期。按日历日期做“收款日减销售日”，同日为 0 天。下表每行是一条销售—收款分配；Applied 是分给该销售的金额，不是整张收款通知金额。</p>
+<table>
+<thead>
+<tr>
+<th>客户</th>
+<th>销售 → 收款</th>
+<th>销售日 → 收款日（2014 年）</th>
+<th style="text-align: right;">天数</th>
+<th style="text-align: right;">Applied</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-1 Bill</td>
+<td>S-1 → RA-3</td>
+<td>07-01 → 08-15</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">7,200</td>
+</tr>
+<tr>
+<td>C-2 Mick</td>
+<td>S-2 → RA-1</td>
+<td>07-21 → 07-25</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1,666</td>
+</tr>
+<tr>
+<td>C-2 Mick</td>
+<td>S-2 → RA-5</td>
+<td>07-21 → 08-25</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">1,666</td>
+</tr>
+<tr>
+<td>C-2 Mick</td>
+<td>S-4 → RA-2</td>
+<td>07-26 → 07-26</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10,000</td>
+</tr>
+<tr>
+<td>C-5 Ron</td>
+<td>S-3 → RA-4</td>
+<td>07-22 → 08-15</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">16,000</td>
+</tr>
+<tr>
+<td>C-5 Ron</td>
+<td>S-5 → RA-4</td>
+<td>07-31 → 08-15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">16,600</td>
+</tr>
+</tbody>
+</table>
+<p>以第一行复做：7 月 1 日到 8 月 1 日是 31 天，再到 8 月 15 日为 14 天，合计 45 天。S23 <code>08:19</code>–<code>09:05</code> 的课堂只挑这笔核；其余五行是笔记按原表补算，不冒称老师逐笔确认。</p>
+<p>C-3 Keith 的 S-6、C-4 Charlie 的 S-7 没有收款分配。因此只能报“当前例表未记录对应收款，已实现收款账期不可计算”，不能填 0 天或虚构收款日。要算等待天数还须另定截至日。</p>
+<p>部分付款的直接证据是 S-2：销售 10,000，RA-1 与 RA-5 各分配 1,666，累计 3,332，剩余 6,668。公式只在本例记录、无其他调整的限定下成立：</p>
+<p>$$\text{S-2 剩余款项}=10,000-(1,666+1,666)=6,668.$$</p>
+<p>课堂 S23 <code>10:05</code>–<code>10:43</code> 也指出两次付款合计仍少于销售额。RA-4 则展示另一方向：一张收款 32,600 同时支付 S-3 的 16,000 和 S-5 的 16,600，不能将 32,600 各减一次。</p>
+<p><strong>English reference answer（原表复算）</strong>：The sale-to-receipt lags are 45 days for C-1/S-1; 4 and 35 days for C-2/S-2 and 0 days for C-2/S-4; and 24 days for C-5/S-3 and 15 days for C-5/S-5. C-3 and C-4 have no recorded matching receipts, so their realised collection lags are unavailable. Partial payments are allocated to S-2: 1,666 plus 1,666 totals 3,332 against a sale of 10,000, leaving 6,668 under the supplied-record assumptions.</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script src="/mermaid.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'neutral'});</script></body>

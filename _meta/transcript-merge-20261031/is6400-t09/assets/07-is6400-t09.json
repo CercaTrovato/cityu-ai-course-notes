@@ -1,0 +1,416 @@
+{
+  "source": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\course_files_export\\Week 9 Time series II_Tutorial.ipynb",
+  "sha256": "a47ead0a83491e43cb549b56e95232a67facbbfbb2bf97c164eaadc85abbe96e",
+  "cells": [
+    {
+      "cell": 1,
+      "type": "markdown",
+      "source": "# Time series II\n\nThe following tutorial contains Python examples for solving time series forecasting problems. You should refer to the Slides Week 9 to understand some of the concepts introduced in this tutorial.\n\nThe tutorial covers:\n1. Box-Cox transformation to stabilise variance.\n2. ACF and PACF to choose model orders.\n3. ARIMA and seasonal ARIMA models.\n4. Model performance comparison with RMSE.\n\n#### Toolbox\n1. KPSS test: `from statsmodels.tsa.stattools import kpss`  \n   https://www.statsmodels.org/stable/generated/statsmodels.tsa.stattools.kpss.html\n2. Box-Cox transformation: `from scipy.stats import boxcox`  \n   https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.boxcox.html\n3. ACF and PACF: `from statsmodels.graphics.tsaplots import plot_acf, plot_pacf`  \n   https://www.statsmodels.org/stable/generated/statsmodels.graphics.tsaplots.plot_pacf.html  \n   https://www.statsmodels.org/stable/generated/statsmodels.graphics.tsaplots.plot_acf.html\n4. ARIMA: `from statsmodels.tsa.arima.model import ARIMA`  \n   https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima.model.ARIMA.html#statsmodels.tsa.arima.model.ARIMA\n\nThe notebook follows two sections:\n- **1: Data preparation** – load, check stationarity, transform, split train/test.\n- **2: Choose, train and evaluate models** – for each model: choose orders, train, plot forecast vs actuals, compute RMSE. We use 4 models:\n   - Model 1: ARMA(2,1)\n   - Model 2: ARIMA(2,1,1)\n   - Model 3: Seasonal ARIMA\n   - Model 4: ETS / Holt-Winters\n"
+    },
+    {
+      "cell": 2,
+      "type": "markdown",
+      "source": "##  Setup: import libraries"
+    },
+    {
+      "cell": 3,
+      "type": "code",
+      "source": "import pandas as pd\nimport numpy as np\nfrom sklearn.metrics import root_mean_squared_error\nfrom scipy.stats import boxcox\nfrom statsmodels.tsa.stattools import kpss\nfrom statsmodels.tsa.arima.model import ARIMA\nfrom statsmodels.graphics.tsaplots import plot_acf, plot_pacf\nfrom matplotlib import pyplot as plt\n%matplotlib inline\n\nimport warnings\nwarnings.filterwarnings(\"ignore\")"
+    },
+    {
+      "cell": 4,
+      "type": "markdown",
+      "source": "# 1: Data Preparation"
+    },
+    {
+      "cell": 5,
+      "type": "markdown",
+      "source": "## 1.1 Load and plot the raw monthly heater demand\n\n`year_month` is read as text, which matplotlib would treat as 198 separate categories and the x-axis labels would overlap. Convert it to datetime so every plot below gets a proper date axis."
+    },
+    {
+      "cell": 6,
+      "type": "code",
+      "source": "heater = pd.read_csv('heater.csv')\nheater.head()"
+    },
+    {
+      "cell": 7,
+      "type": "code",
+      "source": "heater['year_month'] = pd.to_datetime(heater['year_month'], format = '%Y-%m')"
+    },
+    {
+      "cell": 8,
+      "type": "code",
+      "source": "heater.info()"
+    },
+    {
+      "cell": 9,
+      "type": "code",
+      "source": "plt.figure(figsize = (20,8))\nplt.plot(heater['year_month'], heater['demand'])\nplt.title('Monthly heater demand')\nplt.show()"
+    },
+    {
+      "cell": 10,
+      "type": "markdown",
+      "source": "## 1.2 Stationarity check: Is the time series stationary?\n\nNo. The data has an increasing trend and variance, and seasonal patterns. Let's confirm with the KPSS test."
+    },
+    {
+      "cell": 11,
+      "type": "code",
+      "source": "kpss_stat, pval, lags, crit = kpss(heater['demand'], regression = 'c', nlags = 'auto')\nprint('p Value to the KPSS test is: ',pval)"
+    },
+    {
+      "cell": 12,
+      "type": "markdown",
+      "source": "Because p-value is below 0.05, we consider the time series as non-stationary at a confidence level of 95%."
+    },
+    {
+      "cell": 13,
+      "type": "markdown",
+      "source": "## 1.3 Data transformation to achieve stationarity"
+    },
+    {
+      "cell": 14,
+      "type": "markdown",
+      "source": "### 1.3.1 (a) Apply Box-Cox to stabilise the variance"
+    },
+    {
+      "cell": 15,
+      "type": "code",
+      "source": "#if parameter lmbda is none, the model will find the optimal parameter\nBCheater, lmbda = boxcox(heater['demand']) \nprint(BCheater[:10])\nprint(lmbda)"
+    },
+    {
+      "cell": 16,
+      "type": "markdown",
+      "source": "#### Plot the Box-Cox transformed series"
+    },
+    {
+      "cell": 17,
+      "type": "code",
+      "source": "heater['demand_BC'] = BCheater\nplt.figure(figsize = (20,8))\nplt.plot(heater['year_month'], heater['demand_BC'])\nplt.title('Monthly heater demand after Box-Cox transformation')\nplt.show()"
+    },
+    {
+      "cell": 18,
+      "type": "markdown",
+      "source": "The issue of increasing variance is alleviated. The time series data still exhibits an increasing trend and seasonality."
+    },
+    {
+      "cell": 19,
+      "type": "markdown",
+      "source": "### 1.3.2 (b) Subtract the monthly average to de-seasonalise"
+    },
+    {
+      "cell": 20,
+      "type": "code",
+      "source": "heater['month'] = heater['year_month'].dt.month\nprint(heater.head())"
+    },
+    {
+      "cell": 21,
+      "type": "markdown",
+      "source": "#### Compute the average Box-Cox demand for each month"
+    },
+    {
+      "cell": 22,
+      "type": "code",
+      "source": "heater_by_month = heater.groupby('month')['demand_BC'].mean().reset_index()\nprint(heater_by_month.head(12))"
+    },
+    {
+      "cell": 23,
+      "type": "code",
+      "source": "heater_by_month = heater_by_month.rename(columns = {'demand_BC':'demand_month_avg'})\nprint(heater_by_month.head(12))"
+    },
+    {
+      "cell": 24,
+      "type": "markdown",
+      "source": "#### Merge the monthly averages back into the main table"
+    },
+    {
+      "cell": 25,
+      "type": "code",
+      "source": "heater = heater.merge(heater_by_month, on = 'month')\nprint(heater.head())"
+    },
+    {
+      "cell": 26,
+      "type": "code",
+      "source": "heater['demand_de_season'] = heater['demand_BC'] - heater['demand_month_avg']\nheater = heater.sort_values(by='year_month')\nplt.figure(figsize = (20,8))\nplt.plot(heater['year_month'], heater['demand_de_season'])\nplt.title('Monthly heater demand after Box-Cox transformation and de-seasonality')\nplt.show()"
+    },
+    {
+      "cell": 27,
+      "type": "markdown",
+      "source": "The seasonality is removed. The time series data has an increasing trend."
+    },
+    {
+      "cell": 28,
+      "type": "markdown",
+      "source": "### 1.3.3 (c) Apply first-order differencing to de-trend the data"
+    },
+    {
+      "cell": 29,
+      "type": "code",
+      "source": "heater['demand_diff1'] = heater['demand_de_season'].diff()\nheater.head()"
+    },
+    {
+      "cell": 30,
+      "type": "code",
+      "source": "plt.figure(figsize = (20,8))\nplt.plot(heater['year_month'], heater['demand_diff1'])\nplt.title('Monthly heater demand after Box-Cox transformation, de-seasonality, and de-trend')\nplt.show()"
+    },
+    {
+      "cell": 31,
+      "type": "markdown",
+      "source": "Looks much better. Let's confirm with the KPSS test."
+    },
+    {
+      "cell": 32,
+      "type": "code",
+      "source": "_, pval, __, ___ = kpss(heater['demand_diff1'][1:], regression = 'c', nlags = 'auto') # do not include the first NaN value\nprint('p Value to the KPSS test is: ',pval)"
+    },
+    {
+      "cell": 33,
+      "type": "markdown",
+      "source": "Because p-value is above 0.05, we consider the time series as stationary at a confidence level of 95%. Now, we are ready to apply an ARMA model."
+    },
+    {
+      "cell": 34,
+      "type": "markdown",
+      "source": "## 1.4 Split into train and test (last 12 months as test)"
+    },
+    {
+      "cell": 35,
+      "type": "code",
+      "source": "train = heater[:-12]\ntest = heater[-12:]\ntrain.shape, test.shape"
+    },
+    {
+      "cell": 36,
+      "type": "markdown",
+      "source": "### Plot training and testing data"
+    },
+    {
+      "cell": 37,
+      "type": "code",
+      "source": "plt.figure(figsize = (20,8))\nplt.plot(train['year_month'], train['demand_diff1'], label = 'Train')\nplt.plot(test['year_month'], test['demand_diff1'], label = 'Test')\nplt.legend(loc = 'upper left')\nplt.title('Monthly heater demand')\nplt.show()"
+    },
+    {
+      "cell": 38,
+      "type": "markdown",
+      "source": "# 2: Choose, Train and Evaluate Models\n\nEach model: choose orders → train and forecast → plot forecast vs actuals → RMSE."
+    },
+    {
+      "cell": 39,
+      "type": "markdown",
+      "source": "## 2.1 Model 1: ARMA(2,1)"
+    },
+    {
+      "cell": 40,
+      "type": "markdown",
+      "source": "### 2.1.1 Choose ARMA orders with PACF and ACF\n\n#### Use PACF plot to find out the order (i.e., p) of autoregression (AR)."
+    },
+    {
+      "cell": 41,
+      "type": "code",
+      "source": "plot_pacf(train['demand_diff1'][1:], title = 'PACF plot');\nplt.show()"
+    },
+    {
+      "cell": 42,
+      "type": "markdown",
+      "source": "Set p = 2. Simpler model is preferred."
+    },
+    {
+      "cell": 43,
+      "type": "markdown",
+      "source": "#### Use ACF plot to find out the order (i.e., q) of moving average (MA)."
+    },
+    {
+      "cell": 44,
+      "type": "code",
+      "source": "plot_acf(train['demand_diff1'][1:], title = 'ACF plot');\nplt.show()"
+    },
+    {
+      "cell": 45,
+      "type": "markdown",
+      "source": "Set q = 1."
+    },
+    {
+      "cell": 46,
+      "type": "markdown",
+      "source": "### 2.1.2 Train ARIMA(2,0,1) and forecast 12 months"
+    },
+    {
+      "cell": 47,
+      "type": "code",
+      "source": "# 2,0,1 ARIMA Model\nmodel = ARIMA(train['demand_diff1'], order=(2,0,1))\nmodel_fit = model.fit()\ny_predict = model_fit.forecast(12)"
+    },
+    {
+      "cell": 48,
+      "type": "markdown",
+      "source": "### 2.1.3 Plot forecast vs actuals"
+    },
+    {
+      "cell": 49,
+      "type": "code",
+      "source": "# Plot\nplt.figure(figsize = (20,8))\nplt.plot(train['year_month'], train['demand_diff1'], label = 'Train')\nplt.plot(test['year_month'], test['demand_diff1'], label = 'Test')\nplt.plot(test['year_month'], y_predict, label='forecast')\nplt.title('Forecast vs Actuals')\nplt.legend(loc='upper left', fontsize=18)\nplt.show()"
+    },
+    {
+      "cell": 50,
+      "type": "markdown",
+      "source": "### 2.1.4 RMSE"
+    },
+    {
+      "cell": 51,
+      "type": "code",
+      "source": "rmse_arma = root_mean_squared_error(y_true=test['demand_diff1'], y_pred=y_predict)\nprint(rmse_arma)"
+    },
+    {
+      "cell": 52,
+      "type": "markdown",
+      "source": "## 2.2 Model 2: ARIMA(2,1,1) on the de-seasonalised demand"
+    },
+    {
+      "cell": 53,
+      "type": "markdown",
+      "source": "### 2.2.1 Train ARIMA(2,1,1) and forecast 12 months"
+    },
+    {
+      "cell": 54,
+      "type": "code",
+      "source": "model = ARIMA(train['demand_de_season'], order=(2,1,1)) \nmodel_fit = model.fit()\ny_predict = model_fit.forecast(12)"
+    },
+    {
+      "cell": 55,
+      "type": "markdown",
+      "source": "### 2.2.2 Plot forecast vs actuals"
+    },
+    {
+      "cell": 56,
+      "type": "code",
+      "source": "plt.figure(figsize = (20,8))\nplt.plot(train['year_month'], train['demand_de_season'], label = 'Train')\nplt.plot(test['year_month'], test['demand_de_season'], label = 'Test')\nplt.plot(test['year_month'], y_predict, label='forecast')\nplt.title('Forecast vs Actuals')\nplt.legend(loc='upper left', fontsize=18)\nplt.show()"
+    },
+    {
+      "cell": 57,
+      "type": "markdown",
+      "source": "### 2.2.3 RMSE"
+    },
+    {
+      "cell": 58,
+      "type": "code",
+      "source": "rmse_arima = root_mean_squared_error(y_true=test['demand_de_season'], y_pred=y_predict)\nprint(rmse_arima)"
+    },
+    {
+      "cell": 59,
+      "type": "markdown",
+      "source": "## 2.3 Model 3: Seasonal ARIMA on the Box-Cox transformed demand\n\nLet's try seasonal ARIMA on the Box-Cox transformed demand. The non-seasonal part is the same as before, i.e. p = 2, d = 1, q = 1.\n\nBecause the season is at the month level, we take a difference with lag = 12 to examine the seasonal AR (P), I (D) and MA (Q). For instance, demand in January this year minus demand in January last year."
+    },
+    {
+      "cell": 60,
+      "type": "markdown",
+      "source": "### 2.3.1 Choose seasonal orders"
+    },
+    {
+      "cell": 61,
+      "type": "markdown",
+      "source": "#### Inspect the lag-12 differenced series"
+    },
+    {
+      "cell": 62,
+      "type": "code",
+      "source": "# plot the demand after differencing with lag = 12\nplt.figure(figsize = (20,8))\nplt.plot(heater['year_month'], heater['demand_BC'].diff(12))\nplt.show()"
+    },
+    {
+      "cell": 63,
+      "type": "markdown",
+      "source": "The plot has no trend. So we do not take a further difference, i.e. D = 0."
+    },
+    {
+      "cell": 64,
+      "type": "markdown",
+      "source": "#### Use PACF to find seasonal P. P = 1."
+    },
+    {
+      "cell": 65,
+      "type": "code",
+      "source": "print(train['demand_BC'].diff(12).head(n=20))\nplot_pacf(train['demand_BC'].diff(12)[12:]);\nplt.show()"
+    },
+    {
+      "cell": 66,
+      "type": "markdown",
+      "source": "#### Use ACF to find seasonal Q. Q = 3."
+    },
+    {
+      "cell": 67,
+      "type": "code",
+      "source": "plot_acf(train['demand_BC'].diff(12)[12:]);\nplt.show()"
+    },
+    {
+      "cell": 68,
+      "type": "markdown",
+      "source": "### 2.3.2 Train seasonal ARIMA and forecast 12 months"
+    },
+    {
+      "cell": 69,
+      "type": "code",
+      "source": "model = ARIMA(train['demand_BC'], order=(2,1,1), seasonal_order = (1,0,3,12))\nmodel_fit = model.fit()\ny_predict = model_fit.forecast(12)"
+    },
+    {
+      "cell": 70,
+      "type": "markdown",
+      "source": "### 2.3.3 Plot forecast vs actuals"
+    },
+    {
+      "cell": 71,
+      "type": "code",
+      "source": "plt.figure(figsize = (20,8))\nplt.plot(train['year_month'], train['demand_BC'], label = 'Train')\nplt.plot(test['year_month'], test['demand_BC'], label = 'Test')\nplt.plot(test['year_month'], y_predict, label='forecast')\nplt.title('Forecast vs Actuals')\nplt.legend(loc='upper left', fontsize=18)\nplt.show()"
+    },
+    {
+      "cell": 72,
+      "type": "markdown",
+      "source": "### 2.3.4 RMSE"
+    },
+    {
+      "cell": 73,
+      "type": "code",
+      "source": "rmse_sarima = root_mean_squared_error(y_true=test['demand_BC'], y_pred=y_predict)\nprint(rmse_sarima)"
+    },
+    {
+      "cell": 74,
+      "type": "markdown",
+      "source": "## 2.4 Model 4: ETS / Holt-Winters on the Box-Cox transformed demand"
+    },
+    {
+      "cell": 75,
+      "type": "markdown",
+      "source": "### 2.4.1 Train ETS (additive trend and seasonality) and forecast 12 months"
+    },
+    {
+      "cell": 76,
+      "type": "code",
+      "source": "from statsmodels.tsa.exponential_smoothing.ets import ETSModel\nhw = ETSModel(train['demand_BC'], trend='add', seasonal = 'add', seasonal_periods = 12)\nhw_fit = hw.fit()\ny_predict = hw_fit.forecast(12)"
+    },
+    {
+      "cell": 77,
+      "type": "markdown",
+      "source": "### 2.4.2 Plot forecast vs actuals"
+    },
+    {
+      "cell": 78,
+      "type": "code",
+      "source": "plt.figure(figsize = (20,8))\nplt.plot(train['year_month'], train['demand_BC'], label = 'Train')\nplt.plot(test['year_month'], test['demand_BC'], label = 'Test')\nplt.plot(test['year_month'], y_predict, label='forecast')\nplt.title('Forecast vs Actuals')\nplt.legend(loc='upper left', fontsize=18)\nplt.show()"
+    },
+    {
+      "cell": 79,
+      "type": "markdown",
+      "source": "### 2.4.3 RMSE"
+    },
+    {
+      "cell": 80,
+      "type": "code",
+      "source": "rmse_hw = root_mean_squared_error(y_pred=y_predict, y_true=test['demand_BC'])\nprint(rmse_hw)"
+    },
+    {
+      "cell": 81,
+      "type": "markdown",
+      "source": "## 2.5 Model comparison\n\n| Model | Fitted on | RMSE |\n|---|---|---|\n| ARMA(2,1) | Box-Cox, de-seasonalised, differenced series | 0.0115 |\n| ARIMA(2,1,1) | Box-Cox, de-seasonalised series | 0.0156 |\n| Seasonal ARIMA | Box-Cox series | 0.0094 |\n| ETS (Holt-Winters) | Box-Cox series | 0.0187 |\n"
+    },
+    {
+      "cell": 82,
+      "type": "markdown",
+      "source": "# Week 9 Assignment(Extra): Weather Time Series Forecasting\n\n**Data:** `weather.csv`\n**Task:** Choose a weather variable, forecast it using the ARIMA pipeline, and compare it with another forecasting model.\n\n### Requirements:\n1. **Data Prep:** Select a variable, resample it to monthly averages, and split the last 12 months as the test set.\n2. **ARIMA:** Apply the Tutorial 9 pipeline (transformations, ACF/PACF, etc.) using train data only to fit and forecast.\n3. **Alternative Model:** Choose a second model and forecast the same period.\n4. **Evaluation:** Plot actual vs. predicted values for both models, calculate their RMSE, and write a brief conclusion on which model performed better and why.\n\n**Submission:** One Jupyter Notebook with your code, plots, RMSE results, and conclusion."
+    }
+  ]
+}

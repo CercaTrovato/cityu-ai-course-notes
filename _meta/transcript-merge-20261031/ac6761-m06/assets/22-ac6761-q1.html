@@ -1,0 +1,36 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:1050px;margin:20px auto;padding:0 24px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}table{border-collapse:collapse;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;padding:12px}svg{max-width:100%;height:auto}.katex-display{overflow:auto}h2,h3{line-height:1.4}details{border:1px solid #ddd;padding:8px}</style><body><h4>2.25.1 Q1：S-5 的出纳与销售员是谁？</h4>
+<p><strong>英文原题（DOCX）</strong>：</p>
+<blockquote>
+<p>Which specific cashier processed the cash receipt for Sale #S-5, and who was the salesperson who originated that sale?</p>
+</blockquote>
+<p>中文读题：找处理 S-5 对应收款的出纳，以及发起这笔销售的销售员。这是两种角色，不把销售员当收款出纳。</p>
+<ol>
+<li>在 Sale-CashRecDuality 中筛 SaleNumber 为 S-5，得到 RA-4，Applied 为 16,600。</li>
+<li>用 RA-4 去 CashReceipt 的 RemittanceAdviceNumber 找同一行，读 CashierNumber，得到 E-39。</li>
+<li>回 Sale 的 S-5 行，读 SalesRepNumber，得到 E-10。</li>
+</ol>
+<p>下表每行是一条查询路径；箭头读作“用此键查到下一条记录”，不是先后发生的业务事件。</p>
+<table>
+<thead>
+<tr>
+<th>要找的角色</th>
+<th>原表追踪链</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>收款出纳</td>
+<td>S-5 → Duality 的 RA-4 → CashReceipt</td>
+<td>E-39</td>
+</tr>
+<tr>
+<td>销售员</td>
+<td>S-5 → Sale.SalesRepNumber</td>
+<td>E-10</td>
+</tr>
+</tbody>
+</table>
+<p>例如第一行必须先经 Duality 找 RA-4，因为 CashReceipt 没有直接存 SaleNumber。基础例库没有 E-39 的出纳姓名主数据，因此答案止于编号；不拿扩展例库中另一个人的姓名补上。</p>
+<p>课堂核到同一链（S22 <code>17:20</code>–<code>19:28</code>）：<em>"So for the RA4, cashier number is E39, right?"</em>（S22 <code>18:34</code>）。中文：RA-4 的出纳号为 E-39。</p>
+<p><strong>English reference answer（原表复算）</strong>：For S-5, the allocation table identifies RA-4. RA-4 was processed by cashier E-39, while Sale S-5 records salesperson E-10. The supplied basic database does not establish the cashier's personal name.</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script src="/mermaid.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'neutral'});</script></body>

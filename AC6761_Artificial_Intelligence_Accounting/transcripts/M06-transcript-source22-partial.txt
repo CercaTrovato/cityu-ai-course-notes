@@ -1,0 +1,492 @@
+00:00 
+Even if we have the most AI tools, without limited disclosure of account information, 
+
+00:07 
+we can fear we cannot get the full picture. 
+
+00:11 
+So that's why, in addition to the traditional financial reporting system, 
+
+00:15 
+we also introduced the brand new perspective, so-called IEA model, 
+
+00:21 
+trying to disclose both financial and non-financial information. 
+
+00:25 
+Okay, as such, in this page you can see that you can get some information related to the fears not made or made, right, by the E10 as we over-exercise, over-quiz, too, in the last week, right? 
+
+00:41 
+So, based on such information, can you imagine what kind of the stakeholder will be interested? 
+
+00:49 
+Probably the company's human resource department, right? 
+
+00:52 
+So when they want to evaluate the company's employees' performance, 
+
+00:57 
+such information will be very useful. 
+
+01:01 
+Okay, so we already know that in Access, 
+
+01:05 
+we select the sales table, right? 
+
+01:08 
+And set the criteria for the sales representative number 
+
+01:12 
+not equal to E10, then we get the answer. 
+
+01:15 
+And we can also 
+
+01:18 
+get the details related to the sale amount, right, made by the 
+
+01:24 
+certain sales person then within a certain period, so which means that some more complicated case 
+
+01:33 
+can be, or 
+
+01:35 
+complicated questions can be answered, not only those very simple questions. For example, 
+
+01:40 
+this case we select the sale table again. 
+
+01:43 
+Then we set the criteria, two of them, the first criteria is the sales representative number is E10, which means that again, we are interested in the performance. 
+
+01:56 
+of employee E10. At the same time, we set a constraint for the time period which is 
+
+02:02 
+less than July, the end of July, right? So that is reasonable because normally when we 
+
+02:09 
+make the evaluations, we are based on the certain time period. Okay, so we have all 
+
+02:15 
+the information here. Another case, in page 76, they are talking about the sales made 
+
+02:25 
+end of the July, or by the sales representative's intent. 
+
+02:30 
+So this one is quite similar from the previous one. 
+
+02:33 
+The difference is we split the two criteria, 
+
+02:37 
+which means that either or, right? 
+
+02:39 
+Either condition is met, then we get the answer. 
+
+02:44 
+So you can see that in this system, 
+
+02:46 
+we just put the two criteria in different rows. 
+
+02:50 
+We can get the result like this. 
+
+02:54 
+And we can also make some calculations like mid-degradation. For example, if we need the information for total sales between a certain time period like mid-July to the end of July, let's get the total amount of sales. 
+
+03:23 
+function sets the criteria for the time period first in this page we can see that 
+
+03:29 
+in the criteria row we can see that we set the between July 15 and the July 31 
+
+03:40 
+right and after that we click the certain symbol provided in this system 
+
+03:47 
+so called totals 
+
+03:50 
+Then after that, we will have some extra row shown in the system. Then we can choose 
+
+03:59 
+the function we want to make. So in this case, it's SUM, right? SUM. SUM means the quantum together. 
+
+04:07 
+So it gets the total cells between a certain time period. 
+
+04:12 
+And there are some other questions related to an expanded AE model, which means that 
+
+04:19 
+so far, what we are 
+
+04:22 
+talking about is based on the 
+
+04:26 
+Microsoft success database look like this. We 
+
+04:35 
+have something like that, right? It's basically based on the core pattern 
+
+04:39 
+so if you look at the 
+
+04:43 
+associations, right 
+
+04:46 
+sales and cash receipt 
+
+04:47 
+And also we can do much more complicated analysis based on the much more complicated model like this one 
+
+05:05 
+So you can see that in addition to the call pattern, we still have some other event like sales call, right? 
+
+05:12 
+We already know that. In previous chapters, we argued that 
+
+05:17 
+based on a revenue cycle or sales cycle, we normally start from the instigation event. 
+
+05:25 
+Instigation event would mean the initial event, right? Which starts the whole process. And in the sales 
+
+05:33 
+process we call this sales call so you can see that sales call is the first event 
+
+05:39 
+then followed by sales order right sale order then the order is commitment event 
+
+05:45 
+then followed by a theory theory duality with cash development then their return 
+
+05:53 
+look at the extra event here right sales return can be a reversal to the fair 
+
+06:01 
+So, for each event, it is connected to the resource, right, and this is so-called the 
+
+06:09 
+association between the resource and this event, so-called proposition, and the reservation 
+
+06:15 
+is the link between the resource and the commitment event, and the fulfillment, right, look at 
+
+06:22 
+the fulfillment here, would be the link between the sales call and the sales order, and the 
+
+06:30 
+sell order and then sell, right? So it's quite complicated here. 
+
+06:34 
+Okay, based on this, we 
+
+06:40 
+can answer some complicated questions like 
+
+06:43 
+in this case, it calculates 
+
+06:46 
+a count table. So 
+
+06:57 
+it can be divided into the different steps. So 
+
+07:03 
+first of all, 
+
+07:05 
+this one is about the 
+
+07:07 
+another page. We ignore this page. We start from next one. 
+
+07:12 
+We calculate the formula. 
+
+07:15 
+which is the total purchases minus cash disbursement for purchases minus purchase returns. 
+
+07:22 
+So which means that to get the account payable, we need three components. 
+
+07:27 
+The first one is all the purchases, then minus the cash disbursement, which means we already paid, right? 
+
+07:35 
+If we already paid, then the difference should be the account payable. 
+
+07:40 
+But there is some special case, which is the purchase return. 
+
+07:45 
+some production are not satisfactory, then we discuss with the supplier to 
+
+07:53 
+return such batches of the production, right? 
+
+07:56 
+So if the supplier agree, then such amount should be deducted from the total purchase, which means that 
+
+08:02 
+for this amount we don't have to pay anymore. So that's why we need this one as well to make the adjustment. 
+
+08:10 
+So this is the basic logic to look at the formula here in the system. If you can purchase the sum of the dollar amount, which means the total purchase, then the sum of the dollar amount for the total cash disbursement, then the sum of the dollar amount for total purchase, you'll get the answer. 
+
+08:31 
+And for the detailed steps, we don't have to bother. You just know that the system can do that. 
+
+08:41 
+such as you use the certain table from the inventory fair amounts out of joint two, something like this. 
+
+08:52 
+You get the information for the first component, then you get some information for the second component, 
+
+09:03 
+then you can make the calculation on this offer, then you can get the calculation. 
+
+09:12 
+which is 
+
+09:15 
+Input in this box, you can see that accounts paid equal to something equal 
+
+09:21 
+something minus the second one minus the third one and finally you get the answer for the 
+
+09:27 
+six thousand three hundred forty nine and also some other 
+
+09:32 
+complicated questions like 
+
+09:34 
+Identify the highest and the lowest selling inventory 
+
+09:39 
+The system can also do that, and the eventually weighted average unit cost. 
+
+09:45 
+So this one would be very complicated, right? 
+
+09:48 
+To calculate the weighted average unit cost, so we need the total cost and we need to calculate the weight. 
+
+09:57 
+So again, the system can do that. 
+
+10:01 
+And then calculate the number of days to select the sales order. 
+
+10:07 
+to check how quickly the company can put their orders right, how long, or how big is the number of these 
+
+10:19 
+fair orders and the actual fairs. That is a way to test the efficiency of the company to deliver. 
+
+10:30 
+And identify the inventory items with no positive customer reaction, you can see such information is also useful, right? For the company's production design or the company's production line. So if this production there is no positive reaction at all, maybe the company should consider to eliminate such production line, right? So that's why such information is also very useful. 
+
+10:59 
+And some other questions like the number of sales calls made by each salesperson during a time period. 
+
+11:06 
+So again, it is related to the efficiency or effectiveness of the salesperson in the event of sales call time. 
+
+11:15 
+So by calculation, the number of the sales calls he or she made during a specific time period, 
+
+11:22 
+we can assess whether this salesperson is successful or not. 
+
+11:27 
+Okay, so these are just some examples. 
+
+11:30 
+So after we understand all the information 
+
+11:37 
+which could be stored in the Microsoft Access database, 
+
+11:42 
+and also we learn how to obtain such information, 
+
+11:48 
+we have some questions here to demonstrate that 
+
+11:58 
+some information which cannot be directly answered 
+
+12:04 
+traditional financial reporting system can be answered by the microsoft success if we use ai 
+
+12:12 
+so let me try you 
+
+15:53 
+can try by yourself using your own ai tools for example if i try to 
+
+15:59 
+answer the questions related to the microsoft success you can upload upload 
+
+16:15 
+the example tables 
+
+16:24 
+Then let's see what kind of information they are providing. 
+
+16:52 
+Upload this page to the chemist, so you can try it by yourself. 
+
+17:16 
+So you can see that the first question is very easy. 
+
+17:20 
+We just asked the AI, what specific cashier processed the cash receipt for CRS-5? 
+
+17:29 
+And who is the salesperson? 
+
+17:32 
+who originated that fear so based on the answer of grog they are talking about this information 
+
+17:38 
+we can check whether they are correct or not so the cashier the answer is e9039 and the salesperson 
+
+17:48 
+is e10 so we can have a look for this okay 
+
+17:57 
+the seer s5 if we are talking about the cash receipt 
+
+18:03 
+We can check the cash receipt table here for S5, but we cannot, right? 
+
+18:10 
+Which means that there are other interrelated correspond 
+
+18:23 
+to RA4, okay? 
+
+18:26 
+And now we know RA4. 
+
+18:28 
+Then we go to the cash receipt, RA4. 
+
+18:34 
+So for the RA4, cashier number is E39, right? 
+
+18:38 
+So we already know. 
+
+18:39 
+But of course, in this case, all of them are... 
+
+18:41 
+Easily nine, but at least we know the logic and then the other 
+
+18:47 
+Question is the who is the salesperson right and in this 
+
+18:52 
+This one do we have the salesperson there? Seems not 
+
+18:57 
+And let's check the others. 
+
+19:03 
+Let's check the sales table first. Oh, yes, we have right 
+
+19:09 
+In the sales table, we have such information for the S5, we get the sales representative number is E10. 
+
+19:17 
+So which means that based on this interrelated relationship among these tables, 
+
+19:23 
+because they are already integrated together, right? 
+
+19:28 
+So that's why the AI tools can easily get the answer we want to know. 
+
+19:32 
+Okay, then let's check the second one. 
+
+19:48 
+The second question is about what exact quantities and the physical items of the inventory were sold under the SIRS-S2 and what was their standard cost versus actual selling price and who purchased them. 
+
+20:03 
+So you can see that the questions contain a lot of information, right? Related to the production, related to the personnel, related to the event. 
+
+20:18 
+Items of the quantities is two units of extra large A. 
+
+20:22 
+There is a standard unit cost, 3,600. 
+
+20:27 
+And the actual selling price, 5,000. 
+
+20:30 
+And the purchaser, or purchasing person there, right? 
+
+20:38 
+The name is make. 
+
+20:40 
+Okay, so let's see whether we can find 
+
+20:43 
+this information by ourselves. 
+
+20:46 
+Okay, that's two. 
+
+20:48 
+So 
+
+20:54 
+first you can open that. 
+
+21:00 
+Open the fair table, right? Go to the S2, we can see that what kind of information can be provided there. So we have the customer number and we have the fair representative, which is not the information we want to know, right? 
+
+21:17 
+You 
+
+21:36 
+can see that based on a human being, the work could be very time consuming, right? 
+
+21:47 
+So since we are talking about the inventory, so maybe we can check the information contained in the association between the inventory and the share, right? 
+
+21:56 
+So S2 here, we have this piece of information for S2, and the quantity is 2, and the actual price is 5,000, 
+
+22:08 
+which means that the gross information of the two units is correct, and then 5,000 each is correct. 
+
+22:16 
+Then maybe 
+
+22:22 
+we go to the inventory table, right, since we are talking about information there. 
+
+22:30 
+And the item ID, let's see whether the item ID can be linked to other tables. 
+
+22:39 
+The answer is yes, right? If we go to the inventory SIR stock flow table, we can get the SIR S2, the corresponding inventory ID. 
+

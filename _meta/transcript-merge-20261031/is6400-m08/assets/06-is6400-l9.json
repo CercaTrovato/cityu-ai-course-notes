@@ -1,0 +1,190 @@
+{
+  "source": "IS6400_Business_Data_Analytics/course_files_export/IS6400-L9-time series2.pdf",
+  "sha256": "8f7ec0a04709dd49a6acdbf5e3ed45446356c011588162eeaf4745585a0fd088",
+  "pages": [
+    {
+      "page": 1,
+      "text": " IS6400 Business Data Analytics\r\n\r\n                   Dr. LIU Junming\r\n            City University of Hong Kong\r\n\r\nLecture 9                      Reading Material:\r\n❑ Review\r\n❑ Autoregression\r\n\r\n\r\n                                                   1\r\n"
+    },
+    {
+      "page": 2,
+      "text": "     Simple Moving Average\r\n❖ Average random fluctuations in a time series to\r\n  infer short-term changes in direction\r\n❖ Assumption: future observations will be similar to\r\n  recent past\r\n❖ Forecast = average of most recent k observations\r\n\r\n           Yt + ... + Yt −m +1\r\n   Ft +1 =\r\n                   m\r\n❖ So, how do you decide m?\r\n  What if m=1 or 2?\r\n\r\n                                                    2/44\r\n"
+    },
+    {
+      "page": 3,
+      "text": "   Weighted Moving Average\r\n❖ A natural extension to moving average.\r\n   Weight the most recent k observations, with weights\r\n     that add to 1.0\r\n    Higher weights on more recent observations generally\r\n     provide more responsive forecasts to rapidly\r\n     changing time series\r\n    Rational: recent observation are more similar as what\r\n     will happen next\r\n\r\n                    Ft +1 = 1Yt + ... +  kYt −m+1\r\n                    1 + ... +  m = 1\r\n\r\n                                                          3/44\r\n"
+    },
+    {
+      "page": 4,
+      "text": "         Exponential Smoothing\r\n❖ So: an easier approach (with one parameter)\r\n    Weights decay exponentially\r\n    Sum of weights approach 1\r\n    Ft+1 = Yt+ (1 –  )Yt-1+ (1 –  )2Yt-2+ (1 –  )3Yt-3+…\r\n\r\n\r\n❖ Exponential smoothing model:\r\n              Ft+1 = Lt = (1 –  )Lt-1 + Yt\r\n                           = Lt-1 +  (Yt – Lt-1 )\r\n          last prediction + adjustment on error\r\n\r\n❖   Ft+1 is the forecast for time period t+1,\r\n❖   Lt is the level for period t, (L 1=Y1)\r\n❖   Yt is the observed value in period t, and\r\n     is a constant between 0 and 1, called the smoothing constant.\r\n Higher smoothing constant (higher weights on more recent observations)\r\n provide forecasts that respond more rapidly to changes in series.\r\n                                                                      4/44\r\n"
+    },
+    {
+      "page": 5,
+      "text": "              Holt-Linear\r\nSimple exponential smoothing + trend\r\n\r\n\r\n\r\n\r\n                                       5/44\r\n"
+    },
+    {
+      "page": 6,
+      "text": "             Holt-Winter\r\nSimple exponential smoothing + trend + seasonality\r\n\r\n\r\n\r\n\r\n                                                 6/44\r\n"
+    },
+    {
+      "page": 7,
+      "text": " Regression on Linear Trend\r\n❖ A linear trend means that the time series variable\r\n  changes by a constant amount each time period.\r\n❖ Linear trend model is given by: Yt = a + bt + et\r\n❖ Interpretation of b is that it represents the expected\r\n  change in the series from one period to the next.\r\n    If b is positive, the trend is upward.\r\n    If b is negative, the trend is downward.\r\n❖ The intercept term a is less important: It literally\r\n  represents the expected value of the series at time 0.\r\n❖ As always, a graph of the time series is a good place to\r\n  start. It may indicate whether a linear trend is likely to\r\n  provide a good fit.\r\n                                                               7/44\r\n"
+    },
+    {
+      "page": 8,
+      "text": "                               Soft Drink Sales\r\n❖ Salest=a+b*t+et.\r\n7000.00\r\n6000.00                                  y = 65.399x + 1633.4\r\n5000.00\r\n4000.00\r\n3000.00\r\n2000.00\r\n1000.00\r\n   0.00\r\n\r\n                94 95 97 98 00 01 03 04 06 07 09\r\n              1- 3- 1- 3- 1- 3- 1- 3- 1- 3- 1-\r\n             Q    Q  Q  Q  Q  Q  Q  Q  Q  Q  Q\r\n\r\n\r\n\r\n                         Residual Plot\r\n              1500\r\n              1000\r\n Residuals\r\n\r\n\r\n\r\n\r\n               500\r\n                 0\r\n              -500 0    20         40           60         80\r\n             -1000\r\n             -1500\r\n                                    T\r\n\r\n\r\n\r\n\r\n                                                                8/44\r\n"
+    },
+    {
+      "page": 9,
+      "text": "             Regression on\r\n            Exponential Trend\r\n❖ An exponential trend is appropriate when the time series\r\n  changes by a constant percentage (as opposed to a constant\r\n  amount) each period.\r\n❖ Appropriate regression equation contains a multiplicative error\r\n  term ut: Yt = cebtut.\r\n❖ Exponential trend is not useful for estimation, and a linear\r\n  equation is required. You can achieve linearity by taking\r\n  natural logarithms of both sides of the equation: ln(Yt ) = a +\r\n  bt + et.\r\n❖ Interpreting final result: The coefficient b (expressed as a\r\n  percentage) is approximately the percentage change per\r\n  period. For example, if b = 0.05, then the series is increasing\r\n  by approximately 5% per period.\r\n\r\n\r\n                                                               9/44\r\n"
+    },
+    {
+      "page": 10,
+      "text": "Regression on Seasonal Effect\r\n\r\n\r\n\r\n\r\n                           10/44\r\n"
+    },
+    {
+      "page": 11,
+      "text": "Soft Drink Sales\r\n\r\n\r\n\r\n\r\n                   11/44\r\n"
+    },
+    {
+      "page": 12,
+      "text": "How to model this lagged features in\r\n            sklearn?\r\n❖   https://scikit-learn.org/stable/auto_examples/applications/plot_time_series_lagged_features.html\r\n\r\n\r\n\r\n\r\n            (see model lagged term in sklearn.csv)\r\n                                                                                                   12/39\r\n"
+    },
+    {
+      "page": 13,
+      "text": " IS6400 Business Data Analytics\r\n\r\n                   Dr. LIU Junming\r\n            City University of Hong Kong\r\n\r\nLecture 9                      Reading Material:\r\n❑ Review\r\n❑ Autoregression\r\n\r\n\r\n                                                   13\r\n"
+    },
+    {
+      "page": 14,
+      "text": "        Introduction – Time Series\r\nA Time Series is a set of observations of a variable at regular\r\n  time intervals, such as yearly, monthly, weekly, daily, 15\r\n  minutes interval, etc.\r\n ❖ To predict the value of one dependent variable on\r\n    the basis of time information\r\n    ➢   Time indexed Dependent Variable: Yt\r\n    ➢   Time indexed Independent Variable: Xt    How to get Xt?\r\n\r\n\r\n\r\n\r\n                                                                          14/44\r\n                                                Stock price of Facebook\r\n"
+    },
+    {
+      "page": 15,
+      "text": "      Testing for Randomness\r\n\r\n❖ Typical Forecasting equation:\r\n                 𝑌𝑡 = 𝐹𝑖𝑡𝑡𝑒𝑑 𝑉𝑎𝑙𝑢𝑒 + 𝑅𝑒𝑠𝑖𝑑𝑢𝑎𝑙\r\n❖ We want this time series of residuals to be random noise.\r\n❖ If the residual is not noise, it can be modeled further. E.g. if\r\n  the residual has an upward trend, we can modify the\r\n  forecasting model to include this trend component in the\r\n  fitted value.\r\n❖ The point is that: the fitted value should include all\r\n  components of the original series than can possibly be\r\n  forecasted, and the leftover residuals should be\r\n  unpredictable noise.\r\n                                                               15/44\r\n"
+    },
+    {
+      "page": 16,
+      "text": "            Autocorrelations\r\n\r\n❖ Autocorrelation is the key to many forecasting\r\n  methods, e.g. autoregressive models, especially\r\n  more complex methods.\r\n❖ It essentially specifies how observations in nearby\r\n  time periods are related, so this information is\r\n  often useful in forecasting.\r\n  For instance, the money in your bank account this month\r\n  is highly related to your money last month.\r\n                      Possible Xt?\r\n                                                        16/44\r\n"
+    },
+    {
+      "page": 17,
+      "text": "   Autocorrelations calculation\r\n1. Forming lagged variables. Lags are simply previous observations, counting\r\nback to a certain number of periods from the present time.\r\n       For instance, Lag1 variables: 𝑌𝑡 = 𝑌𝑡−1\r\n       Lag 2 variables: 𝑌𝑡 = 𝑌𝑡−2\r\n2. Do the correlations between the observed values and the lagged variables.\r\n\r\n\r\n\r\n\r\n                                                                      17/44\r\n"
+    },
+    {
+      "page": 18,
+      "text": "    The Random Walk Model\r\n❖ The time series itself is not random (e.g. can see a trend\r\n  in the visualized graph and autocorrelations are\r\n  significantly positive for many lags).\r\n❖ But its differences (the changes from one period to the\r\n  next) are random.\r\n\r\n\r\n\r\n\r\n                                                            18/44\r\n"
+    },
+    {
+      "page": 19,
+      "text": "       Random Walk Model\r\n              𝑌𝑡 = 𝑌𝑡−1 + 𝑚 + 𝑒𝑡\r\nHere:\r\n𝑌𝑡 - Observed value at the time period of t\r\n𝑌𝑡−1 - Observed value at the time period of t-1\r\nM - the average differences\r\n𝑒𝑡 - a random time series.\r\n\r\n\r\n\r\n                                             19/44\r\n"
+    },
+    {
+      "page": 20,
+      "text": "      Autoregressive Models\r\n❖ We can easily extend the idea of random walk model\r\n  by allowing coefficients in it.\r\n❖ First-order autoregressive model AR(1)\r\n    Yt = a0 + a1Yt-1 +et\r\n\r\n❖ We can further add more lag variables in the model.\r\n❖ Second-order autoregressive model AR(2)\r\n    Yt = a0 + a1Yt-1 + a2Yt-2 +et\r\n❖ …\r\n❖ AR(p)\r\n❖ You can use OLS to estimate model parameters\r\n\r\n\r\n\r\n\r\n                                                        20/44\r\n"
+    },
+    {
+      "page": 21,
+      "text": "                     ARIMA\r\n  Xt?\r\n• AR = Auto Regressive\r\n  ✓ predict 𝑦𝑡 from previous values 𝑦𝑡−1 , 𝑦𝑡−2 , …\r\n\r\n• MA = Moving Average\r\n  ✓ predict 𝑦𝑡 from previous errors 𝜀𝑡−1 , 𝜀𝑡−2 , …\r\n    (Note: not the same as ETS MA.)\r\n\r\n\r\n\r\n\r\n                                                      21\r\n"
+    },
+    {
+      "page": 22,
+      "text": "                      AR\r\n\r\n• AR(1) model\r\n\r\n    𝑦𝑡 = 𝑐 + 𝜑𝑦𝑡−1 + 𝜀𝑡 ,     𝜀𝑡 ~𝑁(0, 𝜎 2 )\r\n\r\n  ✓ 𝜑 = 0: white noise\r\n  ✓ 𝜑 = 1 and c = 0: random walk\r\n  ✓ 𝜑 = 1 and c ≠ 0: random walk with a drift\r\n\r\n\r\n\r\n\r\n                                                22\r\n"
+    },
+    {
+      "page": 23,
+      "text": "                                     AR\r\n• AR(p) model\r\n\r\n  𝑦𝑡 = 𝑐 + 𝜑1 𝑦𝑡−1 + 𝜑2 𝑦𝑡−2 + ⋯ + 𝜑𝑝 𝑦𝑡−𝑝 + 𝜀𝑡\r\n                         where 𝜀𝑡 ~𝑁(0, 𝜎 2)\r\n\r\n• How do we determine p?\r\nPartial Autocorrelation Function (PACF)\r\nIn general, use x1,x2,x3 to predict y. The partial autocorrelation between y and x3:\r\n1.Regression in which we predict y from x1 and x2,\r\n2.regression in which we predict x3 from x1 and x2. Basically, we correlate the\r\n“parts” of y and x3 that are not predicted by x1 and x2.\r\n          For an AR model, the theoretical PACF\r\n          “shuts off” past the order of the model.                                     23\r\n"
+    },
+    {
+      "page": 24,
+      "text": "                     AR\r\n• AR(p) model\r\n\r\n 𝑦𝑡 = 𝑐 + 𝜑1 𝑦𝑡−1 + 𝜑2 𝑦𝑡−2 + ⋯ + 𝜑𝑝 𝑦𝑡−𝑝 + 𝜀𝑡\r\n              where 𝜀𝑡 ~𝑁(0, 𝜎 2)\r\n\r\n• How do we determine p?\r\nPartial Autocorrelation Function (PACF)\r\n\r\n\r\n\r\n\r\n                                                 24\r\n"
+    },
+    {
+      "page": 25,
+      "text": "                          MA\r\n                           t   ෞ𝒕\r\n                               𝒚    𝜺𝒕   𝒚𝒕\r\n\r\n                           1        -2\r\n\r\n                           2        1\r\n\r\n                           3        0\r\nMA(1) model                4        2\r\n𝒚𝒕 = 𝝁 + 𝜙𝟏 𝜺𝒕−𝟏 + 𝜺𝒕 ,\r\nwhere 𝜺𝒕 ~𝑵(𝟎, 𝝈𝟐 )        5        1\r\n   ෞ𝒕 = 𝟏𝟎 + 𝟎. 𝟓𝜺𝒕−𝟏 ,\r\n   𝒚\r\n   𝒚𝒕 = 𝒚 ෞ𝒕 + 𝜺𝒕\r\n                                              25\r\n"
+    },
+    {
+      "page": 26,
+      "text": "                        MA\r\n•   MA(q) model\r\n\r\n     𝑦𝑡 = 𝜇 + 𝜙1εt−1 + 𝜙2 εt−2 + ⋯ + 𝜙𝑞 εt−𝑞 + εt\r\n                 where 𝜀𝑡 ~𝑁(0, 𝜎 2 )\r\n\r\n•   How to determine q?\r\n\r\n         Autocorrelation Function (ACF)\r\n\r\n\r\n\r\n\r\n                                                    26\r\n"
+    },
+    {
+      "page": 27,
+      "text": "                     ACF vs PACF\r\n\r\n  Predict average monthly\r\n  price of salmon\r\n\r\n\r\n\r\n𝑃𝑡−2 : avg. price       𝑃𝑡−1 : avg. price        𝑃𝑡 : avg. price\r\n2 months ago            last month               this month\r\n\r\n\r\n\r\n        Correlation(𝑃𝑡−2 , 𝑃𝑡 ) = indirect effect + direct effect\r\n\r\n               ACF                                     PACF         27\r\n"
+    },
+    {
+      "page": 28,
+      "text": "AR & PACF\r\n\r\n\r\n\r\n\r\n            28\r\n"
+    },
+    {
+      "page": 29,
+      "text": "MA & ACF\r\n\r\n\r\n\r\n\r\n           29\r\n"
+    },
+    {
+      "page": 30,
+      "text": "                     ARIMA\r\n\r\n• AR = Auto-Regressive\r\n  ✓ predict 𝑦𝑡 from previous values 𝑦𝑡−1 , 𝑦𝑡−2 , …\r\n\r\n• MA = Moving Average\r\n  ✓ predict 𝑦𝑡 from previous errors 𝜀𝑡−1 , 𝜀𝑡−2 , …\r\n    (Note: not the same as ETS MA.)\r\n\r\n• ARMA: assumes a stationary time series\r\n\r\n\r\n\r\n                                                      30\r\n"
+    },
+    {
+      "page": 31,
+      "text": "               Stationarity\r\n\r\n• A process is stationary if it has\r\n  ✓ No trends (i.e., constant mean)\r\n  ✓ Constant variance\r\n  ✓ No seasonality\r\n\r\n\r\n\r\n\r\n                                      31\r\n"
+    },
+    {
+      "page": 32,
+      "text": "    Stationarity\r\n\r\n\r\n\r\n\r\nA          B\r\n\r\n\r\n\r\n\r\n                   32\r\nC          D\r\n"
+    },
+    {
+      "page": 33,
+      "text": "               Stationarity test\r\n\r\n•   Kwiatkowski-Phillips-Schmidt-Shin (KPSS) test\r\n\r\n    ✓ Null hypothesis: data is stationary\r\n    ✓ If p-value < 0.05, then reject the null, i.e., the data\r\n      is non-stationary, at a confidence level of 95%.\r\n      Otherwise, we accept that the data is stationary at\r\n      a confidence level of 95%.\r\n\r\n\r\n\r\n\r\n                                                                33\r\n"
+    },
+    {
+      "page": 34,
+      "text": "       How to stabilize the data\r\n• Stabilize variance\r\n  ✓ Box-Cox transformation\r\n\r\n• De-trend\r\n  ✓ Differencing\r\n\r\n• De-seasonality\r\n  ✓ Differencing\r\n  ✓ Subtract quarterly / monthly /\r\n    etc. average\r\n\r\n\r\n\r\n                                     34\r\n"
+    },
+    {
+      "page": 35,
+      "text": "       AR & Seasonal Effect\r\n❖ You can apply AR after deseasonalization.\r\n   At the end, you should combine seasonal effect with\r\n    AR model predictions for overall forecasting.\r\n\r\n❖ If AR model contains enough lag variables, it may\r\n  partially cover the effect of seasonal factors.\r\n   For example, if there is a yearly effect on quarterly\r\n    data, including more than 4 lag variables (which\r\n    covers things happened 4 quarters ago) may partially\r\n    cover the surplus happens, say, every spring.\r\n\r\n\r\n\r\n                                                            35/44\r\n"
+    },
+    {
+      "page": 36,
+      "text": "               Quiz Question\r\n\r\n\r\n\r\n   (a) Original data                            (b) After Box-Cox Transform\r\n\r\n\r\n\r\n\r\n(c) After BC transform and                       (d) After BC transform, De-\r\nDe-seasonality                                   seasonality and De-trend.\r\n\r\nQuestion:\r\n1. what did we do in (b), (c), and (d).\r\n2. Is (a) or (d) stationary? How could you test stationarity?                  36/44\r\n"
+    },
+    {
+      "page": 37,
+      "text": "                  ARMA\r\n\r\n• ARMA(p, q)\r\n\r\n  𝑦𝑡 = 𝑐 + 𝜑1 𝑦𝑡−1 + 𝜑2 𝑦𝑡−2 + ⋯ + 𝜑𝑝 𝑦𝑡−𝑝 +\r\n      𝜙1 εt−1 + 𝜙2 εt−2 + ⋯ + 𝜙𝑞 εt−𝑞 + εt\r\n\r\n\r\n\r\n\r\n                                               37\r\n"
+    },
+    {
+      "page": 38,
+      "text": "      ARMA\r\n\r\nq=1\r\n\r\n\r\n\r\n\r\np=1\r\n\r\n\r\n\r\n\r\n             38\r\n"
+    },
+    {
+      "page": 39,
+      "text": "                 ARMA\r\n\r\n• ARMA(1, 1)\r\n\r\n       𝑦𝑡 = 𝑐 + 𝜑1 𝑦𝑡−1 + 𝜙1 εt−1 + εt\r\n\r\n\r\n\r\n\r\n                                         39\r\n"
+    },
+    {
+      "page": 40,
+      "text": "                       ARIMA\r\n\r\n• ARIMA(p, d, q): y is the 𝑑 𝑡ℎ -differenced data\r\n               ′\r\n 𝑦𝑡′ = 𝑐 + 𝜑1 𝑦𝑡−1           ′\r\n                   + ⋯ + 𝜑𝑝 𝑦𝑡−𝑝 + 𝜙1 𝜀𝑡−1 + ⋯ 𝜙𝑞 𝜀𝑡−𝑞 + 𝜀𝑡\r\n\r\n   ✓ where 𝑦𝑡′ is the 𝑑𝑡ℎ -differenced data\r\n   ✓ when d = 1, 𝑦𝑡′ = 𝑦𝑡 − 𝑦𝑡−1\r\n                                ′\r\n   ✓ when d = 2, 𝑦𝑡′′ = 𝑦𝑡′ − 𝑦𝑡−1 = 𝑦𝑡 − 2𝑦𝑡−1 + 𝑦𝑡−2\r\n\r\n\r\n\r\n\r\n                                                              40\r\n"
+    },
+    {
+      "page": 41,
+      "text": "                     ARIMA\r\n\r\n• ARIMA(1,1,1)\r\n                      ′\r\n        𝑦𝑡′ = 𝑐 + 𝜑1 𝑦𝑡−1 + 𝜙1 𝜀𝑡−1 + 𝜀𝑡\r\n                               ′\r\n  ✓ where 𝑦𝑡′ = 𝑦𝑡 − 𝑦𝑡−1 and 𝑦𝑡−1 = 𝑦𝑡−1 − 𝑦𝑡−2\r\n\r\n• ARIMA(p,d,q)\r\n  ✓ White noise: ARIMA(0,0,0)\r\n  ✓ AR(p): ARIMA(p,0,0)\r\n  ✓ MA(q): ARIMA(0,0,q)\r\n\r\n                                                   41\r\n"
+    },
+    {
+      "page": 42,
+      "text": "             Seasonal ARIMA\r\n\r\n\r\n\r\n\r\nm: seasonal cycle (quarterly: 4, monthly: 12, weekly: 7, etc.)\r\n\r\n\r\n\r\n\r\n                                                          42\r\n"
+    },
+    {
+      "page": 43,
+      "text": "              Practical suggestions\r\n\r\n\r\n\r\n\r\nRolling forward (cross validation)\r\n\r\n\r\n\r\n\r\n                                      43\r\n"
+    },
+    {
+      "page": 44,
+      "text": "    Regression With Causal\r\n          Variables\r\n❖ As in linear regression, we can incorporate\r\n causal factors to explain/predict things that\r\n may happen.\r\n\r\n\r\n❖ A simple example\r\n  Sales = 0 + 1Week\r\n    + 2 Price/Gallon\r\n\r\n\r\n                                            44/44\r\n"
+    },
+    {
+      "page": 45,
+      "text": "ADL & Time Series Regression\r\n\r\n\r\n\r\n\r\n                           45/44\r\n"
+    },
+    {
+      "page": 46,
+      "text": "                 Summary\r\n\r\n• Stationarity\r\n  ✓ No trend, no seasonality, constant variance\r\n\r\n• AR = Auto Regressive\r\n  ✓ Partial Autocorrelation Function (PACF)\r\n\r\n• MA = Moving Average\r\n  ✓ Autocorrelation Function (ACF)\r\n\r\n• ARMA / ARIMA / SARIMA\r\n  ✓ I(ntegrated): differencing\r\n                                                  46\r\n"
+    }
+  ]
+}

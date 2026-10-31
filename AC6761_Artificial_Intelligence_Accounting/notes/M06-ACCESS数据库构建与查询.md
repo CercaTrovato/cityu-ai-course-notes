@@ -3,13 +3,14 @@ course: AC6761
 module: 6
 week: 6
 date: 2026-10-21
-source: "Week 6 PPT.pptx（92 页）；Quiz 2.docx；ExampleTables1.accdb（当前附件）"
+source: "Week 6 PPT.pptx（92 页）；Quiz 2.docx；ExampleTables1.accdb；ExampleTables2.accdb；AI in REA ACCESS database.docx"
 transcript: merged
 prerequisites: [M01, M02, M03, M04, M05]
 new_concepts: [数据表视图, 设计视图, 数据类型, 字段属性, 保留字, 主键, 外键, 参照完整性, 级联更新, 级联删除, 关系布局, 一对多符号, 复合主键, 连接表, 查询, 关系代数, 选择, 投影, 连接, 内连接, 外连接, 左外连接, 右外连接, 笛卡尔积, SQL, QBE, 通配符, 数学比较运算符, 逻辑运算符, BETWEEN, IS_NULL, EXISTS, 空值, 聚合函数, COUNT, SUM, AVERAGE, MIN, MAX, 横向计算, 汇总行, GroupBy, Nz函数, 行项目金额, 加权平均单位成本, 汇款通知, 佣金率, 资产负债表日, 订单履行天数, 在手订单查询]
 tags: [AC6761, ACCESS, 关系数据库, SQL, QBE, 关系代数, REA落地, 上机课, 期末范围]
 status: v1.0
-updated: 2026-10-26
+updated: 2026-10-31
+current_merge_review: independent-teaching-review-completed
 mechanism_review: passed
 mechanism_review_mode: efficient-20261002
 mechanism_content: repaired
@@ -27,6 +28,12 @@ teaching_standard: novice-v1
 > ✅ **本笔记为材料 v1.0**：融合 10 月 21 日 S19 `09:30` 后段、R1 的课堂段 `00:01`–`15:57`、S21 `00:00`–`09:17`。三份来源分别从零计时；S19 与 M05 共用整份音频，不能在这里重置。R1 的 16 分钟后是课间私人交谈，公开转录与公开音频副本已排除，完整原件仅留本机。
 >
 > 🔴 **现在有本讲课堂范围证据**：要读懂给定 SQL、根据给定表写查询结果（R1 `00:16`–`00:59`）；外连接在这次基础 SQL 题型中降权（R1 `01:10`）。软件点击操作用当堂 Quiz 2 练习，与纸笔读 SQL 题分开，不能据“纸笔期末”推断整章都不考。
+
+**新增转录来源与边界**
+
+> 🎙️ **2026-10-31 新增来源**：S22=`M06-transcript-source22-partial.txt`（164 段，`00:00`–`22:39`），S23=`M06-M08-transcript-source23-partial.txt`（948 段，`00:00`–`01:46:24`）。本篇使用 S22 全部及 S23 `00:00`–`20:20`；S23 `20:27` 后转 M08。二源独立时钟、授课日期未知；S22 末与 S23 首同在 Q2，接缝无共同声轨锚点，不命名 part，不拼造整课时长。M06 的 date 保留原有本人确认日期，仅指旧三源，不替新源定日期。材料 v1.0 延续，本次新增及受影响教学内容的独立审查已完成；执行证据分别记录，写回与同步状态不由此推定。
+>
+> 本次补录解决 p.70–84 的课堂缺口，并取得 p.85–92 的概述/略页证据；不表示后段原查询均已复现。六道 AI 查询题完整原文与逐问解析见 §2.25，项目要求见 §2.26。
 
 > 📌 **W6 不在期中考范围内，但这不代表可以略读。**
 > 🎙️ W1 转录 `13:28`：*"the midterm test in Week 7 will cover the content from Week 1 to Week 5."* —— 期中考（2026-10-14）到 W5 为止。
@@ -77,7 +84,7 @@ teaching_standard: novice-v1
 4. **用关系代数的三个算子描述任意一个查询需求**，并写出对应的 SQL 语句
 5. **在 QBE 网格里正确摆放条件**：同一行 = AND，不同行 = OR；哪些字段勾 Show、哪些字段的 Total 行选 Where 而不是 Group By
 6. **区分 `IS NULL` 与 `= 0`**，并解释为什么外连接 + `Is Null` 是"找出没有发生过某事的实体"的标准套路
-7. **解释七类会计问题的查询思路并复算给定结果**；对于缺失的扩展库和前置查询，列出必要字段、条件与待核事项。原库中七个查询的完整复现仍待材料和实际环境。
+7. **解释七类会计问题的查询思路并复算给定结果**；对于扩展库与原保存查询的对应，列出必要字段、条件与待核事项。本批已取得 ExampleTables2 的 31 张扩展表；七个原查询的定义、参数和截图同版性仍须核验，不能由表已取得便称完整复现。
 
 **如果只记三件事**
 
@@ -93,7 +100,7 @@ teaching_standard: novice-v1
 
 ---
 
-> 🎙️ **课堂实况**：S19 先补 M05，`09:30` 后进入 Access；R1 接 SQL 比较与 Query 1，并在 `15:57` 宣布休息；S21 复述后做 Query 2–4，转 Quiz 2 上传。课程日期为本人确认的 10 月 21 日。三份保留各自零点，接缝没有共同声轨锚点；R1 16 分钟后的私谈不公开，S21 结尾没有正式下课语。未录 p.19–23 的完整一对多演示，以及 p.70–92 的后续讲解，不据此降权。
+> 🎙️ **课堂实况**：S19 先补 M05，`09:30` 后进入 Access；R1 接 SQL 比较与 Query 1，并在 `15:57` 宣布休息；S21 复述后做 Query 2–4，转 Quiz 2 上传。课程日期为本人确认的 10 月 21 日。三份保留各自零点，接缝没有共同声轨锚点；R1 16 分钟后的私谈不公开，S21 结尾没有正式下课语。旧三源未录 p.19–23 的完整一对多演示；p.70–92 的课堂状态现由 S22 补充，详见 §8。S22/S23 新源的实际授课日期未知，不沿用旧三源日期。
 
 ## 1. 开始之前 · 知识衔接
 
@@ -2189,11 +2196,11 @@ Sale, Sale-CashRecDuality, Salesperson
 
 例如 A-1 的标准单位成本为 1,200；它不是每次实际销售价，也不能替代 p.89 的期间采购均价。
 
-这个基础例库仍没有 Employee/出纳目标主表，也没有采购侧和 p.86–92 的扩展原查询。标题 Incomplete 所指的范围限制继续存在，但不能再说本地完全没有 Inventory 内容。
+这个基础例库仍没有 Employee/出纳目标主表，也没有采购侧。新取得的 ExampleTables2 是另一扩展例库，原查询定义与截图对应仍需另核。标题 Incomplete 所指的范围限制继续存在，但不能再说本地完全没有 Inventory 内容。
 
 **所以呢**
 
-讲义可见七表与当前附件的第八表补充分开记录。下一节把它们与 M05 的 REA 对象对上；出纳主数据及扩展库缺口继续保留。
+讲义可见七表与当前附件的第八表补充分开记录。下一节把它们与 M05 的 REA 对象对上；基础库的出纳主数据仍缺；扩展附件已得，原查询定义及截图对应仍待核。
 
 #### 2.10.2 这八张表怎么对应 REA 模型（💡 笔记补充）
 
@@ -2707,7 +2714,7 @@ Giving Answer
 
 2. **S-6、S-7 右侧全空。** 这两笔销售**一分钱都没收到**。它们的金额加起来 35,000 + 23,000 = **58,000**，就是这两笔的应收账款。
 
-3. **空的是 Null，不是 0。** 如果你写 `Amount - Applied` 想算未收金额，S-6 会得到 `35,000 - Null = Null`，**不是 35,000**。若给定明细完整且该销售确实没有应用收款，可写 `Nz([Applied], 0)`；§2.24.1 的原库缺失，不能由这个例子反证其空值来源。
+3. **空的是 Null，不是 0。** 如果你写 `Amount - Applied` 想算未收金额，S-6 会得到 `35,000 - Null = Null`，**不是 35,000**。若给定明细完整且该销售确实没有应用收款，可写 `Nz([Applied], 0)`；§2.24.1 的原保存查询定义和参数尚未取得，不能由这个例子反证其空值来源。
 
 **为什么这个查询有会计意义 —— 它就是应收账款账龄表的雏形**
 
@@ -4448,11 +4455,13 @@ p.47 的文本常量缺引号，p.71 的 QBE 条件带引号。两张材料可�
 
 单个条件的查询都做完了，下一个查询开始组合条件——先看两个条件都要满足时（AND）怎么在 QBE 里填。
 
-**🎙️ 课堂补充**（10 月 21 日；S21 `07:47`–`09:17`；D · 只录到题目入口与 Quiz 2 行政）
+**🎙️ 课堂补充**（S21 `07:47`–`09:17` 仅入口；S22 `00:00`–`01:15` 续讲；B · 同讲义）
 
-老师刚提出“不是 E-10 做的销售”这一查询，就转去上传 Quiz 2 及附件。没有获得该题后续逐屏执行，不能把正文已有完整解法标为课堂演示答案。
+S22 从“有限披露看不到完整信息”的回顾进入本例：选择 Sale，把销售员条件设为不等于 E-10，获得非 E-10 的销售。老师说明这些信息可辅助人力资源部门评估表现，但销售结果仍须结合任务与业务背景，不能单项定性。
 
-❓ 本节“非 E-10”与 Quiz 2“E-10”是不同题。当前 Quiz 2.docx 的完整题面与参考解析已列 §2.23.9；截止、分值及本人提交状态仍未知，不能从上传操作推定。
+*"not equal to E10, then we get the answer."*（S22 `01:12`）
+
+中文：条件是不等于 E-10。原表核为 S-1 和 S-7；课堂只回顾了关键条件，不称重新逐屏创建。新源开头已在回顾，不能证明完整上课开头。
 
 
 ---
@@ -4545,6 +4554,15 @@ AND 的填法（同一行）会了，下一个查询换成 OR——同样两个�
 **英文参考答案（笔记自拟，U12）**
 
 > Place Date < #7/31/2014# and SalesRepNumber = "E-10" on the same Criteria row. Both conditions must hold, so the given result is S-2, S-3, and S-4, with three rows and four displayed columns. S-5 is excluded because July 31 is not before July 31.
+
+**🎙️ 课堂补充**（S22 `01:15`–`02:15`；B · 简讲同讲义）
+
+老师用 E-10 与期末前日期说明绩效比较要限定期间。同一行两个条件要求同时满足；原 p.74 的严格小于 7 月 31 日仍保留，不能把口语“end of July”改成包含当天。
+
+*"At the same time, we set a constraint for the time period"*（S22 `01:56`）
+
+中文：同时再加时间约束。按原表与原条件仍是 S-2、S-3、S-4，不把概述当新的日期规则。
+
 
 #### 2.23.7 查询 ⑦ —— OR：7/31 前或 E-10 做的销售（讲义 p.76–p.78，3 页）
 
@@ -4687,6 +4705,15 @@ AND、OR 在 QBE 里的填法都对照着做完了，最后一个查询把聚合
 **英文参考答案（笔记自拟，U13）**
 
 > Place the date and salesperson conditions on separate criteria lines to express OR. A sale qualifies if it is before July 31 or was made by E-10. The given result is S-1 through S-6, with six rows and four displayed columns; a row satisfying both conditions is still returned once.
+
+**🎙️ 课堂补充**（S22 `02:15`–`02:50`；B · 简讲同讲义）
+
+老师点名 p.76，并把两条件拆到不同行，表示满足任意一个即可。日期和销售员条件本身不变，只有组合方式从 AND 改为 OR。
+
+*"we just put the two criteria in different rows."*（S22 `02:46`）
+
+中文：把两条件放到不同行。原表按 OR 留下 S-1 至 S-6，不重复计算同时满足两项的记录。
+
 
 #### 2.23.8 查询 ⑧ —— 聚合 SUM + BETWEEN：7/15–7/31 的销售总额（讲义 p.79–p.84，6 页）
 
@@ -4844,11 +4871,13 @@ M01 讲的**会计分期假设**在这里变成了具体操作：报表要报"�
 
 这个 52,600 仍是原筛选区间 7/15–7/31 的合计；要报完整七月，应把范围改为 7/1 起、8/1 前，本给定七笔销售下为 59,800。需要分销售员时再加入 SalesRepNumber 分组。生成键、日期范围和分组字段分别决定分组身份、包含业务及报告层次。
 
-**🎙️ 课堂补充**（10 月 21 日；当前三源未覆盖 p.79–84；D · 未录到）
+**🎙️ 课堂补充**（S22 `02:54`–`04:12`；B · 简讲同讲义）
 
-本次来源到 Query 4 后，只有 Query 5 入口与 Quiz 2 上传信息，没有找到八号聚合查询的逐屏课堂过程。
+老师说明先填 7 月 15 日至 31 日的 BETWEEN 条件，再点 Totals，使 Total 行出现，然后选择 SUM。日期用于限定记录，金额才是加总对象；本节原有 Where 与 Group By 的解释继续保留，课堂没有重新逐屏细拆全部设置。
 
-这里保留讲义题面、条件分组和本节完整学习解析；课堂缺失状态为 ❓、不可据此降权，不把空档或缺结尾说成教师略过。
+*"the function we want to make. So in this case, it's SUM"*（S22 `03:59`）
+
+中文：本例选 SUM 函数。原讲义输出 52,600 已由四笔明细复算；概述不能替代对日期端点和输出粒度的检查。
 
 **⚠️ 常见误解**
 
@@ -4884,7 +4913,7 @@ M01 讲的**会计分期假设**在这里变成了具体操作：报表要报"�
 > 6. Run
 > 7. Save as QueryA
 > 8. Close ExampleTables1
-> 9. Send the updated ExampleTables1 to [CONTACT REDACTED IN PUBLIC COPY; SEE LOCAL ORIGINAL]
+> 9. Send the updated ExampleTables1 to xindozhu@cityu.edu.hk
 
 </details>
 
@@ -4947,6 +4976,8 @@ WHERE SalesRepNumber = 'E-10';
 
 **⚠️ 这一段换了一个数据库**
 
+**2026-10-31 附件更新**：已取得 `ExampleTables2.accdb`，ACE 只读记录共 31 张表。InventoryType 六行字段含 ItemID、Description、UnitOfMeasure、StandardCost、ListPrice，与 p.91 可见字段相符；还含 Sale/SaleOrder/FulfillmentSaleOrderSale、SalesCall/PropositionSalesCallInventory、Purchase/PurchaseReturn/CashDisbursement 及各 Stockflow 表。因此旧“本地完全没有扩展库/结构”的缺口已缩小。文件名与这些字段对应不证明它就是所有截图的同版原库，保存查询、筛选范围和 Nz 原实现仍待核。基础例库 S-5 的六题答案不得改用这个扩展库。
+
 视觉复核 p.86、p.87、p.88、p.89、p.90、p.92 的窗口标题栏，全部是：
 
 ```
@@ -4969,6 +5000,15 @@ p.86–92 的窗口显示库名 **`Dunn4eChps10-11withqueries`**；前段截图�
 新库的定位和讲义没交代清楚的地方先说明白了，下面七节逐个拆解这七个会计查询，第一个就是全讲最重要的一页——应收账款。
 
 ---
+
+**🎙️ 课堂补充**（S22 `04:12`–`06:34`；B · 概述，非逐屏复现）
+
+老师从核心销售/收款例库转到包含 Sales Call、Sale Order、Sale Return 的扩展模型，说明可问更多管理问题。口语中 Fulfillment 连线和 cash development 的 ASR 不稳定，关系名称仍以 M05 原模型为准，不把错词复制为正式定义。
+
+*"we can do much more complicated analysis"*（S22 `04:47`）
+
+中文：本段只确认课堂提到了这一用途；完整实现、业务条件及已知结果仍分别按正文来源判断。
+
 
 #### 2.24.1 应收账款余额与 Nz() 函数（讲义 p.86）
 
@@ -5154,11 +5194,13 @@ Nz(8455, 0) - Nz(Null, 0) - Nz(140, 0)
 
 **这就是 REA 相对复式记账的核心卖点，而它需要的全部技术就是本讲教的查询。**
 
-**🎙️ 课堂补充**（10 月 21 日；当前三源未覆盖 p.85–92；D · 未录到）
+**🎙️ 课堂补充**（S22 `06:34`–`07:15`；C · 本次明确略过本页）
 
-没有获得扩展 REA 数据库七个会计查询的这次课堂讲解。图上给定结果和正文的参考实现仍须分开，不能因前面有上机录音就把七题推断升级成官答。
+老师刚进入账户余额查询，随即说忽略这一页并从下一页采购减付款减退回开始。p.86 的应收标题与 p.87 的应付公式共同定位这个跳页，非仅按时间空档猜测。
 
-❓ p.86–92 的缺失设计、表达式和数据库事实仍按 §9 保留限制；本次转录没有消除这些历史缺口。
+*"We ignore this page. We start from next one."*（S22 `07:07`）
+
+中文：本次不展开该页，接下一页。应收/Nz 的完整讲义讲解仍保留；这不是永久免考声明，也不证明其他课堂从未讲过本页。
 
 **⚠️ 常见误解**
 
@@ -5278,6 +5320,15 @@ Nz([SumPurchaseReturnsThroughEndDate.SumOfDollarAmount])
 **英文参考答案（笔记自拟，U16）**
 
 > The displayed purchases, purchase-related disbursements, and purchase returns give accounts payable of 35,270 minus 28,450 minus 480, or 6,340 in the source monetary units. This verifies the displayed arithmetic, not the missing transaction details or upstream queries.
+
+**🎙️ 课堂补充**（S22 `07:12`–`09:27`；B · 概述，非逐屏复现）
+
+应付要从采购中减去已付现金，再减供应商认可的退回。退回减少了仍须支付的采购金额，而不是再加一次采购。老师侧重业务公式，没有重做全部前置查询。
+
+*"for the detailed steps, we don't have to bother."*（S22 `08:31`）
+
+中文：本段只确认课堂提到了这一用途；完整实现、业务条件及已知结果仍分别按正文来源判断。
+
 
 #### 2.24.3 畅销与滞销存货（讲义 p.88）
 
@@ -5401,6 +5452,15 @@ MIN1 和 TTP12 的销售额是**空的**，不是 \$0.00。因为：
 **英文参考答案（笔记自拟，U17）**
 
 > For May 1–7, 2015, the displayed result identifies BIS1 as the highest seller and MIN1 and TTP12 as tied for the lowest. For May 8–14, MIN1 is highest and all the other displayed items tie for the lowest only if complete records establish that their Null totals mean no sales. Without that completeness condition, the Null totals remain unknown; taking MIN over non-null values alone would miss the intended zero-sales comparison.
+
+**🎙️ 课堂补充**（S22 `09:32`–`09:39`；B · 概述，非逐屏复现）
+
+老师点名系统可识别最高和最低销售额商品，属概述，未在录音中逐项核两周结果。原表、零销售保留与 Null 限制继续按本节自学。
+
+*"Identify the highest and the lowest selling inventory"*（S22 `09:34`）
+
+中文：本段只确认课堂提到了这一用途；完整实现、业务条件及已知结果仍分别按正文来源判断。
+
 
 #### 2.24.4 存货加权平均单位成本（讲义 p.89）
 
@@ -5626,6 +5686,15 @@ flowchart TD
 
 > Divide each item’s displayed purchase cost total by its displayed purchase quantity. The source results are 20 for BIS1, 54.25 for MIN1, and 10 for TTP12 per unit, for May 1–31, 2015. These are management reference figures marked not for Financial Statement use; the missing purchase detail and accounting policy prevent certification as financial-statement inventory costs.
 
+**🎙️ 课堂补充**（S22 `09:39`–`09:57`；B · 概述，非逐屏复现）
+
+老师概述加权平均单位成本需要总成本和权重，没有展开各采购行。这里不能把每件标准成本、实际销售价和采购加权成本互换。
+
+*"we need the total cost and we need to calculate the weight."*（S22 `09:48`）
+
+中文：本段只确认课堂提到了这一用途；完整实现、业务条件及已知结果仍分别按正文来源判断。
+
+
 #### 2.24.5 订单履行天数（讲义 p.90）
 
 ⚠️ **讲义 p.90 有两张截图 + 两个蓝底说明**。视觉复核结果：
@@ -5711,7 +5780,7 @@ DaysToFill: DateDiff("d", [OrderDate], [Date])
 
 💡 **按客户计算之前，先补齐合法上游身份**：本页 Step 1 输出只展示 OrderDate、Date、DaysToFill，没有 CustomerID，不能直接从它拖出客户字段。若原数据库可得，先核订单键和订单所属客户，再在 Step 1 保留客户身份，或按唯一订单键补回客户；核每个订单/履行记录只出现应有次数后，才按客户 `Group By` 并对 DaysToFill 取 `Avg`。
 
-还要先选分母粒度：每条交付、每张订单首次发货、或每张已交齐订单。它们可能给不同平均，不能因多连一张客户表就悄悄复制订单。本地缺原 Step 1 和扩展库，所以这是有条件的参考改造，不声称已能在现输入对象上直接完成。下方完整补例分别演示 3、2、4 天。
+还要先选分母粒度：每条交付、每张订单首次发货、或每张已交齐订单。它们可能给不同平均，不能因多连一张客户表就悄悄复制订单。本批已有扩展表，但原 Step 1 定义与对应参数仍待核，所以这是有条件的参考改造，不声称已能在现输入对象上直接完成。下方完整补例分别演示 3、2、4 天。
 
 **⚠️ 2.5 天这个数字要小心解读（💡 笔记补充）**
 
@@ -5743,6 +5812,15 @@ DaysToFill: DateDiff("d", [OrderDate], [Date])
 **英文参考答案（笔记自拟，U19）**
 
 > The displayed second step averages DaysToFill and returns 2.5 days. Its upstream records, sample size, and fulfilment grain are not supplied, so this is the stated result rather than a reconstructed order-level calculation. A customer-level average first requires a verified customer key and a defined order or fulfilment grain.
+
+**🎙️ 课堂补充**（S22 `10:01`–`10:19`；B · 概述，非逐屏复现）
+
+老师把订单到实际销售/交付的间隔用于了解交付效率；未给出原 Step 1、分母粒度或完整交付明细。原 2.5 天仍是课件给定结果。
+
+*"to check how quickly the company can put their orders"*（S22 `10:07`）
+
+中文：本段只确认课堂提到了这一用途；完整实现、业务条件及已知结果仍分别按正文来源判断。
+
 
 #### 2.24.6 找出没有正面反馈的存货（讲义 p.91）
 
@@ -5871,6 +5949,15 @@ flowchart TD
 
 > Preserve all inventory items, outer join them to the positive-reaction set, and select items whose matching non-null identity key is Null after the join. This identifies no recorded positive reaction, which does not necessarily mean a negative reaction. The actual item IDs cannot be determined because the source supplies neither the result nor the complete upstream data.
 
+**🎙️ 课堂补充**（S22 `10:30`–`10:59`；B · 概述，非逐屏复现）
+
+老师说明无正面反馈可作为检视产品线的线索。该查询本身不能证明商品应淘汰；还要核是否推介、反馈完整性及其他原因，正文中的边界继续有效。
+
+*"there is no positive reaction at all"*（S22 `10:30`）
+
+中文：本段只确认课堂提到了这一用途；完整实现、业务条件及已知结果仍分别按正文来源判断。
+
+
 #### 2.24.7 每个销售员的拜访次数（讲义 p.92）
 
 ⚠️ **讲义 p.92 有一张截图 + 一个蓝底说明**。视觉复核结果：
@@ -5958,7 +6045,7 @@ flowchart TD
 
 **所以呢**
 
-七类问题的给定画面、参考思路与可复算部分已展开。p.86–92 的扩展库和部分上游定义仍缺；这不等于七个原查询均已独立复现。下面的图、速查与自测帮助核对已有机制，原库复现单列待源。
+七类问题的给定画面、参考思路与可复算部分已展开。p.86–92 的扩展附件已得，原保存查询定义、参数与截图同版性仍待核；这不等于七个原查询均已独立复现。下面的图、速查与自测帮助核对已有机制，原库复现单列待源。
 
 ---
 
@@ -6021,11 +6108,217 @@ flowchart TD
 E99已匹配Apr30，右侧不是Null、日期条件又不满足，行被淘汰；只有先筛Call才能产生它的无期内匹配Null行。A有两交付行但只一订单，按关联行均值会在分母重复；要问订单完整履行先求每订单完成时点再Avg。部分交付有Fulfillment但仍欠量；NULL替0前必须知道来源是无业务而非缺录。
 </details>
 
-**停止与限制**：当前未打开用户DB、未运行Access/ACE，SQLite验证只覆盖公开数据抄源及新增有限例，不能认证全部Access日期/Null/IIf行为。原p.86–92缺前置库/明细继续明确待核；不把图齐、SQL可跑当全部会计机制正确。
+**停止与限制**：旧修订当时未运行 Access/ACE；本批主流程已用 ACE 只读提取基础库与扩展库，作者用 calc.py 独立复算基础库全表。此前 SQLite 验证只覆盖旧有限例，不能认证全部Access日期/Null/IIf行为。原 p.86–92 的前置查询定义、参数及截图同版性继续待核；本批已有 ExampleTables2 扩展表，不能继续说完全没有库；不把图齐、SQL可跑当全部会计机制正确。
 
 **英文参考答案（笔记自拟，U21）**
 
 > The displayed result for May 1–15, 2015 is two calls for E23, one for E26, and zero for E30. A reference implementation filters calls to the period before outer joining all salespeople and counts a non-null call ID. The source design is missing, so this is a supported reconstruction rather than a verified original query.
+
+**🎙️ 课堂补充**（S22 `10:59`–`11:27`；B · 概述，非逐屏复现）
+
+老师以特定期间的拜访次数辅助看销售员工作；没有讲原查询设计。次数是过程线索，不能单独证明有效性、成功或失职，仍需结合客户和业务结果。
+
+*"the number of the sales calls he or she made during a specific time period"*（S22 `11:15`）
+
+中文：本段只确认课堂提到了这一用途；完整实现、业务条件及已知结果仍分别按正文来源判断。
+
+
+### 2.25 AI 查询练习：先追踪原表，再核生成答案（课堂附件六题）
+
+这六题问同一基础例库的人员、商品、时间和汇总信息。输入是 `ExampleTables1.accdb` 的八张表；题面来自 `AI in REA ACCESS database.docx`。金额沿原数据单位，不补币种。以下英文原题完整保留，没有选项；中文过程与英文参考答案是笔记对原表的复算，不能称为 AI 工具的独立实测。
+
+**🎙️ 课堂补充**（S22 `11:48`–`22:39`；S23 `00:00`–`15:45`；A · 六题演示与核验）
+
+老师让学生使用自己的 AI 工具，上传示例表并提出问题。课堂演示使用 Grok，先查看生成答案，再返回原表核关键链路；后几题为节时没有逐行核完。AI 幻觉（AI hallucination）在此指生成看似合理但错误或无证据的内容。
+
+*"verify the accuracy of the AI-generated output."*（S23 `09:15`）
+
+中文：要核验 AI 生成答案的准确性。两个模型给出同样结果只说明一致，不能替代原始表、正确连接和算术证据。本节补全六题所需核算，复算脚本为本批 `author-ac6761/calc.py`；该脚本读取已通过 ACE 只读取得的原表记录，没有修改 Access 库。
+
+先想清三件事：一行代表什么、用哪个键连表、最后要保留明细还是求总数。Sale 是一笔销售，Stockflow 是一笔销售中的一种商品，Duality 是一笔销售与一次收款的分配。不同粒度直接拼完就相加，可能把同一销售金额重复计算。
+
+#### 2.25.1 Q1：S-5 的出纳与销售员是谁？
+
+**英文原题（DOCX）**：
+
+> Which specific cashier processed the cash receipt for Sale #S-5, and who was the salesperson who originated that sale?
+
+中文读题：找处理 S-5 对应收款的出纳，以及发起这笔销售的销售员。这是两种角色，不把销售员当收款出纳。
+
+1. 在 Sale-CashRecDuality 中筛 SaleNumber 为 S-5，得到 RA-4，Applied 为 16,600。
+2. 用 RA-4 去 CashReceipt 的 RemittanceAdviceNumber 找同一行，读 CashierNumber，得到 E-39。
+3. 回 Sale 的 S-5 行，读 SalesRepNumber，得到 E-10。
+
+下表每行是一条查询路径；箭头读作“用此键查到下一条记录”，不是先后发生的业务事件。
+
+| 要找的角色 | 原表追踪链 | 结果 |
+|---|---|---|
+| 收款出纳 | S-5 → Duality 的 RA-4 → CashReceipt | E-39 |
+| 销售员 | S-5 → Sale.SalesRepNumber | E-10 |
+
+例如第一行必须先经 Duality 找 RA-4，因为 CashReceipt 没有直接存 SaleNumber。基础例库没有 E-39 的出纳姓名主数据，因此答案止于编号；不拿扩展例库中另一个人的姓名补上。
+
+课堂核到同一链（S22 `17:20`–`19:28`）：*"So for the RA4, cashier number is E39, right?"*（S22 `18:34`）。中文：RA-4 的出纳号为 E-39。
+
+**English reference answer（原表复算）**：For S-5, the allocation table identifies RA-4. RA-4 was processed by cashier E-39, while Sale S-5 records salesperson E-10. The supplied basic database does not establish the cashier's personal name.
+
+#### 2.25.2 Q2：S-2 卖了什么、多少、成本与售价如何、谁买的？
+
+**英文原题（DOCX）**：
+
+> What exact quantities and physical items of inventory were sold under Sale #S-2, what was their standard cost versus actual selling price, and who purchased them?
+
+中文读题：须分别回答商品身份、数量、标准单位成本、实际销售单价和购买客户。“标准成本”和“成交价”不是同一字段。
+
+1. 用 S-2 筛 Stockflow，得到 A-6、数量 2、ActualPrice 5,000。
+2. 用 A-6 查 Inventory，读出 Extra Large A 与 StdUnitCost 3,600。
+3. 用 S-2 查 Sale，得到客户 C-2；再用 C-2 查 Customer，得到 Mick。
+
+每行是一种单位口径；数量为 2 件，金额仍沿源库，不补币种。
+
+| 对象或口径 | 原字段 | 本题值 |
+|---|---|---|
+| 商品 | Inventory.ItemID / Description | A-6 / Extra Large A |
+| 数量 | Stockflow.Quantity | 2 |
+| 每件标准成本 | Inventory.StdUnitCost | 3,600 |
+| 每件实际售价 | Stockflow.ActualPrice | 5,000 |
+| 客户 | Sale.CustomerNumber → Customer.Name | C-2 / Mick |
+
+读“每件实际售价”一行：每件 5,000，所以两件的销售总额是 10,000，与 Sale.Amount 相符。若另算两件标准成本，是 7,200；不能把 3,600 误当两件合计，也不能由标准成本直接认证实际销售毛利。
+
+课堂从 S22 `19:48` 讲到其末尾 S22 `22:39`，S23 `00:00` 继续核 A-6；S23 `01:08` 核 C-2 的姓名。两源内容支持先后，但没有共同声轨锚点，缺漏长度未知。
+
+*"Inventory table for A6, okay, so the description is extra large A, and the standard unit cost is 3,600, which is correct."*（S23 `00:00`）
+
+中文：存货表 A-6 的描述为 Extra Large A，标准单位成本为 3,600。原键值以数据库书面拼写为准。
+
+**English reference answer（原表复算）**：S-2 sold two units of A-6, Extra Large A. The standard unit cost is 3,600, compared with an actual selling price of 5,000 per unit. Customer C-2, Mick, bought them; the sales total is 10,000.
+
+#### 2.25.3 Q3：每笔销售到每次对应收款隔几天？有分期分配吗？
+
+**英文原题（DOCX）**：
+
+> What is the exact time lag (in days) between a sale event and its corresponding cash collection event for each customer, and are partial payments being applied to specific invoices?
+
+中文读题：题目同时问“相隔天数”和“是否将部分付款分配到指定发票”。一个客户可能有多笔销售，一笔销售也可能收多次，不能给客户一个未定义的平均账期冒充完整答案。
+
+先用 Duality 的 SaleNumber 连 Sale，再用 RemittanceAdviceNumber 连 CashReceipt；每条分配保留自己的两个日期。按日历日期做“收款日减销售日”，同日为 0 天。下表每行是一条销售—收款分配；Applied 是分给该销售的金额，不是整张收款通知金额。
+
+| 客户 | 销售 → 收款 | 销售日 → 收款日（2014 年） | 天数 | Applied |
+|---|---|---|---:|---:|
+| C-1 Bill | S-1 → RA-3 | 07-01 → 08-15 | 45 | 7,200 |
+| C-2 Mick | S-2 → RA-1 | 07-21 → 07-25 | 4 | 1,666 |
+| C-2 Mick | S-2 → RA-5 | 07-21 → 08-25 | 35 | 1,666 |
+| C-2 Mick | S-4 → RA-2 | 07-26 → 07-26 | 0 | 10,000 |
+| C-5 Ron | S-3 → RA-4 | 07-22 → 08-15 | 24 | 16,000 |
+| C-5 Ron | S-5 → RA-4 | 07-31 → 08-15 | 15 | 16,600 |
+
+以第一行复做：7 月 1 日到 8 月 1 日是 31 天，再到 8 月 15 日为 14 天，合计 45 天。S23 `08:19`–`09:05` 的课堂只挑这笔核；其余五行是笔记按原表补算，不冒称老师逐笔确认。
+
+C-3 Keith 的 S-6、C-4 Charlie 的 S-7 没有收款分配。因此只能报“当前例表未记录对应收款，已实现收款账期不可计算”，不能填 0 天或虚构收款日。要算等待天数还须另定截至日。
+
+部分付款的直接证据是 S-2：销售 10,000，RA-1 与 RA-5 各分配 1,666，累计 3,332，剩余 6,668。公式只在本例记录、无其他调整的限定下成立：
+
+$$\text{S-2 剩余款项}=10,000-(1,666+1,666)=6,668.$$
+
+课堂 S23 `10:05`–`10:43` 也指出两次付款合计仍少于销售额。RA-4 则展示另一方向：一张收款 32,600 同时支付 S-3 的 16,000 和 S-5 的 16,600，不能将 32,600 各减一次。
+
+**English reference answer（原表复算）**：The sale-to-receipt lags are 45 days for C-1/S-1; 4 and 35 days for C-2/S-2 and 0 days for C-2/S-4; and 24 days for C-5/S-3 and 15 days for C-5/S-5. C-3 and C-4 have no recorded matching receipts, so their realised collection lags are unavailable. Partial payments are allocated to S-2: 1,666 plus 1,666 totals 3,332 against a sale of 10,000, leaving 6,668 under the supplied-record assumptions.
+
+#### 2.25.4 Q4：谁按最低价销售？哪些客户得到该价格？
+
+**英文原题（DOCX）**：
+
+> Which salesperson is selling inventory items at lowest prices, and which customers are receiving these prices?
+
+中文读题：最低价可能指全体销售行的最低单价，也可能指“同一种商品”的最低价。为避免把便宜的小商品和昂贵的大商品混比，先报告两种口径。
+
+全体 13 条 Stockflow 的最低实际单价为 300：A-4，在 S-5，销售员 E-10，客户 C-5 Ron。链路是“最低价商品销售行→Sale 的销售员/客户→Customer 姓名”，不是在 Salesperson 表凭空找 Price 字段。
+
+下表按商品分别取最低实际单价，保留所有并列销售。金额均为每件，未统一不同商品的成本/品质，因此不作绩效排名。
+
+| 商品 | 本商品最低单价 | 销售与销售员 | 获得该价的客户 |
+|---|---:|---|---|
+| A-1 | 2,000 | S-1/E-12；S-3/E-10 | C-1 Bill；C-5 Ron |
+| A-2 | 3,000 | S-5/E-10 | C-5 Ron |
+| A-3 | 1,000 | S-3/E-10 | C-5 Ron |
+| A-4 | 300 | S-5/E-10 | C-5 Ron |
+| A-5 | 3,000 | S-7/E-99 | C-4 Charlie |
+| A-6 | 5,000 | S-2、S-4、S-5，均 E-10 | C-2 Mick；C-5 Ron |
+
+读 A-1：两条成交行同为 2,000，因此 E-12 与 E-10 都保留。若只报一个人，会漏并列。A-3 只有一条已录销售，“最低”仅表示这个有限集合中的最小值，不证明提供了折扣。
+
+课堂 S23 `11:52`–`12:31` 口述 E-10，并明确为节时没有做完全部比较。课堂把低价作为追问原因的线索；本笔记不由低价直接判员工低效。数量折扣、商品组合、成本、合同与授权仍须核。
+
+**English reference answer（原表复算）**：The lowest unit price across all recorded lines is 300 for A-4 in S-5, sold by E-10 to C-5, Ron. This is not a like-for-like performance ranking. Product-level minima also include E-12 and E-10 tied for A-1, and E-99 for A-5; all tied records should be retained.
+
+#### 2.25.5 Q5：按总销售额，最大客户是谁？
+
+**英文原题（DOCX）**：
+
+> Which customer is the largest one with the total sale amount?
+
+中文读题：这里的 largest 由 total sale amount 限定，按客户把 Sale.Amount 求和，不按收款额、笔数或单笔金额排名。
+
+每行是一位客户在全部七笔给定销售中的累计金额；没有额外期间筛选。
+
+| 客户 | 销售额计算 | 总销售额 |
+|---|---|---:|
+| C-1 Bill | 7,200 | 7,200 |
+| C-2 Mick | 10,000 + 10,000 | 20,000 |
+| C-3 Keith | 35,000 | 35,000 |
+| C-4 Charlie | 23,000 | 23,000 |
+| C-5 Ron | 16,000 + 16,600 | 32,600 |
+
+例如 C-5 要合并两笔销售，但合计 32,600 仍低于 C-3 的 35,000，所以最大客户为 C-3 Keith。先在 Sale 按客户汇总即可；若先连到多行 Stockflow 再加 Sale.Amount，会将一笔销售反复计入。
+
+课堂 S23 `13:09`–`13:25` 给出 C-3；ASR 的 case 按 Customer 表校为 Keith。课堂没有逐客户双重核算，表中全部比较由笔记复算。
+
+**English reference answer（原表复算）**：C-3, Keith, is the largest customer by total recorded sales, at 35,000. C-5 totals 32,600, C-4 totals 23,000, C-2 totals 20,000 and C-1 totals 7,200. This ranking uses sales, not receipts.
+
+#### 2.25.6 Q6：按销售金额，哪种商品最畅销？
+
+**英文原题（DOCX，保留原编号）**：
+
+> 6.Which product is the best-selling one with the highest sale amount?
+
+中文读题：best-selling 被 highest sale amount 限定为“销售金额最高”，不等于卖出件数最多。先对每条商品销售行算数量乘实际单价，再按商品把这些行金额相加。
+
+下表每行是一种商品，件数与销售金额分别汇总自同一组 Stockflow 行。
+
+| 商品 | 累计数量 | 累计销售金额 |
+|---|---:|---:|
+| A-1 Small A | 4 | 8,000 |
+| A-2 Medium A | 12 | 41,000 |
+| A-3 Extra Small A | 6 | 6,000 |
+| A-4 Tiny A | 4 | 1,800 |
+| A-5 Large A | 5 | 17,000 |
+| A-6 Extra Large A | 8 | 44,000 |
+
+复做 A-6：S-2、S-4、S-5 各两件乘 5,000，另 S-7 两件乘 7,000；金额合计 10,000 + 10,000 + 10,000 + 14,000 = 44,000。它最高，且与 S23 `14:06`–`14:19` 的课堂口述一致。数量最高却是 A-2 的 12 件；改题目指标就要改排名。
+
+所有商品金额合计 117,800，与七笔 Sale.Amount 合计一致。这是“先横向算行金额，再纵向按商品汇总”的独立对账，不能把 13 条商品行直接称 13 笔销售。
+
+**English reference answer（原表复算）**：A-6, Extra Large A, has the highest sales amount at 44,000, from eight units. Its four line amounts are 10,000, 10,000, 10,000 and 14,000. A-2 leads by quantity at twelve units, so the answer depends on the requested sales-amount measure.
+
+**学习总结与改条件练习（笔记补充）**：找身份沿键追踪，找账期保留每条分配，找排名先定义指标和粒度。若 Q5 改问“已收现金最多的客户”，应在 CashReceipt 按客户汇总，不能继续用 Sale.Amount；本例 C-5 已收 32,600，而 C-3 尚无收款记录，答案会改变。
+
+### 2.26 项目报告与补课：课堂要求的准确范围
+
+**🎙️ 课堂补充**（S23 `15:55`–`20:20`；A · 项目与补课行政）
+
+老师说项目书面报告有五个部分，但这段没有完整重述五部分题面，因此不可凭序号补造内容。当前应对照正式项目说明，分别完成自己的讨论和证据核验。
+
+*"you cannot just ask the AI, then copy-paste the AI-generated output into your written report."*（S23 `16:31`）
+
+中文：不能只问 AI，再把输出直接复制进报告。课堂允许 AI 帮助想思路、整理信息、提供表格或比率；本人仍须验证并用自己的分析组织讨论。S23 `17:50`–`18:36` 特别要求第四、第五部分含核验和自己的观点。二 AI 同答可作交叉线索，不证明答案正确。
+
+篇幅要求（S23 `18:41`–`19:36`）：正文不超过 7 页；参考文献页、封面、目录和附录中的 prompt 不计入正文页数；全部内容转换为单一 PDF。此处不另造截止日期、提交渠道或本人提交状态。
+
+S23 `20:00`–`20:20` 提醒“某个周六”14:00–17:00 补课，地点 AC2 4109，并非当时教室。新源授课日期未核，不能将“this Saturday”换算成具体日历日期或新建确定 DDL。S23 `20:27` 后转入 M08，`20:39` 明确介绍新章。
+
+**English reference summary（笔记自拟）**：The report has five required components, whose full task wording must be checked separately. Do not copy AI output directly. Verify evidence and provide your own discussion. The main text must not exceed seven pages; references, cover, contents and prompt appendices are excluded. Combine the submission into one PDF. The calendar date of the Saturday make-up class remains unverified.
+
 
 ## 3. 一图看懂
 
@@ -7031,7 +7324,7 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 
 ## 8. 讲义页码映射
 
-> **「课堂覆盖」列**：按本次 S19、R1、S21 的独立时钟更新；有讲、明确降权和未录到分开。媒体没有覆盖的页不据此降权。
+> **「课堂覆盖」列**：按 S19、R1、S21、S22、S23 的独立时钟更新；本批新增 S22/S23 不沿用旧三源授课日期。有讲、明确降权和未录到分开。
 > **「页面性质」列**：🖼️ = 纯图页或图占主体（**已逐页视觉复核**）；📕 = 封面页；🚩 = 章节分隔页；文字 = 可从文本提取拿到全部内容。
 > ✅ **全部 92 页在 §2 正文里都有实质讲解**，唯一的例外是 **p.1（封面页）**，已按 [[对抗自检清单]] 第 1 项显式标注。**本讲没有"学习目标页"。**
 
@@ -7106,31 +7399,33 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 | p.67 | §2.23.4 | 🖼️ Show Table，选 Cash | ✅ S21 `05:04`–`07:33`；QBE4 与检查错误 |
 | p.68 | §2.23.4 | 🖼️ 两字段 + Criteria `>=50000` | ✅ S21 `05:04`–`07:33`；QBE4 与检查错误 |
 | p.69 | §2.23.4 | 🖼️ **结果**（1 行 BA-8） | ✅ S21 `05:04`–`07:33`；QBE4 与检查错误 |
-| p.70 | §2.23.5 | 🖼️ Show Table，选 Sale | ❓ S21 `07:47` 只到 QBE5 题目入口，未录执行 |
-| p.71 | §2.23.5 | 🖼️ 三字段 + Criteria **`<> "E-10"`**（⚠️ 带引号，纠正了 p.47） | ❓ S21 `07:47` 只到 QBE5 题目入口，未录执行 |
-| p.72 | §2.23.5 | 🖼️ **结果**（2 行 S-1、S-7） | ❓ S21 `07:47` 只到 QBE5 题目入口，未录执行 |
-| p.73 | §2.23.6 | 🖼️ Show Table，选 Sale | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.74 | §2.23.6 | 🖼️ ⭐ **两条件写同一行 = AND** + 红箭头批注 | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.75 | §2.23.6 | 🖼️ **结果**（3 行；⚠️ S-5 因 `<` 严格小于被排除） | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.76 | §2.23.7 | 🖼️ Show Table，选 Sale | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.77 | §2.23.7 | 🖼️ ⭐ **两条件写不同行 = OR** + 两条红箭头批注 | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.78 | §2.23.7 | 🖼️ **结果**（6 行；⚠️ S-5、S-6 靠销售员条件入选） | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.79 | §2.23.8 | 🖼️ Show Table，选 Sale | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.80 | §2.23.8 | 🖼️ **只拖两个字段** + 批注 "Bring only the fields you need" | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.81 | §2.23.8 | 🖼️ BETWEEN 条件 + Date 的 Show 已取消 + 指出 Σ 按钮 | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.82 | §2.23.8 | 🖼️ ⭐ Total 行出现，下拉展开（12 个选项），`Where` 高亮 + 批注 | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.83 | §2.23.8 | 🖼️ 第二个下拉展开，`Sum` 高亮 | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.84 | §2.23.8 | 🖼️ **结果**（`SumOfAmount = \$52,600.00`，已验算） | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.85 | §2.24.0 | 🚩 章节分隔页（"Other questions related to an expanded **RAE** model"）⚠️ RAE 应为 REA | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.86 | §2.24.1 | 🖼️ ⭐ **全讲最重要的一页**：应收账款 + `Nz()` + 黄底「Now it Works!!」 | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.87 | §2.24.2 | 🖼️ 应付账款（与 p.86 完美镜像，表达式已逐字读出） | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.88 | §2.24.3 | 🖼️ 两周对比的畅销/滞销存货（外连接） | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.89 | §2.24.4 | 🖼️ 加权平均单位成本（⚠️ 标题注明 not for Financial Statement use） | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.90 | §2.24.5 | 🖼️ 平均订单履行天数（`AvgOfDaysToFill = 2.5`） | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.91 | §2.24.6 | 🖼️ ⭐ 外连接 + `Is Null` 反连接（全讲唯一能看到外连接箭头的截图） | ❓ 当前三源未获得对应课堂，不可降权 |
-| p.92 | §2.24.7 | 🖼️ 每人销售拜访次数（⭐ E30 = **0**） | ❓ 当前三源未获得对应课堂，不可降权 |
+| p.70 | §2.23.5 | 🖼️ Show Table，选 Sale | ✅ S22 `00:25`–`01:15` 简讲原条件，未重做逐屏 |
+| p.71 | §2.23.5 | 🖼️ 三字段 + Criteria **`<> "E-10"`**（⚠️ 带引号，纠正了 p.47） | ✅ S22 `00:25`–`01:15` 简讲原条件，未重做逐屏 |
+| p.72 | §2.23.5 | 🖼️ **结果**（2 行 S-1、S-7） | ✅ S22 `00:25`–`01:15` 简讲原条件，未重做逐屏 |
+| p.73 | §2.23.6 | 🖼️ Show Table，选 Sale | ✅ S22 `01:15`–`02:15` 简讲 AND，原日期边界以课件为准 |
+| p.74 | §2.23.6 | 🖼️ ⭐ **两条件写同一行 = AND** + 红箭头批注 | ✅ S22 `01:15`–`02:15` 简讲 AND，原日期边界以课件为准 |
+| p.75 | §2.23.6 | 🖼️ **结果**（3 行；⚠️ S-5 因 `<` 严格小于被排除） | ✅ S22 `01:15`–`02:15` 简讲 AND，原日期边界以课件为准 |
+| p.76 | §2.23.7 | 🖼️ Show Table，选 Sale | ✅ S22 `02:15`–`02:50` 简讲 OR，不同行 |
+| p.77 | §2.23.7 | 🖼️ ⭐ **两条件写不同行 = OR** + 两条红箭头批注 | ✅ S22 `02:15`–`02:50` 简讲 OR，不同行 |
+| p.78 | §2.23.7 | 🖼️ **结果**（6 行；⚠️ S-5、S-6 靠销售员条件入选） | ✅ S22 `02:15`–`02:50` 简讲 OR，不同行 |
+| p.79 | §2.23.8 | 🖼️ Show Table，选 Sale | ✅ S22 `02:54`–`04:12` 简讲 BETWEEN/Totals/SUM |
+| p.80 | §2.23.8 | 🖼️ **只拖两个字段** + 批注 "Bring only the fields you need" | ✅ S22 `02:54`–`04:12` 简讲 BETWEEN/Totals/SUM |
+| p.81 | §2.23.8 | 🖼️ BETWEEN 条件 + Date 的 Show 已取消 + 指出 Σ 按钮 | ✅ S22 `02:54`–`04:12` 简讲 BETWEEN/Totals/SUM |
+| p.82 | §2.23.8 | 🖼️ ⭐ Total 行出现，下拉展开（12 个选项），`Where` 高亮 + 批注 | ✅ S22 `02:54`–`04:12` 简讲 BETWEEN/Totals/SUM |
+| p.83 | §2.23.8 | 🖼️ 第二个下拉展开，`Sum` 高亮 | ✅ S22 `02:54`–`04:12` 简讲 BETWEEN/Totals/SUM |
+| p.84 | §2.23.8 | 🖼️ **结果**（`SumOfAmount = \$52,600.00`，已验算） | ✅ S22 `02:54`–`04:12` 简讲 BETWEEN/Totals/SUM |
+| p.85 | §2.24.0 | 🚩 章节分隔页（"Other questions related to an expanded **RAE** model"）⚠️ RAE 应为 REA | ✅ S22 `04:12`–`06:34` 扩展模型回顾 |
+| p.86 | §2.24.1 | 🖼️ ⭐ **全讲最重要的一页**：应收账款 + `Nz()` + 黄底「Now it Works!!」 | ⏭️ S22 `07:07` 明确忽略本页，本次不展开；非永久免考 |
+| p.87 | §2.24.2 | 🖼️ 应付账款（与 p.86 完美镜像，表达式已逐字读出） | ✅ S22 `07:12`–`09:27` 业务公式，详细步骤未展开 |
+| p.88 | §2.24.3 | 🖼️ 两周对比的畅销/滞销存货（外连接） | ✅ S22 `09:32`–`09:39` 一句点名，未逐项核结果 |
+| p.89 | §2.24.4 | 🖼️ 加权平均单位成本（⚠️ 标题注明 not for Financial Statement use） | ✅ S22 `09:39`–`09:57` 概述成本与权重 |
+| p.90 | §2.24.5 | 🖼️ 平均订单履行天数（`AvgOfDaysToFill = 2.5`） | ✅ S22 `10:01`–`10:19` 交付效率用途概述 |
+| p.91 | §2.24.6 | 🖼️ ⭐ 外连接 + `Is Null` 反连接（全讲唯一能看到外连接箭头的截图） | ✅ S22 `10:30`–`10:59` 反馈与产品线概述 |
+| p.92 | §2.24.7 | 🖼️ 每人销售拜访次数（⭐ E30 = **0**） | ✅ S22 `10:59`–`11:27` 拜访次数用途概述 |
 
-> ✅ **全部 92 页已覆盖。**
+> ✅ **全部 92 页在正文保留。**
+
+**课堂覆盖统计（92 页）**：✅ 84 页已有讲解或概述记录；⏭️ 2 页（p.44 限定基础题型降权，p.86 本次略页）；❓ 5 页（p.19–23 完整一对多操作未录到）；封面 1 页。概述不等于逐屏执行，表中逐页标明。另 §2.25 六题与 §2.26 行政无讲义对应页。
 > **例外声明**：仅 **p.1** 为封面页，只登记不展开（[[对抗自检清单]] 第 1 项允许的两类例外之一）。**本讲无学习目标页。**
 > **p.2、p.29、p.85** 三页是章节分隔页，**不属于允许的例外类别**，因此都在正文里有实质讲解（§2.1、§2.7.1、§2.24.0 各自交代了它切分出什么、包含哪些页）。
 
@@ -7154,18 +7449,34 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 | S21 | QBE4纠错 | S21 `05:04`–`07:33` | 149 秒 |
 | S21 | QBE5入口及Quiz2上传 | S21 `07:47`–`09:17` | 90 秒 |
 
+**新增来源时间分配**（`calc.py` 同类时间差口径，保留独立时钟，不合成整堂课）：
+
+| 来源 | 内容 | 区间 | 长度 |
+|---|---|---|---:|
+| S22 | Query 5–8 回顾 | `00:00`–`04:12` | 252 秒 |
+| S22 | 扩展模型、略页、用途概述 | `04:12`–`11:48` | 456 秒 |
+| S22 | 上传、自试与 Q1/Q2 | `11:48`–`22:39` | 651 秒 |
+| S23 | Q2 续讲、Q3–6、核 AI 输出 | `00:00`–`15:55` | 955 秒 |
+| S23 | 项目要求与补课提醒 | `15:55`–`20:27` | 272 秒 |
+| S23 | → M08 §2 | `20:27`–`01:46:24` | 5,157 秒 |
+
+S22 三段覆盖源内 1,359 秒；S23 前两段为本篇 1,227 秒。区间含等待/休息，数字不代表纯授课时长。末一行只是跨篇索引。
+
 ## 9. 延伸与勘误
 
-### 9.1 课件有但课上略过
+### 9.1 课件有但课上略过（⏭️ 可降优先级）／ ❓ 录音没覆盖（不可降）
 
 | 页码／内容 | 判定 | 证据与处理 |
 |---|---|---|
 | p.19–23 一对多实操 | ❓ 没有完整对应 | S19 建第二张表后已转多对多，不能倒推前五页逐项讲过 |
 | p.44 外连接 SQL | ⏭️ 当前基础题型降权 | R1 `01:10` 明说可忽略；完整自学机制保留 |
-| p.70–72 Query 5 | ❓ 只有题目入口 | S21 `07:47` 后转上传 Quiz 2，未获后续执行 |
-| p.73–92 后续查询与会计应用 | ❓ 本次未录到 | S21 无正式下课语，不能写成教授略过／永久免考 |
+| p.70–84 Query 5–8 | ✅ 新源补齐简讲 | S22 `00:25`–`04:12`；不能称重新逐屏创建 |
+| p.86 应收与 Nz | ⏭️ 本次略页 | S22 `07:07` 明说从下一页开始；完整自学内容保留 |
+| p.87–92 细节 | ✅ 业务公式/用途概述，原详细步骤仍未展开 | S22 `07:12`–`11:27`；`08:31` 不深究详细步骤只描述本次讲法 |
 
-### 9.2 课上讲了但课件没有
+### 9.2 课上讲了但课件没有（🎙️ 最高价值清单）
+
+本批前三项：六道 AI 查询的键链与逐表核验（§2.25）、AI 幻觉要求回原始证据（S23 `09:10`–`09:42`）、项目正文 7 页/单 PDF 及不得直接复制 AI（§2.26）。旧课堂增量继续保留如下。
 
 每行是一项课堂增量，区间长度含操作停顿，按本批脚本时间差计算；不合并成课堂总长。
 
@@ -7281,6 +7592,13 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 
 ### 9.5 待核对
 
+**新增转录登记**：S22 为 164 段，`00:00`–`22:39`，无时序倒退；`12:12`→`15:53` 空档 3:41，前后是 AI 上传/操作安排与让学生自试，判断为课堂操作等待线索，不能证实每秒无漏录。首句已在回顾，末尾仍在 Q2，缺完整首尾。S23 为 948 段，`00:00`–`01:46:24`，无倒退；`01:42`→`06:37` 空档 4:55，前句要求自行试题、后段讲评，支持练习等待而非可确定内容丢失。S23 末 `01:46:24` 有告别，但源首继续 Q2，因此仍不称完整课堂。两源接缝长度未知，不能相加当整堂实长。
+
+**新增 ASR 校词**：IEA/AE→REA（扩展模型语境）；success→Access；Glock/grog/broker→Grok（课堂工具名）；make/mic→Mick、case→Keith（基础 Customer 表）；6,349 的口述/识别与 p.87 6,340 不一致，按原截图三项复算得 6,340，不改原转录。S22 `06:22` 的 Fulfillment 对象错乱以 M05 正式模型为准，不造新关联。
+
+**日期与行政缺口**：新源授课日、周六补课日历日期、项目五部分完整题面/截止/本人提交仍须正式资料核；没有据微信或文件日期推定。
+
+
 | # | 事项 | 说明 |
 |---|---|---|
 | 1 | ✅ **M04 的小节锚点已补** | §1.1 的 M04 引用已换成标题原文锚点，涵盖 REA 动机、三层模型、UML、主外键、参照完整性与五步转换法。M04 讲转换规则，本讲在 Access 中操作；正式发布前由发布者核目标标题仍一致。 |
@@ -7288,7 +7606,7 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 | 3 | **`Nz()` 表达式的第三项** | 当前 PPTX 已取得：Zoom 框仍截断，框外可见销售退回汇总字段；完整第三项表达式仍按对称结构给参考推断。需原查询定义才能核其精确写法，不再把“讲义源文件未取得”当缺口 |
 | 4 | **p.91 的查询结果** | 讲义只给了设计视图，没给结果。**六种商品里哪几种没有正面反馈，无法确认** |
 | 5 | **p.92 的查询设计视图** | 讲义只给了结果。本笔记根据 `CountOfSalesCallID` 这个列名反推出用的是外连接 + `Count([SalesCallID])`，标了 💡 笔记推断 |
-| 6 | **p.86–p.92 的 Step 1–3** | 七个会计查询的前置步骤全部缺失，本笔记根据查询名反推。**若拿到 `Dunn4eChps10-11withqueries.accdb` 可完全核实** |
+| 6 | **p.86–p.92 的 Step 1–3** | 七个会计查询的前置步骤全部缺失，本笔记根据查询名反推。本批已有 ExampleTables2 的 31 张表；需继续核原保存查询、参数与截图同版性，不能承诺仅凭同名文件即可完全核实 |
 | 8 | **双链锚点的写法（全库问题）** | 本笔记用 **Obsidian 原生写法** `[[文件#完整标题文字\|显示名]]` —— Obsidian 按**标题原文**匹配，可以正常解析。早期候选曾诊断 M05 使用 GitHub 式 slug；当前跨篇链接已按 Obsidian 标题原文或文件级回指修正。正式 vault 仍由发布者做一次链接核对 |
 | 7 | **本讲当堂 Quiz 2** | 当前 Quiz 2.docx 已得：E-10 等于查询、三列、保存 QueryA，原题全文与解析见 §2.23.9。截止、分值、本人是否提交仍未知；题定发送步骤不构成本次执行授权 |
 
@@ -7305,7 +7623,7 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 具体薄弱点：
 - **p.86 的 `Nz()` 表达式第三项是推断的**（Zoom 框被截断）
 - **p.88、p.90、p.91、p.92 的设计视图全部或部分缺失**，连接类型、Total 行设置都是从结果反推的
-- **新数据库（`Dunn4eChps10-11withqueries`）的完整表结构完全不知道**，本笔记只能列出截图里出现过的表名和字段名
+- **原截图库与本批 ExampleTables2 的同版性尚未确认；已取得扩展附件 31 张表和字段，原保存查询仍须核**，本笔记只能列出截图里出现过的表名和字段名
 
 **次弱的是 §2.22（横向计算，p.53）** —— 讲义只给了一句定义，本笔记的三个例子**全部是自己编的**（虽然用的是讲义自己的数据）。
 
@@ -7337,12 +7655,15 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 
 **本次来源与缺口**：S19 原始 527 段跨 M05/M06，本讲从 `09:30` 切章后开始；R1 原始 207 段，仅前 130 段课堂可公开，最后教师语句始于 `15:57`、约在 15:58 结束（词末时间，不是另一个段首定位），公开音频取前 16:00；S21 为 83 段，尾部停在上传附件，没有正式下课语。原始转录、私人片段、媒体时长与校词记录分开保存；ASR 将 Access 识成 XSense/Express，把 SQL/QBE、Sale、Run 及字段名识错，正式拼写以讲义和例表为准。本次没有逐字人工听校，ASR 扫描不等于全音频隐私保证。
 
-**本次反方视角**：后段 p.70–92 仍无课堂回答，原数据库／原查询定义的限制没有因升级材料版本而消失。课堂 `balance exists` 仍是伪 SQL，不能直接运行；本例 Short Text 不可推广为所有数据库 ID 类型。跨设备接缝只有内容顺序证据，没有精确遗漏时长。
+**本次反方视角**：S22 已补 p.70–84 简讲、p.86 明确略页及 p.87–92 概述。六题已从当前基础例表补全复算，但扩展原查询、参数和截图同版性限制仍在；取得 ExampleTables2 不等于全部缺口消失。课堂 `balance exists` 仍是伪 SQL，不能直接运行；本例 Short Text 不可推广为所有数据库 ID 类型。跨设备接缝只有内容顺序证据，没有精确遗漏时长。
 
 ### 9.7 变更记录
 
+
+
 | 日期 | 变更 |
 |---|---|
+| 2026-10-31 | 追加 S22 与 S23 转录的 M06 段，解决后半课堂覆盖并补完整六题、原表复算与项目要求；材料 v1.0 延续，新源授课日未知，新增及受影响教学内容的独立审查已完成；执行证据分别记录，写回与同步状态不由此推定。已得 ExampleTables2 扩展表，原查询与截图同版性仍待核。 |
 | 2026-09-11 | 链接修复：本文件 39 处 Markdown 形式的同文件锚点（`[§x](#slug)` 写法）改为 Obsidian 双链 `[[#标题原文\|§x]]`——Obsidian 按标题原文匹配，GitHub 式小写连字符 slug 一律点不开（对抗自检清单 9b）。只改链接写法，标题与正文未动 |
 | 2026-10-02 | 按简化流程完成机制修复与验收：沿用根代理既有实际图形检查证据（5 张新增/改变图、1 个显示式，解析问题 0）及 `calc.py` / `results.json` 的 SQLite、Decimal 复算结果；本代理未重看图。按 2026-10-02 简化流程验收，未做独立全量 Q/R。SQLite 复算不冒充 Access 原生运行，`IIf` / `Nz` / 用户数据库与缺失查询步骤限制继续保留；原 `status: v0.9`、`transcript: pending` 与来源限制不变。 |
 

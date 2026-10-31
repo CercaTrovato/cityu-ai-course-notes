@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:1050px;margin:20px auto;padding:0 24px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}table{border-collapse:collapse;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;padding:12px}svg{max-width:100%;height:auto}.katex-display{overflow:auto}h2,h3{line-height:1.4}details{border:1px solid #ddd;padding:8px}</style><body><h3>2.9 Chat BI 与 Policy Companion：把来源和规则做成能核对的结果</h3>
+<p>这两个技能分别面向数据判断和政策查阅。它们共同的设计问题是：输出不能只是一句看似有说服力的话，还要让使用者看到它依据什么、哪些问题不能回答。</p>
+<h4>2.9.1 Chat BI：先分清量，再比较，最后才问原因</h4>
+<p>商业智能（Business Intelligence, BI）在这里指把数据整理成支持业务判断的指标和图表。嘉宾的 Chat BI 影片输入市场数据，要求找出哪些市场较不稳定、什么时候发生；工具选择图表、计算文字，并随筛选改写结果（A <code>59:34</code>–<code>01:02:27</code>）。</p>
+<p>影片问题跨段可辨为 <em>"which markets are unsettled and when"</em>（A <code>59:53</code>–<code>01:00:01</code>；ASR 无完整问句标点）。中文题意是比较市场的不稳定程度并定位时间。影片展示结果，但本批无输入表与完整算法，因此只能整理方法，不能独立确认其数值答案。英文参考答复（笔记自拟）：“Compare markets using a stated, comparable measure and locate the relevant dates. The numerical result cannot be reproduced without the data, time windows, and calculation rules.”</p>
+<p>影片提醒石油价格与国债收益率的量纲不同（A <code>01:00:27</code>–<code>01:00:41</code>）。量纲是一个数描述什么，例如价格或利率。不能把不同单位的变化直接比较为“谁更不稳定”。影片改为相对自身常态作比较，但原始表、窗口和计算规则未取得，所以本稿不能复算其中具体峰值或倍数。</p>
+<p>💡 笔记补充：若展示“当前波动是自身常态的多少倍”，必须先说明波动怎样计算、当前与常态各取哪个期间，以及常态是否为零。只有同口径相除，倍数才有可比含义。影片的具体算法未完整录到，不能凭这段解释反推其公式。</p>
+<p>之后影片筛选到信用市场，峰值日期改变，工具同步更新文字（A <code>01:01:08</code>–<code>01:01:21</code>）。这说明图、筛选和叙述要使用同一份当前数据。数据说某日变化大，只支持“何时变化”；要解释“为什么”，还需要额外因果证据。影片在追问原因时拒绝猜测，正是这条边界（A <code>01:01:21</code>）。</p>
+<p>影片还掠过活动出席、前后得分，以及香港蚊患指数和地图等例子（A <code>01:01:33</code>–<code>01:01:59</code>）。ASR 跳接，具体表与例子边界待核，不能拼成同一数据集。可辨认的演示意图是按数据的形状选择图表，而非要求所有问题都用预先画好的同一种图。</p>
+<p>人看图可以发现异常，但“看起来合理”不能代替复算。检查看到的尖峰、数据筛选和文字结论是否相符，是一项工作；核原始数据、计算规则和因果依据，是另外几项工作。此处为笔记补充，不把嘉宾的可视化建议升级成充分验证。</p>
+<h4>2.9.2 Policy Companion：把适用条件接到原文段落</h4>
+<p>政策可能很长。只让模型概述全文，使用者仍不知道当前项目适用哪条义务。Policy Companion 影片先把上传文件整理成可视导览，再通过若干问题分流，列出适用义务，并给原文段落引用（A <code>01:02:33</code>–<code>01:03:51</code>）。</p>
+<p>影片中的完整示例问句是：</p>
+<blockquote>
+<p><em>"Say we're planning a client chatbot built on a third-party model."</em>（A <code>01:03:02</code>）</p>
+<p><em>"Does the circular apply, and what do we owe?"</em>（A <code>01:03:07</code>）</p>
+</blockquote>
+<p>中文题意：计划采用第三方模型构建客户 chatbot；上传通函是否适用，若适用须做什么？“what do we owe”在此是承担哪些要求，并不是欠款金额。</p>
+<p>影片给出的结果是进入适用范围且为高风险，并按段落列出相应要求（A <code>01:03:18</code>–<code>01:03:23</code>）。<strong>这是影片给定结果，不是本稿基于通函全文重新核定的合规答案</strong>。原文件版本、全部七个问题和回答均未取得，所以无法独立复核分流是否正确。</p>
+<p>⚪ 学习用参考作答：先确定文件版本和适用主体，再收集模型、用途、客户接触方式等题目所需事实；沿原文条件判断；每项义务附原段落。缺少事实就标待确认。英文参考答案（笔记自拟）：“Check the circular's scope against the actual deployment facts, then link each applicable obligation to its source paragraph. The video result cannot replace an independent check of the full circular and the answers used in triage.”</p>
+<p>影片另问客户是否要获知自己在与 AI 交谈，并宣称原文某段有要求（A <code>01:03:34</code>–<code>01:03:40</code>）。本稿只记录该演示动作，不将其具体段号或每次互动的说法写成现行法律结论。查询到段落是“找到文字”，还要查版本、上下文、适用对象与例外，才可能支持实际决定。</p>
+<p><strong>🎙️ 课堂补充</strong>（A <code>59:34</code>–<code>01:04:30</code>，影片及现场解释）：<em>"So I ask why, and it refuses to guess."</em>（A <code>01:01:21</code>，影片）；<em>"first builds a visual guide"</em>（A <code>01:02:48</code>，原段连续短语）。前者约束因果推断；后者展示查阅方式。两者都不证明结果已经通过独立评测。</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script src="/mermaid.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'neutral'});</script></body>

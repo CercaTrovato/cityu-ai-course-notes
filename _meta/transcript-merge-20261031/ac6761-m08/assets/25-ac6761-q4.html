@@ -1,0 +1,59 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:1050px;margin:20px auto;padding:0 24px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}table{border-collapse:collapse;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;padding:12px}svg{max-width:100%;height:auto}.katex-display{overflow:auto}h2,h3{line-height:1.4}details{border:1px solid #ddd;padding:8px}</style><body><h4>2.25.4 Q4：谁按最低价销售？哪些客户得到该价格？</h4>
+<p><strong>英文原题（DOCX）</strong>：</p>
+<blockquote>
+<p>Which salesperson is selling inventory items at lowest prices, and which customers are receiving these prices?</p>
+</blockquote>
+<p>中文读题：最低价可能指全体销售行的最低单价，也可能指“同一种商品”的最低价。为避免把便宜的小商品和昂贵的大商品混比，先报告两种口径。</p>
+<p>全体 13 条 Stockflow 的最低实际单价为 300：A-4，在 S-5，销售员 E-10，客户 C-5 Ron。链路是“最低价商品销售行→Sale 的销售员/客户→Customer 姓名”，不是在 Salesperson 表凭空找 Price 字段。</p>
+<p>下表按商品分别取最低实际单价，保留所有并列销售。金额均为每件，未统一不同商品的成本/品质，因此不作绩效排名。</p>
+<table>
+<thead>
+<tr>
+<th>商品</th>
+<th style="text-align: right;">本商品最低单价</th>
+<th>销售与销售员</th>
+<th>获得该价的客户</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A-1</td>
+<td style="text-align: right;">2,000</td>
+<td>S-1/E-12；S-3/E-10</td>
+<td>C-1 Bill；C-5 Ron</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td style="text-align: right;">3,000</td>
+<td>S-5/E-10</td>
+<td>C-5 Ron</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td style="text-align: right;">1,000</td>
+<td>S-3/E-10</td>
+<td>C-5 Ron</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td style="text-align: right;">300</td>
+<td>S-5/E-10</td>
+<td>C-5 Ron</td>
+</tr>
+<tr>
+<td>A-5</td>
+<td style="text-align: right;">3,000</td>
+<td>S-7/E-99</td>
+<td>C-4 Charlie</td>
+</tr>
+<tr>
+<td>A-6</td>
+<td style="text-align: right;">5,000</td>
+<td>S-2、S-4、S-5，均 E-10</td>
+<td>C-2 Mick；C-5 Ron</td>
+</tr>
+</tbody>
+</table>
+<p>读 A-1：两条成交行同为 2,000，因此 E-12 与 E-10 都保留。若只报一个人，会漏并列。A-3 只有一条已录销售，“最低”仅表示这个有限集合中的最小值，不证明提供了折扣。</p>
+<p>课堂 S23 <code>11:52</code>–<code>12:31</code> 口述 E-10，并明确为节时没有做完全部比较。课堂把低价作为追问原因的线索；本笔记不由低价直接判员工低效。数量折扣、商品组合、成本、合同与授权仍须核。</p>
+<p><strong>English reference answer（原表复算）</strong>：The lowest unit price across all recorded lines is 300 for A-4 in S-5, sold by E-10 to C-5, Ron. This is not a like-for-like performance ranking. Product-level minima also include E-12 and E-10 tied for A-1, and E-99 for A-5; all tied records should be retained.</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script src="/mermaid.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'neutral'});</script></body>

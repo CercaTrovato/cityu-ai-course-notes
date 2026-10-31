@@ -1,0 +1,25 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:1050px;margin:20px auto;padding:0 24px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}table{border-collapse:collapse;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;padding:12px}svg{max-width:100%;height:auto}.katex-display{overflow:auto}h2,h3{line-height:1.4}details{border:1px solid #ddd;padding:8px}</style><body><h3>2.8 PMO：让会议变成可追溯、可修正的行动</h3>
+<p>会议里产生决定，但会议后常要有人再整理流程、任务、进度和日历。嘉宾的项目管理办公室（Project Management Office, PMO）演示将这段转换交给 AI：输入会议文字，生成多个彼此相关的视图（A <code>51:34</code>–<code>51:57</code>、<code>55:38</code>–<code>59:24</code>）。</p>
+<p>影片中的过程可分为以下动作：</p>
+<ol>
+<li>读取会议记录，抽取步骤、负责人、日期和状态。</li>
+<li>形成流程图、行动跟踪表、甘特图（Gantt chart）和日历。甘特图把任务画在时间线上，标先后依赖；日历侧重某日发生什么。</li>
+<li>为步骤保留来源行，人能查“为什么出现这项任务”。</li>
+<li>发现两个日期冲突时标记，等待人确认，不任选一个。</li>
+<li>人补上缺失控制并指定负责人，其他视图随同一修改更新。</li>
+<li>后续聊天到来后，按新信息更新行动，并保留变更的来源。</li>
+</ol>
+<p>下图沿同一条任务走。箭头是信息处理顺序，冲突分支返回本人确认；“更新视图”不表示已执行真实业务。</p>
+<pre class="mermaid">flowchart TD
+  I[会议文字及后续聊天] --&gt; E[抽取任务 日期 负责人 来源]
+  E --&gt; Q{资料是否冲突或缺关键项}
+  Q -- 是 --&gt; H[标记问题 等人确认]
+  H --&gt; E
+  Q -- 否或已确认 --&gt; S[保存任务状态与来源]
+  S --&gt; V[更新流程 行动表 甘特图 日历]
+  V --&gt; R[人检查并可编辑或拒绝建议]
+</pre>
+<p>影片的日期冲突是“day 40, or day 45”（A <code>57:13</code>–<code>57:23</code>）。这不是本课程作业截止，也不证明任何真实监管报送期限。关键机制是<strong>保留两个相互冲突的说法，并把决定留给有权限的人</strong>。</p>
+<p>💡 笔记补充完整例：两段记录分别说“任务 X 周二完成”和“任务 X 周四完成”。系统先保存两个来源及冲突标记，任务暂不成为已确认排期；负责人选择周四并说明依据后，更新任务及甘特图。若下一条消息只是“能否改到周五”，它是提议，不能未经确认覆盖已定周四。此例解释了从语言到状态的区别，不是现场原始数据。</p>
+<p>影片还让 AI 在流程上提出改进，例如给无人负责的控制补负责人、减少例行人工核对。嘉宾强调提案由团队编辑、拒绝和拥有（A <code>58:27</code>–<code>59:00</code>）。提出建议与批准改变业务，是两种动作。</p>
+<p><strong>🎙️ 课堂补充</strong>（A <code>55:38</code>–<code>59:24</code>，影片演示）：<em>"It doesn't pick one."</em>（A <code>57:22</code>）；<em>"proposals not decisions"</em>（A <code>58:53</code>，原段内连续短语）。A <code>01:05:37</code>–<code>01:05:54</code> 现场声明当日演示资料为虚构或公开来源，不来自其公司，也不代表公司。本稿因此不称此工具已在嘉宾所在银行投产。</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script src="/mermaid.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'neutral'});</script></body>

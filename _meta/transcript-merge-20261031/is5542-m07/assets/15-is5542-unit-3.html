@@ -1,0 +1,13 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:1050px;margin:20px auto;padding:0 24px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}table{border-collapse:collapse;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;padding:12px}svg{max-width:100%;height:auto}.katex-display{overflow:auto}h2,h3{line-height:1.4}details{border:1px solid #ddd;padding:8px}</style><body><h3>2.3 银行为什么不能直接把客户资料交给聊天工具</h3>
+<p>银行处理客户身份、交易及内部决定。错误答案可能影响客户，资料泄露也可能破坏信任。因此，银行要问的不是“AI 能不能写得像”，而是：资料能去哪里、输出由谁检查、谁签字、出错如何控制，以及以后能否重现证据（A <code>08:23</code>–<code>10:08</code>）。</p>
+<p>幻觉（hallucination）是模型生成看似可信、却缺乏依据的内容。它与数据泄露不同：前者是内容不可靠，后者是信息流向了不该接收的人或服务。一个系统可以没有泄露却回答错，也可以答得正确却泄露资料。两类问题要分别控制。</p>
+<p>治理（governance）在这里指决定权限、检查、责任和应急处理的组织安排。它要落到执行过程：谁能用哪些资料；哪种结果须审核；出现异常谁能停止；留下哪些记录。制度文件是依据，真正是否执行仍要看系统和人员的行为。</p>
+<p>A <code>09:04</code>–<code>09:21</code> 的英文检查问句可以直接用作分析入口：</p>
+<blockquote>
+<p><em>"How to check it? Who should check it? Who signs off?"</em>（A <code>09:04</code>）</p>
+<p><em>"And also, like, can we prove it a year later?"</em>（A <code>09:08</code>）</p>
+</blockquote>
+<p>中文意思是：检查什么、谁有能力和职责检查、谁批准，以及过了一年是否还能给出当时的证据。它们是嘉宾的治理提问，不是考试原题或官方答案。</p>
+<p>⚪ 参考作答（笔记补充）：以客户回复为例，先核回复依据的费用表版本，再由有职责的员工批准；保存输入、来源版本、回复和审核记录。若费用表缺失，停止生成确定报价，交人工补充。日志能帮助复查，但保存了日志并不证明回复本身正确。</p>
+<p>英文参考答案（笔记自拟）：“The system needs an approved data boundary, checks against source evidence, a named approver, retained records, and a way to stop or correct an error.”</p>
+<p><strong>🎙️ 课堂补充</strong>（A <code>08:23</code>–<code>10:08</code>，课上展开）：<em>"to us, client trust is everything."</em>（A <code>08:29</code>，从原段截取连续短句）。这段把企业应用的判断对象从模型能力扩展到客户信任及可追责过程。</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script src="/mermaid.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'neutral'});</script></body>

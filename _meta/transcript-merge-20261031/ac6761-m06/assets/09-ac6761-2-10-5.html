@@ -1,0 +1,51 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:1050px;margin:20px auto;padding:0 24px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}table{border-collapse:collapse;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;padding:12px}svg{max-width:100%;height:auto}.katex-display{overflow:auto}h2,h3{line-height:1.4}details{border:1px solid #ddd;padding:8px}</style><body><h4>2.10.5 NLP 影片里的处理动作怎样用于合同</h4>
+<p>先有一份合同，再将文本变成可分析的片段和字段；各动作来自 S23 <code>01:36:28</code>–<code>01:38:24</code> 的影片。下面用同一句付款条款解释，例句和风险判断为笔记补充，不是影片给定合同。</p>
+<p>设原文是 “Acme Ltd shall not renew the contract after 31 December.”，意思是 Acme Ltd 不得在 12 月 31 日之后续约。当前任务要提取交易方、日期与是否可续约，不能先删掉决定含义的 not。</p>
+<table>
+<thead>
+<tr>
+<th>影片术语</th>
+<th>对文本做什么</th>
+<th>当前用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>句子切分（sentence segmentation）</td>
+<td>将文档分成句子</td>
+<td>保留本条及相关上下文</td>
+</tr>
+<tr>
+<td>分词（tokenization）</td>
+<td>把句子拆成词或其他文本单元</td>
+<td>定位 Acme、not、renew 等成分</td>
+</tr>
+<tr>
+<td>停用词（stop words）处理</td>
+<td>某些传统任务删除常见低信息词</td>
+<td>否定词影响本题结论，不能盲删</td>
+</tr>
+<tr>
+<td>词干提取（stemming）</td>
+<td>截取相近词的简化词干</td>
+<td>合并 renew/renewed 等线索</td>
+</tr>
+<tr>
+<td>词形还原（lemmatization）</td>
+<td>按词形与语境还原词典形式</td>
+<td>用规范词形查相关条款</td>
+</tr>
+<tr>
+<td>词性标注（part-of-speech tagging）</td>
+<td>标记名词、动词等角色</td>
+<td>辅助区分人/组织与动作</td>
+</tr>
+<tr>
+<td>命名实体识别（named entity recognition）</td>
+<td>标记组织、日期等名称实体</td>
+<td>提出 Acme Ltd 和 31 December</td>
+</tr>
+</tbody>
+</table>
+<p>读最后一行：识别组织与日期只产生候选字段，不证明合同允许续约；还要在原句内处理 shall not，并读附录/例外条款。影片称 named entity tagging，正文用常见完整名称说明同类任务，未把新名称当原话。</p>
+<p>这些是传统 NLP 的处理动作，不是所有语言模型必须依次执行的固定清单。对合同抽取，清洗若删掉 not 会把禁止变成允许；字段和摘要均应保留原文定位，再由人核实际条款。前文 OCR 错字也会传入 NLP，故不能把文本已转换等同内容已理解。</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script src="/mermaid.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'neutral'});</script></body>

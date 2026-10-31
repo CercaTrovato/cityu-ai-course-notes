@@ -1,0 +1,2844 @@
+00:00 
+Inventory table for A6, okay, so the description is extra large A, and the standard unit cost is 3,600, which is correct. 
+
+00:12 
+The 
+
+00:16 
+information here and the extra large A are correct. 
+
+00:19 
+Okay, so the only remaining information we don't know yet is who is the employee, right, related to that inventory. 
+
+00:31 
+whether there is any information we can find on this one. 
+
+00:38 
+S2, so let's go to the sales table. 
+
+00:43 
+Customer number, right? 
+
+00:46 
+Customer number, sales to S2, C2. 
+
+00:50 
+So 
+
+00:53 
+customer is the one who purchased this item, right? 
+
+00:57 
+So totally we get the information, but... 
+
+01:01 
+The grok also shows the number of the customer. Let's see whether we can link that to the customer table. 
+
+01:08 
+Customer table C2 is mic, so it's correct, right? 
+
+01:14 
+Mic is corresponding to the customer C2, which means that all the answers provided by grok is correct. 
+
+01:23 
+Okay, so next question is what is the exact time lag? 
+
+01:29 
+So even more complicated, right, between a sales event and its corresponding test collection event for each customer and our partial payments being applied to specific invoices. 
+
+01:42 
+Okay, so try it by yourself. Let's see whether it can get the consistent answer with the output of the AI. 
+
+06:37 
+AI tools. So you can see that this question is quite complicated. It can be divided into 
+
+06:43 
+the two sections. The first one is to show the time lag in days between a sale event 
+
+06:50 
+and its corresponding cash collection event for each customer, right? So you can see the 
+
+06:55 
+answer. We have a couple of customers here, and for each of them, the Glock has provided 
+
+07:05 
+the gap or the time lag between the test receipt date and the sales date, so for C1, C2, C5, C3, C4, right? 
+
+07:18 
+Some of them have no test receipts yet, so only the C2, C5, C1 are provided. 
+
+07:25 
+Okay, so to save time, let's just look at the information for C1 here. 
+
+07:32 
+Okay, so let's go back to this system for the C1. 
+
+07:40 
+Let's go to the customer. 
+
+07:47 
+Okay, C1 is beer. Okay, we get the name. And let's see how C1 is related to the stairs. 
+
+08:19 
+right? C1, that's C. The first piece of information, first line information is table of third. 
+
+08:28 
+So then the third date is the July 1st, right? So let's go back to the answer here. This one is 
+
+08:36 
+correct. Third date already identified. Then we get the tax receipt date. So we go to the tax 
+
+08:47 
+Okay, for C1, right, customers C1, then the date is August 15. 
+
+08:53 
+Okay, then we, sorry, then 
+
+08:58 
+we go to the information here, right, August 15. 
+
+09:02 
+Then the difference is 45. 
+
+09:05 
+Okay, so this demonstrates that the Grok's answer is correct. 
+
+09:10 
+So the reason we are doing this, it means that we want to double check 
+
+09:15 
+or verify the accuracy of the AI-generated output. 
+
+09:20 
+The reason we do that is because there is a very famous so-called AI hallucination issue 
+
+09:26 
+we will discuss in the next lecture, which means that sometimes the AI will provide the 
+
+09:33 
+misleading or incorrect information, so that's why it will be better for us to double-check 
+
+09:42 
+or verify at least some of the results every time to make sure that the AI is providing 
+
+09:50 
+Okay, then the second part of this question is about, are partial payments being applied to specific resources? Partial payment, which means that not full payment. Okay, the answer is yes. 
+
+10:05 
+They give some example like for S2, right, so let's go to that S2, see what happens. S2, sphere, sphere table, S2. Okay, S2, the amount is 10,000. 
+
+10:23 
+10,000. So let's see the duality table S2 related to two lines of the cash receipt information, right? 
+
+10:34 
+Both of them is the 1,666. If we plot them together, it is still less than 10,000. 
+
+10:43 
+So which means that partial payment is allowed, right? Okay. 
+
+10:48 
+So then again, the information provided by the broker is correct. 
+
+10:53 
+Then for the other three questions, it kind of be some summary question, right? 
+
+11:02 
+You can again try by yourself and see what's the answer. 
+
+11:52 
+Okay, so this question about who is the first person with the fare of the lowest prices 
+
+12:00 
+and which customer receiving this prices. 
+
+12:05 
+efficiency of the salesperson right so it's selling at the lowest price which means that 
+
+12:10 
+he or she is not very effective or at least probably they need some reasons why they give 
+
+12:17 
+the discount to the customers okay i'm not checking because the you can see quite complicated 
+
+12:24 
+right we need to make all the comparisons but anyway the answer is 10 for this salesperson 
+
+12:31 
+okay so let's see and then some key observations is already provided so let's continue which 
+
+12:38 
+customer is the largest one it's 
+
+12:45 
+very easy for the ai to make such comparisons okay 
+
+13:09 
+the answer 
+
+13:09 
+the customer name case and the reference number c3 the reason is they make all the comparisons 
+
+13:17 
+here based on the total amount right sold to customers so this customer has the largest amount 
+
+13:25 
+Again, we just ignore the double-checking process. 
+
+13:30 
+Let's go to our final question. 
+
+13:38 
+Which product is best-selling with the highest fair amount? 
+
+13:43 
+So basically, we are assessing whether the company's 
+
+13:49 
+production is welcomed 
+
+13:54 
+by the customer 
+
+13:55 
+or can occupy certain market share. 
+
+13:59 
+So whether our company should maintain such production line, so it's useful information, right? 
+
+14:06 
+Okay, so you can see that also they are talking about the extra larger A is the best selling product, 
+
+14:11 
+but the total sale amount is 44,000 based on all the calculations and all the comparisons. 
+
+14:19 
+Okay, so that's all the example questions which we can ask to the existing database. 
+
+14:29 
+This database is so-called example table 1, which is the 
+
+14:39 
+So you can imagine that if we ask the question based on this one 
+
+14:45 
+many many questions could be asked. As long as it is 
+
+14:50 
+certain information is contained in such expanded IEA model, it will be answered by the system 
+
+14:57 
+with the help of the AI. We can quickly obtain any information, especially those non-financial information we can know. 
+
+15:06 
+So let's look back to this information and see whether they are useful or not. 
+
+15:11 
+Of course they are useful, right? 
+
+15:13 
+For example, even in a call pattern, we can see that we can assess the effectiveness of cashier. 
+
+15:20 
+We can check specific information for each inventory. 
+
+15:26 
+We can check whether our company is efficient in the delivery. 
+
+15:31 
+Whether our company's salesperson is successful or not, and whether our company's major customer is a lawyer, 
+
+15:39 
+and whether our company's current production line needs to be revised. 
+
+15:45 
+All this information will be useful from the perspective of different stakeholders who use such information systems. 
+
+15:55 
+Okay, so before we move on, I would like to say something about our project. 
+
+16:18 
+Our project, we basically have the five components which are required to be included in your written report, right? 
+
+16:25 
+The most critical issue I want to remind you is, based on the university quality, 
+
+16:31 
+you cannot just ask the AI, then copy-paste the AI-generated output into your written report. 
+
+16:39 
+Be careful, never do that, okay? 
+
+16:42 
+Because the AI, too, you use it to... 
+
+16:46 
+enrich your thoughts about the certain issue, right, to help you to generate some idea and 
+
+16:53 
+then help you to discuss the certain issue and provide some detailed 
+
+16:57 
+information or even provide the tables, something like that for you. That is 
+
+17:02 
+okay. For example, you can use the information from those tables provided 
+
+17:08 
+to you or ratios provided to you, but you need to make your own. 
+
+17:14 
+Add some of your own words in the discussion, even for the section 2 and 3, or even for 1. 
+
+17:20 
+Even for the section 1, you cannot just send your prompt to the AI tool and copy-paste the AI-generated results. 
+
+17:30 
+If that will be detected, you will lose a lot of points and probably will be against our university regulations that will cause serious consequences. 
+
+17:43 
+Just use AI as a tool, not something that can prepare the virtual report for you. 
+
+17:50 
+And for the section 4 and 5, that would be related to the issue I just mentioned. 
+
+17:55 
+Sometimes AI could generate the incorrect or misleading information, 
+
+18:01 
+so you need to double-check them, or at least... 
+
+18:05 
+Partly verify them, right? Or cross-verify. What is cross-verify? 
+
+18:10 
+You can use two AI tools, right, and then see whether the two AI tools provide the same answer. 
+
+18:18 
+If they're the same answer, you can get the same results, at least. 
+
+18:24 
+So in these two, section 4 and 5, of course you need to... 
+
+18:31 
+and some of your own argument or your own opinion. 
+
+18:36 
+So again, it cannot be copied something from the AI tools. 
+
+18:41 
+And for the length of the written report, 
+
+18:45 
+our requirement is no more than seven pages. 
+
+18:48 
+So if you have some reference page, that will not be counted. 
+
+18:52 
+And if you have a cover page for your group members' good ideas. 
+
+19:00 
+or the table of contents, right, that were not recounted as well, 
+
+19:05 
+which means that only the main text were recounted. 
+
+19:08 
+And some students, probably they want to provide some prompt, right, 
+
+19:16 
+submit to the AI, it is okay. It is helpful actually. It can help me to understand which 
+
+19:23 
+kind of information you are delivering or communicating with the AI. You can use that 
+
+19:28 
+as appendix, okay. That will not be counted into the several PDFs as well. So you can 
+
+19:36 
+convert everything into a single PDF file. 
+
+19:41 
+Okay, so that's the some information related to the project. So if you still have any questions, let me know during the break. 
+
+19:48 
+So another 
+
+19:50 
+information I would like to remind you is about the 
+
+20:00 
+make-up class, right? 
+
+20:03 
+So during this Saturday afternoon from 2 to 
+
+20:07 
+5, we will have a make-up class. 
+
+20:11 
+Not this classroom, be very careful, it's the AC2 building in 4109, so I hope you can be there. 
+
+20:20 
+Okay, let's have a break. 
+
+20:27 
+... reporting system, and we know some general ideas of how to implement the AI tools, right? 
+
+20:36 
+making analysis based on the two systems. 
+
+20:39 
+And today we will have the chapter 
+
+20:41 
+introduce some basic idea about the AI tools. 
+
+20:45 
+So we start from the introduction of the definition, right? 
+
+20:50 
+So AI refers to the computer system engineered 
+
+20:53 
+to simulate the human cognitive functions. 
+
+20:57 
+So including the process of relearning, problem solving, decision making, and language understanding. 
+
+21:05 
+So enabling autonomous tasks, execution without message programming. 
+
+21:12 
+So the types of AI can be divided into generally two of them. 
+
+21:20 
+The first one is so-called narrow AI. 
+
+21:22 
+The second is so-called artificial general intelligence. 
+
+21:26 
+So for the narrow AI, for example, some tools which 
+
+21:32 
+in specific domains, 
+
+21:34 
+the bug cannot transfer knowledge across tasks. 
+
+21:37 
+That is the definition. 
+
+21:38 
+And then for the AGI, it's more human-like, 
+
+21:42 
+so currently unrealized and debated among the researchers, 
+
+21:46 
+which means that currently when we talk about the AI tools, 
+
+21:50 
+they are still narrow AI instead of the AGI. 
+
+21:54 
+So these are some basic ideas. 
+
+21:56 
+Then the history of AI development. 
+
+21:59 
+So the foundations is from 1940s to 1950s. 
+
+22:05 
+And among this, one of the most important issues 
+
+22:08 
+I would like to draw your attention is Turing's past. 
+
+22:12 
+I think maybe you have heard of all this, right? 
+
+22:15 
+So I have some to 
+
+22:20 
+share with you what is Turing's past, 
+
+22:23 
+and why it's the foundation of the artificial intelligence. 
+
+22:32 
+This intriguing question was at the heart of an old idea known as the Turing Test. 
+
+22:39 
+In this video, we're going to analyze just that. 
+
+22:42 
+Stick around to discover how this test challenges the boundaries between human and machine intelligence. 
+
+22:48 
+First, we should learn a bit about the man behind the Turing Test, Alan Turing. 
+
+22:53 
+Alan Turing was a pioneering British mathematician and computer scientist who is often regarded as the father of modern computing. 
+
+23:01 
+Born in 1912, Turing made significant contributions during World War II by developing the bomb machine which was instrumental in breaking the Enigma code used by the Nazis. 
+
+23:11 
+His work laid the foundations for computer science and artificial intelligence. 
+
+23:16 
+Turing proposed the concept of the Turing Test, a criterion for determining a machine's ability to exhibit intelligent behavior equivalent to or indistinguishable from that of a human. 
+
+23:31 
+computing and artificial intelligence now let's see what the turing test is and why it is so 
+
+23:37 
+important as mentioned the turing test proposed in 1950 is a measure of a machine's ability to 
+
+23:43 
+exhibit intelligent behavior indistinguishable from that of a human in the test a human judge 
+
+23:49 
+interacts with both a machine and another human without knowing which is which solely through 
+
+23:55 
+If the judge cannot reliably distinguish between the human and the machine, the machine is said to have passed the test. 
+
+24:02 
+The Turing test is important because it provides a foundational benchmark for evaluating artificial intelligence, 
+
+24:08 
+prompting discussions about the nature of intelligence, consciousness, and the potential capabilities of AI systems. 
+
+24:15 
+It remains a significant concept in the ongoing development and ethical considerations of AI technology. 
+
+24:22 
+Now let's analyze how the Turing test actually works. 
+
+24:26 
+The Turing Test involves a human judge engaging in a text-based conversation with both a human and a machine without knowing which is which. 
+
+24:34 
+The judge asks a series of open-ended questions on various topics ranging from everyday matters to more complex subjects. 
+
+24:41 
+The judge evaluates their answers based on qualities like coherence, relevance, contextual understanding, and human-like reasoning. 
+
+24:50 
+The machine's responses are expected to demonstrate not just pre-programmed reactions, but an ability to understand nuances, humor, and subtleties in the conversation. 
+
+24:59 
+If after a series of interactions, the judge cannot reliably distinguish the machine from the human based on its responses, the machine is considered to have passed the test. 
+
+25:09 
+This means the machine has successfully mimicked human-like thought processes and communication. 
+
+25:14 
+to a degree that it is indistinguishable from a human interlocker. 
+
+25:19 
+The Turing test challenges AI developers to go beyond simple programmed responses 
+
+25:23 
+and create machines capable of more sophisticated, adaptable and human-like interaction. 
+
+25:29 
+The test underscores the importance of developing AI that can not only perform tasks 
+
+25:34 
+but also engage in meaningful and contextually appropriate dialogue with humans. 
+
+25:39 
+Now let's see some practical examples where the Turing test is used. 
+
+25:43 
+The Turing Test has inspired numerous examples and applications in the field of artificial intelligence, 
+
+25:49 
+particularly in the development of conversational agents and chatbots. 
+
+25:54 
+Early AI programs like ELISA and PERI were designed to simulate human conversation, 
+
+25:59 
+and were among the first to be evaluated using Turing Test principles. 
+
+26:03 
+Modern applications include sophisticated AI systems like OpenAI's GPT-3, 
+
+26:08 
+which can generate human-like text and engage in complex dialogues. 
+
+26:12 
+These technologies are widely used in customer service, virtual assistance, and interactive entertainment where the ability to mimic human conversation enhances user experience. 
+
+26:22 
+The Turing Test also plays a crucial role in AI research, serving as a benchmark for measuring progress in machine intelligence and guiding the development of AI systems that can seamlessly interact with humans. 
+
+26:35 
+And lastly, let's look at the criticisms and limitations of the Turing Test. 
+
+26:40 
+The Turing Test, while influential, has faced significant criticisms and limitations. 
+
+26:46 
+Critics argue that the test measures only a machine's ability to imitate human conversation, 
+
+26:51 
+not true understanding or consciousness. 
+
+26:54 
+A machine could pass the Turing Test by manipulating language patterns 
+
+26:57 
+without genuinely comprehending the content, 
+
+27:00 
+thus achieving a superficial form of intelligence. 
+
+27:03 
+Additionally, the test focuses solely on verbal communication, ignoring other forms of intelligence such as emotional, spatial, and creative abilities. 
+
+27:12 
+Some philosophers like John Searle with his Chinese room argument suggest that passing the Turing test does not equate to actual thought or understanding. 
+
+27:21 
+Furthermore, the test's binary nature, pass or fail, oversimplifies the complex spectrum of intelligence. 
+
+27:28 
+As AI technology advances, there is a growing recognition that new, more nuanced benchmarks are needed to evaluate machine intelligence comprehensively beyond the constraints of the Turing test. 
+
+27:40 
+In conclusion, the Turing test remains a seminal concept in the field of artificial intelligence. 
+
+27:46 
+serving as both a historical benchmark and a catalyst for ongoing debates about machine intelligence and human cognition. 
+
+27:52 
+While it has inspired significant advancements in AI, 
+
+27:56 
+the test limitations highlight the complexity of truly understanding and replicating human intelligence. 
+
+28:02 
+As technology continues to evolve, new metrics and methodologies will be needed 
+
+28:07 
+to more accurately assess the capabilities and consciousness of AI systems. 
+
+28:11 
+Nonetheless, the Turing test legacy endures, encouraging continual exploration and innovation 
+
+28:17 
+in the quest to bridge the gap between human and artificial minds. 
+
+28:22 
+This concludes our video. 
+
+28:26 
+Okay, so although the Turing test is not perfect at all, it's still at such an early stage 
+
+28:32 
+it helps to differentiate the machine, right, from the artificial intelligence. 
+
+28:38 
+So then there are some early milestones from the 1960s to 1970s, and from the 1970s to the end of the 20th century, 
+
+28:53 
+you can see that the development of AI actually slowed. 
+
+29:00 
+And here, the modern breakthroughs from the 1990s to the 2020s can be that we have some 
+
+29:08 
+famous AI related to the event, like the IBM's Deep Blue defeated the chat champion, right? 
+
+29:17 
+And some other computations won by the machine, and the invention or the introduction of the 
+
+29:30 
+And especially from the 2024 to 2025, the so-called MCT, Model Context Protocol, emerged, 
+
+29:41 
+so standardizing AI interactions with external tools to solve the data by those that enable 
+
+29:48 
+the cross-platform automation, which even advanced the development of the AI tools. 
+
+29:56 
+Okay, so the AI, actually there are some 
+
+29:59 
+technologies which are related to the AI. So let's have a look. 
+
+30:02 
+Machine learning and deep learning. So machine learning, ML, is a subset of the AI that focuses on the development of the 
+
+30:11 
+algorithms that allow computers to learn from and make predictions based on the data. So that is the 
+
+30:18 
+main underlying logic. 
+
+30:21 
+for the machine learning. 
+
+30:23 
+And deep learning is a specialized area within machine learning 
+
+30:27 
+that uses neutral networks with many layers. 
+
+30:31 
+That's why we call it deep. 
+
+30:33 
+So these networks are particularly effective 
+
+30:35 
+for handling large amounts of unstructured data 
+
+30:39 
+such as images, audio, and text. 
+
+30:43 
+So actually you can understand it this way. 
+
+30:47 
+Machine learning is within the area of AI, and deep learning is within the area of machine learning. 
+
+30:54 
+But still, by reading such definitions is not helpful, right? 
+
+30:59 
+We still need some vivid cases to help us understand this. 
+
+31:14 
+Machine learning, deep learning, is everywhere. 
+
+31:19 
+It's a corporate ordering. But what do they really mean? 
+
+31:23 
+Are they interchangeable? Or is there a clear distinction between them? 
+
+31:28 
+if you've ever been confused about the difference you're in the right place today we're breaking 
+
+31:34 
+down ai machine learning and deep learning in a way that's simple insightful and easy to remember 
+
+31:42 
+by the end of this video you'll have a clear understanding of how they work 
+
+31:46 
+how they're different and where you encounter them in your daily life 
+
+31:50 
+let's dive in let's start with the broadest term artificial intelligence or ai 
+
+31:57 
+AI refers to any machine or system designed to simulate human intelligence, whether that's reasoning, problem solving, learning, or even perception. 
+
+32:08 
+It's the main concept that incorporates everything from voice assistants to self-driving cars. 
+
+32:13 
+When you ask Siri for the weather, it's using AI. 
+
+32:16 
+When your email spam filter detects and blocks unwanted emails, that's AI, too. 
+
+32:22 
+The goal of AI isn't necessarily to mimic human thought, but to perform tasks that typically require human intelligence, efficiently and at scale. 
+
+32:32 
+What is machine learning, ML? 
+
+32:35 
+Now, within AI, we have machine learning. 
+
+32:39 
+Machine learning is a specific approach that enables AI systems to learn from data. 
+
+32:45 
+Instead of relying on explicit programming, instead of manually coding every rule, we feed machine learning systems huge amounts of data and let them identify patterns. 
+
+32:57 
+Over time, they improve and make better predictions. 
+
+33:01 
+For example, Netflix suggests shows based on what you've watched before. 
+
+33:06 
+Google completes your search before you finish typing. 
+
+33:09 
+These are all powered by machine learning models. 
+
+33:12 
+and analyze past data to predict future behavior. 
+
+33:15 
+What is deep learning? 
+
+33:17 
+Deep learning is a more specialized and advanced form of machine learning 
+
+33:22 
+that's modeled after the human brain. 
+
+33:24 
+It uses what's called artificial neural networks, 
+
+33:27 
+which mimic the way neurons in our brain process information. 
+
+33:31 
+Think of deep learning as machine learning on steroids. 
+
+33:34 
+Instead of relying on simpler algorithms, 
+
+33:37 
+it uses multi-layered neural networks to analyze vast amounts of data. 
+
+33:42 
+This is what powers advanced AI applications like facial recognition, language translation, and even self-driving technology. 
+
+33:51 
+The more data a deep learning model is trained on, the better it gets, often surpassing human-level accuracy. 
+
+33:58 
+Key differences between AI, ML, and DL. 
+
+34:02 
+Alright, let's put it all together. 
+
+34:05 
+Artificial intelligence, AI, is the big umbrella. 
+
+34:08 
+It includes all technologies that enable machines to mimic human intelligence. 
+
+34:13 
+Machine learning, ML, is a subset of AI that learns from data instead of being explicitly programmed. 
+
+34:21 
+Deep learning, DL, is a subset of machine learning that uses neural networks to process massive amounts of data in complex ways. 
+
+34:29 
+Let's make it more realistic and easy to understand. 
+
+34:32 
+If AI is an entire school system, then AI is the whole school, all learning and intelligence-based systems. 
+
+34:41 
+Machine learning is the students learning from textbooks. 
+
+34:44 
+experience deep learning for the top you who can grasp concepts at deeper levels 
+
+34:50 
+solving complex problems with little human intervention real life applications so where 
+
+34:56 
+do we see these technologies in action the ai is used in chatbots digital assistance 
+
+35:02 
+and recommendation systems machine learning to be applied in full detection medical diagnosis 
+
+35:08 
+and personalized apps deep learning entails self-driving cars image recognition 
+
+35:15 
+and large-scale ai models like chachi without deep learning autonomous vehicles wouldn't be 
+
+35:22 
+able to interpret their environment recognize stop signs or differentiate between a pedestrian 
+
+35:27 
+and a parked car this is ai at its most advanced now to sum everything up artificial intelligence 
+
+35:35 
+machine learning and deep learning are shaping the world around us 
+
+35:44 
+understanding how they work isn't just fascinating, it's essential for staying 
+
+35:48 
+ahead in today's tech-driven world. If you enjoyed this video and learned something... 
+
+35:52 
+Okay, I think we've already got some basic idea about the difference between AI, machine learning and deep learning. 
+
+36:00 
+Okay, so let's see something related to the types of machine learning. 
+
+36:05 
+Machine learning can be generally divided into four types. 
+
+36:12 
+mainly supervised learning, unsupervised learning, semi-supervised learning, and reinforcement learning. 
+
+36:18 
+So we start from the introduction to the supervised learning. 
+
+36:22 
+It means that it's a type of machine learning which the model is trained on labelled data. 
+
+36:28 
+So what is labelled data? 
+
+36:30 
+to look at the picture here we have all the for example we want to make the input to the computer 
+
+36:37 
+and the inputs are all kinds of the fruits and for each fruit we actually label it or label them 
+
+36:45 
+and tear the computer or tear the machine for a specific for example these are all 
+
+36:57 
+and some of them are oranges something like that which this means label the data so each training 
+
+37:04 
+example consists of an input and unknown correct output of course such label should be correct 
+
+37:11 
+then the algorithm learns the method from input to output so that it can predict 
+
+37:17 
+the correct label for new unseen data okay in other words which means that when we train 
+
+37:24 
+computer or train the machine, we are using all the labor with the correct answer the input. 
+
+37:31 
+Then after that if we put something new to the computer, so the computer can 
+
+37:36 
+make the decision or make the judgment based on the training it 
+
+37:42 
+received on all those the data with the labeled 
+
+37:47 
+corrected input. So that is the spirit of the 
+
+37:51 
+supervised learning. 
+
+37:53 
+So the key characteristics related to the supervised learning include it requires labelled historical data. 
+
+38:00 
+Of course, we can imagine that if for every input we have to label them, it can be very costly or time-consuming. 
+
+38:12 
+And the performance can be measured directly by comparing predictions against low labels. 
+
+38:22 
+The training is all mostly, all the correct labeled input trained computer or the machine, right? 
+
+38:31 
+So they can directly compare the future predictions based on the new data with the existing data. 
+
+38:38 
+And it is most widely used type of machine learning in business applications today. 
+
+38:44 
+And here is the example we can have a look. 
+
+38:48 
+So please have a look, then see. 
+
+38:52 
+why the supplier's learning helps in such an area. 
+
+39:59 
+Let's think whether this real-world accounting-related example 
+
+40:04 
+is a good example to demonstrate that supplier's learning is useful. 
+
+40:09 
+So the problem is a company's finance team receives many invoices 
+
+40:15 
+and the credit card transactions, for example. 
+
+40:18 
+So they can manually coding them into the correct expense accounts like the travel expense or the supply expense or marketing expense and so on. 
+
+40:28 
+But this is very time-consuming and inconsistent sometimes because the humans can make errors, right? 
+
+40:36 
+So why does Supervisor Learning Methodology help in such scenario? 
+
+40:41 
+Historically, it was that accountants have already coded to become the labeled training data, which means that 
+
+40:48 
+At the very beginning of this firm, the finance team, if they already adopt the learning, they already make the training to the system or to the machine. For all the such invoices or credit card transactions data, they already label them or have been coded. 
+
+41:09 
+So, which means that such code is available, right? 
+
+41:13 
+For example, the features used by the model may include vendor name, invoice description, 
+
+41:19 
+amount, department, and the date. 
+
+41:22 
+So, for example, the invoice description is related to the certain office supplies, right? 
+
+41:29 
+Then the machine where, based on the training, of course. 
+
+41:34 
+When the people is training such the machine or the computer they were described such 
+
+41:41 
+office supplies related invoice as the office of Isaac Spence account 
+
+41:47 
+So after thousands of the such training if there is a new 
+
+41:51 
+document 
+
+41:53 
+of the invoice saying that this is a certain office by, 
+
+41:57 
+then the machine will know, right? 
+
+41:59 
+For example, the pattern like, 
+
+42:01 
+if there is a Uber or taxi receipt, 
+
+42:05 
+so the machine will automatically know 
+
+42:08 
+that this belongs to travel expense, 
+
+42:11 
+because previously there are so many travel documents 
+
+42:15 
+have been already labored to that computer, 
+
+42:18 
+or something like Adobe something. 
+
+42:21 
+subscription right so such should be classified into software expense or it expense so the new 
+
+42:28 
+new invoice is automatically suggested a code by the machine and classify them into the correct 
+
+42:34 
+account then there are some pros and cons related to the supervised learning so i use some positive 
+
+42:49 
+So, some pros or advantages related to the supervised learning is the very clear performance 
+
+42:56 
+metrics like accuracy or precision which can be used to evaluate whether the machine using 
+
+43:04 
+the supervised learning is effective. 
+
+43:06 
+And it is highly effective when good labelled data exists. 
+
+43:11 
+of course right so for example in such example as long as the previous training with high quality 
+
+43:19 
+data so in the future less likely to make error right and relatively easier to explain 
+
+43:25 
+and document there are some other methods and the cons or disadvantages it requires 
+
+43:38 
+And the performance decreases significantly from the training data. 
+
+43:43 
+For example, some new invoices never met by the previous training, 
+
+43:50 
+or never related to the labelled data which you trained to the machine. 
+
+43:56 
+So then the computer will make a mistake, right? 
+
+43:59 
+Because they never see such information. 
+
+44:05 
+And that's useful for discovering completely new or unexpected patterns. 
+
+44:10 
+So actually this one is quite similar to the previous one. 
+
+44:14 
+Then the second type of machine learning is so-called unsupervised learning. 
+
+44:19 
+So you can imagine that the first type is supervised. 
+
+44:22 
+This one is unsupervised. 
+
+44:24 
+So unsupervised learning works with unlabeled data, 
+
+44:27 
+which means that, again, we are using the fruit. 
+
+44:33 
+or photo of the fruit as input, right? 
+
+44:35 
+So this time, these photos are just input to the computer 
+
+44:41 
+without any label, which means that the computer 
+
+44:44 
+can make analysis based on the different fruit characteristics. 
+
+44:48 
+For example, the apple, or red, right? 
+
+44:53 
+So they put them together, and some other fruit 
+
+44:55 
+put them together based on their characteristics. 
+
+44:58 
+But if now you ask the computer, which one are apples? 
+
+45:02 
+the computer does not know, because none of the root voters are labeled, which means that 
+
+45:10 
+the computer doesn't know the name of each root, so they cannot tell such questions. 
+
+45:17 
+So the algorithm is not told what the correct answer is. Instead, it searches for hidden 
+
+45:23 
+patterns, groupings, or structures within the data itself. 
+
+45:28 
+So the key characteristics related to the unsurprising is it is useful when labels are unavailable or very expensive or when the goal is the exploration rather than prediction, which means that it's enough. We just make the different groups. We don't need to get the correct label or correct name for each group. 
+
+45:51 
+So the results often require human interpretation. 
+
+45:54 
+The algorithm finds groups of the human design mean, 
+
+45:57 
+so particularly valuable for discovering unexpected patterns 
+
+46:02 
+that analysts did not anticipate. 
+
+46:05 
+Okay, again, a real-world example. 
+
+46:09 
+So please have a look. 
+
+46:11 
+See 
+
+47:53 
+this problem? 
+
+47:54 
+Based on this page, if you already read it, 
+
+47:57 
+you will find that the unsupervised ability 
+
+48:01 
+is also very powerful, especially in anomaly detecting, right? 
+
+48:06 
+Anomaly means those unusual items or some extreme items. 
+
+48:11 
+So when the computer detects such patterns, 
+
+48:14 
+it will be very useful. 
+
+48:16 
+For example, if we are analyzing a company's annual report, 
+
+48:20 
+so generally, based on the analysis, 
+
+48:23 
+we can see some ratios, some patterns, 
+
+48:25 
+some of the forecasted information in the future. 
+
+48:30 
+But to the outside point of the learning, if such a system is adopted, it can identify some extreme or the outlier or the anomaly, such as if this company is the, let's say the ratio of the cash divided by total assets is extremely low, so we can see this is a red flag for the company's financial situation, right? Because the very low balance of cash is very difficult. 
+
+49:00 
+signal for the company because it cannot pay the due debt, so it will probably suffer the risk of bankruptcy, right? 
+
+49:08 
+So such a novelty pattern will be easily detected by the 
+
+49:13 
+enterprise learning without the cost. The reason is, if we go back to the 
+
+49:19 
+this picture, we can see that if all the inputs 
+
+49:24 
+without any label was delivered to the computer. 
+
+49:27 
+So you can see that based on different characteristics, 
+
+49:30 
+the computer can group them, right? 
+
+49:33 
+So, of course, those outliers will be grouped 
+
+49:35 
+into some certain categories 
+
+49:39 
+which can draw attention from the readers or humans. 
+
+49:44 
+Okay, so in this case, large organizations generate millions of journal entries, so if 
+
+49:50 
+we review them by human beings, it would be impossible. 
+
+49:55 
+So the traditional rule is to set up some theaters just randomly to check. 
+
+50:00 
+For example, we can select those journal entries with amounts over 10,000 or even higher amounts 
+
+50:08 
+to check whether those information are correctly recorded. 
+
+50:12 
+especially for those big amounts, right? 
+
+50:15 
+But this methodology could meet sophisticated or smaller, 
+
+50:19 
+but unusual items. 
+
+50:22 
+So the unsupervised learning can help. 
+
+50:24 
+So the model learns what normal look like. 
+
+50:27 
+So, such as the amount, the account, the combination, 
+
+50:32 
+timing, user, and description. 
+
+50:34 
+Since they know what normal look like, 
+
+50:36 
+they will know what abnormal look like. 
+
+50:39 
+So then it can flex entries that are outliers or that are unusual items. 
+
+50:45 
+So no prior laboring of the fraudulent entries is required, so the system can discover those deviations or outliers or anomalies or unusual items by its own. 
+
+50:59 
+Again, there are some pros and cons. 
+
+51:02 
+Advantage related to such machine learning type is no need for the labeled data, so it can save cost. 
+
+51:09 
+And it is excellent for discovering hidden patterns and anomalies, 
+
+51:14 
+and it is useful for fraud or error detection and exploratory analysis, 
+
+51:20 
+and it can identify novel issues that have never been labelled before. 
+
+51:25 
+But it still has some disadvantage, like results are harder to evaluate objectively. 
+
+51:32 
+And the clusters or anomalies require human interpretation and are less precise for tasks that need specific predefined categories. 
+
+51:42 
+These are discussions for the product council of device learning. 
+
+51:46 
+By the way, such discussions, for example, 
+
+51:51 
+If you are required to discuss the pros and the cons of the supervised learning and the 
+
+51:59 
+unsupervised learning, at least two of each, you should be familiar, okay? 
+
+52:05 
+At least two. 
+
+52:06 
+For example, you should be able to discuss two pros and two cons related to the unsupervised 
+
+52:12 
+learning. 
+
+52:13 
+Then the third type is the semi-supervised learning. 
+
+52:16 
+So semi-supervised learning sits between supervised and unsupervised. 
+
+52:22 
+It uses a small amount of labels that are together with a large amount of unlabeled. 
+
+52:26 
+So it is easy to understand, right? 
+
+52:29 
+If we go back to the picture here, we divide the picture into two types. 
+
+52:35 
+One type is labeled, another type is unlabeled. 
+
+52:38 
+Then we feed them or deliver them to the machine. 
+
+52:42 
+So for the labelled pictures, so for example we have some picture of dogs, so we explicitly indicate in this picture this is dog, then let the computer know, and some of the other pictures are cats, so again we labelled them and tell computer these are cats. 
+
+53:00 
+But this only account for a small amount, for example, 10% for the training. 
+
+53:05 
+And for the 90% of the training data, we just give the computer the pictures without any label. 
+
+53:14 
+But by doing so, you can argue that at least the computer gets some labeled training, right? 
+
+53:21 
+Because they can, based on unlabeled data, they can make the different groups based on the characteristics. 
+
+53:28 
+And based on those small amounts of labelled data, they will know the name for each of the groups, right? 
+
+53:34 
+So hence, this one, you can imagine, is quite powerful because it has both the cons of the supervised and unsupervised. 
+
+53:45 
+So the key characteristics, it is practical when labelling data is expensive or time-consuming, 
+
+53:51 
+so we just use the small amount of the labels. 
+
+53:55 
+and can significantly reduce the amount of manual labouring required to achieve the accuracy 
+
+54:02 
+and widely used in document application, image recognition, and text categorization tasks. 
+
+54:09 
+Again, please read the example and see the application of the SAMI to provide the learning. 
+
+54:18 
+You 
+
+56:09 
+can see the problem. 
+
+56:11 
+So a company may have thousands of contracts, but the experts only have the time to carefully review and enable a few hundred. 
+
+56:19 
+So perfectly match the scenario with the semi-supervised learning. 
+
+56:24 
+So the fully manual classification is impossible or impractical. 
+
+56:29 
+So the fully amplified methodology also has some disadvantages because it will adversely affect the accuracy. 
+
+56:40 
+So how the semi-supervisors can help in such a scenario, 
+
+56:43 
+so the experts can label a representative sample of contracts. 
+
+56:47 
+So these are so-called labeled sets. 
+
+56:50 
+And the model uses these labels plus the remaining unlabeled contracts 
+
+56:54 
+to learn the better decision boundaries. 
+
+56:58 
+So the features which are used for training include the extracted clauses, parties, 
+
+57:03 
+payment terms, duration, and keywords containing the contract. 
+
+57:08 
+So the resulting model can classify the remaining contracts with the higher accuracy. 
+
+57:14 
+So the pros and cons again. 
+
+57:16 
+So the advantages relate to the semi-supervised learning. 
+
+57:21 
+It can reduce the amount of labelling required because it only requires a small proportion to be labelled. 
+
+57:29 
+And it often achieves better accuracy than using only a small labelled set. 
+
+57:40 
+I think we'd better change it a little bit, because this is the precondition if the sentence-advised learning has a larger labeled set, right, we can change this. 
+
+57:56 
+Okay, 
+
+58:10 
+also achieve the better accuracy then using unlabeled set, right, because we argue that the unlabeled... 
+
+58:16 
+The human needed to put their own judgment or their explanation after the machine or the computer gets a different growth. 
+
+58:26 
+So the accuracy of course could be sometimes could be low. 
+
+58:31 
+So practical compromise when the expert view time is limited and they were suited to document and transaction classification task. 
+
+58:44 
+Then disadvantage related to the semi-supervised learning would be still require some high-quality labelled data 
+
+58:51 
+and the performance depends on how representative the labelled assembly is 
+
+58:55 
+and the risk that the errors in the unlabelled data affect the model. 
+
+59:02 
+Not a big disadvantage, right? 
+
+59:05 
+Just some common advantage related to the both supervised and unsupervised learning. 
+
+59:19 
+which is the most advanced type, so-called reinforcement learning. 
+
+59:24 
+So reinforcement learning is the type of machine learning in which an agent learns to make decisions by interacting with the environment. 
+
+59:33 
+So the agent receives rewards or penalties based on actions they learn or policies that maximize cumulative rewards over time. 
+
+59:42 
+So you can see this picture is very interesting and useful. 
+
+59:47 
+the dog, the computer, if we regard the computer as a dog 
+
+59:51 
+and regard the environment as a human 
+
+59:54 
+so the interaction between the dog and the human would be 
+
+59:57 
+the interaction between the computer and the environment 
+
+01:00:01 
+so every time if the dog makes a correct response 
+
+01:00:08 
+then the dog will get some rewards, like get something to eat 
+
+01:00:12 
+but if the dog fears 
+
+01:00:17 
+to follow the human's instruction, then the dog will get the penalty, for example, of not giving the food, something like that. 
+
+01:00:24 
+So for the computer, 
+
+01:00:26 
+It's the same logic every time the when the environment or the human they are training this computer 
+
+01:00:32 
+They give some guidelines and if the computer reacting a correct way, then the computer may be for example 
+
+01:00:40 
+being rewarded by adding a point 
+
+01:00:43 
+But if the computer reacted differently or incorrectly, then we lose one point something like that. So after the 
+
+01:00:53 
+Many training process like this, the computer will learn what reaction will be rewarded. 
+
+01:00:59 
+In other words, the computer will learn which reaction will be correct. 
+
+01:01:06 
+So the key characteristics learning occurs through trial and error rather than from labelled examples 
+
+01:01:12 
+and were suited to sequential decision-making problems and less commonly used in traditional accounting workflows today 
+
+01:01:20 
+but emerging in optimisation and adaptive systems. 
+
+01:01:24 
+Okay, again, examples. Please raise it. 
+
+01:01:29 
+Okay, 
+
+01:03:19 
+so this application is related to the auditing, right? 
+
+01:03:24 
+So the problem is traditional audit sampling often use the fixed sample size or simple random selection. 
+
+01:03:31 
+So in complicated population, this can be inefficient. 
+
+01:03:34 
+So too much effort may be spent on the low risk areas, which is not necessary, right? 
+
+01:03:40 
+While high risk items may be under sampled. 
+
+01:03:43 
+So how can the reinforcement learning 
+
+01:03:45 
+care in such scenario? 
+
+01:03:47 
+The first, if we assume that agent in the reinforcement 
+
+01:03:51 
+learning is the sampling strategy of the computer, 
+
+01:03:54 
+then the environment is the population 
+
+01:03:56 
+of the transaction for account. 
+
+01:03:58 
+Then the actions include the choosing 
+
+01:04:01 
+which item to examine. 
+
+01:04:03 
+So reward can be defined in terms of the error detection 
+
+01:04:06 
+rate. 
+
+01:04:07 
+or the coverage of high-risk items or efficiency. 
+
+01:04:11 
+For example, if the system, if the sampling strategy 
+
+01:04:14 
+actually yields the higher detection rate, 
+
+01:04:17 
+then you can add one point to it as a reward. 
+
+01:04:22 
+And all the, such a sampling strategy 
+
+01:04:25 
+has a higher coverage of high-risk items, 
+
+01:04:28 
+which deserve to be spent time on, 
+
+01:04:31 
+then you give some reward. 
+
+01:04:33 
+So over successive audits or simulations, the students learn to allocate effort more effectively. 
+
+01:04:42 
+So the pros and the cons relate to the reinforcement learnings. 
+
+01:04:46 
+The advantages include that it is well suited to the sequential decision-making and optimization problems, 
+
+01:04:53 
+and it can improve students over time through feedback. 
+
+01:04:59 
+and have potential for adaptive processes like dynamic sampling, resource allocation, 
+
+01:05:05 
+and it learns from the interaction rather than the historical label. 
+
+01:05:11 
+Then the cons or disadvantages require a well-defined reward signal and environment. 
+
+01:05:17 
+As we said, we need an efficient rewarding system, right? 
+
+01:05:22 
+It can be data and computation intensive. 
+
+01:05:26 
+and harder to explain and audit sometimes. 
+
+01:05:31 
+So this would be the four types of machine learning. 
+
+01:05:36 
+Have a break. 
+
+01:05:39 
+Is there anyone who would like to talk? 
+
+01:05:41 
+This pattern tends to go up. 
+
+01:05:43 
+And the classification and the clustering of data, 
+
+01:05:46 
+like the broad deduction, as we mentioned, 
+
+01:05:49 
+to deduct anomaly from sequence mining. 
+
+01:05:57 
+So among these applications, one issue I think we are most interested is about the prediction using machine learning. 
+
+01:06:06 
+So it is mentioned that especially the supervised learning, it is famous for being used to predict the certain pattern based on the historical data. 
+
+01:06:18 
+But what is the logic for computer to make the prediction? 
+
+01:06:25 
+So here, it is based on linear regression, which is the fundamental concept in machine learning and serves as one of the simplest algorithms called predictive modeling. 
+
+01:06:39 
+The linear regression is a statistical method used to model the relationship between a dependent variable, for example, a target, and one or more independent variables or features by getting a linear equation. 
+
+01:06:54 
+So it is mathematically represented by the following equation. 
+
+01:06:58 
+For example, if there is only one independent variable. 
+
+01:07:02 
+So what is the independent variable? 
+
+01:07:05 
+Independent variable means that such variable, they change. 
+
+01:07:11 
+But they are changing by themselves. 
+
+01:07:14 
+They will affect others. 
+
+01:07:17 
+But the dependent variable would be the y in this equation, which means that they will be affected by others. 
+
+01:07:25 
+So we call it dependent. 
+
+01:07:27 
+So in other words, dependent variable will be affected by independent variable. 
+
+01:07:32 
+So normally, if we say which variable we are predicting, we are actually predicting dependent variable, or y. 
+
+01:07:43 
+And the y-relationship based on the historical data, we can get a solution for such equation y equal to a plus b times x plus e. 
+
+01:07:54 
+So after we get this a and b, we can make the calculations for the four predicted y based on the x. 
+
+01:08:04 
+So later I will show you a case to better understand this. 
+
+01:08:10 
+In this equation, a means intercept, b means the slope, and e means the error term. 
+
+01:08:18 
+So this picture, I think, better describes the association between the independent variable and the dependent variable. 
+
+01:08:28 
+So if we call the independent variable as the input variable, normally it would be the value which puts in the x. 
+
+01:08:40 
+and the dependent variable will be put on the y axis. 
+
+01:08:46 
+So y would be the dependent variable 
+
+01:08:48 
+which to be predicted based on the relationship 
+
+01:08:51 
+between x and y. 
+
+01:08:53 
+But if we only look at this picture, 
+
+01:08:56 
+it is still difficult to understand. 
+
+01:08:58 
+So I think we have a very simple case 
+
+01:09:02 
+to help us to understand the logic of the question here. 
+
+01:09:34 
+y is the TPA. 
+
+01:09:38 
+is the reasonably expected that there is a positive association between the x and the y right so if 
+
+01:09:44 
+the student performance in the high school is very good so it's more likely that it is higher 
+
+01:09:51 
+so look at the dot so every dot in this picture it represents the observation 
+
+01:10:15 
+two numbers is a dot represented here as an observation and similarly we can have many 
+
+01:10:23 
+such observations right there 
+
+01:10:38 
+is a trend right so based on the regression model or based on the 
+
+01:10:44 
+statistic of the software of the software we can make the solution for such a regression model 
+
+01:10:53 
+Which means that we can find the association between between x and y using the equation 
+
+01:11:00 
+So such a question will be represented by a line 
+
+01:11:20 
+show a positive association there that is the best we can do at the counter 
+
+01:11:25 
+stage although it cannot perfectly match all the observations that would be 
+
+01:11:32 
+impossible so we call this the best fit line so the most common method for 
+
+01:11:40 
+fitting a regression line is the method of so called the least squares 
+
+01:11:44 
+So just for your information, you'll have to memorize this. 
+
+01:11:48 
+So it calculates the best fit line for the observed data 
+
+01:11:52 
+by minimizing the sum of the squares of the vertical 
+
+01:11:56 
+divisions from each data point to the line. 
+
+01:11:59 
+So it just means the least squared errors 
+
+01:12:04 
+means that we have this straight line we already calculated. 
+
+01:12:09 
+Then we calculate the difference between each of the regions 
+
+01:12:12 
+to the . 
+
+01:12:14 
+corresponding dots in this line on the right-hand side 
+
+01:12:26 
+by the actual observation to the corresponding observation 
+
+01:12:30 
+then we squared them then plus them together 
+
+01:12:34 
+and get the minimum of such the aggregation of the squared arrows that 
+
+01:12:40 
+would be the logic okay 
+
+01:12:44 
+so look at the information in the 
+
+01:12:52 
+Then we make the aggregation of the squares of the those different minimums 
+
+01:12:59 
+Then this line would be the best 
+
+01:13:02 
+best line, best fit line 
+
+01:13:06 
+Before we move on let's see that I will show you some 
+
+01:13:10 
+Machine learning methodology which is used to make prediction 
+
+01:13:15 
+And interestingly, it's very easy. We can use Excel to demonstrate that machine learning methodology 
+
+01:13:24 
+can be used to predict the future dependent variable for example we have a few observations 
+
+01:13:35 
+for x and y okay 
+
+01:13:43 
+so for this external file we have the all the years starting from the 2000 
+
+01:13:49 
+to 2024 and we have two variables cgi would be the independent variable for the x x here 
+
+01:14:00 
+and the odd in the field would be the y, 
+
+01:14:02 
+or so-called dependent variable. 
+
+01:14:04 
+And we have such historical numbers, right? 
+
+01:14:08 
+So based on these historical numbers, 
+
+01:14:12 
+we can run a regression model 
+
+01:14:15 
+and use the least-square methodology we just mentioned 
+
+01:14:19 
+to get a straight line, 
+
+01:14:21 
+which can be used to describe the association 
+
+01:14:24 
+between this x and y. 
+
+01:14:29 
+prediction. So that is the spirit of machine learning, predicting. 
+
+01:14:33 
+First of all, I will upload this to Canvas. 
+
+01:14:37 
+So you can follow me to make the prediction 
+
+01:14:42 
+together. 
+
+01:14:51 
+Predicting. 
+
+01:15:05 
+Predicting already 
+
+01:15:06 
+uploaded. And another useful 
+
+01:15:11 
+guideline is this one. 
+
+01:15:16 
+Because we are using the predicting 
+
+01:15:21 
+Not all the Excel has such function. We need to make some adjustment. 
+
+01:15:27 
+So can you open your Excel first? 
+
+01:15:31 
+You 
+
+01:15:34 
+may open your Excel first. 
+
+01:15:37 
+And check the file options. 
+
+01:15:40 
+Then add-ins. 
+
+01:15:42 
+Then Excel add-ins. 
+
+01:15:44 
+And 
+
+01:15:48 
+click the analysis to pack. 
+
+01:15:54 
+Let me check first. Maybe in this computer. 
+
+01:16:00 
+Excel is already there. 
+
+01:16:11 
+It's already there. You don't have to follow this step. 
+
+01:16:14 
+Forget this step. 
+
+01:16:15 
+Can you go to your Excel, click the data. 
+
+01:16:20 
+Click the data first. 
+
+01:16:22 
+You open the predicting odyssey. 
+
+01:16:29 
+Open the predicting odyssey. 
+
+01:16:32 
+Then go to the data column. 
+
+01:16:38 
+Then the data analysis is on the right side. 
+
+01:16:44 
+the top right side there is the data analysis you see that 
+
+01:16:48 
+then there is a pop-up window you scroll down and then click the 
+
+01:16:55 
+regression okay you see that after 
+
+01:17:21 
+you choose regression 
+
+01:17:22 
+you click ok then there is a pop-up window 
+
+01:17:26 
+so-called regression window shows right then we input the y range and the input 
+
+01:17:37 
+Right range, we click the arrow here, the arrow in the input Y range, and select this column from the odyssey. 
+
+01:17:48 
+From the odyssey, we can include this title, odyssey until the last row, 116. 
+
+01:17:56 
+We choose this column from the odyssey until the 116. 
+
+01:18:03 
+Then similarly, we do that for input X range. 
+
+01:18:07 
+Then we choose the CGI until the last row, which is the 5.6 
+
+01:18:15 
+Then we choose the second column CGI at the X range 
+
+01:18:22 
+Okay, after X and the Y range are chosen 
+
+01:18:28 
+According to the instruction here, we click the labels and the line fit plots 
+
+01:18:33 
+Okay, there is the labels and the line fit plots 
+
+01:18:39 
+These two, then click OK 
+
+01:18:43 
+Then you can see that, based on this observation, there is a trend, which is fine. 
+
+01:18:52 
+But there is no straight line shown yet. 
+
+01:18:57 
+So based on the instruction, I will upload this instruction as well. 
+
+01:19:03 
+I'll call you to easily refer to this 
+
+01:19:14 
+file, so -called Excel. 
+
+01:19:16 
+This file is called Excel. 
+
+01:19:35 
+and add the chart element, choose the trend line, and maybe just choose the linear for 
+
+01:19:48 
+the predicted order C. Okay, so you can see there is a line here, right? 
+
+01:19:54 
+This line is actually the straight line we are talking about. 
+
+01:19:59 
+This straight line is representing the association of X and Y in this case, between the CGI and 
+
+01:20:06 
+But this is not our focus. Our focus is to get the a and the b. Do you still remember that? 
+
+01:20:13 
+y equal to, 
+
+01:20:32 
+so if we know a, b, and x, so we can predict y. So that is the logic. 
+
+01:20:40 
+And in this case, the a is this number. You 
+
+01:20:46 
+see that? Or in your own experience, can you see? 
+
+01:20:49 
+When you make predictions, you need such a regression model to get the... 
+
+01:20:56 
+The line, the straight line, to represent the association between X and Y, this is B, okay? 
+
+01:21:04 
+A 
+
+01:21:07 
+and B. 
+
+01:21:07 
+For example, now we have the straight line, which is only because of B and Y. 
+
+01:21:25 
+Because it's negative, so minus 16. 
+
+01:21:30 
+Verify, drop, CGI. 
+
+01:21:34 
+This CGI is the corporate governance index. 
+
+01:21:37 
+So this is the straight line we get. 
+
+01:21:41 
+Now we can make predictions. 
+
+01:21:45 
+If we go to the add 
+
+01:21:56 
+one extra column row here in the original data and 
+
+01:22:05 
+for example the CGI for the next year is 5. 
+
+01:22:08 
+If we have such a reliable estimate for next year, the X or CGI is 5, then we predict Y, if we predict Y. 
+
+01:22:22 
+Although here, some students might ask, the 5 is also predicted, right? 
+
+01:22:28 
+But this one, we call it an independent variable, which means that we can assume some variables 
+
+01:22:35 
+are more reliably estimated, not with the significant change. 
+
+01:22:43 
+It remains more stable every year, or more reliably measured. 
+
+01:22:48 
+Okay, so that's why our prediction is on the auditing fee 
+
+01:22:53 
+Okay, if we know 
+
+01:22:55 
+The X of next year is a 5, then how much is the predicted fee? 
+
+01:23:01 
+Okay, so we make the calculation following the straight line here 
+
+01:23:13 
+1998.903 minus 16.0912 times 
+
+01:23:22 
+Five five because X is five or CGI is five 
+
+01:23:29 
+Okay, so this one would be our 
+
+01:23:32 
+estimated value 
+
+01:23:36 
+estimated value for Y so 
+
+01:23:43 
+the logic is after 
+
+01:23:49 
+the 
+
+01:23:50 
+regression function in Excel, which is the one 
+
+01:23:56 
+typical machine learning prediction model 
+
+01:23:59 
+we get the straight line between the two variables, independent and dependent. 
+
+01:24:06 
+Then after we calculate A and B, we complete such equation. 
+
+01:24:11 
+Then for the next year, if we already know, or if we already reliably estimate X, 
+
+01:24:19 
+then Y can be predicted. 
+
+01:24:21 
+But you can imagine that in reality, things could be much, much more complicated, right? 
+
+01:24:30 
+the association is represented by a plus b, but in reality it could be called 
+
+01:24:38 
+a plus b1 x1 b3 
+
+01:24:46 
+and something 
+
+01:24:51 
+like that. 
+
+01:24:52 
+So many factors will be used to predict the odyssey, not only the CGI of course, 
+
+01:25:01 
+but in this case I just want you to understand the logic, so that's why we only use a very simple equation. 
+
+01:25:10 
+Okay, so this is the prediction function which can be implemented using Excel. But if we use generative AI tools, of course it can be fulfilled, right? 
+
+01:25:25 
+So again, let's go to our block and 
+
+01:25:30 
+try by ourselves. We upload this predicting, or maybe I exit this file first. 
+
+01:25:54 
+this is the original database. Then I upload this one to Grog. You 
+
+01:26:03 
+can follow 
+
+01:26:04 
+the prompt. This 
+
+01:26:31 
+page, we already have the prompt here which can be used. So based 
+
+01:26:38 
+on the Excel data uploaded to Grog 
+
+01:26:41 
+using the CGI as the independent variable and the Odyssey as the dependent variable 
+
+01:26:46 
+show regression results of OLS estimation. OLS is the estimation we 
+
+01:26:53 
+just introduced, least. LS means least square. O means ordinary. So ordinary least 
+
+01:27:00 
+square estimation is the commonly used estimation for regression model. Okay, so 
+
+01:27:07 
+we copy this instruction. 
+
+01:27:09 
+using the Xperia PBT, then we go to, it 
+
+01:27:18 
+should be pasted as plain text, and see whether we can get the same results. 
+
+01:27:26 
+This is strange, sometimes when I use the other AI tools, the answer could be different. 
+
+01:27:34 
+That is, I checked the issue, I think maybe... 
+
+01:27:38 
+That is due to the different regression model used by the different AI tools. 
+
+01:27:44 
+So that's why I explicitly set the instruction here, which is independent, which is dependent, and which model we should use. 
+
+01:27:53 
+OARS. 
+
+01:27:54 
+You 
+
+01:27:59 
+can see they get the same answer, right? 
+
+01:28:05 
+198.9033. 
+
+01:28:07 
+And they have one extra. 
+
+01:28:13 
+nominal point, and the negative 16.09 watts of CGI is at the outside. 
+
+01:28:22 
+And you can keep asking if the next year's CGI is 5. 
+
+01:28:34 
+It's 
+
+01:28:47 
+the same 
+
+01:28:51 
+already on the heavy usage, right? No, it's okay. 
+
+01:28:56 
+I think that we don't have to show that because of course it's a very simple calculation, right? 
+
+01:29:02 
+Look at the equation here. 
+
+01:29:04 
+Predicted audit fee equal to this amount for A and B times CGI. 
+
+01:29:12 
+So if CGI is 5, we can easily get the answer for predicted audit fee, right? 
+
+01:29:19 
+Okay, so this is the prediction model. 
+
+01:29:25 
+So this is the typical tool for machine learning, and this is the logic for the machine learning to make predictions. 
+
+01:29:34 
+Of course, they have many other models that can be used for the prediction, but this one is a bug. 
+
+01:29:41 
+Okay, 
+
+01:29:54 
+so AI in daily life in general... 
+
+01:29:59 
+Actually, this is just for information, for example, it can be used in the smart home ecosystem, like to check the temperature, 
+
+01:30:11 
+using the security system, using the home cleaning service, and also it can be used in personal health management, like health monitors, 
+
+01:30:23 
+like the application in medical analysis. 
+
+01:30:28 
+And also, it can be used in entertainment and social interaction, like the entertainment and social media recommendations. 
+
+01:30:39 
+And it also can be used in transportation and mobility, like the Google Maps, or transportation secrets, like customer sentiment analysis and feedback. 
+
+01:30:53 
+And it can be used in finance and risk management, like the anti-fraud, like the market sentiment analysis. 
+
+01:31:04 
+And also it can be used in the retail and supply chain optimization, like the recommendation based on the purchase history, like the predicted demand in the future. 
+
+01:31:19 
+And it can also be widely applied in manufacturing efficiency, 
+
+01:31:24 
+like predict the machinery issues, like the use in the product inspection. 
+
+01:31:31 
+Okay, so many applications in business. 
+
+01:31:37 
+And particularly, 
+
+01:31:39 
+It, of course, can be used in the counting time. 
+
+01:31:42 
+So, for example, there are some automations of the routine tasks, like back-to-back entry 
+
+01:31:48 
+and bookkeeping can be automated. 
+
+01:31:52 
+And according to those characteristics of the unsupervised learning, we know that the 
+
+01:31:59 
+anomaly detection would be a popular function by the machine learning line, or by the AI. 
+
+01:32:06 
+So AI detection is very powerful. 
+
+01:32:09 
+And financial forecasting and planning, for example, AI automates cash flow analysis by identifying patterns in large data sets, providing actionable insights. 
+
+01:32:22 
+And it can be used in risk assessment and compliance, like AI automates compliance monitoring and reporting by analyzing the large data sets to identify risks and ensure adherence to laws. 
+
+01:32:36 
+And data analytics and insights like the trend analysis uncover patterns in historical data to improve financial performance. 
+
+01:32:46 
+There are some key technologies in AI accounting. 
+
+01:32:51 
+It's worthwhile of the introducing. 
+
+01:32:56 
+For example, deep learning and major language processing and generative AI, 
+
+01:33:07 
+Of course, there are so many of them, I'll just name a few. 
+
+01:33:11 
+The first one is deep learning, which can be used as a key tool, an AI tool used in accounting. 
+
+01:33:20 
+So deep learning is a specialised form of machinery, we already know, utilised multiple layer neutral network. 
+
+01:33:27 
+So our system has successfully handled tasks like image recognition, natural language processing we'll discuss later, 
+
+01:33:35 
+and predictive analytics. The deep learning based system can all perform these tools. 
+
+01:33:41 
+And deep learning significantly improves the effectiveness of the accounting functions. 
+
+01:33:48 
+Then another widely used AI tool is so-called NLP, short for Nature Language Processing. 
+
+01:33:56 
+So which interface works rather than the numeric data. 
+
+01:34:00 
+So it can be used in text summarization, contract analysis, and regulatory compliance. 
+
+01:34:06 
+So let's see a video to better understand what kind of a tool we are talking about. 
+
+01:34:13 
+Nature Language. 
+
+01:34:20 
+Star Wars fans would be familiar with the golden life-size hospitality for Class of C3DL. 
+
+01:34:25 
+While Star Wars might be set in a galaxy far, far away, 
+
+01:34:29 
+the reality of having machines talk and respond to us in a human-like manner is already a reality, 
+
+01:34:35 
+which keeps getting more and more realistic with every passing day. 
+
+01:34:39 
+The people you ask for queries on websites, your smart assistants, even calls made over the internet, 
+
+01:34:44 
+all of them have one thing in common. 
+
+01:34:46 
+None of them are actually humans. 
+
+01:34:48 
+Now, you must be thinking, if they are not human, how do they manage to sound and seem so human-like? 
+
+01:34:54 
+How do they respond to me so intelligently, and how are they so articulate? 
+
+01:34:59 
+This, my friends, is the magic of natural language processing. 
+
+01:35:03 
+What is NLP? 
+
+01:35:05 
+Natural language processing, or NLP, refers to the branch of artificial intelligence that gives the machines the ability to read, understand, and derive meaning from human language. 
+
+01:35:15 
+NLP combines the field of linguistics and computer science to decipher language structure and guidelines and to make models which can comprehend, break down, and separate significant details from text and speech. 
+
+01:35:28 
+Every day, humans interact with each other through public social media, transferring vast quantities of free available data to each other. 
+
+01:35:36 
+This data is extremely useful in understanding human behavior and customer habits. 
+
+01:35:41 
+Data analysts and machine learning experts utilize this data to give machines the ability to mimic human linguistic behavior. 
+
+01:35:48 
+This helps save millions in terms of manpower and time, as you don't need to always have a person present at the other end of the phone. 
+
+01:35:56 
+NLP is also a lot more widespread than you may realize. 
+
+01:35:59 
+You use it every day in seemingly normal and insignificant situations. 
+
+01:36:04 
+Don't know how to correctly spell a word? 
+
+01:36:06 
+Autocorrect has you covered. 
+
+01:36:08 
+Need to see if your article or thesis will be flagged for copyright violations? 
+
+01:36:13 
+That's okay. 
+
+01:36:13 
+A plagiarism checker will search through the web and find any cases of published documents 
+
+01:36:18 
+which may match your work line by line. 
+
+01:36:21 
+While in a piece of paper tool, you have a cutting edge and complicated technology concept. 
+
+01:36:26 
+It is actually pretty easy to learn. 
+
+01:36:28 
+You start off with a document or an article. 
+
+01:36:31 
+to make your algorithm understand what is going on in it you need to process it into a form which 
+
+01:36:36 
+is easily comprehensible by the machine this is no different than making a child learn the 
+
+01:36:41 
+week for the first time you start off by performing segmentation which is to break 
+
+01:36:47 
+the entire document down into its constituent sentences you can do this by segmenting the 
+
+01:36:56 
+For the algorithm to understand these sentences, we get the words in a sentence and to explain them individually to our algorithm. 
+
+01:37:03 
+So, we break down our sentence into its constituent words and store them. 
+
+01:37:07 
+This is called tokenizing, where each word is called a token. 
+
+01:37:11 
+We can make the learning process faster by getting rid of non-essential words, which do not add much meaning to our statement, and are just there to make our statement sound more cohesive. 
+
+01:37:21 
+These words, such as are, and, the, are called stop words. 
+
+01:37:26 
+Now that we have the basic form of our document, we need to explain it to our machine. 
+
+01:37:30 
+We first start off by explaining that some words like skipping, skips, skip, are the same word with added prefixes and suffixes. 
+
+01:37:38 
+This is called stemming. 
+
+01:37:40 
+We also identify the base words for different word types, mood, gender, etc. 
+
+01:37:45 
+This is called lemmatization, stemming from the base word lemma. 
+
+01:37:49 
+Now, we explain the concept of nouns, verbs, articles, and other parts of speech to the machine by adding these tags to our words. 
+
+01:37:57 
+This is called part of speech tagging. 
+
+01:38:00 
+Next, we introduce our machine to pop culture references and everyday names by flagging names of movies, important personalities, or locations, etc. that may occur in the document. 
+
+01:38:10 
+This is called named entity tagging. 
+
+01:38:13 
+Once we have our base words and tags, we use a machine learning algorithm like Naive Bay. 
+
+01:38:18 
+to teach our model humans syntax and speech. 
+
+01:38:21 
+At the end of the day, most of the techniques used in NLP 
+
+01:38:24 
+are simple grammar techniques that we have been taught in school. 
+
+01:38:27 
+Here is a question for you. 
+
+01:38:29 
+Which of these NLP techniques 
+
+01:38:31 
+is a very powerful tool 
+
+01:38:33 
+actually is wisely used in the content 
+
+01:38:37 
+reading and analysis? 
+
+01:38:40 
+because the contract could be written in different languages, and also the data is quite unstructured, 
+
+01:38:46 
+so such NLP technology is very powerful and useful. 
+
+01:38:51 
+And another law we are very familiar with, generative AI, 
+
+01:38:55 
+refers to the ability of certain deep learning models to rapidly create content in response to text prompts. 
+
+01:39:02 
+So this technology marks a significant advantage. 
+
+01:39:06 
+But once it's in AI, it can understand and generate the major language. 
+
+01:39:10 
+So for example, it can be used in content creation. 
+
+01:39:14 
+It can synthesize the knowledge from other sources, 
+
+01:39:19 
+being problem solving across multiple domains. 
+
+01:39:22 
+And of course, it can be applied in accounting class. 
+
+01:39:25 
+So in accounting, generative AI can draft reports and financial statements, 
+
+01:39:38 
+Actually, in the next two chapters, we will explain more details about how can we make 
+
+01:39:45 
+the best use of the generative AI in analyzing the economy, so we leave this for future chapters. 
+
+01:39:52 
+And another one is very commonly used, the robotic process automation, RPA. 
+
+01:39:57 
+So RPA primarily handles structured data at its best for rules-based transactions, 
+
+01:40:02 
+like handling the accounts payable, accounts receivable. 
+
+01:40:06 
+And it has some enhanced capabilities, like when it's combined with machine learning, 
+
+01:40:12 
+the RPA can enable things, present, invoice the processing, fraud detection, and automated compliance tests. 
+
+01:40:21 
+So another one is also one of the ones to use here, 
+
+01:40:26 
+which is commonly used, the so-called OCR. 
+
+01:40:29 
+OCR is short for Optimal Character Recognition, 
+
+01:40:33 
+which is a technology that converts text 
+
+01:40:37 
+from scanned or digital documentation 
+
+01:40:39 
+into the machine-readable text. 
+
+01:40:41 
+So imagine, this is very useful, right? 
+
+01:40:44 
+Like the company collects the tons of the invoices, 
+
+01:40:48 
+such documentation. 
+
+01:40:50 
+so the invoices previously if you need a human being to make analysis it's so time consuming 
+
+01:40:55 
+right and easy to make mistake but for the computer it's very easy just to use this the 
+
+01:41:02 
+ocr sphere it can fulfill that duty right without error and efficiently 
+
+01:41:11 
+so let's see our last preview which is related to the ocr 
+
+01:41:21 
+Today, we're going to take a look at OCR, or Optical Character Write Condition. 
+
+01:41:26 
+OCR is a technology that converts printed text into a digital format. 
+
+01:41:31 
+The variety of different fonts and ways of writing a single character makes this problem hard to solve. 
+
+01:41:36 
+Before an OCR algorithm can be chosen, the image must undergo some pre-processing. 
+
+01:41:41 
+In this step, the document is traded. 
+
+01:41:43 
+despeckled and converted from color to a binary image an image where the only two 
+
+01:41:48 
+colors are black and white the feature detection algorithm identifies a 
+
+01:41:52 
+character by analyzing the lines and strokes that make it the second approach 
+
+01:41:56 
+Pattern recognition works by identifying the character as a whole. 
+
+01:42:00 
+We can identify a line of text by looking for rows of white pixels with rows of black pixels in between. 
+
+01:42:06 
+In the same way, we can identify where an individual character begins and ends. 
+
+01:42:11 
+Next, we convert the image of the character into a binary matrix where white pixels are zeros and black pixels are ones. 
+
+01:42:18 
+Then, by using the distance formula, we can find the distance from the center of the matrix 
+
+01:42:23 
+to the farthest one. 
+
+01:42:24 
+We then create a circle of that radiance 
+
+01:42:26 
+and split it up into more granular sections. 
+
+01:42:29 
+At this point, the algorithm will compare 
+
+01:42:31 
+every single subsection against a database of matrices 
+
+01:42:34 
+representing characters with various fonts 
+
+01:42:36 
+to find the character it statistically has 
+
+01:42:39 
+the most in common with. 
+
+01:42:40 
+And doing this for every line and every character 
+
+01:42:43 
+makes it easy to bring printed media into the digital world. 
+
+01:43:01 
+the company's reading documentation, especially those scanned documentation. 
+
+01:43:09 
+So you can see that it can eliminate the manual data entry, so both traditional and modern OCR 
+
+01:43:16 
+reduce the time spent on data entry and minimize human error. 
+
+01:43:21 
+And this can enhance the document storage because the OCR 
+
+01:43:28 
+digitize the documents, making them searchable and improving document management. 
+
+01:43:33 
+And this functionality is typically integrated into the advanced accounting software, 
+
+01:43:38 
+and especially it's widely used in automating the account payable process. 
+
+01:43:46 
+Okay, then there are some AI-powered tools used in accounting. 
+
+01:43:50 
+So these tools are those deterred software or deterred AI tools, 
+
+01:43:55 
+which are widely used in addressing the different perspectives of the accounting error. 
+
+01:44:02 
+So let's see more details here. 
+
+01:44:05 
+We'll 
+
+01:44:15 
+upload this one, so -called key AI tools in accounting, 
+
+01:44:19 
+and upload it to the lawyer 
+
+01:44:30 
+information. 
+
+01:44:32 
+There's no need to memorize them. 
+
+01:44:41 
+Okay, so you can see that we can divide them 
+
+01:44:43 
+into different categories because they play different roles. 
+
+01:44:49 
+Some tools, some AI tools are used to address 
+
+01:44:52 
+the everyday assistance, like the chat-GBT, 
+
+01:44:55 
+like so-called clouding, or co-pilot. 
+
+01:44:58 
+So maybe you have some idea of these 
+
+01:45:01 
+because some of them are very famous, right? 
+
+01:45:04 
+Except the chat-GBT, everyone knows it. 
+
+01:45:07 
+So these AI tools draft emails and memos, explain an accounting rule in plain English, 
+
+01:45:14 
+and summarize the loan documents, and suggest formulas. 
+
+01:45:19 
+And some other tools can be divided into something like Excel with Copilot to address the spreadsheet issues. 
+
+01:45:31 
+and Python with Pandas or Syskit Learn, which is designed for the customer data work, 
+
+01:45:39 
+and text and others are used for the bookkeeping and the document capture, 
+
+01:45:45 
+and invoices and a big .ai ramp and a beer such tools are only used in invoices and payment. 
+
+01:45:54 
+And some others are used for the mouse and clothes and reconciliation, so they have some special role. 
+
+01:46:02 
+And some of them are used for the audit area, for audit and assurance analytics. 
+
+01:46:09 
+And some of them are used for the text related issues. 
+
+01:46:14 
+And some of them are related to the practice management. 
+
+01:46:17 
+Okay, so more detailed discussion, I will leave them to the Saturday class. 
+
+01:46:24 
+So see you on Saturday afternoon. 
+

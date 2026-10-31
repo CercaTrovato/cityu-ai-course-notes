@@ -1,0 +1,799 @@
+{
+  "basic_tables": {
+    "Cash": 4,
+    "CashReceipt": 5,
+    "Customer": 5,
+    "Inventory": 6,
+    "Inventory-SaleStockflow": 13,
+    "Sale": 7,
+    "Sale-CashRecDuality": 6,
+    "Salesperson": 4
+  },
+  "q1": [
+    {
+      "link": {
+        "SaleNumber": "S-5",
+        "RemittanceAdviceNumber": "RA-4",
+        "Applied": 16600.0
+      },
+      "receipt": {
+        "RemittanceAdviceNumber": "RA-4",
+        "Amount": 32600.0,
+        "BankAccountNumber": "BA-7",
+        "Date": "2014-08-15T00:00:00",
+        "CustomerNumber": "C-5",
+        "CashierNumber": "E-39"
+      },
+      "sale": {
+        "SaleNumber": "S-5",
+        "Amount": 16600.0,
+        "Date": "2014-07-31T00:00:00",
+        "CustomerNumber": "C-5",
+        "SalesRepNumber": "E-10"
+      }
+    }
+  ],
+  "q2": [
+    {
+      "stockflow": {
+        "InventoryItemID": "A-6",
+        "SaleNumber": "S-2",
+        "Quantity": 2,
+        "ActualPrice": 5000.0
+      },
+      "inventory": {
+        "ItemID": "A-6",
+        "Description": "Extra Large A",
+        "StdUnitCost": 3600.0
+      },
+      "customer": {
+        "CustomerNumber": "C-2",
+        "Name": "Mick",
+        "Accounts Receivable Balance": null,
+        "SalespersonNumber": "E-10"
+      }
+    }
+  ],
+  "q3": [
+    {
+      "customer": "C-1",
+      "name": "Bill",
+      "sale": "S-1",
+      "receipt": "RA-3",
+      "sale_date": "2014-07-01",
+      "receipt_date": "2014-08-15",
+      "lag_days": 45,
+      "applied": 7200.0
+    },
+    {
+      "customer": "C-2",
+      "name": "Mick",
+      "sale": "S-2",
+      "receipt": "RA-1",
+      "sale_date": "2014-07-21",
+      "receipt_date": "2014-07-25",
+      "lag_days": 4,
+      "applied": 1666.0
+    },
+    {
+      "customer": "C-2",
+      "name": "Mick",
+      "sale": "S-2",
+      "receipt": "RA-5",
+      "sale_date": "2014-07-21",
+      "receipt_date": "2014-08-25",
+      "lag_days": 35,
+      "applied": 1666.0
+    },
+    {
+      "customer": "C-5",
+      "name": "Ron",
+      "sale": "S-3",
+      "receipt": "RA-4",
+      "sale_date": "2014-07-22",
+      "receipt_date": "2014-08-15",
+      "lag_days": 24,
+      "applied": 16000.0
+    },
+    {
+      "customer": "C-2",
+      "name": "Mick",
+      "sale": "S-4",
+      "receipt": "RA-2",
+      "sale_date": "2014-07-26",
+      "receipt_date": "2014-07-26",
+      "lag_days": 0,
+      "applied": 10000.0
+    },
+    {
+      "customer": "C-5",
+      "name": "Ron",
+      "sale": "S-5",
+      "receipt": "RA-4",
+      "sale_date": "2014-07-31",
+      "receipt_date": "2014-08-15",
+      "lag_days": 15,
+      "applied": 16600.0
+    }
+  ],
+  "applied_by_sale": {
+    "S-1": 7200.0,
+    "S-2": 3332.0,
+    "S-3": 16000.0,
+    "S-4": 10000.0,
+    "S-5": 16600.0,
+    "S-6": 0,
+    "S-7": 0
+  },
+  "unpaid_by_sale": {
+    "S-1": 0.0,
+    "S-2": 6668.0,
+    "S-3": 0.0,
+    "S-4": 0.0,
+    "S-5": 0.0,
+    "S-6": 35000.0,
+    "S-7": 23000.0
+  },
+  "q4_per_item_minima": [
+    {
+      "item": "A-1",
+      "price": 2000.0,
+      "sale": "S-1",
+      "salesperson": "E-12",
+      "customer": "C-1",
+      "name": "Bill"
+    },
+    {
+      "item": "A-1",
+      "price": 2000.0,
+      "sale": "S-3",
+      "salesperson": "E-10",
+      "customer": "C-5",
+      "name": "Ron"
+    },
+    {
+      "item": "A-2",
+      "price": 3000.0,
+      "sale": "S-5",
+      "salesperson": "E-10",
+      "customer": "C-5",
+      "name": "Ron"
+    },
+    {
+      "item": "A-3",
+      "price": 1000.0,
+      "sale": "S-3",
+      "salesperson": "E-10",
+      "customer": "C-5",
+      "name": "Ron"
+    },
+    {
+      "item": "A-4",
+      "price": 300.0,
+      "sale": "S-5",
+      "salesperson": "E-10",
+      "customer": "C-5",
+      "name": "Ron"
+    },
+    {
+      "item": "A-5",
+      "price": 3000.0,
+      "sale": "S-7",
+      "salesperson": "E-99",
+      "customer": "C-4",
+      "name": "Charlie"
+    },
+    {
+      "item": "A-6",
+      "price": 5000.0,
+      "sale": "S-2",
+      "salesperson": "E-10",
+      "customer": "C-2",
+      "name": "Mick"
+    },
+    {
+      "item": "A-6",
+      "price": 5000.0,
+      "sale": "S-4",
+      "salesperson": "E-10",
+      "customer": "C-2",
+      "name": "Mick"
+    },
+    {
+      "item": "A-6",
+      "price": 5000.0,
+      "sale": "S-5",
+      "salesperson": "E-10",
+      "customer": "C-5",
+      "name": "Ron"
+    }
+  ],
+  "q4_global_minimum": 300.0,
+  "q5_totals": {
+    "C-1": 7200.0,
+    "C-2": 20000.0,
+    "C-5": 32600.0,
+    "C-3": 35000.0,
+    "C-4": 23000.0
+  },
+  "q6_amounts": {
+    "A-1": 8000.0,
+    "A-2": 41000.0,
+    "A-3": 6000.0,
+    "A-4": 1800.0,
+    "A-5": 17000.0,
+    "A-6": 44000.0
+  },
+  "q6_quantities": {
+    "A-1": 4,
+    "A-2": 12,
+    "A-3": 6,
+    "A-4": 4,
+    "A-5": 5,
+    "A-6": 8
+  },
+  "sale_reconciliation": {
+    "S-1": 7200.0,
+    "S-3": 16000.0,
+    "S-5": 16600.0,
+    "S-6": 35000.0,
+    "S-7": 23000.0,
+    "S-2": 10000.0,
+    "S-4": 10000.0
+  },
+  "ols": {
+    "n": 25,
+    "sum_x": "963/10",
+    "sum_y": "3423",
+    "sum_xx": "43451/100",
+    "sum_xy": "60813/5",
+    "a_fraction": "31606935/158906",
+    "b_fraction": "-1278495/79453",
+    "a": 198.90334537399468,
+    "b": -16.091211156281073,
+    "cgi5": 118.44728959258933,
+    "sse": 10485.813594200345,
+    "data": [
+      [
+        2000,
+        1.8,
+        206.0
+      ],
+      [
+        2001,
+        3.3,
+        150.0
+      ],
+      [
+        2002,
+        2.5,
+        162.0
+      ],
+      [
+        2003,
+        3.6,
+        127.0
+      ],
+      [
+        2004,
+        1.9,
+        188.0
+      ],
+      [
+        2005,
+        2.8,
+        128.0
+      ],
+      [
+        2006,
+        4.5,
+        105.0
+      ],
+      [
+        2007,
+        3.2,
+        111.0
+      ],
+      [
+        2008,
+        5.6,
+        100.0
+      ],
+      [
+        2009,
+        6.1,
+        108.0
+      ],
+      [
+        2010,
+        3.0,
+        156.0
+      ],
+      [
+        2011,
+        6.6,
+        88.0
+      ],
+      [
+        2012,
+        2.8,
+        129.0
+      ],
+      [
+        2013,
+        1.9,
+        138.0
+      ],
+      [
+        2014,
+        5.8,
+        112.0
+      ],
+      [
+        2015,
+        7.6,
+        90.0
+      ],
+      [
+        2016,
+        2.6,
+        190.0
+      ],
+      [
+        2017,
+        3.2,
+        186.0
+      ],
+      [
+        2018,
+        2.5,
+        176.0
+      ],
+      [
+        2019,
+        4.7,
+        123.0
+      ],
+      [
+        2020,
+        3.0,
+        136.0
+      ],
+      [
+        2021,
+        2.5,
+        138.0
+      ],
+      [
+        2022,
+        5.3,
+        102.0
+      ],
+      [
+        2023,
+        3.9,
+        158.0
+      ],
+      [
+        2024,
+        5.6,
+        116.0
+      ]
+    ]
+  },
+  "expanded_schema": {
+    "AccountsPayableClerk": {
+      "rows": 1,
+      "fields": [
+        "APClerkID",
+        "Name",
+        "Address",
+        "Telephone",
+        "DateOfBirth"
+      ]
+    },
+    "Cash": {
+      "rows": 4,
+      "fields": [
+        "CashAccountID",
+        "AccountType",
+        "Location",
+        "DateAccountEstablished"
+      ]
+    },
+    "CashDisbursement": {
+      "rows": 3,
+      "fields": [
+        "DisbVoucherID",
+        "VoucherDate",
+        "DollarAmount",
+        "CheckNumber",
+        "CashAccountID",
+        "APClerkID",
+        "PayeeID"
+      ]
+    },
+    "Cashier": {
+      "rows": 2,
+      "fields": [
+        "CashierID",
+        "Name",
+        "Address",
+        "Telephone",
+        "DateOfBirth"
+      ]
+    },
+    "CashReceipt": {
+      "rows": 3,
+      "fields": [
+        "CashReceiptID",
+        "Date",
+        "DollarTotal",
+        "CashAccountID",
+        "CustomerID",
+        "CashierID"
+      ]
+    },
+    "Customer": {
+      "rows": 4,
+      "fields": [
+        "CustomerID",
+        "Name",
+        "Address",
+        "Telephone",
+        "CreditRating"
+      ]
+    },
+    "FulfillmentPurchasePurchaseOrder": {
+      "rows": 5,
+      "fields": [
+        "PurchOrderID",
+        "PurchaseID"
+      ]
+    },
+    "FulfillmentSaleOrderSale": {
+      "rows": 4,
+      "fields": [
+        "SaleOrderID",
+        "SaleID"
+      ]
+    },
+    "InventoryType": {
+      "rows": 6,
+      "fields": [
+        "ItemID",
+        "Description",
+        "UnitOfMeasure",
+        "StandardCost",
+        "ListPrice"
+      ]
+    },
+    "OperatingAssets": {
+      "rows": 20,
+      "fields": [
+        "AssetTagID",
+        "Description",
+        "AcquisitionDate",
+        "AcquisitionCost",
+        "AssetCategory",
+        "EstimatedLifeYrs",
+        "EstimatedSalvage",
+        "IRSListedProperty"
+      ]
+    },
+    "PropositionPurchaseRequisitionInventoryType": {
+      "rows": 10,
+      "fields": [
+        "PurchRequistionID",
+        "ItemID",
+        "QuantityNeeded",
+        "EstimatedUnitCost"
+      ]
+    },
+    "PropositionSalesCallInventory": {
+      "rows": 15,
+      "fields": [
+        "SalesCallID",
+        "ItemID",
+        "CustomerReactiontoProduct"
+      ]
+    },
+    "Purchase": {
+      "rows": 5,
+      "fields": [
+        "ReceivingReportID",
+        "Date",
+        "DollarAmount",
+        "ReceivingClerkID",
+        "SupplierID",
+        "VendorInvoice#",
+        "InvoiceAmount",
+        "CashDisbursementID"
+      ]
+    },
+    "PurchaseOrder": {
+      "rows": 6,
+      "fields": [
+        "PurchaseOrderID",
+        "OrderDate",
+        "DateNeeded",
+        "DollarTotal",
+        "PurchaseReqID",
+        "PurchAgentID",
+        "SupplierID"
+      ]
+    },
+    "PurchaseRequisition": {
+      "rows": 5,
+      "fields": [
+        "PurchReqID",
+        "Date",
+        "MaxBudgetforPurchase",
+        "DateNeeded",
+        "SupervisorID",
+        "PurchaseAgentID",
+        "RecommendedSupplier"
+      ]
+    },
+    "PurchaseReturn": {
+      "rows": 1,
+      "fields": [
+        "PurchReturnID",
+        "Date",
+        "DollarAmount",
+        "PackingSlip#",
+        "DebitMemo#",
+        "ReceivingReport#",
+        "SupplierID",
+        "DeptSupervisorID",
+        "ShippingClerkID"
+      ]
+    },
+    "Receiving Clerk": {
+      "rows": 2,
+      "fields": [
+        "ReceivingClerkID",
+        "Name",
+        "Address",
+        "Telephone",
+        "DateOfBirth"
+      ]
+    },
+    "ReservationPurchaseOrderInventoryType": {
+      "rows": 9,
+      "fields": [
+        "PurchOrderID",
+        "ItemID",
+        "QuantityOrdered",
+        "OrderedUnitCost"
+      ]
+    },
+    "ReservationSaleOrderInventory": {
+      "rows": 6,
+      "fields": [
+        "SaleOrderID",
+        "ItemID",
+        "QuantityOrdered",
+        "QuotedUnitPrice"
+      ]
+    },
+    "Sale": {
+      "rows": 4,
+      "fields": [
+        "SaleID",
+        "Date",
+        "DollarTotal",
+        "PickListID",
+        "PackListID",
+        "BOL#",
+        "SalesRepID",
+        "CustomerID",
+        "CashReceiptID"
+      ]
+    },
+    "SaleOrder": {
+      "rows": 4,
+      "fields": [
+        "SaleOrderID",
+        "OrderDate",
+        "DateNeeded",
+        "DollarTotal",
+        "SalesTax",
+        "ShippingCharge",
+        "SalesCallID",
+        "SalesRepID",
+        "CustomerID"
+      ]
+    },
+    "SaleReturn": {
+      "rows": 1,
+      "fields": [
+        "SaleReturnID",
+        "Date",
+        "DollarAmount",
+        "ReceivingReportNo",
+        "CreditMemo#",
+        "CreditMgrID",
+        "SaleID",
+        "CustomerID",
+        "ReceivingClerkID"
+      ]
+    },
+    "SalesCall": {
+      "rows": 3,
+      "fields": [
+        "SalesCallID",
+        "Date",
+        "StartTime",
+        "EndTime",
+        "Location",
+        "SalesRepID",
+        "CustomerID"
+      ]
+    },
+    "SalesRepresentative": {
+      "rows": 3,
+      "fields": [
+        "SalesRepID",
+        "Name",
+        "Address",
+        "Telephone",
+        "DateOfBirth"
+      ]
+    },
+    "ShippingClerk": {
+      "rows": 1,
+      "fields": [
+        "ShippingClerkID",
+        "Name",
+        "Address",
+        "Telephone",
+        "DateOfBirth"
+      ]
+    },
+    "StockflowPurchaseInventoryType": {
+      "rows": 8,
+      "fields": [
+        "PurchaseID",
+        "ItemID",
+        "QuantityPurchased",
+        "ActualUnitCost"
+      ]
+    },
+    "StockflowPurchaseReturnInventoryType": {
+      "rows": 1,
+      "fields": [
+        "PurchReturnID",
+        "ItemID",
+        "QuantityReturned",
+        "UnitCostAllowed"
+      ]
+    },
+    "StockflowSaleInventory": {
+      "rows": 6,
+      "fields": [
+        "SaleID",
+        "ItemID",
+        "QuantitySold",
+        "ActualUnitSellingPrice"
+      ]
+    },
+    "StockflowSaleReturnInventory": {
+      "rows": 1,
+      "fields": [
+        "SaleReturnID",
+        "ItemID",
+        "QuantityReturned",
+        "ActualUnitSellPrice",
+        "ConditionOfGoods",
+        "ReasonReturned"
+      ]
+    },
+    "Supervisor": {
+      "rows": 1,
+      "fields": [
+        "SupervisorID",
+        "Name",
+        "Address",
+        "Telephone",
+        "DateOfBirth"
+      ]
+    },
+    "Supplier": {
+      "rows": 3,
+      "fields": [
+        "SupplierID",
+        "Name",
+        "Address",
+        "Telephone",
+        "PerformanceRating"
+      ]
+    }
+  },
+  "time_segments": [
+    {
+      "source": "S22",
+      "start": "00:00",
+      "end": "04:12",
+      "seconds": 252
+    },
+    {
+      "source": "S22",
+      "start": "04:12",
+      "end": "11:48",
+      "seconds": 456
+    },
+    {
+      "source": "S22",
+      "start": "11:48",
+      "end": "22:39",
+      "seconds": 651
+    },
+    {
+      "source": "S23-M06",
+      "start": "00:00",
+      "end": "15:55",
+      "seconds": 955
+    },
+    {
+      "source": "S23-M06",
+      "start": "15:55",
+      "end": "20:27",
+      "seconds": 272
+    },
+    {
+      "source": "S23-M08",
+      "start": "20:27",
+      "end": "29:56",
+      "seconds": 569
+    },
+    {
+      "source": "S23-M08",
+      "start": "29:56",
+      "end": "36:18",
+      "seconds": 382
+    },
+    {
+      "source": "S23-M08",
+      "start": "36:18",
+      "end": "01:05:41",
+      "seconds": 1763
+    },
+    {
+      "source": "S23-M08",
+      "start": "01:05:41",
+      "end": "01:13:06",
+      "seconds": 445
+    },
+    {
+      "source": "S23-M08",
+      "start": "01:13:06",
+      "end": "01:29:54",
+      "seconds": 1008
+    },
+    {
+      "source": "S23-M08",
+      "start": "01:29:54",
+      "end": "01:46:24",
+      "seconds": 990
+    },
+    {
+      "source": "S23-Excel-increment",
+      "start": "01:13:06",
+      "end": "01:29:34",
+      "seconds": 988
+    },
+    {
+      "source": "S23-two-pros",
+      "start": "51:51",
+      "end": "52:12",
+      "seconds": 21
+    },
+    {
+      "source": "S23-NLP",
+      "start": "01:34:13",
+      "end": "01:38:27",
+      "seconds": 254
+    }
+  ]
+}

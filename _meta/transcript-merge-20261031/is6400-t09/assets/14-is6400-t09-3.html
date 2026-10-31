@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>is6400-t09-3</title><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:900px;margin:25px auto;padding:0 26px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}h1,h2,h3,h4{line-height:1.4}h2{margin-top:1.4em;border-bottom:1px solid #cbd8df}table{border-collapse:collapse;max-width:100%;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;margin:15px 0;padding:8px 15px;border-left:4px solid #577686}img,svg{max-width:100%;height:auto}.katex-display{overflow-x:auto}code{font-size:.9em}section{margin-bottom:28px}</style><body><h1>is6400-t09 · 新增课堂内容 5–6</h1>
+<h3>2.5</h3>
+<p><strong>🎙️ 课堂补充</strong>（S20 <code>01:52:14</code>–<code>01:55:39</code>）</p>
+<p>教程明确调用一阶差分，并读处理后KPSS输出0.1。S20 <code>01:52:14</code>：<em>"So the third step is we can apply first-order differencing to detrend the data."</em> 后续又强调，并非所有模型都使用三步处理后的最终列（<code>01:52:55</code>–<code>01:53:32</code>）；模型自己能处理哪种结构，决定要交给它哪个输入。</p>
+<p><code>01:55:07</code>要求测试数据在训练之后；<code>01:55:23</code>说明末12月作测试。课堂p值口径仍须按正文写“未拒绝”，不能写已证明平稳。</p>
+<h3>2.6</h3>
+<p><strong>🎙️ 课堂补充</strong>（S20 <code>01:55:49</code>–<code>01:58:49</code>）</p>
+<p>教程讲者明确纠正选阶数据范围。S20 <code>01:56:58</code>：<em>"we can only use the training data to determine how many parts of value we use."</em> <code>01:57:12</code>–<code>01:57:21</code>说明旧版用全数据不对，已更新Notebook；本地当前Cell41／44确实传 train。</p>
+<p>录音末尾在PACF取p=2的解释中断，尚未直接录到本节其后的ACF选q、拟合、预测及RMSE，不能把讲义源码和既有本机实跑冒称课堂演示。这个更正只确认选阶，不会自动消除Cell15／22全表预处理的问题。</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});</script></body></html>

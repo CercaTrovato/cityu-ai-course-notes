@@ -1,0 +1,3192 @@
+00:02 
+In XT and YT, we do not use the time-t as my input feature, then how we can do that? 
+
+00:10 
+So there are many different ways that we can construct new time-dependent features to make the linear regression analysis for the construed data. 
+
+00:23 
+Now today, let's go through a very formal study of the autoregressive method, or autoregression. 
+
+00:33 
+So the autoregression, in short, it is a very big class of the time series prediction models 
+
+00:41 
+that we are still trying to deal with the time series data using the regression analysis. 
+
+00:47 
+It is not a simple linear regression, we call it autoregression. 
+
+00:51 
+Let's see how the autoregression model is very useful for analyzing the time series data. 
+
+00:58 
+So the core of the time series data, we are using a set of observations of the variables 
+
+01:06 
+and the fixed time intervals, for example, the daily observation or weekly observation. 
+
+01:12 
+So every fixed time interval, we observe the variable and we have the report. 
+
+01:19 
+Now, given the time information and the observations, 
+
+01:22 
+we are trying to use all the historical information to make the future prediction. 
+
+01:29 
+Now, for example, for the stock price, if we are sitting by the end of this day, so by the end of this Wednesday, 
+
+01:38 
+now we assume all the historical stock price, the YT, up to now, up to today, they are all available. 
+
+01:47 
+Now we are trying to make future prediction of YT plus 1. 
+
+01:51 
+Right? 
+
+01:57 
+some features of Xt from using the historical observation of Yt. 
+
+02:03 
+So any new features that we can construct from using the Yt, t from 1 to t, will be useful. 
+
+02:13 
+And we need to extract as many as we can to make sure that these features of Xt, 
+
+02:20 
+they are representative enough for predicting the future Yt plus 1. 
+
+02:27 
+how we can identify the axes, how we can extract and construct new features from all the historical observations. 
+
+02:36 
+Now, before we extract some features from YT, 
+
+02:41 
+let's see what is the qualified or the most representative axes for making the prediction. 
+
+02:57 
+fitted values. So what is fitted values? It is provided by a regression formula f given the feature of x. 
+
+03:06 
+Right? So we use f to make feature prediction of y . 
+
+03:10 
+So f function can be a descent tree, a regression tree, or can be a linear regression, 
+
+03:15 
+or can be any regression model you can use. 
+
+03:18 
+And the job is to use f and feed f the features into the fitting function f, 
+
+03:26 
+and we will be able to provide the fitting value of y . 
+
+03:30 
+Of course, for all the fixed values, or for using all the prediction values, 
+
+03:35 
+Provided by f , we will have the prediction error, or we call it the reticule, the 
+
+03:45 
+error. 
+
+03:46 
+Now imagine if the feature x provides all the information we need to predict y , 
+
+03:55 
+and we use this formula to make predictions, 
+
+04:00 
+then your error, the prediction error, or the reticule, they will become random noise. 
+
+04:06 
+So you have a mean value equal to zero, with a standard division, with a, following this kind of normal distribution, it's actually a random noise. 
+
+04:14 
+But, if you cannot capture all the information we need to predict yt, then your next theory is not a random number. 
+
+04:26 
+Because you miss. 
+
+04:28 
+some key information in selected acts, in selected features. 
+
+04:32 
+And then YT, in order to make a prediction for YT, 
+
+04:36 
+the prediction requires some additional information 
+
+04:38 
+which will go beyond the information you can get from your selected features acts. 
+
+04:44 
+Then your predictions will, and still you can make predictions, 
+
+04:48 
+but because of the missing information or some new features 
+
+04:53 
+that you didn't capture the information of these new features, 
+
+04:56 
+and then you use the limited number of features to make a prediction, then your rescue will not be a random noise. 
+
+05:03 
+It may have a shift that every time you make a prediction, because of the missing information, 
+
+05:09 
+and your prediction value is always smaller than the true value, then your prediction error is not a random noise. 
+
+05:28 
+as much information as we can, and hopefully after we select a set of features from YP, 
+
+05:35 
+the rest use will become random noise. If not, then we need to see some other automation 
+
+05:43 
+methods to make sure that the rest use of the traditional arrows becomes random noise 
+
+05:50 
+as much as possible. Now, how we can do that? 
+
+05:58 
+some teachers from Yt to make few predictions of Yt plus 1 
+
+06:03 
+then the Xt is satisfied at least three assumptions 
+
+06:09 
+or three conditions 
+
+06:11 
+The first condition is that 
+
+06:15 
+the Xt should be time dependent 
+
+06:20 
+If Xt is a static value from period to period 
+
+06:26 
+then Xt will provide no information for the future time series of Y2 plus 1, 
+
+06:32 
+because Y2 plus 1 changes from period to period. 
+
+06:35 
+And if Xt is static, then these two numbers, they are not correlated with each other. 
+
+06:44 
+So Y is very stable and static, so you can imagine this kind of scatter plot, right? 
+
+06:49 
+So X is static, and Y changes from period to period. 
+
+06:53 
+So in this scatter plot, it looks like a random noise. 
+
+06:56 
+the axis of the noise of Y. So also if it is time dependent, if Xt is time dependent, it also need to be highly correlated with the Yt. 
+
+07:11 
+So if Xt is not related to Yt, so Xt changes from period to period. 
+
+07:24 
+a future value to build the relationship with Yt. 
+
+07:29 
+And the third assumption is the most important, that 
+
+07:34 
+the Xt should be available 
+
+07:39 
+from using all the information available after now. 
+
+07:43 
+We cannot use any future information to construct Xt 
+
+07:47 
+and then use the future information to make future predictions of Yt plus 1. 
+
+07:52 
+Because we have no idea about the future values, right? 
+
+07:57 
+So, X can only be constructed using the information available up to now. 
+
+08:05 
+Up to the current time stamp. 
+
+08:08 
+Now, let's see how we can identify the X which stands by the three conditions. 
+
+08:14 
+X is time dependent. 
+
+08:16 
+X is highly related with Y . 
+
+08:21 
+can be constructed using all the information we know until the current time step. 
+
+08:28 
+So, now, to identify these features, let's think about the most recent observations of some historical data. 
+
+08:43 
+So I believe most of you have your own bank account, and every month, by the end of this month, the bank will send you an email and notify you the bank deposit, right? 
+
+08:54 
+How much money you have in the bank by the end of this month. 
+
+09:00 
+Now, if you consider this as a time series, we will get a number by the end of next month, right? 
+
+09:10 
+And the number we will get by the end of next month, so that number should be highly related 
+
+09:16 
+with the number we can get by the end of this month. 
+
+09:21 
+Right? 
+
+09:22 
+So the two month bank deposit, these two numbers, these should be highly related to each other. 
+
+09:27 
+So if you have the very fixed income, then you can see your bank deposit will go up with 
+
+09:33 
+a certain linear trend, right? 
+
+09:35 
+Up, up, up. 
+
+09:36 
+Or if it's 0, 0, 0, still highly related. 
+
+09:40 
+So we can see, so these two numbers, the observations that we will get for next period and the observations we can get by now, these two numbers should be highly related, right? 
+
+09:55 
+And now, does this current observation of yt satisfy these three conditions? 
+
+10:02 
+So first, yt, if you consider yt as one column feature, so yt is time dependent. 
+
+10:09 
+So for all time periods. 
+
+10:14 
+So the previous month, the month before the previous month, and the bank deposits money, 
+
+10:21 
+it changes from period to period. 
+
+10:24 
+So it's a time index. It's time dependent. 
+
+10:29 
+So is this number highly related to the one we will get in the future? 
+
+10:34 
+I believe so, right? 
+
+10:36 
+Unless you get a very big amount of income, and now it becomes China's strength. 
+
+10:43 
+starting from this month. So it's possible, but in general, they are highly correlated with each other. 
+
+10:49 
+And can we get the number of this period? Yes, we can, right? 
+
+10:55 
+The white heat is available now. So it satisfies all the three conditions. 
+
+10:59 
+And yes, if we use the previous observation as one feature 
+
+11:04 
+to make the next period of the observation, so we can use the previous observation 
+
+11:09 
+or the most recent observation as one of the new features. 
+
+11:14 
+Now we have the lag variables as a new feature 
+
+11:19 
+So the lag variables is to make a time lag of my current available variables as a new column of features 
+
+11:29 
+So we just take the time lag to construct new features 
+
+11:32 
+So for example, the lag1 variable is to have one time period time lag for my original position of yt 
+
+11:43 
+so here 
+
+11:47 
+We have original data set of t and original observation of yt. 
+
+11:54 
+Now this is my first record of t equals to 1. 
+
+11:58 
+So this is my first record. 
+
+12:03 
+Now this is my original time series, right? 
+
+12:06 
+And t and yt. 
+
+12:09 
+We already know that we cannot use these two columns of numbers to make future predictions to construct a linear regression 
+
+12:16 
+because it does not hold this kind of assumption that the pattern will change from period to period. 
+
+12:23 
+Now we will try to construct a new column of future of Xt. 
+
+12:27 
+What 
+
+12:32 
+is Xt? 
+
+12:34 
+So I will use Yt -1 as 
+
+12:41 
+my Xt. 
+
+12:42 
+So this new column of features, or the new column of numbers, 
+
+12:47 
+ATV is constructed using yt, but not using the same period of yt, we are using the previous period of yt as our new feature. 
+
+12:58 
+Now let's take a look at, for the first period, t equals to 1. 
+
+13:02 
+So for the first period, t equals to 1, so x1 will be y0, right? 
+
+13:08 
+So t equals to 1, so x1 equals to y0, but we do not have y0, so the first record, future value here, it is missing. 
+
+13:19 
+Now what is x2? 
+
+13:21 
+x2 is the second row of my feature 
+
+13:24 
+x2 equals to y1, right? 
+
+13:28 
+So what is y1? 
+
+13:29 
+y1 is 223, the previous rows of the vision 
+
+13:33 
+and this number will be shifted by one period 
+
+13:36 
+and I will get my x2 
+
+13:41 
+Is that clear? 
+
+13:43 
+I just moved the 266 from y1 to x2 
+
+13:49 
+So x2 equals to y1 
+
+13:52 
+Now what about I want to get a feature value for x3, x3 equals to y2, right? 
+
+13:59 
+So x3 here equals to y2, 254. 
+
+14:06 
+Now we can continue to construct x3, x4, x5, x6 until xt, right? 
+
+14:12 
+Now we can see once we have this yt and xt, now we get one new column of feature values, right? 
+
+14:23 
+Now can we use the linear line to build the relationship between yt and xt, we 
+
+14:31 
+can do that, right? 
+
+14:32 
+There are just two columns of numbers and 
+
+14:36 
+What would be the formula? 
+
+14:39 
+So if we use xt 
+
+14:42 
+equals to yt-1, then my formula of yt 
+
+14:47 
+is related to the alpha 
+
+14:52 
+yt-1 
+
+14:55 
+plus beta, right? 
+
+15:01 
+So this is my prediction target, the column of my prediction target, this is my new column of feature, so this is actually xt, right? 
+
+15:13 
+So we can just put these two columns of numbers, one is the target, one is the new feature, into the linear regression line, 
+
+15:22 
+linear regression model for training, then we will be able to get slope and intercept, 
+
+15:26 
+and we will be able to use yt-1 to make feature prediction of yt using alpha and beta. 
+
+15:36 
+And if we are trying to make feature prediction of yt plus 1, 
+
+15:40 
+that just fits the value of yt together with the alpha, the slope, and the intercept, 
+
+15:44 
+then I can use my most recent observation of yt, 
+
+15:47 
+and use this linear line to make feature prediction. 
+
+15:51 
+So here, if we have this formula using the left 1 variable as my feature, 
+
+15:56 
+then we assume that the relationship between yt and yt minus 1, 
+
+16:03 
+it is fixed using the linear line. 
+
+16:06 
+And we do not assume that yt is fixed with the slope of the signal index. 
+
+16:15 
+So we do not assume that, because we do not use the time index directly in the feature set. 
+
+16:21 
+Instead we use the yt-y select one feature. 
+
+16:25 
+So is that clear? 
+
+16:26 
+The force of that one bubble and why it can be useful as my new feature to establish the linear line, the linear regression. 
+
+16:35 
+Okay, now we can see 
+
+16:38 
+Maybe you realize the yt-1 that use one column of new feature xt. It is not enough, right? 
+
+16:45 
+So maybe it's not enough. So can we construct a new column for xt? 
+
+16:52 
+So can we construct another column of future values and then use the new column of future values as one of my optimal features 
+
+17:02 
+in the future step 
+
+17:05 
+So we can see when we have the lag Q-valve. 
+
+17:09 
+Now lag Q-valve, obviously we are trying to establish the Q-period time lag. 
+
+17:16 
+So for this Xt, the new kernel of Xt here, Xt equals to Yt-2. 
+
+17:23 
+My 
+
+17:28 
+handwriting is terrible. 
+
+17:30 
+It's 
+
+17:33 
+Yt -2. 
+
+17:36 
+So what is X1? 
+
+17:38 
+So X1, for the new kernel of X1, so this is X1, right? 
+
+17:44 
+So x1 equals to y negative 1, so it is missing. I do not have that observation. 
+
+17:50 
+So this x2 here is still missing, right? 
+
+17:53 
+Now what is x3? x3 equals to y1. 
+
+17:58 
+Now this observation here, so this observation, it is shifted to this x3. 
+
+18:08 
+So x3 equals to y1, right? 
+
+18:12 
+What is x2? x2 equals to y2. 
+
+18:17 
+And we get this number. 
+
+18:20 
+Now following this, can we get a new list of numbers? 
+
+18:23 
+Does the y2 matter still? 
+
+18:26 
+We can do that. 
+
+18:27 
+The only thing that matters is that we have two rows of missing values here. 
+
+18:34 
+So here we can get a new list of numbers. 
+
+18:38 
+Now, does this new Xt satisfy the three conditions we have? 
+
+18:46 
+First, we are making some predictions here. 
+
+18:50 
+So for example, if I'm trying to make a prediction of this number, 
+
+18:55 
+Does the xt change from period to period, time-dependent? 
+
+19:01 
+Yes, right? It is time-dependent. 
+
+19:04 
+Now, if I use yt-2 to make prediction of yt, 
+
+19:09 
+are these two numbers related? 
+
+19:11 
+I think so, right? 
+
+19:13 
+Even though they are not from the latest observations, 
+
+19:16 
+they are still related. 
+
+19:17 
+So when I make prediction of yt here, 
+
+19:20 
+do we have the value of xt here? 
+
+19:25 
+Yes, because FD is actually some number we got two periods before, right? 
+
+19:30 
+Two periods ago, so it is available. So this new column of numbers can also be very useful for 
+
+19:37 
+serving as a new feature. Now we have two columns of features, right? So what's that? 
+
+19:44 
+So if we use, we construct a new column of features, so the formula becomes YD 
+
+19:50 
+equals to 
+
+19:52 
+A1 
+
+19:54 
+yt-1, my first feature, right? Do not forget the first feature, plus a2, so what is my second feature of xt? 
+
+20:04 
+yt-2, right? 
+
+20:06 
+plus b. Now this becomes my formula, when I put these three 
+
+20:12 
+columns of numbers into my linear regression, the first column is y, the second column is xt1. 
+
+20:22 
+And the second column is my second feature, xt2, right? 
+
+20:26 
+So we put these two columns of features together with my prediction target into the linear regression 
+
+20:33 
+So I get this formula for my linear regression 
+
+20:36 
+So 
+
+20:41 
+is that clear? So far so good? 
+
+20:43 
+So just treat this as a linear regression 
+
+20:48 
+We just use our feature engineering to construct some new features from the historical provisions 
+
+20:54 
+Now, the next question is 
+
+20:58 
+Do we need to construct a new column feature? 
+
+21:02 
+And if we do that, we need to use the next three variables, right? 
+
+21:08 
+The next three variables here, f t equals to y t minus three. 
+
+21:15 
+So do we need to construct a new column feature using the next three variables as my new feature into the regression line? 
+
+21:24 
+Now, we need to consider, to answer this question, we need to consider two cases. 
+
+21:32 
+Even though for my historical observation, I have t number of observations, 
+
+21:38 
+but when we have the first lag 1 feature, then the total number of training records will be reduced by 1, 
+
+21:46 
+because the first row is missing. 
+
+21:48 
+Now we only have t minus 1 rows for training, right? 
+
+21:52 
+Now if we have lag 2 feature, the lag 2 variable as my feature, then the first 2 rows become missing. 
+
+22:00 
+And I can only use the left of them for training. 
+
+22:04 
+Now, the more lag bubbles introduced to the linear regression, the more number of those 
+
+22:11 
+will be missing. 
+
+22:12 
+And I have less and less training records to build the linear line. 
+
+22:16 
+So that's one you need to consider. 
+
+22:26 
+The new features we need to introduce into my current feature set, the new feature shield is presentive or important. 
+
+22:35 
+So what does the important mean? It means that, for example, once I already choose the two features of yt-1 and yt-2, 
+
+22:44 
+the new feature yt-3 in shield be highly related with yt. 
+
+22:58 
+So yt minus 3 should be related to yt. 
+
+23:01 
+So sometimes this assumption is not true because all the observations are less relative with my new observations. 
+
+23:10 
+For example, if we consider that y is most correlated with the new observations, 
+
+23:17 
+but as the time lag continues to increase, then the correlations become weaker and weaker. 
+
+23:24 
+But that's not the only condition we need to consider, the correlation coefficients. 
+
+23:29 
+we also need to consider the redundant feature. 
+
+23:32 
+So what does that mean? 
+
+23:33 
+So from our feature engineering, we learned 
+
+23:36 
+if yt-3, or if we want to introduce a new feature, 
+
+23:42 
+and if the information that we can capture from a new feature 
+
+23:50 
+is already delivered by using my current feature, yt-1 and yt-2. 
+
+23:57 
+So the answer was, if yt-1 and yt-2 can already provide the information we can get from yt-3, 
+
+24:04 
+then yt-3 becomes redundant feature, given we already provide yt-1 and yt-2, right? 
+
+24:11 
+So in our feature engineering, we have the time feature and the feeling, like the two columns. 
+
+24:18 
+If one column, if one selected feature already provides all the information for that, 
+
+24:27 
+new feature, so we do not need a new feature. 
+
+24:31 
+So I talk too much these days. 
+
+24:34 
+We 
+
+24:40 
+are learning very soon how we can 
+
+24:45 
+follow some idea of the future and moving to identify 
+
+24:49 
+the most important lag variables as my new features 
+
+24:53 
+into my linear line. And we call it 
+
+24:57 
+autoregressive method. 
+
+25:00 
+So, for this idea, there are some simple autoregressive methods, the first one is called random walk. 
+
+25:07 
+The random walk has this simplified formula. 
+
+25:12 
+And for this simplified formula, yt equals y minus 1 plus m plus random error. 
+
+25:18 
+And yt is a specific formula, because we call, in my previous formula, we have a. 
+
+25:28 
+The slope times y to the minus 1 plus m, right? 
+
+25:31 
+Now the random walk is assumed, so a equals to 1. 
+
+25:35 
+The slope for my new feature equals to 1. 
+
+25:38 
+Now we have the random walk model. 
+
+25:42 
+So why it is the walk? 
+
+25:45 
+So if you use this model, I'm trying to use my current, 
+
+25:49 
+my current of the ratio of y to the minus 1 to make a move, a shift. 
+
+25:56 
+And the distance of the shift equals to m. 
+
+26:00 
+And we will get new observations 
+
+26:01 
+Now it seems like you just walk 
+
+26:05 
+So now it is yt, I am sitting here 
+
+26:08 
+And I just move one step ahead and I get yt plus 1 
+
+26:12 
+And then I get one move 
+
+26:15 
+And the distance from each observation on average 
+
+26:19 
+It is a fixed number of m 
+
+26:21 
+So 
+
+26:25 
+you can see, for different observations 
+
+26:28 
+You may have different m's, right? 
+
+26:30 
+For example, when I go shopping with my wife 
+
+26:33 
+So my M is very big, and her move is very small. 
+
+26:40 
+So every day left, I may move about 8,000 steps, 
+
+26:44 
+and she may move more than 10,000 steps for that day. 
+
+26:49 
+That's why every day after I go back home, 
+
+26:51 
+I'm so relaxed and she's so tired. 
+
+26:55 
+Because of the move, M is different. 
+
+26:57 
+So you can see for the random walk move, 
+
+27:00 
+We can get average distance of for each move, but it is so if you have observations you will have a random 
+
+27:08 
+uncertainty right a random noise 
+
+27:10 
+So from observations to observations on average the distance is m, but the exact location may not be the m 
+
+27:18 
+so that's the random walk model and we know the random walk model is a very specific case of the 
+
+27:26 
+Auto regressive model 
+
+27:33 
+autoregressive model. So the autoregressive model is trying to use the autoregressors. 
+
+27:42 
+So we call the autoregressors as my features. For example, for the first autoregressive 
+
+27:50 
+model, we have this formula. Now from the first I, so this unit is a kind of linear 
+
+27:57 
+regression, right? And we just use the xt equals to yt minus 1. So we use the yt minus 
+
+28:05 
+the time length variable as my feature 
+
+28:07 
+and we have this linear line 
+
+28:09 
+yt equals to 0 the intercept 
+
+28:11 
+plus a1 y2 minus 1 
+
+28:13 
+is low 
+
+28:15 
+now if we want to 
+
+28:17 
+so this is the AR1 model 
+
+28:20 
+autoregressive 1 model 
+
+28:21 
+so if we add more length variables 
+
+28:23 
+as my new features into the regression model 
+
+28:26 
+then for example 
+
+28:28 
+for the second order autoregressive model 
+
+28:30 
+the AR2 model 
+
+28:31 
+so we have this formula 
+
+28:35 
+So yt equals to a0 plus a1 yt-1 plus a2 yt-2. 
+
+28:41 
+Now we have two lag time lag variables into the linear regression. 
+
+28:47 
+Now if we have the p's order indicating that we will introduce the lag 1, lag 2, lag 3 until lag p variables as my features into the linear line. 
+
+29:01 
+So we have ARP model. 
+
+29:03 
+So we keep introducing more and more higher order, higher lag order into the linear line, so we have ARP. 
+
+29:14 
+So we can see we will introduce A3, yt-3 until yt-t, right? Into the linear line. 
+
+29:25 
+So that's for the simple autoregressive model. 
+
+29:28 
+Now, for the autoregressive. 
+
+29:34 
+We are trying to predict yt from using my previous values, y2-1, y2-2, and y2-p. 
+
+29:44 
+Now, if after we use all the time lag of positions y2-1, y2-2, and y2-p into my linear regression, 
+
+29:53 
+under every period, I will use this linear line to make predictions, right? 
+
+29:58 
+And every time period, I will get a prediction error. 
+
+30:02 
+So ideally, if the autoregressors, if all of these, if they provide all the information we need to make the future prediction of yt, then the prediction error should be a random noise. 
+
+30:19 
+But what if I look back and check my prediction errors, and if these prediction errors, they are not pure random noise? 
+
+30:31 
+So what does that mean? 
+
+30:34 
+It means that there are some missing features that, or the missing information that cannot be provided by my lack of variables 
+
+30:43 
+And because of that missing features, my prediction error using these features, it is not a red noise 
+
+30:51 
+So in other words, the prediction errors, they contain certain information that we do not know 
+
+31:00 
+Because of this missing information, I observe 
+
+31:07 
+of prediction error, which is not a red noise. 
+
+31:12 
+Now you may think, if we cannot capture 
+
+31:15 
+the original missing features into my formula, 
+
+31:20 
+but the influence of these missing features, 
+
+31:23 
+the influence is reflected in my prediction error. 
+
+31:29 
+Now can I use my previous prediction error 
+
+31:32 
+as my new feature? 
+
+31:35 
+Because it contains certain information 
+
+31:37 
+that I cannot capture, right? 
+
+31:39 
+Now let's take a look at, if I have one position error last period, yesterday, t-1, and I know that, according to my historical position, the error t-1 is not a random number and contains certain information. 
+
+31:55 
+Now, if I want to use cc as my new feature, does this new feature satisfy the three conditions we mentioned before? 
+
+32:06 
+the prediction error changes from period to period, right? 
+
+32:10 
+And second, if the error is not a random noise, 
+
+32:14 
+then maybe it is related with my prediction target of yt. 
+
+32:20 
+Maybe, right? 
+
+32:21 
+And third, the prediction error from the previous period 
+
+32:26 
+is already available for me, 
+
+32:29 
+because I use the model to make predictions, 
+
+32:32 
+and I get the errors from the previous operation, 
+
+32:36 
+so these three conditions satisfy. 
+
+32:39 
+Now following this idea, we have this moving average. So this is different from the previous learning simple moving average 
+
+32:46 
+The moving average model is trying to predict yt from using the previous prediction errors 
+
+32:55 
+as my new features because these 
+
+33:00 
+new numbers, the errors as my new features, they satisfy my conditions, right? 
+
+33:05 
+So they can serve as a new feature. Now we have AI model and MA model 
+
+33:13 
+And we have two streams of features, y-1, y-2, and c-1, c-2. 
+
+33:20 
+Now, for the AR model, so let's go back to the AR model. 
+
+33:25 
+So AR model is a very commonly used autoregressive model, 
+
+33:30 
+and it can represent, if your time series is white noise, 
+
+33:37 
+then it has to go move around a constant number 3. 
+
+33:41 
+Or if y is not equal to 0, then every single day, the yt is related to your previous move of yt-5. 
+
+33:53 
+The random walk model or random walk with a shift. 
+
+33:57 
+So if y is a coefficient, then we have an ARP model. 
+
+34:02 
+So this is the most general case of the ARP. 
+
+34:06 
+Then once we have tried to predict yt, we are using the yt-1, yt-2, until yt-t into the regression line, 
+
+34:15 
+and then we feed the regression line together with the tolerance of the time-length variables into the linear regression, 
+
+34:21 
+and we minimize the chain error, we will be able to get the prediction result together with the intercept and the slopes. 
+
+34:30 
+Now, the next question is... 
+
+34:36 
+after we identify all these time-lapse features, how many peaks, how many verbals, how many features we should include into my feature set. 
+
+34:49 
+So the question is that as the order continues to increase, 
+
+34:53 
+The question is equivalent to that. 
+
+34:55 
+So if we are trying to determine whether we are trying to use x1, x2, x3, the three features to make prediction target of y, 
+
+35:02 
+and now we already have x1, x2. 
+
+35:04 
+So we need to include x3 into my feature set of x1, x2. 
+
+35:12 
+Now to answer this question, we have a new concept called partial autocorrelation. 
+
+35:27 
+If we are trying to get x3's information to make prediction of yt, we need to make sure that the 
+
+35:39 
+information that we can extract from x1 and x2, maybe they are good enough, right? 
+
+35:48 
+So if x1 and x2 are good enough, they can provide as much information as x3 can provide, then we do not need x3. 
+
+35:58 
+So we just use x1, x2, that's enough. 
+
+36:02 
+And also, x3 should be related with y3. 
+
+36:06 
+And the information we can get x3, it is not available for x1, x2. 
+
+36:15 
+So maybe part of x3's information can be predicted using x1, x2. 
+
+36:21 
+But at least x3 should have some partial information. 
+
+36:26 
+that is related to the yt, and it is not available from x1 and x2. 
+
+36:31 
+So we call it partial autocorrelation, or the partial information that we can extract from x3. 
+
+36:39 
+So we need to consider the regression in which we could derive from using x1 and x2, 
+
+36:45 
+so whether it is enough or we need some information from x3, which is not available from x1 and x2. 
+
+36:55 
+If X3 can be predicted using X1 and X2, then X3 does not provide any additional information beyond X1 and X2. 
+
+37:03 
+And Y and X3 should be related. 
+
+37:08 
+X3 provides the information we need. 
+
+37:12 
+So we call it partial autocorrelation. 
+
+37:15 
+And to do that, to evaluate the importance of X3, we need to calculate the partial autocorrelation value of X3. 
+
+37:26 
+given x1, x2. 
+
+37:28 
+Then we need the partial autocorrelation function, 
+
+37:31 
+the PCF function. 
+
+37:32 
+The PCF function just quantifies 
+
+37:35 
+the importance of x3 
+
+37:37 
+for identifying 
+
+37:39 
+how much new information x3 can provide. 
+
+37:42 
+So I'm not going to go to 
+
+37:44 
+the mathematical details of the 
+
+37:45 
+PCF function, but in today's 
+
+37:48 
+tutorial, we will show the example of 
+
+37:50 
+how to calculate the 
+
+37:52 
+PCF value and use the PCF value 
+
+37:54 
+to determine the other p automatically. 
+
+37:59 
+Now the partial function is very similar to this case, that when you are trying to pass some information to the next guy, 
+
+38:07 
+and the quality of the information provided by the previous guy will be different from the true value. 
+
+38:15 
+So remember if you say that the CV is cool, and then the next guy will say the CC is cool, 
+
+38:20 
+so some values will change from period to period. 
+
+38:23 
+And as the message is passing by, then you can say the CC is cool. 
+
+38:29 
+So we need to capture the partial useful information left from the message from the old and old data 
+
+38:38 
+Now we just want to get how much useful information we can get from the old observations 
+
+38:44 
+So that's for the PSL 
+
+38:47 
+So let's have a time-based break and we will continue to see how we get the AR and A model 
+
+38:53 
+For the 
+
+38:58 
+AR model, we are trying to use the PSL function to determine the optimal number of p 
+
+39:03 
+And for the MA model, we know that we are using the prediction error as a new corner of feature, 
+
+39:09 
+consisting of Q as an MAQ model. 
+
+39:14 
+Now, to determine the order of Q, so we want to collect something similar, 
+
+39:20 
+that we use the order of correlation function, the ACF function, to determine the number of Q for the MAQ model. 
+
+39:35 
+So we know that if we are trying to decide how much information we can get from pt-2 and pt-1, 
+
+39:42 
+so we know that the information we can get from pt-2, part of the information can be provided by pt-1. 
+
+39:52 
+And also, the pt-2 can also provide some desired information to make the prediction of pt. 
+
+40:01 
+So when we calculate the correlation here, we have the ACF to identify how much information we can provide directly from PHT-2 
+
+40:09 
+or how much information we can get from the loop that extra information that cannot be provided by PHT-1 but can be provided by PHT-2. 
+
+40:20 
+So we have the PSF. 
+
+40:23 
+So when we have our tutorial, we will see that what we need to do to identify the number p and the number q is to fit the time series data into the PSF function. 
+
+40:37 
+The PSF function will show this figure for us. 
+
+40:43 
+The x axis here indicates the number of less. 
+
+40:48 
+Some of the software starts with index 1, and some of them start with index 0. 
+
+40:55 
+So, you need to check what is the starting index. 
+
+41:01 
+Now, the term line index goes from 1, 2, 3, until a very high order, 
+
+41:07 
+and how we can determine the optimal number of p here, using the TSA function, 
+
+41:14 
+then we need to check the two lines of the threshold. 
+
+41:19 
+upper bound and lower bound. So we only consider the other time lag variables which has the PSA value higher or lower than these two bounds. 
+
+41:32 
+For example here, for this figure, we have the order 1 and order 2, so these two values, they are above this upper bound, so we consider the order P equals to 2, so this is AR2 mode. 
+
+41:50 
+It is not as unique as it is recently far, so we do not consider the order 3 here. 
+
+41:57 
+Imagine there is, there is a higher order here, but it is the order 6, it is also above the threshold. 
+
+42:03 
+Still, we will not consider the order 6. 
+
+42:07 
+We will not consider the order 6. 
+
+42:09 
+We only consider the early, the simplest early. 
+
+42:15 
+version that we have the most recent time-lapse variables as the most significant features into the regression analysis 
+
+42:24 
+So that's how we get the AIQ model. The two lags are significant 
+
+42:29 
+and when we have the 
+
+42:32 
+ACF function, so then we have something similar. We have x-axis indicating the lag of the prediction error 
+
+42:41 
+and the y indicates the 
+
+42:46 
+ACF function 
+
+42:48 
+So here we can see the index starts from 0, but we only consider index 1 and index 2, which are above this threshold, or lower than this threshold. 
+
+43:01 
+And for the next 3, it is within this bound, so order 3 will not be considered. 
+
+43:08 
+But starting from order 4, we can see order 4 is also outside of this bound, but we will not consider order 4. 
+
+43:17 
+We only consider the previous two orders here, the ma2. 
+
+43:21 
+So that's how we can get the Q index, the value Q for the ma part. 
+
+43:29 
+Now, in summary, we have the AR model, which uses the previous observations as my feature values to construct the AR model. 
+
+43:38 
+So we have the ARP model. 
+
+43:46 
+We can also use the previous arrows as my features, and we have the MA model. 
+
+43:52 
+Now, we can also combine the AR and the MA into the AMA model, 
+
+43:57 
+which consider both the YT-Y and YT-P, together with KCT-Y and KCT-Q as my features. 
+
+44:06 
+So, before we use these AR and MA models to do some calculations to determine the P and Q, 
+
+44:17 
+the time series we feed into the analysis process is stationary. 
+
+44:22 
+This is very important because when we calculate the PSF and the ACF function, 
+
+44:28 
+we do not want to introduce some change or dynamic patterns into the calculation 
+
+44:33 
+which cause PSF value higher than the significant bound. 
+
+44:40 
+So when you check the time series is stationary, 
+
+44:50 
+And it has constant values, that if we take the time window, the constant, or the standard deviation of the observation is a constant value, and that's why it has the seasonality. 
+
+45:01 
+So for example, here we have four different time series. 
+
+45:05 
+The first time series is not stationary because we have the down chain. 
+
+45:09 
+The second time series is also not stationary because we have the seasonality pattern. 
+
+45:15 
+The third one has a chain pattern, so it is not stationary. 
+
+45:18 
+So what about the fourth one? 
+
+45:22 
+So first one here, it looks stationary, right? 
+
+45:28 
+But if we consider a time window here, 
+
+45:31 
+we can calculate the standard deviation of this window. 
+
+45:33 
+And then we can also calculate the standard deviation 
+
+45:36 
+of the values of a vision in a new window. 
+
+45:39 
+So then the values here is relatively much larger 
+
+45:42 
+than the ones we observed here in the early stage. 
+
+45:46 
+So their values is not stable. 
+
+45:49 
+And if their values is not stable, 
+
+45:51 
+then it is not stationary. 
+
+45:53 
+So you can see this condition is so strict, right? 
+
+45:57 
+Now, you may ask, how can I identify whether it is stationary? 
+
+46:03 
+If I just use my own human's eyes and observe this time series, 
+
+46:08 
+I may believe it is stationary. 
+
+46:10 
+But human's eyes are not so reliable, 
+
+46:13 
+we need to give some numbers and use the numbers to judge 
+
+46:17 
+whether the time series is stationary or not. 
+
+46:20 
+So we have a TPSS test. 
+
+46:25 
+So KPSS test is actually a non-hypothesis that the data is stationary. 
+
+46:34 
+If we use this hypothesis to test our time series data, then we will get a p-value. 
+
+46:42 
+If p-value is smaller than 0.05, then we need to reject the non-hypothesis. 
+
+46:47 
+And it is equivalent that the data is non-stationary and a confidence level of 95%. 
+
+46:54 
+Otherwise, if the p-value is larger than this threshold, we accept that the data is stationary at a confidence level of 95%. 
+
+47:03 
+So just feed the time series data into the KPSS test in our portfolio, and the testing result will tell us whether or not it is stationary or not. 
+
+47:14 
+So, but we know that in our real world, so even though we can use the KPSS test to test whether the time series is stationary or not, 
+
+47:25 
+They are not stationary. So if they are not stationary, how can we use the AIMA model to do the analysis, to do the regression analysis? 
+
+47:33 
+Now we need to make it stationary. If the original time series data is not stationary, we need to conduct certain transformations. 
+
+47:43 
+And following these time series transformations, we can make them stationary. 
+
+47:48 
+Now in general, the transformations follow these three steps. 
+
+47:56 
+So we can do the stabilizing the values. 
+
+48:00 
+So if your values of your time series is changing from period to period, 
+
+48:06 
+then we want to use a transformation called Box-Cost Transformation. 
+
+48:12 
+The BC transformation will transform your original time series data into new color observations using this formula. 
+
+48:24 
+The lambda is the hyperparameter determined by the humans. 
+
+48:28 
+And if lambda equals to 0, then we are using the log transformation to transform your original 
+
+48:34 
+confidence observation of yt into a new column of new numbers using the log yt. 
+
+48:41 
+So we use yt, and we use the log yt to generate a new column of numbers as my prediction target. 
+
+48:50 
+If lambda is not 0, then I will use this formula to y2 plus lambda minus 1 divided by lambda. 
+
+48:58 
+Remember, lambda is the hyperparameter here. 
+
+49:01 
+So now, to total view, the function will determine the optimal value of lambda, which can stabilize the values as much as possible. 
+
+49:10 
+And it will outperform the lambda and together with the newly transformed prediction target of yt, using this formula. 
+
+49:19 
+After that, the newly transformed prediction target becomes much more stable in terms of the values. 
+
+49:31 
+But that's not enough, when we still have the chain of the dynamic pattern. 
+
+49:37 
+So if we identify, so after the BC transformation, if your time series still have a chain pattern, 
+
+49:48 
+and it is not stationary, then we can do the transformation and make it stationary. 
+
+49:56 
+So if you believe the YT has certain chain pattern here, and we can do the differentiating. 
+
+50:05 
+So we can calculate the difference as my new time series. 
+
+50:08 
+So imagine that if you have a $10 stock price, so starting from $10. 
+
+50:14 
+And every day your stock price will increase by $1. 
+
+50:18 
+Every day it increases by $1, so we get a trend to upper trend, right? 
+
+50:23 
+Now what if I just calculate a new time series data using yt minus yt minus y? 
+
+50:31 
+I calculate the difference between the two adjacent oppositions. 
+
+50:36 
+That's my new time series of the vision. 
+
+50:38 
+So what's the difference between day 2 and day 1 stock price? 
+
+50:44 
+$1, right? 
+
+50:45 
+So what's the difference between day 3 and day 2? 
+
+50:49 
+Still around $1, right? 
+
+50:52 
+What's the difference between day t and day t-1? 
+
+50:57 
+Still around $1, right? 
+
+50:59 
+So if we take this difference calculation, 
+
+51:01 
+then the y-axis becomes a constant value around $1. 
+
+51:10 
+or cost -different period t, yt 
+
+51:15 
+minus yt minus 1. 
+
+51:18 
+So the difference becomes a stable without chain of division, right? 
+
+51:27 
+Did you see what I did here? 
+
+51:31 
+Now, we can just use the differencing to calculate the difference between yt and yt minus 1, 
+
+51:37 
+and we will be able to get a d-chain of division. 
+
+51:43 
+Maybe after the chain observation, you still have the seasonal pattern. 
+
+51:51 
+So we learned from last week, we know the seasonal pattern indicates some influence from your seasonal index. 
+
+51:59 
+So it is the four-quartus time series observation, so every winter you see the index increase your observation from the baseline, right? 
+
+52:09 
+And during the summer, it also changes your value from the baseline, so there are certain influences from the seasonal index. 
+
+52:17 
+Now, in order to remove the impact of the seasonal index, we need to do this kind of subtracting the values. 
+
+52:29 
+Now if you consider beta changes from period to period, so every summer I have observations. 
+
+52:36 
+And if I take the average value of the summer observations, it indicates what is the influence of your summer index. 
+
+52:44 
+So every summer I have one observation, so of course the previous four years, now I have four observations in the summer. 
+
+52:50 
+I take the average of the summer observations, and this average value indicates my average summer influence. 
+
+53:00 
+seasonal index. Now, for every summer, I will use my view of the vision minus the average 
+
+53:07 
+influence by the summer index. So the gap between my view of the vision and the index 
+
+53:14 
+average value will become the value that is not influenced by the seasonal index. So we 
+
+53:22 
+can use that method to subtract the seasonal index average. That might be the similarity 
+
+53:28 
+method. 
+
+53:33 
+Also, though we have this kind of ARMA model, we may also consider that sometimes the AR model can be useful to analyze the signal patterns automatically, even though we do not have the dissonance. 
+
+53:48 
+For example, if we have the weekly average, if we have the weekly observations, and the observations will repeat every seven days. 
+
+54:02 
+And the P, the ARP, goes from 1 to 7. 
+
+54:06 
+It means that every Monday I want to make the prediction of Monday, 
+
+54:09 
+my ARP model will consider the previous Monday's observation, right? 
+
+54:16 
+Now the previous Monday will be highly correlated with this Monday, 
+
+54:20 
+and even though we have seasonality patterns, 
+
+54:23 
+I already used the ARP model to consider the seasonality pattern. 
+
+54:27 
+So maybe we can use ARP to consider seasonality patterns automatically. 
+
+54:31 
+we will learn how to use the Arima model to complete it automatically with a more valid formula. 
+
+54:41 
+Now, let's take a look at this time series transformation. 
+
+54:47 
+So this is the time series data we will use in today's tutorial. 
+
+54:51 
+Let's take a look at the details, the mathematical details of how we use these calculations. 
+
+55:02 
+Monthly observation of the demand for my heater. So x-axis is the month index, and y-axis is the demand we observe every month. 
+
+55:11 
+So every year we have 12 observations, every year. 
+
+55:15 
+Now we can see the demand for the heater it is actually changes from month to month, and during the winter season the demand is huge, right? 
+
+55:23 
+And during the summer and other regular, like in Shenzhen, we can only see the demand during the winter season. 
+
+55:30 
+I want to remind you that the weather during the winter in Hong Kong is really cold. 
+
+55:35 
+So it's like a magic attack. 
+
+55:41 
+So the cold wind comes with water. 
+
+55:45 
+And even though it's 5 or 6 degrees, much, much colder than that in Beijing. 
+
+55:49 
+So be careful. 
+
+55:50 
+So that's why in Hong Kong we have a huge demand for the heater. 
+
+55:54 
+Nobody would believe, okay, I need a heater in Hong Kong. 
+
+55:59 
+Okay? 
+
+56:01 
+So we can see the original data for the time series of theta, it is not stationary. 
+
+56:05 
+So we cannot use the AI main model directly. 
+
+56:08 
+So what do we need to do? 
+
+56:10 
+So the first step is to do the big-box cost transformation. 
+
+56:15 
+So just use the formula, the y-theta of lambda minus 1 divided by lambda, 
+
+56:20 
+then the original demand time series will be transformed into this new time series. 
+
+56:27 
+So still the x is the monthly time index, and the y axis is the transformed observation. 
+
+56:35 
+Now we can see other transformations, if we take different time windows observations, 
+
+56:39 
+then the values become stable, right? 
+
+56:43 
+The standardization becomes stable, but still it is not stationary. 
+
+56:46 
+We see the change pattern, we see the seasonality pattern, so it is not stationary. 
+
+56:57 
+time series after BC transformation, and then we will use the decisionality. 
+
+57:03 
+So to do the decisionality, we just take the average of the monthly index. 
+
+57:10 
+So for January, I calculate the average observation in January, 
+
+57:15 
+and in February, I calculate the average value in February. 
+
+57:18 
+Then I use the real observation minus the monthly average. 
+
+57:23 
+So January observation minus January average. 
+
+57:27 
+And the February observation, I subtract that from the February average observation. 
+
+57:33 
+Now I will be able to get this mu times 6. 
+
+57:37 
+So do we see any seasonality pattern here? 
+
+57:40 
+No, right? 
+
+57:41 
+But still we see a chain pattern. 
+
+57:45 
+Even though the seasonal pattern is removed, we still see a chain pattern here. 
+
+57:49 
+Now we can use the fourth order defensing. 
+
+57:53 
+Then use yt minus yt minus 1. 
+
+57:55 
+Now yt I use, I start from this yt. 
+
+57:58 
+the time series after decisionality transformation, right? 
+
+58:02 
+And then we do the dchant, I will get this. 
+
+58:05 
+So we use the time series operation from here to get this final version. 
+
+58:12 
+Now we can see, for the final version, it becomes stationary. 
+
+58:17 
+And of course we can use the KPSS test to detect whether it is stationary or not. 
+
+58:25 
+If it is stationary, then we can use the ALMA model to get the order p and order q for this new time series. 
+
+58:33 
+And then we can use this for the regression analysis. 
+
+58:37 
+So is that clear? 
+
+58:39 
+How we conduct step-by-step transformation to get the final stationary time series? 
+
+58:45 
+Okay, now today 
+
+58:51 
+we have the quiz question. 
+
+58:56 
+Now, for this quick question, you only need to answer how we get from C to B. 
+
+59:02 
+You don't have to take pictures. 
+
+59:05 
+Do not answer how we get from A to B or from B to C. 
+
+59:08 
+Only from C to B, okay? 
+
+59:11 
+If you answer how we get from A to B or B to C, you lose points. 
+
+59:16 
+Assuming that you're not here. 
+
+59:18 
+You don't have to take pictures. 
+
+59:23 
+You don't have to take pictures, okay? 
+
+59:25 
+So please do not show with your friends if you're not here. 
+
+59:28 
+Okay, I can see in my class I have many, many students coming here and I really appreciate your attendance and I really do not appreciate some guys who are missing here and who are hanging out, sleeping on the sofa, taking a soda, watching TV. They are enjoying a very happy life. So please do not give attendance to this question. 
+
+59:51 
+Okay, so please answer the question how we get from C to D and how we test the stationary test. 
+
+59:58 
+Actually, I provided the solution a few minutes ago, so you have 5 minutes to write down the answer, and then submit the answer to Canvas. 
+
+01:00:09 
+This 
+
+01:07:03 
+is just for use 
+
+01:07:10 
+to conduct the transformation, and then use the transformed stationary time series to run the AIMA model, and then we will go to the environment analysis. 
+
+01:07:32 
+So the AMA model is defined by the order P and Q. 
+
+01:07:39 
+So we have two hyperpigmentars for the AMA model, P and Q. 
+
+01:07:44 
+So P determines the first stream of the lag variables as a feature, 
+
+01:07:50 
+so y-1 until y-P. 
+
+01:07:54 
+And the second stream uses the c-1 until c-Q as my lag features. 
+
+01:08:03 
+So after that, we need to use the PACF and ACF function to determine the order P and Q 
+
+01:08:08 
+because if we do not specify that, there are so many different combinations of P and Q to construct the AMA model. 
+
+01:08:18 
+So we need to run the PACF function and ACF function. 
+
+01:08:23 
+So you need to check which functions are we using. 
+
+01:08:28 
+So the PACF function, the partial order correlation function, is used to determine the order P. 
+
+01:08:35 
+And the order correlation function is used to determine the order Q, where P and Q. 
+
+01:08:41 
+So for the partial order correlation, we check the fourth order, which is outside of the boundary and the cut-off order. 
+
+01:08:52 
+So here, starting from order Q, it is within the boundary, so we cut off the order P and order Q. 
+
+01:08:59 
+And we only have the order P equals to 1 here. 
+
+01:09:03 
+So even though for order 5 here, it is outside of the boundary, we will not consider the 5th order, we will only consider the order before the 4th cutoff. 
+
+01:09:14 
+And for the ATI function, we have the auto correlation function, and here, we only get the 4th order q equals 1, because starting from the order 2, it is cutoff. 
+
+01:09:24 
+It is not outside of the boundary. 
+
+01:09:28 
+After we check the k-stereo function and the a-stereo function, we will be able to write down the formula for the AMA model, which is the AMA 1-1. 
+
+01:09:39 
+Now this is the formula. 
+
+01:09:41 
+Now once we have this formula, then we can feed this formula into the training procedure, and we will be able to regress analysis. 
+
+01:09:50 
+So ERS will provide the NSF-C, the slope for vitamin S1, and the slope for carcinogen S1. 
+
+01:09:59 
+So is that clear for the AMA model? 
+
+01:10:01 
+Very similar to linear regression, right? 
+
+01:10:04 
+So if you understand we are trying to get the most representative features from our historical 
+
+01:10:11 
+positions, then that's the autoregressive model. 
+
+01:10:14 
+But for using the autoregressive model to determine the order p and q, we need to change 
+
+01:10:19 
+the stationary. 
+
+01:10:20 
+If it is not, we need to do this kind of transformation to get the stationary result. 
+
+01:10:30 
+As we know, understand all the AMA model, LMA model, then we can easily extend the AMA model into the AVIMA model. 
+
+01:10:42 
+The AVIMA model has this formula, the AVIMA pdq. 
+
+01:10:51 
+So in addition to the p and q for the AMA model, we have a new type of parameter of d. 
+
+01:10:58 
+Now what does d represent? 
+
+01:11:01 
+The d represents this differentiated data. 
+
+01:11:08 
+So why we need to get this D, the differentiated data and get the AVMAT? 
+
+01:11:14 
+Sometimes 
+
+01:11:17 
+when we use the AMA model to do the regression analysis, we realize that if we want to model Yt directly, it's very difficult for us to do the modeling. 
+
+01:11:27 
+But if we do some differentiated calculation, for example if we use, or if we construct a new time series, 
+
+01:11:37 
+of yt prime using the fourth order differentiation, 
+
+01:11:43 
+So after we calculate the original prediction target, yt, 
+
+01:11:48 
+using the fourth order differentiating the data 
+
+01:11:53 
+and then we use the AMA model on top of this mu. 
+
+01:11:58 
+of mu times this, the first order differentiated observations. 
+
+01:12:04 
+If we use our model to model the yt prime directly, 
+
+01:12:09 
+the yt prime becomes very easy to predict. 
+
+01:12:14 
+And if we can predict yt prime, 
+
+01:12:16 
+we can use the predicted value of yt prime 
+
+01:12:20 
+plus my previous observation of yt minus 1, 
+
+01:12:23 
+then I can recalculate yt, right? 
+
+01:12:26 
+You get this logic? 
+
+01:12:31 
+Our idea is that we can just get the first order differentiated calculator when d equals to 1. 
+
+01:12:40 
+So when this d equals to 1, then we are trying to use this formula to do the regression analysis. 
+
+01:12:48 
+Now my regression target is not yt, it is this, yt point. 
+
+01:12:56 
+So I read my PDQ model when d equals to 1. 
+
+01:13:00 
+the order of differentiation is equal to 1, we are using this, we calculate the yt prime 
+
+01:13:09 
+so I use yt to construct the new corner of position target of yt prime, and then use 
+
+01:13:15 
+the AMA formula, so you can see this is AMA formula, right, ARMA model, with other p and 
+
+01:13:22 
+q to predict the yt prime directly, and then we can use yt prime to do what? 
+
+01:13:31 
+the prediction value of yt. Now, maybe sometimes you realize that yt prime is not a very good 
+
+01:13:39 
+target to predict. So you can choose d equal to 2 and add yt double prime. What is yt double 
+
+01:13:47 
+prime here? The second order differentiation. 
+
+01:13:52 
+Then after I use this first order to calculate yt prime, I use yt prime minus yt double prime, 
+
+01:14:00 
+then I will be able to get a new prediction target of yt double prime here. 
+
+01:14:06 
+Now I can use the LMA model to predict this new color of prediction target. 
+
+01:14:11 
+Then I have a LMA p2 q model. 
+
+01:14:16 
+So I can get a higher and higher order of depreciating and see which performance is the best. 
+
+01:14:24 
+Is that clear for the Avima model here? 
+
+01:14:27 
+So far so good. 
+
+01:14:33 
+So you need to remember what is d. 
+
+01:14:35 
+And I will write down the formula for the Avima PDQ. 
+
+01:14:40 
+Now we can see, for the Avima 111, 
+
+01:14:43 
+so if you are asked to write down the formula for Avima 111, 
+
+01:14:49 
+we have yt' equals to c plus phi1, 
+
+01:14:52 
+yt minus 1, phi1 plus phi1, 
+
+01:14:56 
+plus 16 minus 1. 
+
+01:14:57 
+And you need to write down what is the formula for writing 1, so actually this is the formula for writing 1, right? 
+
+01:15:07 
+So you only need to write down these two. So if you want to make it clear, you can also write down the formula for writing minus 1, 1. 
+
+01:15:16 
+So you can use the formula for using Avima 1, 1, 1. 
+
+01:15:20 
+So we can see the Avima 1, 1, 1 model is very flexible. 
+
+01:15:26 
+So for the Arima PDQ, it can represent the white noise when P equals to 0, D equals to 0, and Q equals to 0. 
+
+01:15:34 
+So Arima 000, we only have C left. 
+
+01:15:36 
+Then YT equals to C, so it's the white noise. 
+
+01:15:40 
+And if we have P, but D and Q are 0, then we have the Arima P00, which is equivalent to the ARP model, right? 
+
+01:15:51 
+Now what if we have Arima 002, it is equivalent to the MAQ model. 
+
+01:15:56 
+And the AVIMA P0Q is equivalent to the AMA PQ model. 
+
+01:16:01 
+So that's a more flexible formula for running the regression analysis. 
+
+01:16:07 
+And then, we can further extend AVIMA to seasonal AVIMA. 
+
+01:16:13 
+Now, what's the difference? 
+
+01:16:17 
+So, if we recall the formula of using the AVIMA here, 
+
+01:16:21 
+now we are still using the autoregressors from the most recent observations. 
+
+01:16:30 
+So if I try to predict YT, I am using the most recent happiness, YT-1 or YT-2 or CT-1 or CT-2 as my features, right? 
+
+01:16:40 
+Now assume that the most recent of the visions are highly correlated with my prediction target in the future. 
+
+01:16:49 
+So here we do not assume any seasonality pattern. 
+
+01:16:54 
+So we call what is seasonality pattern? 
+
+01:16:59 
+The seasonality pattern means that my observation will be highly related to a seasonal index, 
+
+01:17:07 
+indicating that the observation will repeat from period to period, from season to season. 
+
+01:17:13 
+Now for the seasonality pattern, actually there's another stream of autoregressors. 
+
+01:17:20 
+Now for the weekly observation, for example, 
+
+01:17:23 
+now if I'm trying to make predictions of Wednesday demand, 
+
+01:17:28 
+So, without systematic patterns of consideration, of course, when I try to predict Wednesday's demand, 
+
+01:17:34 
+the demand will be highly related to the demand on Tuesday and Monday, right? 
+
+01:17:39 
+The previous two days of the vision. 
+
+01:17:41 
+The white mass 1 and white mass 2, together with cascading mass 1 and cascading mass 2. 
+
+01:17:48 
+But, in terms of future importance of the correlation, 
+
+01:17:52 
+do you think, to make the prediction of today's Wednesday, 
+
+01:17:58 
+Where are the previous Wednesdays of the vision highly related to this Wednesdays of the vision? 
+
+01:18:05 
+Because of the seasonal pattern because of the seasonal patterns of the vision will repeat every seven days 
+
+01:18:13 
+now in addition to the yesterday's 
+
+01:18:16 
+correlation 
+
+01:18:17 
+The previous Wednesdays of the vision is also highly correlated with my prediction target for the day, right? 
+
+01:18:24 
+now it's bad 
+
+01:18:26 
+qualified 
+
+01:18:27 
+for my 
+
+01:18:29 
+times this autoregressive analysis, they are qualified for a new feature that I use yt-7 as my new column of feature. 
+
+01:18:41 
+So you mentioned that yt-1, so ft equals to yt-1 is qualified for one new column of feature, 
+
+01:18:47 
+where yt-7, that I use the previous period observation, the previous Wednesday observation as my new column of feature, 
+
+01:18:56 
+so of course it changes from period to period. 
+
+01:19:00 
+It is highly related with my prediction target when I have a seasonal pattern. 
+
+01:19:04 
+The pattern repeats every seven days. 
+
+01:19:06 
+And third, the information is available by the day. 
+
+01:19:11 
+I have the observation from the seven days ahead. 
+
+01:19:14 
+And similarly, my prediction errors may also come from the last Wednesday's error, right? 
+
+01:19:21 
+Now, this is my net-one observation. 
+
+01:19:26 
+So y-t minus seven or c-t minus seven. 
+
+01:19:31 
+So, do you think the previous, previous Wednesday, the Wednesday before the previous Wednesday, the YT-14 is also qualified for a new kind of feature? 
+
+01:19:47 
+It is, right? 
+
+01:19:48 
+Every Wednesday, the previous Wednesday, the previous, previous Wednesday, or the Wednesday of last month, they may also be qualified to be the new features. 
+
+01:20:05 
+given the seasonality pattern. Now, in addition to the PDQ, which considers only the most recent observations, 
+
+01:20:16 
+the time lag variables, without seasonality pattern, we can also introduce the capital PDQ. 
+
+01:20:23 
+The seasonal level auto-regresses. And it will repeat every m periods. m is the number of periods per season. 
+
+01:20:36 
+So it is a weakly observation that m equals to 7, indicating I am considering the 7 days ahead repeating pattern as my autoregressors. 
+
+01:20:45 
+If it is quarterly, then m equals to 4 means that if I am trying to predict Q1's prediction, I will consider the previous 4 periods ahead, the previous Q1's observation as my autoregressors, as my new feature. 
+
+01:21:00 
+This is why it is T-4. 
+
+01:21:03 
+This is the monthly observation, and it will repeat every 12 periods, every 12 months, 
+
+01:21:10 
+I will see the same pattern, then m equals to 12, 
+
+01:21:15 
+indicating that I'm trying to use yt-12 or yt-24 as my autoregressors in the signal level. 
+
+01:21:24 
+So, for the signal element, we have two paths, the non-signal path plus signal path. 
+
+01:21:31 
+So we will have so many different levels of features integrated into the linear regression formula 
+
+01:21:39 
+and do the regression analysis 
+
+01:21:42 
+So here we have small pq and capital pq in addition to the number of periods for season n 
+
+01:21:48 
+So we need to specify all these parameters before we run the seasonal enigma 
+
+01:21:54 
+Is that clear? So far so good? 
+
+01:22:00 
+Okay, so we will have that in today's tutorial 
+
+01:22:04 
+And before we end the lecture, I also want to emphasize one evaluation scheme which will be depicted in week 11. 
+
+01:22:15 
+But if you have your time series model for your cost project, then you may need to consider this. 
+
+01:22:22 
+Rolling forecasting and evaluation scheme. 
+
+01:22:26 
+So what does that mean? 
+
+01:22:30 
+So for example if your time series, if your business problem is trying to make 
+
+01:22:35 
+The inventory replacement, or if I want to decide how many items, for example coffee, 
+
+01:22:41 
+how many cups of coffee I need to prepare for every day in order to meet the demand for today, or for next day. 
+
+01:22:48 
+So every day I need to make this decision, right? 
+
+01:22:52 
+Now if I have the time-sets model, then my job, the objective of my time-sets model is to make the next day prediction. 
+
+01:23:01 
+And I do not care about the Friday's demand. 
+
+01:23:04 
+I only care about the Thursday's demand, not today's Wednesday. 
+
+01:23:08 
+I only care about tomorrow. 
+
+01:23:11 
+So, I want to judge or evaluate the performance of my time series model for next day's prediction. 
+
+01:23:19 
+And if your model performs very fast for Friday's demand prediction, I do not care. 
+
+01:23:25 
+I only want to judge whether for the next day whether you can provide an accurate prediction or not. 
+
+01:23:32 
+Now, how we can evaluate? 
+
+01:23:36 
+Starting from today, you have one prediction time, right? 
+
+01:23:40 
+For tomorrow. 
+
+01:23:41 
+And I observe the real demand for tomorrow. 
+
+01:23:45 
+Now I get one prediction error. 
+
+01:23:47 
+And this one prediction error using the real demand for tomorrow, 
+
+01:23:50 
+I can evaluate the one day ahead prediction error using your model. 
+
+01:23:56 
+But that's not enough. 
+
+01:23:58 
+What we can do? 
+
+01:24:00 
+Now, I will use the learning for casting a prediction. 
+
+01:24:06 
+Assuming... 
+
+01:24:08 
+I started to use your prediction model at the beginning of January 1st. 
+
+01:24:15 
+Now here, this is the time stamp. 
+
+01:24:22 
+I assume that I started to use your model not today, but ten months ahead. 
+
+01:24:30 
+I started to use your model. 
+
+01:24:34 
+And starting from that day, from January 1st, 
+
+01:24:38 
+I used all the historical observations as my training record. 
+
+01:24:43 
+and I can build your regression model, right? 
+
+01:24:46 
+Whether it is AVIMA or seasonal AVIMA, I don't care. 
+
+01:24:49 
+I can construct and train the model. 
+
+01:24:52 
+After model training, I can make next day prediction, 
+
+01:24:55 
+so I can predict the next day, which is January the 2nd. 
+
+01:25:02 
+So I can make the next day prediction. 
+
+01:25:04 
+Now, I can use the real observation on January the 2nd. 
+
+01:25:10 
+as my true value and I can evaluate whether your model implemented on January the 1st 
+
+01:25:16 
+whether it can provide a very good performance or not for next day prediction. 
+
+01:25:22 
+Now I complete one evaluation, right? 
+
+01:25:25 
+I have only one validation data point. 
+
+01:25:28 
+Now I will move forward slowly. 
+
+01:25:32 
+Now I assume that I continue to use your model by the end of January the 2nd. 
+
+01:25:39 
+Now for the second line here if you assume that I'm thinking by the end of January the 2nd 
+
+01:25:46 
+Now I have all the information up to January the 2nd as my training data point 
+
+01:25:51 
+Now I will retrain the model and use the trained model to make next day prediction. So what is next day? 
+
+01:25:58 
+January the 3rd 
+
+01:25:59 
+And I will use the real observation on January the 3rd to evaluate my model performance 
+
+01:26:06 
+So whether you can make next day prediction for January the 3rd 
+
+01:26:10 
+Other than that, I could have a new prediction error, right? 
+
+01:26:14 
+Now I move forward. 
+
+01:26:15 
+Assuming I'm by the end of January the 3rd, 
+
+01:26:19 
+and I will change the model, 
+
+01:26:20 
+and use the change model to make next-day prediction 
+
+01:26:23 
+for January the 4th. 
+
+01:26:25 
+Now this process will continue day by day. 
+
+01:26:28 
+So every day I assume that I continue to use the model, 
+
+01:26:32 
+and I change the model, 
+
+01:26:34 
+and use the model to make next-day prediction, 
+
+01:26:39 
+prediction result is good or not. So this is very different from the run-off prediction 
+
+01:26:45 
+that for today I just have one round of training and I make the next 12 days prediction or 
+
+01:26:51 
+10 days prediction as run-off. So that's not. So if your business problem is to support 
+
+01:26:57 
+the next day or next period decision making for your business problems, then you need 
+
+01:27:02 
+to evaluate your time series model following this rolling prediction and evaluation scheme. 
+
+01:27:10 
+We only care about the next-day prediction, okay? 
+
+01:27:14 
+Now, finally, so following the idea of the regression analysis, 
+
+01:27:21 
+and I realized that sometimes, even though we do not want to use the time index as my prediction features, 
+
+01:27:32 
+but if we consider the lag bubbles as my features, 
+
+01:27:36 
+can we get some new features from external source of information? 
+
+01:27:43 
+What does that mean? 
+
+01:27:45 
+So it means that now, I'm still trying to predict the demand for this coffee model. 
+
+01:27:50 
+Now what I have is all the internal information about yt, the demand after today, right? 
+
+01:27:56 
+The time series of yt. 
+
+01:27:58 
+Now I can use the autoregressive model, using the Arima or seasonal Arima. 
+
+01:28:02 
+Now remember, for Arima and seasonal Arima, I only use the yt and the arrows related to yt as my features. 
+
+01:28:11 
+Now imagine that if I have some other information from external information including the weather 
+
+01:28:18 
+Temperature and now whether it's cold or warm tomorrow 
+
+01:28:23 
+Now the weather temperature is also set by the three conditions 
+
+01:28:29 
+First, the weather conditions change from day to day 
+
+01:28:32 
+Second, the weather is related to the demand. And by today, I know the weather for tomorrow 
+
+01:28:41 
+from the weather report. Now I can use the weather conditions as my new streams of features here. 
+
+01:28:50 
+And put these external features Xt, together with my lagged observations of Yt-1 and Yt-p, 
+
+01:28:58 
+into the regression model. Now it becomes the arima X. X means the external features. 
+
+01:29:06 
+And of course we can use these new formulas. 
+
+01:29:10 
+with multiple predictors either from lagged observations or from the external environmental features. 
+
+01:29:18 
+We can put them all together into my linear line to run the regression analysis. 
+
+01:29:23 
+Is that clear? So it's also possible. 
+
+01:29:27 
+Now if you have a cross project, I hope you can use any time series model as possible to do the analysis. 
+
+01:29:33 
+Okay, I think that's all for today's lecture, and in today's tutorial we will see how to do the stationary test, and how to run the AMA together with ARIMA and the seasonal ARIMA models, okay? 
+
+01:29:44 
+So let's have a break, and we will have the tutorial at 2pm. 
+
+01:29:47 
+And please be reminded to submit the quiz question by 2pm, and you only need to answer how to read the time series of D. 
+
+01:29:56 
+Okay, so let's have a break. 
+
+01:30:17 
+version. So please download the newest version here. So last week we have learned about how 
+
+01:30:26 
+to implement and using existing toolbox to use the half-linear model, half-interest model. 
+
+01:30:36 
+So today it's also about the time series forecasting programs. 
+
+01:30:43 
+So you can, in this tutorial, we may use what you have learned in this lecture is a RIMA model, a series of RIMA models. 
+
+01:30:54 
+So this tutorial, I think for time series forecasting, the most complex thing is to explore data pre-processing, this is stage one. 
+
+01:31:09 
+how to prepare the suitable data for suitable models because our different models can handle 
+
+01:31:15 
+different data patterns right so uh in this tutorial i think the most of time will spend on 
+
+01:31:25 
+the data preparation to make the data satisfy the requirements of the model we want to use so 
+
+01:31:36 
+Here, for the first stage, that is the data preparation, we may use this one, box cost transformation to the... 
+
+01:31:51 
+to make the variants stable and for and we also use this new tool that KPSS test 
+
+01:32:00 
+it's a statistic techniques to make normal distribution data to make it more normal distribution shape 
+
+01:32:11 
+so you will see how to use this one 
+
+01:32:16 
+Second part, I think I mentioned that the step two is to set up the model and then chain it. 
+
+01:32:24 
+Finally, we evaluate that model, so for setup, this new tool is for how to determine the key parameters of a RIMA model, so this means how many parser values we want to use and how many parser errors we want to use to set up our model. 
+
+01:32:54 
+It's a tool, it's an existing tool, we can import this tool from this library, so it's a new link, you can, if you are interested with this tool, you can go to the API page. 
+
+01:33:17 
+So let's go to, here we use four, we may compare this four model because I have said that different model can handle different data. So we will start with the synchronous one and then we will add new pattern. We can see that this, this, this. 
+
+01:33:40 
+This model can handle more complex data patterns, and this line can add a new component. 
+
+01:33:49 
+So, we also show the theory, also show the model, the Hot Winters model. 
+
+01:33:56 
+We use lots of ways to compare, to show that different models can handle different patterns. 
+
+01:34:07 
+that's our overview of today's tutorial we can dive into the details so firstly 
+
+01:34:14 
+we choose import libraries before we use the tools so the first two lines are data processing 
+
+01:34:25 
+right because we use the we may use pandas to read our data set and use numpy to do the metrics 
+
+01:34:35 
+operation right and for the for this one the third row it's 
+
+01:34:42 
+I think we have used this one last week, root-mean-square-arrow-rmse. 
+
+01:34:51 
+And this one is our new tool, BoxCox, for stabilized variants. 
+
+01:34:59 
+And this one is KPSS test to test whether the data is stationary. 
+
+01:35:05 
+And this one is a model tool. 
+
+01:35:13 
+for ACF and PACF to help us set up the model's key parameters, right? 
+
+01:35:23 
+And these two, these two are for data visualization. 
+
+01:35:31 
+I think we have met these two many times. 
+
+01:35:37 
+can make our page clear because these two can remove the wrongness. 
+
+01:35:47 
+We will see that. 
+
+01:35:49 
+So for the state one, still data preparation, as I have mentioned before, 
+
+01:35:55 
+be careful and pay close attention to this part. 
+
+01:36:00 
+So, first of all, we load the data set, so today's tutorial, we use heat demand data, 
+
+01:36:10 
+and this data has 198 data points on two columns, you can see that. 
+
+01:36:20 
+After we use this, we can take a brief view of the... 
+
+01:36:28 
+first five rows you can see that it's a monthly records of the demand right so 
+
+01:36:36 
+first column is the time um actually uh i i think it should be a time but whether the 
+
+01:36:45 
+By the Python note, it's time or a test. 
+
+01:36:49 
+So we can check that after this review. 
+
+01:36:53 
+And the second column is the demand. 
+
+01:36:56 
+So it should be a number value, right? 
+
+01:37:01 
+So if you still remember what you have learned in, 
+
+01:37:06 
+I think it's week three, 
+
+01:37:08 
+what's the attributes of the column, right? 
+
+01:37:12 
+So. 
+
+01:37:14 
+I can show you that if we didn't add this step, what it would be. 
+
+01:37:25 
+So you can see that after we read the first file and we print the inform of each row, 
+
+01:37:34 
+you can see that the type of the first row is an object, which means the Python thing is a test of value data. 
+
+01:37:55 
+I will note that this column is the datetime value, right? 
+
+01:38:00 
+So how to tell them we use this function tenders to datetime and that's the column we want to transfer. 
+
+01:38:12 
+And tell them what's the format, right? 
+
+01:38:17 
+You can see that the original data, the first one is 
+
+01:38:22 
+year and the second one is a month. We use a dash to join these two, right? So if we want to convert 
+
+01:38:31 
+a value into a date time type, you can see after this step we have transferred our data into 
+
+01:38:40 
+uh we have transferred the first column year month into a date time type. 
+
+01:38:47 
+So be careful and pay attention to this stuff. 
+
+01:38:51 
+And also for format, I think different regions may use different formats. 
+
+01:38:57 
+Like in Hong Kong, we may use the first one is state, and the second one is month, and the third one is year. 
+
+01:39:05 
+So different regions may use different formats to record their time. 
+
+01:39:13 
+make sure your format is consistent with with your data here okay so this is the first point 
+
+01:39:22 
+you want to i want you to keep in mind and then after this this um this step we can visualize our 
+
+01:39:34 
+Here we use data visualization to give us observations and which can help us with the further analysis. 
+
+01:39:44 
+So what you have seen from this picture is the X. 
+
+01:39:52 
+X axis is the time, and Y axis is the demand, so this is a line chart which can show some explicit trend for seasonality, right? 
+
+01:40:06 
+You can see that the day has peaks at every, I think it's winter, right, like January or December, and peaks at each summer. 
+
+01:40:21 
+so every year it appears as a repeated pattern here so it's the seasonality 
+
+01:40:27 
+right so this is the first thing first observation for the second what you have seen from here 
+
+01:40:35 
+i think here is also an upward trend right here you can see a upward trend here 
+
+01:40:46 
+So here is the second thing. The third thing is what? I think you can see that the swings, which means the distance, you can see the peak and the deep can be larger and across the time, which means we don't have any stationary. 
+
+01:41:09 
+stationary variance, right? Because the variance can be bigger as the time goes on, right? 
+
+01:41:17 
+So three issues in this data before we want to use some time-serious forecasting methods. 
+
+01:41:26 
+So we can also use, this is just a data visualization, give us an explicit observation of the data pattern. 
+
+01:41:35 
+And if you want to make your conclusion more rigorous, we can use some statistical methods like here. 
+
+01:41:48 
+kpss you have i think you have learned in your lecture so here we can use this uh function here 
+
+01:41:56 
+and be careful about the return here p value so the key rule to use kpss is that if 
+
+01:42:04 
+uh if the p value is bigger uh it's bigger than zero 
+
+01:42:11 
+0.05 then we think that the data is stationary otherwise i think it's 
+
+01:42:18 
+non-stationary right so here we can print the p-value 
+
+01:42:24 
+It's lower, it's 0.01, lower than 0.05, so I can make a conclusion that this data, this time series is non-stationary, right? 
+
+01:42:42 
+You can see we have used some data visualization to give us some explicit observations and we also add on some statistical testing to make a more rigorous conclusion. 
+
+01:43:00 
+After we have sure that the data have three issues, we can make some transformation before we use our model, right, because, again, different model can handle different data pattern. 
+
+01:43:19 
+So first thing we can use, we can apply this tool to stabilize our variance. 
+
+01:43:29 
+So you should keep in mind what's the return. 
+
+01:43:35 
+You can see that here is the lambda. 
+
+01:43:37 
+And we want to transfer this, the predicted one, right, 
+
+01:43:43 
+the demand, because it's non-stationary data. 
+
+01:43:47 
+We first use false cost to stabilize the variance. 
+
+01:43:53 
+Because I have mentioned that it's a method to make some non-normal distribution data to make it more normal distribution, right? 
+
+01:44:06 
+So it's, and another name is Gaussian distribution, right? 
+
+01:44:12 
+So the lambda will tell you how to reverse this one because after this, because this... 
+
+01:44:23 
+This one, the converted BC heater, is what we fit into our model, and if we want to know what's the true demand, we may use this lambda to convert the BC heater to the original, to the true demand. 
+
+01:44:45 
+You can print the transfer, the converting one BC heater. 
+
+01:44:52 
+You can see we can also combine our data visualization. 
+
+01:44:58 
+You can see that the demand, we can add a new column after the box cost. 
+
+01:45:06 
+You can see that the value is between 1. 
+
+01:45:14 
+1.2 and 1.4 right much smaller gap compared with previous one right previous is about brown 10 to 
+
+01:45:27 
+i think it's a 60 right so now it's grown 1.2 to 1.4 so the variance has been stabilized 
+
+01:45:42 
+So after the first step, we stabilize our variance, we can use another step to solve the seasonality issue in the data pattern with beer. 
+
+01:45:58 
+So I think the key idea here is we can 
+
+01:46:04 
+calculate the average because we have seen that from this original picture we see that demand 
+
+01:46:13 
+keeps at every winter like January and December or other months in winter and 
+
+01:46:33 
+across the average demand across year, and then we use the demand to subject the average one, so we can remove the seasonality of the demand, right? 
+
+01:46:51 
+So that's the key idea. 
+
+01:46:53 
+So how to... 
+
+01:46:55 
+How to implement that idea? I may use dcdemand to subtract the average across the year. 
+
+01:47:04 
+So the first step gets the index of each row. You can see here is a pandas data frame, right? 
+
+01:47:17 
+We use .dt which means daytime. 
+
+01:47:24 
+Month index and add a new column here. We add a new column to hit so we've got the new column here 
+
+01:47:32 
+You can see 
+
+01:47:39 
+And also we got another, we got the amount of each row right here. Then after we got the index, we can group by this column and calculate the mean. That's what I mean. We first calculate the average demand across years of that month. Right? So you can see we calculate. 
+
+01:48:07 
+Group 5, first we group 5, and then we calculate this column's mean. 
+
+01:48:13 
+So be careful, we process the data step by step. 
+
+01:48:20 
+Based on the demand, we see it has been stabilized 
+
+01:48:25 
+to its variance, right? And we based on this new column 
+
+01:48:29 
+to calculate the mean. So what do you have seen from here? 
+
+01:48:35 
+So you can 
+
+01:48:38 
+see that average in January and December, I think this winter, you can see that the demand, the stabilized demand, I think it's both cost, please keep that in mind, both cost which has been stabilized according to the... 
+
+01:49:00 
+So you can see that the demand in winter is higher than summer, you can see July or June 
+
+01:49:10 
+is much lower than the winter one, right? 
+
+01:49:13 
+So it's the seasonality, so after we calculate the average demand in that month across years, 
+
+01:49:28 
+Here are some remand operations to make you can understand this column easier. 
+
+01:49:41 
+We can merge the month average according to the month. 
+
+01:49:46 
+So you can see that the hitter by month is this one because here is a group by one. 
+
+01:49:53 
+We calculate the mean. 
+
+01:49:57 
+demand of each month and then we merge this data set to our original data set here by the month, right? 
+
+01:50:10 
+If you have the database, you can understand what I am saying. 
+
+01:50:15 
+Here we merge these two data sets by this column, right? 
+
+01:50:21 
+How to merge these two? 
+
+01:50:23 
+Here is merge. 
+
+01:50:26 
+We use the heater as our left data frame. 
+
+01:50:30 
+And here is our right data frame. 
+
+01:50:34 
+And based on the column marks. 
+
+01:50:37 
+So here is our merged table. 
+
+01:50:41 
+You can see. 
+
+01:50:43 
+So now our table including many things. 
+
+01:50:47 
+These two are our original columns, right? 
+
+01:50:53 
+And this one is columns after both calls. 
+
+01:50:58 
+This one has station variance. 
+
+01:51:03 
+And this one is the month. I think it's index. 
+
+01:51:10 
+And this one is the demand, it's the average demand of that month across so many years. 
+
+01:51:19 
+So we can now, here is our key idea, we use the busy month to subtract the average. 
+
+01:51:29 
+So this step, we got our seasonality demand. 
+
+01:51:36 
+So you get my point here. We use the demand to subtract the average demand over that month across so many years. So after that we can see from this plot. Do you see any seasonality in this plot? I don't. 
+
+01:52:05 
+haven't seen any seasonality, but we still see an increasing trend on this plot. 
+
+01:52:14 
+So the third step is we can apply first-order differencing to detrend the data. 
+
+01:52:23 
+I think this is easy because we just used the 
+
+01:52:28 
+D-I-F-F means differencing function, so we got the first order differencing. 
+
+01:52:34 
+You can see, now we have so many columns. 
+
+01:52:38 
+This one, we stabilize the variance, and this one, we remove the seasonality, 
+
+01:52:48 
+and this one, we remove seasonality and unstable variance. 
+
+01:52:55 
+So keep in mind, we do not need to use the final for all the final one because this has been processed by three steps. But we do not use this one for all the models because some models themselves can handle such pattern. 
+
+01:53:16 
+like if we use this one we can which means that the model can handle the trend pattern 
+
+01:53:22 
+right if we use this one with this one which means that the model can handle similarity and 
+
+01:53:32 
+can handle the chain pattern right so here come so we can plot the data after three steps 
+
+01:53:43 
+Processing three steps, it looks much better, no seasonality, no on-station relevance, and no chat. 
+
+01:53:56 
+So here's an explicit narration, but we can still use our KPSS to... 
+
+01:54:07 
+Here you can see that our peak value now is 0.1, it's bigger than the standard 0.05, right? 
+
+01:54:23 
+Before our three steps, what we have seen here in our original data, the peak value is... 
+
+01:54:31 
+lower than our standard right so after these three steps we got a stationary stationary data 
+
+01:54:41 
+so we can remind remind us if this one is after three steps 
+
+01:54:49 
+okay um this one and this one is after two steps this one just after one step process 
+
+01:54:59 
+So now come to our, here is also the, how to see the chain and the testing data. 
+
+01:55:07 
+So I mentioned last week that the testing data must come after the training data. 
+
+01:55:14 
+Right here is the same logic. 
+
+01:55:16 
+You can see that except for the last five, I think it's the years. 
+
+01:55:23 
+The previous, the others are for trend and the last 12 is for testing, so you can see. 
+
+01:55:32 
+Here we can plot our trending and testing data using different colors. 
+
+01:55:39 
+Now here, after our data preparation, we can make time-series forecasting. 
+
+01:55:49 
+Still, that sentence, keep in mind different model can handle different data patterns. 
+
+01:55:56 
+Although I have made three steps on this one, this column, process on this column, it doesn't... 
+
+01:56:04 
+I mean, I will use this one for all models we use here. 
+
+01:56:09 
+We use the full model and begin with a simple model. 
+
+01:56:14 
+Then we can use the PACF and ACF to determine 
+
+01:56:23 
+we want to use to make forecasting, right? 
+
+01:56:28 
+So we just do, because at the beginning we have inputs. 
+
+01:56:33 
+We have input the tool, so please remind to input the tool before you use them, okay? 
+
+01:56:41 
+So we use the inputted one plus PACF to determine the p, that is how many pass the values we want to use. 
+
+01:56:54 
+So the key is that... 
+
+01:56:58 
+we can only use the training data to determine how many parts of value we use. 
+
+01:57:08 
+So I have said that I update the 
+
+01:57:12 
+update the notebook so it's because this one so previous one i used the whole data set is 
+
+01:57:21 
+it's wrong so please be careful we can only use trend data set to calculate to determine the p 
+
+01:57:28 
+and q so here uh see the nearest one uh the blue the band blue band means noisy so noise 
+
+01:57:39 
+with noise so we can calculate because this plot calculates the 
+
+01:57:47 
+correlation between the previous data with current one. So for the zero, I think the zero is always one because it compares itself. 
+
+01:58:01 
+Right, because I compare me with myself, so the correlation should be one, but if I compare this current one with the demand one month ago, and two months ago, three months ago, so calculate the correlation, and if this one is thick out the blue band, which means... 
+
+01:58:26 
+This one has high correlation here, so we calculate how many positive values we want to use. 
+
+01:58:34 
+So ignore this one, so 1, 2. 
+
+01:58:38 
+So we can use, for simplicity, we can use, determine the p-value as 2, right? 
+
+01:58:45 
+So just to calculate how many. 
+
+01:58:49 
+continuous, how many continuous lines stick out the band, the blue band, 1, 2, right, and ignore the first one, so we can set our p equal to 2, so 
+

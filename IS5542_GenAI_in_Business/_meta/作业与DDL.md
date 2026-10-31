@@ -1,7 +1,7 @@
 ---
 type: 台账
 course: IS5542
-updated: 2026-10-21
+updated: 2026-10-28
 ---
 
 # IS5542 作业与 DDL
@@ -225,6 +225,14 @@ M01考核组件权重与CA门槛不能因合计50%而视为无关。目录信息
 
 本批没有新登录核Canvas或新增DDL；承接现有10/10更新公告与10/18已核A03要求、Hong Kong时区及本人已提交记录。9/11旧公告/模板仍为历史来源，不能把本轮未访问降为渠道/一页/已核任务截止未知。只纠正模板时长不等分值；教学/独审不等本人出席或项目已部署。[[IS5542_GenAI_in_Business/notes/M02-模型全景-基准评测与提示设计|M02 模型全景、评测与提示]]
 
+## 2026-10-28 A04正式入口
+
+Canvas338884 Reflection for Guest lecture 3已核：2026-11-07 23:59 HKT、3points、file upload，页面无附加描述；通用公告一页反思沿用。[[IS5542_GenAI_in_Business/assignment/graded/A04-marketing-reflection/notes/任务说明|A04草稿入口]] 已有独审及A4一页证据，status draft／待本人核阅，未上传或提交。此前待发布记录保留为历史，A02/A03既有提交不改。
+
 ## 2026-10-26 / 10-31 A01 小组项目核对
 
 10/26 只读核对 Canvas 四个入口：Assignments 只有 Guest lecture 1–3 反思，本次检查未发现小组项目任务页，提交渠道、11/28 当天时刻、视频时长上限和 rubric 仍待发布。[Clarification about Peer Evaluation](https://canvas.cityu.edu.hk/courses/71410/discussion_topics/642339)（10/26 12:24）说明：同伴互评占总成绩 10%，团队展示占 20%，合计为项目 30%，互评表格稍后发布。Files 中的项目模板与本地版本 SHA-256 一致。10/31 团队方向与环境进度见 [[IS5542_GenAI_in_Business/assignment/graded/A01-genai-project/notes/任务说明|A01 任务说明]]；本人贡献与提交状态未登记。
+
+## 2026-10-31 · Financial Services 录音处理
+
+S26/S27已归M07并制作录音先行笔记，具体反思任务页、截止、本人作答/提交未因此核定。本批未代写或提交新反思、未改组项目权限。影片PMO的day40/day45、私人演示日期、AI编码观点不是课程DDL或新增学术政策。课程既有“客座每场反思、内容进期末”沿原正式来源，不从音频片段推新截止。

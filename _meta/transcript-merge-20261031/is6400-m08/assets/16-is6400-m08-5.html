@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>is6400-m08-5</title><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:900px;margin:25px auto;padding:0 26px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}h1,h2,h3,h4{line-height:1.4}h2{margin-top:1.4em;border-bottom:1px solid #cbd8df}table{border-collapse:collapse;max-width:100%;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;margin:15px 0;padding:8px 15px;border-left:4px solid #577686}img,svg{max-width:100%;height:auto}.katex-display{overflow-x:auto}code{font-size:.9em}section{margin-bottom:28px}</style><body><h1>is6400-m08 · 新增课堂内容 9–10</h1>
+<h3>2.9</h3>
+<p><strong>🎙️ 课堂补充</strong>（S20 <code>01:22:04</code>–<code>01:27:10</code>）</p>
+<p>课堂用咖啡补货说明评价步长必须匹配决策：每天只决定明日备多少杯，就比较一步预测。S20 <code>01:27:10</code>：<em>"We only care about the next-day prediction, okay?"</em> 在该例中，1 月 1 日训练预测 2 日；看到 2 日实际值后再训练预测 3 日，如此逐日积累误差。</p>
+<p>这与今天只训练一次、连续预测未来 12 天不同。若业务本来需要一次作出 12 期计划，就应评价那个多步任务，不能把咖啡例变成所有业务只准一步预测的规定。课堂建议项目中的时间序列方案考虑此协议，未新增强制项目模型要求。</p>
+<h4>2.10.3</h4>
+<p><strong>🎙️ 课堂补充</strong>（S20 <code>01:27:14</code>–<code>01:29:33</code>）</p>
+<p>课堂外部输入例是明日天气预报，而不是事后得知的明日真实天气。S20 <code>01:28:41</code>：<em>"from the weather report. Now I can use the weather conditions as my new streams of features here."</em> 中文：在预测咖啡需求时，把当时可取得的天气预报和需求滞后一起输入。</p>
+<p>这补充了外部信息的取得途径，但没有逐项复算 p.44 的加油站表，也没有完整讲 GLS 估计。未来可得不等于统计外生或因果已识别；原系数和 GLS 小例继续保持讲义输出／笔记补充来源。</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});</script></body></html>

@@ -1,0 +1,18 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:1050px;margin:20px auto;padding:0 24px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}table{border-collapse:collapse;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;padding:12px}svg{max-width:100%;height:auto}.katex-display{overflow:auto}h2,h3{line-height:1.4}details{border:1px solid #ddd;padding:8px}</style><body><h3>2.2 模型怎样获得行动能力：指令、资料与工具</h3>
+<p>如果只问模型“请分析这份说明”，模型能返回文字，却不会自动拥有银行账户或文件系统的操作权。要让它实际处理任务，还要给它允许使用的资料和工具。</p>
+<p>提示（prompt）告诉模型要做什么；上下文（context）是它判断时能看到的资料。上下文可含原始聊天、文档、日期和已确认约束。工具（tool）把“生成一个动作的描述”连接到“执行一个动作”，例如读文件、运行计算或修改任务。A <code>10:20</code>–<code>12:27</code> 以此解释模型与 agent 的区别。</p>
+<p>💡 笔记补充：以“把会议中的行动整理出来”为例，输入是文字，输出可能先是候选任务。只有系统开放了任务管理工具，agent 才能写入任务表；只有开放相应字段，它才可改负责人或日期。模型说“已安排”与任务表真实存在一行，是两种不同证据。</p>
+<p>下图从左往右读。实线表示本教学例中的资料或结果流；批准分支是明确补充的控制设计，不冒称演示已展示所有实现细节。</p>
+<pre class="mermaid">flowchart TD
+  U[人给问题与允许的资料] --&gt; M[模型理解并提出动作]
+  M --&gt; C{系统允许此动作吗}
+  C -- 不允许或信息不足 --&gt; H[请求补充或人工处理]
+  C -- 允许生成草稿 --&gt; T[工具读取或整理资料]
+  T --&gt; D[候选结果与来源]
+  D --&gt; R[人或检查器核对]
+  R -- 有问题 --&gt; M
+  R -- 满足要求 --&gt; O[保存已接受结果]
+</pre>
+<p>用同一输入走图：人提供会议记录；模型识别一项待办；工具形成草稿；检查器发现日期冲突便返回补充；负责人确认后才保存已接受日期。这里的停止条件是当前任务已满足要求或被退回，不能因为模型仍能继续生成就无限执行。</p>
+<p>权限由系统控制。把“你不能付款”写入提示可以表达要求，但真正防止付款还要限制工具能做的动作。若工具根本没有付款能力，模型的错误计划也无法直接转账；若工具有无限权限，仅靠文字约束会留下更大风险。此段为延续 M03 的笔记解释，非本场实际银行架构披露。</p>
+<p><strong>🎙️ 课堂补充</strong>（A <code>10:20</code>–<code>12:27</code>，课上展开）：<em>"for example, access to company data"</em>（A <code>12:13</code>）；<em>"like give them access to a computer they can run Python"</em>（A <code>12:20</code>）。这两句说明 agent 的行动范围依赖接入能力；不证明任何数据都可上传。</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script src="/mermaid.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'neutral'});</script></body>

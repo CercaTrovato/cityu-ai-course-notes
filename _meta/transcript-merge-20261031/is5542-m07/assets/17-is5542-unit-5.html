@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:1050px;margin:20px auto;padding:0 24px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}table{border-collapse:collapse;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;padding:12px}svg{max-width:100%;height:auto}.katex-display{overflow:auto}h2,h3{line-height:1.4}details{border:1px solid #ddd;padding:8px}</style><body><h3>2.5 沙盒和 KYA：能试验，不等于已获准上线</h3>
+<p>当多个机构对新系统的风险理解不同，联合试验可以让参与者较早讨论边界。沙盒（sandbox）在本段指受安排的试验环境；参加试验、展示用例与获准投入真实生产，是不同状态。</p>
+<p>嘉宾影片提及香港 GenAI 沙盒、多个监管者和用例数量（A <code>28:38</code>–<code>30:36</code>），随后现场解释：共同环境有助于与监管者接触、理解可接受范围，但不是自动预先批准（A <code>30:44</code>–<code>32:23</code>）。本稿没有把这些数字或当时法制概述当成当前官方结论，具体政策另见 §9.5 的核对限制。</p>
+<p>影片问句：<em>"banks can build their own sandbox. Would you like to join this one?"</em>（A <code>28:59</code>–<code>29:02</code>；原文为转述他人提问）。中文任务是：已有内部试验环境，为何还参加共同计划？⚪ 参考作答：价值可能来自共同讨论及较早监管接触，不能把“参与”当作上线许可。英文参考答案（笔记自拟）：“A shared sandbox may help participants discuss expectations with supervisors, but participation does not by itself authorize production use.”</p>
+<p>本段的三个案例分别解决不同控制问题（A <code>34:13</code>–<code>36:04</code> 为影片）：</p>
+<ol>
+<li>聊天回复检查：另一个 AI 在回复前评分，决定通过、改写或转人工。</li>
+<li>反洗钱（Anti-Money Laundering, AML）材料整理：agent 收集证据，人审阅并签字。收集材料并不等于认定违法；影片中的节省幅度不是本批已测结果。</li>
+<li>了解 agent（Know Your Agent, KYA）：若软件代表客户付款，银行除了解客户，还要识别这个 agent 是否获授权、能做什么，以及本次交易是否在授权内。</li>
+</ol>
+<p>了解客户（Know Your Customer, KYC）关注客户身份等核验；KYA 在这里补上“代表客户行动的软件”这一层。A <code>41:02</code>–<code>42:17</code> 明确讨论了创建者、代表权和能力边界。讲者的概念介绍不能替代任何法域的正式合规程序。</p>
+<p>下图是对影片“四个联系”的简化教学表达；连线表示需要核验的授权关系，不表示四步已在所有银行实施。</p>
+<pre class="mermaid">flowchart TD
+  C[客户身份] --&gt; A[代表客户的 agent]
+  A --&gt; P[本次可用的权限]
+  P --&gt; T[具体交易]
+  T --&gt; V{身份与授权均可核验吗}
+  V -- 否或信息不足 --&gt; S[暂停并补证据]
+  V -- 是 --&gt; N[进入其余业务检查]
+</pre>
+<p>💡 笔记补充：客户允许 agent 查询账单，不代表允许它转账。即使 agent 确实属于客户，权限与本次动作不匹配，仍要暂停。图中“进入其余检查”也不等于付款成功，还可能涉及余额、收款人和风险规则；这些不是本场已披露的完整实现。</p>
+<p><strong>🎙️ 课堂补充</strong>（A <code>28:38</code>–<code>42:17</code>，课上展开）：<em>"it doesn't mean that it's an auto pre -approval, right?"</em>（A <code>31:33</code>）；<em>"There are no results yet."</em>（A <code>35:45</code>，影片）。后句限定当时影片所谈试验，不能把试验目标写成已实现效果。</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script src="/mermaid.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'neutral'});</script></body>

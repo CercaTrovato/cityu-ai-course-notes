@@ -1,0 +1,78 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/katex/katex.min.css"><style>body{max-width:1050px;margin:20px auto;padding:0 24px;font:18px/1.75 "Microsoft YaHei",sans-serif;color:#172c3b}table{border-collapse:collapse;font-size:16px}td,th{border:1px solid #bccbd2;padding:8px}blockquote{background:#f3f6f8;padding:12px}svg{max-width:100%;height:auto}.katex-display{overflow:auto}h2,h3{line-height:1.4}details{border:1px solid #ddd;padding:8px}</style><body><h4>2.6.1 Excel 实课：从 25 年数据拟合到条件预测</h4>
+<p>现在把前面的三点教学例换成真实课堂附件。问题是：已知公司治理指数（Corporate Governance Index, CGI），怎样估计审计费用（AuditFee）？输入来自 <code>PredictAuditFee.xlsx</code> 的 25 行历史记录，年份为 2000–2024。CGI 是输入 $x$，AuditFee 是目标 $y$；Year 只标识记录，本次没有作为第二个解释变量。</p>
+<p>原表没有给 AuditFee 的货币或缩放单位，因此下文只写原表数值单位。CGI 指标的构造、公司身份与收集方法也未给；不能把这些数当经外部验证的真实公司样本。</p>
+<details><summary>全部 25 行原始数据（XLSX 单元格；无额外预测行）</summary>
+
+每行是一年，左列标识年，后两列分别是模型输入与实际目标。
+
+| Year | CGI | AuditFee |
+|---:|---:|---:|
+| 2000 | 1.8 | 206 |
+| 2001 | 3.3 | 150 |
+| 2002 | 2.5 | 162 |
+| 2003 | 3.6 | 127 |
+| 2004 | 1.9 | 188 |
+| 2005 | 2.8 | 128 |
+| 2006 | 4.5 | 105 |
+| 2007 | 3.2 | 111 |
+| 2008 | 5.6 | 100 |
+| 2009 | 6.1 | 108 |
+| 2010 | 3.0 | 156 |
+| 2011 | 6.6 | 88 |
+| 2012 | 2.8 | 129 |
+| 2013 | 1.9 | 138 |
+| 2014 | 5.8 | 112 |
+| 2015 | 7.6 | 90 |
+| 2016 | 2.6 | 190 |
+| 2017 | 3.2 | 186 |
+| 2018 | 2.5 | 176 |
+| 2019 | 4.7 | 123 |
+| 2020 | 3.0 | 136 |
+| 2021 | 2.5 | 138 |
+| 2022 | 5.3 | 102 |
+| 2023 | 3.9 | 158 |
+| 2024 | 5.6 | 116 |
+
+例如 2000 年的输入为 1.8、实际费用为 206。这是一对训练时同时已知的数，不是用 2000 年份数值预测 206。
+
+</details>
+
+<p><strong>🎙️ 课堂补充</strong>（S23 <code>01:13:06</code>–<code>01:29:34</code>；A · Excel 与 AI 的 OLS 演示）</p>
+<p>老师用 Excel 的 Regression 功能拟合，再将相同数据与明确模型提示交给 AI。关键是两边使用同一数据、同一因变量/自变量和同一估计方法，而不是比较两个不明模型的数字。</p>
+<p><em>"I explicitly set the instruction here, which is independent, which is dependent, and which model we should use."</em>（S23 <code>01:27:38</code>–<code>01:27:44</code>）</p>
+<p>中文：提示中要明确哪个变量是输入、哪个变量是目标，以及使用什么模型。课堂口头说不同工具模型可能不同是一种排查解释，未展示各工具完整输出，不能当作所有差异原因已证实。</p>
+<p><strong>原附件完整步骤与提示词（<code>Excel.pptx</code>，1 页）</strong>：下面逐行照录，自动换行合并成原句。</p>
+<blockquote>
+<p>Predicting audit fee using Excel</p>
+<p>Excel – File - Options – Add-ins – Excel Add-ins – Analysis ToolPak</p>
+<p>Data – Data Analysis – Regression</p>
+<p>Y and X range – Labels - Line Fit Plots – OK</p>
+<p>Design – Add Chart – Trendline</p>
+<p>Y = a + bX (a= intercept; b=coefficient)</p>
+<p>AI prompt: Based on the excel data, using CGI as independent variable and auditfee as dependent variable, show regression results of OLS estimation.</p>
+</blockquote>
+<p><strong>实际跟做的动作</strong>（界面名称沿附件；本次笔记核算未操作用户的 Excel）：</p>
+<ol>
+<li>先查看 Data 是否有 Data Analysis。没有时，按附件在 File → Options → Add-ins → Excel Add-ins 中启用 Analysis ToolPak；已启用就不重复操作。S23 <code>01:16:11</code> 说不用跟该步，只针对教室机器已经装好，不等于所有机器都不需插件。</li>
+<li>打开原表，Data → Data Analysis → Regression，进入回归设置窗口。</li>
+<li>Input Y Range 选择 <code>C1:C26</code>，即 AuditFee 标题及 25 个目标值。Y 是要预测的费用，不能选 Year。</li>
+<li>Input X Range 选择 <code>B1:B26</code>，即 CGI 标题及 25 个输入值。X/Y 要覆盖相同 25 条记录，不漏最后一行。</li>
+<li>因为范围含标题，勾 Labels；按附件勾 Line Fit Plots 后确认。若只选 <code>B2:B26</code>、<code>C2:C26</code>，就不勾 Labels。标题是否纳入与该开关必须一致。</li>
+<li>输出中先看系数表：Intercept 是截距 $a$，CGI 行的 coefficient 是斜率 $b$。需要显示线时按附件 Chart Design → Add Chart Element → Trendline 选 Linear；具体菜单随版本核对。</li>
+<li>核图的横轴是否确为 CGI，核散点来自原始 AuditFee；原始观测、拟合值和新条件预测应分别标记。增加趋势线不替代读取回归系数，更不能由线好看断言未来准确。</li>
+</ol>
+<p>普通最小二乘（Ordinary Least Squares, OLS）就是前节按竖直残差平方和选择 $a,b$ 的拟合规则。本批作者从原 XLSX 单元格重新用精确分数计算，得到：</p>
+<p>$$\widehat{\mathrm{AuditFee}}=198.903345374-16.091211156\times\mathrm{CGI}.$$</p>
+<p>本式左边是模型预测费用；右边截距与费用同单位，斜率表示 CGI 每加 1，模型预测费用约少 16.0912 个原表单位。它是这 25 行的统计拟合，不证明治理指数使费用下降；“自变量”不等于变量由自身变化或具有已识别因果效应。</p>
+<p><strong>用已教公式核系数</strong>：25 行的 $\sum x=96.3$、$\sum y=3,423$、$\sum x^2=434.51$、$\sum xy=12,162.6$。这些分别是输入相加、目标相加、每行输入平方后相加、每行输入乘目标后相加。代入前节等价斜率式，分母不为零：</p>
+<p>$$b=\frac{25\times12,162.6-96.3\times3,423}{25\times434.51-96.3^2}=-16.091211156,$$</p>
+<p>$$a=\frac{3,423}{25}-b\frac{96.3}{25}=198.903345374.$$</p>
+<p>S23 <code>01:23:13</code> 把截距识成 1998.903；后 S23 <code>01:28:05</code> 明确为 198.9033，且原数据复算一致，所以笔记采用 198.9033，不改写原转录。用错 1998 会使预测多约 1,800，不能按“差不多”保留。</p>
+<p>下图每个点是一年原始观测，横轴是 CGI、纵轴是 AuditFee 原表数值；实线是同 25 行的 OLS 拟合线。星号仅表示 CGI=5 时的条件预测，没有真实未来费用，不给它画已知残差。</p>
+<p><img alt="OLS original observations and conditional prediction" src="auditfee-ols.svg" /></p>
+<p>可编辑图源和完整数据：[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m08-source23/plot-auditfee.py|plot-auditfee.py]]。例如左侧 CGI=1.8 的点为费用 206；沿同一横坐标看直线可读拟合值，二者的竖直差才是该行残差。图线下降不构成因果证据，也没有在横轴表示年份。</p>
+<p><strong>把“下年 CGI=5”作为条件，走完预测</strong>：老师在 S23 <code>01:22:05</code>–<code>01:22:43</code> 先假设或可靠估计新输入为 5，再预测目标；5 不是已确认未来事实。</p>
+<p>$$\widehat{\mathrm{AuditFee}}=198.903345374-16.091211156\times5\approx118.447289593.$$</p>
+<p>先算斜率乘 5，得约 −80.4561；再加截距，得约 118.4473 个原表单位。如果 CGI 改为 6，则同一拟合线给约 102.3561，减少量与斜率一致。实际 CGI 或业务关系改变时，条件预测也变；不能说已经预测“下一年一定收费 118.45”。</p>
+<p><strong>训练、输出与验证分开</strong>：训练输入是历史 CGI 和已知 AuditFee；学习输出是 $a,b$。使用时给新的 CGI，输出费用预测。原表 25 行都参与拟合，样本内残差平方和约 10,485.8136；没有留出新样本，所以没有据此完成样本外预测验证。费用还可能受公司规模、风险和审计范围等因素影响，这些这里只是遗漏变量提醒，不是已建多元模型。</p>
+<p><strong>English reference answer（笔记复算）</strong>：Using the 25 supplied observations and an intercept, the OLS model is predicted AuditFee = 198.903345374 − 16.091211156 × CGI. Conditional on CGI being 5, the prediction is about 118.4473 in the source data units. This is a fitted statistical association, not proof of causality or validated future accuracy.</p><script src="/katex/katex.min.js"></script><script src="/katex/contrib/auto-render.min.js"></script><script src="/mermaid.min.js"></script><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'neutral'});</script></body>

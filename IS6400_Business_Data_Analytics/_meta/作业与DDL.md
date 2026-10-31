@@ -1,7 +1,7 @@
 ---
 type: 作业与DDL
 course: IS6400
-updated: 2026-10-21
+updated: 2026-10-28
 tags: [IS6400, DDL, 作业]
 ---
 
@@ -654,3 +654,14 @@ A02 任务说明现有官方对照教学段补齐四题英文原题、中文条�
 ## 2026-10-27 · Week 7 题面重审范围
 
 原Cell22三问英文全文、中文限定词与方法、英文参考框架见T07§2.14；第一问原文误拼credictcard-reduced.csv，实际文件为creditcard-reduced.csv。三问真实五模型训练／比较／权重实验结果本批未制作，不据方法解释称答卷完成。上方Canvas与Notion回读是2026-10-14历史记录，本轮未刷新当前DDL/points/rubric；本人学习/提交/评分不动。
+
+## 2026-10-28 时间序列正式入口核对
+
+- Assignment Week 8 & 9，Canvas330590，2026-11-06 23:59 HKT、20points、file upload，页无附加描述。
+- Week 9 Extra Assignment，Canvas330608，同为2026-11-06 23:59 HKT、2points、file upload；原Notebook Cell82要求一份Notebook，最终接受扩展名未单独验证。
+
+[[IS6400_Business_Data_Analytics/notes/T09-时间序列II实战-变换恢复与模型评价|T09]] 已保留Extra完整原题与参考过程。既有A09本人已提交记录保持；它与本日新可见“Week8&9”合并入口的实际回执映射仍待核，不能据新入口没有记录就撤销旧提交状态，也不自动替本人重交。
+
+## 2026-10-31 · S20 课堂小测来源
+
+M08四图小测：S20 `59:51`末次要求解释C→D和检验平稳，`59:58`给5分钟并交Canvas，`01:29:47`提醒当日14:00前交。具体日期未确认，早前ASR C→B与末次指令不一致；不创建猜测的绝对DDL，不改现有Week8/9正式作业、本人提交／评分。滚动一步用于项目为课堂建议，不新增强制模型条款。
