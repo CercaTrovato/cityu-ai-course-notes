@@ -1,0 +1,13 @@
+[project]
+name = "is5542-cs-agent"
+version = "0.1.0"
+description = "IS5542 group project: policy-guarded e-commerce customer-service agent evaluated on the tau-bench retail domain"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+    # tau-bench pinned to one commit so every run uses the same tasks, policy and grader
+    "tau2 @ git+https://github.com/sierra-research/tau2-bench@da0835f6c67baef58bdda18f2a3b037dfb3a1754",
+    "langgraph",
+]
+
+[tool.uv]
+package = false

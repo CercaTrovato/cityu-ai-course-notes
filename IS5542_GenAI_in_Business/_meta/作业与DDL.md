@@ -224,3 +224,7 @@ M01考核组件权重与CA门槛不能因合计50%而视为无关。目录信息
 ## 2026-10-27 M02 行政来源边界
 
 本批没有新登录核Canvas或新增DDL；承接现有10/10更新公告与10/18已核A03要求、Hong Kong时区及本人已提交记录。9/11旧公告/模板仍为历史来源，不能把本轮未访问降为渠道/一页/已核任务截止未知。只纠正模板时长不等分值；教学/独审不等本人出席或项目已部署。[[IS5542_GenAI_in_Business/notes/M02-模型全景-基准评测与提示设计|M02 模型全景、评测与提示]]
+
+## 2026-10-26 / 10-31 A01 小组项目核对
+
+10/26 只读核对 Canvas 四个入口：Assignments 只有 Guest lecture 1–3 反思，本次检查未发现小组项目任务页，提交渠道、11/28 当天时刻、视频时长上限和 rubric 仍待发布。[Clarification about Peer Evaluation](https://canvas.cityu.edu.hk/courses/71410/discussion_topics/642339)（10/26 12:24）说明：同伴互评占总成绩 10%，团队展示占 20%，合计为项目 30%，互评表格稍后发布。Files 中的项目模板与本地版本 SHA-256 一致。10/31 团队方向与环境进度见 [[IS5542_GenAI_in_Business/assignment/graded/A01-genai-project/notes/任务说明|A01 任务说明]]；本人贡献与提交状态未登记。
