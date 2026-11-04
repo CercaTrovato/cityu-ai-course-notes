@@ -1,0 +1,432 @@
+--- v0
++++ v1
+@@ -33,9 +33,9 @@
+ 
+ ### 1.1 前置唤醒
+ 
+-[[IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA|M08]] 已讲时间序列理论：自相关检查“前后的值是否有关”，差分是相邻值相减，AR 使用过去数值，MA 使用过去预测创新，ARIMA 将这些与差分结合。本篇把这些操作接到具体列和日期，不能仅凭记住名字运行。
+-
+-[[IS6400_Business_Data_Analytics/notes/T08-时间序列实战-销量与季度季节性|T08]] 的 ETS 每次按预测误差更新水平、趋势、季节状态。本篇保留这条状态更新理解，并说明参数如何在训练段估计。
++[[IS6400_Business_Data_Analytics/notes/M08-时间序列II-自相关差分与ARIMA|M08]] 已讲时间序列理论：自相关检查“前后的值是否有关”，差分是相邻值相减，自回归（Autoregression，AR）使用过去数值；移动平均误差（Moving Average，MA）使用过去预测创新；自回归积分移动平均（Autoregressive Integrated Moving Average，ARIMA）将它们与差分结合。本篇把这些操作接到具体列和日期，不能仅凭记住名字运行。
++
++[[IS6400_Business_Data_Analytics/notes/T08-时间序列实战-销量与季度季节性|T08]] 的指数平滑状态空间（Exponential Smoothing State Space，ETS）每次按预测误差更新水平、趋势、季节状态。本篇保留这条状态更新理解，并说明参数如何在训练段估计。
+ 
+ ### 1.2 Python 最小入场
+ 
+@@ -77,7 +77,7 @@
+ z=\begin{cases}(y^\lambda-1)/\lambda,&\lambda\ne0,\\\log y,&\lambda=0.\end{cases}
+ $$
+ 
+-这里的 $y$ 是一月需求，$z$ 是变换尺度，不再用原需求单位。$\lambda$ 由训练数据估计；Cell 15 未显式给参数，所以 SciPy 用输入序列估计它。原教程输入全 198 月，保存值约为 $-0.664521$；本次复算相同到展示精度。需求 27 被变成约 1.336452，这不是需求降到 1.34 台。
++这里的 $y$ 是一月需求，$z$ 是变换尺度，不再用原需求单位。$\lambda$ 由训练数据估计；Cell 15 未显式给参数，所以 SciPy 用输入序列估计它。原教程输入全 198 月，保存值约为 $-0.664521$；本次复算相同到展示精度。直接代入原教程λ，$[27^{-0.664521}-1]/(-0.664521)\approx1.336452$。需求27因此被变成约1.336452，这不是需求降到 1.34 台。
+ 
+ Cell 17 把数组放回 `demand_BC` 列并画图。若需求含零或负数，当前原代码不能直接做 Box-Cox；不能为了消错随意加常数而不交代改变的模型与逆变换。
+ 
+@@ -119,13 +119,28 @@
+ 
+ ACF（自相关函数）看一串数与其滞后值的相关；PACF（偏自相关函数）进一步控制中间滞后影响。Cell 41／44 在训练差分量上画图，Cell 42／45 选 $p=2,q=1$。这是一种候选阶数判断，不是“图上某根线越界便唯一证明正确阶数”。多次看测试误差来挑阶会让测试变成验证集。
+ 
+-ARMA(2,1) 的当前输出由两个月前的变化量和一个过去创新参与解释。创新 $\varepsilon_t$ 是给定当时历史后仍没预测到的新误差，不是原需求减平均值。
++ARMA(2,1) 的当前输出由前两个滞后月份的变化量和一个过去创新参与解释。创新 $\varepsilon_t$ 是给定当时历史后仍没预测到的新误差，不是原需求减平均值。
+ 
+ 💡 示意约定：若 $v_t=0.5v_{t-1}+0.2v_{t-2}+\varepsilon_t+0.3\varepsilon_{t-1}$，已知最近两个变化量为 0.02、0.01，最近创新 0.005，下一步预测是 $0.5\times0.02+0.2\times0.01+0.3\times0.005=0.0135$。这是笔记补充参数，不是教师模型估计值。多步预测时未知未来创新的条件期望取 0，并递推使用已经预测出的变化量。
+ 
+ Cell 47 调 `ARIMA(..., order=(2,0,1))`，中间的 0 表示这里不再额外差分，因为传入的 `demand_diff1` 已差分。`.fit()` 通过训练段的概率模型及创新计算估计系数和误差尺度，使训练数据在模型下更可能出现；不是把测试答案存进去。优化迭代满足数值停止条件，不保证全局最优。
+ 
+ Cell 49 把预测放到测试月份画图；Cell 51 的保存 RMSE 为 0.0114638359，量纲是**去季节后差分的 Box-Cox 单位**。它还没有回答原需求误差有多少。
++
++#### 2.6.1 怎样读当前训练侧的 ACF／PACF 图
++
++下图由本次训练段重新计算，未使用测试段选阶；上排是去季节后的一阶差分，下排是 Box-Cox 水平的 12 期差分。它与原教程的全表预处理输入不同，不能冒称原件保存图。
++
++![[IS6400_Business_Data_Analytics/notes/figures/t09-time-series/t09-diagnostics.svg]]
++
++横轴 lag 是相隔几个月，纵轴是相关系数。lag 0 等于与自己比较，通常为 1，不能拿它选 AR 阶数。浅蓝带是所用方法给出的近似显著性参考区，越界只提示该滞后下相关值得检查，多重滞后与估计误差仍可能造成偶然越界。
++
++实际读上排：lag 1 明显为负，PACF 的 lag 2 也为负；后面仍有多根靠近／越过参考带，因此不能硬说“恰好在2阶严格截尾”。读下排：虚线标 12、24、36 个月，lag 12 的相关为负，36 附近又有结构，季节项应按这些间隔检查，不是把横轴3直接当季节lag36。
++
++“截尾”指理论上某阶后相关归零，“拖尾”指逐渐衰减而不是突然消失；有限样本的图只提供近似线索。纯AR常以PACF截尾、纯MA常以ACF截尾作候选启发式，混合模型不保证出现干净形状。本篇固定沿用原教程规格用于比较，未声称这张图证明它们唯一正确。
++
++若要真正选择规格，可在186月训练段内部再留最近12月作验证：每个候选只在更早训练部分估变换和模型，在这12月按相同原尺度评价；先检查收敛与残差，再结合误差和复杂度选定。规格冻结后才用完整186月重估，并只对最后12月正式测试一次。这样测试期没有被反复用作选阶工具。
++
+ 
+ ### 2.7 ARIMA：模型内部做差分并恢复（Cells 52–58）
+ 
+@@ -203,18 +218,38 @@
+ 
+ 本次实际运行的训练侧结果如下，单位均为原需求单位。只比较这个表内部。
+ 
+-| 模型规格沿原教程 | 同尺度 RMSE |
+-|---|---:|
+-| ARMA(2,1) | 14.7413 |
+-| ARIMA(2,1,1) | 12.7463 |
+-| SARIMA(2,1,1)(1,0,3,12) | 4.2851 |
+-| ETS 加法趋势／季节 | 15.7103 |
+-
+-读第三行：该固定规格在这 12 月的预测偏差，用 RMSE 汇总为约 4.29 个需求单位。本实验里它最低，但只是一段测试、固定规格的结果，不是对所有季节序列的普遍排名。若根据此结果再调参，本测试已经参与选择，下次应留新的最终测试。
++| 模型规格沿原教程 | 同尺度 RMSE | 优化器收敛标记 |
++|---|---:|---|
++| ARMA(2,1) | 14.7413 | true |
++| ARIMA(2,1,1) | 12.7463 | true |
++| SARIMA(2,1,1)(1,0,3,12) | 4.2851 | false，50次迭代后未收敛 |
++| ETS 加法趋势／季节 | 15.7103 | true |
++
++读第三行：该固定规格在这 12 月的预测偏差，用 RMSE 汇总为约 4.29 个需求单位。它的数值最低，但本次优化器报告未收敛（converged=false，warnflag=1），并有 Maximum Likelihood optimization failed to converge 警告。因此4.2851只是当前未收敛优化结果的描述性误差，不能据此宣布可靠拟合完成后的赢家。其他行的true也只是优化器停止标记，不是模型有效性证明。这里仍只是一段测试、固定规格的结果，不是普遍排名。若根据此结果再调参，本测试已经参与选择，下次应留新的最终测试。
+ 
+ ![[IS6400_Business_Data_Analytics/notes/figures/t09-time-series/t09-forecast.svg]]
+ 
+-图为本次补充实验真实预测。横轴是共同的 12 个测试月份，纵轴是原需求；黑点为真实值，四条线是一次性 12 步预测。读某月时先比较同一纵轴上的线与黑点距离，不把跨月份斜率当误差。图源与输入版本随资产保存。
++图为本次补充实验真实预测；其中SARIMA线来自上述未收敛优化结果，不能仅凭贴近黑点就认定其可靠。横轴是共同的 12 个测试月份，纵轴是原需求；黑点为真实值，四条线是一次性 12 步预测。读某月时先比较同一纵轴上的线与黑点距离，不把跨月份斜率当误差。图源与输入版本随资产保存。
++
++#### 2.11.1 用实际2019年7月走完恢复链
++
++本次训练期为2004-01至2019-06，测试期为2019-07至2020-06。训练估计的 $lambda$ 为约 −0.747199247；真实运算使用未舍入值，下面保留足够位数方便逐步核读。
++
++| 恢复步骤 | 本次实际数值 | 意思 |
++|---|---:|---|
++| 末训练去季节水平 | 0.044871892 | 累计变化量的已知起点 |
++| ARMA首步变化预测 | −0.000384823 | 相对上月的预测变化 |
++| 两者相加 | 0.044487070 | 7月去季节水平预测 |
++| 加训练期7月均值1.152286636 | 1.196773705 | 7月Box-Cox水平预测 |
++| 用训练λ逆变换 | 20.217026828 | 原需求单位的7月预测 |
++| 测试7月真实值 | 21 | 只用于最终评价 |
++
++最后两行差约 −0.782973，表示少预测约0.783个原需求单位。下一步ARMA继续累计预测变化，而不是把测试7月的真实需求21喂回。这一例将§2.11的恢复顺序接到实际数组；不是用已舍入表格重新估参数。
++
++持久入口：[完整复算脚本](figures/t09-time-series/t09-reproduce.py)、[实际执行与预测记录](figures/t09-time-series/t09-execution.json)、[本月中间量](figures/t09-time-series/t09-first-month.json)。脚本从自身正式位置找到本课`course_files_export/`，输出写到库外`E:/app-data/codex/scratchpad/cityu-t09-reproduction/`，不会覆盖学校原件。
++
++运行入口是 `D:\anaconda3\python.exe -X utf8 <本课notes/figures/t09-time-series/t09-reproduce.py的完整路径>`。需已有pandas、SciPy、statsmodels、sklearn和Matplotlib；本机本次已具备。脚本包含原35格复现与训练侧修正两条独立链，不能把修正值冒称原件输出；诊断标记、日期、预测和图都写入执行记录。
++
+ 
+ ### 2.12 Extra Assignment：完整原题与参考实现（Cell 82）
+ 
+@@ -261,7 +296,13 @@
+ 
+ 英文参考结论：“For the monthly temperature series, the fixed ARIMA(1,0,0) achieved an RMSE of 7.0205 °C, while the seasonal-naive benchmark achieved 2.4923 °C over the same final twelve months. The benchmark performed better in this illustrative test. A non-seasonal AR(1) forecast tends towards its long-run level and does not preserve the annual pattern well. Further model selection should use training-side validation.”
+ 
+-完整要求中的训练侧 KPSS、ACF/PACF 诊断、两模型完整图及可执行作业工作区仍须随参考代码补齐并核对，不能凭这段最低示例标为可提交。这里明确演示评价逻辑，不替本人作业完成状态。
++本次训练侧KPSS统计量约0.08547、p值输出0.1、自动滞后4：在本设置下不拒绝常数平稳原假设，但不等于证明没有季节性。训练ACF在12个月处约0.78733，PACF在1个月处约0.80019，说明年度结构和短期相关都值得关注；固定AR(1)是说明协议的参考候选，不是由诊断证明最优。
++
++![[IS6400_Business_Data_Analytics/notes/figures/t09-time-series/t09-weather.svg]]
++
++图的横轴为2016年12个测试月，纵轴为月均摄氏温度。黑点是真实月均温度，ARIMA(1,0,0)线逐渐趋平，季节朴素线保留上一年的月度起伏；该图支持前述有限的结构解释，不能用此测试再反复调参。
++
++[天气参考代码与诊断／绘图](figures/t09-time-series/weather-reference.py) 提供完整数据处理、训练侧诊断、两个预测、两RMSE与共同图，可把代码依次放入新Notebook复做。它是已运行逻辑的持久参考入口，不是本人已审核或提交的正式答卷。Canvas接受扩展名、个人文件和最终提交仍按任务说明另核。
+ 
+ ### 2.13 原教程代码逐单元对照（Cells 3–80）
+ 
+@@ -286,6 +327,8 @@
+ 
+ </details>
+ 
++这些导入语句让后续名字对应具体库函数；%matplotlib是Notebook显示设置，warnings行会屏蔽警告，诊断时须注意其限制。
++
+ <details><summary>原 Code Cell 6</summary>
+ 
+ ```python
+@@ -295,6 +338,8 @@
+ 
+ </details>
+ 
++read_csv按当前工作目录读取两列表，head返回前五行，用来核月份及需求输入。
++
+ <details><summary>原 Code Cell 7</summary>
+ 
+ ```python
+@@ -303,6 +348,8 @@
+ 
+ </details>
+ 
++to_datetime按年-月格式转换这一列，赋值只更新副本中的日期表示，输出供后面的时间轴使用。
++
+ <details><summary>原 Code Cell 8</summary>
+ 
+ ```python
+@@ -310,6 +357,8 @@
+ ```
+ 
+ </details>
++
++info返回每列类型和非空数，核198行是否仍在，以及需求列有没有缺失。
+ 
+ <details><summary>原 Code Cell 9</summary>
+ 
+@@ -322,6 +371,8 @@
+ 
+ </details>
+ 
++figure定画布，plot把每月需求放到日期轴，show显示图；横轴是月份，纵轴是需求。
++
+ <details><summary>原 Code Cell 11</summary>
+ 
+ ```python
+@@ -330,6 +381,8 @@
+ ```
+ 
+ </details>
++
++kpss输入原需求列，四个返回量分别为统计量、p值、使用滞后和临界值；本格只打印p值。
+ 
+ <details><summary>原 Code Cell 15</summary>
+ 
+@@ -342,6 +395,8 @@
+ 
+ </details>
+ 
++boxcox返回变换数组和估计λ；[:10]只显示前十项，不是仅用十项估计。
++
+ <details><summary>原 Code Cell 17</summary>
+ 
+ ```python
+@@ -354,6 +409,8 @@
+ 
+ </details>
+ 
++先把变换数组加入同一表，再按日期画变换尺度的曲线，不能把纵轴当原需求。
++
+ <details><summary>原 Code Cell 20</summary>
+ 
+ ```python
+@@ -363,6 +420,8 @@
+ 
+ </details>
+ 
++dt.month从日期取得1至12的月份编号，赋值后每行仍代表原来的月份。
++
+ <details><summary>原 Code Cell 22</summary>
+ 
+ ```python
+@@ -372,6 +431,8 @@
+ 
+ </details>
+ 
++groupby按月份分组，对demand_BC求均值，reset_index让月份成为普通列；输出应是12行。
++
+ <details><summary>原 Code Cell 23</summary>
+ 
+ ```python
+@@ -381,6 +442,8 @@
+ 
+ </details>
+ 
++rename仅改右侧均值列名，保留数值，便于下一格区分观测与均值。
++
+ <details><summary>原 Code Cell 25</summary>
+ 
+ ```python
+@@ -390,6 +453,8 @@
+ 
+ </details>
+ 
++merge用月份把右侧每月均值接回各观测行，若右表月份重复会膨胀，须核行数。
++
+ <details><summary>原 Code Cell 26</summary>
+ 
+ ```python
+@@ -403,6 +468,8 @@
+ 
+ </details>
+ 
++相减得到去季节水平，sort_values恢复日期顺序，再画该列；负值表示低于月份平均。
++
+ <details><summary>原 Code Cell 29</summary>
+ 
+ ```python
+@@ -412,6 +479,8 @@
+ 
+ </details>
+ 
++diff按当前日期顺序做相邻相减，首行缺前值为NaN，head用来核中间量。
++
+ <details><summary>原 Code Cell 30</summary>
+ 
+ ```python
+@@ -423,6 +492,8 @@
+ 
+ </details>
+ 
++本格仅画差分结果，用同日期坐标查趋势与波动形态，不自动证明平稳。
++
+ <details><summary>原 Code Cell 32</summary>
+ 
+ ```python
+@@ -431,6 +502,8 @@
+ ```
+ 
+ </details>
++
++[1:]去掉首个缺失差分值，KPSS再次检查；下划线变量是未打算展示的返回项。
+ 
+ <details><summary>原 Code Cell 35</summary>
+ 
+@@ -441,6 +514,8 @@
+ ```
+ 
+ </details>
++
++负索引切分末12行，其余训练；shape返回两表行列数，核186/12和列数。
+ 
+ <details><summary>原 Code Cell 37</summary>
+ 
+@@ -455,6 +530,8 @@
+ 
+ </details>
+ 
++分别按两段日期绘训练和测试，legend说明两线；此图不能代替检查预处理先后。
++
+ <details><summary>原 Code Cell 41</summary>
+ 
+ ```python
+@@ -464,6 +541,8 @@
+ 
+ </details>
+ 
++plot_pacf对训练差分序列画偏自相关，去掉首NaN；横轴lag是月数。
++
+ <details><summary>原 Code Cell 44</summary>
+ 
+ ```python
+@@ -472,6 +551,8 @@
+ ```
+ 
+ </details>
++
++plot_acf对同一训练差分序列画自相关；与PACF的控制中间滞后口径不同。
+ 
+ <details><summary>原 Code Cell 47</summary>
+ 
+@@ -483,6 +564,8 @@
+ ```
+ 
+ </details>
++
++ARIMA创建(2,0,1)概率模型，fit估计参数，forecast返回未来12步差分预测；必须恢复后才得需求。
+ 
+ <details><summary>原 Code Cell 49</summary>
+ 
+@@ -499,6 +582,8 @@
+ 
+ </details>
+ 
++三条plot共用日期，y_predict对应测试日期，但实际预测对象仍是差分列。
++
+ <details><summary>原 Code Cell 51</summary>
+ 
+ ```python
+@@ -507,6 +592,8 @@
+ ```
+ 
+ </details>
++
++root_mean_squared_error在差分尺度对真实与预测逐项评分，print返回该尺度的RMSE。
+ 
+ <details><summary>原 Code Cell 54</summary>
+ 
+@@ -517,6 +604,8 @@
+ ```
+ 
+ </details>
++
++输入去季节水平并设d=1，模型内部差分，返回预测已恢复到此输入水平，不能再累计一次。
+ 
+ <details><summary>原 Code Cell 56</summary>
+ 
+@@ -532,6 +621,8 @@
+ 
+ </details>
+ 
++本格把去季节水平的真实与预测共轴画出，不是原需求图。
++
+ <details><summary>原 Code Cell 58</summary>
+ 
+ ```python
+@@ -541,6 +632,8 @@
+ 
+ </details>
+ 
++本格评分的是真实去季节水平，因此不能与上一差分RMSE直接排胜负。
++
+ <details><summary>原 Code Cell 62</summary>
+ 
+ ```python
+@@ -551,6 +644,8 @@
+ ```
+ 
+ </details>
++
++diff(12)做相隔12月相减；原代码这里用全表作诊断，训练专用版须另外限定范围。
+ 
+ <details><summary>原 Code Cell 65</summary>
+ 
+@@ -562,6 +657,8 @@
+ 
+ </details>
+ 
++打印训练季节差分的前20项，前12项NaN属定义；[12:]只去掉这些缺项，再画PACF。
++
+ <details><summary>原 Code Cell 67</summary>
+ 
+ ```python
+@@ -570,6 +667,8 @@
+ ```
+ 
+ </details>
++
++对训练12期差分画ACF，季节滞后要看12的倍数，不是普通第3个月就等于季节3阶。
+ 
+ <details><summary>原 Code Cell 69</summary>
+ 
+@@ -580,6 +679,8 @@
+ ```
+ 
+ </details>
++
++输入Box-Cox水平，普通与季节规格分别传入两个元组，fit和forecast生成12个月水平预测。
+ 
+ <details><summary>原 Code Cell 71</summary>
+ 
+@@ -595,6 +696,8 @@
+ 
+ </details>
+ 
++共轴画Box-Cox真实与预测，读图不能把变换纵轴还当作原需求数量。
++
+ <details><summary>原 Code Cell 73</summary>
+ 
+ ```python
+@@ -603,6 +706,8 @@
+ ```
+ 
+ </details>
++
++本格在Box-Cox尺度评分，保存值与当前软件复算的差别在§2.8分列。
+ 
+ <details><summary>原 Code Cell 76</summary>
+ 
+@@ -614,6 +719,8 @@
+ ```
+ 
+ </details>
++
++ETSModel设置加法趋势和12期加法季节，fit估计状态和参数，forecast出12步；优化日志是训练过程。
+ 
+ <details><summary>原 Code Cell 78</summary>
+ 
+@@ -629,6 +736,8 @@
+ 
+ </details>
+ 
++画ETS的Box-Cox水平预测，线与实际同尺度，但和差分图不能直接比较距离。
++
+ <details><summary>原 Code Cell 80</summary>
+ 
+ ```python
+@@ -637,6 +746,8 @@
+ ```
+ 
+ </details>
++
++评分仍为Box-Cox水平，y_true和y_pred参数写反顺序不改变RMSE的对称平方差。
+ 
+ ## 3. 一图看懂
+ 

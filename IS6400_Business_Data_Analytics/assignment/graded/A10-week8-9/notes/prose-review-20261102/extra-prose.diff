@@ -1,0 +1,68 @@
+--- before
++++ after
+@@ -1,8 +1,8 @@
+-# IS6400 — Week 9 Extra: Weather Time Series Forecasting
++# IS6400 Week 9 Extra: weather forecasting
+ 
+ LI Binxiong
+ 
+-The instructor’s tutorial and assignment appear below in their original order. My weather analysis follows the assignment question. The heater examples are reproduced for context; their full-sample preprocessing and different target scales are not used to choose or evaluate my weather models.
++The course heater tutorial is followed by the weather assignment and my analysis.
+ 
+ # Time series II
+ 
+@@ -157,40 +157,42 @@
+ 
+ Submission: One Jupyter Notebook with your code, plots, RMSE results, and conclusion.
+ 
+-# My answer: weather forecasting
++# Weather forecasting
+ 
+ ## 1. Data preparation
+ 
+-I forecast monthly mean air temperature, `T (degC)`, in degrees Celsius. Each monthly target is the arithmetic mean of available observations in that month. The last 12 calendar months are held out before diagnostics or model selection. Means need no fitted parameters, but Box–Cox parameters, seasonal adjustments, model orders and coefficients must be learned without the held-out observations. Sample counts are reported because an available-observation mean need not equal a uniformly sampled monthly mean.
++I forecast monthly mean temperature using `T (degC)`, measured in degrees Celsius. Removing 24 identical records leaves 70,067 observations and 96 monthly means. Each mean gives equal weight to the retained observations in that month.
+ 
+-## 2. ARIMA pipeline using training data only
++The training period is January 2009 to December 2015, with 84 months. The final 12 months, January to December 2016, form the test set.
+ 
+-Temperature can be negative, so I do not use the tutorial's unshifted Box–Cox transformation, which requires positive inputs. I retain the Celsius scale. The KPSS test below has a null hypothesis of stationarity around a constant; a failure to reject it is not proof that the series has no seasonal structure. ACF measures correlation with earlier observations, while PACF measures a lag's additional linear association after accounting for shorter lags. The plots diagnose annual dependence before a small, predefined model comparison.
++## 2. ARIMA pipeline
+ 
+-I reserve the last 12 training months for internal validation. All four candidate specifications are declared before looking at test errors. Each is fitted to the earlier training months and makes one fixed-origin 12-month forecast. I select by validation RMSE, then refit that specification to the full training period. There is no refitting on the 12-month test period.
++The temperatures include negative values, so I retain the Celsius scale instead of applying the tutorial's Box–Cox transformation, which requires positive inputs. I use KPSS to test stationarity around a constant, and ACF/PACF to examine lag dependence across the 84 training months.
+ 
+-For a seasonal ARIMA model, the first triple gives ordinary autoregressive lags, differences and moving-average error lags. The seasonal triple applies these ideas at multiples of 12 months. A seasonal difference subtracts the value one year earlier. These are candidate assumptions, not conclusions read directly from the shape of one plot. This small search and one validation year may choose differently in another period.
++I compare four ARIMA specifications. Each is fitted to 2009–2014 and forecasts the 12 validation months in 2015. I select the specification with the lowest validation RMSE, refit it to all 84 training months and forecast 2016 from the December 2015 origin.
++
++ARIMA's first triple gives the autoregressive order, number of differences and moving-average order. The seasonal triple applies these terms at intervals of 12 months. A seasonal difference subtracts the value from the same month one year earlier.
+ 
+ ## 3. Alternative model
+ 
+-I fit additive Holt–Winters exponential smoothing to exactly the same training months, with an additive trend and a 12-month additive seasonal pattern. Its level, trend and seasonal states are fitted without test temperatures. Additive seasonality allows negative Celsius values. This specification is fixed before test evaluation.
++I fit Holt–Winters to the same 84 training months, with an additive trend and additive seasonality over 12 months. It estimates the level, trend and monthly seasonal states from the training data. The additive form accommodates negative Celsius temperatures.
+ 
+ ## 4. Evaluation and conclusion
+ 
+-Both models forecast the same 12 months from the same origin. I calculate root mean squared error (RMSE) from unrounded forecasts on the original Celsius scale:
++Both models forecast the same 12 test months. I calculate RMSE from unrounded predictions in degrees Celsius:
+ 
+ $$
+ \operatorname{RMSE}=\sqrt{\frac{1}{12}\sum_{h=1}^{12}(y_h-\widehat y_h)^2}.
+ $$
+ 
+-Here $y_h$ is the observed monthly mean temperature and $\widehat y_h$ is its forecast; $h$ counts months after the training endpoint. RMSE is measured in degrees Celsius. Squaring prevents positive and negative errors from cancelling and gives larger errors more weight. For errors of $1$ and $-3$ °C, the two-observation RMSE would be $\sqrt{(1+9)/2}=\sqrt{5}\approx2.236068$ °C.
++$y_h$ is the observed monthly mean and $\widehat y_h$ is its forecast; $h$ counts months after the training endpoint. Squaring gives larger errors more weight. For two errors of $1$ and $-3$ °C, RMSE would be $\sqrt{(1+9)/2}\approx2.236068$ °C.
+ 
+-## 5. Additional check: does complexity improve on last year?
++## 5. Seasonal naive benchmark
+ 
+-A seasonal-naive forecast repeats each corresponding month from the last training year. This gives a useful annual benchmark and uses no test observations. It answers whether either fitted model improves on a simple seasonal rule. I also show absolute monthly errors, so one large miss cannot be hidden by the aggregate score.
++I also forecast each month by repeating its temperature from the last training year. This tests whether the fitted models improve on a simple annual pattern. The table below compares their RMSE and lists the monthly absolute errors.
+ 
+ ## Sources
+ 
+-Course material: IS6400, “Week 9 Time series II_Tutorial.ipynb,” weather assignment and `weather.csv`. The column name supplies the temperature unit; the local CSV does not independently establish station location or a complete sampling record. Model definitions follow the tutorial and the statsmodels ARIMA / Holt–Winters implementations.
++IS6400, “Week 9 Time series II_Tutorial.ipynb,” weather assignment and supplied `weather.csv`. Models use the statsmodels ARIMA and Holt–Winters implementations.
+ 
+ I used OpenAI Codex to assist with this assignment.

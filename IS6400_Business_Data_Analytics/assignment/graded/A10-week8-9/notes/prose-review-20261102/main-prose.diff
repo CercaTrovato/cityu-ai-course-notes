@@ -1,0 +1,224 @@
+--- before
++++ after
+@@ -1,11 +1,10 @@
+-# IS6400 Assignment Week 8 — Bitcoin forecasting
++# IS6400 Assignment Week 8 & 9: Bitcoin forecasting
+ 
+ LI Binxiong · 60234350
+ 
+-[Q1: target choice](#q1) · [Q2: level-only ETS](#q2) · [Q3: ETS with trend](#q3) · [Q4: rolling evaluation](#q4) · [Appendix A: naïve benchmark](#appendix-a)
+-
+-The course tutorial is retained below, followed by the Bitcoin answers in Q1–Q4 order. All code outputs in this document are produced by running the notebook. Prices and forecast errors are measured in USD per BTC. This is an analysis of the supplied 2013–2018 dataset.
+-
++[Q1: target choice](#q1) · [Q2: level-only ETS](#q2) · [Q3: ETS with trend](#q3) · [Q4: rolling evaluation](#q4) · [Appendix A: naive benchmark](#appendix-a)
++
++This analysis uses the supplied Bitcoin prices from 2013 to 2018. Prices and forecast errors are in USD per BTC. The course tutorial precedes the answers to Q1–Q4.
+ 
+ <style>
+ .jp-Notebook { max-width: 1080px; margin: auto; }
+@@ -17,6 +16,7 @@
+ .jp-RenderedHTMLCommon table { font-size: 16px; margin: 1em 0; }
+ .jp-RenderedHTMLCommon td, .jp-RenderedHTMLCommon th { padding: 8px 10px; }
+ .jp-CodeCell .jp-InputArea-editor { font-size: 14px; line-height: 1.5; }
++.jp-CodeCell .highlight pre { font-size:14px !important; line-height:1.5; }
+ .jp-OutputArea pre { font-size: 14px; line-height: 1.5; }
+ .jp-RenderedImage img, .jp-RenderedSVG svg { max-width: 100%; height: auto; }
+ .jp-RenderedHTMLCommon mjx-container { overflow-x: auto; overflow-y: hidden; }
+@@ -27,10 +27,9 @@
+ @media print { .jp-RenderedImage img { min-width: 0; } }
+ </style>
+ 
+-## Retained course tutorial
+-
+-The shampoo and CVD examples reproduce the course sequence. The source narrative calls shampoo monthly, while the supplied CSV uses daily-looking labels and the original plots say “Daily”; its calendar frequency is therefore inconsistent across the materials. I retain the supplied order without assigning a calendar meaning to that example's period of four. Four quarters per year has a calendar meaning for CVD. These examples do not determine the model ranking for Bitcoin.
+-
++## Course tutorial
++
++The shampoo dates have inconsistent daily and monthly labels in the source, so the example follows the supplied row order. The CVD observations are quarterly.
+ 
+ # Time Series I
+ 
+@@ -184,84 +183,77 @@
+ *   Export as HTML: Save your final document (including code, outputs, and text) as an HTML file. (In Jupyter: `File` -> `Download as` -> `HTML`).
+ *   Upload: Submit the `.html` file to Canvas.
+ 
+-## Bitcoin data and common evaluation setup
+-
+-I preserve the supplied price order and hold out the last five records before fitting either model. The same training observations, error type, initialization method and forecast origin are used in Q2 and Q3; only the trend component changes. No seasonal component is included.
+-
+-
+-Table 1 reports the input checks. There are 1,827 observations and no missing cells or fully duplicated rows. However, five dates occur twice with different prices, and five calendar dates are absent. For example, 2018-03-25 has two different closing prices. The file does not establish which timestamp is correct.
+-
+-I therefore fit an equally spaced observation-index model, retaining every supplied price and using dates as labels. I do not merge the repeated dates, interpolate missing dates, or remove weekends. “One step” in this model means one supplied observation. The final five labels are consecutive calendar dates, so they can be shown as 2018-04-26 to 2018-04-30; the historical dating limitation remains relevant to interpretation.
+-
++## Bitcoin data and evaluation setup
++
++I use the first 1,822 prices for training and the last five for testing. Q2 and Q3 share the same observations, additive errors, initialization method and forecast origin. Q3 adds a trend; both models exclude seasonality.
++
++The file contains 1,827 observations, with no missing values or identical rows. Five date labels repeat with different prices, and five calendar dates are missing. For example, 2018-03-25 appears twice with different closing prices.
++
++I retain the supplied row order and treat each record as one time step. The dates label the observations. The five test records run from 2018-04-26 to 2018-04-30, but the earlier duplicate dates and gaps mean that a historical step is not always one calendar day.
+ 
+ <a id="q1"></a>
+ ## Q1. Original prices or first differences?
+ 
+-I would prefer the first-order difference for a conventional autoregressive model of this series. A stationary autoregressive model assumes a stable relationship between the current value and its past values. The large changes in the price level make that assumption less plausible for raw Bitcoin prices. Differencing focuses the model on changes between observations:
++I would use first differences for an autoregressive model. The price level changes substantially over this period, while a stationary autoregressive model assumes stable behaviour over time. Differencing models the change between adjacent observations:
+ 
+ $$
+ \Delta P_t=P_t-P_{t-1}.
+ $$
+ 
+-Here, $P_t$ is the observed price in USD per BTC, and $\Delta P_t$ is the change in that price between adjacent observations, in the same price unit. For example, moving from 9,000 to 9,100 gives a difference of 100. This is an absolute change, not a percentage return.
+-
+-I use only the 1,822 training prices for the following diagnostics. The augmented Dickey–Fuller test (ADF) tests a unit-root null hypothesis. It uses a constant, no deterministic trend, and an AIC-selected lag length. A small p-value is evidence against that null under this specification; it does not by itself establish constant variance or useful forecasting skill.
+-
+-
+-If an autoregressive model predicts changes, its output must be converted back to a price. A next-step change forecast of 100 from a last price of 9,000 implies a price forecast of 9,100:
++$P_t$ is the price in USD per BTC, and $\Delta P_t$ is its change in the same unit. A move from 9,000 to 9,100 gives a difference of 100, rather than a percentage return.
++
++I check the 1,822 training prices with the augmented Dickey–Fuller test (ADF). Its null hypothesis is a unit root. The test includes a constant and selects the lag length by AIC. A small p-value provides evidence against the unit-root hypothesis; variation in the size of the changes needs a separate check.
++
++A model fitted to changes must convert its forecasts back to prices. A predicted change of 100 from a last price of 9,000 gives a price forecast of 9,100. For several steps, add the predicted changes to the last observed price:
+ 
+ $$
+ \hat P_{T+h\mid T}=P_T+\sum_{j=1}^{h}\widehat{\Delta P}_{T+j\mid T}.
+ $$
+ 
+-For Q2 and Q3, I fit ETS directly to the original training prices, as requested. The target-choice discussion in Q1 does not change those questions into differenced-price ETS models.
+-
++Q2 and Q3 fit ETS to the original prices.
+ 
+ <a id="q2"></a>
+ ## Q2. ETS without trend or seasonality
+ 
+-I use additive-error, level-only ETS, denoted ETS(A,N,N). This is simple exponential smoothing. It updates the current level $\ell_t$ by combining the latest observation with the previous level:
++I use ETS(A,N,N), or simple exponential smoothing. It combines the latest price with the previous level:
+ 
+ $$
+ \ell_t=\alpha P_t+(1-\alpha)\ell_{t-1},\qquad \hat P_{T+h\mid T}=\ell_T.
+ $$
+ 
+-The smoothing weight $\alpha$ is dimensionless. The level and price are measured in USD per BTC. A larger weight gives the latest price more influence. With $\alpha=0.5$, a previous level of 100 and a new price of 110 produce a level of 105. With no trend or seasonal state, all future point forecasts equal the final fitted level.
+-
+-The model estimates its smoothing weight and initial level from the training observations. I use `initialization_method='estimated'` and a maximum of 10,000 optimizer iterations; the fitted optimizer reports convergence. The test prices are not passed to the fit.
+-
+-
+-Table 3 gives one row per held-out observation. Positive errors mean underprediction; negative errors mean overprediction. RMSE uses all five errors and the unrounded forecasts:
++The smoothing weight $\alpha$ controls how much the latest price changes the level. The price and level are in USD per BTC. With $\alpha=0.5$, a previous level of 100 and a new price of 110 give a new level of 105. Without a trend or seasonality, all five forecasts equal the final level.
++
++The model estimates its smoothing weight and initial level from the training data, using `initialization_method='estimated'` and a maximum of 10,000 optimizer iterations.
++
++The table above contains the five test observations and their forecast errors. A positive error means that the forecast is too low. RMSE uses the unrounded forecasts:
+ 
+ $$
+ \mathrm{RMSE}=\sqrt{\frac{1}{5}\sum_{h=1}^{5}(P_{T+h}-\hat P_{T+h\mid T})^2}.
+ $$
+ 
+-The denominator is five test observations, rather than the number of fitted parameters or training rows. Squaring prevents positive and negative errors from cancelling and gives large errors more weight; the square root restores the original price unit. Errors of 3 and −4 would give $\sqrt{(9+16)/2}\approx3.535534$ in that unit. This metric is not the square root of MAE.
+-
++Squaring gives larger errors more weight, and the square root returns the result to USD per BTC. For example, errors of 3 and −4 give $\sqrt{(9+16)/2}\approx3.535534$.
+ 
+ <a id="q3"></a>
+ ## Q3. ETS with an additive trend
+ 
+-I add an undamped additive trend, giving ETS(A,A,N), while retaining additive errors and no seasonality. The model now estimates both a level $\ell_t$ and a slope $b_t$. The slope is a price change per observation, so its contribution increases with the forecast horizon:
++I add an undamped additive trend to obtain ETS(A,A,N). The model estimates a level $\ell_t$ and a slope $b_t$, where the slope is the price change per observation:
+ 
+ $$
+ \hat P_{T+h\mid T}=\ell_T+h b_T.
+ $$
+ 
+-For example, a level of 100 and slope of 2 imply forecasts of 102 and 104 for horizons one and two. The model can follow a local trend, but a trend estimated from past prices may point in the wrong direction for a short future interval. Both ETS models make their five forecasts at the end of 2018-04-25; neither is updated with test observations.
+-
++A level of 100 and a slope of 2 give forecasts of 102 and 104 at horizons one and two. Both ETS models make their five forecasts from the end of the training period, 2018-04-25.
+ 
+ <a id="q4"></a>
+ ## Q4. Design of a rolling next-day evaluation
+ 
+-I would use an expanding training window and a rolling forecast origin. Each forecast is made with information available at that origin, and the newly observed price is added only after its prediction has been recorded. This is a method design, not an implemented backtest.
++I propose an expanding training window. At each forecast origin, fit the model to the prices observed so far, record its next-step forecast, and add the new observation after scoring that forecast.
+ 
+ ### Validation data and timing
+ 
+-Keep observations 1–1,822 as the development period and reserve observations 1,823–1,827 as a later test period. Within development, use observations 1–1,702 for the first fit and observations 1,703–1,822 as 120 ordered validation targets. This length is my proposed design choice, intended to cover more than the five targets used in Q2–Q3; it is not a teacher-specified requirement.
+-
+-Table 6 illustrates the first two and final validation forecasts. Observation numbers are one-based, and each target is excluded from its training window.
++Use observations 1–1,822 for development and reserve observations 1,823–1,827 for a later comparison. Within development, fit initially on observations 1–1,702, then forecast observations 1,703–1,822 one at a time. This gives 120 validation targets.
++
++The table below shows the first two forecasts and the final forecast. Observation numbers start at one.
+ 
+ | Forecast origin | Information available for fitting | One-step validation target |
+ |---|---|---|
+@@ -269,47 +261,45 @@
+ | After observation 1,703 | Observations 1–1,703 | Observation 1,704 |
+ | After observation 1,821 | Observations 1–1,821 | Observation 1,822 |
+ 
+-At each origin I would refit both fixed ETS specifications on exactly the same available prices, forecast one step, save both forecasts, then reveal the target. Repeat until there are 120 paired validation errors. Any preprocessing or parameter estimation must use only the available history. No random split or future interpolation is allowed.
+-
+-The source has duplicate and missing date labels. A true calendar next-day evaluation first requires verified, uniquely dated daily observations from the provider; I would resolve ambiguous timestamps against the provider's records, and leave an unavailable target unscored for both models rather than invent it. On the uncorrected file, the proposed row-based calculation evaluates the next supplied observation, which cannot always be called the next calendar day. I have not repaired those dates or claimed a calendar-day backtest.
++At each origin, refit SES and Holt to the same available prices and save both forecasts before revealing the target. Repeat until there are 120 paired validation errors. Fit any preprocessing to the history available at that origin.
++
++The duplicate and missing dates need checking against the provider's records before this becomes a calendar next-day evaluation. Score both models on the same verified targets and report any excluded dates. With the current file, the calculation evaluates the next supplied observation.
+ 
+ ### Metrics and calculation
+ 
+-For model $m$ and validation target $t$, define the one-step error as:
++For model $m$ and target $t$, the forecast error is:
+ 
+ $$
+ e_{m,t}=P_t-\hat P_{m,t\mid t-1}.
+ $$
+ 
+-With $V$ denoting the same set of eligible validation targets for both models and $N=|V|$, calculate:
++Let $V$ be the common set of eligible targets and $N=|V|$. Calculate:
+ 
+ $$
+ \mathrm{RMSE}_m=\sqrt{\frac{1}{N}\sum_{t\in V}e_{m,t}^2},\qquad
+ \mathrm{MAE}_m=\frac{1}{N}\sum_{t\in V}|e_{m,t}|.
+ $$
+ 
+-Both metrics have units of USD per BTC. Before date-eligibility exclusions, the proposed design has $N=120$; if any targets cannot be resolved, report their identities and the actual common $N$. RMSE gives more influence to large misses, while MAE describes the typical absolute miss more directly. For errors of 3 and −4, RMSE is approximately 3.535534 and MAE is 3.500000. I would aggregate the squared errors first and take one square root, rather than average a per-day “RMSE”, which would equal MAE.
++Both metrics are in USD per BTC. The proposed window has 120 targets before any date exclusions; report the actual common $N$ after those checks. RMSE places more weight on large misses, while MAE reports the mean absolute error. Errors of 3 and −4 give RMSE 3.535534 and MAE 3.500000. Pool the squared errors before taking the square root for RMSE.
+ 
+ ### Model comparison and later testing
+ 
+-Compare SES, Holt and a naïve next-observation baseline on identical origins and targets. The rolling naïve forecast uses the latest price actually known at each origin. Rank by validation RMSE, report MAE alongside it, and inspect whether a few large errors or one price regime dominate the difference. Similar errors would favour the simpler model; this design alone does not establish a statistically significant difference.
+-
+-If tuning additional settings, perform that choice inside earlier training history, or acknowledge that the 120-target score is a selection score. After fixing the model and rule, start at observation 1,822 and evaluate observations 1,823–1,827 sequentially, updating only when each true price becomes available. Report those five one-step errors separately. Because Q3 has already examined these five prices, such a reuse is an illustration rather than a newly untouched confirmation; genuinely fresh confirmation requires later unseen observations.
+-
+-This rolling procedure differs from Q2–Q3. Their five forecasts share one origin and horizons one through five; the proposed rolling exercise has five different origins and horizon one each time. Their RMSE values answer different forecasting questions and should not be pooled or treated as directly comparable measures of model improvement.
+-
++Compare SES, Holt and a naive forecast of the latest known price at the same origins. Rank them by validation RMSE, report MAE, and inspect the individual errors to see whether a few large misses account for the difference. If performance is similar, choose the simpler model.
++
++Use these 120 targets for model selection. After fixing the model and its settings, the final five observations can illustrate the same rolling procedure. Since Q3 already examines those prices, an independent check of later performance would require new observations.
++
++Q2–Q3 issue five forecasts from one origin, with horizons one through five. Rolling evaluation uses a new origin for each one-step forecast, so report its RMSE separately.
+ 
+ <a id="appendix-a"></a>
+-## Appendix A. Does ETS improve on a simple benchmark?
+-
+-A small RMSE gap between two ETS models does not show that either improves meaningfully over a simple rule. I therefore add a fixed-origin naïve benchmark, forecasting the last training price for all five horizons:
++## Appendix A. Naive forecast comparison
++
++I compare the two ETS models with a forecast that repeats the last training price for all five test observations:
+ 
+ $$
+ \hat P_{T+h\mid T}^{\mathrm{naive}}=P_T,\quad h=1,\ldots,5.
+ $$
+ 
+-All five benchmark predictions use information available on 2018-04-25. Unlike the rolling baseline in Q4, this benchmark cannot use any actual test price to predict the next test observation.
+-
++All five predictions use the price available on 2018-04-25. The rolling baseline in Q4 instead updates its forecast after each new observation.
+ 
+ ## References and software
+ 
+@@ -317,7 +307,7 @@
+ 2. Hyndman, R. J. and Athanasopoulos, G., Forecasting: Principles and Practice, third edition. [Stationarity and differencing](https://otexts.com/fpp3/arima.html#stationarity-and-differencing) and [time series cross-validation](https://otexts.com/fpp3/toolbox.html#time-series-cross-validation). Accessed 21 October 2026.
+ 3. statsmodels, [ETSModel documentation](https://www.statsmodels.org/stable/generated/statsmodels.tsa.exponential_smoothing.ets.ETSModel.html). The installed version used for these calculations is reported below.
+ 
+-The Bitcoin models use estimated initialization, additive errors and no seasonality. Holt has an undamped additive trend. No random splitting, simulation, or test-based parameter search is used.
++Both ETS models use additive errors, estimated initialization and no seasonality. Holt includes an undamped additive trend.
+ 
+ 
+ I used OpenAI Codex to assist with this assignment.

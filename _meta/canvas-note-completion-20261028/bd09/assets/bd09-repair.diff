@@ -1,0 +1,270 @@
+--- v0
++++ v1
+@@ -64,6 +64,8 @@
+ z=b+\sum_{j=1}^{d}w_jx_j,\qquad a=g(z).
+ $$
+ 
++下面逐行解释当前神经元公式中的对象和例值。
++
+ | 符号 | 当前意思 | 本例 |
+ |---|---|---|
+ | $x_j$ | 第 $j$ 项输入 | 1、2 |
+@@ -72,6 +74,8 @@
+ | $z$ | 激活前分数 | −0.5 |
+ | $a$ | 激活后输出 | 由函数决定 |
+ 
++p.13 过渡问句“How to deal with this ‘s’?”问的是如何处理加权分数；本节的阶跃、恒等和Sigmoid三种选择就是有条件的回答。
++
+ p.11–12 用 $-W_0+W_1a_1+W_2a_2$，与本篇 $b+w_1x_1+w_2x_2$ 相容，只是把偏置记作 $-W_0$。p.23 又用输入 $x_0=1$ 配偏置权重，这两套符号不能把符号负号重复算一次。
+ 
+ 阶跃函数（Step function）按阈值输出类别。此处约定 $z\ge0$ 为 1、否则 0，原 p.11 未明确等于 0 的边界，应自行说明。恒等函数 $g(z)=z$ 保留连续分数，适合相应回归输出。Sigmoid 为 $\sigma(z)=1/(1+e^{-z})$，把实数压到 0 与 1 之间；$e$ 是约 2.718 的常数，指数表示连续的乘方关系。例中 $\sigma(-0.5)\approx0.3775$。
+@@ -95,7 +99,7 @@
+ 
+ 原 p.18 的问题是：“Why single layer fails?” 它标 “XOR function: y=1 only when two x are same”，表却是 00→1、01→0、10→0、11→1；又把 XNOR 写成 different。**名称与标准定义对调**，不能把错标背进考试。
+ 
+-标准 XOR 是不同为 1，标准 XNOR 是相同为 1。对 XOR 的四个角，两个正类位于对角，无法用一条直线同时把它们与另外两角分开。若正类 10、01 的分数都大于 0，两分数相加为 $2b+w_1+w_2>0$；负类 00、11 的分数若都小于 0，同样相加却要求 $2b+w_1+w_2<0$，冲突。边界处统一阈值也不能让相同分数同时属于两类。
++标准 XOR 是不同为 1，标准 XNOR 是相同为 1。对 XOR 的四个角，两个正类位于对角，无法用一条直线同时把它们与另外两角分开。按本篇非负判为1的约定，若正类 10、01 的分数都大于或等于 0，两分数相加为 $2b+w_1+w_2\ge0$；负类 00、11 的分数若都小于 0，同样相加却要求 $2b+w_1+w_2<0$，冲突。同一表达式不能同时非负且严格小于零，因此也覆盖边界情况。
+ 
+ 英文参考答案：“A single linear threshold cannot separate the opposite positive corners from the opposite negative corners. A hidden layer can combine intermediate regions to represent XOR or XNOR.”
+ 
+@@ -106,6 +110,8 @@
+ h_2=\sigma(10-20x_1-20x_2),\quad
+ \widehat y=\sigma(-10+20h_1+20h_2).
+ $$
++
++下面每行是一种完整输入，隐藏列按逻辑近似显示两个中间结果。
+ 
+ | 输入 | 隐藏层的逻辑近似 $h_1,h_2$ | 最终阈值类别 |
+ |---|---|---:|
+@@ -138,7 +144,7 @@
+  B --> H2
+ ```
+ 
+-💡 完整前向例：输入 $x=(1,2)^\top$，第一隐藏单元权重为 $(1,-1)$、偏置 0，第二个为 $(0.5,1)$、偏置 −1。分别得到分数 −1、1.5；接 ReLU 后为 0、1.5。输出按 $2h_1+h_2+0.5$ 得到 2。这是回归分数，不擅自当概率。
++💡 完整前向例：输入 $x=(1,2)^\top$，第一隐藏单元权重为 $(1,-1)$、偏置 0，第二个为 $(0.5,1)$、偏置 −1。分别得到分数 −1、1.5；这里的 ReLU 保留正数、把负数改成 0，即 $g(z)=\max(0,z)$；§2.5 再比较其他激活。因此激活后为 0、1.5。输出按 $2h_1+h_2+0.5$ 得到 2。这是回归分数，不擅自当概率。
+ 
+ 把两行权重记在同一矩阵，只是同时执行刚才两次乘加：
+ 
+@@ -150,7 +156,13 @@
+ 
+ 矩阵乘法的每行与输入逐项相乘后求和，不是把同位置的两个二维表逐格相乘。本例 $W$ 为 2×2，输入为 2×1，结果为 2×1，维度中的内侧两个 2 必须一致。
+ 
+-p.24–28 的 $a_i^{(j)}$ 是第 $j$ 层第 $i$ 个单元输出；$\Theta_{ki}^{(j)}$ 是从第 $j$ 层单元 $i$ 连到下层单元 $k$ 的权重。若本层有 $s_j$ 个真实单元，额外加一个恒为 1 的偏置输入，下层有 $s_{j+1}$ 个单元，则权重矩阵尺寸为 $s_{j+1}\times(s_j+1)$。多出的 1 是偏置列，不是多出一个真实输入特征。
++p.24–28 的 $a_i^{(j)}$ 是第 $j$ 层第 $i$ 个单元输出；$\Theta_{ki}^{(j)}$ 是从第 $j$ 层单元 $i$ 连到下层单元 $k$ 的权重。
++
++若本层有 $s_j$ 个真实单元，额外加一个恒为 1 的偏置输入，下层有 $s_{j+1}$ 个单元，则权重矩阵尺寸为 $s_{j+1}\times(s_j+1)$。
++
++多出的 1 是偏置列，不是多出一个真实输入特征。
++
++
+ 
+ 原 p.25 问：“What if $h_\theta(x)=a_1^{(3)}$?” 中文是输出等于第三层第一个单元时怎样展开。直接答案是把第三层的输入写清：$a_1^{(3)}=g(\Theta_{10}^{(2)}+\Theta_{11}^{(2)}a_1^{(2)}+\Theta_{12}^{(2)}a_2^{(2)}+\Theta_{13}^{(2)}a_3^{(2)})$，各个二层激活又由第一层输入计算。英文参考：“The final output is the activation of unit 1 in layer 3, computed from a bias and a weighted sum of the preceding layer's activations.”
+ 
+@@ -179,6 +191,23 @@
+ 
+ 这里 $K$ 是类别数，$p_k$ 是该类输出比例。若三个分数为 $\log2,0,0$，指数为 2、1、1，总和 4，输出为 0.5、0.25、0.25。只看第一分数而不看其余分数，无法确定第一类概率。互斥多类可用 Softmax；多个标签可同时为真时，通常需要分别建概率，不能机械要求它们和为 1。
+ 
++#### 2.5.1 用局部斜率解释饱和（讲义 p.23、32–33）
++
++局部斜率表示输入微小改变时输出怎样改变，下一节训练会用它把误差往回传。讲义给定的两条导数是：
++
++$$
++\sigma'(z)=\sigma(z)(1-\sigma(z)).
++$$
++
++Sigmoid 输出为 0.5 时斜率为 0.25；输出靠近 0.99 时为 $0.99\times0.01=0.0099$。输入改变同样一点，饱和端输出改变得更少。
++
++$$
++\tanh'(z)=1-\tanh^2(z).
++$$
++
++tanh 输出为 0 时斜率为 1，输出为 0.9 时为 $1-0.9^2=0.19$。这把“曲线变平”接到反向信号乘以较小因子的机制，不能只看函数名字说会遗忘。
++
++
+ ### 2.6 损失怎样告诉模型“错多少”（讲义 p.36–37、43）
+ 
+ 训练样本有输入 $x$ 和真实标签 $y$。损失函数（Loss function）把预测与真实之间的不符合变成一个数，训练要减小它。p.36 区分二分类的一输出和多类的 $K$ 输出，标签形式要与输出含义匹配。
+@@ -212,7 +241,23 @@
+ 
+ 反向传播（Backpropagation）利用链式法则高效计算这些导数：若参数先改变中间量，中间量再改变损失，总变化率把沿路各段的局部变化率相乘。多条路径通向同一个参数时，把各条路径贡献相加；它是算梯度的方法，梯度下降才是用梯度更新参数的方法。
+ 
+-💡 同一输入的完整补充例：一个隐藏单元，输入 $x=2$，隐藏分数 $z=wx+b$，激活 $h=\max(0,z)$，输出 $\widehat y=vh+c$。给定 $w=1,b=0,v=3,c=0$，真实目标为 4，先得到 $z=2,h=2,\widehat y=6$。本例用平方损失 $L=(\widehat y-4)^2/2=2$，是回归演示，不冒称 p.37 的交叉熵。
++💡 同一输入的完整补充例：一个隐藏单元，输入 $x=2$，隐藏分数 $z=wx+b$，激活 $h=\max(0,z)$，输出 $\widehat y=vh+c$。
++
++给定 $w=1,b=0,v=3,c=0$，真实目标为 4，先得到 $z=2,h=2,\widehat y=6$。
++
++本例用平方损失 $L=(\widehat y-4)^2/2=2$，是回归演示，不冒称 p.37 的交叉熵。
++
++
++
++先补最关键的一步：令当前输出为 $q$，目标为 $y$，平方损失为 $(q-y)^2/2$。
++
++若输出多一个很小的量 $\delta$，损失改变量为 $(q-y)\delta+\delta^2/2$；除以 $\delta$ 得到 $(q-y)+\delta/2$。
++
++当 $\delta$ 越来越小，局部变化率趋向 $q-y$，所以本例损失对输出的导数才是 2。
++
++换损失函数必须重算这一步。
++
++
+ 
+ 局部链条如下：输出误差为 2；输出对 $v$ 的斜率为 $h=2$，所以 $\partial L/\partial v=2\times2=4$。隐藏单元位于 ReLU 正侧，斜率为 1；损失对隐藏输出的斜率为 $2v=6$，继续乘输入 2，得到 $\partial L/\partial w=12$。
+ 
+@@ -222,6 +267,8 @@
+ | $b$ | 6 | −0.06 |
+ | $v$ | 4 | 2.96 |
+ | $c$ | 2 | −0.02 |
++
++偏置直接以加法进入对应分数，局部变化率为 1。因此 $b$ 的梯度为隐藏侧误差信号 6 乘 1，$c$ 的梯度为输出误差 2 乘 1。
+ 
+ 全部梯度都用**更新前**参数算，再一起更新；不能先改 $v$，又用新 $v$ 算同一步的 $w$ 梯度。更新后 $z=0.88\times2-0.06=1.70$，新输出为 $2.96\times1.70-0.02=5.012$，新损失约 0.5121，确实低于原来 2。
+ 
+@@ -238,9 +285,51 @@
+  F -->|是| G[冻结模型 在未参与选择的测试集评价]
+ ```
+ 
+-p.41 的学习率过小会进步慢，过大可能震荡或发散；p.44 的随机初始化说明初值可能改变优化结果。梯度为 0 可能是局部最优、平坦区或鞍点，不能据此保证全局最小。p.42 问如何计算给定损失梯度，答案就是按具体计算图逐路径应用链式法则；不能以一个“调用训练 API”代替机制。
+-
+-英文参考答案（p.39、42 的问题）：“With many parameters, compute the gradient efficiently by backpropagation and update all parameters using gradient descent. Backpropagation applies the chain rule through the network; the learning rate controls each update. A stationary point is not necessarily a global minimum.”
++p.41 的学习率过小会进步慢，过大可能震荡或发散；p.44 的随机初始化说明初值可能改变优化结果。梯度为 0 可能是局部最优、平坦区或鞍点，不能据此保证全局最小。p.42 写的是“Need code to compute”，演示对象是带正则的交叉熵目标、其梯度与更新，不是另给一道平方损失英文问句。具体代码计算见下节，不能以“调用训练 API”代替机制。
++
++p.39 原问：“What if p is large? (e.g., n/2)”。中文：参数很多时怎么办？原页没有充分解释 p、n 的具体统计对象，保留其问法，不假装这两个字母已经定义。就当前训练任务，实际回应是高效计算所有参数梯度，再迭代更新。
++
++英文参考答案（p.39 原问与 p.42 演示任务）：“With many parameters, compute the gradient efficiently by backpropagation and update all parameters using gradient descent. Backpropagation applies the chain rule through the network; the learning rate controls each update. A stationary point is not necessarily a global minimum.”
++
++#### 2.7.1 回到 Sigmoid、交叉熵与正则的真实训练目标（讲义 p.37、42）
++
++前面的平方损失是为看清链条而补的回归例；现在用本讲给定的分类目标做同一件事。单条记录的目标 $y$ 为 0／1，分数 $z=wx+b$，预测概率 $p=\sigma(z)$。
++
++对数的局部变化规则是 $d\log p/dp=1/p$。据此，二元损失对概率的变化率为：
++
++$$
++\frac{\partial L}{\partial p}=-\frac y p+\frac{1-y}{1-p}.
++$$
++
++再乘上一节 Sigmoid 的局部斜率，化简得到分数侧的误差信号：
++
++$$
++\frac{\partial L}{\partial z}=\left(-\frac y p+\frac{1-y}{1-p}\right)p(1-p)=p-y.
++$$
++
++若 $y=1,p=0.8$，损失对概率的变化率是 −1.25，激活局部斜率为 0.16，乘积为 −0.2。负号说明提高分数能在局部降低该条损失；不能把回归例的“输出减目标”无条件套到任意输出函数。
++
++单条输入取 $x=2,w=0.5,b=\log4-1$，使分数为 $\log4$、概率为 0.8。取正则权重 $\lambda=0.1$、样本数 $m=1$，权重梯度为 $(-0.2)\times2+0.1\times0.5=-0.35$；偏置不加这项平方惩罚，所以梯度为 −0.2。
++
++下面代码对应 p.42 所需的“目标→梯度→更新”计算，是笔记补充，可直接运行，没有重训大图片网络。
++
++```python
++import math
++x, y, w = 2.0, 1.0, 0.5
++b = math.log(4) - w * x
++lam, eta = 0.1, 0.01
++p = 1 / (1 + math.exp(-(w * x + b)))
++loss = -math.log(p) + lam * w * w / 2
++dw = (p - y) * x + lam * w
++db = p - y
++w_new, b_new = w - eta * dw, b - eta * db
++print(loss, dw, db, w_new, b_new)
++```
++
++输出依次为当前总损失、权重梯度、偏置梯度和同步更新后的两个参数。`lam` 控制正则惩罚，`eta` 控制更新步长，是不同设置。对多记录先汇总／平均各记录梯度，多层权重再沿计算图传回；正则梯度只加到相应受惩罚权重。
++
++英文参考说明：“For sigmoid and binary cross-entropy, the score-level gradient is p−y. Multiply it by each input to obtain the data contribution to a weight gradient, then add the applicable regularization gradient. Biases are updated from their own paths without the same weight penalty.”
++
+ 
+ ### 2.8 图像分类例：哪些超参数能从课件知道（讲义 p.45–49）
+ 
+@@ -264,6 +353,8 @@
+ 
+ ### 2.9 序列为何需要状态（讲义 p.50–58）
+ 
++p.52 的原过渡问题是“What if I want to analyze something in a sequence?”及“What if I want to analyze human speech?”，即怎样保留序列顺序。下面的状态递推回应这两个任务。
++
+ p.51 的前馈分类把一张图片当静态输入；p.52 的视频／语音有顺序，“I Will Pass”三个片段不能只当无序集合。循环神经网络（Recurrent Neural Network，RNN）在读每一步时，保留对过去输入的摘要，称隐藏状态（Hidden state）。
+ 
+ $$
+@@ -271,7 +362,11 @@
+ z_t=W_{hy}h_t+b_y.
+ $$
+ 
+-$x_t$ 是本步输入，$h_{t-1}$ 是上一步摘要，$h_t$ 是更新后的摘要；$W_{xh}$ 把输入变成状态贡献，$W_{hh}$ 把旧状态变成本步贡献，$W_{hy}$ 把状态变成输出分数。p.58 的简式省略偏置，本篇补充列出一般形式，并不改变其旧状态＋当前输入的机制。
++$x_t$ 是本步输入，$h_{t-1}$ 是上一步摘要，$h_t$ 是更新后的摘要；$W_{xh}$ 把输入变成状态贡献，$W_{hh}$ 把旧状态变成本步贡献，$W_{hy}$ 把状态变成输出分数。
++
++p.58 的简式省略偏置，本篇补充列出一般形式，并不改变其旧状态＋当前输入的机制。
++
++
+ 
+ 按时间展开图，每个框重复使用同一组权重。箭头传状态，不传“已经知道的未来答案”。
+ 
+@@ -300,6 +395,29 @@
+ p.61 第一步输出为 $(1.0,2.2,-3.0,4.1)$，含负数且和不为 1，所以是分数（Logits），不能直接叫概率。目标字符 e 对应第二个位置 2.2，但本步最高分是 o 的 4.1，说明这个示例状态还不是全部预测正确的模型。训练要提高真实下一字符的相对得分。
+ 
+ 若需要概率，可把四个分数送入 Softmax，仍按同一词表顺序解释；不能只因目标字符在图中绿色就把它说成当前最大输出。课堂未给全套权重和训练过程，保留其展示与推算能力的边界。
++
++#### 2.10.1 原示例四步分数读全（讲义 p.60–61）
++
++先将输入、下一个目标与给定状态对齐；状态分量均为来源的舍入值。
++
++| 步 | 输入→目标 | 给定隐藏状态 |
++|---|---|---|
++| 1 | h→e | (0.3, −0.1, 0.9) |
++| 2 | e→l | (1.0, 0.3, 0.1) |
++| 3 | l→l | (0.1, −0.5, −0.3) |
++| 4 | l→o | (−0.3, 0.9, 0.7) |
++
++下表每行按词表 h/e/l/o 给分数，最后一列按最大分数选类。
++
++| 步 | 四个给定输出分数 | 最大分数的类别 | 与目标是否一致 |
++|---|---|---|---|
++| 1 | (1.0, 2.2, −3.0, 4.1) | o | 否，目标 e |
++| 2 | (0.5, 0.3, −1.0, 1.2) | o | 否，目标 l |
++| 3 | (0.1, 0.5, 1.9, −1.1) | l | 是 |
++| 4 | (0.2, −1.5, −0.1, 2.2) | o | 是 |
++
++例如第二步仍是 o 得分最高，不能把绿色的目标 l 误读成当前胜出类。完整权重未知，因此这是保留并解释给定演示，不是从权重重算了来源四步。
++
+ 
+ ### 2.11 序列输入输出的五种配对（讲义 p.62–65）
+ 
+@@ -353,9 +471,33 @@
+ 
+ 若把遗忘门改成 0，同一例新 $C$ 只剩 0.1；改成 1 则旧值完整保留。LSTM 提供更有利的梯度路径，但门仍可关闭，不能保证永久记住所有远处信息。p.68 的普通 RNN 单层重复模块与 p.69–76 的四交互模块差异，正是这个状态控制结构。
+ 
++#### 2.12.1 用同一套参数算动态门与两个时点（讲义 p.72–76 的笔记补充）
++
++为把“当前输入改变，门会怎样改变”算完整，采用一个标量隐藏状态与一个标量细胞状态。初始旧隐藏为 0.1、旧细胞为 0.2，当前输入为 0.5；所有偏置取 0。下表每对权重按“旧隐藏、当前输入”的顺序，沿本节公式做乘加。
++
++| 分支 | 权重对 | 第一步代入的分数 | 激活后结果 |
++|---|---|---|---:|
++| 遗忘门 | (0.5, 0.4) | 0.5×0.1+0.4×0.5=0.25 | 0.562177 |
++| 输入门 | (−0.3, 0.2) | −0.3×0.1+0.2×0.5=0.07 | 0.517493 |
++| 候选记忆 | (0.2, 0.6) | 0.2×0.1+0.6×0.5=0.32 | 0.309507 |
++| 输出门 | (0.1, −0.2) | 0.1×0.1−0.2×0.5=−0.09 | 0.477515 |
++
++门分支接 Sigmoid，候选分支接 tanh。用未舍入值计算，新的细胞状态约为 $0.562177\times0.2+0.517493\times0.309507=0.272603$；新隐藏约为 $0.477515\tanh(0.272603)=0.127041$。
++
++下一步把输入改为 −0.5，仍用同一权重；旧隐藏现在是 0.127041、旧细胞是 0.272603。重新计算得到遗忘门约 0.465933、输入门约 0.465527、候选约 −0.267892、输出门约 0.528146，新的细胞状态约 0.002304、隐藏约 0.001217。不能把第一步的四门原封不动搬到第二步，也不能把隐藏 0.127041 当成细胞记忆。
++
++这组数值是为学习提供的完整补充参数，不是 hello 来源模型的权重；逐步未舍入值见本篇计算资产。
++
++
+ ### 2.13 文本挖掘先把“文字”变成可计算对象（讲义 p.77–86）
+ 
+ 文本挖掘（Text mining）从文件里的文字提取结构、主题或可供决策的信息。p.78 提到分类、聚类、关联分析等旧任务，现在输入先要表示成数字。p.79 的情感例将一串词归为正面／中性／负面，p.80 的股票情绪图只是业务应用示例，不是已验证的可获利策略。
++
++<details><summary>讲义 p.81 Text Data 英文原段落全文</summary>
++
++> COVID-19 is the infectious disease caused by the most recently discovered coronavirus. This new virus and disease were unknown before the outbreak began in Wuhan, China, in December 2019. The most common symptoms of COVID-19 are fever, tiredness, and dry cough. Some patients may have aches and pains, nasal congestion, runny nose, sore throat or diarrhea. These symptoms are usually mild and begin gradually. Some people become infected but don’t develop any symptoms and don't feel unwell. Most people (about 80%) recover from the disease without needing special treatment. Around 1 out of every 6 people who gets COVID-19 becomes seriously ill and develops difficulty breathing. Older people, and those with underlying medical problems like high blood pressure, heart problems or diabetes, are more likely to develop serious illness. People with fever, cough and difficulty breathing should seek medical attention.
++
++</details>
+ 
+ p.81 是从给定旧文本抽答案的演示，原文里的健康描述只作为当时材料，不当成当前医疗建议。原题与给定答案如下：
+ 
+@@ -367,7 +509,7 @@
+ 
+ 中文解析：第一问定位定义句；第二问定位列出常见症状的句子；第三问定位“Most people (about 80%) recover ...”并保留原文的条件“without needing special treatment”。材料没有当前样本、时间及流行变异株口径，因此不拿 80% 推算现在某群体康复人数。
+ 
+-英文参考说明：“These answers are extracted from the supplied passage. They demonstrate text-based question answering and are not independently verified current medical guidance.” 完整题面所用原段落在本篇源题资产保留，正文解读已明确限定为旧文本抽取。
++英文参考说明：“These answers are extracted from the supplied passage. They demonstrate text-based question answering and are not independently verified current medical guidance.” 完整题面所用原段落已在上方折叠保留，正文解读已明确限定为旧文本抽取。
+ 
+ p.82 的“世界约 90% 数据非结构化”只给 Oracle 署名，没有采样日期或定义；可用来解释需求背景，不当成本次核实的当前统计。
+ 

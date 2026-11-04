@@ -1,0 +1,192 @@
+--- v0
++++ v1
+@@ -120,6 +120,21 @@
+ 
+ 当前合并文本还有 2026 年增补条款，本讲表并非法律全部禁令清单；相关新增条款的适用日期见 §9.4。课堂复习优先掌握本讲八项及条件，现实判断须回完整条文。
+ 
++#### 2.3.1 从动作分清容易混淆的禁令
++
++生物特征是可用于识别或分类的身体／行为特征。身份核验（Verification）问“是不是自称的这人”，例如本人刷脸核对自己的账户；身份识别（Identification）问“库里哪一个人”，例如远处摄像头把经过者与名单比对。生物特征分类（Biometric categorisation）则把人归到某种属性类，情绪推断是在估计内心状态。四种动作可能共用图像，但输出不同。
++
++闭路电视（Closed-circuit television，CCTV）指监控摄像系统。抓取（Scraping）是批量收集已有图像；建库是把图像组织成以后可搜索识别的集合。一次核验不自动等于批量抓取建库。Article 5(1)(e) 针对互联网／CCTV 人脸的无目标抓取建库或扩库，不能把“用户主动上传自己的照片核验账户”直接当作同一种行为。
++
++💡 社会评分补充例：系统长期根据购物、社交行为给个人打“可信分”，再用与这些数据原收集情境无关的分数限制基本服务，或实施不合理、不成比例的不利待遇。这才接上“跨期行为／特征→社会分数→不利待遇”的条件链。普通会员累计消费积分并按事先规则兑换折扣，不因有一个分数便自动命中该禁令。
++
++有害操纵要连上重大损害门槛：例如暗中利用无法察觉的手段，实质削弱作知情决定的能力，使人作出本不会作的决定并造成／很可能造成重大损害。利用脆弱性也须有利用年龄、残障或特定社会经济处境来实质改变行为及重大损害的链条；正常为长者放大界面字体并不是利用其弱点。
++
++犯罪画像例是“只因某人格类型就预测此人会犯罪”；如果存在与具体犯罪直接相关、客观可核事实，系统只是支持人的判断，则不能机械按 solely profiling 套结论。敏感生物特征分类例是从脸部等生物数据推断种族、宗教或政治观点等规定敏感属性；不是所有外貌属性推断都自动等同该条，法定数据标注／执法例外仍须具体核。
++
++实时公共空间执法识别涉及当场对人群找身份；工作场所情绪识别涉及从员工表现推断心情。前者先核公共空间、实时、远程及执法目的等条件；后者先核工作／教育用途及医疗／安全例外。酒店认出自愿登记的 VIP 不会只因“刷脸”就自动变成该实时执法禁令，但仍要另核数据处理、识别风险及情绪用途。
++
++
+ ### 2.4 高风险系统为什么需要全生命周期治理（讲义 p.15–23）
+ 
+ 高风险（High-risk）不是已证明系统恶意，而是某些错误可能严重影响健康、安全或基本权利。讲义列出生物识别、关键设施、教育、就业、基本服务、执法、移民边境、司法及民主程序八类用途。
+@@ -146,6 +161,28 @@
+ 
+ 🔗 时间限定：2026-07-27 合并文本 Article 113 已把 Annex III 高风险系统有关 Chapter III §§1–3 的适用安排至 **2027-12-02**，Annex I 产品相关高风险安排至 **2028-08-02**，并有具体例外与过渡条款。不能沿用旧版“所有高风险义务于 2026-08-02 全部适用”；分类、预备治理及其他现行法律仍须分别判断。
+ 
++#### 2.4.1 八类用途怎样落到业务动作
++
++法律里的 Article 是条文编号，Annex 是附件清单。Annex I 连接受相关产品法规管理的产品／安全部件路径，Annex III 按特定用途列出高风险路径；它们不是两个模型算法。安全部件指承担安全功能、失效可能危及健康安全的部分；电网负荷的安全控制和办公室打印纸库存预测，不能只因都叫“优化”就同类。
++
++下表先恢复讲义例，再注明不能省略的范围判断。
++
++| 领域 | 输入怎样变成决定 | 机会／安全与边界 |
++|---|---|---|
++| 生物识别 | 生物数据→远程身份识别或规定分类／情绪结果 | 一对一核验排除与禁令须先分清 |
++| 关键基础设施 | 电网等状态→安全相关控制 | 须核安全部件等具体用途 |
++| 教育 | 文书、学业记录、面试→录取建议或评价 | 改变受教育机会；普通文档排版不同 |
++| 就业 | 履历／工作记录→候选排序、晋升等 | 改变进入职位与职业机会 |
++| 基本服务 | 个人资料→信用资格等规定决定 | 信用评估及寿险／健康险等条文用途有细分 |
++| 执法 | 证据／犯罪资料→规定的风险或证据评估 | 纯画像禁令与合法辅助须分开 |
++| 移民及边境 | 申请资料→签证／居留等规定评估 | 不能把一般文件整理直接当决定评估 |
++| 司法及民主 | 案件／选举相关输入→规定司法辅助或影响选举行为 | 普通行政检索与实质决定辅助须区分 |
++
++大学例的三个输入是申请文书、学业记录和面试结果，输出是录取建议；治理要检查每项输入是否与入学资格有关，不能只因有“人工最终决定”就免查建议的偏差。
++
++责任分工也要落地：供应商作为提供者应按适用要求处理模型设计、技术资料和相应评定；大学／酒店作为部署者须按适用规则使用系统、安排监督和处理运行反馈。合同可以分工，不能把部署者自己的使用、告知和申诉责任写成“由模型负责”。
++
++
+ ### 2.5 罚款、透明义务与低风险的边界（讲义 p.24–34）
+ 
+ 讲义 p.24 的 3,500 万欧元／全球营业额 7% 是最高处罚口径，不是所有违规自动罚这个数。营业额（Turnover）是销售收入规模，不是利润。若普通企业上一财年全球营业额为 10 亿欧元，7% 为 7,000 万欧元，高于 3,500 万；这只说明该档上限比较，实际金额还要看违法情节与程序。
+@@ -166,9 +203,22 @@
+ 
+ p.31–34 的最低风险（Minimal risk）例子包括垃圾邮件过滤、电子游戏、库存优化、娱乐推荐、拼写语法辅助、一般客户分组，以及非安全关键场景的预测维修。它们不因属于低风险就免除数据保护、消费者保护、产品安全、版权或反歧视法律。
+ 
++#### 2.5.1 三档行为、校园例及透明的时间条件
++
++讲义 p.25 的“不符合高风险义务”，例如没有记录模型版本或未安排监督，已经可以沿 §2.4 的具体流程定位缺哪一步。p.26 的另一类是向监管者／评定机构提供错误、误导或不完整信息：虚报测试会让审查人误以为性能达标，隐瞒已知故障会使风险无法被识别，不准确的合规资料会阻断追责；它们不能只归成一句“系统不准”。
++
++🔗 Article 99 的法律补充，处罚章节一般自 2025-08-02 适用，但须同时核对应义务的适用日期：禁令违规最高 3,500 万欧元／7%；有关其他义务最高 1,500 万／3%；按要求向机关提供错误、不完整或误导信息最高 750 万／1%。普通企业按法定口径取高，中小企业包括初创有取低规则，特定中型企业在有关档位也有特别安排。以上是上限档位，不是实际处罚计算书。
++
++p.34 的校园例可复用同一判断：图书馆搜索一般帮助找资料，语法工具帮助修改文字，通常属于较低风险；教学插图仍可能涉及生成内容透明要求。聊天机器人要查交互披露，招生筛选要查高风险，考试中推断情绪先查禁令。关键是具体用途，不能把“校园 AI”统一归类。
++
++深度伪造（Deepfake）在本节指生成／操纵的图像、声音或视频，与真实人物、事物、地点或事件等相似，容易使人误认为真实；一般虚构卡通插图不因用 AI 制作就必然是 deepfake。机器可读标记是供软件识别的格式／标记，面向观众披露是让人明白内容来源，两者不是同一件事。
++
++Article 50 一般自 2026-08-02 适用。合并文本 Article 111(4) 对 **2026-08-02 前已投放的有关生成系统提供者履行 Article 50(2)**，给到 2026-12-02 的特定过渡期；这不是所有聊天、deepfake 披露义务一律延期。当前为 2026-10-28，分析真实系统时必须把投放日期、条款及主体一并确认。
++
++
+ ### 2.6 LuxeStay：先理解案例里的每一次数据使用（讲义 p.35–36）
+ 
+-LuxeStay／Guest360 是讲义案例，未提供可核现实事件出处；按教学情境分析，不冒称真实判决。住客加入个性化计划，但不知道数据范围；平台还识别 VIP 并推断情绪。关键不是“有没有点 opt-in”，而是该选择覆盖了哪些具体处理。
++LuxeStay／Guest360 是讲义案例，未提供可核现实事件出处；按教学情境分析，不冒称真实判决。中文事实链是：历次入住、社交活动和第三方旅行 App 资料进入平台，形成偏好与情绪推断，再影响房间、餐饮、问候及到店服务；记者披露其识别 VIP 和推测心情的范围，住客此前未充分知情。住客加入个性化计划，但不知道数据范围；平台还识别 VIP 并推断情绪。关键不是“有没有点 opt-in”，而是该选择覆盖了哪些具体处理。
+ 
+ 为后续四问保留完整英文情境。
+ 
+@@ -246,6 +296,15 @@
+ 讲义的 CCPA 指加利福尼亚消费者隐私法律，不是统一覆盖全美的 GDPR；FTC 是美国联邦监管机关，EEOC 是就业平等执法机关，二者不是全球通用法。此处仅做来源辨认，不给未核条款作确定适用结论。
+ 
+ 改条件练习：若酒店仅保存顾客主动选择的无烟房且不做情绪推断，第一问的主要风险转向用途、保存和访问控制，不能继续照抄“情绪操纵已发生”。
++
++#### 2.7.5 GDPR 与 AI Act 为什么不能二选一（讲义 p.43）
++
++《通用数据保护条例》（General Data Protection Regulation，GDPR）关注个人数据处理，数据保护机关监督其数据义务；AI Act 关注规定的 AI 风险和对应主体，由有关 AI／市场监督体系等执行。问责原则要求证明数据处理为何正当，风险管理要求持续发现并减轻系统风险；两者互相补充。
++
++隐私／数据保护影响评估是先检查数据处理可能给人造成什么高风险及如何保护；合格评定是按相应系统路径证明满足适用要求，不是一份隐私声明。二者都不是所有用途无条件必须做同一张表。
++
++沿酒店例读：说明社交资料、脸部数据处理的依据与权利保障，回应 GDPR 线索；再分类具体识别／情绪用途并核系统义务，回应 AI Act。两法都有行政罚款；本讲 AI Act 还明确市场限制、撤出／召回等反应。不能因通过一种评估便认为另一套问题不存在。
++
+ 
+ ### 2.8 招聘：删除性别字段为什么仍会不公平（讲义 p.44–51）
+ 
+@@ -268,6 +327,72 @@
+ 
+ 从甲乙输入走图：先固定真实资格，再查曝光和点击的差别来自哪里；不能仅凭总体准确率判断机会公平。p.51 的核心是机会、隐私和非歧视影响，讲义引用的“欧盟七项伦理要求”属于伦理治理框架，不等于一份已作出的违法裁定。
+ 
++💡 性别代理的极小假设例：假设资格相同的男女各 10 人，其中男性有 8 人、女性有 2 人每周频繁回应招聘信息。模型虽看不到性别，却把“频繁回应”作为多给高级岗位曝光的理由。若每个频繁者获 8 次、其余获 2 次，男性组平均为 (8×8+2×2)/10=6.8 次，女性组为 (2×8+8×2)/10=3.2 次。差异由与性别相关的输入传到曝光，不需要直接输入性别。
++
++这些人数和曝光量是笔记补充假设，不能说成 LinkedIn 实测。原讲义的可用机制例是技能列举／熟练度和回应行为的群体差异；这是讲义情境叙述，不是男女天生如此。直接输入性别、间接代理相关、选择申请概率目标，是三种不同的机制，需要分别核查。
++
++p.51 还有两个机会关口：系统决定履历能否转交招聘者，错误会让合格人连人工筛选都到不了；游戏测评把游戏行为变成技能／岗位适配判断，须验证它是否真测到岗位所需能力。讲义据此批评不平等、隐私以及技术稳健与安全；本篇保留其伦理评价，同时指出公平的分配问题不等于一般数值稳定性，不能只查总体准确率就称没有歧视。
++
++<details><summary>讲义 p.48–49 英文案例情境全文</summary>
++
++Background:
++               •   The goal of recruiting websites is to match qualified candidates with
++                   available positions. To organize all these openings and candidates,
++                   many platforms employ AI-powered recommendation algorithms.
++                   The algorithms, sometimes referred to as matching engines, process
++CASE STUDY –       information from both the job seeker and the employer to curate a
++                   list of recommendations for each.
++
++LINKEDIN       •   Most matching engines are optimized to generate applications.
++                   These systems base their recommendations on three categories of
++                   data: (1) information the user provides directly to the platform; (2)
++                   data assigned to the user based on others with similar skill sets,
++                   experiences, and interests; and (3) behavioral data, like how often a
++                   user responds to messages or interacts with job postings.
++               •   In LinkedIn’s case, these algorithms exclude a person’s name, age,
++                   gender, and race, because including these characteristics can
++                   contribute to bias in automated processes. Even so, the service’s
++                   algorithms could still detect behavioral patterns exhibited by groups
++                   with particular gender identities.
++               •   For example, men often include more skills on their résumés at a
++                   lower degree of proficiency than women, and they often engage
++                   more aggressively with recruiters on the platform.
++               •   The algorithm interprets this variation in behavior and adjusts its
++                   recommendations in a way that inadvertently disadvantages women.
++               •   The AI might be recommending, for example, more senior jobs to
++                   one group of people than another, even if they’re qualified at the
++                   same level
++
++               Those people might not get exposed to the same
++               opportunities. And that’s really the impact that we’re talking
++               about here.
++
++               Background:
++               • Several years ago, the employment-
++                 oriented social media platform – LinkedIn –
++                 discovered that the AI algorithm that was
++CASE STUDY –     used to match candidates with job
++LINKEDIN         opportunities was producing biased results
++                 independently from users’ professional
++                 experience and/or skills.
++
++               • More specifically, Linkedin’s AI algorithm
++                 was ranking its candidates based on how
++                 likely they were to apply for a position or
++                 respond to a recruiter.
++
++               • As a result, when professionals with similar
++                 experience and skills were scouting for a
++                 job, the algorithm was presenting
++                 /advertising more job posts to men than
++                 women simply because men are more
++                 aggressive in searching out new chances.
++               (LinkedIn was fined 310M Euros for GPDR violation in
++               2024 on its targeted advertising practice)
++
++</details>
++
++
+ #### 2.8.1 讲义提问及英文参考答法
+ 
+ 原题（p.51）：“What has been the impact on people/third parties of LinkedIn’s AI system?”
+@@ -280,13 +405,13 @@
+ 
+ 🔗 DPC 2024-10-24 官方公告核实了 LinkedIn **3.1 亿欧元**处罚，调查对象是行为分析与定向广告中的数据处理合法性、公平性和透明度。它不能证明 p.48–51 的招聘偏差已经由同一决定裁定违法。p.49 的“GPDR”应为 GDPR。
+ 
+-p.50 的 300 万年招聘、每分钟 9,000 申请、每周 6,500 万求职者、招聘者占比 72%–87%、每周 270 万发岗公司，是讲义给定且未标齐统计出处的数据。它们用来说明影响规模，不能当成本次核实的当前指标。
++p.50 的 每年超过 300 万次新招聘／录用（讲义口径）、每分钟 9,000 申请、每周 6,500 万求职者、招聘者占比 72%–87%、每周 270 万发岗公司，是讲义给定且未标齐统计出处的数据。它们用来说明影响规模，不能当成本次核实的当前指标。
+ 
+ 数字还可交叉核读：每分钟 9,000 次若全天恒定，乘 60 分钟和 24 小时得到每日 1,296 万，和“超过 1,200 万”数量级相容；这只核算术，不验证来源或全年恒定。300 万除 12 是月均 25 万，也不意味着每月相等。
+ 
+ ### 2.9 OptiMax：监控能否证明员工投入（讲义 p.52–56）
+ 
+-先区分观测与解释：按键数是行为记录，“投入程度”是对工作状态的判断；脸部动作也不是工作贡献本身。讲义案例没有给出已核现实事件出处，按情境讨论。
++中文事实链：物流公司 OptiMax 上线 WorkSight，收集按键、屏幕活动和摄像头脸部信息来评价员工；内部文件被举报者披露，显示某些脸部表现会被标“低投入”，员工因隐私、同意和压力提出异议，董事会要求伦理评估。先区分观测与解释：按键数是行为记录，“投入程度”是对工作状态的判断；脸部动作也不是工作贡献本身。讲义案例没有给出已核现实事件出处，按情境讨论。
+ 
+ <details><summary>讲义 p.52 英文原情境</summary>
+ 
+@@ -339,6 +464,9 @@
+ 英文参考答案：“The policy should prohibit emotion-based punitive decisions, limit monitoring to necessary job-related data, provide genuine choice where appropriate, and require independent human review and accessible appeals. Regular fairness and well-being checks should determine whether the system is continued, revised or suspended.”
+ 
+ 改条件：员工长期思考导致按键少，但交付质量高。应检查指标是否测量了工作贡献，而不是教员工增加无意义按键。若适用欧盟范围及有关条款，还须先核工作场所情绪推断禁令；伦理建议不能代替该法律测试。
++
++心理福祉保障在本案例还要落实为两项动作：上线前后匿名收集压力、被误评和不敢拒绝监控的反馈，检查哪些群体受影响更大；为员工提供不经直接考评上司的申诉／支持或求助通道。把这些反馈连到暂停、缩小用途和重新设计决定，不能把“建立支持系统”当成已经降低压力。此为 p.56 的心理影响评估／支持措施之具体展开，不进行医学诊断。
++
+ 
+ ### 2.10 从原则到长期管理（讲义 p.57–59）
+ 
