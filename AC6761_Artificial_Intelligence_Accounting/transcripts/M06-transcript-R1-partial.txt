@@ -1,0 +1,390 @@
+00:01
+Okay, so we combine them together, so totally we have the five rows.
+
+00:07
+And for the autodrome, I think it's a little bit complicated, so let's,
+
+00:13
+as long as we understand it, that's enough. Don't worry about the autodrome.
+
+00:16
+So the basic request would be, understand the language of SQL,
+
+00:21
+be able to write down the answer if I give you the code like this.
+
+00:28
+You need to understand the code and write down the answer, query result, based on the table I will provide to you.
+
+00:38
+For example, I will provide the customer and cash receipt table to you and select the star from cash receipt where customer number is equal to C5.
+
+00:49
+Then you should know what's the answer, right?
+
+00:51
+So all the columns here, there is only one row, because C5, only one row meets the condition.
+
+00:59
+Something like that.
+
+01:01
+Okay, again, this page, this page, and page 43 would be something important.
+
+01:10
+And for the outer zone, we can ignore that.
+
+01:14
+Okay, then some mathematical comparison operators sometimes also matter.
+
+01:18
+SQL queries may include a mathematical comparison operator such as equal to or less than or equal to or greater than or greater than or equal to or not equal to.
+
+01:30
+So for example, I probably if I change here, this
+
+01:41
+means not equal to.
+
+01:44
+So in that case, you need to give me the C1 and the C5.
+
+01:48
+Okay. So let's use that example.
+
+01:59
+And then, the semantic comparison operators are
+
+02:02
+typically included in the WHERE clause of the SQL, and maybe used on all types of
+
+02:07
+views. So for DATE, use dates earlier in time, less than. So that's easy to
+
+02:14
+understand. For example, if this date is 1999 and another date is 2022, right,
+
+02:21
+which one is larger? The earlier one is small, right? So of course, for day 2, the
+
+02:29
+date is larger. And for text, the a is smaller than b, smaller than c. So for
+
+02:35
+example, apple is smaller than cat. So that is the logic when you compare the
+
+02:43
+two.
+
+02:46
+Okay, so here is another case. So we select a count number and the balance
+
+02:52
+from the cash, where balance is larger than or equal to $50,000.
+
+03:01
+So get the answer. We select account number balance, account number balance, two columns
+
+03:08
+from the cash table, where balance is larger than or equal to, only one line
+
+03:14
+needs the commission. And in this case, we select the fair ID amount from the fair
+
+03:21
+table where sales representative number is not equal to E10 as we said. We have
+
+03:28
+select from this table and two columns, bear column and amount column. Then the
+
+03:35
+condition is not equal to E10. So we only have two lines left, E12 and E99.
+
+03:46
+Then queries may include some logical opposite terms, and, or all, and not.
+
+03:53
+So and means that we need to fit two conditions together, right?
+
+03:58
+We need to meet both conditions.
+
+04:00
+All is easy, either or, right?
+
+04:03
+Either condition is meet, so then you can get the answer.
+
+04:07
+Not means that we cannot meet that condition.
+
+04:11
+So let's see, I'm
+
+04:17
+not here.
+
+04:18
+Anyway, we know that, right? And or not. We will show this later, in later cases.
+
+04:25
+So another special operator is between. Between is used to define the range limits.
+
+04:31
+And the end points of the range are included.
+
+04:35
+So for example, in this stair table, select stair ID, amount, date.
+
+04:41
+so it's like a three column from the serial cable then condition is between
+
+04:47
+July 1st and the July 31st. So I think that the ending point of the range are
+
+04:55
+included. I think you may also change this point to the starting point and the
+
+05:00
+ending point are included because look at the answer here. It contains both July 1st
+
+05:06
+July 31, although they are using the word between, means that both starting point and
+
+05:13
+the ending point are included.
+
+05:17
+Another very special operator, so -called is null, means
+
+05:22
+it's missing. It's used to retrieve attributes for which the value is null. So we select
+
+05:29
+a star from the cache table, star means all of them, then the balance is null, or balance
+
+05:35
+is missing. So there are two rows with missing balance. So we have to also like that.
+
+05:43
+And
+
+05:44
+another one exists is opposite to the missing, right? So we select a star from cache where
+
+05:52
+balance exists. So again, two rows. By the way, although the balance is zero, but zeros
+
+05:59
+there exist, not missing, right? So that's why we needed to put the line with the zero
+
+06:06
+as well. And some aggregation functions in query again, very much like those in
+
+06:14
+Excel, so it's very easy to follow. An aggregation function summarizes the data
+
+06:20
+values within a field like the count. Count means summarize the number of rows.
+
+06:25
+Average computes the mean value. Sum, we pass them together, right? And the mean means the
+
+06:32
+the minimum attribute value, and the max means the maximum or greatest attribute value.
+
+06:39
+So nothing complicated here. And also we can make some horizontal calculations. We can
+
+06:47
+show that later in the case to better understand that. Sometimes we need to multiply the two
+
+06:54
+different variables together, then we can get another new variable's value. So that
+
+07:02
+is so -called a horizontal calculation.
+
+07:07
+Okay, so then we can go to the third language, so -called QBE.
+
+07:13
+So QBE language, just a window-based, something like this. So we are going to use the Microsoft
+
+07:20
+Access, and we have some windows there, and after that we can choose the different actions. Then the
+
+07:27
+the software will offer the answer directly to us.
+
+07:32
+For example, again, we needed to know the,
+
+07:37
+within the cache receipt table, we get those information,
+
+07:40
+which is equal to customer C2.
+
+07:44
+So as the instruction here, it can open a new design,
+
+07:50
+but now it's not a table design, it's a query design.
+
+07:54
+Then we have a pop-up window.
+
+07:56
+we choose the cash receipt table, like this.
+
+08:02
+Then we go to the...
+
+08:04
+I already uploaded in Canvas.
+
+08:07
+Can you download that to your computer?
+
+08:10
+So called example tables 1.
+
+08:15
+So please do that, because our quiz 2
+
+08:18
+were based on this database.
+
+08:21
+Example tables 1, which is uploaded in Canvas.
+
+08:25
+us, please download that to your computer. If
+
+10:25
+you already download to your computer,
+
+10:27
+please open that. This will look like this. Then follow me. Click the create. Create the
+
+10:36
+third one. Create the query design, not the table design. Go to the sixth option here.
+
+10:45
+Query design. Then there is something look like this.
+
+10:52
+Again, due to the version difference
+
+10:54
+there is no pop-up window so let's see which table we are talking about we
+
+11:02
+need the cash receipt table so we drag the cash receipt table to the middle
+
+11:09
+okay so we drag the cash receipt table here okay
+
+11:16
+cash receipt table so then what should we do according
+
+11:25
+to the instruction in page 56
+
+11:28
+6 you can see that after we drag the cache-retriever table to the middle in the upper section right
+
+11:36
+then go to the section 2 here the section 2 we need to input some attributes one by one
+
+11:43
+starting from the first one until the end right so let's see how should we input that
+
+11:51
+we
+
+11:58
+go to the first one choose the second one because if you choose the star that means
+
+12:05
+everything right so we start from the second one which is the remittance
+
+12:11
+advice number then after you choose that the table cash receipt is automatically
+
+12:17
+here no need to input then we go to the second column we choose another
+
+12:24
+amount and the third bank account number then the fourth date the next one is
+
+12:34
+customer number and the final one is the measure name so six of them right so
+
+12:42
+remember we choose from the second one not the star one then the table and the
+
+12:49
+the tick here will be automatically chosen so you can see that in this page
+
+13:00
+right the same six of them then after you click the table name is filled
+
+13:07
+automatically and this show row is ticked automatically then we enter the
+
+13:13
+condition where should we enter that based on the instruction in page 57 look
+
+13:20
+at the equal to C2 okay equal to C2 under the column of customer number
+
+13:31
+because we are trying to find the customer number of C2 right so get the
+
+13:36
+the customer number of C2. So under the column, under which row, we have a row named the criteria.
+
+13:44
+Can you see? Just below the row of show, we have a row named the criteria. So we put the
+
+13:53
+condition here. I think we can directly use the C2. Don't have to use the... I will try.
+
+14:00
+But it's okay. So it's easier, right? We just directly input C2.
+
+14:09
+And it is automatically
+
+14:11
+excited okay so try that by yourself and after that you click wrong you click
+
+14:20
+wrong and see whether you get the answer like this page so in this page I'm showing
+
+14:28
+in page 58 we have the sixth column and only three rows meet this condition
+
+14:35
+customer number equal to C2 right C2 C2 get
+
+15:27
+the answer we just simply save it
+
+15:30
+If you do not save it, it's also OK.
+
+15:34
+But if you save it, it does not hurt.
+
+15:37
+Save it as query 1, then you close, which means that you are already finished with this query.
+
+15:53
+Let's have a break, just in case someone cannot find an answer, let me know.
+
+15:57
+Have a break.
+

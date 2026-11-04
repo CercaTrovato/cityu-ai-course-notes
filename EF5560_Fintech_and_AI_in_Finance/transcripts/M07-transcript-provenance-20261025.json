@@ -1,0 +1,103 @@
+{
+  "schema": "cityu-dispersed-transcript-sources-v1",
+  "course": "EF5560",
+  "updated": "2026-10-25",
+  "asr": {
+    "model": "Whisper large-v3",
+    "decoder": "local sequential CUDA float16",
+    "beam_size": 5,
+    "word_timestamps": true,
+    "vad_min_silence_ms": 500,
+    "condition_on_previous_text": false,
+    "automatic_drops": 0
+  },
+  "source_order": [
+    "R2",
+    "R3"
+  ],
+  "seam": "R2宣布休息，R3继续下一部分；内容支持先后，未做共同声轨配准，不猜精确休息/漏句时长",
+  "video_windows": {
+    "R2": [
+      [
+        2529,
+        2623
+      ]
+    ],
+    "R3": [
+      [
+        1558,
+        1584
+      ],
+      [
+        2222,
+        2293
+      ],
+      [
+        3162,
+        3175
+      ],
+      [
+        3213,
+        3259
+      ]
+    ]
+  },
+  "limits": "ASR不是逐字人工听校或全音频隐私保证；视频/教师/学生未逐轨鉴定，按明确播放边界归因",
+  "sources": [
+    {
+      "label": "R2",
+      "original_name": "录音 (2).m4a",
+      "class_date": "2026-10-22",
+      "date_basis": "本人在本对话确认",
+      "original_sha256": "88001f8cf5cb11c91bd30dd701cdee2ea6f0129f5798a62b7af39df228ac2fb8",
+      "original_media_seconds": 3945.002625,
+      "audio": "EF5560-M07-20261022-R2-partial.m4a",
+      "audio_sha256": "88001f8cf5cb11c91bd30dd701cdee2ea6f0129f5798a62b7af39df228ac2fb8",
+      "audio_bytes": 100737850,
+      "publication_media_seconds": 3945.002625,
+      "transcript": "M07-transcript-R2-partial.txt",
+      "transcript_sha256": "77de0d34fb1c9a690af7ecdd6ed4464ab09c76a3f077c897e93d288cd74df506",
+      "raw_segments": 770,
+      "public_segments": 770,
+      "withheld_noninstructional_segments": 0,
+      "redaction_intervals_original_seconds": [],
+      "clock": "original relative clock preserved; names muted, not spliced",
+      "private_original_policy": "原件保留",
+      "cloud_status": "not_uploaded_this_batch_yet"
+    },
+    {
+      "label": "R3",
+      "original_name": "录音 (3).m4a",
+      "class_date": "2026-10-22",
+      "date_basis": "本人在本对话确认",
+      "original_sha256": "ea688aaaf9f0fd828e44d31d4eead41476d53b9480b27f39ca157183b3705688",
+      "original_media_seconds": 4631.125604,
+      "audio": "EF5560-M07-20261022-R3-redacted-partial.m4a",
+      "audio_sha256": "db71f94e0077dbb9db03607ecc3e3f7d37660d40f232710a2eb79663bb080258",
+      "audio_bytes": 113369218,
+      "publication_media_seconds": 4631.125,
+      "transcript": "M07-transcript-R3-partial.txt",
+      "transcript_sha256": "49e60da440670652713df041aa66b0e867b1c31cff82059f5f1a7873791a3b8c",
+      "raw_segments": 921,
+      "public_segments": 914,
+      "withheld_noninstructional_segments": 7,
+      "redaction_intervals_original_seconds": [
+        [
+          1195,
+          1206
+        ],
+        [
+          1374,
+          1401
+        ],
+        [
+          1488,
+          1492
+        ]
+      ],
+      "clock": "original relative clock preserved; names muted, not spliced",
+      "private_original_policy": "原件本机保留，含点名的原件不直接上传公开目录",
+      "cloud_status": "not_uploaded_this_batch_yet"
+    }
+  ]
+}

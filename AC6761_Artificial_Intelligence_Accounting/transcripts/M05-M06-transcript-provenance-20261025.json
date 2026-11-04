@@ -1,0 +1,145 @@
+{
+  "schema": "cityu-dispersed-transcript-sources-v1",
+  "updated": "2026-10-25",
+  "course": "AC6761",
+  "asr": {
+    "model": "Whisper large-v3",
+    "mode": "local sequential CUDA float16",
+    "beam_size": 5,
+    "word_timestamps": true,
+    "vad_min_silence_ms": 500,
+    "condition_on_previous_text": false,
+    "automatic_drops": 0
+  },
+  "source_order": [
+    "S18",
+    "S19",
+    "R1",
+    "S21"
+  ],
+  "seam_policy": "仅内容支持先后，均无共同音频锚点，精确缺口/休息长度未知；不相加为完整课堂时长",
+  "sources": [
+    {
+      "label": "S18",
+      "intake_id": "I018",
+      "original_name": "新录音 18.m4a",
+      "class_date": "2026-10-21",
+      "class_date_basis": "本人在本对话明确确认",
+      "modules": [
+        "M05"
+      ],
+      "source_file_sha256": "74f7df6d33adc0fc3961fad9e6836f2a981abb7d702b88a39f228d878b323c45",
+      "audio": "AC6761-M05-20261021-source18-partial.m4a",
+      "audio_sha256": "74f7df6d33adc0fc3961fad9e6836f2a981abb7d702b88a39f228d878b323c45",
+      "audio_bytes": 9589408,
+      "media_seconds": 573.76,
+      "transcript": {
+        "file": "M05-transcript-source18-partial.txt",
+        "sha256": "11f9179fe334d0fb5f5b9b1f4b88de2b205352cede419f5f6d44b635a2c88545",
+        "bytes": 8642
+      },
+      "windows": [
+        {
+          "module": "M05",
+          "start_seconds": 0,
+          "end_seconds": 573.76
+        }
+      ],
+      "clock": "original-source-relative; not reset",
+      "drive_status": "not_uploaded_in_this_batch_yet"
+    },
+    {
+      "label": "S19",
+      "intake_id": "I019",
+      "original_name": "新录音 19.m4a",
+      "class_date": "2026-10-21",
+      "class_date_basis": "本人在本对话明确确认",
+      "modules": [
+        "M05",
+        "M06"
+      ],
+      "source_file_sha256": "c377d5c187cb5a533446db955203f063412e8985b15bd3693dfdeb9ecb807f20",
+      "audio": "AC6761-M05-M06-20261021-source19-partial.m4a",
+      "audio_sha256": "c377d5c187cb5a533446db955203f063412e8985b15bd3693dfdeb9ecb807f20",
+      "audio_bytes": 58161441,
+      "media_seconds": 3494.122667,
+      "transcript": {
+        "file": "M05-M06-transcript-source19-partial.txt",
+        "sha256": "4f045bc86ebea89bae7d4f6e9dc3c9400ddaec2a08e8062d808dba91394c49b7",
+        "bytes": 41932
+      },
+      "windows": [
+        {
+          "module": "M05",
+          "start_seconds": 0,
+          "end_seconds": 570
+        },
+        {
+          "module": "M06",
+          "start_seconds": 570,
+          "end_seconds": 3494.122667
+        }
+      ],
+      "clock": "original-source-relative; not reset",
+      "drive_status": "not_uploaded_in_this_batch_yet"
+    },
+    {
+      "label": "S21",
+      "intake_id": "I020",
+      "original_name": "新录音 21.m4a",
+      "class_date": "2026-10-21",
+      "class_date_basis": "本人在本对话明确确认",
+      "modules": [
+        "M06"
+      ],
+      "source_file_sha256": "5efc781a9a01f2cb94b1056bcc2c1e061e789af215d3f4de87c6f4dff3bf71a5",
+      "audio": "AC6761-M06-20261021-source21-partial.m4a",
+      "audio_sha256": "5efc781a9a01f2cb94b1056bcc2c1e061e789af215d3f4de87c6f4dff3bf71a5",
+      "audio_bytes": 9406648,
+      "media_seconds": 563.861333,
+      "transcript": {
+        "file": "M06-transcript-source21-partial.txt",
+        "sha256": "23914e70a6fc0a6097adde8d09e5e4d60a0ae39ba45c125853bb1db3364610d7",
+        "bytes": 5063
+      },
+      "windows": [
+        {
+          "module": "M06",
+          "start_seconds": 0,
+          "end_seconds": 563.861333
+        }
+      ],
+      "clock": "original-source-relative; not reset",
+      "drive_status": "not_uploaded_in_this_batch_yet"
+    },
+    {
+      "label": "R1",
+      "intake_id": "I028",
+      "original_name": "录音.m4a",
+      "class_date": "2026-10-21",
+      "class_date_basis": "本人在本对话明确确认",
+      "modules": [
+        "M06"
+      ],
+      "original_file_sha256": "8d9438b5bb8d616f5f6c506a3cf12ce81ae05dc21048b742a404c6716977185b",
+      "original_media_seconds": 1288.021667,
+      "original_storage": "本机完整原件保留，含私人休息段，不上传公开目录",
+      "audio": "AC6761-M06-20261021-R1-lecture-only-partial.m4a",
+      "audio_sha256": "48c6a9261ced539c40352b9994590d5d56405ba5fe0485a77f06b141f7b27540",
+      "audio_bytes": 23522939,
+      "media_seconds": 960.00025,
+      "publication_interval_original_seconds": [
+        0,
+        960
+      ],
+      "transcript": {
+        "file": "M06-transcript-R1-partial.txt",
+        "sha256": "62d7dfe22aea39d5812a47dd05767575a79404991f1398476fe0975923110841",
+        "bytes": 9815
+      },
+      "clock": "original-source-relative; tail withheld without shifting classroom timestamps",
+      "privacy": "16分钟后课间私人交谈未纳入公开副本；未逐字人工听校",
+      "drive_status": "not_uploaded_in_this_batch_yet"
+    }
+  ]
+}
