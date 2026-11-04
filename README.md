@@ -4,6 +4,14 @@ scope: vault 根
 updated: 2026-10-29
 ---
 
+> 2026-11-02 个人作业制作：IS6400 [Week 9 Extra](IS6400_Business_Data_Analytics/assignment/graded/A11-week9-extra/notes/开始这里.md) 已运行/独审并保留 draft，11/6 23:59 HKT、未上传；[Week 8 & 9 入口对照](IS6400_Business_Data_Analytics/assignment/graded/A10-week8-9/notes/任务说明.md) 复用旧已完成答卷，不回退 A09。IS5542 Marketing 第 3 反思已回读 11/2 11:44 Submitted，另备 [金融服务一页草稿](IS5542_GenAI_in_Business/assignment/graded/A05-financial-services-reflection/notes/开始这里.md)。[本批范围与验收](_meta/individual-assignments-20261102/review.md)。本批未新增 M/T，笔记库存统计与旧学习字段不变。
+
+> 2026-11-02 提交格式更正：重新现场读取教师10/1公告《Assignment Submission Instructions & Checklists》，开头明确“For all assignments”，并要求“Save your notebook in HTML format for submission”。Extra原题“One Jupyter Notebook”未明确要求.ipynb扩展名或另附源文件；按该统一格式，已提交HTML不构成已证实的附件缺失。撤销本页此前“建议补交Notebook”的行动提醒，不据此催交或改变已提交状态。三项真实回执不变，Notebook源文件保留本地即可。[教师统一公告](https://canvas.cityu.edu.hk/courses/71457/discussion_topics/637007)。
+
+> 2026-11-02 提交状态更新：本人已手动交三项，现场核W7分类16:49（late）、Week 8 & 9主作业16:49、Week 9 Extra16:48，三者均Submitted!，附件名分别对应当前最终HTML。Extra页面未核到原题另要求的.ipynb；远端下载字节比对未完成，成绩不可见。旧W7错件历史保留，当前附件名已为分类稿；学习/自测/复习字段不变。 [本次回执](_meta/individual-assignments-20261102/submission-verified-20261102.md)。
+
+> 2026-11-02 IS6400 最终文件已交付本人手动提交：[W7正确分类作业](IS6400_Business_Data_Analytics/assignment/graded/A08-week7-classification/notes/任务说明.md)已完成三问及独审；Week 8 & 9使用A10 Bitcoin四题、Extra使用A11天气预测本日审修稿。W7旧回执挂Bitcoin的对应关系已核清；新三稿未上传，旧提交记录保留。学习、评分、小组任务和M/T库存不变，下方旧时点记录保留。
+
 # CityU 课程笔记库
 
 ## 2026-10-31 微信新录音：转录、归档与融合

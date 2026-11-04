@@ -5,6 +5,12 @@ updated: 2026-10-28
 tags: [IS6400, DDL, 作业]
 ---
 
+> 2026-11-02 提交格式更正：重新现场读取教师10/1公告《Assignment Submission Instructions & Checklists》，开头明确“For all assignments”，并要求“Save your notebook in HTML format for submission”。Extra原题“One Jupyter Notebook”未明确要求.ipynb扩展名或另附源文件；按该统一格式，已提交HTML不构成已证实的附件缺失。撤销本页此前“建议补交Notebook”的行动提醒，不据此催交或改变已提交状态。三项真实回执不变，Notebook源文件保留本地即可。[教师统一公告](https://canvas.cityu.edu.hk/courses/71457/discussion_topics/637007)。
+
+> 2026-11-02 提交状态更新：本人已手动交三项，现场核W7分类16:49（late）、Week 8 & 9主作业16:49、Week 9 Extra16:48，三者均Submitted!，附件名分别对应当前最终HTML。Extra页面未核到原题另要求的.ipynb；远端下载字节比对未完成，成绩不可见。旧W7错件历史保留，当前附件名已为分类稿；学习/自测/复习字段不变。
+
+> 2026-11-02 当前核清：Week 7分类（337924）原截止10/23 23:59 HKT、10points；旧10/21回执挂Bitcoin，新[分类最终稿](../assignment/graded/A08-week7-classification/notes/任务说明.md)已完成、由本人手动替换，尚未上传。Week 8 & 9（330590）20points、Week 9 Extra（330608）2points，均11/6 23:59 HKT，分别用A10/A11本日审修稿。旧“映射待核”仅保留为历史，不覆盖此次逐字节核查。
+
 # IS6400 作业与 DDL
 
 > 制作规则：[[作业规范|全局通用规则]] → [[IS6400_Business_Data_Analytics/_meta/IS6400作业制作规范|IS6400 课程细则]] → 本地私有 Axx 任务说明。本页维护作业事实与历史来源，不能覆盖制作规则。
@@ -665,3 +671,8 @@ A02 任务说明现有官方对照教学段补齐四题英文原题、中文条�
 ## 2026-10-31 · S20 课堂小测来源
 
 M08四图小测：S20 `59:51`末次要求解释C→D和检验平稳，`59:58`给5分钟并交Canvas，`01:29:47`提醒当日14:00前交。具体日期未确认，早前ASR C→B与末次指令不一致；不创建猜测的绝对DDL，不改现有Week8/9正式作业、本人提交／评分。滚动一步用于项目为课堂建议，不新增强制模型条款。
+
+
+## 2026-11-02 个人作业本轮状态
+
+330590/330608 均已实核 11/6 23:59 HKT、20/2 points、file upload。合并入口无追加题面，复用旧 A09 完整四题并库外重跑，原已提交文件不改；入口回执映射仍待核。天气 Extra 已完成 Notebook/标准 HTML/中文导览及独审，测试 SARIMA/HW/季节朴素 RMSE 为 2.515160/1.901891/2.492339 °C，仍 draft 待本人核阅与最终格式确认，未上传。入口：[[IS6400_Business_Data_Analytics/assignment/graded/A11-week9-extra/notes/开始这里|天气 Extra]]、[[IS6400_Business_Data_Analytics/assignment/graded/A10-week8-9/notes/任务说明|合并入口对照]]。10/21 Quiz 338410 仅回查事实，未见补交题面/安排，不代作或自行补交。

@@ -1,0 +1,169 @@
+{
+  "original_rows": 32764,
+  "removed_duplicates": 177,
+  "rows": 32587,
+  "predictors": 30,
+  "seed": 42,
+  "test_fraction": 0.4,
+  "class_counts": {
+    "All": {
+      "0": 32114,
+      "1": 473
+    },
+    "Train": {
+      "0": 19268,
+      "1": 284
+    },
+    "Test": {
+      "0": 12846,
+      "1": 189
+    }
+  },
+  "models": [
+    {
+      "Model": "Logistic regression",
+      "Accuracy": 0.9993862677406982,
+      "Precision": 0.9891891891891892,
+      "Recall": 0.9682539682539683,
+      "F1": 0.9786096256684492,
+      "TN": 12844,
+      "FP": 2,
+      "FN": 6,
+      "TP": 183
+    },
+    {
+      "Model": "Decision tree",
+      "Accuracy": 0.9995397008055236,
+      "Precision": 0.9740932642487047,
+      "Recall": 0.9947089947089947,
+      "F1": 0.9842931937172775,
+      "TN": 12841,
+      "FP": 5,
+      "FN": 1,
+      "TP": 188
+    },
+    {
+      "Model": "Random forest",
+      "Accuracy": 0.9995397008055236,
+      "Precision": 0.9841269841269841,
+      "Recall": 0.9841269841269841,
+      "F1": 0.9841269841269841,
+      "TN": 12843,
+      "FP": 3,
+      "FN": 3,
+      "TP": 186
+    },
+    {
+      "Model": "Bagging",
+      "Accuracy": 0.9996164173379364,
+      "Precision": 0.9791666666666666,
+      "Recall": 0.9947089947089947,
+      "F1": 0.9868766404199475,
+      "TN": 12842,
+      "FP": 4,
+      "FN": 1,
+      "TP": 188
+    },
+    {
+      "Model": "AdaBoost",
+      "Accuracy": 0.9997698504027618,
+      "Precision": 0.9894736842105263,
+      "Recall": 0.9947089947089947,
+      "F1": 0.9920844327176781,
+      "TN": 12844,
+      "FP": 2,
+      "FN": 1,
+      "TP": 188
+    }
+  ],
+  "weights": {
+    "0": 1.0,
+    "1": 67.84507042253522
+  },
+  "weighted_models": [
+    {
+      "Model": "Without class weights",
+      "Accuracy": 0.9995397008055236,
+      "Precision": 0.9740932642487047,
+      "Recall": 0.9947089947089947,
+      "F1": 0.9842931937172775,
+      "TN": 12841,
+      "FP": 5,
+      "FN": 1,
+      "TP": 188
+    },
+    {
+      "Model": "With class weights",
+      "Accuracy": 0.9993862677406982,
+      "Precision": 0.9641025641025641,
+      "Recall": 0.9947089947089947,
+      "F1": 0.9791666666666666,
+      "TN": 12839,
+      "FP": 7,
+      "FN": 1,
+      "TP": 188
+    }
+  ],
+  "costs": [
+    {
+      "FN/FP cost ratio": 1,
+      "Without weights": 6,
+      "With weights": 8
+    },
+    {
+      "FN/FP cost ratio": 10,
+      "Without weights": 15,
+      "With weights": 17
+    },
+    {
+      "FN/FP cost ratio": 50,
+      "Without weights": 55,
+      "With weights": 57
+    },
+    {
+      "FN/FP cost ratio": 100,
+      "Without weights": 105,
+      "With weights": 107
+    }
+  ],
+  "fit_warnings": {
+    "Logistic regression": [],
+    "Decision tree": [],
+    "Random forest": [],
+    "Bagging": [],
+    "AdaBoost": []
+  },
+  "majority_accuracy": 0.985500575373993,
+  "time_audit": {
+    "training_ranges": {
+      "min": {
+        "0": 155839,
+        "1": 406
+      },
+      "max": {
+        "0": 172792,
+        "1": 170348
+      },
+      "median": {
+        "0": 163279.5,
+        "1": 70249.5
+      },
+      "count": {
+        "0": 19268,
+        "1": 284
+      }
+    },
+    "internal_validation_F1": 0.9570552147239264,
+    "internal_validation_matrix": [
+      [
+        5781,
+        0
+      ],
+      [
+        7,
+        78
+      ]
+    ],
+    "tree_importance": 0.9541748827615769
+  }
+}

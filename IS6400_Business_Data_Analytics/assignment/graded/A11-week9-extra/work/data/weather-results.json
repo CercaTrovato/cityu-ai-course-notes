@@ -1,0 +1,50 @@
+{
+  "raw_rows": 70091,
+  "rows": 70067,
+  "duplicate_rows_removed": 24,
+  "dedup_max_monthly_change_C": 0.05540406586021618,
+  "months": 96,
+  "train_months": 84,
+  "test_months": 12,
+  "train_start": "2009-01-01",
+  "train_end": "2015-12-01",
+  "test_start": "2016-01-01",
+  "test_end": "2016-12-01",
+  "counts_min": 670,
+  "counts_max": 774,
+  "KPSS_stat": 0.08557829302370404,
+  "KPSS_table_p": 0.1,
+  "acf12": 0.7873650457751867,
+  "selection": "SARIMA(1,0,0)(0,1,0)[12]",
+  "validation": [
+    {
+      "model": "ARIMA(1,0,0)",
+      "validation_RMSE_C": 7.0926518858289995,
+      "converged": true,
+      "warnings": ""
+    },
+    {
+      "model": "ARIMA(2,0,0)",
+      "validation_RMSE_C": 5.326491477190042,
+      "converged": true,
+      "warnings": ""
+    },
+    {
+      "model": "SARIMA(1,0,0)(1,0,0)[12]",
+      "validation_RMSE_C": 2.8077279270677713,
+      "converged": true,
+      "warnings": ""
+    },
+    {
+      "model": "SARIMA(1,0,0)(0,1,0)[12]",
+      "validation_RMSE_C": 2.7157583581386415,
+      "converged": true,
+      "warnings": ""
+    }
+  ],
+  "scores": {
+    "SARIMA(1,0,0)(0,1,0)[12]": 2.5151603080418936,
+    "Holt-Winters additive": 1.9018914568632463
+  },
+  "seasonal_naive_RMSE_C": 2.4923388016190393
+}
