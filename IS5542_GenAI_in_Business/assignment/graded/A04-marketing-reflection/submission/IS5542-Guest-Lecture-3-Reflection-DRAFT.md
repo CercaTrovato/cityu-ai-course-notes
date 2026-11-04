@@ -1,0 +1,15 @@
+# Reflection on Guest Lecture 3: Reimagining Marketing with AI
+
+The most useful idea in Prisca Lam’s lecture material is that AI belongs across the marketing workflow, from discovering customer needs to measuring results. This is more demanding than using a tool to produce an attractive advertisement. Faster production only creates value when the additional content reaches the right audience and supports a business objective. I would therefore judge an AI marketing initiative by the decision it improves, rather than the volume of material it generates.
+
+The distinction between AI-moderated interviews and synthetic personas illustrates this point. An AI moderator can help collect responses from real participants, while a synthetic persona generates responses based on a model’s representation of consumers. Both may help explore an idea, but they provide different kinds of evidence. A convincing simulated response should not be treated as proof that customers want a product. I would use synthetic personas to develop questions or challenge assumptions, then test the important claims with actual customers. Otherwise, a research process could become faster while becoming less connected to the market.
+
+The Hada Labo example makes the promise of creative production more concrete. The slides report a 12.5% reduction in cost per engagement, alongside improvements in engagement and advertising recall. These are encouraging results, but they do not establish that generating more variations will always improve performance. Before adopting the approach, I would want to understand the comparison group, audience, media spending and measurement period. Brand review and revision time should also enter the cost calculation. A cheaper asset that misrepresents the product or damages trust can be an expensive outcome.
+
+The personalized email example also shows why implementation matters. The material describes separate agents for data, research and writing, coordinated to produce relevant customer follow-ups. The opportunity is to connect the message to a customer’s situation, not merely insert a name into a template. Yet an incorrect interpretation of account data could make the recommendation more confidently wrong. I would begin with a limited pilot, verify the source of each recommendation, and keep human approval for consequential claims before expanding delivery.
+
+My conclusion is that AI shifts the marketer’s responsibility toward setting objectives, checking evidence and designing useful controls. Discover, create, activate and analyze should form a learning loop: test a specific proposition, observe customer and business outcomes, and use those results to revise the next campaign. This retains the lecture’s ambition for scale while giving a clear reason to stop or change course when the evidence is weak.
+
+Source: Prisca Lam, “Reimagining Marketing with AI,” Guest Lecture 3 slides, pp. 7, 9–10, 43–44 and 62–66.
+
+OpenAI Codex assisted with drafting and language editing.
