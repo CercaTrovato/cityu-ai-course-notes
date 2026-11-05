@@ -1,0 +1,170 @@
+{
+  "database_versions": [
+    {
+      "sha256": "25CCD123EE4A1548E867980EC4AFEC4E237E502DCCA63F77901805C25955674E",
+      "file": "ExampleTables1.accdb",
+      "checks": [
+        {
+          "rows": [
+            {
+              "SaleNumber": "S-2",
+              "Amount": 10000.0,
+              "SalesRepNumber": "E-10"
+            },
+            {
+              "SaleNumber": "S-3",
+              "Amount": 16000.0,
+              "SalesRepNumber": "E-10"
+            },
+            {
+              "SaleNumber": "S-4",
+              "Amount": 10000.0,
+              "SalesRepNumber": "E-10"
+            },
+            {
+              "SaleNumber": "S-5",
+              "Amount": 16600.0,
+              "SalesRepNumber": "E-10"
+            },
+            {
+              "SaleNumber": "S-6",
+              "Amount": 35000.0,
+              "SalesRepNumber": "E-10"
+            }
+          ],
+          "sql": "SELECT SaleNumber, Amount, SalesRepNumber FROM Sale WHERE SalesRepNumber='E-10' ORDER BY SaleNumber;",
+          "key": "quiz2"
+        },
+        {
+          "rows": [
+            {
+              "SaleNumber": "S-1",
+              "Applied": 7200.0
+            },
+            {
+              "SaleNumber": "S-2",
+              "Applied": 1666.0
+            },
+            {
+              "SaleNumber": "S-2",
+              "Applied": 1666.0
+            },
+            {
+              "SaleNumber": "S-3",
+              "Applied": 16000.0
+            },
+            {
+              "SaleNumber": "S-4",
+              "Applied": 10000.0
+            },
+            {
+              "SaleNumber": "S-5",
+              "Applied": 16600.0
+            },
+            {
+              "SaleNumber": "S-6",
+              "Applied": null
+            },
+            {
+              "SaleNumber": "S-7",
+              "Applied": null
+            }
+          ],
+          "sql": "SELECT s.SaleNumber, d.Applied FROM Sale AS s LEFT JOIN [Sale-CashRecDuality] AS d ON s.SaleNumber=d.SaleNumber ORDER BY s.SaleNumber;",
+          "key": "leftjoin"
+        },
+        {
+          "rows": [
+            {
+              "TotalSales": 52600.0
+            }
+          ],
+          "sql": "SELECT SUM(Amount) AS TotalSales FROM Sale WHERE [Date]>=#7/15/2014# AND [Date]<#8/1/2014#;",
+          "key": "july_sum"
+        }
+      ],
+      "table_count": 8,
+      "table_names": [
+        "Cash",
+        "CashReceipt",
+        "Customer",
+        "Inventory",
+        "Inventory-SaleStockflow",
+        "Sale",
+        "Sale-CashRecDuality",
+        "Salesperson"
+      ]
+    },
+    {
+      "sha256": "45E7587826646E948C79D7EFF18C4039CA7EC0B91D063E6C50E88FBCB2084FA8",
+      "file": "ExampleTables2.accdb",
+      "checks": [
+        {
+          "rows": [
+            {
+              "ItemID": "BIS1",
+              "Description": "Big Stuff"
+            },
+            {
+              "ItemID": "HUS1",
+              "Description": "Huge Stuff"
+            },
+            {
+              "ItemID": "LIS1",
+              "Description": "Little Stuff"
+            },
+            {
+              "ItemID": "MIN1",
+              "Description": "Miniature Stuff"
+            },
+            {
+              "ItemID": "TIS1",
+              "Description": "Tiny Stuff"
+            },
+            {
+              "ItemID": "TTP12",
+              "Description": "Tiara"
+            }
+          ],
+          "sql": "SELECT ItemID, Description FROM InventoryType ORDER BY ItemID;",
+          "key": "item_types"
+        }
+      ],
+      "table_count": 31,
+      "table_names": [
+        "AccountsPayableClerk",
+        "Cash",
+        "CashDisbursement",
+        "Cashier",
+        "CashReceipt",
+        "Customer",
+        "FulfillmentPurchasePurchaseOrder",
+        "FulfillmentSaleOrderSale",
+        "InventoryType",
+        "OperatingAssets",
+        "PropositionPurchaseRequisitionInventoryType",
+        "PropositionSalesCallInventory",
+        "Purchase",
+        "PurchaseOrder",
+        "PurchaseRequisition",
+        "PurchaseReturn",
+        "Receiving Clerk",
+        "ReservationPurchaseOrderInventoryType",
+        "ReservationSaleOrderInventory",
+        "Sale",
+        "SaleOrder",
+        "SaleReturn",
+        "SalesCall",
+        "SalesRepresentative",
+        "ShippingClerk",
+        "StockflowPurchaseInventoryType",
+        "StockflowPurchaseReturnInventoryType",
+        "StockflowSaleInventory",
+        "StockflowSaleReturnInventory",
+        "Supervisor",
+        "Supplier"
+      ]
+    }
+  ],
+  "verification_scope": "原库与 scratch 副本读前/读后 SHA 对上；ACE Mode=Read。未在 Access UI 创建或保存查询。"
+}

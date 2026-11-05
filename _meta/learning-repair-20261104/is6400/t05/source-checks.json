@@ -1,0 +1,117 @@
+{
+  "schema": "note-source-checks-v1",
+  "sources": {
+    "tutorial": {
+      "path": "../../../../IS6400_Business_Data_Analytics/course_files_export/Week5_Clustering_Tutorial.ipynb",
+      "sha256": "2f06913e101d382d6000a6f199dcc9c14e91b43b89090bb2851ecdc0a90c7094"
+    }
+  },
+  "questions": [
+    {
+      "id": "Q1",
+      "source_id": "tutorial",
+      "cell": 35,
+      "section": "Q1：四列拟合和两轴画图是两项任务",
+      "original": "1. Apply KMeans (K=3) to the **Iris dataset** (excluding the \"class\" attribute). Use 'petal width' and 'sepal length' to create a scatter plot and use cluster label as color. [10 points]",
+      "options": {},
+      "answers": [
+        {
+          "id": "fit",
+          "chinese": "排除 class 后",
+          "english": "I fitted K-means with K=3 to all four Iris measurements after removing class."
+        },
+        {
+          "id": "plot",
+          "chinese": "cell 45 只拿两列画 Figure 1",
+          "english": "Figure 1 plots petal width against sepal length and colours each flower by its fitted cluster; it is a projection of the four-feature fit."
+        }
+      ]
+    },
+    {
+      "id": "Q2",
+      "source_id": "tutorial",
+      "cell": 35,
+      "section": "Q2：二分保留分支约束，不是只拟合一次 K=2",
+      "original": "2. Apply BisectingKMeans (K=3) to the **Iris dataset** (excluding the \"class\" attribute). Briefly explain how its hierarchical partitioning mechanism differs from standard K-means. Reference link: [BisectingKMeans](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.BisectingKMeans.html#sklearn.cluster.BisectingKMeans) [20 points]",
+      "options": {},
+      "answers": [
+        {
+          "id": "fit",
+          "chinese": "输出人数 53、38、59",
+          "english": "Here the bisecting SSE is 84.224507, compared with 78.940841 for ordinary K-means."
+        },
+        {
+          "id": "mechanism",
+          "chinese": "总叶子数由 1→2→3",
+          "english": "Ordinary K-means updates three centres jointly, whereas later bisecting steps are restricted by earlier branches."
+        }
+      ]
+    },
+    {
+      "id": "Q3",
+      "source_id": "tutorial",
+      "cell": 35,
+      "section": "Q3：先规定保留比例，再比较轮廓和噪声",
+      "original": "3. Choose one density-based clustering algorithm and present the clustering results on the **Iris dataset** (excluding the \"class\" attribute). Tune its parameters and identify how many data points are classified as noise (-1). [20 points]",
+      "options": {},
+      "answers": [
+        {
+          "id": "algorithm",
+          "chinese": "本作答选 DBSCAN",
+          "english": "I tuned DBSCAN over 24 settings on the four standardised Iris features."
+        },
+        {
+          "id": "tune",
+          "chinese": "共 24 组",
+          "english": "I required at least two non-noise groups and coverage of at least 90%, then compared silhouette among assigned points."
+        },
+        {
+          "id": "noise",
+          "chinese": "噪声 8",
+          "english": "The selected eps=0.7 and min_samples=5 produce two groups of 48 and 94 flowers and eight noise points."
+        }
+      ]
+    },
+    {
+      "id": "Q4",
+      "source_id": "tutorial",
+      "cell": 35,
+      "section": "Q4：按同一网格解释四种链接，不背固定排名",
+      "original": "4. Based on the 4x4 grid plot in Section 2.5 of the tutorial (Moons, Blobs, Varied, Aniso), summarize which linkage method (Single, Average, Complete, or Ward's) is most suitable for which type of data shape, and state your final rule of thumb for selecting a linkage method. [20 points]",
+      "options": {},
+      "answers": [
+        {
+          "id": "shapes",
+          "chinese": "Moons 用 Single",
+          "english": "For this grid I choose Single for Moons, Ward for Blobs, and Average for Varied and Aniso."
+        },
+        {
+          "id": "rule",
+          "chinese": "全体 SSE 新增最少",
+          "english": "Average is a useful starting point when spreads and shapes differ, while Complete is useful when limiting diameter matters."
+        }
+      ]
+    },
+    {
+      "id": "Q5",
+      "source_id": "tutorial",
+      "cell": 35,
+      "section": "Q5：Olist 用全量买家拟合，把样本诊断和业务结论分开",
+      "original": "5. Review and compare different clustering algorithms and choose one clustering algorithm for your course project dataset. Reference link: [Clustering Algorithms](https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html#sphx-glr-auto-examples-cluster-plot-cluster-comparison-py) [30 points]",
+      "options": {},
+      "answers": [
+        {
+          "id": "compare",
+          "chinese": "二分法适合要嵌套层级",
+          "english": "I chose K-means as an interpretable starting point for numeric Olist RFM segmentation after log1p transformation and standardisation."
+        },
+        {
+          "id": "project",
+          "chinese": "93,357 位买家",
+          "english": "Each candidate K was fitted to all 93,357 retained buyers; silhouette was calculated on the same 5,000-row diagnostic sample."
+        }
+      ]
+    }
+  ],
+  "candidate_sha256": "2f05434985641c72abbfed504ba93e3f716ceb416ea140a9858bf0975abb1618"
+}

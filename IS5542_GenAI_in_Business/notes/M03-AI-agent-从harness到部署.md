@@ -107,12 +107,12 @@ agent 失败时先查循环、工具、上下文、权限、验证，模型通�
 | 概念 | 一句话唤醒 | 回看 |
 |---|---|---|
 | 复合 AI · 路由器 | 多组件系统，路由器把请求分给"能干且最便宜"的组件；agent 是它的一种实现 | [[M01-导论-生成式AI基础与企业落地#2.8.7 从任务出发：两个架构与复合 AI（讲义 p.79–85）\|M01 §2.8.7]] |
-| 六向量：模态 / 延迟 / 性能 / 上下文 / 吞吐 / 成本 | 企业选型是多目标优化；本讲的"成本 × 15、延迟由多步累加"都落在这六个轴上 | [[M01-导论-生成式AI基础与企业落地#2.8.1 框架本身（讲义 p.59–63、p.86–87）\|M01 §2.8.1]] |
-| 有效上下文 · 中间迷失 | 标称 1M 不等于能用 1M；证据放中段准确率会掉——本讲的 "context rot" 是同一件事的 agent 版 | [[M01-导论-生成式AI基础与企业落地#2.8.5 向量四 · 上下文：最大 ≠ 可用（讲义 p.71–73）\|M01 §2.8.5]] |
+| 六向量：模态 / 延迟 / 性能 / 上下文 / 吞吐 / 成本 | 企业选型是多目标优化；本讲的多代理 token 用量个案与多步时延分别关联成本和延迟 | [[M01-导论-生成式AI基础与企业落地#2.8.1 框架本身（讲义 p.59–63、p.86–87）\|M01 §2.8.1]] |
+| 有效上下文 · 中间迷失 | 中间迷失指证据位置效应，长上下文退化还包括噪声累积与状态过期 | [[M01-导论-生成式AI基础与企业落地#2.8.5 向量四 · 上下文：最大 ≠ 可用（讲义 p.71–73）\|M01 §2.8.5]] |
 | 幻觉 · 接地 · RAG（直觉版） | 见表后说明1 | [[M01-导论-生成式AI基础与企业落地#2.9.3 接地：四层控制（讲义 p.92–93）\|M01 §2.9.3]] |
 | 确定性 vs 概率性 · 分布式评估 | 概率式系统要评一批输出的分布，一次 demo 不构成可靠性证据 | [[IS5542_GenAI_in_Business/notes/M01-导论-生成式AI基础与企业落地#2.9.1 确定性 vs 概率性：为什么要补输出分布评估（讲义 p.88–90）\|M01 §2.9.1]] |
 | 提示注入 · 红队 · 纵深防御 | 用自然语言指令劫持系统；本讲把它落到"读网页并执行动作的 agent 直接暴露在注入之下"（p.60） | [[M01-导论-生成式AI基础与企业落地#2.9.5 安全：攻击面变大了（讲义 p.95–98）\|M01 §2.9.5]] |
-| 人工复核 / 人类反馈 | 高影响决策升级给有资质的人审批，本质是"找一个人来承担责任" | [[M01-导论-生成式AI基础与企业落地#2.9.3 接地：四层控制（讲义 p.92–93）\|M01 §2.9.3]] |
+| 人工复核 / 人类反馈 | 高影响决策升级给有资质的人审批，让有权限的人依据证据拒绝、批准或升级，并留下决定 | [[M01-导论-生成式AI基础与企业落地#2.9.3 接地：四层控制（讲义 p.92–93）\|M01 §2.9.3]] |
 | 训练四阶段 · 应用推理 | 模型能力来自预训练 / 指令 / 偏好训练；**数据访问来自应用推理阶段的组件**——本讲的 harness 就是那个"组件" | [[IS5542_GenAI_in_Business/notes/M02-模型全景-基准评测与提示设计#2.3 一个模型的能力从哪来：前三训练与应用推理（讲义 p.7）\|M02 §2.3]] |
 | 类别 07 agent 基准 · pass^k · τ-bench · SWE-bench · BrowseComp · OSWorld | 见表后说明2 | [[M02-模型全景-基准评测与提示设计#2.8.7 类别 07 · agent 行为与工具使用（讲义 p.54–57）\|M02 §2.8.7]] |
 | METR 时间跨度 · 饱和 | 讲义报告：对应约 50% 成功率的任务，其人类专家等价时长按历史趋势约每 4–7 个月翻倍；不是 agent 连续运行时长或未来保证 | [[M02-模型全景-基准评测与提示设计#2.8.10 类别 10 · 复合指数与真实经济价值（讲义 p.66–69）\|M02 §2.8.10]] |
@@ -188,44 +188,651 @@ M01 建立了"选型是六向量的多目标优化"，M02 教了"拿分数去挑
 
 M02 的 pass^k 在这里找到了解释：为什么"能做一次"和"能可靠地做"会差那么多——差距可来自harness、模型、数据、任务难度及协议，不能凭两个总体数排除模型因素。
 
-**重排说明**：讲义六段的大顺序是合理的学习顺序（定义 → 系统 → 架构 → 应用 → 评估 → 综合），本笔记**保留六段顺序**，只做四处局部调整：
+预习从 [[#按课件逐页跟读|§2 逐页讲解]] 开始，再到相应主题复做机制、原题和算例。课中从 [[#8. 讲义页码映射|§8 页码表]] 跳到当前物理页。复习先用 [[#4. 速查表|§4 速查]]，再到 [[#7. 自测|§7 自测]] 检验理由。
 
-1. p.5（路线图）、p.6–7（两页数字引子）合并为 §2.2"这一讲的问题"，放在人物介绍（§2.1）之后、历史（§2.3）之前——讲义原顺序也是如此，只是笔记把它们并成一节讲。
-2. **贯穿案例"东京之旅"独立成节**
-
-（§2.6：p.23 简报 + p.25 规划 + p.40 完整轨迹）。
-
-讲义把 p.23、p.25 放在组件之前、p.40 放在组件之后，读者中途会忘了案例是什么；
-
-笔记先把案例讲完整，再逐个讲组件时随时回指。
-3. **p.24（ReAct 信息图）并入 §2.7.1 执行循环**
-
-因为 p.26 左栏的 "canonical ReAct form" 就是它的文字版；
-
-p.27（MCP 信息图）与 p.28（工具 / 技能 / 协议表）紧接工具层 §2.7.2；
-
-p.29（记忆四层信息图）放在 p.30 上下文管理之前——先分清"记忆有哪几层"，再讲"其中当前会话这一层怎么管"。
-4. **p.34–36（可靠性差距 / Petrov 规则 / 身份与安全）紧接 p.33 权限与沙箱**
-
-（§2.7.9–2.7.11）——它们是同一个组件的三个侧面；
-
-讲义在它们中间夹了 p.37 用户体验，笔记把 UX 挪到权限之后（§2.7.12）。
-
-**当前逐页口径**：p.1 封面及 p.8、19、41、52、70、78 六张纯章节标题页共 7 页不承担独有教学内容。p.13、20、42、53、71 的导航还带定义问题或判断，已在 §2 相应引言/比较中解释，按内容页计。其余共 73 页；这只是覆盖分类，不能代替逐页实质核对。历史 68/69 内容页计数保留为旧记录。
-
-对应关系见 [[#8. 讲义页码映射|§8 讲义页码映射]]。
-
-**关于 12 页主要信息图**
-
-（p.2、16、17、18、24、27、29、34、35、36、57、59）：清单实际为 12 页，部分原图可辨 NotebookLM 标识。讲义未给底层材料，不能仅由工具标识认定这些叙述/数字已经核实，也不另猜第 13 页。
-
-笔记照常讲解其内容（预习者需要）。
-
-但凡是只出现在这些页上的数字与断言（如"L3 是 2026 年标准"、Klarna 的 700 FTE、供应链的 35%），一律标 ⚪ 并在 §9.3 集中说明，考卷上引用时应指明"讲义信息图所述"。
+主题精读保留东京案例的连续讲解与课堂补充。跟读课件时可从同页跳到精读，再回到物理页顺序。
 
 ---
 
 ## 2. 正文
+
+### 按课件逐页跟读
+
+按原课件物理页序查看当前的条件、图示与结果。东京任务在 p.23 定义，在 p.25 规划，在 p.40 核一条完整轨迹。
+
+**导入 p.1–7**
+
+#### 讲义 p.1 · AI Agents: Who's Actually Doing the Work?
+
+第 3 讲封面。用 PDF 物理页定位，源页脚有重复和跳号。
+
+#### 讲义 p.2 · Sir Demis Hassabis: The Architect of AGI
+
+原图左下沿时间线读早期棋类和游戏经历、DeepMind 成立与收购、获奖。右侧的 AlphaGo、AlphaZero、AlphaFold 与 Gemini 是四类实践，目标分别涉及棋类、结构预测和多模态，不能归为一种算法。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p002.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p002.png|打开课件图示]]
+
+[[#2.1.1 Demis Hassabis 信息图（讲义 p.2）|读本页相关精读]]。
+
+#### 讲义 p.3 · Demis’s view on AGI
+
+访谈入口从 6:59 开始。本地录音开头缺失，本页只保留课件所指议题与精读里的边界。先区分嘉宾对通用智能的判断和本讲可测的代理能力。[课件视频](https://youtu.be/BbIaYFHxW3Y?t=419)
+
+原课件画面有 Proprietary + Confidential 标识。这里保留课堂用入口和已取得的材料范围。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p003.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p003.png|打开课件图示]]
+
+[[#2.1.2 两段视频：Hassabis 谈 AGI 与世界模型（讲义 p.3–4）|读本页相关精读]]。
+
+#### 讲义 p.4 · World Models
+
+访谈入口从 17:44 开始。世界模型（world model）可用来描述状态与行动后的变化。代理若能预估改签日期怎样改变可选航班，就可在操作前比较方案。课堂记录只支持已转录部分。[课件视频](https://youtu.be/PqVbypvxDto?t=1064)
+
+原课件画面有 Proprietary + Confidential 标识。现有转录从本片段中段开始，未另核整段播放。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p004.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p004.png|打开课件图示]]
+
+[[#2.1.2 两段视频：Hassabis 谈 AGI 与世界模型（讲义 p.3–4）|读本页相关精读]]。
+
+#### 讲义 p.5 · Lecture roadmap
+
+六段从识别 agent 到部署。先判系统能否行动，再沿循环和工具找可靠性，最后看架构、应用、验收和讨论各回答什么。
+
+课件六问分别聚焦定义、运行层、三架构、应用、上线证据和任务设计。精读逐问作答，先用“谁决定下一步”辨认第一问。
+
+[[#路线图的六个引导问题（讲义 p.5）|直达本页原问与解析]]。
+
+#### 讲义 p.6 · The model didn't change. The score did.
+
+沿箭头读 6.7% 到 68.3%，模型不变，变化的是编辑工具格式。比值约 10.2，差为 61.6 个百分点。右侧 Vercel 试验是另一项目，说明应先定位工具瓶颈；不能将结果套到所有任务。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p006.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p006.png|打开课件图示]]
+
+[[#模型与执行系统的归因题（讲义 p.6）|直达本页原问与解析]]。
+
+#### 讲义 p.7 · The Gap between model capability and real-world Trust
+
+左列看基准与人审合并差距，中列看脏知识任务通过率，右列看调查中的规模与高绩效。24.2 个百分点、约 25% 通过率与 20% 企业规模化的分母不同，不能相减。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p007.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p007.png|打开课件图示]]
+
+[[#2.2.2 四个数字一个形状：能力与信任的差距在拉大（讲义 p.7）|读本页相关精读]]。
+
+**基础与 agency p.8–18**
+
+#### 讲义 p.8 · Foundations and agency
+
+第一段封面，转到 agent 定义与控制。
+
+#### 讲义 p.9 · A History Longer Than the Technology
+
+沿六段时间读思想基础、形式化、深度强化学习、LLM 转向、协议产品化与成熟阶段。旧 agent 能在受限环境感知和行动，并不需要会用自然语言。
+
+[[#2.3.1 六个时代总览（讲义 p.9）|读本页相关精读]]。
+
+#### 讲义 p.10 · Learning Agents & Deep RL
+
+截图中挡板的位置和球的轨迹是环境状态。深度 Q 网络从屏幕像素得到状态表示，用奖励判断动作是否有效。AlphaGo 展示另一种较长规划；两个例子的训练环境各自受限。[课件视频](https://youtu.be/V1eYniJ0Rnk)
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p010.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p010.png|打开课件图示]]
+
+[[#2.3.2 学习型 agent 与深度强化学习：DQN 与 AlphaGo（讲义 p.10）|读本页相关精读]]。
+
+#### 讲义 p.11 · Productisation & Protocols
+
+先分产品功能和接口标准。Devin 一类产品提供可操作环境；MCP 连接工具和上下文，A2A 对应代理间任务交接。融资数据是本页行业背景。
+
+[[#2.3.3 产品化与协议：2024–2025（讲义 p.11）|读本页相关精读]]。
+
+#### 讲义 p.12 · Maturation
+
+课件列高基准分数及其饱和风险，再给 METR 的时间跨度口径。50% 可靠完成的是按人类专家耗时标注的任务长度，不能读成系统连续运行时长或上线成功率。
+
+[[#2.3.4 成熟期 2026：饱和的基准、翻倍的时间跨度、两门新学科（讲义 p.12）|读本页相关精读]]。
+
+#### 讲义 p.13 · What Actually Makes Something an Agent?
+
+用谁决定下一步、能否观察结果与是否有受控权限来判断。下面 p.14–18 依次给目标、行为、四支柱与自主等级。English reference: An agent pursues a goal by choosing actions and observing their outcomes within defined limits.
+
+[[#2.4.1 什么是agent：目标 · 行动 · 控制（讲义 p.13–14）|读完整原题和解析]]。
+
+#### 讲义 p.14 · What an AI agent does
+
+蓝框的模型帮助选择，粉色三节点对应行动、工具与知识。应用才执行工具和检查权限。遇到无法满足任务时，控制层应让它停、追问或转人工。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p014.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p014.png|打开课件图示]]
+
+[[#2.4.1 什么是agent：目标 · 行动 · 控制（讲义 p.13–14）|读本页相关精读]]。
+
+#### 讲义 p.15 · Chatbots, workflows and agents
+
+从中列看谁选择下一步：用户、固定规则、受限模型或多代理协调者。一个旅行产品可让模型改搜索条件，但把支付交给确定规则和审批。
+
+[[#2.4.2 聊天机器人、固定工作流、单 agent与多 agent（讲义 p.15）|读本页相关精读]]。
+
+#### 讲义 p.16 · The Paradigm Shift: From Synthesis to Sovereignty
+
+左图从请求生成回复，右图加工具、环境与回路。若只生成“已订好”的文本，世界状态没有变化。若授权后执行预约，需用工具返回核实。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p016.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p016.png|打开课件图示]]
+
+[[#2.4.3 范式转移：从"描述世界"到"改变世界"（讲义 p.16）|读本页相关精读]]。
+
+#### 讲义 p.17 · The Four Pillars of Agency
+
+四格依次看目标、感知行动循环、工具编排、状态持久化。搜索失败后改方案体现循环，把已确认日期写入状态才能在新一轮继续。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p017.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p017.png|打开课件图示]]
+
+[[#2.4.4 agency 四支柱（讲义 p.17）|读本页相关精读]]。
+
+#### 讲义 p.18 · The Evolution of Autonomy Levels
+
+从底阶人工触发规则，到路由、受限自纠、较高自主。人在环上（human-on-the-loop）可监督、暂停或接管，和每一步由人签批不同。图中 L3 是课件的场景判断。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p018.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p018.png|打开课件图示]]
+
+[[#2.4.5 自主性四级与"人在环上"（讲义 p.18）|读本页相关精读]]。
+
+**Agent 系统 p.19–40**
+
+#### 讲义 p.19 · The agent system
+
+第二段封面，转到包围模型的运行系统。
+
+#### 讲义 p.20 · The Harness
+
+harness 是模型之外负责执行与控制的运行层。后续用六类职责和补充组件，具体检验同一模型为何在两个系统中表现不同。
+
+[[#2.5.1 什么是 harness：六元组 H=(E,T,C,S,L,V)（讲义 p.20–21）|读本页相关精读]]。
+
+#### 讲义 p.21 · What Is a Harness?
+
+从中心 Model 向外围读 E 循环、T 工具、C 上下文、S 状态、L 钩子、V 验证。环形排列是分工，不是时序。一次查询可同时经过多项职责。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p021.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p021.png|打开课件图示]]
+
+[[#2.5.1 什么是 harness：六元组 H=(E,T,C,S,L,V)（讲义 p.20–21）|读本页相关精读]]。
+
+#### 讲义 p.22 · Why It Matters More Than It Sounds
+
+三块分别是工具格式变化、缩减工具数、编排增益与 token 代价。先判断哪个实验改变了什么，再决定修工具定义、执行环境或模型。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p022.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p022.png|打开课件图示]]
+
+[[#2.5.2 为什么它比听起来重要：三个证据与一句推论（讲义 p.22）|读本页相关精读]]。
+
+#### 讲义 p.23 · Case brief: a Tokyo trip
+
+两人从香港出发去东京三天，机票和两晚一间房合计预算 8,000 港元。可行选项需有来源和价格时点。用户接受计划即完成，本阶段不订票、付款或写日历。
+
+[[#2.6.1 任务简报：用户、约束、MVP、完成边界（讲义 p.23）|读本页相关精读]]。
+
+#### 讲义 p.24 · Flow Engineering: Designing the Cognition
+
+从 Reason 发现缺数据，经 Act 调接口，再从 Observe 读返回结果并回到 Reason。图右另列批评者复核与依赖规划。输入不满足条件时，先重规划或停。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p024.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p024.png|打开课件图示]]
+
+[[#2.7.1 E · 执行循环与 ReAct（讲义 p.24、p.26 左栏）|读本页相关精读]]。
+
+#### 讲义 p.25 · Planning the work
+
+从顶层目标拆搜索、约束校验、比较三个任务。先确认日期；随后可并行查航班和酒店，最后合并校验。图中的 Agent 方框可用规则或单个工具替代。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p025.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p025.png|打开课件图示]]
+
+[[#2.6.2 规划工作：目标 → 子任务 → 依赖（讲义 p.25）|读本页相关精读]]。
+
+#### 讲义 p.26 · The Execution Loop (E) & Tool Layer (T)
+
+左栏先读上下文、选动作、执行、记录观察；定义预算和停止条件，失败时区分重试、改查法或升级。右栏列工具目录、清楚参数和操作风险标识。
+
+[[#2.7.1 E · 执行循环与 ReAct（讲义 p.24、p.26 左栏）|读本页相关精读]]。
+
+#### 讲义 p.27 · The Hands of the Agent: Model Context Protocol
+
+中心代理通过不同 MCP 服务接入文档、消息、仓库与数据库。连线表示一致的接口方式；具体可读写范围仍由连接器和凭证决定。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p027.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p027.png|打开课件图示]]
+
+[[#2.7.3 MCP：agent 的手（讲义 p.27）|读本页相关精读]]。
+
+#### 讲义 p.28 · Tools, skills and protocols
+
+工具是能执行的操作，技能是可复用步骤和资源，MCP 统一接入，A2A 交换代理任务。查行李政策可调用搜索工具，搜索流程可由技能规定。
+
+第三列逐项问可读写范围、谁维护程序、连接器得到哪些权限、谁对委派结果负责。用只读搜索与修改订单对照第一问。
+
+[[#工具与协议的四个设计问题（讲义 p.28）|直达本页原问与解析]]。
+
+#### 讲义 p.29 · Memory & Context Management
+
+图从上到下是短期上下文、情景、语义、程序性记忆。按例区分本次聊天、上次失败记录、现行政策与操作手册。四层是用途划分，并非强制四套存储。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p029.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p029.png|打开课件图示]]
+
+[[#2.7.5 记忆的四层：短期上下文、情景、语义、程序性（讲义 p.29）|读本页相关精读]]。
+
+#### 讲义 p.30 · Context Management (C)
+
+从保留目标和未决项开始，再清旧工具正文、按需取材料、分层展开、复用稳定提示前缀。缓存节省处理稳定前缀的资源；它不代替状态与来源验证。
+
+[[#2.7.6 C · 上下文管理：context rot 与五种手法（讲义 p.30）|读本页相关精读]]。
+
+#### 讲义 p.31 · Memory & State (S) and System-Prompt Assembly
+
+左边写持久计划、会话日志和跨会话记忆，右边从人设、项目指令、工具及环境组装本轮提示。更新日期时先写入状态，再让新一轮只读当前日期。
+
+[[#2.7.7 S · 记忆与状态，以及系统提示的运行时组装（讲义 p.31）|读本页相关精读]]。
+
+#### 讲义 p.32 · Retrieval with a feedback loop
+
+菱形问是否还缺资料。Yes 选工具、检索、评估后沿回边；No 才形成答复。冲突行李条款可触发查航空公司当前页面，超过搜索预算后应说明证据不足。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p032.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p032.png|打开课件图示]]
+
+[[#2.7.8 带反馈回路的检索：agentic RAG（讲义 p.32）|读本页相关精读]]。
+
+#### 讲义 p.33 · Permissions, Sandboxing & Safety
+
+沙箱约束文件和网络，权限表限制读写，审批负责不可逆动作，另设花费上限。15–35% 是课件转引的特定测试范围，须保留环境与样本口径。
+
+[[#2.7.9 权限、沙箱与安全：企业部署的生死线（讲义 p.33）|读本页相关精读]]。
+
+#### 讲义 p.34 · Reliability and human oversight
+
+从高风险检测读右边两路：确认通过才走执行，未确认或拒绝走阻止。下方提醒设置运行检查点。左边成功率和差距是课件示意，不是所有系统阈值。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p034.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p034.png|打开课件图示]]
+
+[[#2.7.10 可靠性差距与 Petrov 规则（讲义 p.34–35）|读本页相关精读]]。
+
+#### 讲义 p.35 · The Petrov Rule
+
+图从自动告警到暂停判断，再到阻止误报造成升级。业务对应是高影响动作需要独立核验。历史叙述按讲义标明来源，流程图不等于通用事实或固定审批规则。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p035.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p035.png|打开课件图示]]
+
+[[#2.7.10 可靠性差距与 Petrov 规则（讲义 p.34–35）|读本页相关精读]]。
+
+#### 讲义 p.36 · Identity, Security, and Sprawl
+
+左图红线展示常驻身份可向多资源横向扩散。右图通过授权系统只给当前任务临时访问，其他资源灰色不可用。任务结束要过期或收回权限。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p036.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p036.png|打开课件图示]]
+
+[[#2.7.11 身份、安全与蔓延：agent 的钥匙该怎么发（讲义 p.36）|读本页相关精读]]。
+
+#### 讲义 p.37 · The user experience of an agent
+
+从 Space 看入口在用户工作处，从 Time 看进度、暂停和交接，从 Core 看能力和权限说明。三块是三个设计维度；下一页处理运行监控与验证。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p037.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p037.png|打开课件图示]]
+
+[[#2.7.12 agent 的用户体验：Space · Time · Core（讲义 p.37）|读本页相关精读]]。
+
+#### 讲义 p.38 · Lifecycle Hooks (L) & Evaluation (V)
+
+钩子在模型、工具和会话边界执行认证、记录或脱敏。环内验证检查这次结果，离线评估用固定题集测试改版；两者都需要真实可检查的记录。
+
+[[#2.7.13 L · 生命周期钩子与可观测性（讲义 p.38 左栏）|读本页相关精读]]。
+
+#### 讲义 p.39 · Nine Components, One Recurring Lesson
+
+表中七行说明缺某项会坏在哪里，标题的九项是跨页教学归纳。先用失败现象回查相应职责，例如重启丢确认条件就查持久状态。
+
+[[#2.7.15 九个组件，一条反复出现的教训（讲义 p.39）|读本页相关精读]]。
+
+#### 讲义 p.40 · A worked travel task trace
+
+日期未知先问，8,600 港元超预算就重查。7,400／7,800 港元仅在其他条件也通过时可选。用户选中方案后保存并停止。报价属于教学假设。
+
+[[#2.6.3 一条完整的任务轨迹（讲义 p.40）|读本页相关精读]]。
+
+**架构 p.41–51**
+
+#### 讲义 p.41 · Agent architectures
+
+第三段封面，比较三种工作组织方式。
+
+#### 讲义 p.42 · Deep Research, OpenClaw and Autoresearch
+
+研究编排以有来源报告为产出，个人助理接入会话和工具，实验循环用同一指标取舍。比较应从任务、控制范围与完成证据出发。
+
+[[#2.8.5 架构与任务的匹配：一张四维比较表（讲义 p.51）|读本页相关精读]]。
+
+#### 讲义 p.43 · Sub-Agents & Orchestration
+
+为范围明确的子任务提供独立上下文，再汇总证据与结论。只有在依赖允许时并行；模糊派工会重复工作，返回材料也需要主代理核查。
+
+[[#2.8.1 子 agent与编排（讲义 p.43）|读本页相关精读]]。
+
+#### 讲义 p.44 · Deep Research architecture
+
+主代理居中，向下分给三个搜索代理，右侧保存记忆，左侧引用代理检查证据。发现缺口时补查。右栏排版叠字，按精读和中央原图跟读。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p044.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p044.png|打开课件图示]]
+
+[[#2.8.2 Deep Research：主 agent 分派、并行搜索、带引用的报告（讲义 p.44）|读本页相关精读]]。
+
+#### 讲义 p.45 · OpenClaw architecture
+
+通道把消息送到网关，网关选会话，运行时根据模型、工作区与记忆安排工具。图中工具线是逻辑关系；课件页脚说明设备通过网关协调访问。权限审批单列。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p045.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p045.png|打开课件图示]]
+
+[[#2.8.3 OpenClaw：个人助理运行时（讲义 p.45–47）|读本页相关精读]]。
+
+#### 讲义 p.46 · OpenClaw: a task in context
+
+供应商会议简报例按请求、资料、草稿、结果走。原题 send me the draft 要把草稿交回请求者。若另要求发给供应商，才触发外部发信的审批和回执检查。
+
+[[#2.8.3 OpenClaw：个人助理运行时（讲义 p.45–47）|读本页相关精读]]。
+
+#### 讲义 p.47 · OpenClaw: suitable scenarios
+
+适合个人或可信团队的例行助理。高频固定交易可用确定流程，多信任域要分开权限。设计题要说明哪些动作可自动做、何时停在审批。
+
+[[#个人助理的设计决策（讲义 p.47）|直达本页原题与中英解析]]。
+
+#### 讲义 p.48 · autoresearch architecture
+
+从人给目标和规则开始，agent 改 train.py，按单 GPU 五分钟训练预算运行。固定评估器给出 val_bpb，越低越好。比较后保留或回退，实验记录供下一次使用。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p048.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p048.png|打开课件图示]]
+
+[[#2.8.4 autoresearch：用一个数字决定留还是弃（讲义 p.48–50）|读本页相关精读]]。
+
+#### 讲义 p.49 · autoresearch: the experiment record
+
+横轴是实验序号，纵轴是验证指标，越低越好。灰点是舍弃，绿色阶梯是历史最好值。83 次中保留 15 次改进，不能用连线当作每次都改善。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p049.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p049.png|打开课件图示]]
+
+[[#2.8.4 autoresearch：用一个数字决定留还是弃（讲义 p.48–50）|读本页相关精读]]。
+
+#### 讲义 p.50 · autoresearch: suitable scenarios
+
+固定题集和度量可迁移到提示或排序实验。开放策略题通常缺稳定反馈。设计题需分别说可改什么、锁住什么、用何独立检查查退步。
+
+[[#实验循环的设计决策（讲义 p.50）|直达本页原题与中英解析]]。
+
+#### 讲义 p.51 · Architecture and task fit
+
+沿输出、循环、示例与验收逐行比。研究报告重点核引用，助理任务核工具回执和约束，实验成果在固定指标后还要独立验证。
+
+[[#2.8.5 架构与任务的匹配：一张四维比较表（讲义 p.51）|读本页相关精读]]。
+
+**应用与科学 AI p.52–69**
+
+#### 讲义 p.52 · Applications and scientific AI
+
+第四段封面，转到行业与科研应用。
+
+#### 讲义 p.53 · Where Agents Work Today
+
+课件用七个行业比较任务边界。环境越可重复、反馈越明确，越容易验证结果；碰到默认规则没写下来的领域，要补人工判断。
+
+[[#2.9.1 七个领域，一个底层模式（讲义 p.53）|读本页相关精读]]。
+
+#### 讲义 p.54 · Software Engineering
+
+代码能运行测试，变更可审计，所以适合让 agent 实施限定修复。右栏 PR 数是企业案例口径，人仍审代码；合并量不是质量的唯一指标。
+
+[[#2.9.2 软件工程：最可信的成功（讲义 p.54）|读本页相关精读]]。
+
+#### 讲义 p.55 · Research & Analysis
+
+工作从分工搜索到核引文再汇总。检查一句主张是否被原文支持。右边省时幅度来自课件引述的厂商报告，不能当普遍比例。
+
+[[#2.9.3 研究与分析：失败模式看得见（讲义 p.55）|读本页相关精读]]。
+
+#### 讲义 p.56 · Customer Support
+
+标准订单可查状态并按政策处理；例外转人。营收指标和知识任务通过率分别看商业规模与执行可靠性，不能互作证据。
+
+[[#2.9.4 客户支持与 Klarna：效率指标之外（讲义 p.56–57）|读本页相关精读]]。
+
+#### 讲义 p.57 · Klarna: efficiency and service quality
+
+左列是对话量、等效工作量、解决时长、利润预测，右列指出复杂诉求需人工升级。逐项区分实报活动量、等效折算与预测。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p057.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p057.png|打开课件图示]]
+
+[[#2.9.4 客户支持与 Klarna：效率指标之外（讲义 p.56–57）|读本页相关精读]]。
+
+#### 讲义 p.58 · Knowledge Work & Back Office
+
+应用含企业检索、合同审阅、发票、IT 服务与数据监测。内部知识缺记录时，即便接入检索也可能无证可取。公司估值或收入不衡量自动完成率。
+
+[[#2.9.5 知识工作、后台与供应链自动化（讲义 p.58–59）|读本页相关精读]]。
+
+#### 讲义 p.59 · Supply chain automation
+
+按 08:00 触发、08:01 改路线、08:02 跨系统协调读。气象延误推动改调仓和计划。图中百分比按课件案例示意，权限和成效需另核真实部署。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p059.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p059.png|打开课件图示]]
+
+[[#2.9.5 知识工作、后台与供应链自动化（讲义 p.58–59）|读本页相关精读]]。
+
+#### 讲义 p.60 · Browser & Computer Use
+
+软件界面可在无专用 API 时供操作，也会被网页中的不可信文字影响。单项任务通过率不能推断长流程；外发、购买或改权限要在执行层限制。
+
+[[#2.9.6 浏览器与计算机使用：波动最大、注入最险（讲义 p.60）|读本页相关精读]]。
+
+#### 讲义 p.61 · Security Operations
+
+先读告警和日志、做关联、提出补丁。分析报告可只读生成；隔离主机或改配置属于不同权限，通常需人审批和验证。
+
+[[#2.9.7 安全运营：只读，只建议（讲义 p.61）|读本页相关精读]]。
+
+#### 讲义 p.62 · Scientific & Technical Work
+
+强化学习（RL）可在受控环境按奖励改进动作，大语言模型（LLM）代理可用自然语言安排工具。选技术要看能否低成本模拟，评测信号是什么。
+
+[[#2.9.8 科学与技术工作：RL agent ≠ LLM agent（讲义 p.62）|读本页相关精读]]。
+
+#### 讲义 p.63 · The Protein Folding Problem
+
+彩点链表示氨基酸顺序，箭头指向预测三维结构。图提出从序列推形状的问题；预测结构需要用实验数据检查，并非图上每种颜色对应固定结构。
+
+课件原问是从氨基酸序列能否预测折叠后的形状。可用 AlphaFold 等模型估计三维结构，再依置信信息和实验结果验证。English reference: A model can predict a plausible three-dimensional structure from sequence-based information. Experimental checks are needed for the intended use.
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p063.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p063.png|打开课件图示]]
+
+[[#2.9.9 蛋白质折叠问题与 AlphaFold（讲义 p.63–64）|读本页相关精读]]。
+
+#### 讲义 p.64 · AlphaFold
+
+两幅结构图用于说明逐步修正预测。沿左到右观察形状变化，不能把画面大小当准确率，也不能由此推出真实分子折叠轨迹。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p064.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p064.png|打开课件图示]]
+
+[[#2.9.9 蛋白质折叠问题与 AlphaFold（讲义 p.63–64）|读本页相关精读]]。
+
+#### 讲义 p.65 · Giving this knowledge to the world
+
+数据库截图展示结构可查。实验团队可先下载预测，查看置信信息，再决定实验验证优先级。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p065.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p065.png|打开课件图示]]
+
+[[#2.9.10 AlphaFold 的开放与影响（讲义 p.65–68）|读本页相关精读]]。
+
+#### 讲义 p.66 · Google AlphaFold
+
+蛋白质结构有助于找疾病与药物线索。课件的 2 亿量级是预测规模；“十亿年”是用假设单件工时作的传播式折算，不能当已完成实验工时。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p066.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p066.png|打开课件图示]]
+
+[[#2.9.10 AlphaFold 的开放与影响（讲义 p.65–68）|读本页相关精读]]。
+
+#### 讲义 p.67 · AlphaFold in research
+
+拼图呈现研究与实验现场，用来定位预测工具面向多类科学问题。没有逐图标注时不能由照片识别具体实验结果。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p067.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p067.png|打开课件图示]]
+
+[[#2.9.10 AlphaFold 的开放与影响（讲义 p.65–68）|读本页相关精读]]。
+
+#### 讲义 p.68 · AlphaFold is accelerating progress
+
+四图对应塑料污染、耐药性、被忽视疾病与疟疾疫苗。预测可缩短寻找候选结构的过程，仍须用实验验证候选能否发挥预期作用。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p068.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p068.png|打开课件图示]]
+
+[[#2.9.10 AlphaFold 的开放与影响（讲义 p.65–68）|读本页相关精读]]。
+
+#### 讲义 p.69 · The Domain-Asymmetry Pattern
+
+从左边可验证、受限、读多写少的任务，比较右边开放、隐性知识与不可逆动作。改成无监督付款会改变信任边界，即使相同模型仍需重测。
+
+[[#2.9.11 领域不对称模式：今天好用 vs 仍不可靠（讲义 p.69）|读本页相关精读]]。
+
+**评估与部署 p.70–77**
+
+#### 讲义 p.70 · Evaluation and deployment
+
+第五段封面，转到部署与验收证据。
+
+#### 讲义 p.71 · Where Things Stand
+
+本节用调查、瓶颈和可靠性差距回看上线。区分模型测验成功与部门愿意让系统实际操作。
+
+[[#2.10.1 能力涨得比部署快：McKinsey 2026 的四个数字（讲义 p.71–72）|读本页相关精读]]。
+
+#### 讲义 p.72 · Capability Is Rising Faster Than Deployment
+
+四卡列全体企业、大企业子群、息税前利润影响和高绩效。先看分母，40% 的大企业与 20% 的全体不可当两道漏斗。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p072.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p072.png|打开课件图示]]
+
+[[#2.10.1 能力涨得比部署快：McKinsey 2026 的四个数字（讲义 p.71–72）|读本页相关精读]]。
+
+#### 讲义 p.73 · The Bottleneck Has Moved
+
+逐卡区分隔离、评估有效性和上下文退化。比如长资料中漏掉关键政策，要先测取证与组织流程，再判断更换模型是否有效。
+
+[[#2.10.2 瓶颈已经转移，以及三个开放问题（讲义 p.73）|读本页相关精读]]。
+
+#### 讲义 p.74 · The Reliability Gap, Revisited
+
+图画 benchmark score 与 real-world acceptance 两条近水平线，表达差距，图无数值轴。24.2 个百分点及每年 9.6 个百分点为本页文字转引。
+
+![[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p074.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m03-lecture/p074.png|打开课件图示]]
+
+[[#2.10.3 可靠性差距再看，与六条实践序列（讲义 p.74）|读本页相关精读]]。
+
+#### 讲义 p.75 · A task-specific evaluation set
+
+四行分别是正常、歧义、约束冲突、工具失败或攻击。日期缺失时的正确输出是追问；都超预算应解释冲突，不能虚构价格。
+
+[[#2.10.4 任务专属评测集：四类案例（讲义 p.75）|读本页相关精读]]。
+
+#### 讲义 p.76 · Cost per accepted outcome
+
+课件教学例 1,000 次尝试，每次 1.20 港元，模型工具费 1,200 港元。加人工 800 港元，再除以 800 个验收结果，得 2.50 港元／件。按原表口径仅计变动成本。
+
+[[#2.10.5 每接受结果成本：把失败也算进去（讲义 p.76）|读本页相关精读]]。
+
+#### 讲义 p.77 · Rollout stages and success metrics
+
+离线先找失败，影子或草稿阶段由人看，有限试点定义停止条件，扩大前验证新用户和场景。监测质量、纠错负担、尾部时延及漂移。
+
+[[#2.10.6 上线阶段与成功指标：别把基准分抄进上线清单（讲义 p.77）|读本页相关精读]]。
+
+**综合讨论 p.78–80**
+
+#### 讲义 p.78 · Synthesis and discussion
+
+第六段封面，准备综合比较。
+
+#### 讲义 p.79 · The Three Themes, Revisited
+
+三点分别是概念早于 LLM、harness 能改变结果、基准与部署需要不同证据。每点回看本讲一个例子，避免把案例推广成普遍阈值。
+
+[[#2.11.1 三个主题回顾（讲义 p.79）|读本页相关精读]]。
+
+#### 讲义 p.80 · Three Questions
+
+三道题依次问竞争优势归属、部署与实际价值的差距、知识性质与任务自动化。可用 p.22、72、69 的证据分别作答。完整英文原题、中英参考与课堂范围见关联精读。
+
+[[#三道讨论的原题与中英参考（讲义 p.80）|直达本页原题与中英解析]]。
+
+---
+
+**主题精读与课堂补充**
 
 ### 2.1 开场：本周人物与两段视频（讲义 p.2–4）
 
@@ -413,6 +1020,8 @@ p.5 的六段路线图分别问：
 
 它们对应本笔记 §2.3–2.11。
 
+#### 路线图的六个引导问题（讲义 p.5）
+
 **p.5 路线图六问：原文与双语直接答法**
 
 这些是课程组织问题，下面参考答案概括本篇机制，不是新增评分标准。
@@ -502,7 +1111,7 @@ p.6 用一组对比把整讲的问题钉住：
 "6.7% → 68.3%" 就是换了把刀。
 - 反过来想 Vercel 的结果：工具不是越多越好。
 
-菜单上有一百道菜，服务员反而容易点错单——p.26 会解释"重叠的工具导致选择错误"，砍掉 80% 工具是在减少模型选错工具的机会。
+工具功能和名称重叠时，模型可能选错工具。课件 p.26 提出这条机制。Vercel 例只给删工具前后的结果，判断改善是否由这条机制造成需要对照。
 
 **⚠️ 常见误解**
 
@@ -518,6 +1127,8 @@ p.62 还说有些领域（能便宜模拟的科学问题）RL agent 比 LLM agen
 M02 §2.8.3（SWE-bench 是什么）、M02 §2.9.1（分数 = 协议下的证据）；
 
 本讲 §2.5.2（三个证据）、§2.7.2（工具层"精简策展"原则解释 Vercel 结果）、§2.10.2（瓶颈已转移）。
+
+#### 模型与执行系统的归因题（讲义 p.6）
 
 **p.6 直接作答（笔记参考）**：问模型与外围系统各贡献多少。现有讲义例子说明应控制比较两者；没有原实验就不能分配普遍贡献百分比。
 
@@ -1379,8 +1990,8 @@ p.22 转述三个结果，用来支持检查外围系统的设计。原报告链
 | 数字 | 事实（讲义原文意译） | 说明什么 |
 |---|---|---|
 | **6.7% → 68.3%** | Grok Code Fast 的 SWE-bench 分数——只改了 harness 的编辑工具格式，模型不变；**在 15 个模型上测试** | 工具层 $T$ 的一个细节能让分数变 10 倍 |
-| **−80% tools** | Vercel 发现把 agent 的工具砍掉 80%，效果提升比升级模型还大 | 工具不是越多越好（选择错误） |
-| **+90%, 15×** | Anthropic 的多 agent 研究系统比单 agent 好 90% 以上——靠**编排**，代价是约 **15 倍** token 成本 | 架构（编排）能带来大幅提升，但成本也是数量级的 |
+| **−80% tools** | Vercel 发现把 agent 的工具砍掉 80%，效果提升比升级模型还大 | 工具数量不是能力指标；选择歧义是待验机制 |
+| **+90%, 15×** | Anthropic 的多 agent 研究系统比单 agent 好 90% 以上——靠**编排**，约用了 **15 倍** token | 该设置提高结果分数也提高 token 用量；实际费用取决于各项费率和工具调用 |
 
 页底一句被讲义称为"令人不舒服的推论"（the uncomfortable corollary）：
 
@@ -1405,7 +2016,7 @@ p.22 转述三个结果，用来支持检查外围系统的设计。原报告链
 **🎙️ 课堂补充**（`38:26`–`41:39`，约 3.2 分钟，A · 课上展开）
 
 - Grok Code Fast 案例被再次解释为工具暴露格式改变、模型不变，却带来约十倍分数变化（`38:52`–`39:21`）。
-- Vercel 案例的机制是减少重叠工具后，模型选错工具的歧义下降。教授总结：*"more [tools] automatically makes it more capable"* 是应被质疑的假设（`39:32`–`40:13`；ASR 把 *tools* 识别成 *pools*）。
+- 讲者用重叠工具可能造成误选来解释 Vercel 个案。课件没有给出对该原因的独立验证。教授总结：*"more [tools] automatically makes it more capable"* 是应被质疑的假设（`39:32`–`40:13`；ASR 把 *tools* 识别成 *pools*）。
 - 多 agent 研究案例同时提高表现并使用约 15 倍 token（`40:33`–`40:59`），说明可靠性收益带来计算成本。
 - **这段改变了什么**：三项证据分别对应工具格式、工具数量、编排成本。教授的推论是 agent 失败时先查执行循环、工具、上下文和验证，再考虑微调或换更贵模型（`41:07`–`41:39`）。
 
@@ -1853,10 +2464,17 @@ flowchart TD
  R -->|否| X["记录失败<br/>停止或升级"]
  R -->|是| RC["扣retry<br/>保留已耗计数"]
  RC --> B
- F -->|是| H["追加observation<br/>核证据及目标"]
- H --> I{用户已接受吗}
- I -->|是| Y["保存终态<br/>不执行交易"]
- I -->|否| J(("② 返回<br/>模型子图"))
+ F -->|是| H["追加 observation<br/>核实证据和硬条件"]
+ H --> N{已有两个有效选项吗}
+ N -->|否 仍可补查| J(("② 返回<br/>模型子图"))
+ N -->|否 已达停止线| Z
+ N -->|是| P["呈现带版本的方案<br/>暂停并等待用户"]
+ P --> I{用户对当前版本的反馈}
+ I -->|明确接受| Y["保存接受终态<br/>不执行交易"]
+ I -->|拒绝或修改| M["核新条件和剩余预算"]
+ M --> J
+ I -->|回复旧版| P
+ I -->|等待超时| Z
 ```
 
 
@@ -1865,7 +2483,7 @@ flowchart TD
 1. “模型调用前”检查通过，扣 1 步，模型提议搜索，剩 4 步。
 2. “工具调用前”通过，扣 1 步；第一次 TIMEOUT 后剩 3 步，不退还。
 3. 只读搜索允许安全重试，扣唯一 retry，再回“工具调用前”；第二次执行后剩 2 步，返回 7,400/7,800。
-4. 核证据后，用户接受 7,400，走“用户已接受”到终态。若开始时 steps_left=0 或已过截止，第一次模型/工具动作就停止。
+4. 核证据后，把两个合格方案连同来源和当前版本呈现给用户，暂停。用户接受当前版的 7,400 方案，才保存接受终态。若还没人回答，等待而不扣模型步数；若等待超时，保存未确认状态并停止。修改条件才进入重规划，继续前检查剩余预算。
 
 预算不得因重试或 checkpoint 恢复清零。此例仍只交方案，不订票付款。
 
@@ -1941,7 +2559,7 @@ Vercel 砍掉 80% 工具后效果优于升级模型（讲义 p.22、p.26）。
 - 工具层列出搜索、数据库查询、浏览器、API 与其他 agent 等可执行能力（`45:49`）。
 - 教授明确说：*"more tools are not always better"*（`46:02`）。工具高度重叠会增加选错机会，因此名称、描述与参数本身就是模型选择工具时看到的信息（`46:14`）。
 - 教授再划分协议角色：MCP 暴露外部工具与资源，A2A 负责 agent 之间的通信、委派与协作（`46:28`–`46:55`）。
-- **这段改变了什么**：精简工具不是功能退化，而是降低选择歧义；工具 schema 也是提示界面的一部分。
+- **这段改变了什么**：精简工具可能减少名称或功能重叠带来的选择歧义。Vercel 个案的原因仍要靠对照核验。工具 schema 也是提示界面的一部分。
 
 **💡 换个说法（笔记补充）**
 
@@ -2105,6 +2723,8 @@ p.36 的"身份蔓延"正是接了太多工具、每个都拿着长期密钥的�
 **与其他概念的关系**
 
 §2.7.2（工具）、§2.7.3（MCP）、§2.3.3（A2A 时间线）、§2.8.1（A2A 对应的子 agent 编排）、§2.7.5（程序性记忆 = 存起来的技能）、§2.7.9（权限设计）。
+
+#### 工具与协议的四个设计问题（讲义 p.28）
 
 **p.28 四个设计问题：完整原问与参考作答**
 
@@ -2675,7 +3295,9 @@ D4 不是 top2=D1/D2 自动返回的内容。
 3. 若后来确认D4实际票种B，与Q1的票种A不同，则重新范围过滤后D1/D2支持20kg，才返回带出处及确认时间的说明。
 
 没有这个新事实时保持冲突终态，不能编第三步已发生。
-4. 保存可溯源state：`{quote:Q1,fare:A,baggage:unknown,conflict:[D2#1,D4#1],version:1,searches_used:2}`。压缩前原record还含“用户最多2晚、预算8,000、不要预付款”；错误摘要只留“东京预算8,000”丢了不可预付条件。
+4. 分开保存两种状态。预算用尽而冲突仍在时，保存 Q1 的票种 A、行李 unknown、冲突来源 D2#1 与 D4#1、状态版本 1 和已耗两次检索。若核实 D4 仅适用票种 B，给票种 A 另存已确认的 20 kg、D1/D2 的来源和核实时间，以及新状态版本。旧拒答可审计，不能继续充当当前结论。
+
+压缩前原记录还含“最多两晚、预算 8,000、不要预付款”。摘要若只写“东京预算 8,000”，就须从原记录补回其余两项。
 5. validator比较must_keep字段发现丢失，回读原confirmed record补2晚和no_prepayment，摘要再保存。恢复后检索源仍须当前有效，旧记忆中的“含行李”不自动变今天事实。
 
 **读图问题（笔记补充）**：用本节输入追到哪一个结果，哪个条件会改变路径？图中实箭头按本节流程读执行/数据先后；虚线另按图下注释读关系。
@@ -2688,9 +3310,10 @@ flowchart TD
  D --> E{有当前冲突或缺证据吗}
  E -->|有且检索预算仍有| F[改查询 查同票种与新源]
  F --> B
- E -->|有且预算耗尽| Z[说明冲突 拒作肯定 人工升级]
- E -->|无| H[输出带证据结论 保存源指针]
- H --> I[压缩时检查must_keep]
+ E -->|有且预算耗尽| Z["拒作肯定或升级<br/>保存 unknown 冲突来源和已耗预算"]
+ E -->|无| H["输出已核结论<br/>保存适用版本和源指针"]
+ Z --> I[压缩时检查 must_keep]
+ H --> I
  I --> J{关键字段丢失吗}
  J -->|是| K[回原record补全 禁止凭摘要猜]
  J -->|否| L[带版本保存摘要及预算]
@@ -2703,7 +3326,7 @@ flowchart TD
 
 给定host冲突信号D4使E走再搜。
 
-预算耗尽仍冲突则到Z，不输出肯定。
+预算耗尽仍冲突就走 Z。记录行李额为 unknown、相互冲突的来源和已经用掉的两次检索，然后才能压缩并保存。若后续查实 D4 只适用于票种 B，就为当前票种保存已核结论和版本。
 
 摘要I若丢no_prepayment，J走是到K，回原record补全。
 
@@ -3403,7 +4026,7 @@ p.44 的图（Anthropic 的 "Multi-agent research system"）：中心是 Lead ag
 
 它是 §2.8.1 层级 + 并行编排的实例，也是 §2.7.8 agentic RAG 放大到多 agent 的版本（"证据弱就再搜"变成"主 agent 发现缺口就再派"）。
 
-p.55 会说研究与分析是 agent 的第二个可信领域，理由正是这一页的结构：引用要么支持了论断要么没有——失败模式可见，而并行搜索真的有帮助。
+p.55 接着讨论研究与分析这个应用领域，理由正是这一页的结构：引用要么支持了论断要么没有——失败模式可见，而并行搜索真的有帮助。
 
 对项目：如果你们的任务是"调研 / 比较 / 尽调"，这就是现成的架构模板。
 
@@ -3441,7 +4064,7 @@ Anthropic 多 agent 研究系统的架构图（讲义 p.44）。
 要核链接真实、内容支持该断言及来源质量；
 
 p.44 明说要审来源质量与覆盖面。
-- ❌ "它适合任何需要查资料的任务。"→ 它的成本是 §2.8.1 说的 15 倍级；
+- ❌ "它适合任何需要查资料的任务。"→ 讲义个案用了约 15 倍 token，其他任务的费用还取决于模型、工具和验收条件；
 
 一个只需查一个事实的问题用它是浪费，p.47 / p.50 也分别说明另两种架构各有更合适的场景。
 
@@ -3471,9 +4094,14 @@ flowchart TD
  A -->|带来源的发现| S[Lead 综合证据]
  B -->|带来源的发现| S
  S --> D{关键问题证据齐全吗}
- D -->|否 补查简报| L
- D -->|是| C[Citations subagent 核引用支持]
- C -->|核对发现交主agent| R[带引用报告 待人审来源覆盖]
+ D -->|否| Q{还有补查预算吗}
+ Q -->|是| L
+ Q -->|否| Z[仅保留已逐项核验的主张 标范围缺口]
+ D -->|是| C{引用能支持每条关键主张吗}
+ C -->|否| V[主代理修订或删除无支持主张]
+ V --> Q
+ C -->|是| R[带引用报告 待人审来源覆盖]
+ Z --> P[交缺口报告 无已核主张则只报告证据不足]
  M[Memory] <-->|保存及重读研究状态| L
 ```
 
@@ -3481,9 +4109,9 @@ flowchart TD
 
 1. Lead 将市场 A、B 的问题分别写入简报，工人各自保持独立上下文。
 2. 工人返回来源与发现，Lead 综合；若 B 缺关键供应条件，D 走“否”，派补查，不能编一个条件凑齐。
-3. 证据齐全后交引用核验，再由主 agent 交报告；用户仍审来源质量与覆盖面。
+3. 证据齐全后交引用核验。若两市场都有资料，但市场 B 的链接没有支持所写的价格主张，删改该主张并按剩余预算补查。预算耗尽则把缺口写入报告。用户仍审来源质量与覆盖面。
 
-文字替代：分派不同方面→返回证据→综合找缺口→补查或引用核验→报告。
+文字替代：分派、返回证据、综合核覆盖，再核引用。缺证或引用失败都先修订；预算用完时交带缺口的报告。
 
 图表示教学组织方式，不证明引用真实、来源可靠或查询已经执行；
 
@@ -3533,6 +4161,8 @@ p.47 说适用与不适用：适合个人或可信团队的协助——准备周
 什么时候别用它——固定的高频交易通常需要确定性的工作流；
 
 互不信任的用户需要分开的信任边界。
+
+#### 个人助理的设计决策（讲义 p.47）
 
 设计决策："which task may act automatically, and which action must wait for approval?"
 
@@ -3687,23 +4317,29 @@ flowchart TD
  A[gateway接请求ID及幂等键] --> B[认证主体 核对象动作范围期限]
  B --> C{当前state及批准hash匹配吗}
  C -->|否| X[拒绝旧批准或越权]
- C -->|是| D{键已存在吗}
- D -->|同payload存在| R[返回已保存结果 不重做]
- D -->|不同payload存在| X
- D -->|新键| E[执行一次并原子保存键结果]
- E --> F[核后端真实副作用及终态]
- W[worker基于版本提交patch] --> V{base等于共享当前版吗}
- V -->|否| N[重读再合并 不覆盖]
- V -->|是| S[主host串行原子提交 新版]
+ C -->|是| D{"后端以同一键及载荷<br/>原子占位或查询"}
+ D -->|同载荷已完成| R[返回已保存结果]
+ D -->|同载荷处理中| P[等待并按键查询]
+ D -->|载荷不同| X
+ D -->|获唯一执行权| E[按后端幂等协议执行]
+ E --> F{是否取得明确结果}
+ F -->|是| G[记录明确成功或失败]
+ F -->|否| P
+ P --> I{查得副作用的结果吗}
+ I -->|是| G
+ I -->|否| Z[保留待核 转人工 不盲目重发]
+ W[worker 基于版本提交 patch] --> V{在一个 CAS 中比较 base 并提交}
+ V -->|不匹配| N[重读再合并 不覆盖]
+ V -->|匹配且提交成功| S[发布已提交的新版]
 ```
 
 **沿例读图 / 文字替代**
 
-同键同payload重发G7，D走已存在到R，返回E55而不建第二事件。
+同键、同内容的 G7 同时到两次时，后端只给一个请求执行权，另一个查处理中状态。若已建 E55 但响应中断，应按原键核真实副作用。跨系统仅在本地写日志，无法保证远端只建一次；后端不支持可靠去重时，要核实际状态或转人工。
 
 用户改三晚后旧批准版本不匹配到X。
 
-另一独立支路中，两worker都带base1，第一串行提交state2，第二在V走否重读；
+另一独立支路中，两worker都带base1，第一个 CAS 原子地把 state1 写成 state2。第二个 CAS 发现当前已非 state1，拒绝提交并重读；
 
 不要把它看成日历调用后的必经下一步。
 
@@ -3772,6 +4408,8 @@ p.50 的适用性：实际用途——在同一评估器与 GPU 预算下探索�
 > "Open-ended strategy questions and live user experiments lack a quick, reliable score. Optimizing one score can also hide regressions."
 
 （开放式战略问题与真实用户实验没有快速可靠的分数；只优化一个分数还可能掩盖别处的退步）。
+
+#### 实验循环的设计决策（讲义 p.50）
 
 设计决策："what may change, what stays fixed, and what independent check confirms an improvement?"
 
@@ -4040,7 +4678,7 @@ p.42给三个比较维度：
 若简报只需少量固定资料，可先用工作流；跨市场复杂调查可能适合研究编排。15×仅为讲义所述研究设置的token比较，不是三架构固定价差；三者也可组合，审批/评估器能另行配置。
 - ❌ "成功的证据 = 用户满意。"→ 表里三列都是可核对的证据（工具结果、引用、指标 + 独立验证）。
 
-用户满意可作为有采样/量表/时间口径的业务结果证据，但不能替代事实正确、权限与安全检查——p.57 Klarna 的教训正是效率指标好看但满意度崩了。
+用户满意可作为有采样/量表/时间口径的业务结果证据，但不能替代事实正确、权限与安全检查——p.57 的 Klarna 信息图以复杂诉求为例，提示效率数据不足以说明满意度。
 
 **与其他概念的关系**
 
@@ -4293,7 +4931,7 @@ p.57 是 Klarna 案例（NotebookLM 信息图，标题 "Case Study: The Empathy 
 
 | 字段 | 本材料可支持的内容 |
 |---|---|
-| 公司与材料时间 | Klarna；本讲材料日期2026-09-19 |
+| 公司与材料时间 | Klarna（PDF 9 月 17 日导出，9 月 19 日为授课登记） |
 | 统计时间 | 信息图未注明，不能当当前实测 |
 | 业务问题 | 客服对话量大，复杂情绪问题难处理 |
 | AI做什么 | 处理一线对话与常规请求 |
@@ -4326,7 +4964,7 @@ Klarna 转回"升级给人"的模式。
 
 这是本讲第一个"成功数字与真实结果打架"的案例，也是 p.7 那六个数字的具体化：τ-knowledge 25% 说的就是"凌乱知识"。
 
-它也是 CILO-5（自动化客户交互，10%）在本讲的落点，以及 M02 §2.10.2 教授那个"点击涨、转化跌"讨论题的现实版——效率指标（对话数、时长、FTE）全涨，满意度跌。
+它也是 CILO-5（自动化客户交互，10%）在本讲的落点，以及 M02 §2.10.2 教授那个"点击涨、转化跌"讨论题的现实版——讲义分别列对话量、时长下降和等效人力。关于复杂诉求满意度的说法来自信息图，未给完整样本与时间。
 
 对项目：如果做客服类 agent，评测集里必须有"情绪化 / 需要判断"的案例，而且期望行为是"升级"，不是"回答"。
 
@@ -5153,7 +5791,7 @@ p.74 回到 p.7 的两组数字并补全出处：METR——通过基准判定的
 
 5.  §2.7.13；
 
-6.  §2.10.4。这六条就是小组项目的施工顺序，也是论述题"你会怎样设计一个 agent"的现成骨架——每条都能引一页讲义、一个数字。第六条最反直觉：评测在 agent 之前——因为 §2.7.14 说评估效度是最弱环节，不先定"什么算对"，做出来的 agent 只会优化你没想清楚的东西。
+6.  §2.10.4。这六条就是小组项目的施工顺序，也是论述题"你会怎样设计一个 agent"的现成骨架——每条都能引一页讲义、一个数字。讲义把“先做任务评测”放在系统构建之前。§2.7.14 所引综述把评估效度列为薄弱环节，不先定"什么算对"，做出来的 agent 只会优化你没想清楚的东西。
 
 **课件原例**
 
@@ -5433,10 +6071,10 @@ flowchart TD
  B --> C{accepted为0吗}
  C -->|是| X[报成本和0产出 不算有限单价]
  C -->|否| D[算每accepted及任务切片]
- D --> E{质量 关键失败 成本 时延均达场景门吗}
- E -->|否或缺数据| F[修具体缺口或暂停 不扩大上线]
- E -->|是| G[offline至shadow至限定pilot]
- G --> H[监控漂移 纠正率和新用户case]
+ D --> E{当前阶段证据达到本阶段门槛吗}
+ E -->|否或缺数据| F[修具体缺口或暂停]
+ E -->|是| G[只申请进入下一阶段]
+ G --> H[按下一阶段规定收集新证据]
  H --> E
 ```
 
@@ -5444,9 +6082,7 @@ flowchart TD
 
 1000次全部费用加人工共2000，accepted800，从C否到D得2.5。
 
-E若权限或尾时延缺证据，走F不扩大；
-
-只有各门都有本场景证据才进G。
+在离线阶段，达到离线验收线后只能申请进入影子模式。先在影子模式核纠正率、人工负担和安全，再决定能否进入限定试点。若人工负担未知，走 F 继续收证，不能跳试点。各阶段的放行条件见 [[#2.10.6 上线阶段与成功指标：别把基准分抄进上线清单（讲义 p.77）|§2.10.6]]。
 
 若accepted0从C是到X，不能调用除零式。
 
@@ -5612,6 +6248,8 @@ p.79（标题 SYNTHESIS · The Three Themes, Revisited）把整讲收成三句�
 **是什么**
 
 p.80（FOR DISCUSSION · Three Questions）：
+
+#### 三道讨论的原题与中英参考（讲义 p.80）
 
 <details><summary>讲义 p.80：完整英文原题（保留原编号）</summary>
 
@@ -5858,7 +6496,7 @@ flowchart TD
 |---|---|---|
 | 6.7% → 68.3% | Grok Code Fast SWE-bench，只改编辑工具格式，15 个模型上测试 | p.6、p.22 |
 | −80% 工具 | Vercel 砍工具优于升级模型 | p.6、p.22 |
-| +90%，15× | Anthropic 多 agent 研究系统 vs 单 agent；token 成本 | p.22、p.43 |
+| +90%，15× | 讲义转述的 Anthropic 多 agent 研究个案；15× 为 token 用量 | p.22、p.43 |
 | 24.2 pp、+9.6 pp/yr | 通过基准的 PR 人类合并率差距及其年增幅（METR） | p.7、p.74 |
 | ~25%、~40% | τ-knowledge 通过率；给了正确文档也只有 40% | p.7、p.56、p.74 |
 | 20% / 40% / 37% / 6% | 全企业推广 / 大公司推广（27%→）/ 有 EBIT 影响（持平）/ 高绩效（McKinsey 2026，1,719 受访者） | p.7、p.72 |
@@ -6418,7 +7056,7 @@ $\frac{1000\times1.20+800}{800}=2.50$，单位为 HK\$/接受结果。全部失�
 
 先建任务专属评测再建 agent（p.74）。
 
-最反直觉是最后一条：因为评估效度是栈里最弱的组件（p.38），不先定"什么算对"，agent 只会优化你没想清楚的东西（§2.10.3）。
+最反直觉是最后一条：因为讲义 p.38 引用的综述认为评估效度是薄弱环节，不先定"什么算对"，agent 只会优化你没想清楚的东西（§2.10.3）。
 
 </details>
 
@@ -6484,6 +7122,94 @@ p.54–58 的领域例子不能替代这张交叉表。
 ---
 
 ## 8. 讲义页码映射
+
+物理页是 PDF 阅读器中的页序；源页脚可能重复。例如印刷 45 在物理 p.48 的实验架构和 p.79 的综合回顾各出现一次。请结合原页标题找入口。
+
+| 物理页 | 源页脚 | 原页标题 | 本页讲解 | 图与页型 |
+|---|---|---|---|---|
+| 讲义 p.1 | — | AI Agents: Who's Actually Doing the Work? | [[#讲义 p.1 · AI Agents: Who's Actually Doing the Work?\|定位]] | 纯封面或章节标题 |
+| 讲义 p.2 | — | Sir Demis Hassabis: The Architect of AGI | [[#讲义 p.2 · Sir Demis Hassabis: The Architect of AGI\|定位]] | 课件原图 p002 |
+| 讲义 p.3 | — | Demis’s view on AGI | [[#讲义 p.3 · Demis’s view on AGI\|定位]] | 课件原图 p003 |
+| 讲义 p.4 | — | World Models | [[#讲义 p.4 · World Models\|定位]] | 课件原图 p004 |
+| 讲义 p.5 | 2 | Lecture roadmap | [[#讲义 p.5 · Lecture roadmap\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.6 | 3 | The model didn't change. The score did. | [[#讲义 p.6 · The model didn't change. The score did.\|定位]] | 课件原图 p006 |
+| 讲义 p.7 | 4 | The Gap between model capability and real-world Trust | [[#讲义 p.7 · The Gap between model capability and real-world Trust\|定位]] | 课件原图 p007 |
+| 讲义 p.8 | 5 | Foundations and agency | [[#讲义 p.8 · Foundations and agency\|定位]] | 纯封面或章节标题 |
+| 讲义 p.9 | 6 | A History Longer Than the Technology | [[#讲义 p.9 · A History Longer Than the Technology\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.10 | 7 | Learning Agents & Deep RL | [[#讲义 p.10 · Learning Agents & Deep RL\|定位]] | 课件原图 p010 |
+| 讲义 p.11 | 8 | Productisation & Protocols | [[#讲义 p.11 · Productisation & Protocols\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.12 | 9 | Maturation | [[#讲义 p.12 · Maturation\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.13 | 10 | What Actually Makes Something an Agent? | [[#讲义 p.13 · What Actually Makes Something an Agent?\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.14 | 11 | What an AI agent does | [[#讲义 p.14 · What an AI agent does\|定位]] | 课件原图 p014 |
+| 讲义 p.15 | 12 | Chatbots, workflows and agents | [[#讲义 p.15 · Chatbots, workflows and agents\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.16 | — | The Paradigm Shift: From Synthesis to Sovereignty | [[#讲义 p.16 · The Paradigm Shift: From Synthesis to Sovereignty\|定位]] | 课件原图 p016 |
+| 讲义 p.17 | — | The Four Pillars of Agency | [[#讲义 p.17 · The Four Pillars of Agency\|定位]] | 课件原图 p017 |
+| 讲义 p.18 | — | The Evolution of Autonomy Levels | [[#讲义 p.18 · The Evolution of Autonomy Levels\|定位]] | 课件原图 p018 |
+| 讲义 p.19 | 16 | The agent system | [[#讲义 p.19 · The agent system\|定位]] | 纯封面或章节标题 |
+| 讲义 p.20 | 17 | The Harness | [[#讲义 p.20 · The Harness\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.21 | 18 | What Is a Harness? | [[#讲义 p.21 · What Is a Harness?\|定位]] | 课件原图 p021 |
+| 讲义 p.22 | 20 | Why It Matters More Than It Sounds | [[#讲义 p.22 · Why It Matters More Than It Sounds\|定位]] | 课件原图 p022 |
+| 讲义 p.23 | 20 | Case brief: a Tokyo trip | [[#讲义 p.23 · Case brief: a Tokyo trip\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.24 | — | Flow Engineering: Designing the Cognition | [[#讲义 p.24 · Flow Engineering: Designing the Cognition\|定位]] | 课件原图 p024 |
+| 讲义 p.25 | 22 | Planning the work | [[#讲义 p.25 · Planning the work\|定位]] | 课件原图 p025 |
+| 讲义 p.26 | 21 | The Execution Loop (E) & Tool Layer (T) | [[#讲义 p.26 · The Execution Loop (E) & Tool Layer (T)\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.27 | — | The Hands of the Agent: Model Context Protocol | [[#讲义 p.27 · The Hands of the Agent: Model Context Protocol\|定位]] | 课件原图 p027 |
+| 讲义 p.28 | 25 | Tools, skills and protocols | [[#讲义 p.28 · Tools, skills and protocols\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.29 | — | Memory & Context Management | [[#讲义 p.29 · Memory & Context Management\|定位]] | 课件原图 p029 |
+| 讲义 p.30 | 27 | Context Management (C) | [[#讲义 p.30 · Context Management (C)\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.31 | 23 | Memory & State (S) and System-Prompt Assembly | [[#讲义 p.31 · Memory & State (S) and System-Prompt Assembly\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.32 | 29 | Retrieval with a feedback loop | [[#讲义 p.32 · Retrieval with a feedback loop\|定位]] | 课件原图 p032 |
+| 讲义 p.33 | 30 | Permissions, Sandboxing & Safety | [[#讲义 p.33 · Permissions, Sandboxing & Safety\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.34 | 31 | Reliability and human oversight | [[#讲义 p.34 · Reliability and human oversight\|定位]] | 课件原图 p034 |
+| 讲义 p.35 | 32 | The Petrov Rule | [[#讲义 p.35 · The Petrov Rule\|定位]] | 课件原图 p035 |
+| 讲义 p.36 | — | Identity, Security, and Sprawl | [[#讲义 p.36 · Identity, Security, and Sprawl\|定位]] | 课件原图 p036 |
+| 讲义 p.37 | 34 | The user experience of an agent | [[#讲义 p.37 · The user experience of an agent\|定位]] | 课件原图 p037 |
+| 讲义 p.38 | 35 | Lifecycle Hooks (L) & Evaluation (V) | [[#讲义 p.38 · Lifecycle Hooks (L) & Evaluation (V)\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.39 | 36 | Nine Components, One Recurring Lesson | [[#讲义 p.39 · Nine Components, One Recurring Lesson\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.40 | 37 | A worked travel task trace | [[#讲义 p.40 · A worked travel task trace\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.41 | 38 | Agent architectures | [[#讲义 p.41 · Agent architectures\|定位]] | 纯封面或章节标题 |
+| 讲义 p.42 | 39 | Deep Research, OpenClaw and Autoresearch | [[#讲义 p.42 · Deep Research, OpenClaw and Autoresearch\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.43 | 40 | Sub-Agents & Orchestration | [[#讲义 p.43 · Sub-Agents & Orchestration\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.44 | 41 | Deep Research architecture | [[#讲义 p.44 · Deep Research architecture\|定位]] | 课件原图 p044 |
+| 讲义 p.45 | 42 | OpenClaw architecture | [[#讲义 p.45 · OpenClaw architecture\|定位]] | 课件原图 p045 |
+| 讲义 p.46 | 43 | OpenClaw: a task in context | [[#讲义 p.46 · OpenClaw: a task in context\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.47 | 44 | OpenClaw: suitable scenarios | [[#讲义 p.47 · OpenClaw: suitable scenarios\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.48 | 45 | autoresearch architecture | [[#讲义 p.48 · autoresearch architecture\|定位]] | 课件原图 p048 |
+| 讲义 p.49 | 46 | autoresearch: the experiment record | [[#讲义 p.49 · autoresearch: the experiment record\|定位]] | 课件原图 p049 |
+| 讲义 p.50 | 47 | autoresearch: suitable scenarios | [[#讲义 p.50 · autoresearch: suitable scenarios\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.51 | 48 | Architecture and task fit | [[#讲义 p.51 · Architecture and task fit\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.52 | 49 | Applications and scientific AI | [[#讲义 p.52 · Applications and scientific AI\|定位]] | 纯封面或章节标题 |
+| 讲义 p.53 | 50 | Where Agents Work Today | [[#讲义 p.53 · Where Agents Work Today\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.54 | 51 | Software Engineering | [[#讲义 p.54 · Software Engineering\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.55 | 52 | Research & Analysis | [[#讲义 p.55 · Research & Analysis\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.56 | 53 | Customer Support | [[#讲义 p.56 · Customer Support\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.57 | 54 | Klarna: efficiency and service quality | [[#讲义 p.57 · Klarna: efficiency and service quality\|定位]] | 课件原图 p057 |
+| 讲义 p.58 | 55 | Knowledge Work & Back Office | [[#讲义 p.58 · Knowledge Work & Back Office\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.59 | 56 | Supply chain automation | [[#讲义 p.59 · Supply chain automation\|定位]] | 课件原图 p059 |
+| 讲义 p.60 | 57 | Browser & Computer Use | [[#讲义 p.60 · Browser & Computer Use\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.61 | 58 | Security Operations | [[#讲义 p.61 · Security Operations\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.62 | 59 | Scientific & Technical Work | [[#讲义 p.62 · Scientific & Technical Work\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.63 | 61 | The Protein Folding Problem | [[#讲义 p.63 · The Protein Folding Problem\|定位]] | 课件原图 p063 |
+| 讲义 p.64 | 62 | AlphaFold | [[#讲义 p.64 · AlphaFold\|定位]] | 课件原图 p064 |
+| 讲义 p.65 | 63 | Giving this knowledge to the world | [[#讲义 p.65 · Giving this knowledge to the world\|定位]] | 课件原图 p065 |
+| 讲义 p.66 | 64 | Google AlphaFold | [[#讲义 p.66 · Google AlphaFold\|定位]] | 课件原图 p066 |
+| 讲义 p.67 | 65 | AlphaFold in research | [[#讲义 p.67 · AlphaFold in research\|定位]] | 课件原图 p067 |
+| 讲义 p.68 | 66 | AlphaFold is accelerating progress | [[#讲义 p.68 · AlphaFold is accelerating progress\|定位]] | 课件原图 p068 |
+| 讲义 p.69 | 67 | The Domain-Asymmetry Pattern | [[#讲义 p.69 · The Domain-Asymmetry Pattern\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.70 | 68 | Evaluation and deployment | [[#讲义 p.70 · Evaluation and deployment\|定位]] | 纯封面或章节标题 |
+| 讲义 p.71 | 69 | Where Things Stand | [[#讲义 p.71 · Where Things Stand\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.72 | 70 | Capability Is Rising Faster Than Deployment | [[#讲义 p.72 · Capability Is Rising Faster Than Deployment\|定位]] | 课件原图 p072 |
+| 讲义 p.73 | 71 | The Bottleneck Has Moved | [[#讲义 p.73 · The Bottleneck Has Moved\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.74 | 72 | The Reliability Gap, Revisited | [[#讲义 p.74 · The Reliability Gap, Revisited\|定位]] | 课件原图 p074 |
+| 讲义 p.75 | 73 | A task-specific evaluation set | [[#讲义 p.75 · A task-specific evaluation set\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.76 | 74 | Cost per accepted outcome | [[#讲义 p.76 · Cost per accepted outcome\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.77 | 75 | Rollout stages and success metrics | [[#讲义 p.77 · Rollout stages and success metrics\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.78 | 76 | Synthesis and discussion | [[#讲义 p.78 · Synthesis and discussion\|定位]] | 纯封面或章节标题 |
+| 讲义 p.79 | 45 | The Three Themes, Revisited | [[#讲义 p.79 · The Three Themes, Revisited\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.80 | 46 | Three Questions | [[#讲义 p.80 · Three Questions\|定位]] | 文字讲解；无独立教学原图 |
+
+<details>
+<summary>原有主题与课堂对应</summary>
 
 课堂覆盖按 `M03-transcript-partial.txt` 原始时间戳记录。讲义 p.2–3 未录到，不可降权；p.29 依据相邻内容连续记录判为课堂略过，讲义自学解释仍完整保留。
 
@@ -6587,6 +7313,7 @@ p.74的原图虽然写“差距扩大”，实际可见两条近水平线，缺�
 | 评估与部署 | `02:03:28`–`2:10:04` | ~6.6 min | 4.9% |
 | 总结、讨论与 Dify / GitHub 补充 | `02:10:04`–`02:14:37` | ~4.5 min | 3.4% |
 
+</details>
 
 ---
 

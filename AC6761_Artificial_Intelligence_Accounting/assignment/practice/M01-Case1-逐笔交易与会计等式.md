@@ -574,6 +574,6 @@ $$
 
 本篇没有添加新的课堂原话，也没有把 Canvas 行政状态当成已确认。现阶段确认的是官方内容可核、数值可复算；是否计分、需提交什么及截止时间仍待 Canvas 核对。`learning_status: detailed-analysis-complete` 表示详细学习解析已写完；任务 `status: draft` 保留行政待核边界，不表示已进行读者独立作答评估。
 
-下一次练习可以遮住 §4、§5，只看 §1 原题任务和 8 句英文，自己从 0 开始填 Cash、Vehicle、Supplies、Fuel、AR、AP、Capital、Revenue、Expenses。若每笔都能说明账户方向、保持等式，并解释“为什么第 8 笔不影响利润”，才有直接证据说明你能重做这道题；本篇不替你预先宣称学会。
+下一次先打开 [Case 1 原件](../../course_files_export/Case%201%20with%20solution.docx) 的第 1 页，只读 8 笔英文；先不翻后两页官解，也先不看本篇 §4–§5，自己从 0 开始填 Cash、Vehicle、Supplies、Fuel、AR、AP、Capital、Revenue、Expenses。若每笔都能说明账户方向、保持等式，并解释“为什么第 8 笔不影响利润”，才有直接证据说明你能重做这道题；本篇不替你预先宣称学会。
 
 2026-10-07：按现行简化流程补齐独立学习解析，来源为只读官方 DOCX 的全部正文与表格。未做独立 Q/R 盲读，未补造学习评分；任务级 draft 保留当前行政待核边界。原件 SHA-256：`af790f648a4a0e11e76cb3a7428749f140a00be727c30fffc63a99350cd3bab4`。

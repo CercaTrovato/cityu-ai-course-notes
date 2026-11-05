@@ -1,0 +1,376 @@
+{
+  "source": "IS6400_Business_Data_Analytics/course_files_export/Week 2 Regression Analysis_With Prompt.ipynb",
+  "source_sha256": "e9c3d37f6dda1bf7a41e43f87ac21bd793787d501656c24edbdfa7fe5669575d",
+  "baseline_sha256": "733299c95c5bec3b8dec25a7690c9a3317a2775c2447e0973dc12986f26a61b1",
+  "candidate_sha256": "de6f010a466c41085e82e544c217dee2c3532e0319a055d89e61356e16af373a",
+  "cells": [
+    {
+      "number": 1,
+      "cell_type": "markdown",
+      "source_sha256": "528706e99171703b4a4e922fc421d3abbb9b9a6d670c4299fa240f63778bb347",
+      "candidate_anchor": "#0. 这个 notebook 在教什么",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 2,
+      "cell_type": "markdown",
+      "source_sha256": "c441d05a99d43a6069e1a358d75b806a58fae78f2e38350aedab7ee3501605e0",
+      "candidate_anchor": "#0. 这个 notebook 在教什么",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 3,
+      "cell_type": "markdown",
+      "source_sha256": "52be957974d4e5f5a998642497f4dba6ab33a43d2b08984f5c1342b628e1d8c2",
+      "candidate_anchor": "#1.2 对应哪一讲的理论",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 4,
+      "cell_type": "markdown",
+      "source_sha256": "330d9fbab50703f6871bd69be6dc1c08951ae141bc6dfef45a78d622584fdc0c",
+      "candidate_anchor": "#2.1 【cell 5】造一批已知答案的数据",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 5,
+      "cell_type": "code",
+      "source_sha256": "def074c70f5af0a724c4a6061bf8e7f04e1b202556384272696ad4905e5e5df5",
+      "candidate_anchor": "#2.1 【cell 5】造一批已知答案的数据",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 6,
+      "cell_type": "markdown",
+      "source_sha256": "9da73073ef5d08f75e00a51975b0062bd7e8a57a6521d03a3129e3c78c466b60",
+      "candidate_anchor": "#2.2 【cell 7】画散点图",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 7,
+      "cell_type": "code",
+      "source_sha256": "aa02f7a200c8204c0852d872466d8d09b09ea93f4a4a4875fb9d1628f0c7557f",
+      "candidate_anchor": "#2.2 【cell 7】画散点图",
+      "saved_outputs": [
+        "display_data"
+      ],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 8,
+      "cell_type": "markdown",
+      "source_sha256": "d00b794368da6faced28cc73731d69d649cac0d496b3d83d30905fe64f7a4656",
+      "candidate_anchor": "#2.3 【cell 9–11】拟合模型，取出系数",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 9,
+      "cell_type": "code",
+      "source_sha256": "e8bbb2a905d35ce2b9a8e82f337354f8739f3fd205d44a8645e24fdb4999ced4",
+      "candidate_anchor": "#Cell 9 · 拟合与保存参数",
+      "saved_outputs": [
+        "execute_result"
+      ],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 10,
+      "cell_type": "code",
+      "source_sha256": "2c77c910a272099ad80b1ad03faa541443105e5c9471004f359f4e0c12439aa4",
+      "candidate_anchor": "#Cell 10 · 检查对象内部状态",
+      "saved_outputs": [
+        "stream"
+      ],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 11,
+      "cell_type": "code",
+      "source_sha256": "d74a5eddbda3b3c1fa5f9da123aac3d191a327cc5e37bcb54fdbd9f21c6593c2",
+      "candidate_anchor": "#Cell 11 · 打印斜率与截距",
+      "saved_outputs": [
+        "stream"
+      ],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 12,
+      "cell_type": "markdown",
+      "source_sha256": "18bbca1563791982c61210762891f30b3564f77f270c544f7f6a9140726d9859",
+      "candidate_anchor": "#2.4 【cell 13】用新数据做预测",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 13,
+      "cell_type": "code",
+      "source_sha256": "a747ca0cd68f514ad7b824952965fde44f2a91178d01d141ccf632dc1624284c",
+      "candidate_anchor": "#2.4 【cell 13】用新数据做预测",
+      "saved_outputs": [
+        "stream",
+        "display_data"
+      ],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 14,
+      "cell_type": "markdown",
+      "source_sha256": "d18da065164d2568be14b2d1b76567a5f792b07758dbc3789a359c4691a16aea",
+      "candidate_anchor": "#2.5 【cell 15】评估：R² 与 MAE",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 15,
+      "cell_type": "code",
+      "source_sha256": "3788e894208efafa18aa1e0ff6fffe6c5fc7dfb9f9451739cbfd51a288a13615",
+      "candidate_anchor": "#2.5 【cell 15】评估：R² 与 MAE",
+      "saved_outputs": [
+        "stream"
+      ],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 16,
+      "cell_type": "markdown",
+      "source_sha256": "208916c0ae340eeca19c20c1f8c95c9dac64a9312a5495b0447ad94d368044ed",
+      "candidate_anchor": "#3. 逐块讲解 · 第二段：过拟合与 Ridge（cell 18–24）",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 17,
+      "cell_type": "markdown",
+      "source_sha256": "2f960c2ac42d71cc6e2f29ddc255227431415d20e7fe3dccdac01ef0c6f51352",
+      "candidate_anchor": "#3.1 【cell 18】造一个非线性数据集 + 造多项式特征",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 18,
+      "cell_type": "code",
+      "source_sha256": "ee134f434c687e820c4ae234d5dc43ff9c2f0254bb1520f3423eaa7a862f49c2",
+      "candidate_anchor": "#3.1 【cell 18】造一个非线性数据集 + 造多项式特征",
+      "saved_outputs": [
+        "display_data",
+        "stream"
+      ],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 19,
+      "cell_type": "markdown",
+      "source_sha256": "e140e6dc1858b6c4782c91aefb5ebc4b8f60dc2bc03d8f3ced21aeb484c781c9",
+      "candidate_anchor": "#3.2 【cell 20】15 阶多项式：训练拟合与风险诊断",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 20,
+      "cell_type": "code",
+      "source_sha256": "315dad9d5dafa7e60a71c4026b6160d643e7ebf94a11d99212e44476371d858e",
+      "candidate_anchor": "#3.2 【cell 20】15 阶多项式：训练拟合与风险诊断",
+      "saved_outputs": [
+        "display_data",
+        "stream"
+      ],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 21,
+      "cell_type": "markdown",
+      "source_sha256": "0ea12e14179bea4f27f3545714b2ae4007b1c0af3cccc4cdb191a301009ac44c",
+      "candidate_anchor": "#3.4 【cell 22】Ridge 出场",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 22,
+      "cell_type": "code",
+      "source_sha256": "ed54587d0bc274289833ac2ee8db4929e050e066bc8572bf7f1c12e66eb1ab25",
+      "candidate_anchor": "#3.4 【cell 22】Ridge 出场",
+      "saved_outputs": [
+        "stream",
+        "display_data",
+        "stream"
+      ],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 23,
+      "cell_type": "code",
+      "source_sha256": "1ffacf920118bf8b2f3a4d3bb54aa0255574fd49329d8b4e30eb2dadf29088d4",
+      "candidate_anchor": "#3.5 【cell 23】比较三个 alpha —— ⚠️ 这个 cell 有两处问题",
+      "saved_outputs": [
+        "stream",
+        "stream"
+      ],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 24,
+      "cell_type": "markdown",
+      "source_sha256": "e760f03becdec4f182b05de59972d9416bbbd4f16e5ca92a798192ffe2b944fe",
+      "candidate_anchor": "#3.4 【cell 22】Ridge 出场",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 25,
+      "cell_type": "markdown",
+      "source_sha256": "4954a2679d2bee62925b6f90e36168f1935a7e1ae3447dffeea37abeda41ff81",
+      "candidate_anchor": "#4. 逐块讲解 · 第三段：Airbnb 真实数据（cell 26–33）",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 26,
+      "cell_type": "code",
+      "source_sha256": "e8f16bb794755fbf056950b6bb823deb23de0f41b04adebde76fd729e75f3b14",
+      "candidate_anchor": "#4.1 【cell 26】读数据",
+      "saved_outputs": [
+        "execute_result"
+      ],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 27,
+      "cell_type": "code",
+      "source_sha256": "ca8261132aa24378ed95c17c9666f9d15b2e1110998fb08ee0f4c24eae74bb26",
+      "candidate_anchor": "#4.2 【cell 27】选特征与目标",
+      "saved_outputs": [
+        "execute_result"
+      ],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 28,
+      "cell_type": "markdown",
+      "source_sha256": "6d675841bb5a29ddf5e83f22f3719b9db631ce323474991e77f543fbab6012d4",
+      "candidate_anchor": "#4.3 【cell 29】OneHotEncoder：把类别变成 0/1",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 29,
+      "cell_type": "code",
+      "source_sha256": "ce763b17d0646b0e08e11bdce5901ce6f2faa81ebb9f427fa8fe08112e361c7c",
+      "candidate_anchor": "#4.3 【cell 29】OneHotEncoder：把类别变成 0/1",
+      "saved_outputs": [
+        "stream",
+        "execute_result"
+      ],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 30,
+      "cell_type": "code",
+      "source_sha256": "3fcb6d8008a04612ea3ea1a351f06152dec81035a98d9db10590c733d74687f1",
+      "candidate_anchor": "#4.4 【cell 30】把虚拟变量拼回去",
+      "saved_outputs": [
+        "execute_result"
+      ],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 31,
+      "cell_type": "code",
+      "source_sha256": "9401b4cb1525e0c758bc21af13e71bfc3c6a203a0c85d7615c8c5df0ae9ed46c",
+      "candidate_anchor": "#4.5 【cell 31】切分 + 训练",
+      "saved_outputs": [
+        "stream"
+      ],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 32,
+      "cell_type": "code",
+      "source_sha256": "c433720040e27ed362cecfa3445aac9c48c6514c836f3c630163f1732ecda0c1",
+      "candidate_anchor": "#Cell 32 · 预测并按同行对照",
+      "saved_outputs": [
+        "execute_result"
+      ],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 33,
+      "cell_type": "code",
+      "source_sha256": "2815e6d1f78f88cf9769fcf17e4bd2cdcb7c1e182231241f86799e71319913d0",
+      "candidate_anchor": "#Cell 33 · 汇总 MAE",
+      "saved_outputs": [
+        "stream"
+      ],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 34,
+      "cell_type": "markdown",
+      "source_sha256": "451511353c1573c727781d03e5493b4d2fd0e8ab332b1c356e6c43980b2d5dfc",
+      "candidate_anchor": "#9.1 源文件分隔与空单元",
+      "saved_outputs": [],
+      "disposition": "分隔"
+    },
+    {
+      "number": 35,
+      "cell_type": "markdown",
+      "source_sha256": "1ba0d63398a03359fb082ffd534192dae049a5c596d53e2f85cb56f99886a044",
+      "candidate_anchor": "#7.1 原文（cell 35，完整 16 项内容）",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 36,
+      "cell_type": "markdown",
+      "source_sha256": "3344f20bc896e004d7b037771ef06d002fd44ac2242f44a14d47259be0b979bc",
+      "candidate_anchor": "#7.4 Summary cell（cell 36）里藏的三条信息",
+      "saved_outputs": [],
+      "disposition": "按本格核查"
+    },
+    {
+      "number": 37,
+      "cell_type": "markdown",
+      "source_sha256": "451511353c1573c727781d03e5493b4d2fd0e8ab332b1c356e6c43980b2d5dfc",
+      "candidate_anchor": "#9.1 源文件分隔与空单元",
+      "saved_outputs": [],
+      "disposition": "分隔"
+    },
+    {
+      "number": 38,
+      "cell_type": "markdown",
+      "source_sha256": "35bc1b5c4c372993dab3cb74739de6dff86baf5a60142dc91fdc0173379f4b13",
+      "candidate_anchor": "#8. 本次作业（notebook cell 38 原文）",
+      "saved_outputs": [],
+      "disposition": "评分题只读对照"
+    },
+    {
+      "number": 39,
+      "cell_type": "code",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "candidate_anchor": "#9.1 源文件分隔与空单元",
+      "saved_outputs": [],
+      "disposition": "空白"
+    }
+  ],
+  "execution": {
+    "seed_added_before_cell5": 19,
+    "synthetic_mae": 0.7982840728277969,
+    "ridge_last_root_mae": 0.30904231333062593,
+    "ridge_last_actual_rmse": 0.12396768630359721,
+    "airbnb_predictor_shape": [
+      68133,
+      7
+    ],
+    "airbnb_test_rows": 20440,
+    "airbnb_mae": 0.4389203843146883,
+    "executed_code_cells": 18,
+    "source_sha256": "e9c3d37f6dda1bf7a41e43f87ac21bd793787d501656c24edbdfa7fe5669575d",
+    "boundary": "仅只读使用本地 CSV；未运行评分作业。Matplotlib 使用静态后端；只保留聚合结果。"
+  }
+}

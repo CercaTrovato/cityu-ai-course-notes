@@ -9,7 +9,7 @@ prerequisites: [M01, M05]
 new_concepts: [金融科技商业模式, 规模经济, 货币三职能, 共享账本, 区块链, 代币, 应收账款融资, 许可网络, 哈希, 数字签名, 双花, 共识, 工作量证明, 权益证明, 确认, 私钥托管, 日内回购, 网络采用, 简单回收期, 哈希碰撞, 检查点, 已获证明, 最终确定]
 tags: [EF5560, FinTech, blockchain, trade-finance]
 status: v1.0
-updated: 2026-10-27
+updated: 2026-11-04
 readability_rules: v2
 teaching_standard: novice-v1
 mechanism_spec: v1
@@ -75,15 +75,944 @@ P1 = `transcripts/M06-transcript-part1.txt`；P2 = `transcripts/M06-transcript-p
 
 位置列指本篇正文编号。“新概念”列是本讲需解释的对象，不是考试范围承诺。
 
-### 1.3 为什么现在学 · 重排说明
+### 1.3 怎样预习、跟读和复习
 
-前五讲解决金融预测。本讲进入后半程的公司案例分析：即使预测模型或区块链机制能运行，也要说明客户为何使用、提供方如何收钱，以及风险由谁承担。
-
-正文大体沿讲义的“业务→机制→应用”顺序。把 p.18 的融资提问与 p.37 的完整计算互相连接，先懂业务，再学技术，最后回到额度决策。p.46 简答留在贸易融资案例旁，便于就地作答。
-
-p.1 是课程封面。p.2、p.15、p.34 只有章节标题，分别提示商业、机制和应用三个阶段。正文相应阶段解释其用途。这四页没有额外知识或题目，§8 单独标明。其余 50 页均在 §2 实质讲解。
+- 预习。先读 p.03–11 的小商户、支付流水与成本，再从 p.17–18 的出口融资看到为何各家银行需要对齐记录。接着用 p.20–27 跟一次付款，比较文件核对、签名和共同选历史。最后用 p.45／49／52–53 判断平台是否值得采用。
+- 课中。从 §8.1 进入当前课件页，按原图先认角色，再沿箭头走。P1–P4 各用自己的时钟，缺录处见同页标注及 §8.2。
+- 课后。盖住 p.22、37、38、45、49 的结果后自己复做；再用 p.29、32、33、46 与 §7 自测检查权限、贸易凭证、核对成本和平台采用。
 
 ## 2. 正文
+
+### Lec06 p.01 封面
+
+FinTech 概览与区块链。
+
+### Lec06 p.02 分隔 · FinTech 企业
+
+进入金融服务成本与技术商业模式。
+
+### Lec06 p.03 小商户要什么金融服务
+
+收款、先融资付供应商、留现金付工资。问技术在哪里减少等候或手工核对。
+
+**英文原题（讲义 p.3）**
+
+> Consider a small retailer buying stock and selling online.
+>
+>
+> • Receive payments. Customers need a way to pay, and the shop needs access to the money.
+>
+> • Finance purchases. Suppliers may need payment before the shop sells its stock.
+>
+> • Manage cash. The owner keeps enough money for wages and decides what to do with spare funds.
+>
+>
+> Banks and other financial firms provide these services. Where could technology improve them?
+>
+
+**中文题意与读题条件**
+
+小商店要收款、先买货、安排工资与闲钱。问题是技术能改善这些服务的哪些具体步骤；不是只列技术名称。下文 p.4–5 的成本与改进就是参考答案的依据。
+
+**课件原例**
+
+讲义 p.5 用同一家商店说明三种改进：经商店许可，数字销售记录辅助贷款判断。软件把到账与订单匹配。系统互传交易状态，减少重复检查。这种用技术改进金融服务的做法叫金融科技（Financial technology，FinTech）。
+
+**英文参考答案（笔记自拟；非官方答案）**
+
+With the retailer’s permission, digital sales records can support lending decisions. Software can match payments to orders, and connected systems can reduce repeated reconciliation. Each improvement must be weighed against its implementation cost.
+
+深读见 [[#2.1 小商店为什么需要金融（讲义 p.3–5）|§2.1]]。
+
+### Lec06 p.04 金融服务为何有成本
+
+了解借款人信息、处理文件和异常、跨商户/支付方/银行核账，即使小额也要做。
+
+例如核查 100 元和核查 1000 元的转账都可能要看一张发票。小额和大额交易可能需要相近的单笔核查费用。若每笔都花 0.05 美元，笔数翻倍时总核查费用也翻倍；p.11 的每月系统费用则不随笔数改变。多方各留记录还会增加对账。
+
+深读见 [[#2.1 小商店为什么需要金融（讲义 p.3–5）|§2.1]]。
+
+### Lec06 p.05 技术改的是哪一步
+
+授权销售数据支持授信、软件自动对账、系统共享状态减少重复检查。服务变快仍要覆盖技术成本。
+
+若商户允许贷款方读取可核销售记录，银行可少收一份手填文件。若交易被错误归类，仍需复核并计入处理成本；流程加快不代表借款人不会违约。
+
+深读见 [[#2.1 小商店为什么需要金融（讲义 p.3–5）|§2.1]]。
+
+### Lec06 p.06 支付、借款与众筹的四个角色
+
+支付宝和 Stripe 支付服务，WeBank 放贷，Kickstarter 奖励众筹。费用由谁付、贷款与项目失败分别由谁承担，按合约辨别。Logo 装饰。
+
+**英文原题（讲义 p.6）**
+
+> Digital payments — Case focus
+>
+> Who pays the fee, and how does the service compare with existing payment methods?
+>
+>
+> Lending and crowdfunding — Case focus
+>
+> What does the funder receive, and who bears the risk of non-payment or project failure?
+>
+
+**中文题意与读题条件**
+
+第一组有两项：谁付费，以及与现有支付方式怎样比较。第二组也有两项：出资者获得什么，以及谁承担不还款或项目失败。`existing` 指现有替代方式，`bears the risk` 指承担损失风险，不能只答谁提供软件。
+
+**原题：两组 Case focus**
+
+⚪ 参考作答（笔记推断，依据讲义 p.6）。
+
+1. 支付服务谁付费、怎样比较？先查合同中的收费对象、费率和固定费，再比较同类支付的到账速度、成功率及异常处理。不能只比 App 界面。本页未给实际费率，不能断言哪家最便宜。
+2. 出资者拿什么、谁承担风险？贷款方通常获得约定本息并承担借款人不还款的信用风险（Credit risk）。奖励型众筹支持者获得约定奖励，项目失败可能导致奖励无法兑现。具体追索与退款权利要看合同。
+
+**英文参考答案（笔记自拟；非官方答案）**
+
+1. Identify who pays each fee under the contract, then compare total fees, settlement time, payment success and exception handling with existing methods. The slide does not provide enough fee data to rank the firms.
+2. A lender generally receives agreed principal and interest and bears borrower default risk. In rewards-based crowdfunding, the funder receives a promised reward and may bear non-delivery risk. Exact rights depend on the contract.
+
+深读见 [[#2.2 支付与融资怎么收钱（讲义 p.6）|§2.2]]。
+
+### Lec06 p.07 投资、网络安全与监管科技
+
+美国 Betterment 和香港 AQUMON 的自动投顾；Darktrace 检测，RegTech 可处理客户核验与文本。比较费用能否覆盖小户成本、误报警后的净节省。Logo 装饰。
+
+**英文原题（讲义 p.7）**
+
+> Robo-advice — Case focus
+>
+> Can advisory fees cover the cost of serving small accounts?
+>
+>
+> Cybersecurity and RegTech — Case focus
+>
+> What evidence shows lower losses or review costs, after accounting for false alerts?
+>
+
+**中文题意与读题条件**
+
+投顾题要比较每户顾问费和服务成本。风控题中的 `after accounting for false alerts` 要求把误报带来的人工处理成本算回去；告警更多不等于损失更少。
+
+以下均为 ⚪ 参考作答（笔记推断，依据讲义 p.7–8）。公司名称仅按讲义定位，不推断其未提供的实际收费或安全结果。
+
+1. Betterment、AQUMON：顾问费能否覆盖小账户？比较每户收费与开户、服务、合规及技术分摊成本。若每户年费 20 元而成本 30 元，即使用户增加也须找到降成本或增收入的路径。
+2. Darktrace、客户核查和文本审阅：何证据支持降低损失或审阅成本？比较相似业务的人工工时、实际损失与误报处理成本。告警数增多本身不证明净收益改善。
+
+**英文参考答案（笔记自拟；非官方答案）**
+
+1. Compare advisory fees per account with onboarding, service, compliance and allocated technology costs. The slide alone cannot establish profitability.
+2. Compare losses and review costs for comparable activity, including the labour cost of investigating false alerts. Alert counts alone are insufficient.
+
+深读见 [[#2.3 投顾、风控与数字资产（讲义 p.7–8）|§2.3]]。
+
+### Lec06 p.08 钱包、加密借贷与稳定币
+
+Ledger 硬件钱包管密钥，Aave 抵押借贷，Circle/Tether 美元挂钩代币。问谁控制资产、谁承担损失、储备能否兑付。Logo 装饰。
+
+**英文原题（讲义 p.8）**
+
+> Wallets and crypto lending — Case focus
+>
+> Who controls the assets, and who bears losses?
+>
+>
+> Stablecoins — Case focus
+>
+> How do issuers earn revenue, and can reserves meet redemptions?
+>
+
+**中文题意与读题条件**
+
+钱包与借贷题分别问控制权和损失承担。稳定币题分别问发行人的收入来源和储备能否满足赎回；知道币价目标不等于知道实际兑付能力。
+
+**课件原例与逐问参考作答**
+
+以下均为 ⚪ 参考作答（笔记推断，依据讲义 p.7–8）。公司名称仅按讲义定位，不推断其未提供的实际收费或安全结果。
+
+3. Ledger、Aave：谁控制资产、谁承担损失？硬件钱包重点保护私钥，持有者仍须安全签署指令。抵押借贷还须考察抵押物跌价、清算与协议风险。本页不足以确定某次损失由谁赔付。
+4. Circle 的 USDC、Tether 的 USDT：发行方怎样收入、储备能否兑付？需查储备资产收益、服务收费与负债，以及储备的价值、流动性和赎回条款。本页未给财报，无法据此确认任何发行人的偿付能力。
+
+**英文参考答案（笔记自拟；非官方答案）**
+
+3. Identify who controls the private keys and approval rights. For lending, also examine collateral, liquidation and protocol risks; loss allocation depends on the arrangements.
+4. Examine issuers’ reserve income and fees alongside costs. Assess reserve value, liquidity and redemption terms; a dollar peg alone does not establish redemption capacity.
+
+深读见 [[#2.3 投顾、风控与数字资产（讲义 p.7–8）|§2.3]]。
+
+### Lec06 p.09 FinTech 产品五层原图
+
+五层依次是客户、界面、金融服务、支付与数据基础设施、治理与风险控制。最后一层的规则约束整个流程。支付按钮在界面，真正的扣款清算在底层，规则和授权管得住才可用。
+
+![Lec06 p.09 FinTech 产品五层原图 课件原图](figures/m06/lec06-p09.png)
+
+[打开原图](figures/m06/lec06-p09.png)
+
+从客户点击到实际付款至少经过界面、服务、清算或数据基础设施。最后检查权限与异常谁负责。若界面说支付成功但清算未完成，两个层的状态仍可能不同。
+
+深读见 [[#2.4 产品五层怎样一起工作（讲义 p.9）|§2.4]]。
+
+### Lec06 p.10 交易量与费收入
+
+10 万笔×40 美元=400 万美元；按 0.5% 收费得 2 万美元，处理、欺诈、客服和合规仍须扣。
+
+若客户共付 400 万美元，平台依 0.5% 得 2 万美元费收入。流水是代收交易额，费收入才进平台账；是否盈利还要扣处理及运营。
+
+深读见 [[#2.5 流水、收入与规模经济（讲义 p.10–11）|§2.5]]。
+
+### Lec06 p.11 处理规模与平均成本原图
+
+固定 1 万、每笔变动 0.05。横轴 1 万/5 万/10 万笔，纵轴每笔美元，柱高 1.05/0.25/0.15；固定部分被更多笔分担。
+
+![Lec06 p.11 处理规模与平均成本原图 课件原图](figures/m06/lec06-p11.png)
+
+[打开原图](figures/m06/lec06-p11.png)
+
+横轴从左到右提高处理笔数，纵轴始终是每笔成本，不是总成本。以第一根为例，固定 10,000 除以 10,000 笔为 1，再加 0.05，共 1.05 美元。十万笔同理为 0.15 美元。
+
+深读见 [[#2.5 流水、收入与规模经济（讲义 p.10–11）|§2.5]]。
+
+### Lec06 p.12 货币三功能
+
+支付媒介、记账单位、价值储藏。问题用支付采用、标价和购买力稳定三个证据判断比特币。
+
+**英文原题（讲义 p.12）**
+
+> • Medium of exchange: people accept it as payment.
+>
+> • Unit of account: prices and debts are stated in it.
+>
+> • Store of value: it carries purchasing power into the future.
+>
+>
+> Which of these functions does Bitcoin perform well?
+>
+
+**中文题意与读题条件**
+
+逐项判断三种货币职能，不能只回答“是钱／不是钱”。`stated in it` 指价格和债务直接用它标示；商店收 BTC 但先用美元报价，不代表 BTC 已成为记账单位。
+
+**课件原例与 p.12 原题**
+
+问题是“Bitcoin 哪些货币功能表现较好？”✅ 讲义 p.14 给判断方向：支付功能部分成立。价值储藏有争议。记账单位尚不普遍。这里概括的是本课材料，不是对所有地区逐户调查。
+
+1. 交易媒介：一些线上与跨境场景接受，但日常普及有限。
+2. 价值储藏：支持者强调 2,100 万枚上限带来的稀缺。反方强调价格大幅波动。稀缺是供应规则，购买力还受需求影响。
+3. 记账单位：多数价格仍用美元等法币表达。若商店先标 100 美元，再临时换成 BTC 收款，美元仍承担标价功能。
+
+**课件历史例**
+
+BTC 是 Bitcoin 的交易代码。p.13 写 Satoshi Nakamoto 发布设计和开源软件，并向 Hal Finney 发送 10 BTC 测试转账。Finney 于 2009-01-12 接收，独立运行软件、报错并协助改进。意义是规则可被另一人独立核验，不再只听发布者口头承诺。
+
+本页人物画像注明为 AI 编辑插图。Satoshi 的形象是匿名表示，不能当作真实肖像或身份材料。
+
+**英文参考答案（笔记自拟；非官方答案）**
+
+Bitcoin partly serves as a medium of exchange, but everyday acceptance remains limited in the course examples. Its role as a store of value is contested because scarcity does not prevent price volatility. It is not widely used as a unit of account. These statements paraphrase the assessment on slide 14.
+
+深读见 [[#2.6 比特币的货币功能（讲义 p.12–14）|§2.6]]。
+
+### Lec06 p.13 比特币两人的测试
+
+课件例 2009-01-12 中本聪向 Hal Finney 转 10 BTC。后者独立运行并反馈。编辑插画不作身份鉴证。
+
+深读见 [[#2.6 比特币的货币功能（讲义 p.12–14）|§2.6]]。
+
+### Lec06 p.14 比特币怎样对应三功能
+
+课件认为支付部分满足、价值储藏有争议、广泛记账仍有限，说明采用范围和波动的条件。
+
+深读见 [[#2.6 比特币的货币功能（讲义 p.12–14）|§2.6]]。
+
+### Lec06 p.15 分隔 · 区块链怎样运作
+
+进入账本、签名和共识。
+
+### Lec06 p.16 账本、区块链与代币
+
+账本记录余额权属或义务，区块链把记录批次相连并维护共享历史，代币是账本上的数字单位。发票账本可不发公开交易代币。
+
+例如收据表可以记谁欠谁钱，账本是这张记录；区块链是其中一种让多方维护历史的方法；票据编号或代币单位是在账本中记录的对象。
+
+深读见 [[#2.7 账本、区块链与代币（讲义 p.16）|§2.7]]。
+
+### Lec06 p.17 出口商的营运资金缺口
+
+原图今天发货→银行先垫现金→60 日买方付钱。贷款弥补付工资与收款错期，纠纷可延迟回款。
+
+![Lec06 p.17 出口商的营运资金缺口 课件原图](figures/m06/lec06-p17.png)
+
+[打开原图](figures/m06/lec06-p17.png)
+
+跟着时间线先把货交给买方，再等约 60 天付款。工资等今天已要付，银行提前给的款用于填这个空档。若买方付款延迟，银行仍承担合同约定范围内的信用风险。
+
+深读见 [[#2.8 出口商为什么先借钱（讲义 p.17–18）|§2.8]]。
+
+### Lec06 p.18 同一应收给两家银行
+
+应收 100 万、A 已贷 60 万、B 再申请 60 万。总额上限 80 万，查既有融资后才知只余 20 万，未上报会漏。
+
+**英文原题（讲义 p.18）**
+
+> An exporter presents the same RMB 1m receivable to two banks.
+>
+>
+> Bank A’s record: Already advanced RMB 600,000 against this receivable.
+>
+> Bank B’s decision: Receives a new request for RMB 600,000 against the same receivable.
+>
+>
+> Suppose total financing may not exceed 80% of the receivable. What does Bank B need to know before lending?
+>
+>
+> A shared record can reveal prior financing only if the participating banks report it.
+>
+> Hypothetical financing example. The 80% aggregate limit is a teaching assumption.
+>
+
+**中文题意与读题条件**
+
+同一笔应收款为人民币 100 万元，A 已贷 60 万元，B 又收到 60 万元申请。`total financing` 是所有银行的融资合计，`may not exceed` 是不能超过；80% 是教学假设，不能把它当成 B 可再贷 80%。`only if` 提醒记录完整依赖参与银行报送。
+
+**课件原例与 p.18 原题**
+
+同一笔 100 万元人民币应收款，银行 A 已贷 60 万元。出口商又向 B 申请 60 万元。题面假定合计融资不能超过应收款的 80%。
+
+⚪ 参考作答（笔记推断）：B 需要知道它是不是同一笔应收款、A 及其他银行已有多少未偿融资，以及记录是否完整及时。还要核单据真实性和能否还款。按题面上限只剩 20 万元，计算在 §2.17 展开。
+
+即使查到 A 的记录，也须确认其他融资是否均有报送。共享账本只能展示已可靠写入的范围。
+
+下面追踪讲义 p.17 的三个时点。箭头表示业务时间顺序。资金来自银行，不是账本自己产生。
+
+```mermaid
+flowchart LR
+ A[今天发货：形成应收款] --> B[银行核验后先贷现金]
+ B --> C[出口商支付经营支出]
+ C --> D[60 天后买家付款]
+ D --> E[偿还融资]
+```
+
+走图用讲义的 60 天：发货后形成未来收款权。银行提前给现金。买家付款才提供回收资金。若交货争议使买家拖欠，流程会停在收款前，不能把最后一步视为必然发生。
+
+文字替代：贷款桥接了“现在付钱”和“以后收钱”，没有消除未来不付款的可能。
+
+**英文参考答案（笔记自拟；非官方答案）**
+
+Bank B must identify the same receivable and the outstanding financing already linked to it, and check that reporting is complete and current. The aggregate limit is RMB 800,000, so only RMB 200,000 remains after Bank A’s RMB 600,000 advance. Document verification and repayment assessment are still required.
+
+深读见 [[#2.8 出口商为什么先借钱（讲义 p.17–18）|§2.8]]。
+
+### Lec06 p.19 公有网络与许可网络
+
+对照参与、读记录和治理。公有按协议开放，许可仅授权机构读写，可限制敏感贸易记录。
+
+例如一家银行可以读取授权客户的单据，外部公众不能读取。访问权限由系统和治理规则共同约定，能查看也未必能修改。
+
+深读见 [[#2.9 谁可以读写（讲义 p.19）|§2.9]]。
+
+### Lec06 p.20 哈希核对原发票四格
+
+原 1 万发票得 Hash A，可信记录存 A；改 9 万得 B；比较 A≠B 触发异常。检的是文件的精确数据与可信副本，不证明贸易真实。
+
+![Lec06 p.20 哈希核对原发票四格 课件原图](figures/m06/lec06-p20.png)
+
+[打开原图](figures/m06/lec06-p20.png)
+
+从图左上读原文件及摘要，再到右上保存可信摘要。左下改金额重新得另一摘要，右下将它与此前保存的比。两次摘要不同可定位文件有变动；先提交虚假发票也能生成摘要。
+
+深读见 [[#2.10 哈希怎样发现改动（讲义 p.20）|§2.10]]。
+
+### Lec06 p.21 密钥与签名原图
+
+私钥授权→签过的指令→公钥核验。验证者无需得到私钥，签名也不等于真实姓名或有业务审批。
+
+![Lec06 p.21 密钥与签名原图 课件原图](figures/m06/lec06-p21.png)
+
+[打开原图](figures/m06/lec06-p21.png)
+
+左端的私钥只在签署方手中。中间传递的是指令与签名；右端公钥参与验证。若拿同一签名配另一条金额指令，核验应不通过。实际业务还要查授权和余额。
+
+深读见 [[#2.11 私钥、公钥与签名（讲义 p.21–22）|§2.11]]。
+
+### Lec06 p.22 把转 1 改成 10 的签名演练
+
+Alice 签消息 A，Bob 用公钥核验。换成消息 B 哈希变化，旧签名失效；另核资金和双花。
+
+**英文原练习与给定步骤（讲义 p.22）**
+
+> A Signature Exercise without Code
+>
+>
+> Message A: “Alice pays Bob 1 token.”
+>
+> Message B: “Alice pays Bob 10 tokens.”
+>
+>
+> 1. Alice signs the hash of Message A with her private key.
+>
+> 2. Bob verifies it with Alice’s public key.
+>
+> 3. Changing 1 to 10 changes the hash, so the old signature fails.
+>
+>
+> The signature proves authorization and message integrity. It does not prove that Alice has enough funds.
+>
+
+**中文题意与读题条件**
+
+这是讲义给出的签名演示，不是另编的一道教授问句。跟踪原消息、私钥签名、公钥验证，以及改成 10 后旧签名失效。`does not prove` 限定了签名的证明范围：资金是否足够仍要另查。
+
+**课件原例：无代码签名练习**
+
+讲义 p.22 的全过程如下，数字 1 和 10 是不同的付款金额。
+
+1. 原消息 A 是 Alice 支付 Bob 1 token。Alice 用私钥签署这份消息的摘要。
+2. Bob 用 Alice 对应公钥、消息 A 和签名验证，原授权可以通过。
+3. 若改成消息 B：支付 10 tokens，摘要改变。把旧签名配给新消息，验证失败。
+4. 即使原消息签名有效，网络仍要另外检查 Alice 是否有可花的资金。
+
+这里只追踪签名的输入输出，没有伪造课件未提供的签名字节。签署输入是具体消息与私钥。验证输入是消息、公钥和签名，输出是通过或失败。
+
+**英文参考答案（笔记自拟；非官方答案）**
+
+Alice signs the hash of Message A, and Bob verifies the signature with her public key. In this exercise, changing the amount from 1 to 10 changes the hash, so the original signature does not verify for Message B. A valid signature establishes authorization by the key and message integrity, not available funds.
+
+深读见 [[#2.11 私钥、公钥与签名（讲义 p.21–22）|§2.11]]。
+
+### Lec06 p.23 从指令到确认原图
+
+提交签名、节点查授权与可用资金、收入区块、等待确认再交付。
+
+![Lec06 p.23 从指令到确认原图 课件原图](figures/m06/lec06-p23.png)
+
+[打开原图](figures/m06/lec06-p23.png)
+
+看节点核验所在的中段。先验证能不能花这笔钱，再收入区块，最后确认状态后才交付货物。签名验证通过的交易仍可能因余额或冲突而被拒。
+
+深读见 [[#2.12 转账与双花（讲义 p.23、p.25）|§2.12]]。
+
+### Lec06 p.24 区块反向引用原图
+
+100 引 99、101 引 100、102 引 101。沿箭头往过去读，改 100 会影响后续链接；共识选有效历史。
+
+![Lec06 p.24 区块反向引用原图 课件原图](figures/m06/lec06-p24.png)
+
+[打开原图](figures/m06/lec06-p24.png)
+
+每条箭头指向前一块。改写 100 后，101 仍记旧摘要而无法继续对上；即使重算后续链接，也要通过网络选历史的规则。
+
+深读见 [[#2.13 区块链接、共识与激励（讲义 p.24、p.26）|§2.13]]。
+
+### Lec06 p.25 同一 BTC 不能支付两次
+
+原图同一个 1 BTC 分向 Bob/Carol；两条指令可以都签得对，共识接受的历史至多承认其中一条。
+
+![Lec06 p.25 同一 BTC 不能支付两次 课件原图](figures/m06/lec06-p25.png)
+
+[打开原图](figures/m06/lec06-p25.png)
+
+同一份未花余额发给 Bob 或 Carol。看两条箭头，它们争用同一笔输入，不是 Alice 各有一枚。要让各参与方在最终采用的历史中看见同一笔花费。
+
+深读见 [[#2.12 转账与双花（讲义 p.23、p.25）|§2.12]]。
+
+### Lec06 p.26 共识与经济激励
+
+PoW 矿工投入设备和电力；PoS 验证者质押。奖励和惩罚影响出块动机，节点仍核交易是否有效。
+
+若两组节点先收到两个各自有效的候选历史，需要按共同规则决定当前采用哪一条。工作量证明（Proof of Work，PoW）比较协议要求的有效工作；权益证明（Proof of Stake，PoS）由按规则参与的验证者质押和投票，细节依协议。
+
+深读见 [[#2.13 区块链接、共识与激励（讲义 p.24、p.26）|§2.13]]。
+
+### Lec06 p.27 后续有效区块增强确认
+
+原图入块→下一块→更多块。等待时间按金额及规则，降低重组风险，价格与托管风险另在。
+
+![Lec06 p.27 后续有效区块增强确认 课件原图](figures/m06/lec06-p27.png)
+
+[打开原图](figures/m06/lec06-p27.png)
+
+从交易入块开始向右看。后续有效区块出现会让改写历史更难。风险能降到多低取决于协议和使用方等待策略，到账显示并不等于所有协议都达到不可回滚状态。
+
+交易入当前有效链的第一个区块时已有 1 次确认，之后每多接一个有效块，深度多 1。按业务门槛等待可以减少改写风险。
+
+深读见 [[#2.14 为什么还要等待确认（讲义 p.27）|§2.14]]。
+
+### Lec06 p.28 私钥与授权的两种失败
+
+Bybit 课件估约 14.6 亿美元且界面误导授权，Ronin 约 6.2 亿美元且拿到 9 键中的 5 键。问能批准谁、批准什么，分别核内容与独立控制。
+
+英文参考（笔记整理）。Identify who has approval authority and verify the exact instruction being approved. Check credential independence and the destination, amount, and operation separately.
+
+**英文原题（讲义 p.28）**
+
+> Who can approve a transfer, and what exactly are they approving?
+>
+
+**中文题意与读题条件**
+
+必须同时检查谁有批准权，以及本次批准实际授权了什么。人数足够但凭据不独立，或员工误认批准内容，都可能出问题。下文 Bybit 与 Ronin 是讲义给出的两种失败例。
+
+**课件原例**
+
+p.28 列 Bybit 2025-02 事件，估算损失 14.6 亿美元：欺骗界面诱使员工批准改变钱包控制的操作。控制教训是独立核查本次批准究竟授权了什么。
+
+同页列 Ronin Bridge 2022-03 事件，约 6.2 亿美元：攻击者控制九把授权密钥中的五把，达到批准提现门槛。控制教训是批准凭据及控制权要有实质独立性。
+
+这些是讲义所引历史事件的当日估值，不是本次重新计算的币价损失，也不表示区块链所有机制被攻破。未在本讲复原完整攻击取证链。
+
+深读见 [[#2.15 授权为何仍会失败（讲义 p.28–29）|§2.15]]。
+
+### Lec06 p.29 托管和访问控制题
+
+共用管理口令使两个审批账户可被同一人控制；分开凭据并限制改权限，课堂确认 B。
+
+**英文原题（讲义 p.29）**
+
+> A US asset manager requires two employees to approve a crypto transfer, but both approval accounts share one administrator password.
+>
+>
+> Which change most directly improves control over unauthorized transfers?
+>
+>
+> A) Increase the number of approvers using the same administrator account.
+>
+> B) Separate approval credentials and restrict who can change access permissions.
+>
+> C) Move the assets to a blockchain with lower transaction fees.
+>
+> D) Produce a more detailed monthly report after transfers have occurred.
+>
+
+**中文题意与读题条件**
+
+美国资产管理公司要求两名员工批准加密资产转账，但两人的批准账户共用一个管理员密码。问哪项改变最直接改善对未授权转账的控制。`most directly` 要找切断当前危险路径的措施。
+
+**选项中文对照**
+
+- A：在同一管理员账户下增加批准人数。
+- B：分离批准凭据，并限制谁能修改访问权限。
+- C：转移到手续费更低的区块链。
+- D：转账发生后编制更详细的月报。
+
+**原题 p.29：选哪项改善控制？**
+
+✅ 课堂确认答案：选 B（P2 `04:43`）；下列中文推理与英文答案由笔记整理，分离批准凭据，并限制谁可改变访问权限。
+
+1. 先找危险路径：一个管理员密码可影响两人的批准账户。
+2. 再找直接切断路径的措施：分别保护凭据，同时约束权限变更，减少单点控制。
+3. 检查其他选项：A 增加共享管理员的批准人仍保留同一故障点。C 降手续费不阻断盗用。D 月报只能事后发现，无法直接预防本次转账。
+
+若改条件为“两把独立密钥已安全，但批准界面被篡改”，仅分离密钥还不够，须独立确认收款地址、金额和授权操作内容。这对应 Bybit 的教训。
+
+**英文参考答案（笔记自拟；非官方答案）**
+
+For the slide 28 question, examine both approval authority and the actual instruction being approved. For slide 29, choose B. Separate approval credentials and restrict access-permission changes to reduce common administrative control. A retains the shared point of failure; C changes fees; D is a retrospective reporting measure.
+
+深读见 [[#2.15 授权为何仍会失败（讲义 p.28–29）|§2.15]]。
+
+### Lec06 p.30 系统记录与商业事实
+
+发票未变与发货、签名有效与员工授权、贷款已记与可还款是三对不同核查。
+
+即使各银行看到同一份发票，还要核发货和买方付款义务。共享记录解决看到的内容一致，单据事实仍要靠业务证据。
+
+深读见 [[#2.16 何时该用共享账本（讲义 p.30–33）|§2.16]]。
+
+### Lec06 p.31 共享账本何时值得用
+
+多个独立主体共用记录，对账有损耗，且能协商访问、纠错和治理；单一可信主体可用数据库。
+
+例如同一家可信运营方负责每一步且没有跨机构独立校验需求，先比较普通数据库的权限和成本。
+
+深读见 [[#2.16 何时该用共享账本（讲义 p.30–33）|§2.16]]。
+
+### Lec06 p.32 出口融资选择题
+
+D 核贸易单据及已有融资。未改文件、平台用户多、同软件分别无法证明信用与应收状态。
+
+**英文原题（讲义 p.32）**
+
+> A Chinese exporter submits an invoice recorded on a shared blockchain platform. A bank is considering a loan against the unpaid invoice.
+>
+>
+> Which check is most important before the bank lends?
+>
+>
+> A) Confirm only that the uploaded file has remained unchanged.
+>
+> B) Use the platform’s user count as evidence of the exporter’s credit quality.
+>
+> C) Accept the invoice because all participating banks use the same software.
+>
+> D) Verify the trade documents and check financing already linked to the receivable.
+>
+
+**中文题意与读题条件**
+
+中国出口商提交一张已记在共享区块链平台上的未收款发票，银行拟据此贷款。问放贷前哪项检查最重要。`only` 把 A 限定为只查文件未变；`already linked` 要查这笔应收款已有的融资。
+
+**选项中文对照**
+
+- A：只确认上传文件未发生变化。
+- B：用平台用户数证明出口商信用质量。
+- C：因为参与银行使用同一软件就接受发票。
+- D：核实贸易单据，并查询该应收款已有的融资。
+
+**原题 p.32：出口融资检查**
+
+⚪ 参考作答（笔记推断）：选 D，验证贸易单据，并检查应收款已关联的融资。
+
+- A 只核文件未变，不能证明交易存在，也会漏掉重复融资。
+- B 平台用户数表示规模，不能代表某个出口商的信用。
+- C 同一软件提供一致处理方式，无法保证输入事实真实。
+- D 同时覆盖业务真实性与既有融资，最切合放贷前的风险。
+
+改条件：若单据真实但买家濒临破产，D 仍不是足够的完整放贷审查，还要评估偿付能力。
+
+**英文参考答案（笔记自拟；非官方答案）**
+
+Slide 32: Choose D. Verify the trade documents and check financing already linked to the same receivable. An unchanged file, platform scale or common software does not establish the underlying trade or remaining financing capacity.
+
+深读见 [[#2.16 何时该用共享账本（讲义 p.30–33）|§2.16]]。
+
+### Lec06 p.33 美国银行共享记录选择题
+
+合约和资金安排不变时，C 减少对账与差错处理；资金义务、违约承担和存款保障不自动变化。
+
+**英文原题（讲义 p.33）**
+
+> Several US banks consider a shared ledger to replace separate records of the same interbank payments. The payment contracts and funding arrangements stay unchanged.
+>
+>
+> Which benefit should they expect from consistent shared records?
+>
+>
+> A) Each bank needs less funding because payment obligations disappear.
+>
+> B) Counterparty default losses become the platform operator’s responsibility.
+>
+> C) Staff spend less time comparing inconsistent records and resolving discrepancies.
+>
+> D) Every customer payment becomes an insured bank deposit.
+>
+
+**中文题意与读题条件**
+
+美国多家银行准备用共享账本替代同一批银行间付款的分散记录。付款合同与资金安排保持不变，问一致记录能带来什么好处。`stay unchanged` 排除了题目未给出的资金、责任或存款属性变化。
+
+**选项中文对照**
+
+- A：付款义务消失，所以各银行所需资金减少。
+- B：交易对手违约损失转由平台运营者承担。
+- C：员工花更少时间比较不一致记录并处理差异。
+- D：每笔客户付款都成为受保险保障的银行存款。
+
+**原题 p.33：美国银行共享付款账本**
+
+⚪ 参考作答（笔记推断）：选 C，减少比较不一致记录及解决差异的人工时间。题面明确合同与资金安排不变，因此预期改善发生在协调成本。
+
+- A 付款义务仍在，不会因记账一致而自动减少资金需求。
+- B 没有新风险转移合同，不能推断平台承担违约损失。
+- D 记录方式不自动改变客户资金的法律属性或保险资格。
+
+换成“新增了融资净额结算安排”的题面，资金需求可能另受影响。本题没有这个条件，不能自行补上。
+
+**英文参考答案（笔记自拟；非官方答案）**
+
+Slide 33: Choose C. Consistent shared records reduce reconciliation work. Because contracts and funding arrangements are unchanged, the ledger alone does not remove payment obligations, transfer default losses or create deposit-insurance coverage.
+
+深读见 [[#2.16 何时该用共享账本（讲义 p.30–33）|§2.16]]。
+
+### Lec06 p.34 分隔 · 区块链在金融服务
+
+进入已有案例与收益证据。
+
+### Lec06 p.35 内地三个应用
+
+课件列 SAFE 出口融资、深圳区块链发票、法院电子记录。分别解决既有融资、重复报销和证据后续校验。
+
+SAFE 是国家外汇管理局（State Administration of Foreign Exchange）。课件另举深圳税务局与腾讯于 2018 年试点电子发票的例子。
+
+深读见 [[#2.17 SAFE 与重复融资（讲义 p.35–37）|§2.17]]。
+
+### Lec06 p.36 SAFE 出口应收的流程
+
+申请提交单据、银行核报关和已有融资、参与银行记贷与还。授权后可查跨境款项收付记录（收付汇）；授信仍银行作决定。
+
+深读见 [[#2.17 SAFE 与重复融资（讲义 p.35–37）|§2.17]]。
+
+### Lec06 p.37 重复融资两柱原图
+
+深色 A 已贷 0.6 百万，浅色 B 新贷。左 B 再贷 0.6，总 1.2 超 0.8 虚线；右 B 0.2 总 0.8。上限仅教学设定。
+
+![Lec06 p.37 重复融资两柱原图 课件原图](figures/m06/lec06-p37.png)
+
+[打开原图](figures/m06/lec06-p37.png)
+
+先固定同一张 100 万应收的可融资比例 80%。原借 60 万已经用了额度，所以还可申请 20 万；若第二家不知第一笔，表面各自合规也会累计到 120 万。
+
+深读见 [[#2.17 SAFE 与重复融资（讲义 p.35–37）|§2.17]]。
+
+### Lec06 p.38 应收融资利息
+
+60 万×6%×60/360=6000 元，无其他费用。单据更快验证影响到账时点，计息仍按金额、利率、期间。
+
+深读见 [[#2.18 融资利息怎样算（讲义 p.38）|§2.18]]。
+
+### Lec06 p.39 深圳电子发票原图
+
+商户开票→客户报销→雇主查状态，统一票号串联多系统。关键输入是更新的报销状态。
+
+![Lec06 p.39 深圳电子发票原图 课件原图](figures/m06/lec06-p39.png)
+
+[打开原图](figures/m06/lec06-p39.png)
+
+按图从左到右看商户开票、客户提交报销申请、雇主按统一票号查状态。减少重新录入和逐笔人工对照属于可能节省的工作。重复报销要能在可授权的记录中查到已用状态；只验证两份电子发票的哈希相等还不知道是否已报销。
+
+深读见 [[#2.19 发票报销为什么要更新状态（讲义 p.39–40）|§2.19]]。
+
+### Lec06 p.40 同一票号报销两次
+
+SZ-1048 已报 800 元，B 再提交同号触发复核，挡下可避免多付 800 元。
+
+深读见 [[#2.19 发票报销为什么要更新状态（讲义 p.39–40）|§2.19]]。
+
+### Lec06 p.41 法院电子证据原图
+
+原文件→带时间的登记→以后核验。链可协助核登记后是否改，来源和关联由法院审查。
+
+![Lec06 p.41 法院电子证据原图 课件原图](figures/m06/lec06-p41.png)
+
+[打开原图](figures/m06/lec06-p41.png)
+
+先提交再对照可信记录，法院仍可追问上链前如何取得、是否真实。原图展示存证流程。具体条文、适用例外和历史核查范围见 §2.20 及 §9.4。
+
+深读见 [[#2.20 司法存证能证明什么（讲义 p.41）|§2.20]]。
+
+### Lec06 p.42 LLM 贸易记录原图
+
+LLM 提取 EX-204、人民币 100 万、60 天→银行对单据合同→账本记录融资。字段提取和贷款判断分开。
+
+![Lec06 p.42 LLM 贸易记录原图 课件原图](figures/m06/lec06-p42.png)
+
+[打开原图](figures/m06/lec06-p42.png)
+
+模型可以把发票金额、付款期限、编号转成字段；银行人员再核单据和对应贸易。错读一个数字可能改变可贷额度，不能让识别结果直接成为付款指令。
+
+深读见 [[#2.21 LLM 读取贸易单据（讲义 p.42）|§2.21]]。
+
+### Lec06 p.43 跨时区企业现金
+
+课件 Kinexys 区块链存款账户在支持网络内近实时，Siemens 例扩展链上外汇；账户和币种仍受约束。司库要让正确币种的资金在所需时点到达应付款的子公司。公司标识按装饰处理。
+
+深读见 [[#2.23 Kinexys：现金何时可用（讲义 p.43–45）|§2.23]]。
+
+### Lec06 p.44 可编程司库补款原图
+
+余额 70 万→司库转 30 万→回到 100 万。企业设授权并供现金，银行提供执行。
+
+![Lec06 p.44 可编程司库补款原图 课件原图](figures/m06/lec06-p44.png)
+
+[打开原图](figures/m06/lec06-p44.png)
+
+按图先查触发条件，再移动可用余额。自动化改变的是现金在哪个时点能用；要同时检查企业内部审批、资金来源与失败后的人工流程。
+
+深读见 [[#2.23 Kinexys：现金何时可用（讲义 p.43–45）|§2.23]]。
+
+### Lec06 p.45 更快划转的现金节省原图
+
+柱高从 2.0 降 1.2 百万美元，释放 0.8 百万，按 4% 年替代收益为 3.2 万。教学假设，扣实际服务成本再判断。
+
+![Lec06 p.45 更快划转的现金节省原图 课件原图](figures/m06/lec06-p45.png)
+
+[打开原图](figures/m06/lec06-p45.png)
+
+读柱高前先核单位及假设。把少放在闲置账户的现金乘年利率，得到按一年估的机会收益。该数值是示例，不能当成运营方当年利润。
+
+深读见 [[#2.23 Kinexys：现金何时可用（讲义 p.43–45）|§2.23]]。
+
+### Lec06 p.46 贸易融资平台三问
+
+辨重复融资、已验证仍不还的原因、前后可比较指标。课堂讲评不完整，按原题保留。
+
+**英文原题（讲义 p.46）**
+
+> A bank in China uses a shared platform to verify export documents and check previous financing. Loan officers still decide whether to lend.
+>
+>
+> 1. Explain how the platform could reduce duplicate financing.
+>
+> 2. Identify one reason a verified export receivable might still go unpaid.
+>
+> 3. Name one measure the bank could compare before and after adoption.
+>
+
+**中文题意与读题条件**
+
+三问分别要求解释一个机制、指出一个剩余不付款原因、给出一个前后比较指标。`Loan officers still decide` 明确最终授信由人决定；`verified` 只表示已核验，不能推出必然付款。
+
+**参考作答（笔记推断）**。P3 18:36–19:22 保留题型、第一问概述和第二问开头。录音随后截断，第三问没有可核课堂作答。
+
+1. 怎样减少重复融资？平台把同一应收款的单据标识与已发生、未偿还融资连接起来。银行在新贷前查这些记录，避免把已使用额度再次当作可贷空间。前提是参与行及时完整报送。
+2. 为什么核验过的应收款还可能不付？海外买家可能因交货争议拒付或拖付。文件核验并不保证履约。买家破产也是可成立的另一个原因。
+3. 比较哪一项采用前后指标？可比较每份同类申请的人工处理分钟数。统计总人工处理时间并除以同类申请数，保持样本、流程范围与计时规则一致。它衡量处理效率，不直接衡量坏账风险。
+
+**考试可用英文（笔记参考表述）**
+
+1. Shared records let the bank identify prior financing against the same receivable, provided participating banks report it promptly.
+2. A buyer may dispute delivery and delay payment even when the documents have been verified.
+3. Compare manual handling minutes per comparable application before and after adoption, using the same measurement rules.
+
+深读见 [[#2.22 贸易融资短答逐问（讲义 p.46）|§2.22]]。
+
+### Lec06 p.47 日间回购原图
+
+以证券作抵押借现金，事后反向交割。DLR 协调现金和抵押品的记录，不只隔夜。
+
+![Lec06 p.47 日间回购原图 课件原图](figures/m06/lec06-p47.png)
+
+[打开原图](figures/m06/lec06-p47.png)
+
+现金提供方先拿抵押证券作担保，交易商取得现金。到期时交易商付回现金及约定金额，再拿回证券。看图先认证券与现金走的是不同方向。
+
+深读见 [[#2.24 DLR：日内回购与回收期（讲义 p.47–49）|§2.24]]。
+
+### Lec06 p.48 回购的两端时序原图
+
+10 点出借 1200 万和交抵押品；16 点还现金加利息及释抵押。课件 3680 亿美元日均成交量是处理规模。
+
+![Lec06 p.48 回购的两端时序原图 课件原图](figures/m06/lec06-p48.png)
+
+[打开原图](figures/m06/lec06-p48.png)
+
+同一天从开始到到期，读图时对齐两条资产腿。若现金已经到账、担保品还未交割，参与方暴露仍在；技术是否减少时差还取决于接入及结算安排。
+
+深读见 [[#2.24 DLR：日内回购与回收期（讲义 p.47–49）|§2.24]]。
+
+### Lec06 p.49 DLR 采用成本原图
+
+年节省 18 万、年运维 6 万，净 12 万；初始 30 万/12 万=2.5 年。假设无折现和税，参与程度影响结果。
+
+![Lec06 p.49 DLR 采用成本原图 课件原图](figures/m06/lec06-p49.png)
+
+[打开原图](figures/m06/lec06-p49.png)
+
+左柱是每年预计省 18 万美元，右柱是采用后每年额外运行费 6 万美元。年净节省为 12 万美元，一次性投入 30 万美元的简单回收期为 2.5 年。实际采用还要看资金和运行条件。
+
+**英文原题、图中数据与给定结果（讲义 p.49）**
+
+> Broadridge Case: Would a Bank Pay for DLR?
+>
+>
+> Hypothetical DLR adoption decision: \$300,000 setup cost.
+>
+> Annual savings: \$180,000. Annual running cost: \$60,000.
+>
+> $\text{Net annual saving}=180{,}000-60{,}000=120{,}000\text{ US dollars}$
+>
+> $\text{Simple payback}=300{,}000/120{,}000=2.5\text{ years}$
+>
+>
+> Teaching assumptions, not a Broadridge quote or client result. Integration costs and enough participating counterparties determine adoption. Excludes discounting and taxes.
+>
+
+**中文题意与读题条件**
+
+题面标题问银行是否愿采用 DLR。输入、公式和 2.5 年结果均为讲义给定；这里把图中英文标签与数值转成文字，版式不同，数值未改。先扣运行费，再算回收期；未考虑折现和税，也未给银行的最低回报要求，不能唯一断言一定采用。
+
+**课件原例：p.49 是否愿付钱**
+
+初始搭建成本 300,000 美元。每年节省 180,000 美元，每年运行费用 60,000 美元。都为教学假设，不是 DLR 报价。
+
+1. 净年节省：$180{,}000-60{,}000=120{,}000$ 美元/年。
+2. 简单回收期：$300{,}000/120{,}000=2.5$ 年。
+3. 第 2 年累计净节省 240,000 美元，尚未覆盖投入。再积累半年 60,000 美元，才达到 300,000 美元。
+
+简单回收期（Simple payback）把初始投入除以稳定的净年收益。这里假设节省匀速发生，忽略折现与税。若净年收益为零或负数，就没有按这条式子得到的正回收期。
+
+![[EF5560_Fintech_and_AI_in_Finance/notes/figures/m06/adoption-cost.svg]]
+
+图源：`figures/m06/calculate.py`，根据讲义 p.49 假设重算。
+
+p.49 图横轴为年节省与年运行费，纵轴为美元千元。180 与 60 的差为 120，先转成一致单位，再计算回收期。
+
+**英文参考答案（笔记自拟；非官方答案）**
+
+Under the teaching assumptions, net annual savings are US\$120,000 and simple payback is 2.5 years. Adoption remains conditional on sustained savings, integration costs and sufficient counterparties. The slide does not specify the bank’s acceptance threshold, and excludes discounting and taxes.
+
+深读见 [[#2.24 DLR：日内回购与回收期（讲义 p.47–49）|§2.24]]。
+
+### Lec06 p.50 TradeLens 加入条件
+
+承运人关注权限，港口/货代关注集成负担，货主关注覆盖。选一主体给加入条件。
+
+**英文原题（讲义 p.50）**
+
+> TradeLens: Would Your Company Join?
+>
+>
+> Maersk and IBM launched TradeLens in 2018 to share shipping information across organizations.
+>
+>
+> • Carrier: better shipment visibility, but who can access commercially sensitive records?
+>
+> • Port or freight forwarder: less repeated paperwork, but who pays for system integration?
+>
+> • Cargo owner: more complete tracking, but which carriers and ports actually contribute data?
+>
+>
+> Choose one participant and state a condition for joining.
+>
+
+**中文题意与读题条件**
+
+选择承运人、港口／货代或货主中的一种角色，给出加入条件。`one participant` 允许只选一种；`actually contribute data` 强调相关伙伴必须实际提供数据，不能只注册。角色提示也全部保留，便于换角度练习。
+
+**课件原例：TradeLens 与原题 p.50**
+
+Maersk 与 IBM 于 2018 年推出 TradeLens，共享航运信息。题目要求选择一种参与者并提出加入条件。
+
+⚪ 参考作答（笔记推断）：选择货主。加入条件是自己主要使用的承运人和港口持续提供相关运输数据，且可获得的数据价值覆盖接入费用。若关键节点缺失，货主仍须去别处追踪，收益下降。
+
+为完整理解题面另外两类角色：承运人要明确竞争敏感信息可被谁看。港口或货代要确认少做重复文书的节省是否覆盖集成费用。这是业务分析，不是公司公布的逐项关闭原因。
+
+**英文参考答案（笔记自拟；非官方答案）**
+
+Choose the cargo owner. I would join if my main carriers and ports consistently contribute relevant shipment data and the value of improved tracking exceeds integration and operating costs. Missing key participants would reduce the benefit.
+
+深读见 [[#2.25 网络采用与效果评估（讲义 p.50–53）|§2.25]]。
+
+### Lec06 p.51 TradeLens 为何未继续
+
+课件引 2022-11 停止公告，称行业合作和商业可持续性不足。成员各负集成，收益依其他参与；亦可比较单运营者数据库。
+
+共享服务还需约定谁能访问、谁出接入与运维费用，以及参与者退出时怎样撤销权限和交接数据。若这些条件谈不成，记录技术本身不足以维持采用。
+
+深读见 [[#2.25 网络采用与效果评估（讲义 p.50–53）|§2.25]]。
+
+### Lec06 p.52 试点评估的三项指标
+
+每份申请的人工处理时间从 40 分钟减到 25 分钟、需对账的申请占比从 12% 到 4%、一年违约 2.0→2.1%。流程改善可读，信用风险/因果须对照。
+
+深读见 [[#2.25 网络采用与效果评估（讲义 p.50–53）|§2.25]]。
+
+### Lec06 p.53 核验成本改变贷款利润
+
+借 10 万年 8% 利息 8000，资金与预期损失 6000；服务成本 1500→1000，利润 500→1000，违约假设没变。
+
+深读见 [[#2.25 网络采用与效果评估（讲义 p.50–53）|§2.25]]。
+
+### Lec06 p.54 同技术的两套课件政策边界
+
+按课件区分内地商业区块链/数字人民币与虚拟货币服务，以及香港持牌平台、2024 ETF、代币化存款和债券。法律准确条款及历史边界沿用已核深读。
+
+两列按讲义的时点读。技术相似不代表政策范围相同；先认活动性质和适用辖区，再核当时条文。此页用于理解课堂例，法源及既有回核的边界留在深读。
+
+深读见 [[#2.26 内地与香港的政策边界（讲义 p.54）|§2.26]]。
+
+### 按主题深读与课堂时间戳
+
+保留完整推导、现有课堂补充和材料边界。可从上方逐页正文进入相应深读。
 
 ### 2.1 小商店为什么需要金融（讲义 p.3–5）
 
@@ -886,15 +1815,17 @@ p.23 的主线是提交、检查和纳入、确认。p.25 把“可用资金”�
 
 ```mermaid
 flowchart TD
- A[钱包签名并提交] --> B{签名及资金规则有效吗}
+ A[钱包签名并提交] --> B{按该分支状态检查签名及资金}
  B -- 否 --> C[拒绝本条指令]
- B -- 是 --> D[提议写入有效区块]
- D --> E[按共识选择历史]
- E --> F[记录已花费状态]
- F --> G[收款方等所需确认]
+ B -- 是 --> D[在候选分支内应用 该输入标为已花]
+ D --> E{该候选分支还有下一笔吗}
+ E -- 有 --> B
+ E -- 无 --> F[按规则在有效候选分支间选历史]
+ F --> G[对外采用选中分支的可花状态]
+ G --> H[按业务政策等待所需确认]
 ```
 
-箭头表示控制与状态推进。签名或资金无效就结束本条检查。进入候选区块仍未等于商家已经按自己的政策接受结算。
+箭头表示控制与状态推进。准备候选时遇到无效指令就不纳入；若收到的候选区块已含无效指令，整个区块不被接受。候选状态先供这条分支继续核验，最终付款还要看商家等候政策。
 
 1. 初始状态：资金 X 价值 1 BTC，尚未花费。
 2. 候选记录先纳入 X→Bob。节点检查 X 可用，更新为已花费。
@@ -902,7 +1833,7 @@ flowchart TD
 4. 若两条指令先在不同候选分支出现，须由共识选择有效历史。不把两分支合起来让 X 花两次。
 5. Bob 按业务政策等确认，才把订单视为已付。
 
-文字替代：先核权限与资金，再对历史达成一致，最后按接受的历史更新可花状态。具体比特币还包含找零和手续费，本例为隔离“双花”难点而省略。
+先用候选分支当时的状态核权限与资金，通过就更新该分支的状态，后续交易据此检查。网络选择接受历史后，才以选中分支的状态作为当前对外采用的记录。具体比特币还包含找零和手续费，本例为隔离“双花”难点而省略。
 
 **🎙️ 课堂补充**（P1 `01:06:06`–`01:07:43`；p.25 为 D · 未录到）
 
@@ -1101,7 +2032,7 @@ PoW 算力集中会削弱抵抗历史重写的能力；PoS 有效票权不足可
 
 **是什么**
 
-确认（Confirmation）表示付款已被纳入接受的区块，并有后续有效块接续。重组风险（Reorganization risk）是网络改为接受另一条有效历史，导致原来那笔付款的位置或状态改变。
+确认（Confirmation）用来说明付款在当前接受链中的位置深度。在 Bitcoin 的惯例下，交易刚纳入当前接受的区块 100 即有 1 次确认，接上 101 后为 2 次，接上 102 后为 3 次。重组风险（Reorganization risk）是网络改为接受另一条有效历史，导致原来那笔付款的位置或状态改变。
 
 **为什么需要它**
 
@@ -1420,7 +2351,7 @@ flowchart TD
 
 **💡 换个说法（笔记补充）**
 
-若 A 已还清其中 10 万元，且记录及时更新，既有贷款变 50 万元，同样假设下 B 的剩余额度变成 30 万元。共享“当前未偿状态”比只知道“曾贷过”更有用。
+若出口商向 A 归还本金 10 万元且 A 及时更新，未偿贷款变 50 万元，同样假设下 B 的剩余额度变成 30 万元。共享“当前未偿状态”比只知道“曾贷过”更有用。
 
 **⚠️ 常见误解**
 
@@ -1508,7 +2439,7 @@ $$I=P\times r\times\frac{d}{B}$$
 
 **课件原例**
 
-p.39 是深圳区块链发票的历史应用：商户开票→顾客提交→雇主查状态。p.35 将其来源定位为 2018 年试点、2021 年政府材料。本节不宣称其今天的全部运行规模。
+p.39 是深圳区块链发票的历史应用：商户开票→顾客提交→雇主查状态。p.35 将其来源定位为深圳税务局与腾讯 2018 年的试点，以及 2021 年政府材料。本节不宣称其今天的全部运行规模。
 
 p.40 的 SZ-1048 金额人民币 800 元。Employee A 已报销，Employee B 再次提交。同一编号命中旧付款状态，第二笔进入审核。阻止重复可避免本例额外 800 元支付。
 
@@ -1758,7 +2689,7 @@ p.45 图横轴是采用前后，纵轴是闲置美元百万元，两柱为 2 与
 **🎙️ 课堂补充**（P3 `13:27`–`18:36`，A · 课上展开）
 
 - P3 `13:27`–`16:58`：跨时区子公司可按最低余额规则触发资金调拨；示例在余额降至 70 万美元时补 30 万美元，减少反复人工指令。
-- P3 `17:50`–`18:28`：课堂用闲置现金从 200 万降至 120 万解释机会成本，但 P3 `18:16` 口述 42,000 与讲义计算 32,000 美元冲突；正文继续按 p.45 的 $0.8m\times4\%=32,000$。
+- P3 `17:50`–`18:28`：课堂用闲置现金从 200 万降至 120 万解释机会成本，但 P3 `18:16` 转录为 42,000 与讲义计算 32,000 美元冲突；正文继续按 p.45 的 $0.8m\times4\%=32,000$。
 - **这段改变了什么**：补出可编程支付的触发规则，并把课堂数字口误显式隔离。
 
 **💡 换个说法（笔记补充）**
@@ -1920,7 +2851,7 @@ Maersk 与 IBM 于 2018 年推出 TradeLens，共享航运信息。题目要求�
 
 🔗 [Maersk 2022-11-29 公告](https://www.maersk.com/news/articles/2022/11/29/maersk-and-ibm-to-discontinue-tradelens)确认决定停止 TradeLens，说明未达到所需全球行业协作与商业可行性（获取日期：2026-10-15）。
 
-“每个参与者自行承担集成成本”“价值依赖他人参与”“普通数据库在某些治理下更简单”，是讲义的商业模式分析。它们可帮助理解障碍，但不是一项已识别所有因果关系的停运研究。
+“每个参与者自行承担集成成本”“价值依赖他人参与”“普通数据库在某些治理下更简单”，是讲义的商业模式分析。访问规则还要落到谁有权限；出资规则要说明谁承担接入与运维；退出规则要约定撤销权限与记录交接。这些是课件列出的采用条件，官方公告未逐项认定为关闭原因。
 
 **课件原例：p.52 试点评估**
 
@@ -2304,7 +3235,7 @@ Carol 指令在可用资金检查失败，因为同一笔资金已花费。即�
 
 </details>
 
-13. 读 §2.17 图：A 实际贷出 60 万但未报送，B 能否把“查不到”当作零融资？若 A 已还 10 万且已更新，B 额度多少？
+13. 读 §2.17 图：A 实际贷出 60 万但未报送，B 能否把“查不到”当作零融资？若出口商向 A 偿还本金 10 万元且 A 已更新记录，B 还可贷多少？
 
 <details><summary>答案</summary>
 
@@ -2388,6 +3319,67 @@ C1 是 justified，即已获证明，尚未 finalized。第二轮 A 与 C 的票
 
 ## 8. 讲义页码映射
 
+### 8.1 课件 54 页
+
+| 页 | 原标题 | §2 精确入口 | 原图或页处置 | 课堂覆盖 |
+|---:|---|---|---|---|
+| 01 | FinTech and AI in Finance | [[#Lec06 p.01 封面\|进入该页]] | 封面 | — |
+| 02 | FinTech Businesses | [[#Lec06 p.02 分隔 · FinTech 企业\|进入该页]] | 纯分隔 | — |
+| 03 | What Do We Need Financial Services For? | [[#Lec06 p.03 小商户要什么金融服务\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P1 `00:50`–`13:06` 详讲：三类金融需求、成本与技术改进 |
+| 04 | Why Are Financial Services Costly? | [[#Lec06 p.04 金融服务为何有成本\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P1 `00:50`–`13:06` 详讲：三类金融需求、成本与技术改进 |
+| 05 | What Can Technology Change? | [[#Lec06 p.05 技术改的是哪一步\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P1 `00:50`–`13:06` 详讲：三类金融需求、成本与技术改进 |
+| 06 | FinTech: Payments and Funding | [[#Lec06 p.06 支付、借款与众筹的四个角色\|进入该页]] | 标识或编辑肖像按装饰处理 | ✅ P1 `16:02`–`18:26` 详讲支付、贷款与奖励众筹 |
+| 07 | FinTech: Investment and Risk Management | [[#Lec06 p.07 投资、网络安全与监管科技\|进入该页]] | 标识或编辑肖像按装饰处理 | ✅ P1 `18:28`–`22:19` 详讲后续案例路线与监管边界 |
+| 08 | FinTech: Digital Assets | [[#Lec06 p.08 钱包、加密借贷与稳定币\|进入该页]] | 标识或编辑肖像按装饰处理 | ✅ P1 `18:28`–`22:19` 详讲后续案例路线与监管边界 |
+| 09 | The Layers of a FinTech Product | [[#Lec06 p.09 FinTech 产品五层原图\|进入该页]] | 原图及逐图读法 | ✅ P1 `22:19`–`26:30` 详讲五层产品与合规层 |
+| 10 | Transaction Volume and Fee Revenue | [[#Lec06 p.10 交易量与费收入\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P1 `26:35`–`32:24` 详讲流水、收入、成本与支付采用 |
+| 11 | Scale and Average Processing Cost | [[#Lec06 p.11 处理规模与平均成本原图\|进入该页]] | 原图及逐图读法 | ✅ P1 `26:35`–`32:24` 详讲流水、收入、成本与支付采用 |
+| 12 | What Do Economists Mean by Money? | [[#Lec06 p.12 货币三功能\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P1 `32:24`–`47:00` 详讲货币三职能与 Bitcoin 判断 |
+| 13 | Bitcoin Began as a Two-Person Test | [[#Lec06 p.13 比特币两人的测试\|进入该页]] | 标识或编辑肖像按装饰处理 | ✅ P1 `32:24`–`47:00` 详讲货币三职能与 Bitcoin 判断 |
+| 14 | Bitcoin as Money | [[#Lec06 p.14 比特币怎样对应三功能\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P1 `32:24`–`47:00` 详讲货币三职能与 Bitcoin 判断 |
+| 15 | How a Blockchain Works | [[#Lec06 p.15 分隔 · 区块链怎样运作\|进入该页]] | 纯分隔 | — |
+| 16 | Ledgers, Blockchains, and Tokens | [[#Lec06 p.16 账本、区块链与代币\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P1 `47:00`–`51:52` 详讲账本、区块链、代币 |
+| 17 | The Exporter’s Working-Capital Gap | [[#Lec06 p.17 出口商的营运资金缺口\|进入该页]] | 原图及逐图读法 | ✅ P1 `51:52`–`57:37` 详讲资金缺口与重复融资 |
+| 18 | Two Banks, One Export Receivable | [[#Lec06 p.18 同一应收给两家银行\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P1 `51:52`–`57:37` 详讲资金缺口与重复融资 |
+| 19 | Who May Read and Update the Ledger? | [[#Lec06 p.19 公有网络与许可网络\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P1 `57:37`–`01:00:47` 详讲许可／公开网络 |
+| 20 | Hashing: A Digital Fingerprint of a Record | [[#Lec06 p.20 哈希核对原发票四格\|进入该页]] | 原图及逐图读法 | ✅ P1 `01:00:56`–`01:02:36` 详讲哈希图 |
+| 21 | Private Keys, Public Keys, and Signatures | [[#Lec06 p.21 密钥与签名原图\|进入该页]] | 原图及逐图读法 | ✅ P1 `01:03:01`–`01:05:56` 详讲密钥、签名与练习 |
+| 22 | A Signature Exercise without Code | [[#Lec06 p.22 把转 1 改成 10 的签名演练\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P1 `01:03:01`–`01:05:56` 详讲密钥、签名与练习 |
+| 23 | A Transfer from Instruction to Confirmation | [[#Lec06 p.23 从指令到确认原图\|进入该页]] | 原图及逐图读法 | ✅ P1 `01:06:06`–`01:07:43` 详讲提交、验资与确认 |
+| 24 | Blocks Link the Transaction History | [[#Lec06 p.24 区块反向引用原图\|进入该页]] | 原图及逐图读法 | ✅ P1 `01:07:43`–`01:09:34` 简讲区块引用；口语机制混用已在 §9.3 限定 |
+| 25 | The Double-Spending Problem | [[#Lec06 p.25 同一 BTC 不能支付两次\|进入该页]] | 原图及逐图读法 | ❓ P1→P2 接缝缺失，四源无双花页；不可降权 |
+| 26 | Consensus and Economic Incentives | [[#Lec06 p.26 共识与经济激励\|进入该页]] | 题面、公式、表格或文字解释 | ❓ P1→P2 接缝缺失，四源无 PoW／PoS 讲解；不可降权 |
+| 27 | Confirmations and Settlement Confidence | [[#Lec06 p.27 后续有效区块增强确认\|进入该页]] | 原图及逐图读法 | ❓/✅ P2 `00:00` 从风险段中途开始；确认页开头未录到 |
+| 28 | Private Keys and Authorization Failures | [[#Lec06 p.28 私钥与授权的两种失败\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P2 `01:29`–`05:32` 详讲授权事故；p.29 课堂确认 B；🔴 期末题型 |
+| 29 | Multiple-Choice Question: Custody and Access Control | [[#Lec06 p.29 托管和访问控制题\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P2 `01:29`–`05:32` 详讲授权事故；p.29 课堂确认 B；🔴 期末题型 |
+| 30 | Recorded Information and Business Reality | [[#Lec06 p.30 系统记录与商业事实\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P2 `05:32`–`11:50` 详讲适用条件并做两道选择题 |
+| 31 | When a Shared Ledger Is Useful | [[#Lec06 p.31 共享账本何时值得用\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P2 `05:32`–`11:50` 详讲适用条件并做两道选择题 |
+| 32 | Multiple-Choice Question: Export Finance in China | [[#Lec06 p.32 出口融资选择题\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P2 `05:32`–`11:50` 详讲适用条件并做两道选择题 |
+| 33 | Multiple-Choice Question: A Shared Ledger for US Banks | [[#Lec06 p.33 美国银行共享记录选择题\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P2 `05:32`–`11:50` 详讲适用条件并做两道选择题 |
+| 34 | Blockchain in Financial Services | [[#Lec06 p.34 分隔 · 区块链在金融服务\|进入该页]] | 纯分隔 | — |
+| 35 | Blockchain Applications in China | [[#Lec06 p.35 内地三个应用\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P2 `11:50`–`16:44` 详讲 SAFE 与额度 |
+| 36 | SAFE: Export Receivables Financing | [[#Lec06 p.36 SAFE 出口应收的流程\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P2 `11:50`–`16:44` 详讲 SAFE 与额度 |
+| 37 | Worked Example: Duplicate Receivables Financing | [[#Lec06 p.37 重复融资两柱原图\|进入该页]] | 原图及逐图读法 | ✅ P2 `11:50`–`16:44` 详讲 SAFE 与额度 |
+| 38 | Worked Example: Financing a Receivable | [[#Lec06 p.38 应收融资利息\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P2 `16:44`–`18:03` 复述 6,000 元利息 |
+| 39 | Shenzhen: Electronic Invoice Records | [[#Lec06 p.39 深圳电子发票原图\|进入该页]] | 原图及逐图读法 | ✅ P3 `03:02`–`07:09` 详讲发票与重复报销 |
+| 40 | Worked Example: Two Claims for One Invoice | [[#Lec06 p.40 同一票号报销两次\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P3 `03:02`–`07:09` 详讲发票与重复报销 |
+| 41 | China: Electronic Evidence in Courts | [[#Lec06 p.41 法院电子证据原图\|进入该页]] | 原图及逐图读法 | ✅ P3 `07:09`–`12:35` 详讲司法存证与采用限制 |
+| 42 | LLMs and Shared Trade Records | [[#Lec06 p.42 LLM 贸易记录原图\|进入该页]] | 原图及逐图读法 | ✅ P3 `12:35`–`13:27` 讲 LLM 降低文件提取门槛 |
+| 43 | J.P. Morgan: Corporate Cash across Time Zones | [[#Lec06 p.43 跨时区企业现金\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P3 `13:27`–`18:36` 详讲 Kinexys；课堂数字口误已限定 |
+| 44 | J.P. Morgan: Programmable Treasury Payments | [[#Lec06 p.44 可编程司库补款原图\|进入该页]] | 原图及逐图读法 | ✅ P3 `13:27`–`18:36` 详讲 Kinexys；课堂数字口误已限定 |
+| 45 | J.P. Morgan Case: The Value of Faster Cash Transfers | [[#Lec06 p.45 更快划转的现金节省原图\|进入该页]] | 原图及逐图读法 | ✅ P3 `13:27`–`18:36` 详讲 Kinexys；课堂数字口误已限定 |
+| 46 | Short-Answer Question: Evaluating a Trade-Finance Platform | [[#Lec06 p.46 贸易融资平台三问\|进入该页]] | 题面、公式、表格或文字解释 | ✅/❓ P3 `18:36`–`19:22` 明示短答格式并开始讲评；后半截断 |
+| 47 | Broadridge: Funding a Dealer during the Day | [[#Lec06 p.47 日间回购原图\|进入该页]] | 原图及逐图读法 | ❓ P3→P4 接缝缺失，四源无 DLR 页；不可降权 |
+| 48 | Broadridge DLR: Settlement and Commercial Use | [[#Lec06 p.48 回购的两端时序原图\|进入该页]] | 原图及逐图读法 | ❓ P3→P4 接缝缺失，四源无 DLR 页；不可降权 |
+| 49 | Broadridge Case: Would a Bank Pay for DLR? | [[#Lec06 p.49 DLR 采用成本原图\|进入该页]] | 原图及逐图读法 | ❓ P3→P4 接缝缺失，四源无 DLR 页；不可降权 |
+| 50 | TradeLens: Would Your Company Join? | [[#Lec06 p.50 TradeLens 加入条件\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P4 `01:05`–`08:29` 详讲 TradeLens、效率与利润 |
+| 51 | TradeLens: Why the Network Did Not Continue | [[#Lec06 p.51 TradeLens 为何未继续\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P4 `01:05`–`08:29` 详讲 TradeLens、效率与利润 |
+| 52 | Evaluating an Export-Finance Pilot | [[#Lec06 p.52 试点评估的三项指标\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P4 `01:05`–`08:29` 详讲 TradeLens、效率与利润 |
+| 53 | Worked Example: Verification Cost and Loan Profit | [[#Lec06 p.53 核验成本改变贷款利润\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P4 `01:05`–`08:29` 详讲 TradeLens、效率与利润 |
+| 54 | The Same Technology Meets Two Policy Boundaries | [[#Lec06 p.54 同技术的两套课件政策边界\|进入该页]] | 题面、公式、表格或文字解释 | ✅ P4 `08:29`–`10:01` 简讲政策边界并正式下课 |
+
+### 8.2 课堂时间与来源对照
+
 每行给一个连续页段与对应正文。课堂覆盖按 P1–P4 的独立时钟登记；✅ 是已录到，❓ 是缺录且不可降权，“—”用于没有实质内容的封面／章节页，不表示内容页未讲。
 
 | 讲义页 | 内容 | 笔记小节 | 课堂覆盖 |
@@ -2449,7 +3441,6 @@ C1 是 justified，即已获证明，尚未 finalized。第二轮 A 与 C 的票
 | P3：公司补充、发票／司法、Kinexys 与短答截断 | P3 `00:00`–`19:22` | ~19.4 min | 16.2% |
 | P4：Futu 尾、TradeLens、效率利润与政策收束 | P4 `00:00`–`10:01` | ~10.0 min | 8.4% |
 
-
 ## 9. 延伸与勘误
 
 ### 9.1 课件有但课上略过
@@ -2486,7 +3477,7 @@ C1 是 justified，即已获证明，尚未 finalized。第二轮 A 与 C 的票
 - p.51 官方关闭理由与商业分析已分开。p.54 的银发〔2026〕42 号已于 2026-10-27 经 Jina Reader 取得证监会及人民银行同文全文，并核其境内禁止范围、RWA 例外与旧 237 号废止句。法院存证条款也按取得的《规则》第十六至十九条及官方解读核对；可证明的版本边界见 §2.20、§2.26、§9.5。
 - 课堂 P1 `01:08:10`–`01:09:07` 把“每笔交易加一个区块”及密钥／哈希混在一起；正文继续按讲义区分：区块可容多笔交易，哈希、密钥与签名承担不同动作。
 - 课堂 P2 `00:47` 对存款保障上限使用旧值并带不确定。2026-10-18 官方定向核对：[香港存款保障计划历史](https://www.dps.org.hk/en/about-us/history-of-deposit-protection-in-hong-kong/) 明确每名存款人在每个计划成员 HK\$800,000，自 2024-10-01 生效；[中国人民银行答复](https://wzdt.pbc.gov.cn/eportal/ui?msgDataId=d3f5c72a0157407e97b4998676c34ef2&pageId=77c3557bd521439ea5cd869f5393ba98) 明确同一存款人在同一家投保机构本息合计 RMB500,000；[FDIC 存款保险说明](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance) 为每名存款人在每家受保银行、每种账户所有权类别 USD250,000。本次 FDIC 只核到官方搜索摘要，正文返回 403。三者都不把 crypto 钱包／交易所自动纳入存款保障。
-- 课堂 P3 `18:16` 口述 42,000 与讲义 p.45 的 $0.8m\times4\%=32{,}000$ 冲突；正文按讲义复算保留 32,000，并把课堂数列作口误。
+- 课堂 P3 `18:16` 转录为 42,000 与讲义 p.45 的 $0.8m\times4\%=32{,}000$ 冲突；正文按讲义复算保留 32,000，把转录与课件的差异单列。
 - P4 `06:22` 的“40 percent → 25 percent”应按 p.52 读 40 分钟 → 25 分钟；P4 `07:36` 的资金成本 ASR 误作 400,000，p.53 明示 RMB 4,000。
 
 ### 9.4 外部来源与补充范围

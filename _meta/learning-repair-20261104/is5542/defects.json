@@ -1,0 +1,265 @@
+{
+  "course": "IS5542_GenAI_in_Business",
+  "defects": [
+    {
+      "id": "IS5542-M01-01",
+      "location": "§1.3、§2、§8",
+      "source": "PPTX 物理页 1–117",
+      "failure": "多个内容页共用范围行，听课时无法直接定位本页和该页的独有信息",
+      "fix": "在现稿正文开头增加按物理页序的实质讲解，保留主题精读并逐页精确链接",
+      "impact": "预习、课中、复习",
+      "severity": "blocking",
+      "status": "verified",
+      "evidence": "m01/independent-review.md；m01/targeted-review-2.md；源页、页级锚点与资产已核，正式显示由 IS5542-M01-VISUAL 单独阻塞"
+    },
+    {
+      "id": "IS5542-M01-02",
+      "location": "§2 逐页跟读",
+      "source": "PPTX 图示页，详见 page-evidence.json",
+      "failure": "原图缺位时不能沿图中标签和箭头辨认课堂结构",
+      "fix": "原生渲染裁出原图、复用重复图，并随本页讲解",
+      "impact": "原图显示、解释与课中跟读",
+      "severity": "blocking",
+      "status": "verified",
+      "evidence": "m01/independent-review.md；m01/targeted-review-2.md；源页、页级锚点与资产已核，正式显示由 IS5542-M01-VISUAL 单独阻塞"
+    },
+    {
+      "id": "IS5542-M01-03",
+      "location": "§2 第 13 页与第 40 页",
+      "source": "PPTX 第 13 页备注、第 40 页观看任务",
+      "failure": "第 13 页备注的架构提示只在后段读得到，第 40 页任务的完整作答在正文外",
+      "fix": "第 13 页加独有备注入口；第 40 页就地保留原任务与参考作答",
+      "impact": "备注与原题",
+      "severity": "blocking",
+      "status": "verified",
+      "evidence": "m01/independent-review.md；m01/targeted-review-2.md；源页、页级锚点与资产已核，正式显示由 IS5542-M01-VISUAL 单独阻塞"
+    },
+    {
+      "id": "IS5542-M01-B1",
+      "category": "因果遮罩",
+      "location": "§2.5.3、§5",
+      "source": "p.46/48",
+      "failure": "误将并行理解为可读取未来 token",
+      "impact": "课程学习与来源保真",
+      "severity": "blocking",
+      "status": "verified",
+      "evidence": "m01/targeted-review.md；修补候选与 m01/page-evidence-revised.json"
+    },
+    {
+      "id": "IS5542-M01-B2",
+      "category": "TCO 量纲与复做",
+      "location": "§2.8.6、§4.2、§5、§7",
+      "source": "p.76–78",
+      "failure": "token 数量与金额直接相加，无法对比每合格件成本",
+      "impact": "课程学习与来源保真",
+      "severity": "blocking",
+      "status": "verified",
+      "evidence": "m01/targeted-review.md；修补候选与 m01/page-evidence-revised.json"
+    },
+    {
+      "id": "IS5542-M01-B3",
+      "category": "提示注入和输出后果",
+      "location": "§2.9.2、§7、§9.5",
+      "source": "p.97、ASR 01:52:20 与 01:56:49–01:57:30",
+      "failure": "把攻击手段和后果当作互斥，遗漏未获授权的对外承诺",
+      "impact": "课程学习与来源保真",
+      "severity": "blocking",
+      "status": "verified",
+      "evidence": "m01/targeted-review.md；修补候选与 m01/page-evidence-revised.json"
+    },
+    {
+      "id": "IS5542-M01-B4",
+      "category": "英文字卡",
+      "location": "§5",
+      "source": "p.24、43、67",
+      "failure": "卡片口径与正文冲突",
+      "impact": "课程学习与来源保真",
+      "severity": "blocking",
+      "status": "verified",
+      "evidence": "m01/targeted-review.md；修补候选与 m01/page-evidence-revised.json"
+    },
+    {
+      "id": "IS5542-M01-B5",
+      "category": "视频入口",
+      "location": "§2 p.40、53、54",
+      "source": "对应 PPTX 可见链接",
+      "failure": "读者无法从笔记直接进入观看片段",
+      "impact": "课程学习与来源保真",
+      "severity": "blocking",
+      "status": "verified",
+      "evidence": "m01/targeted-review.md；修补候选与 m01/page-evidence-revised.json"
+    },
+    {
+      "id": "IS5542-M01-B6",
+      "category": "页级问答",
+      "location": "§2 p.14、16–18",
+      "source": "对应 PPTX 引导问题",
+      "failure": "当前页缺中英直接回答",
+      "impact": "课程学习与来源保真",
+      "severity": "blocking",
+      "status": "verified",
+      "evidence": "m01/targeted-review.md；修补候选与 m01/page-evidence-revised.json"
+    },
+    {
+      "id": "IS5542-M01-B7",
+      "category": "页级关键条件",
+      "location": "§2 p.11、103、106、115",
+      "source": "对应 PPTX 与本地 Syllabus",
+      "failure": "项目评价、赔偿条款、条件通过率与风险容忍度需要就地定位",
+      "impact": "课程学习与来源保真",
+      "severity": "blocking",
+      "status": "verified",
+      "evidence": "m01/targeted-review.md；修补候选与 m01/page-evidence-revised.json"
+    },
+    {
+      "id": "IS5542-M01-B8",
+      "category": "来源口径",
+      "location": "§2.4.1、§4.1、§2.9.2",
+      "source": "现有 ASR、PPTX p.91",
+      "failure": "旧段落把讲者回忆写成当前部署，把转录未检出写成未讲",
+      "impact": "课程学习与来源保真",
+      "severity": "blocking",
+      "status": "verified",
+      "evidence": "m01/targeted-review-2.md；逐段对照平安 ASR 和 p.91 来源边界"
+    },
+    {
+      "id": "IS5542-M01-VISUAL",
+      "category": "最终显示",
+      "location": "M01 候选阅读视图",
+      "source": "逐页图文、公式、Mermaid、跳转",
+      "failure": "Computer Use 无法可靠识别本地浏览器网址并停止",
+      "impact": "最终显示、正式写回、课程与 Notion 同步",
+      "severity": "blocking",
+      "status": "waived_by_user",
+      "evidence": "同批 decisions/user-skip-remaining-display.json 与逐篇 review.json；本轮未做最终显示"
+    },
+    {
+      "id": "IS5542-M02-01",
+      "category": "逐页定位",
+      "location": "§1.3、§2、§8",
+      "source": "88 页主 PDF、9 页 PPTX 与 2 张公告截图",
+      "failure": "大量按范围映射，单页和项目模板页难跟读",
+      "fix": "99 个页级入口、说明和精确索引，保留主题精读",
+      "impact": "预习、课中、复习",
+      "severity": "blocking",
+      "status": "verified",
+      "evidence": "m02/independent-review.md；m02/targeted-review.md；正式阅读显示单独受阻"
+    },
+    {
+      "id": "IS5542-M02-02",
+      "category": "课件原图",
+      "location": "§2 图表页",
+      "source": "PDF p.2、3–5、23–25、45、61、71、73–75、77–79 与模板 p.4",
+      "failure": "读图数字和条件可见于文字，课堂图缺对应嵌入",
+      "fix": "15 个独立图资产，访谈封面重复复用",
+      "impact": "读图与课中跟读",
+      "severity": "blocking",
+      "status": "verified",
+      "evidence": "m02/independent-review.md；m02/targeted-review.md；正式阅读显示单独受阻"
+    },
+    {
+      "id": "IS5542-M02-03",
+      "category": "答案地位",
+      "location": "§2.8.1、§2.8.2、§2.8.6",
+      "source": "PDF p.33、37、53",
+      "failure": "p.33、37、53 的给定答案在 PDF 文字层，当前可视页没有显示；须区分来源与推导",
+      "fix": "逐问保留文字层答案及当前渲染差异；GSM8K 标明每人一件假设",
+      "impact": "原题保真与复算",
+      "severity": "blocking",
+      "status": "verified",
+      "evidence": "m02/independent-review.md；m02/targeted-review.md；正式阅读显示单独受阻"
+    },
+    {
+      "id": "IS5542-M02-04",
+      "category": "原题来源缺口",
+      "location": "§2 p.45",
+      "source": "PDF p.45 MMMU 与 MathVista",
+      "failure": "缺原图，无法独立推算答案键",
+      "fix": "明确限制，保留独立课堂题及柱状图",
+      "impact": "原基准题复算",
+      "severity": "blocking",
+      "status": "source_limit_retained",
+      "evidence": "m02/page-evidence.json；需对应原题的原始配图"
+    },
+    {
+      "id": "IS5542-M02-VISUAL",
+      "location": "M02 §2、§8",
+      "source": "最终阅读显示",
+      "failure": "继承本批已明确的 UI 停止，未经实际显示",
+      "severity": "blocking",
+      "status": "waived_by_user",
+      "evidence": "同批 decisions/user-skip-remaining-display.json 与逐篇 review.json；本轮未做最终显示"
+    },
+    {
+      "id": "IS5542-M03-01",
+      "location": "M03 §1.3、§2、§8",
+      "source": "80 页源 PDF",
+      "failure": "原映射多页合并，原图与页序分离",
+      "severity": "blocking",
+      "status": "verified",
+      "evidence": "m03/independent-review.md；m03/targeted-review.md"
+    },
+    {
+      "id": "IS5542-M04-01",
+      "location": "M04 §1.3、§2、§8",
+      "source": "71 页源 PDF",
+      "failure": "课堂计时、对照图和矩阵每一步需单独定位",
+      "severity": "blocking",
+      "status": "verified",
+      "evidence": "m04/independent-review.md；m04/targeted-review.md"
+    },
+    {
+      "id": "IS5542-M05-01",
+      "location": "M05 §1.3、§2、§8",
+      "source": "A 12 页及 B 22 页",
+      "failure": "两套物理页共用主题入口，讲义图缺原图对应",
+      "severity": "blocking",
+      "status": "verified",
+      "evidence": "m05/independent-review.md；m05/targeted-review.md"
+    },
+    {
+      "id": "IS5542-M07-SOURCE",
+      "location": "M07 §8、§9",
+      "source": "S26/S27 部分 ASR",
+      "failure": "本地缺讲义及演示原片，不能判逐页覆盖",
+      "severity": "blocking",
+      "status": "source_limit_retained",
+      "evidence": "m07/navigation-evidence.json"
+    },
+    {
+      "id": "IS5542-M03-VISUAL",
+      "location": "候选最终阅读显示",
+      "source": "Computer Use 安全停止",
+      "failure": "现行授权禁止重试或切换路径；正式显示尚未执行",
+      "severity": "blocking",
+      "status": "waived_by_user",
+      "evidence": "同批 decisions/user-skip-remaining-display.json 与逐篇 review.json；本轮未做最终显示"
+    },
+    {
+      "id": "IS5542-M05-VISUAL",
+      "location": "候选最终阅读显示",
+      "source": "Computer Use 安全停止",
+      "failure": "现行授权禁止重试或切换路径；正式显示尚未执行",
+      "severity": "blocking",
+      "status": "waived_by_user",
+      "evidence": "同批 decisions/user-skip-remaining-display.json 与逐篇 review.json；本轮未做最终显示"
+    },
+    {
+      "id": "IS5542-M04-VISUAL",
+      "location": "候选最终阅读显示",
+      "source": "Computer Use 安全停止",
+      "failure": "现行授权禁止重试或切换路径；正式显示尚未执行",
+      "severity": "blocking",
+      "status": "waived_by_user",
+      "evidence": "同批 decisions/user-skip-remaining-display.json 与逐篇 review.json；本轮未做最终显示"
+    },
+    {
+      "id": "IS5542-M04-B3",
+      "location": "§2.2.4",
+      "source": "两轮定向复核后统筹决策",
+      "failure": "手边有新输出但仍不能重跑时，Q 的复合条件可能把读者经 B、T、P 带回旧课件图。原始只有旧图的死循环已关闭。",
+      "status": "verified",
+      "evidence": "m04/targeted-review-decision.md"
+    }
+  ]
+}

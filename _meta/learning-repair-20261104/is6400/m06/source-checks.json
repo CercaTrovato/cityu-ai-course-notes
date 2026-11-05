@@ -1,0 +1,214 @@
+{
+  "schema": "note-source-checks-v1",
+  "sources": {
+    "PDF": {
+      "path": "../../../../IS6400_Business_Data_Analytics/course_files_export/IS6400-L6-Classification.pdf",
+      "sha256": "32ad627e6f886e3839819391fabcf608825299fe158095720677cfa5e2c8cd0b"
+    },
+    "A": {
+      "path": "../../../../IS6400_Business_Data_Analytics/transcripts/M06-transcript-part1-partial.txt",
+      "sha256": "b8c1426f09207f99ecf59c0c880cca96c46301b8ec562799c8c26ec8dd6efda0"
+    }
+  },
+  "questions": [
+    {
+      "id": "Q18",
+      "source_id": "PDF",
+      "section": "p.18 · Hunt’s Algorithm",
+      "original": "Why do we choose “home owner” to split?\nRecall Information Gain in feature selection",
+      "options": {},
+      "answers": [
+        {
+          "id": "all",
+          "chinese": "它能降低不纯度，但不能据此声称候选中最优。",
+          "english": "The split creates a pure No child and reduces impurity, but it is not the best of all splits in the displayed table. The Married-versus-other split has a larger Gini gain (0.12 versus about 0.0771)."
+        }
+      ]
+    },
+    {
+      "id": "Q25",
+      "source_id": "PDF",
+      "section": "2.5",
+      "original": "Decision Tree?\nOther models?",
+      "options": {},
+      "answers": [
+        {
+          "id": "all",
+          "chinese": "p.25 的问句指向 Learn Model 框：从同一带标签训练表学习映射，模型可以是决策树，也可以是其他分类器或集成。图示任务不是要求补造某种算法的测试标签。",
+          "english": "A decision tree is one choice of learning algorithm. Other classifiers or an ensemble can also learn a mapping from the attributes to the class label."
+        }
+      ]
+    },
+    {
+      "id": "QA",
+      "source_id": "A",
+      "section": "p.18 · Hunt’s Algorithm",
+      "original": "18:16 So please tell me how the training accuracy is changing from the default setting to the final structure.\n18:26 We have four stages, right?\n18:28 And you need to provide four training accuracies.",
+      "options": {},
+      "answers": [
+        {
+          "id": "all",
+          "chinese": "依次为 70%、70%、90%、100%",
+          "english": "The training accuracies for stages (a), (b), (c), and (d) are 70%, 70%, 90%, and 100%, respectively. These are training-set counts, not evidence of generalization."
+        }
+      ]
+    },
+    {
+      "id": "Q39",
+      "source_id": "PDF",
+      "section": "p.39 · Bagging Example · 小测",
+      "original": "Quiz: fill the table for column x=0.9. What is the predicted result? Can this model well fit the original data?",
+      "options": {},
+      "answers": [
+        {
+          "id": "all",
+          "chinese": "十个列示点均正确，但这不是独立测试表现。",
+          "english": "The votes for x=0.9 are (-1,+1,-1,-1,-1,+1,+1,+1,+1,+1), with sum 2 and final class +1. All ten displayed original points are fitted correctly, but this does not establish performance on unseen data."
+        }
+      ]
+    },
+    {
+      "id": "Q59",
+      "source_id": "PDF",
+      "section": "p.59 · Support Vector Machines · 哪条更好",
+      "original": "Which one is better? B1 or B2?\nHow do you define better?",
+      "options": {},
+      "answers": [
+        {
+          "id": "all",
+          "chinese": "p.60 的讲义给定答案是 B1，再解释比较标准是最大化两侧最近点到边界的余量",
+          "english": "B1 is better because it has the larger margin on the displayed data. Better means a larger minimum perpendicular distance from the training points to the separating boundary, under the same feature scale."
+        }
+      ]
+    },
+    {
+      "id": "Q64",
+      "source_id": "PDF",
+      "section": "2.9",
+      "original": "How to classify using SVM once w and b are found? Given a test record, xᵢ",
+      "options": {},
+      "answers": [
+        {
+          "id": "all",
+          "chinese": "先计算内积加截距的分数，再按正负分类。正负 1 是训练间隔边界，原页只写分数至少 1 或至多 -1，漏了中间仍可预测的范围；恰为 0 要预先约定平票。",
+          "english": "Compute s=wᵀxᵢ+b. Predict +1 if s>0 and -1 if s<0, using a predefined tie rule at s=0. The values +1 and -1 define margin boundaries, not the only scores that can be classified."
+        }
+      ]
+    },
+    {
+      "id": "Q65",
+      "source_id": "PDF",
+      "section": "2.10",
+      "original": "What if the problem is not linearly separable?",
+      "options": {},
+      "answers": [
+        {
+          "id": "all",
+          "chinese": "p.65／66 重复同一问。线性不可分时可用软间隔付费容许违约；若类别结构本身非线性，可再做映射或核。两种处理可合用，不能说不可分就必需核。",
+          "english": "Use a soft-margin SVM to penalize margin violations. If the structure requires a nonlinear boundary, also consider a feature mapping or kernel; soft margins and kernels can be combined."
+        }
+      ]
+    },
+    {
+      "id": "Q68",
+      "source_id": "PDF",
+      "section": "2.11",
+      "original": "Is this data linearly-separable?\nHow about a quadratic mapping ϕ(xᵢ)?",
+      "options": {},
+      "answers": [
+        {
+          "id": "all",
+          "chinese": "p.68 上图是一维蓝点在中间、红点在两端，一个阈值无法分开。保留 x 并增加 x² 后，下图可用直线分开；下文平方坐标小例另用自拟数据演示，不把图中无刻度位置当精确数值。",
+          "english": "The displayed one-dimensional data cannot be separated by a single threshold. Mapping each point to (x,x²) allows a linear separator in the enlarged feature space for this displayed pattern."
+        }
+      ]
+    },
+    {
+      "id": "Q69",
+      "source_id": "PDF",
+      "section": "2.11",
+      "original": "What if decision boundary is not linear?",
+      "options": {},
+      "answers": [
+        {
+          "id": "all",
+          "chinese": "p.69 图中红圆在中心、蓝方在外围。原页把中心 (0.5,0.5) 的半径 0.2 以内标 -1，外侧标 +1；边界等号按原式 otherwise 也归 -1。可以映射坐标后求线性面，回到原空间得到曲线。p.70 的 u、v 直线见前文。",
+          "english": "A suitable feature mapping can turn the nonlinear separation into a linear one in another space. In the page-69 rule, points with distance greater than 0.2 from (0.5,0.5) have label +1; all other points have label -1."
+        }
+      ]
+    },
+    {
+      "id": "Q73",
+      "source_id": "PDF",
+      "section": "2.12",
+      "original": "Comparison between logistic regression and support vector machine\nHow does SVM build a separation boundary",
+      "options": {},
+      "answers": [
+        {
+          "id": "all",
+          "chinese": "第一问比较训练目标和输出：LR 用概率及对数损失，SVM 用间隔分数及违约惩罚。第二问讲如何建边界：在规范化约束下求最大间隔，不可分时加松弛，非线性时可用核。以下比较表与步骤是参考解析，原页无标准答案。",
+          "english": "Logistic regression models class probabilities using log loss, while an SVM learns a margin-based decision score. An SVM finds a large-margin separator under normalized constraints, adding slack penalties and possibly a kernel when needed."
+        }
+      ]
+    },
+    {
+      "id": "Q77",
+      "source_id": "PDF",
+      "section": "2.13",
+      "original": "For 1000 bank transactions, only 1 transaction is a fraud transaction\nI have a classifier with a classification accuracy equals to 99.9%, is this a good classifier?",
+      "options": {},
+      "answers": [
+        {
+          "id": "all",
+          "chinese": "p.77／78 是同题和反例。不能只凭 99.9% 认定好：全判正常就有 999/1000 正确，但唯一欺诈漏掉，recall 为 0。须和该基线、少数类指标及业务成本比较。",
+          "english": "Accuracy alone is insufficient. Predicting every transaction as non-fraud gives 99.9% accuracy but zero fraud recall, so the confusion matrix, minority-class metrics, and business costs are needed."
+        }
+      ]
+    },
+    {
+      "id": "Q83",
+      "source_id": "PDF",
+      "section": "p.83 · Alternative Measures · 银行经理题",
+      "original": "If you are a bank manager,\nWhich number do you care most?\na, b, c, d?",
+      "options": {},
+      "answers": [
+        {
+          "id": "all",
+          "chinese": "本页给 a=10、b=20、c=50、d=10000，行是真实类、列是预测类；Yes 为欺诈。若漏欺诈代价最高，会特别关注 b=FN，同时检查误报 c 和检出 a，不能脱离成本宣布永远只有一格重要。这是开放题，课堂也逐格解释代价。",
+          "english": "If missed fraud is most costly, pay particular attention to b (false negatives), while also considering a (detected fraud) and c (false alarms). The business cost matrix determines the trade-off; there is no universally dominant cell."
+        }
+      ]
+    },
+    {
+      "id": "Q55",
+      "source_id": "PDF",
+      "page": 55,
+      "section": "p.55 · Support Vector Machines · 两类点",
+      "original": "Find a linear hyperplane (decision boundary) that will separate the data",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "画一条不穿过两组点、把绿色方块和红色空圈分到两侧的直线",
+          "english": "A straight line through the gap separates the green squares from the red circles. Slide 56 gives one valid example; slides 57 and 58 show that it is not unique."
+        }
+      ]
+    },
+    {
+      "id": "Q67",
+      "source_id": "PDF",
+      "page": 67,
+      "section": "p.67 · Support Vector Machines · 两因素",
+      "original": "Find the hyperplane that optimizes both factors",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "原图没有精确坐标或给定的 C，不能指定唯一的数值最优线",
+          "english": "Use the soft-margin objective to balance a wide margin and violations, with C controlling the penalty. The drawing lacks the coordinates and C needed to identify a unique numerical optimum."
+        }
+      ]
+    }
+  ],
+  "candidate_sha256": "860222fdf263d507573307f165f57bfb5546c9707a383fa41387823ef69462d8"
+}

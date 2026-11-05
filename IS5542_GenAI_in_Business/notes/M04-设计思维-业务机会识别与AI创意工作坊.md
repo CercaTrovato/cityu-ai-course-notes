@@ -60,11 +60,607 @@ mechanism_review: passed
 
 ### 1.3 为什么这一讲放在这里
 
-会调用模型之后，还要决定把它用在哪里。因此正文按“提示 → 用户进展 → 问题 → 排序 → 方案”组织。个人练习和课堂分享紧跟对应方法；讲义页码保持在原位置可查。
+预习从 [[#按课件逐页跟读|§2 逐页讲解]] 开始，再到相应主题复做机制、原题和算例。课中从 [[#8. 讲义页码映射|§8 页码表]] 跳到当前物理页。复习先用 [[#4. 速查表|§4 速查]]，再到 [[#7. 自测|§7 自测]] 检验理由。
 
-讲义的分隔页和计时页也有教学作用。它们说明当前要交什么、给多少练习时间；不把它们误当空白业务材料。
+按源页跟读时，留意计时、虚线与颜色指向的本轮工作。主题精读保留完整任务和课堂补充，帮助复做从 Job Story 到 HMW 再到优先级的过程。
+
+---
 
 ## 2. 正文
+
+### 按课件逐页跟读
+
+工作坊按提示、用户进展、问题陈述、排序与构思推进。图片用于对照原任务，长提示与原题的完整文字保留在对应精读。
+
+**工作坊路线 p.1–3**
+
+#### 讲义 p.1 · CityU AI Workshop · Use Case Ideation
+
+工作坊封面，进入用例构思。
+
+[[#2.1 工作坊路线 讲义 p.1至3|读本页相关精读]]。
+
+#### 讲义 p.2 · Let’s have some warm-up exercises
+
+原页依次要求举右手和左手、拍手、倒数后说名字。读者可据三个动作检查提示有没有写清顺序和触发条件。练习答复是执行动作，无文字标准答案。
+
+[[#热身动作原指令与解释（讲义 p.2）|直达本页原任务与解析]]。
+
+#### 讲义 p.3 · Hands-on workshop agenda
+
+按表走五个时段：提示 15 分钟、JTBD 30 分钟、设计思维 45 分钟、分享 30 分钟、构思 15 分钟。前后还留介绍与收束，课件未给这两项时长。
+
+[[#2.1 工作坊路线 讲义 p.1至3|读本页相关精读]]。
+
+**提示与上下文 p.4–30**
+
+#### 讲义 p.4 · Improve Your Prompts
+
+A 部分封面，先看提示如何把观察转成约束。
+
+[[#2.2.1 从赛车观察到生成图 讲义 p.4至14|读本页相关精读]]。
+
+#### 讲义 p.5 · Describe what you see · 15 seconds
+
+原图任务要求 15 秒描述。先说可见的橙黑色赛车、青色细节、圆形轮罩与横向模糊背景；车型和地点若未核实，就留在推测层。英文参考见精读。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p005.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p005.png|打开课件图示]]
+
+[[#赛车观察原题与中英参考（讲义 p.5）|直达本页原任务与解析]]。
+
+#### 讲义 p.6 · What the AI sees · Identification
+
+对照同一原图与模型文字。McLaren、MCL36 或后续型号、夜间拍摄是本页展示的识别输出。先从图中确认可见线索，再判断具体型号需要哪些证据。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p005.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p005.png|打开课件图示]]
+
+[[#2.2.1 从赛车观察到生成图 讲义 p.4至14|读本页相关精读]]。
+
+#### 讲义 p.7 · What the AI sees · The Car & Livery
+
+先找木瓜橙、黑和青三块涂装，再核标志。模型把颜色和赞助标识转成描述，不能只因描述精细就视为品牌事实。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p005.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p005.png|打开课件图示]]
+
+[[#2.2.1 从赛车观察到生成图 讲义 p.4至14|读本页相关精读]]。
+
+#### 讲义 p.8 · What the AI sees · Wheel Covers
+
+找两只轮罩的彩色圆环。这是图像线索；与 Chrome 标志的关系是模型解释，另需品牌或赛事资料核实。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p005.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p005.png|打开课件图示]]
+
+[[#2.2.1 从赛车观察到生成图 讲义 p.4至14|读本页相关精读]]。
+
+#### 讲义 p.9 · What the AI sees · The Scene & Photography
+
+本页从模糊背景和灯光猜夜间赛道，Bahrain 与 Saudi Arabian Grand Prix 是候选地点。先说能看见什么，再写“可能在何处”。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p005.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p005.png|打开课件图示]]
+
+[[#2.2.1 从赛车观察到生成图 讲义 p.4至14|读本页相关精读]]。
+
+#### 讲义 p.10 · What the AI sees · Motion and Action
+
+车清楚、背景横向拉开，能说明画面有速度感。摇拍手法与钛滑块触地冒火是模型给的原因，需区分图中现象和成因推断。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p005.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p005.png|打开课件图示]]
+
+[[#2.2.1 从赛车观察到生成图 讲义 p.4至14|读本页相关精读]]。
+
+#### 讲义 p.11 · And the Prompt
+
+把侧面构图、夜赛、橙黑涂装、轮罩、火花及背景写进提示。分别说明要生成什么和怎样拍，完整英文提示在精读。
+
+[[#2.2.1 从赛车观察到生成图 讲义 p.4至14|读本页相关精读]]。
+
+#### 讲义 p.12 · What AI generates · Reference displayed
+
+这一页只显示原赛车缩图，为下一页的并排比较留参照。图上没有可据以识别的新输出，下一页再区分左右。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p005.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p005.png|打开课件图示]]
+
+[[#2.2.1 从赛车观察到生成图 讲义 p.4至14|读本页相关精读]]。
+
+#### 讲义 p.13 · What AI generates · Side-by-side
+
+左上是参照，右边大图是生成示例。比较车身色块、轮廓和背景运动线，找被保留的设计特征与发生变化的细节。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p013.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p013.png|打开课件图示]]
+
+[[#2.2.1 从赛车观察到生成图 讲义 p.4至14|读本页相关精读]]。
+
+#### 讲义 p.14 · What AI generates · Compare similarity
+
+继续看 p.13 的并排素材，本页新增结论是提示能得到有用近似。若要求复制既有设计，应另定部件、标志和尺寸验收。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p013.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p013.png|打开课件图示]]
+
+[[#2.2.1 从赛车观察到生成图 讲义 p.4至14|读本页相关精读]]。
+
+#### 讲义 p.15 · Prompt / Context is key · Image prompts
+
+按黄框五项写主体、动作或情境、背景、风格光照、构图与技术细节。先锁主体，再用视角和光照描述希望画面如何呈现。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p015.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p015.png|打开课件图示]]
+
+[[#2.2.2 图片、视频和分镜 讲义 p.15至17|读本页相关精读]]。
+
+#### 讲义 p.16 · Prompt / Context is key · Video prompts
+
+视频仍需主体、动作、场景与风格，另要写镜头移动。例如主体向右跑是动作，镜头跟拍是拍法，二者不能混为一项。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p016.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p016.png|打开课件图示]]
+
+[[#2.2.2 图片、视频和分镜 讲义 p.15至17|读本页相关精读]]。
+
+#### 讲义 p.17 · Generate storyboard images, video and voiceover
+
+左边提示让小男孩成为超级英雄并救人。下排缩图给先后镜头。检查外貌、道具及剧情是否跨镜头一致，再给画面配动作和旁白。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p017.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p017.png|打开课件图示]]
+
+[[#2.2.2 图片、视频和分镜 讲义 p.15至17|读本页相关精读]]。
+
+#### 讲义 p.18 · Prompt / Context is key · Business prompts
+
+黄框从角色、受众、约束、任务走到输出格式。案例可先定年轻 IT 专业人士和尺寸，再要求每个方案列特点。示例和放宽部分边界为可选。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p018.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p018.png|打开课件图示]]
+
+[[#2.2.3 商业提示的字段 讲义 p.18至19|读本页相关精读]]。
+
+#### 讲义 p.19 · 7 Tips for Brainstorming with AI Prompts
+
+课件把视觉化列为可选，并重复受众和约束。让 AI 发散前先保留硬条件，生成后再用目标用户场景筛选。
+
+[[#2.2.3 商业提示的字段 讲义 p.18至19|读本页相关精读]]。
+
+#### 讲义 p.20 · Exercise · Design a 21-inch carry-on suitcase
+
+原题请设计 21 英寸登机箱提示并在 Gemini 测试。参照图帮助辨认对象。先写用户、功能、尺寸及输出结构；本地给参考提示，实际平台运行须由使用者验证。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p020.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p020.png|打开课件图示]]
+
+[[#登机箱完整练习（讲义 p.20）|直达本页原任务与解析]]。
+
+#### 讲义 p.21 · Five-minute exercise timer
+
+本页图只表示 5 分钟练习时长。计时内先写一版，再记一条输出没遵守的条件，下一页对照加入的上下文。
+
+[[#2.2.4 登机箱逐步改写 讲义 p.20至30|读本页相关精读]]。
+
+#### 讲义 p.22 · Added Context · Persona, audience and constraints
+
+更新版设定品牌旅行配件设计师及年轻 IT 专业人士，保留 21 英寸并加可定制表面、TSA 锁和电脑易取。读表时逐项找这些新增限制。
+
+[[#2.2.4 登机箱逐步改写 讲义 p.20至30|读本页相关精读]]。
+
+#### 讲义 p.23 · Added Context · Freedom and output
+
+允许自行提议材料，把输出收紧为三个带编号、名称和特征的独立点子。左列提及可选示例，右列没有给一组输入输出示范。
+
+[[#2.2.4 登机箱逐步改写 讲义 p.20至30|读本页相关精读]]。
+
+#### 讲义 p.24 · Three generated suitcase concepts
+
+图从左到右为 Cyber-Matte Deployer、Pixel-Glaze Swift 和 Tech-Knit Hybrid。分别读硬壳外观、明亮表面和织物式前袋，再核可见方案是否满足 p.22 限制。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p024.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p024.png|打开课件图示]]
+
+[[#2.2.4 登机箱逐步改写 讲义 p.20至30|读本页相关精读]]。
+
+#### 讲义 p.25 · Use AI to improve your prompt · Starting point
+
+同一个 21 英寸原提示再次出现。这次任务转为让模型改写提示本身，后面三页对照改写方向。
+
+[[#2.2.4 登机箱逐步改写 讲义 p.20至30|读本页相关精读]]。
+
+#### 讲义 p.26 · Use AI to improve your prompt · Rewrite request
+
+顺箭头看变化，只新增 Please improve the prompt below。若只要求 improve，模型可能自行假设用户、卖点和输出，改写后应逐项确认。
+
+[[#2.2.4 登机箱逐步改写 讲义 p.20至30|读本页相关精读]]。
+
+#### 讲义 p.27 · Industrial Designer Approach
+
+第一种改写给常旅商务人士，关注空间、耐用、电脑隔层、轮子和内部压缩；还要求材料及技术规格。拿可实现性检验这一版。
+
+[[#2.2.4 登机箱逐步改写 讲义 p.20至30|读本页相关精读]]。
+
+#### 讲义 p.28 · Lifestyle & Aesthetic Approach
+
+在左侧工业设计之外加右侧生活方式版。对象换 Gen Z，重视觉与开箱体验，附 USB-C 和重量秤假设。比较时不要把新功能当用户已证实需求。
+
+[[#2.2.4 登机箱逐步改写 讲义 p.20至30|读本页相关精读]]。
+
+#### 讲义 p.29 · Problem-Solver Approach
+
+第三栏从过度打包和安检延误出发，要求外部快取区和可持续材料。比较三个版本时先核哪些条件没变，再判断新增假设能否测试。
+
+[[#2.2.4 登机箱逐步改写 讲义 p.20至30|读本页相关精读]]。
+
+#### 讲义 p.30 · Mini summary · Prompts
+
+写清上下文有助于生成较合用的图像、视频或业务内容。让模型改提示后仍需逐项核约束和结果。
+
+[[#2.2.4 登机箱逐步改写 讲义 p.20至30|读本页相关精读]]。
+
+**从用户进展找机会 p.31–46**
+
+#### 讲义 p.31 · Identify Opportunities with JTBD
+
+B 部分封面，进入用户待完成的进展（Jobs To Be Done，JTBD）。
+
+[[#2.3 用户到底想完成什么 讲义 p.31至38|读本页相关精读]]。
+
+#### 讲义 p.32 · Identify Opportunities → Define Problem Statement
+
+黄色虚线圈在左边。先用 JTBD 找用户想完成什么，再通过设计思维把它写成问题。下一节会把虚线转到右边。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p032.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p032.png|打开课件图示]]
+
+[[#2.3 用户到底想完成什么 讲义 p.31至38|读本页相关精读]]。
+
+#### 讲义 p.33 · What is a Job? · Drill and hole
+
+人物旁的引语用钻头与孔区分手段和结果。购买钻头为的是得到需要的孔；租工具或请人也可能满足同一任务。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p033.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p033.png|打开课件图示]]
+
+[[#2.3 用户到底想完成什么 讲义 p.31至38|读完整原题和解析]]。
+
+#### 讲义 p.34 · What is a Job? · Situation, motivation, outcome
+
+Job 指客户想完成的具体任务或结果。用 When 定情境、I want to 定动机、so I can 定进展。用户在不同情境可换一种工具完成它。
+
+[[#2.3 用户到底想完成什么 讲义 p.31至38|读完整原题和解析]]。
+
+#### 讲义 p.35 · A Job example · Milkshake
+
+按原题分三问：通勤者雇用奶昔完成什么、在哪一步卡住、会用什么替代。先从车内方便、饱腹和消磨路程提出可验证假设，再看选什么早餐替代。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p035.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p035.png|打开课件图示]]
+
+[[#奶昔情境原题与逐问作答（讲义 p.35–36）|直达本页原任务与解析]]。
+
+#### 讲义 p.36 · A Job example · Branded variant
+
+本页换成带品牌图的同一情境。三个问题继续指向通勤中的实际进展。品牌标识本身不能验证真实购买动机。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p036.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p036.png|打开课件图示]]
+
+[[#奶昔情境原题与逐问作答（讲义 p.35–36）|直达本页原任务与解析]]。
+
+#### 讲义 p.37 · Technology advances, but Jobs are the same
+
+图把地图、广播、GPS 和应用放在四个时间点。它们改变找路和避堵的手段，图上稳定目标是准时抵达。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p037.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p037.png|打开课件图示]]
+
+[[#2.3 用户到底想完成什么 讲义 p.31至38|读本页相关精读]]。
+
+#### 讲义 p.38 · In summary · Mario
+
+从左向右看潜在用户、花形产品、获得新能力的用户。下方两支箭头分别指中间售出的产品与右边得到新能力的客户；例如买保护壳可能为稳定拍摄。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p038.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p038.png|打开课件图示]]
+
+[[#2.3 用户到底想完成什么 讲义 p.31至38|读本页相关精读]]。
+
+#### 讲义 p.39 · How to describe a Job? · Job Stories
+
+黄色框给工作故事模板。先用可观察事件写情境，再写用户希望采取的动作和可观察的结果。
+
+[[#2.4 把进展写成工作故事 讲义 p.39至41|读本页相关精读]]。
+
+#### 讲义 p.40 · Job Stories examples · Content creator
+
+Vlog 或长曝光拍摄是情境，顺手接支架是动机，稳定成片且少折腾是结果。右图的脚架帮定位使用现场。可再问其他安装方式是否也能满足。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p040.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p040.png|打开课件图示]]
+
+[[#2.4 把进展写成工作故事 讲义 p.39至41|读本页相关精读]]。
+
+#### 讲义 p.41 · Job Stories examples · Night Out
+
+拥挤酒吧或演唱会是情境；希望安全装证件和卡；进展是减少携带大钱包又不丢必需品。照片对应拥挤场景。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p041.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p041.png|打开课件图示]]
+
+[[#2.4 把进展写成工作故事 讲义 p.39至41|读本页相关精读]]。
+
+#### 讲义 p.42 · Use AI to help
+
+原提示给配件公司角色，要求按三段式生成工作故事。先选一种角色，再标明输出是假设。核哪种故事能访问到用户证据。
+
+[[#工作故事原任务及示例（讲义 p.42–46）|直达本页原任务与解析]]。
+
+#### 讲义 p.43 · Teams / Individual to find the Job Stories
+
+原页让组或个人选角色，用 Gemini 探索，编号记录，并在 10 分钟内选一条最重要故事。比较理由可来自频率、痛点或可观察进展。
+
+[[#工作故事原任务及示例（讲义 p.42–46）|直达本页原任务与解析]]。
+
+#### 讲义 p.44 · Output · The most important job story
+
+每组或个人交一条最重要故事。应写出情境、动机、结果，并保留选择理由。
+
+[[#工作故事原任务及示例（讲义 p.42–46）|直达本页原任务与解析]]。
+
+#### 讲义 p.45 · Define the job stories for each role
+
+用 10 分钟生成并筛选；右下提醒把故事复制到剪贴板或笔记。各角色按所见场景核，不把生成数量当成果质量。
+
+[[#工作故事原任务及示例（讲义 p.42–46）|直达本页原任务与解析]]。
+
+#### 讲义 p.46 · Mini summary · JTBD
+
+本页把定义、三段式和 AI 辅助探索收束起来。记录选中的工作故事，因为它将作为后面问题陈述的输入。
+
+[[#工作故事原任务及示例（讲义 p.42–46）|直达工作故事原任务与保存要求]]。
+
+**设计思维与问题 p.47–59**
+
+#### 讲义 p.47 · Define Problem Statements with Design Thinking
+
+C 部分封面，转到设计思维写问题。
+
+[[#2.6 五阶段为什么先散后收 讲义 p.47至52|读本页相关精读]]。
+
+#### 讲义 p.48 · Define Problem Statement with Design Thinking
+
+虚线移动到右边问题陈述。把前一步机会交到 Define，决定为谁改善什么，而非直接挑某个 AI 功能。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p048.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p048.png|打开课件图示]]
+
+[[#2.6 五阶段为什么先散后收 讲义 p.47至52|读本页相关精读]]。
+
+#### 讲义 p.49 · Five stages Design Thinking
+
+沿双钻从 Empathise 扩大观察，到 Define 收束问题，再 Ideate 扩展方案，最后 Prototype 与 Test 形成验证。图中的两次变宽变窄对应不同对象。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p049.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p049.png|打开课件图示]]
+
+[[#2.6 五阶段为什么先散后收 讲义 p.47至52|读本页相关精读]]。
+
+#### 讲义 p.50 · Five stages Design Thinking · Highlighted scope
+
+和 p.49 同底图，但黄色虚线标工作坊聚焦的中间范围。课件仍展示完整五阶段；活动优先练从定义问题到构思。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p050.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p050.png|打开课件图示]]
+
+[[#2.6 五阶段为什么先散后收 讲义 p.47至52|读本页相关精读]]。
+
+#### 讲义 p.51 · What are we gonna do in next 20 minutes?
+
+箭头从讲解到大量起草、选前三与展示。先让每条陈述可读，再比较价值和可行性。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p051.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p051.png|打开课件图示]]
+
+[[#工作坊步骤与分工（讲义 p.51–52）|直达本页原任务与解析]]。
+
+#### 讲义 p.52 · What are we gonna do in next 20 minutes? · Timed steps
+
+同一流程新增 10 分钟起草和 5 分钟排序。图没有为每一步给单独时长；按课上安排保留展示时间。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p052.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p052.png|打开课件图示]]
+
+[[#工作坊步骤与分工（讲义 p.51–52）|直达本页原任务与解析]]。
+
+#### 讲义 p.53 · Problem (How Might We) Statements
+
+C1 封面，转到 How Might We 问题表达。
+
+[[#2.7 从工作故事到开放问题 讲义 p.53至59|读本页相关精读]]。
+
+#### 讲义 p.54 · Problem Statements · How-Might-We structure
+
+黄卡拆动作、对象、利益相关者与希望变化。原页举为管理者改进手机壳设计，以增加收入。下一页保留增收例，再改通用模板的结果栏。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p054.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p054.png|打开课件图示]]
+
+[[#问题模板与讲义示例（讲义 p.54–56）|直达本页原任务与解析]]。
+
+#### 讲义 p.55 · How-Might-We structure · Achieve What Job
+
+左下把手机壳泛化为 product，仍以增加营收作例。右上箭头把模板的“What change?”改成“Achieve What Job”。若用登机箱的安检取电脑场景作替换，那是笔记迁移练习。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p055.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p055.png|打开课件图示]]
+
+[[#问题模板与讲义示例（讲义 p.54–56）|直达本页原任务与解析]]。
+
+#### 讲义 p.56 · How-Might-We structure · Worked example
+
+右下新添 Job A 样板，仍留下情境、动机、结果的占位。可用 p.39 三字段补真实内容。代入安检取电脑属于笔记示范。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p056.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p056.png|打开课件图示]]
+
+[[#问题模板与讲义示例（讲义 p.54–56）|直达本页原任务与解析]]。
+
+#### 讲义 p.57 · Define HMW Statements At Scale
+
+四图是数量、标题式短句、大胆构思、稍后评判。先尽量覆盖痛点和对象，后按明确标准评，不在第一轮随意否掉。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p057.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p057.png|打开课件图示]]
+
+[[#发散起草活动及参考（讲义 p.57–59）|直达原活动和中英参考]]。
+
+#### 讲义 p.58 · Output · Lots of HMW statements
+
+本页产物是一组问题句，供下一阶段筛选。每句应能指出服务谁和希望改善哪一步。
+
+[[#发散起草活动及参考（讲义 p.57–59）|直达本页原任务与解析]]。
+
+#### 讲义 p.59 · Prepare As Many HMW Statement As Possible
+
+按黄卡结构在 10 分钟内起草，示例可提供起点。若一句包含两个不同的用户任务，先拆成两句再比较。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p059.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p059.png|打开课件图示]]
+
+[[#发散起草活动及参考（讲义 p.57–59）|直达本页原任务与解析]]。
+
+**排序与汇报 p.60–68**
+
+#### 讲义 p.60 · Evaluate and Prioritize HMW Statements
+
+C2 封面，进入价值与实施复杂度的排序。
+
+[[#2.8 值得做与做得成 讲义 p.60至66|读本页相关精读]]。
+
+#### 讲义 p.61 · HMW statements evaluation & prioritization · Blank matrix
+
+纵轴向上是组织价值，横轴向右是实施复杂度。绿是高价值低复杂，蓝是高价值高复杂，黄是低价值低复杂，红是低价值高复杂。先定判断依据再贴。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p061.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p061.png|打开课件图示]]
+
+[[#矩阵排序原任务和分支（讲义 p.61–66）|直达本页原任务与解析]]。
+
+#### 讲义 p.62 · HMW statements evaluation & prioritization · Placed examples
+
+样例 #1 与 #3 在绿，#2 在蓝，#4 在黄，#5 在红。复杂度估计可找 IT 核数据、依赖方和工期；有新证据就移动卡片。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p062.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p062.png|打开课件图示]]
+
+[[#矩阵排序原任务和分支（讲义 p.61–66）|直达本页原任务与解析]]。
+
+#### 讲义 p.63 · Pick the top 3 HMW statements
+
+按图右规则先数绿区：恰好三条就取三条，多于三条按本题用点投票选三条，少于三条从蓝补，蓝区按需投票。原图绿有两条、蓝有四条，因此本例从蓝补一条。p.61 的黄区建议用于更宽的取舍场景。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p063.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p063.png|打开课件图示]]
+
+[[#矩阵排序原任务和分支（讲义 p.61–66）|直达本页原任务与解析]]。
+
+#### 讲义 p.64 · Output · One matrix and three top HMW statements
+
+每组或个人交一个 2×2 矩阵和三条 HMW。可从矩阵回看每条为什么入选。
+
+[[#矩阵排序原任务和分支（讲义 p.61–66）|直达本页原任务与解析]]。
+
+#### 讲义 p.65 · Evaluate and prioritize · Five minutes
+
+p.65 的操作写画矩阵、贴问题并用点投票选前三，五分钟为活动计时。p.66 总结把投票列为可选；按 p.63 解题时使用它的条件。遇到不确定复杂度先记理由，后续用技术核对更新。
+
+![[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p065.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m04-lecture/p065.png|打开课件图示]]
+
+[[#矩阵排序原任务和分支（讲义 p.61–66）|直达本页原任务与解析]]。
+
+#### 讲义 p.66 · Mini summary · Prioritization
+
+三步是写 HMW、用矩阵排优先、需要时用点投票。原件标有 Proprietary + Confidential，逐页候选保留学习要点。
+
+[[#2.8 值得做与做得成 讲义 p.60至66|读本页相关精读]]。
+
+#### 讲义 p.67 · Time To Present Your Opportunity and Top HMW Statements
+
+C3 是汇报任务页。先说哪个用户进展值得做，再用矩阵和证据解释优先的三个问题。
+
+[[#汇报原任务及参考作答（讲义 p.67–68）|直达本页原任务与解析]]。
+
+#### 讲义 p.68 · Each Team · Five minutes
+
+每组按 5 分钟安排。角色沿用前面的手机壳、旅行箱、耳机壳和折叠手机。汇报需要清楚区分观察和待验证判断。
+
+[[#汇报原任务及参考作答（讲义 p.67–68）|直达本页原任务与解析]]。
+
+**构思与后续 p.69–71**
+
+#### 讲义 p.69 · What’s Next? Ideate Possible Solutions
+
+D 部分提出下一步，从选中的问题转向多种方案。先保留原 Job 和成功标准。
+
+[[#2.10 从问题到原型和测试 讲义 p.69至71|读本页相关精读]]。
+
+#### 讲义 p.70 · Use AI to ideate
+
+卡片把已选 HMW 作为构思的输入。先生成不同机制的方案，再按用户进展与约束选原型。原件标有 Proprietary + Confidential。
+
+[[#构思原指令与参考（讲义 p.69–70）|直达本页原任务与解析]]。
+
+#### 讲义 p.71 · Thank you
+
+结束封面。复习时从三段式、HMW 与矩阵回到本讲案例。
+
+[[#2.10 从问题到原型和测试 讲义 p.69至71|读本页相关精读]]。
+
+---
+
+**主题精读与课堂补充**
 
 ### 2.1 工作坊路线 讲义 p.1至3
 
@@ -73,6 +669,8 @@ mechanism_review: passed
 如果一开始就说“做一个聊天机器人”，团队已经提前选了方案。工作坊先改善描述，再发现机会、定义问题和挑选下一步。
 
 p.1 是标题页。p.2 用举手、拍手、喊名字唤醒参与者。p.3 安排提示 15 分钟、JTBD 30 分钟、问题定义 45 分钟、分享 30 分钟、方案构思 15 分钟。合计 135 分钟，不包含未标时长的介绍和结尾。
+
+#### 热身动作原指令与解释（讲义 p.2）
 
 **p.2 热身原指令（讲义给定动作）**：
 
@@ -130,11 +728,13 @@ p.4 切入提示练习。p.5 要求 15 秒描述图片。以下逐页观察来�
 - p.9：讲义将场景描述为夜间赛道，并用 likely 猜 Bahrain 或 Saudi Arabia；照片具体拍摄时段与地点没有独立元数据，保留讲义解释与推测地位。
 - p.10：跟拍让车较清楚、背景横向模糊。文字将底盘火花解释为钛制滑块接触赛道，属于本页说明。
 
+#### 赛车观察原题与中英参考（讲义 p.5）
+
 **p.5 观察练习：原任务与参考作答**
 
 原文：“Describe what you see … 15 seconds”。题面图片是一张侧面橙黑赛车、赛道背景的照片；上面 p.6–10 的说明是后续讲义解读，不是观察者已经确认的车辆元数据。中文任务是先描述能看到什么，再区分推测；15 秒是活动时限，不是性能测试。
 
-⚪ 参考作答：画面可描述为橙黑单座赛车的侧面、轮圈彩色环、较模糊的赛道背景和底部火花。具体车型、拍摄地点、火花成因及品牌关系按讲义陈述或推测，不能仅凭“AI sees”标题认证真实。English reference: “I see a side view of an orange-and-black single-seater race car, coloured wheel rings, a blurred track background, and sparks beneath the car. The exact model, location, and physical explanation require evidence beyond this description.”
+⚪ 参考作答：画面可描述为橙黑单座赛车的侧面、轮圈彩色环和横向模糊的赛道背景。底盘下的亮点无法据本图确认是火花。具体车型、拍摄地点、火花成因及品牌关系按讲义陈述或推测，不能仅凭“AI sees”标题认证真实。English reference: “I see a side view of an orange-and-black single-seater race car, coloured wheel rings, and a blurred track background. This image does not clearly establish sparks under the car. The exact model, location, and physical explanation require evidence beyond this description.”
 
 若照片没有清楚的夜空或灯光，不能只因后续提示写“night”就把夜间视为图像独立确认；应写“讲义按夜间赛道解读”。
 
@@ -281,6 +881,8 @@ Design a 21” carry-on suitcase
 
 **课件原例与逐问参考作答**
 
+#### 登机箱完整练习（讲义 p.20）
+
 **p.20 完整原题（另保留图中名义21英寸箱子示意，不将其当尺寸认证）**：
 
 > Exercise:
@@ -335,7 +937,15 @@ p.24 展示三张生成概念图：
 - Pixel-Glaze Swift：紫蓝外观、猫图与 USER_01；顶端取电脑的示意强调不用打开主仓。
 - Tech-Knit Hybrid：深色软硬混合外观、前方快速访问仓与 STACK 字样。
 
-这些是课件输出，不是经测试产品。图中小字、尺寸、锁与材料规格都还需要实物核验。
+这些是课件输出。按 p.22–23 的要求先做纸面验收，再列待验证项。三张图都有编号和名称，但没有完整的三份特征清单。画出一组颜色、标志和字体，也不证明这三项都能由用户改。
+
+| 概念 | 纸面能读到的电脑入口和外观 | 尺寸、锁与交付缺口 |
+|---|---|---|
+| Cyber-Matte Deployer | 前翻舱与 CODELIFE 字样 | 图注称 TSA 锁。未读到 21 英寸规格 |
+| Pixel-Glaze Swift | 顶抽电脑口、猫图和 USER_01 | 图注提及 TSA 拉链袋；锁及 21 英寸箱体未证，16 英寸指电脑 |
+| Tech-Knit Hybrid | 磁吸前舱及 STACK 字样 | 图注称 21 英寸、字体和徽标可定制；颜色与 TSA 锁未证 |
+
+本图可比较三种开口。要确认尺寸，用实物量外廓；锁要查型号与证明；取用速度要让目标用户做同一操作。颜色、标志、字体可定制的范围和按约定格式给出的清单，需补到交付物。
 
 p.25–26 提供另一动作：让 AI 改善提示。输入变成下面这样，输出是新提示，不是箱子成品。
 
@@ -387,7 +997,7 @@ p.30 收束为上下文关键、AI 可帮助改提示。三个方向都需要人
 
 **🎙️ 课堂补充**（`12:59`–`20:53`，A · 课上展开）
 
-*"I will give you 3-5 minutes to try it out."*（`13:29`）。意思是先尝试几分钟，随后 `13:44` 又收紧为三分钟。计时图与口头调整应分开记录。
+*"I will give you 3-5 minutes to try it out."*（`12:59` 段尾至 `13:29` 段头）。意思是先尝试几分钟，随后 `13:44` 又收紧为三分钟。计时图与口头调整应分开记录。
 
 *"if you don't know how to master the AI, ask the AI to help"*（`20:14`）。意思是可让 AI 帮忙改写输入，新增了“改善提示本身也是任务”的思路。
 
@@ -400,20 +1010,29 @@ p.30 收束为上下文关键、AI 可帮助改提示。三个方向都需要人
 ```mermaid
 flowchart TD
  A[原请求：21 英寸箱子] --> B[补角色、受众与约束]
- B --> C{约束一致且工具可用？}
- C -- 否 --> D[澄清或暂停，保留文本草稿]
+ B --> C{约束一致吗}
+ C -->|否| D[澄清冲突并确认新约束]
  D --> B
- C -- 是 --> E[要求三个编号方向]
- E --> GEN[生成候选或读取课件给定输出]
- GEN --> F{逐项满足硬约束？}
- F -- 否 --> G[指出缺项，改提示]
- G --> B
- F -- 是 --> H[人工比较，留下方向与待验证项]
+ C -->|是| E[约定三个机制不同的编号方向]
+ E --> T{可以实际运行吗}
+ T -->|是| RUN[生成候选]
+ T -->|否| P{有课件输出可做纸面验收吗}
+ P -->|否| Z[暂停实跑并保留提示]
+ P -->|是| PAPER[读取给定输出 标注未实跑]
+ RUN --> F{有明确缺项或机制重复吗}
+ PAPER --> F
+ F -->|是| G[指出缺项或重复机制 修订提示]
+ G --> Q{现在能取得哪种输入}
+ Q -->|已有新输出| NEW[取新版提示对应的新输出]
+ NEW --> F
+ Q -->|可重跑但还没有新输出| RUN
+ Q -->|均无| Z2[保存纸面发现和新版提示 等待新输出]
+ F -->|否| H[人工比较 保留待实测项]
 ```
 
-走图例：缺“易取电脑”时，在 F 走“否”，将缺项交回 B。若工具不可用，在 C 暂停；不会把没生成的图写成成功。到 H 时只完成概念选择，生产安全仍在图外。
+走图例：缺电脑易取设计时，在 F 走“是”并改提示。工具不可用时，可读取 p.24 的给定图做纸面验收；手边没有任何输出时暂停。纸面图暴露缺项后先修订提示。已有新版输出时直接验它；只有重跑条件时用新版提示生成；两者都没有就保存发现与草稿，等待新输出。到 H 只留下概念和待验证项。
 
-读图自测：三个输出只有颜色不同，应该在哪里处理？在 GEN 后的输出比较中要求机制不同，因为三个编号不等于三个独立方向。
+读图自测：三个输出只有颜色不同，应该在哪里处理？在 F 走“是”，写明三个方案只有颜色差异，要求各给不同的取电脑机构。
 
 **常见误解**
 
@@ -443,6 +1062,8 @@ p.31 切入 B 部分；p.32 先高亮“用 JTBD 找机会”，箭头指向后�
 p.34 的定义是 **"A job is the specific task or outcome a customer is trying to achieve"**。用户“雇用”产品只是比喻：产品帮助完成结果，不是建立劳动合同。
 
 p.35–36 给出北美员工早晨在 drive-thru 买奶昔后开车上班。drive-thru 指不下车的点餐取餐方式。两页问同样三个问题，p.36 的杯子新增 McDonald's 标识。
+
+#### 奶昔情境原题与逐问作答（讲义 p.35–36）
 
 **p.35–36 完整题面（两页文字相同，第二页杯上增加品牌标识）**：
 
@@ -578,6 +1199,8 @@ Please prepare in the format of "When [situation], I want to [motivation],
 so I can [expected outcome]".
 ```
 
+#### 工作故事原任务及示例（讲义 p.42–46）
+
 **先保留 p.42–46 的完整原任务，再作角色替换**：
 
 > You're a [Role] of XYZ, an international mobile accessories company, what likely will be the job stories?
@@ -638,13 +1261,16 @@ flowchart TD
  D --> B
  C -- 是 --> E[人工比较，保留选择理由]
  E --> F[选一条机会假设]
- F --> G[用户观察或访谈]
- G --> H{证据支持？}
- H -- 否 --> A
- H -- 是 --> I[进入 HMW 问题定义]
+ F --> MODE{课堂演练还是实际采用}
+ MODE -->|课堂| P[带待验证标签进入 HMW]
+ MODE -->|实际| G[用户观察或访谈]
+ G --> H{证据支持该需求吗}
+ H -->|缺证据| Q[标待核 收集证据]
+ H -->|有反证| A
+ H -->|支持| I[据已验证的需求进入 HMW]
 ```
 
-走 J1：B 得到安检故事，C 确认三字段，E 因为取物可观察而暂选，F 留下假设。G 未执行时停在 F，不能跳到“用户确实最需要”。
+走 J1：按三字段核对，因取物可观察而暂选。课堂路线可带“需求待验证”进入 HMW；实际采用前先做观察或访谈。若只有 AI 故事，记待核。若真实观察显示旅客主要卡在找证件，应重写或改选故事。
 
 读图自测：模型给了耳机降噪功能，但角色是耳机盒设计师，应在 C 返回。因为它改变了产品对象，后面的取舍建立在错误边界上。
 
@@ -693,6 +1319,8 @@ p.50 的黄色虚线主要圈出 Define 与 Ideate，边界贴近前后阶段，
 理解问题时过早收束会漏掉用户；构思方案时过早锁定产品会漏掉替代机制。先散后收让选择有可比较的集合，但数量本身不能证明质量。
 
 本课压缩活动在 p.51–52：先大量写问题，再排序选前三，最后汇报。p.52 给起草十分钟、排序五分钟，其余介绍与汇报并未各写精确分钟。
+
+#### 工作坊步骤与分工（讲义 p.51–52）
 
 **p.51–52 原流程与逐项解释**：
 
@@ -755,6 +1383,8 @@ For [Stakeholder]
 In order to [What change? / Achieve What Job]
 ```
 
+#### 问题模板与讲义示例（讲义 p.54–56）
+
 **p.54–56 原模板与给定示例（原词保留）**：
 
 > How Might We (Action)
@@ -796,6 +1426,8 @@ p.55 把泛泛的 change 改成 achieve what job；p.56 补 Job A 的故事占�
 
 **原题逐问参考作答**
 
+#### 发散起草活动及参考（讲义 p.57–59）
+
 **p.57–59 完整活动要求与英文参考**：
 
 > Define HMW Statements At Scale
@@ -806,7 +1438,7 @@ p.55 把泛泛的 change 改成 achieve what job；p.56 补 Job A 的故事占�
 > Each Team / Individual with lots of HMW statements
 > #1 - Prepare As Many HMW Statement As Possible
 
-p.59 再给上述 Action／What／Stakeholder／What change 模板、Job A示例及10分钟图。中文：先多写简短而相关的问题，允许探索，延后成本筛选；并非彻底放弃逻辑或角色边界。“later”改变的是评判时机，不是永远不评判。
+p.59 重列动作、对象、相关方与变化的模板。短例以 “In order to Achieve Job A?” 结束，没有 p.56 的长故事占位。本页另给 10 分钟计时。中文：先多写简短而相关的问题，允许探索，延后成本筛选；并非彻底放弃逻辑或角色边界。“later”改变的是评判时机，不是永远不评判。
 
 English reference: “Use the selected job story to draft several concise HMW questions. Preserve the stakeholder and intended outcome, explore different obstacles, and defer feasibility ranking to the next stage. H1–H3 below are reference questions, not verified customer findings.”
 
@@ -881,6 +1513,8 @@ p.61 要站在 executive sponsor，即支持项目的管理者视角看价值。
 
 p.62 原图把 #1、#3 放绿色，#2 放蓝色，#4 放黄色，#5 放红色。编号仅是占位问题，并没有给这些问题的具体内容或真实成本。需要时询问 IT 团队或 Googlers，不能凭图的位置倒推出业务事实。
 
+#### 矩阵排序原任务和分支（讲义 p.61–66）
+
 **p.61–66 原任务及图形读法**：
 
 > Use the large paper, draw up the following 2x2 matrix,
@@ -924,7 +1558,9 @@ p.65 操作原文：
 
 用户结果不会直接跳成组织收益。要逐条走“安检哪步改善 → 哪项购买／服务／成本结果可能改变 → 本组织为什么暂时重视 → 还缺什么验证”。若现实只知道用户说方便，不知道上述连接，就把组织价值标待核，不自动放到上排。
 
-以下五条都先通过J1相关性检查，再按同一组织目标暂定位置：
+交接时保持 J1 的同一用户与进展。H1 的开箱障碍细化成 P1。H2 的查找障碍拆成 P2 的事前定位和 P3 的打开后辨认。H3 的搬拿障碍细化成 P5。P4 是补进的闭合障碍，仍服务取物后顺利通过安检。换成其他旅行任务时，先回到故事选择，不直接混入本表。
+
+以下五条先过 J1 相关性，再按同一组织目标暂定位置：
 
 **P1–P3：主要障碍怎样连接组织目标**
 
@@ -964,10 +1600,14 @@ P1 和 P3 先进入队列，绿色只有两条。按 p.63 从蓝色补一条 P2�
 
 ```mermaid
 flowchart TD
- A[先查问题服务所选job 再写组织价值链与复杂度理由] --> B{证据足以暂定位置？}
- B -- 否 --> C[标待核，向用户、IT 或业务求证]
- C --> A
- B -- 是 --> D[放四象限，数绿色条数 n]
+ A{此问题服务所选 Job 吗}
+ A -->|否| OUT[退回或登记为另一 Job]
+ A -->|是| B{价值与复杂度证据足够吗}
+ B -->|否| C[标待核并请求补证]
+ C --> T{排序截止前收到新证据吗}
+ T -->|是| B
+ T -->|否| END[暂不排名 交已有项和证据缺口]
+ B -->|是| D[放四象限 数绿色条数 n]
  D --> E{n 与 3 比较}
  E -- 恰好 3 --> F[保留绿色三条]
  E -- 多于 3 --> G[点投票选前三]
@@ -979,7 +1619,9 @@ flowchart TD
  AVAILABLE -- 否 --> SHORT[交已有条目与缺口 不虚构前三]
 ```
 
-图按 p.61–63 和参考限制重画。先检查与J1的相关性，再比较组织价值与实施路径；P1–P5在给定假设下走少于三条分支，输出两绿一蓝。读图自测：绿色四条但管理者已选好三条，可直接跳 F 吗？不能按本练习这样跳；应走 G，并说明投票规则。另一个变式：客户说“方便”，却没查它怎样影响本组织目标，应先在B走否补证据，不能自动归高价值；换箱体图案则更早在A退回job相关性检查。
+图按 p.61–63 和参考限制重画。先检查与J1的相关性，再比较组织价值与实施路径；P1–P5在给定假设下走少于三条分支，输出两绿一蓝。读图自测：绿色四条但管理者已选好三条，可直接跳 F 吗？不能按本练习这样跳；应走 G，并说明投票规则。
+
+若客户只说“方便”，先在 B 补价值证据。截止时仍未取得，就标待核并交可支持的部分。若更换箱体图案和 J1 无关，即使有报价也在 A 退回。
 
 **点投票的可复算小例（笔记补充）**
 
@@ -1031,6 +1673,8 @@ HMW 仍是问题，矩阵位置依赖可能的实施路径。进入 ideation 后
 
 这是 p.67–68 交付要求的参考示范。与 p.3 计划分享三十分钟相比，p.68 是每队计时；本场实际为个人分享，不能强行让两种时间相等。
 
+#### 汇报原任务及参考作答（讲义 p.67–68）
+
 **p.67–68 原汇报任务与英文参考**：
 
 > Time To Present Your Opportunity and Top HMW Statements
@@ -1080,6 +1724,8 @@ English reference: “Our role is travel-suitcase designer for the fictional bra
 问题句保留目标，方案句提出机制。多个机制让人能比较成本和失败原因，再用原型检验，避免第一幅漂亮图直接变开发计划。
 
 **课件原例与逐问参考作答**
+
+#### 构思原指令与参考（讲义 p.69–70）
 
 **p.69–70 原指令与来源边界**：
 
@@ -1278,6 +1924,85 @@ flowchart TD
 
 ## 8. 讲义页码映射
 
+以下为 PDF 物理页与正文精确定位。原有课堂时点和对应精读见折叠记录。
+
+| 页码 | 原页标题 | 本页讲解 | 图与页型 |
+|---|---|---|---|
+| 讲义 p.1 | CityU AI Workshop · Use Case Ideation | [[#讲义 p.1 · CityU AI Workshop · Use Case Ideation\|定位]] | 封面或分隔 |
+| 讲义 p.2 | Let’s have some warm-up exercises | [[#讲义 p.2 · Let’s have some warm-up exercises\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.3 | Hands-on workshop agenda | [[#讲义 p.3 · Hands-on workshop agenda\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.4 | Improve Your Prompts | [[#讲义 p.4 · Improve Your Prompts\|定位]] | 封面或分隔 |
+| 讲义 p.5 | Describe what you see · 15 seconds | [[#讲义 p.5 · Describe what you see · 15 seconds\|定位]] | 课件原图 p005 |
+| 讲义 p.6 | What the AI sees · Identification | [[#讲义 p.6 · What the AI sees · Identification\|定位]] | 复用 讲义 p.5 原图 |
+| 讲义 p.7 | What the AI sees · The Car & Livery | [[#讲义 p.7 · What the AI sees · The Car & Livery\|定位]] | 复用 讲义 p.5 原图 |
+| 讲义 p.8 | What the AI sees · Wheel Covers | [[#讲义 p.8 · What the AI sees · Wheel Covers\|定位]] | 复用 讲义 p.5 原图 |
+| 讲义 p.9 | What the AI sees · The Scene & Photography | [[#讲义 p.9 · What the AI sees · The Scene & Photography\|定位]] | 复用 讲义 p.5 原图 |
+| 讲义 p.10 | What the AI sees · Motion and Action | [[#讲义 p.10 · What the AI sees · Motion and Action\|定位]] | 复用 讲义 p.5 原图 |
+| 讲义 p.11 | And the Prompt | [[#讲义 p.11 · And the Prompt\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.12 | What AI generates · Reference displayed | [[#讲义 p.12 · What AI generates · Reference displayed\|定位]] | 复用 讲义 p.5 原图 |
+| 讲义 p.13 | What AI generates · Side-by-side | [[#讲义 p.13 · What AI generates · Side-by-side\|定位]] | 课件原图 p013 |
+| 讲义 p.14 | What AI generates · Compare similarity | [[#讲义 p.14 · What AI generates · Compare similarity\|定位]] | 复用 讲义 p.13 原图 |
+| 讲义 p.15 | Prompt / Context is key · Image prompts | [[#讲义 p.15 · Prompt / Context is key · Image prompts\|定位]] | 课件原图 p015 |
+| 讲义 p.16 | Prompt / Context is key · Video prompts | [[#讲义 p.16 · Prompt / Context is key · Video prompts\|定位]] | 课件原图 p016 |
+| 讲义 p.17 | Generate storyboard images, video and voiceover | [[#讲义 p.17 · Generate storyboard images, video and voiceover\|定位]] | 课件原图 p017 |
+| 讲义 p.18 | Prompt / Context is key · Business prompts | [[#讲义 p.18 · Prompt / Context is key · Business prompts\|定位]] | 课件原图 p018 |
+| 讲义 p.19 | 7 Tips for Brainstorming with AI Prompts | [[#讲义 p.19 · 7 Tips for Brainstorming with AI Prompts\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.20 | Exercise · Design a 21-inch carry-on suitcase | [[#讲义 p.20 · Exercise · Design a 21-inch carry-on suitcase\|定位]] | 课件原图 p020 |
+| 讲义 p.21 | Five-minute exercise timer | [[#讲义 p.21 · Five-minute exercise timer\|定位]] | 五分钟计时标记，已转写 |
+| 讲义 p.22 | Added Context · Persona, audience and constraints | [[#讲义 p.22 · Added Context · Persona, audience and constraints\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.23 | Added Context · Freedom and output | [[#讲义 p.23 · Added Context · Freedom and output\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.24 | Three generated suitcase concepts | [[#讲义 p.24 · Three generated suitcase concepts\|定位]] | 课件原图 p024 |
+| 讲义 p.25 | Use AI to improve your prompt · Starting point | [[#讲义 p.25 · Use AI to improve your prompt · Starting point\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.26 | Use AI to improve your prompt · Rewrite request | [[#讲义 p.26 · Use AI to improve your prompt · Rewrite request\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.27 | Industrial Designer Approach | [[#讲义 p.27 · Industrial Designer Approach\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.28 | Lifestyle & Aesthetic Approach | [[#讲义 p.28 · Lifestyle & Aesthetic Approach\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.29 | Problem-Solver Approach | [[#讲义 p.29 · Problem-Solver Approach\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.30 | Mini summary · Prompts | [[#讲义 p.30 · Mini summary · Prompts\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.31 | Identify Opportunities with JTBD | [[#讲义 p.31 · Identify Opportunities with JTBD\|定位]] | 封面或分隔 |
+| 讲义 p.32 | Identify Opportunities → Define Problem Statement | [[#讲义 p.32 · Identify Opportunities → Define Problem Statement\|定位]] | 课件原图 p032 |
+| 讲义 p.33 | What is a Job? · Drill and hole | [[#讲义 p.33 · What is a Job? · Drill and hole\|定位]] | 课件原图 p033 |
+| 讲义 p.34 | What is a Job? · Situation, motivation, outcome | [[#讲义 p.34 · What is a Job? · Situation, motivation, outcome\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.35 | A Job example · Milkshake | [[#讲义 p.35 · A Job example · Milkshake\|定位]] | 课件原图 p035 |
+| 讲义 p.36 | A Job example · Branded variant | [[#讲义 p.36 · A Job example · Branded variant\|定位]] | 课件原图 p036 |
+| 讲义 p.37 | Technology advances, but Jobs are the same | [[#讲义 p.37 · Technology advances, but Jobs are the same\|定位]] | 课件原图 p037 |
+| 讲义 p.38 | In summary · Mario | [[#讲义 p.38 · In summary · Mario\|定位]] | 课件原图 p038 |
+| 讲义 p.39 | How to describe a Job? · Job Stories | [[#讲义 p.39 · How to describe a Job? · Job Stories\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.40 | Job Stories examples · Content creator | [[#讲义 p.40 · Job Stories examples · Content creator\|定位]] | 课件原图 p040 |
+| 讲义 p.41 | Job Stories examples · Night Out | [[#讲义 p.41 · Job Stories examples · Night Out\|定位]] | 课件原图 p041 |
+| 讲义 p.42 | Use AI to help | [[#讲义 p.42 · Use AI to help\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.43 | Teams / Individual to find the Job Stories | [[#讲义 p.43 · Teams / Individual to find the Job Stories\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.44 | Output · The most important job story | [[#讲义 p.44 · Output · The most important job story\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.45 | Define the job stories for each role | [[#讲义 p.45 · Define the job stories for each role\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.46 | Mini summary · JTBD | [[#讲义 p.46 · Mini summary · JTBD\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.47 | Define Problem Statements with Design Thinking | [[#讲义 p.47 · Define Problem Statements with Design Thinking\|定位]] | 封面或分隔 |
+| 讲义 p.48 | Define Problem Statement with Design Thinking | [[#讲义 p.48 · Define Problem Statement with Design Thinking\|定位]] | 课件原图 p048 |
+| 讲义 p.49 | Five stages Design Thinking | [[#讲义 p.49 · Five stages Design Thinking\|定位]] | 课件原图 p049 |
+| 讲义 p.50 | Five stages Design Thinking · Highlighted scope | [[#讲义 p.50 · Five stages Design Thinking · Highlighted scope\|定位]] | 课件原图 p050 |
+| 讲义 p.51 | What are we gonna do in next 20 minutes? | [[#讲义 p.51 · What are we gonna do in next 20 minutes?\|定位]] | 课件原图 p051 |
+| 讲义 p.52 | What are we gonna do in next 20 minutes? · Timed steps | [[#讲义 p.52 · What are we gonna do in next 20 minutes? · Timed steps\|定位]] | 课件原图 p052 |
+| 讲义 p.53 | Problem (How Might We) Statements | [[#讲义 p.53 · Problem (How Might We) Statements\|定位]] | 封面或分隔 |
+| 讲义 p.54 | Problem Statements · How-Might-We structure | [[#讲义 p.54 · Problem Statements · How-Might-We structure\|定位]] | 课件原图 p054 |
+| 讲义 p.55 | How-Might-We structure · Achieve What Job | [[#讲义 p.55 · How-Might-We structure · Achieve What Job\|定位]] | 课件原图 p055 |
+| 讲义 p.56 | How-Might-We structure · Worked example | [[#讲义 p.56 · How-Might-We structure · Worked example\|定位]] | 课件原图 p056 |
+| 讲义 p.57 | Define HMW Statements At Scale | [[#讲义 p.57 · Define HMW Statements At Scale\|定位]] | 课件原图 p057 |
+| 讲义 p.58 | Output · Lots of HMW statements | [[#讲义 p.58 · Output · Lots of HMW statements\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.59 | Prepare As Many HMW Statement As Possible | [[#讲义 p.59 · Prepare As Many HMW Statement As Possible\|定位]] | 课件原图 p059 |
+| 讲义 p.60 | Evaluate and Prioritize HMW Statements | [[#讲义 p.60 · Evaluate and Prioritize HMW Statements\|定位]] | 封面或分隔 |
+| 讲义 p.61 | HMW statements evaluation & prioritization · Blank matrix | [[#讲义 p.61 · HMW statements evaluation & prioritization · Blank matrix\|定位]] | 课件原图 p061 |
+| 讲义 p.62 | HMW statements evaluation & prioritization · Placed examples | [[#讲义 p.62 · HMW statements evaluation & prioritization · Placed examples\|定位]] | 课件原图 p062 |
+| 讲义 p.63 | Pick the top 3 HMW statements | [[#讲义 p.63 · Pick the top 3 HMW statements\|定位]] | 课件原图 p063 |
+| 讲义 p.64 | Output · One matrix and three top HMW statements | [[#讲义 p.64 · Output · One matrix and three top HMW statements\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.65 | Evaluate and prioritize · Five minutes | [[#讲义 p.65 · Evaluate and prioritize · Five minutes\|定位]] | 课件原图 p065 |
+| 讲义 p.66 | Mini summary · Prioritization | [[#讲义 p.66 · Mini summary · Prioritization\|定位]] | 带保密标识，保留教学要点 |
+| 讲义 p.67 | Time To Present Your Opportunity and Top HMW Statements | [[#讲义 p.67 · Time To Present Your Opportunity and Top HMW Statements\|定位]] | 文字讲解；无独立教学原图 |
+| 讲义 p.68 | Each Team · Five minutes | [[#讲义 p.68 · Each Team · Five minutes\|定位]] | 五分钟计时及角色，已转写 |
+| 讲义 p.69 | What’s Next? Ideate Possible Solutions | [[#讲义 p.69 · What’s Next? Ideate Possible Solutions\|定位]] | 封面或分隔 |
+| 讲义 p.70 | Use AI to ideate | [[#讲义 p.70 · Use AI to ideate\|定位]] | 带保密标识，保留教学要点 |
+| 讲义 p.71 | Thank you | [[#讲义 p.71 · Thank you\|定位]] | 封面或分隔 |
+
+<details>
+<summary>原有主题与课堂对应</summary>
+
 每行覆盖连续页面；时间是内容对齐区间，不是每页独立停留时长。✅ 指主题在转录有证据，⚪ 指封面或转场，❓ 指无法逐页确认。
 
 | 笔记小节 | 讲义页 | 转录区间 | 课堂覆盖 |
@@ -1328,6 +2053,10 @@ flowchart TD
 
 逐列读法：内容块按主题归并。区间按相邻边界相减。秒数是跨度，含等待。占比是该秒数除 6,247 再乘 100%，保留一位小数。总秒数可加，圆整占比合计可能有误差。旧计算证据为2026-10-10任务scratch中的 `verify_examples.py`／examples-results.json；本次数值和条件未改变时按真实SHA承接，不冒称新的现场计时。
 
+</details>
+
+---
+
 ## 9. 延伸与勘误
 
 ### 9.1 课件页与录音证据的边界
@@ -1373,7 +2102,7 @@ flowchart TD
 
 **转录登记**
 
-`M04-transcript.txt` 有 644 个时间戳段、642 个不同时间戳。`58:29` 与 `01:42:41` 各出现两段，属于同秒的两个发言，不能去重为丢掉两段内容。时间没有倒退；`00:00` 起已处于介绍中途，不能证明开场完整。
+`M04-transcript.txt` 有 644 个时间戳段、642 个不同时间戳。`58:29` 与 `01:42:41` 各有两段文本共享一个起点。ASR 未区分说话人，保留两段。时间没有倒退；`00:00` 起已处于介绍中途，不能证明开场完整。
 
 最后 ASR 段始于 `01:44:07`，媒体时长约 `01:44:35.7`。这约 28.7 秒可能包含最后一段余音及结束，不等于已证明缺失了 28.7 秒讲话。没有人工听校，内容性质未定。
 

@@ -1,0 +1,725 @@
+{
+  "source": "IS6400_Business_Data_Analytics/course_files_export/IS6400-L8-time series1-new.pdf",
+  "source_sha256": "5583530f3b6165deb406841eb8e1f54cae384f4341037304d5a7490ffacca939",
+  "baseline_sha256": "8e3503c2f31254a40148b525cc8f2fccdc79f762075f513ad6dc1873813a595a",
+  "candidate_sha256": "39bc46316ff9c2e777830508607ecd38ca8556967e9b1da96c554fad45b53062",
+  "transcripts": {
+    "IS6400_Business_Data_Analytics/transcripts/M07-transcript-source15-partial.txt": "2fc527eb5a56e80d71a2c6bc3ee40a78c90c883091cd8cbc826d78161d4754b7",
+    "IS6400_Business_Data_Analytics/transcripts/M07-transcript-source16-partial.txt": "1b39a5d75cd082fbaa4f48e716c522438ff91e0fd0a1389087bcbd2a4e762040",
+    "IS6400_Business_Data_Analytics/transcripts/M07-transcript-source17-partial.txt": "fd6de1e4c2c78abd52e9548a4c5fe18941990a68addc703a4c4bd96b78074597"
+  },
+  "stage": "author_candidate_pending_review",
+  "pages": [
+    {
+      "page": 1,
+      "title": "本讲导览",
+      "anchor": "p.1 · 本讲导览",
+      "disposition": "导览",
+      "content": "先复习预测的输入和目标，再辨认历史序列形状，最后分别用平滑和回归作预测。PDF 有 45 个物理页，页脚沿用旧版分母。",
+      "visual": "联系图",
+      "original_printed_title": "IS6400 Business Data Analytics",
+      "review_candidate_anchor": "p.1 · 本讲导览"
+    },
+    {
+      "page": 2,
+      "title": "机器学习流程",
+      "anchor": "p.2 · 机器学习流程",
+      "disposition": "图",
+      "content": "从问题和数据进入训练，评估之后再判断能否上线。未通过时沿箭头回到误差分析；时间序列的评估还要检查训练和预测的先后。",
+      "visual": "联系图",
+      "original_printed_title": "Introduction",
+      "review_candidate_anchor": "p.2 · 机器学习流程"
+    },
+    {
+      "page": 3,
+      "title": "回归中的同义术语",
+      "anchor": "p.3 · 回归中的同义术语",
+      "disposition": "图",
+      "content": "表上行是输入，下行是目标。独立变量、预测变量、解释变量在这里都指输入角色，并不意味着它们彼此统计独立。",
+      "visual": "联系图",
+      "original_printed_title": "Review – Linear Regression",
+      "review_candidate_anchor": "p.3 · 回归中的同义术语"
+    },
+    {
+      "page": 4,
+      "title": "GDP 与满意度",
+      "anchor": "p.4 · GDP 与满意度",
+      "disposition": "图",
+      "content": "拟合图中的散点后，在横轴按某国人均 GDP 找位置，再沿竖直方向读直线上的满意度。红星是预测值，例子没有证明收入的因果效应。",
+      "visual": "联系图",
+      "original_printed_title": "Review – Linear Regression",
+      "review_candidate_anchor": "p.4 · GDP 与满意度"
+    },
+    {
+      "page": 5,
+      "title": "截距和斜率",
+      "anchor": "p.5 · 截距和斜率",
+      "disposition": "图",
+      "content": "横轴走一段 $\\Delta X$，线上的纵坐标改变 $\\Delta Y$，斜率是两者之比。截距是 $X=0$ 的模型值，数据若没靠近 0 不宜强作业务解释。",
+      "visual": "联系图",
+      "original_printed_title": "Review – Linear Regression",
+      "review_candidate_anchor": "p.5 · 截距和斜率"
+    },
+    {
+      "page": 6,
+      "title": "回归树怎样读叶子",
+      "anchor": "p.6 · 回归树怎样读叶子",
+      "disposition": "图",
+      "content": "四格依次切分、求叶均值、放入新点、沿树查叶子。经验 6 年、薪资 40k 的点沿低于 10 年及不低于 30k 的分支，取图中叶均值 Z2。 原图右下把第一条判断的 Yes/No 标反了；按左上空间切分及新点位置读。",
+      "visual": "联系图与原尺寸",
+      "original_printed_title": "Review – Regression Tree",
+      "review_candidate_anchor": "p.6 · 回归树怎样读叶子"
+    },
+    {
+      "page": 7,
+      "title": "规则间隔的观测",
+      "anchor": "p.7 · 规则间隔的观测",
+      "disposition": "图",
+      "content": "能源和股价图横轴按时间推进。$Y_t$ 是第 $t$ 期目标，$X_t$ 是预测任务可用的输入；规则间隔表示采样时间距相同。",
+      "visual": "联系图",
+      "original_printed_title": "Introduction – Time Series",
+      "review_candidate_anchor": "p.7 · 规则间隔的观测"
+    },
+    {
+      "page": 8,
+      "title": "下一期可以问什么",
+      "anchor": "p.8 · 下一期可以问什么",
+      "disposition": "图",
+      "content": "三组应用可分别预测交易价格、家居用量、仓储需求。动手前先定目标、单位、频率及提前几期。",
+      "visual": "联系图",
+      "original_printed_title": "Introduction – Time Series",
+      "review_candidate_anchor": "p.8 · 下一期可以问什么"
+    },
+    {
+      "page": 9,
+      "title": "定性和定量",
+      "anchor": "p.9 · 定性和定量",
+      "disposition": "图",
+      "content": "左框用专家与顾客判断，右框用统计和回归。红框标出本讲重点展开的路线。",
+      "visual": "联系图",
+      "original_printed_title": "Time series prediction",
+      "review_candidate_anchor": "p.9 · 定性和定量"
+    },
+    {
+      "page": 10,
+      "title": "预测方法谱系",
+      "anchor": "p.10 · 预测方法谱系",
+      "disposition": "文字",
+      "content": "历史类比、德尔菲与市场研究属定性；外推靠本序列历史。计量路线可把价格等外部输入放入方程，加入变量并不自动识别因果。",
+      "visual": "联系图",
+      "original_printed_title": "Forecasting Techniques",
+      "review_candidate_anchor": "p.10 · 预测方法谱系"
+    },
+    {
+      "page": 11,
+      "title": "缺历史时怎样起步",
+      "anchor": "p.11 · 缺历史时怎样起步",
+      "disposition": "文字",
+      "content": "新品没有销量，可先找相似产品再列差异，用经验估计。水晶球照片是插图；可比的客群、渠道和价格才是需要记录的依据。",
+      "visual": "联系图",
+      "original_printed_title": "Qualitative and Judgmental Forecasting",
+      "review_candidate_anchor": "p.11 · 缺历史时怎样起步"
+    },
+    {
+      "page": 12,
+      "title": "德尔菲反馈循环",
+      "anchor": "p.12 · 德尔菲反馈循环",
+      "disposition": "图",
+      "content": "图中从主持人招募专家、说明问题，到多轮问卷、反馈和行动建议。多轮后意见趋同仍需用事后数据验证准确度。",
+      "visual": "联系图",
+      "original_printed_title": "Qualitative and Judgmental Forecasting",
+      "review_candidate_anchor": "p.12 · 德尔菲反馈循环"
+    },
+    {
+      "page": 13,
+      "title": "历史外推的条件",
+      "anchor": "p.13 · 历史外推的条件",
+      "disposition": "文字",
+      "content": "把可重复结构与随机抖动分开；外部环境可能变，过去拟合好也会失灵。按时间留出后段评估可检验能否推广到未来。",
+      "visual": "联系图",
+      "original_printed_title": "Quantitative Forecasting",
+      "review_candidate_anchor": "p.13 · 历史外推的条件"
+    },
+    {
+      "page": 14,
+      "title": "水平形状",
+      "anchor": "p.14 · 水平形状",
+      "disposition": "图",
+      "content": "横轴一周一周向右，红线是销量，橙线是水平参考。红线围绕近似固定水平波动，一次尖峰不足以认定趋势。",
+      "visual": "联系图",
+      "original_printed_title": "Time Series Patterns",
+      "review_candidate_anchor": "p.14 · 水平形状"
+    },
+    {
+      "page": 15,
+      "title": "趋势形状",
+      "anchor": "p.15 · 趋势形状",
+      "disposition": "图",
+      "content": "纵轴是 iPhone 占公司收入的比例。对比前后多年所在高度识别长期走高；比例上涨不直接代表销售额上涨。",
+      "visual": "联系图",
+      "original_printed_title": "Time Series Patterns",
+      "review_candidate_anchor": "p.15 · 趋势形状"
+    },
+    {
+      "page": 16,
+      "title": "固定周期的季节性",
+      "anchor": "p.16 · 固定周期的季节性",
+      "disposition": "图",
+      "content": "番茄价格多次在一年内出现类似峰谷。看它们是否按大致固定间隔回到相近月份。",
+      "visual": "联系图",
+      "original_printed_title": "Time Series Patterns",
+      "review_candidate_anchor": "p.16 · 固定周期的季节性"
+    },
+    {
+      "page": 17,
+      "title": "季节和趋势叠加",
+      "anchor": "p.17 · 季节和趋势叠加",
+      "disposition": "图",
+      "content": "粉线是长期趋势，蓝线是进口额。蓝线围绕趋势上下偏离，整体随粉线升高；两种变化可分开估计。",
+      "visual": "联系图",
+      "original_printed_title": "Time Series Patterns",
+      "review_candidate_anchor": "p.17 · 季节和趋势叠加"
+    },
+    {
+      "page": 18,
+      "title": "长度不固定的周期",
+      "anchor": "p.18 · 长度不固定的周期",
+      "disposition": "图",
+      "content": "蓝线是企业利润率，竖标对应不等间隔的低迷阶段。先找高低交替，再比间距，以区别固定季节项。",
+      "visual": "联系图",
+      "original_printed_title": "Time Series Patterns",
+      "review_candidate_anchor": "p.18 · 长度不固定的周期"
+    },
+    {
+      "page": 19,
+      "title": "定量预测转场",
+      "anchor": "p.19 · 定量预测转场",
+      "disposition": "导览",
+      "content": "下面先分解序列，再用近期观测估计水平、趋势和季节。回归路线从 p.38 开始。",
+      "visual": "联系图",
+      "original_printed_title": "IS6400 Business Data Analytics",
+      "review_candidate_anchor": "p.19 · 定量预测转场"
+    },
+    {
+      "page": 20,
+      "title": "加法或乘法分解",
+      "anchor": "p.20 · 加法或乘法分解",
+      "disposition": "文字",
+      "content": "$T_t,S_t,C_t,I_t$ 分别是趋势、季节、周期和不规则成分。加法叠加同量纲偏移，乘法叠加比例；各量为正时可取对数化乘为加。",
+      "visual": "联系图",
+      "original_printed_title": "Time Series Component",
+      "review_candidate_anchor": "p.20 · 加法或乘法分解"
+    },
+    {
+      "page": 21,
+      "title": "比较两种季节形状",
+      "anchor": "p.21 · 比较两种季节形状",
+      "disposition": "图",
+      "content": "左图年内峰谷的纵向高度差近似固定，右图随序列水平放大。前者可加固定量，后者可乘固定倍数；不横向比较两图数值大小。",
+      "visual": "联系图",
+      "original_printed_title": "Additive vs. Multiplicative Seasonal Model",
+      "review_candidate_anchor": "p.21 · 比较两种季节形状"
+    },
+    {
+      "page": 22,
+      "title": "移动平均的窗口",
+      "anchor": "p.22 · 移动平均的窗口",
+      "disposition": "图",
+      "content": "软饮前三季 $1807.37,2355.32,2591.83$ 的均值约 2251.51，是第四季预测。$m=1$ 用最后值，$m=2$ 平均末两值；在时间留出段比较两者误差。",
+      "visual": "联系图",
+      "original_printed_title": "Simple Moving Average",
+      "review_candidate_anchor": "p.22 · 移动平均的窗口"
+    },
+    {
+      "page": 23,
+      "title": "加权移动平均",
+      "anchor": "p.23 · 加权移动平均",
+      "disposition": "文字",
+      "content": "给最近 $m$ 期总和为 1 的权重。最近两期 100、120，给新值 0.7，则下一期为 $0.3(100)+0.7(120)=114$。",
+      "visual": "联系图",
+      "original_printed_title": "Weighted Moving Average",
+      "review_candidate_anchor": "p.23 · 加权移动平均"
+    },
+    {
+      "page": 24,
+      "title": "用误差更新水平",
+      "anchor": "p.24 · 用误差更新水平",
+      "disposition": "文字",
+      "content": "旧水平 100，实际 120，$\\alpha=0.2$ 时更新为 104 并作为下一期预测。越旧的观测权重越小，每往前一期多乘 $1-\\alpha$。",
+      "visual": "联系图",
+      "original_printed_title": "Exponential Smoothing",
+      "review_candidate_anchor": "p.24 · 用误差更新水平"
+    },
+    {
+      "page": 25,
+      "title": "软饮销量的预测列与水平列",
+      "anchor": "p.25 · 软饮销量的预测列与水平列",
+      "disposition": "图",
+      "content": "取上期 $L$ 填本期 $F$，收到本期观测才更新本期 $L$。底部 Q1-10 尚无实际量，预测用 Q4-09 更新后的 5528.09。",
+      "visual": "联系图与原尺寸",
+      "original_printed_title": "Soft Drink Sales",
+      "review_candidate_anchor": "p.25 · 软饮销量的预测列与水平列"
+    },
+    {
+      "page": 26,
+      "title": "小测：11 月与 3 月预测",
+      "anchor": "p.26 · 小测：11 月与 3 月预测",
+      "disposition": "图",
+      "content": "11 月只用 6–10 月五值，得 188.10；3 月以 1 月的 266 作初始水平，用 2 月的 145.9 按 0.2 更新，得 241.98。两题均排除待预测月的实际值。",
+      "visual": "联系图",
+      "original_printed_title": "Quiz",
+      "review_candidate_anchor": "p.26 · 小测：11/1 与 3/1 预测",
+      "review_candidate_content": "按原表日期标签 11/1 与 3/1 逐问，不猜日期格式。折叠块保存完整英文题面、11 行源表数据和中英参考。"
+    },
+    {
+      "page": 27,
+      "title": "双重移动平均公式",
+      "anchor": "p.27 · 双重移动平均公式",
+      "disposition": "图",
+      "content": "先平均原值得 $M_t$，再平均 $M$ 得 $D_t$。用二者差修正水平与斜率；两条求和应在 $t$ 停止，原页最后印成 $t+1$。",
+      "visual": "联系图与原尺寸",
+      "original_printed_title": "Double Moving Average",
+      "review_candidate_anchor": "p.27 · 双重移动平均公式"
+    },
+    {
+      "page": 28,
+      "title": "双重平均为什么落后",
+      "anchor": "p.28 · 双重平均为什么落后",
+      "disposition": "图",
+      "content": "深蓝是销量，橙为一次平均，绿为二次，浅蓝为修正水平。$n=3$ 时橙线最早在第 3 期，绿线最早在第 5 期。",
+      "visual": "联系图",
+      "original_printed_title": "Why DMV works?",
+      "review_candidate_anchor": "p.28 · 双重平均为什么落后"
+    },
+    {
+      "page": 29,
+      "title": "找两个窗口中心",
+      "anchor": "p.29 · 找两个窗口中心",
+      "disposition": "图",
+      "content": "一次平均的 $t-2,t-1,t$ 中心在 $t-1$，二次平均的有效中心在 $t-2$。上升段更靠后看的绿线较低。",
+      "visual": "联系图",
+      "original_printed_title": "Why DMV works?",
+      "review_candidate_anchor": "p.29 · 找两个窗口中心"
+    },
+    {
+      "page": 30,
+      "title": "高度差怎样估斜率",
+      "anchor": "p.30 · 高度差怎样估斜率",
+      "disposition": "图",
+      "content": "$M_t-D_t$ 是两个中心间的高度差；用它除以中心间隔 $(n-1)/2$ 得每期变化，近似依赖局部趋势接近线性。",
+      "visual": "联系图",
+      "original_printed_title": "Why DMV works?",
+      "review_candidate_anchor": "p.30 · 高度差怎样估斜率"
+    },
+    {
+      "page": 31,
+      "title": "把水平补回当前时点",
+      "anchor": "p.31 · 把水平补回当前时点",
+      "disposition": "图",
+      "content": "以 $M_t$ 为起点，再补 $M_t-D_t$ 得浅蓝的 $L_t$。向未来 $k$ 期才加 $kT_t$，别重复补当期。",
+      "visual": "联系图",
+      "original_printed_title": "Why DMV works?",
+      "review_candidate_anchor": "p.31 · 把水平补回当前时点"
+    },
+    {
+      "page": 32,
+      "title": "Holt 的两次更新",
+      "anchor": "p.32 · Holt 的两次更新",
+      "disposition": "图",
+      "content": "本期先预测 $L_{t-1}+T_{t-1}$，实际到来后用 $\\alpha$ 更新水平，再用 $\\beta$ 将新旧水平差与旧趋势加权。",
+      "visual": "联系图",
+      "original_printed_title": "Holt-Linear",
+      "review_candidate_anchor": "p.32 · Holt 的两次更新"
+    },
+    {
+      "page": 33,
+      "title": "软饮销量的 Holt 结果",
+      "anchor": "p.33 · 软饮销量的 Holt 结果",
+      "disposition": "图",
+      "content": "Q1-94 的初始水平 1807.37、趋势 0，Q2-94 预测仍 1807.37，实际 2355.32，误差 547.95；更新后水平约 1913.31、趋势约 20.67。",
+      "visual": "联系图",
+      "original_printed_title": "Soft Drink Sales",
+      "review_candidate_anchor": "p.33 · 软饮销量的 Holt 结果"
+    },
+    {
+      "page": 34,
+      "title": "从两个状态到三个",
+      "anchor": "p.34 · 从两个状态到三个",
+      "disposition": "文字",
+      "content": "Holt-Winters 还存季节效应。季度数据存四季各一项；新的 Q2 主要更新 Q2 的季节项。",
+      "visual": "联系图",
+      "original_printed_title": "Holt-Winter",
+      "review_candidate_anchor": "p.34 · 从两个状态到三个"
+    },
+    {
+      "page": 35,
+      "title": "乘法季节的更新与还原",
+      "anchor": "p.35 · 乘法季节的更新与还原",
+      "disposition": "图",
+      "content": "先用 $Y_t$ 除旧同季因子估水平，再用 $Y_t/L_t$ 和旧季节项估新因子；预测时乘回对应季因子，超过一周期要循环季节索引。",
+      "visual": "联系图",
+      "original_printed_title": "Holt-Winter",
+      "review_candidate_anchor": "p.35 · 乘法季节的更新与还原"
+    },
+    {
+      "page": 36,
+      "title": "读 ETS 三个位置",
+      "anchor": "p.36 · 读 ETS 三个位置",
+      "disposition": "图",
+      "content": "原图三枝是趋势、季节和随机扰动；代码的字母顺序固定为误差、趋势、季节，依次看是否存在及所用形式。",
+      "visual": "联系图",
+      "original_printed_title": "ETS",
+      "review_candidate_anchor": "p.36 · 读 ETS 三个位置"
+    },
+    {
+      "page": 37,
+      "title": "在 ETS 表中定位型号",
+      "anchor": "p.37 · 在 ETS 表中定位型号",
+      "disposition": "图",
+      "content": "按行看误差和趋势，按列看季节。$(A,A,N)$ 代表加性误差、加性趋势、无季节。p.35 的季节是乘法，表下的 Holt-Winters 示例是加法季节。",
+      "visual": "联系图",
+      "original_printed_title": "ETS (error, trend, seasonality)",
+      "review_candidate_anchor": "p.37 · 在 ETS 表中定位型号"
+    },
+    {
+      "page": 38,
+      "title": "从平滑转入回归",
+      "anchor": "p.38 · 从平滑转入回归",
+      "disposition": "导览",
+      "content": "接下来把时间编号和季度做成输入，区分固定差额、固定百分比和季节差异。",
+      "visual": "联系图",
+      "original_printed_title": "IS6400 Business Data Analytics",
+      "review_candidate_anchor": "p.38 · 从平滑转入回归"
+    },
+    {
+      "page": 39,
+      "title": "线性趋势斜率",
+      "anchor": "p.39 · 线性趋势斜率",
+      "disposition": "文字",
+      "content": "$Y_t=a+bt+e_t$。若 $b=5$，每一期拟合值增 5 单位。截距是编号 0 的模型值；先画序列判断直线近似是否合理。",
+      "visual": "联系图",
+      "original_printed_title": "Regression on Linear Trend",
+      "review_candidate_anchor": "p.39 · 线性趋势斜率"
+    },
+    {
+      "page": 40,
+      "title": "软饮回归与残差",
+      "anchor": "p.40 · 软饮回归与残差",
+      "disposition": "图",
+      "content": "右表时间系数约 65.399，单位为每季度销售单位。左下残差仍有时间结构；高 $R^2$ 不能证明季节性已处理。",
+      "visual": "联系图",
+      "original_printed_title": "Soft Drink Sales",
+      "review_candidate_anchor": "p.40 · 软饮回归与残差"
+    },
+    {
+      "page": 41,
+      "title": "指数趋势的增长率",
+      "anchor": "p.41 · 指数趋势的增长率",
+      "disposition": "文字",
+      "content": "正值序列可取自然对数再做时间回归。$b=0.05$ 时精确增长 $e^{0.05}-1$ 约 5.13%，5% 是近似。",
+      "visual": "联系图",
+      "original_printed_title": "Regression on Exponential Trend",
+      "review_candidate_anchor": "p.41 · 指数趋势的增长率"
+    },
+    {
+      "page": 42,
+      "title": "季节虚拟变量",
+      "anchor": "p.42 · 季节虚拟变量",
+      "disposition": "文字",
+      "content": "含截距的四季度模型只建三列。若 Q4 为参考，三列均为 0；Q1 第一列为 1，其系数比较同一时间下 Q1 和 Q4。",
+      "visual": "联系图",
+      "original_printed_title": "Regression on Seasonal Effect",
+      "review_candidate_anchor": "p.42 · 季节虚拟变量"
+    },
+    {
+      "page": 43,
+      "title": "软饮对数回归与季节列",
+      "anchor": "p.43 · 软饮对数回归与季节列",
+      "disposition": "图",
+      "content": "左表按 Time 和 Q1–Q3 读，Q4 三列全为 0。右表 Q2 的系数 0.140 表示相对 Q4 的对数差；同一时间原尺度比约为 $e^{0.140}=1.15$。",
+      "visual": "联系图与原尺寸",
+      "original_printed_title": "Soft Drink Sales",
+      "review_candidate_anchor": "p.43 · 软饮对数回归与季节列"
+    },
+    {
+      "page": 44,
+      "title": "先滞后再算历史统计",
+      "anchor": "p.44 · 先滞后再算历史统计",
+      "disposition": "图",
+      "content": "第 4 行的目标 113 不可作输入。以此前的 100、104、112 算近三期均值约 105.33，最大 112，最小 100；代码先移一行再滚动。",
+      "visual": "联系图",
+      "original_printed_title": "How to model this lagged features in sklearn?",
+      "review_candidate_anchor": "p.44 · 先滞后再算历史统计"
+    },
+    {
+      "page": 45,
+      "title": "预测前已知的日历特征",
+      "anchor": "p.45 · 预测前已知的日历特征",
+      "disposition": "图",
+      "content": "图中先对 hour、weekday、month 编码，再把生成列送给岭回归。这些日历值在预测前已知；验证仍按时间向前。",
+      "visual": "联系图",
+      "original_printed_title": "Want to model other time-related features in sklearn?",
+      "review_candidate_anchor": "p.45 · 预测前已知的日历特征"
+    }
+  ],
+  "assets": [
+    {
+      "page": 2,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-02.png",
+      "sha256": "f9bbe5660b7245990197c66ba428af495e611c4c307840a50c79266abc5699f9",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 3,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-03.png",
+      "sha256": "9491c1997776c702eb06b28802ac43ba314e3093f05aae3f1001c11ad2f4e8b5",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 4,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-04.png",
+      "sha256": "35a5f31f1127b7606c9c317c6b5f815e64b4a21eae8134d3ac42ad502dac3c3f",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 5,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-05.png",
+      "sha256": "6d35d6db1ec5cf1e1f5c6b6c149c2dfd892c49d4b4ecd952af1cc23196fc9089",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 6,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-06.png",
+      "sha256": "5b87f36d12cd02048ed1298fad418565dbcb7cab82b5b127f5d50f25dfefa777",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 7,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-07.png",
+      "sha256": "f19961616016ac671e475ba35420116209b2e406c36ef5c5c8d344fa9b60535a",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 8,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-08.png",
+      "sha256": "5f86426122a88940565faf6ff5a94874d9ea28032d158d855c1253343d5900d8",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 9,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-09.png",
+      "sha256": "b8fc6daf136dac5dfea030f5c32f734d07e30264c65f057937d2a7404506aab3",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 12,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-12.png",
+      "sha256": "cb3e4b5ae214886489656feb1ef8c783bd83fd533127baee65c373136123ff7a",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 14,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-14.png",
+      "sha256": "17e9e6ef80dc9165fb55d1b8dc9a7fa59ecf258bcd1ea932f07b6cb017d4f246",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 15,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-15.png",
+      "sha256": "b7d9ae2295927b7adc4b9c87f75310a99ab605062df7f468d82599ea34ce9809",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 16,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-16.png",
+      "sha256": "23c751b424bd578068bbf7de3f724688e85ed54ead3c8a887346c333c051bee6",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 17,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-17.png",
+      "sha256": "93de68c79eba304997a05ebe599e7435cad7cc04df3ea66f8abdc0853699f45e",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 18,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-18.png",
+      "sha256": "aa0ff7c0b3a7a4799485c71fb0f744fb4f46268b2cadb0bf8e0f469162517a33",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 21,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-21.png",
+      "sha256": "6ffcadab15dde232eb1f2b29a259e18e153ef6993d2513c8d073e32fc7f55dc2",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 22,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-22.png",
+      "sha256": "86ee800528540b64cd8f1724196fc5c217d635dead18d0822356cbf9e2a7fce2",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 25,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-25.png",
+      "sha256": "37af58da5363f728b57fc9981bfc20762d4339c2036934adf56d73baddf80281",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 26,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-26.png",
+      "sha256": "0e0d08199d9cb58832f67a28dd943dbff95eba3d74de119057214a03e339ed05",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 27,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-27.png",
+      "sha256": "74d2fcdd824c4103802abd43dbe40ae019f1035bae3bf972b3e09d729405db8c",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 28,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-28.png",
+      "sha256": "b42214c5216aa339109def36e9b397cbf24da4c5a35b6ba65b6bb59cbb73116e",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 29,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-29.png",
+      "sha256": "5251bb5ae6e1f55d5abefdff19ff3e561e491b0d3d71da6f6ae39574abb3ebc5",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 30,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-30.png",
+      "sha256": "5692ae66a874c9121965aff4a547f20feff536809006413b1269e34cece6fe9a",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 31,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-31.png",
+      "sha256": "f5d39fb3f3e99ee7bd6fae8134296842ef51727c3eb7779080bb85e8f25f86d1",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 32,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-32.png",
+      "sha256": "486763bad85253e6aa95d79427e111ef78990f90212efe371f05c05508ef30ad",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 33,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-33.png",
+      "sha256": "8f36df3d224d98f29bfe2304817547716e66f25a4249907f5c258a5d9ab2fc04",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 35,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-35.png",
+      "sha256": "601481c283a16af27000b55e0eae8fa8fd116a4e34ba1a72978602921e39fd75",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 36,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-36.png",
+      "sha256": "3a74d97c2c66ea12d9f0157cadbbc689e4a7571dfb95de68fa3dbb9228c5d472",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 37,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-37.png",
+      "sha256": "14e5cd41bb3f6b92ececa14eca41bfa41c80dcd19f78ad0d56e7322b12539300",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 40,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-40.png",
+      "sha256": "4162031656dafffa3ecb0f4abbdb94c9176b1e2531229e9ebc011bf195933618",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 43,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-43.png",
+      "sha256": "306649cc662f0eb12a9469775575965b782528eba2422a0936a4b5d34d6c3d9c",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 44,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-44.png",
+      "sha256": "c67041129cb49099c4296d8bcf1c16a3f8d92f837aebab4580e0f2632ef95a40",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    },
+    {
+      "page": 45,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m07-source/p-45.png",
+      "sha256": "a724e170ac6d8f23b9952e56ce3e4479d290690e983ee72a352dc45ac8d4761e",
+      "render_dpi": 144,
+      "crop": "完整源页",
+      "display_status": "静态实看；原生阅读显示待验"
+    }
+  ],
+  "review_candidate_sha256": "fa7702ffbd6861f1360b212698b9c641e39f99a46caa97d08fa71858c6bad6ac",
+  "legacy_page_fields": "title/content/anchor 为初始冻结候选记录；review_candidate_anchor 与 review_candidate_content 为修订版。"
+}

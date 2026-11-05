@@ -50,6 +50,8 @@ teaching_standard: novice-v1
 
 ### 1.3 路径和运行方式
 
+预习先看原需求图、KPSS 原问和三步变换。课中用 [[#8. Notebook 单元映射|逐格表]] 找源码；课后先独立复做 §2.11 的还原，再用 §7 检查误差比较。
+
 把 Notebook 副本与 `heater.csv`、`weather.csv` 放在同一工作目录，再从第一格顺序运行。原件继续只读。相对路径 `'heater.csv'` 是相对 Notebook 内核工作目录，不是相对 Obsidian 笔记；找不到文件先查看当前目录，不要换一个同名但不知来源的 CSV。
 
 本次在现有 `D:/anaconda3/python.exe` 环境执行了 35 个代码单元，未安装包。Notebook 魔法 `%matplotlib inline` 在脚本复算时去除，图形改用非交互后端；它不影响模型数值。原源码、保存输出、本次复算和笔记修正实验四种来源分别标注。
@@ -70,7 +72,47 @@ Cell 7 用明确格式 `%Y-%m` 把月份文字转成日期；否则绘图库可�
 
 图中冬季重复峰值、整体上升和振幅扩大分别对应季节、趋势与波动尺度。这里确认的是课堂如何读原图，不是把可见形状当成严格平稳检验证明。
 
+#### Cell 9 · 保存图
+
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 9 的保存图](figures/t09-saved-source/t09-cell-09-output-01.png)
+
+**Cell 9 读图**：原尺度需求随年份增加，重复峰谷的振幅也扩大。
+
+#### Cell 1 · 课程路线和工具
+
+源总览列出平稳检验、尺度处理、拟合与比较 RMSE。§2.11 把各预测还原到同一原需求尺度评价，是本笔记补充；源 Cell 81 的四行并非同一评分量。
+
+[[#2.1 先固定输入、输出和时间（Cells 1–9）|查看同组机制与计算]]。
+
+#### Cell 2 · 导入前的工具分工
+
+这一格引出库的导入：表格、数值、KPSS、Box-Cox、ARIMA、相关图和绘图各有不同用途。
+
+[[#2.1 先固定输入、输出和时间（Cells 1–9）|查看同组机制与计算]]。
+
+#### Cell 4 · 数据准备的顺序
+
+先知道原记录代表什么、时间单位是什么，才判断要压振幅、去季节或去趋势。
+
+[[#2.1 先固定输入、输出和时间（Cells 1–9）|查看同组机制与计算]]。
+
+#### Cell 5 · 月度需求表和日期轴
+
+源说明先读并画原月度需求；年月应解析为时间值，使相邻格能按真实顺序画。
+
+[[#2.1 先固定输入、输出和时间（Cells 1–9）|查看同组机制与计算]]。
+
 ### 2.2 KPSS 检查什么（Cells 10–12）
+
+#### Cell 10 · 平稳性原问
+
+> Is the time series stationary?
+
+中文：先问原始需求是否围绕固定均值平稳。Cell 12 源判断按 0.05 阈值拒绝相应原假设；检验不独立区分趋势、季节或方差变化分别贡献了多少。
+
+**English reference**: Reject the level-stationarity null for the original demand series at the 5% level; the reported KPSS p-value bound is 0.01, below 0.05. The KPSS result does not by itself identify which feature of the series causes the rejection.
 
 平稳性（Stationarity）在这里指序列的均值、波动和相隔相同月份的关系不随绝对时间系统变化。不断上升的趋势会破坏这种稳定结构。KPSS 的原假设（Null hypothesis）是在指定确定性项下平稳；`regression='c'` 使用常数均值口径，`nlags='auto'` 自动选计算所需滞后。
 
@@ -82,7 +124,19 @@ KPSS 软件的 0.01／0.1 可能位于表格可给的边界，实际警告可能
 
 教程读原需求 KPSS 的输出为0.01（S20 `01:42:24`），与 Cell11 保存结果相符。按 c 规格和0.05阈值拒绝平稳原假设；口头“数据非平稳”是简述，不表示已经找出唯一原因，也不把p值解释为原假设的概率。
 
+#### Cell 12 · 原需求的源判定
+
+源格据小于 0.05 判非平稳。按常数水平 KPSS，拒绝对应原假设；原因还要看趋势、季节及波动。
+
+[[#Cell 10 · 平稳性原问|查看同组机制与计算]]。
+
 ### 2.3 Box-Cox 怎样压缩波动（Cells 13–18）
+
+#### Cell 18 · 变换后的剩余结构
+
+原 Cell 18 提醒，压缩振幅后仍有趋势和季节。若准备原 ARMA 的差分输入，还要去季节和差分；后续其他模型使用的尺度不完全相同。
+
+以下 log 是自然对数，零参数时的反变换才是以 e 为底的指数。
 
 需求量增大时波动也变大，直接用一个固定误差尺度可能不合适。Box-Cox 对正数作单调变换，大数值区间可以被压缩。它不自动去掉趋势和季节性。
 
@@ -102,7 +156,39 @@ Cell 17 把数组放回 `demand_BC` 列并画图。若需求含零或负数，�
 
 口述将Box-Cox与更接近正态形状联系。这里仍按正文界定：改变边际分布或稳定方差，不保证没有趋势、季节或自相关，也不等于KPSS检验会把数据变成正态。
 
+#### Cell 17 · 保存图
+
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 17 的保存图](figures/t09-saved-source/t09-cell-17-output-01.png)
+
+**Cell 17 读图**：Box-Cox 后的纵轴已换尺度；峰谷仍存在，不能把压振幅当成去季节。
+
+#### Cell 13 · 稳定化三步
+
+变尺度、减月份效应、做相邻差分分别对付不同结构；保留每一步才能在预测后逆序还原。
+
+[[#2.3 Box-Cox 怎样压缩波动（Cells 13–18）|查看同组机制与计算]]。
+
+#### Cell 14 · 先处理振幅
+
+原格用 Box-Cox 稳定随水平扩大的振幅；标准式要求输入为正。
+
+[[#2.3 Box-Cox 怎样压缩波动（Cells 13–18）|查看同组机制与计算]]。
+
+#### Cell 16 · 画变换后的需求
+
+横轴仍是同一批年月；此处看波动幅度，不能把换了纵轴数值当去季节。
+
+[[#2.3 Box-Cox 怎样压缩波动（Cells 13–18）|查看同组机制与计算]]。
+
 ### 2.4 月份均值怎样去季节（Cells 19–27）
+
+#### Cell 27 · 去季节后的趋势
+
+原 Cell 27 提醒：减同月均值后重复峰谷减弱，剩余趋势仍须处理。
+
+S20 01:51:36–01:52:05 是课堂读图自问自答：移除月份效应后，图的周期高低已不明显，但仍可看见上升趋势。这是目视说明，不用它替代平稳性检验。
 
 先把每行的月份编号取出来，例如 2004-01 和 2005-01 都得到 1。`groupby('month')` 把同月份放一组，`.mean()` 算各组均值，`.reset_index()` 将月份索引恢复成普通列，便于合并。
 
@@ -122,7 +208,37 @@ Cell 17 把数组放回 `demand_BC` 列并画图。若需求含零或负数，�
 
 这确认实际处理的列是 demand_BC，不能对原需求均值和变换后需求混减。原教程此处仍用全198月，课堂后面对选阶的更正没有自动修好预处理泄漏，训练侧修正方案仍见正文。
 
+#### Cell 26 · 保存图
+
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 26 的保存图](figures/t09-saved-source/t09-cell-26-output-01.png)
+
+**Cell 26 读图**：减月均后重复峰谷变弱，但中心仍向上移动。
+
+#### Cell 19 · 用同月均值去季节
+
+按月份位置估平均水平，再逐行减相应月份的平均值。
+
+[[#2.4 月份均值怎样去季节（Cells 19–27）|查看同组机制与计算]]。
+
+#### Cell 21 · 按月份聚合
+
+把所有一月、二月等各自汇总；原描述性过程用了整表，预测验证应在训练内估计。
+
+[[#2.4 月份均值怎样去季节（Cells 19–27）|查看同组机制与计算]]。
+
+#### Cell 24 · 把季节均值接回原表
+
+用月份键给每行带上该位置的均值，再按年月排序。不是按新表行号猜对应月。
+
+[[#2.4 月份均值怎样去季节（Cells 19–27）|查看同组机制与计算]]。
+
 ### 2.5 差分、缺失首项与测试边界（Cells 28–37）
+
+#### Cell 33 · 差分后如何判定
+
+原 Cell 33 将 p=0.1 表述为 95% 置信下平稳。按 5% 门槛，只能说本检验未拒绝平稳原假设；0.1 是查表上界输出，不是平稳概率。
 
 Cell 29 的 `.diff()` 得到 $v_t=u_t-u_{t-1}$，即本月相对上月改变多少。首月没有前月，因此为 NaN（缺失值）；不能把它填成 0 后当实际观测。
 
@@ -150,7 +266,53 @@ flowchart TD
 
 `01:55:07`要求测试数据在训练之后；`01:55:23`说明末12月作测试。课堂p值口径仍须按正文写“未拒绝”，不能写已证明平稳。
 
+#### Cell 30 · 保存图
+
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 30 的保存图](figures/t09-saved-source/t09-cell-30-output-01.png)
+
+**Cell 30 读图**：相邻差分后大致围绕 0 变化；仍需结合检验。
+
+#### Cell 37 · 保存图
+
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 37 的保存图](figures/t09-saved-source/t09-cell-37-output-01.png)
+
+**Cell 37 读图**：蓝训练后接橙测试，纵轴为差分后的处理值。
+
+#### Cell 28 · 用一阶差分处理趋势
+
+每期减上期，目标变成去季节后的变化量；首期没有上期，留下缺项。
+
+[[#2.5 差分、缺失首项与测试边界（Cells 28–37）|查看同组机制与计算]]。
+
+#### Cell 31 · 决定再做检验
+
+图看起来较稳定，接下来对去首缺值的差分做同规格 KPSS。图不能代替统计判断。
+
+[[#2.5 差分、缺失首项与测试边界（Cells 28–37）|查看同组机制与计算]]。
+
+#### Cell 34 · 固定末十二月
+
+前 186 行训练，末 12 月测试；之后更严谨的例子在训练内估各变换。
+
+[[#2.5 差分、缺失首项与测试边界（Cells 28–37）|查看同组机制与计算]]。
+
+#### Cell 36 · 读分色边界
+
+蓝橙线标训练与测试的交界；这幅原图画的实际是差分量，不因标题把它当原需求水平。
+
+[[#2.5 差分、缺失首项与测试边界（Cells 28–37）|查看同组机制与计算]]。
+
 ### 2.6 ARMA：预测的是“变化量”（Cells 38–51）
+
+#### Cell 42 · 从 PACF 提候选
+
+原 Cell 42 提议 p=2，并写 “Simpler model is preferred”。远处偶有柱越带并不自动需要更高阶；候选还需训练侧比较与残差检查。
+
+以 1–4 月为例，lag 1 配对 2 月与 1 月、3 月与 2 月、4 月与 3 月；lag 2 只配 3 月与 1 月、4 月与 2 月，跨过中间月份。ACF 汇总这种同序列的滞后联系。若做 lag 2 的 PACF，先分别从两端去掉中间月能线性解释的部分，再相关剩余量。短示例只说明配对，不据它估可靠阶数。
 
 ACF（自相关函数）看一串数与其滞后值的相关；PACF（偏自相关函数）进一步控制中间滞后影响。Cell 41／44 在训练差分量上画图，Cell 42／45 选 $p=2,q=1$。这是一种候选阶数判断，不是“图上某根线越界便唯一证明正确阶数”。多次看测试误差来挑阶会让测试变成验证集。
 
@@ -183,6 +345,78 @@ Cell 49 把预测放到测试月份画图；Cell 51 的保存 RMSE 为 0.0114638
 若要真正选择规格，可在186月训练段内部再留最近12月作验证：每个候选只在更早训练部分估变换和模型，在这12月按相同原尺度评价；先检查收敛与残差，再结合误差和复杂度选定。规格冻结后才用完整186月重估，并只对最后12月正式测试一次。这样测试期没有被反复用作选阶工具。
 
 
+#### Cell 41 · 保存图
+
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 41 的保存图](figures/t09-saved-source/t09-cell-41-output-01.png)
+
+**Cell 41 读图**：第 1、2 阶柱明显，其他阶也有接近或越带的柱，图只提候选。
+
+#### Cell 44 · 保存图
+
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 44 的保存图](figures/t09-saved-source/t09-cell-44-output-01.png)
+
+**Cell 44 读图**：忽略 0 阶，负的一阶柱突出；样本图不能单独证明 q。
+
+#### Cell 49 · 保存图
+
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 49 的保存图](figures/t09-saved-source/t09-cell-49-output-01.png)
+
+**Cell 49 读图**：绿线是差分尺度的 ARMA 预测，不能与原需求 RMSE 直接比。
+
+#### Cell 38 · 进入训练与评价
+
+从此比较的是指定变换尺度上的预测。每个模型都要写清输入和评分对象。
+
+[[#2.6 ARMA：预测的是“变化量”（Cells 38–51）|查看同组机制与计算]]。
+
+#### Cell 39 · ARMA 工作对象
+
+第一个模型在去季节的一阶差分上建模，预测回来的仍是变化量。
+
+[[#2.6 ARMA：预测的是“变化量”（Cells 38–51）|查看同组机制与计算]]。
+
+#### Cell 40 · 相关图各回答什么
+
+PACF 给 AR 候选，ACF 给 MA 候选；样本图只缩小搜索范围。
+
+[[#2.6 ARMA：预测的是“变化量”（Cells 38–51）|查看同组机制与计算]]。
+
+#### Cell 43 · 用 ACF 提 q
+
+对当前工作序列的过去冲击长度提出候选，先忽略必为 1 的零阶。
+
+[[#2.6 ARMA：预测的是“变化量”（Cells 38–51）|查看同组机制与计算]]。
+
+#### Cell 45 · 原格采用 q=1
+
+此处只记录原示例选择；不能由几根柱证明所有样本都适用。
+
+[[#2.6 ARMA：预测的是“变化量”（Cells 38–51）|查看同组机制与计算]]。
+
+#### Cell 46 · 拟合第一组规格
+
+原代码用 ARIMA(2,0,1) 表示在已差分输入上做 ARMA，不再增加内部普通差分。
+
+[[#2.6 ARMA：预测的是“变化量”（Cells 38–51）|查看同组机制与计算]]。
+
+#### Cell 48 · 画 ARMA 预测
+
+橙色实际与绿色预测同在差分尺度，不能拿这条线直接读需求件数。
+
+[[#2.6 ARMA：预测的是“变化量”（Cells 38–51）|查看同组机制与计算]]。
+
+#### Cell 50 · ARMA 在变化量评分
+
+把预测变化和实际变化逐期配对，评分对象与后面的水平模型不同。
+
+[[#2.6 ARMA：预测的是“变化量”（Cells 38–51）|查看同组机制与计算]]。
+
 ### 2.7 ARIMA：模型内部做差分并恢复（Cells 52–58）
 
 Cell 54 传 `demand_de_season`，`order=(2,1,1)` 表示内部做一次差分，再用 ARMA 结构拟合。与上一节的输入不同，因此 `.forecast()` 返回的是去季节后的水平 $u$，不是其差分 $v$。
@@ -191,7 +425,49 @@ Cell 54 传 `demand_de_season`，`order=(2,1,1)` 表示内部做一次差分，�
 
 Cell 56 画去季节水平，Cell 58 保存 RMSE 约 0.0155562296。它与 ARMA 节的误差对象不同，数值较大不能据此判模型较差。
 
+#### Cell 56 · 保存图
+
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 56 的保存图](figures/t09-saved-source/t09-cell-56-output-01.png)
+
+**Cell 56 读图**：绿线已在去季节的水平尺度；季节和 Box-Cox 仍未还原。
+
+#### Cell 52 · ARIMA 的输入层次
+
+第二个模型从去季节后的水平开始，把普通差分交给模型内部。
+
+[[#2.7 ARIMA：模型内部做差分并恢复（Cells 52–58）|查看同组机制与计算]]。
+
+#### Cell 53 · 预测十二步
+
+只在训练去季节水平上估计参数，固定起点预测末十二月。
+
+[[#2.7 ARIMA：模型内部做差分并恢复（Cells 52–58）|查看同组机制与计算]]。
+
+#### Cell 55 · 看还原到哪一层
+
+图已经回到去季节水平，但月份效应与 Box-Cox 原尺度仍未恢复。
+
+[[#2.7 ARIMA：模型内部做差分并恢复（Cells 52–58）|查看同组机制与计算]]。
+
+#### Cell 57 · 去季节水平评分
+
+RMSE 用同尺度实际值与预测值，不能直接跟 ARMA 变化量分数排榜。
+
+[[#2.7 ARIMA：模型内部做差分并恢复（Cells 52–58）|查看同组机制与计算]]。
+
 ### 2.8 季节 ARIMA：普通差分和季节差分分开（Cells 59–73）
+
+#### Cell 66 · 原季节 Q 与图的范围
+
+原 Cell 66 提出季节 Q=3，下一格原图并未显示 lag 24 和 36；不能从这幅图证明三阶季节项。
+
+#### Cell 63 · D=0 的源解释
+
+原 Cell 63 用 lag 12 差分图说趋势不明显，从而演示 D=0 的选择。此处是源经验判断；没有趋势并不自动排除所有季节结构。
+
+Cell 67 原保存图大约只到 lag 23，能看 lag 12，不能看季节第 2、3 阶所需的 lag 24、36。因而原图不足以验证季节 Q=3；后文训练修正版使用另一数据处理过程及更长图，不作为原选阶证据。
 
 月度数据一年 12 期。季节 ARIMA 记为 $(p,d,q)(P,D,Q)_{12}$：小写部分处理普通滞后，大写部分处理间隔 12 的季节结构。大写 $D$ 才是模型实际做几次季节差分。
 
@@ -201,7 +477,81 @@ Cell 63 写“季节差分图无趋势，所以不再差分，即 D=0”。这�
 
 季节 MA 项里的 $Q=3$ 涉及季节间隔 12、24、36 的创新结构；不是只看普通 lag 3 就够。ACF/PACF 的阶数识别是候选启发式，还须核残差和训练侧验证。
 
-Cell 69 的 `.fit()` 同时估这些系数，`.forecast(12)` 返回 Box-Cox 水平预测；不再手动给它累加普通差分。Cell 73 保存 RMSE 约 0.0094490941；本次在记录的软件环境复算约 0.0099579327，未改原件。数值优化和软件版本可产生差异，当前证据没有把差异单独归因到某一个原因。
+Cell 69 的 `.fit()` 同时估这些系数，`.forecast(12)` 返回 Box-Cox 水平预测；不再手动给它累加普通差分。Cell 73 保存 RMSE 约 0.0094490941；历史一次软件环境复算约 0.0099579327；2026-11-04 原公开课堂代码本机复跑约 0.0094096678。三项数值按各自证据记录，未改原件。数值优化和软件版本可产生差异，当前证据没有把差异单独归因到某一个原因。
+
+#### Cell 62 · 保存图
+
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 62 的保存图](figures/t09-saved-source/t09-cell-62-output-01.png)
+
+**Cell 62 读图**：相隔 12 期作差，前 12 期没有同月对照；这是诊断尺度。
+
+#### Cell 65 · 保存图
+
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 65 的保存图](figures/t09-saved-source/t09-cell-65-output-02.png)
+
+**Cell 65 读图**：在季节差后的工作序列读 PACF，一阶和约第 12 阶值得留意。
+
+#### Cell 67 · 保存图
+
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 67 的保存图](figures/t09-saved-source/t09-cell-67-output-01.png)
+
+**Cell 67 读图**：前数阶及第 12 阶附近均有突出柱；源图挑规格只是示例。
+
+#### Cell 71 · 保存图
+
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 71 的保存图](figures/t09-saved-source/t09-cell-71-output-01.png)
+
+**Cell 71 读图**：纵轴为 Box-Cox 水平，绿线季节预测和橙线真实值对比。
+
+#### Cell 59 · 季节 ARIMA 的输入层次
+
+第三个模型从 Box-Cox 水平开始，用周期 12 表达年度相同月份。
+
+[[#2.8 季节 ARIMA：普通差分和季节差分分开（Cells 59–73）|查看同组机制与计算]]。
+
+#### Cell 60 · 先提出季节阶数候选
+
+相关图协助提 P/Q，是否保留季节差分由训练诊断与验证一起判断。
+
+[[#2.8 季节 ARIMA：普通差分和季节差分分开（Cells 59–73）|查看同组机制与计算]]。
+
+#### Cell 61 · 相减去年同月
+
+季节差分拿当前月减去年同月；没有满一年历史时缺相应差值。
+
+[[#2.8 季节 ARIMA：普通差分和季节差分分开（Cells 59–73）|查看同组机制与计算]]。
+
+#### Cell 64 · 源选择季节 P
+
+原格把 P=1 作为候选；看季节间隔的相关证据，不机械数所有越带的柱。
+
+[[#2.8 季节 ARIMA：普通差分和季节差分分开（Cells 59–73）|查看同组机制与计算]]。
+
+#### Cell 68 · 写出两组规格
+
+把普通阶数与季节阶数同时传入；原示例季节周期为 12。
+
+[[#2.8 季节 ARIMA：普通差分和季节差分分开（Cells 59–73）|查看同组机制与计算]]。
+
+#### Cell 70 · 在同一 Box-Cox 轴对照
+
+图上绿色预测和橙色实际已是同一处理尺度，但还不是原需求单位。
+
+[[#2.8 季节 ARIMA：普通差分和季节差分分开（Cells 59–73）|查看同组机制与计算]]。
+
+#### Cell 72 · 计算季节模型的评分
+
+同一测试月、同一 Box-Cox 水平配对，得到源保存的第三组误差。
+
+[[#2.8 季节 ARIMA：普通差分和季节差分分开（Cells 59–73）|查看同组机制与计算]]。
 
 ### 2.9 ETS：用误差调整状态（Cells 74–80）
 
@@ -223,6 +573,38 @@ $\ell$ 是水平，$b$ 是每月趋势，$s$ 是季节项；$\alpha,\beta,\gamma
 💡 数字例：旧水平 10、趋势 1、同月季节 2，实际值 15，取三权重均 0.5。新水平为 $0.5(15-2)+0.5(10+1)=12$；新趋势为 $0.5(12-10)+0.5\times1=1.5$；新季节为 $0.5(15-12)+0.5\times2=2.5$。之后按日期选下一月的季节状态，不能把本月 2.5 随意用于每一个未来月份。
 
 `.fit()` 同时估平滑参数和初始状态。优化日志里的 `N` 是待优化变量数，迭代序号是优化步，不是模型看过了几个月。正常停止并不证明预测最好。Cell 78 画图，Cell 80 保存 RMSE 约 0.0187049494，本次约 0.0187049394。
+
+#### Cell 78 · 保存图
+
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 78 的保存图](figures/t09-saved-source/t09-cell-78-output-01.png)
+
+**Cell 78 读图**：仍在 Box-Cox 水平；峰值附近绿线与实际有偏离。
+
+#### Cell 74 · ETS 的工作尺度
+
+第四个模型也用 Box-Cox 水平，因此与前一个可在该共同尺度上比较。
+
+[[#2.9 ETS：用误差调整状态（Cells 74–80）|查看同组机制与计算]]。
+
+#### Cell 75 · 训练加法趋势与季节
+
+估计训练状态后固定起点向前 12 月；不能用实际测试值逐月更新。
+
+[[#2.9 ETS：用误差调整状态（Cells 74–80）|查看同组机制与计算]]。
+
+#### Cell 77 · 画 ETS 预测图
+
+绿线与橙线在同一 Box-Cox 轴，关注各月峰谷偏差。
+
+[[#2.9 ETS：用误差调整状态（Cells 74–80）|查看同组机制与计算]]。
+
+#### Cell 79 · ETS 的 RMSE
+
+以同一测试 12 月计算变换尺度误差，再区分与原需求误差的用途。
+
+[[#2.9 ETS：用误差调整状态（Cells 74–80）|查看同组机制与计算]]。
 
 ### 2.10 为什么原比较表不能直接选赢家（Cell 81）
 
@@ -285,7 +667,7 @@ $H$ 是测试月份数，本例为 12；$y$ 是真实目标，$\widehat y$ 是�
 | 用训练λ逆变换 | 20.217026828 | 原需求单位的7月预测 |
 | 测试7月真实值 | 21 | 只用于最终评价 |
 
-最后两行差约 −0.782973，表示少预测约0.783个原需求单位。下一步ARMA继续累计预测变化，而不是把测试7月的真实需求21喂回。这一例将§2.11的恢复顺序接到实际数组；不是用已舍入表格重新估参数。
+本表用预测减实际，即 20.2170−21，未舍入差约 −0.782973。若用实际减预测，符号相反而 RMSE 不变。这里为负，表示少预测约0.783个原需求单位。下一步ARMA继续累计预测变化，而不是把测试7月的真实需求21喂回。这一例将§2.11的恢复顺序接到实际数组；不是用已舍入表格重新估参数。
 
 持久入口：[完整复算脚本](figures/t09-time-series/t09-reproduce.py)、[实际执行与预测记录](figures/t09-time-series/t09-execution.json)、[本月中间量](figures/t09-time-series/t09-first-month.json)。脚本从自身正式位置找到本课`course_files_export/`，输出写到库外`E:/app-data/codex/scratchpad/cityu-t09-reproduction/`，不会覆盖学校原件。
 
@@ -296,7 +678,7 @@ $H$ 是测试月份数，本例为 12；$y$ 是真实目标，$\widehat y$ 是�
 
 以下是评分作业，原题在 Notebook 内。作业要求、参考演示、本人作答和 Canvas 提交分别记录；本篇的例子不是本人已提交答卷。
 
-<details><summary>Cell 82 英文原题全文</summary>
+**Cell 82 英文原题全文**
 
 # Week 9 Assignment(Extra): Weather Time Series Forecasting
 
@@ -310,8 +692,6 @@ $H$ 是测试月份数，本例为 12；$y$ 是真实目标，$\widehat y$ 是�
 4. **Evaluation:** Plot actual vs. predicted values for both models, calculate their RMSE, and write a brief conclusion on which model performed better and why.
 
 **Submission:** One Jupyter Notebook with your code, plots, RMSE results, and conclusion.
-
-</details>
 
 中文读题：自选一个天气变量，按月平均，末 12 月测试；只用训练数据处理／选模，再用第二模型预测同一段，画图、算同尺度 RMSE，解释谁好以及为什么。原 Notebook 写交一份 Notebook，Canvas 正式作业页只写 file upload，没有追加格式说明；当前需核平台实际可接收类型，不把旧周通用 HTML 公告静默当成此题明确要求。
 
@@ -329,13 +709,19 @@ pred_arima = fit.forecast(12)
 pred_baseline = monthly.iloc[-24:-12].to_numpy()
 ```
 
-逐块读：先转换日／月／年的日期格式；`set_index` 让日期作为时间标签；`resample('MS')` 按月初标记分组并求平均；`iloc` 按位置分训练和测试。最后基线取的 12 项都在训练期，不是取测试实际值。
+逐块读：先转换日／月／年的日期格式；`set_index` 让日期作为时间标签；`resample('MS')` 按月初标记分组并求平均；`iloc` 按位置分训练和测试。最后基线取的 12 项都在训练期，不是取测试实际值。 基线首项对 2016 年 1 月；先核真实序列及两套预测都是同样的 12 个月，再逐月配对、取误差平方的平均并开根。
+
+该示范按原 CSV 全部行求月均，保留 24 条完全重复记录（集中在 2010 年 7 月）；不在沿用既有 RMSE 的同时偷偷去重。若另做去重版，须另列输入和输出。
 
 数据横跨 2009–2016 共 96 月，训练 84 月、测试 12 月，无缺整月；仅对文件里已有采样求平均，未假装每月采样都完整。月度聚合及缺测密度仍会影响代表性。
 
 本次参考运行温度 ARIMA(1,0,0) 的 RMSE 为 **7.0205 °C**，季节朴素为 **2.4923 °C**。此处基线更好；固定 AR(1) 逐步回归其长期均值，难以保持全年温度季节起伏，是与模型结构相符的解释，不代表已证明差异只有这一个原因。可在训练段内部滚动验证季节模型，再冻结规格评价；不能看测试结果反复挑参数后仍称未见测试。
 
-英文参考结论：“For the monthly temperature series, the fixed ARIMA(1,0,0) achieved an RMSE of 7.0205 °C, while the seasonal-naive benchmark achieved 2.4923 °C over the same final twelve months. The benchmark performed better in this illustrative test. A non-seasonal AR(1) forecast tends towards its long-run level and does not preserve the annual pattern well. Further model selection should use training-side validation.”
+#### 2.12.1 英文参考步骤与结果
+
+**英文参考步骤（笔记示范）**：(1) Aggregate the chosen temperature series by calendar month and hold out the final twelve observations. (2) Fit all preprocessing and the fixed ARIMA specification using training data only, then forecast twelve months. (3) Forecast the same months with the training-period seasonal-naive benchmark. (4) Plot both forecasts against the same actual values, compute RMSE on the same temperature scale, and compare the errors and annual patterns.
+
+**英文参考结论**：“For the monthly temperature series, the fixed ARIMA(1,0,0) achieved an RMSE of 7.0205 °C, while the seasonal-naive benchmark achieved 2.4923 °C over the same final twelve months. The benchmark performed better in this illustrative test. A non-seasonal AR(1) forecast tends towards its long-run level and does not preserve the annual pattern well. Further model selection should use training-side validation.”
 
 本次训练侧KPSS统计量约0.08547、p值输出0.1、自动滞后4：在本设置下不拒绝常数平稳原假设，但不等于证明没有季节性。训练ACF在12个月处约0.78733，PACF在1个月处约0.80019，说明年度结构和短期相关都值得关注；固定AR(1)是说明协议的参考候选，不是由诊断证明最优。
 
@@ -349,7 +735,11 @@ pred_baseline = monthly.iloc[-24:-12].to_numpy()
 
 本节按原顺序保留所有 35 个代码单元，可折叠查阅。§2.1–2.9 已逐组解释输入、关键设置和输出；绘图单元共享“先定画布→按同日期画真实与预测→标标题／图例→显示”的读法。代码仅为原件保真引用，不能抹去上文的泄漏和尺度限制。
 
-<details><summary>原 Code Cell 3</summary>
+#### 原 Code Cell 3
+
+先准备读取表格、检验平稳性、变换需求和拟合模型所用的库。
+
+**原 Code Cell 3**
 
 ```python
 import pandas as pd
@@ -366,42 +756,50 @@ import warnings
 warnings.filterwarnings("ignore")
 ```
 
-</details>
-
 这些导入语句让后续名字对应具体库函数；%matplotlib是Notebook显示设置，warnings行会屏蔽警告，诊断时须注意其限制。
 
-<details><summary>原 Code Cell 6</summary>
+#### 原 Code Cell 6
+
+先从本地 CSV 读出日期和加热器需求，再检查前几行。
+
+**原 Code Cell 6**
 
 ```python
 heater = pd.read_csv('heater.csv')
 heater.head()
 ```
 
-</details>
-
 read_csv按当前工作目录读取两列表，head返回前五行，用来核月份及需求输入。
 
-<details><summary>原 Code Cell 7</summary>
+#### 原 Code Cell 7
+
+把读进来的年月文本按年－月格式转换成日期，供排序和绘图。
+
+**原 Code Cell 7**
 
 ```python
 heater['year_month'] = pd.to_datetime(heater['year_month'], format = '%Y-%m')
 ```
 
-</details>
-
 to_datetime按年-月格式转换这一列，赋值只更新副本中的日期表示，输出供后面的时间轴使用。
 
-<details><summary>原 Code Cell 8</summary>
+#### 原 Code Cell 8
+
+检查数据表的行数、字段类型和非缺失计数，确认日期和需求列可用。
+
+**原 Code Cell 8**
 
 ```python
 heater.info()
 ```
 
-</details>
-
 info返回每列类型和非空数，核198行是否仍在，以及需求列有没有缺失。
 
-<details><summary>原 Code Cell 9</summary>
+#### 原 Code Cell 9
+
+将年月放横轴、需求值放纵轴，画原始需求以观察趋势和季节。
+
+**原 Code Cell 9**
 
 ```python
 plt.figure(figsize = (20,8))
@@ -410,22 +808,28 @@ plt.title('Monthly heater demand')
 plt.show()
 ```
 
-</details>
+[[#Cell 9 · 保存图|在机制段查看此格原图]]。
 
 figure定画布，plot把每月需求放到日期轴，show显示图；横轴是月份，纵轴是需求。
 
-<details><summary>原 Code Cell 11</summary>
+#### 原 Code Cell 11
+
+把未变换的需求序列交给 KPSS，检查水平平稳的原假设。
+
+**原 Code Cell 11**
 
 ```python
 kpss_stat, pval, lags, crit = kpss(heater['demand'], regression = 'c', nlags = 'auto')
 print('p Value to the KPSS test is: ',pval)
 ```
 
-</details>
-
 kpss输入原需求列，四个返回量分别为统计量、p值、使用滞后和临界值；本格只打印p值。
 
-<details><summary>原 Code Cell 15</summary>
+#### 原 Code Cell 15
+
+用原需求拟合 Box-Cox，得到变换后序列及参数。
+
+**原 Code Cell 15**
 
 ```python
 #if parameter lmbda is none, the model will find the optimal parameter
@@ -434,11 +838,13 @@ print(BCheater[:10])
 print(lmbda)
 ```
 
-</details>
-
 boxcox返回变换数组和估计λ；[:10]只显示前十项，不是仅用十项估计。
 
-<details><summary>原 Code Cell 17</summary>
+#### 原 Code Cell 17
+
+把变换后的需求按时间画出来，看峰谷振幅是否收敛。
+
+**原 Code Cell 17**
 
 ```python
 heater['demand_BC'] = BCheater
@@ -448,55 +854,67 @@ plt.title('Monthly heater demand after Box-Cox transformation')
 plt.show()
 ```
 
-</details>
+[[#Cell 17 · 保存图|在机制段查看此格原图]]。
 
 先把变换数组加入同一表，再按日期画变换尺度的曲线，不能把纵轴当原需求。
 
-<details><summary>原 Code Cell 20</summary>
+#### 原 Code Cell 20
+
+从年月日期提取月份编号，作为后续汇总键。
+
+**原 Code Cell 20**
 
 ```python
 heater['month'] = heater['year_month'].dt.month
 print(heater.head())
 ```
 
-</details>
-
 dt.month从日期取得1至12的月份编号，赋值后每行仍代表原来的月份。
 
-<details><summary>原 Code Cell 22</summary>
+#### 原 Code Cell 22
+
+按月份计算 Box-Cox 需求的平均值，检查 12 个季节位置。
+
+**原 Code Cell 22**
 
 ```python
 heater_by_month = heater.groupby('month')['demand_BC'].mean().reset_index()
 print(heater_by_month.head(12))
 ```
 
-</details>
-
 groupby按月份分组，对demand_BC求均值，reset_index让月份成为普通列；输出应是12行。
 
-<details><summary>原 Code Cell 23</summary>
+#### 原 Code Cell 23
+
+重命名月均值列，以免合回原表后和原始 Box-Cox 值同名。
+
+**原 Code Cell 23**
 
 ```python
 heater_by_month = heater_by_month.rename(columns = {'demand_BC':'demand_month_avg'})
 print(heater_by_month.head(12))
 ```
 
-</details>
-
 rename仅改右侧均值列名，保留数值，便于下一格区分观测与均值。
 
-<details><summary>原 Code Cell 25</summary>
+#### 原 Code Cell 25
+
+按月份将汇总表合回主表，为每行加一个对应的季节均值。
+
+**原 Code Cell 25**
 
 ```python
 heater = heater.merge(heater_by_month, on = 'month')
 print(heater.head())
 ```
 
-</details>
-
 merge用月份把右侧每月均值接回各观测行，若右表月份重复会膨胀，须核行数。
 
-<details><summary>原 Code Cell 26</summary>
+#### 原 Code Cell 26
+
+减去该行月均值、按年月重新排序，再画去季节后的序列。
+
+**原 Code Cell 26**
 
 ```python
 heater['demand_de_season'] = heater['demand_BC'] - heater['demand_month_avg']
@@ -507,22 +925,28 @@ plt.title('Monthly heater demand after Box-Cox transformation and de-seasonality
 plt.show()
 ```
 
-</details>
+[[#Cell 26 · 保存图|在机制段查看此格原图]]。
 
 相减得到去季节水平，sort_values恢复日期顺序，再画该列；负值表示低于月份平均。
 
-<details><summary>原 Code Cell 29</summary>
+#### 原 Code Cell 29
+
+用相邻月份之差把去季节后的水平换成变化量。
+
+**原 Code Cell 29**
 
 ```python
 heater['demand_diff1'] = heater['demand_de_season'].diff()
 heater.head()
 ```
 
-</details>
-
 diff按当前日期顺序做相邻相减，首行缺前值为NaN，head用来核中间量。
 
-<details><summary>原 Code Cell 30</summary>
+#### 原 Code Cell 30
+
+画一阶差分序列，看连续上升趋势是否减弱。
+
+**原 Code Cell 30**
 
 ```python
 plt.figure(figsize = (20,8))
@@ -531,22 +955,28 @@ plt.title('Monthly heater demand after Box-Cox transformation, de-seasonality, a
 plt.show()
 ```
 
-</details>
+[[#Cell 30 · 保存图|在机制段查看此格原图]]。
 
 本格仅画差分结果，用同日期坐标查趋势与波动形态，不自动证明平稳。
 
-<details><summary>原 Code Cell 32</summary>
+#### 原 Code Cell 32
+
+把差分去掉首个空值后交给 KPSS，检查当前尺度。
+
+**原 Code Cell 32**
 
 ```python
 _, pval, __, ___ = kpss(heater['demand_diff1'][1:], regression = 'c', nlags = 'auto') # do not include the first NaN value
 print('p Value to the KPSS test is: ',pval)
 ```
 
-</details>
-
 [1:]去掉首个缺失差分值，KPSS再次检查；下划线变量是未打算展示的返回项。
 
-<details><summary>原 Code Cell 35</summary>
+#### 原 Code Cell 35
+
+沿时间尾端保留 12 个月，得到训练和测试行。
+
+**原 Code Cell 35**
 
 ```python
 train = heater[:-12]
@@ -554,11 +984,13 @@ test = heater[-12:]
 train.shape, test.shape
 ```
 
-</details>
-
 负索引切分末12行，其余训练；shape返回两表行列数，核186/12和列数。
 
-<details><summary>原 Code Cell 37</summary>
+#### 原 Code Cell 37
+
+用现有切分画图并确认训练末点与测试起点。
+
+**原 Code Cell 37**
 
 ```python
 plt.figure(figsize = (20,8))
@@ -569,33 +1001,47 @@ plt.title('Monthly heater demand')
 plt.show()
 ```
 
-</details>
+[[#Cell 37 · 保存图|在机制段查看此格原图]]。
 
 分别按两段日期绘训练和测试，legend说明两线；此图不能代替检查预处理先后。
 
-<details><summary>原 Code Cell 41</summary>
+#### 原 Code Cell 41
+
+对训练差分作 PACF 图，提出自回归候选阶数。
+
+**原 Code Cell 41**
 
 ```python
 plot_pacf(train['demand_diff1'][1:], title = 'PACF plot');
 plt.show()
 ```
 
-</details>
+[[#Cell 41 · 保存图|在机制段查看此格原图]]。
 
 plot_pacf对训练差分序列画偏自相关，去掉首NaN；横轴lag是月数。
 
-<details><summary>原 Code Cell 44</summary>
+#### 原 Code Cell 44
+
+对训练差分作 ACF 图，提出移动平均候选阶数。
+
+**原 Code Cell 44**
 
 ```python
 plot_acf(train['demand_diff1'][1:], title = 'ACF plot');
 plt.show()
 ```
 
-</details>
+[[#Cell 44 · 保存图|在机制段查看此格原图]]。
 
 plot_acf对同一训练差分序列画自相关；与PACF的控制中间滞后口径不同。
 
-<details><summary>原 Code Cell 47</summary>
+#### 原 Code Cell 47
+
+原码把含首个 NaN 的训练列传给 ARIMA。前两张相关图显式跳过该缺项；这里默认状态空间拟合，滤波在缺失观测处不进行该次观测更新，时间位置仍保留。不要填 0 冒充实际变化。
+
+在训练变化量上拟合 ARMA，保留供测试期预测的模型。
+
+**原 Code Cell 47**
 
 ```python
 # 2,0,1 ARIMA Model
@@ -604,11 +1050,13 @@ model_fit = model.fit()
 y_predict = model_fit.forecast(12)
 ```
 
-</details>
-
 ARIMA创建(2,0,1)概率模型，fit估计参数，forecast返回未来12步差分预测；必须恢复后才得需求。
 
-<details><summary>原 Code Cell 49</summary>
+#### 原 Code Cell 49
+
+比较差分尺度的预测与测试实际值。
+
+**原 Code Cell 49**
 
 ```python
 # Plot
@@ -621,22 +1069,28 @@ plt.legend(loc='upper left', fontsize=18)
 plt.show()
 ```
 
-</details>
+[[#Cell 49 · 保存图|在机制段查看此格原图]]。
 
 三条plot共用日期，y_predict对应测试日期，但实际预测对象仍是差分列。
 
-<details><summary>原 Code Cell 51</summary>
+#### 原 Code Cell 51
+
+用相同日期的真实和预测变化量计算 RMSE。
+
+**原 Code Cell 51**
 
 ```python
 rmse_arma = root_mean_squared_error(y_true=test['demand_diff1'], y_pred=y_predict)
 print(rmse_arma)
 ```
 
-</details>
-
 root_mean_squared_error在差分尺度对真实与预测逐项评分，print返回该尺度的RMSE。
 
-<details><summary>原 Code Cell 54</summary>
+#### 原 Code Cell 54
+
+在去季节水平上让 ARIMA 内部做差分，并预测测试 12 期。
+
+**原 Code Cell 54**
 
 ```python
 model = ARIMA(train['demand_de_season'], order=(2,1,1)) 
@@ -644,11 +1098,13 @@ model_fit = model.fit()
 y_predict = model_fit.forecast(12)
 ```
 
-</details>
-
 输入去季节水平并设d=1，模型内部差分，返回预测已恢复到此输入水平，不能再累计一次。
 
-<details><summary>原 Code Cell 56</summary>
+#### 原 Code Cell 56
+
+对照去季节尺度的测试实际值与 ARIMA 预测。
+
+**原 Code Cell 56**
 
 ```python
 plt.figure(figsize = (20,8))
@@ -660,22 +1116,28 @@ plt.legend(loc='upper left', fontsize=18)
 plt.show()
 ```
 
-</details>
+[[#Cell 56 · 保存图|在机制段查看此格原图]]。
 
 本格把去季节水平的真实与预测共轴画出，不是原需求图。
 
-<details><summary>原 Code Cell 58</summary>
+#### 原 Code Cell 58
+
+把去季节水平的配对误差汇总成 RMSE。
+
+**原 Code Cell 58**
 
 ```python
 rmse_arima = root_mean_squared_error(y_true=test['demand_de_season'], y_pred=y_predict)
 print(rmse_arima)
 ```
 
-</details>
-
 本格评分的是真实去季节水平，因此不能与上一差分RMSE直接排胜负。
 
-<details><summary>原 Code Cell 62</summary>
+#### 原 Code Cell 62
+
+查看同一季节之间的差，判断季节结构能否减弱。
+
+**原 Code Cell 62**
 
 ```python
 # plot the demand after differencing with lag = 12
@@ -684,11 +1146,15 @@ plt.plot(heater['year_month'], heater['demand_BC'].diff(12))
 plt.show()
 ```
 
-</details>
+[[#Cell 62 · 保存图|在机制段查看此格原图]]。
 
 diff(12)做相隔12月相减；原代码这里用全表作诊断，训练专用版须另外限定范围。
 
-<details><summary>原 Code Cell 65</summary>
+#### 原 Code Cell 65
+
+对季节差后的训练序列读 PACF，提议季节 AR 阶数。
+
+**原 Code Cell 65**
 
 ```python
 print(train['demand_BC'].diff(12).head(n=20))
@@ -696,22 +1162,30 @@ plot_pacf(train['demand_BC'].diff(12)[12:]);
 plt.show()
 ```
 
-</details>
+[[#Cell 65 · 保存图|在机制段查看此格原图]]。
 
 打印训练季节差分的前20项，前12项NaN属定义；[12:]只去掉这些缺项，再画PACF。
 
-<details><summary>原 Code Cell 67</summary>
+#### 原 Code Cell 67
+
+对季节差后的训练序列读 ACF，提议季节 MA 阶数。
+
+**原 Code Cell 67**
 
 ```python
 plot_acf(train['demand_BC'].diff(12)[12:]);
 plt.show()
 ```
 
-</details>
+[[#Cell 67 · 保存图|在机制段查看此格原图]]。
 
 对训练12期差分画ACF，季节滞后要看12的倍数，不是普通第3个月就等于季节3阶。
 
-<details><summary>原 Code Cell 69</summary>
+#### 原 Code Cell 69
+
+把普通与季节阶数写进同一个 ARIMA 规格并拟合。
+
+**原 Code Cell 69**
 
 ```python
 model = ARIMA(train['demand_BC'], order=(2,1,1), seasonal_order = (1,0,3,12))
@@ -719,11 +1193,13 @@ model_fit = model.fit()
 y_predict = model_fit.forecast(12)
 ```
 
-</details>
-
 输入Box-Cox水平，普通与季节规格分别传入两个元组，fit和forecast生成12个月水平预测。
 
-<details><summary>原 Code Cell 71</summary>
+#### 原 Code Cell 71
+
+比较 Box-Cox 水平上的测试实际与季节模型预测。
+
+**原 Code Cell 71**
 
 ```python
 plt.figure(figsize = (20,8))
@@ -735,22 +1211,28 @@ plt.legend(loc='upper left', fontsize=18)
 plt.show()
 ```
 
-</details>
+[[#Cell 71 · 保存图|在机制段查看此格原图]]。
 
 共轴画Box-Cox真实与预测，读图不能把变换纵轴还当作原需求数量。
 
-<details><summary>原 Code Cell 73</summary>
+#### 原 Code Cell 73
+
+在 Box-Cox 水平上计算季节 ARIMA 的 RMSE。
+
+**原 Code Cell 73**
 
 ```python
 rmse_sarima = root_mean_squared_error(y_true=test['demand_BC'], y_pred=y_predict)
 print(rmse_sarima)
 ```
 
-</details>
-
 本格在Box-Cox尺度评分，保存值与当前软件复算的差别在§2.8分列。
 
-<details><summary>原 Code Cell 76</summary>
+#### 原 Code Cell 76
+
+以 Box-Cox 水平拟合带加法趋势和季节的 ETS。
+
+**原 Code Cell 76**
 
 ```python
 from statsmodels.tsa.exponential_smoothing.ets import ETSModel
@@ -759,11 +1241,13 @@ hw_fit = hw.fit()
 y_predict = hw_fit.forecast(12)
 ```
 
-</details>
-
 ETSModel设置加法趋势和12期加法季节，fit估计状态和参数，forecast出12步；优化日志是训练过程。
 
-<details><summary>原 Code Cell 78</summary>
+#### 原 Code Cell 78
+
+对齐测试月份，画出 Box-Cox 水平的真实值与 ETS 预测。
+
+**原 Code Cell 78**
 
 ```python
 plt.figure(figsize = (20,8))
@@ -775,18 +1259,20 @@ plt.legend(loc='upper left', fontsize=18)
 plt.show()
 ```
 
-</details>
+[[#Cell 78 · 保存图|在机制段查看此格原图]]。
 
 画ETS的Box-Cox水平预测，线与实际同尺度，但和差分图不能直接比较距离。
 
-<details><summary>原 Code Cell 80</summary>
+#### 原 Code Cell 80
+
+在相同月份的 Box-Cox 水平上计算 ETS 的 RMSE。
+
+**原 Code Cell 80**
 
 ```python
 rmse_hw = root_mean_squared_error(y_pred=y_predict, y_true=test['demand_BC'])
 print(rmse_hw)
 ```
-
-</details>
 
 评分仍为Box-Cox水平，y_true和y_pred参数写反顺序不改变RMSE的对称平方差。
 
@@ -828,48 +1314,110 @@ print(rmse_hw)
 
 ### 7.1 已差分的序列再设 d=1 会怎样
 
-<details><summary>答案</summary>
-
-又做一次差分，改变了拟合对象与恢复步骤，可能过度差分。先查传入的列是水平还是差分量，不能只看模型名称。
-
-</details>
+> [!example]- 答案
+>
+> 又做一次差分，改变了拟合对象与恢复步骤，可能过度差分。先查传入的列是水平还是差分量，不能只看模型名称。
 
 ### 7.2 一月平均只用日历编号，为什么会泄漏
 
-<details><summary>答案</summary>
-
-月份编号本身不会泄漏，但各月份的需求平均是从观测值估计的。若含未来测试需求，就提前使用了当时未知的信息。
-
-</details>
+> [!example]- 答案
+>
+> 月份编号本身不会泄漏，但各月份的需求平均是从观测值估计的。若含未来测试需求，就提前使用了当时未知的信息。
 
 ### 7.3 原尺度预测小于零，要自动截零吗
 
-<details><summary>答案</summary>
-
-不能静默处理。先核变换定义域、模型适用范围和业务约束。截零是改变预测规则，须训练侧确定并公开，再用同规则评估。
-
-</details>
+> [!example]- 答案
+>
+> 不能静默处理。先核变换定义域、模型适用范围和业务约束。截零是改变预测规则，须训练侧确定并公开，再用同规则评估。
 
 ## 8. Notebook 单元映射
 
-原82cells仍完整保真；课堂来源只覆盖下表列明的部分。S20 的讲义窗与教程窗互不相加冒充完整课长，教程末端缺失不等于略过。
+预习从第 11、15、29、81 格看平稳性、尺度变换、差分和误差口径。课中按 1 起始编号逐格定位。代码格可先跳到本格源码，再从机制链接回长例；录音缺失的格仍按源码学习。复习用 §7 并复做 §2.11 的恢复与比较。
 
-| Cells（从1计） | 正文 | 课堂覆盖 |
-|---|---|---|
-| 1–9 | §1、§2.1 | S20 `01:30:17`–`01:41:26` |
-| 10–12 | §2.2 KPSS | S20 `01:41:35`–`01:43:00` |
-| 13–18 | §2.3 Box-Cox | S20 `01:43:19`–`01:45:42` |
-| 19–27 | §2.4 月均、合并、去季节 | S20 `01:45:42`–`01:52:05` |
-| 28–37 | §2.5 差分、检验、切分 | S20 `01:52:14`–`01:55:39` |
-| 38–42 | §2.6 ARMA入口与PACF | S20 `01:55:49`–`01:58:49`，末句中断 |
-| 43–51 | §2.6 ACF／拟合／预测／误差 | ❓ 录音已结束；不可降权，源码与既有实跑另列 |
-| 52–58 | §2.7 ARIMA | ❓ 未录；不可降权 |
-| 59–73 | §2.8 季节模型 | ❓ 未录；不可降权 |
-| 74–80 | §2.9 ETS | ❓ 未录；不可降权 |
-| 81 | §2.10–2.11 比较与补充实验 | ❓ 未录；补充实验不是课堂输出 |
-| 82 | §2.12 天气评分题 | ❓ 本源未录题面讲评；原题及参考实现仍保留 |
-
-
+| 物理格 | 类型 | 正文 | 原有课堂时间段（不细分到单格） |
+|---:|---|---|---|
+| 1 | Markdown | [[#Cell 1 · 课程路线和工具\|本格讲解]] | S20 01:30:17–01:41:26 |
+| 2 | Markdown | [[#Cell 2 · 导入前的工具分工\|本格讲解]] | S20 01:30:17–01:41:26 |
+| 3 | Code | [[#2.1 先固定输入、输出和时间（Cells 1–9）\|机制与用途]]；[[#原 Code Cell 3\|源码与逐格说明]] | S20 01:30:17–01:41:26 |
+| 4 | Markdown | [[#Cell 4 · 数据准备的顺序\|本格讲解]] | S20 01:30:17–01:41:26 |
+| 5 | Markdown | [[#Cell 5 · 月度需求表和日期轴\|本格讲解]] | S20 01:30:17–01:41:26 |
+| 6 | Code | [[#2.1 先固定输入、输出和时间（Cells 1–9）\|机制与用途]]；[[#原 Code Cell 6\|源码与逐格说明]] | S20 01:30:17–01:41:26 |
+| 7 | Code | [[#2.1 先固定输入、输出和时间（Cells 1–9）\|机制与用途]]；[[#原 Code Cell 7\|源码与逐格说明]] | S20 01:30:17–01:41:26 |
+| 8 | Code | [[#2.1 先固定输入、输出和时间（Cells 1–9）\|机制与用途]]；[[#原 Code Cell 8\|源码与逐格说明]] | S20 01:30:17–01:41:26 |
+| 9 | Code | [[#2.1 先固定输入、输出和时间（Cells 1–9）\|机制与用途]]；[[#原 Code Cell 9\|源码与逐格说明]] | S20 01:30:17–01:41:26 |
+| 10 | Markdown | [[#Cell 10 · 平稳性原问\|本格讲解]] | S20 01:41:35–01:43:00 |
+| 11 | Code | [[#2.2 KPSS 检查什么（Cells 10–12）\|机制与用途]]；[[#原 Code Cell 11\|源码与逐格说明]] | S20 01:41:35–01:43:00 |
+| 12 | Markdown | [[#Cell 12 · 原需求的源判定\|本格讲解]] | S20 01:41:35–01:43:00 |
+| 13 | Markdown | [[#Cell 13 · 稳定化三步\|本格讲解]] | S20 01:43:19–01:45:42 |
+| 14 | Markdown | [[#Cell 14 · 先处理振幅\|本格讲解]] | S20 01:43:19–01:45:42 |
+| 15 | Code | [[#2.3 Box-Cox 怎样压缩波动（Cells 13–18）\|机制与用途]]；[[#原 Code Cell 15\|源码与逐格说明]] | S20 01:43:19–01:45:42 |
+| 16 | Markdown | [[#Cell 16 · 画变换后的需求\|本格讲解]] | S20 01:43:19–01:45:42 |
+| 17 | Code | [[#2.3 Box-Cox 怎样压缩波动（Cells 13–18）\|机制与用途]]；[[#原 Code Cell 17\|源码与逐格说明]] | S20 01:43:19–01:45:42 |
+| 18 | Markdown | [[#Cell 18 · 变换后的剩余结构\|本格讲解]] | S20 01:43:19–01:45:42 |
+| 19 | Markdown | [[#Cell 19 · 用同月均值去季节\|本格讲解]] | S20 01:45:42–01:52:05 |
+| 20 | Code | [[#2.4 月份均值怎样去季节（Cells 19–27）\|机制与用途]]；[[#原 Code Cell 20\|源码与逐格说明]] | S20 01:45:42–01:52:05 |
+| 21 | Markdown | [[#Cell 21 · 按月份聚合\|本格讲解]] | S20 01:45:42–01:52:05 |
+| 22 | Code | [[#2.4 月份均值怎样去季节（Cells 19–27）\|机制与用途]]；[[#原 Code Cell 22\|源码与逐格说明]] | S20 01:45:42–01:52:05 |
+| 23 | Code | [[#2.4 月份均值怎样去季节（Cells 19–27）\|机制与用途]]；[[#原 Code Cell 23\|源码与逐格说明]] | S20 01:45:42–01:52:05 |
+| 24 | Markdown | [[#Cell 24 · 把季节均值接回原表\|本格讲解]] | S20 01:45:42–01:52:05 |
+| 25 | Code | [[#2.4 月份均值怎样去季节（Cells 19–27）\|机制与用途]]；[[#原 Code Cell 25\|源码与逐格说明]] | S20 01:45:42–01:52:05 |
+| 26 | Code | [[#2.4 月份均值怎样去季节（Cells 19–27）\|机制与用途]]；[[#原 Code Cell 26\|源码与逐格说明]] | S20 01:45:42–01:52:05 |
+| 27 | Markdown | [[#Cell 27 · 去季节后的趋势\|本格讲解]] | S20 01:45:42–01:52:05 |
+| 28 | Markdown | [[#Cell 28 · 用一阶差分处理趋势\|本格讲解]] | S20 01:52:14–01:55:39 |
+| 29 | Code | [[#2.5 差分、缺失首项与测试边界（Cells 28–37）\|机制与用途]]；[[#原 Code Cell 29\|源码与逐格说明]] | S20 01:52:14–01:55:39 |
+| 30 | Code | [[#2.5 差分、缺失首项与测试边界（Cells 28–37）\|机制与用途]]；[[#原 Code Cell 30\|源码与逐格说明]] | S20 01:52:14–01:55:39 |
+| 31 | Markdown | [[#Cell 31 · 决定再做检验\|本格讲解]] | S20 01:52:14–01:55:39 |
+| 32 | Code | [[#2.5 差分、缺失首项与测试边界（Cells 28–37）\|机制与用途]]；[[#原 Code Cell 32\|源码与逐格说明]] | S20 01:52:14–01:55:39 |
+| 33 | Markdown | [[#Cell 33 · 差分后如何判定\|本格讲解]] | S20 01:52:14–01:55:39 |
+| 34 | Markdown | [[#Cell 34 · 固定末十二月\|本格讲解]] | S20 01:52:14–01:55:39 |
+| 35 | Code | [[#2.5 差分、缺失首项与测试边界（Cells 28–37）\|机制与用途]]；[[#原 Code Cell 35\|源码与逐格说明]] | S20 01:52:14–01:55:39 |
+| 36 | Markdown | [[#Cell 36 · 读分色边界\|本格讲解]] | S20 01:52:14–01:55:39 |
+| 37 | Code | [[#2.5 差分、缺失首项与测试边界（Cells 28–37）\|机制与用途]]；[[#原 Code Cell 37\|源码与逐格说明]] | S20 01:52:14–01:55:39 |
+| 38 | Markdown | [[#Cell 38 · 进入训练与评价\|本格讲解]] | S20 01:55:49–01:58:49，末句中断 |
+| 39 | Markdown | [[#Cell 39 · ARMA 工作对象\|本格讲解]] | S20 01:55:49–01:58:49，末句中断 |
+| 40 | Markdown | [[#Cell 40 · 相关图各回答什么\|本格讲解]] | S20 01:55:49–01:58:49，末句中断 |
+| 41 | Code | [[#2.6 ARMA：预测的是“变化量”（Cells 38–51）\|机制与用途]]；[[#原 Code Cell 41\|源码与逐格说明]] | S20 01:55:49–01:58:49，末句中断 |
+| 42 | Markdown | [[#Cell 42 · 从 PACF 提候选\|本格讲解]] | S20 01:55:49–01:58:49，末句中断 |
+| 43 | Markdown | [[#Cell 43 · 用 ACF 提 q\|本格讲解]] | 录音已结束 |
+| 44 | Code | [[#2.6 ARMA：预测的是“变化量”（Cells 38–51）\|机制与用途]]；[[#原 Code Cell 44\|源码与逐格说明]] | 录音已结束 |
+| 45 | Markdown | [[#Cell 45 · 原格采用 q=1\|本格讲解]] | 录音已结束 |
+| 46 | Markdown | [[#Cell 46 · 拟合第一组规格\|本格讲解]] | 录音已结束 |
+| 47 | Code | [[#2.6 ARMA：预测的是“变化量”（Cells 38–51）\|机制与用途]]；[[#原 Code Cell 47\|源码与逐格说明]] | 录音已结束 |
+| 48 | Markdown | [[#Cell 48 · 画 ARMA 预测\|本格讲解]] | 录音已结束 |
+| 49 | Code | [[#2.6 ARMA：预测的是“变化量”（Cells 38–51）\|机制与用途]]；[[#原 Code Cell 49\|源码与逐格说明]] | 录音已结束 |
+| 50 | Markdown | [[#Cell 50 · ARMA 在变化量评分\|本格讲解]] | 录音已结束 |
+| 51 | Code | [[#2.6 ARMA：预测的是“变化量”（Cells 38–51）\|机制与用途]]；[[#原 Code Cell 51\|源码与逐格说明]] | 录音已结束 |
+| 52 | Markdown | [[#Cell 52 · ARIMA 的输入层次\|本格讲解]] | 未录到 |
+| 53 | Markdown | [[#Cell 53 · 预测十二步\|本格讲解]] | 未录到 |
+| 54 | Code | [[#2.7 ARIMA：模型内部做差分并恢复（Cells 52–58）\|机制与用途]]；[[#原 Code Cell 54\|源码与逐格说明]] | 未录到 |
+| 55 | Markdown | [[#Cell 55 · 看还原到哪一层\|本格讲解]] | 未录到 |
+| 56 | Code | [[#2.7 ARIMA：模型内部做差分并恢复（Cells 52–58）\|机制与用途]]；[[#原 Code Cell 56\|源码与逐格说明]] | 未录到 |
+| 57 | Markdown | [[#Cell 57 · 去季节水平评分\|本格讲解]] | 未录到 |
+| 58 | Code | [[#2.7 ARIMA：模型内部做差分并恢复（Cells 52–58）\|机制与用途]]；[[#原 Code Cell 58\|源码与逐格说明]] | 未录到 |
+| 59 | Markdown | [[#Cell 59 · 季节 ARIMA 的输入层次\|本格讲解]] | 未录到 |
+| 60 | Markdown | [[#Cell 60 · 先提出季节阶数候选\|本格讲解]] | 未录到 |
+| 61 | Markdown | [[#Cell 61 · 相减去年同月\|本格讲解]] | 未录到 |
+| 62 | Code | [[#2.8 季节 ARIMA：普通差分和季节差分分开（Cells 59–73）\|机制与用途]]；[[#原 Code Cell 62\|源码与逐格说明]] | 未录到 |
+| 63 | Markdown | [[#Cell 63 · D=0 的源解释\|本格讲解]] | 未录到 |
+| 64 | Markdown | [[#Cell 64 · 源选择季节 P\|本格讲解]] | 未录到 |
+| 65 | Code | [[#2.8 季节 ARIMA：普通差分和季节差分分开（Cells 59–73）\|机制与用途]]；[[#原 Code Cell 65\|源码与逐格说明]] | 未录到 |
+| 66 | Markdown | [[#Cell 66 · 原季节 Q 与图的范围\|本格讲解]] | 未录到 |
+| 67 | Code | [[#2.8 季节 ARIMA：普通差分和季节差分分开（Cells 59–73）\|机制与用途]]；[[#原 Code Cell 67\|源码与逐格说明]] | 未录到 |
+| 68 | Markdown | [[#Cell 68 · 写出两组规格\|本格讲解]] | 未录到 |
+| 69 | Code | [[#2.8 季节 ARIMA：普通差分和季节差分分开（Cells 59–73）\|机制与用途]]；[[#原 Code Cell 69\|源码与逐格说明]] | 未录到 |
+| 70 | Markdown | [[#Cell 70 · 在同一 Box-Cox 轴对照\|本格讲解]] | 未录到 |
+| 71 | Code | [[#2.8 季节 ARIMA：普通差分和季节差分分开（Cells 59–73）\|机制与用途]]；[[#原 Code Cell 71\|源码与逐格说明]] | 未录到 |
+| 72 | Markdown | [[#Cell 72 · 计算季节模型的评分\|本格讲解]] | 未录到 |
+| 73 | Code | [[#2.8 季节 ARIMA：普通差分和季节差分分开（Cells 59–73）\|机制与用途]]；[[#原 Code Cell 73\|源码与逐格说明]] | 未录到 |
+| 74 | Markdown | [[#Cell 74 · ETS 的工作尺度\|本格讲解]] | 未录到 |
+| 75 | Markdown | [[#Cell 75 · 训练加法趋势与季节\|本格讲解]] | 未录到 |
+| 76 | Code | [[#2.9 ETS：用误差调整状态（Cells 74–80）\|机制与用途]]；[[#原 Code Cell 76\|源码与逐格说明]] | 未录到 |
+| 77 | Markdown | [[#Cell 77 · 画 ETS 预测图\|本格讲解]] | 未录到 |
+| 78 | Code | [[#2.9 ETS：用误差调整状态（Cells 74–80）\|机制与用途]]；[[#原 Code Cell 78\|源码与逐格说明]] | 未录到 |
+| 79 | Markdown | [[#Cell 79 · ETS 的 RMSE\|本格讲解]] | 未录到 |
+| 80 | Code | [[#2.9 ETS：用误差调整状态（Cells 74–80）\|机制与用途]]；[[#原 Code Cell 80\|源码与逐格说明]] | 未录到 |
+| 81 | Markdown | [[#2.10 为什么原比较表不能直接选赢家（Cell 81）\|机制与用途]] | 未录到 |
+| 82 | Markdown | [[#2.12 Extra Assignment：完整原题与参考实现（Cell 82）\|机制与用途]] | 天气评分题，只读 |
 
 **课堂时间分配**（本源所列窗口的段首跨度，非净授课时长）：
 

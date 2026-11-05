@@ -123,6 +123,12 @@ W4 结束时你已经认识 REA 的三类对象：**资源 Resource、事件 Eve
 
 ### 1.3 为什么这一讲放在这里 · 重排说明
 
+主源 **Week 5 PPT.pptx**，页号为物理幻灯片编号。
+
+- **预习**先读 [[#p.7 · 核心建模第 1–3 步|p.7–8 六步]]，为采购写出取得和付款，再用 p.12–20 核资源、角色和端点。Case 5 题面和逐步答案在主题深读的收入核心练习。
+- **课中**从 [[#8. 讲义页码映射|§8]] 找当前页，p.22–37 的红框红线随页改变，按各页的定位逐根读。
+- **复习**先用 [[#7. 自测|§7]] 区分发起、承诺、实际交换和冲回，再对照 p.38、48 的两套完整图。
+
 **往回看**：M01–M03 教的是**主流范式**——把业务压缩成"影响会计等式的、能用钱衡量的"那一小部分，编码成借贷分录，汇总成四张报表。M04 对比的是本讲简化金额分录与显式业务数据模型：分录本身不列全部人员、数量或订单关系，真实凭证/ERP 仍可另存。REA 将资源、事件、角色及其关系直接组织起来；本篇会就地恢复 UML 类图与端点读法。
 
 **这一讲**是 M04 的**施工阶段**：M04 告诉你"锤子长这样、钉子长这样"，M05 告诉你"房子按这个顺序盖"。
@@ -161,6 +167,336 @@ p.49–57    收入循环各事件的逐个定义
 ---
 
 ## 2. 正文
+
+依次读每页问题、原图及下方的做法。已有专题长例和课堂材料集中在后半。
+
+### 逐页 · 核心类、关系及六步（p.1–8）
+
+#### p.1 · 本讲标题
+
+第 5 章 REA Business Process Modeling。先为一笔真正的交换画核心模型，再接上发起、承诺与退回。
+
+#### p.2 · 核心类与资源粒度
+
+曲奇通常可互换，按品类加数量记；每颗钻石须分别跟踪时按个体资源记。经济增量取得资源，减量给出资源，数量或价值均可变化。内部参与者代表企业，外部参与者来自业务另一方。
+
+#### p.3 · 核心的三种线
+
+Duality 连给出和取得两件事；Stockflow 连资源与事件，按企业视角区分流入和流出；Participation 连接事件和参与人。例：收款连现金账户及收银员，另用二元性连原销售。
+
+#### p.4 · 独立于单次事件的三种关系
+
+保管（custody）描述人员有资源的实物或访问控制。指派（assignment）描述员工长期服务某客户。职责（responsibility）描述内部人员之间的负责关系。先问关系脱离某笔交易后是否仍成立，再决定要不要建线。
+
+#### p.5 · 一个值应放到类还是关联
+
+订单日期描述一张订单；本单采购某商品的数量同时依赖订单及品类，应放关联。资源常有编号、描述和价值或尺寸，事件有编号、日期和数量金额，参与者有编号、姓名及联系资料。
+
+#### p.6 · 多重性先从业务条件判断
+
+固定事件，看资源或参与者端有几条。课件常见规则是一次事件有一到多种类型、具体资源在这类事件中可零次或一次、参与角色通常为恰一人。它们是经验起点，退货或多人审批等要读题重判。
+
+#### p.7 · 核心建模第 1–3 步
+
+先建给出与取得的经济事件并连二元性；第二步给每个事件接改变的资源，画 stockflow；第三步找从谁取得或向谁交付，画外部参与。购货的供应商与付款收款方要分别判断。
+
+#### p.8 · 核心建模第 4–6 步
+
+加执行、处理或授权的内部角色，然后把属性分到类或关系，再根据业务叙述标两端的最小最大。对同一付款，记账和审批是不同职责，若模型要保留应各列。
+
+### 逐页 · 采购核心与 RSWS（p.9–20）
+
+#### p.9 · 采购取得：买、租或取服务
+
+取得商品所有权用 Purchase，取得临时使用权用 Rental，买服务或公用事业用 Service Acquisition。资源可为存货、存货类型、服务或运营资产。外部是供应商，内部通常为采购人员。
+
+#### p.10 · 采购给出：支付现金
+
+现金付款（Cash Disbursement）使企业现金减少。左端资源为现金，外部通常为供应商，内部可为收银或应付账款职员。该事件与采购用二元性相连，日期可不同。
+
+#### p.11 · 存货采购核心图怎么走
+
+![Week 5 课件 p.11 · 存货采购核心图怎么走](figures/m05-source/w5-s011.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s011.png|查看Week 5 课件 p.11 · 存货采购核心图怎么走大图]]
+
+原图范围是存货采购，包括商品、原材料或用品。从左上库存到 Purchase，再沿右边三线找采购员、收货员和供应商。下排现金账户连 Cash Disbursement，付款连供应商和应付职员。中轴 Duality 让一笔付款可追到对应取得事件，端点限制由案例另定。
+
+#### p.12 · RSWS 第 1 步：先画一对事件
+
+![Week 5 课件 p.12 · RSWS 第 1 步：先画一对事件](figures/m05-source/w5-s012.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s012.png|查看Week 5 课件 p.12 · RSWS 第 1 步：先画一对事件大图]]
+
+Robert Scott Woodwind Shop 案例图只画 Purchase 和 Cash Disbursement，中间 Duality。按企业视角，采购增加取得的东西，付款减少现金。资源和人员还待加入。
+
+#### p.13 · RSWS 第 2 步：接三条资源流
+
+![Week 5 课件 p.13 · RSWS 第 2 步：接三条资源流](figures/m05-source/w5-s013.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s013.png|查看Week 5 课件 p.13 · RSWS 第 2 步：接三条资源流大图]]
+
+图上 Inventory Type 与 Overhead 各自连 Purchase，是 Stockflow1、2；下方 Cash 连 Cash Disbursement，是 Stockflow3。库存与间接投入按本例分别记录，不能把所有支出都画到 Cash 流上。
+
+#### p.14 · RSWS 第 3–4 步：决定参与角色
+
+Supplier 是外部。Purchase Agent 处理采购，A/P Clerk 和 Manager 在付款中分别有处理和审批职责。下一页逐线定位本案例的人与事件。
+
+#### p.15 · RSWS 的五条参与线
+
+![Week 5 课件 p.15 · RSWS 的五条参与线](figures/m05-source/w5-s015.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s015.png|查看Week 5 课件 p.15 · RSWS 的五条参与线大图]]
+
+Purchase 接采购员与供应商；Cash Disbursement 接供应商、应付职员和经理。图右不同角色需分开辨认。此图给角色与结构，p.20 才按叙述与原图填数量约束。
+
+#### p.16 · RSWS 第 5 步：四项关系属性
+
+Stockflow1 的 item-qty-purch、item-unit-cost 属一次采购与一种品类的组合。Stockflow2 的 oh-qty-purch 属采购和 Overhead 的组合。Duality 的 cd-acq-applied 只描述一笔付款分给某笔采购的金额。
+
+#### p.17 · RSWS 全属性图如何读
+
+![Week 5 课件 p.17 · RSWS 全属性图如何读](figures/m05-source/w5-s017.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s017.png|查看Week 5 课件 p.17 · RSWS 全属性图如何读大图]]
+
+左框记录资源类型及编号，中央记录事件编号、日期、金额，右框记录人及权限或资料。虚线小框不是另一种资源，表示关联自身的数量、单价或分配额。对照上页四项，再看同一品类能在两张采购单有不同单价。
+
+#### p.18 · RSWS 第 6 步：给每根线两个端点
+
+先固定一个具体事件，问它对面最少与最多几条，再反向。下一页题设控制哪些可以零、哪些必须恰一。
+
+#### p.19 · RSWS 的四条业务条件
+
+资源和人员可在交易前建档；每笔付款只用一个现金账户；采购可赊账、分次或合并付款，企业也付其他费用。第四条说每笔采购或付款由一名内部人员经办。p.20 把付款经办和经理审批各画成一个角色，各自恰一。图不能证明两个角色由同一自然人还是不同人员担任。
+
+#### p.20 · RSWS 完整图：对照叙述和端点
+
+![Week 5 课件 p.20 · RSWS 完整图：对照叙述和端点](figures/m05-source/w5-s020.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s020.png|查看Week 5 课件 p.20 · RSWS 完整图：对照叙述和端点大图]]
+
+原图 Purchase 与 Cash Disbursement 的 Duality 两端都是 0..*，其小框记录 cd-acq-applied。固定一笔付款，现金端 1..1，供应商端可选 0..1，应付职员与经理各 1..1。采购的采购员和供应商各恰一。Inventory Type 与 Overhead 各自到采购均为 0..* 对 0..*，图允许两种投入分类分别为空，仍要另验实际采购的内容。
+
+### 逐页 · 收入核心及扩展（p.21–37）
+
+#### p.21 · 销售与收款的核心图
+
+![Week 5 课件 p.21 · 销售与收款的核心图](figures/m05-source/w5-s021.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s021.png|查看Week 5 课件 p.21 · 销售与收款的核心图大图]]
+
+上排经济减量框原名 Sale or Service Engagement or Rental，分别表示销售、提供服务或出租。该框连商品或服务、Salesperson 与 Customer；下排 Cash Receipt 连 Cash Account、同一类客户与 Cashier。给出的资源方向与采购相反。中间二元性连收入周期两个事件。
+
+#### p.22 · 扩展图先认绿色核心
+
+![Week 5 课件 p.22 · 扩展图先认绿色核心](figures/m05-source/w5-s022.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s022.png|查看Week 5 课件 p.22 · 扩展图先认绿色核心大图]]
+
+绿色框是两种实际经济事件、两类资源及其参与，绿线有 stockflow、duality 和 participation。黑色框或线扩展到活动开始前和后续退回；后面各页用红色指本次重点，不表示那条边属核心。
+
+#### p.23 · 发起和承诺是两种扩展事件
+
+发起可由内部推广或外部询问触发，说明业务从哪里开始。承诺是约定未来交换，有时把双方承诺合在同一个互相承诺事件。发起或承诺本身不等于货或钱已经变动。
+
+#### p.24 · 红框定位发起与承诺
+
+![Week 5 课件 p.24 · 红框定位发起与承诺](figures/m05-source/w5-s024.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s024.png|查看Week 5 课件 p.24 · 红框定位发起与承诺大图]]
+
+和 p.22 比，本页只把 InstigationEvent 与 CommitmentEvent 两框涂红。沿中轴先找询价或请购，再找承诺；绿色的实际收货或交付仍在下方。
+
+#### p.25 · 冲回的对象是什么
+
+购货退回冲回企业取得存货的经济增量，销售退回冲回企业给出商品的经济减量。保留原事件，再记录退回发生的数量和对象。
+
+#### p.26 · 红框定位经济冲回事件
+
+![Week 5 课件 p.26 · 红框定位经济冲回事件](figures/m05-source/w5-s026.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s026.png|查看Week 5 课件 p.26 · 红框定位经济冲回事件大图]]
+
+在图下方找红框 EconomicReversal，和上方两项经济事件区分。退回不是删除原交易，先找被冲回事件和回流资源。
+
+#### p.27 · 事件对事件与事件对资源
+
+Fulfillment 把发起接承诺、承诺接实际经济事件；Reversal 连原事件和冲回；Reciprocal 连两个方向的承诺。Proposition 是发起对象，Reservation 是承诺锁定的资源或类别。
+
+#### p.28 · 红线标三条履约关系
+
+![Week 5 课件 p.28 · 红线标三条履约关系](figures/m05-source/w5-s028.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s028.png|查看Week 5 课件 p.28 · 红线标三条履约关系大图]]
+
+从红色发起框沿 Fulfillment1 到承诺，再沿 Fulfillment2 和左侧绕行的 Fulfillment3 各到一个经济事件。图上 Fulfillment3 接经济减量，别误读为左侧的 Reservation2。
+
+#### p.29 · 红线标冲回而非新交换
+
+![Week 5 课件 p.29 · 红线标冲回而非新交换](figures/m05-source/w5-s029.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s029.png|查看Week 5 课件 p.29 · 红线标冲回而非新交换大图]]
+
+本页红框在图底的冲回事件，红线由它回到 EconomicIncrement。在采购情境可以用进货退回追回原采购。这条 Reversal 和中间绿色的 Duality 各有对象。
+
+#### p.30 · 双方承诺可合在一个框
+
+![Week 5 课件 p.30 · 双方承诺可合在一个框](figures/m05-source/w5-s030.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s030.png|查看Week 5 课件 p.30 · 双方承诺可合在一个框大图]]
+
+图中红色 CommitmentEvent 向两项实际经济事件接 Fulfillment。课件写 Reciprocal not shown，因为画的是一个互相承诺；若拆成买方承诺和卖方承诺，才用 Reciprocal 连两者。
+
+#### p.31 · 与事件参与分开的角色关系
+
+Assignment 连内外角色，Responsibility 连两个内部角色，Custody 连接内部角色与资源控制。它们都可脱离某笔事件成立；某次交货谁执行仍用 Participation。
+
+#### p.32 · 红线标指派
+
+![Week 5 课件 p.32 · 红线标指派](figures/m05-source/w5-s032.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s032.png|查看Week 5 课件 p.32 · 红线标指派大图]]
+
+在右侧两个红框间找 Assignment。内部角色负责某外部伙伴，例如销售代表长期跟进顾客。这个长期指派不等同于他参与每笔该顾客交易。
+
+#### p.33 · 红线标内部职责
+
+![Week 5 课件 p.33 · 红线标内部职责](figures/m05-source/w5-s033.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s033.png|查看Week 5 课件 p.33 · 红线标内部职责大图]]
+
+本页红框都在右侧内部参与者，中间 Responsibility 表示主管与下属等内部负责关系。与上一页相比，外部伙伴不在这条关系上。
+
+#### p.34 · 红线标保管
+
+![Week 5 课件 p.34 · 红线标保管](figures/m05-source/w5-s034.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s034.png|查看Week 5 课件 p.34 · 红线标保管大图]]
+
+沿顶部红线从右上内部角色向左找到资源相关框。课件泛型图把端点画到 ResourceType，正文定义说 Resource；应用要先定跟踪的是具体物品还是某类资源的控制职责。
+
+#### p.35 · 资源组成、实例分类和新增参与
+
+Linkage 连两个资源以表达组成，Typification 连实例与类型，例如具体乐器归一个型号。新增的发起、承诺、冲回也可连接各自参与者，按实际行为判关系。
+
+#### p.36 · 红线标类型化
+
+![Week 5 课件 p.36 · 红线标类型化](figures/m05-source/w5-s036.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s036.png|查看Week 5 课件 p.36 · 红线标类型化大图]]
+
+图左两个红框由 Typification 相连，从具体资源读到所属类型。页边标了 Linkage not shown，所以不要把这条分类线当成部件组成。
+
+#### p.37 · 红线标扩展事件的参与
+
+![Week 5 课件 p.37 · 红线标扩展事件的参与](figures/m05-source/w5-s037.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s037.png|查看Week 5 课件 p.37 · 红线标扩展事件的参与大图]]
+
+沿红线逐组看。P1/P2 从发起接最上和第二个内部框，P3/P4 从承诺接第二个内部框和外部框，P9/P10 从冲回接外部框与最下内部框。
+
+中央 P5–8 为绿色核心。此泛化图的发起没有外部边，p.48 的 Sales Call 则具体画了客户参与。
+
+### 逐页 · 采购付款扩展（p.38–47）
+
+#### p.38 · 采购扩展图：请购到付款和退回
+
+![Week 5 课件 p.38 · 采购扩展图：请购到付款和退回](figures/m05-source/w5-s038.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s038.png|查看Week 5 课件 p.38 · 采购扩展图：请购到付款和退回大图]]
+
+中轴由 Purchase Requisition 到 Purchase Order，再到 Purchase 和 Cash Disbursement。底部 Purchase Return 沿 Reversal 回到 Purchase，Stockflow3 连 Inventory。左侧 Proposition 把请购接到 Inventory Type。订单用 Reservation1 接该类型、用 Reservation2 接 Cash Account，表示图上的承诺关系，实际现金只在付款的 Stockflow2 改变。
+
+右侧看主管、采购员、供应商、收货、应付和出库角色。该图没标端点数，见 [[#2.11 扩展的采购循环模型（讲义 p.38）|采购完整关联表]]。
+
+#### p.39 · 采购从需求开始
+
+通常企业内部发现需要，供应商来访也可能让企业意识到需求。确定触发后才问谁请购、买什么；需求出现时未必已有承诺。
+
+#### p.40 · 请购是内部发起事件
+
+部门主管发现需要某种货或服务，把需求传给采购部门。这时只形成内部申请，与供应商的约定等 Purchase Order。
+
+#### p.41 · 采购付款中的互相承诺
+
+企业与外部伙伴约好未来时间和交换内容。例如供应商答应交货，企业答应以后付款。先记承诺条件，实际取得和付现要等后续事件。
+
+#### p.42 · 采购订单落实承诺内容
+
+Purchase Order 记录供应商同意供货、企业同意付指定价格。订单是对未来交货和付款的承诺，应与实际收货单和付款记录分别保存。
+
+#### p.43 · 经济增量是实际取得
+
+采购周期里，收到货物或服务是企业取得资源，通常随后或同时用现金等资源交换。区分“签字答应采购”与“实际取得”。
+
+#### p.44 · Purchase 何时成立
+
+这页强调商品所有权从供应商转到企业，可在当面购买、供应商直接交付或运输中发生。是否已转移要看合同和实际履约，不能只看到下单日期。
+
+#### p.45 · 现金付款是采购周期的减量
+
+企业把现金或现金等价物交给供应商，构成 Cash Disbursement。用付款单定位现金账户；若先赊购后付款，采购与付款保留两个日期。
+
+#### p.46 · 采购增量的冲回
+
+此前的取得被部分或全部逆转时，记录 Economic Increment Reversal。例：收了 100 件后来退 20 件，留存原入库并再登记退回 20。
+
+#### p.47 · Purchase Return 的所有权方向
+
+原先由供应商转给企业的商品，现在由企业转回供应商。追原采购关联和退回数量，是否退款、冲应付或换货看后续事件。
+
+### 逐页 · 销售收款扩展（p.48–57）
+
+#### p.48 · 销售扩展图：从接触走到退回
+
+![Week 5 课件 p.48 · 销售扩展图：从接触走到退回](figures/m05-source/w5-s048.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m05-source/w5-s048.png|查看Week 5 课件 p.48 · 销售扩展图：从接触走到退回大图]]
+
+中轴 Sales Call 到 Sale Order 到 Sale，Sale 与 Cash Receipt 用 Duality 相连，Sale Return 用 Reversal 回原销售。左侧 Proposition 连拜访和介绍的品类。Reservation1 把订单接到品类，Reservation2 把订单接到现金账户；S19 06:59 要求先忽略收入图这条 Reservation2；这里只定位原图连线，具体用途仍未知。Cash Receipt 的 Stockflow2 才表示实际收款。
+
+右侧按线看销售员、客户、出库、收银及收货角色。比 p.38 多一条实际销售连销售员的参与。见 [[#2.13 扩展的收入循环模型（讲义 p.48）|销售完整关联表]]。
+
+#### p.49 · 收入周期的发起可内可外
+
+企业主动打销售电话、做广告或促销是内部发起；客户先询问是外部发起。它们可产生后续订单，但发起本身没有交付或收款。
+
+#### p.50 · Sales Call 是内部发起的一例
+
+销售人员用电话或面谈向客户介绍一项或多项商品服务的特点。先记录谁接触谁和介绍的对象，不能由联系推断顾客已下单。
+
+#### p.51 · 销售收款中的互相承诺
+
+企业与外部伙伴约好未来交换。例如公司答应交付、顾客答应付价。承诺什么时候履行由后续实际事件判断。
+
+#### p.52 · Sale Order 表示双方已约定
+
+企业同意交货，客户同意按约定金额付款。它比 Sales Call 多一层承诺，仍要另记 Sale 和 Cash Receipt 的实际发生。
+
+#### p.53 · 收入周期的经济减量
+
+企业交出商品或服务，以换取现金等资源。看的是资源离开企业的实际行为，不由收款时间决定这条流出。
+
+#### p.54 · Sale 是商品所有权实际转移
+
+当面卖校园书店 T 恤或网店发货都可能形成 Sale。检查转移条件；若客户先付款但未交付，应把收款与实际销售分别识别。
+
+#### p.55 · Cash Receipt 是收入周期的增量
+
+客户等外部参与者转来现金或等价物，企业资源增加。用二元性将款项分配到对应销售；融资等非销售收款要按模型范围区分。
+
+#### p.56 · 收入周期的减量冲回
+
+此前商品已从企业转给客户；若被退回，则冲回经济减量。原销售、退回和可能的退款是不同事件。
+
+#### p.57 · Sale Return 的所有权方向
+
+商品由买家转回卖家，资源回到企业。关联用于追到被冲回的销售；退款、换货、恢复库存可售状态仍须看各自业务条件。
+
+### 主题深读与课堂补充
+
+较长原例、课堂补充、推算与原题解析保留在下列主题中。
 
 ### 2.0 先把话说在前面：这一讲在画的到底是什么
 
@@ -1089,7 +1425,7 @@ classDiagram
 
 ### 2.8 收入循环的核心 REA 模式（讲义 p.21）
 
-> **本笔记把讲义 p.21 提到这里**，与 §2.7 的采购循环并排。讲义原本把它放在 RSWS 实例之后（见 §1.3 重排说明 1）。
+> **后半主题深读把讲义 p.21 提到这里**，与 §2.7 的采购循环并排。讲义原本把它放在 RSWS 实例之后（见 §1.3 重排说明 1）。
 
 > ⚠️ **先补两个业务名词**：
 > - **收入循环 / 销售—收款流程（Revenue / Sales–Collection Process）** —— 企业"卖东西收钱"的一整套活动：拜访客户 → 接单 → 发货 → 收款 →（可能）退货。
@@ -1660,9 +1996,11 @@ classDiagram
 
 本题仍保留原图的最小 0、最大 1。最大 1 对应一笔付款至多付给一个本模型供应商，不代表所有现实付款系统都如此。
 
-**④ 叙述 4 决定三条内部参与者关联的 Agent 端 = `1..1`**
+**④ 叙述 4 约束经办，p.20 分列付款经办和审批**
 
 > *"Both purchase and cash disbursement can be handled by one and only one internal agent."*
+此句只说经办人员。p.20 的 A/P Clerk 和 Manager 两条线各标恰一，分别表示处理与审批。课件没规定自然人是否可兼任，若把 p.19 理解为整笔只许一名内部人员，则与图的两个角色有口径张力。
+
 下表一行是一条内部参与者关联。“Agent 端”是另一端单个事件能对应的人员数量，“读作”把 1..1 展开为一句业务要求。
 
 | 关联 | Agent 端 | 读作 |
@@ -1724,8 +2062,8 @@ Stockflow1 的 `item-qty-purch` 与 `item-unit-cost` 属采购×品类。假设�
 | 5 | Participation1 | Purchase Agent `1..1` | Purchase `0..*` | **叙述 4** + 叙述 1 |
 | 6 | Participation2 | Supplier `1..1` | Purchase `0..*` | 常识 + 叙述 1 |
 | 7 | Participation3 | Supplier `0..1` | Cash Disbursement `0..*` | 原 p.20 端点＋本模型 Supplier 范围；叙述 1 |
-| 8 | Participation4 | A/P Clerk `1..1` | Cash Disbursement `0..*` | **叙述 4** + 叙述 1 |
-| 9 | Participation5 | Manager `1..1` | Cash Disbursement `0..*` | **叙述 4** + 叙述 1 |
+| 8 | Participation4 | A/P Clerk `1..1` | Cash Disbursement `0..*` | p.20 经办角色。叙述 1 支持可先建档，最大值以原图为准。 |
+| 9 | Participation5 | Manager `1..1` | Cash Disbursement `0..*` | p.20 审批角色。叙述 1 支持可先建档，最大值以原图为准。 |
 
 **英文参考作答（笔记自拟，对应原图九条关系/十八端点）**
 
@@ -1891,7 +2229,7 @@ Customer 端 `0..1`：收款可来自销售以外来源，所以可以没有 Cus
 
 </details>
 
-**来源与假设边界**：七类、八关联、二十个类属性、一个关联属性和十六端点来自官方 Word 与官方手绘答案。题面本身未独立决定的端点照官方图保留，不用通用 REA 默认规则补猜。`Cash` 按官方答案写成 Cash Account；2026-10-26 全篇重审已实际查看两张正式 SVG，核 7 类、8 关联、20+1 属性与 16 端点；官题/官图来源证据按未变哈希承接，不冒称本次重新导出官解，原生 Obsidian 未直接查看。
+**来源与假设边界**：七类、八关联、二十个类属性、一个关联属性和十六端点来自官方 Word 与官方手绘答案。题面本身未独立决定的端点照官方图保留，不用通用 REA 默认规则补猜。官方手绘类框名是 Cash，Cash Account# 是属性。笔记重绘的框名写 Cash Account，以指明账户粒度。2026-10-26 全篇重审已实际查看两张正式 SVG，核 7 类、8 关联、20+1 属性与 16 端点；官题/官图来源证据按未变哈希承接，不冒称本次重新导出官解，原生 Obsidian 未直接查看。
 
 - **这段改变了什么**：M05 不再只是讲义 RSWS 示例；新增一个完整收入循环课堂案例，并明确期中给骨架、要求填关联名、属性和多重度（S6 `01:32:58`–`01:33:36`、`01:45:25`–`01:45:55`）。
 
@@ -2467,7 +2805,7 @@ Linkage 在 S18 尾部被提到，老师表示它不在本课重点的采购／�
 
 讲义 p.37 是全景图的最后一张高亮，**没有配套的文字页**——它对应的是 p.35 最后那一行 *"Event-Agent relationships between the added events and internal and [external] agents who participate in them"*。
 
-**p.37 高亮了什么**：用红色高亮了 **Participation1、2、3、4、9、10** 六条线，以及它们连接的 `<<InstigationEvent>>`、`<<CommitmentEvent>>`、`<<EconomicReversal>>` 三个新事件类，和 `<<InternalAgent>>`（第一个）、`<<ExternalAgent>>`、`<<InternalAgent>>`（最后一个）三个参与者类。
+**p.37 高亮了什么**：用红色高亮了 **Participation1、2、3、4、9、10** 六条线，以及它们连接的 `<<InstigationEvent>>`、`<<CommitmentEvent>>`、`<<EconomicReversal>>` 三个新事件类，和右侧四个参与者框：最上方内部、第二个内部、外部及最下方内部。
 
 **意思是**：**新加的三个事件类，也各自要挂参与者。**
 
@@ -2524,7 +2862,9 @@ OrderedQty 是订单10件，FulfilledQty 是累计取得量，CancelledUnfulfill
 | 取消未交2件 | 4 | 2 | 4 | 400 |
 | A2再取得4件 | 8 | 2 | 0 | 800 |
 
-有第一条 Fulfillment 时仍欠交 6 件；最后 8+2=10，交货义务结束，但赊购时应付账款（AP, Accounts Payable）仍为 800。付款300正确分配后欠500，再付500才款项结束。之后退A1一件，实物净持有7件，历史履行仍8、取消2、待交0；若获供应商认可贷项100且尚欠500，AP才降400。若退货要求补发，须另有重开/替代承诺，不暗改历史履行数。
+有第一条 Fulfillment 时仍欠交 6 件；最后 8+2=10，交货义务结束，但赊购时应付账款（AP, Accounts Payable）仍为 800。付款 300 正确分配后欠 500。
+
+若尚未付第二笔，此时退 A1 一件并取得供应商贷项 100，应付由 500 降到 400。若已再付 500 结清才退货，退回后的供应商贷项或应退款要另记。两种情境的实物净持有都为 7 件，历史履行仍为 8、取消 2、待交 0。若需要补发，另记重开或替代承诺。
 
 **Reservation区别**：另假设销售侧现有可售12件，签10件销售订单预留10，只影响可用量，不立即减少实物；交付同时减实物和待交预留，取消释放，退回验收可售才增实物，且不自动重新预留。
 
@@ -4498,6 +4838,70 @@ Step 6: A trial may lead to no contract, so the Contract-end minimum is zero. A 
 ---
 
 ## 8. 讲义页码映射
+
+按 **Week 5 PPT.pptx** 的物理页序定位。
+
+| 源页 | 课件页标题 | 正文入口 | 原图或页面处置 |
+| --- | --- | --- | --- |
+| W5 p.1 | AC6761 Artificial Intelligence Accounting | [[#p.1 · 本讲标题\|p.1]] | 封面 |
+| W5 p.2 | Core REA Classes | [[#p.2 · 核心类与资源粒度\|p.2]] | 文字内容，正文就地说明 |
+| W5 p.3 | Core REA Primary Associations | [[#p.3 · 核心的三种线\|p.3]] | 文字内容，正文就地说明 |
+| W5 p.4 | Core REA Secondary Associations | [[#p.4 · 独立于单次事件的三种关系\|p.4]] | 文字内容，正文就地说明 |
+| W5 p.5 | Assigning Attributes | [[#p.5 · 一个值应放到类还是关联\|p.5]] | 文字内容，正文就地说明 |
+| W5 p.6 | Multiplicity Assignment | [[#p.6 · 多重性先从业务条件判断\|p.6]] | 文字内容，正文就地说明 |
+| W5 p.7 | Steps to Create a REA Business Process Level *Core* Model | [[#p.7 · 核心建模第 1–3 步\|p.7]] | 文字内容，正文就地说明 |
+| W5 p.8 | Steps to Create a REA Business Process Level *Core* Model | [[#p.8 · 核心建模第 4–6 步\|p.8]] | 文字内容，正文就地说明 |
+| W5 p.9 | Core REA Modeling of Acquisition | [[#p.9 · 采购取得：买、租或取服务\|p.9]] | 文字内容，正文就地说明 |
+| W5 p.10 | Core REA Modeling of Acquisition | [[#p.10 · 采购给出：支付现金\|p.10]] | 文字内容，正文就地说明 |
+| W5 p.11 | Core REA Modeling of Acquisition（存货通用图） | [[#p.11 · 存货采购核心图怎么走\|p.11]] | W5-S011 |
+| W5 p.12 | Acquisition Core Pattern Example | [[#p.12 · RSWS 第 1 步：先画一对事件\|p.12]] | W5-S012 |
+| W5 p.13 | Acquisition Core Pattern Example | [[#p.13 · RSWS 第 2 步：接三条资源流\|p.13]] | W5-S013 |
+| W5 p.14 | Acquisition Core Pattern Example | [[#p.14 · RSWS 第 3–4 步：决定参与角色\|p.14]] | 文字内容，正文就地说明 |
+| W5 p.15 | Acquisition Core Pattern Example（参与者图） | [[#p.15 · RSWS 的五条参与线\|p.15]] | W5-S015 |
+| W5 p.16 | Acquisition Core Pattern Example | [[#p.16 · RSWS 第 5 步：四项关系属性\|p.16]] | 文字内容，正文就地说明 |
+| W5 p.17 | Acquisition Core Pattern Example（全属性图） | [[#p.17 · RSWS 全属性图如何读\|p.17]] | W5-S017 |
+| W5 p.18 | Acquisition Core Pattern Example | [[#p.18 · RSWS 第 6 步：给每根线两个端点\|p.18]] | 文字内容，正文就地说明 |
+| W5 p.19 | Acquisition Core Pattern Example | [[#p.19 · RSWS 的四条业务条件\|p.19]] | 文字内容，正文就地说明 |
+| W5 p.20 | Acquisition Core Pattern Example（端点图） | [[#p.20 · RSWS 完整图：对照叙述和端点\|p.20]] | W5-S020 |
+| W5 p.21 | Revenue Core Pattern | [[#p.21 · 销售与收款的核心图\|p.21]] | W5-S021 |
+| W5 p.22 | Expansions to the Core REA Business Process level model (core = green) | [[#p.22 · 扩展图先认绿色核心\|p.22]] | W5-S022 |
+| W5 p.23 | Expansions to the Core REA Business Process level model | [[#p.23 · 发起和承诺是两种扩展事件\|p.23]] | 文字内容，正文就地说明 |
+| W5 p.24 | Expansions to the Core REA Business Process level model (core = green) | [[#p.24 · 红框定位发起与承诺\|p.24]] | W5-S024 |
+| W5 p.25 | Expansions to the Core REA Business Process level model | [[#p.25 · 冲回的对象是什么\|p.25]] | 文字内容，正文就地说明 |
+| W5 p.26 | Expansions to the Core REA Business Process level model (core = green) | [[#p.26 · 红框定位经济冲回事件\|p.26]] | W5-S026 |
+| W5 p.27 | Expansions to the Core REA Business Process level model | [[#p.27 · 事件对事件与事件对资源\|p.27]] | 文字内容，正文就地说明 |
+| W5 p.28 | Expansions to the Core REA Business Process level model (core = green) | [[#p.28 · 红线标三条履约关系\|p.28]] | W5-S028 |
+| W5 p.29 | Expansions to the Core REA Business Process level model (core = green) | [[#p.29 · 红线标冲回而非新交换\|p.29]] | W5-S029 |
+| W5 p.30 | Expansions to the Core REA Business Process level model (core = green) | [[#p.30 · 双方承诺可合在一个框\|p.30]] | W5-S030 |
+| W5 p.31 | Expansions to the Core REA Business Process level model | [[#p.31 · 与事件参与分开的角色关系\|p.31]] | 文字内容，正文就地说明 |
+| W5 p.32 | Expansions to the Core REA Business Process level model (core = green) | [[#p.32 · 红线标指派\|p.32]] | W5-S032 |
+| W5 p.33 | Expansions to the Core REA Business Process level model (core = green) | [[#p.33 · 红线标内部职责\|p.33]] | W5-S033 |
+| W5 p.34 | Expansions to the Core REA Business Process level model (core = green) | [[#p.34 · 红线标保管\|p.34]] | W5-S034 |
+| W5 p.35 | Expansions to the Core REA Business Process level model | [[#p.35 · 资源组成、实例分类和新增参与\|p.35]] | 文字内容，正文就地说明 |
+| W5 p.36 | Expansions to the Core REA Business Process level model (core = green) | [[#p.36 · 红线标类型化\|p.36]] | W5-S036 |
+| W5 p.37 | Expansions to the Core REA Business Process level model (core = green) | [[#p.37 · 红线标扩展事件的参与\|p.37]] | W5-S037 |
+| W5 p.38 | Expanded Acquisition Cycle REA model | [[#p.38 · 采购扩展图：请购到付款和退回\|p.38]] | W5-S038 |
+| W5 p.39 | Acquisition Cycle Instigation Events | [[#p.39 · 采购从需求开始\|p.39]] | 文字内容，正文就地说明 |
+| W5 p.40 | Purchase Requisition Event | [[#p.40 · 请购是内部发起事件\|p.40]] | 文字内容，正文就地说明 |
+| W5 p.41 | Acquisition/Payment Process Events | [[#p.41 · 采购付款中的互相承诺\|p.41]] | 文字内容，正文就地说明 |
+| W5 p.42 | Purchase Order Event | [[#p.42 · 采购订单落实承诺内容\|p.42]] | 文字内容，正文就地说明 |
+| W5 p.43 | Acquisition/Payment Process Events | [[#p.43 · 经济增量是实际取得\|p.43]] | 文字内容，正文就地说明 |
+| W5 p.44 | Purchase (aka Acquisition) Event | [[#p.44 · Purchase 何时成立\|p.44]] | 文字内容，正文就地说明 |
+| W5 p.45 | Acquisition/Payment Process Events | [[#p.45 · 现金付款是采购周期的减量\|p.45]] | 文字内容，正文就地说明 |
+| W5 p.46 | Acquisition/Payment Process Events | [[#p.46 · 采购增量的冲回\|p.46]] | 文字内容，正文就地说明 |
+| W5 p.47 | Purchase Return Event | [[#p.47 · Purchase Return 的所有权方向\|p.47]] | 文字内容，正文就地说明 |
+| W5 p.48 | Expanded Revenue Cycle REA model | [[#p.48 · 销售扩展图：从接触走到退回\|p.48]] | W5-S048 |
+| W5 p.49 | Sales/Collection Process Events | [[#p.49 · 收入周期的发起可内可外\|p.49]] | 文字内容，正文就地说明 |
+| W5 p.50 | Sales Call Event | [[#p.50 · Sales Call 是内部发起的一例\|p.50]] | 文字内容，正文就地说明 |
+| W5 p.51 | Sales/Collection Process Events | [[#p.51 · 销售收款中的互相承诺\|p.51]] | 文字内容，正文就地说明 |
+| W5 p.52 | Sale Order Event | [[#p.52 · Sale Order 表示双方已约定\|p.52]] | 文字内容，正文就地说明 |
+| W5 p.53 | Sales/Collection Process Events | [[#p.53 · 收入周期的经济减量\|p.53]] | 文字内容，正文就地说明 |
+| W5 p.54 | Sale Event | [[#p.54 · Sale 是商品所有权实际转移\|p.54]] | 文字内容，正文就地说明 |
+| W5 p.55 | Sales/Collection Process Events | [[#p.55 · Cash Receipt 是收入周期的增量\|p.55]] | 文字内容，正文就地说明 |
+| W5 p.56 | Sales/Collection Process Events | [[#p.56 · 收入周期的减量冲回\|p.56]] | 文字内容，正文就地说明 |
+| W5 p.57 | Sale Return Event | [[#p.57 · Sale Return 的所有权方向\|p.57]] | 文字内容，正文就地说明 |
+
+### 课堂时间与跨材料定位
 
 | 笔记小节 | 讲义页 | 页面性质 | 课堂覆盖 |
 |---|---|---|---|

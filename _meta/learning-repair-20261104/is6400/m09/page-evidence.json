@@ -1,0 +1,2303 @@
+{
+  "source": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+  "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+  "baseline_sha256": "addb8b49623ef0bbc7d4092e5c3a0bf4dcd0b49df8203db54ebf2b82d162d14a",
+  "physical_pages": 98,
+  "stage": "author_candidate_pending_review",
+  "pages": [
+    {
+      "page": 1,
+      "title": "IS6400 Business Data Analytics",
+      "source_visual": "p-01.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "封面突出人工神经网络（ANN）。学习入口是 [[#p.10 · Artificial Neuron|神经元]]、[[#p.53 · Recurrent Neural Networks|序列状态]] 和 [[#p.78 · What is Text Mining|文本挖掘]]。右列列出 Tutorial 11: Deep Learning，具体教程步骤需看教程原件。",
+      "candidate_heading": "p.1 · IS6400 Business Data Analytics",
+      "disposition": "导览",
+      "asset_id": null
+    },
+    {
+      "page": 2,
+      "title": "What is Deep Learning?",
+      "source_visual": "p-02.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "先看三个嵌套的圆。人工智能（Artificial Intelligence，AI）在外，机器学习（Machine Learning，ML）在中，深度学习（Deep Learning）在内，表示方法的包含关系。神经网络可用多层运算把原始输入逐步变成有用的表示。",
+      "candidate_heading": "p.2 · What is Deep Learning?",
+      "disposition": "图",
+      "asset_id": "L11-p02"
+    },
+    {
+      "page": 3,
+      "title": "Artificial Neural Networks",
+      "source_visual": "p-03.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "上方两张图联想生物神经与大脑，下方示意多个信号汇到同一节点，再沿粉红箭头输出。人工神经网络（Artificial Neural Network，ANN）借用了信号汇合的思路，p.10 会把中间动作写成可计算的公式。",
+      "candidate_heading": "p.3 · Artificial Neural Networks",
+      "disposition": "图",
+      "asset_id": "L11-p03"
+    },
+    {
+      "page": 4,
+      "title": "What is Deep Learning?",
+      "source_visual": "p-04.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "泳池读书照片把 deep 当成水深，只是双关。技术上的「深」可从下一页的多层表示入手。",
+      "candidate_heading": "p.4 · What is Deep Learning?",
+      "disposition": "插图省略",
+      "asset_id": null
+    },
+    {
+      "page": 5,
+      "title": "What is Deep Learning?",
+      "source_visual": "p-05.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "从左边输入的照片沿橙箭头往右。Patterns of Local Contrast 指局部明暗变化，Face Features 指组合出的面部特征，Face 指更整体的人脸表示。蓝点向上的箭头对应各阶段可视化示意。节点的具体含义取决于训练任务。",
+      "candidate_heading": "p.5 · What is Deep Learning?",
+      "disposition": "图",
+      "asset_id": "L11-p05"
+    },
+    {
+      "page": 6,
+      "title": "Why Deep Learning?",
+      "source_visual": "p-06.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "看右侧的 2D、3D 和 high dimensional space。随着维度增加，同一批样本可覆盖的组合比例往往下降，这叫维度灾难（Curse of dimensionality）。例如每维只分 10 档，两维是 100 格，十维已经是 $10^{10}$ 格。课件同时提出大数据与手工提取特征的难处，传统方法仍可能适用于特定任务。",
+      "candidate_heading": "p.6 · Why Deep Learning?",
+      "disposition": "图",
+      "asset_id": "L11-p06"
+    },
+    {
+      "page": 7,
+      "title": "Why Deep Learning?",
+      "source_visual": "p-07.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "按四个标签区分输出。Chatbot 要接收消息并给回复，Self-driving 图画的是用周围物体和距离帮助驾驶判断，Medicare 是医疗用途示意，Image recognition 是图像识别。四张图没有给模型表现。",
+      "candidate_heading": "p.7 · Why Deep Learning?",
+      "disposition": "图",
+      "asset_id": "L11-p07"
+    },
+    {
+      "page": 8,
+      "title": "Why Deep Learning and NN?",
+      "source_visual": "p-08.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "Huge market demand 是本页的市场动机。公司标志按领域围成市场图，课件没有给统计口径、时期或样本，因此此页只能用于认识应用范围。",
+      "candidate_heading": "p.8 · Why Deep Learning and NN?",
+      "disposition": "标志图省略",
+      "asset_id": null
+    },
+    {
+      "page": 9,
+      "title": "Biological Background",
+      "source_visual": "p-09.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "上图从左侧树突（Dendrites）收信号，经细胞体（Cell body），再沿轴突（Axon）送出。右下抽象图把每条支路写成输入 $x_j$ 与权重 $\\theta_j$，恒为 1 的线携带偏置 $\\theta_0$，最后输出 $f(x)$。",
+      "candidate_heading": "p.9 · Biological Background",
+      "disposition": "图",
+      "asset_id": "L11-p09"
+    },
+    {
+      "page": 10,
+      "title": "Artificial Neuron",
+      "source_visual": "p-10.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "从椭圆左边看入线。上一单元传来的 $a_j$ 在边上乘 $W_{ji}$，在单元 $i$ 把各条乘积相加。",
+      "candidate_heading": "p.10 · Artificial Neuron",
+      "disposition": "图",
+      "asset_id": "L11-p10"
+    },
+    {
+      "page": 11,
+      "title": "Class I: Perceptron",
+      "source_visual": "p-11.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "感知机（Perceptron）图的第一根线输入固定为 −1，所以偏移项是 $-W_0$。先算 $-W_0+W_1a_1+W_2a_2$，再按阶跃函数（Step function）把负数判 0、正数判 1。图漏写等于 0，本篇需要边界时约定非负判 1。",
+      "candidate_heading": "p.11 · Class I: Perceptron",
+      "disposition": "图",
+      "asset_id": "L11-p11"
+    },
+    {
+      "page": 12,
+      "title": "Use a trained model",
+      "source_visual": "p-12.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "右图两个坐标对应两个输入。沿斜线任取一点代入 $-W_0+W_1a_1+W_2a_2$ 得 0，斜线两侧的分数符号相反，可据此给新点分类。使用已经训练的模型时，各 $W$ 固定，只换输入。",
+      "candidate_heading": "p.12 · Use a trained model",
+      "disposition": "图",
+      "asset_id": "L11-p12"
+    },
+    {
+      "page": 13,
+      "title": "Perceptron’s Step Function",
+      "source_visual": "p-13.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "原问 “How to deal with this ‘s’?” 指先算出的加权分数 $s$。从左到右分别把它变为硬类别、连续预测值、0 到 1 之间的输出。中栏恒等函数的范围是全体实数，原图把正负无穷顺序印反。第一栏的类别标签应按模型约定，p.11 用 0/1。⚪ 英文参考作答 “Apply a step function for hard classification, keep the score for linear regression, or apply a sigmoid for a probability-based binary model.”",
+      "candidate_heading": "p.13 · Perceptron’s Step Function",
+      "disposition": "图",
+      "asset_id": "L11-p13"
+    },
+    {
+      "page": 14,
+      "title": "Perceptron’s Capability · AND",
+      "source_visual": "p-14.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "从原图的 $+1$ 边读出偏置 −30，两条输入边都乘 20。两项都为 1 才得到正分数。左下最后一行把分数直接放进指数而漏掉负号，正确代入为 $1/(1+e^{-(-30+20x_1+20x_2)})$，与右下的定义及给定输出一致。",
+      "candidate_heading": "p.14 · Perceptron’s Capability · AND",
+      "disposition": "图",
+      "asset_id": "L11-p14"
+    },
+    {
+      "page": 15,
+      "title": "Perceptron’s Capability · OR",
+      "source_visual": "p-15.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "同 p.14 比较左图的 $+1$ 边，偏置从 −30 改为 −10。只有一项为 1 时，加 20 已能跨过 0，右表的 01 和 10 因此都接近 1。",
+      "candidate_heading": "p.15 · Perceptron’s Capability · OR",
+      "disposition": "图",
+      "asset_id": "L11-p15"
+    },
+    {
+      "page": 16,
+      "title": "Class II: Multi-layer Feed-forward Networks",
+      "source_visual": "p-16.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "原图是 5 个输入、3 个隐藏节点、4 个输出。顺箭头看，每个隐藏节点先组合来自输入的信号，再把激活传给有连线的输出。隐藏层（Hidden layer）存放这些中间结果。前馈（Feed-forward）表示信息只传向后一层。图中未单独画偏置，p.23 再示范其输入。",
+      "candidate_heading": "p.16 · Class II: Multi-layer Feed-forward Networks",
+      "disposition": "图",
+      "asset_id": "L11-p16"
+    },
+    {
+      "page": 17,
+      "title": "Universal Approximation Theorem",
+      "source_visual": "p-17.png",
+      "visual_read_level": "contact-plus-full-size",
+      "page_elements_and_reading": "左图横轴是输入 $x$，蓝色光滑曲线是目标形状，红色折线是右侧六个 ReLU 单元（负分数置零，正分数保留）的有符号和。以 $x=0$ 为例，只有 $n_3$ 为 1，其他单元为 0，组合得 $Z(0)=-1$。不同单元在不同位置折转，叠起来便可逼近曲线。",
+      "candidate_heading": "p.17 · Universal Approximation Theorem",
+      "disposition": "图",
+      "asset_id": "L11-p17"
+    },
+    {
+      "page": 18,
+      "title": "A complex case · XOR 与 XNOR",
+      "source_visual": "p-18.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "左图四角是四种 0/1 输入，红叉在同值的两个对角点，空心圆在异值的两个对角点。右图把相同困难画成两组交错点。课件红字标签对调，按真值表把左图的红叉理解为 XNOR 的正类。",
+      "candidate_heading": "p.18 · A complex case · XOR 与 XNOR",
+      "disposition": "图",
+      "asset_id": "L11-p18"
+    },
+    {
+      "page": 19,
+      "title": "A complex case · 分开算三种逻辑",
+      "source_visual": "p-19.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "先沿红、蓝、绿三支读图。红支 AND 查双 1，蓝支查双 0（两个 NOT 再 AND，即 NOR），绿支查两项中是否至少一项为 1。把红、蓝两个结果交给绿支，右下表只在 00 与 11 给 1。",
+      "candidate_heading": "p.19 · A complex case · 分开算三种逻辑",
+      "disposition": "图",
+      "asset_id": "L11-p19"
+    },
+    {
+      "page": 20,
+      "title": "A complex case · 接成一个网络",
+      "source_visual": "p-20.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "这一页把三套运算接起来。红线与蓝线各汇到一个隐藏单元，绿线把这两个输出各乘 20，再加来自上方独立 $+1$ 的 −10。沿 00 输入追踪，蓝单元被激活，绿单元因此输出接近 1。",
+      "candidate_heading": "p.20 · A complex case · 接成一个网络",
+      "disposition": "图",
+      "asset_id": "L11-p20"
+    },
+    {
+      "page": 21,
+      "title": "A more complex case – multi output",
+      "source_visual": "p-21.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "上方照片顺序就是右端四个输出的约定顺序。行人的目标写成 $(1,0,0,0)^\\top$，汽车把 1 放到第二格。独热向量（One-hot vector）中只有真类的格子是 1。原图标 one-vs-all，含义是逐类对其余类看待，输出之间是否归一化取决于输出层设计。",
+      "candidate_heading": "p.21 · A more complex case – multi output",
+      "disposition": "图",
+      "asset_id": "L11-p21"
+    },
+    {
+      "page": 22,
+      "title": "Build an Artificial Neural Network",
+      "source_visual": "p-22.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "先定输入和目标，再定隐藏层数、宽度及激活。训练时再从数据估计层间连接参数。若所选激活自身含可训练参数，仍需在训练中估计。神经元数量和训练样本数量分别描述网络和数据。",
+      "candidate_heading": "p.22 · Build an Artificial Neural Network",
+      "disposition": "文字",
+      "asset_id": null
+    },
+    {
+      "page": 23,
+      "title": "ANN Model Representation",
+      "source_visual": "p-23.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "图左 $x_0=1$，其余 $x_1,x_2,x_3$ 是真实特征。右侧两列按同一顺序逐项乘加即 $\\theta^\\top x$，第零项就贡献 $\\theta_0$。与 p.11 的 $-W_0$ 比较，这里用固定 1，偏置正负已包含在 $\\theta_0$。",
+      "candidate_heading": "p.23 · ANN Model Representation",
+      "disposition": "图",
+      "asset_id": "L11-p23"
+    },
+    {
+      "page": 24,
+      "title": "Model Representation · 红线是哪条边",
+      "source_visual": "p-24.png",
+      "visual_read_level": "contact-plus-full-size",
+      "page_elements_and_reading": "⚪ 原问 “Where does $\\theta^{(1)}_{3,1}$ go?” 中文是找出这一项对应的边。沿左侧第一层 $x_1$ 到第二层第 3 个橙圈 $a^{(2)}_3$。上标 1 指出发层，下标按「终点，起点」读，图中红线正好标出此边。英文参考 “It is the weight from unit 1 in layer 1 to unit 3 in layer 2.” 图标出偏置 $x_0$，但三根可见输入圆是实际特征。",
+      "candidate_heading": "p.24 · Model Representation · 红线是哪条边",
+      "disposition": "图",
+      "asset_id": "L11-p24"
+    },
+    {
+      "page": 25,
+      "title": "Model Representation · 读输出节点",
+      "source_visual": "p-25.png",
+      "visual_read_level": "contact-plus-full-size",
+      "page_elements_and_reading": "浅蓝覆盖第一层，强调计算最后一个节点时可把第二层的三个激活当成新特征。从这三个橙圈的入边数起，再加上公式里的偏置边 $a_0^{(2)}=1$。",
+      "candidate_heading": "p.25 · Model Representation · 读输出节点",
+      "disposition": "图",
+      "asset_id": "L11-p25"
+    },
+    {
+      "page": 26,
+      "title": "Model Representation · 权重矩阵的尺寸",
+      "source_visual": "p-26.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "比 p.25 多写出了第二层三个神经元各自的公式。先看每行开头带下标 0 的项，再看三个特征项。把同一个接收节点的系数放在一行，这张图的第一层到第二层矩阵就是 3 行 4 列，最后一层的矩阵是 1 行 4 列。",
+      "candidate_heading": "p.26 · Model Representation · 权重矩阵的尺寸",
+      "disposition": "图",
+      "asset_id": "L11-p26"
+    },
+    {
+      "page": 27,
+      "title": "Model Representation · 批量算隐藏层",
+      "source_visual": "p-27.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "红框的三个乘加合为 $\\Theta^{(1)}x$，依次产出 $z_1^{(2)},z_2^{(2)},z_3^{(2)}$。蓝框才对三个分数分别做 $g$。向量化（Vectorization）只是把等价计算集中写出来，输入列中保留了偏置位置。",
+      "candidate_heading": "p.27 · Model Representation · 批量算隐藏层",
+      "disposition": "图",
+      "asset_id": "L11-p27"
+    },
+    {
+      "page": 28,
+      "title": "Model Representation · 补偏置再算输出",
+      "source_visual": "p-28.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "新出现的绿框做第二次矩阵乘。取 p.27 的三项激活，加一个恒为 1 的 $a_0^{(2)}$，再用 $\\Theta^{(2)}$ 得 $z^{(3)}$，最后激活成 $h_\\Theta(x)$。",
+      "candidate_heading": "p.28 · Model Representation · 补偏置再算输出",
+      "disposition": "图",
+      "asset_id": "L11-p28"
+    },
+    {
+      "page": 29,
+      "title": "NN with 2 hidden layers",
+      "source_visual": "p-29.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "数左到右的实质计算列。第一列是两个输入加偏置，第二、第三列各有两个隐藏单元加各自的偏置输入，第四列给一个输出。箭头标出先线性乘加、再激活。第二隐藏层重复同一类操作，用它自己的权重接收第一隐藏层输出。",
+      "candidate_heading": "p.29 · NN with 2 hidden layers",
+      "disposition": "图",
+      "asset_id": "L11-p29"
+    },
+    {
+      "page": 30,
+      "title": "NN learn complex features",
+      "source_visual": "p-30.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "左下图展示从三项输入到逐层变换，右上猫图给边缘（Edges）→小块（Patches）→表面（Surfaces）→物体（Objects）的直觉。例如多处边缘可组合成局部形状，再为「是否是猫」提供线索，具体表征随任务与训练变化。",
+      "candidate_heading": "p.30 · NN learn complex features",
+      "disposition": "图",
+      "asset_id": "L11-p30"
+    },
+    {
+      "page": 31,
+      "title": "Activation Function",
+      "source_visual": "p-31.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "看小图中的阶跃、Sigmoid 和 ReLU。相同的左侧输入经不同形状变成不同输出。连续堆叠仅含乘加的层仍可合并成一次乘加，因此激活的非线性影响可表示的关系。其余曲线用于展示候选种类。",
+      "candidate_heading": "p.31 · Activation Function",
+      "disposition": "图",
+      "asset_id": "L11-p31"
+    },
+    {
+      "page": 32,
+      "title": "Sigmoid Activation Function",
+      "source_visual": "p-32.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "原图横轴是输入分数，纵轴是 $g(z)$。沿中间红标 0.5 找到 $z=0$，再向两端看曲线如何变平。实际有限输入只会得到严格介于 0 与 1 的值。",
+      "candidate_heading": "p.32 · Sigmoid Activation Function",
+      "disposition": "图",
+      "asset_id": "L11-p32"
+    },
+    {
+      "page": 33,
+      "title": "Tangent activation function",
+      "source_visual": "p-33.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "tanh 的中点从 Sigmoid 的 0.5 改成 0，纵轴两端趋向 −1、1，有限输入达不到端点。它可把负分数保留为负输出，后面会用于 RNN 状态和 LSTM 候选记忆。",
+      "candidate_heading": "p.33 · Tangent activation function",
+      "disposition": "图",
+      "asset_id": "L11-p33"
+    },
+    {
+      "page": 34,
+      "title": "ReLU activation function",
+      "source_visual": "p-34.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "从原图的折角 $z=0$ 看两侧。左侧水平，所有负输入均变成 0，所以一部分激活会刚好为零，称稀疏表示（Sparse representation）。右侧斜率 1，正数原样通过。折角没有普通导数，实现会约定该点的梯度值。",
+      "candidate_heading": "p.34 · ReLU activation function",
+      "disposition": "图",
+      "asset_id": "L11-p34"
+    },
+    {
+      "page": 35,
+      "title": "Softmax Activation",
+      "source_visual": "p-35.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "左边三项是分数（Logits），中间指数归一化，右边才是总和为 1 的比例。用原图分数 2.0、1.0、0.1 实算约得 0.659、0.242、0.099，图中 0.7、0.2、0.1 是粗略示意。此处三类示意与 p.21 的四类例可以各自独立读取。",
+      "candidate_heading": "p.35 · Softmax Activation",
+      "disposition": "图",
+      "asset_id": "L11-p35"
+    },
+    {
+      "page": 36,
+      "title": "Model Training",
+      "source_visual": "p-36.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "对照下方两栏。二分类可只输出正类的一个分数或概率，标签用 0 或 1。互斥的 $K$ 类可用 $K$ 个输出，四类示意就有四个标签位置。页中的 $L$ 是总层数，$s_l$ 是第 $l$ 层真实单元数，偏置位不计。",
+      "candidate_heading": "p.36 · Model Training",
+      "disposition": "图",
+      "asset_id": "L11-p36"
+    },
+    {
+      "page": 37,
+      "title": "Cost Function (Objective)",
+      "source_visual": "p-37.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "先看红标 Training Error 与 Regularization。前者惩罚预测偏离标签，后者按权重平方增加成本。下半部把单输出的损失扩到 $K$ 个独立 Sigmoid 输出，需与 p.35 的互斥 Softmax 区分。",
+      "candidate_heading": "p.37 · Cost Function (Objective)",
+      "disposition": "图",
+      "asset_id": "L11-p37"
+    },
+    {
+      "page": 38,
+      "title": "Back propagation",
+      "source_visual": "p-38.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "按图从底部输入沿绿箭头到顶部输出，再把预测与真实标签比较，沿紫箭头往回算各边权重的导数。倒着传的是损失对中间量的变化率，更新参数是接下来的独立动作。",
+      "candidate_heading": "p.38 · Back propagation",
+      "disposition": "图",
+      "asset_id": "L11-p38"
+    },
+    {
+      "page": 39,
+      "title": "Gradient Descent · 多参数时怎么办",
+      "source_visual": "p-39.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "左下山地把高度画成成本，右侧一维切片的横轴是一项权重，纵轴是 $J$。黑点切线斜率为正，沿负梯度向左迈小步可下降。多参数时把每一项的偏导合成梯度。",
+      "candidate_heading": "p.39 · Gradient Descent · 多参数时怎么办",
+      "disposition": "图",
+      "asset_id": "L11-p39"
+    },
+    {
+      "page": 40,
+      "title": "Gradient Descent · 反复更新",
+      "source_visual": "p-40.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "对照红框偏导和蓝箭头标的学习率 $\\alpha$。用当前位置算梯度，各参数同步减去自己的学习率倍梯度，再用新位置重算。图里的碗形谷底斜率为零，实际优化还需要停止条件。",
+      "candidate_heading": "p.40 · Gradient Descent · 反复更新",
+      "disposition": "图",
+      "asset_id": "L11-p40"
+    },
+    {
+      "page": 41,
+      "title": "Gradient Descent: Learning Rate",
+      "source_visual": "p-41.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "三幅图从同样的起点出发。小学习率的红步密而短，适中的步子较快接近谷底，过大的步子来回跨谷且可能越跨越远。这里的横轴是参数，纵轴是损失。",
+      "candidate_heading": "p.41 · Gradient Descent: Learning Rate",
+      "disposition": "图",
+      "asset_id": "L11-p41"
+    },
+    {
+      "page": 42,
+      "title": "Gradient computation given cost function",
+      "source_visual": "p-42.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "左侧红框列实现需要得到的两个量，目标 $J$ 和各参数的梯度，右侧红框把梯度用于更新。先算同一组旧参数下的所有导数，再统一更新，避免前一项新权重混入后一项的计算。",
+      "candidate_heading": "p.42 · Gradient computation given cost function",
+      "disposition": "图",
+      "asset_id": "L11-p42"
+    },
+    {
+      "page": 43,
+      "title": "Overfitting of NN",
+      "source_visual": "p-43.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "从图左小网络到右侧更宽或更深的网络，参数和计算开销增加。小模型可能连训练关系也拟合不足，大模型可能连噪声都记住。正则项中的 $\\lambda$ 控制权重惩罚，实际取值用验证数据比较。",
+      "candidate_heading": "p.43 · Overfitting of NN",
+      "disposition": "图",
+      "asset_id": "L11-p43"
+    },
+    {
+      "page": 44,
+      "title": "Local Optimal Parameters",
+      "source_visual": "p-44.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "左图横轴权重、纵轴误差。负导数让蓝箭头朝右下走进右侧谷底，左边仍有另一个局部谷底。右图是凸形示意，用于对照为什么初值和误差面形状会影响结果。零斜率也可能是鞍点或平坦处。",
+      "candidate_heading": "p.44 · Local Optimal Parameters",
+      "disposition": "图",
+      "asset_id": "L11-p44"
+    },
+    {
+      "page": 45,
+      "title": "Example · 服饰类别",
+      "source_visual": "p-45.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "左边色条是像素强度，颜色用来显示灰度数值。右表定义 0–9：T-shirt/top、Trouser、Pullover、Dress、Coat、Sandal、Shirt、Sneaker、Bag、Ankle boot。图像分类输出一个类别编号，再查表读类别。",
+      "candidate_heading": "p.45 · Example · 服饰类别",
+      "disposition": "图",
+      "asset_id": "L11-p45"
+    },
+    {
+      "page": 46,
+      "title": "Example · 像素怎样进入模型",
+      "source_visual": "p-46.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "图沿行、列各取 28 个位置，每个灰度像素取一个数。按固定次序逐行连接可得到 $28\\times28=784$ 维输入，训练与测试必须使用同一顺序。",
+      "candidate_heading": "p.46 · Example · 像素怎样进入模型",
+      "disposition": "图",
+      "asset_id": "L11-p46"
+    },
+    {
+      "page": 47,
+      "title": "Example · 训练集合",
+      "source_visual": "p-47.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "左侧拼图展示服饰样本的差异，右侧给出训练用的 60,000 张带标签图片。单张输入仍是 784 维，60,000 是记录数。",
+      "candidate_heading": "p.47 · Example · 训练集合",
+      "disposition": "图",
+      "asset_id": "L11-p47"
+    },
+    {
+      "page": 48,
+      "title": "Example · 识别五项设定",
+      "source_visual": "p-48.png",
+      "visual_read_level": "contact-plus-full-size",
+      "page_elements_and_reading": "原图橙箭头从人脸输入经过两段有标签的隐藏表示到输出。这与 p.45 的服饰输入是不同示意。能从图认出的阶段和能供代码复现的架构信息要分开。",
+      "candidate_heading": "p.48 · Example · 识别五项设定",
+      "disposition": "图",
+      "asset_id": "L11-p48"
+    },
+    {
+      "page": 49,
+      "title": "Example · 用模型给新图片分类",
+      "source_visual": "p-49.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "沿蓝箭头从测试图送入已训练 ANN，再到 $p_0,\\ldots,p_9$。选择最大概率所在的编号 $j$，用右表译回标签。比如 $p_9$ 最大就输出 Ankle boot，单张选择结果无法说明整体正确率。中间仍沿用 p.48 的人脸示意。",
+      "candidate_heading": "p.49 · Example · 用模型给新图片分类",
+      "disposition": "图",
+      "asset_id": "L11-p49"
+    },
+    {
+      "page": 50,
+      "title": "IS6400 Business Data Analytics · RNN 与 LSTM",
+      "source_visual": "p-50.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "目录此处点亮 RNN、LSTM。先在 p.53–58 跟一条隐藏状态的箭头，再在 p.70–76 跟两条不同的状态通道。",
+      "candidate_heading": "p.50 · IS6400 Business Data Analytics · RNN 与 LSTM",
+      "disposition": "导览",
+      "asset_id": null
+    },
+    {
+      "page": 51,
+      "title": "FFNN",
+      "source_visual": "p-51.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "复用 p.21 的四类网络。新增红字 Static Input and Static Output，强调一张图对应一组分类分数，没有前一时点的状态输入。下一页把输入改成有顺序的资料。",
+      "candidate_heading": "p.51 · FFNN",
+      "disposition": "图",
+      "asset_id": "L11-p51"
+    },
+    {
+      "page": 52,
+      "title": "NN for Sequence Analysis",
+      "source_visual": "p-52.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "下图横向排出 “I Will Pass” 三段语音波形，按从左到右的顺序才能识别原话。上方图片标注给另一种联系：图中的物件可用于生成一串描述词。⚪ 原问 “What if I want to analyze something in a sequence?” 以及 “What if I want to analyze human speech?” 英文参考作答 “Keep the inputs in order and pass a state from each step to the next. For speech, process successive audio frames so the model can use earlier context when interpreting the current frame.”",
+      "candidate_heading": "p.52 · NN for Sequence Analysis",
+      "disposition": "图",
+      "asset_id": "L11-p52"
+    },
+    {
+      "page": 53,
+      "title": "Recurrent Neural Networks",
+      "source_visual": "p-53.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "红方块表示循环神经网络（Recurrent Neural Network, RNN）的一次计算。左侧 $x_t$ 是当前输入，右侧 $y_t$ 是本步输出，下面的虚线标 One-step delay，表示本步的隐藏状态（Hidden state）$h_t$ 要到下一步才作为旧状态进入。",
+      "candidate_heading": "p.53 · Recurrent Neural Networks",
+      "disposition": "图",
+      "asset_id": "L11-p53"
+    },
+    {
+      "page": 54,
+      "title": "Unrolling RNNs · 展开三个时点",
+      "source_visual": "p-54.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "右边按从上到下展开。第一框收到 $x_0$，把 $h_0$ 沿绿色线传给处理 $x_1$ 的框，再传 $h_1$ 给 $x_2$。时间展开形成有向无环图（Directed Acyclic Graph，DAG），计算边没有返回早先时点，损失梯度可在训练时沿图回传。",
+      "candidate_heading": "p.54 · Unrolling RNNs · 展开三个时点",
+      "disposition": "图",
+      "asset_id": "L11-p54"
+    },
+    {
+      "page": 55,
+      "title": "Unrolling RNNs · 参数共享",
+      "source_visual": "p-55.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "右边将同一结构横着画，每个红框都执行 $f_W$。新输入和旧状态逐步更换，$W$ 沿时间共享。图第一框示意某个初始值，实际模型需要单独定义初始状态。处理更多时点增加运算次数，共享参数数目无需随之增加。",
+      "candidate_heading": "p.55 · Unrolling RNNs · 参数共享",
+      "disposition": "图",
+      "asset_id": "L11-p55"
+    },
+    {
+      "page": 56,
+      "title": "RNN",
+      "source_visual": "p-56.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "粉色 $x$ 是观测，绿色框旁弯箭头是隐藏状态 $h$，顶部蓝色 $y$ 对应预测目标一侧。比较预测与真实标签时要区分模型输出和训练目标，尽管本页用 Target 统称上方对象。",
+      "candidate_heading": "p.56 · RNN",
+      "disposition": "图",
+      "asset_id": "L11-p56"
+    },
+    {
+      "page": 57,
+      "title": "RNN for Time Series",
+      "source_visual": "p-57.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "四色框可直接按 $h_t=f_W(h_{t-1},x_t)$ 读。蓝框是新状态，紫框是带参数 $W$ 的函数，绿框是上一状态，红框是当前观测。每一步换红绿框的值，再用同一紫框规则。",
+      "candidate_heading": "p.57 · RNN for Time Series",
+      "disposition": "图",
+      "asset_id": "L11-p57"
+    },
+    {
+      "page": 58,
+      "title": "(Vanilla) RNN for Time Series",
+      "source_visual": "p-58.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "原图把上一页的 $f_W$ 展开。用 $W_{hh}$ 处理旧状态、用 $W_{xh}$ 处理新输入，两项相加再做 tanh。随后 $W_{hy}$ 把隐藏状态变成输出分数，p.61 会沿这根向上箭头读取。",
+      "candidate_heading": "p.58 · (Vanilla) RNN for Time Series",
+      "disposition": "图",
+      "asset_id": "L11-p58"
+    },
+    {
+      "page": 59,
+      "title": "Example · hello 独热输入",
+      "source_visual": "p-59.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "词表按 h、e、l、o 排列，右下四列每列只有一个 1。读到 h 就点亮第一格，读到 e 就点亮第二格。左下补全 “morni” 的小图说明可以利用已输入字符预测后续字符。",
+      "candidate_heading": "p.59 · Example · hello 独热输入",
+      "disposition": "图",
+      "asset_id": "L11-p59"
+    },
+    {
+      "page": 60,
+      "title": "Example · hello 隐藏状态",
+      "source_visual": "p-60.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "粉色输入列沿红箭头乘 $W_{xh}$，上一绿色隐藏列沿横箭头乘 $W_{hh}$，相加再做 tanh 后得到本列绿色状态。末两列都读 l，状态不同，因为它们的旧状态不同。图中数字是给定的舍入展示。",
+      "candidate_heading": "p.60 · Example · hello 隐藏状态",
+      "disposition": "图",
+      "asset_id": "L11-p60"
+    },
+    {
+      "page": 61,
+      "title": "Example · hello 输出分数",
+      "source_visual": "p-61.png",
+      "visual_read_level": "contact-plus-full-size",
+      "page_elements_and_reading": "这一页新增蓝色四维输出。每列由同列绿色隐藏状态乘共享 $W_{hy}$ 得到；按 h、e、l、o 查四行。绿色字表示目标字符所在位置，例如第一列目标是 e 的 2.2，最高分却是 o 的 4.1。",
+      "candidate_heading": "p.61 · Example · hello 输出分数",
+      "disposition": "图",
+      "asset_id": "L11-p61"
+    },
+    {
+      "page": 62,
+      "title": "Recurrent Networks Offer Flexibility · 一对多",
+      "source_visual": "p-62.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "从左到右数粉色输入、绿色计算框和蓝色输出。第二组只输入一张图，沿绿色状态链连续输出多个词。第四组先读多个输入再产生输出序列，第五组则每个输入时点都有对应输出。",
+      "candidate_heading": "p.62 · Recurrent Networks Offer Flexibility · 一对多",
+      "disposition": "图",
+      "asset_id": "L11-p62"
+    },
+    {
+      "page": 63,
+      "title": "Recurrent Networks Offer Flexibility · 多对一",
+      "source_visual": "p-63.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "同一套五种结构本页新增指向第三组的箭头。情感分类先读多个词，最后一个绿色框才向上发出唯一的情感标签。例如要读完整句子才知道转折后表达的态度。",
+      "candidate_heading": "p.63 · Recurrent Networks Offer Flexibility · 多对一",
+      "disposition": "图",
+      "asset_id": "L11-p63"
+    },
+    {
+      "page": 64,
+      "title": "Recurrent Networks Offer Flexibility · 翻译",
+      "source_visual": "p-64.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "本页箭头改指第四组。多个源语词先进入粉色输入侧，再逐步生成译文。原例 “Professor Liu’s IS6400 course is so popular, it’s hard to get a seat.” 译成中文后，词数无需与英语一致。",
+      "candidate_heading": "p.64 · Recurrent Networks Offer Flexibility · 翻译",
+      "disposition": "图",
+      "asset_id": "L11-p64"
+    },
+    {
+      "page": 65,
+      "title": "Recurrent Networks Offer Flexibility · 逐帧识别",
+      "source_visual": "p-65.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "右图三张画面分别沿橙箭头进入当前时点，再沿蓝箭头给 Angry、Refuse、Satisfied 等示意标签。绿色状态可参考上一帧，标签仍按当前帧的位置输出。",
+      "candidate_heading": "p.65 · Recurrent Networks Offer Flexibility · 逐帧识别",
+      "disposition": "图",
+      "asset_id": "L11-p65"
+    },
+    {
+      "page": 66,
+      "title": "Problems of RNN",
+      "source_visual": "p-66.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "右下红线是激活，蓝线是其导数。蓝线接近零时，训练误差信号每反传一段就可能缩小。十段若各乘 0.5，结果只剩 $0.5^{10}\\approx0.000977$，称梯度消失（Vanishing gradient）。远处线索虽能经状态传递，训练仍可能难以学到该依赖。",
+      "candidate_heading": "p.66 · Problems of RNN",
+      "disposition": "图",
+      "asset_id": "L11-p66"
+    },
+    {
+      "page": 67,
+      "title": "LSTM 图例",
+      "source_visual": "p-67.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "黄色矩形是网络层，粉色圆形是逐元素运算，直箭头传向量，两线并成一线表示拼接，分叉是复制。底部粉色乘号把门值与同位置分量相乘。例如门值 0.2 让该分量只保留 20%。",
+      "candidate_heading": "p.67 · LSTM 图例",
+      "disposition": "图",
+      "asset_id": "L11-p67"
+    },
+    {
+      "page": 68,
+      "title": "RNN Model",
+      "source_visual": "p-68.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "中间绿色框内只有一个 tanh 变换层。下方 $x_t$ 与左侧旧状态进入，结果一份向上成为 $h_t$，一份向右成为下一框的旧状态。左上坐标图显示 tanh 的输出受限。",
+      "candidate_heading": "p.68 · RNN Model",
+      "disposition": "图",
+      "asset_id": "L11-p68"
+    },
+    {
+      "page": 69,
+      "title": "LSTM Model",
+      "source_visual": "p-69.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "中间绿色模块比上一页多出贯通顶部的状态线和四个黄色变换框。三个 $\\sigma$ 产生门值，一个 tanh 产生候选记忆。LSTM 的标准全名是长短期记忆（Long Short-Term Memory），课件印成 “Long Term Short Term Memory”。",
+      "candidate_heading": "p.69 · LSTM Model",
+      "disposition": "图",
+      "asset_id": "L11-p69"
+    },
+    {
+      "page": 70,
+      "title": "LSTM 两条跨时点状态线",
+      "source_visual": "p-70.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "上部全图有上下两条横线。上面传细胞状态（Cell state）$C$，下面传隐藏状态 $h$。下部深色高亮只追踪 $C_{t-1}$ 到 $C_t$；这条线经一次乘和一次加，因此既能保留旧内容也能写入新内容。",
+      "candidate_heading": "p.70 · LSTM 两条跨时点状态线",
+      "disposition": "图",
+      "asset_id": "L11-p70"
+    },
+    {
+      "page": 71,
+      "title": "LSTM Cell State",
+      "source_visual": "p-71.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "从左端的 $C_{t-1}$ 走过粉色 × 和 +。× 控制旧内容留下多少，+ 加上已筛选的新内容。右下小图将 Sigmoid 框连到乘号，解释门值如何成为保留比例。",
+      "candidate_heading": "p.71 · LSTM Cell State",
+      "disposition": "图",
+      "asset_id": "L11-p71"
+    },
+    {
+      "page": 72,
+      "title": "LSTM Walk-through · 遗忘门",
+      "source_visual": "p-72.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "只追黑色路径。$h_{t-1}$ 和 $x_t$ 拼成一列，进入左边第一个 $\\sigma$ 框，输出 $f_t$ 送往旧记忆路径上的乘号。$f_t=\\sigma(W_f[h_{t-1},x_t]+b_f)$，每项可理解为对应旧记忆的保留比例，图上的 0 和 1 是两端的概念例。",
+      "candidate_heading": "p.72 · LSTM Walk-through · 遗忘门",
+      "disposition": "图",
+      "asset_id": "L11-p72"
+    },
+    {
+      "page": 73,
+      "title": "LSTM Walk-through · 新记忆",
+      "source_visual": "p-73.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "黑线分到两个黄色框，Sigmoid 给写入比例 $i_t$，tanh 给候选内容 $\\widetilde C_t$。计算分别为 $i_t=\\sigma(W_i[h_{t-1},x_t]+b_i)$、$\\widetilde C_t=\\tanh(W_C[h_{t-1},x_t]+b_C)$。两条支路读取同一份拼接输入，参数各自训练。",
+      "candidate_heading": "p.73 · LSTM Walk-through · 新记忆",
+      "disposition": "图",
+      "asset_id": "L11-p73"
+    },
+    {
+      "page": 74,
+      "title": "LSTM Walk-through · 更新细胞状态",
+      "source_visual": "p-74.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "原图上方黑线先把旧 $C_{t-1}$ 乘 $f_t$，下方把候选乘 $i_t$，再在粉色 + 汇合。图中的星号在这里表示逐元素乘法，所以 $C_t=f_t\\odot C_{t-1}+i_t\\odot\\widetilde C_t$。例如旧值 2、保留 0.8，候选 0.4、写入 0.25，得到 $C_t=1.6+0.1=1.7$。",
+      "candidate_heading": "p.74 · LSTM Walk-through · 更新细胞状态",
+      "disposition": "图",
+      "asset_id": "L11-p74"
+    },
+    {
+      "page": 75,
+      "title": "LSTM Walk-through · 输出隐藏状态",
+      "source_visual": "p-75.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "此页高亮右侧黑线。新 $C_t$ 先经 tanh，再乘右侧 Sigmoid 框算出的 $o_t$，所以 $o_t=\\sigma(W_o[h_{t-1},x_t]+b_o)$，$h_t=o_t\\odot\\tanh(C_t)$。",
+      "candidate_heading": "p.75 · LSTM Walk-through · 输出隐藏状态",
+      "disposition": "图",
+      "asset_id": "L11-p75"
+    },
+    {
+      "page": 76,
+      "title": "LSTM 四步对照",
+      "source_visual": "p-76.png",
+      "visual_read_level": "contact-plus-full-size",
+      "page_elements_and_reading": "左边从上到下对应保留比例、写入比例与候选、更新细胞、输出隐藏。右上完整图把四张高亮拼回同一个时点。按这四步算完才进入下一时点，下一时点会由新输入与旧隐藏重新计算各门。",
+      "candidate_heading": "p.76 · LSTM 四步对照",
+      "disposition": "图",
+      "asset_id": "L11-p76"
+    },
+    {
+      "page": 77,
+      "title": "IS6400 Business Data Analytics · NLP",
+      "source_visual": "p-77.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "目录切到 NLP。先从 p.78–89 学怎样从文字得到数值表示，再从 p.90–97 学怎样表示顺序、结构、含义和语境。",
+      "candidate_heading": "p.77 · IS6400 Business Data Analytics · NLP",
+      "disposition": "导览",
+      "asset_id": null
+    },
+    {
+      "page": 78,
+      "title": "What is Text Mining",
+      "source_visual": "p-78.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "文本挖掘（Text mining）从文档、评论等资料里提取结构、主题或能支持分析的信息。比如先把评论变成词项表，再复用分类、聚类或关联分析。",
+      "candidate_heading": "p.78 · What is Text Mining",
+      "disposition": "文字",
+      "asset_id": null
+    },
+    {
+      "page": 79,
+      "title": "Examples of Text Mining 1",
+      "source_visual": "p-79.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "左图三个颜色对应 Negative、Neutral、Positive。模型从一段词序列得出一个情感标签，和 p.63 的多对一相呼应。右栏以 Stanford 情感分析和 NCSU 推文情感可视化为课程例子。",
+      "candidate_heading": "p.79 · Examples of Text Mining 1",
+      "disposition": "图",
+      "asset_id": "L11-p79"
+    },
+    {
+      "page": 80,
+      "title": "Examples of Text Mining 2",
+      "source_visual": "p-80.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "历史仪表盘把社交情绪分类占比、讨论量和股价线放在一起。先区分上方情绪饼图与下方随时间变动的蓝线，再考虑能否把先于预测时点的讨论作为特征。并排展示无法证明能预测或获利。",
+      "candidate_heading": "p.80 · Examples of Text Mining 2",
+      "disposition": "图",
+      "asset_id": "L11-p80"
+    },
+    {
+      "page": 81,
+      "title": "Examples of Text Mining 3",
+      "source_visual": "p-81.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "从右侧 QA System 选一个问题，回到左侧黄色高亮找定义、症状或比例。比如第三问取文本里的 about 80%，该比例带有原文条件，只作为本页给定文本的抽取结果。",
+      "candidate_heading": "p.81 · Examples of Text Mining 3",
+      "disposition": "图",
+      "asset_id": "L11-p81"
+    },
+    {
+      "page": 82,
+      "title": "Why Text Analytics/Mining?",
+      "source_visual": "p-82.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "红饼图把资料按结构化数值／编码信息和非结构化／半结构化信息分为 10% 与 90%。这是课件署名 Oracle 的估计，缺少统计口径或时期。业务动机是从找到整份文档进一步抽取能分析的信息。",
+      "candidate_heading": "p.82 · Why Text Analytics/Mining?",
+      "disposition": "图",
+      "asset_id": "L11-p82"
+    },
+    {
+      "page": 83,
+      "title": "Text Analytics/Mining Methods (1)",
+      "source_visual": "p-83.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "信息检索（Information retrieval）先表示文档、建索引再排序，输出相关文档。信息提取（Information extraction）输出人物、组织、地点、规章代码及其关系，例如谁受雇于哪家机构。要确定关系方向，可结合句法、语义、本体和语境。",
+      "candidate_heading": "p.83 · Text Analytics/Mining Methods (1)",
+      "disposition": "文字",
+      "asset_id": null
+    },
+    {
+      "page": 84,
+      "title": "Challenges of Text Analytics",
+      "source_visual": "p-84.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "候选词或短语种类多，文档结构各异，转载也可能使记录不独立。“AOL merges with Time-Warner” 与 “Time-Warner is bought by AOL” 用不同句式表述关系，抽取时仍要辨认谁买谁。Apple 可能指公司或水果，Toyota 则是品牌，不能把 automobile、car、vehicle、Toyota 一律互换。",
+      "candidate_heading": "p.84 · Challenges of Text Analytics",
+      "disposition": "文字",
+      "asset_id": null
+    },
+    {
+      "page": 85,
+      "title": "How to represent a document?",
+      "source_visual": "p-85.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "左括号框的是文档行，上方 Terms 是词项列。交叉格是出现次数。比如 Camera 第一篇 3、第二篇 0，Digital 第二篇 4。省略号说明图只展示了部分词项。",
+      "candidate_heading": "p.85 · How to represent a document?",
+      "disposition": "图",
+      "asset_id": "L11-p85"
+    },
+    {
+      "page": 86,
+      "title": "Some Basic Information Retrieval Techniques",
+      "source_visual": "p-86.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "词干化（Stemming）可将 Taxes 和 taxation 都归到 tax。停用词（Stop words）是按任务决定是否剔除的常见词；情感分析中的 not 不能一概删除。词项加权会优先考虑本篇常见、整个语料库较少见的词。",
+      "candidate_heading": "p.86 · Some Basic Information Retrieval Techniques",
+      "disposition": "文字",
+      "asset_id": null
+    },
+    {
+      "page": 87,
+      "title": "Term Frequency (TF)",
+      "source_visual": "p-87.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "词频（Term Frequency，TF）把一个词在本文档的出现次数除以本文档总词数，使不同长度文档可比较。若改用筛选后的关键词总次数作分母，分子也须采用相同口径。",
+      "candidate_heading": "p.87 · Term Frequency (TF)",
+      "disposition": "文字",
+      "asset_id": null
+    },
+    {
+      "page": 88,
+      "title": "Inverse Document Frequency (IDF)",
+      "source_visual": "p-88.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "先数语料库里的文档总数 $N$，再数有该词的文档数 $df_i$。某篇文档出现十次仍只计一篇。课件第一条用文字把 $df_i$ 说成 IDF，下面的公式才是逆文档频率 $\\log(N/df_i)$。",
+      "candidate_heading": "p.88 · Inverse Document Frequency (IDF)",
+      "disposition": "文字",
+      "asset_id": null
+    },
+    {
+      "page": 89,
+      "title": "The Mighty TF-IDF",
+      "source_visual": "p-89.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "对照红色乘式和左下原始词频表。先用 TF 与 IDF 的乘积替换对应格子，再将加权后的表示用于右侧分类、聚类、主题模型或回归。左下仍印着 p.85 的原始计数，用作要改造的输入，未给出数值加权结果。",
+      "candidate_heading": "p.89 · The Mighty TF-IDF",
+      "disposition": "图",
+      "asset_id": "L11-p89"
+    },
+    {
+      "page": 90,
+      "title": "What is Natural Language Processing (NLP)?",
+      "source_visual": "p-90.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "自然语言处理（Natural Language Processing，NLP）包含语音识别、语言理解与语言生成，分别可把声音变成文字、从文字辨识含义、用语言形成输出。页中漫画是人机语言沟通的历史引子。",
+      "candidate_heading": "p.90 · What is Natural Language Processing (NLP)?",
+      "disposition": "漫画省略",
+      "asset_id": null
+    },
+    {
+      "page": 91,
+      "title": "Fundamental Tasks",
+      "source_visual": "p-91.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "四项任务依次解决词的切分、词的语法类别、整句结构与含义。用 p.92–95 同一顺序逐项检查，每项的输入与输出均不同。",
+      "candidate_heading": "p.91 · Fundamental Tasks",
+      "disposition": "导览",
+      "asset_id": null
+    },
+    {
+      "page": 92,
+      "title": "Word Segmentation",
+      "source_visual": "p-92.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "上图先分段，蓝色标人名 Michael Jordan，黄色标机构 Berkeley，白色为未赋实体标签。下图将「浦东开发与建设」切成「浦东／开发／与／建设」。分词决定边界，实体标签说明分出的范围指哪类对象。",
+      "candidate_heading": "p.92 · Word Segmentation",
+      "disposition": "图",
+      "asset_id": "L11-p92"
+    },
+    {
+      "page": 93,
+      "title": "POS tagging",
+      "source_visual": "p-93.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "先读句子下方的四个词性标签，This 和 a 标 DET（限定词），is 标 VERB（动词），sentence 标 NOUN（名词）。弧线额外示意词之间的句法依赖。词性标注（Part-of-speech tagging，POS）可以把每个时点的词映到一个标签，同一个词换句子可能换类别。",
+      "candidate_heading": "p.93 · POS tagging",
+      "disposition": "图",
+      "asset_id": "L11-p93"
+    },
+    {
+      "page": 94,
+      "title": "Syntactic Analysis",
+      "source_visual": "p-94.png",
+      "visual_read_level": "contact-plus-full-size",
+      "page_elements_and_reading": "从右侧树顶 S 沿分支走。名词短语 NP 收起 “My dog” 作主语，副词短语 ADVP 给 “also”。动词短语 VP 含 “likes” 以及嵌入的 “eating sausage”。右图漏画 likes 词叶，右下页码与 sausage 重叠，可以对照左侧括号结构恢复这两个词的位置。",
+      "candidate_heading": "p.94 · Syntactic Analysis",
+      "disposition": "图",
+      "asset_id": "L11-p94"
+    },
+    {
+      "page": 95,
+      "title": "Semantic Analysis",
+      "source_visual": "p-95.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "词汇语义（Lexical semantics）区分 bank 的河岸和银行。组合语义（Compositional semantics）研究这些词怎样构成整体意义。“Colorless green ideas sleep furiously” 结构可解析，日常字面意义却不协调，特定文学语境可另有解释。句法（Syntax）处理结构，语义（Semantics）处理含义。",
+      "candidate_heading": "p.95 · Semantic Analysis",
+      "disposition": "文字",
+      "asset_id": null
+    },
+    {
+      "page": 96,
+      "title": "Process of NLP",
+      "source_visual": "p-96.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "沿左列从词形／词汇处理，经句法、语义到语境解释。右列示范 “the girl the go to the school” 的结构异常和 “colorless blue idea” 的字面语义冲突；“she wanted it” 则要靠前文找 it 指什么。此图是传统任务拆分。",
+      "candidate_heading": "p.96 · Process of NLP",
+      "disposition": "图",
+      "asset_id": "L11-p96"
+    },
+    {
+      "page": 97,
+      "title": "Some NLP Platforms",
+      "source_visual": "p-97.png",
+      "visual_read_level": "contact-plus-full-size",
+      "page_elements_and_reading": "从左边聊天渠道向中间 NLP Layer 跟箭头。右上 Knowledge Base 是供查询的内容，右下 Data Storage 是交互历史与分析存储，图上各有双向箭头。左栏 Dialog Flow（ex API.ai）、Wit.ai、Luis、Lex、Watson Assistant 是课件列举的历史工具名。",
+      "candidate_heading": "p.97 · Some NLP Platforms",
+      "disposition": "图",
+      "asset_id": "L11-p97"
+    },
+    {
+      "page": 98,
+      "title": "IS6400 Business Data Analytics · 结尾",
+      "source_visual": "p-98.png",
+      "visual_read_level": "contact",
+      "page_elements_and_reading": "结束页回列 ANN、RNN/LSTM、NLP 三条主线。课后可先看 §3 的任务对照，再用 §7 的自测回到具体源页。",
+      "candidate_heading": "p.98 · IS6400 Business Data Analytics · 结尾",
+      "disposition": "导览",
+      "asset_id": null
+    }
+  ],
+  "assets": [
+    {
+      "page": 2,
+      "id": "L11-p02",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        407,
+        1440,
+        978
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-02.png",
+      "sha256": "33e4ca4c82a05141bf07c64438446ce8b0e7476bff4130621556ce12538b7123",
+      "section": "p.2 · What is Deep Learning?"
+    },
+    {
+      "page": 3,
+      "id": "L11-p03",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        420,
+        617,
+        976,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-03.png",
+      "sha256": "b31023a9ecd269426919f35a018f3be5a0773a282d6f3d03922499b0f3122047",
+      "section": "p.3 · Artificial Neural Networks"
+    },
+    {
+      "page": 5,
+      "id": "L11-p05",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        45,
+        360,
+        1400,
+        1030
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-05.png",
+      "sha256": "db5cbbf0d951daff1422b33422da12c76ca7c21150b2cd2ba972c51b4cea1eec",
+      "section": "p.5 · What is Deep Learning?"
+    },
+    {
+      "page": 6,
+      "id": "L11-p06",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-06.png",
+      "sha256": "36249e86df67e5a4aaa768b9283b7a8caf8554f3ed32175b1993ce203ffea7dd",
+      "section": "p.6 · Why Deep Learning?"
+    },
+    {
+      "page": 7,
+      "id": "L11-p07",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-07.png",
+      "sha256": "1e0e257db59d871fe6e67a056bbbe4638ba3f0b8edf23892e6e313da7331f441",
+      "section": "p.7 · Why Deep Learning?"
+    },
+    {
+      "page": 9,
+      "id": "L11-p09",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        205,
+        222,
+        1285,
+        1025
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-09.png",
+      "sha256": "ac7f50a16f45c6a7b776a6aa251bb3e508ff0385a9235b8f251a96d44f4c493a",
+      "section": "p.9 · Biological Background"
+    },
+    {
+      "page": 10,
+      "id": "L11-p10",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        200,
+        300,
+        1260,
+        852
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-10.png",
+      "sha256": "8df7d3aad13d36957b504657d3e09bb52009eb16295468a88234fba89c60fe15",
+      "section": "p.10 · Artificial Neuron"
+    },
+    {
+      "page": 11,
+      "id": "L11-p11",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        110,
+        286,
+        1220,
+        985
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-11.png",
+      "sha256": "c4d5202842d45e8aebd648e8abafd18201b3add275392f581bfeaec8313bc357",
+      "section": "p.11 · Class I: Perceptron"
+    },
+    {
+      "page": 12,
+      "id": "L11-p12",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        10,
+        230,
+        1435,
+        982
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-12.png",
+      "sha256": "d68e5f0200cd01d60a12c1b05c7444f26689bd53f115307e09aa49aa74459abe",
+      "section": "p.12 · Use a trained model"
+    },
+    {
+      "page": 13,
+      "id": "L11-p13",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-13.png",
+      "sha256": "482ee1ded41a967b75b40bee653850fd28c83f55cbcce20a5da2d40ebdad28e6",
+      "section": "p.13 · Perceptron’s Step Function"
+    },
+    {
+      "page": 14,
+      "id": "L11-p14",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-14.png",
+      "sha256": "a5537f3819fa4d71eca0f9c4d6a64f9dbced76ff3f0054deba7594eb76ab9367",
+      "section": "p.14 · Perceptron’s Capability · AND"
+    },
+    {
+      "page": 15,
+      "id": "L11-p15",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        65,
+        284,
+        1400,
+        980
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-15.png",
+      "sha256": "7626dee1fafab541ee37cdd01261c0c18729c418546909f6f67331adb83a7a83",
+      "section": "p.15 · Perceptron’s Capability · OR"
+    },
+    {
+      "page": 16,
+      "id": "L11-p16",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-16.png",
+      "sha256": "7a069ddcf08126c2ad56a42ff55c876c42f7fdfc597a80f35325d84d63154785",
+      "section": "p.16 · Class II: Multi-layer Feed-forward Networks"
+    },
+    {
+      "page": 17,
+      "id": "L11-p17",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        266,
+        569,
+        1170,
+        978
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-17.png",
+      "sha256": "be0a57886a7189e45edbca58d2d3c280d0e4d23cefde0906db85e08af7978167",
+      "section": "p.17 · Universal Approximation Theorem"
+    },
+    {
+      "page": 18,
+      "id": "L11-p18",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-18.png",
+      "sha256": "9f6d8f90f5ad6f2f841437a3dee5a006883d90051d3f44e1d29dc70919aff7d8",
+      "section": "p.18 · A complex case · XOR 与 XNOR"
+    },
+    {
+      "page": 19,
+      "id": "L11-p19",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-19.png",
+      "sha256": "cb9555f00c82db6027392c205b0e766f16447e2b621e55768ad22fafa630d2d2",
+      "section": "p.19 · A complex case · 分开算三种逻辑"
+    },
+    {
+      "page": 20,
+      "id": "L11-p20",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-20.png",
+      "sha256": "4a72a3077ab4043b25cc8456dd29a96be4cc3e04c8b8b8ed1e0068d8814316cd",
+      "section": "p.20 · A complex case · 接成一个网络"
+    },
+    {
+      "page": 21,
+      "id": "L11-p21",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-21.png",
+      "sha256": "de10f35283384b35e52afbc78c19f42d720ef667ff6ef98d2350baaee6795e09",
+      "section": "p.21 · A more complex case – multi output"
+    },
+    {
+      "page": 23,
+      "id": "L11-p23",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        80,
+        266,
+        1400,
+        988
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-23.png",
+      "sha256": "d09507115f457fb3ee13b01ed043369184db69ca2f48ddaabce3e39bd6320678",
+      "section": "p.23 · ANN Model Representation"
+    },
+    {
+      "page": 24,
+      "id": "L11-p24",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        234,
+        255,
+        1235,
+        996
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-24.png",
+      "sha256": "46524be94352a1b0f672ca02807b0bcd76ef96866c69f55254fd1d8a1ce5cc84",
+      "section": "p.24 · Model Representation · 红线是哪条边"
+    },
+    {
+      "page": 25,
+      "id": "L11-p25",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        196,
+        245,
+        1220,
+        972
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-25.png",
+      "sha256": "ff30746da7fbd5547aaf84562262906200940287edf1c90354b7510938e9e193",
+      "section": "p.25 · Model Representation · 读输出节点"
+    },
+    {
+      "page": 26,
+      "id": "L11-p26",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-26.png",
+      "sha256": "82bc81bf983c15455d5e878192f45f5484ad39c3df70cb075aadd05c37184e4c",
+      "section": "p.26 · Model Representation · 权重矩阵的尺寸"
+    },
+    {
+      "page": 27,
+      "id": "L11-p27",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-27.png",
+      "sha256": "1f2ca5a739e66a28ced5526545532254ff7a14a600233046fa5bb9acd4ebea5c",
+      "section": "p.27 · Model Representation · 批量算隐藏层"
+    },
+    {
+      "page": 28,
+      "id": "L11-p28",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-28.png",
+      "sha256": "9abb668fa31da728579af988aff6a04957c981164e47b09f3302fa2ad9137433",
+      "section": "p.28 · Model Representation · 补偏置再算输出"
+    },
+    {
+      "page": 29,
+      "id": "L11-p29",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-29.png",
+      "sha256": "a3e605caef15e22fbfae11157d925f72e86a3d37419114b59f94b6a06fd3a703",
+      "section": "p.29 · NN with 2 hidden layers"
+    },
+    {
+      "page": 30,
+      "id": "L11-p30",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-30.png",
+      "sha256": "c98381c263afa6fa78583ceb11e97274b35b6b92838d85e76d6fb2ef520286f2",
+      "section": "p.30 · NN learn complex features"
+    },
+    {
+      "page": 31,
+      "id": "L11-p31",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-31.png",
+      "sha256": "ea9f4c76b15f807bce0d3e229d03d0b51c63807d829d676888b386f29f82bc51",
+      "section": "p.31 · Activation Function"
+    },
+    {
+      "page": 32,
+      "id": "L11-p32",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        50,
+        238,
+        1385,
+        942
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-32.png",
+      "sha256": "891b10259330c3d6833628044d593e039ade1446c307339260e47857c2949fee",
+      "section": "p.32 · Sigmoid Activation Function"
+    },
+    {
+      "page": 33,
+      "id": "L11-p33",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        96,
+        226,
+        1320,
+        1018
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-33.png",
+      "sha256": "d1f34f6026d9b34116c4aeec9f4f0a7c61b97c15d8747327a998e76a1cc03869",
+      "section": "p.33 · Tangent activation function"
+    },
+    {
+      "page": 34,
+      "id": "L11-p34",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-34.png",
+      "sha256": "babab438c335c37ebed228ea44f718023e17c331003141196547221452c66201",
+      "section": "p.34 · ReLU activation function"
+    },
+    {
+      "page": 35,
+      "id": "L11-p35",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-35.png",
+      "sha256": "9a9d2ed9491f2c7697dcb0515adcdd5cefec319518f3826f7abca58d3f5b7518",
+      "section": "p.35 · Softmax Activation"
+    },
+    {
+      "page": 36,
+      "id": "L11-p36",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-36.png",
+      "sha256": "7f9942024322a4dd9af48b2494c43f2b56caf947dcb7fa253dbd84e1f83d49e2",
+      "section": "p.36 · Model Training"
+    },
+    {
+      "page": 37,
+      "id": "L11-p37",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-37.png",
+      "sha256": "bba56c7b95213e63fb49b3342af078496099e2aaa66ebc6fa0d2ba517ca062df",
+      "section": "p.37 · Cost Function (Objective)"
+    },
+    {
+      "page": 38,
+      "id": "L11-p38",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        212,
+        1440,
+        992
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-38.png",
+      "sha256": "ec710fbda4de59d2b9e5a2de9ebf8b1afc260722ef16df2a60ff6bbf6e61d492",
+      "section": "p.38 · Back propagation"
+    },
+    {
+      "page": 39,
+      "id": "L11-p39",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-39.png",
+      "sha256": "8c66826e904ea5e8905de2c48afcfa01c0706e0a5e0467825bebbb1dbc16bbdc",
+      "section": "p.39 · Gradient Descent · 多参数时怎么办"
+    },
+    {
+      "page": 40,
+      "id": "L11-p40",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-40.png",
+      "sha256": "6cf5fec9a302bdd2c48be9e96a5e4f9ad64dc1b3735dfad66f9533f049bac679",
+      "section": "p.40 · Gradient Descent · 反复更新"
+    },
+    {
+      "page": 41,
+      "id": "L11-p41",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-41.png",
+      "sha256": "08db111ee16f9465dfdf9b71abc9a1e6e81a7bb252226f131d4d2004baa03e56",
+      "section": "p.41 · Gradient Descent: Learning Rate"
+    },
+    {
+      "page": 42,
+      "id": "L11-p42",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-42.png",
+      "sha256": "236bc6b1369f145e7430faa7059737588781c790f89e541710bc42f6b21d4716",
+      "section": "p.42 · Gradient computation given cost function"
+    },
+    {
+      "page": 43,
+      "id": "L11-p43",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-43.png",
+      "sha256": "d125606d3fd21e171aa0076b1b9d33ca26e2bdcf1e927b9510c3bd31421d152e",
+      "section": "p.43 · Overfitting of NN"
+    },
+    {
+      "page": 44,
+      "id": "L11-p44",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-44.png",
+      "sha256": "787a21c788349806420994a43479642ab1185770b7972cb84b2ed13efaba631a",
+      "section": "p.44 · Local Optimal Parameters"
+    },
+    {
+      "page": 45,
+      "id": "L11-p45",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        45,
+        254,
+        1310,
+        975
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-45.png",
+      "sha256": "87b6db9ed49a7ff6131b331549f37ba7fda97c5ad58f8e2a278f3439e366aa45",
+      "section": "p.45 · Example · 服饰类别"
+    },
+    {
+      "page": 46,
+      "id": "L11-p46",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        88,
+        271,
+        1375,
+        956
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-46.png",
+      "sha256": "54165c3ac707bae9a4441705bd0a8aaa7d3cc24a239cc640fc13887111a102ad",
+      "section": "p.46 · Example · 像素怎样进入模型"
+    },
+    {
+      "page": 47,
+      "id": "L11-p47",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-47.png",
+      "sha256": "e2825011937e31e803c4f417a538c49e9cddb0dcf028bc2a5721d66b167599a4",
+      "section": "p.47 · Example · 训练集合"
+    },
+    {
+      "page": 48,
+      "id": "L11-p48",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        95,
+        226,
+        1296,
+        766
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-48.png",
+      "sha256": "d3c4e5a2b13f50af5301f3d7bdbbbe76d579c0fbbbc8cceb5dfca452ac1850b0",
+      "section": "p.48 · Example · 识别五项设定"
+    },
+    {
+      "page": 49,
+      "id": "L11-p49",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-49.png",
+      "sha256": "9abdbf3fceb2eaac4058659231771be513fe0b0449da23ca507407de013fbf09",
+      "section": "p.49 · Example · 用模型给新图片分类"
+    },
+    {
+      "page": 51,
+      "id": "L11-p51",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-51.png",
+      "sha256": "48fa5fa87db0935242f27656ad2fc1f4333b860cae529c3f1b740ffa5d0f8a07",
+      "section": "p.51 · FFNN"
+    },
+    {
+      "page": 52,
+      "id": "L11-p52",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        78,
+        235,
+        1380,
+        1010
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-52.png",
+      "sha256": "aac4dc078e935712f5b64356b8e14f0f5161347d902031154bbd1b460e8942f2",
+      "section": "p.52 · NN for Sequence Analysis"
+    },
+    {
+      "page": 53,
+      "id": "L11-p53",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-53.png",
+      "sha256": "eb93cce14edb4d51b0c2def35a67da231e9f6d81d0be41878100b64fb94b50a5",
+      "section": "p.53 · Recurrent Neural Networks"
+    },
+    {
+      "page": 54,
+      "id": "L11-p54",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-54.png",
+      "sha256": "4e9ba5764f58ec8add042e2c572700dc9dc59c7adb447a64fe585cfcfa15f820",
+      "section": "p.54 · Unrolling RNNs · 展开三个时点"
+    },
+    {
+      "page": 55,
+      "id": "L11-p55",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-55.png",
+      "sha256": "b45fe8d1b50059b67c794eeeca31387a991da46d17eef2e36d16ed645d498142",
+      "section": "p.55 · Unrolling RNNs · 参数共享"
+    },
+    {
+      "page": 56,
+      "id": "L11-p56",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-56.png",
+      "sha256": "1afbd79cef365bb610a0da87a7fa8f040061a9e2b5c326c4847b63393b685d33",
+      "section": "p.56 · RNN"
+    },
+    {
+      "page": 57,
+      "id": "L11-p57",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-57.png",
+      "sha256": "63b1f6c33a32d79fab8cf095412f6739acf6f7a9d85d7334cb4190173c69a63f",
+      "section": "p.57 · RNN for Time Series"
+    },
+    {
+      "page": 58,
+      "id": "L11-p58",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-58.png",
+      "sha256": "cbc2a85967df4ef9d765afaa925f9007e99871fcd306f5abfeeccbd0b44423d6",
+      "section": "p.58 · (Vanilla) RNN for Time Series"
+    },
+    {
+      "page": 59,
+      "id": "L11-p59",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-59.png",
+      "sha256": "c6e063c80e8ba7cc2e6e8b7d1668778c6d00b8bfe16e2f439056a14246671694",
+      "section": "p.59 · Example · hello 独热输入"
+    },
+    {
+      "page": 60,
+      "id": "L11-p60",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-60.png",
+      "sha256": "d182c4142b43296af9eaf7a0e56ba7120487c8585b3d35a26b9112544da5dfb0",
+      "section": "p.60 · Example · hello 隐藏状态"
+    },
+    {
+      "page": 61,
+      "id": "L11-p61",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        150,
+        1410,
+        934
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-61.png",
+      "sha256": "6680eb51d200278a4e88cd1d73bd2f61090fd6f564ddc729ead0323e555c71b7",
+      "section": "p.61 · Example · hello 输出分数"
+    },
+    {
+      "page": 62,
+      "id": "L11-p62",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-62.png",
+      "sha256": "98dd6ecac67cf526e6e26217f120ee03c5f4f4913eda89e564975c7d29536e08",
+      "section": "p.62 · Recurrent Networks Offer Flexibility · 一对多"
+    },
+    {
+      "page": 63,
+      "id": "L11-p63",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-63.png",
+      "sha256": "80b5092aa044213bad2265a610755c1d76eb3ac473e2003b3cc3b82d21319e94",
+      "section": "p.63 · Recurrent Networks Offer Flexibility · 多对一"
+    },
+    {
+      "page": 64,
+      "id": "L11-p64",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-64.png",
+      "sha256": "74177dbb8366b80a2da69f02e01ea808b23cf687e1749ca5d974bbb2cb6438b3",
+      "section": "p.64 · Recurrent Networks Offer Flexibility · 翻译"
+    },
+    {
+      "page": 65,
+      "id": "L11-p65",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-65.png",
+      "sha256": "dc40889fa29beb6627fdb72b6c59075333b9a54a510f5705d744500d10ae00de",
+      "section": "p.65 · Recurrent Networks Offer Flexibility · 逐帧识别"
+    },
+    {
+      "page": 66,
+      "id": "L11-p66",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-66.png",
+      "sha256": "0312e9645f82ce47eb7507145e13e226c86bbccf507e51c6b19f0907a746b327",
+      "section": "p.66 · Problems of RNN"
+    },
+    {
+      "page": 67,
+      "id": "L11-p67",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-67.png",
+      "sha256": "70da1734aea97e4702a2facf418e33f639f91cb1e33d7bb6cf04d798796c1178",
+      "section": "p.67 · LSTM 图例"
+    },
+    {
+      "page": 68,
+      "id": "L11-p68",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-68.png",
+      "sha256": "8fe4f54794cea87904bb40cded238f60928ffe39862cc2b4bb495e7e43ad2f7f",
+      "section": "p.68 · RNN Model"
+    },
+    {
+      "page": 69,
+      "id": "L11-p69",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-69.png",
+      "sha256": "c6310d8c1ebe938dec22f3bcdcbfff971a8f8ad9f97074d6d8c8a007da18e325",
+      "section": "p.69 · LSTM Model"
+    },
+    {
+      "page": 70,
+      "id": "L11-p70",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-70.png",
+      "sha256": "bf8f34c11f37039d042a3e3d5cefda722e046f9fcc79fc14734e6ea3d676d603",
+      "section": "p.70 · LSTM 两条跨时点状态线"
+    },
+    {
+      "page": 71,
+      "id": "L11-p71",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-71.png",
+      "sha256": "86949cd7ccacb896567494901da1f64934522d98271471ecd6deebc49e08d8e8",
+      "section": "p.71 · LSTM Cell State"
+    },
+    {
+      "page": 72,
+      "id": "L11-p72",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-72.png",
+      "sha256": "1ed97e6e842536b8ca07b00af4ee98dbc248eb3321d1838fd6d7239d340aeca7",
+      "section": "p.72 · LSTM Walk-through · 遗忘门"
+    },
+    {
+      "page": 73,
+      "id": "L11-p73",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-73.png",
+      "sha256": "66f22f041fe80413351c8c75f90155c8e6714303a319ff496f53cc880d42fa93",
+      "section": "p.73 · LSTM Walk-through · 新记忆"
+    },
+    {
+      "page": 74,
+      "id": "L11-p74",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-74.png",
+      "sha256": "f269d3681bbe02bcd564949174efc010425e83626ccca37f6d618f18cbc2d7f1",
+      "section": "p.74 · LSTM Walk-through · 更新细胞状态"
+    },
+    {
+      "page": 75,
+      "id": "L11-p75",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-75.png",
+      "sha256": "5c689070a47287f376d119f395b186e79b67d07ba7c1f9ca236204b3cc0f4f4b",
+      "section": "p.75 · LSTM Walk-through · 输出隐藏状态"
+    },
+    {
+      "page": 76,
+      "id": "L11-p76",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-76.png",
+      "sha256": "8bea3320cb7955963b915eeaae395769cb34e88eed375742f4686ab20760029e",
+      "section": "p.76 · LSTM 四步对照"
+    },
+    {
+      "page": 79,
+      "id": "L11-p79",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-79.png",
+      "sha256": "5fc345757785a265fe16b34a9ad8f60356d631202a0a321f893db935a12a82b4",
+      "section": "p.79 · Examples of Text Mining 1"
+    },
+    {
+      "page": 80,
+      "id": "L11-p80",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-80.png",
+      "sha256": "e60f11a1bd0bf6d9f851c986dfa640b3d5e9a32eadd2d2e4d58cf15f2b9fb304",
+      "section": "p.80 · Examples of Text Mining 2"
+    },
+    {
+      "page": 81,
+      "id": "L11-p81",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-81.png",
+      "sha256": "d4d4891cc1203543a1bbe0f21cc98eb7c2c25e4b342df1bbd73ca52f51922082",
+      "section": "p.81 · Examples of Text Mining 3"
+    },
+    {
+      "page": 82,
+      "id": "L11-p82",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-82.png",
+      "sha256": "238721e05e41d5865fdd990596d1b3d7fddd52dd8d5b692212d192b3cb653a16",
+      "section": "p.82 · Why Text Analytics/Mining?"
+    },
+    {
+      "page": 85,
+      "id": "L11-p85",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-85.png",
+      "sha256": "83b4df88619cd1bfca1a431b1d0a0e7c92ee75b6282a894afddb538cfa1b013c",
+      "section": "p.85 · How to represent a document?"
+    },
+    {
+      "page": 89,
+      "id": "L11-p89",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-89.png",
+      "sha256": "b57cd3a74274c7e884b94459a6ca016de76a64a64ddf603f4dd593e7db820420",
+      "section": "p.89 · The Mighty TF-IDF"
+    },
+    {
+      "page": 92,
+      "id": "L11-p92",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-92.png",
+      "sha256": "231c06470fed48fb0b2d9b213b255c80106e7f5ad3e4d83f52ee14ee0d6902a2",
+      "section": "p.92 · Word Segmentation"
+    },
+    {
+      "page": 93,
+      "id": "L11-p93",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-93.png",
+      "sha256": "d7a215e26d7cc25e14c9a68253d7fb53d670ea6e7f897f9a79700f99dce76a1c",
+      "section": "p.93 · POS tagging"
+    },
+    {
+      "page": 94,
+      "id": "L11-p94",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        90,
+        385,
+        1390,
+        1048
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-94.png",
+      "sha256": "3fe07586911ba5f7aedd394f54f7b4c19f740dabe46aaf14d04856540e7d1ac6",
+      "section": "p.94 · Syntactic Analysis"
+    },
+    {
+      "page": 96,
+      "id": "L11-p96",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-96.png",
+      "sha256": "cf14e99b8b6ae9b605c8e63479f92d63b644a805ca45f4ee06e6093bf14ca80e",
+      "section": "p.96 · Process of NLP"
+    },
+    {
+      "page": 97,
+      "id": "L11-p97",
+      "origin": "IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "source_sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3",
+      "render": "pdftoppm -scale-to 1440 -png",
+      "crop_px_xyxy": [
+        731,
+        368,
+        1402,
+        680
+      ],
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m09-source/p-97.png",
+      "sha256": "e9a79b0f86e766d3b91b405afdbfb7045ecd829f69914015fcce108425d36166",
+      "section": "p.97 · Some NLP Platforms"
+    }
+  ]
+}

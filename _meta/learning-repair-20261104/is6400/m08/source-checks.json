@@ -1,0 +1,239 @@
+{
+  "schema": "note-source-checks-v1",
+  "sources": {
+    "lecture": {
+      "path": "../../../../IS6400_Business_Data_Analytics/course_files_export/IS6400-L9-time series2.pdf",
+      "sha256": "8f7ec0a04709dd49a6acdbf5e3ed45446356c011588162eeaf4745585a0fd088"
+    }
+  },
+  "questions": [
+    {
+      "id": "p02-window",
+      "source_id": "lecture",
+      "source_page": 2,
+      "section": "2.1.1",
+      "original": "So, how do you decide m?",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "没有唯一正确的 $m$",
+          "english": "Choose the window length by comparing time-ordered validation errors for the intended forecast horizon."
+        }
+      ],
+      "status": "reference_answer",
+      "source_position": "PDF physical page; all visible context and code inspected",
+      "answer_source": "笔记推断；无课堂或官方答案",
+      "option_count_expected": 0,
+      "option_count_actual": 0
+    },
+    {
+      "id": "p02-short",
+      "source_id": "lecture",
+      "source_page": 2,
+      "section": "2.1.1",
+      "original": "What if m=1 or 2?",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "只复制最后一个观测",
+          "english": "With m = 1, the forecast equals the most recent observation. With m = 2, it is the average of the two most recent observations available at the forecast origin."
+        }
+      ],
+      "status": "reference_answer",
+      "source_position": "PDF physical page; all visible context and code inspected",
+      "answer_source": "笔记推断；无课堂或官方答案",
+      "option_count_expected": 0,
+      "option_count_actual": 0
+    },
+    {
+      "id": "p12-code",
+      "source_id": "lecture",
+      "source_page": 12,
+      "section": "2.1.4",
+      "original": "How to model this lagged features in sklearn?",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "先滞后再滚动",
+          "english": "Shift the series before computing rolling statistics to exclude the current target"
+        }
+      ],
+      "status": "reference_answer",
+      "source_position": "PDF physical page; all visible context and code inspected",
+      "answer_source": "笔记推断；无课堂或官方答案",
+      "option_count_expected": 0,
+      "option_count_actual": 0
+    },
+    {
+      "id": "p14-x",
+      "source_id": "lecture",
+      "source_page": 14,
+      "section": "2.1.5",
+      "original": "How to get Xt?",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "上月余额是合法候选",
+          "english": "Possible predictors include lagged values of the response, historical rolling summaries, calendar variables, and external variables known at the forecast origin."
+        }
+      ],
+      "status": "reference_answer",
+      "source_position": "PDF physical page; all visible context and code inspected",
+      "answer_source": "笔记推断；无课堂或官方答案",
+      "option_count_expected": 0,
+      "option_count_actual": 0
+    },
+    {
+      "id": "p16-x",
+      "source_id": "lecture",
+      "source_page": 16,
+      "section": "2.1.5",
+      "original": "Possible Xt?",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "上月余额是合法候选",
+          "english": "Possible predictors include lagged values of the response, historical rolling summaries, calendar variables, and external variables known at the forecast origin."
+        }
+      ],
+      "status": "reference_answer",
+      "source_position": "PDF physical page; all visible context and code inspected",
+      "answer_source": "笔记推断；无课堂或官方答案",
+      "option_count_expected": 0,
+      "option_count_actual": 0
+    },
+    {
+      "id": "p21-x",
+      "source_id": "lecture",
+      "source_page": 21,
+      "section": "2.1.5",
+      "original": "Xt?",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "上月余额是合法候选",
+          "english": "Possible predictors include lagged values of the response, historical rolling summaries, calendar variables, and external variables known at the forecast origin."
+        }
+      ],
+      "status": "reference_answer",
+      "source_position": "PDF physical page; all visible context and code inspected",
+      "answer_source": "笔记推断；无课堂或官方答案",
+      "option_count_expected": 0,
+      "option_count_actual": 0
+    },
+    {
+      "id": "p23-order",
+      "source_id": "lecture",
+      "source_page": 23,
+      "section": "2.4",
+      "original": "How do we determine p?",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "前两阶超出带",
+          "english": "For a stationary pure AR(p) process, the theoretical PACF cuts off after lag p."
+        }
+      ],
+      "status": "reference_answer",
+      "source_position": "PDF physical page; all visible context and code inspected",
+      "answer_source": "笔记推断；无课堂或官方答案",
+      "option_count_expected": 0,
+      "option_count_actual": 0
+    },
+    {
+      "id": "p24-order",
+      "source_id": "lecture",
+      "source_page": 24,
+      "section": "2.4",
+      "original": "How do we determine p?",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "前两阶超出带",
+          "english": "For a stationary pure AR(p) process, the theoretical PACF cuts off after lag p."
+        }
+      ],
+      "status": "reference_answer",
+      "source_position": "PDF physical page; all visible context and code inspected",
+      "answer_source": "笔记推断；无课堂或官方答案",
+      "option_count_expected": 0,
+      "option_count_actual": 0
+    },
+    {
+      "id": "p26-order",
+      "source_id": "lecture",
+      "source_page": 26,
+      "section": "2.5",
+      "original": "How to determine q?",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "不再共享冲击",
+          "english": "For a pure MA(q) process, the theoretical ACF is zero beyond lag q because observations farther apart no longer share innovations."
+        }
+      ],
+      "status": "reference_answer",
+      "source_position": "PDF physical page; all visible context and code inspected",
+      "answer_source": "笔记推断；无课堂或官方答案",
+      "option_count_expected": 0,
+      "option_count_actual": 0
+    },
+    {
+      "id": "p36-transforms",
+      "source_id": "lecture",
+      "source_page": 36,
+      "section": "2.7",
+      "original": "1. what did we do in (b), (c), and (d).",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "(c) 在此基础上去季节",
+          "english": "In panel (c), the seasonal component was removed."
+        }
+      ],
+      "status": "reference_answer",
+      "source_position": "PDF physical page; all visible context and code inspected",
+      "answer_source": "笔记推断；无课堂或官方答案",
+      "option_count_expected": 0,
+      "option_count_actual": 0
+    },
+    {
+      "id": "p36-stationarity",
+      "source_id": "lecture",
+      "source_page": 36,
+      "section": "2.7",
+      "original": "2. Is (a) or (d) stationary? How could you test stationarity?",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "视觉上更接近弱平稳",
+          "english": "use the level-stationarity KPSS specification (c) because a deterministic trend is not expected after detrending"
+        }
+      ],
+      "status": "reference_answer",
+      "source_position": "PDF physical page; all visible context and code inspected",
+      "answer_source": "笔记推断；无课堂或官方答案",
+      "option_count_expected": 0,
+      "option_count_actual": 0
+    }
+  ],
+  "manual_scope": "11 source question units across 9 source pages; p2 explicitly answers m=1 and m=2; p36 question 1 answers each of b/c/d, question 2 compares a/d and gives testing method; no multiple-choice questions",
+  "limits": "p25 blank table is a demonstration with e0 not stated, not an invented original question; p32 four panels and p43 process inspected as content; notebook/T08 assignments retained in own authority, not rewritten in M08",
+  "candidate_sha256": "2436ac2c0958bbe386d844e1bcf4d7fd43cb0d65668e0a5104197e3b4f25a88b",
+  "extra_given_example": {
+    "page": 25,
+    "type": "原图空表演示，无明示英文问题",
+    "section": "2.5.1 p.25 空表的五行复算"
+  }
+}

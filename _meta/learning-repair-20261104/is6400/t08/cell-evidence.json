@@ -1,0 +1,490 @@
+{
+  "source": "IS6400_Business_Data_Analytics/course_files_export/Week 8 Time series I_Tutorial_2026.ipynb",
+  "source_sha256": "cbaa69b57f8272eeb3846892de4c5440663cfc2803acb6ababb000e6df286bdb",
+  "candidate_sha256": "5bc252cb17569cdacadd36ae2b58c880658bb0439713f6386e5117da88e151b3",
+  "baseline_sha256": "3f7204978763ca95acea20ced394d3b841491f1ecf0990d0dc9125cc260a6d0d",
+  "numbering_start": 0,
+  "cells": [
+    {
+      "number": 0,
+      "cell_type": "markdown",
+      "source_sha256": "ac5b85953626256865fd3a1c4ca1edec1e9b5a5ac5734288ecfbdb34ea1a18f7",
+      "candidate_anchor": "Cell 0 · 目标与评价",
+      "saved_outputs": []
+    },
+    {
+      "number": 1,
+      "cell_type": "markdown",
+      "source_sha256": "b74d8f412525d4c3fa1690ad442eebc15a25f5abd79a176132888cc52e335693",
+      "candidate_anchor": "Cell 1 · 原工具箱与 ETS 形式",
+      "saved_outputs": []
+    },
+    {
+      "number": 2,
+      "cell_type": "code",
+      "source_sha256": "e4327b5c012eb540eaafbc820e41237013af600c95b3d8897e1f596c038007d7",
+      "candidate_anchor": "2.2 Cell 2：导入库与 notebook 显示设置",
+      "saved_outputs": []
+    },
+    {
+      "number": 3,
+      "cell_type": "markdown",
+      "source_sha256": "dca5039ccd5bb871aa72cd994910a988acebe17d7268f1b901b1b5d567b43997",
+      "candidate_anchor": "Cell 3 · 销量数据入口",
+      "saved_outputs": []
+    },
+    {
+      "number": 4,
+      "cell_type": "code",
+      "source_sha256": "9e0bc8649f0dd88375226eaf287f1ce4b37976255f6a428568dd15a110d8cb21",
+      "candidate_anchor": "Cell 4 · 读取 36 条销量",
+      "saved_outputs": [
+        "execute_result"
+      ]
+    },
+    {
+      "number": 5,
+      "cell_type": "code",
+      "source_sha256": "3c585400b89ebea38ceca0a2e54b428655a4dbe538ea807b33c42bb325b356e6",
+      "candidate_anchor": "Cell 5 · 先读原销量图",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 6,
+      "cell_type": "markdown",
+      "source_sha256": "2e674e4300deaa20ea5bef5a6e8b501dbe7e98944af4c9ab0e559151f950f3fe",
+      "candidate_anchor": "Cell 6 · 趋势与季节原题",
+      "saved_outputs": []
+    },
+    {
+      "number": 7,
+      "cell_type": "markdown",
+      "source_sha256": "4954535a0c43d254d40993660da8c4d23114d5ee19d08d830692a0dcc48825c7",
+      "candidate_anchor": "Cell 7 · 原观察和候选模型",
+      "saved_outputs": []
+    },
+    {
+      "number": 8,
+      "cell_type": "code",
+      "source_sha256": "cbd10fd70fe2971b4c2f693a8ea814b1b22ab4c005e5904c50ffa2e5ba39c3aa",
+      "candidate_anchor": "Cell 8 · 固定最后五条",
+      "saved_outputs": [
+        "execute_result"
+      ]
+    },
+    {
+      "number": 9,
+      "cell_type": "code",
+      "source_sha256": "2605a95d895dda63ce714ca8322c743ab1c23bd395fe3bceaee35f1892577158",
+      "candidate_anchor": "Cell 9 · 画训练和测试",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 10,
+      "cell_type": "markdown",
+      "source_sha256": "839fe20a00e5b7dabbf656a8f9875e39a9a72d1f9858198388844187b1a56890",
+      "candidate_anchor": "Cell 10 · 简单移动平均的设定",
+      "saved_outputs": []
+    },
+    {
+      "number": 11,
+      "cell_type": "markdown",
+      "source_sha256": "915b9e818af6317b2ffb44ead90a8a87b476196c2a01e32a8c7829ed1f988003",
+      "candidate_anchor": "Cell 11 · 选择五点窗口",
+      "saved_outputs": []
+    },
+    {
+      "number": 12,
+      "cell_type": "code",
+      "source_sha256": "fcb9e40c30742a5090d341b9c6740b1e1963a03294a98407043d0929d4bfac9d",
+      "candidate_anchor": "Cell 12 · 计算五点后向均值",
+      "saved_outputs": [
+        "execute_result"
+      ]
+    },
+    {
+      "number": 13,
+      "cell_type": "code",
+      "source_sha256": "21ce5608e719c8ff465b51e269c576f090c9f25b51505989b26b044829353c82",
+      "candidate_anchor": "Cell 13 · 把末窗口值复制五次",
+      "saved_outputs": [
+        "execute_result"
+      ]
+    },
+    {
+      "number": 14,
+      "cell_type": "code",
+      "source_sha256": "eec13f5c7ade7da0cef82ad8302c4e8f2350e664aceb0679c51ce18a75fe26f9",
+      "candidate_anchor": "Cell 14 · 画五点预测",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 15,
+      "cell_type": "markdown",
+      "source_sha256": "c2ef79b9e250f56e1c6e42f7f8adb3196578859d73a38ce93d78c36b2b4e21c2",
+      "candidate_anchor": "Cell 15 · 换到十点窗口",
+      "saved_outputs": []
+    },
+    {
+      "number": 16,
+      "cell_type": "code",
+      "source_sha256": "c9cbb694f24d99af27ee543289887fc8ba250d500ff63c5cd5171b460292ca8c",
+      "candidate_anchor": "Cell 16 · 十点均值与预测图",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 17,
+      "cell_type": "markdown",
+      "source_sha256": "e578aa5fa86a4659d54aed21e2e9cab408268af1af7dc8f4b16a0fc6ef8b2886",
+      "candidate_anchor": "Cell 17 · 换到十五点窗口",
+      "saved_outputs": []
+    },
+    {
+      "number": 18,
+      "cell_type": "code",
+      "source_sha256": "c7b28b4ef3035ca78a4b6db868c055383330d1e4eebdfe50041220eb9ab72deb",
+      "candidate_anchor": "Cell 18 · 十五点均值与误标签",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 19,
+      "cell_type": "markdown",
+      "source_sha256": "e15e0939cf4470ddbcfb12627576a405422b25d8684ab3a81f54dd912972b6f8",
+      "candidate_anchor": "Cell 19 · 先声明共同评分规则",
+      "saved_outputs": []
+    },
+    {
+      "number": 20,
+      "cell_type": "code",
+      "source_sha256": "27ab8bc5656bfa8ec7ba8e03e04754f456c073dfa5cedfbfa3492ed770ac5867",
+      "candidate_anchor": "Cell 20 · 三种移动平均的误差",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 21,
+      "cell_type": "markdown",
+      "source_sha256": "723e4d337e7982897a7df81c4ede53e9e60e336305c79a47e107f2ce532bbfdb",
+      "candidate_anchor": "Cell 21 · 移动平均结果的源解释",
+      "saved_outputs": []
+    },
+    {
+      "number": 22,
+      "cell_type": "markdown",
+      "source_sha256": "280379206926a1b549aae37d8431ac0b3844c30f0667b35343b4bcd609255108",
+      "candidate_anchor": "Cell 22 · SES 的状态",
+      "saved_outputs": []
+    },
+    {
+      "number": 23,
+      "cell_type": "code",
+      "source_sha256": "465e2deeb4c0bab2577e02485df3eb067a4ce413d942d1f2e35c9e414d724432",
+      "candidate_anchor": "Cell 23 · 拟合销量 SES",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 24,
+      "cell_type": "code",
+      "source_sha256": "02dc5d952848181d5e8b5562406cb3f7d5198e9e6ff1a72246c678c0f90b2e8f",
+      "candidate_anchor": "Cell 24 · 读 SES 图",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 25,
+      "cell_type": "code",
+      "source_sha256": "41a3cc1be0699e6496e1db04c9f4c4eb943b6f291bfb5e85ce86ee07b0d2eae8",
+      "candidate_anchor": "Cell 25 · 用销量单位读 SES RMSE",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 26,
+      "cell_type": "markdown",
+      "source_sha256": "ec8d0c557d23767f2c75d440871a7ddf8c3f84f3973e55684a2d53ecab6fca32",
+      "candidate_anchor": "Cell 26 · Holt 增加趋势",
+      "saved_outputs": []
+    },
+    {
+      "number": 27,
+      "cell_type": "code",
+      "source_sha256": "12ef5ef717dd05600dd7e63e2d60b9252a4332ccf30a5093513570fe89d3b6af",
+      "candidate_anchor": "Cell 27 · 拟合销量 Holt",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 28,
+      "cell_type": "code",
+      "source_sha256": "f71d31aff2b7f2f1a9afcdc8761838141ec4ed96b9c69ff8b74e972062701a05",
+      "candidate_anchor": "Cell 28 · 读 Holt 上升线",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 29,
+      "cell_type": "code",
+      "source_sha256": "220e0ff101497487bbc876c5a153c23246cf33c111e9dce3b7c0c2a11f852cc8",
+      "candidate_anchor": "Cell 29 · Holt 的保存评分",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 30,
+      "cell_type": "markdown",
+      "source_sha256": "4326a4af496362329ef421724322c7100089df6ee1b89eaeae3513867992290b",
+      "candidate_anchor": "Cell 30 · Holt-Winters 增加季节",
+      "saved_outputs": []
+    },
+    {
+      "number": 31,
+      "cell_type": "code",
+      "source_sha256": "67c8ccdc2e5363b2ad32686f853d35bb9533fc0e87e8a88d05db86cde4010654",
+      "candidate_anchor": "Cell 31 · 拟合销量季节示例",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 32,
+      "cell_type": "code",
+      "source_sha256": "9bb1bc513fb7d8c47db26e54fde213855f75d14f578c47a65ee79fe3bfd6f535",
+      "candidate_anchor": "Cell 32 · 读销量季节预测图",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 33,
+      "cell_type": "code",
+      "source_sha256": "220e0ff101497487bbc876c5a153c23246cf33c111e9dce3b7c0c2a11f852cc8",
+      "candidate_anchor": "Cell 33 · 评分及变量覆盖",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 34,
+      "cell_type": "markdown",
+      "source_sha256": "1877413fb3f45003397b9c2555464886e4e5c9b40c25f7ca2cd3b7c9e6026cb8",
+      "candidate_anchor": "Cell 34 · 切换到季度数据",
+      "saved_outputs": []
+    },
+    {
+      "number": 35,
+      "cell_type": "code",
+      "source_sha256": "7217f69fb7733265b06ba7f53c49222c58eadc0f3875c32f96f1bfab7f98d017",
+      "candidate_anchor": "Cell 35 · 读季度 CSV",
+      "saved_outputs": [
+        "execute_result"
+      ]
+    },
+    {
+      "number": 36,
+      "cell_type": "code",
+      "source_sha256": "b01882d68e7324f58296e1769d09f4f6322ce98b5502d328dae09e43b89dece5",
+      "candidate_anchor": "Cell 36 · 看季度序列图",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 37,
+      "cell_type": "markdown",
+      "source_sha256": "7f26e54eb36dfbc92027df5eadd530ca4e1ce356849f7479db56a38fe4d456ad",
+      "candidate_anchor": "Cell 37 · 同一留出比较三种 ETS",
+      "saved_outputs": []
+    },
+    {
+      "number": 38,
+      "cell_type": "code",
+      "source_sha256": "77c81418feb87e25e1b44b7bd4265c097cd8b0c8e47a23e33b52cb2b85786373",
+      "candidate_anchor": "Cell 38 · 计算 50 和 6",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 39,
+      "cell_type": "code",
+      "source_sha256": "322a9b7466076c9f311093493a9ce41581808d25fcc35ffface8dc0218512664",
+      "candidate_anchor": "Cell 39 · 按位置切季度表",
+      "saved_outputs": []
+    },
+    {
+      "number": 40,
+      "cell_type": "code",
+      "source_sha256": "beb1b86adad170f7d1925247cf2c2220ae0489eaf534cc605edf55f9f9bc217e",
+      "candidate_anchor": "Cell 40 · 确认季度训练边界",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 41,
+      "cell_type": "markdown",
+      "source_sha256": "3f3a59e7666e30a33d1d3c91a37cc080a0f6175433285f326f42a292c6242dbb",
+      "candidate_anchor": "Cell 41 · 季度 SES 基准",
+      "saved_outputs": []
+    },
+    {
+      "number": 42,
+      "cell_type": "code",
+      "source_sha256": "6b5adbf7f5afc95b520f0988d04aa7f2c6947e9f1baa7a2ad663029a4657c135",
+      "candidate_anchor": "Cell 42 · 拟合季度 SES",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 43,
+      "cell_type": "code",
+      "source_sha256": "107d117f3edc04863420eef006850ef278e816c04f5500b468d485a05c4524f7",
+      "candidate_anchor": "Cell 43 · CVD 的 SES 原图",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 44,
+      "cell_type": "code",
+      "source_sha256": "28577816b0a8899473c9823c765e4bd3c881f894d01d86e17e4420b1a8d6877c",
+      "candidate_anchor": "Cell 44 · 季度 SES 评分",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 45,
+      "cell_type": "markdown",
+      "source_sha256": "6b1bd4476c46129bd2fb62c92e0f6587bcfd27db6b45815e99b69e7dbdb64cae",
+      "candidate_anchor": "Cell 45 · 季度 Holt 模型入口",
+      "saved_outputs": []
+    },
+    {
+      "number": 46,
+      "cell_type": "code",
+      "source_sha256": "f66d5eaed9f6ace48762d3e58d775e6472a78768b5eb8af30706cd16f216d101",
+      "candidate_anchor": "Cell 46 · CVD 的 Holt 原图",
+      "saved_outputs": [
+        "stream",
+        "display_data",
+        "stream"
+      ]
+    },
+    {
+      "number": 47,
+      "cell_type": "markdown",
+      "source_sha256": "70739bb08e09f9c1000ed824ebbaf13e8be0976890bb072fe2c52b0519c7af06",
+      "candidate_anchor": "Cell 47 · 季度 Holt-Winters 模型入口",
+      "saved_outputs": []
+    },
+    {
+      "number": 48,
+      "cell_type": "code",
+      "source_sha256": "3c136fd6077c57861cd83a5b3d2324e40f8e6e31535e293a20c04da924720b9e",
+      "candidate_anchor": "Cell 48 · CVD 的 Holt-Winters 原图",
+      "saved_outputs": [
+        "stream",
+        "display_data",
+        "stream"
+      ]
+    },
+    {
+      "number": 49,
+      "cell_type": "markdown",
+      "source_sha256": "77ed910fb4965b94ff0a6e9a0b6edc5e655f5ffe28240f02accc3d299a3f8795",
+      "candidate_anchor": "Cell 49 · 现行评分四问入口",
+      "saved_outputs": []
+    },
+    {
+      "number": 50,
+      "cell_type": "markdown",
+      "source_sha256": "ae3689bb379459bdc75e1feb43467987ec785d27cbcec1999d6e03f074c7cab2",
+      "candidate_anchor": "Cell 50 · 评分提交要求",
+      "saved_outputs": []
+    }
+  ],
+  "execution": {
+    "source_sha256": "cbaa69b57f8272eeb3846892de4c5440663cfc2803acb6ababb000e6df286bdb",
+    "source_index_zero_based": true,
+    "executed_source_indices": [
+      2,
+      4,
+      5,
+      8,
+      9,
+      12,
+      13,
+      14,
+      16,
+      18,
+      20,
+      23,
+      24,
+      25,
+      27,
+      28,
+      29,
+      31,
+      32,
+      33,
+      35,
+      36,
+      38,
+      39,
+      40,
+      42,
+      43,
+      44,
+      46,
+      48
+    ],
+    "errors": [],
+    "warning_categories": [],
+    "summary": {
+      "train_shape": [
+        31,
+        5
+      ],
+      "test_shape": [
+        5,
+        5
+      ],
+      "rmse_sma5": 161.91353618521214,
+      "rmse_sma10": 191.1078609058246,
+      "rmse_sma15": 231.22183201419364,
+      "rmse_ses": 473.29664366692185,
+      "rmse_holt": 93.09741901213341,
+      "cvd_train_shape": [
+        50,
+        3
+      ],
+      "cvd_test_shape": [
+        6,
+        3
+      ],
+      "rmse_hw": 246.58432147396323
+    },
+    "boundary": "只执行评分段前的课堂代码；静态 Agg 等效替代 %matplotlib inline，CSV 用本地绝对路径，NumPy 初始种子 29。只存汇总结果。"
+  },
+  "precision": "每个物理格均有本格独立文本标题；课堂代码及图片原证据保持，原生点击待验"
+}

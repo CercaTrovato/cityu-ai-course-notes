@@ -2,7 +2,8 @@
 course: IS6400
 module: 1
 readability_rules: v2
-readability_review: passed
+readability_review: pending
+historical_readability_review: passed
 type: tutorial
 week: 1
 date: 2026-09-02   # ⚪ 推算：周三班次
@@ -18,12 +19,13 @@ updated: 2026-10-27
 teaching_standard: novice-v1
 quality_spec: v1
 mechanism_spec: v1
-mechanism_review: passed
+mechanism_review: pending
+historical_mechanism_review: passed
 ---
 
 # T01 · Jupyter 入门与 Pandas 基础
 
-> **本次范围**：2026-10-27 候选覆盖全文教学内容，含七个 Prompt、cell 24 四题及全部折叠答案；待本次独立审查。§9.6.2 是保留的 2026-10-01 历史回执，不能作为本次教学通过。源 notebook、官方／本人保存 HTML 只读；本次不执行评分作业、不改本人提交或学习状态。
+> **本次范围**：2026-11-04 本轮候选覆盖全文教学内容，含七个 Prompt、cell 24 四题及全部折叠答案；待本次独立审查。§9.6.2 是保留的 2026-10-01 历史回执，不能作为本次教学通过。源 notebook、官方／本人保存 HTML 只读；本次不执行评分作业、不改本人提交或学习状态。
 >
 > **本讲一句话**：这个 notebook 教七件最基础的事（取时间 → 打印变量 → 建表 → 建大表 → 统计 → 分类 → 矩阵运算），但它真正的教学设计藏在每段代码后面 —— **七个 `🤖 AI Prompt` 单元格，把同一段代码用自然语言重述一遍**。源材料提供 Python 写法和对应的 AI 代码提示。本轮解释这项设计，不认证教师课上实际说了什么。
 > **原始材料**：`Tutorial 1 - Introduction to Jupyter Notebook_Prompt.ipynb`（25 cells）｜ **配套讲义**：[[M01-导论-商业数据分析全景与工具链#2.7 工具链：Anaconda / Jupyter / Colab|M01-导论-商业数据分析全景与工具链 › 2.7 工具链：Anaconda / Jupyter / Colab]]｜ **转录**：`pending`
@@ -34,16 +36,16 @@ mechanism_review: passed
 
 一句话：**把"能打开 Jupyter"变成"能用 Python 处理一张表"。**
 
-它的七个小节是有意排的一条线：
+这七个小节按概念逐步前进，代码并不构成一条每步都必跑的数据链。下面实线表示直接用到前面建立的值或表。
 
 ```mermaid
 flowchart TD
-    A["① 取当前时间<br/><i>import 一个库</i>"] --> B["② 打印学号<br/><i>变量 + 字符串格式化</i>"]
-    B --> C["③ 建一张空表<br/>填一行<br/><i>DataFrame 的骨架</i>"]
-    C --> D["④ 用字典建一张<br/>4 行 5 列的表<br/><i>真正的建表方式</i>"]
-    D --> E["⑤ describe()<br/><i>一行出统计</i>"]
-    E --> F["⑥ 自定义函数 + apply<br/><i>造新列</i>"]
-    F --> G["⑦ 转成 numpy 矩阵<br/>转置 · 相乘 · 求和<br/><i>为回归的矩阵运算铺路</i>"]
+    A["① 取当前时间"] --> C["③ 用时刻与学生信息建一行 mytable"]
+    B["② 存储与打印学生信息"] --> C
+    D["④ 从字典独立建四行 df"] --> E["⑤ 用 df 计算统计摘要"]
+    D --> F["⑥ 按 score 造 category"]
+    D --> G["⑦ 只取 score / grade 做矩阵"]
+    C -.->|"教学从一行转到多行；程序不读 mytable"| D
 ```
 
 这七步分成三段：
@@ -146,8 +148,10 @@ Python 用缩进代替 `{}`。
 **三条会救命的规则**
 
 1. **缩进必须一致**（统一四个空格，别混 Tab）
-2. **索引从 0 开始**：`a[0]` 是第一个元素
+2. **列表位置从 0 开始**：`a[0]` 是第一个元素。pandas 的行标签不一定连续或从 0 开始，见 §2.3。
 3. **等号 `=` 是赋值，双等号 `==` 才是判断相等**
+
+预习先顺序跑第 4、7、10 格，检查一行表，再单独跑第 13 与第 22 格，比较带列名的表与矩阵。课中从 §8 按格跟读；复习到 §4.1 改条件，再回 §2.9 做四题。
 
 ---
 
@@ -220,11 +224,9 @@ flowchart TD
 
 文字替代：编辑、执行、保存各改不同对象。In[ ] 也可能清过记录，不能证明从未执行；依赖应按声明顺序重新建立。
 
-<details><summary>读图自测：只保存 a=2，下一格就会从 4 变 5 吗？</summary>
-
-不会。保存走 NBF，不替代执行。先执行新赋值、再运行 a+3，才得到 5。
-
-</details>
+> [!example]- 读图自测：只保存 a=2，下一格就会从 4 变 5 吗？
+>
+> 不会。保存走 NBF，不替代执行。先执行新赋值、再运行 a+3，才得到 5。
 
 **为什么这么写**：把编辑、执行和保存分开，才能判断依赖值来自本次还是旧会话。
 
@@ -258,7 +260,7 @@ flowchart TD
 
 **是什么**
 
-Jupyter 有个特性：**一个 code cell 的最后一行如果是个表达式，它的值会自动显示出来，不需要 `print`**。
+常见的 Jupyter Python 配置下，代码格最后一条普通表达式会自动显示结果；有分号抑制时不会。`print` 则要显式调用。
 
 本 notebook 大量依赖这一点 —— cell 10 最后一行只有 `mytable`，cell 13 最后一行只有 `df`，都是靠这个机制把表显示出来。而且 **DataFrame 用这种方式显示会渲染成漂亮的 HTML 表格**，用 `print(df)` 只能得到纯文本。
 
@@ -311,15 +313,13 @@ print(x)  #now we can print the time
 
 **所以呢**：第一个变量（时间对象 `x`）造好了。下一个 cell 再造一个变量（学号），并且第一次接触"把变量嵌进一句话里打印"这个几乎每次都要用的操作。
 
-**源 Prompt 1 对照（cell 5）**
+#### 源 Prompt 1 对照（cell 5）
 
 中文题意：导入 datetime，读取当前时刻，存入 x，再打印 x。当前时刻是运行时输入，不把源保存的 2025 时间写死。
 
-<details><summary>英文原题（源 Prompt 1，完整保留）</summary>
+**英文原题（源 Prompt 1，完整保留）**
 
 > Write Python code to import the 'datetime' module, get the current time, store it in a variable named 'x', and print 'x'.
-
-</details>
 
 **英文参考答案（笔记自拟，源代码演示与本节数值为依据）**：I import `datetime`, assign `datetime.datetime.now()` to `x`, and print `x`. The displayed value is the time obtained by this call.
 
@@ -386,15 +386,13 @@ print('Slope is %f, Intercept is %f' % (lin_reg.coef_[0][0], lin_reg.intercept_[
 
 **所以呢**：有了时间 `x` 和学号 `StudentID` 两个变量，下一步就是本课真正的重点——把这些零散的值放进一张表里，也就是这门课要用到的第一个 pandas 对象：DataFrame。
 
-**源 Prompt 2 对照（cell 8）**
+#### 源 Prompt 2 对照（cell 8）
 
 中文题意：把演示字符串 liujm8 存为 StudentID，并按明确要求用 %s 插入句子。这里是源示例，不是本人身份。
 
-<details><summary>英文原题（源 Prompt 2，完整保留）</summary>
+**英文原题（源 Prompt 2，完整保留）**
 
 > Write Python code to assign the string 'liujm8' to a variable named 'StudentID', and use string formatting (%s) to print the sentence 'My Student ID is: [StudentID]'.
-
-</details>
 
 **英文参考答案（笔记自拟，源代码演示与本节数值为依据）**：I assign the demonstration string `liujm8` to `StudentID` and use `%s` formatting to print `My Student ID is: liujm8`.
 
@@ -486,15 +484,13 @@ flowchart TD
 
 **所以呢**：先建空表再一行行塞数据，这种写法容易懂但**只适合演示**（扩展开销与类型需核）。下一个 cell 换成真正常用的建表方式——用字典一次性建好。
 
-**源 Prompt 3 对照（cell 11）**
+#### 源 Prompt 3 对照（cell 11）
 
 中文题意：建名为 mytable 的空三列表，按 id/name/time 次序，把 StudentID、演示姓名和 x 放在标签 0，再显示表。
 
-<details><summary>英文原题（源 Prompt 3，完整保留）</summary>
+**英文原题（源 Prompt 3，完整保留）**
 
 > Using the pandas library, create an empty DataFrame named 'mytable' with columns 'id', 'name', and 'time'. Insert a new row at index 0 with the values: [StudentID, 'LIU Junming', x]. Finally, display the DataFrame.
-
-</details>
 
 **英文参考答案（笔记自拟，源代码演示与本节数值为依据）**：I create `mytable` with columns `id`, `name` and `time`, assign the three values to row label 0 in that order, and display the resulting one-row table.
 
@@ -573,15 +569,13 @@ flowchart LR
 
 **所以呢**：4 行 5 列的表 `df` 造好了。拿到一张新表，CRISP-DM 第 2 步的数据理解可从形状、类型、缺失和摘要开始，具体次序依任务——下一个 cell 就是干这件事的。
 
-**源 Prompt 4 对照（cell 14）**
+#### 源 Prompt 4 对照（cell 14）
 
 中文题意：按原文给出的五组等长列表建 df。每个列表的同一位置属于同一行；保留全部固定日期，不改成当前时间。
 
-<details><summary>英文原题（源 Prompt 4，完整保留）</summary>
+**英文原题（源 Prompt 4，完整保留）**
 
 > Write Python code using pandas and datetime to create a DataFrame named 'df'. The DataFrame should be created from a dictionary with the following keys and lists: 'id' ["liujm8", "zhangx5", "wangy3", "chenz2"], 'name' ["LIU Junming", "ZHANG Xi", "WANG Yi", "CHEN Zhi"], 'grade' [1, 2, 1, 3], 'score' [87, 92, 78, 88], and 'time' containing four datetime objects (2025-1-8 15:53:13, 2025-1-8 16:00:00, 2025-1-8 16:05:00, 2025-1-8 16:10:00). Display 'df'.
-
-</details>
 
 **英文参考答案（笔记自拟，源代码演示与本节数值为依据）**：I create `df` from the five specified lists. Values at the same list position form one row, producing four rows and five columns with the supplied fixed datetimes.
 
@@ -744,15 +738,13 @@ flowchart TD
 
 **所以呢**：`describe()` 只能算现成列的统计，不能凭空造出新信息。下一个 cell 教怎么**造一个全新的列**——这是特征工程最基本的动作。
 
-**源 Prompt 5 对照（cell 17）**
+#### 源 Prompt 5 对照（cell 17）
 
 中文题意：对已有 df 调用 describe，把结果保存为 stats 并显示。摘要列与字段受 dtype 和 pandas 版本影响，不能照抄旧输出当新运行。
 
-<details><summary>英文原题（源 Prompt 5，完整保留）</summary>
+**英文原题（源 Prompt 5，完整保留）**
 
 > Write Python code to generate descriptive statistics for the DataFrame 'df' using the .describe() method, assign the result to a variable 'stats', and display it.
-
-</details>
 
 **英文参考答案（笔记自拟，源代码演示与本节数值为依据）**：I assign `df.describe()` to `stats` and display the summary. For the supplied score values, the count is 4, the mean is 86.25 and the sample standard deviation is about 5.909033; other included columns depend on dtype and version.
 
@@ -798,15 +790,15 @@ index/id 保持对象身份，score 是原输入分数，category 是原函数�
 | 部分 | 说明 |
 |---|---|
 | `def grade_category(score):` | 定义一个函数，参数叫 `score` |
-| `if / elif / else` | ⚠️ **顺序是关键**：从上往下，**第一个成立的分支就返回**。所以门槛必须**从高到低**排 |
+| `if / elif / else` | 首个成立分支优先；本例的“至少”门槛重叠，所以先查高档 |
 | `df["score"]` | 取出 `score` 这一列（得到一个 **Series**） |
 | **`.apply(grade_category)`** | 把函数**逐个元素**套到这一列上，返回一个同样长的新 Series。⚠️ **注意函数名后面没有括号** —— 你传的是"函数本身"，不是"函数的调用结果" |
 | `df["category"] = …` | 给 DataFrame 加一个**新列**。列名不存在时直接新建 |
 
 **为什么这么写**
 
-**① 为什么门槛必须从高到低？**
-如果写成 `if score >= 60: return "Pass"` 在最前面，那么 92 分也会先撞上这一条，全部人都是 "Pass"。**`elif` 链是"短路"的，谁在前谁优先。**
+**① 为什么本例的“至少”门槛从高到低？**
+若先写 `if score >= 60: return "Pass"`，92 分也先匹配。现有四人的分数都至少 60，于是本例全被分为 Pass；59 分仍是 Fail。
 
 **② 为什么不用 `for` 循环？**
 你完全可以写：
@@ -929,17 +921,15 @@ flowchart TD
 
 **所以呢**：pandas 这条线（建表、统计、造列）告一段落。notebook 最后换了一个话题——不用 pandas，直接用 numpy 做矩阵运算，为下一讲的线性回归数学做铺垫。
 
-**源 Prompt 6 对照（cell 20）**
+#### 源 Prompt 6 对照（cell 20）
 
-中文题意：定义 grade_category，按 90/80/60 降序判断，四档结果交给新列 category。原题的函数没有输入合法性守卫，补充守卫另标。
+中文题意：定义 grade_category，按 90/80/60 降序判断，四档结果交给新列 category，并显示带新列的 df。原题的函数没有输入合法性守卫，补充守卫另标。
 
-<details><summary>英文原题（源 Prompt 6，完整保留）</summary>
+**英文原题（源 Prompt 6，完整保留）**
 
 > Write a Python function named 'grade_category' that takes a 'score' as input. It should return "Excellent" if score >= 90, "Good" if >= 80, "Pass" if >= 60, and "Fail" otherwise. Use the pandas .apply() method to apply this function to the 'score' column of DataFrame 'df' and store the results in a new column called 'category'. Display 'df'.
 
-</details>
-
-**英文参考答案（笔记自拟，源代码演示与本节数值为依据）**：I define `grade_category` with descending thresholds and apply it to `df["score"]`. For 87, 92, 78 and 88, the new category values are Good, Excellent, Pass and Good.
+**英文参考答案（笔记自拟，源代码演示与本节数值为依据）**：I define `grade_category` with descending thresholds and apply it to `df["score"]`. For 87, 92, 78 and 88, the new category values are Good, Excellent, Pass and Good. I display the resulting DataFrame.
 
 
 ---
@@ -998,8 +988,8 @@ Sum of Scores and Grades:
 
 | 部分 | 说明 | 形状 |
 |---|---|---|
-| `df[["score", "grade"]]` | ⚠️ **双层方括号**：外层是"取列"，内层是"列名的列表"。取多列必须双层，取单列 `df["score"]` 是单层（得到 Series 而不是 DataFrame） | 4×2 DataFrame |
-| `.to_numpy()` | 把 DataFrame 转成 numpy 数组（**丢掉列名和索引，只剩纯数字**） | `(4, 2)` |
+| `df[["score", "grade"]]` | 外层取列，内层是列名列表，也可用 `df[cols]`。单个列名字符串取 Series | 4×2 DataFrame |
+| `.to_numpy()` | 将表转成数组，列名和索引不随数组保留。这里两列是数字，混合类型的表不保证同样的数组类型。 | (4, 2) |
 | `matrix.T` | **转置**：行列互换。`.T` 是属性不是方法，**没有括号** | `(2, 4)` |
 | `np.dot(matrix, transpose)` | 矩阵乘法：$(4,2) \times (2,4) = (4,4)$ | `(4, 4)` |
 | `np.sum(matrix, axis=0)` | 沿 **axis=0** 求和 | `(2,)` |
@@ -1036,7 +1026,7 @@ axis│ 92        2 │
 **⚠️ 易错点**
 
 1. **矩阵乘法的形状必须能对上**：$(a,b) \times (b,c) = (a,c)$。中间的 `b` 不等就报 `ValueError: shapes not aligned`
-2. **`np.dot(A, B) ≠ np.dot(B, A)`**：`np.dot(matrix, matrix.T)` 是 4×4，`np.dot(matrix.T, matrix)` 是 2×2
+2. **先核乘法顺序和形状**：`np.dot(matrix, matrix.T)` 得 4×4；换序得 2×2。这个例子两者不同，并非任何矩阵换序都一定不同。
 3. **`.T` 没有括号**（属性），**`.to_numpy()` 有括号**（方法）
 4. `df[["score","grade"]]` 的列顺序决定矩阵的列顺序，别写反
 
@@ -1104,17 +1094,15 @@ flowchart TD
 **回归预告的边界**：正规方程的逆表达式要求设计矩阵满列秩；这里没有常数列，不自动含截距。实际求最小二乘可用稳定的直接分解，不保证显式形成或求逆 Gram 矩阵。详细训练、秩与稳定性见 M02 §2.8.3，不把此次数组练习记成已完成回归拟合。**🎙️ 课堂补充**：待转录。
 
 
-**所以呢**：转置、矩阵乘法、按列求和这几个 numpy 动作看着像是无意义的练习，但它们正是下一讲正规方程 $\hat\theta=(X^{\top}X)^{-1}X^{\top}Y$ 里每一步在做的事——这是笔记对两讲联系的解释，不认证教师的口头设计意图。源 cell 24 给出作业，cell 25 留空。
+**所以呢**：这里学过的转置和矩阵乘法会在正规方程 $\hat\theta=(X^{\top}X)^{-1}X^{\top}Y$ 中再用到；按列求和是本教程的另一项练习。源 cell 24 给出作业，cell 25 留空。
 
-**源 Prompt 7 对照（cell 23）**
+#### 源 Prompt 7 对照（cell 23）
 
-中文题意：第 1 项固定 score/grade 次序取数组 matrix 并打印；第 2 项存 transpose 并打印；第 3 项算 matrix 与 transpose 点积存 result；第 4 项沿 axis=0 求两列和存 sum_matrix。这里要求两个列和，与作业只求 all scores 不同。
+中文题意：第 1 项固定 score/grade 次序取数组 matrix 并打印；第 2 项存 transpose 并打印；第 3 项算 matrix 与 transpose 点积存 result 并打印；第 4 项沿 axis=0 求两列和存 sum_matrix 并打印。这里要求两个列和，与作业只求 all scores 不同。
 
-<details><summary>英文原题（源 Prompt 7，完整保留）</summary>
+**英文原题（源 Prompt 7，完整保留）**
 
 > Write Python code using numpy to perform the following operations: 1. Extract the "score" and "grade" columns from DataFrame 'df' and convert them to a numpy array named 'matrix'. Print it. 2. Get the transpose of 'matrix', store it in 'transpose', and print it. 3. Calculate the dot product of 'matrix' and 'transpose', store it in 'result', and print it. 4. Calculate the sum of 'matrix' along the columns (axis=0), store it in 'sum_matrix', and print it.
-
-</details>
 
 **英文参考答案（笔记自拟，源代码演示与本节数值为依据）**：1. I extract `score` then `grade` into `matrix`, a 4-by-2 NumPy array, and print it.
 
@@ -1129,7 +1117,9 @@ flowchart TD
 
 ### 2.8 【cell 25】空 cell
 
-**这块在干什么**：最后一个 code cell 是**空的**，留给你写作业（题面与学习解析见 §2.9／§7，个人历史成品只读）——前面 7 个 cell 演示的是"建表、看统计、造列、做矩阵运算"，作业把打印、存表、稍后追加和部分矩阵操作组合起来；并未要求 describe、分档或点积全部重做。
+物理第 25 格是空代码格，在第 24 格作业题之后。题面与解析先读 §2.9，再返回此格练习。
+
+作业用到打印、存表、追加和部分矩阵操作；不要求重做 describe、分档或点积。
 
 **为什么这么写**：空 cell 没有可执行语句，也没有可复算数值输出；
 
@@ -1143,7 +1133,7 @@ flowchart TD
 
 这四题要你打印信息、存表、稍后追加，再做指定矩阵操作。下面完整原题与 §7 一致，移到正文旁便于逐问核对；这是学习解析，不执行或更改本人历史答卷。
 
-<details><summary>完整英文原题（源 notebook cell 24）</summary>
+**完整英文原题（源 notebook cell 24）**
 
 > ## Tutorial 1:
 > ### Please complete the following questions using this jupyter notebook, SAVE it as HTML and upload to canvas.
@@ -1157,21 +1147,21 @@ flowchart TD
 > - Print the matrix and its transpose.
 > - Calculate and print the sum of all scores.
 
-</details>
-
 **先处理题面缺口**：Q2 的 “information above” 只给 id/name/time；Q3 的 “expected scores” 新增分数，Q4 再要求 grade。原件未唯一说清 Q4 取哪张表。官方参考 HTML 提前在 mytable 建 grade/expected scores，Q4 取此表；本人保存 HTML 明说 Q4 用课堂 df，分数和 345。这是两种有记录的解释，不写成教师已澄清唯一方案。grade 原件只给数字，未定义其业务含义；本篇仅作数值编码。
 
 **Q1 的直接作答与理由**：先把自己的 ID、name 分别保存为两个变量，调用 `datetime.datetime.now()` 存 first_time，再 `print` 三项。输入是身份文字与本次时钟，输出是三项显示；不能把 cell 7 的演示 ID 当本人资料，不能用源保存时间代替运行时刻。赋值、导入与打印的语法见 §2.1–§2.2。
 
 英文参考（笔记自拟）：“I obtain the current time during execution and print it together with my student ID and name.”
 
-**Q2 的直接作答与理由**：建 DataFrame 并用 `loc[0]` 写 id/name/first_time。为贯穿后题，可明确声明教学假设：额外加入 score/grade 列，两行分别用虚构的 (80,1)、(90,1)。每行五值按列名顺序配对；这不是原 Q2 明写五列。若采用本人历史两表方案，mytable 只需加 score，Q4 另声明取课堂 df。标签新建、覆盖和列表对应见 §2.3。
+**Q2 的直接作答与理由**：把建好的表命名为 `table`；列顺序为 id、name、timestamp、score、grade。用 `table.loc[0]` 写入 Q1 的三项及虚构的 (80,1)。原题 Q2 没有要求五列；后两列是为同一表延续到 Q4 的教学约定。若用历史两表方案，Q4 另声明从课堂 df 取列。
 
 英文参考（笔记自拟）：“I store the ID, name and first timestamp in row label 0 of a DataFrame. I state any additional score or grade columns needed for my interpretation of the later tasks.”
 
-**Q3 的直接作答与理由**：“after a few seconds” 不只是两个时间不同。可 `time.sleep(3)` 暂停约 3 秒，再调用 now 存 second_time，用尚不存在的 `loc[1]` 写第二行；保留标签 0，核行数为 2 与实际时间差。sleep 属 Python 自带 time 模块，须先 import time；不重新读取时钟就会复用旧值。重跑整段建表会先清旧表，单独重写 loc[1] 则覆盖，不是再追加。系统时钟被调整时须据实核读数。
+**Q3 的直接作答与理由**：“after a few seconds” 不只要求时间不同。先 `import time`，等待约 3 秒，再调用时钟保存 second_time。用 `table.loc[1]` 写相同 id/name、新时刻及虚构的 (90,1)。现在 table 有标签 0、1 两行；若单独重跑赋值会覆盖标签 1，不会增加第三行。
 
 英文参考（笔记自拟）：“After waiting a few seconds, I read the clock again and insert a second row at a new label, keeping the first row and including the expected score.”
+
+到 Q4 时继续用同一个 table。下面新变量 matrix 由该表的 score、grade 两列转换而来；不拿教师示例的四行 df 混入这个两行教学例。
 
 **Q4.1 的直接作答与理由**：若采用上述同一张教学表，`table[["score","grade"]].to_numpy(dtype=float)` 得两行 (80,1)/(90,1)。只取数字列；顺序固定为 score 在前、grade 在后。转换后标签不在数组内，不能只核 shape 就认定列身份正确。
 
@@ -1199,34 +1189,34 @@ flowchart TD
 
 ## 3. 完整流程串讲
 
-把七个非空课堂 code cell 串成一条线，可看出数据理解和准备的关联；它未完整声明业务目标、评价和部署，不能算 CRISP-DM 六阶段都执行过：
+七个课堂格按学习顺序展开。下图的实线只表示数据依赖；它并未给出完整业务目标、评价与部署，不能称执行了 CRISP-DM 六阶段。
 
 ```mermaid
 flowchart TD
-    A["cell 4 · import datetime<br/>拿到一个数据点（时间）"] --> B["cell 7 · 定义变量<br/>拿到第二个数据点（学号）"]
-    B --> C["cell 10 · pd.DataFrame + .loc<br/>**把散落的数据装进一张表**"]
-    C --> D["cell 13 · 字典建表<br/>**扩展成多行多列的真实数据**"]
-    D --> E["cell 16 · describe()<br/>**Data Understanding：先看看数据长什么样**"]
-    E --> F["cell 19 · def + apply<br/>**Data Preparation：造一个新特征 category**"]
-    F --> G["cell 22 · to_numpy + T + dot + sum<br/>**转成矩阵，练习代数动作**"]
-    G -.->|"下一讲"| H["M02 · 最小二乘训练<br/>逆表达式另需满列秩条件"]
-```
-
-**这条线的意义**：数据在四种形态之间流动 ——
+    A["Cell 4 · 当前时间"] --> C["Cell 10 · 一行 mytable"]
+    B["Cell 7 · 学生信息"] --> C
+    D["Cell 13 · 字典独立建 df"] --> E["Cell 16 · 统计摘要 stats"]
+    D --> F["Cell 19 · df 加 category 列"]
+    D --> G["Cell 22 · 取 score 与 grade 转数组"]
+    G -.->|"运算预告"| H["M02 · 最小二乘"]
 
 ```
-散落的变量 → DataFrame（带列名、带类型） → 统计摘要（人看的） → numpy 矩阵（模型吃的）
+
+**读依赖**：一行 mytable 要用时间与学生信息；四行 df 另从字典建立。
+
+```
+四行 df → 统计摘要；同一 df 也可直接 → 指定列的矩阵。
 ```
 
-**总览走一个学生**：原 liujm8 的 score=87、grade=1 在 D 是带身份的表行；E 仅汇总，没有为该学生生成一条新原始记录。F 给这行 category=Good；G 转成数组第一行 (87,1)，列名与索引须另存。
+**沿一个样本走**：四行表第一行的 score=87、grade=1。统计汇总不改这行；分档时可加 Good，矩阵仍只读 score/grade，所以得到 (87,1)。
 
-总览实线是教学与数据操作顺序，虚线是下一讲预告；G 没有 fit 回归。文字替代：原行保持身份到表处理结束；统计摘要与数组各丢不同信息。下面既有矩阵迁移题检查 G 的数值。
+实线是读取或依赖，虚线只是回归预告。先建四行 df 就可直接运行矩阵格；不用先建 mytable、算摘要或造 category。
 
 
 **核每一步保留与丢掉的信息**：
 - 变量 → DataFrame：**得到**结构（列名、对齐、类型推断）
 - DataFrame → describe()：**得到**概览，**丢掉**个体
-- DataFrame → numpy：**得到**能做矩阵运算的纯数字，**丢掉**列名与索引
+- 指定数字列的 DataFrame → NumPy：保留数组值和顺序，列名、索引需另存。
 
 > ⚠️ **最后那一步的"丢掉列名"是初学者最大的坑来源**：`.to_numpy()` 之后你只剩一堆数字，**列的顺序就是唯一的身份**。W02 的 `lin_reg.coef_` 输出是 `[0.170, 0.138, 0.125, -0.056, …]` 一串裸数字，要靠你记住"第 1 个对应 accommodates"才知道谁是谁。见 [[T02-回归实战-从合成数据到Airbnb定价#5.3 系数和特征怎么对上号|T02-回归实战-从合成数据到Airbnb定价 › 5.3 系数和特征怎么对上号]]。
 
@@ -1246,7 +1236,7 @@ flowchart TD
 | 4 | 改原 cell 10 为 `loc[1]`，整段重跑；对照只追加一条赋值 | 整段先重建，只有标签 1 的一行；只在已有标签 0 表追加则两行 | 分清重建、插入与覆盖 |
 | 5 | cell 13 里把 `"score": [87, 92, 78, 88]` 删掉一个数 | `ValueError: All arrays must be of the same length` | 字典建表要求所有列等长 |
 | 6 | 改 `describe(include="all")`，对照显式选数值列 | 全列摘要依 dtype 不同；当前 time 是日期摘要，id/name 才给类别字段 | 源保存结果与当前版本分开 |
-| 7 | cell 19 把 `if score >= 90` 和 `elif score >= 60` 调换位置 | **所有人都变成 "Pass"** | `elif` 链是短路的，门槛必须从高到低 |
+| 7 | Cell 19 把 60 门槛放在 90 门槛前 | 当前四人都被分成 Pass，59 分仍 Fail | 本例“至少”条件重叠，首个成立分支优先 |
 | 8 | cell 19 改成 `.apply(grade_category())` | `TypeError: grade_category() missing 1 required positional argument` | apply 要的是函数本身，不是调用结果 |
 | 9 | cell 22 改成 `np.sum(matrix, axis=1)` | 输出 `[88 94 79 91]`（4 个数而不是 2 个） | `axis=0` 压行得列结果，`axis=1` 压列得行结果 |
 | 10 | cell 22 改成 `np.dot(transpose, matrix)` | 2×2：`[[29861,613],[613,15]]` | 聚合特征乘积；这张表未含常数列，别直接当完成回归 |
@@ -1276,17 +1266,17 @@ flowchart TD
 6. 三行矩阵 (2,1)/(0,3)/(4,−1)：写转置、两种 Gram、两轴和，解释一个非对角元。`M*M` 与 `M@M.T` 可以交换使用吗？
 7. Prompt 7 要求列顺序 score/grade，AI 却取 grade/score。得到 (4,2) 就算正确吗？仅看到 print 出来的值是否证明变量名和下游接口满足原要求？
 
-<details><summary>参考答案：状态与步骤</summary>
+**核对状态与步骤**
 
-1. A6 后 B 输出 12；只编辑 A9、保存/重读不执行，活 a 仍 6，B 仍 12。运行新 A 再 B 得 18；重启清变量后先 B 为 NameError。新按依赖运行 A/B 得 18。结果与文档旧显示分开核。
-2. 整块每次先重建，始终标签 `[5]` 的一行；单独追加标签 7 成 `[5,7]` 两行，再给标签 5 赋值为覆盖，仍两行。`.loc[0]` 读取缺标签是 KeyError；两行时 `.iloc[2]` 越界，`.iloc[0]` 是标签 5 那行，不能拿 `iloc` 扩容。
-3. 两列列表不等长报 ValueError；补齐后两行两列。删一个整列键只改变列数，不是删行；若独立删某列中的一个元素，就破坏列配对。人和成绩应按同一行身份核。
-4. count4、mean6、std3.651484、min2、25%=3.5、50%=6、75%=8.5、max10；均值估计让偏差和为 0，独立同分布等条件下除 3 给无偏方差，开平方不保证标准差无偏。只有 8 时 std 未定义，其他位置摘要均 8；全缺失 count0、数值摘要未定义。显式选数值列稳定口径，当前版本与旧输出分别核。
-5. 反转有标签 Series 仍 50→Excellent/10→Pass；反转后去标签按位置赋值得 50→Pass/10→Excellent。原浮点 NaN→Fail、0→Fail、60→Pass、90/100.5→Excellent；守卫给 Missing/Fail/Pass/Excellent/Invalid。默认 cut 对 0 为 NaN、60→Fail、90→Good；100.5 在最后一档，不能因此当合法分数。将默认索引 0/1 的 Series 赋给 50/10 两行会全缺失，长度相同不够。
-6. 转置 (2,0,4)/(1,3,−1)。对象 Gram 为 (5,3,7)/(3,9,−3)/(7,−3,17)，特征 Gram 为 (20,−2)/(−2,11)。列和 (6,3)，行和 (3,3,3)；对象 (0,2)=$2\times4+1\times(-1)=7$。本题 `M@M.T` 就是 `np.dot(M,M.T)`，结果为 (3,3)；逐元素 `M*M` 为 (3,2)，不能替代它。这张表没有常数列或目标，也没有完成回归拟合。
-7. 列顺序错后首列成 grade、次列成 score；列和从 345/7 变 7/345，特征 Gram 行列相应交换，shape 相同不能检出身份错误。检查变量 matrix/transpose/result/sum_matrix、实际代码动作、输入列和数值；只打印未知数组不保证下游按指定变量可用。给有限修复次数和明确停止原因，不无限追问 AI。
-
-</details>
+> [!example]- 参考答案：状态与步骤
+>
+> 1. A6 后 B 输出 12；只编辑 A9、保存/重读不执行，活 a 仍 6，B 仍 12。运行新 A 再 B 得 18；重启清变量后先 B 为 NameError。新按依赖运行 A/B 得 18。结果与文档旧显示分开核。
+> 2. 整块每次先重建，始终标签 `[5]` 的一行；单独追加标签 7 成 `[5,7]` 两行，再给标签 5 赋值为覆盖，仍两行。`.loc[0]` 读取缺标签是 KeyError；两行时 `.iloc[2]` 越界，`.iloc[0]` 是标签 5 那行，不能拿 `iloc` 扩容。
+> 3. 两列列表不等长报 ValueError；补齐后两行两列。删一个整列键只改变列数，不是删行；若独立删某列中的一个元素，就破坏列配对。人和成绩应按同一行身份核。
+> 4. count4、mean6、std3.651484、min2、25%=3.5、50%=6、75%=8.5、max10；均值估计让偏差和为 0，独立同分布等条件下除 3 给无偏方差，开平方不保证标准差无偏。只有 8 时 std 未定义，其他位置摘要均 8；全缺失 count0、数值摘要未定义。显式选数值列稳定口径，当前版本与旧输出分别核。
+> 5. 反转有标签 Series 仍 50→Excellent/10→Pass；反转后去标签按位置赋值得 50→Pass/10→Excellent。原浮点 NaN→Fail、0→Fail、60→Pass、90/100.5→Excellent；守卫给 Missing/Fail/Pass/Excellent/Invalid。默认 cut 对 0 为 NaN、60→Fail、90→Good；100.5 在最后一档，不能因此当合法分数。将默认索引 0/1 的 Series 赋给 50/10 两行会全缺失，长度相同不够。
+> 6. 转置 (2,0,4)/(1,3,−1)。对象 Gram 为 (5,3,7)/(3,9,−3)/(7,−3,17)，特征 Gram 为 (20,−2)/(−2,11)。列和 (6,3)，行和 (3,3,3)；对象 (0,2)=$2\times4+1\times(-1)=7$。本题 `M@M.T` 就是 `np.dot(M,M.T)`，结果为 (3,3)；逐元素 `M*M` 为 (3,2)，不能替代它。这张表没有常数列或目标，也没有完成回归拟合。
+> 7. 列顺序错后首列成 grade、次列成 score；列和从 345/7 变 7/345，特征 Gram 行列相应交换，shape 相同不能检出身份错误。检查变量 matrix/transpose/result/sum_matrix、实际代码动作、输入列和数值；只打印未知数组不保证下游按指定变量可用。给有限修复次数和明确停止原因，不无限追问 AI。
 
 
 ## 5. 与讲义理论的对应
@@ -1299,7 +1289,7 @@ flowchart TD
 | cell 16 | `describe()` 描述统计 | CRISP-DM **Step 2 Data Understanding**（讲义 p.30–31） |
 | cell 19 | 造新列（特征） | **Feature = "the element that you use to describe an object"**（讲义 p.33）；⏭️ W03 Feature Engineering |
 | cell 22 | 矩阵转置与乘法 | ⏭️ **预告** [[M02-预测分析-线性回归#2.8.3 正规方程：闭式解（讲义 p.32–34）⭐\|M02-预测分析-线性回归 › 2.8.3 正规方程：闭式解（讲义 p.32–34）⭐]]（讲义 p.34 的 $\hat{\theta} = (X^{\top}X)^{-1}X^{\top}Y$） |
-| cell 5,8,11,14,17,20,23（AI Prompt） | GenAI 写代码 | 讲义 p.45 "Code development" ｜ Syllabus ILO 3 ｜ 官方 `Allow GenAI: Yes` |
+| cell 5,8,11,14,17,20,23（AI Prompt） | GenAI 写代码 | 讲义第 45 页 Code development / Syllabus ILO 3；历史 GenAI 字段见 §6.4 |
 
 **✅ notebook 全部 25 个 cell 已覆盖**（8 个 code cell 逐块讲解，7 个 AI Prompt 见 §6，1 个作业 cell 见 §7，其余 9 个是小节标题类 markdown，已并入对应小节）。
 
@@ -1468,33 +1458,35 @@ flowchart TD
 
 ## 8. cell ↔ 讲义页码映射
 
+按源 Notebook 的物理单元顺序排列。第 24 格直接进入四题的逐问学习解析，第 25 格说明原来的空白代码单元。每条 Prompt 从本表可跳到对应中文题意与英文回应。
+
 | notebook cell | 类型 | 内容 | 笔记小节 | 讲义页 |
 |---|---|---|---|---|
-| 1 | md | 标题 "🚀 Interactive Jupyter Notebook Tutorial" | §0 | — |
-| 2 | md | 欢迎语（提到"也可以用 AI Prompt 让 AI 生成代码"） | §6 | p.45 |
-| 3 | md | 小节标题 "1. Get Current Time ⏰" | §2.1 | — |
-| **4** | **code** | `import datetime` / `now()` / `print` | **§2.1** | — |
-| 5 | md | 🤖 AI Prompt 1 | §6.1 | p.45 |
-| 6 | md | 小节标题 "2. Print Your Student ID 🎓" | §2.2 | — |
-| **7** | **code** | `StudentID` + `%s` 格式化 | **§2.2** | — |
-| 8 | md | 🤖 AI Prompt 2 | §6.1 | p.45 |
-| 9 | md | 小节标题 "3. Create a Simple Table 📊" + pandas 文档链接 | §2.3 | — |
-| **10** | **code** | `pd.DataFrame(columns=…)` + `.loc[0]` | **§2.3** | — |
-| 11 | md | 🤖 AI Prompt 3 | §6.1 | p.45 |
-| 12 | md | 小节标题 "4. Create a Data-rich Table 👯‍♂️" | §2.4 | — |
-| **13** | **code** | 字典 → DataFrame | **§2.4** | — |
-| 14 | md | 🤖 AI Prompt 4 | §6.1 | p.45 |
-| 15 | md | 小节标题 "5. Quick Statistics 🧮" | §2.5 | — |
-| **16** | **code** | `df.describe()` | **§2.5** | p.30–31（Step 2） |
-| 17 | md | 🤖 AI Prompt 5 | §6.1 | p.45 |
-| 18 | md | 小节标题 "6. Data Categorization 🏆" | §2.6 | — |
-| **19** | **code** | `def grade_category` + `.apply()` | **§2.6** | p.33（Feature） |
-| 20 | md | 🤖 AI Prompt 6 | §6.1 | p.45 |
-| 21 | md | 小节标题 "7. Numpy Matrix Operations 🕶️" | §2.7 | — |
-| **22** | **code** | `to_numpy` / `.T` / `np.dot` / `np.sum` | **§2.7** | ⏭️ M02 p.34 |
-| 23 | md | 🤖 AI Prompt 7 | §6.1 | p.45 |
-| 24 | md | **作业题目**（4 题 100 分） | **§7** | p.10（提交规则） |
-| 25 | code | **空**（留给你写作业） | §2.8 | — |
+| 1 | md | 标题 "🚀 Interactive Jupyter Notebook Tutorial" | [[#0. 这个 notebook 在教什么\|本格讲解]] | — |
+| 2 | md | 欢迎语（提到"也可以用 AI Prompt 让 AI 生成代码"） | [[#6. 教授在教你怎么向 AI 提问\|本格讲解]] | p.45 |
+| 3 | md | 小节标题 "1. Get Current Time ⏰" | [[#2.1 【cell 4】取当前时间\|本格讲解]] | — |
+| **4** | **code** | `import datetime` / `now()` / `print` | [[#2.1 【cell 4】取当前时间\|本格讲解]] | — |
+| 5 | md | 🤖 AI Prompt 1 | [[#源 Prompt 1 对照（cell 5）\|本格讲解]] | p.45 |
+| 6 | md | 小节标题 "2. Print Your Student ID 🎓" | [[#2.2 【cell 7】打印学号 —— 变量与字符串格式化\|本格讲解]] | — |
+| **7** | **code** | `StudentID` + `%s` 格式化 | [[#2.2 【cell 7】打印学号 —— 变量与字符串格式化\|本格讲解]] | — |
+| 8 | md | 🤖 AI Prompt 2 | [[#源 Prompt 2 对照（cell 8）\|本格讲解]] | p.45 |
+| 9 | md | 小节标题 "3. Create a Simple Table 📊" + pandas 文档链接 | [[#2.3 【cell 10】建第一张表 —— DataFrame 的骨架\|本格讲解]] | — |
+| **10** | **code** | `pd.DataFrame(columns=…)` + `.loc[0]` | [[#2.3 【cell 10】建第一张表 —— DataFrame 的骨架\|本格讲解]] | — |
+| 11 | md | 🤖 AI Prompt 3 | [[#源 Prompt 3 对照（cell 11）\|本格讲解]] | p.45 |
+| 12 | md | 小节标题 "4. Create a Data-rich Table 👯‍♂️" | [[#2.4 【cell 13】建第二张表 —— 字典写法（真正常用的方式）\|本格讲解]] | — |
+| **13** | **code** | 字典 → DataFrame | [[#2.4 【cell 13】建第二张表 —— 字典写法（真正常用的方式）\|本格讲解]] | — |
+| 14 | md | 🤖 AI Prompt 4 | [[#源 Prompt 4 对照（cell 14）\|本格讲解]] | p.45 |
+| 15 | md | 小节标题 "5. Quick Statistics 🧮" | [[#2.5 【cell 16】一行出统计 —— describe()\|本格讲解]] | — |
+| **16** | **code** | `df.describe()` | [[#2.5 【cell 16】一行出统计 —— describe()\|本格讲解]] | p.30–31（Step 2） |
+| 17 | md | 🤖 AI Prompt 5 | [[#源 Prompt 5 对照（cell 17）\|本格讲解]] | p.45 |
+| 18 | md | 小节标题 "6. Data Categorization 🏆" | [[#2.6 【cell 19】自定义函数 + apply() —— 造一个新列\|本格讲解]] | — |
+| **19** | **code** | `def grade_category` + `.apply()` | [[#2.6 【cell 19】自定义函数 + apply() —— 造一个新列\|本格讲解]] | p.33（Feature） |
+| 20 | md | 🤖 AI Prompt 6 | [[#源 Prompt 6 对照（cell 20）\|本格讲解]] | p.45 |
+| 21 | md | 小节标题 "7. Numpy Matrix Operations 🕶️" | [[#2.7 【cell 22】numpy 矩阵运算\|本格讲解]] | — |
+| **22** | **code** | `to_numpy` / `.T` / `np.dot` / `np.sum` | [[#2.7 【cell 22】numpy 矩阵运算\|本格讲解]] | ⏭️ M02 p.34 |
+| 23 | md | 🤖 AI Prompt 7 | [[#源 Prompt 7 对照（cell 23）\|本格讲解]] | p.45 |
+| 24 | md | **作业题目**（4 题 100 分） | [[#2.9 【cell 24】把四题串起来：题面、假设与逐问参考\|本格讲解]] | p.10（提交规则） |
+| 25 | code | **空**（留给你写作业） | [[#2.8 【cell 25】空 cell\|本格讲解]] | — |
 
 **✅ 全部 25 个 cell 已覆盖。** 统计：markdown 17 个（7 个 AI Prompt + 8 个小节标题/说明 + 1 个作业 + 1 个大标题）· code 8 个（7 个有内容 + 1 个空）。
 
@@ -1530,7 +1522,7 @@ cell 4 保存的动态 `.now()` 输出为 `2025-01-11 20:31:51.526293`，新执�
 
 **④ 作业第 (3)(4) 题引用的列在第 (2) 题的表里不存在**
 
-见 §7.2 的坑 1 与坑 2。这是**题目本身的不一致**，不是你理解错。做的时候把假设写清楚即可。
+这是跨题所指输入表的歧义。先声明一表或两表的解释，再按 §7.2 说明假设；不据候选判断教师只接受某一种。
 
 **⑤ cell 13 里有一个多余的空行**
 
@@ -1609,50 +1601,48 @@ print(f'Slope is {slope:.4f}')          # :.4f = 保留 4 位小数
 
 以下是 2026-10-01 历史记录，保留当时范围与数值。本次全篇候选和四题补讲未由这份旧回执验收，不承接其 PASS 为当前教学完成；原记录中的“本轮／本次／保护”均指当时。
 
-<details><summary>展开历史原记录（非本次审查依据）</summary>
-
-
-本轮只验课堂。正式 §2 十一单元 Q1–Q6 实际答题最终66/66，补充 §6 四单元另记24/24；九核心主题 R1复述 / R2新输入执行 / R3原理 / R4失败诊断均各2。读者只拿冻结课堂文本与标准，自测折叠答案、原 notebook、作者结果、来源报告和个人评分均隔离。这是代理阅读检验，不冒称真人试读。
-
-| 核心主题 / 适用联合类型 | 正文 / 来源 | 实际新输入与结果、停止及失败证据 | R1 / R2 / R3 / R4 |
-|---|---|---|---|
-| kernel与执行状态：技术系统/代码 | §2.0；源课堂依赖，状态例为补充 | 专用真实kernel a11→15；编辑17未跑仍15；运行再算21；真正重启先算NameError、依赖重跑21。冷cell失败后pd/空表已经存在，不把代码块当事务回滚 | 2 / 2 / 2 / 2 |
-| 时间获取/固定构造：代码/边界 | §2.1 / §2.4；源cells4/13 | 新固定2024-02-29 06:07:08有效，2023-02-29报ValueError；实际两次now同值，已撤“必不同”。保存返回对象与新读时钟分开，未认证时区机制 | 2 / 2 / 2 / 2 |
-| 格式化：代码/流程 | §2.2；源cell7 | 新(k9,14,3.14159)按%s/%d/%.2f→k9\|14\|3.14；两类槽位数量错误实际TypeError。显示精度不改变原数据；停止于返回或错误 | 2 / 2 / 2 / 2 |
-| 行身份/重建：技术系统/代码 | §2.3；源cell10 + 补充 | 标签8建表整块重跑仍一行；单追加3再覆盖8仍两行。新8/3/12排序后按标签和位置不同；KeyError/IndexError/错长度实际核，报错不回滚先前语句 | 2 / 2 / 2 / 2 |
-| 字典构造/配对：代码/状态 | §2.4；源cell13 | 新id k9/x4/m2与44/96/63、3/1/2得3×3；不等长失败，等长单列重排却能静默错人。删列与删人不同；构造/身份核后停止 | 2 / 2 / 2 / 2 |
-| describe：公式/算法/代码/版本 | §2.5；源cell16 + 补充 | 新1/5/7/13/缺失：有效4、mean6.5、平方和75、样本std5、分位4/6/8.5；总体std4.330127。n0/n1、inf warning实际核；新总体2/8四种有序双抽样，样本方差平均9、std平均2.12132，不混方差/标准差无偏性。另真实object数字4/4/9和文字、专用string、float列：object不等全字符串，top4/freq2不是max9 | 2 / 2 / 2 / 2 |
-| 分档/守卫/赋列：算法/代码 | §2.6；源cell19与新增政策 | 新标签23/9、85/55→Good/Fail；反序Series仍按标签，去标签后等级对调，默认新索引赋值全NaN。缺失/错误类型/100.25/±inf/大整数逐个核；默认cut101可落Excellent，左闭101未覆盖，仍需范围守卫 | 2 / 2 / 2 / 2 |
-| 矩阵：公式/代码/身份 | §2.7；源cell22 | 新M=(3,2)/(−1,4)/(5,0)，对象Gram为13/5/15等完整3×3，特征Gram35/2/2/20，列和7/6、行和5/3/5；逐格乘与内维不齐失败分开。换列后对象Gram相同，不能用它代替列身份核。正规方程仅有条件概念预告 | 2 / 2 / 2 / 2 |
-| Prompt输出核验：技术系统/代码 | §6.1–6.3.1；源七Prompt + 补充 | 新72/95/61、2/3/1表，正确列和228/6、对象Gram首元5188；候选1错列、候选2错变量先静态拒执行，第三候选在受控namespace成功。3次上限到停止；没有调用外部AI或认证任意代码副作用 | 2 / 2 / 2 / 2 |
-
-**适用证据与不能扩大的范围**：算法/代码/公式取并集，核心输入输出、状态步骤、控制图、原理、完整复算、终止/边界、失效和迁移分别在相应 §2 / §6.3.1。时间/格式化是有限函数调用而非迭代训练；源无讲义独立算法公式就不伪造教授推导。环境安装、前端快捷键、Colab/手机和原教师口头处理未知；D项目不由“某系统未实测”伪标成已经操作过。
-
-**原 classroom 范围**：原25 cells=17 markdown/8 code，课堂一基1–23含16 markdown/7非空code；cell24个人评分、cell25空格另隔离。原七段代码AST与原source7/7一致，七Prompt全文7/7匹配。源metadata3.13.5不等本次kernel；本次实测D:解释器Python3.12.3 / pandas2.3.3 / NumPy1.26.4。源七段在专用真实kernel全部运行、0非预期失败；预期错误探针另列。原保存日期/输出和当前结果分开，`describe()`当前默认含time，旧版本生成条件未知不猜。
-
-**源 Prompt 逐项登记**（源答案由代码和本轮执行核，补充语义不冒官方评分答案）：
-
-| 源提示 | 源cell | 正文直接解答 | 状态 / 限制 |
-|---|---|---|---|
-| P1 import/now/x/print | 5，对应code4 | §2.1 导入模块、读实际时钟、存x、打印 | 完整；源保存时间不是新执行时间 |
-| P2 StudentID/%s/print | 8，对应code7 | §2.2 源演示字符串与格式化输出 | 完整；不认证示例账户真实归属 |
-| P3 空表/行0/display | 11，对应code10 | §2.3 三列、标签插入、依赖与输出 | 完整；冷/热状态须声明 |
-| P4 字典四行五列/display | 14，对应code13 | §2.4 全原值与固定datetime、同位置配对 | 完整；2025固定日期不能证没执行 |
-| P5 describe/stats/display | 17，对应code16 | §2.5 原数值表逐项推算、当前dtype版本差异 | 完整；源pandas版本未记录 |
-| P6 分档函数/apply/category | 20，对应code19 | §2.6 原四档、原结果与新增guard分开 | 完整；源无guard不伪称已校验 |
-| P7.1 两列转matrix/print | 23，对应code22 | §2.7 原4×2全值/列顺序 | 完整；转换丢身份须另存 |
-| P7.2 transpose/print | 同上 | §2.7 原2×4输出与属性用法 | 完整 |
-| P7.3 dot/result/print | 同上 | §2.7 原4×4完整点积，非对角8006等手算 | 完整；非相关系数或回归结果 |
-| P7.4 axis0/sum_matrix/print | 同上 | §2.7 345/7及两轴区别 | 完整；7个父Prompt，P7四编号，不虚增为10个父题 |
-
-**持久证据**：vault外 `cityu-depth-20260930/t01-blind-reader/` 的report.md原实际答题/9R，final-v7-closure.md绑定v8概念唤醒，final-v10-attribution.md、final-v12-dtype.md及final-v13-fields.md记录真实新增缺口与闭合。最终教学冻结SHA256 `3a470d6c7879cfd4eb8f87fc198a6672bde8dce8160784618b7eea2c63438d60`；v14只改隔离范围外的旧摘要标题。分轮继承，不伪称最终轮又重跑全部90问或九组kernel。源审t01-source-audit/final-source-v13.md与final-source-v14-closure.md独立读源/复算，不冒读者R；原先object注、旧Gram标题与共享describe断言均实修。
-
-主代理独立实现原/新算例复核：`verify-t01-current-v4.py`（原源/真实kernel）、`t01-independent-reader-recheck.py`、`t01-dtype-independent-check.py`。实际debugpy/pkg_resources警告保留；读者inf探针的RuntimeWarning也保留，不说零告警。10 Mermaid实际全部查看，图1字号/图2显式保存/图6类型条件修后复看；62行内公式解析0/单元溢出0并实际查看，IAB预览不冒称Obsidian UI。最新strict PASS：11leaf、§2中文7539字、按全文件8code口径942字/code；实际非空课堂code7另记，不虚增执行数。
-
-原§6.4 / §7字节一致保护，原notebook与其他142归档原材料0改/0丢；全库链接/README/私有完整性0问题。继续保 `v0.9 / transcript: pending`，不拿理解检验填补真实课堂录音。T04与其余课程另验，五课总任务未完成。
-
-
-</details>
+> [!note]- 展开历史原记录（非本次审查依据）
+>
+>
+> 本轮只验课堂。正式 §2 十一单元 Q1–Q6 实际答题最终66/66，补充 §6 四单元另记24/24；九核心主题 R1复述 / R2新输入执行 / R3原理 / R4失败诊断均各2。读者只拿冻结课堂文本与标准，自测折叠答案、原 notebook、作者结果、来源报告和个人评分均隔离。这是代理阅读检验，不冒称真人试读。
+>
+> | 核心主题 / 适用联合类型 | 正文 / 来源 | 实际新输入与结果、停止及失败证据 | R1 / R2 / R3 / R4 |
+> |---|---|---|---|
+> | kernel与执行状态：技术系统/代码 | §2.0；源课堂依赖，状态例为补充 | 专用真实kernel a11→15；编辑17未跑仍15；运行再算21；真正重启先算NameError、依赖重跑21。冷cell失败后pd/空表已经存在，不把代码块当事务回滚 | 2 / 2 / 2 / 2 |
+> | 时间获取/固定构造：代码/边界 | §2.1 / §2.4；源cells4/13 | 新固定2024-02-29 06:07:08有效，2023-02-29报ValueError；实际两次now同值，已撤“必不同”。保存返回对象与新读时钟分开，未认证时区机制 | 2 / 2 / 2 / 2 |
+> | 格式化：代码/流程 | §2.2；源cell7 | 新(k9,14,3.14159)按%s/%d/%.2f→k9\|14\|3.14；两类槽位数量错误实际TypeError。显示精度不改变原数据；停止于返回或错误 | 2 / 2 / 2 / 2 |
+> | 行身份/重建：技术系统/代码 | §2.3；源cell10 + 补充 | 标签8建表整块重跑仍一行；单追加3再覆盖8仍两行。新8/3/12排序后按标签和位置不同；KeyError/IndexError/错长度实际核，报错不回滚先前语句 | 2 / 2 / 2 / 2 |
+> | 字典构造/配对：代码/状态 | §2.4；源cell13 | 新id k9/x4/m2与44/96/63、3/1/2得3×3；不等长失败，等长单列重排却能静默错人。删列与删人不同；构造/身份核后停止 | 2 / 2 / 2 / 2 |
+> | describe：公式/算法/代码/版本 | §2.5；源cell16 + 补充 | 新1/5/7/13/缺失：有效4、mean6.5、平方和75、样本std5、分位4/6/8.5；总体std4.330127。n0/n1、inf warning实际核；新总体2/8四种有序双抽样，样本方差平均9、std平均2.12132，不混方差/标准差无偏性。另真实object数字4/4/9和文字、专用string、float列：object不等全字符串，top4/freq2不是max9 | 2 / 2 / 2 / 2 |
+> | 分档/守卫/赋列：算法/代码 | §2.6；源cell19与新增政策 | 新标签23/9、85/55→Good/Fail；反序Series仍按标签，去标签后等级对调，默认新索引赋值全NaN。缺失/错误类型/100.25/±inf/大整数逐个核；默认cut101可落Excellent，左闭101未覆盖，仍需范围守卫 | 2 / 2 / 2 / 2 |
+> | 矩阵：公式/代码/身份 | §2.7；源cell22 | 新M=(3,2)/(−1,4)/(5,0)，对象Gram为13/5/15等完整3×3，特征Gram35/2/2/20，列和7/6、行和5/3/5；逐格乘与内维不齐失败分开。换列后对象Gram相同，不能用它代替列身份核。正规方程仅有条件概念预告 | 2 / 2 / 2 / 2 |
+> | Prompt输出核验：技术系统/代码 | §6.1–6.3.1；源七Prompt + 补充 | 新72/95/61、2/3/1表，正确列和228/6、对象Gram首元5188；候选1错列、候选2错变量先静态拒执行，第三候选在受控namespace成功。3次上限到停止；没有调用外部AI或认证任意代码副作用 | 2 / 2 / 2 / 2 |
+>
+> **适用证据与不能扩大的范围**：算法/代码/公式取并集，核心输入输出、状态步骤、控制图、原理、完整复算、终止/边界、失效和迁移分别在相应 §2 / §6.3.1。时间/格式化是有限函数调用而非迭代训练；源无讲义独立算法公式就不伪造教授推导。环境安装、前端快捷键、Colab/手机和原教师口头处理未知；D项目不由“某系统未实测”伪标成已经操作过。
+>
+> **原 classroom 范围**：原25 cells=17 markdown/8 code，课堂一基1–23含16 markdown/7非空code；cell24个人评分、cell25空格另隔离。原七段代码AST与原source7/7一致，七Prompt全文7/7匹配。源metadata3.13.5不等本次kernel；本次实测D:解释器Python3.12.3 / pandas2.3.3 / NumPy1.26.4。源七段在专用真实kernel全部运行、0非预期失败；预期错误探针另列。原保存日期/输出和当前结果分开，`describe()`当前默认含time，旧版本生成条件未知不猜。
+>
+> **源 Prompt 逐项登记**（源答案由代码和本轮执行核，补充语义不冒官方评分答案）：
+>
+> | 源提示 | 源cell | 正文直接解答 | 状态 / 限制 |
+> |---|---|---|---|
+> | P1 import/now/x/print | 5，对应code4 | §2.1 导入模块、读实际时钟、存x、打印 | 完整；源保存时间不是新执行时间 |
+> | P2 StudentID/%s/print | 8，对应code7 | §2.2 源演示字符串与格式化输出 | 完整；不认证示例账户真实归属 |
+> | P3 空表/行0/display | 11，对应code10 | §2.3 三列、标签插入、依赖与输出 | 完整；冷/热状态须声明 |
+> | P4 字典四行五列/display | 14，对应code13 | §2.4 全原值与固定datetime、同位置配对 | 完整；2025固定日期不能证没执行 |
+> | P5 describe/stats/display | 17，对应code16 | §2.5 原数值表逐项推算、当前dtype版本差异 | 完整；源pandas版本未记录 |
+> | P6 分档函数/apply/category | 20，对应code19 | §2.6 原四档、原结果与新增guard分开 | 完整；源无guard不伪称已校验 |
+> | P7.1 两列转matrix/print | 23，对应code22 | §2.7 原4×2全值/列顺序 | 完整；转换丢身份须另存 |
+> | P7.2 transpose/print | 同上 | §2.7 原2×4输出与属性用法 | 完整 |
+> | P7.3 dot/result/print | 同上 | §2.7 原4×4完整点积，非对角8006等手算 | 完整；非相关系数或回归结果 |
+> | P7.4 axis0/sum_matrix/print | 同上 | §2.7 345/7及两轴区别 | 完整；7个父Prompt，P7四编号，不虚增为10个父题 |
+>
+> **持久证据**：vault外 `cityu-depth-20260930/t01-blind-reader/` 的report.md原实际答题/9R，final-v7-closure.md绑定v8概念唤醒，final-v10-attribution.md、final-v12-dtype.md及final-v13-fields.md记录真实新增缺口与闭合。最终教学冻结SHA256 `3a470d6c7879cfd4eb8f87fc198a6672bde8dce8160784618b7eea2c63438d60`；v14只改隔离范围外的旧摘要标题。分轮继承，不伪称最终轮又重跑全部90问或九组kernel。源审t01-source-audit/final-source-v13.md与final-source-v14-closure.md独立读源/复算，不冒读者R；原先object注、旧Gram标题与共享describe断言均实修。
+>
+> 主代理独立实现原/新算例复核：`verify-t01-current-v4.py`（原源/真实kernel）、`t01-independent-reader-recheck.py`、`t01-dtype-independent-check.py`。实际debugpy/pkg_resources警告保留；读者inf探针的RuntimeWarning也保留，不说零告警。10 Mermaid实际全部查看，图1字号/图2显式保存/图6类型条件修后复看；62行内公式解析0/单元溢出0并实际查看，IAB预览不冒称Obsidian UI。最新strict PASS：11leaf、§2中文7539字、按全文件8code口径942字/code；实际非空课堂code7另记，不虚增执行数。
+>
+> 原§6.4 / §7字节一致保护，原notebook与其他142归档原材料0改/0丢；全库链接/README/私有完整性0问题。继续保 `v0.9 / transcript: pending`，不拿理解检验填补真实课堂录音。T04与其余课程另验，五课总任务未完成。
+>
 
 ### 9.7 本次重审的材料边界（2026-10-27）
 

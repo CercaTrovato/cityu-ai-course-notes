@@ -1,7 +1,7 @@
 ---
 type: 复习资料索引
 course: AC6761
-updated: 2026-10-26
+updated: 2026-11-04
 ---
 
 # AC6761 复习资料
@@ -14,4 +14,4 @@ updated: 2026-10-26
 - [[AC6761_Artificial_Intelligence_Accounting/review/6761M02.docx|6761M02.docx]]：M02 账户、总账与借贷规则复习草稿，保留原稿。
 - [[AC6761_Artificial_Intelligence_Accounting/review/会计交易十题练习.xlsx|会计交易十题练习.xlsx]]：十题交易练习，含本人填写及答案解析；三个工作表和公式原样保留。
 
-2026-10-26 从桌面归档，四份文件均按原始字节迁移；对应记录见 [[_meta/review-materials-20261026/归档记录|归档记录]]。
+2026-10-26 从桌面归档，本课程三份文件均按原始字节迁移；对应记录见 [[_meta/review-materials-20261026/归档记录|归档记录]]。

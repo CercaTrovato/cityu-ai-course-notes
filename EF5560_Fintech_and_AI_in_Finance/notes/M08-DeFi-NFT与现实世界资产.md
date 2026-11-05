@@ -12,7 +12,7 @@ prerequisites: [M06, M07]
 new_concepts: [DeFi, TVL, Tokenization, Redemption, Delivery versus payment, LTV, Health factor, Reserve factor, Cross-chain bridge]
 tags: [EF5560, DeFi, NFT, RWA, Sky, Aave]
 status: v1.0
-updated: 2026-10-31
+updated: 2026-11-04
 readability_rules: v2
 teaching_standard: novice-v1
 ---
@@ -57,13 +57,696 @@ teaching_standard: novice-v1
 
 DeFi 和总锁仓价值在 §2.1–2.2；NFT 的权利分层在 §2.3；资产代币化、托管、赎回和券款对付在 §2.4–2.8；协议储蓄收益、抵押率、治理投票在 §2.9–2.10；贷款损失、LTV、健康因子、清算奖励、资金利用率和跨链桥在 §2.11–2.14。
 
-### 1.3 为什么这样重排
+### 1.3 怎样预习、跟读和复习
 
-M07 解释了怎样转币、执行合约和报价。本讲进一步追问：这些程序究竟替谁做金融服务，持币人得到什么。
-
-正文先用换币区分资产流与统计量，再解释 NFT／RWA 的权利，最后追踪借贷和收益。讲义 p.26 的 TVL 题移到 §2.2；p.25 的基金交易接 p.23；香港债券相关页合并讲解。顺序变了，但独有条件、数字与原题仍逐项保留，§8 提供双向页码索引。
+- 预习。先从 p.03–06 区分换币动作与资产统计，接着用 p.10、16、23 比较票、债券、基金份额各自给持有人什么权利。
+- 课中。用 §8.1 跳当前物理页，沿原图箭头追踪资金和记录。现有 S24／S25 各用独立时钟；p.47–54 依课堂结尾明确顺延，课件解释仍可自学。
+- 课后。遮住 p.25、30、39、41、46–48 的结果后复算，再用 p.20、26、27、31、44、49、53 检查能否解释托管、流动性、赔付责任和跨链支持。
 
 ## 2. 正文
+
+### Lec08 p.01 封面
+
+DeFi、NFT 与现实世界资产。
+
+### Lec08 p.02 分隔 · DeFi
+
+进入代币交换、共享流动性与链上治理。
+
+### Lec08 p.03 一次 DeFi 换币怎样完成
+
+本图从 USDC 换入 ETH。USDC 是追踪美元价值的代币，ETH 是以太坊网络的原生资产。执行交易所需的网络费与池可能收取的交易费要分开查看。
+
+四格为连接钱包、看报价、签交易、合约换币；签名授权调用，结果取决于执行价格和合约，网络费与池费另辨。
+
+![Lec08 p.03 一次 DeFi 换币怎样完成 课件原图](figures/m08/lec08-p03.png)
+
+[打开原图](figures/m08/lec08-p03.png)
+
+按左上、右上、左下、右下的编号读。连接钱包让应用看到可用账户；第二格给报价，第三格由用户签署实际指令，第四格 USDC 进池、ETH 出池。签名后仍要满足余额、花费授权与执行条件，网络费用也单计。
+
+深读见 [[#2.1 从钱包换币开始理解 DeFi（讲义 p.2–5）|§2.1]]。
+
+### Lec08 p.04 已有链上资产的人为何用 DeFi
+
+链上钱包可直接换币、以现有币抵押借款、在兼容应用用同一资产。手续费、流动性与风险决定是否划算。
+
+深读见 [[#2.1 从钱包换币开始理解 DeFi（讲义 p.2–5）|§2.1]]。
+
+### Lec08 p.05 顺着 USDC 换 ETH 的一步步
+
+先查报价与费用，签指令后合约查授权和交易条件。成功后 USDC 进池，ETH 到用户，账本更新双方余额。
+
+深读见 [[#2.1 从钱包换币开始理解 DeFi（讲义 p.2–5）|§2.1]]。
+
+### Lec08 p.06 TVL 的走势和口径
+
+曲线读 2021 峰、随后下跌及 2026-07-29 的日期。TVL 是特定时点的资产估值，币价和计入范围会改变它，不能当利润。
+
+![Lec08 p.06 TVL 的走势和口径 课件原图](figures/m08/lec08-p06.png)
+
+[打开原图](figures/m08/lec08-p06.png)
+
+横轴从 2020 到 2026，纵轴为十亿美元。读标出的 2021 年 11 月峰值约 177.5 和 2026-07-29 约 75.4，只用两处标注的四舍五入数算，末点约比峰值低 57.5%。完整走势来自课件原图，附件没有全序列；不能由这条线分出多少是净赎回。
+
+深读见 [[#2.2 TVL：合约里的资产不等于新投入的钱（讲义 p.6–8、26）|§2.2]]。
+
+### Lec08 p.07 共享流动性、公开记录、可编程
+
+第一栏供应者投入 ETH 和 USDC，交易者共享池。中栏用浏览器查转账记录，右栏按合约的抵押规则借款。
+
+![Lec08 p.07 共享流动性、公开记录、可编程 课件原图](figures/m08/lec08-p07.png)
+
+[打开原图](figures/m08/lec08-p07.png)
+
+左边看供应者把 ETH／USDC 放入同一池，下面交易者可使用共有库存。中栏区分可见的链上动作和界面显示，右栏再看贷款条件由合约检查。链外凭证和受限地址仍须另核。
+
+深读见 [[#2.2 TVL：合约里的资产不等于新投入的钱（讲义 p.6–8、26）|§2.2]]。
+
+### Lec08 p.08 安全、清算与治理
+
+先核合约权限、拥堵费用及恢复，再核价格数据、可出售抵押物的市场与收益补贴，最后查谁投票、谁能紧急更改规则。
+
+深读见 [[#2.2 TVL：合约里的资产不等于新投入的钱（讲义 p.6–8、26）|§2.2]]。
+
+### Lec08 p.09 分隔 · NFT
+
+从可互换代币转到有身份区别的凭证。
+
+### Lec08 p.10 NFT 票的两个编号
+
+票 101 的座位 A1、票 102 的座位 B4；左栏区分标识，右栏由 Mei 转给 Sam。座位及入场仍依赖发行方条款。
+
+![Lec08 p.10 NFT 票的两个编号 课件原图](figures/m08/lec08-p10.png)
+
+[打开原图](figures/m08/lec08-p10.png)
+
+原图先显示两个座位和不同编号，再看 101 的持有人从 Mei 更新为 Sam。最后 Sam 能否入场仍由发行人查当前持有人和票券条款。转让不自动带来该场音乐作品版权。
+
+图注按讲义，属示意票券设计；入场与转让遵循发行人条款。
+
+深读见 [[#2.3 NFT：唯一编号、媒体内容和持有人权利分开（讲义 p.9–14）|§2.3]]。
+
+### Lec08 p.11 五种应用的经济来源
+
+藏品靠作者及市场，游戏靠继续可玩，票务靠发行人认票，资格靠可信签发及撤销，质押贷款靠估值、托管和清算。
+
+深读见 [[#2.3 NFT：唯一编号、媒体内容和持有人权利分开（讲义 p.9–14）|§2.3]]。
+
+### Lec08 p.12 代币、元数据、权利三层
+
+持有人与转移历史是链上记录，图片或凭证内容依赖链接和存储；版权、入场和赎回条款由合同或平台决定，故障可以只出在其中一层。
+
+深读见 [[#2.3 NFT：唯一编号、媒体内容和持有人权利分开（讲义 p.9–14）|§2.3]]。
+
+### Lec08 p.13 NFT 的出售、转移与履约
+
+有报价还需买家，可转移还需密钥、权限和可用存储；请求服务或取得版权要确认发行者和条款能否执行。
+
+出售前先查实际成交、买盘和持有集中度。访问风险还包括钓鱼和被盗密钥，市场平台停摆或媒体链接失效也会影响使用。
+
+深读见 [[#2.3 NFT：唯一编号、媒体内容和持有人权利分开（讲义 p.9–14）|§2.3]]。
+
+### Lec08 p.14 NFT 周期与应用
+
+2021 收藏品扩张，2022–23 回调，2024–26 课件列会员、票务、游戏、身份及资产请求权。价值看具体权益与发行方履约。
+
+深读见 [[#2.3 NFT：唯一编号、媒体内容和持有人权利分开（讲义 p.9–14）|§2.3]]。
+
+### Lec08 p.15 分隔 · 现实世界资产
+
+进入资产的法律请求权、托管、结算与退出。
+
+### Lec08 p.16 现实资产如何连到链
+
+四格从债券条款、保管、链上记录到现金流；链上余额和真实付款分别追溯。
+
+![Lec08 p.16 现实资产如何连到链 课件原图](figures/m08/lec08-p16.png)
+
+[打开原图](figures/m08/lec08-p16.png)
+
+从第一格的票息、到期和债权人开始。第二格保管或管理文件，第三格的链上记录指认持有人。第四格依合同付息及到期清偿。记录层能协调付款，不能替代债务人履约。
+
+图注为示意托管结构，课件引用 BIS Bulletin 72（2023）。
+
+深读见 [[#2.4 RWA 先识别债权，再看记录技术（讲义 p.15–17）|§2.4]]。
+
+### Lec08 p.17 同一债券在代币化前后
+
+1,000 美元一年 5% 息票，承诺利息 50，到期还本金 1,000。代币化改善记录和交割指令，欠款人和执行条件仍按合同。
+
+给定 1,000 美元本金和 5% 息票，全年利息为 50 美元。交易载体换成代币后，这个合同例仍是同一笔本金和承诺现金流；若发行人违约，代币不会代为补款。
+
+深读见 [[#2.4 RWA 先识别债权，再看记录技术（讲义 p.15–17）|§2.4]]。
+
+### Lec08 p.18 PAXG 怎样让小额持有黄金
+
+按课件每枚代表一金衡盎司已分配黄金，可持小数份。金条仍在金库，实物兑换另有资格和流程。
+
+深读见 [[#2.5 代币化黄金与仓库题：链上历史不能盘点金库（讲义 p.18–22）|§2.5]]。
+
+### Lec08 p.19 PAXG 的链和金库
+
+顺读发行、金库、链上记录及钱包；核谁保管实物、产品条款能否兑换以及赎回渠道。
+
+![Lec08 p.19 PAXG 的链和金库 课件原图](figures/m08/lec08-p19.png)
+
+[打开原图](figures/m08/lec08-p19.png)
+
+从 Paxos 发行到伦敦金库，再到链上余额与钱包访问。图的箭头是角色衔接，并不表示每次转币时真的搬金条。实物提取另查资格、最小规模和交付手续。
+
+课件记载合资格链上钱包可查黄金分配，Paxos 按月公布鉴证报告。查询和鉴证帮助核对持有安排，实物交付仍有单独条件。
+
+深读见 [[#2.5 代币化黄金与仓库题：链上历史不能盘点金库（讲义 p.18–22）|§2.5]]。
+
+### Lec08 p.20 仓储代币选择题
+
+C。先看可执行的仓单、仓储和赎回条款；记录持有人不能替代实际提货条件，保留四个原选项。
+
+#### p.20 · 仓库题原文与作答
+
+中文入口：有一枚记录不可随意改写的仓库代币，但没人独立检查同一批货有没有被重复抵押；这能保证所有权吗？
+
+> **Multiple-Choice Question: Can a Token Verify the Warehouse?**
+>
+> An immutable token represents warehouse inventory, but no independent audit prevents the same goods from being pledged twice. Which statement is best?
+>
+> A) Tokenization removes custody risk.
+>
+> B) The blockchain verifies physical inventory automatically.
+>
+> C) Off-chain verification and legal-claim risk remain.
+>
+> D) Token uniqueness guarantees ownership title.
+>
+> **Discuss**
+>
+> Separate the token’s on-chain history from custody and enforceable rights over the physical asset.
+>
+> （讲义 p.20）
+
+⚪ 参考作答（笔记推断）：选 C。immutable 指记录难以被事后修改，不表示当初输入的链外事实一定真实。pledged twice 指同一批货被拿去向不同债权人重复担保，不能靠代币编号独一无二排除。
+
+- A 错：保管人能否妥善保存和交付货物仍有风险。
+- B 错：账本不会自动走进仓库检查数量、真伪和是否重复担保。
+- C 对：要独立核链外事实，并确认你能依法向谁主张什么权利。
+- D 错：唯一的链上编号不能单独证明现实法律承认的所有权（Ownership title）。
+
+Discuss 的答案也要完整：分别核代币历史、货物保管与盘点、担保登记／权利顺位、违约时的执行渠道。即使代币历史正确，货物不足或第三方有优先权，持有人仍可能拿不到预期资产。
+
+权利顺位（Priority of claims）是同一资产处置后，谁先获得偿付的顺序。💡 笔记补充：货物卖得 100 元，若另一债权人依法可先拿走这 100 元，排在其后的人即使手持有效代币，也不一定能从这笔处置款收到钱。仓库有货与自己具有可执行、足额的权利仍需分别核对。
+
+英文参考答案（笔记自拟）：**C. The blockchain records the token’s history, but does not independently verify the goods or prevent double pledging. Custody checks and enforceable legal rights remain necessary. A unique token does not by itself establish title to the physical inventory. Check token history, verify the custodian and inventory independently, and determine whether the claim is enforceable and what priority it has.**
+
+💡 改条件练习：增加一次可靠盘点可以改善“货物是否存在”的证据，但若不核重复担保及权利顺位，不能据此断言代币持有人拥有唯一、优先的请求权。
+
+深读见 [[#2.5.1 仓库原题：编号唯一仍需链外核验（讲义 p.20）|§2.5.1]]。
+
+### Lec08 p.21 代币黄金的费用与退出
+
+按课件查验日，Paxos 有创建与赎回费，未收客户黄金保管费。小额转移便利，实物交付是另项服务；比较总成本与真实可成交性。
+
+费用按课件所列 2026-10-13 核验口径读。将创建、赎回、实体交付和二级市场成交的费用分开，是否比黄金 ETF 或金商便宜取决于各自条款与报价。
+
+深读见 [[#2.5.2 费表和实收费用要分开（讲义 p.21）|§2.5.2]]。
+
+### Lec08 p.22 三种连接真实资产的权利
+
+一是直接所有权须与法定登记一致，二是由公司或信托持有资产而投资者向该主体主张，三是价格挂钩合约只承诺按价格结算。
+
+如果代币只是金价联动合同，手上有的是向交易对手索取约定现金的权利；直接黄金所有权则需登记、托管和转移一致。遇到公司或信托结构时，还需追该主体持有什么以及投资者排在何种顺位。
+
+讲义 p.22 原情境与问题
+
+> Direct ownership. The official register or recognised custodian records ownership of the asset. Token transfers must agree with that record. Custody and transfer restrictions still matter.
+>
+> A company or trust owns the asset. The investor holds a claim on that entity. Legal documents determine cash flows and asset protection. Governance, valuation, and servicing affect the claim.
+>
+> A price-linked contract. A counterparty promises a payoff linked to the asset’s price. No ownership of the reference asset transfers. Payment depends on the contract, collateral, and counterparty.
+>
+> For each structure, identify the investor’s claim and who must honour it.
+
+**参考作答（笔记推断）**。直接所有权结构下，持有人主张标的所有权，由适用登记制度确认，受认可的托管人按托管与转移规则执行。公司或信托持有资产时，持有人向该主体按法律文件主张分配或赎回。价格挂钩合同下，交易对手按合同与抵押安排支付约定金额。
+
+**English reference answer (study notes).** With direct ownership, the investor claims title to the asset, recognised through the official register or recognised custodian. For an entity-held asset, the investor has a claim against the company or trust under its legal documents. In a price-linked contract, the counterparty owes the agreed payoff.
+
+深读见 [[#2.5.3 三种资产关联结构（讲义 p.22）|§2.5.3]]。
+
+### Lec08 p.23 ChinaAMC 的双向资金流
+
+左到右是投资者认购、基金投资短存款和货币工具；右到左是资产收益、扣费后归持有人，可累积在净值中。
+
+![Lec08 p.23 ChinaAMC 的双向资金流 课件原图](figures/m08/lec08-p23.png)
+
+[打开原图](figures/m08/lec08-p23.png)
+
+上方箭头是投资者的认购资金进基金，再投向短存款及货币工具。下方箭头是底层资产收入，经费用后归基金持有人，可反映在净值中。链上记录登记份额，不将短期存款直接转给个人。
+
+深读见 [[#2.6 货币市场基金：份额回报来自资产，交易价来自买方（讲义 p.23、25）|§2.6]]。
+
+### Lec08 p.24 发行人与投资者为何用 Orion
+
+传统债券多处记录须核对，平台可协调数字发行与结算；还息还本由政府或公司发行人承担。
+
+投资者要确认券何时到账、付款是否同一步完成，以及谁在之后付息。发行人也要分发债券并登记所有权；若原流程有多个记录维护方，平台可协助协调交割和核对差异。
+
+深读见 [[#2.7 香港数字绿色债券：平台、债务人与绿色用途（讲义 p.24、28–30、34）|§2.7]]。
+
+### Lec08 p.25 Class F 的市场与净值
+
+区分课件的二级交易安排与按净值认购赎回的一级渠道，市场成交价可偏离净值。
+
+![Lec08 p.25 Class F 的市场与净值 课件原图](figures/m08/lec08-p25.png)
+
+[打开原图](figures/m08/lec08-p25.png)
+
+净值（net asset value，NAV）在这里指基金每份的净资产价值。左栏由投资者经分销商向基金赎回，按适用净值和处理时段。右栏买卖双方通过 PantherTrade 按当时可成交的报价交易。
+
+例题每份参考净值为 100 港元，周末买方出价每份 99.80 港元。卖 1,000 份收入 99,800 港元，比参考价值少 200 港元（扣费前）。每份差 0.20 港元，除以 100 港元得折价 0.20%，即 20 个基点（bp）。份额持续可交易与基金可按 NAV 实时赎回是两个安排。
+
+深读见 [[#2.6 货币市场基金：份额回报来自资产，交易价来自买方（讲义 p.23、25）|§2.6]]。
+
+### Lec08 p.26 TVL 与外来本金选择题
+
+A。A 锁 100 美元，B 存从 A 借出的 60，两个协议报告合计 TVL 160，原外来资本仍是 100。
+
+下面这道原题更直接揭示重复计入。中文入口：同一位用户最初只带来 100 美元，但把抵押借出的币又存进另一个协议；两处 TVL 该怎样加？
+
+> **Multiple-Choice Question: TVL and New Capital**
+>
+> A user locks \$100 of collateral in Protocol A and borrows \$60 of newly issued stablecoins against it. The user deposits those coins in Protocol B. Both the collateral in A and the deposit in B count as TVL. What are the combined reported TVL and the user’s original outside capital?
+>
+> A) TVL of \$160 and original outside capital of \$100.
+>
+> B) TVL of \$160 and original outside capital of \$160.
+>
+> C) TVL of \$100 and original outside capital of \$160.
+>
+> D) TVL of \$60 and original outside capital of \$100.
+>
+> （讲义 p.26；原题无额外小问。）
+
+⚪ 参考作答（笔记推断）：选 A。outside capital 指用户最初从这套借贷循环外带来的资本，不是每个合约分别显示的金额。
+
+这一表每行代表一个观察对象，金额单位都是美元；“负债”列保留用户借币的义务，不能只数资产。
+
+| 对象 | 题设计入 TVL | 用户新增借债 |
+|---|---:|---:|
+| 协议 A 的抵押物 | 100 | 60 |
+| 协议 B 的存入代币 | 60 | 0 |
+| 合并报告值／借债 | 160 | 60 |
+
+所以两个协议报告的 TVL 是 $100+60=160$ 美元。用户原始外部资本仍为 100 美元；借来的 60 美元在形成存款资产的同时，也形成负债。
+
+- A 两个量都正确。
+- B 把借款形成的资产也当作新增外部资本。
+- C 把两个量倒置，漏掉 B 中题设明确计入的 60 美元。
+- D 只算 B 的存款，漏掉 A 的抵押物。
+
+英文参考答案（笔记自拟）：**A. Combined reported TVL is \$160, while the user’s original outside capital is \$100. The borrowed \$60 creates both an additional deposit and a debt; it is not new outside capital.**
+
+💡 改条件练习：若 B 不把这笔存款计入 TVL，合并报告值会变成 100 美元；若仍计入但借款改为 40 美元，则合并值为 140 美元。先按口径逐项计入，再讨论经济含义，不能固定背 160。
+
+深读见 [[#2.2 TVL：合约里的资产不等于新投入的钱（讲义 p.6–8、26）|§2.2]]。
+
+### Lec08 p.27 退出流动性选择题
+
+若平台技术上允许随时转移，但找不到愿按接近报价出钱的买家，哪个选项能直接改善退出？
+
+> **Multiple-Choice Question: Transferability and Market Liquidity**
+>
+> A platform allows transfers of tokenized private assets at any time, but investors cannot find buyers near the quoted price. Which change most directly addresses the exit-liquidity problem?
+>
+> A) Divide each token into more units while leaving demand unchanged.
+>
+> B) Record the same ownership information on an additional blockchain.
+>
+> C) Attract funded buyers and market makers willing to quote executable prices.
+>
+> D) Replace the trading interface without changing the available counterparties.
+>
+> （讲义 p.27）
+
+⚪ 参考作答（笔记推断）：选 C。most directly 要你找直接补上“谁肯出钱买”的措施。可执行价格（Executable price）指对手方确实愿意按相应条件成交的价格。做市商（Market maker）会提供买卖报价并承担一定存货风险，不只是展示参考数字。
+
+- A：切成更多单位可能降低单笔门槛，但题目明确需求不变，不能据此补上买方资金。
+- B：多记一份所有权并不自动增加愿意成交的对手方。
+- C：有资金的买方和愿意承担成交的报价，直接改善退出条件。
+- D：换界面可能更方便，但题设保留相同对手方，未直接解决没人接盘。
+
+英文参考答案（笔记自拟）：**C. Funded buyers and market makers quoting executable prices directly address exit liquidity. Divisibility, another ledger, or a new interface does not by itself create demand near the quoted price.**
+
+💡 迁移：如果新增做市商只愿意买 1 份，而你要卖 10,000 份，仍须检查报价深度。不能把“有一个买价”扩大为“任意数量都能按此价退出”。
+
+深读见 [[#2.8 可转让、可成交与合法请求权（讲义 p.27、31–33）|§2.8]]。
+
+### Lec08 p.28 香港数字绿色债券的发行
+
+从图读 2023／2024／2025 年三期 0.8／6／10 十亿港元（按课件口径）；规模不是平台营收。
+
+![Lec08 p.28 香港数字绿色债券的发行 课件原图](figures/m08/lec08-p28.png)
+
+[打开原图](figures/m08/lec08-p28.png)
+
+纵轴为十亿港元等值。比较 2023 到 2025 三柱时看单位，同一发行包含多币种；柱高是政府筹资规模，平台收费及实际二级交易深度须看其他证据。
+
+深读见 [[#2.7 香港数字绿色债券：平台、债务人与绿色用途（讲义 p.24、28–30、34）|§2.7]]。
+
+### Lec08 p.29 HSBC Orion 与券款对付
+
+交割与付款相连；2025 债券 HKD、RMB 部分另有 e-HKD、e-CNY 选项。2023 GS DAP 的 T+1 是另一次试点。
+
+券款对付（delivery versus payment，DvP）要求交券与付款互为条件。例如买方付款条件未满足，卖方的债券就不应完成交付。这个安排减少交券却收不到钱的风险；发行人之后是否按期付息和还本仍是另一项风险。
+
+2025 年课件所述 e-HKD 与 e-CNY 是相应港元、人民币部分与传统安排并存的可选结算资产，与债券面值、息票和债务人分开。
+
+深读见 [[#2.7 香港数字绿色债券：平台、债务人与绿色用途（讲义 p.24、28–30、34）|§2.7]]。
+
+### Lec08 p.30 政府债利息与本金
+
+用 2023 年条款示例 100 万港元 × 4.05%=40,500，全年清偿合计 1,040,500。绿色指资金用途，政府承担偿付。
+
+先将 4.05% 写成 0.0405，乘面值 1,000,000 港元得一年息 40,500。到期同时收回面值，合计 1,040,500。课件使用 2023 年条款作演示，前提为全部如期支付。
+
+深读见 [[#2.7 香港数字绿色债券：平台、债务人与绿色用途（讲义 p.24、28–30、34）|§2.7]]。
+
+### Lec08 p.31 代币化绿债短答
+
+先给一项潜在节省并说怎样用时间、差错或成本比较；再答利息、本金由政府承担，债权不等于持有绿色项目。
+
+**数字绿色债券短答题**把同一判断用于业务效果。中文入口：金融条款不变，技术究竟省了哪一步；谁仍负责付钱？
+
+> **Short-Answer Question: Evaluating a Tokenized Green Bond**
+>
+> Consider a tokenized HKSAR government green bond with the same coupon and maturity as a conventional bond. The platform links delivery to payment and shares transaction records.
+>
+> 1. Explain one potential saving in settlement or reconciliation. How could a bank measure the saving?
+> 2. Who owes the interest and principal? Explain whether bondholders own the green projects financed by the bond.
+>
+> （讲义 p.31）
+
+⚪ 参考作答（笔记推断）：
+
+1. 可选的一个节省是减少对账人工：共同使用可核的交易记录，可能减少多机构手工比对与异常追查。银行可比较相近规模、复杂度和业务量下，每笔结算所用工时及需人工处理的差异笔数。
+
+   也可测交付时间或结算失败率，但必须说明控制哪些差异。不能只比较新旧两笔金额不同的交易，就断言技术造成全部节省。题目问 one potential saving，给一个讲透即可，不把指标冒充已观察成果。
+2. 香港特区政府按债券约定承担本息。债券持有人持有政府债权；“绿色”规定资金用途，不使持有人直接拥有相应绿色项目。平台连接交券付款，并不转移政府的偿付义务。
+
+英文参考答案（笔记自拟）：
+
+1. **Shared transaction records may reduce manual reconciliation. A bank could compare staff time and exception counts per comparable transaction before and after adoption, while controlling for transaction scale and complexity. These are potential savings, not measured results supplied by the question.**
+2. **The HKSAR Government owes the coupon and principal under the bond terms. Bondholders hold government debt, not ownership of the green projects financed with the proceeds.**
+
+💡 改条件练习：若银行必须同时维护旧系统，短期总成本可能上升。正确评估应把新增系统维护与减少的处理工作都计入，而不是把“少了一个手工步骤”直接等同净节省。
+
+深读见 [[#2.8 可转让、可成交与合法请求权（讲义 p.27、31–33）|§2.8]]。
+
+### Lec08 p.32 从沙盒到真实价值试点
+
+2024 年 8 月 Ensemble Sandbox 与 2025 年 11 月 EnsembleTX 按课件历史节点区分；真实价值试点仍需法律权利、参与许可、结算和故障恢复。
+
+沙盒用来测试代币化存款和数字资产怎样连接。后续受控的 EnsembleTX 试点用代币化港元存款和数字资产进行真实价值交易，仍须看许可、付款最终性与异常处理。
+
+深读见 [[#2.8 可转让、可成交与合法请求权（讲义 p.27、31–33）|§2.8]]。
+
+### Lec08 p.33 境内资产与境外代币案例
+
+按课件 2026 年 2 月历史引用，境内租金应收的假设例要核申报主体、权利、资产及适用授权。后续适用性单独判断。
+
+此处按讲义历史个案读。具体条款与既有官方附件查验日期见 §2.8，备案义务与足额担保、收益保障或准入资格是不同问题。
+
+深读见 [[#2.8 可转让、可成交与合法请求权（讲义 p.27、31–33）|§2.8]]。
+
+### Lec08 p.34 Orion 试点授权及商业化
+
+课件 2026 年 2 月 DIGIT 平台授权不是完成发行。发行规模、平台收费、二级流动性是不同指标。
+
+委任平台做试点只说明获得该项目角色。要知道是否已经完成发行，需另有发行记录；要估平台收入，还需知道服务收费和实际使用规模。
+
+采用还取决于参与者能否接入、结算系统是否兼容、是否真能减少运营成本。若希望二级市场流动，还要有愿按可成交价格买入的人。
+
+深读见 [[#2.7 香港数字绿色债券：平台、债务人与绿色用途（讲义 p.24、28–30、34）|§2.7]]。
+
+### Lec08 p.35 分隔 · Sky 和 Aave
+
+进入储蓄收益、池化借款和清算。
+
+### Lec08 p.36 Sky 的两种入口
+
+USDS 用于交易转移，sUSDS 对应浮动储蓄；贷款与获批策略创造协议收入，治理定利率、代理与限额。
+
+钱包与交易所可作为接入服务。提款时要看可用流动性和运行记录；策略对手方出问题可能同时影响收益和赎回。
+
+深读见 [[#2.9 Sky：储蓄回报需要收入和分配规则（讲义 p.35–39）|§2.9]]。
+
+### Lec08 p.37 Sky 产品栈原图
+
+用户投入 USDS 取得 sUSDS 储蓄凭证。协议经代理配置资本，链上与链外策略收益经治理决定的储蓄率回流。原图回流线压住文字，解释箭头方向。
+
+![Lec08 p.37 Sky 产品栈原图 课件原图](figures/m08/lec08-p37.png)
+
+[打开原图](figures/m08/lec08-p37.png)
+
+先看用户从交易用 USDS 获得 sUSDS 储蓄请求权。再看协议如何通过代理把资金分给获批策略。被配置的是协议资本，sUSDS 记录储蓄者的请求权。下方回流箭头表示策略收入经协议与治理决定的储蓄率回到储蓄端；源图连线盖住部分字，实际分配仍按治理条款。
+
+深读见 [[#2.9 Sky：储蓄回报需要收入和分配规则（讲义 p.35–39）|§2.9]]。
+
+### Lec08 p.38 Sky 的收益、损失与决策
+
+检查贷款与策略收入、补贴、抵押和赎回；确定谁选代理、设限、负责在手抵押和损失传递。
+
+若策略亏损，协议收入或支持资产可能减少，兑换能力也可能受影响。USDS 和 sUSDS 具体由谁先承担损失，要按产品规则核对。
+
+深读见 [[#2.9 Sky：储蓄回报需要收入和分配规则（讲义 p.35–39）|§2.9]]。
+
+### Lec08 p.39 储蓄收益率算例
+
+6+4−2=800 万美元可分配，除以 2 亿得 4%；付 5% 要 1,000 万，多出的 200 万须另有来源。
+
+把百万美元作共同单位，6 加 4 减 2 得 8，再用 8 除以全年固定储蓄余额 200 得 4%。若按 5% 付，需要 10，额外 2 必须有资金来源。
+
+深读见 [[#2.9 Sky：储蓄回报需要收入和分配规则（讲义 p.35–39）|§2.9]]。
+
+### Lec08 p.40 旧 Maker 抵押仓的清算分支
+
+左向右锁定抵押、铸出 DAI、用户收到；跌破门槛则由向下支路进入清算。依赖价格、预言机和市场。
+
+![Lec08 p.40 旧 Maker 抵押仓的清算分支 课件原图](figures/m08/lec08-p40.png)
+
+[打开原图](figures/m08/lec08-p40.png)
+
+横向三格是锁抵押、金库铸币和用户收 DAI。向下的分支是在抵押比跌破门槛后，清算者出售抵押。若价格输入、预言机或清算市场有问题，抵押安排仍可能无法足额回收。
+
+若加入现实世界资产作抵押，流程还须追踪链外托管人和可执行的权利。实际清算时要确认谁有权出售、怎样取得抵押资产，而不只看链上登记。
+
+深读见 [[#2.10 Maker 旧机制与 DAO 投票：足额和决策权都要量化（讲义 p.40–42）|§2.10]]。
+
+### Lec08 p.41 跌到哪一步可清算
+
+抵押 150 跌 20% 为 120，债务 100，抵押比 120% 小于 125%；抵押仍高于债务但已可清算。
+
+债务不变，先让抵押值乘 0.8 得 120，再除以 100 得 120%。门槛 125% 高于 100%，所以还没资不抵债也可能允许清算。
+
+深读见 [[#2.10 Maker 旧机制与 DAO 投票：足额和决策权都要量化（讲义 p.40–42）|§2.10]]。
+
+### Lec08 p.42 DAO 的票权如何算
+
+40 人每人 1 票，另一人有 60 票；满足法定数和提案门槛时，一人可凭票权获简单多数。持储蓄份额不自动得治理权。
+
+先加票而非数人。反对一侧为 40 票，支持一侧为 60 票；若规定为简单多数且法定人数等条件均满足，支持可过。治理权仍由具体规则授予。
+
+提案例如调整可抵押额度或分配协议金库资金。先读提案和法定门槛，再按票权计算。
+
+深读见 [[#2.10 Maker 旧机制与 DAO 投票：足额和决策权都要量化（讲义 p.40–42）|§2.10]]。
+
+### Lec08 p.43 Aave 抵押借款四格
+
+供应者投入 USDC、借款者抵押、池转 USDC、跌价由清算者偿债换抵押。即使执行清算也可能留缺口。
+
+![Lec08 p.43 Aave 抵押借款四格 课件原图](figures/m08/lec08-p43.png)
+
+[打开原图](figures/m08/lec08-p43.png)
+
+读四格时分清出资人、借款人和清算者。第 3 格是池把已有 USDC 借给用户；第 4 格跌价后由清算者付债并得到部分抵押。若出售净额低于贷款，仍会有缺口。
+
+课件图注来源为 Aave 的 Health Factor & Liquidations 与 Aave App Disclosures。
+
+深读见 [[#2.11 抵押贷款：担保资产能卖多少才决定回收（讲义 p.43–44）|§2.11]]。
+
+### Lec08 p.44 抵押借款损失三问
+
+贷款 100 美元，抵押品原值 150，出售前跌 40%，出售成本 5。题目忽略利息且没有其他回收。先逐问算净回收与损失，再解释链上记录的边界。
+
+> **Short-Answer Question: Collateral Value and Loan Losses**
+>
+> A lending platform makes a \$100 loan against collateral worth \$150. Before the collateral can be sold, its price falls by 40%. Selling costs are \$5. Ignore interest.
+>
+> 1. Calculate the net cash recovered by selling the collateral.
+> 2. Calculate the loan shortfall if there is no further recovery.
+> 3. Explain why recording the collateral on a blockchain does not prevent this loss.
+>
+> （讲义 p.44）
+
+⚪ 参考作答（笔记推断）：
+
+1. 抵押物出售前价值为 $150\times60\%=90$ 美元。出售成本要从卖得的钱里扣，所以净回收为 $90-5=85$ 美元。题目先跌价、后出售，不能把 40% 用在贷款本金上。
+2. 原贷款 100 美元，没有其他回收，缺口为 $100-85=15$ 美元。这里的贷款损失（Loan loss）按题设的最终无额外回收口径计算，不只是短期没现金。
+3. 区块链可以记录抵押及转移，但不能阻止价格下跌、保证买方报价或免除出售成本。即使记录没有错误，净回收也只有 85 美元。
+
+英文参考答案（笔记自拟）：
+
+1. **The collateral is worth \$150 × 60% = \$90 after the fall. Net cash recovered is \$90 − \$5 = \$85.**
+2. **With no further recovery, the loan shortfall is \$100 − \$85 = \$15.**
+3. **A blockchain record does not prevent a fall in collateral prices or remove selling costs. Accurate recording cannot guarantee full recovery of the loan.**
+
+💡 改条件练习：若价格只跌 20%，卖价为 120 美元，扣 5 美元后有 115 美元，足以覆盖 100 美元贷款；剩余资产如何返还或分配依合同。不能把全部 115 美元直接记作贷款人利润。
+
+深读见 [[#2.11 抵押贷款：担保资产能卖多少才决定回收（讲义 p.43–44）|§2.11]]。
+
+### Lec08 p.45 卖 ETH 与借 USDC
+
+同拿 15,000 USDC，卖后留 5 ETH 且无债；借后抵押 10 ETH 并欠 15,000，两者起初净资产均 30,000，风险暴露不同。
+
+比较当下余额和债务。卖出方案留下 5 ETH 和 15,000 USDC；借入方案持有 10 ETH 和 15,000 USDC，同时欠 15,000，起点净资产一样。价格下跌时两者承担的资产跌幅和清算条件不同。
+
+深读见 [[#2.12 Aave 同一笔贷款：卖出、借入与清算（讲义 p.45–47）|§2.12]]。
+
+### Lec08 p.46 LTV 与清算门槛
+
+60% 是本例新增借款上限，80% 用来判断已有贷款是否可清算。同一笔贷款在 ETH 跌价后，可能先不能增借，过一段才可清算。
+
+贷款价值比（loan-to-value，LTV）用债务除抵押价值，先检查还能否再借；健康因子（Health factor，HF）用抵押乘清算阈值再除债务。ETH 跌到 2,000 时，15,000 除 20,000 是 75%，已超过借款上限。按 60%，20,000 美元抵押最多支持 12,000 美元债务。当前欠 15,000，故不能增借。
+
+但 20,000 乘 80% 除 15,000 约 1.067，仍未到清算点。ETH 跌到 1,800 时，HF 为 0.96，已经低于 1，满足题设的可清算条件。本例 HF 等于 1 时的 ETH 价格为 1,875 美元。
+
+深读见 [[#2.12.1 借款上限与健康因子回答不同问题（讲义 p.46）|§2.12.1]]。
+
+### Lec08 p.47 清算者怎样获得 ETH
+
+还 6,000 USDC，5% 奖励，按 1,800 收 3.5 ETH；剩 6.5 ETH 和 9,000 债，HF 1.04。给定规则及价格下的演示。
+
+清算人付 6,000 USDC 的债并按题设加 5% 补偿，共换出价值 6,300 的 ETH。除以每枚 1,800 得 3.5 ETH，Alice 没有收到新的 USDC。把剩余抵押和剩余债重新代入，HF 约 1.04。
+
+深读见 [[#2.12.2 清算人替谁还债，又拿走谁的 ETH（讲义 p.47）|§2.12.2]]。
+
+### Lec08 p.48 借款 5% 如何给出供应 2.7%
+
+100 万池借出 60 万，借息 3 万，储备抽 3 千；其余 27,000 对全部供应 100 万是 2.7%，未出借 40 万。
+
+供应者用全部供应资金作分母，借款利息只由借出的资金产生。先从借款人一年付的 30,000 扣 3,000 到储备，余额 27,000 除以 100 万，得 2.7%。这是固定余额与费率的演示。
+
+深读见 [[#2.13 供应利率、提款现金与治理生态（讲义 p.48–50）|§2.13]]。
+
+### Lec08 p.49 借贷池提现选择题
+
+存款 1 亿美元，已贷 9000 万，申请立即提现 3000 万。没有新存入也没有还款；先找这一刻池中能直接拿来支付的金额。
+
+> **Multiple-Choice Question: Withdrawals from a Lending Pool**
+>
+> A pool has \$100m of deposits, of which \$90m is lent out and \$10m remains available. Suppliers request \$30m immediately. There are no new deposits or loan repayments. Which conclusion follows?
+>
+> A) Adequate borrower collateral makes all \$30m immediately available.
+>
+> B) Only \$10m is available, even if the loans remain fully recoverable.
+>
+> C) The withdrawal request proves the pool has a \$20m credit loss.
+>
+> D) Raising borrowing rates instantly supplies the missing \$20m.
+>
+> （讲义 p.49）
+
+⚪ 参考作答（笔记推断）：选 B。immediately 和 no new deposits or loan repayments 排除了等待新钱或还款；m 表示百万美元。
+
+- A 错：抵押物是担保，并不是池中已经可支付的同币种现金。
+- B 对：眼下只有 1,000 万可用。贷款以后全部能收回，也不意味着现在能立即付出 3,000 万。
+- C 错：请求与现金之间有 2,000 万的即时缺口，但题目未说贷款最终少收回 2,000 万。
+- D 错：加息可能改变后续供求行为，不会瞬间生成缺少的现金，且题目排除了新存入和还款。
+
+英文参考答案（笔记自拟）：**B. Only \$10m is immediately available. The \$20m gap is a current liquidity shortfall, not proof of a credit loss. Collateral and a higher borrowing rate do not instantly provide the missing cash.**
+
+💡 改条件练习：若此时借款人另还款 2,000 万，现金可增到 3,000 万，才可能满足该批提款；但已改变原题的“无还款”条件。若贷款最终只收回 7,000 万，还须另外计算资产损失，不能和即时缺口混算。
+
+深读见 [[#2.13.1 提款原题：抵押物不是即时现金（讲义 p.49）|§2.13.1]]。
+
+### Lec08 p.50 Aave 入口与治理
+
+钱包或比价服务连接，GHO 扩产品；治理定抵押、资产限额和升级。跨链要核价格、桥和清算安排。
+
+按课件，GHO 是 Aave 治理的稳定币，属于产品扩展。跨多个网络增加入口，也增加要分别监控的价格源、桥和清算安排。故障可能使借款难以及时偿付，也可能影响供应者提款。
+
+深读见 [[#2.13.2 产品、治理与多网络服务（讲义 p.50）|§2.13.2]]。
+
+### Lec08 p.51 两位创始人改变的机制
+
+MakerDAO 从超额抵押 DAI 到 Sky 的储蓄、代理及更多链外资产；ETHLend 由点对点变为 Aave 池化。肖像为编辑插图。
+
+深读见 [[#2.14 改设计、跨链与三种持有人权利（讲义 p.51–54）|§2.14]]。
+
+### Lec08 p.52 Aave 和 Sky 的收益来源
+
+Aave 供应收益主要看借款人付息，Sky 储蓄率由协议收入与治理决定；两边都要追溯风险向谁传递。
+
+Aave 供应端收入随借款利息变化；Sky 的 Agents 为在贷款和其他策略中配置的资本付费，形成协议收入，再按治理规则提供储蓄率。ETH 抵押急跌时即使清算已执行，Aave 的净回收仍可能不足偿还贷款。 [[#Lec08 p.44 抵押借款损失三问|p.44 的 85 美元净回收]]给出一个缺口例。不能由任一利率推出本金有保证。
+
+深读见 [[#2.14 改设计、跨链与三种持有人权利（讲义 p.51–54）|§2.14]]。
+
+### Lec08 p.53 跨链的 5 ETH 请求权
+
+源链锁 5 ETH，验证后目标链铸 5 份凭证；返回先销毁、验证后再放原币。桥的验证与托管出问题会失去支撑。
+
+先在源链确认为锁定，再在目的链铸造；回程先销毁，再核验并放回源链资产。这两次验证不必由同一方执行，题面没有指定验证者。若底层资产被盗，记录仍可显示而实际支持已不足。
+
+<details><summary>讲义 p.53 完整英文情境与提问</summary>
+
+**A Cross-Chain Claim on 5 ETH**
+
+Suppose a bridge uses a lock-and-mint design to move ETH exposure to another blockchain.
+
+1. Lock 5 ETH in a contract on Ethereum.
+2. After verification, mint 5 claim tokens on the destination chain. The original ETH remains locked.
+3. To return, burn those claim tokens. After verification, release the original 5 ETH.
+
+Who verifies each step? If the locked ETH is stolen, the claim token may lose its backing even if the wallet still shows a balance.
+
+One illustrative bridge design, ignoring fees. A bridged claim depends on the bridge’s backing and verification.
+
+</details>
+
+⚪ 参考作答（笔记推断）：原题没有指定桥的验证者。应查谁核实锁定／销毁、按什么规则允许铸造／释放；不能擅自写成所有桥都由以太坊原生共识完成验证。
+
+英文参考答案（笔记自拟）：*The question does not specify the verifier. The bridge’s verification rules and responsible parties must be identified. A recorded claim may lose its backing if the locked ETH is stolen.*
+
+深读见 [[#2.14 改设计、跨链与三种持有人权利（讲义 p.51–54）|§2.14]]。
+
+### Lec08 p.54 并列比较三种代币权利
+
+Aave 是供应本金与利息并受流动性限制，LAND 是平台用途权且创作者版权单列，数字绿债的付息还本责任由政府承担。
+
+按原比较先说持有人的请求权，再说履约对象。Aave 供应头寸靠借贷池，LAND 的使用和版权受平台及创作条款约束，香港数字绿债本金和票息由政府承担。
+
+> **What Do These Tokens Give Their Holders?**
+>
+> • Aave supply position: supplied tokens plus accrued interest. Withdrawals depend on available pool liquidity.
+>
+> • The Sandbox LAND NFT: a virtual plot for publishing or renting space for games. A tenant’s game copyright remains with its creator.
+>
+> • HKSAR digital green bond on HSBC Orion: the government owes coupon and principal. HSBC provides the digital assets platform.
+>
+> （讲义 p.54；以下为中文解析，原页已给比较结果。）
+
+- Aave 供应头寸：相应供应资产及累计利息的请求权；提款受池中可用流动性限制。
+- The Sandbox LAND NFT：虚拟地块的发布／出租等用途；租用者创作的游戏版权仍属于创作者，地块权利与游戏版权分开。
+- Orion 上的香港政府数字绿色债券：政府按约定支付票息和本金；汇丰提供数字资产平台，不把政府债务变成平台股权。
+
+三项英文参考归纳（笔记自拟）：*The Aave supplier has a claim on supplied assets and accrued interest, subject to available pool liquidity. LAND grants specified virtual-land uses, not a tenant’s game copyright. The digital bond gives a contractual claim on the HKSAR Government for coupon and principal; Orion is the platform.*
+
+回答一个代币案例时，按“持有人→具体权利→兑现者→收入／支持资产→退出路线→失败点”走完，才不会把链上技术和经济权利混在一起。
+
+深读见 [[#2.14 改设计、跨链与三种持有人权利（讲义 p.51–54）|§2.14]]。
+
+### 按主题深读与课堂时间戳
+
+保留完整推导、现有课堂补充和材料边界。可从上方逐页正文进入相应深读。
 
 ### 2.1 从钱包换币开始理解 DeFi（讲义 p.2–5）
 
@@ -113,7 +796,7 @@ TVL 可以观察规模变化或资产价值下降，但不能直接当作协议�
 
 只使用这两个已标数字，可以计算从峰值到末点约下降 $1-75.4/177.5\approx57.52\%$。这不是用户投资组合回报，也不能单靠曲线分解资金流出与价格下跌的贡献。
 
-图注明确来源为 DefiLlama 历史 TVL API、展示周末点，资产价格和覆盖口径都可能改变数值。课件未附完整序列，本稿只重画两个明确标注点，不从截图编造整条曲线。
+图注明确来源为 DefiLlama 历史 TVL API、展示每周末端观测值，资产价格和覆盖口径都可能改变数值。课件未附完整序列，本稿只重画两个明确标注点，不从截图编造整条曲线。
 
 ![[EF5560_Fintech_and_AI_in_Finance/notes/figures/m08-defi-rwa/tvl-anchors.svg]]
 
@@ -293,7 +976,7 @@ Discuss 的答案也要完整：分别核代币历史、货物保管与盘点、
 
 权利顺位（Priority of claims）是同一资产处置后，谁先获得偿付的顺序。💡 笔记补充：货物卖得 100 元，若另一债权人依法可先拿走这 100 元，排在其后的人即使手持有效代币，也不一定能从这笔处置款收到钱。仓库有货与自己具有可执行、足额的权利仍需分别核对。
 
-英文参考答案（笔记自拟）：**C. The blockchain records the token’s history, but does not independently verify the goods or prevent double pledging. Custody checks and enforceable legal rights remain necessary. A unique token does not by itself establish title to the physical inventory.**
+英文参考答案（笔记自拟）：**C. The blockchain records the token’s history, but does not independently verify the goods or prevent double pledging. Custody checks and enforceable legal rights remain necessary. A unique token does not by itself establish title to the physical inventory. Check token history, verify the custodian and inventory independently, and determine whether the claim is enforceable and what priority it has.**
 
 💡 改条件练习：增加一次可靠盘点可以改善“货物是否存在”的证据，但若不核重复担保及权利顺位，不能据此断言代币持有人拥有唯一、优先的请求权。
 
@@ -362,7 +1045,7 @@ flowchart LR
 
 💡 改条件练习（笔记补充）：若买价是 HK\$100.10，则卖出收入 HK\$100,100，比参考 NAV 多 HK\$100，即溢价 10 bp。仍要扣实际费用，并确认该买价能承接 1,000 份，不能把屏幕上的小额报价无限外推。
 
-🔗 外部核对：香港证监会 2026-10-26 公告确认，两只既有认可代币化货币市场基金当天开始在持牌平台进行全天候二级交易；这支持渠道事实，不等于承诺按 NAV 立即赎回。[SFC 官方公告](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/corporate-news/doc?refNo=26PR174)（获取 2026-10-29）。
+🔗 外部核对：2026-10-29 的外核记录取得香港证监会 2026-10-26 公告的官方搜索片段；当时直开正文失败。片段与课件同指两只既有认可基金当天开始在持牌平台全天候二级交易。赎回条件另以基金文件为准。[SFC 官方公告](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/corporate-news/doc?refNo=26PR174)（获取 2026-10-29）。
 
 **🎙️ 课堂补充**（S25 `40:08`–`43:39`、`45:11`–`48:39`）
 
@@ -541,7 +1224,7 @@ flowchart TD
 
 用户锁入抵押资产，在金库（Vault）规则允许的范围内生成 DAI 负债。这里的 DAI 是协议按规则发行的代币，和后面 Aave 从供应者池子转出既有 USDC 的动作不同。（讲义 p.40、45）
 
-这张图的判断箭头从监测状态出发。价格、预言机和出售市场能否工作，都会影响保护效果。
+这张图的判断箭头从监测状态出发。价格、预言机和出售市场能否工作，都会影响保护效果。加入现实资产作抵押时，流程还需接上链外托管人与可执行的处置权。
 
 ```mermaid
 flowchart TD
@@ -1040,6 +1723,67 @@ English reference: *The token balance may remain recorded, but redemption depend
 
 ## 8. 讲义页码映射
 
+### 8.1 课件 54 页
+
+| 页 | 原标题 | §2 精确入口 | 原图或页处置 | 课堂覆盖 |
+|---:|---|---|---|---|
+| 01 | FinTech and AI in Finance | [[#Lec08 p.01 封面\|进入该页]] | 封面 | ⚪ 封面 |
+| 02 | Decentralized Finance | [[#Lec08 p.02 分隔 · DeFi\|进入该页]] | 纯分隔 | S24 `16:30`–`19:16`，章节导入 |
+| 03 | DeFi: A Token Swap | [[#Lec08 p.03 一次 DeFi 换币怎样完成\|进入该页]] | 原图及逐图读法 | S24 `19:16`–`24:07`；换币示意 |
+| 04 | Why Use DeFi When Banks and Exchanges Exist? | [[#Lec08 p.04 已有链上资产的人为何用 DeFi\|进入该页]] | 题面、公式、表格或文字解释 | S24 `24:07`–`27:40`；动机与边界 |
+| 05 | Follow One Token Swap | [[#Lec08 p.05 顺着 USDC 换 ETH 的一步步\|进入该页]] | 题面、公式、表格或文字解释 | S24 `27:54`–`29:05`；三步换币 |
+| 06 | What TVL Measures | [[#Lec08 p.06 TVL 的走势和口径\|进入该页]] | 原图及逐图读法 | S24 `29:10`–`30:59`；TVL不等于成交量 |
+| 07 | Where DeFi Can Create Value | [[#Lec08 p.07 共享流动性、公开记录、可编程\|进入该页]] | 原图及逐图读法 | S24 `31:03`–`34:46`；价值及类比 |
+| 08 | Disadvantages of DeFi | [[#Lec08 p.08 安全、清算与治理\|进入该页]] | 题面、公式、表格或文字解释 | S24 `34:58`–`36:57`；三类风险 |
+| 09 | NFTs and Holder Rights | [[#Lec08 p.09 分隔 · NFT\|进入该页]] | 纯分隔 | S24 `37:10`，NFT章节导入 |
+| 10 | Non-Fungible Tokens (NFTs) | [[#Lec08 p.10 NFT 票的两个编号\|进入该页]] | 原图及逐图读法 | S24 `37:10`–`42:02`；票券示意 |
+| 11 | Applications of NFTs | [[#Lec08 p.11 五种应用的经济来源\|进入该页]] | 题面、公式、表格或文字解释 | S24 `42:02`–`42:24`；S25 `00:00`–`00:30`，接缝未知 |
+| 12 | An NFT Connects a Token, Metadata, and a Claim | [[#Lec08 p.12 代币、元数据、权利三层\|进入该页]] | 题面、公式、表格或文字解释 | S25 `00:34`–`02:43`；三层权利 |
+| 13 | Challenges of NFTs | [[#Lec08 p.13 NFT 的出售、转移与履约\|进入该页]] | 题面、公式、表格或文字解释 | S25 `02:56`–`11:20`，含现场检索及旁支 |
+| 14 | NFT Uses and Holder Rights | [[#Lec08 p.14 NFT 周期与应用\|进入该页]] | 题面、公式、表格或文字解释 | S25 `11:20`–`14:04`；用途/市场口述非实时核验 |
+| 15 | Tokenized Real-World Assets | [[#Lec08 p.15 分隔 · 现实世界资产\|进入该页]] | 纯分隔 | S25 `14:04`，RWA导入 |
+| 16 | Real-World Assets (RWAs): Tokenized Bonds | [[#Lec08 p.16 现实资产如何连到链\|进入该页]] | 原图及逐图读法 | S25 `14:19`–`19:25`；托管与份额动机 |
+| 17 | A Bond before and after Tokenization | [[#Lec08 p.17 同一债券在代币化前后\|进入该页]] | 题面、公式、表格或文字解释 | S25 `19:34`–`22:07`；债券现金流 |
+| 18 | Paxos: Small Investments in Physical Gold | [[#Lec08 p.18 PAXG 怎样让小额持有黄金\|进入该页]] | 题面、公式、表格或文字解释 | S25 `22:10`–`28:11`；黄金与费用比较 |
+| 19 | Paxos: Gold Custody and Token Transfer | [[#Lec08 p.19 PAXG 的链和金库\|进入该页]] | 原图及逐图读法 | S25 `28:11`–`29:21`；托管/转移 |
+| 20 | Multiple-Choice Question: Can a Token Verify the Warehouse? | [[#Lec08 p.20 仓储代币选择题\|进入该页]] | 题面、公式、表格或文字解释 | S25 `29:26`–`30:28`；回应含C但句尾残缺 |
+| 21 | Paxos: Fees and the Limits of Tokenized Gold | [[#Lec08 p.21 代币黄金的费用与退出\|进入该页]] | 题面、公式、表格或文字解释 | S25 `31:07`–`32:49`；费用/小额/退出边界 |
+| 22 | Three Ways to Attach a Token to a Real Asset | [[#Lec08 p.22 三种连接真实资产的权利\|进入该页]] | 题面、公式、表格或文字解释 | S25 `32:49`–`40:06`；三类结构与现场例 |
+| 23 | ChinaAMC: What Does a Tokenized Fund Hold? | [[#Lec08 p.23 ChinaAMC 的双向资金流\|进入该页]] | 原图及逐图读法 | S25 `40:08`–`43:39`；基金资产收入 |
+| 24 | HSBC Orion: The Issuer and Investor Need | [[#Lec08 p.24 发行人与投资者为何用 Orion\|进入该页]] | 题面、公式、表格或文字解释 | S25 `43:42`–`45:06`；集中机构采用区块链 |
+| 25 | ChinaAMC: Redeem the Fund or Sell the Token? | [[#Lec08 p.25 Class F 的市场与净值\|进入该页]] | 原图及逐图读法 | S25 `45:11`–`48:39`；赎回/二级成交 |
+| 26 | Multiple-Choice Question: TVL and New Capital | [[#Lec08 p.26 TVL 与外来本金选择题\|进入该页]] | 题面、公式、表格或文字解释 | S25 `48:41`–`52:49`；结果160/100对应A |
+| 27 | Multiple-Choice Question: Transferability and Market Liquidity | [[#Lec08 p.27 退出流动性选择题\|进入该页]] | 题面、公式、表格或文字解释 | S25 `52:53`–`55:23`；可执行买方对应C |
+| 28 | HKSAR Digital Green Bonds: Three Issuances | [[#Lec08 p.28 香港数字绿色债券的发行\|进入该页]] | 原图及逐图读法 | S25 `55:31`–`56:20`；发行概述 |
+| 29 | HSBC Orion: Bond Delivery against Payment | [[#Lec08 p.29 HSBC Orion 与券款对付\|进入该页]] | 题面、公式、表格或文字解释 | S25 `56:20`–`56:59`；平台思路，未逐项核2023结算 |
+| 30 | HKSAR Digital Green Bonds: Interest and Principal | [[#Lec08 p.30 政府债利息与本金\|进入该页]] | 题面、公式、表格或文字解释 | S25 `59:06`–`01:00:21`；政府债权 |
+| 31 | Short-Answer Question: Evaluating a Tokenized Green Bond | [[#Lec08 p.31 代币化绿债短答\|进入该页]] | 题面、公式、表格或文字解释 | S25 `01:00:27`–`01:03:26`；无真实节省测量值 |
+| 32 | HKSAR Is Moving from Pilots to Real-Value Transactions | [[#Lec08 p.32 从沙盒到真实价值试点\|进入该页]] | 题面、公式、表格或文字解释 | S25 `01:03:33`–`01:05:09`；试点 |
+| 33 | China’s Securities Regulator and Tokenized Assets | [[#Lec08 p.33 境内资产与境外代币案例\|进入该页]] | 题面、公式、表格或文字解释 | S25 `01:05:18`–`01:09:02`；备案/税务旁支分开 |
+| 34 | HSBC Orion: Commercial Progress and Adoption | [[#Lec08 p.34 Orion 试点授权及商业化\|进入该页]] | 题面、公式、表格或文字解释 | S25 `01:09:12`–`01:10:36`；商业机会与边界 |
+| 35 | DeFi Lending: Sky and Aave | [[#Lec08 p.35 分隔 · Sky 和 Aave\|进入该页]] | 纯分隔 | S25 `01:11:04`；借贷章节导入 |
+| 36 | Case 1: Sky — the System Formerly Called MakerDAO | [[#Lec08 p.36 Sky 的两种入口\|进入该页]] | 题面、公式、表格或文字解释 | S25 `01:11:24`–`01:14:33`；银行类比/非权利等同 |
+| 37 | Sky’s 2026 Product Stack | [[#Lec08 p.37 Sky 产品栈原图\|进入该页]] | 原图及逐图读法 | S25 `01:14:49`–`01:15:53`；USDS/sUSDS流向 |
+| 38 | Where Sky’s Yield Comes From, and Who Bears the Risk | [[#Lec08 p.38 Sky 的收益、损失与决策\|进入该页]] | 题面、公式、表格或文字解释 | S25 `01:16:00`–`01:18:26`；收入/风险/治理 |
+| 39 | Worked Example: Funding a Savings Yield | [[#Lec08 p.39 储蓄收益率算例\|进入该页]] | 题面、公式、表格或文字解释 | S25 `01:18:31`–`01:20:38`；4%算例 |
+| 40 | One Legacy Mechanism Still Matters: Vault Liquidation | [[#Lec08 p.40 旧 Maker 抵押仓的清算分支\|进入该页]] | 原图及逐图读法 | S25 `01:20:43`–`01:22:44`；旧DAI金库 |
+| 41 | Worked Example: A Liquidation Threshold | [[#Lec08 p.41 跌到哪一步可清算\|进入该页]] | 题面、公式、表格或文字解释 | S25 `01:22:50`–`01:24:06`；120%/125% |
+| 42 | DAO Voting: Who Can Change the Rules? | [[#Lec08 p.42 DAO 的票权如何算\|进入该页]] | 题面、公式、表格或文字解释 | S25 `01:24:18`–`01:26:00`；40/60票权 |
+| 43 | Aave: Collateralized Borrowing | [[#Lec08 p.43 Aave 抵押借款四格\|进入该页]] | 原图及逐图读法 | S25 `01:26:10`–`01:27:09`；借贷角色 |
+| 44 | Short-Answer Question: Collateral Value and Loan Losses | [[#Lec08 p.44 抵押借款损失三问\|进入该页]] | 题面、公式、表格或文字解释 | S25 `01:27:21`–`01:28:08`；题面已读，85/15仍参考计算 |
+| 45 | Aave Example: Selling ETH or Borrowing USDC | [[#Lec08 p.45 卖 ETH 与借 USDC\|进入该页]] | 题面、公式、表格或文字解释 | S25 `01:28:08`–`01:29:32`；两方案比较 |
+| 46 | Borrowing Limit and Liquidation Threshold | [[#Lec08 p.46 LTV 与清算门槛\|进入该页]] | 题面、公式、表格或文字解释 | S25 `01:29:38`–`01:31:22`；HF与收束 |
+| 47 | Liquidation: Who Pays and Who Receives ETH? | [[#Lec08 p.47 清算者怎样获得 ETH\|进入该页]] | 题面、公式、表格或文字解释 | ↪️ S25 `01:31:19`下次继续；p.46后停课，不可降权 |
+| 48 | Why a 5% Borrowing Rate Can Pay Suppliers 2.7% | [[#Lec08 p.48 借款 5% 如何给出供应 2.7%\|进入该页]] | 题面、公式、表格或文字解释 | ↪️ S25 `01:31:19`下次继续；p.46后停课，不可降权 |
+| 49 | Multiple-Choice Question: Withdrawals from a Lending Pool | [[#Lec08 p.49 借贷池提现选择题\|进入该页]] | 题面、公式、表格或文字解释 | ↪️ S25 `01:31:19`下次继续；p.46后停课，不可降权 |
+| 50 | Case 2: Aave Ecosystem and Governance | [[#Lec08 p.50 Aave 入口与治理\|进入该页]] | 标识或编辑肖像按装饰处理 | ↪️ S25 `01:31:19`下次继续；p.46后停课，不可降权 |
+| 51 | Two DeFi Founders Who Changed Their Original Designs | [[#Lec08 p.51 两位创始人改变的机制\|进入该页]] | 标识或编辑肖像按装饰处理 | ↪️ S25 `01:31:19`下次继续；p.46后停课，不可降权 |
+| 52 | Yield and Risk: Aave and Sky | [[#Lec08 p.52 Aave 和 Sky 的收益来源\|进入该页]] | 题面、公式、表格或文字解释 | ↪️ S25 `01:31:19`下次继续；p.46后停课，不可降权 |
+| 53 | A Cross-Chain Claim on 5 ETH | [[#Lec08 p.53 跨链的 5 ETH 请求权\|进入该页]] | 题面、公式、表格或文字解释 | ↪️ S25 `01:31:19`下次继续；p.46后停课，不可降权 |
+| 54 | What Do These Tokens Give Their Holders? | [[#Lec08 p.54 并列比较三种代币权利\|进入该页]] | 题面、公式、表格或文字解释 | ↪️ S25 `01:31:19`下次继续；p.46后停课，不可降权 |
+
+### 8.2 课堂时间与来源对照
+
 下表仍逐物理页覆盖54页。右列按S24／S25独立源时钟定位，不把提及放大为全部细节已逐项讲完。p.47–54已明确顺延，不是录音无缘无故缺失。
 
 | 讲义页 | 独有主题／页型 | 正文对应 | 课堂覆盖 |
@@ -1153,7 +1897,7 @@ M07开场复问数字黄金与智能合约是回顾，不是补完旧p.44三问�
 **本批课堂口径的必要澄清**：TVL资产存量不等于成交量；成交折价不等于基金赎回费；10000的0.4%为40；价格挂钩代币不自动给标的股权；HF<1是本例清算条件而非最终坏账已确定。原讲义／已核正式来源优先于ASR的过简类比。
 
 
-外部核对用来检查易变的机构事实和机制边界，正文已有近旁链接及获取日期：香港政府 2025 年数字绿色债券公告、香港证监会 2026-10-26 公告、中国证监会 2026 年第 1 号公告及其 3 页指引、Aave 官方 FAQ、Sky 的 sUSDS 说明及 Paxos 费表。产品文件、监管后续或试点后续未核之处保留在 §9.5，不把课件出处清单当作已读全部原文。
+外部核对用来检查易变的机构事实和机制边界，正文已有近旁链接及获取日期：香港政府 2025 年数字绿色债券公告、香港证监会 2026-10-26 公告的官方搜索片段、中国证监会 2026 年第 1 号公告及其 3 页指引、Aave 官方 FAQ、Sky 的 sUSDS 说明及 Paxos 费表。产品文件、监管后续或试点后续未核之处保留在 §9.5，不把课件出处清单当作已读全部原文。
 
 ### 9.5 待核对与材料限制
 

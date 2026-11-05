@@ -160,6 +160,12 @@ Dr. 应收账款 10   Cr. 销售收入 10
 
 ### 1.3 为什么这一讲放在这里 · 重排说明
 
+主源 **Week 4 PPT.pptx**，页号为物理幻灯片编号。
+
+- **预习**先用 [[#p.12 · 曲奇例补齐时间、地点与人|p.12]] 的条件做 p.13 和 p.15 的空表，再到下一页核对。学习多重性后，先用 [[#2.8 多重性练习 1–4（讲义 p.32–35）|题面与背景]]，先停在共同英文四问与每题背景，再翻 p.32–35 核对。
+- **课中**从 [[#8. 讲义页码映射|§8]] 逐页定位。图中的端点标记读对面，做题时固定一方再问另一方。
+- **复习**用 [[#7. 自测|§7]] 检验分期与合并，再从 p.43–53 复做表与键转换。综合练习走 [[#2.9.8 Case 4：逐问完成公开课堂练习|Case 4]]，要实际查询就走 [[#2.9.9 曲奇事件落地：统一 schema 与可执行 SQL（笔记补充）|SQLite 曲奇演示]]。
+
 **承接三条线，全部在 W1–W3 埋好了：**
 
 1. **[[M01-会计与商业]] 的货币计量假设** —— 本讲 p.3 用 "Limited scope: Captures only monetary transactions, ignoring non-financial data" 批评仅看财务金额的局限。这里比较的是本讲展示的科目/主表信息；附注、原凭证及实际业务系统仍可有非财务资料，不能从计量单位直接推出它们被整个系统排除。
@@ -186,6 +192,322 @@ Dr. 应收账款 10   Cr. 销售收入 10
 ---
 
 ## 2. 正文
+
+依次读每页问题、原图及下方的做法。已有专题长例和课堂材料集中在后半。
+
+### 逐页 · 复式记账、REA 与会计史（p.1–10）
+
+#### p.1 · 本讲标题
+
+第 4 章 REA Accounting Model。从复式记账已写过的交易出发，本讲增加业务对象、关系和数据库设计。
+
+#### p.2 · 复式记账回答财务结果
+
+把销售、费用或回款写成借贷分录，维持资产等于负债加权益，最后编利润表等。例：收到客户旧款时现金增、应收减，可核金额怎样变化。
+
+#### p.3 · 复式记账的强项和边界
+
+试算表能检查借贷合计净差，标准报表和软件便于统一输出。只看已汇总的账户余额时，交付耗时、客户体验等背景很难直接读到。课件也指出传统报表偏向回顾已经发生的业绩。整个业务系统仍可另存运营细节或提供及时分析。
+
+#### p.4 · REA 按资源、事件、参与者记事
+
+资源是现金或商品等有价值对象，事件是销售或收款等实际发生的事，参与者是客户、员工等。给一笔销售找卖了什么、谁参与、对应哪笔收款，便能从金额追到业务关系。
+
+#### p.5 · REA 的用途与实施成本
+
+用事件先后定位瓶颈，用资源和参与者的关联比较交付效率。实施需要一致记录细粒度数据、重做部分数据库和培训人员。连好的数据可供实时分析和 AI 预测。缺乏统一的 REA 报告指引，会增加审计及跨企业比较的难度。课件的成本降 15% 是未附来源的示例，不能据此估计其他企业。
+
+#### p.6 · 会计怎样留下经济活动记录
+
+![Week 4 课件 p.6 · 会计怎样留下经济活动记录](figures/m04-source/w4-s006.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s006.png|查看Week 4 课件 p.6 · 会计怎样留下经济活动记录大图]]
+
+原图从早期记录场景到纸笔与数字办公，串起“记录发生了什么，再让别人看懂”的用途。它展示媒介变化，下一页提供课件所列的历史节点。
+
+#### p.7 · 课件列的几个历史节点
+
+讲义从巴比伦刻痕写到 1494 年 Pacioli 对复式记账的记述，再到工业革命后公司的筹资需求。所有权与经营控制分离后，没在场的股东也要靠报表了解经营。1494 年用来定位传播记录。
+
+#### p.8 · 谁需要看到哪些细节
+
+内部人员要管生产和销售，外部使用者要据报表判断财务结果。问题是哪些信息在汇总中丢了，以及要靠何种信息系统补回。后面用曲奇交易看不同记录方法。
+
+#### p.9 · McCarthy 从业务事件重想会计
+
+课件介绍 1982 年论文的思路：先保存自然发生的经营事项，再由业务记录产生需要的会计和其他输出。借贷和账户是人为设计的记录手段，业务数据库还需保留用途不同的细节。
+
+#### p.10 · 同一次销售可连到收入和成本
+
+销售收入和销货成本是两个会计科目。REA 可以把收入与成本所用数据连到同一类销售事件。例如下一组例中售价 10、成本 8 同属一笔曲奇销售，来源字段仍须各自正确。
+
+### 逐页 · 曲奇交易与 REA（p.11–19）
+
+#### p.11 · 从公司 A 与 B 拆出两件事
+
+A 给 B 产品，又从 B 收钱。先把交付和收款各记成事件，然后连起来；它们可以同时发生，也可以隔一段时间。
+
+#### p.12 · 曲奇例补齐时间、地点与人
+
+2013 年 1 月 1 日，Festival Walk 的 7-11 员工 Paul 把一块曲奇卖给顾客 Joe。售价 10、成本 8。接下来先写交付分录，再独立写现金到账。
+
+#### p.13 · 曲奇交付原空表：先自己记
+
+![Week 4 课件 p.13 · 曲奇交付原空表：先自己记](figures/m04-source/w4-s013.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s013.png|查看Week 4 课件 p.13 · 曲奇交付原空表：先自己记大图]]
+
+原页一句 Paul gives a cookie to Joe.，下方蓝表三列 Account、DR、CR 均留空。根据上一页条件，先分别处理库存成本和已赚销售收入。到 p.14 核对。
+
+#### p.14 · 曲奇交付：成本和收入两组分录
+
+![Week 4 课件 p.14 · 曲奇交付：成本和收入两组分录](figures/m04-source/w4-s014.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s014.png|查看Week 4 课件 p.14 · 曲奇交付：成本和收入两组分录大图]]
+
+原蓝表上半借销货成本 8、贷存货 8；下半借应收 10、贷销售收入 10。交付同时用掉库存并形成收款权，各组借贷独立相等。
+
+#### p.15 · 曲奇收款原空表：辨认已确认收入
+
+![Week 4 课件 p.15 · 曲奇收款原空表：辨认已确认收入](figures/m04-source/w4-s015.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s015.png|查看Week 4 课件 p.15 · 曲奇收款原空表：辨认已确认收入大图]]
+
+原页一句 Paul gets cash from Joe.，下方 Account、DR、CR 留空。假设上一页已记应收，先想现金到账冲掉哪个账户，再翻下一页。
+
+#### p.16 · 曲奇收款：现金换应收
+
+![Week 4 课件 p.16 · 曲奇收款：现金换应收](figures/m04-source/w4-s016.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s016.png|查看Week 4 课件 p.16 · 曲奇收款：现金换应收大图]]
+
+蓝表借 Cash 10、贷 A/R 10。顾客已清偿前页形成的收款权，现金增加且应收归零；销售收入已在交付时记录。
+
+#### p.17 · 沿 REA 三格读对象和事件
+
+![Week 4 课件 p.17 · 沿 REA 三格读对象和事件](figures/m04-source/w4-s017.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s017.png|查看Week 4 课件 p.17 · 沿 REA 三格读对象和事件大图]]
+
+图中 Economic Resource、Economic Event、Economic Agent 由左至右。资源答什么东西，事件说明何时何地发生什么，参与者答谁。把曲奇、交付、Paul 和 Joe 对到图上。
+
+#### p.18 · 二元性把给出和取得配对
+
+二元性（duality）把减少资源的事件与取得资源的事件连接。销售给出商品、收款取得现金。生产转换也可把材料、劳动等投入同成品产出相连，不能要求每一对同时发生。
+
+#### p.19 · 沿给出和取得两排看关系
+
+![Week 4 课件 p.19 · 沿给出和取得两排看关系](figures/m04-source/w4-s019.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s019.png|查看Week 4 课件 p.19 · 沿给出和取得两排看关系大图]]
+
+图上 Sale 连 Inventory 和员工、客户，是 Give；图下 Cash Receipt 连 Cash 和参与者，是 Get。中间的 Duality 连接业务事件。同一类员工在两个事件可担任不同记录角色，不能把两事件并作一条金额。
+
+### 逐页 · 模型层次与 UML（p.20–31）
+
+#### p.20 · 概念模型先决定要记录什么
+
+概念模型描述业务对象与关系，例如客户参与销售。课件列自然语言、不同记号的图、XML 与 XBRL。用统一建模语言（UML）的类图可以说清对象与数量约束，先不选数据库软件。
+
+#### p.21 · 逻辑模型再选数据组织方式
+
+已决定用关系数据库，就把概念对象和关联变成表、列和键。课件还列对象式、层次式、网络式等。选了关系模型才开始决定哪些关联适合外键，哪些需要独立关联表。
+
+#### p.22 · 物理模型落实到特定软件
+
+在已选软件里设列类型、必填、索引和可执行约束。例如在 Access 配好编号字段类型及参照完整性；这些实现选择从逻辑表设计继续向下。
+
+#### p.23 · 类图的四种构件
+
+类分出客户和销售，关联连两类，属性写编号、日期等资料，多重性写一方能连另一方几条。第 24–31 页逐项把这四个动作落到图上。
+
+#### p.24 · 类收同类实例
+
+客户类是具有共同属性的一组对象，一位客户是一个实例。课程或交易也可成为类，关键是能独立区分实例，不要求能摸到。
+
+#### p.25 · 类框从上到下读三格
+
+第一格是类名及可选构造型，如 Customer 属 Agent；第二格是属性，如编号、姓名；第三格是可执行操作，本课例通常留空。p.30 有实际三格图可对照。
+
+#### p.26 · 区分关联、关联类与具象化关联
+
+关联表示两类实例之间的联系。课件的关联类为某一实例对记录一条关联；若同一对可重复发生且要分别辨认，如同一学生两次修同课，可把选课变成有自身编号的事件对象。
+
+#### p.27 · 学生和课程怎样通过选课连接
+
+![Week 4 课件 p.27 · 学生和课程怎样通过选课连接](figures/m04-source/w4-s027.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s027.png|查看Week 4 课件 p.27 · 学生和课程怎样通过选课连接大图]]
+
+左圈学生、右圈课程，线是每条 Enrollment。沿同一个学生的多根线看他选的课，沿一门课的多根线看其学生。未连线的实例仍可能存在；线是图中的样本，最大数由规则另定。
+
+#### p.28 · 属性记录什么，以及哪些值可算
+
+主键唯一识别实例，例如学生编号。简单属性不可在当前模型继续分，复合属性可拆成若干列。可派生属性由其他记录算得；已定稿的一笔销售毛利由售价减成本算出。另记一笔销售时，原单两数未改，原单毛利也不变。某客户累计销售金额则会随新增交易变化。两例都是派生值。
+
+#### p.29 · 最少和最多分别问什么
+
+固定一个实例，问对面最少和最多能有多少。最小 0 允许没有，1 要求至少一条。最大 1 表示最多一条，星号表示本模型未设上限。接下来读图时始终从固定对象走向另一端。
+
+#### p.30 · Customer 和 Sale：从哪边读标记
+
+![Week 4 课件 p.30 · Customer 和 Sale：从哪边读标记](figures/m04-source/w4-s030.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s030.png|查看Week 4 课件 p.30 · Customer 和 Sale：从哪边读标记大图]]
+
+图中 Customer 旁是 1..1，表示固定一笔销售恰有一个客户。Sale 旁 0..* 表示固定一个客户可有零到多笔销售。两个类框中的编号、姓名、日期等是属性，不参与计数。
+
+#### p.31 · 员工与部门：换方向再读一次
+
+固定员工，允许未分配且最多归一个部门，因此部门端 0..1。固定部门，至少一名员工且可有多名，因此员工端 1..*。最小值和最大值要从题中两句独立推出。
+
+### 逐页 · 多重性练习与关系表（p.32–42）
+
+#### p.32 · 练习 1：每笔销售与收款恰好相配
+
+![Week 4 课件 p.32 · 练习 1：每笔销售与收款恰好相配](figures/m04-source/w4-s032.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s032.png|查看Week 4 课件 p.32 · 练习 1：每笔销售与收款恰好相配大图]]
+
+原图保留 Q1–Q4、两个 1..1 和蓝色给定答案。固定一笔销售，对面恰有一笔收款。固定一笔收款，对面也恰有一笔销售。四问为 No、No、No、No。课件情境是即时现金销售；实际业务时点还需规则。
+
+#### p.33 · 练习 2：允许先销售后收一次款
+
+![Week 4 课件 p.33 · 练习 2：允许先销售后收一次款](figures/m04-source/w4-s033.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s033.png|查看Week 4 课件 p.33 · 练习 2：允许先销售后收一次款大图]]
+
+图中收款端变成 0..1，销售端仍 1..1。可以有未收款销售，但不分期；每笔收款只冲一笔销售，且必须来自销售。四问依次 Yes、No、No、No。
+
+#### p.34 · 练习 3：允许分期但不合并
+
+![Week 4 课件 p.34 · 练习 3：允许分期但不合并](figures/m04-source/w4-s034.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s034.png|查看Week 4 课件 p.34 · 练习 3：允许分期但不合并大图]]
+
+原图端点留空。赊销允许零收款，分期允许多笔，故收款端 0..*。只从销售收款且不合并，销售端 1..1。四问 Yes、Yes、No、No，完整原问与英文答法在 [[#2.8 多重性练习 1–4（讲义 p.32–35）|四问原文和解答]]。
+
+#### p.35 · 练习 4：分期、合并与非销售收款
+
+![Week 4 课件 p.35 · 练习 4：分期、合并与非销售收款](figures/m04-source/w4-s035.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s035.png|查看Week 4 课件 p.35 · 练习 4：分期、合并与非销售收款大图]]
+
+原图端点留空。销售端与收款端都写 0..*。分期让一笔销售可连多笔收款，合并让一笔收款可冲多笔销售，非销售收款让销售端最小数变成 0。四问都是 Yes。
+
+#### p.36 · 关系数据库靠表与键连接
+
+主键唯一找本表一行，外键保存另一表可匹配的标识。例如销售表的销售员编号指向销售员表的主键，拿编号取姓名。外键不需要在销售表内唯一。
+
+#### p.37 · 行是一条记录，列规定记录什么
+
+销售表一行是一笔销售，列可以是日期、金额或编号。行列的显示顺序可变，日期和金额的类型要选对。一格只存当前设计的一项值，多个销售员编号不能用逗号挤在一个格。
+
+#### p.38 · 销售员外键怎么查
+
+![Week 4 课件 p.38 · 销售员外键怎么查](figures/m04-source/w4-s038.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s038.png|查看Week 4 课件 p.38 · 销售员外键怎么查大图]]
+
+上表 Salesperson 一列红字是外键，下表 SalespersonID 是主键。沿红线用 654321 找 Francis；两笔销售引用同一个人，只需维护一次姓名。
+
+#### p.39 · 完整性与一事一地
+
+实体完整性要求主键可唯一标识且不为空。参照完整性要求已有外键值能找到被引用的键；空值要看业务允许与约束。姓名应在销售员表维护，销售表只放编号。
+
+#### p.40 · 参照完整性：对比合法与悬空编号
+
+![Week 4 课件 p.40 · 参照完整性：对比合法与悬空编号](figures/m04-source/w4-s040.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s040.png|查看Week 4 课件 p.40 · 参照完整性：对比合法与悬空编号大图]]
+
+左右两组表只有一个关键差别。左侧的销售员编号能在下表对应，按允许条件也可留空；右侧 234567 不存在，查不到销售员。先核实际人员与业务，再补资料或修正输入。
+
+#### p.41 · 一个事实重复写在多行
+
+![Week 4 课件 p.41 · 一个事实重复写在多行](figures/m04-source/w4-s041.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s041.png|查看Week 4 课件 p.41 · 一个事实重复写在多行大图]]
+
+原销售表把 CustomerID、CustomerName 和 CustomerAddress 一起重复。C422 多笔销售都写 Andy 的地址，改其中一行会和另一行冲突。把人和地址放 Customer 表，销售记录只引用编号。
+
+#### p.42 · 多个事实挤进一个格
+
+![Week 4 课件 p.42 · 多个事实挤进一个格](figures/m04-source/w4-s042.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s042.png|查看Week 4 课件 p.42 · 多个事实挤进一个格大图]]
+
+看 Employee 图最后一列 Degree Earned。Tony 的 BS、MBA 是两个学历值，Emily 三个值同理。另建员工学历表，一行一个员工编号与学位的配对，查某学位时不必拆字符串。
+
+### 逐页 · 五步转换法（p.43–53）
+
+#### p.43 · 转换第一步：每个类先建一张表
+
+类成为表，属性成为列，实例成为行。随后决定关联用外键还是关联表。比较两个指标：同一事实是否重复、外键列有值的比例有多高。后者叫载荷。
+
+#### p.44 · 先看最大数，再看是否必有
+
+最大数决定一个格能不能装关系。如果一条目标记录需要多个编号，不能强塞单格。最小数为 1 时，选对外键方向通常可避免空值；可选关系还要评估载荷。
+
+#### p.45 · 多对多用独立关联表
+
+学生可选多课且课程可有多学生。用 Enrollment 一行记录一对 StudentID、CourseID，引用两张表。若同一对只允许一条，组合起来作复合主键；若允许重修，需要再有学期等识别因素。
+
+#### p.46 · 多对多错误图：两种方向都挤格
+
+![Week 4 课件 p.46 · 多对多错误图：两种方向都挤格](figures/m04-source/w4-s046.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s046.png|查看Week 4 课件 p.46 · 多对多错误图：两种方向都挤格大图]]
+
+上方两端都是 1..*。下方红框显示把课程列表塞进 Student，或把学生列表塞进 Course，都会让一格多值。红禁止符号标的是这两种设计；下一页把连线单独落表。
+
+#### p.47 · 多对多正确图：用五行记录关联
+
+![Week 4 课件 p.47 · 多对多正确图：用五行记录关联](figures/m04-source/w4-s047.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s047.png|查看Week 4 课件 p.47 · 多对多正确图：用五行记录关联大图]]
+
+左边学生表和课程表保留各自编号，右边只有 Student# 和 Course#。例如学生 1 的两门课写成两行。沿某课程编号反查也能得到多名学生，原两张表无需复制姓名或课名。
+
+#### p.48 · 双必选一对一：只选一个外键方向
+
+两端 1..1 时，可从任一表把主键放进另一表作为外键，只做一次。外键还需要唯一与必填；若两侧都必须参加，单靠单向 FK 还需应用、事务或额外约束检查被引用侧也没有孤立行。
+
+#### p.49 · 一对一原图：两种做法选一种
+
+![Week 4 课件 p.49 · 一对一原图：两种做法选一种](figures/m04-source/w4-s049.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s049.png|查看Week 4 课件 p.49 · 一对一原图：两种做法选一种大图]]
+
+图上两端 1..1；下方红框可选 Sale 持 CR-ID，也可选 Cash Receipt 持 S-ID。以 S1 和 CR1 为例，只保存一处对应关系，避免两边各写一次后互相不一致。
+
+#### p.50 · 有一个恰好一端：从该端取主键
+
+若固定另一端时恰好找到一条记录，就把恰好一端的主键写进另一表。这样每条目标记录只有一个外键值且可设必填。若反向最大为 1，再对外键设唯一。
+
+#### p.51 · 销售与客户：销售表留 CustomerID
+
+![Week 4 课件 p.51 · 销售与客户：销售表留 CustomerID](figures/m04-source/w4-s051.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s051.png|查看Week 4 课件 p.51 · 销售与客户：销售表留 CustomerID大图]]
+
+图中客户端 1..1 表示每笔 Sale 恰好有一个 Customer。销售表红框写 S1→C1、S2→C2、S3→C1。图在 Sale 端也列了 0..* 和 1..* 两种条件。样本 C3 没有销售，只符合 0..*。若采用最小 1，要另查每个客户至少有一笔销售。把销售编号放回客户表会遇到一客多单，所以下方红框被划掉。
+
+#### p.52 · 销售与收款：销售表留 CR-ID
+
+![Week 4 课件 p.52 · 销售与收款：销售表留 CR-ID](figures/m04-source/w4-s052.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m04-source/w4-s052.png|查看Week 4 课件 p.52 · 销售与收款：销售表留 CR-ID大图]]
+
+收款端 1..1，固定一笔销售必须恰有一个收款。销售端 0..1，固定收款可对应零或一笔销售。上方红列让 S1、S2、S3 分别引用 CR1、CR2、CR3，CR4 可无对应销售。CR-ID 需必填且唯一。p.33 允许销售暂时没有收款，p.52 允许的是某条收款暂时没有销售，任选一笔固定后看对面。
+
+#### p.53 · 可选一端的外键和载荷
+
+固定另一端若最多只配一条，可先在另一表试放外键。若大部分记录都有值，采用外键即可。若大量留空，改用独立关联表。两端都 0..1 时，比较两种外键方向的非空比例，也要约束不能一对多。
+
+### 主题深读与课堂补充
+
+较长原例、课堂补充、推算与原题解析保留在下列主题中。
 
 ### 2.0 封面（讲义 p.1）
 
@@ -2590,7 +2912,7 @@ Sale 表（saleID 是它的主键；custID 是"过账"进来的外键）
 - **一事一地**：同一句话不要说两遍，也不要把两句话挤在一格里。
 
 **⚠️ 常见误解**
-- ❌ "外键不能为空"。→ 讲义明写 **可以为 null**。这一点在 §2.10.11（Step 5 的载荷问题）极其关键。
+- 是否允许空外键取决于业务。关系为可选且列可空时，可留 Null；业务要求每笔都有对应对象时应设必填。这一点在 §2.10.11（Step 5 的载荷问题）极其关键。
 - ❌ "null 就是 0"。→ 完全不同。`SUM()` 会跳过 null，但会把 0 算进去。
 
 **所以呢**
@@ -2624,7 +2946,7 @@ Sale 表（saleID 是它的主键；custID 是"过账"进来的外键）
 | 123456 | Fred | 555-0063 |
 | 654321 | Francis | 555-0007 |
 
-**⭐ 为什么这是合法的**：最后两行的 `Salesperson` 是 **null**，而讲义 p.39 明确说外键 *"Be null (blank)"* 是允许的。
+**⭐ 为什么这是合法的**：最后两行的 `Salesperson` 留空。这个图的列允许空时符合参照完整性；若业务要求每笔都有销售员，仍须设为必填。
 **业务含义**：这两笔销售可能是**自助结账、网店订单、或者销售员还没录入**。
 
 **(b) 违反参照完整性**
@@ -2807,7 +3129,7 @@ EmployeeDegree(empID*, degree)      ← 复合主键 (empID, degree)
 
 **Case 4 Q1 · Supplier–Purchase**
 
-**中文读题**：先固定一个 Supplier，问它能有几笔 Purchase；再固定一笔 Purchase，问它能属于几个 Supplier。`without any purchase` 决定最小值 0；`only one supplier` 决定另一端恰为 1。
+**中文读题**：先固定一个 Supplier，问它能有几笔 Purchase；再固定一笔 Purchase，问它能属于几个 Supplier。`without any purchase` 决定最小值 0；`only one supplier` 把供应商上限限定为 1。题目要求结合业务常识，按已发生采购必须有供应商取下限 1，官解为 1..1，S6 51:28–52:12 也把已发生采购解释为至少一名且最多一名供应商。若记录的是允许不选供应商的采购草稿，下限需要重判。
 
 > **English original question**
 >
@@ -2944,7 +3266,7 @@ EmployeeDegree(empID*, degree)      ← 复合主键 (empID, degree)
 **从零读实现（笔记补充）**：这里是 SQLite 教学演示，不是讲义原题，也不是 Access 原样代码。把数据放进表后，要回答三问：曲奇卖给谁/成本多少、截至某日两笔销售还欠多少、每笔收款还有多少未应用。下面先讲语法和数据，再给查询；折叠块给完整可运行 Python 脚本，只依赖标准库 `sqlite3`。
 
 - `CREATE TABLE`创建表；本例TEXT存文字/日期字符串，INTEGER用于行号，NUMERIC用于数量/金额。SQLite的列型并非全面严格输入校验，不等同所有数据库。主键这里显式NOT NULL，避免普通SQLite文本主键可接受NULL的例外；复合键各列也非空。
-- `REFERENCES 表(列)` 是外键；本演示用 `PRAGMA foreign_keys=ON` 开启检查。`CHECK`检查一行给定条件，例如数量 `>0`、单价/成本 `>=0`；它们不自动核跨行应用总额。
+- `REFERENCES 表(列)` 是外键；本演示用 `PRAGMA foreign_keys=ON` 开启检查。`CHECK`检查一行给定条件，例如数量 `>0`、单价/成本 `>=0`；这些条件先用 `typeof(... )` 检查值存成整数或实数，再核正负。仅写 `CHECK(quantity>0)` 时，SQLite 可能接受无法转成数字的文本，例如 'oops'。这些检查只管一行，应用总额还要跨行核对。
 - `INSERT INTO ... VALUES` 加入给定顺序的一行；单引号包文字（包括日期字符串），逗号分列，分号结束语句。全部日期统一为补零的 `YYYY-MM-DD`，本例才可用文本次序比较日期；不能把任意日期文本都这样比。
 - 读查询先找 `FROM` 的起始表，再按 `JOIN ... ON` 条件拼相同编号的行；`AS s` 给表取短名，`s.saleID` 指这张表的列。接着看 `WHERE` 筛哪些行，`SELECT` 输出哪些列/计算，`AS revenue` 给输出列命名；这只是理解顺序，不承诺数据库物理执行顺序。
 
@@ -2959,8 +3281,8 @@ EmployeeDegree(empID*, degree)      ← 复合主键 (empID, degree)
 | Customer | 一名客户 | `custID` | — |
 | CashAccount | 一个现金资源账户 | `cashAccountID` | — |
 | Sale | 一次销售事件 | `saleID` | `empID`、`custID` 均 NOT NULL FK |
-| SaleLine | 一次销售中的一条商品明细 | `(saleID,lineNo)` | `saleID`、`itemID` 为 NOT NULL FK；数量严格为正，单价/成本可为0 |
-| CashReceipt | 一次收款事件 | `receiptID` | `cashAccountID`、`empID`、`custID` 为 NOT NULL FK；金额非负 |
+| SaleLine | 一次销售中的一条商品明细 | `(saleID,lineNo)` | `saleID`、`itemID` 为必填外键。数量须为正数，单价与成本可为 0 |
+| CashReceipt | 一次收款事件 | `receiptID` | `cashAccountID`、`empID`、`custID` 为 NOT NULL FK；金额为非负数 |
 | Duality | 一笔收款应用到一笔销售的一次分配 | `(saleID,receiptID)` | 两列均 FK；`amountApplied>0` |
 
 ```sql
@@ -2976,19 +3298,19 @@ CREATE TABLE Sale(
 );
 CREATE TABLE SaleLine(
   saleID TEXT NOT NULL REFERENCES Sale(saleID), lineNo INTEGER NOT NULL,
-  itemID TEXT NOT NULL REFERENCES Inventory(itemID), quantity NUMERIC NOT NULL CHECK(quantity>0),
-  unitPrice NUMERIC NOT NULL CHECK(unitPrice>=0), unitCost NUMERIC NOT NULL CHECK(unitCost>=0),
+  itemID TEXT NOT NULL REFERENCES Inventory(itemID), quantity NUMERIC NOT NULL CHECK(typeof(quantity) IN ('integer','real') AND quantity>0),
+  unitPrice NUMERIC NOT NULL CHECK(typeof(unitPrice) IN ('integer','real') AND unitPrice>=0), unitCost NUMERIC NOT NULL CHECK(typeof(unitCost) IN ('integer','real') AND unitCost>=0),
   PRIMARY KEY(saleID,lineNo)
 );
 CREATE TABLE CashReceipt(
-  receiptID TEXT NOT NULL PRIMARY KEY, receiptDate TEXT NOT NULL, amount NUMERIC NOT NULL CHECK(amount>=0),
+  receiptID TEXT NOT NULL PRIMARY KEY, receiptDate TEXT NOT NULL, amount NUMERIC NOT NULL CHECK(typeof(amount) IN ('integer','real') AND amount>=0),
   cashAccountID TEXT NOT NULL REFERENCES CashAccount(cashAccountID),
   empID TEXT NOT NULL REFERENCES Employee(empID), custID TEXT NOT NULL REFERENCES Customer(custID)
 );
 CREATE TABLE Duality(
   saleID TEXT NOT NULL REFERENCES Sale(saleID),
   receiptID TEXT NOT NULL REFERENCES CashReceipt(receiptID),
-  amountApplied NUMERIC NOT NULL CHECK(amountApplied>0),
+  amountApplied NUMERIC NOT NULL CHECK(typeof(amountApplied) IN ('integer','real') AND amountApplied>0),
   PRIMARY KEY(saleID,receiptID)
 );
 ```
@@ -3076,7 +3398,9 @@ GROUP BY r.receiptID, r.amount
 ORDER BY r.receiptID;
 ```
 
-本例得到 R1 余 0、R2 余 0、R3 余 20、未关联销售的 R4 余 1,000（该补例不再推断其具体业务性质）。`PRIMARY KEY`、`FOREIGN KEY`、`NOT NULL` 和 `CHECK(amountApplied>0)` 仍不足以保证金额守恒：还要在事务或触发器中检查每笔收款的应用合计不超过收款金额、每笔销售的应用合计不超过销售金额；标成已结清时才要求相等。若要保留同一销售–收款配对的多次冲销历史，应改用 `allocationID` 并增加生效时间，不能硬塞进当前双键粒度。
+本例得到 R1 余 0、R2 余 0、R3 余 20，未关联销售的 R4 余 1,000。样本里的每笔收款都有已登记客户，R4 只示范无应用记录。
+
+若业务还有银行放款等无客户收款，须放宽客户关联或增加付款方类别，再按不同来源设约束。`PRIMARY KEY`、`FOREIGN KEY`、`NOT NULL` 和 以及逐行的数值类型与正数检查，仍不足以保证金额守恒：还要在事务或触发器中检查每笔收款的应用合计不超过收款金额、每笔销售的应用合计不超过销售金额；标成已结清时才要求相等。若要保留同一销售–收款配对的多次冲销历史，应改用 `allocationID` 并增加生效时间，不能硬塞进当前双键粒度。
 
 <details><summary>完整复做：复制为 m04_sql_demo.py 后用 Python 运行（不需安装包）</summary>
 
@@ -3099,19 +3423,19 @@ CREATE TABLE Sale(
 );
 CREATE TABLE SaleLine(
   saleID TEXT NOT NULL REFERENCES Sale(saleID), lineNo INTEGER NOT NULL,
-  itemID TEXT NOT NULL REFERENCES Inventory(itemID), quantity NUMERIC NOT NULL CHECK(quantity>0),
-  unitPrice NUMERIC NOT NULL CHECK(unitPrice>=0), unitCost NUMERIC NOT NULL CHECK(unitCost>=0),
+  itemID TEXT NOT NULL REFERENCES Inventory(itemID), quantity NUMERIC NOT NULL CHECK(typeof(quantity) IN ('integer','real') AND quantity>0),
+  unitPrice NUMERIC NOT NULL CHECK(typeof(unitPrice) IN ('integer','real') AND unitPrice>=0), unitCost NUMERIC NOT NULL CHECK(typeof(unitCost) IN ('integer','real') AND unitCost>=0),
   PRIMARY KEY(saleID,lineNo)
 );
 CREATE TABLE CashReceipt(
-  receiptID TEXT NOT NULL PRIMARY KEY, receiptDate TEXT NOT NULL, amount NUMERIC NOT NULL CHECK(amount>=0),
+  receiptID TEXT NOT NULL PRIMARY KEY, receiptDate TEXT NOT NULL, amount NUMERIC NOT NULL CHECK(typeof(amount) IN ('integer','real') AND amount>=0),
   cashAccountID TEXT NOT NULL REFERENCES CashAccount(cashAccountID),
   empID TEXT NOT NULL REFERENCES Employee(empID), custID TEXT NOT NULL REFERENCES Customer(custID)
 );
 CREATE TABLE Duality(
   saleID TEXT NOT NULL REFERENCES Sale(saleID),
   receiptID TEXT NOT NULL REFERENCES CashReceipt(receiptID),
-  amountApplied NUMERIC NOT NULL CHECK(amountApplied>0),
+  amountApplied NUMERIC NOT NULL CHECK(typeof(amountApplied) IN ('integer','real') AND amountApplied>0),
   PRIMARY KEY(saleID,receiptID)
 );"""
 input_sql = r"""INSERT INTO Inventory VALUES ('C01','Cookie',8),('X01','Example item',0);
@@ -3966,7 +4290,7 @@ flowchart TD
     S1["<b>Step 1</b><br/>每个类 → 一张表<br/>属性 → 列；实例 → 行"]
     S1 --> Q1{"看这条关联<br/>按顺序看两端完整 min/max"}
 
-    Q1 -->|"两侧都是 *<br/>（多对多）"| S2["<b>Step 2</b><br/>❗ 必须建<b>独立关联表</b><br/>主键 = 两个主键的<b>复合主键</b>"]
+    Q1 -->|"两侧都是 *<br/>（多对多）"| S2["<b>Step 2</b><br/>❗ 必须建<b>独立关联表</b><br/>每对仅一行才用双列复合键<br/>可重复则另辨事件"]
     Q1 -->|"两侧都是 1..1"| S3["<b>Step 3</b><br/>任选一侧过账外键<br/>外键加 UNIQUE；最小参与另核<br/>❌ 不要两边都过<br/>❌ 不要建表"]
     Q1 -->|"恰好一侧是 1..1"| S4["<b>Step 4</b><br/>从 <b>1..1</b> 那一侧<br/>过账主键到对面表<br/>❌ 不要建表"]
     Q1 -->|"一侧或两侧是 0..1<br/>且不属于以上"| Q5{"<b>Step 5</b><br/>从 0..1 侧过账后<br/>载荷高不高？"}
@@ -4217,7 +4541,7 @@ flowchart TD
 | 原则 | 讲义定义 | 违例长什么样 | 讲义页 |
 |---|---|---|---|
 | **实体完整性** | 主键**不能为 null** | 有一行没有主键值 | p.39 |
-| **参照完整性** | 外键**要么 null，要么精确匹配**来源表的某个主键 | 外键值 234567 在来源表里不存在 | p.39–40 |
+| **参照完整性** | 非空外键须匹配来源表的键。只有业务可选且列允许空时才可为 Null。 | 外键值 234567 在来源表里不存在 | p.39–40 |
 | **一事一地** | $\text{fact}=(\text{候选键值},\text{另一属性值})$，每个事实只出现一次一处 | ① **一事多地**：同一 CustomerID 对应的同一客户姓名/地址在多笔销售行重复（p.41）；不同ID的同名客户另判<br/>② **多事一地**：一格写 "BS,MBA"（**重复组**）（p.42） | p.39, 41, 42 |
 
 ### 4.6 ⭐ 五步转换法速查（考前一页纸）
@@ -4225,7 +4549,7 @@ flowchart TD
 | 情形 | 多重性模式 | 做法 | 讲义页 |
 |---|---|---|---|
 | **Step 1** | — | 每个类建立一张表 | p.43 |
-| **Step 2 多对多** | `0..*—0..*` `0..*—1..*` `1..*—0..*` `1..*—1..*` | ❗**必须建独立关联表**，主键 = **复合主键** | p.45–47 |
+| **Step 2 多对多** | `0..*—0..*` `0..*—1..*` `1..*—0..*` `1..*—1..*` | 建关联表。每对一行用双列复合键，可多次则另辨事件。 | p.45–47 |
 | **Step 3 一对一** | `1..1—1..1` | 任选一侧过账外键 | p.48–49 |
 | **Step 4 有一侧 1..1** | `0..*—1..1` `1..*—1..1` `1..1—0..*` `1..1—1..*` `0..1—1..1` `1..1—0..1` | **从 `1..1` 那侧过账**主键到对面表；❌不要建表 | p.50–52 |
 | **Step 5 剩下的 0..1** | `0..*—0..1` `1..*—0..1` `0..1—0..*` `0..1—1..*` `0..1—0..1` | 比较载荷：高选 5A，低选 5B | p.53 |
@@ -4830,7 +5154,7 @@ Duality(
   PRIMARY KEY(saleID, receiptID)
 )
 ```
-复合主键保证同一 Sale–Receipt 配对当前只出现一次；两个 FK 保证端点存在。局部键约束仍不保证金额守恒：还必须检查每笔收款的 `SUM(amountApplied) <= CashReceipt.amount`，每笔销售的 `SUM(amountApplied) <= Sale` 明细总额；只有标为结清时才要求相等。若要保留同一配对的多次重分配/冲销历史，则改用 `allocationID` 与有效时间。
+复合主键保证同一 Sale–Receipt 配对当前只出现一次；两个 FK 保证端点存在。局部键约束仍不保证金额守恒：还必须检查每笔收款的 `SUM(amountApplied) <= CashReceipt.amount`，每笔销售的 `SUM(amountApplied) <= Sale.amount`（本题的简化表直接存销售金额；若用 §2.9.9 的明细结构，改为按 SaleLine 汇总）；只有标为结清时才要求相等。若要保留同一配对的多次重分配/冲销历史，则改用 `allocationID` 与有效时间。
 
 **为什么不能过账外键**（讲义 p.45）：*"If you post a foreign key in **either** direction, redundancy will be a problem for many-to-many associations."*
 
@@ -4902,6 +5226,66 @@ Allocation:  Duality(S001, R001, amountApplied 10)
 ---
 
 ## 8. 讲义页码映射
+
+按 **Week 4 PPT.pptx** 的物理页序定位。
+
+| 源页 | 课件页标题 | 正文入口 | 原图或页面处置 |
+| --- | --- | --- | --- |
+| W4 p.1 | AC6761 Artificial Intelligence Accounting | [[#p.1 · 本讲标题\|p.1]] | 封面 |
+| W4 p.2 | Traditional Double-Entry Bookkeeping​ | [[#p.2 · 复式记账回答财务结果\|p.2]] | 文字内容，正文就地说明 |
+| W4 p.3 | Strengths and limitations | [[#p.3 · 复式记账的强项和边界\|p.3]] | 文字内容，正文就地说明 |
+| W4 p.4 | ​​REA Accounting Model: A Paradigm Shift | [[#p.4 · REA 按资源、事件、参与者记事\|p.4]] | 文字内容，正文就地说明 |
+| W4 p.5 | Strengths and limitations | [[#p.5 · REA 的用途与实施成本\|p.5]] | 文字内容，正文就地说明 |
+| W4 p.6 | Accounting Systems for Economic Storytelling | [[#p.6 · 会计怎样留下经济活动记录\|p.6]] | W4-S006 |
+| W4 p.7 | Histories | [[#p.7 · 课件列的几个历史节点\|p.7]] | 文字内容，正文就地说明 |
+| W4 p.8 | Criticism | [[#p.8 · 谁需要看到哪些细节\|p.8]] | 文字内容，正文就地说明 |
+| W4 p.9 | Re-Inventing Accounting Systems | [[#p.9 · McCarthy 从业务事件重想会计\|p.9]] | 文字内容，正文就地说明 |
+| W4 p.10 | Bill McCarthy’s example | [[#p.10 · 同一次销售可连到收入和成本\|p.10]] | 文字内容，正文就地说明 |
+| W4 p.11 | Example of Economic Story Telling | [[#p.11 · 从公司 A 与 B 拆出两件事\|p.11]] | 文字内容，正文就地说明 |
+| W4 p.12 | Details | [[#p.12 · 曲奇例补齐时间、地点与人\|p.12]] | 文字内容，正文就地说明 |
+| W4 p.13 | Double-Entry System | [[#p.13 · 曲奇交付原空表：先自己记\|p.13]] | W4-S013 |
+| W4 p.14 | Double-Entry System | [[#p.14 · 曲奇交付：成本和收入两组分录\|p.14]] | W4-S014 |
+| W4 p.15 | Double-Entry System | [[#p.15 · 曲奇收款原空表：辨认已确认收入\|p.15]] | W4-S015 |
+| W4 p.16 | Double-Entry System | [[#p.16 · 曲奇收款：现金换应收\|p.16]] | W4-S016 |
+| W4 p.17 | REA | [[#p.17 · 沿 REA 三格读对象和事件\|p.17]] | W4-S017 |
+| W4 p.18 | Duality | [[#p.18 · 二元性把给出和取得配对\|p.18]] | 文字内容，正文就地说明 |
+| W4 p.19 | Give / Get duality（图） | [[#p.19 · 沿给出和取得两排看关系\|p.19]] | W4-S019 |
+| W4 p.20 | Conceptual model | [[#p.20 · 概念模型先决定要记录什么\|p.20]] | 文字内容，正文就地说明 |
+| W4 p.21 | Logical model | [[#p.21 · 逻辑模型再选数据组织方式\|p.21]] | 文字内容，正文就地说明 |
+| W4 p.22 | Physical database model | [[#p.22 · 物理模型落实到特定软件\|p.22]] | 文字内容，正文就地说明 |
+| W4 p.23 | Conceptual modeling with UML class diagrams | [[#p.23 · 类图的四种构件\|p.23]] | 文字内容，正文就地说明 |
+| W4 p.24 | Conceptual Modeling Constructs | [[#p.24 · 类收同类实例\|p.24]] | 文字内容，正文就地说明 |
+| W4 p.25 | UML Class Diagrams: Classes | [[#p.25 · 类框从上到下读三格\|p.25]] | 文字内容，正文就地说明 |
+| W4 p.26 | Conceptual Modeling Constructs | [[#p.26 · 区分关联、关联类与具象化关联\|p.26]] | 文字内容，正文就地说明 |
+| W4 p.27 | Example Classes and Association | [[#p.27 · 学生和课程怎样通过选课连接\|p.27]] | W4-S027 |
+| W4 p.28 | Conceptual Modeling Constructs | [[#p.28 · 属性记录什么，以及哪些值可算\|p.28]] | 文字内容，正文就地说明 |
+| W4 p.29 | Conceptual Modeling Constructs | [[#p.29 · 最少和最多分别问什么\|p.29]] | 文字内容，正文就地说明 |
+| W4 p.30 | Examples: Customer, Sale | [[#p.30 · Customer 和 Sale：从哪边读标记\|p.30]] | W4-S030 |
+| W4 p.31 | Example: Employee/Department multiplicities | [[#p.31 · 员工与部门：换方向再读一次\|p.31]] | 文字内容，正文就地说明 |
+| W4 p.32 | Interpret Multiplicities: Exercise 1 | [[#p.32 · 练习 1：每笔销售与收款恰好相配\|p.32]] | W4-S032 |
+| W4 p.33 | Interpret Multiplicities: Exercise 2 | [[#p.33 · 练习 2：允许先销售后收一次款\|p.33]] | W4-S033 |
+| W4 p.34 | Interpret Multiplicities: Exercise 3 | [[#p.34 · 练习 3：允许分期但不合并\|p.34]] | W4-S034 |
+| W4 p.35 | Interpret Multiplicities: Exercise 4 | [[#p.35 · 练习 4：分期、合并与非销售收款\|p.35]] | W4-S035 |
+| W4 p.36 | Relational Database Model | [[#p.36 · 关系数据库靠表与键连接\|p.36]] | 文字内容，正文就地说明 |
+| W4 p.37 | Relational Database Model | [[#p.37 · 行是一条记录，列规定记录什么\|p.37]] | 文字内容，正文就地说明 |
+| W4 p.38 | Foreign Key Example | [[#p.38 · 销售员外键怎么查\|p.38]] | W4-S038 |
+| W4 p.39 | Relational Database Model | [[#p.39 · 完整性与一事一地\|p.39]] | 文字内容，正文就地说明 |
+| W4 p.40 | Referential Integrity Example | [[#p.40 · 参照完整性：对比合法与悬空编号\|p.40]] | W4-S040 |
+| W4 p.41 | One Fact-One Place Violations | [[#p.41 · 一个事实重复写在多行\|p.41]] | W4-S041 |
+| W4 p.42 | One Fact-One Place Violations | [[#p.42 · 多个事实挤进一个格\|p.42]] | W4-S042 |
+| W4 p.43 | Converting Conceptual to Relational | [[#p.43 · 转换第一步：每个类先建一张表\|p.43]] | 文字内容，正文就地说明 |
+| W4 p.44 | Association Conversion | [[#p.44 · 先看最大数，再看是否必有\|p.44]] | 文字内容，正文就地说明 |
+| W4 p.45 | Association Conversion | [[#p.45 · 多对多用独立关联表\|p.45]] | 文字内容，正文就地说明 |
+| W4 p.46 | Example: Many-Many Associations | [[#p.46 · 多对多错误图：两种方向都挤格\|p.46]] | W4-S046 |
+| W4 p.47 | Example: Many-Many Association | [[#p.47 · 多对多正确图：用五行记录关联\|p.47]] | W4-S047 |
+| W4 p.48 | Association Conversion | [[#p.48 · 双必选一对一：只选一个外键方向\|p.48]] | 文字内容，正文就地说明 |
+| W4 p.49 | Example: 1..1 – 1..1 | [[#p.49 · 一对一原图：两种做法选一种\|p.49]] | W4-S049 |
+| W4 p.50 | Association Conversion | [[#p.50 · 有一个恰好一端：从该端取主键\|p.50]] | 文字内容，正文就地说明 |
+| W4 p.51 | Example 1: Posting From a 1..1 | [[#p.51 · 销售与客户：销售表留 CustomerID\|p.51]] | W4-S051 |
+| W4 p.52 | Example 2: Posting FROM a 1..1 | [[#p.52 · 销售与收款：销售表留 CR-ID\|p.52]] | W4-S052 |
+| W4 p.53 | Association Conversion | [[#p.53 · 可选一端的外键和载荷\|p.53]] | 文字内容，正文就地说明 |
+
+### 课堂时间与跨材料定位
 
 > 逐页可查。p.1 为封面；S3/S4 覆盖 p.2–29，S6 覆盖 p.30–53。各源时钟独立记录；S6 在 `01:13:52` 切换至 M05。白板、讲义页与 Case 4 外部原题的来源分别标明。
 

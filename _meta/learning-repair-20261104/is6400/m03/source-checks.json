@@ -1,0 +1,292 @@
+{
+  "schema": "note-source-checks-v1",
+  "candidate_sha256": "72e70333762a1975bb60201dd3a1d4b8cb59667de97199b213f55eaac1ea2024",
+  "sources": {
+    "W3-pdf": {
+      "path": "../../../../IS6400_Business_Data_Analytics/course_files_export/IS6400-W3-DataMining.pdf",
+      "sha256": "8b2430c4e45a38f0dee0d1bd62a57c7f09e9df942ee35227f651f4cb85b6926c"
+    },
+    "M03-transcript": {
+      "path": "../../../../IS6400_Business_Data_Analytics/transcripts/M03-transcript.txt",
+      "sha256": "b6f4c0dba0da8270f7f2fda900b58a4d74f912f50e0d2b6ec92e369d2439bc4e"
+    },
+    "L2-prior-written-model": {
+      "path": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\course_files_export\\L2-Linear_Regression.pdf",
+      "sha256": "04ed352014cf2e4eadf63e091a7b087b798c2b171c2944857441b180b2a66790"
+    },
+    "original-page-6": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m03\\source-assets\\source-p006.png",
+      "sha256": "13604d8f8c3212626446b345b93c759d71bbc15b30760e3ca30536a220de1d41"
+    },
+    "original-page-29": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m03\\source-assets\\source-p029.png",
+      "sha256": "27910372289f2be39c84783217e88cbf306f97204b1c05ae8d3f78d9e6cc638a"
+    },
+    "original-page-64": {
+      "path": "E:\\app-data\\codex\\scratchpad\\cityu-workflow-rollout-20261026\\dispatch-is6400-m03\\source-assets\\source-p064.png",
+      "sha256": "6ec588f63275261159b3adda355746e965397fb4106b2182b92e671008a673af"
+    }
+  },
+  "questions": [
+    {
+      "id": "P6",
+      "section": "2.1",
+      "source_id": "W3-pdf",
+      "original": "You work for a supermarket, which has an ERP that documents the companies’ daily transactions. Your boss wants to know the operation status of the company. You are assigned to give him a report.",
+      "answers": [
+        {
+          "id": "1-1",
+          "chinese": "先核交易单位、窗口、币种和重复；再报告数、分组表和趋势图。局部表不能计算全公司经营结论。",
+          "english": "Verify the transaction unit, time window, currency and duplicates; then report numerical summaries, grouped tables and trends. The partial screenshot cannot establish company-wide totals or the best store."
+        }
+      ],
+      "source_page": 6,
+      "source_status": "reference_answer_complete",
+      "limits": "No independent official answer is invented; source slide examples and note-authored English answers remain separate."
+    },
+    {
+      "id": "P12",
+      "section": "2.4",
+      "source_id": "W3-pdf",
+      "original": "Student Attendance? (attend: 1, absent: 0)\n\nStudent 1 and student 2 come together?\n- (student 1 attendance, student 2 attendance)\n- (1,1)->come together, (1,0)->only student 1 comes, (0,1)->only student 2 comes, (0,0) both are absent\n\nN student come together? We need a vector of N binaries.\n\nWe need two asymmetric binary attributes to represent one ordinary binary attribute.\nAssociation analysis uses asymmetric attributes.",
+      "answers": [
+        {
+          "id": "2-1",
+          "chinese": "出勤为 1，缺席为 0；未知状态要另记，不能假装缺席。",
+          "english": "Encode observed attendance as 1 and observed absence as 0; record unknown attendance separately."
+        },
+        {
+          "id": "2-2",
+          "chinese": "共同出现是 (1,1)，另外两种不一致要保留；(0,0) 只是共同缺席，不证明同行。",
+          "english": "The pair (1,1) indicates co-attendance; retain the unequal pairs, while (0,0) does not establish that the students came together."
+        },
+        {
+          "id": "2-3",
+          "chinese": "N 人各用一个二元位；任务若只计出现，又想两类别都作为事件，才分别用两列。",
+          "english": "Represent N students by N binary components. Two indicator columns can preserve both categories as presence events when the chosen analysis counts only presence."
+        }
+      ],
+      "source_page": 12,
+      "source_status": "reference_answer_complete",
+      "limits": "No independent official answer is invented; source slide examples and note-authored English answers remain separate."
+    },
+    {
+      "id": "P19",
+      "section": "2.6.1",
+      "source_id": "W3-pdf",
+      "original": "What kinds of data quality problems?\nHow can we detect problems with the data?\nWhat can we do about these problems?\n\nExamples of data quality problems:\n- Noise and outliers\n- Missing values\n- Duplicate data",
+      "answers": [
+        {
+          "id": "3-1",
+          "chinese": "问题包括噪声／离群、缺失和重复；离群不自动是错。",
+          "english": "Problems include noise and outliers, missing values and duplicate records; an outlier is not automatically an error."
+        },
+        {
+          "id": "3-2",
+          "chinese": "查范围、重复测量和来源；按对象键核重复、按缺失标记计数。",
+          "english": "Check plausible ranges, repeated measurements and provenance; inspect entity keys for duplicates and count recorded missing values."
+        },
+        {
+          "id": "3-3",
+          "chinese": "先回源辨原因，再说明修正、标记、删除或填补的代价；模型所需拟合仅在训练侧。",
+          "english": "Investigate the cause before correcting, flagging, deleting or imputing, and document the trade-offs; fit model preprocessing on training data only."
+        }
+      ],
+      "source_page": 19,
+      "source_status": "reference_answer_complete",
+      "limits": "No independent official answer is invented; source slide examples and note-authored English answers remain separate."
+    },
+    {
+      "id": "P29",
+      "section": "2.11",
+      "source_id": "W3-pdf",
+      "original": "Data from 49 top liberal arts and research universities can be used to answer questions:\n- Is Top 10% HS related to Graduation %?\n- Is Acceptance Rate related to Expenditures/Student?\n- Is Median SAT related to Acceptance Rate?",
+      "answers": [
+        {
+          "id": "4-1",
+          "chinese": "第一问需把两列按同校配对，查散点和相关；完整 49 校表缺失，不能给真实方向／系数。",
+          "english": "Pair Top 10% HS with Graduation % for the same schools and inspect a scatterplot and correlation. Without the full 49-school table, the direction and coefficient remain unverified."
+        },
+        {
+          "id": "4-2",
+          "chinese": "第二问同样以录取率和生均支出配对，核离群与学校类型，不凭常识猜正负。",
+          "english": "Pair Acceptance Rate with Expenditures/Student, checking influential schools and institution type; the missing table prevents a verified sign or magnitude."
+        },
+        {
+          "id": "4-3",
+          "chinese": "第三问查 SAT 与录取率的共同有效校，四校自编例不是该题答案。",
+          "english": "Pair Median SAT with Acceptance Rate on jointly observed schools. The invented four-school example is not an answer to this source-data question."
+        }
+      ],
+      "source_page": 29,
+      "source_status": "full_dataset_blocked_method_answer",
+      "limits": "No independent official answer is invented; source slide examples and note-authored English answers remain separate."
+    },
+    {
+      "id": "P34",
+      "section": "2.12",
+      "source_id": "W3-pdf",
+      "original": "We may see positive correlation between the number of bank branches in a region and the total deposit amount, does that mean opening more branches will lead to more deposit?",
+      "answers": [
+        {
+          "id": "5-1",
+          "chinese": "不能由观察相关推出开网点效果；地区富裕可为共同原因，需明确干预、可信设计和限制。",
+          "english": "No. Regional wealth or reverse causation may explain the association. Define the branch-opening intervention and use a credible design with stated assumptions and uncertainty before estimating its effect."
+        }
+      ],
+      "source_page": 34,
+      "source_status": "reference_answer_complete",
+      "limits": "No independent official answer is invented; source slide examples and note-authored English answers remain separate."
+    },
+    {
+      "id": "P35",
+      "section": "2.13",
+      "source_id": "W3-pdf",
+      "original": "In this shopping basket, the shopper purchased a quart of orange juice, some bananas, dish detergent, some window cleaner, and a six pack of soda.\n\n1. How do the demographics of the neighborhood affect what customers buy?\n2. Is soda typically purchased with bananas?\n3. Does the brand of soda make a difference?\n4. Are window cleaning products purchased when detergent and orange juice are bought together?\n5. What should be in the basket but is not?",
+      "answers": [
+        {
+          "id": "6-1",
+          "chinese": "需人口与购物篮连接数据，分层比较；没有完整数据，不确定真实影响，更不能由关联证明人口因果。",
+          "english": "Link demographic and basket records for the same population and window and compare groups. The missing data prevent a verified relationship, and association alone does not identify a causal effect."
+        },
+        {
+          "id": "6-2",
+          "chinese": "一篮只证本次共同出现；数完整前件、后件、共同票和总票，再比较基率。",
+          "english": "One basket establishes only this occurrence. Count soda, bananas, joint baskets and all baskets, then compare confidence with the consequent base rate."
+        },
+        {
+          "id": "6-3",
+          "chinese": "品牌分开计数并保持同窗口／分母，缺品牌明细不能断言差异。",
+          "english": "Treat brands as separate items and compare their counts and association measures under the same scope; no brand effect can be verified from the illustration."
+        },
+        {
+          "id": "6-4",
+          "chinese": "以前件两项和洗窗品后件计共同票，零前件不能算置信度。",
+          "english": "Use detergent and orange juice jointly as the antecedent and window cleaner as the consequent; confidence requires a nonzero antecedent count and complete transactions."
+        },
+        {
+          "id": "6-5",
+          "chinese": "历史共现可生推荐候选，但缺项不证明漏扫或一定应该购买。",
+          "english": "Historical co-occurrence can suggest a recommendation; a missing item does not prove a scanning error or an obligation to buy it."
+        }
+      ],
+      "source_page": 35,
+      "source_status": "full_dataset_blocked_method_answer",
+      "limits": "No independent official answer is invented; source slide examples and note-authored English answers remain separate."
+    },
+    {
+      "id": "P43",
+      "section": "2.14.2",
+      "source_id": "W3-pdf",
+      "original": "A rule has to meet a minimum support and a minimum confidence. Both thresholds determined by the decision maker.\n\nWhy need both threshold?\n\nExample of a rule with high confidence & low support:\n- A cell phone company database contains all call destinations for each account\n- {Germany} → {France, Belgium} with confidence = 100%\n- Support is 1 of 100K accounts",
+      "answers": [
+        {
+          "id": "7-1",
+          "chinese": "支持门槛限制覆盖过少，置信门槛限制前件中的命中太低；一个账户并非总体规律。",
+          "english": "Support controls coverage and confidence controls the conditional hit rate. A perfect confidence based on one of 100,000 accounts is insufficient evidence of a general pattern; passing both thresholds still does not prove business value."
+        }
+      ],
+      "source_page": 43,
+      "source_status": "reference_answer_complete",
+      "limits": "No independent official answer is invented; source slide examples and note-authored English answers remain separate."
+    },
+    {
+      "id": "P44",
+      "section": "2.14.2",
+      "source_id": "W3-pdf",
+      "original": "Suppose we use:\n- Minimum support: 50%\n- Minimum confidence: 50%\n\n| TID | Items |\n|---|---|\n| 1 | Bread, Milk, Diapers |\n| 2 | Bread, Diapers |\n| 3 | Bread, Beer |\n| 4 | Milk, Eggs, Shoes |\n\nCheck support:\nCheck rules – only two survives:",
+      "answers": [
+        {
+          "id": "8-1",
+          "chinese": "同四票支持达到一半的项集为 Bread、Milk、Diapers 和 Bread+Diapers。",
+          "english": "The frequent itemsets are {Bread}, {Milk}, {Diapers} and {Bread, Diapers}, with supports 75%, 50%, 50% and 50%."
+        },
+        {
+          "id": "8-2",
+          "chinese": "只有二项集可拆成两条规则；两方向支持同 50%，置信分别 2/3 和 1。",
+          "english": "Only {Bread, Diapers} yields rules: Bread→Diapers has support 50% and confidence 2/3, while Diapers→Bread has support 50% and confidence 1; both meet the stated thresholds."
+        }
+      ],
+      "source_page": 44,
+      "source_status": "reference_answer_complete",
+      "limits": "No independent official answer is invented; source slide examples and note-authored English answers remain separate."
+    },
+    {
+      "id": "P46",
+      "section": "2.15",
+      "source_id": "W3-pdf",
+      "original": "Consider: Tea → Coffee\n\n| | Coffee | NOT Coffee | Total |\n|---|---|---|---|\n| Tea | 15 | 5 | 20 |\n| NOT Tea | 75 | 5 | 80 |\n| Total | 90 | 10 | 100 |\n\nConfidence = #(Coffee & Tea)/#(Tea) = 15/20 = 75%\nSeems good?",
+      "answers": [
+        {
+          "id": "9-1",
+          "chinese": "单看 75% 不够；咖啡基率 90%，提升度 5/6，为样本负关联，不能推出促销因果。",
+          "english": "Not as a positive-association rule: its confidence of 75% is below the coffee base rate of 90%, giving lift 5/6. This negative sample association does not establish a substitution effect or promotional impact."
+        }
+      ],
+      "source_page": 46,
+      "source_status": "reference_answer_complete",
+      "limits": "No independent official answer is invented; source slide examples and note-authored English answers remain separate."
+    },
+    {
+      "id": "P64",
+      "section": "2.18.2",
+      "source_id": "W3-pdf",
+      "original": "Show the joint distribution of the values of two attributes.\nExample: petal width and petal length\nWhat does this tell us?",
+      "answers": [
+        {
+          "id": "10-1",
+          "chinese": "横向两轴是花瓣宽／长，柱高数每格观察，能见联合集中区；单色没有类别标签，不能证明三个品种完全分开。",
+          "english": "The horizontal axes locate petal width and length and bar height counts observations in each cell. Concentrated regions describe the joint distribution; without class labels they do not prove perfect species separation."
+        }
+      ],
+      "source_page": 64,
+      "source_status": "reference_answer_complete",
+      "limits": "No independent official answer is invented; source slide examples and note-authored English answers remain separate."
+    },
+    {
+      "id": "M03-quiz-1",
+      "section": "2.3",
+      "source_id": "M03-transcript",
+      "original": "What are the variables in this model and what are the attribute types?",
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "输出是鸡蛋周销量",
+          "english": "weekly egg sales are the response"
+        }
+      ],
+      "source_status": "conditional_reference_from_prior_written_model_not_local_official_answer"
+    },
+    {
+      "id": "M03-quiz-2",
+      "section": "2.3",
+      "source_id": "M03-transcript",
+      "original": "Nominal, ordinal, interval, or ratio?",
+      "answers": [
+        {
+          "id": "2",
+          "chinese": "四种节日状态是名义类别",
+          "english": "The four holiday categories are nominal"
+        }
+      ],
+      "source_status": "conditional_reference_from_prior_written_model_not_local_official_answer"
+    },
+    {
+      "id": "M03-quiz-3",
+      "section": "2.3",
+      "source_id": "M03-transcript",
+      "original": "And what do the coefficients of these negative 170 and Easter 32,000 present?",
+      "answers": [
+        {
+          "id": "3",
+          "chinese": "固定其他输入，价格每增1美分",
+          "english": "Holding the other inputs fixed, a one-cent price increase"
+        }
+      ],
+      "source_status": "conditional_reference_from_prior_written_model_not_local_official_answer"
+    }
+  ],
+  "original_answer_units": 24,
+  "blocked_full_data_units": 8,
+  "p49": "No independent phone-faceplates question supplied; repeated milk-diaper-beer demonstration is explained separately."
+}

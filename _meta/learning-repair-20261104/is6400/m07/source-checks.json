@@ -1,0 +1,94 @@
+{
+  "schema": "note-source-checks-v1",
+  "sources": {
+    "lecture": {
+      "path": "../../../../IS6400_Business_Data_Analytics/course_files_export/IS6400-L8-time series1-new.pdf",
+      "sha256": "5583530f3b6165deb406841eb8e1f54cae384f4341037304d5a7490ffacca939",
+      "pages": 45,
+      "embedded_files": [],
+      "low_text_pages": [
+        2,
+        4,
+        5,
+        6,
+        8,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        25,
+        27,
+        28,
+        31,
+        32,
+        33,
+        35,
+        36,
+        37,
+        42,
+        43
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": "p22-window",
+      "page": 22,
+      "section": "p.22 · 移动平均的窗口",
+      "original": "So, how do you decide m? What if m=1 or 2?",
+      "options": {},
+      "answers": [
+        {
+          "id": "window",
+          "chinese": "用相同预测步长的顺序验证比较窗口",
+          "english": "Choose the window using chronological validation and compare forecasts at the same horizon."
+        },
+        {
+          "id": "m1-m2",
+          "chinese": "m=1 沿用最后值，m=2 平均最后两值",
+          "english": "With m=1 use the last observed value; with m=2 average the last two observations."
+        }
+      ],
+      "source_id": "lecture",
+      "source_status": "Original slide prompt. Note authored Chinese/English reference, not official answer."
+    },
+    {
+      "id": "p26-Q1",
+      "page": 26,
+      "section": "p.26 · 小测：11/1 与 3/1 预测",
+      "original": "if we use a moving average with a window size of 5, what is the predicted value for the demand on 11/1/2020?",
+      "options": {},
+      "answers": [
+        {
+          "id": "Q1",
+          "chinese": "Q1 要在预测 11/1 时只使用前 5 期",
+          "english": "The five-period moving-average forecast for 11/1/2020 is **188.10 units**"
+        }
+      ],
+      "source_id": "lecture",
+      "source_status": "Original slide prompt. Note authored Chinese/English reference, not official answer."
+    },
+    {
+      "id": "p26-Q2",
+      "page": 26,
+      "section": "p.26 · 小测：11/1 与 3/1 预测",
+      "original": "if we use exponential smoothing with alpha=0.2, what is the predicted value for the demand on 3/1/2020?",
+      "options": {},
+      "answers": [
+        {
+          "id": "Q2",
+          "chinese": "先初始化 $L_1=Y_1=266.0$",
+          "english": "With $L_1=Y_1=266.0$ and $\\alpha=0.2$"
+        }
+      ],
+      "source_id": "lecture",
+      "source_status": "Original slide prompt. Note authored Chinese/English reference, not official answer."
+    }
+  ],
+  "human_source_scope": "All 45 physical pages text+actual source-page panels examined. p22 prompt block and p26 two quizzes. Slide screenshots p4,p6,p25,p33,p40,p43 interpreted with limits; no hidden/OLE attachments in PDF; xlsx handled separately.",
+  "candidate_sha256": "fa7702ffbd6861f1360b212698b9c641e39f99a46caa97d08fa71858c6bad6ac"
+}

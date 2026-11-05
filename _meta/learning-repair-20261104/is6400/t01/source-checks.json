@@ -1,0 +1,164 @@
+{
+  "schema": "note-source-checks-v1",
+  "sources": {
+    "notebook": {
+      "path": "../../../../IS6400_Business_Data_Analytics/course_files_export/Tutorial 1 - Introduction to Jupyter Notebook_Prompt.ipynb",
+      "sha256": "2a8035fda73457dfe111d558744ef262a453b5dae9880f53e1544133221201af"
+    }
+  },
+  "questions": [
+    {
+      "id": "P1",
+      "source_id": "notebook",
+      "section": "2.1",
+      "original": "Write Python code to import the 'datetime' module, get the current time, store it in a variable named 'x', and print 'x'.",
+      "options": {},
+      "answers": [
+        {
+          "id": "P1",
+          "chinese": "导入 datetime，读取当前时刻，存入 x，再打印 x。当前时刻是运行时输入，不把源保存的 2025 时间写死。",
+          "english": "I import , assign  to , and print . The displayed value is the time obtained by this call."
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "source_id": "notebook",
+      "section": "2.2",
+      "original": "Write Python code to assign the string 'liujm8' to a variable named 'StudentID', and use string formatting (%s) to print the sentence 'My Student ID is: [StudentID]'.",
+      "options": {},
+      "answers": [
+        {
+          "id": "P2",
+          "chinese": "把演示字符串 liujm8 存为 StudentID，并按明确要求用 %s 插入句子。这里是源示例，不是本人身份。",
+          "english": "I assign the demonstration string  to  and use  formatting to print ."
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "source_id": "notebook",
+      "section": "2.3",
+      "original": "Using the pandas library, create an empty DataFrame named 'mytable' with columns 'id', 'name', and 'time'. Insert a new row at index 0 with the values: [StudentID, 'LIU Junming', x]. Finally, display the DataFrame.",
+      "options": {},
+      "answers": [
+        {
+          "id": "P3",
+          "chinese": "建名为 mytable 的空三列表，按 id/name/time 次序，把 StudentID、演示姓名和 x 放在标签 0，再显示表。",
+          "english": "I create  with columns ,  and , assign the three values to row label 0 in that order, and display the resulting one-row table."
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "source_id": "notebook",
+      "section": "2.4",
+      "original": "Write Python code using pandas and datetime to create a DataFrame named 'df'. The DataFrame should be created from a dictionary with the following keys and lists: 'id' [\"liujm8\", \"zhangx5\", \"wangy3\", \"chenz2\"], 'name' [\"LIU Junming\", \"ZHANG Xi\", \"WANG Yi\", \"CHEN Zhi\"], 'grade' [1, 2, 1, 3], 'score' [87, 92, 78, 88], and 'time' containing four datetime objects (2025-1-8 15:53:13, 2025-1-8 16:00:00, 2025-1-8 16:05:00, 2025-1-8 16:10:00). Display 'df'.",
+      "options": {},
+      "answers": [
+        {
+          "id": "P4",
+          "chinese": "按原文给出的五组等长列表建 df。每个列表的同一位置属于同一行；保留全部固定日期，不改成当前时间。",
+          "english": "I create  from the five specified lists. Values at the same list position form one row, producing four rows and five columns with the supplied fixed datetimes."
+        }
+      ]
+    },
+    {
+      "id": "P5",
+      "source_id": "notebook",
+      "section": "2.5",
+      "original": "Write Python code to generate descriptive statistics for the DataFrame 'df' using the .describe() method, assign the result to a variable 'stats', and display it.",
+      "options": {},
+      "answers": [
+        {
+          "id": "P5",
+          "chinese": "对已有 df 调用 describe，把结果保存为 stats 并显示。摘要列与字段受 dtype 和 pandas 版本影响，不能照抄旧输出当新运行。",
+          "english": "I assign  to  and display the summary. For the supplied score values, the count is 4, the mean is 86.25 and the sample standard deviation is about 5.909033; other included columns depend on dtype and version."
+        }
+      ]
+    },
+    {
+      "id": "P6",
+      "source_id": "notebook",
+      "section": "2.6",
+      "original": "Write a Python function named 'grade_category' that takes a 'score' as input. It should return \"Excellent\" if score >= 90, \"Good\" if >= 80, \"Pass\" if >= 60, and \"Fail\" otherwise. Use the pandas .apply() method to apply this function to the 'score' column of DataFrame 'df' and store the results in a new column called 'category'. Display 'df'.",
+      "options": {},
+      "answers": [
+        {
+          "id": "P6",
+          "chinese": "四档结果交给新列 category，并显示带新列的 df。",
+          "english": "I define  with descending thresholds and apply it to . For 87, 92, 78 and 88, the new category values are Good, Excellent, Pass and Good."
+        }
+      ]
+    },
+    {
+      "id": "P7",
+      "source_id": "notebook",
+      "section": "2.7",
+      "original": "Write Python code using numpy to perform the following operations: 1. Extract the \"score\" and \"grade\" columns from DataFrame 'df' and convert them to a numpy array named 'matrix'. Print it. 2. Get the transpose of 'matrix', store it in 'transpose', and print it. 3. Calculate the dot product of 'matrix' and 'transpose', store it in 'result', and print it. 4. Calculate the sum of 'matrix' along the columns (axis=0), store it in 'sum_matrix', and print it.",
+      "options": {},
+      "answers": [
+        {
+          "id": "P7.1",
+          "chinese": "第 1 项固定 score/grade 次序取数组 matrix 并打印",
+          "english": "1. I extract  then  into , a 4-by-2 NumPy array, and print it."
+        },
+        {
+          "id": "P7.2",
+          "chinese": "第 2 项存 transpose 并打印",
+          "english": "2. I assign  to  and print its 2-by-4 values."
+        },
+        {
+          "id": "P7.3",
+          "chinese": "第 3 项算 matrix 与 transpose 点积存 result 并打印",
+          "english": "3. I assign  to  and print the 4-by-4 product; its first entry is 7570."
+        },
+        {
+          "id": "P7.4",
+          "chinese": "第 4 项沿 axis=0 求两列和存 sum_matrix 并打印",
+          "english": "4. I assign  to  and print , the two separate column totals."
+        }
+      ]
+    },
+    {
+      "id": "Assignment-cell24",
+      "source_id": "notebook",
+      "section": "2.9",
+      "original": "## Tutorial 1:\n### Please complete the following questions using this jupyter notebook, SAVE it as HTML and upload to canvas.\n\n#### (1) (20 points) use the jupyter notebook to print the following information:\n#### Your student ID, your name, and your current time.\n#### (2) (20 points) put the information above into a pandas dataframe (the table in step 3)\n#### (3) (30 points) after a few seconds, add the second row of your id, name, time, expected scores\n#### (4) (30 points) Perform matrix operations with numpy:\n- Convert the score and grade columns into a numpy matrix.\n- Print the matrix and its transpose.\n- Calculate and print the sum of all scores.",
+      "options": {},
+      "answers": [
+        {
+          "id": "Q1",
+          "chinese": "先把自己的 ID、name 分别保存为两个变量，调用  存 first_time，再  三项。",
+          "english": "I obtain the current time during execution and print it together with my student ID and name."
+        },
+        {
+          "id": "Q2",
+          "chinese": "列顺序为 id、name、timestamp、score、grade",
+          "english": "I store the ID, name and first timestamp in row label 0 of a DataFrame. I state any additional score or grade columns needed for my interpretation of the later tasks."
+        },
+        {
+          "id": "Q3",
+          "chinese": "现在 table 有标签 0、1 两行",
+          "english": "After waiting a few seconds, I read the clock again and insert a second row at a new label, keeping the first row and including the expected score."
+        },
+        {
+          "id": "Q4.1",
+          "chinese": "若采用上述同一张教学表， 得两行 (80,1)/(90,1)。",
+          "english": "I select score followed by grade and convert those columns to a NumPy array. In this synthetic two-row example, its rows are (80,1) and (90,1)."
+        },
+        {
+          "id": "Q4.2",
+          "chinese": "打印 matrix 及 ；转置后两行分别为 (80,90)/(1,1)。",
+          "english": "I print the original array and its transpose. Transposition exchanges rows and columns, so the transposed rows are (80,90) and (1,1)."
+        },
+        {
+          "id": "Q4.3",
+          "chinese": "这里 “all scores” 只指分数。",
+          "english": "I sum only the score column, giving 170 for this synthetic example. I exclude grade codes from the score total."
+        }
+      ]
+    }
+  ],
+  "candidate_sha256": "250d86cfce7579a0b931c6524108a017e6a207a604eeba86b270ab9d0c3cf00e"
+}

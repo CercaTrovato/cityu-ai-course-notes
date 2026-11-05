@@ -1,0 +1,38 @@
+{
+  "source": "AC6761_Artificial_Intelligence_Accounting/assignment/practice/work/case4-relational/Case4-关系模型核验.sqlite",
+  "read_only_sha256": "37c2d714f32710df6686fd9f94676435d127d6f449c0184ef570f58848e39f20",
+  "query": "SELECT c.Name, COUNT(r.CashRNo), SUM(r.Amount), COALESCE(SUM(r.Amount),0) FROM Cashier AS c LEFT JOIN CashReceipt AS r ON c.CashierNo=r.CashierNo GROUP BY c.CashierNo,c.Name ORDER BY c.CashierNo",
+  "rows": [
+    [
+      "F",
+      2,
+      500,
+      500
+    ],
+    [
+      "G",
+      0,
+      null,
+      0
+    ],
+    [
+      "H",
+      0,
+      null,
+      0
+    ],
+    [
+      "I",
+      0,
+      null,
+      0
+    ],
+    [
+      "J",
+      2,
+      500,
+      500
+    ]
+  ],
+  "candidate_sha256": "cf39764bc4585030a6d99978eb5de40629198bcf796d2df24cde546f0eee1911"
+}

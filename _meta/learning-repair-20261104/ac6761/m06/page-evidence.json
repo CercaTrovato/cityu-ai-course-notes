@@ -1,0 +1,1367 @@
+{
+  "source": "AC6761_Artificial_Intelligence_Accounting/course_files_export/Week 6 PPT.pptx",
+  "source_sha256": "c8f16e009a1d4894a7360551ec38274d8acccd72dfdccfdc7609225017a3f092",
+  "candidate_sha256": "36ff26d03980954ab0e8c1d8b988f077e2af56b2b7b67bbb33ea1b01ec703fc2",
+  "author_visual_count": 92,
+  "staged_figures": 63,
+  "extra_figures": [],
+  "extraction": "PowerPoint COM 整页 PNG；个别媒体原字节另登记",
+  "pages": [
+    {
+      "physical_slide": 1,
+      "source_title": "AC6761 Artificial Intelligence Accounting",
+      "visual": "PowerPoint PNG s001.png 与联系图 1",
+      "speaker_notes": "",
+      "teaching_elements": "第 6 章 Accounting Information Querying with ACCESS。前半建表和关系，后半用同一批记录查行、列、连接及汇总。",
+      "candidate_anchor": "p.1 · 本讲标题",
+      "image_disposition": "封面",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 2,
+      "source_title": "Construct database using ACCESS",
+      "visual": "PowerPoint PNG s002.png 与联系图 1",
+      "speaker_notes": "",
+      "teaching_elements": "先将前讲的类、属性和多重性落成表、字段和键。第 3–28 页演示 Sale/Salesperson 和 Student/Course 两个结构。",
+      "candidate_anchor": "p.2 · 用 Access 建库",
+      "image_disposition": "建库导言",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 3,
+      "source_title": "Microsoft Access",
+      "visual": "PowerPoint PNG s003.png 与联系图 1",
+      "speaker_notes": "",
+      "teaching_elements": "新库默认打开数据表视图，适合直接录入行。设计视图先定字段名、类型和约束，例如 SaleDate 用日期类型后才可按时间比较。",
+      "candidate_anchor": "p.3 · 数据表视图和设计视图",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 4,
+      "source_title": "Microsoft Access",
+      "visual": "PowerPoint PNG s004.png 与联系图 1",
+      "speaker_notes": "",
+      "teaching_elements": "在左上 View 选择 Design View。切换前若表还没有正式名称，Access 会提示保存，下一页展示此步骤。",
+      "candidate_anchor": "p.4 · 从数据表切到设计",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 5,
+      "source_title": "Table Tools",
+      "visual": "PowerPoint PNG s005.png 与联系图 1",
+      "speaker_notes": "",
+      "teaching_elements": "原图左侧箭头指向 View，右下保存对话框默认 Table1。把本例表名改为 Sale，再继续设计字段，避免后续查询找错表。",
+      "candidate_anchor": "p.5 · 先命名再进入设计",
+      "image_disposition": "W6-S005",
+      "figure": {
+        "id": "W6-S005",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s005.png",
+        "sha256": "7b1eace148d29424eedb970af2df194d42a26e6edc016eaa7961eff5146fc6a1"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 6,
+      "source_title": "Microsoft Access Table Design View",
+      "visual": "PowerPoint PNG s006.png 与联系图 1",
+      "speaker_notes": "",
+      "teaching_elements": "截图上半 Section 1 是字段网格，下半 Section 2 是所选字段的属性。先点上面一行，再看下面改的是哪一个字段。",
+      "candidate_anchor": "p.6 · 设计视图的上下两区",
+      "image_disposition": "W6-S006",
+      "figure": {
+        "id": "W6-S006",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s006.png",
+        "sha256": "0e2a70413a13e9f91b59cecb1c05ed8be0c61bc51735b1d58cd49dda71b31f97"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 7,
+      "source_title": "Microsoft Access",
+      "visual": "PowerPoint PNG s007.png 与联系图 2",
+      "speaker_notes": "",
+      "teaching_elements": "第一列写字段名称，第二列选数据类型，右侧说明可留空。像 Amount 属金钱，选 Currency；编号只作匹配可选 Short Text。",
+      "candidate_anchor": "p.7 · 字段设计网格三列",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 8,
+      "source_title": "Microsoft Access",
+      "visual": "PowerPoint PNG s008.png 与联系图 2",
+      "speaker_notes": "",
+      "teaching_elements": "字段大小限制可存内容，格式控制显示，默认值是空白新行预填值，验证规则筛输入，Required 决定能否空。默认填 0 和允许 Null 是两个选择。",
+      "candidate_anchor": "p.8 · 下方属性要落实规则",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 9,
+      "source_title": "Example 1",
+      "visual": "PowerPoint PNG s009.png 与联系图 2",
+      "speaker_notes": "",
+      "teaching_elements": "图上 Sale 多行，下表 Salesperson 一行一人。红箭头用销售记录中的 654321 找 Francis；末两条无销售员值，是否允许取决于字段业务规则。",
+      "candidate_anchor": "p.9 · 例 1 先看记录的连接",
+      "image_disposition": "W6-S009",
+      "figure": {
+        "id": "W6-S009",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s009.png",
+        "sha256": "b3c2b8d8ea54818d149f5407cb254f728c125840339da65f6d4d5ad1c6fe0f43"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 10,
+      "source_title": "Example 1",
+      "visual": "PowerPoint PNG s010.png 与联系图 2",
+      "speaker_notes": "",
+      "teaching_elements": "日期可作时间比较，金额要计算且需要货币口径，编号只作识别就保留字符。看上去是数字的销售员号也可用文本，两个关联列要兼容。",
+      "candidate_anchor": "p.10 · 按字段用途挑数据类型",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 11,
+      "source_title": "Example 1",
+      "visual": "PowerPoint PNG s011.png 与联系图 2",
+      "speaker_notes": "",
+      "teaching_elements": "SaleID 和 Salesperson 用文本，日期用 Date/Time，金额用 Currency。Date 是容易冲突的名称，例子用 SaleDate 区分。",
+      "candidate_anchor": "p.11 · Sale 的四种字段",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 12,
+      "source_title": "Example Sale table design",
+      "visual": "PowerPoint PNG s012.png 与联系图 2",
+      "speaker_notes": "",
+      "teaching_elements": "截图上面逐行核 SaleID、SaleDate、Amount、Salesperson，下面看到被选字段的属性。SaleID 左边钥匙标明主键，其他字段没有这个标识。",
+      "candidate_anchor": "p.12 · 看设计成品核类型",
+      "image_disposition": "W6-S012",
+      "figure": {
+        "id": "W6-S012",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s012.png",
+        "sha256": "3583de3c2f96ebac96362eaff4eb39aa3d0053ce7d41f6ae0344e08bbc7e9ba9"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 13,
+      "source_title": "Field properties",
+      "visual": "PowerPoint PNG s013.png 与联系图 3",
+      "speaker_notes": "",
+      "teaching_elements": "Sale 中有销售员编号时，应能在 Salesperson 中找到对应值。空值须由业务及字段允许。字符 001 和数值 1 的显示与存储未必相同，先把两列类型设兼容。",
+      "candidate_anchor": "p.13 · 匹配看值也看字段类型",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 14,
+      "source_title": "Primary Key",
+      "visual": "PowerPoint PNG s014.png 与联系图 3",
+      "speaker_notes": "",
+      "teaching_elements": "点字段行最左灰格，再点工具栏 Primary Key。出现小钥匙时才确认选到了 SaleID。主键让一笔销售只能占一个编号。",
+      "candidate_anchor": "p.14 · 给 SaleID 设主键",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 15,
+      "source_title": "Save",
+      "visual": "PowerPoint PNG s015.png 与联系图 3",
+      "speaker_notes": "",
+      "teaching_elements": "用 File → Save 保存 Sale，再关闭表。随后建第二张表；关闭当前设计窗口不等于删掉它。",
+      "candidate_anchor": "p.15 · 保存第一张表",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 16,
+      "source_title": "Create Salesperson table",
+      "visual": "PowerPoint PNG s016.png 与联系图 3",
+      "speaker_notes": "",
+      "teaching_elements": "在 Create 里开 Table Design，填 SalespersonID、SalespersonName 和 SalespersonTelephoneNumber。课件此例保持默认类型和属性，给 SalespersonID 设主键，再按表名保存。",
+      "candidate_anchor": "p.16 · 新建 Salesperson 表",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 17,
+      "source_title": "Save",
+      "visual": "PowerPoint PNG s017.png 与联系图 3",
+      "speaker_notes": "",
+      "teaching_elements": "保存并关闭 Salesperson 的设计。此时两张表都在库中，尚未建立连接。",
+      "candidate_anchor": "p.17 · 保存第二张表",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 18,
+      "source_title": "Database window after designing Sale and Salesperson tables",
+      "visual": "PowerPoint PNG s018.png 与联系图 3",
+      "speaker_notes": "",
+      "teaching_elements": "截图左边导航同时列 Sale 和 Salesperson。先辨认两个表名，再到 Relationships 画外键线。",
+      "candidate_anchor": "p.18 · 在数据库列表确认两张表",
+      "image_disposition": "W6-S018",
+      "figure": {
+        "id": "W6-S018",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s018.png",
+        "sha256": "8562f704f73327ad1e746507699399f0a0a0c253ea230434efc309fa84d8a7f2"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 19,
+      "source_title": "Link between tables",
+      "visual": "PowerPoint PNG s019.png 与联系图 4",
+      "speaker_notes": "",
+      "teaching_elements": "建表只定义各列，外键含义要在 Database Tools → Relationships 指定。连接表的两个外键也须分别连来源表。",
+      "candidate_anchor": "p.19 · 用关系把外键告诉 Access",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 20,
+      "source_title": "Connecting Access Tables",
+      "visual": "PowerPoint PNG s020.png 与联系图 4",
+      "speaker_notes": "",
+      "teaching_elements": "截图先把两表加进关系布局，再拖 SalespersonID 到 Sale.Salesperson。在 Edit Relationships 核两边字段、参照完整性及是否级联更新，避免将无关列连上。",
+      "candidate_anchor": "p.20 · 拖主键到对应外键",
+      "image_disposition": "W6-S020",
+      "figure": {
+        "id": "W6-S020",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s020.png",
+        "sha256": "5f81c785bc55671e0c7d3e2f71ba0743320bca5607efb185c0d7b0554e06532a"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 21,
+      "source_title": "Link between tables",
+      "visual": "PowerPoint PNG s021.png 与联系图 4",
+      "speaker_notes": "",
+      "teaching_elements": "创建关系后，非空销售员外键要匹配已有销售员。若允许级联更新，改主键时相关外键也随之更新。级联删除是另一个选项，不能从“更新”推成“删除”。",
+      "candidate_anchor": "p.21 · 参照完整性与级联更新",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 22,
+      "source_title": "Connected Tables",
+      "visual": "PowerPoint PNG s022.png 与联系图 4",
+      "speaker_notes": "",
+      "teaching_elements": "截图两端显示一对多，Salesperson 是主键侧，Sale 是外键侧。先确定哪一表能有同号多行，再理解下一页的标记范围。",
+      "candidate_anchor": "p.22 · 关系图用 1 和无穷号标键侧",
+      "image_disposition": "W6-S022",
+      "figure": {
+        "id": "W6-S022",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s022.png",
+        "sha256": "f36262168aa84a89693da1b43c4d2440cf808d87686ef01641746f82851a6262"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 23,
+      "source_title": "Link between tables",
+      "visual": "PowerPoint PNG s023.png 与联系图 4",
+      "speaker_notes": "",
+      "teaching_elements": "这里 1 表示该字段值在销售员表只存一次，∞ 表示可在 Sale 多次出现。标记不告诉你每位销售员是否至少参与一单，也不说明字段可不可以留空。",
+      "candidate_anchor": "p.23 · Access 标记与 UML 多重性",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 24,
+      "source_title": "Example 2",
+      "visual": "PowerPoint PNG s024.png 与联系图 4",
+      "speaker_notes": "",
+      "teaching_elements": "新建 Student、Course 和 Takes，选课成绩放关联表。一个学生可选多门，一门也可有多名学生。用两个主键组成配对；若允许同一学生多次修同课，还要另辨学期等粒度。",
+      "candidate_anchor": "p.24 · 例 2：把 Student/Course 多对多拆开",
+      "image_disposition": "W6-S024",
+      "figure": {
+        "id": "W6-S024",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s024.png",
+        "sha256": "0dcf062d0b31b4740671a8aee9aea7f1244dda4c2cff47e9fe28646563c23b5a"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 25,
+      "source_title": "Concatenated primary key",
+      "visual": "PowerPoint PNG s025.png 与联系图 5",
+      "speaker_notes": "",
+      "teaching_elements": "先点 StudentID 左边灰格，再按 Shift 选 CourseID，然后点钥匙。要选中两行，避免误把单一学生编号当唯一。",
+      "candidate_anchor": "p.25 · 在 Access 选两个字段作一把键",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 26,
+      "source_title": "（无标题，StudentTakesCourse 复合键设计截图）",
+      "visual": "PowerPoint PNG s026.png 与联系图 5",
+      "speaker_notes": "",
+      "teaching_elements": "图中 StudentID、CourseID 左侧同时有钥匙，Grade Earned 只描述一次选课。两字段是共同主键，分别也是外键。",
+      "candidate_anchor": "p.26 · 核复合键的两个钥匙",
+      "image_disposition": "W6-S026",
+      "figure": {
+        "id": "W6-S026",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s026.png",
+        "sha256": "119c6dc39c335fbb99963978cba205d5f0e49be479a76fe4ccc6e5664cdbc3cf"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 27,
+      "source_title": "Relationships",
+      "visual": "PowerPoint PNG s027.png 与联系图 5",
+      "speaker_notes": "",
+      "teaching_elements": "关闭已打开的表，加入三表。StudentID 从 Student 拖到 Takes，CourseID 从 Course 拖到 Takes。每条关系检查端点字段。",
+      "candidate_anchor": "p.27 · 从两张主表连到 Takes",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 28,
+      "source_title": "Relationships between tables versus relationships between classes",
+      "visual": "PowerPoint PNG s028.png 与联系图 5",
+      "speaker_notes": "",
+      "teaching_elements": "截图中 StudentTakesCourse 居中，两端各有一条一对多。固定一名学生从中间表取所有课程；固定一门课也可反查学生。",
+      "candidate_anchor": "p.28 · 一个类间多对多变两条表间一对多",
+      "image_disposition": "W6-S028",
+      "figure": {
+        "id": "W6-S028",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s028.png",
+        "sha256": "b81783ec140d5b5d545c0be88c23a6bb7ec7d5c979113395e226f450f7b70eac"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 29,
+      "source_title": "Information Querying using ACCESS",
+      "visual": "PowerPoint PNG s029.png 与联系图 5",
+      "speaker_notes": "",
+      "teaching_elements": "建库部分结束。先在第 30–53 页学会筛行、挑列、拼表和汇总，再在第 54–84 页照网格操作。",
+      "candidate_anchor": "p.29 · 用 Access 查信息分隔页",
+      "image_disposition": "查询分隔",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 30,
+      "source_title": "What is Querying?",
+      "visual": "PowerPoint PNG s030.png 与联系图 5",
+      "speaker_notes": "",
+      "teaching_elements": "问“客户 C-2 付了哪些款”要筛行；问“只显示编号和姓名”要挑列；找销售员名字要连表。还可计算每笔明细金额或汇总结果。",
+      "candidate_anchor": "p.30 · 查询先把问题翻成动作",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 31,
+      "source_title": "Three Query Languages",
+      "visual": "PowerPoint PNG s031.png 与联系图 6",
+      "speaker_notes": "",
+      "teaching_elements": "关系代数描述动作，SQL 用语句写动作，QBE 用界面网格选择字段和条件。三种写法可回答同一业务问题，不应因换界面改变结果。",
+      "candidate_anchor": "p.31 · 关系代数、SQL 与 QBE",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 32,
+      "source_title": "Relational Algebra",
+      "visual": "PowerPoint PNG s032.png 与联系图 6",
+      "speaker_notes": "",
+      "teaching_elements": "Select 挑记录行，Project 留需要的列，Join 用共同的字段值连接表。后面 SQL 中 SELECT 关键字反而是挑列，筛行看 WHERE。",
+      "candidate_anchor": "p.32 · Select、Project、Join 各处理什么",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 33,
+      "source_title": "Example Tables (Incomplete Enterprise Database) from Dunn & McCarthy working paper",
+      "visual": "PowerPoint PNG s033.png 与联系图 6",
+      "speaker_notes": "",
+      "teaching_elements": "原图有 Sale、Salesperson、库存销售明细、销售收款分配、Cash、Cash Receipt、Customer。例：S-2 由 C-2 买，经 E-10 销售；分配表还告诉它被 RA-1、RA-5 部分冲销。附件另有 Inventory，不是本图第八张。",
+      "candidate_anchor": "p.33 · 查询例库先认七张可见表",
+      "image_disposition": "W6-S033",
+      "figure": {
+        "id": "W6-S033",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s033.png",
+        "sha256": "39f20965a90b356bcc6a22bfc692aff4fa71fb5773b15b974243db5441aa24f5"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 34,
+      "source_title": "Relational Algebra SELECT",
+      "visual": "PowerPoint PNG s034.png 与联系图 6",
+      "speaker_notes": "",
+      "teaching_elements": "在右上 Cash Receipt 逐行筛 Customer Number 为 C-2，保留所有列。下表是 RA-1、RA-2、RA-5；RA-2 虽然同客户，却冲 S-4，不能把客户层筛选当销售层配对。",
+      "candidate_anchor": "p.34 · 关系代数筛 C-2 的全部收款",
+      "image_disposition": "W6-S034",
+      "figure": {
+        "id": "W6-S034",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s034.png",
+        "sha256": "1e688e706104d0f08812e2f360103cd3583d6f455f936b3da9602e87325b1502"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 35,
+      "source_title": "Relational Algebra PROJECT",
+      "visual": "PowerPoint PNG s035.png 与联系图 6",
+      "speaker_notes": "",
+      "teaching_elements": "只从 Customer 留 Customer#、Name、SP#，去掉 A/R Amt。下表仍有五名客户。若要销售员本人的其他字段，才需要拼第二张表。",
+      "candidate_anchor": "p.35 · 关系代数挑客户的三列",
+      "image_disposition": "W6-S035",
+      "figure": {
+        "id": "W6-S035",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s035.png",
+        "sha256": "a5de9cc7a1211fbdce43a95e2857d56c460ddb56efbeb3c5c74e921df37c30fd"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 36,
+      "source_title": "Join Types",
+      "visual": "PowerPoint PNG s036.png 与联系图 6",
+      "speaker_notes": "",
+      "teaching_elements": "图中中间重叠代表内连接。左外连接保留左侧全部，右外连接反过来。键若一对多，一条左行可输出多条；维恩图只说明保留范围。",
+      "candidate_anchor": "p.36 · 内连接只留匹配，外连接保留指定侧",
+      "image_disposition": "W6-S036",
+      "figure": {
+        "id": "W6-S036",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s036.png",
+        "sha256": "caa28692330315634592e9d602ef645b70a53c2e8ec563db3e8f9e068d59a866"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 37,
+      "source_title": "Relational Algebra Inner Join",
+      "visual": "PowerPoint PNG s037.png 与联系图 7",
+      "speaker_notes": "",
+      "teaching_elements": "把 Customer.SP# 同 Salesperson.Employee Number 比较。输出五名客户，其中 E-10 为多个客户的销售员；没有客户匹配的 E-78 不出现在这次结果。",
+      "candidate_anchor": "p.37 · 内连接客户与销售员",
+      "image_disposition": "W6-S037",
+      "figure": {
+        "id": "W6-S037",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s037.png",
+        "sha256": "7a618f5435f64f00330576a9d734bceacb86e8344bbc9d7d6bb8074f44c91564"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 38,
+      "source_title": "Relational Algebra Left Outer Join",
+      "visual": "PowerPoint PNG s038.png 与联系图 7",
+      "speaker_notes": "",
+      "teaching_elements": "Sales 表放左，分配表按 Sale# 连。原结果 S-2 有两条分配，S-6/S-7 没匹配也保留。总计应有 8 行，若直接加销售额列会重复算 S-2。",
+      "candidate_anchor": "p.38 · 左连接销售和收款分配",
+      "image_disposition": "W6-S038",
+      "figure": {
+        "id": "W6-S038",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s038.png",
+        "sha256": "244d833fc9f95b75e6d222e2fba16bde5c71592567d968b8e7d7d97b050c62df"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 39,
+      "source_title": "SQL (Structured Query Language)",
+      "visual": "PowerPoint PNG s039.png 与联系图 7",
+      "speaker_notes": "",
+      "teaching_elements": "SELECT 写输出列，FROM 写来源表，WHERE 写行条件。先说要哪张表、哪几行和哪几列，再把它们填入相应位置。",
+      "candidate_anchor": "p.39 · SQL 先写 SELECT、FROM、WHERE",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 40,
+      "source_title": "SQL Statements and Relational Algebra",
+      "visual": "PowerPoint PNG s040.png 与联系图 7",
+      "speaker_notes": "",
+      "teaching_elements": "SQL 的 SELECT 对应 Project，WHERE 对应关系代数 Select。FROM 单表时可不写 WHERE 以取全行，连接关系另用 JOIN 与 ON 写清。",
+      "candidate_anchor": "p.40 · 对上 SQL 与关系代数的词",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 41,
+      "source_title": "SQL and Relational Algebra SELECT",
+      "visual": "PowerPoint PNG s041.png 与联系图 7",
+      "speaker_notes": "",
+      "teaching_elements": "图里 SELECT 星号表示全部列；含空格的表列名要按 Access 用方括号，C-2 是文本应加引号。结果仍是三笔，可跟 p.34 对照。",
+      "candidate_anchor": "p.41 · 用 SQL 还原 C-2 收款结果",
+      "image_disposition": "W6-S041",
+      "figure": {
+        "id": "W6-S041",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s041.png",
+        "sha256": "078eff50df2d9aac8dd3244c56c63a687c205547178b66a59e40ad80b6a32c6e"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 42,
+      "source_title": "SQL and Relational Algebra PROJECT",
+      "visual": "PowerPoint PNG s042.png 与联系图 7",
+      "speaker_notes": "",
+      "teaching_elements": "图用 Customer#、Name、SP# 三列，当前附件字段名不同，执行要先对字段。只查 Customer，不筛行；应保留五个客户。",
+      "candidate_anchor": "p.42 · 用 SQL 输出客户三列",
+      "image_disposition": "W6-S042",
+      "figure": {
+        "id": "W6-S042",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s042.png",
+        "sha256": "cc23e2a7a4c79375a7a479e1ef8f003b8cd894d4a71972f286b5796435c2dcd6"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 43,
+      "source_title": "SQL and Relational Algebra Inner Join",
+      "visual": "PowerPoint PNG s043.png 与联系图 8",
+      "speaker_notes": "",
+      "teaching_elements": "原图用逗号并在 WHERE 比较销售员编号，可等价写 INNER JOIN ... ON。比对条件要明确两边列；当前附件字段名和图不同。",
+      "candidate_anchor": "p.43 · 用 SQL 写内连接条件",
+      "image_disposition": "W6-S043",
+      "figure": {
+        "id": "W6-S043",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s043.png",
+        "sha256": "15ecf02459d161ecb3a8f6d188cd70caa0e1c5c70c10daa8c9795d202fc4564e"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 44,
+      "source_title": "SQL and Relational Algebra Outer Join",
+      "visual": "PowerPoint PNG s044.png 与联系图 8",
+      "speaker_notes": "",
+      "teaching_elements": "原图把 LeftJoin 写在一起且匹配条件放 WHERE。复做用 LEFT JOIN，匹配条件放 ON，才保留 S-6/S-7 两条无分配销售，并保留 S-2 两条匹配。",
+      "candidate_anchor": "p.44 · 修正课件左连接语法",
+      "image_disposition": "W6-S044",
+      "figure": {
+        "id": "W6-S044",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s044.png",
+        "sha256": "e709cf89436246ed214a4eb02b1b65d1f46aa9b7838445a76a3f3756afbeca02"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 45,
+      "source_title": "Mathematical Comparison Operators",
+      "visual": "PowerPoint PNG s045.png 与联系图 8",
+      "speaker_notes": "",
+      "teaching_elements": "等于、大于、小于及组合常放在 WHERE。日期用时间顺序比，数字用量值比，文本顺序受排序规则影响；Null 要用专门测试。",
+      "candidate_anchor": "p.45 · 比较值时看类型",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 46,
+      "source_title": "SQL Mathematical Comparison Operators",
+      "visual": "PowerPoint PNG s046.png 与联系图 8",
+      "speaker_notes": "",
+      "teaching_elements": "原图 Cash 里 BA-8 为 75,000，BA-9 为 0，另两笔空。用 Balance 大于等于 50,000，再输出 Account# 与 Balance，只剩 BA-8。",
+      "candidate_anchor": "p.46 · 筛余额不少于 50,000",
+      "image_disposition": "W6-S046",
+      "figure": {
+        "id": "W6-S046",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s046.png",
+        "sha256": "cc87a06d2842e6795be41854fa9e82bbafff7c2ee5c4fec8f0351556fba57839"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 47,
+      "source_title": "SQL Mathematical Comparison Operators on Character Attributes",
+      "visual": "PowerPoint PNG s047.png 与联系图 8",
+      "speaker_notes": "",
+      "teaching_elements": "课件的文本条件执行时要给 E-10 加引号。原图结果 S-1 7,200、S-7 23,000。NULL 条件结果为未知，若业务还要找未指派记录须另列条件。",
+      "candidate_anchor": "p.47 · 筛不是 E-10 的销售",
+      "image_disposition": "W6-S047",
+      "figure": {
+        "id": "W6-S047",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s047.png",
+        "sha256": "e2ee96b494ccb72325016d94d2c52b3cb0ec1791c7e737c34f6bb2029a1499aa"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 48,
+      "source_title": "Queries with Logical Operators",
+      "visual": "PowerPoint PNG s048.png 与联系图 8",
+      "speaker_notes": "",
+      "teaching_elements": "AND 要同时满足，OR 至少一项，NOT 对已确定真假条件取反。若某列为空，SQL 的未知状态可能仍不会通过筛选。",
+      "candidate_anchor": "p.48 · AND、OR、NOT 改变哪些行留下",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 49,
+      "source_title": "Queries with Special Operators",
+      "visual": "PowerPoint PNG s049.png 与联系图 9",
+      "speaker_notes": "",
+      "teaching_elements": "日期范围含两端。图中 7 月 1–31 日为 S-1 至 S-5；Access 实跑要用正确日期字面量，有时分秒时优先用下一日排他边界。",
+      "candidate_anchor": "p.49 · BETWEEN 把边界也算进去",
+      "image_disposition": "W6-S049",
+      "figure": {
+        "id": "W6-S049",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s049.png",
+        "sha256": "281a462a72fc6a4e7569236d98cf5964e7e5bbb5ec51c7bcae2d802d48c5a10e"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 50,
+      "source_title": "Queries with Special Operators",
+      "visual": "PowerPoint PNG s050.png 与联系图 9",
+      "speaker_notes": "",
+      "teaching_elements": "Cash 的 BA-6、BA-7 余额缺值。BA-9 存 0 仍是已知值，所以不入结果。不要用等号与 Null 比。",
+      "candidate_anchor": "p.50 · IS NULL 只找缺值",
+      "image_disposition": "W6-S050",
+      "figure": {
+        "id": "W6-S050",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s050.png",
+        "sha256": "b16be1ae9f0388f78beda40476684ca9420d60cd57d6ee4c2ad7fcd27dd34696"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 51,
+      "source_title": "Queries with Special Operators",
+      "visual": "PowerPoint PNG s051.png 与联系图 9",
+      "speaker_notes": "",
+      "teaching_elements": "原课件写 Balance EXISTS，但要取有余额的 BA-8、BA-9 应用 IS NOT NULL。EXISTS 一般检查子查询是否至少返回一行，不当作字段的非空后缀。",
+      "candidate_anchor": "p.51 · 非空用 IS NOT NULL，EXISTS 查有没有行",
+      "image_disposition": "W6-S051",
+      "figure": {
+        "id": "W6-S051",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s051.png",
+        "sha256": "2c0d456ee5ca7521bc76a80d7e9c8198058e1470a96f42f9abf19fa0d0e2d09a"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 52,
+      "source_title": "Aggregation Functions in Queries",
+      "visual": "PowerPoint PNG s052.png 与联系图 9",
+      "speaker_notes": "",
+      "teaching_elements": "COUNT 计记录或非空值，AVG 求平均，SUM 加总，MIN 和 MAX 取极端值。要分组时先说一组是什么，NULL 一般不计入这些字段聚合。",
+      "candidate_anchor": "p.52 · 聚合把一列压成统计值",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 53,
+      "source_title": "Queries with Horizontal Calculations",
+      "visual": "PowerPoint PNG s053.png 与联系图 9",
+      "speaker_notes": "",
+      "teaching_elements": "每一销售明细把数量乘该行价格得到金额，再按商品或订单汇总。若两列都不是该行的事实，先查连接粒度再乘。",
+      "candidate_anchor": "p.53 · 横向计算是每行先算",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 54,
+      "source_title": "Relational Algebra SELECT in QBE Cash Receipts from Customer C-2",
+      "visual": "PowerPoint PNG s054.png 与联系图 9",
+      "speaker_notes": "",
+      "teaching_elements": "原图在 Create 点 Query Design，Show Table 图上当时高亮 Cash，操作要另选 CashReceipt。只有这张表就可问 C-2 的收款，不需要先连 Customer。",
+      "candidate_anchor": "p.54 · QBE 筛选示范：先选来源",
+      "image_disposition": "W6-S054",
+      "figure": {
+        "id": "W6-S054",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s054.png",
+        "sha256": "d9f4afbb5c740fa1dc6ab7dae6bfd53028dc252e165e576740fefe82bbb139bf"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 55,
+      "source_title": "Relational Algebra “Select” QBE Example: Cash Receipts from Customer C-2",
+      "visual": "PowerPoint PNG s055.png 与联系图 10",
+      "speaker_notes": "",
+      "teaching_elements": "上方显示字段，下方网格尚空。先确认表对，再选出需要的列与条件。",
+      "candidate_anchor": "p.55 · CashReceipt 已到设计画布",
+      "image_disposition": "W6-S055",
+      "figure": {
+        "id": "W6-S055",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s055.png",
+        "sha256": "f1e639e3a3287f797887bfd3c713193a575c7906f99a7e64aaea09779df441ac"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 56,
+      "source_title": "Relational Algebra SELECT in QBE Cash Receipts from Customer C-2",
+      "visual": "PowerPoint PNG s056.png 与联系图 10",
+      "speaker_notes": "",
+      "teaching_elements": "在 CustomerNumber 的 Criteria 写等于 C-2，保留所有所需字段的 Show。下方箭头指的是条件格，不能误写到 Sort 行。",
+      "candidate_anchor": "p.56 · 把客户条件放到客户字段下",
+      "image_disposition": "W6-S056",
+      "figure": {
+        "id": "W6-S056",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s056.png",
+        "sha256": "9d931134b4c7cd83cc3d3b084fa271ff3b634295c29cd921f483a86e30e439c0"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 57,
+      "source_title": "Relational Algebra SELECT in QBE Cash Receipts from Customer C-2",
+      "visual": "PowerPoint PNG s057.png 与联系图 10",
+      "speaker_notes": "",
+      "teaching_elements": "图中六列已选，客户编号的 Criteria 有 C-2，其余列没加条件。点 Run 或切 Datasheet View 看输出。",
+      "candidate_anchor": "p.57 · 运行前核筛行与显示列",
+      "image_disposition": "W6-S057",
+      "figure": {
+        "id": "W6-S057",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s057.png",
+        "sha256": "b604b8c03ec0c45b36b20dab1a7cf2a518bc3f444ef404ab692838696677db43"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 58,
+      "source_title": "Relational Algebra SELECT in QBE — Cash Receipts from Customer C-2",
+      "visual": "PowerPoint PNG s058.png 与联系图 10",
+      "speaker_notes": "",
+      "teaching_elements": "数据表显示 RA-1、RA-2、RA-5，末行带星是新增记录行，不计入结果。对照 p.34，行数和金额应一致。",
+      "candidate_anchor": "p.58 · 三笔 C-2 收款的结果",
+      "image_disposition": "W6-S058",
+      "figure": {
+        "id": "W6-S058",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s058.png",
+        "sha256": "3b7e86103ac255b8a3fc5ecaeae0baef0d28688fc3ad3d16ca158b3778654a7d"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 59,
+      "source_title": "Relational Algebra PROJECT in QBE Customer#, name, salesperson#",
+      "visual": "PowerPoint PNG s059.png 与联系图 10",
+      "speaker_notes": "",
+      "teaching_elements": "Show Table 选择 Customer。题目只要该表已有的三个字段，不必加销售员主表。",
+      "candidate_anchor": "p.59 · QBE 挑列：先加 Customer",
+      "image_disposition": "W6-S059",
+      "figure": {
+        "id": "W6-S059",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s059.png",
+        "sha256": "5914b593ca6a7de8bb6234f94fc0d649d9d161208f6626466c558b5db03e9544"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 60,
+      "source_title": "Relational Algebra PROJECT in QBE: Customer#, name, salesperson#",
+      "visual": "PowerPoint PNG s060.png 与联系图 10",
+      "speaker_notes": "",
+      "teaching_elements": "上方已有 Customer，下面尚无选列。这一步没有设 Criteria，接下来只控制要显示的列。",
+      "candidate_anchor": "p.60 · 挑列查询初始网格",
+      "image_disposition": "W6-S060",
+      "figure": {
+        "id": "W6-S060",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s060.png",
+        "sha256": "009c112a551c2a1be043d60a402b95129091511182555a116f609c7c511ad71c"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 61,
+      "source_title": "Relational Algebra PROJECT in QBE: Customer#, name, salesperson#",
+      "visual": "PowerPoint PNG s061.png 与联系图 11",
+      "speaker_notes": "",
+      "teaching_elements": "把 CustomerNumber、Name、SalespersonNumber 放到网格并勾 Show，保留五名客户，不把 A/R 带到结果。",
+      "candidate_anchor": "p.61 · 留下编号、姓名、销售员号",
+      "image_disposition": "W6-S061",
+      "figure": {
+        "id": "W6-S061",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s061.png",
+        "sha256": "85f08753f2ebeb2ffef55ce43e395223985f381d72ebf14a1df29b6d7219464f"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 62,
+      "source_title": "Relational Algebra PROJECT in QBE Customer#, name, salesperson#",
+      "visual": "PowerPoint PNG s062.png 与联系图 11",
+      "speaker_notes": "",
+      "teaching_elements": "截图显示五行、三列。若见 A/R Amount，检查是否错把星号或该字段选入网格。",
+      "candidate_anchor": "p.62 · QBE 三列结果",
+      "image_disposition": "W6-S062",
+      "figure": {
+        "id": "W6-S062",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s062.png",
+        "sha256": "d92e450b27234f0505f8474acf7f7ffec722803daa71ef6ab9c89c6114ff530d"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 63,
+      "source_title": "Relational Algebra Inner Join in QBE: All details of customers and their salespeople",
+      "visual": "PowerPoint PNG s063.png 与联系图 11",
+      "speaker_notes": "",
+      "teaching_elements": "Show Table 同时选 Customer、Salesperson。客户编号与销售员编号不同，后面要找 Customer 的销售员外键。",
+      "candidate_anchor": "p.63 · 内连接查询先加两张表",
+      "image_disposition": "W6-S063",
+      "figure": {
+        "id": "W6-S063",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s063.png",
+        "sha256": "4223f2a87c1b3437a51c8e41ad5b883930572db70854c47655fd50b677528708"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 64,
+      "source_title": "Relational Algebra Inner Join in QBE: All details of customers and their salespeople",
+      "visual": "PowerPoint PNG s064.png 与联系图 11",
+      "speaker_notes": "",
+      "teaching_elements": "图中 Customer.SalespersonNumber 连到 Salesperson.EmployeeNumber。确认连接线指向所需字段，再核 Join Properties。已有一对多标记只说明关系，不能单靠它判断这次查询保留哪侧。无连接线时，五行与四行可组合出 20 行。",
+      "candidate_anchor": "p.64 · 核两表上方的连接线",
+      "image_disposition": "W6-S064",
+      "figure": {
+        "id": "W6-S064",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s064.png",
+        "sha256": "3bb30ea4e38fca4e46a44b016e52db6ce92c56ef81d956091fe1f01a1f708ab7"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 65,
+      "source_title": "Relational Algebra Inner Join in QBE: All details of customers and their salespeople",
+      "visual": "PowerPoint PNG s065.png 与联系图 11",
+      "speaker_notes": "",
+      "teaching_elements": "客户和销售员字段一同输出，留意重复显示的两个销售员编号来自不同表。可用这两列回看连接是否同号。",
+      "candidate_anchor": "p.65 · 把两边所需列放到网格",
+      "image_disposition": "W6-S065",
+      "figure": {
+        "id": "W6-S065",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s065.png",
+        "sha256": "eec85f13488b75392cd38c84ab579a3c8cad88eac5b15193df2ba27329d2a787"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 66,
+      "source_title": "Relational Algebra Inner Join in QBE: All details of customers and their salespeople",
+      "visual": "PowerPoint PNG s066.png 与联系图 11",
+      "speaker_notes": "",
+      "teaching_elements": "客户仍是五行。E-10 反复出现，因为服务多个客户。佣金在图中以百分号显示，当前附件实际存储类型另看深读。",
+      "candidate_anchor": "p.66 · 内连接的五行结果",
+      "image_disposition": "W6-S066",
+      "figure": {
+        "id": "W6-S066",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s066.png",
+        "sha256": "1566599055004e08ad78cc5b8103a06dc247debf5bad270b8ee713dbfc30b2a8"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 67,
+      "source_title": "QBE with Mathematical Comparison Operator Cash Account# and Balances >=$50,000",
+      "visual": "PowerPoint PNG s067.png 与联系图 12",
+      "speaker_notes": "",
+      "teaching_elements": "Show Table 添加 Cash。题面要账号与余额，先确认哪个字段是筛选对象。",
+      "candidate_anchor": "p.67 · 余额条件先选 Cash 表",
+      "image_disposition": "W6-S067",
+      "figure": {
+        "id": "W6-S067",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s067.png",
+        "sha256": "d4b7b4cae8701f2fdfeb6b3b6d8fc9df889a2d9b7e28f6fe62fc47bab9e9c7c6"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 68,
+      "source_title": "QBE with Mathematical Comparison Operator Cash Account# and Balances >= $50,000",
+      "visual": "PowerPoint PNG s068.png 与联系图 12",
+      "speaker_notes": "",
+      "teaching_elements": "选 AccountNumber、Balance 两列，把大于等于 50000 填在 Balance 下。筛选对象不是账号，数值不要当文字比较。",
+      "candidate_anchor": "p.68 · 在 Balance 的 Criteria 写大于等于",
+      "image_disposition": "W6-S068",
+      "figure": {
+        "id": "W6-S068",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s068.png",
+        "sha256": "80ef94e51ff15906a5dc719c6c0a380d199f03bc06128455cb72bfdbfe5ec002"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 69,
+      "source_title": "QBE with Mathematical Comparison Operator Cash Account# and Balances >=$50,000",
+      "visual": "PowerPoint PNG s069.png 与联系图 12",
+      "speaker_notes": "",
+      "teaching_elements": "结果是 BA-8、75,000。下面星号行可用于新增，显示的默认 0 不属于查询返回。",
+      "candidate_anchor": "p.69 · 余额查询只返回 BA-8",
+      "image_disposition": "W6-S069",
+      "figure": {
+        "id": "W6-S069",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s069.png",
+        "sha256": "a9e474db9c5be09629a3e38cd66aeae0b065f350e5082274e0b57de5b9205b95"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 70,
+      "source_title": "QBE with Mathematical Comparison on Character Attribute: Sales Not made by E-10",
+      "visual": "PowerPoint PNG s070.png 与联系图 12",
+      "speaker_notes": "",
+      "teaching_elements": "要找不是 E-10 做的销售，先加 Sale。文本比较字段应是销售代表编号。",
+      "candidate_anchor": "p.70 · 文本比较先加 Sale",
+      "image_disposition": "W6-S070",
+      "figure": {
+        "id": "W6-S070",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s070.png",
+        "sha256": "285c6d42777253b49a3210f3b8e1039452cda7f76627ce44a33c9ab02e04fe71"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 71,
+      "source_title": "QBE with Mathematical Comparison on Character Attribute: Sales Not made by E-10",
+      "visual": "PowerPoint PNG s071.png 与联系图 12",
+      "speaker_notes": "",
+      "teaching_elements": "输入不等于引号中的 E-10。可先输出销售号、金额及销售员号，核对是否漏放条件。",
+      "candidate_anchor": "p.71 · 不等于条件放在 SalesRepNumber 下",
+      "image_disposition": "W6-S071",
+      "figure": {
+        "id": "W6-S071",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s071.png",
+        "sha256": "9eeffe6d9ff8656c274b0d4cdbe80b75f066dda3aab8d228615205b79a7eeb9b"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 72,
+      "source_title": "QBE with Mathematical Comparison on Character Attribute: Sales Not made by E-10",
+      "visual": "PowerPoint PNG s072.png 与联系图 12",
+      "speaker_notes": "",
+      "teaching_elements": "原图返回 S-1 7,200 和 S-7 23,000。末行星号不是销售，不把默认 0 当第三笔。",
+      "candidate_anchor": "p.72 · 非 E-10 的两笔销售",
+      "image_disposition": "W6-S072",
+      "figure": {
+        "id": "W6-S072",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s072.png",
+        "sha256": "e8bd716e65e0c9f190a9fbc7b17ef887887bd5313904765fa712b475d216f530"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 73,
+      "source_title": "AND operator in QBE: Sales made before July 31 by Sales Rep E-10",
+      "visual": "PowerPoint PNG s073.png 与联系图 13",
+      "speaker_notes": "",
+      "teaching_elements": "问题问 7 月 31 日之前且由 E-10 做的销售。选 Sale 后需日期和销售员两列同时控制。",
+      "candidate_anchor": "p.73 · AND 查询先选 Sale",
+      "image_disposition": "W6-S073",
+      "figure": {
+        "id": "W6-S073",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s073.png",
+        "sha256": "8e81d2a55875b3448e8d3146f504eed0aae439de9cacc26bc2bfd8a3031e5b45"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 74,
+      "source_title": "AND operator in QBE: Sales made before July 31 by Sales Rep E-10",
+      "visual": "PowerPoint PNG s074.png 与联系图 13",
+      "speaker_notes": "",
+      "teaching_elements": "Date 小于 7/31/2014，SalesRepNumber 等于 E-10。两者放同一行表示 AND。严格小于不包括 7/31 当天。",
+      "candidate_anchor": "p.74 · 两个条件填在同一 Criteria 行",
+      "image_disposition": "W6-S074",
+      "figure": {
+        "id": "W6-S074",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s074.png",
+        "sha256": "e2b05e11e1b772bbc8f90f69062b608cf049453ac6afee795c59a48779d37f92"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 75,
+      "source_title": "AND operator in QBE: Sales made before July 31 by Sales Rep E-10",
+      "visual": "PowerPoint PNG s075.png 与联系图 13",
+      "speaker_notes": "",
+      "teaching_elements": "原图三行都在 7/31 前且是 E-10。S-5 虽是 E-10，但发生在边界当天，筛掉。",
+      "candidate_anchor": "p.75 · AND 三笔：S-2、S-3、S-4",
+      "image_disposition": "W6-S075",
+      "figure": {
+        "id": "W6-S075",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s075.png",
+        "sha256": "f6ec89883707589c7cb742f916ca275039bca89de474c8a092aa317a5fd0ea94"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 76,
+      "source_title": "OR operator in QBE: Sales made before July 31 OR by Sales Rep E-10",
+      "visual": "PowerPoint PNG s076.png 与联系图 13",
+      "speaker_notes": "",
+      "teaching_elements": "问题换为日期早于 7/31 或由 E-10 销售。用同一张表，下一页只改条件排法。",
+      "candidate_anchor": "p.76 · OR 查询的来源仍是 Sale",
+      "image_disposition": "W6-S076",
+      "figure": {
+        "id": "W6-S076",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s076.png",
+        "sha256": "e90d95da7d6d5dc558fc602b1d17e332bad96925e78a3f55518210ff61049a2b"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 77,
+      "source_title": "OR operator in QBE: Sales made before July 31 OR by Sales Rep E-10",
+      "visual": "PowerPoint PNG s077.png 与联系图 13",
+      "speaker_notes": "",
+      "teaching_elements": "截图把日期条件和销售员条件放在不同的行。跨行是 OR，命中任一个即可保留，不必同时为真。",
+      "candidate_anchor": "p.77 · 两个条件分别放 Criteria 与 Or 行",
+      "image_disposition": "W6-S077",
+      "figure": {
+        "id": "W6-S077",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s077.png",
+        "sha256": "b5390f507966e183c49e901da8817d1bd606bb53fb9ef0c62a5d105150ba212e"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 78,
+      "source_title": "OR operator in QBE: Sales made before July 31 OR by Sales Rep E-10",
+      "visual": "PowerPoint PNG s078.png 与联系图 13",
+      "speaker_notes": "",
+      "teaching_elements": "S-1 由日期入选，S-5 和 S-6 由 E-10 入选，即使日期条件不满足。S-7 两项都不满足，星号行不计。",
+      "candidate_anchor": "p.78 · OR 六笔：S-1 至 S-6",
+      "image_disposition": "W6-S078",
+      "figure": {
+        "id": "W6-S078",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s078.png",
+        "sha256": "60b7febb6f856a56dd400f0142be5da6b7f5be28d958524a61df8e1d1784f0fc"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 79,
+      "source_title": "Aggregation SUM and Special Operator BETWEEN in QBE: Total Sales between July 15 and July 31",
+      "visual": "PowerPoint PNG s079.png 与联系图 14",
+      "speaker_notes": "",
+      "teaching_elements": "加 Sale，目标是 7 月 15–31 日的总金额，不逐笔输出销售。这决定后面 Amount 用汇总。",
+      "candidate_anchor": "p.79 · 按日期段求销售总额",
+      "image_disposition": "W6-S079",
+      "figure": {
+        "id": "W6-S079",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s079.png",
+        "sha256": "7da3cbfb92605d361e529b7dc38ef688f6a2f6dd8478dafd423fddc159ba6442"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 80,
+      "source_title": "Aggregation SUM and Special Operator BETWEEN in QBE: Total Sales between July 15 and July 31",
+      "visual": "PowerPoint PNG s080.png 与联系图 14",
+      "speaker_notes": "",
+      "teaching_elements": "日期提供筛选，金额提供加总。先只放需要的两列，避免把其他字段意外变成分组键。",
+      "candidate_anchor": "p.80 · 只带 Date 和 Amount 进网格",
+      "image_disposition": "W6-S080",
+      "figure": {
+        "id": "W6-S080",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s080.png",
+        "sha256": "610953780f4f82efc76a00a01f0518750006a6350dcfcc8cfc8107b50bfec1f8"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 81,
+      "source_title": "Aggregation SUM and Special Operator BETWEEN in QBE: Total Sales between July 15 and July 31",
+      "visual": "PowerPoint PNG s081.png 与联系图 14",
+      "speaker_notes": "",
+      "teaching_elements": "点 Σ，让网格出现 Total 行。Date 的 Criteria 填包含两端的 7 月 15 至 31 日范围。",
+      "candidate_anchor": "p.81 · 打开 Totals 行并设范围",
+      "image_disposition": "W6-S081",
+      "figure": {
+        "id": "W6-S081",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s081.png",
+        "sha256": "269bbca13e39867b3a6b50643b5c4e51a7da5ca5c3b3a5994f9a012e06dcd697"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 82,
+      "source_title": "Aggregation SUM and Special Operator BETWEEN in QBE: Total Sales between July 15 and July 31",
+      "visual": "PowerPoint PNG s082.png 与联系图 14",
+      "speaker_notes": "",
+      "teaching_elements": "Totals 默认 Group By。把 Date 改 Where，只筛行不出结果；把 Amount 改 Sum，才得到一格总额。",
+      "candidate_anchor": "p.82 · Date 用 Where，Amount 用 Sum",
+      "image_disposition": "W6-S082",
+      "figure": {
+        "id": "W6-S082",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s082.png",
+        "sha256": "7b8a63b9b0873709d96c80d73b438456c79d6203977cb0aeef21181ab4c0c5d0"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 83,
+      "source_title": "Aggregation SUM and Special Operator BETWEEN in QBE: Total Sales between July 15 and July 31",
+      "visual": "PowerPoint PNG s083.png 与联系图 14",
+      "speaker_notes": "",
+      "teaching_elements": "在 Amount 下拉选 Sum，Date 的条件仍在。若 Date 继续 Group By，会按日期产生多行，无法直接回答整个区间总额。",
+      "candidate_anchor": "p.83 · 核最终两列的设置",
+      "image_disposition": "W6-S083",
+      "figure": {
+        "id": "W6-S083",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s083.png",
+        "sha256": "be1e983610963a857da39a777b016f75e45609845554fb043cf4cb930223247e"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 84,
+      "source_title": "Aggregation SUM and Special Operator BETWEEN in QBE: Total Sales between July 15 and July 31",
+      "visual": "PowerPoint PNG s084.png 与联系图 14",
+      "speaker_notes": "",
+      "teaching_elements": "课件结果一格 SumOfAmount。对应 S-2、S-3、S-4、S-5，金额 10,000、16,000、10,000、16,600 相加。",
+      "candidate_anchor": "p.84 · 单个总计 52,600",
+      "image_disposition": "W6-S084",
+      "figure": {
+        "id": "W6-S084",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s084.png",
+        "sha256": "494823857e70926e542ecd70e972dd215a86fd545adcb4f76bc62ab6b76de39e"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 85,
+      "source_title": "Other questions related to an expanded RAE model",
+      "visual": "PowerPoint PNG s085.png 与联系图 15",
+      "speaker_notes": "",
+      "teaching_elements": "本页写 RAE，后面仍讨论扩展 REA。第 86–92 页展示查询结果与局部操作，不能由截图认定附件含完全相同的已保存查询。",
+      "candidate_anchor": "p.85 · 扩展 REA 查询分隔页",
+      "image_disposition": "扩展查询分隔（标题 RAE 为课件字样）",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 86,
+      "source_title": "Adjusted Accounts Receivable Step 4 (using Nz to control null values)",
+      "visual": "PowerPoint PNG s086.png 与联系图 15",
+      "speaker_notes": "",
+      "teaching_elements": "图上三个子查询对应累计销售、应用收款和销售退回。下表 8,455 减空白按 0、再减 140 得 8,315。明确 Nz 的替代值为 0，只用于业务上应作零的汇总空值。",
+      "candidate_anchor": "p.86 · 用 Nz 补应收桥中的空金额",
+      "image_disposition": "W6-S086",
+      "figure": {
+        "id": "W6-S086",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s086.png",
+        "sha256": "70a9db6a4e6ff0ac862cc9cf1e734a14abcc22939b254050b7e4d42885961545"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 87,
+      "source_title": "Accounts Payable Query Steps",
+      "visual": "PowerPoint PNG s087.png 与联系图 15",
+      "speaker_notes": "",
+      "teaching_elements": "图上聚合先分别取截至同日的采购、应用付款和退货。下表 35,270 减 28,450 和 480，得到 6,340。付款应配到采购，不能把任何现金流出都扣掉。",
+      "candidate_anchor": "p.87 · 应付桥以购货扣付款和退货",
+      "image_disposition": "W6-S087",
+      "figure": {
+        "id": "W6-S087",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s087.png",
+        "sha256": "7f9610c42559e64da5ba347bfa42d48b00b1e434a0d07371e669b65111f9814e"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 88,
+      "source_title": "Query to identify highest and lowest selling inventory during a specific time period",
+      "visual": "PowerPoint PNG s088.png 与联系图 15",
+      "speaker_notes": "",
+      "teaching_elements": "上图 5 月 1–7 日 BIS1 2,400 最高，MIN1 与 TTP12 在该筛选结果无匹配；下图 8–14 日 MIN1 4,305 最高，其余为空。若定义未售为 0，才把无匹配品项纳入并列最低；直接 MIN 会忽略 NULL。",
+      "candidate_anchor": "p.88 · 用所有存货找最高与并列最低",
+      "image_disposition": "W6-S088",
+      "figure": {
+        "id": "W6-S088",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s088.png",
+        "sha256": "1dfa52d89490db82c1319f2e099afb2eb5cdf2a0812ff9d53e618a93357970bb"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 89,
+      "source_title": "Querying for Inventory Weighted Average Unit Cost (not for Financial Statement use)",
+      "visual": "PowerPoint PNG s089.png 与联系图 15",
+      "speaker_notes": "",
+      "teaching_elements": "截图用各商品的采购明细金额合计除数量合计。BIS1 为 2,000 除 100 得 20，MIN1 为 4,340 除 80 得 54.25，TTP12 为 480 除 48 得 10。本课这张图限经营分析。",
+      "candidate_anchor": "p.89 · 每种商品用总成本除总量",
+      "image_disposition": "W6-S089",
+      "figure": {
+        "id": "W6-S089",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s089.png",
+        "sha256": "c4bba02037dff98ce40587a3796323dd3970b121d0250a865255f1bf1f8ac734"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 90,
+      "source_title": "Query to calculate number of days to fill selected sales orders",
+      "visual": "PowerPoint PNG s090.png 与联系图 15",
+      "speaker_notes": "",
+      "teaching_elements": "左图对 DaysToFill 用 Avg，右图结果 2.5 天。要复做先决定分批订单以第一次交付还是完整交付算，再避免多条交付让一份订单被重复计权。",
+      "candidate_anchor": "p.90 · 先算订单履行日差，再平均",
+      "image_disposition": "W6-S090",
+      "figure": {
+        "id": "W6-S090",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s090.png",
+        "sha256": "4decbd3fe0325d20c97b5252564a9d747dd7d54c8a35f56d58060ae100ca010a"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 91,
+      "source_title": "Query to identify inventory items with no positive customer reactions",
+      "visual": "PowerPoint PNG s091.png 与联系图 16",
+      "speaker_notes": "",
+      "teaching_elements": "图中以全体 InventoryType 为保留侧，连接已筛好的正面反馈结果，再找右侧为空的项目。无正面可能是无人反馈，也可能只有负面。",
+      "candidate_anchor": "p.91 · 找没有正面反馈的商品",
+      "image_disposition": "W6-S091",
+      "figure": {
+        "id": "W6-S091",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s091.png",
+        "sha256": "13092d2271b4c0acbf664a04a4e8789c7ea9d379b81af2e881466a4ca3f325f3"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 92,
+      "source_title": "Query for number of sales calls made by each salesperson during a time period",
+      "visual": "PowerPoint PNG s092.png 与联系图 16",
+      "speaker_notes": "",
+      "teaching_elements": "截图 5 月 1–15 日 E23 为 2、E26 为 1、E30 为 0。先筛期间内拜访，再以销售员为保留侧连接并数非空 SalesCallID。若用 COUNT 星号，外连接补出的空行也可能算 1。",
+      "candidate_anchor": "p.92 · 数每位销售员的拜访，保留零次",
+      "image_disposition": "W6-S092",
+      "figure": {
+        "id": "W6-S092",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s092.png",
+        "sha256": "dbf23b8f3a54082a7cdc2da48b31d63dc74a2e62b5df703847d6602ce4cafab3"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    }
+  ]
+}

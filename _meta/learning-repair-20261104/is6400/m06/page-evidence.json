@@ -1,0 +1,1508 @@
+{
+  "source": "IS6400_Business_Data_Analytics/course_files_export/IS6400-L6-Classification.pdf",
+  "source_sha256": "32ad627e6f886e3839819391fabcf608825299fe158095720677cfa5e2c8cd0b",
+  "baseline_sha256": "5797c456eeae97c126c73b22608d9183da0b076993c29f0cafac54032bed5790",
+  "transcripts": {
+    "IS6400_Business_Data_Analytics/transcripts/M06-transcript-part1-partial.txt": "b8c1426f09207f99ecf59c0c880cca96c46301b8ec562799c8c26ec8dd6efda0",
+    "IS6400_Business_Data_Analytics/transcripts/M06-transcript-part2-partial.txt": "e4b3b7da4f350ebbc56d93e996846d254acb8dab25cbbe974b061ab1570ef79e"
+  },
+  "candidate_sha256": "83c279cb64a69422295be6d56c3b1bf4b913bc37612da24acfd9ef9ea6c67752",
+  "stage": "author_candidate_pending_precheck_and_review",
+  "pages": [
+    {
+      "page": 1,
+      "title": "Classification 导览",
+      "anchor": "p.1 · Classification 导览",
+      "disposition": "导览",
+      "content": "先读分类与决策树，再进集成、支持向量机与不平衡分类；课件列 DM Chapter 4、5。",
+      "visual": "联系图"
+    },
+    {
+      "page": 2,
+      "title": "Introduction",
+      "anchor": "p.2 · Introduction",
+      "disposition": "图",
+      "content": "红框圈训练和评价。数据入训练，评价合格可部署，失败沿下路查错再研究任务。",
+      "visual": "联系图"
+    },
+    {
+      "page": 3,
+      "title": "Classification · Definition",
+      "anchor": "p.3 · Classification · Definition",
+      "disposition": "文字",
+      "content": "训练记录由输入属性 x 和已知类别 y 组成。学得的规则将新输入映射到预定义类别。",
+      "visual": "联系图"
+    },
+    {
+      "page": 4,
+      "title": "Examples of Classification Task",
+      "anchor": "p.4 · Examples of Classification Task",
+      "disposition": "图",
+      "content": "按任务、属性、标签三列读。邮件是垃圾／非垃圾，理赔是有效／无效，信用卡申请是批／不批。",
+      "visual": "联系图"
+    },
+    {
+      "page": 5,
+      "title": "General Approach for Building Classification Model",
+      "anchor": "p.5 · General Approach for Building Classification Model",
+      "disposition": "图",
+      "content": "上表带类标，用学习算法归纳模型；下表问号等待固定模型推断。要评价时再与另存真值比较。",
+      "visual": "联系图"
+    },
+    {
+      "page": 6,
+      "title": "Classification Techniques",
+      "anchor": "p.6 · Classification Techniques",
+      "disposition": "文字",
+      "content": "基础模型包括树、规则、近邻、神经网络、贝叶斯和 SVM。集成方法组合多个基础输出。",
+      "visual": "联系图"
+    },
+    {
+      "page": 7,
+      "title": "Another Example of Decision Tree",
+      "anchor": "p.7 · Another Example of Decision Tree",
+      "disposition": "图",
+      "content": "这棵树先问婚姻，再问住房和收入。训练表的同一批记录可能被不止一棵树拟合，p.9 根节点次序不同。",
+      "visual": "联系图"
+    },
+    {
+      "page": 8,
+      "title": "Decision Tree Classification Task · 使用",
+      "anchor": "p.8 · Decision Tree Classification Task · 使用",
+      "disposition": "图",
+      "content": "红框强调 Apply Model，新记录按已有树分支走。训练时才选节点或阈值。",
+      "visual": "联系图"
+    },
+    {
+      "page": 9,
+      "title": "Apply Model to Test Data · 起点",
+      "anchor": "p.9 · Apply Model to Test Data · 起点",
+      "disposition": "图",
+      "content": "从 Home Owner 根开始，测试行为 No、Married、80K。先看根所需字段。",
+      "visual": "联系图"
+    },
+    {
+      "page": 10,
+      "title": "Apply Model to Test Data · 读取住房",
+      "anchor": "p.10 · Apply Model to Test Data · 读取住房",
+      "disposition": "图",
+      "content": "红虚线从根指测试表的 Home Owner 列。取当前记录该列，而非比较整行。",
+      "visual": "联系图"
+    },
+    {
+      "page": 11,
+      "title": "Apply Model to Test Data · 住房分支",
+      "anchor": "p.11 · Apply Model to Test Data · 住房分支",
+      "disposition": "图",
+      "content": "No 用红线进入 MarSt；Yes 才在上一层直接停止。",
+      "visual": "联系图"
+    },
+    {
+      "page": 12,
+      "title": "Apply Model to Test Data · 读取婚姻",
+      "anchor": "p.12 · Apply Model to Test Data · 读取婚姻",
+      "disposition": "图",
+      "content": "到 MarSt 后，红虚线指表中的 Marital Status。当前取值是 Married。",
+      "visual": "联系图"
+    },
+    {
+      "page": 13,
+      "title": "Apply Model to Test Data · 婚姻分支",
+      "anchor": "p.13 · Apply Model to Test Data · 婚姻分支",
+      "disposition": "图",
+      "content": "Married 的红边直接连到 No 叶，不访问 Income 节点。",
+      "visual": "联系图"
+    },
+    {
+      "page": 14,
+      "title": "Apply Model to Test Data · 得到输出",
+      "anchor": "p.14 · Apply Model to Test Data · 得到输出",
+      "disposition": "图",
+      "content": "红虚线把叶的 No 填到类别问号。虽然收入为 80K，该路径不需要收入阈值。",
+      "visual": "联系图"
+    },
+    {
+      "page": 15,
+      "title": "Decision Tree Classification Task · 学习",
+      "anchor": "p.15 · Decision Tree Classification Task · 学习",
+      "disposition": "图",
+      "content": "红框转向 Tree Induction algorithm 与 Learn Model。由有标签表估计结构，再冻结用于测试。",
+      "visual": "联系图"
+    },
+    {
+      "page": 16,
+      "title": "Decision Tree Induction",
+      "anchor": "p.16 · Decision Tree Induction",
+      "disposition": "文字",
+      "content": "列 Hunt、CART、ID3、C4.5、SLIQ、SPRINT。共同点是用特征规则连接类别，划分准则与实现不同。",
+      "visual": "联系图"
+    },
+    {
+      "page": 17,
+      "title": "Hunt’s Algorithm · Tree Construction",
+      "anchor": "p.17 · Hunt’s Algorithm · Tree Construction",
+      "disposition": "图",
+      "content": "到达某节点的记录集合是 D_t。若同类可停止，否则试一个属性切分，并在各子集重复。",
+      "visual": "联系图"
+    },
+    {
+      "page": 18,
+      "title": "Hunt’s Algorithm",
+      "anchor": "p.18 · Hunt’s Algorithm",
+      "disposition": "图",
+      "content": "四小图从多数类叶到住房、婚姻及收入分裂。比较同一父集的纯度增益，跟各树的训练正确数，训练纯度不代替样本外评价。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 19,
+      "title": "Decision Tree Based Classification",
+      "anchor": "p.19 · Decision Tree Based Classification",
+      "disposition": "文字",
+      "content": "小树读得快且直观；候选树很多，贪心未必最优。多层树可以表达交互，单个轴对齐切分一次只问一列。",
+      "visual": "联系图"
+    },
+    {
+      "page": 20,
+      "title": "Limitations of single attribute-based decision boundaries",
+      "anchor": "p.20 · Limitations of single attribute-based decision boundaries",
+      "disposition": "图",
+      "content": "两类点沿斜方向分开，树用水平和竖直边形成阶梯逼近。这种边界会需要多个切分。",
+      "visual": "联系图"
+    },
+    {
+      "page": 21,
+      "title": "Example Data Set",
+      "anchor": "p.21 · Example Data Set",
+      "disposition": "图",
+      "content": "蓝正类 5200（含 200 噪声），红负类 5200 均匀分布。图给 10% 训练、90% 测试的示例设置。",
+      "visual": "联系图"
+    },
+    {
+      "page": 22,
+      "title": "Regression Tree · 定义",
+      "anchor": "p.22 · Regression Tree · 定义",
+      "disposition": "文字",
+      "content": "树将输入划为不相交区域，叶输出该区训练响应的均值，因此输出是数值。",
+      "visual": "联系图"
+    },
+    {
+      "page": 23,
+      "title": "Regression Tree · 图示",
+      "anchor": "p.23 · Regression Tree · 图示",
+      "disposition": "图",
+      "content": "右区预测 3.2，左上 2.2，左下 5.6。按竖边和左侧横边先定位区域，再读预测。",
+      "visual": "联系图"
+    },
+    {
+      "page": 24,
+      "title": "Ensemble Learning 导览",
+      "anchor": "p.24 · Ensemble Learning 导览",
+      "disposition": "导览",
+      "content": "点亮集成学习，接训练出多个分类器并合成输出。",
+      "visual": "联系图"
+    },
+    {
+      "page": 25,
+      "title": "Decision Tree Classification Task · 扩展",
+      "anchor": "p.25 · Decision Tree Classification Task · 扩展",
+      "disposition": "图",
+      "content": "红箭头问 Decision Tree 或其他模型。训练算法可以换，训练、固定、推断的分工相同。",
+      "visual": "联系图"
+    },
+    {
+      "page": 26,
+      "title": "Ensemble Methods · 定义",
+      "anchor": "p.26 · Ensemble Methods · 定义",
+      "disposition": "文字",
+      "content": "用训练资料构建一组分类器，再把多个预测组合成测试记录的类别。",
+      "visual": "联系图"
+    },
+    {
+      "page": 27,
+      "title": "Ensemble Methods · 摸象",
+      "anchor": "p.27 · Ensemble Methods · 摸象",
+      "disposition": "图",
+      "content": "人物分别摸到鼻、腿、皮肤等，结论只反映局部。结合多种判断可互补，若错误总相同则不能靠票数改正。",
+      "visual": "联系图"
+    },
+    {
+      "page": 28,
+      "title": "Why Ensemble Methods work?",
+      "anchor": "p.28 · Why Ensemble Methods work?",
+      "disposition": "图",
+      "content": "横轴单模型错误率，纵轴多数投票错误率。25 个模型且错误独立同率时，多数错是至少 13 个出错；错误率 0.35 时合计约 0.06。课件“无相关”本身不足以推出二项分布。",
+      "visual": "联系图"
+    },
+    {
+      "page": 29,
+      "title": "General Approach",
+      "anchor": "p.29 · General Approach",
+      "disposition": "图",
+      "content": "上方原训练 D 分成多套输入，各训 C1、C2 等，再沿汇合边得到 C*。",
+      "visual": "联系图"
+    },
+    {
+      "page": 30,
+      "title": "Types of Ensemble Methods",
+      "anchor": "p.30 · Types of Ensemble Methods",
+      "disposition": "文字",
+      "content": "可改变样本、特征、标签、模型随机性或组合分布。它们改变多样性来源，不一定是同一种投票。",
+      "visual": "联系图"
+    },
+    {
+      "page": 31,
+      "title": "Bagging",
+      "anchor": "p.31 · Bagging",
+      "disposition": "图",
+      "content": "表中同一轮可以重复抽同一编号，原来一行也可能没抽到。每轮的自助样本训一个模型。",
+      "visual": "联系图"
+    },
+    {
+      "page": 32,
+      "title": "Bagging Algorithm",
+      "anchor": "p.32 · Bagging Algorithm",
+      "disposition": "图",
+      "content": "先循环生成 k 个有放回样本并训练。预测时统计各 C_i 对候选类投了几票，选最多者，平票需另设规则。",
+      "visual": "联系图"
+    },
+    {
+      "page": 33,
+      "title": "Random Forest",
+      "anchor": "p.33 · Random Forest",
+      "disposition": "图",
+      "content": "四层从自助样本到树训练、单树预测和结果合成。随机森林还在切分节点抽一部分候选特征。",
+      "visual": "联系图"
+    },
+    {
+      "page": 34,
+      "title": "Bagging Example · 十点与树桩",
+      "anchor": "p.34 · Bagging Example · 十点与树桩",
+      "disposition": "图",
+      "content": "十个 x 配正负标签。树桩只问 x 是否不大于 k，左右叶分别给类别，分裂点按熵选。",
+      "visual": "联系图"
+    },
+    {
+      "page": 35,
+      "title": "Bagging Example · 第 1–5 轮",
+      "anchor": "p.35 · Bagging Example · 第 1–5 轮",
+      "disposition": "图",
+      "content": "每行是重抽后排好序的输入和标签，红线标分裂。查每轮 k 以及左右叶类别，重复 x 是重抽结果。",
+      "visual": "联系图"
+    },
+    {
+      "page": 36,
+      "title": "Bagging Example · 第 6–10 轮",
+      "anchor": "p.36 · Bagging Example · 第 6–10 轮",
+      "disposition": "图",
+      "content": "第 6–9 轮多用 0.75，左负右正；第 10 轮抽出的标签全正，因此两侧都报正。",
+      "visual": "联系图"
+    },
+    {
+      "page": 37,
+      "title": "Bagging Example · 汇总树桩",
+      "anchor": "p.37 · Bagging Example · 汇总树桩",
+      "disposition": "图",
+      "content": "右列示范 x=0.5。逐行将 0.5 和 k 比较，按左右叶取输出，再统计正负票。",
+      "visual": "联系图"
+    },
+    {
+      "page": 38,
+      "title": "Bagging Example · 逐列投票",
+      "anchor": "p.38 · Bagging Example · 逐列投票",
+      "disposition": "图",
+      "content": "每列同一个 x 的十轮预测求和，符号给集成类别。原图假定测试等同原数据，只演示拟合。",
+      "visual": "联系图"
+    },
+    {
+      "page": 39,
+      "title": "Bagging Example · 小测",
+      "anchor": "p.39 · Bagging Example · 小测",
+      "disposition": "图",
+      "content": "x=0.9 逐行读右叶，六正四负，和为 2，预测 +1。结合完整十点可判断这组树桩的样本内拟合，不能据此证实泛化。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 40,
+      "title": "Boosting · 序贯训练",
+      "anchor": "p.40 · Boosting · 序贯训练",
+      "disposition": "文字",
+      "content": "样本初始等权。每轮模型暴露错例，随后让这些记录在下一轮影响更大。",
+      "visual": "联系图"
+    },
+    {
+      "page": 41,
+      "title": "Boosting · 重抽示例",
+      "anchor": "p.41 · Boosting · 重抽示例",
+      "disposition": "图",
+      "content": "蓝圈是第三轮多次抽到的编号 4。抽到次数变化说明加权提高错例被选机会，不表示必须重抽到固定次数。",
+      "visual": "联系图"
+    },
+    {
+      "page": 42,
+      "title": "AdaBoost Algorithm · 错误率与权重",
+      "anchor": "p.42 · AdaBoost Algorithm · 错误率与权重",
+      "disposition": "图",
+      "content": "蓝曲线随错误率上升而下降，在 0.5 过零。若样本权重已归一化，错例权重直接求和，原图再除 N 会低估错误率。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 43,
+      "title": "AdaBoost Algorithm · 权重更新",
+      "anchor": "p.43 · AdaBoost Algorithm · 权重更新",
+      "disposition": "图",
+      "content": "正确样本乘较小因子，错误样本乘较大因子，再除 Z 使权重和回到 1。最后按各模型 alpha 加权投票。",
+      "visual": "联系图"
+    },
+    {
+      "page": 44,
+      "title": "AdaBoost Algorithm · 伪码",
+      "anchor": "p.44 · AdaBoost Algorithm · 伪码",
+      "disposition": "图",
+      "content": "先按权重抽样训练，然后回原训练集算加权错例；伪码有失败重试。核清权重总和与错误率再执行。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 45,
+      "title": "AdaBoost Example · 原始样本",
+      "anchor": "p.45 · AdaBoost Example · 原始样本",
+      "disposition": "图",
+      "content": "同 p.34 十点和单层树桩；改为下一轮受前一轮权重影响。",
+      "visual": "联系图"
+    },
+    {
+      "page": 46,
+      "title": "AdaBoost Example · 三轮树桩",
+      "anchor": "p.46 · AdaBoost Example · 三轮树桩",
+      "disposition": "图",
+      "content": "查每轮的阈值、左右叶和 alpha。首轮 0.75 将 0.1、0.2、0.3 错分；标准归一化误差 0.3，对应 alpha 约 0.424，和原表 1.738 不同。",
+      "visual": "联系图"
+    },
+    {
+      "page": 47,
+      "title": "AdaBoost Example · 加权分类",
+      "anchor": "p.47 · AdaBoost Example · 加权分类",
+      "disposition": "图",
+      "content": "上表是下一轮关注的记录，下表逐列将符号乘 alpha 加总。例 x=0.9 按原表权重得约 0.397，预测正；此为照给定表推算。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 48,
+      "title": "Stacking / Stacked Generalization",
+      "anchor": "p.48 · Stacking / Stacked Generalization",
+      "disposition": "图",
+      "content": "左边各基础模型出预测，中间 Meta-Learner 将这些预测作为输入，再给最终类别。",
+      "visual": "联系图"
+    },
+    {
+      "page": 49,
+      "title": "Stacking vs. Bagging and Boosting",
+      "anchor": "p.49 · Stacking vs. Bagging and Boosting",
+      "disposition": "图",
+      "content": "左图对照并行重抽、串行改权和两层学习。Stacking 的组合本身需要训练。",
+      "visual": "联系图"
+    },
+    {
+      "page": 50,
+      "title": "StackingClassifier · 算法",
+      "anchor": "p.50 · StackingClassifier · 算法",
+      "disposition": "图",
+      "content": "用折外预测拼成元训练表，训练元模型；随后基础模型以全训练集重训，预测新样本时再把它们输出交给元模型。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 51,
+      "title": "StackingClassifier Example · 基础模型",
+      "anchor": "p.51 · StackingClassifier Example · 基础模型",
+      "disposition": "图",
+      "content": "两折为 {1,2,3} 与 {4,5}。从反折取得每行概率，按原样本编号回填；表是示意，某折只有一个类别的模型训练需另核。",
+      "visual": "联系图"
+    },
+    {
+      "page": 52,
+      "title": "StackingClassifier Example · 元模型",
+      "anchor": "p.52 · StackingClassifier Example · 元模型",
+      "disposition": "图",
+      "content": "每行含 LR、Tree 折外预测和真值，用于拟合元模型。课件给线性分数为 −4 加 3 倍 LR 加 2 倍 Tree。",
+      "visual": "联系图"
+    },
+    {
+      "page": 53,
+      "title": "StackingClassifier Example · 测试推断",
+      "anchor": "p.53 · StackingClassifier Example · 测试推断",
+      "disposition": "图",
+      "content": "将两基础预测代入 p.52，A/B/C 分数为 −3.05、−0.20、−0.60。原页 A 表内及 B/C 算式与此冲突，按明确的同一公式读。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 54,
+      "title": "Support Vector Machine 导览",
+      "anchor": "p.54 · Support Vector Machine 导览",
+      "disposition": "导览",
+      "content": "点亮支持向量机，接多条分界线如何选。",
+      "visual": "联系图"
+    },
+    {
+      "page": 55,
+      "title": "Support Vector Machines · 两类点",
+      "anchor": "p.55 · Support Vector Machines · 两类点",
+      "disposition": "图",
+      "content": "绿方块与红空圈分居两侧，原问找能分开的直线。下一页开始比较可行边界。",
+      "visual": "联系图"
+    },
+    {
+      "page": 56,
+      "title": "Support Vector Machines · B1",
+      "anchor": "p.56 · Support Vector Machines · B1",
+      "disposition": "图",
+      "content": "实红对角线 B1 将两类隔开。判断每种点是否主要落在各自一侧。",
+      "visual": "联系图"
+    },
+    {
+      "page": 57,
+      "title": "Support Vector Machines · B2",
+      "anchor": "p.57 · Support Vector Machines · B2",
+      "disposition": "图",
+      "content": "虚红 B2 也分开点，但与最近点更接近。零训练错误还不足以选出更稳边界。",
+      "visual": "联系图"
+    },
+    {
+      "page": 58,
+      "title": "Support Vector Machines · 更多可行线",
+      "anchor": "p.58 · Support Vector Machines · 更多可行线",
+      "disposition": "图",
+      "content": "多条虚红线都可能分离，显示解不唯一。下一页用最大间隔设选择准则。",
+      "visual": "联系图"
+    },
+    {
+      "page": 59,
+      "title": "Support Vector Machines · 哪条更好",
+      "anchor": "p.59 · Support Vector Machines · 哪条更好",
+      "disposition": "图",
+      "content": "原两问比较 B1/B2 与“更好”的含义。对两条线量最近训练点的垂直距离，最大间隔偏向 B1。",
+      "visual": "联系图"
+    },
+    {
+      "page": 60,
+      "title": "Support Vector Machines · 比间隔",
+      "anchor": "p.60 · Support Vector Machines · 比间隔",
+      "disposition": "图",
+      "content": "各边界配两条平行贴边线，间隔是垂直宽度。B1 的带更宽。",
+      "visual": "联系图"
+    },
+    {
+      "page": 61,
+      "title": "Support Vector Machines · 决策与边线",
+      "anchor": "p.61 · Support Vector Machines · 决策与边线",
+      "disposition": "图",
+      "content": "中线分数为零，两侧贴边分数 ±1，带宽为 2 除权重范数。预测符号与训练间隔要求须分开。",
+      "visual": "联系图"
+    },
+    {
+      "page": 62,
+      "title": "Learning Linear SVM · 优化",
+      "anchor": "p.62 · Learning Linear SVM · 优化",
+      "disposition": "文字",
+      "content": "最大间隔等价最小化权重范数平方的一半，训练标签乘模型分数须至少为 1。",
+      "visual": "联系图"
+    },
+    {
+      "page": 63,
+      "title": "Support Vector",
+      "anchor": "p.63 · Support Vector",
+      "disposition": "图",
+      "content": "箭头指贴在两侧间隔边线的点。硬间隔例中这些点决定最紧约束。",
+      "visual": "联系图"
+    },
+    {
+      "page": 64,
+      "title": "Learning Linear SVM · 推断",
+      "anchor": "p.64 · Learning Linear SVM · 推断",
+      "disposition": "文字",
+      "content": "固定 w、b 后按分数正负分类。原页 ±1 是训练间隔，不能将中间带当新输入都无法分类。",
+      "visual": "联系图"
+    },
+    {
+      "page": 65,
+      "title": "Support Vector Machines · 非完全线分",
+      "anchor": "p.65 · Support Vector Machines · 非完全线分",
+      "disposition": "图",
+      "content": "蓝圈指出落在间隔内或边界另一侧的点。硬间隔不能同时满足所有训练约束。",
+      "visual": "联系图"
+    },
+    {
+      "page": 66,
+      "title": "Support Vector Machines · 松弛量",
+      "anchor": "p.66 · Support Vector Machines · 松弛量",
+      "disposition": "图",
+      "content": "蓝圈标两类约束中允许的松弛。C 控制允许违规的代价；进带与实际错分是不同情况。",
+      "visual": "联系图"
+    },
+    {
+      "page": 67,
+      "title": "Support Vector Machines · 两因素",
+      "anchor": "p.67 · Support Vector Machines · 两因素",
+      "disposition": "图",
+      "content": "同时比较带宽和训练违规。把 C 调大更重视违约，但不保证样本外表现改善。",
+      "visual": "联系图"
+    },
+    {
+      "page": 68,
+      "title": "Nonlinear SVM · 二次映射",
+      "anchor": "p.68 · Nonlinear SVM · 二次映射",
+      "disposition": "图",
+      "content": "一维红点夹着蓝点，单阈值分不开；添加 x² 后，二维图可沿斜直线划分。",
+      "visual": "联系图"
+    },
+    {
+      "page": 69,
+      "title": "Nonlinear Support Vector Machines · 圆形边界",
+      "anchor": "p.69 · Nonlinear Support Vector Machines · 圆形边界",
+      "disposition": "图",
+      "content": "内圈与外部两类点围绕 (0.5,0.5)，原规则按半径 0.2 判断。原空间无法靠直线完整分离。",
+      "visual": "联系图"
+    },
+    {
+      "page": 70,
+      "title": "Nonlinear Support Vector Machines · 映射后",
+      "anchor": "p.70 · Nonlinear Support Vector Machines · 映射后",
+      "disposition": "图",
+      "content": "新轴是原坐标的二次组合，映射后用直线分开。图中形状或颜色须按本页图例和规则读，不跨页以颜色猜标签。",
+      "visual": "联系图"
+    },
+    {
+      "page": 71,
+      "title": "Learning Nonlinear SVM",
+      "anchor": "p.71 · Learning Nonlinear SVM",
+      "disposition": "文字",
+      "content": "核技巧直接算变换空间内积。课件列多项式、径向基和 tanh 形式，核参数与适用条件须匹配。",
+      "visual": "联系图"
+    },
+    {
+      "page": 72,
+      "title": "Characteristics of SVM",
+      "anchor": "p.72 · Characteristics of SVM",
+      "disposition": "文字",
+      "content": "合适核与目标下可做凸优化，仍需选核和惩罚参数。注意缺失、尺度、训练成本和噪声。",
+      "visual": "联系图"
+    },
+    {
+      "page": 73,
+      "title": "Brief Summary",
+      "anchor": "p.73 · Brief Summary",
+      "disposition": "文字",
+      "content": "复习时区分逻辑回归拟合概率与 SVM 最大间隔，再由 p.60–62 回顾分界线如何确定。",
+      "visual": "联系图"
+    },
+    {
+      "page": 74,
+      "title": "Imbalanced classification 导览",
+      "anchor": "p.74 · Imbalanced classification 导览",
+      "disposition": "导览",
+      "content": "点亮不平衡分类，先用多数基线诊断准确率，再看成本与重采样。",
+      "visual": "联系图"
+    },
+    {
+      "page": 75,
+      "title": "Class Imbalance Problem",
+      "anchor": "p.75 · Class Imbalance Problem",
+      "disposition": "文字",
+      "content": "欺诈、入侵、缺陷等任务的关注类别可能少很多。先定义少数类和漏检代价。",
+      "visual": "联系图"
+    },
+    {
+      "page": 76,
+      "title": "Challenges",
+      "anchor": "p.76 · Challenges",
+      "disposition": "文字",
+      "content": "准确率被多数样本主导。问是否能找到稀有类时，要单看漏检和告警表现。",
+      "visual": "联系图"
+    },
+    {
+      "page": 77,
+      "title": "Challenges · Example · 提问",
+      "anchor": "p.77 · Challenges · Example · 提问",
+      "disposition": "文字",
+      "content": "1000 笔中仅 1 笔欺诈，原问 99.9% 是否算好。先同一个只猜多数类的模型比较。",
+      "visual": "联系图"
+    },
+    {
+      "page": 78,
+      "title": "Challenges · Example · 基线",
+      "anchor": "p.78 · Challenges · Example · 基线",
+      "disposition": "文字",
+      "content": "同题新增课件答案：全报非欺诈也能答对 999 笔，准确率 99.9%，欺诈召回却为 0。",
+      "visual": "联系图"
+    },
+    {
+      "page": 79,
+      "title": "Confusion Matrix",
+      "anchor": "p.79 · Confusion Matrix",
+      "disposition": "图",
+      "content": "行实际、列预测。按 Yes/No 读四格：左上 TP、右上 FN、左下 FP、右下 TN。",
+      "visual": "联系图"
+    },
+    {
+      "page": 80,
+      "title": "Accuracy",
+      "anchor": "p.80 · Accuracy",
+      "disposition": "图",
+      "content": "沿主对角读正确的 TP 和 TN，再除四格总数。类别少数时，TN 可能掩盖 FN。",
+      "visual": "联系图"
+    },
+    {
+      "page": 81,
+      "title": "Problem with Accuracy",
+      "anchor": "p.81 · Problem with Accuracy",
+      "disposition": "文字",
+      "content": "数据改为 9990 个 0 类和 10 个 1 类。全报 0 仍为 99.9%，没有检出任何 1 类。",
+      "visual": "联系图"
+    },
+    {
+      "page": 82,
+      "title": "Alternative Measures · 定义",
+      "anchor": "p.82 · Alternative Measures · 定义",
+      "disposition": "图",
+      "content": "查准从预测正列取分母，召回从实际正行取分母，F1 调和两者；分母为零时须说明实现。",
+      "visual": "联系图"
+    },
+    {
+      "page": 83,
+      "title": "Alternative Measures · 银行经理题",
+      "anchor": "p.83 · Alternative Measures · 银行经理题",
+      "disposition": "图",
+      "content": "TP 10、FN 20、FP 50、TN 10000。查准 1/6、召回 1/3、F1 2/9。若漏掉欺诈更贵，重看 FN；实际比较用成本而非单挑一个数。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 84,
+      "title": "Cost Matrix",
+      "anchor": "p.84 · Cost Matrix",
+      "disposition": "图",
+      "content": "上表数实际 i、预测 j 的次数，下表给同一格单件成本；逐格相乘再求和。",
+      "visual": "联系图"
+    },
+    {
+      "page": 85,
+      "title": "Computing Cost of Classification",
+      "anchor": "p.85 · Computing Cost of Classification",
+      "disposition": "图",
+      "content": "M1 成本 3910，M2 为 4255；M2 准确率更高。两表实际类人数不同，不能认作同一批标签上公平对比。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 86,
+      "title": "Handling Class Imbalanced Problem",
+      "anchor": "p.86 · Handling Class Imbalanced Problem",
+      "disposition": "文字",
+      "content": "三条路是先考虑少数类规则、让错误按代价计、调整训练样本。重采样只在训练内。",
+      "visual": "联系图"
+    },
+    {
+      "page": 87,
+      "title": "Class-based Ordering",
+      "anchor": "p.87 · Class-based Ordering",
+      "disposition": "文字",
+      "content": "RIPPER 学一组 if–then 分类规则，可先学少数类。free 或 win 是垃圾邮件示意条件。",
+      "visual": "联系图"
+    },
+    {
+      "page": 88,
+      "title": "Cost Sensitive Classification",
+      "anchor": "p.88 · Cost Sensitive Classification",
+      "disposition": "文字",
+      "content": "按真实类的条件概率乘候选决策成本，比较两项期望值，选成本更低的类别。",
+      "visual": "联系图"
+    },
+    {
+      "page": 89,
+      "title": "Sampling-based Approaches · 总览",
+      "anchor": "p.89 · Sampling-based Approaches · 总览",
+      "disposition": "文字",
+      "content": "降低多数类或增加少数类的训练代表性。测试资料应保留所评估总体的类别构成。",
+      "visual": "联系图"
+    },
+    {
+      "page": 90,
+      "title": "Sampling-based Approaches · 欠采样",
+      "anchor": "p.90 · Sampling-based Approaches · 欠采样",
+      "disposition": "文字",
+      "content": "可造代表点、选原代表点，或按实例难度规则删训练记录。各方法保留的信息不同。",
+      "visual": "联系图"
+    },
+    {
+      "page": 91,
+      "title": "Sampling-based Approaches · 过采样",
+      "anchor": "p.91 · Sampling-based Approaches · 过采样",
+      "disposition": "文字",
+      "content": "随机过采样重复原少数类。SMOTE 和 ADASYN 一般用邻居插值生成新样本；ADASYN 较偏向困难区域。课件“复制”措辞需区分。",
+      "visual": "联系图"
+    },
+    {
+      "page": 92,
+      "title": "Sampling-based Approaches · 组合",
+      "anchor": "p.92 · Sampling-based Approaches · 组合",
+      "disposition": "文字",
+      "content": "先过采样再清理邻域，例 SMOTETomek 与 SMOTEENN。全过程在训练折内，保留独立原分布评价。",
+      "visual": "联系图"
+    }
+  ],
+  "assets": [
+    {
+      "page": 2,
+      "id": "W06-p02",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-02.png",
+      "sha256": "8575a2d65785db29d9fd7d69a470e7e6b837d58b66f0d817f89680c999ad6970",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 4,
+      "id": "W06-p04",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-04.png",
+      "sha256": "7ecf2a5b15ad017b3c3b1dcccc21ea47a4cf9e2e8ef5e3e994d749d51597dc20",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 5,
+      "id": "W06-p05",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-05.png",
+      "sha256": "eb26c4e58adcc9a4ee78e84e1f3d1b9262723d57ea64ab6bc02acf1965222727",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 7,
+      "id": "W06-p07",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-07.png",
+      "sha256": "06b0dd8467ddb5a897a14e5d14e0e2943a312aa5d31100b0f5422027c24e65c7",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 8,
+      "id": "W06-p08",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-08.png",
+      "sha256": "57d25290b2875cd52cedf1a8fe1a40637fb03a2695b7cfef4809fa6f37a3e946",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 9,
+      "id": "W06-p09",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-09.png",
+      "sha256": "b30f508809d3c02d55b20923493cbf17ffd356b634ad465246031adbc8189a65",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 10,
+      "id": "W06-p10",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-10.png",
+      "sha256": "3c5b54e0d522cc20e3431243ce22073a11c02f695bd090e8ab9805c967a133a8",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 11,
+      "id": "W06-p11",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-11.png",
+      "sha256": "b99bdfa1e4d164544f6a61db61bfa65992065f9c3d137f50b8eea5476f75526d",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 12,
+      "id": "W06-p12",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-12.png",
+      "sha256": "94736aa2e1bead3100bbfb1377aa94f385130360df886674bb7c0d7ed3fd59d1",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 13,
+      "id": "W06-p13",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-13.png",
+      "sha256": "9b5978f4b994978deba743970f4f4df758207c1469473b18525167b094909d63",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 14,
+      "id": "W06-p14",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-14.png",
+      "sha256": "b9d94ef423f3ec9ca394e54559b671d2df68130856a53dce680f5e91758c130b",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 15,
+      "id": "W06-p15",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-15.png",
+      "sha256": "f56a4822749348f437e45dd0f0538759b180426c4c3dc7f0c415a81b6d7bfbc9",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 17,
+      "id": "W06-p17",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-17.png",
+      "sha256": "87fe6946a3f913291f6c9d024935f57dbdd75c70f4aa09046ea7a7ac9150283f",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 18,
+      "id": "W06-p18",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-18.png",
+      "sha256": "06e1afa947035de053324a24b7f5971a3cdfbad7ee30cccfb2a60835e3409e9d",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 20,
+      "id": "W06-p20",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-20.png",
+      "sha256": "b99c4fa4670e65e774345868193cd5eb1d4b45afb4081623d3294d7014bd4242",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 21,
+      "id": "W06-p21",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-21.png",
+      "sha256": "5f7bf071958fd0766e4a2f6533a11700cc26b76fa3cb9b529636f45fbbe6786b",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 23,
+      "id": "W06-p23",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-23.png",
+      "sha256": "25c9c5b2455597849b26e76bbd550063927442c7a4376daec544f38dd70511ac",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 25,
+      "id": "W06-p25",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-25.png",
+      "sha256": "ef11d97e7709358d6aefe279d74c2e57a9f6941f66a113f214f7a203970eecc3",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 27,
+      "id": "W06-p27",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-27.png",
+      "sha256": "5941addb18a422a8d7b267d945351db5b37524345d4fc61b1cc4521827306404",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 28,
+      "id": "W06-p28",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-28.png",
+      "sha256": "848d15d4bcda8b5bd9e844b859866a95017fafa8586a016d34ee8cfac486f3a2",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 29,
+      "id": "W06-p29",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-29.png",
+      "sha256": "3d6fc607b3f377410e4ea6301e64764ffbbb34a64f3f344accd6b97c19d53b41",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 31,
+      "id": "W06-p31",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-31.png",
+      "sha256": "7d876abca74b5e44d1d7a39464e9065f18274c5229e82cb3013e76fe492d84f6",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 32,
+      "id": "W06-p32",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-32.png",
+      "sha256": "7a0e22f4abc08075f11734dfced31d4040db47eff323a994f16877524b21cc91",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 33,
+      "id": "W06-p33",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-33.png",
+      "sha256": "42c62ce2fdd445fff5f65c05b07cf2614fa8d7b2bbbe68af567cf192e7a0269e",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 34,
+      "id": "W06-p34",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-34.png",
+      "sha256": "cd6cfef60ee99f7b944057711b73b48b7462f4ab0dd20745d8db5e9f26ca2df2",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 35,
+      "id": "W06-p35",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-35.png",
+      "sha256": "ab17a515d4d8940e19c17c53dc5be801d5d98ccb534f5db08c8740776922a06b",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 36,
+      "id": "W06-p36",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-36.png",
+      "sha256": "4247faebdb9e0ec45e096e31cd5e7261d56ad8e71621936fb927b6ce31936ab5",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 37,
+      "id": "W06-p37",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-37.png",
+      "sha256": "b6c3c9135f87a3146fd52e4988baf48c0b2a7a65a9a594117a6ed6a2f44d4efe",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 38,
+      "id": "W06-p38",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-38.png",
+      "sha256": "ca94ccf19fa8684e95299c9b0f801596713625d47a351d26d4bcd02f3eb89a65",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 39,
+      "id": "W06-p39",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-39.png",
+      "sha256": "5d6713fcce29a89289acc1339a65e89dff7340df75c613466756d90c83d7c037",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 41,
+      "id": "W06-p41",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-41.png",
+      "sha256": "5e9c8f4d0c2b329e667fa7e3a2675a9f84838b078eb06b610d0be125215c8463",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 42,
+      "id": "W06-p42",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-42.png",
+      "sha256": "03ba4cd5b8a40d788a8a10aa0725fde175eac6f2b72b6f7e3b4668f4499e753a",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 43,
+      "id": "W06-p43",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-43.png",
+      "sha256": "474113e0060aaaa04186d5fa7f03d3afb19efd7676f360bb1d1c93f6bc523124",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 44,
+      "id": "W06-p44",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-44.png",
+      "sha256": "5704646dcf1aa68ea39c46170c83616a254934aedc349677f64452b98b96cfd4",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 45,
+      "id": "W06-p45",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-45.png",
+      "sha256": "b80c5b73118452093989578b26b6fcd99d30eb9aa95bc977f0dbc758813b586b",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 46,
+      "id": "W06-p46",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-46.png",
+      "sha256": "6c3092f447b2012236a60beeffb84353b451ed282bf0f2ff5dc763c3d6731b4f",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 47,
+      "id": "W06-p47",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-47.png",
+      "sha256": "81ac8d97527be1a2ba8b2617854bf0bcd77b054fdc8bbc92cfaa3229393490a6",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 48,
+      "id": "W06-p48",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-48.png",
+      "sha256": "803d573f9d9ec46ef7be47449db82b7dc88d49c64902a0cc14bf68ce74b1c446",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 49,
+      "id": "W06-p49",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-49.png",
+      "sha256": "88c8275ea2071ecc844b4406bbd70c0571e784deb94ba3a8a932456322f6bbec",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 50,
+      "id": "W06-p50",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-50.png",
+      "sha256": "82516225575907a5c8e41db902b3edbf83e9f52b3b618ba1583b3db622b06229",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 51,
+      "id": "W06-p51",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-51.png",
+      "sha256": "f8a9fa7f1c8bb3d5057a39f23f48536abaa1ca20806c2e02682cade0918724bc",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 52,
+      "id": "W06-p52",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-52.png",
+      "sha256": "f7a8a078e955974ab100fa3b251187176d6e75ce89f6015c92b6892a9bed8817",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 53,
+      "id": "W06-p53",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-53.png",
+      "sha256": "6e45186d5e7e493d108709c4214214cabe4da8b0b0d6c5d8a1581d82824075f4",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 55,
+      "id": "W06-p55",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-55.png",
+      "sha256": "b151d397d69001a8f85e71e8093993986aab4013fd6f7593d21da7fafb5b0261",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 56,
+      "id": "W06-p56",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-56.png",
+      "sha256": "828990ed44b93094d3b4d16c7650c42c9bad3aee46f40ebdd5aab2246c114714",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 57,
+      "id": "W06-p57",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-57.png",
+      "sha256": "7f9852bf70d87e352fbd89eecf22d8b16d0421e06b7c5eed7d910494593ac21b",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 58,
+      "id": "W06-p58",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-58.png",
+      "sha256": "73c61b1c379344ea58bcdfef13146c2cd2c25ea686c9fced169f47a9e3f5ed6d",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 59,
+      "id": "W06-p59",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-59.png",
+      "sha256": "1f18103dd5c8278ebc4dd319abe213a3dec8f4fa47a2d9265e137b2ab3155f79",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 60,
+      "id": "W06-p60",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-60.png",
+      "sha256": "1b8fc7db818f6d17a2adfc2d8963879e0bb23af3fa7e375d9470925bfa063b62",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 61,
+      "id": "W06-p61",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-61.png",
+      "sha256": "26883c0c40344c0082b542867e1ca2111dcfd8491a5428bda2aae059e001e46e",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 63,
+      "id": "W06-p63",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-63.png",
+      "sha256": "7ff8fb6a60f1d41e5acb9343c9f87633db59ee6c63357e0c6aa5e0131b0ca5d2",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 65,
+      "id": "W06-p65",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-65.png",
+      "sha256": "19ccd17b19bf71ec9603abc90c58f9adeb109d383c8a9fddaf31bb36e09b77cf",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 66,
+      "id": "W06-p66",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-66.png",
+      "sha256": "c9d450a4b4d4bc15c4f29fe1502793c7d15659ec83704d0c15c7dcfe7ba85aee",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 67,
+      "id": "W06-p67",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-67.png",
+      "sha256": "a5a83256ae2526b93be486c7e23aecab5544e9166014ca9b8ecfbbe50a052b54",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 68,
+      "id": "W06-p68",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-68.png",
+      "sha256": "fafe280f7fc09a4ba4d53fa872123cb87ed8c1cc8a9c505fff58e5bc52f95873",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 69,
+      "id": "W06-p69",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-69.png",
+      "sha256": "66f0c0b846a1b04dc63626f5731b4f12c26722aac9282d4c02925adc390981e9",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 70,
+      "id": "W06-p70",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-70.png",
+      "sha256": "9f4bdcf19ecbf19d6f2db8c8d53447aa708f0adca929841e150631327fcb0d51",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 79,
+      "id": "W06-p79",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-79.png",
+      "sha256": "67cbf23b8070fea37a8f8d819c685c2827d93029156f594483e772574a3b32de",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 80,
+      "id": "W06-p80",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-80.png",
+      "sha256": "2c9532265b8fc69b863ea1e78e97cd46f45588412eb17ddf65990af6e6065f7d",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 82,
+      "id": "W06-p82",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-82.png",
+      "sha256": "4c008b310a4452f700323b17b661cb01fcfa9e792cfafe37369c9c8930c2dd4f",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 83,
+      "id": "W06-p83",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-83.png",
+      "sha256": "9912fb6ab2d044d056ea490247c942c0a90a89c1c7db532f7a25bdd155b97f79",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 84,
+      "id": "W06-p84",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-84.png",
+      "sha256": "03b1d21e4caed854081697ac3d095663b74a809816b7a5569719657f28a9e932",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 85,
+      "id": "W06-p85",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m06-source/p-85.png",
+      "sha256": "8d6e1418bfbc04603ceba93a1ac11bb288ead36de600f4f1fb389b5199f142ef",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    }
+  ],
+  "review_candidate_sha256": "860222fdf263d507573307f165f57bfb5546c9707a383fa41387823ef69462d8"
+}

@@ -2,12 +2,13 @@
 course: IS6400
 module: 2
 readability_rules: v2
-readability_review: passed
+readability_review: pending
+historical_readability_review: passed
 type: tutorial
 week: 2
 date: 2026-09-09
 source: "Week 2 Regression Analysis_With Prompt.ipynb（39 cells：20 markdown / 19 code）"
-runtime: "原 notebook metadata：Python 3.13.5 · kernel conda-base-py；本次只读核源码与保存输出，未重跑拟合"
+runtime: "原 notebook metadata：Python 3.13.5 · kernel conda-base-py；2026-11-04 本地复跑 18 个课堂代码格；评分题和保存成品只读"
 libraries: [numpy, pandas, matplotlib, scikit-learn]
 data: "Airbnb.csv（68,133 × 15）"
 transcript: merged
@@ -22,7 +23,8 @@ status: v1.0
 updated: 2026-10-27
 teaching_standard: novice-v1
 mechanism_spec: v1
-mechanism_review: passed
+mechanism_review: pending
+historical_mechanism_review: passed
 ---
 
 # T02 · 回归实战：从合成数据到 Airbnb 定价
@@ -37,7 +39,7 @@ mechanism_review: passed
 
 ---
 
-> **本次版本说明（2026-10-27）**：原 notebook、保存图、官方参考 HTML 与个人历史 HTML 只读核对；未重跑拟合、未制作新评分提交。正文引用 `verify_t02_current.py` 的数值来自 2026-10-01 旧批保存结果，不是本次重新运行。材料 `v1.0` 保留，本次全篇教学独审另行记录。
+> **本轮候选（2026-11-04）**：核对原 Notebook 与 5 张保存图，本地重跑 18 个课堂代码格。评分段只读对照，未重跑个人或官方评分拟合；2026-10-01 的旧复算仍按原日期记。材料 v1.0 保留，教学及实际显示另验。
 
 ## 0. 这个 notebook 在教什么
 
@@ -68,8 +70,8 @@ flowchart TD
 |---|---|---|
 | 1 | 可视化 | `matplotlib` — [plot types](https://matplotlib.org/stable/plot_types/index.html) |
 | 2 | 线性回归（OLS 与 Ridge） | `from sklearn.linear_model import LinearRegression` — [linear_model 文档](https://scikit-learn.org/stable/modules/linear_model.html) |
-| 3 | 类别变量处理 | `from sklearn.preprocessing import OneHotEncoder` |
-| 4 | 数据切分 | `from sklearn.model_selection import train_test_split`（notebook 写 "to be continued in **week 10**"，⚠️ 但 Syllabus 的 Model Selection 在 **W11**） |
+| 3 | 类别变量处理 | `from sklearn.preprocessing import OneHotEncoder` — [源链接](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) |
+| 4 | 数据切分 | `from sklearn.model_selection import train_test_split` — [源链接](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)（notebook 写 "to be continued in **week 10**"，⚠️ 但 Syllabus 的 Model Selection 在 **W11**） |
 
 ---
 
@@ -108,7 +110,7 @@ flowchart TD
 |---|---|
 | cell 3 标题 "Linear regression using the **Normal Equation**" | §2.8.3 正规方程 $\hat{\theta} = (X^{\top}X)^{-1}X^{\top}Y$（讲义 p.34） |
 | cell 5–11 拟合 y = 3x + 4 | §2.5.1 简单线性回归（讲义 p.14） |
-| cell 13 用新数据预测 | §2.9.4 留出法（讲义 p.45 **就是这个 cell 生成的图**） |
+| cell 13 用新数据预测 | §2.9.4 留出法；讲义 p.45 为同类演示，点位与本次 Notebook 保存图不同 |
 | cell 15 R² / MAE | §2.9 模型评估 |
 | cell 18–20 多项式 → 过拟合 | §2.9.2 欠拟合 vs 过拟合（讲义 p.40）、§2.10.5（讲义 p.51–52） |
 | cell 21–24 Ridge | §2.10.3 Ridge 回归（讲义 p.50） |
@@ -151,6 +153,8 @@ sklearn 要求特征矩阵 `X` 的形状是 **`(n_samples, n_features)`**，**�
 这就是 cell 5 写 `rnd.rand(100, **1**)` 而不是 `rnd.rand(100)` 的原因。
 
 ---
+
+预习先看 §2.1 的形状、§3.5 的误差口径和 §4.4 的行身份。课中从 §9 按格直跳源码解释；复习用 §6 改条件，再到 §8 先读原题后核参考。
 
 ### 1.4 先读懂代码里的“名字、表、位置与重复”
 
@@ -227,7 +231,7 @@ y = 4 + 3 * X + rnd.randn(100, 1)
 **🔴 ⚠️ 最大的坑：这个 cell 没有设随机种子**
 
 ```python
-np.random.seed(42)     # ← notebook 里没有这一行
+rnd.seed(42)     # 放在 import numpy.random as rnd 之后、首次取样之前
 ```
 
 **后果**：未固定生成器状态时，重复运行通常会得到不同的数据，系数与 R² 也可能变化。notebook 里保存的 `3.088464 / 3.876417` 是某一次运行的结果，不是每次必得或每次必不同的保证。
@@ -268,6 +272,7 @@ np.random.seed(42)     # ← notebook 里没有这一行
 import matplotlib.pyplot as plt
 from matplotlib.pylab import rcParams
 rcParams['figure.figsize'] = 10, 8
+
 ## "b." blue dots
 plt.plot(X, y, "b.")
 #plt.plot(X, y, color="blue", marker=".")
@@ -278,6 +283,10 @@ plt.axis([0, 2, 0, 15])
 plt.savefig("generated_data_plot.png")
 plt.show()
 ```
+
+![原 Notebook Cell 7 保存图](figures/t02-saved-source/t02-cell-07-output-01.png)
+
+**读图**：横轴 x₁、纵轴 y，蓝点显示总体上升，离直线仍有随机偏离。
 
 **逐行**
 
@@ -317,7 +326,7 @@ rcParams 的 figure.figsize 只影响之后新建 Figure 的默认值。显式 f
 
 **⚠️ 易错点**：图坐标范围可能裁掉点；颜色/marker只是显示，不能证明点正确或模型有效。
 
-**所以呢**：图看过了（散点图上大致有条下降/上升的趋势），下一步让 sklearn 把这条线真正拟合出来，看它学出来的数字准不准。
+保存散点中，随着横轴的 x 增大，y 的典型高度上升。接下来拟合直线，检查得到的系数与生成关系是否接近。
 
 ---
 
@@ -338,11 +347,9 @@ rcParams 的 figure.figsize 只影响之后新建 Figure 的默认值。显式 f
 
 **为什么用这个斜率规则**：先以均值为中心看各点。x 高于均值而 y 也高于均值时，偏差乘积为正，会把拟合斜率推向正值；x 的偏差平方和衡量输入变化幅度。用乘积和除以平方和，得到每单位 x 对应的拟合变化。该规则精确最小化平方误差，前提是分母非零。
 
-<details><summary>补充推导：用导数说明为什么这个比值使平方误差最小（不要求先会微积分）</summary>
-
-这里的导数表示参数微调时目标改变的速率；最小点附近，向任一方向微调都不能继续降低目标。平方误差对截距的导数为$-2\sum_i(y_i-a-bx_i)$，零点要求残差和零，故$a=\bar y-b\bar x$；再对b求导，得到$-2\sum_i(x_i-\bar x)[(y_i-\bar y)-b(x_i-\bar x)]$。令零得$b=\sum(x_i-\bar x)(y_i-\bar y)/\sum(x_i-\bar x)^2$。分母正时这是凸二次函数的唯一最小点；导数是参数作微小变化时误差的一阶变化率，不是随便选一个“相关”系数。
-
-</details>
+> [!note]- 补充推导：用导数说明为什么这个比值使平方误差最小（不要求先会微积分）
+>
+> 这里的导数表示参数微调时目标改变的速率；最小点附近，向任一方向微调都不能继续降低目标。平方误差对截距的导数为$-2\sum_i(y_i-a-bx_i)$，零点要求残差和零，故$a=\bar y-b\bar x$；再对b求导，得到$-2\sum_i(x_i-\bar x)[(y_i-\bar y)-b(x_i-\bar x)]$。令零得$b=\sum(x_i-\bar x)(y_i-\bar y)/\sum(x_i-\bar x)^2$。分母正时这是凸二次函数的唯一最小点；导数是参数作微小变化时误差的一阶变化率，不是随便选一个“相关”系数。
 
 多列时把这些条件写成矩阵最小二乘。矩阵就是按行列存数的表；转置 $X^\top$ 把行列交换，矩阵乘法用左表的一行与右表的一列，逐位置相乘再相加。
 
@@ -364,13 +371,13 @@ flowchart TD
 
 这是直接求解数据流，没有虚构“每次predict重新迭代”；若另选迭代估计器，才按其solver检查容差/最大迭代。两类失败：错误行配对会拟合另一任务；近共线会放大参数不稳定。修配对或比较正则/列选择需重新训练验证，也有模型偏差/丢信息的代价。脚本verify_t02_current.py对照手算、sklearn及statsmodels。
 
-<details><summary>迁移与诊断：x=[0,2,4]、y=[1,5,8]，求参数与新x3预测；predict前拿新一行fit是否正确？</summary>
+> [!example]- 迁移与诊断：x=[0,2,4]、y=[1,5,8]，求参数与新x3预测；predict前拿新一行fit是否正确？
+>
+> 均值2与14/3，Sxy14、Sxx8，b1.75、a7/6；x3预测77/12≈6.416667，三行残差−1/6、1/3、−1/6，SSE1/6。新一行重新fit会改参数并破坏训练状态，且不能从单个样本识别斜率；正确是保持已学参数。若新输入列顺序错或超训练范围，应先纠正列/报告外推边界，不保证线性趋势持续。
 
-均值2与14/3，Sxy14、Sxx8，b1.75、a7/6；x3预测77/12≈6.416667，三行残差−1/6、1/3、−1/6，SSE1/6。新一行重新fit会改参数并破坏训练状态，且不能从单个样本识别斜率；正确是保持已学参数。若新输入列顺序错或超训练范围，应先纠正列/报告外推边界，不保证线性趋势持续。
+#### Cell 9 · 拟合与保存参数
 
-</details>
-
-**cell 9 · 建模并训练**
+把已生成且同序的 X 与 y 交给模型拟合，模型对象保存回归参数。
 
 ```python
 from sklearn.linear_model import LinearRegression
@@ -380,7 +387,9 @@ lin_reg.fit(X, y)  # Fit your model using the data
 
 输出：`LinearRegression()` —— 这是模型对象的 repr，**不是结果**。真正的结果在属性里。
 
-**cell 10 · 把模型内部全打印出来**
+#### Cell 10 · 检查对象内部状态
+
+读已拟合对象的状态，区分训练输入列数、截距和系数。
 
 ```python
 print(lin_reg.__dict__)
@@ -417,7 +426,9 @@ print(lin_reg.__dict__)
 
 **诊断名最小唤醒**：秩是列中独立线性方向的数量，例如两列完全倍数只给一个方向；中心化常数列秩为0。奇异值衡量矩阵沿各独立方向的伸缩，本段四点中心化一列的唯一非零奇异值为√5≈2.236068；很小的相对奇异值提示敏感方向。SVD（奇异值分解）把矩阵分解为正交方向与这些伸缩，便于数值最小二乘；它在本篇只作求解实现背景，参数目标/残差条件已完整展开，不能仅凭一个属性就断定所有数据类型使用同一内部solver。
 
-**cell 11 · 用人话打印出来**
+#### Cell 11 · 打印斜率与截距
+
+从模型属性取唯一输入列的系数与截距，再打印拟合关系。
 
 ```python
 print('Slope is %f, Intercept is %f'%(lin_reg.coef_[0][0], lin_reg.intercept_[0]))
@@ -496,7 +507,7 @@ plt.legend(['Training Data','Validation Data','prediction line'], fontsize=26)
 plt.show()
 ```
 
-> 🔗 **这个 cell 生成的图，就是讲义 p.45 那张图**（蓝点 Training Data、黄星 Validation Data、黑点 prediction line）。
+> 🔗 讲义 p.45 是同一种演示，图例和显示窗口相同，但点位与下方 Notebook 保存图不同；随机生成的两张图不能认作同一次输出。
 
 **⚠️ 这个 cell 有三个坑**
 
@@ -540,7 +551,13 @@ and the fmt string "b." (-> color='b'). The keyword argument will take precedenc
 
 ---
 
+![原 Notebook Cell 13 保存图](figures/t02-saved-source/t02-cell-13-output-02.png)
+
+**读图**：蓝点是训练样本，黄星是评价真实值，黑点是同 x 的预测；图框只画到 x=2，不能据图推断所有评价行。
+
 ### 2.5 【cell 15】评估：R² 与 MAE
+
+Cell 14 导向 [源评价指标文档](https://scikit-learn.org/stable/modules/model_evaluation.html#the-scoring-parameter-defining-model-evaluation-rules)；Cell 15 才计算源选用的两项指标。
 
 **这块在干什么**：光看图还不够，这段代码把"模型预测得准不准"变成两个具体的数字——R² 和 MAE，方便量化比较。
 
@@ -576,11 +593,9 @@ flowchart TD
 
 边界：只有一个样本时R²不定义，sklearn给NaN；真实标签全相同时分母零，数学指标未定义，sklearn默认force_finite会把完美/不完美预测替为1/0，不能误认为公式没有零分母。多输出须说明逐目标还是统一加权；缺失/非有限输入先按明确政策处理，不能静默缩短一列后算误差。log指标和美元指标不是同单位。🔗 [r2_score官方文档](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html)，获取2026-10-01；本机核1.5.1。
 
-<details><summary>迁移与纠错：真实[1,3,5]，预测[2,2,5]；再解释为什么误差[0.01,0.01]的√MAE不是RMSE。</summary>
-
-残差−1/1/0，绝对和2、平方和2、n3：MAE2/3，RMSE√(2/3)≈0.816497；真实均值3，SST8，R²=0.75。第二例MAE=0.01、√MAE=0.1、RMSE=0.01，单位也不同。若反把另批标签与当前预测配对，即使长度相同也在评另一个问题；先核行ID。任一指标单独好看都不能替代业务成本与样本外协议。
-
-</details>
+> [!example]- 迁移与纠错：真实[1,3,5]，预测[2,2,5]；再解释为什么误差[0.01,0.01]的√MAE不是RMSE。
+>
+> 残差−1/1/0，绝对和2、平方和2、n3：MAE2/3，RMSE√(2/3)≈0.816497；真实均值3，SST8，R²=0.75。第二例MAE=0.01、√MAE=0.1、RMSE=0.01，单位也不同。若反把另批标签与当前预测配对，即使长度相同也在评另一个问题；先核行ID。任一指标单独好看都不能替代业务成本与样本外协议。
 
 ```python
 from sklearn.metrics import r2_score
@@ -649,7 +664,11 @@ Mean absolute error=0.828464
 
 ## 3. 逐块讲解 · 第二段：过拟合与 Ridge（cell 18–24）
 
+Cell 16 的来源链接为 [Ridge 与 Lasso 对照](https://www.analyticsvidhya.com/blog/2016/01/ridge-lasso-regression-python-complete-tutorial/)；Cell 17 才引出正弦加噪声。Cell 19 用一次至十五次项写成多项式拟合，后页 Cell 20 做实际训练。
+
 ### 3.1 【cell 18】造一个非线性数据集 + 造多项式特征
+
+原保存表首行 x 约 1.047198 弧度、y 约 1.065763、x² 约 1.096623。后者由同一行 x 平方得到，前者的 y 才是拟合目标。
 
 **这块在干什么**：第一段用的是"一条直线就能描述"的干净数据；这段代码换一批**真实关系是曲线（sin 函数）**的数据，再手工造出 $x^2$ 到 $x^{15}$ 共 14 个新列，为下一步用多项式表示曲线、检查复杂度与数值风险做准备。
 
@@ -669,11 +688,9 @@ flowchart TD
 
 系数大/交替只提示相消与病态可能，不能独自证明过拟合；要看同支持范围的新数据或训练内验证误差是否恶化。数值病态是微小运算/数据变化造成解敏感，过拟合是拟合了不能泛化的样本变化，两者可同时或分别出现。标准化可改列尺度但不消除高次列的相关性；降d、正则或更稳定的基函数都需验证且可能增偏差。超原角度范围的预测还叠加外推，不能把该误差全归过拟合。
 
-<details><summary>迁移：x3、d2，已学a0=2/a1=1/a2=−0.2，预测多少？只因a2为负能断定过拟合吗？</summary>
-
-表示[3,9]，预测2+3−1.8=3.2；负号只是此函数曲率，不能证明过拟合。须独立误差比较、支持范围和数值诊断；另造[x²,x]列顺序会让系数误乘，应按训练序输入。
-
-</details>
+> [!example]- 迁移：x3、d2，已学a0=2/a1=1/a2=−0.2，预测多少？只因a2为负能断定过拟合吗？
+>
+> 表示[3,9]，预测2+3−1.8=3.2；负号只是此函数曲率，不能证明过拟合。须独立误差比较、支持范围和数值诊断；另造[x²,x]列顺序会让系数误乘，应按训练序输入。
 
 ```python
 import numpy as np
@@ -715,8 +732,8 @@ print(data.head())
 
 x 最大是 **5.236**，那么 $x^{15} = 5.236^{15} \approx 6.1 \times 10^{10}$。
 
-**同一张表里，`x` 这一列的量级是 1，`x^15` 那一列的量级是 10¹⁰ —— 相差一百亿倍。** 这会导致：
-1. $X^{\top}X$ 严重**病态（ill-conditioned）**，求逆时数值误差巨大 → cell 22 会跳出 `LinAlgWarning`
+**同一张表里，`x` 这一列的量级是 1，`x^15` 那一列的量级是 10¹⁰ —— 相差一百亿倍。** 需留意两点：
+1. 高次幂列的尺度差和强相关可能使线性方程求解对微小数值误差敏感。Cell 22 的原保存警告来自 `linalg.solve(A, Xy, ...)`；多因素诊断见 §3.4。
 2. **Ridge 的惩罚项对不同尺度的特征是不公平的**（惩罚 $\sum a_j^2$ 里，量级大的特征系数天然小，被罚得轻）
 
 ⚠️ 原码没有标准化；可比较仅训练侧估计尺度后的Ridge，但尺度定义会改变惩罚目标，仍可能病态。完整机制见 §3.4，不能把缩放当普适保证。
@@ -751,7 +768,13 @@ x 最大是 **5.236**，那么 $x^{15} = 5.236^{15} \approx 6.1 \times 10^{10}$�
 
 ---
 
+![原 Notebook Cell 18 保存图](figures/t02-saved-source/t02-cell-18-output-01.png)
+
+**读图**：横轴是弧度，黑点是带噪的正弦样本；本图尚未拟合。
+
 ### 3.2 【cell 20】15 阶多项式：训练拟合与风险诊断
+
+Cell 19 的原式从截距和一次项延伸到第十五次：$y=a_0+a_1x+a_2x^2+a_3x^3+\cdots+a_{15}x^{15}$。Cell 20 把 15 个幂次作为输入列，并不直接拟合正弦函数。
 
 **这块在干什么**：把上一步造好的 15 个多项式特征全部塞进普通线性回归（不加任何约束），研究复杂度增加的效果；先看训练拟合，再用独立误差判断是否过拟合。
 
@@ -790,7 +813,7 @@ a11=-1.021597   a12=0.179302    a13=-0.019634  a14=0.001228   a15=-0.000034
 |---|---|
 | `predictors = ['x']` 然后 `.extend([...])` | 造出列名清单 `['x','x^2',…,'x^15']` |
 | `linreg.fit(data[predictors], data['y'])` | ⚠️ 注意 X 是 **DataFrame**（15 列），y 是 **Series**（一维）。sklearn 两者都接受 |
-| `linreg.predict(data[predictors])` | ⚠️ **在训练数据自己身上预测** —— 这是"训练误差"，不是泛化误差 |
+| `linreg.predict(data[predictors])` | 在已用于拟合的输入上得到预测。此行还没有计算误差，随后与训练真实值比较才是训练误差。 |
 | `linreg.coef_[i]` | **一层索引**（对比 cell 11 的 `[0][0]`），因为这里 y 是一维的 |
 | `a%d' % (i+1)` | `coef_[0]` 对应 `x`（一次项）→ 打印成 `a1` ✅ 编号是对的 |
 
@@ -825,6 +848,10 @@ a6 =  -9.01    a7 = +0.25    a8 = +8.95    a9 = -8.14   a10 = +3.70
 
 ---
 
+![原 Notebook Cell 20 保存图](figures/t02-saved-source/t02-cell-20-output-01.png)
+
+**读图**：橙点是原训练样本，蓝线是十五阶拟合。两端有波动，但图本身没有验证集，不能直接判泛化。
+
 ### 3.3 ⚠️ 这里违反了讲义自己的外推警告
 
 **是什么**
@@ -848,11 +875,9 @@ X_new = 3 * rnd.rand(100, 1)   # 评估数据：x ∈ [0, 3)  ← 超出训练�
 
 文字替代：训练 [0,2)、新输入 [0,3)、窗口 [0,2]。图只据原代码范围；2.5 是明确补充的教学输入，不是声称旧随机样本有这一点。
 
-<details><summary>读图自测：把 x 轴扩到 3 就消除了外推吗？</summary>
-
-没有。只改变窗口，不改变训练输入与模型状态。[2,3) 的预测仍需要额外结构假设或数据。
-
-</details>
+> [!example]- 读图自测：把 x 轴扩到 3 就消除了外推吗？
+>
+> 没有。只改变窗口，不改变训练输入与模型状态。[2,3) 的预测仍需要额外结构假设或数据。
 
 而讲义 p.21 用一个红色警告三角明确写着：
 
@@ -866,10 +891,10 @@ X_new = 3 * rnd.rand(100, 1)   # 评估数据：x ∈ [0, 3)  ← 超出训练�
 
 > 💡 若任务是评价相同输入支持下的新数据，可另用 `X_new = 2 * rnd.rand(100, 1)`；若任务刻意研究外推，则保留新范围并单独报告。不能只因范围不同就擅自改变原题或推断作者意图。
 >
-> 🎙️ **✅ 转录已核实：课上没有任何人点破这一点。**
+> 🎙️ **转录可见段的证据**
 > - **教授**在讲义部分把外推警告讲得很重（`37:48–40:23`，还举了"价格降到 10 元""价格为 0"两个反例，见 [[M02-预测分析-线性回归#2.6.3 外推警告（讲义 p.21）|M02 §2.6.3]]）
-> - **助教**在讲 cell 13 时**只指出了颜色冲突那个 bug**（`01:58:55`），**对 $X_{\text{new}} \in [0,3]$ 超出训练范围 `[0,2]` 只字未提**
-> - 两人**都没有把讲义 p.21 和这个 cell 联系起来**
+> - 助教在 cell 13 的可见段指出颜色写法（01:58:55）；所供段落未记录他解释新输入范围越过训练支持。
+> - 讲义 p.21 与 cell 13 的对应是本文补充；录音未记录教师在这段作此对照。
 >
 > ⚪ 录音未出现对此输入范围设计意图的说明，无法确认是疏漏或有意安排；外推与裁图边界仍需说明。
 > 💡 这是可以在报告里明确说明的数据边界，不是保证加分的规则。
@@ -908,11 +933,9 @@ flowchart TD
 
 小例为直接线性代数求解，无需人为编循环次数；若使用迭代solver才检查tol/max_iter与不收敛提示。本机原61×15病态设计上，Ridge(alpha0,solver=svd)与LinearRegression预测最大差约0.85855，即目标等价也不保证有限精度输出一致。不能靠默认solver无报错宣称可靠。🔗 [Ridge官方目标](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html)，获取2026-10-01；原notebookcell21写α乘平方和，与本段sklearn口径相符。
 
-<details><summary>迁移/诊断：一列Sxx8、Sxy12，α4、均值x2/y5，求参数和新x3预测；若软件使用平均SSE，λ仍可直接抄成alpha吗？</summary>
-
-b=12/(8+4)=1、a5−2=3，新x3预测6。若目标改成SSE/(2n)+λb²/2，乘2n后软件alpha=nλ；缩放系数不同须先同倍数化整个目标。新x自己fit scaler会改坐标，不能复用原bz；训练缩放、罚项定义和列顺序都须保持。α大也可能欠拟合，不保证改善验证。
-
-</details>
+> [!example]- 迁移/诊断：一列Sxx8、Sxy12，α4、均值x2/y5，求参数和新x3预测；若软件使用平均SSE，λ仍可直接抄成alpha吗？
+>
+> b=12/(8+4)=1、a5−2=3，新x3预测6。若目标改成SSE/(2n)+λb²/2，乘2n后软件alpha=nλ；缩放系数不同须先同倍数化整个目标。新x自己fit scaler会改坐标，不能复用原bz；训练缩放、罚项定义和列顺序都须保持。α大也可能欠拟合，不保证改善验证。
 
 ```python
 from sklearn.linear_model import Ridge
@@ -964,7 +987,7 @@ notebook 的图标题写的是 `'Plot for penalty **lambda**: %0.3g' % **alpha**
 
 **坑 2 · `LinAlgWarning: Ill-conditioned matrix`**
 
-这个警告的根源是 §3.1 说的：`x` 和 `x^15` 相差一百亿倍，`XᵀX` 病态。`rcond = 4.48 × 10⁻²⁴` 极小，意味着矩阵几乎奇异。
+这条警告说明当前求解的矩阵数值状况很差。各幂次列的尺度差、相互相关和所用求解路线都可能参与；不能从警告唯一认定原因。`rcond` 约为 $4.48\times10^{-24}$ 极小，意味着矩阵几乎奇异。
 
 ⚠️ **正确做法**：若希望各列按相同标准差单位承担惩罚，可仅在训练侧估计尺度再用Ridge；标准化是所选目标的定义，不是所有正则模型的必做命令：
 
@@ -1001,6 +1024,10 @@ model.fit(data[predictors], data['y'])
 
 ---
 
+![原 Notebook Cell 22 保存图](figures/t02-saved-source/t02-cell-22-output-02.png)
+
+**读图**：同一范围内比较较平滑的蓝线和橙点。α=0.1 是此图设置，不证明验证更优。
+
 ### 3.5 【cell 23】比较三个 alpha —— ⚠️ 这个 cell 有两处问题
 
 **这块在干什么**：既然 alpha（讲义里的 λ）是一个要自己定的超参数，这段代码就试三个不同的值（0.001 / 0.01 / 0.1），用 R² 和一个"RMSE"给它们打分，想找出哪个最好。
@@ -1024,11 +1051,9 @@ flowchart TD
 
 这条链的输出含选定α、最终参数/预处理、列名及最终测试指标。终点是声明候选全部评价后选定、最终测试完成；若边看测试边改候选，该表就不再是未参与选择的测试。单次小验证仍有抽样波动，多试候选可对验证过拟合；可用训练内CV或嵌套方案增加稳健性，代价是更多拟合。本例测试x5超训练+验证最大4，须报告外推，不把输入支持改变隐去。数据与全部数值由verify_t02_current.py核，均为教学补充，不是个人评分作业答案。
 
-<details><summary>诊断变式：学生先用8行全数据fit scaler，再把最后2行命名test，是否安全？如果验证选α后仍用四行旧模型，哪一步未完成？</summary>
-
-不安全，最后2行已影响尺度；应先固定边界、只用训练fit，再按政策训练+验证重拟合。第二种没有执行最终重拟合，若方案声称用6行训练就与实际状态不符；也可以事先声明只保持4行训练，但必须如实报告方案与样本，不把未做的操作写成做过。
-
-</details>
+> [!note]- 诊断变式：学生先用8行全数据fit scaler，再把最后2行命名test，是否安全？如果验证选α后仍用四行旧模型，哪一步未完成？
+>
+> 不安全，最后2行已影响尺度；应先固定边界、只用训练fit，再按政策训练+验证重拟合。第二种没有执行最终重拟合，若方案声称用6行训练就与实际状态不符；也可以事先声明只保持4行训练，但必须如实报告方案与样本，不把未做的操作写成做过。
 
 ```python
 alphas = [0.001, 0.01, 0.1]
@@ -1097,9 +1122,9 @@ rmse = np.sqrt(mean_squared_error(data['y'], y_pred))
 
 **运行依赖：cell 23 沿用 cell 15 的指标导入**
 
-它们靠的是 cell 15 的 import。**如果你只跑这个 cell（比如重启 kernel 之后），会 `NameError`。** 按完整 notebook 顺序执行有定义；只孤立运行该格时须先导入。它是执行顺序依赖，不自动构成原 notebook 缺陷。
+从空内核只跑这一格，先在 Ridge(...) 处遇到未定义的 Ridge；即使补导入，还需要此前生成的 data、predictors、NumPy 和 cell 15 导入的两个指标。依原顺序运行有这些定义；孤立重跑需先准备依赖。
 
-**⚠️ 另一个值得注意的现象**：三个 R² 不是单调的（0.9758 → 0.9727 → 0.9751）。按理说 alpha 越大 R² 应该越低。非单调与病态警告都已保存；应核数值稳定性，不能凭三个显示数唯一断定原因或保证标准化能解决。
+**训练 $R^2$ 不应机械判为严格下降**：同一设计和非零总平方差下，若准确求解同一岭目标，惩罚增大时训练 SSE 不减、$R^2$ 不增，可以持平。原保存结果非单调，数值病态、列尺度、强相关或求解方式都需核，不能只归因于某一种。
 
 **🎙️ 课堂补充**（转录 `02:18:47–02:19:24`）
 
@@ -1122,6 +1147,8 @@ rmse = np.sqrt(mean_squared_error(data['y'], y_pred))
 ---
 
 ## 4. 逐块讲解 · 第三段：Airbnb 真实数据（cell 26–33）
+
+Cell 25 指向 [Airbnb 原数据集来源](https://www.kaggle.com/datasets/stevezhenghp/airbnb-price-prediction?resource=download)，接着才由 Cell 26 读取本地 CSV。
 
 > 📌 数据的完整六项概览见 [[IS6400_Business_Data_Analytics/_meta/数据集卡片#Airbnb.csv|数据集卡片 › Airbnb.csv]]（68,133 行 × 15 列，实跑统计）。这里只讲**代码**。
 
@@ -1234,7 +1261,7 @@ Name: property_type, dtype: object
 
 **原调用与补充路线分开**：原 cell 29 在 split 前对全表 fit，未知类别默认报错。下图展开编码状态，并允许声明 ignore / 未知桶；这些额外出口不能冒称原调用已有。
 
-箭头表示 fit 后保存字典，再用字典编码新行。House 从 C2 到 C4 输出 (1,0,0)，C6 按同房源 ID 拼数值字段。Castle 在 C3 走否；原默认进入 C7 报错。ignore 的全零须标未知，不能改叫 Apartment。
+箭头表示 fit 后保存字典，再用字典编码新行。House 输出 (1,0,0)；原表按 DataFrame 行索引对齐。未知 Castle 按默认设置报错；设 ignore 得全零也不能认成 Apartment。
 
 文字替代：先冻字典，再编码；未知策略必须先声明。下方既有 Castle 自测检查这条分支。
 
@@ -1271,11 +1298,9 @@ flowchart TD
 
 新代码应按已核本机1.5.1选sparse_output，原码.toarray保持原样。
 
-<details><summary>迁移：训练仅Apartment/House，新Castle，drop first，默认与ignore各怎样？全dummy加截距为何不是“有更多信息”？</summary>
-
-固定输出House一列：Apartment0、House1；默认Castle报错，ignore为0但与Apartment有歧义，应报告未知而非自动判公寓。全dummy的和就是截距列，是重复表示，增加列不增加可识别自由度；OLS预测可定义而系数不唯一，解释各系数需参照约定。
-
-</details>
+> [!example]- 迁移：训练仅Apartment/House，新Castle，drop first，默认与ignore各怎样？全dummy加截距为何不是“有更多信息”？
+>
+> 固定输出House一列：Apartment0、House1；默认Castle报错，ignore为0但与Apartment有歧义，应报告未知而非自动判公寓。全dummy的和就是截距列，是重复表示，增加列不增加可识别自由度；OLS预测可定义而系数不唯一，解释各系数需参照约定。
 
 ```python
 from sklearn.preprocessing import OneHotEncoder
@@ -1374,7 +1399,7 @@ flowchart LR
 
 下图为补充的训练内fit规范顺序；原cell29–31先全表fit再切分的代码保留作来源，不能当已经符合该协议。固定外部字典的纯transform可更早进行，但本篇学习类别字典时先划训练身份。
 
-先确认每个编码向量属于哪个房源。下面三行是笔记补充小表，原输入顺序不变。
+先用三行笔记补充例追踪房源：这里人为把房源代号设成索引。原代码没有取 CSV 的 id 列，使用读入后的默认行索引。
 
 | 房源 ID | 房型 | 容量 | 编码向量 |
 |---|---|---:|---|
@@ -1387,7 +1412,7 @@ flowchart LR
 1. 编码器先返回无行标签数组，顺序与输入相同。
 2. 构造 DataFrame 时赋同序 index 31/12/50，再按标签 join。
 3. 默认 index 0/1/2 会造成缺失或错配；只复制 index 也不能修已经独立排序的数组。
-4. X/y 同次 split，预测第 i 项对应 x_test 第 i 行。评价时一起保存这些 ID。
+4. 先确认 X、y 已对应同一批行且同序，再一次 split 保持配对。原码保留行索引，不是重新检查 CSV 的 id。
 
 反例区别：Actual Series(index7/3,values10/20)与等长Predicted ndarray(11/19)构造DataFrame，结果index7/3、成对(10,11)/(20,19)，不会全NaN；另一个Predicted Series若index0/1，才与Actual按标签并集形成缺失。使用tolist会舍弃身份但不修正已经乱序的预测。安全补充写法可用`pd.Series(y_pred,index=x_test.index,name='Predicted')`，再与同ID真实值核对；若y是二维，先按目标形状取列，不凭ravel吞多个目标。
 
@@ -1400,11 +1425,9 @@ flowchart TD
     I4 --> I5["与y_test按同ID比较；再算指标"]
 ```
 
-<details><summary>迁移/诊断：原y的ID[50,12]，数值[8,3]；预测数组[7,4]按同x_test顺序，MAE多少？若先单独排序真实值，为什么不能仍算同一指标？</summary>
-
-成对误差1/1，MAE1。若把真实值排序为[3,8]而预测仍[7,4]，误差4/4、MAE4，是错配导致另一计算；先保留ID并在相同对象上对齐。长度相等不保证对象一致。编码unknown、缺失、重复ID也须按政策处理，不让join悄悄改变行数。
-
-</details>
+> [!example]- 迁移/诊断：原y的ID[50,12]，数值[8,3]；预测数组[7,4]按同x_test顺序，MAE多少？若先单独排序真实值，为什么不能仍算同一指标？
+>
+> 成对误差1/1，MAE1。若把真实值排序为[3,8]而预测仍[7,4]，误差4/4、MAE4，是错配导致另一计算；先保留ID并在相同对象上对齐。长度相等不保证对象一致。编码unknown、缺失、重复ID也须按政策处理，不让join悄悄改变行数。
 
 ```python
 # merge with main df on key values, this will be used as IV
@@ -1455,7 +1478,7 @@ x = x.join(enc_df)
 
 `02:30:30` 解释删去原 property_type：文本信息已编码为 dummy，当前 LinearRegression 输入需要数值列。这里删的是进入模型的特征表列，不是删除只读 CSV 中的原始信息。
 
-**逐行核对**：无标签编码数组先带原ID成DataFrame，再join原数值表，最后drop文字property_type。
+**逐行核对**：原格把编码数组变成带默认 RangeIndex 的表，与当前未重排行的 x 按索引 join，再 drop 文字列。显式赋回原行索引是上述补充安全写法，不是源 cell 30 的代码。
 
 **为什么这么写**：保证编码和目标来自同一房源；join按标签不是按当前位置拼。
 
@@ -1491,7 +1514,7 @@ print(lin_reg.intercept_)
 
 | 部分 | 说明 |
 |---|---|
-| `train_test_split(x, y, ...)` | **必须同时传 x 和 y**，函数会用**同一套随机索引**切它们，保证行对得上 |
+| `train_test_split(x, y, ...)` | 保持已同序的输入与目标配对，不能修复此前各自排序造成的错配 |
 | **返回值顺序** | ⚠️ **`x_train, x_test, y_train, y_test`** —— 赋错对象可能报形状错误，也可能悄悄训练另一个问题；须核 X/y 身份与形状 |
 | `test_size=0.30` | 测试比例 30%，取整说明见下方 |
 | **`random_state=0`** | **固定随机切分方式**，保证可复现。⚪ 与 cell 5 不设种子形成鲜明对比 |
@@ -1558,11 +1581,13 @@ flowchart TD
 
 上述经典SE/t有限样本口径依赖误差独立、等方差、正态等条件；四个教学观察不能证明这些条件。秩不足、n≤参数数、缺失或异方差时不能照抄此推断链，应报告限制/合理协方差估计方案，仍需其对应假设。p<0.05不表示有95%概率为真、因果成立或独立预测一定改善；重复筛列会改变推断协议。脚本verify_t02_current.py公开coef/SE/t/p/CI；本段核心推断就地展开，VIF仅是背景诊断扩展，不把“唯一一个库”当统计原理。
 
-<details><summary>迁移/诊断：同模型斜率2、SE.5时t多少？学生把p=0.02写成“98%概率有因果作用”，错在哪里？</summary>
+> [!example]- 迁移/诊断：同模型斜率2、SE.5时t多少？学生把p=0.02写成“98%概率有因果作用”，错在哪里？
+>
+> 针对H0斜率0，t=4，但还须有效自由度与对应分布才能确定p/CI；不能仅凭4给任意分布的尾概率。p是H0及假设成立下至少如此极端统计量的概率，不是因果概率；还需研究设计、遗漏变量和数据生成证据，预测表现另在不参与训练的数据检验。
 
-针对H0斜率0，t=4，但还须有效自由度与对应分布才能确定p/CI；不能仅凭4给任意分布的尾概率。p是H0及假设成立下至少如此极端统计量的概率，不是因果概率；还需研究设计、遗漏变量和数据生成证据，预测表现另在不参与训练的数据检验。
+#### Cell 32 · 预测并按同行对照
 
-</details>
+用已训练模型对测试表预测，再把每行实际与预测并列。保存表首行的实际 5.220356、预测 6.376582，都是 log 价格；行号 0 是此表展示位置，不是原 CSV 的房源 ID。
 
 ```python
 y_pred=lin_reg.predict(x_test)
@@ -1571,6 +1596,10 @@ comparison_df
 ```
 
 这段输出每行真实值与预测值，顺序沿 x_test；下一格把同一对 y_test/y_pred 的逐行绝对差取平均。
+
+#### Cell 33 · 汇总 MAE
+
+把 Cell 32 的预测和相同测试行的真实值按行对齐，取绝对偏差的平均；不能比较不同行的结果。
 
 ```python
 from sklearn.metrics import mean_absolute_error
@@ -1584,7 +1613,7 @@ print(MAE)
 
 `y_test` 是一个 Series，它的**索引是原始数据的乱序索引**（比如 40631, 12043, …）。`y_pred`是无标签的普通数组，行序对应调用predict时的x_test行序。
 
-如果直接写 `pd.DataFrame({"Actual": y_test, "Predicted": y_pred})`，这个字典构造不会因此全NaN：等长ndarray没有索引，会按位置放到Series索引上。`.tolist()`会丢行身份，但不是避免此处NaN的必需条件；真正风险是两个带不同标签的Series/DataFrame按标签对齐，或预测顺序已被打乱。下方非连续索引例会展示两者。
+如果直接写 `pd.DataFrame({"Actual": y_test, "Predicted": y_pred})`，这个字典构造不会因此全NaN：等长ndarray没有索引，会按位置放到Series索引上。`.tolist()`会丢行身份，但不是避免此处NaN的必需条件；真正风险是两个带不同标签的Series/DataFrame按标签对齐，或预测顺序已被打乱。上方 §4.4 的非连续索引例会展示两者。
 
 这里关键是保留对象身份；tolist 只是丢标签的转换，不是修复乱序的办法。
 
@@ -1692,20 +1721,20 @@ pd.Series(lin_reg.coef_, index=x.columns).sort_values()
 
 先声明：固定其他输入列，b描述该模型的条件性log预测差；指数给逆变换预测倍率，不是现实因果涨幅或条件均价保证。下表“涨/降”均按此限定读，不把观察回归当干预实验。
 
-$$\text{X 每加 1 单位} \;\Longrightarrow\; \text{价格变化约 } (e^{b} - 1) \times 100\%$$
+$$\text{逆变换预测的百分比差}=(e^b-1)\times100\%\qquad\text{其余输入保持相同}$$
 
-| 特征 | 系数 b | e^b − 1 | **业务含义** |
+| 特征 | 系数 b | e^b − 1 | 同模型、其余输入固定时的拟合预测差 |
 |---|---|---|---|
-| `accommodates` | +0.17001 | **+18.53%** | **每多能住 1 个人，房价约涨 18.5%** |
-| `bathrooms` | +0.13795 | **+14.79%** | 每多 1 个卫生间，约涨 14.8% |
-| `bedrooms` | +0.12490 | **+13.30%** | 每多 1 间卧室，约涨 13.3% |
-| **`beds`** | **−0.05628** | **−5.47%** | ⚠️ **每多 1 张床，约降 5.5%** ← **反常识！见下** |
-| `House` | −0.19174 | **−17.45%** | House **比 Apartment（基准）便宜 17.5%** |
-| `Loft` | +0.12104 | **+12.87%** | Loft **比 Apartment 贵 12.9%** |
-| `Town House` | −0.17429 | **−16.00%** | Townhouse **比 Apartment 便宜 16.0%** |
-| `intercept_` | 4.05753 | e^b = **\$57.83** | 所有特征为 0 且是 Apartment 时的价格（**无业务含义**：住 0 人、0 卫生间的房源不存在） |
+| `accommodates` | +0.17001 | +18.53% | 容纳人数多 1，逆变换预测高约 18.53% |
+| `bathrooms` | +0.13795 | +14.79% | 卫生间多 1，逆变换预测高约 14.79% |
+| `bedrooms` | +0.12490 | +13.30% | 卧室多 1，逆变换预测高约 13.30% |
+| `beds` | −0.05628 | −5.47% | 床多 1，逆变换预测低约 5.47%，见下文 |
+| `House` | −0.19174 | −17.45% | 相比基准 Apartment，逆变换预测低约 17.45% |
+| `Loft` | +0.12104 | +12.87% | 相比基准 Apartment，逆变换预测高约 12.87% |
+| `Town House` | −0.17429 | −16.00% | 相比基准 Apartment，逆变换预测低约 16.00% |
+| `intercept_` | 4.05753 | e^b 约 57.83 | 形式上的全零基准（房型为 Apartment）；不把这个不具现实代表性的组合当房价估计 |
 
-> 💡 **系数较小时可以直接近似**：0.17 → 约 17%（真实 18.5%，误差 1.5 个百分点）。b 越大误差越明显。**报告里最好写精确值 `(e^b − 1)`。**
+> 系数较小时可以用 100b 作近似。以 0.17001 为例，近似约 17.00%，按模型精确指数变换约 18.53%；两者相差约 1.53 个百分点。
 
 **用表中舍入系数算一个近似预测（笔记补充）**：一间 Apartment，能住 4 人、1 个卫生间、2 间卧室、2 张床：
 
@@ -1715,7 +1744,7 @@ $$\begin{aligned}
 \text{price} &= e^{5.01276} \approx \$150.32 / \text{晚}
 \end{aligned}$$
 
-对照 [[IS6400_Business_Data_Analytics/_meta/数据集卡片#4.1 它到底是什么|数据集卡片 › 4.1 它到底是什么]]：中位价 \$110、75 分位 \$180 —— **\$150 落在合理区间** ✓
+在历史数据卡的总体中位价约 110、75 分位约 180 之间，这只能帮助读数值量级；不能证明该具体房源的预测正确。
 
 ### 5.5 🔴 beds 负系数的条件关系与诊断
 
@@ -1758,11 +1787,9 @@ flowchart TD
     K1 --> K2["小的列差方向承接扰动；核秩/条件与验证"]
 ```
 
-<details><summary>迁移/诊断：b=−0.1、Δ3，预测倍率？近共线例若只将最后y增加0.001，第二列系数与第一列分别应多少？</summary>
-
-倍率exp(−0.3)≈0.740818，逆变换拟合差约−25.9182%，非因果结论。第二列b2=1才能乘x2−2x1=0.001接住新增误差，第一列b1=1−2=−1，截距0；若微小扰动引出大系数，检查设计秩/条件数及不同划分，而不是仅凭负号编业务故事。
-
-</details>
+> [!example]- 迁移/诊断：b=−0.1、Δ3，预测倍率？近共线例若只将最后y增加0.001，第二列系数与第一列分别应多少？
+>
+> 倍率exp(−0.3)≈0.740818，逆变换拟合差约−25.9182%，非因果结论。第二列b2=1才能乘x2−2x1=0.001接住新增误差，第一列b1=1−2=−1，截距0；若微小扰动引出大系数，检查设计秩/条件数及不同划分，而不是仅凭负号编业务故事。
 
 四个"容量类"变量彼此高度相关（[[IS6400_Business_Data_Analytics/_meta/数据集卡片#5.1 ⭐ 严重多重共线性（做多元回归必踩）|数据集卡片 › 5.1 ⭐ 严重多重共线性（做多元回归必踩）]] 的实跑相关矩阵）：
 
@@ -1775,7 +1802,7 @@ flowchart TD
 
 **怎么理解这个负号**：多元回归的系数是"**在其他变量不变的前提下**"的拟合预测差（非因果效应）。所以 `beds = −0.056` 的准确读法是：
 
-> **在能住的人数、卫生间数、卧室数都相同的情况下，床更多的房源反而更便宜。**
+> 容纳人数、卫生间数、卧室数和房型都相同的条件下，模型给床数多一张的那一行约低 5.47% 的逆变换预测；不是同一房源加床后的价格变化。
 
 这其实说得通 —— 同样住 4 个人、2 间卧室，一间摆 2 张床（可能是双人床，情侣/夫妻房），另一间摆 4 张床（上下铺/沙发床，更像青旅）。是否存在这些房型差异需补实际事实，不能凭该负系数认定。
 
@@ -1815,22 +1842,22 @@ MAE改善为 $1-0.4389203843/0.55698603965\approx21.1972\%$。不是把全量基
 
 | # | 改什么 | 会发生什么 | 学到什么 |
 |---|---|---|---|
-| 1 | cell 5 前加 `np.random.seed(42)` | 同生成器算法/版本、初态与调用顺序下可重现 | **可复现性**。notebook 缺这一行 |
-| 2 | cell 5 改成 `rnd.rand(100)`（去掉 `,1`） | `ValueError: Expected 2D array, got 1D array` | sklearn 要求 X 是二维（§1.3 铁律三） |
+| 1 | Cell 5 在导入 rnd 后调用 rnd.seed(42) | 同生成器版本与调用顺序下更易复现 | 最好同时记录环境与调用顺序 |
+| 2 | 只将 rnd.rand(100,1) 改为 rnd.rand(100) | x 成 (100,)，原噪声仍 (100,1)，广播使 y 先成 (100,100)；随后 fit 也不接受一维 x | 正确做法是从一开始保持 X 两维，并使 y/噪声的形状相容 |
 | 3 | cell 5 把样本数从 100 改成 20 | 期望估计波动通常增大，但单次偏差可更小，须实跑核 | **样本越少，估计越不稳** |
 | 4 | cell 5 把噪声改成 `5*rnd.randn(100,1)` | 总体参照 R² 下降，单次分数仍会波动 | 噪声方差增加、信号设定不变；有限样本不保证固定降幅 |
 | 5 | cell 11 改成 `lin_reg.coef_[0]` | 单独显示可为数组；若仍用原%f格式化，还需按版本行为核数值转换 | y 是二维 → `coef_` 是 (1,1) |
 | 6 | cell 13 改成 `X_new = 2*rnd.rand(100,1)` | 总体参照R²因信号范围缩小而降，实际样本分数仍波动 | 新输入支持与训练一致（§3.3）。R² 降是因为 X 范围窄了、y 方差小了 |
 | 7 | cell 13 去掉 `plt.axis([0,2,0,15])` | 图上多出 x ∈ [2,3) 的点 | 按生成分布预计约三分之一落在显示范围外；原数组未保存，实际数量未知 |
 | 8 | cell 20 把 `power` 从 15 改成 3 | 参数空间变小，曲线/系数与验证成绩需实跑 | 降次数可减复杂度但也可能欠拟合 |
-| 9 | cell 22 把 `alpha` 从 0.1 改成 100 | 原未缩放15次幂的alpha100不保证近水平；2026-10-01 旧批记录预测范围约−0.98573到0.98667、训练R²约0.97419 | **λ 太大 → 欠拟合** |
+| 9 | cell 22 把 `alpha` 从 0.1 改成 100 | 原未缩放15次幂的alpha100不保证近水平；2026-10-01 旧批记录预测范围约−0.98573到0.98667、训练R²约0.97419 | 惩罚过强可能欠拟合，仍需按验证结果判断 |
 | 10 | cell 22 把 `alpha` 改成 0 | 目标函数退化为OLS，但病态设计下求解器的有限精度结果可不同 | **λ=0 时 Ridge 退化为普通线性回归**（讲义 p.49 明写） |
 | 11 | cell 22 换成 `Lasso(alpha=0.001)` | 可能得到部分零系数，须以数据/尺度/alpha/收敛结果实跑为准 | 背景对照：Lasso的L1惩罚可产生稀疏解（详见表后） |
 | 12 | cell 22 前加 `StandardScaler` | 通常改善尺度差，但不保证警告消失；高次列依然可高度相关 | 按训练尺度定义惩罚，不能许诺消除共线性（§3.4） |
 | 13 | cell 23 改用验证集评估 | 最优 alpha 可能改变，必须看保存的验证结果 | 验证结果可用于选择面向未见数据的配置；训练内最佳仍是另一项有范围的结论（§3.5） |
 | 14 | cell 23 改成 `np.sqrt(mean_squared_error(...))` | 数值无固定大小顺序 | **RMSE ≠ √MAE**（§3.5） |
 | 15 | cell 29 去掉 `drop='first'` | 先因原硬编码3列名与4列输出不符而报错；同步修列名后，无惩罚且有截距的全部dummy导致参数不唯一 | ⭐ **虚拟变量陷阱**（[[M02-预测分析-线性回归#2.7.2 虚拟变量与 n−1 规则（讲义 p.25）\|M02 §2.7.2]]） |
-| 16 | cell 29 把 `drop='first'` 改成 `drop=['House']` | 基准变成 House，各 dummy 改为相对 House 的比较；特定零差值可能不变 | 无惩罚、有截距、同一列空间时更换基准可不改预测；惩罚回归不保证编码不变性 |
+| 16 | cell 29 把 `drop='first'` 改成 `drop=['House']` | 基准变成 House；同步按编码器生成的新名称命名，不能继续硬写旧三名 | 无惩罚、有截距、同一列空间时更换基准可不改预测；惩罚回归不保证编码不变性 |
 | 17 | cell 31 把 `random_state=0` 改成 `1` | 系数略变，MAE 略变 | 切分的随机性也会带来波动 |
 | 18 | cell 31 把 `test_size` 从 0.30 改成 0.5 | 训练份额由0.7到0.5，减少约28.6%；估计波动需实测，不是少一半 | "Drawback: Less data available for training" |
 | 19 | cell 27 的 `feature` 里加上 `'cancellation_policy'` | **需要再做一次 OneHotEncoder** | ⭐ **这就是作业第 4 题**。⚠️ 注意 `super_strict_60` 只有 8 行（[[IS6400_Business_Data_Analytics/_meta/数据集卡片#5.3 极端稀有类别（one-hot 之后会变成灾难）\|数据集卡片 › 5.3 极端稀有类别（one-hot 之后会变成灾难）]]） |
@@ -1888,6 +1915,29 @@ Please generate a complete Jupyter Notebook for a regression analysis tutorial t
 
 Include all necessary imports, clear comments, and proper formatting for Jupyter Notebook.
 
+#### 7.1.1 逐项核对 16 步
+
+表中是笔记示范的检查动作和英文参考回应。它保留源 Prompt，同时指出第 10 项只能演示训练拟合，第 14 项需先划分再拟合编码器；没有生成或提交另一个 Notebook。14→15 是原 Prompt 的编号；按改进方案实际执行时先做第 15 项划分，再在训练侧做第 14 项编码拟合。
+
+| 原序号 | 对照位置 | 中文核对动作 | English reference |
+|---:|---|---|---|
+| 1 | §2.1 / Cell 5 | 生成 100 条已知斜率和截距的数据；检查 X 的二维列和噪声形状。 | Generate the data with matching input and noise shapes. |
+| 2 | §2.2 / Cell 7 | 看蓝点的走势，先核图轴。 | Plot the training points and label both axes. |
+| 3 | §2.3 / Cell 9 | 用训练行拟合线性模型，保存参数。 | Fit LinearRegression on the training rows. |
+| 4 | §2.3 / Cells 10–11 | 从模型读取斜率和截距，允许有限样本误差。 | Read the coefficient and intercept from the fitted model. |
+| 5 | §2.4 / Cell 13 | 用原模型预测新 100 行，注明超过训练支持的输入。 | Predict new inputs and identify extrapolation beyond the training support. |
+| 6 | §2.4 / Cell 13 图 | 区别原训练、评价真实和评价预测，查横轴是否裁掉一部分。 | Separate training observations, evaluation observations and predictions. |
+| 7 | §2.5 / Cell 15 | 把同一评价行真实值和预测配对，算 R² 与 MAE。 | Evaluate paired held-out predictions using R-squared and MAE. |
+| 8 | §3.1 / Cell 18 | 在 60° 到 300° 按步长 4° 取点，先转弧度。 | Convert the specified angles to radians before computing sine. |
+| 9 | §3.1 / Cell 18 扩列 | 按相同 x 值造二到十五次幂，别把目标当输入。 | Build powers two through fifteen from the input only. |
+| 10 | §3.2 / Cell 20 | 拟合十五阶，画训练拟合；是否过拟合须独立验证。 | Illustrate training fit and verify overfitting risk on unseen data. |
+| 11 | §3.4 / Cell 22 | 给 0.1 的岭回归加系数平方惩罚，保留真实单位口径。 | Fit Ridge at alpha 0.1 and state the feature scale. |
+| 12 | §3.5 / Cell 23 | 比较三个 alpha；正确命名指标，并分清训练内和验证结果。 | Compare all three settings with correctly named metrics and a stated validation protocol. |
+| 13 | §4.1–4.2 / Cells 26–27 | 用实际本地数据，先查字段、行数和目标。 | Inspect the actual Airbnb file, columns and target. |
+| 14 | §4.3–4.4 / Cells 29–30 | 按训练类别拟合编码器；不要让测试行决定字典。 | Fit the one-hot encoder only on the training rows. |
+| 15 | §4.5 / Cell 31 | 一次固定 70/30 切分；确认 X 和 y 原来同序。 | Use a shared 70/30 split after confirming input–target alignment. |
+| 16 | §4.6 / Cells 32–33 | 拟合只看训练，评价只看预留行并说明 log 价格尺度。 | Fit on training data and report the held-out errors on the stated log-price scale. |
+
 ### 7.2 ⭐ 它和 T01 的七个 prompt 是两种不同的东西
 
 | | [[T01-Jupyter入门与Pandas基础#6. 教授在教你怎么向 AI 提问\|T01 的 7 个 prompt]] | **T02 的这 1 个 prompt** |
@@ -1902,7 +1952,7 @@ Include all necessary imports, clear comments, and proper formatting for Jupyter
 > 💡 **从文本粒度可以看到一种组织变化（笔记分析）**：W01 教你"用一句话说清一个操作"，W02 教你**"用一份清单说清整个分析流程"**。
 >
 > **注意 16 个步骤的顺序** —— 它就是一次完整数据分析的骨架：
-> **造数据 → 可视化 → 建模 → 取参数 → 预测 → 再可视化 → 评估 → （换个更难的问题）→ 造特征 → 制造过拟合 → 正则化 → 调超参数 → 读真实数据 → 处理类别变量 → 切分 → 训练评估**
+> **造数据 → 可视化 → 建模 → 取参数 → 预测 → 再可视化 → 评估 → （换个更难的问题）→ 造特征 → 展示训练拟合与过拟合风险 → 正则化 → 调超参数 → 读真实数据 → 处理类别变量 → 切分 → 训练评估**
 >
 > ⭐ 原16步是课程演示顺序；用于新方案前须改为先固定数据身份、仅训练fit编码/尺度，再验证选择和冻结测试，见§5.1。不能直接照搬全表fit后切分。
 
@@ -1926,11 +1976,9 @@ flowchart TD
 
 接受条件事先声明，达到后停止；若无数据/权限/预算或连续无法满足要求，应报告缺口而非无限重试。AI可能漏检指标与数据泄漏，人也可能只写一个碰巧通过的测试；保护测试数据与验收定义，不让生成器改成较容易的目标。原Prompt逐字保留，新机制为笔记补充，不替用户制作评分作业。
 
-<details><summary>诊断变式：AI用全68133行均值基线和20440行测试MAE比，输出“改善21%”，该验收哪里失败？</summary>
-
-比较协议不一致：基线参数应只训练估计，并与模型在同一测试行/目标尺度评价。纠正后重新算两方法同集指标，不能因百分比看起来接近就默认正确。若用测试标签挑α，它也已参与选择；不能只改字段名成test便恢复独立性。
-
-</details>
+> [!note]- 诊断变式：AI用全68133行均值基线和20440行测试MAE比，输出“改善21%”，该验收哪里失败？
+>
+> 比较协议不一致：基线参数应只训练估计，并与模型在同一测试行/目标尺度评价。纠正后重新算两方法同集指标，不能因百分比看起来接近就默认正确。若用测试标签挑α，它也已参与选择；不能只改字段名成test便恢复独立性。
 
 对比 T01 的 "store it in a variable named 'x'"，原 Prompt 给了 x/y 数学符号，但未给各中间结果和模型对象的接口变量名。**后果**：AI 生成的代码变量名会与讲义、与你同学的都不一样，交叉对照时很痛苦。
 
@@ -1942,7 +1990,7 @@ flowchart TD
 
 > ⚠️ **这正是"用 AI 写代码"的核心风险**：错误规格可能传递为错误实现，AI可能提醒也可能漏检；必须用能区分错误的运行例核验。
 >
-> ✅ **正确的用法**：拿到 AI 的代码后**逐块核对**（用本笔记 §2–§4 的讲解），而不是直接跑。官方允许用 GenAI（`Allow Use of GenAI: Yes`），但**交上去的是你的作品，错了算你的**。
+> 拿到 AI 生成代码后按输入、动作、输出逐块核对。GenAI 的历史许可与适用范围见 T01 §6.4；此处只记录源 Prompt 的学习用途，未刷新本作业或考试政策。
 
 ### 7.4 Summary cell（cell 36）里藏的三条信息
 
@@ -1966,7 +2014,7 @@ flowchart TD
 
 1. **Lasso在原cell36仅列入工具箱，正文未调用**；此处是课外对照，不凭列表推定教师考核范围。⭐ **建议自己跑一次 `Lasso(alpha=0.001)`**（§6 第 11 条），作为课外L1/L2目标对照；一次数值输出不能证明稀疏性的一般性质或断言Ridge绝不为零
 2. **`solver="cholesky"`** —— 求解器（solver）是实现同一优化目标的数值计算方法。sklearn 的 Ridge 有多种求解器（`auto`/`svd`/`cholesky`/`lsqr`/`sag`…）。`cholesky` 用的正是 [[M02-预测分析-线性回归#2.8.3 正规方程：闭式解（讲义 p.32–34）⭐|M02 §2.8.3]] 的**闭式解**路线；较大样本时可比较`sag`等迭代求解器，须核尺度/容差与收敛；不意味着数据一大默认就自动切换（随机平均梯度，属于 §2.8.4 梯度下降家族）
-3. ⭐ **statsmodels 的链接很重要**：**sklearn 不提供 p 值和标准误**（它是机器学习库，只关心预测），而讲义 p.53 的 Take Away 明确要考 "Interpretation of the output: coefficient, **p-value**"。本篇用statsmodels取得讲义所示coef/SE/t/p/CI型统计表，数学推断量并非只能由这一库计算：
+3. 讲义 p.53 的 Take Away 列出理解系数及 p 值，未写考核范围。本文使用的 LinearRegression 不直接给标准误、t 和 p；用 statsmodels 可获得例中的推断表，数学量仍取决于相应假设：
    ```python
    import statsmodels.api as sm
    X2 = sm.add_constant(x_train)        # 手动加截距列
@@ -1977,12 +2025,12 @@ flowchart TD
 
 > ✅ **第 3 条已被课堂证实，而且规格比 notebook 高**：Summary cell 只把 statsmodels 写成 "**After-class reading material**（有兴趣的同学可以读）"，但助教在课上是把它当作做项目时的建议给的（`02:33:01–02:34:18`）。详见 §4.6 课堂补充及 §10.2 第 1 项的 statsmodels 建议。
 
-**⏭️ 另外两条课上都没讲：**
+**另外两项：所供教程片段未见相应展开**
 
-| Summary 里的内容 | 课上有没有 |
+| Summary 里的内容 | 所供教程片段 |
 |---|---|
-| `from sklearn.linear_model import **Lasso**` | ❌ **助教全程只讲了 Ridge，Lasso 一次没提**（教授在讲义部分讲了 Lasso 的公式与权衡，但没写代码） |
-| `Ridge(alpha=1, **solver="cholesky"**)` | ❌ **没提 solver**。助教只强调了"**记得设 alpha，默认是 1**"（见 §3.4 🎙️） |
+| `from sklearn.linear_model import **Lasso**` | ❌ 所供教程片段没有记录 Lasso 的展开；原 Summary 仍列其 API |
+| `Ridge(alpha=1, **solver="cholesky"**)` | 所供片段未见该求解器展开。助教强调了"**记得设 alpha，默认是 1**"（见 §3.4 🎙️） |
 
 🎙️ **✅ 关于用 AI 写代码：助教在最后一句给了明确态度**（末条起始戳 `02:34:37`；之前 `02:34:18` 仅引入 coding）：
 
@@ -1990,10 +2038,10 @@ flowchart TD
 
 中文解释：助教说不理解时可用 AI 帮助生成代码；具体工具名在 ASR 中误写，按原 cell 35 的 Prompt 确认这一段在讲学习辅助，不把未听原音的词补成直接引语。
 
-> ⭐ **这就是 §7 那个"把整个 notebook 要回来"的 prompt 的官方定位**：**不是"看看就好"，是"你可以真的这么用"。**
+> ⭐ 这条转录把源 Prompt 用作理解代码时的学习辅助；不能从该条推定评分作业或考试的现行许可。
 > ⚠️ **但要注意她说的是"如果你看不懂的时候用它帮你生成代码"** —— 定位是**学习辅助**，不是"代替你做作业"。⚪ 课程 syllabus 的 GenAI 政策仍然适用，见 [[IS6400_Business_Data_Analytics/_prep/课程前置资料|课程前置资料]]。
 >
-> ⚠️ **录音在这句话之后就断了**（`02:34:37`），所以**助教是否还说了更多（尤其是作业）无从得知**。见 [[#10.5 待核对|§10.5]]。
+> 所供转录最后一条起于 02:34:37；后续是否另有作业说明无法核实。
 
 ---
 
@@ -2001,7 +2049,7 @@ flowchart TD
 
 这里说明四题在要求什么，并对照已取得的参考答案和历史个人答卷。它是学习复盘，不是新制作的提交件；既有提交、日期与成绩保持原记录。本轮未打开 Canvas 四入口核现行要求，也未重新执行评分代码。
 
-<details><summary>完整英文原题：Week 2 Assignment（原 notebook cell 38，原 4 题及 Submission）</summary>
+**完整英文原题：Week 2 Assignment（原 notebook cell 38，原 4 题及 Submission）**
 
 ## Week 2 Assignment
 
@@ -2029,8 +2077,6 @@ Evaluate the performance of the new model and compare it with the original model
 
 Upload your **code and results as an HTML file** to **Canvas**.
 
-
-</details>
 
 原题内部小题合计 100 points；这与 Canvas 页面记录的 10 points 是不同层级的数字，不能把 100 当作课程总评占比。`Section 3.4` 在所供 notebook 没有同号标题；按 “Ridge Regression” 可定位 cell 16–24，这是上下文定位，不是恢复出另一份未取得材料。`Section 3.6` 对应 cell 25–33。
 
@@ -2102,7 +2148,9 @@ MAE 先取每行预测差的绝对值，再除以评价行数。笔记补充小�
 
 本源五类按字典为 `flexible, moderate, strict, super_strict_30, super_strict_60`。`drop='first'` 以 flexible 为基准，四个指示位分别说明是否属于其他四类；房型仍沿 §4.3 的三列。原数据的 `super_strict_60` 仅 8 行，稀有类别系数需要谨慎解读。合并类别会改变原题实现，不能在复盘里悄悄将两类合并后称为官方原结果。
 
-公平比较要保持数据行、划分方式和误差单位一致。官方与个人 Q4 均保存 `test_size=0.30, random_state=0` 的相同行划分：47,693 行训练、20,440 行留出。各模型系数只在对应训练行拟合，但编码器在划分前对全表 `fit`；因此留出类别集合已参与预处理规则形成，不能说整个流程无数据泄漏。数据泄漏（data leakage）指训练或选模使用了评价时不该提前取得的信息。
+公平比较要保持数据行、划分方式和误差单位一致。官方和个人 Q4 的两模型各自在同一份成品内固定划分，代码均用 test_size=0.30、random_state=0。若两次输入 CSV 字节及行序相同，则为相同的 47,693 个训练行与 20,440 个留出行；两份保存 HTML 未绑定各自输入指纹，不能跨成品确认行身份。
+
+各模型系数只在对应训练行拟合，但编码器在划分前对全表 `fit`；因此留出类别集合已参与预处理规则形成，不能说整个流程无数据泄漏。数据泄漏（data leakage）指训练或选模使用了评价时不该提前取得的信息。
 
 以下每行是一个模型，MAE 在对数价格尺度上，$R^2$ 无单位；六位小数均直接来自保存 HTML。
 
@@ -2123,13 +2171,11 @@ $R^2$ 按六位显示值相减为 0.002106；官方另用未舍入内部值打�
 
 先把题面关系、训练式和评价式并排核对，再确认每个指标评价的是哪批行。比较 alpha 时，先写好选择规则，再看验证结果；比较新增字段时，保持同样的行与目标单位。只有对应对象和协议一致，数字大小才有可比意义。
 
-<details><summary>改条件自测：只测 x=1 能发现 Q1 调换错误吗？看到验证 MAE 最低后，这张表还能叫最终测试吗？Q4 的改善若写成“下降 0.217 美元”错在哪里？</summary>
-
-不能，两条直线在 x=1 都为 25，至少另查 x=0 或 x=2。第二问不能：它已经参与选配置，应称验证；需要预留另一组最终测试数据。第三问把相对百分比和目标单位都弄错了：0.217% 是原 MAE 的相对下降，原目标又是 log_price，并非美元。
-
-英文参考答案（笔记补充）：Check more than the intersection point. A held-out set used to select a model is validation data. The reported 0.217% is a relative change in log-price MAE, not a dollar error reduction.
-
-</details>
+> [!example]- 改条件自测：只测 x=1 能发现 Q1 调换错误吗？看到验证 MAE 最低后，这张表还能叫最终测试吗？Q4 的改善若写成“下降 0.217 美元”错在哪里？
+>
+> 不能，两条直线在 x=1 都为 25，至少另查 x=0 或 x=2。第二问不能：它已经参与选配置，应称验证；需要预留另一组最终测试数据。第三问把相对百分比和目标单位都弄错了：0.217% 是原 MAE 的相对下降，原目标又是 log_price，并非美元。
+>
+> 英文参考答案（笔记补充）：Check more than the intersection point. A held-out set used to select a model is validation data. The reported 0.217% is a relative change in log-price MAE, not a dollar error reduction.
 
 ### 8.3 提交要求与当前状态边界
 
@@ -2141,49 +2187,55 @@ $R^2$ 按六位显示值相减为 0.002106；官方另用未舍入内部值打�
 
 ## 9. cell ↔ 讲义页码映射 · 课堂覆盖
 
+按原 Notebook 的 1 起始物理单元编号。预习从第 5、23、29 格看生成数据、指标陷阱和分类列编码；课中按表顺序找当前单元；复习用 §6 改参数、§8.1 对照四问与保存结果。
+
 | cell | 类型 | 内容 | 笔记小节 | 对应讲义页 | 🎙️ 课堂覆盖（转录时间） |
 |---|---|---|---|---|---|
-| 1 | md | 标题 "Tutorial 2– Simple Regressions" | §0 | — | ✅ `01:48:45`（"open up the notebook"） |
-| 2 | md | 四条学习目标 + 工具箱清单 | §0, §1.1 | — | ⏭️ **明说"课后自己看"**：*"it is the [outline] … **you can check later after class**"*（`01:49:11`） |
-| 3 | md | "# Linear regression using the **Normal Equation**" | §1.2 | **p.34** | ⏭️ **完全没提**（标题里的 "Normal Equation" 一次没被念到） |
-| 4 | md | 说明要造 y=3x+4+ε | §2.1 | p.14 | ✅ `01:49:32` |
-| **5** | **code** | 生成合成数据 | **§2.1** | p.14 | ✅ **详讲**（`01:49:32–01:52:22`）+ 🎙️ **`help()` 查文档** + 🎙️ `(100,1)` = 行×列 = 样本×特征 |
-| 6 | md | 看数据分布 | §2.2 | p.12 | ⚡ 一句带过 |
-| **7** | **code** | matplotlib 散点图 | **§2.2** | p.12 | ✅ **详讲 3.5 分钟**（`01:52:22–01:55:56`）+ 🎙️ **`rcParams` vs `figsize` 的作用范围差别** |
-| 8 | md | 说明要用 LinearRegression | §2.3 | — | ⚡ 一句带过 |
-| **9** | **code** | `LinearRegression().fit()` | **§2.3** | p.19, 28 | ✅ 详讲（`01:55:56–01:56:29`） |
-| **10** | **code** | `print(lin_reg.__dict__)` | **§2.3** | — | ✅ **逐项解释输出** + 🎙️ **"有些同学电脑上显示不出来，这正常"**（`01:56:29–01:57:25`） |
-| **11** | **code** | 打印 slope / intercept | **§2.3** | p.14, 20 | ✅ + 🎙️ **"每次跑结果都不一样，因为是随机生成的。So it's okay"**（`01:57:25–01:58:20`） |
-| 12 | md | 说明要预测新数据 | §2.4 | — | ⚡ 一句带过 |
-| **13** | **code** | 预测 + 三色可视化 | **§2.4, §3.3** | **p.45**（就是这张图）· p.21（外推警告） | ✅ 🔧 **助教当场发现并修掉了颜色冲突的 bug**（`01:58:55`："change the `b` to the `k`"）；⏭️ **坑 2、坑 3（外推）都没提** |
-| 14 | md | 说明要评估 | §2.5 | — | ⚡ 一句带过 |
-| **15** | **code** | `r2_score` / `mean_absolute_error` | **§2.5** | p.39 | ✅ **详讲**（`02:00:21–02:01:56`）+ 🎙️ **两个指标的口头定义与方向（R² 高好、MAE 低好）**；⏭️ **RMSE 全程没讲** |
-| 16 | md | "# Deal with model complexity - Ridge Regression" | §3 | p.46 | ✅ `02:01:56`（"just like the professor [explained] in the lecture"） |
-| 17 | md | 说明要造 sin 数据 | §3.1 | p.51 | ⚡ 一句带过 |
-| **18** | **code** | sin 数据 + 造 x²…x¹⁵ | **§3.1** | p.51 | ✅ **详讲，全场最长的一块（12 分钟）**（`02:02:47–02:14:35`）+ 🎙️🎙️ **插了 4 分钟 Python 补课（for / range / 列表推导式）** + 🎙️ **随机种子** + 🎙️ `range(60,304,4)` 里 `+4` 的原因 + 🔴 **"项目里别做 x³、x⁴"** |
-| 19 | md | 多项式回归公式 | §3.2 | **p.51** | ⚡ 一句带过 |
-| **20** | **code** | 15 阶多项式（过拟合） | **§3.2** | **p.40, 52 左** | ✅ 详讲（`02:14:35–02:16:53`）："it's just like **exactly fitted** to our … data" |
-| 21 | md | Ridge 惩罚说明 | §3.4 | p.50 | ✅ 🔴 **"加惩罚项是为了 avoid / alleviate the overfitting issue. So just keep that in mind."**（`02:02:34`） |
-| **22** | **code** | `Ridge(alpha=0.1)` | **§3.4** | **p.50, 52 右** | ✅ **详讲**（`02:16:53–02:18:47`）+ 🎙️ **"必须自己设 alpha，默认是 1"**；⏭️ `LinAlgWarning` 与标准化都没提 |
-| **23** | **code** | 比较三个 alpha ⚠️ 有 bug | **§3.5** | p.41–43（应该用验证集） | ⚡ **只停了 37 秒**（`02:18:47–02:19:24`）；⏭️ **未展开 `sqrt(MAE)` 的定义错误、训练内评价限制和导入依赖** |
-| 24 | md | "Ridge can regularize model complexity" | §3.4 | p.46 | ⚡ 隐含 |
-| 25 | md | "## 3.6 Real Data: Airbnb Price Prediction" + Kaggle 链接 | §4 | — | ✅ `02:19:04`（"let's see how to do it using the real-world data"） |
-| **26** | **code** | `pd.read_csv('Airbnb.csv')` | **§4.1** | — | ✅ **详讲 2 分钟**（`02:19:24–02:21:15`）+ 🎙️ **"很多人读不进数据就是路径不对"** + 🎙️ **把文件拖进 CMD 拿完整路径** |
-| **27** | **code** | 选 feature / target | **§4.2** | p.5（DV/IV） | ✅ **详讲**（`02:21:15–02:24:39`）+ 🔴 **"项目里要自己想选哪些特征"** + 🎙️ 助教称describe偏数值；⚠️技术纠正：类别列也可有count/unique/top/freq |
-| 28 | md | 说明类别变量要造 dummy | §4.3 | **p.24** | ✅ `02:22:25`（"we need to translate … categorical variables into numbers"） |
-| **29** | **code** | `OneHotEncoder(drop='first')` | **§4.3, §5.2** | **p.25** | ✅ **详讲**（`02:24:39–02:28:10`）+ 🔴 **"丢哪个 dummy 都行，不必丢第一个"** + 🎙️ **n−1 的理由与教授一致（信息冗余）** |
-| **30** | **code** | `join` + `drop` | **§4.4** | p.25 | ✅ + 🎙️ **补了 `pd.concat(..., axis=1)` 这第二种写法**（`02:28:10–02:30:45`）；⏭️ 索引对齐的坑没提 |
-| **31** | **code** | `train_test_split` + `fit` | **§4.5** | **p.43–44** | ✅ + 🔀 **"test set，也叫 validation data"（与讲义 p.41 冲突）** + 🔴 **"70/30 是你自己定的"**（`02:30:45–02:31:43`） |
-| **32** | **code** | 预测 + 对比表 | **§4.6** | p.45 | ⚡ 快速带过（`02:31:43–02:32:43`）；⏭️ `.tolist()` 的索引技巧没提 |
-| **33** | **code** | MAE | **§4.6, §5.6** | p.39 | ⚡ 带过，且**助教说要算 R²，但 notebook 里没有** |
-| 34 | md | 分隔线 | — | — | — |
-| 35 | md | 🤖 **AI Prompt（16 步）** | **§7** | M01 p.45 | ✅ 🔴 **"看不懂的时候可以把这个 prompt 丢给 AI 帮你生成代码"**（末条起始戳 `02:34:37`） |
-| 36 | md | Summary（含 Lasso、solver、statsmodels） | §7.4 | p.49, 50 | 🟡 **只讲了 statsmodels 一条，而且升格成了项目建议**（`02:32:43–02:34:18`）；⏭️ **Lasso 与 `solver="cholesky"` 都没提** |
-| 37 | md | 分隔线 | — | — | — |
-| 38 | md | **Week 2 Assignment**（4 题 100 分） | **§8** | — | ❓ **无录音**（录音在 cell 35 处截断）——**不是"略过"**，见 §8.3 与 §10.5 |
-| 39 | code | **空**（留给你写作业） | §8 | — | ❓ **无录音** |
+| 1 | md | 标题 "Tutorial 2– Simple Regressions" | [[#0. 这个 notebook 在教什么\|本格讲解]] | — | ✅ `01:48:45`（"open up the notebook"） |
+| 2 | md | 四条学习目标 + 工具箱清单 | [[#0. 这个 notebook 在教什么\|本格讲解]] | — | ⏭️ **明说"课后自己看"**：*"it is the [outline] … **you can check later after class**"*（`01:49:11`） |
+| 3 | md | "# Linear regression using the **Normal Equation**" | [[#1.2 对应哪一讲的理论\|本格讲解]] | **p.34** | 所供教程片段未见对该标题的解说 |
+| 4 | md | 说明要造 y=3x+4+ε | [[#2.1 【cell 5】造一批已知答案的数据\|本格讲解]] | p.14 | ✅ `01:49:32` |
+| **5** | **code** | 生成合成数据 | [[#2.1 【cell 5】造一批已知答案的数据\|本格讲解]] | p.14 | ✅ **详讲**（`01:49:32–01:52:22`）+ 🎙️ **`help()` 查文档** + 🎙️ `(100,1)` = 行×列 = 样本×特征 |
+| 6 | md | 看数据分布 | [[#2.2 【cell 7】画散点图\|本格讲解]] | p.12 | ⚡ 一句带过 |
+| **7** | **code** | matplotlib 散点图 | [[#2.2 【cell 7】画散点图\|本格讲解]] | p.12 | ✅ **详讲 3.5 分钟**（`01:52:22–01:55:56`）+ 🎙️ **`rcParams` vs `figsize` 的作用范围差别** |
+| 8 | md | 说明要用 LinearRegression | [[#2.3 【cell 9–11】拟合模型，取出系数\|本格讲解]] | — | ⚡ 一句带过 |
+| **9** | **code** | `LinearRegression().fit()` | [[#Cell 9 · 拟合与保存参数\|本格讲解]] | p.19, 28 | ✅ 详讲（`01:55:56–01:56:29`） |
+| **10** | **code** | `print(lin_reg.__dict__)` | [[#Cell 10 · 检查对象内部状态\|本格讲解]] | — | ✅ **逐项解释输出** + 🎙️ **"有些同学电脑上显示不出来，这正常"**（`01:56:29–01:57:25`） |
+| **11** | **code** | 打印 slope / intercept | [[#Cell 11 · 打印斜率与截距\|本格讲解]] | p.14, 20 | ✅ + 🎙️ **"每次跑结果都不一样，因为是随机生成的。So it's okay"**（`01:57:25–01:58:20`） |
+| 12 | md | 说明要预测新数据 | [[#2.4 【cell 13】用新数据做预测\|本格讲解]] | — | ⚡ 一句带过 |
+| **13** | **code** | 预测 + 三色可视化 | [[#2.4 【cell 13】用新数据做预测\|本格讲解]] | **p.45**（同类演示，点位不同）· p.21（外推警告） | ✅ 🔧 **助教当场发现并修掉了颜色冲突的 bug**（`01:58:55`："change the `b` to the `k`"）；所供 cell 13 片段未记录裁图与外推解释 |
+| 14 | md | 说明要评估 | [[#2.5 【cell 15】评估：R² 与 MAE\|本格讲解]] | — | ⚡ 一句带过 |
+| **15** | **code** | `r2_score` / `mean_absolute_error` | [[#2.5 【cell 15】评估：R² 与 MAE\|本格讲解]] | p.39 | ✅ **详讲**（`02:00:21–02:01:56`）+ 🎙️ **两个指标的口头定义与方向（R² 高好、MAE 低好）**；所供教程片段未记录 RMSE 定义 |
+| 16 | md | "# Deal with model complexity - Ridge Regression" | [[#3. 逐块讲解 · 第二段：过拟合与 Ridge（cell 18–24）\|本格讲解]] | p.46 | ✅ `02:01:56`（"just like the professor [explained] in the lecture"） |
+| 17 | md | 说明要造 sin 数据 | [[#3.1 【cell 18】造一个非线性数据集 + 造多项式特征\|本格讲解]] | p.51 | ⚡ 一句带过 |
+| **18** | **code** | sin 数据 + 造 x²…x¹⁵ | [[#3.1 【cell 18】造一个非线性数据集 + 造多项式特征\|本格讲解]] | p.51 | ✅ **详讲，全场最长的一块（12 分钟）**（`02:02:47–02:14:35`）+ 🎙️🎙️ **插了 4 分钟 Python 补课（for / range / 列表推导式）** + 🎙️ **随机种子** + 🎙️ `range(60,304,4)` 里 `+4` 的原因 + 🔴 **"项目里别做 x³、x⁴"** |
+| 19 | md | 多项式回归公式 | [[#3.2 【cell 20】15 阶多项式：训练拟合与风险诊断\|本格讲解]] | **p.51** | ⚡ 一句带过 |
+| **20** | **code** | 15 阶多项式（过拟合） | [[#3.2 【cell 20】15 阶多项式：训练拟合与风险诊断\|本格讲解]] | **p.40, 52 左** | ✅ 详讲（`02:14:35–02:16:53`）："it's just like **exactly fitted** to our … data" |
+| 21 | md | Ridge 惩罚说明 | [[#3.4 【cell 22】Ridge 出场\|本格讲解]] | p.50 | ✅ 🔴 **"加惩罚项是为了 avoid / alleviate the overfitting issue. So just keep that in mind."**（`02:02:34`） |
+| **22** | **code** | `Ridge(alpha=0.1)` | [[#3.4 【cell 22】Ridge 出场\|本格讲解]] | **p.50, 52 右** | ✅ **详讲**（`02:16:53–02:18:47`）+ 🎙️ **"必须自己设 alpha，默认是 1"**；所供段未记录数值警告或标准化解释 |
+| **23** | **code** | 比较三个 alpha ⚠️ 有 bug | [[#3.5 【cell 23】比较三个 alpha —— ⚠️ 这个 cell 有两处问题\|本格讲解]] | p.41–43（应该用验证集） | ⚡ **只停了 37 秒**（`02:18:47–02:19:24`）；⏭️ **未展开 `sqrt(MAE)` 的定义错误、训练内评价限制和导入依赖** |
+| 24 | md | "Ridge can regularize model complexity" | [[#3.4 【cell 22】Ridge 出场\|本格讲解]] | p.46 | ⚡ 隐含 |
+| 25 | md | "## 3.6 Real Data: Airbnb Price Prediction" + Kaggle 链接 | [[#4. 逐块讲解 · 第三段：Airbnb 真实数据（cell 26–33）\|本格讲解]] | — | ✅ `02:19:04`（"let's see how to do it using the real-world data"） |
+| **26** | **code** | `pd.read_csv('Airbnb.csv')` | [[#4.1 【cell 26】读数据\|本格讲解]] | — | ✅ **详讲 2 分钟**（`02:19:24–02:21:15`）+ 🎙️ **"很多人读不进数据就是路径不对"** + 🎙️ **把文件拖进 CMD 拿完整路径** |
+| **27** | **code** | 选 feature / target | [[#4.2 【cell 27】选特征与目标\|本格讲解]] | p.5（DV/IV） | ✅ **详讲**（`02:21:15–02:24:39`）+ 🔴 **"项目里要自己想选哪些特征"** + 🎙️ 助教称describe偏数值；⚠️技术纠正：类别列也可有count/unique/top/freq |
+| 28 | md | 说明类别变量要造 dummy | [[#4.3 【cell 29】OneHotEncoder：把类别变成 0/1\|本格讲解]] | **p.24** | ✅ `02:22:25`（"we need to translate … categorical variables into numbers"） |
+| **29** | **code** | `OneHotEncoder(drop='first')` | [[#4.3 【cell 29】OneHotEncoder：把类别变成 0/1\|本格讲解]] | **p.25** | ✅ **详讲**（`02:24:39–02:28:10`）+ 🔴 **"丢哪个 dummy 都行，不必丢第一个"** + 🎙️ **n−1 的理由与教授一致（信息冗余）** |
+| **30** | **code** | `join` + `drop` | [[#4.4 【cell 30】把虚拟变量拼回去\|本格讲解]] | p.25 | ✅ + 🎙️ **补了 `pd.concat(..., axis=1)` 这第二种写法**（`02:28:10–02:30:45`）；⏭️ 索引对齐的坑没提 |
+| **31** | **code** | `train_test_split` + `fit` | [[#4.5 【cell 31】切分 + 训练\|本格讲解]] | **p.43–44** | ✅ + 🔀 **"test set，也叫 validation data"（与讲义 p.41 冲突）** + 🔴 **"70/30 是你自己定的"**（`02:30:45–02:31:43`） |
+| **32** | **code** | 预测 + 对比表 | [[#Cell 32 · 预测并按同行对照\|本格讲解]] | p.45 | ⚡ 快速带过（`02:31:43–02:32:43`）；⏭️ `.tolist()` 的索引技巧没提 |
+| **33** | **code** | MAE | [[#Cell 33 · 汇总 MAE\|本格讲解]] | p.39 | ⚡ 带过，且**助教说要算 R²，但 notebook 里没有** |
+| 34 | md | 分隔线 | [[#9.1 源文件分隔与空单元\|本格讲解]] | — | — |
+| 35 | md | 🤖 **AI Prompt（16 步）** | [[#7.1 原文（cell 35，完整 16 项内容）\|本格讲解]] | M01 p.45 | ✅ 🔴 **"看不懂的时候可以把这个 prompt 丢给 AI 帮你生成代码"**（末条起始戳 `02:34:37`） |
+| 36 | md | Summary（含 Lasso、solver、statsmodels） | [[#7.4 Summary cell（cell 36）里藏的三条信息\|本格讲解]] | p.49, 50 | 🟡 **只讲了 statsmodels 一条，而且升格成了项目建议**（`02:32:43–02:34:18`）；所供片段未见 Lasso 或求解器解释 |
+| 37 | md | 分隔线 | [[#9.1 源文件分隔与空单元\|本格讲解]] | — | — |
+| 38 | md | **Week 2 Assignment**（4 题 100 分） | [[#8. 本次作业（notebook cell 38 原文）\|本格讲解]] | — | ❓ **无录音**（录音在 cell 35 处截断）——**不是"略过"**，见 §8.3 与 §10.5 |
+| 39 | code | **空**（留给你写作业） | [[#9.1 源文件分隔与空单元\|本格讲解]] | — | ❓ **无录音** |
 
 **✅ 全部 39 个 cell 已覆盖。** 统计：markdown 20 个（1 大标题 + 1 学习目标 + 12 小节说明 + 1 AI Prompt + 1 Summary + 2 分隔线 + 1 作业 + 1 数据集来源）· code 19 个（18 个有内容 + 1 个空）。
+
+### 9.1 源文件分隔与空单元
+
+第 34 格是示范与整段 AI Prompt 之间的分隔线；第 37 格分开课后阅读与评分作业。第 39 格是原文件的空代码格，没有教学代码或输出。
 
 **🎙️ 课堂覆盖统计（39 cells）**
 
@@ -2216,23 +2268,23 @@ $R^2$ 按六位显示值相减为 0.002106；官方另用未舍入内部值打�
 
 ## 10. 延伸与勘误
 
-### 10.1 notebook 有但课上略过（⏭️ 可降优先级）
+### 10.1 源 Notebook 有、所供转录片段未展开
 
 > **判定标准**：转录里完全没有对应内容，且前后 cell 在时间轴上连续衔接。**cell 38–39 落在录音缺口里，不在此列**（见 §10.5）。
 
 | notebook 内容 | 课上情况 | 建议 |
 |---|---|---|
 | **cell 2 的工具箱清单**（四个库 + 官方文档链接） | ⏭️ 助教明说 *"it is the [outline] … **you can check later after class**"*（`01:49:11`） | ⚪ 那四个链接确实值得课后看一次，尤其 [matplotlib plot types](https://matplotlib.org/stable/plot_types/index.html) |
-| **cell 3 的标题 "Linear regression using the Normal Equation"** | ⏭️ **"Normal Equation" 这个词在整个 tutorial 里一次没出现** | 原标题沿正规方程介绍最小二乘；此调用由 sklearn 的数值最小二乘实现求解，源码没有显式构造逆矩阵。优化条件与数值求解路线不是互斥选项。⚠️ 教授在讲义部分还**明说了正规方程的矩阵推导不考**（[[M02-预测分析-线性回归#2.8.3 正规方程：闭式解（讲义 p.32–34）⭐\|M02 §2.8.3]] 🔴❌） |
-| cell 23 的指标定义、训练内协议与执行依赖 | ⏭️ 助教只停了 37 秒，`sqrt(MAE)` 的 bug、训练内评价的泛化限制、沿用导入的依赖未展开 | ⚠️ **这是最危险的一处略过**：它直接关系作业第 3 题（40 分）。见 §3.5 🎙️ |
-| **RMSE 这个指标** | ⏭️ cell 23 里有 `rmse` 变量名，但**tutorial 全程没解释 RMSE 是什么** | ⚪ 报告里建议只用 **MAE + R²**（这两个助教讲过、口径明确） |
-| **`Lasso`**（Summary cell 里 import 了） | ⏭️ 助教全程只讲 Ridge，**Lasso 一次没提**（教授在讲义部分讲了公式与权衡，但没写代码） | ⭐ **仍建议自己跑一次 `Lasso(alpha=0.001)`**（§6 第 11 条）——可作为L1/L2背景对照，但单次输出不能证明理论保证 |
-| **`Ridge(solver="cholesky")`** | ⏭️ 没提 solver | ⚪ 知道 `cholesky` = 闭式解路线即可 |
-| **`StandardScaler` / 特征标准化** | ⏭️ **整个 tutorial 一次都没出现过这个词** | §3.1/§3.4的训练尺度选择是笔记补充；按任务定义惩罚并验证效果，不冒称教师承诺加分 |
-| **`LinAlgWarning`（矩阵病态警告）** | ⏭️ cell 22 会跳这个警告，助教没提也没解释 | ⚪ 它是 x¹⁵ 量级达到 10¹⁰ 的后果，提示需要核尺度、相关性与solver，不足以单独证明某一种修法保证成功 |
-| **cell 13 的坑 2（`plt.axis` 可能裁掉超窗口点（分布期望约1/3，实际数未知））与坑 3（外推）** | ⏭️ 助教只修了颜色冲突那个 bug | ⭐ 坑 3 是很好的报告素材，见 §3.3 |
-| **cell 30 的索引对齐风险** | ⏭️ 助教展示了 `join` 和 `concat` 两种写法，**没提索引不匹配会静默出错** | ⚪ §4.4 的"安全写法"是笔记补充 |
-| **cell 32 的 `.tolist()` 技巧** | ⏭️ 没提 | ⚪ 小技巧，知道就行 |
+| **cell 3 的标题 "Linear regression using the Normal Equation"** | 所供教程段未见 Normal Equation 一词；原格标题保留。该数值实现不显式求逆。讲义侧的范围见 M02。 | 见对应教学小节 |
+| cell 23 的指标定义、训练内协议与执行依赖 | 所供 cell 23 段没有展开误差定义、训练内协议或执行依赖；按 §3.5 的源码核。 | 见对应教学小节 |
+| **RMSE 这个指标** | 变量 rmse 出现在源码，所供教程片段未见定义；按题意报告所需指标。 | 见对应教学小节 |
+| **`Lasso`**（Summary cell 里 import 了） | 原 Summary 列 Lasso，所供教程片段未记录其展开；作为可选背景。 | 见对应教学小节 |
+| **`Ridge(solver="cholesky")`** | 源 Summary 列 cholesky；现有讲解片段未见具体说明。 | 见对应教学小节 |
+| **`StandardScaler` / 特征标准化** | 标准化是笔记补充；所供教程片段未见相应解释。 | 见对应教学小节 |
+| **`LinAlgWarning`（矩阵病态警告）** | 原实现可出现数值病态警告，所供片段未解释；可检查尺度、相关性与求解器。 | 见对应教学小节 |
+| **cell 13 的坑 2（`plt.axis` 可能裁掉超窗口点（分布期望约1/3，实际数未知））与坑 3（外推）** | 所供 cell 13 段明确处理颜色写法，范围及外推来自源码与笔记核对。 | 见对应教学小节 |
+| **cell 30 的索引对齐风险** | 助教展示 join 和 concat；本段没记录对索引错配的说明。 | 见对应教学小节 |
+| **cell 32 的 `.tolist()` 技巧** | 所供片段未记录逐行解释 tolist；本篇按源码补充。 | 见对应教学小节 |
 
 ---
 
@@ -2244,11 +2296,11 @@ $R^2$ 按六位显示值相减为 0.002106；官方另用未舍入内部值打�
 
 | # | 规则 | 原话（时间戳） | 影响 |
 |---|---|---|---|
-| **1** | ⭐⭐ **项目可用 statsmodels 等工具查看推断表** | `02:33:25` *"the first step when you're doing your project [is to] create a linear regression … [but sklearn's] `LinearRegression` **is not quite useful, because [it] didn't give you anything about the p-values** … you can import [`statsmodels`] … and you can see the p [values] … **so you can [use it] to select the feature[s] that [have an] effect for your model**"* | **填上了本课最大的断层**：讲义 Take Away 要考 p 值的解读，而 sklearn 根本不给 p 值。见 §4.6 🎙️ |
-| **2** | **特征不够时可以造 `x²`，但不要造 `x³`、`x⁴`** | `02:12:08` *"the x squared is okay. **Don't do like the x cube[d] or [x] to the power of four — it's too much for your … project.**"* | ⚠️ 与 notebook 自己造到 x¹⁵ 矛盾——那是**故意的反面教材**，不是给你抄的 |
+| **1** | 项目可用统计表诊断回归 | 02:33:01 引入项目第一步，02:33:25 提到 p 值，02:33:38 提到工具，02:34:18 再谈筛列（按时段转述） | 属课堂项目建议；p 值不能单独证明因果或泛化 |
+| **2** | 讨论平方项与高次项 | 02:12:08 提到平方可考虑；02:12:17 提醒三、四次可能过多（项目修饰词 ASR 未核） | 原 15 次是复杂度演示；具体特征仍按问题与验证决定 |
 | **3** | **丢哪一个 dummy 都行，不必丢第一个** | `02:26:36` *"you can just select any one … you want to drop. **Yeah, it doesn't matter. [You don't] have to drop the first one.**"* | 回答了"我能不能让 House 当基准"这个常见纠结 |
-| **4** | **训练/测试的切分比例你自己定** | `02:31:25` *"[Maybe] 30% for the test, like [70] for the training. **It's your design — you can design [it].**"* | notebook 用 70/30、讲义画 80/20，**两个都行**；但报告里要写明用了多少 |
-| **5** | **特征要自己挑，notebook 的 5 个只是示例** | `02:21:53` *"Just to give you a simple example … **But when you do your [group project] you need to think about which feature I should select.**"* | 与规则 1 配套：统计输出是候选诊断证据；筛列须声明条件与重复选择限制，预测表现另验 |
+| **4** | 划分比例由分析设计决定 | 02:31:25 原转录 “It’s your design.”；后续按段落转述 | 本例 70/30，不推广为固定评分规则 |
+| **5** | 原五字段仅是演示 | 02:21:53 有 “Just to give you a simple example”；其后助教提醒项目自行选特征（转述） | 报告应说明候选字段、输入边界和验证方法 |
 
 **B. 🎙️ 八条课堂技能与解释（notebook 里没有）**
 
@@ -2267,7 +2319,7 @@ $R^2$ 按六位显示值相减为 0.002106；官方另用未舍入内部值打�
 
 | 讲义说 | 助教说 | 该信谁 |
 |---|---|---|
-| **p.41 红字 Note**："**validation set is not the same as test set**" | `02:30:45`："the **test [set] — which is also called the validation data**" | ⚠️ **考试按讲义**（验证集选模型、测试集只用一次）；不调参时可用训练/最终测试两份；调参仍需训练内验证或CV。⚪ **但不要在书面报告里写 "validation = test"**。详见 [[M02-预测分析-线性回归#2.9.3 验证集 ≠ 测试集（讲义 p.41）⭐ 容易混\|M02 §2.9.3]] |
+| **p.41 红字 Note**："**validation set is not the same as test set**" | 02:30:59："the **test [set] — which is also called the validation data**" | ⚠️ **报告沿用讲义的角色区分**（验证集选模型、测试集只用一次）；不调参时可用训练/最终测试两份；调参仍需训练内验证或CV。⚪ **但不要在书面报告里写 "validation = test"**。详见 [[M02-预测分析-线性回归#2.9.3 验证集 ≠ 测试集（讲义 p.41）⭐ 容易混\|M02 §2.9.3]] |
 
 **D. ✅ 转录印证的三条原有判断**
 
@@ -2319,7 +2371,7 @@ cell 35 的 AI Prompt 第 5 步写 "100 samples with x in [0, 3]"，却未指定
 
 ---
 
-**⚠️ ⑤ 多项式特征没有做标准化，导致 `LinAlgWarning`**
+**⚠️ ⑤ 未缩放的高次列、列间相关与求解状况需共同排查**
 
 x 最大 5.236 → $x^{15} \approx 6.1\times 10^{10}$，与 `x` 本身相差一百亿倍。cell 22 与 cell 23 都跳出：
 
@@ -2392,7 +2444,7 @@ res = sm.OLS(y_train, X2).fit()
 print(res.summary())                   # 输出与 R 几乎一致
 ```
 
-⚠️ **这一点在考试上很关键**：讲义 p.53 的 Take Away 明确要考 "Interpretation of the output: coefficient, **p-value**"，而本课 tutorial 用的 sklearn **根本给不出 p 值**。**这中间有一个断层，statsmodels是本篇采用的统计输出工具；并非只能靠这个库得到推断量。**
+讲义 p.53 的 Take Away 要读系数和 p 值；它没有声明考试范围。本教程的 LinearRegression 预测接口未直接产生推断表，statsmodels 是笔记选用的演示工具。
 
 **② `make_pipeline`：把预处理和模型绑在一起 🔗**
 
@@ -2400,8 +2452,8 @@ print(res.summary())                   # 输出与 R 几乎一致
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 model = make_pipeline(StandardScaler(), Ridge(alpha=0.1))
-model.fit(X_train, y_train)
-model.predict(X_test)      # 预测时会自动用训练集的均值/标准差做标准化
+model.fit(x_train, y_train)
+model.predict(x_test)      # 用训练得到的尺度处理测试输入
 ```
 
 **为什么重要**：如果手动 `scaler.fit_transform(X)` 在切分**之前**做，训练集就"偷看"了测试集的统计量 —— 这叫**数据泄漏（data leakage）**。仅当Pipeline对正确训练集或各训练fold执行fit、对验证/测试只执行predict/transform时，才隔离相应预处理拟合；在切分前fit整条Pipeline仍会泄漏。⚪ 本课不教，但小组项目值得用。
@@ -2450,19 +2502,19 @@ EF5560 的 `Lec02_Regression_Vibe_Coding.pdf` 同周同主题，且同样在教�
 
 | # | v0.9 的问题 | 转录给出的答案 |
 |---|---|---|
-| 1 | cell 23 的 `sqrt(MAE)` bug，课上提了吗？ | ❌ **没有**。助教在 cell 23 只停了 37 秒，**而且整个 tutorial 从没解释过 RMSE 是什么**。⭐ **报告里建议只用 MAE + R²** |
-| 2 | cell 23 在训练集上选 alpha，课上怎么说的？ | ❌ **完全没提**。⚪ 由于课上没有任何相反口径，训练内指标可以描述拟合，却不能证明最优泛化alpha；选择需验证协议。⭐ **稳妥写法**：照 notebook 做一遍，再加一段"更严谨的做法是用留出的验证集选 alpha" |
-| 3 | 有没有讲特征标准化？ | ❌ **`StandardScaler` 一次都没出现过**。标准化可作为另列的比较方案；没有评分加分承诺 |
-| 4 | `beds` 系数为负，课上有人问吗？ | ❌ **没有**。⚠️ **整个 tutorial 里没有任何学生提问被录到**（助教问过两次 "any questions?"，`02:01:56` 之后直接接 "Okay good, then we go to…"）。**"共线性 / multicollinearity" 这个词教授和助教都没说过** |
-| 5 | cell 13 的外推问题课上提了吗？ | ❌ **没有**。助教只修了颜色 bug。输入支持与显示风险可由代码验证，设计意图未录到，不认定为疏漏或教学安排，见 §3.3 |
-| 6 | 作业第 3 题的 "Section 3.4" 指哪一段？ | ❓ **无录音**（作业根本没被提到） |
+| 1 | cell 23 的 `sqrt(MAE)` bug，课上提了吗？ | 所供 cell 23 段未见误命名纠正；按要求报告正确指标。 |
+| 2 | cell 23 在训练集上选 alpha，课上怎么说的？ | 所供段未见验证选 alpha 的指定协议；训练内结果不能证明泛化。 |
+| 3 | 有没有讲特征标准化？ | 所供片段未见标准化说明；可作另列比较。 |
+| 4 | `beds` 系数为负，课上有人问吗？ | 所供片段未见对 beds 系数的学生追问。 |
+| 5 | cell 13 的外推问题课上提了吗？ | 所供 cell 13 段记了颜色处理，外推风险另按源码说明。 |
+| 6 | 作业第 3 题的 "Section 3.4" 指哪一段？ | 题面称 Section 3.4；从 Ridge 标题定位当前源码，不从未录到推断无作业说明。 |
 | 7 | 作业第 1 题要不要加噪声？ | ❓ **无录音** |
 | 8 | 作业第 4 题稀有类别怎么处理？ | ❓ **无录音**。⚪ 但助教讲了 `unique()`（`02:23:47`），💡 笔记补充：**用 `.value_counts()` 更好**，能看到每类的行数 |
 | 9 | W02 作业的截止时间与提交格式 | ❓ **无录音** → 🔴 **去 Canvas** |
-| 10 | 有没有讲 `statsmodels`？ | ✅ **讲了，而且规格比 notebook 高**：notebook 只把它写成 "After-class reading material"，助教在课上是当作**做项目的第一条建议**给的（`02:33:25`）。见 §4.6 🎙️ |
+| 10 | 有没有讲 statsmodels？ | 所供 02:33:01–02:34:18 先谈项目回归，再提 p 值、工具及筛选；按 §4.6 和 §10.2 分开读。 |
 | 11 | 有多少人跑不动 notebook？ | 🟡 **间接答案**：助教花 2 分钟讲路径问题，说 *"**a lot of people fail to read the data because your address is not correct**"*（`02:21:00`）；并提到 *"**some students didn't have [any Python background]**"*（`02:02:47`）、*"for some students['] computers you didn't generate something like that"*（`01:56:55`）。→ 原文字只提到路径、基础不足和显示差异，没有人数或困难分布调查，不能据此排除算法困难。 |
 | 12 | 怎么定位 cell 35 那个 AI prompt？ | ✅ **明确鼓励使用**：*"if you don't understand and you want to … leverage the [LLM] … you can just include this kind of [prompt] to the AI and it will help you to generate the code"*（`02:34:37`；原 ASR 的工具名模糊，中文按 cell 35 的 Prompt 解释）。⚪ 定位是**学习辅助**，不是代做作业 |
-| 13 | 课上有没有算 R²？ | 🟡 **助教口头说了要算 R²**（`02:32:28`："to generate the R square to [evaluate] the performance"），**但 notebook 的 cell 33 只有 MAE**。→ ⭐ **报告里两个都写** |
+| 13 | 课上有没有算 R²？ | 所供片段提到 R²，源 cell 33 只算 MAE；报告指标以题面为准。 |
 
 #### 10.5.3 仍然待核对
 
@@ -2534,38 +2586,36 @@ EF5560 的 `Lec02_Regression_Vibe_Coding.pdf` 同周同主题，且同样在教�
 
 ### 10.7 历史课堂机制理解记录（2026-10-01）
 
-<details><summary>历史证据原文：仅记录当时范围与执行，不作为 2026-10-27 全篇独审结论</summary>
-
-下文“本轮”均指 2026-10-01 旧批。旧文的评分段当时未审，本次候选已把 §8 纳入全篇待独审范围；任何旧数值重跑、截图和通过结论均不冒称本次重新执行。
-
-
-**代理阅读检验，非真人初学者试读；评分§8不在本轮验收范围。** 旧结构或旧转录v1.0不推出mechanism-v1通过。隔离读者只拿冻结成稿/新变式，不拿作者脚本与结果；首轮九主题R实际各2，但因旧文矛盾判整稿FAIL。主代理按回源与读者定位精确修复，单节/差异复验后16课堂leaf各Q6/6，九主题R各2；不把答题成功抵消旧文错误，也不伪称每次全篇重算。末轮读者SHA be099b9d…；随后只改研究意图标题、已知外推范围/作业来源边界与术语引用，不改参数更新或R输入。
-
-| 核心主题/正文D证据 | 实际新输入与中间/输出证据 | R1/R2/R3/R4 |
-|---|---|---|
-| OLS/fit/predict与形状，§1.3/§2.3–2.4 | x0/1/2，y2/3/6：均值1与11/3、Sxy4/Sxx2、b2/a5/3；残差1/3/−2/3/1/3、SSE2/3；新1.5→14/3；常数X/单行重fit/原列序边界 | 2/2/2/2 |
-| R²/MAE/RMSE，§2.5 | 真1/2/4、预测1.5/1.5/3：绝对和2、平方和1.5、SST14/3；MAE2/3、RMSE√0.5、R²19/28；常数y0分母、误差0.04/0.04揭sqrtMAE=0.2≠RMSE.04 | 2/2/2/2 |
-| 多项式表示与诊断，§3.1–3.3 | 新x−2、d3→[−2,4,−8]；参数1/0.5/0.25/−0.1→1.8；负系数/训练图不证过拟合；原sin支持之外另报告外推 | 2/2/2/2 |
-| Ridge/单位/缩放，§3.4 | 同三行α2→b1/a8/3，新1.5→25/6；总体std√(2/3)下同α2得到原单位b1.2/预测64/15；若保持原单位α2，缩放后α应3；λ与alpha按目标系数换算 | 2/2/2/2 |
-| 调参/预处理状态/Pipeline，§3.5/§5.1 | 训练三行、验证x3/y7.5，α0/2/6 MAE1/6、11/6、17/6，选0；训练加验证重拟合b1.95/a1.7；候选全评/最终冻结与测试一次，不全表fit尺度 | 2/2/2/2 |
-| OneHotEncoder/行身份，§4.3–4.5 | 训练Apt/House/Loft→两列House/Loft；House[1,0]；Castle默认报错终止、ignore[0,0]未知≠基准；ID9/4真8/2与预测7/3 MAE1，单独排序真值错误MAE5；图现先split再训练fit/各组transform | 2/2/2/2 |
-| statsmodels推断链，§4.6 | x0/1/2/3，y1/4/4/7：b1.8/a1.3、SSE1.8、df2/残差方差0.9、SE.793725/0.424264、t1.637846/4.242641、p约0.243111/0.051317；说明分布条件与p非因果概率 | 2/2/2/2 |
-| log倍率/近共线，§5.4–5.5 | b.3/Δ−2→exp(−0.6)≈0.548812；x2=3x1且末行+0.002，y=2x1且末行+0.004，可由b1−4/b2=2表达；教学敏感性不冒称Airbnb已变号；两数据流已画 | 2/2/2/2 |
-| Prompt到验收，§7.3 | 新误差0.04/0.04区分RMSE.04与sqrtMAE.2；无报错不证实现指标；生成代码→kernel输出→形状/配对/公式/数据边界→修或接受，不让测试参与调参 | 2/2/2/2 |
-
-**原材料/输出**：39cells=20markdown+19code（其中空39，实际非空代码18）；独立回源检查确认18非空原码语句与正文Python块等价AST，原cell35的16步Prompt保持。主代理抽取/实际查看5张原保存PNG（7/13/18/20/22），与原notebook字节一致；原20图未穿过所有点，原22没有真实sin线或独立样本，不以稍平滑宣称泛化改善。无seed段缺原X/y，只保留保存3.088464/3.876417/0.870716/0.828464，不假称新恢复同次随机数据。Python3.13.5是原材料metadata，不冒称本次运行版本。
-
-**当前数值复算**：verify_t02_current.py/t02-current-results.json核原Airbnb（68133×15、47693训练/20440测试、7输入列）与新增完整四行机制；同测试log-MAE 0.4389203843146883/R² 0.3595036288665012，训练log中位数4.700480366基线MAE 0.55698603965/R²−0.00888619919，改善21.1972378%。仅训练fit encoder与原全量字典协议在此次四类齐全时预测最大差1.78e−15，不能推广全表预处理安全。beds seed0–4均负，没有观察到变号。verify_t02_reader_variants.py独立核上表新输入/参数/SE/p/变式与安装API，结果t02-reader-variants-results.json；不运行评分作业。
-
-**真实渲染与结构**：IAB Mermaid/KaTeX实际13图、2独立与76行内数学，错误0、溢出0；13图逐张查看，unknown错误单独停止、行身份先split的改动另复看。是IAB预览，非已操作Obsidian。所有Python块按Markdown引用/列表缩进还原后AST语法0错误；整理时误落进code的说明已移出并核原cell7语法。strict PASS：19源code（含1空）/16leaf，正文15983CJK，密度841；结构不代替上面的R与来源。
-
-**转录范围与真实限制**：源M02-transcript.txt 631段、首00:02/末02:34:37，整源跨度2:34:35；本篇声明tutorial子区间01:48:45–02:34:37为2752秒。映射细区间并集2514秒≈91.35%，未细映射238秒，不用粗时间表补成100%。机器最终audit PASS：16格、72引用时间戳、7条符合格式的引文、未匹配/低匹配/A13/A14均0，27条带讲义页的映射受检；不把27等同39cell核对，也不把7等同全文23条普通引文逐字校验。已对已识别ASR四专名/动词及dummy校词加[ ]/准时间戳；其余普通引文没有本轮完整逐字校词证明。缺失评分说明、音频尾时长与课堂设计意图继续按来源限制保留。
-
-**结构兼容的证据**：transcript_check.py现在只对type tutorial依实际映射/延伸标题找§9/§10，支持单/双反引号区间及声明单源子区间；时间覆盖只算映射表，粗时间分配不能填洞。7个回归用例含真实坏引文仍FAIL、缺映射仍FAIL、粗表不能伪造coverage；M05/T03原结构回归仍PASS。不是为了让坏引文通过改阈值。
-
-**范围与背景**：Lasso原cell36仅import、未用于本次建模，现作L1/L2课外对照，回M02完整机制；VIF/stratify/各solver内部算法只作背景，附参数与适用条件，不伪称已执行。当前直接求解例/真实OLS/Ridge、编码、指标、推断都按核心展开。评分§8原文本逐字保留，不认可其旧推测为现行作业要求，也不由课堂通过推出作业通过；原cell35 Prompt未改，原材料哈希未变。其他IS6400/四课修复仍未完成。
-
-</details>
+> [!note]- 历史证据原文：仅记录当时范围与执行，不作为 2026-10-27 全篇独审结论
+>
+> 下文“本轮”均指 2026-10-01 旧批。旧文的评分段当时未审，本次候选已把 §8 纳入全篇待独审范围；任何旧数值重跑、截图和通过结论均不冒称本次重新执行。
+>
+>
+> **代理阅读检验，非真人初学者试读；评分§8不在本轮验收范围。** 旧结构或旧转录v1.0不推出mechanism-v1通过。隔离读者只拿冻结成稿/新变式，不拿作者脚本与结果；首轮九主题R实际各2，但因旧文矛盾判整稿FAIL。主代理按回源与读者定位精确修复，单节/差异复验后16课堂leaf各Q6/6，九主题R各2；不把答题成功抵消旧文错误，也不伪称每次全篇重算。末轮读者SHA be099b9d…；随后只改研究意图标题、已知外推范围/作业来源边界与术语引用，不改参数更新或R输入。
+>
+> | 核心主题/正文D证据 | 实际新输入与中间/输出证据 | R1/R2/R3/R4 |
+> |---|---|---|
+> | OLS/fit/predict与形状，§1.3/§2.3–2.4 | x0/1/2，y2/3/6：均值1与11/3、Sxy4/Sxx2、b2/a5/3；残差1/3/−2/3/1/3、SSE2/3；新1.5→14/3；常数X/单行重fit/原列序边界 | 2/2/2/2 |
+> | R²/MAE/RMSE，§2.5 | 真1/2/4、预测1.5/1.5/3：绝对和2、平方和1.5、SST14/3；MAE2/3、RMSE√0.5、R²19/28；常数y0分母、误差0.04/0.04揭sqrtMAE=0.2≠RMSE.04 | 2/2/2/2 |
+> | 多项式表示与诊断，§3.1–3.3 | 新x−2、d3→[−2,4,−8]；参数1/0.5/0.25/−0.1→1.8；负系数/训练图不证过拟合；原sin支持之外另报告外推 | 2/2/2/2 |
+> | Ridge/单位/缩放，§3.4 | 同三行α2→b1/a8/3，新1.5→25/6；总体std√(2/3)下同α2得到原单位b1.2/预测64/15；若保持原单位α2，缩放后α应3；λ与alpha按目标系数换算 | 2/2/2/2 |
+> | 调参/预处理状态/Pipeline，§3.5/§5.1 | 训练三行、验证x3/y7.5，α0/2/6 MAE1/6、11/6、17/6，选0；训练加验证重拟合b1.95/a1.7；候选全评/最终冻结与测试一次，不全表fit尺度 | 2/2/2/2 |
+> | OneHotEncoder/行身份，§4.3–4.5 | 训练Apt/House/Loft→两列House/Loft；House[1,0]；Castle默认报错终止、ignore[0,0]未知≠基准；ID9/4真8/2与预测7/3 MAE1，单独排序真值错误MAE5；图现先split再训练fit/各组transform | 2/2/2/2 |
+> | statsmodels推断链，§4.6 | x0/1/2/3，y1/4/4/7：b1.8/a1.3、SSE1.8、df2/残差方差0.9、SE.793725/0.424264、t1.637846/4.242641、p约0.243111/0.051317；说明分布条件与p非因果概率 | 2/2/2/2 |
+> | log倍率/近共线，§5.4–5.5 | b.3/Δ−2→exp(−0.6)≈0.548812；x2=3x1且末行+0.002，y=2x1且末行+0.004，可由b1−4/b2=2表达；教学敏感性不冒称Airbnb已变号；两数据流已画 | 2/2/2/2 |
+> | Prompt到验收，§7.3 | 新误差0.04/0.04区分RMSE.04与sqrtMAE.2；无报错不证实现指标；生成代码→kernel输出→形状/配对/公式/数据边界→修或接受，不让测试参与调参 | 2/2/2/2 |
+>
+> **原材料/输出**：39cells=20markdown+19code（其中空39，实际非空代码18）；独立回源检查确认18非空原码语句与正文Python块等价AST，原cell35的16步Prompt保持。主代理抽取/实际查看5张原保存PNG（7/13/18/20/22），与原notebook字节一致；原20图未穿过所有点，原22没有真实sin线或独立样本，不以稍平滑宣称泛化改善。无seed段缺原X/y，只保留保存3.088464/3.876417/0.870716/0.828464，不假称新恢复同次随机数据。Python3.13.5是原材料metadata，不冒称本次运行版本。
+>
+> **当前数值复算**：verify_t02_current.py/t02-current-results.json核原Airbnb（68133×15、47693训练/20440测试、7输入列）与新增完整四行机制；同测试log-MAE 0.4389203843146883/R² 0.3595036288665012，训练log中位数4.700480366基线MAE 0.55698603965/R²−0.00888619919，改善21.1972378%。仅训练fit encoder与原全量字典协议在此次四类齐全时预测最大差1.78e−15，不能推广全表预处理安全。beds seed0–4均负，没有观察到变号。verify_t02_reader_variants.py独立核上表新输入/参数/SE/p/变式与安装API，结果t02-reader-variants-results.json；不运行评分作业。
+>
+> **真实渲染与结构**：IAB Mermaid/KaTeX实际13图、2独立与76行内数学，错误0、溢出0；13图逐张查看，unknown错误单独停止、行身份先split的改动另复看。是IAB预览，非已操作Obsidian。所有Python块按Markdown引用/列表缩进还原后AST语法0错误；整理时误落进code的说明已移出并核原cell7语法。strict PASS：19源code（含1空）/16leaf，正文15983CJK，密度841；结构不代替上面的R与来源。
+>
+> **转录范围与真实限制**：源M02-transcript.txt 631段、首00:02/末02:34:37，整源跨度2:34:35；本篇声明tutorial子区间01:48:45–02:34:37为2752秒。映射细区间并集2514秒≈91.35%，未细映射238秒，不用粗时间表补成100%。机器最终audit PASS：16格、72引用时间戳、7条符合格式的引文、未匹配/低匹配/A13/A14均0，27条带讲义页的映射受检；不把27等同39cell核对，也不把7等同全文23条普通引文逐字校验。已对已识别ASR四专名/动词及dummy校词加[ ]/准时间戳；其余普通引文没有本轮完整逐字校词证明。缺失评分说明、音频尾时长与课堂设计意图继续按来源限制保留。
+>
+> **结构兼容的证据**：transcript_check.py现在只对type tutorial依实际映射/延伸标题找§9/§10，支持单/双反引号区间及声明单源子区间；时间覆盖只算映射表，粗时间分配不能填洞。7个回归用例含真实坏引文仍FAIL、缺映射仍FAIL、粗表不能伪造coverage；M05/T03原结构回归仍PASS。不是为了让坏引文通过改阈值。
+>
+> **范围与背景**：Lasso原cell36仅import、未用于本次建模，现作L1/L2课外对照，回M02完整机制；VIF/stratify/各solver内部算法只作背景，附参数与适用条件，不伪称已执行。当前直接求解例/真实OLS/Ridge、编码、指标、推断都按核心展开。评分§8原文本逐字保留，不认可其旧推测为现行作业要求，也不由课堂通过推出作业通过；原cell35 Prompt未改，原材料哈希未变。其他IS6400/四课修复仍未完成。
 
 ## 相关
 

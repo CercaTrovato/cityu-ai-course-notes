@@ -1,0 +1,169 @@
+{
+  "note": "M08",
+  "formal": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\M08-时间序列II-自相关差分与ARIMA.md",
+  "base_sha256": "7d85705643b01f8564b9a46e87c89ba2a37c9dbe69812bded77578fb2c13c126",
+  "candidate": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-round2.md",
+  "candidate_sha256": "2436ac2c0958bbe386d844e1bcf4d7fd43cb0d65668e0a5104197e3b4f25a88b",
+  "review_copy": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\review\\native-check-20261104\\m08\\M08-阅读验收.md",
+  "review_copy_sha256": "096f7fef4e6a423b5b446dac87dc035e052e970e2516294d5aa252e0d8c33190",
+  "assets": [
+    {
+      "relative": "figures/m08-source/p-02.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-02.png",
+      "sha256": "034f27d40e1b30a31cb4ed41d6ca482d1a7e540cc52769ea35cc30048ed9bede",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-02.png"
+    },
+    {
+      "relative": "figures/m08-source/p-05.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-05.png",
+      "sha256": "965b4e316f9ddf4ba5669453067b24c42b1bdfed5d3086c9c4bca605f17ed4fd",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-05.png"
+    },
+    {
+      "relative": "figures/m08-source/p-06.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-06.png",
+      "sha256": "2db39576d8787147eb06d909074d4a0962897b5af0dcc8e0af709946b5334d3d",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-06.png"
+    },
+    {
+      "relative": "figures/m08-source/p-08.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-08.png",
+      "sha256": "5b3f6fdeef6f7220a93dde0334e97657ccd8e26a12202cd1c668e34b4b839818",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-08.png"
+    },
+    {
+      "relative": "figures/m08-source/p-11.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-11.png",
+      "sha256": "b8a409e802e7379c316a0800be8ee1283229dd3aa1e342da0b572740db5b2c3c",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-11.png"
+    },
+    {
+      "relative": "figures/m08-source/p-12.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-12.png",
+      "sha256": "e841bd5d273e5cbf563070d954e507d2e32f694e69a9f628dc770d348de6fc84",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-12.png"
+    },
+    {
+      "relative": "figures/m08-source/p-14.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-14.png",
+      "sha256": "499a4bd7694fc429b5e77d89ba939c3a0502efb4b7ea614262c2455c6bac5619",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-14.png"
+    },
+    {
+      "relative": "figures/m08-source/p-17.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-17.png",
+      "sha256": "508f5fb54b0223106f7efdebeb8b5ccd8dd7de15d8b24322eeb5bab0b8d7e700",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-17.png"
+    },
+    {
+      "relative": "figures/m08-source/p-18.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-18.png",
+      "sha256": "c0e72873863039c8d46fa114ced109fe7a5f6d72e6679852f7fe56f5203f06b0",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-18.png"
+    },
+    {
+      "relative": "figures/m08-source/p-24.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-24.png",
+      "sha256": "b8e84c76cce4b60b169a4dca4ac17e171e54ffb3b9c0ed3cb1d57fc01af5dd20",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-24.png"
+    },
+    {
+      "relative": "figures/m08-source/p-25.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-25.png",
+      "sha256": "67d477a8bd8a32a803b4ea02093d8baff669f6bd9af3bcdb9563c4d3e6a193c6",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-25.png"
+    },
+    {
+      "relative": "figures/m08-source/p-27.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-27.png",
+      "sha256": "0c92095a5177e782346fc8b7f647d7171b03058877984e9dd01877e373164b20",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-27.png"
+    },
+    {
+      "relative": "figures/m08-source/p-28.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-28.png",
+      "sha256": "e419af0b20f6c28ba19e881b83e54c265881c2b0f988590da3d126e67ce68718",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-28.png"
+    },
+    {
+      "relative": "figures/m08-source/p-29.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-29.png",
+      "sha256": "c37a8d0cc592450a001e3db3b384de18fabf2f075db7b3d3685a28de52b373c6",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-29.png"
+    },
+    {
+      "relative": "figures/m08-source/p-32.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-32.png",
+      "sha256": "06dd0ad2e5db04fedf1be9a80928232f758d4a2aa7fa6da331061877d704ab17",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-32.png"
+    },
+    {
+      "relative": "figures/m08-source/p-34.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-34.png",
+      "sha256": "1364b7581d264305dc8416912ed6186b1eea2c9e821d2b7108a7d8dfdcbbde17",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-34.png"
+    },
+    {
+      "relative": "figures/m08-source/p-36.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-36.png",
+      "sha256": "c3da5b3835f8354bb9b527e68a7231a8e9a4d3e40ecf745871421a2926c7be49",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-36.png"
+    },
+    {
+      "relative": "figures/m08-source/p-38.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-38.png",
+      "sha256": "c5c972bf0483dc9809f0b00837e660239de341aa3859a6c280c565195184f3db",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-38.png"
+    },
+    {
+      "relative": "figures/m08-source/p-42.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-42.png",
+      "sha256": "5d28022e29b2f08d6d03afd2067bd784d763215d5073bd1f8aa5a67d60f49e4f",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-42.png"
+    },
+    {
+      "relative": "figures/m08-source/p-43.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-43.png",
+      "sha256": "daaeecacaf9a77cccf11619d8a90663f76c0a532d7d59bcba45e8a6f51c7f1d8",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-43.png"
+    },
+    {
+      "relative": "figures/m08-source/p-44.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-44.png",
+      "sha256": "7a0b589ec662a71f6011487016f117bd43609617e0b433bd330f97e099e72b25",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-44.png"
+    },
+    {
+      "relative": "figures/m08-source/p-45.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets\\p-45.png",
+      "sha256": "c782f1a9a9154ada3d0c5653ade624fad533a0b809f8ebeed7efdba1136f41e4",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m08-source\\p-45.png"
+    }
+  ],
+  "wiki_assets": [
+    {
+      "relative": "IS6400_Business_Data_Analytics/notes/figures/time-series/M08-source-p36.png",
+      "source": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\time-series\\M08-source-p36.png",
+      "sha256": "23d41f951e3139bfcd42a92f5ffb7056192e4c08f654f6dbba11842c5f105c3a"
+    },
+    {
+      "relative": "IS6400_Business_Data_Analytics/notes/figures/time-series/M08-simulated-transform-panels.svg",
+      "source": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\time-series\\M08-simulated-transform-panels.svg",
+      "sha256": "57b0774670f07e11e47eda98c49e6c72c936b408a124e97247ada6263c1e7b52"
+    }
+  ],
+  "outline": [
+    "前讲预测方法复习（p.1–12）",
+    "p.1 · 本讲导览",
+    "p.2 · 简单移动平均",
+    "p.3 · 加权移动平均",
+    "p.4 · 指数平滑",
+    "p.5 · Holt 更新水平与趋势",
+    "p.6 · Holt-Winters 更新季节",
+    "p.7 · 线性趋势"
+  ],
+  "map": [
+    "7. 自测",
+    "8. 讲义页码映射"
+  ]
+}

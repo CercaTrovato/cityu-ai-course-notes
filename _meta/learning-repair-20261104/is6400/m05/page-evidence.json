@@ -1,0 +1,1152 @@
+{
+  "source": "IS6400_Business_Data_Analytics/course_files_export/IS6400-L5-Clustering.pdf",
+  "source_sha256": "49c5090cf86ec716f61e8754a76d8c55b1546e304d61b9b7219ce37fccf09231",
+  "baseline_sha256": "4d2d9f44861ecacdbefca91d7d7c7a6458ec5e5cc54a35e935a7f6ff13b2c407",
+  "transcripts": {
+    "IS6400_Business_Data_Analytics/transcripts/M05-transcript-part1-partial.txt": "09d0da5b75f40596d44dc3a8bf5ada7ae81f0eff99d4f95dd15dbf040282bdda",
+    "IS6400_Business_Data_Analytics/transcripts/M05-transcript-part2-partial.txt": "c91c75160e1bb8e9f3b60a2135c06c02c147c094df35d90665827c07989cea9c"
+  },
+  "candidate_sha256": "b72528ca0f66a0acbcd2a8492d09229e3732e1a5c9ac920ff649ad5316982cfa",
+  "stage": "author_candidate_pending_precheck_and_review",
+  "pages": [
+    {
+      "page": 1,
+      "title": "Quick Review 导览",
+      "anchor": "p.1 · Quick Review 导览",
+      "disposition": "导览",
+      "content": "点亮快速回顾，阅读 DM 第 7、8 章；随后分别讲 K-means、层次和密度聚类。",
+      "visual": "联系图"
+    },
+    {
+      "page": 2,
+      "title": "Introduction · 特征工程的位置",
+      "anchor": "p.2 · Introduction · 特征工程的位置",
+      "disposition": "图",
+      "content": "数据与训练之间的红箭头标特征工程。聚类前选字段、表示和尺度，随后距离才有业务意义。",
+      "visual": "联系图"
+    },
+    {
+      "page": 3,
+      "title": "Evaluation Measures for Ranking and Selecting Features",
+      "anchor": "p.3 · Evaluation Measures for Ranking and Selecting Features",
+      "disposition": "文字",
+      "content": "信息、距离、依赖、一致性、准确率五种口径服务不同任务，评价指标换了，特征排名也可能变。",
+      "visual": "联系图"
+    },
+    {
+      "page": 4,
+      "title": "Filter Model",
+      "anchor": "p.4 · Filter Model",
+      "disposition": "图",
+      "content": "上层生成候选并用独立度量打分，No 回上游，Yes 进入训练。Gini 与熵是课件给的标签纯度例。",
+      "visual": "联系图"
+    },
+    {
+      "page": 5,
+      "title": "Wrapper Model",
+      "anchor": "p.5 · Wrapper Model",
+      "disposition": "图",
+      "content": "红框的准确率来自上层学习算法，用来评价候选。与 p.4 的独立打分相区别，测试只在下层最后读。",
+      "visual": "联系图"
+    },
+    {
+      "page": 6,
+      "title": "Feature Reduction vs. Feature Selection",
+      "anchor": "p.6 · Feature Reduction vs. Feature Selection",
+      "disposition": "文字",
+      "content": "选择保留原列子集，PCA 一类线性约简组合原列生成更少坐标。",
+      "visual": "联系图"
+    },
+    {
+      "page": 7,
+      "title": "Recursive Feature Selection",
+      "anchor": "p.7 · Recursive Feature Selection",
+      "disposition": "图",
+      "content": "从空集开始，每轮试加一列；第二栏从 F2 出发，第三栏从 F2/F3 出发，后续保留已入选列。",
+      "visual": "联系图"
+    },
+    {
+      "page": 8,
+      "title": "PCA · 主成分的重要性",
+      "anchor": "p.8 · PCA · 主成分的重要性",
+      "disposition": "图",
+      "content": "同批点在 z1 上散得开，在 z2 上聚得紧。方差排序表达保留的变异，并非分类价值的保证。",
+      "visual": "联系图"
+    },
+    {
+      "page": 9,
+      "title": "Introduction to Clustering 导览",
+      "anchor": "p.9 · Introduction to Clustering 导览",
+      "disposition": "导览",
+      "content": "点亮聚类导论，先看组的含义，再决定用什么距离。",
+      "visual": "联系图"
+    },
+    {
+      "page": 10,
+      "title": "What is Cluster Analysis?",
+      "anchor": "p.10 · What is Cluster Analysis?",
+      "disposition": "图",
+      "content": "圈内箭头对应同簇较近，跨圈箭头对应不同簇较远。是聚类目标的直觉，具体算法可有不同目标。",
+      "visual": "联系图"
+    },
+    {
+      "page": 11,
+      "title": "Applications of Cluster Analysis",
+      "anchor": "p.11 · Applications of Cluster Analysis",
+      "disposition": "图",
+      "content": "上图圈住相关文档并选代表，下面用分组减少需单独阅读的对象。代表样本不能替代全部组内差异。",
+      "visual": "联系图"
+    },
+    {
+      "page": 12,
+      "title": "Notion of a Cluster can be Ambiguous",
+      "anchor": "p.12 · Notion of a Cluster can be Ambiguous",
+      "disposition": "图",
+      "content": "未分组黑点可读成两、四或六组，依研究目的和粒度。比较彩色符号的组合，不能只从图求唯一组数。",
+      "visual": "联系图"
+    },
+    {
+      "page": 13,
+      "title": "Types of Clusterings",
+      "anchor": "p.13 · Types of Clusterings",
+      "disposition": "文字",
+      "content": "划分式给互斥组，层次式给嵌套树，密度式按连片稠密区域识别簇。",
+      "visual": "联系图"
+    },
+    {
+      "page": 14,
+      "title": "Partitional Clustering",
+      "anchor": "p.14 · Partitional Clustering",
+      "disposition": "图",
+      "content": "左是原点，右在同一层圈成三个互不重叠组，每点恰落一圈。",
+      "visual": "联系图"
+    },
+    {
+      "page": 15,
+      "title": "Hierarchical Clustering",
+      "anchor": "p.15 · Hierarchical Clustering",
+      "disposition": "图",
+      "content": "左侧圈套圈表示组包含。右侧树图按合并顺序看，顶行先连 p2/p3，再接 p4，底行先分别连 p1/p2 和 p3/p4。",
+      "visual": "联系图"
+    },
+    {
+      "page": 16,
+      "title": "Density-based Clustering",
+      "anchor": "p.16 · Density-based Clustering",
+      "disposition": "图",
+      "content": "红色中心与蓝色外环中间有较稀空隙，可按密度把两块分开，簇不需围绕均值成圆团。",
+      "visual": "联系图"
+    },
+    {
+      "page": 17,
+      "title": "Characteristics of the Input Data Are Important",
+      "anchor": "p.17 · Characteristics of the Input Data Are Important",
+      "disposition": "文字",
+      "content": "距离和密度都取决于维度、属性类型、分布、依赖和噪声。选度量之前先问何谓相似。",
+      "visual": "联系图"
+    },
+    {
+      "page": 18,
+      "title": "Then, Use A Similarity Metric",
+      "anchor": "p.18 · Then, Use A Similarity Metric",
+      "disposition": "文字",
+      "content": "欧氏距离先按列作差、平方求和再开根，值较小表示按当前表示较近。",
+      "visual": "联系图"
+    },
+    {
+      "page": 19,
+      "title": "Measuring Similarity Using Euclidian Distance",
+      "anchor": "p.19 · Measuring Similarity Using Euclidian Distance",
+      "disposition": "图",
+      "content": "按苹果和橙子的 RGB 顺序对应相减，得到 −23、−38、27，平方和 2702，距离约 52.0。",
+      "visual": "联系图"
+    },
+    {
+      "page": 20,
+      "title": "Attribute Normalization",
+      "anchor": "p.20 · Attribute Normalization",
+      "disposition": "图",
+      "content": "年龄只差 3、卡数差 2、收入差一万，使原距离约 10000。下框给 z 分数及最小最大变换，用同一尺度口径重算。",
+      "visual": "联系图"
+    },
+    {
+      "page": 21,
+      "title": "Basic Clustering Algorithms",
+      "anchor": "p.21 · Basic Clustering Algorithms",
+      "disposition": "导览",
+      "content": "三类分别从 p.23 看质心迭代、p.45 看合并、p.62 看邻域密度。",
+      "visual": "联系图"
+    },
+    {
+      "page": 22,
+      "title": "K-means 导览",
+      "anchor": "p.22 · K-means 导览",
+      "disposition": "导览",
+      "content": "点亮 K-means，下一页给输入和停止条件。",
+      "visual": "联系图"
+    },
+    {
+      "page": 23,
+      "title": "K-means Clustering",
+      "anchor": "p.23 · K-means Clustering",
+      "disposition": "图",
+      "content": "给定 K 及初始中心，按最近中心分组，再取各组平均更新中心；中心不变时停止。平局和空簇需要明确处理。",
+      "visual": "联系图"
+    },
+    {
+      "page": 24,
+      "title": "Example of K-means Clustering · 首轮",
+      "anchor": "p.24 · Example of K-means Clustering · 首轮",
+      "disposition": "图",
+      "content": "左图彩点按当前中心分组，右侧蓝箭头从中心、算距离到分配。红色回边表示用更新中心再算。",
+      "visual": "联系图"
+    },
+    {
+      "page": 25,
+      "title": "Example of K-means Clustering · 第六轮",
+      "anchor": "p.25 · Example of K-means Clustering · 第六轮",
+      "disposition": "图",
+      "content": "第六轮显示上方红点、左下绿点、右下蓝点，十字是中心。比较 p.24 时看成员颜色和质心位置两者的变化。",
+      "visual": "联系图"
+    },
+    {
+      "page": 26,
+      "title": "Example of K-means Clustering · 六轮对照",
+      "anchor": "p.26 · Example of K-means Clustering · 六轮对照",
+      "disposition": "图",
+      "content": "从 1 到 6 比同一位置点的归属变化和十字移动。第六轮是本例快照，轮数不是普遍停止值。",
+      "visual": "联系图"
+    },
+    {
+      "page": 27,
+      "title": "Example · post office location",
+      "anchor": "p.27 · Example · post office location",
+      "disposition": "图",
+      "content": "蓝点是居民住址，要放三个邮局。居民不是中心，中心是要反复调整的候选站点。",
+      "visual": "联系图"
+    },
+    {
+      "page": 28,
+      "title": "Example · post office location 的两轮",
+      "anchor": "p.28 · Example · post office location 的两轮",
+      "disposition": "图",
+      "content": "星号是站点。先随机选三个，按最近站分片，再把星移到各片平均位置；下一轮片区和站点都会变。",
+      "visual": "联系图"
+    },
+    {
+      "page": 29,
+      "title": "Two different K-means Clusterings",
+      "anchor": "p.29 · Two different K-means Clusterings",
+      "disposition": "图",
+      "content": "相同点云从不同初值出发，右下把上方群拆开并合并两个下方小群；左下更接近三块。图示初始化影响结果，没有给全局最优证明。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 30,
+      "title": "K-means++ · 选初值",
+      "anchor": "p.30 · K-means++ · 选初值",
+      "disposition": "文字",
+      "content": "首中心随机。下一中心按候选到最近已有中心的距离平方加权抽样，较远点机会大但不一定选最远点。",
+      "visual": "联系图"
+    },
+    {
+      "page": 31,
+      "title": "K-means++ · 四次选点",
+      "anchor": "p.31 · K-means++ · 四次选点",
+      "disposition": "图",
+      "content": "每格灰点为数据，黑点是旧中心，红点是本次选中的点。跟第三格红点到第四格黑点可见选中后成为已有中心。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 32,
+      "title": "Limitations of K-means",
+      "anchor": "p.32 · Limitations of K-means",
+      "disposition": "文字",
+      "content": "次优解、不同大小或密度、非球形簇与离群点都可能让质心分割不理想。",
+      "visual": "联系图"
+    },
+    {
+      "page": 33,
+      "title": "Limitations of K-means · Differing Sizes",
+      "anchor": "p.33 · Limitations of K-means · Differing Sizes",
+      "disposition": "图",
+      "content": "左图中央大簇、两边小簇，右图有中心落在中央不同部位，分割线使大簇被拆并混入两边小簇。",
+      "visual": "联系图"
+    },
+    {
+      "page": 34,
+      "title": "Limitations of K-means · Differing Density",
+      "anchor": "p.34 · Limitations of K-means · Differing Density",
+      "disposition": "图",
+      "content": "左边松散团与右侧两个密团对比。右图把两个密团当作同色，同时在松散区域分配多个中心。",
+      "visual": "联系图"
+    },
+    {
+      "page": 35,
+      "title": "Limitations of K-means · Non-globular Shapes",
+      "anchor": "p.35 · Limitations of K-means · Non-globular Shapes",
+      "disposition": "图",
+      "content": "两个弯月相互绕过，右图按两个质心分区切断弧形；直线式边界难跟弯曲轮廓。",
+      "visual": "联系图"
+    },
+    {
+      "page": 36,
+      "title": "Overcoming K-means Limitations · 大小",
+      "anchor": "p.36 · Overcoming K-means Limitations · 大小",
+      "disposition": "图",
+      "content": "比 p.33 用更多中心，中央大团变成若干碎片。碎片如何拼回需另定合并规则。",
+      "visual": "联系图"
+    },
+    {
+      "page": 37,
+      "title": "Overcoming K-means Limitations · 密度",
+      "anchor": "p.37 · Overcoming K-means Limitations · 密度",
+      "disposition": "图",
+      "content": "比 p.34 可用更多中心描述稀疏区域，右侧密团各有局部簇。颜色数是中间碎片数。",
+      "visual": "联系图"
+    },
+    {
+      "page": 38,
+      "title": "Overcoming K-means Limitations · 弯月",
+      "anchor": "p.38 · Overcoming K-means Limitations · 弯月",
+      "disposition": "图",
+      "content": "与 p.35 对照，多个质心先把每条弯月分成短段，再按邻接或另一方法拼接。",
+      "visual": "联系图"
+    },
+    {
+      "page": 39,
+      "title": "Bisecting K-means",
+      "anchor": "p.39 · Bisecting K-means",
+      "disposition": "图",
+      "content": "先全部一组，选一个当前组，多次试 K=2，取组内 SSE 最小的二分替换旧组；达到 K 停。",
+      "visual": "联系图"
+    },
+    {
+      "page": 40,
+      "title": "Bisecting K-means Example",
+      "anchor": "p.40 · Bisecting K-means Example",
+      "disposition": "图",
+      "content": "彩色簇各有一个十字中心。此页展示二分结果的局部群，源图没有列完整拆分顺序。",
+      "visual": "联系图"
+    },
+    {
+      "page": 41,
+      "title": "Hierarchical Clustering 导览",
+      "anchor": "p.41 · Hierarchical Clustering 导览",
+      "disposition": "导览",
+      "content": "点亮层次聚类，接 p.42 的圈和树。",
+      "visual": "联系图"
+    },
+    {
+      "page": 42,
+      "title": "Hierarchical Clustering · 树状图",
+      "anchor": "p.42 · Hierarchical Clustering · 树状图",
+      "disposition": "图",
+      "content": "树叶是单点，横梁相接表示合并。先看 1/3 与 2/5，右边的小圈对应早合并的小簇。",
+      "visual": "联系图"
+    },
+    {
+      "page": 43,
+      "title": "Strengths of Hierarchical Clustering",
+      "anchor": "p.43 · Strengths of Hierarchical Clustering",
+      "disposition": "文字",
+      "content": "构造整棵树时可不预定簇数，再选高度切树得到较粗或较细分组；同高合并会影响可切粒度。",
+      "visual": "联系图"
+    },
+    {
+      "page": 44,
+      "title": "Hierarchical Clustering · 两个方向",
+      "anchor": "p.44 · Hierarchical Clustering · 两个方向",
+      "disposition": "文字",
+      "content": "凝聚从单点合并，分裂从全集切开，两者均可做到规定簇数。原例后续讲凝聚的距离矩阵。",
+      "visual": "联系图"
+    },
+    {
+      "page": 45,
+      "title": "Agglomerative Clustering Algorithm",
+      "anchor": "p.45 · Agglomerative Clustering Algorithm",
+      "disposition": "文字",
+      "content": "先算邻近矩阵，每点一簇；循环合并最近的两簇并更新距离，直到只剩一簇。",
+      "visual": "联系图"
+    },
+    {
+      "page": 46,
+      "title": "Starting Situation",
+      "anchor": "p.46 · Starting Situation",
+      "disposition": "图",
+      "content": "左侧是个别点，右矩阵行列先用 p1、p2 等单点作索引，底部树的叶子仍独立。",
+      "visual": "联系图"
+    },
+    {
+      "page": 47,
+      "title": "Intermediate Situation · 当前五簇",
+      "anchor": "p.47 · Intermediate Situation · 当前五簇",
+      "disposition": "图",
+      "content": "几个点已合成 C1–C5，矩阵行列现在是簇，底部绿点表示各未合并子树的根。",
+      "visual": "联系图"
+    },
+    {
+      "page": 48,
+      "title": "Intermediate Situation · 选最近两簇",
+      "anchor": "p.48 · Intermediate Situation · 选最近两簇",
+      "disposition": "图",
+      "content": "虚线圈住 C2/C5，矩阵把两者的旧行列阴影标出，树上新增一条合并横梁。",
+      "visual": "联系图"
+    },
+    {
+      "page": 49,
+      "title": "After Merging",
+      "anchor": "p.49 · After Merging",
+      "disposition": "图",
+      "content": "矩阵删除 C2 和 C5 两套旧行列，加入 C2∪C5；问号位置才须按连接准则重算，其他簇间距离可沿用。",
+      "visual": "联系图"
+    },
+    {
+      "page": 50,
+      "title": "How to Define Inter-Cluster Distance",
+      "anchor": "p.50 · How to Define Inter-Cluster Distance",
+      "disposition": "图",
+      "content": "左边两个点群之间的距离依规则定义。最短、最长、平均、质心和 Ward 的平方误差增量可导致不同顺序。",
+      "visual": "联系图"
+    },
+    {
+      "page": 51,
+      "title": "How to Define Inter-Cluster Similarity · MIN",
+      "anchor": "p.51 · How to Define Inter-Cluster Similarity · MIN",
+      "disposition": "图",
+      "content": "黄色线只连一对跨簇最近点。把这一条最小距离填到两簇的矩阵格。",
+      "visual": "联系图"
+    },
+    {
+      "page": 52,
+      "title": "How to Define Inter-Cluster Similarity · MAX",
+      "anchor": "p.52 · How to Define Inter-Cluster Similarity · MAX",
+      "disposition": "图",
+      "content": "黄线改连最远点对；同两团间的定义从最近值改成最远值。",
+      "visual": "联系图"
+    },
+    {
+      "page": 53,
+      "title": "How to Define Inter-Cluster Similarity · Group Average",
+      "anchor": "p.53 · How to Define Inter-Cluster Similarity · Group Average",
+      "disposition": "图",
+      "content": "画出全部跨簇连线，将每一对跨簇点的距离求平均，不是两个簇内均值的平均。",
+      "visual": "联系图"
+    },
+    {
+      "page": 54,
+      "title": "How to Define Inter-Cluster Similarity · Centroids",
+      "anchor": "p.54 · How to Define Inter-Cluster Similarity · Centroids",
+      "disposition": "图",
+      "content": "红叉是两个中心，黄线连接红叉，不直接选任意两个样本。Ward 则比较合并所增加的组内平方误差。",
+      "visual": "联系图"
+    },
+    {
+      "page": 55,
+      "title": "MIN or Single Link · 六点例",
+      "anchor": "p.55 · MIN or Single Link · 六点例",
+      "disposition": "图",
+      "content": "左侧按 1–6 编号的散点，右矩阵给距离。单链接只需要最近的跨簇边。",
+      "visual": "联系图"
+    },
+    {
+      "page": 56,
+      "title": "MIN or Single Link · 重复起始表",
+      "anchor": "p.56 · MIN or Single Link · 重复起始表",
+      "disposition": "图",
+      "content": "与 p.55 同一散点和初始矩阵，无新计算；重读原表排除对角线自距 0。",
+      "visual": "联系图"
+    },
+    {
+      "page": 57,
+      "title": "MIN or Single Link · 首次合并",
+      "anchor": "p.57 · MIN or Single Link · 首次合并",
+      "disposition": "图",
+      "content": "红框标 0.11，P3 与 P6 最先合并；左右对称的同一个数只代表同一对点。",
+      "visual": "联系图"
+    },
+    {
+      "page": 58,
+      "title": "MIN or Single Link · 更新表",
+      "anchor": "p.58 · MIN or Single Link · 更新表",
+      "disposition": "图",
+      "content": "P1 到新簇 P3/P6 取 0.22 与 0.23 的较小值 0.22。下表红标 0.14 表示下一对 P2/P5。",
+      "visual": "联系图"
+    },
+    {
+      "page": 59,
+      "title": "Hierarchical Clustering · MIN",
+      "anchor": "p.59 · Hierarchical Clustering · MIN",
+      "disposition": "图",
+      "content": "圈上的 1–5 对应合并先后；右树纵轴是合并距离，水平叶位置只用于排版。",
+      "visual": "联系图"
+    },
+    {
+      "page": 60,
+      "title": "In-class Quiz",
+      "anchor": "p.60 · In-class Quiz",
+      "disposition": "图",
+      "content": "合并 P2/P5 后，到 P1、P3/P6、P4 的新距离分别 0.24、0.15、0.20。两个 0.15 并列，左树示意先接 P2/P5 与 P3/P6，原矩阵未指定普适解平局规则。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 61,
+      "title": "Density-based Clustering 导览",
+      "anchor": "p.61 · Density-based Clustering 导览",
+      "disposition": "导览",
+      "content": "点亮基于密度聚类，接三类点和连通扩展。",
+      "visual": "联系图"
+    },
+    {
+      "page": 62,
+      "title": "DBSCAN · 定义",
+      "anchor": "p.62 · DBSCAN · 定义",
+      "disposition": "文字",
+      "content": "Eps 是邻域半径；含自己至少 MinPts 是核心。非核心但靠近核心为边界，其余为噪声。",
+      "visual": "联系图"
+    },
+    {
+      "page": 63,
+      "title": "DBSCAN · 三类点",
+      "anchor": "p.63 · DBSCAN · 三类点",
+      "disposition": "图",
+      "content": "按 MinPts=7 沿三个 Eps 圆看。A 的邻域够多，B 本身不够但在 A 邻域内，C 不邻接核心。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 64,
+      "title": "DBSCAN Algorithm",
+      "anchor": "p.64 · DBSCAN Algorithm",
+      "disposition": "图",
+      "content": "原伪码先判噪声，再给核心和邻域贴标签。按任意点序全局标签会误用，保留原页并用专题的反例和核心扩展读正确机制。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 65,
+      "title": "DBSCAN Process",
+      "anchor": "p.65 · DBSCAN Process",
+      "disposition": "图",
+      "content": "红色半透明圈标沿核心邻域扩展的当前区域。图示 epsilon=1、MinPoints=4，环形分组沿局部密度长出。",
+      "visual": "联系图"
+    },
+    {
+      "page": 66,
+      "title": "DBSCAN · 点类型着色",
+      "anchor": "p.66 · DBSCAN · 点类型着色",
+      "disposition": "图",
+      "content": "左图全蓝为原点，右图按三类点着色。密集内部实际主要为绿，图例 core 字样偏橙；蓝色为边界，红色为噪声。图给 Eps=10、MinPts=4。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 67,
+      "title": "When DBSCAN Works Well",
+      "anchor": "p.67 · When DBSCAN Works Well",
+      "disposition": "图",
+      "content": "右图在不同弯折结构上显示彩色簇，散点仍留背景。密度边界清晰时能识别多种形状；不同簇密度差距很大时需要另外核参数。",
+      "visual": "联系图"
+    }
+  ],
+  "assets": [
+    {
+      "page": 2,
+      "id": "W05-p02",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-02.png",
+      "sha256": "84c53ca1007f56e2960c814a2c1b412a5617f946dd4ac05d1eb9eebecb0ca667",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 4,
+      "id": "W05-p04",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-04.png",
+      "sha256": "3e873e4a1b4d547d5cc5618bc2b2b622b5b19ca79a005438c0ee3db19e19cda7",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 5,
+      "id": "W05-p05",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-05.png",
+      "sha256": "6d3baaa1fab5fff7d38e707f1c98db978d7a51946a208035686982e959a2c22f",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 7,
+      "id": "W05-p07",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-07.png",
+      "sha256": "5b788f806667924a76f3a9579f36d1271bc5ca1c8da7cdd6ddb2c9d451212beb",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 8,
+      "id": "W05-p08",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-08.png",
+      "sha256": "72590fa8ba18a815640b1ae4d0f5d75c195adac5adbe1fed3fafa773d80d2c61",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 10,
+      "id": "W05-p10",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-10.png",
+      "sha256": "de87ece893343f966f5831377d37510886aef289b0098bf71dd5bc0843828edc",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 11,
+      "id": "W05-p11",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-11.png",
+      "sha256": "3509b092bc4d76026593c92ee5db10aca7a5c65832a163294138eae99c18e48a",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 12,
+      "id": "W05-p12",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-12.png",
+      "sha256": "a205845e1ff76194181ef7b2102de5b027c8fce5a3389a93fefbe377c16e4681",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 14,
+      "id": "W05-p14",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-14.png",
+      "sha256": "5e50dce37f39e34b40da2314e3540e28c1ea6eb8af0e800f0596555b19e7a70c",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 15,
+      "id": "W05-p15",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-15.png",
+      "sha256": "73ffc14fce001784ff7cec8274228972b990283e3a8b2ec933ef18b3d6126032",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 16,
+      "id": "W05-p16",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-16.png",
+      "sha256": "d42c2dd7125c2ed16d8371c13afd4a6120a73b9d587c169925ac81971891be87",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 19,
+      "id": "W05-p19",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-19.png",
+      "sha256": "5e359a8aa7124442c54e1c323348b19650170f33aa87a24b1359eb705fa1068f",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 20,
+      "id": "W05-p20",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-20.png",
+      "sha256": "74c70836b007cbdc5b2a5d4d2b4a15d916d346e92dde0a66159ed786af3f2b7e",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 23,
+      "id": "W05-p23",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-23.png",
+      "sha256": "e099bc734a1cc1baf928ed30a42b672c77ecce8a0f228c9e15f92a07f7d56c71",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 24,
+      "id": "W05-p24",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-24.png",
+      "sha256": "a556be16d00950b6c737cdd9e7af98290cca4922c366e52d39f74d9edc7f6b4c",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 25,
+      "id": "W05-p25",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-25.png",
+      "sha256": "b99f09ae007cdb8a3cf64d9cdf75b7b42157e6fd0f05586d03397d7d7625705b",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 26,
+      "id": "W05-p26",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-26.png",
+      "sha256": "0a986e661d84e1ab317046198a633fbf1d4cdf280ed6e80ef7fe5c1543cdbd7f",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 27,
+      "id": "W05-p27",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-27.png",
+      "sha256": "6c50c642340cca7d5b09fa6a26b3f41564a8bf19438147ecec3821ae5684130b",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 28,
+      "id": "W05-p28",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-28.png",
+      "sha256": "eef1844bbb8cfe37d7d2e6e91332444a31258f1566d7ebc4e2e52fb53573d2d2",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 29,
+      "id": "W05-p29",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-29.png",
+      "sha256": "667b26f824d248b0ad5b41a729b197256ef6c889b827a419a45f2836d31f6e08",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 31,
+      "id": "W05-p31",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-31.png",
+      "sha256": "60254968c95e39e71e085eca45cf5a9e4af284f160553b5448ea74194100db56",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 33,
+      "id": "W05-p33",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-33.png",
+      "sha256": "1c07e7e13a12f28e7e79976540e77e21a2680ebe2122fda5bb0c807b1653a4bf",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 34,
+      "id": "W05-p34",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-34.png",
+      "sha256": "2c5219b85acab98ab4d462554c92fa8423c668a24cee1d4eab767ce6fee50aef",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 35,
+      "id": "W05-p35",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-35.png",
+      "sha256": "11e84ad7de494ebf61f32e7a043fd6998a4fdd982f1f07b7bec2ac77b02ede20",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 36,
+      "id": "W05-p36",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-36.png",
+      "sha256": "3ed3007be0e654e4cab1114d98617e858d865e2a5f14c28df6e8b3f77ff2e44c",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 37,
+      "id": "W05-p37",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-37.png",
+      "sha256": "0557804c627987562c6ccc44e83b47a630b8fd3c41d37340cfabe0b2c3203bc8",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 38,
+      "id": "W05-p38",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-38.png",
+      "sha256": "c73e9409496cb50c2accad97c52ef7236bbe737b414ae5ccef2489ba203e705a",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 39,
+      "id": "W05-p39",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-39.png",
+      "sha256": "1c49c4dbd66b628b220ade4420eefe988a462295fb409d50f3c7f96361a51769",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 40,
+      "id": "W05-p40",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-40.png",
+      "sha256": "245c96a6293fe7c3b3e059780a65525355a0fb4d67e575e39602658d603d2b1c",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 42,
+      "id": "W05-p42",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-42.png",
+      "sha256": "ddca6940e5503db6514a97cac8178bfe1c8e3d24b9c0ba0f9bee6d3abdeab234",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 46,
+      "id": "W05-p46",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-46.png",
+      "sha256": "d19a6b8825baca25f5e12915b11a2c48b339c467ef7f4a570f65ffee20a8cc86",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 47,
+      "id": "W05-p47",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-47.png",
+      "sha256": "5b99b0b46676c3b902482b227ea40aee6feb16f4c7992cd894ddccd51ee2990b",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 48,
+      "id": "W05-p48",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-48.png",
+      "sha256": "4bd9eeb541a330627cc4a2e7494c4919136470119afd322ef330a360f0c16d40",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 49,
+      "id": "W05-p49",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-49.png",
+      "sha256": "ef70899eb6d41fb638df9b2f056e940c5d94f8180956b19b48910ad0a2a55ac9",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 50,
+      "id": "W05-p50",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-50.png",
+      "sha256": "1cbbe8ec2bcfcfdf11e5234a8e55f3dceb5dc8802b0b647dcdeac1f81ca9e2d5",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 51,
+      "id": "W05-p51",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-51.png",
+      "sha256": "bf6c59db2b38e381759cb86179c16f1ab6261bddfe33dc70c7aab52114bf2207",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 52,
+      "id": "W05-p52",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-52.png",
+      "sha256": "c0e6fcc92be1a4efcbc7fa4f54213f6b576a31c40cd6079375fce68e7e9beaa3",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 53,
+      "id": "W05-p53",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-53.png",
+      "sha256": "37b3da46775f8657c1362454316d87ef1858c75538cb3715eb309ba04e04058e",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 54,
+      "id": "W05-p54",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-54.png",
+      "sha256": "5717a317c1ef56c4ce21cef3d719b6d9d1dec56e414e3d13c1f50eb11d3f5343",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 55,
+      "id": "W05-p55",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-55.png",
+      "sha256": "c9e4a988ec6b06d6298edf95d2933bc618e37588df0b71fb1c75c85ddc049d1b",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 56,
+      "id": "W05-p56",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-56.png",
+      "sha256": "9c4bff59707ab73e261e6843ccd3b54dd250e87fc296f5eaaf2bebaee4c3b3c7",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 57,
+      "id": "W05-p57",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-57.png",
+      "sha256": "0ea7f90911ee037f08dca0b38c2e96331fa5dc0f0c1eca5c86332cb238401ada",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 58,
+      "id": "W05-p58",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-58.png",
+      "sha256": "afd8134239f7a3d9afe97ccabf2224376b68f56a2208b846dfb2cb2dd4f7558c",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 59,
+      "id": "W05-p59",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-59.png",
+      "sha256": "0b5317815082c039311054a9d18793e07976e38e1beb9162fd295a281d913b47",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 60,
+      "id": "W05-p60",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-60.png",
+      "sha256": "e9bd5b36a75e9be90823e26da2627618b325a895567b1f7061a8547cfdeb95ca",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 63,
+      "id": "W05-p63",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-63.png",
+      "sha256": "420fc6a6cc83d6b8296cc4bf888da719f5a69f911c0d4bd7c5519e092c8ee7f2",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 64,
+      "id": "W05-p64",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-64.png",
+      "sha256": "2681f66c0aaed18d97f236c2e433c337a75060052381615fb8ddf98c547ba577",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 65,
+      "id": "W05-p65",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-65.png",
+      "sha256": "e943f26f8d2528c80bbaf9f75fd09469959a8dd677d0f5ae9886b316cf86b915",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 66,
+      "id": "W05-p66",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-66.png",
+      "sha256": "765050ccc71cd8d9404e05fc0d93f6fa507ef0ecccabe40e1dea242c3456dd57",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 67,
+      "id": "W05-p67",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m05-source/p-67.png",
+      "sha256": "c4488b3fb97d4cf88c465256c2002c0e45d10c27bbd9b31fe832a38fcce913f8",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    }
+  ],
+  "review_candidate_sha256": "2bed6cf7d8e7c0b0a69800cb4a7d601dd92da49dbd45fe4065e06a107dfa0d57"
+}

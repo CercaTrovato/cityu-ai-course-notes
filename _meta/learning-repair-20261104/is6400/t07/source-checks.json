@@ -1,0 +1,61 @@
+{
+  "schema": "note-source-checks-v1",
+  "sources": {
+    "NB": {
+      "path": "../../../../IS6400_Business_Data_Analytics/course_files_export/Week 7 Classification_Tutorial.ipynb",
+      "sha256": "4431d53034ec8ddc9815f434efeaa98c6d84cb257bc0785c90324f87c6d1fe2c"
+    }
+  },
+  "questions": [
+    {
+      "id": "W7-Q1",
+      "source_id": "NB",
+      "section": "2.14",
+      "original": "Use the credictcard-reduced.csv dataset and build Five classification models. Please plot confusion matrix, and evaluate your model performance using accuracy, precision, recall, F-score (50 points). A list of classification models can be found [here](https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html)",
+      "options": {},
+      "answers": [
+        {
+          "id": "method",
+          "chinese": "用指定交易 CSV 建五个分类模型，各画一个混淆矩阵，并分别报告 accuracy、precision、recall、F-score。",
+          "english": "In the saved A08 reference analysis, all five classifiers were evaluated on the same 13,035 held-out records with Class 1 as positive."
+        }
+      ],
+      "status": "method_explained_scored_execution_pending",
+      "limits": "方法解释与完整题面，不是评分数据的完成答卷；本轮未训练评分模型。"
+    },
+    {
+      "id": "W7-Q2",
+      "source_id": "NB",
+      "section": "2.14",
+      "original": "Illustrate the differences between these classifiers and compare the model performances. (30 points)",
+      "options": {},
+      "answers": [
+        {
+          "id": "method",
+          "chinese": "可以写“在相同验证集上，模型 A 比模型 B 少漏了多少目标事件，同时多误报多少”，再解释成本取舍；没有实际输出时不能宣布排名。",
+          "english": "In this saved split, AdaBoost has the highest F1, while Decision Tree and Random Forest tie in accuracy but make different errors."
+        }
+      ],
+      "status": "method_explained_scored_execution_pending",
+      "limits": "方法解释与完整题面，不是评分数据的完成答卷；本轮未训练评分模型。"
+    },
+    {
+      "id": "W7-Q3",
+      "source_id": "NB",
+      "section": "2.14",
+      "original": "Use the class-weight method from the tutorial for imbalanced classification on the creditcard-reduced.csv dataset. Build a classifier with and without class_weight, then evaluate model performance before and after applying class weights using accuracy, precision, recall, F-score, and confusion matrix.(20 points)",
+      "options": {},
+      "answers": [
+        {
+          "id": "method",
+          "chinese": "固定数据划分和同一种分类器，对比不加权与加权版本，把混淆矩阵和四种数值指标全部报出。",
+          "english": "On the same held-out records, weighting leaves recall unchanged but raises false alarms from five to seven."
+        }
+      ],
+      "status": "method_explained_scored_execution_pending",
+      "limits": "方法解释与完整题面，不是评分数据的完成答卷；本轮未训练评分模型。"
+    }
+  ],
+  "scope_note": "原Notebook只有Cell22三问评分任务；其余为演示。contract只核字面保真和中英方法锚点，不能据此宣布评分答案完整。",
+  "candidate_sha256": "694d143a41d6e3786196bb3870f140703a3eaf89feb80f02f6236a05f9933cd9"
+}

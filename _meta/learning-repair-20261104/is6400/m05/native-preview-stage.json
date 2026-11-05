@@ -1,0 +1,343 @@
+{
+  "note": "M05",
+  "formal": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\M05-聚类-Kmeans层次与DBSCAN.md",
+  "base_sha256": "4d2d9f44861ecacdbefca91d7d7c7a6458ec5e5cc54a35e935a7f6ff13b2c407",
+  "candidate": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-revised-round2.md",
+  "candidate_sha256": "2bed6cf7d8e7c0b0a69800cb4a7d601dd92da49dbd45fe4065e06a107dfa0d57",
+  "review_copy": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\review\\native-check-20261104\\m05\\M05-阅读验收.md",
+  "review_copy_sha256": "b2b3611e5c25ad74f17a7f31ded992bf62949e7aa6e43efe3791f93a0da10e92",
+  "assets": [
+    {
+      "relative": "figures/m05-source/p-02.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-02.png",
+      "sha256": "84c53ca1007f56e2960c814a2c1b412a5617f946dd4ac05d1eb9eebecb0ca667",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-02.png"
+    },
+    {
+      "relative": "figures/m05-source/p-04.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-04.png",
+      "sha256": "3e873e4a1b4d547d5cc5618bc2b2b622b5b19ca79a005438c0ee3db19e19cda7",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-04.png"
+    },
+    {
+      "relative": "figures/m05-source/p-05.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-05.png",
+      "sha256": "6d3baaa1fab5fff7d38e707f1c98db978d7a51946a208035686982e959a2c22f",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-05.png"
+    },
+    {
+      "relative": "figures/m05-source/p-07.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-07.png",
+      "sha256": "5b788f806667924a76f3a9579f36d1271bc5ca1c8da7cdd6ddb2c9d451212beb",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-07.png"
+    },
+    {
+      "relative": "figures/m05-source/p-08.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-08.png",
+      "sha256": "72590fa8ba18a815640b1ae4d0f5d75c195adac5adbe1fed3fafa773d80d2c61",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-08.png"
+    },
+    {
+      "relative": "figures/m05-source/p-10.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-10.png",
+      "sha256": "de87ece893343f966f5831377d37510886aef289b0098bf71dd5bc0843828edc",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-10.png"
+    },
+    {
+      "relative": "figures/m05-source/p-11.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-11.png",
+      "sha256": "3509b092bc4d76026593c92ee5db10aca7a5c65832a163294138eae99c18e48a",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-11.png"
+    },
+    {
+      "relative": "figures/m05-source/p-12.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-12.png",
+      "sha256": "a205845e1ff76194181ef7b2102de5b027c8fce5a3389a93fefbe377c16e4681",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-12.png"
+    },
+    {
+      "relative": "figures/m05-source/p-14.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-14.png",
+      "sha256": "5e50dce37f39e34b40da2314e3540e28c1ea6eb8af0e800f0596555b19e7a70c",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-14.png"
+    },
+    {
+      "relative": "figures/m05-source/p-15.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-15.png",
+      "sha256": "73ffc14fce001784ff7cec8274228972b990283e3a8b2ec933ef18b3d6126032",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-15.png"
+    },
+    {
+      "relative": "figures/m05-source/p-16.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-16.png",
+      "sha256": "d42c2dd7125c2ed16d8371c13afd4a6120a73b9d587c169925ac81971891be87",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-16.png"
+    },
+    {
+      "relative": "figures/m05-source/p-19.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-19.png",
+      "sha256": "5e359a8aa7124442c54e1c323348b19650170f33aa87a24b1359eb705fa1068f",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-19.png"
+    },
+    {
+      "relative": "figures/m05-source/p-20.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-20.png",
+      "sha256": "74c70836b007cbdc5b2a5d4d2b4a15d916d346e92dde0a66159ed786af3f2b7e",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-20.png"
+    },
+    {
+      "relative": "figures/m05-source/p-23.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-23.png",
+      "sha256": "e099bc734a1cc1baf928ed30a42b672c77ecce8a0f228c9e15f92a07f7d56c71",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-23.png"
+    },
+    {
+      "relative": "figures/m05-source/p-24.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-24.png",
+      "sha256": "a556be16d00950b6c737cdd9e7af98290cca4922c366e52d39f74d9edc7f6b4c",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-24.png"
+    },
+    {
+      "relative": "figures/m05-source/p-25.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-25.png",
+      "sha256": "b99f09ae007cdb8a3cf64d9cdf75b7b42157e6fd0f05586d03397d7d7625705b",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-25.png"
+    },
+    {
+      "relative": "figures/m05-source/p-26.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-26.png",
+      "sha256": "0a986e661d84e1ab317046198a633fbf1d4cdf280ed6e80ef7fe5c1543cdbd7f",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-26.png"
+    },
+    {
+      "relative": "figures/m05-source/p-27.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-27.png",
+      "sha256": "6c50c642340cca7d5b09fa6a26b3f41564a8bf19438147ecec3821ae5684130b",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-27.png"
+    },
+    {
+      "relative": "figures/m05-source/p-28.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-28.png",
+      "sha256": "eef1844bbb8cfe37d7d2e6e91332444a31258f1566d7ebc4e2e52fb53573d2d2",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-28.png"
+    },
+    {
+      "relative": "figures/m05-source/p-29.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-29.png",
+      "sha256": "667b26f824d248b0ad5b41a729b197256ef6c889b827a419a45f2836d31f6e08",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-29.png"
+    },
+    {
+      "relative": "figures/m05-source/p-31.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-31.png",
+      "sha256": "60254968c95e39e71e085eca45cf5a9e4af284f160553b5448ea74194100db56",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-31.png"
+    },
+    {
+      "relative": "figures/m05-source/p-33.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-33.png",
+      "sha256": "1c07e7e13a12f28e7e79976540e77e21a2680ebe2122fda5bb0c807b1653a4bf",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-33.png"
+    },
+    {
+      "relative": "figures/m05-source/p-34.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-34.png",
+      "sha256": "2c5219b85acab98ab4d462554c92fa8423c668a24cee1d4eab767ce6fee50aef",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-34.png"
+    },
+    {
+      "relative": "figures/m05-source/p-35.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-35.png",
+      "sha256": "11e84ad7de494ebf61f32e7a043fd6998a4fdd982f1f07b7bec2ac77b02ede20",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-35.png"
+    },
+    {
+      "relative": "figures/m05-source/p-36.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-36.png",
+      "sha256": "3ed3007be0e654e4cab1114d98617e858d865e2a5f14c28df6e8b3f77ff2e44c",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-36.png"
+    },
+    {
+      "relative": "figures/m05-source/p-37.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-37.png",
+      "sha256": "0557804c627987562c6ccc44e83b47a630b8fd3c41d37340cfabe0b2c3203bc8",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-37.png"
+    },
+    {
+      "relative": "figures/m05-source/p-38.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-38.png",
+      "sha256": "c73e9409496cb50c2accad97c52ef7236bbe737b414ae5ccef2489ba203e705a",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-38.png"
+    },
+    {
+      "relative": "figures/m05-source/p-39.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-39.png",
+      "sha256": "1c49c4dbd66b628b220ade4420eefe988a462295fb409d50f3c7f96361a51769",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-39.png"
+    },
+    {
+      "relative": "figures/m05-source/p-40.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-40.png",
+      "sha256": "245c96a6293fe7c3b3e059780a65525355a0fb4d67e575e39602658d603d2b1c",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-40.png"
+    },
+    {
+      "relative": "figures/m05-source/p-42.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-42.png",
+      "sha256": "ddca6940e5503db6514a97cac8178bfe1c8e3d24b9c0ba0f9bee6d3abdeab234",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-42.png"
+    },
+    {
+      "relative": "figures/m05-source/p-46.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-46.png",
+      "sha256": "d19a6b8825baca25f5e12915b11a2c48b339c467ef7f4a570f65ffee20a8cc86",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-46.png"
+    },
+    {
+      "relative": "figures/m05-source/p-47.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-47.png",
+      "sha256": "5b99b0b46676c3b902482b227ea40aee6feb16f4c7992cd894ddccd51ee2990b",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-47.png"
+    },
+    {
+      "relative": "figures/m05-source/p-48.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-48.png",
+      "sha256": "4bd9eeb541a330627cc4a2e7494c4919136470119afd322ef330a360f0c16d40",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-48.png"
+    },
+    {
+      "relative": "figures/m05-source/p-49.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-49.png",
+      "sha256": "ef70899eb6d41fb638df9b2f056e940c5d94f8180956b19b48910ad0a2a55ac9",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-49.png"
+    },
+    {
+      "relative": "figures/m05-source/p-50.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-50.png",
+      "sha256": "1cbbe8ec2bcfcfdf11e5234a8e55f3dceb5dc8802b0b647dcdeac1f81ca9e2d5",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-50.png"
+    },
+    {
+      "relative": "figures/m05-source/p-51.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-51.png",
+      "sha256": "bf6c59db2b38e381759cb86179c16f1ab6261bddfe33dc70c7aab52114bf2207",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-51.png"
+    },
+    {
+      "relative": "figures/m05-source/p-52.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-52.png",
+      "sha256": "c0e6fcc92be1a4efcbc7fa4f54213f6b576a31c40cd6079375fce68e7e9beaa3",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-52.png"
+    },
+    {
+      "relative": "figures/m05-source/p-53.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-53.png",
+      "sha256": "37b3da46775f8657c1362454316d87ef1858c75538cb3715eb309ba04e04058e",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-53.png"
+    },
+    {
+      "relative": "figures/m05-source/p-54.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-54.png",
+      "sha256": "5717a317c1ef56c4ce21cef3d719b6d9d1dec56e414e3d13c1f50eb11d3f5343",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-54.png"
+    },
+    {
+      "relative": "figures/m05-source/p-55.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-55.png",
+      "sha256": "c9e4a988ec6b06d6298edf95d2933bc618e37588df0b71fb1c75c85ddc049d1b",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-55.png"
+    },
+    {
+      "relative": "figures/m05-source/p-56.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-56.png",
+      "sha256": "9c4bff59707ab73e261e6843ccd3b54dd250e87fc296f5eaaf2bebaee4c3b3c7",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-56.png"
+    },
+    {
+      "relative": "figures/m05-source/p-57.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-57.png",
+      "sha256": "0ea7f90911ee037f08dca0b38c2e96331fa5dc0f0c1eca5c86332cb238401ada",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-57.png"
+    },
+    {
+      "relative": "figures/m05-source/p-58.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-58.png",
+      "sha256": "afd8134239f7a3d9afe97ccabf2224376b68f56a2208b846dfb2cb2dd4f7558c",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-58.png"
+    },
+    {
+      "relative": "figures/m05-source/p-59.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-59.png",
+      "sha256": "0b5317815082c039311054a9d18793e07976e38e1beb9162fd295a281d913b47",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-59.png"
+    },
+    {
+      "relative": "figures/m05-source/p-60.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-60.png",
+      "sha256": "e9bd5b36a75e9be90823e26da2627618b325a895567b1f7061a8547cfdeb95ca",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-60.png"
+    },
+    {
+      "relative": "figures/m05-source/p-63.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-63.png",
+      "sha256": "420fc6a6cc83d6b8296cc4bf888da719f5a69f911c0d4bd7c5519e092c8ee7f2",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-63.png"
+    },
+    {
+      "relative": "figures/m05-source/p-64.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-64.png",
+      "sha256": "2681f66c0aaed18d97f236c2e433c337a75060052381615fb8ddf98c547ba577",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-64.png"
+    },
+    {
+      "relative": "figures/m05-source/p-65.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-65.png",
+      "sha256": "e943f26f8d2528c80bbaf9f75fd09469959a8dd677d0f5ae9886b316cf86b915",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-65.png"
+    },
+    {
+      "relative": "figures/m05-source/p-66.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-66.png",
+      "sha256": "765050ccc71cd8d9404e05fc0d93f6fa507ef0ecccabe40e1dea242c3456dd57",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-66.png"
+    },
+    {
+      "relative": "figures/m05-source/p-67.png",
+      "source": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m05-candidate-assets\\p-67.png",
+      "sha256": "c4488b3fb97d4cf88c465256c2002c0e45d10c27bbd9b31fe832a38fcce913f8",
+      "final": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m05-source\\p-67.png"
+    }
+  ],
+  "wiki_assets": [
+    {
+      "relative": "IS6400_Business_Data_Analytics/notes/figures/readability-v2-m05/lloyd-states.svg",
+      "source": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\readability-v2-m05\\lloyd-states.svg",
+      "sha256": "e6f0b04349d1c8008ea60f11b44c70ff2edc1f542eb3ce2572013da96b0d88d2"
+    },
+    {
+      "relative": "IS6400_Business_Data_Analytics/notes/figures/readability-v2-m05/link-distances.svg",
+      "source": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\readability-v2-m05\\link-distances.svg",
+      "sha256": "62ecb70bc1200cf212ffec13efd2b586018923dd8575af5d9dcb66ceee1115f7"
+    },
+    {
+      "relative": "IS6400_Business_Data_Analytics/notes/figures/readability-v2-m05/dbscan-neighborhood.svg",
+      "source": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\readability-v2-m05\\dbscan-neighborhood.svg",
+      "sha256": "9bc7270ec84f058c8e78d1b7073acfa355dbe82ee7101ea848c702f83f838049"
+    }
+  ],
+  "outline": [
+    "特征工程回顾（讲义 p.1–8）",
+    "p.1 · Quick Review 导览",
+    "p.2 · Introduction · 特征工程的位置",
+    "p.3 · Evaluation Measures for Ranking and Selecting Features",
+    "p.4 · Filter Model",
+    "p.5 · Wrapper Model",
+    "p.6 · Feature Reduction vs. Feature Selection",
+    "p.7 · Recursive Feature Selection"
+  ],
+  "map": [
+    "7. 自测",
+    "7.4 距离与缩放：新输入及错误流程（笔记补充）",
+    "8. 讲义页码映射"
+  ]
+}

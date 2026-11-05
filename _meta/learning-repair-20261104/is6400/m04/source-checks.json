@@ -1,0 +1,258 @@
+{
+  "schema": "note-source-checks-v1",
+  "sources": {
+    "lecture": {
+      "path": "../../../../IS6400_Business_Data_Analytics/course_files_export/IS6400-W4-Feature.pdf",
+      "sha256": "2ff31dd8eaa1c4942151cf9fc04fd71acc88f1efeabe9c636ab1f0af8ddfbb9b"
+    }
+  },
+  "questions": [
+    {
+      "id": "p10",
+      "source_id": "lecture",
+      "page": 10,
+      "section": "2.2.2",
+      "original": "Feature of a programmer?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "漫画可见属性变为字段",
+          "english": "The programmer cartoon suggests visible attributes, not evidence of ability."
+        }
+      ]
+    },
+    {
+      "id": "p11",
+      "source_id": "lecture",
+      "page": 11,
+      "section": "2.2.2",
+      "original": "How to describe a document?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "固定spam/machine/email/class/tree列",
+          "english": "The given document representation is the count vector (5, 1, 4, 2, 0)"
+        }
+      ]
+    },
+    {
+      "id": "p12",
+      "source_id": "lecture",
+      "page": 12,
+      "section": "2.2.2",
+      "original": "How to profile a social media user?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "截图粉丝数/角色/性别/标签是候选字段",
+          "english": "Followers, Role, Gender and Tag are candidate attributes"
+        }
+      ]
+    },
+    {
+      "id": "p13",
+      "source_id": "lecture",
+      "page": 13,
+      "section": "2.3",
+      "original": "Which Feature set is better?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "两者尺寸相同，颜色有差异",
+          "english": "the RGB set distinguishes them whereas the two size values are equal."
+        }
+      ]
+    },
+    {
+      "id": "p14",
+      "source_id": "lecture",
+      "page": 14,
+      "section": "2.3",
+      "original": "Which feature set is better?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "选红框五官",
+          "english": "the red facial regions are more distinguishing than the similar curly hair."
+        }
+      ]
+    },
+    {
+      "id": "p17",
+      "source_id": "lecture",
+      "page": 17,
+      "section": "2.4.1",
+      "original": "What are the representative keywords?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "须结合垃圾邮件/正文分类任务评价",
+          "english": "Words such as spam and email are candidate descriptors of this text"
+        }
+      ]
+    },
+    {
+      "id": "p18",
+      "source_id": "lecture",
+      "page": 18,
+      "section": "2.4.1",
+      "original": "Is feature “Feeling” useful if we already have feature “temperature”?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "若现实Feeling还受湿度/风影响",
+          "english": "If Feeling is determined solely by Temperature under the stated rule, it adds no new information."
+        }
+      ]
+    },
+    {
+      "id": "p19",
+      "source_id": "lecture",
+      "page": 19,
+      "section": "2.4.2",
+      "original": "Is High dimension always good?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "固定分辨率下，高维空间有更多区域，有限样本更难填满",
+          "english": "More dimensions may increase storage and coverage costs"
+        }
+      ]
+    },
+    {
+      "id": "p20-dimension",
+      "source_id": "lecture",
+      "page": 20,
+      "section": "2.4.2",
+      "original": "Is High dimension always good?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "固定分辨率下，高维空间有更多区域，有限样本更难填满",
+          "english": "(1) Not always."
+        }
+      ]
+    },
+    {
+      "id": "p20-memory",
+      "source_id": "lecture",
+      "page": 20,
+      "section": "2.4.2",
+      "original": "If we have 1,000,000 data with 100,000 dimensions, how much memory do we need?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "800GB只计数值阵列，不含对象/索引开销",
+          "english": "800 decimal GB, excluding overhead."
+        }
+      ]
+    },
+    {
+      "id": "p20-useful",
+      "source_id": "lecture",
+      "page": 20,
+      "section": "2.4.2",
+      "original": "Is every feature useful?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "无关或噪声列可能仅增成本",
+          "english": "Some features are irrelevant to the task"
+        }
+      ]
+    },
+    {
+      "id": "p20-redundancy",
+      "source_id": "lecture",
+      "page": 20,
+      "section": "2.4.2",
+      "original": "Redundancy?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "p.18按温度确定Feeling是一例；高相关只是线索，不证明可删。",
+          "english": "Several features can encode the same information"
+        }
+      ]
+    },
+    {
+      "id": "p23",
+      "source_id": "lecture",
+      "page": 23,
+      "section": "2.5.1",
+      "original": "How to measure the importance of “petal width” and “sepal length” in this classification task?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "按给定子计数计算加权Gini/增益",
+          "english": "Choose one criterion and compare the candidate splits on the same labelled parent set."
+        }
+      ]
+    },
+    {
+      "id": "p30",
+      "source_id": "lecture",
+      "page": 30,
+      "section": "2.6",
+      "original": "Which test condition is the best?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "ID 每人一个纯叶，所以训练增益最大",
+          "english": "Customer ID scores highest at 0.5"
+        }
+      ]
+    },
+    {
+      "id": "p44",
+      "source_id": "lecture",
+      "page": 44,
+      "section": "2.10",
+      "original": "Calculate the Gini Index after split.",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "原题直接答案是切后Gini1/9",
+          "english": "Set 1 has Gini"
+        }
+      ]
+    },
+    {
+      "id": "p53",
+      "source_id": "lecture",
+      "page": 53,
+      "section": "2.12.1",
+      "original": "How to make feature selection efficient??",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "以较少候选换取贪心局限",
+          "english": "Use a greedy forward or backward path instead of exhaustively evaluating every subset."
+        }
+      ]
+    }
+  ],
+  "manual_limits": [
+    "13 question pages and 16 question units manually mapped; original source has no multiple-choice alternatives, but image/table context is retained in section text.",
+    "p20 visual independently viewed this task; p11 full paragraph retained and p17 points to same original context.",
+    "Checker matches supplied anchors; it cannot certify source completeness, translation or pedagogy.",
+    "M04 lecture reference questions only; current graded 43-cell task is separately authoritative in A05-week4 and T04, not re-completed by this M04 review."
+  ],
+  "candidate_sha256": "a6200dc5507664225e4d771875110fb618eb5065c30804447c717d18e2a1429e"
+}

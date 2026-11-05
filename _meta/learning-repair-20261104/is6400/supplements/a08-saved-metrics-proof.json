@@ -1,0 +1,108 @@
+{
+  "source": "IS6400_Business_Data_Analytics/assignment/graded/A08-week7-classification/work/data/week7-results.json",
+  "source_sha256": "7c311dfbec015d12346af46f5cbebee7239a101335248dafb940cb2b58f9754b",
+  "positive_label": 1,
+  "evaluated_rows": 13035,
+  "positive_rows": 189,
+  "rows": [
+    {
+      "group": "models",
+      "model": "Logistic regression",
+      "tn": 12844,
+      "fp": 2,
+      "fn": 6,
+      "tp": 183,
+      "metrics": {
+        "Accuracy": 0.9993862677406982,
+        "Precision": 0.9891891891891892,
+        "Recall": 0.9682539682539683,
+        "F1": 0.9786096256684492
+      }
+    },
+    {
+      "group": "models",
+      "model": "Decision tree",
+      "tn": 12841,
+      "fp": 5,
+      "fn": 1,
+      "tp": 188,
+      "metrics": {
+        "Accuracy": 0.9995397008055236,
+        "Precision": 0.9740932642487047,
+        "Recall": 0.9947089947089947,
+        "F1": 0.9842931937172775
+      }
+    },
+    {
+      "group": "models",
+      "model": "Random forest",
+      "tn": 12843,
+      "fp": 3,
+      "fn": 3,
+      "tp": 186,
+      "metrics": {
+        "Accuracy": 0.9995397008055236,
+        "Precision": 0.9841269841269841,
+        "Recall": 0.9841269841269841,
+        "F1": 0.9841269841269841
+      }
+    },
+    {
+      "group": "models",
+      "model": "Bagging",
+      "tn": 12842,
+      "fp": 4,
+      "fn": 1,
+      "tp": 188,
+      "metrics": {
+        "Accuracy": 0.9996164173379364,
+        "Precision": 0.9791666666666666,
+        "Recall": 0.9947089947089947,
+        "F1": 0.9868766404199475
+      }
+    },
+    {
+      "group": "models",
+      "model": "AdaBoost",
+      "tn": 12844,
+      "fp": 2,
+      "fn": 1,
+      "tp": 188,
+      "metrics": {
+        "Accuracy": 0.9997698504027618,
+        "Precision": 0.9894736842105263,
+        "Recall": 0.9947089947089947,
+        "F1": 0.9920844327176781
+      }
+    },
+    {
+      "group": "weighted_models",
+      "model": "Without class weights",
+      "tn": 12841,
+      "fp": 5,
+      "fn": 1,
+      "tp": 188,
+      "metrics": {
+        "Accuracy": 0.9995397008055236,
+        "Precision": 0.9740932642487047,
+        "Recall": 0.9947089947089947,
+        "F1": 0.9842931937172775
+      }
+    },
+    {
+      "group": "weighted_models",
+      "model": "With class weights",
+      "tn": 12839,
+      "fp": 7,
+      "fn": 1,
+      "tp": 188,
+      "metrics": {
+        "Accuracy": 0.9993862677406982,
+        "Precision": 0.9641025641025641,
+        "Recall": 0.9947089947089947,
+        "F1": 0.9791666666666666
+      }
+    }
+  ],
+  "scope": "仅用已保存的混淆矩阵复算四项指标，没有训练、执行评分稿或核 Canvas。相同矩阵分母不代表重新确认跨文件行身份。"
+}

@@ -1,0 +1,104 @@
+{
+  "case1": {
+    "cumulative_equations": [
+      [
+        20000,
+        0,
+        20000
+      ],
+      [
+        20000,
+        0,
+        20000
+      ],
+      [
+        20000,
+        0,
+        20000
+      ],
+      [
+        21000,
+        1000,
+        20000
+      ],
+      [
+        24000,
+        1000,
+        23000
+      ],
+      [
+        23200,
+        1000,
+        22200
+      ],
+      [
+        25700,
+        1000,
+        24700
+      ],
+      [
+        25200,
+        500,
+        24700
+      ]
+    ],
+    "cash": 6200
+  },
+  "case2": {
+    "transaction_count": 12,
+    "account_count": 12,
+    "ending_signed_balances": {
+      "cash": 17200,
+      "capital": -40000,
+      "prepaid": 22000,
+      "equipment": 8000,
+      "supplies": 400,
+      "AP": -500,
+      "revenue": -15000,
+      "AR": 2000,
+      "utilities": 800,
+      "withdrawal": 2000,
+      "rent": 2000,
+      "supplies_expense": 1100
+    },
+    "trial_balance": [
+      55500,
+      55500
+    ]
+  },
+  "case3": {
+    "ratios_recomputed_from_extracted_source_values": 46
+  },
+  "case4": {
+    "workbook_sha256": "a9896ee44d63ae1f0bce1c9c0f33ee386a549f57e03a34b44c2a48d06f40207a",
+    "sheet_names": [
+      "答题总览",
+      "多重性",
+      "Q3原表与拆分",
+      "Q4关系表",
+      "核对与边界"
+    ],
+    "formulas_count": 33,
+    "sqlite_readonly_check": "ok",
+    "tables": [
+      "Cashier",
+      "CashReceipt",
+      "Customer",
+      "Sale",
+      "CustomerA",
+      "Purchase",
+      "PurchaseReturn",
+      "ReturnLink"
+    ]
+  },
+  "case5": {
+    "current_source_model_sha256": "96012833ea2257054be4b240ab26f2203fe4124aee80b3bd346a3c12ba58a5f5",
+    "class_count": 7,
+    "association_count": 8
+  },
+  "mock": {
+    "stored_source_calculations_match_baseline": true,
+    "original_file_sha256": "52f6a4c7974c7075c9a9c8355b9d46b42831b843907c58e33d550fbf03ae95b7"
+  },
+  "scope": "本次实际检查和历次同版证据分开。Case 1/2 从原题重新手录并程序复算；Case 3 从逐项回源记录按原分母计算；Case 4 只读查工作簿公式和数据库完整性；Case 5 核真实模型计数。教学复核另记。"
+}

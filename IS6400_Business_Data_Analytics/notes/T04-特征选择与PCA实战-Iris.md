@@ -2,7 +2,8 @@
 course: IS6400
 module: 4
 readability_rules: v2
-readability_review: passed
+readability_review: pending
+historical_readability_review: passed
 type: tutorial
 week: 4
 date: 2026-09-23
@@ -12,11 +13,12 @@ updated: 2026-10-27
 teaching_standard: novice-v1
 quality_spec: v1
 mechanism_spec: v1
-mechanism_review: passed
+mechanism_review: pending
+historical_mechanism_review: passed
 source: Week4_Feature_Engineering_Tutorial.ipynb（43 cells；课堂前缀1–37：17 markdown / 20 code；评分部分隔离）
 runtime: 源保存 metadata 为 Python 3.9.12 / PyCharm (Substitution)；历史复算环境为 Python 3.12.3 / sklearn 1.5.1 / pandas 2.3.3 / NumPy 1.26.4；2026-10-27 未执行 Notebook 或重训
 libraries: [pandas, seaborn, matplotlib, scikit-learn]
-data: iris.txt（150 × 5）· 作业第 4 题用 Airbnb.csv（68,133 × 15）
+data: iris.txt（150 × 5）· 现行作业第 3、4 题用 Airbnb.csv（68,133 × 15）
 prerequisites: [M01, T01, M02, T02, M03, T03, M04]
 new_concepts: [SelectKBest, chi2, f_classif, f_regression, fit_transform 返回 numpy 数组, sns.pairplot, DataFrame.values, ravel(), ExtraTreesClassifier, feature_importances_, SelectFromModel(prefit=True), transform(), RFE, n_features_to_select, step, PCA(n_components=), fit().transform(), 主成分坐标 z1/z2, groupby 分组散点, SequentialFeatureSelector（作业）]
 tags: [IS6400, tutorial, sklearn, 特征选择, 特征重要性, PCA, chi2, f_classif, ExtraTrees, RFE, iris]
@@ -25,7 +27,7 @@ tags: [IS6400, tutorial, sklearn, 特征选择, 特征重要性, PCA, chi2, f_cl
 # T04 · 特征选择与 PCA 实战：Iris 的四种降维代码
 
 > **本讲一句话**：这个 notebook 把 [[M04-特征工程-特征重要性与降维]] 的三块内容各变成几行 sklearn——**过滤模型**（`SelectKBest` + `chi2` / `f_classif`，讲义 §2.8 的单变量分数）、**包装 / 模型打分**（`ExtraTreesClassifier.feature_importances_` + `SelectFromModel`；`RFE` 递归剔除，讲义 §2.9、§2.12）、**特征约简**（`PCA(n_components=2)`，讲义 §2.13–2.15）。数据只用 150 行的 Iris，**三种选择器在此例常保留花瓣两列；PCA 则构造含多列权重的新坐标，不能说它选中同两列**。公开补充§3.6完整解释第五种SFS，个人评分编号/要求依版本提示和原保护段；不把此课堂修复当个人提交成品。
-> **原始材料**：`Week4_Feature_Engineering_Tutorial.ipynb`（43 cells；课堂1–37）｜ **配套讲义**：[[M04-特征工程-特征重要性与降维]]｜ **数据**：[[IS6400_Business_Data_Analytics/_meta/数据集卡片#iris.txt|数据集卡片 › iris.txt]]；作业第 4 题用 [[IS6400_Business_Data_Analytics/_meta/数据集卡片#Airbnb.csv|数据集卡片 › Airbnb.csv]] ｜ **转录**：`merged`（`M04-transcript-partial.txt`，tutorial `01:36:11`–`02:12:01`；独立源完整性见§9.5）
+> **原始材料**：`Week4_Feature_Engineering_Tutorial.ipynb`（43 cells；课堂1–37）｜ **配套讲义**：[[M04-特征工程-特征重要性与降维]]｜ **数据**：[[IS6400_Business_Data_Analytics/_meta/数据集卡片#iris.txt|数据集卡片 › iris.txt]]；现行作业第 3、4 题用 [[IS6400_Business_Data_Analytics/_meta/数据集卡片#Airbnb.csv|数据集卡片 › Airbnb.csv]] ｜ **转录**：`merged`（`M04-transcript-partial.txt`，tutorial `01:36:11`–`02:12:01`；独立源完整性见§9.5）
 >
 > ⚠️ **三件事先知道**：① 当前源码开头明确 Week 4，新增 cells13–17 的 Gini / 信息增益已就地展开；② 课堂前缀无 AI Prompt；③ 保存 metadata 不等本次运行，本机复算版本另记。源随机树没有固定种子，保存值、当前新运行和固定协议补例必须分开，不能保证每次都不同或排序永远相同。
 
@@ -130,6 +132,8 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis            
 
 ### 2.1 【当前 cells 3–8】导入、读数据、配对图、切 X / y
 
+sepal-L/W 是萼片长度／宽度，petal-L/W 是花瓣长度／宽度。配对图中同一个点的两个坐标来自同一朵花；类别只负责着色。
+
 **这块在干什么**：导入过滤法的三个打分函数，读 Iris 并命名列，画一张配对图先用眼睛看，然后把特征表 `X` 和目标 `y` 分开。
 
 **当前 cell 3：这段源代码在做什么**：导入过滤选择器和三打分函数。
@@ -177,7 +181,7 @@ display(X)
 **逐行 / 输出**：features列表保持列顺序；target列表让y为150×1 DataFrame，X为150×4。当前chi2可接受，其他方法可能警告；不是所有估计器或多目标都能随意ravel。
 
 
-**逐行**：三个打分函数的注释是 notebook 自己写的，值得记——`f_classif` 用于**分类**（ANOVA F 值），`chi2` 用于**分类且特征非负**（Iris 的厘米数满足），`f_regression` 用于**回归**（作业第 4 题 Airbnb 预测价格要用它）。`header=None` 同 T03。`pairplot(hue="class")` 是 M03 §2.18 散点图矩阵的 seaborn 版：4 × 4 格，对角线是每个特征按类别的分布曲线。`X = iris[features]` 用列表取列得到 DataFrame（150 × 4），`y = iris[target]` 也是 DataFrame（150 × 1）。
+**逐行**：三个打分函数的注释是 notebook 自己写的，值得记——`f_classif` 用于**分类**（ANOVA F 值），`chi2` 用于**分类且特征非负**（Iris 的厘米数满足），`f_regression` 用于**回归**（现行作业第 3 题用它筛 Airbnb 连续价格的输入列）。`header=None` 同 T03。`pairplot(hue="class")` 是 M03 §2.18 散点图矩阵的 seaborn 版：4 × 4 格，对角线是每个特征按类别的分布曲线。`X = iris[features]` 用列表取列得到 DataFrame（150 × 4），`y = iris[target]` 也是 DataFrame（150 × 1）。
 
 **输出**：当前 cell 5 显示 150 行 × 5 列（末尾 5 行是 `Iris-virginica`）；当前 cell 6 的图里 petal-L / petal-W 参与的格子三色分离明显，sepal-W 的格子三色混在一起——这就是讲义 p.27–28 的结论，先看图再看数。
 
@@ -194,6 +198,16 @@ display(X)
 读表后先看 `pairplot` 中每对特征，教师说 *"with every pair of the features"*（`01:42:22`），把花瓣两列看起来更有助分类作为图上观察，而非泛化成绩。随后现场在目标 `y` 加 `.values.ravel()`（`01:43:52`–`01:44:20`），理由是部分模型需要一维标签；ASR 将 ravel 写作 Revolve/Revol等，按对应 API 转述。这里只对本例单目标压平，不把它推广为真正多输出标签也能随意压平。
 
 这段补上“任务类型先决定打分尺子”及标签形状的课堂动机。源 cell 8 保存的是二维 y，课堂有现场补写；不能把当前保存代码当作已经包含该修改。
+
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 6 的保存图](figures/t04-saved-source/t04-cell-06-output-02.png)
+
+**Cell 6 读图**：对角线是各列分布，非对角格比较两列；先沿图例认物种，再找花瓣对应两格。
+
+**Cell 6 英文原问**：which features are most representative?
+
+图中花瓣长、宽更清楚地区分蓝色 Setosa 与其余两类；橙、绿仍交叠，图形只能提候选。English reference: Petal length and width look most informative in the displayed pairplot, particularly for separating Setosa. The other classes still overlap; the choice should be checked with a stated score or validation protocol.
 
 ### 2.2 【当前 cell 10】SelectKBest：按卡方分数留两列
 
@@ -230,7 +244,7 @@ X_new.shape  # you get a new feature set of dimension k=2
 
 **⚠️ 易错点**：
 
-1.  `chi2` 要求特征**非负**（它把特征当频数），Iris 可以，标准化后（有负数）就报错——作业第 4 题 Airbnb 若先标准化则要改用 `f_regression`。
+1.  `chi2` 要求特征**非负**（它把特征当频数），Iris 原厘米值满足非负条件；中心化若产生负数，就不能传给 chi2。Airbnb 的 log_price 是连续目标，所以应按回归任务用 f_regression，不取决于是否缩放。
 
 2.  `k` 是人定的，递归/顺序法也有固定k与自动政策之分。
 
@@ -339,11 +353,9 @@ $$F_f=\frac{SS_B/(C-1)}{SS_W/(n-C)}.$$
 
 文字替代：先逐列打分，再确定掩码；新行只取列，不重新用新标签打分。
 
-<details><summary>读图自测：C 换单位乘 10 会在哪一步改路？</summary>
-
-C 的 O/E 在 UF2 都乘 10，UF3 的卡方分数变 4，UF5 因而选 C。F 的两个平方和都乘 100，比例不变，仍选 A。
-
-</details>
+> [!example]- 读图自测：C 换单位乘 10 会在哪一步改路？
+>
+> C 的 O/E 在 UF2 都乘 10，UF3 的卡方分数变 4，UF5 因而选 C。F 的两个平方和都乘 100，比例不变，仍选 A。
 
 ```mermaid
 flowchart TD
@@ -430,6 +442,21 @@ selector.scores_                                   # 四个分数
 **所以呢**：单列评分只是这条路线；新版还给两刀的纯度和信息增益，需要按实际标签与计数算。
 
 ### 2.5 【当前 cells 13–14】二分类分裂：Gini 与信息增益
+
+**Cell 13 英文案例说明**
+
+> 1. **Gini Index (GINI_split)**: We want to **Minimize** this weighted impurity.
+>    - $GINI_{split} = \sum_{i=1}^{k} \frac{n_i}{n} GINI(i)$
+> 2. **Information Gain (GAIN_split)**: We want to **Maximize** this entropy reduction.
+>    - $GAIN_{split} = Entropy(p) - \left( \sum_{i=1}^{k} \frac{n_i}{n} Entropy(i) \right)$
+>
+> We will evaluate the two PPT cases:
+> - **Case 1:** Petal-W <= 0.8 (Perfect split)
+> - **Case 2:** Sepal-L <= 6.0 (Imperfect split from the in-class quiz)
+
+中文任务：同一二分类标签下，比较两刀的加权 Gini 和熵增益；前者越低、后者越高。下面按源计数计算。
+
+**English reference**: Case 1 has two pure children, a weighted Gini of zero and an information gain of approximately 0.9183 bits. For Case 2 only the left child is mixed; the right child contains only Non-Setosa. Its weighted Gini and information gain are approximately 0.2921 and 0.3315 bits. On this binary label table, Case 1 is preferred by both criteria.
 
 **这块在干什么**：新版单独把标签改成 Setosa / Non-Setosa 两类，按给定阈值切两堆，分别回答“切后还多混”和“切前的不确定性减少多少”。这一步新增 `iris_filter` 和 `is_setosa`，没有把原 `y` 永久改成二分类；后面的森林仍处理三种 Iris。
 
@@ -610,11 +637,9 @@ plt.show()
 
 走教学点 (sepal-L=6,sepal-W=4)：横坐标等于下图阈值，按 ≤ 进入左堆；纵坐标不改变归属。文字替代：第一刀左右纯；第二刀左 50 Setosa/39 Non，右 61 全 Non。
 
-<details><summary>读图自测：sepal-L 恰为 6 该去哪里？右侧是否两类混合？</summary>
-
-等号属于左侧。右侧条件是 >6，原数据计数为 61 Non、0 Setosa；不能沿原 cell17 的错述说右侧混合。
-
-</details>
+> [!example]- 读图自测：sepal-L 恰为 6 该去哪里？右侧是否两类混合？
+>
+> 等号属于左侧。右侧条件是 >6，原数据计数为 61 Non、0 Setosa；不能沿原 cell17 的错述说右侧混合。
 
 **输出 / 原图读法**：petal-W=0.8 左侧50蓝点、右侧100橙点；sepal-L=6 左侧50蓝/39橙、右侧61橙。纵向位置不决定此两刀归属，散点重叠也不能可靠靠肉眼重数所有150行，所以先用表的条件筛选统计，再对照可见图形。
 
@@ -633,6 +658,12 @@ plt.show()
 **所以呢**：现在已经从类别、条件、计数到图形闭合一次分裂评估，后面的树模型会在多个训练节点重复类似评价，并把减少量累计成模型重要性。
 
 **易错点**：纵轴高低不决定这次横向阈值归属，颜色来自已知二分类，不是无监督簇；源“左右都混”已由实际计数否定。
+
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 16 的保存图](figures/t04-saved-source/t04-cell-16-output-01.png)
+
+**Cell 16 读图**：左图竖线按花瓣宽 0.8，右图按萼长 6.0；比较蓝色和橙色落在哪边，不能只看一边。
 
 ## 3. 逐块讲解 · 段 B：模型打分与递归剔除（当前 cells 18–29）
 
@@ -759,11 +790,9 @@ flowchart TD
 
 文字替代：根按 F1 切；只有左孩子可再按 F2 切。根贡献 1/12，左贡献 2/15，归一后 F1/F2 为 5/13、8/13。图省略随机门槛的实际小数，后文保留两树的记录。
 
-<details><summary>读图自测：右孩子不纯，为什么仍停止？</summary>
-
-右边四行的输入都为 (1,0)，没有能把这些行分开的有效阈值。标签混合不代表特征还可切；继续加深也不能凭这些输入区分它们。
-
-</details>
+> [!example]- 读图自测：右孩子不纯，为什么仍停止？
+>
+> 右边四行的输入都为 (1,0)，没有能把这些行分开的有效阈值。标签混合不代表特征还可切；继续加深也不能凭这些输入区分它们。
 
 **逐状态训练与输出**：
 
@@ -905,12 +934,12 @@ X_new = selection.fit_transform(X, y)
 display(X_new[0:5, :])
 ```
 
-**逐行 / 输出**：这不是纯transform复用；本次两次mask同为两瓣但最后模型参数不同，原随机调用不能保证未来每次结果相同。
+**逐行 / 输出**：这不是纯transform复用；源保存两次表的前五行相同；仅凭保存表不能核两次的模型参数。重拟合会覆盖状态，源未固定种子，不能保证每次结果相同。
 
 
 **逐行**：`estimator=clf` 是每轮用来打分的模型（这里仍是极端随机树；线性模型也行，用 `coef_`）；`n_features_to_select=2` 是终点；`step=1` 每轮删 1 个。本4列/留2/step1规则先两轮删除，再最终拟合一次，共3次；下文固定seed0补充轨迹首删sepal-W、次删sepal-L。源未设种子且仅保存末表，不能据末表证明原随机运行的删除次序。当前 cell 29 再做fit与transform，数学动作组合相同，执行时是重训且可能改变状态。
 
-**输出**：两次都是 `[[1.4, 0.2], ...]`。本轮固定补充协议（`random_state=0`）：`ranking_` = {petal-L: 1, petal-W: 1, sepal-L: 2, sepal-W: 3}——排名 1 是被选中的，2 是倒数第二轮被删的，3 是第一轮被删的。
+**输出**：两次都是 `[[1.4, 0.2], ...]`。本轮固定补充协议（`random_state=0`）：`ranking_` = {petal-L: 1, petal-W: 1, sepal-L: 2, sepal-W: 3}——排名 1 是被选中的，2 是最后一次剔除的，3 是前一次（本例首次）剔除的；最终重新拟合不会再删列。
 
 **为什么这么写**：这是讲义 p.53–54 递归选择的**后向（backward）**实现：从全集开始一次删一个；公开补充§3.6的SFS前向路线 是**前向**实现：从空集开始一次加一个。两者都属于讲义 p.50 的包装模型（每轮都要训练模型，计算贵）。当前 notebook cell 27 的英文说明就是 sklearn 文档原文——"the least important features are pruned from current set of features… recursively repeated on the pruned set until the desired number of features to select is eventually reached"。
 
@@ -938,11 +967,9 @@ RFE 的输入是原训练表、目标、未拟合估计器模板、要留的 $k$
 
 文字替代：selector 始终收原四列；transform 才交两列给最终模型。再次 fit_transform 会回到 RF1 重训，不能从 RF7 开始。
 
-<details><summary>读图自测：把筛后的两列直接交给 selector.transform 会怎样？</summary>
-
-选择器拟合时记住了四列输入，筛后两列不满足其输入合同。应把四列交 selector，由它取两列；最终 estimator_ 才接收筛后两列。
-
-</details>
+> [!example]- 读图自测：把筛后的两列直接交给 selector.transform 会怎样？
+>
+> 选择器拟合时记住了四列输入，筛后两列不满足其输入合同。应把四列交 selector，由它取两列；最终 estimator_ 才接收筛后两列。
 
 ```mermaid
 flowchart TD
@@ -958,7 +985,7 @@ flowchart TD
     RFP --> RF8["本次选择结束；模板 clf 仍未拟合"]
 ```
 
-**第二次 fit_transform 的含义**：源 current cell 29 是再次执行 fit 后 transform，会重新训练并覆盖选择器状态；不是复用 cell 28 的拟合结果。只想复用就调用 transform。未设种子时，本轮源执行的两次 mask 都为花瓣两列，却观察到最终模型重要性改变，因此不能从“表相同”推“同一模型”或保证别的数据也同 mask。
+**第二次 fit_transform 的含义**：源 current cell 29 是再次执行 fit 后 transform，会重新训练并覆盖选择器状态；不是复用 cell 28 的拟合结果。只想复用就调用 transform。源未固定种子，保存的转换表相同不证明拟合参数相同。本文固定种子示例另列，不能把补充观察冒作原输出。
 
 **原理与失败**：反复重训让重要性对“尚有哪些输入”作条件评价，但这仍是贪心，不保证全局最优子集。
 
@@ -1294,11 +1321,9 @@ SVD（奇异值分解）把中心化数表拆成两侧正交方向与非负幅�
 
 图源 `pca-rectangle.py` 与输入 `pca-rectangle.json` 随候选保存。图只解释未缩放、k=1、正横向主轴的补充例；Iris k=2 的保存结果另保留。Obsidian 最终显示待核。
 
-<details><summary>读图自测：ID3 与 ID1 同坐标，能否说它们原来是同一个对象？</summary>
-
-不能。二者原第二测量不同，类别也不同；投影丢了纵向差异。坐标相同只说明保留方向无法区分它们。
-
-</details>
+> [!example]- 读图自测：ID3 与 ID1 同坐标，能否说它们原来是同一个对象？
+>
+> 不能。二者原第二测量不同，类别也不同；投影丢了纵向差异。坐标相同只说明保留方向无法区分它们。
 
 ```mermaid
 flowchart TD
@@ -1373,6 +1398,12 @@ plt.show()
 
 这段确认类别标签用于分组着色和可见重叠，不证明 PCA 拟合使用了标签，也不是验证集准确率。本文行身份错配、独立排序后重新接坐标的反例没有在课堂演示，仍是笔记补充。
 
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 37 的保存图](figures/t04-saved-source/t04-cell-37-output-01.png)
+
+**Cell 37 读图**：横轴 z1、纵轴 z2；蓝色类明显靠左，橙绿仍有重叠。颜色用于事后读图，不是拟合 PCA 的输入。
+
 ### 4.3 段 C 小结
 
 **这块在干什么**：核PCA训练均值、axes与新坐标的形状，再和保留原列的选择器区分。
@@ -1434,11 +1465,9 @@ flowchart TD
 2. 随机模型记录输入、参数、库版本、种子和分折协议。不同配置不保证同排名。
 3. 泛化效果在相同验证 / 测试口径下比较。PCA 第一轴花瓣长度权重大，仍组合了多列。
 
-<details><summary>总览读图自测：GB 的二分类标签能直接当后面原三分类 y 吗？</summary>
-
-不能。GB 是单独的 Setosa / Non-Setosa 支线；B 中仍有三种 Iris 类别。改变标签口径会改变节点计数、不纯度及监督选择的问题。
-
-</details>
+> [!example]- 总览读图自测：GB 的二分类标签能直接当后面原三分类 y 吗？
+>
+> 不能。GB 是单独的 Setosa / Non-Setosa 支线；B 中仍有三种 Iris 类别。改变标签口径会改变节点计数、不纯度及监督选择的问题。
 
 ---
 
@@ -1494,21 +1523,21 @@ flowchart TD
 7. §4.1四行PCA只改k为2，比例总和与重构误差如何？k为1时新点(6,1)若误减新批均值，为什么会从4变0？
 8. 原表先按新次序排列，再按位置把旧z接回，即使仍150×2，能认证身份正确吗？一张类别着色图能证明PCA使用标签训练或未来准确率吗？
 
-<details><summary>参考答案：完整关键动作与条件</summary>
+**核对状态与步骤**
 
-1. C原类总4/6，×20变80/120，E100/100；卡方 $400/100+400/100=8$，A仍3、B0，选C、mask `[False,False,True]`。F的组间/组内均×400，C仍1，A18最高，选A。列数相同不保证同尺子/单位下的选择相同；新表复用其各自已保存掩码，不新读标签重选。
-2. 父A2/B4，Gini4/9、熵.918295834。阈值2左2A、右4B，均纯，切后Gini0、增益.918295834。阈值3左2A1B、右3B；左Gini4/9/熵.918295834、右0，人数各3，切后Gini2/9、熵.459147917，信息增益.459147917。父标签已变，不能沿用旧3/3或父熵1。
-3. 新F2=0组8行5C0/3C1，Gini15/32；F2=1组2行纯C1。加权Gini3/8、根增益1/8；原F1切法仍增益1/12，所以根选F2。零组8再用F1分4纯C0和4行1/3混合；加权子Gini3/16，节点增益9/32，占全树8/10，F1贡献9/40。F2根贡献1/8=5/40，总14/40，归一F1=9/14、F2=5/14。达到既定深度/有效切分限制后停，一行变化就可使排名翻转，不能承诺始终同排序。
-4. 上节分数5/13、8/13都小于.7，无列；max_features=1只是上限。原模型输入2列，不是筛后0列分类器，不能直接喂它。返回空子集及限制，另设明确政策，不偷偷把高阈值改低。
-5. 初始4列fit、删原下标1 sepal-W；剩0/2/3达到3，但仍在三列最终fit，共2次。support为True/False/True/True，ranking为1/2/1/1。fit_transform重新训练并更新状态，transform仅取已有mask；模板clf不因此等于最后estimator_。
-6. 第一轮3候选×3折=9次fit，B/C均1按声明政策选原列序较小B，达到1停止，不做第二轮。mask False/True/False，输出只有B；若留2时输出原序A/B，不按入选时间排。原toy_model模板仍未fit，预测另训最终模型。
-7. 两轴比例0.8+0.2=1，本声明二维输入完整投影可重构原四行，总误差0；不把100%方差叫预测准确率。k1新(6,1)应减训练均值(2,1)得到(4,0)，z4；误按单点自身中心化得(0,0)、z0，已换了表示规则。
-8. 数组位置赋值没有自动按人找回旧z；必须保原行次序或按已保存唯一身份重新对应。颜色来自已知标签只说明图读，源码PCA没有y，不自动证明预测泛化，也不能从“源码未传y”推出整个选择决策都没参考标签。
+> [!example]- 参考答案：完整关键动作与条件
+>
+> 1. C原类总4/6，×20变80/120，E100/100；卡方 $400/100+400/100=8$，A仍3、B0，选C、mask `[False,False,True]`。F的组间/组内均×400，C仍1，A18最高，选A。列数相同不保证同尺子/单位下的选择相同；新表复用其各自已保存掩码，不新读标签重选。
+> 2. 父A2/B4，Gini4/9、熵.918295834。阈值2左2A、右4B，均纯，切后Gini0、增益.918295834。阈值3左2A1B、右3B；左Gini4/9/熵.918295834、右0，人数各3，切后Gini2/9、熵.459147917，信息增益.459147917。父标签已变，不能沿用旧3/3或父熵1。
+> 3. 新F2=0组8行5C0/3C1，Gini15/32；F2=1组2行纯C1。加权Gini3/8、根增益1/8；原F1切法仍增益1/12，所以根选F2。零组8再用F1分4纯C0和4行1/3混合；加权子Gini3/16，节点增益9/32，占全树8/10，F1贡献9/40。F2根贡献1/8=5/40，总14/40，归一F1=9/14、F2=5/14。达到既定深度/有效切分限制后停，一行变化就可使排名翻转，不能承诺始终同排序。
+> 4. 上节分数5/13、8/13都小于.7，无列；max_features=1只是上限。原模型输入2列，不是筛后0列分类器，不能直接喂它。返回空子集及限制，另设明确政策，不偷偷把高阈值改低。
+> 5. 初始4列fit、删原下标1 sepal-W；剩0/2/3达到3，但仍在三列最终fit，共2次。support为True/False/True/True，ranking为1/2/1/1。fit_transform重新训练并更新状态，transform仅取已有mask；模板clf不因此等于最后estimator_。
+> 6. 第一轮3候选×3折=9次fit，B/C均1按声明政策选原列序较小B，达到1停止，不做第二轮。mask False/True/False，输出只有B；若留2时输出原序A/B，不按入选时间排。原toy_model模板仍未fit，预测另训最终模型。
+> 7. 两轴比例0.8+0.2=1，本声明二维输入完整投影可重构原四行，总误差0；不把100%方差叫预测准确率。k1新(6,1)应减训练均值(2,1)得到(4,0)，z4；误按单点自身中心化得(0,0)、z0，已换了表示规则。
+> 8. 数组位置赋值没有自动按人找回旧z；必须保原行次序或按已保存唯一身份重新对应。颜色来自已知标签只说明图读，源码PCA没有y，不自动证明预测泛化，也不能从“源码未传y”推出整个选择决策都没参考标签。
 
-</details>
 
-
-## 7. 本次作业：Week 4 Assignment（notebook cell 35 原文）
+## 7. 历史作业：旧 37 格版 Week 4 Assignment（第 35 格原文）
 
 > **本节是旧版历史题面与教学解读。** 旧 80 分、三特征要求和推算提交时间已被 9/30 核到的新题替代，见本篇开头版本提示。旧 cell 编号继续用于回看原文件。
 
@@ -1616,49 +1645,59 @@ print([features[i] for i in sfs.get_support(indices=True)])
 
 ## 8. 当前 cell ↔ 课堂正文映射
 
+预习从第 10、14、28、33 格看选列、分裂、删列和投影。课中按物理格跟读；复习先走 §5–6 的操作对照，再按表回到源码解释。
+
 当前43-cell文件的课堂前缀1–37已逐cell核：17 markdown / 20非空code。cells 38–43 为当前评分部分，本次只读核题，不执行；完整现行题面、输出解释与评分边界在 A05 学习导览，旧 §7 继续保留历史用途。本次已按录音逐内容映射课堂覆盖；保存字节与现场编辑的区别见§9.5，不认证全部源码逐字现场运行。
 
 | 当前cell | 类型 | 源内容 | 正文 | 课堂覆盖 |
 |---|---|---|---|---|
-| 1 | md | Week4目标/ShiftEnter | §0 | ✅ 教程导入与官方参考 `01:36:11`–`01:38:36`；未逐字念学习目标 |
-| 2 | md | 单变量说明/参考 | §2.1–2.4 | ✅ 教程导入与官方参考 `01:36:11`–`01:38:36`；未逐字念学习目标 |
-| 3 | code | 导入打分工具 | §2.1 | ✅ 讲三打分函数与读Iris `01:39:46`–`01:41:57` |
-| 4 | md | 四特征及三类 | §2.1 | ✅ 讲三打分函数与读Iris `01:39:46`–`01:41:57` |
-| 5 | code | 原表150×5 | §2.1 | ✅ 讲三打分函数与读Iris `01:39:46`–`01:41:57` |
-| 6 | code | pairplot | §2.1 | ✅ pairplot 图读 `01:41:57`–`01:43:08` |
-| 7 | md | 特征与目标 | §2.1 | ✅ X/y角色及现场y.ravel修改 `01:43:08`–`01:44:30`；保存源码未含该改 |
-| 8 | code | X/y | §2.1 | ✅ X/y角色及现场y.ravel修改 `01:43:08`–`01:44:30`；保存源码未含该改 |
-| 9 | md | chi2选2/可换F | §2.2 | ✅ k/score_func与fit-transform `01:38:49`–`01:39:46`、`01:44:30`–`01:45:03` |
-| 10 | code | SelectKBest | §2.2 | ✅ k/score_func与fit-transform `01:38:49`–`01:39:46`、`01:44:30`–`01:45:03` |
-| 11 | md | 检查选择 | §2.3 | ✅ 原值对照与新增get_support方法 `01:45:03`–`01:46:38` |
-| 12 | code | 前5原列 | §2.3 | ✅ 原值对照与新增get_support方法 `01:45:03`–`01:46:38` |
-| 13 | md | Gini/IG两条件 | §2.5 | ✅ Gini/熵函数及分裂表 `01:48:23`–`01:53:38`；现场复制表与保存重读写法不同 |
-| 14 | code | 二分类分裂表 | §2.5 | ✅ Gini/熵函数及分裂表 `01:48:23`–`01:53:38`；现场复制表与保存重读写法不同 |
-| 15 | md | 两刀可视化 | §2.6 | ✅ 两阈值子图及现场轴标签修正 `01:53:38`–`01:57:32`；不认证现场代码逐字等于保存版 |
-| 16 | code | 两阈值图 | §2.6 | ✅ 两阈值子图及现场轴标签修正 `01:53:38`–`01:57:32`；不认证现场代码逐字等于保存版 |
-| 17 | md | 源解释及错述 | §2.6 / §9.3 | ✅ 解释第一条件更纯/Gini低/IG高 `01:57:32`–`01:58:37`；源“左右都混”未获纠错确认 |
-| 18 | md | 模型/Wrapper称谓 | §3.1 | ✅ 模型评分导入及现场删除X.values `01:58:37`–`01:59:34`；保留y.ravel |
-| 19 | code | 导入树/SFM | §3.1 | ✅ 模型评分导入及现场删除X.values `01:58:37`–`01:59:34`；保留y.ravel |
-| 20 | md | 数据准备 | §3.1 | ✅ 模型评分导入及现场删除X.values `01:58:37`–`01:59:34`；保留y.ravel |
-| 21 | code | 数组与单目标 | §3.1 | ✅ 模型评分导入及现场删除X.values `01:58:37`–`01:59:34`；保留y.ravel |
-| 22 | code | y.shape | §3.1 | ❓ 未单独录到y.shape结果；形状依源码自查，不可降权 |
-| 23 | md | 训练重要性 | §3.2 | ✅ 50树fit与后两特征分数较高 `01:59:34`–`02:00:33`；具体随机分数未逐项念 |
-| 24 | code | 源50树fit/分数 | §3.2 | ✅ 50树fit与后两特征分数较高 `01:59:34`–`02:00:33`；具体随机分数未逐项念 |
-| 25 | md | 按模型取列 | §3.3 | ✅ prefit=True与transform/get_support `02:00:33`–`02:02:00` |
-| 26 | code | SFM transform | §3.3 | ✅ prefit=True与transform/get_support `02:00:33`–`02:02:00` |
-| 27 | md | RFE递归说明 | §3.4 | ✅ RFE接口与fit_transform合写 `02:02:00`–`02:04:27`；无逐轮删除/排名核数 |
-| 28 | code | RFE fit/transform | §3.4 | ✅ RFE接口与fit_transform合写 `02:02:00`–`02:04:27`；无逐轮删除/排名核数 |
-| 29 | code | 再次fit_transform | §3.4 | ✅ RFE接口与fit_transform合写 `02:02:00`–`02:04:27`；无逐轮删除/排名核数 |
-| 30 | md | PCA原理/拼写 | §4.1 | ✅ PCA设维数、fit/transform、前五行 `02:04:27`–`02:06:11`；LDA未调用 |
-| 31 | code | 导入PCA/LDA | §4.1 | ✅ PCA设维数、fit/transform、前五行 `02:04:27`–`02:06:11`；LDA未调用 |
-| 32 | md | map2D | §4.1 | ✅ PCA设维数、fit/transform、前五行 `02:04:27`–`02:06:11`；LDA未调用 |
-| 33 | code | 原4列fit/transform | §4.1 | ✅ PCA设维数、fit/transform、前五行 `02:04:27`–`02:06:11`；LDA未调用 |
-| 34 | code | 显示前5z | §4.1 | ✅ PCA设维数、fit/transform、前五行 `02:04:27`–`02:06:11`；LDA未调用 |
-| 35 | code | z接表 | §4.2 | ✅ 接投影列/groupby/散点与类间重叠 `02:06:11`–`02:07:53` |
-| 36 | md | 新空间图 | §4.2 | ✅ 接投影列/groupby/散点与类间重叠 `02:06:11`–`02:07:53` |
-| 37 | code | 按class画图 | §4.2 | ✅ 接投影列/groupby/散点与类间重叠 `02:06:11`–`02:07:53` |
+| 1 | md | Week4目标/ShiftEnter | [[#0. 这个 notebook 在教什么\|本格讲解]] | ✅ 教程导入与官方参考 `01:36:11`–`01:38:36`；未逐字念学习目标 |
+| 2 | md | 单变量说明/参考 | [[#2.1 【当前 cells 3–8】导入、读数据、配对图、切 X / y\|本格讲解]] | ✅ 教程导入与官方参考 `01:36:11`–`01:38:36`；未逐字念学习目标 |
+| 3 | code | 导入打分工具 | [[#2.1 【当前 cells 3–8】导入、读数据、配对图、切 X / y\|本格讲解]] | ✅ 讲三打分函数与读Iris `01:39:46`–`01:41:57` |
+| 4 | md | 四特征及三类 | [[#2.1 【当前 cells 3–8】导入、读数据、配对图、切 X / y\|本格讲解]] | ✅ 讲三打分函数与读Iris `01:39:46`–`01:41:57` |
+| 5 | code | 原表150×5 | [[#2.1 【当前 cells 3–8】导入、读数据、配对图、切 X / y\|本格讲解]] | ✅ 讲三打分函数与读Iris `01:39:46`–`01:41:57` |
+| 6 | code | pairplot | [[#2.1 【当前 cells 3–8】导入、读数据、配对图、切 X / y\|本格讲解]] | ✅ pairplot 图读 `01:41:57`–`01:43:08` |
+| 7 | md | 特征与目标 | [[#2.1 【当前 cells 3–8】导入、读数据、配对图、切 X / y\|本格讲解]] | ✅ X/y角色及现场y.ravel修改 `01:43:08`–`01:44:30`；保存源码未含该改 |
+| 8 | code | X/y | [[#2.1 【当前 cells 3–8】导入、读数据、配对图、切 X / y\|本格讲解]] | ✅ X/y角色及现场y.ravel修改 `01:43:08`–`01:44:30`；保存源码未含该改 |
+| 9 | md | chi2选2/可换F | [[#2.2 【当前 cell 10】SelectKBest：按卡方分数留两列\|本格讲解]] | ✅ k/score_func与fit-transform `01:38:49`–`01:39:46`、`01:44:30`–`01:45:03` |
+| 10 | code | SelectKBest | [[#2.2 【当前 cell 10】SelectKBest：按卡方分数留两列\|本格讲解]] | ✅ k/score_func与fit-transform `01:38:49`–`01:39:46`、`01:44:30`–`01:45:03` |
+| 11 | md | 检查选择 | [[#2.3 【当前 cell 12】看选中了谁\|本格讲解]] | ✅ 原值对照与新增get_support方法 `01:45:03`–`01:46:38` |
+| 12 | code | 前5原列 | [[#2.3 【当前 cell 12】看选中了谁\|本格讲解]] | ✅ 原值对照与新增get_support方法 `01:45:03`–`01:46:38` |
+| 13 | md | Gini/IG两条件 | [[#2.5 【当前 cells 13–14】二分类分裂：Gini 与信息增益\|本格讲解]] | ✅ Gini/熵函数及分裂表 `01:48:23`–`01:53:38`；现场复制表与保存重读写法不同 |
+| 14 | code | 二分类分裂表 | [[#2.5 【当前 cells 13–14】二分类分裂：Gini 与信息增益\|本格讲解]] | ✅ Gini/熵函数及分裂表 `01:48:23`–`01:53:38`；现场复制表与保存重读写法不同 |
+| 15 | md | 两刀可视化 | [[#2.6 【当前 cells 15–17】阈值图、二分类口径与源勘误\|本格讲解]] | ✅ 两阈值子图及现场轴标签修正 `01:53:38`–`01:57:32`；不认证现场代码逐字等于保存版 |
+| 16 | code | 两阈值图 | [[#2.6 【当前 cells 15–17】阈值图、二分类口径与源勘误\|本格讲解]] | ✅ 两阈值子图及现场轴标签修正 `01:53:38`–`01:57:32`；不认证现场代码逐字等于保存版 |
+| 17 | md | 源解释及错述 | [[#2.6 【当前 cells 15–17】阈值图、二分类口径与源勘误\|本格讲解]] | ✅ 解释第一条件更纯/Gini低/IG高 `01:57:32`–`01:58:37`；源“左右都混”未获纠错确认 |
+| 18 | md | 模型/Wrapper称谓 | [[#3.1 【当前 cells 19–22】导入树模型、重读数据、转 numpy、压平 y\|本格讲解]] | ✅ 模型评分导入及现场删除X.values `01:58:37`–`01:59:34`；保留y.ravel |
+| 19 | code | 导入树/SFM | [[#3.1 【当前 cells 19–22】导入树模型、重读数据、转 numpy、压平 y\|本格讲解]] | ✅ 模型评分导入及现场删除X.values `01:58:37`–`01:59:34`；保留y.ravel |
+| 20 | md | 数据准备 | [[#3.1 【当前 cells 19–22】导入树模型、重读数据、转 numpy、压平 y\|本格讲解]] | ✅ 模型评分导入及现场删除X.values `01:58:37`–`01:59:34`；保留y.ravel |
+| 21 | code | 数组与单目标 | [[#3.1 【当前 cells 19–22】导入树模型、重读数据、转 numpy、压平 y\|本格讲解]] | ✅ 模型评分导入及现场删除X.values `01:58:37`–`01:59:34`；保留y.ravel |
+| 22 | code | y.shape | [[#3.1 【当前 cells 19–22】导入树模型、重读数据、转 numpy、压平 y\|本格讲解]] | ❓ 未单独录到y.shape结果；形状依源码自查，不可降权 |
+| 23 | md | 训练重要性 | [[#3.2 【当前 cell 24】ExtraTreesClassifier：让 50 棵树给特征打分\|本格讲解]] | ✅ 50树fit与后两特征分数较高 `01:59:34`–`02:00:33`；具体随机分数未逐项念 |
+| 24 | code | 源50树fit/分数 | [[#3.2 【当前 cell 24】ExtraTreesClassifier：让 50 棵树给特征打分\|本格讲解]] | ✅ 50树fit与后两特征分数较高 `01:59:34`–`02:00:33`；具体随机分数未逐项念 |
+| 25 | md | 按模型取列 | [[#3.3 【当前 cell 26】SelectFromModel：按分数阈值取列\|本格讲解]] | ✅ prefit=True与transform/get_support `02:00:33`–`02:02:00` |
+| 26 | code | SFM transform | [[#3.3 【当前 cell 26】SelectFromModel：按分数阈值取列\|本格讲解]] | ✅ prefit=True与transform/get_support `02:00:33`–`02:02:00` |
+| 27 | md | RFE递归说明 | [[#3.4 【当前 cells 28–29】RFE：递归特征剔除\|本格讲解]] | ✅ RFE接口与fit_transform合写 `02:02:00`–`02:04:27`；无逐轮删除/排名核数 |
+| 28 | code | RFE fit/transform | [[#3.4 【当前 cells 28–29】RFE：递归特征剔除\|本格讲解]] | ✅ RFE接口与fit_transform合写 `02:02:00`–`02:04:27`；无逐轮删除/排名核数 |
+| 29 | code | 再次fit_transform | [[#3.4 【当前 cells 28–29】RFE：递归特征剔除\|本格讲解]] | ✅ RFE接口与fit_transform合写 `02:02:00`–`02:04:27`；无逐轮删除/排名核数 |
+| 30 | md | PCA原理/拼写 | [[#4.1 【当前 cells 31–34】PCA：4 列变 2 列\|本格讲解]] | ✅ PCA设维数、fit/transform、前五行 `02:04:27`–`02:06:11`；LDA未调用 |
+| 31 | code | 导入PCA/LDA | [[#4.1 【当前 cells 31–34】PCA：4 列变 2 列\|本格讲解]] | ✅ PCA设维数、fit/transform、前五行 `02:04:27`–`02:06:11`；LDA未调用 |
+| 32 | md | map2D | [[#4.1 【当前 cells 31–34】PCA：4 列变 2 列\|本格讲解]] | ✅ PCA设维数、fit/transform、前五行 `02:04:27`–`02:06:11`；LDA未调用 |
+| 33 | code | 原4列fit/transform | [[#4.1 【当前 cells 31–34】PCA：4 列变 2 列\|本格讲解]] | ✅ PCA设维数、fit/transform、前五行 `02:04:27`–`02:06:11`；LDA未调用 |
+| 34 | code | 显示前5z | [[#4.1 【当前 cells 31–34】PCA：4 列变 2 列\|本格讲解]] | ✅ PCA设维数、fit/transform、前五行 `02:04:27`–`02:06:11`；LDA未调用 |
+| 35 | code | z接表 | [[#4.2 【当前 cells 35–37】把 z1、z2 接回表、按类别画散点\|本格讲解]] | ✅ 接投影列/groupby/散点与类间重叠 `02:06:11`–`02:07:53` |
+| 36 | md | 新空间图 | [[#4.2 【当前 cells 35–37】把 z1、z2 接回表、按类别画散点\|本格讲解]] | ✅ 接投影列/groupby/散点与类间重叠 `02:06:11`–`02:07:53` |
+| 37 | code | 按class画图 | [[#4.2 【当前 cells 35–37】把 z1、z2 接回表、按类别画散点\|本格讲解]] | ✅ 接投影列/groupby/散点与类间重叠 `02:06:11`–`02:07:53` |
+| 38 | md | 现行评分段导览 | [[#8.1 评分段材料边界\|评分段说明]] | 只读定位，不混入课堂运行统计 |
+| 39 | md | 现行 Q1 | [[#8.1 评分段材料边界\|评分段说明]] | 只读定位，不混入课堂运行统计 |
+| 40 | md | 现行 Q2 | [[#8.1 评分段材料边界\|评分段说明]] | 只读定位，不混入课堂运行统计 |
+| 41 | md | 现行 Q3 | [[#8.1 评分段材料边界\|评分段说明]] | 只读定位，不混入课堂运行统计 |
+| 42 | md | 现行 Q4 | [[#8.1 评分段材料边界\|评分段说明]] | 只读定位，不混入课堂运行统计 |
+| 43 | 空 code | 空作答格 | [[#8.1 评分段材料边界\|评分段说明]] | 只读定位，不混入课堂运行统计 |
 
-| 38–43 | 当前评分题面 | Q1–Q4 及空作答格，不混入 37-cell 课堂统计 | 本次只读核题；详见 A05 学习导览 | 当前题目一般要求见 `02:09:28`–`02:11:54`，不认证个人评分完成 |
+### 8.1 评分段材料边界
+
+第 38 格为评分段引导；第 39–42 格为 Q1–Q4；第 43 格没有预置代码。题面与现行说明见 [[IS6400_Business_Data_Analytics/assignment/graded/A05-week4/notes/开始这里|A05 学习导览]]，本节不替代正式作答。课上一般要求沿用原时间窗 02:09:28–02:11:54，不将其写成各题已讲或已提交。
 
 **课堂时间分配**（本表仅对应本篇录音片段；全源时钟00:00–02:12:01，媒体7975.547208秒，不代表无课间暂停，按时间戳）：
 

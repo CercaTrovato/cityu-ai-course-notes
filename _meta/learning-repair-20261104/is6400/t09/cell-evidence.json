@@ -1,0 +1,703 @@
+{
+  "source": "IS6400_Business_Data_Analytics/course_files_export/Week 9 Time series II_Tutorial.ipynb",
+  "source_sha256": "a47ead0a83491e43cb549b56e95232a67facbbfbb2bf97c164eaadc85abbe96e",
+  "candidate_sha256": "17cd8b54320ff86a0a22e932e1c186019db92d76e508d259f553d9dfefc55a4a",
+  "baseline_sha256": "d4996a8b58874927de6d9b977fe16b0f9add445619a4aba0a3b16799dac2607a",
+  "numbering_start": 1,
+  "cells": [
+    {
+      "number": 1,
+      "cell_type": "markdown",
+      "source_sha256": "5631b8734dae6f792cedb78d4d806aa68a49e0286670cb6dd205453ac8bd69fc",
+      "candidate_anchor": "Cell 1 · 课程路线和工具",
+      "saved_outputs": []
+    },
+    {
+      "number": 2,
+      "cell_type": "markdown",
+      "source_sha256": "417ef2d6e5c2ad5572522eabe9408ce403c3b3fffd30f740626800a1f1fa4e69",
+      "candidate_anchor": "Cell 2 · 导入前的工具分工",
+      "saved_outputs": []
+    },
+    {
+      "number": 3,
+      "cell_type": "code",
+      "source_sha256": "31d77d26d8b6088b4f0933be3137ed2050fcafa5a970512b82d9006c86f78e85",
+      "candidate_anchor": "原 Code Cell 3",
+      "saved_outputs": []
+    },
+    {
+      "number": 4,
+      "cell_type": "markdown",
+      "source_sha256": "726086596d3139257303680f15ecc2cb9550ca036827c5130743ce172fe88eed",
+      "candidate_anchor": "Cell 4 · 数据准备的顺序",
+      "saved_outputs": []
+    },
+    {
+      "number": 5,
+      "cell_type": "markdown",
+      "source_sha256": "6ba4a99d0020b674f09ef2b388bdd443a081284e21de23e39c81e18bd72037b4",
+      "candidate_anchor": "Cell 5 · 月度需求表和日期轴",
+      "saved_outputs": []
+    },
+    {
+      "number": 6,
+      "cell_type": "code",
+      "source_sha256": "02295ee8087973077fdb79d1f031d8c882c6e852890cd70f3862b35926d3dfbf",
+      "candidate_anchor": "原 Code Cell 6",
+      "saved_outputs": [
+        "execute_result"
+      ]
+    },
+    {
+      "number": 7,
+      "cell_type": "code",
+      "source_sha256": "f0bc5ccda0c78590bb1050952e09bce8b865ac1ff5593ee7b7c96dbd88ebfc62",
+      "candidate_anchor": "原 Code Cell 7",
+      "saved_outputs": []
+    },
+    {
+      "number": 8,
+      "cell_type": "code",
+      "source_sha256": "f03e08352fb5ffc0f0b9a358676bc89c0049eacbfed5d5cc09f46c94397cb320",
+      "candidate_anchor": "原 Code Cell 8",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 9,
+      "cell_type": "code",
+      "source_sha256": "f424065199991649337f6a4e3d3a922b2c42e4f322a924c6925fb8b12b45fcf3",
+      "candidate_anchor": "原 Code Cell 9",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 10,
+      "cell_type": "markdown",
+      "source_sha256": "364199d710f78611be54ffc7c6e086df5d2fa60968c95f4f1fa0d1f0bfcacb6f",
+      "candidate_anchor": "Cell 10 · 平稳性原问",
+      "saved_outputs": []
+    },
+    {
+      "number": 11,
+      "cell_type": "code",
+      "source_sha256": "28145fbfbc0f744bb1e0e1bf6c0b5371b3259e95bc377167fd1ec138ab3c3864",
+      "candidate_anchor": "原 Code Cell 11",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 12,
+      "cell_type": "markdown",
+      "source_sha256": "ff9c6178cbe03a1f7cd4b196482a1c8d5fe989ddfb43f2c7ab82ecc8f8cec4fb",
+      "candidate_anchor": "Cell 12 · 原需求的源判定",
+      "saved_outputs": []
+    },
+    {
+      "number": 13,
+      "cell_type": "markdown",
+      "source_sha256": "4ced51ad5f935b1a2242f61e9419a1c151c13f9d3d87476d93cad10887f7e8fb",
+      "candidate_anchor": "Cell 13 · 稳定化三步",
+      "saved_outputs": []
+    },
+    {
+      "number": 14,
+      "cell_type": "markdown",
+      "source_sha256": "9b9247fb36155ade07a2904563de45a28e1987fca63f04e09c07a535e94e2aa8",
+      "candidate_anchor": "Cell 14 · 先处理振幅",
+      "saved_outputs": []
+    },
+    {
+      "number": 15,
+      "cell_type": "code",
+      "source_sha256": "2e5e0067219db844abe455b238ca9f3d67d75e2a6c81153305c1e14b9dcb5cf7",
+      "candidate_anchor": "原 Code Cell 15",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 16,
+      "cell_type": "markdown",
+      "source_sha256": "86fdfe16006cd0e58179a33d1280297ed1bc627caa7f05bde5684448802a82d1",
+      "candidate_anchor": "Cell 16 · 画变换后的需求",
+      "saved_outputs": []
+    },
+    {
+      "number": 17,
+      "cell_type": "code",
+      "source_sha256": "c23f34e099f16eef96cbce1e4b03037668b8d9dbd7b135c2d7e48d5a6f1d2c4f",
+      "candidate_anchor": "原 Code Cell 17",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 18,
+      "cell_type": "markdown",
+      "source_sha256": "7381f1fde2aa4bac3448b7e43eb3d44f9d55439edd4d34986ba5e377d78fe2b7",
+      "candidate_anchor": "Cell 18 · 变换后的剩余结构",
+      "saved_outputs": []
+    },
+    {
+      "number": 19,
+      "cell_type": "markdown",
+      "source_sha256": "8078dd911adbb966eafa7f84e4daa63fcee8a4c1980d98bf472c92e983b52209",
+      "candidate_anchor": "Cell 19 · 用同月均值去季节",
+      "saved_outputs": []
+    },
+    {
+      "number": 20,
+      "cell_type": "code",
+      "source_sha256": "8a739c44e67278de53a6fdce5cf745092a931062e373fb538ee2badf1f9c65ea",
+      "candidate_anchor": "原 Code Cell 20",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 21,
+      "cell_type": "markdown",
+      "source_sha256": "7fc4a5de4a158329dd7498ff79e049be0bb9d277515970c3dcb06c74f2ee491c",
+      "candidate_anchor": "Cell 21 · 按月份聚合",
+      "saved_outputs": []
+    },
+    {
+      "number": 22,
+      "cell_type": "code",
+      "source_sha256": "8a219e6a72d79c2306b7da72fb57e11a9b0410e74ac2f326d7dfa1c4716d8e98",
+      "candidate_anchor": "原 Code Cell 22",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 23,
+      "cell_type": "code",
+      "source_sha256": "52a982a5afd48e15737fabf73bb9c34a256ce9ded9059a24644e0d6158eb589c",
+      "candidate_anchor": "原 Code Cell 23",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 24,
+      "cell_type": "markdown",
+      "source_sha256": "23c1bafdf670d01e8fb537e77b5ff5395d80df9fef9ddc3431fd3c866f7697d0",
+      "candidate_anchor": "Cell 24 · 把季节均值接回原表",
+      "saved_outputs": []
+    },
+    {
+      "number": 25,
+      "cell_type": "code",
+      "source_sha256": "5358f033be9a6bb4ea5c3709a146b7d3e8d0aaffca9b4d32ce79a95fea25a406",
+      "candidate_anchor": "原 Code Cell 25",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 26,
+      "cell_type": "code",
+      "source_sha256": "2d90854818345d1fdb6af31208bbf3840653a3073a97a914e151697d9a18b711",
+      "candidate_anchor": "原 Code Cell 26",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 27,
+      "cell_type": "markdown",
+      "source_sha256": "6c8232bdc9638724d288c94a3842d01101fecdbdb2d4d7a312ade084fab83420",
+      "candidate_anchor": "Cell 27 · 去季节后的趋势",
+      "saved_outputs": []
+    },
+    {
+      "number": 28,
+      "cell_type": "markdown",
+      "source_sha256": "b5b7a178390c35a315479e82113333885b47d4823610bd50fe2d4cb2f916be79",
+      "candidate_anchor": "Cell 28 · 用一阶差分处理趋势",
+      "saved_outputs": []
+    },
+    {
+      "number": 29,
+      "cell_type": "code",
+      "source_sha256": "ed7b95be9e32b046fc88e30f7c5e69325d578e2792688253b4a0c3f5dd1dd012",
+      "candidate_anchor": "原 Code Cell 29",
+      "saved_outputs": [
+        "execute_result"
+      ]
+    },
+    {
+      "number": 30,
+      "cell_type": "code",
+      "source_sha256": "ce31817dcc9b183cd951ad0fdcf6f64cc3f3d271e3c5c270c8fb04fa046aeb50",
+      "candidate_anchor": "原 Code Cell 30",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 31,
+      "cell_type": "markdown",
+      "source_sha256": "ba35cf28d73b110b4c93c3503b8dc1391d7fcb9985524fbd5ef32256fc6d3cc5",
+      "candidate_anchor": "Cell 31 · 决定再做检验",
+      "saved_outputs": []
+    },
+    {
+      "number": 32,
+      "cell_type": "code",
+      "source_sha256": "3a197de38ceca848bf9436517ee99e11785c81dd857fa5899db5a12fa0e0e372",
+      "candidate_anchor": "原 Code Cell 32",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 33,
+      "cell_type": "markdown",
+      "source_sha256": "f505eb273cca1902ac32a87fbc455a13961ce276068c472f8d092145c8dfea6e",
+      "candidate_anchor": "Cell 33 · 差分后如何判定",
+      "saved_outputs": []
+    },
+    {
+      "number": 34,
+      "cell_type": "markdown",
+      "source_sha256": "b7c5658a9f02b56c7a519d2ab69456e9a0351f9d43af8eecce6aaab268a9f9ce",
+      "candidate_anchor": "Cell 34 · 固定末十二月",
+      "saved_outputs": []
+    },
+    {
+      "number": 35,
+      "cell_type": "code",
+      "source_sha256": "441c5b2ef184c7004489d30741c026e8cad07c00b59658eea4d891e4ae987d36",
+      "candidate_anchor": "原 Code Cell 35",
+      "saved_outputs": [
+        "execute_result"
+      ]
+    },
+    {
+      "number": 36,
+      "cell_type": "markdown",
+      "source_sha256": "2b47e4cd8ef652ce9318ac43cea54d4473994ce0e616ee4925bf3ee7406e8ae6",
+      "candidate_anchor": "Cell 36 · 读分色边界",
+      "saved_outputs": []
+    },
+    {
+      "number": 37,
+      "cell_type": "code",
+      "source_sha256": "82d783acb0f72f2ad1768615748053deb42f6da9ca0dee22eaeb6afbb928990e",
+      "candidate_anchor": "原 Code Cell 37",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 38,
+      "cell_type": "markdown",
+      "source_sha256": "b98b5643b42ede6d13e8574719074ae0ede1f6864567350fdb06c73e3d4908f8",
+      "candidate_anchor": "Cell 38 · 进入训练与评价",
+      "saved_outputs": []
+    },
+    {
+      "number": 39,
+      "cell_type": "markdown",
+      "source_sha256": "1e8b80abee63d967b336cb26a85e4d7bdef1309625be2a58eb66ad173b8a998a",
+      "candidate_anchor": "Cell 39 · ARMA 工作对象",
+      "saved_outputs": []
+    },
+    {
+      "number": 40,
+      "cell_type": "markdown",
+      "source_sha256": "6b300abca9d3887b33586648c8c02d51bfc0d2a9437c7e9958891ebbbcd20ebc",
+      "candidate_anchor": "Cell 40 · 相关图各回答什么",
+      "saved_outputs": []
+    },
+    {
+      "number": 41,
+      "cell_type": "code",
+      "source_sha256": "1f7625780c1a680337c4f77b94f731380af0aaa94c531f570977eeaaa0fdfc83",
+      "candidate_anchor": "原 Code Cell 41",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 42,
+      "cell_type": "markdown",
+      "source_sha256": "f4e9af5de7c6e322537d6160cbc6b63d9429209c8d6eab3d6b576152aa844b9e",
+      "candidate_anchor": "Cell 42 · 从 PACF 提候选",
+      "saved_outputs": []
+    },
+    {
+      "number": 43,
+      "cell_type": "markdown",
+      "source_sha256": "1eb513c28a794a4805f7a8ca919f1aab5bcbc75e12f62b4a61d01c805e7d83d1",
+      "candidate_anchor": "Cell 43 · 用 ACF 提 q",
+      "saved_outputs": []
+    },
+    {
+      "number": 44,
+      "cell_type": "code",
+      "source_sha256": "a9c7c9d138e88455bd41093421ac909f173fd520efcb6226961e94276a227046",
+      "candidate_anchor": "原 Code Cell 44",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 45,
+      "cell_type": "markdown",
+      "source_sha256": "d9d0ea1c228122bb624891aaf95c40e14b8388eea8d3bf701f9f2aef2ab893f8",
+      "candidate_anchor": "Cell 45 · 原格采用 q=1",
+      "saved_outputs": []
+    },
+    {
+      "number": 46,
+      "cell_type": "markdown",
+      "source_sha256": "24eef2e54ba3a909506a14a179447f87aae0a862cd67b4f5e001f10057e48713",
+      "candidate_anchor": "Cell 46 · 拟合第一组规格",
+      "saved_outputs": []
+    },
+    {
+      "number": 47,
+      "cell_type": "code",
+      "source_sha256": "21524f9305695002fd1a00f1c727b5cf579af9383fdc6b2b1598ea859d5ad33f",
+      "candidate_anchor": "原 Code Cell 47",
+      "saved_outputs": []
+    },
+    {
+      "number": 48,
+      "cell_type": "markdown",
+      "source_sha256": "a79cd3028f59c08d02a251a0ab9ac21de293a3819445a12c2cab7304799fd059",
+      "candidate_anchor": "Cell 48 · 画 ARMA 预测",
+      "saved_outputs": []
+    },
+    {
+      "number": 49,
+      "cell_type": "code",
+      "source_sha256": "fe6180ed65e13772d8fce43468881038b629a7f5ab6748bd04f0c2466016191e",
+      "candidate_anchor": "原 Code Cell 49",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 50,
+      "cell_type": "markdown",
+      "source_sha256": "35cc7702cb7e2cd21241ba1490177603465da215f53451550f9c49b68b4bb97a",
+      "candidate_anchor": "Cell 50 · ARMA 在变化量评分",
+      "saved_outputs": []
+    },
+    {
+      "number": 51,
+      "cell_type": "code",
+      "source_sha256": "b8f9ed1e0b78226dee57578c99f25e08223d23303f6c0be745a64f7f83523afc",
+      "candidate_anchor": "原 Code Cell 51",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 52,
+      "cell_type": "markdown",
+      "source_sha256": "ecaaf6aa49ad49f369ef5e293aeacf4f0f66745bf5a48cb2a32600ae3c6c6c9c",
+      "candidate_anchor": "Cell 52 · ARIMA 的输入层次",
+      "saved_outputs": []
+    },
+    {
+      "number": 53,
+      "cell_type": "markdown",
+      "source_sha256": "1c7bf0ad473c411ddf551b75fa544a28151bd42e1f3c0aa692a0c348cde10b9b",
+      "candidate_anchor": "Cell 53 · 预测十二步",
+      "saved_outputs": []
+    },
+    {
+      "number": 54,
+      "cell_type": "code",
+      "source_sha256": "659f8fe4d2a513e7534586ea0ba962c18ddd346958268059e39fbfb118c47b53",
+      "candidate_anchor": "原 Code Cell 54",
+      "saved_outputs": []
+    },
+    {
+      "number": 55,
+      "cell_type": "markdown",
+      "source_sha256": "ce847e74c5687fb2912947dd09e20d884b1ef1d1be5a1b850f6a0765e37fe7b4",
+      "candidate_anchor": "Cell 55 · 看还原到哪一层",
+      "saved_outputs": []
+    },
+    {
+      "number": 56,
+      "cell_type": "code",
+      "source_sha256": "db733de57dacfe02870bbceb4f549b569ba9be0b2b27a2ca3311aefb8edf5a1d",
+      "candidate_anchor": "原 Code Cell 56",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 57,
+      "cell_type": "markdown",
+      "source_sha256": "75d382231dae290fddfc74ac96375e12a51ba59c19454e546201c3c838c42c8a",
+      "candidate_anchor": "Cell 57 · 去季节水平评分",
+      "saved_outputs": []
+    },
+    {
+      "number": 58,
+      "cell_type": "code",
+      "source_sha256": "305290287feeee44cd66de7f3a625085b77200fd7d71b40907af3d15b303b4e2",
+      "candidate_anchor": "原 Code Cell 58",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 59,
+      "cell_type": "markdown",
+      "source_sha256": "455db9d003c800c2f43b4fc58b148e4110b0a8accfdf3add4f4bc837b7d7fe98",
+      "candidate_anchor": "Cell 59 · 季节 ARIMA 的输入层次",
+      "saved_outputs": []
+    },
+    {
+      "number": 60,
+      "cell_type": "markdown",
+      "source_sha256": "f2ce997bdf5b09cb91602202f630e4ce7586d0955a939caf418fe92ae59e9403",
+      "candidate_anchor": "Cell 60 · 先提出季节阶数候选",
+      "saved_outputs": []
+    },
+    {
+      "number": 61,
+      "cell_type": "markdown",
+      "source_sha256": "f01cb49b50063c091437e576cb83e6b345014bcc8f1993587b34278f333675e6",
+      "candidate_anchor": "Cell 61 · 相减去年同月",
+      "saved_outputs": []
+    },
+    {
+      "number": 62,
+      "cell_type": "code",
+      "source_sha256": "a551794042fc1112452d13c2cebffdbfcb4c051c8296c8a1d3d198ceabd485d5",
+      "candidate_anchor": "原 Code Cell 62",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 63,
+      "cell_type": "markdown",
+      "source_sha256": "739ab797687867f712ca279ae31a07edb4175a0f50fdc17a37682ce230dddfa5",
+      "candidate_anchor": "Cell 63 · D=0 的源解释",
+      "saved_outputs": []
+    },
+    {
+      "number": 64,
+      "cell_type": "markdown",
+      "source_sha256": "f344fe2aa7cacb46cf4762570470ad5ec29de557dee08c9257d514685c635051",
+      "candidate_anchor": "Cell 64 · 源选择季节 P",
+      "saved_outputs": []
+    },
+    {
+      "number": 65,
+      "cell_type": "code",
+      "source_sha256": "8b6b58240a005913222c897b6679eea2d8bc08cba48410c0cc7b5d4db20cdcba",
+      "candidate_anchor": "原 Code Cell 65",
+      "saved_outputs": [
+        "stream",
+        "display_data"
+      ]
+    },
+    {
+      "number": 66,
+      "cell_type": "markdown",
+      "source_sha256": "206e0bf6fa8d7b5a0cf45f7f9f39afd40b3c4a354d2640ecf70b373cf79fc7be",
+      "candidate_anchor": "Cell 66 · 原季节 Q 与图的范围",
+      "saved_outputs": []
+    },
+    {
+      "number": 67,
+      "cell_type": "code",
+      "source_sha256": "581ba3e265caeb032faa9dc5366cb9e90ba60588ab86d52220a89e121962e69b",
+      "candidate_anchor": "原 Code Cell 67",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 68,
+      "cell_type": "markdown",
+      "source_sha256": "bddaa6154b6777c1c798a4ab0f5dd10f4b8edf90c4b1ffcbf1ee82568793f65a",
+      "candidate_anchor": "Cell 68 · 写出两组规格",
+      "saved_outputs": []
+    },
+    {
+      "number": 69,
+      "cell_type": "code",
+      "source_sha256": "bdad3d2e7b16e889cf391b17f13aac228da0762563aa2f379400dc2203d29fa4",
+      "candidate_anchor": "原 Code Cell 69",
+      "saved_outputs": []
+    },
+    {
+      "number": 70,
+      "cell_type": "markdown",
+      "source_sha256": "e2302a5fd41ff0a49d8cec9b9e19b16f795b58e49857915552277811990cf356",
+      "candidate_anchor": "Cell 70 · 在同一 Box-Cox 轴对照",
+      "saved_outputs": []
+    },
+    {
+      "number": 71,
+      "cell_type": "code",
+      "source_sha256": "9c93c5e1f4157af392a58f8196fde29da247b417737d4f3f8b3b3f6f95ea4838",
+      "candidate_anchor": "原 Code Cell 71",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 72,
+      "cell_type": "markdown",
+      "source_sha256": "91b1853fe0082c2f82791ee5fc7e72d29669e72d3c3ff00de2d38ef4fdeaa923",
+      "candidate_anchor": "Cell 72 · 计算季节模型的评分",
+      "saved_outputs": []
+    },
+    {
+      "number": 73,
+      "cell_type": "code",
+      "source_sha256": "7633e10e0f32489bcc780441e7138d7cb6fa6d5356f617e00ab55488ebe84252",
+      "candidate_anchor": "原 Code Cell 73",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 74,
+      "cell_type": "markdown",
+      "source_sha256": "95d22f13c12702e7bb85de1c7d9b1a8580dd882aefe52f43b9e8a2ad4af5e65d",
+      "candidate_anchor": "Cell 74 · ETS 的工作尺度",
+      "saved_outputs": []
+    },
+    {
+      "number": 75,
+      "cell_type": "markdown",
+      "source_sha256": "b21c1424046707af95500de4ad3459a28d23a2c0cefa1dc7e12b75b452d783ce",
+      "candidate_anchor": "Cell 75 · 训练加法趋势与季节",
+      "saved_outputs": []
+    },
+    {
+      "number": 76,
+      "cell_type": "code",
+      "source_sha256": "546bef5cc86ece6c96058759c0db6ff44b77f0cb5f9e9676ef21ec89bf929594",
+      "candidate_anchor": "原 Code Cell 76",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 77,
+      "cell_type": "markdown",
+      "source_sha256": "5a9ff376c65658907373af285b362cdd846580dd29489df351e81cd8ffa32535",
+      "candidate_anchor": "Cell 77 · 画 ETS 预测图",
+      "saved_outputs": []
+    },
+    {
+      "number": 78,
+      "cell_type": "code",
+      "source_sha256": "9c93c5e1f4157af392a58f8196fde29da247b417737d4f3f8b3b3f6f95ea4838",
+      "candidate_anchor": "原 Code Cell 78",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 79,
+      "cell_type": "markdown",
+      "source_sha256": "0bc5b47232ad2841c490c06a3bcf5a986348d20a9b4ea12ae8010619c94c21a2",
+      "candidate_anchor": "Cell 79 · ETS 的 RMSE",
+      "saved_outputs": []
+    },
+    {
+      "number": 80,
+      "cell_type": "code",
+      "source_sha256": "5436dc8a1924b594c3a2492e282a1b3da8a4205cd543f393dfd1d3ac4157ccbe",
+      "candidate_anchor": "原 Code Cell 80",
+      "saved_outputs": [
+        "stream"
+      ]
+    },
+    {
+      "number": 81,
+      "cell_type": "markdown",
+      "source_sha256": "4c4fb949597dbff1fab84ac0fa2386cf13a2473151f51e2cfdcc30999f4d28e2",
+      "candidate_anchor": "2.10 为什么原比较表不能直接选赢家（Cell 81）",
+      "saved_outputs": []
+    },
+    {
+      "number": 82,
+      "cell_type": "markdown",
+      "source_sha256": "4fbbbd091350eeb957c60051f44dccf22f41854e2117c88edeeae5024df0eace",
+      "candidate_anchor": "2.12 Extra Assignment：完整原题与参考实现（Cell 82）",
+      "saved_outputs": []
+    }
+  ],
+  "execution": {
+    "source_sha256": "a47ead0a83491e43cb549b56e95232a67facbbfbb2bf97c164eaadc85abbe96e",
+    "source_index_zero_based": true,
+    "executed_source_indices": [
+      2,
+      5,
+      6,
+      7,
+      8,
+      10,
+      14,
+      16,
+      19,
+      21,
+      22,
+      24,
+      25,
+      28,
+      29,
+      31,
+      34,
+      36,
+      40,
+      43,
+      46,
+      48,
+      50,
+      53,
+      55,
+      57,
+      61,
+      64,
+      66,
+      68,
+      70,
+      72,
+      75,
+      77,
+      79
+    ],
+    "errors": [],
+    "warning_categories": [],
+    "summary": {
+      "train_shape": [
+        186,
+        7
+      ],
+      "test_shape": [
+        12,
+        7
+      ],
+      "rmse_arma": 0.011463835887056333,
+      "rmse_arima": 0.01555622949387646,
+      "rmse_sarima": 0.009409667831370636,
+      "rmse_hw": 0.018704939390395036
+    },
+    "boundary": "只执行评分段前的课堂代码；静态 Agg 等效替代 %matplotlib inline，CSV 用本地绝对路径，NumPy 初始种子 29。只存汇总结果。"
+  },
+  "precision": "每个物理格均有本格独立文本标题；课堂代码及图片原证据保持，原生点击待验"
+}

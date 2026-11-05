@@ -31,18 +31,20 @@ tags: [IS6400, 分类, 决策树, CART, Bagging, 随机森林, AdaBoost, Stackin
 status: v1.0
 quality_spec: v1
 mechanism_spec: v1
-mechanism_review: passed
+mechanism_review: pending
+historical_mechanism_review: passed
 readability_rules: v2
-readability_review: passed
+readability_review: pending
+historical_readability_review: passed
 review_scope: full
-review_date: 2026-10-27
+historical_review_date: 2026-10-27
 teaching_standard: novice-v1
 updated: 2026-10-27
 ---
 
 # M06 · 分类：决策树、集成学习、SVM 与不平衡学习
 
-> **2026-10-27 全篇审修候选**：教学独审和最终显示待验收。下方 2026-10-14／15 记录是历史材料与当时核对范围，不能代替本轮全篇验收；材料融合 v1.0 保留。媒体长度沿用历史已核元数据，本轮只读转录，未重新核音。
+> **2026-11-04 本轮审修候选**：教学独审和最终显示待验收。下方 2026-10-14／15 记录是历史材料与当时核对范围，不能代替本轮全篇验收；材料融合 v1.0 保留。媒体长度沿用历史已核元数据，本轮只读转录，未重新核音。
 
 > ✅ **材料融合 v1.0（2026-10-15）**：2026-10-14 Windows 录音机两源已按内容归属融合。固定别名 A=`M06-transcript-part1-partial.txt`（源5；265段；段首 `00:00`→`39:35`；媒体40:08），B=`M06-transcript-part2-partial.txt`（源6；619段；段首 `00:00`→`01:36:09`；媒体1:36:12.368）。两源各用原始时钟；时长不相加为课堂总长。
 >
@@ -118,7 +120,787 @@ updated: 2026-10-27
 
 ---
 
+预习先用 [[#p.9 · Apply Model to Test Data · 起点|新记录走树]] 和 [[#p.37 · Bagging Example · 汇总树桩|原阈值表]] 遮住后页结果动手，再用 p.14、p.39 对照。用 [[#p.59 · Support Vector Machines · 哪条更好|两条边界图]] 和 [[#p.83 · Alternative Measures · 银行经理题|混淆矩阵原题]] 先写理由再展开答案。课中按 §2 物理页跟读，§8 逐页定位；复习用 §3–§7，再回专题复做。
+
 ## 2. 正文
+
+### 分类与决策树（讲义 p.1–23）
+
+#### p.1 · Classification 导览
+
+先读分类与决策树，再进集成、支持向量机与不平衡分类；课件列 DM Chapter 4、5。
+
+#### p.2 · Introduction
+
+![讲义 p.2 原图](figures/m06-source/p-02.png)
+
+红框圈训练和评价。数据入训练，评价合格可部署，失败沿下路查错再研究任务。
+
+完整题面、计算或课堂补充见 [[#2.1 分类问题与训练／使用两阶段（讲义物理 p.1–6）|本页关联专题]]。
+
+#### p.3 · Classification · Definition
+
+训练记录由输入属性 x 和已知类别 y 组成。学得的规则将新输入映射到预定义类别。
+
+完整题面、计算或课堂补充见 [[#2.1 分类问题与训练／使用两阶段（讲义物理 p.1–6）|本页关联专题]]。
+
+#### p.4 · Examples of Classification Task
+
+![讲义 p.4 原图](figures/m06-source/p-04.png)
+
+按任务、属性、标签三列读。邮件是垃圾／非垃圾，理赔是有效／无效，信用卡申请是批／不批。
+
+完整题面、计算或课堂补充见 [[#2.1 分类问题与训练／使用两阶段（讲义物理 p.1–6）|本页关联专题]]。
+
+#### p.5 · General Approach for Building Classification Model
+
+![讲义 p.5 原图](figures/m06-source/p-05.png)
+
+上表带类标，用学习算法归纳模型；下表问号等待固定模型推断。要评价时再与另存真值比较。
+
+完整题面、计算或课堂补充见 [[#2.1 分类问题与训练／使用两阶段（讲义物理 p.1–6）|本页关联专题]]。
+
+#### p.6 · Classification Techniques
+
+基础模型包括树、规则、近邻、神经网络、贝叶斯和 SVM。集成方法组合多个基础输出。
+
+完整题面、计算或课堂补充见 [[#2.1 分类问题与训练／使用两阶段（讲义物理 p.1–6）|本页关联专题]]。
+
+#### p.7 · Another Example of Decision Tree
+
+![讲义 p.7 原图](figures/m06-source/p-07.png)
+
+这棵树先问婚姻，再问住房和收入。训练表的同一批记录可能被不止一棵树拟合，p.9 根节点次序不同。
+
+有房与婚姻是分类特征，年收入可在连续的数轴上按阈值切分；树要预测的最后一列不是输入。
+
+完整题面、计算或课堂补充见 [[#2.2 沿一棵决策树完成推断（讲义物理 p.7–15）|本页关联专题]]。
+
+#### p.8 · Decision Tree Classification Task · 使用
+
+![讲义 p.8 原图](figures/m06-source/p-08.png)
+
+红框强调 Apply Model，新记录按已有树分支走。训练时才选节点或阈值。
+
+完整题面、计算或课堂补充见 [[#2.2 沿一棵决策树完成推断（讲义物理 p.7–15）|本页关联专题]]。
+
+#### p.9 · Apply Model to Test Data · 起点
+
+![讲义 p.9 原图](figures/m06-source/p-09.png)
+
+从 Home Owner 根开始，测试行为 No、Married、80K。先看根所需字段。
+
+MarSt 指婚姻状态；80K 是 80,000 个收入单位。先看这棵树当前节点要求哪一列，再决定收入要不要用。
+
+完整题面、计算或课堂补充见 [[#2.2 沿一棵决策树完成推断（讲义物理 p.7–15）|本页关联专题]]。
+
+#### p.10 · Apply Model to Test Data · 读取住房
+
+![讲义 p.10 原图](figures/m06-source/p-10.png)
+
+红虚线从根指测试表的 Home Owner 列。取当前记录该列，而非比较整行。
+
+完整题面、计算或课堂补充见 [[#2.2 沿一棵决策树完成推断（讲义物理 p.7–15）|本页关联专题]]。
+
+#### p.11 · Apply Model to Test Data · 住房分支
+
+![讲义 p.11 原图](figures/m06-source/p-11.png)
+
+No 用红线进入 MarSt；Yes 才在上一层直接停止。
+
+完整题面、计算或课堂补充见 [[#2.2 沿一棵决策树完成推断（讲义物理 p.7–15）|本页关联专题]]。
+
+#### p.12 · Apply Model to Test Data · 读取婚姻
+
+![讲义 p.12 原图](figures/m06-source/p-12.png)
+
+到 MarSt 后，红虚线指表中的 Marital Status。当前取值是 Married。
+
+完整题面、计算或课堂补充见 [[#2.2 沿一棵决策树完成推断（讲义物理 p.7–15）|本页关联专题]]。
+
+#### p.13 · Apply Model to Test Data · 婚姻分支
+
+![讲义 p.13 原图](figures/m06-source/p-13.png)
+
+Married 的红边直接连到 No 叶，不访问 Income 节点。
+
+完整题面、计算或课堂补充见 [[#2.2 沿一棵决策树完成推断（讲义物理 p.7–15）|本页关联专题]]。
+
+#### p.14 · Apply Model to Test Data · 得到输出
+
+![讲义 p.14 原图](figures/m06-source/p-14.png)
+
+红虚线把叶的 No 填到类别问号。虽然收入为 80K，该路径不需要收入阈值。
+
+完整题面、计算或课堂补充见 [[#2.2 沿一棵决策树完成推断（讲义物理 p.7–15）|本页关联专题]]。
+
+#### p.15 · Decision Tree Classification Task · 学习
+
+![讲义 p.15 原图](figures/m06-source/p-15.png)
+
+红框转向 Tree Induction algorithm 与 Learn Model。由有标签表估计结构，再冻结用于测试。
+
+完整题面、计算或课堂补充见 [[#2.2 沿一棵决策树完成推断（讲义物理 p.7–15）|本页关联专题]]。
+
+#### p.16 · Decision Tree Induction
+
+列 Hunt、CART、ID3、C4.5、SLIQ、SPRINT。共同点是用特征规则连接类别，划分准则与实现不同。
+
+完整题面、计算或课堂补充见 [[#2.3 Hunt 递归、CART 与 Gini／熵分裂（讲义物理 p.16–18）|本页关联专题]]。
+
+#### p.17 · Hunt’s Algorithm · Tree Construction
+
+![讲义 p.17 原图](figures/m06-source/p-17.png)
+
+到达某节点的记录集合是 D_t。若同类可停止，否则试一个属性切分，并在各子集重复。
+
+完整题面、计算或课堂补充见 [[#2.3 Hunt 递归、CART 与 Gini／熵分裂（讲义物理 p.16–18）|本页关联专题]]。
+
+#### p.18 · Hunt’s Algorithm
+
+![讲义 p.18 原图](figures/m06-source/p-18.png)
+
+四小图从多数类叶到住房、婚姻及收入分裂。比较同一父集的纯度增益，跟各树的训练正确数，训练纯度不代替样本外评价。
+
+**原题 Q18（保留原语言；无原题编号，讲义 18）**
+
+> Why do we choose “home owner” to split?
+> Recall Information Gain in feature selection
+
+**中文题意与逐问解析**：问的是选有房这一属性分裂的理由。原十条表在 §2.2；它能降低不纯度，但不能据此声称候选中最优。两种候选的 Gini 和熵见 [[#2.3.1 从候选分数到完整小树（笔记补充）|Q18 原表逐步计算]]。
+
+**English reference answer（笔记整理）**：The split creates a pure No child and reduces impurity, but it is not the best of all splits in the displayed table. The Married-versus-other split has a larger Gini gain (0.12 versus about 0.0771).
+
+**课堂四状态小测**
+
+**原题 QA（保留原语言；无原题编号，来源 A 18:16 So please tell me how the training accuracy is changing from the default setting to the final structure.）**
+
+> 18:16 So please tell me how the training accuracy is changing from the default setting to the final structure.
+> 18:26 We have four stages, right?
+> 18:28 And you need to provide four training accuracies.
+
+**中文题意与逐问解析**：课堂要求按 p.18 的 (a) 到 (d) 顺序交四个训练准确率；不是四次随机切分测试。依次为 70%、70%、90%、100%，每状态的错例数见 [[#2.3.2 课堂小测：四阶段准确率（讲义 p.18）|四棵树逐状态复算]]。原话保留转录，未核音。
+
+**English reference answer（笔记整理）**：The training accuracies for stages (a), (b), (c), and (d) are 70%, 70%, 90%, and 100%, respectively. These are training-set counts, not evidence of generalization.
+
+完整题面、计算或课堂补充见 [[#2.3 Hunt 递归、CART 与 Gini／熵分裂（讲义物理 p.16–18）|本页关联专题]]。
+
+#### p.19 · Decision Tree Based Classification
+
+小树读得快且直观；候选树很多，贪心未必最优。多层树可以表达交互，单个轴对齐切分一次只问一列。
+
+完整题面、计算或课堂补充见 [[#2.4 单棵树的局限与回归树（讲义物理 p.19–23）|本页关联专题]]。
+
+#### p.20 · Limitations of single attribute-based decision boundaries
+
+![讲义 p.20 原图](figures/m06-source/p-20.png)
+
+两类点沿斜方向分开，树用水平和竖直边形成阶梯逼近。这种边界会需要多个切分。
+
+完整题面、计算或课堂补充见 [[#2.4 单棵树的局限与回归树（讲义物理 p.19–23）|本页关联专题]]。
+
+#### p.21 · Example Data Set
+
+![讲义 p.21 原图](figures/m06-source/p-21.png)
+
+蓝正类 5200（含 200 噪声），红负类 5200 均匀分布。图给 10% 训练、90% 测试的示例设置。
+
+完整题面、计算或课堂补充见 [[#2.4 单棵树的局限与回归树（讲义物理 p.19–23）|本页关联专题]]。
+
+#### p.22 · Regression Tree · 定义
+
+树将输入划为不相交区域，叶输出该区训练响应的均值，因此输出是数值。
+
+完整题面、计算或课堂补充见 [[#2.4 单棵树的局限与回归树（讲义物理 p.19–23）|本页关联专题]]。
+
+#### p.23 · Regression Tree · 图示
+
+![讲义 p.23 原图](figures/m06-source/p-23.png)
+
+右区预测 3.2，左上 2.2，左下 5.6。按竖边和左侧横边先定位区域，再读预测。
+
+完整题面、计算或课堂补充见 [[#2.4 单棵树的局限与回归树（讲义物理 p.19–23）|本页关联专题]]。
+
+### 集成学习（讲义 p.24–53）
+
+#### p.24 · Ensemble Learning 导览
+
+点亮集成学习，接训练出多个分类器并合成输出。
+
+#### p.25 · Decision Tree Classification Task · 扩展
+
+![讲义 p.25 原图](figures/m06-source/p-25.png)
+
+红箭头问 Decision Tree 或其他模型。训练算法可以换，训练、固定、推断的分工相同。
+
+完整题面、计算或课堂补充见 [[#2.5 集成为何可能优于单模型（讲义物理 p.24–30）|本页关联专题]]。
+
+#### p.26 · Ensemble Methods · 定义
+
+用训练资料构建一组分类器，再把多个预测组合成测试记录的类别。
+
+完整题面、计算或课堂补充见 [[#2.5 集成为何可能优于单模型（讲义物理 p.24–30）|本页关联专题]]。
+
+#### p.27 · Ensemble Methods · 摸象
+
+![讲义 p.27 原图](figures/m06-source/p-27.png)
+
+人物分别摸到鼻、腿、皮肤等，结论只反映局部。结合多种判断可互补，若错误总相同则不能靠票数改正。
+
+完整题面、计算或课堂补充见 [[#2.5 集成为何可能优于单模型（讲义物理 p.24–30）|本页关联专题]]。
+
+#### p.28 · Why Ensemble Methods work?
+
+![讲义 p.28 原图](figures/m06-source/p-28.png)
+
+横轴单模型错误率，纵轴多数投票错误率。25 个模型且错误独立同率时，多数错是至少 13 个出错；错误率 0.35 时合计约 0.06。课件“无相关”本身不足以推出二项分布。
+
+蓝虚线是单模型基线，红线是二分类多数投票的合计错误率：单模型低于 0.5 时红线更低，高于 0.5 时反而放大错误。这里有 25 票，不会平票。
+
+完整题面、计算或课堂补充见 [[#2.5 集成为何可能优于单模型（讲义物理 p.24–30）|本页关联专题]]。
+
+#### p.29 · General Approach
+
+![讲义 p.29 原图](figures/m06-source/p-29.png)
+
+上方原训练 D 分成多套输入，各训 C1、C2 等，再沿汇合边得到 C*。
+
+完整题面、计算或课堂补充见 [[#2.5 集成为何可能优于单模型（讲义物理 p.24–30）|本页关联专题]]。
+
+#### p.30 · Types of Ensemble Methods
+
+可改变样本、特征、标签、模型随机性或组合分布。它们改变多样性来源，不一定是同一种投票。
+
+完整题面、计算或课堂补充见 [[#2.5 集成为何可能优于单模型（讲义物理 p.24–30）|本页关联专题]]。
+
+#### p.31 · Bagging
+
+![讲义 p.31 原图](figures/m06-source/p-31.png)
+
+表中同一轮可以重复抽同一编号，原来一行也可能没抽到。每轮的自助样本训一个模型。
+
+完整题面、计算或课堂补充见 [[#2.6 Bootstrap、Bagging 与随机森林（讲义物理 p.31–39）|本页关联专题]]。
+
+#### p.32 · Bagging Algorithm
+
+![讲义 p.32 原图](figures/m06-source/p-32.png)
+
+先循环生成 k 个有放回样本并训练。预测时统计各 C_i 对候选类投了几票，选最多者，平票需另设规则。
+
+完整题面、计算或课堂补充见 [[#2.6 Bootstrap、Bagging 与随机森林（讲义物理 p.31–39）|本页关联专题]]。
+
+#### p.33 · Random Forest
+
+![讲义 p.33 原图](figures/m06-source/p-33.png)
+
+四层从自助样本到树训练、单树预测和结果合成。随机森林还在切分节点抽一部分候选特征。
+
+完整题面、计算或课堂补充见 [[#2.6 Bootstrap、Bagging 与随机森林（讲义物理 p.31–39）|本页关联专题]]。
+
+#### p.34 · Bagging Example · 十点与树桩
+
+![讲义 p.34 原图](figures/m06-source/p-34.png)
+
+十个 x 配正负标签。树桩只问 x 是否不大于 k，左右叶分别给类别，分裂点按熵选。
+
+完整题面、计算或课堂补充见 [[#2.6 Bootstrap、Bagging 与随机森林（讲义物理 p.31–39）|本页关联专题]]。
+
+#### p.35 · Bagging Example · 第 1–5 轮
+
+![讲义 p.35 原图](figures/m06-source/p-35.png)
+
+每行是重抽后排好序的输入和标签，红线标分裂。查每轮 k 以及左右叶类别，重复 x 是重抽结果。
+
+完整题面、计算或课堂补充见 [[#2.6 Bootstrap、Bagging 与随机森林（讲义物理 p.31–39）|本页关联专题]]。
+
+#### p.36 · Bagging Example · 第 6–10 轮
+
+![讲义 p.36 原图](figures/m06-source/p-36.png)
+
+第 6–9 轮多用 0.75，左负右正；第 10 轮抽出的标签全正，因此两侧都报正。
+
+完整题面、计算或课堂补充见 [[#2.6 Bootstrap、Bagging 与随机森林（讲义物理 p.31–39）|本页关联专题]]。
+
+#### p.37 · Bagging Example · 汇总树桩
+
+![讲义 p.37 原图](figures/m06-source/p-37.png)
+
+右列示范 x=0.5。逐行将 0.5 和 k 比较，按左右叶取输出，再统计正负票。
+
+完整题面、计算或课堂补充见 [[#2.6 Bootstrap、Bagging 与随机森林（讲义物理 p.31–39）|本页关联专题]]。
+
+#### p.38 · Bagging Example · 逐列投票
+
+![讲义 p.38 原图](figures/m06-source/p-38.png)
+
+每列同一个 x 的十轮预测求和，符号给集成类别。原图假定测试等同原数据，只演示拟合。
+
+图只列 $x=0.1$ 到 $0.7$ 七列，Sum 依次 2、2、2、−6、−6、−6、−6；后面 $0.8,0.9,1.0$ 三列按 p.37 的同一阈值表补算，各得六正四负、和为 2。
+
+完整题面、计算或课堂补充见 [[#2.6 Bootstrap、Bagging 与随机森林（讲义物理 p.31–39）|本页关联专题]]。
+
+#### p.39 · Bagging Example · 小测
+
+![讲义 p.39 原图](figures/m06-source/p-39.png)
+
+x=0.9 逐行读右叶，六正四负，和为 2，预测 +1。结合完整十点可判断这组树桩的样本内拟合，不能据此证实泛化。
+
+第 2、10 轮也走右叶：阈值分别 0.7、0.05，都小于 0.9。
+
+**原题 Q39（保留原语言；无原题编号，讲义 39）**
+
+> Quiz: fill the table for column x=0.9. What is the predicted result? Can this model well fit the original data?
+
+**中文题意与逐问解析**：三问依次是填十个模型的票、给集成类别、判断对原十点的拟合。票为 (-1,+1,-1,-1,-1,+1,+1,+1,+1,+1)，总和 2，输出 +1。十个列示点均正确，但这不是独立测试表现。原十点看 [[#p.34 · Bagging Example · 十点与树桩|p.34 标签表]]，完整阈值在 p.39 原图右侧；详算见 [[#2.6 Bootstrap、Bagging 与随机森林（讲义物理 p.31–39）|Q39 逐轮投票]]。
+
+**English reference answer（笔记整理）**：The votes for x=0.9 are (-1,+1,-1,-1,-1,+1,+1,+1,+1,+1), with sum 2 and final class +1. All ten displayed original points are fitted correctly, but this does not establish performance on unseen data.
+
+完整题面、计算或课堂补充见 [[#2.6 Bootstrap、Bagging 与随机森林（讲义物理 p.31–39）|本页关联专题]]。
+
+#### p.40 · Boosting · 序贯训练
+
+样本初始等权。每轮模型暴露错例，随后让这些记录在下一轮影响更大。
+
+完整题面、计算或课堂补充见 [[#2.7 AdaBoost：错例加权与加权投票（讲义物理 p.40–47）|本页关联专题]]。
+
+#### p.41 · Boosting · 重抽示例
+
+![讲义 p.41 原图](figures/m06-source/p-41.png)
+
+蓝圈是第三轮多次抽到的编号 4。抽到次数变化说明加权提高错例被选机会，不表示必须重抽到固定次数。
+
+完整题面、计算或课堂补充见 [[#2.7 AdaBoost：错例加权与加权投票（讲义物理 p.40–47）|本页关联专题]]。
+
+#### p.42 · AdaBoost Algorithm · 错误率与权重
+
+![讲义 p.42 原图](figures/m06-source/p-42.png)
+
+蓝曲线随错误率上升而下降，在 0.5 过零。若样本权重已归一化，错例权重直接求和，原图再除 N 会低估错误率。
+
+蓝线纵轴是 $\ln((1-\epsilon)/\epsilon)$，即 $2\alpha$，不是含一半因子的模型票权。
+
+完整题面、计算或课堂补充见 [[#2.7 AdaBoost：错例加权与加权投票（讲义物理 p.40–47）|本页关联专题]]。
+
+#### p.43 · AdaBoost Algorithm · 权重更新
+
+![讲义 p.43 原图](figures/m06-source/p-43.png)
+
+正确样本乘较小因子，错误样本乘较大因子，再除 Z 使权重和回到 1。最后按各模型 alpha 加权投票。
+
+完整题面、计算或课堂补充见 [[#2.7 AdaBoost：错例加权与加权投票（讲义物理 p.40–47）|本页关联专题]]。
+
+#### p.44 · AdaBoost Algorithm · 伪码
+
+![讲义 p.44 原图](figures/m06-source/p-44.png)
+
+先按权重抽样训练，然后回原训练集算加权错例；伪码有失败重试。核清权重总和与错误率再执行。
+
+训练侧抽到的行可以重复；误差仍在完整原训练表上按权重算，不能仅在抽中行上算错例比例。
+
+完整题面、计算或课堂补充见 [[#2.7 AdaBoost：错例加权与加权投票（讲义物理 p.40–47）|本页关联专题]]。
+
+#### p.45 · AdaBoost Example · 原始样本
+
+![讲义 p.45 原图](figures/m06-source/p-45.png)
+
+同 p.34 十点和单层树桩；改为下一轮受前一轮权重影响。
+
+完整题面、计算或课堂补充见 [[#2.7 AdaBoost：错例加权与加权投票（讲义物理 p.40–47）|本页关联专题]]。
+
+#### p.46 · AdaBoost Example · 三轮树桩
+
+![讲义 p.46 原图](figures/m06-source/p-46.png)
+
+查每轮的阈值、左右叶和 alpha。首轮 0.75 将 0.1、0.2、0.3 错分；标准归一化误差 0.3，对应 alpha 约 0.424，和原表 1.738 不同。
+
+第二轮两叶均为 +1；0.05 左侧没有观测，与直接输出 +1 的纯叶等效。讲义额外除以 10 的反推只用于解释该表，不是标准算法。
+
+完整题面、计算或课堂补充见 [[#2.7 AdaBoost：错例加权与加权投票（讲义物理 p.40–47）|本页关联专题]]。
+
+#### p.47 · AdaBoost Example · 加权分类
+
+![讲义 p.47 原图](figures/m06-source/p-47.png)
+
+上表是下一轮关注的记录，下表逐列将符号乘 alpha 加总。例 x=0.9 按原表权重得约 0.397，预测正；此为照给定表推算。
+
+课件第三轮的初始权重在右三列印成各 0.009，显示整行合计 1.026。按其余公式反推，这三格应各约 0.000880；若直接把三项 0.009 当错例权重并按课件除以 10，得到 $\alpha_3\approx2.956$，对不上表中 4.1195。沿课件额外除以 10 的演示口径可反推三轮约 1.73805、2.77837、4.11947；标准归一化例另见专题。
+
+完整题面、计算或课堂补充见 [[#2.7 AdaBoost：错例加权与加权投票（讲义物理 p.40–47）|本页关联专题]]。
+
+#### p.48 · Stacking / Stacked Generalization
+
+![讲义 p.48 原图](figures/m06-source/p-48.png)
+
+左边各基础模型出预测，中间 Meta-Learner 将这些预测作为输入，再给最终类别。
+
+完整题面、计算或课堂补充见 [[#2.8 Stacking：用折外预测训练元模型（讲义物理 p.48–53）|本页关联专题]]。
+
+#### p.49 · Stacking vs. Bagging and Boosting
+
+![讲义 p.49 原图](figures/m06-source/p-49.png)
+
+左图对照并行重抽、串行改权和两层学习。Stacking 的组合本身需要训练。
+
+完整题面、计算或课堂补充见 [[#2.8 Stacking：用折外预测训练元模型（讲义物理 p.48–53）|本页关联专题]]。
+
+#### p.50 · StackingClassifier · 算法
+
+![讲义 p.50 原图](figures/m06-source/p-50.png)
+
+用折外预测拼成元训练表，训练元模型；随后基础模型以全训练集重训，预测新样本时再把它们输出交给元模型。
+
+F 是分折数量，K 是基模型数量，两者不必相同。一般每个基模型可输出多类概率；下页是二分类，只保留正类概率即可，因为两列互补。
+
+完整题面、计算或课堂补充见 [[#2.8 Stacking：用折外预测训练元模型（讲义物理 p.48–53）|本页关联专题]]。
+
+#### p.51 · StackingClassifier Example · 基础模型
+
+![讲义 p.51 原图](figures/m06-source/p-51.png)
+
+两折为 {1,2,3} 与 {4,5}。从反折取得每行概率，按原样本编号回填；表是示意，某折只有一个类别的模型训练需另核。
+
+Fold2 两条都为正。常规 Logistic Regression 无法用单一类别拟合；只见正类的普通树也不会产生表中的 0.10、0.15、0.85 三个概率。把这些当课件示意输入，不当可复现实跑。
+
+完整题面、计算或课堂补充见 [[#2.8 Stacking：用折外预测训练元模型（讲义物理 p.48–53）|本页关联专题]]。
+
+#### p.52 · StackingClassifier Example · 元模型
+
+![讲义 p.52 原图](figures/m06-source/p-52.png)
+
+每行含 LR、Tree 折外预测和真值，用于拟合元模型。课件给线性分数为 −4 加 3 倍 LR 加 2 倍 Tree。
+
+完整题面、计算或课堂补充见 [[#2.8 Stacking：用折外预测训练元模型（讲义物理 p.48–53）|本页关联专题]]。
+
+#### p.53 · StackingClassifier Example · 测试推断
+
+![讲义 p.53 原图](figures/m06-source/p-53.png)
+
+将两基础预测代入 p.52，A/B/C 分数为 −3.05、−0.20、−0.60。原页 A 表内及 B/C 算式与此冲突，按明确的同一公式读。
+
+完整题面、计算或课堂补充见 [[#2.8 Stacking：用折外预测训练元模型（讲义物理 p.48–53）|本页关联专题]]。
+
+### 支持向量机（讲义 p.54–73）
+
+#### p.54 · Support Vector Machine 导览
+
+点亮支持向量机，接多条分界线如何选。
+
+#### p.55 · Support Vector Machines · 两类点
+
+![讲义 p.55 原图](figures/m06-source/p-55.png)
+
+绿方块与红空圈分居两侧，原问找能分开的直线。下一页开始比较可行边界。
+
+> Find a linear hyperplane (decision boundary) that will separate the data
+
+**中文参考作答**：画一条不穿过两组点、把绿色方块和红色空圈分到两侧的直线。p.56 给一条讲义可行解，p.57–58 展示其他可行线；原页无精确坐标，不凭图造系数。
+
+**English reference answer**: A straight line through the gap separates the green squares from the red circles. Slide 56 gives one valid example; slides 57 and 58 show that it is not unique.
+
+完整题面、计算或课堂补充见 [[#2.9 线性 SVM 与最大间隔（讲义 p.54–64）|本页关联专题]]。
+
+#### p.56 · Support Vector Machines · B1
+
+![讲义 p.56 原图](figures/m06-source/p-56.png)
+
+实红对角线 B1 将两类隔开。判断每种点是否主要落在各自一侧。
+
+完整题面、计算或课堂补充见 [[#2.9 线性 SVM 与最大间隔（讲义 p.54–64）|本页关联专题]]。
+
+#### p.57 · Support Vector Machines · B2
+
+![讲义 p.57 原图](figures/m06-source/p-57.png)
+
+虚红 B2 也分开点，但与最近点更接近。零训练错误还不足以选出更稳边界。
+
+完整题面、计算或课堂补充见 [[#2.9 线性 SVM 与最大间隔（讲义 p.54–64）|本页关联专题]]。
+
+#### p.58 · Support Vector Machines · 更多可行线
+
+![讲义 p.58 原图](figures/m06-source/p-58.png)
+
+多条虚红线都可能分离，显示解不唯一。下一页用最大间隔设选择准则。
+
+完整题面、计算或课堂补充见 [[#2.9 线性 SVM 与最大间隔（讲义 p.54–64）|本页关联专题]]。
+
+#### p.59 · Support Vector Machines · 哪条更好
+
+![讲义 p.59 原图](figures/m06-source/p-59.png)
+
+原题问 B1、B2 哪一条更好，并要定义“更好”。先看两条线是否分开样本，再比较各自最近点的垂直余量。
+
+**p.59 完整原题与答案**
+
+**原题 Q59（保留原语言；无原题编号，讲义 59）**
+
+> Which one is better? B1 or B2?
+> How do you define better?
+
+**中文题意与逐问解析**：图中两条线都分对训练点。p.60 的讲义给定答案是 B1，再解释比较标准是最大化两侧最近点到边界的余量；不能只凭斜率、外形或训练准确率选择。
+
+**English reference answer（笔记整理）**：B1 is better because it has the larger margin on the displayed data. Better means a larger minimum perpendicular distance from the training points to the separating boundary, under the same feature scale.
+
+完整题面、计算或课堂补充见 [[#2.9 线性 SVM 与最大间隔（讲义 p.54–64）|本页关联专题]]。
+
+#### p.60 · Support Vector Machines · 比间隔
+
+![讲义 p.60 原图](figures/m06-source/p-60.png)
+
+各边界配两条平行贴边线，间隔是垂直宽度。B1 的带更宽。
+
+完整题面、计算或课堂补充见 [[#2.9 线性 SVM 与最大间隔（讲义 p.54–64）|本页关联专题]]。
+
+#### p.61 · Support Vector Machines · 决策与边线
+
+![讲义 p.61 原图](figures/m06-source/p-61.png)
+
+中线分数为零，两侧贴边分数 ±1，带宽为 2 除权重范数。预测符号与训练间隔要求须分开。
+
+课件的分段例只列贴边或更外侧的情形；实际推断也可给带内点分组，比较分数正负，分数为零按预先约定处理。
+
+完整题面、计算或课堂补充见 [[#2.9 线性 SVM 与最大间隔（讲义 p.54–64）|本页关联专题]]。
+
+#### p.62 · Learning Linear SVM · 优化
+
+最大间隔等价最小化权重范数平方的一半，训练标签乘模型分数须至少为 1。
+
+完整题面、计算或课堂补充见 [[#2.9 线性 SVM 与最大间隔（讲义 p.54–64）|本页关联专题]]。
+
+#### p.63 · Support Vector
+
+![讲义 p.63 原图](figures/m06-source/p-63.png)
+
+箭头指贴在两侧间隔边线的点。硬间隔例中这些点决定最紧约束。
+
+完整题面、计算或课堂补充见 [[#2.9 线性 SVM 与最大间隔（讲义 p.54–64）|本页关联专题]]。
+
+#### p.64 · Learning Linear SVM · 推断
+
+固定 w、b 后按分数正负分类。原页 ±1 是训练间隔，不能将中间带当新输入都无法分类。
+
+完整题面、计算或课堂补充见 [[#2.9 线性 SVM 与最大间隔（讲义 p.54–64）|本页关联专题]]。
+
+#### p.65 · Support Vector Machines · 非完全线分
+
+![讲义 p.65 原图](figures/m06-source/p-65.png)
+
+蓝圈指出落在间隔内或边界另一侧的点。硬间隔不能同时满足所有训练约束。
+
+完整题面、计算或课堂补充见 [[#2.10 软间隔、松弛量与惩罚参数（讲义 p.65–67）|本页关联专题]]。
+
+#### p.66 · Support Vector Machines · 松弛量
+
+![讲义 p.66 原图](figures/m06-source/p-66.png)
+
+蓝圈标两类约束中允许的松弛。C 控制允许违规的代价；进带与实际错分是不同情况。
+
+完整题面、计算或课堂补充见 [[#2.10 软间隔、松弛量与惩罚参数（讲义 p.65–67）|本页关联专题]]。
+
+#### p.67 · Support Vector Machines · 两因素
+
+![讲义 p.67 原图](figures/m06-source/p-67.png)
+
+同时比较带宽和训练违规。把 C 调大更重视违约，但不保证样本外表现改善。
+
+平方惩罚相对线性惩罚只在松弛量大于 1 时更高；同 C 下，0.5 的平方是 0.25。
+
+> Find the hyperplane that optimizes both factors
+
+**中文参考作答**：B1 带宽较大，却错分左侧红圈和右侧绿方；B2 较窄，把这两点放在正确侧。按 p.66 同时计入范数平方与 C 加权的违约和；原图没有精确坐标或给定的 C，不能指定唯一的数值最优线。
+
+**English reference answer**: Use the soft-margin objective to balance a wide margin and violations, with C controlling the penalty. The drawing lacks the coordinates and C needed to identify a unique numerical optimum.
+
+完整题面、计算或课堂补充见 [[#2.10 软间隔、松弛量与惩罚参数（讲义 p.65–67）|本页关联专题]]。
+
+#### p.68 · Nonlinear SVM · 二次映射
+
+![讲义 p.68 原图](figures/m06-source/p-68.png)
+
+一维红点夹着蓝点，单阈值分不开；添加 x² 后，二维图可沿斜直线划分。
+
+完整题面、计算或课堂补充见 [[#2.11 非线性映射与核函数（讲义 p.68–72）|本页关联专题]]。
+
+#### p.69 · Nonlinear Support Vector Machines · 圆形边界
+
+![讲义 p.69 原图](figures/m06-source/p-69.png)
+
+内圈与外部两类点围绕 (0.5,0.5)，原规则按半径 0.2 判断。原空间无法靠直线完整分离。
+
+完整题面、计算或课堂补充见 [[#2.11 非线性映射与核函数（讲义 p.68–72）|本页关联专题]]。
+
+#### p.70 · Nonlinear Support Vector Machines · 映射后
+
+![讲义 p.70 原图](figures/m06-source/p-70.png)
+
+令 $u=x_1^2-x_1$，$v=x_2^2-x_2$。从 p.69 圆形条件变成斜线 $u+v=-0.46$。圆外满足 $u+v>-0.46$，类为 +1，在本页画成红方；其余为 −1，含等号，在本页画成蓝圆。原页没有独立图例。
+
+完整题面、计算或课堂补充见 [[#2.11 非线性映射与核函数（讲义 p.68–72）|本页关联专题]]。
+
+#### p.71 · Learning Nonlinear SVM
+
+核技巧直接算变换空间内积。课件列多项式、径向基和 tanh 形式，核参数与适用条件须匹配。
+
+完整题面、计算或课堂补充见 [[#2.11 非线性映射与核函数（讲义 p.68–72）|本页关联专题]]。
+
+#### p.72 · Characteristics of SVM
+
+合适核与目标下可做凸优化，仍需选核和惩罚参数。注意缺失、尺度、训练成本和噪声。
+
+完整题面、计算或课堂补充见 [[#2.11 非线性映射与核函数（讲义 p.68–72）|本页关联专题]]。
+
+#### p.73 · Brief Summary
+
+复习时区分逻辑回归拟合概率与 SVM 最大间隔，再由 p.60–62 回顾分界线如何确定。
+
+完整题面、计算或课堂补充见 [[#2.12 逻辑回归与 SVM 的区别（讲义 p.73）|本页关联专题]]。
+
+### 不平衡分类（讲义 p.74–92）
+
+#### p.74 · Imbalanced classification 导览
+
+点亮不平衡分类，先用多数基线诊断准确率，再看成本与重采样。
+
+#### p.75 · Class Imbalance Problem
+
+欺诈、入侵、缺陷等任务的关注类别可能少很多。先定义少数类和漏检代价。
+
+完整题面、计算或课堂补充见 [[#2.13 99.9% accuracy 为什么可能毫无用处？（讲义 p.74–83）|本页关联专题]]。
+
+#### p.76 · Challenges
+
+准确率被多数样本主导。问是否能找到稀有类时，要单看漏检和告警表现。
+
+完整题面、计算或课堂补充见 [[#2.13 99.9% accuracy 为什么可能毫无用处？（讲义 p.74–83）|本页关联专题]]。
+
+#### p.77 · Challenges · Example · 提问
+
+1000 笔中仅 1 笔欺诈，原问 99.9% 是否算好。先同一个只猜多数类的模型比较。
+
+完整题面、计算或课堂补充见 [[#2.13 99.9% accuracy 为什么可能毫无用处？（讲义 p.74–83）|本页关联专题]]。
+
+#### p.78 · Challenges · Example · 基线
+
+同题新增课件答案：全报非欺诈也能答对 999 笔，准确率 99.9%，欺诈召回却为 0。
+
+完整题面、计算或课堂补充见 [[#2.13 99.9% accuracy 为什么可能毫无用处？（讲义 p.74–83）|本页关联专题]]。
+
+#### p.79 · Confusion Matrix
+
+![讲义 p.79 原图](figures/m06-source/p-79.png)
+
+行实际、列预测。按 Yes/No 读四格：左上 TP、右上 FN、左下 FP、右下 TN。
+
+完整题面、计算或课堂补充见 [[#2.13 99.9% accuracy 为什么可能毫无用处？（讲义 p.74–83）|本页关联专题]]。
+
+#### p.80 · Accuracy
+
+![讲义 p.80 原图](figures/m06-source/p-80.png)
+
+沿主对角读正确的 TP 和 TN，再除四格总数。类别少数时，TN 可能掩盖 FN。
+
+完整题面、计算或课堂补充见 [[#2.13 99.9% accuracy 为什么可能毫无用处？（讲义 p.74–83）|本页关联专题]]。
+
+#### p.81 · Problem with Accuracy
+
+数据改为 9990 个 0 类和 10 个 1 类。全报 0 仍为 99.9%，没有检出任何 1 类。
+
+完整题面、计算或课堂补充见 [[#2.13 99.9% accuracy 为什么可能毫无用处？（讲义 p.74–83）|本页关联专题]]。
+
+#### p.82 · Alternative Measures · 定义
+
+![讲义 p.82 原图](figures/m06-source/p-82.png)
+
+查准从预测正列取分母，召回从实际正行取分母，F1 调和两者；分母为零时须说明实现。
+
+召回率就是以当前正类定义的真正率（True Positive Rate，TPR）。准确率可理解为每条预测正确记 1、错误记 0，再对所有行取平均。
+
+完整题面、计算或课堂补充见 [[#2.13 99.9% accuracy 为什么可能毫无用处？（讲义 p.74–83）|本页关联专题]]。
+
+#### p.83 · Alternative Measures · 银行经理题
+
+![讲义 p.83 原图](figures/m06-source/p-83.png)
+
+先按图读真实类所在的行和预测类所在的列，再分别计算查准率、召回率和 F1。答银行经理最关心哪格时，先说你的业务成本假设。
+
+**p.83 完整原题与答案**
+
+**原题 Q83（保留原语言；无原题编号，讲义 83）**
+
+> If you are a bank manager,
+> Which number do you care most?
+> a, b, c, d?
+
+**中文题意与逐问解析**：本页给 a=10、b=20、c=50、d=10000，行是真实类、列是预测类；Yes 为欺诈。若漏欺诈代价最高，会特别关注 b=FN，同时检查误报 c 和检出 a，不能脱离成本宣布永远只有一格重要。这是开放题，课堂也逐格解释代价。
+
+从表读出 TP 10、FN 20、FP 50、TN 10000，所以查准率 1/6、召回率 1/3、F1 为 2/9。
+
+**English reference answer（笔记整理）**：If missed fraud is most costly, pay particular attention to b (false negatives), while also considering a (detected fraud) and c (false alarms). The business cost matrix determines the trade-off; there is no universally dominant cell.
+
+完整题面、计算或课堂补充见 [[#2.13 99.9% accuracy 为什么可能毫无用处？（讲义 p.74–83）|本页关联专题]]。
+
+#### p.84 · Cost Matrix
+
+![讲义 p.84 原图](figures/m06-source/p-84.png)
+
+上表数实际 i、预测 j 的次数，下表给同一格单件成本；逐格相乘再求和。
+
+完整题面、计算或课堂补充见 [[#2.14 代价矩阵与决策阈值（讲义 p.84–88）|本页关联专题]]。
+
+#### p.85 · Computing Cost of Classification
+
+![讲义 p.85 原图](figures/m06-source/p-85.png)
+
+M1 成本 3910，M2 为 4255；M2 准确率更高。两表实际类人数不同，不能认作同一批标签上公平对比。
+
+完整题面、计算或课堂补充见 [[#2.14 代价矩阵与决策阈值（讲义 p.84–88）|本页关联专题]]。
+
+#### p.86 · Handling Class Imbalanced Problem
+
+三条路是先考虑少数类规则、让错误按代价计、调整训练样本。重采样只在训练内。
+
+分别看 [[#2.15 RIPPER 的有序规则学习（讲义 p.86–87）|少数类优先的规则]]、[[#2.14 代价矩阵与决策阈值（讲义 p.84–88）|按代价定阈值]]、[[#2.16 训练折内的重采样（讲义 p.86、p.89–92）|训练内重采样]]。
+
+#### p.87 · Class-based Ordering
+
+RIPPER 学一组 if–then 分类规则，可先学少数类。free 或 win 是垃圾邮件示意条件。
+
+完整题面、计算或课堂补充见 [[#2.15 RIPPER 的有序规则学习（讲义 p.86–87）|本页关联专题]]。
+
+#### p.88 · Cost Sensitive Classification
+
+按真实类的条件概率乘候选决策成本，比较两项期望值，选成本更低的类别。
+
+沿本讲矩阵可得 $q>1/102$ 时选正。等号表示两个期望代价相同，若系统必须返回一类，按事先固定的规则处理。
+
+完整题面、计算或课堂补充见 [[#2.14 代价矩阵与决策阈值（讲义 p.84–88）|本页关联专题]]。
+
+#### p.89 · Sampling-based Approaches · 总览
+
+降低多数类或增加少数类的训练代表性。测试资料应保留所评估总体的类别构成。
+
+完整题面、计算或课堂补充见 [[#2.16 训练折内的重采样（讲义 p.86、p.89–92）|本页关联专题]]。
+
+#### p.90 · Sampling-based Approaches · 欠采样
+
+可造代表点、选原代表点，或按实例难度规则删训练记录。各方法保留的信息不同。
+
+完整题面、计算或课堂补充见 [[#2.16 训练折内的重采样（讲义 p.86、p.89–92）|本页关联专题]]。
+
+#### p.91 · Sampling-based Approaches · 过采样
+
+随机过采样重复原少数类。SMOTE 和 ADASYN 一般用邻居插值生成新样本；ADASYN 较偏向困难区域。课件“复制”措辞需区分。
+
+普通 SMOTE 并不按每个少数类点的难易程度决定合成量；ADASYN 会把更多合成量分配给较难的局部。
+
+完整题面、计算或课堂补充见 [[#2.16 训练折内的重采样（讲义 p.86、p.89–92）|本页关联专题]]。
+
+#### p.92 · Sampling-based Approaches · 组合
+
+先过采样再清理邻域，例 SMOTETomek 与 SMOTEENN。全过程在训练折内，保留独立原分布评价。
+
+完整题面、计算或课堂补充见 [[#2.16 训练折内的重采样（讲义 p.86、p.89–92）|本页关联专题]]。
+
+以下专题保留详细计算、整段机制和课堂补充。相应页段可直接进入。
 
 ### 2.1 分类问题与训练／使用两阶段（讲义物理 p.1–6）
 
@@ -164,36 +946,34 @@ p.5 的流程必须分成两段：
 1. **归纳（induction）**：学习算法读取带已知 Class 的训练集，输出一个模型。
 2. **演绎／使用（deduction）**：冻结模型读取 Class 为 `?` 的新记录，输出预测标签。
 
-<details><summary>p.5 原流程图数据：用于理解输入输出，标签未知不等于可任意补值</summary>
-
-原列名为 Tid、Attrib1、Attrib2、Attrib3、Class。Attrib 是 attribute 的缩写，即属性；此页没有给业务数据字典，不能把 Large／Medium／Small 擅自等同于婚姻状态。
-
-| Tid | Attrib1 | Attrib2 | Attrib3 | Class |
-|---:|---|---|---:|---|
-| 1 | Yes | Large | 125K | No |
-| 2 | No | Medium | 100K | No |
-| 3 | No | Small | 70K | No |
-| 4 | Yes | Medium | 120K | No |
-| 5 | No | Large | 95K | Yes |
-| 6 | No | Medium | 60K | No |
-| 7 | Yes | Large | 220K | No |
-| 8 | No | Small | 85K | Yes |
-| 9 | No | Medium | 75K | No |
-| 10 | No | Small | 90K | Yes |
-
-下表为原图 Test Set。先从上表学得一个模型，才能按模型为下表预测；p.5 没指定所学模型，故不能唯一填出五个标签，也不能把问号当成真实答案来算测试准确率。
-
-| Tid | Attrib1 | Attrib2 | Attrib3 | Class |
-|---:|---|---|---:|---|
-| 11 | No | Small | 55K | ? |
-| 12 | Yes | Medium | 80K | ? |
-| 13 | Yes | Large | 110K | ? |
-| 14 | No | Small | 95K | ? |
-| 15 | No | Large | 67K | ? |
-
-例如第 11 条给出三个输入值，Class 问号表示未来要预测的输出；训练表的 Class 则已知。这两张表在 p.8、15、25 重复出现，各页用于突出不同阶段。
-
-</details>
+> [!note]- p.5 原流程图数据：用于理解输入输出，标签未知不等于可任意补值
+>
+> 原列名为 Tid、Attrib1、Attrib2、Attrib3、Class。Attrib 是 attribute 的缩写，即属性；此页没有给业务数据字典，不能把 Large／Medium／Small 擅自等同于婚姻状态。
+>
+> | Tid | Attrib1 | Attrib2 | Attrib3 | Class |
+> |---:|---|---|---:|---|
+> | 1 | Yes | Large | 125K | No |
+> | 2 | No | Medium | 100K | No |
+> | 3 | No | Small | 70K | No |
+> | 4 | Yes | Medium | 120K | No |
+> | 5 | No | Large | 95K | Yes |
+> | 6 | No | Medium | 60K | No |
+> | 7 | Yes | Large | 220K | No |
+> | 8 | No | Small | 85K | Yes |
+> | 9 | No | Medium | 75K | No |
+> | 10 | No | Small | 90K | Yes |
+>
+> 下表为原图 Test Set。先从上表学得一个模型，才能按模型为下表预测；p.5 没指定所学模型，故不能唯一填出五个标签，也不能把问号当成真实答案来算测试准确率。
+>
+> | Tid | Attrib1 | Attrib2 | Attrib3 | Class |
+> |---:|---|---|---:|---|
+> | 11 | No | Small | 55K | ? |
+> | 12 | Yes | Medium | 80K | ? |
+> | 13 | Yes | Large | 110K | ? |
+> | 14 | No | Small | 95K | ? |
+> | 15 | No | Large | 67K | ? |
+>
+> 例如第 11 条给出三个输入值，Class 问号表示未来要预测的输出；训练表的 Class 则已知。这两张表在 p.8、15、25 重复出现，各页用于突出不同阶段。
 
 p.2 的分隔页并非空页。图中红框是“Train ML algorithm → Evaluate solution”。评价不满意时，箭头回到问题分析；满意才 Launch。它提醒我们：一次训练完成不等于方案可用。
 
@@ -273,11 +1053,9 @@ flowchart TD
 
 图要回答“新记录走哪条路径”。判断框读取当前属性，箭头写条件，终点只输出类别。用 p.9 的记录走图：No → Married → 输出 No。
 
-<details><summary>读图自测：把婚姻状态改成 Single，收入仍为 80K，会怎样？</summary>
-
-先走 `Home Owner=No`，再走 Single / Divorced 分支。p.9–14 的原图写 `<80K` 与 `>80K`，因此等于 80K 没有指定出口，不能据此确定标签。p.18 的另一棵训练树写 `>=80K`；若明确使用那棵树的约定，则得到 Yes。两页的边界写法应分开记录。
-
-</details>
+> [!example]- 读图自测：把婚姻状态改成 Single，收入仍为 80K，会怎样？
+>
+> 先走 `Home Owner=No`，再走 Single / Divorced 分支。p.9–14 的原图写 `<80K` 与 `>80K`，因此等于 80K 没有指定出口，不能据此确定标签。p.18 的另一棵训练树写 `>=80K`；若明确使用那棵树的约定，则得到 Yes。两页的边界写法应分开记录。
 
 p.8 与 p.15 的图分别突出 Apply Model 与 Tree Induction algorithm。两页使用相同训练／测试表，作用是把“使用树”和“学习树”分开。
 
@@ -516,11 +1294,9 @@ p.18 问“为什么选 Home Owner”。直接答案是：这个切分把三条�
 
 **改条件自测**：若不切树、只把默认类改成 Yes，准确率是多少？
 
-<details><summary>答案</summary>
-
-只有原表三条 Yes 正确，所以为 $3/10=30\%$。改默认标签没有学习新特征关系。
-
-</details>
+> [!example]- 答案
+>
+> 只有原表三条 Yes 正确，所以为 $3/10=30\%$。改默认标签没有学习新特征关系。
 
 **所以呢**：分裂降低不纯度与当下提高准确率是两个不同问题；先数每个叶的多数类，再逐记录统计错误。
 
@@ -838,7 +1614,7 @@ flowchart TD
 | Round | 规则摘要 | $x=0.9$ 落点 | 预测 |
 |---:|---|---|---:|
 | 1 | $k=0.35$；右类 -1 | 右 | -1 |
-| 2 | 左右均 +1 | 任一侧 | +1 |
+| 2 | 左右均 +1，阈值 0.7 | 右 | +1 |
 | 3 | $k=0.35$；右类 -1 | 右 | -1 |
 | 4 | $k=0.30$；右类 -1 | 右 | -1 |
 | 5 | $k=0.35$；右类 -1 | 右 | -1 |
@@ -846,7 +1622,7 @@ flowchart TD
 | 7 | $k=0.75$；右类 +1 | 右 | +1 |
 | 8 | $k=0.75$；右类 +1 | 右 | +1 |
 | 9 | $k=0.75$；右类 +1 | 右 | +1 |
-| 10 | 左右均 +1 | 任一侧 | +1 |
+| 10 | 左右均 +1，阈值 0.05 | 右 | +1 |
 
 逐列读法：
 
@@ -859,7 +1635,7 @@ flowchart TD
 
 1. **填表答案**：$(-1,+1,-1,-1,-1,+1,+1,+1,+1,+1)$。
 2. **预测结果**：逐项相加为 $-1+1-1-1-1+1+1+1+1+1=2$；所以正票 6、负票 4，Sum=2，Sign=+1，最终预测 $+1$。
-3. **能否很好拟合原数据**：对 p.34 列出的十个原点，p.38 的集成预测为 $(+,+,+,-,-,-,-,+,+,+)$，与原标签逐点一致。因此它在这 10 个列示点上训练拟合完全正确。p.38 明说测试集假设与原数据相同，这不是独立泛化证据；不能由此断言新数据也拟合良好。
+3. **能否很好拟合原数据**：对 p.34 列出的十个原点，p.38 给前七列，按 p.37 补算末三列后得到十个集成预测为 $(+,+,+,-,-,-,-,+,+,+)$，与原标签逐点一致。因此它在这 10 个列示点上训练拟合完全正确。p.38 明说测试集假设与原数据相同，这不是独立泛化证据；不能由此断言新数据也拟合良好。
 
 若把一轮输出改成相反类别，应重新算票数。若出现 5:5 平票，讲义未指定规则；实现必须预先规定按类别顺序、概率平均或其他固定方案处理。
 
@@ -1048,19 +1824,15 @@ p.42–44 选择不使用该学习器，并在中间轮高于 50% 时把权重�
 
 **迁移题 1**：若某轮 $\varepsilon$ 从 0.25 变成 0.40，$\alpha$ 会增还是减？
 
-<details><summary>答案</summary>
-
-会减。$\alpha(0.25)=0.5\ln3\approx0.5493$；$\alpha(0.40)=0.5\ln1.5\approx0.2027$。错误率更接近 0.5，学习器发言权更小。
-
-</details>
+> [!example]- 答案
+>
+> 会减。$\alpha(0.25)=0.5\ln3\approx0.5493$；$\alpha(0.40)=0.5\ln1.5\approx0.2027$。错误率更接近 0.5，学习器发言权更小。
 
 **迁移题 2**：验证误差停止下降，但一条疑似错标记录权重越来越大，应怎样诊断？
 
-<details><summary>答案</summary>
-
-先回查该记录标签与特征。若确为噪声，AdaBoost 正在按机制放大它；可修标签、降低学习率、限制轮数或换对噪声更稳健的方法。不能把“继续增加轮数”当成必然改进。
-
-</details>
+> [!example]- 答案
+>
+> 先回查该记录标签与特征。若确为噪声，AdaBoost 正在按机制放大它；可修标签、降低学习率、限制轮数或换对噪声更稳健的方法。不能把“继续增加轮数”当成必然改进。
 
 **🎙️ 课堂补充**（课上展开；来源 B `18:17`–`34:17`）
 
@@ -1169,6 +1941,8 @@ p.51 给 5 条样本、两个基模型和 2 折。样本 1–3 为 Fold1，4–5
 
 不过 p.51 的 Fold2={4,5} 两条标签都是 1。若真的只用这两行训练普通二分类 Logistic Regression，再预测 Fold1，标准实现会因训练数据只有一个类别而无法拟合。因此 p.51 的概率只能视为**讲义给定的示意数值**，不能声称由表中这次 LR 真实运行得到。
 
+同一单类训练折下，普通树也没有依据给出 0.10、0.15、0.85 三个不同正类概率。p.53 上表真值为问号、下表标 True value，原件未交代何时揭晓，不以该栏认证模型有效。
+
 p.52 直接给元模型：
 
 $$
@@ -1218,19 +1992,15 @@ p.53 给测试点 A、B、C 的两个基模型概率。按 p.52 公式实际复�
 
 **迁移题 1**：若把样本 1 自己参与训练的 LR 概率填进样本 1 的元特征，会发生什么？
 
-<details><summary>答案</summary>
-
-发生数据泄漏。元模型看到的是基模型对已见标签记录的拟合能力，而推断时新记录未参与训练，训练与使用分布不一致。
-
-</details>
+> [!example]- 答案
+>
+> 发生数据泄漏。元模型看到的是基模型对已见标签记录的拟合能力，而推断时新记录未参与训练，训练与使用分布不一致。
 
 **迁移题 2**：若 p.52 截距确认改成 -3，A、B、C 哪些预测会变化？
 
-<details><summary>答案</summary>
-
-线性分数整体加 1：A=-2.05，B=0.8，C=0.4。以 0.5 概率阈值等价于 $z\ge0$，所以 A 仍为 0，B、C 变为 1。这正好匹配 p.53 对 B、C 的算式，却仍不匹配 A 页面写的 -3.05，说明原页内部口径不统一。
-
-</details>
+> [!example]- 答案
+>
+> 线性分数整体加 1：A=-2.05，B=0.8，C=0.4。以 0.5 概率阈值等价于 $z\ge0$，所以 A 仍为 0，B、C 变为 1。这正好匹配 p.53 对 B、C 的算式，却仍不匹配 A 页面写的 -3.05，说明原页内部口径不统一。
 
 **🎙️ 课堂补充**（课上展开；来源 B `34:26`–`39:20`）
 
@@ -1383,7 +2153,7 @@ B `40:45` 记录多数学生选 B1；教师用新点靠近原簇时是否容易�
 
 **原题图来源**：IS6400-L6-Classification.pdf 物理 p.59 原页 PNG，未改点位、线条或文字。此图用于保留题面；现有可编辑流程图和数值补充例继续承担教学说明。读题先看同一批绿色方块、红色圆圈和两条标为 B1/B2 的线；比较对象就是这幅原图，不是下面另一个四点补充例。原图没有给精确点坐标，不能据截图编造坐标或算出精确距离。
 
-**中文题意与逐问解析**：图中两条线都分对训练点。先答 B1，再解释比较标准是最大化两侧最近点到边界的余量；不能只凭斜率、外形或训练准确率选择。
+**中文题意与逐问解析**：图中两条线都分对训练点。p.60 的讲义给定答案是 B1，再解释比较标准是最大化两侧最近点到边界的余量；不能只凭斜率、外形或训练准确率选择。
 
 **English reference answer（笔记整理）**：B1 is better because it has the larger margin on the displayed data. Better means a larger minimum perpendicular distance from the training points to the separating boundary, under the same feature scale.
 
@@ -2222,6 +2992,8 @@ flowchart TD
 
 ### 6.0 前半机制与计算题
 
+复做时可直接到 [[#p.18 · Hunt’s Algorithm|决策树分裂与四状态小测]]、[[#p.39 · Bagging Example · 小测|十轮投票]]、[[#p.59 · Support Vector Machines · 哪条更好|硬间隔比较]]、[[#p.67 · Support Vector Machines · 两因素|软间隔取舍]]、[[#p.83 · Alternative Measures · 银行经理题|矩阵与业务成本]]。先写理由，再展开原题下的参考答案。
+
 下面一行是一种复习任务。除明确标出的课堂题型或反向信号外，其余为讲义／ILO 反推或笔记推断；课堂原话见 §6.4。
 
 | 可信度 | 考法 | 必须展示的过程 | 正文位置 |
@@ -2277,69 +3049,152 @@ TA 的 API／参数考试提示见 T07；讲者与范围单列，尤其不据泛
 
 1. 为什么把 $\mathbf{w}$ 乘以 0.1 不能无条件把 SVM 间隔放大 10 倍？
 
-<details><summary>答案</summary>
-
-因为硬间隔还有 $y_i(\mathbf{w}^{\top}\mathbf{x}_i+b)\ge1$。单独缩小参数会破坏规范化约束；目标与约束必须一起看。
-
-</details>
+> [!example]- 答案
+>
+> 因为硬间隔还有 $y_i(\mathbf{w}^{\top}\mathbf{x}_i+b)\ge1$。单独缩小参数会破坏规范化约束；目标与约束必须一起看。
 
 2. 某点满足 $y_i(\mathbf{w}^{\top}\mathbf{x}_i+b)=0.4$。它是否错分？对应最小松弛是多少？
 
-<details><summary>答案</summary>
-
-它仍在正确一侧，因为有符号分数为正，但进入间隔带。最小 $\xi_i=1-0.4=0.6$。
-
-</details>
+> [!example]- 答案
+>
+> 它仍在正确一侧，因为有符号分数为正，但进入间隔带。最小 $\xi_i=1-0.4=0.6$。
 
 3. RBF SVM 把 $\gamma$ 调得非常大，最常见的风险是什么？
 
-<details><summary>答案</summary>
-
-每个点的影响半径变得很窄，边界可能围绕训练点剧烈弯曲并过拟合噪声。还需结合 $C$ 与验证表现判断。
-
-</details>
+> [!example]- 答案
+>
+> 每个点的影响半径变得很窄，边界可能围绕训练点剧烈弯曲并过拟合噪声。还需结合 $C$ 与验证表现判断。
 
 4. $TP=40,FN=10,FP=30,TN=920$。计算 precision、recall 与 $F_1$。
 
-<details><summary>答案</summary>
-
-$\text{Precision}=40/70\approx0.5714$，$\text{Recall}=40/50=0.8$，$F_1=80/(80+30+10)=2/3\approx0.6667$。
-
-</details>
+> [!example]- 答案
+>
+> $\text{Precision}=40/70\approx0.5714$，$\text{Recall}=40/50=0.8$，$F_1=80/(80+30+10)=2/3\approx0.6667$。
 
 5. 为什么在全数据上先 SMOTE 再做 5-fold CV 是错误流程？
 
-<details><summary>答案</summary>
-
-合成点使用全数据的邻域，验证折样本的信息会进入训练折生成过程，造成数据泄漏。SMOTE 必须在每个 CV 训练折内部拟合与执行。
-
-</details>
+> [!example]- 答案
+>
+> 合成点使用全数据的邻域，验证折样本的信息会进入训练折生成过程，造成数据泄漏。SMOTE 必须在每个 CV 训练折内部拟合与执行。
 
 6. 给定 p.85 的成本矩阵，模型输出 $P(+\mid x)=0.02$，应判正还是负？
 
-<details><summary>答案</summary>
-
-阈值为 $1/102\approx0.009804$。因为 $0.02$ 更高，应判正。也可直接算 $R(+)=1-2(0.02)=0.96$，$R(-)=100(0.02)=2$，选代价更低的正类。
-
-</details>
+> [!example]- 答案
+>
+> 阈值为 $1/102\approx0.009804$。因为 $0.02$ 更高，应判正。也可直接算 $R(+)=1-2(0.02)=0.96$，$R(-)=100(0.02)=2$，选代价更低的正类。
 
 7. RIPPER 为什么需要 prune set？
 
-<details><summary>答案</summary>
-
-grow 阶段会贪心加入条件，容易贴合噪声；prune set 用未参与规则生长的数据检查并删去无益条件，降低过拟合。具体评分依实现而异。
-
-</details>
+> [!example]- 答案
+>
+> grow 阶段会贪心加入条件，容易贴合噪声；prune set 用未参与规则生长的数据检查并删去无益条件，降低过拟合。具体评分依实现而异。
 
 8. **案例迁移。** 制造缺陷率为 0.2%，漏检一次成本远高于误报。你会怎样设计训练与验收？
 
-<details><summary>参考思路</summary>
-
-先按时间或生产批次划分训练、验证和原分布测试集；训练折内比较类别权重、SMOTE 系列或少数类优先规则；用 recall、precision、PR 指标和期望代价选模型与阈值；锁定后在原分布测试集评估。若概率参与期望代价，还要检查校准。不能只优化 accuracy，也不能重采样测试集。
-
-</details>
+> [!note]- 参考思路
+>
+> 先按时间或生产批次划分训练、验证和原分布测试集；训练折内比较类别权重、SMOTE 系列或少数类优先规则；用 recall、precision、PR 指标和期望代价选模型与阈值；锁定后在原分布测试集评估。若概率参与期望代价，还要检查校准。不能只优化 accuracy，也不能重采样测试集。
 
 ## 8. 讲义页码映射
+
+按物理页查下表。印刷页脚有多套分母，按 PDF 文件的实际顺序读。下方原转录表仍按已有证据保留分量和时间。
+
+| 物理页 | 课件页标题／定位 | 正文 | 原图或处置 |
+|---:|---|---|---|
+| 1 | Classification 导览 | [[#p.1 · Classification 导览\|本页]] | 导览 |
+| 2 | Introduction | [[#p.2 · Introduction\|本页]] | 图 |
+| 3 | Classification · Definition | [[#p.3 · Classification · Definition\|本页]] | 文字 |
+| 4 | Examples of Classification Task | [[#p.4 · Examples of Classification Task\|本页]] | 图 |
+| 5 | General Approach for Building Classification Model | [[#p.5 · General Approach for Building Classification Model\|本页]] | 图 |
+| 6 | Classification Techniques | [[#p.6 · Classification Techniques\|本页]] | 文字 |
+| 7 | Another Example of Decision Tree | [[#p.7 · Another Example of Decision Tree\|本页]] | 图 |
+| 8 | Decision Tree Classification Task · 使用 | [[#p.8 · Decision Tree Classification Task · 使用\|本页]] | 图 |
+| 9 | Apply Model to Test Data · 起点 | [[#p.9 · Apply Model to Test Data · 起点\|本页]] | 图 |
+| 10 | Apply Model to Test Data · 读取住房 | [[#p.10 · Apply Model to Test Data · 读取住房\|本页]] | 图 |
+| 11 | Apply Model to Test Data · 住房分支 | [[#p.11 · Apply Model to Test Data · 住房分支\|本页]] | 图 |
+| 12 | Apply Model to Test Data · 读取婚姻 | [[#p.12 · Apply Model to Test Data · 读取婚姻\|本页]] | 图 |
+| 13 | Apply Model to Test Data · 婚姻分支 | [[#p.13 · Apply Model to Test Data · 婚姻分支\|本页]] | 图 |
+| 14 | Apply Model to Test Data · 得到输出 | [[#p.14 · Apply Model to Test Data · 得到输出\|本页]] | 图 |
+| 15 | Decision Tree Classification Task · 学习 | [[#p.15 · Decision Tree Classification Task · 学习\|本页]] | 图 |
+| 16 | Decision Tree Induction | [[#p.16 · Decision Tree Induction\|本页]] | 文字 |
+| 17 | Hunt’s Algorithm · Tree Construction | [[#p.17 · Hunt’s Algorithm · Tree Construction\|本页]] | 图 |
+| 18 | Hunt’s Algorithm | [[#p.18 · Hunt’s Algorithm\|本页]] | 图 |
+| 19 | Decision Tree Based Classification | [[#p.19 · Decision Tree Based Classification\|本页]] | 文字 |
+| 20 | Limitations of single attribute-based decision boundaries | [[#p.20 · Limitations of single attribute-based decision boundaries\|本页]] | 图 |
+| 21 | Example Data Set | [[#p.21 · Example Data Set\|本页]] | 图 |
+| 22 | Regression Tree · 定义 | [[#p.22 · Regression Tree · 定义\|本页]] | 文字 |
+| 23 | Regression Tree · 图示 | [[#p.23 · Regression Tree · 图示\|本页]] | 图 |
+| 24 | Ensemble Learning 导览 | [[#p.24 · Ensemble Learning 导览\|本页]] | 导览 |
+| 25 | Decision Tree Classification Task · 扩展 | [[#p.25 · Decision Tree Classification Task · 扩展\|本页]] | 图 |
+| 26 | Ensemble Methods · 定义 | [[#p.26 · Ensemble Methods · 定义\|本页]] | 文字 |
+| 27 | Ensemble Methods · 摸象 | [[#p.27 · Ensemble Methods · 摸象\|本页]] | 图 |
+| 28 | Why Ensemble Methods work? | [[#p.28 · Why Ensemble Methods work?\|本页]] | 图 |
+| 29 | General Approach | [[#p.29 · General Approach\|本页]] | 图 |
+| 30 | Types of Ensemble Methods | [[#p.30 · Types of Ensemble Methods\|本页]] | 文字 |
+| 31 | Bagging | [[#p.31 · Bagging\|本页]] | 图 |
+| 32 | Bagging Algorithm | [[#p.32 · Bagging Algorithm\|本页]] | 图 |
+| 33 | Random Forest | [[#p.33 · Random Forest\|本页]] | 图 |
+| 34 | Bagging Example · 十点与树桩 | [[#p.34 · Bagging Example · 十点与树桩\|本页]] | 图 |
+| 35 | Bagging Example · 第 1–5 轮 | [[#p.35 · Bagging Example · 第 1–5 轮\|本页]] | 图 |
+| 36 | Bagging Example · 第 6–10 轮 | [[#p.36 · Bagging Example · 第 6–10 轮\|本页]] | 图 |
+| 37 | Bagging Example · 汇总树桩 | [[#p.37 · Bagging Example · 汇总树桩\|本页]] | 图 |
+| 38 | Bagging Example · 逐列投票 | [[#p.38 · Bagging Example · 逐列投票\|本页]] | 图 |
+| 39 | Bagging Example · 小测 | [[#p.39 · Bagging Example · 小测\|本页]] | 图 |
+| 40 | Boosting · 序贯训练 | [[#p.40 · Boosting · 序贯训练\|本页]] | 文字 |
+| 41 | Boosting · 重抽示例 | [[#p.41 · Boosting · 重抽示例\|本页]] | 图 |
+| 42 | AdaBoost Algorithm · 错误率与权重 | [[#p.42 · AdaBoost Algorithm · 错误率与权重\|本页]] | 图 |
+| 43 | AdaBoost Algorithm · 权重更新 | [[#p.43 · AdaBoost Algorithm · 权重更新\|本页]] | 图 |
+| 44 | AdaBoost Algorithm · 伪码 | [[#p.44 · AdaBoost Algorithm · 伪码\|本页]] | 图 |
+| 45 | AdaBoost Example · 原始样本 | [[#p.45 · AdaBoost Example · 原始样本\|本页]] | 图 |
+| 46 | AdaBoost Example · 三轮树桩 | [[#p.46 · AdaBoost Example · 三轮树桩\|本页]] | 图 |
+| 47 | AdaBoost Example · 加权分类 | [[#p.47 · AdaBoost Example · 加权分类\|本页]] | 图 |
+| 48 | Stacking / Stacked Generalization | [[#p.48 · Stacking / Stacked Generalization\|本页]] | 图 |
+| 49 | Stacking vs. Bagging and Boosting | [[#p.49 · Stacking vs. Bagging and Boosting\|本页]] | 图 |
+| 50 | StackingClassifier · 算法 | [[#p.50 · StackingClassifier · 算法\|本页]] | 图 |
+| 51 | StackingClassifier Example · 基础模型 | [[#p.51 · StackingClassifier Example · 基础模型\|本页]] | 图 |
+| 52 | StackingClassifier Example · 元模型 | [[#p.52 · StackingClassifier Example · 元模型\|本页]] | 图 |
+| 53 | StackingClassifier Example · 测试推断 | [[#p.53 · StackingClassifier Example · 测试推断\|本页]] | 图 |
+| 54 | Support Vector Machine 导览 | [[#p.54 · Support Vector Machine 导览\|本页]] | 导览 |
+| 55 | Support Vector Machines · 两类点 | [[#p.55 · Support Vector Machines · 两类点\|本页]] | 图 |
+| 56 | Support Vector Machines · B1 | [[#p.56 · Support Vector Machines · B1\|本页]] | 图 |
+| 57 | Support Vector Machines · B2 | [[#p.57 · Support Vector Machines · B2\|本页]] | 图 |
+| 58 | Support Vector Machines · 更多可行线 | [[#p.58 · Support Vector Machines · 更多可行线\|本页]] | 图 |
+| 59 | Support Vector Machines · 哪条更好 | [[#p.59 · Support Vector Machines · 哪条更好\|本页]] | 图 |
+| 60 | Support Vector Machines · 比间隔 | [[#p.60 · Support Vector Machines · 比间隔\|本页]] | 图 |
+| 61 | Support Vector Machines · 决策与边线 | [[#p.61 · Support Vector Machines · 决策与边线\|本页]] | 图 |
+| 62 | Learning Linear SVM · 优化 | [[#p.62 · Learning Linear SVM · 优化\|本页]] | 文字 |
+| 63 | Support Vector | [[#p.63 · Support Vector\|本页]] | 图 |
+| 64 | Learning Linear SVM · 推断 | [[#p.64 · Learning Linear SVM · 推断\|本页]] | 文字 |
+| 65 | Support Vector Machines · 非完全线分 | [[#p.65 · Support Vector Machines · 非完全线分\|本页]] | 图 |
+| 66 | Support Vector Machines · 松弛量 | [[#p.66 · Support Vector Machines · 松弛量\|本页]] | 图 |
+| 67 | Support Vector Machines · 两因素 | [[#p.67 · Support Vector Machines · 两因素\|本页]] | 图 |
+| 68 | Nonlinear SVM · 二次映射 | [[#p.68 · Nonlinear SVM · 二次映射\|本页]] | 图 |
+| 69 | Nonlinear Support Vector Machines · 圆形边界 | [[#p.69 · Nonlinear Support Vector Machines · 圆形边界\|本页]] | 图 |
+| 70 | Nonlinear Support Vector Machines · 映射后 | [[#p.70 · Nonlinear Support Vector Machines · 映射后\|本页]] | 图 |
+| 71 | Learning Nonlinear SVM | [[#p.71 · Learning Nonlinear SVM\|本页]] | 文字 |
+| 72 | Characteristics of SVM | [[#p.72 · Characteristics of SVM\|本页]] | 文字 |
+| 73 | Brief Summary | [[#p.73 · Brief Summary\|本页]] | 文字 |
+| 74 | Imbalanced classification 导览 | [[#p.74 · Imbalanced classification 导览\|本页]] | 导览 |
+| 75 | Class Imbalance Problem | [[#p.75 · Class Imbalance Problem\|本页]] | 文字 |
+| 76 | Challenges | [[#p.76 · Challenges\|本页]] | 文字 |
+| 77 | Challenges · Example · 提问 | [[#p.77 · Challenges · Example · 提问\|本页]] | 文字 |
+| 78 | Challenges · Example · 基线 | [[#p.78 · Challenges · Example · 基线\|本页]] | 文字 |
+| 79 | Confusion Matrix | [[#p.79 · Confusion Matrix\|本页]] | 图 |
+| 80 | Accuracy | [[#p.80 · Accuracy\|本页]] | 图 |
+| 81 | Problem with Accuracy | [[#p.81 · Problem with Accuracy\|本页]] | 文字 |
+| 82 | Alternative Measures · 定义 | [[#p.82 · Alternative Measures · 定义\|本页]] | 图 |
+| 83 | Alternative Measures · 银行经理题 | [[#p.83 · Alternative Measures · 银行经理题\|本页]] | 图 |
+| 84 | Cost Matrix | [[#p.84 · Cost Matrix\|本页]] | 图 |
+| 85 | Computing Cost of Classification | [[#p.85 · Computing Cost of Classification\|本页]] | 图 |
+| 86 | Handling Class Imbalanced Problem | [[#p.86 · Handling Class Imbalanced Problem\|本页]] | 文字 |
+| 87 | Class-based Ordering | [[#p.87 · Class-based Ordering\|本页]] | 文字 |
+| 88 | Cost Sensitive Classification | [[#p.88 · Cost Sensitive Classification\|本页]] | 文字 |
+| 89 | Sampling-based Approaches · 总览 | [[#p.89 · Sampling-based Approaches · 总览\|本页]] | 文字 |
+| 90 | Sampling-based Approaches · 欠采样 | [[#p.90 · Sampling-based Approaches · 欠采样\|本页]] | 文字 |
+| 91 | Sampling-based Approaches · 过采样 | [[#p.91 · Sampling-based Approaches · 过采样\|本页]] | 文字 |
+| 92 | Sampling-based Approaches · 组合 | [[#p.92 · Sampling-based Approaches · 组合\|本页]] | 文字 |
+
+### 课堂覆盖与转录时间（原有记录）
 
 下表使用 92 个 PDF 物理页，不使用过时的 `/83` 页脚。每个覆盖标记均按 A／B 独立时钟；区间表示可定位内容，不证明教师逐页展示了每张动画。
 

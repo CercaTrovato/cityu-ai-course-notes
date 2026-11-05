@@ -46,11 +46,449 @@ teaching_standard: novice-v1
 
 ### 1.3 重排及来源边界
 
-先看业务动作，再学法律分类和治理，最后完整做两个案例。讲义中的重复风险表合并解释，独有条件仍逐项保留。页码始终指物理页。本讲未取得转录，授课日期未知，不能推断老师略过哪页。
+主讲义 [[IS5113_AI_Ethics_and_Regulations/course_files_export/Module 7 - AI Ethical Issues in Marketing, Consumer Behaviour, HR and Recruitment.pdf|Module 7]] 共 59 个物理页，按 PDF 从封面起编号。§2 先按页跟读，随后保留专题推演和完整原题。暂无转录。
 
-法律补充于 2026-10-28 核对 EUR-Lex **2026-07-27 合并文本**。法律变动与讲义口径分层呈现，不能把旧课件的简表直接用于现实合规判断。
+- **预习**　读 [[#M07 p.08 · 原表按风险、措施和例子读|p.08 风险分类]]、[[#M07 p.13 · 按八行读行为、例子和禁止理由|p.13 禁止行为]]、[[#M07 p.16 · 读八类应用的高风险例子|p.16 高风险]] 和 [[#M07 p.20 · 把九项义务变成证据|p.20 治理]]。再读 [[#M07 p.35 · 个性化体验与顾客知情|p.35 LuxeStay]] 和 [[#M07 p.52 · 员工行为指标能否测到工作表现|p.52 OptiMax]]，分开资料与推断。
+- **课中**　从 [[#8. 讲义页码映射|§8]] 跳到当前页。LuxeStay 四问、LinkedIn 提问和 OptiMax 三问从 p.37、p.51、p.53 直达。
+- **复习**　先用 [[#4. 速查表|§4]] 判断用途与责任，再用 [[#7. 自测|§7]] 改变题设复做。
+
+课件的风险分类和日期按历史材料解释。现行法源与生效日另见 §9.4。
 
 ## 2. 正文
+
+### 按页跟读 · 目标与营销（p.01–05）
+
+#### M07 p.01 · 营销与人事中的两类问题
+
+封面。跟读时分别问顾客的选择是否被操纵，员工或候选人的机会是否被系统改变。
+
+#### M07 p.02 · 先看用途、风险和责任
+
+AI 可用于营销、消费者分析及人力资源。隐私、操纵和偏差要逐项找证据，另核数据保护和反歧视条件。领导者要把检查变成授权与复核。
+
+[[#2.1 个性化怎样变成操纵（讲义 p.2–5）|深读与条件]]
+
+#### M07 p.03 · 进入营销与消费者行为
+
+分隔页。后续先辨个性化给谁带来价值，再看使用哪些资料及限制。
+
+[[#2.1 个性化怎样变成操纵（讲义 p.2–5）|深读与条件]]
+
+#### M07 p.04 · 个性化和定向都要可核
+
+系统用资料选择广告和推荐，提高触达效率。先问效果如何计量，再看偏差、隐私与操纵，并安排可理解说明和问责。
+
+[[#2.1 个性化怎样变成操纵（讲义 p.2–5）|深读与条件]]
+
+#### M07 p.05 · 四类担忧分别对应动作
+
+未充分知情的收集是隐私疑问，利用弱点引导是操纵疑问，不当差别是偏见疑问，说明决定过程属透明。不能用一个“取得同意”代替四问。
+
+[[#2.1 个性化怎样变成操纵（讲义 p.2–5）|深读与条件]]
+
+### 按页跟读 · 欧盟 AI Act（p.06–34）
+
+#### M07 p.06 · 法案目标与适用先分开
+
+课件讲综合监管、域外使用、保护基本权利与促进创新。实际适用须查主体、投放、使用与输出位置，不只看是否有欧盟顾客。
+
+[[#2.2 先确定法律管谁，再分类（讲义 p.6–8）|深读与条件]]
+
+#### M07 p.07 · 从具体风险看受影响权利
+
+读尊严、隐私数据、平等、表达信息、集会结社、救济与公平审理、儿童和弱势。比如监控可能既影响数据权益，又让人不愿参加活动。
+
+课件还用 GDPR 举操作例：先确定合法处理依据，只收用途所需的资料，说明资料怎么用，提供相应的用户控制和纠错。比如酒店为安排无烟房保存房型偏好，需要另判断能否把偏好转给广告商。
+
+[[#2.2 先确定法律管谁，再分类（讲义 p.6–8）|深读与条件]]
+
+#### M07 p.08 · 原表按风险、措施和例子读
+
+不可接受通常被禁止，高风险受严格规则，有限风险强调披露，最低风险少有额外 AI 专项要求。原表是课堂概览。同一个技术可因用途和环境改变分类。
+
+披露（disclosure）是向接触系统或内容的人说明它是 AI 交互或合成内容。沿聊天机器人一行读，有限风险对应用户知道在与机器交互。再到 p.28 核谁负责告知及何时告知。
+
+![[IS5113_AI_Ethics_and_Regulations/notes/figures/learning-repair-m07/m07-p08.png]]
+
+课件物理 p.08 原图。
+
+[[#2.2 先确定法律管谁，再分类（讲义 p.6–8）|深读与条件]]
+
+#### M07 p.09 · 四组概览对应后续条款条件
+
+页上列社会评分、某些操纵利用、实时远程生物识别及敏感情绪识别。p.10–13 展开具体条件与不同例外。
+
+[[#2.3 禁止的是哪些具体用法（讲义 p.9–14）|深读与条件]]
+
+#### M07 p.10 · 区分有害操纵和利用弱势
+
+按课件看潜意识、欺骗或操纵使行为明显扭曲并产生或可能产生重大损害。利用年纪、残障或社会经济弱点另核。普通推荐本身不足以判定触发。
+
+[[#2.3 禁止的是哪些具体用法（讲义 p.9–14）|深读与条件]]
+
+#### M07 p.11 · 为什么只靠人物画像风险大
+
+社会评分涉及依据个人或群体特征并导致不当不利待遇，课堂犯罪预测例强调仅依画像或人格等。具体条款条件和适用例外须另核。
+
+[[#2.3 禁止的是哪些具体用法（讲义 p.9–14）|深读与条件]]
+
+#### M07 p.12 · 识别身份、分类属性与抓图建库分开
+
+实时远程识别问在什么地方、由谁为哪种目的进行。敏感生物分类从特征推断敏感属性。无目标抓图另问如何建立或扩展识别库。三者的限制和例外不可互用。
+
+实时远程生物识别（real-time remote biometric identification）例如摄像头对远处经过的人实时匹配名单。先确认这一用途和条件，再查例外。
+
+[[#2.3 禁止的是哪些具体用法（讲义 p.9–14）|深读与条件]]
+
+#### M07 p.13 · 按八行读行为、例子和禁止理由
+
+表含操纵、利用弱势、社会评分、犯罪画像、某些监控、敏感生物分类、无目标抓图及职场教育情绪识别。后者是相对 p.10–12 的另项。横读无目标抓图一行，公共照片进入人脸检索库，才会使分散图像变成可规模化追踪的资源。具体条件须回条款。
+
+![[IS5113_AI_Ethics_and_Regulations/notes/figures/learning-repair-m07/m07-p13.png]]
+
+课件物理 p.13 原图。
+
+[[#2.3 禁止的是哪些具体用法（讲义 p.9–14）|深读与条件]]
+
+#### M07 p.14 · 三条伦理理由怎样对应原表
+
+自主对应操纵或弱势利用，基本权利对应评分或画像，隐私与尊严对应抓图、生物分类或情绪识别。伦理解释与法律触发条件分别写。
+
+![[IS5113_AI_Ethics_and_Regulations/notes/figures/learning-repair-m07/m07-p14.png]]
+
+课件物理 p.14 原图。
+
+[[#2.3 禁止的是哪些具体用法（讲义 p.9–14）|深读与条件]]
+
+#### M07 p.15 · 为何控制覆盖整个生命周期
+
+课件列风险管理、数据质量、文档日志、人工监督、准确鲁棒网络安全和符合性评定。先明确提供者、部署者各有什么记录和复核权限。
+
+合格评定（conformity assessment）是把满足系统要求的证据交由适用程序检查。先查产品与用途走哪条程序。
+
+[[#2.4 高风险系统为什么需要全生命周期治理（讲义 p.15–23）|深读与条件]]
+
+#### M07 p.16 · 读八类应用的高风险例子
+
+生物、基础设施、教育、就业、必要服务、执法、移民边境、司法和民主程序。例如课件将供水管理列在基础设施，将给分和考试监考列在教育，将候选排名列在就业。先辨用途，再核附件的条件。
+
+Annex III 是法规的用途附件。若属于附件中的招生用途，从 [[#2.4.4 同一所大学的三个招生用途（p.16 法条补充）|三个招生用途]] 判断是辅助整理、实质影响录取，还是对人作画像。
+
+![[IS5113_AI_Ethics_and_Regulations/notes/figures/learning-repair-m07/m07-p16.png]]
+
+课件物理 p.16 原图。
+
+[[#2.4 高风险系统为什么需要全生命周期治理（讲义 p.15–23）|深读与条件]]
+
+#### M07 p.17 · 履历排名进入招聘时的控制
+
+筛履历、排名、建议面试；先查风险、数据质量和偏差，留文档及日志，设置人能覆写的复核，上线后监测。逐条按实际角色与条件配置。
+
+[[#2.4 高风险系统为什么需要全生命周期治理（讲义 p.15–23）|深读与条件]]
+
+#### M07 p.18 · 录取建议要可追溯与复审
+
+课件例用文章、学业和面试产生建议。通过数据验证、监测歧视、审计轨迹及有权者复核处理。学校应说清谁对最终决定负责。
+
+[[#2.4 高风险系统为什么需要全生命周期治理（讲义 p.15–23）|深读与条件]]
+
+#### M07 p.19 · 信贷例中要给解释和申诉
+
+信贷审批、额度和按揭资格各影响机会。解释主要因素、检查数据、常规验证、查偏差和监测，并让客户可发起人工复核。
+
+[[#2.4 高风险系统为什么需要全生命周期治理（讲义 p.15–23）|深读与条件]]
+
+#### M07 p.20 · 把九项义务变成证据
+
+风险找伤害，数据治理查相关，文档供审计，日志保轨迹，人工能干预。准确性测试查给出的结果是否正确，稳健性测试查遇输入干扰或异常时是否仍可靠。网络安全防攻击，监测查上线后变化。
+
+![[IS5113_AI_Ethics_and_Regulations/notes/figures/learning-repair-m07/m07-p20.png]]
+
+课件物理 p.20 原图。
+
+[[#2.4 高风险系统为什么需要全生命周期治理（讲义 p.15–23）|深读与条件]]
+
+#### M07 p.21 · 部署前、中、后分别查什么
+
+上线前测偏差与历史数据，记录用途和影响；运行时人工审核、不可自动拒绝、留日志；这所学校的例子提出上线后年度偏差审计、持续监测、事件报告流程及模型重训复核。
+
+![[IS5113_AI_Ethics_and_Regulations/notes/figures/learning-repair-m07/m07-p21.png]]
+
+课件物理 p.21 原图。
+
+[[#2.4 高风险系统为什么需要全生命周期治理（讲义 p.15–23）|深读与条件]]
+
+#### M07 p.22 · 从评定到上线后监督
+
+课件列成员国监管、符合性评定、注册文档和事件报告。适用主体先说明系统类别与市场范围，再核谁监督及哪个时点适用。
+
+[[#2.4 高风险系统为什么需要全生命周期治理（讲义 p.15–23）|深读与条件]]
+
+#### M07 p.23 · 发现不合规后按风险选择动作
+
+更正、限制使用、撤出市场和召回的作用不同。先查问题是否可修、系统是否仍在运作以及哪种措施能停止伤害。
+
+[[#2.4 高风险系统为什么需要全生命周期治理（讲义 p.15–23）|深读与条件]]
+
+#### M07 p.24 · 最严重档的上限是课件例
+
+原页列 3500 万欧元或全球年营业额 7% 的较高值。实际仍需核公司类型、条款与具体计罚条件，不套同一公式到后两页。
+
+[[#2.5 罚款、透明义务与低风险的边界（讲义 p.24–34）|深读与条件]]
+
+#### M07 p.25 · 不履行控制本身会受审
+
+课件举风险管理、文档、日志、数据治理、监督和市场后监测。不同违反类型和罚款档分开，记录何义务由谁承担。
+
+[[#2.5 罚款、透明义务与低风险的边界（讲义 p.24–34）|深读与条件]]
+
+#### M07 p.26 · 监管提交还要求信息准确
+
+测试结果夸大、隐瞒已知失败和不准的合规文档是三例。单独核提交者、对象、证据与真假，和产品风险分类区分。
+
+[[#2.5 罚款、透明义务与低风险的边界（讲义 p.24–34）|深读与条件]]
+
+#### M07 p.27 · 披露的目的是什么
+
+防人把机器误认成人或把合成内容误认真实。课件与高风险评定对比，实际披露义务还要核具体行为和例外。
+
+[[#2.5 罚款、透明义务与低风险的边界（讲义 p.24–34）|深读与条件]]
+
+#### M07 p.28 · 四类披露与职场情绪识别表
+
+聊天告知、生成或操纵内容可检测、深伪标明及情绪识别通知各有不同角色。表将职场教育情形和其他情境区分，许可须再核是否另被禁止。
+
+例如学校发布一张不存在的卡通图和一段很像真人校长的合成视频。技术标记与向观众披露各由谁核，见 [[#2.5.2 一张卡通图和一段合成校长视频（p.29、34 法条补充）|校园发布示范]]。
+
+![[IS5113_AI_Ethics_and_Regulations/notes/figures/learning-repair-m07/m07-p28.png]]
+
+课件物理 p.28 原图。
+
+[[#2.5 罚款、透明义务与低风险的边界（讲义 p.24–34）|深读与条件]]
+
+#### M07 p.29 · 同一学校五用途对应不同处理
+
+客服聊天、合成营销图或视频的披露条件，课堂情绪推断可能被禁止，录取决定属较高风险例。横着读用途、类别和措施。
+
+![[IS5113_AI_Ethics_and_Regulations/notes/figures/learning-repair-m07/m07-p29.png]]
+
+课件物理 p.29 原图。
+
+[[#2.5 罚款、透明义务与低风险的边界（讲义 p.24–34）|深读与条件]]
+
+#### M07 p.30 · 复用五个用途和类别
+
+与 p.29 的五行同文，继续看聊天、合成媒体、学生情绪推断和录取。无新增治理动作。
+
+[[#M07 p.29 · 同一学校五用途对应不同处理|查看 p.29 同表原图]]
+
+[[#2.5 罚款、透明义务与低风险的边界（讲义 p.24–34）|深读与条件]]
+
+#### M07 p.31 · 专项要求少也应留基础治理
+
+课件称最低风险通常少有强制 AI 专项要求，可采用自愿实践。仍要查个人资料、消费者或安全等独立规则。
+
+[[#2.5 罚款、透明义务与低风险的边界（讲义 p.24–34）|深读与条件]]
+
+#### M07 p.32 · 七类通常低风险的例子
+
+垃圾过滤、游戏、库存、娱乐推荐、拼写、基础分群及非安全关键预测维修。用途一旦改成关键操作，风险和义务就需重查。
+
+[[#2.5 罚款、透明义务与低风险的边界（讲义 p.24–34）|深读与条件]]
+
+#### M07 p.33 · 多套规则怎样叠加
+
+课件举 GDPR、消费者保护、产品安全、版权和反歧视。某项系统没有额外 AI 专项要求，不代表其他处理自动许可。
+
+[[#2.5 罚款、透明义务与低风险的边界（讲义 p.24–34）|深读与条件]]
+
+#### M07 p.34 · 大学常见用途逐类比较
+
+语法检查、图书检索、生成教学插图、学生客服、录取筛查、在线考试情绪推断。比较 p.29，新增加语法、图书和教学图的常见情境。
+
+![[IS5113_AI_Ethics_and_Regulations/notes/figures/learning-repair-m07/m07-p34.png]]
+
+课件物理 p.34 原图。
+
+[[#2.5 罚款、透明义务与低风险的边界（讲义 p.24–34）|深读与条件]]
+
+### 按页跟读 · LuxeStay 与营销监管（p.35–43）
+
+#### M07 p.35 · 个性化体验与顾客知情
+
+Guest360 结合既往住宿、社媒与第三方旅行应用。自愿参加不必然意味着顾客知道收集范围。另有识别贵宾和预测情绪的用法，须分开查。
+
+贵宾（VIP）识别只是找身份。由脸部行为预测心情是另一个推断，所需数据与对顾客的影响不同。
+
+[[#2.6 LuxeStay：先理解案例里的每一次数据使用（讲义 p.35–36）|深读与条件]]
+
+#### M07 p.36 · 读图能看到脸部动作，不能确认心情
+
+先看 d 图的 AU 6 和 AU 12 箭头。两个面部动作单元（action units）分别指向面颊和嘴角。横看 a–f 再往下找 g/h 同列的可见动作，可以描述外观变化。脸部动作能被观察，人的情绪还受语境、文化和个体差异影响。
+
+![[IS5113_AI_Ethics_and_Regulations/notes/figures/learning-repair-m07/m07-p36.png]]
+
+课件物理 p.36 原图。
+
+[[#2.6 LuxeStay：先理解案例里的每一次数据使用（讲义 p.35–36）|深读与条件]]
+
+#### M07 p.37 · 把四类任务分开作答
+
+伦理评价看同意、画像与公平；利益相关者问各方利益和优先次序；业务取舍看满意度、收入与信任；策略给治理、沟通、资料和跨法域动作。
+
+[[#2.7 LuxeStay 四问：完整原题与逐问作答（讲义 p.37–43）|完整原题与中英作答]]
+
+#### M07 p.38 · 课件给义务论方向的分析
+
+从自主、知情同意、操纵和监控分别看。义务论理由是顾客需要足够资料判断，而非只比较利润；给定分析与独立作答分开。
+
+[[#2.7.1 第一问：用义务论评价同意、情绪画像和公平|深读与条件]]
+
+#### M07 p.39 · 六方各承受什么
+
+顾客关心舒适和隐私，员工执行可能不可靠建议，管理层与股东面临收益及法律声誉，监管查规则，社会关注监控常态化。分别找谁有决定权、谁承担风险。
+
+[[#2.7.2 第二问：谁得到好处，谁承担风险|深读与条件]]
+
+#### M07 p.40 · 短期收益和长期信任怎样权衡
+
+满意、复购和差异化是目标。信任、合规及负面报道是风险。用试点和低侵入替代比较相似服务效果，不默认长期信任已经提升。
+
+[[#2.7.3 第三问：怎样平衡业务与伦理|深读与条件]]
+
+#### M07 p.41 · 按五项措施重设计
+
+交互告知及选择、最小化和适当处理、顾客控制台、人工监督、伦理委员会。每项都需说明何时触发、谁执行和如何确认有效。
+
+[[#2.7.4 第四问：把建议落实到负责人和动作|深读与条件]]
+
+#### M07 p.42 · 不同来源与适用条件
+
+课件并列 GDPR、加州 CCPA 和美国 FTC 指导，分别看数据保护、消费者权利与广告行为。不能因三者同列而视为同种义务。
+
+课件认为跨境数字营销需要全球标准。实际可由企业先统一设用途、保留期、顾客选择等底线，再按每个运营地区核当地义务。统一内控与当地法分别留证。
+
+[[#2.7.4 第四问：把建议落实到负责人和动作|跨法域措施与制度来源]]
+
+#### M07 p.43 · 两法关注点不同，也可能同案适用
+
+左列看个人资料、监管、问责、隐私影响和处罚。右列看 AI 风险、监管及市场监督、风险管理与评定和市场限制。先各自完成触发核查。
+
+![[IS5113_AI_Ethics_and_Regulations/notes/figures/learning-repair-m07/m07-p43.png]]
+
+课件物理 p.43 原图。
+
+[[#2.7.5 GDPR 与 AI Act 为什么不能二选一（讲义 p.43）|深读与条件]]
+
+### 按页跟读 · 招聘与员工监控（p.44–56）
+
+#### M07 p.44 · 进入人事与招聘
+
+分隔页。后续比较资料中旧偏差、岗位机会和谁可复核。
+
+#### M07 p.45 · 筛履历与评绩效的治理
+
+先区分入口筛选和在岗表现。历史资料可能偏向既有群体，不透明会让错误难查，需给人工实际复核权限。
+
+[[#2.8 招聘：删除性别字段为什么仍会不公平（讲义 p.44–51）|深读与条件]]
+
+#### M07 p.46 · 系统如何排除本应有机会的人
+
+训练数据历史偏差可能通过代理进入评分，影响合资格候选及团队多样性。先定义公平目标，再查不同群体的通过率和错误。
+
+代理变量（proxy variable）看似在量别的事，但能间接传递群体信息。例如平台若把回复频率当资格，回复时间受照护安排影响的候选人可能少看见岗位。
+
+[[#2.8 招聘：删除性别字段为什么仍会不公平（讲义 p.44–51）|深读与条件]]
+
+#### M07 p.47 · 就业、数据与 AI 风险分别核
+
+课件举美国 EEOC、GDPR、AI Act 与伦理审计。先区分部门的执行角色，再看数据处理、就业差异和高风险用途的适用条件。
+
+[[#2.8 招聘：删除性别字段为什么仍会不公平（讲义 p.44–51）|深读与条件]]
+
+#### M07 p.48 · 把能力与互动行为分开
+
+推荐引擎可用用户直接给的信息、相似用户归类和行为信号。即使移除年龄种族性别，求职频率和互动方式也可能成为代理。排序影响机会曝光。
+
+[[#2.8 招聘：删除性别字段为什么仍会不公平（讲义 p.44–51）|深读与条件]]
+
+#### M07 p.49 · 为何同技能会看到不同岗位
+
+课件称模型按申请或回复概率排序，行为差异导致类似技能人群收到不同展示。广告罚款脚注是另一事件，不能用于认定此招聘系统违法。
+
+[[#2.8 招聘：删除性别字段为什么仍会不公平（讲义 p.44–51）|深读与条件]]
+
+#### M07 p.50 · 统计表用来说明规模
+
+市场柱图比较 2025 年活跃用户估值，右侧并列招聘、申请、求职、招聘人员及公司活动。使用量不能说明公平性或单次排序因果。
+
+先沿柱图读美国 250 百万、印度 150 百万，两估值相差 100 百万。右栏是不同统计口径。每年逾 300 万、月均逾 25 万都指通过平台获聘。与市场活跃人数、申请和求职人数的分母分开。
+
+![[IS5113_AI_Ethics_and_Regulations/notes/figures/learning-repair-m07/m07-p50.png]]
+
+课件物理 p.50 原图。
+
+[[#2.8 招聘：删除性别字段为什么仍会不公平（讲义 p.44–51）|深读与条件]]
+
+#### M07 p.51 · 影响问题与课件结论分开
+
+岗位是否被展示、候选是否进入筛选、个人资料是否妥当使用是不同影响。课件对平等、隐私与鲁棒性提出较强判断，应按其观点归因并核真实证据。
+
+[[#2.8.1 讲义提问及英文参考答法|完整原题与中英作答]]
+
+#### M07 p.52 · 员工行为指标能否测到工作表现
+
+WorkSight 用键入、屏幕和面部数据评估参与和绩效。管理层说有训练与效率收益，员工提出隐私同意和压力。匿名泄露称表情标签可能受文化或神经多样性影响。
+
+材料确认由表情给出“低投入”标签。先查系统是否从面部生物特征推断情绪或意图，还是只按可见行为作评价。这个区别改变法律分类，但两种做法都需要核岗位相关性、隐私和误伤。
+
+[[#2.9 OptiMax：监控能否证明员工投入（讲义 p.52–56）|深读与条件]]
+
+#### M07 p.53 · 框架、利益相关者与政策三问
+
+用一种伦理理论给条件结论，再说明不同角色的收益和损失。最后提出负责机构、权限、监督与退出，并给业务理由。
+
+[[#2.9 OptiMax：监控能否证明员工投入（讲义 p.52–56）|完整原题与中英作答]]
+
+#### M07 p.54 · 课件用功利主义对比收益和伤害
+
+培训、效率与成本对照隐私、压力、偏差和信任。课件给定分析倾向重新设计，实际取舍仍须用可比证据，不能凭标签算出净效用。
+
+[[#2.9.1 第一问：功利主义如何比较而不是只看效率|深读与条件]]
+
+#### M07 p.55 · 员工影响不止是个人数据
+
+员工可能得到培训，也可能失去自主；管理层与股东承担业绩声誉取舍；顾客与社会会受信任及监控常态影响。机构应避免差别性伤害并提供申诉。
+
+[[#2.9.2 第二问：利益相关者与责任|深读与条件]]
+
+#### M07 p.56 · 五项章程如何实施
+
+告知使用、真正可退出、偏差审计、影响就业的人工复核和心理保障。要查员工在权力不对等时能否无代价退出，政策文字本身不足。
+
+[[#2.9.3 第三问：可以执行的政策|深读与条件]]
+
+### 按页跟读 · 组织实践（p.57–59）
+
+#### M07 p.57 · 进入落地与未来
+
+分隔页。下一页给能执行的伦理实践，结页讨论变化。
+
+#### M07 p.58 · 把四项实践设成工作要求
+
+有权人工监督、可理解透明、检测与缓解偏差、培训与利益相关者参与。给出负责角色和复查时点，让投诉能进入流程。
+
+[[#2.10 从原则到长期管理（讲义 p.57–59）|深读与条件]]
+
+#### M07 p.59 · 为何治理要持续更新
+
+法规变化、认证、领导力和技术集成分别形成责任。认证要核范围和时间，公众反馈和用途变化出现时应重新评估。
+
+[[#2.10 从原则到长期管理（讲义 p.57–59）|深读与条件]]
+
+### 原专题深读与完整题面
+
+先按业务动作判断谁的机会、资料或选择受影响，再用专题里的条件判别适用规则。LuxeStay 和 OptiMax 各从背景读到逐问中英参考。LinkedIn 则分开材料内的排序案例与广告执法。
 
 ### 2.1 个性化怎样变成操纵（讲义 p.2–5）
 
@@ -171,7 +609,9 @@ p.22–23 的执行机制包括主管机关监督、适用的评定、注册／�
 
 #### 2.4.3 八类用途怎样落到业务动作（讲义 p.16–21）
 
-法律里的 Article 是条文编号，Annex 是附件清单。Annex I 连接受相关产品法规管理的产品／安全部件路径，Annex III 按特定用途列出高风险路径。它们不是两个模型算法。安全部件指承担安全功能、失效可能危及健康安全的部分。电网负荷的安全控制和办公室打印纸库存预测，不能只因都叫“优化”就同类。
+法律里的 Article 是条文编号，Annex 是附件清单。Annex I 连接产品路径。先查 AI 是所列产品或它的安全部件，再核相应产品法规是否要求第三方合格评定。Annex III 则按特定用途列出高风险路径。
+
+它们不是两个模型算法。安全部件指承担安全功能、失效可能危及健康安全的部分。电网负荷的安全控制和办公室打印纸库存预测，不能只因都叫“优化”就同类。
 
 下表先恢复讲义例，再注明不能省略的范围判断。
 
@@ -190,6 +630,16 @@ p.22–23 的执行机制包括主管机关监督、适用的评定、注册／�
 
 责任分工也要落地：供应商作为提供者应按适用要求处理模型设计、技术资料和相应评定。大学／酒店作为部署者须按适用规则使用系统、安排监督和处理运行反馈。合同可以分工，不能把部署者自己的使用、告知和申诉责任写成“由模型负责”。
 
+
+#### 2.4.4 同一所大学的三个招生用途（p.16 法条补充）
+
+先问系统是否属于 Annex III 的录取用途，才使用 Article 6(3) 的例外。三个版本可按输出判断：
+
+1. 仅按申请的学历层级整理文件。它不排序申请人或改变录取结果。若在附件范围内、对健康、安全或基本权利无显著伤害风险，且只做狭窄程序动作或准备工作，可评估排除。提供者须记录判断，并核登记要求。
+2. 把申请人按资格评分，再交给招生人员参考。若评分实质影响名单，不能用准备工作例外。继续核高风险义务和适用日期。
+3. 用个人资料评估或预测其学习表现等个人特征，即对自然人作画像。若在 Annex III 范围内，即使有人复核，Article 6(3) 的例外仍不能使用。
+
+[欧委会 AI Act Article 6](https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-6)
 
 ### 2.5 罚款、透明义务与低风险的边界（讲义 p.24–34）
 
@@ -221,8 +671,16 @@ p.34 的校园例可复用同一判断：图书馆搜索一般帮助找资料，
 
 深度伪造（Deepfake）在本节指生成／操纵的图像、声音或视频，与真实人物、事物、地点或事件等相似，容易使人误认为真实。一般虚构卡通插图不因用 AI 制作就必然是 deepfake。机器可读标记是供软件识别的格式／标记，面向观众披露是让人明白内容来源，两者不是同一件事。
 
-Article 50 一般自 2026-08-02 适用。合并文本 Article 111(4) 对 **2026-08-02 前已投放的有关生成系统提供者履行 Article 50(2)**，给到 2026-12-02 的特定过渡期。这不是所有聊天、deepfake 披露义务一律延期。当前为 2026-10-28，分析真实系统时必须把投放日期、条款及主体一并确认。
+Article 50 一般自 2026-08-02 适用。合并文本 Article 111(4) 对 **2026-08-02 前已投放的有关生成系统提供者履行 Article 50(2)**，给到 2026-12-02 的特定过渡期。这不是所有聊天、deepfake 披露义务一律延期。本条曾于 2026-10-28 核对，分析真实系统时必须把投放日期、条款及主体一并确认。
 
+
+#### 2.5.2 一张卡通图和一段合成校长视频（p.29、34 法条补充）
+
+学校用生成工具做一张虚构卡通图。先核生成工具提供者是否按 Article 50(2) 提供机器可读且可检测的标记，并核普通辅助编辑等例外。观众能看见的“AI 生成”标签与技术标记各有用途。
+
+学校再发布高度仿真的校长视频，容易被误认为真讲话。若构成深度伪造，学校作为部署者还须按 Article 50(4) 核向观众披露的义务。学校收到的文件带技术标记，并不能代替受众应看到的说明。具体义务再核作品情形和过渡日期。
+
+[欧委会 AI Act Article 50](https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50)
 
 ### 2.6 LuxeStay：先理解案例里的每一次数据使用（讲义 p.35–36）
 
@@ -261,6 +719,8 @@ Background
 > Business vs. Ethics: How should LuxeStay balance its business goals (e.g., loyalty, revenue, brand differentiation) with ethical concerns in AI personalization?
 >
 > Strategic Recommendation: Propose a revised strategy for LuxeStay to ethically implement AI personalization. Include specific actions related to governance, guest communication, data handling, and cross-jurisdictional compliance.
+
+先对四个指令词。用理论框架（framework）说明伦理判断依据。给利益排序（prioritize）并说明理由。权衡（balance）两边实际收益和伤害。策略须包含（include）治理、顾客沟通、资料处理和跨法域合规。
 
 #### 2.7.1 第一问：用义务论评价同意、情绪画像和公平
 
@@ -347,60 +807,35 @@ p.51 还有两个机会关口：系统决定履历能否转交招聘者，错误
 
 <details><summary>讲义 p.48–49 英文案例情境全文</summary>
 
+**p.48 Case Study – LinkedIn**
+
 > Background:
->                •   The goal of recruiting websites is to match qualified candidates with
->                    available positions. To organize all these openings and candidates,
->                    many platforms employ AI-powered recommendation algorithms.
->                    The algorithms, sometimes referred to as matching engines, process
-> CASE STUDY –       information from both the job seeker and the employer to curate a
->                    list of recommendations for each.
 >
-> LINKEDIN       •   Most matching engines are optimized to generate applications.
->                    These systems base their recommendations on three categories of
->                    data: (1) information the user provides directly to the platform; (2)
->                    data assigned to the user based on others with similar skill sets,
->                    experiences, and interests; and (3) behavioral data, like how often a
->                    user responds to messages or interacts with job postings.
->                •   In LinkedIn’s case, these algorithms exclude a person’s name, age,
->                    gender, and race, because including these characteristics can
->                    contribute to bias in automated processes. Even so, the service’s
->                    algorithms could still detect behavioral patterns exhibited by groups
->                    with particular gender identities.
->                •   For example, men often include more skills on their résumés at a
->                    lower degree of proficiency than women, and they often engage
->                    more aggressively with recruiters on the platform.
->                •   The algorithm interprets this variation in behavior and adjusts its
->                    recommendations in a way that inadvertently disadvantages women.
->                •   The AI might be recommending, for example, more senior jobs to
->                    one group of people than another, even if they’re qualified at the
->                    same level
+> - The goal of recruiting websites is to match qualified candidates with available positions. To organize all these openings and candidates, many platforms employ AI-powered recommendation algorithms. The algorithms, sometimes referred to as matching engines, process information from both the job seeker and the employer to curate a list of recommendations for each.
 >
->                Those people might not get exposed to the same
->                opportunities. And that’s really the impact that we’re talking
->                about here.
+> - Most matching engines are optimized to generate applications. These systems base their recommendations on three categories of data: (1) information the user provides directly to the platform; (2) data assigned to the user based on others with similar skill sets, experiences, and interests; and (3) behavioral data, like how often a user responds to messages or interacts with job postings.
 >
->                Background:
->                • Several years ago, the employment-
->                  oriented social media platform – LinkedIn –
->                  discovered that the AI algorithm that was
-> CASE STUDY –     used to match candidates with job
-> LINKEDIN         opportunities was producing biased results
->                  independently from users’ professional
->                  experience and/or skills.
+> - In LinkedIn’s case, these algorithms exclude a person’s name, age, gender, and race, because including these characteristics can contribute to bias in automated processes. Even so, the service’s algorithms could still detect behavioral patterns exhibited by groups with particular gender identities.
 >
->                • More specifically, Linkedin’s AI algorithm
->                  was ranking its candidates based on how
->                  likely they were to apply for a position or
->                  respond to a recruiter.
+> - For example, men often include more skills on their résumés at a lower degree of proficiency than women, and they often engage more aggressively with recruiters on the platform.
 >
->                • As a result, when professionals with similar
->                  experience and skills were scouting for a
->                  job, the algorithm was presenting
->                  /advertising more job posts to men than
->                  women simply because men are more
->                  aggressive in searching out new chances.
->                (LinkedIn was fined 310M Euros for GPDR violation in
->                2024 on its targeted advertising practice)
+> - The algorithm interprets this variation in behavior and adjusts its recommendations in a way that inadvertently disadvantages women.
+>
+> - The AI might be recommending, for example, more senior jobs to one group of people than another, even if they’re qualified at the same level
+>
+> Those people might not get exposed to the same opportunities. And that’s really the impact that we’re talking about here.
+>
+**p.49 Case Study – LinkedIn**
+
+> Background:
+>
+> - Several years ago, the employment-oriented social media platform – LinkedIn – discovered that the AI algorithm that was used to match candidates with job opportunities was producing biased results independently from users’ professional experience and/or skills.
+>
+> - More specifically, Linkedin’s AI algorithm was ranking its candidates based on how likely they were to apply for a position or respond to a recruiter.
+>
+> - As a result, when professionals with similar experience and skills were scouting for a job, the algorithm was presenting/advertising more job posts to men than women simply because men are more aggressive in searching out new chances.
+>
+> (LinkedIn was fined 310M Euros for GPDR violation in 2024 on its targeted advertising practice)
 
 </details>
 
@@ -423,7 +858,11 @@ p.50 标为 late 2025／2025 figures。原列每年超过300万次新招聘／�
 
 ### 2.9 OptiMax：监控能否证明员工投入（讲义 p.52–56）
 
-中文事实链：物流公司 OptiMax 上线 WorkSight，收集按键、屏幕活动和摄像头脸部信息来评价员工。内部文件被举报者披露，显示某些脸部表现会被标“低投入”，员工因隐私、同意和压力提出异议，董事会要求伦理评估。先区分观测与解释：按键数是行为记录，“投入程度”是对工作状态的判断。脸部动作也不是工作贡献本身。讲义案例没有给出已核现实事件出处，按情境讨论。
+中文事实链：物流公司 OptiMax 上线 WorkSight，收集按键、屏幕活动和摄像头脸部信息来评价员工。内部文件被举报者披露，显示某些脸部表现会被标“低投入”，员工因隐私、同意和压力提出异议，董事会要求伦理评估。先区分观测与解释：按键数是行为记录，“投入程度”是对工作状态的判断。脸部动作也不是工作贡献本身。
+
+判断 Article 5(1)(f) 前，要先问系统是否在适用范围内从面部生物特征推断情绪或意图。若只记录可见动作，再按另一组条件查可靠性、数据保护及就业决定的风险。若用动作来推断情绪，继续核工作场所禁令及医疗或安全例外。这里没有系统说明，不能替案例判定它实际属于哪类。
+
+[欧委会 Recital 18](https://ai-act-service-desk.ec.europa.eu/en/ai-act/recital-18) [Article 5](https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-5)讲义案例没有给出已核现实事件出处，按情境讨论。
 
 <details><summary>讲义 p.52 英文原情境</summary>
 
@@ -448,16 +887,18 @@ The company is now facing public scrutiny, and the board has asked the ethics co
 >
 > Policy Recommendation: Propose a policy for responsible AI use in employee monitoring. Justify your recommendation with reference to ethical principles and business considerations.
 
+三问分别要求论证是否正当（justified）、指出对各方的责任（responsibilities），并说明建议的政策为何合乎伦理且适合业务（justify）。
+
 #### 2.9.1 第一问：功利主义如何比较而不是只看效率
 
 ✅ 讲义 p.54 的立场是：隐私、压力、偏见和信任损害超过公司收益，除非重设计，否则不可辩护。讲义没有给损益测量，因此这是给定情境下的定性伦理评价，不是已算出的净效用。
 
-1. 事实：管理层声称效率和培训收益。员工承受监控压力，情绪标签可能偏误。
+1. 事实：管理层声称效率和培训收益。员工承受监控压力，以表情判定“低投入”可能偏误。
 2. 标准：功利主义比较所有受影响者在可行方案下的总体福利，包括持续损害，不能把员工福利权重设成零。
 3. 套用：更少侵入的工作产出指标或自愿培训评估，也可能实现业务目的。因此不能只比较“现系统”与“完全不用 AI”。
-4. 结论：依据材料，暂不支持现行情绪监控，先停用其惩罚性用途、评估替代方案。若能提供可靠收益证据且大幅减少损害，才重新评价。
+4. 结论：依据材料，暂不支持把低投入标签用于考评，先停用其惩罚性用途、评估替代方案。若能提供可靠收益证据且大幅减少损害，才重新评价。
 
-英文参考答案：“WorkSight is not justified on the available evidence. Claimed productivity gains must be weighed against privacy intrusion, stress, biased assessments and loss of trust. OptiMax should compare less intrusive alternatives and suspend emotion-based adverse decisions while evaluating the harms.”
+英文参考答案：“WorkSight is not justified on the available evidence. Claimed productivity gains must be weighed against privacy intrusion, stress, biased assessments and loss of trust. OptiMax should compare less intrusive alternatives and suspend adverse decisions based on facial-expression engagement labels while evaluating the harms.”
 
 #### 2.9.2 第二问：利益相关者与责任
 
@@ -469,11 +910,11 @@ p.55 列员工、管理层、股东、客户及社会。员工可能获得培训
 
 #### 2.9.3 第三问：可以执行的政策
 
-✅ p.56 提出透明、自愿选择、公平审计、人工监督和心理福祉保障。⚪ 笔记展开：先列允许和禁止的用途。移除脸部情绪评分与自动处罚。只保留必要、与岗位相关的指标。分别指定数据、复核和申诉负责人。定期测试群体误伤、员工压力和业务收益，达不到约定标准就暂停。
+✅ p.56 提出透明、自愿选择、公平审计、人工监督和心理福祉保障。⚪ 笔记展开：先列允许和禁止的用途。停用由脸部表现推得的低投入标签和自动处罚。只保留必要、与岗位相关的指标。分别指定数据、复核和申诉负责人。定期测试群体误伤、员工压力和业务收益，达不到约定标准就暂停。
 
-雇佣关系中的自愿选择尤其需要检验：如果拒绝就影响升职，“同意”可能受权力压力。人工复核须能推翻结论，不能把同一情绪分数原样复述。
+雇佣关系中的自愿选择尤其需要检验：如果拒绝就影响升职，“同意”可能受权力压力。人工复核须能推翻结论，不能把同一低投入分数原样复述。
 
-英文参考答案：“The policy should prohibit emotion-based punitive decisions, limit monitoring to necessary job-related data, provide genuine choice where appropriate, and require independent human review and accessible appeals. Regular fairness and well-being checks should determine whether the system is continued, revised or suspended.”
+英文参考答案：“The policy should prohibit punitive decisions based on facial-expression engagement labels, limit monitoring to necessary job-related data, provide genuine choice where appropriate, and require independent human review and accessible appeals. Regular fairness and well-being checks should determine whether the system is continued, revised or suspended.”
 
 改条件：员工长期思考导致按键少，但交付质量高。应检查指标是否测量了工作贡献，而不是教员工增加无意义按键。若适用欧盟范围及有关条款，还须先核工作场所情绪推断禁令。伦理建议不能代替该法律测试。
 
@@ -488,7 +929,7 @@ p.59 把法规变化、认证、领导责任及公众关切列为未来方向。
 
 ## 3. 一图看懂
 
-按以下次序分析本讲任一情境：业务目的 → 数据及推断 → 影响谁 → 伦理标准 → 法域／条款／日期 → 替代方案 → 负责人及纠错。§2.2 的流程图展示法律判断分支。§2.8 的循环说明为什么好看的点击指标也能强化不公平。
+从业务目的追到数据、影响、法律边界、替代方案和纠错责任。[[#2.2 先确定法律管谁，再分类（讲义 p.6–8）|法律分类流程图]]展示判断分支。[[#2.8 招聘：删除性别字段为什么仍会不公平（讲义 p.44–51）|招聘反馈循环]]说明预测准也可能强化机会差异。
 
 ## 4. 速查表
 
@@ -497,11 +938,11 @@ p.59 把法规变化、认证、领导责任及公众关切列为未来方向。
 | 遇到的说法 | 应补问什么 | 回指 |
 |---|---|---|
 | 用户点过同意 | 同意哪些用途，能否真正拒绝 | §2.6–2.7 |
-| 没有性别字段 | 代理变量与目标是否仍分配不等机会 | §2.8 |
-| 有人工负责 | 有无信息、时间、权限改结果 | §2.4 |
-| 低风险所以不用管 | 是否仍受数据、消费者等法律约束 | §2.5 |
+| 没有性别字段 | 代理变量与目标是否仍分配不等机会 | [[#2.8 招聘：删除性别字段为什么仍会不公平（讲义 p.44–51）\|§2.8]] |
+| 有人工负责 | 有无信息、时间、权限改结果 | [[#2.4 高风险系统为什么需要全生命周期治理（讲义 p.15–23）\|§2.4]] |
+| 低风险所以不用管 | 是否仍受数据、消费者等法律约束 | [[#2.5 罚款、透明义务与低风险的边界（讲义 p.24–34）\|§2.5]] |
 | 利润增加所以合理 | 权利底线及其他人的损害呢 | §2.7、2.9 |
-| 最高罚款 7% | 主体、违规档、时间和特别规则呢 | §2.5 |
+| 最高罚款 7% | 主体、违规档、时间和特别规则呢 | [[#2.5 罚款、透明义务与低风险的边界（讲义 p.24–34）\|§2.5]] |
 
 ## 5. 双语术语卡
 
@@ -526,11 +967,11 @@ p.59 把法规变化、认证、领导责任及公众关切列为未来方向。
 
 ## 7. 自测
 
-### 7.1 员工同意就可以情绪打分吗
+### 7.1 员工同意就可以给低投入打分吗
 
 <details><summary>答案与理由</summary>
 
-不能只凭同意判断。先看拒绝是否有惩罚，再看情绪推断是否可靠、是否必要，以及适用法律是否禁止该用途。工作／教育禁令的用途限制不能由同意自动豁免。
+先问分数反映的是可见动作，还是由面部生物特征推断情绪或意图。前者也须证实它与实际工作贡献相关，核拒绝有无惩罚、用途是否必要、是否能纠错。后者若用于适用范围内的工作或教育场所，继续查禁令及医疗或安全例外。同意本身不能代替该检查。
 
 </details>
 
@@ -552,6 +993,70 @@ p.59 把法规变化、认证、领导责任及公众关切列为未来方向。
 
 ## 8. 讲义页码映射
 
+| 物理页 | 课件标题或小标题 | 本页解释 | 原图或处置 |
+|---|---|---|---|
+| p.01 | Ethical and Regulatory Issues in AI for Marketing, Consumer Behavior, and HR | [[#M07 p.01 · 营销与人事中的两类问题\|本页]] | 封面 |
+| p.02 | Ethical & Regulatory Issues in AI for Business | [[#M07 p.02 · 先看用途、风险和责任\|本页]] | 文字／分类条目 |
+| p.03 | AI in Marketing and Consumer Behavior | [[#M07 p.03 · 进入营销与消费者行为\|本页]] | 分隔 |
+| p.04 | Overview of AI in Marketing | [[#M07 p.04 · 个性化和定向都要可核\|本页]] | 文字／分类条目 |
+| p.05 | Ethical Concerns in AI Marketing | [[#M07 p.05 · 四类担忧分别对应动作\|本页]] | 文字／分类条目 |
+| p.06 | EU AI Act | [[#M07 p.06 · 法案目标与适用先分开\|本页]] | 文字／分类条目 |
+| p.07 | EU AI Act Prioritizes Fundamental Rights | [[#M07 p.07 · 从具体风险看受影响权利\|本页]] | 文字／分类条目 |
+| p.08 | EU AI ACT (4 RISK CATEGORIES) | [[#M07 p.08 · 原表按风险、措施和例子读\|本页]] | 原图 M07-p08 |
+| p.09 | EU AI ACT PROHIBITED AI PRACTICES | [[#M07 p.09 · 四组概览对应后续条款条件\|本页]] | 文字／分类条目 |
+| p.10 | EU AI ACT PROHIBITED AI PRACTICES | [[#M07 p.10 · 区分有害操纵和利用弱势\|本页]] | 文字／分类条目 |
+| p.11 | EU AI ACT PROHIBITED AI PRACTICES | [[#M07 p.11 · 为什么只靠人物画像风险大\|本页]] | 文字／分类条目 |
+| p.12 | EU AI ACT PROHIBITED AI PRACTICES | [[#M07 p.12 · 识别身份、分类属性与抓图建库分开\|本页]] | 文字／分类条目 |
+| p.13 | EU AI ACT PROHIBITED AI PRACTICES · Overview of Prohibited AI Practices | [[#M07 p.13 · 按八行读行为、例子和禁止理由\|本页]] | 原图 M07-p13 |
+| p.14 | Why These Bans | [[#M07 p.14 · 三条伦理理由怎样对应原表\|本页]] | 原图 M07-p14 |
+| p.15 | EU AI ACT HIGH RISKS SYSTEMS | [[#M07 p.15 · 为何控制覆盖整个生命周期\|本页]] | 文字／分类条目 |
+| p.16 | Major Categories of High-Risk AI | [[#M07 p.16 · 读八类应用的高风险例子\|本页]] | 原图 M07-p16 |
+| p.17 | EXAMPLES AND GOVERNANCE REQUIREMENTS · Example 1: AI Recruitment System | [[#M07 p.17 · 履历排名进入招聘时的控制\|本页]] | 文字／分类条目 |
+| p.18 | EXAMPLES AND GOVERNANCE REQUIREMENTS · Example 2: AI University Admissions System | [[#M07 p.18 · 录取建议要可追溯与复审\|本页]] | 文字／分类条目 |
+| p.19 | EXAMPLES AND GOVERNANCE REQUIREMENTS · Example 3: Credit Scoring System | [[#M07 p.19 · 信贷例中要给解释和申诉\|本页]] | 文字／分类条目 |
+| p.20 | What Does Governance Actually Require? | [[#M07 p.20 · 把九项义务变成证据\|本页]] | 原图 M07-p20 |
+| p.21 | A University Governance Example | [[#M07 p.21 · 部署前、中、后分别查什么\|本页]] | 原图 M07-p21 |
+| p.22 | Enforcement Structure | [[#M07 p.22 · 从评定到上线后监督\|本页]] | 文字／分类条目 |
+| p.23 | Types of Regulatory Responses | [[#M07 p.23 · 发现不合规后按风险选择动作\|本页]] | 文字／分类条目 |
+| p.24 | FINANCIAL PENALTIES · Violations of Prohibited Practices | [[#M07 p.24 · 最严重档的上限是课件例\|本页]] | 文字／分类条目 |
+| p.25 | FINANCIAL PENALTIES · Non-Compliance with High-Risk Obligations | [[#M07 p.25 · 不履行控制本身会受审\|本页]] | 文字／分类条目 |
+| p.26 | FINANCIAL PENALTIES · Supplying False Information | [[#M07 p.26 · 监管提交还要求信息准确\|本页]] | 文字／分类条目 |
+| p.27 | EU AI ACT LIMITED-RISKS SYSTEMS | [[#M07 p.27 · 披露的目的是什么\|本页]] | 文字／分类条目 |
+| p.28 | EU AI ACT LIMITED-RISKS SYSTEMS · Examples | [[#M07 p.28 · 四类披露与职场情绪识别表\|本页]] | 原图 M07-p28 |
+| p.29 | UNIVERSITY EXAMPLE | [[#M07 p.29 · 同一学校五用途对应不同处理\|本页]] | 原图 M07-p29 |
+| p.30 | UNIVERSITY EXAMPLE | [[#M07 p.30 · 复用五个用途和类别\|本页]] | 复用 M07-p29 |
+| p.31 | EU AI ACT LOW-RISKS SYSTEMS | [[#M07 p.31 · 专项要求少也应留基础治理\|本页]] | 文字／分类条目 |
+| p.32 | Examples of Minimal Risk AI | [[#M07 p.32 · 七类通常低风险的例子\|本页]] | 文字／分类条目 |
+| p.33 | Important Caveat: Other Laws Still Apply | [[#M07 p.33 · 多套规则怎样叠加\|本页]] | 文字／分类条目 |
+| p.34 | UNIVERSITY EXAMPLE | [[#M07 p.34 · 大学常见用途逐类比较\|本页]] | 原图 M07-p34 |
+| p.35 | CASE STUDY – LUXESTAY HOTEL | [[#M07 p.35 · 个性化体验与顾客知情\|本页]] | 文字／分类条目 |
+| p.36 | Facial Expressions of Emotion | [[#M07 p.36 · 读图能看到脸部动作，不能确认心情\|本页]] | 原图 M07-p36 |
+| p.37 | THE ISSUES | [[#M07 p.37 · 把四类任务分开作答\|本页]] | 文字／分类条目 |
+| p.38 | ETHICAL EVALUATION | [[#M07 p.38 · 课件给义务论方向的分析\|本页]] | 文字／分类条目 |
+| p.39 | STAKEHOLDERS IMPACT ANALYSIS | [[#M07 p.39 · 六方各承受什么\|本页]] | 文字／分类条目 |
+| p.40 | BUSINESS VS. ETHICS | [[#M07 p.40 · 短期收益和长期信任怎样权衡\|本页]] | 文字／分类条目 |
+| p.41 | STRATEGIC RECOMMENDATION | [[#M07 p.41 · 按五项措施重设计\|本页]] | 文字／分类条目 |
+| p.42 | REGULATORY FRAMEWORKS IN MARKETING AI | [[#M07 p.42 · 不同来源与适用条件\|本页]] | 文字／分类条目 |
+| p.43 | REGULATORY FRAMEWORKS IN MARKETING AI | [[#M07 p.43 · 两法关注点不同，也可能同案适用\|本页]] | 原图 M07-p43 |
+| p.44 | AI in Human Resources and Hiring | [[#M07 p.44 · 进入人事与招聘\|本页]] | 分隔 |
+| p.45 | Ethical Issues in AI for HR and Hiring | [[#M07 p.45 · 筛履历与评绩效的治理\|本页]] | 文字／分类条目 |
+| p.46 | Issues on AI in Hiring | [[#M07 p.46 · 系统如何排除本应有机会的人\|本页]] | 文字／分类条目 |
+| p.47 | Regulatory Landscape in HR AI | [[#M07 p.47 · 就业、数据与 AI 风险分别核\|本页]] | 文字／分类条目 |
+| p.48 | CASE STUDY – LINKEDIN | [[#M07 p.48 · 把能力与互动行为分开\|本页]] | 文字／分类条目 |
+| p.49 | CASE STUDY – LINKEDIN | [[#M07 p.49 · 为何同技能会看到不同岗位\|本页]] | 文字／分类条目 |
+| p.50 | CASE STUDY – LINKEDIN | [[#M07 p.50 · 统计表用来说明规模\|本页]] | 原图 M07-p50 |
+| p.51 | CASE STUDY – LINKEDIN | [[#M07 p.51 · 影响问题与课件结论分开\|本页]] | 文字／分类条目 |
+| p.52 | CASE STUDY – OPTIMAX CORP | [[#M07 p.52 · 员工行为指标能否测到工作表现\|本页]] | 文字／分类条目 |
+| p.53 | THE ISSUES | [[#M07 p.53 · 框架、利益相关者与政策三问\|本页]] | 文字／分类条目 |
+| p.54 | ETHICAL EVALUATION | [[#M07 p.54 · 课件用功利主义对比收益和伤害\|本页]] | 文字／分类条目 |
+| p.55 | STAKEHOLDER IMPACT | [[#M07 p.55 · 员工影响不止是个人数据\|本页]] | 文字／分类条目 |
+| p.56 | POLICY RECOMMENDATION | [[#M07 p.56 · 五项章程如何实施\|本页]] | 文字／分类条目 |
+| p.57 | Strategies and Future Directions | [[#M07 p.57 · 进入落地与未来\|本页]] | 分隔 |
+| p.58 | Best Practices for Ethical AI Use | [[#M07 p.58 · 把四项实践设成工作要求\|本页]] | 文字／分类条目 |
+| p.59 | Future Directions & Challenges | [[#M07 p.59 · 为何治理要持续更新\|本页]] | 文字／分类条目 |
+
+### 原主题对照
+
 本表列学习去向。实质解释和原题答案均在 §2。课堂覆盖因无转录全部待核。
 
 | 物理页 | 正文去向／处理 |
@@ -566,7 +1071,8 @@ p.59 把法规变化、认证、领导责任及公众关切列为未来方向。
 | 31–34 | §2.5 最低风险实例及其他法律 |
 | 35–36 | §2.6 LuxeStay 完整情境、脸部动作图的证据边界 |
 | 37–41 | §2.7 四问及讲义评价／建议 |
-| 42–43 | §2.7.4 跨法域和 GDPR／AI Act 对照 |
+| 42 | §2.7.4 跨法域策略 |
+| 43 | §2.7.5 跨法域和 GDPR／AI Act 对照 |
 | 44–47 | §2.8 HR 用途、历史偏见、监管角色；p.44 分隔页接主线 |
 | 48–51 | §2.8 LinkedIn 机制、全部规模数字、题目和独立罚款事实 |
 | 52–56 | §2.9 OptiMax 情境、三问及全部讲义评价／政策 |
@@ -591,6 +1097,8 @@ p.59 把法规变化、认证、领导责任及公众关切列为未来方向。
 - 伦理上的伤害／不公判断与实际违法裁定不是同一个命题。
 
 ### 9.4 外部核对来源
+
+🔗 [欧盟委员会 AI Omnibus 生效说明](https://digital-strategy.ec.europa.eu/en/news/ai-omnibus-enters-force)，核对于 2026-11-04。Annex III 高风险规则安排自 2027-12-02 适用，Annex I 产品相关高风险规则安排自 2028-08-02 适用。具体系统继续核条文的适用及过渡条件。
 
 🔗 [EUR-Lex 2026-07-27 合并文本](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02024R1689-20260727)，获取 2026-10-28：Article 2、5、6、50、99、113、Annex III。2026 年增补的 Article 5(1)(ba)/(bb) 等另定 2026-12-02 适用。本讲八项并非当前完整禁令清单。高风险延期安排见 §2.4，不能从法规一般适用日期推出每条同日生效。
 

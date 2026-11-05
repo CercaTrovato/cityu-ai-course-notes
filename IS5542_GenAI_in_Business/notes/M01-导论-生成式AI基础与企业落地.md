@@ -138,43 +138,1063 @@ ELIZA 的历史案例说明：用户可能因流畅互动而高估系统理解�
 - **§2.9–2.10（治理）→ 是 11 月 21 日 Responsible AI 那一讲的骨架**。教授明说 Part 3/4 是"提前给的框架"，11/21 会把它做实
 - **§2.4（四范式）→ 是小组项目的判断依据**。要你论证"为什么这个业务问题该用生成式 AI 而不是一条 if-then 规则"
 
-**重排说明**
+预习先按课件页序读正文。遇到需动手复算、对照课堂原话或做完整题目时，从该页进入主题精读，读完再回页序。上课时用 [[#8. 讲义页码映射|§8 页码表]] 直达当前页。复习时从 [[#4. 速查表|§4 速查]] 回看对应机制，再用 [[#7. 自测|§7 自测]] 检验能否说明理由。
 
-讲义的实际顺序是：
-
-```
-课程行政 p.1–12
-→ 四个误解 p.13–15
-→ AI 不是新的（视频 + 达特茅斯照片）p.16–17
-→ chatbot vs ChatGPT + ELIZA p.18–21
-→ 四范式 p.22–29
-→ 神经网络/监督学习 p.30–31
-→ 深度学习 p.32–40
-→ 语言与 Transformer p.41–52
-→ 模型全景/神经符号/可信 p.53–58
-→ Part 2 六向量 p.59–87
-→ Part 3 治理 p.88–111
-→ Part 4 NIST p.112–117
-```
-
-本笔记做了**两处调整**：
-
-1. **把 p.16–17（AI 不是新的 / 达特茅斯）从 ELIZA 之前挪到 §2.4 开头**
-
-理由：p.16–17 是"四范式"这条历史线的起点，讲义把它和 ELIZA 那段插在一起，导致历史线被切断两次。
-
-合并后 §2.4 是一条完整的时间线。
-2. **把 p.30（神经元图）与 p.41–48（语言表示与 Transformer）合并成 §2.5**
-
-理由：讲义把神经元图放在"深度学习"之前、把语言表示放在 AlexNet 之后，中间隔了 10 页图像识别内容。
-
-但从"学会看懂 LLM"的角度，神经元 → 词向量 → 注意力是一条连续的路，中间不该被 CNN 打断。
-
-其余顺序保留。小节 ↔ 页码的完整对应见 [[#8. 讲义页码映射|§8]]。
+主题精读保留原组织，便于连续理解神经元、词向量和注意力，以及对照课堂转录。逐页跟读按课件原顺序保留每页解释与原图。
 
 ---
 
 ## 2. 正文
+
+### 按课件逐页跟读
+
+下面按 PowerPoint 的实际页序走。每页先解释当前页，再连到后半部分的主题精读。可展开原图辨认细节，课堂原话与较长算例保留在精读小节。
+
+**课程行政 p.1–12**
+
+#### 讲义 p.1 · IS5542 — Generative Artificial Intelligence for Business · Lecture 1
+
+封面。确认正在使用 IS5542 的 Lecture 1；后续页码指 PPTX 的物理顺序。
+
+#### 讲义 p.2 · Introducing myself…
+
+左列把 AlphaGo、AlphaGo Zero 和 AlphaZero 依次放在 2015 年、2017 年 10 月和 12 月。40 天和 9 小时是本页分别给两项演示的训练时间提示，任务和条件不同，不能用两数相除来估算算法加速。裁图显示左侧技术线。原页右侧为 Andy Chow 自我介绍，p.3 另介绍本课教师 Miao Yu。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p002.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p002.png|打开课件图示]]
+
+延伸到[[#先认清人员、课程模块和暂定日历（讲义 p.1–9）|本页关联的主题精读]]。
+
+#### 讲义 p.3 · Course Instructor: Miao Yu
+
+Miao Yu 的研究问题是算法怎样影响行为、怎样把可信 AI 做进实际系统。下半页的 LLM、RAG 与 agent 是贯穿课程的方法。检索增强生成（Retrieval-Augmented Generation，RAG）先找经授权材料再据材料作答。LLM 是大语言模型，agent 可在系统内采取行动。
+
+延伸到[[#先认清人员、课程模块和暂定日历（讲义 p.1–9）|本页关联的主题精读]]。
+
+#### 讲义 p.4 · Course Teaching Assistants
+
+先按事项找助教。Canvas 操作和学生询问看课程活动支援，现场问题看现场支援。实际联络方式直接看课程平台。
+
+#### 讲义 p.5 · Module 1: GenAI Foundations (2–3 Weeks)
+
+基础模块先搞清文本怎样切成 token、怎样结合上下文生成，再讨论设计、训练、评估与限制。学习时可先跟 p.41–52 走一遍从文字到输出的流程，再用 p.53–58 区分能生成与能交付。
+
+延伸到[[#先认清人员、课程模块和暂定日历（讲义 p.1–9）|本页关联的主题精读]]。
+
+#### 讲义 p.6 · Module 2: GenAI Strategy and Rollout (2–3 Weeks)
+
+策略模块把模型用进业务。先确定服务对象和问题，再选技术架构、验收指标与运营职责。p.79–85 的实时语音和财务分析给出两种任务选择。
+
+延伸到[[#先认清人员、课程模块和暂定日历（讲义 p.1–9）|本页关联的主题精读]]。
+
+#### 讲义 p.7 · Module 3: GenAI Industry Use Cases (4 Weeks)
+
+行业案例模块的客座主题包括营销、运营、金融保险及零售。听案例时可先问同一个问题：工具处理哪一步，谁对业务结果负责？p.81 用两种任务说明后一个问题会怎样改变设计。
+
+延伸到[[#先认清人员、课程模块和暂定日历（讲义 p.1–9）|本页关联的主题精读]]。
+
+#### 讲义 p.8 · Module 4: Responsible AI (2 Weeks)
+
+责任 AI 模块将隐私、安全、版权和社会影响放进同一课程框架，也讨论新模型、agent 与多模态。p.95–110 可分别找攻击入口、数据去向、公平性和供应链，再用 p.111–117 按职责组织行动。
+
+延伸到[[#先认清人员、课程模块和暂定日历（讲义 p.1–9）|本页关联的主题精读]]。
+
+#### 讲义 p.9 · Lecture Dates (Tentative)
+
+这张日历是首课暂定版。先定位基础、战略、行业及责任 AI 四段，然后到课程现行通知确认客座日期、教室和提交节点。此页的 10 月安排不能当作后续公告。
+
+延伸到[[#先认清人员、课程模块和暂定日历（讲义 p.1–9）|本页关联的主题精读]]。
+
+#### 讲义 p.10 · Course Assessment
+
+课件把参与和练习 20% 拆为六次反思各 3% 加参与 2%，项目 30%，笔试 50%。现稿 §2.1 分开了 syllabus、讲义与课堂说明；涉及正式评分或通过要求时按各自来源确认。
+
+延伸到[[#考核结构与来源冲突（讲义 p.10、p.12）|本页关联的主题精读]]。
+
+#### 讲义 p.11 · Group Project: Defensible GenAI Application
+
+小组 5–7 人。先写清可辩护的业务问题及受影响的人，再设计数据来源、工作流程和上线计划。展示里要让人看到目标、架构、评估及 demo 或 storyboard；课程后续对可运行 agent 的说明见下方精读。
+
+项目评价关注业务价值、模型质量、成本和风险。Syllabus 另载 15 分钟展示及同伴互评；形式和期限还需对照之后的 Canvas 公告。
+
+延伸到[[#小组项目（讲义 p.11 + 转录 18:26–23:34）|本页关联的主题精读]]。
+
+#### 讲义 p.12 · Written Examination
+
+笔试两小时，占总评 50%；讲义页内的 20%／30%／50% 是选择、短答、论述在笔试内的分法。最后一行说准确题型待教师确认，复习时要练解释和案例应用。
+
+延伸到[[#6.2 考试结构（Syllabus 与讲义 p.12）|本页关联的主题精读]]。
+
+**生成式 AI 基础 p.13–29**
+
+#### 讲义 p.13 · Part 1 · Foundations of Generative AI
+
+Part 1 分隔页的备注已经提出后半讲的问题：模型能力、输入方式、响应速度、系统处理量、成本和治理会互相牵制。p.59 备注重复此提示，p.61 给图，p.81 用不同任务比较。
+
+延伸到[[#2.2 先把四个误解拆掉（讲义 p.13–15）|本页关联的主题精读]]。
+
+#### 讲义 p.14 · Module 1: Foundations · What is Generative AI?
+
+这一页用 Gemini 提示词生成的“AI 大脑”作为示例。图下的 Prompt 是输入，图像是输出。先抓住“给条件、生成新内容”这一步，p.49 再解释语言模型怎样逐个产生文本 token。
+
+生成式人工智能（generative AI）用训练中学到的模式，在给定条件下产生文本、图像等新输出。English reference: Generative AI produces content from learned patterns, often conditioned on an input.
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p014.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p014.png|打开课件图示]]
+
+延伸到[[#2.2 先把四个误解拆掉（讲义 p.13–15）|本页关联的主题精读]]。
+
+#### 讲义 p.15 · 无标题，四张生成式 AI 讨论图
+
+四张图分别问产品范围、智能、AI 历史和输出形式。演讲备注提出四个回答；结合下方完整中英题与解析，分别区分 ChatGPT 与一类系统、可观察能力与理解、现代热潮与 AI 历史，以及文字图像与音视频等输出。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p015.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p015.png|打开课件图示]]
+
+**讲义 p.15 演讲者备注原文**
+
+（保留原语法；原题、原答与下方参考作答分开）
+> 1. “Is it ChatGPT?” — “No GenAI is not just ChatGPT or only a Chatbot”
+> 2. “Is it Intelligent?” — “Yes and No, depends on how you look at it, its a function of probability that predict what is the most likely next word based on the training dataset”
+> 3. “It only create words and pictures?” — “No it can create music, video, model, and many different forms of data”
+> 4. “Is it New?” — “No its not new, we have a long history of AI and the concepts of AI chatbots can trace back to the 1950s”
+
+**逐问中文题意与英文参考答案**（⚪ 参考作答；原备注含讲者简答，本表作限定解释，不是新增官方答案）：
+
+**第 1 问**
+
+GenAI 是否就是 ChatGPT？不是。GenAI 是生成新内容的方法类别；ChatGPT 是其中一个产品，对话界面也可由规则实现。
+
+English reference: No. ChatGPT is one product; generative AI includes systems that generate text, images, audio, video, code, and other outputs. A chatbot interface alone does not identify the underlying architecture.
+
+**第 2 问**
+
+是否“有智能”？要先说明判据。某些任务表现可以很强，但流畅续写不证明类人理解或意识；“预测下一词”只概括语言模型，不能当作所有生成模型的统一操作。
+
+English reference: It depends on the criterion. A language model can perform useful tasks by learning conditional patterns, but fluent output alone does not establish human-like understanding or consciousness. Next-token prediction describes language generation, not every generative modality.
+
+**第 3 问**
+
+是否只产文字图片？不是。输出还可为音乐、视频、代码或其他数据，需由所用模型及系统能力支持。
+
+English reference: No. Depending on the model and system, outputs can also include music, speech, video, code, and other data forms.
+
+**第 4 问**
+
+是否全新？AI 的研究历史早于今日产品；当代能力、规模和可及性有新的进展。备注把 AI 与 chatbot 时间线合写，不能据此说 ELIZA 在 1950s 已发布；ELIZA 是 1966 年案例（§2.3）。
+
+English reference: AI has a long history, while current capabilities and accessibility reflect newer advances in data, compute, architectures, and training. The broad AI agenda dates to the 1950s; this does not date ELIZA to that decade.
+
+延伸到[[#2.2 先把四个误解拆掉（讲义 p.13–15）|本页关联的主题精读]]。
+
+#### 讲义 p.16 · Is AI New?
+
+视频封面从“AI 是不是新事物”引入达特茅斯会议。先辨认会议名称，再在 p.17 对 1956 年的研究议程定位；课件封面本身不给视频完整论证。
+
+AI 的研究历史早于今天的生成式产品。English reference: AI has a much longer research history than today's generative products.
+
+课件视频入口从 3:07 开始，本轮按课件和现有转录核对题面。[达特茅斯会议片段](https://youtu.be/5Ur-Nf85ARw?t=187)
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p016.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p016.png|打开课件图示]]
+
+延伸到[[#2.4.0 起点：1956 年达特茅斯（讲义 p.16–17）|本页关联的主题精读]]。
+
+#### 讲义 p.17 · Is AI New?
+
+照片旁的 1956 年表示 AI 在那时进入明确的研究议程。这个年份用来定位学科形成，并未为现代生成模型标注诞生年；p.22–24 才将后来的发展拆成范式。
+
+课件的 1956 年指早期研究议程。English reference: The 1956 Dartmouth workshop helped establish AI as a research field.
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p017.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p017.png|打开课件图示]]
+
+延伸到[[#2.4.0 起点：1956 年达特茅斯（讲义 p.16–17）|本页关联的主题精读]]。
+
+#### 讲义 p.18 · Is it a chatbot or chatgpt?
+
+这是问“chatbot 还是 ChatGPT”的视频画面。看着人对电脑聊天，最多能判断存在对话界面；p.19–20 给出两套内部实现并说明怎样区分。
+
+仅凭画面可识别出对话界面。结合 p.20 与课堂材料，案例指向规则式 ELIZA。English reference: The interface alone does not identify the system. The surrounding material identifies the example as rule-based ELIZA.
+
+课件视频入口从 0:06 开始，本轮按课件和现有转录核对题面。[对话示例片段](https://www.youtube.com/watch?v=RMK9AphfLco&t=6)
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p018.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p018.png|打开课件图示]]
+
+延伸到[[#2.3.1 chatbot 是品类，ChatGPT 是产品|本页关联的主题精读]]。
+
+#### 讲义 p.19 · Chatbot Is a Category; ChatGPT Is One Product
+
+把“对话机器人（chatbot）”当作一类对话软件，把 ChatGPT 当作具体产品。界面可以接规则、资料检索、预测或生成模型；遇到采购题先确认背后的能力与可用工具。
+
+延伸到[[#2.3.1 chatbot 是品类，ChatGPT 是产品|本页关联的主题精读]]。
+
+#### 讲义 p.20 · ELIZA: A Rule-Based Conversation Program
+
+原图左边是 ELIZA 实际样式的问答，右边三格说明模式匹配、脚本规则、反问式回应。比如用户说男人都一样，程序挑出模式后追问用户觉得两者有什么联系；程序的反问可让人继续说，并不需要推断内心状态。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p020.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p020.png|打开课件图示]]
+
+延伸到[[#2.3.2 ELIZA 与 ELIZA 效应|本页关联的主题精读]]。
+
+#### 讲义 p.21 · ELIZA Showed How Easily Rules Can Feel Conversational
+
+DOCTOR 脚本模拟反映式心理咨询。输入被关键词和句型触发后转成反问；用户可能把句子读成关心和理解。后一种人类反应叫 ELIZA 效应，p.54 将它用于讨论现代对话。
+
+延伸到[[#2.3.2 ELIZA 与 ELIZA 效应|本页关联的主题精读]]。
+
+#### 讲义 p.22 · How AI Evolved: Three Milestones
+
+三个里程碑分别强调规则、从数据学模式、生成新内容。比较时还要看所需资源怎样从手工整理规则变为训练数据、GPU 和大规模模型服务。
+
+延伸到[[#2.4.4 范式四：基础模型，以及"四范式并存"（讲义 p.22–24、p.29、p.52、p.55）|本页关联的主题精读]]。
+
+#### 讲义 p.23 · Three Milestones in AI's Evolution
+
+沿三列看每一阶段擅长做什么：符号规则给可追踪步骤，深度学习擅长感知和预测，生成式 AI 擅长产出文字、图像等。p.24 单列统计机器学习，使“从数据学”与“学习多层表示”能分开讨论。
+
+延伸到[[#2.4.4 范式四：基础模型，以及"四范式并存"（讲义 p.22–24、p.29、p.52、p.55）|本页关联的主题精读]]。
+
+#### 讲义 p.24 · Four AI Paradigms Coexist and Evolve
+
+四栏是四种实践思路，可以在同一系统内同时使用。比如用规则核权限、统计模型判断风险、深度模型识别图片、基础模型草拟说明。此页按解决问题的方法分类，p.29 另外画集合从属关系。
+
+延伸到[[#2.4.4 范式四：基础模型，以及"四范式并存"（讲义 p.22–24、p.29、p.52、p.55）|本页关联的主题精读]]。
+
+#### 讲义 p.25 · Symbolic AI Made Reasoning Explicit
+
+符号 AI 把知识写成明确的 if–then 条件，或在明确状态空间里搜索可行步骤。例如检查每项贷款条件，并保留触发了哪条规则，审查者就能重做决定。
+
+延伸到[[#2.4.1 范式一：符号 AI（讲义 p.25–27）|本页关联的主题精读]]。
+
+#### 讲义 p.26 · Symbolic AI Worked When Rules Were Explicit
+
+符号方案能在结构化任务中稳定复现决策，条件也容易审计。代价在于规则由人维护；来信把“遗失”和“损毁”混在一句时，系统需要已有规则能区分两种情况。
+
+延伸到[[#2.4.1 范式一：符号 AI（讲义 p.25–27）|本页关联的主题精读]]。
+
+#### 讲义 p.27 · Symbolic AI Hit a Scalability Wall
+
+当例外增长、语音与感知不可靠、计算和数据不足时，团队难以用加写规则维持覆盖。规则仍适合明确限制，p.28 用数据估计人不容易逐条写出的模式。
+
+延伸到[[#2.4.1 范式一：符号 AI（讲义 p.25–27）|本页关联的主题精读]]。
+
+#### 讲义 p.28 · Statistical Learning Shifted AI from Rules to Data
+
+统计学习从过去有记录的例子估计规律，再拿训练时留出的数据测试能否推广。上线后如客户行为变化，原训练集可能失去代表性；因此还要监测漂移。
+
+延伸到[[#2.4.2 范式二：统计机器学习（讲义 p.28、p.31）|本页关联的主题精读]]。
+
+#### 讲义 p.29 · AI, ML, and Deep Learning
+
+从外到内读三个框：人工智能（AI）包含机器学习（ML），深度学习（DL）又属于机器学习。人工写规则可属于 AI 而不属于 ML，非深层的预测模型可属于 ML 而不属于 DL。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p029.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p029.png|打开课件图示]]
+
+延伸到[[#2.4.4 范式四：基础模型，以及"四范式并存"（讲义 p.22–24、p.29、p.52、p.55）|本页关联的主题精读]]。
+
+**深度学习 p.30–40**
+
+#### 讲义 p.30 · Neurons
+
+先读上半图。输入由 $a_1$ 到 $a_n$，权重矩阵的每一列对应一个输出 $c_j$。
+
+例如第一列把各输入乘上各自权重再加总，得到第一项输出。Updates 是训练中用输出误差信号调权重，推断一次不需要更新。图把输出画成竖列用于示意。本页输入若按行向量与权重矩阵相乘，结果也是一行。下半图以树突、轴突与末梢帮助辨认输入和输出方向。原图未列偏置或激活函数。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p030.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p030.png|打开课件图示]]
+
+延伸到[[#2.5 从词到向量：语言为什么难表示（讲义 p.30、p.41–48）|本页关联的主题精读]]。
+
+#### 讲义 p.31 · Supervised Learning Maps Labeled Inputs to Predictions
+
+两图都从有标签的例子学习。左边颜色是已知类别，斜线示意如何分开两类；预测答“哪一类”。右边点的纵坐标是连续值，斜线示意估计的趋势；预测答“多少”。先看目标种类，再决定用分类错误还是数值误差评估。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p031.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p031.png|打开课件图示]]
+
+延伸到[[#2.4.2 范式二：统计机器学习（讲义 p.28、p.31）|本页关联的主题精读]]。
+
+#### 讲义 p.32 · Deep Learning Learned Patterns from Data
+
+多层网络会把输入变成逐层加工的表示。例如图像从边缘到局部形状，再到可分类的整体模式；大量数据、并行硬件和更稳定的训练方法让这种特征学习能实际运行。
+
+延伸到[[#2.4.3 范式三：深度学习与表示学习（讲义 p.32–40）|本页关联的主题精读]]。
+
+#### 讲义 p.33 · Deep Learning Made Representation Learning Practical
+
+在图像、语音和语言这类没有整齐表格的资料中，网络可把特征和任务一起学。相比手写每条特征，团队需要准备可代表真实任务的数据、计算能力和可训练的结构。
+
+延伸到[[#2.4.3 范式三：深度学习与表示学习（讲义 p.32–40）|本页关联的主题精读]]。
+
+#### 讲义 p.34 · AlexNet Proved Deep Learning at Scale
+
+图从 224×224 图像出发，卷积和 ReLU 提取、激活局部特征，池化缩小空间尺寸，后续卷积和全连接汇成 1,000 类分数。15.3% 是课件列的 ImageNet 2012 Top-5 错误率，含义见下一页。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p034.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p034.png|打开课件图示]]
+
+延伸到[[#2.4.3 范式三：深度学习与表示学习（讲义 p.32–40）|本页关联的主题精读]]。
+
+#### 讲义 p.35 · AlexNet Proved Deep Learning at Scale
+
+沿金毛照片到右下候选榜读。正确类别只要出现在前五就算 Top-5 命中。图中的 72% 和 18% 等是该页示意分数，15.3% 是前一页所列比赛错误率，两者分母不同。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p035.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p035.png|打开课件图示]]
+
+延伸到[[#2.4.3 范式三：深度学习与表示学习（讲义 p.32–40）|本页关联的主题精读]]。
+
+#### 讲义 p.36 · Inception and Residual Connections Enabled Deeper Networks
+
+跟两条线走。主路径把 $x$ 依次送进卷积与激活，得到变化量 $F(x)$；绿色捷径将原输入送到加号。若这个块无需改变输入，主路学到接近零，后面便近似收到 $x$。图画的是残差块，标题同时提及 Inception。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p036.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p036.png|打开课件图示]]
+
+延伸到[[#2.4.3 范式三：深度学习与表示学习（讲义 p.32–40）|本页关联的主题精读]]。
+
+#### 讲义 p.37 · Compute, Data, and Architecture Reinforced One Another
+
+GPU 并行让更大的训练能跑，带标签的数据让不同方案能比较，卷积、ReLU、dropout 与后来发展的残差帮助训练。按三列找各自解决的限制，避免把突破归因于一种部件。
+
+延伸到[[#2.4.3 范式三：深度学习与表示学习（讲义 p.32–40）|本页关联的主题精读]]。
+
+#### 讲义 p.38 · Geoffrey Hinton Helped Make Deep Learning Practical
+
+本页把 Hinton 的表示学习、反向传播研究和 Toronto 团队联系起来。用 p.34–37 的实例区分“训练想法”“实验证据”与“奖项”，并读 p.39 对照时间线。
+
+延伸到[[#2.4.3 范式三：深度学习与表示学习（讲义 p.32–40）|本页关联的主题精读]]。
+
+#### 讲义 p.39 · Who is Geoffrey Hinton?
+
+信息图的左边是教育与任职，右边是技术贡献与获奖。先沿右上读表示与训练，再回到左下看工作路径，最后找右下的 2018 Turing Award 和 2024 物理学奖。其生涯节点用于定位，不当作技术原理。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p039.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p039.png|打开课件图示]]
+
+延伸到[[#2.4.3 范式三：深度学习与表示学习（讲义 p.32–40）|本页关联的主题精读]]。
+
+#### 讲义 p.40 · Watch: Geoffrey Hinton’s Nobel Lecture
+
+观看题要求说明神经网络研究怎样变成可扩展学习系统。把表示学习、数据规模、并行硬件和可训练结构连起来；以下保留原要求和基于 p.32–39 的中英参考作答，视频内容与课件推论分开。
+
+课件视频入口从 0:23 开始，本轮按课件和现有转录核对题面。[Hinton 诺贝尔演讲](https://www.youtube.com/watch?v=-f5WQAk3dYo&t=23s)
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p040.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p040.png|打开课件图示]]
+
+**讲义原任务**：“Watch: Geoffrey Hinton’s Nobel Lecture”；“Use this segment to connect the history of neural networks with the methods that made modern foundation models practical.”；“Listen for how research ideas became scalable learning systems.”
+
+中文题意：把神经网络历史与可扩展学习方法联系起来。⚪ 参考作答（依据本讲 p.32–39，并非视频内容核验）：多层表示学习改变特征来源，数据、GPU 计算和可训练架构共同让大模型成为实际系统；残差是后来改善深网训练的方法，不能说 AlexNet 已用了残差。English reference: “Course slides 32–39 connect representation learning with data, parallel compute, and trainable architectures. Their interaction made large-scale learning practical; residual connections are a later contribution, not an AlexNet component.” 参考作答基于本讲 p.32–39。外链视频未复看。
+
+**从文本到生成 p.41–58**
+
+#### 讲义 p.41 · Language Meaning Depends on Context
+
+同一个 bank 可以指银行或河岸；附近出现 loan 与 river 时分别提供不同线索。语序与前文指代同样影响解读，p.42–46 接着讲怎样把这些差异表达成数字。
+
+延伸到[[#2.5.1 语言与数值特征表的根本差别（讲义 p.41）|本页关联的主题精读]]。
+
+#### 讲义 p.42 · One-Hot Encoding Made Words Sparse and Isolated
+
+在表中找 bank、river、money、loan、water 五行。每行只有本词对应列为 1。bank 和 loan 的编码位置虽不同，bank 到 loan 与到 river 的普通几何距离一样；这就是“能编号，不能表达语义相似”。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p042.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p042.png|打开课件图示]]
+
+延伸到[[#2.5.2 one-hot → token → 嵌入 → 上下文向量（讲义 p.42–43）|本页关联的主题精读]]。
+
+#### 讲义 p.43 · Input Processing Turns Text into Contextual Vectors
+
+沿四格读：输入文本先切成 token，再查到稠密嵌入向量，最后让位置和上下文更新向量。图中的 Gener / ative / AI 是示意切分；换一种 tokenizer 可得到不同拆法。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p043.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p043.png|打开课件图示]]
+
+延伸到[[#2.5.2 one-hot → token → 嵌入 → 上下文向量（讲义 p.42–43）|本页关联的主题精读]]。
+
+#### 讲义 p.44 · Why Recurrent Models Lose Long Context
+
+箭头表示状态依赖。读到末尾词时，第一词的信息必须随中间的隐藏状态逐步传递，距离拉长可能让旧线索难以保持，也限制了同一序列的并行训练。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p044.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p044.png|打开课件图示]]
+
+延伸到[[#2.5.3 循环网络的瓶颈与 Transformer（讲义 p.44–46、p.48）|本页关联的主题精读]]。
+
+#### 讲义 p.45 · Transformers Shifted AI Toward Generation
+
+上方句子各位置进入多头自注意力（multi-head self-attention），下方得到各位置的上下文表示。多个头可学习不同关系，例如一个位置更关注动作，另一个更关注相关对象；p.46 展示 loan 这个位置。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p045.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p045.png|打开课件图示]]
+
+延伸到[[#2.5.3 循环网络的瓶颈与 Transformer（讲义 p.44–46、p.48）|本页关联的主题精读]]。
+
+#### 讲义 p.46 · Self-Attention Connects Tokens During Parallel Training
+
+下排 loan 是当前要更新的位置；上排 bank、approved 的彩线指向它，表示这两个位置提供显著线索。课件未给权重数值，颜色没有给出可量化比例。模型是否能看后文还取决于注意力遮罩。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p046.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p046.png|打开课件图示]]
+
+延伸到[[#2.5.3 循环网络的瓶颈与 Transformer（讲义 p.44–46、p.48）|本页关联的主题精读]]。
+
+#### 讲义 p.47 · LLM Architecture Balances Attention, Context, and Serving
+
+从左到右分三件事：token 与嵌入表示输入，多头注意力组合语境，上线时的上下文长度、解码、批处理与硬件决定用户实际等多久和花多少钱。第三件事会在 p.67–78 分开度量。
+
+延伸到[[#2.5.3 循环网络的瓶颈与 Transformer（讲义 p.44–46、p.48）|本页关联的主题精读]]。
+
+#### 讲义 p.48 · Transformers Remove Recurrence in Training
+
+左边 A→B→C→D 要等前一步隐藏状态；右边同一层可并行计算允许的 token 关系。对下一词训练仍要遵守遮罩限制；真正生成时，新词还没生成，p.49 的循环仍需一步一步走。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p048.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p048.png|打开课件图示]]
+
+延伸到[[#2.5.3 循环网络的瓶颈与 Transformer（讲义 p.44–46、p.48）|本页关联的主题精读]]。
+
+#### 讲义 p.49 · LLMs Generate One Token at a Time
+
+顺图从提示词得到上下文、算下一个 token 的概率、选一个并接到输入后再算。比如先选 mat，下一轮根据包括 mat 在内的前缀算概率；终止条件满足时停止。右端 Append + repeat 是循环入口。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p049.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p049.png|打开课件图示]]
+
+延伸到[[#2.6.1 自回归生成与解码（讲义 p.49–50）|本页关联的主题精读]]。
+
+#### 讲义 p.50 · Decoding Samples from a Next-Token Distribution
+
+给定 The cat sat on the…，图列 mat 80%、hat 15%、floor 5%。选最大值会取 mat，按原分布抽样也可能取 hat 或 floor。百分比表示候选在示意分布中的权重，不能当作事实正确率。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p050.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p050.png|打开课件图示]]
+
+延伸到[[#2.6.1 自回归生成与解码（讲义 p.49–50）|本页关联的主题精读]]。
+
+#### 讲义 p.51 · An LLM Is a Large, Pretrained Language Model
+
+先分清规模、预训练和适配。预训练从大量数据学出可复用的规律，部署可以只改提示和检索资料，也可以再训练或接工具。通用适配很常见，讲义没有把它作为每个 LLM 的必要条件。
+
+延伸到[[#2.6.2 LLM 的定义：规模 · 预训练 · 适配（讲义 p.51）|本页关联的主题精读]]。
+
+#### 讲义 p.52 · 2017–Present: Foundation Models Expanded Generation
+
+2017 年是 Transformer 时代的标记。注意力与并行训练、扩大预训练、跨任务复用促成共享模型平台；之后普及的聊天界面让更多业务直接使用自然语言输入。此前已经有生成模型。
+
+延伸到[[#2.4.4 范式四：基础模型，以及"四范式并存"（讲义 p.22–24、p.29、p.52、p.55）|本页关联的主题精读]]。
+
+#### 讲义 p.53 · Watch: What Makes AI Generative?
+
+观看页问“什么使 AI 具有生成性”。用 p.49–50 的例子说明模型从学到的分布产生新输出，并区分已有选项的分类与生成文本／图像等。下方保留完整任务与参考作答，未复看视频。
+
+课件视频入口从 48:26 开始，本轮按课件和现有转录核对题面。[生成式 AI 访谈](https://www.youtube.com/watch?v=Px3HfB2UkyU&t=2906s)
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p053.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p053.png|打开课件图示]]
+
+**p.53 英文任务及参考作答**
+
+原文：“Watch: What Makes AI Generative?”；“Generative models produce new outputs from learned probability distributions instead of selecting only from fixed responses.”；“Relate the explanation to tokens, decoding, and multimodality.”（讲义 p.53）
+
+中文题意：观看并把“为什么是生成”联系到 token、解码与多模态。⚪ 参考作答：语言模型把输入变成 token 及向量，按当前上下文算下一 token 分布，再由解码选择、追加并重复；不同模态还可采用不同内容表示与生成算法，不能把每个图像或视频模型都说成同一套文字 next-token 流程。生成的是学习分布下的新输出，不限于固定菜单回复，但可能记忆、复现训练内容，不能保证每个输出都原创。
+
+English reference: “For language generation, token representations condition a next-token distribution, and decoding selects outputs step by step. Generative systems can also produce non-text modalities using modality-specific representations and generation methods. New generation does not guarantee originality or factual accuracy.”
+
+延伸到[[#2.7.1 两段视频（讲义 p.53–54）⏭️|本页关联的主题精读]]。
+
+#### 讲义 p.54 · Discussion: Why Can AI Feel Alive?
+
+讨论页追问流畅聊天为何让 AI 像活物、作更强结论还缺什么证据。先说人怎样把语气和记忆感解释成理解，再说明还需独立、可复现的证据与可证伪的判据；下方保留原题与中英参考作答。
+
+课件视频入口从 0:43 开始，本轮按课件和现有转录核对题面。[拟人化与意识讨论的访谈](https://www.youtube.com/watch?v=oMpNIz9AIu0&t=43s)
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p054.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p054.png|打开课件图示]]
+
+**p.54 英文原题及英文参考**
+
+原题：“Discussion: Why Can AI Feel Alive?”；情境：“Fluent conversation can trigger anthropomorphism, but social behavior is not evidence of consciousness or genuine understanding.”；提问：“What evidence would be needed before making a stronger claim?”（讲义 p.54）
+
+中文限定词：stronger claim 是比“感觉像活的”更强的意识或理解主张。上文已给中文分析；英文参考：“Fluent conversation alone is insufficient. A stronger claim would require clearly defined, independently testable criteria, reproducible evidence, and tests of alternatives such as imitation, prompting, and anthropomorphism. This slide provides neither a consensus consciousness test nor evidence establishing consciousness.”
+
+**p.54 讨论题直接作答**
+
+⚪ 笔记参考，讲义无标准答案。要从“说话像人”进一步判断主观体验或真正理解，先提出可检验的判据。
+
+1. 判据须区分“照训练模式生成流畅话语”与声称的属性。
+2. 在不同任务、时间和系统上重复验证。
+3. 排除模仿语料、提示诱导和人的拟人化等替代解释。
+
+流畅对话本身只证明输出像对话；
+
+目前这张讲义没有给出可据以确认意识的实验或公认判据，所以不能把“感觉活着”写成“已经证明有意识”。
+
+延伸到[[#2.7.1 两段视频（讲义 p.53–54）⏭️|本页关联的主题精读]]。
+
+#### 讲义 p.55 · The GenAI Landscape Is a Portfolio, Not a Ranking
+
+七张卡是课件当时列的产品／模型相关名称。排列没有分数或名次；先区分面向使用者的产品与背后的模型，再按任务能力、部署控制和经济性比较。Copilot 的课堂辨析见下文。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p055.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p055.png|打开课件图示]]
+
+延伸到[[#2.4.4 范式四：基础模型，以及"四范式并存"（讲义 p.22–24、p.29、p.52、p.55）|本页关联的主题精读]]。
+
+#### 讲义 p.56 · Neuro-Symbolic AI Combines Patterns and Logic
+
+神经部分能从图像或文字找模式，符号部分把明确约束变成可审计的规则。比如模型从账单照片提取金额，再由规则核批准上限。两部分的错误与责任要分别记录。
+
+延伸到[[#2.7.4 神经符号 AI（讲义 p.56）|本页关联的主题精读]]。
+
+#### 讲义 p.57 · Opacity Changes How Enterprises Establish Trust
+
+左列是难直接观察的模型内部原因，右列是可审计的输入、工具调用、审批与评估。可先复查一条错误答复用了哪版政策、哪次调用和哪次检查，再判定系统中哪一步可修。
+
+延伸到[[#2.7.2 不透明性：可信从哪里来（讲义 p.57）|本页关联的主题精读]]。
+
+#### 讲义 p.58 · Trustworthy AI Combines Capability, Evidence, and Control
+
+可信系统要能做任务（能力），能指出用了什么材料（证据），并能限制谁在何种情形采取何种行动（控制）。比如政策客服既要答对，也要保留政策版本，并对例外转人工。
+
+延伸到[[#2.7.3 可信 AI 三支柱（讲义 p.58）|本页关联的主题精读]]。
+
+**企业系统设计 p.59–87**
+
+#### 讲义 p.59 · Part 2 · Designing Enterprise GenAI Systems
+
+Part 2 分隔页。备注把企业架构描述成任务匹配、时延、系统容量、成本及治理的取舍；p.61 的六轴把备注里的取舍展开。
+
+延伸到[[#2.8.1 框架本身（讲义 p.59–63、p.86–87）|本页关联的主题精读]]。
+
+#### 讲义 p.60 · Enterprise LLMs Require Multi-Objective Design
+
+先写任务需要哪种输入输出、允许用户等多久、系统要服务多少人、有哪些成本与治理限制，再比较模型。一个公开榜单得分解决不了上线约束。
+
+延伸到[[#2.8.1 框架本身（讲义 p.59–63、p.86–87）|本页关联的主题精读]]。
+
+#### 讲义 p.61 · Six Vectors Shape the Architecture Trade Space
+
+从中心 Mission Fit 向外看六个方向。模态决定可处理什么输入，延迟决定个人等多久，性能决定完成质量，上下文决定能用哪些材料，吞吐决定系统处理量，成本决定能否持续。改变一个方向可能影响另一项，比如加长上下文也增加等待和成本。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p061.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p061.png|打开课件图示]]
+
+延伸到[[#2.8.1 框架本身（讲义 p.59–63、p.86–87）|本页关联的主题精读]]。
+
+#### 讲义 p.62 · The Best Model Is Not the Biggest Model
+
+将六向量成对归类：模态与延迟是体验，性能与有效上下文是质量，吞吐与成本是运营经济性。模型参数数量无法替代这些实测结果。
+
+延伸到[[#2.8.1 框架本身（讲义 p.59–63、p.86–87）|本页关联的主题精读]]。
+
+#### 讲义 p.63 · Mission Fit Replaced Model-Leaderboard Thinking
+
+沿三栏从榜单问题，转到任务约束，再到架构决定。财务问答要先确认来源和算错代价，再选检索、工具、部署与审核；最低可接受要求排除不适合的方案。
+
+延伸到[[#2.8.1 框架本身（讲义 p.59–63、p.86–87）|本页关联的主题精读]]。
+
+#### 讲义 p.64 · Two Ways to Build Multimodal Systems
+
+流水线（pipeline）图中，文本、图像、音频、视频各经专用编码器，再汇入 LLM + tools 走向决策。比如音频先转成系统可用的表示，某一环出错可单独定位，但也要测试环节交接与累计延迟。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p064.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p064.png|打开课件图示]]
+
+延伸到[[#2.8.2 向量一 · 模态（讲义 p.64–66）⏭️|本页关联的主题精读]]。
+
+#### 讲义 p.65 · Pipeline vs Native Multimodality: Key Trade-offs
+
+原生多模态（native multimodality）图从四种输入一起进入同一模型并产出联合回应。用同一张理赔照片配口头描述来对照 p.64：联合建模可让交互更直接，但较难单独替换某个模态的处理部件。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p065.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p065.png|打开课件图示]]
+
+延伸到[[#2.8.2 向量一 · 模态（讲义 p.64–66）⏭️|本页关联的主题精读]]。
+
+#### 讲义 p.66 · Multimodality Expands the Business Interface
+
+图下的 Claim photo + form → case record 是本页的案例。照片提供损坏线索，表格给结构化字段，系统把两者关联后生成理赔记录或调工具。先想缺少照片会漏掉哪项证据，再决定是否需要跨模态。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p066.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p066.png|打开课件图示]]
+
+延伸到[[#2.8.2 向量一 · 模态（讲义 p.64–66）⏭️|本页关联的主题精读]]。
+
+#### 讲义 p.67 · Latency Has Two Components
+
+从左读请求到首 token 的等待（time to first token, TTFT），再看解码阶段相邻 token 的时间间隔（inter-token latency, ITL）。T1 到 T5 给出时间顺序。Prefill 是服务端处理输入的一段，实际端到端 TTFT 还可能含排队和网络。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p067.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p067.png|打开课件图示]]
+
+延伸到[[#2.8.3 向量二 · 延迟：TTFT 与 ITL（讲义 p.67–69）|本页关联的主题精读]]。
+
+#### 讲义 p.68 · Latency Splits into Prefill and Decode
+
+沿用 p.67 同一结构图。用它排查“半天才开始、开始以后很快”的情况，首先看首 token 前的耗时；如果起得快、后面却一个字一个字慢，重点看解码间隔。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p067.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p067.png|打开课件图示]]
+
+延伸到[[#2.8.3 向量二 · 延迟：TTFT 与 ITL（讲义 p.67–69）|本页关联的主题精读]]。
+
+#### 讲义 p.69 · Two Useful Inference Patterns
+
+摘要、草拟和提取可以先测试快速生成。需要多步核算、写代码或排查复杂条件时，再试允许分解、检查和回退的推理流程；它可能提高质量，同时增加时间与成本。
+
+延伸到[[#2.8.3 向量二 · 延迟：TTFT 与 ITL（讲义 p.67–69）|本页关联的主题精读]]。
+
+#### 讲义 p.70 · Retrieval and Reasoning Solve Different Problems
+
+检索（retrieval）回答去哪里找到经批准的证据，推理（reasoning）回答怎样用证据、工具和规则得到结论。比如先查退货政策，再判断商品是否超期；少任何一步都可能答错。
+
+延伸到[[#2.8.4 向量三 · 性能：检索 ≠ 推理（讲义 p.70）|本页关联的主题精读]]。
+
+#### 讲义 p.71 · Maximum Context Is Not Always Usable Context
+
+中间迷失（lost in the middle）图的横轴是相关材料在输入中的位置，纵轴是准确率。沿蓝线从前端到中间再到末端，曲线在中间更低；红虚线是示意参照。先按图读现象，再用 p.72 的协议检查自己的任务，不能直接照用这条曲线的百分比。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p071.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p071.png|打开课件图示]]
+
+延伸到[[#2.8.5 向量四 · 上下文：最大 ≠ 可用（讲义 p.71–73）|本页关联的主题精读]]。
+
+#### 讲义 p.72 · Measure Effective Context Empirically
+
+保持问题和正确证据不变，先把证据放在前、中、后，再改变文件长度和干扰文本；分别记答对率、引文质量和该拒答时是否拒答。实测结果帮助决定检索重排与压缩策略。
+
+延伸到[[#2.8.5 向量四 · 上下文：最大 ≠ 可用（讲义 p.71–73）|本页关联的主题精读]]。
+
+#### 讲义 p.73 · Compare Context Windows Carefully
+
+蓝、橙、紫三条分别标 26k、43k、62k token，代表示意容量上限。换了 tokenizer，同一文件占用的 token 数可不同；要公平比较，还需让三种配置在同一业务任务与相同证据布局下实测。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p073.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p073.png|打开课件图示]]
+
+延伸到[[#2.8.5 向量四 · 上下文：最大 ≠ 可用（讲义 p.71–73）|本页关联的主题精读]]。
+
+#### 讲义 p.74 · Latency and Throughput Are Different
+
+低延迟看一个请求要等多久，高吞吐看同一时段系统完成多少请求。多人一起等队可能使每人变慢，而设备每秒完成总量反而升高；p.75 画出这条取舍。
+
+延伸到[[#2.8.6 向量五、六 · 吞吐与成本（讲义 p.74–78）|本页关联的主题精读]]。
+
+#### 讲义 p.75 · Batching Trades Per-Request Latency for Fleet Throughput
+
+图中的 R1 到 R6 汇进动态批次，再交给 GPU。共同运行能减少设备空闲，但第一个到达的请求可能为等同批而多等一会儿。服务承诺应同时核尾部等待和每秒处理量。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p075.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p075.png|打开课件图示]]
+
+延伸到[[#2.8.6 向量五、六 · 吞吐与成本（讲义 p.74–78）|本页关联的主题精读]]。
+
+#### 讲义 p.76 · Cost Has Hidden Multipliers
+
+成本图把输入 token、输出 token、检索与工具、托管、人和控制都算进总成本。可先数一次请求经过哪些步骤，再乘实际请求量，另加托管和审核等运营支出。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p076.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p076.png|打开课件图示]]
+
+延伸到[[#2.8.6 向量五、六 · 吞吐与成本（讲义 p.74–78）|本页关联的主题精读]]。
+
+#### 讲义 p.77 · Model Cost Depends on I/O and Deployment
+
+本页复用 p.76 的五项。实际两种任务即便调用同一模型，也可能因输出长度、重试次数、检索次数或部署选择不同而花费不同。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p076.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p076.png|打开课件图示]]
+
+延伸到[[#2.8.6 向量五、六 · 吞吐与成本（讲义 p.74–78）|本页关联的主题精读]]。
+
+#### 讲义 p.78 · Calculate Workload-Specific Total Cost
+
+变动费用随 token、检索和工具调用变化，部署总拥有成本还含硬件、用电、人力和监控。先定代表性负载，再比较 API 和自部署，没有能套到所有业务的回本点。
+
+延伸到[[#2.8.6 向量五、六 · 吞吐与成本（讲义 p.74–78）|本页关联的主题精读]]。
+
+#### 讲义 p.79 · Start Architecture Design with the Mission
+
+把需求分成用户体验、输出质量和运营约束。先问失败后果哪项最重，再设明确阈值，例如人工复核之前不得向客户确认审批结果。
+
+延伸到[[#2.8.7 从任务出发：两个架构与复合 AI（讲义 p.79–85）|本页关联的主题精读]]。
+
+#### 讲义 p.80 · Two Missions Need Different Architectures
+
+实时语音优先压等待并支持自然互动，财务分析优先证据、推理和正确率。同一模型家族可接入两套不同流程，因为用户能容忍的失败不同。
+
+延伸到[[#2.8.7 从任务出发：两个架构与复合 AI（讲义 p.79–85）|本页关联的主题精读]]。
+
+#### 讲义 p.81 · Voice Agent vs. Financial Analysis
+
+左栏短上下文、流式语音与转人工，适合实时互动；右栏长证据集、检索加计算和人工批准，适合财务分析。先读两栏的 Primary，再对照 p.82–83 各环节。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p081.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p081.png|打开课件图示]]
+
+延伸到[[#2.8.7 从任务出发：两个架构与复合 AI（讲义 p.79–85）|本页关联的主题精读]]。
+
+#### 讲义 p.82 · Voice-Agent Architecture Starts with Interaction Latency
+
+沿图从说话到流式语音识别（ASR）、快速语言模型、流式语音合成（TTS），必要时转人工。识别与合成能在内容仍陆续到达时处理；被打断或无法处理时要另定转接条件。响应目标来自用户测试。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p082.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p082.png|打开课件图示]]
+
+延伸到[[#2.8.7 从任务出发：两个架构与复合 AI（讲义 p.79–85）|本页关联的主题精读]]。
+
+#### 讲义 p.83 · Financial Analysis Prioritizes Evidence and Verification
+
+按图先接问题、取证据、用语言模型和计算器分析、检查引用、交人工批准。比如先查对应日期的财报，再让计算器处理数字，最后核引用指向同一时期的数据。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p083.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p083.png|打开课件图示]]
+
+延伸到[[#2.8.7 从任务出发：两个架构与复合 AI（讲义 p.79–85）|本页关联的主题精读]]。
+
+#### 讲义 p.84 · Compound AI Matches Requests to Components
+
+路由器（router）从用户请求分支到小模型、知识与检索、代码与工具或人工。方向取决于任务所需能力和风险；例如查政策走检索，算金额走工具，高风险例外给人工。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p084.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p084.png|打开课件图示]]
+
+延伸到[[#2.8.7 从任务出发：两个架构与复合 AI（讲义 p.79–85）|本页关联的主题精读]]。
+
+#### 讲义 p.85 · A Router Assigns Work to the Right Specialist
+
+本页复用 p.84 的路由图。实际请求可能要顺次用多个分支，例如先取条款再算金额；课件用分支帮助选组件，完整执行顺序仍要由业务工作流规定。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p084.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p084.png|打开课件图示]]
+
+延伸到[[#2.8.7 从任务出发：两个架构与复合 AI（讲义 p.79–85）|本页关联的主题精读]]。
+
+#### 讲义 p.86 · Six Principles for Architecture Decisions
+
+回到 p.61 的 Mission Fit 六轴。复盘 p.82 与 p.83，先分别指出哪条轴上的失误代价最大，再说明为它接受哪项延迟、成本或流程约束。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p061.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p061.png|打开课件图示]]
+
+延伸到[[#2.8.1 框架本身（讲义 p.59–63、p.86–87）|本页关联的主题精读]]。
+
+#### 讲义 p.87 · Optimize for Fitness, Not Raw Strength
+
+部署后用真实流量和样本重测六轴，查看失败集中在哪种请求，决定是改路由、换模型还是补控制；需求变化会再次触发测量。
+
+延伸到[[#2.8.1 框架本身（讲义 p.59–63、p.86–87）|本页关联的主题精读]]。
+
+**治理概率式系统 p.88–111**
+
+#### 讲义 p.88 · Part 3 · Governing Probabilistic AI
+
+Part 3 分隔页的备注把确定行为、解码和上下文引起的变化，与上线后的测试和监控连起来。一次 demo 只看到一次结果；p.89–90 说明还要收集什么。
+
+延伸到[[#2.9.1 确定性 vs 概率性：为什么要补输出分布评估（讲义 p.88–90）|本页关联的主题精读]]。
+
+#### 讲义 p.89 · Generative AI Produces Probability-Driven Outputs
+
+同一配置下，规则程序可沿同一逻辑走，生成模型则先估计候选概率。测试仍要查确定的组件，同时要多次取样观察不同输出及其业务后果。
+
+延伸到[[#2.9.1 确定性 vs 概率性：为什么要补输出分布评估（讲义 p.88–90）|本页关联的主题精读]]。
+
+#### 讲义 p.90 · Probabilistic Outputs Require a Different Control Model
+
+把波动的原因分开核：采样和解码、输入和上下文、模型版本和数据差异。逐一固定其余条件并重复试，再用监控查上线漂移，对高影响决定保留人工复核。
+
+延伸到[[#2.9.1 确定性 vs 概率性：为什么要补输出分布评估（讲义 p.88–90）|本页关联的主题精读]]。
+
+#### 讲义 p.91 · Hallucinations Can Look Convincingly Correct
+
+课件用 Mata v. Avianca 的虚假引文与 Air Canada 客服的丧亲优惠票价申请政策矛盾做示例。两次检查分别是确认引文是否存在、确认自动回答是否符合适用政策；句子再流畅也要沿来源核对。
+
+延伸到[[#2.9.2 幻觉（讲义 p.91）|本页关联的主题精读]]。
+
+#### 讲义 p.92 · Ground Probabilistic Systems
+
+按发生时间部署控制：生成前用批准的资料接地，执行时记录来源、调用和批准，输出后验证，有重要影响则交合资格人员处理。图内短条给出四个动作。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p092.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p092.png|打开课件图示]]
+
+延伸到[[#2.9.3 接地：四层控制（讲义 p.92–93）|本页关联的主题精读]]。
+
+#### 讲义 p.93 · RAG, Reasoning, and Human Review
+
+原图三个方块依次是 RAG 取可追溯的证据、Reasoning 拆解并核验、Human review 处理高影响决定。比如客户金额先查政策，用计算器复算，再由有权限的人批准例外。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p093.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p093.png|打开课件图示]]
+
+延伸到[[#2.9.3 接地：四层控制（讲义 p.92–93）|本页关联的主题精读]]。
+
+#### 讲义 p.94 · Build an Evidence Chain, Not a Chain of Thought
+
+审计要看来源、工具日志、可检查的中间产物、版本和审批人。模型生成的解释可以帮助复盘，审查者仍应亲自沿真正的调用和材料追到结果。
+
+延伸到[[#2.9.4 证据链 ≠ 思维链（讲义 p.94）|本页关联的主题精读]]。
+
+#### 讲义 p.95 · GenAI Expands the Cyber Attack Surface
+
+四支箭头都汇进生成式 AI 系统，分别代表提示注入、检索资料投毒、工具滥用与身份缺口。比如被篡改的文档夹带指令，再诱导有外发权限的工具，两个入口会在一次任务中连起来。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p095.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p095.png|打开课件图示]]
+
+延伸到[[#2.9.5 安全：攻击面变大了（讲义 p.95–98）|本页关联的主题精读]]。
+
+#### 讲义 p.96 · Defend with Testing, Provenance, and Guardrails
+
+沿四格读控制：红队测试模拟恶意输入，来源记录识别资料来路，输入输出过滤挡常见异常，权限边界约束哪些操作可实际发生。即使一句攻击绕过过滤，未经批准的外发仍应被工具权限拒绝。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p096.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p096.png|打开课件图示]]
+
+延伸到[[#2.9.5 安全：攻击面变大了（讲义 p.95–98）|本页关联的主题精读]]。
+
+#### 讲义 p.97 · Security Incidents Expose Authority and Identity Gaps
+
+课件一例是诱使汽车 chatbot 口头答应 1 美元卖车，未成交；另一例是警方所述的伪造视频会议诈骗。前者要限系统能做的事，后者要用独立渠道核身份与交易授权。
+
+延伸到[[#2.9.5 安全：攻击面变大了（讲义 p.95–98）|本页关联的主题精读]]。
+
+#### 讲义 p.98 · How Sensitive Data Can Leak
+
+本页标题改成数据如何泄漏，图复用 p.95 四个入口。沿工具滥用这条线走：系统若能拿敏感资料并外发，越权调用可把两步连起来；分别限制读权限与写出目的地。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p095.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p095.png|打开课件图示]]
+
+延伸到[[#2.9.5 安全：攻击面变大了（讲义 p.95–98）|本页关联的主题精读]]。
+
+#### 讲义 p.99 · Protect Data Across the Model Lifecycle
+
+沿五格看数据生命周期：收集时最小化，准备时清洗脱敏，训练／检索时隔离，部署时管访问，监控时审计与删除。比如只需售后订单号的功能，应在收集时就排除其他身份字段。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p099.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p099.png|打开课件图示]]
+
+延伸到[[#2.9.6 数据与知识产权（讲义 p.99–104）|本页关联的主题精读]]。
+
+#### 讲义 p.100 · The Samsung Incident Was a Data-Disclosure Failure
+
+图从敏感资料流向公共服务，再到外部处理与披露风险。课件以员工粘贴代码和会议资料为例；数据已经离开批准环境这一点就构成治理问题，后续是否被用于训练另须证据。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p100.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p100.png|打开课件图示]]
+
+延伸到[[#2.9.6 数据与知识产权（讲义 p.99–104）|本页关联的主题精读]]。
+
+#### 讲义 p.101 · Training Data Raises a Rights Question
+
+对每项训练资料先追来源和授权，再核协议、访问条件或机器可读偏好，最后评估模型会不会再现受保护内容。网页能打开只说明技术上可访问。
+
+**p.101 完整英文检查题与逐问参考**
+
+（⚪ 课程治理检查表，不是对某份材料的法律结论）
+
+情境原文：“Learning from public content does not automatically resolve whether collection, transformation, or reuse is authorized.” 题意：公开可访问不自动意味着可收集、改造或重用；逐问检查权利与输出。
+
+1. **“Was the material licensed, public-domain, or subject to an applicable exception?”** 中文：有许可、属公有领域，还是有适用例外？先逐源保存出处及权利证据，不能把“能看到”当授权；证据不足标待核。English reference: “Document the source and rights basis: a valid license, public-domain status, or an applicable exception. If the basis is unverified, record that uncertainty and obtain qualified review.”
+2. **“Did the source communicate a contractual, access-control, or machine-readable restriction?”** 中文：来源是否传达合同、访问控制或机器可读限制？记录条款、访问规则及机器信号并核适用范围；抓取成功不代表可重用。English reference: “Preserve relevant terms, access restrictions, and machine-readable signals. Assess their effect under the applicable contract and law rather than treating technical access as permission.”
+3. **“Can the model reproduce protected expression or proprietary information?”** 中文：模型会不会复现受保护表达或专有信息？用代表性提示及相似性检查收集证据，设置复核与发布控制；一次未检出不证明永不复现。English reference: “Test for reproduction using representative prompts and similarity checks, document limitations, and route risky outputs for review. A negative sample does not prove reproduction is impossible.”
+
+具体权利判断随作品、合同、使用和法域变化，讲义 p.104 要求合格法律分析。
+
+延伸到[[#2.9.6 数据与知识产权（讲义 p.99–104）|本页关联的主题精读]]。
+
+#### 讲义 p.102 · Copyright Risk Has Two Sides
+
+左边核训练资料的许可、个人数据和退出义务；右边核发布内容的相似性、受保护角色或代码，以及商标和审查。两边需要分别取证，例如有训练授权仍要核最终广告怎么用。
+
+延伸到[[#2.9.6 数据与知识产权（讲义 p.99–104）|本页关联的主题精读]]。
+
+#### 讲义 p.103 · Use Licensing, Contracts, and Opt-Outs
+
+三列依次问有无授权、合同怎样分责、来源提供哪些技术或法律信号。robots.txt 属于要读的信号之一，具体权利还要看许可、协议、访问限制和适用法。
+
+中间的赔偿条款（indemnification）约定供应商在何种条件下承担哪类索赔。查条款时先读适用范围和例外。
+
+延伸到[[#2.9.6 数据与知识产权（讲义 p.99–104）|本页关联的主题精读]]。
+
+#### 讲义 p.104 · Copyright Risk Depends on Rights, Use, and Jurisdiction
+
+训练和输出要分别判断，所在管辖地与使用目的都可能改变结论。保留来源、权利、合同和技术信号，让熟悉适用规则的人能够复查。
+
+延伸到[[#2.9.6 数据与知识产权（讲义 p.99–104）|本页关联的主题精读]]。
+
+#### 讲义 p.105 · Models Inherit Bias and Lose Diversity
+
+沿五框逐项找偏差从哪里进入：训练样本代表性、优化目标、评估的群体错误差距、上线能否公平访问、反馈是否带来纠正。只查最终平均准确率会遗漏中间几处。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p105.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p105.png|打开课件图示]]
+
+延伸到[[#2.9.7 公平性（讲义 p.105–107）|本页关联的主题精读]]。
+
+#### 讲义 p.106 · Fairness Requires Data, Metrics, and Feedback
+
+数据整理看代表性，指标要与业务决定对应，反馈要包含多样评审者。比如一项筛查既要看各组通过率，也可看每组真实阳性中被漏掉的比例；两种指标回答的问题不同。
+
+人口均等（demographic parity）比较各群体总体获批比例，分母是该组全部人。均等化胜算（equalized odds）分别比较各组真实符合者的获批比例、真实不符合者的误批比例。后两项的分母不同，必须分开。
+
+延伸到[[#2.9.7 公平性（讲义 p.105–107）|本页关联的主题精读]]。
+
+#### 讲义 p.107 · Fairness Requires Context-Specific Evidence
+
+从数据、评估到治理，依次问缺了哪些群体、哪种错误伤害最大、怎样监控和给当事人申诉。每项取舍要对应具体利益相关者。
+
+延伸到[[#2.9.7 公平性（讲义 p.105–107）|本页关联的主题精读]]。
+
+#### 讲义 p.108 · Responsible AI Extends Beyond the Model
+
+原页三列分别讨论能耗、用水与硬件，供应链资料与合规，以及人如何依赖模型。下方原图裁取了第三列的医疗例。涉及重大医疗建议时，流程需定义怎样转给临床人员。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p108.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p108.png|打开课件图示]]
+
+延伸到[[#2.9.8 责任 AI 超出模型边界（讲义 p.108–110）|本页关联的主题精读]]。
+
+#### 讲义 p.109 · Environmental Impact Must Be Measured, Not Averaged
+
+左边数据中心照片提示基础设施，右边分别列能源、水、硬件。比较环境影响先把工作量、地区、设备利用率和估计不确定性对齐；每次查询的单一均值不能解释所有环境。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p109.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p109.png|打开课件图示]]
+
+延伸到[[#2.9.8 责任 AI 超出模型边界（讲义 p.108–110）|本页关联的主题精读]]。
+
+#### 讲义 p.110 · Responsible AI Covers the Entire Value Chain
+
+供应链文档记录数据和组件，人机流程定义权限、升级和救济，披露则按使用情境、政策、合同和法律判断。发生错误时，按价值链追到能修改对应环节的人。
+
+延伸到[[#2.9.8 责任 AI 超出模型边界（讲义 p.108–110）|本页关联的主题精读]]。
+
+#### 讲义 p.111 · NIST AI RMF Provides a Common Risk Language
+
+美国国家标准与技术研究院（NIST）的 AI 风险管理框架（AI Risk Management Framework, AI RMF）把持续治理分成四项工作。图中 Govern 在中心，Map、Measure、Manage 在外围。用同一个客服例子串起四件事：确定负责人、界定风险场景、收集测试数据、选措施并复查效果。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p111.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p111.png|打开课件图示]]
+
+延伸到[[#2.10 NIST AI RMF：把上面的东西装进一套语言（讲义 p.111–117）|本页关联的主题精读]]。
+
+**责任 AI 的风险管理 p.112–117**
+
+#### 讲义 p.112 · Part 4 · Operationalizing Responsible AI
+
+Part 4 分隔页的备注说明框架自愿、跨行业、提供共同语言。业务、工程、法务和风控可用它明确上下文、证据、责任和行动，并接入已有的事件响应流程。
+
+延伸到[[#2.10 NIST AI RMF：把上面的东西装进一套语言（讲义 p.111–117）|本页关联的主题精读]]。
+
+#### 讲义 p.113 · Govern, Map, Measure, Manage
+
+沿图读 Govern→Map→Measure→Manage，以及 Manage 回到 Govern 的连线。负责人先明确范围和标准，测得风险再选择应对，处理结果回到治理层更新安排。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p113.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p113.png|打开课件图示]]
+
+延伸到[[#2.10 NIST AI RMF：把上面的东西装进一套语言（讲义 p.111–117）|本页关联的主题精读]]。
+
+#### 讲义 p.114 · NIST AI RMF Is Continuous and Iterative
+
+本页复用 p.113 的关系图，强调重复运行。客服开始直接退款后，回到 Map 重定影响对象和风险，再 Measure、Manage；Govern 在整个过程中定职责和升级权限。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p113.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p113.png|打开课件图示]]
+
+延伸到[[#2.10 NIST AI RMF：把上面的东西装进一套语言（讲义 p.111–117）|本页关联的主题精读]]。
+
+#### 讲义 p.115 · GOVERN and MAP Set Direction
+
+Govern 问谁有责任、可做何种决定、何时升级；Map 问系统为何用、影响谁、可能造成哪些损害。先写清这两组答案，下一页才知道该测什么。
+
+Map 还须写清风险容忍度（risk tolerance）。比如先定义什么情形必须转人工，再到 p.116 测系统会漏掉几次这样的情形。
+
+延伸到[[#2.10 NIST AI RMF：把上面的东西装进一套语言（讲义 p.111–117）|本页关联的主题精读]]。
+
+#### 讲义 p.116 · MEASURE and MANAGE Put Evidence into Action
+
+Measure 用任务样本、指标和监控找风险大小与不确定性；Manage 据此排序、落实控制、分配责任并处理残余风险。比如漏掉重大退款异常时，决定停用自动审批，再重测。
+
+延伸到[[#2.10 NIST AI RMF：把上面的东西装进一套语言（讲义 p.111–117）|本页关联的主题精读]]。
+
+#### 讲义 p.117 · The Goal Is Acceptable Risk, Not Zero Risk
+
+绿、黄、红三段对应接受、复核和降低；蓝色风险容忍箭头标在复核与降低的分界附近。图用颜色解释处置方向，没有给统一的数值阈值。业务应把本场景的阈值、复核人和监控条件写清。
+
+![[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p117.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m01-lecture-1/p117.png|打开课件图示]]
+
+延伸到[[#2.10 NIST AI RMF：把上面的东西装进一套语言（讲义 p.111–117）|本页关联的主题精读]]。
+
+---
+
+**主题精读与课堂补充（§2.1–2.10）**
 
 ### 2.1 这门课怎么运作（先把实用信息说完）
 
@@ -261,7 +1281,7 @@ p.9 标题明确是 **“Lecture Dates (Tentative)”**，中文是“讲课日�
 
 | 要求 | 来源 |
 |---|---|
-| 5–7 人一组，**同伴互评**确保贡献公平 | Syllabus + 讲义 p.11 |
+| 5–7 人一组。Syllabus 另载 15 分钟展示和同伴互评 | 组员数见 Syllabus 与讲义 p.11。时长与互评见 Syllabus |
 | 定义**具体**业务问题 + **谁受影响** | 讲义 p.11 |
 | 设计 GenAI 工作流、数据来源、rollout 计划 | 讲义 p.11 |
 | 评估**业务价值、模型质量、成本、风险**四项 | 讲义 p.11 |
@@ -629,9 +1649,9 @@ ELIZA 是符号 AI 的一个具体样本（§2.4.1）——本例用固定规则
 
 讲义 p.25 右栏列的适用场景是：规则清晰的分类与规划、金融与医疗这类结构化领域、每一步推理都必须可追溯的审计场景。
 
-**🎙️ 课堂补充：平安保险的百万条规则（转录 `44:57`、`48:13`）——本讲最值钱的例子之一**
+**🎙️ 课堂补充：讲者回忆的平安规则实践（转录 `44:57`、`48:13`）——本讲最值钱的例子之一**
 
-讲义只说符号 AI"在结构化领域好用"，教授给了一个至今仍在运行的真实案例：
+讲者回忆自己接触过的规则实践，说明为何有些团队愿意为决策保留可解释的规则。下面保留 ASR 文字，第二句的 “gift rules” 可能误转。录音未逐声核听，规则数量和现行部署待核。
 
 > "actually this if-then rules is **quite popular in like Ping An insurance company**. So actually when I first work with them, **I was shocked that they still rely on this if-then rules**, but they told me: **humans, in the end, would take the responsibility to end the decision, so they prefer to use the tools that they can control, and they know clearly why the decision is yes or no.**"
 
@@ -945,7 +1965,7 @@ Sussex 与 UC San Diego 博士后
 
 **p.40 原任务**：“Watch: Geoffrey Hinton’s Nobel Lecture”；“Use this segment to connect the history of neural networks with the methods that made modern foundation models practical.”；“Listen for how research ideas became scalable learning systems.”
 
-中文题意：把神经网络历史与可扩展学习方法联系起来。⚪ 参考作答（依据本讲 p.32–39，并非视频内容核验）：多层表示学习改变特征来源，数据、GPU 计算和可训练架构共同让大模型成为实际系统；残差是后来改善深网训练的方法，不能说 AlexNet 已用了残差。English reference: “The lecture connects representation learning with data, parallel compute, and trainable architectures. Their interaction made large-scale learning practical; residual connections are a later contribution, not an AlexNet component.” 本轮未观看外链视频，不写成 Hinton 的原话或已核视频总结。
+中文题意：把神经网络历史与可扩展学习方法联系起来。⚪ 参考作答（依据本讲 p.32–39，并非视频内容核验）：多层表示学习改变特征来源，数据、GPU 计算和可训练架构共同让大模型成为实际系统；残差是后来改善深网训练的方法，不能说 AlexNet 已用了残差。English reference: “Course slides 32–39 connect representation learning with data, parallel compute, and trainable architectures. Their interaction made large-scale learning practical; residual connections are a later contribution, not an AlexNet component.” 本轮未观看外链视频，不写成 Hinton 的原话或已核视频总结。
 
 
 **⚠️ 常见误解**
@@ -1376,7 +2396,9 @@ Token 1 → 隐状态 → Token 2 → 隐状态 → … → Token n
 
 **是什么：自注意力（讲义 p.45–46）**
 
-**Transformer** 用**在全序列上做注意力**替代了循环。核心机制是**多头自注意力（Multi-Head Self-Attention）**：
+**Transformer** 在同一层并行处理已知输入位置，用注意力取代循环状态传递。每个位置能读取哪些键，由注意力遮罩（attention mask）决定。预测下一 token 的自回归模型用因果遮罩，只允许该位置读取自己及前文。双向编码器等结构可以使用不同的遮罩。
+
+核心机制是**多头自注意力（Multi-Head Self-Attention）**：
 
 > **讲义 p.46 的例子**：句子 `The bank approved the loan`，"**loan** 强烈地注意到 **bank** 和 **approved**"。
 > **结论句**："Attention weights are **learned relationships—not fixed dictionary meanings**."（注意力权重是学出来的关系，不是词典里固定的义项）
@@ -1391,7 +2413,7 @@ Token 1 → 隐状态 → Token 2 → 隐状态 → … → Token n
 
 | | **循环模型** | **Transformer** |
 |---|---|---|
-| 结构 | A → B → C → D 顺序依赖 | 所有 token ↔ 注意力 |
+| 结构 | A → B → C → D 顺序依赖 | 同层位置并行计算，各位置只读取遮罩允许的键 |
 | 训练 | 难以并行 | **并行训练** |
 | 长距离 | 路径长、易衰减 | **直接连接** |
 
@@ -1508,7 +2530,7 @@ $$S=QK^T/\sqrt{d_k},\quad d_k=2,\quad S=\begin{bmatrix}.707107&.707107&.707107\\
 1. 在softmax前，把$j>i$的分数设为$-\infty$，即遮住上三角。
 2. 对每行的可见位置指数归一：
 
-$$A_{ij}=\frac{\exp(S_{ij})}{\sum_{k\le i}\exp(S_{ik})}$$
+$$A_{ij}=\begin{cases}\dfrac{\exp(S_{ij})}{\sum_{k\le i}\exp(S_{ik})},& j\le i\\0,&j>i\end{cases}$$
 
 3. 实际计算可先减行最大值，以保持数值稳定。被mask位置指数后为0。
 4. 用这些权重加权V，得到下面每查询位置的输出。
@@ -1878,7 +2900,7 @@ English reference: “For language generation, token representations condition a
 
 中文限定词：stronger claim 是比“感觉像活的”更强的意识或理解主张。上文已给中文分析；英文参考：“Fluent conversation alone is insufficient. A stronger claim would require clearly defined, independently testable criteria, reproducible evidence, and tests of alternatives such as imitation, prompting, and anthropomorphism. This slide provides neither a consensus consciousness test nor evidence establishing consciousness.”
 
-本轮未观看 p.53、p.54 的外链视频，以上只根据课件可见任务及本讲机制作答；不冒称视频摘要。原视频链接见课件相应页。
+本轮未观看 p.53、p.54 的外链视频，以上只根据课件可见任务及本讲机制作答；不冒称视频摘要。视频入口见 [[#讲义 p.53 · Watch: What Makes AI Generative?|p.53]] 与 [[#讲义 p.54 · Discussion: Why Can AI Feel Alive?|p.54]]。
 
 
 #### 2.7.2 不透明性：可信从哪里来（讲义 p.57）
@@ -2330,7 +3352,24 @@ batch可能提高总吞吐而增排队时间，并非全部用户更快。
 
 **是什么：成本的隐藏乘数（讲义 p.76–78）**
 
-> **总成本 = 输入 token + 输出 token + 检索与工具 + 托管 + 人力与控制**（讲义 p.76–77）
+讲义 p.76–77 列出五项费用来源。先把每次尝试的输入与输出 token 数各乘对应单价，再加检索和工具费。统一按相同业务量和期间汇总，加入该期间的托管、人审和监控费用。
+
+第 $a$ 次尝试有三笔可变费用。
+
+- 输入使用 $I_a$ 个 token，单价 $p_i$ 以美元／百万 token 计。
+- 输出使用 $O_a$ 个 token，单价 $p_o$ 也以美元／百万 token 计。
+- 检索和工具的费用为 $F_a$ 美元。
+
+$H$ 是同一批任务分摊的托管、人审与监控费，单位也是美元。
+
+$$C=\sum_a\left(\frac{I_a}{10^6}p_i+\frac{O_a}{10^6}p_o+F_a\right)+H$$
+
+💡 笔记算例。比较同一批 100 件任务，两套方案都达到同一验收线并最终完成 100 件。
+
+- A 每次用 1,000 个输入和 500 个输出 token。两种单价为 2 和 8 美元／百万 token，故单次模型费为 $0.002+0.004=0.006$ 美元。检索和工具另花 0.004 美元。20 件需重试一次，共 120 次尝试，另加本批运营费 0.80 美元，合计 $120\times0.010+0.80=2.00$ 美元。
+- B 使用相同 token 量，单价为 3 和 10 美元／百万 token，故单次模型费为 $0.003+0.005=0.008$ 美元。检索和工具仍花 0.004 美元。100 次即完成，另加本批运营费 0.70 美元，合计 $100\times0.012+0.70=1.90$ 美元。
+
+每件合格成果的费用用总成本除以合格件数，A 为 0.020 美元／件，B 为 0.019 美元／件。A 的模型单价较低，但这批任务的重试改变了结果。若合格件数是零，应报告未获得合格成果，不能作除法。
 
 讲义 p.78 拆成两类：
 
@@ -2496,7 +3535,7 @@ batch可能提高总吞吐而增排队时间，并非全部用户更快。
 
 > **讲义 p.91 结论**："**Fluency must never be treated as evidence**; high-stakes outputs require grounding and verification."
 
-**课件原例：两个真实案例（讲义 p.91）** ⏭️ **课上跳过了**
+**课件原例：两个案例（讲义 p.91）** ⏭️ **现有转录未检出对这两例的展开**
 
 幻觉不是纸上谈兵——讲义举了两个真实闹上法庭/仲裁庭的案子，一个在法律行业，一个在企业客服：
 
@@ -2514,13 +3553,12 @@ batch可能提高总吞吐而增排队时间，并非全部用户更快。
 
 **🔀 课件与课堂不一致（重要）**
 
-**教授讲幻觉时没用讲义 p.91 的这两个案例**，而是用了 p.97 的 **Chevrolet 一美元卖车**（转录 `01:52:20`）：
+现有转录中讲者解释幻觉时使用了 p.97 的 **Chevrolet 一美元卖车**（转录 `01:52:20`）：
 
 > "when someone uses some prompt techniques to guide the AI [to] output that you can purchase one car using only \$1.00 — these kinds of words. **Actually, that's the hallucination.** … no company would sell one car [for] just one dollar."
 
-> ⚠️ **两个法律案例（Mata v. Avianca、Air Canada）课上完全没提**，但它们**写在讲义正文里、且有实质备注**。
-> ⚪ **建议按考的准备**：讲义正文里的东西默认在考试范围内，何况这一页是 Part 3 的核心页。
-> ⚠️ 另注意：**Chevrolet 那个例子在讲义 p.97 里被归为"提示注入（prompt injection）"而不是"幻觉"**。教授把它当幻觉讲，**分类与讲义不一致**。答题时按讲义分类更安全：**幻觉是"自信地说错"，提示注入是"被诱导做出未授权承诺"**——两者机制不同。
+> 现有转录未检出 Mata v. Avianca 或 Air Canada 的展开。两例在讲义 p.91，其中 Air Canada 还有演讲备注。复习时可用它们练习区分引文核验和政策核验。
+> Chevrolet 案例可以分两层。攻击手段是**提示注入（prompt injection）**，即让系统把低权限输入当指令，偏离原来应遵守的规则。课件 p.97 讨论这一层。输出后果是 chatbot 作出未经授权且未兑现的价格承诺，课堂 `01:52:20` 用它说明不实输出。一次注入还可能诱导读取资料或调用越权工具。
 
 **⚠️ 常见误解**
 
@@ -2787,7 +3825,7 @@ COLLECT   →  PREPARE   →  TRAIN/RETRIEVE →  DEPLOY        →  MONITOR
 
 监控时应用留存与删除策略。
 
-**课件原例：三星事件（讲义 p.100）** ⏭️ **课上跳过了**
+**课件原例：三星事件（讲义 p.100）** ⏭️ **现有转录未检出展开**
 
 > 员工把**专有代码与会议信息**粘贴进了**未经批准的公共服务**。
 >
@@ -3245,7 +4283,7 @@ flowchart TD
 
 | 范式 | 时期 | 机制 | 强项 | 边界 | 今天还在哪用 |
 |---|---|---|---|---|---|
-| **符号 AI** | 1950s–1980s | 显式 if–then 规则、搜索、专家系统 | **透明、可追溯** | 规则需维护，例外多时难覆盖；非结构化输入常需感知方法配合 | **合规、安全限值、确定性计算**；平安的百万条规则 |
+| **符号 AI** | 1950s–1980s | 显式 if–then 规则、搜索、专家系统 | **透明、可追溯** | 规则需维护，例外多时难覆盖；非结构化输入常需感知方法配合 | **合规、安全限值、确定性计算**；课堂以平安旧实践举例，规模待核 |
 | **统计机器学习** | — | 从样例估参数 | 可在留出数据上度量、泛化成为经验问题 | 依赖有代表性的数据、要监控**漂移** | **低延迟预测**（讲者ETA情境，平台名未确认；欺诈检测） |
 | **深度学习** | 约 2012–2017 | 多层网络自动学**表示** | 减少人工特征工程 | 更依赖数据与算力；讲义此段以判别任务为主，也有生成模型 | 感知、图像、语音 |
 | **基础模型** | 2017– | 大规模预训练 + 跨任务适配 | **能生成**、可复用 | 概率式、不透明、成本与治理复杂 | 本课主角 |
@@ -3259,7 +4297,7 @@ flowchart TD
 | **性能** | 检索 ≠ 推理 | 把两者混为一谈 |
 | **上下文** | 最大窗口 ≠ **有效上下文**；**中间迷失** | 只比标称 token 数；**分词器不同不可直接比** |
 | **吞吐** | 批处理提升利用率 | 与延迟混淆；批处理可能增加凑批等待，净延迟效应须同负载实测 |
-| **成本** | **TCO**：输入+输出 token+检索工具+托管+人力控制 | 只看 token 单价；**弱模型反复重试反而更贵** |
+| **成本** | **TCO**：输入／输出按单价换成费用，再计工具、托管、人力与控制 | 只看 token 单价；**弱模型反复重试反而更贵** |
 
 ### 4.3 治理工具箱：哪个工具治哪种病
 
@@ -3351,7 +4389,7 @@ flowchart TD
 
 **基础模型（Foundation Model）** · 首现 §2.4.4
 
-> A large pretrained generative model adaptable across tasks, modalities and business processes.
+> A model pretrained on broad data that can be adapted to multiple downstream tasks. Page 24 focuses on generative examples of foundation models.
 
 这句保留讲义 p.24 以生成模型为主例的用法。
 
@@ -3375,7 +4413,7 @@ BERT 是范围不同的例子。
 
 **上下文向量（Contextual Vector）** · 首现 §2.5.2
 
-> The representation after position and attention; **the same token identifier yields different vectors in different sentences**.
+> A representation that incorporates position and information from visible context. The same token identifier can have different contextual vectors across occurrences.
 
 **自注意力（Self-Attention）** · 首现 §2.5.3
 
@@ -3383,7 +4421,7 @@ BERT 是范围不同的例子。
 
 **Transformer（Transformer）** · 首现 §2.5.3
 
-> An architecture replacing recurrence with attention over the full sequence: **training becomes parallel, while generation still proceeds token by token**.
+> An architecture that replaces recurrent state updates with attention. Known positions can be processed in parallel within a layer, and the mask defines which positions can attend to which keys. Autoregressive generation proceeds one token at a time.
 
 **自回归生成（Autoregressive Generation）** · 首现 §2.6.1
 
@@ -3427,13 +4465,13 @@ BERT 是范围不同的例子。
 
 **首字延迟（Time To First Token (TTFT)）** · 首现 §2.8.3
 
-> The delay before the response begins (prefill).
+> Time from the request start to the first visible output token. Prefill is one component of this end-to-end measure.
 
 原卡的 prefill 括注只点出一个阶段。TTFT 从请求开始计到首个可见 token，可能含网络、排队、检索/工具、prefill 和首步 decode；本节 trace 为 500 ms。
 
 **token 间延迟（Inter-Token Latency (ITL)）** · 首现 §2.8.3
 
-> How quickly the rest of the answer appears (decode).
+> The time interval between two consecutive output tokens during generation, usually measured in milliseconds.
 
 **有效上下文（Effective Context）** · 首现 §2.8.5
 
@@ -3449,7 +4487,7 @@ BERT 是范围不同的例子。
 
 **总拥有成本（Total Cost of Ownership (TCO)）** · 首现 §2.8.6
 
-> Input tokens + output tokens + retrieval and tools + hosting + people and controls.
+> The cost over a defined workload and period, including input and output token charges, retrieval, tools, hosting, staff and controls. Include unsuccessful attempts when calculating cost per accepted result.
 
 **复合 AI（Compound AI）** · 首现 §2.8.7
 
@@ -3541,7 +4579,7 @@ Syllabus 列 Multiple choice、Short answer、Essay 及概念解释／案例应�
 | ⚪ | **Air Canada 案：企业要为自家渠道发出的信息负责** | 讲义 p.91 正文 + **有实质演讲者备注**（全讲仅 6 页有） | §2.9.2 |
 | ⚪ | **三星事件的定性：治理失败，不是模型行为问题** | 讲义 p.100，结论句是一种论证纪律 | §2.9.6 |
 | ⚪ | **ELIZA 效应**及"界面不揭示架构" | 讲义 p.18–21 四页 + 课堂视频 | §2.3 |
-| ⚪ | **两个任务两套架构**（语音客服 vs 财务分析） | 讲义 p.80–83 四页，是六向量唯一的落地示范；⏭️ 但课上跳过了 | §2.8.7 |
+| ⚪ | **两个任务两套架构**（语音客服 vs 财务分析） | 讲义 p.80–83 的六向量落地示范。现有转录未检出展开 | §2.8.7 |
 
 ### 6.4 答题框架
 
@@ -3722,7 +4760,7 @@ Syllabus 列 Multiple choice、Short answer、Essay 及概念解释／案例应�
 | **性能** | 定损走**深思推理 + 计算工具**；闲聊走快速生成 | 成本上升；用**路由器**把简单请求分流回小模型 |
 | **上下文** | RAG 取**该保单的条款与历史理赔记录**；关键条款放**开头或结尾**规避中间迷失 | 检索延迟；且要承认这是**缓解不是解决**（🎙️ 教授说中间问题"still [does] not have very good solutions"） |
 | **吞吐** | 出险有**明显峰值**（暴雨、节假日），用动态批处理扛非交互部分 | 本例先将大批定损安排为异步、给语音回执设独立延迟目标；是否批处理依同负载实测决定 |
-| **成本** | 注意 §2.8.6 的反直觉点：**弱模型反复重试反而更贵**；照片处理是大 token 消耗项 | — |
+| **成本** | 按 [[#2.8.6 向量五、六 · 吞吐与成本（讲义 p.74–78）\|§2.8.6 算例]]，用同批数据对比每件合格理赔处理费 | 高级模型单次较贵，可能节省重试和复核。照片按所用模型的计费方式及真实工作量核算 |
 
 **4 组件链路**
 ```
@@ -3745,11 +4783,7 @@ Syllabus 列 Multiple choice、Short answer、Essay 及概念解释／案例应�
 
 **权限边界**
 
-模型没有批准赔付的工具权限；
-
-金额只能由计算工具产生；
-
-🎙️ 讲义 p.97："treat models as untrusted decision participants"
+金额由受控工具核算，批准和支付只允许授权人员或明确批准流程执行。回复发出前同时核对金额字段与审批状态。比如金额算对但状态仍是待审，回复可显示“估算，待审批”，不能说“已批准”。若回复声称已经获批，输出检查应拦截并转人工，即使支付工具已拒绝操作。讲义 p.97 要求分别约束身份、权限与后果。
 
 **说明2｜对某些车型/地区/口音系统性低估（公平） · 控制**
 
@@ -3799,7 +4833,130 @@ Syllabus 列 Multiple choice、Short answer、Essay 及概念解释／案例应�
 
 ## 8. 讲义页码映射
 
-**总页数：117 页，以下为正文定位索引。** 课堂列✅表示现有文本找到对应讲解；⏭️表示现有文本未检出详细讲解或仅有短提及，未经核音不能证明原课堂绝未讲／播。页码索引不代替正文实质覆盖。
+以下页码是 Lecture 1 PowerPoint 的物理页。每行链接直达本页讲解。原有按主题的课堂记录附在表后，课堂覆盖以可定位的转录或课件为依据。
+
+| 物理页 | 原页标题 | 本页讲解 | 原图或页型 |
+|---|---|---|---|
+| 1 | IS5542 — Generative Artificial Intelligence for Business · Lecture 1 | [[#讲义 p.1 · IS5542 — Generative Artificial Intelligence for Business · Lecture 1\|定位]] | 封面简记 |
+| 2 | Introducing myself… | [[#讲义 p.2 · Introducing myself…\|定位]] | 课件原图 m01-p002 |
+| 3 | Course Instructor: Miao Yu | [[#讲义 p.3 · Course Instructor: Miao Yu\|定位]] | 文字要点与读法。头像、联系字段、机构标识或配图仅作识别／装饰 |
+| 4 | Course Teaching Assistants | [[#讲义 p.4 · Course Teaching Assistants\|定位]] | 文字要点与读法。头像、联系字段、机构标识或配图仅作识别／装饰 |
+| 5 | Module 1: GenAI Foundations (2–3 Weeks) | [[#讲义 p.5 · Module 1: GenAI Foundations (2–3 Weeks)\|定位]] | 文字讲解，无独立教学图 |
+| 6 | Module 2: GenAI Strategy and Rollout (2–3 Weeks) | [[#讲义 p.6 · Module 2: GenAI Strategy and Rollout (2–3 Weeks)\|定位]] | 文字讲解，无独立教学图 |
+| 7 | Module 3: GenAI Industry Use Cases (4 Weeks) | [[#讲义 p.7 · Module 3: GenAI Industry Use Cases (4 Weeks)\|定位]] | 文字讲解，无独立教学图 |
+| 8 | Module 4: Responsible AI (2 Weeks) | [[#讲义 p.8 · Module 4: Responsible AI (2 Weeks)\|定位]] | 文字讲解，无独立教学图 |
+| 9 | Lecture Dates (Tentative) | [[#讲义 p.9 · Lecture Dates (Tentative)\|定位]] | 文字讲解，无独立教学图 |
+| 10 | Course Assessment | [[#讲义 p.10 · Course Assessment\|定位]] | 文字讲解，无独立教学图 |
+| 11 | Group Project: Defensible GenAI Application | [[#讲义 p.11 · Group Project: Defensible GenAI Application\|定位]] | 文字要点与读法。头像、联系字段、机构标识或配图仅作识别／装饰 |
+| 12 | Written Examination | [[#讲义 p.12 · Written Examination\|定位]] | 文字讲解，无独立教学图 |
+| 13 | Part 1 · Foundations of Generative AI | [[#讲义 p.13 · Part 1 · Foundations of Generative AI\|定位]] | 分隔页及讲者备注 |
+| 14 | Module 1: Foundations · What is Generative AI? | [[#讲义 p.14 · Module 1: Foundations · What is Generative AI?\|定位]] | 课件原图 m01-p014 |
+| 15 | 无标题，四张生成式 AI 讨论图 | [[#讲义 p.15 · 无标题，四张生成式 AI 讨论图\|定位]] | 课件原图 m01-p015 |
+| 16 | Is AI New? | [[#讲义 p.16 · Is AI New?\|定位]] | 课件原图 m01-p016 |
+| 17 | Is AI New? | [[#讲义 p.17 · Is AI New?\|定位]] | 课件原图 m01-p017 |
+| 18 | Is it a chatbot or chatgpt? | [[#讲义 p.18 · Is it a chatbot or chatgpt?\|定位]] | 课件原图 m01-p018 |
+| 19 | Chatbot Is a Category; ChatGPT Is One Product | [[#讲义 p.19 · Chatbot Is a Category; ChatGPT Is One Product\|定位]] | 文字讲解，无独立教学图 |
+| 20 | ELIZA: A Rule-Based Conversation Program | [[#讲义 p.20 · ELIZA: A Rule-Based Conversation Program\|定位]] | 课件原图 m01-p020 |
+| 21 | ELIZA Showed How Easily Rules Can Feel Conversational | [[#讲义 p.21 · ELIZA Showed How Easily Rules Can Feel Conversational\|定位]] | 文字讲解，无独立教学图 |
+| 22 | How AI Evolved: Three Milestones | [[#讲义 p.22 · How AI Evolved: Three Milestones\|定位]] | 文字讲解，无独立教学图 |
+| 23 | Three Milestones in AI's Evolution | [[#讲义 p.23 · Three Milestones in AI's Evolution\|定位]] | 文字讲解，无独立教学图 |
+| 24 | Four AI Paradigms Coexist and Evolve | [[#讲义 p.24 · Four AI Paradigms Coexist and Evolve\|定位]] | 文字讲解，无独立教学图 |
+| 25 | Symbolic AI Made Reasoning Explicit | [[#讲义 p.25 · Symbolic AI Made Reasoning Explicit\|定位]] | 文字讲解，无独立教学图 |
+| 26 | Symbolic AI Worked When Rules Were Explicit | [[#讲义 p.26 · Symbolic AI Worked When Rules Were Explicit\|定位]] | 文字讲解，无独立教学图 |
+| 27 | Symbolic AI Hit a Scalability Wall | [[#讲义 p.27 · Symbolic AI Hit a Scalability Wall\|定位]] | 文字讲解，无独立教学图 |
+| 28 | Statistical Learning Shifted AI from Rules to Data | [[#讲义 p.28 · Statistical Learning Shifted AI from Rules to Data\|定位]] | 文字讲解，无独立教学图 |
+| 29 | AI, ML, and Deep Learning | [[#讲义 p.29 · AI, ML, and Deep Learning\|定位]] | 课件原图 m01-p029 |
+| 30 | Neurons | [[#讲义 p.30 · Neurons\|定位]] | 课件原图 m01-p030 |
+| 31 | Supervised Learning Maps Labeled Inputs to Predictions | [[#讲义 p.31 · Supervised Learning Maps Labeled Inputs to Predictions\|定位]] | 课件原图 m01-p031 |
+| 32 | Deep Learning Learned Patterns from Data | [[#讲义 p.32 · Deep Learning Learned Patterns from Data\|定位]] | 文字讲解，无独立教学图 |
+| 33 | Deep Learning Made Representation Learning Practical | [[#讲义 p.33 · Deep Learning Made Representation Learning Practical\|定位]] | 文字讲解，无独立教学图 |
+| 34 | AlexNet Proved Deep Learning at Scale | [[#讲义 p.34 · AlexNet Proved Deep Learning at Scale\|定位]] | 课件原图 m01-p034 |
+| 35 | AlexNet Proved Deep Learning at Scale | [[#讲义 p.35 · AlexNet Proved Deep Learning at Scale\|定位]] | 课件原图 m01-p035 |
+| 36 | Inception and Residual Connections Enabled Deeper Networks | [[#讲义 p.36 · Inception and Residual Connections Enabled Deeper Networks\|定位]] | 课件原图 m01-p036 |
+| 37 | Compute, Data, and Architecture Reinforced One Another | [[#讲义 p.37 · Compute, Data, and Architecture Reinforced One Another\|定位]] | 文字要点与读法。头像、联系字段、机构标识或配图仅作识别／装饰 |
+| 38 | Geoffrey Hinton Helped Make Deep Learning Practical | [[#讲义 p.38 · Geoffrey Hinton Helped Make Deep Learning Practical\|定位]] | 文字讲解，无独立教学图 |
+| 39 | Who is Geoffrey Hinton? | [[#讲义 p.39 · Who is Geoffrey Hinton?\|定位]] | 课件原图 m01-p039 |
+| 40 | Watch: Geoffrey Hinton’s Nobel Lecture | [[#讲义 p.40 · Watch: Geoffrey Hinton’s Nobel Lecture\|定位]] | 课件原图 m01-p040 |
+| 41 | Language Meaning Depends on Context | [[#讲义 p.41 · Language Meaning Depends on Context\|定位]] | 文字讲解，无独立教学图 |
+| 42 | One-Hot Encoding Made Words Sparse and Isolated | [[#讲义 p.42 · One-Hot Encoding Made Words Sparse and Isolated\|定位]] | 课件原图 m01-p042 |
+| 43 | Input Processing Turns Text into Contextual Vectors | [[#讲义 p.43 · Input Processing Turns Text into Contextual Vectors\|定位]] | 课件原图 m01-p043 |
+| 44 | Why Recurrent Models Lose Long Context | [[#讲义 p.44 · Why Recurrent Models Lose Long Context\|定位]] | 课件原图 m01-p044 |
+| 45 | Transformers Shifted AI Toward Generation | [[#讲义 p.45 · Transformers Shifted AI Toward Generation\|定位]] | 课件原图 m01-p045 |
+| 46 | Self-Attention Connects Tokens During Parallel Training | [[#讲义 p.46 · Self-Attention Connects Tokens During Parallel Training\|定位]] | 课件原图 m01-p046 |
+| 47 | LLM Architecture Balances Attention, Context, and Serving | [[#讲义 p.47 · LLM Architecture Balances Attention, Context, and Serving\|定位]] | 文字讲解，无独立教学图 |
+| 48 | Transformers Remove Recurrence in Training | [[#讲义 p.48 · Transformers Remove Recurrence in Training\|定位]] | 课件原图 m01-p048 |
+| 49 | LLMs Generate One Token at a Time | [[#讲义 p.49 · LLMs Generate One Token at a Time\|定位]] | 课件原图 m01-p049 |
+| 50 | Decoding Samples from a Next-Token Distribution | [[#讲义 p.50 · Decoding Samples from a Next-Token Distribution\|定位]] | 课件原图 m01-p050 |
+| 51 | An LLM Is a Large, Pretrained Language Model | [[#讲义 p.51 · An LLM Is a Large, Pretrained Language Model\|定位]] | 文字讲解，无独立教学图 |
+| 52 | 2017–Present: Foundation Models Expanded Generation | [[#讲义 p.52 · 2017–Present: Foundation Models Expanded Generation\|定位]] | 文字讲解，无独立教学图 |
+| 53 | Watch: What Makes AI Generative? | [[#讲义 p.53 · Watch: What Makes AI Generative?\|定位]] | 课件原图 m01-p053 |
+| 54 | Discussion: Why Can AI Feel Alive? | [[#讲义 p.54 · Discussion: Why Can AI Feel Alive?\|定位]] | 课件原图 m01-p054 |
+| 55 | The GenAI Landscape Is a Portfolio, Not a Ranking | [[#讲义 p.55 · The GenAI Landscape Is a Portfolio, Not a Ranking\|定位]] | 课件原图 m01-p055 |
+| 56 | Neuro-Symbolic AI Combines Patterns and Logic | [[#讲义 p.56 · Neuro-Symbolic AI Combines Patterns and Logic\|定位]] | 文字讲解，无独立教学图 |
+| 57 | Opacity Changes How Enterprises Establish Trust | [[#讲义 p.57 · Opacity Changes How Enterprises Establish Trust\|定位]] | 文字讲解，无独立教学图 |
+| 58 | Trustworthy AI Combines Capability, Evidence, and Control | [[#讲义 p.58 · Trustworthy AI Combines Capability, Evidence, and Control\|定位]] | 文字讲解，无独立教学图 |
+| 59 | Part 2 · Designing Enterprise GenAI Systems | [[#讲义 p.59 · Part 2 · Designing Enterprise GenAI Systems\|定位]] | 分隔页及讲者备注 |
+| 60 | Enterprise LLMs Require Multi-Objective Design | [[#讲义 p.60 · Enterprise LLMs Require Multi-Objective Design\|定位]] | 文字要点与读法。头像、联系字段、机构标识或配图仅作识别／装饰 |
+| 61 | Six Vectors Shape the Architecture Trade Space | [[#讲义 p.61 · Six Vectors Shape the Architecture Trade Space\|定位]] | 课件原图 m01-p061 |
+| 62 | The Best Model Is Not the Biggest Model | [[#讲义 p.62 · The Best Model Is Not the Biggest Model\|定位]] | 文字讲解，无独立教学图 |
+| 63 | Mission Fit Replaced Model-Leaderboard Thinking | [[#讲义 p.63 · Mission Fit Replaced Model-Leaderboard Thinking\|定位]] | 文字讲解，无独立教学图 |
+| 64 | Two Ways to Build Multimodal Systems | [[#讲义 p.64 · Two Ways to Build Multimodal Systems\|定位]] | 课件原图 m01-p064 |
+| 65 | Pipeline vs Native Multimodality: Key Trade-offs | [[#讲义 p.65 · Pipeline vs Native Multimodality: Key Trade-offs\|定位]] | 课件原图 m01-p065 |
+| 66 | Multimodality Expands the Business Interface | [[#讲义 p.66 · Multimodality Expands the Business Interface\|定位]] | 课件原图 m01-p066 |
+| 67 | Latency Has Two Components | [[#讲义 p.67 · Latency Has Two Components\|定位]] | 课件原图 m01-p067 |
+| 68 | Latency Splits into Prefill and Decode | [[#讲义 p.68 · Latency Splits into Prefill and Decode\|定位]] | 复用 p.67 原图 |
+| 69 | Two Useful Inference Patterns | [[#讲义 p.69 · Two Useful Inference Patterns\|定位]] | 文字讲解，无独立教学图 |
+| 70 | Retrieval and Reasoning Solve Different Problems | [[#讲义 p.70 · Retrieval and Reasoning Solve Different Problems\|定位]] | 文字讲解，无独立教学图 |
+| 71 | Maximum Context Is Not Always Usable Context | [[#讲义 p.71 · Maximum Context Is Not Always Usable Context\|定位]] | 课件原图 m01-p071 |
+| 72 | Measure Effective Context Empirically | [[#讲义 p.72 · Measure Effective Context Empirically\|定位]] | 文字讲解，无独立教学图 |
+| 73 | Compare Context Windows Carefully | [[#讲义 p.73 · Compare Context Windows Carefully\|定位]] | 课件原图 m01-p073 |
+| 74 | Latency and Throughput Are Different | [[#讲义 p.74 · Latency and Throughput Are Different\|定位]] | 文字讲解，无独立教学图 |
+| 75 | Batching Trades Per-Request Latency for Fleet Throughput | [[#讲义 p.75 · Batching Trades Per-Request Latency for Fleet Throughput\|定位]] | 课件原图 m01-p075 |
+| 76 | Cost Has Hidden Multipliers | [[#讲义 p.76 · Cost Has Hidden Multipliers\|定位]] | 课件原图 m01-p076 |
+| 77 | Model Cost Depends on I/O and Deployment | [[#讲义 p.77 · Model Cost Depends on I/O and Deployment\|定位]] | 复用 p.76 原图 |
+| 78 | Calculate Workload-Specific Total Cost | [[#讲义 p.78 · Calculate Workload-Specific Total Cost\|定位]] | 文字讲解，无独立教学图 |
+| 79 | Start Architecture Design with the Mission | [[#讲义 p.79 · Start Architecture Design with the Mission\|定位]] | 文字讲解，无独立教学图 |
+| 80 | Two Missions Need Different Architectures | [[#讲义 p.80 · Two Missions Need Different Architectures\|定位]] | 文字讲解，无独立教学图 |
+| 81 | Voice Agent vs. Financial Analysis | [[#讲义 p.81 · Voice Agent vs. Financial Analysis\|定位]] | 课件原图 m01-p081 |
+| 82 | Voice-Agent Architecture Starts with Interaction Latency | [[#讲义 p.82 · Voice-Agent Architecture Starts with Interaction Latency\|定位]] | 课件原图 m01-p082 |
+| 83 | Financial Analysis Prioritizes Evidence and Verification | [[#讲义 p.83 · Financial Analysis Prioritizes Evidence and Verification\|定位]] | 课件原图 m01-p083 |
+| 84 | Compound AI Matches Requests to Components | [[#讲义 p.84 · Compound AI Matches Requests to Components\|定位]] | 课件原图 m01-p084 |
+| 85 | A Router Assigns Work to the Right Specialist | [[#讲义 p.85 · A Router Assigns Work to the Right Specialist\|定位]] | 复用 p.84 原图 |
+| 86 | Six Principles for Architecture Decisions | [[#讲义 p.86 · Six Principles for Architecture Decisions\|定位]] | 复用 p.61 原图 |
+| 87 | Optimize for Fitness, Not Raw Strength | [[#讲义 p.87 · Optimize for Fitness, Not Raw Strength\|定位]] | 文字讲解，无独立教学图 |
+| 88 | Part 3 · Governing Probabilistic AI | [[#讲义 p.88 · Part 3 · Governing Probabilistic AI\|定位]] | 分隔页及讲者备注 |
+| 89 | Generative AI Produces Probability-Driven Outputs | [[#讲义 p.89 · Generative AI Produces Probability-Driven Outputs\|定位]] | 文字讲解，无独立教学图 |
+| 90 | Probabilistic Outputs Require a Different Control Model | [[#讲义 p.90 · Probabilistic Outputs Require a Different Control Model\|定位]] | 文字讲解，无独立教学图 |
+| 91 | Hallucinations Can Look Convincingly Correct | [[#讲义 p.91 · Hallucinations Can Look Convincingly Correct\|定位]] | 文字要点与读法。头像、联系字段、机构标识或配图仅作识别／装饰 |
+| 92 | Ground Probabilistic Systems | [[#讲义 p.92 · Ground Probabilistic Systems\|定位]] | 课件原图 m01-p092 |
+| 93 | RAG, Reasoning, and Human Review | [[#讲义 p.93 · RAG, Reasoning, and Human Review\|定位]] | 课件原图 m01-p093 |
+| 94 | Build an Evidence Chain, Not a Chain of Thought | [[#讲义 p.94 · Build an Evidence Chain, Not a Chain of Thought\|定位]] | 文字讲解，无独立教学图 |
+| 95 | GenAI Expands the Cyber Attack Surface | [[#讲义 p.95 · GenAI Expands the Cyber Attack Surface\|定位]] | 课件原图 m01-p095 |
+| 96 | Defend with Testing, Provenance, and Guardrails | [[#讲义 p.96 · Defend with Testing, Provenance, and Guardrails\|定位]] | 课件原图 m01-p096 |
+| 97 | Security Incidents Expose Authority and Identity Gaps | [[#讲义 p.97 · Security Incidents Expose Authority and Identity Gaps\|定位]] | 文字讲解，无独立教学图 |
+| 98 | How Sensitive Data Can Leak | [[#讲义 p.98 · How Sensitive Data Can Leak\|定位]] | 复用 p.95 原图 |
+| 99 | Protect Data Across the Model Lifecycle | [[#讲义 p.99 · Protect Data Across the Model Lifecycle\|定位]] | 课件原图 m01-p099 |
+| 100 | The Samsung Incident Was a Data-Disclosure Failure | [[#讲义 p.100 · The Samsung Incident Was a Data-Disclosure Failure\|定位]] | 课件原图 m01-p100 |
+| 101 | Training Data Raises a Rights Question | [[#讲义 p.101 · Training Data Raises a Rights Question\|定位]] | 文字讲解，无独立教学图 |
+| 102 | Copyright Risk Has Two Sides | [[#讲义 p.102 · Copyright Risk Has Two Sides\|定位]] | 文字讲解，无独立教学图 |
+| 103 | Use Licensing, Contracts, and Opt-Outs | [[#讲义 p.103 · Use Licensing, Contracts, and Opt-Outs\|定位]] | 文字讲解，无独立教学图 |
+| 104 | Copyright Risk Depends on Rights, Use, and Jurisdiction | [[#讲义 p.104 · Copyright Risk Depends on Rights, Use, and Jurisdiction\|定位]] | 文字讲解，无独立教学图 |
+| 105 | Models Inherit Bias and Lose Diversity | [[#讲义 p.105 · Models Inherit Bias and Lose Diversity\|定位]] | 课件原图 m01-p105 |
+| 106 | Fairness Requires Data, Metrics, and Feedback | [[#讲义 p.106 · Fairness Requires Data, Metrics, and Feedback\|定位]] | 文字讲解，无独立教学图 |
+| 107 | Fairness Requires Context-Specific Evidence | [[#讲义 p.107 · Fairness Requires Context-Specific Evidence\|定位]] | 文字讲解，无独立教学图 |
+| 108 | Responsible AI Extends Beyond the Model | [[#讲义 p.108 · Responsible AI Extends Beyond the Model\|定位]] | 课件原图 m01-p108 |
+| 109 | Environmental Impact Must Be Measured, Not Averaged | [[#讲义 p.109 · Environmental Impact Must Be Measured, Not Averaged\|定位]] | 课件原图 m01-p109 |
+| 110 | Responsible AI Covers the Entire Value Chain | [[#讲义 p.110 · Responsible AI Covers the Entire Value Chain\|定位]] | 文字讲解，无独立教学图 |
+| 111 | NIST AI RMF Provides a Common Risk Language | [[#讲义 p.111 · NIST AI RMF Provides a Common Risk Language\|定位]] | 课件原图 m01-p111 |
+| 112 | Part 4 · Operationalizing Responsible AI | [[#讲义 p.112 · Part 4 · Operationalizing Responsible AI\|定位]] | 分隔页及讲者备注 |
+| 113 | Govern, Map, Measure, Manage | [[#讲义 p.113 · Govern, Map, Measure, Manage\|定位]] | 课件原图 m01-p113 |
+| 114 | NIST AI RMF Is Continuous and Iterative | [[#讲义 p.114 · NIST AI RMF Is Continuous and Iterative\|定位]] | 复用 p.113 原图 |
+| 115 | GOVERN and MAP Set Direction | [[#讲义 p.115 · GOVERN and MAP Set Direction\|定位]] | 文字讲解，无独立教学图 |
+| 116 | MEASURE and MANAGE Put Evidence into Action | [[#讲义 p.116 · MEASURE and MANAGE Put Evidence into Action\|定位]] | 文字讲解，无独立教学图 |
+| 117 | The Goal Is Acceptable Risk, Not Zero Risk | [[#讲义 p.117 · The Goal Is Acceptable Risk, Not Zero Risk\|定位]] | 课件原图 m01-p117 |
+
+<details>
+<summary>原有主题和课堂转录对应</summary>
 
 | 笔记小节 | 讲义页 | 课堂覆盖 |
 |---|---|---|
@@ -3808,7 +4965,7 @@ Syllabus 列 Multiple choice、Short answer、Essay 及概念解释／案例应�
 | §2.4.0 达特茅斯 | p.16–17 | ✅ 详讲 + 🎙️ **视频内容（三位人物）只有到场才听得到** |
 | §2.3 ELIZA 与界面 | p.18–21 | ✅ **详讲，且课上远超课件**（四种架构、视频对白、秘书的故事） |
 | §2.4.4 三里程碑 / 四范式 | p.22–24 | ✅ 详讲 |
-| §2.4.1 符号 AI | p.25–27 | ✅ **详讲 + 平安百万条规则的真实案例**（讲义完全没有） |
+| §2.4.1 符号 AI | p.25–27 | ✅ **详讲 + 讲者回忆的平安规则实践**（讲义完全没有） |
 | §2.4.2 统计机器学习 | p.28、p.31 | ✅ **详讲 + 三段课外展开**（0.8% 欺诈率、半监督/无监督、ETA预测情境（平台名未确认）） |
 | §2.4.4 AI⊃ML⊃DL | p.29 | ✅ 详讲 |
 | §2.5 神经网络层与单元 | p.30 | ✅ 转录 `57:35–01:02:48` 详讲；上半图含矩阵输入、权重、多输出及 Updates，下半图是生物类比；§2.5 补形状一致的教学算例 |
@@ -3841,7 +4998,7 @@ Syllabus 列 Multiple choice、Short answer、Essay 及概念解释／案例应�
 | §2.9.4 证据链 ≠ 思维链 | p.94 | ✅ 详讲 |
 | §2.9.5 安全 | p.95–98 | ✅ 详讲（p.95 与 p.98 内容完全重复，见 §9.3） |
 | §2.9.6 数据生命周期 | p.99 | ✅ 详讲，逐段展开 |
-| §2.9.6 三星事件 | p.100 | ⏭️ **课上跳过** |
+| §2.9.6 三星事件 | p.100 | ⏭️ 现有转录未检出展开 |
 | §2.9.6 训练数据与版权两侧 | p.101–102 | ✅ 简讲 + 🎙️ 中国 LLM 输出相似性的例子（讲义没有） |
 | §2.9.6 授权/合同/管辖权 | p.103–104 | ⏭️ **教授明确跳过**——原话 "**So I skip**"（`01:59:42`） |
 | §2.9.7 公平性 | p.105–107 | ✅ 详讲 |
@@ -3849,6 +5006,8 @@ Syllabus 列 Multiple choice、Short answer、Essay 及概念解释／案例应�
 | §2.10 NIST 四功能 | p.111、p.113–116 | ✅ 详讲（p.111 与 p.113、p.114 三处内容重复） |
 | §2.10 Part 4 扉页 | p.112 | **有实质演讲者备注**（框架是自愿的、非行业特定的、不是认证） |
 | §2.10 可接受风险 | p.117 | ✅ 详讲，全讲收尾 |
+
+</details>
 
 ---
 
@@ -3870,7 +5029,7 @@ p.30 不列为略过：课堂 `57:35–01:02:48` 已展开整层矩阵与神经�
 
 | 内容 | 时间戳 | 为什么值钱 |
 |---|---|---|
-| ★ **平安保险至今在用百万条 if–then 规则**，以及那个理由：**人最终要担责，所以偏好自己能控制、且知道为什么的工具** | `44:57`、`48:13` | 一句话同时解释了：符号 AI 为什么没死 / 金融业为什么抵触黑箱 / 为什么可信 AI 必须包含 Control |
+| ★ **讲者用平安的规则实践说明可控性，现行规模和部署未核**，以及那个理由：**人最终要担责，所以偏好自己能控制、且知道为什么的工具** | `44:57`、`48:13` | 一句话同时解释了：符号 AI 为什么没死 / 金融业为什么抵触黑箱 / 为什么可信 AI 必须包含 Control |
 | ★ **课堂强调纯参数推理不替代外部证据（并非 only RAG 定理）** | `01:54:31` | 全讲最锋利的判断，且与 §2.8.4「检索 ≠ 推理」严密咬合 |
 | ★ **人工复核须实际核验并能拒绝／升级；课堂另强调责任主体** | `01:55:04`、`01:53:38` | 将责任落实到具体角色，但不能代替证据、能力、时间与拒绝／升级权限 |
 | ★ **同一句 "Can I cancel my order?" 的四种架构** | `39:11`–`40:18` | 全讲最好用的例子；最后一行是复合 AI 的雏形 |
@@ -3926,7 +5085,7 @@ p.30 补记：图中行输入乘权重矩阵，却将输出竖排示意；按行
 |---|---|---|
 | ① | **AlexNet 参数量** | 教授口述 "roughly like 6,000,000"（600 万），**讲义 p.35 写 "≈60M parameters"（6000 万）**。**以讲义为准。** 疑为口误或 ASR 误识 |
 | ② | **《Attention Is All You Need》的引用量** | 教授口述了一个数字，ASR 记成 "about 26267 thousand"，**无法还原**。**答题不要引用具体引用量** |
-| ③ | **Chevrolet 案例的归类** | **教授把它当"幻觉"讲**（`01:52:20`），**但讲义 p.97 把它归为"提示注入"**。两者机制不同：幻觉是"自信地说错"，提示注入是"被诱导做出未授权承诺"。**答题按讲义分类更安全** |
+| ③ | **Chevrolet 案例的两层证据** | p.97 与课堂 01:56:49–01:57:30 对应攻击手段。01:52:20 对应未经授权的不实承诺。两层可同时出现，见 §2.9.2。 |
 | ④ | **NIST 四功能的转录疑点** | 现有ASR记有 “government”／“govern map manager and manage”，可能口误或识别错误，原音未核。书面以讲义 **Govern / Map / Measure / Manage** 为准 |
 | ⑤ | **上课日期** | 讲义暂定日历不能确认本讲实际日期；frontmatter 改为 `date: null`，待权威记录补证，不影响材料 `transcript: merged` 状态 |
 | ⑥ | **考试题型比例** | 讲义 p.12 自标 "Exact question format will be confirmed by the instructor"。20/30/50 是**暂定值**，开学后留意 Canvas |
@@ -3937,7 +5096,7 @@ p.30 补记：图中行输入乘权重矩阵，却将输出竖排示意；按行
 
 **p.40 原任务**：“Watch: Geoffrey Hinton’s Nobel Lecture”；“Use this segment to connect the history of neural networks with the methods that made modern foundation models practical.”；“Listen for how research ideas became scalable learning systems.”
 
-中文题意：把神经网络历史与可扩展学习方法联系起来。⚪ 参考作答（依据本讲 p.32–39，并非视频内容核验）：多层表示学习改变特征来源，数据、GPU 计算和可训练架构共同让大模型成为实际系统；残差是后来改善深网训练的方法，不能说 AlexNet 已用了残差。English reference: “The lecture connects representation learning with data, parallel compute, and trainable architectures. Their interaction made large-scale learning practical; residual connections are a later contribution, not an AlexNet component.” 本轮未观看外链视频，不写成 Hinton 的原话或已核视频总结。
+中文题意：把神经网络历史与可扩展学习方法联系起来。⚪ 参考作答（依据本讲 p.32–39，并非视频内容核验）：多层表示学习改变特征来源，数据、GPU 计算和可训练架构共同让大模型成为实际系统；残差是后来改善深网训练的方法，不能说 AlexNet 已用了残差。English reference: “Course slides 32–39 connect representation learning with data, parallel compute, and trainable architectures. Their interaction made large-scale learning practical; residual connections are a later contribution, not an AlexNet component.” 本轮未观看外链视频，不写成 Hinton 的原话或已核视频总结。
 
 p.16、p.18 的视频按已有课件与转录覆盖；本轮未重新播放原视频，转录对白仍只是文本证据，不声称核音。p.40、p.53、p.54 的完整任务与参考答案分别在本节及 §2.7.1 保留。
 

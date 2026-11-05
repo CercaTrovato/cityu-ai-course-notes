@@ -1,0 +1,233 @@
+{
+  "schema": "note-source-checks-v1",
+  "sources": {
+    "lecture11": {
+      "path": "../../../../IS6400_Business_Data_Analytics/course_files_export/L11-IS6400-DeepLearning.pdf",
+      "sha256": "f02ced8d5d010ab5927c5670861ae471eb22d0c67c80b78c1fd2ceafb49df9a3"
+    }
+  },
+  "questions": [
+    {
+      "id": "p13",
+      "source_id": "lecture11",
+      "page": 13,
+      "section": "p.13 · Perceptron’s Step Function",
+      "original": "How to deal with this ‘s’?",
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "从左到右分别把它变为硬类别、连续预测值、0 到 1 之间的输出。",
+          "english": "Apply a step function for hard classification, keep the score for linear regression, or apply a sigmoid for a probability-based binary model."
+        }
+      ],
+      "manual_source_check": "人工核 PDF 对应页的问题、图中给定条件及候选处置。p.81 三问为源文抽取演示，整段文本另在正文折叠保留。"
+    },
+    {
+      "id": "p14",
+      "source_id": "lecture11",
+      "page": 14,
+      "section": "p.14 · Perceptron’s Capability · AND",
+      "original": "How perceptron can achieve AND?",
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "使只有双 1 时分数为正。",
+          "english": "Only the input (1,1) produces a positive score"
+        }
+      ],
+      "manual_source_check": "人工核 PDF 对应页的问题、图中给定条件及候选处置。p.81 三问为源文抽取演示，整段文本另在正文折叠保留。"
+    },
+    {
+      "id": "p18",
+      "source_id": "lecture11",
+      "page": 18,
+      "section": "p.18 · A complex case · XOR 与 XNOR",
+      "original": "Why single layer fails?",
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "两个正类位于对角，无法用一条直线同时把它们与另外两角分开。",
+          "english": "A single linear threshold cannot separate the opposite positive corners from the opposite negative corners."
+        }
+      ],
+      "manual_source_check": "人工核 PDF 对应页的问题、图中给定条件及候选处置。p.81 三问为源文抽取演示，整段文本另在正文折叠保留。"
+    },
+    {
+      "id": "p24",
+      "source_id": "lecture11",
+      "page": 24,
+      "section": "p.24 · Model Representation · 红线是哪条边",
+      "original": "Where does $\\theta^{(1)}_{3,1}$ go?",
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "沿左侧第一层 $x_1$ 到第二层第 3 个橙圈 $a^{(2)}_3$。",
+          "english": "It is the weight from unit 1 in layer 1 to unit 3 in layer 2."
+        }
+      ],
+      "manual_source_check": "人工核 PDF 对应页的问题、图中给定条件及候选处置。p.81 三问为源文抽取演示，整段文本另在正文折叠保留。"
+    },
+    {
+      "id": "p25",
+      "source_id": "lecture11",
+      "page": 25,
+      "section": "p.25 · Model Representation · 读输出节点",
+      "original": "What is $h_\\theta(x)=a_1^{(3)}$?",
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "把第三层的输入写清",
+          "english": "The final output is the activation of unit 1 in layer 3, computed from a bias and a weighted sum of the preceding layer's activations."
+        }
+      ],
+      "manual_source_check": "人工核 PDF 对应页的问题、图中给定条件及候选处置。p.81 三问为源文抽取演示，整段文本另在正文折叠保留。"
+    },
+    {
+      "id": "p39",
+      "source_id": "lecture11",
+      "page": 39,
+      "section": "p.39 · Gradient Descent · 多参数时怎么办",
+      "original": "What if p is large? (e.g., n/2)",
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "实际回应是高效计算所有参数梯度，再迭代更新。",
+          "english": "With many parameters, compute the gradient efficiently by backpropagation and update all parameters using gradient descent."
+        }
+      ],
+      "manual_source_check": "人工核 PDF 对应页的问题、图中给定条件及候选处置。p.81 三问为源文抽取演示，整段文本另在正文折叠保留。"
+    },
+    {
+      "id": "p48",
+      "source_id": "lecture11",
+      "page": 48,
+      "section": "p.48 · Example · 识别五项设定",
+      "original": "Identify the following parameters: Input layer dimension (for features input); Number of hidden layers; Number of nodes in hidden layers; Activation function; Loss function (objective function).",
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "灰度服饰输入，维度为 $28\\times28=784$",
+          "english": "the flattened input dimension is 784"
+        },
+        {
+          "id": "2",
+          "chinese": "两个表示阶段",
+          "english": "labels two hidden representation stages"
+        },
+        {
+          "id": "3",
+          "chinese": "每层实际节点数没有明确数值",
+          "english": "does not specify an implementable unit count"
+        },
+        {
+          "id": "4",
+          "chinese": "该图未给激活",
+          "english": "ReLU hidden units"
+        },
+        {
+          "id": "5",
+          "chinese": "该图未给损失",
+          "english": "softmax/categorical-cross-entropy output"
+        }
+      ],
+      "manual_source_check": "人工核 PDF 对应页的问题、图中给定条件及候选处置。p.81 三问为源文抽取演示，整段文本另在正文折叠保留。"
+    },
+    {
+      "id": "p52-a",
+      "source_id": "lecture11",
+      "page": 52,
+      "section": "p.52 · NN for Sequence Analysis",
+      "original": "What if I want to analyze something in a sequence?",
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "按从左到右的顺序才能识别原话。",
+          "english": "Keep the inputs in order and pass a state from each step to the next."
+        }
+      ],
+      "manual_source_check": "人工核 PDF 对应页的问题、图中给定条件及候选处置。p.81 三问为源文抽取演示，整段文本另在正文折叠保留。"
+    },
+    {
+      "id": "p52-b",
+      "source_id": "lecture11",
+      "page": 52,
+      "section": "p.52 · NN for Sequence Analysis",
+      "original": "What if I want to analyze human speech?",
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "三段语音波形",
+          "english": "For speech, process successive audio frames so the model can use earlier context when interpreting the current frame."
+        }
+      ],
+      "manual_source_check": "人工核 PDF 对应页的问题、图中给定条件及候选处置。p.81 三问为源文抽取演示，整段文本另在正文折叠保留。"
+    },
+    {
+      "id": "p81-a",
+      "source_id": "lecture11",
+      "page": 81,
+      "section": "p.81 · Examples of Text Mining 3",
+      "original": "What is COVID-19?",
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "第一问定位定义句",
+          "english": "the infectious disease caused by the most recently discovered coronavirus"
+        }
+      ],
+      "manual_source_check": "人工核 PDF 对应页的问题、图中给定条件及候选处置。p.81 三问为源文抽取演示，整段文本另在正文折叠保留。"
+    },
+    {
+      "id": "p81-b",
+      "source_id": "lecture11",
+      "page": 81,
+      "section": "p.81 · Examples of Text Mining 3",
+      "original": "What are symptoms of COVID-19?",
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "第二问定位列出常见症状的句子",
+          "english": "fever, tiredness, and dry cough"
+        }
+      ],
+      "manual_source_check": "人工核 PDF 对应页的问题、图中给定条件及候选处置。p.81 三问为源文抽取演示，整段文本另在正文折叠保留。"
+    },
+    {
+      "id": "p81-c",
+      "source_id": "lecture11",
+      "page": 81,
+      "section": "p.81 · Examples of Text Mining 3",
+      "original": "How many people recover from COVID?",
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "第三问定位",
+          "english": "about 80%"
+        }
+      ],
+      "manual_source_check": "人工核 PDF 对应页的问题、图中给定条件及候选处置。p.81 三问为源文抽取演示，整段文本另在正文折叠保留。"
+    }
+  ],
+  "other_prompts": [
+    {
+      "page": 2,
+      "type": "定义标题",
+      "handling": "随图解释领域范围"
+    },
+    {
+      "page": 4,
+      "type": "引入双关",
+      "handling": "文字解释图片，跳至 p.5 定义应用"
+    },
+    {
+      "page": 42,
+      "type": "给定训练计算演示",
+      "handling": "目标→梯度→更新，保留公式和可执行小例"
+    },
+    {
+      "page": 85,
+      "type": "表征引导问题",
+      "handling": "用原表读文档行、词列、次数"
+    }
+  ]
+}

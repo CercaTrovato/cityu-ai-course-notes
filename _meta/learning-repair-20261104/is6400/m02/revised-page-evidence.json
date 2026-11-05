@@ -1,0 +1,934 @@
+{
+  "source": "IS6400_Business_Data_Analytics/course_files_export/L2-Linear_Regression.pdf",
+  "source_sha256": "04ed352014cf2e4eadf63e091a7b087b798c2b171c2944857441b180b2a66790",
+  "baseline_sha256": "dd0537d03eab5d7d4417a315587fa77322fdd723ce08ee0f76659fab704c82bc",
+  "transcript": "IS6400_Business_Data_Analytics/transcripts/M02-transcript.txt",
+  "transcript_sha256": "252aa63e839c369e17842c69178bafb8c1c8715718f6c60c565c57b29d29a2a3",
+  "candidate_sha256": "6350757b30150d9b4b9dfc0989ea318cb5d630e803c2e1ea834bcdbcc268d000",
+  "stage": "revised_pending_targeted_recheck",
+  "pages": [
+    {
+      "page": 1,
+      "title": "预测分析导览",
+      "anchor": "p.1 · 预测分析导览",
+      "disposition": "导览",
+      "content": "Lecture 2 点亮 Linear Regression，另有 Parameter Training 与 Overfitting。指定 HM Chapter 4。",
+      "visual": "联系图",
+      "printed_footer": "1"
+    },
+    {
+      "page": 2,
+      "title": "Predictive Analytics",
+      "anchor": "p.2 · Predictive Analytics",
+      "disposition": "图",
+      "content": "沿 p.1 课程顺序进入 CRISP-DM，红框点出第 4 步 Model Building，绿色箭头接测试与评价，失败可回到前序。",
+      "visual": "联系图",
+      "printed_footer": "2"
+    },
+    {
+      "page": 3,
+      "title": "Predictive Modeling",
+      "anchor": "p.3 · Predictive Modeling",
+      "disposition": "文字",
+      "content": "经理判断变量关系；有数据可通过回归写成关系式，做趋势与估计。预测关联的用途是计算新输入的输出。",
+      "visual": "联系图",
+      "printed_footer": "3"
+    },
+    {
+      "page": 4,
+      "title": "Some Business Applications Using Linear Regression",
+      "anchor": "p.4 · Some Business Applications Using Linear Regression",
+      "disposition": "文字",
+      "content": "广告支出预测销售，价格预测销量，年龄预测理赔次数。三个目标都是数值，但各场景可用预测模型和适用范围需另核。",
+      "visual": "联系图",
+      "printed_footer": "4"
+    },
+    {
+      "page": 5,
+      "title": "Terminologies for Prediction",
+      "anchor": "p.5 · Terminologies for Prediction",
+      "disposition": "图",
+      "content": "横读同一行对应三领域术语。Independent/Predictor/Explanatory 都是预测用的输入，Dependent/Target/Response 都是要预测的量。",
+      "visual": "联系图",
+      "printed_footer": "5"
+    },
+    {
+      "page": 6,
+      "title": "Dependent vs. Independent Variables",
+      "anchor": "p.6 · Dependent vs. Independent Variables",
+      "disposition": "文字",
+      "content": "用 p.4 三个例子标明因、自变量，尤其保险题的目标是客户理赔次数，年龄是输入。",
+      "visual": "联系图",
+      "printed_footer": "6"
+    },
+    {
+      "page": 7,
+      "title": "example - 1 · 问题与数据",
+      "anchor": "p.7 · example - 1 · 问题与数据",
+      "disposition": "图",
+      "content": "题面用 60000 per capital，数据表实际是 GDP per capita。前两步将问题变为回归任务，并用国家、人均 GDP 和满意度整理训练资料，五行是表格展示。",
+      "visual": "联系图",
+      "printed_footer": "7/73"
+    },
+    {
+      "page": 8,
+      "title": "example - 1 · 训练",
+      "anchor": "p.8 · example - 1 · 训练",
+      "disposition": "图",
+      "content": "第 3 步沿 Train 蓝箭头从表到散点和拟合线；横轴人均 GDP，纵轴满意度，原图截距 4.85、斜率 $4.91\\times10^{-5}$。",
+      "visual": "联系图",
+      "printed_footer": "8/73"
+    },
+    {
+      "page": 9,
+      "title": "example - 1 · 实施",
+      "anchor": "p.9 · example - 1 · 实施",
+      "disposition": "图",
+      "content": "第 4 步不重训，沿横轴 60000 到红星，代式得约 7.796。固定估计参数的条件预测不回答提高 GDP 的因果效应。",
+      "visual": "联系图",
+      "printed_footer": "9/73"
+    },
+    {
+      "page": 10,
+      "title": "An Example of Linear Regression",
+      "anchor": "p.10 · An Example of Linear Regression",
+      "disposition": "文字",
+      "content": "加州已知当前蛋价，目标是未来数周每周售出箱数。训练来源写两年历史数据库，需分清未来蛋价是否可知。",
+      "visual": "联系图",
+      "printed_footer": "10"
+    },
+    {
+      "page": 11,
+      "title": "Historical Data",
+      "anchor": "p.11 · Historical Data",
+      "disposition": "图",
+      "content": "左右两块是同一种记录，按行读每周箱数和蛋价；图表只是展示，不能当作完整两年数据。",
+      "visual": "联系图",
+      "printed_footer": "11"
+    },
+    {
+      "page": 12,
+      "title": "Scatterplot Representation",
+      "anchor": "p.12 · Scatterplot Representation",
+      "disposition": "图",
+      "content": "横轴 Egg.Pr，纵轴箱数，两条虚线标出约 80 和 105。题面问 \\$0.80 与 \\$1.05，按美分输入，按 p.21 四舍五入后的拟合线计算，80 美分约 109,094 箱／周，105 美分约 95,244 箱／周。",
+      "visual": "联系图",
+      "printed_footer": "12"
+    },
+    {
+      "page": 13,
+      "title": "Scatterplot to Algebra",
+      "anchor": "p.13 · Scatterplot to Algebra",
+      "disposition": "文字",
+      "content": "要得到把价格转为销量的公式和预测误差范围。先选最简单直线，再用历史数据估计截距和斜率，范围需另给误差假设。",
+      "visual": "联系图",
+      "printed_footer": "13"
+    },
+    {
+      "page": 14,
+      "title": "Simple Linear Regression · 公式",
+      "anchor": "p.14 · Simple Linear Regression · 公式",
+      "disposition": "图",
+      "content": "从横轴移动 $\\Delta X$，读纵向 $\\Delta Y$，比值是斜率。截距是横轴零点处的预测，真实销量再加随机误差。",
+      "visual": "联系图",
+      "printed_footer": "14"
+    },
+    {
+      "page": 15,
+      "title": "Simple Linear Regression · 点与线",
+      "anchor": "p.15 · Simple Linear Regression · 点与线",
+      "disposition": "图",
+      "content": "浅蓝点是观测；橙色实线是标出的回归线；同一横坐标上点和回归线的垂直距离是残差。其余斜线示意不同候选。",
+      "visual": "联系图",
+      "printed_footer": "15"
+    },
+    {
+      "page": 16,
+      "title": "Prediction",
+      "anchor": "p.16 · Prediction",
+      "disposition": "文字",
+      "content": "原问 “Sound familiar?...sound like conditional probabilities?”。已知 X 帮助把 Y 的判断限制在该 X 条件下；条件均值给点预测，条件分布描述围绕点预测的变化。",
+      "visual": "联系图",
+      "printed_footer": null
+    },
+    {
+      "page": 17,
+      "title": "Assumptions (or the fine print)",
+      "anchor": "p.17 · Assumptions (or the fine print)",
+      "disposition": "文字",
+      "content": "线性条件均值、给定 X 的正态形状、同一方差、独立观测。区别估计方法所需假设与精确推断所用条件。",
+      "visual": "联系图",
+      "printed_footer": null
+    },
+    {
+      "page": 18,
+      "title": "条件分布图（笔记定位）",
+      "anchor": "p.18 · 条件分布图（笔记定位）",
+      "disposition": "图",
+      "content": "沿不同横轴位置看紫色条件分布，中心在斜线上，宽度相同。方差同一是模型假设，图上 $S_{y/x}$ 是回归线附近的残差波动尺度。",
+      "visual": "联系图",
+      "printed_footer": "18"
+    },
+    {
+      "page": 19,
+      "title": "Regression Curve Fitting",
+      "anchor": "p.19 · Regression Curve Fitting",
+      "disposition": "图",
+      "content": "同一散点可画多条候选线。先按纵向差得到各残差，平方后求和，最小者为最小二乘；原页文字简写为差之和，以图中平方和为准。",
+      "visual": "联系图",
+      "printed_footer": "19"
+    },
+    {
+      "page": 20,
+      "title": "The Output",
+      "anchor": "p.20 · The Output",
+      "disposition": "图",
+      "content": "沿系数行横读估计、标准误、t 和 p。蛋价估计 −553.9、标准误 168.2、t=−3.293、p=0.00136；右红框误把 p 解释为真斜率为零的概率，中框也误把置信区间解释成该参数在区间内的概率。",
+      "visual": "联系图与原尺寸",
+      "printed_footer": "20"
+    },
+    {
+      "page": 21,
+      "title": "Curve Fitting Of The Output",
+      "anchor": "p.21 · Curve Fitting Of The Output",
+      "disposition": "图",
+      "content": "蓝虚线给 153414−554×蛋价，超出训练价格范围外推风险高。两问分别答每涨 1 美分预测少约 554 箱、拟合系数来自残差平方和最小化。",
+      "visual": "联系图",
+      "printed_footer": "21"
+    },
+    {
+      "page": 22,
+      "title": "Take Another Look At The Data",
+      "anchor": "p.22 · Take Another Look At The Data",
+      "disposition": "图",
+      "content": "在低蛋价左侧定位 40 和 91 两个高销量点。它们有潜在影响，下一页才检查节日因素。",
+      "visual": "联系图",
+      "printed_footer": "22"
+    },
+    {
+      "page": 23,
+      "title": "Outliers",
+      "anchor": "p.23 · Outliers",
+      "disposition": "文字",
+      "content": "可考虑去除或调查，讲义把第 40、91 周与复活节销量变化联系。数据点可能反映业务信号，先核质量和日历再决定。",
+      "visual": "联系图",
+      "printed_footer": "23"
+    },
+    {
+      "page": 24,
+      "title": "Multiple Linear Regression",
+      "anchor": "p.24 · Multiple Linear Regression",
+      "disposition": "文字",
+      "content": "保留价格并加复活节类别，仍预测一个销量。页问节日期间和之后差多少，也问类别如何进入乘加式；下一页给虚拟变量。",
+      "visual": "联系图",
+      "printed_footer": "24"
+    },
+    {
+      "page": 25,
+      "title": "Create Dummy Variables",
+      "anchor": "p.25 · Create Dummy Variables",
+      "disposition": "图",
+      "content": "Non-Easter 全为零，另外三类各只点亮一列。在有截距的模型中，第四列会和其余三列合成常数而造成共线。",
+      "visual": "联系图",
+      "printed_footer": "25"
+    },
+    {
+      "page": 26,
+      "title": "Interpreting The Output",
+      "anchor": "p.26 · Interpreting The Output",
+      "disposition": "图",
+      "content": "同价对比基准周，节前约多 76,947 箱，节后约少 22,096 箱，复活节当周约多 32,729。蛋价 p=0.0813，在 5% 水平不拒绝斜率为 0，不能从该表证明没有关联。",
+      "visual": "联系图与原尺寸",
+      "printed_footer": "26"
+    },
+    {
+      "page": 27,
+      "title": "参数训练导览",
+      "anchor": "p.27 · 参数训练导览",
+      "disposition": "导览",
+      "content": "封面改点亮 Parameter Training，读 p.28 的残差图和随后两个参数求解方法。",
+      "visual": "联系图",
+      "printed_footer": "27"
+    },
+    {
+      "page": 28,
+      "title": "Least Sum of Squares Curve Fitting",
+      "anchor": "p.28 · Least Sum of Squares Curve Fitting",
+      "disposition": "图",
+      "content": "横轴时段，纵轴观测，红星到红线的括号是垂直残差。平方求和对正负偏差都计入。",
+      "visual": "联系图",
+      "printed_footer": "28"
+    },
+    {
+      "page": 29,
+      "title": "Multiple Linear Regression · 平面",
+      "anchor": "p.29 · Multiple Linear Regression · 平面",
+      "disposition": "图",
+      "content": "两个输入轴配一个输出轴形成响应平面；固定一个输入并沿另一个轴移动可读其条件斜率。点到平面的竖线表示输出误差。",
+      "visual": "联系图",
+      "printed_footer": "29/55"
+    },
+    {
+      "page": 30,
+      "title": "The Linear Model",
+      "anchor": "p.30 · The Linear Model",
+      "disposition": "图",
+      "content": "标量响应由参数向量和协变量逐项乘加再加噪声。右侧另列 +b；若改用含常数 1 的向量，截距只记一次。",
+      "visual": "联系图",
+      "printed_footer": "30/55"
+    },
+    {
+      "page": 31,
+      "title": "Conditional Likelihood",
+      "anchor": "p.31 · Conditional Likelihood",
+      "disposition": "图",
+      "content": "给定 x 后预测中心视为常量，随机性来自均值 0、方差固定的正态噪声。条件密度的指数含预测与实际之差的平方。",
+      "visual": "联系图",
+      "printed_footer": "31/55"
+    },
+    {
+      "page": 32,
+      "title": "Optimal Parameter",
+      "anchor": "p.32 · Optimal Parameter",
+      "disposition": "图",
+      "content": "下方抛物线 $y=(x+5)^2$ 的最低点在 −5，最小值为 0。先找斜率 0，再利用凸性确认这里是最小点。",
+      "visual": "联系图",
+      "printed_footer": "32/55"
+    },
+    {
+      "page": 33,
+      "title": "Minimizing the Squared Error · 求梯度",
+      "anchor": "p.33 · Minimizing the Squared Error · 求梯度",
+      "disposition": "图",
+      "content": "先对单条残差平方用链式法则，再把各行相加。原图括号将 log likelihood 和残差平方和误写为同一量；固定方差时负对数似然与平方和只差正比例和常数。",
+      "visual": "联系图与原尺寸",
+      "printed_footer": "33/55"
+    },
+    {
+      "page": 34,
+      "title": "Minimizing the Squared Error · 正规方程",
+      "anchor": "p.34 · Minimizing the Squared Error · 正规方程",
+      "disposition": "图",
+      "content": "将梯度写成矩阵形式并置零，得到正规方程；写逆矩阵前需检查列独立。秩不足时可用最小二乘求解，不强求逆矩阵。",
+      "visual": "联系图",
+      "printed_footer": "34/55"
+    },
+    {
+      "page": 35,
+      "title": "Gradient Descent · 参数多时",
+      "anchor": "p.35 · Gradient Descent · 参数多时",
+      "disposition": "图",
+      "content": "问题询问 p 相对 n 大时怎么办。避开显式求逆，反复沿目标函数的负梯度更新；原图若把正对数似然直接代入减号，方向会反，改成加正对数似然梯度或减负对数似然梯度。",
+      "visual": "联系图与原尺寸",
+      "printed_footer": "35/55"
+    },
+    {
+      "page": 36,
+      "title": "Gradient Descent Illustrated",
+      "anchor": "p.36 · Gradient Descent Illustrated",
+      "disposition": "图",
+      "content": "横轴参数，纵轴负对数似然。按 0→1→2→3 的标号沿曲线读迭代，首次跨到另一侧仍可接近最低点；不是每次跨越都安全。",
+      "visual": "联系图",
+      "printed_footer": "36/55"
+    },
+    {
+      "page": 37,
+      "title": "Example · 迭代次数与最优值",
+      "anchor": "p.37 · Example · 迭代次数与最优值",
+      "disposition": "图",
+      "content": "从 −3 出发、学习率 0.2，首次到 −3.8，第二次 −4.28。停止次数依容差，精确算术下只趋近 −5；最优参数 −5、最小函数值 0。",
+      "visual": "联系图",
+      "printed_footer": "37/55"
+    },
+    {
+      "page": 38,
+      "title": "过拟合导览",
+      "anchor": "p.38 · 过拟合导览",
+      "disposition": "导览",
+      "content": "此处分隔页点亮 Overfitting，随后用训练误差与留出数据评价区分欠拟合与过拟合。",
+      "visual": "联系图",
+      "printed_footer": "38"
+    },
+    {
+      "page": 39,
+      "title": "Evolutionary Model Building",
+      "anchor": "p.39 · Evolutionary Model Building",
+      "disposition": "文字",
+      "content": "问怎样评价未来预测与该选几个自变量。用届时可用资料定义比较，再在验证集选复杂度；真正未来或未参与选择的测试负责最后评价。",
+      "visual": "联系图",
+      "printed_footer": "39"
+    },
+    {
+      "page": 40,
+      "title": "Underfitting VS Overfitting",
+      "anchor": "p.40 · Underfitting VS Overfitting",
+      "disposition": "图",
+      "content": "左侧常数近似错过原训练曲线，训练误差大；右边曲线跟得过细，新数据处表现差。观察点与曲线在历史及新资料区域的差距。",
+      "visual": "联系图",
+      "printed_footer": "40/55"
+    },
+    {
+      "page": 41,
+      "title": "Using Validation Set",
+      "anchor": "p.41 · Using Validation Set",
+      "disposition": "文字",
+      "content": "训练集拟合，验证集选择并估计泛化表现，测试集最后评估。留给验证的行不能同轮训练，样本较少是代价。",
+      "visual": "联系图",
+      "printed_footer": "41/55"
+    },
+    {
+      "page": 42,
+      "title": "Model Evaluation · 留出法后两步",
+      "anchor": "p.42 · Model Evaluation · 留出法后两步",
+      "disposition": "图",
+      "content": "物理 p.42 先印步骤 3、4，实际操作应先读下一物理页的 1、2。此页只用验证误差在候选间选模型，再得到留出法预测器。",
+      "visual": "联系图",
+      "printed_footer": "42/55"
+    },
+    {
+      "page": 43,
+      "title": "Model Evaluation · 留出法前两步",
+      "anchor": "p.43 · Model Evaluation · 留出法前两步",
+      "disposition": "图",
+      "content": "物理 p.43 印步骤 1、2。先切训练集与验证集，再只用训练集拟合各模型，模型之间的比较发生在 p.42 的验证集。",
+      "visual": "联系图",
+      "printed_footer": "43/55"
+    },
+    {
+      "page": 44,
+      "title": "Example – Hold out",
+      "anchor": "p.44 · Example – Hold out",
+      "disposition": "图",
+      "content": "20 行中 4 个红标是验证行，输入依次 4.9、6.3、7.2、12.8；其余 16 行拟合。随机划分是当前例，时间预测要按信息时点划分。",
+      "visual": "联系图与原尺寸",
+      "printed_footer": "44/55"
+    },
+    {
+      "page": 45,
+      "title": "Example · 三类点",
+      "anchor": "p.45 · Example · 三类点",
+      "disposition": "图",
+      "content": "蓝圆是训练，黄星是验证，黑点表示预测线。关系式为 $y=3x+4+\\epsilon$；本图与上一页标红表的来源数值不能互填。",
+      "visual": "联系图",
+      "printed_footer": "45"
+    },
+    {
+      "page": 46,
+      "title": "Regularization · 直觉",
+      "anchor": "p.46 · Regularization · 直觉",
+      "disposition": "文字",
+      "content": "原问 “How it works?”。训练时约束系数规模，减少模型追逐噪声的自由度，是否改善用验证数据判断。",
+      "visual": "联系图",
+      "printed_footer": "46/55"
+    },
+    {
+      "page": 47,
+      "title": "Regularization · 加入约束",
+      "anchor": "p.47 · Regularization · 加入约束",
+      "disposition": "图",
+      "content": "课件先写残差平方和，再要求惩罚量小于等于预算 r；原页把未除样本数的 SSE 称 MSE，需要区别。",
+      "visual": "联系图",
+      "printed_footer": "47/55"
+    },
+    {
+      "page": 48,
+      "title": "Regularization · 惩罚写法",
+      "anchor": "p.48 · Regularization · 惩罚写法",
+      "disposition": "图",
+      "content": "将固定预算换为目标中的非负 $\\lambda$ 乘惩罚项。两写法可能对应同一解，不能把 r 和 $\\lambda$ 直接按数值互换。",
+      "visual": "联系图",
+      "printed_footer": "48/55"
+    },
+    {
+      "page": 49,
+      "title": "Regularization - Lasso",
+      "anchor": "p.49 · Regularization - Lasso",
+      "disposition": "图",
+      "content": "绝对值惩罚对较小信号可把系数压到精确零；$\\lambda=0$ 回到原平方损失。不是看到输入方差大就必然置零。",
+      "visual": "联系图",
+      "printed_footer": "49/55"
+    },
+    {
+      "page": 50,
+      "title": "Regularization - Ridge",
+      "anchor": "p.50 · Regularization - Ridge",
+      "disposition": "图",
+      "content": "蓝括号标拟合误差，红色平方惩罚抑制大系数。原页写 Force some coefficients to be 0，通常 Ridge 使系数连续收缩，精确零需特定条件。",
+      "visual": "联系图",
+      "printed_footer": "50/55"
+    },
+    {
+      "page": 51,
+      "title": "十五阶多项式原始点（笔记定位）",
+      "anchor": "p.51 · 十五阶多项式原始点（笔记定位）",
+      "disposition": "图",
+      "content": "横轴 x，纵轴响应；模型有一次至十五次幂。它对系数线性，但输出曲线不必是一条直线。",
+      "visual": "联系图",
+      "printed_footer": "51"
+    },
+    {
+      "page": 52,
+      "title": "Fitting result",
+      "anchor": "p.52 · Fitting result",
+      "disposition": "图",
+      "content": "左边标 Simple linear regression 却实际拟合十五阶，右边 Ridge 的 $\\lambda=0.1$，蓝线更平滑。表格截距和高次项数量级不同；显示 0 无法推出精确 0 或确定显示机制。",
+      "visual": "联系图与原尺寸",
+      "printed_footer": "52"
+    },
+    {
+      "page": 53,
+      "title": "Take Away For Today",
+      "anchor": "p.53 · Take Away For Today",
+      "disposition": "学习目标及回指",
+      "content": "七项学习目标分别链接实际正文。",
+      "visual": "联系图",
+      "printed_footer": "53"
+    }
+  ],
+  "assets": [
+    {
+      "page": 2,
+      "id": "L02-p02",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-02.png",
+      "sha256": "460eb2c7d131cdf2d49e51e72ae30fc4356e55116e24258639a58a2db63e3a9e",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 5,
+      "id": "L02-p05",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-05.png",
+      "sha256": "70c9c3d68bbf4dee3ee196d0ed8d016577962511c649b028e95581ca32e1a6ca",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 7,
+      "id": "L02-p07",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-07.png",
+      "sha256": "573b79bbe64d29df51f669185c95283860fb81a2c4d054f5889f7aefb4ae524a",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 8,
+      "id": "L02-p08",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-08.png",
+      "sha256": "1def1378c09af0b3b9c640c6974865bd55a9638f0d54e84c2ac511b30289403b",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 9,
+      "id": "L02-p09",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-09.png",
+      "sha256": "f1e91c19da4bcfc3642148130b47ed4edf868efc962f5d1c7003377b15629fab",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 11,
+      "id": "L02-p11",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-11.png",
+      "sha256": "43d4aa04d34d3a3a0e6ad190986774278faf94e8051d744ab5ec7882891c8b17",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 12,
+      "id": "L02-p12",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-12.png",
+      "sha256": "d999cbfe4a280e63eb3c8bd82df1485db5d00fc1410948cb5e70616b60862429",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 14,
+      "id": "L02-p14",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-14.png",
+      "sha256": "a63ca2a1a7b57f6e47b255766ff69e9c77c31ee252930be9ddfdb2d9a545d854",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 15,
+      "id": "L02-p15",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-15.png",
+      "sha256": "678575fab7eb04c6158cd70b0ce7c5ad44ddd6bb2f57e9ec8879540e9ead4524",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 18,
+      "id": "L02-p18",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-18.png",
+      "sha256": "ae13f47e37ac16813ee64958f30d3329ea7bc689912245d0c773902388d5d340",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 19,
+      "id": "L02-p19",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-19.png",
+      "sha256": "fd9305b2481770c2dcd7d91ae1769508d9616defda3f24c1660864663140eb85",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 20,
+      "id": "L02-p20",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-20.png",
+      "sha256": "4f3d3bb6f04cab40fcea5dffe9816c9e2b4c6c9e41dd92089f6438759b22a000",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 21,
+      "id": "L02-p21",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-21.png",
+      "sha256": "249ab036943b7375f9b91046824b82c4c4e44ff9075427e4487d89273ebffac0",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 22,
+      "id": "L02-p22",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-22.png",
+      "sha256": "17648d836cd90799697b54ce1fdbf9de2362bb71f258d871b8d63ef1821d5b96",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 25,
+      "id": "L02-p25",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-25.png",
+      "sha256": "60204b939077b07c0f81af05e5134f2b79f7d85bad5c6354c0cd6d6a7a2f96e3",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 26,
+      "id": "L02-p26",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-26.png",
+      "sha256": "fbe81b315c78dff69eddd03ead02788a185e9d0eae804b6bd577d499feb1a91f",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 28,
+      "id": "L02-p28",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-28.png",
+      "sha256": "198029df109eb96305c3fda0bb87119edb1629749ff381830b85246efe8a6d51",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 29,
+      "id": "L02-p29",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-29.png",
+      "sha256": "e6c0dfc37e6fd44f1bc7c74b16558ea3e103abbadbbd81f56240c295a45c3949",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 30,
+      "id": "L02-p30",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-30.png",
+      "sha256": "7cbec907b6cd45869478d2a86d3289661cc56254b973170cbf838c533ec50757",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 31,
+      "id": "L02-p31",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-31.png",
+      "sha256": "9115ba72f3dcdcf451c9be98db14858727b851bdc9164e1a166a99bc1d614efe",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 32,
+      "id": "L02-p32",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-32.png",
+      "sha256": "eaaf0ea1e0fdb27152c2fe7845f76c27f54b66f084b5db797940056b42b8c21b",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 33,
+      "id": "L02-p33",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-33.png",
+      "sha256": "bd5a8a69c780c9054d4304d3d1c802a2c2db32b028ad1c6e61dabdf3092286f4",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 34,
+      "id": "L02-p34",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-34.png",
+      "sha256": "222b43a18308f52116078daea625127cec9ec11bb20cde6030d5a6094a8ded7a",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 35,
+      "id": "L02-p35",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-35.png",
+      "sha256": "5de6b304cd22d3901ea74ad7636264f2615b1933e6de8c64fa7972a8f1ba2935",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 36,
+      "id": "L02-p36",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-36.png",
+      "sha256": "eb7dd189a895394fd39ec0810f6019a08160b2b24d3f091c046c8647940d4c84",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 37,
+      "id": "L02-p37",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-37.png",
+      "sha256": "7f6feecbb8f06d6fe3dcaac1f13c6f0d3ac5f6f2ee0335e8aef371eb2582372f",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 40,
+      "id": "L02-p40",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-40.png",
+      "sha256": "175d788d2400da8679d80287e0c67a0bc5b19372aadfef9cd1825ff76970cc8b",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 42,
+      "id": "L02-p42",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-42.png",
+      "sha256": "8d303012b122669d852b916c65f1f290073c71416c09cfb54c71643aa16c7e37",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 43,
+      "id": "L02-p43",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-43.png",
+      "sha256": "a2baa3652584711e54903df3c8f7f54cd3a82dcc0840b4e2e27227304405e37a",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 44,
+      "id": "L02-p44",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-44.png",
+      "sha256": "020d9c8556b48fd4fb8fd157406392b59191f48273f6847c96f8de68a85cbf73",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 45,
+      "id": "L02-p45",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-45.png",
+      "sha256": "17a9652555f18bbdb3e28d08757f5d95e6d4c151b3a1bd57ab5faecfb8cd5325",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 47,
+      "id": "L02-p47",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-47.png",
+      "sha256": "7523b454d63094fbcb73b626a10ac8c655a5a3691e1d082ea316f8a1470150a0",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 48,
+      "id": "L02-p48",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-48.png",
+      "sha256": "c34f4d843b10e4bf5a40e0edf336cb187577d94cdedfecfeb87ae4afe06733d7",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 49,
+      "id": "L02-p49",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-49.png",
+      "sha256": "648af7fa3c01a170cfb085fb7695cacc0182bdcfce0f70ac1bd8e691aa0ee369",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 50,
+      "id": "L02-p50",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-50.png",
+      "sha256": "5daf0c3e4ab1685a409ae9517be7daf36a887adee502e755abbcfaf7b3ce1c72",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 51,
+      "id": "L02-p51",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-51.png",
+      "sha256": "257a3753f8dcf1e3c426336fe826c86ffea3c43470d2951fb89845b8aa04c8cb",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 52,
+      "id": "L02-p52",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m02-source/p-52.png",
+      "sha256": "eff855f14aa1d0f696d41552dc70ea87d84f382da2f79918b8322f7f2dea39ba",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    }
+  ]
+}

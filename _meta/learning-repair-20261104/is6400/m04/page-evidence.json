@@ -1,0 +1,1131 @@
+{
+  "source": "IS6400_Business_Data_Analytics/course_files_export/IS6400-W4-Feature.pdf",
+  "source_sha256": "2ff31dd8eaa1c4942151cf9fc04fd71acc88f1efeabe9c636ab1f0af8ddfbb9b",
+  "baseline_sha256": "96cf5b88d5b5553b15fa3e41fb66247aa8632769bd4deb12649b43464574037c",
+  "transcript": "IS6400_Business_Data_Analytics/transcripts/M04-transcript-partial.txt",
+  "transcript_sha256": "ab4385c94226a9c0724cc2e3cba0a7f8639c588d601cbe424e02a458d2537d43",
+  "candidate_sha256": "beca9ed1308560e89e3da48576400b0c1e4097adb05d25555ad9326fba7f1016",
+  "stage": "author_candidate_pending_precheck_and_review",
+  "pages": [
+    {
+      "page": 1,
+      "title": "Quick Review 导览",
+      "anchor": "p.1 · Quick Review 导览",
+      "disposition": "导览",
+      "content": "本页点亮快速回顾，指定 HM Chapter 8，并列出特征工程、重要性、选择与降维。",
+      "visual": "联系图"
+    },
+    {
+      "page": 2,
+      "title": "Machine Learning Progress",
+      "anchor": "p.2 · Machine Learning Progress",
+      "disposition": "图",
+      "content": "红框标原始数据进入训练的边，四步从定义业务问题、研究数据到训练和实施。评价失败沿回边查数据和模型。",
+      "visual": "联系图"
+    },
+    {
+      "page": 3,
+      "title": "What is Data?",
+      "anchor": "p.3 · What is Data?",
+      "disposition": "图",
+      "content": "右表列为属性，行为对象。一条记录含退税、婚姻、收入和结果，行编号只作标识。",
+      "visual": "联系图"
+    },
+    {
+      "page": 4,
+      "title": "Important Characteristics of Structured Data",
+      "anchor": "p.4 · Important Characteristics of Structured Data",
+      "disposition": "文字",
+      "content": "质量、维数、稀疏和分辨率分别影响数据是否可信、所需空间和观察尺度。",
+      "visual": "联系图"
+    },
+    {
+      "page": 5,
+      "title": "三维点云的投影",
+      "anchor": "p.5 · 三维点云的投影",
+      "disposition": "图",
+      "content": "同一组三维点投影到 XZ、YZ、XY 分别呈三角、方形、圆形。减少维数改变能看见的信息。",
+      "visual": "联系图"
+    },
+    {
+      "page": 6,
+      "title": "Feature Engineering 导览",
+      "anchor": "p.6 · Feature Engineering 导览",
+      "disposition": "导览",
+      "content": "本页点亮 Introduction to Feature Engineering，接 p.7 的数据到训练之间。",
+      "visual": "联系图"
+    },
+    {
+      "page": 7,
+      "title": "Introduction · 特征工程放在哪里",
+      "anchor": "p.7 · Introduction · 特征工程放在哪里",
+      "disposition": "图",
+      "content": "红箭头指数据与 Train ML algorithm 之间，先将原始记录转换成模型能读的表示，再训练。",
+      "visual": "联系图"
+    },
+    {
+      "page": 8,
+      "title": "Introduction · 苹果的尺寸与 RGB",
+      "anchor": "p.8 · Introduction · 苹果的尺寸与 RGB",
+      "disposition": "图",
+      "content": "同一苹果可用 10×10 厘米或三个 RGB 值描述。尺寸保留大小，颜色保留各颜色通道强度。",
+      "visual": "联系图"
+    },
+    {
+      "page": 9,
+      "title": "Introduction · 苹果的局部图块",
+      "anchor": "p.9 · Introduction · 苹果的局部图块",
+      "disposition": "图",
+      "content": "蓝框与箭头把整果分出三块局部图像。局部色泽或纹理能成为另一个特征组，保留空间位置时须说明。",
+      "visual": "联系图"
+    },
+    {
+      "page": 10,
+      "title": "Introduction · 程序员示例",
+      "anchor": "p.10 · Introduction · 程序员示例",
+      "disposition": "图",
+      "content": "衣着、眼镜、设备等标注是可观察属性的讽刺画。是否能预测职业须由任务和数据检验，不能用外观刻板判断。",
+      "visual": "联系图"
+    },
+    {
+      "page": 11,
+      "title": "Introduction · 文档表示",
+      "anchor": "p.11 · Introduction · 文档表示",
+      "disposition": "图",
+      "content": "高亮词映到下方列，Doc1 在 spam、machine、email、class、tree 列分别 5、1、4、2、0。计数须明确是否含子串和词形归并。",
+      "visual": "联系图"
+    },
+    {
+      "page": 12,
+      "title": "Introduction · 社媒用户",
+      "anchor": "p.12 · Introduction · 社媒用户",
+      "disposition": "裁图",
+      "content": "原页将社媒资料映到 Followers、Role、Gender、Tag 等空列；只保留待编码字段的表头，账号截图仅作历史上下文，不根据头像猜缺失值。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 13,
+      "title": "Introduction · 哪组水果特征好",
+      "anchor": "p.13 · Introduction · 哪组水果特征好",
+      "disposition": "图",
+      "content": "上表苹果橙子大小相同，下表 RGB 不同。这组样本的颜色更可区分；光照或品种变化后要重新验证。",
+      "visual": "联系图"
+    },
+    {
+      "page": 14,
+      "title": "Introduction · 人与狗的局部框",
+      "anchor": "p.14 · Introduction · 人与狗的局部框",
+      "disposition": "图",
+      "content": "黄色框里的毛发相似，红框的眼鼻位置更可能帮区分。比较要基于局部组合而非单一纹理。",
+      "visual": "联系图"
+    },
+    {
+      "page": 15,
+      "title": "Introduction · 按任务选特征",
+      "anchor": "p.15 · Introduction · 按任务选特征",
+      "disposition": "图",
+      "content": "同一组用户图标，虚线示意按目标分区。体育赛事潜客和新闻订阅者要用与各自任务相关的行为。",
+      "visual": "联系图"
+    },
+    {
+      "page": 16,
+      "title": "Feature Engineering Challenges",
+      "anchor": "p.16 · Feature Engineering Challenges",
+      "disposition": "文字",
+      "content": "三件事分别是造／选有用特征、识别冗余、控制高维造成的稀疏和成本。",
+      "visual": "联系图"
+    },
+    {
+      "page": 17,
+      "title": "Create Representative Features",
+      "anchor": "p.17 · Create Representative Features",
+      "disposition": "文字",
+      "content": "沿高亮的 spam、email 等词选择与任务有关的计数，不能只挑文档中任意出现的词。",
+      "visual": "联系图"
+    },
+    {
+      "page": 18,
+      "title": "Duplicate/Redundant Feature",
+      "anchor": "p.18 · Duplicate/Redundant Feature",
+      "disposition": "文字",
+      "content": "如果冷暖热完全由温度阈值生成，给定温度就能推回该列。如果是真实主观感受，可能含额外信息，须按任务检验。",
+      "visual": "联系图"
+    },
+    {
+      "page": 19,
+      "title": "Curse of Dimension · 文档词项",
+      "anchor": "p.19 · Curse of Dimension · 文档词项",
+      "disposition": "图",
+      "content": "从网页、邮件与数字馆藏到文档×词项表，红框是一份文档的特征行，右端类别是目标。大量词列会带来稀疏和计算负担。 为保留文档到词项的机制，嵌图只取右侧词项表和任务说明，原页的邮件界面未复制。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 20,
+      "title": "Curse of Dimension · 存储与样本",
+      "anchor": "p.20 · Curse of Dimension · 存储与样本",
+      "disposition": "图",
+      "content": "左框一百万行、十万列、每格 8 字节，稠密数组约 800 GB。右框区分冗余特征和按精度与维数增长的示意，不把复杂度写成所有任务定律。",
+      "visual": "联系图"
+    },
+    {
+      "page": 21,
+      "title": "Feature Engineering · 三方权衡",
+      "anchor": "p.21 · Feature Engineering · 三方权衡",
+      "disposition": "图",
+      "content": "CIFAR-10 例对照 3072 维、63.1%、约 2 小时与 PCA 100 维、59.8%、250 秒。图只说明该设置的空间、耗时和准确率权衡。",
+      "visual": "联系图"
+    },
+    {
+      "page": 22,
+      "title": "Feature Importance 导览",
+      "anchor": "p.22 · Feature Importance 导览",
+      "disposition": "导览",
+      "content": "点亮特征重要性，后续用同一分类问题比较切分。",
+      "visual": "联系图"
+    },
+    {
+      "page": 23,
+      "title": "Feature Importance",
+      "anchor": "p.23 · Feature Importance",
+      "disposition": "图",
+      "content": "横轴花瓣宽、纵轴萼片长，颜色是花种。问哪列更重要时，先定义标签及分裂标准，沿 p.27–28 的垂直和水平切线比较。",
+      "visual": "联系图"
+    },
+    {
+      "page": 24,
+      "title": "Evaluation Measures · 五类",
+      "anchor": "p.24 · Evaluation Measures · 五类",
+      "disposition": "文字",
+      "content": "列信息、距离、依赖、一致性和准确率，分别看类别信息、几何分隔、统计关联、标签冲突和模型预测。",
+      "visual": "联系图"
+    },
+    {
+      "page": 25,
+      "title": "Evaluation Measures · 两种模型",
+      "anchor": "p.25 · Evaluation Measures · 两种模型",
+      "disposition": "文字",
+      "content": "过滤在挑选时不用指定学习算法，包装把模型验证表现放入评估。两者均需固定任务和选优口径。",
+      "visual": "联系图"
+    },
+    {
+      "page": 26,
+      "title": "Filter Model",
+      "anchor": "p.26 · Filter Model",
+      "disposition": "图",
+      "content": "上层从生成候选到打分和停止判断，No 返回继续，Yes 将所选子集交下层训练与测试。测试数据不进入选特征。",
+      "visual": "联系图"
+    },
+    {
+      "page": 27,
+      "title": "Filter Model · 花瓣宽切分",
+      "anchor": "p.27 · Filter Model · 花瓣宽切分",
+      "disposition": "图",
+      "content": "沿竖切线分两组。按题给 Setosa/Non-Setosa 二类，左 50/0、右 0/100，所以两组纯。",
+      "visual": "联系图"
+    },
+    {
+      "page": 28,
+      "title": "Filter Model · 萼片长切分",
+      "anchor": "p.28 · Filter Model · 萼片长切分",
+      "disposition": "图",
+      "content": "横切线下方 50/10，上方 0/90。第一组有两类，合并按每组人数加权。",
+      "visual": "联系图"
+    },
+    {
+      "page": 29,
+      "title": "Filter Model · 计数记号",
+      "anchor": "p.29 · Filter Model · 计数记号",
+      "disposition": "图",
+      "content": "用每类每组计数写成表。下标区分组和类；先确定每列组别再按组内比例算纯度。",
+      "visual": "联系图"
+    },
+    {
+      "page": 30,
+      "title": "Feature importance measurement · 三种切法",
+      "anchor": "p.30 · Feature importance measurement · 三种切法",
+      "disposition": "图",
+      "content": "父节点各 10 个 C0/C1。性别和车型可复用；按客户 ID 切能把样本记成单例，纯度高仍可能对新 ID 无效。",
+      "visual": "联系图"
+    },
+    {
+      "page": 31,
+      "title": "How to determine the importance",
+      "anchor": "p.31 · How to determine the importance",
+      "disposition": "图",
+      "content": "同为 10 条时，5/5 比 9/1 更混杂。贪心比较同一父节点下各候选，取当前增益较大的切分。",
+      "visual": "联系图"
+    },
+    {
+      "page": 32,
+      "title": "Measures of Node Impurity",
+      "anchor": "p.32 · Measures of Node Impurity",
+      "disposition": "图",
+      "content": "Gini 和熵按节点类别比例计算，第三项 −log(p 值) 是单变量特征分数。三个量的分数方向和用途应分开。",
+      "visual": "联系图"
+    },
+    {
+      "page": 33,
+      "title": "Feature importance · 算增益",
+      "anchor": "p.33 · Feature importance · 算增益",
+      "disposition": "文字",
+      "content": "父不纯度 P 减分裂后加权不纯度 M。比较同一父节点时，M 最低等价于增益最高。",
+      "visual": "联系图"
+    },
+    {
+      "page": 34,
+      "title": "Feature importance · A 与 B",
+      "anchor": "p.34 · Feature importance · A 与 B",
+      "disposition": "图",
+      "content": "左 A 得 N1/N2，右 B 得 N3/N4；按各子节点类别数求分数，加权合成 M1/M2，再分别用同一个 P 减去。",
+      "visual": "联系图"
+    },
+    {
+      "page": 35,
+      "title": "Measure of Impurity · Gini",
+      "anchor": "p.35 · Measure of Impurity · Gini",
+      "disposition": "图",
+      "content": "从 0/6 到 3/3 按行读 Gini，二类均分达 0.5，纯节点为 0。一般 k 类均分上限为 1−1/k。",
+      "visual": "联系图"
+    },
+    {
+      "page": 36,
+      "title": "Computing Gini Index of a Single Node",
+      "anchor": "p.36 · Computing Gini Index of a Single Node",
+      "disposition": "图",
+      "content": "同样 6 条，三行分别算 0、约 0.278、约 0.444。先把计数除 6，再平方相加并从 1 减去。",
+      "visual": "联系图"
+    },
+    {
+      "page": 37,
+      "title": "Computing Gini Index for a Collection of Nodes",
+      "anchor": "p.37 · Computing Gini Index for a Collection of Nodes",
+      "disposition": "文字",
+      "content": "分支人数除父人数为权重，再乘各子节点 Gini 求和。较大的组对总分影响更大。",
+      "visual": "联系图"
+    },
+    {
+      "page": 38,
+      "title": "Binary Attributes · Computing Gini",
+      "anchor": "p.38 · Binary Attributes · Computing Gini",
+      "disposition": "图",
+      "content": "B 的 Yes/No 各有 6 条，N1 为 5/1、N2 为 2/4，切后约 0.361；父 7/5，约 0.486。",
+      "visual": "联系图"
+    },
+    {
+      "page": 39,
+      "title": "Categorical Attributes · Computing Gini",
+      "anchor": "p.39 · Categorical Attributes · Computing Gini",
+      "disposition": "图",
+      "content": "先逐列读 Family、Sports、Luxury 的两类计数，再比较三路与分组两路。多路 0.1625，单独 Sports 的两路约 0.1667；图中 0.468 对应另一两路的精确 0.46875。",
+      "visual": "联系图"
+    },
+    {
+      "page": 40,
+      "title": "Measure of Impurity · Entropy",
+      "anchor": "p.40 · Measure of Impurity · Entropy",
+      "disposition": "文字",
+      "content": "熵用类别概率和对数衡量不确定性。一个类别全占时最小，类别均分时最大；底数决定单位。",
+      "visual": "联系图"
+    },
+    {
+      "page": 41,
+      "title": "Computing Entropy of a Single Node",
+      "anchor": "p.41 · Computing Entropy of a Single Node",
+      "disposition": "图",
+      "content": "按 0/6、1/5、2/4 分别得到 0、约 0.65、约 0.92 bit。零概率项按极限记 0。",
+      "visual": "联系图"
+    },
+    {
+      "page": 42,
+      "title": "Computing Information Gain After Splitting",
+      "anchor": "p.42 · Computing Information Gain After Splitting",
+      "disposition": "文字",
+      "content": "用父熵减子熵的加权平均，比较同一父节点候选。ID3 用信息增益，C4.5 还考虑增益率。",
+      "visual": "联系图"
+    },
+    {
+      "page": 43,
+      "title": "Wrapper Model",
+      "anchor": "p.43 · Wrapper Model",
+      "disposition": "图",
+      "content": "上层新增学习算法，候选子集先训练再评价，No 回到生成。决定子集后，下层重新训练并用测试数据评价。",
+      "visual": "联系图"
+    },
+    {
+      "page": 44,
+      "title": "In-class Quiz",
+      "anchor": "p.44 · In-class Quiz",
+      "disposition": "图",
+      "content": "用图中给定计数计算切后 Gini。第一组 50/10，Gini 为 5/18；第二组 0/90 为 0，按 60/150 与 90/150 加权得 1/9。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 45,
+      "title": "Feature Selection and Dimension Reduction 导览",
+      "anchor": "p.45 · Feature Selection and Dimension Reduction 导览",
+      "disposition": "导览",
+      "content": "点亮特征选择和降维，接 p.46–49 两种手段。",
+      "visual": "联系图"
+    },
+    {
+      "page": 46,
+      "title": "Major Techniques of Dimensionality Reduction",
+      "anchor": "p.46 · Major Techniques of Dimensionality Reduction",
+      "disposition": "文字",
+      "content": "对照选择与约简：保留原列子集，或用原列生成更少的新坐标。先问是否要解释原字段。",
+      "visual": "联系图"
+    },
+    {
+      "page": 47,
+      "title": "Feature Selection",
+      "anchor": "p.47 · Feature Selection",
+      "disposition": "文字",
+      "content": "按目标函数选择最优的原特征子集。可能节省时间和减少噪声，精度仍由验证确定。",
+      "visual": "联系图"
+    },
+    {
+      "page": 48,
+      "title": "Feature Reduction",
+      "anchor": "p.48 · Feature Reduction",
+      "disposition": "文字",
+      "content": "按公式从 d 维映到更小的 p 维；原页行文把输入变量写 p，读公式时用 d 表示原维数。无监督保信息，有监督可保区分性。",
+      "visual": "联系图"
+    },
+    {
+      "page": 49,
+      "title": "Feature Reduction vs. Feature Selection",
+      "anchor": "p.49 · Feature Reduction vs. Feature Selection",
+      "disposition": "文字",
+      "content": "PCA 等线性约简用线性组合生成新列，选择直接留下原列。不能把这页的线性例推广到所有约简方法。",
+      "visual": "联系图"
+    },
+    {
+      "page": 50,
+      "title": "Models of Feature Selection",
+      "anchor": "p.50 · Models of Feature Selection",
+      "disposition": "文字",
+      "content": "过滤依数据统计特性，包装依指定模型和验证指标，运行成本常更高。高准确率是目标，不能从图推出保证。",
+      "visual": "联系图"
+    },
+    {
+      "page": 51,
+      "title": "Feature Selection Basics",
+      "anchor": "p.51 · Feature Selection Basics",
+      "disposition": "文字",
+      "content": "四个动作是生成候选、计算分数、决定过滤／包装、最后验证。模型和验证口径都影响最优。",
+      "visual": "联系图"
+    },
+    {
+      "page": 52,
+      "title": "An Example for Optimal Subset",
+      "anchor": "p.52 · An Example for Optimal Subset",
+      "disposition": "图",
+      "content": "表中 C 为 F1 或 F2，F3 是 F2 的逻辑反，F5 是 F4 的逻辑反。F1/F2 与 F1/F3 都能恢复目标，F4/F5 在此构造不提供额外信息。",
+      "visual": "联系图"
+    },
+    {
+      "page": 53,
+      "title": "A Subset Search Problem",
+      "anchor": "p.53 · A Subset Search Problem",
+      "disposition": "图",
+      "content": "四位 0/1 表示是否取四列，顶部空集、底部全集，顺向加一列、反向减一列。四列已有 16 个子集。",
+      "visual": "联系图"
+    },
+    {
+      "page": 54,
+      "title": "Recursive Feature Selection · 通用流程",
+      "anchor": "p.54 · Recursive Feature Selection · 通用流程",
+      "disposition": "图",
+      "content": "三栏依次从空集、{F2}、{F2,F3} 出发，每轮只尝试加一个未入选的特征，沿红箭头把本轮所选传给下一栏。",
+      "visual": "联系图"
+    },
+    {
+      "page": 55,
+      "title": "Recursive Feature Selection · Iris",
+      "anchor": "p.55 · Recursive Feature Selection · Iris",
+      "disposition": "图",
+      "content": "左框把 sepal length 当成第一轮胜者来示意。原页未给实算分数和验证设置，不能作为 Iris 在任意模型下的固定排名。",
+      "visual": "联系图"
+    },
+    {
+      "page": 56,
+      "title": "Feature Reduction · Principal Component Analysis",
+      "anchor": "p.56 · Feature Reduction · Principal Component Analysis",
+      "disposition": "文字",
+      "content": "用较少的新变量保留样本主要变化。新主成分在拟合样本的协方差口径下互不相关，按解释方差排列。",
+      "visual": "联系图"
+    },
+    {
+      "page": 57,
+      "title": "PCA · 重构目标",
+      "anchor": "p.57 · PCA · 重构目标",
+      "disposition": "图",
+      "content": "原页蓝圈标 reconstruction error，用投影重构与原数据的距离作目标。列为样本时，若方向列组成 G，低维坐标应读 G 的转置乘 x，与原页单独印的 z=Gx 区分。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 58,
+      "title": "Geometric Picture of Principal Components",
+      "anchor": "p.58 · Geometric Picture of Principal Components",
+      "disposition": "图",
+      "content": "从旧坐标看斜向长点云。转到垂直的 z1/z2 坐标，若只保留 z1，沿短方向丢信息；选轴让总垂直误差最小。",
+      "visual": "联系图"
+    },
+    {
+      "page": 59,
+      "title": "Motivation for Non-linear PCA using Kernels",
+      "anchor": "p.59 · Motivation for Non-linear PCA using Kernels",
+      "disposition": "图",
+      "content": "左边点在中心和外围，直线投影难保这种弯曲结构。右侧分开的图是非线性变换的动机示意，不证明 PCA 本身保证分开。",
+      "visual": "联系图"
+    },
+    {
+      "page": 60,
+      "title": "PCA · 三种表示",
+      "anchor": "p.60 · PCA · 三种表示",
+      "disposition": "图",
+      "content": "左上二维压成一轴，中间三维用两轴，右上是两维坐标。下方国家表将多个指标换成 z1/z2，图未给实际载荷或完整计算。",
+      "visual": "联系图"
+    },
+    {
+      "page": 61,
+      "title": "PCA · 投影到一根轴",
+      "anchor": "p.61 · PCA · 投影到一根轴",
+      "disposition": "图",
+      "content": "黑叉到红线之间的短线是投影误差。u 和 −u 给同一根轴，坐标正负会同时反转。",
+      "visual": "联系图"
+    },
+    {
+      "page": 62,
+      "title": "PCA · 投影到平面",
+      "anchor": "p.62 · PCA · 投影到平面",
+      "disposition": "图",
+      "content": "蓝点在三维，红色方向 u1、u2 张成二维平面。保留两坐标后，少的是到平面的垂直偏差。",
+      "visual": "联系图"
+    },
+    {
+      "page": 63,
+      "title": "PCA · 方向与坐标",
+      "anchor": "p.63 · PCA · 方向与坐标",
+      "disposition": "图",
+      "content": "左图 u 向量确定新轴，右图 z 是每个样本在新轴上的数值。轴只学一次，换样本时重算坐标而不重新选轴。",
+      "visual": "联系图"
+    },
+    {
+      "page": 64,
+      "title": "PCA · 主成分的重要性",
+      "anchor": "p.64 · PCA · 主成分的重要性",
+      "disposition": "图",
+      "content": "同一批点投到 z1 后分布较散，投到 z2 后挤在一起。PC1 保留的是较大方差，不自动代表较强预测力。",
+      "visual": "联系图"
+    },
+    {
+      "page": 65,
+      "title": "PCA · 四条性质",
+      "anchor": "p.65 · PCA · 四条性质",
+      "disposition": "文字",
+      "content": "互不相关、按方差排序、第一轴解释最多、后续在前轴正交约束下解释剩余变化。",
+      "visual": "联系图"
+    },
+    {
+      "page": 66,
+      "title": "PCA-Key concepts",
+      "anchor": "p.66 · PCA-Key concepts",
+      "disposition": "文字",
+      "content": "中心化数据先求交叉积再按协方差口径缩放。原页写 D 的转置乘 D，方向不受共同正比例影响，特征值和解释比例的单位要一致。",
+      "visual": "联系图"
+    },
+    {
+      "page": 67,
+      "title": "PCA-Data Transformation",
+      "anchor": "p.67 · PCA-Data Transformation",
+      "disposition": "图",
+      "content": "U 的列是方向，取前 k 列得到约简矩阵。行样本右乘 U，列样本左乘 U 的转置，核 n 维到 k 维的形状。",
+      "visual": "联系图"
+    },
+    {
+      "page": 68,
+      "title": "Use software package to Run PCA · 输入与矩阵",
+      "anchor": "p.68 · Use software package to Run PCA · 输入与矩阵",
+      "disposition": "图",
+      "content": "77 行 13 列，先看均值、标准差与 13×13 相关矩阵。相关矩阵相当于用标准化变量协方差，不能与 T04 的未标准化示例混算。",
+      "visual": "联系图与原尺寸"
+    },
+    {
+      "page": 69,
+      "title": "Use software package to Run PCA · 解释比例",
+      "anchor": "p.69 · Use software package to Run PCA · 解释比例",
+      "disposition": "图",
+      "content": "从 Eigenvalue、Proportion、Cumulative 三列读四个大于 1 的特征值，累积比例 0.7406。此阈值是该标准化示例的一种选法。",
+      "visual": "联系图与原尺寸"
+    }
+  ],
+  "assets": [
+    {
+      "page": 2,
+      "id": "W04-p02",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-02.png",
+      "sha256": "2a2424c2f7be3d713f64350c82d07a54fdce1372157371fef42b806ed922e417",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 3,
+      "id": "W04-p03",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-03.png",
+      "sha256": "74094c4a49c841f0accf46478824badaa9eff88deeaa2758a995c4b6068b5610",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 5,
+      "id": "W04-p05",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-05.png",
+      "sha256": "6f8a1ed2c27b17236bb5823418f540c1216de341aee31c057db12cda3c5972de",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 7,
+      "id": "W04-p07",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-07.png",
+      "sha256": "6d9fa6780d0e9f4a0127b42d16ccafcea4684022d4c0c45a62a9e52987337bc5",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 8,
+      "id": "W04-p08",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-08.png",
+      "sha256": "144659156a63cd75f8eacf1b12952b1b045fd0a57e607ae5cd3f1efecb6c163c",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 9,
+      "id": "W04-p09",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-09.png",
+      "sha256": "65beffd6fbd79891e671a94f48ade95fab22031a9b99586051d28b5d6040a927",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 10,
+      "id": "W04-p10",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-10.png",
+      "sha256": "75a36c99de196014dede4137f2c0aebe61e7508c3aca5ceb4485aa01f06ffa62",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 11,
+      "id": "W04-p11",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-11.png",
+      "sha256": "f4711f49162ea9199bbdc23fa3edf93aa78e87ef55ea83cf67d293f48f4a893d",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 12,
+      "id": "W04-p12",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-12.png",
+      "sha256": "38601140674a84b76c40b876072085a6f37c954ec4ede70cc11bc0e8800ecd98",
+      "crop_px_xyxy": [
+        226,
+        863,
+        1113,
+        925
+      ]
+    },
+    {
+      "page": 13,
+      "id": "W04-p13",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-13.png",
+      "sha256": "d6600e2d4e1340ec90b270dcd48f74564e2d638c14a4617ec6fe45a653d9ff14",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 14,
+      "id": "W04-p14",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-14.png",
+      "sha256": "c5c1c62f8d21c307f54828cf2f72c53019632ae03b13137b86cccc97f8002473",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 15,
+      "id": "W04-p15",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-15.png",
+      "sha256": "a6f6d4a96ec8ac42fd4d60364c2f1abafe944f3c3f7aab0072800219a8636a6c",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 19,
+      "id": "W04-p19",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-19.png",
+      "sha256": "99622ed9703cfc543d0d3dc61b06474373b9ceb7d4c805cc5d5f934ff66deb58",
+      "crop_px_xyxy": [
+        692,
+        285,
+        1437,
+        987
+      ]
+    },
+    {
+      "page": 20,
+      "id": "W04-p20",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-20.png",
+      "sha256": "a6c70f4cbb1ab83fe9fa6e62466bbbc7233d228a924cc76ea339bd8e5d43e716",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 21,
+      "id": "W04-p21",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-21.png",
+      "sha256": "56cb58ccd09db3182b3e7761661c5f9731a9684efb490546732d179ac745c562",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 23,
+      "id": "W04-p23",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-23.png",
+      "sha256": "bb4fe487bbf0bb0d574a5f98f424a84b6dc6ad4597954ca845e72591854f7ceb",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 26,
+      "id": "W04-p26",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-26.png",
+      "sha256": "94b21c7a2b9eb92270001f9b107ec5f3c5a7677f1896e29e7057538ba4296c36",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 27,
+      "id": "W04-p27",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-27.png",
+      "sha256": "baab7bca5a7954f9330a35dbb22328d193c992460557f7f9c4bc4c790886f6fe",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 28,
+      "id": "W04-p28",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-28.png",
+      "sha256": "733457d3f5d53b4c21009749124746b929f355e9f565cba84dbcfd0a9538035e",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 29,
+      "id": "W04-p29",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-29.png",
+      "sha256": "81fff4a54b9405a025ada87484e4ebc3f0e7d229c9b950a21fd022dec5e01d21",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 30,
+      "id": "W04-p30",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-30.png",
+      "sha256": "56b89da19d75ab3ed1f55d5dfda3b63614d388b315624b2016567aa51ef2ee3b",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 31,
+      "id": "W04-p31",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-31.png",
+      "sha256": "28ace512ab2331aae75362bfc2d1b7214ab3ffeed6f0f17c6125adb369395722",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 32,
+      "id": "W04-p32",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-32.png",
+      "sha256": "2c67a4995f4a42096b01f6082fca7c0fe61bf27e2e925bcbeebc578fd5c631eb",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 34,
+      "id": "W04-p34",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-34.png",
+      "sha256": "dc971360d3a808ffed7973740e9652bd812a5ceefad0f7563cde34e66612bdd0",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 35,
+      "id": "W04-p35",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-35.png",
+      "sha256": "38aa4222c4b67efccdb97279e789759d7eefed47f7254f42fb8bdbcf53c4a976",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 36,
+      "id": "W04-p36",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-36.png",
+      "sha256": "a89e5541dd509d0de2b35375c6e793f2e5a191597e175d3e8f72cba8898721e2",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 38,
+      "id": "W04-p38",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-38.png",
+      "sha256": "d04738d9205c30821281e64edc9726ac7bfe4d8c5385293c1d67724b03592755",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 39,
+      "id": "W04-p39",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-39.png",
+      "sha256": "6c7558519f307ea78d606b23940e5885b53d7d792391b82cef0395f52afa1cb4",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 41,
+      "id": "W04-p41",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-41.png",
+      "sha256": "20a306db7fda9c9ec642c05148fc021b4d4ffccd2ee9ca197df8dec179d2d56b",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 43,
+      "id": "W04-p43",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-43.png",
+      "sha256": "d8e805e5ac5c3f6c0a6cf04688b8fd2809b0fd6fc8e6f0e37aecc85d09fbc2ac",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 44,
+      "id": "W04-p44",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-44.png",
+      "sha256": "8676ad84cd753ccdb7d6b220c92e13a5448901f4de9ba38ee476d65992662286",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 52,
+      "id": "W04-p52",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-52.png",
+      "sha256": "567ad1a6c0a1ff06122fd269a8fc700d25d8361d8a8a34575865e3cbaca32c45",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 53,
+      "id": "W04-p53",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-53.png",
+      "sha256": "40074f3d6531ee7f838773199092e815816144fc9039234debbcf7dfec501dd7",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 54,
+      "id": "W04-p54",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-54.png",
+      "sha256": "0aa33f46bf53289dd0bc79561809ebfb3801a4afee1f381ec56fea5ec7be15d4",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 55,
+      "id": "W04-p55",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-55.png",
+      "sha256": "f1ad3f039a00672bab0c8fd0f2cd989d40de9fa45a4838b33838890139c53126",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 57,
+      "id": "W04-p57",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-57.png",
+      "sha256": "6d81bdcdc49d0cd2ecc88fa8dff7985acfacf0b134fc504596aed2b2941ad8c1",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 58,
+      "id": "W04-p58",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-58.png",
+      "sha256": "c346c1821c68da5a8399a5c7b70def49bc4606dc26ebe04cdcf5284cad96df45",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 59,
+      "id": "W04-p59",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-59.png",
+      "sha256": "1c4d42b2fe95507379f7ca27541b4a892cc0cddaaf399c878af149cf2a4be360",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 60,
+      "id": "W04-p60",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-60.png",
+      "sha256": "7e6fae56080169e574aaff7e0e6f06b4dedfcff9d1a3de5e1ea309f44e2c3b96",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 61,
+      "id": "W04-p61",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-61.png",
+      "sha256": "00d9801d41e4df81f056f25cb36874eec54b8a1787b79ea783b8a40a7afee6b0",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 62,
+      "id": "W04-p62",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-62.png",
+      "sha256": "9c7db80431b1a18a141c49dd96265fef8f72956d42ab3125f0b6d75c6a82c297",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 63,
+      "id": "W04-p63",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-63.png",
+      "sha256": "bfcc272bf56d6642c27a2a637cfaa4c69d653cc6e8fa62cda65a69f811ccecdf",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 64,
+      "id": "W04-p64",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-64.png",
+      "sha256": "366226649619dca7164d0e618e82e0ef15484f880961a717862cb22b0f1886fe",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 67,
+      "id": "W04-p67",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-67.png",
+      "sha256": "3ac8f150d7cc06d6d8e1099169ba1b0d6e15e4e9d1350799277efe54cb90d100",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 68,
+      "id": "W04-p68",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-68.png",
+      "sha256": "75ebd24894c652c2d0f63d829a68ec37d3860e13dea6da426f5ce086faffb588",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    },
+    {
+      "page": 69,
+      "id": "W04-p69",
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m04-source/p-69.png",
+      "sha256": "5c452024bcbb40c34200b1b0a0b4d320b38e7607993900878055e80d738764df",
+      "crop_px_xyxy": [
+        0,
+        0,
+        1440,
+        1080
+      ]
+    }
+  ],
+  "revised_candidate": {
+    "candidate_sha256": "a6200dc5507664225e4d771875110fb618eb5065c30804447c717d18e2a1429e",
+    "assets_dir": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m04-revised-assets",
+    "p19_sha256": "64dce90007b994c85214d5e1e6102c3863f8a773de6a32f32e2cd8363267ecc2",
+    "p19_mask_px_xyxy": [
+      0,
+      0,
+      343,
+      46
+    ],
+    "p19_mask_basis": "从原裁图遮去左上半截标题；邮件未复制；其余表格与 Task/Challenge/Solution 保留",
+    "p12": "原字段表头图不变，正文以 A/B 和空值补完整教学结构",
+    "p17": "复用 p.11 高亮原图，逐页入口指明区别"
+  }
+}

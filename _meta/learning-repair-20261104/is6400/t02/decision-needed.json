@@ -1,0 +1,30 @@
+{
+  "note": "T02",
+  "findings": [
+    "数值求解口径",
+    "转录范围"
+  ],
+  "status": "resolved_confirmed_by_original_reviewer",
+  "candidate": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\t02-second-frozen.md",
+  "candidate_sha256": "04328d2eeac3147a5b719339c01ba427e6c3e4ed4e0649b9ad19fe04c40029a3",
+  "evidence": "t02/targeted-recheck-2.md；34 个 Python 块可解析，18/18 原码 AST 一致；5/5 图在代码外且原图字节一致；题面未改。",
+  "remaining": "§3.1 L743–744 的“求逆时…→ Cell 22”把病态和显式求逆串成单因果；§7.4 L2052/2057 仍把所供片段未记录写成课上都没讲。",
+  "options": [
+    "仅在原位置修正两个口径：写尺度差和列相关会使线性系统求解敏感，源 warning 来自 linalg.solve；把两句改为所供教程片段未记录，保留原 Summary。",
+    "把两处旧叙述标记为历史，另增简短现行解释；这样可追旧文但会保留读者仍可能误读的说法。"
+  ],
+  "preferred": "选第一项；仅修报告列出的直接依赖，不重开全文，再由原审只核这两处。",
+  "display_blocker": "实际阅读界面待验，正式写回及同步未完成",
+  "selected": "统筹选择第一项；只修 §3.1 / §7.4 两处口径及直接表头",
+  "revised_candidate": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\t02-residual-closed-candidate.md",
+  "revised_candidate_sha256": "de6f010a466c41085e82e544c217dee2c3532e0319a055d89e61356e16af373a",
+  "changed_lines": [
+    743,
+    744,
+    2052,
+    2054,
+    2057
+  ],
+  "closure_report": "residual-closure.md",
+  "closure_report_sha256": "8f97c0e80e71f4746cfe785038abd4333121650b4ba88a13daa2a040e4be375c"
+}

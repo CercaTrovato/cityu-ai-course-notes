@@ -548,7 +548,7 @@ timeline
 ## 相关
 
 - [[IS6400_Business_Data_Analytics/00-课程总览|00-课程总览]] ｜ [[IS6400_Business_Data_Analytics/_prep/课程前置资料|课程前置资料]]
-- 作业原文与逐题攻略：[[T01-Jupyter入门与Pandas基础#7. 本次作业（notebook cell 24 原文）|T01-Jupyter入门与Pandas基础 › 7. 本次作业（notebook cell 24 原文）]] ｜ [[T02-回归实战-从合成数据到Airbnb定价#8. 本次作业（notebook cell 38 原文）|T02-回归实战-从合成数据到Airbnb定价 › 8. 本次作业（notebook cell 38 原文）]] ｜ [[T03-数据探索实战-Iris与Airbnb的描述统计#7. 本次作业：Week 3 Assignment（notebook cell 44–48 原文）|T03 › 7]] ｜ [[T04-特征选择与PCA实战-Iris#7. 本次作业：Week 4 Assignment（notebook cell 35 原文）|T04 › 7]]
+- 作业原文与逐题攻略：[[T01-Jupyter入门与Pandas基础#7. 本次作业（notebook cell 24 原文）|T01-Jupyter入门与Pandas基础 › 7. 本次作业（notebook cell 24 原文）]] ｜ [[T02-回归实战-从合成数据到Airbnb定价#8. 本次作业（notebook cell 38 原文）|T02-回归实战-从合成数据到Airbnb定价 › 8. 本次作业（notebook cell 38 原文）]] ｜ [[T03-数据探索实战-Iris与Airbnb的描述统计#7. 本次作业：Week 3 Assignment（notebook cell 44–48 原文）|T03 › 7]] ｜ [[T04-特征选择与PCA实战-Iris#7. 历史作业：旧 37 格版 Week 4 Assignment（第 35 格原文）|T04 › 历史作业（旧 37 格版）]]
 - 项目要用的数据：[[IS6400_Business_Data_Analytics/_meta/数据集卡片|数据集卡片]]
 - 考试重点：[[IS6400_Business_Data_Analytics/_meta/考点库|考点库]]
 

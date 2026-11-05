@@ -1,0 +1,532 @@
+{
+  "source": "AC6761_Artificial_Intelligence_Accounting/course_files_export/Week 11 PPT.pptx",
+  "source_sha256": "b86253fbeb3fc39dba4ea4b68ba89630db6fea97d1bfabe46b43554bd7442cef",
+  "candidate_sha256": "9c6d0b853c0f598ac7fef45ae41e9ede7ab0761fe7bca340e7c0af3ca07de313",
+  "author_visual_count": 39,
+  "staged_figures": 13,
+  "extra_figures": [],
+  "additional_sources": [],
+  "extraction": "PowerPoint COM 整页 PNG；个别媒体原字节另登记",
+  "pages": [
+    {
+      "physical_slide": 1,
+      "source_title": "AC6761 Artificial Intelligence Accounting",
+      "visual": "PowerPoint PNG s001.png 与联系图 1",
+      "speaker_notes": "",
+      "teaching_elements": "第 11 章先看机器学习预测如何从历史数据走到新输入，再练隐私、公平、可解释性、问责与未来应用。",
+      "candidate_anchor": "p.1 · 本讲标题",
+      "image_disposition": "封面",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 2,
+      "source_title": "Agenda",
+      "visual": "PowerPoint PNG s002.png 与联系图 1",
+      "speaker_notes": "",
+      "teaching_elements": "p.3–23 是预测和代码证据，p.24–33 是伦理和控制，p.34–39 是未来应用。先看 p.5 的训练流程，再用后两段追问数据和结果由谁核。",
+      "candidate_anchor": "p.2 · 三段学习路线",
+      "image_disposition": "目录与正文路线",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 3,
+      "source_title": "What is Machine Learning?​",
+      "visual": "PowerPoint PNG s003.png 与联系图 1",
+      "speaker_notes": "",
+      "teaching_elements": "讲义问 What is Machine Learning?（什么是机器学习？）。传统程序给数据和规则求答案；监督学习给历史输入和已知答案来拟合规则，之后才预测新样本。英文参考：Machine learning learns patterns from data; in supervised learning, known targets guide the model that predicts new targets.",
+      "candidate_anchor": "p.3 · 人工给规则与从数据学习",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 4,
+      "source_title": "Financial Forecast & Machine Learning",
+      "visual": "PowerPoint PNG s004.png 与联系图 1",
+      "speaker_notes": "",
+      "teaching_elements": "把预测时已知的财务信息作输入，之后发生的价格或收益作训练目标。未来价格当时还不知道，只能留给训练标签或事后验证；提前放进输入会泄漏。",
+      "candidate_anchor": "p.4 · 历史已知价格怎样成为标签",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 5,
+      "source_title": "The Supervised Learning Process​",
+      "visual": "PowerPoint PNG s005.png 与联系图 1",
+      "speaker_notes": "",
+      "teaching_elements": "先收齐历史特征和已知目标，再在训练中估输入与输出的映射，最后给新特征预测未知目标。课件称流程图，此页实际用三个文本步骤呈现。",
+      "candidate_anchor": "p.5 · 历史、训练、预测是三个动作",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 6,
+      "source_title": "Example",
+      "visual": "PowerPoint PNG s006.png 与联系图 1",
+      "speaker_notes": "",
+      "teaching_elements": "每行用书市比、公司规模与获利等输入，目标是下一年股票收益率。与直接预测某天的股价不同；如要换价格，需当前价格和价格收益口径。",
+      "candidate_anchor": "p.6 · 书市比、规模和获利作特征",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 7,
+      "source_title": "Tools for Machine Learning Forecasting​",
+      "visual": "PowerPoint PNG s007.png 与联系图 2",
+      "speaker_notes": "",
+      "teaching_elements": "表从工具、类型和预测特点读 Python、R、SAS、Stata。按团队、资料规模和可复跑性选；课件的用途和评价不作当前软件版本能力保证。",
+      "candidate_anchor": "p.7 · 四种软件比较看任务",
+      "image_disposition": "W11-S007",
+      "figure": {
+        "id": "W11-S007",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m11-source/w11-s007.png",
+        "sha256": "c1d1012b7f6d9d0950faf933a5b5d214872a037c7078015e9298cd05a3cb5fb2"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 8,
+      "source_title": "Introduction to SAS for Machine Learning",
+      "visual": "PowerPoint PNG s008.png 与联系图 2",
+      "speaker_notes": "",
+      "teaching_elements": "课件问 What is SAS?（SAS 是什么？）。本例用它整理资料和拟合模型；PROC 是调用一项既有分析过程。英文参考：SAS is an analytics software suite that uses procedures for tasks such as predictive modeling.",
+      "candidate_anchor": "p.8 · SAS 用 PROC 调用已有程序",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 9,
+      "source_title": "Key SAS Procedures for Machine Learning:​",
+      "visual": "PowerPoint PNG s009.png 与联系图 2",
+      "speaker_notes": "",
+      "teaching_elements": "课件列 REG 线性回归、LOGISTIC 分类、GLMSELECT 变量选择和 HPFOREST 随机森林。变量选择可限制复杂度，还须验证泛化；不能把课件 Prevents overfitting 当保证。",
+      "candidate_anchor": "p.9 · 四个 SAS 过程各做什么",
+      "image_disposition": "W11-S009",
+      "figure": {
+        "id": "W11-S009",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m11-source/w11-s009.png",
+        "sha256": "ee32787f72f9665f61542d8d8330f13454220ac8baeba3468325ff1029afa8b4"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 10,
+      "source_title": "Case Study: Predicting a Firm's Stock Price​",
+      "visual": "PowerPoint PNG s010.png 与联系图 2",
+      "speaker_notes": "",
+      "teaching_elements": "课件问能否用公司今天的财务特征预测一年后股价。先声明今天可见资料及下一年目标；真实表现须等样本外评价。完整英文原问和条件式答案见 [[#2.4 SAS 示意：从模型选择到价格换算（讲义 p.7–9、p.15–18）|§2.4]]。",
+      "candidate_anchor": "p.10 · 原研究问题先定价格和日期",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 11,
+      "source_title": "Our plan",
+      "visual": "PowerPoint PNG s011.png 与联系图 2",
+      "speaker_notes": "",
+      "teaching_elements": "依次定一年后股价、财务比率、历史公司面板、模型和新公司预测。后续 p.14 先构造价格收益再按 p.16 换算价格；始终分清中间量与最终量。",
+      "candidate_anchor": "p.11 · 五步计划先有目标再训练",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 12,
+      "source_title": "Step 1 — Defining Features (X) from Financial Theory​",
+      "visual": "PowerPoint PNG s012.png 与联系图 2",
+      "speaker_notes": "",
+      "teaching_elements": "原表从价值、获利、投资、动量、规模选五列：B/M、ROE、资产增长、上一年收益和市值对数。每项有课件假设方向；训练不保证方向、大小或因果。",
+      "candidate_anchor": "p.12 · 五类特征需要财务和市场口径",
+      "image_disposition": "W11-S012",
+      "figure": {
+        "id": "W11-S012",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m11-source/w11-s012.png",
+        "sha256": "77d9a31a112fc71a4b4a25293d2816c2ec0f3b877009e48a21e68d42d3208832"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 13,
+      "source_title": "Step 2 — SAS Code: Data Preparation",
+      "visual": "PowerPoint PNG s013.png 与联系图 3",
+      "speaker_notes": "",
+      "teaching_elements": "原代码导入价格与财务 CSV，再按公司、财年组织 B/M、ROE、资产增长。价格与财务字段含义、滞后是否跨公司、分母是否有效须先核；这是示意代码。",
+      "candidate_anchor": "p.13 · 准备两份数据和基础特征",
+      "image_disposition": "W11-S013",
+      "figure": {
+        "id": "W11-S013",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m11-source/w11-s013.png",
+        "sha256": "33f447b5ff3bfb29880dbf6842b61df7888e1b3bd4fa59148a715fa848a306cd"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 14,
+      "source_title": "（无标题，Step 2 续）",
+      "visual": "PowerPoint PNG s014.png 与联系图 3",
+      "speaker_notes": "",
+      "teaching_elements": "原图用 lead 12 表达约一年后的价格，并尝试对齐目标和财务特征。实际须验证频率、确保同一证券、映射证券与公司标识，并用预测时已经公布的报表。不能按图中的键与日期直接照跑。",
+      "candidate_anchor": "p.14 · 对齐未来价格、证券身份与披露时点",
+      "image_disposition": "W11-S014",
+      "figure": {
+        "id": "W11-S014",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m11-source/w11-s014.png",
+        "sha256": "79f3f6bbda1a70f775b2303e0fda77ed55a79a65942dd6925e2ebead9f6d07c9"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 15,
+      "source_title": "Step 3 — SAS Code: Building the ML Model​",
+      "visual": "PowerPoint PNG s015.png 与联系图 3",
+      "speaker_notes": "",
+      "teaching_elements": "原例打算用较早年份训练、较新年份测试，但 p.14 输出没有分切用的 fyear；p.15 注释称 LASSO，代码写 LAR。先修数据分切，再核实际选变量和存模型步骤。检查截止时训练标签已可见、输出是否真做了测试；未给完整模型和数据，不能宣称准确率。",
+      "candidate_anchor": "p.15 · 按时间切分并拟合",
+      "image_disposition": "W11-S015",
+      "figure": {
+        "id": "W11-S015",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m11-source/w11-s015.png",
+        "sha256": "9d25e95e4ad772f3dd926c8088f4c3298af988cf33e90614362915680d87350b"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 16,
+      "source_title": "Step 4 — Making the Forecast for 2026​",
+      "visual": "PowerPoint PNG s016.png 与联系图 3",
+      "speaker_notes": "",
+      "teaching_elements": "用 XYZ 五个示例特征预测收益，再从当前价 150 推价格。原代码假设模型已训练且输入列相容。仅有几个系数片段，不能独立推出 8.2%。",
+      "candidate_anchor": "p.16 · 给 2025 特征打分再换 2026 价格",
+      "image_disposition": "W11-S016",
+      "figure": {
+        "id": "W11-S016",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m11-source/w11-s016.png",
+        "sha256": "1fee36753a6796f021787a82cf08886b357a533fb9d031381dc37ba855abc9ee"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 17,
+      "source_title": "Final Output​​",
+      "visual": "PowerPoint PNG s017.png 与联系图 3",
+      "speaker_notes": "",
+      "teaching_elements": "原表给 2025 价 150 美元、收益 8.2%、2026 价 162.30 美元。先化 8.2% 为 0.082，再乘 150 与 1.082。只有价格收益能直接这样换价；给定示意不等于实际运行。",
+      "candidate_anchor": "p.17 · 读给定结果表并手算",
+      "image_disposition": "W11-S017",
+      "figure": {
+        "id": "W11-S017",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m11-source/w11-s017.png",
+        "sha256": "3723fcae22e3383c28656fcb09207aa9bae88284cdd7e2d5d26d766057e88998"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 18,
+      "source_title": "Summary & Caveats",
+      "visual": "PowerPoint PNG s018.png 与联系图 3",
+      "speaker_notes": "",
+      "teaching_elements": "按目标、特征、数据、训练、预测顺一遍。训练期规律可能失效；坏数据与市场变化分别需要输入核对、误差监测与回测。",
+      "candidate_anchor": "p.18 · 预测失败可能从输入或市场变化来",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 19,
+      "source_title": "Example of Python analyses",
+      "visual": "PowerPoint PNG s019.png 与联系图 4",
+      "speaker_notes": "",
+      "teaching_elements": "原图可数 10 个配对。X 是广告费、Y 是销售额，课件 split 留两行作测试。原图字典列名与 y 取列不一致，按 [[#2.5 Python：把十行数据真正跑到误差（讲义 p.19–20）|§2.5]] 的修正代码用同一名称；真实时间预测不可直接照搬随机切分。",
+      "candidate_anchor": "p.19 · 十行广告例：定 X、Y 和切分",
+      "image_disposition": "W11-S019",
+      "figure": {
+        "id": "W11-S019",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m11-source/w11-s019.png",
+        "sha256": "c73c708f7f4e89cb63fc50601ba612dddea56d1fb1840fb359ba8073eaf13c89"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 20,
+      "source_title": "（无标题，Python 例续）",
+      "visual": "PowerPoint PNG s020.png 与联系图 4",
+      "speaker_notes": "",
+      "teaching_elements": "先 fit 训练输入和答案，再 predict 只给测试输入；实际值画散点，按横坐标排序后可连预测线。原页给斜率和截距输出动作，笔记复跑另算测试误差。",
+      "candidate_anchor": "p.20 · 十行广告例：训练、预测与画图",
+      "image_disposition": "W11-S020",
+      "figure": {
+        "id": "W11-S020",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m11-source/w11-s020.png",
+        "sha256": "7abf56ca34389f98337fcbec7a683078964d6e38fd5fe362f8e640d7baad76ec"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 21,
+      "source_title": "Example of SAS analyses",
+      "visual": "PowerPoint PNG s021.png 与联系图 4",
+      "speaker_notes": "",
+      "teaching_elements": "原图将 Auditor Choice 连到 SPOSTTREAT 与 Controls，旁注是选择四大的可能性。能读出左边为要解释的对象，右边为候选解释；课件没有定义变量及模型类型。",
+      "candidate_anchor": "p.21 · SAS 审计师选择模型的对象",
+      "image_disposition": "W11-S021",
+      "figure": {
+        "id": "W11-S021",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m11-source/w11-s021.png",
+        "sha256": "3cecb82fa7cd0faa4966e6be4c48e27af61999e21252545be87ca1816e0be515"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 22,
+      "source_title": "Example of SAS analyses",
+      "visual": "PowerPoint PNG s022.png 与联系图 4",
+      "speaker_notes": "",
+      "teaching_elements": "sposttreat 行的估计 −0.02199、下一列 0.00365、后两项 −6.03 和“小于 0.0001”可见；无原表头和模型定义时，按正文说明的推读处理，不直接翻译成概率下降 2.199 个百分点或因果。",
+      "candidate_anchor": "p.22 · SAS 表先读估计值和统计证据",
+      "image_disposition": "W11-S022",
+      "figure": {
+        "id": "W11-S022",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m11-source/w11-s022.png",
+        "sha256": "25d514fedb1a4a886e253f390b203b7d61d7d1f164834bbeb0bd0e76ea101d3b"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 23,
+      "source_title": "Example of STATA analyses",
+      "visual": "PowerPoint PNG s023.png 与联系图 4",
+      "speaker_notes": "",
+      "teaching_elements": "横轴为相对期，蓝点是该期图示数值，红线是 0。t 前和 t 附近有竖线跨过零，t+1 起图中竖线低于零；区间水平、事件与识别设定没给，不据图证明因果或平行趋势。",
+      "candidate_anchor": "p.23 · Stata 时间图看点、竖线、零线",
+      "image_disposition": "W11-S023",
+      "figure": {
+        "id": "W11-S023",
+        "path": "AC6761_Artificial_Intelligence_Accounting/notes/figures/m11-source/w11-s023.png",
+        "sha256": "9f5e16543088a9b60d793434c80d4e3f1d2e1b5ba1381527a4b49c4325fa8ea3"
+      },
+      "supplementary_visual": "原图旁提供读法",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 24,
+      "source_title": "Ethics in AI",
+      "visual": "PowerPoint PNG s024.png 与联系图 4",
+      "speaker_notes": "",
+      "teaching_elements": "隐私问资料是否应收与可访问，公平问各群体受何影响，透明问结果能否复核，问责问谁批准和修正。后面各页逐项展开。",
+      "candidate_anchor": "p.24 · 伦理四问怎么配到流程",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 25,
+      "source_title": "Data privacy and security – Key concerns",
+      "visual": "PowerPoint PNG s025.png 与联系图 5",
+      "speaker_notes": "",
+      "teaching_elements": "客户资料和交易记录可因外泄、越权访问或二次滥用受损。先标材料敏感性和业务用途，再决定哪些字段确实需要。",
+      "candidate_anchor": "p.25 · 财务资料的三种泄漏路径",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 26,
+      "source_title": "Data privacy and security – Best practices",
+      "visual": "PowerPoint PNG s026.png 与联系图 5",
+      "speaker_notes": "",
+      "teaching_elements": "加密减少未授权读取，最小权限限制查看和改写，安全审计发现持续问题并跟进。已经授权的误上传不靠加密自动解决。",
+      "candidate_anchor": "p.26 · 加密、权限和审计各挡什么",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 27,
+      "source_title": "Bias and fairness - concept",
+      "visual": "PowerPoint PNG s027.png 与联系图 5",
+      "speaker_notes": "",
+      "teaching_elements": "若样本主要来自一组，模型在其他组的错误可能较多。先比较各组输入覆盖、真实标签、预测错误和样本量。",
+      "candidate_anchor": "p.27 · 训练数据不代表全部群体会怎样",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 28,
+      "source_title": "Bias and fairness - Impact",
+      "visual": "PowerPoint PNG s028.png 与联系图 5",
+      "speaker_notes": "",
+      "teaching_elements": "课件举招聘、贷款和审计。若某组被更多误报，可能多承担额外审查，损害信任；差距是要调查的信号，不能仅凭总体准确率忽略。",
+      "candidate_anchor": "p.28 · 偏差怎样改变现实处理",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 29,
+      "source_title": "Bias and fairness – Strategies for mitigation",
+      "visual": "PowerPoint PNG s029.png 与联系图 5",
+      "speaker_notes": "",
+      "teaching_elements": "增加有代表性的样本，定期按业务场景评估群体表现，并听不同角色意见。改数据后还要复测、记录代价和剩余差距。",
+      "candidate_anchor": "p.29 · 缓解偏差要查数据、指标和团队",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 30,
+      "source_title": "Transparency and explainability - Challenges",
+      "visual": "PowerPoint PNG s030.png 与联系图 5",
+      "speaker_notes": "",
+      "teaching_elements": "模型复杂时可能难解释；准确率与解释性都应测，不能说复杂模型必然更准。黑箱会让人难追结果输入与决策理由。",
+      "candidate_anchor": "p.30 · 复杂度与解释是待比较的关系",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 31,
+      "source_title": "Transparency and explainability - Improvement",
+      "visual": "PowerPoint PNG s031.png 与联系图 6",
+      "speaker_notes": "",
+      "teaching_elements": "若简单模型够用，优先比对；特征重要性图可列线索，保留训练资料、算法、版本与选择理由。重要性不等于对业务结果的因果贡献。",
+      "candidate_anchor": "p.31 · 把解释做成可复核材料",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 32,
+      "source_title": "Responsibility and accountability – who is responsible?",
+      "visual": "PowerPoint PNG s032.png 与联系图 6",
+      "speaker_notes": "",
+      "teaching_elements": "课件问管理者、开发人员还是数据科学家应负责。参考答法按批准、技术实现、资料和实际复核分责，并明确谁可停止或撤回；没有统一的法律结论，详见 [[#2.10 责任与问责：谁有权确认结果（讲义 p.32–33）|§2.10]]。",
+      "candidate_anchor": "p.32 · 把原课件的问责问题落到人",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 33,
+      "source_title": "Responsibility and accountability – Guidelines",
+      "visual": "PowerPoint PNG s033.png 与联系图 6",
+      "speaker_notes": "",
+      "teaching_elements": "写下谁使用、谁批准、何时检查、如何纠正，并实际抽样核模型输出。若出现问题，要可从版本和日志查到责任环节。",
+      "candidate_anchor": "p.33 · 问责表要连定期复查",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 34,
+      "source_title": "Key Trends Shaping the Future of AI in Accounting",
+      "visual": "PowerPoint PNG s034.png 与联系图 6",
+      "speaker_notes": "",
+      "teaching_elements": "自动化、预测、区块链、个性化、持续适应是课件方向。对每项先定能处理的数据和要观察的指标，不写成已实现成效。",
+      "candidate_anchor": "p.34 · 五种未来方向先列待证条件",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 35,
+      "source_title": "Increased automation",
+      "visual": "PowerPoint PNG s035.png 与联系图 6",
+      "speaker_notes": "",
+      "teaching_elements": "录入、发票和对账可减重复操作，员工转向异常核查与判断。比较是否省时还要计培训、复核和失败后处理。",
+      "candidate_anchor": "p.35 · 自动化后哪些人还要工作",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 36,
+      "source_title": "Enhanced predictive analytics",
+      "visual": "PowerPoint PNG s036.png 与联系图 6",
+      "speaker_notes": "",
+      "teaching_elements": "新资料可刷新现金流和收入估计，也可做情景。要核资料时效、历史标签与验证，实时跑得快不代表误差变小。",
+      "candidate_anchor": "p.36 · 实时预测也需要预测时点",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 37,
+      "source_title": "Integration with Blockchain technology",
+      "visual": "PowerPoint PNG s037.png 与联系图 7",
+      "speaker_notes": "",
+      "teaching_elements": "智能合约可按条件执行，链上记录可追查，AI 可标异常。链下单据造假、密钥失控或规则错误仍需控制，不能由可追踪推零舞弊。",
+      "candidate_anchor": "p.37 · 区块链记录与链下事实分开",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 38,
+      "source_title": "Personalized client services",
+      "visual": "PowerPoint PNG s038.png 与联系图 7",
+      "speaker_notes": "",
+      "teaching_elements": "课件举两类展望：按获授权的客户资料和偏好提出投资策略或节税机会候选；用聊天或虚拟助手处理常规查询、更新财务状态、辅助基础记账任务。先核授权、适用性与来源，重要判断交有责任的人确认，不因回答快速就视为准确。",
+      "candidate_anchor": "p.38 · 个性化服务先核资料授权",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    },
+    {
+      "physical_slide": 39,
+      "source_title": "Continuous learning and adaption",
+      "visual": "PowerPoint PNG s039.png 与联系图 7",
+      "speaker_notes": "",
+      "teaching_elements": "持续学习可用新资料调整模型；上线前先核反馈质量，用固定评估集对比新旧版，再用未参与选模的较新测试集核当前场景，保留旧版以便回滚。市场或监管条件变化时启动重评，不由更新自动保证合规。若反复据固定集挑版本，它会逐渐变成调参依据；也不能把所有反馈直接当正确标签。",
+      "candidate_anchor": "p.39 · 反馈进模型前需先验证",
+      "image_disposition": "文字内容，正文就地说明",
+      "figure": null,
+      "supplementary_visual": "文字内容由页内例子或邻页的图解释",
+      "status": "author_source_checked_targeted_review_pending"
+    }
+  ]
+}

@@ -2,7 +2,8 @@
 course: IS6400
 module: 3
 readability_rules: v2
-readability_review: passed
+readability_review: pending
+historical_readability_review: passed
 type: tutorial
 week: 3
 date: null
@@ -18,7 +19,8 @@ status: v1.0
 updated: 2026-10-27
 teaching_standard: novice-v1
 mechanism_spec: v1
-mechanism_review: passed
+mechanism_review: pending
+historical_mechanism_review: passed
 ---
 
 # T03 · 数据探索实战：Iris 与 Airbnb 的描述统计
@@ -266,7 +268,7 @@ data[['sepal length', 'sepal width', 'petal length', 'petal width']].quantile(pe
 （cell 6 四列汇总）：petal length 的 std 最大（1.764）、IQR 最大（3.5）、峰度最负（−1.402）；这些数可提示进一步查分组，但单独不证明三个品种混合或有三个峰。
 （cell 7）：petal width 的 90% 分位为 2.2、99% 分位为 2.5，后者等于最大值。分位阈值不代表恰有 1% 观察大于它；有并列值时，位于最大值的比例可以超过 1%。
 
-**为什么这么写**：作业第 1 题的原话是 "mean, median, mode, std, min, max, Q1, Q3, IQR, skewness, kurtosis"——这 11 项均在函数输出中，另有一个 range。cell 8 的 markdown 给了读数规则：偏度近0只表示三阶偏斜较小，不保证对称；正偏通常提示右尾较长；峰度近 0 像正态尾、大正值重尾（M03 §2.10）。
+**为什么这么写**：作业第 1 题的原话是 "mean, median, mode, std, min, max, Q1, Q3, IQR, skewness, kurtosis"——这 11 项均在函数输出中，另有一个 range。cell 8 的 markdown 给了读数规则：偏度近0只表示三阶偏斜较小，不保证对称；正偏通常提示右尾较长；超额峰度近 0 只表示标准化四阶矩接近正态参照；不能判断尾部形状或正态。较大正值表示极端偏差的四次方贡献较强（M03 §2.10）。
 
 **⚠️ 易错点**：
 - `s.std()` 是样本标准差（分母 n−1），与讲义 p.30 样本协方差口径一致；numpy 的 `np.std` 默认分母 n，两者会差一点。
@@ -468,13 +470,25 @@ cell 21 的结论：两个变量的关系可以"strong and **nonlinear** when a 
 
 **直方图：花瓣宽度集中在哪些区间？**
 
+#### Cell 14 · 直方图原保存图
+
 ![[IS6400_Business_Data_Analytics/notes/figures/t03-readability/iris-hist.svg]]
+
+![原 Notebook Cell 14 的保存图](figures/t03-saved-source/t03-cell-14-output-01.png)
+
+**Cell 14 读图**：横轴花瓣宽度，左侧小值有单独峰；先看直方图的组距，再比较高频区间之间的低频空档。
 
 横轴花瓣宽 cm，纵轴区间内花数；每柱累计多行。首行 0.2 cm 给所在箱贡献 1 次，20 箱合计 150。文字替代：窄花瓣区间集中，较宽区间也有记录；多峰只提示进一步分组，改变分箱会改变形状。
 
 **箱线图：哪列中间一半的跨度大？**
 
+#### Cell 17 · 箱线图原保存图
+
 ![[IS6400_Business_Data_Analytics/notes/figures/t03-readability/iris-box.svg]]
+
+![原 Notebook Cell 17 的保存图](figures/t03-saved-source/t03-cell-17-output-01.png)
+
+**Cell 17 读图**：四列共用厘米轴；萼宽的空心点是按箱线规则标出的观察，不说明记录错误。
 
 横向四项是测量列，纵轴 cm。盒底/中线/盒顶为 Q1/中位数/Q3；须到围栏内最远观测。sepal length 的 Q1=5.1、Q3=6.4，所以盒高为 1.3 cm。
 
@@ -482,24 +496,34 @@ cell 21 的结论：两个变量的关系可以"strong and **nonlinear** when a 
 
 **散点：怎样保持同一朵花的两测量配对？**
 
+#### Cell 20 · 分组散点原保存图
+
 ![[IS6400_Business_Data_Analytics/notes/figures/t03-readability/iris-scatter.svg]]
+
+![原 Notebook Cell 20 的保存图](figures/t03-saved-source/t03-cell-20-output-01.png)
+
+**Cell 20 读图**：蓝色 Setosa 与其余两色分开，橙绿在交界重叠；两轴是花瓣长宽。
 
 横轴花瓣长、纵轴花瓣宽，均 cm；首行 (1.4,0.2) 是一个 Setosa 点。点形/颜色来自已知 class。文字替代：Setosa 较易分离，另两类部分重叠；它不是独立分类成绩。两列不能独立排序再画点。
 
 **平行坐标：一朵花跨四属性是什么轮廓？**
 
+#### Cell 23 · 平行坐标原保存图
+
 ![[IS6400_Business_Data_Analytics/notes/figures/t03-readability/iris-parallel.svg]]
+
+![原 Notebook Cell 23 的保存图](figures/t03-saved-source/t03-cell-23-output-01.png)
+
+**Cell 23 读图**：一条线是一朵花，在四个特征轴上取值；花瓣两轴对类别区分更清楚。
 
 横向依次四属性，纵轴原 cm；一条线连接同一原行，没有时间箭头。首行依次 5.1→3.5→1.4→0.2。文字替代：150 行各有一条原测量轮廓；默认未做各轴独立缩放，换轴序/尺度会改变视觉印象。
 
-<details><summary>四图读图自测：箱须、跨列连线、直方频数与散点配对</summary>
-
-1. 箱须是围栏值吗？须取围栏内真实观测，不直接画围栏。
-2. 哪张连接首行四值？平行坐标；散点仅取同花的花瓣两值。
-3. 首行 0.2 cm 对哪个直方箱贡献？20 等宽箱从 0.1 到 2.5，箱宽 0.12，所以进入 [0.1,0.22)，贡献 1。柱汇总该区间的多朵花，不代表单花。
-4. 横纵两列独立排序后仍是同花吗？通常不是，原行配对已破坏。应按同一原行同时取两值。
-
-</details>
+> [!example]- 四图读图自测：箱须、跨列连线、直方频数与散点配对
+>
+> 1. 箱须是围栏值吗？须取围栏内真实观测，不直接画围栏。
+> 2. 哪张连接首行四值？平行坐标；散点仅取同花的花瓣两值。
+> 3. 首行 0.2 cm 对哪个直方箱贡献？20 等宽箱从 0.1 到 2.5，箱宽 0.12，所以进入 [0.1,0.22)，贡献 1。柱汇总该区间的多朵花，不代表单花。
+> 4. 横纵两列独立排序后仍是同花吗？通常不是，原行配对已破坏。应按同一原行同时取两值。
 
 **输出核对（2026-09-30 实跑）**：`render-t03-plots.py` 按原 Iris 数据生成并实际查看了四张图。20个直方箱计数合计150；平行坐标150条样本线直接使用原行的四个数，首行为5.1/3.5/1.4/0.2。散点中setosa分离较明显，另两类重叠，不能说三类完全分开。箱线图是petal length的IQR最大，sepal width较窄并有单独点。中间核对见`t03-plot-check.json`，图像为临时验收材料，不嵌入正文替代可编辑代码与解释。
 
@@ -580,6 +604,7 @@ flowchart TD
 本篇复现 `boxplot()` 时按默认 1.5×IQR；若需 10/90 百分位须，必须显式设置并注明。原 ASR 的 90th 仍为 [?]，未重听音频，不把推定修词当作已核原话。
 
 ---
+
 ## 3. 逐块讲解 · 段 B：Airbnb 的脏数据（cell 25–42）
 
 ### 3.1 【cell 26–27】读数据、缺失值报告
@@ -894,7 +919,7 @@ $$\text{IQR 规则：} x < Q_1 - k\cdot\text{IQR} \;\text{或}\; x > Q_3 + k\cdo
 | 符号 | 含义 |
 |---|---|
 | $Q_1, Q_3$、IQR | 25%、75% 分位数与它们的差 |
-| $k$ | 须的倍数，Tukey 惯例 1.5 |
+| $k$ | IQR 围栏倍数，Tukey 惯例 1.5 |
 | $\bar{x}, s$ | 均值、标准差 |
 | 3 | 阈值：正态分布下超过 3 个标准差的概率约 0.27% |
 
@@ -903,14 +928,14 @@ $$\text{IQR 规则：} x < Q_1 - k\cdot\text{IQR} \;\text{或}\; x > Q_3 + k\cdo
 | 列 | IQR 标记 | Z 标记 | 为什么差这么多 |
 |---|---|---|---|
 | log_price | 1,453 | 453 | Q1 = 4.29，Q3 = 5.19，IQR = 0.90（详见表后） |
-| accommodates | 3,299 | 1,378 | Q1 = 2，Q3 = 4，须 −1 到 7；**所有 ≥ 8 人的房源全被 IQR 标记** |
-| bathrooms | **14,307** | 1,878 | **Q1 = Q3 = 1 → IQR = 0 → 须就是 [1, 1]**：凡是不等于 1 的浴室数（0、1.5、2……）全被标成离群点——占 21% |
+| accommodates | 3,299 | 1,378 | Q1 = 2，Q3 = 4，围栏 −1 到 7；**所有 ≥ 8 人的房源全被 IQR 标记** |
+| bathrooms | **14,307** | 1,878 | **Q1 = Q3 = 1 → IQR = 0 → 两条围栏均为 1**：凡是不等于 1 的浴室数（0、1.5、2……）全被标成离群点——占 21% |
 
 **log_price · 为什么差这么多**
 
 Q1 = 4.29，Q3 = 5.19，IQR = 0.90。
 
-须 2.94–6.55。
+由未舍入分位数算出的围栏约为 2.94–6.55；图的箱须止于围栏内实际观测。
 
 两端都有长尾
 
@@ -1131,7 +1156,7 @@ air_clean[corr_cols].corr()['log_price'].drop('log_price').sort_values(key=abs, 
 
 读第一行：容量较大房源通常具有较高 log 价格，相关 0.578；没有控制地点等共同因素。第一列给原数值字段身份，第二列来自两列有效成对行，不是美元效应。
 
-原宽表中其它已显示格拆出保留；空格只表示原未展示，不当作 0。
+原保存矩阵 7×7 已完整显示。六个目标相关见上表，下面列其余 15 个唯一列对；对称格不重复。
 
 | 列对 | r |
 |---|---:|
@@ -1144,6 +1169,12 @@ air_clean[corr_cols].corr()['log_price'].drop('log_price').sort_values(key=abs, 
 | bedrooms / beds | 0.730 |
 | bedrooms / number_of_reviews | −0.032 |
 | bedrooms / review_scores_rating | 0.012 |
+| bathrooms / beds | 0.538 |
+| bathrooms / number_of_reviews | −0.040 |
+| bathrooms / review_scores_rating | 0.015 |
+| beds / number_of_reviews | 0.038 |
+| beds / review_scores_rating | −0.026 |
+| number_of_reviews / review_scores_rating | −0.026 |
 
 列对就是该交叉格来源，r 是同口径相关。原对角为各非退化列与自己相关 1；对称格相同，不再横向重复成 8 列宽表。
 
@@ -1186,11 +1217,9 @@ pandas在存在缺失时默认按每一对的共同非缺失行计算，两格�
 
 走 (a,c)：a 上升 1→2→3，c 下降 3→2→1；样本 cov=−1，两 std 均 1，所以 r=−1。文字替代：a/b 完全正线性，另两列对完全负线性；有缺失时各格有效数不一定都是 3。
 
-<details><summary>读图自测：c 的 −1 会在绝对值排名里输给 b 的 +1 吗？</summary>
-
-不会，两者绝对值都是 1，平局。符号给方向，绝对值给线性强度；都不证明因果。
-
-</details>
+> [!example]- 读图自测：c 的 −1 会在绝对值排名里输给 b 的 +1 吗？
+>
+> 不会，两者绝对值都是 1，平局。符号给方向，绝对值给线性强度；都不证明因果。
 
 **迁移自测**：把b改为原来的十倍，cov(a,b)与corr(a,b)怎样变？<details><summary>答案</summary>cov从2到20，b的std从2到20，corr仍1。协方差改变单位，相关抵消正尺度；若乘负数则相关符号翻转。来源：笔记补充，逐偏差乘积可核。</details>
 
@@ -1241,6 +1270,12 @@ plt.show()
 
 ---
 
+**查看原 Notebook 保存图**
+
+![原 Notebook Cell 40 的保存图](figures/t03-saved-source/t03-cell-40-output-01.png)
+
+**Cell 40 读图**：对角线都是自身相关 1；例如 log_price 与 accommodates 的交格约 0.58，只描述样本关联。
+
 ## 4. 完整流程串讲
 
 把 20 个 code cell 串成一条线，就是作业第 2 题的骨架，也是任何新数据集的"体检流程"：
@@ -1253,23 +1288,21 @@ flowchart TD
     D --> E["画图<br/>hist · boxplot · scatter(按组) · parallel_coordinates"]
     E --> F["数据质量<br/>isna → Imputer 三选一<br/>IQR / Z 标记离群点"]
     F --> G["标准化<br/>StandardScaler / RobustScaler"]
-    G --> H["关系<br/>corr · heatmap · 前 3 特征"]
+    F --> H["从 air_clean 原单位列算 cov / corr 与热图"]
     H --> I["结论<br/>相关 ≠ 因果：说出混杂变量"]
 ```
 
 **总览读法**：箭头是讲解与处理状态顺序。真实建模先分训练/评估，填补和缩放只在训练内 fit；这项条件不能由总览顺序替代。
 
-缺评分房源到 F：先数缺失、判断机制，再按已声明规则建 air_clean。G 换尺子，不恢复真实缺评分；H 得到处理后的相关。
+缺评分房源到 F：先数缺失、判断机制，再按已声明规则建 air_clean。G 是换尺比较旁支，不把 X_std 或 X_rob 输入 H。H 直接取 air_clean 的列：评分已填补，其余仍为原单位。
 
 1. 看分布与业务目标选择中心/尺度，中位数和 RobustScaler 都非无条件更好。
 2. 保存图标题、轴、单位和读法，每个数字可回到输入。
 3. 缺 22% 是范围；填中位数假设未评论房源具有典型评分。缺失真值仍未知。
 
-<details><summary>总览自测：经过 G，缺评分已经是真实观察吗？</summary>
-
-没有。F 只是估计，G 只改尺度；后续关系仍须承认填补假设。
-
-</details>
+> [!example]- 总览自测：经过 G，缺评分已经是真实观察吗？
+>
+> 没有。F 只是估计，G 只改尺度；后续关系仍须承认填补假设。
 
 ---
 
@@ -1282,7 +1315,7 @@ flowchart TD
 | 数据粒度 | data granularity | The entity or event represented by one row. | §1.4 |
 | 分位数 | quantile | A rank-based threshold defined by a stated sample rule. | §2.2 |
 | 线性插值 | linear interpolation | A weighted average between adjacent ordered observations. | §2.2／§7.3.1 |
-| 样本标准差 | sample standard deviation | The square root of squared deviations divided by n minus one. | §2.2 |
+| 样本标准差 | sample standard deviation | The square root of the sum of squared deviations from the sample mean, divided by (n minus one) inside the square root. | §2.2 |
 | 四分位距 | interquartile range | The difference between the 75th and 25th percentiles. | §2.2 |
 | 缺失值填补 | missing-value imputation | Replacing missing entries by estimates while retaining observed entries. | §3.2 |
 | 标准化 | standardization | Re-expressing values using a specified centre and scale. | §3.4 |
@@ -1299,7 +1332,7 @@ flowchart TD
 | cell 23 列顺序 | 将 sepal width 放在第一轴 | 连线走向和交叉改变，三组是否分离仍看原值 | 轴序改外观，不保证分类成功 |
 | cell 28 `KNNImputer` 的输入 | 加上 `accommodates, bathrooms, beds` | 邻居与结果可能改变，需另核尺度和实际输出 | 传入列决定可用距离 |
 | cell 28 `n_neighbors=5` | 1 / 50 | 一个供体更受该行影响，较多供体更平滑 | 50 仍是局部均值，不保证接近全局 |
-| cell 32 `k=1.5` | `k=3` | IQR 标记数大幅下降 | 须的倍数是主观门槛 |
+| cell 32 `k=1.5` | `k=3` | IQR 标记数大幅下降 | k 是围栏倍数；箱须落在围栏内实际观测 |
 | cell 32 `threshold=3` | `2` | 按固定参照尺度，降阈值会使标记数不减少；Airbnb实际比例须复算，约4.6%仅是理想正态下的理论双尾比例 | 正态下 2σ 外约 4.6% |
 | cell 32 的列 | 加 `number_of_reviews` | 先按本列四分位算界，再核实际标记数 | 长尾值不自动等于错误 |
 | cell 36 `feats` | 加 `log_price` | 目标也被缩放，不符本题 excluding 限制 | 是否变换目标由具体任务决定 |
@@ -1411,6 +1444,8 @@ flowchart TD
 ### 7.3 逐问学习解析
 
 #### 7.3.1 Q1：每种输出回答一个具体问题
+
+id 是名义标识，不当作测量。此表有 68,133 个不重复的 id，每个频数为 1、比例约 0.001468%。这里报告唯一值汇总，不逐一枚举标识；其余类别字段看下面的频数表。
 
 中文读题：**every column** 要覆盖原 15 列；标识符仍需分类，但不能当金额算均值。**percentage** 需说明分母，**both log_price and price** 需两套分位，**at least 5 insights** 需至少五个有数值证据的结论。下面是学习参考解析，不是修改后的个人提交稿。
 
@@ -1615,7 +1650,7 @@ IQR 与 Z 对 log_price 标记 1,453/453，对 accommodates 标记 3,299/1,378�
 
 读 bathrooms：本来 IQR=0，软件尺度设为 1，输出等于原数减 1；bedrooms 也相同退化。若希望中心和尺度少受极端观察拉动，可比较 RobustScaler；若采用均值和总体标准差作距离参照，可用 StandardScaler。二者都能对非正态数据计算，选择需要与后续距离或模型表现一起检查。
 
-英文参考答案（笔记自拟）：“StandardScaler centres the five inputs on their training means and scales by population standard deviations. RobustScaler instead uses medians and IQRs. Bathrooms and bedrooms have zero IQRs, so their effective scales are 1. Robust scaling can reduce the influence of extreme observations on the reference scale, but it does not guarantee smaller transformed ranges or better predictions.”
+英文参考答案（笔记自拟）：“StandardScaler centres the five inputs on the means of the data used to fit it and scales by population standard deviations. This report uses the exploratory table; a prediction pipeline should fit the scaler on training data only. RobustScaler instead uses medians and IQRs. Bathrooms and bedrooms have zero IQRs, so their effective scales are 1. Robust scaling can reduce the influence of extreme observations on the reference scale, but it does not guarantee smaller transformed ranges or better predictions.”
 
 **2.3 的直接答案与读图方法。** 以下每行是一项题面指定特征。数值相关采用中位数填补评分后的同一 `air_clean`，类别只作分组，不能随意编码成 0/1/2 后解释 Pearson r。房源行是散点的单位，箱线图的一箱则汇总一组房源。
 
@@ -1632,7 +1667,7 @@ IQR 与 Z 对 log_price 标记 1,453/453，对 accommodates 标记 3,299/1,378�
 
 浴室、卧室和床数的保存图也按取值分组画中位数，且稀少高值组更易波动；原行 Pearson r 与这些组中位点不是同一批计算单位。评分图另抽 5,000 行画散点并配拟合线，横轴填补后评分、纵轴同房源 log_price；96 处可能包含填入值，图样本与全表相关也要分清。
 
-六张关系图的现成保存输出在 [本人历史 HTML 的 Q2 区域](../assignment/graded/A04-week3/submission/IS6400_Week3_60234350_LI_Binxiong.html#Question-2-%E2%80%93-Data-Quality,-Visualization,-and-Relationships-with-log_price-(45-points))。该链接同时保留原代码、标题、轴与原解释；本轮不重新生成一份提交报告。至少 8 张的可核组合为六张特征关系图、一张带数字相关热图、一张缺失比例条形图；每张都要说明数据状态，不能用同图换标题凑数。
+六张关系图的现成保存输出在 [本人历史 HTML 的 Q2 区域](../assignment/graded/A04-week3/submission/IS6400_Week3_60234350_LI_Binxiong.html#Question-2-%25E2%2580%2593-Data-Quality,-Visualization,-and-Relationships-with-log_price-(45-points))。该链接同时保留原代码、标题、轴与原解释；本轮不重新生成一份提交报告。至少 8 张的可核组合为六张特征关系图、一张带数字相关热图、一张缺失比例条形图；每张都要说明数据状态，不能用同图换标题凑数。
 
 **六张保存图各自的 2–3 句解释（笔记补充，不改本人提交 HTML）**
 
@@ -1672,26 +1707,26 @@ IQR 与 Z 对 log_price 标记 1,453/453，对 accommodates 标记 3,299/1,378�
 
 本人保存的 Q3 使用 `NIC_clean_dataset_v2.csv`，输出 10,000 行、16 列，无缺失。行以 student_id 标识一条学生主题记录；来源真实性和采集过程未在本任务认证，不能把它当作已核真实学生总体。当前学习解析复用保存输出，不把官方 5,000 × 12 占位段落当本人数据。
 
-完整类型表和 dtype 保留在 [本人历史 HTML 的 Q3 区域](../assignment/graded/A04-week3/submission/IS6400_Week3_60234350_LI_Binxiong.html#Question-3-%E2%80%93-Project-Dataset-Exploration-(20-points))。下面一行对应一个原字段，量尺给允许怎样比较，取值类型给当前记录口径；bool 或 object 是存储方式，不能代替统计身份。
+完整类型表和 dtype 保留在 [本人历史 HTML 的 Q3 区域](../assignment/graded/A04-week3/submission/IS6400_Week3_60234350_LI_Binxiong.html#Question-3-%25E2%2580%2593-Project-Dataset-Exploration-(20-points))。下面一行对应一个原字段，量尺给允许怎样比较，取值类型给当前记录口径；bool 或 object 是存储方式，不能代替统计身份。
 
 | 原字段 | 量尺 | 记录口径及理由 |
 |---|---|---|
 | student_id | 名义 nominal | 离散标签，编号差不是能力差 |
 | age | 比率 ratio | 整岁计数，离散 |
-| programme_level | 名义 nominal | 类别，未建立共同次序 |
-| nationality_group | 名义 nominal | 类别，无大小顺序 |
-| boarding_status | 名义 nominal | 住宿类别 |
+| programme_level | 名义 nominal | 离散类别，未建立共同次序 |
+| nationality_group | 名义 nominal | 离散类别，无大小顺序 |
+| boarding_status | 名义 nominal | 离散住宿类别 |
 | attendance_rate | 比率 ratio | 出勤次数占应出勤次数的比例，连续近似 |
 | assessment_completion_rate | 比率 ratio | 完成次数占应完成次数的比例，连续近似 |
-| current_grade | 区间 interval | 评分差可比较，80 不表示学习量是 40 的两倍 |
+| current_grade | 区间 interval | 记录含小数评分，按连续近似处理；评分差可比较，80 不表示学习量是 40 的两倍 |
 | lms_engagement_score | 区间 interval | 综合评分，连续近似 |
 | wellbeing_flag | 名义 nominal | 离散二元标记 |
 | safeguarding_flag | 名义 nominal | 离散二元标记 |
 | intervention_count | 比率 ratio | 干预次数，离散 |
 | guardian_contact_complete | 名义 nominal | 离散二元标记 |
-| record_completeness_score | 比率 ratio（沿保存稿比例口径） | 完整度比例近似；构造仍待独立核源 |
+| record_completeness_score | 比率 ratio（沿保存稿比例口径） | 完整度比例，按连续近似处理；构造仍待独立核源 |
 | access_review_overdue_flag | 名义 nominal | 离散二元标记 |
-| academic_risk_level | 序数 ordinal | 风险等级可排次序，等级差不当等距 |
+| academic_risk_level | 序数 ordinal | 离散且可排序；等级差不当等距 |
 
 探索只选 attendance_rate、assessment_completion_rate、current_grade 三列。原保存数值给成绩均值约 78.75、样本 std 约 9.40；与成绩的 r 分别约 0.440、0.593，两种行为之间约 0.451。两张行为—成绩散点和相关摘要仍在上述 HTML；图源抽 3,000 行，横纵取同一原行，全表相关与图样本分开。正趋势是描述关联，不能从图推断干预效果。
 
@@ -1716,54 +1751,60 @@ IQR 与 Z 对 log_price 标记 1,453/453，对 accommodates 标记 3,299/1,378�
 
 ## 8. cell ↔ 讲义页码映射 · 课堂覆盖
 
+这里按原 Notebook 的 1 起始物理格编号。预习可从第 5、23、28、39 格进入描述统计、读图、填补与相关。课中按表找当前格，复习到 §5 改参数，再从 §7.3 做题。
+
 **20 个 code cell 全部在 §2–§3 有讲解**；28 个 markdown cell 中，cell 1、2、4、8、9、12、13、15、16、18、19、21、22、24、25、29、31、34、35、37、38、42、43 的内容已并入对应小节，cell 44–48 见 §7。「课堂覆盖」列来自 `M03-transcript.txt` tutorial 段（2026-09-18 合并）。
 
 | cell | 类型 | 内容 | 笔记小节 | 讲义页 | 课堂覆盖 |
 |---|---|---|---|---|---|
-| 1 | md | 标题与八项清单 | §0 | — | ✅ 简讲 `01:46:09`–`01:46:40`（口头概述本讲八件事） |
-| 2 | md | object / attribute | §2.1 | p.4 | ✅ 详讲 `01:46:56`–`01:46:58` |
-| 3 | code | import · 样式 · 读 iris | §2.1 | p.61 | ✅ 详讲 `01:46:42`–`01:48:59` |
-| 4 | md | 描述统计说明 | §2.2 | p.24 | ⚡ 一句带过（并入 cell 5 讲解） |
-| 5 | code | `describe_col` | §2.2 | p.24–26 | ✅ 详讲 `01:49:04`–`01:51:08` |
-| 6 | code | 四列汇总表 | §2.2 | p.24–28 | ✅ 详讲 `01:51:08`–`01:51:49` |
-| 7 | code | 六个分位数 | §2.2 | p.25 | ✅ 详讲 `01:51:49`–`01:52:11` |
-| 8 | md | 偏度峰度读法 | §2.2 | p.27–28 | ✅ 详讲 `01:52:11`–`01:52:51` |
-| 9 | md | 频数与分组说明 | §2.3 | p.23 | ⚡ 一句带过（并入 cell 10 讲解） |
-| 10 | code | `value_counts` | §2.3 | p.23 | ✅ 详讲 `01:52:51`–`01:53:41` |
-| 11 | code | `groupby().agg` | §2.3 | p.22, p.51 | ✅ 简讲 `01:55:18`–`01:55:48` |
-| 12 | md | insight | §2.3 | — | ⏭️ 没有专门念 insight 原文，前后 `01:55:11`→`01:55:18` 直接跳到 groupby 演示 |
-| 13 | md | 4.1 标题 | §2.4 | — | ⚡ 隐含（标题未单独念） |
-| 14 | code | 直方图 | §2.4 | p.63 | ✅ 详讲 `01:55:48`–`01:56:41` |
-| 15 | md | 多峰 = 混合 | §2.4 | p.63 | ⏭️ 没有念“多峰=混合”这条 insight，`01:56:41` 直接转到箱线图 |
-| 16 | md | 4.2 标题 | §2.4 | — | ⚡ 隐含 |
-| 17 | code | 箱线图 | §2.4 | p.65–66 | ✅ 详讲 `01:56:41`–`01:57:10` |
-| 18 | md | 读法 | §2.4 | — | ⏭️ 没有念 "no obvious extreme outliers"，`01:57:10` 直接转到散点图 |
-| 19 | md | 4.3 标题 | §2.4 | — | ⚡ 隐含 |
-| 20 | code | 分组散点 | §2.4 | p.67–68 | ✅ 详讲 `01:57:10`–`01:58:00` |
-| 21 | md | 强且非线性 | §2.4 | p.33 | ⏭️ 没有念“强且非线性”这条 insight，`01:58:00` 直接转到平行坐标 |
-| 22 | md | 4.4 标题 | §2.4 | — | ⚡ 隐含 |
-| 23 | code | 平行坐标 | §2.4 | p.69–70 | ✅ 详讲 `01:58:07`–`01:59:07` |
-| 24 | md | 读法 | §2.4 | — | ⏭️ 没有专门念读法，`01:59:07` 直接切换到 Airbnb |
-| 25 | md | 切换到 Airbnb | §3.1 | p.5, p.19 | ✅ 简讲 `01:59:12`–`01:59:19` |
-| 26 | code | 读 Airbnb | §3.1 | p.5 | ✅ 简讲 `01:59:19`–`01:59:34` |
-| 27 | code | 缺失报告 | §3.1 | p.19 | ✅ 详讲 `01:59:34`–`02:01:14` |
-| 28 | code | 三种填补 | §3.2 | p.19 | ✅ 详讲 `02:01:20`–`02:04:20`（mean/median 两种 SimpleImputer） |
-| 29 | md | 解读与选择 | §3.2 | — | ⏭️ 没有念选中位数的理由，只讲了操作步骤 |
-| 30 | code | `air_clean` | §3.2 | — | ✅ 简讲 `02:06:26`（“no missing value from the original data table”） |
-| 31 | md | 6 标题 | §3.3 | — | ⚡ 隐含 |
-| 32 | code | IQR / Z 标记 | §3.3 | p.19, p.26 | ✅ 简讲 `02:06:26`–`02:07:21`（只讲公式，无 Airbnb 具体数字） |
-| 33 | code | `outlier_iqr` 比例 | §3.3 | — | ⏭️ 没有提 `outlier_iqr` 具体比例数字 |
-| 34 | md | 两法比较 | §3.3 | — | ⏭️ 没有专门比较两法结论 |
-| 35 | md | 两种 scaler 定义 | §3.4 | —（讲义无） | ✅ 简讲 `02:07:42`–`02:08:04` |
-| 36 | code | 标准化 | §3.4 | — | ✅ 简讲 `02:08:04`–`02:08:31` |
-| 37 | md | 何时用哪个 | §3.4 | — | ⏭️ 没有展开“何时用哪个”的取舍标准 |
-| 38 | md | 协方差 / 相关定义 | §3.5 | p.30–32 | ✅ 简讲 `02:08:48`–`02:09:11` |
-| 39 | code | `cov` / `corr` | §3.5 | p.30–33 | ✅ 简讲 `02:09:04`–`02:09:15` |
-| 40 | code | 热力图 | §3.5 | — | ✅ 简讲 `02:09:15`–`02:09:28` |
-| 41 | code | top 5 相关 | §3.5 | — | ⏭️ 没有提 top 5 相关系数具体数字 |
-| 42 | md | 相关 ≠ 因果 | §3.5 | p.34 | ✅ 详讲 `02:09:28`–`02:09:51` |
-| 43 | md | Wrap-up | §4 | — | ✅ 简讲 `02:09:51`–`02:10:18` |
-| 44–48 | md | Week 3 Assignment + 清单 | §7 | — | ✅ 详讲 `02:10:22`–`02:13:18`（Q1/Q2/Q3 口头交代，含 TA 出题背景与 Q3 同组不同变量规则） |
+| 1 | md | 标题与八项清单 | [[#0. 这个 notebook 在教什么\|本格讲解]] | — | ✅ 简讲 `01:46:09`–`01:46:40`（口头概述本讲八件事） |
+| 2 | md | object / attribute | [[#2.1 【cell 3】读数据、命名列、看前 10 行\|本格讲解]] | p.4 | ✅ 详讲 `01:46:56`–`01:46:58` |
+| 3 | code | import · 样式 · 读 iris | [[#2.1 【cell 3】读数据、命名列、看前 10 行\|本格讲解]] | p.61 | ✅ 详讲 `01:46:42`–`01:48:59` |
+| 4 | md | 描述统计说明 | [[#2.2 【cell 5–7】自定义描述函数：一次算 12 个统计量\|本格讲解]] | p.24 | ⚡ 一句带过（并入 cell 5 讲解） |
+| 5 | code | `describe_col` | [[#2.2 【cell 5–7】自定义描述函数：一次算 12 个统计量\|本格讲解]] | p.24–26 | ✅ 详讲 `01:49:04`–`01:51:08` |
+| 6 | code | 四列汇总表 | [[#2.2 【cell 5–7】自定义描述函数：一次算 12 个统计量\|本格讲解]] | p.24–28 | ✅ 详讲 `01:51:08`–`01:51:49` |
+| 7 | code | 六个分位数 | [[#2.2 【cell 5–7】自定义描述函数：一次算 12 个统计量\|本格讲解]] | p.25 | ✅ 详讲 `01:51:49`–`01:52:11` |
+| 8 | md | 偏度峰度读法 | [[#2.2 【cell 5–7】自定义描述函数：一次算 12 个统计量\|本格讲解]] | p.27–28 | ✅ 详讲 `01:52:11`–`01:52:51` |
+| 9 | md | 频数与分组说明 | [[#2.3 【cell 10–11】频数与分组统计\|本格讲解]] | p.23 | ⚡ 一句带过（并入 cell 10 讲解） |
+| 10 | code | `value_counts` | [[#2.3 【cell 10–11】频数与分组统计\|本格讲解]] | p.23 | ✅ 详讲 `01:52:51`–`01:53:41` |
+| 11 | code | `groupby().agg` | [[#2.3 【cell 10–11】频数与分组统计\|本格讲解]] | p.22, p.51 | ✅ 简讲 `01:55:18`–`01:55:48` |
+| 12 | md | insight | [[#2.3 【cell 10–11】频数与分组统计\|本格讲解]] | — | ⏭️ 没有专门念 insight 原文，前后 `01:55:11`→`01:55:18` 直接跳到 groupby 演示 |
+| 13 | md | 4.1 标题 | [[#2.4 【cell 14–23】四种图\|本格讲解]] | — | ⚡ 隐含（标题未单独念） |
+| 14 | code | 直方图 | [[#Cell 14 · 直方图原保存图\|本格讲解]] | p.63 | ✅ 详讲 `01:55:48`–`01:56:41` |
+| 15 | md | 多峰 = 混合 | [[#2.4 【cell 14–23】四种图\|本格讲解]] | p.63 | ⏭️ 没有念“多峰=混合”这条 insight，`01:56:41` 直接转到箱线图 |
+| 16 | md | 4.2 标题 | [[#2.4 【cell 14–23】四种图\|本格讲解]] | — | ⚡ 隐含 |
+| 17 | code | 箱线图 | [[#Cell 17 · 箱线图原保存图\|本格讲解]] | p.65–66 | ✅ 详讲 `01:56:41`–`01:57:10` |
+| 18 | md | 读法 | [[#2.4 【cell 14–23】四种图\|本格讲解]] | — | ⏭️ 没有念 "no obvious extreme outliers"，`01:57:10` 直接转到散点图 |
+| 19 | md | 4.3 标题 | [[#2.4 【cell 14–23】四种图\|本格讲解]] | — | ⚡ 隐含 |
+| 20 | code | 分组散点 | [[#Cell 20 · 分组散点原保存图\|本格讲解]] | p.67–68 | ✅ 详讲 `01:57:10`–`01:58:00` |
+| 21 | md | 强且非线性 | [[#2.4 【cell 14–23】四种图\|本格讲解]] | p.33 | ⏭️ 没有念“强且非线性”这条 insight，`01:58:00` 直接转到平行坐标 |
+| 22 | md | 4.4 标题 | [[#2.4 【cell 14–23】四种图\|本格讲解]] | — | ⚡ 隐含 |
+| 23 | code | 平行坐标 | [[#Cell 23 · 平行坐标原保存图\|本格讲解]] | p.69–70 | ✅ 详讲 `01:58:07`–`01:59:07` |
+| 24 | md | 读法 | [[#2.4 【cell 14–23】四种图\|本格讲解]] | — | ⏭️ 没有专门念读法，`01:59:07` 直接切换到 Airbnb |
+| 25 | md | 切换到 Airbnb | [[#3.1 【cell 26–27】读数据、缺失值报告\|本格讲解]] | p.5, p.19 | ✅ 简讲 `01:59:12`–`01:59:19` |
+| 26 | code | 读 Airbnb | [[#3.1 【cell 26–27】读数据、缺失值报告\|本格讲解]] | p.5 | ✅ 简讲 `01:59:19`–`01:59:34` |
+| 27 | code | 缺失报告 | [[#3.1 【cell 26–27】读数据、缺失值报告\|本格讲解]] | p.19 | ✅ 详讲 `01:59:34`–`02:01:14` |
+| 28 | code | 三种填补 | [[#3.2 【cell 28–30】三种缺失值填补：均值 / 中位数 / KNN\|本格讲解]] | p.19 | ✅ 详讲 `02:01:20`–`02:04:20`（mean/median 两种 SimpleImputer） |
+| 29 | md | 解读与选择 | [[#3.2 【cell 28–30】三种缺失值填补：均值 / 中位数 / KNN\|本格讲解]] | — | ⏭️ 没有念选中位数的理由，只讲了操作步骤 |
+| 30 | code | `air_clean` | [[#3.2 【cell 28–30】三种缺失值填补：均值 / 中位数 / KNN\|本格讲解]] | — | ✅ 简讲 `02:06:26`（“no missing value from the original data table”） |
+| 31 | md | 6 标题 | [[#3.3 【cell 32–34】两种离群点规则：IQR vs Z 分数\|本格讲解]] | — | ⚡ 隐含 |
+| 32 | code | IQR / Z 标记 | [[#3.3 【cell 32–34】两种离群点规则：IQR vs Z 分数\|本格讲解]] | p.19, p.26 | ✅ 简讲 `02:06:26`–`02:07:21`（只讲公式，无 Airbnb 具体数字） |
+| 33 | code | `outlier_iqr` 比例 | [[#3.3 【cell 32–34】两种离群点规则：IQR vs Z 分数\|本格讲解]] | — | ⏭️ 没有提 `outlier_iqr` 具体比例数字 |
+| 34 | md | 两法比较 | [[#3.3 【cell 32–34】两种离群点规则：IQR vs Z 分数\|本格讲解]] | — | ⏭️ 没有专门比较两法结论 |
+| 35 | md | 两种 scaler 定义 | [[#3.4 【cell 36–37】标准化：StandardScaler vs RobustScaler\|本格讲解]] | —（讲义无） | ✅ 简讲 `02:07:42`–`02:08:04` |
+| 36 | code | 标准化 | [[#3.4 【cell 36–37】标准化：StandardScaler vs RobustScaler\|本格讲解]] | — | ✅ 简讲 `02:08:04`–`02:08:31` |
+| 37 | md | 何时用哪个 | [[#3.4 【cell 36–37】标准化：StandardScaler vs RobustScaler\|本格讲解]] | — | ⏭️ 没有展开“何时用哪个”的取舍标准 |
+| 38 | md | 协方差 / 相关定义 | [[#3.5 【cell 39–42】协方差、相关矩阵、热力图、相关 ≠ 因果\|本格讲解]] | p.30–32 | ✅ 简讲 `02:08:48`–`02:09:11` |
+| 39 | code | `cov` / `corr` | [[#3.5 【cell 39–42】协方差、相关矩阵、热力图、相关 ≠ 因果\|本格讲解]] | p.30–33 | ✅ 简讲 `02:09:04`–`02:09:15` |
+| 40 | code | 热力图 | [[#3.5 【cell 39–42】协方差、相关矩阵、热力图、相关 ≠ 因果\|本格讲解]] | — | ✅ 简讲 `02:09:15`–`02:09:28` |
+| 41 | code | top 5 相关 | [[#3.5 【cell 39–42】协方差、相关矩阵、热力图、相关 ≠ 因果\|本格讲解]] | — | ⏭️ 没有提 top 5 相关系数具体数字 |
+| 42 | md | 相关 ≠ 因果 | [[#3.5 【cell 39–42】协方差、相关矩阵、热力图、相关 ≠ 因果\|本格讲解]] | p.34 | ✅ 详讲 `02:09:28`–`02:09:51` |
+| 43 | md | Wrap-up | [[#4. 完整流程串讲\|本格讲解]] | — | ✅ 简讲 `02:09:51`–`02:10:18` |
+| 44 | md | 作业导入与背景 | [[#7.1 原文（一字不改）\|本格讲解]] | — | 原有记录统列 02:10:22–02:13:18，未新增本格独立时间戳 |
+| 45 | md | Q1 描述分析 | [[#7.3.1 Q1：每种输出回答一个具体问题\|本格讲解]] | — | 原有记录统列 02:10:22–02:13:18，未新增本格独立时间戳 |
+| 46 | md | Q2 数据质量与价格关系 | [[#7.3.2 Q2：把数据质量、换尺子和关系连成报告\|本格讲解]] | — | 原有记录统列 02:10:22–02:13:18，未新增本格独立时间戳 |
+| 47 | md | Q3 项目变量探索 | [[#7.3.3 Q3：沿用本人保存结果，分清字段类型与后续模型\|本格讲解]] | — | 原有记录统列 02:10:22–02:13:18，未新增本格独立时间戳 |
+| 48 | md | 提交清单 | [[#7.4 提交前自查\|本格讲解]] | — | 原有记录统列 02:10:22–02:13:18，未新增本格独立时间戳 |
 
 **课堂时间分配**（tutorial 段 `01:45:33 → 02:13:18`，约 28 分钟（同一份 `M03-transcript.txt`），按时间戳）：
 

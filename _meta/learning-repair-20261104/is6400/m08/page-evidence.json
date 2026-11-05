@@ -1,0 +1,543 @@
+{
+  "source": "IS6400_Business_Data_Analytics/course_files_export/IS6400-L9-time series2.pdf",
+  "source_sha256": "8f7ec0a04709dd49a6acdbf5e3ed45446356c011588162eeaf4745585a0fd088",
+  "baseline_sha256": "7d85705643b01f8564b9a46e87c89ba2a37c9dbe69812bded77578fb2c13c126",
+  "candidate_sha256": "b77ba23e09e14ac28ac72011056606acca154d766e6f1486cab9ca31585ca0c7",
+  "transcripts": {
+    "IS6400_Business_Data_Analytics/transcripts/M08-T09-transcript-source20-partial.txt": "77e82c5f30642bfbd8dd828cc3253d1f8e0a7b76b0aae27e3a7c1b44af903793"
+  },
+  "stage": "author_candidate_pending_review",
+  "pages": [
+    {
+      "page": 1,
+      "title": "本讲导览",
+      "anchor": "p.1 · 本讲导览",
+      "disposition": "导览",
+      "content": "先复习历史怎样变成预测输入，再用自回归、差分与滞后建模。本 PDF 有 46 个物理页，页脚分母沿用旧版。",
+      "visual": "联系图",
+      "original_printed_title": "IS6400 Business Data Analytics"
+    },
+    {
+      "page": 2,
+      "title": "简单移动平均",
+      "anchor": "p.2 · 简单移动平均",
+      "disposition": "图",
+      "content": "软饮 Q4-94 的预测平均前三季，不含 Q4 实际值。窗口为 1 只用最新观测，为 2 用最近两个；用相同时间验证段比较。",
+      "visual": "联系图",
+      "original_printed_title": "Simple Moving Average"
+    },
+    {
+      "page": 3,
+      "title": "加权移动平均",
+      "anchor": "p.3 · 加权移动平均",
+      "disposition": "文字",
+      "content": "把最近观测各乘一个权重再求和，总权重为 1。最近两期 100、120，给新值 0.7 则预测 114。",
+      "visual": "联系图",
+      "original_printed_title": "Weighted Moving Average"
+    },
+    {
+      "page": 4,
+      "title": "指数平滑",
+      "anchor": "p.4 · 指数平滑",
+      "disposition": "文字",
+      "content": "旧水平为 100、实际为 120 时，$\\alpha=0.2$ 只补误差 20 的五分之一，得到下一期预测 104。旧值权重向前逐期衰减。",
+      "visual": "联系图",
+      "original_printed_title": "Exponential Smoothing"
+    },
+    {
+      "page": 5,
+      "title": "Holt 更新水平与趋势",
+      "anchor": "p.5 · Holt 更新水平与趋势",
+      "disposition": "图",
+      "content": "圈出的 $L_{t-1}+T_{t-1}$ 是本期的事前预测；收到本期观测后才更新水平，以新旧水平差更新趋势，向前 $k$ 期加 $kT_t$。",
+      "visual": "联系图",
+      "original_printed_title": "Holt-Linear"
+    },
+    {
+      "page": 6,
+      "title": "Holt-Winters 更新季节",
+      "anchor": "p.6 · Holt-Winters 更新季节",
+      "disposition": "图",
+      "content": "先从实际值除去旧同季因子，再估水平和趋势；用实际除以新水平估新季节因子。预测时乘回对应季节位置。",
+      "visual": "联系图",
+      "original_printed_title": "Holt-Winter"
+    },
+    {
+      "page": 7,
+      "title": "线性趋势",
+      "anchor": "p.7 · 线性趋势",
+      "disposition": "文字",
+      "content": "把时期 $t$ 当作输入，$b$ 是每期预计增减的固定量。截距 $a$ 对应 $t=0$，不保证那期有观测。",
+      "visual": "联系图",
+      "original_printed_title": "Regression on Linear Trend"
+    },
+    {
+      "page": 8,
+      "title": "软饮销量回归",
+      "anchor": "p.8 · 软饮销量回归",
+      "disposition": "图",
+      "content": "右侧系数表的时间斜率约 65.399；左下残差仍随时间成团波动。趋势线解释总体上升，残差提示还可查季节项。",
+      "visual": "联系图",
+      "original_printed_title": "Soft Drink Sales"
+    },
+    {
+      "page": 9,
+      "title": "指数趋势",
+      "anchor": "p.9 · 指数趋势",
+      "disposition": "文字",
+      "content": "固定百分比增长可用正值序列的自然对数回归。系数 0.05 精确对应 $e^{0.05}-1$，约 5.13%，每期 5% 是近似。",
+      "visual": "联系图",
+      "original_printed_title": "Regression on Exponential Trend"
+    },
+    {
+      "page": 10,
+      "title": "季度虚拟变量",
+      "anchor": "p.10 · 季度虚拟变量",
+      "disposition": "文字",
+      "content": "若 Q4 为参考且模型有截距，Q4 三列都置 0。Q1 只把第一列置 1，其系数比较同一时间下 Q1 与 Q4。",
+      "visual": "联系图",
+      "original_printed_title": "Regression on Seasonal Effect"
+    },
+    {
+      "page": 11,
+      "title": "软饮趋势与季节一起估",
+      "anchor": "p.11 · 软饮趋势与季节一起估",
+      "disposition": "图",
+      "content": "先读左表每行 Time、Q1–Q3 和 Log(Sales)，再读右表系数。Q2 相对基准的对数差为 0.140，原尺度相对因子约 1.15。",
+      "visual": "联系图",
+      "original_printed_title": "Soft Drink Sales"
+    },
+    {
+      "page": 12,
+      "title": "滞后输入与滚动",
+      "anchor": "p.12 · 滞后输入与滚动",
+      "disposition": "图",
+      "content": "先把销售列往后移一行，给第 4 行的最近三期窗口只含 100、104、112。均值约 105.33；113 是当前目标，应留在输入之外。",
+      "visual": "联系图",
+      "original_printed_title": "How to model this lagged features in sklearn?"
+    },
+    {
+      "page": 13,
+      "title": "自回归转场",
+      "anchor": "p.13 · 自回归转场",
+      "disposition": "导览",
+      "content": "接下来从序列自身的历史构造输入。先查预测漏掉的规律，再决定用几个滞后。",
+      "visual": "联系图",
+      "original_printed_title": "IS6400 Business Data Analytics"
+    },
+    {
+      "page": 14,
+      "title": "时间序列的输入从哪里来",
+      "anchor": "p.14 · 时间序列的输入从哪里来",
+      "disposition": "图",
+      "content": "能源和股价图的横轴有时间次序，可把已经发生的 $Y_{t-1}$ 或预测前已知的日历放进 $X_t$。不能用当前未知结果。",
+      "visual": "联系图",
+      "original_printed_title": "Introduction – Time Series"
+    },
+    {
+      "page": 15,
+      "title": "检验剩余项",
+      "anchor": "p.15 · 检验剩余项",
+      "disposition": "文字",
+      "content": "实际值减拟合值得残差；若残差仍随时间上升，说明预测式留下结构。看残差序列、相关图和留出误差，判断是否值得调整。",
+      "visual": "联系图",
+      "original_printed_title": "Testing for Randomness"
+    },
+    {
+      "page": 16,
+      "title": "自相关与银行余额",
+      "anchor": "p.16 · 自相关与银行余额",
+      "disposition": "文字",
+      "content": "本月余额可能承接上月余额，所以预测本月可考虑以上月作为输入。自相关比较同一变量在两个时期的共同变化，并不证明因果。",
+      "visual": "联系图",
+      "original_printed_title": "Autocorrelations"
+    },
+    {
+      "page": 17,
+      "title": "从表里算自相关",
+      "anchor": "p.17 · 从表里算自相关",
+      "disposition": "图",
+      "content": "2 月的 lag 1 填 1 月的 226，3 月的 lag 2 也填 226。没有足够历史的格留空，再在对齐的有效行上计算相关；原页等号是列的构造说明。",
+      "visual": "联系图",
+      "original_printed_title": "Autocorrelations calculation"
+    },
+    {
+      "page": 18,
+      "title": "随机游走的水平图",
+      "anchor": "p.18 · 随机游走的水平图",
+      "disposition": "图",
+      "content": "谷歌股价图展示水平长期移动。检验随机游走的想法要另外看相邻差值；只凭这张价格图无法确认差值无规律。",
+      "visual": "联系图",
+      "original_printed_title": "The Random Walk Model"
+    },
+    {
+      "page": 19,
+      "title": "随机游走式",
+      "anchor": "p.19 · 随机游走式",
+      "disposition": "文字",
+      "content": "上期水平加平均漂移 $m$ 和当期冲击 $e_t$ 得本期水平。作点预测时未来冲击的条件均值若为 0，预测增量就是 $m$。",
+      "visual": "联系图",
+      "original_printed_title": "Random Walk Model"
+    },
+    {
+      "page": 20,
+      "title": "从随机游走到 AR",
+      "anchor": "p.20 · 从随机游走到 AR",
+      "disposition": "文字",
+      "content": "让滞后项系数可估，并允许放入第二、第三个滞后。整理成一行当前目标和若干历史列，即可用普通最小二乘估课件所示的模型。",
+      "visual": "联系图",
+      "original_printed_title": "Autoregressive Models"
+    },
+    {
+      "page": 21,
+      "title": "区分旧观测与旧误差",
+      "anchor": "p.21 · 区分旧观测与旧误差",
+      "disposition": "文字",
+      "content": "AR 放入过去观测；ARIMA 中的 MA 放入过去创新误差。后者由模型结合已见观测估计，和直接平均旧销量的平滑不同。",
+      "visual": "联系图",
+      "original_printed_title": "ARIMA"
+    },
+    {
+      "page": 22,
+      "title": "AR 的特殊系数",
+      "anchor": "p.22 · AR 的特殊系数",
+      "disposition": "文字",
+      "content": "$\\phi=0$ 只剩常数与噪声；$\\phi=1$ 表示上期水平原样带入，有没有漂移取决于常数是否为 0。",
+      "visual": "联系图",
+      "original_printed_title": "AR"
+    },
+    {
+      "page": 23,
+      "title": "怎样找 AR 阶数",
+      "anchor": "p.23 · 怎样找 AR 阶数",
+      "disposition": "文字",
+      "content": "要测 lag 3 独有关系，分别用 lag 1 和 lag 2 预测当前值、lag 3，取两个残差再相关。理论纯 AR 的 PACF 超过阶数为零。",
+      "visual": "联系图",
+      "original_printed_title": "AR"
+    },
+    {
+      "page": 24,
+      "title": "传播图怎样比 ACF 与 PACF",
+      "anchor": "p.24 · 传播图怎样比 ACF 与 PACF",
+      "disposition": "图",
+      "content": "沿传话图看前一期内容怎样经过中间期变形后到下一期。统计上先控制中间滞后以读偏相关；图只是类比，不给出因果结论。",
+      "visual": "联系图",
+      "original_printed_title": "AR"
+    },
+    {
+      "page": 25,
+      "title": "杯子蛋糕的 MA 填表",
+      "anchor": "p.25 · 杯子蛋糕的 MA 填表",
+      "disposition": "图",
+      "content": "题目给 $\\widehat y_t=10+0.5\\epsilon_{t-1}$，实际再加当期冲击。若首期之前的冲击取 0，则第 1 期预测 10、实际 8；第 2 期预测 9、实际 10。",
+      "visual": "联系图与原尺寸",
+      "original_printed_title": "MA"
+    },
+    {
+      "page": 26,
+      "title": "怎样找 MA 阶数",
+      "anchor": "p.26 · 怎样找 MA 阶数",
+      "disposition": "文字",
+      "content": "纯 MA($q$) 相隔超过 $q$ 的观测不共享创新，理论 ACF 随之截尾；样本图提供候选，还要检查预测误差和残差。",
+      "visual": "联系图",
+      "original_printed_title": "MA"
+    },
+    {
+      "page": 27,
+      "title": "用三个月的鱼价辨两种相关",
+      "anchor": "p.27 · 用三个月的鱼价辨两种相关",
+      "disposition": "图",
+      "content": "读两个月前、上月、本月三个节点。ACF 读首尾整体相关，PACF 控制上月价格再看首尾关系，箭头不构成因果证据。",
+      "visual": "联系图",
+      "original_printed_title": "ACF vs PACF"
+    },
+    {
+      "page": 28,
+      "title": "从 PACF 提议 AR(2)",
+      "anchor": "p.28 · 从 PACF 提议 AR(2)",
+      "disposition": "图",
+      "content": "第 1、2 阶柱明显越参考带，后面多在带内，提示试 AR(2)。这是候选，不是有限样本下的定阶证明。",
+      "visual": "联系图",
+      "original_printed_title": "AR & PACF"
+    },
+    {
+      "page": 29,
+      "title": "从 ACF 提议 MA(2)",
+      "anchor": "p.29 · 从 ACF 提议 MA(2)",
+      "disposition": "图",
+      "content": "忽略定义上等于 1 的第 0 阶柱，课件框出第 1、2 阶。以 MA(2) 作候选，再做按时间验证。",
+      "visual": "联系图",
+      "original_printed_title": "MA & ACF"
+    },
+    {
+      "page": 30,
+      "title": "合并 AR 与 MA 的前提",
+      "anchor": "p.30 · 合并 AR 与 MA 的前提",
+      "disposition": "文字",
+      "content": "ARMA 的工作序列需适合平稳建模。若原水平有持续趋势或季节均值变化，先处理结构，再决定模型。",
+      "visual": "联系图",
+      "original_printed_title": "ARIMA"
+    },
+    {
+      "page": 31,
+      "title": "平稳性的读法",
+      "anchor": "p.31 · 平稳性的读法",
+      "disposition": "文字",
+      "content": "课件先看没有趋势、固定季节均值变化和不恒定方差；对常用弱平稳还需同一间隔的协方差不随时点改变。",
+      "visual": "联系图",
+      "original_printed_title": "Stationarity"
+    },
+    {
+      "page": 32,
+      "title": "四幅平稳性图",
+      "anchor": "p.32 · 四幅平稳性图",
+      "disposition": "图",
+      "content": "A 明显下行，B 冷暖反复，C 趋势和季节同时出现；D 价格变化围绕近似水平但有尖峰。可把 D 列为待检候选，图上不能宣判。",
+      "visual": "联系图与原尺寸",
+      "original_printed_title": "Stationarity"
+    },
+    {
+      "page": 33,
+      "title": "KPSS 的原假设",
+      "anchor": "p.33 · KPSS 的原假设",
+      "disposition": "文字",
+      "content": "先说明水平平稳或趋势平稳规格。$p<0.05$ 时拒绝相应原假设；否则只说未拒绝。课件用 accept 的字样不表示已经证明平稳。",
+      "visual": "联系图",
+      "original_printed_title": "Stationarity test"
+    },
+    {
+      "page": 34,
+      "title": "先稳定哪一部分",
+      "anchor": "p.34 · 先稳定哪一部分",
+      "disposition": "图",
+      "content": "方差随水平变化时看 Box-Cox，趋势可试相邻差分，固定季节可试同季差分或减训练期季平均。右图提示辨认周期与振幅。",
+      "visual": "联系图",
+      "original_printed_title": "How to stabilize the data"
+    },
+    {
+      "page": 35,
+      "title": "把季节因素放回去",
+      "anchor": "p.35 · 把季节因素放回去",
+      "disposition": "文字",
+      "content": "先去季节再用 AR 时，最后按原去除方法还原季节项。季度数据的四期滞后能接触上一年同季度，是否足够仍需验证。",
+      "visual": "联系图",
+      "original_printed_title": "AR & Seasonal Effect"
+    },
+    {
+      "page": 36,
+      "title": "四图小测",
+      "anchor": "p.36 · 四图小测",
+      "disposition": "图",
+      "content": "沿 a→b 稳定振幅，b→c 去季节，c→d 去趋势。d 看起来更接近平稳；报告 KPSS 规格和实际检验前不能断言，原题两问与口头任务分开。",
+      "visual": "联系图与原尺寸",
+      "original_printed_title": "Quiz Question"
+    },
+    {
+      "page": 37,
+      "title": "ARMA 的两块输入",
+      "anchor": "p.37 · ARMA 的两块输入",
+      "disposition": "文字",
+      "content": "前一串系数乘旧观测，后一串乘旧创新，再加当前创新。作预测时，当前未知创新以其条件均值处理。",
+      "visual": "联系图",
+      "original_printed_title": "ARMA"
+    },
+    {
+      "page": 38,
+      "title": "先读两张相关图",
+      "anchor": "p.38 · 先读两张相关图",
+      "disposition": "图",
+      "content": "上图 ACF、下图 PACF；第 1 阶突出，课件箭头提示 $(p,q)=(1,1)$。混合模型两图通常拖尾，不能机械读一个柱后就定阶。",
+      "visual": "联系图",
+      "original_printed_title": "ARMA"
+    },
+    {
+      "page": 39,
+      "title": "ARMA(1,1) 的一阶与一阶",
+      "anchor": "p.39 · ARMA(1,1) 的一阶与一阶",
+      "disposition": "文字",
+      "content": "式里各留一个滞后：上期观测和上期创新。两者即使同一期也不是同一个量；创新是该观测相对事前模型预测的差。",
+      "visual": "联系图",
+      "original_printed_title": "ARMA"
+    },
+    {
+      "page": 40,
+      "title": "ARIMA 中的差分次数",
+      "anchor": "p.40 · ARIMA 中的差分次数",
+      "disposition": "文字",
+      "content": "先作 $d$ 次相邻差分，再拟合 ARMA。原序列 10、13、17 的一次差分是 3、4，二次差分是 1。",
+      "visual": "联系图",
+      "original_printed_title": "ARIMA"
+    },
+    {
+      "page": 41,
+      "title": "从差分预测回原尺度",
+      "anchor": "p.41 · 从差分预测回原尺度",
+      "disposition": "文字",
+      "content": "ARIMA(1,1,1) 先预测下一期增量，再加到最后已知水平。$d=0$ 时，省去相应的 AR 或 MA 项就得到课件列出的特例。",
+      "visual": "联系图",
+      "original_printed_title": "ARIMA"
+    },
+    {
+      "page": 42,
+      "title": "季节 ARIMA 的两套阶数",
+      "anchor": "p.42 · 季节 ARIMA 的两套阶数",
+      "disposition": "图",
+      "content": "小写处理逐期结构，大写处理相隔 $m$ 期的同季结构。按季度观测看年度周期时 $m=4$，按日观测看周周期时 $m=7$；$m$ 的单位是每周期观测数。",
+      "visual": "联系图",
+      "original_printed_title": "Seasonal ARIMA"
+    },
+    {
+      "page": 43,
+      "title": "滚动前推与简单模型",
+      "anchor": "p.43 · 滚动前推与简单模型",
+      "disposition": "图",
+      "content": "图中每行训练块结束后才使用右侧目标做评估。先画序列，处理波动和趋势，再比较小阶数组合；变换参数也只能在训练段估。",
+      "visual": "联系图",
+      "original_printed_title": "Practical suggestions"
+    },
+    {
+      "page": 44,
+      "title": "用价格与时间解释销量",
+      "anchor": "p.44 · 用价格与时间解释销量",
+      "disposition": "图",
+      "content": "右表周数和价格每加仑是两列输入，左式目标是销量。预测前应确认价格能否事先取得；回归系数描述条件关系，表中数据不能单独识别因果。",
+      "visual": "联系图与原尺寸",
+      "original_printed_title": "Regression With Causal Variables"
+    },
+    {
+      "page": 45,
+      "title": "自回归与分布滞后",
+      "anchor": "p.45 · 自回归与分布滞后",
+      "disposition": "文字",
+      "content": "一组系数乘销量历史，另一组乘价格历史；再加促销时可放第三组滞后。预测下周时只可放已知的价格历史或已确定计划。",
+      "visual": "联系图",
+      "original_printed_title": "ADL & Time Series Regression"
+    },
+    {
+      "page": 46,
+      "title": "复习定位",
+      "anchor": "p.46 · 复习定位",
+      "disposition": "文字",
+      "content": "先区分平稳性、AR 和 MA 的输入，再解释 ARIMA 的差分及 SARIMA 的季节周期。选模型时用图提议、按时间检验、检查剩余误差。",
+      "visual": "联系图",
+      "original_printed_title": "Summary"
+    }
+  ],
+  "assets": [
+    {
+      "page": 2,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-02.png",
+      "sha256": "034f27d40e1b30a31cb4ed41d6ca482d1a7e540cc52769ea35cc30048ed9bede"
+    },
+    {
+      "page": 5,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-05.png",
+      "sha256": "965b4e316f9ddf4ba5669453067b24c42b1bdfed5d3086c9c4bca605f17ed4fd"
+    },
+    {
+      "page": 6,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-06.png",
+      "sha256": "2db39576d8787147eb06d909074d4a0962897b5af0dcc8e0af709946b5334d3d"
+    },
+    {
+      "page": 8,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-08.png",
+      "sha256": "5b3f6fdeef6f7220a93dde0334e97657ccd8e26a12202cd1c668e34b4b839818"
+    },
+    {
+      "page": 11,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-11.png",
+      "sha256": "b8a409e802e7379c316a0800be8ee1283229dd3aa1e342da0b572740db5b2c3c"
+    },
+    {
+      "page": 12,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-12.png",
+      "sha256": "e841bd5d273e5cbf563070d954e507d2e32f694e69a9f628dc770d348de6fc84"
+    },
+    {
+      "page": 14,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-14.png",
+      "sha256": "499a4bd7694fc429b5e77d89ba939c3a0502efb4b7ea614262c2455c6bac5619"
+    },
+    {
+      "page": 17,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-17.png",
+      "sha256": "508f5fb54b0223106f7efdebeb8b5ccd8dd7de15d8b24322eeb5bab0b8d7e700"
+    },
+    {
+      "page": 18,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-18.png",
+      "sha256": "c0e72873863039c8d46fa114ced109fe7a5f6d72e6679852f7fe56f5203f06b0"
+    },
+    {
+      "page": 24,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-24.png",
+      "sha256": "b8e84c76cce4b60b169a4dca4ac17e171e54ffb3b9c0ed3cb1d57fc01af5dd20"
+    },
+    {
+      "page": 25,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-25.png",
+      "sha256": "67d477a8bd8a32a803b4ea02093d8baff669f6bd9af3bcdb9563c4d3e6a193c6"
+    },
+    {
+      "page": 27,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-27.png",
+      "sha256": "0c92095a5177e782346fc8b7f647d7171b03058877984e9dd01877e373164b20"
+    },
+    {
+      "page": 28,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-28.png",
+      "sha256": "e419af0b20f6c28ba19e881b83e54c265881c2b0f988590da3d126e67ce68718"
+    },
+    {
+      "page": 29,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-29.png",
+      "sha256": "c37a8d0cc592450a001e3db3b384de18fabf2f075db7b3d3685a28de52b373c6"
+    },
+    {
+      "page": 32,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-32.png",
+      "sha256": "06dd0ad2e5db04fedf1be9a80928232f758d4a2aa7fa6da331061877d704ab17"
+    },
+    {
+      "page": 34,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-34.png",
+      "sha256": "1364b7581d264305dc8416912ed6186b1eea2c9e821d2b7108a7d8dfdcbbde17"
+    },
+    {
+      "page": 36,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-36.png",
+      "sha256": "c3da5b3835f8354bb9b527e68a7231a8e9a4d3e40ecf745871421a2926c7be49"
+    },
+    {
+      "page": 38,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-38.png",
+      "sha256": "c5c972bf0483dc9809f0b00837e660239de341aa3859a6c280c565195184f3db"
+    },
+    {
+      "page": 42,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-42.png",
+      "sha256": "5d28022e29b2f08d6d03afd2067bd784d763215d5073bd1f8aa5a67d60f49e4f"
+    },
+    {
+      "page": 43,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-43.png",
+      "sha256": "daaeecacaf9a77cccf11619d8a90663f76c0a532d7d59bcba45e8a6f51c7f1d8"
+    },
+    {
+      "page": 44,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-44.png",
+      "sha256": "7a0b589ec662a71f6011487016f117bd43609617e0b433bd330f97e099e72b25"
+    }
+  ],
+  "review_candidate_sha256": "2436ac2c0958bbe386d844e1bcf4d7fd43cb0d65668e0a5104197e3b4f25a88b",
+  "new_review_assets": [
+    {
+      "page": 45,
+      "path": "IS6400_Business_Data_Analytics/notes/figures/m08-source/p-45.png",
+      "sha256": "c782f1a9a9154ada3d0c5653ade624fad533a0b809f8ebeed7efdba1136f41e4",
+      "basis": "144dpi 整页；保留红标签与对应公式组"
+    }
+  ],
+  "review_assets_dir": "E:\\app-data\\codex\\scratchpad\\learning-repair-is6400-20261104\\m08-revised-assets"
+}

@@ -1,0 +1,151 @@
+{
+  "schema": "note-source-checks-v1",
+  "sources": {
+    "P": {
+      "path": "../../../../IS6400_Business_Data_Analytics/course_files_export/IS6400-L5-Clustering.pdf",
+      "sha256": "49c5090cf86ec716f61e8754a76d8c55b1546e304d61b9b7219ce37fccf09231"
+    },
+    "A": {
+      "path": "../../../../IS6400_Business_Data_Analytics/transcripts/M05-transcript-part1-partial.txt",
+      "sha256": "09d0da5b75f40596d44dc3a8bf5ada7ae81f0eff99d4f95dd15dbf040282bdda"
+    },
+    "B": {
+      "path": "../../../../IS6400_Business_Data_Analytics/transcripts/M05-transcript-part2-partial.txt",
+      "sha256": "c91c75160e1bb8e9f3b60a2135c06c02c147c094df35d90665827c07989cea9c"
+    },
+    "N": {
+      "path": "../../../../IS6400_Business_Data_Analytics/course_files_export/Week5_Clustering_Tutorial.ipynb",
+      "sha256": "2f06913e101d382d6000a6f199dcc9c14e91b43b89090bb2851ecdc0a90c7094"
+    }
+  },
+  "questions": [
+    {
+      "id": "P4",
+      "section": "p.4 · Filter Model",
+      "source_id": "P",
+      "original": "Feature importance measurement?",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "这里以什么给候选特征打分",
+          "english": "In the filter diagram, use a statistical score"
+        }
+      ]
+    },
+    {
+      "id": "P12",
+      "section": "p.12 · Notion of a Cluster can be Ambiguous",
+      "source_id": "P",
+      "original": "How many clusters?",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "同一批点该分成几组",
+          "english": "Two, four, or six groups illustrate different resolutions"
+        }
+      ]
+    },
+    {
+      "id": "P27",
+      "section": "p.27 · Example · post office location",
+      "source_id": "P",
+      "original": "Problem: we want to decide the locations of three post offices to serve the residents.",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "确定三处位置及每户由哪一处服务",
+          "english": "Initialize three sites, assign each resident to the nearest site"
+        }
+      ]
+    },
+    {
+      "id": "P49",
+      "section": "p.49 · After Merging",
+      "source_id": "P",
+      "original": "The question is “How do we update the proximity matrix?”",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "合并 C2 与 C5 后",
+          "english": "Replace the two old rows and columns"
+        }
+      ]
+    },
+    {
+      "id": "P50",
+      "section": "p.50 · How to Define Inter-Cluster Distance",
+      "source_id": "P",
+      "original": "Similarity?",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "两簇各有多个点",
+          "english": "Define a cluster-to-cluster proximity rule before merging"
+        }
+      ]
+    },
+    {
+      "id": "P60-Q1",
+      "section": "p.60 · In-class Quiz",
+      "source_id": "P",
+      "original": "Compute the distance matrix after merging Point 2 and Point 5.",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "新簇 {P2, P5} 那一行逐格取 min",
+          "english": "In the order P1, {P2,P5}, {P3,P6}, P4"
+        }
+      ]
+    },
+    {
+      "id": "P60-Q2",
+      "section": "p.60 · In-class Quiz",
+      "source_id": "P",
+      "original": "According to the new distance matrix, which point (cluster) will be merged next?",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "新表最小值 0.15",
+          "english": "The minimum is tied at 0.15"
+        }
+      ]
+    },
+    {
+      "id": "A0328",
+      "section": "p.19 · Measuring Similarity Using Euclidian Distance",
+      "source_id": "A",
+      "original": "So which one, apple orange, will be closer to the third data point?",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "分别算第三点到苹果、橙子的距离",
+          "english": "Use the same RGB column order and scale"
+        }
+      ]
+    },
+    {
+      "id": "A0333",
+      "section": "p.19 · Measuring Similarity Using Euclidian Distance",
+      "source_id": "A",
+      "original": "So you need to calculate the two distances and then make a comparison.",
+      "options": {},
+      "answers": [
+        {
+          "id": "answer",
+          "chinese": "分别算第三点到苹果、橙子的距离",
+          "english": "A numerical choice cannot be established"
+        }
+      ]
+    }
+  ],
+  "scope": "PDF 7 explicit question/problem units (p4,p12,p27,p49,p50,p60 two) plus one partial ASR quiz represented by its two recorded lines. 9 literal contracts are not 9 quizzes. p8 is a given projection comparison, no invented English original question; p19/20 are worked examples. Tutorial35cell and its 5 graded questions are T05 scope, not certified by M05.",
+  "candidate_sha256": "2bed6cf7d8e7c0b0a69800cb4a7d601dd92da49dbd45fe4065e06a107dfa0d57"
+}

@@ -1,0 +1,313 @@
+{
+  "source": "IS6400_Business_Data_Analytics/course_files_export/Week5_Clustering_Tutorial.ipynb",
+  "source_sha256": "2f06913e101d382d6000a6f199dcc9c14e91b43b89090bb2851ecdc0a90c7094",
+  "baseline_sha256": "731efc1d21bf0306a010d3262f64489761ef37f4c03610d89d192cb4698ab52d",
+  "candidate_sha256": "2f05434985641c72abbfed504ba93e3f716ceb416ea140a9858bf0975abb1618",
+  "cells": [
+    {
+      "number": 1,
+      "cell_type": "markdown",
+      "source_sha256": "9e089eb2edef10a54611a5c0878dd7e163da6273b7bbeecf4a8c53ce5441191d",
+      "candidate_anchor": "Cell 1 · 聚类目标与运行",
+      "saved_outputs": []
+    },
+    {
+      "number": 2,
+      "cell_type": "code",
+      "source_sha256": "c597f2283ca9caed266f03c34722df9bb2adae9ccc71fb34cd3e626d8b12879c",
+      "candidate_anchor": "2.1 【cell 2】压掉 warning，并限制 joblib 识别的 CPU 数",
+      "saved_outputs": []
+    },
+    {
+      "number": 3,
+      "cell_type": "markdown",
+      "source_sha256": "7d3b2b918d5994568b256977fad02e05589234cdb9a6d3dcd5c4e0b0d73c87ec",
+      "candidate_anchor": "Cell 3 · API 工具箱",
+      "saved_outputs": []
+    },
+    {
+      "number": 4,
+      "cell_type": "markdown",
+      "source_sha256": "aa3332fefb15214ef06abada338c3a9a0658c747ee30e6abb4d2d9dc949ae426",
+      "candidate_anchor": "Cell 4 · 电影偏好场景",
+      "saved_outputs": []
+    },
+    {
+      "number": 5,
+      "cell_type": "code",
+      "source_sha256": "5170c963b37342d292649a62983a299ca82a46fc85278f4ef5248ec52a4a0148",
+      "candidate_anchor": "2.2 【cell 5】手工构造 6 位用户 × 4 部电影的评分表",
+      "saved_outputs": [
+        "execute_result"
+      ]
+    },
+    {
+      "number": 6,
+      "cell_type": "markdown",
+      "source_sha256": "686dea419dfe3bfc90e319fcdb058c3e93cdacfa547c18596519c5453008cab6",
+      "candidate_anchor": "2.3 【cell 7】删除 ID，拟合 KMeans，读取训练标签",
+      "saved_outputs": []
+    },
+    {
+      "number": 7,
+      "cell_type": "code",
+      "source_sha256": "6f960748426890efd444e6bc7dfbcd0b8e26591adfe13fef7c8d8a76741c583d",
+      "candidate_anchor": "2.3 【cell 7】删除 ID，拟合 KMeans，读取训练标签",
+      "saved_outputs": [
+        "execute_result"
+      ]
+    },
+    {
+      "number": 8,
+      "cell_type": "markdown",
+      "source_sha256": "0d7e2d5ae9defe0710493b114dbf117416d074e89ff7fe55e2e2484737570979",
+      "candidate_anchor": "2.4 【cell 9】读取两个簇的质心，给标签补上业务含义",
+      "saved_outputs": []
+    },
+    {
+      "number": 9,
+      "cell_type": "code",
+      "source_sha256": "be127de5cf379eb26307a66650e5204f87bea1328cc6c22132732eed14cabbcd",
+      "candidate_anchor": "2.4 【cell 9】读取两个簇的质心，给标签补上业务含义",
+      "saved_outputs": [
+        "execute_result"
+      ]
+    },
+    {
+      "number": 10,
+      "cell_type": "markdown",
+      "source_sha256": "ad4e6a42794f61d10e74b1a79f293c7d699dc09920604c3f0421e63da1b0bed3",
+      "candidate_anchor": "2.4 【cell 9】读取两个簇的质心，给标签补上业务含义",
+      "saved_outputs": []
+    },
+    {
+      "number": 11,
+      "cell_type": "code",
+      "source_sha256": "2b8b1b65edf51d0716731037c00abed1d3b3949d30ce3379a6bddf91cfb3613f",
+      "candidate_anchor": "2.5 【cell 11】用训练好的中心给 5 位新用户分组",
+      "saved_outputs": [
+        "execute_result"
+      ]
+    },
+    {
+      "number": 12,
+      "cell_type": "markdown",
+      "source_sha256": "76d246f1658cc8726d7561d6505a0c17fe5e111a59f7f306e7e0dce588b14ca2",
+      "candidate_anchor": "Cell 12 · 层次聚类入口",
+      "saved_outputs": []
+    },
+    {
+      "number": 13,
+      "cell_type": "code",
+      "source_sha256": "e3d5f65d97f55bc9d6e0a6c93c39451979c0caa906f6e9b3ec2c0df4ab137dfe",
+      "candidate_anchor": "2.6 【cell 13】读入 15 种动物，拆出名称、标签与 6 个二值特征",
+      "saved_outputs": [
+        "execute_result"
+      ]
+    },
+    {
+      "number": 14,
+      "cell_type": "markdown",
+      "source_sha256": "0eb1bbb9e07825f9d9bbc647e9c92ef7f55d23f914edf68bd6cda1769200f018",
+      "candidate_anchor": "2.7 【cell 15】单链接：生成 linkage matrix，再画右向树状图",
+      "saved_outputs": []
+    },
+    {
+      "number": 15,
+      "cell_type": "code",
+      "source_sha256": "d640c82c26006609f6758a7446424376f1705b11faa3b46a9658f3c7eee93ca1",
+      "candidate_anchor": "2.7 【cell 15】单链接：生成 linkage matrix，再画右向树状图",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 16,
+      "cell_type": "markdown",
+      "source_sha256": "72d9f5ca8f928e24200ba7e99408c3d3ae7780e523a20f9cf0bf840858fa48d0",
+      "candidate_anchor": "2.8 【cell 17】全链接：把方法参数切换为 complete",
+      "saved_outputs": []
+    },
+    {
+      "number": 17,
+      "cell_type": "code",
+      "source_sha256": "12948f50644b87aa1e52746fb9133bbfc07462feb8dee53f9fb8783880860b72",
+      "candidate_anchor": "2.8 【cell 17】全链接：把方法参数切换为 complete",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 18,
+      "cell_type": "markdown",
+      "source_sha256": "25eddd2617d4b44cac0709fd7030d2e049d5be560dca9df85ae0c22bc6085421",
+      "candidate_anchor": "2.9 【cell 19】组平均：综合所有跨簇点对",
+      "saved_outputs": []
+    },
+    {
+      "number": 19,
+      "cell_type": "code",
+      "source_sha256": "5d81c5bede33d9f4f3d528613a54b8610f4ea96b7f11db412655a3e7370f945c",
+      "candidate_anchor": "2.9 【cell 19】组平均：综合所有跨簇点对",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 20,
+      "cell_type": "markdown",
+      "source_sha256": "9ff2a3149e07694a29d87fc68baac3d3d6c91b67777095e0ad8d65842943c0c3",
+      "candidate_anchor": "2.10 【cell 21】Ward：选择使簇内方差增量最小的合并",
+      "saved_outputs": []
+    },
+    {
+      "number": 21,
+      "cell_type": "code",
+      "source_sha256": "6cf0a3d97090c7e668b208b63c2bd1e4a48d703d29af3ad6fc4c759373c2e178",
+      "candidate_anchor": "2.10 【cell 21】Ward：选择使簇内方差增量最小的合并",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 22,
+      "cell_type": "markdown",
+      "source_sha256": "96e18df4a9a468053d18190022f04981d0d76fb20a6cee8f8fd8951ed20f62ac",
+      "candidate_anchor": "Cell 22 · 同点形对照",
+      "saved_outputs": []
+    },
+    {
+      "number": 23,
+      "cell_type": "code",
+      "source_sha256": "bb4d77564bf67297a8ca0f2b7247b283aeb874b8509fd6b2c8a867b240d6e6d2",
+      "candidate_anchor": "2.11 【cell 23】4 种形状 × 4 种链接：一次控制变量实验",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 24,
+      "cell_type": "markdown",
+      "source_sha256": "5bc6b927f65438cd94ba9cac1504ddfdaeccf966765782843f0fcae71da76f3c",
+      "candidate_anchor": "Cell 24 · 密度点云入口",
+      "saved_outputs": []
+    },
+    {
+      "number": 25,
+      "cell_type": "code",
+      "source_sha256": "2c5152cf039222703664ff44db94a0f3ab2a5a4509db85f3f569c0d5c388bcf7",
+      "candidate_anchor": "2.12 【cell 25】读入 CHAMELEON 二维点云并先看原始形状",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 26,
+      "cell_type": "markdown",
+      "source_sha256": "ae837703eb31c32f14ee4fa5f5ccc7d75bcde466605ddb7365ac73c3231677bb",
+      "candidate_anchor": "2.13 【cell 27】DBSCAN：给 Eps / MinPts，得到 9 簇与噪声",
+      "saved_outputs": []
+    },
+    {
+      "number": 27,
+      "cell_type": "code",
+      "source_sha256": "4db481c24784cdf0470c421609406c46efccd5bae0d56976fcc540ef89a741b8",
+      "candidate_anchor": "2.13 【cell 27】DBSCAN：给 Eps / MinPts，得到 9 簇与噪声",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 28,
+      "cell_type": "markdown",
+      "source_sha256": "e64bd091f358b01569e840af864110eb7e5359dfae88c522c9fa8499eb47cdf9",
+      "candidate_anchor": "2.14 【cell 29】读两份非球形数据，为 K-means / 谱聚类做同场对照",
+      "saved_outputs": []
+    },
+    {
+      "number": 29,
+      "cell_type": "code",
+      "source_sha256": "6ab78f99b27e94a530b5a575b7993a8982c9f9916b6ecf7835bc3ff4e0a44785",
+      "candidate_anchor": "2.14 【cell 29】读两份非球形数据，为 K-means / 谱聚类做同场对照",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 30,
+      "cell_type": "markdown",
+      "source_sha256": "75705cb8c5ebb4062700dc41cb6ba817f3f613e1cd3e09b2444a1bcf202a7f49",
+      "candidate_anchor": "2.15 【cell 31】先跑 K-means：把非球形结构切成近似直线两半",
+      "saved_outputs": []
+    },
+    {
+      "number": 31,
+      "cell_type": "code",
+      "source_sha256": "7e4bf6ec087dc8a3e891074255f411ac07685de49e90cf2c679792fd3e8bd4b0",
+      "candidate_anchor": "2.15 【cell 31】先跑 K-means：把非球形结构切成近似直线两半",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 32,
+      "cell_type": "markdown",
+      "source_sha256": "8b08d8c83000b11cf4158478f35ead2c5139148977a9d4e7130ca1c91e2cc028",
+      "candidate_anchor": "Cell 32 · 归一化割",
+      "saved_outputs": []
+    },
+    {
+      "number": 33,
+      "cell_type": "code",
+      "source_sha256": "c8ac1e7c332c9110d02908444fef9cb248a2ff28d9be57c132b9355f294ffd01",
+      "candidate_anchor": "2.16 【cell 33】谱聚类：RBF 相似图 → 谱嵌入 → K-means",
+      "saved_outputs": [
+        "display_data"
+      ]
+    },
+    {
+      "number": 34,
+      "cell_type": "markdown",
+      "source_sha256": "510c13587715b7699f06f8e8262b50056d54beed43ea14e46e3878766d4722d2",
+      "candidate_anchor": "Cell 34 · 工具总结与参考",
+      "saved_outputs": []
+    },
+    {
+      "number": 35,
+      "cell_type": "markdown",
+      "source_sha256": "27a2e5280ed11fef6f97d01088f86928b7aecf953478ba55e0dd2c9919bab252",
+      "candidate_anchor": "2.18 【cell 35】五道原题、中文限定词与英文参考答案",
+      "saved_outputs": []
+    }
+  ],
+  "execution": {
+    "executed_cells": [
+      2,
+      5,
+      7,
+      9,
+      11,
+      13,
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      27,
+      29,
+      31,
+      33
+    ],
+    "seed_added_before_start": 21,
+    "movie_centroid_pair_dist": 4.9216076867444665,
+    "dbscan": {
+      "noise": 125,
+      "clusters": 9,
+      "core": 1731
+    },
+    "source_sha256": "2f06913e101d382d6000a6f199dcc9c14e91b43b89090bb2851ecdc0a90c7094",
+    "boundary": "仅教学代码；第 35 格评分题只读。Matplotlib 静态后端；随机簇标签不与历史编号作无条件比较。",
+    "static_environment": "仅在本地执行时省去 Notebook 专用的 %matplotlib inline 行，由 Agg 后端替代。"
+  }
+}

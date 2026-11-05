@@ -17,7 +17,7 @@ source: Quiz 2.docx + ExampleTables1.accdb
 
 题目给了一份 Access 数据库。你要在销售表里，找出销售员 E-10 实际经手的销售，显示销售编号、销售金额和销售员编号，并将查询保存为 `QueryA`。
 
-教师文件要求最后发送更新后的 `ExampleTables1`。本轮只制作学习解析并在库外副本只读验证结果，没有发送邮件，没有替本人登记提交或完成练习。
+教师文件要求最后发送更新后的 `ExampleTables1`。本篇提供学习解析及库外只读验证，未在原生 Access 保存 QueryA、发送邮件或代填本人完成状态。
 
 ## 英文原题与全部步骤
 
@@ -35,7 +35,7 @@ source: Quiz 2.docx + ExampleTables1.accdb
 > 6. Run
 > 7. Save as QueryA
 > 8. Close ExampleTables1
-> 9. Send the updated ExampleTables1 to [CONTACT REDACTED IN PUBLIC COPY; SEE LOCAL ORIGINAL]
+> 9. Send the updated ExampleTables1 to xindozhu@cityu.edu.hk
 
 中文读题：`made by E-10` 指一笔销售由哪位销售员经手。这里限定的是 `Sale` 表里的 `SalesRepNumber`，不等于客户平时被指派给哪位销售员。
 
@@ -43,7 +43,7 @@ source: Quiz 2.docx + ExampleTables1.accdb
 
 ## 先看数据库里究竟有什么
 
-源数据库有 8 张用户表。下面每行是一张表，行数沿用 2026-10-22 的只读数据库检查记录，不包括 Access 系统表；本轮核对源库哈希未变，并承接已有同哈希 ACE 只读证据，没有重新枚举。
+源数据库有 8 张用户表。下面每行是一张表，行数沿用 2026-10-22 的只读数据库检查记录，不包括 Access 系统表；本批另以同哈希基础库副本验证用户表仍为 8 张；下列逐表行数沿用上述历史清单。
 
 | 表 | 记录数 | 业务含义 |
 |---|---|---|
@@ -101,9 +101,9 @@ WHERE SalesRepNumber = 'E-10';
 
 Access 设计器可能自动添加表名前缀、方括号或括号，这些显示差异不改变上述筛选含义。
 
-## 本次实际结果与核对
+## 查询结果与核对
 
-下表沿用 2026-10-22 库外只读副本的 ODBC 修正查询记录；原记录同时保留初次错误、带参数占位符的修正 SQL 和五行输出。本轮核对源库哈希未变，并承接现存同哈希 ACE 只读结果，没有重新运行 ODBC，也没有在原生 Access 中保存 `QueryA`。下表按销售编号整理以便阅读；原题未要求排序，SQL 也未保证排序。
+下表沿用 2026-10-22 库外只读副本的 ODBC 修正查询记录；原记录同时保留初次错误、带参数占位符的修正 SQL 和五行输出。2026-10-27 独审承接当时已有同哈希的只读结果，未重新运行 ODBC，也未在原生 Access 保存 `QueryA`。本批另用 ACE 只读复跑，范围如下。下表按销售编号整理以便阅读；原题未要求排序，SQL 也未保证排序。
 
 | SaleNumber | Amount | SalesRepNumber |
 |---|---|---|
@@ -121,7 +121,7 @@ Access 设计器可能自动添加表名前缀、方括号或括号，这些显�
 
 > QueryA selects SaleNumber, Amount and SalesRepNumber from Sale where SalesRepNumber equals 'E-10'. The supplied database returns five sales: S-2, S-3, S-4, S-5 and S-6. The total amount is 87,600 in the database's unspecified currency units.
 
-结果来源是本次数据库查询；题面只提供操作步骤，不把该结果冒称为另一个官方答案文件。
+表中结果来自上述 2026-10-22 库外只读查询。本批在同哈希的基础库副本上另用 ACE 只读核对，仍得相同五行；核验见 [[_meta/learning-repair-20261104/ac6761/m06/ace-readonly-recheck.json|本批只读回执]]。题面只给操作步骤，没有另附官方答案。
 
 ## 最难的区别：指派给谁，不等于本次由谁经手
 
@@ -155,11 +155,11 @@ Quiz 2 文件未写计分、截止日或具体提交时刻。不能因名称是 
 
 `status: draft` 表示行政与本人提交条件仍待核。学习解析与数据库结果核验属于资料工作；本人是否已练习、保存过 `QueryA` 以及本人已提交属于个人操作状态，三项分别记录，本轮均不代填。
 
-## 来源与本轮记录
+## 来源与核验记录
 
 原件：[[AC6761_Artificial_Intelligence_Accounting/course_files_export/Quiz 2.docx|Quiz 2]] 与 [[AC6761_Artificial_Intelligence_Accounting/course_files_export/ExampleTables1.accdb|原始数据库]]。
 
-本次只读检查使用库外副本，8 表、50 行用户记录（各表相加），不把跨表记录数当销售笔数。源库 7 笔销售，筛选 5 笔。原始 SHA-256 与核验范围见本次 Canvas 材料清单；没有改变原件。
+2026-10-22 只读检查使用库外副本，8 表、50 行用户记录（各表相加），不是 50 笔销售；Sale 共 7 笔，筛出 5 笔。原始哈希见当时的 Canvas 材料清单；2026-11-04 用同哈希副本再次核对 8 表及 5 行，未改变原件。
 
 2026-10-22：制作参考解析、核对实际字段与 5 行结果、补最小变式。未改变本人学习、提交和评分状态。
 

@@ -1,0 +1,357 @@
+{
+  "schema": "note-source-checks-v1",
+  "sources": {
+    "lecture": {
+      "path": "../../../../IS6400_Business_Data_Analytics/course_files_export/L2-Linear_Regression.pdf",
+      "sha256": "04ed352014cf2e4eadf63e091a7b087b798c2b171c2944857441b180b2a66790"
+    }
+  },
+  "questions": [
+    {
+      "id": "S01",
+      "source_id": "lecture",
+      "page": 5,
+      "section": "2.2.1",
+      "original": "Identify what to be predicted and potential predictors",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "先写要预测的那一列",
+          "english": "The target is the outcome that the current task asks us to predict."
+        },
+        {
+          "id": "2",
+          "chinese": "预测时已知的输入",
+          "english": "The predictors are the information available at the prediction time"
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S02",
+      "source_id": "lecture",
+      "page": [
+        7,
+        8,
+        9
+      ],
+      "section": "2.3",
+      "original": "Will people be happier if GDP reaches 60000 per capital?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "模型在既定输入下给出约7.80",
+          "english": "the predicted life satisfaction at a GDP per capita of USD 60,000 is"
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S03",
+      "source_id": "lecture",
+      "page": 10,
+      "section": "2.4",
+      "original": "Can I predict **egg sales** for the future weeks in California?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "每周售出的箱数",
+          "english": "Egg price is the stated predictor and weekly cases sold is the target."
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S04",
+      "source_id": "lecture",
+      "page": 12,
+      "section": "2.4",
+      "original": "Prediction: At \\$.80, how many cases would you predict would be sold?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "约 109,094 箱 / 周",
+          "english": "the prediction is 109,094 cases per week."
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S05",
+      "source_id": "lecture",
+      "page": 12,
+      "section": "2.4",
+      "original": "At \\$1.05?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "约 95,244 箱 / 周",
+          "english": "the prediction is 95,244 cases per week."
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S06",
+      "source_id": "lecture",
+      "page": 13,
+      "section": "2.4",
+      "original": "A formula that we can plug the egg prices into and it will give us the predicted case sales",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "点预测需冻结模型并核价格单位",
+          "english": "For the point prediction, supply egg price in the fitted model"
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S07",
+      "source_id": "lecture",
+      "page": 13,
+      "section": "2.4",
+      "original": "And it will give us the error range in the predicted case sales",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "原鸡蛋的完整训练设计与残差方差未提供",
+          "english": "The PDF does not supply enough training information to reproduce a numerical prediction interval"
+        }
+      ],
+      "status": "method_complete_original_numerical_PI_blocked"
+    },
+    {
+      "id": "S08",
+      "source_id": "lecture",
+      "page": 16,
+      "section": "2.8.2",
+      "original": "Sound familiar?…sound like conditional probabilities?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "再比较不同参数对这些结果给出的联合密度",
+          "english": "Conditioning on known predictors x lets the model describe the distribution of the response Y at that x."
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S09",
+      "source_id": "lecture",
+      "page": 21,
+      "section": "2.6.3",
+      "original": "What is the impact of price on the case sales?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "单位价格变化怎样对应预测销量",
+          "english": "increasing the price input by one cent changes predicted weekly case sales by about minus 554 cases"
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S10",
+      "source_id": "lecture",
+      "page": 21,
+      "section": "2.6.3",
+      "original": "How are these numbers found?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "系数怎样取得",
+          "english": "The coefficients are found by minimizing the sum of squared vertical prediction errors"
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S11",
+      "source_id": "lecture",
+      "page": 24,
+      "section": "2.7.1",
+      "original": "How much increase in sales if it is Easter, or decrease if just after Easter? We need one more independent variable:",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "预测差+32728.55箱",
+          "english": "predicts 32,728.55 more cases per week for Easter"
+        },
+        {
+          "id": "2",
+          "chinese": "预测差−22096.43箱",
+          "english": "22,096.43 fewer cases per week for Post-Easter"
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S12",
+      "source_id": "lecture",
+      "page": 24,
+      "section": "2.7.1",
+      "original": "How about Easter? (Categorical variable)",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "类别变量",
+          "english": "Represent the four declared, mutually exclusive holiday categories with three indicator columns"
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S13",
+      "source_id": "lecture",
+      "page": 26,
+      "section": "2.7.3",
+      "original": "You may try the other two",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "同价条件预测平均差约+76947",
+          "english": "PreEaster predicts 76,946.67 more cases per week"
+        },
+        {
+          "id": "2",
+          "chinese": "同价条件预测平均差约−22096",
+          "english": "PostEaster predicts 22,096.43 fewer cases per week"
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S14",
+      "source_id": "lecture",
+      "page": 32,
+      "section": "2.8.3",
+      "original": "Only one variable: Find minimum of $y = (x+5)^2$",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "最低点在 x = −5",
+          "english": "the minimizing input is x = −5 and the minimum function value is zero."
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S15",
+      "source_id": "lecture",
+      "page": 37,
+      "section": "2.8.4",
+      "original": "How many iterations do we need?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "无法给唯一有限次数",
+          "english": "The problem specifies no tolerance, so it has no unique finite iteration count."
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S16",
+      "source_id": "lecture",
+      "page": 37,
+      "section": "2.8.4",
+      "original": "What is the optimal value?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "最优参数",
+          "english": "The minimizer is x = −5 and the minimum objective value is zero."
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S17",
+      "source_id": "lecture",
+      "page": 39,
+      "section": "2.9.1",
+      "original": "how to evaluate performance for “future prediction”?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "评价人群与损失一起固定",
+          "english": "Evaluate future prediction with a hold-out design that matches the prediction time"
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S18",
+      "source_id": "lecture",
+      "page": 39,
+      "section": "2.9.1",
+      "original": "How many IVs provide the best performance for “future” prediction?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "比较候选规格",
+          "english": "There is no universally best number of predictors"
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S19",
+      "source_id": "lecture",
+      "page": 46,
+      "section": "2.10.1",
+      "original": "How it works?",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "改变训练目标",
+          "english": "Regularization changes the training objective by constraining or penalizing"
+        }
+      ],
+      "status": "reference_answer_with_source_limits"
+    },
+    {
+      "id": "S20",
+      "source_id": "lecture",
+      "page": 35,
+      "section": "2.8.4",
+      "original": "What if p is large? (e.g., n/2)",
+      "options": {},
+      "answers": [
+        {
+          "id": "1",
+          "chinese": "中文问的是设计规模增大后的求解代价",
+          "english": "For a large design dimension, explicitly forming and inverting the Gram matrix can be costly"
+        }
+      ],
+      "status": "source_title_question_explicitly_answered_not_new_teacher_question"
+    }
+  ],
+  "counting": "本次20个源提示/命令/交付项、23作答分量。原19/22冻结清单补单列p35原页标题问句及中英回应；p24同句/p26同命令仍各合并，旧21父/22最低为历史另一分组口径，不是删题或新造教师题。",
+  "manual_source_limits": [
+    "原鸡蛋数值PI缺完整设计/残差方差",
+    "原15阶图缺完整随机输入/实现/显示状态，不由新三点例冒充复现",
+    "原题无明示容差，11/12为声明条件后的笔记作答",
+    "本次未提交任何原个人作业，Notebook的A02题目只读，T02/A02另审"
+  ]
+}

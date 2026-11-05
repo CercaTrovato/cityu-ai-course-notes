@@ -90,7 +90,7 @@ teaching_standard: novice-v1
 
 1. **多对多必须拆表，且拆出来的表用复合主键。** 这是 M05 预告过、本讲兑现的那条规则（讲义 p.24–28）。`Student 0..*—0..* Course` 落地时变成三张表：Student、Course、**StudentTakesCourse**；`grade earned` 这个**关联属性**没有别处可放，只能放进中间那张表。**判据**：一个属性如果既不属于学生本人、也不属于课程本身，而是属于"这个学生修这门课"这个**组合**，它就必须待在连接表里。
 
-2. **外连接 + `Is Null` = "找出什么都没发生的那些实体"。** 内连接会把"没有匹配"的行**直接扔掉**，所以你永远查不出"哪个销售员一次单都没开""哪件商品一次都没卖出去""哪个客户从来没给过正面评价"。而这类"零"问题恰恰是管理层最想问的。讲义 p.38、p.88、p.91、p.92 反复用的就是这个套路。
+2. **外连接 + Is Null 可以找出在给定范围内没有匹配的实体。** 例如从销售人员名单查当期未匹配的销售，先保留人员，再核订单和期间是否完整，才能把无记录解释为零销售。p.38、p.88、p.91、p.92 用不同业务资料练这个动作。
 
 3. **`Null` 不是 `0`。** p.50–51 的 `Balance IS NULL` 找到 BA-6、BA-7，表示余额未填；`Balance EXISTS` 找到 BA-8（75,000）与 BA-9（0），因为已知零也是非空值。
 
@@ -180,6 +180,12 @@ teaching_standard: novice-v1
 
 ### 1.3 为什么这一讲放在这里 · 重排说明
 
+主源 **Week 6 PPT.pptx**，页号为物理幻灯片编号。
+
+- **预习**先从 [[#p.9 · 例 1 先看记录的连接|p.9]] 想清哪列是主键，再用 p.19–28 设关系。查询先用 p.33 的输入与主题深读中的原问完成筛行、挑列和连接，之后再翻 p.34–38 的已给答案图和 p.41–44 的同题 SQL。
+- **课中**从 [[#8. 讲义页码映射|§8]] 精确找当前屏；p.54–84 对照字段、Criteria、Totals 与查询结果的顺序。
+- **复习**用 [[#7. 自测|§7]] 先练左连接、Null 和分组，再根据 p.86–92 判断一个查询的输入、结果及适用边界。
+
 **为什么学完 M05 后再学 Access**
 
 这里的 Week 6 是讲义编号，不是本次实课日期。本人确认的课堂是 10 月 21 日，已在 10 月 14 日期中之后；旧 W1 录音只说明最初课程动机，不能据原排期把本次课重新放到期中前。
@@ -199,7 +205,7 @@ teaching_standard: novice-v1
 
 **本笔记基本保持这个顺序**，只做两处调整：
 
-1. **把 p.36「Join Types」提到 p.37 之前讲**（讲义本来就是这个顺序，但 p.36 的两张 Venn 图**排版错位**——内连接那张图叠在了"Outer join"标题上，很容易读反）。本笔记 §2.13 把三种连接的 Venn 语义重新画成表格与 Mermaid，并**明确指出讲义那页的排版 bug**。
+1. **p.36「Join Types」依课件顺序放在 p.37 前**（ p.36 的两张 Venn 图**排版错位**——内连接那张图叠在了"Outer join"标题上，很容易读反）。本笔记 §2.13 把三种连接的 Venn 语义重新画成表格与 Mermaid，并**明确指出讲义那页的排版 bug**。
 2. **把 QBE 的 31 页截图（p.54–84）按"一个查询一节"重组**，每节内部按「目标 → 逐屏操作 → 结果 → 为什么」四段写。讲义是**一屏一页**、每页只有标题和一张图，直接顺着读会看到 8 组几乎相同的标题（例如 p.59/60/61/62 四页标题一字不差），**极易漏页**。本笔记把每组截图合并成一个完整的操作流程，但**每一页都在正文里点名并说明它多做了哪一步**。
 
 对应关系逐页可查，见 [[#8. 讲义页码映射|§8 讲义页码映射]]。
@@ -207,6 +213,642 @@ teaching_standard: novice-v1
 ---
 
 ## 2. 正文
+
+依次读每页问题、原图及下方的做法。已有专题长例和课堂材料集中在后半。
+
+### 逐页 · Access 建表、字段与主键（p.1–18）
+
+#### p.1 · 本讲标题
+
+第 6 章 Accounting Information Querying with ACCESS。前半建表和关系，后半用同一批记录查行、列、连接及汇总。
+
+#### p.2 · 用 Access 建库
+
+先将前讲的类、属性和多重性落成表、字段和键。第 3–28 页演示 Sale/Salesperson 和 Student/Course 两个结构。
+
+#### p.3 · 数据表视图和设计视图
+
+新库默认打开数据表视图，适合直接录入行。设计视图先定字段名、类型和约束，例如 SaleDate 用日期类型后才可按时间比较。
+
+#### p.4 · 从数据表切到设计
+
+在左上 View 选择 Design View。切换前若表还没有正式名称，Access 会提示保存，下一页展示此步骤。
+
+#### p.5 · 先命名再进入设计
+
+![Week 6 课件 p.5 · 先命名再进入设计](figures/m06-source/w6-s005.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s005.png|查看Week 6 课件 p.5 · 先命名再进入设计大图]]
+
+原图左侧箭头指向 View，右下保存对话框默认 Table1。把本例表名改为 Sale，再继续设计字段，避免后续查询找错表。
+
+#### p.6 · 设计视图的上下两区
+
+![Week 6 课件 p.6 · 设计视图的上下两区](figures/m06-source/w6-s006.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s006.png|查看Week 6 课件 p.6 · 设计视图的上下两区大图]]
+
+截图上半 Section 1 是字段网格，下半 Section 2 是所选字段的属性。先点上面一行，再看下面改的是哪一个字段。
+
+#### p.7 · 字段设计网格三列
+
+第一列写字段名称，第二列选数据类型，右侧说明可留空。像 Amount 属金钱，选 Currency；编号只作匹配可选 Short Text。
+
+#### p.8 · 下方属性要落实规则
+
+字段大小限制可存内容，格式控制显示，默认值是空白新行预填值，验证规则筛输入，Required 决定能否空。默认填 0 和允许 Null 是两个选择。
+
+#### p.9 · 例 1 先看记录的连接
+
+![Week 6 课件 p.9 · 例 1 先看记录的连接](figures/m06-source/w6-s009.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s009.png|查看Week 6 课件 p.9 · 例 1 先看记录的连接大图]]
+
+图上 Sale 多行，下表 Salesperson 一行一人。红箭头用销售记录中的 654321 找 Francis；末两条无销售员值，是否允许取决于字段业务规则。
+
+#### p.10 · 按字段用途挑数据类型
+
+日期可作时间比较，金额要计算且需要货币口径，编号只作识别就保留字符。看上去是数字的销售员号也可用文本，两个关联列要兼容。
+
+#### p.11 · Sale 的四种字段
+
+SaleID 和 Salesperson 用文本，日期用 Date/Time，金额用 Currency。Date 是容易冲突的名称，例子用 SaleDate 区分。
+
+#### p.12 · 看设计成品核类型
+
+![Week 6 课件 p.12 · 看设计成品核类型](figures/m06-source/w6-s012.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s012.png|查看Week 6 课件 p.12 · 看设计成品核类型大图]]
+
+截图上面逐行核 SaleID、SaleDate、Amount、Salesperson，下面看到被选字段的属性。SaleID 左边钥匙标明主键，其他字段没有这个标识。
+
+#### p.13 · 匹配看值也看字段类型
+
+Sale 中有销售员编号时，应能在 Salesperson 中找到对应值。空值须由业务及字段允许。字符 001 和数值 1 的显示与存储未必相同，先把两列类型设兼容。
+
+#### p.14 · 给 SaleID 设主键
+
+点字段行最左灰格，再点工具栏 Primary Key。出现小钥匙时才确认选到了 SaleID。主键让一笔销售只能占一个编号。
+
+#### p.15 · 保存第一张表
+
+用 File → Save 保存 Sale，再关闭表。随后建第二张表；关闭当前设计窗口不等于删掉它。
+
+#### p.16 · 新建 Salesperson 表
+
+在 Create 里开 Table Design，填 SalespersonID、SalespersonName 和 SalespersonTelephoneNumber。课件此例保持默认类型和属性，给 SalespersonID 设主键，再按表名保存。
+
+#### p.17 · 保存第二张表
+
+保存并关闭 Salesperson 的设计。此时两张表都在库中，尚未建立连接。
+
+#### p.18 · 在数据库列表确认两张表
+
+![Week 6 课件 p.18 · 在数据库列表确认两张表](figures/m06-source/w6-s018.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s018.png|查看Week 6 课件 p.18 · 在数据库列表确认两张表大图]]
+
+截图左边导航同时列 Sale 和 Salesperson。先辨认两个表名，再到 Relationships 画外键线。
+
+### 逐页 · 建立关系及复合键（p.19–28）
+
+#### p.19 · 用关系把外键告诉 Access
+
+建表只定义各列，外键含义要在 Database Tools → Relationships 指定。连接表的两个外键也须分别连来源表。
+
+#### p.20 · 拖主键到对应外键
+
+![Week 6 课件 p.20 · 拖主键到对应外键](figures/m06-source/w6-s020.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s020.png|查看Week 6 课件 p.20 · 拖主键到对应外键大图]]
+
+截图先把两表加进关系布局，再拖 SalespersonID 到 Sale.Salesperson。在 Edit Relationships 核两边字段、参照完整性及是否级联更新，避免将无关列连上。
+
+#### p.21 · 参照完整性与级联更新
+
+创建关系后，非空销售员外键要匹配已有销售员。若允许级联更新，改主键时相关外键也随之更新。级联删除是另一个选项，不能从“更新”推成“删除”。
+
+#### p.22 · 关系图用 1 和无穷号标键侧
+
+![Week 6 课件 p.22 · 关系图用 1 和无穷号标键侧](figures/m06-source/w6-s022.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s022.png|查看Week 6 课件 p.22 · 关系图用 1 和无穷号标键侧大图]]
+
+截图两端显示一对多，Salesperson 是主键侧，Sale 是外键侧。先确定哪一表能有同号多行，再理解下一页的标记范围。
+
+#### p.23 · Access 标记与 UML 多重性
+
+这里 1 表示该字段值在销售员表只存一次，∞ 表示可在 Sale 多次出现。标记不告诉你每位销售员是否至少参与一单，也不说明字段可不可以留空。
+
+#### p.24 · 例 2：把 Student/Course 多对多拆开
+
+![Week 6 课件 p.24 · 例 2：把 Student/Course 多对多拆开](figures/m06-source/w6-s024.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s024.png|查看Week 6 课件 p.24 · 例 2：把 Student/Course 多对多拆开大图]]
+
+新建 Student、Course 和 Takes，选课成绩放关联表。一个学生可选多门，一门也可有多名学生。用两个主键组成配对；若允许同一学生多次修同课，还要另辨学期等粒度。
+
+#### p.25 · 在 Access 选两个字段作一把键
+
+先点 StudentID 左边灰格，再按 Shift 选 CourseID，然后点钥匙。要选中两行，避免误把单一学生编号当唯一。
+
+#### p.26 · 核复合键的两个钥匙
+
+![Week 6 课件 p.26 · 核复合键的两个钥匙](figures/m06-source/w6-s026.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s026.png|查看Week 6 课件 p.26 · 核复合键的两个钥匙大图]]
+
+图中 StudentID、CourseID 左侧同时有钥匙，Grade Earned 只描述一次选课。两字段是共同主键，分别也是外键。
+
+#### p.27 · 从两张主表连到 Takes
+
+关闭已打开的表，加入三表。StudentID 从 Student 拖到 Takes，CourseID 从 Course 拖到 Takes。每条关系检查端点字段。
+
+#### p.28 · 一个类间多对多变两条表间一对多
+
+![Week 6 课件 p.28 · 一个类间多对多变两条表间一对多](figures/m06-source/w6-s028.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s028.png|查看Week 6 课件 p.28 · 一个类间多对多变两条表间一对多大图]]
+
+截图中 StudentTakesCourse 居中，两端各有一条一对多。固定一名学生从中间表取所有课程；固定一门课也可反查学生。
+
+### 逐页 · 关系代数与 SQL（p.29–53）
+
+#### p.29 · 用 Access 查信息分隔页
+
+建库部分结束。先在第 30–53 页学会筛行、挑列、拼表和汇总，再在第 54–84 页照网格操作。
+
+#### p.30 · 查询先把问题翻成动作
+
+问“客户 C-2 付了哪些款”要筛行；问“只显示编号和姓名”要挑列；找销售员名字要连表。还可计算每笔明细金额或汇总结果。
+
+#### p.31 · 关系代数、SQL 与 QBE
+
+关系代数描述动作，SQL 用语句写动作，QBE 用界面网格选择字段和条件。三种写法可回答同一业务问题，不应因换界面改变结果。
+
+#### p.32 · Select、Project、Join 各处理什么
+
+Select 挑记录行，Project 留需要的列，Join 用共同的字段值连接表。后面 SQL 中 SELECT 关键字反而是挑列，筛行看 WHERE。
+
+#### p.33 · 查询例库先认七张可见表
+
+![Week 6 课件 p.33 · 查询例库先认七张可见表](figures/m06-source/w6-s033.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s033.png|查看Week 6 课件 p.33 · 查询例库先认七张可见表大图]]
+
+原图有 Sale、Salesperson、库存销售明细、销售收款分配、Cash、Cash Receipt、Customer。例：S-2 由 C-2 买，经 E-10 销售；分配表还告诉它被 RA-1、RA-5 部分冲销。附件另有 Inventory，不是本图第八张。
+
+#### p.34 · 关系代数筛 C-2 的全部收款
+
+![Week 6 课件 p.34 · 关系代数筛 C-2 的全部收款](figures/m06-source/w6-s034.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s034.png|查看Week 6 课件 p.34 · 关系代数筛 C-2 的全部收款大图]]
+
+在右上 Cash Receipt 逐行筛 Customer Number 为 C-2，保留所有列。下表是 RA-1、RA-2、RA-5；RA-2 虽然同客户，却冲 S-4，不能把客户层筛选当销售层配对。
+
+#### p.35 · 关系代数挑客户的三列
+
+![Week 6 课件 p.35 · 关系代数挑客户的三列](figures/m06-source/w6-s035.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s035.png|查看Week 6 课件 p.35 · 关系代数挑客户的三列大图]]
+
+只从 Customer 留 Customer#、Name、SP#，去掉 A/R Amt。下表仍有五名客户。若要销售员本人的其他字段，才需要拼第二张表。
+
+#### p.36 · 内连接只留匹配，外连接保留指定侧
+
+![Week 6 课件 p.36 · 内连接只留匹配，外连接保留指定侧](figures/m06-source/w6-s036.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s036.png|查看Week 6 课件 p.36 · 内连接只留匹配，外连接保留指定侧大图]]
+
+图中中间重叠代表内连接。左外连接保留左侧全部，右外连接反过来。键若一对多，一条左行可输出多条；维恩图只说明保留范围。
+
+#### p.37 · 内连接客户与销售员
+
+![Week 6 课件 p.37 · 内连接客户与销售员](figures/m06-source/w6-s037.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s037.png|查看Week 6 课件 p.37 · 内连接客户与销售员大图]]
+
+把 Customer.SP# 同 Salesperson.Employee Number 比较。输出五名客户，其中 E-10 为多个客户的销售员；没有客户匹配的 E-78 不出现在这次结果。
+
+#### p.38 · 左连接销售和收款分配
+
+![Week 6 课件 p.38 · 左连接销售和收款分配](figures/m06-source/w6-s038.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s038.png|查看Week 6 课件 p.38 · 左连接销售和收款分配大图]]
+
+Sales 表放左，分配表按 Sale# 连。原结果 S-2 有两条分配，S-6/S-7 没匹配也保留。总计应有 8 行，若直接加销售额列会重复算 S-2。
+
+#### p.39 · SQL 先写 SELECT、FROM、WHERE
+
+SELECT 写输出列，FROM 写来源表，WHERE 写行条件。先说要哪张表、哪几行和哪几列，再把它们填入相应位置。
+
+#### p.40 · 对上 SQL 与关系代数的词
+
+SQL 的 SELECT 对应 Project，WHERE 对应关系代数 Select。FROM 单表时可不写 WHERE 以取全行，连接关系另用 JOIN 与 ON 写清。
+
+#### p.41 · 用 SQL 还原 C-2 收款结果
+
+![Week 6 课件 p.41 · 用 SQL 还原 C-2 收款结果](figures/m06-source/w6-s041.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s041.png|查看Week 6 课件 p.41 · 用 SQL 还原 C-2 收款结果大图]]
+
+图里 SELECT 星号表示全部列；含空格的表列名要按 Access 用方括号，C-2 是文本应加引号。结果仍是三笔，可跟 p.34 对照。
+
+#### p.42 · 用 SQL 输出客户三列
+
+![Week 6 课件 p.42 · 用 SQL 输出客户三列](figures/m06-source/w6-s042.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s042.png|查看Week 6 课件 p.42 · 用 SQL 输出客户三列大图]]
+
+图用 Customer#、Name、SP# 三列，当前附件字段名不同，执行要先对字段。只查 Customer，不筛行；应保留五个客户。
+
+#### p.43 · 用 SQL 写内连接条件
+
+![Week 6 课件 p.43 · 用 SQL 写内连接条件](figures/m06-source/w6-s043.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s043.png|查看Week 6 课件 p.43 · 用 SQL 写内连接条件大图]]
+
+原图用逗号并在 WHERE 比较销售员编号，可等价写 INNER JOIN ... ON。比对条件要明确两边列；当前附件字段名和图不同。
+
+#### p.44 · 修正课件左连接语法
+
+![Week 6 课件 p.44 · 修正课件左连接语法](figures/m06-source/w6-s044.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s044.png|查看Week 6 课件 p.44 · 修正课件左连接语法大图]]
+
+原图把 LeftJoin 写在一起且匹配条件放 WHERE。复做用 LEFT JOIN，匹配条件放 ON，才保留 S-6/S-7 两条无分配销售，并保留 S-2 两条匹配。
+
+#### p.45 · 比较值时看类型
+
+等于、大于、小于及组合常放在 WHERE。日期用时间顺序比，数字用量值比，文本顺序受排序规则影响；Null 要用专门测试。
+
+#### p.46 · 筛余额不少于 50,000
+
+![Week 6 课件 p.46 · 筛余额不少于 50,000](figures/m06-source/w6-s046.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s046.png|查看Week 6 课件 p.46 · 筛余额不少于 50,000大图]]
+
+原图 Cash 里 BA-8 为 75,000，BA-9 为 0，另两笔空。用 Balance 大于等于 50,000，再输出 Account# 与 Balance，只剩 BA-8。
+
+#### p.47 · 筛不是 E-10 的销售
+
+![Week 6 课件 p.47 · 筛不是 E-10 的销售](figures/m06-source/w6-s047.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s047.png|查看Week 6 课件 p.47 · 筛不是 E-10 的销售大图]]
+
+课件的文本条件执行时要给 E-10 加引号。原图结果 S-1 7,200、S-7 23,000。NULL 条件结果为未知，若业务还要找未指派记录须另列条件。
+
+#### p.48 · AND、OR、NOT 改变哪些行留下
+
+AND 要同时满足，OR 至少一项，NOT 对已确定真假条件取反。若某列为空，SQL 的未知状态可能仍不会通过筛选。
+
+#### p.49 · BETWEEN 把边界也算进去
+
+![Week 6 课件 p.49 · BETWEEN 把边界也算进去](figures/m06-source/w6-s049.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s049.png|查看Week 6 课件 p.49 · BETWEEN 把边界也算进去大图]]
+
+日期范围含两端。图中 7 月 1–31 日为 S-1 至 S-5；Access 实跑要用正确日期字面量，有时分秒时优先用下一日排他边界。
+
+#### p.50 · IS NULL 只找缺值
+
+![Week 6 课件 p.50 · IS NULL 只找缺值](figures/m06-source/w6-s050.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s050.png|查看Week 6 课件 p.50 · IS NULL 只找缺值大图]]
+
+Cash 的 BA-6、BA-7 余额缺值。BA-9 存 0 仍是已知值，所以不入结果。不要用等号与 Null 比。
+
+#### p.51 · 非空用 IS NOT NULL，EXISTS 查有没有行
+
+![Week 6 课件 p.51 · 非空用 IS NOT NULL，EXISTS 查有没有行](figures/m06-source/w6-s051.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s051.png|查看Week 6 课件 p.51 · 非空用 IS NOT NULL，EXISTS 查有没有行大图]]
+
+原课件写 Balance EXISTS，但要取有余额的 BA-8、BA-9 应用 IS NOT NULL。EXISTS 一般检查子查询是否至少返回一行，不当作字段的非空后缀。
+
+#### p.52 · 聚合把一列压成统计值
+
+COUNT 计记录或非空值，AVG 求平均，SUM 加总，MIN 和 MAX 取极端值。要分组时先说一组是什么，NULL 一般不计入这些字段聚合。
+
+#### p.53 · 横向计算是每行先算
+
+每一销售明细把数量乘该行价格得到金额，再按商品或订单汇总。若两列都不是该行的事实，先查连接粒度再乘。
+
+### 逐页 · QBE 逐屏练习（p.54–84）
+
+#### p.54 · QBE 筛选示范：先选来源
+
+![Week 6 课件 p.54 · QBE 筛选示范：先选来源](figures/m06-source/w6-s054.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s054.png|查看Week 6 课件 p.54 · QBE 筛选示范：先选来源大图]]
+
+原图在 Create 点 Query Design，Show Table 图上当时高亮 Cash，操作要另选 CashReceipt。只有这张表就可问 C-2 的收款，不需要先连 Customer。
+
+#### p.55 · CashReceipt 已到设计画布
+
+![Week 6 课件 p.55 · CashReceipt 已到设计画布](figures/m06-source/w6-s055.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s055.png|查看Week 6 课件 p.55 · CashReceipt 已到设计画布大图]]
+
+上方显示字段，下方网格尚空。先确认表对，再选出需要的列与条件。
+
+#### p.56 · 把客户条件放到客户字段下
+
+![Week 6 课件 p.56 · 把客户条件放到客户字段下](figures/m06-source/w6-s056.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s056.png|查看Week 6 课件 p.56 · 把客户条件放到客户字段下大图]]
+
+在 CustomerNumber 的 Criteria 写等于 C-2，保留所有所需字段的 Show。下方箭头指的是条件格，不能误写到 Sort 行。
+
+#### p.57 · 运行前核筛行与显示列
+
+![Week 6 课件 p.57 · 运行前核筛行与显示列](figures/m06-source/w6-s057.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s057.png|查看Week 6 课件 p.57 · 运行前核筛行与显示列大图]]
+
+图中六列已选，客户编号的 Criteria 有 C-2，其余列没加条件。点 Run 或切 Datasheet View 看输出。
+
+#### p.58 · 三笔 C-2 收款的结果
+
+![Week 6 课件 p.58 · 三笔 C-2 收款的结果](figures/m06-source/w6-s058.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s058.png|查看Week 6 课件 p.58 · 三笔 C-2 收款的结果大图]]
+
+数据表显示 RA-1、RA-2、RA-5，末行带星是新增记录行，不计入结果。对照 p.34，行数和金额应一致。
+
+#### p.59 · QBE 挑列：先加 Customer
+
+![Week 6 课件 p.59 · QBE 挑列：先加 Customer](figures/m06-source/w6-s059.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s059.png|查看Week 6 课件 p.59 · QBE 挑列：先加 Customer大图]]
+
+Show Table 选择 Customer。题目只要该表已有的三个字段，不必加销售员主表。
+
+#### p.60 · 挑列查询初始网格
+
+![Week 6 课件 p.60 · 挑列查询初始网格](figures/m06-source/w6-s060.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s060.png|查看Week 6 课件 p.60 · 挑列查询初始网格大图]]
+
+上方已有 Customer，下面尚无选列。这一步没有设 Criteria，接下来只控制要显示的列。
+
+#### p.61 · 留下编号、姓名、销售员号
+
+![Week 6 课件 p.61 · 留下编号、姓名、销售员号](figures/m06-source/w6-s061.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s061.png|查看Week 6 课件 p.61 · 留下编号、姓名、销售员号大图]]
+
+把 CustomerNumber、Name、SalespersonNumber 放到网格并勾 Show，保留五名客户，不把 A/R 带到结果。
+
+#### p.62 · QBE 三列结果
+
+![Week 6 课件 p.62 · QBE 三列结果](figures/m06-source/w6-s062.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s062.png|查看Week 6 课件 p.62 · QBE 三列结果大图]]
+
+截图显示五行、三列。若见 A/R Amount，检查是否错把星号或该字段选入网格。
+
+#### p.63 · 内连接查询先加两张表
+
+![Week 6 课件 p.63 · 内连接查询先加两张表](figures/m06-source/w6-s063.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s063.png|查看Week 6 课件 p.63 · 内连接查询先加两张表大图]]
+
+Show Table 同时选 Customer、Salesperson。客户编号与销售员编号不同，后面要找 Customer 的销售员外键。
+
+#### p.64 · 核两表上方的连接线
+
+![Week 6 课件 p.64 · 核两表上方的连接线](figures/m06-source/w6-s064.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s064.png|查看Week 6 课件 p.64 · 核两表上方的连接线大图]]
+
+图中 Customer.SalespersonNumber 连到 Salesperson.EmployeeNumber。确认连接线指向所需字段，再核 Join Properties。已有一对多标记只说明关系，不能单靠它判断这次查询保留哪侧。无连接线时，五行与四行可组合出 20 行。
+
+#### p.65 · 把两边所需列放到网格
+
+![Week 6 课件 p.65 · 把两边所需列放到网格](figures/m06-source/w6-s065.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s065.png|查看Week 6 课件 p.65 · 把两边所需列放到网格大图]]
+
+客户和销售员字段一同输出，留意重复显示的两个销售员编号来自不同表。可用这两列回看连接是否同号。
+
+#### p.66 · 内连接的五行结果
+
+![Week 6 课件 p.66 · 内连接的五行结果](figures/m06-source/w6-s066.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s066.png|查看Week 6 课件 p.66 · 内连接的五行结果大图]]
+
+客户仍是五行。E-10 反复出现，因为服务多个客户。佣金在图中以百分号显示，当前附件实际存储类型另看深读。
+
+#### p.67 · 余额条件先选 Cash 表
+
+![Week 6 课件 p.67 · 余额条件先选 Cash 表](figures/m06-source/w6-s067.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s067.png|查看Week 6 课件 p.67 · 余额条件先选 Cash 表大图]]
+
+Show Table 添加 Cash。题面要账号与余额，先确认哪个字段是筛选对象。
+
+#### p.68 · 在 Balance 的 Criteria 写大于等于
+
+![Week 6 课件 p.68 · 在 Balance 的 Criteria 写大于等于](figures/m06-source/w6-s068.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s068.png|查看Week 6 课件 p.68 · 在 Balance 的 Criteria 写大于等于大图]]
+
+选 AccountNumber、Balance 两列，把大于等于 50000 填在 Balance 下。筛选对象不是账号，数值不要当文字比较。
+
+#### p.69 · 余额查询只返回 BA-8
+
+![Week 6 课件 p.69 · 余额查询只返回 BA-8](figures/m06-source/w6-s069.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s069.png|查看Week 6 课件 p.69 · 余额查询只返回 BA-8大图]]
+
+结果是 BA-8、75,000。下面星号行可用于新增，显示的默认 0 不属于查询返回。
+
+#### p.70 · 文本比较先加 Sale
+
+![Week 6 课件 p.70 · 文本比较先加 Sale](figures/m06-source/w6-s070.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s070.png|查看Week 6 课件 p.70 · 文本比较先加 Sale大图]]
+
+要找不是 E-10 做的销售，先加 Sale。文本比较字段应是销售代表编号。
+
+#### p.71 · 不等于条件放在 SalesRepNumber 下
+
+![Week 6 课件 p.71 · 不等于条件放在 SalesRepNumber 下](figures/m06-source/w6-s071.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s071.png|查看Week 6 课件 p.71 · 不等于条件放在 SalesRepNumber 下大图]]
+
+输入不等于引号中的 E-10。可先输出销售号、金额及销售员号，核对是否漏放条件。
+
+#### p.72 · 非 E-10 的两笔销售
+
+![Week 6 课件 p.72 · 非 E-10 的两笔销售](figures/m06-source/w6-s072.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s072.png|查看Week 6 课件 p.72 · 非 E-10 的两笔销售大图]]
+
+原图返回 S-1 7,200 和 S-7 23,000。末行星号不是销售，不把默认 0 当第三笔。
+
+#### p.73 · AND 查询先选 Sale
+
+![Week 6 课件 p.73 · AND 查询先选 Sale](figures/m06-source/w6-s073.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s073.png|查看Week 6 课件 p.73 · AND 查询先选 Sale大图]]
+
+问题问 7 月 31 日之前且由 E-10 做的销售。选 Sale 后需日期和销售员两列同时控制。
+
+#### p.74 · 两个条件填在同一 Criteria 行
+
+![Week 6 课件 p.74 · 两个条件填在同一 Criteria 行](figures/m06-source/w6-s074.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s074.png|查看Week 6 课件 p.74 · 两个条件填在同一 Criteria 行大图]]
+
+Date 小于 7/31/2014，SalesRepNumber 等于 E-10。两者放同一行表示 AND。严格小于不包括 7/31 当天。
+
+#### p.75 · AND 三笔：S-2、S-3、S-4
+
+![Week 6 课件 p.75 · AND 三笔：S-2、S-3、S-4](figures/m06-source/w6-s075.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s075.png|查看Week 6 课件 p.75 · AND 三笔：S-2、S-3、S-4大图]]
+
+原图三行都在 7/31 前且是 E-10。S-5 虽是 E-10，但发生在边界当天，筛掉。
+
+#### p.76 · OR 查询的来源仍是 Sale
+
+![Week 6 课件 p.76 · OR 查询的来源仍是 Sale](figures/m06-source/w6-s076.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s076.png|查看Week 6 课件 p.76 · OR 查询的来源仍是 Sale大图]]
+
+问题换为日期早于 7/31 或由 E-10 销售。用同一张表，下一页只改条件排法。
+
+#### p.77 · 两个条件分别放 Criteria 与 Or 行
+
+![Week 6 课件 p.77 · 两个条件分别放 Criteria 与 Or 行](figures/m06-source/w6-s077.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s077.png|查看Week 6 课件 p.77 · 两个条件分别放 Criteria 与 Or 行大图]]
+
+截图把日期条件和销售员条件放在不同的行。跨行是 OR，命中任一个即可保留，不必同时为真。
+
+#### p.78 · OR 六笔：S-1 至 S-6
+
+![Week 6 课件 p.78 · OR 六笔：S-1 至 S-6](figures/m06-source/w6-s078.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s078.png|查看Week 6 课件 p.78 · OR 六笔：S-1 至 S-6大图]]
+
+S-1 由日期入选，S-5 和 S-6 由 E-10 入选，即使日期条件不满足。S-7 两项都不满足，星号行不计。
+
+#### p.79 · 按日期段求销售总额
+
+![Week 6 课件 p.79 · 按日期段求销售总额](figures/m06-source/w6-s079.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s079.png|查看Week 6 课件 p.79 · 按日期段求销售总额大图]]
+
+加 Sale，目标是 7 月 15–31 日的总金额，不逐笔输出销售。这决定后面 Amount 用汇总。
+
+#### p.80 · 只带 Date 和 Amount 进网格
+
+![Week 6 课件 p.80 · 只带 Date 和 Amount 进网格](figures/m06-source/w6-s080.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s080.png|查看Week 6 课件 p.80 · 只带 Date 和 Amount 进网格大图]]
+
+日期提供筛选，金额提供加总。先只放需要的两列，避免把其他字段意外变成分组键。
+
+#### p.81 · 打开 Totals 行并设范围
+
+![Week 6 课件 p.81 · 打开 Totals 行并设范围](figures/m06-source/w6-s081.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s081.png|查看Week 6 课件 p.81 · 打开 Totals 行并设范围大图]]
+
+点 Σ，让网格出现 Total 行。Date 的 Criteria 填包含两端的 7 月 15 至 31 日范围。
+
+#### p.82 · Date 用 Where，Amount 用 Sum
+
+![Week 6 课件 p.82 · Date 用 Where，Amount 用 Sum](figures/m06-source/w6-s082.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s082.png|查看Week 6 课件 p.82 · Date 用 Where，Amount 用 Sum大图]]
+
+Totals 默认 Group By。把 Date 改 Where，只筛行不出结果；把 Amount 改 Sum，才得到一格总额。
+
+#### p.83 · 核最终两列的设置
+
+![Week 6 课件 p.83 · 核最终两列的设置](figures/m06-source/w6-s083.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s083.png|查看Week 6 课件 p.83 · 核最终两列的设置大图]]
+
+在 Amount 下拉选 Sum，Date 的条件仍在。若 Date 继续 Group By，会按日期产生多行，无法直接回答整个区间总额。
+
+#### p.84 · 单个总计 52,600
+
+![Week 6 课件 p.84 · 单个总计 52,600](figures/m06-source/w6-s084.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s084.png|查看Week 6 课件 p.84 · 单个总计 52,600大图]]
+
+课件结果一格 SumOfAmount。对应 S-2、S-3、S-4、S-5，金额 10,000、16,000、10,000、16,600 相加。
+
+### 逐页 · 扩展 REA 的七个查询（p.85–92）
+
+#### p.85 · 扩展 REA 查询分隔页
+
+本页写 RAE，后面仍讨论扩展 REA。第 86–92 页展示查询结果与局部操作，不能由截图认定附件含完全相同的已保存查询。
+
+#### p.86 · 用 Nz 补应收桥中的空金额
+
+![Week 6 课件 p.86 · 用 Nz 补应收桥中的空金额](figures/m06-source/w6-s086.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s086.png|查看Week 6 课件 p.86 · 用 Nz 补应收桥中的空金额大图]]
+
+图上三个子查询对应累计销售、应用收款和销售退回。下表 8,455 减空白按 0、再减 140 得 8,315。明确 Nz 的替代值为 0，只用于业务上应作零的汇总空值。
+
+#### p.87 · 应付桥以购货扣付款和退货
+
+![Week 6 课件 p.87 · 应付桥以购货扣付款和退货](figures/m06-source/w6-s087.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s087.png|查看Week 6 课件 p.87 · 应付桥以购货扣付款和退货大图]]
+
+图上聚合先分别取截至同日的采购、应用付款和退货。下表 35,270 减 28,450 和 480，得到 6,340。付款应配到采购，不能把任何现金流出都扣掉。
+
+#### p.88 · 用所有存货找最高与并列最低
+
+![Week 6 课件 p.88 · 用所有存货找最高与并列最低](figures/m06-source/w6-s088.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s088.png|查看Week 6 课件 p.88 · 用所有存货找最高与并列最低大图]]
+
+上图 5 月 1–7 日 BIS1 2,400 最高，MIN1 与 TTP12 在该筛选结果无匹配；下图 8–14 日 MIN1 4,305 最高，其余为空。若定义未售为 0，才把无匹配品项纳入并列最低；直接 MIN 会忽略 NULL。
+
+#### p.89 · 每种商品用总成本除总量
+
+![Week 6 课件 p.89 · 每种商品用总成本除总量](figures/m06-source/w6-s089.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s089.png|查看Week 6 课件 p.89 · 每种商品用总成本除总量大图]]
+
+截图用各商品的采购明细金额合计除数量合计。BIS1 为 2,000 除 100 得 20，MIN1 为 4,340 除 80 得 54.25，TTP12 为 480 除 48 得 10。本课这张图限经营分析。
+
+#### p.90 · 先算订单履行日差，再平均
+
+![Week 6 课件 p.90 · 先算订单履行日差，再平均](figures/m06-source/w6-s090.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s090.png|查看Week 6 课件 p.90 · 先算订单履行日差，再平均大图]]
+
+左图对 DaysToFill 用 Avg，右图结果 2.5 天。要复做先决定分批订单以第一次交付还是完整交付算，再避免多条交付让一份订单被重复计权。
+
+#### p.91 · 找没有正面反馈的商品
+
+![Week 6 课件 p.91 · 找没有正面反馈的商品](figures/m06-source/w6-s091.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s091.png|查看Week 6 课件 p.91 · 找没有正面反馈的商品大图]]
+
+图中以全体 InventoryType 为保留侧，连接已筛好的正面反馈结果，再找右侧为空的项目。无正面可能是无人反馈，也可能只有负面。
+
+#### p.92 · 数每位销售员的拜访，保留零次
+
+![Week 6 课件 p.92 · 数每位销售员的拜访，保留零次](figures/m06-source/w6-s092.png)
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/figures/m06-source/w6-s092.png|查看Week 6 课件 p.92 · 数每位销售员的拜访，保留零次大图]]
+
+截图 5 月 1–15 日 E23 为 2、E26 为 1、E30 为 0。先筛期间内拜访，再以销售员为保留侧连接并数非空 SalesCallID。若用 COUNT 星号，外连接补出的空行也可能算 1。
+
+### 主题深读与课堂补充
+
+较长原例、课堂补充、推算与原题解析保留在下列主题中。
 
 ### 2.0 封面（讲义 p.1）
 
@@ -2042,7 +2684,7 @@ Select / Project / Join 三个算子定义好了，下一节看它们后面要�
 
 ⚠️ 三个观察：
 - **前三行的 Quarterly Sales 是空（Null），E-78 是 0** —— 这个 Null vs 0 的对比是 §2.20.2 的伏笔
-- **E-78 从来没在 Sale 表里出现过** —— 他是"一单没开的销售员"，是外连接的教学案例
+- 给定 Sale 的七笔记录没有 E-78；外连接可以保留该人员供本例统计。
 - **Comm rate（佣金率）**：销售员按销售额提成的比例。原显示 `.12` 表示 0.12，即 12%；薪酬示例为底薪加销售额乘佣金率。E-78 的佣金率最高（0.15），在给定结果中没有销售；这个结果说明保留零销售人员的作用，不能据此推断现实工作表现。
 
 **③ Customer（客户）** —— 外部参与者
@@ -2119,7 +2761,7 @@ $$\text{应收账款} = \sum \text{销售金额} - \sum \text{已收款金额} -
 - S-2 金额 10,000，已收 RA-1 的 1,666 + RA-5 的 1,666 = 3,332 → **还欠 6,668**（部分收款）
 - S-1 7,200 = RA-3 的 7,200 ✅ 全额收讫
 - S-4 10,000 = RA-2 的 10,000 ✅ 全额收讫
-- **S-6（35,000）和 S-7（23,000）在这张表里完全没出现** → **一分钱都没收** → 这正是 §2.15（p.38）左外连接要演示的东西
+- **S-6（35,000）和 S-7（23,000）在这张表里完全没出现** → 本表没有已记录的对应分配，左连接应保留两笔销售并把分配侧留空。
 
 **⑦ Inventory-Sale Stockflow（存货—销售存量流）** —— **连接表**
 
@@ -2514,22 +3156,12 @@ flowchart TD
 
 | 你想问 | 用内连接会怎样 |
 |---|---|
-| "每个销售员的业绩" | **E-78 消失了** —— 而"谁一单没开"恰恰是经理最想知道的 |
-| "每笔销售的收款情况" | **S-6、S-7 消失了** —— 而"哪些销售还没收到钱"就是应收账款 |
-| "每件商品的销量" | **没卖出去的商品消失了** —— 而滞销品才是要处理的 |
-| "每个客户的评价" | **从没给过评价的客户消失了** |
+| 每个销售员的业绩 | 在给定 Sale 未匹配销售的 E-78 消失 |
+| 每笔销售的分配情况 | 未匹配分配的 S-6、S-7 消失 |
+| 每件商品在给定期间的销售额 | 没匹配该期间销售汇总的商品消失 |
+| 每种商品有没有正面评价 | 没匹配指定正面评价的商品消失 |
 
-**这四个"消失"就是本讲后面反复演示的东西**：p.38（未收款的销售）、p.88（滞销品）、p.91（无正面反馈的存货）、p.92（零拜访的销售员）。
-
-**💡 换个说法（笔记补充）**
-
-> **内连接回答"发生了什么"，外连接回答"什么没发生"。**
-
-会计上，"什么没发生"往往比"发生了什么"更重要：
-- **没收到的钱** = 应收账款（资产）
-- **没付的钱** = 应付账款（负债）
-- **没交货的订单** = 在手订单 backlog（M05 §2.10）
-- **没动过的存货** = 呆滞存货（可能要计提跌价准备）
+p.38、p.88、p.91、p.92 分别演示保留销售、商品及销售员名册。内连接只留下符合连接条件的组合；外连接还能留下指定侧的无匹配行。要把无匹配解释为没有实际收款、销售或拜访，先核记录范围、匹配键及期间是否满足业务问题。
 
 **⚠️ Left 和 Right 的区别其实是"哪张表写在前面"**（💡 笔记补充）：
 
@@ -2601,7 +3233,7 @@ Join <表1>, <表2> Where <连接条件> Giving <结果表名>
 
 **⚠️ 三个必须注意的点**：
 
-1. **`E-78` 不在结果里。** 他是销售员，但没有任何客户归他管，所以内连接把他扔了。**如果题目是"列出所有销售员及其负责的客户"，用内连接就答错了**——必须用外连接。
+1. **`E-78` 不在结果里。** 给定 Customer 表没有一行引用 E-78，所以以该客户表做内连接时不会出现他。**如果题目是"列出所有销售员及其负责的客户"，用内连接就答错了**——必须用外连接。
 
 2. **连接列出现了两次**（`SP#` 和 `Employee Number` 内容完全一样）。这是 `Join` 的标准行为——它把两张表**整个拼起来**，不自动去掉重复的连接列。**SQL 里 `SELECT *` 也是这个行为**（p.43 的结果同样有两列）。要去掉就得用 Project 只选需要的列。
 
@@ -2613,7 +3245,7 @@ Join <表1>, <表2> Where <连接条件> Giving <结果表名>
 
 在 SQL 里这个错误尤其容易犯：`SELECT * FROM Customer, Salesperson;`（漏了 WHERE）**语法完全合法**，直接跑出 20 个组合；它们没有经过连接条件筛选，不能当作业务查询结果。
 
-**在 QBE 里就不容易犯**——因为你必须**手工拖一条连接线**，或者 Access 根据已建的关系**自动帮你拖**（p.64 的截图）。**这是 QBE 相对 SQL 的一个真实优势。**
+在 QBE 运行前，确认上半屏有两列之间的连接线，并查看 Join Properties。已有关系可能自动带出；缺线时要手工连。两表无连接也可被组合：这里五个客户和四名销售员会组成 20 行，不能把它当成五行内连接结果。
 
 ⚠️ 真实项目里，两张十万行的表做笛卡尔积 = 100 亿行，直接把机器跑死。**这是数据库初学者最经典的事故。**
 
@@ -2712,7 +3344,7 @@ Giving Answer
 
 1. **S-2 出现了两次。** 因为它被分两次收款（RA-1 和 RA-5 各 1,666）。⚠️ **这意味着结果表里 `Amount` 那一列的 10,000 出现了两次**——**如果你直接对 `Amount` 求和，会把 S-2 算两遍！** 这是做应收账款汇总时最经典的错误。（§2.24.1 的 p.86 就是通过**分别汇总再相减**来避开这个坑的。）
 
-2. **S-6、S-7 右侧全空。** 这两笔销售**一分钱都没收到**。它们的金额加起来 35,000 + 23,000 = **58,000**，就是这两笔的应收账款。
+2. **S-6、S-7 右侧全空。** 在给定分配表里没有匹配行。若已核分配记录完整并确认两笔均无有效应用，则可按本题范围算未清合计 35,000 加 23,000 得 58,000。
 
 3. **空的是 Null，不是 0。** 如果你写 `Amount - Applied` 想算未收金额，S-6 会得到 `35,000 - Null = Null`，**不是 35,000**。若给定明细完整且该销售确实没有应用收款，可写 `Nz([Applied], 0)`；§2.24.1 的原保存查询定义和参数尚未取得，不能由这个例子反证其空值来源。
 
@@ -2760,7 +3392,7 @@ Left Outer Join ≈ **VLOOKUP 但把 `#N/A` 留着**。
 - ❌「外连接的结果行数 = 左表行数。」
   → **不一定**。左表一行如果在右表匹配到多行，结果就会**多出行**（S-2 的情况）。规则是：**左表每一行至少出现一次**，可能出现多次。
 - ❌「S-6 那行右边是空的，说明数据错了。」
-  → 不是错，**那正是答案**。空恰恰表示"这笔销售还没收款"。
+  → 左连接留下销售行，空表示当前分配表找不到对应记录。判断实际收款还需核记录范围。
 
 **所以呢**
 
@@ -2861,7 +3493,7 @@ S2的销售额10,000会出现两次；不能用SUM(DISTINCT金额)补救，因�
 
 </details>
 
-**失败机制与迁移题**：裸JOIN重复S2销售额10,000，117,800+10,000−53,132=74,668错；只找完全没付款Sale得S6/S7 58,000，漏S2尚欠6,668。SUM(DISTINCT sale amount)也不行，S2/S4真实两张都10,000会被错误去重，应按SaleID而非金额去重。
+**失败机制与迁移题**：裸JOIN重复S2销售额10,000，117,800+10,000−53,132=74,668错；在给定数据和应用完整的假设下，只找无应用行的 S-6、S-7 得 58,000，仍漏 S-2 的 6,668。SUM(DISTINCT sale amount)也不行，S2/S4真实两张都10,000会被错误去重，应按SaleID而非金额去重。
 
 <details><summary>假设变式：若把 RA-2 改为 7/25，截止日判断要检查什么？</summary>
 
@@ -3119,6 +3751,14 @@ Where Customer.SP# = [Salesperson.Employee Number];
 
 ⚠️ **方括号是方言与可读性问题，不是一概语法错**：当前 ACE 只读副本接受整体写法 `[Salesperson.EmployeeNumber]`，也接受分开写法 `Salesperson.[EmployeeNumber]`；含空格字段的两个有限测试也均成功。为看清表与字段，本文推荐 `表.[字段]`。这些测试不认证所有 SQL 方言，也不消除讲义字段名与当前库字段名的差别；见 §9.3。
 
+**当前 ExampleTables1 的可执行内连接**。原图的 SP# 与 Employee Number 是展示名。用该库实际字段和等值条件查询，ACE 只读实测为五行：
+
+```sql
+SELECT c.*, sp.*
+FROM Customer AS c
+INNER JOIN Salesperson AS sp ON c.SalespersonNumber = sp.EmployeeNumber;
+```
+
 **⚠️ 再次提醒笛卡尔积陷阱**：这条语句如果漏掉 `WHERE` 那一行，会返回 5 × 4 = **20 行**笛卡尔积结果，包含正确配对和错误配对，不能称20行全部错误，而且**不报任何错**。这是隐式连接写法最大的风险，也是现代 SQL 推荐用显式 `JOIN ... ON` 的原因。
 
 **所以呢**
@@ -3152,12 +3792,13 @@ Where [Sale.Sale#]=[Sale-CashRecDuality.Sale#];
 | ① 连接关键字拼在一起 | `LeftJoin` | `LEFT JOIN`（两个词） |
 | ② 缺少连接条件引导词 | `Where ...` | 此处用 `ON ...` 指定匹配 |
 
-**正确的 Access SQL**（💡 笔记补充）：
+**当前 ExampleTables1 的可执行 Access SQL**（💡 笔记补充）：课件以 Sale# 展示，本附件的连接字段名为 SaleNumber。
 
 ```sql
-SELECT *
-FROM Sale LEFT JOIN [Sale-CashRecDuality]
-ON Sale.[Sale#] = [Sale-CashRecDuality].[Sale#];
+SELECT s.SaleNumber, s.Amount, s.[Date], s.CustomerNumber,
+       s.SalesRepNumber, d.RemittanceAdviceNumber, d.Applied
+FROM Sale AS s
+LEFT JOIN [Sale-CashRecDuality] AS d ON s.SaleNumber = d.SaleNumber;
 ```
 
 **为什么 `ON` 和 `WHERE` 不能互换 —— 这是外连接的核心陷阱**（💡 笔记补充，讲义完全没提，但极其重要）：
@@ -3167,7 +3808,7 @@ ON Sale.[Sale#] = [Sale-CashRecDuality].[Sale#];
 | `LEFT JOIN … **ON** A.k = B.k` | 先连接（左表全保留），**连接条件在连接时生效** | S-6、S-7 **保留**，右侧 Null ✅ |
 | `FROM A, B WHERE A.k = B.k` | 逗号连接先形成组合，再按等值条件筛选；这是内连接语义 | 没有匹配的 S-6、S-7 不会产生补 Null 行，因此被排除 ❌ |
 
-**换句话说：把外连接的条件写在 WHERE 里，外连接会"退化成"内连接。** 这是 SQL 里最经典的隐蔽 bug 之一。原p.44语句有LeftJoin/ON/标识符等语法问题，不能给无效原SQL虚构实际运行6行。补成有效内连接的另设反例才有6行；官方意图输出为8行。
+在上面可运行的左连接末尾加上 WHERE d.SaleNumber IS NOT NULL，会把 S-6、S-7 的补空行筛掉，从八行变六行。筛左侧销售编号的条件则不一定有这种效果。课件 p.44 原句本身不能运行；八行是画面展示的结果，也是附件改写版的实测结果。p.41–51 其余写法以课件名称解释 SQL 思路，粘贴运行前需核对库表和字段名。
 
 **答案**：讲义 p.44 的 Query Result 与 p.38 的 Answer 完全一致（8 行），见 §2.15。
 
@@ -3225,7 +3866,7 @@ ON Sale.[Sale#] = [Sale-CashRecDuality].[Sale#];
 
 **为什么这条很重要**
 
-因为**会计里最常见的筛选条件就是日期区间**：「7 月份的销售」「资产负债表日之前的所有交易」。理解"日期能比大小"，才知道 `Date < #7/31/2014#` 是合法的。
+因为**会计里最常见的筛选条件就是日期区间**：「7 月份的销售」「截至资产负债表日（含当日）的所有交易」。理解"日期能比大小"，才知道 `Date < #7/31/2014#` 是合法的。
 
 **⚠️ 文本比较的陷阱**（💡 笔记补充，讲义只说了 `A < B < C`，没说坑）：
 
@@ -3599,7 +4240,7 @@ BETWEEN 包含起点和终点。课堂以 7 月 1 日到 7 月 31 日的销售�
 
 **Null 在会计上的两种含义**（💡 笔记补充）：
 
-1. **尚未发生**：Sale-CashRecDuality 里 S-6 没有对应行 → 外连接产生 Null → "还没收款"
+1. **连接无匹配**：分配表没有 S-6 的对应行，外连接将右侧置 Null。若记录完整并且确无相关应用，才可按本例口径视为应用额 0。
 2. **不适用 / 未知**：Cash 表里 BA-6 的 Balance 是 Null → "这个账户余额没录入"
 
 **先确认空值是哪一种**：完整记录证明确无收款时，空汇总可以按零计算；金额未知时不能替零。数值查询明确写 `Nz(x, 0)`，函数本身不会判断业务记录是否完整。
@@ -3887,9 +4528,9 @@ SELECT Count(*) AS CustomerCount FROM QDistinctCustomer;
 从 `Inventory-Sale Stockflow` 表（§2.10.1 的 ⑦）算每一行的金额：
 
 ```
-Extension: [Quantity] * [Actual Price]
+Extension: [Quantity] * [ActualPrice]
 ```
-下表回到讲义结果：ItemID 与 Sale# 共同定位商品销售行，Quantity 乘 Actual Price 得 Extension。金额单位沿用原表，不把本表与前面的教学示意混算。
+这是当前 ExampleTables1 的 Stockflow（实际表名 Inventory-SaleStockflow）字段表达式；先在 QBE 放入该表，再将式子填入 Field。实际 InventoryItemID 与 SaleNumber 共同定位行。下表沿用课件的展示列名，以 p.33 三笔商品销售行复算；p.53 仅给定义，p.61 只显示已存查询名。
 
 | ItemID | Sale# | Quantity | Actual Price | **Extension** |
 |---|---|---|---|---|
@@ -3897,7 +4538,7 @@ Extension: [Quantity] * [Actual Price]
 | A-1 | S-1 | 3 | 2,000 | **6,000** |
 | A-6 | S-2 | 2 | 5,000 | **10,000** |
 
-⚠️ **这正是 p.89 那个查询里 `SumOfLineItemExtension` 的来源** —— 先横向算出每行金额，再竖向 SUM。**横向计算与聚合经常连用，先横后竖。**
+p.89 的采购例沿用同一原理：先用采购数量乘每件成本求行金额，再对相同商品累加。它用采购数据，不能拿上表的销售价或金额代替。
 
 **例 2：佣金金额**
 
@@ -4306,11 +4947,11 @@ QBE 里怎么挑行（做 Select）会了，下一个查询看 QBE 里怎么挑�
 
    💡 格式教学示例：**如果**字段实际为数值 0.10，Percent 格式可以显示 10%，这不改变数值。这个示例不能冒作 p.66 的已证存储实现。佣金计算前先核数据类型；文本 `12%` 需经过受控转换并核为数值 0.12，才能拿去乘销售额，不能假定字符串已经可直接参加数值运算。截图所用库与当前附件是否完全同版仍未确认。
 
-3. **`E-78` 不在结果里。** 内连接把这个"没有客户归他管"的销售员扔掉了。**这就是 §2.13 反复强调的那件事。**
+3. **`E-78` 不在结果里。** 给定 Customer 表没有客户行引用 E-78，本次内连接只留下匹配组合。
 
 **⚠️ p.64 那条自动出现的连接线，是本组四页里最值钱的信息**
 
-它证明了 §2.5.1 说的第三个好处：**建过关系的两张表，一拖进查询设计器，Access 就自动画好连接线。**
+它证明了 §2.5.1 说的第三个好处：**建过关系的两张表，一拖进查询设计器，Access 可能带入已定义的连接线。运行前仍要核实际列和 Join Properties。**
 
 **如果两张表之间没建过关系会怎样**（💡 笔记补充）：
 - Access **不会**自动画线
@@ -5033,17 +5674,19 @@ p.86–92 的窗口显示库名 **`Dunn4eChps10-11withqueries`**；前段截图�
 
 **Step 1**
 
-做什么：汇总**资产负债表日之前**的全部销售金额
+做什么：汇总**截至资产负债表日（含当日）**的全部销售金额
 
 
 **Step 2**
 
-做什么：汇总**资产负债表日之前**、针对这些销售的全部收款
+做什么：汇总**截至资产负债表日（含当日）**、针对这些销售的全部收款
 
 
 **Step 3**
 
-做什么：汇总**资产负债表日之前**的全部销售退回
+做什么：汇总**截至资产负债表日（含当日）**的全部销售退回。
+
+笔记参考口径：若报表日为 7 月 31 日、日期字段含时分秒，用小于 8 月 1 日的排他边界。对付款按实际应用生效事实判断，7 月 31 日当天有效的收款不能漏。原保存查询的筛选定义仍未知。
 
 
 **Step 4**
@@ -5152,7 +5795,7 @@ Nz(表达式, 替代值)    →  如果是 Null，返回你指定的替代值
 
 **教学计算：先确认零的含义，再明确指定替代值**
 
-以下额外假设完整明细已证实没有有效相关收款，因此空的收款汇总可替代为零。原截图的一参数表达式仍原样保留在上方，未在缺失的 Access 数据库上重跑。
+以下额外假设完整明细已证实没有有效相关收款，因此空的收款汇总可替代为零。原截图的一参数表达式仍原样保留在上方，现有 ExampleTables2 提供扩展表，但尚未核出截图同版的保存查询与参数，本轮仅核给定画面的数值和参考算式。
 
 ```text
 Nz(8455, 0) - Nz(Null, 0) - Nz(140, 0)
@@ -5190,7 +5833,7 @@ Nz(8455, 0) - Nz(Null, 0) - Nz(140, 0)
 - **传统总账（M02）**：赊销借记应收账款、收款贷记应收账款。漏记会暂时使余额错误，可凭真实凭证 ID 与明细回查、更正；汇总界面不等于原始信息永久丢失。
 - **REA 数据库（本页）**：按已记录的事件重算余额。客户、销售员和时间段可作为查询维度，但漏录、错配和日期错误仍会影响结果。
 
-   课件显示的 8,315 可在算式层面拆成 8,455 减去 0 和 140。要继续追到每张销售、收款和退回单，仍需缺失的原数据库与前置查询；不能声称已逐笔核实。
+   课件显示的 8,315 可在算式层面拆成 8,455 减去 0 和 140。要继续追到每张销售、收款和退回单，现有 ExampleTables2 提供扩展表。要追到截图中的每张单据，还需具体保存查询、参数与同版性证据，本轮未逐笔重现。
 
 **这就是 REA 相对复式记账的核心卖点，而它需要的全部技术就是本讲教的查询。**
 
@@ -5378,9 +6021,7 @@ Nz([SumPurchaseReturnsThroughEndDate.SumOfDollarAmount])
 | LIS1 | Little Stuff | \$140.00 |
 | TIS1 | Tiny Stuff | \$960.00 |
 
-**MIN1 和 TTP12 会直接消失。** 而**问题问的是"哪个卖得最少"** —— **卖得最少的恰恰是那两个一件都没卖的**！
-
-⚠️ **用内连接，这道题永远答不对。** 这就是 §2.13 那句 *"内连接回答'发生了什么'，外连接回答'什么没发生'"* 的实战证据。
+**MIN1 和 TTP12 会直接消失。** 这两种商品在给定期间没有匹配销售额。若题目要从全商品中找最低，须先保留两行；只有在记录完整、确认无销售时，才把这两行按 0 并列比较。
 
 **查询的结构**（💡 笔记推断，讲义没给设计视图）：
 
@@ -5391,7 +6032,7 @@ InventoryType（全部商品）  LEFT OUTER JOIN  （按商品汇总的销售金
 
 - **左表 `InventoryType`**：全部六种商品，**一件不能少**
 - **右表**：一个聚合查询，算出各商品在指定期间的销售额（`SumOfExtSaleAmt`）
-- **外连接** → 没卖出去的商品也留在结果里，销售额栏是 Null
+- **外连接** → 给定期间未匹配销售汇总的商品也留在结果里，金额为 Null
 
 **第二层：`ExtSaleAmt` 是什么**
 
@@ -5410,7 +6051,7 @@ MIN1 和 TTP12 的销售额是**空的**，不是 \$0.00。因为：
 - 外连接没有匹配上 → 右表的字段全是 Null
 - `SUM` 在这里根本没被调用（没有行可以汇总）
 
-⚠️ **业务上它们的含义是"零销售"，所以在做 Max/Min 排序时会出问题**：`MIN(SumOfExtSaleAmt)` 会**忽略 Null**（§2.21），算出来的最小值是 **\$140.00（LIS1）**，而不是 MIN1/TTP12 的"零"！
+⚠️ 空值只说明当前查询没有匹配销售额，直接做 Max/Min 时会跳过这些空值：`MIN(SumOfExtSaleAmt)` 会**忽略 Null**（§2.21），算出来的最小值是 **\$140.00（LIS1）**，而不是 MIN1/TTP12 的"零"！
 
 💡 **若明细完整且确认该商品本期零销售**，可先用 `Nz([SumOfExtSaleAmt], 0)`，再取 Min；未知或漏录的销售额不能补零。**讲义的蓝底说明说"could refine further with Max and Min"，但没有提醒这个 Null 陷阱。** 见 [[#9.4 课外补充|§9.4]]。
 
@@ -5419,9 +6060,9 @@ MIN1 和 TTP12 的销售额是**空的**，不是 \$0.00。因为：
 | | 5/1–5/7 | 5/8–5/14 |
 |---|---|---|
 | 销售额最高 | **BIS1**（\$2,400） | **MIN1**（\$4,305） |
-| 销售额最低 | MIN1、TTP12（并列，零销售） | 其余全部（并列，零销售） |
+| 按完整记录且无销售补 0 的口径，最低销售额 | MIN1、TTP12（并列） | 其余全部（并列） |
 
-⚠️ **MIN1 在第一周一件没卖，第二周却成了销售额最高者。** 这说明：
+⚠️ **MIN1 第一周未匹配到销售额，第二周却是给定结果中的销售额最高者。** 这说明：
 
 **单周数据会给出完全相反的结论。** 如果管理层只看第一周的报表，可能会决定**清仓 MIN1**——那就大错特错了。
 
@@ -5439,7 +6080,7 @@ MIN1 和 TTP12 的销售额是**空的**，不是 \$0.00。因为：
 **⚠️ 常见误解**
 
 - ❌「查询结果里空的那几行是错误。」
-  → **那正是答案**。零销售必须显示出来。
+  → 保留商品目录行才能查空值，核对来源后再判断是否应记 0。
 - ❌「六件商品名（Big Stuff / Huge Stuff / Little Stuff / Miniature Stuff / Tiny Stuff / Tiara）是随便起的。」
   → 前五个确实是教材的占位名（按大小排的玩笑名）。💡 `Tiara` 可译为头冠；本地材料只显示它是 ItemID `TTP12` 的名称，未提供所属案例或考试范围依据。
 
@@ -5980,7 +6621,7 @@ flowchart TD
 **这个 0 是怎么来的？**（💡 笔记推断，讲义未解释，但这是本页唯一的技术难点）
 
 如果用**内连接** + `Count`：
-- E30 在 SalesCall 表里**一条记录都没有**
+- E30 在 5 月 1–15 日的拜访集合中没有匹配记录；给定输出不说明期外情况
 - 内连接会把 E30 **整行扔掉**
 - 结果只有 **2 行**（E23、E26），**E30 消失**
 
@@ -6003,19 +6644,19 @@ flowchart TD
 
 💡 **这个细节值得单独记住：`Count(*)` 和 `Count(字段)` 在外连接场景下会给出完全不同的答案。** 这是 SQL 面试里的经典问题，也是本讲最深的一个技术点。
 
-**⭐ 为什么 E30 的 0 是本页的全部意义**
+**为什么报表要保留 E30 的 0**
 
-**"哪个销售员一次拜访都没做"，正是管理层最想知道的事。**
+管理层可能要查：哪位销售员在给定期间没有匹配拜访？
 
 | 如果 E30 消失了 | 后果 |
 |---|---|
-| 报表上只有 E23 和 E26 | 看起来"所有销售员都在工作" |
-| 平均拜访次数 = (2+1)/2 = **1.5** | **虚高**（真实是 (2+1+0)/3 = **1**） |
-| E30 的绩效问题**永远不会被发现** | 内控失效 |
+| 报表上只有 E23 和 E26 | 少列了 E30 的当期计数 |
+| 仅对匹配人员算平均 = (2+1)/2 = **1.5** | 报表要覆盖三人，按给定记录应算 (2+1+0)/3 = **1** |
+| E30 的当期计数未显示 | 管理层少了一项用于核对记录覆盖的线索 |
 
 ⚠️ **这与 §2.24.3（滞销品）、§2.24.6（无反馈商品）是同一个道理的三次重复**：
 
-> **管理报表最重要的往往是"零"那一行，而"零"恰恰是内连接会删掉的那一行。**
+内连接会省掉无匹配行；保留人员和商品目录，才有机会进一步区分已确认的 0 和资料缺口。
 
 **这三页（p.88、p.91、p.92）合起来，是全讲对"为什么必须懂外连接"最有力的论证。**
 
@@ -6034,12 +6675,12 @@ flowchart TD
 
 蓝底说明写的是 "May 1-15, 2015"（半个月）。所以查询必须以某种方式限定 2015-05-01 至 2015-05-15 的业务范围；原设计视图缺失，可能先筛子查询，也可能在连接/条件中实现，不能断言一定是这条 `WHERE`。
 
-⚠️ **但这里有一个隐蔽的陷阱**（💡 笔记补充）：日期筛选条件**必须放在外连接的 `ON` 子句里，而不是 `WHERE` 里**！
+💡 **先限制右侧哪些拜访能匹配，再外连接全体销售员。** 可先做期间子查询，或在方言支持的情况下把日期与匹配条件一同写进 `ON`。若连接后才在 `WHERE` 单独筛右侧日期，会丢掉零次人员。
 
 - 放 `ON` 里 → E30 保留，计数 0 ✅
-- 放 `WHERE` 里 → E30 那行的日期字段是 Null，`Null BETWEEN … ` 结果是 Null → **E30 被筛掉** ❌
+- 连接后在 WHERE 筛右表日期：若 E30 完全无匹配，补出的 Null 不满足期间；若仅匹配到期外拜访，真实日期也不满足期间。两种情况都会丢掉 E30。
 
-**这就是 §2.17.4 讲的"外连接的条件放错地方会退化成内连接"，在这里以更隐蔽的形式再次出现。**
+同 §2.17.4，连接后用不接受补空的右侧条件筛行，会丢掉原本要保留的人员。
 
 💡 **在 Access QBE 里的正确做法**：先做一个只含日期筛选的子查询（`SalesCallsInPeriod`），再把 `Salesperson` 外连接到它。**这也解释了为什么本段的每个查询都是分步做的**——分步不只是为了清晰，**是为了让筛选条件作用在正确的阶段**。
 
@@ -6417,7 +7058,7 @@ flowchart TD
 
 箭头是查询设计的判断路径；虚构数据不在任一正常出口。
 
-**沿例子读图（笔记补充）**：教学例 E30 零拜访：业务要求全体人员，因此“我关心没发生的那些吗”选是，用外连接保留 E30。接着要计数，就数右表非空身份键，得到 0。若改为未知金额，须核空值含义并走“保留未知并补凭证”，不能一律 Nz 补零。
+**沿例子读图（笔记补充）**：教学例 E30 当期无匹配拜访：业务要求全体人员，因此“我关心没发生的那些吗”选是，用外连接保留 E30。接着要计数，就数右表非空身份键，得到 0。若改为未知金额，须核空值含义并走“保留未知并补凭证”，不能一律 Nz 补零。
 
 **图旁边界**：补充版本把正文已有零行/未知边界接入总结；主表丢行先修连接。图不能代替2.24具体粒度与时间条件。
 
@@ -6948,7 +7589,7 @@ flowchart TD
 | ⚪ | **Total 行为什么要选 `Where` 而不是 `Group By`** | 讲义 p.82 用批注专门讲；是本讲最深的一个操作点 | §2.23.8 |
 | ⚪ | **`Nz()` 的作用与使用条件** | p.86 黄底标出结果，不能证明作者经历或 Null 成因 | §2.24.1 |
 | ⚪ | **加权平均单位成本 "not for Financial Statement use"** | 讲义把这句话写进了 p.89 的**标题**里，是刻意的提醒 | §2.24.4 |
-| ⚪ | **外连接 + `Is Null` 找"什么没发生"** | 讲义 p.91 的蓝底说明把这个套路讲得非常明确 | §2.24.6 |
+| ⚪ | **外连接 + `Is Null` 找"什么没发生"** | 讲义 p.91 的蓝底说明限定为从给定正面评价集合查无匹配 | §2.24.6 |
 
 **10 月 21 日新增的应试例**：老师把收款查询条件从 C-2 改成 C-5（R1 `00:38`–`00:59`）。先看 `*`：结果保留全部六列；再逐行检查 Customer#：只保留 C-5 那一行。若改成 `<> "C-2"`，则保留 C-1 与 C-5 对应的行，不是对金额取反。完整原表及每行值见 §2.10 与 §2.17.1。
 
@@ -7169,10 +7810,10 @@ flowchart TD
 
 **本讲的四个例子**：
 
-1. **p.38**：所有销售 + 任何相关的收款 → S-6、S-7 一分钱没收，用内连接会消失，而它们正是应收账款
-2. **p.88**：某期间各商品销售额 → MIN1、TTP12 零销售，用内连接会消失，而"销售额最低"问的就是它们
+1. **p.38**：所有销售 + 任何相关的收款 → S-6、S-7 没有已记录的应用行，用内连接会消失。是否未收和未清多少仍要核完整资料
+2. **p.88**：某期间各商品销售额 → MIN1、TTP12 在给定期间没有匹配记录，用内连接会消失。明确按未售作 0 的口径后才列并列最低
 3. **p.91**：没有正面客户反馈的商品 → 用内连接根本查不出"没有"
-4. **p.92**：每人销售拜访次数 → E30 零拜访，用内连接会消失，而"谁没干活"正是重点
+4. **p.92**：每人销售拜访次数 → E30 在给定期间没有匹配拜访，内连接会把它排除。保留人员行才能显示计数 0
 
 **一句话**：内连接只保留已匹配事实；外连接还能保留零匹配主体。未收金额、未交数量和呆滞程度仍须用完整明细计算，不能把“没有任何匹配”直接等同“尚未完成”。
 
@@ -7246,13 +7887,13 @@ $$\text{应收账款} = \sum \text{销售金额} - \sum \text{已收款金额}$$
 
 **可能原因一：用了内连接**
 
-E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
+E30 在筛出的 5 月 1–15 日没有匹配拜访。即使有期外拜访，连接到当期记录时用内连接仍会把 E30 丢掉。
 
 **改法**：双击连接线 → Join Properties → 选 *"Include ALL records from 'Salesperson' and only those records from 'SalesCall' where the joined fields are equal"*（左外连接）。
 
-**可能原因二：日期筛选条件放在了 WHERE 而不是 ON**
+**可能原因二：先连接，再在 WHERE 筛匹配侧日期**
 
-即使用了外连接，如果把 `SalesCallDate BETWEEN #5/1/2015# AND #5/15/2015#` 放在 WHERE 里，E30 那一行的日期字段是 Null，`Null BETWEEN …` 的结果是 Null（不是 True），**该行被筛掉** —— **外连接退化成了内连接**。
+即使用了外连接，若先连接所有拜访再筛右侧日期，E30 仍会消失：完全没匹配时，日期是补出的 Null；仅有期外拜访时，日期有值却不在 5 月 1–15 日。两者都不能通过 WHERE。
 
 **改法**：先做一个只含日期筛选的子查询（`SalesCallsInPeriod`），再把 Salesperson 外连接到它。
 
@@ -7260,7 +7901,7 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 
 **英文参考答案（笔记自拟，U32）**
 
-> Two possible causes are an inner join that removes E30, or a post-join date filter that rejects E30’s Null call date. Preserve all salespeople and join them to calls already filtered to the reporting period. Count a non-null call ID rather than COUNT(*), so an unmatched salesperson is counted as zero. This diagnoses reference implementations; the original design is unavailable.
+> Two possible causes are an inner join that removes E30, or a post-join date filter that rejects either a null date or dates outside the reporting period. Preserve all salespeople and join them to calls already filtered to the reporting period. Count a non-null call ID rather than COUNT(*), so an unmatched salesperson is counted as zero. This diagnoses reference implementations; the original design is unavailable.
 
 </details>
 
@@ -7323,6 +7964,105 @@ E30 在 SalesCall 表里一条记录都没有，内连接会把整行扔掉。
 ---
 
 ## 8. 讲义页码映射
+
+按 **Week 6 PPT.pptx** 的物理页序定位。
+
+| 源页 | 课件页标题 | 正文入口 | 原图或页面处置 |
+| --- | --- | --- | --- |
+| W6 p.1 | AC6761 Artificial Intelligence Accounting | [[#p.1 · 本讲标题\|p.1]] | 封面 |
+| W6 p.2 | Construct database using ACCESS | [[#p.2 · 用 Access 建库\|p.2]] | 建库导言 |
+| W6 p.3 | Microsoft Access | [[#p.3 · 数据表视图和设计视图\|p.3]] | 文字内容，正文就地说明 |
+| W6 p.4 | Microsoft Access | [[#p.4 · 从数据表切到设计\|p.4]] | 文字内容，正文就地说明 |
+| W6 p.5 | Table Tools | [[#p.5 · 先命名再进入设计\|p.5]] | W6-S005 |
+| W6 p.6 | Microsoft Access Table Design View | [[#p.6 · 设计视图的上下两区\|p.6]] | W6-S006 |
+| W6 p.7 | Microsoft Access | [[#p.7 · 字段设计网格三列\|p.7]] | 文字内容，正文就地说明 |
+| W6 p.8 | Microsoft Access | [[#p.8 · 下方属性要落实规则\|p.8]] | 文字内容，正文就地说明 |
+| W6 p.9 | Example 1 | [[#p.9 · 例 1 先看记录的连接\|p.9]] | W6-S009 |
+| W6 p.10 | Example 1 | [[#p.10 · 按字段用途挑数据类型\|p.10]] | 文字内容，正文就地说明 |
+| W6 p.11 | Example 1 | [[#p.11 · Sale 的四种字段\|p.11]] | 文字内容，正文就地说明 |
+| W6 p.12 | Example Sale table design | [[#p.12 · 看设计成品核类型\|p.12]] | W6-S012 |
+| W6 p.13 | Field properties | [[#p.13 · 匹配看值也看字段类型\|p.13]] | 文字内容，正文就地说明 |
+| W6 p.14 | Primary Key | [[#p.14 · 给 SaleID 设主键\|p.14]] | 文字内容，正文就地说明 |
+| W6 p.15 | Save | [[#p.15 · 保存第一张表\|p.15]] | 文字内容，正文就地说明 |
+| W6 p.16 | Create Salesperson table | [[#p.16 · 新建 Salesperson 表\|p.16]] | 文字内容，正文就地说明 |
+| W6 p.17 | Save | [[#p.17 · 保存第二张表\|p.17]] | 文字内容，正文就地说明 |
+| W6 p.18 | Database window after designing Sale and Salesperson tables | [[#p.18 · 在数据库列表确认两张表\|p.18]] | W6-S018 |
+| W6 p.19 | Link between tables | [[#p.19 · 用关系把外键告诉 Access\|p.19]] | 文字内容，正文就地说明 |
+| W6 p.20 | Connecting Access Tables | [[#p.20 · 拖主键到对应外键\|p.20]] | W6-S020 |
+| W6 p.21 | Link between tables | [[#p.21 · 参照完整性与级联更新\|p.21]] | 文字内容，正文就地说明 |
+| W6 p.22 | Connected Tables | [[#p.22 · 关系图用 1 和无穷号标键侧\|p.22]] | W6-S022 |
+| W6 p.23 | Link between tables | [[#p.23 · Access 标记与 UML 多重性\|p.23]] | 文字内容，正文就地说明 |
+| W6 p.24 | Example 2 | [[#p.24 · 例 2：把 Student/Course 多对多拆开\|p.24]] | W6-S024 |
+| W6 p.25 | Concatenated primary key | [[#p.25 · 在 Access 选两个字段作一把键\|p.25]] | 文字内容，正文就地说明 |
+| W6 p.26 | （无标题，StudentTakesCourse 复合键设计截图） | [[#p.26 · 核复合键的两个钥匙\|p.26]] | W6-S026 |
+| W6 p.27 | Relationships | [[#p.27 · 从两张主表连到 Takes\|p.27]] | 文字内容，正文就地说明 |
+| W6 p.28 | Relationships between tables versus relationships between classes | [[#p.28 · 一个类间多对多变两条表间一对多\|p.28]] | W6-S028 |
+| W6 p.29 | Information Querying using ACCESS | [[#p.29 · 用 Access 查信息分隔页\|p.29]] | 查询分隔 |
+| W6 p.30 | What is Querying? | [[#p.30 · 查询先把问题翻成动作\|p.30]] | 文字内容，正文就地说明 |
+| W6 p.31 | Three Query Languages | [[#p.31 · 关系代数、SQL 与 QBE\|p.31]] | 文字内容，正文就地说明 |
+| W6 p.32 | Relational Algebra | [[#p.32 · Select、Project、Join 各处理什么\|p.32]] | 文字内容，正文就地说明 |
+| W6 p.33 | Example Tables (Incomplete Enterprise Database) from Dunn & McCarthy working paper | [[#p.33 · 查询例库先认七张可见表\|p.33]] | W6-S033 |
+| W6 p.34 | Relational Algebra SELECT | [[#p.34 · 关系代数筛 C-2 的全部收款\|p.34]] | W6-S034 |
+| W6 p.35 | Relational Algebra PROJECT | [[#p.35 · 关系代数挑客户的三列\|p.35]] | W6-S035 |
+| W6 p.36 | Join Types | [[#p.36 · 内连接只留匹配，外连接保留指定侧\|p.36]] | W6-S036 |
+| W6 p.37 | Relational Algebra Inner Join | [[#p.37 · 内连接客户与销售员\|p.37]] | W6-S037 |
+| W6 p.38 | Relational Algebra Left Outer Join | [[#p.38 · 左连接销售和收款分配\|p.38]] | W6-S038 |
+| W6 p.39 | SQL (Structured Query Language) | [[#p.39 · SQL 先写 SELECT、FROM、WHERE\|p.39]] | 文字内容，正文就地说明 |
+| W6 p.40 | SQL Statements and Relational Algebra | [[#p.40 · 对上 SQL 与关系代数的词\|p.40]] | 文字内容，正文就地说明 |
+| W6 p.41 | SQL and Relational Algebra SELECT | [[#p.41 · 用 SQL 还原 C-2 收款结果\|p.41]] | W6-S041 |
+| W6 p.42 | SQL and Relational Algebra PROJECT | [[#p.42 · 用 SQL 输出客户三列\|p.42]] | W6-S042 |
+| W6 p.43 | SQL and Relational Algebra Inner Join | [[#p.43 · 用 SQL 写内连接条件\|p.43]] | W6-S043 |
+| W6 p.44 | SQL and Relational Algebra Outer Join | [[#p.44 · 修正课件左连接语法\|p.44]] | W6-S044 |
+| W6 p.45 | Mathematical Comparison Operators | [[#p.45 · 比较值时看类型\|p.45]] | 文字内容，正文就地说明 |
+| W6 p.46 | SQL Mathematical Comparison Operators | [[#p.46 · 筛余额不少于 50,000\|p.46]] | W6-S046 |
+| W6 p.47 | SQL Mathematical Comparison Operators on Character Attributes | [[#p.47 · 筛不是 E-10 的销售\|p.47]] | W6-S047 |
+| W6 p.48 | Queries with Logical Operators | [[#p.48 · AND、OR、NOT 改变哪些行留下\|p.48]] | 文字内容，正文就地说明 |
+| W6 p.49 | Queries with Special Operators | [[#p.49 · BETWEEN 把边界也算进去\|p.49]] | W6-S049 |
+| W6 p.50 | Queries with Special Operators | [[#p.50 · IS NULL 只找缺值\|p.50]] | W6-S050 |
+| W6 p.51 | Queries with Special Operators | [[#p.51 · 非空用 IS NOT NULL，EXISTS 查有没有行\|p.51]] | W6-S051 |
+| W6 p.52 | Aggregation Functions in Queries | [[#p.52 · 聚合把一列压成统计值\|p.52]] | 文字内容，正文就地说明 |
+| W6 p.53 | Queries with Horizontal Calculations | [[#p.53 · 横向计算是每行先算\|p.53]] | 文字内容，正文就地说明 |
+| W6 p.54 | Relational Algebra SELECT in QBE Cash Receipts from Customer C-2 | [[#p.54 · QBE 筛选示范：先选来源\|p.54]] | W6-S054 |
+| W6 p.55 | Relational Algebra “Select” QBE Example: Cash Receipts from Customer C-2 | [[#p.55 · CashReceipt 已到设计画布\|p.55]] | W6-S055 |
+| W6 p.56 | Relational Algebra SELECT in QBE Cash Receipts from Customer C-2 | [[#p.56 · 把客户条件放到客户字段下\|p.56]] | W6-S056 |
+| W6 p.57 | Relational Algebra SELECT in QBE Cash Receipts from Customer C-2 | [[#p.57 · 运行前核筛行与显示列\|p.57]] | W6-S057 |
+| W6 p.58 | Relational Algebra SELECT in QBE — Cash Receipts from Customer C-2 | [[#p.58 · 三笔 C-2 收款的结果\|p.58]] | W6-S058 |
+| W6 p.59 | Relational Algebra PROJECT in QBE Customer#, name, salesperson# | [[#p.59 · QBE 挑列：先加 Customer\|p.59]] | W6-S059 |
+| W6 p.60 | Relational Algebra PROJECT in QBE: Customer#, name, salesperson# | [[#p.60 · 挑列查询初始网格\|p.60]] | W6-S060 |
+| W6 p.61 | Relational Algebra PROJECT in QBE: Customer#, name, salesperson# | [[#p.61 · 留下编号、姓名、销售员号\|p.61]] | W6-S061 |
+| W6 p.62 | Relational Algebra PROJECT in QBE Customer#, name, salesperson# | [[#p.62 · QBE 三列结果\|p.62]] | W6-S062 |
+| W6 p.63 | Relational Algebra Inner Join in QBE: All details of customers and their salespeople | [[#p.63 · 内连接查询先加两张表\|p.63]] | W6-S063 |
+| W6 p.64 | Relational Algebra Inner Join in QBE: All details of customers and their salespeople | [[#p.64 · 核两表上方的连接线\|p.64]] | W6-S064 |
+| W6 p.65 | Relational Algebra Inner Join in QBE: All details of customers and their salespeople | [[#p.65 · 把两边所需列放到网格\|p.65]] | W6-S065 |
+| W6 p.66 | Relational Algebra Inner Join in QBE: All details of customers and their salespeople | [[#p.66 · 内连接的五行结果\|p.66]] | W6-S066 |
+| W6 p.67 | QBE with Mathematical Comparison Operator Cash Account# and Balances >=\$50,000 | [[#p.67 · 余额条件先选 Cash 表\|p.67]] | W6-S067 |
+| W6 p.68 | QBE with Mathematical Comparison Operator Cash Account# and Balances >= \$50,000 | [[#p.68 · 在 Balance 的 Criteria 写大于等于\|p.68]] | W6-S068 |
+| W6 p.69 | QBE with Mathematical Comparison Operator Cash Account# and Balances >=\$50,000 | [[#p.69 · 余额查询只返回 BA-8\|p.69]] | W6-S069 |
+| W6 p.70 | QBE with Mathematical Comparison on Character Attribute: Sales Not made by E-10 | [[#p.70 · 文本比较先加 Sale\|p.70]] | W6-S070 |
+| W6 p.71 | QBE with Mathematical Comparison on Character Attribute: Sales Not made by E-10 | [[#p.71 · 不等于条件放在 SalesRepNumber 下\|p.71]] | W6-S071 |
+| W6 p.72 | QBE with Mathematical Comparison on Character Attribute: Sales Not made by E-10 | [[#p.72 · 非 E-10 的两笔销售\|p.72]] | W6-S072 |
+| W6 p.73 | AND operator in QBE: Sales made before July 31 by Sales Rep E-10 | [[#p.73 · AND 查询先选 Sale\|p.73]] | W6-S073 |
+| W6 p.74 | AND operator in QBE: Sales made before July 31 by Sales Rep E-10 | [[#p.74 · 两个条件填在同一 Criteria 行\|p.74]] | W6-S074 |
+| W6 p.75 | AND operator in QBE: Sales made before July 31 by Sales Rep E-10 | [[#p.75 · AND 三笔：S-2、S-3、S-4\|p.75]] | W6-S075 |
+| W6 p.76 | OR operator in QBE: Sales made before July 31 OR by Sales Rep E-10 | [[#p.76 · OR 查询的来源仍是 Sale\|p.76]] | W6-S076 |
+| W6 p.77 | OR operator in QBE: Sales made before July 31 OR by Sales Rep E-10 | [[#p.77 · 两个条件分别放 Criteria 与 Or 行\|p.77]] | W6-S077 |
+| W6 p.78 | OR operator in QBE: Sales made before July 31 OR by Sales Rep E-10 | [[#p.78 · OR 六笔：S-1 至 S-6\|p.78]] | W6-S078 |
+| W6 p.79 | Aggregation SUM and Special Operator BETWEEN in QBE: Total Sales between July 15 and July 31 | [[#p.79 · 按日期段求销售总额\|p.79]] | W6-S079 |
+| W6 p.80 | Aggregation SUM and Special Operator BETWEEN in QBE: Total Sales between July 15 and July 31 | [[#p.80 · 只带 Date 和 Amount 进网格\|p.80]] | W6-S080 |
+| W6 p.81 | Aggregation SUM and Special Operator BETWEEN in QBE: Total Sales between July 15 and July 31 | [[#p.81 · 打开 Totals 行并设范围\|p.81]] | W6-S081 |
+| W6 p.82 | Aggregation SUM and Special Operator BETWEEN in QBE: Total Sales between July 15 and July 31 | [[#p.82 · Date 用 Where，Amount 用 Sum\|p.82]] | W6-S082 |
+| W6 p.83 | Aggregation SUM and Special Operator BETWEEN in QBE: Total Sales between July 15 and July 31 | [[#p.83 · 核最终两列的设置\|p.83]] | W6-S083 |
+| W6 p.84 | Aggregation SUM and Special Operator BETWEEN in QBE: Total Sales between July 15 and July 31 | [[#p.84 · 单个总计 52,600\|p.84]] | W6-S084 |
+| W6 p.85 | Other questions related to an expanded RAE model | [[#p.85 · 扩展 REA 查询分隔页\|p.85]] | 扩展查询分隔（标题 RAE 为课件字样） |
+| W6 p.86 | Adjusted Accounts Receivable Step 4 (using Nz to control null values) | [[#p.86 · 用 Nz 补应收桥中的空金额\|p.86]] | W6-S086 |
+| W6 p.87 | Accounts Payable Query Steps | [[#p.87 · 应付桥以购货扣付款和退货\|p.87]] | W6-S087 |
+| W6 p.88 | Query to identify highest and lowest selling inventory during a specific time period | [[#p.88 · 用所有存货找最高与并列最低\|p.88]] | W6-S088 |
+| W6 p.89 | Querying for Inventory Weighted Average Unit Cost (not for Financial Statement use) | [[#p.89 · 每种商品用总成本除总量\|p.89]] | W6-S089 |
+| W6 p.90 | Query to calculate number of days to fill selected sales orders | [[#p.90 · 先算订单履行日差，再平均\|p.90]] | W6-S090 |
+| W6 p.91 | Query to identify inventory items with no positive customer reactions | [[#p.91 · 找没有正面反馈的商品\|p.91]] | W6-S091 |
+| W6 p.92 | Query for number of sales calls made by each salesperson during a time period | [[#p.92 · 数每位销售员的拜访，保留零次\|p.92]] | W6-S092 |
+
+### 课堂时间与跨材料定位
 
 > **「课堂覆盖」列**：按 S19、R1、S21、S22、S23 的独立时钟更新；本批新增 S22/S23 不沿用旧三源授课日期。有讲、明确降权和未录到分开。
 > **「页面性质」列**：🖼️ = 纯图页或图占主体（**已逐页视觉复核**）；📕 = 封面页；🚩 = 章节分隔页；文字 = 可从文本提取拿到全部内容。
@@ -7549,7 +8289,7 @@ S22 三段覆盖源内 1,359 秒；S23 前两段为本篇 1,227 秒。区间含�
 | p.66 | 结果行序与 p.37 的关系代数答案**不同**（没写 Sort 时顺序不确定），讲义未提 |
 | p.20 | `Cascade Delete Related Records` **没有勾**，但讲义正文只解释了 Cascade Update，**完全没提 Delete**。初学者很可能三个都勾上 |
 | p.52 | 五个聚合函数**都没提怎么处理 Null**，而 p.86 那道题恰恰栽在这上面 |
-| p.88 | 蓝底说明建议 *"could refine further with Max and Min"*，**但没提醒 `MIN` 会忽略 Null** —— 直接对 `SumOfExtSaleAmt` 取 Min 会得到 \$140（LIS1），而不是零销售的 MIN1/TTP12 |
+| p.88 | 蓝底说明建议 *"could refine further with Max and Min"*，**但没提醒 `MIN` 会忽略 Null** —— 直接对 `SumOfExtSaleAmt` 取 Min 会得到 \$140（LIS1），并跳过 MIN1、TTP12 的空值；只有确认无销售才能先按 0 比较 |
 
 ### 9.4 课外补充
 

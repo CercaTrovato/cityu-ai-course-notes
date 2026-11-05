@@ -41,7 +41,7 @@ mechanism_review_date: 2026-10-18 # 保留历史日期，不代替本次审查
 
 > **本讲一句话**：当模型能力逐渐成为可购买的公共部件，企业差异转向“怎样把模型接进真实工作、怎样验证结果、谁对结果负责”；本讲后半定义的 FDE 就是把这条链从客户问题带到生产系统的人。
 >
-> **原始材料**：A=`IS5542 - GuestLecture2-Navigating the Agentic AI Era - CityU.pdf`（12 个物理页；页脚 1/13、2/13、3/13 后跳至 5/13）｜B=`IS5542 - GuestLecture2-FDE Sharing — Eddie Chan (Google Slides).pdf`（22 页）｜**转录**：`merged`（`M05-transcript-partial.txt`，668 段，`00:00`–`01:50:24`）
+> **原始材料**：A=`IS5542 - GuestLecture2-Navigating the Agentic AI Era - CityU.pdf`（12 个物理页；封面无印刷号；2/13、3/13 后跳至 5/13）｜B=`IS5542 - GuestLecture2-FDE Sharing — Eddie Chan (Google Slides).pdf`（22 页）｜**转录**：`merged`（`M05-transcript-partial.txt`，668 段，`00:00`–`01:50:24`）
 >
 > ✅ **材料 v1.0**：讲义全页已进入正文与 §8，source13 已全文对齐。录音首句已在 Eddie 的 FDE 讲授中段，缺正式开场；末尾 Warren 刚邀请一两题便截断，后续 Q&A 未知。本文不把讲义中的 2026 数字、倍率或市场判断写成已独立核验事实。2026-10-18 曾完成当时的全篇核对；该历史记录不替代本次独立教学审查，材料原有缺口保留。
 
@@ -112,9 +112,9 @@ mechanism_review_date: 2026-10-18 # 保留历史日期，不代替本次审查
 
 M03 讲系统怎样让 agent 可靠运行，M04 讲怎样找到值得解决的问题。本讲把两者接起来：先说明为什么企业价值从模型本身转向执行系统，再看谁负责把真实痛点变成生产结果，最后讨论个人怎样准备这种工作。
 
-讲义原顺序是 A 的宏观趋势 → 创业 → 职业，再进入 B 的个人经历 → FDE → 学习与择业。本笔记按“技术与市场变化 → 企业交付机制 → FDE 循环 → 学习与职业选择”重排。两个来源的物理页分别用 A1–A12 与 B1–B22 标识，不能把页码混成一套。
+预习从 [[#按课件逐页跟读|§2 逐页讲解]] 开始，再到相应主题复做机制、原题和算例。课中从 [[#8. 讲义页码映射|§8 页码表]] 跳到当前物理页。复习先用 [[#4. 速查表|§4 速查]]，再到 [[#7. 自测|§7 自测]] 检验理由。
 
-B2 的六章议程原文如下，完整保留标题和副标题：
+主题精读保留原案例和转录问答。先在 A 套分清观点与数据，再在 B 套复做交付循环。B2 的原议程仍见下方。
 
 1. **Self-Introduction** — Study Background → SWE
 2. **What is an FDE?** — PLTR to 2026 Boom
@@ -126,6 +126,314 @@ B2 的六章议程原文如下，完整保留标题和副标题：
 ---
 
 ## 2. 正文
+
+### 按课件逐页跟读
+
+A 是 Agentic AI 趋势与商业选择，B 是前线部署工程师的交付经验。页码各自从 1 开始，A 的页脚序号与 PDF 物理页有差异。
+
+**A 套 · Agentic AI 时代**
+
+#### A p.1 · The agentic AI era
+
+A 套讲义封面，从技术、创业与职业看 agentic AI。
+
+[[#2.1 先判材料主张，再谈趋势（A1–A3；累计 p.1–3）|读本页相关精读]]。
+
+#### A p.2 · Three pillars of the agentic era
+
+沿三列定位基础趋势、创业产品和个人路径。讲者的主张是执行系统、体验和人的判断成为价值来源，后页案例分别给不同证据。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p002.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p002.png|打开课件图示]]
+
+[[#2.1 先判材料主张，再谈趋势（A1–A3；累计 p.1–3）|读本页相关精读]]。
+
+#### A p.3 · The three-lab frontier & open weights
+
+左边柱是 arXiv 论文提及份额，42%、31%、23% 为讲义所列分组，9% 是中国开放权重旧基线。读份额需先核同一时期和分母；提及量不能当市场份额或模型能力。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p003.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p003.png|打开课件图示]]
+
+[[#2.1 先判材料主张，再谈趋势（A1–A3；累计 p.1–3）|读本页相关精读]]。
+
+#### A p.4 · Harnesses unlock 6x agent gains
+
+左框的固定模型实验强调环境、工具和状态能改变分数；右框列自动化研究例。6 倍、26% 和 10.4 倍分别测不同对象，属于讲义转述。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p004.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p004.png|打开课件图示]]
+
+[[#2.2 Harness、自我改进与基础设施边界（A4–A5；累计 p.4–5）|读本页相关精读]]。
+
+#### A p.5 · Physical AI & the energy wall
+
+左框从模拟训练到真实机器人，右框谈计算、电力和硬件。模拟里学会爬楼仍要在实机验证。融资、训练时长与资本支出各自有不同分母和场景。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p005.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p005.png|打开课件图示]]
+
+[[#2.2 Harness、自我改进与基础设施边界（A4–A5；累计 p.4–5）|读本页相关精读]]。
+
+#### A p.6 · The SaaSpocalypse & agentic work
+
+图左按席位付费，右按已解决工单或交付成果收费。先定义什么算合格成果，再把重试、审核和赔付纳入成本。US\$285B 指讲义所称上市 SaaS 公司的企业价值损失。变化原因和数值口径待核。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p006.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p006.png|打开课件图示]]
+
+[[#2.3 从按席位收费到按成果收费（A6；累计 p.6）|读本页相关精读]]。
+
+#### A p.7 · Models are chips · Harnesses are OS
+
+从上到下读运行层、模型与企业检索、算力与数据。上层用路由、沙箱和策略护栏协调任务，中间选模型和资料，下层保留运行记录。芯片和操作系统是讲者类比。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p007.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p007.png|打开课件图示]]
+
+[[#2.4 创业栈、体验与大湾区组合（A7–A9；累计 p.7–9）|读本页相关精读]]。
+
+#### A p.8 · Distribute experiences, not info
+
+左边两例分别从生成能力和感知接口起步。先确定用户通过输入完成什么，再设计交互和设备外形。用户能亲自完成任务，才有可验证体验。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p008.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p008.png|打开课件图示]]
+
+[[#2.4 创业栈、体验与大湾区组合（A7–A9；累计 p.7–9）|读本页相关精读]]。
+
+#### A p.9 · Born-global startups from HK
+
+三卡分别讲工程与调用成本、市场选择、团队组合。结合深圳原型和香港跨境资源是讲者建议。小队人数、额度与市场数字属于本页当时观点或陈述。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p009.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p009.png|打开课件图示]]
+
+[[#2.4 创业栈、体验与大湾区组合（A7–A9；累计 p.7–9）|读本页相关精读]]。
+
+#### A p.10 · Jobs are bundles of discrete tasks
+
+左表并列 GDP、劳动份额和知识职业影响，旁边另有任务四分类卡。左表的 50% 写的是认知任务，不是就业人数。这些是情景假设。讲义表中的 GDP 增幅也不能直接用首行金额复算，详见关联精读。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p010.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p010.png|打开课件图示]]
+
+[[#2.5 任务束、群体编排与验证（A10–A12；累计 p.10–12）|读本页相关精读]]。
+
+#### A p.11 · From coder to swarm orchestrator
+
+左图是人协调多项并行工作，右边先写规格、接口和验收，再查代理自报完成是否真的通过。可以将功能派给多个代理，合并前仍需统一测试。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p011.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p011.png|打开课件图示]]
+
+[[#2.5 任务束、群体编排与验证（A10–A12；累计 p.10–12）|读本页相关精读]]。
+
+#### A p.12 · Taste, grounding, and agility
+
+从 1–30 天审计任务，31–60 天做评测和接真实输入，61–90 天交付可用系统。按原图逐列判断当前应产出什么；这是讲者建议的练习节奏。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p012.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p012.png|打开课件图示]]
+
+[[#2.5 任务束、群体编排与验证（A10–A12；累计 p.10–12）|读本页相关精读]]。
+
+**B 套 · 前线部署工程师**
+
+#### B p.1 · Forward Deployed Engineer (FDE)
+
+B 套封面，转向 Eddie Chan 对前线部署工程师的说明。
+
+[[#2.6 FDE 的定义与个人路径（B1–B6；累计 p.13–18）|读本页相关精读]]。
+
+#### B p.2 · What We’ll Cover Today
+
+六卡给自介、定义、AI 时代的交付、学习、选择和问答。看每卡对应的下一组页，先理解角色再评价适配。
+
+[[#2.6 FDE 的定义与个人路径（B1–B6；累计 p.13–18）|读本页相关精读]]。
+
+#### B p.3 · From Classical Humanities to AI Engineering
+
+左边竹简对应古典文献分析，右边代码界面对应现代工程。讲者用两图说明同一人怎样从文本找结构走向软件和 AI 集成。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p015.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p015.png|打开课件图示]]
+
+[[#2.6 FDE 的定义与个人路径（B1–B6；累计 p.13–18）|读本页相关精读]]。
+
+#### B p.4 · About Me · Eddie Chan (Part 2)
+
+一列是继续学习工程和商业，另一列是解决真实问题。举例时把能做的技术与业务要改变的结果分开。
+
+[[#2.6 FDE 的定义与个人路径（B1–B6；累计 p.13–18）|读本页相关精读]]。
+
+#### B p.5 · The AlphaGo Story (2016)
+
+左栏 Move 37 是讲者兴趣起点，右栏依次写观看、转向自学、得到职业启发。个人经历说明一条可能路径。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p017.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p017.png|打开课件图示]]
+
+[[#2.6 FDE 的定义与个人路径（B1–B6；累计 p.13–18）|读本页相关精读]]。
+
+#### B p.6 · What is a Forward Deployed Engineer (FDE)?
+
+三件事是进入客户现场、诊断业务痛点、交付可运行成果。现场与生产代码是课件强调的边界；“几天”是讲者描述的速度目标，仍需过生产门槛。
+
+[[#英文定义题与讲义答案（B p.6）|直达本页原问与解析]]。
+
+#### B p.7 · Why is FDE the Hottest Job in 2026?
+
+从实验室招聘、原型卡在部署、结果价值三方面读讲者判断。80% 原型停滞是幻灯片陈述，未给该页分母和研究方法，不能当普遍概率。
+
+[[#FDE 市场趋势问句（B p.7）|直达本页原问与解析]]。
+
+#### B p.8 · What Problem Are FDEs Actually Solving?
+
+三列是问题诊断错误、真实数据和权限复杂、交接丢信息。比如客户说缺 chatbot，但卡点在旧订单系统数据访问；先核数据通路再搭原型。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p020.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p020.png|打开课件图示]]
+
+[[#交付问题及四步原题（B p.8–9）|直达本页原问与解析]]。
+
+#### B p.9 · What Do FDEs Actually Do?
+
+四格依次为观察用户和诊断、用真实数据原型、过安全和权限后部署、抽取可复用模块。若原型失败，回到诊断或验证假设。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p021.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p021.png|打开课件图示]]
+
+[[#交付问题及四步原题（B p.8–9）|直达本页原问与解析]]。
+
+#### B p.10 · FDE = Business × Technology
+
+左边业务语言含损益、投资回报和采用，右边技术含全栈、云和 AI。右侧 10 倍是讲者表达。应以同一业务基线量结果。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p022.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p022.png|打开课件图示]]
+
+[[#2.7 FDE 四步交付循环（B7–B12；累计 p.19–24）|读本页相关精读]]。
+
+#### B p.11 · In the AI Era, FDE Is a 10x Force Multiplier
+
+左列旧团队与右列一名 FDE 配代理是讲者对照。代理可做样板代码，人负责架构、生产验收与风险。3–6 天是讲义愿景，需要按场景实测。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p023.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p023.png|打开课件图示]]
+
+[[#2.7 FDE 四步交付循环（B7–B12；累计 p.19–24）|读本页相关精读]]。
+
+#### B p.12 · The Last-Mile Bridge & AI-Native Builder
+
+从模型能力到企业成果还需接数据、授权与评估。右边的下午现场演示用来快速拿反馈。B10 的下午生产代码、B11 的生产回报和这一页的演示各有完成条件。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p024.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p024.png|打开课件图示]]
+
+[[#2.7 FDE 四步交付循环（B7–B12；累计 p.19–24）|读本页相关精读]]。
+
+#### B p.13 · How to Become an FDE? How Do I Study?
+
+三列是做中学、用 AI 做苏格拉底式追问、主动推进。选择一个真实任务，自己写核心逻辑并验证输出。
+
+[[#FDE 学习方法原题（B p.13）|直达本页原问与解析]]。
+
+#### B p.14 · I Am Not Smart, I Am Well Trained
+
+左侧 GitHub 活动与右侧刷题截图说明持续练习。提交数量与刷题数量可作投入记录，实际能力还需看能否独立解释和复做。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p026.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p026.png|打开课件图示]]
+
+[[#2.8 48 小时学习循环（B13–B16；累计 p.25–28）|读本页相关精读]]。
+
+#### B p.15 · Learn Big Data with AI
+
+图右是课程仓库界面，左侧说明读资料、追问架构取舍、搭管线与模拟面试。用小管线跑通一个输入输出，再核哪一步靠自己完成。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p027.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p027.png|打开课件图示]]
+
+[[#2.8 48 小时学习循环（B13–B16；累计 p.25–28）|读本页相关精读]]。
+
+#### B p.16 · My 48-Hour Study Loop with Gemini Notebook
+
+四格从读资料画图、追问、自建小原型到两分钟说明业务结果。48 小时描述个人工作节奏，可验证的终点是原型和能讲清取舍。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p028.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p028.png|打开课件图示]]
+
+[[#2.8 48 小时学习循环（B13–B16；累计 p.25–28）|读本页相关精读]]。
+
+#### B p.17 · Why I Chose FDE · Management Grade
+
+讲者将管理岗位与一线构建比较，选择保留编码与客户接触。用是否愿意承担管理、协调和交付来判断自己，不把个人偏好推广成岗位定律。
+
+[[#讲者的职业选择问句（B p.17–18）|直达本页原问与解析]]。
+
+#### B p.18 · Why I Chose FDE · Back-Office Core SWE
+
+这一页改与核心软件工程比较。一个方向偏深而窄，另一个方向偏业务端到端；比较输入信息、反馈和责任范围。
+
+[[#讲者的职业选择问句（B p.17–18）|直达本页原问与解析]]。
+
+#### B p.19 · Should You Try the FDE Path?
+
+左栏看是否喜欢客户沟通、编码和快速验证，右栏看是否更想长期深耕固定主题。可用一次含真实需求访谈的小项目检验适配。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p031.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p031.png|打开课件图示]]
+
+[[#FDE 适配自检（B p.19）|直达本页原问与解析]]。
+
+#### B p.20 · How to Start Preparing at CityU Today
+
+三卡依次找真实痛点、掌握 AI 工作流、两分钟解释价值。量化节省时间时说明基线、工作量和核查样本。
+
+![[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p032.png]]
+
+[[IS5542_GenAI_in_Business/notes/figures/m05-lecture/p032.png|打开课件图示]]
+
+[[#在 CityU 开始准备的行动题（B p.20）|直达本页原问与解析]]。
+
+#### B p.21 · 3 Key Takeaways from Today
+
+三张卡归纳非计算机背景、商业与技术配合、保持动手。可用一个小交付说明怎样跨学科把需求变成可验证成果。
+
+[[#2.9 职业取舍、适配与行动（B17–B22；累计 p.29–34）|读本页相关精读]]。
+
+#### B p.22 · Q & A · Ask Me Anything
+
+B22 是开放问答入口，列职业转向、自学、FDE 面试和学习流程。具体问题来自本地部分转录，正文保留独立时间戳及答案边界。
+
+[[#课堂八组问答（B p.22 入口）|直达本页原问与解析]]。
+
+---
+
+**主题精读与课堂补充**
 
 ### 2.1 先判材料主张，再谈趋势（A1–A3；累计 p.1–3）
 
@@ -240,8 +548,8 @@ flowchart TD
 
 **🎙️ 课堂补充**（Warren，`01:09:02`–`01:10:16`、`01:23:33`–`01:35:02`，A 课上展开）
 
-- Warren 把 harness 解释为模型之上的全部应用设计，包括 prompt、结构与 orchestration：*"anything or everything you do to build your own application… [is] part of [the harness]"*（`01:09:02`–`01:09:15`）。
-- 他说算力扩展的根本约束是能源：*"the fundamental challenge… is actually energy"*（`01:32:49`–`01:33:07`）。
+- Warren 把 harness 解释为模型之上的全部应用设计，包括 prompt、结构与 orchestration。（`01:09:02`–`01:09:15`）。
+- 他说算力扩展的根本约束是能源：*"the fundamental challenge… is actually energy"*（`01:32:59`）。
 - 课堂花较多时间讨论 physical AI、机器人、芯片、数据中心和能源；A4 的 RSI `6x / 26% / 10.4x` 没有逐项口述核算。
 - **这段改变了什么**：课堂支持“执行层与基础设施共同限制落地”，但不验证讲义倍率。
 
@@ -279,15 +587,15 @@ Harness 把“模型会做”变成“系统可控地做”。下一节继续问
 
 **课件原例**
 
-A6 把两种模式并列：旧模式按每席位每月 50 美元收费；新模式按 resolved ticket、audit 或 trade 等成果收费。同页的 US\$285B SaaSpocalypse 与 Ramp token spend 96% 都是讲义报告性主张，页内没有完整来源口径。
+A6 把两种模式并列：旧模式按每席位每月 50 美元收费；新模式按 resolved ticket、audit 或 trade 等成果收费。同页的 US\$285B SaaSpocalypse 与 Ramp 所述 token 支出份额 96% 均是讲义主张，未给完整口径。同卡的 1050 亿美元是营收运行率，两种数字不能互作分母。
 
 **机制：一张工单怎样变成可结算成果**
 
 1. **输入**：客户提交“重复扣款”工单，系统读取账号、交易记录和退款政策。
-2. **执行**：agent 核对两笔交易是否同商户、同金额、同一结算周期。
-3. **分支**：证据齐全且金额低于审批上限，生成退款草案；证据冲突就升级给人工。
+2. **执行**：核同一订单的订单号、支付授权及实际入账记录。同商户、同金额、同周期只用于筛选候选。两笔不同订单可以同价，预授权也不能当第二笔入账。
+3. **分支**：已证实同一订单被实际扣款两次，并符合退款政策和金额限制时，才生成草案。证据冲突或资料不足时补查或转人工。
 4. **验证**：检查退款草案引用的交易号、金额、政策版本和应由谁审批；通过验证只说明草案符合当前检查，不表示已经退款。
-5. **批准与执行**：有权限的人确认后，由获授权支付系统执行并核对回执。支付失败或未获批准时，状态仍不能记为完成。
+5. **批准与执行**：用对应订单、金额与版本的批准授权支付。接口超时表示付款状态待核，应按同一退款请求查询支付回执或账本，未核实前不重发。明确失败也不计为完成。
 6. **输出**：只有客户收到正确处理、审计轨迹完整并满足约定验收条件时，才记为一个已接受成果（Accepted outcome）。本例把未解决返工单排除；现实合同也须先定义何时计费与退回规则。
 
 下面箭头是请求的控制路径；草案、付款与已验收结果是不同状态。
@@ -300,19 +608,26 @@ flowchart TD
  D --> E{草案通过且有权限人批准吗}
  E -- 否 --> C
  E -- 是 --> F[授权支付系统执行并核回执]
- F --> G{付款成功且满足验收吗}
- G -- 否 --> C
- G -- 是 --> H[登记已接受成果及审计轨迹]
+ F --> G{回执确认付款状态吗}
+ G -->|未确认| J[待核 按原退款请求查回执 不重发]
+ G -->|确认失败| C
+ G -->|确认成功| K{满足验收吗}
+ J --> L{查到新回执了吗}
+ L -->|没有| Z[保留待核 停止本轮 不重发]
+ L -->|已确认失败| C
+ L -->|已确认成功| K
+ K -->|否| C
+ K -->|是| H[登记已接受成果及审计轨迹]
 ```
 
-用本例走图：草案正确但审批人还没确认，停在待审批；审批通过后支付接口报错，则转人工处理，不能按成功工单计费。文字替代：先核证据，再核草案和批准，执行后还要验收，最后才计成果。
+用本例走图：草案正确但审批人还没确认，停在待审批；若接口超时，按原退款请求查回执，待核时不重发、不计费。若稍后查到成功回执，进入验收；确认失败才转处理。没查到新状态就保留待核。两笔同商户同金额但订单不同的真实购买应在证据检查处排除。
 
 这个过程的状态包括“待处理、需补资料、待人工审批、已完成、被退回”。把“模型已回复”当作“工单已解决”会夸大成果。
 
 **🎙️ 课堂补充**（Warren，`01:35:02`–`01:38:14`，约 3.2 分钟，A 课上展开）
 
 - Warren 先用 Salesforce 的客户关系管理（Customer Relationship Management, CRM，记录客户与销售流程）说明 SaaS 卖工具，客户自己完成工作（`01:35:25`–`01:36:59`）。
-- 他再给出结果导向的口语版：*"AI companies are selling or delivering results instead of delivering tools"*（`01:37:54`）。
+- 他再给出结果导向的口语版：*"AI companies are selling or delivering results instead of delivering tools"*（`01:37:54`–`01:38:02`）。
 - 他用“卖麦克风”与“交付一场讲座成果”作类比，也当场指出“六个月成为亿万富翁”的生成内容会是无效结果（`01:37:24`–`01:37:54`）。
 - **这段改变了什么**：补出了结果仍需人判断真实性的边界；课堂没有把 US\$285B 当成可投资结论。
 
@@ -401,7 +716,7 @@ A9 的“GBA formula”把深圳硬件原型速度、香港资本与合规入口
 
 任务束（Task Bundle）把一个岗位看成多个可分开的活动，例如收集数据、解释需求、写代码、验证结果和处理例外。A10 采用 Anthropic 的四类任务：不变、增强、自动化与新增任务。分类针对某项任务在给定流程里的完成方式，不给整个岗位永久贴标签。
 
-💡 笔记补充：以客服岗位为同一情境，安抚客户、协商责任仍由人完成，暂列不变；坐席自己判断、AI 提供草案或证据，列增强；AI 按已批准规则完成订单状态查询这项子任务，列自动化；部署 agent 后新增的日志抽查与失效测试，列新增。人工批准仍是单独的人类任务，不能因为前面有 AI 就把整条流程称全自动。若后来让 AI 在规则内独立完成查询并回报结果，变化的是查询子任务的分类，不代表高风险批准也自动化。
+💡 笔记补充：以客服岗位为同一情境，安抚客户、协商责任仍由人完成，暂列不变；起初由坐席查询订单状态，AI 提示去哪个页面查，属于增强。后来 AI 获只读权限，按规则独立查并返回状态，这个子任务转成自动化。部署后还可能新增日志抽查与失效测试。人工批准仍是独立任务；自动查订单不会扩大退款批准权限。
 
 群体编排（Swarm Orchestration）指一个人把不同子任务分给多个 AI agent，再整合和验证结果。A11 把工程师角色写成“AI 群体的产品经理和技术负责人”，重点从手写语法转向规格、接口与验证。
 
@@ -413,7 +728,11 @@ A9 的“GBA formula”把深圳硬件原型速度、香港资本与合规入口
 
 A10 给出四个 2030 场景，并报告美国国内生产总值（Gross Domestic Product, GDP，一段时期内的产出规模，不是工资总额）与劳动份额的变化。表中原值必须分三列读：GDP 水平、括号内“相对基准变化”、劳动份额。Baseline 写 US\$30.0T、0.0%、60.0%。Modest AI 写 US\$34.1T、+1.6%、59.4%。Substantial AI 写 US\$36.3T、+8.3%、56.1%。Extreme AI 写 US\$44.4T、+32.4%、45.2%。
 
-这些百分比不能从同表 US\$30.0T 直接算出。例如 $(34.1-30.0)/30.0\approx13.7\%$，不是 1.6%。三行增长率反推的比较基准也不一致，可能混用了其他时点或口径。原报告尚未核，因此本稿保留全部原值并登记疑点。劳动份额是国民收入中归劳动的比例，不是失业率。
+这些百分比不能从同表 US\$30.0T 直接算出。例如 $(34.1-30.0)/30.0\approx13.7\%$，不是 1.6%。三行按显示值反推约为 33.56T、33.52T、33.53T。因为金额和百分比有舍入，这些近似值仍可能来自同一比较基准。例如假设基准是 33.53T，分别乘 1.016、1.083、1.324，结果取一位小数可得 34.1T、36.3T、44.4T。这个计算只说明舍入可兼容，尚不能确定报告实际采用的分母。
+
+劳动份额是国民收入中归劳动的比例，与失业率的分母不同。
+
+左表最右列列出各情景的知识职业影响：传统初级岗位金字塔、渐进的生产率提升、50% 认知任务自动化且薪酬持平、15% 年增长并强调资本与编排者收益。50% 指任务，15% 的具体指标未注明。右上另有任务四分类卡。45.2% 是该情景的总体劳动份额，不能解释成编排者个人份额。
 
 A11 报告超过 50% Claude 会话用于编码之外的业务操作，并称实验室中接近一半的 agent “done” 声称隐藏缺陷。A12 因此提出 30–60–90 天路线：第 1–30 天审计任务束并学习 harness；第 31–60 天建立评测、检查边界/失败并连接机器人、传感器或金融业务资料；第 61–90 天发布能解决真实流程的 agent，并保持重新学习。这里的“连接真实感知”指系统把输入与真实对象/环境对上，不是只生成看似正确的文本。
 
@@ -495,6 +814,8 @@ B3–B5 是 Eddie Chan 的个人路径（其中 SWE 为软件工程师，Softwar
 
 这些页面是讲者自述，不代表非计算机专业一定能复刻同一路线。B5 的 `1-in-10,000 Creative Move` 同样是讲义叙述，本稿不扩展为已核概率结论。
 
+#### 英文定义题与讲义答案（B p.6）
+
 **英文原题（B6，完整保留）**
 
 > **What is a Forward Deployed Engineer (FDE)?**  
@@ -555,6 +876,8 @@ B8 列出企业 AI 项目的三类失败：问题选错、现实数据与安全�
 
 B7 用三组讲义主张解释 2026 FDE 热度：AI 实验室扩张 FDE、80% 概念验证（Proof of Concept, PoC）停滞、业务结果比语法稀缺。`80%` 未给来源与样本，不能当作全行业可复算比例。
 
+#### FDE 市场趋势问句（B p.7）
+
 **英文原题（B7，章节提问；非评分作业）**
 
 > **Why is FDE the Hottest Job in 2026?**  
@@ -568,15 +891,21 @@ B10 用“业务 × 技术”强调互补：只会写代码却选错问题，系
 
 讲义把这些业务能力与云、agent、RAG（先检索企业证据再生成答案）及数据科学放在一起；它没有证明每个 FDE 都能使客户利润提高 10 倍。
 
-B11 再把标题为“旧六人团队”的安排与“一名 FDE + AI coding agents”比较，写 `3–6 months` 到 `3–6 days`、`10x` 等叙述；这些是讲者的比较框架，不是普遍生产率保证。B11 列出的角色是 1 名产品经理（Product Manager，PM）、1 名业务分析师（Business Analyst，BA）、3 名后端／前端软件工程师，合计 5 人，与标题“6-Person”不一致；讲义没有列第六人，本稿不补造其职责。
+B11 再把标题为“旧六人团队”的安排与“一名 FDE + AI coding agents”比较，左侧写 3–6 个月交付 v1，右侧写 3–6 天产生 production ROI（生产投入回报）。B10 的下午生产代码、B12 的下午现场演示是另两个叙事点。代码完成、演示和实现回报的终点各异，不能用这些时长相除证明 10 倍。B11 列出的角色是 1 名产品经理（Product Manager，PM）、1 名业务分析师（Business Analyst，BA）、3 名后端／前端软件工程师，合计 5 人，与标题“6-Person”不一致；讲义没有列第六人，本稿不补造其职责。
 
 **机制图：四步如何闭环**
 
 ```mermaid
 flowchart TD
     A[1 诊断<br/>观察用户与流程] --> B[2 原型<br/>在真实数据上快速构建]
-    B --> C[3 部署<br/>安全 RBAC 评测与护栏]
-    C --> D[4 产品化<br/>抽取可复用模块]
+    B --> P{身份映射与权限验收通过吗}
+    P -->|否| R[拒绝错配 修原型或重查需求]
+    R --> B
+    P -->|是| C[3 受控部署<br/>监控权限 质量与回退]
+    C --> T{真实试点达到预设目标吗}
+    T -->|否| Z[停止相关动作 核失败证据]
+    Z --> A
+    T -->|是| D[4 产品化<br/>抽取可复用模块]
     D --> E{新客户是否出现<br/>相同模式}
     E -- 是 --> B
     E -- 否 --> A
@@ -590,10 +919,12 @@ flowchart TD
 
 1. **诊断**：跟坐席观察两天，发现真正瓶颈是客户身份验证后，坐席要在三个系统复制账户资料。目标改为“把核验后的账户摘要自动放进工单”。
 2. **原型**：在脱敏的 50 个历史工单上连接三个只读接口，输出账户摘要和来源链接。此时发现一个系统的客户编号有前导零。
-3. **部署**：加入 RBAC、审计日志、字段校验和 50 个固定案例评测。高风险字段只能生成草案，坐席确认后写回。
+3. **验证和部署**：若源系统分别返回 00123 与 123，先保留原编号。只有获授权的账户映射能证实同一身份时才合并；歧义阻断并交人工。原型的 50 例用于回归。另留未用过的验证案例，检查错配会被拒绝、越权写回会被拦截。通过门槛后才做受控试点，高风险字段先给草案，由有权坐席批准后写回。
 4. **产品化**：把身份映射、三系统读取和来源展示抽成模块。下一家同类客户可以复用模块，但仍要重新确认编号和权限。
 
-输出不是“一个 chatbot”，而是被用户采用、通过权限与评测的工作流。停止边界是上线门槛已满足；异常编号或权限冲突必须升级，不能由 agent 猜。
+输出不是“一个 chatbot”，而是被用户采用、通过权限与评测的工作流。若原型仍错配或越权，阻断上线并回修。若受控试点失败，暂停受影响操作，核证据后回到诊断。模式稳定才产品化。
+
+#### 交付问题及四步原题（B p.8–9）
 
 **英文原题（B8–B9，完整保留）**
 
@@ -684,9 +1015,11 @@ flowchart TD
 1. **摄入与制图**：读产品文档和现有客服流程，画出问题 → 检索 → 证据 → 回答。未知清单包括文档更新频率、权限和引用要求。
 2. **追问**：让 AI 比较关键词检索与向量检索，但要求每个结论给失败情境。自己核对关键文档，不把回答当来源。
 3. **构建**：用 20 条公开 FAQ 做最小检索原型，记录 top-k 结果，也就是每个问题返回最接近的 k 条候选文档；FAQ 是常见问题与答案（Frequently Asked Questions）。发现“取消订单”与“取消订阅”经常混淆。
-4. **两分钟陈述**：说明原型能缩短查找，但必须加产品类别过滤；20 条 FAQ 不能证明生产准确率。
+4. **两分钟陈述**：说明原型目标是减少查找。20 条 FAQ 只暴露两种取消任务的混淆，尚无提速数据。加产品类别过滤后，可让同一组任务走旧流程与原型，记录完成时长和误检。
 
 完成边界是能展示端到端路径和已知缺口，不是 48 小时后自称专家。
+
+#### FDE 学习方法原题（B p.13）
 
 **英文原题（B13，完整保留）**
 
@@ -747,6 +1080,8 @@ B17 的左栏把 Engineering Manager 写成日历、会议和组织政治，右�
 
 这些对照反映讲者个人选择，不能推成所有工程经理停止构建、所有核心 SWE 与客户隔绝。B19 本身也说 `Other Paths Fit Better`，承认不同偏好对应不同道路。
 
+#### 讲者的职业选择问句（B p.17–18）
+
 **英文原题（B17–B18，章节提问；非评分作业）**
 
 > **Why I Chose FDE — And Not Management Grade**  
@@ -760,6 +1095,8 @@ B17 的左栏把 Engineering Manager 写成日历、会议和组织政治，右�
 > **English reference answer for B17（笔记自拟；非官方原句）**: Eddie chose FDE over management because he wanted to remain hands-on with technology while still influencing business strategy and executive decisions.
 >
 > **English reference answer for B18（笔记自拟；非官方原句）**: He preferred FDE to a back-office core software role because it offered end-to-end ownership, direct user feedback, and a way to combine engineering with business judgment.
+
+#### FDE 适配自检（B p.19）
 
 **英文原题（B19，完整题面与全部陈述）**
 
@@ -787,6 +1124,8 @@ B17 的左栏把 Engineering Manager 写成日历、会议和组织政治，右�
 **English reference answer（笔记自拟；非官方答案）**
 
 > I should consider the FDE path if I enjoy ambiguous business-and-technology problems, direct user interaction, rapid prototyping, and end-to-end ownership. If I prefer stable specifications, long-term depth in one topic, and limited client-facing work, another engineering or research path may fit me better.
+
+#### 在 CityU 开始准备的行动题（B p.20）
 
 **B20 原题与讲义给定答案**
 
@@ -817,6 +1156,10 @@ B17 的左栏把 Engineering Manager 写成日历、会议和组织政治，右�
 B22 页面原文为 “Q & A — Ask Me Anything!”、“Thank You! Let’s Talk About Your Career & Questions”，主题列为 Career Pivot、Self-Learning SWE、FDE Interviews、Gemini Study Workflow。它们是开放邀请，不是四道已有固定答案的题。
 
 以下英文按自动语音识别（ASR）文本逐段保留，语法不静默美化；听不清处只保留可辨部分。答案是对 Eddie 当场回答的中文整理，英文句为笔记自拟参考答案。
+
+#### 课堂八组问答（B p.22 入口）
+
+B22 请同学现场提问，课件本身没有列八道题。以下按转录时间读可辨的问题和回答，残缺问题只按现有片段解释。
 
 #### Q1 · 项目创意（29:15–29:49）
 
@@ -964,9 +1307,9 @@ B22 页面原文为 “Q & A — Ask Me Anything!”、“Thank You! Let’s Tal
 
 **课件原例**
 
-两份 PDF 没有这组内容；它来自 Warren 的课堂展开（`01:11:24`–`01:23:06`）。讲者举例说，某 AI startup 技术岗位的薪酬总包约为 US\$50k–100k／年，并用 ×8 粗略换算为约 HK\$400k–800k／年（`01:15:31`–`01:16:38`）。他紧接着说明，US\$100k 不会全部以现金支付，部分会是 options / equities（`01:17:08`–`01:17:41`）。因此当前可支付现金金额未知；×8 只是总包的课堂近似换算，不是实时汇率报价。
+两份 PDF 没有这组内容；它来自 Warren 的课堂展开（`01:11:24`–`01:23:06`）。讲者举例说，一家融资约 US\$5m–10m 的中国 AI 初创公司技术岗，总包估计约为 US\$50k–100k／年，并用 ×8 粗略换算为约 HK\$400k–800k／年（`01:15:31`–`01:16:38`）。他紧接着说明，US\$100k 不会全部以现金支付，部分会是 options / equities（`01:17:08`–`01:17:41`）。因此当前可支付现金金额未知；×8 只是总包的课堂近似换算，不是实时汇率报价。
 
-另一个案例中，创始人每月只给自己 HK\$15k 现金；公司名义估值为 US\$20m，他声称拥有 60%（`01:18:47`–`01:19:21`）。US\$20m 是公司纸面估值。按最简单乘法得到的 US\$12m 才是个人纸面权益。这个数没有扣稀释、税、优先权，也不说明股份今天能卖出。
+另一个例子是讲者投资的一位创业者。按讲者转述，此人每月给自己 HK\$15k 现金（01:19:19），公司名义估值为 US\$20m，持有 60%（`01:18:47`–`01:19:21`）。US\$20m 是公司纸面估值。按最简单乘法得到的 US\$12m 才是个人纸面权益。这个数没有扣稀释、税、优先权，也不说明股份今天能卖出。
 
 表里一行是一种价值；“现在能否使用”按课堂时点判断。
 
@@ -992,8 +1335,8 @@ B22 页面原文为 “Q & A — Ask Me Anything!”、“Thank You! Let’s Tal
 
 **🎙️ 课堂补充**（Warren，`01:11:24`–`01:23:06`，讲义无对应页）
 
-- Warren 把 startup 薪酬概括成少拿当前现金、换取未来上行：*"you're trading your cash now and betting on the future of that company"*（`01:18:09`–`01:18:20`）。
-- 他用年薪、创始人低月薪和公司纸面估值举例，并说 *"this is the math you have to figure [out]"*（`01:19:21`）。
+- Warren 把 startup 薪酬概括成少拿当前现金、换取未来上行：*"you're trading your cash now and betting on the future of that company"*（`01:18:14`）。
+- 他用岗位总包、创业者的月现金与公司纸面估值举例，并说 *"this is the math you have to figure it out"*（`01:19:21`）。
 - 他后续把期权价格上涨和持股随估值上升讲得很直接（`01:25:31`–`01:28:51`）。这是一种简化叙述；真实回报还受稀释、行权、税、优先权和能否退出影响。
 - **这段改变了什么**：把“加入 startup 可能赚很多”拆成当期现金与有条件的未来价值，避免把讲者轶事当收益保证。
 
@@ -1211,6 +1554,48 @@ flowchart TD
 
 ## 8. 讲义页码映射
 
+先分 A 套与 B 套，再按 PDF 物理页找入口。若课堂报的是 A 套印刷 5/13，请到物理 A p.4 的 harness 讨论。手头 A 套从印刷 3/13 跳到 5/13，跳号原因未确认。
+
+| 物理页 | 源页脚 | 原页标题 | 本页讲解 | 图与页型 |
+|---|---|---|---|---|
+| A p.1 | — | The agentic AI era | [[#A p.1 · The agentic AI era\|定位]] | A 套封面，城市插画作装饰 |
+| A p.2 | 2/13 | Three pillars of the agentic era | [[#A p.2 · Three pillars of the agentic era\|定位]] | 课件原图 p002 |
+| A p.3 | 3/13 | The three-lab frontier & open weights | [[#A p.3 · The three-lab frontier & open weights\|定位]] | 课件原图 p003 |
+| A p.4 | 5/13 | Harnesses unlock 6x agent gains | [[#A p.4 · Harnesses unlock 6x agent gains\|定位]] | 课件原图 p004 |
+| A p.5 | 6/13 | Physical AI & the energy wall | [[#A p.5 · Physical AI & the energy wall\|定位]] | 课件原图 p005 |
+| A p.6 | 7/13 | The SaaSpocalypse & agentic work | [[#A p.6 · The SaaSpocalypse & agentic work\|定位]] | 课件原图 p006 |
+| A p.7 | 8/13 | Models are chips · Harnesses are OS | [[#A p.7 · Models are chips · Harnesses are OS\|定位]] | 课件原图 p007 |
+| A p.8 | 9/13 | Distribute experiences, not info | [[#A p.8 · Distribute experiences, not info\|定位]] | 课件原图 p008 |
+| A p.9 | 10/13 | Born-global startups from HK | [[#A p.9 · Born-global startups from HK\|定位]] | 课件原图 p009 |
+| A p.10 | 11/13 | Jobs are bundles of discrete tasks | [[#A p.10 · Jobs are bundles of discrete tasks\|定位]] | 课件原图 p010 |
+| A p.11 | 12/13 | From coder to swarm orchestrator | [[#A p.11 · From coder to swarm orchestrator\|定位]] | 课件原图 p011 |
+| A p.12 | 13/13 | Taste, grounding, and agility | [[#A p.12 · Taste, grounding, and agility\|定位]] | 课件原图 p012 |
+| B p.1 | 1/22 | Forward Deployed Engineer (FDE) | [[#B p.1 · Forward Deployed Engineer (FDE)\|定位]] | B 套封面 |
+| B p.2 | 2/22 | What We’ll Cover Today | [[#B p.2 · What We’ll Cover Today\|定位]] | 文字讲解；无独立教学原图 |
+| B p.3 | 3/22 | From Classical Humanities to AI Engineering | [[#B p.3 · From Classical Humanities to AI Engineering\|定位]] | 课件原图 p015 |
+| B p.4 | 4/22 | About Me · Eddie Chan (Part 2) | [[#B p.4 · About Me · Eddie Chan (Part 2)\|定位]] | 文字讲解；无独立教学原图 |
+| B p.5 | 5/22 | The AlphaGo Story (2016) | [[#B p.5 · The AlphaGo Story (2016)\|定位]] | 课件原图 p017 |
+| B p.6 | 6/22 | What is a Forward Deployed Engineer (FDE)? | [[#B p.6 · What is a Forward Deployed Engineer (FDE)?\|定位]] | 文字讲解；无独立教学原图 |
+| B p.7 | 7/22 | Why is FDE the Hottest Job in 2026? | [[#B p.7 · Why is FDE the Hottest Job in 2026?\|定位]] | 文字讲解；无独立教学原图 |
+| B p.8 | 8/22 | What Problem Are FDEs Actually Solving? | [[#B p.8 · What Problem Are FDEs Actually Solving?\|定位]] | 课件原图 p020 |
+| B p.9 | 9/22 | What Do FDEs Actually Do? | [[#B p.9 · What Do FDEs Actually Do?\|定位]] | 课件原图 p021 |
+| B p.10 | 10/22 | FDE = Business × Technology | [[#B p.10 · FDE = Business × Technology\|定位]] | 课件原图 p022 |
+| B p.11 | 11/22 | In the AI Era, FDE Is a 10x Force Multiplier | [[#B p.11 · In the AI Era, FDE Is a 10x Force Multiplier\|定位]] | 课件原图 p023 |
+| B p.12 | 12/22 | The Last-Mile Bridge & AI-Native Builder | [[#B p.12 · The Last-Mile Bridge & AI-Native Builder\|定位]] | 课件原图 p024 |
+| B p.13 | 13/22 | How to Become an FDE? How Do I Study? | [[#B p.13 · How to Become an FDE? How Do I Study?\|定位]] | 文字讲解；无独立教学原图 |
+| B p.14 | 14/22 | I Am Not Smart, I Am Well Trained | [[#B p.14 · I Am Not Smart, I Am Well Trained\|定位]] | 课件原图 p026 |
+| B p.15 | 15/22 | Learn Big Data with AI | [[#B p.15 · Learn Big Data with AI\|定位]] | 课件原图 p027 |
+| B p.16 | 16/22 | My 48-Hour Study Loop with Gemini Notebook | [[#B p.16 · My 48-Hour Study Loop with Gemini Notebook\|定位]] | 课件原图 p028 |
+| B p.17 | 17/22 | Why I Chose FDE · Management Grade | [[#B p.17 · Why I Chose FDE · Management Grade\|定位]] | 文字讲解；无独立教学原图 |
+| B p.18 | 18/22 | Why I Chose FDE · Back-Office Core SWE | [[#B p.18 · Why I Chose FDE · Back-Office Core SWE\|定位]] | 文字讲解；无独立教学原图 |
+| B p.19 | 19/22 | Should You Try the FDE Path? | [[#B p.19 · Should You Try the FDE Path?\|定位]] | 课件原图 p031 |
+| B p.20 | 20/22 | How to Start Preparing at CityU Today | [[#B p.20 · How to Start Preparing at CityU Today\|定位]] | 课件原图 p032 |
+| B p.21 | 21/22 | 3 Key Takeaways from Today | [[#B p.21 · 3 Key Takeaways from Today\|定位]] | 文字讲解；无独立教学原图 |
+| B p.22 | 22/22 | Q & A · Ask Me Anything | [[#B p.22 · Q & A · Ask Me Anything\|定位]] | 开放问答入口；无印刷固定题面 |
+
+<details>
+<summary>原有主题与课堂对应</summary>
+
 本表同时保留原件页码与机械累计索引。累计 p.1–12 对应 A1–A12；累计 p.13–34 对应 B1–B22。累计索引只供双 deck 覆盖检查，不把 B1 改称原件 p.13。
 
 | 原件物理页 | 累计页 | 正文落位 | 实质内容 | 课堂覆盖 |
@@ -1264,6 +1649,8 @@ flowchart TD
 | Warren：创业经济与基础设施 | `01:11:24`–`01:35:02` | 23.6 min | 21.4% |
 | Warren：SaaS、香港与职业 | `01:35:02`–`01:50:24` | 15.4 min | 13.9% |
 
+</details>
+
 ---
 
 ## 9. 延伸与勘误
@@ -1293,7 +1680,7 @@ flowchart TD
 | 5 | 学生问怎样找到有趣项目；Eddie 建议从兴趣和生活痛点出发 | ~2.0 min | `29:15`–`31:13` | §2.9 | 把空泛职业建议变成起步方法 |
 | 6 | Warren 投资的团队 pivot 后三天产生 700 美元收入 | ~0.8 min | `01:49:26`–`01:50:12` | §2.5 | 是讲者轶事，不是普遍商业回报 |
 
-第 3 条的原话涉及多种币种和频率：讲者举例年薪 5–10 万美元，并按 ×8 口算为约 40–80 万港元／年；另一个案例是现金 1.5 万港元／月与不可直接兑现的纸面股权。正文不把股权随融资同倍增长写成一般公式。
+第 3 条的原话涉及多种币种和频率：讲者举例年总包 5–10 万美元，并按 ×8 口算为约 40–80 万港元／年；另一个案例是现金 1.5 万港元／月与不可直接兑现的纸面股权。正文不把股权随融资同倍增长写成一般公式。
 
 ### 9.3 课件自身的问题与证据边界
 

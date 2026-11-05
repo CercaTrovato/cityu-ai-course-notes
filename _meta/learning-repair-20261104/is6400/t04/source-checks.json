@@ -1,0 +1,46 @@
+{
+  "schema": "note-source-checks-v1",
+  "sources": {
+    "NB": {
+      "path": "../../../../IS6400_Business_Data_Analytics/course_files_export/Week4_Feature_Engineering_Tutorial.ipynb",
+      "sha256": "b41b08f5c22afb59286ad7c522e9cb0f70dc4de635b3a961298661d66c57376f"
+    }
+  },
+  "questions": [
+    {
+      "id": "Cell6-pairplot",
+      "source_id": "NB",
+      "section": "2.1",
+      "original": "which features are most representative?",
+      "options": {},
+      "answers": [
+        {
+          "id": "pairplot",
+          "chinese": "图形只能提候选",
+          "english": "Petal length and width look most informative in the displayed pairplot"
+        }
+      ]
+    },
+    {
+      "id": "Cell13-two-splits",
+      "source_id": "NB",
+      "section": "2.5",
+      "original": "We will evaluate the two PPT cases:\n- **Case 1:** Petal-W <= 0.8 (Perfect split)\n- **Case 2:** Sepal-L <= 6.0 (Imperfect split from the in-class quiz)",
+      "options": {},
+      "answers": [
+        {
+          "id": "Case1",
+          "chinese": "比较两刀的加权 Gini 和熵增益；前者越低、后者越高",
+          "english": "Case 1 has two pure children, a weighted Gini of zero and an information gain of approximately 0.9183 bits."
+        },
+        {
+          "id": "Case2",
+          "chinese": "同一二分类标签下",
+          "english": "For Case 2 only the left child is mixed; the right child contains only Non-Setosa. Its weighted Gini and information gain are approximately 0.2921 and 0.3315 bits."
+        }
+      ]
+    }
+  ],
+  "candidate_sha256": "ed23875f23d54bf847c093423659a21a9d11b07cbc6075e5422b1ee6f37febd7",
+  "scope": "现行公开课堂问句和给定比较案例；四道评分题不纳入课堂执行，另见 source-verification.json。"
+}

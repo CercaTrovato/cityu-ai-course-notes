@@ -1,0 +1,420 @@
+{
+  "source": "IS6400_Business_Data_Analytics/course_files_export/Week4_Feature_Engineering_Tutorial.ipynb",
+  "source_sha256": "b41b08f5c22afb59286ad7c522e9cb0f70dc4de635b3a961298661d66c57376f",
+  "candidate_sha256": "ed23875f23d54bf847c093423659a21a9d11b07cbc6075e5422b1ee6f37febd7",
+  "baseline_sha256": "241fea30d8030adac9cf21b0f3d15c238d1321a0e7184d155b5198615f012753",
+  "cells": [
+    {
+      "number": 1,
+      "cell_type": "markdown",
+      "source_sha256": "cb6a0001b201ebe7031277d22425fcbfaaa2c01cdcc6a199b4e9242c085a6ebe",
+      "candidate_anchor": "0. 这个 notebook 在教什么",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 2,
+      "cell_type": "markdown",
+      "source_sha256": "50b7ab17ac5265d0f1ba698c74f2550a790e95f621291d12ddbc67c752188566",
+      "candidate_anchor": "2.1 【当前 cells 3–8】导入、读数据、配对图、切 X / y",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 3,
+      "cell_type": "code",
+      "source_sha256": "6bd002dafe81bd8b7eb565972a6fec3426c3abe7ea808286979d6446e553c1fc",
+      "candidate_anchor": "2.1 【当前 cells 3–8】导入、读数据、配对图、切 X / y",
+      "saved_outputs": [
+        "stream"
+      ],
+      "disposition": "教学"
+    },
+    {
+      "number": 4,
+      "cell_type": "markdown",
+      "source_sha256": "501212984ec09f4b5a6ad7aec6b19dd7febf01cd4fe5958a39aceb63f33cfe8b",
+      "candidate_anchor": "2.1 【当前 cells 3–8】导入、读数据、配对图、切 X / y",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 5,
+      "cell_type": "code",
+      "source_sha256": "10cdf1b303709dcb387c0a0cb876ed38abe01f9549bd28d611545ba890abb594",
+      "candidate_anchor": "2.1 【当前 cells 3–8】导入、读数据、配对图、切 X / y",
+      "saved_outputs": [
+        "execute_result"
+      ],
+      "disposition": "教学"
+    },
+    {
+      "number": 6,
+      "cell_type": "code",
+      "source_sha256": "979022568c6bb9264e0dd45ab354fbf0f9808e1950455605c6156c0ac1e581b6",
+      "candidate_anchor": "2.1 【当前 cells 3–8】导入、读数据、配对图、切 X / y",
+      "saved_outputs": [
+        "execute_result",
+        "display_data"
+      ],
+      "disposition": "教学"
+    },
+    {
+      "number": 7,
+      "cell_type": "markdown",
+      "source_sha256": "da1bb4df665013d5e52cdbf9b0aee11b1391b19e180aaaba62099090a2c1140a",
+      "candidate_anchor": "2.1 【当前 cells 3–8】导入、读数据、配对图、切 X / y",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 8,
+      "cell_type": "code",
+      "source_sha256": "ce6809b0b17e1a67adefef01dc224661bcdaf8cb38b513c32f058c038ec61732",
+      "candidate_anchor": "2.1 【当前 cells 3–8】导入、读数据、配对图、切 X / y",
+      "saved_outputs": [
+        "display_data"
+      ],
+      "disposition": "教学"
+    },
+    {
+      "number": 9,
+      "cell_type": "markdown",
+      "source_sha256": "b9305698ee608ece5781331d61809699dcf453f3543b59036c68b3529372c4b3",
+      "candidate_anchor": "2.2 【当前 cell 10】SelectKBest：按卡方分数留两列",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 10,
+      "cell_type": "code",
+      "source_sha256": "dd659cfe21e504441f14d50a7e81448b28a7984a15abd377c83bec6ff4192fe3",
+      "candidate_anchor": "2.2 【当前 cell 10】SelectKBest：按卡方分数留两列",
+      "saved_outputs": [
+        "execute_result"
+      ],
+      "disposition": "教学"
+    },
+    {
+      "number": 11,
+      "cell_type": "markdown",
+      "source_sha256": "926ee83e966ece5a0ed5b86f86667e722d38773f10f534eacc0d3228907dd52e",
+      "candidate_anchor": "2.3 【当前 cell 12】看选中了谁",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 12,
+      "cell_type": "code",
+      "source_sha256": "97a77aac8a9287a0cd8b050660bfc9fb39c23108968f29d891cb009424711f8b",
+      "candidate_anchor": "2.3 【当前 cell 12】看选中了谁",
+      "saved_outputs": [
+        "display_data"
+      ],
+      "disposition": "教学"
+    },
+    {
+      "number": 13,
+      "cell_type": "markdown",
+      "source_sha256": "bc9fdac1e4c1e108179069919dfa74890a2878efc574a47119c08443f30ad0fd",
+      "candidate_anchor": "2.5 【当前 cells 13–14】二分类分裂：Gini 与信息增益",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 14,
+      "cell_type": "code",
+      "source_sha256": "c5de9c6c0c71ce75620331bb9179debfeff7973cc7b3aef63f8f6f452098c7e5",
+      "candidate_anchor": "2.5 【当前 cells 13–14】二分类分裂：Gini 与信息增益",
+      "saved_outputs": [
+        "display_data"
+      ],
+      "disposition": "教学"
+    },
+    {
+      "number": 15,
+      "cell_type": "markdown",
+      "source_sha256": "4c2e62d3d3abe94c32ae5b263eddc59eafd0040a21d8b942ffcb5a85af5934ba",
+      "candidate_anchor": "2.6 【当前 cells 15–17】阈值图、二分类口径与源勘误",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 16,
+      "cell_type": "code",
+      "source_sha256": "a752467e855c6723b63fcbad94230142d3b3e0268f0b196783c6b76a94df8133",
+      "candidate_anchor": "2.6 【当前 cells 15–17】阈值图、二分类口径与源勘误",
+      "saved_outputs": [
+        "display_data"
+      ],
+      "disposition": "教学"
+    },
+    {
+      "number": 17,
+      "cell_type": "markdown",
+      "source_sha256": "9789948230f84487f2e5d0c133503d3831b4b02b0303969dce9c9296e8f8fc1e",
+      "candidate_anchor": "2.6 【当前 cells 15–17】阈值图、二分类口径与源勘误",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 18,
+      "cell_type": "markdown",
+      "source_sha256": "5a2bf3822f4e62062e0016790a1f8da10e6e3962ef21621ebad46c187530b151",
+      "candidate_anchor": "3.1 【当前 cells 19–22】导入树模型、重读数据、转 numpy、压平 y",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 19,
+      "cell_type": "code",
+      "source_sha256": "a05f384bf6c351946e14b7656042bc85abddc3b8deb21ad6b18e816e7a106bb8",
+      "candidate_anchor": "3.1 【当前 cells 19–22】导入树模型、重读数据、转 numpy、压平 y",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 20,
+      "cell_type": "markdown",
+      "source_sha256": "c696ed3010ca73fc500a2ca8bbefa2a671b2866276850d943242a99f842938f1",
+      "candidate_anchor": "3.1 【当前 cells 19–22】导入树模型、重读数据、转 numpy、压平 y",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 21,
+      "cell_type": "code",
+      "source_sha256": "b9a882d79fd3524666a7e169e618df5d85c84da2359c9274b266d426786e2da0",
+      "candidate_anchor": "3.1 【当前 cells 19–22】导入树模型、重读数据、转 numpy、压平 y",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 22,
+      "cell_type": "code",
+      "source_sha256": "771591adefc79b37a029e55a8b05878e61376d61dadea73efb8a29410ac41e68",
+      "candidate_anchor": "3.1 【当前 cells 19–22】导入树模型、重读数据、转 numpy、压平 y",
+      "saved_outputs": [
+        "execute_result"
+      ],
+      "disposition": "教学"
+    },
+    {
+      "number": 23,
+      "cell_type": "markdown",
+      "source_sha256": "184a5723aa66f418ad21fe1a233a66360c95dca0dcfe78db6df7309461233057",
+      "candidate_anchor": "3.2 【当前 cell 24】ExtraTreesClassifier：让 50 棵树给特征打分",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 24,
+      "cell_type": "code",
+      "source_sha256": "d65fa83afb6c7393af4ee28b6b2b145ff42516c32c8947f77213f996c61b15f3",
+      "candidate_anchor": "3.2 【当前 cell 24】ExtraTreesClassifier：让 50 棵树给特征打分",
+      "saved_outputs": [
+        "execute_result"
+      ],
+      "disposition": "教学"
+    },
+    {
+      "number": 25,
+      "cell_type": "markdown",
+      "source_sha256": "6e2b0da47696d12002c56c34391cd94903dbcb5c3c3470be2da5ad624ddb8f58",
+      "candidate_anchor": "3.3 【当前 cell 26】SelectFromModel：按分数阈值取列",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 26,
+      "cell_type": "code",
+      "source_sha256": "b778399c18c31dc9190c8773ea6bd42054004430709c71563eba035b796af3c2",
+      "candidate_anchor": "3.3 【当前 cell 26】SelectFromModel：按分数阈值取列",
+      "saved_outputs": [
+        "display_data"
+      ],
+      "disposition": "教学"
+    },
+    {
+      "number": 27,
+      "cell_type": "markdown",
+      "source_sha256": "b342af9b31734378e5d69ede9ba74e80a11b3cb892b94cc851641f6ca421603f",
+      "candidate_anchor": "3.4 【当前 cells 28–29】RFE：递归特征剔除",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 28,
+      "cell_type": "code",
+      "source_sha256": "8d647cfb46a0a71da71a206527d6bd02ddd88513505605dc800a3914427ca9cf",
+      "candidate_anchor": "3.4 【当前 cells 28–29】RFE：递归特征剔除",
+      "saved_outputs": [
+        "display_data"
+      ],
+      "disposition": "教学"
+    },
+    {
+      "number": 29,
+      "cell_type": "code",
+      "source_sha256": "9e578b8676718082be7007e71e8503eabd196665564a301d777da434ced57df7",
+      "candidate_anchor": "3.4 【当前 cells 28–29】RFE：递归特征剔除",
+      "saved_outputs": [
+        "display_data"
+      ],
+      "disposition": "教学"
+    },
+    {
+      "number": 30,
+      "cell_type": "markdown",
+      "source_sha256": "8739d8b50e172e2e9b60c7f18947ddbed69c691cc7462ab571ceba1a0ff5a9af",
+      "candidate_anchor": "4.1 【当前 cells 31–34】PCA：4 列变 2 列",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 31,
+      "cell_type": "code",
+      "source_sha256": "a605c52bd9c894555fd42582f15d60890b25c49fa316be781098c163a79f662b",
+      "candidate_anchor": "4.1 【当前 cells 31–34】PCA：4 列变 2 列",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 32,
+      "cell_type": "markdown",
+      "source_sha256": "511d41ea9a707ebd406d2c9c1cf2b42c18d0a7462ca788f4a7b8b3e4026c0379",
+      "candidate_anchor": "4.1 【当前 cells 31–34】PCA：4 列变 2 列",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 33,
+      "cell_type": "code",
+      "source_sha256": "534d32aeecd387ddff8321e25929528e93bbec78214c44a3b9028709cfeceeb0",
+      "candidate_anchor": "4.1 【当前 cells 31–34】PCA：4 列变 2 列",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 34,
+      "cell_type": "code",
+      "source_sha256": "fa9ec37027debf64bb687faf47e0d93e89c6ccbd0aef4f95c1da951ac8d91753",
+      "candidate_anchor": "4.1 【当前 cells 31–34】PCA：4 列变 2 列",
+      "saved_outputs": [
+        "display_data"
+      ],
+      "disposition": "教学"
+    },
+    {
+      "number": 35,
+      "cell_type": "code",
+      "source_sha256": "9648dadb2077b90972e4c494f6decee31ae66eee77e7fd7dbe520b8a492f97ed",
+      "candidate_anchor": "4.2 【当前 cells 35–37】把 z1、z2 接回表、按类别画散点",
+      "saved_outputs": [
+        "execute_result"
+      ],
+      "disposition": "教学"
+    },
+    {
+      "number": 36,
+      "cell_type": "markdown",
+      "source_sha256": "3c7b78f3cadd1e4d0b92eb51d73378ea4db9a9d5664bc2d853c15823e259fc1e",
+      "candidate_anchor": "4.2 【当前 cells 35–37】把 z1、z2 接回表、按类别画散点",
+      "saved_outputs": [],
+      "disposition": "教学"
+    },
+    {
+      "number": 37,
+      "cell_type": "code",
+      "source_sha256": "cad98a70e7eeee5a97f0337b526e64baba95f0488d2cad604304cb1b9cdc503b",
+      "candidate_anchor": "4.2 【当前 cells 35–37】把 z1、z2 接回表、按类别画散点",
+      "saved_outputs": [
+        "display_data"
+      ],
+      "disposition": "教学"
+    },
+    {
+      "number": 38,
+      "cell_type": "markdown",
+      "source_sha256": "e0f37595c1a3301ed04b5a92965161843b31c9e1c3a15206e560e07f95912156",
+      "candidate_anchor": "8.1 评分段材料边界",
+      "saved_outputs": [],
+      "disposition": "现行评分区只读"
+    },
+    {
+      "number": 39,
+      "cell_type": "markdown",
+      "source_sha256": "04242fec83c4d4ee27a51e2319b3455f4b7a90d68b69741a5e79c59c95e2a1b0",
+      "candidate_anchor": "8.1 评分段材料边界",
+      "saved_outputs": [],
+      "disposition": "现行评分区只读"
+    },
+    {
+      "number": 40,
+      "cell_type": "markdown",
+      "source_sha256": "ac5305c5978ade12e1d75176456e8413371c77cb2e8aa9759e7eb302af87e024",
+      "candidate_anchor": "8.1 评分段材料边界",
+      "saved_outputs": [],
+      "disposition": "现行评分区只读"
+    },
+    {
+      "number": 41,
+      "cell_type": "markdown",
+      "source_sha256": "abbbf482bb83dc03909a4e70b822bb9970e9062ef84ec3fec535445d7f04422d",
+      "candidate_anchor": "8.1 评分段材料边界",
+      "saved_outputs": [],
+      "disposition": "现行评分区只读"
+    },
+    {
+      "number": 42,
+      "cell_type": "markdown",
+      "source_sha256": "7aa3631c54c65992a8be1a43407a4a5fece830594e4f7028051de8429a0ba070",
+      "candidate_anchor": "8.1 评分段材料边界",
+      "saved_outputs": [],
+      "disposition": "现行评分区只读"
+    },
+    {
+      "number": 43,
+      "cell_type": "code",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "candidate_anchor": "8.1 评分段材料边界",
+      "saved_outputs": [],
+      "disposition": "现行评分区只读"
+    }
+  ],
+  "execution": {
+    "executed_cells": [
+      3,
+      5,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      19,
+      21,
+      22,
+      24,
+      26,
+      28,
+      29,
+      31,
+      33,
+      34,
+      35,
+      37
+    ],
+    "seed_added_before_start": 17,
+    "pca_coordinates_shape": [
+      150,
+      2
+    ],
+    "first_pca_coordinates": [
+      -2.684207125103946,
+      0.3266073147643862
+    ],
+    "source_sha256": "b41b08f5c22afb59286ad7c522e9cb0f70dc4de635b3a961298661d66c57376f",
+    "boundary": "评分段 38–43 只读核题，未执行。Matplotlib 静态后端；以当前版本执行，历史随机树结果不承诺相同。"
+  }
+}

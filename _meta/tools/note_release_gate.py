@@ -110,6 +110,39 @@ def quality_gate(candidate, note, source=None, scope='changed', pages=0, source_
     return not errors, output
 
 
+def visual_waiver_errors(data, review, note):
+    """仅核显式用户例外的文件/哈希/范围；不能认证人类授权或来源语义。"""
+    errors = []
+    waiver = data.get('user_visual_waiver')
+    if not isinstance(waiver, dict):
+        return ['visuals 用户豁免缺少 user_visual_waiver 记录']
+    if waiver.get('scope') != 'remaining_final_display_checks':
+        errors.append('visuals 豁免只能覆盖剩余最终界面实测')
+    if waiver.get('source_visuals') != 'completed_for_available_sources':
+        errors.append('visuals 豁免不能跳过可得源页视觉核对')
+    if not isinstance(waiver.get('limitations'), str) or not waiver['limitations'].strip():
+        errors.append('visuals 豁免须明示未实测范围')
+    proof = review.parent / waiver['authorization_file']
+    if sha256(proof) != waiver.get('authorization_sha256'):
+        errors.append('用户豁免授权文件哈希不符')
+    authorization = json.loads(proof.read_text(encoding='utf-8'))
+    if authorization.get('schema') != 'cityu-user-visual-waiver-v1' or authorization.get('status') != 'authorized':
+        errors.append('用户豁免授权记录无效')
+    if authorization.get('scope') != waiver.get('scope'):
+        errors.append('用户豁免范围不一致')
+    if not isinstance(authorization.get('user_statement'), str) or not authorization['user_statement'].strip():
+        errors.append('用户豁免缺实际用户原话')
+    if authorization.get('source_checks_still_required') is not True or authorization.get('safety_bypass_allowed') is not False:
+        errors.append('用户豁免不可越过来源要求或安全限制')
+    prefixes = authorization.get('note_prefixes')
+    target = Path(note).as_posix()
+    if not isinstance(prefixes, list) or not any(isinstance(p, str) and p.endswith('/') and target.startswith(p) for p in prefixes):
+        errors.append('本篇不在用户豁免明确范围内')
+    if '..' in Path(note).parts:
+        errors.append('用户豁免目标不能带路径回退')
+    return errors
+
+
 def review_gate(review, candidate, note, source=None, scope='changed'):
     """核验回执完整性与版本绑定；记录内容仍由执行者据实负责。"""
     errors = []
@@ -131,9 +164,11 @@ def review_gate(review, candidate, note, source=None, scope='changed'):
             errors.append('实质核对报告为空或哈希已变')
         for key in ('understanding', 'sources', 'warnings', 'visuals'):
             check = data['checks'][key]
-            allowed = ('passed', 'not_applicable') if key == 'visuals' else ('passed',)
+            allowed = ('passed', 'not_applicable', 'waived_by_user') if key == 'visuals' else ('passed',)
             if check.get('status') not in allowed or not isinstance(check.get('evidence'), str) or not check['evidence'].strip():
                 errors.append('%s 未完成或缺少证据位置' % key)
+        if data['checks']['visuals'].get('status') == 'waived_by_user':
+            errors.extend(visual_waiver_errors(data, review, note))
         # 只验证独立报告的结构与版本绑定，不认证标识真实或语义正确。
         independent = data['independent_review']
         authors = independent['author_ids']

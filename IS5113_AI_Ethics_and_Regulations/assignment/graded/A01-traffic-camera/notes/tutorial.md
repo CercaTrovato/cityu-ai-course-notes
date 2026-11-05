@@ -185,15 +185,15 @@ A 不会仅因摄像头可见就自动通过两项检验。B 若有公开的严�
 
 ### Q3 · Who was harmed by the actions of the Traffic Police?
 
-先列暴露于采集和用途扩张的人，再列可能被误认或遭滥用的人。被拍摄和访问本身已经扩大了隐私暴露，但实际损害强度取决于存储、访问和保障；不能证明人人均被持续追踪。错误识别、特定群体不成比例受损和寒蝉效应是风险清单，需数据区分已发生与可能发生。
+先列暴露于采集和用途扩张的人，再列可能被误认或遭滥用的人。对实际被拍摄并纳入资料的人，刑侦访问扩大了隐私暴露。题面没有说未超速者也被持续拍摄或留下身份数据。影响大小取决于采集、存储、访问和保障。错误识别、特定群体不成比例受损和寒蝉效应是风险清单，需数据区分已发生与可能发生。
 
-> Drivers whose images and identifying data are collected face privacy exposure, including drivers who do not speed. Those misidentified could face wrongful penalties or investigation, if errors pass through the enforcement process. Unequal error rates could impose disproportionate burdens on some groups, and broad monitoring could affect trust or freedom of movement. These latter harms are risks requiring evidence: the scenario does not report the number of wrongful tickets, group-specific error rates or actual chilling effects. A 90% reduction in speeding is not the percentage of drivers who never speed.
+> Drivers whose images and identifying data are collected face privacy exposure. Drivers who do not speed could also be affected if the system records their data, but the scenario does not establish that it does. Those misidentified could face wrongful penalties or investigation, if errors pass through the enforcement process. Unequal error rates could impose disproportionate burdens on some groups, and broad monitoring could affect trust or freedom of movement. These latter harms are risks requiring evidence: the scenario does not report the number of wrongful tickets, group-specific error rates or actual chilling effects. A 90% reduction in speeding is not the percentage of drivers who never speed.
 
 ### Q4 · What other courses of action could the Traffic Police have taken to achieve its objectives?
 
 “to achieve its objectives”限定替代方案仍须服务遏止超速，不能只提停掉全部执法。可以先检验只收必要字段、现场处理、较短保留期能否保持效果；若需对司机而非车主执法，车牌方案的责任归属和有效性仍须核实。再加人审、申诉、清楚公告。对 B，比较逐案、特定目标和限时访问，保留访问日志并安排独立复核。司法授权或监管批准是应按当地法律核的机制，不是本案已知普遍法定义务。
 
-> The police could test whether plate-based enforcement or local processing would achieve the speeding objective with less personal data, subject to identifying the legally responsible person. They could limit retention, publish purposes, review disputed identifications and provide accessible appeals. For OSCB, they could compare blanket real-time access with targeted, time-limited requests, access logs and independent review. Any judicial or regulatory authorisation should follow the applicable jurisdiction; the scenario does not establish one universal approval requirement. The effectiveness and costs of these alternatives need testing.
+> The police could test whether plate-based enforcement or local processing would achieve the speeding objective with less personal data, subject to identifying the legally responsible person. They could limit retention, publish purposes, review disputed identifications and provide accessible appeals. For OSCB, they could compare the real-time access granted in the scenario with targeted, time-limited requests, access logs and independent review. Any judicial or regulatory authorisation should follow the applicable jurisdiction; the scenario does not establish one universal approval requirement. The effectiveness and costs of these alternatives need testing.
 
 ### Q5 · What additional information, if any, would help you answer the previous questions?
 
