@@ -1,0 +1,3042 @@
+00:00 
+So now we are going to learn how to use machine learning and deep learning to deal with the 
+
+00:05 
+image. 
+
+00:07 
+So first, what is deep learning? 
+
+00:09 
+So we know that everybody nowadays is hearing something about deep learning that we are 
+
+00:16 
+using the deep learning and everybody is learning the deep learning. 
+
+00:20 
+So what is the deep learning algorithm? 
+
+00:24 
+So the Deep Learning Algorithm is also known as the Deep Structured Learning Algorithm 
+
+00:28 
+which is a very small and specific big family of machine learning. 
+
+00:34 
+So we are still trying to educate the machine to learn from the data 
+
+00:39 
+and to extract some useful patterns from the data and then make the useful decisions for humans. 
+
+00:45 
+But the model structure is totally different from the traditional machine learning algorithm. 
+
+00:50 
+So what's the difference? 
+
+00:53 
+So if you think about humans' learning procedure, 
+
+00:56 
+so like, we are educated, we can remember many things that we can use our knowledge to make future decisions. 
+
+01:04 
+And every day, we take the signals from the real world environment, 
+
+01:08 
+we see something, we feel something, and our brain will react to these real-time signals, right? 
+
+01:16 
+So you may think how the humans are reacting and making the decisions every day, 
+
+01:28 
+everything. So how we learn from the involvement and how the human body can take the action 
+
+01:36 
+and make decisions. So for humans, we have a neural system. 
+
+01:42 
+So the human's neural system 
+
+01:44 
+is actually everywhere in our body that we feel something. 
+
+01:50 
+Our skin will take the electronic signal and pass the signal to our brain. 
+
+01:54 
+When we see something, our eyes will collect signals from the real world. 
+
+01:59 
+And these signals will pass through this neuron system to our brain. 
+
+02:04 
+Our brain will take reactions. 
+
+02:06 
+So, the idea of the human neuron system is to get all these human neurons working together. 
+
+02:17 
+Once we have these neurons, and we collect some signals using the neurons, 
+
+02:23 
+and then our cell body will process the signal and decide when this signal will pass to the next neuron. 
+
+02:30 
+And we know that humans are very smart using this neuron system. 
+
+02:36 
+Now for the machine learning, even though we learned how to use the base model to do the machine learning, 
+
+02:44 
+but for the deep learning, we are trying to construct. 
+
+02:49 
+a similar neural system using the computer. 
+
+02:52 
+They want to enable the computer with its own neural system. 
+
+02:57 
+And they will hope once the machine has this neural system, 
+
+03:01 
+it can collect very complicated signals from the real world environment 
+
+03:06 
+and use these complicated artificial neural systems to make, 
+
+03:12 
+to process the signals and make the final decision. 
+
+03:17 
+For example, when we see different images, so you can see different images, and you have to remember that this face is Dr. Liu, right? 
+
+03:27 
+So you see so many different patterns of my face, and these signals, these patterns, they will run in your brain, in your brain's new system, 
+
+03:37 
+and you capture some face features, and my face, and link my face features with my name. 
+
+03:47 
+this kind of differentiation from this face to other faces. 
+
+03:50 
+And you know this is not real, not others. 
+
+03:54 
+So we want to build a similar model structure 
+
+03:56 
+like the new system. 
+
+03:58 
+And now still, by taking the image as a raw input, 
+
+04:03 
+example this image. 
+
+04:05 
+So the computer will see what humans can take 
+
+04:10 
+this raw input as signal and learn all these local patterns 
+
+04:15 
+of face features to make spinal cascation, 
+
+04:21 
+this is our idea. 
+
+04:24 
+We are still trying to use the learning algorithm to build the relationship between the input and the labels of the input 
+
+04:36 
+to take the action to the input signal 
+
+04:41 
+Now you may ask why we need this deep learning 
+
+04:43 
+Still we have been working on the same thing for 9 weeks 
+
+04:49 
+So we are trying to build the relationship between the input features and class labels for classification 
+
+04:55 
+So the regression analysis was also trying to use the features and to predict the future values. 
+
+05:01 
+So why we need the deep learning? 
+
+05:05 
+Because there are so many limitations of the fundamental machine learning algorithms we learned from the previous 9 weeks. 
+
+05:10 
+So you know, the diamond folder is that we think they can deal with a lot of things, a lot of problems, real world business problems, 
+
+05:18 
+but still they have limitations. 
+
+05:19 
+The language we learned, they suffer from curse of dimensionality. 
+
+05:24 
+So we cannot deal with some very high dimensional data. 
+
+05:27 
+In the real world, our humans will see this world, so it is already very high dimensional. 
+
+05:34 
+So the machine learning algorithm cannot deal with these high dimensional real world signals. 
+
+05:39 
+But the deep learning may be able to do that. 
+
+05:43 
+And also, for the traditional machine learning algorithm, 
+
+05:47 
+it's very difficult for us to extract the complicated patterns from the large data set. 
+
+05:52 
+So remember that, as a human being, how many things we need to remember every day, right? 
+
+05:57 
+You go to high school, undergraduate study, now you are in an activity program. 
+
+06:02 
+You have been learning a lot of things. 
+
+06:04 
+Now you use a lot of data, right? 
+
+06:06 
+For the case, you keep learning. 
+
+06:09 
+But machine learning cannot remember so many things. 
+
+06:11 
+But deep learning, because the model structure is so big, 
+
+06:15 
+they can remember many, many different things from a very large data set. 
+
+06:22 
+When we are using the machine learning algorithm, we need a predefined feature set. 
+
+06:29 
+For the ALICE follow-up data set, we actually used four predefined features, the catalyze, catalyze, and separalyze. 
+
+06:40 
+So we predefined and measured the values for these four features before we used the classification model to model this data set. 
+
+06:50 
+And also we call for the Airbnb house price regression analysis, so remember that data table, right? 
+
+06:58 
+So we have one column is the prediction target of the block price, and the other columns are the predefined features, like how many bedrooms, 
+
+07:07 
+so whether this is, we have the cancellation policies, the type of the different apartments, so we have all these features predefined. 
+
+07:18 
+In other words, we already know these features are working, and they are representative, and they are important. 
+
+07:24 
+More importantly, we already measure the values for all these features, for all the properties. 
+
+07:30 
+But in the real world, for some cases, or for most cases, we do not have these predefined features. 
+
+07:39 
+So remember that for the first week, you see my face. 
+
+07:49 
+Did I provide any features for you to help you 
+
+07:54 
+know, right? 
+
+07:56 
+Adjusting my face and your brain will react automatically to remember some representative features 
+
+08:02 
+So using my face does not tell you that you see that Dr. Liu's eyes are so small 
+
+08:07 
+So remember this tiny evil eyes, and this is Dr. Liu 
+
+08:11 
+So we didn't mention all these features, but you can remember my face 
+
+08:15 
+Because you learn these features automatically from the raw signals 
+
+08:22 
+So for using the machine learning, we need to define features before we fit the feature values into the learning algorithm. 
+
+08:31 
+But for deep learning, we do not need to define all these features. 
+
+08:35 
+We just provide those data, those signals, and deep learning can automatically learn these complicated objects. 
+
+08:44 
+And also for some complicated real-world problems, like the image recognition, the speech recognition, 
+
+08:54 
+machine learning algorithm or the previous sequential learning like the autoregressive method 
+
+09:02 
+or the statistical learning for the time series model, they cannot deal with this kind of human language 
+
+09:08 
+so typically for the machine learning we need 
+
+09:13 
+the predefined features before we learn the algorithm. 
+
+09:17 
+For deep learning, we can learn from a very large data set, 
+
+09:20 
+taking a very high-dimensional input signal, 
+
+09:23 
+and learn the representative patterns automatically within the model structure. 
+
+09:29 
+So the future is injection on pattern recognition and the learning space they are working together within the model. 
+
+09:47 
+and useful algorithm for learning the life skill data set 
+
+09:52 
+you can see the deep learning is applied in different areas 
+
+09:56 
+such as GPT 
+
+09:58 
+when you apply for the credit card 
+
+10:00 
+the bank will take your whole profile 
+
+10:03 
+the lifelong profile automatically 
+
+10:05 
+and make the credit card application 
+
+10:08 
+decisions 
+
+10:09 
+and also if you know the 
+
+10:12 
+The Tesla and some famous Chinese electronic cars, they are using this self-driving system by taking the real world and real-time load conditions. 
+
+10:24 
+So they take these images of the surrounding environment and measure the distance among all the objects to the focal cut, 
+
+10:32 
+and then they deal with this real-time signal mathematically and then make the self-driving into the real-time. 
+
+10:40 
+Also, if you go to the hospital, you can see there are many different doctors, they are using the AI for the deep learning to deal with the CT, because the deep learning algorithm can see some tiny patterns that human eyes can hardly identify, and once we feed these CT images into the AI algorithm, the AI can detect these obvious patterns and make the diagnostic decisions. 
+
+11:09 
+And also we know the image recognition that it is eligible, even so if you enter the campus, you can take your face, right? 
+
+11:17 
+I don't know whether you recorded your face patterns via the system, but I did that. 
+
+11:22 
+I did that, and when I entered the campus, it only recognized my face and I can come into my office. 
+
+11:31 
+So all these algorithms, and also for the huge market. 
+
+11:36 
+So every single company, the big companies, the giant companies, they are using the deep learning to do a lot of things. 
+
+11:45 
+So it's kind of different from the GEN2AI you are using nowadays every day. 
+
+11:49 
+So the deep learning is the one phase before the GEN2AI. 
+
+11:53 
+So about three years ago when I talked about AI, when I talked about deep learning, 
+
+11:57 
+and nowadays still, many companies they are using GEN2AI, they are still relying on these small models, 
+
+12:08 
+Now let's see, so this part is very simple. We just want to go to the most fundamental things about the deep learning algorithm and see how deep learning algorithms can work better than the machine learning algorithm and why they work. 
+
+12:27 
+I believe in the future you will use all these algorithms in different scenarios 
+
+12:31 
+and no matter whether these different algorithms were developed using GENVI or developed by yourself 
+
+12:37 
+you will see all these different learning algorithms working in your daily life 
+
+12:42 
+but the question is that why they work 
+
+12:44 
+so why different learning algorithms, no matter artificial neural network, recovery neural network, convolutional neural network 
+
+12:51 
+there are so many neural networks, so many different learning algorithms for different applications 
+
+12:56 
+why they work 
+
+12:59 
+So to understand why these deep learning algorithms work, we need to first understand the neuron system. 
+
+13:06 
+So for the humans neuron system is very obvious, I believe you see this image from your high school subject, right? 
+
+13:16 
+So for the humans, we have this human neuron to collect signals, like electronic signals from the 
+
+13:28 
+skin or from the eye from the ear from all the sensors we have in the human body and these 
+
+13:35 
+signals will pass through this axon and the axon will have the signal as electronic signal to the 
+
+13:44 
+second layers of the new system now we can let different signals from different source of 
+
+13:51 
+information and we can feel this we can feel the temperature we can see the environment we can see 
+
+13:58 
+And we can hear the wind. I can hear all the people talking about the weather conditions. 
+
+14:04 
+And then my brain will take the final decision whether I need to take the umbrella with me together. 
+
+14:11 
+So this is how the human's immune system is working to collect the signals from different sources of information 
+
+14:19 
+and then pass these signals back to the brain, and brain will make final decision. 
+
+14:28 
+to mimic this kind of human neuron system 
+
+14:31 
+by trying to define an artificial neuron 
+
+14:36 
+So artificial neuron is the cell body of the artificial neuron network 
+
+14:41 
+and it looks like this 
+
+14:43 
+So this is a typical artificial neuron 
+
+14:46 
+that we artificially human made this kind of mathematical model 
+
+14:52 
+The mathematical model is trying to mimic the human neuron 
+
+14:55 
+by taking some of the signals as input 
+
+14:59 
+And by taking this input, we did a linear combination of this input, and then pass it to the axon, and there is a gate function here. 
+
+15:08 
+The gate function will decide how to deal with the aggregated input signals. 
+
+15:14 
+Even though the signals come from different sources of information, we aggregate these signals together and use the gate function. 
+
+15:22 
+The gate function will decide whether I will generate an output signal of 1 or 0. 
+
+15:31 
+The mathematical formula of this artificial neuron looks like this. 
+
+15:36 
+So we have this input, and we have the weight of the coefficients for this input. 
+
+15:42 
+Now by taking the linear aggregation, the combination of these input signals, then we 
+
+15:48 
+have the linear combinations of the total input. 
+
+15:51 
+Now the total input will be fed into this gate function, the gate function takes the 
+
+15:57 
+input as the input, and generates the final output. 
+
+16:02 
+can be 0 or 1, or can be some other defined gate function. So the idea is very simple. 
+
+16:11 
+So this artificial neuron will take these linear combinations of the input signal, so 
+
+16:17 
+maybe the signal is very big, maybe the signal is very small. So when the signal is very 
+
+16:22 
+big, the gate function will generate a new signal of 1, like electronic signal of 1. 
+
+16:28 
+If every input signal is too small, then I generate nothing, so nothing happens. 
+
+16:34 
+So you can think about that, for the human's body, so when the wind is passing, actually, you may not feel anything, right? 
+
+16:41 
+Because the signal is too weak. 
+
+16:45 
+Somebody just hit your arm, and you can feel the pain, because the signal is too strong. 
+
+16:51 
+And there's very strong electronic signal passing through the human's body, and your brain will receive this signal and react to this. 
+
+16:59 
+signal. So the gate function will decide what kind of input signals will be passed to the 
+
+17:06 
+next layer, and the next layer, and the next layer, until the final layer will make the 
+
+17:11 
+final decision. So if the input signal is too weak, then nothing happens, so no signal 
+
+17:17 
+will be triggered. So if we put these artificial neurons all together into a network structure, 
+
+17:24 
+then this becomes the most standard artificial neuron network. 
+
+17:29 
+So you can see for this artificial neural network, we have three layers of the artificial neurons 
+
+17:35 
+So each layer, we have so many different artificial neurons 
+
+17:38 
+So for example, this is my input signal, and this is the gate, and this is my output 
+
+17:44 
+So we can see this single one is one artificial neuron we see here 
+
+17:52 
+So this is the most fundamental unit, the stealth body of the neuron system 
+
+17:57 
+Now if you consider this as the whole neural system, then this is the most fundamental cell we have, cell body. 
+
+18:06 
+So we put so many artificial neurons all together and link them together in a network structure like this, 
+
+18:13 
+and it becomes a deep learning algorithm, the artificial neural network. 
+
+18:17 
+Now you may see why we want to organize all these artificial neurons all together into a network structure, 
+
+18:23 
+and how they work together. 
+
+18:26 
+So let's first take a look at the function of this single artificial neuron. 
+
+18:31 
+If you consider this single artificial neuron as a catapult, everything makes sense. 
+
+18:36 
+So first, we take the abdicated input as my input signal. 
+
+18:40 
+And now from the decision plan, 
+
+18:44 
+So if this is the A1, the first dimension of the input feature, and this is the second dimension of the input feature, 
+
+18:52 
+now we can scatterplot all these signals into the two-dimensional feature space. 
+
+18:57 
+And some of the signals, the combination of the signals, should output 1, otherwise 0. 
+
+19:04 
+Now it becomes a binary classification form, right? 
+
+19:08 
+So actually, from the single artificial neural, what we need to learn is very similar to the previous classification model that we learned. 
+
+19:16 
+From optimizing this coefficient, the intercept, the slope for the two signals, or the two features of A1 and A2. 
+
+19:25 
+So by optimizing these coefficients, we can learn a classification boundary. 
+
+19:29 
+So when the amplitude signal is larger than zero, I generate one, otherwise zero. 
+
+19:35 
+Now it becomes a very simple classification model, and you only consider this linear combination, 
+
+19:41 
+and now this classification boundary is a linear line. 
+
+19:47 
+So this is how the simple one attribution model can work independently as your classification model, 
+
+19:55 
+and it will decide how much new signals will be generated or blocked. 
+
+20:03 
+We can see, using different gate functions, even though we are using linear regression as the input 
+
+20:09 
+For different gate functions, for example this stepwise gate function, the sine wave gate function 
+
+20:15 
+It never generates two signals, one or zero, and nothing else 
+
+20:19 
+But we can also treat this as a linear regression gate 
+
+20:24 
+That I take every input as input, and then the output will not be zero or one 
+
+20:29 
+It will be the same 
+
+20:32 
+value as the average input signal. Now it becomes the regression analysis. I will keep as much information as possible from the input. 
+
+20:40 
+Now we can use the logistic regression for the gate function. We have the logit function here. 
+
+20:47 
+And still it will generate a signal between 0 and 1, indicating the probability that the average input signal will generate one signal as output. 
+
+21:02 
+continuous function. The sine function is either 0 or 1, it's a stepwise. 
+
+21:07 
+Even 
+
+21:11 
+these simple artificial neurons, and how it works as a simple cache file, 
+
+21:15 
+now we can understand how it can be useful for human logic decisions. 
+
+21:21 
+Now humans try to use all these input signals and make all logical calculations, 
+
+21:27 
+so if else, if else, so every day I make so many logical calculations, so like 
+
+21:34 
+[公开副本省略：与课程无关的私人家庭举例]
+
+21:46 
+So every day I take these conditions and make this kind of logic. 
+
+21:51 
+So every day I try to survive in the real world. 
+
+21:56 
+Now, I want to ask Mojin to do some similar logic functions like a human. 
+
+22:04 
+I will react according to my logic. 
+
+22:07 
+So one of the typical logic functions is called n function. 
+
+22:11 
+I believe you use this n function every day. 
+
+22:14 
+The n function means that if you have two signals of x1 and x2, 
+
+22:19 
+you are trying to make the decisions according to the two input signals. 
+
+22:23 
+n logic function means that only both signals are triggered. 
+
+22:27 
+I will do some reaction to it. 
+
+22:32 
+Now if, so we can see for the first condition, 
+
+22:35 
+that both of x1 and x2, they are not triggered, 
+
+22:37 
+of course my final output will be 0. 
+
+22:42 
+One of the two signals, the two input signals is 0, they are not both triggered, then my final output are 0s. 
+
+22:52 
+And only for the last case, only x1 and x2 are 1s, then my output will be 1. 
+
+22:59 
+So this is the human logic. 
+
+23:01 
+We use the n-logic to process the two input signals and make the reaction to that. 
+
+23:13 
+Now, how we can actually translate this n-logic function from human's experience to a machine logic, to a machine model, 
+
+23:22 
+then the machine can also understand this kind of logic, and make the logic calculation similar to the human's decision. 
+
+23:30 
+Now, we have artificial neurons. 
+
+23:34 
+So you can still consider this is a binary classification program, right? 
+
+23:38 
+So, we try to use the simple artificial neurons to make this kind of decision. 
+
+23:46 
+So first, we have this artificial neuron 
+
+23:50 
+So these are my input signals 
+
+23:52 
+One is the intercept and two input signals 
+
+23:55 
+And here I already provide the coefficients for you 
+
+23:59 
+So it is negative 30, 20 and 20 
+
+24:02 
+So we can see for the input 
+
+24:05 
+I first do the linear aggregation of all inputs 
+
+24:12 
+So if you consider these linear 
+
+24:16 
+combinations of inputs 
+
+24:18 
+so it is positive 1 times negative 30 plus 20x1 plus 20x2 right so this is my input 
+
+24:27 
+is 
+
+24:30 
+that clear how i get from my input the linear combination by taking all these input coefficients 
+
+24:38 
+now this input will be fed into this gate function right so this is in 
+
+24:46 
+Now let's take a look at this gate function, it's a logic function, so this is the in, the axis is in, the y-axis is the output. 
+
+24:57 
+Now for this gate function, if your aggregated input is much larger than 0, then it's very close to 1. 
+
+25:06 
+If it's very smaller than 0, then my output will be 0. 
+
+25:12 
+The gate function will generate a signal between 0 and 1 depending on the average input if the signal is positive or negative. 
+
+25:20 
+Now let's take a look at how this simple artificial neuron can mimic humans and logic. 
+
+25:26 
+So for the first condition here, x1 is 0 and x2 is 0. 
+
+25:32 
+So what's the in? So what is the average input here? 
+
+25:36 
+x1 is 0 and x2 is 0. It 
+
+25:40 
+is negative 30, right? 
+
+25:42 
+That put the two signals into this linear combination the input. So x1 is 0 and x2 is 0 
+
+25:49 
+So it is negative 30. So actually I feed 
+
+25:53 
+negative 30 into the gate function. So negative 30 should be 
+
+25:58 
+In the x-axis here. So what's the final output by the gate? 
+
+26:03 
+0 right? 
+
+26:04 
+So the gate will generate the output of 0 by taking the negative 30 as the input. Now what about the two cases here? 
+
+26:14 
+One of the two inputs is field 
+
+26:18 
+So if one of the two signal is zero, then what's the aggregate the input here? 
+
+26:29 
+So we feed negative 10 into the gate, so what would be the output so negative 10 should be in position here 
+
+26:36 
+Still zero, right? 
+
+26:38 
+So the two zeros 
+
+26:41 
+Finally for the last condition we have two ones 
+
+26:44 
+one and one 
+
+26:46 
+So what's the aggregate input for the x1 equals to 1 and x3 equals to 1? 
+
+26:51 
+Both signals are triggered. 
+
+26:53 
+The aggregate input will be positive 10, right? 
+
+26:59 
+Now for the positive 10, what's the output? 
+
+27:01 
+Positive 10 should be something here, and it is 1, right? 
+
+27:07 
+Now, according to this model's output, 
+
+27:12 
+then given these three coefficients and the gate function here, 
+
+27:20 
+the one cell body to mimic human's n-logic function 
+
+27:24 
+so we can do that. Is that clear? 
+
+27:30 
+Just use this one thing for artificial genome 
+
+27:33 
+we can mimic the n-logic 
+
+27:34 
+Now, for 
+
+27:39 
+the human's logic function 
+
+27:41 
+we have n-logic and we have all logic 
+
+27:46 
+So what is all logic? 
+
+27:49 
+It means that still we have two input signals 
+
+27:53 
+if x1 or x2 is triggered 
+
+27:58 
+my output will be one. 
+
+28:00 
+It means that I only need one signal to be triggered, 
+
+28:03 
+I do not need both. 
+
+28:05 
+But for the first case, when both signals are not triggered, 
+
+28:08 
+my output is still zero. 
+
+28:10 
+But for the other cases, 
+
+28:13 
+because at least one of the two signals is one, 
+
+28:16 
+so my output should be one. 
+
+28:18 
+So that's all logic, all logic. 
+
+28:23 
+So to make this all logic function, 
+
+28:26 
+I'm still using the stair body, the artificial neuron. 
+
+28:30 
+So the artificial neurons still take these three inputs, the intercept, positive 1, x1, and x2. 
+
+28:37 
+But the coefficients are different. 
+
+28:39 
+So the coefficient here is negative 10, positive 20, and positive 20. 
+
+28:44 
+So the amplitude input here has this formula. 
+
+28:48 
+Now 
+
+28:51 
+the gate function is the same. 
+
+28:52 
+So let's see whether this new artificial neuron can work for the all functions. 
+
+28:58 
+So for the first condition, where x1 and x2 are zeros. 
+
+29:02 
+so what's the exit input here? negative 10 right? 
+
+29:06 
+so negative 10 the output will be 0 so this is good 
+
+29:11 
+so what about the middle two cases? so only 
+
+29:15 
+one is 0 and the other is 1 so by taking the values into this linear combination 
+
+29:22 
+the input signal will be positive 10 right? 
+
+29:26 
+so the gate function will generate one signal 
+
+29:33 
+X1 is 1, X2 is 1, so the algorithm input is positive 30, so this is 1 
+
+29:37 
+So now, do you think that these simple artificial neurons can mimic humans' OR logic? 
+
+29:45 
+So it has worked, right? 
+
+29:47 
+Same thing 
+
+29:48 
+We have the same model structure, but only different coefficients here 
+
+29:52 
+So it can mimic the other logic functions 
+
+29:55 
+Now, that's not the end 
+
+29:59 
+Because humans' logic is very complicated 
+
+30:03 
+So usually we will use the OR function and the AND function, or NOT function all together to combine them together so we can make complicated and complex logic functions. 
+
+30:14 
+For example, we have XOR or XNOT function. 
+
+30:18 
+So this function indicates that when X1 and X2 are the same, when the two signals are the same, I will generate one signal only. 
+
+30:30 
+If these two signals are different, then I generate nothing. 
+
+30:35 
+So what does that mean? So taking this, the first condition is that x1 and x2 are all 0s, my final output will be 1. 
+
+30:42 
+For the middle two, they are different. x1 is 0, and x2 is 1. In the other case, x1 is 1, and x2 is 0. 
+
+30:51 
+So these two input signals are different. So if they are different, I do nothing. Output 0. 
+
+30:58 
+So for the first case, x1 and x2 are 1s, so they are the same, so my output will be 1. 
+
+31:05 
+Now if you take a look at this decision space, so for this decision space, when x1 and x2 are all 0s, then I generate a thing of 1, or when x1 and x2 they are 1s, my final output will be 1. 
+
+31:20 
+So if they are different, I generate 0 and 0. 
+
+31:24 
+Now according to this decision space, do you think one linear classification boundary can mimic this complicated logic function? 
+
+31:33 
+No, right? It cannot make a perfect logic. 
+
+31:39 
+so what we can do? so we can see for the XOR function or XNOR function 
+
+31:47 
+so these are the combinations of different simple logic 
+
+31:51 
+so if you believe one simple artificial neuron cannot work well for this complicated logic 
+
+31:59 
+so we want to mimic humans artificial neurons to make the artificial neurons 
+
+32:05 
+all together like the human neuron system now we have three artificial neurons 
+
+32:11 
+Now I want to use these three artificial mirrors, both red one, blue one and green one to work together 
+
+32:18 
+Now I have three layers of artificial mirrors 
+
+32:21 
+Let's see what if this system is working 
+
+32:29 
+So here we have red one and blue one and they serve as the middle layer 
+
+32:34 
+So here is the input signal, the input layer, we have the input signals 
+
+32:40 
+But the three input signals, the intercept, x1, x2, they are not fed into a single artificial 
+
+32:47 
+neuron. 
+
+32:48 
+So they are separately fed into the red one and the blue one. 
+
+32:53 
+Now the red one and the blue one, they will take the average input according to their 
+
+32:58 
+coefficients. 
+
+32:59 
+So this is the coefficient for the red. 
+
+33:00 
+These are coefficients for the blue. 
+
+33:02 
+So they take the coefficients and the average input, and then they will generate their own 
+
+33:07 
+output. 
+
+33:08 
+So for this one, the output is A12, for 
+
+33:15 
+this one is A22, so 
+
+33:19 
+this is A12, and this is A22. 
+
+33:24 
+Now, two artificial neurons taking the input signals and generate output signals, 
+
+33:31 
+and the two output signals together with the intercept will be fed into the third gate, 
+
+33:39 
+the third artificial neuron in the output layer, and then generate the final output. 
+
+33:50 
+that has three different artificial neurons working together 
+
+33:54 
+can mimic the x0 function 
+
+33:57 
+so for the first case, when x1 and x2 are zeros 
+
+34:03 
+so we can see the red one is negative 30 plus 20x1 plus 20x2 
+
+34:09 
+so actually it is an n-logic 
+
+34:11 
+so for the first case, when x1 is zero and x2 is zero 
+
+34:14 
+what's the average input for the red artificial neuron? 
+
+34:18 
+it is negative 30, right? 
+
+34:22 
+So what's the final output for the A12? It's 0, right? 
+
+34:27 
+So for the first case, the A12 equals to 0. What about the blue one? 
+
+34:32 
+So for the first case, x1 is 0, and x2 is 0. 
+
+34:38 
+But the intercept is 10, positive 10. 
+
+34:42 
+So what's the average input for the blue artificial neuron? 
+
+34:45 
+So positive 10, right? 
+
+34:47 
+Now what's the final output for the blue one? It is 1. Is that clear? 
+
+34:55 
+I just feed the f1 and f2 into the fourth layer artificial neuron, and they will generate 0 and 1 signal. 
+
+35:02 
+So this is 0 and this is 1. 
+
+35:05 
+Now this is not the end, right? 
+
+35:07 
+We need to aggregate these two outputs as input for the third artificial neuron. 
+
+35:12 
+And for the third artificial neuron, we have negative 10 plus 20, a12 plus 20, a22. 
+
+35:19 
+Now a12 here is 0, and a22 here is 1. 
+
+35:23 
+So what's the aggregate input? 
+
+35:27 
+Here it is positive 10, right? 
+
+35:30 
+So it's positive 10. What is the final output here? If the aggregate input is positive 10 
+
+35:36 
+It is 1. Now we can see for the first condition after we feed the X1 and X2 into this system 
+
+35:45 
+The final output will be 1. Is 
+
+35:50 
+that clear? 
+
+35:51 
+Or I pass the signal from the input to the middle and to the output 
+
+35:55 
+Using the three artificial neurons together. So far so good 
+
+36:01 
+Now let's take a look at the second condition here. 
+
+36:05 
+Now for the second condition, 
+
+36:13 
+we have x1 equals to 0 and x2 equals to 1. 
+
+36:21 
+Now for the red one, what's the output of this red artificial neuron? 
+
+36:25 
+When x1 is 0 and x2 is 1, x1 is 0 and x2 is 1. 
+
+36:32 
+So taking the average input, next to 30 plus 20x1 plus 20x2, so the average input for this one is negative 10, right? 
+
+36:42 
+So what's our final output? It is 0, right? For the red. 
+
+36:48 
+So what's the blue artificial neuron? 0 and 1. 
+
+36:53 
+So this is 0, this is 1, and 10 minus 20x1 minus 20x2 was the average input for the blue. 
+
+37:01 
+which is negative 10, right? 
+
+37:03 
+so what's the final output? 
+
+37:06 
+it is 0 
+
+37:07 
+so this is how I get these two 0s 
+
+37:11 
+now, forget about x1 and x2 
+
+37:13 
+taking this 0 and 0 as the input 
+
+37:16 
+I will put these two outputs as the input signals for the third artificial neuron 
+
+37:21 
+so what's the average input for the third artificial neuron? 
+
+37:24 
+so this is 0, this is 0, and only negative 10 left, right? 
+
+37:30 
+so what's the final output here? 
+
+37:35 
+Is that clear? 
+
+37:38 
+Now for the third case, because it is asymmetric, final output will be 0. 
+
+37:43 
+And for the fourth one, x1 is 1 and x2 is 1. 
+
+37:47 
+So x1 is 1 and x2 is 1. 
+
+37:51 
+And I see the output of the middle layer. 
+
+37:54 
+So x1 is 1 and x2 is 1. 
+
+38:00 
+What's the aggregated input for the graph? 
+
+38:03 
+The positive 10, right? 
+
+38:05 
+The final output here will be 1. 
+
+38:08 
+What about blue one? x1 is 1, x2 is 1, so the aggregated input will be negative 30, so the output will be 0. 
+
+38:16 
+So 1 and 0. 
+
+38:18 
+Now I feed 1 and 0 back into the third artificial neuron. 
+
+38:22 
+So negative 10 plus 20 plus 0 is positive 10, so the output will be 1. 
+
+38:30 
+So for these three layers and three artificial neurons working together, do you think that 
+
+38:38 
+This system can perfectly mimic the x0 logic function that when x1 and x2 are the same, 
+
+38:44 
+the output will be 1, otherwise 0. 
+
+38:49 
+Is that clear? 
+
+38:50 
+Okay, if you understand how this neural network is working, 
+
+38:57 
+then you should be able to understand all the following models. 
+
+39:02 
+Okay? 
+
+39:03 
+So this is the key that we take the signals. 
+
+39:08 
+layer to layer, and in the middle layer we are using some artificial neurons to generate 
+
+39:13 
+some new signals. Now these new signals, A1 and A, A11 and A, the A's, these two new signals, 
+
+39:21 
+so if you take a look at these two outputs from the middle layer, so they are actually 
+
+39:29 
+serving as new features by processing the signals from the previous layer. 
+
+39:37 
+So I added the previous layer of signals and used this gate to generate a new feature 
+
+39:42 
+And this new feature we are working together by feeding these new features into the next layer of artificial neurons 
+
+39:48 
+The next layer of artificial neurons will post these new signals or the new features and make the output 
+
+39:56 
+So this is a critical idea of the deep learning algorithm 
+
+40:02 
+That by taking the high dimensional input signals as my input 
+
+40:07 
+Now I will use the combinations of different artificial neurons all together 
+
+40:12 
+So for the hidden layer 1, hidden layer 2, I will use all these artificial neurons 
+
+40:17 
+So every single circle here is the gate function for one artificial neuron 
+
+40:21 
+And I will use artificial neurons in the hidden layer to generate some new signals 
+
+40:26 
+So to generate all these new signals 
+
+40:29 
+Now these new signals become the new features back into the next layer 
+
+40:35 
+of the artificial neurons. And the next layer of artificial neurons will process these features 
+
+40:40 
+from the figure's output, and then process all these linear combinations and generate 
+
+40:45 
+some new signals. Now these new signals will become the new features and pass these new 
+
+40:50 
+features to the next layer. So similar to the human's neuron system, right? 
+
+40:55 
+We use the screen and eye to collect those signals from the external environment 
+
+41:00 
+And these signals will pass this neural system one layer by one layer 
+
+41:04 
+The binary of them will aggregate all these signals and make the final output 
+
+41:10 
+So this is how the deep learning model is working 
+
+41:15 
+using these combinations or the network structure of these artificial neurons 
+
+41:20 
+and generate some new features in the middle layer 
+
+41:23 
+and these new features will become the input of my next layer 
+
+41:27 
+and pass this signal from layer to layer until we reach the final output 
+
+41:31 
+So, to implement the deep learning algorithm, we need 
+
+41:36 
+So that's what we define the random policies. 
+
+41:40 
+So when we implement the random policies, 
+
+41:42 
+we specify the model structure. 
+
+41:44 
+So how many learning, how many number of estimators 
+
+41:49 
+in the customization code. 
+
+41:51 
+Now, to implement the deep learning, 
+
+41:53 
+we also need to specify, OK, how many input nodes. 
+
+41:57 
+Indicating how many raw input signals 
+
+41:59 
+will be found into the model. 
+
+42:00 
+And how many hidden layers, 
+
+42:03 
+and how many nodes for hidden layers. 
+
+42:05 
+and for how many output nodes 
+
+42:08 
+For some of the computation problems, when we have multicloud, we need to have multiple output nodes 
+
+42:14 
+We also need to specify the activation function, which is used to process the aggregated input signals to generate output 
+
+42:23 
+And then, after that, we will decide the parameters in the training procedure 
+
+42:28 
+to optimize all the coefficients along this path. 
+
+42:31 
+And after the model is well-trained, 
+
+42:33 
+we actually establish the relationship 
+
+42:35 
+between the raw input signal and my final output, 
+
+42:39 
+my predicted one. 
+
+42:41 
+So you can see, for this model presentation, 
+
+42:46 
+it's very similar to this kind of feature generation 
+
+42:48 
+and feature aggregation, 
+
+42:50 
+and then generate some new features from layers to layers, 
+
+42:53 
+and then use all these generated features 
+
+42:55 
+to make final decisions. 
+
+42:59 
+We take the input signals into the aggregated input, and then use the gate function to process the aggregated input to generate output. 
+
+43:08 
+So, the signals are processed from layer to layer. 
+
+43:14 
+So first, we need to process the signals from the raw input layer to the middle layer, from layer 1 to layer 2. 
+
+43:31 
+So once we get all these output signals, and they will become the new inputs. 
+
+43:39 
+Now these new inputs will be fed into layer 3 to generate the final output. 
+
+43:44 
+When 
+
+43:47 
+we use these newly generated signals, we do not care about x1 or x2, 
+
+43:51 
+because their information is already captured by this intermediate output. 
+
+43:58 
+Now what we need to do is to use the intermediate output and feed them into the next layer. 
+
+44:06 
+If you expand this model, actually we are building a very complicated model structure to make the final prediction. 
+
+44:13 
+In order to make the final prediction, we first take the linear combinations of all these, x1, x2, and x3. 
+
+44:21 
+The linear combinations, and feed them into, process them using the gate function to generate the intermediate output. 
+
+44:30 
+We generate intermediate output 1, 2, 3, and then for this layer, we aggregate them together. 
+
+44:36 
+So you know that for this number, it's a function of the x0, x1, x2, and x3, right? 
+
+44:44 
+So we nested them together. 
+
+44:47 
+And by taking the linear combination of these three, we generate the final output. 
+
+44:52 
+So you can see the output is still taking the input x1, x2, the raw input signals as the input. 
+
+45:01 
+If we expand A32 and A22 here, the model is huge. 
+
+45:06 
+But still, it is working much better than the traditional machine learning algorithm. 
+
+45:14 
+Now, here if you know the linear algebra, then we can see we can use the matrix notation to represent the complicated notation here. 
+
+45:25 
+So these two, they are equivalent. So they are the same. 
+
+45:29 
+so this is the matrix calculation of the linear combinations of x using the theta coefficients 
+
+45:34 
+and this is the gate function taking the input and generate the output 
+
+45:38 
+so they are equivalent so typically we can also use these linear combinations of a 
+
+45:45 
+to generate the final opposite of z so from layer to layer we can use this notation from 
+
+45:59 
+the output as the input and then generate the output 
+
+46:03 
+so from layer to layer we are doing the same thing 
+
+46:06 
+and we call it feed forward calculation 
+
+46:08 
+so even though we have more number of hidden layers 
+
+46:11 
+or more nodes, more artificial neurons for hidden layer 
+
+46:15 
+we can still do this kind of simple calculation 
+
+46:17 
+to process the low input signals to generate better output 
+
+46:21 
+so that's how we can use this artificial neuron network 
+
+46:26 
+to process the signals 
+
+46:31 
+Still, when we are processing all these aggregated input signals to generate output, we use the activation function. 
+
+46:38 
+Now the activation function is mathematically a gate function that is working as a gate to decide what kind of information should be passed and what kind of new signals should be generated from the gate. 
+
+46:51 
+So one of the most commonly used activation functions is the sigmoid activation function. It has a similar formula as the logic. 
+
+47:00 
+And here is the function. So this is my aggregated input, and this is my output. 
+
+47:05 
+The output is the value from 0 to 1, and this is smooth. 
+
+47:09 
+So we can take the derivative of this activation function. 
+
+47:13 
+So this is 0. 
+
+47:16 
+So when your input is larger than 0, then the output will be very close to 1. 
+
+47:21 
+Otherwise, it is very close to 0, so nothing will be generated. 
+
+47:25 
+So that's the sigmoid activation function. 
+
+47:28 
+And sometimes, we do not want to generate nothing, so it means that if your signal is very positive, yes, I want to generate a positive 1 signal, but if your input signal is very negative, so I'm not generating 0, I'm still trying to generate something, and I'm generating an opposite signal from negative 1. 
+
+47:58 
+By taking the aggregate input using this formula, the final output will be in the range between negative 1 and 1. 
+
+48:05 
+So it is much larger than 0, I generate positive 1, otherwise negative 1. 
+
+48:11 
+And also we may have the rectified activation function, which is different from previous two. 
+
+48:16 
+Because previous two will only generate binary or 0, 1 or negative 1 or positive 1 signals. 
+
+48:22 
+But for this activation function, it works better for some regression analysis. 
+
+48:28 
+When the aggregated input signal is less than 0, then I will block the signal, and I will generate output of 0. 
+
+48:37 
+But if your aggregated input signal is larger than 0, then I will generate an output signal which equals to your aggregated input. 
+
+48:49 
+So if your aggregated input is 2.5, then my final output will be the same 2.5. 
+
+48:54 
+As long as it is lighter than zero, I keep the average input signal as my output. 
+
+49:02 
+Finally we have the softmax activation function, that once you have three outputs in the output layer, 
+
+49:10 
+and you are trying to transform them into the probability distribution, 
+
+49:15 
+then we can take the softmax activation function, 
+
+49:18 
+then these three numbers will be transformed into three probabilities, 
+
+49:25 
+and the summation of these three probabilities will be one. 
+
+49:29 
+So this is usually used for the classification analysis, for the output layer, when I'm trying to identify the labels of the prediction target from three prediction labels. 
+
+49:42 
+If it belongs to one of the three labels, then we use this probability as my output to tell me, 
+
+49:48 
+okay, there are 30% of probability that this object belongs to the class label 1, and 20% belongs to the class label 2, and only 10% belongs to the class label 3. 
+
+49:58 
+and we have this kind of for releases and output okay so let's have a 10-minute break and we will 
+
+50:04 
+continue to this lecture so we'll be back at one so that's this class so the bad news is that we 
+
+50:15 
+still have more 100 slides to go so this lecture we have 137 slides in total and the good news is that 
+
+50:31 
+For today's lecture and the tutorial, they will not show up in your final. 
+
+50:34 
+I'm 
+
+50:39 
+trying to deliver as much as I can, but you are not required to review all this. 
+
+50:44 
+So if you have interest, of course, you can review the course. 
+
+50:47 
+This is for the introduction to the deep learning. 
+
+50:50 
+I believe most of you will take the AI for Fitness education, I6-423, next semester. 
+
+50:56 
+And unfortunately, I will not teach that course in next semester. 
+
+51:01 
+So this will be a very good introduction for you. 
+
+51:05 
+So let's continue, now after I specified the model structure together with the activation function 
+
+51:12 
+to 
+
+51:18 
+do the training, because we know that in order to do this learning algorithm 
+
+51:22 
+we need to determine or optimize all these coefficients for the linear combinations. 
+
+51:27 
+So one link here in this model structure is one coefficient value for the linear combination 
+
+51:36 
+and we need to optimize all these coefficients in this single system. 
+
+51:40 
+So here we have a training record, and we are trying to use a training scheme to build a relationship between the X, so these are my X, and these are my final output of Y. 
+
+51:51 
+So we want to build a connection between X and Y using all these hidden layers, artificial neurons, together. 
+
+51:58 
+And now every single artificial neuron will introduce several coefficients to optimize. 
+
+52:03 
+So we can see this model is very heavy, it's very complex, we have so many parameters to tune. 
+
+52:10 
+to optimize. So we call that for the linear regression analysis, we only need to optimize 
+
+52:16 
+several coefficients, like the intercept and the coefficients for some feature inputs. 
+
+52:22 
+So for the linear regression optimization is very simple, but here we can see how many 
+
+52:28 
+coefficients we need to optimize. So when your deep learning algorithm is very big, 
+
+52:34 
+the number of parameters becomes very very big. 
+
+52:39 
+I'm trying to find a very efficient way to do the model training. 
+
+52:44 
+So for the binary classification or the multicast classification, 
+
+52:47 
+usually we want to define the loose function. 
+
+52:50 
+The loose function will follow this kind of training error plus regularization. 
+
+52:56 
+But maybe still remember the regularization, 
+
+52:58 
+regularization and maximum regression. 
+
+53:01 
+And we have the training error, so this is for the 
+
+53:06 
+classification objective function. 
+
+53:08 
+that we are trying to minimize the chaining error, together we want to reduce the penalties 
+
+53:13 
+for my model complexity. 
+
+53:15 
+We are not trying to introduce so many coefficients theta into the model structure, so we put 
+
+53:20 
+the globalization term here. 
+
+53:22 
+And here we define this objective function. 
+
+53:26 
+It will tell me that what is the cost or the penalties I will have in using this model. 
+
+53:38 
+deep learning structure, once we have the input signal of x, we can use, so once we 
+
+53:44 
+have the input signal of x and all the coefficients here, no matter whether these coefficients 
+
+53:48 
+are optimized or not, so initially when we initialize all these coefficients for this 
+
+53:53 
+deep learning model. 
+
+53:56 
+And by fitting the chain in records, attributes, signals, into the deep learning structure and we will use all these coefficients to do the linear characterization, use the gate, and many ways to generate the output of y, the predictive value of y. 
+
+54:12 
+Now using the predictive value of y, we can calculate the loose function or the objective function. 
+
+54:18 
+And we can see if the coefficient is not that good, if they are not optimized, then the value of the loose function will be very big. 
+
+54:27 
+Now to reduce the loose function value, we will start from the output layer, which calculates the loose function and through the back propagation. 
+
+54:36 
+And to optimize the coefficients and parameters along the back propagate lines. 
+
+54:44 
+So how we do this kind of model training, so we are still using the gradient descent. 
+
+54:49 
+So actually we use the gradient descent for the linear regression in week 2, right? 
+
+54:54 
+So we are using them together, then we are using them again for the deep learning. 
+
+54:59 
+So still we are trying to do this kind of mentality method. 
+
+55:03 
+So if you still remember this gradient descent method, then we start from this loose function or the coarse function, 
+
+55:16 
+function for the loose function. Then we start from the initial theta and following this learning rate together with the slope value, we can 
+
+55:24 
+update theta from these 
+
+55:26 
+iteration steps. So recall, we start from 0 and following this slope function, we update theta 0 to theta 1, from theta 1 to theta 2, and from theta 2 to theta 3. 
+
+55:40 
+And we'll stop when the 
+
+55:43 
+the slope value equals to zero and we stop here. 
+
+55:46 
+And this is the optimal theta we are looking for. 
+
+55:50 
+So that's gradient descent. 
+
+55:51 
+Now if you consider the loose function 
+
+55:54 
+is the function of the coefficients 
+
+55:57 
+that we are trying to optimize. 
+
+55:59 
+So we are doing the same thing. 
+
+56:01 
+So no matter how complicated the loose function would be 
+
+56:03 
+as a function of the theta, 
+
+56:05 
+we can use the cross function to do the gradient descent. 
+
+56:09 
+Of course, when we are trying to optimize the theta, 
+
+56:12 
+We can optimize the theta from layer to layer using the back propagation, but then of course we use the chain loop to do the 
+
+56:20 
+gradient descent calculation. So for example the J-sample later when we learn how to model the image data. 
+
+56:29 
+So typically we can see the image data as the X. 
+
+56:33 
+The raw data as the X. 
+
+56:36 
+So we can see the X is represented by the pixels. 
+
+56:41 
+So for the first row, we have 28 pixels, and we have 28 rows of pixels. 
+
+56:47 
+So in general, we have 28 by 28 feature pixels to represent one image. 
+
+56:52 
+And this is my X. 
+
+56:53 
+So my X is defined by 28 by 28 pixel features, the colors for the pixels. 
+
+57:03 
+Now I'm trying to build the relationship between X and Y. 
+
+57:11 
+labels. So we can just fit all these images as input signals and fit them into the artificial 
+
+57:18 
+engineering network by specifying the input layer dimensions, the number of hidden layers 
+
+57:24 
+and the number of nodes for hidden layer and activation function. Then we define the loose 
+
+57:28 
+function and we'll be able to optimize the model. So we'll provide a detailed example 
+
+57:34 
+later. So still we're trying to build a relationship between the low input signals of X and the 
+
+57:42 
+So that's for the basic artificial neural network. 
+
+57:45 
+Now let's go to a different structure of the artificial neural network. 
+
+57:51 
+So still, we have a neural network structure, organize all these artificial neural together into a single system. 
+
+57:59 
+But we are trying to model the sequential information of the data. 
+
+58:05 
+So what does that mean? 
+
+58:08 
+For example, for the image classification, of course, we can just use... 
+
+58:12 
+deal with the image classification problem as a classification problem 
+
+58:17 
+that once you are given the image, I identify what is inside of this image 
+
+58:23 
+so we provide a very static label for this image 
+
+58:28 
+but sometimes we want the machine to read more like human beings 
+
+58:33 
+so if I read this image, then my output may not be a dot 
+
+58:38 
+I can tell more 
+
+58:40 
+I can tell, okay, what this image is telling me that is telling me that a dog is catching a ball, a white ball in this wooden fence, right? 
+
+58:52 
+We can interpret this image. 
+
+58:55 
+Now people can tell more about this image using a sentence. 
+
+59:00 
+Now a sentence is not a static label. 
+
+59:02 
+It's a sequence of keywords as output. 
+
+59:08 
+Similarly, when you see this image, we can see a man is playing or calling a woman in the public area. 
+
+59:15 
+So we can interpret more information from this static image. 
+
+59:20 
+Also, if you are trying to understand my speaking, so my keywords, I will pass a final example. 
+
+59:28 
+So every single keyword comes in a sequence. 
+
+59:32 
+And you can only understand this sentence only when you understand the logical connecting different keywords in this sentence. 
+
+59:45 
+Now, what if I want to analyze or generate a sequence of signals as an input or output, how we can do that? 
+
+59:55 
+And of course, the traditional artificial neural network may not be able to do that. 
+
+01:00:00 
+Because you only take the input signals as input, and we do not consider the sequential information of all these input signals. 
+
+01:00:08 
+We can come with different orders, and then we can only provide one final prediction target as the output layer. 
+
+01:00:17 
+So, we need to change my previous artificial neurons a little bit. 
+
+01:00:24 
+Now we have the recovered neural network. 
+
+01:00:26 
+So the recovered neural network is trying to remember something from the past. 
+
+01:00:34 
+And we are trying to use this artificial neuron to build the connection between the past information 
+
+01:00:41 
+and my current observation to make the future prediction. 
+
+01:00:45 
+So I want to remember what happened yesterday, and according to my experience, 
+
+01:00:51 
+an observation today I want to predict for tomorrow. 
+
+01:00:54 
+I can do that. 
+
+01:00:56 
+Or I can use the artificial neuron, 
+
+01:01:05 
+some information from the past, from t-minus 1, and some new observations of x-t, and we feed them into the gate function, and we get the final output of y-t. 
+
+01:01:13 
+There, 
+
+01:01:18 
+in this artificial neuron, we have this, the current neural network. 
+
+01:01:25 
+So, these two, they are equivalent. Okay? These two are equivalent. 
+
+01:01:30 
+Now, imagine that, at the very beginning, so on Monday, I observe the signal of x-0. 
+
+01:01:43 
+becomes very useful in this kind of sequential data learning. 
+
+01:01:47 
+So for example, when we type something, 
+
+01:01:51 
+like when I type in the morning, 
+
+01:01:53 
+so before I finish typing, 
+
+01:01:55 
+the machine will understand what I'm trying to type. 
+
+01:01:58 
+And it will feel the morning for me, right? 
+
+01:02:02 
+So if you try this intelligent input, 
+
+01:02:05 
+you will have this kind of feeling. 
+
+01:02:09 
+So how this kind of neural network is working to remember and to predict your next typing. 
+
+01:02:17 
+So here we use some dummy vectors to present different words, H, E, L, L. So when you are 
+
+01:02:25 
+trying to type hello, and after you type H, E, L, L in a sequence. Now the RNN model will use the 
+
+01:02:32 
+hidden layer to process the input signals, H, E, L, L, and according to this sequence, 
+
+01:02:39 
+So H will generate output of E, and E and E together will generate L, and then this last thing together with L will generate L. 
+
+01:02:54 
+And finally this combination of LL will generate O. 
+
+01:02:58 
+And the output will be ELLO. 
+
+01:03:01 
+So taking all together, once you type HE, it will generate LLO for you as the output. 
+
+01:03:10 
+Now because this kind of model structure, the recurring neural network, it can support the sequential input and support the generation of the sequential output. 
+
+01:03:20 
+So we can extend the one-to-one prediction from the artificial neural network to this one-to-many. 
+
+01:03:29 
+One-to-many can be useful for the image captioning, that once I give one image, I can generate a sequence as an output to interpret this image. 
+
+01:03:39 
+I can also do the many-to-one that if I take a sequence of the input signals, then I can make a single prediction target. 
+
+01:03:48 
+For example, for the sentiment classification. 
+
+01:03:51 
+So once I take the sequence of words as input, I will predict the sentiment of this sentence. 
+
+01:03:57 
+Whether you are seeing something positive or negative using this sentence. 
+
+01:04:02 
+I can also do the many-to-many. 
+
+01:04:06 
+prediction that I take the sequence of words as the input and then take the sequence of words as my output 
+
+01:04:12 
+so I can do the machine translation. 
+
+01:04:14 
+And also I can do the many-to-many during the video presentation 
+
+01:04:17 
+that the video represents a sequence of images coming together 
+
+01:04:21 
+so I can use this sequence of images to interpret the sequence of keywords and sentences 
+
+01:04:28 
+to tell what is happening in this movie. 
+
+01:04:32 
+Especially for some blind people that they cannot watch these movies. 
+
+01:04:35 
+These kinds of many models can tell the blind people what is happening in this movie by taking the video application. 
+
+01:04:45 
+So that's what the current neural network. 
+
+01:04:49 
+And soon, when we use the current neural network, we will soon realize that 
+
+01:04:54 
+when it is trying to deal with the differential information that 
+
+01:04:59 
+I try to remember some knowledge from the previous time stamp, 
+
+01:05:02 
+but I can only remember the information up to date from the previous time stamp, 
+
+01:05:08 
+which is the hidden state. For example, if I consider this is my cell, and I only consider 
+
+01:05:14 
+some patterns I learned from the previous time stamp together with the new observation. 
+
+01:05:19 
+So in other words, the recurrent neural network cannot remember some of the past past information. 
+
+01:05:27 
+Because the first pass information 0 updated alone to ht-1 
+
+01:05:31 
+And I have no idea what happened two or more days ago 
+
+01:05:36 
+So in other words, it only remembers something that happened most recently 
+
+01:05:41 
+So how can we deal with this sequential learning? 
+
+01:05:45 
+So because sometimes I want to remember something that happened one week ago 
+
+01:05:49 
+So that's why I'm trying to make the demand prediction 
+
+01:05:52 
+For Wednesday, I also want to remember the demand pattern I collected from last Wednesday 
+
+01:05:59 
+So how we can do that? 
+
+01:06:01 
+So we have the LSTM model 
+
+01:06:03 
+The long term short term memory model 
+
+01:06:06 
+The long term short term memory model has three different modules 
+
+01:06:10 
+To enable this kind of long term memory and short term memory working together 
+
+01:06:15 
+So now we extend one cell from a single activation function to three different modules 
+
+01:06:23 
+With many different activation functions working together 
+
+01:06:26 
+Now how they work 
+
+01:06:32 
+The difference between the LSTM and the traditional kind of new network is the cell state. 
+
+01:06:39 
+The cell state is very different from the latest data we extract from the most updated information for HP. 
+
+01:06:49 
+So actually it connects, so it works as a conveyor belt connecting all of the infrastructure from the previous and previous cells to the current new cells. 
+
+01:07:01 
+So they will actually use this bell to connect all these old cells. 
+
+01:07:07 
+So one of these cell states is trying to remember something old and get something new. 
+
+01:07:15 
+So let's see how it works. 
+
+01:07:18 
+So there are three big modules in STM. 
+
+01:07:22 
+The first module is to decide what kind of old information and new information should be kept or remembered. 
+
+01:07:32 
+So taking the hidden state of ht-1 and xt as my input 
+
+01:07:37 
+This gate function will take the ht-1 and xt as the input and generate an output of ft 
+
+01:07:44 
+ft is a binary output 
+
+01:07:46 
+So if ft equals 1, it means that we will keep this information, otherwise we will throw this information 
+
+01:07:52 
+Now this is the fourth output of ft 
+
+01:07:56 
+So we will put ft operations later 
+
+01:08:03 
+The second module will decide what kind of new information will be generated and kept 
+
+01:08:07 
+in the current state. 
+
+01:08:08 
+So here we are taking the ST and the ST-1 as the input. 
+
+01:08:12 
+Now we are generating two different signals. 
+
+01:08:15 
+The first signal is a gate signal which is IT. 
+
+01:08:18 
+IT is still in the range between 0 and 1, determining how much new information should 
+
+01:08:30 
+The second signal is the output signal of Ct delta, the new cell state I generated from the current timestamp 
+
+01:08:39 
+Indicating that if I want to remember some new information from the current cell state, what is the information I am trying to remember 
+
+01:08:47 
+Now, by putting these two modules together, we can update the cell state 
+
+01:09:03 
+If f is in the range between 0 and 1, then it decides how much of the old cell state, 16-1, will be kept 
+
+01:09:10 
+So if f equals to 0, it means that I want to forget everything I have in 16-1 
+
+01:09:20 
+I forget all the information I have up to this, up to 16-1 
+
+01:09:25 
+But if f is not equal to 0, it means that some part of the information from 16-1 will be kept 
+
+01:09:34 
+So the second term in CT is weighted by IT 
+
+01:09:39 
+So remember that IT here is still the new gate 
+
+01:09:44 
+Determine how much new information will be kept in CT 
+
+01:09:47 
+So what is the new information? It's the CT delta 
+
+01:09:50 
+So it's the CT delta generated before 
+
+01:09:52 
+So it decides, so taking all these two terms together 
+
+01:09:57 
+The CT consists of two terms 
+
+01:10:00 
+One is how much old cell state will be remembered 
+
+01:10:05 
+and how much new information from the current timestamp should be generated and remembered for the following cell states 
+
+01:10:13 
+for the following CT. So that's the two modules, determining the old and cell state update scheme 
+
+01:10:22 
+And finally, we will determine the final output 
+
+01:10:25 
+So here, we are filtering these two as the inputs together with this kind of 
+
+01:10:34 
+OT, so we define this OT as the gate and define using the OT as the way to determine how we 
+
+01:10:42 
+transform the CT into the new lecture signal. So 
+
+01:10:49 
+this is how we generate a new hidden state 
+
+01:10:53 
+and a new hidden state will be used to generate some new signals in the following time stamp 
+
+01:11:00 
+of T plus 1. So taking all this together 
+
+01:11:04 
+In order to make the final output and continue this kind of calculation, we use the first activation function to generate the Ft to determine how much all cell states should be remembered. 
+
+01:11:16 
+And then I use the second module to decide how much new information should be generated and be kept in the cell state. 
+
+01:11:24 
+Then we put these two arrays of information all together into the linear combination and to update Ct-1 to Ct. 
+
+01:11:32 
+Finally, we want to use VT and the X2-1, XT to generate the output together with the mu hidden state. 
+
+01:11:41 
+So is that clear for this LSTM? 
+
+01:11:45 
+[公开副本省略：涉及第三方申请流程的课堂旁话]
+
+01:11:53 
+How the LSTM is working in remembering the long-term and short-term memories. 
+
+01:11:59 
+And this is a very common question in job interviews. 
+
+01:12:07 
+about the difference among all the major sequential learning models. 
+
+01:12:11 
+And now, after we learned the sequential data, 
+
+01:12:17 
+the next step is that we want to learn more. 
+
+01:12:20 
+We want to go to a very specific sequential data 
+
+01:12:25 
+because for 
+
+01:12:30 
+the text mining, 
+
+01:12:31 
+we are trying to extract useful information from the text data. 
+
+01:12:35 
+Now this is very useful because most of the knowledge 
+
+01:12:41 
+They were recorded in the text format, like this slide, like your final exam, like the tutorial template. 
+
+01:12:48 
+So everything you are trying to learn, most of the knowledge they are recorded and collected using the text. 
+
+01:12:57 
+So how can we use this text? 
+
+01:12:59 
+So first we can do this kind of sentence or document classification. 
+
+01:13:04 
+So we are trying to understand whether you are seeing something positive or negative. 
+
+01:13:09 
+So, for example, Stanford University determines this kind of pre-sentiment and it will tell you how many people are seeing something negative online. 
+
+01:13:19 
+So, for example, you can easily identify the sentiment of all the students or the people in this classroom. 
+
+01:13:28 
+So we are generating some text online every day, right? 
+
+01:13:31 
+We write comments, we reply to others' comments, so we are interacting with people. 
+
+01:13:36 
+Now we are writing sentences. 
+
+01:13:38 
+Now the sentiment analysis is to analyze your sentence, and see whether you are positive that you agree with this kind of topic, 
+
+01:13:46 
+or you see something supportive or positive, or you are not that happy that you are seeing something negative. 
+
+01:13:53 
+[公开副本省略：与教学机制无关、可能指向特定对象的插话]
+
+01:13:57 
+[公开副本省略：与教学机制无关、可能指向特定对象的插话]
+
+01:14:08 
+[公开副本省略：与教学机制无关、可能指向特定对象的插话]
+
+01:14:16 
+[公开副本省略：与教学机制无关、可能指向特定对象的插话]
+
+01:14:22 
+[公开副本省略：与教学机制无关、可能指向特定对象的插话]
+
+01:14:29 
+for example if you see a sentence that this movie doesn't care about calvary street or 
+
+01:14:38 
+Now, we want to get the sentiment to see whether you're seeing something good or bad, 
+
+01:14:43 
+then we need to get a passing machine like this. 
+
+01:14:46 
+The passing machine means that we need to get the main subject. 
+
+01:14:50 
+So this sentence is around this key subject, the movie. 
+
+01:14:55 
+And here we have a does not. 
+
+01:14:57 
+Does not is a very key signal that whenever you say positive, then the sentence becomes negative. 
+
+01:15:05 
+Whenever you see negative, then it becomes positive, right? 
+
+01:15:08 
+It's a reverse keyword. 
+
+01:15:11 
+Now, for the following of the tree structure, we have the care, cleverness, wit, and kind, intelligence, and humor. 
+
+01:15:18 
+So, they are all positives. 
+
+01:15:20 
+Now, these all-positive descriptions are used to describe this movie, but there's a switching point here. 
+
+01:15:27 
+Then, everything positive here becomes negative. 
+
+01:15:31 
+So, this sentence, the whole sentence is negative. 
+
+01:15:36 
+score is predicted using the passing tree structure. 
+
+01:15:40 
+Now, why it is useful? 
+
+01:15:44 
+It's not just simple to detect how many people are in the way online. 
+
+01:15:48 
+It's more related to this kind of social segment analysis for some investment. 
+
+01:15:53 
+For example, for the Apple company. 
+
+01:15:55 
+And in addition to the sequential data, the prediction model, the LSTM, 
+
+01:15:59 
+the Helmhild network, or autoregressive azimuth, 
+
+01:16:03 
+or the whole linear, or the winter models we learned. 
+
+01:16:05 
+All of these. 
+
+01:16:07 
+So in addition to the time series, we also can collect some information from the online investors 
+
+01:16:15 
+So you know that for Reddit, there are so many individual investors on this social platform 
+
+01:16:21 
+to express their attitudes, their predictions on this platform 
+
+01:16:26 
+And some of them, for example, if you have the one article about Apple, then people will express whether they look forward to the future of this Apple company or they believe the Apple company will close. 
+
+01:16:39 
+So now that every year, there's a battle between Huawei and Apple, right? Every year. 
+
+01:16:46 
+When a new cell phone is announced, there's an argument. So Apple is closing down. 
+
+01:16:55 
+There are so many arguments about that. 
+
+01:16:57 
+According to all these online investors' comments, we can see how many of them are positive, super positive for the future of this company. 
+
+01:17:07 
+So this positive sentiment indicates they have a strong buy signal. 
+
+01:17:11 
+Some of them believe this company has no innovation, this company will close very soon, and they are saying it is a strong sell signal. 
+
+01:17:22 
+So we need to take a look at the whole group of online individual investors and collect how many of them are expressing positive or neutral or negative. 
+
+01:17:34 
+Now it becomes a discussion of the social sentiment. 
+
+01:17:38 
+Now this social sentiment becomes a new source of information and we can combine this information all together with the time series pattern to make the future become 
+
+01:17:50 
+very useful. 
+
+01:17:54 
+We can do this kind of for QA system. So once we understand this passing-through structure of the of the data 
+
+01:18:00 
+So we can use okay COVID-19. So if we are trying to answer this question, what is COVID-19? 
+
+01:18:06 
+Then we pass this sentence and we know COVID-19 is 
+
+01:18:10 
+something 
+
+01:18:11 
+Now the is something behind will be the answer to this question. So we can do some QA question 
+
+01:18:17 
+So the answers to the QA system 
+
+01:18:22 
+We have so many different sentences from the dual text, and we extract and substitute all the sentences, and then we understand which are the answers. 
+
+01:18:31 
+Now, we can deal with this kind of many unstructured or semi-structured information in the text. 
+
+01:18:41 
+So to deal with text information, we can do that in two different dimensions. 
+
+01:18:46 
+The first one is at the document level. 
+
+01:18:49 
+What does that mean? 
+
+01:18:52 
+To deal with all this kind of text, for example, unstructured text and we know that different keywords may represent different things 
+
+01:19:03 
+Now we want to address all these challenges to deal with the document data 
+
+01:19:08 
+But the document is unstructured 
+
+01:19:10 
+We can transform the document into a structured data table 
+
+01:19:14 
+Actually we learned how to do that before, right? 
+
+01:19:23 
+And then we will be able to get a feature vector using the frequencies of all these keywords. 
+
+01:19:28 
+That's my feature vector, and we use the feature vector to profile different documents. 
+
+01:19:33 
+And then we can use these feature vectors to differentiate different documents. 
+
+01:19:38 
+So, in addition to the frequency counting, we want to extend this frequency counting to the TF-IDF profiling. 
+
+01:19:48 
+Now, to profile each document, so before we learn how to do the frequency counting, 
+
+01:19:55 
+So count ij means there is a count of the term i in the document j. 
+
+01:20:00 
+So we have done that before. 
+
+01:20:01 
+Now because some of the documents are very long and some of the documents are very short, 
+
+01:20:07 
+so we want to calculate the term frequency as a normalized count ij. 
+
+01:20:13 
+So I will use the total number of words in the document j to normalize the count ij. 
+
+01:20:18 
+Now I get the term frequency of ij. 
+
+01:20:23 
+Can we use the term frequency ID as my feature vector? 
+
+01:20:26 
+Yes, we can do that, but we want to do some weight. 
+
+01:20:30 
+So what's the weight of this feature value I? 
+
+01:20:33 
+So I have the inverse document frequency. 
+
+01:20:37 
+So it is defined as the log of the total number of documents in my data set 
+
+01:20:43 
+and divided by the count how many documents containing this keyword I. 
+
+01:20:51 
+So for this column, for this keyword, for this column i, if this keyword, it shows up in all my n documents, now it is not very important, because it's a very common keyword, I cannot use this common keyword to differentiate different documents, so if column i equals to n, then the importance of this keyword becomes zero. 
+
+01:21:23 
+So what have the TF ideas to serve as the future value? 
+
+01:21:27 
+So in addition to the TF , the term frequency of keyword i, the keyword i in document j, 
+
+01:21:34 
+for example this keyword digital in document 1, I multiply this term frequency by the importance of this keyword i. 
+
+01:21:42 
+Now we are using this whole number to calculate the future value here. 
+
+01:21:47 
+Now from one by one, from one feature by one feature, from one document by one document, 
+
+01:21:52 
+I can use the TF-IDF score to profile different documents. 
+
+01:21:58 
+So once we get this feature vector of X, then we can use this X, 
+
+01:22:03 
+now each document is profiled using this well-structured feature vector, 
+
+01:22:08 
+I can use the feature vector to do the document classification, 
+
+01:22:11 
+document classification, classification, topic analysis. 
+
+01:22:18 
+the text mining at document level. 
+
+01:22:22 
+But we can see, for using all these feature vectors, 
+
+01:22:26 
+actually we do not care about the sequence of different keywords 
+
+01:22:30 
+in these documents. So we are not treating these documents as 
+
+01:22:34 
+a sentence, a sequence of sentences. We only treat these 
+
+01:22:38 
+documents as a bag of keywords, and I only do the frequency counting 
+
+01:22:42 
+or the weighted frequency counting to profile different documents. 
+
+01:22:46 
+So if we want to understand what is talking within this document, understanding these sentences, we need the NLP, the natural language processing. 
+
+01:22:57 
+Particularly there are four steps of doing the NLP analysis. 
+
+01:23:01 
+No matter what kind of algorithms or software we are using, we are doing the four steps first. 
+
+01:23:06 
+We are doing the sentence segmentation. 
+
+01:23:09 
+So a segment is sentences into different keywords or different tokens. 
+
+01:23:14 
+For example this, Michael Jordan, he will present one single object, and we know it is people, a person, so this is my segmented token. 
+
+01:23:23 
+And we segment the is of Professor X, we separate this part into four tokens. 
+
+01:23:29 
+Finally the Berkeley is the organization. 
+
+01:23:31 
+Similarly for the Chinese, we can segment the sentence into different segments. 
+
+01:23:37 
+Now the second step is to do the post tagging. 
+
+01:23:42 
+The first step is to define the tag of different tokens of the keywords 
+
+01:23:46 
+For example, dev, wolf, and nun 
+
+01:23:50 
+Tag the segmented token of the keywords 
+
+01:23:53 
+And after that, I will learn this syntactic structure 
+
+01:23:58 
+Or the passing tree structure 
+
+01:24:00 
+So according to all these tags, we can get this kind of relationship of different tokens in the tree structure 
+
+01:24:08 
+And then according to the cheese structure, we can do the semantic analysis or understand this sentence. 
+
+01:24:14 
+For example, if you get a sentence that a dog is chasing a boy on the playground, 
+
+01:24:19 
+then first we do the token segmentation. 
+
+01:24:22 
+Now with the segmentation, we get the tags for different tokens, 
+
+01:24:26 
+verb, noun, verb, and then according to all these tags, we get this passing cheese structure. 
+
+01:24:31 
+And now according to this passing cheese structure, we can understand, okay, 
+
+01:24:35 
+The boy is scared because the dog is chasing this boy. 
+
+01:24:39 
+We get more information from the passing tree structure. 
+
+01:24:42 
+So this is the typical NLP process. 
+
+01:24:45 
+And if you see many different platforms using the NLP as a core algorithm, 
+
+01:24:51 
+typically they are using the same thing. 
+
+01:24:53 
+Okay, so that's for the NLP. 
+
+01:24:56 
+Now finally, I want to have a few minutes to illustrate the image mining. 
+
+01:25:03 
+Another kindly unstructured data. 
+
+01:25:06 
+So usually when the humans identify some image, so for example we can easily identify this is a cat. 
+
+01:25:12 
+Why we can build, we can observe these patterns of this image, and then we identify the relationship between these patterns and the labels of this image. 
+
+01:25:22 
+Now, how can a computer recognize this is a cat? 
+
+01:25:28 
+So before we understand these questions, let's first understand what is the input signals into the computer. 
+
+01:25:37 
+Humans can recognize this image, but I want to ask the computer to do so. 
+
+01:25:42 
+The computer takes this image as the matrix, rows and columns of pixel colors. 
+
+01:25:50 
+For example, for this image, if you zoom it, we can see it is actually a collection of the pixels. 
+
+01:26:01 
+One pixel is the most well here. 
+
+01:26:04 
+And we put all these small squares into a matrix with different colors and that's the image 
+
+01:26:10 
+So we have the pixels 
+
+01:26:12 
+And now what the computer is watching is what is the image fed into the computer 
+
+01:26:23 
+Which is a matrix of the numbers 
+
+01:26:26 
+And for the color image, for one pixel we have three color indexes 
+
+01:26:32 
+Red, green and blue 
+
+01:26:34 
+Now we have three measures working together to present one image, a colorful image. 
+
+01:26:40 
+Sometimes we have the grayscale or the colorful scale. 
+
+01:26:45 
+So sometimes we have the grayscale because humans are very sensitive to the brightness. 
+
+01:26:52 
+For example, if you go to the hospital for the CT image, they see the grayscale, right? 
+
+01:26:57 
+It's not so colorful. 
+
+01:26:59 
+But sometimes we may want to get some colorful image as an input, and ask the computer to understand the patterns from the colorful image. 
+
+01:27:08 
+Now for the computer vision, for the image mining, so we can simply conduct the classification of the image, 
+
+01:27:16 
+or we can do the localization of this subject in the location of this image. 
+
+01:27:21 
+Or we can detect different subjects and segment different subjects in a single image. 
+
+01:27:28 
+We can get more information from these pixel numbers 
+
+01:27:31 
+Now our job of image mining is to help the computers understand these inputs 
+
+01:27:40 
+The matches of the inputs 
+
+01:27:42 
+So now this is very important 
+
+01:27:44 
+So now you can see that people are watching the short videos or the images more than typing 
+
+01:27:52 
+[公开副本省略：与课程无关的私人家庭举例]
+
+01:28:00 
+[公开副本省略：与课程无关的私人家庭举例]
+
+01:28:08 
+[公开副本省略：与课程无关的私人家庭举例]
+
+01:28:18 
+So you know that people are trying to transcribe and generate all these kinds of small images as short videos. 
+
+01:28:26 
+So how can we understand all these images here? 
+
+01:28:30 
+So, our idea is the same, by trying to build a relationship between this big number of 
+
+01:28:37 
+metrics to the label of this image. 
+
+01:28:40 
+Right? 
+
+01:28:41 
+By doing the same thing. 
+
+01:28:43 
+The only thing different is that the lower input is very high dimensional in the metrics. 
+
+01:28:48 
+So how we can do that? 
+
+01:28:51 
+So, first... 
+
+01:28:53 
+Let's take this example, so here for this data set we want to classify all these images into, the colorful images into different class labels. 
+
+01:29:01 
+Elfland, or bird, or cat, and every single image is represented by 32 by 32 pixels. 
+
+01:29:07 
+So, we want to use some traditional machine learning algorithms to deal with this data set. 
+
+01:29:13 
+For example, for the SVM. 
+
+01:29:15 
+So first we load the data, and then we create the data loader, and then we transform the 
+
+01:29:21 
+metrics into a feature vector. 
+
+01:29:24 
+Now because it is a colorful image, so for each image, we have 32 by 32 pixels, and three 
+
+01:29:34 
+channels, red, blue, and green, right? 
+
+01:29:46 
+So you can imagine 3,072 columns of features to profile one single image. 
+
+01:29:52 
+We are trying to build this relationship between these 3,000 features and the class label of this image. 
+
+01:29:58 
+It's not very easy to deal with high dimensional data, so we use the PCA analysis to reduce the dimensionality of this object. 
+
+01:30:07 
+Now we can apply the PCA glasses here, and here we want to define the number of components left in the PCA component, 
+
+01:30:16 
+which contains about 95% of the total values. 
+
+01:30:21 
+So for that case, the 95% of the values, and we can see we will keep 200 principal components for this image. 
+
+01:30:31 
+Now, after the PCA transformation, so I have done this before, right? 
+
+01:30:34 
+We transform. 
+
+01:30:35 
+So after the PCA transformation, the 3,072 features will be reduced into a new feature 
+
+01:30:42 
+space of 200 features, so 200 principal components. 
+
+01:30:47 
+And then, we can... 
+
+01:30:50 
+transform all the images for the training and the testing, and then we use the new 200 
+
+01:30:58 
+features to change the support vector machine classifier and evaluate the performance. 
+
+01:31:04 
+So that's how we can actually transform the high-dimensional image data into a low-dimensional 
+
+01:31:09 
+feature vector, which we can handle using the traditional machine learning algorithm. 
+
+01:31:14 
+Of course, maybe the algorithm is not working so well, because of the limitations of the 
+
+01:31:21 
+So we can still try to use the artificial neural network to deal with the image data. 
+
+01:31:26 
+Now the idea is that, now you see that this image is whole high dimensional, but I do not do the PC analysis. 
+
+01:31:33 
+What I am doing, I will fit the whole dimensions of the signal into the artificial neural network. 
+
+01:31:42 
+Now no matter how many pixels you have, how many input signals you have, I will take over all the input signals. 
+
+01:31:48 
+I do not do any PC analysis or feature selection. 
+
+01:31:52 
+I collect all the pixels as my input layer. 
+
+01:31:56 
+Now I feed all the pixels as input layer into the artificial neural network from layer to layer. 
+
+01:32:02 
+I will generate some new and new signals from hit layer to hit layer. 
+
+01:32:06 
+Finally I use the output layer to make the final classification. 
+
+01:32:10 
+So we can see. 
+
+01:32:12 
+We want to use this artificial neural network to model the images 
+
+01:32:18 
+And here we need to specify what is the combination or the design of this artificial neural network 
+
+01:32:27 
+By defining what is the dimensions of the input layer, the hidden layer and output layer 
+
+01:32:33 
+And some hyper parameters 
+
+01:32:39 
+So here we have the dimensions of all the layers. 
+
+01:32:43 
+And finally, after we define the model structure, we define the loose function, 
+
+01:32:47 
+which is for the multi-class classification problem. 
+
+01:32:51 
+And then we view this, so this is the objective function. 
+
+01:32:55 
+And then we have this kind of back propagation and optimize the model structure. 
+
+01:33:01 
+After that, we will be able to use this trained artificial neural network to make the classification of the images. 
+
+01:33:08 
+So you may see. So for this kind of ANN to do the image mining, we have some limitations. 
+
+01:33:16 
+First, we need to have the fixed dimensional income. 
+
+01:33:20 
+And second, we cannot learn the local patterns and all the pixels, they are treated independently. 
+
+01:33:26 
+And if you have the opportunity, you may learn how to deal with the limitations of ANN for image mining using the convolutional neural network. 
+
+01:33:35 
+So I will leave that problem for the high level IIS 6.423 class, okay? 
+
+01:33:40 
+I think that's all for the deep learning part. 
+
+01:33:43 
+And yes, that's all for today's lecture. 
+
+01:33:48 
+And we will have a break and then we will have a tutorial at 2 p.m. 
+

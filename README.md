@@ -4,7 +4,7 @@ scope: vault 根
 updated: 2026-11-06
 ---
 
-> **2026-11-05 当前入口**：本地有 **51 个核心 M/T 入口（38 v1.0、12 v0.9、1 个既有录音先行 draft）**，不是 51 篇都在本批重新审查。新材料与本次教学范围见下方及[本批回执](_meta/canvas-materials-20261105/README.md)。下列 11/2“未上传”段是较早制作时点；当前三项 IS6400 作业及 IS5542 第 3 反思只沿用 11/2 已有真实 Submitted 回执，本批没有新上传、发邮件或勾选本人状态。Notion 本批已写入并回读 13 个唯一目标（5 学习进度＋8 DDL，6 新建＋7 既有更新），详[最终同步回执](_meta/canvas-materials-20261105/notion-sync-final.json)；未把旧 11/4 的 16 条备注或仍缺的讲义算作本批补齐。
+> **2026-11-05 Canvas 批次记录**：本地有 **51 个核心 M/T 入口（38 v1.0、12 v0.9、1 个既有录音先行 draft）**，不是 51 篇都在本批重新审查。新材料与本次教学范围见下方及[本批回执](_meta/canvas-materials-20261105/README.md)。下列 11/2“未上传”段是较早制作时点；当前三项 IS6400 作业及 IS5542 第 3 反思只沿用 11/2 已有真实 Submitted 回执，本批没有新上传、发邮件或勾选本人状态。Notion 本批已写入并回读 13 个唯一目标（5 学习进度＋8 DDL，6 新建＋7 既有更新），详[最终同步回执](_meta/canvas-materials-20261105/notion-sync-final.json)；未把旧 11/4 的 16 条备注或仍缺的讲义算作本批补齐。
 
 > 2026-11-02 个人作业制作：IS6400 [Week 9 Extra](IS6400_Business_Data_Analytics/assignment/graded/A11-week9-extra/notes/开始这里.md) 已运行/独审并保留 draft，11/6 23:59 HKT、未上传；[Week 8 & 9 入口对照](IS6400_Business_Data_Analytics/assignment/graded/A10-week8-9/notes/任务说明.md) 复用旧已完成答卷，不回退 A09。IS5542 Marketing 第 3 反思已回读 11/2 11:44 Submitted，另备 [金融服务一页草稿](IS5542_GenAI_in_Business/assignment/graded/A05-financial-services-reflection/notes/开始这里.md)。[本批范围与验收](_meta/individual-assignments-20261102/review.md)。本批未新增 M/T，笔记库存统计与旧学习字段不变。
 
@@ -15,6 +15,10 @@ updated: 2026-11-06
 > 2026-11-02 IS6400 最终文件已交付本人手动提交：[W7正确分类作业](IS6400_Business_Data_Analytics/assignment/graded/A08-week7-classification/notes/任务说明.md)已完成三问及独审；Week 8 & 9使用A10 Bitcoin四题、Extra使用A11天气预测本日审修稿。W7旧回执挂Bitcoin的对应关系已核清；新三稿未上传，旧提交记录保留。学习、评分、小组任务和M/T库存不变，下方旧时点记录保留。
 
 # CityU 课程笔记库
+
+## 2026-11-06 · 三段录音融合
+
+现有 51 个核心 M/T 入口，41 篇 v1.0、9 篇 v0.9、1 篇既有 draft，及 58 个规范转录文本。S28–S30 写回 AC6761 M08/M09、IS6400 M09、EF5560 M08/M09。IS6400 T10 继续待教程录音。见[本批回执](_meta/publication/audio-20261106.md)与[录音索引](_meta/audio-library/录音索引.md)。
 
 ## 2026-11-06 · GitHub 公开版本
 
@@ -134,11 +138,11 @@ IS6400 新增 [M06 分类机制](IS6400_Business_Data_Analytics/notes/M06-分类
 
 从课程入口开始阅读：
 
-- [AC6761 · 人工智能会计](AC6761_Artificial_Intelligence_Accounting/00-课程总览.md)。10 个核心入口；本批新增 Case 6/Quiz 3 学习解析，并完成 M10 两 Excel 附件§2.11局部教学，未重审整篇 M10。Worksheet 的真实公司/工具输出仍未完成，M09–M11 转录缺口保留。[本批结果](_meta/canvas-materials-20261105/ac6761/course-result.json)
-- [EF5560 · 金融科技与金融 AI](EF5560_Fintech_and_AI_in_Finance/00-课程总览.md)。9 个核心入口；新 M09 为 54 页/16 原图、v0.9/pending，另有 A02 现行 brief 的新学习导览。旧 M04 补讲、M08 顺延及原音限制不清零。[本批结果](_meta/canvas-materials-20261105/ef5560/course-result.json)
+- [AC6761 · 人工智能会计](AC6761_Artificial_Intelligence_Accounting/00-课程总览.md)。10 个核心入口；本批新增 Case 6/Quiz 3 学习解析，并完成 M10 两 Excel 附件§2.11局部教学，未重审整篇 M10。Worksheet 的真实公司与工具输出仍待本人完成。S28 已融合 M08/M09，M10–M11 待录音。[本批结果](_meta/canvas-materials-20261105/ac6761/course-result.json)
+- [EF5560 · 金融科技与金融 AI](EF5560_Fintech_and_AI_in_Finance/00-课程总览.md)。9 个核心入口；M09 保留 54 页及 16 张原图，S30 融合后为 v1.0。S30 同时补齐 M08 p.47–54。A02 现行 brief 见本课学习导览。[本批结果](_meta/canvas-materials-20261105/ef5560/course-result.json)
 - [IS5113 · AI 伦理与法规](IS5113_AI_Ethics_and_Regulations/00-课程总览.md)。8 个核心入口；新 M08 为 92 页/14 原图、v0.9/pending。报告样稿对应 A02 格式说明；M01 无录音、M07/M08 缺转录，M06 来源缺口保留。[本批结果](_meta/canvas-materials-20261105/is5113/course-result.json)
 - [IS5542 · 商业生成式 AI](IS5542_GenAI_in_Business/00-课程总览.md)。6 个核心入口，M07 仍录音先行 partial/draft；本轮无新原件，只同步已提供考试日期，不新增教学或反思范围。[既有来源回执](_meta/learning-repair-20261104/is5542/course-result.md)
-- [IS6400 · 商业数据分析](IS6400_Business_Data_Analytics/00-课程总览.md)。18 个核心入口（9 M＋9 T）；M09 以新版 L10 137 页为主源并保留旧 L11 补充，新 T10 对应 86-cell Notebook；两篇仍 v0.9/pending，无新转录。[本批结果](_meta/canvas-materials-20261105/is6400/course-result.json)
+- [IS6400 · 商业数据分析](IS6400_Business_Data_Analytics/00-课程总览.md)。18 个核心入口（9 M＋9 T）；M09 以新版 L10 137 页为主源并保留旧 L11 补充，T10 对应 86 格 Notebook，仍为 v0.9。S29 已融合 M09 讲授，教程待录。[本批结果](_meta/canvas-materials-20261105/is6400/course-result.json)
 
 方法入口：[规则体系](#规则体系) · [可读性总规则](_meta/可读性总规则.md) · [制作与融合验收](_meta/笔记制作与融合验收流程.md) · [教学图示规范](_meta/教学图示规范.md) · [下载、阅读与复现](_meta/开源仓库说明.md)
 
@@ -166,13 +170,13 @@ IS6400 新增 [M06 分类机制](IS6400_Business_Data_Analytics/notes/M06-分类
 
 ## 这里有什么
 
-截至 2026-11-05（按正式 notes/ 中 M/T frontmatter 与各课规范转录目录实盘计数）：
+截至 2026-11-06（按正式 notes/ 中 M/T frontmatter 与各课规范转录目录实盘计数）：
 
 | | 数量 |
 |---|---|
 | 课程 | 5 门（IS5113 AI Ethics · IS5542 GenAI in Business · EF5560 Fintech & AI · AC6761 AI Accounting · IS6400 Business Data Analytics） |
-| 笔记 | 51 个核心入口：38 篇 v1.0、12 篇 v0.9、1 篇既有录音先行 draft；库存不等于本批全篇审查数量 |
-| 课堂转录 | 55 个规范文本；本批无新增，已有独立时钟/缺首尾/接缝限制保留 |
+| 笔记 | 51 个核心入口：41 篇 v1.0、9 篇 v0.9、1 篇既有录音先行 draft；库存不等于本批全篇审查数量 |
+| 课堂转录 | 58 个规范文本，含新增 S28–S30。各源时钟、缺首尾与接缝按来源登记 |
 | 覆盖与引文 | 逐页/逐题语义由主代理回源核实，脚本只辅助查页码与引文线索；以实际来源与审查范围为准，不能由数量推出完整 |
 | 历史质量基线（2026-09-24） | 当时 26 篇严格复测为 7 篇 PASS、19 篇未通过；后续机制修复和转录融合以各篇验收记录为准，本次未重跑全库 strict，不能把这份旧结果当当前库存判定。见 [历史基线](_meta/全库质量基线-2026-09-24.md) |
 | 可复现代码 | EF5560 的 `code/`（`run_all.py` 一键跑 15 个脚本），讲义上的数字（收益率、R²、回归系数）都能重算出来 |
@@ -367,9 +371,9 @@ IS6400 新增 [M06 分类机制](IS6400_Business_Data_Analytics/notes/M06-分类
 |---|---|---|---|---|
 | **AI Ethics and Regulations** | IS5113 | AI 核心必修 | M01 v0.9 · M02 v1.0 · M03 v1.0 · M04 v1.0 · M05 v1.0 · M06 v1.0 · M07 v0.9 · M08 v0.9 · [11/5 回执](_meta/canvas-materials-20261105/is5113/course-result.json) | M01永久无 · M02 ✅ · M03 ✅（缺尾）· M04 ✅（969 记录／968 时刻，原音完整性未证） · M05 ✅（缺首尾）· M06 ✅（U1+T1+日期未知S5；S5 公开从 27:25 起；p.43–66、p.97–111 缺直接音频）；M07/M08 待转录 |
 | GenAI in Business | IS5542 | AI 核心必修 | M01 v1.0 · M02 v1.0 · M03 v1.0 · M04 v1.0 · M05 v1.0 · M07 draft（录音导航） · [本批回执](_meta/learning-repair-20261104/is5542/course-result.md) | M01 ✅（文本00:00–02:04:19，原音首尾／课间完整性未核） · M02 ✅ · M03 ✅（784记录；缺首、尾部完整性未证）· M04 ✅（原首尾／五长间隔／身份工具等限制保留） · M05 ✅（原缺口保留）  · M07 已归档并整理（S26／S27 独立时钟，接缝未知）|
-| Fintech and AI in Finance | EF5560 | 商业核心 | M01 v1.0 · M02 v1.0 · M03 v1.0 · M04 v1.0 · M05 v1.0 · M06 v1.0 · M07 v1.0 · M08 v1.0 · M09 v0.9 · [11/5 回执](_meta/canvas-materials-20261105/ef5560/course-result.json) · 8 个数据集卡、class02–05、15 个复现脚本 | M01 ✅ · M02 ✅（P1 379 段 `00:01–01:22:15`；P2 260 段 `00:01–01:04:47`；两个独立时钟，P1 缺首长度未知；另有两条 M01 跨源证据）· M03 ✅（p.56 原结尾缺，M04 部分回顾）· M04 ✅（A/B 双录音互补；课堂到 p.39，p.40–54 ↪️ 下讲）· M05 ✅（867保留段／865秒值；开头行政与末尾alpha/beta信号已核，日期未知；M04 p.40–54未补讲，报告 8＋1 页见 M05） · M06 ✅（四源独立时钟；689段；三处接缝未知；新增2条期末明示）· M07 ✅（R2/R3，实课10/22本人确认，接缝未知）；M08 ✅（441/1001段位含30隐私占位；p47–54明确顺延）；M09 待转录 |
-| Artificial Intelligence Accounting | AC6761 | 商业核心 | M01 v1.0 · M02 v1.0 · M03 v1.0 · M04 v1.0 · M05 v1.0 · M06 v1.0 · M08 v1.0 · M09 v0.9 · M10 v0.9 · M11 v0.9 · [11/5 附件/练习范围](_meta/canvas-materials-20261105/ac6761/course-result.json) | M01 ✅（缺首）· M02 ✅ · M03 ✅（独立时钟、原音/接缝限制保留）· M04 ✅（S6补p.30–53）· M05 ✅（旧S6后段+10/21 S18/S19前段，20扩展单元已增补）· M06 ✅（S19/R1/S21及新S22/S23已融合；六题/后段概述本批独审/写回，p19–23完整操作和原查询仍缺） · M08 ✅（S23；p43–45未逐页录到）；M09–M11待录音/转录；10/14考试日不计缺录 |
-| **Business Data Analytics** | IS6400 | **选修 · 唯一技术课** | M01 v0.9 · M02 v1.0 · M03 v1.0 · M04 v1.0 · M05 v1.0 · M06 v1.0 · M07 v1.0 · M08 v1.0 · M09 v0.9 · T01 v0.9 · T02 v1.0 · T03 v1.0 · T04 v1.0 · T05 v1.0 · T07 v1.0 · T08 v0.9 · T09 v1.0 · T10 v0.9 · [11/5 回执](_meta/canvas-materials-20261105/is6400/course-result.json) | W01 无 · W02 ✅ · W03 ✅（旧mp3已重新核同源）· W04 ✅（9/23原录音；缺开头，M04/T04已融合） · W05 ✅（双源重叠，缺课堂开头；尾部幻觉已隔离） · M06 ✅ · T07 ✅（W07；A265/B619段双源；缺首、末尾/接缝未知，T07用B后段）· M07 ✅（S15/S16/S17三源；295/55/415段，接缝长度未知；课堂日期未核）· M08 ✅ · T09 ✅（S20；教程后半未录）；T08、M09、T10 待转录 |
+| Fintech and AI in Finance | EF5560 | 商业核心 | M01 v1.0 · M02 v1.0 · M03 v1.0 · M04 v1.0 · M05 v1.0 · M06 v1.0 · M07 v1.0 · M08 v1.0 · M09 v1.0 · [11/5 回执](_meta/canvas-materials-20261105/ef5560/course-result.json) · 8 个数据集卡、class02–05、15 个复现脚本 | M01 ✅ · M02 ✅（P1 379 段 `00:01–01:22:15`；P2 260 段 `00:01–01:04:47`；两个独立时钟，P1 缺首长度未知；另有两条 M01 跨源证据）· M03 ✅（p.56 原结尾缺，M04 部分回顾）· M04 ✅（A/B 双录音互补；课堂到 p.39，p.40–54 ↪️ 下讲）· M05 ✅（867保留段／865秒值；开头行政与末尾alpha/beta信号已核，日期未知；M04 p.40–54未补讲，报告 8＋1 页见 M05） · M06 ✅（四源独立时钟；689段；三处接缝未知；新增2条期末明示）· M07 ✅（R2/R3，实课10/22本人确认，接缝未知）；M08 ✅（441/1001段位含30隐私占位；S30 补齐 p.47–54）；M09 ✅（S30，p.39 后收束） |
+| Artificial Intelligence Accounting | AC6761 | 商业核心 | M01 v1.0 · M02 v1.0 · M03 v1.0 · M04 v1.0 · M05 v1.0 · M06 v1.0 · M08 v1.0 · M09 v1.0 · M10 v0.9 · M11 v0.9 · [11/5 附件/练习范围](_meta/canvas-materials-20261105/ac6761/course-result.json) | M01 ✅（缺首）· M02 ✅ · M03 ✅（独立时钟、原音/接缝限制保留）· M04 ✅（S6补p.30–53）· M05 ✅（旧S6后段+10/21 S18/S19前段，20扩展单元已增补）· M06 ✅（S19/R1/S21及新S22/S23已融合；六题/后段概述本批独审/写回，p19–23完整操作和原查询仍缺） · M08 ✅（S23/S28，已补 p.43–45）；M09 ✅（S28 缺练习接缝与结尾）；M10–M11 待录音/转录；10/14考试日不计缺录 |
+| **Business Data Analytics** | IS6400 | **选修 · 唯一技术课** | M01 v0.9 · M02 v1.0 · M03 v1.0 · M04 v1.0 · M05 v1.0 · M06 v1.0 · M07 v1.0 · M08 v1.0 · M09 v1.0 · T01 v0.9 · T02 v1.0 · T03 v1.0 · T04 v1.0 · T05 v1.0 · T07 v1.0 · T08 v0.9 · T09 v1.0 · T10 v0.9 · [11/5 回执](_meta/canvas-materials-20261105/is6400/course-result.json) | W01 无 · W02 ✅ · W03 ✅（旧mp3已重新核同源）· W04 ✅（9/23原录音；缺开头，M04/T04已融合） · W05 ✅（双源重叠，缺课堂开头；尾部幻觉已隔离） · M06 ✅ · T07 ✅（W07；A265/B619段双源；缺首、末尾/接缝未知，T07用B后段）· M07 ✅（S15/S16/S17三源；295/55/415段，接缝长度未知；课堂日期未核）· M08 ✅ · T09 ✅（S20；教程后半未录）；M09 ✅（S29；仅讲授）；T08、T10 待转录 |
 
 > 📊 **截至 2026-10-18（本轮正式写回并回读后）**：五门课共 **35 篇笔记**（29 篇 v1.0 + 6 篇 v0.9），34 个转录文本。v1.0 表示课堂证据已融合，缺录、ASR 和计算来源限制仍见各篇 §8/§9；不表示本人已通读、自测或课程材料完整无误。
 
@@ -437,11 +441,11 @@ IS6400 新增 [M06 分类机制](IS6400_Business_Data_Analytics/notes/M06-分类
 
 每课都有自己的可读性细则，但读者假设相同：没听过课，按高中知识起点，不默认 ML、大学数学或编程。
 
-- [AC6761 · 人工智能会计](AC6761_Artificial_Intelligence_Accounting/00-课程总览.md)。10 个核心入口；本批新增 Case 6/Quiz 3 学习解析，并完成 M10 两 Excel 附件§2.11局部教学，未重审整篇 M10。Worksheet 的真实公司/工具输出仍未完成，M09–M11 转录缺口保留。[本批结果](_meta/canvas-materials-20261105/ac6761/course-result.json)
-- [EF5560 · 金融科技与金融 AI](EF5560_Fintech_and_AI_in_Finance/00-课程总览.md)。9 个核心入口；新 M09 为 54 页/16 原图、v0.9/pending，另有 A02 现行 brief 的新学习导览。旧 M04 补讲、M08 顺延及原音限制不清零。[本批结果](_meta/canvas-materials-20261105/ef5560/course-result.json)
+- [AC6761 · 人工智能会计](AC6761_Artificial_Intelligence_Accounting/00-课程总览.md)。10 个核心入口；本批新增 Case 6/Quiz 3 学习解析，并完成 M10 两 Excel 附件§2.11局部教学，未重审整篇 M10。Worksheet 的真实公司与工具输出仍待本人完成。S28 已融合 M08/M09，M10–M11 待录音。[本批结果](_meta/canvas-materials-20261105/ac6761/course-result.json)
+- [EF5560 · 金融科技与金融 AI](EF5560_Fintech_and_AI_in_Finance/00-课程总览.md)。9 个核心入口；M09 保留 54 页及 16 张原图，S30 融合后为 v1.0。S30 同时补齐 M08 p.47–54。A02 现行 brief 见本课学习导览。[本批结果](_meta/canvas-materials-20261105/ef5560/course-result.json)
 - [IS5113 · AI 伦理与法规](IS5113_AI_Ethics_and_Regulations/00-课程总览.md)。8 个核心入口；新 M08 为 92 页/14 原图、v0.9/pending。报告样稿对应 A02 格式说明；M01 无录音、M07/M08 缺转录，M06 来源缺口保留。[本批结果](_meta/canvas-materials-20261105/is5113/course-result.json)
 - [IS5542 · 商业生成式 AI](IS5542_GenAI_in_Business/00-课程总览.md)。6 个核心入口，M07 仍录音先行 partial/draft；本轮无新原件，只同步已提供考试日期，不新增教学或反思范围。[既有来源回执](_meta/learning-repair-20261104/is5542/course-result.md)
-- [IS6400 · 商业数据分析](IS6400_Business_Data_Analytics/00-课程总览.md)。18 个核心入口（9 M＋9 T）；M09 以新版 L10 137 页为主源并保留旧 L11 补充，新 T10 对应 86-cell Notebook；两篇仍 v0.9/pending，无新转录。[本批结果](_meta/canvas-materials-20261105/is6400/course-result.json)
+- [IS6400 · 商业数据分析](IS6400_Business_Data_Analytics/00-课程总览.md)。18 个核心入口（9 M＋9 T）；M09 以新版 L10 137 页为主源并保留旧 L11 补充，T10 对应 86 格 Notebook，仍为 v0.9。S29 已融合 M09 讲授，教程待录。[本批结果](_meta/canvas-materials-20261105/is6400/course-result.json)
 
 ### agent 从接单到写回要经过什么
 
@@ -492,7 +496,7 @@ CityU/
    ├─ CLAUDE.md / AGENTS.md   课程级规则
    ├─ 00-课程总览.md           MOC 入口
    ├─ course_files_export/    ★ 所有下载来的原始材料
-   ├─ transcripts/            课堂转录（55 个规范 txt；本批无新增，各课程 partial 分片保留独立时钟与接缝缺口）
+   ├─ transcripts/            课堂转录（58 个规范 txt；部分录音各保留独立时钟与接缝缺口）
    ├─ _prep/                  前置资料（官方调研、口碑）
    ├─ _meta/                  台账 / 术语 / 考点 / DDL / 数据集
    ├─ code/                   可复现分析脚本（EF5560 15 个；IS5542 从 M03 起）

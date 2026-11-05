@@ -358,3 +358,15 @@ A股票名、B阈值/映射、TA200/15marks仍不确定，不作为确定校词�
 | S26/S27 法规编号、manual对象、AI编码词、角色拼写 | [?]，不恢复为确定术语 | IS5542 M07 §9.3/9.5；缺讲义/原影片，官方局部外核与原话分开 |
 
 本批S24两条、S25一条含中文的过滤段已按原文恢复；隐私占位不是ASR校词。未逐字人工核听。两词典本次保留已有REA条目并归一，重复条目不再复制；没有无声丢弃互斥解释。
+
+## 2026-11-06 · S28–S30
+
+| 课程／原时钟 | 原转写 | 采用拼写或释义 |
+|---|---|---|
+| AC6761 S28 01:00／09:26 | account pale／weak AI | Accounts Payable／Vic.ai（W8 p.40、42） |
+| AC6761 S28 23:33／23:51／26:40／28:51 | Optimal Character Recognition／NRP／CLARP／Chemex | Optical Character Recognition／NLP／Clara／EY Canvas（W9 p.4、8、12） |
+| AC6761 S28 46:06／46:41／01:28:26 | April／NBNA／decoders | Apple／MD&A／stakeholders（W9 p.19、Case 6） |
+| IS6400 S29 22:07／27:41／30:14 | n function／all logic／XNOT | AND／OR／XNOR（L10 p.15–19，真值及计算优先） |
+| IS6400 S29 01:00:24／01:06:03／01:24:26 | recovered neural network／long term short term memory／passing cheese structure | Recurrent Neural Network／Long Short-Term Memory／parsing tree |
+| EF5560 S30 18:59／35:42／41:35 | AVE／10 minutes／SUSDC | Aave／10 million／sUSDS（Lec08 p.45、49、52） |
+| EF5560 S30 56:04／01:34:43／02:19:50／02:25:02 | min／fund／Antropon／CITS | mint／burn／Anchorpoint／CIPS（Lec09） |
