@@ -1,7 +1,7 @@
 ---
 type: 作业与DDL
 course: IS6400
-updated: 2026-10-28
+updated: 2026-11-05
 tags: [IS6400, DDL, 作业]
 ---
 
@@ -462,6 +462,8 @@ timeline
 | 项 | 信息 | 出处 |
 |---|---|---|
 | 时长 | **2 小时** | 官方课程目录 `Examination Duration (Hours) = 2` |
+| 日期／时段 | **2026-12-15 18:30–20:30 HKT** | 用户提供计划；原11/5 12:56 AIMS快照，root回读本地数据／ICS，本轮未重登 |
+| 地点 | **YEUNG 4楼 LT2**（Mr and Mrs Sze Chi Ching Lecture Theatre） | 本批最小考试来源；临考核变化 |
 | 开卷/闭卷 | ✅ **闭卷**（2026-09-09 用户确认：教授课上说了）。W1 讲义 p.8 印的 "2hour (**open/closed book**)" 是模板未删干净 | 🎙️ 教授口述，用户转述 2026-09-09 |
 | 语言 | **英文** | 官方 `Medium of Assessment: English` |
 | 及格线 | **至少拿 20%** | 官方 `Minimum Examination Passing Requirement (%) 20` |
@@ -498,7 +500,7 @@ timeline
 | 5 | **Final Report 的真实截止日**（Guideline 的 "May 1" 是残留） | Canvas | 🟡（学期末） | ❌ 无 |
 | 6 | **小组人数**（4–6 / ≤5 / ≤6） | 课上 | 🟡 | ❌ 无 |
 | 7 | **期末考开卷还是闭卷** | 课上 | 🟡（影响复习策略） | ❌ **无**。⚠️ W1 讲义 p.8 写的是 "2hour (**open/closed book**)"，两个词都在；转录也没有 → **必须直接问** |
-| 8 | 期末考的具体日期与地点 | 学校考试时间表 | 🟢 | ❌ 无 |
+| 8 | 期末考的具体日期与地点 | 学校考试时间表 | 🟢 | 2026-12-15 18:30–20:30 HKT，YEUNG LT2；11/5 12:56快照，本轮未重登 |
 | 9 | Participation 抽到几次课 | 无法预知 —— **每节都要到** | — | ❌ 无 |
 | 10 | 香港公众假期是否会造成课程顺延 | 校历 | 🟢 | ❌ 无 |
 | 11 | ~~Week 3 Assignment 的截止日~~ | — | ✅ **9/25（五）23:59，10 分**（Canvas 截图）；提交文件类型限制待上传时看 | — |
@@ -541,7 +543,7 @@ timeline
 | **2026-11-18（三）** | **W12 · Group Presentation（15%）** |
 | **2026-11-25（三）** | **W13 · Group Presentation（15%）** |
 | ⏳ 待定 | **Final Report 截止（10%）** |
-| ⏳ 待定 | **期末考试（40%，2 小时）** |
+| 2026-12-15 18:30–20:30 HKT | **期末考试（40%，2小时；YEUNG LT2）**，来源为11/5快照 |
 
 ---
 
@@ -676,3 +678,7 @@ M08四图小测：S20 `59:51`末次要求解释C→D和检验平稳，`59:58`给
 ## 2026-11-02 个人作业本轮状态
 
 330590/330608 均已实核 11/6 23:59 HKT、20/2 points、file upload。合并入口无追加题面，复用旧 A09 完整四题并库外重跑，原已提交文件不改；入口回执映射仍待核。天气 Extra 已完成 Notebook/标准 HTML/中文导览及独审，测试 SARIMA/HW/季节朴素 RMSE 为 2.515160/1.901891/2.492339 °C，仍 draft 待本人核阅与最终格式确认，未上传。入口：[[IS6400_Business_Data_Analytics/assignment/graded/A11-week9-extra/notes/开始这里|天气 Extra]]、[[IS6400_Business_Data_Analytics/assignment/graded/A10-week8-9/notes/任务说明|合并入口对照]]。10/21 Quiz 338410 仅回查事实，未见补交题面/安排，不代作或自行补交。
+
+## 2026-11-05 · 新材料与考试行政边界
+
+L10深度学习／图像课件137页、天气LSTM Notebook86格及ColabPDF9页是本批课程学习材料；未据此新建正式作业、期限或提交要求，不与Week11投票活动混为一项。已有分类／天气Extra等本人提交与评分历史保持。期末日期与地点依据[本批考试快照](../../_meta/canvas-materials-20261105/exam-schedule-source.json)，本轮未重新登录AIMS；允许携带材料详情11/30起公布，当前不推断具体细项，已有课堂A4／闭卷来源作为历史保留。

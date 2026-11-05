@@ -1,10 +1,18 @@
 ---
 type: 作业与DDL
 course: AC6761
-updated: 2026-10-25
+updated: 2026-11-05
 ---
 
 # AC6761 作业与 DDL
+
+## 2026-11-05 · 当前新增行政要求
+
+- **展示 PPT：before Nov. 11, 2026 发给教师**。10/31 18:13 的 [Presentation PPT submission 公告](https://canvas.cityu.edu.hk/courses/70229/discussion_topics/643580) 要求所有组在 11 月 11 日前邮件交 PPT，未给具体小时；不推算为某日 23:59。展示从 11/11 起按名单，本人 Group 11 的既有 11/18 安排保留，不能将其当成 PPT 截止。
+- **书面报告：不晚于 2026-11-29**，仍按现行项目原件，小时未给；PPT 与 PDF 报告是两个不同交付要求。本轮没有发送邮件或改变本人提交状态。
+- **期末：2026-12-12 09:30–12:30（HKT），YEUNG LT13，3 小时**。来源为本人提供的考试计划所记录的 11/5 12:56 AIMS 实读快照；本轮仅回读计划数据与 ICS，没有重新登录 AIMS。最小来源记录为 `_meta/canvas-materials-20261105/exam-schedule-source.json`，考前再核场地与安排。
+- **Case 6 / Quiz 3**：本轮公告列表 6 条中未见二者专属 DDL；Quiz 3 原件明确邮件交 Worksheet、最多 3 人，未给分值或截止。Case 6 原件未写发送/截止要求。未改本人学习、组队、提交或评分字段。
+
 
 > 制作规则：[[作业规范|全局通用规则]] → [[AC6761_Artificial_Intelligence_Accounting/_meta/AC6761作业制作规范|AC6761 课程细则]] → 本地私有 Axx 任务说明。本页维护作业事实与历史来源，不能覆盖制作规则。
 
@@ -105,7 +113,7 @@ updated: 2026-10-25
 | **形式** | **闭卷** |
 | **时长** | **3 小时**（官方目录：*Examination Duration (Hours): 3*） |
 | **题型** | *"Students are required to answer **all the essay and case questions** set in the examination paper."* → **全部是论述题与案例题，没有选择题** |
-| **日期地点** | ⚠️ 未公布，学校统一安排 |
+| **日期地点** | 2026-12-12 09:30–12:30（HKT），YEUNG LT13；11/5 12:56 AIMS 计划快照，本轮未重登 |
 | **GenAI** | ❌ **禁止** |
 | 评分标准 | *"Ability to provide **good analysis of conceptual and case questions** and demonstrate **excellent presentation** on the provided answers."* |
 
@@ -166,7 +174,7 @@ gantt
 | 2 | **书面报告的格式要求** | 页数、结构、引用格式一律未说明 |
 | 3 | **是否有个人作业** | 讲义 p.2 的课堂参与里提到 "individual assignment"，但**至今未见任何具体布置**。可能在转录缺口那段说过。<!-- W2转录 --> W2 的两道课堂练习都明说**不收**（`21:04` *"I will not collect"*、`01:33:20` *"No need to submit"*），不是作业 |
 | 4 | 🎙️ **教授提到的 Word 答题格式文件** | M01 `01:53:19` 与 W2 `20:50`、`35:07`–`35:21` 提到会上传/使用 format。后到的 `Transaction analyses for Lecture 1.docx`、Case 1/Case 2/Quiz 1 DOCX 已在本地，但现有证据未确认哪一个就是该特定模板；不再写成所有相关文件均未取得，也不猜文件身份 |
-| 5 | **期末考的日期与地点** | 学校统一安排，学期后段公布 |
+| 5 | **期末考的日期与地点** | 已据 11/5 12:56 AIMS 计划快照登记为 12/12 09:30–12:30、YEUNG LT13；考前再核 |
 | 6 | **及格线的具体百分比** | 三份文件都只说"两部分都要过"，没有数字 |
 | 7 | 展示的评分是个人分还是小组分 | 讲义只说"每位组员都要参与"，未说明是否分开评分 |
 | 8 | **带解答 DOCX 的行政地位** | Case 1/Case 2、`Transaction analyses for Lecture 1.docx`、`2 Analyze balance sheet.docx` 与后到 `Quiz 1 with solution.docx` 均已在本地并用于教学核对。文件存在/带答案不等于计分或提交；现有材料没有确认 Case 1/2 的独立提交入口或截止。Quiz 1 的课堂收取仅作 participation 证据且本次不评分，不推断本人已交 |

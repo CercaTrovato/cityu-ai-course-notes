@@ -6,6 +6,8 @@ date: null # 尚无经核实的授课日期
 source:
   - "Week 10 PPT.pptx（主讲义，42 slides，独立页码 p.1–p.42）"
   - "Week 10 PPT Ratio Analysis.pptx（补充讲义，16 slides，独立页码 p.1–p.16）"
+  - "Ratio analyses.xlsx（Sheet1 A1:H30；2026-11-05 新附件）"
+  - "Trend analyses.xlsx（Sheet1 A1:E37；2026-11-05 新附件）"
 transcript: pending
 prerequisites:
   - "[[AC6761_Artificial_Intelligence_Accounting/notes/M03-年报分析|M03 年报分析]]（唤醒：先读报表行项目及期间，再解释比率；本篇重新给出必要口径）"
@@ -23,7 +25,7 @@ new_concepts:
   - 流动性、盈利能力、偿债能力、效率与市场估值比率（Liquidity, Profitability, Solvency, Efficiency and Market Ratios）
 tags: [AC6761, financial-analysis, ratio-analysis, forecasting, AI]
 status: v0.9
-updated: 2026-10-26
+updated: 2026-11-05
 readability_rules: v2
 mechanism_spec: v1
 mechanism_review: passed
@@ -1330,6 +1332,182 @@ flowchart TD
 
 每个提示词答案提交前逐项核对：公司与财年、报告日期、货币 / 单位、报表原行、分子分母、期末 / 平均余额、basic / diluted EPS、价格时点、同业定义、来源页码、计算复算、因果措辞和缺失信息。只有 prompt 而没有数据时，正确作答是保留不确定性并指出要取哪些数据，不是填入看似精确的当前数。
 
+### 2.11 两份 Excel 配件：用原数练核验
+
+2026-11-05 新取得 `Ratio analyses.xlsx` 与 `Trend analyses.xlsx`。二者是教学表，没有公司名或真实年报出处，不能拿来替代 Quiz 3 所选公司的最新年报。下面按实际单元格定位；两份文件都只有 `Sheet1`，没有 Excel 公式、图表、宏或已填个人信息。原件只读，以下计算是 ⚪ 参考作答（笔记推断）。
+
+#### 2.11.1 Ratio analyses：先认原表和五条附注
+
+![Ratio analyses 原工作表全貌](figures/m10-excel-20261105/ratio-source.png)
+
+这张原表从左上读 2023 全年利润表，左下读 2023-12-31 的资产负债表，右边是 11 个待算指标，最下方是补充条件。原表成本费用用负数表示扣减；计算周转和偿息倍数时，要取对应成本费用的正的金额，不把“减项”误当负的经营活动。
+
+`A26:A30` 的原文条件依次为：
+
+> All sales are credit sales.  
+> Market price per share = 45  
+> Number of outstanding shares = 100,000  
+> Inventory Balance of Jan 1. 2023 = 350,000  
+> Receivable Balance of Jan 1. 2023 = 200,000
+
+“All sales are credit sales” 表示全部销售先形成应收账款，因此本题净赊销额可用收入 2,500,000；不是把回款加一次收入。后两行提供期初存货、期初应收，使期间销售量能够和平均占用额匹配。原文件表头写 `$`，没有指明 USD/HKD 等币种，下面统称“原表货币单位”。
+
+下面一行对应一个会参与核算的输入；利润表行是一整年发生额，资产负债表行是期末存量，不能混成同一种时点。
+
+| 输入与原单元格 | 金额 | 当前用途 |
+|---|---:|---|
+| Revenue `B3` | 2,500,000 | 毛利率、应收周转分子 |
+| COGS `B4` | -1,500,000 | 存货周转取成本金额 1,500,000 |
+| Gross Profit `B5` | 1,000,000 | 毛利率分子 |
+| EBIT `B7` | 400,000 | 扣利息和税前利润，算偿息倍数 |
+| Interest Expense `B8` | -50,000 | 偿息分母取利息金额 50,000 |
+| Net Income `B11` | 280,000 | ROE、简化 EPS 分子 |
+| Cash / Receivables / Inventory `B17:B19` | 150,000 / 250,000 / 400,000 | 流动资产构成及平均占用 |
+| Total Current Assets `B20` | 800,000 | 流动与速动分子起点 |
+| Current Liabilities `D19` | 300,000 | 同日短期债务分母 |
+| Short-term / Long-term Debt `D18,D20` | 100,000 / 500,000 | 有息债务口径 |
+| Total Liabilities / Equity `D21:D22` | 800,000 / 1,700,000 | 总负债口径、ROE及账面值 |
+
+先核原表自身：收入减成本得毛利 $2{,}500{,}000-1{,}500{,}000=1{,}000{,}000$；毛利再减营业费用 600,000 得 EBIT 400,000；减利息 50,000 得税前 350,000；税 70,000 后净利 280,000。资产总额为 2,500,000，负债 800,000 加权益 1,700,000 也为 2,500,000。它们是可核的内部勾稽，不证明数据来自真实公司。
+
+#### 2.11.2 Ratio analyses：逐项算完右侧 11 个指标
+
+先看短期资源够不够覆盖短期义务。流动比率用同日流动资产除流动负债；速动比率进一步去掉存货等难以迅速变现的项目。本表流动资产只有现金、应收和存货，未列预付等其他项目，因此本题速动可用现金加应收。
+
+以下每行写出分子、分母、代入与结果，倍数保留两位小数。它们是比率，不是货币金额。
+
+| 原指标 | 原数代入与结果 |
+|---|---|
+| Current Ratio 流动比率 `F1` | $800{,}000/300{,}000=2.67$ 倍 |
+| Quick Ratio 速动比率 `F2` | $(800{,}000-400{,}000)/300{,}000=1.33$ 倍 |
+| Gross Margin 毛利率 `F4` | $1{,}000{,}000/2{,}500{,}000=40.00\%$ |
+
+读第一行：每 1 单位短期负债，对应约 2.67 单位流动资产；其中存货占 400,000，去掉后只剩 1.33。高流动比率不证明每笔债务到期当天都能付款，还要看收款时间、现金限制和变现能力。毛利率 40% 则表示每 100 单位收入扣销售成本后剩 40，还没有扣营业费用、利息与税。
+
+接着看权益回报和债务负担。ROE 的常见期间口径用净利润除平均权益，但本表只给期末权益；不能伪造期初值。D/E 的 Debt 也须说清是有息债务还是总负债。
+
+| 原指标 | 参考计算与明确口径 |
+|---|---|
+| Return on Equity (ROE) `F5` | 期末权益代理：$280{,}000/1{,}700{,}000=16.47\%$；平均权益口径暂不能唯一计算 |
+| Debt-to-Equity Ratio `F7` | 总负债口径：$800{,}000/1{,}700{,}000=0.47$；有息债务口径：$(100{,}000+500{,}000)/1{,}700{,}000=0.35$ |
+| Interest Coverage Ratio `F8` | EBIT 除利息金额：$400{,}000/50{,}000=8.00$ 倍 |
+
+16.47% 是明确标过的期末代理，不能冒充原题给了平均权益。0.47 与 0.35 是两种定义的结果，未取得教师唯一口径；比较两工具前要让定义一致。8 倍表示本期息税前利润相对于本期利息代价的覆盖，不等于现金恰好有八份可付利息。
+
+再看销售活动占用了多少存货和应收。存货周转率（Inventory turnover）比较全年销售成本与平均存货；应收周转率（Receivables turnover）比较净赊销额与平均应收。本题以期初期末均值近似平均占用，不能把“余额”为存量与“全年流量”当成同一个量。
+
+$$
+\text{平均存货}=\frac{350{,}000+400{,}000}{2}=375{,}000
+$$
+
+$$
+\text{平均应收}=\frac{200{,}000+250{,}000}{2}=225{,}000
+$$
+
+于是两个待算指标为：
+
+| 原指标 | 分子分母与结果 |
+|---|---|
+| Inventory Turnover `F10` | $1{,}500{,}000/375{,}000=4.00$ 次/年 |
+| Receivables Turnover `F11` | $2{,}500{,}000/225{,}000=11.11$ 次/年 |
+
+4 次/年表示全年销售成本相当于约四份平均存货成本。11.11 次/年表示全年净赊销额相当于约十一份平均应收；它不是每一笔客户账款都在同一天收回。若附注改成只有 80% 是赊销，应收周转分子应改为 $2{,}500{,}000\times80\%=2{,}000{,}000$，结果约 8.89 次；存货周转分子仍取销售成本。
+
+最后看每股利润、股价与账面值。原件只给一个“outstanding shares”数，未给期间加权普通股数、优先股股息或稀释资料。因此以下 EPS 是教学简化：假设 100,000 为整年不变普通股数，280,000 全归普通股；不能称为完整的法定基本或稀释 EPS。
+
+| 原指标 | 简化代入与结果 |
+|---|---|
+| Earnings Per Share (EPS) `F13` | $280{,}000/100{,}000=2.80$ 原表货币单位/股 |
+| Price-to-Earnings (P/E) Ratio `F14` | $45/2.80=16.07$ 倍 |
+| Price-to-Book (P/B) Ratio `F15` | 每股账面值 $1{,}700{,}000/100{,}000=17$，再算 $45/17=2.65$ 倍 |
+
+股价 45 未注明日期，P/E 与 P/B 只是按给定数练运算，不能据此写成某日实际市场估值。若股数随年内发行变化，EPS 要换加权平均股数；P/B 则核报告日权益和同日股数，不把两种分母一律混用。
+
+英文参考作答（笔记推断，与上表同一组教学输入）：
+
+> The current ratio is 2.67 times, meaning that current assets equal about 2.67 units for each unit of current liabilities. The quick ratio is 1.33 times after excluding inventory in this worksheet. These ratios do not guarantee timely cash repayment. The gross margin is 40.00%, so each 100 units of revenue leaves 40 units after cost of goods sold, before operating expenses, interest and tax.
+
+> ROE is 16.47% using ending equity as an explicitly stated proxy; ROE based on average equity cannot be uniquely calculated without beginning equity. Debt-to-equity is 0.47 times using total liabilities, or 0.35 times using interest-bearing debt. The definition must be stated before comparison. Interest coverage is 8.00 times: EBIT is eight times the period's interest expense, which is not a measure of available cash.
+
+> Inventory turnover is 4.00 times per year using average inventory of 375,000. Receivables turnover is 11.11 times per year using average receivables of 225,000 and treating all sales as credit sales, as the worksheet specifies. The turnover figures compare annual flows with average balances and do not mean that every item or customer follows the same timing.
+
+> Simplified EPS is 2.80 worksheet currency units per share, assuming that 100,000 ordinary shares remain outstanding throughout the year and all net income is attributable to them. P/E is 16.07 times using the given share price of 45. Book value is 17 units per share, giving P/B of 2.65 times. The share-price date is unspecified, so these are calculations from the supplied inputs, not verified market valuations for a particular date.
+
+#### 2.11.3 Trend analyses：四个区块分别回答什么
+
+![Trend analyses 原工作表全貌](figures/m10-excel-20261105/trend-source.png)
+
+原表从上到下是金额趋势（`A2:E6`）、利润表共同比（`A8:D17`）、资产负债表共同比（`A19:D31`）、比率趋势（`A33:D37`）。看上区要跨两年相减；看中间两区要在同一年内找分母；看下区则追同一个比率跨年怎样变。原表没有公司、币种或金额单位，不能把这里的 950 与前份 Ratio 表的 2,500,000 拼成同一家公司。
+
+上区所有算式是文本，Excel 不会因你改一个数字自动重算。金额变化用“本期减上期”，百分比变化再除以上期金额。下面每行把两个期间都复算完，百分数按原表显示一位小数。
+
+| 原行 | 2021→2022 | 2022→2023 |
+|---|---|---|
+| Revenue `A4:E4` | $1{,}150-950=200$；$200/950=21.1\%$ | $1{,}300-1{,}150=150$；$150/1{,}150=13.0\%$ |
+| Gross Profit `A5:E5` | $402-380=22$；$22/380=5.8\%$ | $455-402=53$；$53/402=13.2\%$ |
+| R&D Expense `A6:E6` | $161-95=66$；$66/95=69.5\%$ | $195-161=34$；$34/161=21.1\%$ |
+
+例如研发费用（Research and development expense, R&D）2022 年增加 69.5%，大于收入增长 21.1%。它支持“研发费用增速较高”，不能单凭增长就判研发有效或无效。收入增长从 21.1% 降到 13.0% 是增速放缓，收入本身仍从 1,150 增到 1,300。
+
+利润表共同比（Common-size income statement）每列以该年收入为 100%。以下完整保留原表的八行百分比，单位均为收入占比，不能把 2021 与 2022 金额相加作分母。
+
+| 原行 `A10:A17` | 2021 | 2022 | 2023 |
+|---|---:|---:|---:|
+| Revenue 收入 | 100.00% | 100.00% | 100.00% |
+| COGS 销售成本 | 60.00% | 65.00% | 65.00% |
+| Gross Profit 毛利 | 40.00% | 35.00% | 35.00% |
+| R&D 研发费用 | 10.00% | 14.00% | 15.00% |
+| SG&A 销售、一般及行政费用 | 20.00% | 20.00% | 20.00% |
+| Operating Income 营业利润 | 10.00% | 1.00% | 0.00% |
+| Interest Expense 利息费用 | 1.10% | 1.30% | 1.50% |
+| Net Income 净利润 | 8.90% | -0.30% | -1.50% |
+
+例如 2023 毛利占 35%，减研发 15%、SG&A 20%，给定结构得到营业利润占 0%。原表继续列净利润 -1.5%，但没有完整税项及其他损益行，不能据这个简表独立认证真实净利润的所有组成。
+
+这里有一处需要保留的精度差异：上区 2022 毛利为 402、收入 1,150，精算是 $402/1{,}150=34.9565\%$。下区显示 35.0% 可视为一位小数舍入，中区却显示 35.00%，与同一输入精算至两位小数的 34.96% 有差异。不能拿 35.00% 当精确比例倒推 402；原件没有说明是先舍入还是另用未展示原数，保留该口径待核。
+
+资产负债表共同比（Common-size balance sheet）改用每年的总资产作分母。以下按原表行序给全部有百分比的数据行，三列是报告日结构，不是期间发生额。物业、厂房及设备（Property, Plant and Equipment, PP&E）是这张表的固定资产项；Net 表示扣除累计折旧及适用减值后的净额，不是当年新买设备的支出。
+
+| 原行 `A22:A31` | 2021 | 2022 | 2023 |
+|---|---:|---:|---:|
+| Cash & Equivalents 现金及等价物 | 10.0% | 6.7% | 3.6% |
+| Accounts Receivable 应收 | 15.0% | 19.2% | 23.2% |
+| Inventory 存货 | 20.0% | 29.2% | 34.8% |
+| Total Current Assets 流动资产合计 | 45.0% | 55.0% | 61.6% |
+| PP&E (Net) 净固定资产 | 55.0% | 45.0% | 38.4% |
+| Total Assets 总资产 | 100.0% | 100.0% | 100.0% |
+| Total Current Liabilities 流动负债合计 | 17.0% | 23.3% | 26.8% |
+| Total Liabilities 负债合计 | 40.0% | 50.0% | 56.5% |
+| Shareholders' Equity 股东权益 | 60.0% | 50.0% | 43.5% |
+
+2022 年现金 6.7%+应收 19.2%+存货 29.2%=55.1%，比合计行 55.0% 多 0.1 个百分点，可能来自逐项舍入；原表未给这些明细的完整金额，不能独立证实差异来源。负债加权益各年都是 100%，但流动负债本来包含在负债合计内，不能再加一次。
+
+现金占比下降、应收和存货占比上升，提示可立即支付的资源结构变弱；这不直接证明坏账或存货积压，仍要核回款和销售。原表也没有完整资产负债表，不能凭百分比倒造每个金额再称已核原数。
+
+最下区给三项比率的原始算式；下面倍数保留两位小数，毛利率沿原表保留一位小数。
+
+| Ratio `A35:A37` | 2021 | 2022 | 2023 |
+|---|---|---|---|
+| Gross Margin 毛利率 | $380/950=40.0\%$ | $402/1{,}150\approx35.0\%$ | $455/1{,}300=35.0\%$ |
+| Current Ratio 流动比率 | $450/170\approx2.65$ | $660/280\approx2.36$ | $850/370\approx2.30$ |
+| D/E 总负债口径 | $400/600\approx0.67$ | $600/600=1.00$ | $780/600=1.30$ |
+
+流动比率下降不等于流动资产金额下降：表中分子 450→660→850 在上升，但分母 170→280→370 也增加，而且相对增幅更大。D/E 从 0.67 升到 1.30 表示每一份权益对应的总负债增加；原表这三年权益算式分母均为 600。不能将这份不同年度的 600 与 Ratio 附件的 1,700,000 混用。
+
+毛利率从 40% 降至约 35% 是下降约 5 个百分点；相对于原来 40%，降幅约 $5/40=12.5\%$。百分点比较两个百分数相减，相对降幅则还除以原比例，二者不能互换。
+
+#### 2.11.4 两份附件的复习自测
+
+**问题（笔记补充）：** Ratio 表没有期初权益，能否把 16.47% 写成严格的平均权益 ROE？Trend 表流动比率下降，能否写“流动资产变少”？
+
+<details><summary>答案与理由</summary>
+<p>不能。16.47% 使用期末权益 1,700,000；平均权益须补期初数据，或者明确承认期末代理。Trend 表流动资产原算式分子从 450 升到 850，下降的是资产相对短期负债的倍数，不能把比值下降误读为分子下降。</p>
+<p>English: The ROE figure uses ending equity because beginning equity is unavailable. A declining current ratio does not imply falling current assets; current liabilities can grow faster than current assets.</p>
+</details>
+
+源文件：[[AC6761_Artificial_Intelligence_Accounting/course_files_export/Ratio analyses.xlsx|Ratio analyses.xlsx]]、[[AC6761_Artificial_Intelligence_Accounting/course_files_export/Trend analyses.xlsx|Trend analyses.xlsx]]。结构、缺失与单位限制见[[AC6761_Artificial_Intelligence_Accounting/_meta/数据集|数据集卡]]。本次只核两份附件与相关教学增量，不升级本讲原有未变部分的审查状态。
+
+
 ## 3. 一图看懂
 
 下面流程把本讲的分析顺序连起来。图中“解释”须在计算后寻找披露或行业证据；不能从比率直接跳到因果结论。
@@ -1598,3 +1776,7 @@ flowchart TD
 - 主讲义 p.7 列出 Apple、2024 和 10-K；“as attached”见 p.8–11 的共同提示词。两份讲义包均未附所指年报。笔记没有虚构 Apple 数值、公司现状、行业基准或 AI 输出；欲完成这些具体问法，需要该年报及完整工具输出。
 - 两份原件共 58 页无实质 Speaker Notes。2026-10-26 的同源浏览器检查和 B1–B8 审查见当时回执；本批以独立逐源报告和静态同源显示记录界定核对范围，原生 Obsidian 未直接查看。
 - 本次回源逐条匹配 87/87 条有问号的源题，另保留主 p.8–11 共用命令式提示词和四个目录；条件式解析与真实公司结果分开。此计数只核原文定位。2026-11-04 修补另有 A–G 审查记录，写回和同步状态以批次回执为准；真实公司分析仍需年报与相应数据。
+
+## 相关 · 本讲新配套练习（2026-11-05）
+
+[[AC6761_Artificial_Intelligence_Accounting/assignment/practice/M10-Quiz3-双工具分析核验|Quiz 3：一个模型、一个问题与两份工具输出的学习解析]]。两份匿名教学工作表的参考计算见 §2.11，不能替代本人所选公司的最新年报。此处仅新增导航，真实Worksheet仍待实作。

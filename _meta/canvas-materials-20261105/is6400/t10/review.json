@@ -1,0 +1,204 @@
+{
+  "schema": "note-review-v2",
+  "note": "IS6400_Business_Data_Analytics/notes/T10-深度序列预测实战-从窗口到LSTM.md",
+  "scope": "full",
+  "source_sha256": null,
+  "candidate_sha256": "109fb6a33aa09ce0b277d326e0fbd58bfbd2a09e571e7609bf979e5e0e75bf99",
+  "review_file": "review.md",
+  "review_sha256": "d3c15f2258791e53ba2a71b7e892afc96ebc743bea404dfab6e22496002a00cc",
+  "checks": {
+    "understanding": {
+      "status": "passed",
+      "evidence": "independent-review.md §§1–9：全篇两阶段、v1定向、v2唯一维护行与7个机制图实际逐张查看均关闭；root接受。"
+    },
+    "sources": {
+      "status": "passed",
+      "evidence": "source-checks.json；../page-cell-evidence-final.json；independent-review.md §§3–4、7"
+    },
+    "warnings": {
+      "status": "passed",
+      "evidence": "review.md 机械与警告；gate-final.txt 实际正式exit0；作者批修与独立定向复核"
+    },
+    "visuals": {
+      "status": "passed",
+      "evidence": "../root-visual-t10.json（root CUA IAB必要上下文及完整机制PNG）；../root-diagram-exports.json＋原审§9逐图实际查看；native Obsidian未看、无waiver。"
+    }
+  },
+  "independent_review": {
+    "author_ids": [
+      "/root/is6400"
+    ],
+    "reviewer_id": "/root/review_is6400",
+    "perspective": "high-school-beginner",
+    "status": "passed",
+    "candidate_sha256": "109fb6a33aa09ce0b277d326e0fbd58bfbd2a09e571e7609bf979e5e0e75bf99",
+    "report_file": "independent-review.md",
+    "report_sha256": "07bf32235a7d9fa2c70b55c2f0d21b5ce00d0cd46c8a4a2baa3f26c4fd6cbe69"
+  },
+  "assets": [
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\page-cell-evidence-final.json",
+      "sha256": "2c75ea4443954640380735c857b79bd10e5fbc4ce32fb70d238742ebf0dc9ba3"
+    },
+    {
+      "path": "source-checks.json",
+      "sha256": "10c93a3e92e0cfb5cbe93a95ac4efbcad9d97336db3006990d72d4643e3ad60a"
+    },
+    {
+      "path": "stage-1.md",
+      "sha256": "5e04df8356b22d6a834f4eb8debc27470d53b32774a496511a4630807a12000d"
+    },
+    {
+      "path": "independent-check-results.json",
+      "sha256": "c82fe3e9fddb743787737824893824a6a88a6b6cb9633653053a73a97afd8825"
+    },
+    {
+      "path": "v1-directed-check-results.json",
+      "sha256": "050bc1d99d38d109ff632cb7e5e72ba7eddc3eebf6cd1415d51d31f6f2b2ad7e"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\numeric-results.json",
+      "sha256": "489653e9b1e40fe5094f41a0237211f52ca6472c02807c6b38e915a3808b4d05"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\verify_numeric.py",
+      "sha256": "0e94cbe64b40fbcc7a6e2c423465ae5ada6bed971520c8b77686451cd3be40e6"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\generate_visuals.py",
+      "sha256": "a60b249e7fa9792dd51ff8722c2b6da385c8b7c86303b20c22c7ebc7c03adfe7"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\t10-recomputed\\baseline-recomputed.svg",
+      "sha256": "064ab4d124f65c48d48efcf9e519f7023646736b5629e8117718dfc38d8ef4cf"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\t10-saved-source\\cell-19-output-02.png",
+      "sha256": "ceb65a24ffe79425ef04e5f52b9ece4c1ed074615a5ac1e722df6258afcd4645"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\t10-saved-source\\cell-31-output-02.png",
+      "sha256": "998fb0c46c465601514f43673f15d19551c7310162e4ff0e8a56a98a38cf0af6"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\t10-saved-source\\cell-34-output-02.png",
+      "sha256": "b73b50caf2682e3d7b3ab2d5c6cb8ba918239be86b4da735448018a006a68bb7"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\t10-saved-source\\cell-45-output-02.png",
+      "sha256": "79ab146ff19cb1a9c964c83f7a970072d8ea778b62dd742064ad1ec5113ea173"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\t10-saved-source\\cell-45-output-04.png",
+      "sha256": "0f1f796e367af12f26e643808d29b3dab7bdd395d25d34b19bac077b85d71e29"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\t10-saved-source\\cell-45-output-06.png",
+      "sha256": "e49c5b17702ff2bc8e2b19cfb7ea8818145a072d6194ebdd71d08061536b7471"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\t10-saved-source\\cell-52-output-02.png",
+      "sha256": "c7a0e2388e149b8573d1672627e1b322365cccf6f07a18b78c8e87381f7353be"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\t10-saved-source\\cell-68-output-02.png",
+      "sha256": "9a267deaa427cf265019266ae7ba614f05a77f8bd1124ff8fd0d06561d16524e"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\t10-saved-source\\cell-68-output-04.png",
+      "sha256": "7a468b8b3c0983bb1419cd78d640008722592bb4113297073462370fd34b492a"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\t10-saved-source\\cell-77-output-01.png",
+      "sha256": "532473ca2ef6f95a3a71d8d46f943d55b09bff59f1c374ee568993a243251bfa"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\t10-saved-source\\cell-84-output-02.png",
+      "sha256": "f6a18e98e555b39903a546929b63c28d06987a9dde1c3dcaf3de10b259635ff5"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\t10-saved-source\\cell-84-output-04.png",
+      "sha256": "c25b6c4f54781c2a1b1866d1318c25cc9e59a83d2f1bfa1d7903889bb310a2b1"
+    },
+    {
+      "path": "maintenance-v2.json",
+      "sha256": "a3269517744464f9e5daf0c2445ea3e25306188b4d84a166e49415985229f536"
+    },
+    {
+      "path": "v1-to-v2.patch",
+      "sha256": "ca424c0e6085f178c38f28cd3435d339b9c100213f084f5b6bcafaeb6c67ded0"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\root-visual-t10.json",
+      "sha256": "142a0a674ad185e93ce217c93b3bee4bb095298992cec2e4c30141c904350e56"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\root-diagram-exports.json",
+      "sha256": "a004cc3a7fafab7606595532993ff58c9fc8c6b1ec48b98fbeab3c59b79e647b"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\diagram-export-preview.json",
+      "sha256": "e4021aeb6e8b504f2b4b70d10c88a881f4bf399df0e28dccce1e024921c1e80c"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\build_export_previews.py",
+      "sha256": "87ce6b2d06c0171a036ec5ae83103af43ef4105b8d9d9b57efaafe23efd1912c"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\rendered\\t10-v2.html",
+      "sha256": "1f42139cde99c5138c49e71d730dca1fb8667e0b2b2951f37f43dec7ed293b47"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\rendered\\t10-v2-export.html",
+      "sha256": "5d8b327e17b8ca165e09a076dba7864b5d48dde2ef7c1d92222c9526b8bbd69e"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\rendered\\is6400-t10-diagram-1.png",
+      "sha256": "edf503cb55b9603c759ec21ca1e370c69edf639051660de2db296a60ec32b876"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\rendered\\is6400-t10-diagram-2.png",
+      "sha256": "97a46cae658bedefd8d65ca7289f2ceee973675511b09c0fa7a0ee101f78b467"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\t10\\gate-final.txt",
+      "sha256": "b156324417b7584f1fb80ea96971284c47b77712c8015b4dd2273c6c25248e99"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\local-publish-result.json",
+      "sha256": "3f5c2a6b2b1546af7d0989b754f67e47048f1f657a58441d7cea1c53bae301d0"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\integrity-final.json",
+      "sha256": "0211a54e72d2ef7be755844271e92c22db1f4809bf8661da3fdab4e0d308eaa1"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\link-check-scoped-final.json",
+      "sha256": "f1edc4545d8c33be09ed3b45f8dc6a584fe28bc4a6306b31e11b5a2787802a57"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\link-check-final.txt",
+      "sha256": "ec3747f638faa752a749d1b08a46a36ee17a66cdcc2c981378fef9ed9750fa35"
+    },
+    {
+      "path": "warning-dispositions-final.json",
+      "sha256": "d41491a780a6024ce5c548212dfed87d61bea9576ecf257c2f2ea5a65033cafe"
+    }
+  ],
+  "unresolved": [],
+  "release_gate_binding_at_execution": {
+    "review_sha256": "57e86733e9a04bd82a344317c362743704a7308b7c9c5b3d2fa66ed59651ae0d",
+    "receipt_sha256": "9535a08972de5f2626e0586648d866279afb426707287a9a13302d4cd267cab6",
+    "candidate_sha256": "109fb6a33aa09ce0b277d326e0fbd58bfbd2a09e571e7609bf979e5e0e75bf99",
+    "gate_log_sha256": "b156324417b7584f1fb80ea96971284c47b77712c8015b4dd2273c6c25248e99"
+  },
+  "publication": {
+    "status": "written_and_exact_byte_readback",
+    "target": "IS6400_Business_Data_Analytics/notes/T10-深度序列预测实战-从窗口到LSTM.md",
+    "target_sha256": "109fb6a33aa09ce0b277d326e0fbd58bfbd2a09e571e7609bf979e5e0e75bf99",
+    "bytes": 94229,
+    "source_originals_unchanged": true,
+    "no_user_state_change": true,
+    "git": "not_performed"
+  }
+}

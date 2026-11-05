@@ -1,10 +1,12 @@
 ---
 type: 作业与DDL
 course: EF5560
-updated: 2026-10-29
+updated: 2026-11-05
 ---
 
 # EF5560 作业与 DDL
+
+> 当前优先看本页末尾 **2026-11-05 当前行政材料与考试快照**：A02 11/29中午PDF＋Zoom链接，TA12/6，期末12/17晚。旧段落按其日期保留历史，不再以旧MP4/推算日期执行。
 
 > 制作规则：[[作业规范|全局通用规则]] → [[EF5560_Fintech_and_AI_in_Finance/_meta/EF5560作业制作规范|EF5560 课程细则]] → 本地私有 Axx 任务说明。本页维护作业事实与历史来源，不能覆盖制作规则。
 
@@ -25,16 +27,16 @@ updated: 2026-10-29
 | **2026-10-01（周四）** | 🚫 **国庆假期，停课** | 停课 | M04 A `01:13:11`–`01:13:22`（B `01:21:44`–`01:21:52` 同段）教授明确说当天没有课 | 🔴 |
 | **2026-10-15（周四）14:00 香港时间** | **ML Investment Project／ML 投资作业截止**；内部 12:00 完成检查 | **DDL** | [Canvas 作业页](https://canvas.cityu.edu.hk/courses/70898/assignments/336302) + [教授公告](https://canvas.cityu.edu.hk/courses/70898/discussion_topics/635870)；包内 brief p.1 写 12:00，冲突见 §2.2 | 🔴 Canvas 截止已确认 |
 | **2026 年 11 月中旬** | 模拟卷（mock paper）发布到 Canvas | 复习材料 | syllabus | 🟡 |
-| **Week 12 ⚪（约 2026-11-16 ~ 11-20）** | **FinTech 案例报告 + 录像展示 双双截止** | **DDL** | syllabus + 案例 brief + 讲义 p.5 | 🟡 |
-| **2026-11-29（周日 10:00）** | **TA tutorial #2**：期末考准备，**逐题讲模拟卷** · Zoom · **有录像** | 辅导 | syllabus | 🔴 |
+| **2026-11-29 12:00 HKT** | FinTech案例报告PDF＋Zoom录制链接截止 | DDL | 11/5核Canvas339476及新brief | 已核；旧Week12推算为历史 |
+| **2026-12-06（周日；具体时段/链接待Canvas）** | TA tutorial #2：讲解一份practice exam，有录像 | 辅导 | 11/5新syllabus p.2 | 新文件取代旧11/29 |
 | **2026-11-30（周一）** | ⚠️ **学术诚信在线课程 + 测验 + 声明**（**Semester A 2026/27 全体新生**） | **硬性 DDL** | syllabus | 🔴 |
-| **2026-12 考试周 ⚪** | **期末考**：2 小时、线下、手写、闭卷；**允许一张 A4 双面手写 cheat sheet**（不可打印/iPad） | **考试** | syllabus + 🎙️`10:20`；🎙️ M03 `02:53`–`03:22` 确认细节，见 §2.4 | 🔴 |
+| **2026-12-17 18:30–20:30 HKT** | 期末考；YEUNG 4楼LT6；允许材料待最终通知 | 考试 | 用户计划11/5 12:56 AIMS快照，本轮未重登 | 有日期快照 |
 
 ---
 
 ## 2. 三项要交的东西
 
-### 2.1 ★ 组队（本周唯一的硬性要求）
+### 2.1 ★ 组队（开课历史要求；当前沿用ML团队）
 
 | 项 | 内容 |
 |---|---|
@@ -309,3 +311,24 @@ Lecture 8 的54页讲义未新增明确计分任务、截止或提交要求，�
 ## 2026-10-31 · FinTech 案例视频口头增量
 
 S25 `57:17`–`59:01`允许选FinTech公司或大机构内FinTech部门，约10分钟、真实本人讲解；不接受AI虚拟人呈现或中文演讲再AI转英文。既有书面≤10分钟、每人至少2分钟、单MP4≤80MB保留。没有录到新的确定截止；本人组队/制作/提交/评分不因本批笔记升级。S24开场TA周日约10:30为口头回顾，未核正式日程，不创未来提醒。
+
+## 2026-11-05 · 当前行政材料与考试快照
+
+来源：新版 `course_files_export/canvas-20261105/syllabus_EF5560_2026.pdf`（3页，SHA059220ecb96f4364…）、`fintech_company_case_brief_2026.pdf`（3页，SHAfeeec0c5e2d94a19…）及本轮root实际读取的Canvas Assignments/Announcements/Files/Modules。不是提交/发送授权。
+
+- A02当前入口 [FinTech Company Case Study](https://canvas.cityu.edu.hk/courses/70898/assignments/339476)，100pts；课程占分报告10%＋录像20%，不把100pts当100%。截止2026-11-29 12:00 HKT。沿ML团队最多3人，一名成员交一个PDF≤10页，含封面/所有图表/引用/附录；首页列全员姓名学号和Zoom录制链接。录像≤10分钟、每人至少2分钟实质分析，无密码、先确认教授/TA能播放并保持到评分；无需上传视频，无现场展示；文件名使用公司和提交人学号。旧MP4≤80MB/Week12推算保留为历史，当前被链接式交付取代。
+- 可选FinTech公司或传统机构一个产品/平台；课堂案例和失败公司明确可选，24个推荐方向为建议而非额外题目。需带日期证据、对比、风险与有理由结论；披露实际GenAI使用并检查其事实/来源/计算。学习导览已独审写回，任务仍draft，不代选公司/组员，不替本人标已交或评分。
+- 第二场TA为2026-12-06，讲解一份practice exam且有录像；练习卷拟11月中Canvas发布。旧9/6公告/根旧PDF所写11/29为历史，与本轮新版文件冲突；按新文件日期，不把实际Zoom链接/精确场次时间补造为已取得。
+- 诚信教程、quiz及declaration：Semester A 2026/27新生于2026-11-30前完成（新版p.3，根旧PDF也已有，属本次补记遗漏）。个人是否已完成保持原状态。
+- A01新syllabus改记Class4后发布及10/15 14:00，修正旧Week5/7相对口径；不改变10/12既有提交记录，不重催交、不新增评分。
+- 期末：2026-12-17 18:30–20:30 HKT，YEUNG 4楼LT6/Chan Kei Biu Lecture Theatre。来源为用户本轮提供的计划，计划记11/5 12:56 AIMS实读；本轮未再次登录AIMS。持久来源 [[_meta/canvas-materials-20261105/exam-schedule-source.json|考试日期快照]]；允许材料仍待11/30及最终正式通知，旧A4双面手写课堂记录不取代最后要求。
+
+当前2026/27 [官方目录HTML](https://www.cityu.edu.hk/catalogue/pg/202627/course/EF5560.htm)由root本轮IAB实际核到3学分、持续评估60%/期末40%、2小时、期末禁GenAI。详细PDF在线显示5页且首页Effective Term为2025/26，不能仅因生效学期便称其不适用当前目录；未完成全文提取或落盘，不能据旧“未写及格线”断言当前无任何门槛。旧官方对校结果保留为9/9历史；新版syllabus不另列及格线，完整当前条款待核。HTTP曾返HTML而非PDF，没有额外官方PDF归档，不混同本次指定材料下载结果。
+
+四入口本轮结果：Files/Modules取得brief16470952、syllabus16470953、Lec0916447895，无其他A02附件；assignment详情写read attached brief但无可点附件，来源走Files/Modules。Announcements共11条，最新10/24 Group Project Grades Release，无新的A02 brief公告。以上不等于以后不再更新；个人准备/学习/提交/评分字段保持。
+
+## 2026-11-05 · A02 学习导览已写回
+
+[[EF5560_Fintech_and_AI_in_Finance/assignment/graded/A02-fintech-company-case/notes/开始这里|A02开始这里]] 已完成一次两阶段独审，6源页、24真实PDF注释链接、3页完整英文及全部假设算例/5自测已核；两处精度维护与纯frontmatter状态映射清楚，root同源IAB必要显示/正式gate/CAS/精确字节回读完成。最终SHA8f9ac9d095c17c43382a1076b4b03bb99a6e2f331bb4284bd669a2ba97c4bea4。原生Obsidian未直接查看；24网站实时内容未逐站核，S25只核文本未听原音。
+
+这是本地研究/制作学习导览，不是替团队完成公司选择/真实研究/报告/录像或提交；任务status仍draft，个人学习/提交/评分保持。当前11/29中午只传PDF+Zoom链接、TA12/6、期末12/17的已核行政要求不变。原件和旧材料保留；详情证据 [[_meta/canvas-materials-20261105/ef5560/a02/review|本次核对]]。

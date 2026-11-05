@@ -1,0 +1,636 @@
+{
+  "schema": "note-review-v2",
+  "note": "IS6400_Business_Data_Analytics/notes/M09-深度学习-神经网络与文本分析.md",
+  "scope": "changed",
+  "source_sha256": "0e113f369aa4a473f4dd360d5f6aecadf568258e126ffd60d12044f489c39ea7",
+  "candidate_sha256": "6555f780e4df61a145b9bb044f46b21280f5a13f45963cdecb603ce8888c79a2",
+  "review_file": "review.md",
+  "review_sha256": "5e14524cfd54a7b174e2e2ab5c69ebe496fe1f0b62f285bbb5cde17d8a8c251f",
+  "checks": {
+    "understanding": {
+      "status": "passed",
+      "evidence": "independent-review.md §§1–9：全篇两阶段、v1定向、v2唯一维护行与7个机制图实际逐张查看均关闭；root接受。"
+    },
+    "sources": {
+      "status": "passed",
+      "evidence": "source-checks.json；../page-cell-evidence-final.json；independent-review.md §§3–4、7"
+    },
+    "warnings": {
+      "status": "passed",
+      "evidence": "review.md 机械与警告；gate-final.txt 实际正式exit0；作者批修与独立定向复核"
+    },
+    "visuals": {
+      "status": "passed",
+      "evidence": "../root-visual-m09.json（root CUA IAB必要上下文及完整机制PNG）；../root-diagram-exports.json＋原审§9逐图实际查看；native Obsidian未看、无waiver。"
+    }
+  },
+  "independent_review": {
+    "author_ids": [
+      "/root/is6400"
+    ],
+    "reviewer_id": "/root/review_is6400",
+    "perspective": "high-school-beginner",
+    "status": "passed",
+    "candidate_sha256": "6555f780e4df61a145b9bb044f46b21280f5a13f45963cdecb603ce8888c79a2",
+    "report_file": "independent-review.md",
+    "report_sha256": "07bf32235a7d9fa2c70b55c2f0d21b5ce00d0cd46c8a4a2baa3f26c4fd6cbe69"
+  },
+  "assets": [
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\page-cell-evidence-final.json",
+      "sha256": "2c75ea4443954640380735c857b79bd10e5fbc4ce32fb70d238742ebf0dc9ba3"
+    },
+    {
+      "path": "source-checks.json",
+      "sha256": "3960627bf9426352310662d8e999f4e16a7461d40a089d4392c9821ee187f346"
+    },
+    {
+      "path": "stage-1.md",
+      "sha256": "5e04df8356b22d6a834f4eb8debc27470d53b32774a496511a4630807a12000d"
+    },
+    {
+      "path": "independent-check-results.json",
+      "sha256": "c82fe3e9fddb743787737824893824a6a88a6b6cb9633653053a73a97afd8825"
+    },
+    {
+      "path": "v1-directed-check-results.json",
+      "sha256": "050bc1d99d38d109ff632cb7e5e72ba7eddc3eebf6cd1415d51d31f6f2b2ad7e"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\numeric-results.json",
+      "sha256": "489653e9b1e40fe5094f41a0237211f52ca6472c02807c6b38e915a3808b4d05"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\verify_numeric.py",
+      "sha256": "0e94cbe64b40fbcc7a6e2c423465ae5ada6bed971520c8b77686451cd3be40e6"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\generate_visuals.py",
+      "sha256": "a60b249e7fa9792dd51ff8722c2b6da385c8b7c86303b20c22c7ebc7c03adfe7"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-002.png",
+      "sha256": "04c93edbf4156eefec309c10687122ebe3198771e48b6e2096ad23c523271541"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-003.png",
+      "sha256": "cff85006638d92d089b5a78f61e5db6aac41b060ff6f220401462ef53663311a"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-004.png",
+      "sha256": "9d1fbe436f00789821abe0abe5ce90fe37493e1b8d72e09af963f127aec12ac6"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-006.png",
+      "sha256": "f1dbcfe5be821f3fde5cb8ccb1518dff444a0aba032ad1afed8f6e4f38c9431c"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-007.png",
+      "sha256": "421d3e0881ed33e8dbe5c2e666491c6d2e8d78f3f33f5162d0599aba34ffe397"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-008.png",
+      "sha256": "8897a0dd2dfe1f45e3ce3e34b22450d8c446e1fc79d6d970ad0ecab07669b818"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-009.png",
+      "sha256": "8441f648b06de5c74fe4050b8819d3e06ae6cb37e5c27e985b527ef2e8603ecc"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-010.png",
+      "sha256": "e40a48feab530ca1225f324a52df346984e2416ab9b3cccaedd6556688023565"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-011.png",
+      "sha256": "b242daa848ccf9982785ebeae9a889becf6449ee6855b7795c4e853eb526390a"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-012.png",
+      "sha256": "7ecde16e40c465a2bd7d032fc25d2c2a98b355a2766588a21856de0ad61cc7d0"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-013.png",
+      "sha256": "96d96bda133116f9c94d438ea297f109bd323c868667f0a7436acfcdb818a91d"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-014.png",
+      "sha256": "a76fd8b73adb56791912b2f21f95d26c5cbd8e4ae402095db0ab567a4a0f94ff"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-015.png",
+      "sha256": "a6e46e1eb8a29cc0c3d495fa2a0c456a5179a937b94f4052d72ca543c850ac83"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-016.png",
+      "sha256": "a7e0ba580d248f6da87a8749f9922510c46b3672185726475bea9defbd1ed28a"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-017.png",
+      "sha256": "6ef172c3fca5f2ab06ade475747fae16c95de0977db0173b48030a7d3516c02a"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-018.png",
+      "sha256": "d875c816956feddbb7b0823a5c3792509ba153f30e17f7ea80c627d08b666f5f"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-019.png",
+      "sha256": "090bbec7fe331c780bb62decfe8d345c8c85bafe9341e7f1732b80824952c541"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-020.png",
+      "sha256": "4232279a848eb18c4b11036540d3c4a2eaeaec5daf2f1ae42814979892dc73c9"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-022.png",
+      "sha256": "3222d07fb4327e2be1acab08e9e017e70e8b87affe3ba01526aeb1dedfb2fe5d"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-023.png",
+      "sha256": "382ca20a1a8aebc7c8864a8410aeca21a96e048d5cd241e870648a9cf4fbf24f"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-024.png",
+      "sha256": "0e2eeb0a5ac8d907fa440d19b555dc913c7a53538b605945e0fc2fa75de04d75"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-025.png",
+      "sha256": "4438f82cdfdef3ee8add84e3bcac301e1d52556a01fc916efb58f052ce713650"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-026.png",
+      "sha256": "979af9da8b3733625252ca7d0a0356eaf5882eff4442ea5537e620e5dcfdd29a"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-027.png",
+      "sha256": "326cf550e46403ca83666c8255716cc4e59f89cd3cc36834cc2e6f79d9bd5750"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-028.png",
+      "sha256": "d7dcb3d7992e89a3f2a4248353693da94b7b1d9d1be03822cbde36204e7d805d"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-029.png",
+      "sha256": "c0b0cef750bf125d4a7b365770d65450a1ef67ec14aae5e8b7ffa1313014e9d6"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-031.png",
+      "sha256": "07972cafd2bfe09555ab326c3e688630a5107d041df0d8789d7695e8c3929cf0"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-032.png",
+      "sha256": "2ab50d429102a163f281072ef004f12290e21a5f1f565a92a16906e8484b5329"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-033.png",
+      "sha256": "4faafae4ebd5b30c4265423dc3a4f45f77467f174e4d060481e9b594fc6289ba"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-034.png",
+      "sha256": "1ed4f90feaa3f8e1d27eae346d7e2d5fe7954ab65b6cca18b682987caa621d05"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-035.png",
+      "sha256": "4d8212fb89c5db601d2450d77302c155c39b3b3ea672cdaf324496941ec2a635"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-036.png",
+      "sha256": "6b46b8df8f8d1ac3f7779de7cadad2f488458227eace24f268fd87f4d19c0659"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-037.png",
+      "sha256": "a0b953413ed8622126921f134e2189b1db74854ae1a0d64cff2f7110017eac2b"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-038.png",
+      "sha256": "06f0e001207f0db82789ff0b343f69780c45baaa0502a7960b8a5260f691ccdc"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-039.png",
+      "sha256": "1737b7bbc7cc4ae6aea50404b8dd44577e57ef12cba355320493c3bfa380045a"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-040.png",
+      "sha256": "a966729dbefca3a094b5031daea36154af07ba73fcaab950e27d68e466ec3add"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-041.png",
+      "sha256": "63835e10b7f8f1fa668fcb89963c7b13b1ed60f9c93d71ed3ce3c07d35981b68"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-042.png",
+      "sha256": "67282fb118a6dbeaa81cedeab43233b09ce13ca48684973e435583df28a4cef0"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-043.png",
+      "sha256": "aa282d9c059793d02f132c7caf0e4841478a651db2e8a87f20eb5bb4e7a4c8cc"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-044.png",
+      "sha256": "55994b58cd0cb6bb5111b73fc0b6fa5629bae2c9eb6a624c431319dea83ca888"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-045.png",
+      "sha256": "cb05e58a48e0f315663fe9ca244bd04967a28ac3d54a12ba0ab29137671ebfbd"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-046.png",
+      "sha256": "e177094ad1c18a89cfa16daf29944d8ef89a5f673c58ab4383a2d5b993d7b89f"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-047.png",
+      "sha256": "3ba7c914722619247bae15c069398721422f8a31f81f65cd5ab8979bca3ed399"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-049.png",
+      "sha256": "1da32017f85efc71ff1a40dc35b9bc6219fc461d9225d7ee0b7029d4f768bdf8"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-050.png",
+      "sha256": "c2aae60653b4b704d70a30dc017308624a63b2e4e7ed3327b2c9cf4bb1bd374b"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-051.png",
+      "sha256": "ee097a8c87b9e26257669b54ed45faa6882e7d4a6ba8d81201a07b2ff811e4a8"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-052.png",
+      "sha256": "9b770697600d50b4f53c0f843eb14c181fcfeadbf5d9b2fcdf9aaf02396b5910"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-053.png",
+      "sha256": "fbdc4d4d8e3ecfd8d8881ebe2f7e5c3898d09d8609faa248a0265a47aeee8ad8"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-054.png",
+      "sha256": "b25cf28031e7a32f9f9635251e3bf7db8634734f7cc5e42f087a5a5235146093"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-055.png",
+      "sha256": "cb84739c2c29e2fc62d8ee426ef3726f61fb8f503095410e91fdbd3159bf7419"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-056.png",
+      "sha256": "ffb381288891894dd4088637865e235df9518dc294417d54b78cbbd26ef6dce0"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-057.png",
+      "sha256": "accc6375fb334cf0c8a9fe70f8842cf53e66ab4fd532b4eab41d1efe7e115606"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-058.png",
+      "sha256": "4da8903027deeac158d5d87860dc308489c18f551018a8994f75c8212b237abc"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-059.png",
+      "sha256": "f2a75032e5c4083358707cb5b995e663f02e2e4f0a27e6fa9207b74a9c9627ee"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-060.png",
+      "sha256": "3b685a7a6479eb49819f0285995facfb74db16ccb6e1c8d8a2fe4f93ddadf302"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-061.png",
+      "sha256": "4608e974fa59af7edf35058687e708e78a06e8b7b0eae6b03cddb220dd8bf430"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-062.png",
+      "sha256": "a4c799145288c5b22d18378dfeda757d8c6d743b6287d516c621ebb17365bf91"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-063.png",
+      "sha256": "f1b931909c95d05d6dbf29d920e3e488ef14e4024c735d11493e6cf16312014f"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-064.png",
+      "sha256": "1533b8bfdabc3032ca3c6c0b2531051e2f0ee8e80712185c9f2d63bac6b99d35"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-065.png",
+      "sha256": "694d4d5c9c2c2cf4eba68c17bdf1836872e70891abd08ea13516cbd31bcf1402"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-066.png",
+      "sha256": "6b1e9d336707f5f4e13b5532597507bdfe3ce3a356628e1cd2c95fd4b023e7c4"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-067.png",
+      "sha256": "27c7dee305ec5912e97c6a243a603cb77ee2fbd8ecefc476adde0f5c683117be"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-068.png",
+      "sha256": "39fd090aa62d474e382c94e359175f3bedca61b2af8c40b5c11dd92cbc2f8d63"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-069.png",
+      "sha256": "2b4d0408f83ae3e1cec9a543f440478a93408bdbc5e8926aa4ff5558d6bde51f"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-070.png",
+      "sha256": "949b2861fdcad30c59dc3cb27e4387f98182c96867889dc56a73493b02c215a5"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-071.png",
+      "sha256": "f22089542ecac3c33be7e992044364865ba94a41594a8703faacd0bb92d37671"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-072.png",
+      "sha256": "9ab0420b590fe1069e4713b0fd1543d41e36419fa449d6998a091bbcfc4e8a8d"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-073.png",
+      "sha256": "c7e7e8e7509612e2a1f42e8fc2fba4938b409eddf2f03b6559a782c23cc945aa"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-074.png",
+      "sha256": "43911c848355cc5e1573a3a6e43465423e457229826600fc9257884ac4b568bf"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-077.png",
+      "sha256": "40c94021ac2284f3e143192f99e376efebab47b3c7f28356d1dcf0857e9d0fea"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-078.png",
+      "sha256": "5eb57df03847c325c61e16e13e57702521bef6d50358e668f487a7e36b3503f9"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-079.png",
+      "sha256": "2f68eb9b2cfda294cb975a646b63508fafeeb80da6179e25411134cb0dff5143"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-080.png",
+      "sha256": "be7df2f0f904a3a86ac9b3b0c97ec58b5ab28245e87539436b35b16d8de6c065"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-081.png",
+      "sha256": "3ac7c4f4cc47ce331ca6f753a7124f826edc97bd32e6b85a138c70f292eb21d1"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-084.png",
+      "sha256": "dd68e559fb5c0daa75efe48789e49362511ae72de351f2b37c776afcae8b8b30"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-088.png",
+      "sha256": "be858125460d3ba7858f3234f54e562b0c6341b9c1a721bc99e1c543c4f927f8"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-091.png",
+      "sha256": "041c44b5dc0cdca667701cc6425d6147f0378ba506d22c11097dde874f6cc6df"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-092.png",
+      "sha256": "ac63e1d22a88144b22507f20e3bd3bc6fb5093c0f7b6ab9e8dcdad097dff8b3d"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-093.png",
+      "sha256": "bef667d78203554aa841bec6904d2f9566057979eee3416a17e6ca5af24dbe31"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-095.png",
+      "sha256": "a6e05dfbfd0e2b12d3a3cf1505ad386da906c3fa0fe86857e251aaf4fc9e6136"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-096.png",
+      "sha256": "d1a5d1231a6375b261fe54d69dd0f474515feb4a7c1506fc0ea7de80e53efdb5"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-097.png",
+      "sha256": "e8ea3db36211143f81d41e41a40a1ccbd987d804f4bd6f5ec28e52a0fe21ec0c"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-099.png",
+      "sha256": "2752f2471d391f132c03d8e615c4089e0e46810ae2328431df028cc8add618c3"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-100.png",
+      "sha256": "2f4b1ee2be01dfb4301167e42852346ba5a3b5c36fc9a670d185e4c3e86cf4c2"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-101.png",
+      "sha256": "e57d1250b58335ff161d061c3c690995c6564b69e79ea91fdd562208e94e4799"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-102.png",
+      "sha256": "779b60ad23dc6949cd35d501ea1d141c36c95233f09bded0fbc694eac7719a63"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-103.png",
+      "sha256": "b765b548c7a085e0f3b0bc9ee73a596da80d78157f2476c8f8530b254ddb03f9"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-104.png",
+      "sha256": "6c5b946fb3a8c9db919f92caf50b75e02b707830cbbfd18da88ecd2f57c4e514"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-105.png",
+      "sha256": "b09e0c93cb00ab2988a9926ecf7b430b9f0afa002379d33ac7fbbf603871c27b"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-107.png",
+      "sha256": "ebcc5048be46a8d9531b626fb27208f06e7ad1472a627e4e234099a19a52dd6a"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-108.png",
+      "sha256": "ad793115a7fbe4376ebbd078426a989e3a30bde331d2183167177efb0eaa404c"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-109.png",
+      "sha256": "d9e44aa8ddcb493745d16ecfa95b7a2d4c409332e604ffa2db41c9d4019f8863"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-110.png",
+      "sha256": "f0fa6228a7f2a24301ed14f32da648fcd7fef8d3079ae95fc70730406c5355d7"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-111.png",
+      "sha256": "972dd72ec08c35f1e7184fa050b0e51cc4ff226ed5f0202ad6782d8b840ce20f"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-113.png",
+      "sha256": "1df52e14c3de690c571d6ab6de52169ba32850a9a792e05a6d1010faa0552912"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-115.png",
+      "sha256": "84e874c98b60a8f59e65c71923f7961fa5c2927253c43372f30610527d74e441"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-117.png",
+      "sha256": "e07c1e3d6fe544392c7a90364608f11abc27541f96812b3705da5cb959d6a69d"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-118.png",
+      "sha256": "3d3b1a58b3fc907e1fa04e9a94f063e26961e83b3cefb6d8e3917f486af4bbdc"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-119.png",
+      "sha256": "e5df3e95a51d6359ff703254f39938dc3e984c7b99d2822a75f660c453005582"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-120.png",
+      "sha256": "3beff47cee8a7638bf80ea772c7cf546d404063266cea0eafdc2989797d23235"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-123.png",
+      "sha256": "f946377178c516e80eac6e91efa8e0e73a6e649b4d6bb7b30f09d1f6782b8a69"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-124.png",
+      "sha256": "95fb80444db701e3eaa576a8a6f8544f95b052dc7bd2177a34aaae5629fc40f6"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-125.png",
+      "sha256": "f402dc0897ff47ed3f5b98d23d2e3f176b741fbe290aafbef90b724359bf6dca"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-126.png",
+      "sha256": "624b65e73c08df43bed6b964c19a30bc828c8b6b1bfb94a8babe6066b52dd9af"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-127.png",
+      "sha256": "c8eb4cff6e0179ca2757815569510d674c93f59eda924bf62c475915bad4fa94"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-128.png",
+      "sha256": "24778379dfa1410307f0719bc95919d2a04b6ebaa2899d56df2284f8cba42473"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-129.png",
+      "sha256": "e3c11371e2b1fe7f07afccaf88a18dcd90f2590b80b545370fa71fece46b705e"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-130.png",
+      "sha256": "21aa8b9ff35cf71cd7b7835e766f8a5ef7cad3c7ca8be049a706822c9ace355e"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-131.png",
+      "sha256": "8950ffa502dc54e6cf0dd04190daaaa95d407153dc85c0dc9e99c3563564189d"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-132.png",
+      "sha256": "0fc939f6128d6ac7a56750e028b1f657c09b4bead47c4fddb2b485019ab8504e"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-133.png",
+      "sha256": "822b7a3c74ac97d921d73562b3435f43515891f65ecf5a3bd5f8e1369bbcb324"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-135.png",
+      "sha256": "a37e615177921504c789302ca00820442b69b6e782def79de1cc79cfd8394c7e"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-137.png",
+      "sha256": "3bc4bcc2aecc540c0e502b75cf97041d9333628294b8bb9ad6d8cfd69e25faa2"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-recomputed\\pca-direction.svg",
+      "sha256": "f92c44b3a1e15c206f52cc3f0fcc6bb3d1f5eacc12cc2647201e9282d098e6c2"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m09-source\\p-06.png",
+      "sha256": "36249e86df67e5a4aaa768b9283b7a8caf8554f3ed32175b1993ce203ffea7dd"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m09-source\\p-17.png",
+      "sha256": "be0a57886a7189e45edbca58d2d3c280d0e4d23cefde0906db85e08af7978167"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m09-source\\p-30.png",
+      "sha256": "c98381c263afa6fa78583ceb11e97274b35b6b92838d85e76d6fb2ef520286f2"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m09-source\\p-31.png",
+      "sha256": "ea9f4c76b15f807bce0d3e229d03d0b51c63807d829d676888b386f29f82bc51"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\notes\\figures\\m09-source\\p-41.png",
+      "sha256": "08db111ee16f9465dfdf9b71abc9a1e6e81a7bb252226f131d4d2004baa03e56"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\assets\\figures\\m09-l10\\p-089.png",
+      "sha256": "52add2419e2d7d9e5608bed4c49aa1d34b541c8f08e53d54245a94b49641a68f"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\root-visual-m09.json",
+      "sha256": "04fcdd2e89f4d8732a77670a08412a686d723f5020fac3b1f661151b1ae412b0"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\root-diagram-exports.json",
+      "sha256": "a004cc3a7fafab7606595532993ff58c9fc8c6b1ec48b98fbeab3c59b79e647b"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\diagram-export-preview.json",
+      "sha256": "e4021aeb6e8b504f2b4b70d10c88a881f4bf399df0e28dccce1e024921c1e80c"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\build_export_previews.py",
+      "sha256": "87ce6b2d06c0171a036ec5ae83103af43ef4105b8d9d9b57efaafe23efd1912c"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\rendered\\m09-v1.html",
+      "sha256": "4c1c55538237c1d385da100385ad3ddb52d1113d54fdba06c318757797c213f8"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\rendered\\m09-v1-export.html",
+      "sha256": "5e68baba8890f89addd4628a6cb49b419c1e1a060a4cd5dae072e02e9f32163f"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\rendered\\is6400-m09-diagram-1.png",
+      "sha256": "d7e217cbd43b40c0d25d6b0c3df56668f5ed0a1950e0a9bd68e04f1195a226ee"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\rendered\\is6400-m09-diagram-2.png",
+      "sha256": "5dc19f4e8680ea16a54c1fa830f0ad6961b945ffbaec195e6da7c65cc2bbbc5e"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\rendered\\is6400-m09-diagram-3.png",
+      "sha256": "b30638d380b03bcf4deba6ecbf41e242b0411c735e67169d6ef0e50032b245b0"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\rendered\\is6400-m09-diagram-4.png",
+      "sha256": "e14f0db4b265087bfec65d7eb1b3532a84f26023df080103d49edc0634a20953"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\rendered\\is6400-m09-diagram-5.png",
+      "sha256": "2aacd4ca49484e99e6c8149d5a7fec3951ec55667a7866d0553f4c29c5c11d87"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\m09\\gate-final.txt",
+      "sha256": "bf201831533a4bb7ab1245af28120f44219a890fb271fb5b85b949ea3a821ab3"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\local-publish-result.json",
+      "sha256": "3f5c2a6b2b1546af7d0989b754f67e47048f1f657a58441d7cea1c53bae301d0"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\integrity-final.json",
+      "sha256": "0211a54e72d2ef7be755844271e92c22db1f4809bf8661da3fdab4e0d308eaa1"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\link-check-scoped-final.json",
+      "sha256": "f1edc4545d8c33be09ed3b45f8dc6a584fe28bc4a6306b31e11b5a2787802a57"
+    },
+    {
+      "path": "D:\\上课资料\\CityU\\_meta\\canvas-materials-20261105\\is6400\\link-check-final.txt",
+      "sha256": "ec3747f638faa752a749d1b08a46a36ee17a66cdcc2c981378fef9ed9750fa35"
+    },
+    {
+      "path": "warning-dispositions-final.json",
+      "sha256": "9de9bc68ef4e4df0db695e07e7bee4859793df868bf99bc3981ab6ee70d81472"
+    }
+  ],
+  "unresolved": [],
+  "release_gate_binding_at_execution": {
+    "review_sha256": "548960de8952dc3ec38f802ce93caee5271a35123f373b4e7e9bd1138a4fa9dd",
+    "receipt_sha256": "88f431fee6d3f0b1063f37e1179a4fa279507cb4dcf416a7185748b69bebe2c8",
+    "candidate_sha256": "6555f780e4df61a145b9bb044f46b21280f5a13f45963cdecb603ce8888c79a2",
+    "gate_log_sha256": "bf201831533a4bb7ab1245af28120f44219a890fb271fb5b85b949ea3a821ab3"
+  },
+  "publication": {
+    "status": "written_and_exact_byte_readback",
+    "target": "IS6400_Business_Data_Analytics/notes/M09-深度学习-神经网络与文本分析.md",
+    "target_sha256": "6555f780e4df61a145b9bb044f46b21280f5a13f45963cdecb603ce8888c79a2",
+    "bytes": 131806,
+    "source_originals_unchanged": true,
+    "no_user_state_change": true,
+    "git": "not_performed"
+  }
+}
