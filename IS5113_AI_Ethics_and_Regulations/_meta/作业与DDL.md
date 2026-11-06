@@ -1,10 +1,15 @@
 ---
 type: 台账
 course: IS5113
-updated: 2026-11-05
+updated: 2026-11-07
 ---
 
 # IS5113 作业与 DDL
+
+## 2026-11-07 · 当前作业与项目节点
+
+- Group 17 于 **11 月 24 日**课堂展示（每组 10 分钟），具体时段及顺序待核。教师要求提前一天邮件提交展示 PDF，对应 **11 月 23 日**，未注明时刻。[Module 6 第 1 页](https://canvas.cityu.edu.hk/courses/71377/files/16295592)
+- 小组报告在 **12 月 1 日 12:00（香港时间）**截止，由协调人在 Canvas 交 Word 或 PDF。11 月 7 日的作业列表暂未见正式提交入口。[Module 6 第 1 页](https://canvas.cityu.edu.hk/courses/71377/files/16295592) · [Canvas 作业列表](https://canvas.cityu.edu.hk/courses/71377/assignments)
 
 > 制作规则：[[作业规范|全局通用规则]] → [[IS5113_AI_Ethics_and_Regulations/_meta/IS5113作业制作规范|IS5113 课程细则]] → 本地私有 Axx 任务说明。本页维护作业事实与历史来源，不能覆盖制作规则。
 

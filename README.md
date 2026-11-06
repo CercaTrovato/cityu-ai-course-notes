@@ -1,7 +1,7 @@
 ---
 type: MOC
 scope: vault 根
-updated: 2026-11-06
+updated: 2026-11-07
 ---
 
 > **2026-11-05 Canvas 批次记录**：本地有 **51 个核心 M/T 入口（38 v1.0、12 v0.9、1 个既有录音先行 draft）**，不是 51 篇都在本批重新审查。新材料与本次教学范围见下方及[本批回执](_meta/canvas-materials-20261105/README.md)。下列 11/2“未上传”段是较早制作时点；当前三项 IS6400 作业及 IS5542 第 3 反思只沿用 11/2 已有真实 Submitted 回执，本批没有新上传、发邮件或勾选本人状态。Notion 本批已写入并回读 13 个唯一目标（5 学习进度＋8 DDL，6 新建＋7 既有更新），详[最终同步回执](_meta/canvas-materials-20261105/notion-sync-final.json)；未把旧 11/4 的 16 条备注或仍缺的讲义算作本批补齐。
@@ -15,6 +15,26 @@ updated: 2026-11-06
 > 2026-11-02 IS6400 最终文件已交付本人手动提交：[W7正确分类作业](IS6400_Business_Data_Analytics/assignment/graded/A08-week7-classification/notes/任务说明.md)已完成三问及独审；Week 8 & 9使用A10 Bitcoin四题、Extra使用A11天气预测本日审修稿。W7旧回执挂Bitcoin的对应关系已核清；新三稿未上传，旧提交记录保留。学习、评分、小组任务和M/T库存不变，下方旧时点记录保留。
 
 # CityU 课程笔记库
+
+## 2026-11-07 · 五门课作业截止时间表
+
+下表按香港时间排列。仅公布日期的项目保留原口径。考试时间见既有期末安排。
+
+| 截止（香港时间） | 课程 | 交件 | 来源 |
+| --- | --- | --- | --- |
+| **11 月 11 日前**，未注明时刻 | AC6761 | 所有组邮件提交展示 PPT。 | [教师公告](https://canvas.cityu.edu.hk/courses/70229/discussion_topics/643580) |
+| **11 月 14 日 23:59** | IS5542 | 第 4 次嘉宾课一页反思，通过 Canvas 上传。 | [反思作业](https://canvas.cityu.edu.hk/courses/71410/assignments/339653) |
+| **11 月 15 日 23:59** | IS6400 | 小组项目展示 Slides，入口同刻关闭。 | [Slides 作业](https://canvas.cityu.edu.hk/courses/71457/assignments/339540) |
+| **11 月 23 日**，未注明时刻 | IS5113 | Group 17 将展示 Slides 转为 PDF，邮件发给教师。 | [Module 6 第 1 页](https://canvas.cityu.edu.hk/courses/71377/files/16295592) |
+| **11 月 28 日**，未注明时刻 | IS5542 | 小组项目录制视频和 Slides。提交入口待确认。 | [项目公告](https://canvas.cityu.edu.hk/courses/71410/discussion_topics/632216) |
+| **11 月 29 日 12:00** | EF5560 | 小组 FinTech 案例报告，上传一份 PDF，首页附 Zoom 录像链接。 | [案例作业](https://canvas.cityu.edu.hk/courses/70898/assignments/339476) |
+| **11 月 29 日**，未注明时刻 | AC6761 | 邮件提交小组 PDF 报告，正文最多 7 页。 | [项目原件](https://canvas.cityu.edu.hk/courses/70229/files/16312020) |
+| **12 月 1 日 12:00** | IS5113 | 小组协调人在 Canvas 交 Word 或 PDF 报告。提交入口待确认。 | [Module 6 第 1 页](https://canvas.cityu.edu.hk/courses/71377/files/16295592) |
+| **12 月 6 日 23:59** | IS6400 | 小组项目最终报告。 | [最终报告作业](https://canvas.cityu.edu.hk/courses/71457/assignments/339541) |
+
+- IS5542 第 5、6 次反思按「讲座后两周内」分别对应 **11 月 21 日、11 月 28 日**。独立作业页和准确时刻待确认，同伴互评的表单与截止也待确认。[反思要求](https://canvas.cityu.edu.hk/courses/71410/discussion_topics/639030) · [讲座日期](https://canvas.cityu.edu.hk/courses/71410/discussion_topics/632281) · [互评公告](https://canvas.cityu.edu.hk/courses/71410/discussion_topics/642339)
+- 课堂展示：AC6761 Group 11 **11 月 18 日**，IS5113 Group 17 **11 月 24 日**。IS6400 安排在第 12–13 周，本组场次待确认。[AC6761 名单](https://canvas.cityu.edu.hk/courses/70229/files/16067043) · [IS5113 排期](https://canvas.cityu.edu.hk/courses/71377/files/16295592) · [IS6400 指引](https://canvas.cityu.edu.hk/courses/71457/modules/items/666974)
+- IS6400 第 11 周投票结果尚未见于本次核对的 Canvas 公告，后续常规作业安排待定。[第 11 周公告](https://canvas.cityu.edu.hk/courses/71457/discussion_topics/644433)
 
 ## 2026-11-06 · 三段录音融合
 

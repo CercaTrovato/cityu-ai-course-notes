@@ -1,10 +1,15 @@
 ---
 type: 作业与DDL
 course: AC6761
-updated: 2026-11-05
+updated: 2026-11-07
 ---
 
 # AC6761 作业与 DDL
+
+## 2026-11-07 · 当前作业与项目节点
+
+- **11 月 11 日前**邮件提交所有组的展示 PPT，公告未给具体时刻。Group 11 名单显示 **11 月 18 日**展示，项目说明要求约 25–30 分钟、全员参与。[PPT 公告](https://canvas.cityu.edu.hk/courses/70229/discussion_topics/643580) · [展示名单](https://canvas.cityu.edu.hk/courses/70229/files/16067043)
+- **11 月 29 日**是书面报告最后提交日。原件未给具体时刻，要求邮件交 PDF，正文最多 7 页，封面与参考文献另计。[项目原件](https://canvas.cityu.edu.hk/courses/70229/files/16312020)
 
 ## 2026-11-05 · 当前新增行政要求
 

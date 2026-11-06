@@ -1,7 +1,7 @@
 ---
 type: 作业与DDL
 course: IS6400
-updated: 2026-11-05
+updated: 2026-11-07
 tags: [IS6400, DDL, 作业]
 ---
 
@@ -12,6 +12,12 @@ tags: [IS6400, DDL, 作业]
 > 2026-11-02 当前核清：Week 7分类（337924）原截止10/23 23:59 HKT、10points；旧10/21回执挂Bitcoin，新[分类最终稿](../assignment/graded/A08-week7-classification/notes/任务说明.md)已完成、由本人手动替换，尚未上传。Week 8 & 9（330590）20points、Week 9 Extra（330608）2points，均11/6 23:59 HKT，分别用A10/A11本日审修稿。旧“映射待核”仅保留为历史，不覆盖此次逐字节核查。
 
 # IS6400 作业与 DDL
+
+## 2026-11-07 · 当前作业与项目节点
+
+- **11 月 15 日 23:59（香港时间）**提交小组展示 Slides，入口同刻关闭。[Slides 作业](https://canvas.cityu.edu.hk/courses/71457/assignments/339540)
+- **12 月 6 日 23:59（香港时间）**提交小组最终报告，以正式作业页为准。[最终报告作业](https://canvas.cityu.edu.hk/courses/71457/assignments/339541)
+- 小组课堂展示安排在第 12–13 周，Six Sigma 的具体场次待确认。第 11 周投票结果尚未见于本次核对的 Canvas 公告，后续常规作业安排待定。[项目指引](https://canvas.cityu.edu.hk/courses/71457/modules/items/666974) · [第 11 周公告](https://canvas.cityu.edu.hk/courses/71457/discussion_topics/644433)
 
 > 制作规则：[[作业规范|全局通用规则]] → [[IS6400_Business_Data_Analytics/_meta/IS6400作业制作规范|IS6400 课程细则]] → 本地私有 Axx 任务说明。本页维护作业事实与历史来源，不能覆盖制作规则。
 
@@ -320,7 +326,7 @@ timeline
     W12–W13 (⚪ 11-18 / 11-25) : Final Presentation
                               : 15% · 8 分钟 + 2 分钟 Q&A
     学期末 : Final Report 10%
-           : ⚠️ Guideline 写的 "May 1" 是残留，日期待定
+           : 2026-12-06 23 时 59 分（Canvas 339541）
 ```
 
 ### 3.2 ⚠️ Briefing 到底是 W5 还是 W6？
@@ -401,7 +407,7 @@ timeline
 
 | 项 | 要求 |
 |---|---|
-| **截止** | ⚠️ Guideline 原文写 **"Due by May 1, 11:59PM"** —— **这是上一学年的残留**（本课是 Semester A，9–12 月）。**日期必须以 Canvas 为准**，⚪ 推算在 W13（2026-11-25）之后 |
+| **截止** | **2026-12-06 23:59（香港时间）**，以[正式 Canvas 作业](https://canvas.cityu.edu.hk/courses/71457/assignments/339541)为准。旧 Guideline 中的 May 1 为历史模板日期。 |
 | 篇幅 | **20–25 页**（**11 号字、双倍行距**）。表格与图放正文，参考文献放附录，**附录计入页数** |
 | 提交 | 组代表传电子版到 Canvas。**NO HARD COPY IS NEEDED** |
 | 迟交 | **每天 −10%** |
@@ -497,7 +503,7 @@ timeline
 | 2 | **T02 作业的真实截止日** | Canvas / 课上 | 🔴 高 | ❌ **无**（作业本身都没被提到，见 §2 W02） |
 | 3 | 作业到底 8 次还是 5~10 次 | 课上 | 🟡 | ❌ 无 |
 | 4 | **Project Briefing 是 W5 交还是 W6 演示** | 课上 / Canvas | 🟡（✅ 9/16 已知**顺延**，⚪ 约 W07 10/14；精确日期待 Canvas） | ❌ 无 |
-| 5 | **Final Report 的真实截止日**（Guideline 的 "May 1" 是残留） | Canvas | 🟡（学期末） | ❌ 无 |
+| 5 | **Final Report 截止** | Canvas 339541 | ✅ 2026-12-06 23:59（香港时间） | 作业页已核 |
 | 6 | **小组人数**（4–6 / ≤5 / ≤6） | 课上 | 🟡 | ❌ 无 |
 | 7 | **期末考开卷还是闭卷** | 课上 | 🟡（影响复习策略） | ❌ **无**。⚠️ W1 讲义 p.8 写的是 "2hour (**open/closed book**)"，两个词都在；转录也没有 → **必须直接问** |
 | 8 | 期末考的具体日期与地点 | 学校考试时间表 | 🟢 | 2026-12-15 18:30–20:30 HKT，YEUNG LT2；11/5 12:56快照，本轮未重登 |
@@ -542,7 +548,7 @@ timeline
 | 2026-11-11（三） | W11 上课 · **Competition: GenAI for BDA** |
 | **2026-11-18（三）** | **W12 · Group Presentation（15%）** |
 | **2026-11-25（三）** | **W13 · Group Presentation（15%）** |
-| ⏳ 待定 | **Final Report 截止（10%）** |
+| **2026-12-06 23:59（香港时间）** | **Final Report 截止（10%）** |
 | 2026-12-15 18:30–20:30 HKT | **期末考试（40%，2小时；YEUNG LT2）**，来源为11/5快照 |
 
 ---
