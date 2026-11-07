@@ -9,7 +9,7 @@ updated: 2026-11-07
 ## 2026-11-07 · 当前作业与项目节点
 
 - **11 月 14 日 23:59（香港时间）**提交第 4 次嘉宾课的一页反思，通过 Canvas 上传。[反思作业](https://canvas.cityu.edu.hk/courses/71410/assignments/339653)
-- 教师要求每次讲座后两周内交反思。第 5、6 次讲座安排为 11 月 7 日、11 月 14 日，分别对应 **11 月 21 日、11 月 28 日**；本次未见两次反思的独立作业页，准确时刻待确认。[讲座日期](https://canvas.cityu.edu.hk/courses/71410/discussion_topics/632281) · [反思要求](https://canvas.cityu.edu.hk/courses/71410/discussion_topics/639030)
+- **第五次客座反思**：已于 11 月 7 日 13:50（香港时间）提交。[任务页](https://canvas.cityu.edu.hk/courses/71410/assignments/339654)截止 11 月 21 日 23:59；[Canvas 回执](https://canvas.cityu.edu.hk/courses/71410/assignments/339654/submissions/266126)已回读。第六次反思准确截止以独立任务页为准。
 - **11 月 28 日**交小组项目录制视频和 Slides。公告未给具体时刻，本次未见正式提交入口；同伴互评占总评 10%，表单及截止待确认。[项目公告](https://canvas.cityu.edu.hk/courses/71410/discussion_topics/632216) · [互评公告](https://canvas.cityu.edu.hk/courses/71410/discussion_topics/642339)
 
 > **周六课时更正（2026-11-07，本人确认）**：从 11/7 起今后周六课程为 **10:00–12:00（香港时间）**。旧公告、旧课表时间保留为历史；临时停课或调课另核。本更正不改变反思、项目或考试截止，也不把下课时间当提交截止。
@@ -257,3 +257,5 @@ S26/S27已归M07并制作录音先行笔记，具体反思任务页、截止、�
 ## 2026-11-05 期末日期维护
 
 依据本批 [exam-schedule-source.json](../../_meta/canvas-materials-20261105/exam-schedule-source.json) 更新期末为12/18 18:30–20:30 HKT、LI 3楼3508。来源是用户提供计划所记11/5 12:56 AIMS读取快照，本轮未重登，允许材料11/30起公布。仅日期/来源维护；本轮无新讲义，不扩大M06旧Google反思，M07仍录音先行partial缺讲义；个人出席/学习/提交/评分保持。
+
+第五次客座反思的课件、原件核对、定稿和提交记录见 [A06 任务说明](../assignment/graded/A06-digital-native-reflection/notes/任务说明.md)。
