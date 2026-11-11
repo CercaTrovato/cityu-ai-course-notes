@@ -1,0 +1,311 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string"
+    },
+    "course": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "assignment_type": {
+      "enum": [
+        "group",
+        "individual",
+        "unknown"
+      ]
+    },
+    "board_scope": {
+      "enum": [
+        "active",
+        "archived",
+        "intake"
+      ]
+    },
+    "group": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "my_role": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "summary": {
+      "type": "string"
+    },
+    "stage": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "progress_as_of": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "task_scope_complete": {
+      "type": "boolean"
+    },
+    "next_action": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "owner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "basis": {
+          "enum": [
+            "proposed",
+            "agreed"
+          ]
+        }
+      },
+      "required": [
+        "title",
+        "owner",
+        "basis"
+      ],
+      "additionalProperties": false
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "owner": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "enum": [
+              "done",
+              "in_progress",
+              "todo",
+              "blocked",
+              "unknown"
+            ]
+          },
+          "note": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "owner",
+          "status",
+          "note",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "milestones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "due": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "precision": {
+            "enum": [
+              "datetime",
+              "date",
+              "before_date",
+              "unknown"
+            ]
+          },
+          "kind": {
+            "enum": [
+              "submission",
+              "presentation",
+              "internal"
+            ]
+          },
+          "status": {
+            "enum": [
+              "unknown",
+              "todo",
+              "in_progress",
+              "done",
+              "submitted"
+            ]
+          },
+          "channel": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "due",
+          "precision",
+          "kind",
+          "status",
+          "channel",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "submission": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "unknown",
+            "not_submitted",
+            "submitted",
+            "graded"
+          ]
+        },
+        "note": {
+          "type": "string"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "status",
+        "note",
+        "evidence"
+      ],
+      "additionalProperties": false
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "local",
+              "thread",
+              "web",
+              "external_file"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "locator": {
+            "type": "string"
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "label",
+          "locator",
+          "observed_at",
+          "sha256"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "course",
+    "title",
+    "assignment_type",
+    "board_scope",
+    "group",
+    "my_role",
+    "summary",
+    "stage",
+    "updated_at",
+    "reviewed_at",
+    "progress_as_of",
+    "task_scope_complete",
+    "next_action",
+    "blockers",
+    "tasks",
+    "milestones",
+    "submission",
+    "sources"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CityU assignment metadata v1"
+}

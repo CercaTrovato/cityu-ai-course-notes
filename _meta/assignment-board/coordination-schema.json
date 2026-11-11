@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "assignment_id", "thread_id", "root_thread_id", "model", "status", "updated_at", "summary", "report_path", "decisions"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "assignment_id": {"type": "string", "minLength": 1},
+    "thread_id": {"type": "string", "pattern": "^[0-9a-f-]{36}$"},
+    "root_thread_id": {"const": "01a1b491-403e-7651-9aba-13e5b647af93"},
+    "model": {"const": "gpt-6.1-sol"},
+    "status": {"enum": ["working", "waiting_user", "ready_for_review", "blocked", "complete"]},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "summary": {"type": "string"},
+    "report_path": {"type": "string"},
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "question", "recommendation", "options", "status", "answer", "answer_source"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "question": {"type": "string", "minLength": 1},
+          "recommendation": {"type": "string"},
+          "options": {"type": "array", "items": {"type": "string"}},
+          "status": {"enum": ["pending", "decided"]},
+          "answer": {"type": ["string", "null"]},
+          "answer_source": {"type": ["string", "null"]}
+        }
+      }
+    }
+  }
+}
