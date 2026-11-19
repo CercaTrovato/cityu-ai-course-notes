@@ -1,0 +1,1401 @@
+{
+  "candidate_sha256": "d27436d07203d00ee9f09bb0466a70b0a263bc16b3b1821bc87b53ec2b829ad7",
+  "current": {
+    "L_hard": 0,
+    "C_hard": 0,
+    "C_warn": 5,
+    "R_hard": 0,
+    "R_warn": 147
+  },
+  "historical": "FAIL",
+  "source_question_machine_contract": "not passed to checker; manual actual-source/independent page review covers all prompt pages; do not claim a machine source-contract PASS",
+  "rationale_groups": {
+    "R1a": "已核完整句的对象、动作和条件：本组4处分别是滚动小例、预剪枝条件清单、实验设计与DiD/t-test辨别、免费房的条件／币种；顺序与必要限定不能删。没有超120单元的硬项；独审对同一完整任务已复述／复做，保留原逻辑，不为句长偏好追加新轮。",
+    "R1c": "分号用于同一组平行角色或连续动作，不隐藏推理：TP/FN/FP/TN四格、训练/验证/测试、滚动轮次、树路径、内层步骤1–10、剪枝叶错数、预剪枝条件及三种RM方案。每处对象与后续结果在本页明确，原序可跟读。",
+    "R1e": "三次否定澄清分别维护数据分法/时间含义、p值与显著性、免费客房与币种／利润边界；它们直接改变当前答案，非无关防御语。",
+    "R2a": "两处为p72架构模块及p83会员细分→免费房链，三个句子仍有明确当前对象，原图就在同页；架构词已按独审建议补Embedding/Concat用途，免费条件已定向关闭。",
+    "R3a": "连续块统计把同页原题、公式与解释合并计入：p55单参数配方、p83原题会员条件、p84三方案完整任务。各段有独立问题与步骤，原题/中文/英文参考分开；不是一段未断开的机械墙。",
+    "R4c": "三处速查格包含规则与限制两句，回指到正文完整学习链；表格最多4列、单格最多27阅读单元，未把整段教学塞进表内。",
+    "R4f": "p31表前已定义RID是编号、X输入/Y已知答案且单位未给，逐轮表解释训练和验证ID且核交集/并集；p64 Yes/No是源图类别计数，前后给多数类预测和逐叶错分数。",
+    "R5a": "五处行内公式是同一计算链：留出集合/候选、argmin选配置、Ridge标量配方、叶惩罚临界值、SSE定义。新符号均在本页解释或紧邻唤醒，有相应数字例与结果含义；未用无关符号堆叠替代动作。",
+    "R5b": "p69同一显示块并列WSS与BSS，分别比较簇内和簇间平方和；前文定义mi/m/簇大小，后文同一0,2,8,10小例得4与64及TSS68，两式共用对象且可逐项读。",
+    "R5c": "p21 argmin配置选择式保留与源图相同的对象和索引，紧邻中文解释“返回配置编号而非误差”，再用深度2/8数例完成；不是要求读者自行解未知符号。root实际显示检查另核该式不溢出。",
+    "R6a": "本组英文括号均为原页对象与首次中文对应：评估任务、监督/无监督、回归轴/系数、分类指标、四数据角色、数据生成分布、凝聚/分离、业务六步骤、架构模块、A/B角色与实验环。保留应试英文，解释在同页，不通过删英文减密度。",
+    "R6b": "五处为指标列表、混淆四格及同例计数、WSS/BSS比较、原环图整句英文标签。术语成组是当前比较所需，分别用中文用途/分母/数例讲清；THE/FIVE等是原图标题普通单词，不是六个未解释专业缩写。",
+    "R6d": "逐位置回看正文：L11是源标识；ARIMA/LSTM/RNN只作已学候选背景；MAE等在p12逐式代入，TP/FN/FP/TN在p14逐格说明，ROC轴/面积在p15展开，CV/折在p25，RID在p31，超参数在p43，L1/L2在p55/56，WSS/BSS/TSS在p69，KPI在p76，RM在p84。NO/YES/PRUNE/叶名及环图英文是原图标签。标准化作为折内预处理背景时已说明只从训练估计/应用的防泄漏动作，不要求本讲复算一个未提供的变换数据；详细数值变换由T11承接。每个实际位置与原警告保留在下表，未用单一PASS抹去提示。",
+    "R7a": "六位数主要用于原表给定拟合值、三折额外复做、p58原系数及p80软件两尾概率，必须与来源/脚本一致；主解释在数字前后已有用途与单位。原始哈希与运行记录放§9/证据，正文未堆审查日志。",
+    "R8b": "本组为封面导航及折叠自测答案，开头已给结论或对应对象，后句给理由/条件/精确回指和英文参考。没有把定义藏到长段末尾，也不因句数建议重开已审教学。"
+  },
+  "C": [
+    {
+      "code": "C_REASONING_REVIEW",
+      "section": "2.05 90%准确率够不够（讲义 p.5）",
+      "line": 93,
+      "message": "找到正文，但理由/过程线索不足；人工核对，不能凭字数断言缺失",
+      "evidence": "",
+      "disposition": "retained_after_context_review",
+      "rationale": "p5给90%多数类反例、三问需要何种额外证据，未凭准确率定未来，理由已在同页明确。"
+    },
+    {
+      "code": "C_REASONING_REVIEW",
+      "section": "2.07 分析全流程总览（讲义 p.7）",
+      "line": 117,
+      "message": "找到正文，但理由/过程线索不足；人工核对，不能凭字数断言缺失",
+      "evidence": "",
+      "disposition": "retained_after_context_review",
+      "rationale": "p7是全局方法总览，不是待执行的数值算法；中文逐路径解释监督/无监督、评估/洞见/部署与A-B箭头。"
+    },
+    {
+      "code": "C_REASONING_REVIEW",
+      "section": "2.53 正则化分隔（讲义 p.53）",
+      "line": 689,
+      "message": "找到正文，但理由/过程线索不足；人工核对，不能凭字数断言缺失",
+      "evidence": "",
+      "disposition": "retained_after_context_review",
+      "rationale": "p53实际纯分隔，指出红框转Regularization及后续p54–64位置，无知识计算需要增造。"
+    },
+    {
+      "code": "C_CALCULATION_STEPS",
+      "section": "2.60 悲观误差定义（讲义 p.60）",
+      "line": 773,
+      "message": "本单元有计算公式但未找到数字代入过程；给定结果或API调用不能替代可复算例。本篇其他单元有代入，请核是否为同一机制及是否需就近回指：2.09, 2.12, 2.14, 2.15, 2.23, 2.25, 2.34, 2.39, 2.44, 2.49, 2.55, 2.56, 2.58, 2.61, 2.64, 2.69, 2.80, 2.84",
+      "evidence": "",
+      "disposition": "retained_after_context_review",
+      "rationale": "p60定义启发式代价与符号，已有精确下一页回指，p61用同样24条逐叶计算错数/惩罚/选择并给Ω临界值；是相邻连续同一机制，不留未完成算例。"
+    },
+    {
+      "code": "C_REASONING_REVIEW",
+      "section": "2.75 五阶段实验环（讲义 p.75）",
+      "line": 957,
+      "message": "找到正文，但理由/过程线索不足；人工核对，不能凭字数断言缺失",
+      "evidence": "",
+      "disposition": "retained_after_context_review",
+      "rationale": "p75完整顺时针五阶段环并解释后页六步骤拆细的关系，非迭代数值训练，不编额外输入以凑因果关键词。"
+    }
+  ],
+  "R": [
+    {
+      "code": "R8b",
+      "line": 61,
+      "section": "2.01 封面与阅读范围（讲义 p.1）",
+      "machine_message": "小节首段 4 句；首段 ≤ 3 句，先给问题或结论",
+      "context": "这是 Lecture 11 的模型评估（Model Assessment），本库顺序编号为 M10。不要把文件名里的 L11 与旧 `L11-IS6400-DeepLearning.pdf` 混同：本源是新下载的 84 页评估课件。红色目录先指向 Model Testing，随后依次转入正则化、无监督评价和管线评价。阅读材料入口只写 “See Canvas Week 11”，没有给额外必读文章清单。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R8b"
+    },
+    {
+      "code": "R6a",
+      "line": 65,
+      "section": "2.02 评估的业务终点（讲义 p.2）",
+      "machine_message": "一段 5 处括号英文注释（约等于 5 个新术语）",
+      "context": "已经能训练一个模型，还要回答“将来真用它，是否比另一个方案好”。模型评估包含选模型（Model selection）、调参（Parameter tuning）、辨认欠拟合／过拟合（Underfitting / Overfitting）及类别不平衡（Imbalanced dataset）。自适应学习（Adaptive learning）在本页仅列名称，后续没有独立算法，不能据此补造该算法的教学内容。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6a"
+    },
+    {
+      "code": "R6a",
+      "line": 119,
+      "section": "2.07 分析全流程总览（讲义 p.7）",
+      "machine_message": "一段 3 处括号英文注释（约等于 3 个新术语）",
+      "context": "原图从左边的数据准备／探索（Data Preparation and Exploration）开始，向上分到监督学习（Supervised）、向下分到无监督学习（Unsupervised）。监督分支列数值预测、分类与时间序列，进入 Model Assessment；无监督分支列关联与细分，进入 Deriving Insight。两者之间有竖向联系，说明洞见也可帮助模型评价。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6a"
+    },
+    {
+      "code": "R6a",
+      "line": 141,
+      "section": "2.09 线性回归回顾（讲义 p.9）",
+      "machine_message": "一段 4 处括号英文注释（约等于 4 个新术语）",
+      "context": "原图横轴 X 是协变量／输入（Covariate），纵轴 Y 是响应变量（Response variable）。蓝点是观测，红线是模型；斜率（Slope）控制 X 增加 1 时预测 Y 改变多少，截距（Intercept / bias）是 X 为 0 的预测起点。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6a"
+    },
+    {
+      "code": "R6a",
+      "line": 165,
+      "section": "2.11 分类与回归指标分工（讲义 p.11）",
+      "machine_message": "一段 4 处括号英文注释（约等于 4 个新术语）",
+      "context": "这页左右两列按目标类型列指标。分类先数混淆矩阵（Confusion matrix）的四种结果，再算精确率（Precision）、召回率（Recall）、F-measure 与误分类率（Misclassification error）。数值预测则比较真实与预测的差，使用 MAE／MAD、平均误差、MAPE、RMSE 与总 SSE。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6a"
+    },
+    {
+      "code": "R1c",
+      "line": 199,
+      "section": "2.14 混淆矩阵与反欺诈指标（讲义 p.14）",
+      "machine_message": "3 个分号：a／TP 为真实欺诈且报警；b／FN 为真实欺诈却漏报；c／FP 为正常…",
+      "context": "先按原图的行与列读矩阵：行是实际类别（Actual），列是预测类别（Predicted）。a／TP 为真实欺诈且报警；b／FN 为真实欺诈却漏报；c／FP 为正常却误报；d／TN 为正常且未报警。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1c"
+    },
+    {
+      "code": "R1c",
+      "line": 203,
+      "section": "2.14 混淆矩阵与反欺诈指标（讲义 p.14）",
+      "machine_message": "2 个分号：12 次报警中 8 次真欺诈，P=2/3；10 笔真欺诈中抓住 8 笔，…",
+      "context": "💡 笔记补充：100 笔中 TP=8、FN=2、FP=4、TN=86。12 次报警中 8 次真欺诈，P=2/3；10 笔真欺诈中抓住 8 笔，R=0.8；F1=16/22≈0.7273。准确率为 94%，但仍需说明漏掉的 2 笔损失与 4 次误报的处理成本。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1c"
+    },
+    {
+      "code": "R1c",
+      "line": 233,
+      "section": "2.16 训练验证测试与上线（讲义 p.16）",
+      "machine_message": "3 个分号：训练用于拟合候选；验证把候选放在相同尺度上选择；配置冻结后，测试评价这套…",
+      "context": "原图四行从训练（Training data）、验证（Validation data）、测试（Test data）走到新数据（New data）。训练用于拟合候选；验证把候选放在相同尺度上选择；配置冻结后，测试评价这套选择过程的结果；新数据是实际使用对象。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1c"
+    },
+    {
+      "code": "R6a",
+      "line": 233,
+      "section": "2.16 训练验证测试与上线（讲义 p.16）",
+      "machine_message": "一段 4 处括号英文注释（约等于 4 个新术语）",
+      "context": "原图四行从训练（Training data）、验证（Validation data）、测试（Test data）走到新数据（New data）。训练用于拟合候选；验证把候选放在相同尺度上选择；配置冻结后，测试评价这套选择过程的结果；新数据是实际使用对象。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6a"
+    },
+    {
+      "code": "R5a",
+      "line": 271,
+      "section": "2.20 留出法的第一阶段（讲义 p.20）",
+      "machine_message": "一段 5 个不同行内公式",
+      "context": "留出法（Hold-out）先把数据 D 分成训练部分 $D_T$ 与验证部分 $D_V$。原图 $D=\\{(X_i,Y_i)\\}_{i=1}^n$ 表示 n 对输入和已知答案；下标 T／V 表示用途。候选类别 $\\mathcal H_\\lambda$ 由配置 $\\lambda$ 决定，例如最大深度 2 的树。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R5a"
+    },
+    {
+      "code": "R5a",
+      "line": 281,
+      "section": "2.21 留出法的选择阶段（讲义 p.21）",
+      "machine_message": "一段 4 个不同行内公式",
+      "context": "下一步把每个训练好的 $\\hat f_\\lambda$ 用于相同的 $D_V$，比较验证损失，选 $\\hat\\lambda=\\arg\\min_{\\lambda\\in\\Lambda}\\hat R_V(\\hat f_\\lambda)$。$\\Lambda$ 是候选配置集合，输出是配置编号，再取对应模型作留出法的赢家。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R5a"
+    },
+    {
+      "code": "R5c",
+      "line": 281,
+      "section": "2.21 留出法的选择阶段（讲义 p.21）",
+      "machine_message": "行内公式 64 字符，改独立公式：\\hat\\lambda=\\arg\\min_{\\lambda\\",
+      "context": "下一步把每个训练好的 $\\hat f_\\lambda$ 用于相同的 $D_V$，比较验证损失，选 $\\hat\\lambda=\\arg\\min_{\\lambda\\in\\Lambda}\\hat R_V(\\hat f_\\lambda)$。$\\Lambda$ 是候选配置集合，输出是配置编号，再取对应模型作留出法的赢家。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R5c"
+    },
+    {
+      "code": "R1e",
+      "line": 311,
+      "section": "2.23 20条数据的80/20划分（讲义 p.23）",
+      "machine_message": "一段 3 处否定澄清",
+      "context": "80% 训练与 20% 验证的计算是 16／20 与 4／20；比例不是所有任务的固定标准。原数据按 X 排序展示，不说明它们是时间序列。若真有时间先后且目标是预测未来，应改用 p.33–35 的时间划分，不能照本页随机抽。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1e"
+    },
+    {
+      "code": "R7a",
+      "line": 313,
+      "section": "2.23 20条数据的80/20划分（讲义 p.23）",
+      "machine_message": "6 位以上小数、复算记录；移到 §9 或折叠「复算与来源」",
+      "context": "💡 笔记补充的可复做结果：按这 16 行拟合带截距的一元最小二乘，斜率约 3.004894、截距约 0.429960；在四条验证记录上算 MAE≈0.312739、RMSE≈0.326192。输入是原表，模型与计算是笔记补充，不冒称课件给定答案；精确结果以本批 `calculations.json` 为准。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R7a"
+    },
+    {
+      "code": "R7a",
+      "line": 448,
+      "section": "2.31 Quiz I三折划分（讲义 p.31）",
+      "machine_message": "6 位以上小数；移到 §9 或折叠「复算与来源」",
+      "context": "💡 改条件检查：若 RID 代表按时间排序的观测、任务又要求预测未来，上表第 1 轮用未来训过去就不合适，需改滚动评价。为了复做机制，本批额外在这三轮分别拟合一元回归，MAE≈0.361980、0.384741、0.382425；这些不是本题要求，也不是官方给定成绩。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R7a"
+    },
+    {
+      "code": "R1c",
+      "line": 476,
+      "section": "2.34 扩展窗口滚动预测（讲义 p.34）",
+      "machine_message": "2 个分号：第 1 轮用 T=0–5 训练、T=6 验证；第 2 轮用 0–6 训练…",
+      "context": "原图第一列 T 是时点，橙色是当轮已知历史，红色是下一条待预测。第 1 轮用 T=0–5 训练、T=6 验证；第 2 轮用 0–6 训练、T=7 验证；最后一轮用 0–18 训练、T=19 验证。这是扩展窗口（Expanding window）：训练历史越积越长。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1c"
+    },
+    {
+      "code": "R1a",
+      "line": 480,
+      "section": "2.34 扩展窗口滚动预测（讲义 p.34）",
+      "machine_message": "84 单元：💡 笔记补充的最小例：观测为 10、12、14、16，先用前两条训练；若…",
+      "context": "💡 笔记补充的最小例：观测为 10、12、14、16，先用前两条训练；若候选是“最近值预测下一条”，第一次预测 12，真实 14，绝对误差 2；真实 14 到达后再预测下一条为 14，真实 16，误差 2。两次都先预测后见答案，平均绝对误差为 2。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1a"
+    },
+    {
+      "code": "R1c",
+      "line": 480,
+      "section": "2.34 扩展窗口滚动预测（讲义 p.34）",
+      "machine_message": "2 个分号：💡 笔记补充的最小例：观测为 10、12、14、16，先用前两条训练；若…",
+      "context": "💡 笔记补充的最小例：观测为 10、12、14、16，先用前两条训练；若候选是“最近值预测下一条”，第一次预测 12，真实 14，绝对误差 2；真实 14 到达后再预测下一条为 14，真实 16，误差 2。两次都先预测后见答案，平均绝对误差为 2。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1c"
+    },
+    {
+      "code": "R6a",
+      "line": 514,
+      "section": "2.38 训练误差随节点增多（讲义 p.38）",
+      "machine_message": "一段 3 处括号英文注释（约等于 3 个新术语）",
+      "context": "横轴节点数（Number of nodes）从小到大，纵轴错误率（Error），唯一蓝线是训练误差（Train Error）。起初增加分裂迅速改善，之后继续细化可把训练错误压得接近零。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6a"
+    },
+    {
+      "code": "R1c",
+      "line": 526,
+      "section": "2.39 4节点树与分区（讲义 p.39）",
+      "machine_message": "2 个分号：按树从根读一个补充输入 (x1,x2)=(10,10)：10 不小于 6…",
+      "context": "按树从根读一个补充输入 (x1,x2)=(10,10)：10 不小于 6.45956，进入下一判断；10 小于 13.1086；x2=10 不小于 7.03548、又小于 14.3129，落入中央“+”叶。图上的四条轴向阈值形成一个矩形边界。若 x1=3，则第一步就落到外侧“o”叶，不需走后面判断。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1c"
+    },
+    {
+      "code": "R1c",
+      "line": 570,
+      "section": "2.43 超参数与参数（讲义 p.43）",
+      "machine_message": "3 个分号：原图例从婚姻状态（MarSt）分：Married→NO；Single／D…",
+      "context": "原图例从婚姻状态（MarSt）分：Married→NO；Single／Divorced→Home Owner；有房→NO，无房再看 Income；低于 80K→NO、高于 80K→YES。原图未定义 Income 恰为 80K 的分支，不补造原规则。YES／NO 的目标业务含义在本页也未交代，不能擅自写成是否欺诈。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1c"
+    },
+    {
+      "code": "R1c",
+      "line": 656,
+      "section": "2.51 内层步骤1至6（讲义 p.51）",
+      "machine_message": "5 个分号：本页六步给内部循环的展开：1 先分开发／测试；2 开发侧分 K 折；3 …",
+      "context": "本页六步给内部循环的展开：1 先分开发／测试；2 开发侧分 K 折；3 取 K−1 折训练；4 余一折验证；5 对指定超参数记录该轮表现；6 轮换直到每折都验证过一次。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1c"
+    },
+    {
+      "code": "R1c",
+      "line": 666,
+      "section": "2.52 内层步骤7至10（讲义 p.52）",
+      "machine_message": "3 个分号：后四步是：7 汇总同一配置 K 个验证分数的均值与标准差；8 为其他配置…",
+      "context": "后四步是：7 汇总同一配置 K 个验证分数的均值与标准差；8 为其他配置重复；9 按预定性能准则选配置；10 用全部开发数据重拟合，再在外部测试上评价。标准差用于看稳定性，不是同时把均值／标准差都机械最小化；若指标是准确率，均值越高越好，若是损失则越低越好。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1c"
+    },
+    {
+      "code": "R3a",
+      "line": 711,
+      "section": "2.55 Lasso与超参数（讲义 p.55）",
+      "machine_message": "513 单元无隔断",
+      "context": "前半是训练平方误差，后半对每个斜率的绝对值收费；$\\lambda\\ge0$ 控制收费强度。$\\lambda=0$ 回到普通最小二乘；在常见设置中，足够强的 L1 惩罚可把部分斜率精确压到 0，形成稀疏（Sparsity）模型。它不是“哪个系数方差大就直接删哪个”的固定规则；结果依赖尺度、特征相关性与损失收益。通常在训练折内标准化以使惩罚尺度可比较。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R3a"
+    },
+    {
+      "code": "R5a",
+      "line": 731,
+      "section": "2.56 Ridge与原图勘误（讲义 p.56）",
+      "machine_message": "一段 4 个不同行内公式",
+      "context": "💡 笔记补充：用 $(a-2)^2+\\frac\\lambda2a^2$。当 $\\lambda=2$，展开并配方为 $2a^2-4a+4=2(a-1)^2+2$，最佳取 a=1。惩罚改为 6 时，目标变为 $4a^2-4a+4=4(a-0.5)^2+3$，最佳取 a=0.5，仍不为 0。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R5a"
+    },
+    {
+      "code": "R7a",
+      "line": 755,
+      "section": "2.58 正则化的曲线和系数（讲义 p.58）",
+      "machine_message": "6 位以上小数；移到 §9 或折叠「复算与来源」",
+      "context": "原系数表左侧截距约 −36,247.81543、a1≈243,862.2、a2≈−745,882.84；Ridge 截距约 1.392827、a1≈−0.224699、a2≈−0.033668。先看量级与符号，再看它们如何通过多项式相互抵消，不能只因单个系数大就断言预测一定坏。表后部 Ridge 多项显示为 0，显示精度或实现细节未给，不能据此证明 Ridge 一定选特征。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R7a"
+    },
+    {
+      "code": "R1c",
+      "line": 787,
+      "section": "2.61 左右树的24条算例（讲义 p.61）",
+      "machine_message": "2 个分号：叶子预测该框多数类，因此错分数为框内较少的一类；例如左图叶 (3,1) …",
+      "context": "原图两棵树都覆盖 24 条记录，每个叶框列“+”与“−”条数。叶子预测该框多数类，因此错分数为框内较少的一类；例如左图叶 (3,1) 预测“+”，错 1 条；叶 (0,2) 预测“−”，错 0 条。红线表示分支，不表示人数。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1c"
+    },
+    {
+      "code": "R5a",
+      "line": 798,
+      "section": "2.61 左右树的24条算例（讲义 p.61）",
+      "machine_message": "一段 4 个不同行内公式",
+      "context": "💡 改条件：若 $\\Omega=0$，只看训练错率，左树较好。平局条件为 $4+7\\Omega=6+4\\Omega$，移项得 $3\\Omega=2$，即 $\\Omega=2/3$；小于此值选左，大于选右，平局按预先规则处理。惩罚强弱可以改变选择，不能背“树越小越好”。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R5a"
+    },
+    {
+      "code": "R1a",
+      "line": 808,
+      "section": "2.62 预剪枝的全部停止条件（讲义 p.62）",
+      "machine_message": "81 单元：另外四类限制分别是：样本数小于用户阈值；类别分布与可用特征没有足够关联证…",
+      "context": "另外四类限制分别是：样本数小于用户阈值；类别分布与可用特征没有足够关联证据（原文举卡方检验 $\\chi^2$）；继续切分不改善 Gini 或信息增益等不纯度；估计泛化误差已低于预定阈值。最后一项是源页列的停止策略，不意味着小训练误差就已知未来错误够低。卡方检验只是一个可选停止工具，本讲未给列联表，不伪造检验结果。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1a"
+    },
+    {
+      "code": "R1c",
+      "line": 808,
+      "section": "2.62 预剪枝的全部停止条件（讲义 p.62）",
+      "machine_message": "3 个分号：另外四类限制分别是：样本数小于用户阈值；类别分布与可用特征没有足够关联证…",
+      "context": "另外四类限制分别是：样本数小于用户阈值；类别分布与可用特征没有足够关联证据（原文举卡方检验 $\\chi^2$）；继续切分不改善 Gini 或信息增益等不纯度；估计泛化误差已低于预定阈值。最后一项是源页列的停止策略，不意味着小训练误差就已知未来错误够低。卡方检验只是一个可选停止工具，本讲未给列联表，不伪造检验结果。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1c"
+    },
+    {
+      "code": "R5a",
+      "line": 879,
+      "section": "2.68 Kmeans的SSE（讲义 p.68）",
+      "machine_message": "一段 4 个不同行内公式",
+      "context": "K-means 的平方误差和为 $SSE=\\sum_{i=1}^{K}\\sum_{x\\in C_i}\\lVert x-m_i\\rVert^2$。$C_i$ 是第 i 簇，$m_i$ 是它的均值中心，内层先累加该簇每点到中心的距离平方，外层再加所有簇。欧氏范数 $\\lVert\\cdot\\rVert$ 表示先逐坐标求差再按平方和开根；平方后正好剩坐标差的平方和。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R5a"
+    },
+    {
+      "code": "R6a",
+      "line": 891,
+      "section": "2.69 凝聚度与分离度（讲义 p.69）",
+      "machine_message": "一段 4 处括号英文注释（约等于 4 个新术语）",
+      "context": "凝聚度（Cohesion）问同簇点有多近，本页用簇内平方和 WSS（Within-cluster sum of squares），等同这里的 SSE；分离度（Separation）问各簇中心有多远离整体中心，用簇间平方和 BSS（Between-cluster sum of squares）。原页标题 “Inner distance & intra distance” 用词不规范，正文以 within／between 及公式为准。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6a"
+    },
+    {
+      "code": "R5b",
+      "line": 895,
+      "section": "2.69 凝聚度与分离度（讲义 p.69）",
+      "machine_message": "一个 $$ 块放了多个等式；拆开并在中间加一句话",
+      "context": "$$WSS=\\sum_i\\sum_{x\\in C_i}\\lVert x-m_i\\rVert^2,\\qquad BSS=\\sum_i |C_i|\\lVert m_i-m\\rVert^2.$$",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R5b"
+    },
+    {
+      "code": "R6a",
+      "line": 909,
+      "section": "2.71 CRISP-DM管线（讲义 p.71）",
+      "machine_message": "一段 6 处括号英文注释（约等于 6 个新术语）",
+      "context": "标题问题是 “How to evaluate a good design”。原图六块为：1 业务理解（Business Understanding）、2 数据理解（Data Understanding）、3 数据准备（Data Preparation）、4 模型构建（Model Building）、5 测试与评价（Testing and Evaluation）、6 部署（Deployment），中央圆柱为 Data。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6a"
+    },
+    {
+      "code": "R2a",
+      "line": 925,
+      "section": "2.72 深度结构怎样比较（讲义 p.72）",
+      "machine_message": "168 单元 / 3 句：左图下方数据源含气象、事件、销量、库存等，输入 $x_1\\ldots x…",
+      "context": "左图下方数据源含气象、事件、销量、库存等，输入 $x_1\\ldots x_t$ 进入编码器（Encoder）的 LSTM 状态链；时间注意力（Temporal attention）给不同历史表示分配读取权重。未来外生因素经嵌入（Embedding，转成可供网络使用的数值表示），再拼接（Concat，把数值表示接成一份输入）送到上方解码器（Decoder），逐步产生 $y_1\\ldots y_T$。天气预报、节假日等未来因素必须是预测起点已能获得的输入，未来实际天气不能冒充当时已知。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R2a"
+    },
+    {
+      "code": "R6a",
+      "line": 925,
+      "section": "2.72 深度结构怎样比较（讲义 p.72）",
+      "machine_message": "一段 5 处括号英文注释（约等于 5 个新术语）",
+      "context": "左图下方数据源含气象、事件、销量、库存等，输入 $x_1\\ldots x_t$ 进入编码器（Encoder）的 LSTM 状态链；时间注意力（Temporal attention）给不同历史表示分配读取权重。未来外生因素经嵌入（Embedding，转成可供网络使用的数值表示），再拼接（Concat，把数值表示接成一份输入）送到上方解码器（Decoder），逐步产生 $y_1\\ldots y_T$。天气预报、节假日等未来因素必须是预测起点已能获得的输入，未来实际天气不能冒充当时已知。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6a"
+    },
+    {
+      "code": "R6a",
+      "line": 939,
+      "section": "2.73 A/B的定义与随机分组（讲义 p.73）",
+      "machine_message": "一段 3 处括号英文注释（约等于 3 个新术语）",
+      "context": "A/B 测试（A/B testing）把旧版／控制（Control，A）与新版／处理（Treatment / Variation，B）比较。原定义为 “comparing two versions of designs against each other to determine which one performs better.” 原示意左 23%、右 37%，下方写 Random evaluators；它没有给样本数、时间或误差，所以不能据此算显著性。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6a"
+    },
+    {
+      "code": "R6a",
+      "line": 959,
+      "section": "2.75 五阶段实验环（讲义 p.75）",
+      "machine_message": "一段 5 处括号英文注释（约等于 5 个新术语）",
+      "context": "原环图中心写 “THE FIVE STAGES TO THE EXPERIMENTAL FRAMEWORK”，顺时针为确定要改善的转化（Determine conversion to improve）→提出改变假设（Hypothesize change）→识别变量并建变体（Identify the variables and create variations）→运行实验（Run experiment）→测结果（Measure results）。箭头回到起点，表示一轮结果可启发下一轮。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6a"
+    },
+    {
+      "code": "R1a",
+      "line": 1017,
+      "section": "2.79 随机实验与统计方法区别（讲义 p.79）",
+      "machine_message": "94 单元：这句把实验设计与分析方法混列，须拆清：随机分配决定谁看 A／B；t 检验…",
+      "context": "这句把实验设计与分析方法混列，须拆清：随机分配决定谁看 A／B；t 检验（t-test）是在相应假设下比较均值的分析工具；双重差分（Difference-in-differences，DiD）比较两组前后变化，常用于非随机政策评估，不是随机实验的同义词。单独使用任一检验名称都不能保证因果识别。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1a"
+    },
+    {
+      "code": "R1c",
+      "line": 1017,
+      "section": "2.79 随机实验与统计方法区别（讲义 p.79）",
+      "machine_message": "2 个分号：这句把实验设计与分析方法混列，须拆清：随机分配决定谁看 A／B；t 检验…",
+      "context": "这句把实验设计与分析方法混列，须拆清：随机分配决定谁看 A／B；t 检验（t-test）是在相应假设下比较均值的分析工具；双重差分（Difference-in-differences，DiD）比较两组前后变化，常用于非随机政策评估，不是随机实验的同义词。单独使用任一检验名称都不能保证因果识别。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1c"
+    },
+    {
+      "code": "R7a",
+      "line": 1047,
+      "section": "2.80 检验差异及不确定性（讲义 p.80）",
+      "machine_message": "6 位以上小数；移到 §9 或折叠「复算与来源」",
+      "context": "双侧（Two-sided）检验把两个方向都算入：均值差为 0 时，出现 $T\\ge2$ 的右尾面积，加上 $T\\le-2$ 的左尾面积。t 分布关于 0 对称，本例每尾约 0.040258，合计 p≈0.080516。这个面积通过统计软件或 t 分布表取得，不是拿 1−t 或 1/df 算出来。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R7a"
+    },
+    {
+      "code": "R7a",
+      "line": 1058,
+      "section": "2.80 检验差异及不确定性（讲义 p.80）",
+      "machine_message": "6 位以上小数；移到 §9 或折叠「复算与来源」",
+      "context": "输出约为 `0.04025811898 0.08051623796`。如查表时没有对应精确 t 值，只能按表给范围，不编造精确小数。若交换 A／B，把差改成 A−B，t 从 2 变成 −2，左右尾互换，绝对值与双侧 p 不变；单侧问题的方向则必须在看结果前约定。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R7a"
+    },
+    {
+      "code": "R1e",
+      "line": 1060,
+      "section": "2.80 检验差异及不确定性（讲义 p.80）",
+      "machine_message": "一段 3 处否定澄清",
+      "context": "p 值（p-value）是假定总体均值相等及检验模型成立时，出现至少同样极端统计量的概率；不是“零假设为真的概率”。若事先定显著性水平 0.05，本例不足以拒绝均值相等，且观察到 B 等待更长；不能报告 B 显著改善。小样本教学例不是这门课真实实验。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1e"
+    },
+    {
+      "code": "R1a",
+      "line": 1098,
+      "section": "2.83 客户细分与赌场案例（讲义 p.83）",
+      "machine_message": "84 单元：原页用赌场会员数据举“无监督细分＋监督预测”组合：会员卡记录行为→按行为…",
+      "context": "原页用赌场会员数据举“无监督细分＋监督预测”组合：会员卡记录行为→按行为细分→预订时依会员号定位群→对高下注且输钱的高价值客户提供免费／赠送客房（Complimentary rooms），其他客户收费。这里的免费不是仍需付费的折扣房。示例某群每晚下注 500–600，原图美元符号未指定币种，不能改称港币；下注额、客户损失与经营者利润也不是同一个量。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1a"
+    },
+    {
+      "code": "R1e",
+      "line": 1098,
+      "section": "2.83 客户细分与赌场案例（讲义 p.83）",
+      "machine_message": "一段 3 处否定澄清",
+      "context": "原页用赌场会员数据举“无监督细分＋监督预测”组合：会员卡记录行为→按行为细分→预订时依会员号定位群→对高下注且输钱的高价值客户提供免费／赠送客房（Complimentary rooms），其他客户收费。这里的免费不是仍需付费的折扣房。示例某群每晚下注 500–600，原图美元符号未指定币种，不能改称港币；下注额、客户损失与经营者利润也不是同一个量。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1e"
+    },
+    {
+      "code": "R2a",
+      "line": 1098,
+      "section": "2.83 客户细分与赌场案例（讲义 p.83）",
+      "machine_message": "153 单元 / 3 句：原页用赌场会员数据举“无监督细分＋监督预测”组合：会员卡记录行为→按行为…",
+      "context": "原页用赌场会员数据举“无监督细分＋监督预测”组合：会员卡记录行为→按行为细分→预订时依会员号定位群→对高下注且输钱的高价值客户提供免费／赠送客房（Complimentary rooms），其他客户收费。这里的免费不是仍需付费的折扣房。示例某群每晚下注 500–600，原图美元符号未指定币种，不能改称港币；下注额、客户损失与经营者利润也不是同一个量。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R2a"
+    },
+    {
+      "code": "R3a",
+      "line": 1098,
+      "section": "2.83 客户细分与赌场案例（讲义 p.83）",
+      "machine_message": "518 单元无隔断",
+      "context": "原页用赌场会员数据举“无监督细分＋监督预测”组合：会员卡记录行为→按行为细分→预订时依会员号定位群→对高下注且输钱的高价值客户提供免费／赠送客房（Complimentary rooms），其他客户收费。这里的免费不是仍需付费的折扣房。示例某群每晚下注 500–600，原图美元符号未指定币种，不能改称港币；下注额、客户损失与经营者利润也不是同一个量。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R3a"
+    },
+    {
+      "code": "R1c",
+      "line": 1119,
+      "section": "2.84 三种收益管理方案（讲义 p.84）",
+      "machine_message": "2 个分号：本页列三个候选：(a) 针对各群分别建回归；(b) 用全部客户建一份回归…",
+      "context": "整体收益管理（Revenue management，RM）先收集数据、细分客户，再预测各群订房需求。本页列三个候选：(a) 针对各群分别建回归；(b) 用全部客户建一份回归，把群 ID 编成虚拟变量（Dummy variable）；(c) 不使用群信息的一份整体回归。源表 (a) 写 “for one segment”，实际对整体使用要为相关群分别建模并覆盖所有评价对象。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1c"
+    },
+    {
+      "code": "R3a",
+      "line": 1119,
+      "section": "2.84 三种收益管理方案（讲义 p.84）",
+      "machine_message": "704 单元无隔断",
+      "context": "整体收益管理（Revenue management，RM）先收集数据、细分客户，再预测各群订房需求。本页列三个候选：(a) 针对各群分别建回归；(b) 用全部客户建一份回归，把群 ID 编成虚拟变量（Dummy variable）；(c) 不使用群信息的一份整体回归。源表 (a) 写 “for one segment”，实际对整体使用要为相关群分别建模并覆盖所有评价对象。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R3a"
+    },
+    {
+      "code": "R4c",
+      "line": 1161,
+      "section": "4. 速查表",
+      "machine_message": "单元格 2 句",
+      "context": "| 连续预测偏差有多大 | 固定评价集与单位，MAE／RMSE；平均误差只看有符号偏差 | [[#2.12 五类连续误差指标（讲义 p.12）\\|p.12]] |",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R4c"
+    },
+    {
+      "code": "R4c",
+      "line": 1166,
+      "section": "4. 速查表",
+      "machine_message": "单元格 2 句",
+      "context": "| 最高 CV 分数能否最终报 | 该分数参与选择；另用独立外留出或外层 CV | [[#2.49 课件所称嵌套流程（讲义 p.49）\\|p.49]] |",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R4c"
+    },
+    {
+      "code": "R4c",
+      "line": 1170,
+      "section": "4. 速查表",
+      "machine_message": "单元格 2 句",
+      "context": "| 组件有没有贡献 | 同协议消融；线上随机实验另问业务效果 | [[#2.82 消融与全管线变化（讲义 p.82）\\|p.82]] |",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R4c"
+    },
+    {
+      "code": "R1c",
+      "line": 1215,
+      "section": "6.2 英文答题顺序",
+      "machine_message": "2 个分号：解释欺诈时补 FN／FP；解释未来预测时补滚动起点与步长；解释聚类时不能…",
+      "context": "这段为自拟框架，需按题目替换具体对象。解释欺诈时补 FN／FP；解释未来预测时补滚动起点与步长；解释聚类时不能把准确率作为无标签情况下已知结果。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R1c"
+    },
+    {
+      "code": "R8b",
+      "line": 1243,
+      "section": "7.3 网格试了 100 组，最高 CV 分数 0.91，就能报独立测试 0.91 吗？",
+      "machine_message": "小节首段 5 句；首段 ≤ 3 句，先给问题或结论",
+      "context": "不能。CV 已用于从 100 组中选择，赢家可能适应该分折的偶然性。保留独立测试，或外层每折重新内搜并在外测汇总，才能评价整个选择流程。见 [[#2.48 选择偏差与数据泄漏（讲义 p.48）|p.48]]。英文参考：The best CV score is a selected estimate, not an independent test score. Assess the selected procedure on untouched test data or through an outer cross-validation loop.",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R8b"
+    },
+    {
+      "code": "R8b",
+      "line": 1251,
+      "section": "7.4 三步预测时，第二步能直接用第一步未来真实值吗？",
+      "machine_message": "小节首段 4 句；首段 ≤ 3 句，先给问题或结论",
+      "context": "若协议是在同一个起点提前预测三步，则不能；该真实值在起点尚未知。递推方法应使用先前预测。逐天等真实值到达再更新属于滚动一步的另一协议，需另报，见 [[#2.35 多步与固定窗口（讲义 p.35）|p.35]]。英文参考：A three-step forecast made at one origin cannot use future realized targets as inputs. Updating after each observed target is a different one-step protocol.",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R8b"
+    },
+    {
+      "code": "R8b",
+      "line": 1259,
+      "section": "7.5 p.61 若每叶代价改为 0.5，选哪棵树？",
+      "machine_message": "小节首段 4 句；首段 ≤ 3 句，先给问题或结论",
+      "context": "左 $(4+0.5\\times7)/24=7.5/24=0.3125$；右 $(6+0.5\\times4)/24=8/24\\approx0.3333$，选左。因为省叶带来的收益不足以抵消多错两条。临界值为 2/3，不是固定偏爱右树，见 [[#2.61 左右树的24条算例（讲义 p.61）|p.61]]。英文参考：With a penalty of 0.5 per leaf, the left tree has the smaller penalized error, so the criterion selects the left tree.",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R8b"
+    },
+    {
+      "code": "R8b",
+      "line": 1275,
+      "section": "7.7 A/B 的 p=0.08，是否有 92% 概率新版更好？",
+      "machine_message": "小节首段 5 句；首段 ≤ 3 句，先给问题或结论",
+      "context": "不是。p 值在零假设及模型假设下评价数据的极端程度，不能取 1−p 当“新版为真”的概率。本例 B 反而平均多等 2 秒；在预设 0.05 双侧规则下不足以拒绝均值相等，也不证明相等。见 [[#2.80 检验差异及不确定性（讲义 p.80）|p.80]]。英文参考：A p-value is not the probability that a version is better. Report the effect direction, uncertainty and the pre-specified decision rule.",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R8b"
+    },
+    {
+      "code": "R6d",
+      "line": 61,
+      "section": "2.01 封面与阅读范围（讲义 p.1）",
+      "machine_message": "缩写“L11”首用未识别到中文说明；人工核对",
+      "context": "这是 Lecture 11 的模型评估（Model Assessment），本库顺序编号为 M10。不要把文件名里的 L11 与旧 `L11-IS6400-DeepLearning.pdf` 混同：本源是新下载的 84 页评估课件。红色目录先指向 Model Testing，随后依次转入正则化、无监督评价和管线评价。阅读材料入口只写 “See Canvas Week 11”，没有给额外必读文章清单。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 71,
+      "section": "2.03 商店需求的模型选择（讲义 p.3）",
+      "machine_message": "缩写“ARIMA”首用未识别到中文说明；人工核对",
+      "context": "商店要预测未来需求，手头有 ARIMA、LSTM、RNN 三种候选。前者用时间序列结构，后两者用循环网络学习序列；本页不重教它们的内部训练，而是问怎样在同一任务上比较它们。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 71,
+      "section": "2.03 商店需求的模型选择（讲义 p.3）",
+      "machine_message": "缩写“LSTM”首用未识别到中文说明；人工核对",
+      "context": "商店要预测未来需求，手头有 ARIMA、LSTM、RNN 三种候选。前者用时间序列结构，后两者用循环网络学习序列；本页不重教它们的内部训练，而是问怎样在同一任务上比较它们。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 71,
+      "section": "2.03 商店需求的模型选择（讲义 p.3）",
+      "machine_message": "缩写“RNN”首用未识别到中文说明；人工核对",
+      "context": "商店要预测未来需求，手头有 ARIMA、LSTM、RNN 三种候选。前者用时间序列结构，后两者用循环网络学习序列；本页不重教它们的内部训练，而是问怎样在同一任务上比较它们。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 77,
+      "section": "2.03 商店需求的模型选择（讲义 p.3）",
+      "machine_message": "“超参数”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+      "context": "中文读题：第一问选模型家族；第二问在某一家族里选阶数、隐藏规模等超参数。不能仅因名字更新就选 LSTM。先固定未来预测步长与误差指标；在过去的多个预测起点分别拟合候选，只预测当时尚未知的未来，按验证误差选配置，再留独立未来区间作最终评价。源页没给实际数据与成绩，无法确定哪个候选胜出。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 107,
+      "section": "2.06 文档聚类怎样评价（讲义 p.6）",
+      "machine_message": "“聚类”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+      "context": "文档聚类（Document clustering）把相似文档归到一组；没有给定正确类别时，不能直接套分类准确率。簇数（Number of clusters）影响粒度：每篇文档各自一簇虽然簇内很紧，却不一定有整理价值。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 113,
+      "section": "2.06 文档聚类怎样评价（讲义 p.6）",
+      "machine_message": "缩写“SSE”首用未识别到中文说明；人工核对",
+      "context": "中文解析：先固定文字表示和距离，再在候选簇数下比较簇内凝聚、簇间分离、重复运行稳定性与业务可解释性。本讲 p.68–69 给 SSE、WSS、BSS；若有人工主题标签，还能另作外部核验，但本源没有提供标签或分数，不能替文档选定唯一簇数。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 113,
+      "section": "2.06 文档聚类怎样评价（讲义 p.6）",
+      "machine_message": "缩写“WSS”首用未识别到中文说明；人工核对",
+      "context": "中文解析：先固定文字表示和距离，再在候选簇数下比较簇内凝聚、簇间分离、重复运行稳定性与业务可解释性。本讲 p.68–69 给 SSE、WSS、BSS；若有人工主题标签，还能另作外部核验，但本源没有提供标签或分数，不能替文档选定唯一簇数。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 113,
+      "section": "2.06 文档聚类怎样评价（讲义 p.6）",
+      "machine_message": "缩写“BSS”首用未识别到中文说明；人工核对",
+      "context": "中文解析：先固定文字表示和距离，再在候选簇数下比较簇内凝聚、簇间分离、重复运行稳定性与业务可解释性。本讲 p.68–69 给 SSE、WSS、BSS；若有人工主题标签，还能另作外部核验，但本源没有提供标签或分数，不能替文档选定唯一簇数。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 153,
+      "section": "2.10 真实值与预测值之差（讲义 p.10）",
+      "machine_message": "缩写“SSE”首用未识别到中文说明；人工核对",
+      "context": "平方误差和（Sum of squared errors，SSE）为 $\\sum_{i=1}^{n}(y_i-\\hat y_i)^2$。平方让正负偏离不抵消，并对大偏离付更高代价。$\\arg\\min_\\theta$ 的意思是“返回使这个总和最小的那组系数”，不是返回最小误差本身。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6b",
+      "line": 165,
+      "section": "2.11 分类与回归指标分工（讲义 p.11）",
+      "machine_message": "一句 5 个术语（MAE、MAD、MAPE、RMSE、SSE）：数值预测则比较真实与预测的差，使用 MAE／MAD、平均误差、MAPE、…",
+      "context": "这页左右两列按目标类型列指标。分类先数混淆矩阵（Confusion matrix）的四种结果，再算精确率（Precision）、召回率（Recall）、F-measure 与误分类率（Misclassification error）。数值预测则比较真实与预测的差，使用 MAE／MAD、平均误差、MAPE、RMSE 与总 SSE。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6b"
+    },
+    {
+      "code": "R6d",
+      "line": 165,
+      "section": "2.11 分类与回归指标分工（讲义 p.11）",
+      "machine_message": "缩写“MAE”首用未识别到中文说明；人工核对",
+      "context": "这页左右两列按目标类型列指标。分类先数混淆矩阵（Confusion matrix）的四种结果，再算精确率（Precision）、召回率（Recall）、F-measure 与误分类率（Misclassification error）。数值预测则比较真实与预测的差，使用 MAE／MAD、平均误差、MAPE、RMSE 与总 SSE。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 165,
+      "section": "2.11 分类与回归指标分工（讲义 p.11）",
+      "machine_message": "缩写“MAD”首用未识别到中文说明；人工核对",
+      "context": "这页左右两列按目标类型列指标。分类先数混淆矩阵（Confusion matrix）的四种结果，再算精确率（Precision）、召回率（Recall）、F-measure 与误分类率（Misclassification error）。数值预测则比较真实与预测的差，使用 MAE／MAD、平均误差、MAPE、RMSE 与总 SSE。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 165,
+      "section": "2.11 分类与回归指标分工（讲义 p.11）",
+      "machine_message": "缩写“MAPE”首用未识别到中文说明；人工核对",
+      "context": "这页左右两列按目标类型列指标。分类先数混淆矩阵（Confusion matrix）的四种结果，再算精确率（Precision）、召回率（Recall）、F-measure 与误分类率（Misclassification error）。数值预测则比较真实与预测的差，使用 MAE／MAD、平均误差、MAPE、RMSE 与总 SSE。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 165,
+      "section": "2.11 分类与回归指标分工（讲义 p.11）",
+      "machine_message": "缩写“RMSE”首用未识别到中文说明；人工核对",
+      "context": "这页左右两列按目标类型列指标。分类先数混淆矩阵（Confusion matrix）的四种结果，再算精确率（Precision）、召回率（Recall）、F-measure 与误分类率（Misclassification error）。数值预测则比较真实与预测的差，使用 MAE／MAD、平均误差、MAPE、RMSE 与总 SSE。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 165,
+      "section": "2.11 分类与回归指标分工（讲义 p.11）",
+      "machine_message": "缩写“SSE”首用未识别到中文说明；人工核对",
+      "context": "这页左右两列按目标类型列指标。分类先数混淆矩阵（Confusion matrix）的四种结果，再算精确率（Precision）、召回率（Recall）、F-measure 与误分类率（Misclassification error）。数值预测则比较真实与预测的差，使用 MAE／MAD、平均误差、MAPE、RMSE 与总 SSE。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 167,
+      "section": "2.11 分类与回归指标分工（讲义 p.11）",
+      "machine_message": "缩写“F1”首用未识别到中文说明；人工核对",
+      "context": "“误差 3”没有单位和分母就无法读。分类误分类率是错误记录数除总记录数；销量 MAE 为 3 表示平均绝对偏差 3 件。F-measure 需声明具体版本，本讲 p.14 使用精确率与召回率的调和平均 F1。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 185,
+      "section": "2.12 五类连续误差指标（讲义 p.12）",
+      "machine_message": "缩写“MAPE”首用未识别到中文说明；人工核对",
+      "context": "读第一行：先取每条误差的绝对值，再相加，最后除以记录数。平均误差会正负抵消，所以值为 0 也可能每条都错。MAPE 的真实值若为 0 则此式无定义，接近 0 时会被放大；需换合适指标，不静默删行。RMSE 比 MAE 更放大大误差，SSE 还随样本数变化。本页称 RMSE “computed on validation data”是当前用途，RMSE 这个公式也可以用于训练或测试，必须标明评价集。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 185,
+      "section": "2.12 五类连续误差指标（讲义 p.12）",
+      "machine_message": "缩写“RMSE”首用未识别到中文说明；人工核对",
+      "context": "读第一行：先取每条误差的绝对值，再相加，最后除以记录数。平均误差会正负抵消，所以值为 0 也可能每条都错。MAPE 的真实值若为 0 则此式无定义，接近 0 时会被放大；需换合适指标，不静默删行。RMSE 比 MAE 更放大大误差，SSE 还随样本数变化。本页称 RMSE “computed on validation data”是当前用途，RMSE 这个公式也可以用于训练或测试，必须标明评价集。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 185,
+      "section": "2.12 五类连续误差指标（讲义 p.12）",
+      "machine_message": "缩写“MAE”首用未识别到中文说明；人工核对",
+      "context": "读第一行：先取每条误差的绝对值，再相加，最后除以记录数。平均误差会正负抵消，所以值为 0 也可能每条都错。MAPE 的真实值若为 0 则此式无定义，接近 0 时会被放大；需换合适指标，不静默删行。RMSE 比 MAE 更放大大误差，SSE 还随样本数变化。本页称 RMSE “computed on validation data”是当前用途，RMSE 这个公式也可以用于训练或测试，必须标明评价集。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 185,
+      "section": "2.12 五类连续误差指标（讲义 p.12）",
+      "machine_message": "缩写“SSE”首用未识别到中文说明；人工核对",
+      "context": "读第一行：先取每条误差的绝对值，再相加，最后除以记录数。平均误差会正负抵消，所以值为 0 也可能每条都错。MAPE 的真实值若为 0 则此式无定义，接近 0 时会被放大；需换合适指标，不静默删行。RMSE 比 MAE 更放大大误差，SSE 还随样本数变化。本页称 RMSE “computed on validation data”是当前用途，RMSE 这个公式也可以用于训练或测试，必须标明评价集。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6b",
+      "line": 199,
+      "section": "2.14 混淆矩阵与反欺诈指标（讲义 p.14）",
+      "machine_message": "一句 4 个术语（TP、FN、FP、TN）：a／TP 为真实欺诈且报警；b／FN 为真实欺诈却漏报；c／FP 为正常…",
+      "context": "先按原图的行与列读矩阵：行是实际类别（Actual），列是预测类别（Predicted）。a／TP 为真实欺诈且报警；b／FN 为真实欺诈却漏报；c／FP 为正常却误报；d／TN 为正常且未报警。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6b"
+    },
+    {
+      "code": "R6d",
+      "line": 199,
+      "section": "2.14 混淆矩阵与反欺诈指标（讲义 p.14）",
+      "machine_message": "缩写“TP”首用未识别到中文说明；人工核对",
+      "context": "先按原图的行与列读矩阵：行是实际类别（Actual），列是预测类别（Predicted）。a／TP 为真实欺诈且报警；b／FN 为真实欺诈却漏报；c／FP 为正常却误报；d／TN 为正常且未报警。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 199,
+      "section": "2.14 混淆矩阵与反欺诈指标（讲义 p.14）",
+      "machine_message": "缩写“FN”首用未识别到中文说明；人工核对",
+      "context": "先按原图的行与列读矩阵：行是实际类别（Actual），列是预测类别（Predicted）。a／TP 为真实欺诈且报警；b／FN 为真实欺诈却漏报；c／FP 为正常却误报；d／TN 为正常且未报警。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 199,
+      "section": "2.14 混淆矩阵与反欺诈指标（讲义 p.14）",
+      "machine_message": "缩写“FP”首用未识别到中文说明；人工核对",
+      "context": "先按原图的行与列读矩阵：行是实际类别（Actual），列是预测类别（Predicted）。a／TP 为真实欺诈且报警；b／FN 为真实欺诈却漏报；c／FP 为正常却误报；d／TN 为正常且未报警。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 199,
+      "section": "2.14 混淆矩阵与反欺诈指标（讲义 p.14）",
+      "machine_message": "缩写“TN”首用未识别到中文说明；人工核对",
+      "context": "先按原图的行与列读矩阵：行是实际类别（Actual），列是预测类别（Predicted）。a／TP 为真实欺诈且报警；b／FN 为真实欺诈却漏报；c／FP 为正常却误报；d／TN 为正常且未报警。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 201,
+      "section": "2.14 混淆矩阵与反欺诈指标（讲义 p.14）",
+      "machine_message": "缩写“F1”首用未识别到中文说明；人工核对",
+      "context": "精确率 $P=TP/(TP+FP)$ 在“所有报警”里数真的；召回率 $R=TP/(TP+FN)$ 在“所有真实欺诈”里数抓到的。F1 为 $2PR/(P+R)=2TP/(2TP+FP+FN)$，要求兼顾两者；相关分母为 0 时要说明无定义或软件约定。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6b",
+      "line": 203,
+      "section": "2.14 混淆矩阵与反欺诈指标（讲义 p.14）",
+      "machine_message": "一句 4 个术语（TP、FN、FP、TN）：💡 笔记补充：100 笔中 TP=8、FN=2、FP=4、TN=86。",
+      "context": "💡 笔记补充：100 笔中 TP=8、FN=2、FP=4、TN=86。12 次报警中 8 次真欺诈，P=2/3；10 笔真欺诈中抓住 8 笔，R=0.8；F1=16/22≈0.7273。准确率为 94%，但仍需说明漏掉的 2 笔损失与 4 次误报的处理成本。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6b"
+    },
+    {
+      "code": "R6d",
+      "line": 219,
+      "section": "2.15 ROC与AUC（讲义 p.15）",
+      "machine_message": "缩写“ROC”首用未识别到中文说明；人工核对",
+      "context": "ROC（Receiver operating characteristic）曲线把不同报警阈值对应的错误取舍画出来。纵轴真阳性率 $TPR=TP/(TP+FN)$，横轴假阳性率 $FPR=FP/(FP+TN)$；阈值降低通常报更多正类，两者都可能升高。左上角意味着少误报且多抓到欺诈。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 221,
+      "section": "2.15 ROC与AUC（讲义 p.15）",
+      "machine_message": "缩写“FPR”首用未识别到中文说明；人工核对",
+      "context": "原图 M1 红线在小 FPR 区间较好，M2 虚线在较大 FPR 区间较好；曲线交叉，所以不能说其中一个在所有工作点都占优。对角线是随机排序的基准。曲线下面积 AUC（Area under the ROC curve）总结排序能力，但不是指定阈值下的准确率，也不包含真实损失。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 221,
+      "section": "2.15 ROC与AUC（讲义 p.15）",
+      "machine_message": "缩写“AUC”首用未识别到中文说明；人工核对",
+      "context": "原图 M1 红线在小 FPR 区间较好，M2 虚线在较大 FPR 区间较好；曲线交叉，所以不能说其中一个在所有工作点都占优。对角线是随机排序的基准。曲线下面积 AUC（Area under the ROC curve）总结排序能力，但不是指定阈值下的准确率，也不包含真实损失。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 265,
+      "section": "2.19 验证集的用途与代价（讲义 p.19）",
+      "machine_message": "“标准化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+      "context": "验证会减少每次可训练的记录数，这是估计可信度与拟合数据量的取舍。若看过验证结果再调深度、特征或阈值，验证就已经参与选择。数据填补、标准化、特征筛选也要只在当前训练部分估计，再原样应用到验证；否则标签或分布信息可能提前流入训练。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 313,
+      "section": "2.23 20条数据的80/20划分（讲义 p.23）",
+      "machine_message": "缩写“MAE”首用未识别到中文说明；人工核对",
+      "context": "💡 笔记补充的可复做结果：按这 16 行拟合带截距的一元最小二乘，斜率约 3.004894、截距约 0.429960；在四条验证记录上算 MAE≈0.312739、RMSE≈0.326192。输入是原表，模型与计算是笔记补充，不冒称课件给定答案；精确结果以本批 `calculations.json` 为准。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 313,
+      "section": "2.23 20条数据的80/20划分（讲义 p.23）",
+      "machine_message": "缩写“RMSE”首用未识别到中文说明；人工核对",
+      "context": "💡 笔记补充的可复做结果：按这 16 行拟合带截距的一元最小二乘，斜率约 3.004894、截距约 0.429960；在四条验证记录上算 MAE≈0.312739、RMSE≈0.326192。输入是原表，模型与计算是笔记补充，不冒称课件给定答案；精确结果以本批 `calculations.json` 为准。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 331,
+      "section": "2.25 K折交叉验证机制（讲义 p.25）",
+      "machine_message": "缩写“CV”首用未识别到中文说明；人工核对",
+      "context": "K 折交叉验证（K-fold cross-validation，CV）把开发数据分成 K 个互不重叠的折（Fold）。每轮拿一折验证、其余 K−1 折训练；重新拟合 K 次，让每条记录恰好验证一次。原图每行一次运行，灰块向右轮换，白块是该轮训练；每轮得到一个 $e_k$。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 349,
+      "section": "2.25 K折交叉验证机制（讲义 p.25）",
+      "machine_message": "“标准化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+      "context": "从一轮沿图走：验证折不能参与填补或标准化的拟合；下一轮验证折更换后，预处理也跟着重新拟合。循环结束是所有候选按固定规则比较完毕，不是不断换分折直到出现高分。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 407,
+      "section": "2.31 Quiz I三折划分（讲义 p.31）",
+      "machine_message": "缩写“RID”首用未识别到中文说明；人工核对",
+      "context": "本题要求设计三折划分，不是要求找最佳预测模型。RID（Record ID）只是记录编号；X、Y 必须按同一 RID 配对。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 448,
+      "section": "2.31 Quiz I三折划分（讲义 p.31）",
+      "machine_message": "缩写“MAE”首用未识别到中文说明；人工核对",
+      "context": "💡 改条件检查：若 RID 代表按时间排序的观测、任务又要求预测未来，上表第 1 轮用未来训过去就不合适，需改滚动评价。为了复做机制，本批额外在这三轮分别拟合一元回归，MAE≈0.361980、0.384741、0.382425；这些不是本题要求，也不是官方给定成绩。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 494,
+      "section": "2.36 早停与最佳复杂度（讲义 p.36）",
+      "machine_message": "缩写“RMSE”首用未识别到中文说明；人工核对",
+      "context": "早停（Early stopping / Early termination）用验证表现选择停止训练的时机。原图红虚线训练 RMSE 持续降，蓝线验证 RMSE 先降后升，箭头落在蓝线最低附近；横轴标 Model Complexity，不是已确认的训练 epoch，所以不能把约 250 直接解释为本课固定最佳轮数。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 568,
+      "section": "2.43 超参数与参数（讲义 p.43）",
+      "machine_message": "“超参数”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+      "context": "超参数（Hyperparameter）在拟合前约定学习过程的限制，例如最大深度、叶子最少样本数。模型参数（Model parameter）则由训练过程估计，例如回归系数，以及训练树在限制内选出的特征和阈值。两者都要根据来源地位区分，不能因都叫 parameter 就共用评价数据。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 570,
+      "section": "2.43 超参数与参数（讲义 p.43）",
+      "machine_message": "缩写“NO”首用未识别到中文说明；人工核对",
+      "context": "原图例从婚姻状态（MarSt）分：Married→NO；Single／Divorced→Home Owner；有房→NO，无房再看 Income；低于 80K→NO、高于 80K→YES。原图未定义 Income 恰为 80K 的分支，不补造原规则。YES／NO 的目标业务含义在本页也未交代，不能擅自写成是否欺诈。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 570,
+      "section": "2.43 超参数与参数（讲义 p.43）",
+      "machine_message": "缩写“YES”首用未识别到中文说明；人工核对",
+      "context": "原图例从婚姻状态（MarSt）分：Married→NO；Single／Divorced→Home Owner；有房→NO，无房再看 Income；低于 80K→NO、高于 80K→YES。原图未定义 Income 恰为 80K 的分支，不补造原规则。YES／NO 的目标业务含义在本页也未交代，不能擅自写成是否欺诈。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 586,
+      "section": "2.44 网格与随机搜索（讲义 p.44）",
+      "machine_message": "“超参数”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+      "context": "网格搜索（Grid search）枚举事先列出的超参数组合；随机搜索（Randomized search）按预定分布抽指定数量组合。两者每个组合都应配相同交叉验证，而不是直接拿训练分数排序。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 598,
+      "section": "2.45 三份数据的角色（讲义 p.45）",
+      "machine_message": "缩写“TRAIN”首用未识别到中文说明；人工核对",
+      "context": "原图把总数据切成黄 TRAIN、浅色 VALIDATION、绿 TEST 三段，分别向下连 Train multiple Models、Validate Models、Evaluate Model。三段不是三个同义名称：训练拟合多个候选，验证选其中一个，测试只评价冻结结果。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 598,
+      "section": "2.45 三份数据的角色（讲义 p.45）",
+      "machine_message": "缩写“VALIDATION”首用未识别到中文说明；人工核对",
+      "context": "原图把总数据切成黄 TRAIN、浅色 VALIDATION、绿 TEST 三段，分别向下连 Train multiple Models、Validate Models、Evaluate Model。三段不是三个同义名称：训练拟合多个候选，验证选其中一个，测试只评价冻结结果。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 598,
+      "section": "2.45 三份数据的角色（讲义 p.45）",
+      "machine_message": "缩写“TEST”首用未识别到中文说明；人工核对",
+      "context": "原图把总数据切成黄 TRAIN、浅色 VALIDATION、绿 TEST 三段，分别向下连 Train multiple Models、Validate Models、Evaluate Model。三段不是三个同义名称：训练拟合多个候选，验证选其中一个，测试只评价冻结结果。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 622,
+      "section": "2.47 为什么普通CV不够（讲义 p.47）",
+      "machine_message": "缩写“CV”首用未识别到中文说明；人工核对",
+      "context": "中文读题：普通 CV 当然可以调参；问题是同一 CV 选出的最高分，能否同时充当这套选模过程未受选择影响的最终成绩。试的组合越多，越可能选中偶然适合这些验证折的配置。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 628,
+      "section": "2.48 选择偏差与数据泄漏（讲义 p.48）",
+      "machine_message": "“超参数”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+      "context": "本页给出前页问题的原因：验证成绩参与了选超参数，所以赢家已间接适应该验证数据。这里的“看见”是通过分数反馈，不需要把验证标签直接塞进梯度；这也会带来选择偏差（Selection bias）。数据泄漏（Data leakage）还包括全表标准化、提前筛特征或时间穿越等情形。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 628,
+      "section": "2.48 选择偏差与数据泄漏（讲义 p.48）",
+      "machine_message": "“数据泄漏”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+      "context": "本页给出前页问题的原因：验证成绩参与了选超参数，所以赢家已间接适应该验证数据。这里的“看见”是通过分数反馈，不需要把验证标签直接塞进梯度；这也会带来选择偏差（Selection bias）。数据泄漏（Data leakage）还包括全表标准化、提前筛特征或时间穿越等情形。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 628,
+      "section": "2.48 选择偏差与数据泄漏（讲义 p.48）",
+      "machine_message": "“标准化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+      "context": "本页给出前页问题的原因：验证成绩参与了选超参数，所以赢家已间接适应该验证数据。这里的“看见”是通过分数反馈，不需要把验证标签直接塞进梯度；这也会带来选择偏差（Selection bias）。数据泄漏（Data leakage）还包括全表标准化、提前筛特征或时间穿越等情形。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 630,
+      "section": "2.48 选择偏差与数据泄漏（讲义 p.48）",
+      "machine_message": "缩写“CV”首用未识别到中文说明；人工核对",
+      "context": "💡 笔记补充：两个实际上相近的候选在这次 CV 得 0.80 和 0.84，不能因此断言赢家真实能力就是 0.84。外层留出的数据只评价内层挑选后的流程；这样才能把调参与评价职责分开。不是禁止 CV 调参，而是禁止把参与选择的数据伪装为独立证明。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 636,
+      "section": "2.49 课件所称嵌套流程（讲义 p.49）",
+      "machine_message": "缩写“CV”首用未识别到中文说明；人工核对",
+      "context": "本页标题称 Nested-Cross Validation，但图实际画“单次外部留出＋内部 CV”。它体现内外隔离原则，却没有画外层 K 折轮换。通常完整嵌套交叉验证（Nested cross-validation）在每个外层训练折内重新内层搜索，再仅在该外层测试折评价，最后汇总外层分数。不能把内层五折误写成五个独立最终测试。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 656,
+      "section": "2.51 内层步骤1至6（讲义 p.51）",
+      "machine_message": "“超参数”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+      "context": "本页六步给内部循环的展开：1 先分开发／测试；2 开发侧分 K 折；3 取 K−1 折训练；4 余一折验证；5 对指定超参数记录该轮表现；6 轮换直到每折都验证过一次。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 668,
+      "section": "2.52 内层步骤7至10（讲义 p.52）",
+      "machine_message": "缩写“MAE”首用未识别到中文说明；人工核对",
+      "context": "💡 笔记补充：两个候选各做二折，A 的 MAE 为 2、4，B 为 3、3，均值都为 3；A 的折间变化较大，但没有通用规则保证 B 未来必胜。应事先约定平局与复杂度偏好，不能看测试后再决定怎样打破平局。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 707,
+      "section": "2.55 Lasso与超参数（讲义 p.55）",
+      "machine_message": "缩写“L1”首用未识别到中文说明；人工核对",
+      "context": "Lasso 用绝对值惩罚（L1 penalty）。设 b 为不惩罚的截距，p 个斜率为 $a_j$，第 i 条输入为 $x_{ij}$。预测是 $b+\\sum_j a_jx_{ij}$，目标为",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 711,
+      "section": "2.55 Lasso与超参数（讲义 p.55）",
+      "machine_message": "“标准化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+      "context": "前半是训练平方误差，后半对每个斜率的绝对值收费；$\\lambda\\ge0$ 控制收费强度。$\\lambda=0$ 回到普通最小二乘；在常见设置中，足够强的 L1 惩罚可把部分斜率精确压到 0，形成稀疏（Sparsity）模型。它不是“哪个系数方差大就直接删哪个”的固定规则；结果依赖尺度、特征相关性与损失收益。通常在训练折内标准化以使惩罚尺度可比较。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 729,
+      "section": "2.56 Ridge与原图勘误（讲义 p.56）",
+      "machine_message": "缩写“L2”首用未识别到中文说明；人工核对",
+      "context": "Ridge 用平方惩罚（L2 penalty）$R(a)=\\sum_{j=1}^p a_j^2$。本页目标在训练平方误差后加 $\\frac\\lambda2\\sum_j a_j^2$；乘 1/2 是这里的缩放约定，相同数值 lambda 在另一损失缩放中未必同强度。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 735,
+      "section": "2.56 Ridge与原图勘误（讲义 p.56）",
+      "machine_message": "“标准化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+      "context": "原图写 “Force some coefficients to be 0”，容易把 Ridge 与 Lasso 混淆，按上例应勘误为通常缩小系数。也不惩罚截距 b；标准化的均值／尺度必须在当前训练折拟合。🔗 目标与区别参见 [scikit-learn Ridge](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html)，获取于 2026-11-18。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 779,
+      "section": "2.60 悲观误差定义（讲义 p.60）",
+      "machine_message": "“超参数”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+      "context": "分母是一整棵树的训练记录数；k 数叶子，不数内部判断节点。$\\Omega$ 是预定或验证选择的超参数。左右树若用不同训练样本就不能只凭此值公平比较。本式是课件给定的启发式惩罚准则，不保证等于未来总体错误率；[[#2.61 左右树的24条算例（讲义 p.61）|下一页 p.61]] 用同样 24 条记录完成逐叶错数、代入与选择。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 838,
+      "section": "2.64 后剪枝30条算例（讲义 p.64）",
+      "machine_message": "缩写“A1”首用未识别到中文说明；人工核对",
+      "context": "分裂成 A1–A4 后，各叶给定计数如下。按多数类作预测，四叶错误为 4、3、1、1，合计 9：",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 838,
+      "section": "2.64 后剪枝30条算例（讲义 p.64）",
+      "machine_message": "缩写“A4”首用未识别到中文说明；人工核对",
+      "context": "分裂成 A1–A4 后，各叶给定计数如下。按多数类作预测，四叶错误为 4、3、1、1，合计 9：",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 847,
+      "section": "2.64 后剪枝30条算例（讲义 p.64）",
+      "machine_message": "缩写“PRUNE”首用未识别到中文说明；人工核对",
+      "context": "分裂后虽然训练误差从 10/30 降到 9/30，惩罚代价却为 $(9+4\\times0.5)/30=11/30\\approx0.3667$，大于不分裂的 0.35，所以按本规则剪回单叶。原图 “PRUNE!” 是给定结论；本批已逐叶复算，不把它改写为独立测试的真实成绩。💡 若每叶惩罚为 0，则训练错误更少的分裂方案获选，说明结论依赖所定准则。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 859,
+      "section": "2.66 簇内近与簇间远（讲义 p.66）",
+      "machine_message": "“聚类”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+      "context": "聚类评价先看选定表示和距离下，同簇对象是否接近、不同簇是否分开。原图三团点以红圈标簇，左侧橙箭头指同一红圈内部，右侧橙箭头跨两个不同红圈；不要把红圈理解成已提供的真实类别边界。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 881,
+      "section": "2.68 Kmeans的SSE（讲义 p.68）",
+      "machine_message": "缩写“SSE”首用未识别到中文说明；人工核对",
+      "context": "💡 笔记补充：一维点 0、2 分一簇，均值为 1；点 8、10 分另一簇，均值为 9。每点离中心 1，四个平方相加 SSE=4。同一组成员用均值使平方误差和最小，故中心不能凭目测任放。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6b",
+      "line": 891,
+      "section": "2.69 凝聚度与分离度（讲义 p.69）",
+      "machine_message": "一句 4 个术语（凝聚度、Cohesion、WSS、SSE、分离度、Separation、BSS）：凝聚度（Cohesion）问同簇点有多近，本页用簇内平方和 WSS（Wi…",
+      "context": "凝聚度（Cohesion）问同簇点有多近，本页用簇内平方和 WSS（Within-cluster sum of squares），等同这里的 SSE；分离度（Separation）问各簇中心有多远离整体中心，用簇间平方和 BSS（Between-cluster sum of squares）。原页标题 “Inner distance & intra distance” 用词不规范，正文以 within／between 及公式为准。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6b"
+    },
+    {
+      "code": "R6d",
+      "line": 891,
+      "section": "2.69 凝聚度与分离度（讲义 p.69）",
+      "machine_message": "缩写“WSS”首用未识别到中文说明；人工核对",
+      "context": "凝聚度（Cohesion）问同簇点有多近，本页用簇内平方和 WSS（Within-cluster sum of squares），等同这里的 SSE；分离度（Separation）问各簇中心有多远离整体中心，用簇间平方和 BSS（Between-cluster sum of squares）。原页标题 “Inner distance & intra distance” 用词不规范，正文以 within／between 及公式为准。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 891,
+      "section": "2.69 凝聚度与分离度（讲义 p.69）",
+      "machine_message": "缩写“SSE”首用未识别到中文说明；人工核对",
+      "context": "凝聚度（Cohesion）问同簇点有多近，本页用簇内平方和 WSS（Within-cluster sum of squares），等同这里的 SSE；分离度（Separation）问各簇中心有多远离整体中心，用簇间平方和 BSS（Between-cluster sum of squares）。原页标题 “Inner distance & intra distance” 用词不规范，正文以 within／between 及公式为准。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 891,
+      "section": "2.69 凝聚度与分离度（讲义 p.69）",
+      "machine_message": "缩写“BSS”首用未识别到中文说明；人工核对",
+      "context": "凝聚度（Cohesion）问同簇点有多近，本页用簇内平方和 WSS（Within-cluster sum of squares），等同这里的 SSE；分离度（Separation）问各簇中心有多远离整体中心，用簇间平方和 BSS（Between-cluster sum of squares）。原页标题 “Inner distance & intra distance” 用词不规范，正文以 within／between 及公式为准。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 897,
+      "section": "2.69 凝聚度与分离度（讲义 p.69）",
+      "machine_message": "缩写“TSS”首用未识别到中文说明；人工核对",
+      "context": "沿用 0、2／8、10 两簇：整体均值 5，WSS=4；两中心分别 1、9，各簇 2 点，所以 BSS=$2(1-5)^2+2(9-5)^2=64$。全体对总均值的总平方和 TSS=$25+9+9+25=68$，恰有 TSS=WSS+BSS。这个分解要求均值中心、平方欧氏距离、互斥穷尽的分组；不直接套到任意密度噪声标签或非欧氏距离。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 905,
+      "section": "2.70 管线评价分隔（讲义 p.70）",
+      "machine_message": "缩写“BDA”首用未识别到中文说明；人工核对",
+      "context": "目录转入 Evaluate BDA pipeline。前面选单个模型的办法仍有用，但此后比较对象扩大为从业务、数据到部署的整条分析管线，不能把更低离线误差自动等同业务收益。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 911,
+      "section": "2.71 CRISP-DM管线（讲义 p.71）",
+      "machine_message": "缩写“MAE”首用未识别到中文说明；人工核对",
+      "context": "沿绿色实线看推进：业务与数据理解相互对照，再到准备、建模、评价、部署。红色虚线回到前面环节，表示评价可暴露业务定义或数据处理的问题，流程并非一次直走。比如需求预测 MAE 下降，却因订货延迟仍缺货，问题可能要返回业务和部署环节，而非继续堆模型层数。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 925,
+      "section": "2.72 深度结构怎样比较（讲义 p.72）",
+      "machine_message": "缩写“LSTM”首用未识别到中文说明；人工核对",
+      "context": "左图下方数据源含气象、事件、销量、库存等，输入 $x_1\\ldots x_t$ 进入编码器（Encoder）的 LSTM 状态链；时间注意力（Temporal attention）给不同历史表示分配读取权重。未来外生因素经嵌入（Embedding，转成可供网络使用的数值表示），再拼接（Concat，把数值表示接成一份输入）送到上方解码器（Decoder），逐步产生 $y_1\\ldots y_T$。天气预报、节假日等未来因素必须是预测起点已能获得的输入，未来实际天气不能冒充当时已知。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6b",
+      "line": 959,
+      "section": "2.75 五阶段实验环（讲义 p.75）",
+      "machine_message": "一句 6 个术语，核对是否需要拆解（THE、FIVE、STAGES、TO、EXPERIMENTAL、FRAMEWORK）：原环图中心写 “THE FIVE STAGES TO THE EXPER…",
+      "context": "原环图中心写 “THE FIVE STAGES TO THE EXPERIMENTAL FRAMEWORK”，顺时针为确定要改善的转化（Determine conversion to improve）→提出改变假设（Hypothesize change）→识别变量并建变体（Identify the variables and create variations）→运行实验（Run experiment）→测结果（Measure results）。箭头回到起点，表示一轮结果可启发下一轮。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6b"
+    },
+    {
+      "code": "R6d",
+      "line": 959,
+      "section": "2.75 五阶段实验环（讲义 p.75）",
+      "machine_message": "缩写“THE”首用未识别到中文说明；人工核对",
+      "context": "原环图中心写 “THE FIVE STAGES TO THE EXPERIMENTAL FRAMEWORK”，顺时针为确定要改善的转化（Determine conversion to improve）→提出改变假设（Hypothesize change）→识别变量并建变体（Identify the variables and create variations）→运行实验（Run experiment）→测结果（Measure results）。箭头回到起点，表示一轮结果可启发下一轮。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 959,
+      "section": "2.75 五阶段实验环（讲义 p.75）",
+      "machine_message": "缩写“FIVE”首用未识别到中文说明；人工核对",
+      "context": "原环图中心写 “THE FIVE STAGES TO THE EXPERIMENTAL FRAMEWORK”，顺时针为确定要改善的转化（Determine conversion to improve）→提出改变假设（Hypothesize change）→识别变量并建变体（Identify the variables and create variations）→运行实验（Run experiment）→测结果（Measure results）。箭头回到起点，表示一轮结果可启发下一轮。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 959,
+      "section": "2.75 五阶段实验环（讲义 p.75）",
+      "machine_message": "缩写“STAGES”首用未识别到中文说明；人工核对",
+      "context": "原环图中心写 “THE FIVE STAGES TO THE EXPERIMENTAL FRAMEWORK”，顺时针为确定要改善的转化（Determine conversion to improve）→提出改变假设（Hypothesize change）→识别变量并建变体（Identify the variables and create variations）→运行实验（Run experiment）→测结果（Measure results）。箭头回到起点，表示一轮结果可启发下一轮。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 959,
+      "section": "2.75 五阶段实验环（讲义 p.75）",
+      "machine_message": "缩写“TO”首用未识别到中文说明；人工核对",
+      "context": "原环图中心写 “THE FIVE STAGES TO THE EXPERIMENTAL FRAMEWORK”，顺时针为确定要改善的转化（Determine conversion to improve）→提出改变假设（Hypothesize change）→识别变量并建变体（Identify the variables and create variations）→运行实验（Run experiment）→测结果（Measure results）。箭头回到起点，表示一轮结果可启发下一轮。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 959,
+      "section": "2.75 五阶段实验环（讲义 p.75）",
+      "machine_message": "缩写“EXPERIMENTAL”首用未识别到中文说明；人工核对",
+      "context": "原环图中心写 “THE FIVE STAGES TO THE EXPERIMENTAL FRAMEWORK”，顺时针为确定要改善的转化（Determine conversion to improve）→提出改变假设（Hypothesize change）→识别变量并建变体（Identify the variables and create variations）→运行实验（Run experiment）→测结果（Measure results）。箭头回到起点，表示一轮结果可启发下一轮。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 959,
+      "section": "2.75 五阶段实验环（讲义 p.75）",
+      "machine_message": "缩写“FRAMEWORK”首用未识别到中文说明；人工核对",
+      "context": "原环图中心写 “THE FIVE STAGES TO THE EXPERIMENTAL FRAMEWORK”，顺时针为确定要改善的转化（Determine conversion to improve）→提出改变假设（Hypothesize change）→识别变量并建变体（Identify the variables and create variations）→运行实验（Run experiment）→测结果（Measure results）。箭头回到起点，表示一轮结果可启发下一轮。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 973,
+      "section": "2.76 先固定KPI与版本（讲义 p.76）",
+      "machine_message": "缩写“KPI”首用未识别到中文说明；人工核对",
+      "context": "中文意思：先确定关键绩效指标（Key performance indicator，KPI）和被测试版本。💡 笔记补充：若目标是减少客服等待，可以固定主指标为每位进入队列用户的等待秒数，A 为现行路由、B 为新路由；分母、观察窗口、超时／放弃规则与日志缺失处理要两组一致。若只统计成功接通者，可能漏掉最久而放弃的人。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 1064,
+      "section": "2.80 检验差异及不确定性（讲义 p.80）",
+      "machine_message": "缩写“NIST”首用未识别到中文说明；人工核对",
+      "context": "🔗 均值差与检验公式参见 [NIST 双样本 t 检验](https://www.itl.nist.gov/div898/handbook/eda/section3/eda353.htm)，获取于 2026-11-18。点击率等比例指标、重复用户或按群随机需另按其数据结构选分析，不把本页独立均值公式直接套过去。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 1119,
+      "section": "2.84 三种收益管理方案（讲义 p.84）",
+      "machine_message": "缩写“RM”首用未识别到中文说明；人工核对",
+      "context": "整体收益管理（Revenue management，RM）先收集数据、细分客户，再预测各群订房需求。本页列三个候选：(a) 针对各群分别建回归；(b) 用全部客户建一份回归，把群 ID 编成虚拟变量（Dummy variable）；(c) 不使用群信息的一份整体回归。源表 (a) 写 “for one segment”，实际对整体使用要为相关群分别建模并覆盖所有评价对象。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 1132,
+      "section": "2.84 三种收益管理方案（讲义 p.84）",
+      "machine_message": "缩写“MAE”首用未识别到中文说明；人工核对",
+      "context": "原最后一步 “Evaluate overall performance among (a) (b) (c).” 要求整体比较。固定同一批未来客户、同一目标／单位，先对每条生成预测，再统一算误差；不能把每群 MAE 不加权平均后与整体客户 MAE 混比。💡 补充：若群一 90 人 MAE=1、群二 10 人 MAE=9，按客户整体 MAE 为 $(90\\times1+10\\times9)/100=1.8$，等权群均值为 5，二者回答不同问题。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R6d",
+      "line": 1134,
+      "section": "2.84 三种收益管理方案（讲义 p.84）",
+      "machine_message": "“聚类”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+      "context": "分群本身也必须只在开发／训练数据拟合，再把新客户按同一规则分配，避免全表聚类把未来信息带回训练。最终若关心利润或房间利用率，还需评价预订决策、容量与成本，而不仅是回归误差。原页未给数据，不能替 (a)／(b)／(c) 判定赢家。",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R6d"
+    },
+    {
+      "code": "R4f",
+      "line": 422,
+      "section": "2.31 Quiz I三折划分（讲义 p.31）",
+      "machine_message": "表头“RID”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+      "context": "| RID | X | Y |",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R4f"
+    },
+    {
+      "code": "R4f",
+      "line": 422,
+      "section": "2.31 Quiz I三折划分（讲义 p.31）",
+      "machine_message": "表头“X”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+      "context": "| RID | X | Y |",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R4f"
+    },
+    {
+      "code": "R4f",
+      "line": 422,
+      "section": "2.31 Quiz I三折划分（讲义 p.31）",
+      "machine_message": "表头“Y”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+      "context": "| RID | X | Y |",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R4f"
+    },
+    {
+      "code": "R4f",
+      "line": 438,
+      "section": "2.31 Quiz I三折划分（讲义 p.31）",
+      "machine_message": "表头“训练RID”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+      "context": "| 轮次 | 训练 RID | 验证 RID |",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R4f"
+    },
+    {
+      "code": "R4f",
+      "line": 438,
+      "section": "2.31 Quiz I三折划分（讲义 p.31）",
+      "machine_message": "表头“验证RID”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+      "context": "| 轮次 | 训练 RID | 验证 RID |",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R4f"
+    },
+    {
+      "code": "R4f",
+      "line": 840,
+      "section": "2.64 后剪枝30条算例（讲义 p.64）",
+      "machine_message": "表头“Yes／No”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+      "context": "| 叶 | Yes／No | 预测类 | 错分条数 |",
+      "disposition": "retained_after_context_review",
+      "rationale_group": "R4f"
+    }
+  ]
+}

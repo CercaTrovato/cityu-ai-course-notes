@@ -1,0 +1,507 @@
+--- candidate.md
++++ candidate-v2.md
+@@ -1,6 +1,9 @@
+ ---
+ course: EF5560
+-type: practice-exam-learning-analysis
++type: practice-guide
++assignment: Practice-Exam-B-learning-analysis
++readability_rules: v2
++teaching_standard: novice-v1
+ status: draft
+ learning_status: author-checked-independent-review-pending
+ official_solution: not_verified
+@@ -9,7 +12,16 @@
+ 
+ # Practice Examination B · 完整题面与中英学习解析
+ 
+-## 阅读入口与状态
++## 0. 三分钟速览
++
++这是一份按原题条件推理的参考学习稿，不是官方答案或学生提交稿。
++
++- A区16题：每题保留A–D并逐项解释。
++- B区4题、C区2题：每题各两小问，分别给中文过程与英文参考作答。
++- 共22大题、28作答单元；原卷14页全部保留，13–14为草稿纸。
++- 预习看§1及§2当地解释；课中/复做按§8定位；复习用§3–§7，不替本人勾选已学会或已交。
++
++## 1. 阅读入口与状态
+ 
+ 这份卷子给出预测、风险、支付与代币化的情境，要你辨别证据、解释业务流程并复算数字。全卷22题：A区16道选择题（每题2.5分，共40分）；B区4道简答、各含(a)(b)（共40分）；C区2道计算、各含(a)(b)（共20分）。实际作答单元为16+8+4=28。以下逐页保留英文题面及全部选项，再给中文题意、各选项/各小问解析与英文参考作答。
+ 
+@@ -19,10 +31,10 @@
+ 
+ 读法：首次顺读各页；练习时先关解析自己做；复习先用末尾答案索引定位，再重做改条件题。未假定你懂金融或大学统计，必要定义在题旁补足。以下金融讨论只针对假设题面与学习概念，不认证任何产品现行条款、储备或个人投资建议。
+ 
+-## 按页对照
+-
+-
+-## p.1 · 封面与卷面规则
++## 2. 按原页对照 · 原题与学习解析
++
++
++### 2.1 p.1 · 封面与卷面规则
+ 
+ 
+ ![练习卷B物理p.1](figures/practice-exam-b/page-01.png)
+@@ -77,7 +89,7 @@
+ 本页行政要求已在阅读入口逐项解释；座位号/Student ID字段保持空白，不填写或提交。
+ 
+ 
+-## p.2 · 题面与解析
++### 2.2 p.2 · 题面与解析
+ 
+ 
+ ![练习卷B物理p.2](figures/practice-exam-b/page-02.png)
+@@ -127,7 +139,7 @@
+ </details>
+ 
+ 
+-### A1 · 显著性不等于预测比赛
++#### 2.2.1 A1 · 显著性不等于预测比赛
+ 
+ **参考答案 A。** 市场收益的斜率（slope）描述市场收益变动与目标收益的拟合关系。p 值（p-value）是在零斜率假设和检验条件下，观察到当前或更极端统计量的概率，不是模型获胜的概率。因为 0.12 大于 0.05，不能在 5% 水平拒绝零斜率；这也不证明斜率恰好为零。测试样本（test sample）的平方误差是实际收益减预测收益后平方，再在相同样本汇总，越小代表这批预测越准。MA12 是题给比较基准；本题不需也不能猜其具体构造。
+ 
+@@ -135,7 +147,7 @@
+ 
+ English reference: **A. The slope is not significant at the 5% level, but the model has lower squared forecast error than MA12 in this test sample. Neither result guarantees future performance.**
+ 
+-### A2 · 超额收益减谁？
++#### 2.2.2 A2 · 超额收益减谁？
+ 
+ **参考答案 B，−0.64%。** 超额收益（excess return）是股票收益减同期匹配的无风险收益，不是减市场收益。两种“减法”回答不同问题。
+ 
+@@ -145,7 +157,7 @@
+ 
+ English reference: **B. The target is the stock's excess return, −0.60% − 0.04% = −0.64%, rather than its return relative to the market.**
+ 
+-### A3 · 样本内解释度
++#### 2.2.3 A3 · 样本内解释度
+ 
+ **参考答案 B。** 决定系数（R-squared，$R^2$）把残差平方和 SSE 与同一目标的总变动 SST 比较：
+ 
+@@ -158,7 +170,7 @@
+ English reference: **B. With the same dependent variable and observations, X has the lower in-sample residual sum of squares. These figures alone do not establish superior future forecasts.**
+ 
+ 
+-## p.3 · 题面与解析
++### 2.3 p.3 · 题面与解析
+ 
+ 
+ ![练习卷B物理p.3](figures/practice-exam-b/page-03.png)
+@@ -210,7 +222,7 @@
+ </details>
+ 
+ 
+-### A4 · 弯曲的是模型预测，不是因果
++#### 2.3.1 A4 · 弯曲的是模型预测，不是因果
+ 
+ **参考答案 D。** 动量（momentum）在此是模型的一个输入，可理解为过去价格走势的强弱指标。保持其他输入固定，只改变动量，输出先升后降，说明模型预测对动量的反应随动量水平改变。这是非线性拟合（nonlinear fit）的线索。
+ 
+@@ -218,7 +230,7 @@
+ 
+ English reference: **D. The fitted response depends on momentum's level. This prediction curve alone establishes neither causality nor a guaranteed trading profit.**
+ 
+-### A5 · 最大回撤要从此前最高点算
++#### 2.3.2 A5 · 最大回撤要从此前最高点算
+ 
+ **参考答案 D，25%。** 最大回撤（maximum drawdown）找的是历史高点到其后低点的最大比例下跌，不是从期初到期末。对每个时点，先记“到这里为止最高有多少钱”，再比较当前财富。
+ 
+@@ -233,16 +245,20 @@
+ 
+ English reference: **D. Maximum drawdown is (120−90)/120 = 25%. The later recovery to 110 does not erase the earlier peak-to-trough loss.**
+ 
+-### A6 · CAPM 的市场要与持仓相配
+-
+-**参考答案 B。** 资本资产定价模型（Capital Asset Pricing Model，CAPM）的评估回归可写成 $r_p-r_f=\alpha+\beta(r_m-r_f)+\epsilon$。$r_p$ 是组合收益，$r_f$ 是同期无风险收益，$r_m$ 是市场收益。$\beta$ 描述市场暴露，$\alpha$ 是控制这项暴露后剩余的平均表现；不是保证未来额外赚钱。
++#### 2.3.3 A6 · CAPM 的市场要与持仓相配
++
++**参考答案 B。** 资本资产定价模型（Capital Asset Pricing Model，CAPM）的评估回归可写成 $r_p-r_f=\alpha+\beta(r_m-r_f)+\epsilon$。
++
++$r_p$ 是组合收益，$r_f$ 是同期无风险收益，$r_m$ 是市场收益。
++
++$\beta$ 描述市场暴露，$\alpha$ 是控制这项暴露后剩余的平均表现；不是保证未来额外赚钱。
+ 
+ A 说所有 CAPM 必须用美国标普500，不成立。B 用恒生市场超额收益并匹配频率、无风险口径，符合题目香港股票与本地比较。C 用组合自己作市场，会把待评对象当基准，不能回答超越相关市场暴露的问题。D 先减自己样本均值使平均机械归零，不是估计市场调整 alpha。
+ 
+ English reference: **B. Use the Hang Seng market excess return with matching return frequency and risk-free conventions so that alpha is assessed relative to the portfolio's relevant local market exposure.**
+ 
+ 
+-## p.4 · 题面与解析
++### 2.4 p.4 · 题面与解析
+ 
+ 
+ ![练习卷B物理p.4](figures/practice-exam-b/page-04.png)
+@@ -289,7 +305,7 @@
+ </details>
+ 
+ 
+-### A7 · 总融资上限不是每家银行各一份
++#### 2.4.1 A7 · 总融资上限不是每家银行各一份
+ 
+ **参考答案 C，最多人民币20万元。** 应收账款（receivable）是客户欠出口商但还未支付的钱。预付融资比例上限（advance cap）限制各银行合计可借出多少，不代表债务人一定还得起。
+ 
+@@ -299,7 +315,7 @@
+ 
+ English reference: **C. The aggregate cap is RMB800,000, leaving at most RMB200,000 after Bank A's financing. Verification and headroom do not establish repayment capacity.**
+ 
+-### A8 · 文件没变，不等于没重复借钱
++#### 2.4.2 A8 · 文件没变，不等于没重复借钱
+ 
+ **参考答案 C。** 哈希（hash）可用于比对文件内容是否改变；同一张未改的发票仍可能被拿到两家银行融资。要发现重复融资（duplicate financing），必须把这笔应收款的身份与尚未清偿融资余额联系起来，并由放款银行持续更新。
+ 
+@@ -307,7 +323,7 @@
+ 
+ English reference: **C. The bank needs an up-to-date shared record of outstanding financing against the same receivable. File integrity or extra signatures alone do not reveal duplicate borrowing.**
+ 
+-### A9 · 流程改善、信用风险与因果分开
++#### 2.4.3 A9 · 流程改善、信用风险与因果分开
+ 
+ **参考答案 A。** 处理时间从40到25分钟，少15分钟，即15/40=37.5%。对账案例比例从12%到4%，下降8个百分点。违约率从2.0%到2.1%，增加0.1个百分点，不是下降。没有对照组（control group），不能排除客户组成、经济环境等其他变化。
+ 
+@@ -316,7 +332,7 @@
+ English reference: **A. Handling time and reconciliation rates improved in the observed pilot. The data do not establish lower credit risk or a causal ledger effect without a suitable comparison.**
+ 
+ 
+-## p.5 · 题面与解析
++### 2.5 p.5 · 题面与解析
+ 
+ 
+ ![练习卷B物理p.5](figures/practice-exam-b/page-05.png)
+@@ -365,7 +381,7 @@
+ </details>
+ 
+ 
+-### A10 · 收益来自底层资产，不来自转账次数
++#### 2.5.1 A10 · 收益来自底层资产，不来自转账次数
+ 
+ **参考答案 C。** 代币化（tokenization）改变基金份额的记录或转移方式，不自动改变底层资产赚什么钱。货币市场基金（money-market fund）在本题持有短期资产，其净投资收入来自底层资产收益扣基金费用。
+ 
+@@ -373,7 +389,7 @@
+ 
+ English reference: **C. Income comes from the underlying short-term assets after fund expenses. More token transfers do not themselves generate portfolio income.**
+ 
+-### A11 · 可成交价格才决定卖出所得
++#### 2.5.2 A11 · 可成交价格才决定卖出所得
+ 
+ **参考答案 A。** 净资产值（Net Asset Value，NAV）是每份对应的净资产参考值；买价（bid）是买方实际愿意接货的价。题给周末可执行买价99.70港元，卖500份、零费用：
+ 
+@@ -384,7 +400,7 @@
+ 
+ English reference: **A. Proceeds are HKD49,850 and the discount to reference NAV is 0.30%, with no fees.**
+ 
+-### A12 · 链上持有凭证与实物储备是两层
++#### 2.5.3 A12 · 链上持有凭证与实物储备是两层
+ 
+ **参考答案 C。** 账本能显示某地址有多少代币，但不能单凭余额证明金库里真的有相应黄金。托管（custody）说明谁保管实物；独立证据核数量与存在；赎回权（redemption rights）说明持有人依约究竟能请求什么。
+ 
+@@ -393,7 +409,7 @@
+ English reference: **C. Review custody records, independent evidence of gold holdings and contractual redemption rights. A valid token balance is not by itself proof of physical backing.**
+ 
+ 
+-## p.6 · 题面与解析
++### 2.6 p.6 · 题面与解析
+ 
+ 
+ ![练习卷B物理p.6](figures/practice-exam-b/page-06.png)
+@@ -456,7 +472,7 @@
+ </details>
+ 
+ 
+-### A13 · 价格折价可能来自时间与资金摩擦
++#### 2.6.1 A13 · 价格折价可能来自时间与资金摩擦
+ 
+ **参考答案 D。** 套利（arbitrage）在此指低价买入代币、按目标价赎回，想赚价差。但“可以申请赎回”不等于“立刻拿到银行现金”：截止时间、周末、资格和垫资成本都可能让价差暂时存在。
+ 
+@@ -464,7 +480,7 @@
+ 
+ English reference: **D. Redemption eligibility, settlement timing and funding costs may delay arbitrage, allowing a temporary discount even with adequate reserves.**
+ 
+-### A14 · 排得对不代表概率报得准
++#### 2.6.2 A14 · 排得对不代表概率报得准
+ 
+ **参考答案 D。** 排序（ranking）问谁风险更高：预测6%高于2%，实际3%也高于1%，顺序一致。校准（calibration）问“报2%的人群，长期是否约2%违约”；本题完整观察期中，两组实际率都只有预测的一半，提示预测偏高。仍需查样本量、估计不确定性、群体与时期变化，不凭两个比例证明永久偏差。
+ 
+@@ -472,7 +488,7 @@
+ 
+ English reference: **D. Risk ordering is correct, but default probabilities are overstated in the observed groups. Investigate calibration and reassess expected losses rather than treating ranking accuracy as sufficient.**
+ 
+-### A15 · 先算总损失，再分首损
++#### 2.6.3 A15 · 先算总损失，再分首损
+ 
+ **参考答案 A。** 贷款本金1,000美元、回收600美元，损失400美元。平台保证首笔100美元损失且题目明确履约，平台承担100，投资者承担剩余300。首损保证（first-loss guarantee）不是保证全部本金。
+ 
+@@ -482,7 +498,7 @@
+ 
+ English reference: **A. The total loss is USD400. The platform absorbs the guaranteed first USD100 and the investor bears the remaining USD300.**
+ 
+-### A16 · 愿意亏与能承受亏不是一回事
++#### 2.6.4 A16 · 愿意亏与能承受亏不是一回事
+ 
+ **参考答案 B。** 风险意愿（willingness）是心理上能否接受损失；承受损失能力（capacity for loss）还受必须付款的时间、现金储备等约束。六个月后要偿债，意味着这部分资金有很近的用途。
+ 
+@@ -491,7 +507,7 @@
+ English reference: **B. Review the six-month repayment need, liquidity and capacity for loss before assigning a high-risk allocation. Stated tolerance and automatic rebalancing do not guarantee the required cash.**
+ 
+ 
+-## p.7 · 题面与解析
++### 2.7 p.7 · 题面与解析
+ 
+ 
+ ![练习卷B物理p.7](figures/practice-exam-b/page-07.png)
+@@ -523,7 +539,7 @@
+ </details>
+ 
+ 
+-### B1(a) · 财年截止不是信息公开日（4分）
++#### 2.7.1 B1(a) · 财年截止不是信息公开日（4分）
+ 
+ **参考作答：12月31日只是报表覆盖期间的结束日，不保证当天已知报表数值。** 年报通常在期间结束后才公布；若把后来才公布的数据倒放到12月31日，会让模型使用未来信息，称为前视偏差（look-ahead bias）。题目未给实际发布日期，不能编出某个月某天。
+ 
+@@ -540,17 +556,21 @@
+ 
+ English reference: **31 December is the accounting period end, not necessarily the information release date. Verify the original publication timestamp and point-in-time version, allow for availability and trading timing, and use the predictor only in a decision made after it became available. Otherwise the exercise contains look-ahead bias.**
+ 
+-### B1(b) · 两项额外检查（6分）
++#### 2.7.2 B1(b) · 两项额外检查（6分）
+ 
+ 这里问 two other checks，不能把(a)“检查公告日”重复算一项。以下明确给两项，各带为什么。
+ 
+-1. **核原表数值、含义与单位。** 抽查AI提取结果与报告页；确认币种、元/千元/百万元、正负号、合并/单体口径与会计期间。缺失值不能当零。例如报告写收入500百万元，误录为500元，会把比率和模型输入缩小一百万倍。错误数据会使预测关系失真，不是换模型能补救。
++1. **核原表数值、含义与单位。** 抽查AI提取结果与报告页；确认币种、元/千元/百万元、正负号、合并/单体口径与会计期间。缺失值不能当零。
++
++例如报告写收入500百万元，误录为500元，绝对金额输入会缩小一百万倍。比率要另核分子、分母的单位：如果两边同样按一百万倍缩小，比率不变；如果只有分子缩小、分母保持原单位，比率才会缩小一百万倍。不能把单位错误对所有比率的影响一概而论。
++
++错误数据会使预测关系失真，不是换模型能补救。
+ 2. **核股票身份与目标收益对齐。** 检查公司/证券代码、周度日期、重复行、缺失行；确认特征接的是同一股票、决策后的那周收益，价格的分红拆股处理与收益定义一致。错接另一公司或用同期已实现收益，会让训练与评估回答错误问题。原始价格不应因拆股被误读为经济亏损。
+ 
+ English reference: **First, reconcile extracted values with the statements, including units, currency, sign, accounting scope and missing values; errors would distort predictors. Second, validate security identifiers, duplicate/missing rows and the alignment of each predictor with the correct subsequent weekly return, using a consistent corporate-action and return convention. This prevents false relationships caused by mismatched observations.**
+ 
+ 
+-## p.8 · 题面与解析
++### 2.8 p.8 · 题面与解析
+ 
+ 
+ ![练习卷B物理p.8](figures/practice-exam-b/page-08.png)
+@@ -580,7 +600,7 @@
+ </details>
+ 
+ 
+-### B2(a) · 树先分市场状态，再分动量（5分）
++#### 2.8.1 B2(a) · 树先分市场状态，再分动量（5分）
+ 
+ **参考作答：用波动率作分支，在每个分支内再按动量分组，叶节点可产生相反的收益模式。** 波动率（volatility）描述收益变动幅度；树（tree）的叶节点是满足一连串条件后给出的预测。分组门槛和预测值以下均为教学示意，不是题给估计。
+ 
+@@ -598,7 +618,7 @@
+ 
+ English reference: **A tree can split first on volatility and then on momentum within each regime. Its leaves can predict gains for high momentum in calm markets and losses for high momentum in volatile markets. An intercept change only shifts prediction levels; it cannot reverse a common momentum slope or create this interaction.**
+ 
+-### B2(b) · 非线性隐藏单元（5分）
++#### 2.8.2 B2(b) · 非线性隐藏单元（5分）
+ 
+ 先把两个输入按权重相加，再经过弯曲或截断的规则，最后把多个单元输出组合。例如一个隐藏单元（hidden unit）为 $h_j=\max(0,a_jm+b_jv+c_j)$，$m$ 是动量、$v$ 是波动率，$a_j,b_j,c_j$ 是训练时估计的参数；max取括号内两数的较大者，负数变0，正数保留。输出为 $\hat r=d+\sum_j w_jh_j$，即把各单元输出乘权重再相加。
+ 
+@@ -609,7 +629,7 @@
+ English reference: **Nonlinear hidden units transform weighted combinations of momentum and volatility; their outputs can be combined to approximate regime-dependent interactions. More units increase flexibility but can overfit noise, so they do not guarantee better future forecasts. Select complexity using appropriate time-ordered development/validation evidence and keep a later test sample separate.**
+ 
+ 
+-## p.9 · 题面与解析
++### 2.9 p.9 · 题面与解析
+ 
+ 
+ ![练习卷B物理p.9](figures/practice-exam-b/page-09.png)
+@@ -640,7 +660,7 @@
+ </details>
+ 
+ 
+-### B3(a) · 留存收入不是净利润（5分）
++#### 2.9.1 B3(a) · 留存收入不是净利润（5分）
+ 
+ 处理商先收商户支付额的3%，再向发卡行（issuer，发卡给消费者的银行）和网络（network，连接支付参与方的网络）分付。所有比例同以1,000美元支付额为基数：
+ 
+@@ -655,7 +675,7 @@
+ 
+ English reference: **The processor collects USD30 and passes on USD18 to the issuer and USD4 to the network, retaining USD8, or 0.8% of the payment. This is not profit because operating, risk and other costs still need to be deducted.**
+ 
+-### B3(b) · 固定收款金额，比较总付出与真正到账（5分）
++#### 2.9.2 B3(b) · 固定收款金额，比较总付出与真正到账（5分）
+ 
+ 题目固定 same recipient-currency amount，即两家银行都要让同一收款人收到同样多的收款币种金额。不能拿一笔收1000元、另一笔收980元的“低费率”直接比。
+ 
+@@ -668,7 +688,7 @@
+ English reference: **For the same net recipient-currency amount, compare the total sender-currency debit at a common quotation time, including fees and the effective exchange rate. Check eligibility, limits, cutoffs, settlement timing and any recipient deductions. Confirm when funds become available to the recipient and how failure or return is handled; a fast instruction or checkout confirmation is not necessarily completed payment.**
+ 
+ 
+-## p.10 · 题面与解析
++### 2.10 p.10 · 题面与解析
+ 
+ 
+ ![练习卷B物理p.10](figures/practice-exam-b/page-10.png)
+@@ -700,7 +720,7 @@
+ </details>
+ 
+ 
+-### B4(a) · 谁有资格、何时处理、何时到账分别读（5分）
++#### 2.10.1 B4(a) · 谁有资格、何时处理、何时到账分别读（5分）
+ 
+ **参考作答：原条款只允许获批商业客户申请赎回；不等于每位代币持有人都有直接权利。** 三处限定都改变答案：
+ 
+@@ -712,7 +732,7 @@
+ 
+ English reference: **The terms cover approved business customers, not every token holder. Next-business-day processing depends on the cutoff and business calendar, and processing a redemption is not the same as completed bank settlement. Eligibility, intermediary access and payment timing must be checked before promising cash availability.**
+ 
+-### B4(b) · 备份不能和主系统一起被一把钥匙打开（5分）
++#### 2.10.2 B4(b) · 备份不能和主系统一起被一把钥匙打开（5分）
+ 
+ 勒索软件（ransomware）可能加密或删除资料。若攻击者夺取管理员账户，就既能动实时资料，也能动由同一账户控制的备份。多复制一份、但仍用同一套高权限凭据，不构成故障独立的恢复来源。
+ 
+@@ -731,7 +751,7 @@
+ English reference: **A compromised administrator account could let ransomware alter or delete both live data and accessible backups. Keep offline or immutable copies under separated identities and restricted administration, retain clean historical versions, and test restoration in an isolated environment against stated recovery-point and recovery-time objectives. Shared credentials or untested copies do not establish recoverability.**
+ 
+ 
+-## p.11 · 题面与解析
++### 2.11 p.11 · 题面与解析
+ 
+ 
+ ![练习卷B物理p.11](figures/practice-exam-b/page-11.png)
+@@ -765,7 +785,7 @@
+ </details>
+ 
+ 
+-### C1(a) · 用建模时那把尺量新数据（5分）
++#### 2.11.1 C1(a) · 用建模时那把尺量新数据（5分）
+ 
+ 标准化（standardization）先减均值，再除标准差，让数值表示“比开发样本平均高几个标准差”。动量与波动率的均值分别2和4；标准差均为2；新值分别4和5。下面数值是特征自己的原单位，题面没说是百分数，不能添加%。标准化后的 z 没有原单位。
+ 
+@@ -775,7 +795,7 @@
+ 
+ English reference: **Standardized momentum is (4−2)/2 = 1 and standardized volatility is (5−4)/2 = 0.5. Stored development-sample scaling preserves the coordinate system used to fit the model and avoids using later information. Any legitimate re-estimation must use only information available at that time and refit the relevant pipeline.**
+ 
+-### C1(b) · 零系数的边界（5分）
++#### 2.11.2 C1(b) · 零系数的边界（5分）
+ 
+ 超额收益规则的截距为0.10%，标准化动量系数0.20%，波动率系数0。代入(a)：
+ 
+@@ -786,7 +806,7 @@
+ English reference: **The forecast excess return is 0.10% + 0.20%×1 = 0.30%. A zero volatility coefficient means no direct volatility contribution in this fitted penalized linear rule; it does not prove that volatility is universally irrelevant or has no nonlinear effect.**
+ 
+ 
+-## p.12 · 题面与解析
++### 2.12 p.12 · 题面与解析
+ 
+ 
+ ![练习卷B物理p.12](figures/practice-exam-b/page-12.png)
+@@ -821,7 +841,7 @@
+ </details>
+ 
+ 
+-### C2(a) · 溢价增发如何改变每股资产（5分）
++#### 2.12.1 C2(a) · 溢价增发如何改变每股资产（5分）
+ 
+ 净资产值（NAV）是资产减负债；每股NAV再除流通普通股数。此题无负债，忽略费用和比特币价格变化，因此只跟踪融资进来多少钱、股份增加多少。金额与股数统一用“百万美元”和“百万股”，相除得到美元/股。不是把现金新买的比特币再加一次资产，否则重复计数。
+ 
+@@ -835,7 +855,7 @@
+ 
+ English reference: **Before issuance NAV per share is USD80m/8m = USD10. Issuing 2m shares at USD12 raises USD24m, so post-issue NAV per share is USD104m/10m = USD10.40. Existing shareholders' NAV per share rises by USD0.40, or 4%, because issuance is above the pre-issue NAV.**
+ 
+-### C2(b) · 折价增发是另一方案，不再叠加(a)（5分）
++#### 2.12.2 C2(b) · 折价增发是另一方案，不再叠加(a)（5分）
+ 
+ Instead 表示回到同一初始状态，改为每股8美元发行同样200万股；不是在(a)后再发。所得资金16百万美元，资产96百万、股数10百万，**每股NAV为9.60美元，比原10美元低0.40美元，即−4%。**
+ 
+@@ -844,7 +864,7 @@
+ English reference: **In the alternative USD8 issue, proceeds are USD16m and NAV per share is USD96m/10m = USD9.60. Issuing below the original USD10 NAV dilutes existing shareholders' NAV per share; it is an alternative to, not a second issue after, part (a).**
+ 
+ 
+-## p.13 · 草稿纸
++### 2.13 p.13 · 草稿纸
+ 
+ 
+ ![练习卷B物理p.13](figures/practice-exam-b/page-13.png)
+@@ -866,7 +886,7 @@
+ 本页只写 SCRAP PAPER，无新增题目、选项或答案；保留页身份，不虚构额外两题。
+ 
+ 
+-## p.14 · 草稿纸
++### 2.14 p.14 · 草稿纸
+ 
+ 
+ ![练习卷B物理p.14](figures/practice-exam-b/page-14.png)
+@@ -888,7 +908,18 @@
+ 本页只写 SCRAP PAPER，无新增题目、选项或答案；保留页身份，不虚构额外两题。
+ 
+ 
+-## 复习索引与最容易错的桥梁
++## 3. 一图看懂 · 四层证据
++
++| 从题面走向结论 | 先确定的对象 | 不能直接跳到什么 |
++|---|---|---|
++| 统计/预测 | 系数检验、样本内误差、未见测试误差 | 因果、未来必赚 |
++| 金融计算 | 收益目标、分母、总量与每股量 | 数字近似就认为口径相同 |
++| 账本/代币 | 记录、底层资产、权利与完成时点 | 储备必足、现金必到账 |
++| 运营保障 | 可用信息、权限隔离、实际恢复验证 | 有文件/有备份即安全 |
++
++三个当地流程图分别在B1(a)的信息时点、B2(a)的条件树和B4(b)的恢复链，不能互相代替。
++
++## 4. 速查与答案索引
+ 
+ A区参考字母依次：**A、B、B、D、D、B、C、C、A、C、A、C、D、D、A、B**。字母只是索引，不代替题旁理由。
+ 
+@@ -899,7 +930,28 @@
+ - B2：改变截距只平移，条件关系翻转需要交互/非线性；灵活不保证泛化。
+ - B3/C2：收入不等于利润；总资产增加不等于每股增加，必须同时跟踪分母。
+ 
+-## 改条件自测（笔记自拟，非原卷题）
++## 5. 双语术语速查
++
++定义只作回忆，具体对象和分母仍以§2各题为准。
++
++| 中文 | English | 当前意思 |
++|---|---|---|
++| 超额收益 | excess return | 股票/组合收益减匹配无风险收益 |
++| 最大回撤 | maximum drawdown | 先前峰值到后续低点的最大比例跌幅 |
++| 校准 | calibration | 报出的概率与实际发生比例是否匹配 |
++| 前视偏差 | look-ahead bias | 决策使用当时还不可得的信息 |
++| 留存收入 | retained revenue | 本题手续费减指定转付款，尚未扣其他成本 |
++| 净资产值 | net asset value (NAV) | 资产减负债；每股值还要除股数 |
++| 首损保证 | first-loss guarantee | 先承担约定额度内损失，不是包赔全部 |
++| 标准化 | standardization | 以开发样本均值与标准差定义输入尺度 |
++
++## 6. 英文作答框架与边界
++
++选择题先给字母，再说题面哪条条件决定它；不能只有字母而不懂理由。计算题按“量与单位→公式→代入→结果→解释”写。简答题若问two checks，就明确分两项并分别解释为什么；若问guarantee，就说明条件为何不足以保证。
++
++英文框架（笔记自拟）：The relevant quantity is … . Using the stated inputs and assumptions, … . This supports … but does not establish … . 正文28个单元各有具体英文答案，框架不替代逐题作答。任何合理参考答案都不自动等于官方评分要点。
++
++## 7. 改条件自测（笔记自拟，非原卷题）
+ 
+ 1. A5的路径改为100→120→114→130，最大回撤是多少？
+ 2. A7已有融资变为85万元、合计上限仍80万元，B还能新借多少？
+@@ -917,7 +969,26 @@
+ 
+ </details>
+ 
+-## 核对范围与待补
++## 8. 原页与正文精确映射
++
++| 物理页 | 题目/身份 | 正文入口 |
++|---|---|---|
++| p.1 | 封面与原始卷面规则 | [[#2.1 p.1 · 封面与卷面规则\|p.1 正文]] |
++| p.2 | A1–A3 | [[#2.2 p.2 · 题面与解析\|p.2 正文]] |
++| p.3 | A4–A6 | [[#2.3 p.3 · 题面与解析\|p.3 正文]] |
++| p.4 | A7–A9 | [[#2.4 p.4 · 题面与解析\|p.4 正文]] |
++| p.5 | A10–A12 | [[#2.5 p.5 · 题面与解析\|p.5 正文]] |
++| p.6 | A13–A16 | [[#2.6 p.6 · 题面与解析\|p.6 正文]] |
++| p.7 | B1(a)(b) | [[#2.7 p.7 · 题面与解析\|p.7 正文]] |
++| p.8 | B2(a)(b) | [[#2.8 p.8 · 题面与解析\|p.8 正文]] |
++| p.9 | B3(a)(b) | [[#2.9 p.9 · 题面与解析\|p.9 正文]] |
++| p.10 | B4(a)(b) | [[#2.10 p.10 · 题面与解析\|p.10 正文]] |
++| p.11 | C1(a)(b) | [[#2.11 p.11 · 题面与解析\|p.11 正文]] |
++| p.12 | C2(a)(b) | [[#2.12 p.12 · 题面与解析\|p.12 正文]] |
++| p.13 | 草稿纸，无新增题 | [[#2.13 p.13 · 草稿纸\|p.13 正文]] |
++| p.14 | 草稿纸，无新增题 | [[#2.14 p.14 · 草稿纸\|p.14 正文]] |
++
++## 9. 核对范围与待补
+ 
+ 题面全部22题、28作答单元、64选择项均保留；无另外的题面数据表或需重画的试题曲线。原题p.13/14为空白草稿纸。表格、决策树、时间流程、备份流程均为解析补充，不是官方图或给定数字。尤其B2树叶+2%/−2%/0%是演示，不能当原卷数据。
+ 

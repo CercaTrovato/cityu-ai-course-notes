@@ -1,0 +1,58 @@
+{
+  "python": "3.12.3 | packaged by conda-forge | (main, Apr 15 2024, 18:20:11) [MSC v.1938 64 bit (AMD64)]",
+  "sklearn": "1.5.1",
+  "numpy": "1.26.4",
+  "installed_StandardScaler_source": "D:\\anaconda3\\Lib\\site-packages\\sklearn\\preprocessing\\_data.py",
+  "source_sha256": "cc5935627f8862eb052711b55eb0e19b47c059f0dbdba6b236c445716762579b",
+  "ddof0_in_installed_doc": true,
+  "near_constant_rule_source": "def _is_constant_feature(var, mean, n_samples):\n    \"\"\"Detect if a feature is indistinguishable from a constant feature.\n\n    The detection is based on its computed variance and on the theoretical\n    error bounds of the '2 pass algorithm' for variance computation.\n\n    See \"Algorithms for computing the sample variance: analysis and\n    recommendations\", by Chan, Golub, and LeVeque.\n    \"\"\"\n    # In scikit-learn, variance is always computed using float64 accumulators.\n    eps = np.finfo(np.float64).eps\n\n    upper_bound = n_samples * eps * var + (n_samples * mean * eps) ** 2\n    return var <= upper_bound\n",
+  "example": {
+    "train": [
+      2,
+      4
+    ],
+    "mean": [
+      3.0
+    ],
+    "var": [
+      1.0
+    ],
+    "scale": [
+      1.0
+    ],
+    "validation_6_z": [
+      [
+        3.0
+      ]
+    ]
+  },
+  "changed_example": {
+    "train": [
+      3,
+      7
+    ],
+    "mean": [
+      5.0
+    ],
+    "scale": [
+      2.0
+    ],
+    "validation_9_z": [
+      [
+        2.0
+      ]
+    ]
+  },
+  "constant_example": {
+    "var": [
+      0.0
+    ],
+    "scale": [
+      1.0
+    ]
+  },
+  "F_example": [
+    32.0
+  ],
+  "execution": "new reviewer library probes only; no source tutorial33cell rerun, no changes to any learner source/output"
+}

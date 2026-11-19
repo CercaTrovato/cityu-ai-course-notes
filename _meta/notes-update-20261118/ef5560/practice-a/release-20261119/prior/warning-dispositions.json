@@ -1,0 +1,673 @@
+{
+  "candidate_sha256": "7162919ff6e65f613e571d6e67b81923d7fcd47804f6b9b791ef990e898b409d",
+  "mechanical_result_sha256": "bc10eb2c123c5ef7fc95a893d6abe660c28366decb636876e17c5746933672fb",
+  "independent_acceptance_report": "evidence/independent-review/directed-review-v2.md",
+  "C": [
+    {
+      "code": "C_REASONING_REVIEW",
+      "section": "1.1 原封面怎么读（p.1）",
+      "line": 29,
+      "message": "找到正文，但理由/过程线索不足；人工核对，不能凭字数断言缺失",
+      "evidence": "",
+      "disposition": "Not a missing calculation/argument: administrative cover/directions or §9.2 execution audit; the actual actions/calculations are explained in adjacent §1/§2. Full independent coverage accepted."
+    },
+    {
+      "code": "C_REASONING_REVIEW",
+      "section": "2.0 三部分的原始指令",
+      "line": 64,
+      "message": "找到正文，但理由/过程线索不足；人工核对，不能凭字数断言缺失",
+      "evidence": "",
+      "disposition": "Not a missing calculation/argument: administrative cover/directions or §9.2 execution audit; the actual actions/calculations are explained in adjacent §1/§2. Full independent coverage accepted."
+    },
+    {
+      "code": "C_REASONING_REVIEW",
+      "section": "9.2 真正做过的计算",
+      "line": 1281,
+      "message": "找到正文，但理由/过程线索不足；人工核对，不能凭字数断言缺失",
+      "evidence": "",
+      "disposition": "Not a missing calculation/argument: administrative cover/directions or §9.2 execution audit; the actual actions/calculations are explained in adjacent §1/§2. Full independent coverage accepted."
+    }
+  ],
+  "R": {
+    "R1c": {
+      "count": 3,
+      "disposition": "Three clauses distinguish train/validation/test, PD/LGD/EAD, or fee/disbursement/contribution. These objects and operations are explained locally and reviewed in Stage1/2; preserved to retain answer distinctions.",
+      "locations": [
+        {
+          "line": 58,
+          "detail": "2 个分号：训练资料用于拟合参数；验证资料用于选设置；最终测试用于评价已固定方案。",
+          "context": "### 1.3 当前需要的前置区别\n\n训练资料用于拟合参数；验证资料用于选设置；最终测试用于评价已固定方案。金额是元，收益率是损益除声明的资本；两个收益率之差用“百分点”。链上记录、实际资产和法律请求权是三个对象，不因为同一 App 或同一代币就合成一层。\n\n本稿在第一次需要处解释术语和公式，不要求先会统计、机器学习或金融。没有给出的真实收益、回收、政策和法定优先顺位，不靠常识补为事实。"
+        },
+        {
+          "line": 926,
+          "detail": "2 个分号：违约概率（probability of default, PD）是所定期…",
+          "context": "**违约频率不是损失率**\n\n违约概率（probability of default, PD）是所定期限内违约的可能性；违约损失率（loss given default, LGD）是已经违约时有多少金额最终收不回；违约时敞口（exposure at default, EAD）是届时面临损失的金额。预期损失（expected loss, EL）的单期简化关系为 $EL=PD\\times LGD\\times EAD$。\n\n| 量 | 单位 | 何时/条件 | 本题是否给数 |"
+        },
+        {
+          "line": 1100,
+          "detail": "2 个分号：直接答案：商户费80港元；商户净拨款1,920港元；提供者预期贡献20港…",
+          "context": "#### 2.22.1 (a) 中文参考解析\n\n**直接答案**：商户费80港元；商户净拨款1,920港元；提供者预期贡献20港元。\n\n逐项追资金：费用为 $2,000\\times4\\%=80$ 港元，商户收到 $2,000-80=1,920$。提供者从这笔交易得到的收费收入是80，不是整笔2,000；再扣资金18、预期损失30和服务12，贡献为 $80-18-30-12=20$ 港元。"
+        }
+      ]
+    },
+    "R8a": {
+      "count": 13,
+      "disposition": "Nested subpart headings inherit exact physical page from their A/B/C parent heading and §8 page map. Independent Stage2 actually verified all 14 pages; no lost source page.",
+      "locations": [
+        {
+          "line": 64,
+          "detail": "### 2.0 三部分的原始指令",
+          "context": "## 2. 原题、中文解析与英文参考答案\n\n### 2.0 三部分的原始指令\n\n> Section A Multiple-Choice Questions (40 marks)"
+        },
+        {
+          "line": 781,
+          "detail": "#### 2.17.1 (a) 中文参考解析",
+          "context": "题面先给一个投资想法，又指出历史图开始于外卖扩张以前。long-PDD 是买入 PDD，short-JD 是借到 JD 股票卖出、以后买回归还；多空差不是自动无风险。以下为按题面组织的业务假设，不声称真实竞争已带来某个利润结果。\n\n#### 2.17.1 (a) 中文参考解析\n\n**直接答案**：假设是 JD 扩张外卖的补贴、履约或投入成本可能压低其相对利润/估值，而 PDD 相对少受该项投入负担或在其他业务上更有利。因此用买 PDD、空 JD 表达看好前者相对后者的观点。做空 JD 可对冲部分共同市场/行业变动，但不会消除 PDD 自身经营风险、两家公司不同的市场敏感度或 JD 反而上涨的挤空/借券风险。"
+        },
+        {
+          "line": 791,
+          "detail": "#### 2.17.2 (b) 中文参考解析",
+          "context": "The thesis is that JD's food-delivery expansion may impose costs or margin pressure relative to PDD, motivating long PDD and short JD. The short leg may offset part of common market exposure but does not remove firm-specific risk, unequal sensitivities, or losses if JD outperforms. This is a hypothesis rather than an established outcome.\n\n#### 2.17.2 (b) 中文参考解析\n\n**直接答案**：全历史窗口正收益不能证明外卖竞争导致收益。图在扩张前已经开始，扩张前的盈利不可能由尚未发生的事件解释；总窗口还混入市场、估值、其他经营新闻及选择窗口的影响。"
+        },
+        {
+          "line": 837,
+          "detail": "#### 2.18.1 (a) 中文参考解析",
+          "context": "这题两个小问分别处理模型选择和数据行代表什么。轮次（Epoch）是训练资料被用于更新模型的一轮；训练损失是旧样本贴合程度，验证损失用来选设置，不是最后测试分数。\n\n#### 2.18.1 (a) 中文参考解析\n\n**直接答案：30轮。** 三个候选的验证损失依次为0.0032、0.0024、0.0028，最小值在30轮。训练损失从0.0030降到0.0015，只说明对训练资料贴得更近；到60轮验证损失反而由0.0024升到0.0028，不能因训练值更小就选60。"
+        },
+        {
+          "line": 847,
+          "detail": "#### 2.18.2 (b) 中文参考解析",
+          "context": "Choose 30 epochs because validation loss is lowest at 0.0024. Training loss keeps falling, but validation loss rises by epoch 60, indicating worse generalization among the given candidates. Fix the duration before final test evaluation.\n\n#### 2.18.2 (b) 中文参考解析\n\n**直接答案**：按滞后通胀（Lagged inflation）分月份，是把不同时点分成宏观状态较高/较低的时间组；按同月企业规模（Size）分股票，是在同一个时点把企业分成大/小等横截面组。前者一行单位是月，后者一行单位是某月的一家公司。"
+        },
+        {
+          "line": 904,
+          "detail": "#### 2.19.1 (a) 中文参考解析",
+          "context": "两组未来同一完整期限内预测违约1%和4%，实际3%和7%。排序回答哪组较危险；校准（Calibration）回答概率水平与真实比例是否相符，两种任务不能互相替代。\n\n#### 2.19.1 (a) 中文参考解析\n\n**直接答案**：排序在这两个群组层面仍正确，第二组预测4%大于1%，实际7%也大于3%。但校准偏低：第一组少估2个百分点，第二组少估3个百分点。"
+        },
+        {
+          "line": 914,
+          "detail": "#### 2.19.2 (b) 中文参考解析",
+          "context": "The model correctly orders the two groups by risk: the second group has both the higher prediction and realized default rate. It is undercalibrated, underpredicting default by 2 and 3 percentage points. Correct ordering does not establish accurate probability levels.\n\n#### 2.19.2 (b) 中文参考解析\n\n**直接答案**：若其他条件不变，按原低概率定价会低估预期信用损失，可能收费不足，使利润低于原预计。应查违约后净回收/违约损失率（Loss given default，LGD），这是题目已给实际违约率以外的重要结果；不能只重复“查违约率”。"
+        },
+        {
+          "line": 961,
+          "detail": "#### 2.20.1 (a) 中文参考解析",
+          "context": "出口商用同一应收款接洽两银行，平台记录核验文件和现有融资，但只有参与银行能更新各自贷款。这一权限安排提供来源责任，同时留下非参与者或未及时更新资料的完整性风险。\n\n#### 2.20.1 (a) 中文参考解析\n\n**直接答案**：总上限为人民币 $2,000,000\\times80\\%=1,600,000$，扣A已有1,300,000，余 $300,000$ 元。它是完整记录条件下的最大剩余额度，不是自动批准数额。"
+        },
+        {
+          "line": 971,
+          "detail": "#### 2.20.2 (b) 中文参考解析",
+          "context": "The remaining capacity is RMB2 million × 80% − RMB1.3 million = RMB300,000, assuming complete and current financing records. Bank B needs the latest outstanding financing against the same receivable, including update responsibility and checks for financing outside participating banks.\n\n#### 2.20.2 (b) 中文参考解析\n\n**直接答案**：文件未改变只支持“该记录与原存档一致”，不证明原文件真实、货已交付或买方有钱偿还。B应核合同/发票与交付验收证据、向买方确认应付金额和到期日、债权所有权与争议、全部已有融资，并评估还款现金流和信用风险。"
+        },
+        {
+          "line": 1031,
+          "detail": "#### 2.21.1 (a) 中文参考解析",
+          "context": "本题收益以小数给出，0.03是3%而非0.03%。MA12是只用此前12个月收益算的移动平均（Moving average），题面保证预测使用过去信息。比较同一4个月、相同目标和同一误差定义，不能换样本或改成训练拟合。\n\n#### 2.21.1 (a) 中文参考解析\n\n**直接答案**：模型SSE为0.0004，MA12为0.0018，单位均为小数收益的平方。"
+        },
+        {
+          "line": 1050,
+          "detail": "#### 2.21.2 (b) 中文参考解析",
+          "context": "The model's four squared errors are each 0.0001, giving SSE = 0.0004. MA12 squared errors are 0.0004, 0.0004, 0.0001 and 0.0009, giving SSE = 0.0018, in squared decimal-return units.\n\n#### 2.21.2 (b) 中文参考解析\n\n**直接答案**：相对基准的样本外决定系数为 $R^2_{OOS}=1-SSE_{model}/SSE_{MA12}=1-0.0004/0.0018=7/9\\approx77.78\\%$。分母是本题MA12在同4个月的SSE，不是收益本身的方差；正值表示模型在这4个月的平方误差比MA12低约77.78%。"
+        },
+        {
+          "line": 1098,
+          "detail": "#### 2.22.1 (a) 中文参考解析",
+          "context": "购买额HK\\$2,000、商户费4%，客户只还本金无利息；资金、预期信用损失、服务成本分别为HK\\$18、30、12。ignore overhead and tax表示只算题给成本后的贡献，不算公司最终税后利润。\n\n#### 2.22.1 (a) 中文参考解析\n\n**直接答案**：商户费80港元；商户净拨款1,920港元；提供者预期贡献20港元。"
+        },
+        {
+          "line": 1110,
+          "detail": "#### 2.22.2 (b) 中文参考解析",
+          "context": "The merchant fee is HK\\$80 and the merchant's net payout is HK\\$1,920. Expected contribution is HK\\$80 − HK\\$18 − HK\\$30 − HK\\$12 = HK\\$20, ignoring overhead and tax.\n\n#### 2.22.2 (b) 中文参考解析\n\n**直接答案**：预期信用损失改为55港元，贡献 $80-18-55-12=-5$ 港元。其余输入固定，损失比原来多25，恰使原20贡献下降到−5。"
+        }
+      ]
+    },
+    "R5a": {
+      "count": 5,
+      "disposition": "Existing adjacent formulas belong to one explained calculation, not unintroduced notation. Independent directed review fixes and accepts A1/A4/A5/C1 symbols; numerical inputs and denominators preserved.",
+      "locations": [
+        {
+          "line": 114,
+          "detail": "一段 5 个不同行内公式",
+          "context": "但两种系数的平方和分别是 181 与 0.5。Ridge 在拟合误差外还惩罚系数平方和，所以有理由抑制极端抵销。这里展示取舍机制，不是完整训练演示，也不保证每个变量系数都逐项变小。\n\n设训练误差平方和为 $\\mathrm{SSE}$，第 $j$ 个斜率是 $\\beta_j$，非负惩罚强度为 $\\lambda$。Ridge 比较的是 $\\mathrm{SSE}+\\lambda\\sum_j\\beta_j^2$；通常不惩罚截距，且输入尺度会影响惩罚比较，因此标准化需只用训练资料确定。\n\n**改条件练习与边界**"
+        },
+        {
+          "line": 730,
+          "detail": "一段 5 个不同行内公式",
+          "context": "**⚪ 参考选择：B。**\n\n管理资产规模（Assets under management，AUM）记为美元金额 $A$，全年固定且只有题设收入成本。收费每年 $0.004\\times A$，变动服务成本 $0.001\\times A$，每年固定成本600,000。剩余每元资产贡献0.003，令 $0.003\\times A-600,000=0$，得 $A=200,000,000$ 美元，即2亿美元。年度比例与年度成本同期间。\n\n**逐选项判断**"
+        },
+        {
+          "line": 745,
+          "detail": "一段 4 个不同行内公式",
+          "context": "**先算每一元 AUM 留下多少**\n\n资产管理规模（assets under management, AUM）是管理的资产金额，不等于公司收入。设其全年不变的美元金额为 $A$；年收费收入是 $0.004\\times A$，年度变动成本是 $0.001\\times A$，剩下 $0.003\\times A$ 才可用于覆盖固定成本。\n\n| 符号/量 | 单位 | 何时已知 | 本题值 |"
+        },
+        {
+          "line": 1064,
+          "detail": "一段 4 个不同行内公式",
+          "context": "**符号、单位与一个月的演算入口**\n\n令 $r_t$ 为测试月 $t$ 的实现收益，$\\widehat r_t$ 为模型对该月的预测，$b_t$ 为 MA12 预测。三者均是月收益小数：0.03 表示 3%；$t$ 在这里是月份编号，不是检验统计量。预测在该月收益实现之前可用，实现收益在该月结束后才知道。\n\n模型误差 $e_t=r_t-\\widehat r_t$；平方使正负偏差都计为错误，再加总 $\\mathrm{SSE}=\\sum_{t=1}^{4}e_t^2$。第 4 月模型误差是 $-0.02-(-0.01)=-0.01$，平方 0.0001；MA12 误差是 $-0.02-0.01=-0.03$，平方 0.0009。"
+        },
+        {
+          "line": 1066,
+          "detail": "一段 4 个不同行内公式",
+          "context": "令 $r_t$ 为测试月 $t$ 的实现收益，$\\widehat r_t$ 为模型对该月的预测，$b_t$ 为 MA12 预测。三者均是月收益小数：0.03 表示 3%；$t$ 在这里是月份编号，不是检验统计量。预测在该月收益实现之前可用，实现收益在该月结束后才知道。\n\n模型误差 $e_t=r_t-\\widehat r_t$；平方使正负偏差都计为错误，再加总 $\\mathrm{SSE}=\\sum_{t=1}^{4}e_t^2$。第 4 月模型误差是 $-0.02-(-0.01)=-0.01$，平方 0.0001；MA12 误差是 $-0.02-0.01=-0.03$，平方 0.0009。\n\n样本外决定系数（out-of-sample R-squared）问“相对题设基准，平方误差减少了多少比例”："
+        }
+      ]
+    },
+    "R5c": {
+      "count": 2,
+      "disposition": "Two complete inline formulas: restored weekly Sharpe at line285 and OOS definition at line1052. The expressions are fully explained in adjacent text/symbol table. Root actual exact-candidate IAB observed rendered math legibility, no overflow; no content edit required solely for character-count warning.",
+      "locations": [
+        {
+          "line": 285,
+          "detail": "行内公式 68 字符，改独立公式：S_{\\mathrm{weekly}}=\\mu_{\\math",
+          "context": "10 bp（基点，basis points）是 0.10%，不是 10%。若组合价值 100 元，买 30 元收费 0.03 元，卖 30 元也收费 0.03 元；总费 0.06 元，即组合价值的 0.06%。成本从毛超额收益中扣除，0.30% 变 0.24%。\n\n周夏普 $S_{\\mathrm{weekly}}=\\mu_{\\mathrm{weekly}}^e/\\sigma_{\\mathrm{weekly}}$，分子是周平均超额收益，分母是同一频率的波动率（收益围绕均值的离散程度）。同用百分数算 $0.24/3.00=0.08$，或同用小数算 $0.0024/0.0300=0.08$，不能一边用百分数一边用小数。\n\n每周都减同一个收益比例时，每周收益和它的新均值一起平移，离均差不变，所以本题波动不变。成本变化才可能改变波动，不能泛化“任何成本都不改变风险”。"
+        },
+        {
+          "line": 1052,
+          "detail": "行内公式 68 字符，改独立公式：R^2_{OOS}=1-SSE_{model}/SSE_{M",
+          "context": "#### 2.21.2 (b) 中文参考解析\n\n**直接答案**：相对基准的样本外决定系数为 $R^2_{OOS}=1-SSE_{model}/SSE_{MA12}=1-0.0004/0.0018=7/9\\approx77.78\\%$。分母是本题MA12在同4个月的SSE，不是收益本身的方差；正值表示模型在这4个月的平方误差比MA12低约77.78%。\n\n这不证明投资盈利：题目没有把预测变成什么持仓、承担多大风险、换手和费用，也只有4个月，不能据此宣称统计显著或长期稳定。评估预测错误与评估可交易净收益是两项任务。"
+        }
+      ]
+    },
+    "R6a": {
+      "count": 2,
+      "disposition": "Terms are input/output relationships in one task; paragraph immediately gives the mechanism (e.g. PD/LGD/EAD) and examples. Full novice-perspective review accepted unchanged portions.",
+      "locations": [
+        {
+          "line": 311,
+          "detail": "一段 4 处括号英文注释（约等于 4 个新术语）",
+          "context": "**⚪ 参考选择：D。**\n\n做多（Long）是买入并持有，做空（Short）是借资产卖出以后再买回归还。都以初始资本为分母。总敞口（Gross exposure）按两边金额绝对值相加，$60\\%+40\\%=100\\%$；净敞口（Net exposure）保留方向相减，$60\\%-40\\%=20\\%$。这是交易前持仓口径，不是各资产未来实际市场 Beta。\n\n**逐选项判断**"
+        },
+        {
+          "line": 926,
+          "detail": "一段 4 处括号英文注释（约等于 4 个新术语）",
+          "context": "**违约频率不是损失率**\n\n违约概率（probability of default, PD）是所定期限内违约的可能性；违约损失率（loss given default, LGD）是已经违约时有多少金额最终收不回；违约时敞口（exposure at default, EAD）是届时面临损失的金额。预期损失（expected loss, EL）的单期简化关系为 $EL=PD\\times LGD\\times EAD$。\n\n| 量 | 单位 | 何时/条件 | 本题是否给数 |"
+        }
+      ]
+    },
+    "R1e": {
+      "count": 2,
+      "disposition": "Necessary limits prevent confusing OOS R² with return/causal/profit claims or transaction volume with provider contribution. They change the answer scope; not unexplained jargon.",
+      "locations": [
+        {
+          "line": 1072,
+          "detail": "一段 3 处否定澄清",
+          "context": "$$R^2_{\\mathrm{OOS}}=1-\\frac{\\mathrm{SSE}_{\\rm model}}{\\mathrm{SSE}_{\\rm MA12}}.$$\n\n分母非零才有定义。本题分母为正；若基准误差恰为零，不能继续除以零并强报一个分数。正 77.78% 不是投资回报 77.78%，也不是预测对了 77.78% 的月份。\n\n题面已经给 MA12 的四个预测值，因此无需额外 12 个月原始收益才能完成本题。没有回测持仓规则、费用和风险，才是无法证明盈利的真正缺口，不是计算 SSE 的缺口。"
+        },
+        {
+          "line": 1132,
+          "detail": "一段 3 处否定澄清",
+          "context": "| 原预期贡献 | 20 | 收费减三项成本 |\n\n这里的贡献（contribution）指只扣题设成本后的余额，未扣总部固定费用和税，不等于公司净利润。客户免息不代表提供者没有资金成本；预期损失是估计的平均损失，不是说每笔交易必定恰亏 30。\n\n改为损失 55，费用和其他成本固定，所以贡献只会比原来少 25，20 变 −5。不能为保住原利润偷改收费率，也不能把新增 25 又重复扣两次。"
+        }
+      ]
+    },
+    "R4c": {
+      "count": 10,
+      "disposition": "Two short source-page mapping statements per cell identify source content and original-asset disposition. These are navigational status/coverage facts, not missing teaching. Source content explained under respective §2 anchors.",
+      "locations": [
+        {
+          "line": 1259,
+          "detail": "单元格 2 句",
+          "context": "|---|---|---|---|\n| 1 | 封面/考试情境 | [[#1.1 原封面怎么读（p.1）\\|封面解析]] | 文字要求完整保留，未代填个人资料 |\n| 2 | A1、A2、A3 | [[#2.1 A1 · Ridge 怎样稳定相关变量的系数（原卷 p.2）\\|A1]] / [[#2.2 A2 · 嵌套 OLS 的训练误差为何不会增加（原卷 p.2）\\|A2]] / [[#2.3 A3 · PCR 与 PLS 在构造成分时用什么（原卷 p.2）\\|A3]] | 文字题，无教学原图；不复制答题留白 |\n| 3 | A4、A5、A6 | [[#2.4 A4 · Alpha 与 Beta 的水平和变化分开算（原卷 p.3）\\|A4]] / [[#2.5 A5 · 双边换手成本与周夏普比率（原卷 p.3）\\|A5]] / [[#2.6 A6 · 总敞口和净敞口分别加减（原卷 p.3）\\|A6]] | 文字题，无教学原图；不复制答题留白 |\n| 4 | A7、A8、A9 | [[#2.7 A7 · 链上有资产不等于客户能完整取回（原卷 p.4）\\|A7]] / [[#2.8 A8 · 共享分叉前历史不等于以后同链（原卷 p.4）\\|A8]] / [[#2.9 A9 · 代币化基金的收益从哪里来（原卷 p.4）\\|A9]] | 文字题，无教学原图；不复制答题留白 |"
+        },
+        {
+          "line": 1260,
+          "detail": "单元格 2 句",
+          "context": "| 1 | 封面/考试情境 | [[#1.1 原封面怎么读（p.1）\\|封面解析]] | 文字要求完整保留，未代填个人资料 |\n| 2 | A1、A2、A3 | [[#2.1 A1 · Ridge 怎样稳定相关变量的系数（原卷 p.2）\\|A1]] / [[#2.2 A2 · 嵌套 OLS 的训练误差为何不会增加（原卷 p.2）\\|A2]] / [[#2.3 A3 · PCR 与 PLS 在构造成分时用什么（原卷 p.2）\\|A3]] | 文字题，无教学原图；不复制答题留白 |\n| 3 | A4、A5、A6 | [[#2.4 A4 · Alpha 与 Beta 的水平和变化分开算（原卷 p.3）\\|A4]] / [[#2.5 A5 · 双边换手成本与周夏普比率（原卷 p.3）\\|A5]] / [[#2.6 A6 · 总敞口和净敞口分别加减（原卷 p.3）\\|A6]] | 文字题，无教学原图；不复制答题留白 |\n| 4 | A7、A8、A9 | [[#2.7 A7 · 链上有资产不等于客户能完整取回（原卷 p.4）\\|A7]] / [[#2.8 A8 · 共享分叉前历史不等于以后同链（原卷 p.4）\\|A8]] / [[#2.9 A9 · 代币化基金的收益从哪里来（原卷 p.4）\\|A9]] | 文字题，无教学原图；不复制答题留白 |\n| 5 | A10、A11、A12 | [[#2.10 A10 · NFT 的代币、媒体和使用权三层（原卷 p.5）\\|A10]] / [[#2.11 A11 · 界面相似时看谁承担货币负债（原卷 p.5）\\|A11]] / [[#2.12 A12 · 开户量与真实支付采用分开（原卷 p.5）\\|A12]] | 文字题，无教学原图；不复制答题留白 |"
+        },
+        {
+          "line": 1261,
+          "detail": "单元格 2 句",
+          "context": "| 2 | A1、A2、A3 | [[#2.1 A1 · Ridge 怎样稳定相关变量的系数（原卷 p.2）\\|A1]] / [[#2.2 A2 · 嵌套 OLS 的训练误差为何不会增加（原卷 p.2）\\|A2]] / [[#2.3 A3 · PCR 与 PLS 在构造成分时用什么（原卷 p.2）\\|A3]] | 文字题，无教学原图；不复制答题留白 |\n| 3 | A4、A5、A6 | [[#2.4 A4 · Alpha 与 Beta 的水平和变化分开算（原卷 p.3）\\|A4]] / [[#2.5 A5 · 双边换手成本与周夏普比率（原卷 p.3）\\|A5]] / [[#2.6 A6 · 总敞口和净敞口分别加减（原卷 p.3）\\|A6]] | 文字题，无教学原图；不复制答题留白 |\n| 4 | A7、A8、A9 | [[#2.7 A7 · 链上有资产不等于客户能完整取回（原卷 p.4）\\|A7]] / [[#2.8 A8 · 共享分叉前历史不等于以后同链（原卷 p.4）\\|A8]] / [[#2.9 A9 · 代币化基金的收益从哪里来（原卷 p.4）\\|A9]] | 文字题，无教学原图；不复制答题留白 |\n| 5 | A10、A11、A12 | [[#2.10 A10 · NFT 的代币、媒体和使用权三层（原卷 p.5）\\|A10]] / [[#2.11 A11 · 界面相似时看谁承担货币负债（原卷 p.5）\\|A11]] / [[#2.12 A12 · 开户量与真实支付采用分开（原卷 p.5）\\|A12]] | 文字题，无教学原图；不复制答题留白 |\n| 6 | A13、A14、A15、A16 | [[#2.13 A13 · 钱包停机不等于货币请求权消失（原卷 p.6）\\|A13]] / [[#2.14 A14 · 愿意冒险与能够承担损失不同（原卷 p.6）\\|A14]] / [[#2.15 A15 · 制裁筛查同名但生日冲突怎么办（原卷 p.6）\\|A15]] / [[#2.16 A16 · 按管理资产收费的盈亏平衡（原卷 p.6）\\|A16]] | 文字题，无教学原图；不复制答题留白 |"
+        },
+        {
+          "line": 1262,
+          "detail": "单元格 2 句",
+          "context": "| 3 | A4、A5、A6 | [[#2.4 A4 · Alpha 与 Beta 的水平和变化分开算（原卷 p.3）\\|A4]] / [[#2.5 A5 · 双边换手成本与周夏普比率（原卷 p.3）\\|A5]] / [[#2.6 A6 · 总敞口和净敞口分别加减（原卷 p.3）\\|A6]] | 文字题，无教学原图；不复制答题留白 |\n| 4 | A7、A8、A9 | [[#2.7 A7 · 链上有资产不等于客户能完整取回（原卷 p.4）\\|A7]] / [[#2.8 A8 · 共享分叉前历史不等于以后同链（原卷 p.4）\\|A8]] / [[#2.9 A9 · 代币化基金的收益从哪里来（原卷 p.4）\\|A9]] | 文字题，无教学原图；不复制答题留白 |\n| 5 | A10、A11、A12 | [[#2.10 A10 · NFT 的代币、媒体和使用权三层（原卷 p.5）\\|A10]] / [[#2.11 A11 · 界面相似时看谁承担货币负债（原卷 p.5）\\|A11]] / [[#2.12 A12 · 开户量与真实支付采用分开（原卷 p.5）\\|A12]] | 文字题，无教学原图；不复制答题留白 |\n| 6 | A13、A14、A15、A16 | [[#2.13 A13 · 钱包停机不等于货币请求权消失（原卷 p.6）\\|A13]] / [[#2.14 A14 · 愿意冒险与能够承担损失不同（原卷 p.6）\\|A14]] / [[#2.15 A15 · 制裁筛查同名但生日冲突怎么办（原卷 p.6）\\|A15]] / [[#2.16 A16 · 按管理资产收费的盈亏平衡（原卷 p.6）\\|A16]] | 文字题，无教学原图；不复制答题留白 |\n| 7 | B1 | [[#2.17 B1 · 多 PDD、空 JD：假设与回测不能互换（原卷 p.7）\\|B1]] | 文字题，无教学原图；不复制答题留白 |"
+        },
+        {
+          "line": 1263,
+          "detail": "单元格 2 句",
+          "context": "| 4 | A7、A8、A9 | [[#2.7 A7 · 链上有资产不等于客户能完整取回（原卷 p.4）\\|A7]] / [[#2.8 A8 · 共享分叉前历史不等于以后同链（原卷 p.4）\\|A8]] / [[#2.9 A9 · 代币化基金的收益从哪里来（原卷 p.4）\\|A9]] | 文字题，无教学原图；不复制答题留白 |\n| 5 | A10、A11、A12 | [[#2.10 A10 · NFT 的代币、媒体和使用权三层（原卷 p.5）\\|A10]] / [[#2.11 A11 · 界面相似时看谁承担货币负债（原卷 p.5）\\|A11]] / [[#2.12 A12 · 开户量与真实支付采用分开（原卷 p.5）\\|A12]] | 文字题，无教学原图；不复制答题留白 |\n| 6 | A13、A14、A15、A16 | [[#2.13 A13 · 钱包停机不等于货币请求权消失（原卷 p.6）\\|A13]] / [[#2.14 A14 · 愿意冒险与能够承担损失不同（原卷 p.6）\\|A14]] / [[#2.15 A15 · 制裁筛查同名但生日冲突怎么办（原卷 p.6）\\|A15]] / [[#2.16 A16 · 按管理资产收费的盈亏平衡（原卷 p.6）\\|A16]] | 文字题，无教学原图；不复制答题留白 |\n| 7 | B1 | [[#2.17 B1 · 多 PDD、空 JD：假设与回测不能互换（原卷 p.7）\\|B1]] | 文字题，无教学原图；不复制答题留白 |\n| 8 | B2 | [[#2.18 B2 · 神经网络选轮数与树的分组单位（原卷 p.8）\\|B2]] | 文字题，无教学原图；不复制答题留白 |"
+        },
+        {
+          "line": 1264,
+          "detail": "单元格 2 句",
+          "context": "| 5 | A10、A11、A12 | [[#2.10 A10 · NFT 的代币、媒体和使用权三层（原卷 p.5）\\|A10]] / [[#2.11 A11 · 界面相似时看谁承担货币负债（原卷 p.5）\\|A11]] / [[#2.12 A12 · 开户量与真实支付采用分开（原卷 p.5）\\|A12]] | 文字题，无教学原图；不复制答题留白 |\n| 6 | A13、A14、A15、A16 | [[#2.13 A13 · 钱包停机不等于货币请求权消失（原卷 p.6）\\|A13]] / [[#2.14 A14 · 愿意冒险与能够承担损失不同（原卷 p.6）\\|A14]] / [[#2.15 A15 · 制裁筛查同名但生日冲突怎么办（原卷 p.6）\\|A15]] / [[#2.16 A16 · 按管理资产收费的盈亏平衡（原卷 p.6）\\|A16]] | 文字题，无教学原图；不复制答题留白 |\n| 7 | B1 | [[#2.17 B1 · 多 PDD、空 JD：假设与回测不能互换（原卷 p.7）\\|B1]] | 文字题，无教学原图；不复制答题留白 |\n| 8 | B2 | [[#2.18 B2 · 神经网络选轮数与树的分组单位（原卷 p.8）\\|B2]] | 文字题，无教学原图；不复制答题留白 |\n| 9 | B3 | [[#2.19 B3 · 信用排序尚可却低估违约率（原卷 p.9）\\|B3]] | 文字题，无教学原图；不复制答题留白 |"
+        },
+        {
+          "line": 1265,
+          "detail": "单元格 2 句",
+          "context": "| 6 | A13、A14、A15、A16 | [[#2.13 A13 · 钱包停机不等于货币请求权消失（原卷 p.6）\\|A13]] / [[#2.14 A14 · 愿意冒险与能够承担损失不同（原卷 p.6）\\|A14]] / [[#2.15 A15 · 制裁筛查同名但生日冲突怎么办（原卷 p.6）\\|A15]] / [[#2.16 A16 · 按管理资产收费的盈亏平衡（原卷 p.6）\\|A16]] | 文字题，无教学原图；不复制答题留白 |\n| 7 | B1 | [[#2.17 B1 · 多 PDD、空 JD：假设与回测不能互换（原卷 p.7）\\|B1]] | 文字题，无教学原图；不复制答题留白 |\n| 8 | B2 | [[#2.18 B2 · 神经网络选轮数与树的分组单位（原卷 p.8）\\|B2]] | 文字题，无教学原图；不复制答题留白 |\n| 9 | B3 | [[#2.19 B3 · 信用排序尚可却低估违约率（原卷 p.9）\\|B3]] | 文字题，无教学原图；不复制答题留白 |\n| 10 | B4 | [[#2.20 B4 · 共享发票登记不能替代实物与偿还证据（原卷 p.10）\\|B4]] | 文字题，无教学原图；不复制答题留白 |"
+        },
+        {
+          "line": 1266,
+          "detail": "单元格 2 句",
+          "context": "| 7 | B1 | [[#2.17 B1 · 多 PDD、空 JD：假设与回测不能互换（原卷 p.7）\\|B1]] | 文字题，无教学原图；不复制答题留白 |\n| 8 | B2 | [[#2.18 B2 · 神经网络选轮数与树的分组单位（原卷 p.8）\\|B2]] | 文字题，无教学原图；不复制答题留白 |\n| 9 | B3 | [[#2.19 B3 · 信用排序尚可却低估违约率（原卷 p.9）\\|B3]] | 文字题，无教学原图；不复制答题留白 |\n| 10 | B4 | [[#2.20 B4 · 共享发票登记不能替代实物与偿还证据（原卷 p.10）\\|B4]] | 文字题，无教学原图；不复制答题留白 |\n| 11 | C1 | [[#2.21 C1 · 四个月样本外误差与MA12基准（原卷 p.11）\\|C1]] | C1原数字表完整转写 |"
+        },
+        {
+          "line": 1267,
+          "detail": "单元格 2 句",
+          "context": "| 8 | B2 | [[#2.18 B2 · 神经网络选轮数与树的分组单位（原卷 p.8）\\|B2]] | 文字题，无教学原图；不复制答题留白 |\n| 9 | B3 | [[#2.19 B3 · 信用排序尚可却低估违约率（原卷 p.9）\\|B3]] | 文字题，无教学原图；不复制答题留白 |\n| 10 | B4 | [[#2.20 B4 · 共享发票登记不能替代实物与偿还证据（原卷 p.10）\\|B4]] | 文字题，无教学原图；不复制答题留白 |\n| 11 | C1 | [[#2.21 C1 · 四个月样本外误差与MA12基准（原卷 p.11）\\|C1]] | C1原数字表完整转写 |\n| 12 | C2 | [[#2.22 C2 · BNPL交易量不变而贡献可转负（原卷 p.12）\\|C2]] | 文字题，无教学原图；不复制答题留白 |"
+        },
+        {
+          "line": 1269,
+          "detail": "单元格 2 句",
+          "context": "| 10 | B4 | [[#2.20 B4 · 共享发票登记不能替代实物与偿还证据（原卷 p.10）\\|B4]] | 文字题，无教学原图；不复制答题留白 |\n| 11 | C1 | [[#2.21 C1 · 四个月样本外误差与MA12基准（原卷 p.11）\\|C1]] | C1原数字表完整转写 |\n| 12 | C2 | [[#2.22 C2 · BNPL交易量不变而贡献可转负（原卷 p.12）\\|C2]] | 文字题，无教学原图；不复制答题留白 |\n| 13 | SCRAP PAPER | [[#1.2 怎样使用这份学习稿\\|空白页说明]] | 纯草稿，无漏题或教学图 |\n| 14 | SCRAP PAPER | [[#1.2 怎样使用这份学习稿\\|空白页说明]] | 纯草稿，无漏题或教学图 |"
+        }
+      ]
+    },
+    "R8b": {
+      "count": 1,
+      "disposition": "§9.1 is a four-sentence source audit, not new teaching. It identifies authoritative PDF and derivative historical drafts. No novel inference depends on splitting it.",
+      "locations": [
+        {
+          "line": 1277,
+          "detail": "小节首段 4 句；首段 ≤ 3 句，先给问题或结论",
+          "context": "### 9.1 已使用的来源\n\n原题唯一权威源为本地 `practice_exam_A.pdf`（14 页，SHA 见伴随 page-evidence）。旧批 `source.txt/pages.json` 只辅助提取；作者已逐张实际看完全部 14 页并对题面。C1 数字表保留原值。旧 `exam-a-content.json` 与 `exam-a-long.json` 是历史作者草稿，复用前已与原题比对，不是官方答案。\n\nB1 的 Class 1 背景另回读本课 M01 的 p.8/p.15/p.16 讲解：PDD 被视为外卖竞争之外，JD 同时有投入成本/利润风险与潜在客流机会。这里仍只陈述投资假设，不宣称外卖扩张已经使某股票下跌。历史额外数据不影响本题可完成，但缺少它时不能估计因果效应。"
+        }
+      ]
+    },
+    "R7a": {
+      "count": 1,
+      "disposition": "The detected calculation audit is already in §9.2. It does not replace the local worked arithmetic in §2.",
+      "locations": [
+        {
+          "line": 1283,
+          "detail": "复算记录；移到 §9 或折叠「复算与来源」",
+          "context": "### 9.2 真正做过的计算\n\n伴随 `compute.py` 用 Decimal/Fraction 复算 A4/5/6/16、B1 多空变式、B2 选轮数、B3 概率差/损失变式、B4 额度、C1/2 全部数字；结果为 `computation-results.json`。这是固定题面计算，不是重新训练、交易或访问客户资料。\n\nB2 补图由同一代码按原始三个候选数据生成。作者实际查看 PNG 静态图，轴、数值、图例与最低点可辨；未将其冒称候选 Markdown/Obsidian 的最终嵌入显示。"
+        }
+      ]
+    },
+    "R6b": {
+      "count": 10,
+      "disposition": "Each warning retains original question IDs/financial terms; full local explanations and example steps are present and accepted by independent reviewer. Source-bound acronyms are not deleted to lower density.",
+      "locations": [
+        {
+          "line": 75,
+          "detail": "一句 6 个术语，核对是否需要拆解（A1、A16、B1、B4、C1、C2）：下面 A1–A16、B1–B4、C1–C2 保留原部分和原题号；编号 2…",
+          "context": "> Show your working in the spaces provided. Each question carries 10 marks.\n\n下面 A1–A16、B1–B4、C1–C2 保留原部分和原题号；编号 2.1–2.22 仅是本解析导航。\n\n### 2.1 A1 · Ridge 怎样稳定相关变量的系数（原卷 p.2）"
+        },
+        {
+          "line": 179,
+          "detail": "一句 4 个术语（主成分回归、Principal component regression、PCR、偏最小二乘、Partial least squares、PLS）：主成分回归（Principal component regression…",
+          "context": "**⚪ 参考选择：C。**\n\n主成分回归（Principal component regression，PCR）先用预测变量自身构造成分，再用成分预测收益；偏最小二乘（Partial least squares，PLS）构造成分时也参考训练收益。成分是原变量的组合，减少相关输入的重复表达，不是把企业按树分组。训练目标可用，最终测试收益不能提前进入成分。\n\n**逐选项判断**"
+        },
+        {
+          "line": 785,
+          "detail": "一句 4 个术语（PDD、JD、多头、空头）：若 PDD 跌 20%、JD 只跌 5%，多头亏 10 元，空头赚 2.…",
+          "context": "**直接答案**：假设是 JD 扩张外卖的补贴、履约或投入成本可能压低其相对利润/估值，而 PDD 相对少受该项投入负担或在其他业务上更有利。因此用买 PDD、空 JD 表达看好前者相对后者的观点。做空 JD 可对冲部分共同市场/行业变动，但不会消除 PDD 自身经营风险、两家公司不同的市场敏感度或 JD 反而上涨的挤空/借券风险。\n\n**为什么**：多头赚股价上涨，空头赚被卖股票下跌；组合目标是两者相对表现。以 100 元资本为计算基准，买入 50 元 PDD，做空 50 元 JD。若 PDD 跌 20%、JD 只跌 5%，多头亏 10 元，空头赚 2.5 元，净亏 7.5 元，即相对资本亏 7.5%。若另用每条腿 100 元的基准，差额才是 −15%；必须先声明分母。以上是笔记补充，不是原回测。\n\n**English reference answer (not official)**"
+        },
+        {
+          "line": 918,
+          "detail": "一句 4 个术语（PD、LGD、EAD、敞口）：预期损失的简化关系为 $EL=PD\\times LGD\\times EA…",
+          "context": "**直接答案**：若其他条件不变，按原低概率定价会低估预期信用损失，可能收费不足，使利润低于原预计。应查违约后净回收/违约损失率（Loss given default，LGD），这是题目已给实际违约率以外的重要结果；不能只重复“查违约率”。\n\n预期损失的简化关系为 $EL=PD\\times LGD\\times EAD$：PD是所定期限违约概率，LGD是违约条件下损失比例，EAD是违约时敞口金额。实际违约率更高并不唯一确定EL变多少，回收、敞口和时点也可能改变。因此先核可比群组与实际回收再修估计/价格，不直接把3%或7%当损失金额比例。\n\n**English reference answer (not official)**"
+        },
+        {
+          "line": 926,
+          "detail": "一句 5 个术语（PD、违约损失率、loss given default、LGD、敞口、EAD）：违约概率（probability of default, PD）是所定期…",
+          "context": "**违约频率不是损失率**\n\n违约概率（probability of default, PD）是所定期限内违约的可能性；违约损失率（loss given default, LGD）是已经违约时有多少金额最终收不回；违约时敞口（exposure at default, EAD）是届时面临损失的金额。预期损失（expected loss, EL）的单期简化关系为 $EL=PD\\times LGD\\times EAD$。\n\n| 量 | 单位 | 何时/条件 | 本题是否给数 |"
+        },
+        {
+          "line": 935,
+          "detail": "一句 4 个术语（EAD、LGD、PD、EL）：例如固定 EAD 为 1,000 元、LGD 为 50%，PD 从 1%…",
+          "context": "| EL | 同币种金额 | 所定期限的预期损失 | 不能从频率单独算出 |\n\n例如固定 EAD 为 1,000 元、LGD 为 50%，PD 从 1% 改 3%，EL 从 5 元变 15 元。这只是笔记补充的同条件例，不能把真实群组的 LGD、敞口假定成这些数。\n\n两组汇总只支持本题的群组排序一致和两个点的低估。没有组人数/抽样模型，不能计算置信区间，也不能判定所有个体排序或全概率区间校准都好。完整期限减少未到期截尾问题，不自动给出净回收、折现和处置成本。"
+        },
+        {
+          "line": 1216,
+          "detail": "一句 5 个术语（B3、LGD、C1、C2、B4）：不要把 B3 的违约频率当 LGD，把 C1 的 77.78% 当收益率…",
+          "context": "短答先用一句直接回答，再把具体事实连到机制，最后写不能推出什么。计算题先写输入单位、关系和符号，再逐步代入；最后用一句中文或英文解释数值回答的是什么，不只留下孤立结果。\n\n不要把 B3 的违约频率当 LGD，把 C1 的 77.78% 当收益率，把 C2 的 2,000 当收费收入，或把 B4 的 30 万当已经批准。\n\n## 7. 改条件自测"
+        },
+        {
+          "line": 1283,
+          "detail": "一句 7 个术语，核对是否需要拆解（A4、B1、多空、B2、B3、B4、C1）：伴随 `compute.py` 用 Decimal/Fraction 复…",
+          "context": "### 9.2 真正做过的计算\n\n伴随 `compute.py` 用 Decimal/Fraction 复算 A4/5/6/16、B1 多空变式、B2 选轮数、B3 概率差/损失变式、B4 额度、C1/2 全部数字；结果为 `computation-results.json`。这是固定题面计算，不是重新训练、交易或访问客户资料。\n\nB2 补图由同一代码按原始三个候选数据生成。作者实际查看 PNG 静态图，轴、数值、图例与最低点可辨；未将其冒称候选 Markdown/Obsidian 的最终嵌入显示。"
+        },
+        {
+          "line": 1289,
+          "detail": "一句 5 个术语（C1、MA12、A16、C2、B4）：题面已经给出了 C1 的 MA12 预测、A16 的固定费率成本、C2 …",
+          "context": "### 9.3 不应被伪造成“缺资料所以不能解”的部分\n\n题面已经给出了 C1 的 MA12 预测、A16 的固定费率成本、C2 的预期损失和 B4 的条件数值，足以完成相应计算。无需下载新行情、取得 12 个原始月份或另找真实 BNPL 财报才能算这些数。\n\n真正未知的是官方评分细则、当前 Canvas 是否有解答、最终考试最新通知、B1 的因果识别证据、B3 的真实回收/敞口、B4 现实记录完整性等。它们限制可声称的结论，不抹掉题面能回答的部分。"
+        },
+        {
+          "line": 1291,
+          "detail": "一句 4 个术语（B1、B3、敞口、B4）：真正未知的是官方评分细则、当前 Canvas 是否有解答、最终考试最新通…",
+          "context": "题面已经给出了 C1 的 MA12 预测、A16 的固定费率成本、C2 的预期损失和 B4 的条件数值，足以完成相应计算。无需下载新行情、取得 12 个原始月份或另找真实 BNPL 财报才能算这些数。\n\n真正未知的是官方评分细则、当前 Canvas 是否有解答、最终考试最新通知、B1 的因果识别证据、B3 的真实回收/敞口、B4 现实记录完整性等。它们限制可声称的结论，不抹掉题面能回答的部分。\n\n### 9.4 尚未完成的验收"
+        }
+      ]
+    },
+    "R6d": {
+      "count": 52,
+      "disposition": "52 exact locations retained below. IDs A/B/C are question locators; return/risk/cost/OLS/SSE/PD/LGD/EAD and product abbreviations have local definitions or contextual use. Disposition inherits Stage1/2 full learning attempts and targeted acceptance, not the checker guessing first-use semantics.",
+      "locations": [
+        {
+          "line": 75,
+          "detail": "缩写“A1”首用未识别到中文说明；人工核对",
+          "context": "> Show your working in the spaces provided. Each question carries 10 marks.\n\n下面 A1–A16、B1–B4、C1–C2 保留原部分和原题号；编号 2.1–2.22 仅是本解析导航。\n\n### 2.1 A1 · Ridge 怎样稳定相关变量的系数（原卷 p.2）"
+        },
+        {
+          "line": 75,
+          "detail": "缩写“A16”首用未识别到中文说明；人工核对",
+          "context": "> Show your working in the spaces provided. Each question carries 10 marks.\n\n下面 A1–A16、B1–B4、C1–C2 保留原部分和原题号；编号 2.1–2.22 仅是本解析导航。\n\n### 2.1 A1 · Ridge 怎样稳定相关变量的系数（原卷 p.2）"
+        },
+        {
+          "line": 75,
+          "detail": "缩写“B1”首用未识别到中文说明；人工核对",
+          "context": "> Show your working in the spaces provided. Each question carries 10 marks.\n\n下面 A1–A16、B1–B4、C1–C2 保留原部分和原题号；编号 2.1–2.22 仅是本解析导航。\n\n### 2.1 A1 · Ridge 怎样稳定相关变量的系数（原卷 p.2）"
+        },
+        {
+          "line": 75,
+          "detail": "缩写“B4”首用未识别到中文说明；人工核对",
+          "context": "> Show your working in the spaces provided. Each question carries 10 marks.\n\n下面 A1–A16、B1–B4、C1–C2 保留原部分和原题号；编号 2.1–2.22 仅是本解析导航。\n\n### 2.1 A1 · Ridge 怎样稳定相关变量的系数（原卷 p.2）"
+        },
+        {
+          "line": 75,
+          "detail": "缩写“C1”首用未识别到中文说明；人工核对",
+          "context": "> Show your working in the spaces provided. Each question carries 10 marks.\n\n下面 A1–A16、B1–B4、C1–C2 保留原部分和原题号；编号 2.1–2.22 仅是本解析导航。\n\n### 2.1 A1 · Ridge 怎样稳定相关变量的系数（原卷 p.2）"
+        },
+        {
+          "line": 75,
+          "detail": "缩写“C2”首用未识别到中文说明；人工核对",
+          "context": "> Show your working in the spaces provided. Each question carries 10 marks.\n\n下面 A1–A16、B1–B4、C1–C2 保留原部分和原题号；编号 2.1–2.22 仅是本解析导航。\n\n### 2.1 A1 · Ridge 怎样稳定相关变量的系数（原卷 p.2）"
+        },
+        {
+          "line": 79,
+          "detail": "缩写“OLS”首用未识别到中文说明；人工核对",
+          "context": "### 2.1 A1 · Ridge 怎样稳定相关变量的系数（原卷 p.2）\n\n若干相关市场变量使 OLS 系数在相近样本中不稳定。保留原始输入改用 Ridge，问平方系数惩罚想改善什么，而不是保证所有样本都怎样。\n\n来源：Practice Exam A p.2，原 Section A 第 1 题，2.5 分。"
+        },
+        {
+          "line": 99,
+          "detail": "“标准误”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "**逐选项判断**\n\n- A 说斜率不变、只缩小标准误，错：惩罚参与系数选择，本身会改变拟合。\n- B 说系数较小/较稳定但训练拟合可能变差，符合目的。这里不承诺每一个相关变量的系数都逐项按同一比例缩小。\n- C 说每个训练行单独预测就不用共同系数，错：仍学习可用于新样本的共同关系。"
+        },
+        {
+          "line": 122,
+          "detail": "缩写“OLS”首用未识别到中文说明；人工核对",
+          "context": "### 2.2 A2 · 嵌套 OLS 的训练误差为何不会增加（原卷 p.2）\n\n在完全相同观测上，给 OLS 增添变量，大模型包含小模型。比较训练拟合误差与后来预测误差，注意 cannot rise 不等于 must fall strictly。\n\n来源：Practice Exam A p.2，原 Section A 第 2 题，2.5 分。"
+        },
+        {
+          "line": 138,
+          "detail": "缩写“SSE”首用未识别到中文说明；人工核对",
+          "context": "**⚪ 参考选择：C。**\n\nlarger model contains the smaller one 表示新模型保留全部旧变量；同一批观测很关键。新模型至少可以把新增系数设为零，复现旧模型，所以在自由寻找最小训练误差时不可能比旧解更差。但后来的资料没参与这个最小化，可能因拟合噪声反而更差。误差平方和（Sum of squared errors，SSE）是每行真实值与拟合值之差先平方再相加。\n\n**逐选项判断**"
+        },
+        {
+          "line": 142,
+          "detail": "“样本外”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "**逐选项判断**\n\n- A 说后来预测误差必降，错：训练改进不保证样本外。\n- B 说每增变量 SSE 必严格下降，错：无帮助变量可能系数为零，SSE 只保持不变。\n- C 说训练 SSE 不升、后来误差可升，正确。"
+        },
+        {
+          "line": 163,
+          "detail": "缩写“PCR”首用未识别到中文说明；人工核对",
+          "context": "### 2.3 A3 · PCR 与 PLS 在构造成分时用什么（原卷 p.2）\n\n一人想用相关预测变量概括成分，另一人想让训练收益也参与构造成分。问 PCR 与 PLS 在这一步用什么资料。\n\n来源：Practice Exam A p.2，原 Section A 第 3 题，2.5 分。"
+        },
+        {
+          "line": 163,
+          "detail": "缩写“PLS”首用未识别到中文说明；人工核对",
+          "context": "### 2.3 A3 · PCR 与 PLS 在构造成分时用什么（原卷 p.2）\n\n一人想用相关预测变量概括成分，另一人想让训练收益也参与构造成分。问 PCR 与 PLS 在这一步用什么资料。\n\n来源：Practice Exam A p.2，原 Section A 第 3 题，2.5 分。"
+        },
+        {
+          "line": 184,
+          "detail": "“显著”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "\n- A 说两者都用训练收益且只有 PCR 保留原变量，错：PCR 构造成分本身不使用收益目标。\n- B 把 PCR 说成显著性选原变量、PLS 说成树阈值分组，均错。\n- C 分清 PCR 仅用输入、PLS 同时用训练收益，正确。\n- D 要用最终测试收益或强制验证收益构造成分，错：会泄漏或混淆训练与选择阶段。"
+        },
+        {
+          "line": 204,
+          "detail": "“超额收益”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "### 2.4 A4 · Alpha 与 Beta 的水平和变化分开算（原卷 p.3）\n\n月度绩效回归 alpha 为 0.20%，市场 beta 为 1.50；市场超额收益从 0 变 2.00%。求拟合组合超额收益的起点与终点，不是只求增量。\n\n来源：Practice Exam A p.3，原 Section A 第 4 题，2.5 分。"
+        },
+        {
+          "line": 252,
+          "detail": "“bp”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "### 2.5 A5 · 双边换手成本与周夏普比率（原卷 p.3）\n\n每周买入组合价值的 30%、卖出 30%，每次交易成本为交易金额的 10 bp。毛平均超额收益 0.30%、波动 3.00%，求扣费后的均值和周夏普，不要年化。\n\n来源：Practice Exam A p.3，原 Section A 第 5 题，2.5 分。"
+        },
+        {
+          "line": 252,
+          "detail": "“超额收益”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "### 2.5 A5 · 双边换手成本与周夏普比率（原卷 p.3）\n\n每周买入组合价值的 30%、卖出 30%，每次交易成本为交易金额的 10 bp。毛平均超额收益 0.30%、波动 3.00%，求扣费后的均值和周夏普，不要年化。\n\n来源：Practice Exam A p.3，原 Section A 第 5 题，2.5 分。"
+        },
+        {
+          "line": 252,
+          "detail": "“年化”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "### 2.5 A5 · 双边换手成本与周夏普比率（原卷 p.3）\n\n每周买入组合价值的 30%、卖出 30%，每次交易成本为交易金额的 10 bp。毛平均超额收益 0.30%、波动 3.00%，求扣费后的均值和周夏普，不要年化。\n\n来源：Practice Exam A p.3，原 Section A 第 5 题，2.5 分。"
+        },
+        {
+          "line": 268,
+          "detail": "“夏普比率”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "**⚪ 参考选择：B。**\n\n10 个基点（Basis points，bp）等于每笔交易金额的 0.10%。买 30%、卖 30% 都要收费，费用占组合价值 $(30\\%+30\\%)\\times0.10\\%=0.06\\%$。净平均超额收益为 $0.30\\%-0.06\\%=0.24\\%$。题设每周同样比例和费率，扣固定收益量不改变周波动率 3.00%；周夏普比率（Sharpe ratio）为净平均超额收益除同频波动率，$0.24/3.00=0.08$。\n\n**逐选项判断**"
+        },
+        {
+          "line": 291,
+          "detail": "“换手”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "**改条件练习与边界**\n\n若换手每周变化，成本也会变化，不能继续假定扣费完全不改变波动率；本题不要求年化。\n\n### 2.6 A6 · 总敞口和净敞口分别加减（原卷 p.3）"
+        },
+        {
+          "line": 295,
+          "detail": "“做空”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "### 2.6 A6 · 总敞口和净敞口分别加减（原卷 p.3）\n\n初始资本的 60% 做多、40% 做空；在价格变化之前，分别算不计方向的总敞口和保留方向的净敞口。\n\n来源：Practice Exam A p.3，原 Section A 第 6 题，2.5 分。"
+        },
+        {
+          "line": 295,
+          "detail": "“敞口”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "### 2.6 A6 · 总敞口和净敞口分别加减（原卷 p.3）\n\n初始资本的 60% 做多、40% 做空；在价格变化之前，分别算不计方向的总敞口和保留方向的净敞口。\n\n来源：Practice Exam A p.3，原 Section A 第 6 题，2.5 分。"
+        },
+        {
+          "line": 295,
+          "detail": "“净敞口”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "### 2.6 A6 · 总敞口和净敞口分别加减（原卷 p.3）\n\n初始资本的 60% 做多、40% 做空；在价格变化之前，分别算不计方向的总敞口和保留方向的净敞口。\n\n来源：Practice Exam A p.3，原 Section A 第 6 题，2.5 分。"
+        },
+        {
+          "line": 316,
+          "detail": "“多头”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "\n- A 把总/净两种算法换反。\n- B 只报多头和空头各自大小，没算组合的总/净。\n- C 总 100% 对，但两边不是相等，净不能是零。\n- D 总 100%、净 20%，正确。"
+        },
+        {
+          "line": 382,
+          "detail": "缩写“BTC”首用未识别到中文说明；人工核对",
+          "context": "### 2.8 A8 · 共享分叉前历史不等于以后同链（原卷 p.4）\n\nBTC 与 BCH 共享 2017 年分开前的交易史，之后遵守不同规则。问共享历史是否强迫后来的交易和价格相同。\n\n来源：Practice Exam A p.4，原 Section A 第 8 题，2.5 分。"
+        },
+        {
+          "line": 382,
+          "detail": "缩写“BCH”首用未识别到中文说明；人工核对",
+          "context": "### 2.8 A8 · 共享分叉前历史不等于以后同链（原卷 p.4）\n\nBTC 与 BCH 共享 2017 年分开前的交易史，之后遵守不同规则。问共享历史是否强迫后来的交易和价格相同。\n\n来源：Practice Exam A p.4，原 Section A 第 8 题，2.5 分。"
+        },
+        {
+          "line": 464,
+          "detail": "缩写“NFT”首用未识别到中文说明；人工核对",
+          "context": "### 2.10 A10 · NFT 的代币、媒体和使用权三层（原卷 p.5）\n\n买了关联数字艺术品的 NFT，代币历史可查，但媒体链接失效且未说明版权许可。把代币归属、媒体访问、法律使用权分开。\n\n来源：Practice Exam A p.5，原 Section A 第 10 题，2.5 分。"
+        },
+        {
+          "line": 509,
+          "detail": "缩写“CBDC”首用未识别到中文说明；人工核对",
+          "context": "### 2.11 A11 · 界面相似时看谁承担货币负债（原卷 p.5）\n\n央行发行零售 CBDC，商行通过类似 App 提供普通存款。问谁对持有人承担货币负债，不按界面相似判断。\n\n来源：Practice Exam A p.5，原 Section A 第 11 题，2.5 分。"
+        },
+        {
+          "line": 525,
+          "detail": "缩写“CNY”首用未识别到中文说明；人工核对",
+          "context": "**⚪ 参考选择：D。**\n\n题目明确第一项是央行发行的零售中央银行数字货币（CBDC），第二项是商业银行普通存款。请求权（Claim）要问谁欠持有人钱；App 属于谁和指令数字化不改变发行负债身份。本题按这两个明确设定回答，不把所有名为 e-CNY 的特定版本安排一概套入。\n\n**逐选项判断**"
+        },
+        {
+          "line": 550,
+          "detail": "缩写“CNY”首用未识别到中文说明；人工核对",
+          "context": "### 2.12 A12 · 开户量与真实支付采用分开（原卷 p.5）\n\ne-CNY 钱包注册数增长，但要判断开户之后是否真的使用支付。需要活跃与重复付款证据，并统一期间和分母。\n\n来源：Practice Exam A p.5，原 Section A 第 12 题，2.5 分。"
+        },
+        {
+          "line": 706,
+          "detail": "“冻结”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "同名是一个支持线索，生日冲突是一个反向线索，证件未核是资料缺口。三者应保留而非强行改成一致。下一步核可靠额外标识、来源质量及处理规则，必要时升级人工；不能拿名单人物证件号填申请人空格。\n\n本题没有给具体国家制裁制度和银行流程，所以不写法定冻结期限或保证批准/拒绝。D 是题设下的证据处理步骤，不是实际交易授权。\n\n**改条件练习与边界**"
+        },
+        {
+          "line": 714,
+          "detail": "缩写“AUM”首用未识别到中文说明；人工核对",
+          "context": "### 2.16 A16 · 按管理资产收费的盈亏平衡（原卷 p.6）\n\n智能投顾每年收固定 AUM 的 0.4%，年度固定成本 60 万美元，变动服务成本为 AUM 的 0.1%。只有这些收入成本，求年度零利润所需 AUM。\n\n来源：Practice Exam A p.6，原 Section A 第 16 题，2.5 分。"
+        },
+        {
+          "line": 765,
+          "detail": "缩写“PDD”首用未识别到中文说明；人工核对",
+          "context": "### 2.17 B1 · 多 PDD、空 JD：假设与回测不能互换（原卷 p.7）\n\n题设借用 Class 1 的买 PDD、空 JD 思路，却明确历史窗口开始于 JD 外卖扩张之前。(a) 说明交易方向和至少一个未消除风险；(b) 解释正回测为何不是该业务事件的因果证据。\n\n来源：Practice Exam A p.7，原 Section B 第 1 题，10 分。"
+        },
+        {
+          "line": 765,
+          "detail": "缩写“JD”首用未识别到中文说明；人工核对",
+          "context": "### 2.17 B1 · 多 PDD、空 JD：假设与回测不能互换（原卷 p.7）\n\n题设借用 Class 1 的买 PDD、空 JD 思路，却明确历史窗口开始于 JD 外卖扩张之前。(a) 说明交易方向和至少一个未消除风险；(b) 解释正回测为何不是该业务事件的因果证据。\n\n来源：Practice Exam A p.7，原 Section B 第 1 题，10 分。"
+        },
+        {
+          "line": 779,
+          "detail": "“多空”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "</details>\n\n题面先给一个投资想法，又指出历史图开始于外卖扩张以前。long-PDD 是买入 PDD，short-JD 是借到 JD 股票卖出、以后买回归还；多空差不是自动无风险。以下为按题面组织的业务假设，不声称真实竞争已带来某个利润结果。\n\n#### 2.17.1 (a) 中文参考解析"
+        },
+        {
+          "line": 783,
+          "detail": "“做空”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "#### 2.17.1 (a) 中文参考解析\n\n**直接答案**：假设是 JD 扩张外卖的补贴、履约或投入成本可能压低其相对利润/估值，而 PDD 相对少受该项投入负担或在其他业务上更有利。因此用买 PDD、空 JD 表达看好前者相对后者的观点。做空 JD 可对冲部分共同市场/行业变动，但不会消除 PDD 自身经营风险、两家公司不同的市场敏感度或 JD 反而上涨的挤空/借券风险。\n\n**为什么**：多头赚股价上涨，空头赚被卖股票下跌；组合目标是两者相对表现。以 100 元资本为计算基准，买入 50 元 PDD，做空 50 元 JD。若 PDD 跌 20%、JD 只跌 5%，多头亏 10 元，空头赚 2.5 元，净亏 7.5 元，即相对资本亏 7.5%。若另用每条腿 100 元的基准，差额才是 −15%；必须先声明分母。以上是笔记补充，不是原回测。"
+        },
+        {
+          "line": 785,
+          "detail": "“多头”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "**直接答案**：假设是 JD 扩张外卖的补贴、履约或投入成本可能压低其相对利润/估值，而 PDD 相对少受该项投入负担或在其他业务上更有利。因此用买 PDD、空 JD 表达看好前者相对后者的观点。做空 JD 可对冲部分共同市场/行业变动，但不会消除 PDD 自身经营风险、两家公司不同的市场敏感度或 JD 反而上涨的挤空/借券风险。\n\n**为什么**：多头赚股价上涨，空头赚被卖股票下跌；组合目标是两者相对表现。以 100 元资本为计算基准，买入 50 元 PDD，做空 50 元 JD。若 PDD 跌 20%、JD 只跌 5%，多头亏 10 元，空头赚 2.5 元，净亏 7.5 元，即相对资本亏 7.5%。若另用每条腿 100 元的基准，差额才是 −15%；必须先声明分母。以上是笔记补充，不是原回测。\n\n**English reference answer (not official)**"
+        },
+        {
+          "line": 849,
+          "detail": "“横截面”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "#### 2.18.2 (b) 中文参考解析\n\n**直接答案**：按滞后通胀（Lagged inflation）分月份，是把不同时点分成宏观状态较高/较低的时间组；按同月企业规模（Size）分股票，是在同一个时点把企业分成大/小等横截面组。前者一行单位是月，后者一行单位是某月的一家公司。\n\n例如门槛通胀2%可把月份分开，规模门槛100亿元可把同月企业分开，两个数仅作笔记补充。滞后表示决策前已可得，不把本月尚未发布通胀偷作输入；组内预测对应各自数据单位，不是前者选企业、后者选历史月份。"
+        },
+        {
+          "line": 859,
+          "detail": "缩写“MSE”首用未识别到中文说明；人工核对",
+          "context": "**先看原始候选值，再读补充图**\n\n每行固定一个训练时长。损失的具体函数和单位未给，所以只按同一题设损失比较大小，不叫它 MSE 或百分比。\n\n| Epochs | Training loss | Validation loss | 用于选择的判断 |"
+        },
+        {
+          "line": 867,
+          "detail": "缩写“B2”首用未识别到中文说明；人工核对",
+          "context": "| 60 | 0.0015 | 0.0028 | 训练更低、验证反升 |\n\n![B2(a) 相同题设数据的补充损失图](b2-loss.svg)\n\n图横轴是训练轮数，纵轴是题目给的损失；蓝圆点为训练、橙方点为验证。沿橙色点看，30 轮最低；蓝线下降不改变这个选择准则。点间连线仅帮助读三候选，不证明每个中间轮次的真实轨迹，也不证明 30 是所有可能轮数的全局最优。"
+        },
+        {
+          "line": 916,
+          "detail": "缩写“LGD”首用未识别到中文说明；人工核对",
+          "context": "#### 2.19.2 (b) 中文参考解析\n\n**直接答案**：若其他条件不变，按原低概率定价会低估预期信用损失，可能收费不足，使利润低于原预计。应查违约后净回收/违约损失率（Loss given default，LGD），这是题目已给实际违约率以外的重要结果；不能只重复“查违约率”。\n\n预期损失的简化关系为 $EL=PD\\times LGD\\times EAD$：PD是所定期限违约概率，LGD是违约条件下损失比例，EAD是违约时敞口金额。实际违约率更高并不唯一确定EL变多少，回收、敞口和时点也可能改变。因此先核可比群组与实际回收再修估计/价格，不直接把3%或7%当损失金额比例。"
+        },
+        {
+          "line": 918,
+          "detail": "“敞口”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "**直接答案**：若其他条件不变，按原低概率定价会低估预期信用损失，可能收费不足，使利润低于原预计。应查违约后净回收/违约损失率（Loss given default，LGD），这是题目已给实际违约率以外的重要结果；不能只重复“查违约率”。\n\n预期损失的简化关系为 $EL=PD\\times LGD\\times EAD$：PD是所定期限违约概率，LGD是违约条件下损失比例，EAD是违约时敞口金额。实际违约率更高并不唯一确定EL变多少，回收、敞口和时点也可能改变。因此先核可比群组与实际回收再修估计/价格，不直接把3%或7%当损失金额比例。\n\n**English reference answer (not official)**"
+        },
+        {
+          "line": 918,
+          "detail": "缩写“EL”首用未识别到中文说明；人工核对",
+          "context": "**直接答案**：若其他条件不变，按原低概率定价会低估预期信用损失，可能收费不足，使利润低于原预计。应查违约后净回收/违约损失率（Loss given default，LGD），这是题目已给实际违约率以外的重要结果；不能只重复“查违约率”。\n\n预期损失的简化关系为 $EL=PD\\times LGD\\times EAD$：PD是所定期限违约概率，LGD是违约条件下损失比例，EAD是违约时敞口金额。实际违约率更高并不唯一确定EL变多少，回收、敞口和时点也可能改变。因此先核可比群组与实际回收再修估计/价格，不直接把3%或7%当损失金额比例。\n\n**English reference answer (not official)**"
+        },
+        {
+          "line": 969,
+          "detail": "缩写“RMB2”首用未识别到中文说明；人工核对",
+          "context": "**English reference answer (not official)**\n\nThe remaining capacity is RMB2 million × 80% − RMB1.3 million = RMB300,000, assuming complete and current financing records. Bank B needs the latest outstanding financing against the same receivable, including update responsibility and checks for financing outside participating banks.\n\n#### 2.20.2 (b) 中文参考解析"
+        },
+        {
+          "line": 969,
+          "detail": "缩写“RMB1”首用未识别到中文说明；人工核对",
+          "context": "**English reference answer (not official)**\n\nThe remaining capacity is RMB2 million × 80% − RMB1.3 million = RMB300,000, assuming complete and current financing records. Bank B needs the latest outstanding financing against the same receivable, including update responsibility and checks for financing outside participating banks.\n\n#### 2.20.2 (b) 中文参考解析"
+        },
+        {
+          "line": 969,
+          "detail": "缩写“RMB300”首用未识别到中文说明；人工核对",
+          "context": "**English reference answer (not official)**\n\nThe remaining capacity is RMB2 million × 80% − RMB1.3 million = RMB300,000, assuming complete and current financing records. Bank B needs the latest outstanding financing against the same receivable, including update responsibility and checks for financing outside participating banks.\n\n#### 2.20.2 (b) 中文参考解析"
+        },
+        {
+          "line": 1009,
+          "detail": "缩写“MA12”首用未识别到中文说明；人工核对",
+          "context": "### 2.21 C1 · 四个月样本外误差与MA12基准（原卷 p.11）\n\n四个月测试，题面保证预测只用先前资料，MA12 为此前 12 个月收益的平均。(a) 两种预测逐月求平方误差再加总；(b) 计算相对 MA12 的样本外决定系数，并回答能否证明投资盈利。\n\n来源：Practice Exam A p.11，原 Section C 第 1 题，10 分。"
+        },
+        {
+          "line": 1033,
+          "detail": "缩写“SSE”首用未识别到中文说明；人工核对",
+          "context": "#### 2.21.1 (a) 中文参考解析\n\n**直接答案**：模型SSE为0.0004，MA12为0.0018，单位均为小数收益的平方。\n\n先逐月算误差（真实收益减预测），再平方。每行代表一个测试月份，列出两个预测各自误差，负误差平方后也为正："
+        },
+        {
+          "line": 1054,
+          "detail": "“换手”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "**直接答案**：相对基准的样本外决定系数为 $R^2_{OOS}=1-SSE_{model}/SSE_{MA12}=1-0.0004/0.0018=7/9\\approx77.78\\%$。分母是本题MA12在同4个月的SSE，不是收益本身的方差；正值表示模型在这4个月的平方误差比MA12低约77.78%。\n\n这不证明投资盈利：题目没有把预测变成什么持仓、承担多大风险、换手和费用，也只有4个月，不能据此宣称统计显著或长期稳定。评估预测错误与评估可交易净收益是两项任务。\n\n改条件的笔记小例：模型SSE若等于0.0018，指标为0；若大于基准则为负。它可以为负，不必强行放在0到1。"
+        },
+        {
+          "line": 1054,
+          "detail": "“统计显著”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "**直接答案**：相对基准的样本外决定系数为 $R^2_{OOS}=1-SSE_{model}/SSE_{MA12}=1-0.0004/0.0018=7/9\\approx77.78\\%$。分母是本题MA12在同4个月的SSE，不是收益本身的方差；正值表示模型在这4个月的平方误差比MA12低约77.78%。\n\n这不证明投资盈利：题目没有把预测变成什么持仓、承担多大风险、换手和费用，也只有4个月，不能据此宣称统计显著或长期稳定。评估预测错误与评估可交易净收益是两项任务。\n\n改条件的笔记小例：模型SSE若等于0.0018，指标为0；若大于基准则为负。它可以为负，不必强行放在0到1。"
+        },
+        {
+          "line": 1060,
+          "detail": "“OOS”本节首用未识别到解释线索；人工核对附近的动作说明或唤醒",
+          "context": "**English reference answer (not official)**\n\nOOS R-squared is 1 − 0.0004/0.0018 = 7/9, about 77.78%. The model has lower squared forecast error than MA12 over these four months. This does not establish investment profitability without a trading rule, risk and transaction-cost analysis, or evidence over a sufficiently informative sample.\n\n**符号、单位与一个月的演算入口**"
+        },
+        {
+          "line": 1122,
+          "detail": "缩写“BNPL”首用未识别到中文说明；人工核对",
+          "context": "**按一笔交易追收入，而不是把本金算两次**\n\n先买后付（buy now, pay later, BNPL）在题设中让客户无息偿还购买本金，提供者靠商户费获得这项收入。商户原应收 2,000，扣费 80 后实得 1,920；提供者未来收回客户本金，不等于又赚了整笔 2,000。\n\n| 本笔交易的量 | 金额（港元） | 是否收入/成本 |"
+        }
+      ]
+    },
+    "R4f": {
+      "count": 11,
+      "disposition": "All 11 flagged headers refer to locally explained worked tables: B1 capital/returns, B2 epochs and given losses, B4 RMB conditional headroom, C1 each monthly error and square, C2 HKD flow/cost. Source units and complete-row reading are retained; Stage2 recomputed actual numbers.",
+      "locations": [
+        {
+          "line": 805,
+          "detail": "表头“初始绝对金额”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "一行代表一条腿，所有损益相对同一 100 元资本记账，未扣交易/借券成本。\n\n| 腿 | 初始绝对金额 | 股票收益 | 对资本的损益 |\n|---|---:|---:|---:|\n| 买 PDD | 50 元 | −20% | −10 元 |"
+        },
+        {
+          "line": 805,
+          "detail": "表头“股票收益”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "一行代表一条腿，所有损益相对同一 100 元资本记账，未扣交易/借券成本。\n\n| 腿 | 初始绝对金额 | 股票收益 | 对资本的损益 |\n|---|---:|---:|---:|\n| 买 PDD | 50 元 | −20% | −10 元 |"
+        },
+        {
+          "line": 861,
+          "detail": "表头“Epochs”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "每行固定一个训练时长。损失的具体函数和单位未给，所以只按同一题设损失比较大小，不叫它 MSE 或百分比。\n\n| Epochs | Training loss | Validation loss | 用于选择的判断 |\n|---:|---:|---:|---|\n| 10 | 0.0030 | 0.0032 | 验证损失较高 |"
+        },
+        {
+          "line": 861,
+          "detail": "表头“Trainingloss”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "每行固定一个训练时长。损失的具体函数和单位未给，所以只按同一题设损失比较大小，不叫它 MSE 或百分比。\n\n| Epochs | Training loss | Validation loss | 用于选择的判断 |\n|---:|---:|---:|---|\n| 10 | 0.0030 | 0.0032 | 验证损失较高 |"
+        },
+        {
+          "line": 861,
+          "detail": "表头“Validationloss”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "每行固定一个训练时长。损失的具体函数和单位未给，所以只按同一题设损失比较大小，不叫它 MSE 或百分比。\n\n| Epochs | Training loss | Validation loss | 用于选择的判断 |\n|---:|---:|---:|---|\n| 10 | 0.0030 | 0.0032 | 验证损失较高 |"
+        },
+        {
+          "line": 985,
+          "detail": "表头“金额（人民币元）”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "先固定同一笔 200 万元人民币应收款，并假定未偿融资记录完整且最新。每行是一个金额步骤：\n\n| 步骤 | 金额（人民币元） | 含义 |\n|---|---:|---|\n| 200 万×80% | 1,600,000 | 所有融资合计上限 |"
+        },
+        {
+          "line": 1037,
+          "detail": "表头“模型误差”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "先逐月算误差（真实收益减预测），再平方。每行代表一个测试月份，列出两个预测各自误差，负误差平方后也为正：\n\n| 月 | 模型误差 | 模型平方 | MA12误差 | MA12平方 |\n|---|---:|---:|---:|---:|\n| 1 | 0.01 | 0.0001 | 0.02 | 0.0004 |"
+        },
+        {
+          "line": 1037,
+          "detail": "表头“MA12误差”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "先逐月算误差（真实收益减预测），再平方。每行代表一个测试月份，列出两个预测各自误差，负误差平方后也为正：\n\n| 月 | 模型误差 | 模型平方 | MA12误差 | MA12平方 |\n|---|---:|---:|---:|---:|\n| 1 | 0.01 | 0.0001 | 0.02 | 0.0004 |"
+        },
+        {
+          "line": 1037,
+          "detail": "表头“MA12平方”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "先逐月算误差（真实收益减预测），再平方。每行代表一个测试月份，列出两个预测各自误差，负误差平方后也为正：\n\n| 月 | 模型误差 | 模型平方 | MA12误差 | MA12平方 |\n|---|---:|---:|---:|---:|\n| 1 | 0.01 | 0.0001 | 0.02 | 0.0004 |"
+        },
+        {
+          "line": 1124,
+          "detail": "表头“金额（港元）”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "先买后付（buy now, pay later, BNPL）在题设中让客户无息偿还购买本金，提供者靠商户费获得这项收入。商户原应收 2,000，扣费 80 后实得 1,920；提供者未来收回客户本金，不等于又赚了整笔 2,000。\n\n| 本笔交易的量 | 金额（港元） | 是否收入/成本 |\n|---|---:|---|\n| 购买本金 | 2,000 | 交易规模，不全是收入 |"
+        },
+        {
+          "line": 1124,
+          "detail": "表头“是否收入/成本”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "先买后付（buy now, pay later, BNPL）在题设中让客户无息偿还购买本金，提供者靠商户费获得这项收入。商户原应收 2,000，扣费 80 后实得 1,920；提供者未来收回客户本金，不等于又赚了整笔 2,000。\n\n| 本笔交易的量 | 金额（港元） | 是否收入/成本 |\n|---|---:|---|\n| 购买本金 | 2,000 | 交易规模，不全是收入 |"
+        }
+      ]
+    }
+  },
+  "counts": {
+    "C_warn": 3,
+    "R_warn": 112,
+    "L_hard": 0,
+    "C_hard": 0,
+    "R_hard": 0
+  },
+  "limitations": "Packaging support consolidates actual author/independent/root observations; does not claim to have performed their firsthand reviews."
+}

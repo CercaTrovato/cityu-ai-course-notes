@@ -1,0 +1,444 @@
+{
+  "scope": "source cell63 Q1-Q3 local learning reference; no official answer or personal submission claim",
+  "dataset": {
+    "name": "Breast Cancer Wisconsin Diagnostic",
+    "shape": [
+      569,
+      30
+    ],
+    "target_names": [
+      "malignant",
+      "benign"
+    ],
+    "class_counts": [
+      212,
+      357
+    ]
+  },
+  "environment": {
+    "python": "3.12.3 | packaged by conda-forge | (main, Apr 15 2024, 18:20:11) [MSC v.1938 64 bit (AMD64)]",
+    "sklearn": "1.5.1",
+    "numpy": "1.26.4"
+  },
+  "q1": {
+    "split": "same random_state0 holdout as source cell27, 426 train /143 test; no stratify",
+    "default_estimators": true,
+    "global_rng_seed": 20261118,
+    "models": [
+      {
+        "model": "DT",
+        "accuracy": 0.8671328671328671,
+        "error": 0.13286713286713292,
+        "malignant_recall": 0.9433962264150944,
+        "params": {
+          "ccp_alpha": 0.0,
+          "class_weight": null,
+          "criterion": "gini",
+          "max_depth": null,
+          "max_features": null,
+          "max_leaf_nodes": null,
+          "min_impurity_decrease": 0.0,
+          "min_samples_leaf": 1,
+          "min_samples_split": 2,
+          "min_weight_fraction_leaf": 0.0,
+          "monotonic_cst": null,
+          "random_state": null,
+          "splitter": "best"
+        }
+      },
+      {
+        "model": "RF",
+        "accuracy": 0.972027972027972,
+        "error": 0.027972027972028024,
+        "malignant_recall": 0.9811320754716981,
+        "params": {
+          "bootstrap": true,
+          "ccp_alpha": 0.0,
+          "class_weight": null,
+          "criterion": "gini",
+          "max_depth": null,
+          "max_features": "sqrt",
+          "max_leaf_nodes": null,
+          "max_samples": null,
+          "min_impurity_decrease": 0.0,
+          "min_samples_leaf": 1,
+          "min_samples_split": 2,
+          "min_weight_fraction_leaf": 0.0,
+          "monotonic_cst": null,
+          "n_estimators": 100,
+          "n_jobs": null,
+          "oob_score": false,
+          "random_state": null,
+          "verbose": 0,
+          "warm_start": false
+        }
+      },
+      {
+        "model": "SVC",
+        "accuracy": 0.9370629370629371,
+        "error": 0.06293706293706292,
+        "malignant_recall": 0.8490566037735849,
+        "params": {
+          "C": 1.0,
+          "break_ties": false,
+          "cache_size": 200,
+          "class_weight": null,
+          "coef0": 0.0,
+          "decision_function_shape": "ovr",
+          "degree": 3,
+          "gamma": "scale",
+          "kernel": "rbf",
+          "max_iter": -1,
+          "probability": false,
+          "random_state": null,
+          "shrinking": true,
+          "tol": 0.001,
+          "verbose": false
+        }
+      }
+    ],
+    "interpretation": "heldout scores used to choose among models; selected score is not an untouched final estimate"
+  },
+  "q2_q3": {
+    "outer": "StratifiedKFold3 shuffle seed11 on all569; inner StratifiedKFold3 shuffle seed22",
+    "metric": "accuracy; error=1-accuracy; malignant recall pos_label0 also reported",
+    "grids": "small fixed educational grids, no claim of global hyperparameter optimum",
+    "results": [
+      {
+        "model": "DT",
+        "preprocessing": "raw input; no learned preprocessing",
+        "folds": [
+          {
+            "fold": 1,
+            "n_train": 379,
+            "n_test": 190,
+            "correct": 177,
+            "accuracy": 0.9315789473684211,
+            "error": 0.06842105263157894,
+            "malignant_recall": 0.8873239436619719,
+            "inner_best_score": 0.9498604341124026,
+            "best_params": {
+              "model__max_depth": null,
+              "model__min_samples_leaf": 3
+            },
+            "warnings": []
+          },
+          {
+            "fold": 2,
+            "n_train": 379,
+            "n_test": 190,
+            "correct": 174,
+            "accuracy": 0.9157894736842105,
+            "error": 0.08421052631578951,
+            "malignant_recall": 0.9154929577464789,
+            "inner_best_score": 0.9313835770528683,
+            "best_params": {
+              "model__max_depth": null,
+              "model__min_samples_leaf": 1
+            },
+            "warnings": []
+          },
+          {
+            "fold": 3,
+            "n_train": 380,
+            "n_test": 189,
+            "correct": 177,
+            "accuracy": 0.9365079365079365,
+            "error": 0.06349206349206349,
+            "malignant_recall": 0.9142857142857143,
+            "inner_best_score": 0.9315085614298213,
+            "best_params": {
+              "model__max_depth": 3,
+              "model__min_samples_leaf": 3
+            },
+            "warnings": []
+          }
+        ],
+        "mean_accuracy": 0.9279587858535226,
+        "sample_std_accuracy": 0.010823255170695774,
+        "mean_error": 0.07204121414647735
+      },
+      {
+        "model": "RF",
+        "preprocessing": "raw input; no learned preprocessing",
+        "folds": [
+          {
+            "fold": 1,
+            "n_train": 379,
+            "n_test": 190,
+            "correct": 181,
+            "accuracy": 0.9526315789473684,
+            "error": 0.047368421052631615,
+            "malignant_recall": 0.8873239436619719,
+            "inner_best_score": 0.9551514394034079,
+            "best_params": {
+              "model__max_depth": null,
+              "model__min_samples_leaf": 1
+            },
+            "warnings": []
+          },
+          {
+            "fold": 2,
+            "n_train": 379,
+            "n_test": 190,
+            "correct": 181,
+            "accuracy": 0.9526315789473684,
+            "error": 0.047368421052631615,
+            "malignant_recall": 0.9295774647887324,
+            "inner_best_score": 0.9630462858809316,
+            "best_params": {
+              "model__max_depth": 5,
+              "model__min_samples_leaf": 1
+            },
+            "warnings": []
+          },
+          {
+            "fold": 3,
+            "n_train": 380,
+            "n_test": 189,
+            "correct": 183,
+            "accuracy": 0.9682539682539683,
+            "error": 0.031746031746031744,
+            "malignant_recall": 0.9571428571428572,
+            "inner_best_score": 0.9472982543848686,
+            "best_params": {
+              "model__max_depth": 5,
+              "model__min_samples_leaf": 1
+            },
+            "warnings": []
+          }
+        ],
+        "mean_accuracy": 0.9578390420495683,
+        "sample_std_accuracy": 0.009019590671550566,
+        "mean_error": 0.04216095795043173
+      },
+      {
+        "model": "SVC",
+        "preprocessing": "raw input; no learned preprocessing",
+        "folds": [
+          {
+            "fold": 1,
+            "n_train": 379,
+            "n_test": 190,
+            "correct": 181,
+            "accuracy": 0.9526315789473684,
+            "error": 0.047368421052631615,
+            "malignant_recall": 0.9014084507042254,
+            "inner_best_score": 0.9366745823438736,
+            "best_params": {
+              "model__C": 10,
+              "model__gamma": 0.0001
+            },
+            "warnings": []
+          },
+          {
+            "fold": 2,
+            "n_train": 379,
+            "n_test": 190,
+            "correct": 178,
+            "accuracy": 0.9368421052631579,
+            "error": 0.06315789473684208,
+            "malignant_recall": 0.9154929577464789,
+            "inner_best_score": 0.9419655876348788,
+            "best_params": {
+              "model__C": 10,
+              "model__gamma": 0.0001
+            },
+            "warnings": []
+          },
+          {
+            "fold": 3,
+            "n_train": 380,
+            "n_test": 189,
+            "correct": 176,
+            "accuracy": 0.9312169312169312,
+            "error": 0.06878306878306883,
+            "malignant_recall": 0.8714285714285714,
+            "inner_best_score": 0.9420697412823397,
+            "best_params": {
+              "model__C": 10,
+              "model__gamma": 0.0001
+            },
+            "warnings": []
+          }
+        ],
+        "mean_accuracy": 0.9402302051424858,
+        "sample_std_accuracy": 0.011102080883731043,
+        "mean_error": 0.059769794857514214
+      },
+      {
+        "model": "DT",
+        "preprocessing": "SelectKBest then StandardScaler, each fitted inside every training fold",
+        "folds": [
+          {
+            "fold": 1,
+            "n_train": 379,
+            "n_test": 190,
+            "correct": 177,
+            "accuracy": 0.9315789473684211,
+            "error": 0.06842105263157894,
+            "malignant_recall": 0.8873239436619719,
+            "inner_best_score": 0.9498604341124026,
+            "best_params": {
+              "model__max_depth": null,
+              "model__min_samples_leaf": 3,
+              "select__k": "all"
+            },
+            "warnings": []
+          },
+          {
+            "fold": 2,
+            "n_train": 379,
+            "n_test": 190,
+            "correct": 172,
+            "accuracy": 0.9052631578947369,
+            "error": 0.09473684210526312,
+            "malignant_recall": 0.9014084507042254,
+            "inner_best_score": 0.9471941007374077,
+            "best_params": {
+              "model__max_depth": null,
+              "model__min_samples_leaf": 1,
+              "select__k": 10
+            },
+            "warnings": []
+          },
+          {
+            "fold": 3,
+            "n_train": 380,
+            "n_test": 189,
+            "correct": 172,
+            "accuracy": 0.91005291005291,
+            "error": 0.08994708994709,
+            "malignant_recall": 0.9,
+            "inner_best_score": 0.9473190851143608,
+            "best_params": {
+              "model__max_depth": null,
+              "model__min_samples_leaf": 3,
+              "select__k": 10
+            },
+            "warnings": []
+          }
+        ],
+        "mean_accuracy": 0.9156316717720226,
+        "sample_std_accuracy": 0.01401685166664734,
+        "mean_error": 0.08436832822797735
+      },
+      {
+        "model": "RF",
+        "preprocessing": "SelectKBest then StandardScaler, each fitted inside every training fold",
+        "folds": [
+          {
+            "fold": 1,
+            "n_train": 379,
+            "n_test": 190,
+            "correct": 181,
+            "accuracy": 0.9526315789473684,
+            "error": 0.047368421052631615,
+            "malignant_recall": 0.8873239436619719,
+            "inner_best_score": 0.9551514394034079,
+            "best_params": {
+              "model__max_depth": null,
+              "model__min_samples_leaf": 1,
+              "select__k": "all"
+            },
+            "warnings": []
+          },
+          {
+            "fold": 2,
+            "n_train": 379,
+            "n_test": 190,
+            "correct": 181,
+            "accuracy": 0.9526315789473684,
+            "error": 0.047368421052631615,
+            "malignant_recall": 0.9295774647887324,
+            "inner_best_score": 0.9657126192559263,
+            "best_params": {
+              "model__max_depth": 5,
+              "model__min_samples_leaf": 1,
+              "select__k": 20
+            },
+            "warnings": []
+          },
+          {
+            "fold": 3,
+            "n_train": 380,
+            "n_test": 189,
+            "correct": 177,
+            "accuracy": 0.9365079365079365,
+            "error": 0.06349206349206349,
+            "malignant_recall": 0.9285714285714286,
+            "inner_best_score": 0.949922926300879,
+            "best_params": {
+              "model__max_depth": 5,
+              "model__min_samples_leaf": 3,
+              "select__k": 10
+            },
+            "warnings": []
+          }
+        ],
+        "mean_accuracy": 0.9472570314675578,
+        "sample_std_accuracy": 0.009308989302723267,
+        "mean_error": 0.0527429685324422
+      },
+      {
+        "model": "SVC",
+        "preprocessing": "SelectKBest then StandardScaler, each fitted inside every training fold",
+        "folds": [
+          {
+            "fold": 1,
+            "n_train": 379,
+            "n_test": 190,
+            "correct": 185,
+            "accuracy": 0.9736842105263158,
+            "error": 0.02631578947368418,
+            "malignant_recall": 0.9436619718309859,
+            "inner_best_score": 0.9709827938174395,
+            "best_params": {
+              "model__C": 1,
+              "model__gamma": "scale",
+              "select__k": "all"
+            },
+            "warnings": []
+          },
+          {
+            "fold": 2,
+            "n_train": 379,
+            "n_test": 190,
+            "correct": 184,
+            "accuracy": 0.968421052631579,
+            "error": 0.03157894736842104,
+            "malignant_recall": 0.9436619718309859,
+            "inner_best_score": 0.9815023122109737,
+            "best_params": {
+              "model__C": 1,
+              "model__gamma": "scale",
+              "select__k": "all"
+            },
+            "warnings": []
+          },
+          {
+            "fold": 3,
+            "n_train": 380,
+            "n_test": 189,
+            "correct": 186,
+            "accuracy": 0.9841269841269841,
+            "error": 0.015873015873015928,
+            "malignant_recall": 0.9714285714285714,
+            "inner_best_score": 0.9605049368828896,
+            "best_params": {
+              "model__C": 10,
+              "model__gamma": "scale",
+              "select__k": "all"
+            },
+            "warnings": []
+          }
+        ],
+        "mean_accuracy": 0.9754107490949596,
+        "sample_std_accuracy": 0.007994046072318479,
+        "mean_error": 0.024589250905040383
+      }
+    ],
+    "interpretation": "same outer partitions reused for exploratory comparison of families and preprocessing; within each fit test fold excluded; choosing a final winning family/preprocessing after outer scores makes it another selection step, so do not call its outer mean an untouched final performance guarantee"
+  },
+  "elapsed_seconds": 15.457280397415161
+}

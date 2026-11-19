@@ -1,0 +1,263 @@
+{
+  "source": "Sample Final.docx embedded images1-3 visually read; weighted counts manually transcribed, not OCR alone",
+  "source_sha256": "04ac67e3e3aa92ab2fff2895fde321d22d091e70d1b24fd1f7f202562e5fe0e7",
+  "training_original": {
+    "n": 15,
+    "positive": 7,
+    "negative": 8,
+    "errors": 0,
+    "rows": [
+      {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "positive": 4,
+        "negative": 0,
+        "prediction": "+",
+        "errors": 0
+      },
+      {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 1,
+        "positive": 0,
+        "negative": 1,
+        "prediction": "-",
+        "errors": 0
+      },
+      {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 0,
+        "positive": 0,
+        "negative": 1,
+        "prediction": "-",
+        "errors": 0
+      },
+      {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 1,
+        "positive": 0,
+        "negative": 1,
+        "prediction": "-",
+        "errors": 0
+      },
+      {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 0,
+        "positive": 3,
+        "negative": 0,
+        "prediction": "+",
+        "errors": 0
+      },
+      {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 1,
+        "positive": 0,
+        "negative": 5,
+        "prediction": "-",
+        "errors": 0
+      }
+    ]
+  },
+  "validation_original": {
+    "n": 15,
+    "positive": 12,
+    "negative": 3,
+    "errors": 7,
+    "rows": [
+      {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 1,
+        "positive": 4,
+        "negative": 0,
+        "prediction": "-",
+        "errors": 4
+      },
+      {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 1,
+        "positive": 3,
+        "negative": 0,
+        "prediction": "-",
+        "errors": 3
+      },
+      {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 0,
+        "positive": 0,
+        "negative": 1,
+        "prediction": "-",
+        "errors": 0
+      },
+      {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 0,
+        "positive": 0,
+        "negative": 2,
+        "prediction": "-",
+        "errors": 0
+      },
+      {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "positive": 2,
+        "negative": 0,
+        "prediction": "+",
+        "errors": 0
+      },
+      {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 1,
+        "positive": 3,
+        "negative": 0,
+        "prediction": "+",
+        "errors": 0
+      }
+    ]
+  },
+  "pruned_node_training_counts": {
+    "D": [
+      4,
+      1
+    ],
+    "C": [
+      4,
+      2
+    ],
+    "left_B": [
+      4,
+      3
+    ],
+    "right_B": [
+      3,
+      5
+    ],
+    "A": [
+      7,
+      8
+    ]
+  },
+  "models": [
+    {
+      "model": "L0-R0",
+      "left_pruning": "original",
+      "right_pruned": false,
+      "leaves": 6,
+      "training_errors": 0,
+      "training_error": 0.0,
+      "pessimistic": 0.4,
+      "validation_errors": 7,
+      "validation_error": 0.4666666666666667
+    },
+    {
+      "model": "L1-R0",
+      "left_pruning": "replace D by + leaf",
+      "right_pruned": false,
+      "leaves": 5,
+      "training_errors": 1,
+      "training_error": 0.06666666666666667,
+      "pessimistic": 0.4,
+      "validation_errors": 3,
+      "validation_error": 0.2
+    },
+    {
+      "model": "L2-R0",
+      "left_pruning": "replace C subtree by + leaf",
+      "right_pruned": false,
+      "leaves": 4,
+      "training_errors": 2,
+      "training_error": 0.13333333333333333,
+      "pessimistic": 0.4,
+      "validation_errors": 0,
+      "validation_error": 0.0
+    },
+    {
+      "model": "L3-R0",
+      "left_pruning": "replace left B subtree by + leaf",
+      "right_pruned": false,
+      "leaves": 3,
+      "training_errors": 3,
+      "training_error": 0.2,
+      "pessimistic": 0.4,
+      "validation_errors": 3,
+      "validation_error": 0.2
+    },
+    {
+      "model": "L0-R1",
+      "left_pruning": "original",
+      "right_pruned": true,
+      "leaves": 5,
+      "training_errors": 3,
+      "training_error": 0.2,
+      "pessimistic": 0.5333333333333333,
+      "validation_errors": 12,
+      "validation_error": 0.8
+    },
+    {
+      "model": "L1-R1",
+      "left_pruning": "replace D by + leaf",
+      "right_pruned": true,
+      "leaves": 4,
+      "training_errors": 4,
+      "training_error": 0.26666666666666666,
+      "pessimistic": 0.5333333333333333,
+      "validation_errors": 8,
+      "validation_error": 0.5333333333333333
+    },
+    {
+      "model": "L2-R1",
+      "left_pruning": "replace C subtree by + leaf",
+      "right_pruned": true,
+      "leaves": 3,
+      "training_errors": 5,
+      "training_error": 0.3333333333333333,
+      "pessimistic": 0.5333333333333333,
+      "validation_errors": 5,
+      "validation_error": 0.3333333333333333
+    },
+    {
+      "model": "L3-R1",
+      "left_pruning": "replace left B subtree by + leaf",
+      "right_pruned": true,
+      "leaves": 2,
+      "training_errors": 6,
+      "training_error": 0.4,
+      "pessimistic": 0.5333333333333333,
+      "validation_errors": 8,
+      "validation_error": 0.5333333333333333
+    },
+    {
+      "model": "root-only",
+      "left_pruning": "entire tree replaced by majority -",
+      "right_pruned": true,
+      "leaves": 1,
+      "training_errors": 7,
+      "training_error": 0.4666666666666667,
+      "pessimistic": 0.5333333333333333,
+      "validation_errors": 12,
+      "validation_error": 0.8
+    }
+  ]
+}

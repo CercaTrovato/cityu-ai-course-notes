@@ -1,0 +1,166 @@
+Final. Exam. Sample
+
+Question 1 (20 points)
+
+A telecommunication company wants to investigate the customer churn phenomenon. Customer churn occurs when customers stop doing business with a company. The telecommunication company has collected some data. Please check the data file Q1.xlsx. The major variables are defined below:
+
+Name: customer’s name,
+
+Gender: a customer’s gender,
+
+Age: a customer’s age when the data was collected,
+
+Payment Method: the method a customer paid the bill,
+
+Churn: churn status,
+
+LastTransaction: the amount a customer paid for his/her last transaction.
+
+The company wants to perform some descriptive analytics and needs your help. Please answer the following questions (keep two decimal places):
+
+
+
+In total, how many records (rows) have missing value in the variable “Churn”? Please provide two methods to process missing values. (4 points)
+
+
+
+Among all the customers, what is the interquartile range (IQR) of last transaction? (3 points)
+
+
+
+Problem 3 Decision Tree (20 points). 
+
+Consider the decision tree shown in Figure 1below, and the corresponding training and validation sets in Tables 1 and 2 respectively. 
+
+
+
+(1) Estimate the error rate of the tree using both the training error and the pessimistic error considering model complexity. While computing the error with pessimistic approach, to account for model complexity, use a penalty value of 1 to each leaf node. (2 points)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(2) Compute the validation error of the tree using the validation set shown in Table 2. (2 points)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(3) Comment on the behavior of training and validation set errors with respect to model complexity by evaluating the pruned tree models. (8 points)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(4) Which library can be used for implementing a decision tree model? Please write down the code for model importing and model setting for a decision tree of maximum 8 layers. (8 points)
+
+
+
+
+
+
+
+Figure 1 Decision Tree structure for Question 2
+
+
+
+Table 1 Training Dataset
+
+
+
+
+
+
+
+Table 2 Validation Dataset
+
+
+
+
+
+Question 5 (20 points)
+
+Bitcoin is a cryptocurrency. Its price has increased dramatically in the past five years. The Q4 BTC-USD.csv contains Bitcoin close prices from 30/04/2013 to 30/04/2018 in column “Close.” Please use this data set to answer the following questions:
+
+
+
+
+
+(1) If you are asked to use autoregressive models to generate foresting, which variable do you think will work better as dependent variable or variable processing. Why?  (5 points)
+
+(a) The original value of Bitcoin prices Closet, or
+
+(b) The first order differenced value D_Closet =Closet-Closet-1. 
+
+
+
+(2) Pls use an autoregressive method to forecast for Bitcoin Prices in the next five trading days (keep the answers to two decimal places) (5 points). Pls submit the code and the screenshot of results for your analysis. 
+
+
+
+TABLE:
+
+Trading date | Forecast
+
+May 1, 2018 | 
+
+May 2, 2018 | 
+
+May 3, 2018 | 
+
+May 4, 2018 | 
+
+May 5, 2018  | 
+
+
+
+Design a rolling-forecasting evaluation method to evaluate the “next-day” prediction performance. Please illustrate the validation dataset, evaluation metrics and calculation, and model comparison in your method. (This is a method design question; NO programming is needed.) (10 points)
+

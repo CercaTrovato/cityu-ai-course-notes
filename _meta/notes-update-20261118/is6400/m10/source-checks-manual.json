@@ -1,0 +1,471 @@
+{
+  "schema": "note-source-checks-v1",
+  "sources": {
+    "modelassessment": {
+      "path": "../../../../IS6400_Business_Data_Analytics/course_files_export/canvas-20261118/L11-IS6400-Model Assessment.pdf",
+      "sha256": "e369a62e14f33f37adbf8981d1081ef662fe3f0aa4c2903228e58933c9ae2109"
+    }
+  },
+  "questions": [
+    {
+      "id": "p3",
+      "source_id": "modelassessment",
+      "page": 3,
+      "section": "2.03 商店需求的模型选择（讲义 p.3）",
+      "original": "Store demand prediction: We have 3 regression models: ARIMA, LSTM, RNN to choose. Which model should we choose? How to choose the best parameters for ARIMA or RNN?",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "商店要预测未来需求，手头有 ARIMA、LSTM、RNN 三种候选。前者用时间序列结构，后两者用循环网络学习序列；本页不重教它们的内部训练，而是问怎样在同一任务上比较它们。\n\n英文原题（讲义给定）：\n\n> Store demand prediction: We have 3 regression models: ARIMA, LSTM, RNN to choose. Which model should we choose? How to choose the best parameters for ARIMA or RNN?\n\n中文读题：第一问选模型家族；第二问在某一家族里选阶数、隐藏规模等超参数。不能仅因名字更新就选 LSTM。先固定未来预测步长与误差指标；在过去的多个预测起点分别拟合候选，只预测当时尚未知的未来，按验证误差选配置，再留独立未来区间作最终评价。源页没给实际数据与成绩，无法确定哪个候选胜出。\n\n英文参考答案（笔记自拟）：Compare the candidate models on the same forecasting horizons and validation periods. Tune their hyperparameters using historical training data and rolling validation, then evaluate the selected procedure on an untouched future test period. No winner can be identified from the model names alone.",
+          "english": "Compare the candidate models on the same forecasting horizons and validation periods. Tune their hyperparameters using historical training data and rolling validation, then evaluate the selected procedure on an untouched future test period. No winner can be identified from the model names alone."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p4",
+      "source_id": "modelassessment",
+      "page": 4,
+      "section": "2.04 树的层数与结构（讲义 p.4）",
+      "original": "Decision tree – based model structure. How many levels of trees do we need? How to determine the optimal tree-based structure",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "树的深度（Depth）是根到叶经过多少层分裂；树越深，通常能把训练样本切得更细。但“层数”和“最优结构”不是同一个数：结构还包括每个节点使用哪个特征、阈值和分支。\n\n英文原题：\n\n> Decision tree – based model structure. How many levels of trees do we need? How to determine the optimal tree-based structure\n\n中文解析：给不同最大深度训练树，用相同验证分折比较。节点上的特征与阈值由训练数据拟合；最大深度等限制由验证选择。训练误差一直下降并不能证明加深有益。源页无验证成绩，所以只能给选择方法，不能给具体层数。\n\n英文参考答案（笔记自拟）：Treat the maximum depth as a hyperparameter and compare candidate depths using the same validation protocol. Fit split features and thresholds on the training data. Choose a structure with good validation performance rather than the smallest training error.",
+          "english": "Treat the maximum depth as a hyperparameter and compare candidate depths using the same validation protocol. Fit split features and thresholds on the training data. Choose a structure with good validation performance rather than the smallest training error."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p5",
+      "source_id": "modelassessment",
+      "page": 5,
+      "section": "2.05 90%准确率够不够（讲义 p.5）",
+      "original": "Bank fraud detection: A model built to identify if a bank transition is a fraud transition. Your engineer reported an accuracy of 90%. Is this model performing very well? Do we have a better model? Will this model perform well in the future?",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "“90% 准确率”只说明预测正确的记录占 90%，没有说明错的是哪类，也没有说明结果来自训练还是独立数据。欺诈很少时，全部报正常也可能有很高准确率。\n\n英文原题：\n\n> Bank fraud detection: A model built to identify if a bank transition is a fraud transition. Your engineer reported an accuracy of 90%. Is this model performing very well? Do we have a better model? Will this model perform well in the future?\n\n中文解析：这里的 transition 按上下文指交易 transaction，原措辞保留。三问分别需要基准／分类错误结构、同协议候选比较、未来泛化证据。💡 笔记补充：100 笔中 10 笔欺诈，全部报正常就有 90% 准确率、欺诈召回率却为 0。需核混淆矩阵、漏报与误报成本，并在代表未来的数据上测试。现有信息不足以说模型很好、有更好模型或未来必好。\n\n英文参考答案（笔记自拟）：Accuracy alone is insufficient, especially for rare fraud. Compare against a majority-class baseline, inspect false negatives and false positives, and evaluate alternatives under the same protocol. Future performance requires representative out-of-sample evidence and is not guaranteed by a reported accuracy of 90%.",
+          "english": "Accuracy alone is insufficient, especially for rare fraud. Compare against a majority-class baseline, inspect false negatives and false positives, and evaluate alternatives under the same protocol. Future performance requires representative out-of-sample evidence and is not guaranteed by a reported accuracy of 90%."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p6",
+      "source_id": "modelassessment",
+      "page": 6,
+      "section": "2.06 文档聚类怎样评价（讲义 p.6）",
+      "original": "Document Clustering: We want to use KMeans or Hierarchical clustering to group documents. How many clusters should we choose? Is this a good clustering result?",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "文档聚类（Document clustering）把相似文档归到一组；没有给定正确类别时，不能直接套分类准确率。簇数（Number of clusters）影响粒度：每篇文档各自一簇虽然簇内很紧，却不一定有整理价值。\n\n英文原题：\n\n> Document Clustering: We want to use KMeans or Hierarchical clustering to group documents. How many clusters should we choose? Is this a good clustering result?\n\n中文解析：先固定文字表示和距离，再在候选簇数下比较簇内凝聚、簇间分离、重复运行稳定性与业务可解释性。本讲 p.68–69 给 SSE、WSS、BSS；若有人工主题标签，还能另作外部核验，但本源没有提供标签或分数，不能替文档选定唯一簇数。\n\n英文参考答案（笔记自拟）：Choose the number of clusters using a fixed representation, internal quality measures, stability and the intended document-organizing task. A small within-cluster error alone does not prove that the clustering is useful. The slide does not provide enough evidence to select a unique number of clusters.",
+          "english": "Choose the number of clusters using a fixed representation, internal quality measures, stability and the intended document-organizing task. A small within-cluster error alone does not prove that the clustering is useful. The slide does not provide enough evidence to select a unique number of clusters."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p8",
+      "source_id": "modelassessment",
+      "page": 8,
+      "section": "2.08 监督学习比较什么（讲义 p.8）",
+      "original": "However, how to judge the usefulness of a classifier or predictor and how to compare different ones?",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "监督学习拿已有答案的样本学习输入到输出的关系。答案是离散类别时做分类（Classification），如欺诈／正常；答案是连续数量时做预测／回归（Prediction / Regression），如明天销量。\n\n英文原题：\n\n> However, how to judge the usefulness of a classifier or predictor and how to compare different ones?\n\n中文解析：先确定用途，再选能反映该用途的损失或指标，最后在相同未参与拟合的数据上比较。销售误差 10 件与漏掉 10 笔欺诈并非同一种损失。比较模型还需固定同一批对象、同一时间窗口及相同信息可得性。\n\n英文参考答案（笔记自拟）：Define the prediction task and an appropriate performance measure, then compare models on the same independent evaluation observations. The measure should reflect the intended use and the consequences of errors.",
+          "english": "Define the prediction task and an appropriate performance measure, then compare models on the same independent evaluation observations. The measure should reflect the intended use and the consequences of errors."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p10",
+      "source_id": "modelassessment",
+      "page": 10,
+      "section": "2.10 真实值与预测值之差（讲义 p.10）",
+      "original": "Measure difference?",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "本页问题是 “Measure difference?”，即怎样把真实值与预测值的偏离合成一个可比较的数。设第 i 条真实值为 $y_i$，预测为 $\\hat y_i=\\theta^\\top x_i$；转置符号 $\\top$ 在这里表示把对应特征乘对应系数再相加，常数项可并入输入的一列 1。\n\n平方误差和（Sum of squared errors，SSE）为 $\\sum_{i=1}^{n}(y_i-\\hat y_i)^2$。平方让正负偏离不抵消，并对大偏离付更高代价。$\\arg\\min_\\theta$ 的意思是“返回使这个总和最小的那组系数”，不是返回最小误差本身。\n\n💡 笔记补充：两条真实值 10、20，预测 12、16，误差为 −2、4；平方后是 4、16，总和为 20。本例所有误差指标在下一页表中统一复算。原图把系数记作 MLE（Maximum likelihood estimate，极大似然估计）；它等同普通最小二乘需要独立、同方差正态误差等模型条件，平方和本身不自动证明这些条件。\n\n英文参考答案（笔记自拟）：Compute the residuals on a specified set of observations and aggregate their squared values. The least-squares estimate minimizes this sum; a maximum-likelihood interpretation requires additional assumptions about the errors.",
+          "english": "Compute the residuals on a specified set of observations and aggregate their squared values. The least-squares estimate minimizes this sum; a maximum-likelihood interpretation requires additional assumptions about the errors."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p14",
+      "source_id": "modelassessment",
+      "page": 14,
+      "section": "2.14 混淆矩阵与反欺诈指标（讲义 p.14）",
+      "original": "Which term is the most important for bank fraud transaction detection?",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "先按原图的行与列读矩阵：行是实际类别（Actual），列是预测类别（Predicted）。a／TP 为真实欺诈且报警；b／FN 为真实欺诈却漏报；c／FP 为正常却误报；d／TN 为正常且未报警。\n\n精确率 $P=TP/(TP+FP)$ 在“所有报警”里数真的；召回率 $R=TP/(TP+FN)$ 在“所有真实欺诈”里数抓到的。F1 为 $2PR/(P+R)=2TP/(2TP+FP+FN)$，要求兼顾两者；相关分母为 0 时要说明无定义或软件约定。\n\n💡 笔记补充：100 笔中 TP=8、FN=2、FP=4、TN=86。12 次报警中 8 次真欺诈，P=2/3；10 笔真欺诈中抓住 8 笔，R=0.8；F1=16/22≈0.7273。准确率为 94%，但仍需说明漏掉的 2 笔损失与 4 次误报的处理成本。\n\n英文原题：\n\n> Which term is the most important for bank fraud transaction detection?\n\n中文解析：若重点是少漏欺诈，关注召回率／FN；若人工核验或冻结误伤代价很大，精确率也重要。本页没给成本，不能声称一个指标在所有银行永远最重要。\n\n英文参考答案（笔记自拟）：Recall is especially important when missing fraud is costly. Precision and the cost of false alarms must also be considered. The most suitable objective depends on the relative consequences of false negatives and false positives.",
+          "english": "Recall is especially important when missing fraud is costly. Precision and the cost of false alarms must also be considered. The most suitable objective depends on the relative consequences of false negatives and false positives."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p19",
+      "source_id": "modelassessment",
+      "page": 19,
+      "section": "2.19 验证集的用途与代价（讲义 p.19）",
+      "original": "Detect and prevent overfitting?",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "英文原题是 “Detect and prevent overfitting?”。本页做法是从可开发的数据中留出验证集：训练部分拟合模型，验证部分估计模型在未拟合记录上的误差，并用于选复杂度。验证集不是最终测试集。\n\n验证会减少每次可训练的记录数，这是估计可信度与拟合数据量的取舍。若看过验证结果再调深度、特征或阈值，验证就已经参与选择。数据填补、标准化、特征筛选也要只在当前训练部分估计，再原样应用到验证；否则标签或分布信息可能提前流入训练。\n\n英文参考答案（笔记自拟）：Use a separate validation set to compare candidate complexities and detect a gap between training and validation performance. Fit preprocessing on the training subset only. Validation supports model selection; an independent test set is needed for the final assessment after selection.",
+          "english": "Use a separate validation set to compare candidate complexities and detect a gap between training and validation performance. Fit preprocessing on the training subset only. Validation supports model selection; an independent test set is needed for the final assessment after selection."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p22",
+      "source_id": "modelassessment",
+      "page": 22,
+      "section": "2.22 同一选择框架可换模型族（讲义 p.22）",
+      "original": "What if λ: decision tree, random forest?",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "本页在前页公式下加深度遍历例。$\\lambda=1,2,\\ldots,N$ 可表示候选层数，也可扩展为算法家族／配置标识。这里的 $\\lambda$ 是泛指选择标记，并不在每页都代表正则化强度。\n\n原步骤 3 写 “Use trained data to evaluate performance”；按上方明确标注的 $D_V$ 和本节目标，应读为用训练好的模型在验证数据上评价，不能用训练数据的最小误差选赢家。否则更复杂的树通常占便宜。\n\n英文原题：\n\n> What if λ: decision tree, random forest?\n\n中文解析：相同框架也可比较树与随机森林：各自只在相同训练部分拟合，使用同一验证指标比较，再做独立最终评价。\n\n英文参考答案（笔记自拟）：Let the candidate set contain both decision-tree and random-forest configurations. Train each candidate on the training subset and select it using the same validation observations and metric, not training error.",
+          "english": "Let the candidate set contain both decision-tree and random-forest configurations. Train each candidate on the training subset and select it using the same validation observations and metric, not training error."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p31",
+      "source_id": "modelassessment",
+      "page": 31,
+      "section": "2.31 Quiz I三折划分（讲义 p.31）",
+      "original": "Design a 3-fold CV training-validation split and write down the Record ID list of each fold.\ne.g.:\nFold 1: Training RID: (1,2,3,…) Validation RID: (5,6,…)\nFold 2: Training RID: (…) Validation RID: (…)\nFold 3: Training RID: (…) Validation RID: (…)",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "本题要求设计三折划分，不是要求找最佳预测模型。RID（Record ID）只是记录编号；X、Y 必须按同一 RID 配对。\n\n英文原题与给定数据（完整保留，讲义 p.31）：\n\n> Design a 3-fold CV training-validation split and write down the Record ID list of each fold.\n>\n> e.g.:\n> Fold 1: Training RID: (1,2,3,…) Validation RID: (5,6,…)\n>\n> Fold 2: Training RID: (…) Validation RID: (…)\n>\n> Fold 3: Training RID: (…) Validation RID: (…)\n\n下表一行是一条给定记录：RID 为编号，X 为输入数值，Y 为该记录已知答案；源题没有指定业务单位。\n\n| RID | X | Y |\n|---|---|---|\n| 1 | 2.9 | 9.8 |\n| 2 | 3.3 | 10.3 |\n| 3 | 4.9 | 14.8 |\n| 4 | 5.6 | 16.8 |\n| 5 | 6.3 | 19.8 |\n| 6 | 7.2 | 21.8 |\n| 7 | 8.3 | 25.2 |\n| 8 | 9.7 | 29.6 |\n| 9 | 10.5 | 31.8 |\n\n中文读题：每轮分成训练与验证，要求写清三轮双方 ID；三折应互斥、大小相近且并集覆盖全部记录。原 e.g. 只是写法占位，不约束必须按那个未写完的列表分组。\n\n⚪ 参考作答（笔记推断，一种合法划分）：\n\n| 轮次 | 训练 RID | 验证 RID |\n|---|---|---|\n| 1 | 4,5,6,7,8,9 | 1,2,3 |\n| 2 | 1,2,3,7,8,9 | 4,5,6 |\n| 3 | 1,2,3,4,5,6 | 7,8,9 |\n\n先把 9 条切成三组各 3 条，再让每组轮流验证，训练取另外 6 条。逐轮交集为空，三个验证集的并集为 1–9；所以没有一条漏验或在同一轮又训又验。划分不唯一；本题没有时间约束或随机种子要求，以上是确定性教学示例。\n\n英文参考答案（笔记自拟）：For fold 1, train on RIDs (4,5,6,7,8,9) and validate on (1,2,3). For fold 2, train on (1,2,3,7,8,9) and validate on (4,5,6). For fold 3, train on (1,2,3,4,5,6) and validate on (7,8,9). Each record is used for validation exactly once and is excluded from training in that fold.\n\n💡 改条件检查：若 RID 代表按时间排序的观测、任务又要求预测未来，上表第 1 轮用未来训过去就不合适，需改滚动评价。为了复做机制，本批额外在这三轮分别拟合一元回归，MAE≈0.361980、0.384741、0.382425；这些不是本题要求，也不是官方给定成绩。",
+          "english": "For fold 1, train on RIDs (4,5,6,7,8,9) and validate on (1,2,3). For fold 2, train on (1,2,3,7,8,9) and validate on (4,5,6). For fold 3, train on (1,2,3,4,5,6) and validate on (7,8,9). Each record is used for validation exactly once and is excluded from training in that fold."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p33",
+      "source_id": "modelassessment",
+      "page": 33,
+      "section": "2.33 未来预测的评价边界（讲义 p.33）",
+      "original": "What if we care about the model performance for future forecasting ONLY?",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "英文原题：\n\n> What if we care about the model performance for future forecasting ONLY?\n\n中文意思是只关心向未来预测，不关心把混在历史里的未知点补出来。随机 K 折可能让训练看到验证时点之后的数据，与实际部署不一致。需要先确定预测起点 t 当时知道什么，再用这些历史拟合，预测 t 之后的目标。\n\n英文参考答案（笔记自拟）：Use rolling-origin evaluation with training observations available before each forecast origin and validation targets after that origin. Match the forecast horizon and information availability to the intended deployment, instead of randomly mixing past and future records.",
+          "english": "Use rolling-origin evaluation with training observations available before each forecast origin and validation targets after that origin. Match the forecast horizon and information availability to the intended deployment, instead of randomly mixing past and future records."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p41",
+      "source_id": "modelassessment",
+      "page": 41,
+      "section": "2.41 哪棵树更好（讲义 p.41）",
+      "original": "Which tree is better?",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "英文原题与图中标签为 “Which tree is better?”、“Decision Tree with 4 nodes” 和 “Decision Tree with 50 nodes”。任务是比较两种复杂度，不是仅指出谁在训练曲线上更低。\n\n⚪ 参考作答（笔记推断）：50 节点树的训练误差较小；是否更适合未来记录，须看独立评价数据、错误成本与复杂度。若其验证误差更大，应优先简单树；本页只给训练线，不能选定未来赢家。\n\n英文参考答案（笔记自拟）：The 50-node tree has a lower training error, but this does not establish better generalization. Compare the trees using independent validation data and the relevant error costs. The training curve alone is insufficient to determine which tree is better.",
+          "english": "The 50-node tree has a lower training error, but this does not establish better generalization. Compare the trees using independent validation data and the relevant error costs. The training curve alone is insufficient to determine which tree is better."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p43",
+      "source_id": "modelassessment",
+      "page": 43,
+      "section": "2.43 超参数与参数（讲义 p.43）",
+      "original": "Number of layers? Attribute nodes?",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "超参数（Hyperparameter）在拟合前约定学习过程的限制，例如最大深度、叶子最少样本数。模型参数（Model parameter）则由训练过程估计，例如回归系数，以及训练树在限制内选出的特征和阈值。两者都要根据来源地位区分，不能因都叫 parameter 就共用评价数据。\n\n原图例从婚姻状态（MarSt）分：Married→NO；Single／Divorced→Home Owner；有房→NO，无房再看 Income；低于 80K→NO、高于 80K→YES。原图未定义 Income 恰为 80K 的分支，不补造原规则。YES／NO 的目标业务含义在本页也未交代，不能擅自写成是否欺诈。\n\n英文原问题：\n\n> Number of layers? Attribute nodes?\n\n中文解析：可以把最大层数和允许特征数等设为候选限制，再验证选择；图中具体分裂节点则由训练拟合。并非要求人为凭图指定所有节点。\n\n英文参考答案（笔记自拟）：Tune structural constraints, such as maximum depth, through validation. Fit the actual split features and thresholds on the training data under those constraints. The slide does not identify the target meaning or the equality branch at 80K.",
+          "english": "Tune structural constraints, such as maximum depth, through validation. Fit the actual split features and thresholds on the training data under those constraints. The slide does not identify the target meaning or the equality branch at 80K."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p47",
+      "source_id": "modelassessment",
+      "page": 47,
+      "section": "2.47 为什么普通CV不够（讲义 p.47）",
+      "original": "Why Nested-Cross Validation? How about just using a standard CV for hyperparameter tuning?",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "英文原题：\n\n> Why Nested-Cross Validation? How about just using a standard CV for hyperparameter tuning?\n\n中文读题：普通 CV 当然可以调参；问题是同一 CV 选出的最高分，能否同时充当这套选模过程未受选择影响的最终成绩。试的组合越多，越可能选中偶然适合这些验证折的配置。\n\n英文参考答案（笔记自拟）：Standard cross-validation can tune hyperparameters, but the best score selected from that search can be optimistic as a final performance estimate. Use evaluation data that did not influence the search, such as an independent hold-out test set or outer folds in nested cross-validation.",
+          "english": "Standard cross-validation can tune hyperparameters, but the best score selected from that search can be optimistic as a final performance estimate. Use evaluation data that did not influence the search, such as an independent hold-out test set or outer folds in nested cross-validation."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p54",
+      "source_id": "modelassessment",
+      "page": 54,
+      "section": "2.54 复杂度为何要付代价（讲义 p.54）",
+      "original": "How it works? We make some constraints when training our model! Prevent an unnecessary complex model. How to control model complexity while ensuring a good performance?",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "正则化（Regularization）在拟合目标中增加约束或惩罚，让模型为复杂度付出代价。训练误差更小并非唯一目标；若两种拟合同样解释主要规律，较温和的系数或结构可能对噪声更稳健。\n\n英文原题：\n\n> How it works? We make some constraints when training our model! Prevent an unnecessary complex model. How to control model complexity while ensuring a good performance?\n\n中文解析：将“拟合误差＋复杂度惩罚”共同最小化，再用独立验证选惩罚强度；保证的是按协议选择，不能保证任何数据上都提升。惩罚过大也会欠拟合。\n\n英文参考答案（笔记自拟）：Add an appropriate complexity penalty or constraint to the training objective and select its strength using validation. This trades fit against complexity; it does not guarantee better performance for every dataset, and excessive regularization may underfit.",
+          "english": "Add an appropriate complexity penalty or constraint to the training objective and select its strength using validation. This trades fit against complexity; it does not guarantee better performance for every dataset, and excessive regularization may underfit."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p55",
+      "source_id": "modelassessment",
+      "page": 55,
+      "section": "2.55 Lasso与超参数（讲义 p.55）",
+      "original": "Is λ a hyperparameter?",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "Lasso 用绝对值惩罚（L1 penalty）。设 b 为不惩罚的截距，p 个斜率为 $a_j$，第 i 条输入为 $x_{ij}$。预测是 $b+\\sum_j a_jx_{ij}$，目标为\n\n$$\\min_{a,b}\\;\\sum_{i=1}^{n}\\left(y_i-b-\\sum_{j=1}^{p}a_jx_{ij}\\right)^2+\\lambda\\sum_{j=1}^{p}|a_j|.$$\n\n前半是训练平方误差，后半对每个斜率的绝对值收费；$\\lambda\\ge0$ 控制收费强度。$\\lambda=0$ 回到普通最小二乘；在常见设置中，足够强的 L1 惩罚可把部分斜率精确压到 0，形成稀疏（Sparsity）模型。它不是“哪个系数方差大就直接删哪个”的固定规则；结果依赖尺度、特征相关性与损失收益。通常在训练折内标准化以使惩罚尺度可比较。\n\n💡 笔记补充的单参数推演：把一维已缩放的目标写成 $(a-2)^2+\\lambda|a|$；a 是要选的斜率，没有惩罚时取 2。若 a 为负，第一项已经大于 4，再加非负惩罚，会差于 a=0，所以本例只需在非负数中找。\n\n先看 $\\lambda=2$：目标为 $(a-2)^2+2a=a^2-2a+4=(a-1)^2+3$。平方最小只能为 0，所以取 a=1。这是配方，把一次项并进一个平方，不用微积分。\n\n再看 $\\lambda=6$：目标为 $a^2+2a+4=(a+1)^2+3$。a 必须非负，离 −1 最近的可选值是 0，所以最佳取 a=0。这说明绝对值惩罚能把最优解推到零点；它是本标量约定下的例子，不套用到任意未缩放多变量数据，也不能混用软件损失里的 1/n 系数。\n\n英文原题 “Is λ a hyperparameter?”：是；它在每次训练前指定，通常由验证选择，斜率才由该次训练拟合。\n\n英文参考答案（笔记自拟）：Yes. Lambda controls the strength of the L1 penalty and is selected through validation, while the coefficients are fitted on the training data for each specified lambda. With this objective, lambda zero recovers unpenalized least squares.",
+          "english": "Yes. Lambda controls the strength of the L1 penalty and is selected through validation, while the coefficients are fitted on the training data for each specified lambda. With this objective, lambda zero recovers unpenalized least squares."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p59",
+      "source_id": "modelassessment",
+      "page": 59,
+      "section": "2.59 一般模型复杂度惩罚（讲义 p.59）",
+      "original": "How about we add a model-complexity penalty for a general model?",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "英文原题：\n\n> How about we add a model-complexity penalty for a general model?\n\n中文意思是：模型不一定由回归斜率表示，能否也为它的复杂度收费？对树可以用叶子数作为结构复杂度代理，把训练错误与叶子成本相加。它是选择准则，不是把真实未来误差凭空算出来。\n\n英文参考答案（笔记自拟）：Yes. Define a suitable complexity measure, such as the number of leaves in a decision tree, and add a weighted penalty to the training error. Validate the trade-off rather than treating the penalized value as the known true generalization error.",
+          "english": "Yes. Define a suitable complexity measure, such as the number of leaves in a decision tree, and add a weighted penalty to the training error. Validate the trade-off rather than treating the penalized value as the known true generalization error."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p71",
+      "source_id": "modelassessment",
+      "page": 71,
+      "section": "2.71 CRISP-DM管线（讲义 p.71）",
+      "original": "How to evaluate a good design",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "标题问题是 “How to evaluate a good design”。原图六块为：1 业务理解（Business Understanding）、2 数据理解（Data Understanding）、3 数据准备（Data Preparation）、4 模型构建（Model Building）、5 测试与评价（Testing and Evaluation）、6 部署（Deployment），中央圆柱为 Data。\n\n沿绿色实线看推进：业务与数据理解相互对照，再到准备、建模、评价、部署。红色虚线回到前面环节，表示评价可暴露业务定义或数据处理的问题，流程并非一次直走。比如需求预测 MAE 下降，却因订货延迟仍缺货，问题可能要返回业务和部署环节，而非继续堆模型层数。\n\n英文参考答案（笔记自拟）：Evaluate a design across the full business-data-model-deployment pipeline. Use consistent offline comparisons and, where appropriate, controlled evaluation of the deployed business outcome. Feedback may require changing earlier stages, not only the predictive model.",
+          "english": "Evaluate a design across the full business-data-model-deployment pipeline. Use consistent offline comparisons and, where appropriate, controlled evaluation of the deployed business outcome. Feedback may require changing earlier stages, not only the predictive model."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p72",
+      "source_id": "modelassessment",
+      "page": 72,
+      "section": "2.72 深度结构怎样比较（讲义 p.72）",
+      "original": "How to evaluation the goodness of deep model learning structure?",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "英文原题：\n\n> How to evaluation the goodness of deep model learning structure?\n\n左图下方数据源含气象、事件、销量、库存等，输入 $x_1\\ldots x_t$ 进入编码器（Encoder）的 LSTM 状态链；时间注意力（Temporal attention）给不同历史表示分配读取权重。未来外生因素经嵌入（Embedding，转成可供网络使用的数值表示），再拼接（Concat，把数值表示接成一份输入）送到上方解码器（Decoder），逐步产生 $y_1\\ldots y_T$。天气预报、节假日等未来因素必须是预测起点已能获得的输入，未来实际天气不能冒充当时已知。\n\n右图是 LSTM 单元的内部状态通道：旧记忆 $C_{t-1}$ 经忘记门控制保留，输入门控制候选写入，得到 $C_t$，输出门控制传出的 $h_t$。这是结构辨认入口，门的逐步算例见 [[IS6400_Business_Data_Analytics/notes/M09-深度学习-神经网络与文本分析|M09]]；本页没有给完整参数与训练数据，不能按图算模型成绩。\n\n⚪ 参考作答（笔记推断）：固定切分、指标、输入可得时点与训练预算；比较完整结构和删去注意力／外生输入等变体，重复必要运行并观察验证与独立测试。若只改一个组件，较容易归因该组件；同时换数据与模型则只能评价整个方案差异。\n\n英文参考答案（笔记自拟）：Compare the architecture with suitable baselines and ablated variants under the same data splits, information constraints, metrics and training budget. Evaluate forecasts on independent future observations. The diagram alone does not establish that a component improves performance.",
+          "english": "Compare the architecture with suitable baselines and ablated variants under the same data splits, information constraints, metrics and training budget. Evaluate forecasts on independent future observations. The diagram alone does not establish that a component improves performance."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p76",
+      "source_id": "modelassessment",
+      "page": 76,
+      "section": "2.76 先固定KPI与版本（讲义 p.76）",
+      "original": "Which key performance indicator are you tracking and which variation is being tested.",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "原英文步骤 1：\n\n> Which key performance indicator are you tracking and which variation is being tested.\n\n中文意思：先确定关键绩效指标（Key performance indicator，KPI）和被测试版本。💡 笔记补充：若目标是减少客服等待，可以固定主指标为每位进入队列用户的等待秒数，A 为现行路由、B 为新路由；分母、观察窗口、超时／放弃规则与日志缺失处理要两组一致。若只统计成功接通者，可能漏掉最久而放弃的人。\n\n英文参考答案（笔记自拟）：Specify the primary KPI, its denominator and observation window, and define the control and treatment versions before running the test. For example, compare user waiting time under the current and new routing rules using the same inclusion criteria.",
+          "english": "Specify the primary KPI, its denominator and observation window, and define the control and treatment versions before running the test. For example, compare user waiting time under the current and new routing rules using the same inclusion criteria."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p77",
+      "source_id": "modelassessment",
+      "page": 77,
+      "section": "2.77 提出可检验假设（讲义 p.77）",
+      "original": "Hypothesize treatment is better than control? Why?",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "原英文步骤 2：\n\n> Hypothesize treatment is better than control? Why?\n\n中文意思：提出新版本为何可能改善指标的可检验解释。沿用等待时间例，假设新路由能更快把用户分到可处理的坐席，所以 B 的平均等待低于 A；这是假设，不是已证实结果。\n\n零假设（Null hypothesis）可设两组总体均值相同；备择假设（Alternative hypothesis）依研究目标预定为不同，或有充分事前理由时单向更低。不能看结果方向后临时改单侧检验。本篇后面的演示使用双侧差异检验，避免把方向选择藏起来。\n\n英文参考答案（笔记自拟）：State a testable mechanism and hypothesis before observing the outcome. The new routing rule may lower mean waiting time by assigning users to available agents sooner. Predefine whether the statistical comparison is one-sided or two-sided.",
+          "english": "State a testable mechanism and hypothesis before observing the outcome. The new routing rule may lower mean waiting time by assigning users to available agents sooner. Predefine whether the statistical comparison is one-sided or two-sided."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p78",
+      "source_id": "modelassessment",
+      "page": 78,
+      "section": "2.78 识别真正改变的部件（讲义 p.78）",
+      "original": "Identify the key variants that can lead to a difference in KPI",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "原英文步骤 3：\n\n> Identify the key variants that can lead to a difference in KPI\n\n中文意思：说清本轮到底改了什么。若只想检验路由规则，就固定页面、价格与客服人员培训，只让随机组使用不同路由；否则即使 B 改善，也不能把改善全归给路由。要比较完整方案也可以，但结论就应针对完整方案。\n\n英文参考答案（笔记自拟）：Identify the component being changed and keep other relevant conditions comparable when attributing an effect to that component. If multiple components change together, interpret the result as a comparison of the full packages rather than of one component alone.",
+          "english": "Identify the component being changed and keep other relevant conditions comparable when attributing an effect to that component. If multiple components change together, interpret the result as a comparison of the full packages rather than of one component alone."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p79",
+      "source_id": "modelassessment",
+      "page": 79,
+      "section": "2.79 随机实验与统计方法区别（讲义 p.79）",
+      "original": "Run randomized experiment, i.g., DID. T-test.",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "原英文步骤 4：\n\n> Run randomized experiment, i.g., DID. T-test.\n\n这句把实验设计与分析方法混列，须拆清：随机分配决定谁看 A／B；t 检验（t-test）是在相应假设下比较均值的分析工具；双重差分（Difference-in-differences，DiD）比较两组前后变化，常用于非随机政策评估，不是随机实验的同义词。单独使用任一检验名称都不能保证因果识别。\n\n💡 笔记补充的 DiD 算例：处理组指标从 20 到 25，控制组从 20 到 22；处理组变化 5，控制组变化 2，差中之差为 3。把 3 解释成处理效应，需要无处理时两组趋势可比等额外假设；仅有这四个均值不能验证平行趋势。随机 A/B 则依随机分配与执行完整性进行因果比较，仍要检查污染、失访与实验单位。\n\n英文参考答案（笔记自拟）：Random assignment is a design choice; a t-test and difference-in-differences are analysis methods. Run and document the random assignment when conducting an A/B experiment, then use an analysis appropriate to the outcome and experimental unit. A DiD estimate requires additional identifying assumptions such as parallel untreated trends.",
+          "english": "Random assignment is a design choice; a t-test and difference-in-differences are analysis methods. Run and document the random assignment when conducting an A/B experiment, then use an analysis appropriate to the outcome and experimental unit. A DiD estimate requires additional identifying assumptions such as parallel untreated trends."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p80",
+      "source_id": "modelassessment",
+      "page": 80,
+      "section": "2.80 检验差异及不确定性（讲义 p.80）",
+      "original": "Evaluate the significance of difference in KPIs between the two groups",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "原英文步骤 5：\n\n> Evaluate the significance of difference in KPIs between the two groups\n\n中文意思：观察差异有多大，还要衡量随机波动能否合理解释它。对独立实验单位的连续均值，Welch 双样本 t 检验用“均值差／均值差标准误”衡量信号相对于波动。标准误（Standard error）是均值差估计的不确定性尺度，不是单个用户波动的标准差。\n\n💡 笔记补充，使用一组完整小数据说明，单位为秒：A=(8,9,10,11,12)，B=(10,11,12,13,14)。两组各 5 人，均值 10 与 12；各组离均值的偏差平方和为 10，样本方差为 $10/(5-1)=2.5$。均值差的标准误为 $SE=\\sqrt{2.5/5+2.5/5}=1$，按 B−A 记差，$t=(12-10)/1=2$。\n\n本页每组只有 5 人，小样本演示假设两组观测独立、各组分布近似正态且没有明显离群值，再用 t 分布作参考。两组人数与样本方差相等，本身不足以保证这个参照适用。\n\n接下来要回答“若总体均值其实相等，t 绝对值达到 2 有多常见”。参考分布横轴是可能得到的 t 统计量，曲线下的面积表示该零假设及上述抽样模型下的概率。自由度（Degrees of freedom，df）控制参考曲线的形状和尾部厚度；它反映均值和波动估计带来的不确定性，不是两组均值的差，也不总是把人数相加减 2。\n\n对本次 Welch 方法，先记两组均值方差贡献为 $v_A=s_A^2/n_A$、$v_B=s_B^2/n_B$。这里 n 为各组人数，s² 为该组样本方差，所以两项都为 $2.5/5=0.5$。Welch 的自由度计算规则是\n\n$$\\nu=\\frac{(v_A+v_B)^2}{v_A^2/(n_A-1)+v_B^2/(n_B-1)}.$$\n\n代入本例，分子为 $(0.5+0.5)^2=1$，分母为 $0.5^2/4+0.5^2/4=0.125$，所以自由度为 $\\nu=1/0.125=8$。本例恰好等于 5+5−2，因为人数和样本方差都相等；一般 Welch 输入不具备这两条件，自由度可能不是整数。\n\n双侧（Two-sided）检验把两个方向都算入：均值差为 0 时，出现 $T\\ge2$ 的右尾面积，加上 $T\\le-2$ 的左尾面积。t 分布关于 0 对称，本例每尾约 0.040258，合计 p≈0.080516。这个面积通过统计软件或 t 分布表取得，不是拿 1−t 或 1/df 算出来。\n\n下面是本批实际运行的概率复算，输入只有本页手算的 t=2 和 df=8；`sf`（Survival function）返回右侧尾部面积，`abs` 取绝对值，再乘 2 得两尾合计。\n\n```python\nfrom scipy.stats import t\nright_tail = t.sf(abs(2), df=8)\ntwo_sided_p = 2 * right_tail\nprint(right_tail, two_sided_p)\n```\n\n输出约为 `0.04025811898 0.08051623796`。如查表时没有对应精确 t 值，只能按表给范围，不编造精确小数。若交换 A／B，把差改成 A−B，t 从 2 变成 −2，左右尾互换，绝对值与双侧 p 不变；单侧问题的方向则必须在看结果前约定。\n\np 值（p-value）是假定总体均值相等及检验模型成立时，出现至少同样极端统计量的概率；不是“零假设为真的概率”。若事先定显著性水平 0.05，本例不足以拒绝均值相等，且观察到 B 等待更长；不能报告 B 显著改善。小样本教学例不是这门课真实实验。\n\n英文参考答案（笔记自拟）：Assess the effect size and its uncertainty using a method consistent with the assignment and outcome. In the illustrative independent two-sample example, the mean difference B minus A is 2 seconds, the standard error is 1 second, and the two-sided p-value is about 0.0805. This is not significant at a pre-specified 0.05 level.\n\n🔗 均值差与检验公式参见 [NIST 双样本 t 检验](https://www.itl.nist.gov/div898/handbook/eda/section3/eda353.htm)，获取于 2026-11-18。点击率等比例指标、重复用户或按群随机需另按其数据结构选分析，不把本页独立均值公式直接套过去。",
+          "english": "Assess the effect size and its uncertainty using a method consistent with the assignment and outcome. In the illustrative independent two-sample example, the mean difference B minus A is 2 seconds, the standard error is 1 second, and the two-sided p-value is about 0.0805. This is not significant at a pre-specified 0.05 level."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p81",
+      "source_id": "modelassessment",
+      "page": 81,
+      "section": "2.81 结论与业务意义（讲义 p.81）",
+      "original": "Conclude whether the variant can lead to a better KPI",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "原英文步骤 6：\n\n> Conclude whether the variant can lead to a better KPI\n\n中文解析：结论必须同时回答效果方向、大小、不确定性与业务可接受性。显著改善 0.01 秒未必值得切换；不显著也不等于两版本相等，可能只是样本不足。沿用前页例，B 平均多等 2 秒，双侧证据也未达预设 0.05，不能用它支持 B 更好。\n\n英文参考答案（笔记自拟）：Report the direction and size of the effect, the uncertainty, and the practical costs or guardrails. Statistical significance alone does not establish practical value, and a non-significant result does not prove equivalence. The illustrative waiting-time data do not support claiming that version B is better.",
+          "english": "Report the direction and size of the effect, the uncertainty, and the practical costs or guardrails. Statistical significance alone does not establish practical value, and a non-significant result does not prove equivalence. The illustrative waiting-time data do not support claiming that version B is better."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p83",
+      "source_id": "modelassessment",
+      "page": 83,
+      "section": "2.83 客户细分与赌场案例（讲义 p.83）",
+      "original": "Customer “discrimination”. Treat the customers differently based on some criteria. But how could Casino treat the right customer in the right way?\n1. The detailed behaviors of customers can be tracked, via their membership cards, so that Casino can create a large database of individual customers’ gambling patterns.\n2. Casino segments customers based on their behavioral data. For instance, one segment may contain all customers who bet between $500-$600/night.\n3. When a customer calls for a room reservation, the Casino can immediately locate the customer’s segment based on the membership #.\n4. For valuable customers (who bet a lot per night and losing money), provide complimentary rooms. For the others, charge a certain rate.",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "原页用赌场会员数据举“无监督细分＋监督预测”组合：会员卡记录行为→按行为细分→预订时依会员号定位群→对高下注且输钱的高价值客户提供免费／赠送客房（Complimentary rooms），其他客户收费。这里的免费不是仍需付费的折扣房。示例某群每晚下注 500–600，原图美元符号未指定币种，不能改称港币；下注额、客户损失与经营者利润也不是同一个量。\n\n英文原题与必要情境（原图另含中文“看人下菜碟儿”）：\n\n> Customer “discrimination”. Treat the customers differently based on some criteria. But how could Casino treat the right customer in the right way?\n>\n> 1. The detailed behaviors of customers can be tracked, via their membership cards, so that Casino can create a large database of individual customers’ gambling patterns.\n> 2. Casino segments customers based on their behavioral data. For instance, one segment may contain all customers who bet between $500-$600/night.\n> 3. When a customer calls for a room reservation, the Casino can immediately locate the customer’s segment based on the membership #.\n> 4. For valuable customers (who bet a lot per night and losing money), provide complimentary rooms. For the others, charge a certain rate.\n\n中文解析：这是源页的商业细分情境，说明如何把客户群接到后续需求／收益模型，不构成按某个属性差别收费的合规认证。实施仍需检验数据使用、客户保护与业务约束；本讲没有给现行政策或法律依据，不推断授权。\n\n英文参考答案（笔记自拟）：Use historical customer behavior to form segments and assign a customer to a segment using information available at the reservation time. Evaluate whether the resulting reservation or pricing policy improves the intended business outcome under the relevant customer-protection and operational constraints. Segmentation alone does not establish the policy's effectiveness or acceptability.",
+          "english": "Use historical customer behavior to form segments and assign a customer to a segment using information available at the reservation time. Evaluate whether the resulting reservation or pricing policy improves the intended business outcome under the relevant customer-protection and operational constraints. Segmentation alone does not establish the policy's effectiveness or acceptability."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    },
+    {
+      "id": "p84",
+      "source_id": "modelassessment",
+      "page": 84,
+      "section": "2.84 三种收益管理方案（讲义 p.84）",
+      "original": "1. Data collection and customer segmentation,\n2. Forecasting demand for reservations from each customer segment,\n3. (a) A regression model for one segment of customer sample\n4. (b) A regression model for all customers with segment ID modeled as dummy variable.\n5. (c) A regression model without segment information.\n6. Evaluate overall performance among (a) (b) (c).",
+      "answers": [
+        {
+          "id": "combined-all-source-prompts",
+          "chinese": "整体收益管理（Revenue management，RM）先收集数据、细分客户，再预测各群订房需求。本页列三个候选：(a) 针对各群分别建回归；(b) 用全部客户建一份回归，把群 ID 编成虚拟变量（Dummy variable）；(c) 不使用群信息的一份整体回归。源表 (a) 写 “for one segment”，实际对整体使用要为相关群分别建模并覆盖所有评价对象。\n\n英文原任务（讲义 p.84，保留 1–6 原编号及 (a)／(b)／(c) 的对应）：\n\n> 1. Data collection and customer segmentation,\n> 2. Forecasting demand for reservations from each customer segment,\n> 3. (a) A regression model for one segment of customer sample\n> 4. (b) A regression model for all customers with segment ID modeled as dummy variable.\n> 5. (c) A regression model without segment information.\n> 6. Evaluate overall performance among (a) (b) (c).\n\n虚拟变量不能把群号 1、2、3 当有等距含义的连续数。若三群且模型带截距，可用两列指示第二／第三群，第一群作基准：第一群编码 (0,0)，第二群 (1,0)，第三群 (0,1)。(b) 只加群截距时仍共享斜率，不等同于各群各自一套系数。小群单独拟合可能样本不足；整体模型信息共享较多但可能掩盖差异。两者应由独立证据选择。\n\n原最后一步 “Evaluate overall performance among (a) (b) (c).” 要求整体比较。固定同一批未来客户、同一目标／单位，先对每条生成预测，再统一算误差；不能把每群 MAE 不加权平均后与整体客户 MAE 混比。💡 补充：若群一 90 人 MAE=1、群二 10 人 MAE=9，按客户整体 MAE 为 $(90\\times1+10\\times9)/100=1.8$，等权群均值为 5，二者回答不同问题。\n\n分群本身也必须只在开发／训练数据拟合，再把新客户按同一规则分配，避免全表聚类把未来信息带回训练。最终若关心利润或房间利用率，还需评价预订决策、容量与成本，而不仅是回归误差。原页未给数据，不能替 (a)／(b)／(c) 判定赢家。\n\n英文参考答案（笔记自拟）：Compare segment-specific models, a pooled model with segment indicators, and a pooled model without segments on the same future customers and outcome scale. Fit segmentation and other preprocessing on training data only. Aggregate errors with weights consistent with the business objective, and evaluate the resulting reservation policy where relevant. No winning option is determined by the slide alone.",
+          "english": "Compare segment-specific models, a pooled model with segment indicators, and a pooled model without segments on the same future customers and outcome scale. Fit segmentation and other preprocessing on training data only. Aggregate errors with weights consistent with the business objective, and evaluate the resulting reservation policy where relevant. No winning option is determined by the slide alone."
+        }
+      ],
+      "manual_source_check": "Actual source page visually read. Original field contains real English prompt/context, not a generic placeholder. Combined conceptual questions are answered by the page explanation; Quiz p31 retains all 9 RID rows and three requested folds. No multiple-choice options in this source.",
+      "options_expected": 0,
+      "options_actual": 0
+    }
+  ],
+  "status": "manual ledger; not passed as machine substring contract"
+}

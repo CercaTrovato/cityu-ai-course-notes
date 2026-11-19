@@ -1,0 +1,312 @@
+{
+  "A1": {
+    "title": "Ridge 怎样稳定相关变量的系数",
+    "answer": "B",
+    "cn": "题目固定原始输入，只问岭回归（Ridge regression）的平方系数惩罚要做什么。普通最小二乘（Ordinary least squares，OLS）选让训练误差平方和最小的系数；Ridge 另外让大系数付出代价，在训练贴合程度与稳定之间取舍。相关变量可互相代替，OLS 在邻近样本中可能把很大正/负系数互相抵销；惩罚抑制这种极端配合，不是把每行各自记成一个预测。",
+    "options": [
+      "A 说斜率不变、只缩小标准误，错：惩罚参与系数选择，本身会改变拟合。",
+      "B 说系数较小/较稳定但训练拟合可能变差，符合目的。这里不承诺每一个相关变量的系数都逐项按同一比例缩小。",
+      "C 说每个训练行单独预测就不用共同系数，错：仍学习可用于新样本的共同关系。",
+      "D 说保留所有输入就要把每个斜率增大，错：保留变量与增加系数不是同一件事。"
+    ],
+    "en": "B. Ridge penalizes large squared coefficients and can trade some training fit for more stable coefficient estimates while retaining the original inputs.",
+    "transfer": "若增加惩罚强度，通常更强调抑制系数；不能由此保证未来预测一定改善，仍需验证。"
+  },
+  "A2": {
+    "title": "嵌套 OLS 的训练误差为何不会增加",
+    "answer": "C",
+    "cn": "larger model contains the smaller one 表示新模型保留全部旧变量；同一批观测很关键。新模型至少可以把新增系数设为零，复现旧模型，所以在自由寻找最小训练误差时不可能比旧解更差。但后来的资料没参与这个最小化，可能因拟合噪声反而更差。误差平方和（Sum of squared errors，SSE）是每行真实值与拟合值之差先平方再相加。",
+    "options": [
+      "A 说后来预测误差必降，错：训练改进不保证样本外。",
+      "B 说每增变量 SSE 必严格下降，错：无帮助变量可能系数为零，SSE 只保持不变。",
+      "C 说训练 SSE 不升、后来误差可升，正确。",
+      "D 说小模型样本内决定系数一定更高，错：同一目标和观测下，训练 SSE 不升意味着通常的含截距 R² 不降，而非小模型必更高。"
+    ],
+    "en": "C. The larger model can reproduce the smaller model by setting new coefficients to zero, so its minimum training SSE cannot rise. Its forecast error on later observations may nevertheless increase.",
+    "transfer": "若两模型换了样本，原有“不升”比较失去同一组误差对象，不能直接套用。"
+  },
+  "A3": {
+    "title": "PCR 与 PLS 在构造成分时用什么",
+    "answer": "C",
+    "cn": "主成分回归（Principal component regression，PCR）先用预测变量自身构造成分，再用成分预测收益；偏最小二乘（Partial least squares，PLS）构造成分时也参考训练收益。成分是原变量的组合，减少相关输入的重复表达，不是把企业按树分组。训练目标可用，最终测试收益不能提前进入成分。",
+    "options": [
+      "A 说两者都用训练收益且只有 PCR 保留原变量，错：PCR 构造成分本身不使用收益目标。",
+      "B 把 PCR 说成显著性选原变量、PLS 说成树阈值分组，均错。",
+      "C 分清 PCR 仅用输入、PLS 同时用训练收益，正确。",
+      "D 要用最终测试收益或强制验证收益构造成分，错：会泄漏或混淆训练与选择阶段。"
+    ],
+    "en": "C. PCR constructs components from predictors alone, whereas PLS also uses training returns in component construction. Neither should use final test outcomes to build those components.",
+    "transfer": "最终测试期只用于评估；不能看到其收益以后重构 PLS 再称未见测试。"
+  },
+  "A4": {
+    "title": "Alpha 与 Beta 的水平和变化分开算",
+    "answer": "C",
+    "cn": "回归拟合的组合超额收益等于截距 Alpha 加市场 Beta 乘市场超额收益。Alpha 是市场超额为零时的拟合值；Beta 是市场超额每变 1 个百分点，拟合组合变化多少个百分点。本题月度 Alpha 0.20%，Beta 1.50，市场由 0 到 2.00%。先算起点 0.20%；终点 $0.20\\%+1.50\\times2.00\\%=3.20\\%$，上升 3.00 个百分点。",
+    "options": [
+      "A 的 1.50% 起点把无单位 Beta 当成收益率，错。",
+      "B 起点为零，漏掉 Alpha，虽算对变化量 3.00 个百分点却没答拟合水平。",
+      "C 从 0.20% 到 3.20%，正确。",
+      "D 只加市场 2 个百分点，忽略 Beta=1.50 的斜率。"
+    ],
+    "en": "C. The fitted excess return rises from 0.20% to 0.20% + 1.50 × 2.00% = 3.20%, an increase of 3.00 percentage points.",
+    "transfer": "若 Beta 为零，市场变化不改变拟合值；Alpha 仍留在原水平。"
+  },
+  "A5": {
+    "title": "双边换手成本与周夏普比率",
+    "answer": "B",
+    "cn": "10 个基点（Basis points，bp）等于每笔交易金额的 0.10%。买 30%、卖 30% 都要收费，费用占组合价值 $(30\\%+30\\%)\\times0.10\\%=0.06\\%$。净平均超额收益为 $0.30\\%-0.06\\%=0.24\\%$。题设每周同样比例和费率，扣固定收益量不改变周波动率 3.00%；周夏普比率（Sharpe ratio）为净平均超额收益除同频波动率，$0.24/3.00=0.08$。",
+    "options": [
+      "A 净平均值对，但夏普仍写毛值 0.10，错：分子已下降。",
+      "B 净均值 0.24%、周夏普 0.08，正确。",
+      "C 平均值仍写 0.30%，忽略交易成本；改变夏普却不扣分子不一致。",
+      "D 把净平均收益 0.24 当夏普，遗漏除波动率。"
+    ],
+    "en": "B. Total weekly trading cost is 0.06% of portfolio value, so net mean excess return is 0.24%. With constant costs and 3.00% weekly volatility, the weekly Sharpe ratio is 0.08.",
+    "transfer": "若换手每周变化，成本也会变化，不能继续假定扣费完全不改变波动率；本题不要求年化。"
+  },
+  "A6": {
+    "title": "总敞口和净敞口分别加减",
+    "answer": "D",
+    "cn": "做多（Long）是买入并持有，做空（Short）是借资产卖出以后再买回归还。都以初始资本为分母。总敞口（Gross exposure）按两边金额绝对值相加，$60\\%+40\\%=100\\%$；净敞口（Net exposure）保留方向相减，$60\\%-40\\%=20\\%$。这是交易前持仓口径，不是各资产未来实际市场 Beta。",
+    "options": [
+      "A 把总/净两种算法换反。",
+      "B 只报多头和空头各自大小，没算组合的总/净。",
+      "C 总 100% 对，但两边不是相等，净不能是零。",
+      "D 总 100%、净 20%，正确。"
+    ],
+    "en": "D. Gross exposure is 60% + 40% = 100% of initial capital, while net exposure is 60% − 40% = 20%.",
+    "transfer": "若改多 50%、空 50%，总仍 100%、净才为零；零净金额也不保证所有风险对冲。"
+  },
+  "A7": {
+    "title": "链上有资产不等于客户能完整取回",
+    "answer": "A",
+    "cn": "这里是给定托管危机场景，不是要求判断某家真实公司的破产法律。客户需分清代持合同给什么权利、客户资产是否与平台自有资产隔离（Segregation）、其他债权人能主张哪些资产。链上数量只是资产可见性的一部分，不直接说明负债或各客户权利。",
+    "options": [
+      "A 合同、隔离及其他债权主张直接关系回收前景，正确。",
+      "B 仅看大钱包余额就当全部属于该客户，忽略归属和其他债权。",
+      "C 危机前提款快不证明破产时法定或合同优先。",
+      "D 离线比例可能关乎访问安全，却不能替代资产所有权/请求权核查。"
+    ],
+    "en": "A. The custody contract, segregation of client assets and competing creditor claims are more informative about recovery than a visible wallet balance or past withdrawal speed alone.",
+    "transfer": "即使资产证明成立，还要核负债和权利；题面不足以给出确定回收比例。"
+  },
+  "A8": {
+    "title": "共享分叉前历史不等于以后同链",
+    "answer": "B",
+    "cn": "题面已给 BTC/BCH 于 2017 年分开后使用不同规则。分叉（Fork）表示共享部分历史后，各网络可独立接受交易和形成后续状态。它不是两个资产之间的固定兑换承诺，也没有自动创造对另一网络收入的合同权利。",
+    "options": [
+      "A 共享过去不强制以后同价。",
+      "B 两网可有分开的交易和价格，正确。",
+      "C 一网的新交易不因旧历史相同而自动更新另一网。",
+      "D 更大区块容量是协议特征，不是分配比特币矿业收入的合同。"
+    ],
+    "en": "B. Shared pre-fork history does not prevent the networks from developing separate later transactions, balances and market prices under different rules.",
+    "transfer": "若要跨网络转移价值，需要另外的交易/桥接安排及其风险，不能凭历史共同性假定已转移。"
+  },
+  "A9": {
+    "title": "代币化基金的收益从哪里来",
+    "answer": "C",
+    "cn": "货币市场基金（Money-market fund）持有存款或短期证券等资产，它们的利息/收益先产生，再扣基金费用并按单位权益归投资者。代币转让记录持有人变化，记录动作本身不会让底层资产多付利息。",
+    "options": [
+      "A 每次转移都新生利息，错：把记录技术当收益来源。",
+      "B 管理费是费用扣减，不是额外送给持有人的收益。",
+      "C 底层资产收入扣费用后归投资者，正确。",
+      "D 新发单位若现金没投资，不保证每个旧单位收入提高；单位数也改变分配分母。"
+    ],
+    "en": "C. Income comes from the fund's underlying deposits or securities and accrues to investors after expenses. Token transfers record ownership changes rather than generate the return.",
+    "transfer": "同一底层资产改用普通登记册，利息来源仍是资产，未因不代币化就归零。"
+  },
+  "A10": {
+    "title": "NFT 的代币、媒体和使用权三层",
+    "answer": "A",
+    "cn": "非同质化代币（Non-fungible token，NFT）链上记录可验证，不等于链接指向的图片永远可访问，也不自动产生版权许可。元数据（Metadata）链接是找到媒体的路径；法律使用权来自相关许可或权利安排，题面明确未载明。",
+    "options": [
+      "A 三层分别查，正确。",
+      "B 链接坏不会自动撤销过去所有代币交易。",
+      "C 把可验证代币持有升级为永久媒体/完整版权，超出题设。",
+      "D 价格高低不能单独决定附带版权范围。"
+    ],
+    "en": "A. Verify token ownership, continued access to the media and legal usage rights separately. A verifiable token history alone establishes neither permanent image access nor a copyright licence.",
+    "transfer": "即使链接修好，版权许可仍需单独核；不要用解决一层问题代替三层。"
+  },
+  "A11": {
+    "title": "界面相似时看谁承担货币负债",
+    "answer": "D",
+    "cn": "题目明确第一项是央行发行的零售中央银行数字货币（CBDC），第二项是商业银行普通存款。请求权（Claim）要问谁欠持有人钱；App 属于谁和指令数字化不改变发行负债身份。本题按这两个明确设定回答，不把所有名为 e-CNY 的特定版本安排一概套入。",
+    "options": [
+      "A 持牌银行 App 并不会使两种余额都变成央行负债。",
+      "B 数字处理存款指令不会把商行债务转成央行债务。",
+      "C 电子记录仍可代表负债，不因数字化就无发行人。",
+      "D CBDC 是央行负债，普通存款是对商业银行的请求权，正确。"
+    ],
+    "en": "D. Under the stated setup, the CBDC is a central-bank liability and an ordinary deposit is a claim on the commercial bank; a similar interface does not make the claims identical.",
+    "transfer": "如果新题改变发行人或钱包合同，须按新条件重新判断，不能只背名称。"
+  },
+  "A12": {
+    "title": "开户量与真实支付采用分开",
+    "answer": "A",
+    "cn": "本题问 beyond account opening，即超过“开过户”的证据。活跃钱包与重复付款能看持续使用，但仍要统一观察期间和分母，例如固定注册批次中后续真正付款者比例；下载总量、最大余额不能代表典型使用。",
+    "options": [
+      "A 同期间活跃/重复付款与明确分母最直接，正确。",
+      "B 累计注册不是每个账户都持续活跃。",
+      "C 最大余额是极端个案，不是典型日常支付。",
+      "D 下载数未区分停用、重复或从不付款，不能直接代表采用。"
+    ],
+    "en": "A. Active wallets and repeat payments, measured over comparable periods with a clear denominator, directly address use beyond registration.",
+    "transfer": "若期间长度改变，更多累计交易可能只因观察更久；先固定期间再比较。"
+  },
+  "A13": {
+    "title": "钱包停机不等于货币请求权消失",
+    "answer": "D",
+    "cn": "题面底层账本仍运行，但用户入口停机。运营风险（Operational risk）影响访问/恢复，不自动等于信用损失（Credit loss，即应收资产无法回收）。也不能反过来因为账本还在就声称用户仍能正常支付。",
+    "options": [
+      "A 把暂时无法显示直接算全部已实现信用损失，没有证据。",
+      "B 忽略用户入口不可用，不能保证正常花钱。",
+      "C 公共货币系统不消除银行钱包运营责任。",
+      "D 检查访问和恢复安排，且单凭停机不能证明余额消失，正确。"
+    ],
+    "en": "D. Check access and recovery arrangements. A wallet outage may interrupt use without proving that the underlying balances or claims have disappeared.",
+    "transfer": "如果题目另给资产损失或账本损坏证据，再扩展调查；不能从本题缺信息补出结论。"
+  },
+  "A14": {
+    "title": "愿意冒险与能够承担损失不同",
+    "answer": "A",
+    "cn": "风险意愿（Risk willingness）是心理上愿不愿接受波动，承受能力（Risk capacity）是损失会不会妨碍现实目标。明年买房要用钱的人，即使愿意承受，若短期跌价也可能无法完成刚性付款；20 年无近期现金需求者的约束不同。",
+    "options": [
+      "A 区分两者并考虑近期负债，正确。",
+      "B 相同配置只多调仓不能保证明年资金目标，也可能增加成本。",
+      "C 只按同样意愿配置忽略期限与现金需要。",
+      "D 换低费股票基金不消除短期市场下跌风险，费用节省不能替代期限匹配。"
+    ],
+    "en": "A. Risk willingness and capacity differ. A near-term house-payment obligation can justify a lower-risk allocation even when the client expresses high willingness to accept losses.",
+    "transfer": "若房款已另存安全流动资金，投资部分约束会不同；题面未给不能擅自假定。"
+  },
+  "A15": {
+    "title": "制裁筛查同名但生日冲突怎么办",
+    "answer": "D",
+    "cn": "制裁筛查（Sanctions screening）找到的是候选匹配，不是已经证明同一人。一个一致字段不够确认，一个冲突字段也不一定足以排除，尤其证件尚未验证。应核更多可靠标识、记录冲突与处理理由，再决定或交人工升级。",
+    "options": [
+      "A 同名直接拒绝，把候选匹配当确认身份。",
+      "B 生日不同直接批准，把一项冲突当绝对排除证据。",
+      "C 拿名单人员证件号填缺失，伪造了申请人的资料，不能做。",
+      "D 验更多标识并解决冲突后作/升级决定，正确。"
+    ],
+    "en": "D. Verify additional identifiers and resolve the conflicting evidence before deciding or escalating the match. Neither name similarity nor one unverified conflicting field is conclusive.",
+    "transfer": "若可靠证件明确属于不同人，可据已核证据排除；本题还未达到该证据条件。"
+  },
+  "A16": {
+    "title": "按管理资产收费的盈亏平衡",
+    "answer": "B",
+    "cn": "管理资产规模（Assets under management，AUM）记为美元金额 $A$，全年固定且只有题设收入成本。收费每年 $0.004A$，变动服务成本 $0.001A$，每年固定成本600,000。剩余每元资产贡献0.003，令 $0.003A-600,000=0$，得 $A=200,000,000$ 美元，即2亿美元。年度比例与年度成本同期间。",
+    "options": [
+      "A 1.5亿美元是只用0.4%除固定成本、漏掉0.1%变动成本。",
+      "B 2亿美元，正确。",
+      "C 1.2亿美元不是题给净贡献率对应值。",
+      "D 6亿美元相当于只用0.1%覆盖固定成本，把成本率误当净收入率。"
+    ],
+    "en": "B. Annual contribution is (0.4% − 0.1%) × AUM = 0.3% × AUM. Setting it equal to US$600,000 gives break-even AUM of US$200 million.",
+    "transfer": "若收费降到0.3%但成本不变，净率0.2%，需3亿美元；这是自拟变式而非真实收费。"
+  },
+  "B1": {
+    "title": "多 PDD、空 JD：假设与回测不能互换",
+    "intro": "题面先给一个投资想法，又指出历史图开始于外卖扩张以前。long-PDD 是买入 PDD，short-JD 是借到 JD 股票卖出、以后买回归还；多空差不是自动无风险。以下为按题面组织的业务假设，不声称真实竞争已带来某个利润结果。",
+    "parts": [
+      {
+        "id": "a",
+        "cn": "**直接答案**：假设是 JD 扩张外卖的补贴、履约或投入成本可能压低其相对利润/估值，而 PDD 相对少受该项投入负担或在其他业务上更有利。因此用买 PDD、空 JD 表达看好前者相对后者的观点。做空 JD 可对冲部分共同市场/行业变动，但不会消除 PDD 自身经营风险、两家公司不同的市场敏感度或 JD 反而上涨的挤空/借券风险。\n\n**为什么**：多头赚股价上涨，空头赚被卖股票下跌；组合目标是两者相对表现。以 100 元资本为计算基准，买入 50 元 PDD，做空 50 元 JD。若 PDD 跌 20%、JD 只跌 5%，多头亏 10 元，空头赚 2.5 元，净亏 7.5 元，即相对资本亏 7.5%。若另用每条腿 100 元的基准，差额才是 −15%；必须先声明分母。以上是笔记补充，不是原回测。",
+        "en": "The thesis is that JD's food-delivery expansion may impose costs or margin pressure relative to PDD, motivating long PDD and short JD. The short leg may offset part of common market exposure but does not remove firm-specific risk, unequal sensitivities, or losses if JD outperforms. This is a hypothesis rather than an established outcome."
+      },
+      {
+        "id": "b",
+        "cn": "**直接答案**：全历史窗口正收益不能证明外卖竞争导致收益。图在扩张前已经开始，扩张前的盈利不可能由尚未发生的事件解释；总窗口还混入市场、估值、其他经营新闻及选择窗口的影响。\n\n**怎么查**：先把事件时点与观察窗口对齐，再比较事件前后及合理对照，核是否早已知道并用于形成策略。即使事件后赚钱，也仍需排除其他解释，不能只由同时发生下因果结论。题面未给事件日、逐期收益和对照，不能编一个归因百分比。",
+        "en": "A positive full-window backtest does not identify the causal effect of food-delivery competition, especially when the window starts before the expansion. Market movements and other firm news can also drive relative returns. Event timing, appropriate comparisons and information available when the trade was formed are needed before making a causal claim."
+      }
+    ],
+    "summary": "先讲相对业务假设与交易方向，再讲未对冲风险，最后把时间对齐、收益证据与因果证据分开。"
+  },
+  "B2": {
+    "title": "神经网络选轮数与树的分组单位",
+    "intro": "这题两个小问分别处理模型选择和数据行代表什么。轮次（Epoch）是训练资料被用于更新模型的一轮；训练损失是旧样本贴合程度，验证损失用来选设置，不是最后测试分数。",
+    "parts": [
+      {
+        "id": "a",
+        "cn": "**直接答案：30轮。** 三个候选的验证损失依次为0.0032、0.0024、0.0028，最小值在30轮。训练损失从0.0030降到0.0015，只说明对训练资料贴得更近；到60轮验证损失反而由0.0024升到0.0028，不能因训练值更小就选60。\n\n规则是先用验证集选训练时长，再固定方案，在未参与选择的最终测试上评估。验证最小不保证未来也最好，题面只要求在三个已给候选中选择。",
+        "en": "Choose 30 epochs because validation loss is lowest at 0.0024. Training loss keeps falling, but validation loss rises by epoch 60, indicating worse generalization among the given candidates. Fix the duration before final test evaluation."
+      },
+      {
+        "id": "b",
+        "cn": "**直接答案**：按滞后通胀（Lagged inflation）分月份，是把不同时点分成宏观状态较高/较低的时间组；按同月企业规模（Size）分股票，是在同一个时点把企业分成大/小等横截面组。前者一行单位是月，后者一行单位是某月的一家公司。\n\n例如门槛通胀2%可把月份分开，规模门槛100亿元可把同月企业分开，两个数仅作笔记补充。滞后表示决策前已可得，不把本月尚未发布通胀偷作输入；组内预测对应各自数据单位，不是前者选企业、后者选历史月份。",
+        "en": "A tree splitting months by lagged inflation forms time-series macroeconomic regimes. A tree splitting firms by size within a month forms cross-sectional groups of firms at the same date. The observational unit and economic interpretation differ, and lagged information must be available before prediction."
+      }
+    ],
+    "summary": "选轮数看验证，不看训练单调下降；读树先问一行是月份还是公司，再读分支的经济含义。"
+  },
+  "B3": {
+    "title": "信用排序尚可却低估违约率",
+    "intro": "两组未来同一完整期限内预测违约1%和4%，实际3%和7%。排序回答哪组较危险；校准（Calibration）回答概率水平与真实比例是否相符，两种任务不能互相替代。",
+    "parts": [
+      {
+        "id": "a",
+        "cn": "**直接答案**：排序在这两个群组层面仍正确，第二组预测4%大于1%，实际7%也大于3%。但校准偏低：第一组少估2个百分点，第二组少估3个百分点。\n\n如果每组100人，预测1/4人、实际3/7人违约的理解小例能看出：即使排对谁危险，仍低估要准备多少损失。100人是解释比例的自拟例，题面没给真实组人数。两组汇总也不能证明每个个体的排序都好。",
+        "en": "The model correctly orders the two groups by risk: the second group has both the higher prediction and realized default rate. It is undercalibrated, underpredicting default by 2 and 3 percentage points. Correct ordering does not establish accurate probability levels."
+      },
+      {
+        "id": "b",
+        "cn": "**直接答案**：若其他条件不变，按原低概率定价会低估预期信用损失，可能收费不足，使利润低于原预计。应查违约后净回收/违约损失率（Loss given default，LGD），这是题目已给实际违约率以外的重要结果；不能只重复“查违约率”。\n\n预期损失的简化关系为 $EL=PD\\times LGD\\times EAD$：PD是所定期限违约概率，LGD是违约条件下损失比例，EAD是违约时敞口金额。实际违约率更高并不唯一确定EL变多少，回收、敞口和时点也可能改变。因此先核可比群组与实际回收再修估计/价格，不直接把3%或7%当损失金额比例。",
+        "en": "Underpredicted default can make the original loan price too low and reduce expected profit, other things equal. Before revising expected credit losses, check realized recoveries or loss given default, along with comparable exposures. Default frequency alone does not determine the monetary loss because severity and exposure also matter."
+      }
+    ],
+    "summary": "先分排序/概率，再从概率走到PD×LGD×敞口；新增检查必须超出题面已经给出的违约率。"
+  },
+  "B4": {
+    "title": "共享发票登记不能替代实物与偿还证据",
+    "intro": "出口商用同一应收款接洽两银行，平台记录核验文件和现有融资，但只有参与银行能更新各自贷款。这一权限安排提供来源责任，同时留下非参与者或未及时更新资料的完整性风险。",
+    "parts": [
+      {
+        "id": "a",
+        "cn": "**直接答案**：总上限为人民币 $2,000,000\\times80\\%=1,600,000$，扣A已有1,300,000，余 $300,000$ 元。它是完整记录条件下的最大剩余额度，不是自动批准数额。\n\nB需要同一应收款的最新全部未偿融资、A贷款余额、更新时点和负责机构，核A的130万是否仍准确，以及非参与银行的融资是否漏记。only participating banks can update 只说明写入者，不证明融资只可能来自参与银行；若无法确认完整，30万是条件计算，不是可靠可贷保证。",
+        "en": "The remaining capacity is RMB2 million × 80% − RMB1.3 million = RMB300,000, assuming complete and current financing records. Bank B needs the latest outstanding financing against the same receivable, including update responsibility and checks for financing outside participating banks."
+      },
+      {
+        "id": "b",
+        "cn": "**直接答案**：文件未改变只支持“该记录与原存档一致”，不证明原文件真实、货已交付或买方有钱偿还。B应核合同/发票与交付验收证据、向买方确认应付金额和到期日、债权所有权与争议、全部已有融资，并评估还款现金流和信用风险。\n\n可按三层复查：记录层核真伪和更新，业务层核发货/验收/应付确认，信用层核实际偿还能力。即使三层都通过，也不保证未来绝不违约；题面没有合同价格、实际物流或财务数据，不能代作肯定事实。",
+        "en": "An unchanged file shows record integrity, not necessarily genuine delivery or repayment capacity. Bank B should verify the underlying contract, delivery and acceptance, buyer confirmation, ownership and existing financing, and the relevant repayment cash flows before approval."
+      }
+    ],
+    "summary": "先按完整输入算最多30万，再核记录是否全、业务是否真、债务能否还；不把写权限或哈希当现实真相。"
+  },
+  "C1": {
+    "title": "四个月样本外误差与MA12基准",
+    "intro": "本题收益以小数给出，0.03是3%而非0.03%。MA12是只用此前12个月收益算的移动平均（Moving average），题面保证预测使用过去信息。比较同一4个月、相同目标和同一误差定义，不能换样本或改成训练拟合。",
+    "parts": [
+      {
+        "id": "a",
+        "cn": "**直接答案**：模型SSE为0.0004，MA12为0.0018，单位均为小数收益的平方。\n\n先逐月算误差（真实收益减预测），再平方。每行代表一个测试月份，列出两个预测各自误差，负误差平方后也为正：\n\n| 月 | 模型误差 | 模型平方 | MA12误差 | MA12平方 |\n|---|---:|---:|---:|---:|\n| 1 | 0.01 | 0.0001 | 0.02 | 0.0004 |\n| 2 | −0.01 | 0.0001 | −0.02 | 0.0004 |\n| 3 | 0.01 | 0.0001 | 0.01 | 0.0001 |\n| 4 | −0.01 | 0.0001 | −0.03 | 0.0009 |\n\n例如第4月真实−0.02减MA12的0.01，误差为−0.03，平方0.0009。模型4项相加0.0004；MA12四项相加0.0018。不能先把正负误差抵销再平方，那会漏掉预测错误。",
+        "en": "The model's four squared errors are each 0.0001, giving SSE = 0.0004. MA12 squared errors are 0.0004, 0.0004, 0.0001 and 0.0009, giving SSE = 0.0018, in squared decimal-return units."
+      },
+      {
+        "id": "b",
+        "cn": "**直接答案**：相对基准的样本外决定系数为 $R^2_{OOS}=1-SSE_{model}/SSE_{MA12}=1-0.0004/0.0018=7/9\\approx77.78\\%$。分母是本题MA12在同4个月的SSE，不是收益本身的方差；正值表示模型在这4个月的平方误差比MA12低约77.78%。\n\n这不证明投资盈利：题目没有把预测变成什么持仓、承担多大风险、换手和费用，也只有4个月，不能据此宣称统计显著或长期稳定。评估预测错误与评估可交易净收益是两项任务。\n\n改条件的笔记小例：模型SSE若等于0.0018，指标为0；若大于基准则为负。它可以为负，不必强行放在0到1。",
+        "en": "OOS R-squared is 1 − 0.0004/0.0018 = 7/9, about 77.78%. The model has lower squared forecast error than MA12 over these four months. This does not establish investment profitability without a trading rule, risk and transaction-cost analysis, or evidence over a sufficiently informative sample."
+      }
+    ],
+    "summary": "收益统一小数→逐月差→逐月平方→各自加总→相对同基准；预测改善不自动变成利润。"
+  },
+  "C2": {
+    "title": "BNPL交易量不变而贡献可转负",
+    "intro": "购买额HK$2,000、商户费4%，客户只还本金无利息；资金、预期信用损失、服务成本分别为HK$18、30、12。ignore overhead and tax表示只算题给成本后的贡献，不算公司最终税后利润。",
+    "parts": [
+      {
+        "id": "a",
+        "cn": "**直接答案**：商户费80港元；商户净拨款1,920港元；提供者预期贡献20港元。\n\n逐项追资金：费用为 $2,000\\times4\\%=80$ 港元，商户收到 $2,000-80=1,920$。提供者从这笔交易得到的收费收入是80，不是整笔2,000；再扣资金18、预期损失30和服务12，贡献为 $80-18-30-12=20$ 港元。\n\n客户偿还本金是回收先提供的资金，不再把同一2,000当额外利润；若那样算会重复计算。顾客免息没有消除提供者垫款与违约成本。",
+        "en": "The merchant fee is HK$80 and the merchant's net payout is HK$1,920. Expected contribution is HK$80 − HK$18 − HK$30 − HK$12 = HK$20, ignoring overhead and tax."
+      },
+      {
+        "id": "b",
+        "cn": "**直接答案**：预期信用损失改为55港元，贡献 $80-18-55-12=-5$ 港元。其余输入固定，损失比原来多25，恰使原20贡献下降到−5。\n\n购买额与收费率不变只能保持80收入，并不保持扣成本后的结果。新增交易如果每笔都沿这个负贡献条件，更多量可能扩大损失。零贡献对应损失为 $80-18-12=50$ 港元（笔记补充），不是平台整个业务税后盈亏平衡。",
+        "en": "Expected contribution becomes HK$80 − HK$18 − HK$55 − HK$12 = −HK$5. Unchanged purchase volume keeps the fee revenue unchanged but does not offset the higher expected credit loss. Profitability therefore deteriorates despite unchanged transaction value."
+      }
+    ],
+    "summary": "交易额、收费收入、净拨款与预期贡献四个量分开；改一项成本只重算该路径，不偷改其他输入。"
+  }
+}

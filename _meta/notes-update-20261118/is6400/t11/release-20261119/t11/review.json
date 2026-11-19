@@ -1,0 +1,274 @@
+{
+  "schema": "note-review-v2",
+  "note": "IS6400_Business_Data_Analytics/notes/T11-模型选择实战-Ridge剪枝与交叉验证.md",
+  "scope": "full",
+  "source_sha256": null,
+  "candidate_sha256": "5c3b876cc27a1951b7eca79d32bc13da1ef84e88173530b9320ddfbf056312be",
+  "review_file": "review.md",
+  "review_sha256": "723a44f09bae8505aaaf647e20183d4e7286f1c970f91e82b40a0c212f81aef5",
+  "checks": {
+    "understanding": {
+      "status": "passed",
+      "evidence": "independent-final-binding.md; full independently frozen stage1 and source/replay stage2; maintenance map for A12 only"
+    },
+    "sources": {
+      "status": "passed",
+      "evidence": "independent-evidence/stage-2-source-receipt.json; all63source cells/33code/9original PNG/13figures/3questions; new A12 replay and installed API probes"
+    },
+    "warnings": {
+      "status": "passed",
+      "evidence": "fresh-mechanical-precheck.txt, fresh-quality.json, warning-handling.json; warning positions/messages and independent stage2 section五 semantic analysis"
+    },
+    "visuals": {
+      "status": "passed",
+      "evidence": "root-display-relay.json: root actual exact-candidate IAB observations, not this package author; raw byte hash corrected for CRLF in preview-binding-verified.json"
+    }
+  },
+  "independent_review": {
+    "author_ids": [
+      "/root/is6400_update"
+    ],
+    "reviewer_id": "/root/cityu_is5113_package",
+    "perspective": "high-school-beginner",
+    "status": "passed",
+    "candidate_sha256": "5c3b876cc27a1951b7eca79d32bc13da1ef84e88173530b9320ddfbf056312be",
+    "report_file": "independent-final-binding.md",
+    "report_sha256": "665254683dc011f106e7fa122e788b8ffe4188d30b20e0696101c5054642b585",
+    "non_teaching_status_maintenance_by": null
+  },
+  "assets": [
+    {
+      "path": "fresh-mechanical-precheck.txt",
+      "sha256": "1180deead78193342ec647313f6286b45c182ce6a72a2b244fbd15c73c576a3f"
+    },
+    {
+      "path": "fresh-quality.json",
+      "sha256": "49aa777419558455f2149851f31cfa04fdef10ec0e8de40b382ea5f5cabbd942"
+    },
+    {
+      "path": "../../a12-learning-candidate-directed.diff",
+      "sha256": "c1173349070bc180f1ac91f91a3bcdc305c098b4048ab6d022342d4b5f60d64d"
+    },
+    {
+      "path": "../../all-figures.json",
+      "sha256": "49ff1732cc21207941961ba14a7b26ed61e23c6f91037041ae4656ab2b3e4cb0"
+    },
+    {
+      "path": "../../candidate-directed.diff",
+      "sha256": "2c5a154b2980212820b5e1ac9347fbc9725286157b477dc7211e58b1dbf925fa"
+    },
+    {
+      "path": "../../candidate-freeze.json",
+      "sha256": "231e7e9b8d1666de1df9a1ddbeb70520f71fa58ccb9a3b60226741910ba640e7"
+    },
+    {
+      "path": "../../canvas-admin.json",
+      "sha256": "640d9fe8e293210258ac1bdd24532a76361e5a8133d03e815d496bbbce872763"
+    },
+    {
+      "path": "../../cell-evidence.json",
+      "sha256": "df9582b97500a26bc81865902fc863e954ef0659ab4c46025e1a633ef2e26abb"
+    },
+    {
+      "path": "../../directed-revision.json",
+      "sha256": "6d6e56d04ea1c721b4fe181ef1c9cc44629d099853d706e3e00e578e9e51b690"
+    },
+    {
+      "path": "../../frozen-handoff.json",
+      "sha256": "68de46ec865577c6411c1ca09583514ef5858db0187126b3c394a3b95b44ffcd"
+    },
+    {
+      "path": "../../independent-replay-results.json",
+      "sha256": "2009ec949c35e02f16c26140e159161c27de6b9c3427f5d189b3e0b64d4382bf"
+    },
+    {
+      "path": "../../independent-replay.py",
+      "sha256": "a1cb67f3258d53a16843d6d15436668954c69e689233e07df42ffc06b888b972"
+    },
+    {
+      "path": "../../independent-review.md",
+      "sha256": "1d206c37f751e0b4893288530e42fdb5c65f17dfaa7b591961f1d67cb2cdf10d"
+    },
+    {
+      "path": "../../reference-protocol-executed.py",
+      "sha256": "5e898b5dbf04c9143f503524067dba2d1ac8debf154ea32df691ef25050e6ebf"
+    },
+    {
+      "path": "../../run_source.py",
+      "sha256": "87f37be9da1ed7b66ae6cb79049c81d02c5db30b50a85bd34304b81deebe3e1d"
+    },
+    {
+      "path": "../../source-figures.json",
+      "sha256": "aa45e55610a4740ed38e1da2f85630983940feba272e3e8f7fe21bb5f62030c1"
+    },
+    {
+      "path": "../../source-run.json",
+      "sha256": "206751a62636f8d63365eb2e8ff7d7137eef86076627e4c550cfab510f862891"
+    },
+    {
+      "path": "../../source-saved-outputs.txt",
+      "sha256": "9a4e3422b4eec058d2a0b0c7170d4e93d1d5a1eccfa6c26ca08b28a060776c57"
+    },
+    {
+      "path": "../../stage-1.md",
+      "sha256": "9363ba62971d0bb424ff23911552ab8c901f3fcd61d7856e2c79f823a26d1496"
+    },
+    {
+      "path": "../../stage-2.md",
+      "sha256": "6d0c02902186e628eb8d0169a833252d5add71f993a0be41e538508fb7089531"
+    },
+    {
+      "path": "../shared/independent-evidence/audit-stage2.py",
+      "sha256": "6e36e39487016f5bfef77418d5d735f68e05d5b07fdebd168316aade67b25a65"
+    },
+    {
+      "path": "../shared/independent-evidence/finalize-stage2.py",
+      "sha256": "6358be0b552674d850139b4efa31cbd220259b3fcfb6e5c9135cac82f14ba005"
+    },
+    {
+      "path": "../shared/independent-evidence/independent-review.md",
+      "sha256": "723974da37335a7829ccf9be015502d489b40709b1acae87e53d4a22dfb20762"
+    },
+    {
+      "path": "../shared/independent-evidence/replay-stage2.py",
+      "sha256": "b995db3cdda92ab9feadcc0231770bd4b8d77e371f8d2db63372f5b795cee473"
+    },
+    {
+      "path": "../shared/independent-evidence/review-closure.json",
+      "sha256": "6a8ee95ab2c1e77f538f7564bb1348c02e46b83fb9981ef326c0a257cae5f59c"
+    },
+    {
+      "path": "../shared/independent-evidence/stage-1-arithmetic-errata.md",
+      "sha256": "6328c38afff87c76287944c822486b7e5463cacde6319ded8327441c7125b93a"
+    },
+    {
+      "path": "../shared/independent-evidence/stage-1-arithmetic.json",
+      "sha256": "00ffadb41e312104ad7516c4e5002425bae6c138244130897078e856d681fac7"
+    },
+    {
+      "path": "../shared/independent-evidence/stage-1-freeze.json",
+      "sha256": "894ab2400ab77afba060bcbb00f997f486c99219243985c857e48208d904f0da"
+    },
+    {
+      "path": "../shared/independent-evidence/stage-1.md",
+      "sha256": "2d2175205e7b64cb22b353835a2daabb9476618a3663fa525643d066a00a3334"
+    },
+    {
+      "path": "../shared/independent-evidence/stage-2-existing-mechanical-warnings.json",
+      "sha256": "468665387aa99b4c10199ea2a40d274649c82867a13d8b6d9489664b8b7a9ef8"
+    },
+    {
+      "path": "../shared/independent-evidence/stage-2-installed-api-probes.json",
+      "sha256": "f16cf5538dea7cc595d1cf55a561eae93fc26110c3e7567197aa3d277b9f2483"
+    },
+    {
+      "path": "../shared/independent-evidence/stage-2-new-replay-results.json",
+      "sha256": "9b81d2c46c879d35199ace84907c1700a6c48a060efe5b72a96d64b985e92067"
+    },
+    {
+      "path": "../shared/independent-evidence/stage-2-new-replay-verification.json",
+      "sha256": "1fe0589cb2efab1c08eb1cdac4f1237fabd2fee3876ce6539d7ec5a3b9e388e2"
+    },
+    {
+      "path": "../shared/independent-evidence/stage-2-script-path-diff.json",
+      "sha256": "3d6a1cc803ec7ccd00a0366b37d954c1d0f1879bda40e63cdac6e0d9ae1b73d7"
+    },
+    {
+      "path": "../shared/independent-evidence/stage-2-source-receipt.json",
+      "sha256": "6fac3b25ef9404ab006009bea157c013222beabdbff172fa668aa54b5016bece"
+    },
+    {
+      "path": "../shared/independent-evidence/stage-2.md",
+      "sha256": "e1fa2588de4535863b75e577f5434bf1957646163cb1a9a8703afa0f1446bef5"
+    },
+    {
+      "path": "../../../../../../IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/work/learning-reference-results.json",
+      "sha256": "2197361b8e6459df86b1b041f7639f4cef82a4ba87222a316cacdcae4272fd86"
+    },
+    {
+      "path": "../../../../../../IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/work/learning-reference.py",
+      "sha256": "50c88a8d963d4bb97f554cdbd1090635e2bea8e303cb6f9a7d625f60292f4064"
+    },
+    {
+      "path": "preview-binding-verified.json",
+      "sha256": "98cab36b5488c00a987aa0fdf1c24f9c6dada2dcac8c83c99e22cf7b32f6c382"
+    },
+    {
+      "path": "preview-evidence/index.html",
+      "sha256": "4fdcdf663de0a8974920809b34065229f719d5f6e197d1d55b3bca8b28eb2bcf"
+    },
+    {
+      "path": "preview-evidence/original-binding.json",
+      "sha256": "579ffebde51c0eeb7176a9122deabcd820e60276c29fd104b39c88a671adbf37"
+    },
+    {
+      "path": "root-display-relay.json",
+      "sha256": "8dcd832f2a097aa3b17f15775cd694e68b657bb8671224c43736aed2e8baba39"
+    },
+    {
+      "path": "../../../../../../IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-05-out-01.png",
+      "sha256": "026c223ed64021e7ee51fedf6b380d56e9bbe79e991245320d1db18aa9815431"
+    },
+    {
+      "path": "../../../../../../IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-08-out-01.png",
+      "sha256": "8d54d39847f5fa26147bb4ec3f8a7050ad45a9c91db4ee1e9e77df65cbe3b515"
+    },
+    {
+      "path": "../../../../../../IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-12-out-02.png",
+      "sha256": "dad77167740c7ced371ee4b5343f666a068703dfd7353c4a1fd51c0bfd315a6a"
+    },
+    {
+      "path": "../../../../../../IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-14-out-01.png",
+      "sha256": "0eddbc1cf724d85294ba9c575d62d2055d2c543de1049a7ee70a685c1070eb1f"
+    },
+    {
+      "path": "../../../../../../IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-17-out-02.png",
+      "sha256": "1b2db6f334abfb7b4dcbfdc9055269697d765122bb08d1893b3ff1c9e905bd37"
+    },
+    {
+      "path": "../../../../../../IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-29-recomputed.png",
+      "sha256": "eb0eafed3101900b7010416ca135d2763f224229558e4b5135bd6f648b1e9f75"
+    },
+    {
+      "path": "../../../../../../IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-33-out-02.png",
+      "sha256": "c79b5b043dc7a5836ae60e6f753a28321ad5b94ea666d27cdb14165162a467f9"
+    },
+    {
+      "path": "../../../../../../IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-33-recomputed.png",
+      "sha256": "798f8930d2c213c6a4ba3190ceccd115e307305266e95b31c82dc1371776767e"
+    },
+    {
+      "path": "../../../../../../IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-34-out-02.png",
+      "sha256": "2efb9f55f7809b64715a04548c3047928fdd83b491c577f4ab0fc44e1da4dfe8"
+    },
+    {
+      "path": "../../../../../../IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-34-recomputed.png",
+      "sha256": "e6215eb1987274efef6b11e5850804ce28335400f726c25dffdd38330c34f4eb"
+    },
+    {
+      "path": "../../../../../../IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-35-out-02.png",
+      "sha256": "caf840012bf37ed8f9af236d5ebbb1ca99ae915c0c6bcdc06a65f9a1e0fa41ae"
+    },
+    {
+      "path": "../../../../../../IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-37-out-01.png",
+      "sha256": "affaef7500f446c6af0f7d7aaed7873a52f5748fdf045ac2fad32d5dd1b24b5f"
+    },
+    {
+      "path": "../../../../../../IS6400_Business_Data_Analytics/notes/figures/t11-source/stratified-cv-source.png",
+      "sha256": "b2cc8ec5300c4d03adc3d06e8891b1e53aaa7a1c01bdd5207ec7cc9791464091"
+    },
+    {
+      "path": "../../../../../../IS6400_Business_Data_Analytics/course_files_export/iris.txt",
+      "sha256": "b56cac2a035e9c2c4d3403c32eff8f44860c4c1006447abe6cb24b7eb003bcac"
+    },
+    {
+      "path": "../../../../../../IS6400_Business_Data_Analytics/course_files_export/canvas-20261118/Week 11 selection.ipynb",
+      "sha256": "a1b85cb3d817cf64e5fbe2ccc7fbdbf86c99f3bf76834f2e09269e10dd0c17a2"
+    },
+    {
+      "path": "warning-handling.json",
+      "sha256": "db035e46176ee8bc288563a820be9e52d0bc981b93285b392cd95042a5648f1e"
+    }
+  ],
+  "unresolved": []
+}

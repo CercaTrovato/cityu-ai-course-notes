@@ -1,0 +1,241 @@
+{
+  "note": "IS6400_Business_Data_Analytics/notes/T11-模型选择实战-Ridge剪枝与交叉验证.md",
+  "baseline_sha256": "5c3b876cc27a1951b7eca79d32bc13da1ef84e88173530b9320ddfbf056312be",
+  "candidate_sha256": "fff4537fbf2a1841fc4f073853e67c1a8ee3544a34bf3b70fd2074d6d646c6c1",
+  "insertions": {
+    "opening": "<!-- cityu-nav:opening -->\n> [!abstract] 阅读导航\n> **预习**：[[#1. 开始之前 · 数据、语法与运行边界|前置]] → [[#2. 按原 Cell 顺序讲解|逐页／逐格正文]]。\n> **课中**：[[#8. Cell 映射与材料状态|按页码／Cell 定位]]。\n> **复习**：[[#4. 操作速查|速查]] → [[#5. 双语术语与理论对应|英文术语]] → [[#7. 自测与改条件|自测]]，点表中位置回正文。\n> **返回**：正文关键位置可点“回速查／回术语”，不必滚回页首。\n> [[#9. 延伸与勘误|来源／勘误]] · [[IS6400_Business_Data_Analytics/00-课程总览|课程入口]]\n<!-- cityu-nav:opening:end -->\n",
+    "returns": [
+      "<!-- cityu-nav:return-3 -->\n[[#0. 这个 Notebook 在教什么|↑ 阅读导航]] · [[#8. Cell 映射与材料状态|页／Cell 索引]] · [[#4. 操作速查|复习速查]]\n<!-- cityu-nav:return:end -->\n\n",
+      "<!-- cityu-nav:return-9 -->\n[[#0. 这个 Notebook 在教什么|↑ 阅读导航]] · [[#8. Cell 映射与材料状态|页／Cell 索引]] · [[#4. 操作速查|复习速查]]\n<!-- cityu-nav:return:end -->\n\n"
+    ],
+    "topic_switchpoint_returns": [
+      {
+        "number": 6,
+        "heading": "2.06 cell 6 · 先划分再拟合MinMax",
+        "inserted": "\n<!-- cityu-nav:landing-6 -->\n[[#4. 操作速查|↩ 回速查]] · [[#5. 双语术语与理论对应|回术语]] · [[#0. 这个 Notebook 在教什么|阅读导航]]\n<!-- cityu-nav:landing:end -->\n"
+      },
+      {
+        "number": 19,
+        "heading": "2.19 cell 19 · 20项alpha循环",
+        "inserted": "\n<!-- cityu-nav:landing-19 -->\n[[#4. 操作速查|↩ 回速查]] · [[#5. 双语术语与理论对应|回术语]] · [[#0. 这个 Notebook 在教什么|阅读导航]]\n<!-- cityu-nav:landing:end -->\n"
+      },
+      {
+        "number": 28,
+        "heading": "2.28 cell 28 · 弱连接剪枝的临界代价",
+        "inserted": "\n<!-- cityu-nav:landing-28 -->\n[[#4. 操作速查|↩ 回速查]] · [[#5. 双语术语与理论对应|回术语]] · [[#0. 这个 Notebook 在教什么|阅读导航]]\n<!-- cityu-nav:landing:end -->\n"
+      },
+      {
+        "number": 44,
+        "heading": "2.44 cell 44 · 25组五折搜索",
+        "inserted": "\n<!-- cityu-nav:landing-44 -->\n[[#4. 操作速查|↩ 回速查]] · [[#5. 双语术语与理论对应|回术语]] · [[#0. 这个 Notebook 在教什么|阅读导航]]\n<!-- cityu-nav:landing:end -->\n"
+      },
+      {
+        "number": 60,
+        "heading": "2.60 cell 60 · micro与macro分母",
+        "inserted": "\n<!-- cityu-nav:landing-60 -->\n[[#4. 操作速查|↩ 回速查]] · [[#5. 双语术语与理论对应|回术语]] · [[#0. 这个 Notebook 在教什么|阅读导航]]\n<!-- cityu-nav:landing:end -->\n"
+      }
+    ],
+    "rules": "Add opening after section0 heading; location-wrap only §4/§5 table rows, preserve existing links; T11 external M10 theory paragraph explicitly handled; two general return rows and5-6 selected topic landings, not every page. No teaching edits. App previous-position behavior not asserted; preview has a browser-only history-back button."
+  },
+  "location_links": [
+    {
+      "visible_label": "cell6",
+      "target_heading": "2.06 cell 6 · 先划分再拟合MinMax",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "cell28",
+      "target_heading": "2.28 cell 28 · 弱连接剪枝的临界代价",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "31",
+      "target_heading": "2.31 cell 31 · 逐alpha拟合并保存",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "cell28",
+      "target_heading": "2.28 cell 28 · 弱连接剪枝的临界代价",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "29",
+      "target_heading": "2.29 cell 29 · 生成alpha路径",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "cell43",
+      "target_heading": "2.43 cell 43 · C与gamma的作用",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "45",
+      "target_heading": "2.45 cell 45 · 参数与重拟合赢家",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "cell45",
+      "target_heading": "2.45 cell 45 · 参数与重拟合赢家",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "cell44",
+      "target_heading": "2.44 cell 44 · 25组五折搜索",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "48",
+      "target_heading": "2.48 cell 48 · Iris与分层CV原图",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "cell42",
+      "target_heading": "2.42 cell 42 · 默认SVC分类报告",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "cell60",
+      "target_heading": "2.60 cell 60 · micro与macro分母",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "cell60",
+      "target_heading": "2.60 cell 60 · micro与macro分母",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "cell6",
+      "target_heading": "2.06 cell 6 · 先划分再拟合MinMax",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "cell13",
+      "target_heading": "2.13 cell 13 · Ridge目标与强度",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "20",
+      "target_heading": "2.20 cell 20 · 最小验证误差答案",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "cell28",
+      "target_heading": "2.28 cell 28 · 弱连接剪枝的临界代价",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "31",
+      "target_heading": "2.31 cell 31 · 逐alpha拟合并保存",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "cell34",
+      "target_heading": "2.34 cell 34 · 索引5实际是第6项",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "cell44",
+      "target_heading": "2.44 cell 44 · 25组五折搜索",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "45",
+      "target_heading": "2.45 cell 45 · 参数与重拟合赢家",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "cell53",
+      "target_heading": "2.53 cell 53 · KNN十近邻五折",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "57",
+      "target_heading": "2.57 cell 57 · 比较十组五折成绩",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "cell42",
+      "target_heading": "2.42 cell 42 · 默认SVC分类报告",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "59",
+      "target_heading": "2.59 cell 59 · 100训练50评价",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "60",
+      "target_heading": "2.60 cell 60 · micro与macro分母",
+      "external_note": "",
+      "kind": "cell"
+    },
+    {
+      "visible_label": "p.55",
+      "target_heading": "2.55 Lasso与超参数（讲义 p.55）",
+      "external_note": "IS6400_Business_Data_Analytics/notes/M10-模型评估-交叉验证正则化与AB测试",
+      "kind": "page"
+    },
+    {
+      "visible_label": "58",
+      "target_heading": "2.58 正则化的曲线和系数（讲义 p.58）",
+      "external_note": "IS6400_Business_Data_Analytics/notes/M10-模型评估-交叉验证正则化与AB测试",
+      "kind": "page"
+    },
+    {
+      "visible_label": "p.60",
+      "target_heading": "2.60 悲观误差定义（讲义 p.60）",
+      "external_note": "IS6400_Business_Data_Analytics/notes/M10-模型评估-交叉验证正则化与AB测试",
+      "kind": "page"
+    },
+    {
+      "visible_label": "64",
+      "target_heading": "2.64 后剪枝30条算例（讲义 p.64）",
+      "external_note": "IS6400_Business_Data_Analytics/notes/M10-模型评估-交叉验证正则化与AB测试",
+      "kind": "page"
+    },
+    {
+      "visible_label": "p.25",
+      "target_heading": "2.25 K折交叉验证机制（讲义 p.25）",
+      "external_note": "IS6400_Business_Data_Analytics/notes/M10-模型评估-交叉验证正则化与AB测试",
+      "kind": "page"
+    },
+    {
+      "visible_label": "p.43",
+      "target_heading": "2.43 超参数与参数（讲义 p.43）",
+      "external_note": "IS6400_Business_Data_Analytics/notes/M10-模型评估-交叉验证正则化与AB测试",
+      "kind": "page"
+    },
+    {
+      "visible_label": "52",
+      "target_heading": "2.52 内层步骤7至10（讲义 p.52）",
+      "external_note": "IS6400_Business_Data_Analytics/notes/M10-模型评估-交叉验证正则化与AB测试",
+      "kind": "page"
+    }
+  ],
+  "composable_with_depth_edit": "Regenerate build(latest_depth_candidate_text, same_relative_note_path), do not overwrite with this frozen full-file candidate or apply stale numeric offsets."
+}

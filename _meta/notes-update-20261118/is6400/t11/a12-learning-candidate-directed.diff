@@ -1,0 +1,43 @@
+--- a12-learning-candidate-frozen-v1.md
++++ a12-learning-candidate.md
+@@ -131,7 +131,11 @@
+ 
+ 高分表示该列的组间差异相对组内更突出，不保证该列与其他列组合最好，也可能漏交互信号。这里用F分数排序，没有计算F检验p值或宣称差异显著。
+ 
+-标准化（Standardization）按每列训练均值与标准差变为z分数。若训练列为2、4，均值3、总体分母标准差1，则映为−1、1；验证值6只用训练统计量映为3，不重新压回训练范围。它改变距离尺度，可能帮助SVC；树只依顺序阈值，不因为线性缩放就一定提高。
++标准化（Standardization）的实际动作是：原值先减当前训练折学到的该列均值，再除当前训练折学到的该列缩放因子。对第j列，写成$z_j=(x_j-\mu_{train,j})/scale_j$；x是待转换的原值，μ是训练均值，scale对应已拟合StandardScaler的`scale_`属性，不在验证折重新估计。
++
++这里使用StandardScaler默认`with_mean=True, with_std=True`：训练方差`var_`按该训练折人数n作分母，即ddof=0，通常`scale_`为这个方差的平方根；零方差或实现判为近常数的列使用缩放因子1。复算时读取拟合对象的`mean_`／`scale_`，不擅自换成以n−1作分母的样本标准差。
++
++例如训练列为2、4，训练均值3；方差为$((2-3)^2+(4-3)^2)/2=1$，因此scale为1，两个训练值变为−1、1。验证值6只用既有统计量，算$(6-3)/1=3$。若另一训练折给均值5、scale2，则验证值9变成$(9-5)/2=2$，不能直接拿9除2或拿验证值更新均值。标准化改变距离尺度，可能帮助SVC；树只依顺序阈值，不因为线性缩放就一定提高。
+ 
+ 两步同时加入，是本轮“预处理包”的比较，不能仅从整体变化认定改善完全由筛特征造成。若要拆贡献，应另作只缩放／只筛选的消融，不能把未执行的消融写成结果。
+ 
+@@ -171,7 +175,26 @@
+ 
+ ## 6. 从干净进程复做
+ 
+-原始Notebook只读。本参考使用`work/learning-reference.py`与`work/learning-reference-results.json`，输入是sklearn内置数据，不下载或改原件。先确认上文记录的环境，再运行该脚本；脚本固定切分／种子／小网格并把完整各折参数、分数、警告写到其结果目录。脚本不是正式提交Notebook，未来答卷仍须从教师原Notebook副本续写并按明确格式导出。
++原始Notebook只读。本参考的持久入口是[打开完整脚本](../work/learning-reference.py)与[打开完整结果JSON](../work/learning-reference-results.json)。输入是sklearn内置数据，不下载或改原件。脚本不是正式提交Notebook，未来答卷仍须从教师原Notebook副本续写并按明确格式导出。
++
++在本机PowerShell先进入这份脚本所在目录，再用已核解释器运行；下面路径对应本课现有布局，命令没有额外参数：
++
++```powershell
++Set-Location -LiteralPath 'D:/上课资料/CityU/IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/work'
++& 'D:/anaconda3/python.exe' -X utf8 './learning-reference.py'
++```
++
++这一步会在同一work目录写入`learning-reference-results.json`，包含环境、Q1三模型、Q2／Q3各折分数与参数；再次运行会更新同名结果文件。需要保留一次结果时先保存副本。脚本按自身文件位置向上找到CityU根，并导入现有`_meta/tools/safe_write.py`，因此不要只把脚本随意搬到另一层目录。所需库与本批版本在§3.1及结果environment字段记录，不自动安装或更换环境。
++
++打开代码时先读`load_breast_cancer`和第一次`train_test_split`，它们定义Q1数据；再读`outer`／`inner`与`configs`，它们定义Q2／Q3分折及候选。最关键的真实代码行如下，`pipe`与`candidates`是该轮已建立的管线／参数网格：
++
++```python
++search = GridSearchCV(pipe, candidates, cv=inner, scoring='accuracy', refit=True, n_jobs=1, error_score='raise')
++search.fit(X[tr], y[tr])
++pred = search.predict(X[te])
++```
++
++先在本轮训练索引tr上fit整个搜索器，内层赢家重拟合也只见这些行；随后才对外测te预测。最后读取结果的`q1.models`看默认比较，`q2_q3.results`前三项看原始输入、后三项看筛选／缩放包，再进入各项`folds`核每轮配置与正确数。表格是这些实际JSON值的展示，没有另一套手填结果。
+ 
+ 代码先建立数据与Q1默认候选；再固定外层索引，内层GridSearchCV只接本轮X[tr]／y[tr]；Q3把选择器／缩放器放进同一Pipeline。`search.predict(X[te])`发生在内层挑选和外训重拟合之后，所以每一轮的外测未参与该轮fit。完整代码作为同一可复做来源，不在报告里维护第二套逻辑。
+ 

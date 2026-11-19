@@ -1,0 +1,139 @@
+====================================================================================================
+笔记质量量表   学习解析.md   模式: current/strict   status: draft
+----------------------------------------------------------------------------------------------------
+【L 合规检查】
+   L1_未讲解页 : [1, 2, 3, 4]
+   L1_省略前缀连写 : []
+   L5_围栏数 : 12
+   L5_details : [4, 4]
+   ✓ 七项无问题（L1 未讲解页见上，封面/目标页允许）
+【现行内容检查】字数/固定标签/类比配额不计FAIL
+   ✗ C_PAGE_REFERENCES 行— §§2 内容页缺正文页码归属：[1, 2, 3, 4]
+   原题清单: unverified_without_manifest 核对题数: 0
+   范围: 机检通过不代表解释正确或读者已理解；页码引述不证明该页已实质讲解。
+   范围: 纯数字等式只核支持的四则/幂/开方及显示精度；不执行代码、不验证符号推导或模型结果。
+   范围: 无显式源题清单时，无法验证漏整题/原文保真；有清单也只核其字面契约，清单抄写与逐问语义仍需回源。
+   历史G/E统计已保存；查看旧配额详情用 --profile historical
+【逐小节明细】
+   num | cjk | pages | formula_n | numex_step | first_kind
+   2.1 | 62 | 0 | 0 | 0 | text
+   2.1.1 | 556 | 0 | 0 | 0 | text
+   2.1.2 | 330 | 0 | 1 | 2 | text
+   2.1.3 | 216 | 0 | 0 | 0 | text
+   2.2 | 195 | 0 | 0 | 0 | text
+   2.2.1 | 327 | 0 | 0 | 8 | text
+   2.2.2 | 300 | 0 | 3 | 0 | text
+   2.2.3 | 143 | 0 | 1 | 0 | text
+   2.2.4 | 867 | 0 | 0 | 3 | text
+   2.2.5 | 251 | 0 | 0 | 0 | text
+   2.3 | 142 | 0 | 0 | 1 | text
+   2.3.1 | 472 | 0 | 1 | 0 | text
+   2.3.2 | 1090 | 0 | 3 | 4 | text
+   2.3.3 | 1174 | 0 | 2 | 8 | text
+【R 可读性】 计入判定（规则：_meta/可读性总规则.md）
+   语义检查仅为 △ 疑点；PASS 不表示读者已理解。
+   表格: 最多 7 列，最大单元格 38 单元（行 86）
+   句长（阅读单元）: 322 句  均值 27.3  中位 27  p90 43  最长 76  >80: 0（0.0%）  >120: 0  豁免块: 0
+   ✗ 0 项  △ 78 项
+     R1c  一句多个分号         ✗ 0    △ 5
+     R1e  否定澄清堆叠         ✗ 0    △ 3
+     R2b  列表项长度          ✗ 0    △ 5
+     R3a  连续正文块过长        ✗ 0    △ 1
+     R4a  表格列数           ✗ 0    △ 2
+     R4c  单元格句数          ✗ 0    △ 14
+     R5a  一段行内公式过多       ✗ 0    △ 1
+     R5b  一个公式块多个等式      ✗ 0    △ 2
+     R6a  一段术语注释过密       ✗ 0    △ 1
+     R8a  §2 标题缺页码       ✗ 0    △ 14
+     R4f  表头说明线索待核       ✗ 0    △ 13
+     R6b  句内术语密度待核       ✗ 0    △ 3
+     R6d  术语首用解释待核       ✗ 0    △ 14
+   △ R4c 行23 单元格 2 句
+   △ R4c 行23 单元格 2 句
+   △ R4c 行25 单元格 2 句
+   △ R8a 行43 ### 2.1 Question 1：客户缺失值与交易额分散程度
+   △ R8a 行68 #### 2.1.1 第 1 问：缺了几行，不是所有列总共缺几格
+   △ R4c 行85 单元格 2 句
+   △ R4c 行86 单元格 2 句
+   △ R8a 行94 #### 2.1.2 第 2 问：IQR 是两个分位数相减
+   △ R6a 行96 一段 3 处括号英文注释（约等于 3 个新术语）
+   △ R8a 行118 #### 2.1.3 用真实 Excel 运行，不制造输出
+   △ R8a 行132 ### 2.2 Problem 3：先沿树预测，再按实例数计错
+   △ R8a 行162 #### 2.2.1 先读懂节点与计数表
+   △ R4a 行179 7 列
+   △ R4a 行190 7 列
+   △ R8a 行201 #### 2.2.2 第 1 问：训练误差为零，但复杂性惩罚不为零
+   △ R8a 行242 #### 2.2.3 第 2 问：验证误差为 7/15，不是 2/6
+   △ R1e 行261 一段 3 处否定澄清
+   △ R8a 行267 #### 2.2.4 第 3 问：剪枝时，叶子标签从训练数据决定
+   △ R4c 行296 单元格 2 句
+   △ R4c 行297 单元格 2 句
+   △ R4c 行298 单元格 2 句
+   △ R4c 行299 单元格 2 句
+   △ R4c 行300 单元格 2 句
+   △ R4c 行301 单元格 2 句
+   △ R4c 行302 单元格 2 句
+   △ R4c 行303 单元格 2 句
+   △ R4c 行304 单元格 2 句
+   △ R1c 行306 2 个分号：读 L1-R0：D 的 2 个叶子合并成 1 个，叶子从 6 减为 5；…
+   △ R2b 行328 100 单元：3. 前四个只剪左侧的模型悲观误差都为 40.00%，所以这个惩罚本身不…
+   △ R8a 行336 #### 2.2.5 第 4 问：代码参数数的是边，不是图上标的层
+   △ R1e 行352 一段 3 处否定澄清
+   △ R8a 行358 ### 2.3 Question 5：价格变化、五步预测与滚动验证
+   △ R1c 行360 2 个分号：把这三问分开：第 1 问是变量处理判断；第 2 问是在 2018-04-…
+   △ R8a 行390 #### 2.3.1 第 1 问：优先尝试差分，但不要假称已检验平稳
+   △ R1e 行406 一段 3 处否定澄清
+   △ R8a 行412 #### 2.3.2 第 2 问：预测差分后，要累加回价格
+   △ R5b 行426 一个 $$ 块放了多个等式；拆开并在中间加一句话
+   △ R5a 行439 一段 4 个不同行内公式
+   △ R1c 行459 2 个分号：`sort_values` 防止来源倒序导致“昨天”其实变成明天；`se…
+   △ R1c 行473 2 个分号：`lags=1` 指一个滞后差分；`trend='c'` 包含截距；`.…
+   △ R8a 行512 #### 2.3.3 第 3 问：一天一天往前走，比较同一天的预测
+   △ R2b 行518 85 单元：1. 初始训练期：2013-04-30 至 2017-04-30；验证目…
+   △ R2b 行519 116 单元：2. 预先固定候选：差分 AR(1)、差分 AR(7)、价格水平 AR(…
+   △ R2b 行520 84 单元：3. 第一个起点在 2017-04-30 收盘后。每个候选只用这一天及以…
+   △ R2b 行521 109 单元：4. 2017-05-01 的实际价格出现后，计算预测误差，再把这个已发…
+   △ R3a 行514 650 单元无隔断
+   △ R5b 行547 一个 $$ 块放了多个等式；拆开并在中间加一句话
+   △ R1c 行663 2 个分号：第 1 天为 $200+3=203$；第 2 天为 $200+3-2=2…
+   △ R6d 行96 缩写“IQR”首用未识别到中文说明；人工核对
+   △ R6d 行112 缩写“F101”首用未识别到中文说明；人工核对
+   △ R6d 行166 缩写“V1”首用未识别到中文说明；人工核对
+   △ R6b 行281 一句 6 个术语，核对是否需要拆解（V3、V4、B1、V5、V6、B0）：V3、V4 仍沿 B1 到 `-`，V5、V6 仍沿右 B0 到 `+`…
+   △ R6d 行281 缩写“V2”首用未识别到中文说明；人工核对
+   △ R6d 行281 缩写“V3”首用未识别到中文说明；人工核对
+   △ R6d 行281 缩写“V4”首用未识别到中文说明；人工核对
+   △ R6d 行281 缩写“B1”首用未识别到中文说明；人工核对
+   △ R6d 行281 缩写“V5”首用未识别到中文说明；人工核对
+   △ R6d 行281 缩写“B0”首用未识别到中文说明；人工核对
+   △ R6b 行322 一句 4 个术语（L1、R0、L0、R1）：这张表也解释了为什么“同样叶子数就同样好”不成立：5 叶的 L1-R0 …
+   △ R6d 行388 缩写“DOCX”首用未识别到中文说明；人工核对
+   △ R6d 行392 缩写“AR”首用未识别到中文说明；人工核对
+   △ R6d 行459 缩写“ISO”首用未识别到中文说明；人工核对
+   △ R6b 行545 一句 4 个术语（平均绝对误差、mean absolute error、MAE、均方根误差、root mean squared error、RMSE）：采用平均绝对误差（mean absolute error，MAE）作为预…
+   △ R6d 行545 缩写“MAE”首用未识别到中文说明；人工核对
+   △ R6d 行545 缩写“RMSE”首用未识别到中文说明；人工核对
+   △ R4f 行179 表头“B”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行179 表头“C”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行179 表头“D”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行190 表头“B”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行190 表头“C”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行190 表头“D”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行294 表头“训练误差”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行294 表头“悲观误差”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行294 表头“验证错数/15；验证误差”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行310 表头“六条训练行的错数贡献”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行310 表头“六条验证行的错数贡献”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行378 表头“Tradingdate”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行378 表头“Forecast”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+【汇总】 {'total_pages': 4, 'noncontent': [], 'content_pages': 4, 'sec2_cjk': 6125, 'note_cjk': 8714, 'leaf_n': 14, 'concept_n': 14, 'terms_n': 12, 'strict': True}
+【判定】 FAIL（现行内容阻塞1项） 
+【教学边界】本脚本未评估教学可读性；须独立子代理按高中知识起点审查，零报错不能作为教学质量指标。
+====================================================================================================
+JSON:{"file": "E:\\app-data\\codex\\scratchpad\\cityu-notes-20261118\\is6400\\sample-final\\dot-release-20261119\\formal-tree\\notes\\学习解析.md", "profile": "current", "teaching_assessment": "not_assessed_by_script", "C": {"spec": "2026-10-21", "hard": [{"code": "C_PAGE_REFERENCES", "section": "§2", "line": 0, "message": "内容页缺正文页码归属：[1, 2, 3, 4]", "evidence": "[1, 2, 3, 4]"}], "warn": [], "source_coverage": {"status": "unverified_without_manifest", "checked_questions": 0, "hard": [], "warnings": [], "page_references": {"requested_total": 4, "declared_totals": [], "status": "reference_check_only"}}, "limits": ["机检通过不代表解释正确或读者已理解；页码引述不证明该页已实质讲解。", "纯数字等式只核支持的四则/幂/开方及显示精度；不执行代码、不验证符号推导或模型结果。", "无显式源题清单时，无法验证漏整题/原文保真；有清单也只核其字面契约，清单抄写与逐问语义仍需回源。"]}, "historical": {"spec": "2026-09-16", "G": {"G1 密度 §2 字/内容页 ≥ 250": [1531, true], "G2a 粒度 术语数/leaf 小节 ≤ 1.6": [0.86, true], "G2b 粒度 内容页/leaf 小节 ≤ 2.5": [0.29, true], "G2c 承载术语的小节 ≥ 150 字": [["2.2.3"], false], "G3a 小节首元素为段落": [[], true], "G3b 公式有符号表（或符号已在前文解释）": [[["2.3.2", "$$ \\widehat{Close}_{T+h}=Close_T+\\sum_{j", ["\\widehat"]]], false], "G3c 有公式的小节有数字例子": [["2.3.1"], false], "G3d 代码三件套": [["2.3.2"], false], "G6 ### 单元「所以呢」覆盖率 ≥ 0.80": [[0.0, ["2.1", "2.2", "2.3"]], false]}, "E": [["全篇", "先修唤醒", ["先修概念首次使用无一句话唤醒：p 值（行 367）"]], ["2.1", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]], ["2.1.1", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]], ["2.1.2", "公式型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "缺「为什么公式长这样」", "缺 极端/边界情况", "「是什么」自己的话 < 80 字"]], ["2.1.3", "代码型", ["缺 是什么", "缺 所以呢"]], ["2.2", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]], ["2.2.1", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]], ["2.2.2", "公式型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "数字例子没有算式（只给结果不算手把手）", "缺「为什么公式长这样」", "缺 极端/边界情况", "「是什么」自己的话 < 80 字"]], ["2.2.3", "公式型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "数字例子没有算式（只给结果不算手把手）", "缺「为什么公式长这样」", "缺 极端/边界情况", "「是什么」自己的话 < 80 字"]], ["2.2.4", "定义型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]], ["2.2.5", "代码型", ["缺 是什么", "缺 所以呢"]], ["2.3", "算法流程型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "缺 编号步骤", "缺 手算一遍的数字例子"]], ["2.3.1", "公式型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "数字例子没有算式（只给结果不算手把手）", "缺「为什么公式长这样」", "缺 极端/边界情况", "「是什么」自己的话 < 80 字"]], ["2.3.2", "代码型", ["缺 是什么", "缺 所以呢"]], ["2.3.3", "公式型", ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "缺「为什么公式长这样」", "缺 极端/边界情况", "「是什么」自己的话 < 80 字"]]], "verdict": "FAIL"}, "verdict": "FAIL（现行内容阻塞1项）", "legacy_problems": [], "legacy_info": {"L1_未讲解页": [1, 2, 3, 4], "L1_省略前缀连写": [], "L5_围栏数": 12, "L5_details": [4, 4]}, "G": {}, "E": [], "summary": {"file": "E:\\app-data\\codex\\scratchpad\\cityu-notes-20261118\\is6400\\sample-final\\dot-release-20261119\\formal-tree\\notes\\学习解析.md", "total_pages": 4, "noncontent": [], "content_pages": 4, "sec2_cjk": 6125, "note_cjk": 8714, "leaf_n": 14, "concept_n": 14, "terms_n": 12, "strict": true}, "sections": [{"sec": "2.1 Question 1：客户缺失值与交易额分散程度", "num": "2.1", "level": 3, "cjk": 62, "chars": 964, "own_cjk": 62, "bq_ratio": 0.87, "code_blocks": 0, "pages": [], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]}, {"sec": "2.1.1 第 1 问：缺了几行，不是所有列总共缺几格", "num": "2.1.1", "level": 4, "cjk": 556, "chars": 1116, "own_cjk": 431, "bq_ratio": 0.29, "code_blocks": 0, "pages": [], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 1, "has_step_table": 1, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "terms": 1, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]}, {"sec": "2.1.2 第 2 问：IQR 是两个分位数相减", "num": "2.1.2", "level": 4, "cjk": 330, "chars": 1017, "own_cjk": 330, "bq_ratio": 0.27, "code_blocks": 0, "pages": [], "labels": [], "type": "公式型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 1, "symtab_syms": "set()", "prose_syms": "{'Q', 'p'}", "formulas": [[4, "$$ \\mathrm{IQR}=Q_3-Q_1. $$", true]], "numex_step": 2, "numex_any": 2, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 1, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "缺「为什么公式长这样」", "缺 极端/边界情况", "「是什么」自己的话 < 80 字"]}, {"sec": "2.1.3 用真实 Excel 运行，不制造输出", "num": "2.1.3", "level": 4, "cjk": 216, "chars": 408, "own_cjk": 216, "bq_ratio": 0.0, "code_blocks": 1, "pages": [], "labels": [], "type": "代码型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 1, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 所以呢"]}, {"sec": "2.2 Problem 3：先沿树预测，再按实例数计错", "num": "2.2", "level": 3, "cjk": 195, "chars": 1296, "own_cjk": 195, "bq_ratio": 0.57, "code_blocks": 0, "pages": [], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢"]}, {"sec": "2.2.1 先读懂节点与计数表", "num": "2.2.1", "level": 4, "cjk": 327, "chars": 866, "own_cjk": 309, "bq_ratio": 0.0, "code_blocks": 0, "pages": [], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 8, "numex_any": 8, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "terms": 1, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]}, {"sec": "2.2.2 第 1 问：训练误差为零，但复杂性惩罚不为零", "num": "2.2.2", "level": 4, "cjk": 300, "chars": 883, "own_cjk": 273, "bq_ratio": 0.22, "code_blocks": 0, "pages": [], "labels": [], "type": "公式型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 3, "symtab_syms": "set()", "prose_syms": "{'L'}", "formulas": [[15, "$$ E_{\\mathrm{train}}=\\frac{0}{15}=0.00\\%. $$", false], [23, "$$ E_{\\mathrm{pess}}=\\frac{e+1\\times L}{N}. $$", false], [29, "$$ E_{\\mathrm{pess}}=\\frac{0+6}{15}=40.00\\%. $$", false]], "numex_step": 0, "numex_any": 2, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "terms": 1, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "数字例子没有算式（只给结果不算手把手）", "缺「为什么公式长这样」", "缺 极端/边界情况", "「是什么」自己的话 < 80 字"]}, {"sec": "2.2.3 第 2 问：验证误差为 7/15，不是 2/6", "num": "2.2.3", "level": 4, "cjk": 143, "chars": 598, "own_cjk": 121, "bq_ratio": 0.35, "code_blocks": 0, "pages": [], "labels": [], "type": "公式型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 1, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [[15, "$$ E_{\\mathrm{val}}=\\frac{4+3}{15}=46.67\\%. $$", false]], "numex_step": 0, "numex_any": 1, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "terms": 1, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "数字例子没有算式（只给结果不算手把手）", "缺「为什么公式长这样」", "缺 极端/边界情况", "「是什么」自己的话 < 80 字"]}, {"sec": "2.2.4 第 3 问：剪枝时，叶子标签从训练数据决定", "num": "2.2.4", "level": 4, "cjk": 867, "chars": 2645, "own_cjk": 769, "bq_ratio": 0.23, "code_blocks": 0, "pages": [], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 3, "numex_any": 14, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "terms": 2, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "「是什么」自己的话 < 80 字"]}, {"sec": "2.2.5 第 4 问：代码参数数的是边，不是图上标的层", "num": "2.2.5", "level": 4, "cjk": 251, "chars": 729, "own_cjk": 251, "bq_ratio": 0.41, "code_blocks": 1, "pages": [], "labels": [], "type": "代码型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 3, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 所以呢"]}, {"sec": "2.3 Question 5：价格变化、五步预测与滚动验证", "num": "2.3", "level": 3, "cjk": 142, "chars": 1226, "own_cjk": 142, "bq_ratio": 0.76, "code_blocks": 0, "pages": [], "labels": [], "type": "算法流程型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 1, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "缺 编号步骤", "缺 手算一遍的数字例子"]}, {"sec": "2.3.1 第 1 问：优先尝试差分，但不要假称已检验平稳", "num": "2.3.1", "level": 4, "cjk": 472, "chars": 1116, "own_cjk": 472, "bq_ratio": 0.37, "code_blocks": 0, "pages": [], "labels": [], "type": "公式型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 1, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [[8, "$$ d_t=Close_t-Close_{t-1}. $$", false]], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "terms": 2, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "数字例子没有算式（只给结果不算手把手）", "缺「为什么公式长这样」", "缺 极端/边界情况", "「是什么」自己的话 < 80 字"]}, {"sec": "2.3.2 第 2 问：预测差分后，要累加回价格", "num": "2.3.2", "level": 4, "cjk": 1090, "chars": 2424, "own_cjk": 1049, "bq_ratio": 0.15, "code_blocks": 4, "pages": [], "labels": [], "type": "代码型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 3, "symtab_syms": "set()", "prose_syms": "{'c', '\\\\varepsilon', '\\\\phi', 'h'}", "formulas": [[6, "$$ d_t=c+\\phi d_{t-1}+\\varepsilon_t. $$", true], [14, "$$ \\hat d_{T+1}=\\hat c+\\hat\\phi d_T,\\qquad \\hat d_{T+h}=\\hat c+\\hat\\phi\\hat d_{T+h-1}\\quad(h=2,3,4,5). $$", false], [21, "$$ \\widehat{Close}_{T+h}=Close_T+\\sum_{j=1}^{h}\\hat d_{T+j}. $$", false]], "numex_step": 4, "numex_any": 4, "code_bad": 3, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 1, "has_script": 1, "orig_cjk": 0, "terms": 0, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 所以呢"]}, {"sec": "2.3.3 第 3 问：一天一天往前走，比较同一天的预测", "num": "2.3.3", "level": 4, "cjk": 1174, "chars": 3102, "own_cjk": 1051, "bq_ratio": 0.31, "code_blocks": 0, "pages": [], "labels": [], "type": "公式型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 2, "symtab_syms": "{'H', 'y'}", "prose_syms": "set()", "formulas": [[35, "$$ \\mathrm{MAE}=\\frac{1}{H}\\sum_{i=1}^{H}|e_i|, \\qquad \\mathrm{RMSE}=\\sqrt{\\frac{1}{H}\\sum_{i=1}^{H}e_i^2}. $$", true], [47, "$$ \\mathrm{Improvement}=\\frac{\\mathrm{MAE}_{\\mathrm{naive}}-\\mathrm{MAE}_{\\mathrm{model}}}{\\mathrm{MAE}_{\\mathrm{naive}}}\\times100\\%. $$", true]], "numex_step": 8, "numex_any": 2, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "terms": 3, "need_cjk": 0, "E_miss": ["缺 是什么", "缺 为什么需要它", "缺 💡 换个说法", "缺 ⚠️ 常见误解", "缺 所以呢", "缺「为什么公式长这样」", "缺 极端/边界情况", "「是什么」自己的话 < 80 字"]}], "R": {"strict": true, "stats": {"sentences": 322, "mean": 27.3, "p50": 27, "p90": 43, "max": 76, "over80": 0, "over120": 0, "long_share": 0.0, "exempt": 0, "table_max_columns": 7, "table_max_cell_units": 38, "table_max_cell_line": 86, "measurement_version": "v2"}, "hard": [], "warn": [["R4c", 23, "单元格 2 句"], ["R4c", 23, "单元格 2 句"], ["R4c", 25, "单元格 2 句"], ["R8a", 43, "### 2.1 Question 1：客户缺失值与交易额分散程度"], ["R8a", 68, "#### 2.1.1 第 1 问：缺了几行，不是所有列总共缺几格"], ["R4c", 85, "单元格 2 句"], ["R4c", 86, "单元格 2 句"], ["R8a", 94, "#### 2.1.2 第 2 问：IQR 是两个分位数相减"], ["R6a", 96, "一段 3 处括号英文注释（约等于 3 个新术语）"], ["R8a", 118, "#### 2.1.3 用真实 Excel 运行，不制造输出"], ["R8a", 132, "### 2.2 Problem 3：先沿树预测，再按实例数计错"], ["R8a", 162, "#### 2.2.1 先读懂节点与计数表"], ["R4a", 179, "7 列"], ["R4a", 190, "7 列"], ["R8a", 201, "#### 2.2.2 第 1 问：训练误差为零，但复杂性惩罚不为零"], ["R8a", 242, "#### 2.2.3 第 2 问：验证误差为 7/15，不是 2/6"], ["R1e", 261, "一段 3 处否定澄清"], ["R8a", 267, "#### 2.2.4 第 3 问：剪枝时，叶子标签从训练数据决定"], ["R4c", 296, "单元格 2 句"], ["R4c", 297, "单元格 2 句"], ["R4c", 298, "单元格 2 句"], ["R4c", 299, "单元格 2 句"], ["R4c", 300, "单元格 2 句"], ["R4c", 301, "单元格 2 句"], ["R4c", 302, "单元格 2 句"], ["R4c", 303, "单元格 2 句"], ["R4c", 304, "单元格 2 句"], ["R1c", 306, "2 个分号：读 L1-R0：D 的 2 个叶子合并成 1 个，叶子从 6 减为 5；…"], ["R2b", 328, "100 单元：3. 前四个只剪左侧的模型悲观误差都为 40.00%，所以这个惩罚本身不…"], ["R8a", 336, "#### 2.2.5 第 4 问：代码参数数的是边，不是图上标的层"], ["R1e", 352, "一段 3 处否定澄清"], ["R8a", 358, "### 2.3 Question 5：价格变化、五步预测与滚动验证"], ["R1c", 360, "2 个分号：把这三问分开：第 1 问是变量处理判断；第 2 问是在 2018-04-…"], ["R8a", 390, "#### 2.3.1 第 1 问：优先尝试差分，但不要假称已检验平稳"], ["R1e", 406, "一段 3 处否定澄清"], ["R8a", 412, "#### 2.3.2 第 2 问：预测差分后，要累加回价格"], ["R5b", 426, "一个 $$ 块放了多个等式；拆开并在中间加一句话"], ["R5a", 439, "一段 4 个不同行内公式"], ["R1c", 459, "2 个分号：`sort_values` 防止来源倒序导致“昨天”其实变成明天；`se…"], ["R1c", 473, "2 个分号：`lags=1` 指一个滞后差分；`trend='c'` 包含截距；`.…"], ["R8a", 512, "#### 2.3.3 第 3 问：一天一天往前走，比较同一天的预测"], ["R2b", 518, "85 单元：1. 初始训练期：2013-04-30 至 2017-04-30；验证目…"], ["R2b", 519, "116 单元：2. 预先固定候选：差分 AR(1)、差分 AR(7)、价格水平 AR(…"], ["R2b", 520, "84 单元：3. 第一个起点在 2017-04-30 收盘后。每个候选只用这一天及以…"], ["R2b", 521, "109 单元：4. 2017-05-01 的实际价格出现后，计算预测误差，再把这个已发…"], ["R3a", 514, "650 单元无隔断"], ["R5b", 547, "一个 $$ 块放了多个等式；拆开并在中间加一句话"], ["R1c", 663, "2 个分号：第 1 天为 $200+3=203$；第 2 天为 $200+3-2=2…"], ["R6d", 96, "缩写“IQR”首用未识别到中文说明；人工核对"], ["R6d", 112, "缩写“F101”首用未识别到中文说明；人工核对"], ["R6d", 166, "缩写“V1”首用未识别到中文说明；人工核对"], ["R6b", 281, "一句 6 个术语，核对是否需要拆解（V3、V4、B1、V5、V6、B0）：V3、V4 仍沿 B1 到 `-`，V5、V6 仍沿右 B0 到 `+`…"], ["R6d", 281, "缩写“V2”首用未识别到中文说明；人工核对"], ["R6d", 281, "缩写“V3”首用未识别到中文说明；人工核对"], ["R6d", 281, "缩写“V4”首用未识别到中文说明；人工核对"], ["R6d", 281, "缩写“B1”首用未识别到中文说明；人工核对"], ["R6d", 281, "缩写“V5”首用未识别到中文说明；人工核对"], ["R6d", 281, "缩写“B0”首用未识别到中文说明；人工核对"], ["R6b", 322, "一句 4 个术语（L1、R0、L0、R1）：这张表也解释了为什么“同样叶子数就同样好”不成立：5 叶的 L1-R0 …"], ["R6d", 388, "缩写“DOCX”首用未识别到中文说明；人工核对"], ["R6d", 392, "缩写“AR”首用未识别到中文说明；人工核对"], ["R6d", 459, "缩写“ISO”首用未识别到中文说明；人工核对"], ["R6b", 545, "一句 4 个术语（平均绝对误差、mean absolute error、MAE、均方根误差、root mean squared error、RMSE）：采用平均绝对误差（mean absolute error，MAE）作为预…"], ["R6d", 545, "缩写“MAE”首用未识别到中文说明；人工核对"], ["R6d", 545, "缩写“RMSE”首用未识别到中文说明；人工核对"], ["R4f", 179, "表头“B”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 179, "表头“C”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 179, "表头“D”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 190, "表头“B”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 190, "表头“C”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 190, "表头“D”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 294, "表头“训练误差”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 294, "表头“悲观误差”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 294, "表头“验证错数/15；验证误差”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 310, "表头“六条训练行的错数贡献”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 310, "表头“六条验证行的错数贡献”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 378, "表头“Tradingdate”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 378, "表头“Forecast”未识别到专门说明；核对含义、算法或来源、单位和一行读法"]]}}
+
+发布机械门槛：FAIL
+现行内容/计算/源题契约阻塞：1项
+
+记录完整且版本一致；程序不认证独立身份、教学语义或视觉，须核真实代理执行与报告
+

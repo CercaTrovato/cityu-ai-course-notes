@@ -1,0 +1,71 @@
+{
+  "date": "2026-11-18",
+  "checker": "/root",
+  "candidate_sha256": "b8a37532a7e6073caa3272968d81c3a7d4c22f1776829f656dbb0998f9e8906a",
+  "source_sha256": "ccd856049424a3c672f1b693176654dc7e2e9cd85165937de2f047d872ec44e1",
+  "source_pages_text_checked": [
+    3,
+    12,
+    30,
+    38,
+    48,
+    50,
+    51,
+    52
+  ],
+  "calculations": {
+    "p3_net": "98.00",
+    "p12_displayed_ratio": "19.33333333333333333333333333",
+    "p30_retained": "1.200",
+    "p38_days": 120,
+    "p48_contribution": 5,
+    "p48_high_loss": -5,
+    "p48_break_even_loss": 25,
+    "p50_tokens": "888888.8888888888888888888889",
+    "p51_percent_range": [
+      "0.17500",
+      "0.27500"
+    ],
+    "p52_profit_million": "1.0000",
+    "p52_break_even_yield": "0.02",
+    "p52_low_yield_profit_million": "-0.5000"
+  },
+  "same_source_preview": {
+    "url": "http://127.0.0.1:8796/ef5560-m10/",
+    "actual_screenshot_views": [
+      "p3 original image",
+      "p5 local Mermaid + adjacent prose",
+      "p12 original chart",
+      "p44 original BNPL panels",
+      "p52 formula and symbols",
+      "section7 self-tests"
+    ],
+    "images_loaded": 14,
+    "math_nodes": 28,
+    "math_errors": 0,
+    "mermaid_rendered": 1,
+    "horizontal_overflow": false,
+    "all_internal_page_anchor_targets_exist": true,
+    "carrier": "root IAB HTML preview; not native Obsidian",
+    "status": "needs-directed-fixes"
+  },
+  "findings": [
+    {
+      "id": "ROOT-EF-M10-1",
+      "location": "p5 Mermaid explanation",
+      "issue": "Prose uses A/D node identifiers absent from the visible rendered graph. Replace with visible labels.",
+      "status": "open"
+    },
+    {
+      "id": "ROOT-EF-M10-2",
+      "location": "section7 all five answers",
+      "issue": "Candidate uses Obsidian callouts; same-source HTML shows literal callout markers and expanded answers. Current task has no 11/04 display/container waiver; root user skeleton calls for details/summary. Render and verify actual foldable answers.",
+      "status": "open"
+    }
+  ],
+  "limitations": [
+    "Selected distinct final display forms were actually viewed; remaining images were load-checked, not separately claimed visually examined by root.",
+    "Source full-page visuals are by course author and independent reviewer, separately recorded.",
+    "No real financial transactions or current product/price verification were performed."
+  ]
+}

@@ -1,0 +1,150 @@
+--- IS6400_Business_Data_Analytics/notes/M10-模型评估-交叉验证正则化与AB测试.md
++++ candidate.md
+@@ -19,8 +19,17 @@
+ > 本篇对应 Canvas Week 11 的 Model Assessment，源文件 84 页；不是旧版 L11 深度学习。仅有讲义，尚无本讲转录，实际授课日期未核。课堂是否讲到、略过或给了考试提示均不据课件推断。文中“原题／给定结果”来自讲义，“参考答案／笔记补充”由笔记推导，不冒充教师答案。
+ 
+ ## 0. 三分钟速览
+ 
++<!-- cityu-nav:opening -->
++> [!abstract] 阅读导航
++> **预习**：[[#1. 开始之前 · 知识衔接|前置]] → [[#2. 按讲义物理页逐页学习|逐页／逐格正文]]。
++> **课中**：[[#8. 讲义页码映射|按页码／Cell 定位]]。
++> **复习**：[[#4. 速查表|速查]] → [[#5. 双语术语卡|英文术语]] → [[#7. 自测 · 先作答，再核理由|自测]]，点表中位置回正文。
++> **返回**：正文关键位置可点“回速查／回术语”，不必滚回页首。
++> [[#9. 延伸与勘误|来源／勘误]] · [[IS6400_Business_Data_Analytics/00-课程总览|课程入口]]
++<!-- cityu-nav:opening:end -->
++
+ 模型评估不是把分数算出来就结束，而是说明分数来自什么数据、用于哪次选择，以及能否支持未来使用。
+ 
+ - 能从同一批预测计算 MAE、RMSE、Precision、Recall，并说明分母和错误代价。
+ - 能列出留出法、K 折与滚动预测的训练／验证角色，找出泄漏。
+@@ -326,8 +335,12 @@
+ 
+ 原页图保留教师的标注与给定结果；上述中文按同一页解释，原错另作具名勘误。
+ 
+ ### 2.25 K折交叉验证机制（讲义 p.25）
++
++<!-- cityu-nav:landing-25 -->
++[[#4. 速查表|↩ 回速查]] · [[#5. 双语术语卡|回术语]] · [[#0. 三分钟速览|阅读导航]]
++<!-- cityu-nav:landing:end -->
+ 
+ K 折交叉验证（K-fold cross-validation，CV）把开发数据分成 K 个互不重叠的折（Fold）。每轮拿一折验证、其余 K−1 折训练；重新拟合 K 次，让每条记录恰好验证一次。原图每行一次运行，灰块向右轮换，白块是该轮训练；每轮得到一个 $e_k$。
+ 
+ 比较候选配置时，固定同一套折。均值 $\bar e=\sum_{k=1}^K e_k/K$ 描述平均误差；标准差描述折间变化，须声明分母约定。💡 笔记补充：五折误差为 2、3、4、3、3，均值为 3；逐个减均值后得到 −1、0、1、0、0，平方再相加得 2。以 K−1 为分母的样本标准差为 $\sqrt{2/4}\approx0.7071$。折间分数相关，不能直接把标准差当作严格独立样本置信区间。
+@@ -630,8 +643,12 @@
+ 💡 笔记补充：两个实际上相近的候选在这次 CV 得 0.80 和 0.84，不能因此断言赢家真实能力就是 0.84。外层留出的数据只评价内层挑选后的流程；这样才能把调参与评价职责分开。不是禁止 CV 调参，而是禁止把参与选择的数据伪装为独立证明。
+ 
+ ### 2.49 课件所称嵌套流程（讲义 p.49）
+ 
++<!-- cityu-nav:landing-49 -->
++[[#4. 速查表|↩ 回速查]] · [[#5. 双语术语卡|回术语]] · [[#0. 三分钟速览|阅读导航]]
++<!-- cityu-nav:landing:end -->
++
+ 原流程从 Dataset 分出 Training data 与 Test data。Training data 和 Parameters 一同进入 Cross-validation，输出 Best parameters；这组配置与全部训练数据进入 Retrained model，最后模型和测试数据共同进入 Final evaluation。箭头没有从最终评价回流调参。
+ 
+ 本页标题称 Nested-Cross Validation，但图实际画“单次外部留出＋内部 CV”。它体现内外隔离原则，却没有画外层 K 折轮换。通常完整嵌套交叉验证（Nested cross-validation）在每个外层训练折内重新内层搜索，再仅在该外层测试折评价，最后汇总外层分数。不能把内层五折误写成五个独立最终测试。
+ 
+@@ -661,8 +678,12 @@
+ 
+ 原页图保留教师的标注与给定结果；上述中文按同一页解释，原错另作具名勘误。
+ 
+ ### 2.52 内层步骤7至10（讲义 p.52）
++
++<!-- cityu-nav:landing-52 -->
++[[#4. 速查表|↩ 回速查]] · [[#5. 双语术语卡|回术语]] · [[#0. 三分钟速览|阅读导航]]
++<!-- cityu-nav:landing:end -->
+ 
+ 后四步是：7 汇总同一配置 K 个验证分数的均值与标准差；8 为其他配置重复；9 按预定性能准则选配置；10 用全部开发数据重拟合，再在外部测试上评价。标准差用于看稳定性，不是同时把均值／标准差都机械最小化；若指标是准确率，均值越高越好，若是损失则越低越好。
+ 
+ 💡 笔记补充：两个候选各做二折，A 的 MAE 为 2、4，B 为 3、3，均值都为 3；A 的折间变化较大，但没有通用规则保证 B 未来必胜。应事先约定平局与复杂度偏好，不能看测试后再决定怎样打破平局。
+@@ -832,8 +853,12 @@
+ 该图专门描述子树替换，不把子树提升混入同一分支。沿箭头执行下页算例时，只比较同样 30 条与相同每叶代价；不是拿分裂后 9 条错就直接宣布保留。
+ 
+ ### 2.64 后剪枝30条算例（讲义 p.64）
+ 
++<!-- cityu-nav:landing-64 -->
++[[#4. 速查表|↩ 回速查]] · [[#5. 双语术语卡|回术语]] · [[#0. 三分钟速览|阅读导航]]
++<!-- cityu-nav:landing:end -->
++
+ 原图根节点有 Yes=20、No=10，若不分裂，预测 Yes，错 10 条。按每叶 0.5 条等效惩罚，单叶代价为 $(10+0.5)/30=0.35$。注意 0.5 加在错分条数上，最后统一除 30。
+ 
+ 分裂成 A1–A4 后，各叶给定计数如下。按多数类作预测，四叶错误为 4、3、1、1，合计 9：
+ 
+@@ -1025,8 +1050,12 @@
+ 原页图保留教师的标注与给定结果；上述中文按同一页解释，原错另作具名勘误。
+ 
+ ### 2.80 检验差异及不确定性（讲义 p.80）
+ 
++<!-- cityu-nav:landing-80 -->
++[[#4. 速查表|↩ 回速查]] · [[#5. 双语术语卡|回术语]] · [[#0. 三分钟速览|阅读导航]]
++<!-- cityu-nav:landing:end -->
++
+ 原英文步骤 5：
+ 
+ > Evaluate the significance of difference in KPIs between the two groups
+ 
+@@ -1133,8 +1162,12 @@
+ 
+ 分群本身也必须只在开发／训练数据拟合，再把新客户按同一规则分配，避免全表聚类把未来信息带回训练。最终若关心利润或房间利用率，还需评价预订决策、容量与成本，而不仅是回归误差。原页未给数据，不能替 (a)／(b)／(c) 判定赢家。
+ 
+ 英文参考答案（笔记自拟）：Compare segment-specific models, a pooled model with segment indicators, and a pooled model without segments on the same future customers and outcome scale. Fit segmentation and other preprocessing on training data only. Aggregate errors with weights consistent with the business objective, and evaluate the resulting reservation policy where relevant. No winning option is determined by the slide alone.
++
++<!-- cityu-nav:return-3 -->
++[[#0. 三分钟速览|↑ 阅读导航]] · [[#8. 讲义页码映射|页／Cell 索引]] · [[#4. 速查表|复习速查]]
++<!-- cityu-nav:return:end -->
+ 
+ ## 3. 一图看懂 · 数据角色决定分数用途
+ 
+ 先把“开发选择”和“独立评价”分开，下面同一流程同时适用于模型、预处理和特征组合。
+@@ -1175,23 +1208,23 @@
+ 表中英文定义是笔记自拟的应试表达，不是教师逐字引文。这里做检索，首次推理所需解释仍在正文。
+ 
+ | 中文 | English | 英文参考定义 | 首次展开 |
+ |---|---|---|---|
+-| 泛化误差 | Generalization error | Expected prediction loss on new observations from the target setting. | p.19–21 |
+-| 留出法 | Hold-out | A protocol that separates observations used for fitting from observations used for validation or final testing. | p.20–24 |
+-| 交叉验证 | Cross-validation | Repeated fitting and evaluation across predefined data splits. | p.25 |
+-| K 折 | K-fold | A partition into K folds, each used once for validation while the others train the model. | p.25 |
+-| 随机重复留出 | Repeated random subsampling | Repeated random train-validation splits whose validation subsets may overlap. | p.32 |
+-| 滚动预测起点 | Rolling forecast origin | An evaluation origin that moves forward while using only information available at each origin. | p.34 |
+-| 超参数 | Hyperparameter | A setting that controls the learning procedure and is specified before a particular fit. | p.43 |
+-| 嵌套交叉验证 | Nested cross-validation | An outer evaluation loop containing a separate inner model-selection loop. | p.49–52 |
+-| 选择偏差 | Selection bias | Optimism caused by selecting a configuration using the same performance estimates later reported as final evidence. | p.48 |
+-| 悲观误差估计 | Pessimistic error estimate | A training-error criterion augmented by a model-complexity penalty. | p.60 |
+-| 预剪枝／后剪枝 | Pre-pruning / Post-pruning | Limiting tree growth before completion / simplifying a grown tree using a comparison criterion. | p.62–64 |
+-| 凝聚度／分离度 | Cohesion / Separation | Within-cluster closeness / distinctness between clusters under a specified representation and measure. | p.69 |
+-| 消融测试 | Ablation test | A controlled comparison that removes or changes a component to study its contribution. | p.82 |
+-| 零假设 | Null hypothesis | The reference claim under which the sampling distribution of a test statistic is assessed. | p.77、80 |
+-| 标准误 | Standard error | The estimated sampling uncertainty of a statistic, such as a difference in means. | p.80 |
++| 泛化误差 | Generalization error | Expected prediction loss on new observations from the target setting. | [[#2.19 验证集的用途与代价（讲义 p.19）\|p.19]]–[[#2.21 留出法的选择阶段（讲义 p.21）\|21]] |
++| 留出法 | Hold-out | A protocol that separates observations used for fitting from observations used for validation or final testing. | [[#2.20 留出法的第一阶段（讲义 p.20）\|p.20]]–[[#2.24 单次留出的局限（讲义 p.24）\|24]] |
++| 交叉验证 | Cross-validation | Repeated fitting and evaluation across predefined data splits. | [[#2.25 K折交叉验证机制（讲义 p.25）\|p.25]] |
++| K 折 | K-fold | A partition into K folds, each used once for validation while the others train the model. | [[#2.25 K折交叉验证机制（讲义 p.25）\|p.25]] |
++| 随机重复留出 | Repeated random subsampling | Repeated random train-validation splits whose validation subsets may overlap. | [[#2.32 随机重复留出（讲义 p.32）\|p.32]] |
++| 滚动预测起点 | Rolling forecast origin | An evaluation origin that moves forward while using only information available at each origin. | [[#2.34 扩展窗口滚动预测（讲义 p.34）\|p.34]] |
++| 超参数 | Hyperparameter | A setting that controls the learning procedure and is specified before a particular fit. | [[#2.43 超参数与参数（讲义 p.43）\|p.43]] |
++| 嵌套交叉验证 | Nested cross-validation | An outer evaluation loop containing a separate inner model-selection loop. | [[#2.49 课件所称嵌套流程（讲义 p.49）\|p.49]]–[[#2.52 内层步骤7至10（讲义 p.52）\|52]] |
++| 选择偏差 | Selection bias | Optimism caused by selecting a configuration using the same performance estimates later reported as final evidence. | [[#2.48 选择偏差与数据泄漏（讲义 p.48）\|p.48]] |
++| 悲观误差估计 | Pessimistic error estimate | A training-error criterion augmented by a model-complexity penalty. | [[#2.60 悲观误差定义（讲义 p.60）\|p.60]] |
++| 预剪枝／后剪枝 | Pre-pruning / Post-pruning | Limiting tree growth before completion / simplifying a grown tree using a comparison criterion. | [[#2.62 预剪枝的全部停止条件（讲义 p.62）\|p.62]]–[[#2.64 后剪枝30条算例（讲义 p.64）\|64]] |
++| 凝聚度／分离度 | Cohesion / Separation | Within-cluster closeness / distinctness between clusters under a specified representation and measure. | [[#2.69 凝聚度与分离度（讲义 p.69）\|p.69]] |
++| 消融测试 | Ablation test | A controlled comparison that removes or changes a component to study its contribution. | [[#2.82 消融与全管线变化（讲义 p.82）\|p.82]] |
++| 零假设 | Null hypothesis | The reference claim under which the sampling distribution of a test statistic is assessed. | [[#2.77 提出可检验假设（讲义 p.77）\|p.77]]、[[#2.80 检验差异及不确定性（讲义 p.80）\|80]] |
++| 标准误 | Standard error | The estimated sampling uncertainty of a statistic, such as a difference in means. | [[#2.80 检验差异及不确定性（讲义 p.80）\|p.80]] |
+ 
+ ## 6. 考点预判与答题框架
+ 
+ ### 6.1 来源与可信度
+@@ -1366,8 +1399,12 @@
+ | 82 | 消融与全管线变化 | [[#2.82 消融与全管线变化（讲义 p.82）\|p.82 正文]] | [原图](figures/m10-source/p-82.png) | 未核：无本讲转录 |
+ | 83 | 客户细分与赌场案例 | [[#2.83 客户细分与赌场案例（讲义 p.83）\|p.83 正文]] | [原图](figures/m10-source/p-83.png) | 未核：无本讲转录 |
+ | 84 | 三种收益管理方案 | [[#2.84 三种收益管理方案（讲义 p.84）\|p.84 正文]] | 纯文字／无独有教学图，正文展开 | 未核：无本讲转录 |
+ 
++<!-- cityu-nav:return-9 -->
++[[#0. 三分钟速览|↑ 阅读导航]] · [[#8. 讲义页码映射|页／Cell 索引]] · [[#4. 速查表|复习速查]]
++<!-- cityu-nav:return:end -->
++
+ ## 9. 延伸与勘误
+ 
+ ### 9.1 课堂覆盖仍未知
+ 

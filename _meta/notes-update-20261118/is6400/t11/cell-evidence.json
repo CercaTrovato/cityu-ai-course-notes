@@ -1,0 +1,1261 @@
+{
+  "source_sha256": "a1b85cb3d817cf64e5fbe2ccc7fbdbf86c99f3bf76834f2e09269e10dd0c17a2",
+  "cells": [
+    {
+      "cell": 1,
+      "type": "markdown",
+      "source_sha256": "e3e5601b69b51c0eb2a39becce9f4cfa1ba2dde05fafe5d7f6964cad428bd956",
+      "source_elements": "# Tutorial 11 – Model Selection",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.01 cell 1 · 课程入口",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 2,
+      "type": "markdown",
+      "source_sha256": "b5eb123069481cf9b6c220881d83cc622c67bc05c119c2d1be3db5ded8d43994",
+      "source_elements": "### This notebook contains all the sample code and solutions to the model assessment for model selection.\n\nModel selection has two levels: for one model, how to choose its hyperparameters (Sections 1-3); among different models, which model to use (Section 4).\n#### You will learn:\n\n1. The use of validation dataset\n2. Linear regression models with regularizations.\n3. Post pruning decision tree with complexity penalty\n4. Hyperparameter search with GridSearchCV\n5. Choosing between models: cross-validation and hold-out\n\n### Summary of toolbox:\n1. pruning decision trees: cost_complexity_pruning_path https://scikit-learn.org/stable/auto_examples/tree/plot_cost_complexity_pruning.html\n\n2. Support vector machine for classification: from sklearn.svm import SVC https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html\n \n3. GridSearch CV: from sklearn.model_selection import GridSearchCV https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html\n\n4. Classification report: from sklearn.metrics import classification_report https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.02 cell 2 · 目标与工具清单",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 3,
+      "type": "markdown",
+      "source_sha256": "53f18644a255f07b8aeaa9f88c7c219330237e499aed6115e7b57135e163a805",
+      "source_elements": "# 1. Overfitting and Ridge Regression\n\nIn this section we first show that a complex model fits the training data very well but performs badly on new data (**overfitting**). We then use **Ridge regression** to penalize large coefficients, and use the validation set to choose the penalty strength.\n\nFlow: generate data (1.1) → overfitting with a complex model (1.2) → Ridge regression (1.3) → choose the penalty α (1.4)\n\nreference: https://www.analyticsvidhya.com/blog/2016/01/ridge-lasso-regression-python-complete-tutorial/",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.03 cell 3 · Ridge与过拟合路线",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 4,
+      "type": "markdown",
+      "source_sha256": "480daf28aa225cb36eab9af757c701ed92b4b5d9cc86d1b9ac255d518f382ef5",
+      "source_elements": "## 1.1 Generate the Data\n\nLet's first generate a dataset from y = sin(x) + noise. The true pattern is a smooth curve, and the noise makes the points deviate from it. We then extend x into 15 polynomial features (x, x², ..., x¹⁵), split the data into training and validation sets, and normalize the features.",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.04 cell 4 · 合成数据的任务",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 5,
+      "type": "code",
+      "source_sha256": "05ca7b1a28bdd55bb9305f11c391395b947f44e15e637f61dc8294d0bcad16b2",
+      "source_elements": [
+        "#Importing libraries. The same will be used throughout the article.",
+        "import numpy as np",
+        "import pandas as pd",
+        "import random",
+        "import matplotlib.pyplot as plt",
+        "%matplotlib inline",
+        "from matplotlib.pylab import rcParams",
+        "plt.figure(figsize=(8,5))",
+        "#Define input array with angles from 60deg to 300deg converted to radians",
+        "x = np.array([i*np.pi/180 for i in range(60,300,4)])",
+        "np.random.seed(10)  #Setting seed for reproducibility",
+        "y = np.sin(x) + np.random.normal(0,0.15,len(x))",
+        "data = pd.DataFrame(np.column_stack([x,y]),columns=['x','y'])",
+        "plt.plot(data['x'],data['y'],\".\",color='black',markersize=16)",
+        "plt.xlabel('X')",
+        "plt.ylabel('Y')",
+        "plt.show()",
+        "",
+        "#create new variables for x^k",
+        "for i in range(2,16):  #power of 1 is already there",
+        "    colname = 'x^%d'%i      #new var will be x_power",
+        "    data[colname] = data['x']**i",
+        "data.head()"
+      ],
+      "outputs": [
+        "<Figure size 800x500 with 1 Axes>",
+        "[saved PNG image]",
+        "          x         y       x^2       x^3       x^4       x^5       x^6  \\\n0  1.047198  1.065763  1.096623  1.148381  1.202581  1.259340  1.318778   \n1  1.117011  1.006086  1.247713  1.393709  1.556788  1.738948  1.942424   \n2  1.186824  0.695374  1.408551  1.671702  1.984016  2.354677  2.794587   \n3  1.256637  0.949799  1.579137  1.984402  2.493673  3.133642  3.937850   \n4  1.326450  1.063496  1.759470  2.333850  3.095735  4.106339  5.446854   \n\n        x^7       x^8        x^9       x^10       x^11       x^12       x^13  \\\n0  1.381021  1.446202   1.514459   1.585938   1.660790   1.739176   1.821260   \n1  2.169709  2.423588   2.707173   3.023942   3.377775   3.773011   4.214494   \n2  3.316683  3.936319   4.671717   5.544505   6.580351   7.809718   9.268760   \n3  4.948448  6.218404   7.814277   9.819710  12.339811  15.506664  19.486248   \n4  7.224981  9.583578  12.712139  16.862020  22.366630  29.668222  39.353420   \n\n        x^14       x^15  \n0   1.907219   1.997235  \n1   4.707635   5.258479  \n2  11.000386  13.055521  \n3  24.487142  30.771450  \n4  52.200353  69.241170  "
+      ],
+      "original_images": [
+        "IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-05-out-01.png"
+      ],
+      "source_read": true,
+      "visual": "saved image viewed",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.05 cell 5 · 生成60条正弦数据与幂特征",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 6,
+      "type": "code",
+      "source_sha256": "f3ca2b45d8910467fc4af30e3b879250f65d0f686f2891016321a8c3175441ee",
+      "source_elements": [
+        "from sklearn.model_selection import train_test_split",
+        "from sklearn.metrics import mean_absolute_error",
+        "from sklearn.preprocessing import MinMaxScaler,Normalizer",
+        "power=15",
+        "predictors=['x']",
+        "predictors.extend(['x^%d'%i for i in range(2,power+1)])#we extend the orignial feature x to the power of 2, 3, ..., 15",
+        "X_train, X_test, y_train, y_test = train_test_split(data[predictors], data['y'], random_state=0)",
+        "",
+        "feature_scaler = MinMaxScaler()",
+        "X_train_N=feature_scaler.fit_transform(X_train) #normalize X_train",
+        "X_test_N=feature_scaler.transform(X_test) #normalize X_test using min and max of X_train",
+        "",
+        "X_train=pd.DataFrame(X_train_N,columns=list(X_train))",
+        "X_test=pd.DataFrame(X_test_N,columns=list(X_test))"
+      ],
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.06 cell 6 · 先划分再拟合MinMax",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 7,
+      "type": "markdown",
+      "source_sha256": "6cdaee2dd9cd82cd071e2e4a69676cc61997b2a1cd5c1c74cddb0a97e32545cd",
+      "source_elements": "## 1.2 Overfitting: Polynomial Regression\n\nA complex model can fit the training data very well, but it may have an overfitting issue: it learns the noise instead of the true pattern.\n\nFor example, we can use **polynomial regression**:\n\n$$y=a0+a1*x + a2*x^2+a3*x^3+...a15*x^{15}$$\n\nBelow we check the training error, the size of the coefficients, and the validation error.",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.07 cell 7 · 十五阶模型的含义",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 8,
+      "type": "code",
+      "source_sha256": "c4761b2042918921769bbd276469ee3558713780bd6624fa9fd6327a36dc895d",
+      "source_elements": [
+        "from sklearn.linear_model import LinearRegression",
+        "",
+        "plt.figure(figsize=(8,5))",
+        "",
+        "power=15",
+        "",
+        "linreg = LinearRegression() #set up the model. ",
+        "#the regressor X will be normalized before regression. ",
+        "#The normalization will be done by subtracting the mean and dividing it by L2 norm.",
+        "linreg.fit(X_train,y_train)",
+        "y_pred_train = linreg.predict(X_train)",
+        "",
+        "plt.plot(X_train['x'],y_pred_train,'.',markersize=16)",
+        "plt.plot(X_train['x'],y_train,'.',markersize=16)",
+        "plt.title('Polynomial regression of power: %d'%power,fontsize=30)",
+        "plt.legend(['predicted','real data'],fontsize=16)",
+        "plt.show()"
+      ],
+      "outputs": [
+        "<Figure size 800x500 with 1 Axes>",
+        "[saved PNG image]"
+      ],
+      "original_images": [
+        "IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-08-out-01.png"
+      ],
+      "source_read": true,
+      "visual": "saved image viewed",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.08 cell 8 · 拟合普通回归与训练预测",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 9,
+      "type": "markdown",
+      "source_sha256": "d7819f0c6812cfaec91236c376bd07e0a7098728ef6cbfc09edd6f26c9c2735d",
+      "source_elements": "Let's take a look at the training error and coefficients from this fitting.\n\nThe training error is small. But the coefficients are very large.",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.09 cell 9 · 训练误差与系数的提示",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 10,
+      "type": "code",
+      "source_sha256": "c3b42f30fbf0138994d81211a5f40b8149e279fe03ac59a536e98f98af00030e",
+      "source_elements": [
+        "print('Training Error= %f' %mean_absolute_error(y_train, y_pred_train))",
+        "print('intercept=%f' %linreg.intercept_)",
+        "for i in range(len(linreg.coef_)):",
+        "    print('a%d=%f' %(i+1,linreg.coef_[i]))"
+      ],
+      "outputs": [
+        "Training Error= 0.078421\nintercept=1.057933\na1=2031913.488968\na2=-36773928.509989\na3=344864790.122914\na4=-2126062340.662427\na5=9336994579.702747\na6=-30327783622.518524\na7=74302988106.380981\na8=-138560140803.835876\na9=196821717578.505493\na10=-211394249905.825348\na11=168725679119.933807\na12=-96954767996.357971\na13=37897523973.656570\na14=-9017406266.972521\na15=985384801.042269\n"
+      ],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.10 cell 10 · 读取MAE与全部系数",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 11,
+      "type": "markdown",
+      "source_sha256": "17dec2dd8830a9ae61490be9bc179523b95b476cc41f0dc053be3c8a68889394",
+      "source_elements": "What about validation error? The validation performance is bad.",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.11 cell 11 · 转向验证问题",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 12,
+      "type": "code",
+      "source_sha256": "09319804726516636ec2ed3fd7251d3f176e15564f297d6c4aa2d89ea65d83be",
+      "source_elements": [
+        "y_pred = linreg.predict(X_test)",
+        "print('Validation Error= %f' %mean_absolute_error(y_test, y_pred))",
+        "plt.plot(X_test['x'],y_pred,'.',markersize=16)",
+        "plt.plot(X_test['x'],y_test,'.',markersize=16)",
+        "plt.title('Polynomial regression of power: %d'%power,fontsize=30)",
+        "plt.legend(['predicted','real data'],fontsize=16)",
+        "plt.show()"
+      ],
+      "outputs": [
+        "Validation Error= 0.230047\n",
+        "<Figure size 640x480 with 1 Axes>",
+        "[saved PNG image]"
+      ],
+      "original_images": [
+        "IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-12-out-02.png"
+      ],
+      "source_read": true,
+      "visual": "saved image viewed",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.12 cell 12 · 普通回归验证结果",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 13,
+      "type": "markdown",
+      "source_sha256": "9ab322b16ce4c129742ec461f109088f886a5f7566ab02ba25dafdc0114c9bbe",
+      "source_elements": "## 1.3 Ridge Regression: Penalizing Large Coefficients\n\nRidge regression adds a penalty on the size of the coefficients, so the model cannot use very large coefficients to chase the noise.\n\nRegression penalty: α * (sum of square of coefficients)\n\nHere we fix the penalty α = 0.1 and compare with the polynomial regression above.",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.13 cell 13 · Ridge目标与强度",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 14,
+      "type": "code",
+      "source_sha256": "b0ae9b79d431a17579fd2260abdf901f50ced67b035e8797fcb3ef9740507844",
+      "source_elements": [
+        "from sklearn.linear_model import Ridge",
+        "plt.figure(figsize=(8,5))",
+        "",
+        "alpha=0.1 #the penlty term is set to be 0.1",
+        "#Fit the model",
+        "ridgereg = Ridge(alpha=alpha)",
+        "ridgereg.fit(X_train,y_train)",
+        "y_pred_train = ridgereg.predict(X_train)",
+        "",
+        "    ",
+        "#Check if a plot is to be made for the entered alpha",
+        "plt.plot(X_train['x'],y_pred_train,'.',markersize=16)",
+        "plt.plot(X_train['x'],y_train,'.',markersize=16)",
+        "plt.title('Plot for penalty lambda: %.3g'%alpha,fontsize=30)",
+        "plt.show()"
+      ],
+      "outputs": [
+        "<Figure size 800x500 with 1 Axes>",
+        "[saved PNG image]"
+      ],
+      "original_images": [
+        "IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-14-out-01.png"
+      ],
+      "source_read": true,
+      "visual": "saved image viewed",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.14 cell 14 · 固定alpha的Ridge训练",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 15,
+      "type": "markdown",
+      "source_sha256": "89c086e4f01a4a37e27cc4c655db593e60dce2c1374bd017181014dc2b645367",
+      "source_elements": "Let's take a look at the training error and coefficients from this fitting.\n\nThe training error is larger. But the coefficients are significantly reduced. The model is reduced to a simpler form.",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.15 cell 15 · 收缩的训练代价",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 16,
+      "type": "code",
+      "source_sha256": "107c6bb7d983630d2b5adb2a884949cda95bcc60347ce0a3969a2215744eacaf",
+      "source_elements": [
+        "print('Training Error= %f' %mean_absolute_error(y_train, y_pred_train))",
+        "print('intercept=%f' %ridgereg.intercept_)",
+        "for i in range(len(ridgereg.coef_)):",
+        "    print('a%d=%f' %(i+1,ridgereg.coef_[i]))"
+      ],
+      "outputs": [
+        "Training Error= 0.126277\nintercept=1.150080\na1=-0.641983\na2=-0.977411\na3=-0.936037\na4=-0.702257\na5=-0.422426\na6=-0.171054\na7=0.025460\na8=0.164427\na9=0.252661\na10=0.299650\na11=0.314658\na12=0.305680\na13=0.279223\na14=0.240404\na15=0.193162\n"
+      ],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.16 cell 16 · 读取Ridge训练结果",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 17,
+      "type": "code",
+      "source_sha256": "09a16a06338360c3e73919cd5d9aceb09d7652935a3a2a894acbd8efbd52aba4",
+      "source_elements": [
+        "#The model complexity was controled. What about validation performance?",
+        "y_pred = ridgereg.predict(X_test)",
+        "print('Validation Error= %f' %mean_absolute_error(y_test, y_pred))",
+        "plt.plot(X_test['x'],y_pred,'.',markersize=16)",
+        "plt.plot(X_test['x'],y_test,'.',markersize=16)",
+        "plt.title('Polynomial regression of power: %d'%power,fontsize=30)",
+        "plt.legend(['predicted','real data'],fontsize=16)",
+        "plt.show()"
+      ],
+      "outputs": [
+        "Validation Error= 0.196034\n",
+        "<Figure size 640x480 with 1 Axes>",
+        "[saved PNG image]"
+      ],
+      "original_images": [
+        "IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-17-out-02.png"
+      ],
+      "source_read": true,
+      "visual": "saved image viewed",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.17 cell 17 · Ridge验证比较",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 18,
+      "type": "markdown",
+      "source_sha256": "b6cee8086532bfb0a0b9a9e8f276d4b0db857c3d5c68bf7132f2dbc73a6da990",
+      "source_elements": "## 1.4 Choose the Penalty α with the Validation Set\n\nα controls the strength of the penalty: α = 0 means no penalty (the same as ordinary linear regression), and a larger α gives a simpler model. We try a range of α values and compare their validation errors.",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.18 cell 18 · 用验证选择强度",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 19,
+      "type": "code",
+      "source_sha256": "e04e231b2e3e592386210bb06282185ecddc552a550720824ac3badc53b70b14",
+      "source_elements": [
+        "alpha_test=[i/100 for i in range(0,20)] #search this hyperparameter from 0 to 0.19, with a step of 0.01",
+        "",
+        "for alpha in alpha_test:",
+        "    ridgereg = Ridge(alpha=alpha).fit(X_train,y_train)",
+        "    y_pred = ridgereg.predict(X_test)",
+        "    print(alpha,'Validation Error= %f' %mean_absolute_error(y_test, y_pred))"
+      ],
+      "outputs": [
+        "0.0 Validation Error= 0.230049\n0.01 Validation Error= 0.161678\n0.02 Validation Error= 0.176549\n0.03 Validation Error= 0.183870\n0.04 Validation Error= 0.188023\n0.05 Validation Error= 0.190702\n0.06 Validation Error= 0.192492\n0.07 Validation Error= 0.193629\n0.08 Validation Error= 0.194661\n0.09 Validation Error= 0.195472\n0.1 Validation Error= 0.196034\n0.11 Validation Error= 0.196411\n0.12 Validation Error= 0.196648\n0.13 Validation Error= 0.196780\n0.14 Validation Error= 0.196828\n0.15 Validation Error= 0.196811\n0.16 Validation Error= 0.196747\n0.17 Validation Error= 0.196745\n0.18 Validation Error= 0.196716\n0.19 Validation Error= 0.196664\n"
+      ],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.19 cell 19 · 20项alpha循环",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 20,
+      "type": "markdown",
+      "source_sha256": "2f1f310bbfc218daa71fd8af0ded3c60ee0e74988016001b3a56b7344f81bafd",
+      "source_elements": "### which alpha provides the best performance?",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.20 cell 20 · 最小验证误差答案",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 21,
+      "type": "markdown",
+      "source_sha256": "cd3650ea170fae1c6dd5cb63da1a19d7326af9989ece0e1c0b70fb67f0c580d2",
+      "source_elements": "# 2. Post pruning decision trees with complexity penalty for Breast Cancer Diagnostic\n\n[Reference](https://scikit-learn.org/stable/auto_examples/tree/plot_cost_complexity_pruning.html#sphx-glr-auto-examples-tree-plot-cost-complexity-pruning-py)\n\n**Dataset:** UCI ML Breast Cancer Wisconsin (Diagnostic), downloaded from https://goo.gl/U2Uwz2\n\n- Features are computed from a digitized image of a fine needle aspirate (FNA) of a breast mass.\n- They describe characteristics of the cell nuclei present in the image.",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.21 cell 21 · 乳腺基准与剪枝任务",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 22,
+      "type": "code",
+      "source_sha256": "564731db9de8f70049b158fde5787779c7afb437f50b0ce5845a0b258fd7962a",
+      "source_elements": [
+        "import matplotlib.pyplot as plt",
+        "from sklearn.model_selection import train_test_split",
+        "from sklearn.datasets import load_breast_cancer",
+        "from sklearn.tree import DecisionTreeClassifier"
+      ],
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.22 cell 22 · 导入与内核依赖",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 23,
+      "type": "markdown",
+      "source_sha256": "aa347a5ebaa0ec73c3f2f56d726d1227032039495dd93e32696eafd5a3311fea",
+      "source_elements": "We load the attributes and class label for each digitized image of a fine needle aspirate (FNA) of a breast mass. \nThe detailed measurement of a cell can be found here: [data description](https://scikit-learn.org/stable/datasets/toy_dataset.html#breast-cancer-dataset)",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.23 cell 23 · 影像特征的记录单位",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 24,
+      "type": "code",
+      "source_sha256": "f6256dc77f2d14df694be8d1da7dd5517049985b755588a79cf73a85c4c9b482",
+      "source_elements": [
+        "cancer = load_breast_cancer()",
+        "",
+        "df_feat = pd.DataFrame(cancer['data'], ",
+        "                       columns = cancer['feature_names']) ",
+        "  ",
+        "# cancer column is our target ",
+        "df_target = pd.DataFrame(cancer['target'],  ",
+        "                     columns =['Cancer'])"
+      ],
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.24 cell 24 · 569行30列与标签方向",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 25,
+      "type": "code",
+      "source_sha256": "ca721c477dcfdcd3ae6e842e6d2e6c72cac4373dcfc6bd22993d91f2faf619f9",
+      "source_elements": [
+        "df_feat.head()"
+      ],
+      "outputs": [
+        "   mean radius  mean texture  mean perimeter  mean area  mean smoothness  \\\n0        17.99         10.38          122.80     1001.0          0.11840   \n1        20.57         17.77          132.90     1326.0          0.08474   \n2        19.69         21.25          130.00     1203.0          0.10960   \n3        11.42         20.38           77.58      386.1          0.14250   \n4        20.29         14.34          135.10     1297.0          0.10030   \n\n   mean compactness  mean concavity  mean concave points  mean symmetry  \\\n0           0.27760          0.3001              0.14710         0.2419   \n1           0.07864          0.0869              0.07017         0.1812   \n2           0.15990          0.1974              0.12790         0.2069   \n3           0.28390          0.2414              0.10520         0.2597   \n4           0.13280          0.1980              0.10430         0.1809   \n\n   mean fractal dimension  ...  worst radius  worst texture  worst perimeter  \\\n0                 0.07871  ...         25.38          17.33           184.60   \n1                 0.05667  ...         24.99          23.41           158.80   \n2                 0.05999  ...         23.57          25.53           152.50   \n3                 0.09744  ...         14.91          26.50            98.87   \n4                 0.05883  ...         22.54          16.67           152.20   \n\n   worst area  worst smoothness  worst compactness  worst concavity  \\\n0      2019.0            0.1622             0.6656           0.7119   \n1      1956.0            0.1238             0.1866           0.2416   \n2      1709.0            0.1444             0.4245           0.4504   \n3       567.7            0.2098             0.8663           0.6869   \n4      1575.0            0.1374             0.2050           0.4000   \n\n   worst concave points  worst symmetry  worst fractal dimension  \n0                0.2654          0.4601                  0.11890  \n1                0.1860          0.2750                  0.08902  \n2                0.2430          0.3613                  0.08758  \n3                0.2575          0.6638                  0.17300  \n4                0.1625          0.2364                  0.07678  \n\n[5 rows x 30 columns]"
+      ],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.25 cell 25 · 读取特征表",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 26,
+      "type": "code",
+      "source_sha256": "020f2e1cca70cdba836567497a43658b97c2b32e8ab18181c8ad450b5ffe697d",
+      "source_elements": [
+        "df_target.head()"
+      ],
+      "outputs": [
+        "   Cancer\n0       0\n1       0\n2       0\n3       0\n4       0"
+      ],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.26 cell 26 · 读取目标表",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 27,
+      "type": "code",
+      "source_sha256": "05397c0f06d71277c1452b4a822a4d8e50b593ef136ba03face2f22bb43f042e",
+      "source_elements": [
+        "#randomly split the dataset. By default, the test_size=0.25",
+        "X_train, X_test, y_train, y_test = train_test_split(df_feat, np.ravel(df_target), random_state=0)  "
+      ],
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.27 cell 27 · 426训练与143留出",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 28,
+      "type": "markdown",
+      "source_sha256": "7f9ba73aa03292d53a664a75ea8d9cfd7735aa6aebbece37529833e808a7b8ad",
+      "source_elements": "## 2.1 Generate Candidate Penalties α\n\n`cost_complexity_pruning_path` computes a series of effective α values on the fully grown tree: each α is the penalty at which the tree would be pruned one more step. The plot shows that a larger α gives a larger total impurity of the leaves (a coarser tree).",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.28 cell 28 · 弱连接剪枝的临界代价",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 29,
+      "type": "code",
+      "source_sha256": "a3b39397ffe916170662e2a1b0b3ecf490df66be8167c3adee8fed1298522d79",
+      "source_elements": [
+        "clf = DecisionTreeClassifier(random_state=0)",
+        "path = clf.cost_complexity_pruning_path(X_train, y_train) #seeking alpha",
+        "ccp_alphas, impurities = path.ccp_alphas, path.impurities #output apha and tree impurities",
+        "",
+        "fig, ax = plt.subplots()",
+        "ax.plot(ccp_alphas[:-1], impurities[:-1], marker=\"o\", drawstyle=\"steps-post\")",
+        "ax.set_xlabel(\"effective alpha\")",
+        "ax.set_ylabel(\"total impurity of leaves\")",
+        "ax.set_title(\"Total Impurity vs effective alpha for training set\")"
+      ],
+      "outputs": [
+        "Text(0.5, 1.0, 'Total Impurity vs effective alpha for training set')"
+      ],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.29 cell 29 · 生成alpha路径",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 30,
+      "type": "markdown",
+      "source_sha256": "0b68dee100180ecc1dc21d3f07f00d563cd37ef7cea7f37b763731b0aa14e096",
+      "source_elements": "## 2.2 Train a Tree for Each α\n\nFor each α from 2.1, we train a decision tree with `ccp_alpha=α` and store it in a list. This gives us a set of trees with different complexity.",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.30 cell 30 · 保存不同树的计划",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 31,
+      "type": "code",
+      "source_sha256": "ec03b6963ea46dcb32b5b570d298734efd29a1ee740ac48949ef89f1996b8b5d",
+      "source_elements": [
+        "clfs = [] #this list will be used to store a list of Decision Tree Models with different penalty alpha values.",
+        "for alpha in ccp_alphas:",
+        "    print('the penalty term alpha is %f' %alpha)",
+        "    clf = DecisionTreeClassifier(random_state=0, ccp_alpha=alpha) # induce a tree using the ccp_alpha value",
+        "    clf.fit(X_train, y_train)",
+        "    clfs.append(clf)"
+      ],
+      "outputs": [
+        "the penalty term alpha is 0.000000\nthe penalty term alpha is 0.002266\nthe penalty term alpha is 0.004647\nthe penalty term alpha is 0.004660\nthe penalty term alpha is 0.005634\nthe penalty term alpha is 0.007042\nthe penalty term alpha is 0.007842\nthe penalty term alpha is 0.009114\nthe penalty term alpha is 0.011444\nthe penalty term alpha is 0.018988\nthe penalty term alpha is 0.023142\nthe penalty term alpha is 0.034225\nthe penalty term alpha is 0.327298\n"
+      ],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.31 cell 31 · 逐alpha拟合并保存",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 32,
+      "type": "markdown",
+      "source_sha256": "ede22af8166175a9a9dd0c286df40cc48200fdb991ac8f724d44e7bc42fceac3",
+      "source_elements": "### 2.2.1 Example Trees\n\nThe first tree uses the first penalty α (ccp_alphas[0] = 0), so it is the full tree without pruning. The next two plots show the tree with the 5-th α and the last α (the tree is pruned to only the root).",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.32 cell 32 · 示例树与索引",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 33,
+      "type": "code",
+      "source_sha256": "263eba08a276280c75df6624659224d5e35a0f9e5ca22d17f4173aa73449b14c",
+      "source_elements": [
+        "from sklearn.tree import plot_tree",
+        "print('the first alphas is: ', ccp_alphas[0]) #the first alpha value in the list of ccp_alphas generated.",
+        "plot_tree(clfs[0], filled=True)",
+        "plt.title(\"Decision tree trained on the first ccp_alpha\")",
+        "plt.show()"
+      ],
+      "outputs": [
+        "the first alphas is:  0.0\n",
+        "<Figure size 640x480 with 1 Axes>",
+        "[saved PNG image]"
+      ],
+      "original_images": [
+        "IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-33-out-02.png"
+      ],
+      "source_read": true,
+      "visual": "saved image viewed",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.33 cell 33 · 第一棵树的读法",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 34,
+      "type": "code",
+      "source_sha256": "e05a2e8b437529984c7fda744b1b2af5f717962f6f6ce1079f13832ae59e649d",
+      "source_elements": [
+        "print('the 5th alphas is: ', ccp_alphas[5])",
+        "plot_tree(clfs[5], filled=True)",
+        "plt.title(\"Decision tree trained on the 5-th ccp_alpha\")",
+        "plt.show()"
+      ],
+      "outputs": [
+        "the 5th alphas is:  0.007042253521126761\n",
+        "<Figure size 640x480 with 1 Axes>",
+        "[saved PNG image]"
+      ],
+      "original_images": [
+        "IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-34-out-02.png"
+      ],
+      "source_read": true,
+      "visual": "saved image viewed",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.34 cell 34 · 索引5实际是第6项",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 35,
+      "type": "code",
+      "source_sha256": "aa1889f8d8878e43bc20c253318ab6614c6b009a26428756961f96ef513919e4",
+      "source_elements": [
+        "print('the last alphas is: ', ccp_alphas[-1])",
+        "plot_tree(clfs[-1], filled=True)",
+        "plt.title(\"Decision tree trained on the last ccp_alpha\")",
+        "plt.show()"
+      ],
+      "outputs": [
+        "the last alphas is:  0.3272984419327777\n",
+        "<Figure size 640x480 with 1 Axes>",
+        "[saved PNG image]"
+      ],
+      "original_images": [
+        "IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-35-out-02.png"
+      ],
+      "source_read": true,
+      "visual": "saved image viewed",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.35 cell 35 · 仅根树的代价",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 36,
+      "type": "markdown",
+      "source_sha256": "8fb0e066fdf5f8f99d425671c6f577b7246412f75a9ba1e0857211faf5b3f098",
+      "source_elements": "## 2.3 Tree Complexity vs. α\n\nWe count the number of nodes and the depth of each tree. Both decrease as α increases: a larger penalty gives a simpler tree. (The last tree, which only has the root, is excluded.)",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.36 cell 36 · 节点数与深度",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 37,
+      "type": "code",
+      "source_sha256": "08a82ef17fd80335bc31c5783d92c23a87237a5129e5df4f3b24f841b13b5c43",
+      "source_elements": [
+        "clfs = clfs[:-1]",
+        "ccp_alphas = ccp_alphas[:-1]",
+        "",
+        "node_counts = [clf.tree_.node_count for clf in clfs]",
+        "depth = [clf.tree_.max_depth for clf in clfs]",
+        "fig, ax = plt.subplots(2, 1)",
+        "ax[0].plot(ccp_alphas, node_counts, marker=\"o\", drawstyle=\"steps-post\")",
+        "ax[0].set_xlabel(\"alpha\")",
+        "ax[0].set_ylabel(\"number of nodes\")",
+        "ax[0].set_title(\"Number of nodes vs alpha\")",
+        "ax[1].plot(ccp_alphas, depth, marker=\"o\", drawstyle=\"steps-post\")",
+        "ax[1].set_xlabel(\"alpha\")",
+        "ax[1].set_ylabel(\"depth of tree\")",
+        "ax[1].set_title(\"Depth vs alpha\")",
+        "fig.tight_layout()",
+        "fig"
+      ],
+      "outputs": [
+        "<Figure size 640x480 with 2 Axes>",
+        "[saved PNG image]"
+      ],
+      "original_images": [
+        "IS6400_Business_Data_Analytics/notes/figures/t11-source/cell-37-out-01.png"
+      ],
+      "source_read": true,
+      "visual": "saved image viewed",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.37 cell 37 · 截尾列表及阶梯图",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 38,
+      "type": "markdown",
+      "source_sha256": "2c1576ac564663cf45d33846c910696af27c20cc4596e8ca8fabfcb89f7f3cc1",
+      "source_elements": "## 2.4 Conclusion\n\n- The penalty α controls the complexity of a decision tree: a larger α prunes more branches and gives a smaller tree (fewer nodes and a smaller depth).\n- This is the same idea as Ridge regression in Section 1, where a larger α gives smaller coefficients and a simpler model.\n- α is a hyperparameter. A tree with α = 0 is fully grown and may overfit, while a very large α leaves only the root. To choose a good α, we need to compare the performance of the trees on validation data. Next, we learn how to search hyperparameters automatically with GridSearchCV.",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.38 cell 38 · 路径还没有选优",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 39,
+      "type": "markdown",
+      "source_sha256": "991f280829d1152d8a182de1049afccbb9dd5a548e3e72ea408be89bdd58f6ea",
+      "source_elements": "# 3. Automatic Hyperparameter Search: GridSearchCV\n\nIn Section 1 we looped over α by hand and compared the validation errors ourselves. In Section 2 we generated candidate α values, but did not choose one. In this section, `GridSearchCV` does it automatically: it tries every combination of the hyperparameters we give, evaluates each one with cross-validation on the training set, and picks the best.\n\nWe use the same breast cancer training/test split as in Section 2, and the model is a support vector machine (SVC).",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.39 cell 39 · 自动搜索与SVC",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 40,
+      "type": "markdown",
+      "source_sha256": "5b0e42a1c555c28b9d4febd35c24aa46489240b789237d5febec721b3e33dd70",
+      "source_elements": "## 3.1 Baseline: SVC with Default Parameters\n\nFirst train an SVC with the default parameters and check its performance on the test set. This is the baseline for the tuned model.",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.40 cell 40 · 默认SVC基线",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 41,
+      "type": "code",
+      "source_sha256": "3dc7c22def321653c1ea257ac4e6f6bfb8a877824402f50e29d09068b4fb39df",
+      "source_elements": [
+        "from sklearn.svm import SVC ",
+        "from sklearn.model_selection import GridSearchCV",
+        "from sklearn.metrics import classification_report"
+      ],
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.41 cell 41 · 导入报告工具",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 42,
+      "type": "code",
+      "source_sha256": "4c3fcb36c90390ba8d04604471d65d216a21d33bb7384105917e8878763550fe",
+      "source_elements": [
+        "# train the model on train set ",
+        "model = SVC() ",
+        "model.fit(X_train, y_train) ",
+        "  ",
+        "# print prediction results ",
+        "predictions = model.predict(X_test) ",
+        "print(classification_report(y_test, predictions)) "
+      ],
+      "outputs": [
+        "              precision    recall  f1-score   support\n\n           0       0.98      0.85      0.91        53\n           1       0.92      0.99      0.95        90\n\n    accuracy                           0.94       143\n   macro avg       0.95      0.92      0.93       143\nweighted avg       0.94      0.94      0.94       143\n\n"
+      ],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.42 cell 42 · 默认SVC分类报告",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 43,
+      "type": "markdown",
+      "source_sha256": "8eb2ffddff00a04d9e5a0417b5bdf27edca692441d0828a4d61eace5a2c2b4b2",
+      "source_elements": "## 3.2 GridSearchCV: Search C and gamma Automatically\n\n- **C** (penalty for misclassified points) and **gamma** (reach of a single training point in the `rbf` kernel) control the complexity of SVC, like α in the previous sections.\n- `param_grid` lists the values to try: 5 × 5 = 25 combinations. Each one is evaluated by 5-fold cross-validation on the training set (explained in Section 4), and the best one is refitted on the whole training set.",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.43 cell 43 · C与gamma的作用",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 44,
+      "type": "code",
+      "source_sha256": "944a173eff7590645d82e70549d06077889e851de38cb8054e26ea2c19f531af",
+      "source_elements": [
+        "from sklearn.model_selection import GridSearchCV ",
+        "  ",
+        "# defining hyperparameter options ",
+        "param_grid = {'C': [0.1, 1, 10, 100, 1000],  ",
+        "              'gamma': [1, 0.1, 0.01, 0.001, 0.0001], ",
+        "              'kernel': ['rbf']}  ",
+        "  ",
+        "grid = GridSearchCV(SVC(), param_grid, refit = True, verbose = 3) ",
+        "  ",
+        "# fitting the model for grid search ",
+        "grid.fit(X_train, y_train) "
+      ],
+      "outputs": [
+        "Fitting 5 folds for each of 25 candidates, totalling 125 fits\n[CV 1/5] END ........C=0.1, gamma=1, kernel=rbf;, score=0.628 total time=   0.0s\n[CV 2/5] END ........C=0.1, gamma=1, kernel=rbf;, score=0.635 total time=   0.0s\n[CV 3/5] END ........C=0.1, gamma=1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 4/5] END ........C=0.1, gamma=1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 5/5] END ........C=0.1, gamma=1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 1/5] END ......C=0.1, gamma=0.1, kernel=rbf;, score=0.628 total time=   0.0s\n[CV 2/5] END ......C=0.1, gamma=0.1, kernel=rbf;, score=0.635 total time=   0.0s\n[CV 3/5] END ......C=0.1, gamma=0.1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 4/5] END ......C=0.1, gamma=0.1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 5/5] END ......C=0.1, gamma=0.1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 1/5] END .....C=0.1, gamma=0.01, kernel=rbf;, score=0.628 total time=   0.0s\n[CV 2/5] END .....C=0.1, gamma=0.01, kernel=rbf;, score=0.635 total time=   0.0s\n[CV 3/5] END .....C=0.1, gamma=0.01, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 4/5] END .....C=0.1, gamma=0.01, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 5/5] END .....C=0.1, gamma=0.01, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 1/5] END ....C=0.1, gamma=0.001, kernel=rbf;, score=0.628 total time=   0.0s\n[CV 2/5] END ....C=0.1, gamma=0.001, kernel=rbf;, score=0.635 total time=   0.0s\n[CV 3/5] END ....C=0.1, gamma=0.001, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 4/5] END ....C=0.1, gamma=0.001, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 5/5] END ....C=0.1, gamma=0.001, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 1/5] END ...C=0.1, gamma=0.0001, kernel=rbf;, score=0.953 total time=   0.0s\n[CV 2/5] END ...C=0.1, gamma=0.0001, kernel=rbf;, score=0.894 total time=   0.0s\n[CV 3/5] END ...C=0.1, gamma=0.0001, kernel=rbf;, score=0.906 total time=   0.0s\n[CV 4/5] END ...C=0.1, gamma=0.0001, kernel=rbf;, score=0.906 total time=   0.0s\n[CV 5/5] END ...C=0.1, gamma=0.0001, kernel=rbf;, score=0.941 total time=   0.0s\n[CV 1/5] END ..........C=1, gamma=1, kernel=rbf;, score=0.628 total time=   0.0s\n[CV 2/5] END ..........C=1, gamma=1, kernel=rbf;, score=0.635 total time=   0.0s\n[CV 3/5] END ..........C=1, gamma=1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 4/5] END ..........C=1, gamma=1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 5/5] END ..........C=1, gamma=1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 1/5] END ........C=1, gamma=0.1, kernel=rbf;, score=0.628 total time=   0.0s\n[CV 2/5] END ........C=1, gamma=0.1, kernel=rbf;, score=0.635 total time=   0.0s\n[CV 3/5] END ........C=1, gamma=0.1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 4/5] END ........C=1, gamma=0.1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 5/5] END ........C=1, gamma=0.1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 1/5] END .......C=1, gamma=0.01, kernel=rbf;, score=0.628 total time=   0.0s\n[CV 2/5] END .......C=1, gamma=0.01, kernel=rbf;, score=0.635 total time=   0.0s\n[CV 3/5] END .......C=1, gamma=0.01, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 4/5] END .......C=1, gamma=0.01, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 5/5] END .......C=1, gamma=0.01, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 1/5] END ......C=1, gamma=0.001, kernel=rbf;, score=0.988 total time=   0.0s\n[CV 2/5] END ......C=1, gamma=0.001, kernel=rbf;, score=0.894 total time=   0.0s\n[CV 3/5] END ......C=1, gamma=0.001, kernel=rbf;, score=0.894 total time=   0.0s\n[CV 4/5] END ......C=1, gamma=0.001, kernel=rbf;, score=0.906 total time=   0.0s\n[CV 5/5] END ......C=1, gamma=0.001, kernel=rbf;, score=0.929 total time=   0.0s\n[CV 1/5] END .....C=1, gamma=0.0001, kernel=rbf;, score=0.988 total time=   0.0s\n[CV 2/5] END .....C=1, gamma=0.0001, kernel=rbf;, score=0.906 total time=   0.0s\n[CV 3/5] END .....C=1, gamma=0.0001, kernel=rbf;, score=0.929 total time=   0.0s\n[CV 4/5] END .....C=1, gamma=0.0001, kernel=rbf;, score=0.929 total time=   0.0s\n[CV 5/5] END .....C=1, gamma=0.0001, kernel=rbf;, score=0.941 total time=   0.0s\n[CV 1/5] END .........C=10, gamma=1, kernel=rbf;, score=0.628 total time=   0.0s\n[CV 2/5] END .........C=10, gamma=1, kernel=rbf;, score=0.635 total time=   0.0s\n[CV 3/5] END .........C=10, gamma=1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 4/5] END .........C=10, gamma=1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 5/5] END .........C=10, gamma=1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 1/5] END .......C=10, gamma=0.1, kernel=rbf;, score=0.628 total time=   0.0s\n[CV 2/5] END .......C=10, gamma=0.1, kernel=rbf;, score=0.635 total time=   0.0s\n[CV 3/5] END .......C=10, gamma=0.1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 4/5] END .......C=10, gamma=0.1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 5/5] END .......C=10, gamma=0.1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 1/5] END ......C=10, gamma=0.01, kernel=rbf;, score=0.628 total time=   0.0s\n[CV 2/5] END ......C=10, gamma=0.01, kernel=rbf;, score=0.647 total time=   0.0s\n[CV 3/5] END ......C=10, gamma=0.01, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 4/5] END ......C=10, gamma=0.01, kernel=rbf;, score=0.635 total time=   0.0s\n[CV 5/5] END ......C=10, gamma=0.01, kernel=rbf;, score=0.612 total time=   0.0s\n[CV 1/5] END .....C=10, gamma=0.001, kernel=rbf;, score=0.953 total time=   0.0s\n[CV 2/5] END .....C=10, gamma=0.001, kernel=rbf;, score=0.906 total time=   0.0s\n[CV 3/5] END .....C=10, gamma=0.001, kernel=rbf;, score=0.882 total time=   0.0s\n[CV 4/5] END .....C=10, gamma=0.001, kernel=rbf;, score=0.929 total time=   0.0s\n[CV 5/5] END .....C=10, gamma=0.001, kernel=rbf;, score=0.918 total time=   0.0s\n[CV 1/5] END ....C=10, gamma=0.0001, kernel=rbf;, score=0.977 total time=   0.0s\n[CV 2/5] END ....C=10, gamma=0.0001, kernel=rbf;, score=0.918 total time=   0.0s\n[CV 3/5] END ....C=10, gamma=0.0001, kernel=rbf;, score=0.929 total time=   0.0s\n[CV 4/5] END ....C=10, gamma=0.0001, kernel=rbf;, score=0.929 total time=   0.0s\n[CV 5/5] END ....C=10, gamma=0.0001, kernel=rbf;, score=0.918 total time=   0.0s\n[CV 1/5] END ........C=100, gamma=1, kernel=rbf;, score=0.628 total time=   0.0s\n[CV 2/5] END ........C=100, gamma=1, kernel=rbf;, score=0.635 total time=   0.0s\n[CV 3/5] END ........C=100, gamma=1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 4/5] END ........C=100, gamma=1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 5/5] END ........C=100, gamma=1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 1/5] END ......C=100, gamma=0.1, kernel=rbf;, score=0.628 total time=   0.0s\n[CV 2/5] END ......C=100, gamma=0.1, kernel=rbf;, score=0.635 total time=   0.0s\n[CV 3/5] END ......C=100, gamma=0.1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 4/5] END ......C=100, gamma=0.1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 5/5] END ......C=100, gamma=0.1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 1/5] END .....C=100, gamma=0.01, kernel=rbf;, score=0.628 total time=   0.0s\n[CV 2/5] END .....C=100, gamma=0.01, kernel=rbf;, score=0.647 total time=   0.0s\n[CV 3/5] END .....C=100, gamma=0.01, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 4/5] END .....C=100, gamma=0.01, kernel=rbf;, score=0.635 total time=   0.0s\n[CV 5/5] END .....C=100, gamma=0.01, kernel=rbf;, score=0.612 total time=   0.0s\n[CV 1/5] END ....C=100, gamma=0.001, kernel=rbf;, score=0.953 total time=   0.0s\n[CV 2/5] END ....C=100, gamma=0.001, kernel=rbf;, score=0.906 total time=   0.0s\n[CV 3/5] END ....C=100, gamma=0.001, kernel=rbf;, score=0.882 total time=   0.0s\n[CV 4/5] END ....C=100, gamma=0.001, kernel=rbf;, score=0.929 total time=   0.0s\n[CV 5/5] END ....C=100, gamma=0.001, kernel=rbf;, score=0.918 total time=   0.0s\n[CV 1/5] END ...C=100, gamma=0.0001, kernel=rbf;, score=0.942 total time=   0.0s\n[CV 2/5] END ...C=100, gamma=0.0001, kernel=rbf;, score=0.906 total time=   0.0s\n[CV 3/5] END ...C=100, gamma=0.0001, kernel=rbf;, score=0.953 total time=   0.0s\n[CV 4/5] END ...C=100, gamma=0.0001, kernel=rbf;, score=0.953 total time=   0.0s\n[CV 5/5] END ...C=100, gamma=0.0001, kernel=rbf;, score=0.929 total time=   0.0s\n[CV 1/5] END .......C=1000, gamma=1, kernel=rbf;, score=0.628 total time=   0.0s\n[CV 2/5] END .......C=1000, gamma=1, kernel=rbf;, score=0.635 total time=   0.0s\n[CV 3/5] END .......C=1000, gamma=1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 4/5] END .......C=1000, gamma=1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 5/5] END .......C=1000, gamma=1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 1/5] END .....C=1000, gamma=0.1, kernel=rbf;, score=0.628 total time=   0.0s\n[CV 2/5] END .....C=1000, gamma=0.1, kernel=rbf;, score=0.635 total time=   0.0s\n[CV 3/5] END .....C=1000, gamma=0.1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 4/5] END .....C=1000, gamma=0.1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 5/5] END .....C=1000, gamma=0.1, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 1/5] END ....C=1000, gamma=0.01, kernel=rbf;, score=0.628 total time=   0.0s\n[CV 2/5] END ....C=1000, gamma=0.01, kernel=rbf;, score=0.647 total time=   0.0s\n[CV 3/5] END ....C=1000, gamma=0.01, kernel=rbf;, score=0.624 total time=   0.0s\n[CV 4/5] END ....C=1000, gamma=0.01, kernel=rbf;, score=0.635 total time=   0.0s\n[CV 5/5] END ....C=1000, gamma=0.01, kernel=rbf;, score=0.612 total time=   0.0s\n[CV 1/5] END ...C=1000, gamma=0.001, kernel=rbf;, score=0.953 total time=   0.0s\n[CV 2/5] END ...C=1000, gamma=0.001, kernel=rbf;, score=0.906 total time=   0.0s\n[CV 3/5] END ...C=1000, gamma=0.001, kernel=rbf;, score=0.882 total time=   0.0s\n[CV 4/5] END ...C=1000, gamma=0.001, kernel=rbf;, score=0.929 total time=   0.0s\n[CV 5/5] END ...C=1000, gamma=0.001, kernel=rbf;, score=0.918 total time=   0.0s\n[CV 1/5] END ..C=1000, gamma=0.0001, kernel=rbf;, score=0.942 total time=   0.0s\n[CV 2/5] END ..C=1000, gamma=0.0001, kernel=rbf;, score=0.906 total time=   0.0s\n[CV 3/5] END ..C=1000, gamma=0.0001, kernel=rbf;, score=0.953 total time=   0.0s\n[CV 4/5] END ..C=1000, gamma=0.0001, kernel=rbf;, score=0.941 total time=   0.0s\n[CV 5/5] END ..C=1000, gamma=0.0001, kernel=rbf;, score=0.906 total time=   0.0s\n",
+        "GridSearchCV(estimator=SVC(),\n             param_grid={'C': [0.1, 1, 10, 100, 1000],\n                         'gamma': [1, 0.1, 0.01, 0.001, 0.0001],\n                         'kernel': ['rbf']},\n             verbose=3)"
+      ],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.44 cell 44 · 25组五折搜索",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 45,
+      "type": "code",
+      "source_sha256": "5f3d89e118474751ebe33e1ca466d2b0c73cbd4230209aefcac56582ac3566b0",
+      "source_elements": [
+        "# print best parameter after tuning ",
+        "print(grid.best_params_) ",
+        "  ",
+        "# print how our model looks after hyper-parameter tuning ",
+        "print(grid.best_estimator_) "
+      ],
+      "outputs": [
+        "{'C': 1, 'gamma': 0.0001, 'kernel': 'rbf'}\nSVC(C=1, gamma=0.0001)\n"
+      ],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.45 cell 45 · 参数与重拟合赢家",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 46,
+      "type": "code",
+      "source_sha256": "1be757282607ed2743448d793d9720d2141c693d984f31f7414216ba8dcdc467",
+      "source_elements": [
+        "grid_predictions = grid.predict(X_test) ",
+        "  ",
+        "# print classification report ",
+        "print(classification_report(y_test, grid_predictions)) "
+      ],
+      "outputs": [
+        "              precision    recall  f1-score   support\n\n           0       0.92      0.92      0.92        53\n           1       0.96      0.96      0.96        90\n\n    accuracy                           0.94       143\n   macro avg       0.94      0.94      0.94       143\nweighted avg       0.94      0.94      0.94       143\n\n"
+      ],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.46 cell 46 · 调优SVC留出报告",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 47,
+      "type": "markdown",
+      "source_sha256": "7bb68bf558e36259a5ad6cf8f8a24eb117406f5459e35e2928cca5c0ad983385",
+      "source_elements": "## 3.3 Default vs. Tuned SVC\n\nBoth models are evaluated on the same test set (143 samples). The test set is only used for the final evaluation; the tuned parameters are selected by cross-validation on the training set.\n\n| | Baseline (default SVC) | Tuned SVC (GridSearchCV) |\n|---|---|---|\n| Parameters | C=1, gamma='scale' | C=1, gamma=0.0001 |\n| Accuracy | 0.937 | 0.944 |\n| Class 0 precision / recall | 0.98 / 0.85 | 0.92 / 0.92 |\n| Class 1 precision / recall | 0.92 / 0.99 | 0.96 / 0.96 |\n| Macro avg F1 | 0.93 | 0.94 |\n\n- The accuracy improves only slightly, but the tuned model is more balanced: the recall of class 0 increases from 0.85 to 0.92.\n- The numbers may differ slightly with a different scikit-learn version.",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.47 cell 47 · 默认与调优的取舍",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 48,
+      "type": "markdown",
+      "source_sha256": "e4fde7247348147eca907de99b27e56131181f9d8eb163e998b11db43cac17c0",
+      "source_elements": "# 4. Choosing Between Models\n\nIn Sections 1-3 we tuned the parameters of one model. Model selection also includes choosing **which model** to use: we evaluate each candidate model on data it has not been trained on, and pick the best one.\n\nThere are different ways to evaluate a model. Here we use two of them:\n- **Cross-validation** (4.1, 4.2): the score is averaged over several train/validation splits, so it is more stable.\n- **Hold-out** (4.3): split the data once into training and test sets.\n\nWe use stratified Cross Validation to evaluate a 3-class classification problem using the iris dataset.\n\nDetails of CV, please check documentation: \nhttps://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-iterators \n\n<img src =\"https://scikit-learn.org/stable/_images/sphx_glr_plot_cv_indices_003.png\" width=\"600\">",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "remote official CV image downloaded and actually viewed; source image uses100 sample indices, not Iris actual150",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.48 cell 48 · Iris与分层CV原图",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 49,
+      "type": "code",
+      "source_sha256": "b7028cf7b866940b171fb9bba696a3f5128f68091e80ca963583a0b8f39ace63",
+      "source_elements": [
+        "import numpy as np",
+        "import pandas as pd",
+        "import matplotlib.pyplot as plt",
+        "from matplotlib.colors import ListedColormap",
+        "from sklearn.model_selection import train_test_split",
+        "from sklearn.preprocessing import StandardScaler",
+        "from sklearn.datasets import make_moons, make_circles, make_classification",
+        "from sklearn.neural_network import MLPClassifier",
+        "from sklearn.neighbors import KNeighborsClassifier",
+        "from sklearn.svm import SVC",
+        "from sklearn.gaussian_process import GaussianProcessClassifier",
+        "from sklearn.gaussian_process.kernels import RBF",
+        "from sklearn.tree import DecisionTreeClassifier",
+        "from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier",
+        "from sklearn.naive_bayes import GaussianNB",
+        "from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis"
+      ],
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.49 cell 49 · 十个候选的职责",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 50,
+      "type": "code",
+      "source_sha256": "e695565165ce0f4c632a87f93b791fe7e482099c4bb458a302d0b2afbfcc770e",
+      "source_elements": [
+        "data = pd.read_csv('iris.txt',header=None)  #use tool \"read_csv\" to read the data in \"iris.txt\" file. the data is stored in \"data\"",
+        "data.columns = ['sepal length', 'sepal width', 'petal length', 'petal width', 'class'] #set the column names of the data table ",
+        "data.head(10) # "
+      ],
+      "outputs": [
+        "   sepal length  sepal width  petal length  petal width        class\n0           5.1          3.5           1.4          0.2  Iris-setosa\n1           4.9          3.0           1.4          0.2  Iris-setosa\n2           4.7          3.2           1.3          0.2  Iris-setosa\n3           4.6          3.1           1.5          0.2  Iris-setosa\n4           5.0          3.6           1.4          0.2  Iris-setosa\n5           5.4          3.9           1.7          0.4  Iris-setosa\n6           4.6          3.4           1.4          0.3  Iris-setosa\n7           5.0          3.4           1.5          0.2  Iris-setosa\n8           4.4          2.9           1.4          0.2  Iris-setosa\n9           4.9          3.1           1.5          0.1  Iris-setosa"
+      ],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.50 cell 50 · 读取Iris原文件",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 51,
+      "type": "code",
+      "source_sha256": "ff379b404312d1b18d0182e4f4527d2adee50de8588d7c4fac96e5ea77531790",
+      "source_elements": [
+        "Y = data['class'] #this is our prediction target",
+        "X = data.drop(['class'],axis=1)"
+      ],
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.51 cell 51 · 输入与目标分离",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 52,
+      "type": "markdown",
+      "source_sha256": "66aa71ff9930681031b02fdfd986eddd7eb28ade1c1f0beab0ca7b63888da5bd",
+      "source_elements": "## 4.1 Cross-validation Score of Two Models\n\n`cross_val_score` returns the score of each fold. A model with a higher score (on average) generalizes better.",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.52 cell 52 · CV分数的角色",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 53,
+      "type": "code",
+      "source_sha256": "2d5ff70f4f7f8c7734bf30002caf90637f3f1e0ca10ac484c6748ecb8f39e6af",
+      "source_elements": [
+        "from sklearn.model_selection import cross_val_score",
+        "clf=KNeighborsClassifier(10)",
+        "scores = cross_val_score(clf, X, Y, cv=5)",
+        "print('KNN CV Score:', scores)"
+      ],
+      "outputs": [
+        "KNN CV Score: [0.96666667 1.         1.         0.93333333 1.        ]\n"
+      ],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.53 cell 53 · KNN十近邻五折",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 54,
+      "type": "code",
+      "source_sha256": "6ee1866f3e3b490ad49ca789f867a39846c657e3697ae8b5e10bd747f8133b0d",
+      "source_elements": [
+        "clf=DecisionTreeClassifier(max_depth=10)",
+        "scores = cross_val_score(clf, X, Y, cv=5)",
+        "print('DT CV Score:', scores)"
+      ],
+      "outputs": [
+        "DT CV Score: [0.96666667 0.96666667 0.9        0.93333333 1.        ]\n"
+      ],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.54 cell 54 · 深度10树五折",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 55,
+      "type": "markdown",
+      "source_sha256": "c36b1b2d2d375616a3e692c2e1141e5bd7a260d1260b62f19e69386e1c072467",
+      "source_elements": "## 4.2 Compare All the Models\n\nRun the same cross-validation for 10 different classifiers and compare their scores.",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.55 cell 55 · 十家族比较任务",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 56,
+      "type": "code",
+      "source_sha256": "02dd022b81bcf41892b56d66be5877cad32dbb300c27147e6b5d7e1dfee9a5a3",
+      "source_elements": [
+        "h = 0.02  # step size in the mesh",
+        "",
+        "names = [",
+        "    \"Nearest Neighbors\",",
+        "    \"Linear SVM\",",
+        "    \"RBF SVM\",",
+        "    \"Gaussian Process\",",
+        "    \"Decision Tree\",",
+        "    \"Random Forest\",",
+        "    \"Neural Net\",",
+        "    \"AdaBoost\",",
+        "    \"Naive Bayes\",",
+        "    \"QDA\",",
+        "]",
+        "",
+        "classifiers = [",
+        "    KNeighborsClassifier(10),",
+        "    SVC(kernel=\"linear\", C=0.025),",
+        "    SVC(gamma=2, C=1),",
+        "    GaussianProcessClassifier(1.0 * RBF(1.0)),",
+        "    DecisionTreeClassifier(max_depth=5),",
+        "    RandomForestClassifier(max_depth=5, n_estimators=10, max_features=1),",
+        "    MLPClassifier(alpha=1, max_iter=1000),",
+        "    AdaBoostClassifier(),",
+        "    GaussianNB(),",
+        "    QuadraticDiscriminantAnalysis(),",
+        "]"
+      ],
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.56 cell 56 · 名字列表与模型配置",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 57,
+      "type": "code",
+      "source_sha256": "ed966761860d9702e774fb7cf154745740f3c6607be29080e3e924e676cb6fb5",
+      "source_elements": [
+        "for i in range(len(classifiers)):",
+        "    clf=classifiers[i] #use the i-th model in the \"classifiers\" list",
+        "    scores = cross_val_score(clf, X, Y, cv=5)",
+        "    print('CV Score of '+ names[i], scores)"
+      ],
+      "outputs": [
+        "CV Score of Nearest Neighbors [0.96666667 1.         1.         0.93333333 1.        ]\nCV Score of Linear SVM [0.93333333 0.96666667 0.9        0.93333333 1.        ]\nCV Score of RBF SVM [0.96666667 1.         0.9        0.96666667 1.        ]\nCV Score of Gaussian Process [0.96666667 1.         0.93333333 0.93333333 1.        ]\nCV Score of Decision Tree [0.96666667 0.96666667 0.9        0.93333333 1.        ]\nCV Score of Random Forest [0.96666667 0.96666667 0.93333333 0.9        1.        ]\nCV Score of Neural Net [1.         1.         0.96666667 0.96666667 1.        ]\nCV Score of AdaBoost [0.96666667 0.93333333 0.9        0.93333333 1.        ]\nCV Score of Naive Bayes [0.93333333 0.96666667 0.93333333 0.93333333 1.        ]\nCV Score of QDA [1.         1.         0.96666667 0.93333333 1.        ]\n",
+        "/opt/anaconda3/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:527: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.\n  warnings.warn(\n/opt/anaconda3/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:527: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.\n  warnings.warn(\n/opt/anaconda3/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:527: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.\n  warnings.warn(\n/opt/anaconda3/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:527: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.\n  warnings.warn(\n/opt/anaconda3/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:527: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.\n  warnings.warn(\n"
+      ],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.57 cell 57 · 比较十组五折成绩",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 58,
+      "type": "markdown",
+      "source_sha256": "81e46c75711db40a71fd44ffdcbd45eb72065a87fe54ad3f777d85cc7d613ec0",
+      "source_elements": "## 4.3 Hold-out with Classification Report\n\nInstead of cross-validation, we can split the data once into training and test sets, and look at the precision, recall and F1-score of each class.",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.58 cell 58 · 另一留出演示",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 59,
+      "type": "code",
+      "source_sha256": "b6a0fb75edc925306c46b96e57cc7fe5650ea3645191343327a11211f08f06d5",
+      "source_elements": [
+        "from sklearn.metrics import classification_report # this library directly generates precision, recall, f-measure",
+        "from sklearn.model_selection import train_test_split",
+        "",
+        "clf=DecisionTreeClassifier(max_depth=10)",
+        "X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.33, random_state=1)",
+        "clf.fit(X_train,y_train)",
+        "y_pred=clf.predict(X_test)",
+        "",
+        "print(classification_report(y_test, y_pred))"
+      ],
+      "outputs": [
+        "                 precision    recall  f1-score   support\n\n    Iris-setosa       1.00      1.00      1.00        17\nIris-versicolor       0.95      0.95      0.95        19\n Iris-virginica       0.93      0.93      0.93        14\n\n       accuracy                           0.96        50\n      macro avg       0.96      0.96      0.96        50\n   weighted avg       0.96      0.96      0.96        50\n\n"
+      ],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "all33 source code cells executed in sequence in scratch",
+      "candidate": "pending",
+      "candidate_section": "2.59 cell 59 · 100训练50评价",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 60,
+      "type": "markdown",
+      "source_sha256": "2438005c8df5e22a43373b12d4444d39ec696f0cf989c3e0e9d7a0ef54fd74b1",
+      "source_elements": "For multi-class classification problem, micro-average precision scores can be defined as sum of true positives for all the classes divided by the all positive predictions. The positive prediction is sum of all true positives and false positives. Here is how it would look like mathematically:\n\n$𝑃𝑟𝑒𝑐𝑖𝑠𝑖𝑜𝑛𝑀𝑖𝑐𝑟𝑜𝐴𝑣𝑔=\\frac{(𝑇𝑃_1+𝑇𝑃_2+𝑇𝑃_3)}{(𝑇𝑃_1+𝑇𝑃_2+𝑇𝑃_3+𝐹𝑃_1+𝐹𝑃_2+𝐹𝑃_3)}$\n\nMacro-average precision score can be defined as the arithmetic mean of all the precision scores of different classes. Here is how it would look like mathematically:\n\n$𝑃𝑟𝑒𝑐𝑖𝑠𝑖𝑜𝑛𝑀𝑎𝑐𝑟𝑜𝐴𝑣𝑔=\\frac{(𝑃𝑟𝑒𝑐_1+𝑃𝑟𝑒𝑐_2+𝑃𝑟𝑒𝑐_3)}{3}$",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.60 cell 60 · micro与macro分母",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 61,
+      "type": "markdown",
+      "source_sha256": "27f34acc5a9599450b51dba580cae692484370df884493aa3b5e3a0f369b2d83",
+      "source_elements": "# Summary\n\n## 1. Overfitting and Ridge regression\n- Overfitting: a complex model fits the training data well but performs badly on new data.\n- Ridge regression penalizes large coefficients (`Ridge(alpha=...)`), and the validation set is used to choose α.\n- `from sklearn.linear_model import LinearRegression, Ridge`\n- `from sklearn.metrics import mean_absolute_error`\n\n## 2. Post pruning decision trees\n- A larger α (`ccp_alpha`) gives a smaller tree.\n- `cost_complexity_pruning_path` generates the candidate α values.\n\n## 3. Automatic hyperparameter search\n- `GridSearchCV` tries all the parameter combinations (here C and gamma of `SVC`) with cross-validation and selects the best.\n- `from sklearn.model_selection import GridSearchCV`\n\n## 4. Choosing between models\n- Compare different models with cross-validation (`cross_val_score`) or hold-out (`classification_report`).\n- `from sklearn.model_selection import cross_val_score`\n- `from sklearn.metrics import classification_report`",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.61 cell 61 · 四部分总结",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 62,
+      "type": "markdown",
+      "source_sha256": "451511353c1573c727781d03e5493b4d2fd0e8ab332b1c356e6c43980b2d5dfc",
+      "source_elements": "------------------------------------------------------------------------------------------",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.62 cell 62 · 纯分隔格",
+      "candidate_status": "drafted; independent review pending"
+    },
+    {
+      "cell": 63,
+      "type": "markdown",
+      "source_sha256": "3917141b8c356f81aa34ddc107da0d34ebdf0fb63c0b62ee06a972e01bd8127a",
+      "source_elements": "# Assignment Week 11\n\n1. Use the Breast Cancer Wisconsin (Diagnostic) dataset to select the best model among Decision Trees, RandomForest, and SVC that has the minimum testing error (use the default model settings) (40 points).\n\n2. Use the same dataset and try to use nested Cross-validation to get the optimal hyperparameters for each model, and then compare the model performance (40 points).\n\n3. What other BDA process can you use to further improve the performance of the best models in Question 2? For example, feature selection or dimension reduction, imbalanced data sampling, etc., Please evaluate. (20 points).",
+      "outputs": [],
+      "original_images": [],
+      "source_read": true,
+      "visual": "text/code/table read; no local instructional raster",
+      "execution": "not applicable",
+      "candidate": "pending",
+      "candidate_section": "2.63 cell 63 · Week11评分原题与学习入口",
+      "candidate_status": "drafted; independent review pending"
+    }
+  ]
+}

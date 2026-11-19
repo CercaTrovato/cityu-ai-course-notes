@@ -1,0 +1,163 @@
+--- IS6400_Business_Data_Analytics/notes/T11-模型选择实战-Ridge剪枝与交叉验证.md
++++ candidate.md
+@@ -18,8 +18,17 @@
+ 
+ > 依据63格教师Notebook制作，保留原代码与保存输出，并把本批真实运行另列。没有本讲教程录音，实际课日未核。第63格为独立评分任务，完整原题与参考学习实验保留，但不等于本人确认的作答或提交。
+ 
+ ## 0. 这个 Notebook 在教什么
++
++<!-- cityu-nav:opening -->
++> [!abstract] 阅读导航
++> **预习**：[[#1. 开始之前 · 数据、语法与运行边界|前置]] → [[#2. 按原 Cell 顺序讲解|逐页／逐格正文]]。
++> **课中**：[[#8. Cell 映射与材料状态|按页码／Cell 定位]]。
++> **复习**：[[#4. 操作速查|速查]] → [[#5. 双语术语与理论对应|英文术语]] → [[#7. 自测与改条件|自测]]，点表中位置回正文。
++> **返回**：正文关键位置可点“回速查／回术语”，不必滚回页首。
++> [[#9. 延伸与勘误|来源／勘误]] · [[IS6400_Business_Data_Analytics/00-课程总览|课程入口]]
++<!-- cityu-nav:opening:end -->
+ 
+ 先用相同数据比较候选，再用验证选超参数，最后分清这个分数是否还独立于选择。读者不仅要会运行 `fit`，还要能指出输入来自哪里、哪份数据给了选择反馈。
+ 
+ - 能在15个幂特征上追踪训练／缩放／预测，并从20个α中选出实际最小验证MAE。
+@@ -147,8 +156,12 @@
+ ![教师保存cell5原图](figures/t11-source/cell-05-out-01.png)
+ 
+ ### 2.06 cell 6 · 先划分再拟合MinMax
+ 
++<!-- cityu-nav:landing-6 -->
++[[#4. 操作速查|↩ 回速查]] · [[#5. 双语术语与理论对应|回术语]] · [[#0. 这个 Notebook 在教什么|阅读导航]]
++<!-- cityu-nav:landing:end -->
++
+ 本格先把输入表与目标一起切分，再拟合缩放器。`predictors=['x']` 是只含一个列名的列表，`extend` 追加后续幂列；`data[predictors]` 取 15 列输入，`data['y']` 取一列答案。`train_test_split` 的四个返回值必须对应 X_train、X_test、y_train、y_test。
+ 
+ <details><summary>教师原代码与保存输出（cell 6）</summary>
+ 
+@@ -426,8 +439,12 @@
+ 
+ 每个 α 都要重新 fit，不能只改一个已拟合对象的字段后直接 predict。验证集参与这一选择后，不再是独立最终测试。
+ 
+ ### 2.19 cell 19 · 20项alpha循环
++
++<!-- cityu-nav:landing-19 -->
++[[#4. 操作速查|↩ 回速查]] · [[#5. 双语术语与理论对应|回术语]] · [[#0. 这个 Notebook 在教什么|阅读导航]]
++<!-- cityu-nav:landing:end -->
+ 
+ `[i/100 for i in range(0,20)]` 逐个把整数 0–19 除以 100，得到 0、0.01 直到 0.19，共 20 项，不含 0.20。循环每次新建并拟合 Ridge，再对相同 15 条验证记录计算 MAE。
+ 
+ <details><summary>教师原代码与保存输出（cell 19）</summary>
+@@ -619,8 +636,12 @@
+ 这一格重新给 X_train／X_test／y_train／y_test 赋值，已经从正弦回归切换到乳腺数据，不能再拿它们与前面的15维系数相乘。实际训练类计数为 159／267，留出为 53／90；原切分没设 `stratify`，只能说此次分配结果如此，不能声称强制按类等比例。
+ 
+ ### 2.28 cell 28 · 弱连接剪枝的临界代价
+ 
++<!-- cityu-nav:landing-28 -->
++[[#4. 操作速查|↩ 回速查]] · [[#5. 双语术语与理论对应|回术语]] · [[#0. 这个 Notebook 在教什么|阅读导航]]
++<!-- cityu-nav:landing:end -->
++
+ 先生成候选剪枝强度，再为每个强度训练一棵树。弱连接剪枝（Weakest-link pruning）寻找“删掉某段子树，每减少一个叶子会增加多少训练不纯度”，这一临界代价就是有效 α。每次先删单位复杂度代价最小的子树，重复到只剩根，产生一串候选强度。
+ 
+ 用一个笔记补充小例看比值：某子树有 3 叶，总加权不纯度 0.06；换成单叶后为 0.10，少 2 叶、增加 0.04，不纯度增加／叶减少为 0.02。α越过相关临界值时，更简单的替代方案在“训练不纯度＋α×叶数”的目标下更有利。完整路径由当前训练样本决定，不先用验证标签造路径。
+ 
+@@ -914,8 +935,12 @@
+ 
+ 候选 C 有5项、gamma有5项、kernel仅rbf一项，共25组；每组5折，候选拟合共125次。`refit=True` 再用全部426条训练重拟合所选配置，加1次，因此不能把终端“125 fits”当所有训练动作总数。
+ 
+ ### 2.44 cell 44 · 25组五折搜索
++
++<!-- cityu-nav:landing-44 -->
++[[#4. 操作速查|↩ 回速查]] · [[#5. 双语术语与理论对应|回术语]] · [[#0. 这个 Notebook 在教什么|阅读导航]]
++<!-- cityu-nav:landing:end -->
+ 
+ `param_grid` 是字典：键对应模型参数名，值是要遍历的列表。`GridSearchCV(SVC(),...,refit=True,verbose=3)` 收到未训练的估计器，再按组合和分折重新拟合；verbose只控制日志详细程度，不改变学习规则。
+ 
+ <details><summary>教师原代码与保存输出（cell 44）</summary>
+@@ -1331,8 +1356,12 @@
+ 源setosa全对；versicolor与virginica各有1条未被正确识别。从显示值可读各类召回约1、18／19、13／14。类间错向如需精确判定应看混淆矩阵，不能仅凭四舍五入report重建所有情况；本批运行另留真实预测。三分类概率归一化与单标签准确率分母仍按记录数，不把50条变成150条独立评价对象。
+ 
+ ### 2.60 cell 60 · micro与macro分母
+ 
++<!-- cityu-nav:landing-60 -->
++[[#4. 操作速查|↩ 回速查]] · [[#5. 双语术语与理论对应|回术语]] · [[#0. 这个 Notebook 在教什么|阅读导航]]
++<!-- cityu-nav:landing:end -->
++
+ 微平均（Micro average）先合计各类TP与FP，再算精确率；宏平均（Macro average）先算每类精确率再等权平均。加权平均（Weighted average）按真实类支持数加权，是第三种不同规则。
+ 
+ 源给三分类公式。用c=1、2、3编号三类，$TP_c$为第c类真实且预测为该类的条数，$FP_c$为其他类却误预测为第c类的条数。先把三类计数汇总，微平均为
+ 
+@@ -1370,8 +1399,12 @@
+ 
+ 完整数据角色、候选范围、各折参数、代码和结果解释在 [[IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/notes/学习参考|A12 学习参考]]；它与本篇同包审查，尚不是个人已确认的答卷或提交。Q1的testing参与选赢家，Q2／Q3的外层成绩也被用于跨方案开发比较，因此不能把所选最高均值再冒称另一份未受选择影响的最终测试。
+ 
+ 英文参考答案（笔记自拟，限定本批学习协议）：Under the documented default-model hold-out experiment, Random Forest has the lowest observed error, 4/143. Under the fixed educational nested-CV grids, the raw-input Random Forest has the highest mean outer accuracy among the three families. Adding fold-fitted feature selection and scaling improves the SVC comparison but reduces the Random Forest comparison, so improvement is empirical rather than guaranteed. These selected comparisons are not an untouched final performance claim; the complete protocol and limitations are given in the separate learning reference.
++
++<!-- cityu-nav:return-3 -->
++[[#0. 这个 Notebook 在教什么|↑ 阅读导航]] · [[#8. Cell 映射与材料状态|页／Cell 索引]] · [[#4. 操作速查|复习速查]]
++<!-- cityu-nav:return:end -->
+ 
+ ## 3. 完整流程串讲
+ 
+ 先读下面的“输入在哪里改变”，不要把同名变量误当一直是同一份数据。
+@@ -1397,33 +1430,33 @@
+ 每行是一项常见操作，先看输入状态，再看返回值与易错处。
+ 
+ | 操作 | 返回／用途 | 关键边界 | 回指 |
+ |---|---|---|---|
+-| fit_transform／transform | 前者学习训练统计量并变换，后者仅应用 | 不在验证／测试重新fit | cell6 |
+-| Ridge(alpha=...) | 按固定惩罚拟合系数 | alpha是配置，coef_是拟合结果 | cell13–20 |
+-| cost_complexity_pruning_path | 当前训练树的有效α与不纯度路径 | 不自动选验证赢家 | cell28–31 |
+-| ccp_alphas[5] | 第6个元素 | 0起算，源标题5th不准确 | cell34 |
+-| GridSearchCV | 同分折比较配置，保留最佳与重拟合模型 | refit另加一次fit，best_score_是内层CV | cell44–45 |
+-| cross_val_score | 每折分数数组 | 不直接返回全数据最终模型 | cell53–57 |
+-| classification_report | 各类指标、真实支持数及平均 | 正类／macro／micro分母要明说 | cell42、59–60 |
++| fit_transform／transform | 前者学习训练统计量并变换，后者仅应用 | 不在验证／测试重新fit | [[#2.06 cell 6 · 先划分再拟合MinMax\|cell6]] |
++| Ridge(alpha=...) | 按固定惩罚拟合系数 | alpha是配置，coef_是拟合结果 | [[#2.13 cell 13 · Ridge目标与强度\|cell13]]–[[#2.20 cell 20 · 最小验证误差答案\|20]] |
++| cost_complexity_pruning_path | 当前训练树的有效α与不纯度路径 | 不自动选验证赢家 | [[#2.28 cell 28 · 弱连接剪枝的临界代价\|cell28]]–[[#2.31 cell 31 · 逐alpha拟合并保存\|31]] |
++| ccp_alphas[5] | 第6个元素 | 0起算，源标题5th不准确 | [[#2.34 cell 34 · 索引5实际是第6项\|cell34]] |
++| GridSearchCV | 同分折比较配置，保留最佳与重拟合模型 | refit另加一次fit，best_score_是内层CV | [[#2.44 cell 44 · 25组五折搜索\|cell44]]–[[#2.45 cell 45 · 参数与重拟合赢家\|45]] |
++| cross_val_score | 每折分数数组 | 不直接返回全数据最终模型 | [[#2.53 cell 53 · KNN十近邻五折\|cell53]]–[[#2.57 cell 57 · 比较十组五折成绩\|57]] |
++| classification_report | 各类指标、真实支持数及平均 | 正类／macro／micro分母要明说 | [[#2.42 cell 42 · 默认SVC分类报告\|cell42]]、[[#2.59 cell 59 · 100训练50评价\|59]]–[[#2.60 cell 60 · micro与macro分母\|60]] |
+ 
+ ## 5. 双语术语与理论对应
+ 
+ 这里的英文定义为笔记自拟，便于读题；不能替代正文首次操作解释。
+ 
+ | 中文 | English／API | 英文参考定义 | 位置 |
+ |---|---|---|---|
+-| 最小最大缩放 | Min-max scaling | A feature-wise transform using minima and maxima learned from training observations. | cell6 |
+-| 成本复杂度剪枝 | Cost-complexity pruning | Simplifying a tree by trading leaf impurity against a penalty for its number of leaves. | cell28–31 |
+-| 有效α | Effective alpha | A threshold at which a subtree's impurity increase per removed leaf makes pruning competitive. | cell28–29 |
+-| 网格搜索 | Grid search | Evaluation of all combinations in a specified parameter grid. | cell43–45 |
+-| 重拟合 | Refit | Fitting the selected configuration again on the full development training set. | cell45 |
+-| 分层交叉验证 | Stratified cross-validation | Cross-validation with fold class proportions kept approximately representative of the input labels. | cell44、48 |
+-| 支持数 | Support | The number of true observations belonging to a class in the evaluation set. | cell42 |
+-| 微平均 | Micro average | Aggregating class-level counts before computing a metric. | cell60 |
+-| 宏平均 | Macro average | Taking an unweighted average of class-specific metric values. | cell60 |
+-
+-Ridge与讲义M10 p.55–58对应；剪枝与p.60–64对应，但sklearn的叶不纯度尺度不同于讲义错分率示例；搜索／CV与p.25及p.43–52对应；micro／macro是本教程对分类报告的进一步解释。
++| 最小最大缩放 | Min-max scaling | A feature-wise transform using minima and maxima learned from training observations. | [[#2.06 cell 6 · 先划分再拟合MinMax\|cell6]] |
++| 成本复杂度剪枝 | Cost-complexity pruning | Simplifying a tree by trading leaf impurity against a penalty for its number of leaves. | [[#2.28 cell 28 · 弱连接剪枝的临界代价\|cell28]]–[[#2.31 cell 31 · 逐alpha拟合并保存\|31]] |
++| 有效α | Effective alpha | A threshold at which a subtree's impurity increase per removed leaf makes pruning competitive. | [[#2.28 cell 28 · 弱连接剪枝的临界代价\|cell28]]–[[#2.29 cell 29 · 生成alpha路径\|29]] |
++| 网格搜索 | Grid search | Evaluation of all combinations in a specified parameter grid. | [[#2.43 cell 43 · C与gamma的作用\|cell43]]–[[#2.45 cell 45 · 参数与重拟合赢家\|45]] |
++| 重拟合 | Refit | Fitting the selected configuration again on the full development training set. | [[#2.45 cell 45 · 参数与重拟合赢家\|cell45]] |
++| 分层交叉验证 | Stratified cross-validation | Cross-validation with fold class proportions kept approximately representative of the input labels. | [[#2.44 cell 44 · 25组五折搜索\|cell44]]、[[#2.48 cell 48 · Iris与分层CV原图\|48]] |
++| 支持数 | Support | The number of true observations belonging to a class in the evaluation set. | [[#2.42 cell 42 · 默认SVC分类报告\|cell42]] |
++| 微平均 | Micro average | Aggregating class-level counts before computing a metric. | [[#2.60 cell 60 · micro与macro分母\|cell60]] |
++| 宏平均 | Macro average | Taking an unweighted average of class-specific metric values. | [[#2.60 cell 60 · micro与macro分母\|cell60]] |
++
++Ridge与讲义M10 [[IS6400_Business_Data_Analytics/notes/M10-模型评估-交叉验证正则化与AB测试#2.55 Lasso与超参数（讲义 p.55）\|p.55]]–[[IS6400_Business_Data_Analytics/notes/M10-模型评估-交叉验证正则化与AB测试#2.58 正则化的曲线和系数（讲义 p.58）\|58]]对应；剪枝与[[IS6400_Business_Data_Analytics/notes/M10-模型评估-交叉验证正则化与AB测试#2.60 悲观误差定义（讲义 p.60）\|p.60]]–[[IS6400_Business_Data_Analytics/notes/M10-模型评估-交叉验证正则化与AB测试#2.64 后剪枝30条算例（讲义 p.64）\|64]]对应，但sklearn的叶不纯度尺度不同于讲义错分率示例；搜索／CV与[[IS6400_Business_Data_Analytics/notes/M10-模型评估-交叉验证正则化与AB测试#2.25 K折交叉验证机制（讲义 p.25）\|p.25]]及[[IS6400_Business_Data_Analytics/notes/M10-模型评估-交叉验证正则化与AB测试#2.43 超参数与参数（讲义 p.43）\|p.43]]–[[IS6400_Business_Data_Analytics/notes/M10-模型评估-交叉验证正则化与AB测试#2.52 内层步骤7至10（讲义 p.52）\|52]]对应；micro／macro是本教程对分类报告的进一步解释。
+ 
+ ## 6. 考点与向 AI 提问
+ 
+ 没有本教程转录，教授明示考点为0。下面只是🟡课件／代码任务反推：找出实际最佳α；解释test变量角色；算25×5搜索预算；读标签0／1；区分剪枝路径与验证选择；解释micro与macro。
+@@ -1553,8 +1586,12 @@
+ | 61 | markdown | 四部分总结 | [[#2.61 cell 61 · 四部分总结\|cell 61]] | 正文已解释／分隔已说明 |
+ | 62 | markdown | 纯分隔格 | [[#2.62 cell 62 · 纯分隔格\|cell 62]] | 正文已解释／分隔已说明 |
+ | 63 | markdown | Week11评分原题与学习入口 | [[#2.63 cell 63 · Week11评分原题与学习入口\|cell 63]] | 评分题另有学习参考，非已提交 |
+ 
++<!-- cityu-nav:return-9 -->
++[[#0. 这个 Notebook 在教什么|↑ 阅读导航]] · [[#8. Cell 映射与材料状态|页／Cell 索引]] · [[#4. 操作速查|复习速查]]
++<!-- cityu-nav:return:end -->
++
+ ## 9. 延伸与勘误
+ 
+ ### 9.1 原件、保存输出与本批运行
+ 

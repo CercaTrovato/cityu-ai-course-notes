@@ -1,0 +1,280 @@
+--- M11-frozen-v1.md
++++ M11-frozen-v2.md
+@@ -62,21 +62,17 @@
+ 
+ Assessing a Borrower with Limited Credit History
+ 
+-
+-
+-
+-Scenario: A small online seller has no long credit history but has twelve months of bank and
+-platform cash-flow data.
+-
+-Evidence that may help                          Evidence still missing
+-- sales, cash inflows, and their                 - debts outside the platform and data
+-seasonality;                                     that may be inaccurate;
+-
+-- repayment records, refunds, and                - recoveries if the borrower defaults.
+-disputes.
+-
+-
+-
++Scenario: A small online seller has no long credit history but has twelve months of bank and platform cash-flow data.
++
++Evidence that may help:
++
++- sales, cash inflows, and their seasonality;
++- repayment records, refunds, and disputes.
++
++Evidence still missing:
++
++- debts outside the platform and data that may be inaccurate;
++- recoveries if the borrower defaults.
+ 
+ 
+ </details>
+@@ -169,7 +165,7 @@
+ 
+ 认识你的客户（Know your customer，KYC）是核实客户身份等所需资料；自动承贷把资料按规则或模型处理，减少重复人工工作。新还款和现金流可支持更新额度，异常和借款人申诉仍需工作人员处理。
+ 
+-原图四块是 Application、AI underwriting、Data monitoring、Instant disbursement，并用箭头构成示意循环。不能把漫画的排版误读为首次贷款一定先有该笔还款监测再放款；实际流程按 p.5 先申请/审核/出资，再收集贷后结果用于后续监测与更新。少人工不等于无人负责。
++原图四块是 Application、AI underwriting、Data monitoring、Instant disbursement，用三条箭头连接四个图标，没有从放款回到 Application 的返回箭头，未画完整回路。不能把漫画的排版误读为首次贷款一定先有该笔还款监测再放款；实际流程按 p.5 先申请/审核/出资，再收集贷后结果用于后续监测与更新。少人工不等于无人负责。
+ 
+ ### 2.11 p.11 · 变量重要为何不能证明因果
+ 
+@@ -238,7 +234,7 @@
+ 
+ 按讲义，银行/信用合作机构用 Upstart 技术获客和评估，平台赚平台、转介和服务费；贷款可由合作机构、外部投资者或 Upstart 自己持有。AI 降低审核工作并不会迫使投资者供钱，持有贷款或提供担保还可能使平台保留信用风险。
+ 
+-**⚪ 两问参考作答（笔记推断）**：模型能否预测好违约，需要同条件样本外证据、校准与实际损失；业务能否融资并获利，还需稳定资金、定价收入和全部成本。一个模型排序好而资金伙伴退出，仍可能无法新放贷。
++**⚪ 两问参考作答（笔记推断）**：模型能否预测好违约，需要同条件样本外证据、校准与实际损失。校准（Calibration）核预测概率与实际发生比例是否相符，例如预测一组有 2% 违约而实际为 4%，虽可能排序有用，概率水平仍低估；完整表例见 p.46。业务能否融资并获利，还需稳定资金、定价收入和全部成本。一个模型排序好而资金伙伴退出，仍可能无法新放贷。
+ 
+ **English reference answer**: Test prediction quality on comparable out-of-sample loans, including calibration and losses. Separately test whether available funding and loan income cover funding, servicing and credit costs. These are related but different questions.（笔记自拟）
+ 
+@@ -263,19 +259,17 @@
+ 
+ Hypothetical \$1,000 one-year loan, not WeBank results:
+ 
+-Interest and origination revenue             +\$120
+-Expected credit loss                          -\$55
+-Funding cost                                  -\$25
+-Acquisition, verification, and servicing      -\$30
+-Expected contribution before overhead         +\$10
+-
++| Item | Amount |
++|---|---:|
++| Interest and origination revenue | +\$120 |
++| Expected credit loss | -\$55 |
++| Funding cost | -\$25 |
++| Acquisition, verification, and servicing | -\$30 |
++| Expected contribution before overhead | +\$10 |
+ 
+ - Faster approval helps only if pricing covers loss, funding, fraud, and servicing.
+-
+ - A small error in expected loss can remove the entire margin.
+-
+-- For WeBank, digital processing must lower costs without allowing fraud or credit losses to
+-absorb the saving.
++- For WeBank, digital processing must lower costs without allowing fraud or credit losses to absorb the saving.
+ 
+ 
+ </details>
+@@ -300,7 +294,13 @@
+ 
+ 商业数据通（Commercial Data Interchange，CDI）按同意共享商业资料，可能减少承贷信息缺口。原图两条横杆是相对样本均值的估计减少：利率低 36 个基点（Basis point，1 bp 是 0.01 个百分点），约为均值的 6%；抵押物数量少 1.1 项，约为均值的 22%。6% 不是利率低 6 个百分点。
+ 
+-图注说研究覆盖 2022 年 1 月至 2025 年 3 月 80,097 笔新中小企贷款，用双重差分（Difference-in-differences）比较 2022 年 10 月上线后六家较多用 CDI 银行与其他银行的变化。双重差分扣去对照组同期变化，仍依赖两组本应可比等假设。研究没有每笔贷款是否用 CDI 的指标，银行级使用不等于每笔贷款的处理记录，不能把估计当任一贷款直接降息保证。原始数据未提供，本批读图未复跑研究。
++图注说研究覆盖 2022 年 1 月至 2025 年 3 月 80,097 笔新中小企贷款，用双重差分（Difference-in-differences）比较 2022 年 10 月上线后六家较多用 CDI 银行与其他银行的变化。
++
++双重差分先分别算 CDI 组和对照组的前后变化，再用“CDI 组变化减对照组变化”，以扣去两组共同面对的同期因素。起点利率不必相同；关键反事实是假如没有 CDI，两组本应有可比的变化走势。这个假设需要研究证据支持，不能从“扣两次”本身保证成立。
++
++研究没有每笔贷款是否用 CDI 的指标，银行级使用不等于每笔贷款的处理记录，不能把估计当任一贷款直接降息保证。原始数据未提供，本批读图未复跑研究。
++
++💡 笔记补充：假设 CDI 组利率从 5% 到 4%，变化 −1 个百分点；对照组从 6% 到 5.5%，变化 −0.5 个百分点。两组变化再相减得 $(-1)-(-0.5)=-0.5$ 个百分点，即 −50 bp。两组起点不同仍可计算；若没有干预时它们本来就有不同走势，差值不能直接归因 CDI。本例不是原研究资料，不是对 36 bp 的复现。
+ 
+ ### 2.22 p.22 · 互联网助贷政策在课堂模型中的作用
+ 
+@@ -369,7 +369,7 @@
+ 
+ **中文题意**：部署新模型后批准率升、违约降，但借款人组成和信用政策也变了，问什么证据最支持模型改进。A 是训练样本 AUC 更高；B 是更多变量和更深模型；C 是可比政策和风险条件下的样本外批次证据，含校准和损失；D 是批准更快、人工更少。完整英文题与四选项在原文块。
+ 
+-**⚪ 参考答案（笔记推断）：C。** AUC 是排序指标的一种，训练表现可能只是记住旧数据；B 的模型复杂度不是实际改进证据；D 是处理效率，不能分离借款人选择和风险。C 用可比后来贷款检验排序、概率水平与损失，最接近要问的模型效果。
++**⚪ 参考答案（笔记推断）：C。** AUC 是排序指标的一种，训练表现可能只是记住旧数据；B 的模型复杂度不是实际改进证据；D 是处理效率，不能分离借款人选择和风险。C 用可比后来贷款分别检验排序（谁较危险）、校准（预测概率与实际比例是否相符）和损失金额，最接近要问的模型效果。
+ 
+ Discuss 的分层：借款人组成和信用政策改变获批的人；模型改变预测关系；后来实际违约受两者及经济环境共同影响。
+ 
+@@ -544,7 +544,7 @@
+ 
+ 资料治理要证明目的合法、必要、访问权限、来源链、保存期和安全，避免无关/未经授权资料驱动决定。
+ 
+-模型治理要有验证、理由、公平、人工改判与监测，避免漂移无人发现/无法申诉。报告与韧性要有表现、事件、供应商、恢复和监管报表，避免故障同时中断服务和证据。不是列齐字段就证明合规，要核它对应的实际行为。
++模型治理要有验证、理由、公平、人工改判与监测。模型漂移（Model drift）是输入资料或预测关系改变，使既有模型表现变化；监测要能发现这种变化并安排复核/申诉，不能让错误持续。p.42 把这项职责放回整条服务链。报告与韧性要有表现、事件、供应商、恢复和监管报表，避免故障同时中断服务和证据。不是列齐字段就证明合规，要核它对应的实际行为。
+ 
+ ### 2.38 p.38 · 简答：众筹达标证明了什么
+ 
+@@ -650,20 +650,17 @@
+ 
+ Fast Approval Can Still Be a Regulatory Failure
+ 
+-Scenario: A platform approves a loan in thirty seconds using phone and transaction data, but
+-the customer does not understand the data consent or total repayment.
+-
+-
+-Control                  Evidence the platform should preserve
+-Consent                  which data were collected, for what purpose, and for how long
+-Fair decision            model inputs, adverse-action reason, override, and appeal
+-route
+-Affordability            income, obligations, repayment schedule, and stress assump-
+-tions
+-Disclosure               total cost, late consequences, complaints, and collections pro-
+-cess
++Scenario: A platform approves a loan in thirty seconds using phone and transaction data, but the customer does not understand the data consent or total repayment.
++
++| Control | Evidence the platform should preserve |
++|---|---|
++| Consent | which data were collected, for what purpose, and for how long |
++| Fair decision | model inputs, adverse-action reason, override, and appeal route |
++| Affordability | income, obligations, repayment schedule, and stress assumptions |
++| Disclosure | total cost, late consequences, complaints, and collections process |
+ 
+ A smooth interface does not substitute for informed consent and accountable credit judgment.
++
+ 
+ </details>
+ 
+@@ -684,7 +681,7 @@
+ 
+ 来源：L11 p.42，保留整页原图，可打开大图辨认原标签。
+ 
+-原图复用 p.10 四图标，但右侧新增五层职责：
++原图复用 p.10 四图标，仍未画出返回 Application 的完整回路；实际贷后反馈用于未来更新是正文机制解释，不能冒称图上有该回边。但右侧新增五层职责：
+ 
+ 1. 申请层有界面、电子签名和 API，负责同意记录。
+ 2. 身份/欺诈层核文件、设备、网络及异常。
+@@ -701,20 +698,17 @@
+ 
+ Lending Services during a System Outage
+ 
+-
+-
+-
+ Scenario: The identity or cloud provider fails during a peak shopping period.
+ 
+-Immediate product choices                         Controls needed beforehand
+-- pause new approvals or queue                    - tested recovery arrangements and data
+-applications for review;                          backups;
+-
+-- keep existing repayment services                - clear responsibility for customer
+-available.                                        communication and service restoration.
+-
+-
+-
++Immediate product choices:
++
++- pause new approvals or queue applications for review;
++- keep existing repayment services available.
++
++Controls needed beforehand:
++
++- tested recovery arrangements and data backups;
++- clear responsibility for customer communication and service restoration.
+ 
+ 
+ </details>
+@@ -742,21 +736,15 @@
+ 
+ Shared Records Do Not Replace Credit Assessment
+ 
+-Return to Class 6: One RMB1 million receivable, an 80% financing cap, and RMB600,000
+-already lent by Bank A.
+-
+-1. Check the record                         2. Apply the cap                      3. Decide whether to lend
+-Bank B sees the same                                                              Will the buyer pay the
+-receivable and Bank A’s                           800, 000 − 600, 000             invoice? Bank B still
+-existing RMB600,000 loan.                                                         assesses repayment capacity
+-At most RMB200,000                    and expected loss.
+-remains available against
+-this receivable.
++Return to Class 6: One RMB1 million receivable, an 80% financing cap, and RMB600,000 already lent by Bank A.
++
++1. Check the record. Bank B sees the same receivable and Bank A's existing RMB600,000 loan.
++2. Apply the cap. $800,000-600,000$. At most RMB200,000 remains available against this receivable.
++3. Decide whether to lend. Will the buyer pay the invoice? Bank B still assesses repayment capacity and expected loss.
+ 
+ Shared records help prevent duplicate financing; they do not guarantee repayment.
+ 
+ Hypothetical example; assume the shared record captures all existing financing.
+-
+ 
+ 
+ </details>
+@@ -819,21 +807,17 @@
+ 
+ Who Bears the Loss on a Sold Loan?
+ 
+-WeLab Bank reports customer loans on its balance sheet. Compare three hypothetical con-
+-tracts for a loan that subsequently defaults:
+-Principal loss = \$1, 000 − \$600 recovered = \$400 .
+-
+-
+-
+-Bank retains the loan                      Sale without a guarantee                   Sale with a \$100 first-loss
+-Bank loses \$400.                           Investor loses \$400.                       guarantee
+-Bank loses \$100; investor
+-It funded and still holds the              The bank has no contractual                loses \$300.
+-loan.                                      credit-loss obligation.
+-The bank retains some
+-credit exposure.
+-Principal losses only; guarantees honoured. Contracts are illustrative, not WeLab’s terms. Company context: WeLab Bank 2025
+-Interim Report, note 13.
++WeLab Bank reports customer loans on its balance sheet. Compare three hypothetical contracts for a loan that subsequently defaults:
++
++Principal loss = \$1,000 - \$600 recovered = \$400.
++
++| Contract | Loss allocation | Explanation |
++|---|---|---|
++| Bank retains the loan | Bank loses \$400. | It funded and still holds the loan. |
++| Sale without a guarantee | Investor loses \$400. | The bank has no contractual credit-loss obligation. |
++| Sale with a \$100 first-loss guarantee | Bank loses \$100; investor loses \$300. | The bank retains some credit exposure. |
++
++Principal losses only; guarantees honoured. Contracts are illustrative, not WeLab's terms. Company context: WeLab Bank 2025 Interim Report, note 13.
+ 
+ 
+ </details>
+@@ -863,19 +847,14 @@
+ 
+ Stress the Lending Model before Forecasting Growth
+ 
+-
+-Shock                      Cash-flow question                Evidence to monitor
+-Borrower stress           Who absorbs higher defaults        delinquency, roll rates, recoveries
+-and collections cost?
+-Funding withdrawal        Can originations and existing      funding concentration, maturity,
+-loans still be funded?             covenants
+-Acquisition inflation     Does growth still cover cus-       repeat use, contribution margin,
+-tomer acquisition cost?            payback period
+-Control failure           Who pays for fraud, bias, cy-      complaints, overrides, incidents,
+-ber loss, or remediation?          audit findings
+-
+-A growth forecast is incomplete until the platform survives plausible credit, funding, and operating
+-shocks.
++| Shock | Cash-flow question | Evidence to monitor |
++|---|---|---|
++| Borrower stress | Who absorbs higher defaults and collections cost? | delinquency, roll rates, recoveries |
++| Funding withdrawal | Can originations and existing loans still be funded? | funding concentration, maturity, covenants |
++| Acquisition inflation | Does growth still cover customer acquisition cost? | repeat use, contribution margin, payback period |
++| Control failure | Who pays for fraud, bias, cyber loss, or remediation? | complaints, overrides, incidents, audit findings |
++
++A growth forecast is incomplete until the platform survives plausible credit, funding, and operating shocks.
+ 
+ 
+ </details>
+@@ -1109,7 +1088,7 @@
+ 
+ ### 9.3 课件与原图限制
+ 
+-p.10/42 的自动贷款图以图标循环呈现，不按图面空间顺序推定首次贷款先有还款监测；实际主链按 p.5，贷后反馈用于未来更新。p.29 原图 CREATO 标签不完整，保留原貌。p.34 肖像注明 AI 插画，不作真实人物照片。
++p.10/42 的自动贷款图以四图标和三条箭头呈现，未画返回 Application 的完整回路，不按图面空间顺序推定首次贷款先有还款监测；实际主链按 p.5，贷后反馈用于未来更新。p.29 原图 CREATO 标签不完整，保留原貌。p.34 肖像注明 AI 插画，不作真实人物照片。
+ 
+ ### 9.4 外部事实待核
+ 

@@ -692,3 +692,10 @@ L10深度学习／图像课件137页、天气LSTM Notebook86格及ColabPDF9页�
 ## 2026-11-06 · 课堂来源更新
 
 S29 `50:31` 记录当天讲授和教程的期末范围口头说明。末段只预告 2 p.m. tutorial，未录实操或新作业期限。
+
+
+## 2026-11-18 · Assignment Week 11 新登记
+
+正式入口 [Assignment Week 11](https://canvas.cityu.edu.hk/courses/71457/assignments/330587)：**2026-11-27 23:59 HKT**，**10 points**，file upload；root 当日已实际核页面并只读核账号时区 Hong Kong。页正文没有附加描述，允许扩展名／准确附件格式未列，不能照旧周推断。
+
+原 Notebook 第63 cell三问内部40／40／20共100分，分别为默认DT/RF/SVC比较、各模型嵌套CV调参、其他BDA处理的进一步评价；与Canvas10分分开。完整原题及当前限制见 [[IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/notes/任务说明|A12 Week11任务说明]]。课堂执行与学习参考不代表本人答卷或提交；本人现有制作、审阅、提交及评分仍未核，未上传。

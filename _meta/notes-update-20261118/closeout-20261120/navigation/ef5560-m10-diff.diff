@@ -1,0 +1,157 @@
+--- EF5560_Fintech_and_AI_in_Finance/notes/M10-支付系统与嵌入式金融.md
++++ candidate.md
+@@ -20,8 +20,17 @@
+ 
+ > 讲义材料 v0.9；本次全篇教学与来源核对及同源必要显示已完成，未取得本讲转录；实际日期、周次和课堂覆盖未知。原件数字和产品描述按讲义版本记录，未逐站核实时条款。
+ 
+ ## 0. 三分钟速览
++
++<!-- cityu-nav:opening -->
++> [!abstract] 阅读导航
++> **预习**：[[#1. 开始之前 · 知识衔接|前置]] → [[#2. 正文 · 按课件页序|逐页／逐格正文]]。
++> **课中**：[[#8. 讲义页码映射|按页码／Cell 定位]]。
++> **复习**：[[#4. 速查表|速查]] → [[#5. 双语术语卡|英文术语]] → [[#7. 自测|自测]]，点表中位置回正文。
++> **返回**：正文关键位置可点“回速查／回术语”，不必滚回页首。
++> [[#9. 延伸与勘误|来源／勘误]] · [[EF5560_Fintech_and_AI_in_Finance/00-课程总览|课程入口]]
++<!-- cityu-nav:opening:end -->
+ 
+ 支付系统把顾客的付款意愿变成商户可用资金；界面、消息、结算和融资各有职责。
+ 
+ - 能追踪一笔 100 港元付款，区分批准、清算、结算、拨款和争议。
+@@ -53,8 +62,12 @@
+ 
+ 这是纯分隔页，没有新增机制或例题。后面先追踪商店收款，再问服务商承担哪些工作、如何收费。理解支付必须同时看信息是否获准、资金是否转移和出了错谁处理。
+ 
+ ### 2.3 p.03 · 100 港元付款为何商店只收到 98 港元
++
++<!-- cityu-nav:landing-3 -->
++[[#4. 速查表|↩ 回速查]] · [[#5. 双语术语卡|回术语]] · [[#0. 三分钟速览|阅读导航]]
++<!-- cityu-nav:landing:end -->
+ 
+ ![讲义 p.3：多层商店付款示意](figures/m10/source-p03.png)
+ 
+ 来源：L10 p.3，整页原图；可点击大图核原标注。
+@@ -79,8 +92,12 @@
+ 
+ 这四项不是互斥的同层产品：一个手机 App 可以发起银行账户转账，也可以使用储值余额。判断时先问界面是什么，再问实际扣了哪一项余额、是谁的负债。Logo 仅作品牌识别，不承担额外支付机制。
+ 
+ ### 2.5 p.05 · 发起、授权、清算与结算
++
++<!-- cityu-nav:landing-5 -->
++[[#4. 速查表|↩ 回速查]] · [[#5. 双语术语卡|回术语]] · [[#0. 三分钟速览|阅读导航]]
++<!-- cityu-nav:landing:end -->
+ 
+ 顾客先发起（Initiation）交易，表示要向商户付钱；发行机构或服务商再授权（Authorization），检查账户、额度和交易。清算计算参与者各自应收应付，结算才改变机构之间的资金余额。商户可用资金何时到账还受拨款安排影响。
+ 
+ 💡 笔记补充：例如买书 100 港元，授权回答“这笔交易现在可否批准”，清算回答“该向哪家机构收多少”，结算回答“机构资金是否已划转”。不要把“查了余额”写成“已经转钱”；不同系统可能把部分步骤紧密合并，但概念仍回答不同问题。下图箭头表示处理顺序，不代表每一步都已经到账。
+@@ -338,8 +355,12 @@
+ 
+ 本表是核对费用去向的框架。实际合同若把某项分成已从收入净额扣除，就不能在成本再扣一次；应先确定采用总额还是净额列示，再沿同一口径计算。
+ 
+ ### 2.30 p.30 · 选择题：处理商留存多少费用
++
++<!-- cityu-nav:landing-30 -->
++[[#4. 速查表|↩ 回速查]] · [[#5. 双语术语卡|回术语]] · [[#0. 三分钟速览|阅读导航]]
++<!-- cityu-nav:landing:end -->
+ 
+ **英文原题**
+ 
+ For a \$200 card payment, a processor charges the merchant 2.5%. It passes 1.6% of the payment value to the issuing bank and 0.3% to the network.
+@@ -548,8 +569,12 @@
+ 
+ 融资风险来自先付商户、后收客户的时间差；即使最终会还，提供者眼下也可能缺现金。因此既要准备流动性，又要检查资金渠道集中。按同一放款期间追踪逾期和损失，才能避免把成熟贷款的坏账与刚发放贷款的未到期余额混比。这里是风险管理分析，不是某地法律建议。
+ 
+ ### 2.48 p.48 · BNPL 一笔贡献完整算例
++
++<!-- cityu-nav:landing-48 -->
++[[#4. 速查表|↩ 回速查]] · [[#5. 双语术语卡|回术语]] · [[#0. 三分钟速览|阅读导航]]
++<!-- cityu-nav:landing:end -->
+ 
+ **讲义给定算例（非真实产品报价）**：商品 HK\$1,000；顾客四期各 HK\$250、无利息；商户先收 HK\$960，提供者取得 HK\$40 费用。假设每笔资金成本 HK\$10、预期信用损失 HK\$20、服务成本 HK\$5。
+ 
+ 先算收入 40，再扣因垫款产生的 10、按预期不可收回金额估计的 20、服务工作 5，得到预期贡献（Expected contribution）$40-10-20-5=5$ 港元。这里都是同一笔订单口径，预期信用损失不是“本笔已经实际违约 20”。贡献还未扣固定管理费和税。
+@@ -566,8 +591,12 @@
+ 
+ 比较放款批次（Vintage，即相近时间发放的一组贷款）时，要等足够还款到期；刚发的贷款大多还没到首次还款日，当前逾期少不能说明风险低。💡 笔记补充：同样“放款后 3 个月”的累计损失率才更可比；把新批次第 1 周与旧批次第 12 月比较会混入成熟度差异。
+ 
+ ### 2.50 p.50 · 稳定币付账先看今天能否出金
++
++<!-- cityu-nav:landing-50 -->
++[[#4. 速查表|↩ 回速查]] · [[#5. 双语术语卡|回术语]] · [[#0. 三分钟速览|阅读导航]]
++<!-- cityu-nav:landing:end -->
+ 
+ **讲义完整情境**：Class 9 CFO case: The firm holds 1 million USDC and must pay a US\$800,000 invoice today. Issuer redemption at par: 800,000 USDC → US\$800,000. The Circle Mint route requires an eligible account. It works for this invoice only if the bank funds arrive by the deadline. Market sale at a US\$0.90 bid: 888,888.89 USDC → US\$800,000. Assume the dealer can deliver bank funds today. The firm sells more tokens to meet the same cash obligation. If the supplier wants HK dollars, USD/HKD conversion is a separate step in either route.
+ 
+ **中文解析与来源地位**：这是讲义的压力报价假设，省略费用，不是当前 USDC 市价。按面值且今天能到账，交回 800,000 USDC，剩 200,000；市场报价是每 USDC 0.90 美元，要交 $800,000/0.90=888,888.888\ldots$ USDC，约剩 111,111.11。多耗约 88,888.89 USDC，并不等于额外损失了同额美元。
+@@ -622,8 +651,12 @@
+ 2. Alipay 的购买可由已绑定银行卡出资，所以二维码入口不决定最终资金来源（唤醒 p.16–19）。
+ 3. Payment Connect 例中从 HKD 资金付给 RMB 账户，银行仍需把港元兑换成人民币；转得快没有取消换汇（唤醒 p.34–37）。
+ 4. Affirm 即使对某顾客免息，也仍须覆盖资金成本和预期信用损失（唤醒 p.44–48）。
+ 
++<!-- cityu-nav:return-3 -->
++[[#0. 三分钟速览|↑ 阅读导航]] · [[#8. 讲义页码映射|页／Cell 索引]] · [[#4. 速查表|复习速查]]
++<!-- cityu-nav:return:end -->
++
+ ## 3. 一图看懂
+ 
+ 下表按问题找层，行与行不是互相替代的产品分类。
+ 
+@@ -642,30 +675,30 @@
+ 每行是本讲已复算的一项结果，金额和条件必须一起记。
+ 
+ | 算例 | 输入和结果 | 限制 |
+ |---|---|---|
+-| 商店净拨款 p.3 | 100 港元扣 2%，净 98 港元 | 非批准即到账 |
+-| 处理商留存 p.30 | 200 美元 × 0.6%，留 1.20 美元 | 自身成本未扣 |
+-| BNPL p.48 | 收 40，扣 10/20/5，贡献 5 港元 | 固定费税未扣 |
+-| 稳定币出金 p.50 | 80 万美元 ÷ 0.90 | 约 888,888.89 USDC，略费 |
+-| 储备分成 p.52 | 1 亿美元、4%、分成 50% | 扣 100 万成本后剩 100 万 |
++| 商店净拨款 [[#2.3 p.03 · 100 港元付款为何商店只收到 98 港元\|p.3]] | 100 港元扣 2%，净 98 港元 | 非批准即到账 |
++| 处理商留存 [[#2.30 p.30 · 选择题：处理商留存多少费用\|p.30]] | 200 美元 × 0.6%，留 1.20 美元 | 自身成本未扣 |
++| BNPL [[#2.48 p.48 · BNPL 一笔贡献完整算例\|p.48]] | 收 40，扣 10/20/5，贡献 5 港元 | 固定费税未扣 |
++| 稳定币出金 [[#2.50 p.50 · 稳定币付账先看今天能否出金\|p.50]] | 80 万美元 ÷ 0.90 | 约 888,888.89 USDC，略费 |
++| 储备分成 [[#2.52 p.52 · 储备收益怎样分成并覆盖成本\|p.52]] | 1 亿美元、4%、分成 50% | 扣 100 万成本后剩 100 万 |
+ 
+ ## 5. 双语术语卡
+ 
+ 下列英文定义为笔记自拟，用来组织考试回答，非教授逐字引文。
+ 
+ | 中文 | English | 英文定义 | 位置 |
+ |---|---|---|---|
+-| 授权 | Authorization | Approval after checking the account and transaction. | p.5 |
+-| 清算 | Clearing | Calculation of participants' payment obligations under system rules. | p.5 |
+-| 结算 | Settlement | Transfer of funds between institutions to discharge obligations. | p.5 |
+-| 商户拨款 | Merchant payout | Funds made available to a merchant under its provider's terms. | p.3/6 |
+-| 交换费 | Interchange | A transfer between banks within the payment arrangement. | p.6 |
+-| 收单 | Acquiring | Services enabling a merchant to accept and process card payments. | p.22 |
+-| 捕获/请款 | Capture | Submission of an authorized payment for further processing. | p.54 |
+-| 互操作性 | Interoperability | The ability of systems to exchange and process payment instructions under shared rules. | p.9 |
+-| 先买后付 | Buy now, pay later | Credit embedded in a purchase with repayment scheduled later. | p.44 |
+-| 放款批次 | Vintage | A group of loans originated in a stated period. | p.49 |
++| 授权 | Authorization | Approval after checking the account and transaction. | [[#2.5 p.05 · 发起、授权、清算与结算\|p.5]] |
++| 清算 | Clearing | Calculation of participants' payment obligations under system rules. | [[#2.5 p.05 · 发起、授权、清算与结算\|p.5]] |
++| 结算 | Settlement | Transfer of funds between institutions to discharge obligations. | [[#2.5 p.05 · 发起、授权、清算与结算\|p.5]] |
++| 商户拨款 | Merchant payout | Funds made available to a merchant under its provider's terms. | [[#2.3 p.03 · 100 港元付款为何商店只收到 98 港元\|p.3]]/[[#2.6 p.06 · 速度、费用和风险要按同一链比较\|6]] |
++| 交换费 | Interchange | A transfer between banks within the payment arrangement. | [[#2.6 p.06 · 速度、费用和风险要按同一链比较\|p.6]] |
++| 收单 | Acquiring | Services enabling a merchant to accept and process card payments. | [[#2.22 p.22 · 同一收银画面可能对应三种业务\|p.22]] |
++| 捕获/请款 | Capture | Submission of an authorized payment for further processing. | [[#2.54 p.54 · 四个结论合起来复述\|p.54]] |
++| 互操作性 | Interoperability | The ability of systems to exchange and process payment instructions under shared rules. | [[#2.9 p.09 · 互联互通能接起来什么\|p.9]] |
++| 先买后付 | Buy now, pay later | Credit embedded in a purchase with repayment scheduled later. | [[#2.44 p.44 · 先买后付四格资金链\|p.44]] |
++| 放款批次 | Vintage | A group of loans originated in a stated period. | [[#2.49 p.49 · 未到期贷款可能暂时掩盖损失\|p.49]] |
+ 
+ ## 6. 考点预判与答题框架
+ 
+ 无本讲转录，没有教授明示考点。本节为 🟡 讲义学习目标反推与 ⚪ 笔记推断，不保证真题。
+@@ -781,8 +814,12 @@
+ | 52 | Circle and Open USD: Distribution and Reserve Income | [[EF5560_Fintech_and_AI_in_Finance/notes/M10-支付系统与嵌入式金融#2.52 p.52 · 储备收益怎样分成并覆盖成本\|p.52]] | 文字/表格及题面逐项解释；品牌Logo不作教学图 |
+ | 53 | Payments Initiated by AI Agents | [[EF5560_Fintech_and_AI_in_Finance/notes/M10-支付系统与嵌入式金融#2.53 p.53 · AI 代理付款需要怎样的授权边界\|p.53]] | 文字/表格及题面逐项解释；品牌Logo不作教学图 |
+ | 54 | What to Remember | [[EF5560_Fintech_and_AI_in_Finance/notes/M10-支付系统与嵌入式金融#2.54 p.54 · 四个结论合起来复述\|p.54]] | 文字/表格及题面逐项解释；品牌Logo不作教学图 |
+ 
++<!-- cityu-nav:return-9 -->
++[[#0. 三分钟速览|↑ 阅读导航]] · [[#8. 讲义页码映射|页／Cell 索引]] · [[#4. 速查表|复习速查]]
++<!-- cityu-nav:return:end -->
++
+ ## 9. 延伸与勘误
+ 
+ ### 9.1 课堂覆盖未知
+ 

@@ -1,0 +1,966 @@
+{
+  "candidate_sha256": "3d40f330cb0e2d0ae8070e45e9204c61f1b7299a9bfe5787adbfdec4bc251efd",
+  "reviewed_source_sha256": "fd09c3685802b2f7dde0e4a41a91d09f441fe99f25db7db5a3a1676582afaf1f",
+  "C_hard": [],
+  "C_warn": [],
+  "R": [
+    {
+      "code": "R4c",
+      "all_locations": [
+        {
+          "line": 23,
+          "message": "单元格 2 句",
+          "context": "| Question 1，两个小问 | 数 `Churn` 缺失记录，说明两种处理方法；计算交易额四分位距 | 方法、计算口径与可执行程序；缺原始 Excel，不能报两个数值结果 |"
+        },
+        {
+          "line": 23,
+          "message": "单元格 2 句",
+          "context": "| Question 1，两个小问 | 数 `Churn` 缺失记录，说明两种处理方法；计算交易额四分位距 | 方法、计算口径与可执行程序；缺原始 Excel，不能报两个数值结果 |"
+        },
+        {
+          "line": 25,
+          "message": "单元格 2 句",
+          "context": "| Question 5，三个小问 | 变量处理、五日预测和滚动验证设计 | 理由、程序及评估设计均提供；五天价格因缺 CSV 受阻 |"
+        },
+        {
+          "line": 85,
+          "message": "单元格 2 句",
+          "context": "| 删除缺失记录（listwise deletion） | 分析需要真实 `Churn` 标签时，不纳入该列缺失的客户 | 会减少样本；若流失客户更容易漏记，删除可能使流失率偏低 |"
+        },
+        {
+          "line": 86,
+          "message": "单元格 2 句",
+          "context": "| 填补（imputation） | 类别列可用已观察到的众数，即出现次数最多的类别填补 | 这是估计，不是找回真实标签；会夸大多数类，不宜把虚构的流失标签当真实监督答案 |"
+        },
+        {
+          "line": 296,
+          "message": "单元格 2 句",
+          "context": "| L0-R0，原树 | 6 | 0 | 0.00% | 40.00% | 7；46.67% |"
+        },
+        {
+          "line": 297,
+          "message": "单元格 2 句",
+          "context": "| L1-R0，剪 D | 5 | 1 | 6.67% | 40.00% | 3；20.00% |"
+        },
+        {
+          "line": 298,
+          "message": "单元格 2 句",
+          "context": "| L2-R0，剪 C | 4 | 2 | 13.33% | 40.00% | 0；0.00% |"
+        },
+        {
+          "line": 299,
+          "message": "单元格 2 句",
+          "context": "| L3-R0，剪左 B | 3 | 3 | 20.00% | 40.00% | 3；20.00% |"
+        },
+        {
+          "line": 300,
+          "message": "单元格 2 句",
+          "context": "| L0-R1，只剪右 B | 5 | 3 | 20.00% | 53.33% | 12；80.00% |"
+        },
+        {
+          "line": 301,
+          "message": "单元格 2 句",
+          "context": "| L1-R1，剪 D 及右 B | 4 | 4 | 26.67% | 53.33% | 8；53.33% |"
+        },
+        {
+          "line": 302,
+          "message": "单元格 2 句",
+          "context": "| L2-R1，剪 C 及右 B | 3 | 5 | 33.33% | 53.33% | 5；33.33% |"
+        },
+        {
+          "line": 303,
+          "message": "单元格 2 句",
+          "context": "| L3-R1，剪左右 B | 2 | 6 | 40.00% | 53.33% | 8；53.33% |"
+        },
+        {
+          "line": 304,
+          "message": "单元格 2 句",
+          "context": "| Root，整树一个叶子 | 1 | 7 | 46.67% | 53.33% | 12；80.00% |"
+        }
+      ],
+      "disposition": "短范围说明/两种处理法和九模型结果单元；所有分母、惩罚规则及模型标签已正文说明且逐行复算，不将必要推理藏在表格。",
+      "independent_evidence": "evidence/independent/stage-1.md + stage-2.md actual source/learning/calculation checks"
+    },
+    {
+      "code": "R8a",
+      "all_locations": [
+        {
+          "line": 43,
+          "message": "### 2.1 Question 1：客户缺失值与交易额分散程度",
+          "context": "### 2.1 Question 1：客户缺失值与交易额分散程度"
+        },
+        {
+          "line": 68,
+          "message": "#### 2.1.1 第 1 问：缺了几行，不是所有列总共缺几格",
+          "context": "#### 2.1.1 第 1 问：缺了几行，不是所有列总共缺几格"
+        },
+        {
+          "line": 94,
+          "message": "#### 2.1.2 第 2 问：IQR 是两个分位数相减",
+          "context": "#### 2.1.2 第 2 问：IQR 是两个分位数相减"
+        },
+        {
+          "line": 118,
+          "message": "#### 2.1.3 用真实 Excel 运行，不制造输出",
+          "context": "#### 2.1.3 用真实 Excel 运行，不制造输出"
+        },
+        {
+          "line": 132,
+          "message": "### 2.2 Problem 3：先沿树预测，再按实例数计错",
+          "context": "### 2.2 Problem 3：先沿树预测，再按实例数计错"
+        },
+        {
+          "line": 162,
+          "message": "#### 2.2.1 先读懂节点与计数表",
+          "context": "#### 2.2.1 先读懂节点与计数表"
+        },
+        {
+          "line": 201,
+          "message": "#### 2.2.2 第 1 问：训练误差为零，但复杂性惩罚不为零",
+          "context": "#### 2.2.2 第 1 问：训练误差为零，但复杂性惩罚不为零"
+        },
+        {
+          "line": 242,
+          "message": "#### 2.2.3 第 2 问：验证误差为 7/15，不是 2/6",
+          "context": "#### 2.2.3 第 2 问：验证误差为 7/15，不是 2/6"
+        },
+        {
+          "line": 267,
+          "message": "#### 2.2.4 第 3 问：剪枝时，叶子标签从训练数据决定",
+          "context": "#### 2.2.4 第 3 问：剪枝时，叶子标签从训练数据决定"
+        },
+        {
+          "line": 336,
+          "message": "#### 2.2.5 第 4 问：代码参数数的是边，不是图上标的层",
+          "context": "#### 2.2.5 第 4 问：代码参数数的是边，不是图上标的层"
+        },
+        {
+          "line": 358,
+          "message": "### 2.3 Question 5：价格变化、五步预测与滚动验证",
+          "context": "### 2.3 Question 5：价格变化、五步预测与滚动验证"
+        },
+        {
+          "line": 390,
+          "message": "#### 2.3.1 第 1 问：优先尝试差分，但不要假称已检验平稳",
+          "context": "#### 2.3.1 第 1 问：优先尝试差分，但不要假称已检验平稳"
+        },
+        {
+          "line": 412,
+          "message": "#### 2.3.2 第 2 问：预测差分后，要累加回价格",
+          "context": "#### 2.3.2 第 2 问：预测差分后，要累加回价格"
+        },
+        {
+          "line": 512,
+          "message": "#### 2.3.3 第 3 问：一天一天往前走，比较同一天的预测",
+          "context": "#### 2.3.3 第 3 问：一天一天往前走，比较同一天的预测"
+        }
+      ],
+      "disposition": "原DOCX无固定源页号，九问、原生日期表和三张嵌图实际逐项回源；题号/图表注是有依据定位，不为正则编PDF页码。",
+      "independent_evidence": "evidence/independent/stage-1.md + stage-2.md actual source/learning/calculation checks"
+    },
+    {
+      "code": "R6a",
+      "all_locations": [
+        {
+          "line": 96,
+          "message": "一段 3 处括号英文注释（约等于 3 个新术语）",
+          "context": "把所有有效最近交易额从小到大排序。第一四分位数（first quartile，$Q_1$）是 25% 分位点，第三四分位数（third quartile，$Q_3$）是 75% 分位点。四分位距（interquartile range，IQR）衡量中间 50% 数据的跨度，不是最大金额减最小金额。"
+        }
+      ],
+      "disposition": "IQR四分位名词当地解释、公式和插值例完整，未由文末词表替代初次操作。",
+      "independent_evidence": "evidence/independent/stage-1.md + stage-2.md actual source/learning/calculation checks"
+    },
+    {
+      "code": "R4a",
+      "all_locations": [
+        {
+          "line": 179,
+          "message": "7 列",
+          "context": "| 训练行 | A | B | C | D | 正类数 | 负类数 |"
+        },
+        {
+          "line": 190,
+          "message": "7 列",
+          "context": "| 验证行 | A | B | C | D | 正类数 | 负类数 |"
+        }
+      ],
+      "disposition": "两张七列数表是原四二元特征、正负实例数量和审阅行号；源图逐格核、独立计数与九树重跑一致，非七列密集文字。阅读尺寸由root实际UI另核。",
+      "independent_evidence": "evidence/independent/stage-1.md + stage-2.md actual source/learning/calculation checks"
+    },
+    {
+      "code": "R1e",
+      "all_locations": [
+        {
+          "line": 261,
+          "message": "一段 3 处否定澄清",
+          "context": "表中 2 行预测错了，但它们代表 7 个实例，所以分子不是 2、分母也不是 6。训练 0.00% 而验证 46.67%，说明原树在这批未用于拟合的实例上明显变差。这是当前数据中的过拟合（overfitting）迹象，不是“任何深树都必定差”的定理。"
+        },
+        {
+          "line": 352,
+          "message": "一段 3 处否定澄清",
+          "context": "这不是两个参数都同时设，而是同一句自然语言的两种数法。答题时写出采用口径即可避免无声的差一层。`random_state=42` 固定涉及随机性的选择以便复做，不是层数，也不保证任何准确率。"
+        },
+        {
+          "line": 406,
+          "message": "一段 3 处否定澄清",
+          "context": "“差分更适合”是待检验的建模判断，不是已观察到的结论。差分后方差仍可能随价格水平变大，也可能仍非平稳。拿到真实文件后，应先比较价格与差分的时序图、检查结构变化，再结合训练范围内的平稳性诊断和滚动预测误差判断。不能在没读数据时报告某个检验 p 值，也不能承诺差分一定预测更准。"
+        }
+      ],
+      "disposition": "行数与实例、层数与边数、差分与收益率/未检验不必胜等限定会改变实际答案；有具体源和复算依据，不是套话。",
+      "independent_evidence": "evidence/independent/stage-1.md + stage-2.md actual source/learning/calculation checks"
+    },
+    {
+      "code": "R1c",
+      "all_locations": [
+        {
+          "line": 306,
+          "message": "2 个分号：读 L1-R0：D 的 2 个叶子合并成 1 个，叶子从 6 减为 5；…",
+          "context": "读 L1-R0：D 的 2 个叶子合并成 1 个，叶子从 6 减为 5；T2 由预测 `-` 改成 `+`，所以新增 1 个训练错分；V1 的 4 个正类由错变对，验证错数从 7 降为 3。悲观分子从 $0+6$ 变成 $1+5$，总和仍是 6，所以它的悲观误差没变。"
+        },
+        {
+          "line": 360,
+          "message": "2 个分号：把这三问分开：第 1 问是变量处理判断；第 2 问是在 2018-04-…",
+          "context": "把这三问分开：第 1 问是变量处理判断；第 2 问是在 2018-04-30 收盘时连续预测未来五天；第 3 问是历史上反复模拟“只预测明天”，评估方案而非要求编程。"
+        },
+        {
+          "line": 459,
+          "message": "2 个分号：`sort_values` 防止来源倒序导致“昨天”其实变成明天；`se…",
+          "context": "`sort_values` 防止来源倒序导致“昨天”其实变成明天；`set_index` 让日期成为定位行的索引；`.loc[起日:末日, 'Close']` 只取题目范围的收盘价。`dayfirst=True` 对应题干的日/月/年显示口径，ISO 年-月-日形式也可读取。若真实文件的日期格式存在歧义，应直接检查原值。"
+        },
+        {
+          "line": 473,
+          "message": "2 个分号：`lags=1` 指一个滞后差分；`trend='c'` 包含截距；`.…",
+          "context": "`lags=1` 指一个滞后差分；`trend='c'` 包含截距；`.fit()` 用历史样本估计系数。`.to_numpy()` 取出按顺序排列的数值，避免让不规范的日期频率隐式改变预测定位。"
+        },
+        {
+          "line": 663,
+          "message": "2 个分号：第 1 天为 $200+3=203$；第 2 天为 $200+3-2=2…",
+          "context": "第 1 天为 $200+3=203$；第 2 天为 $200+3-2=201$；第 3 天为 $200+3-2+4=205$。差分单位是价格金额，不是百分比。不能写成 203、198、204，那是把每一项单独加回 200，漏掉了累计变化。"
+        }
+      ],
+      "disposition": "相同剪枝变动、三问分工、读取/拟合API参数及三天累计变化的并列；真实手算和程序机制检验能复现，不按分号数删条件。",
+      "independent_evidence": "evidence/independent/stage-1.md + stage-2.md actual source/learning/calculation checks"
+    },
+    {
+      "code": "R2b",
+      "all_locations": [
+        {
+          "line": 328,
+          "message": "100 单元：3. 前四个只剪左侧的模型悲观误差都为 40.00%，所以这个惩罚本身不…",
+          "context": "3. 前四个只剪左侧的模型悲观误差都为 40.00%，所以这个惩罚本身不能唯一挑出 L2-R0。若只准用悲观评分，需要另说明同分规则；若按此题验证表现选，则 L2-R0 唯一达到 0/15。用同一验证集选完的 0.00% 是选模成绩，不能宣称未来必定零错误。"
+        },
+        {
+          "line": 518,
+          "message": "85 单元：1. 初始训练期：2013-04-30 至 2017-04-30；验证目…",
+          "context": "1. 初始训练期：2013-04-30 至 2017-04-30；验证目标期：2017-05-01 至 2018-04-30。前者用于起步拟合，后者有 365 个每日目标。如果实文件不连续，必须先解决日期和观测缺口，再核实际目标数量，不能随意把缺日补为真实价格。"
+        },
+        {
+          "line": 519,
+          "message": "116 单元：2. 预先固定候选：差分 AR(1)、差分 AR(7)、价格水平 AR(…",
+          "context": "2. 预先固定候选：差分 AR(1)、差分 AR(7)、价格水平 AR(1)，再加朴素基线（naive baseline）“明天价格等于今天价格”。AR(7) 用前 7 天同变量值，代表明确的另一个模型复杂度；不把它宣称为最优阶数。比较价格水平与差分，也直接检验第 1 问的变量判断。"
+        },
+        {
+          "line": 520,
+          "message": "84 单元：3. 第一个起点在 2017-04-30 收盘后。每个候选只用这一天及以…",
+          "context": "3. 第一个起点在 2017-04-30 收盘后。每个候选只用这一天及以前的观测拟合，预测 2017-05-01 的价格。差分模型的单日预测还原为“当天真实价 + 明天预测差分”。保存预测，此时不读取 2017-05-01 的真实价来改预测。"
+        },
+        {
+          "line": 521,
+          "message": "109 单元：4. 2017-05-01 的实际价格出现后，计算预测误差，再把这个已发…",
+          "context": "4. 2017-05-01 的实际价格出现后，计算预测误差，再把这个已发生的观测加入训练历史，重新拟合并预测 2017-05-02。持续到预测并评估 2018-04-30。这里采用扩展窗口（expanding window）：训练起点不变，终点逐日向前；若改用固定长度窗口，要预先说明长度并对全部模型保持一致。"
+        }
+      ],
+      "disposition": "剪枝同分规则和滚动日期/候选/先预测再评分/日后更新依次展开；Stage1已从文字重放，Stage2独立计算及代码检验支持，不是漏桥梁。",
+      "independent_evidence": "evidence/independent/stage-1.md + stage-2.md actual source/learning/calculation checks"
+    },
+    {
+      "code": "R5b",
+      "all_locations": [
+        {
+          "line": 426,
+          "message": "一个 $$ 块放了多个等式；拆开并在中间加一句话",
+          "context": "$$"
+        },
+        {
+          "line": 547,
+          "message": "一个 $$ 块放了多个等式；拆开并在中间加一句话",
+          "context": "$$"
+        }
+      ],
+      "disposition": "h1与h2–5递推同一链、MAE/RMSE共用已定义误差；解释和补例支持公式读取，未引入无解释的并列推导。",
+      "independent_evidence": "evidence/independent/stage-1.md + stage-2.md actual source/learning/calculation checks"
+    },
+    {
+      "code": "R5a",
+      "all_locations": [
+        {
+          "line": 439,
+          "message": "一段 4 个不同行内公式",
+          "context": "笔记补充完整两步例：最后真实价格为 100，最后真实差分为 2，假设拟合得到 $\\hat c=1$、$\\hat\\phi=0.5$。第 1 天预测差分为 $1+0.5\\times2=2$，价格为 102；第 2 天差分仍为 $1+0.5\\times2=2$，价格为 $100+2+2=104$。第二步没有读取第 1 天未来真实价格，也不是再次从 100 直接加 2 得到 102。这个例子只教递推，不是 Bitcoin 原题结果。"
+        }
+      ],
+      "disposition": "具体递推两步例的数值、参数和结果共享同一已解释机制；独立执行合成机制测试而非伪造原BTC结果。最终公式显示仍须root核。",
+      "independent_evidence": "evidence/independent/stage-1.md + stage-2.md actual source/learning/calculation checks"
+    },
+    {
+      "code": "R3a",
+      "all_locations": [
+        {
+          "line": 514,
+          "message": "650 单元无隔断",
+          "context": "“next-day” 是每次站在当天预测明天，不是只在一个起点一次预测之后全部天数。滚动预测评估（rolling-forecasting evaluation）让预测起点随时间向前移动，重复记录明天的预测与明天真实值之差。"
+        }
+      ],
+      "disposition": "滚动方案为同一任务的连续机制块，给日期、轮次、统一目标/单位及新真值加入时点，后接明确轮次表和MAE/RMSE算例；未发现无法继续的学习断点。",
+      "independent_evidence": "evidence/independent/stage-1.md + stage-2.md actual source/learning/calculation checks"
+    },
+    {
+      "code": "R6d",
+      "all_locations": [
+        {
+          "line": 96,
+          "message": "缩写“IQR”首用未识别到中文说明；人工核对",
+          "context": "把所有有效最近交易额从小到大排序。第一四分位数（first quartile，$Q_1$）是 25% 分位点，第三四分位数（third quartile，$Q_3$）是 75% 分位点。四分位距（interquartile range，IQR）衡量中间 50% 数据的跨度，不是最大金额减最小金额。"
+        },
+        {
+          "line": 112,
+          "message": "缩写“F101”首用未识别到中文说明；人工核对",
+          "context": "Excel 操作：把实际数据区的 `LastTransaction` 一列作为同一个范围，分别用 `=QUARTILE.INC(范围,1)` 和 `=QUARTILE.INC(范围,3)`，再用后者减前者。`范围` 是需要替换的说明文字，不能原样键入；若金额在 F2:F101，就替换为 `F2:F101`。只用有效数值；若金额也有缺失，要报告用了多少条有效金额，不能无声补 0。"
+        },
+        {
+          "line": 166,
+          "message": "缩写“V1”首用未识别到中文说明；人工核对",
+          "context": "A、B、C、D 是四个取值为 0 或 1 的输入特征，原件没有说明它们的业务含义。后文 `A0` 简写 A=0，`B1` 简写 B=1。表中 T1–T6 是训练行编号，V1–V6 是验证行编号；这些编号帮助定位原表，不是额外特征。"
+        },
+        {
+          "line": 281,
+          "message": "缩写“V2”首用未识别到中文说明；人工核对",
+          "context": "例如剪掉 C 子树后，T1、T2、T3 全部到新的 `+` 叶子。T1 的 4 个正类正确；T2、T3 各 1 个负类都被错分，训练错数成为 2。验证 V1、V2 也到新的 `+`，它们合计 7 个正类反而全部正确。V3、V4 仍沿 B1 到 `-`，V5、V6 仍沿右 B0 到 `+`，所以验证错数降为 0。"
+        },
+        {
+          "line": 281,
+          "message": "缩写“V3”首用未识别到中文说明；人工核对",
+          "context": "例如剪掉 C 子树后，T1、T2、T3 全部到新的 `+` 叶子。T1 的 4 个正类正确；T2、T3 各 1 个负类都被错分，训练错数成为 2。验证 V1、V2 也到新的 `+`，它们合计 7 个正类反而全部正确。V3、V4 仍沿 B1 到 `-`，V5、V6 仍沿右 B0 到 `+`，所以验证错数降为 0。"
+        },
+        {
+          "line": 281,
+          "message": "缩写“V4”首用未识别到中文说明；人工核对",
+          "context": "例如剪掉 C 子树后，T1、T2、T3 全部到新的 `+` 叶子。T1 的 4 个正类正确；T2、T3 各 1 个负类都被错分，训练错数成为 2。验证 V1、V2 也到新的 `+`，它们合计 7 个正类反而全部正确。V3、V4 仍沿 B1 到 `-`，V5、V6 仍沿右 B0 到 `+`，所以验证错数降为 0。"
+        },
+        {
+          "line": 281,
+          "message": "缩写“B1”首用未识别到中文说明；人工核对",
+          "context": "例如剪掉 C 子树后，T1、T2、T3 全部到新的 `+` 叶子。T1 的 4 个正类正确；T2、T3 各 1 个负类都被错分，训练错数成为 2。验证 V1、V2 也到新的 `+`，它们合计 7 个正类反而全部正确。V3、V4 仍沿 B1 到 `-`，V5、V6 仍沿右 B0 到 `+`，所以验证错数降为 0。"
+        },
+        {
+          "line": 281,
+          "message": "缩写“V5”首用未识别到中文说明；人工核对",
+          "context": "例如剪掉 C 子树后，T1、T2、T3 全部到新的 `+` 叶子。T1 的 4 个正类正确；T2、T3 各 1 个负类都被错分，训练错数成为 2。验证 V1、V2 也到新的 `+`，它们合计 7 个正类反而全部正确。V3、V4 仍沿 B1 到 `-`，V5、V6 仍沿右 B0 到 `+`，所以验证错数降为 0。"
+        },
+        {
+          "line": 281,
+          "message": "缩写“B0”首用未识别到中文说明；人工核对",
+          "context": "例如剪掉 C 子树后，T1、T2、T3 全部到新的 `+` 叶子。T1 的 4 个正类正确；T2、T3 各 1 个负类都被错分，训练错数成为 2。验证 V1、V2 也到新的 `+`，它们合计 7 个正类反而全部正确。V3、V4 仍沿 B1 到 `-`，V5、V6 仍沿右 B0 到 `+`，所以验证错数降为 0。"
+        },
+        {
+          "line": 388,
+          "message": "缩写“DOCX”首用未识别到中文说明；人工核对",
+          "context": "原文 `foresting` 按原样保留；这里的任务显然是在谈 forecasting，即预测。上面的下标和减法为原 DOCX 数学式的正常排版，不改变变量或运算。"
+        },
+        {
+          "line": 392,
+          "message": "缩写“AR”首用未识别到中文说明；人工核对",
+          "context": "自回归（autoregression，AR）用一个变量过去的值预测它自己接下来的值。例如“用昨天的变化预测今天的变化”，并不是“必须加入别的公司的价格”。因变量（dependent variable）是模型要预测的量；这里要先决定这个量是价格本身还是每日价格变化。"
+        },
+        {
+          "line": 459,
+          "message": "缩写“ISO”首用未识别到中文说明；人工核对",
+          "context": "`sort_values` 防止来源倒序导致“昨天”其实变成明天；`set_index` 让日期成为定位行的索引；`.loc[起日:末日, 'Close']` 只取题目范围的收盘价。`dayfirst=True` 对应题干的日/月/年显示口径，ISO 年-月-日形式也可读取。若真实文件的日期格式存在歧义，应直接检查原值。"
+        },
+        {
+          "line": 545,
+          "message": "缩写“MAE”首用未识别到中文说明；人工核对",
+          "context": "采用平均绝对误差（mean absolute error，MAE）作为预先指定的主要指标，均方根误差（root mean squared error，RMSE）作为辅助指标："
+        },
+        {
+          "line": 545,
+          "message": "缩写“RMSE”首用未识别到中文说明；人工核对",
+          "context": "采用平均绝对误差（mean absolute error，MAE）作为预先指定的主要指标，均方根误差（root mean squared error，RMSE）作为辅助指标："
+        }
+      ],
+      "disposition": "IQR/AR/MAE/RMSE均中文及当地用途说明；F101为Excel范围，T/V与A0/B1为已解释行/输入标记，DOCX/ISO是格式背景而非隐含算法。实际源表/软件行为与正文核对成立。",
+      "independent_evidence": "evidence/independent/stage-1.md + stage-2.md actual source/learning/calculation checks"
+    },
+    {
+      "code": "R6b",
+      "all_locations": [
+        {
+          "line": 281,
+          "message": "一句 6 个术语，核对是否需要拆解（V3、V4、B1、V5、V6、B0）：V3、V4 仍沿 B1 到 `-`，V5、V6 仍沿右 B0 到 `+`…",
+          "context": "例如剪掉 C 子树后，T1、T2、T3 全部到新的 `+` 叶子。T1 的 4 个正类正确；T2、T3 各 1 个负类都被错分，训练错数成为 2。验证 V1、V2 也到新的 `+`，它们合计 7 个正类反而全部正确。V3、V4 仍沿 B1 到 `-`，V5、V6 仍沿右 B0 到 `+`，所以验证错数降为 0。"
+        },
+        {
+          "line": 322,
+          "message": "一句 4 个术语（L1、R0、L0、R1）：这张表也解释了为什么“同样叶子数就同样好”不成立：5 叶的 L1-R0 …",
+          "context": "这张表也解释了为什么“同样叶子数就同样好”不成立：5 叶的 L1-R0 验证错 3 个，5 叶的 L0-R1 却错 12 个。保留了什么判断，比单纯数叶子更重要。"
+        },
+        {
+          "line": 545,
+          "message": "一句 4 个术语（平均绝对误差、mean absolute error、MAE、均方根误差、root mean squared error、RMSE）：采用平均绝对误差（mean absolute error，MAE）作为预…",
+          "context": "采用平均绝对误差（mean absolute error，MAE）作为预先指定的主要指标，均方根误差（root mean squared error，RMSE）作为辅助指标："
+        }
+      ],
+      "disposition": "V/B行与分支标记、L/R剪枝状态在前文定义；MAE/RMSE中英/公式/单位/新例当地解释，没有以术语密度代替教学判定。",
+      "independent_evidence": "evidence/independent/stage-1.md + stage-2.md actual source/learning/calculation checks"
+    },
+    {
+      "code": "R4f",
+      "all_locations": [
+        {
+          "line": 179,
+          "message": "表头“B”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "| 训练行 | A | B | C | D | 正类数 | 负类数 |"
+        },
+        {
+          "line": 179,
+          "message": "表头“C”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "| 训练行 | A | B | C | D | 正类数 | 负类数 |"
+        },
+        {
+          "line": 179,
+          "message": "表头“D”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "| 训练行 | A | B | C | D | 正类数 | 负类数 |"
+        },
+        {
+          "line": 190,
+          "message": "表头“B”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "| 验证行 | A | B | C | D | 正类数 | 负类数 |"
+        },
+        {
+          "line": 190,
+          "message": "表头“C”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "| 验证行 | A | B | C | D | 正类数 | 负类数 |"
+        },
+        {
+          "line": 190,
+          "message": "表头“D”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "| 验证行 | A | B | C | D | 正类数 | 负类数 |"
+        },
+        {
+          "line": 294,
+          "message": "表头“训练误差”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "| 模型 | 叶子数 | 训练错数 / 15 | 训练误差 | 悲观误差 | 验证错数 / 15；验证误差 |"
+        },
+        {
+          "line": 294,
+          "message": "表头“悲观误差”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "| 模型 | 叶子数 | 训练错数 / 15 | 训练误差 | 悲观误差 | 验证错数 / 15；验证误差 |"
+        },
+        {
+          "line": 294,
+          "message": "表头“验证错数/15；验证误差”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "| 模型 | 叶子数 | 训练错数 / 15 | 训练误差 | 悲观误差 | 验证错数 / 15；验证误差 |"
+        },
+        {
+          "line": 310,
+          "message": "表头“六条训练行的错数贡献”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "| 模型 | 六条训练行的错数贡献 | 六条验证行的错数贡献 |"
+        },
+        {
+          "line": 310,
+          "message": "表头“六条验证行的错数贡献”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "| 模型 | 六条训练行的错数贡献 | 六条验证行的错数贡献 |"
+        },
+        {
+          "line": 378,
+          "message": "表头“Tradingdate”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "| Trading date | Forecast |"
+        },
+        {
+          "line": 378,
+          "message": "表头“Forecast”未识别到专门说明；核对含义、算法或来源、单位和一行读法",
+          "context": "| Trading date | Forecast |"
+        }
+      ],
+      "disposition": "A/B/C/D无具体业务含义但输入角色已说明，T/V编号已定义；训练/悲观/验证公式在先；六行错数序列顺序明示；原生Trading date/Forecast左右列邻句明确，九原题实际已核。",
+      "independent_evidence": "evidence/independent/stage-1.md + stage-2.md actual source/learning/calculation checks"
+    }
+  ],
+  "version_map": [
+    {
+      "code": "R4c",
+      "line": 23,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4c",
+      "line": 23,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4c",
+      "line": 25,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R8a",
+      "line": 43,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R8a",
+      "line": 68,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4c",
+      "line": 85,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4c",
+      "line": 86,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R8a",
+      "line": 94,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6a",
+      "line": 96,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R8a",
+      "line": 118,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R8a",
+      "line": 132,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R8a",
+      "line": 162,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4a",
+      "line": 179,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4a",
+      "line": 190,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R8a",
+      "line": 201,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R8a",
+      "line": 242,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R1e",
+      "line": 261,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R8a",
+      "line": 267,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4c",
+      "line": 296,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4c",
+      "line": 297,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4c",
+      "line": 298,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4c",
+      "line": 299,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4c",
+      "line": 300,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4c",
+      "line": 301,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4c",
+      "line": 302,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4c",
+      "line": 303,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4c",
+      "line": 304,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R1c",
+      "line": 306,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R2b",
+      "line": 328,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R8a",
+      "line": 336,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R1e",
+      "line": 352,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R8a",
+      "line": 358,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R1c",
+      "line": 360,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R8a",
+      "line": 390,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R1e",
+      "line": 406,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R8a",
+      "line": 412,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R5b",
+      "line": 426,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R5a",
+      "line": 439,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R1c",
+      "line": 459,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R1c",
+      "line": 473,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R8a",
+      "line": 512,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R2b",
+      "line": 518,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R2b",
+      "line": 519,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R2b",
+      "line": 520,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R2b",
+      "line": 521,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R3a",
+      "line": 514,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R5b",
+      "line": 547,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R1c",
+      "line": 663,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6d",
+      "line": 96,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6d",
+      "line": 112,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6d",
+      "line": 166,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6b",
+      "line": 281,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6d",
+      "line": 281,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6d",
+      "line": 281,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6d",
+      "line": 281,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6d",
+      "line": 281,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6d",
+      "line": 281,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6d",
+      "line": 281,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6b",
+      "line": 322,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6d",
+      "line": 388,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6d",
+      "line": 392,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6d",
+      "line": 459,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6b",
+      "line": 545,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6d",
+      "line": 545,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R6d",
+      "line": 545,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4f",
+      "line": 179,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4f",
+      "line": 179,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4f",
+      "line": 179,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4f",
+      "line": 190,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4f",
+      "line": 190,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4f",
+      "line": 190,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4f",
+      "line": 294,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4f",
+      "line": 294,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4f",
+      "line": 294,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4f",
+      "line": 310,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4f",
+      "line": 310,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4f",
+      "line": 378,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    },
+    {
+      "code": "R4f",
+      "line": 378,
+      "same_line_content_as_reviewed": true,
+      "old_warning_same_code_line": true
+    }
+  ],
+  "source_contract": {
+    "status": "unverified_without_manifest",
+    "checked_questions": 0,
+    "hard": [],
+    "warnings": []
+  },
+  "missing_data": "No Q1/BTC original-data numerical completion claim; source-bound methods and source-tree numbers only"
+}

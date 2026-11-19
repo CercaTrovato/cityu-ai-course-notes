@@ -1,0 +1,26 @@
+{
+  "executed_original": "D:\\上课资料\\CityU\\_meta\\notes-update-20261118\\is6400\\t11\\reference-protocol-executed.py",
+  "executed_sha256": "5e898b5dbf04c9143f503524067dba2d1ac8debf154ea32df691ef25050e6ebf",
+  "persistent_script": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\assignment\\graded\\A12-week11-model-selection\\work\\learning-reference.py",
+  "persistent_sha256": "50c88a8d963d4bb97f554cdbd1090635e2bea8e303cb6f9a7d625f60292f4064",
+  "diff_lines": [
+    "--- \n",
+    "+++ \n",
+    "@@ -13,3 +13,3 @@\n",
+    " from sklearn.metrics import accuracy_score,recall_score",
+    "-R=Path('D:/上课资料/CityU');S=Path('E:/app-data/codex/scratchpad/cityu-notes-20261118/is6400/t11');sys.path.insert(0,str(R/'_meta/tools'));from safe_write import atomic_write",
+    "+R=Path(__file__).resolve().parents[5];S=Path(__file__).resolve().parent;sys.path.insert(0,str(R/'_meta/tools'));from safe_write import atomic_write",
+    " start=time.time();data=load_breast_cancer();X,y=data.data,data.target",
+    "@@ -34,4 +34,4 @@\n",
+    "   scores=[f['accuracy'] for f in folds];results.append(dict(model=name,preprocessing='SelectKBest then StandardScaler, each fitted inside every training fold' if feature_select else 'raw input; no learned preprocessing',folds=folds,mean_accuracy=float(np.mean(scores)),sample_std_accuracy=float(np.std(scores,ddof=1)),mean_error=float(1-np.mean(scores))))",
+    "-  atomic_write(str(S/'reference-progress.json'),json.dumps(results,ensure_ascii=False,indent=2)+'\\n')",
+    "+  # Intermediate progress omitted in the persistent replay copy.",
+    " out=dict(scope='source cell63 Q1-Q3 local learning reference; no official answer or personal submission claim',dataset=dict(name='Breast Cancer Wisconsin Diagnostic',shape=list(X.shape),target_names=data.target_names.tolist(),class_counts=np.bincount(y).tolist()),environment=dict(python=sys.version,sklearn=sklearn.__version__,numpy=np.__version__),q1=dict(split='same random_state0 holdout as source cell27, 426 train /143 test; no stratify',default_estimators=True,global_rng_seed=20261118,models=baseline,interpretation='heldout scores used to choose among models; selected score is not an untouched final estimate'),q2_q3=dict(outer='StratifiedKFold3 shuffle seed11 on all569; inner StratifiedKFold3 shuffle seed22',metric='accuracy; error=1-accuracy; malignant recall pos_label0 also reported',grids='small fixed educational grids, no claim of global hyperparameter optimum',results=results,interpretation='same outer partitions reused for exploratory comparison of families and preprocessing; within each fit test fold excluded; choosing a final winning family/preprocessing after outer scores makes it another selection step, so do not call its outer mean an untouched final performance guarantee'),elapsed_seconds=time.time()-start)",
+    "-atomic_write(str(S/'reference-results.json'),json.dumps(out,ensure_ascii=False,indent=2)+'\\n');print(json.dumps(dict(q1=[dict(model=b['model'],error=b['error']) for b in baseline],nested=[dict(model=x['model'],preprocessing=x['preprocessing'],mean_accuracy=x['mean_accuracy'],sample_std=x['sample_std_accuracy']) for x in results],elapsed=out['elapsed_seconds']),ensure_ascii=False,indent=2))",
+    "+atomic_write(str(S/'learning-reference-results.json'),json.dumps(out,ensure_ascii=False,indent=2)+'\\n');print(json.dumps(dict(q1=[dict(model=b['model'],error=b['error']) for b in baseline],nested=[dict(model=x['model'],preprocessing=x['preprocessing'],mean_accuracy=x['mean_accuracy'],sample_std=x['sample_std_accuracy']) for x in results],elapsed=out['elapsed_seconds']),ensure_ascii=False,indent=2))"
+  ],
+  "observed_scope": "only root/output paths, progress suppression and output file name; model/data/split code unchanged",
+  "actual_root_discovery": "D:\\上课资料\\CityU",
+  "powerShell_command_interpreter_exists": true,
+  "linked_output_exists": true
+}

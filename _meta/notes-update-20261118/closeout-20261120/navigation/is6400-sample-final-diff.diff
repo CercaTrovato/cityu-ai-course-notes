@@ -1,0 +1,117 @@
+--- IS6400_Business_Data_Analytics/assignment/practice/sample-final/notes/学习解析.md
++++ candidate.md
+@@ -15,8 +15,16 @@
+ # IS6400 Sample Final：原题、中英参考作答与逐步复做
+ 
+ ## 0. 先知道这份材料能回答什么
+ 
++<!-- cityu-nav:opening -->
++> [!abstract] 学习解析导航
++> **预习**：[[#1. 开始之前：一行数据、一个模型和一次评估|卷面／前置]] → [[#2. 按原题逐问复做|按原题复做]]。
++> **按题定位**：[[#8. 原件定位与覆盖清单|原件／原页索引]]。
++> **复习**：[[#4. 考前速查|答案速查]] → [[#5. 双语术语卡|术语]] → [[#7. 改条件自测：检查是否真正会迁移|改条件自测]]。
++> 关键题旁可回速查／术语；[[#9. 来源边界与题面勘误|来源与限制]] · [[IS6400_Business_Data_Analytics/00-课程总览|课程入口]]。
++<!-- cityu-nav:opening:end -->
++
+ 这是一份样卷学习解析，不是教师官方解答，也不是待提交学生答卷。本文保留取得的全部英文题面，再解释怎样判断、怎样计算，以及怎样用英文表达。
+ 
+ | 实际原题 | 你要完成的动作 | 当前能得到什么 |
+ |---|---|---|
+@@ -40,8 +48,12 @@
+ 
+ ## 2. 按原题逐问复做
+ 
+ ### 2.1 Question 1：客户缺失值与交易额分散程度
++
++<!-- cityu-nav:ancillary-landing-1 -->
++[[#0. 先知道这份材料能回答什么|↑ 阅读导航]] · [[#4. 考前速查|↩ 回速查]] · [[#5. 双语术语卡|回术语]]
++<!-- cityu-nav:ancillary-landing:end -->
+ 
+ 先分清两个任务：第 1 问只查 `Churn` 这一列缺了多少行；第 2 问只用 `LastTransaction` 计算中间 50% 金额跨度。不要先把 `Churn` 缺失客户删掉，再回答“all the customers”的交易额问题。
+ 
+ 英文原题（完整保留取得内容）：
+@@ -159,8 +171,12 @@
+ 
+ ![Sample Final 原始验证表，图片内部旧标题 Test set](../media/media/image3.png)
+ 
+ #### 2.2.1 先读懂节点与计数表
++
++<!-- cityu-nav:ancillary-landing-2 -->
++[[#0. 先知道这份材料能回答什么|↑ 阅读导航]] · [[#4. 考前速查|↩ 回速查]] · [[#5. 双语术语卡|回术语]]
++<!-- cityu-nav:ancillary-landing:end -->
+ 
+ 决策树（decision tree）的圆圈表示检查哪一列，箭头上的 0、1 表示取哪条路径。方框表示已经做出预测的叶节点（leaf node）；`+`、`-` 是类别，不是本题误差的加减号。到叶子就停，后面没有检查的变量不再影响预测。
+ 
+ A、B、C、D 是四个取值为 0 或 1 的输入特征，原件没有说明它们的业务含义。后文 `A0` 简写 A=0，`B1` 简写 B=1。表中 T1–T6 是训练行编号，V1–V6 是验证行编号；这些编号帮助定位原表，不是额外特征。
+@@ -264,8 +280,12 @@
+ 
+ > The tree misclassifies the four positive instances in the first validation row and the three positive instances in the second row. All remaining validation instances are classified correctly. Therefore, the validation error is 7/15 = 46.67%.
+ 
+ #### 2.2.4 第 3 问：剪枝时，叶子标签从训练数据决定
++
++<!-- cityu-nav:ancillary-landing-3 -->
++[[#0. 先知道这份材料能回答什么|↑ 阅读导航]] · [[#4. 考前速查|↩ 回速查]] · [[#5. 双语术语卡|回术语]]
++<!-- cityu-nav:ancillary-landing:end -->
+ 
+ 剪枝（pruning）指把一个内部节点连同它以下的分支，用一个预测叶子替代。这里明确采用“该节点收到的训练实例中，哪一类多就预测哪一类”。不是看验证集哪个标签多，也不是想象剪枝后仍保留原来子分支的不同答案。
+ 
+ 先计算每个可剪节点收到的训练实例。每行是一个可替换子树，正负数量取自前面的训练表。
+@@ -410,8 +430,12 @@
+ > I would initially use (b), the first-order difference of Close. The strong rise described in the question suggests that the price level may be non-stationary, whereas differencing can remove a stochastic trend and make a conventional stationary AR model more appropriate. Differencing does not guarantee stationarity or better forecasts; I would check the transformed series and compare out-of-sample price forecasts. The price difference is an absolute change, not a percentage return.
+ 
+ #### 2.3.2 第 2 问：预测差分后，要累加回价格
+ 
++<!-- cityu-nav:ancillary-landing-4 -->
++[[#0. 先知道这份材料能回答什么|↑ 阅读导航]] · [[#4. 考前速查|↩ 回速查]] · [[#5. 双语术语卡|回术语]]
++<!-- cityu-nav:ancillary-landing:end -->
++
+ 本解析选一个明确且简洁的教学规格：对一阶差分拟合带截距的 AR(1)。题目只要求一种 autoregressive method，没有指定滞后阶数，所以 AR(1) 是一种允许复做的参考方案，不冒称教师指定的唯一模型或最佳阶数。
+ 
+ “1” 表示只用前一天的差分，不表示只用一天训练数据。拟合仍使用截至 2018-04-30 的全部连续历史差分。
+ 
+@@ -510,8 +534,12 @@
+ > I specify an AR(1) with an intercept for the first differences of Close and fit it using observations available through April 30, 2018. I recursively forecast five future differences and cumulatively add them to the last observed closing price to obtain forecasts for May 1–5, 2018. The required numerical forecasts and a genuine results screenshot cannot be produced until the original Q4 BTC-USD.csv is available.
+ 
+ #### 2.3.3 第 3 问：一天一天往前走，比较同一天的预测
+ 
++<!-- cityu-nav:ancillary-landing-5 -->
++[[#0. 先知道这份材料能回答什么|↑ 阅读导航]] · [[#4. 考前速查|↩ 回速查]] · [[#5. 双语术语卡|回术语]]
++<!-- cityu-nav:ancillary-landing:end -->
++
+ “next-day” 是每次站在当天预测明天，不是只在一个起点一次预测之后全部天数。滚动预测评估（rolling-forecasting evaluation）让预测起点随时间向前移动，重复记录明天的预测与明天真实值之差。
+ 
+ 以下是一个完整、可直接写成方法答案的设计。日期划分是本解析提出的方案，不是题目已经规定的数据划分，也没有声称已经执行。
+ 
+@@ -598,20 +626,20 @@
+ 每行是一项已在正文解释的识别词，英文定义是自拟应试用语，不是教师原句。
+ 
+ | 中文 | English | 英文参考定义 | 本文位置 |
+ |---|---|---|---|
+-| 缺失值 | Missing value | A value that is not observed or recorded for a variable in a record. | §2.1.1 |
+-| 四分位距 | Interquartile range | The difference between the 75th and 25th percentiles. | §2.1.2 |
+-| 叶节点 | Leaf node | A terminal node that assigns a prediction. | §2.2.1 |
+-| 训练误差 | Training error | The fraction of training instances misclassified by the model. | §2.2.2 |
+-| 剪枝 | Pruning | Replacing a subtree with a simpler terminal prediction. | §2.2.4 |
+-| 过拟合 | Overfitting | Fitting training-specific patterns that do not generalize well. | §2.2.3 |
+-| 欠拟合 | Underfitting | Using a model too simple to capture important predictive structure. | §2.2.4 |
+-| 一阶差分 | First-order difference | The current observation minus its immediately preceding observation. | §2.3.1 |
+-| 自回归 | Autoregression | Predicting a variable using its own lagged values. | §2.3.1 |
+-| 滚动起点评估 | Rolling-origin evaluation | Repeatedly forecasting future observations from successively later origins. | §2.3.3 |
+-| 平均绝对误差 | Mean absolute error | The average absolute difference between actual and predicted values. | §2.3.3 |
+-| 均方根误差 | Root mean squared error | The square root of the average squared prediction error. | §2.3.3 |
++| 缺失值 | Missing value | A value that is not observed or recorded for a variable in a record. | [[#2.1.1 第 1 问：缺了几行，不是所有列总共缺几格\|§2.1.1]] |
++| 四分位距 | Interquartile range | The difference between the 75th and 25th percentiles. | [[#2.1.2 第 2 问：IQR 是两个分位数相减\|§2.1.2]] |
++| 叶节点 | Leaf node | A terminal node that assigns a prediction. | [[#2.2.1 先读懂节点与计数表\|§2.2.1]] |
++| 训练误差 | Training error | The fraction of training instances misclassified by the model. | [[#2.2.2 第 1 问：训练误差为零，但复杂性惩罚不为零\|§2.2.2]] |
++| 剪枝 | Pruning | Replacing a subtree with a simpler terminal prediction. | [[#2.2.4 第 3 问：剪枝时，叶子标签从训练数据决定\|§2.2.4]] |
++| 过拟合 | Overfitting | Fitting training-specific patterns that do not generalize well. | [[#2.2.3 第 2 问：验证误差为 7/15，不是 2/6\|§2.2.3]] |
++| 欠拟合 | Underfitting | Using a model too simple to capture important predictive structure. | [[#2.2.4 第 3 问：剪枝时，叶子标签从训练数据决定\|§2.2.4]] |
++| 一阶差分 | First-order difference | The current observation minus its immediately preceding observation. | [[#2.3.1 第 1 问：优先尝试差分，但不要假称已检验平稳\|§2.3.1]] |
++| 自回归 | Autoregression | Predicting a variable using its own lagged values. | [[#2.3.1 第 1 问：优先尝试差分，但不要假称已检验平稳\|§2.3.1]] |
++| 滚动起点评估 | Rolling-origin evaluation | Repeatedly forecasting future observations from successively later origins. | [[#2.3.3 第 3 问：一天一天往前走，比较同一天的预测\|§2.3.3]] |
++| 平均绝对误差 | Mean absolute error | The average absolute difference between actual and predicted values. | [[#2.3.3 第 3 问：一天一天往前走，比较同一天的预测\|§2.3.3]] |
++| 均方根误差 | Root mean squared error | The square root of the average squared prediction error. | [[#2.3.3 第 3 问：一天一天往前走，比较同一天的预测\|§2.3.3]] |
+ 
+ ## 6. 英文应试时，怎样组织一段答案
+ 
+ 本样卷本身是考试练习材料，但未取得官方评分细则，不推定这些句式有额外得分。

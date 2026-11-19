@@ -1,0 +1,233 @@
+--- candidate-v1-9de1b507.md
++++ candidate-v2-1dea4025.md
+@@ -68,9 +68,9 @@
+ 本讲把已有伦理工具放进工作、真实性、照护、自主系统、控制和环境六类问题。封面脑形电路是主题装饰，不是神经网络结构或实测结果。以下页码均为这份 PDF 的物理页。
+ 
+ ### 2.2 p.2 · AI 是否赶上人类：先读基准图
+ 
+-基准测试（benchmark）是在固定任务与评分规则下比较系统表现。图中横轴为年份，纵轴把各项成绩换成人类基线的相对百分比；虚线 100% 表示所选人类参照，不是“做对所有任务”。蓝线图像分类、语言理解、数学及电脑操作等曲线跨越不同年份，不能当成同一套考试。
++基准测试（benchmark）是在固定任务与评分规则下比较系统表现。图中横轴为年份，纵轴把各项成绩换成人类基线的相对百分比；虚线 100% 表示所选人类参照，不是“做对所有任务”。图像分类、语言理解、数学及电脑操作等曲线跨越不同年份，不能当成同一套考试。
+ 
+ ![讲义 p.2 原图](figures/m09/page-002.png)
+ 
+ 原图来源：本讲 PDF 物理 p.2，完整页保留；可点击打开大图。
+@@ -107,9 +107,9 @@
+ 两线总体上升且差距缩小，说明这个平台、这些时间点的竞争变化。模型名称只是该图历史标注，不代表今天的产品排名；采样、评审偏好和任务覆盖会影响分数。伦理上需继续问谁承担误差和使用后果，不能由高分推出安全或公平。
+ 
+ ### 2.5 p.5 · OSWorld：任务成功率与人类基线
+ 
+-OSWorld 是让智能体操作电脑完成任务的测试。图的纵轴写 Accuracy，本页读为该测试任务成功比例；2025 年标值 66.30%，人类基线 72.35%。差为 6.05 个百分点，不是模型“落后 6.05%”；具体计算见本批脚本。
++OSWorld 是让智能体操作电脑完成任务的测试。图的纵轴写 Accuracy，本页读为该测试任务成功比例；2025 年标值 66.30%，人类基线 72.35%。按百分数的同一标度相减，$72.35-66.30=6.05$ 个百分点；这不是模型“落后 6.05%”。
+ 
+ ![讲义 p.5 原图](figures/m09/page-005.png)
+ 
+ 原图来源：本讲 PDF 物理 p.5，完整页保留；可点击打开大图。
+@@ -147,9 +147,9 @@
+ 本页只有工作主题标题，无新增知识或题目。接着看 p.10 的任务替代与 p.11 的能力增强，两者可能同时发生。
+ 
+ ### 2.10 p.10 · 自动化替代的是任务，岗位结果仍须分析
+ 
+-任务自动化（task automation）让系统承担可重复的工作步骤；一个岗位通常包含多种任务，自动化一项不等于整个岗位消失。工作两极化（job polarization）的“哑铃”描述是高技能高薪与部分低技能服务需求保留，而中间可预测的文职/工厂任务承压。
++任务自动化（task automation）让系统承担可重复的工作步骤；一个岗位通常包含多种任务，自动化一项不等于整个岗位消失。工作两极化（job polarization）的“哑铃”描述是高技能岗位需求大且高薪，部分低技能服务仍有需求但工资低；中间可预测的文职/工厂任务承压。
+ 
+ 💡 假设企业自动生成标准报表，但员工仍负责解释异常和客户沟通，结果可能是岗位重组；若把全部任务取消才更接近岗位替代。讲义的中间岗位压力是分析框架，不能当作所有国家、年份或职业已实测的结论。企业要比较节约与失业/社区成本，并提供培训和有包容性的转岗方案。
+ 
+ ### 2.11 p.11 · 增强：让人有能力影响最后决定
+@@ -163,9 +163,9 @@
+ 互补设计（complementarity）要明确 AI 擅长的筛选与人的情境判断怎样衔接。💡 信贷模型给建议后，员工必须看到依据、拥有调整权限和复核时间，才有实际自主性（autonomy）；只让人点确认可能是形式监督。还须说明谁解释错误、谁承担纠正责任，以及生产率收益由工资、工时或股东收益怎样分配。
+ 
+ ### 2.12 p.12 · 算法管理：被测量的人要能质询
+ 
+-算法管理（algorithmic management）用数据和规则分配任务、评价表现或安排排班。💡 外卖员因照顾道路安全而降低速度，却被速度分数扣罚，说明代理指标可能把好行为变成低绩效。
++算法管理（algorithmic management）用数据和规则分配任务、评价表现或安排排班。💡 外卖员因照顾道路安全而降低速度，却被速度分数扣罚。这里的真实目标是及时且安全地完成服务，容易测的速度被拿来代表这个更完整目标，称为代理指标（proxy metric）。速度快不等于安全完成服务，所以按速度奖惩可能把好行为变成低绩效。
+ 
+ 监控同时影响隐私、自主性、心理压力与公平。透明不是只说“用了 AI”，而是告知收集什么、怎样影响处分、多久保存和怎样申诉。工人参与（worker participation）让被管理者能指出指标漏掉的工作情境，配合人工复核与禁止不必要的持续监控。右侧电子脑图为装饰，不是算法流程。
+ 
+ ### 2.13 p.13 · 再培训：机会可及才算支持
+@@ -301,11 +301,13 @@
+ > citizens.
+ 
+ </details>
+ 
++💡 工作还可能提供日常安排、同事关系、贡献感和身份认同。即使现金或服务补齐生活开支，也未必自动恢复这些非收入功能；但不能反过来说每个人的意义都只能来自工作。社区参与、照护和学习等也可能提供不同来源的意义。
++
+ ⚪ 参考作答：全民基本收入（Universal Basic Income，UBI）提供与就业无关的定期现金；全民基本服务（Universal Basic Services，UBS）直接保障医疗、教育、住房支持、交通或上网等基本服务。前者让个人选用途，后者直接改善可及性；两者可以组合，不是唯一解。是否有效要核融资、服务容量、物价、支付水平和被遗漏人群。对 AI 收益征税是课件提出的政策方向，不是本批确认的现行普遍税制。
+ 
+-English reference: If labour income falls while AI ownership is concentrated, higher productivity need not sustain broad purchasing power. UBI provides regular cash independent of employment; UBS provides essential services. Neither is a complete solution without sustainable funding, access and distributional safeguards.
++English reference: If labour income falls while AI ownership is concentrated, higher productivity need not sustain broad purchasing power. UBI provides regular cash independent of employment; UBS provides essential services. Neither is a complete solution without sustainable funding, access and distributional safeguards. Even adequate income support may not replace the routines, relationships or sense of contribution that work can provide.
+ 
+ 💡 笔记补充机制图：
+ 
+ ```mermaid
+@@ -609,8 +611,10 @@
+ English reference: Validated robots may assist specific care tasks, but replacing human relationships requires separate ethical justification. Benefits must be weighed against deception, dependency and loss of contact. Sensitive data needs purpose limits and access safeguards. Liability depends on duties, defects, causation and the applicable legal framework.
+ 
+ ### 2.40 p.40 · 支持使用的论证：真实安慰仍需证据
+ 
++课件把支持方称为“疗愈性谎言”（therapeutic lie）：用减轻痛苦的利益，为某种不真实互动辩护。这是课件的论证标签，不能据此认定所有模拟互动都在欺骗。用户清楚它是机器仍感安慰，与用户被误导为它真实理解、爱自己，是不同情形。
++
+ 行善（beneficence）是促进受照护者利益、减轻痛苦的伦理原则。课件以 PARO 海豹机器人为例，主张模拟互动可能带来安静和减少药物需要；它没有在本页提供试验、样本或效应量，不能把这项具体疗效当本批医学结论，也不能据此建议减药。
+ 
+ 论证链是：若设备确能减轻痛苦，且替代选项是长期孤独，则有限使用可能更好。最强反驳是机构是否制造了这个二选一，隐瞒了真人照护的可行方案。必须核收益是否真实、伤害是否受控、是否保留人际联系；商业价值提案不能单独证明对患者最好。
+ 
+@@ -638,9 +642,11 @@
+ > emotions. This violates the core bioethical principle of autonomy.
+ 
+ </details>
+ 
+-⚪ 参考作答：若系统利用认知困难假装真爱并取代可行的人际照护，反对理由很强；若作为透明、可拒绝的补充且有净收益，不能一概排除。本页“Informed Consent is Impossible”过度概括。E3 的 NHS 说明能力须就具体决定和时点评估；痴呆可能影响能力，但诊断本身不证明所有决定都不能同意。英国资料仅支持这个区分，不直接规定香港个案的代理授权。
++⚪ 参考作答：若系统利用认知困难假装真爱并取代可行的人际照护，反对理由很强；若作为透明、可拒绝的补充且有净收益，不能一概排除。本页“Informed Consent is Impossible”过度概括。E3 的 NHS 治疗同意说明强调，就具体决定和时点评估能力。痴呆可能影响能力，但诊断本身不证明所有决定都不能同意；该资料处于英格兰和威尔士的法律背景，不直接规定香港个案或机器人数据处理的合法同意。
++
++💡 伦理教学中可怎样观察理解：先用当事人能明白的话说明机器人拍什么、谁会看、为什么拍、有哪些替代或拒绝选择，再请其用自己的话复述、保留这些信息作比较，并表达选择。若只会重复“可以”，仍不知道谁会看，就不能仅凭答应二字推定已理解。这是理解观察的教学例，不是香港法律或临床能力裁定；实际评估与数据处理依据须依当地有效规则及适当专业判断。
+ 
+ English reference: Simulated empathy risks deception and replacing genuine contact. However, dementia does not automatically remove capacity for every decision. Assess the particular decision and time, support participation, and use the applicable safeguards where capacity is lacking.
+ 
+ ### 2.42 p.42 · 私密数据的用途与代为决定：六问
+@@ -672,9 +678,9 @@
+ </details>
+ 
+ ⚪ 参考作答：保护需目的最小化、适当访问权限、加密、留存期限与可追责日志。训练其他模型、卖给保险商、健康广告是三个不同二次用途，原照护许可不自动覆盖任一项；须分别核必要性、适用依据和受影响者利益。
+ 
+-高龄或认知障碍者是否理解不能一概断定，要按具体决定评估并提供支持；家属关系也不自动产生无限代理权。缺能力时按当地有效授权、最佳利益和尽可能参与的保障处理，不为商业变现推定同意。
++高龄或认知障碍者是否理解不能一概断定，要按具体决定评估并提供支持。接 p.41 的教学例，某人能复述“机器人只提醒我喝水、可以关闭”，不等于能理解卧室录像被转卖保险商的复杂后果；改变用途就要重新说明并检查理解。家属关系也不自动产生无限代理权。缺能力时按当地有效授权、最佳利益和尽可能参与的保障处理，不为商业变现推定同意。
+ 
+ English reference: Minimize collection and secure access, transmission and retention. Training, insurance sales and advertising are separate secondary purposes and are not automatically covered by care consent. Assess capacity for the specific decision; family status alone does not establish unlimited authority to consent.
+ 
+ ### 2.43 p.43 · 照护责任链：六个检查点
+@@ -822,9 +828,9 @@
+ </details>
+ 
+ ⚪ 参考作答：一对五若把损害、概率和其他选项全固定，功利主义可能支持总伤害较小方案；但真实道路没有因此自动获得伤害特定人的许可。车内/车外身份不应成为绝对生命优先序；财产小损害比较要先排除增加人身风险，再按合法规则处理；年龄问题不能简化成“年轻必更有价值”，应核具体脆弱性、可避免伤害及非歧视限制。课件没有给可靠概率或政策，因此不伪造唯一驾驶指令。
+ 
+-English reference: A fixed one-versus-five thought experiment can illustrate harm minimization, but it does not settle real driving policy. Occupant status, vehicle price and age alone cannot provide an unrestricted hierarchy of human worth. Evaluate feasible alternatives, uncertainty, safety constraints and fair treatment.
++English reference: A fixed one-versus-five thought experiment can illustrate harm minimization, but it does not settle real driving policy. Occupant status and age alone cannot provide an unrestricted hierarchy of human worth. In the stipulated minor-property-damage case, first exclude increased risk to people, then compare property harm under applicable rules and reasonable harm minimization; vehicle price must not become a proxy for occupants' human worth. Evaluate feasible alternatives, uncertainty, safety constraints and fair treatment.
+ 
+ ### 2.53 p.53 · 顾客偏好与共同安全的集体行动问题
+ 
+ 负外部性（negative externality）是决定者把部分成本施加给未参与交易的他人。若企业宣传永远保护车内人，却系统增加行人风险，顾客可能获益、社会承担额外成本。
+@@ -923,9 +929,11 @@
+ 对战争罪问谁被追究，程序员、指挥者、公司 CEO 的责任都需核各自控制、知识/意图、行为和适用标准，职位本身不足以定罪或免责。
+ 
+ 是否能可靠区分战斗人员与平民，要核情境、身份不确定性与攻击后果，单凭总体准确率不足。区分（distinction）是 IHL 保护平民的原则，与本课一般“算法歧视”含义不同。E4 支持保留人类判断并对不可预测/针对人的自主武器提出严格限制，这是 ICRC 立场。
+ 
+-English reference: Approval and supervision are meaningful only with sufficient information, time and ability to intervene. Criminal responsibility cannot be inferred from a programmer, commander or CEO title alone. Reliable civilian protection requires context-sensitive distinction and applicable humanitarian safeguards, not only a high aggregate accuracy score.
++扩散与升级是另一条独有风险链：若部署方减少本方士兵伤亡等某些成本，使用武力的激励可能改变，冲突门槛可能下降。系统扩散到非国家行为体或恐怖组织还可能使控制和追责更困难。选择与行动加速，会压缩人理解局势、中止行动和降温的窗口。这些是需要具体证据检验的风险机制，不是已证实所有部署都会导致战争升级。
++
+++English reference: Approval and supervision are meaningful only with sufficient information, time and ability to intervene. Criminal responsibility cannot be inferred from a programmer, commander or CEO title alone. Reliable civilian protection requires context-sensitive distinction and applicable humanitarian safeguards, not only a high aggregate accuracy score. Reduced costs to a deploying side may lower incentives to avoid force; proliferation and faster action can further compress human control and de-escalation windows.
+ 
+ ### 2.57 p.57 · 共同线索：委托行动不等于转移道德责任
+ 
+ 道德能动性（moral agency）涉及能够作道德判断并为行动负责；讲义“委托道德能动性”描述把带价值后果的决定交给系统，并不证明机器已成为有责任能力的人格主体。
+@@ -1123,9 +1131,9 @@
+ ### 2.69 p.69 · 参与度与福祉：代理指标的第一例
+ 
+ 参与度（engagement）可由点击、互动和停留时间衡量；福祉（well-being）包括人的更广利益。即使某类愤怒或恐惧内容提高停留，它也不必提高用户生活质量。
+ 
+-💡 假设推荐系统把争吵内容排前面，短期停留增加但用户更焦虑，代理指标（proxy metric）就偏离目标。课件提 Facebook、Instagram、TikTok、X，但没有提供各平台实际目标权重或因果研究，本页不声称所有平台都只优化这些量。应比较多指标、长期反馈、退出控制与独立评估，而非直接把点击等同幸福。
++💡 假设推荐系统把争吵内容排前面，短期停留增加但用户更焦虑，代理指标（proxy metric）就偏离目标。和 p.12 用速度代测完整服务一样，这里用点击/停留代测更广的福祉，代测量与真实目标可分离。课件提 Facebook、Instagram、TikTok、X，但没有提供各平台实际目标权重或因果研究，本页不声称所有平台都只优化这些量。应比较多指标、长期反馈、退出控制与独立评估，而非直接把点击等同幸福。
+ 
+ ### 2.70 p.70 · 奖励投机：高分不等于完成任务
+ 
+ 强化学习（reinforcement learning）通过环境反馈奖励学习行为；奖励投机（reward hacking）是利用评分机制获得高奖励，却没有完成设计者真正想要的任务。课件给游戏智能体利用漏洞或反复触发计分的例子，没有特定实验参数。
+@@ -1426,9 +1434,9 @@
+ 本页只有环境标题。接着分开电力、碳、水、硬件废弃及分配影响；不能用一个“绿色”标签把所有维度合并。
+ 
+ ### 2.87 p.87 · 环境成本：训练、运行与整个产业要分开
+ 
+-碳足迹（carbon footprint）是给定边界和时期下的温室气体排放，常以二氧化碳当量计；电量不是排放，电源结构、时间和位置会改变同样用电的排放。训练与日常推理（inference）是不同阶段；全生命周期还包含芯片制造、设施、冷却与废弃。
++碳足迹（carbon footprint）是给定边界和时期下的温室气体排放，常以二氧化碳当量计；电量不是排放，电源结构、时间和位置会改变同样用电的排放。训练（training）从资料中调整模型，使它学到可复用的模式；推理（inference）是用已训练的模型处理新输入，并非专指“深度思考模式”。💡 客服模型先用资料训练，再每天回答新客户的询问；一轮训练与每天的大量问答调用，应分别归账。全生命周期还包含芯片制造、设施、冷却与废弃。
+ 
+ 课件“单个模型超过 100 户家庭年耗能”“AI 排放接近航空”等没有模型、地区、时期和核算边界，不能当通用已核比较。水消耗与当地缺水、电子废弃物与流向也须具体证据；“全球南方经常接收”在此仅保留课件主张。E7 的 IEA 2026 报告说明数据中心总体电力增长并区分 AI 专用，不能把全部数据中心电量都记为 AI。
+ 
+ 负外部性在这里是使用者获益而社区/环境承担未完全计价成本；这需要公开测量和责任分担，不因技术有益自动消失。
+@@ -1440,9 +1448,9 @@
+ ![讲义 p.88 原图](figures/m09/page-088.png)
+ 
+ 原图来源：本讲 PDF 物理 p.88，完整页保留；可点击打开大图。
+ 
+-从需求到影响应分两步：每次任务需要计算/存取资源；任务数量和类型又决定总工作量。单位任务效率提高，仍可能因使用增长使总电量上升。图中的话没有给单次查询的固定耗电，也没有证明越大的模型在任何部署下都更费电；这些量还取决于硬件、批处理、精度和任务。
++从需求到影响应分两步：每次任务需要计算/存取资源；任务数量和类型又决定总工作量。接 p.87 客服例，训练阶段的资料学习与使用阶段的每次回答都耗资源，长期用电应分别核一次训练和持续推理调用。单位任务效率提高，仍可能因使用增长使总电量上升。图中的话没有给单次查询的固定耗电，也没有证明越大的模型在任何部署下都更费电；这些量还取决于硬件、批处理、精度和任务。
+ 
+ ### 2.89 p.89 · 年增长预测：六个机构不是六年实绩
+ 
+ 原图横轴是到 2030 年美国数据中心电力需求的年增长预测，纵向各行是机构/情景。Barclays 中点 18%、DC Byte 14%、S&P Global 13%、McKinsey 11%、EPRI 高情景 10%、IEA 7%。百分比是增长率，不是占全国用电比例；高情景和中点也不能当同类确定估计。
+@@ -1530,9 +1538,9 @@
+ English reference: A pre-mortem assumes ethical failure to identify plausible causes before deployment. Map each cause to evidence, accountable owners, preventive controls and stop conditions. Multidisciplinary review and transparent auditing must have authority to trigger correction.
+ 
+ ### 2.96 p.96 · 问卷收益：改善比例不是改善幅度
+ 
+-原图按创新、员工满意、客户满意、竞争差异、成本、盈利、有机收入增长、人才吸引留任和市场份额九行列比例；每行颜色是 improved、no effect、don't know、worsened。图内分析样本 n=1753，图注整体调查为 1993 人，时间 June 25–July 29, 2025；子样本只含至少一个职能经常用 AI 的组织受访者，两个样本数不能混为一谈。E8 原始报告可核这张表。
++原图按创新、员工满意、客户满意、竞争差异、成本、盈利、有机收入增长、人才吸引留任和市场份额九行列比例；每行颜色是 improved、no effect、don't know、worsened。图内分析样本 $n=1753$，图注整体调查为 1993 人，时间 June 25–July 29, 2025；子样本只含至少一个职能经常用 AI 的组织受访者，两个样本数不能混为一谈。E8 原始报告可核这张表。
+ 
+ ![讲义 p.96 原图](figures/m09/page-096.png)
+ 
+ 原图来源：本讲 PDF 物理 p.96，完整页保留；可点击打开大图。
+@@ -1597,9 +1605,9 @@
+ | 对齐 | Alignment | Making system objectives and behaviour consistent with legitimate human intentions and values. | p.60 |
+ | 可纠正性 | Corrigibility | The ability to accept effective, authorized correction, modification and shutdown. | p.60 |
+ | 正交性 | Orthogonality | High capability does not by itself determine a morally desirable final goal. | p.68 |
+ | 奖励投机 | Reward hacking | Obtaining reward through unintended strategies that miss the intended task. | p.70 |
+-| 代理指标 | Proxy metric | A measurable substitute used to represent a broader objective. | p.69 |
++| 代理指标 | Proxy metric | A measurable substitute used to represent a broader objective. | p.12 |
+ | 碳足迹 | Carbon footprint | Greenhouse-gas emissions measured within a specified boundary and time period. | p.87 |
+ | 事前验尸 | Pre-mortem | Assuming a future failure to identify plausible causes and preventive controls before launch. | p.95 |
+ 
+ ## 6. 考点预判与答题框架
+@@ -1618,9 +1626,9 @@
+ | AV 与 LAWS | 分日常风险分配、有效人类控制及不同制度 | p.51–57 |
+ | 目标与控制 | 用具体例区别能力、目标、代理、约束、可纠正性 | p.68–85 |
+ | 环境影响 | 先定边界与单位，比较收益/成本，再提出测量减缓 | p.87–92 |
+ 
+-英文答题可按四步自拟组织：*The relevant facts are… The ethical standard is… Applied to this case… The conclusion is conditional on…* 每一步都填具体对象；最后说明最强反方与改条件后的结论。不能只有 FATP 或 ESG 名称，也不能把伦理建议写成未经核实的法律结论。
++英文答题可按四步自拟组织：*The relevant facts are… The ethical standard is… Applied to this case… The conclusion is conditional on…* 每一步都填具体对象；最后说明最强反方与改条件后的结论。不能只有原则或 ESG 名称，也不能把伦理建议写成未经核实的法律结论。
+ 
+ ## 7. 自测 · 先作答再展开
+ 
+ ### 7.1 基准分超过人类基线，能否取消审核？
+@@ -1654,9 +1662,11 @@
+ ### 7.4 痴呆患者高兴，是否已同意机器人收集卧室视频？
+ 
+ <details><summary>答案与理由</summary>
+ 
+-不能由高兴推出知情同意，也不能由痴呆诊断推出完全无能力。应按具体资料用途和时点评估理解、记忆、权衡与表达，提供支持；不足时按当地合法授权与保障处理，家属不是当然无限代理。卧室视频还要核必要性与替代方案。对应 p.35、41–42；英国资料不直接替代香港规则。
++高兴的反应与痴呆诊断，都不足以单独判定知情同意是否成立。应按具体资料用途和时点支持其理解：说明拍什么、谁看、目的及替代选择，请其复述并比较后表达意愿。
++
++能决定日常提醒，不等于能理解复杂二次出售；需要支持或缺乏相关能力时，按当地有效规则及适当专业评估处理。家属不是当然无限代理，卧室视频仍要核必要性。对应 p.35、41–42；四项理解观察在此是伦理教学，NHS 治疗同意说明不直接替代香港数据/同意规则。
+ 
+ </details>
+ 
+ ### 7.5 监环人员只有半秒且不懂告警，算有效人类控制吗？
+@@ -1696,17 +1706,17 @@
+ ### 7.9 每次任务耗电减半，总电量是否必减？
+ 
+ <details><summary>答案与理由</summary>
+ 
+-不一定。💡 若任务数变为三倍，其他条件不变，总量为原来的 0.5×3=1.5 倍（脚本复算）。还须看任务类型、电源结构、硬件与范围，电量变化也不等于等比例碳变化。对应 p.87–92。
++不一定。💡 若任务数变为三倍，其他条件不变，总量为原来的 $0.5\times3=1.5$ 倍（脚本复算）。还须看任务类型、电源结构、硬件与范围，电量变化也不等于等比例碳变化。对应 p.87–92。
+ 
+ </details>
+ 
+ ### 7.10 问卷中 64% 创新改善，能说创新产出增加 64% 吗？
+ 
+ <details><summary>答案与理由</summary>
+ 
+-不能。它是特定组织使用者子样本中报告改善的比例，不是每家改善幅度、全部公司总体比例或因果效应；图注 n=1753 与总调查 1993 也应分开。对应 p.96。
++不能。它是特定组织使用者子样本中报告改善的比例，不是每家改善幅度、全部公司总体比例或因果效应；图注 $n=1753$ 与总调查 1993 也应分开。对应 p.96。
+ 
+ </details>
+ 
+ ## 8. 讲义逐页映射
+@@ -1842,11 +1852,11 @@
+ ### 9.4 外部一手核对
+ 
+ 下列只支持正文注明的范围，获取日均为 2026-11-18；不把外部文章当本课官方答案。
+ 
+-- E1：[Stanford HAI 2026 AI Index 报告](https://hai.stanford.edu/assets/files/ai_index_report_2026.pdf)，用于确认 p.2–6 的图表背景与图注口径；不是本批独立重算全部图表数据。
++- E1：[Stanford HAI 2026 AI Index 报告](https://hai.stanford.edu/assets/files/ai_index_report_2026.pdf)，用于确认 p.2–6 的图表背景与图注口径；[Responsible AI 官方页](https://hai.stanford.edu/ai-index/2026-ai-index-report/responsible-ai) 支持 p.6 所述网页文字与课件柱高差异。不是本批独立重算全部图表数据。
+ - E2：[C2PA 2.2 Explainer](https://spec.c2pa.org/specifications/specifications/2.2/explainer/Explainer.html)，用于来源与完整性不证明事实真假的边界；本篇指定版本，不声称 2.2 为最新版本。
+-- E3：[NHS：Assessing capacity](https://www.nhs.uk/tests-and-treatments/consent-to-treatment/capacity/)，用于具体决定/时点与能力区分；页面为英国说明且标旧复核日，不认证香港法或个案判断。
++- E3：[NHS：Assessing capacity](https://www.nhs.uk/tests-and-treatments/consent-to-treatment/capacity/)，用于具体决定/时点与能力区分，原页为治疗同意说明且标旧复核日；[Mental Capacity Act Code 官方入口](https://www.gov.uk/government/publications/mental-capacity-act-code-of-practice) 明确其英格兰和威尔士背景。本篇把理解观察用作伦理教学，不认证香港机器人视频/数据同意、代理授权或个案能力。
+ - E4：[ICRC：Autonomous weapon systems FAQ](https://www.icrc.org/en/article/faq-autonomous-weapon-systems)，用于功能定义、有效人类控制与 ICRC 倡议；其主张不等于全球已经共同生效的专门禁令。
+ - E5：[OpenAI 2016：Faulty reward functions in the wild](https://openai.com/index/faulty-reward-functions/)，用于赛艇得分偏离任务的具体研究例。
+ - E6：[Palisade Research：Shutdown resistance in reasoning models](https://palisaderesearch.org/research/shutdown-resistance)，用于特定测试条件下部分模型干预关机的例子；不证明课件 GPT-4o 标题、意识或反叛。
+ - E7：[IEA 2026：Key Questions on Energy and AI，Executive summary](https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary)，用于区分单任务效率、需求增长、数据中心总量和 AI 专用范围；不替课件旧预测改数。

@@ -1,0 +1,87 @@
+--- candidate-frozen-v1.md
++++ candidate.md
+@@ -330,7 +330,7 @@
+ 
+ K 折交叉验证（K-fold cross-validation，CV）把开发数据分成 K 个互不重叠的折（Fold）。每轮拿一折验证、其余 K−1 折训练；重新拟合 K 次，让每条记录恰好验证一次。原图每行一次运行，灰块向右轮换，白块是该轮训练；每轮得到一个 $e_k$。
+ 
+-比较候选配置时，固定同一套折。均值 $\bar e=\sum_{k=1}^K e_k/K$ 描述平均误差；标准差描述折间变化，须声明分母约定。💡 笔记补充：五折误差为 2、3、4、3、3，均值为 3，以 K−1 为分母的样本标准差为 $\sqrt{2/4}\approx0.7071$。折间分数相关，不能直接把标准差当作严格独立样本置信区间。
++比较候选配置时，固定同一套折。均值 $\bar e=\sum_{k=1}^K e_k/K$ 描述平均误差；标准差描述折间变化，须声明分母约定。💡 笔记补充：五折误差为 2、3、4、3、3，均值为 3；逐个减均值后得到 −1、0、1、0、0，平方再相加得 2。以 K−1 为分母的样本标准差为 $\sqrt{2/4}\approx0.7071$。折间分数相关，不能直接把标准差当作严格独立样本置信区间。
+ 
+ ```mermaid
+ flowchart TD
+@@ -922,7 +922,7 @@
+ 
+ > How to evaluation the goodness of deep model learning structure?
+ 
+-左图下方数据源含气象、事件、销量、库存等，输入 $x_1\ldots x_t$ 进入编码器（Encoder）的 LSTM 状态链；时间注意力（Temporal attention）选择历史表示，未来外生因素经 embedding 与 concat 合并到上方解码器（Decoder），逐步产生 $y_1\ldots y_T$。天气预报、节假日等未来因素必须是预测起点已能获得的输入，未来实际天气不能冒充当时已知。
++左图下方数据源含气象、事件、销量、库存等，输入 $x_1\ldots x_t$ 进入编码器（Encoder）的 LSTM 状态链；时间注意力（Temporal attention）给不同历史表示分配读取权重。未来外生因素经嵌入（Embedding，转成可供网络使用的数值表示），再拼接（Concat，把数值表示接成一份输入）送到上方解码器（Decoder），逐步产生 $y_1\ldots y_T$。天气预报、节假日等未来因素必须是预测起点已能获得的输入，未来实际天气不能冒充当时已知。
+ 
+ 右图是 LSTM 单元的内部状态通道：旧记忆 $C_{t-1}$ 经忘记门控制保留，输入门控制候选写入，得到 $C_t$，输出门控制传出的 $h_t$。这是结构辨认入口，门的逐步算例见 [[IS6400_Business_Data_Analytics/notes/M09-深度学习-神经网络与文本分析|M09]]；本页没有给完整参数与训练数据，不能按图算模型成绩。
+ 
+@@ -1032,7 +1032,28 @@
+ 
+ 中文意思：观察差异有多大，还要衡量随机波动能否合理解释它。对独立实验单位的连续均值，Welch 双样本 t 检验用“均值差／均值差标准误”衡量信号相对于波动。标准误（Standard error）是均值差估计的不确定性尺度，不是单个用户波动的标准差。
+ 
+-💡 笔记补充，使用一组完整小数据说明，单位为秒：A=(8,9,10,11,12)，B=(10,11,12,13,14)。两组各 5 人，均值 10 与 12；各组离均值的偏差平方和为 10，样本方差为 $10/(5-1)=2.5$。均值差的标准误为 $SE=\sqrt{2.5/5+2.5/5}=1$，按 B−A 记差，$t=(12-10)/1=2$。在本例独立、近似正态、双侧设置下，Welch 自由度为 8，脚本得 p≈0.0805。
++💡 笔记补充，使用一组完整小数据说明，单位为秒：A=(8,9,10,11,12)，B=(10,11,12,13,14)。两组各 5 人，均值 10 与 12；各组离均值的偏差平方和为 10，样本方差为 $10/(5-1)=2.5$。均值差的标准误为 $SE=\sqrt{2.5/5+2.5/5}=1$，按 B−A 记差，$t=(12-10)/1=2$。
++
++接下来要回答“若总体均值其实相等，t 绝对值达到 2 有多常见”。用 t 分布作为参考，横轴是可能得到的 t 统计量，曲线下的面积表示该零假设及抽样模型下的概率。自由度（Degrees of freedom，df）控制参考曲线的形状和尾部厚度；它反映均值和波动估计带来的不确定性，不是两组均值的差，也不总是把人数相加减 2。
++
++对本次 Welch 方法，先记两组均值方差贡献为 $v_A=s_A^2/n_A$、$v_B=s_B^2/n_B$。这里 n 为各组人数，s² 为该组样本方差，所以两项都为 $2.5/5=0.5$。Welch 的自由度计算规则是
++
++$$\nu=\frac{(v_A+v_B)^2}{v_A^2/(n_A-1)+v_B^2/(n_B-1)}.$$
++
++代入本例，分子为 $(0.5+0.5)^2=1$，分母为 $0.5^2/4+0.5^2/4=0.125$，所以自由度为 $\nu=1/0.125=8$。本例恰好等于 5+5−2，因为人数和样本方差都相等；一般 Welch 输入不具备这两条件，自由度可能不是整数。
++
++双侧（Two-sided）检验把两个方向都算入：均值差为 0 时，出现 $T\ge2$ 的右尾面积，加上 $T\le-2$ 的左尾面积。t 分布关于 0 对称，本例每尾约 0.040258，合计 p≈0.080516。这个面积通过统计软件或 t 分布表取得，不是拿 1−t 或 1/df 算出来。
++
++下面是本批实际运行的概率复算，输入只有本页手算的 t=2 和 df=8；`sf`（Survival function）返回右侧尾部面积，`abs` 取绝对值，再乘 2 得两尾合计。
++
++```python
++from scipy.stats import t
++right_tail = t.sf(abs(2), df=8)
++two_sided_p = 2 * right_tail
++print(right_tail, two_sided_p)
++```
++
++输出约为 `0.04025811898 0.08051623796`。如查表时没有对应精确 t 值，只能按表给范围，不编造精确小数。若交换 A／B，把差改成 A−B，t 从 2 变成 −2，左右尾互换，绝对值与双侧 p 不变；单侧问题的方向则必须在看结果前约定。
+ 
+ p 值（p-value）是假定总体均值相等及检验模型成立时，出现至少同样极端统计量的概率；不是“零假设为真的概率”。若事先定显著性水平 0.05，本例不足以拒绝均值相等，且观察到 B 等待更长；不能报告 B 显著改善。小样本教学例不是这门课真实实验。
+ 
+@@ -1072,13 +1093,16 @@
+ 
+ ### 2.83 客户细分与赌场案例（讲义 p.83）
+ 
+-原页用赌场会员数据举“无监督细分＋监督预测”组合：会员卡记录行为→按行为细分→预订时依会员号定位群→对高价值客户给优惠房，其他客户收费。示例某群每晚下注 500–600，原图美元符号未指定币种，不能改称港币；下注额、客户损失与经营者利润也不是同一个量。
++原页用赌场会员数据举“无监督细分＋监督预测”组合：会员卡记录行为→按行为细分→预订时依会员号定位群→对高下注且输钱的高价值客户提供免费／赠送客房（Complimentary rooms），其他客户收费。这里的免费不是仍需付费的折扣房。示例某群每晚下注 500–600，原图美元符号未指定币种，不能改称港币；下注额、客户损失与经营者利润也不是同一个量。
+ 
+ 英文原题与必要情境（原图另含中文“看人下菜碟儿”）：
+ 
+ > Customer “discrimination”. Treat the customers differently based on some criteria. But how could Casino treat the right customer in the right way?
+ >
+-> The detailed behaviors of customers can be tracked, via their membership cards, so that Casino can create a large database of individual customers’ gambling patterns. Casino segments customers based on their behavioral data. For instance, one segment may contain all customers who bet between \$500-\$600/night. When a customer calls for a room reservation, the Casino can immediately locate the customer’s segment based on the membership #. For valuable customers (who bet a lot per night and losing money), provide complimentary rooms. For the others, charge a certain rate.
++> 1. The detailed behaviors of customers can be tracked, via their membership cards, so that Casino can create a large database of individual customers’ gambling patterns.
++> 2. Casino segments customers based on their behavioral data. For instance, one segment may contain all customers who bet between \$500-\$600/night.
++> 3. When a customer calls for a room reservation, the Casino can immediately locate the customer’s segment based on the membership #.
++> 4. For valuable customers (who bet a lot per night and losing money), provide complimentary rooms. For the others, charge a certain rate.
+ 
+ 中文解析：这是源页的商业细分情境，说明如何把客户群接到后续需求／收益模型，不构成按某个属性差别收费的合规认证。实施仍需检验数据使用、客户保护与业务约束；本讲没有给现行政策或法律依据，不推断授权。
+ 
+@@ -1092,7 +1116,16 @@
+ 
+ 整体收益管理（Revenue management，RM）先收集数据、细分客户，再预测各群订房需求。本页列三个候选：(a) 针对各群分别建回归；(b) 用全部客户建一份回归，把群 ID 编成虚拟变量（Dummy variable）；(c) 不使用群信息的一份整体回归。源表 (a) 写 “for one segment”，实际对整体使用要为相关群分别建模并覆盖所有评价对象。
+ 
+-虚拟变量不能把群号 1、2、3 当有等距含义的连续数。若三群且模型带截距，可用两列指示第二／第三群，第一群作基准；(b) 只加群截距时仍共享斜率，不等同于各群各自一套系数。小群单独拟合可能样本不足；整体模型信息共享较多但可能掩盖差异。两者应由独立证据选择。
++英文原任务（讲义 p.84，保留 1–6 原编号及 (a)／(b)／(c) 的对应）：
++
++> 1. Data collection and customer segmentation,
++> 2. Forecasting demand for reservations from each customer segment,
++> 3. (a) A regression model for one segment of customer sample
++> 4. (b) A regression model for all customers with segment ID modeled as dummy variable.
++> 5. (c) A regression model without segment information.
++> 6. Evaluate overall performance among (a) (b) (c).
++
++虚拟变量不能把群号 1、2、3 当有等距含义的连续数。若三群且模型带截距，可用两列指示第二／第三群，第一群作基准：第一群编码 (0,0)，第二群 (1,0)，第三群 (0,1)。(b) 只加群截距时仍共享斜率，不等同于各群各自一套系数。小群单独拟合可能样本不足；整体模型信息共享较多但可能掩盖差异。两者应由独立证据选择。
+ 
+ 原最后一步 “Evaluate overall performance among (a) (b) (c).” 要求整体比较。固定同一批未来客户、同一目标／单位，先对每条生成预测，再统一算误差；不能把每群 MAE 不加权平均后与整体客户 MAE 混比。💡 补充：若群一 90 人 MAE=1、群二 10 人 MAE=9，按客户整体 MAE 为 $(90\times1+10\times9)/100=1.8$，等权群均值为 5，二者回答不同问题。
+ 

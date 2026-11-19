@@ -1,0 +1,160 @@
+--- EF5560_Fintech_and_AI_in_Finance/assignment/practice/practice-exam-a/学习解析.md
++++ candidate.md
+@@ -15,8 +15,16 @@
+ 
+ > 供自学、复做与独立审查，不是学生提交稿，不是官方答案。本篇没有代填姓名、学号、答题纸或本人学习状态。计算与解释依据题面固定条件；改条件例均为笔记补充，不是真实投资或贷款建议。
+ 
+ ## 0. 三分钟速览
++
++<!-- cityu-nav:opening -->
++> [!abstract] 学习解析导航
++> **预习**：[[#1. 开始之前 · 卷面要求与学习路线|卷面／前置]] → [[#2. 原题、中文解析与英文参考答案|按原题复做]]。
++> **按题定位**：[[#8. 原卷逐页入口|原件／原页索引]]。
++> **复习**：[[#4. 参考答案速查|答案速查]] → [[#5. 双语术语与符号速记|术语]] → [[#7. 改条件自测|改条件自测]]。
++> 关键题旁可回速查／术语；[[#9. 来源、计算与待核事项|来源与限制]] · [[EF5560_Fintech_and_AI_in_Finance/00-课程总览|课程入口]]。
++<!-- cityu-nav:opening:end -->
+ 
+ 整卷考的是把“模型分数、金融收益、数字记录、法律/业务权利”分开，不被看起来相似的表面证据误导。
+ 
+ - Section A：16 题，每题 2.5 分，全部四个选项都保留并分析。
+@@ -74,8 +82,12 @@
+ 
+ 下面 A1–A16、B1–B4、C1–C2 保留原部分和原题号；编号 2.1–2.22 仅是本解析导航。
+ 
+ ### 2.1 A1 · Ridge 怎样稳定相关变量的系数（原卷 p.2）
++
++<!-- cityu-nav:ancillary-landing-1 -->
++[[#0. 三分钟速览|↑ 阅读导航]] · [[#4. 参考答案速查|↩ 回速查]] · [[#5. 双语术语与符号速记|回术语]]
++<!-- cityu-nav:ancillary-landing:end -->
+ 
+ 若干相关市场变量使 OLS 系数在相近样本中不稳定。保留原始输入改用 Ridge，问平方系数惩罚想改善什么，而不是保证所有样本都怎样。
+ 
+ 来源：Practice Exam A p.2，原 Section A 第 1 题，2.5 分。
+@@ -247,8 +259,12 @@
+ 
+ 若 Beta 为零，市场变化不改变拟合值；Alpha 仍留在原水平。
+ 
+ ### 2.5 A5 · 双边换手成本与周夏普比率（原卷 p.3）
++
++<!-- cityu-nav:ancillary-landing-2 -->
++[[#0. 三分钟速览|↑ 阅读导航]] · [[#4. 参考答案速查|↩ 回速查]] · [[#5. 双语术语与符号速记|回术语]]
++<!-- cityu-nav:ancillary-landing:end -->
+ 
+ 每周买入组合价值的 30%、卖出 30%，每次交易成本为交易金额的 10 bp。毛平均超额收益 0.30%、波动 3.00%，求扣费后的均值和周夏普，不要年化。
+ 
+ 来源：Practice Exam A p.3，原 Section A 第 5 题，2.5 分。
+@@ -883,8 +899,12 @@
+ 
+ 选轮数看验证，不看训练单调下降；读树先问一行是月份还是公司，再读分支的经济含义。
+ 
+ ### 2.19 B3 · 信用排序尚可却低估违约率（原卷 p.9）
++
++<!-- cityu-nav:ancillary-landing-3 -->
++[[#0. 三分钟速览|↑ 阅读导航]] · [[#4. 参考答案速查|↩ 回速查]] · [[#5. 双语术语与符号速记|回术语]]
++<!-- cityu-nav:ancillary-landing:end -->
+ 
+ 两群组预测违约 1%/4%，同一完整期限实际 3%/7%，原定价使用原预测损失。(a) 分开判断排序与概率校准；(b) 解释定价/利润，并提出一个题面没给的实际结果检查。
+ 
+ 来源：Practice Exam A p.9，原 Section B 第 3 题，10 分。
+@@ -1004,8 +1024,12 @@
+ 
+ 先按完整输入算最多30万，再核记录是否全、业务是否真、债务能否还；不把写权限或哈希当现实真相。
+ 
+ ### 2.21 C1 · 四个月样本外误差与MA12基准（原卷 p.11）
++
++<!-- cityu-nav:ancillary-landing-4 -->
++[[#0. 三分钟速览|↑ 阅读导航]] · [[#4. 参考答案速查|↩ 回速查]] · [[#5. 双语术语与符号速记|回术语]]
++<!-- cityu-nav:ancillary-landing:end -->
+ 
+ 四个月测试，题面保证预测只用先前资料，MA12 为此前 12 个月收益的平均。(a) 两种预测逐月求平方误差再加总；(b) 计算相对 MA12 的样本外决定系数，并回答能否证明投资盈利。
+ 
+ 来源：Practice Exam A p.11，原 Section C 第 1 题，10 分。
+@@ -1077,8 +1101,12 @@
+ 
+ 收益统一小数→逐月差→逐月平方→各自加总→相对同基准；预测改善不自动变成利润。
+ 
+ ### 2.22 C2 · BNPL交易量不变而贡献可转负（原卷 p.12）
++
++<!-- cityu-nav:ancillary-landing-5 -->
++[[#0. 三分钟速览|↑ 阅读导航]] · [[#4. 参考答案速查|↩ 回速查]] · [[#5. 双语术语与符号速记|回术语]]
++<!-- cityu-nav:ancillary-landing:end -->
+ 
+ 假想先买后付提供者为 2,000 港元购买垫款，从商户扣 4% 费，客户无息还本金。(a) 算费用、商户实收及扣三类成本后的贡献；(b) 只把预期损失从 30 改 55，重算并解释交易量不变为何仍亏。
+ 
+ 来源：Practice Exam A p.12，原 Section C 第 2 题，10 分。
+@@ -1155,24 +1183,24 @@
+ 速查只供复做后核对，理由必须回到 §2。以下不是官方评分键。
+ 
+ | 题 | 参考结果 | 原题入口 |
+ |---|---|---|
+-| A1 | B | [[#2.1 A1 · Ridge 怎样稳定相关变量的系数（原卷 p.2）\|A1解析]] |
+-| A2 | C | [[#2.2 A2 · 嵌套 OLS 的训练误差为何不会增加（原卷 p.2）\|A2解析]] |
+-| A3 | C | [[#2.3 A3 · PCR 与 PLS 在构造成分时用什么（原卷 p.2）\|A3解析]] |
+-| A4 | C | [[#2.4 A4 · Alpha 与 Beta 的水平和变化分开算（原卷 p.3）\|A4解析]] |
+-| A5 | B | [[#2.5 A5 · 双边换手成本与周夏普比率（原卷 p.3）\|A5解析]] |
+-| A6 | D | [[#2.6 A6 · 总敞口和净敞口分别加减（原卷 p.3）\|A6解析]] |
+-| A7 | A | [[#2.7 A7 · 链上有资产不等于客户能完整取回（原卷 p.4）\|A7解析]] |
+-| A8 | B | [[#2.8 A8 · 共享分叉前历史不等于以后同链（原卷 p.4）\|A8解析]] |
+-| A9 | C | [[#2.9 A9 · 代币化基金的收益从哪里来（原卷 p.4）\|A9解析]] |
+-| A10 | A | [[#2.10 A10 · NFT 的代币、媒体和使用权三层（原卷 p.5）\|A10解析]] |
+-| A11 | D | [[#2.11 A11 · 界面相似时看谁承担货币负债（原卷 p.5）\|A11解析]] |
+-| A12 | A | [[#2.12 A12 · 开户量与真实支付采用分开（原卷 p.5）\|A12解析]] |
+-| A13 | D | [[#2.13 A13 · 钱包停机不等于货币请求权消失（原卷 p.6）\|A13解析]] |
+-| A14 | A | [[#2.14 A14 · 愿意冒险与能够承担损失不同（原卷 p.6）\|A14解析]] |
+-| A15 | D | [[#2.15 A15 · 制裁筛查同名但生日冲突怎么办（原卷 p.6）\|A15解析]] |
+-| A16 | B | [[#2.16 A16 · 按管理资产收费的盈亏平衡（原卷 p.6）\|A16解析]] |
++| [[#2.1 A1 · Ridge 怎样稳定相关变量的系数（原卷 p.2）\|A1]] | B | [[#2.1 A1 · Ridge 怎样稳定相关变量的系数（原卷 p.2）\|A1解析]] |
++| [[#2.2 A2 · 嵌套 OLS 的训练误差为何不会增加（原卷 p.2）\|A2]] | C | [[#2.2 A2 · 嵌套 OLS 的训练误差为何不会增加（原卷 p.2）\|A2解析]] |
++| [[#2.3 A3 · PCR 与 PLS 在构造成分时用什么（原卷 p.2）\|A3]] | C | [[#2.3 A3 · PCR 与 PLS 在构造成分时用什么（原卷 p.2）\|A3解析]] |
++| [[#2.4 A4 · Alpha 与 Beta 的水平和变化分开算（原卷 p.3）\|A4]] | C | [[#2.4 A4 · Alpha 与 Beta 的水平和变化分开算（原卷 p.3）\|A4解析]] |
++| [[#2.5 A5 · 双边换手成本与周夏普比率（原卷 p.3）\|A5]] | B | [[#2.5 A5 · 双边换手成本与周夏普比率（原卷 p.3）\|A5解析]] |
++| [[#2.6 A6 · 总敞口和净敞口分别加减（原卷 p.3）\|A6]] | D | [[#2.6 A6 · 总敞口和净敞口分别加减（原卷 p.3）\|A6解析]] |
++| [[#2.7 A7 · 链上有资产不等于客户能完整取回（原卷 p.4）\|A7]] | A | [[#2.7 A7 · 链上有资产不等于客户能完整取回（原卷 p.4）\|A7解析]] |
++| [[#2.8 A8 · 共享分叉前历史不等于以后同链（原卷 p.4）\|A8]] | B | [[#2.8 A8 · 共享分叉前历史不等于以后同链（原卷 p.4）\|A8解析]] |
++| [[#2.9 A9 · 代币化基金的收益从哪里来（原卷 p.4）\|A9]] | C | [[#2.9 A9 · 代币化基金的收益从哪里来（原卷 p.4）\|A9解析]] |
++| [[#2.10 A10 · NFT 的代币、媒体和使用权三层（原卷 p.5）\|A10]] | A | [[#2.10 A10 · NFT 的代币、媒体和使用权三层（原卷 p.5）\|A10解析]] |
++| [[#2.11 A11 · 界面相似时看谁承担货币负债（原卷 p.5）\|A11]] | D | [[#2.11 A11 · 界面相似时看谁承担货币负债（原卷 p.5）\|A11解析]] |
++| [[#2.12 A12 · 开户量与真实支付采用分开（原卷 p.5）\|A12]] | A | [[#2.12 A12 · 开户量与真实支付采用分开（原卷 p.5）\|A12解析]] |
++| [[#2.13 A13 · 钱包停机不等于货币请求权消失（原卷 p.6）\|A13]] | D | [[#2.13 A13 · 钱包停机不等于货币请求权消失（原卷 p.6）\|A13解析]] |
++| [[#2.14 A14 · 愿意冒险与能够承担损失不同（原卷 p.6）\|A14]] | A | [[#2.14 A14 · 愿意冒险与能够承担损失不同（原卷 p.6）\|A14解析]] |
++| [[#2.15 A15 · 制裁筛查同名但生日冲突怎么办（原卷 p.6）\|A15]] | D | [[#2.15 A15 · 制裁筛查同名但生日冲突怎么办（原卷 p.6）\|A15解析]] |
++| [[#2.16 A16 · 按管理资产收费的盈亏平衡（原卷 p.6）\|A16]] | B | [[#2.16 A16 · 按管理资产收费的盈亏平衡（原卷 p.6）\|A16解析]] |
+ | B1(a) | 相对业务假设支撑方向，仍有未对冲风险 | [[#2.17 B1 · 多 PDD、空 JD：假设与回测不能互换（原卷 p.7）\|B1解析]] |
+ | B1(b) | 全历史窗口正收益不足以证明因果 | [[#2.17 B1 · 多 PDD、空 JD：假设与回测不能互换（原卷 p.7）\|B1解析]] |
+ | B2(a) | 三个候选中选30轮 | [[#2.18 B2 · 神经网络选轮数与树的分组单位（原卷 p.8）\|B2解析]] |
+ | B2(b) | 月份宏观状态组与同月公司截面组 | [[#2.18 B2 · 神经网络选轮数与树的分组单位（原卷 p.8）\|B2解析]] |
+@@ -1190,21 +1218,21 @@
+ 英文定义是本稿的参考表述，不是课件逐字定义；首次必要解释已在对应题旁。
+ 
+ | 中文 | English | English revision definition | 回读 |
+ |---|---|---|---|
+-| 误差平方和 | Sum of squared errors (SSE) | Add the squared differences between the same realized targets and their predictions. | A2、C1 |
+-| 岭回归 | Ridge regression | Fit with a squared-coefficient penalty, trading fit against coefficient magnitude. | A1 |
+-| 主成分回归 | Principal component regression (PCR) | Build components from predictors before fitting the target relation. | A3 |
+-| 偏最小二乘 | Partial least squares (PLS) | Let the training target help construct predictor components. | A3 |
+-| 超额收益 | Excess return | A return minus the comparable risk-free return for the same period. | A4、A5 |
+-| 基点 | Basis point (bp) | One hundredth of a percentage point. | A5 |
+-| 夏普比率 | Sharpe ratio | Mean excess return divided by volatility at a consistent frequency. | A5 |
+-| 总/净敞口 | Gross/net exposure | Sum absolute positions, or add signed positions, relative to a declared capital base. | A6 |
+-| 资产管理规模 | Assets under management (AUM) | The amount of managed assets, not fee revenue. | A16 |
+-| 校准 | Calibration | Agreement between predicted probability levels and comparable realized frequencies. | B3 |
+-| 违约损失率 | Loss given default (LGD) | The loss fraction conditional on default, after relevant recovery. | B3 |
+-| 样本外决定系数 | Out-of-sample R-squared | One minus model SSE divided by a declared benchmark SSE over the same test targets. | C1 |
+-| 先买后付 | Buy now, pay later (BNPL) | Financing a purchase with later customer repayment; revenue and costs depend on the stated arrangement. | C2 |
++| 误差平方和 | Sum of squared errors (SSE) | Add the squared differences between the same realized targets and their predictions. | [[#2.2 A2 · 嵌套 OLS 的训练误差为何不会增加（原卷 p.2）\|A2]]、[[#2.21 C1 · 四个月样本外误差与MA12基准（原卷 p.11）\|C1]] |
++| 岭回归 | Ridge regression | Fit with a squared-coefficient penalty, trading fit against coefficient magnitude. | [[#2.1 A1 · Ridge 怎样稳定相关变量的系数（原卷 p.2）\|A1]] |
++| 主成分回归 | Principal component regression (PCR) | Build components from predictors before fitting the target relation. | [[#2.3 A3 · PCR 与 PLS 在构造成分时用什么（原卷 p.2）\|A3]] |
++| 偏最小二乘 | Partial least squares (PLS) | Let the training target help construct predictor components. | [[#2.3 A3 · PCR 与 PLS 在构造成分时用什么（原卷 p.2）\|A3]] |
++| 超额收益 | Excess return | A return minus the comparable risk-free return for the same period. | [[#2.4 A4 · Alpha 与 Beta 的水平和变化分开算（原卷 p.3）\|A4]]、[[#2.5 A5 · 双边换手成本与周夏普比率（原卷 p.3）\|A5]] |
++| 基点 | Basis point (bp) | One hundredth of a percentage point. | [[#2.5 A5 · 双边换手成本与周夏普比率（原卷 p.3）\|A5]] |
++| 夏普比率 | Sharpe ratio | Mean excess return divided by volatility at a consistent frequency. | [[#2.5 A5 · 双边换手成本与周夏普比率（原卷 p.3）\|A5]] |
++| 总/净敞口 | Gross/net exposure | Sum absolute positions, or add signed positions, relative to a declared capital base. | [[#2.6 A6 · 总敞口和净敞口分别加减（原卷 p.3）\|A6]] |
++| 资产管理规模 | Assets under management (AUM) | The amount of managed assets, not fee revenue. | [[#2.16 A16 · 按管理资产收费的盈亏平衡（原卷 p.6）\|A16]] |
++| 校准 | Calibration | Agreement between predicted probability levels and comparable realized frequencies. | [[#2.19 B3 · 信用排序尚可却低估违约率（原卷 p.9）\|B3]] |
++| 违约损失率 | Loss given default (LGD) | The loss fraction conditional on default, after relevant recovery. | [[#2.19 B3 · 信用排序尚可却低估违约率（原卷 p.9）\|B3]] |
++| 样本外决定系数 | Out-of-sample R-squared | One minus model SSE divided by a declared benchmark SSE over the same test targets. | [[#2.21 C1 · 四个月样本外误差与MA12基准（原卷 p.11）\|C1]] |
++| 先买后付 | Buy now, pay later (BNPL) | Financing a purchase with later customer repayment; revenue and costs depend on the stated arrangement. | [[#2.22 C2 · BNPL交易量不变而贡献可转负（原卷 p.12）\|C2]] |
+ 
+ ## 6. 答题框架与常见误判
+ 
+ 本卷本身就是练习，不把这里的归纳叫“教授明示会考”。

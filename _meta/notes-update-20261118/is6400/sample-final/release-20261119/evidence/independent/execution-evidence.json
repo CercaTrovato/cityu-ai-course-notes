@@ -1,0 +1,64 @@
+{
+  "executor": "/root/cityu_closeout_inventory",
+  "independent_tree_count": 9,
+  "matches_candidate_and_actual_author_tree_run": true,
+  "actual_author_replay_exit_codes": [
+    {
+      "label": "tree",
+      "exit": 0
+    },
+    {
+      "label": "missing-q1",
+      "exit": 2
+    },
+    {
+      "label": "missing-btc",
+      "exit": 2
+    }
+  ],
+  "synthetic_only_not_original_Q1": {
+    "file_sha256": "16d40a84955cdc225b6fcdb426bd322c6c7f8df16bc243e546b7d75da0e80784",
+    "rows": 4,
+    "missing_churn": 2,
+    "valid_LastTransaction": 4,
+    "missing_LastTransaction": 0,
+    "quartile_method": "linear interpolation / Excel QUARTILE.INC",
+    "Q1": 17.5,
+    "Q3": 32.5,
+    "IQR": 15.0
+  },
+  "invalid_money_rejected": "Non-numeric non-empty LastTransaction entries: inspect before computing IQR.",
+  "synthetic_only_not_original_BTC": {
+    "n_prices": 1827,
+    "dates": [
+      "2018-05-01",
+      "2018-05-02",
+      "2018-05-03",
+      "2018-05-04",
+      "2018-05-05"
+    ],
+    "actual_statsmodels_forecast_matches_manual_recursion": true,
+    "no_original_BTC_answer_claim": true
+  },
+  "missing_day_rejected": "History is not the full consecutive 2013-04-30 to 2018-04-30 period.",
+  "sklearn_parameters_instantiated": [
+    7,
+    8
+  ],
+  "versions": {
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "sklearn": "1.5.1",
+    "statsmodels": "0.14.2",
+    "openpyxl": "3.1.5"
+  },
+  "bounded_original_input_search": {
+    "roots": [
+      "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics",
+      "E:\\app-data\\codex\\scratchpad\\cityu-notes-20261118\\is6400\\sample-final"
+    ],
+    "filename_matches": [],
+    "limit": "No claim for unchecked OS locations/cloud; original DOCX package has no embeddeddata objects"
+  },
+  "source_candidate_hash": "fd09c3685802b2f7dde0e4a41a91d09f441fe99f25db7db5a3a1676582afaf1f"
+}
