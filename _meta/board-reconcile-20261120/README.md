@@ -26,6 +26,24 @@
 
 ## 本地与线上
 
-本地结构读取：24份记录无schema/来源错误；五课management有效、timeline不陈旧、thinking来源警告为0。实际页面及线上发布结果在本批最终回执追加，不沿用上一批成功。[本地结构回读](local-structural-readback.json) · [线上入口](https://cityu-board-online.vercel.app/)。
+本批三端均已完成核验。本地24份记录无schema/来源错误；五课management有效、timeline不陈旧、thinking来源警告为0。已登录侧栏实际逐课打开本地与线上思路、时间线及顺读原文，10份课程原文均匹配本课标题，当前说明与原历史区均可读，过期提示为0。[本地结构回读](local-structural-readback.json) · [线上入口](https://cityu-board-online.vercel.app/)。
 
 不推定本人已完成课堂展示、练习、正式报告或模型/网页验收；M07讲义、Q1.xlsx及原始Q4 BTC-USD.csv继续待补。只更新行政进度与历史定位，不改M/T教学正文、原始课件，不提交课程作业或发送邮件。
+
+## 最终线上版本与实际回读
+
+| 课程 | 发布版本 | 内容指纹前缀 | 时间线记录 |
+|---|---|---|---:|
+| AC6761 | `a588b744-aa9b-4039-8f11-113fd4261eb5` | `2172ca116b3376e5` | 13 |
+| IS6400 | `1623e3b3-dcae-49cd-91e8-903346b00b49` | `bfdb6b3636474359` | 45 |
+| IS5113 | `4e8ad0a9-0b49-46f9-a39d-0851800ed8de` | `4175989a425aa6b8` | 17 |
+| IS5542 | `a46ff9c4-e0a1-4001-aac0-cf64bae3b4bd` | `18e554ac518272a4` | 15 |
+| EF5560 | `732bfb46-be23-4238-8210-184b19e63962` | `512fa0250622bef8` | 19 |
+
+发布器服务端核附件字节/SHA，发布后独立status接口核active_release与content_hash，再用本人已登录的侧栏核实际课程页面。未更改共享白名单、容量上限、登录或权限规则；IS6400仍为250附件，247个未变附件复用。
+
+[最终机器回执](final-receipt.json) · [实际界面回读](actual-ui-readback.json) · [线上版本回读](online-final-readback.json) · [发布器回执](publisher-receipt.json) · [适用检查](final-checks.json) · [可复制群汇报稿](group-messages.md)。最后一次只保存文档的Git提交不改变五课已核数据，无需为回执自身SHA无限追加提交。
+
+完整性0问题，59个M/T核心教学文件字节未改，README检查0问题。链接检查仍有6项，仅在未改的20261028历史冻结candidate-v0表格别名；没有借本轮改历史证据刷绿。用户原主工作区和各库无关改动保持，正常本人署名、无force push或跳过hooks。
+
+本结论是管理进度更新与三端可访问/版本核验，不等同模型、服务、所有历史科研/图文、真实课堂展示或本人练习已通过。各课剩余回执、排练、正式报告与验收缺口均保留。
