@@ -370,3 +370,12 @@ A股票名、B阈值/映射、TA200/15marks仍不确定，不作为确定校词�
 | IS6400 S29 01:00:24／01:06:03／01:24:26 | recovered neural network／long term short term memory／passing cheese structure | Recurrent Neural Network／Long Short-Term Memory／parsing tree |
 | EF5560 S30 18:59／35:42／41:35 | AVE／10 minutes／SUSDC | Aave／10 million／sUSDS（Lec08 p.45、49、52） |
 | EF5560 S30 56:04／01:34:43／02:19:50／02:25:02 | min／fund／Antropon／CITS | mint／burn／Anchorpoint／CIPS（Lec09） |
+
+## 2026-11-21 · IS5113 S31 来源校正
+
+| 原 ASR／情境 | 书面校正或处置 | 原时钟 |
+|---|---|---|
+| recent examination / recent exam | written examination（解释按笔试语境；不改原文） | S31 `01:00:46`、`01:04:57` |
+| rules / route / rouse（正义语境） | Rawls | S31 `34:00`、`35:14`；按M03书面拼写 |
+| therapeutic life / care by dedication / ESI | therapeutic lie / care by delegation / ASI | S31 `01:43:24`、`01:49:55`、`02:15:30`；按源p40/41/65 |
+| non-en(ms)英语两段 | 保留英语原文，不当外语噪声 | S31 `01:12:00`、`01:12:06`；restore清单 |

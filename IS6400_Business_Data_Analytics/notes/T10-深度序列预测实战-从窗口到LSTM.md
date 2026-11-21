@@ -1710,7 +1710,7 @@ M09 的单神经元乘加／激活对应 Dense，隐藏状态递推对应 LSTM�
 
 ## 6. 考点预判与答题框架
 
-🟡 笔记推断：可能要求解释 LSTM 输入形状、单点与多点标签、训练统计量为何不能看未来，以及程序为何在形状正确时仍可泄漏。没有转录或正式考试题，不标教授明示。
+以下保留为学习／项目能力参考：解释LSTM输入形状、单点／多点标签、训练统计量为何不能看未来，以及形状正确仍可能泄漏。**当前期末范围排除Week10深度学习**：S29 `50:31`与S32 `01:26:11`／`01:30:32`交叉支持，对应本库M09／T10；M10／T11是Week11，仍在范围。本篇教程录音依旧未取得，transcript状态不升级，学习内容不删。
 
 英文参考框架：“First define which observations are known at prediction time. Build each history window without its targets, fit scaling parameters on the training period only, and ensure every training label stays before the cutoff. An LSTM processes the ordered history, while a dense layer maps its representation to one or several future values. Compare models on identical targets with the same metric.”
 

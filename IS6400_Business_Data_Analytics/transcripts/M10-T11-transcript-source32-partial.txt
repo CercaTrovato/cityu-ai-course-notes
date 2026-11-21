@@ -1,0 +1,4140 @@
+00:00 
+in our tutorials, we have learned several 
+
+00:05 
+evaluation metrics, like for the classification problems 
+
+00:08 
+we learned the computation metrics, the precision is quite 
+
+00:12 
+nice to measure, right? But for the prediction regression 
+
+00:15 
+analysis, the target becomes a real number. 
+
+00:19 
+So for the calculation, we can only evaluate whether your predicted label matches the true label or not. 
+
+00:26 
+But for the regression analysis, we have another set of evaluation metrics, 
+
+00:30 
+because we are trying to tell how close your predicted value would be. 
+
+00:34 
+So we have MAE, average error, MAP, mean epsilon, percentage error, and some other evaluation metrics, like some sort of error. 
+
+00:43 
+So we have all these evaluation metrics, and when we... 
+
+00:47 
+are trying to solve a problem, and we have 3 or 5 or more models to solve the same problem 
+
+00:54 
+using the same dataset. Now, in order to quantify which model is the best, we need to pick one 
+
+01:00 
+or more evaluation metrics to quantify the performance of these learning algorithms. 
+
+01:07 
+Now, for the regression analysis, usually we can use MAE, MAPE, or MSD and SSE. 
+
+01:15 
+So when I write my papers, I will choose at least two of the evaluation metrics, including MAE or MAP. 
+
+01:22 
+So let's see how these two evaluation metrics are working together, and why a single one is still working. 
+
+01:28 
+So for the MAE, we can see the MAE is defined as the average absolute error. 
+
+01:36 
+So the EI means that you have the validation data points, and the EI is the prediction error, the difference between the predicted value and the true value. 
+
+01:45 
+And we take the absolute value of this EI and then take the average of all the validating data points. 
+
+01:51 
+Now this becomes mE. 
+
+01:54 
+mE has its own physical value. 
+
+01:57 
+For example, if I want to predict the drinks for tomorrow, or how many bottles I will sell for tomorrow, 
+
+02:03 
+now mE will tell you the difference between the prediction value and the true value. 
+
+02:09 
+Now the real meaning is the same, the number of bottles. 
+
+02:12 
+So if my mE is 5, 
+
+02:15 
+And for tomorrow's prediction, my predicted value is 10. 
+
+02:18 
+Then you can see that on average, the true value 
+
+02:22 
+will be in the range between 5 and 15, right? 
+
+02:25 
+Because your average prediction 
+
+02:30 
+error is 5 bottles. 
+
+02:32 
+So on average, on the validation data point, 
+
+02:36 
+if I count every single day's amount and the predicted 
+
+02:40 
+amount, the gap on average is 5. 
+
+02:43 
+So that's MAE. 
+
+02:45 
+But we can see MAE, MAE sometimes it will fail. 
+
+02:50 
+So let me give you an example. 
+
+02:53 
+Now for this drink. 
+
+02:56 
+If I want to quantify the prediction error across the week, 
+
+03:02 
+from Monday to Friday, 
+
+03:04 
+there are a large number of students in the university, 
+
+03:08 
+and the demand is very large. 
+
+03:10 
+On average, the true demand for this bottle of drink 
+
+03:13 
+is around 200 bottles during the weekdays. 
+
+03:18 
+Monday we have around 200, 
+
+03:19 
+Tuesday we have around 200. 
+
+03:21 
+Now, with more prediction error, we are leading to about 20 bottles difference, right? 
+
+03:26 
+Sometimes I predict this to be 180, sometimes I predict this to be 220. 
+
+03:31 
+From Monday to Friday, my average prediction error is 20. 
+
+03:38 
+Okay, 20. 
+
+03:39 
+Now, this weekend, things changed significantly. 
+
+03:45 
+So during the weekend, I believe most of the students will go out, hang out, and play with their friends outside, and literally will not stay on campus. 
+
+03:54 
+And now the student demand drops from 250. 
+
+04:02 
+Now what happens? 
+
+04:05 
+If you calculate MAE during the weekend, MAE can be about 3. 
+
+04:12 
+So the total demand is only 20. 
+
+04:14 
+And your prediction error is in the westmost scale. 
+
+04:17 
+Now, during the weekend, the prediction error is around 3 or 4, but during the weekday, the demand for the prediction error is around 20 or 30. 
+
+04:25 
+Now, these two MAPs, they are not at the same scale. 
+
+04:30 
+So, you cannot tell, okay, if I have 10 prediction errors during the weekend, it's a better prediction because during the weekday, the prediction error is 20. 
+
+04:42 
+So, what we can do? 
+
+04:49 
+So what does this mean? So you can see by comparing the M-E, we take E-I divided by the true value of Y-I. 
+
+05:00 
+Now things change. So during the weekday, my true value is 200, and my prediction error is 20. 
+
+05:07 
+So my M-A-E is around 20, but my M-A-P-E is 10%, right? So 20 over 200. 
+
+05:16 
+Now during weekends, the scale changes from 200 to 20. 
+
+05:20 
+Now, still my prediction error, my M-A-E, is around 3 or 4, for example. 
+
+05:26 
+Now my M-A-E is only about 3 or 4, but my M-A-P-E is around 20% error. 
+
+05:35 
+So we can see, even though for the weekend, even though we have a smaller M-A-E, 
+
+05:40 
+we may have a larger M-A-P-E, the percentage error. 
+
+05:46 
+So we need to combine these two election matches together in case. 
+
+05:51 
+For your prediction, validation data set, some of the data points, their true value is out of scale from others. 
+
+05:57 
+So we need to combine M.E. and M.A.P. 
+
+05:59 
+Of course you can choose your own evaluation metrics to evaluate the performance of your selected learning algorithms. 
+
+06:10 
+For the classification problems, especially for the advanced data, we learned that we cannot use the overall misclassification rate or accuracy. 
+
+06:18 
+So instead, we need to use the confusion matrix, and we want to ignore this majority class with a very large number D here. 
+
+06:27 
+So we have a precision, we call an F-measure. 
+
+06:30 
+And for the classification problems, we can also use the LDR under the curve, or the RC curve. 
+
+06:40 
+the RC curve of the random algorithm is this diagonal 
+
+06:44 
+so the area under this curve is 0.5 
+
+06:47 
+so the larger the area, the better the performance 
+
+06:49 
+so we can also use this area under the curve 
+
+06:53 
+so the software can compute this number automatically for you 
+
+06:57 
+so we can use this as an alternative evaluation metric to do the model selection 
+
+07:03 
+So for the post-perfect model, it is the perfect line and we have the area on the curve to be 1. 
+
+07:11 
+Now, we know that after we specify the evaluation metric, then we need to evaluate our model performance using the validation dataset. 
+
+07:22 
+We cannot use our training performance, the training dataset to evaluate the performance using the training error. 
+
+07:31 
+So in our previous tutorials, we learned how to construct the validation data set using the random space chain type split. 
+
+07:38 
+For example, for the linear regression, after we use the chain data set to change this linear line, we get the intercept and slope using the chain data set. 
+
+07:47 
+Now we need to generate a new data set as the validation data set to evaluate the performance. 
+
+07:54 
+So whether this chain linear line can predict the true value for the new data points. 
+
+08:01 
+And we want to use the validation data set to control over fitting issues 
+
+08:05 
+Because we know that if your model is too complicated, too complex, then we need 
+
+08:12 
+Then your complex model may try to learn the noisy data, noisy information in your training data set 
+
+08:19 
+And your model will not predict the future new data points very well 
+
+08:23 
+So we have this example in our previous class 
+
+08:25 
+So 
+
+08:29 
+In our previous class, in order to control the overfitting issue and select the best model with the best future performance, we used the validation dataset. 
+
+08:38 
+So we have the chain test fleet to create some data points outside of the training and we call it validation dataset. 
+
+08:47 
+So our idea is that, given the original dataset, we split the data into training and validation. 
+
+08:55 
+Now we will use the training dataset to do the training and the validation dataset to do the performance evaluation. 
+
+09:01 
+Now, for the model assessment, imagine that for the learning algorithm, we have so many choices of learning algorithms. 
+
+09:08 
+So, we may have different trees, random stories, and different networks. We have so many different algorithms. 
+
+09:15 
+And no matter what kind of algorithms we are using, we will use the same training data set. 
+
+09:21 
+So, this part gives you the training. 
+
+09:25 
+So if you want to train a random forest, I use this chain data set to train a random forest. 
+
+09:30 
+If you are trying to train a descent tree, I will use the same chain data set to train the descent tree model. 
+
+09:36 
+After that, after the model is trained, I will use the validation data set to evaluate the performance for a random forest and descent tree. 
+
+09:44 
+The same validation data set. 
+
+09:45 
+And then by comparing the performance using the validation data set, I can tell a number. 
+
+09:52 
+previous selected evaluation metrics, we can tell, okay, if the random forest performs 
+
+09:58 
+better, then we want to choose the random forest model according to the validation performance. 
+
+10:06 
+Now we can see, following this kind of model selection, so if we have so many different 
+
+10:14 
+models to consider, so even for a single decision tree model, we have one layer, we can have 
+
+10:25 
+So as the number of layers increase, we get different decision tree models. 
+
+10:31 
+So we are doing the same thing. We are using the same changes that we changed the decision tree to induce the decision tree with different number of layers. 
+
+10:39 
+So we now have to use that. You will see the algorithm. 
+
+10:42 
+And then we use the same validation data to evaluate the performance of this decision tree. 
+
+10:48 
+Now we change the number of layers from 1 to 100. 
+
+10:52 
+And we will chain 100 descent trees with different number of layers, and we will use the same validation data to evaluate the performance of these 100 descent trees. 
+
+11:02 
+Then we can pick the best tree structure with the best validation performance. 
+
+11:07 
+So that's how we can use the validation data to do the modeling. 
+
+11:12 
+So this is how typically we do the holdout evaluation. 
+
+11:16 
+That we randomly the data into chain and validation. 
+
+11:22 
+And then we follow the procedure to select. 
+
+11:24 
+best model using the validation performance. So we can see for the holdout method, we learned 
+
+11:30 
+that it is very efficient, but there is one drawback. So you may randomly select the validation 
+
+11:36 
+data set, but unfortunately there are some outlier data points in your validation data 
+
+11:40 
+set. So we use the validation data set to assume the validation data set can present 
+
+11:46 
+the future data points. But if some of the outliers are included in your validation data 
+
+11:54 
+the validation performance is no longer representative 
+
+11:58 
+because we are not trying to predict outliers 
+
+12:00 
+So what we can do 
+
+12:02 
+We want to use the coarse validation 
+
+12:06 
+The idea of the coarse validation is that 
+
+12:09 
+we want to do the whole amount of validation many times 
+
+12:12 
+using the same dataset 
+
+12:13 
+So how can we do that? 
+
+12:15 
+Given this whole dataset 
+
+12:18 
+For example, for the 4 cores 
+
+12:20 
+I want to do 4 validations 
+
+12:24 
+How can we do that? 
+
+12:28 
+So for the first one, I will partition part of the data as my validation data set. 
+
+12:34 
+At the very beginning, I partition your original data set into four parts. 
+
+12:39 
+Part 1, Part 2, Part 3, and Part 4. 
+
+12:45 
+So I partition your data into four parts. 
+
+12:48 
+Now for the first part, I will run the whole all validation. 
+
+12:52 
+Therefore, once you are given the model, 
+
+12:55 
+So maybe it's a random forest or a distinct tree, and then I specify the distinct tree to be turned layer, for example. 
+
+13:01 
+Now I will use this white part as my chaining dataset to chain the distinct tree of random forest. 
+
+13:07 
+And after the model is chained, then I will use this gray part too as the validation dataset to evaluate the performance. 
+
+13:16 
+After that, I did one validation error as the validation dataset. 
+
+13:22 
+So this is just one hold-out validation. 
+
+13:25 
+But that's not the end, because maybe you have some alternatives in this part and this 
+
+13:29 
+Android may not be so representative, so what we can do, I will use the second fold. 
+
+13:35 
+Now the second fold, we have another partition of the data as my validation data set. 
+
+13:39 
+So for the same model structure, I will use the other white part. 
+
+13:44 
+So this white part as my change data set, and I change the learning algorithm of the 
+
+13:50 
+same model structure. 
+
+13:51 
+So for this one, if the decimetry is 10 layers, then this decimetry is still 10 layers. 
+
+13:56 
+The structure is the same, but the attribute nodes can be different. 
+
+14:00 
+And I use this white part for training and this gray part for validation. 
+
+14:03 
+Now I get the validation performance for using this fold. 
+
+14:08 
+But that's not the end. 
+
+14:10 
+Because for the fourth fold, I have four partitions here. 
+
+14:13 
+For the third partition, I do the same thing. 
+
+14:15 
+I use the same model structure and do the model training, 
+
+14:18 
+and model validation, and then the fourth part. 
+
+14:22 
+So after that, I will be able to get four validation errors, because we have four validation 
+
+14:28 
+data sets. 
+
+14:29 
+And we just do the training and the validation in different rounds, so in total we have four 
+
+14:33 
+rounds. 
+
+14:34 
+And then I will be able to calculate the average errors of these four validation errors and 
+
+14:40 
+the standard deviation of them. 
+
+14:41 
+So why sometimes we want to use these two numbers to quantify the model performance? 
+
+14:46 
+The average cross-validation error will tell you how model, on average, will perform very well across the whole data set. 
+
+14:54 
+Because we use different part of the data for validation. 
+
+14:57 
+Of course, the smaller the average validation error, the better the performance. 
+
+15:02 
+But that's not the end. 
+
+15:04 
+The standard deviation of the validation error will tell you how stable your model is performing across the whole data set. 
+
+15:12 
+Of course, the smaller the standard deviation, the better the model performance. 
+
+15:18 
+So if you have two models, the two models they have comparable average prediction error, 
+
+15:25 
+then the smaller the bar of the standard deviation error, the better the model performance. 
+
+15:31 
+And also for some, if you are a very careful researcher, then if you have two learning 
+
+15:37 
+algorithms, and one prediction error is, for example, one prediction accuracy is 70%, 
+
+15:44 
+The second one, the prediction error, your prediction performance is 75%. 
+
+15:49 
+So maybe by comparing the average values, the second one is better. 
+
+15:54 
+But if the second one, the standard deviation is 40%, very unstable. 
+
+15:59 
+Then you cannot tell which model is better. 
+
+16:02 
+So if you are trying to use the cross-prediction to compare the model performance, 
+
+16:06 
+you need to present the average level and the standard deviation of this model. 
+
+16:12 
+So if you use these two numbers all together to evaluate the model performance, so you see the validation error. 
+
+16:19 
+So this is very important. 
+
+16:21 
+So because if you go to the job market and you're looking for a job and you happen to get involved into the interview, 
+
+16:30 
+usually the HR will ask you this kind of question, how we can evaluate the model performance. 
+
+16:36 
+So you need to present these two numbers to evaluate. 
+
+16:40 
+Now for the 5-fold cross-validation, so similarly, we will first release the data into 5 paths, and we will do 5 rounds of code-out validation. 
+
+16:49 
+So for example, the first fold, I will use the red path as the validation in the RESTful training, 
+
+16:55 
+then the second round, the RESTful validation in the RESTful training, third round, fourth round, and the fifth round. 
+
+17:03 
+Then we will be able to get 5 validation errors from the 5 folds, and then we will be able to vary the model performance. 
+
+17:11 
+So this is one of the quiz questions from last year 
+
+17:14 
+Because today I want to spend more time for the final exam review 
+
+17:19 
+So we will not have quiz today, is that okay? 
+
+17:23 
+But you can take a look at this question 
+
+17:25 
+So it tells you how we can do the data partition 
+
+17:28 
+So we can get different fold for cross-validation 
+
+17:32 
+For training and validation split 
+
+17:33 
+So for example for this one, the first fold, if I use the first 6 
+
+17:46 
+for training and the rest for validation and for the second course i need to i need to choose some 
+
+17:51 
+other three records for validation and the rest for training so we we can do that now the previous 
+
+18:00 
+course for addition we take the partition for validation or decently so for example from the 
+
+18:06 
+data points so the validation is that they are connected to each other they are the same group 
+
+18:12 
+But sometimes we want to make it more random, so we have the random sub-sampling cross-validation. 
+
+18:18 
+Now for each fold, I still try to select some data points for validation as well as for training, 
+
+18:24 
+but the selection of the validation data points is pure random. 
+
+18:27 
+We can say we randomly select these data points across the whole data set as my first-fold validation data set. 
+
+18:34 
+For the second fold, I do the random selection of data points again. 
+
+18:42 
+and randomly selected data points for validation. 
+
+18:46 
+For how many calls I will get how many validation errors 
+
+18:50 
+and take average and then deviation. 
+
+18:53 
+Now, that's for the cross-validation. 
+
+18:56 
+But when you have the time series analysis, 
+
+18:59 
+then you are trying to use your time series model 
+
+19:01 
+to make future predictions. 
+
+19:03 
+And the story becomes different. 
+
+19:06 
+So for example, if you are trying to use the cross-validation 
+
+19:09 
+to do the chain test lead for your time series data, 
+
+19:13 
+then that's not possible. 
+
+19:15 
+Why? Because when we are doing the time series analysis, the training data points should be earlier than the validation data points. 
+
+19:26 
+Because the validation data points will present the new unknown data points. 
+
+19:30 
+So if you consider this as a time scale, and if you have some wide path as a training, then the old data points should not be the validation data points. 
+
+19:46 
+For example, if I try to do the stock price prediction, now you train a model up to today. 
+
+19:52 
+Now you are not using your model to predict the stock price one year ago, right? 
+
+19:58 
+You only use your model to predict the price in the future. 
+
+20:02 
+So this random quantization will not work anymore. 
+
+20:07 
+So I hope we can evaluate the performance for my time series model. 
+
+20:13 
+We have worked with rolling forecasting and invalidation scheme in our country's data. 
+
+20:19 
+Now let's provide a clear example here. 
+
+20:22 
+So if we want to invalidate, so here this is the data set, then the time stamp goes from day 0 to day 19. 
+
+20:29 
+Now I want to use, propose a learning algorithm to deal with this data set to make future. 
+
+20:38 
+So what we need to do, so we cannot do the course validation, but we can do the rolling forecasting and validation. 
+
+20:45 
+So we assume that we started to use the model by the end of day 5. 
+
+20:50 
+So day 0, day 1 until day 5. 
+
+20:54 
+Now, I will go back to an earlier date and start to use the model by that date. 
+
+21:00 
+So that's the stock price prediction. 
+
+21:02 
+So if I have the automatic trader here, 
+
+21:06 
+then I assume that I started to use this trader one year ahead. 
+
+21:10 
+And starting from that day, I do the rolling for casting and invalidation. 
+
+21:16 
+So by the end of day 5, I started to use your model, now all the information up to day 5, they become available, and they become the training data points. 
+
+21:25 
+Now according to the training data points, I can induce a learning algorithm, I can train a learning algorithm, and then make the day 6 prediction. 
+
+21:33 
+Now the true value of day 6 becomes the first validation data point to evaluate my model performance for next day's prediction. 
+
+21:41 
+So after I make the prediction, I get one validation error. 
+
+21:45 
+using the value of d6. 
+
+21:47 
+Now that's not the end. 
+
+21:49 
+Because I continue to use the model. 
+
+21:51 
+Now I move forward by the end of d6. 
+
+21:54 
+And now by the end of d6, 
+
+21:56 
+I continue to use the same model. 
+
+21:58 
+Now the model 
+
+21:59 
+has all the information up to 
+
+22:01 
+d6 available. 
+
+22:03 
+So all the available information 
+
+22:05 
+become my training data points. 
+
+22:07 
+I can use the retrained model 
+
+22:09 
+and use the retrained model to make 
+
+22:11 
+the next step prediction. 
+
+22:13 
+I already have the true value for day 7, then I get the second validation data point, and I get my second validation error. 
+
+22:23 
+Now I can continue. So every day I will move forward. 
+
+22:26 
+Every day I move forward, I will have one more data point in my training record from the old date. 
+
+22:32 
+Now I can retrain the model to make the next data point. 
+
+22:36 
+And until I go through all the validation data points, I will be able to collect many validation errors. 
+
+22:43 
+And you can see, all these validation errors, they will present the performance for next-stage prediction, right? 
+
+22:51 
+Because every day I continue to use the model, I get all the updated information to update my model and then make the next-stage prediction. 
+
+22:59 
+So by lowering prediction and lowering validation, then I will be able to collect enough validation data points to evaluate the performance of this time-sense model. 
+
+23:11 
+And of course, if you have the second time-safe model, an alternative one, then you will follow the same schedule that you started to use an alternative model by the end of day 5, and you will see rolling, forecasting, and evaluation, and you will be able to compare the validation performance for the alternative model. 
+
+23:29 
+And then you take the average of the validation error and standard deviation of them, and you will be able to compare the performance. 
+
+23:37 
+So that's for the rolling, forecasting, and evaluation. 
+
+23:41 
+And there are some business problems that we may go beyond the next day's prediction. 
+
+23:46 
+So, for example, we have a multi-step forecasting. 
+
+23:49 
+So, we want to make several predictions in the future. 
+
+23:55 
+So, what does that mean? 
+
+23:57 
+Let's go back to this early forecasting. 
+
+24:00 
+So, still for the same drink, okay, the same coffee. 
+
+24:05 
+Sometimes I cannot only make next day's prediction. 
+
+24:09 
+I need to do two days' prediction for tomorrow and the next day. 
+
+24:14 
+Why? Because according to the factory, according to the supply, they can only deliver the coffee beans two days ahead. 
+
+24:24 
+So if I order some coffee to the factory today, the coffee can only arrive two days later on Friday. 
+
+24:35 
+So how many coffee beans should I prepare or should I order today? 
+
+24:41 
+So I need to forecast how many bottles of coffee I will consume. 
+
+24:46 
+Thursday and Friday, right? So I order the beans from today. Now just for the two days prediction, so 
+
+24:56 
+every day, so by the end of day five, I want to use your model to make next two days 
+
+25:01 
+prediction for day six and day seven. Now if that's the case, I can still use loading for 
+
+25:08 
+caching and validation, but every time I make a prediction, I will make two days, two time 
+
+25:15 
+tomorrow and the day after tomorrow so every day i will be able to collect 
+
+25:20 
+two validation data points one validation data point for tomorrow prediction accuracy 
+
+25:25 
+variation the second validation data point for the day after tomorrow accuracy variation 
+
+25:31 
+so we have two lines of validation data points and after we conduct loading forecasting 
+
+25:45 
+and I have the other average prediction error for the next next day prediction error right 
+
+25:51 
+then we have two different error terms for the marking step for casting so here usually 
+
+25:58 
+we will not combine the error we are not taking the average of tomorrow and the day after tomorrow 
+
+26:04 
+we will not combine these two error terms by taking an average so we treat them separately 
+
+26:10 
+And sometimes we have a fixed size change data set in the rolling forecasting and validation, so that's the mean. 
+
+26:16 
+Now after this first evaluation, now for the second day, I will keep the number of training records fixed. 
+
+26:26 
+So now for the second day, because I have one new data point available from day 6, 
+
+26:31 
+now I will delete the oldest day, day 0 from my training records. 
+
+26:36 
+So during the rolling forecasting and evaluation, the number of training records will be fixed from day to day. 
+
+26:42 
+So every time I will remove the oldest information from the training. 
+
+26:47 
+Why? Because some time series data, the oldest information is not so informative for my training procedure. 
+
+26:53 
+They are the pure noise. 
+
+26:55 
+So that's the rolling forecasting for the time series models. 
+
+27:01 
+Now we can see how we can construct 
+
+27:05 
+The validation scheme, we can select the evaluation metrics to do the performance evaluation. 
+
+27:11 
+And now the next step is that we want to try different parameters to get different validation performance. 
+
+27:20 
+So, we can see for the more complexity, for example, if we have the descent tree model. 
+
+27:26 
+Now, we can choose one layer descent tree, two layers descent tree, and three layers descent tree until 100 layers. 
+
+27:34 
+So as the number of layers of your decision tree continue to increase, the model complexity will continue to increase, right? 
+
+27:41 
+Imagine that if you have 100 layers of decision tree, how big this model would be? A very big one. 
+
+27:48 
+So you may question, do you mean that the larger the decision tree, the better? 
+
+27:53 
+According to the overfishing issue, we can conclude maybe not. 
+
+27:59 
+Then what is the optimal number of layers should we choose? 
+
+28:04 
+So we have the validation error. 
+
+28:06 
+Imagine that the x-axis represents the model complexity or the number of layers for your DCT model. 
+
+28:11 
+The y-axis is the error term. 
+
+28:14 
+So we use the IMFD. 
+
+28:16 
+Now we will use to hold all the validations, all the post-validations, all the rolling procrastination validations. 
+
+28:21 
+So we have the validation speed. 
+
+28:23 
+So we calculate the validation error. 
+
+28:25 
+And the training error. 
+
+28:27 
+So as your model becomes more and more complex, your training error, typically it will continue. 
+
+28:35 
+Because you choose one more complicated model to model as much information from the training data set, 
+
+28:40 
+then the training will become smaller, and the training error will become smaller and smaller. 
+
+28:45 
+But, if you hold a new validation data set to evaluate the model components, 
+
+28:51 
+and the very beginning, as the model complexity continues to increase, the validation error will first decrease. 
+
+28:59 
+The other certain point here, your validation error will continue to increase. 
+
+29:04 
+So because after that point, your model will start over-fitting easily, and for the next, if you continue to increase your model complexity, then your model becomes over-complicated and the validation error will become larger and larger. 
+
+29:20 
+So according to this, so I just tried training and validation 100 times, so here we have tried 500 times, and we picked the best model here, according to the minimum validation error. 
+
+29:36 
+So that's how typically we can do this kind of model selection using the validation dataset. 
+
+29:40 
+So we need to train and validate many many times in order to select the best model structure. 
+
+29:47 
+So for example for the decision tree, so if we want to use the decision tree model to model this binary classification dataset, 
+
+29:55 
+then we can increase the number of decision nodes from 1 to 150, the decision nodes, the end nodes. 
+
+30:04 
+So the larger number of end nodes, the more context the decision tree model we have. 
+
+30:08 
+So here we have two models to choose. 
+
+30:11 
+The first decision tree model here, we have one, two, three, four, five. 
+
+30:15 
+We only have five decision nodes. 
+
+30:16 
+And the decision tree looks like this. 
+
+30:18 
+And the classification boundary looks like this. 
+
+30:21 
+So you can see, this decision tree model is kind of simple, right? 
+
+30:25 
+We only have four layers and five decision nodes. 
+
+30:28 
+So a very small and simple decision tree. 
+
+30:34 
+an alternative design tree, and for this design tree we have 50 end nodes 
+
+30:39 
+and you can see this design tree is very big, right? 
+
+30:42 
+and the classification boundary by this large design tree is very complex 
+
+30:51 
+so can you tell me which design tree is better? 
+
+30:55 
+do you prefer design tree with smaller simple structure 
+
+30:59 
+or design tree with a very complicated structure? 
+
+31:05 
+So we can see if you choose the training algorithm, of course, the more complex the decision tree is, the smaller the training algorithm, right? 
+
+31:12 
+But so far, we cannot conclude which decision tree is better, because we cannot use the training algorithm to evaluate the model performance. 
+
+31:20 
+So what do we need to do? We need to generate a new validation data set, or we can use, of course, validation. 
+
+31:26 
+No matter what, we need to get the validation algorithm. 
+
+31:29 
+Now let's get some new data points and use the new data points to test. 
+
+31:34 
+the model performance for your simple and complicated decision tree 
+
+31:37 
+now we can see for this 
+
+31:42 
+for the decision tree here, the validation error is very small 
+
+31:46 
+and after that, if the number of lead nodes is 50 
+
+31:50 
+then the validation error is even larger 
+
+31:52 
+so according to the validation data set and the validation error 
+
+31:56 
+Then we know that we need to choose the simpler descent tree model 
+
+32:00 
+So it will not induce the overfitting issue, but still deliver very good performance for the chaining 
+
+32:05 
+So we can see so far for getting this tree structure 
+
+32:16 
+So here we choose among these two alternative tree structure 
+
+32:19 
+And the number of layers here is actually predetermined by our model customization 
+
+32:31 
+In our final example, you need to be able to write down which library we need to get this tool, and how we can set up this tool. 
+
+32:40 
+So for the decision tree model, when we set up the decision tree model, there is one parameter in the basket. 
+
+32:47 
+And the basket we call max-layer, right? 
+
+32:54 
+If I remember it correctly. 
+
+32:56 
+So that's the hyperparameter we manually set up before the model training. 
+
+33:02 
+So if you remember that, so before the model.train, we have the distinct checker file, basket, and we put something manually in the basket 
+
+33:11 
+So for the random forest, we put an estimator, the number of estimators as the manual stack in this basket 
+
+33:18 
+So if you do not remember, please go review 
+
+33:24 
+So we can see, for this parameter, this is still the parameter of this model 
+
+33:31 
+So we specify this parameter before the model training 
+
+33:35 
+And this one, this parameter is the manually determined parameter 
+
+33:42 
+And once we manually select this parameter, this parameter will control the overall training procedure 
+
+33:51 
+But there are some parameters, we get these parameters during the training procedure 
+
+33:55 
+So for example the attribute node 
+
+33:57 
+So we get this attribute node during the training procedure 
+
+34:01 
+And for the number of layers, we get this number of layers before the training. 
+
+34:07 
+So, in general, the parameters of your model can be separated into two. 
+
+34:14 
+One is called hyperparameter. 
+
+34:16 
+The hyperparameter represents parameters whose value controls the whole learning procedure. 
+
+34:22 
+And we determine this value before the model training, but this parameter will determine the whole training procedure. 
+
+34:32 
+It is the hyperparameter that we manually decide them before the training 
+
+34:36 
+But for the actual nodes, they are the regular parameters that we determine them during the training procedure 
+
+34:42 
+Now we can see, if we want to identify the manually selected hyperparameter 
+
+34:53 
+Then we need to use the validation data set to tune this hyperparameter 
+
+34:58 
+For example here, we tune 
+
+35:01 
+the number of distinct nodes from a smaller one to a larger one 
+
+35:05 
+and we use validation dataset to evaluate which hyperparameter 
+
+35:09 
+the x-axis, which hyperparameter can deliver the better validation performance 
+
+35:14 
+So following this procedure, we can do the grid search cross-validation 
+
+35:18 
+the three here will present cross-validation 
+
+35:20 
+or randomize the search cross-validation 
+
+35:24 
+So for this grid search, each dot here will present some combinations of the hyperparameters 
+
+35:30 
+And some hyperparameters are very important because if you change these values for your hyperparameter, then the validation performance will change significantly. 
+
+35:40 
+And some of the hyperparameters are not so important because your validation performance is not sensitive to these hyperparameters. 
+
+35:48 
+So for some non-important hyperparameters, the performance will be very stable, will not be sensitive to these hyperparameters. 
+
+36:01 
+So we can use the grid search to try different combinations of hyperparameters and then use the validation performance to evaluate which hyperparameter can deliver the best performance. 
+
+36:13 
+So for the grid layout, for the grid search, the intervals among different hyperparameters are fixed and predetermined. 
+
+36:22 
+Now for the randomized search cross-validation, the choice of different hyperparameters, they are selected by much random. 
+
+36:32 
+So that's how we can do the hyperparameter tuning, and we can use this grid search CV or randomize search CV to identify the optimal hyperparameters before the training. 
+
+36:44 
+Now, if we use the validation data set to select the best hyperparameter, for 
+
+36:57 
+example, I have two values in the validation data set. 
+
+37:02 
+And then I use the validation performance by comparing the predicted value and the true value in the validation data set. 
+
+37:08 
+And then use them to compare the performance among different hyper parameters or among different learning algorithms to do the model selection. 
+
+37:17 
+After all these kind of comparisons, actually I already assumed that I already got everything I need from the validation data set, including the true values. 
+
+37:29 
+Now this validation dataset, it cannot represent future new data points, because I already got your true labels here. 
+
+37:40 
+Now the future new data points, they will present something new, before I do the model selection. 
+
+37:48 
+So for this case, the validation dataset cannot represent totally new data points anymore, because I already used the validation dataset to do the model selection. 
+
+38:01 
+Now after I select the best model using the validation performance, the validation performance cannot tell the performance in the future. 
+
+38:12 
+So it's kind of cheap, right? 
+
+38:15 
+So if you use the validation performance as the future performance now, actually you use this comparison to select the best one. 
+
+38:23 
+But maybe in the future your model may not perform as well as your model selection part. 
+
+38:29 
+So what we can do? 
+
+38:31 
+Now we can do the 3-fold partition. 
+
+38:34 
+training, validation and testing. 
+
+38:36 
+So let's see how we can do that. 
+
+38:38 
+So at my beginning, 
+
+38:41 
+we have the original data set. 
+
+38:43 
+Now using the original data set, 
+
+38:45 
+I will split your data into 
+
+38:47 
+training data set and testing data set. 
+
+38:50 
+Now this testing 
+
+38:51 
+data set is purely hold out 
+
+38:53 
+from the whole 
+
+38:55 
+training and model selection procedure. 
+
+38:58 
+I will not see this testing 
+
+39:00 
+data set after I complete my 
+
+39:02 
+model selection. 
+
+39:03 
+Now this testing data is held out, now after that, for the last training data set, I will split the training data set into training and validation. 
+
+39:14 
+Now the training data set will be used for training, the validation data set will be used for the model evaluation. 
+
+39:20 
+Now for using this part, I have so many training algorithms to test, I have so many hyperparameters to choose. 
+
+39:27 
+Now I will choose as many possible hyperparameters and alternative learning algorithms as possible. 
+
+39:34 
+Now for any possible alternative model here, I will use this small training data set to train the model and then use the validation data set to evaluate the performance. 
+
+39:43 
+And after all the training and the validation, I will be able to use this small part of data, the training and the validation to select the best model according to the validation performance. 
+
+39:54 
+And after that, after I select the best model, then I will use the whole training DSL here to train and select the model. 
+
+40:14 
+So that's how we can use the training and testing to do the model selection and the model evaluation. 
+
+40:21 
+So some students ask me, so why we call it validation and not testing? 
+
+40:26 
+Because testing is that it serves as the pure new data set. 
+
+40:29 
+If you do not have the half-period tuning, of course, we only need the training and the validation. 
+
+40:35 
+The validation will not participate in any training procedure. 
+
+40:40 
+But if you use the validation data set to do the proper primary tuning or model selection, 
+
+40:44 
+then we need the testing data set separately from the training and model selection procedure. 
+
+40:50 
+So simply for the cross-validation, we can do the nested cross-validation. What does that mean? 
+
+40:57 
+So for the nested cross-validation deal for the whole data set, I will force this data set into 
+
+41:02 
+training and the testing. The testing data set, I will not see this testing data set until 
+
+41:08 
+I finish all the model selection and set the best model. 
+
+41:12 
+Then we will use the testing data to evaluate the final selected model. 
+
+41:18 
+Now for this changing set, I will use the cross-validation that I have 5-fold. 
+
+41:24 
+If I have 5-fold, I will do 5-fold cross-validation to do the chain test bit. 
+
+41:29 
+for this change data set. Now for different models with different hyper parameters or 
+
+41:33 
+different learning algorithms here, I will use the cross-validation and use this partition data 
+
+41:39 
+to get the cross-validation score to select the best model according to the cross-validation 
+
+41:45 
+performance. Now that is the model I selected. So I will use the whole change data set here to 
+
+41:52 
+retrain this model and then use the testing data set to evaluate the performance of this. 
+
+41:59 
+re-trained model. So that's the pipeline of the negative cross-validation. 
+
+42:03 
+So here is a clear picture. So given the whole data set, I force data into training and testing. 
+
+42:09 
+Now for this part, I will do the five-fold cross-validation to identify the best high-power parameter 
+
+42:15 
+and the best learning algorithm. Then I will use the whole training data set here 
+
+42:19 
+to re-train the selected model and then use the testing data set to evaluate the performance of my selected model. 
+
+42:28 
+most accurate pipeline for the model selection and the model performance evaluation. 
+
+42:35 
+So if you have your course project and you want to do this kind of model selection and 
+
+42:39 
+performance evaluation, then the final performance you need to report should be the testing performance, 
+
+42:46 
+not the best validation performance. Of course you can report the validation performance 
+
+42:50 
+of different learning algorithms and different hyper parameters. 
+
+42:54 
+you tell me how you use this validation performance to select the optimal parameter or the best model 
+
+43:00 
+but the final performance you want to conclude your learning algorithm should be the testing 
+
+43:05 
+data set so is that clear for the difference between training validation and testing 
+
+43:12 
+so 
+
+43:14 
+this is very very important if you go to the job interview and the HR asks you 
+
+43:19 
+this kind of question you need to be able to answer this because you come from my class okay 
+
+43:26 
+Okay, now this is the procedure of the next-in-course realization. 
+
+43:31 
+So, let's have a 10-minute break and we'll continue with the realization and some examples. 
+
+43:36 
+So, we'll be back at 1 p.m. 
+
+43:40 
+So, 
+
+43:44 
+before we start this class, I want to inform you something. 
+
+43:49 
+So, first, I already finalized the final exam paper and the summary to SGS. 
+
+43:54 
+So, for the final exam, you can prepare one page, single page, a poetry sheet. 
+
+44:05 
+The exam paper may be a little bit challenging for you guys, but you don't have to worry about the final grade. 
+
+44:14 
+For this class, we usually would not fear any students, unless a student just disappeared from the very beginning of this class. 
+
+44:23 
+So maybe you may realize that your final exam grade is only about 30 outside of... until you can pass. 
+
+44:31 
+So some students say their final grade is 14 or 15, until they can get A. 
+
+44:42 
+So, if you didn't pass the final grade, you will not be able to pass, which means that maybe you will fail. 
+
+44:54 
+So, every year, the average final exam grade is from 50 to 60. 
+
+45:03 
+But yes, we do have some outstanding students. They can get about 100. 
+
+45:07 
+And so, I think you have 13 more questions to answer. 
+
+45:13 
+I think the time is, last year, we have 18 questions. 
+
+45:20 
+have 13 questions. 
+
+45:24 
+So that's for the for the final exam. And second, so there's some good news that 
+
+45:32 
+I just got awarded for the excellent researcher by the National Science Foundation of China. 
+
+45:43 
+So in China we call you Youqin. So as if you only two, I'm one of two. 
+
+45:57 
+If you have my name on your 
+
+46:06 
+Next week, next Wednesday, I can only join your presentation online, because I need to go to Beijing to report this duty, so I have to join that group presentation online, but the QTAs will have to coordinate and mark down the grade for your final presentation. 
+
+46:29 
+So for the next, next week, I will be here. I will be in the class. 
+
+46:35 
+So I may ask questions, or the TA will ask questions during the presentation for the QA part. 
+
+46:40 
+Okay, so for the presentation, because we have so many groups to present, 
+
+46:46 
+so if some of you, so you can see the schedule on canvas, 
+
+46:51 
+if some of the students, some groups, you prefer an alternative time to schedule an offline meeting to present or 
+
+47:02 
+a zoom meeting to present you can just tell me via email okay so you can choose a different time 
+
+47:10 
+outside of the classroom to present your presentation because we have so many for the 
+
+47:18 
+three hours maybe it is not enough because sometimes i will ask a lot of questions and 
+
+47:25 
+It's totally fine if you choose an alternative one. For example, for next Wednesday, you can choose Wednesday night or Thursday night or Friday night. 
+
+47:35 
+So anytime you prefer and I am available, you can present your final group presentation with me. 
+
+47:44 
+Sounds good? So you can apply that via email. So it will not affect your final presentation with me. 
+
+47:56 
+Yeah, just let me know if you prefer some alternative time, and I apologize that I cannot attend, 
+
+48:03 
+and yes, well, let's continue. 
+
+48:07 
+So, after we do the model validation and the model type of programming tuning and the model selection, 
+
+48:13 
+so we have this kind of model selection from the validation performance. 
+
+48:26 
+examples that we need to do the model training and the model validation for each model independently. 
+
+48:32 
+So if we have 100 decision sheets to test, then we need to train 100 decision sheets and get validation performance for these 100 decision sheets, 
+
+48:40 
+and then get their performance. 
+
+48:42 
+But can we do this one-term training, and from one-term training we can select a very good model and control the model over 15 issues? 
+
+48:52 
+Then if we can do that, 
+
+48:54 
+So we do not need so many runs of training and validation. 
+
+48:57 
+So how we can control the model complexity while we are getting a very good performance from the model? 
+
+49:05 
+So if you recall, in week 2, we actually learned the LASSO and the range regression. 
+
+49:13 
+So for that two models, we introduced a new concept called regularization, right? 
+
+49:22 
+Regularization actually introduced a penalty term into the training. 
+
+49:26 
+training error so if without this penalty term you may introduce a very very complicated model 
+
+49:32 
+to further reduce the training error to reduce training error as much as possible 
+
+49:37 
+according to our experience so it does not mean that the smaller the training error the better 
+
+49:43 
+the validation performance right if your model has over 50 years you have less much any error 
+
+49:48 
+but the overall validation performance is very bad so we put the penalty term to make the balance 
+
+49:56 
+reduction in the training error and the model complexity, the penalty for your model complexity. 
+
+50:01 
+So for the Lathot regression we have two different penalty terms here. So in our previous tutorial 
+
+50:09 
+we learned that if we want to run this 15 orders polynomial regression we can do the simple linear 
+
+50:17 
+regression but the result looks very strange. But if we do the video regression and by putting the 
+
+50:24 
+If you change the term to 0.1, then your model becomes more smoother. 
+
+50:28 
+In today's tutorial, you will learn how we can use the validation data set to evaluate 
+
+50:33 
+if this model actually performs much better than this model in terms of the validation performance. 
+
+50:41 
+That indicates that this model has over 50 instances. 
+
+50:44 
+So even though the training error is smaller, the validation performance is better. 
+
+50:49 
+But that's for the regression analysis. 
+
+50:52 
+So we put the regularization terms into the linear regression, so can we open our mandate and use the regularization for any general regression or classification model? 
+
+51:03 
+Of course we can do that. We can add a model complexity penalty for any general model. 
+
+51:11 
+For example, we can introduce the pessimistic error. 
+
+51:17 
+The pessimistic error combines the training error together with the penalties for my model complexity. 
+
+51:24 
+So here this term is the training error and this term is the penalty for my model complexity for the decision tree. 
+
+51:31 
+Omega here is similar to the lambda, but manually selected as hyperparameters for the training procedure. 
+
+51:37 
+And omega here makes the trade-off between the training error and the penalty for your model complexity. 
+
+51:43 
+Now how we quantify the complexity for the decision tree model? 
+
+51:49 
+So here I use k over number of training data points. 
+
+51:53 
+The k is the number of leaf nodes, or you can see the larger the number of leaf nodes or distinct nodes, the larger the distinct tree model will have, right? 
+
+52:05 
+But here we use k divided by number of training records. Why? Because if you have very large training records, of course we can use a larger distinct tree. 
+
+52:14 
+Maybe it has very low leaf nodes. So here is k over number of training records. 
+
+52:20 
+So let me give you an example here. 
+
+52:23 
+So here we have two decision trees to choose. 
+
+52:27 
+The left hand side decision tree, it has one, two, three, four, five, six, seven. 
+
+52:32 
+Seven decision nodes, or leaf nodes. 
+
+52:34 
+But for the right hand side decision tree, we only have four decision nodes. 
+
+52:38 
+So if you compute the chain error, 
+
+52:41 
+so I can see, for the first end node here, we have one miscalculated five points, 
+
+52:46 
+one miscalculated five points here, and one here, and one here. 
+
+52:50 
+So in total, according to the leaf nodes, 
+
+52:52 
+For the fourth descent tree, we have 4 miscalculated data points. 
+
+52:56 
+So the training error for my left hand side descent tree is 4 over 24. 
+
+53:01 
+So in total we have 24 data points. 
+
+53:03 
+But for the right hand side descent tree, we have 2 miscalculated, 1 miscalculated, and 3 miscalculated here. 
+
+53:10 
+So in total, the training error is 6 over 24. 
+
+53:14 
+So if you just compute the training error, 
+
+53:17 
+of course, I will choose the left hand side descent tree because the training error is smaller. 
+
+53:23 
+If we introduce the penalty for the more complexity, and I mainly specify the omega equals to 1, then I need to compute the transmitted error. 
+
+53:33 
+So for the left-hand side, this is true. The error is calculated by adding the changing error 4 over 24 plus omega equals to 1 times 7 divided by 24. 
+
+53:46 
+The 7 is the number of these nodes K, 1, 2, 3, 4, 5, 6, 7. 
+
+53:50 
+So, similarly, for the right-hand side decision tree, it's 6 over 24 plus 1 times 4, 4 leaf nodes divided by 24. 
+
+54:00 
+So, if you compare the pessimistic error, the right-hand side decision tree achieves a smaller one. 
+
+54:07 
+So, if we consider the model complexity, I will choose the right-hand side decision tree. 
+
+54:13 
+Even though it has a larger training error, if we consider the penalty term, it is better. 
+
+54:19 
+So this error term, the pass-missing error, can help us to post-tune or pre-tune the decision chips. 
+
+54:26 
+So for example, after we switch certain levels, so we have some decision nodes here, 
+
+54:32 
+and we want to decide whether or not we need to introduce a new attribute node to further split the end node into a further layer, 
+
+54:39 
+then we need to calculate the pass-missing error before and after we further grow this decision chip. 
+
+54:48 
+If before, for the split, the pass-missing error of your descent shift is even smaller than the pass-missing error after you do the further split 
+
+55:00 
+Then you will not split this descent shift anymore, so you just stop here 
+
+55:04 
+So this is called your descent shift 
+
+55:08 
+We will not go descent shift as much as possible, we will stop in the middle of the shift conjunction position 
+
+55:18 
+So that's further regularization 
+
+55:20 
+And also for the unsupervised learning, we can also do the model evaluation. 
+
+55:26 
+So we call for the k-means clustering while trying to minimize the inter-class distance and maximize the inter-class distance. 
+
+55:33 
+Now for the k-means algorithm like this, we can see we may, for the three-class k-means, 
+
+55:41 
+I may get this clustering result or this clustering result. 
+
+55:45 
+So both results are very possible. 
+
+55:47 
+Now how we can decide which clustering result should we... 
+
+55:51 
+Should we give the left hand side 1 or the right hand side 1? 
+
+55:53 
+From our human's eyes, of course, we can choose the left hand side 1. 
+
+55:57 
+That's what we did in our class. 
+
+55:59 
+But, how we can ask the computer to select the best K-means clustering result automatically? 
+
+56:06 
+Then we have some squared error. 
+
+56:08 
+Or it is some squared distance in the K-means clustering. 
+
+56:12 
+So the distance is calculated using the data point, 
+
+56:16 
+the distance between the data point and the cluster central. 
+
+56:21 
+And we take the distance squared, and then we sum over all the distance. 
+
+56:25 
+So, if you go back here, so for all the green data points in this single cluster, 
+
+56:30 
+I will calculate the distance between any single data point to the cluster central. 
+
+56:36 
+And take the distance squared, and then I take the summation of all this. 
+
+56:41 
+And for the red ones, 
+
+56:43 
+I do the same thing. I calculate the distance for the red data points to the red class centroid 
+
+56:48 
+and take the summation of the distance squared between the blue data points and blue centroid 
+
+56:54 
+So this we get a number to quantify the distance from any data points to each class centroid 
+
+57:02 
+So it's the inner class distance, sum squared 
+
+57:07 
+And similarly for this result, I will take the distance squared to the blue center, green center, and red ones 
+
+57:14 
+And if we're going to do a number, we can get this inner cluster distance squared is smaller than this one. 
+
+57:20 
+So I choose the left-hand side, the K-means clustering result. 
+
+57:23 
+But this distance only calculates the inner cluster distance. 
+
+57:27 
+We can also add the inter-cluster distance. 
+
+57:30 
+So this is the inter-cluster distance weighted by the cluster size. 
+
+57:35 
+So we can compute the distance between any cluster to one cluster centroid to other cluster centroid. 
+
+57:43 
+And then we will be able to get a between-cluster sub-square distance. 
+
+57:48 
+Now we can use this BSS minus SSE to get what is the distance between, 
+
+57:57 
+what is the gap between the inter-cluster distance minus inner-cluster distance. 
+
+58:02 
+So for this one the larger the value, 
+
+58:06 
+the better the clustering result, because for that one we can get a very large inter-cluster 
+
+58:12 
+distance and a minimized inner-cluster distance. So we can still use this criteria to evaluate 
+
+58:18 
+the quality of your K-means. Now finally I want to evaluate, so after we can evaluate 
+
+58:25 
+the individual regression model, the classification model, or time series model, then next we 
+
+58:31 
+want to evaluate the whole VDA pipeline. 
+
+58:35 
+So if you consider, I think this video is a mass sum of the background 
+
+58:39 
+So for this class, we actually learned from step 1 to step 5, right? 
+
+58:46 
+So if you recall what we have learned 
+
+58:49 
+Now for today, we will do the model testing and model evaluation 
+
+58:53 
+So we are finished from week 1 to week 5 
+
+58:56 
+Now, how we can evaluate? 
+
+58:59 
+One model design is good 
+
+59:00 
+For example here, we can select this entry or random quality 
+
+59:05 
+But for some complicated models 
+
+59:09 
+we ensemble different paths into a single learning algorithm. 
+
+59:13 
+For example, for this model, I integrate the LSTM model together with some external variables. 
+
+59:19 
+And for your own project, you may use a hybrid model like ArimaX. 
+
+59:26 
+ArimaX will integrate the temporal dependency path together with the external features. 
+
+59:32 
+For example, what I predict for this gene. 
+
+59:45 
+So for this photo, so I can propose a time series model 
+
+59:51 
+So one part is the auto regression model X as in my right the other I want to integrate some external 
+
+59:58 
+bubbles like the temperature the holiday information, right now 
+
+01:00:04 
+I can integrate these two parts to the regression path together into a single model. Now, it's as in my hand now here 
+
+01:00:12 
+I want to evaluate 
+
+01:00:15 
+Do I really need to integrate the X into the Avima model? 
+
+01:00:21 
+So to evaluate, I will run one model using Avima only. 
+
+01:00:25 
+Second model, alternative model, I will integrate the X into Avima. 
+
+01:00:31 
+So I have Avima X. 
+
+01:00:33 
+Now, following the previous rolling forecasting and validation scheme, 
+
+01:00:37 
+I will be able to evaluate which model is better, Avima or Avima X. 
+
+01:00:43 
+So if Avima X works better, 
+
+01:00:46 
+In terms of the testing performance, or in terms of the validation performance, then I will use ELEMA-X, if not 
+
+01:00:52 
+It means that X part is the pure noise 
+
+01:00:56 
+It has nothing to do to improve the performance for my ELEMA, so I will not integrate X into my ELEMA model 
+
+01:01:02 
+So that's how we can use the 
+
+01:01:06 
+model evaluation to determine whether we need to 
+
+01:01:09 
+Construct a more complicated model by integrating different parts all together 
+
+01:01:18 
+After that, we can do the best model. 
+
+01:01:23 
+Now, all the audience and your high-level managers, 
+
+01:01:28 
+they believe, okay, this is the best model we can choose 
+
+01:01:31 
+according to your training, validation, 
+
+01:01:33 
+and testing performance. 
+
+01:01:34 
+Now, the next step is the A-B testing. 
+
+01:01:39 
+After that, we need to deploy your model online. 
+
+01:01:43 
+And somebody should... 
+
+01:01:44 
+should be using this model for a while, for some days, and evaluate how your model is performing in the real world. 
+
+01:01:51 
+So if you consider this as the stock trader, so if you have the algorithm, the trading system, 
+
+01:01:59 
+so starting from today, I can have so many learning algorithms that I go back one year and a half. 
+
+01:02:08 
+I assume that I started to use different learning algorithms from last year of today. 
+
+01:02:13 
+And I used learning forecasting and evaluation for one year until today. 
+
+01:02:18 
+I will be able to use the historical data set to evaluate the model performance and pick the best model. 
+
+01:02:24 
+But that only tells you how you can use the historical observations to pick the best model. 
+
+01:02:30 
+The data store means that your model will really perform very well in the future. 
+
+01:02:37 
+Nobody knows what will happen in the future, right? So what do we need to do? So for the stock traders 
+
+01:02:44 
+They will always have the best model you can see. Don't put it aside. They will start to use this model for 
+
+01:02:52 
+Three months. I just use this algorithm to do automatic trading automatically every day 
+
+01:02:58 
+I do not do a lot of changes or do training or something or do the model selection again 
+
+01:03:04 
+I just use this model, I use this model for three months 
+
+01:03:07 
+and collect the performance of your model for three months 
+
+01:03:10 
+using real-world money. 
+
+01:03:13 
+Now we can see how your model is performing. 
+
+01:03:16 
+Now, to evaluate how well your model is performing, 
+
+01:03:19 
+we want to use some API. 
+
+01:03:22 
+Let's see how the API testing is working for the online deployment. 
+
+01:03:27 
+So the very beginning of the API testing is to test 
+
+01:03:30 
+some simple changes to your website design. 
+
+01:03:34 
+For example, we have two different websites. 
+
+01:03:41 
+The first website design, we used red color. 
+
+01:03:44 
+Last one year, all the websites in this company 
+
+01:03:48 
+will use red color as my background color. 
+
+01:03:51 
+And I can see how many consumers will click on websites. 
+
+01:03:55 
+They are getting attracted by the red background. 
+
+01:03:59 
+Now, a new study wants to show, 
+
+01:04:02 
+OK, maybe you should change your background color 
+
+01:04:06 
+from red to green for some reason. 
+
+01:04:09 
+And if the green color can be green, 
+
+01:04:15 
+But how you can validate green 
+
+01:04:19 
+is better or not? 
+
+01:04:21 
+So we need to choose a treatment group or the validation. 
+
+01:04:26 
+And we have some website using the green background instead of red. 
+
+01:04:31 
+Now for any incoming customers, I will randomly select the customers into the control group 
+
+01:04:38 
+who will see the red background and some other random customers, they will see the green background. 
+
+01:04:46 
+Now, I just run this online experiment for some days, to see how many randomly selected consumers seeing the red color will click this website, and how many of them seeing the green color will click this website. 
+
+01:05:01 
+And I change the click rate. 
+
+01:05:04 
+So you can see, in the long term, the green ones reach a higher click rate. 
+
+01:05:10 
+And if you compare the difference between the green website and the red website, there's a big difference between these 
+
+01:05:18 
+four cases. 
+
+01:05:19 
+According to our online testing, the A-B testing, the green color can attract more customers to click our website. 
+
+01:05:27 
+And you should replace all your red ones with green ones. 
+
+01:05:31 
+So that's the general A-B testing. 
+
+01:05:34 
+Now, for the A-B testing, you may have a very careful framework. 
+
+01:05:40 
+So first, the first step is to determine the key performance indicator. 
+
+01:05:52 
+The website owner, they collect money from the K3. 
+
+01:05:56 
+So, for any of these problems, if you want to introduce a change to your current model, 
+
+01:06:03 
+then we need to decide which key performance indicator are you checking. 
+
+01:06:08 
+Now, according to this key performance indicator, you can decide which variation should be tested. 
+
+01:06:15 
+Now, you need to hypothesize why this change, why this treatment should... 
+
+01:06:21 
+For the improve your performance indicator you need to give some reason for the business order to convince him 
+
+01:06:28 
+Okay, this treatment this change should bring some improvement for your KPI 
+
+01:06:34 
+Why? 
+
+01:06:38 
+After that you need to identify 
+
+01:06:43 
+Key relevance, so how we can take action to deliver this change to your colleagues 
+
+01:06:52 
+And then we do some randomized experiments, like the difference in difference, and we separate the group into two control. 
+
+01:06:59 
+And the treatment group will see these changes, and the control group will remain the same as your current model settings. 
+
+01:07:05 
+And then we run these two groups of studies, and evaluate the significance of the differences in KPIs between these two. 
+
+01:07:18 
+And we can conclude whether this variant can lead to a significance. 
+
+01:07:24 
+Significant means statistically significant. 
+
+01:07:27 
+Maybe on average, your performance KPI is higher, but by taking the standard deviation, it's not so obvious compared with the control group. 
+
+01:07:37 
+Or maybe in the treatment group, the KPI is becoming even worse. 
+
+01:07:42 
+So for that two cases, we will not, or the company will not accept these new changes, will not accept this treatment. 
+
+01:07:50 
+But if you can see a significant improvement in the treatment group compared with the control group, 
+
+01:08:00 
+And then you can choose the better model or the better treatment. 
+
+01:08:04 
+So in our 15th design, we can also have this kind of relevance. 
+
+01:08:10 
+But we need to make some comparisons. 
+
+01:08:12 
+For example, you may want to introduce the feature selection in your model. 
+
+01:08:19 
+Now we need to see. 
+
+01:08:22 
+Of course you can say, okay, the feature selection or feature importance can tell me some insight from my dataset. 
+
+01:08:27 
+But I may also ask you the question, 
+
+01:08:30 
+Will this selected optimal feature step further improve your model performance or does not change anything? 
+
+01:08:37 
+So what we need to do, so when you test my model using the full feature step 
+
+01:08:43 
+And I do the feature selection, and I use the selected feature to do the model performance evaluation 
+
+01:08:51 
+Now I compare the performance of these two models 
+
+01:08:54 
+If 
+
+01:08:57 
+the selected feature can deliver better performance, maybe the performance, the KPI is your accuracy 
+
+01:09:04 
+Maybe the performance is the accuracy and the efficiency, like the training time. 
+
+01:09:08 
+So you can conclude whether or not I should use the optimal feature set to change my model 
+
+01:09:14 
+and deliver my solution to the company using the selected optimal feature set. 
+
+01:09:19 
+Or I should use the original full feature set to change the model and deliver the model using the full feature set. 
+
+01:09:25 
+So you need to conclude that for me in your cost project. 
+
+01:09:30 
+So that's how we can introduce some pipeline into the business. 
+
+01:09:34 
+and evaluate whether this pipeline can be useful in further improving the model performance. 
+
+01:09:42 
+And also, because some of your groups introduced K-means clustering together with supervised learning, 
+
+01:09:49 
+but your focal problem is supervised learning. 
+
+01:09:52 
+So here I want to introduce one valid example of how to integrate unsupervised learning into supervised learning. 
+
+01:10:02 
+So our business problem is very clear. We want to improve the performance of our focus solution, we want to improve the position accuracy, we want to improve the regression position result, or the classification result, and how we can do that. 
+
+01:10:16 
+So the idea of this is that usually if you have a very complicated business problem, maybe one single learning algorithm, like one single learning formula, or one single edible seed. 
+
+01:10:29 
+or one single enigma cannot solve the problem 
+
+01:10:33 
+or cannot extract the pattern completely. 
+
+01:10:36 
+For example, for some students here in this classroom, 
+
+01:10:42 
+so for your course project, 
+
+01:10:44 
+maybe some students are very good at presentation, 
+
+01:10:47 
+and some of the students are very good at coding. 
+
+01:10:51 
+Now I cannot judge you as the presentation skill 
+
+01:10:54 
+to quantify your presentation score, right? 
+
+01:10:58 
+So, I cannot use a single regression model 
+
+01:11:02 
+to do the analysis. 
+
+01:11:03 
+So instead, I will separate the students into two groups. 
+
+01:11:07 
+One group of students, you are very good at presentation. 
+
+01:11:09 
+I will use one evaluation scheme 
+
+01:11:11 
+to evaluate your students' score. 
+
+01:11:14 
+Other groups, I will use a separate learning algorithm 
+
+01:11:17 
+to learn whether you are very good at coding 
+
+01:11:19 
+and deliver a very fancy model for your course project. 
+
+01:11:22 
+Now, I will of course separate you into two groups 
+
+01:11:25 
+and build the learning algorithm 
+
+01:11:27 
+within the two groups separately. 
+
+01:11:31 
+Now, this is very common in the real world business. 
+
+01:11:35 
+That we first do the consumer segmentation, then for each segment of customer, where we are induced a learning algorithm to make predictions. 
+
+01:11:43 
+So one of the famous example is the customer discrimination. 
+
+01:11:49 
+We call it Da Shu Ji Sha Shu, so whether you experience that. 
+
+01:11:54 
+So I can give you my example. 
+
+01:11:56 
+So when I worked in Hangzhou, so we have the car-sharing system. 
+
+01:12:08 
+from my apartment to the company at 8 a.m. every day morning and every midnight 11 
+
+01:12:15 
+p.m. I finished my work from the company to my apartment. So 8, 11, 7. Okay, not 9 and 6. 8, 11, 7. 
+
+01:12:25 
+It was a very, very tough period. Now we'll go back to the start. 
+
+01:12:32 
+So, after about three months of the hard working, I could not receive any 
+
+01:12:42 
+because I take the cash running everyday from my apartment to the company 
+
+01:12:46 
+After 3 months I didn't receive any 
+
+01:12:48 
+And I just test, ok, I just change your phone number 
+
+01:12:51 
+and I get so many coupons for another 3 months 
+
+01:12:55 
+Now after 3 months I didn't receive any coupons from the company 
+
+01:12:59 
+So you can see, when the company knows your pattern, knows your demand 
+
+01:13:04 
+and they have predicted your demand 
+
+01:13:06 
+you didn't receive any discount for that one 
+
+01:13:13 
+companies they have their own business models to cheat different group of 
+
+01:13:17 
+customers different so let's see how this is working so I believe of some of 
+
+01:13:23 
+you went to Macau right so have you so you should take the opportunity that we 
+
+01:13:29 
+are studying in Hong Kong you should take some time to Macau very funny trip 
+
+01:13:48 
+So at the very beginning, when I booked the hotel, the platform will check my historical 
+
+01:13:56 
+views. 
+
+01:13:57 
+So whether I hold the membership in the casino, whether I'm doing the gambling, or whether 
+
+01:14:04 
+I just go to the time-out with my car as a tourist, or whether I'm pushing money to the 
+
+01:14:11 
+casino. 
+
+01:14:13 
+And according to all these historical records, the casino will segment customers based on 
+
+01:14:21 
+So one group of customers, the hotel knows that you come to Macao for gaming, so you are not hanging out, you just come here to play. 
+
+01:14:35 
+And some groups of customers, like me, you do not play because you are so poor, you have no money to play, so you just come here to spend one or two days, hang out, buy something. 
+
+01:14:47 
+Now you can see, after this customer segmentation, 
+
+01:14:53 
+The first group of customers, they will receive a very, very low price for hotel. 
+
+01:14:59 
+Sometimes for the five stars, they can get the hotel for free. 
+
+01:15:03 
+So if you spend about thousands of dollars every day in the casino, 
+
+01:15:08 
+then you become the VIP of the member, and then you can get the hotel for free. 
+
+01:15:13 
+But for me, the casino knows that, okay, this poor tourist, he will not spend any money in my casino. 
+
+01:15:28 
+Now 
+
+01:15:31 
+you can see, for this hotel price system, the casino first segments the customers into 
+
+01:15:38 
+two groups, and then builds the amount of pricing model for the two segments of consumers 
+
+01:15:44 
+separately, 
+
+01:15:47 
+and then to maximize the total revenue from the discriminated segmented of 
+
+01:15:53 
+consumers. 
+
+01:15:55 
+So if you want to build something similar in your cost project, for example you want 
+
+01:16:04 
+the training data partition, and you want to see whether it is useful for me to do this 
+
+01:16:14 
+kind of data partition. 
+
+01:16:16 
+And here is one of the possible patterns you can consider. 
+
+01:16:19 
+So first, after we do the data collection, I can do the customer segmentation. 
+
+01:16:25 
+The customers, according to the attributes, I want to make. 
+
+01:16:31 
+Now, I want to forecast the demand for each reservation hall for each record. 
+
+01:16:37 
+So here I have three options to leverage the information I can get with or without K-means. 
+
+01:16:45 
+The first one is that I can run one regression model or one classification model for one segment of customer independently. 
+
+01:16:53 
+Now for the, if I have three clusters of K-means, then for the cluster one, I will do one model training, 
+
+01:17:00 
+and for the cluster two, I will use two different models to do the training or model selection, 
+
+01:17:09 
+the best model for the third group of consumers independently. 
+
+01:17:12 
+So I will check these three groups independently, and then evaluate. 
+
+01:17:16 
+So I get a test that I first identify which group this new customer should belong to, 
+
+01:17:24 
+and then use that learning algorithm to make predictions, and then evaluate the performance. 
+
+01:17:29 
+So that's the first possible alternative. 
+
+01:17:33 
+And second alternative is that I will run one regression model, but I will use the segment ID or the cluster ID as a dummy variable. 
+
+01:17:41 
+So 
+
+01:17:44 
+you have three K -means clusters. I need two dummy variables to indicate the cluster ID. 
+
+01:17:49 
+And I put that dummy variables into my learning algorithm. 
+
+01:17:52 
+I generate it from the K-means. 
+
+01:17:56 
+If that's possible, of course, I want to evaluate the performance using the second option. 
+
+01:18:00 
+The third option is that I need to use... 
+
+01:18:03 
+single learning algorithm without using any k-means inside. 
+
+01:18:08 
+I do not need any k-means, I do not do any k-means, I do not get 
+
+01:18:12 
+any class information, I just use the single model 
+
+01:18:16 
+to do the learning, and then evaluate the performance of this. 
+
+01:18:20 
+Finally you can compare the performance among age, and tell me whether 
+
+01:18:26 
+or not we need to use k-means to do the analysis. So this is 
+
+01:18:30 
+very important because 
+
+01:18:33 
+For one single course project, if you have your K-means together with the supervised learning, 
+
+01:18:39 
+you need to make sure that the insight you get from your K-means, from the unsupervised learning, 
+
+01:18:45 
+it should be very useful, or you should evaluate whether it is useful for your focal solution using the supervised learning. 
+
+01:18:54 
+You cannot just separate these two into two different analyses. 
+
+01:19:06 
+improving the performance of your focal learning algorithm, it's totally fine that you do not use K-means in your course project. 
+
+01:19:16 
+But if you do that, you need to evaluate whether the K-means is used. 
+
+01:19:22 
+So similar to any other pipeline, you may introduce some interesting and novel pipeline or analysis in your course project, 
+
+01:19:30 
+but make sure to evaluate whether or not the new design will lead to a better performance or not. 
+
+01:19:39 
+So that's for the course project. 
+
+01:19:42 
+So now that's for the... 
+
+01:19:44 
+So 
+
+01:19:48 
+still we have time to have a quick course review. 
+
+01:19:55 
+Because the final exam is really, really not easy. 
+
+01:20:00 
+And you need to spend some time to review or to prepare your cheat sheet. 
+
+01:20:06 
+Otherwise you will feel very, very difficult time. 
+
+01:20:10 
+And I 
+
+01:20:14 
+want to leave a very good impression after this semester. 
+
+01:20:17 
+Final exam, I still am holding the very good impression for everyone. 
+
+01:20:24 
+So maybe you will hate me doing the final exam, but let's try our best, okay? 
+
+01:20:33 
+So, the next slide, the next page is where it can determine your grade. 
+
+01:20:40 
+Okay, so let's see how you can prove. 
+
+01:20:45 
+To a very good grade, it's me, office 
+
+01:20:51 
+hours. 
+
+01:20:53 
+I don't have to take pictures. 
+
+01:20:58 
+I offer very flexible office hours for everybody. 
+
+01:21:01 
+Okay, I believe some of you, you have some consultant with me 
+
+01:21:05 
+for course project and learning materials, that's good. 
+
+01:21:09 
+So do not leave any clarification questions to the final exam. 
+
+01:21:14 
+So you have my email, you have my office number. 
+
+01:21:18 
+So every time you can book an office hour with me. 
+
+01:21:23 
+So very few of you booked the office hour with me. 
+
+01:21:31 
+I don't know how much money you paid for this course. 
+
+01:21:40 
+So you have paid your tuition. 
+
+01:21:43 
+You have purchased my time. 
+
+01:21:46 
+You 
+
+01:21:48 
+do not take it. 
+
+01:21:56 
+to get money, but it's very easy to get my time. 
+
+01:22:01 
+During this semester, after this semester, 
+
+01:22:05 
+you may hardly find me. 
+
+01:22:06 
+Prepare 
+
+01:22:09 
+your final exam as early as possible. 
+
+01:22:14 
+Of course, during the review session, 
+
+01:22:15 
+you will find some questions in my office. 
+
+01:22:20 
+So, to improve the efficiency, 
+
+01:22:22 
+because we have almost 500 students, 
+
+01:22:26 
+so before you book the office hour, 
+
+01:22:28 
+you need to prepare a list of questions 
+
+01:22:30 
+and have the slides numbered ready. 
+
+01:22:34 
+or the tutorial, you can point out which page 
+
+01:22:37 
+and quickly identify the question during the office hour. 
+
+01:22:42 
+And book your office hour one day ahead. 
+
+01:22:45 
+So maybe online, maybe in office, 
+
+01:22:48 
+you need to check whether it is online or offline 
+
+01:22:51 
+or which time I am available. 
+
+01:22:55 
+So for the course project, 
+
+01:22:59 
+I encourage every single group 
+
+01:23:01 
+to have at least one group consultation with me. 
+
+01:23:07 
+Now it's very close to the presentation next week, so you can ask me any kind of question for your 
+
+01:23:17 
+But do not ask me any question about okay 
+
+01:23:20 
+Can I present the final presentation to you before the final presentation and then you tell me some questions? 
+
+01:23:28 
+No, you can only ask me questions 
+
+01:23:31 
+Okay, not deliver a complete presentation during the office hour 
+
+01:23:35 
+for the final exam questions, you cannot ask me, will this show up in your final? Will 
+
+01:23:42 
+these questions show up in my final? I will not answer that kind of question. 
+
+01:23:48 
+Okay, now, yes, please make full use of my offer as much as possible. I totally don't 
+
+01:23:55 
+mind because I already get my salary from the university. It's 
+
+01:24:03 
+very difficult to find 
+
+01:24:03 
+my time, so it's not kidding. Other universities need to pay me a lot of money to deliver some 
+
+01:24:14 
+research papers. They can know how they find my data. But you have. 
+
+01:24:24 
+And now, this is a 
+
+01:24:27 
+pipeline that you can see that we go through the whole pipeline from week one to week 11. 
+
+01:24:33 
+You can ignore the step six, the deployment, because we cannot deploy it. We can only use 
+
+01:24:41 
+historical data to do the data analysis, right? So ignore the step six. So you can use this 
+
+01:24:47 
+as a pipeline to do the cost review or to prepare your final project presentation. 
+
+01:24:52 
+So from step 1 to step 5, I list the key points that you may need to include in your presentation. 
+
+01:25:00 
+So from the introduction to the problem statement, tell me the data, and how you prepare the data, 
+
+01:25:07 
+and which models you choose, and how you spend the money, 
+
+01:25:12 
+and then do the final selection and the conclusion. 
+
+01:25:14 
+So if you have some deployment insights with some of the students, 
+
+01:25:18 
+you want to do some marketing decisions, or you want to do some price optimization 
+
+01:25:22 
+to deliver the optimal price to maximize the revenue, 
+
+01:25:26 
+You can leave that as a single page in the conclusion 
+
+01:25:28 
+To tell me that after you have the prediction model 
+
+01:25:31 
+And you evaluate the performance of your prediction model 
+
+01:25:34 
+And this is the best one 
+
+01:25:35 
+How you can make this prediction model more useful in the online operation 
+
+01:25:41 
+But you do not need to highlight this part 
+
+01:25:43 
+Because you cannot evaluate whether or not it can perform as you expect 
+
+01:25:49 
+So that's the conclusion part 
+
+01:25:51 
+Now for this course 
+
+01:25:56 
+you can see every single learning material to be possible in your final exam on canvas 
+
+01:26:04 
+they will not go beyond the materials you can find on canvas 
+
+01:26:07 
+but you can see there are a lot of things on canvas right 
+
+01:26:11 
+so from week 1 to week 11 excluding week 10 so you need to review 
+
+01:26:17 
+we learn for the linear regression we learn how we 
+
+01:26:27 
+use the regularization term, and how we can do the model training using the gradient descent, 
+
+01:26:33 
+right? So we learn so many things in a single linear regression, and that's a warm-up class. 
+
+01:26:38 
+Then in week three, we learn how to do the description analytics, how we can use some 
+
+01:26:42 
+numbers and calculations and some of these statistics, together with some visualizations 
+
+01:26:47 
+to get the patterns of the data set. Also we can use some two-dimensional 
+
+01:26:54 
+visualization to present or to show high dimensional data as a coordinate plot. 
+
+01:27:00 
+Once you get this visualization result, you should be able to interpret what kind of information 
+
+01:27:06 
+we can get from the data exploration. 
+
+01:27:10 
+And in week 4, we learned how we can use the G-index and entropy to quantify the feature importance 
+
+01:27:17 
+and according to the feature importance score, we have the vector model and the filter model 
+
+01:27:21 
+to do the feature selection. 
+
+01:27:23 
+And in the feature selection, we also learn how we can use this kind of adaptive or sequential feature selection and feature elimination. 
+
+01:27:33 
+And also we learn how we can use the PCA to do the dimension reduction by transforming the original feature spacing and select the critical components. 
+
+01:27:43 
+Why they are called critical case? 
+
+01:27:48 
+So for some students, if you have no idea what I'm talking about, please go review as early as possible. 
+
+01:27:55 
+I'm reviewing something you learned in this semester. 
+
+01:27:58 
+Okay, some students think, okay, is this, no, 
+
+01:28:04 
+it's for review. 
+
+01:28:06 
+Now, in week 5, we learned the clustering, right? 
+
+01:28:09 
+For the clustering, we have three different clustering analyses. 
+
+01:28:11 
+The hard partition using K-means. 
+
+01:28:13 
+Now, for the K-means, we have K-means++. 
+
+01:28:16 
+Why we need K-means++? 
+
+01:28:18 
+To get the initial three or more case centroid to start the iterations in the K-means. 
+
+01:28:24 
+And we also learned bisecting K-means, how we can leverage the two cluster K-means one by one adaptively. 
+
+01:28:30 
+And now for the hierarchical clustering, we learn how we can question even our distance metric, how we view the border to our hierarchical structure clustering, and how to measure the distance between any two clusters. 
+
+01:28:44 
+Also 
+
+01:28:47 
+we learn the DB scan, the density -based clustering, and why the density -based clustering on previous two. 
+
+01:28:54 
+And identify the alternate data points from using this for the clustering analysis. 
+
+01:29:00 
+And for the classification, we start from the DCMG. 
+
+01:29:10 
+machine model using the HUM algorithm and after the decision model we go to the 
+
+01:29:16 
+ensemble learning of the difference between the random forest and the 
+
+01:29:20 
+adiposity. So how we can compare the difference. And now for the support vector machine 
+
+01:29:24 
+the mechanism for using the support vector classifier is totally different from what we can see in the random forest or decision tree model. 
+
+01:29:33 
+So why the support vector classifier is working well. 
+
+01:29:36 
+Now in week 8, we learned how to do the time series analysis using the simple learning algorithm, using the simple moving average, simple exponential smoothing, whole linear for the vector. 
+
+01:29:48 
+So we learned how to decompose the original observation yt into different patterns and then aggregate these patterns. 
+
+01:29:58 
+But in week 9, we learned how we can use the autoregressive method to leverage the historical observations and the historical algorithm. 
+
+01:30:09 
+construct the ARMA model, and how we can actually do the stationary task together with the PACF 
+
+01:30:15 
+and ACF functions to determine the type of parameters for the ARMA. 
+
+01:30:21 
+And we also learned how we can extend the ARMA model into the AVIMA, and what does the 
+
+01:30:26 
+I in the middle indicate, and how we can write down the formula for using the AVIMA model. 
+
+01:30:32 
+And for week 10 of deep learning, you can completely ignore this part, but if you want 
+
+01:30:38 
+to use some of the knowledge in this section for your course project, you are welcome. 
+
+01:30:41 
+you are not sure of your final, so for the whole week 10, okay, it's just for fun. 
+
+01:30:49 
+Now in week 11, we learned today, I'm not repeating here, okay. 
+
+01:30:57 
+So, this is a course map that we, for the description analytics, we learned how to do 
+
+01:31:02 
+the numerical measurements together with visualizations, and for the data engineering, we learned how 
+
+01:31:07 
+to do the, how we can generate some new features together with new some features. 
+
+01:31:13 
+or to get the most representative features, or get the principal components to reduce the dimension of my original data set. 
+
+01:31:22 
+And then for the clustering analysis, we have the K-means, Elantra clustering, and agency-based clustering. 
+
+01:31:29 
+So you need to review all these three to have a better understanding of all the three clustering analysis. 
+
+01:31:36 
+And for the ensemble learning, how we can construct different data sets, training data sets independently, 
+
+01:31:42 
+and also difference in the data generation comparing the random flow rates at both teams. 
+
+01:31:48 
+So you need to tell the difference. 
+
+01:31:50 
+And for the time series analysis, we have a simple model and some statistical learning model and regression-based model. 
+
+01:31:56 
+So you, in this map, you need to tell me what are the differences and how different models work differently. 
+
+01:32:03 
+So you may need to be able to calculate predictions using the whole linear of the whole winter in general concept, that's enough. 
+
+01:32:13 
+And for the model assessment, we learn how to evaluate 2x2 learning, like classification, regression, and time series model. 
+
+01:32:20 
+So you need to pick or construct a valid evaluation framework to do the model selection and performance evaluation. 
+
+01:32:30 
+So finally, I know that all of you are doing a very good job in using AI in your individual assignments together with your course project. 
+
+01:32:39 
+So I have some thoughts about using AI, so even though we do not have enough time, usually I can spend about 30 minutes to teach my PhD students how to use AI for their research. 
+
+01:32:55 
+Instruct the AI to do something for you. 
+
+01:32:57 
+Like for a program, we teach the machine to do something. 
+
+01:33:00 
+You can teach AI to do something and then ask the machine to do that. 
+
+01:33:05 
+In 
+
+01:33:07 
+general, you need to provide a very clear instruction to teach, 
+
+01:33:11 
+to educate the AI to do something useful for you. 
+
+01:33:16 
+So AI can treat it as a very small baby and that teacher will provide a very, very clear instruction. 
+
+01:33:23 
+And of course, if the instruction is clear enough, the results will be very similar to the results you want. 
+
+01:33:31 
+To enhance the quality of the response by AI, you may ask the AI to provide some references for you. 
+
+01:33:40 
+Whenever you ask AI to write a code for you, ask him to provide the official documentation link together with the code. 
+
+01:33:49 
+Then you check the official documentation to see whether this code is actually the same or similar from the official documentation 
+
+01:33:57 
+to prevent some mistakes or the fake code for you. 
+
+01:34:00 
+Also if you want to get some references or articles, ask for the references. 
+
+01:34:06 
+Then you check the validity of the reference because the reference link can be a fake. 
+
+01:34:12 
+And then now, because the BDA project is very complicated, it can be very big, 
+
+01:34:16 
+now you need to ask AI to decompose the big project into smaller parts, 
+
+01:34:22 
+and give models to think, and give yourself enough time to think. 
+
+01:34:26 
+So every response from AI, you need to check the response and think about this response, 
+
+01:34:32 
+whether it is valid, whether I can ask more along this direction, 
+
+01:34:36 
+so you can think together with AI. 
+
+01:34:39 
+And now sometimes you can use some external tools, there are many different developers 
+
+01:34:44 
+developing different AI tools to further help improve the efficiency for you, like the code 
+
+01:34:49 
+quality checking, like the data evaluation tracking, so it can use a third-party tool to check 
+
+01:34:56 
+the validity and the quality of your AI generated content. So for example, for your course project, 
+
+01:35:05 
+You need to decompose the whole project into different small parts and ask AI to do the single module independently, and then continue to integrate them together. 
+
+01:35:15 
+You cannot just dump the data and the questions, these problems to AI and ask AI to do all the five steps for you with a single prompt. 
+
+01:35:22 
+That's not possible. 
+
+01:35:25 
+You decompose this project one part by one part and provide prompt engineering for AI. 
+
+01:35:32 
+For example, you ask the AI to have a very good understanding of the data first, 
+
+01:35:36 
+and then you check whether AI really understands this data for you, 
+
+01:35:40 
+and then after your confirmation, you can go to the next step to do the feature engineering. 
+
+01:35:45 
+And then after that, you check the quality of the feature engineering output, 
+
+01:35:49 
+the code and outcome, then you go to the next step. 
+
+01:35:54 
+Separate the whole project into different pieces. 
+
+01:35:56 
+Okay? 
+
+01:35:57 
+So I still hope you can leverage AI with your own responsibility and deliver a quality... 
+
+01:36:04 
+We have high-quality course for you using AI. 
+
+01:36:07 
+I think that's all for the whole course. 
+
+01:36:10 
+Now I have nothing to teach. 
+
+01:36:12 
+And I want to learn from you in the presentation. 
+
+01:36:15 
+See you next week. 
+
+01:36:26 
+Then we may have different models like SVM and decision trees. 
+
+01:36:33 
+But how can we choose the suitable model? 
+
+01:36:36 
+So that's our second part of the tutorial. 
+
+01:36:41 
+So in this tutorial, you will learn how to use the validation data set to compare different models. 
+
+01:36:50 
+And also, I will show some examples, some models, how to control the complexity of that model. 
+
+01:37:02 
+That is, how to choose different suitable parameters for different models. 
+
+01:37:10 
+And also, so here is two examples. 
+
+01:37:13 
+The first is I will show you a linear regressor 
+
+01:37:17 
+and with some regularization study, 
+
+01:37:21 
+we will use range regression. 
+
+01:37:24 
+And also, for a decision tree, 
+
+01:37:26 
+we'll learn how to... 
+
+01:37:30 
+post-proving because this can control the complexity of the model to mitigate the overfitting 
+
+01:37:38 
+or underfitting issue and also uh so this one uh because uh these two i will show how to uh manually 
+
+01:37:47 
+choose the uh hyper parameters but for uh automatically choose the parameters we will 
+
+01:37:59 
+And also how to choose the suitable models, that's the second question I have just mentioned. 
+
+01:38:07 
+So here is the summary of the toolbox. 
+
+01:38:13 
+The first one is to some candidates, how to use this function to give some candidates our parameters. 
+
+01:38:22 
+And the second is the tool for model. This is the implemented model by executive learn. 
+
+01:38:30 
+So just input as we see from this library. 
+
+01:38:40 
+automatically choose the suitable hyperparameters and for the last one it's a report and this one 
+
+01:38:50 
+can directly report different metrics of your model this one is about how to evaluate your 
+
+01:38:59 
+model so let's go to the details of the different models how to control their complexity 
+
+01:39:10 
+So I will start from a very simple one that is a linear regression and then I add some control to 
+
+01:39:22 
+restrict the complexity to mitigate the overfitting issue. 
+
+01:39:26 
+So I will show you what's the overfitting and how we mitigate that in this case. 
+
+01:39:34 
+So firstly, we generate a data set by this function y equals to sine x, and then we add sine noise data. So you can see, so the two patterns here, one is the underlying pattern is a smooth curve. 
+
+01:39:56 
+component but we add some noise data to make the point degrade from it so we can we will 
+
+01:40:03 
+see that if the model is our fitting then we will learn a lot from the noisy data 
+
+01:40:11 
+but if we control it then we will we may learn the true pattern so here we extend the x into 15 
+
+01:40:20 
+polynomial features of this one and split the data into training and validation data sets as we have 
+
+01:40:28 
+done so many times before and then we will also normalize the features so let's see the details 
+
+01:40:41 
+This role improves the necessary tools from the libraries. 
+
+01:40:47 
+I think we have seen this role many times. 
+
+01:40:53 
+So here is how we generate the data, right? 
+
+01:40:58 
+How we generate the dataset. 
+
+01:41:00 
+This one is to add some random noisy data points. 
+
+01:41:06 
+And then after we do this... 
+
+01:41:09 
+after we're done then we can make a data visualization to show what's the 
+
+01:41:17 
+what's the shape of the data set you can see it's actually a smooth 
+
+01:41:24 
+curve this is a true pattern with some point derived from the the curve pattern right so 
+
+01:41:34 
+So we can see that. Then we move on to use a linear regressor to fit the data. But before that we may need some data pre-processing. So here you can see we still use this one. 
+
+01:41:54 
+how to split the data into training and testing. 
+
+01:41:58 
+Although it's our generated data, 
+
+01:42:01 
+we still need to split it into testing and training. 
+
+01:42:06 
+So here's the predictors and this one is our label, right? 
+
+01:42:13 
+It's a random state to use the random seeds to make the color reproducible 
+
+01:42:19 
+Then this one is a max mean max scalar. We can normalize the X and the Y to get a better 
+
+01:42:28 
+Prediction so we can see we just use the feet 
+
+01:42:33 
+and transform on the training data set but we only use transform to 
+
+01:42:40 
+to get the mean and the maximum value of the x so we can normalize the one and 
+
+01:42:51 
+So let's move on to the reading part. 
+
+01:42:55 
+So we can use a very simple polynomial regressor. 
+
+01:43:02 
+And here is how to, here, this line, we import the necessary methods from the library, right? 
+
+01:43:11 
+I think we have used that before. 
+
+01:43:14 
+So this one we start. 
+
+01:43:17 
+Still, we import the necessary tool before we use that. 
+
+01:43:24 
+Remember, we start off the model, then feet. 
+
+01:43:29 
+Use .feet to change the model and still the similar process 
+
+01:43:34 
+that we use the .predict to get the predicted one. 
+
+01:43:38 
+And then we use data visualization to show 
+
+01:43:42 
+the predicted points and real points. 
+
+01:43:46 
+In this picture, you can see that 
+
+01:43:51 
+Here, you can see that this one, this axis is our X and the Y is our predicted data. 
+
+01:44:00 
+So you can see, it seems perfect, right? 
+
+01:44:04 
+Because all the curves, it seems the predicted model, the trend model captures the real pattern. 
+
+01:44:12 
+And also, it seems it can trace the noisy pattern. 
+
+01:44:18 
+So I think it may all fit in. We will see that. You can see that we can predict. This is the training part. And we calculate the training error using MAE. So this is our matrix to evaluate the model. Here is the training error. And we can also take a look at the coefficients. We can see that this one coefficients are very large, right? 
+
+01:44:47 
+what does this mean it means that our model captures so many noisy patterns and 
+
+01:44:54 
+pay a lot of attention to the noise data points right so it's it may have a overfitting issue 
+
+01:45:03 
+we can see that using uh the validation error so you can see this one is very small but if we 
+
+01:45:13 
+Gets the predictive web on the testing data here. We use the testing data and 
+
+01:45:19 
+approach 
+
+01:45:20 
+towards the 
+
+01:45:22 
+Predictive web and the real web on the testing data 
+
+01:45:26 
+You can see that this predictive web is very far from the true web, right? 
+
+01:45:33 
+We can also calculate the validation error. It's much 
+
+01:45:38 
+It's much larger than the training 
+
+01:45:42 
+error right so how to mitigate such uh issue um we may see that because of this model to 
+
+01:45:52 
+trace more trace a lot of noisy pattern 
+
+01:45:58 
+So how we control that? We may add some penalty to last this model, not trace so many noise patterns, but we can capture the true pattern versus curve, right? 
+
+01:46:12 
+Here we use range regression. So the key idea of range regression is to add a penalty on the size of the coefficients. Remember the coefficients of that model, of our chain model is very large. Here it's like billions. So it's very large. So we can add a penalty to make the coefficients small. So the key idea is to use alpha. 
+
+01:46:42 
+This is the hyperparameters of the range regressor. 
+
+01:46:45 
+We add alpha to multiply sum of square of the coefficients. 
+
+01:46:50 
+So as we add this penalty to the loss function 
+
+01:46:54 
+of our simple linear regression, then we 
+
+01:46:57 
+can get the range regression. 
+
+01:46:59 
+But how to choose the alpha? 
+
+01:47:04 
+This is the hyperparameters. 
+
+01:47:05 
+We have so many options, right? 
+
+01:47:08 
+Here we can take a look, start with a simple trial. 
+
+01:47:13 
+You can see if we just set it to equal to 0.1, 
+
+01:47:21 
+so then we have parameters. 
+
+01:47:25 
+We just change the model, the tool we use. 
+
+01:47:28 
+We change our linear regression to this one, reach, right? 
+
+01:47:34 
+But before we use this one, we should import from the library. 
+
+01:47:41 
+so remember that if in your final exam they'll ask you some code questions 
+
+01:47:48 
+please remember to input from the library and then you can use that so so that's the 
+
+01:48:07 
+This is the setup for our model and under that we still use the dot hit and dot predict to get a predictive one on training. 
+
+01:48:20 
+Here and now we still use data visualization to see how better our model is. 
+
+01:48:28 
+So you can see we can capture the... 
+
+01:48:35 
+we can capture the curve pattern, right? 
+
+01:48:38 
+The curve pattern is y equals to sine x. 
+
+01:48:42 
+So, and then, after this visualization, 
+
+01:48:46 
+we should use our metrics. 
+
+01:48:48 
+We can calculate the metrics here. 
+
+01:48:50 
+We here use the MAE, mean absolute error. 
+
+01:48:54 
+And we can... 
+
+01:48:56 
+see that it seems that after adding the parameters, that's the 
+
+01:49:06 
+penalty alpha to our original linear regressor, the training error seems much bigger than the previous 
+
+01:49:15 
+one, right? But you can also take a look at the coefficients. So what's the trend of the coefficients? 
+
+01:49:25 
+You can see that the coefficient is much smaller, much, much smaller than the previous model, right? 
+
+01:49:32 
+And we can calculate, we can evaluate the model on a foundation. 
+
+01:49:42 
+You can see that the validation error here, first we get the predictive label on testing data 
+
+01:49:50 
+and we calculate, we evaluate the model on the testing data set, right? 
+
+01:49:57 
+And that's the value of the MAE on testing data. This one is smaller than previous one. 
+
+01:50:07 
+And if we visualize this predicted one and the real one 
+
+01:50:13 
+on our validation data set, we can see that it's much closer 
+
+01:50:19 
+compared with previous here, I think. 
+
+01:50:24 
+Right? This one. 
+
+01:50:26 
+And you can see that this one is much closer than the predicted one. 
+
+01:50:31 
+So in this way we can, we mitigate the overfitting issue by adding some control of the model complexity. 
+
+01:50:42 
+Just add alpha, and alpha plus, alpha multiply the coefficients, the square. 
+
+01:50:52 
+sum or square or coefficients to the loss function in this way we can let our 
+
+01:50:58 
+allow our model to focus on the true pattern and not chasing the noisy pattern. 
+
+01:51:09 
+That's how we mitigate the orbiting issue, but can we do this better by choosing a better alpha? 
+
+01:51:19 
+Yes, we can. 
+
+01:51:20 
+So how we do that, we may try a set of alpha here, and then for each try we can use this rule. 
+
+01:51:35 
+For each trial, we set up the model, right? 
+
+01:51:38 
+You utilize the model with different alpha. 
+
+01:51:40 
+That is our control of the model capacity. 
+
+01:51:44 
+And after we set up, we can use the dots. 
+
+01:51:47 
+You use the dots to train the model 
+
+01:51:50 
+and get the predicted one on testing data. 
+
+01:51:55 
+So we always evaluate the generalizability 
+
+01:51:59 
+of testing data and compare different. 
+
+01:52:04 
+results of the testing data. So you can see if we set this one to zero, so what does it mean? 
+
+01:52:12 
+It means this one is actually our simple linear regression, regression result and in control of the 
+
+01:52:20 
+capacity, right? 
+
+01:52:23 
+So you can see that this one, this validation arrow is very similar to our simple linear regressor. 
+
+01:52:31 
+But if we study into other values, which means we control the penalty, we control the complexity of our model. 
+
+01:52:43 
+And you can see that it's smaller, much smaller than result and control. 
+
+01:52:54 
+So you can compare that using the validation arrow. 
+
+01:52:59 
+So here is the quick question that which alpha provides the best performance? 
+
+01:53:08 
+But we should use the first one, right? 
+
+01:53:11 
+Because this one has 0.01. 
+
+01:53:15 
+This one, if we set alpha to this value, we can get the minimal validation error. 
+
+01:53:22 
+But can we do that? 
+
+01:53:28 
+Set the alpha to 0.01? 
+
+01:53:32 
+No, we can't, because we already tried this. 
+
+01:53:37 
+20 points. And it seems that the best one lies on the age of our wrench, right? 
+
+01:53:47 
+So if the child one is located at the age of your child, please expand the wrench. 
+
+01:53:57 
+Because it's actually the first approach of your trial, you should expand the range here to make more exploration of the hyperparameters. 
+
+01:54:10 
+So that's how we... 
+
+01:54:13 
+How we mitigate the overfitting issue of simple linear regressor by adding a penalty on the loss function to control its complexity, making it not chasing the loss function. 
+
+01:54:33 
+noisy data so that's the first part and here is the second example how to control the 
+
+01:54:43 
+complexity of a decision tree so let me talk about the decision tree 
+
+01:54:49 
+What's the complexity of a deciduous tree? 
+
+01:54:53 
+I think it's the number of the leaves and also the layers. 
+
+01:55:00 
+That's the depth of the tree, right? 
+
+01:55:04 
+So if a tree has so many layers or so many leaves, 
+
+01:55:11 
+this tree may be more complex than a single one. 
+
+01:55:18 
+may capture the pattern, but it also actually memorize the data, it's not learn the data. 
+
+01:55:28 
+So you can make a difference between learn a data pattern or memorize the data point. 
+
+01:55:43 
+Since the model will be over fit, so we will see that. 
+
+01:55:50 
+Here we use a different dataset, breast cancer diagnostic. 
+
+01:55:58 
+So before we go into the detailed process, we should import the necessary tool. 
+
+01:56:12 
+And then we can get the big predictors and also the targets, what we want to predict. 
+
+01:56:20 
+It's a classification problem, right? 
+
+01:56:22 
+So here. 
+
+01:56:24 
+I will show you that how to use, how to control the complexity of a tree. 
+
+01:56:31 
+So that's the data preparation stage and sees the data set into training and testing. 
+
+01:56:39 
+So we have to do this many times and also in your own course project, 
+
+01:56:43 
+you should very prepare for the data preparation stage. 
+
+01:56:49 
+move on to the second part um i think that uh parameters it's very important for model setup 
+
+01:56:59 
+stage so because um theory um as i have mentioned that we may have so many options 
+
+01:57:07 
+for hyper parameters how to choose the right one and what's the candidate so in um 
+
+01:57:14 
+In a decision tree, we can just use this function to compute a series of candidates alpha. 
+
+01:57:27 
+So here alpha can control the depth of the tree and also the numbers of the leaves. 
+
+01:57:37 
+So you can see that here is how we do that. 
+
+01:57:42 
+Firstly, we set up the decision tree classifier. We have used that in our previous tutorial, right? 
+
+01:57:54 
+And after that, we can use our training dataset to seek the candidates of alpha. 
+
+01:58:03 
+And so here is the list of candidates of alpha. 
+
+01:58:11 
+After that, we can change our model using different alpha here. 
+
+01:58:20 
+Here we got the list of candidates. 
+
+01:58:24 
+And we use this rule to try different alpha. 
+
+01:58:31 
+So here's the same steps. 
+
+01:58:41 
+And we fit on the, that's we change model on change data and got the results, the change model on such list. 
+
+01:58:53 
+So we can, after we change our model, we can, here are some examples of qi, we can visualize the qi. 
+
+01:59:03 
+So you can see, here I will show you three examples. You can compare the shape of the tree by its numbers, number of the leaves, and also the depth of the tree. 
+
+01:59:17 
+So for the first alpha, we set it in chain by setting alpha to zero, which means we can model without any... 
+
+01:59:29 
+control of model complexity so you can see that the decision sheet on the first alpha 
+
+01:59:36 
+um it's growth so big right so many layers and so many leaves so this is a complex model and 
+
+01:59:47 
+now we can see this one the middle one middle alpha you can see that 
+
+01:59:56 
+We have less layers and much simpler than this one, right? 
+
+02:00:01 
+Less layers and less leaves. 
+
+02:00:07 
+So that's how we prove that we can cut the branches, right? 
+
+02:00:13 
+We can cut these branches by setting the alpha. 
+
+02:00:18 
+So that's how we do that. 
+
+02:00:25 
+using a big one we can see that we cut these branches and leave the root here 
+
+02:00:33 
+right here is only a only one node is the root node right we cut all the 
+
+02:00:40 
+branches which means this model may under fitting right so that's how we 
+
+02:00:47 
+control the chi complexity by alpha and 
+
+02:00:52 
+here we can see that here we use a plot to see that what's the relationship between the alpha, the 
+
+02:00:59 
+parameters and the number of nodes and the number of the depth of the chi. You can see that as the alpha 
+
+02:01:08 
+goes bigger, the numbers of nodes decrease and also the depth of chi decrease. 
+
+02:01:15 
+which means as the alpha goes bigger, the complexity will reduce, right? 
+
+02:01:23 
+So that's how we control the complexity of a decision tree. 
+
+02:01:28 
+You can use this in all cost projects if you are using decision tree model. 
+
+02:01:43 
+We try different candidates by ourselves, right? 
+
+02:01:48 
+We write down this code, this loop. 
+
+02:01:53 
+We write down this loop to try different models. 
+
+02:01:57 
+But now I will show you how to automatically select hyperparameters 
+
+02:02:03 
+using this tool, Grace Search. 
+
+02:02:07 
+We still start with a simple baseline. We use the SVC with default parameters. 
+
+02:02:15 
+Before we use the theory input and we set up the model with default parameters that didn't change anything. 
+
+02:02:28 
+So then we fit. 
+
+02:02:30 
+We check the model, we get the predicted on the testing, and we use the classification report to automatically calculate so many metrics, right? 
+
+02:02:41 
+And now... 
+
+02:02:44 
+we can assess different pipe parameters. 
+
+02:02:49 
+So in this example, we are using SVC. 
+
+02:02:55 
+So usually we may set different seed as priority 
+
+02:03:01 
+for the misclassified points and also gamma 
+
+02:03:06 
+and actually also gamma to control the 
+
+02:03:11 
+complexity of our SVC model so 
+
+02:03:15 
+We can see that this one is actually like alpha in previous section, right? 
+
+02:03:21 
+We set different parameters to control the model complexity. 
+
+02:03:25 
+So that's how we do that in this SVC because different model have different way to control 
+
+02:03:33 
+the parameter, to control the complexity, usually we just set different parameters. 
+
+02:03:45 
+5 different C and 5 different Gamma 
+
+02:03:49 
+and here we have 25 combinations 
+
+02:03:53 
+with one kernel RBF 
+
+02:03:58 
+Here we use this our new tool, Gray Surge CV, to try different combinations here, and this is our estimators, and here is our parameter options. It's a date, right? This one is the date. So we repeat this SVC model. 
+
+02:04:23 
+different settings of our hyperparameters combination, we may have 25 trials, so you can see this is a 
+
+02:04:36 
+Cross-validation. So by default, we use five folds. We use one fold for testing and the other four folds for our training, right? We calculate the metrics on the testing fold. 
+
+02:04:58 
+So you can see that this is the first option of our combination, 0.1 combined with gamma 
+
+02:05:09 
+equal to 1. 
+
+02:05:11 
+And now here is the second trial, here you can see we combined 0.1C, 0.1 with this one. 
+
+02:05:25 
+Right, so you can see that we can just use this one, use this simple tool to make different trials on our hyperparameter grid. 
+
+02:05:40 
+So it's much simpler than previous code. 
+
+02:05:44 
+In here, you can see here we write so many, we use four, four loops. 
+
+02:05:53 
+Here, we use this roof to train different models of different heavy parameters. 
+
+02:06:02 
+But here, we just use the Bracer CV and only set what model you want to use and what options you want to try, 
+
+02:06:11 
+and set down the parameters and variables, which means that we can print the process. 
+
+02:06:21 
+So here is all the results 
+
+02:06:26 
+So how do we know the best one? We use this best parameters. We use this function and we can go the best one and we can use this to get the predicted because this one can use the best option to get the predicted and then we still use the classification report to get the... 
+
+02:06:53 
+results on different metrics so here is a comparison also in your course project or 
+
+02:07:00 
+in your presentation you can show your default model and the tuned model by 
+
+02:07:08 
+using different parameters to explain which one why you choose your final model so 
+
+02:07:20 
+Also, you need to explain, combine with your results, like here, the record, because this one, you can connect the number, do not stop at the number itself, but you should connect the number to the real program. 
+
+02:07:45 
+With one patient that has cancer, there will be a lot of cost, right? 
+
+02:07:55 
+So here our tool model can improve the recall. 
+
+02:08:00 
+Although the accuracy here is similar, but this tool model can improve the recall. 
+
+02:08:07 
+So I will choose the tool SVC, right? 
+
+02:08:12 
+So that's the third part. And for the final part, it's how to choose a model that we have so many options for models, like for classification, we may use decision tree as we aim on. You can see we have so many models here, neural networks or Gaussian classifier. 
+
+02:08:37 
+But how we choose a model. So I will show you to use cross-validation and also we use the simple holdout, which actually we do this so many times. 
+
+02:08:51 
+We split the data once into training and testing, but for cross-validation, the score is average across different training and testing units. 
+
+02:09:03 
+right so you can see how we do that first we can um we use our iris uh uh data set we have used 
+
+02:09:12 
+that before right still remember it's the classification problem so here is the predictors 
+
+02:09:19 
+and this one is our label it's so you can see that and now we can move on to setup model setup stage 
+
+02:09:32 
+We have set down the parameters with ten labels and we use this one cross validation to calculate the matrix. 
+
+02:09:49 
+on different fold. Here we send the CV cross-validation to 5, that means we split the data to 5 fold, right? 
+
+02:09:57 
+So here is the error on 5 fold. And here is the same steps, we get the decision tree. 
+
+02:10:10 
+Decision tree is performance on 5 fold, right? So how to choose that? 
+
+02:10:16 
+I think I will choose the first one, because it says the average, we should actually, for 
+
+02:10:26 
+the first try we calculate the average score on the whole fold, it says, I think, may be 
+
+02:10:35 
+better than this one, but the key point I pay attention to is that this one is more 
+
+02:10:44 
+stable than Decision-Chi. I can see that on different folds, this one has a stable performance, 
+
+02:10:53 
+but this one, you can see in this fold, Decision-Chi is worse than KNN, so I will choose the first one. 
+
+02:11:03 
+So when the metrics are similar between different models, 
+
+02:11:10 
+you may compare whether one is more stable than the other one 
+
+02:11:17 
+or the training time, whether this one is 
+
+02:11:23 
+faster than the other one. 
+
+02:11:25 
+So that's how I choose different model. 
+
+02:11:33 
+You want to try so many models. Here we define a list of different models. 
+
+02:11:41 
+Here you can see it's a list of different models. 
+
+02:11:44 
+Then we write down the four loops to try different models. 
+
+02:11:49 
+Use the cross validation and get the score. 
+
+02:11:58 
+GoCV or different models. Here is 5-fold, right? 5-fold for each model. 
+
+02:12:04 
+So that's how we use the cross-validation. 
+
+02:12:08 
+And the other option, it's a simple one, that's holdout. 
+
+02:12:15 
+We have used that many times, but this one we can't. 
+
+02:12:20 
+Advantage of this one, this holdout, is that we can use this function to give an overview on different metrics. 
+
+02:12:33 
+Because for this one, we should calculate the average to compare whether the model is stable on different testing datasets. 
+
+02:12:49 
+cross validation so for the detailed steps they are same right we uh send down the so this here 
+
+02:12:58 
+uh is our model uh training setup training part because we have prepared our data before um 
+
+02:13:07 
+we use the dot fit 
+
+02:13:11 
+So that's all for the model selection. We choose different parameters for different models. 
+
+02:13:20 
+We also use a manual to set up the candidates, or we set the range of a grid. 
+
+02:13:31 
+And then we use the grid search to see cross-variation. 
+
+02:13:37 
+That's the first part, and for the second part, it's how to choose a model, to compare the model. 
+
+02:13:43 
+So for model compare, the key point is it's fairly, it's fairly comparable. 
+
+02:13:50 
+So we feel means we use the same dataset, the same testing procedures. 
+
+02:13:59 
+So here you can see we use the same dataset. 
+
+02:14:04 
+we use the same dataset for different model, right? 
+
+02:14:08 
+And also, same dataset and also the same evaluation procedure, right? 
+
+02:14:16 
+So that's how we compare different model fairly. 
+
+02:14:21 
+So also in here, here is the summary. 
+
+02:14:26 
+I think I have summarized this one, so in your own course project, I think the key is not higher like your metrics accuracy. 
+
+02:14:39 
+But how to tell us a complete story that begins with a business problem and some pre-process of the dataset, then comes to the model comparison. 
+
+02:14:57 
+Model comparison here will tell you how to use different parameters and also use different models. 
+
+02:15:09 
+So you should tell us how you got the final one, like I have said that I choose this one. 
+
+02:15:20 
+i will choose this one you can you can um plot you can give us a table like to compare different 
+
+02:15:27 
+model different set up and in terms of different parameters and then you tell us 
+
+02:15:35 
+you choose this one because uh this matrix is better and more importantly to um 
+
+02:15:43 
+link your number with the real case 
+
+02:15:46 
+here I will link the number to the real case 
+
+02:15:49 
+recall means that in our 
+
+02:15:52 
+in this dataset, it's a cancer 
+
+02:15:54 
+diagnosed, right? If we 
+
+02:15:57 
+if the recall improves, what does it mean? 
+
+02:16:01 
+So in your own course project, you should 
+
+02:16:04 
+link your metrics 
+
+02:16:07 
+to the real problem and 
+
+02:16:12 
+so that's how you can care to come to make a complete story and the present it's in your 
+
+02:16:22 
+call in the final presentation so that's for the course project and here we still have the final 
+
+02:16:32 
+the last one of assignments assignments for this week so 
+
+02:16:40 
+The first thing is to use this dataset to select the best model among these three options right here. 
+
+02:16:52 
+And then still remember how to compare them fairly and thus has the minimal testing error. 
+
+02:17:03 
+evaluate your model on the testing data set. Remember that. This is the first question. 
+
+02:17:09 
+For the second question is that, use the same data set and try to use nested coarse validation 
+
+02:17:17 
+to get the optimal hyperparameters. So this one is to choose the optimal hyperparameters 
+
+02:17:33 
+faster one, faster hyperparameters for these three and compare model performance, okay? 
+
+02:17:40 
+This means you should compare this model with different hypermeters and also you 
+
+02:17:46 
+compare, after you choose that, you can compare, still compare the three models, 
+
+02:17:54 
+three different models. 
+
+02:17:55 
+So that's how you can complete this question. 
+
+02:17:59 
+And the last question is an open question. 
+
+02:18:03 
+What other process you can use 
+
+02:18:07 
+to further improve the performance of the best models 
+
+02:18:11 
+in question 2? 
+
+02:18:14 
+So, here are some examples, also you can, but if you set one process, you need to write down and run the code to show us how this process can improve the performance, okay? 
+
+02:18:29 
+Do not just write down that dimension reduction can improve the performance. 
+
+02:18:36 
+Of course, I know, but you should show it to me, okay? 
+
+02:18:39 
+So, that's all the assignment points. 
+
+02:18:44 
+So that's all for today's tutorial. 
+
