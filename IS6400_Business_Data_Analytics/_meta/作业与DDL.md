@@ -13,6 +13,9 @@ tags: [IS6400, DDL, 作业]
 
 # IS6400 作业与 DDL
 
+> 2026-11-23 19:32 HKT · W11 已按本人明确授权提交英文 HTML；Canvas 显示 Submitted!，文件名与核定版本一致。[提交回执](../assignment/graded/A12-week11-model-selection/notes/submission-20261123/README.md)。Notion 已同步为已提交；未推定本人学习或评分。以下较早待核阅/未上传记录保留当时时点。
+
+
 ## 2026-11-07 · 当前作业与项目节点
 
 - **11 月 15 日 23:59（香港时间）**提交小组展示 Slides，入口同刻关闭。[Slides 作业](https://canvas.cityu.edu.hk/courses/71457/assignments/339540)

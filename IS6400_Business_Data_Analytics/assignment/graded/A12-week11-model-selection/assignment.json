@@ -7,21 +7,19 @@
   "board_scope": "active",
   "group": null,
   "my_role": null,
-  "summary": "三问英文 Notebook／HTML 与中文导览已制作，43 个代码格空内核执行、0 error；独立抽检已完成。待本人核阅与手动提交，未上传。",
-  "stage": "三问答卷已制作，待本人核阅",
-  "updated_at": "2026-11-23T18:11:08+08:00",
+  "summary": "2026-11-23 19:32 HKT 已按本人明确授权提交最终英文 HTML，Canvas 显示 Submitted!；文件名和成功回执已核，Notion 已同步。未推定本人学习或评分。",
+  "stage": "已提交，等待评分",
+  "updated_at": "2026-11-23T19:38:56+08:00",
   "reviewed_at": "2026-11-23",
   "progress_as_of": "2026-11-23",
   "task_scope_complete": false,
   "next_action": {
-    "title": "本人核阅英文 HTML 与中文导览后，在 11/27 23:59 HKT 前手动提交 HTML",
+    "title": "等待教师评分；如需复习，从中文学习导览进入",
     "owner": "本人",
     "basis": "proposed"
   },
   "blockers": [
-    "本人核阅、学习与提交状态待本人确认；未代上传",
-    "Notion 连接器请求失败且侧栏需登录，待同步",
-    "现行线上看板仅接入小组项目，未接入 A12 个人作业"
+    "A12 个人作业尚未接入现行小组项目线上看板；不影响 Canvas 已提交事实"
   ],
   "tasks": [
     {
@@ -51,15 +49,14 @@
     },
     {
       "id": "student-answer",
-      "title": "本人最终作答、审阅与提交核对",
+      "title": "最终作答与提交核对",
       "owner": null,
-      "status": "in_progress",
-      "note": "英文答卷和中文导览已制作并通过技术/抽样检查；本人核阅、提交与评分未由文件生成推定",
+      "status": "done",
+      "note": "本人明确批准提交，Canvas 已显示 Submitted!；不推定本人已通读或掌握",
       "evidence": [
-        "answer-notebook",
         "answer-html",
-        "answer-guide",
-        "current-review"
+        "submission-approval",
+        "submission-receipt"
       ]
     },
     {
@@ -77,11 +74,14 @@
     },
     {
       "id": "personal-review",
-      "title": "本人核阅最终作答与手动提交",
+      "title": "确认本次提交版本与动作",
       "owner": "本人",
-      "status": "todo",
-      "note": "不代填已学习、已审阅或已提交",
-      "evidence": []
+      "status": "done",
+      "note": "本人在最终材料展示后回复“可以提交了”；不是本人学习或通读证明",
+      "evidence": [
+        "submission-approval",
+        "submission-receipt"
+      ]
     }
   ],
   "milestones": [
@@ -91,18 +91,23 @@
       "due": "2026-11-27T23:59:00+08:00",
       "precision": "datetime",
       "kind": "submission",
-      "status": "unknown",
+      "status": "done",
       "channel": "https://canvas.cityu.edu.hk/courses/71457/assignments/330587",
       "evidence": [
         "canvas",
-        "admin-receipt"
+        "admin-receipt",
+        "submission-receipt"
       ]
     }
   ],
   "submission": {
-    "status": "unknown",
-    "note": "未读取本人提交回执；未点Start Assignment、未上传或提交。",
-    "evidence": []
+    "status": "submitted",
+    "note": "2026-11-23 19:32 HKT：本人明确授权后提交核定 HTML；Canvas Submitted!、文件名及成功回执已核。回下载连接中断，未做服务器字节比对；评分未核。",
+    "evidence": [
+      "submission-approval",
+      "submission-receipt",
+      "submission-screenshot"
+    ]
   },
   "sources": [
     {
@@ -111,7 +116,7 @@
       "label": "Week11已核行政与完整原题",
       "locator": "IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/notes/任务说明.md",
       "observed_at": "2026-11-23",
-      "sha256": "db4299d9602f9b1eb05230e707d68f54229e509efa7fb688f52e54410d0e22db"
+      "sha256": "bd2cea35740d0af4904d81490714a25a7a5197e82de2f882da904b01ec471fa0"
     },
     {
       "id": "notebook",
@@ -192,6 +197,38 @@
       "locator": "IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/notes/verification-20261123/canvas-admin.json",
       "observed_at": "2026-11-23",
       "sha256": "85f6d54a8dbc9784e248cccf0934bb86f4c1c7535d4cb27b134abc2edd5b9193"
+    },
+    {
+      "id": "submission-approval",
+      "kind": "local",
+      "label": "本人明确提交授权",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/notes/submission-20261123/authorization.json",
+      "observed_at": "2026-11-23",
+      "sha256": "41ddf10a223a6298c21774c6106545e615f30cb30f843fb5b830f8a120cdf587"
+    },
+    {
+      "id": "submission-receipt",
+      "kind": "local",
+      "label": "Canvas 成功提交回执",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/notes/submission-20261123/receipt.json",
+      "observed_at": "2026-11-23",
+      "sha256": "db310d9ecc1fd935ef5867dda2fe72a32c39107bfc1f677f4b9770e729e18e13"
+    },
+    {
+      "id": "submission-screenshot",
+      "kind": "local",
+      "label": "Canvas 提交成功截图",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/notes/submission-20261123/submitted.jpg",
+      "observed_at": "2026-11-23",
+      "sha256": "d891ee4597e704a962517bb08433b3bdedb7eeaa630d6add5a9caf0b22cc02ad"
+    },
+    {
+      "id": "notion-submitted",
+      "kind": "local",
+      "label": "Notion 已提交状态回读",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/notes/submission-20261123/notion-verified.json",
+      "observed_at": "2026-11-23",
+      "sha256": "3fdb2a29b37900a888af9eb22d37f239e9784dc71792666dbacadf6fd24c20cb"
     }
   ]
 }
