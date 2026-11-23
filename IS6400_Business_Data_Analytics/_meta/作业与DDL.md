@@ -711,3 +711,8 @@ S29 `50:31` 记录当天讲授和教程的期末范围口头说明。末段只�
 | 单页小抄/题数 | `43:54`one page/single page；`45:07`/`45:20`口述13题 | 单页不自动等于单面／手写；题型分值与学校最终携带规定另核 |
 
 A12既有11/27 23:59 HKT、10points及扩展名未列来源保持；本次没有新增本人作答、审阅、提交或成绩证据。实际课日只保留手机显示2026-11-11，未独立确认。
+
+
+## 2026-11-23 · Assignment Week 11 当前交付
+
+三问英文 Notebook／HTML 与中文导览已制作，43 个代码格空内核执行、0 error；独立抽检已完成。待本人核阅与手动提交，未上传。 正式截止 2026-11-27 23:59 HKT，10 points；按教师 10/1 全作业公告提交执行后的 HTML。入口：[[IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/notes/开始这里|W11 中文导览]]、[英文 HTML](../assignment/graded/A12-week11-model-selection/submission/IS6400_Week11_60234350_LI_Binxiong.html)。现行 Canvas 四入口与原件同哈希记录见任务说明；Notion 与线上个人作业入口未同步，未用旧小组上线记录替代。

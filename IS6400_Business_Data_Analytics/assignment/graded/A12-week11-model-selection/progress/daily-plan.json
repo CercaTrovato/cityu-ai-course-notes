@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "assignment_id": "IS6400-A12",
+  "course": "IS6400",
+  "as_of": "2026-11-23",
+  "timezone": "Asia/Shanghai",
+  "source_revision": "8613f6fb9e72232d20ad9d7cbe6c5d1370b9ae511ef3c22396730ed6fc9d4fe1",
+  "repository_url": "https://github.com/CercaTrovato/cityu-ai-course-notes",
+  "stale": false,
+  "scheduling_policy": {
+    "advisory_only": true,
+    "unknown_effort_is_null": true,
+    "confirm_proposed_dates": true,
+    "do_not_schedule_blocked_execution": true,
+    "recheck_current_date_and_latest_revision": true
+  },
+  "actions": [
+    {
+      "id": "review",
+      "title": "本人核阅最终答案",
+      "owner": "本人",
+      "status": "planned",
+      "personal_action": "核阅英文HTML及中文导览，按需要提出具体修改",
+      "readiness": "ready",
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "blocked_by": [],
+      "estimated_minutes": null,
+      "observed_on": "2026-11-23",
+      "date_state": "unscheduled"
+    },
+    {
+      "id": "submit",
+      "title": "本人在Canvas提交HTML",
+      "owner": "本人",
+      "status": "planned",
+      "personal_action": "本人核阅后手动提交，成功后保存回执",
+      "readiness": "waiting_dependency",
+      "target": {
+        "value": "2026-11-27T23:59:00+08:00",
+        "precision": "datetime",
+        "basis": "official"
+      },
+      "blocked_by": [
+        "review"
+      ],
+      "estimated_minutes": null,
+      "observed_on": "2026-11-23",
+      "date_state": "next_7_days"
+    }
+  ],
+  "deadlines": [
+    {
+      "id": "submit",
+      "title": "本人在Canvas提交HTML",
+      "target": {
+        "value": "2026-11-27T23:59:00+08:00",
+        "precision": "datetime",
+        "basis": "official"
+      },
+      "status": "planned"
+    }
+  ]
+}

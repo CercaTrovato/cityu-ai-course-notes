@@ -3,24 +3,25 @@
   "id": "IS6400-A12",
   "course": "IS6400",
   "title": "Week 11 · 模型选择",
-  "assignment_type": "unknown",
-  "board_scope": "intake",
+  "assignment_type": "individual",
+  "board_scope": "active",
   "group": null,
   "my_role": null,
-  "summary": "已核11/27 23:59 HKT、10 points、文件上传；Notebook内部40/40/20另列。T11 课堂笔记与三问学习参考已独审并写回，本人制作及提交未核。",
-  "stage": "已登记，答卷与提交待核",
-  "updated_at": "2026-11-20T01:12:52+08:00",
-  "reviewed_at": "2026-11-18",
-  "progress_as_of": null,
+  "summary": "三问英文 Notebook／HTML 与中文导览已制作，43 个代码格空内核执行、0 error；独立抽检已完成。待本人核阅与手动提交，未上传。",
+  "stage": "三问答卷已制作，待本人核阅",
+  "updated_at": "2026-11-23T18:11:08+08:00",
+  "reviewed_at": "2026-11-23",
+  "progress_as_of": "2026-11-23",
   "task_scope_complete": false,
   "next_action": {
-    "title": "核本人现有作答及本次允许格式，再从原Notebook副本完成三问",
-    "owner": null,
+    "title": "本人核阅英文 HTML 与中文导览后，在 11/27 23:59 HKT 前手动提交 HTML",
+    "owner": "本人",
     "basis": "proposed"
   },
   "blockers": [
-    "允许扩展名或准确附件格式未由任务页列出",
-    "本人现有作答、提交凭证及评分未核"
+    "本人核阅、学习与提交状态待本人确认；未代上传",
+    "Notion 连接器请求失败且侧栏需登录，待同步",
+    "现行线上看板仅接入小组项目，未接入 A12 个人作业"
   ],
   "tasks": [
     {
@@ -28,12 +29,12 @@
       "title": "核题面、正式截止和文件上传入口",
       "owner": null,
       "status": "done",
-      "note": "root已实际核任务页，原Notebook/HTML归档并核SHA；Announcements/Files完整现行核查仍未完成",
+      "note": "11/23 已核四入口、HTML 统一公告、当前附件同哈希；Files 列表重定向但 Modules 文件详情可读",
       "evidence": [
         "brief",
         "notebook",
         "canvas",
-        "admin-receipt"
+        "current-admin"
       ]
     },
     {
@@ -52,8 +53,34 @@
       "id": "student-answer",
       "title": "本人最终作答、审阅与提交核对",
       "owner": null,
-      "status": "unknown",
-      "note": "不从下载、代码执行或Start Assignment推本人制作/提交状态",
+      "status": "in_progress",
+      "note": "英文答卷和中文导览已制作并通过技术/抽样检查；本人核阅、提交与评分未由文件生成推定",
+      "evidence": [
+        "answer-notebook",
+        "answer-html",
+        "answer-guide",
+        "current-review"
+      ]
+    },
+    {
+      "id": "answer-produced",
+      "title": "制作三问英文 Notebook、HTML、中文导览及实际拓展",
+      "owner": "制作流程",
+      "status": "done",
+      "note": "84 cells／43 code／0 error；原件未改、三问覆盖、35 外折复算、抽样独审完成",
+      "evidence": [
+        "answer-notebook",
+        "answer-html",
+        "answer-guide",
+        "current-review"
+      ]
+    },
+    {
+      "id": "personal-review",
+      "title": "本人核阅最终作答与手动提交",
+      "owner": "本人",
+      "status": "todo",
+      "note": "不代填已学习、已审阅或已提交",
       "evidence": []
     }
   ],
@@ -83,8 +110,8 @@
       "kind": "local",
       "label": "Week11已核行政与完整原题",
       "locator": "IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/notes/任务说明.md",
-      "observed_at": "2026-11-18",
-      "sha256": "a00a6d771bca20e925f1d44a37e8df69da0a0792881d9a5c7253820ca12c5ec6"
+      "observed_at": "2026-11-23",
+      "sha256": "db4299d9602f9b1eb05230e707d68f54229e509efa7fb688f52e54410d0e22db"
     },
     {
       "id": "notebook",
@@ -115,16 +142,56 @@
       "kind": "local",
       "label": "T11 模型选择实战正式学习笔记",
       "locator": "IS6400_Business_Data_Analytics/notes/T11-模型选择实战-Ridge剪枝与交叉验证.md",
-      "observed_at": "2026-11-20",
-      "sha256": "693dbf3c9ff3c815ab0f801c5a5ea50f807d22d20cb36e4094ba01bd0d8bfbdb"
+      "observed_at": "2026-11-21",
+      "sha256": "56491e4fc19b7102bf42a22d6246b68247fc2e838699855d31eab407ab1a971a"
     },
     {
       "id": "learning-reference",
       "kind": "local",
       "label": "A12 三问通过核对的本地学习参考",
       "locator": "IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/notes/学习参考.md",
-      "observed_at": "2026-11-20",
-      "sha256": "81e62c9e8eb355ca6c0dd1def65c5778fc01c74405c5ee9a1ca891a6e159ab41"
+      "observed_at": "2026-11-23",
+      "sha256": "d27b9a6f046e2d60174e3cb38772cd374790c42dae98579fb30b81f8b15f1162"
+    },
+    {
+      "id": "answer-notebook",
+      "kind": "local",
+      "label": "正式英文 Notebook",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/work/IS6400_Week11_60234350_LI_Binxiong.ipynb",
+      "observed_at": "2026-11-23",
+      "sha256": "8cb811f040407de20bb208e891eea9fae905d0364efed2a94bdb41033e552986"
+    },
+    {
+      "id": "answer-html",
+      "kind": "local",
+      "label": "标准导出英文 HTML",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/submission/IS6400_Week11_60234350_LI_Binxiong.html",
+      "observed_at": "2026-11-23",
+      "sha256": "5d52af4900424320d1f9749f86a96120aa1f6ed12f68772052770fe5d131e2ed"
+    },
+    {
+      "id": "answer-guide",
+      "kind": "local",
+      "label": "中文零基础作答导览",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/notes/开始这里.md",
+      "observed_at": "2026-11-23",
+      "sha256": "bce9c7789fb2782b9c86be268fdeea525f98ce8b83dfcf5750e3764814a2433e"
+    },
+    {
+      "id": "current-review",
+      "kind": "local",
+      "label": "11/23 验收与限制",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/notes/verification-20261123/review.md",
+      "observed_at": "2026-11-23",
+      "sha256": "0ae4216569f122845ba299cc74e5852e12a469eb4b7114590884c1fd302d20bf"
+    },
+    {
+      "id": "current-admin",
+      "kind": "local",
+      "label": "11/23 Canvas 当前核查",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A12-week11-model-selection/notes/verification-20261123/canvas-admin.json",
+      "observed_at": "2026-11-23",
+      "sha256": "85f6d54a8dbc9784e248cccf0934bb86f4c1c7535d4cb27b134abc2edd5b9193"
     }
   ]
 }
