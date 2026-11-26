@@ -1,0 +1,77 @@
+{
+  "reviewer_model": "gpt-6.1-sol",
+  "review_kind": "independent_lightweight_data_and_triage_review",
+  "status": "needs_targeted_fixes",
+  "scope": "文件身份、处理分类、重点来源及隐私边界；不含59篇M/T教学正文或全源视觉重审",
+  "verified": {
+    "teacher_identities": 153,
+    "teacher_scratch_hashes_recomputed": 153,
+    "own_identities": 28,
+    "own_scratch_hashes_recomputed": 28,
+    "local_identity_hashes_recomputed": 181,
+    "local_missing": 0,
+    "teacher_phase_rows_complete": 153,
+    "source_phase_rows_complete": 394,
+    "own_records": 29,
+    "is6400_visible_file_identities": 63,
+    "is6400_visible_modules": 12,
+    "is6400_module_items": 75,
+    "foreign_student_id_email_zoom_token_pattern_hits_in_public_audit_files": 0
+  },
+  "findings": [
+    {
+      "id": "R1",
+      "severity": "P2",
+      "status": "needs_fix",
+      "issue": "当前公开 teacher/source 矩阵残留已解决的下载失败和提交待核状态。",
+      "locations": [
+        "teacher-file-matrix.json:5695",
+        "teacher-file-matrix.json:5456",
+        "teacher-file-matrix.json:5868",
+        "source-processing-matrix.json:27601",
+        "source-processing-matrix.json:27362",
+        "source-processing-matrix.json:27774"
+      ],
+      "evidence": "16124087 当前下载与本地哈希均核实；341588 当前 workflow_state=submitted 且提交附件已核。",
+      "requested_fix": "将当前矩阵的 failed/待补哈希/提交待核改为本轮实际已核状态；原始阶段性coverage回执保留历史。"
+    },
+    {
+      "id": "R2",
+      "severity": "P2",
+      "status": "needs_fix",
+      "issue": "“平台当前PDF-only”将作业书面要求写成了平台技术限制。",
+      "locations": [
+        "README.md",
+        "processing-queue.json"
+      ],
+      "evidence": "341588 description要求PDF；submission_types为online_text_entry和online_upload，allowed_extensions为null。截止确为2026-12-01T15:59:59Z，即HKT 12/1 23:59:59。",
+      "requested_fix": "改为“当前作业书面要求 PDF，截止 12/1 23:59:59”，不要声称平台仅允许PDF上传。"
+    },
+    {
+      "id": "R3",
+      "severity": "P2",
+      "status": "recommended",
+      "issue": "处理队列没有显式承接矩阵中已有的IS5113 P01–P05/79页题索引与IS5542 M01备注四问、M02 p45缺图的定向核对。",
+      "locations": [
+        "processing-queue.json"
+      ],
+      "evidence": "上述待核处置存在teacher/source矩阵，但10项队列未列。",
+      "requested_fix": "补P2汇总项，或明确队列只列重点且矩阵为全部待办入口。"
+    }
+  ],
+  "unreviewed": [
+    "59篇既有M/T教学正文的逐页和逐题质量",
+    "所有源页视觉认证",
+    "最终Git/Notion/本地及线上看板同步",
+    "并发行政写回的最终版本"
+  ],
+  "artifact_sha256_at_report": {
+    "_meta/canvas-file-audit-20261126/README.md": "c73f4ead594bfd6dffd2fc17811d5c58c09b9e2e48937ffe89427bfee9d37692",
+    "_meta/canvas-file-audit-20261126/summary.json": "41dbe7405f464bf7991997bd167e840f4f82afddd1770a53dfe1245816f15560",
+    "_meta/canvas-file-audit-20261126/teacher-file-matrix.json": "be1dcb20145186f979a88f4851b320b95e2eb1f1aac7c59625d316d6cb91c319",
+    "_meta/canvas-file-audit-20261126/post-submission-matrix.json": "ca63a8936ea0007406021f89ae407ecea20f5fc9b42c9ed000c8347a058fb5c0",
+    "_meta/canvas-file-audit-20261126/processing-queue.json": "05178f4908fca3d7d06af093c7ed47c8a0e7d5bc275bd9412323c6ea96947059",
+    "_meta/canvas-file-audit-20261126/source-processing-matrix.json": "06bfecf3a703adb650c2493fbc840355f56756f5c4b727bf9e5b4f677be1efae",
+    "IS6400_Business_Data_Analytics/review/canvas-submissions-20261126/README.md": "2951ce1fbec3fedafa4b164bd1f22626001ae0739f599d638b7fb509abd76441"
+  }
+}

@@ -22,3 +22,7 @@ updated: 2026-11-26
 [[AC6761_Artificial_Intelligence_Accounting/00-课程总览|课程总览]] · [[AC6761_Artificial_Intelligence_Accounting/_meta/作业与DDL|作业与 DDL]] · [[AC6761_Artificial_Intelligence_Accounting/review/README|复习资料]] · [[_meta/github-maintenance-20261126/remaining-gaps|全库待补来源]]
 
 11/25 最后复习课已给口头范围，当前先看 [[AC6761_Artificial_Intelligence_Accounting/review/final-2026/last-class-review|考点、排除范围与英文作答]]；早期17单元保留完整知识路线。题数、分值、选答和允许材料仍待核，不据Outline断言绝无选择题。
+
+## Canvas 全材料审计 · 2026-11-26
+
+本课已按教师原件、数据/代码、题目/答案、模板/行政、本人成绩/原交件分别核对课前、课中、课后用途。完整处理判定见 [全材料矩阵与队列](https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/_meta/canvas-file-audit-20261126/README.md)。新增教学候选仍待制作，不由归档或评分推定已学。

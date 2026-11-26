@@ -22,3 +22,7 @@ updated: 2026-11-26
 [[IS5542_GenAI_in_Business/00-课程总览|课程总览]] · [[IS5542_GenAI_in_Business/_meta/作业与DDL|作业与 DDL]] · [[IS5542_GenAI_in_Business/review/README|复习资料]] · [[_meta/github-maintenance-20261126/remaining-gaps|全库待补来源]]
 
 第 6 次反思的 [[IS5542_GenAI_in_Business/assignment/graded/A07-legal-industry-reflection/notes/canvas-readback-20261126|提交回执]]已归档；远端附件字节哈希未核。新增 Lecture 10 已在 Canvas 发现，接收及教学处理状态见全库待补来源。
+
+## Canvas 全材料审计 · 2026-11-26
+
+本课已按教师原件、数据/代码、题目/答案、模板/行政、本人成绩/原交件分别核对课前、课中、课后用途。完整处理判定见 [全材料矩阵与队列](https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/_meta/canvas-file-audit-20261126/README.md)。新增教学候选仍待制作，不由归档或评分推定已学。

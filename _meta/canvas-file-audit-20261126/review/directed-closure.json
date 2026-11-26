@@ -1,0 +1,39 @@
+{
+  "reviewer_model": "gpt-6.1-sol",
+  "review_type": "directed_closure_only",
+  "status": "PASS_WITH_SCOPE_LIMITS",
+  "closed_findings": [
+    "R1",
+    "R2",
+    "R3"
+  ],
+  "checks": {
+    "R1_teacher_download_resolved": true,
+    "R1_source_download_resolved": true,
+    "R1_teacher_submission_resolved": true,
+    "R1_source_submission_resolved": true,
+    "R2_written_requirement_not_platform_enforcement": true,
+    "R3_queue_explicit_directed_scope": true,
+    "AI_Bias_teacher_source_consistent": true,
+    "identity_counts_unchanged": true,
+    "learning_production_remains_pending": true,
+    "phase_fields_still_complete": true,
+    "IS6400_scope_boundary_preserved": true
+  },
+  "remaining_actionable_findings": [],
+  "carried_evidence": "初轮181个本地身份及153+28 scratch SHA-256重算结果沿用，本轮未重复全量哈希。",
+  "scope_limits": [
+    "只关闭审计候选R1-R3并核公开矩阵一致性",
+    "不认证59篇教学正文或全源页视觉",
+    "不认证并发行政元数据写回的全部字段或最终Git/Notion/看板发布",
+    "pending_learning_production为真实后续任务，不代表本轮已制作完成"
+  ],
+  "artifact_sha256": {
+    "README.md": "3b7666c7e39a301e1f11719db485cc441236457d7dc1eea8a39c6e0bd6e6bc69",
+    "summary.json": "41dbe7405f464bf7991997bd167e840f4f82afddd1770a53dfe1245816f15560",
+    "teacher-file-matrix.json": "c536faaca72915b75b7f5d42b786132da49631a32d8f64b8ed45d44efd1870a7",
+    "source-processing-matrix.json": "b94502c32717db3ad44319636d9f8227e59d661ef424f1c775d21bab82ddd79c",
+    "post-submission-matrix.json": "ca63a8936ea0007406021f89ae407ecea20f5fc9b42c9ed000c8347a058fb5c0",
+    "processing-queue.json": "648652924e53e70dc1c5f2f323ac973f46eead03002d39bd977285fc1fd61954"
+  }
+}

@@ -22,3 +22,7 @@ updated: 2026-11-26
 [[EF5560_Fintech_and_AI_in_Finance/00-课程总览|课程总览]] · [[EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL|作业与 DDL]] · [[EF5560_Fintech_and_AI_in_Finance/review/README|复习资料]] · [[_meta/github-maintenance-20261126/remaining-gaps|全库待补来源]]
 
 M10/M11 已融合现有录音，早期 v0.9/pending 提示仅为历史。录制平台采用本人补充的腾讯会议课堂口径，旧 Zoom 要求保留历史。个人材料按现行公开规则处理，第三方信息仍保护。
+
+## Canvas 全材料审计 · 2026-11-26
+
+本课已按教师原件、数据/代码、题目/答案、模板/行政、本人成绩/原交件分别核对课前、课中、课后用途。完整处理判定见 [全材料矩阵与队列](https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/_meta/canvas-file-audit-20261126/README.md)。新增教学候选仍待制作，不由归档或评分推定已学。

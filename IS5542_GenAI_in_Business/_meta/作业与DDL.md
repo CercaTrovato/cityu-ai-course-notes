@@ -258,3 +258,6 @@ S26/S27已归M07并制作录音先行笔记，具体反思任务页、截止、�
 依据本批 [exam-schedule-source.json](../../_meta/canvas-materials-20261105/exam-schedule-source.json) 更新期末为12/18 18:30–20:30 HKT、LI 3楼3508。来源是用户提供计划所记11/5 12:56 AIMS读取快照，本轮未重登，允许材料11/30起公布。仅日期/来源维护；本轮无新讲义，不扩大M06旧Google反思，M07仍录音先行partial缺讲义；个人出席/学习/提交/评分保持。
 
 第五次客座反思的课件、原件核对、定稿和提交记录见 [A06 任务说明](../assignment/graded/A06-digital-native-reflection/notes/任务说明.md)。
+
+<!-- canvas-all-material-audit-20261126 -->
+> **11/26 全材料处理判定**：[[_meta/canvas-file-audit-20261126/README|全材料矩阵与三阶段队列]]。范围包含配套数据、代码、题目、参考答案、模板和原作答，不只最新课件；档案和教学完成分别记录。

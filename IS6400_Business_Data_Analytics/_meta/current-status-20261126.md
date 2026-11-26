@@ -20,3 +20,7 @@ updated: 2026-11-26
 [[IS6400_Business_Data_Analytics/review/final-2026/framework|期末复习框架]]含 12 个单元；[[IS6400_Business_Data_Analytics/review/final-2026/progress.json|结构化进度]]保留未开始、掌握未知的真实状态。[[IS6400_Business_Data_Analytics/review/final-2026/handover|交接与来源边界]]保留原抽样审查范围；归档不等于本课已学会、已通过或重新全课审查。
 
 [[IS6400_Business_Data_Analytics/00-课程总览|课程总览]] · [[IS6400_Business_Data_Analytics/_meta/作业与DDL|作业与 DDL]] · [[IS6400_Business_Data_Analytics/review/README|复习资料]] · [[_meta/github-maintenance-20261126/remaining-gaps|全库待补来源]]
+
+## Canvas 全材料审计 · 2026-11-26
+
+本课已按教师原件、数据/代码、题目/答案、模板/行政、本人成绩/原交件分别核对课前、课中、课后用途。完整处理判定见 [全材料矩阵与队列](https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/_meta/canvas-file-audit-20261126/README.md)。新增教学候选仍待制作，不由归档或评分推定已学。
