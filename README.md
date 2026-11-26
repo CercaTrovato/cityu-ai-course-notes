@@ -6,7 +6,7 @@ updated: 2026-11-27
 
 # CityU 课程知识库
 
-> 本批最终 GitHub、Notion、本地与线上看板核验见 [11/26 同步回执](_meta/canvas-file-audit-20261126/production-closeout.md)。
+> 本次 M07 补源的 GitHub、Notion、本地与线上证据见 [11/27 同步回执](_meta/canvas-file-audit-20261126/m07-web-review-20261127-closeout.md)；上批见 [11/26 回执](_meta/canvas-file-audit-20261126/production-closeout.md)。
 
 ## 2026-11-27 · M07 金融客座网页补源
 
