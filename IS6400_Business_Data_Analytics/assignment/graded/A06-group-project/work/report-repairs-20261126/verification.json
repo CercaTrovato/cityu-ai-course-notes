@@ -1,0 +1,97 @@
+{
+  "aggregate_checks": [
+    {
+      "table": "h04-screening.csv",
+      "rows": 7,
+      "arithmetic": "passed"
+    },
+    {
+      "table": "r3-methods.csv",
+      "rows": 18,
+      "arithmetic": "passed"
+    },
+    {
+      "table": "r3-group-methods.csv",
+      "rows": 9,
+      "arithmetic": "passed"
+    },
+    {
+      "table": "frozen-test-metrics.csv",
+      "rows": 27,
+      "arithmetic": "passed"
+    },
+    {
+      "table": "feature-experiment-results.csv",
+      "rows": 9,
+      "arithmetic": "passed"
+    }
+  ],
+  "model_replay": [
+    {
+      "model": "F0",
+      "rows": 29368,
+      "max_score_difference": 1.1102230246251565e-16,
+      "independent_pandas_rank_and_metrics": "passed"
+    },
+    {
+      "model": "G1",
+      "rows": 29368,
+      "max_score_difference": 2.220446049250313e-16,
+      "independent_pandas_rank_and_metrics": "passed"
+    },
+    {
+      "model": "G2",
+      "rows": 29368,
+      "max_score_difference": 1.1102230246251565e-16,
+      "independent_pandas_rank_and_metrics": "passed"
+    }
+  ],
+  "model_replay_scope": "3 new repair models only;historic member models not re-fitted",
+  "figures_checked": 10,
+  "figure_replay": [
+    {
+      "figure": "01-time-windows",
+      "svg_pdf_exact_replay": true
+    },
+    {
+      "figure": "02-initial-screening",
+      "svg_pdf_exact_replay": true
+    },
+    {
+      "figure": "03-feature-comparisons",
+      "svg_pdf_exact_replay": true
+    },
+    {
+      "figure": "04-frozen-months",
+      "svg_pdf_exact_replay": true
+    },
+    {
+      "figure": "05-frozen-capacity",
+      "svg_pdf_exact_replay": true
+    },
+    {
+      "figure": "06-group-coverage",
+      "svg_pdf_exact_replay": true
+    },
+    {
+      "figure": "07-paired-evidence",
+      "svg_pdf_exact_replay": true
+    },
+    {
+      "figure": "08-trial-feasibility",
+      "svg_pdf_exact_replay": true
+    },
+    {
+      "figure": "09-probability-extension",
+      "svg_pdf_exact_replay": true
+    },
+    {
+      "figure": "10-value-extension",
+      "svg_pdf_exact_replay": true
+    }
+  ],
+  "fits_in_verifier": 0,
+  "private_data_published": false,
+  "scope": "prepared report evidence;not a final submitted manuscript",
+  "evidence_execution_note": "Three saved models replayed before display-only repairs;all10final figures then replayed again. Neither verification fitted a model."
+}

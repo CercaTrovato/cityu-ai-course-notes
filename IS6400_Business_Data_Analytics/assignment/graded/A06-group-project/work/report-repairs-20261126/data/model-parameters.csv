@@ -1,0 +1,7 @@
+family,C,max_iter,seed,weights,other,trees,depth,leaf_min,learning_rate,L2,groups,starts,protocol
+LR,1.0,2000.0,2026,None / balanced,L2; lbfgs; tol1e-4; fits October only,,,,,,,,H04 screening / R3 core (KMeans: H05)
+RF,,,2026,None / balanced,n_jobs2; same H04 encoded inputs,300.0,8.0,20.0,,,,,H04 screening / R3 core (KMeans: H05)
+CatBoost,,,2026,None / auto_class_weights Balanced,Logloss; threads2; one-hot inputs in H04 screening,300.0,6.0,,0.05,5.0,,,H04 screening / R3 core (KMeans: H05)
+KMeans,,300.0,42,,"R/log1p(F)/log1p(M), October scale, k-means++, Lloyd,tol1e-4; initialization checks7/91",,,,,,3.0,20.0,H04 screening / R3 core (KMeans: H05)
+Extension LR,1.0,5000.0,2026,None / balanced,lbfgs;tol1e-10;positive-slope Platt on separate20%cal;actual stop diagnostics retained,,,,,,,,separate80/20 calibrated extension
+Extension native CatBoost,,,2026/2027/2028,none,Logloss;CPU threads2;use_best_model=False;native141 fields;mean of3 calibrated seeds,300.0,3.0,,0.03,10.0,,,separate80/20 calibrated extension

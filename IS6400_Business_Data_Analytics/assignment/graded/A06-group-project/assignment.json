@@ -7,23 +7,20 @@
   "board_scope": "active",
   "group": "Six Sigma",
   "my_role": "业务目标与项目统筹（6 号）",
-  "summary": "本人11/26确认11/25展示完成、没有老师反馈；最终报告正文未开始，需要分工。已完成基于现有代码/表/图的报告前审计：18条准备事项（4个P0、14个P1），其中当前状态写回由本批处理；区分现成证据、记录错误、必补报告材料及可选实验，未重训。六岗第一批交件/日期为建议，待本人及成员确认。",
-  "stage": "11/25展示已完成｜报告正文未开始，前审计与分工建议已备",
-  "updated_at": "2026-11-26T16:52:33+08:00",
+  "summary": "本人转述团队交由本人统一处理18项，并确认名单主线＋概率/价值独立扩展。18项已形成可核写作准备包：修元数据/口径、补45行实验身份、表和10张SVG/PDF；新增固定F0/G1/G2开发对照50/49/48，未重选测试模型。独立抽检及最终core封包核验完成。下一步按23页建议分工写正文；正式报告正文尚未开始，未提交。",
+  "stage": "18项修补准备完成｜可分工写报告正文",
+  "updated_at": "2026-11-26T21:47:58+08:00",
   "reviewed_at": "2026-11-26",
   "progress_as_of": "2026-11-26",
   "task_scope_complete": false,
   "next_action": {
-    "title": "本人评审审计R02范围单及六岗建议；先整理实验身份、修R3元数据、数据时间图和三期完整报告表，再确认正文分工；不默认开启新模型训练。",
-    "owner": "本人统筹；1–5号按既有能力建议分工，未认领",
+    "title": "按修补包writing-brief的23页框架协调六岗正式写作认领；使用已核表图/registry，概率与价值单独成章，定稿前核Canvas最新格式和全文。",
+    "owner": "本人统筹六岗写作，具体认领待实际确认",
     "basis": "proposed"
   },
   "blockers": [
-    "最终报告正文未开始，章节与具体认领待本人/成员确认；正式截止仍12/6 23:59 HKT。",
-    "报告目标、采用模型/预处理/拟合文件及正文/附录素材需现行范围单，不能用旧A/B采用文案代选。",
-    "R3元数据生成矛盾、错误原CI素材准用和版本身份需按审计处理；现成数据/图不重做。",
-    "展示已完成且本人未报告教师反馈；旧Slides提交成功页/时刻/账号仍未独立核实，补证不构成重交。",
-    "本批共享management、CityU根Git及线上收尾由总监督接续，不因课程文件写回而声称三端完成。"
+    "正式报告正文未开始，章节认领、全文合稿/通读与正式提交仍待执行；12/6 23:59 HKT截止保留。",
+    "真实触达/同意/成本、源系统历史修改日志不能由现有数据补造，报告按修补包明确限制。"
   ],
   "tasks": [
     {
@@ -55,16 +52,18 @@
     {
       "id": "scope",
       "title": "业务场景、样本、标签及评价口径",
-      "status": "in_progress",
+      "status": "done",
       "owner": "本人 + 1、3 号",
-      "note": "课堂展示11/25已完成；最终报告的目标、精确版本及素材范围需按本次审计R02确认，不重新默认A/B路线。",
+      "note": "本人于11/26明确确认名单主线＋概率/价值独立扩展；现有F0作主参照，各run身份分开。此为当前写作准备口径，不倒填历史事前冻结。",
       "evidence": [
         "published-status-86d0ead",
         "april-latest-86d0ead",
         "route-comparison",
         "route-A-adoption",
         "post-presentation-facts-20261126",
-        "report-gap-audit-20261126"
+        "report-gap-audit-20261126",
+        "repair18-report-20261126",
+        "repair18-register-20261126"
       ]
     },
     {
@@ -95,9 +94,9 @@
     {
       "id": "iteration",
       "title": "组内 EDA 与特征反馈实验",
-      "status": "in_progress",
+      "status": "done",
       "owner": "3、4、5 号",
-      "note": "固定本地研究与1–5号第三轮验收已完成各自核定范围，2号v1.1修订已通过；3/5原记录问题保持。本批只对照/作图和纠正采用状态，无新实验。当前展示已采用 A v2，并由本人转述全组认可；不重开路线投票。",
+      "note": "原R3与v1.1保留，本批另完成固定F0/G1/G2三版开发对照50/49/48；新增运行由本人借助Codex执行，不写成成员3号新交件。不据测试重选模型。",
       "evidence": [
         "published-status-86d0ead",
         "h06-latest-86d0ead",
@@ -105,7 +104,9 @@
         "team-h04-v04-verified",
         "team-round3-intake",
         "role02-v11-acceptance",
-        "route-comparison"
+        "route-comparison",
+        "repair18-report-20261126",
+        "repair18-register-20261126"
       ]
     },
     {
@@ -143,7 +144,7 @@
       "title": "最终报告与复现核验",
       "status": "todo",
       "owner": "全组",
-      "note": "本人11/26确认最终报告正文尚未开始。本批完成前审计和六岗建议，不代表正文、团队采用或交件完成。",
+      "note": "18项报告准备已由本人借助Codex统一处理、独立抽样检查完成。正式正文尚未开始，按23页建议进入实际章节认领/写作。",
       "evidence": [
         "local-team-guide",
         "report-page",
@@ -151,7 +152,9 @@
         "route-decision-correction",
         "team-B-adoption",
         "post-presentation-facts-20261126",
-        "report-gap-audit-20261126"
+        "report-gap-audit-20261126",
+        "repair18-report-20261126",
+        "repair18-register-20261126"
       ]
     },
     {
@@ -178,11 +181,13 @@
     {
       "id": "h04-handoff-wording",
       "title": "修正 H04 交接说明与评价口径",
-      "status": "todo",
+      "status": "done",
       "owner": "3 号",
-      "note": "既有四月名单已复现不重跑；本轮R3实验记录仍有最终测试旧措辞，需3号修为已见回测并澄清冻结依据。",
+      "note": "当前公开交接/实验日志已由本人借助Codex加日期说明：历史v0.4重拟合复现与11/25load/predict执行区分；群CV条件明确。原成员ZIP未改，不冒称其亲自重交。",
       "evidence": [
-        "team-h04-v04-verified"
+        "team-h04-v04-verified",
+        "repair18-report-20261126",
+        "repair18-register-20261126"
       ]
     }
   ],
@@ -1553,6 +1558,46 @@
       "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-gap-audit-20261126/verification.json",
       "observed_at": "2026-11-26",
       "sha256": "cd9c0d848df5a1cc6e37bb39ac69a5e692971b2e5c2d3733cb438a88004a5de2"
+    },
+    {
+      "id": "repair18-report-20261126",
+      "kind": "web",
+      "label": "18项统一修补处理报告",
+      "locator": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/report-prep/20261126/README.md",
+      "observed_at": "2026-11-26",
+      "sha256": "35ef30308ef61be7255fa8ef114d85dd4cb591e27e968bda7423ba556a188fcb"
+    },
+    {
+      "id": "repair18-register-20261126",
+      "kind": "web",
+      "label": "18项逐条处理状态",
+      "locator": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/report-prep/20261126/closure-register.csv",
+      "observed_at": "2026-11-26",
+      "sha256": "2294ff77ced7b34e58d13c4fdcff3dd663d583409cd21110b75f1e2fc9cc3359"
+    },
+    {
+      "id": "repair18-scope-20261126",
+      "kind": "web",
+      "label": "本人确认报告采用范围",
+      "locator": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/report-prep/20261126/scope-decision.json",
+      "observed_at": "2026-11-26",
+      "sha256": "80c53fa154f688b391601cad7dbc416d9596150efe8721092e27203542787c36"
+    },
+    {
+      "id": "repair18-independent-20261126",
+      "kind": "web",
+      "label": "独立定向检查与封包核验",
+      "locator": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/report-prep/20261126/review/independent-review.md",
+      "observed_at": "2026-11-26",
+      "sha256": "05ce30abba36c84c6dcca2f1abb1b6a5a262e7f36eac26f5ba70528eb950adb0"
+    },
+    {
+      "id": "repair18-bundle-20261126",
+      "kind": "web",
+      "label": "带独立检查的完整写作准备包",
+      "locator": "https://github.com/CercaTrovato/olist-repurchase-analysis/raw/refs/heads/main/report-prep/report-preparation-reviewed-20261126.zip",
+      "observed_at": "2026-11-26",
+      "sha256": "2644e3c28ae376ba156e304fa742611dcb4647853ea0793a790b5e2e9edb69c5"
     }
   ]
 }

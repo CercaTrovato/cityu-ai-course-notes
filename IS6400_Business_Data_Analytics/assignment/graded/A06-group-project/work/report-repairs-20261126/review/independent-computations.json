@@ -1,0 +1,205 @@
+{
+  "scope": "independent targeted source/arithmetic/metadata-only checks; no model training",
+  "fit_attempts": 0,
+  "R13": {
+    "aggregate_rows_checked": 9,
+    "primary_hits": [
+      50,
+      49,
+      48
+    ],
+    "receipt_plan_code_metrics_hashes_match": true,
+    "source_spec_hash_matches": true,
+    "private_model_or_score_replay_independently_run": false
+  },
+  "R11": {
+    "six_pair_rows_recomputed": [
+      {
+        "snapshot": "2018-04-01",
+        "comparator": "frozen_unweighted_lr8",
+        "gained": 9,
+        "lost": 8,
+        "shared": 56,
+        "p_independent_exact": 1.0
+      },
+      {
+        "snapshot": "2018-04-01",
+        "comparator": "recency_rule",
+        "gained": 39,
+        "lost": 19,
+        "shared": 26,
+        "p_independent_exact": 0.011928139715763175
+      },
+      {
+        "snapshot": "2018-05-01",
+        "comparator": "frozen_unweighted_lr8",
+        "gained": 7,
+        "lost": 9,
+        "shared": 58,
+        "p_independent_exact": 0.803619384765625
+      },
+      {
+        "snapshot": "2018-05-01",
+        "comparator": "recency_rule",
+        "gained": 34,
+        "lost": 26,
+        "shared": 31,
+        "p_independent_exact": 0.36629400670329104
+      },
+      {
+        "snapshot": "2018-06-01",
+        "comparator": "frozen_unweighted_lr8",
+        "gained": 11,
+        "lost": 5,
+        "shared": 48,
+        "p_independent_exact": 0.210113525390625
+      },
+      {
+        "snapshot": "2018-06-01",
+        "comparator": "recency_rule",
+        "gained": 28,
+        "lost": 17,
+        "shared": 31,
+        "p_independent_exact": 0.1351564508456704
+      }
+    ],
+    "original_customer_scores_checked": true,
+    "private_file_sha256": "c7db542cbb9541407babb855a32bd7fd8ecd522332cbbc6bee5e7722d7f2c817",
+    "private_rows": 117642,
+    "raw_rows_or_ids_written": false,
+    "customer_level_pairs": [
+      {
+        "snapshot": "2018-04-01",
+        "comparator": "frozen_unweighted_lr8",
+        "N": 37813,
+        "K": 3782,
+        "shared_buyers": 56,
+        "weighted_only": 9,
+        "comparator_only": 8
+      },
+      {
+        "snapshot": "2018-04-01",
+        "comparator": "recency_rule",
+        "N": 37813,
+        "K": 3782,
+        "shared_buyers": 26,
+        "weighted_only": 39,
+        "comparator_only": 19
+      },
+      {
+        "snapshot": "2018-05-01",
+        "comparator": "frozen_unweighted_lr8",
+        "N": 40025,
+        "K": 4003,
+        "shared_buyers": 58,
+        "weighted_only": 7,
+        "comparator_only": 9
+      },
+      {
+        "snapshot": "2018-05-01",
+        "comparator": "recency_rule",
+        "N": 40025,
+        "K": 4003,
+        "shared_buyers": 31,
+        "weighted_only": 34,
+        "comparator_only": 26
+      },
+      {
+        "snapshot": "2018-06-01",
+        "comparator": "frozen_unweighted_lr8",
+        "N": 39804,
+        "K": 3981,
+        "shared_buyers": 48,
+        "weighted_only": 11,
+        "comparator_only": 5
+      },
+      {
+        "snapshot": "2018-06-01",
+        "comparator": "recency_rule",
+        "N": 39804,
+        "K": 3981,
+        "shared_buyers": 31,
+        "weighted_only": 28,
+        "comparator_only": 17
+      }
+    ]
+  },
+  "R03": {
+    "unchanged_model_or_data_functions": [
+      "run_round3.py:load_data",
+      "run_round3.py:make_model",
+      "run_round3.py:top_k",
+      "run_round3.py:score_metrics",
+      "run_round3.py:cross_validate",
+      "run_group_models.py:load_snapshots",
+      "run_group_models.py:make_model",
+      "run_group_models.py:top_k",
+      "run_group_models.py:metrics",
+      "run_group_models.py:fit_segmented",
+      "run_group_models.py:cross_validate"
+    ],
+    "unchanged_main_pre_metadata_statements": {
+      "run_round3.py": 18,
+      "run_group_models.py": 15
+    },
+    "actual_metadata_only_driver_invocations": 4,
+    "repeated_bytes_match": true,
+    "metadata_artifact_sha256": {
+      "group-model-metadata.json": "1504a088a01470b07d93f5774d0f23ec79041032b9ce528236eea58d5a7a0ac7",
+      "run-metadata.json": "d5dca8301fdff2ea3db55f283c7c8c3e1c01b747377c351c5629246e9fcd5d92"
+    },
+    "contexts_constructed_without_training": [
+      {
+        "kind": "base",
+        "mode": "metadata_only",
+        "execution_scope": "metadata regeneration from saved results; no fit/predict executed in this invocation"
+      },
+      {
+        "kind": "group",
+        "mode": "metadata_only",
+        "execution_scope": "metadata regeneration from saved results; no fit/predict executed in this invocation"
+      },
+      {
+        "kind": "base",
+        "mode": "trained_base_pipeline",
+        "execution_scope": "driver completed its declared training/scoring before metadata serialization; other saved results retain separate fingerprints"
+      },
+      {
+        "kind": "group",
+        "mode": "trained_group_pipeline",
+        "execution_scope": "driver completed its declared training/scoring before metadata serialization; other saved results retain separate fingerprints"
+      }
+    ],
+    "fit_attempts": 0
+  },
+  "package": {
+    "core_manifest_sha256": "bf38c33516c967d62db918e2f91e0e826101a3bb4d032c38a23bf9cfe564e6d6",
+    "bundle_sha256": "2a0a546e1c4ca946aec7a5311543c07d115c71351193a9c70c72140b700385b2",
+    "core_manifest_files_checked": 83,
+    "mismatches": [
+      "RUN-REPORT.md"
+    ],
+    "late_adapter_is_in_manifest": false
+  },
+  "sample_sha256": {
+    "repo/report-prep/20261126/source/run_fixed_features.py": "3c5cc7926cc35d7102ee00747e9ada48e12e356c5f7fb6ebfb5a0dd0adc18fb5",
+    "repo/report-prep/20261126/source/plot_report.py": "582205b18e225b36375547fe7fc0ebc213a5081ff9b88dc57f7b9eedee470182",
+    "repo/report-prep/20261126/data/feature-experiment-plan.json": "0a6a63756e7ca8d736c5168e8fbae31ec12dfea0d1c1ac29f65503462024f8b4",
+    "repo/report-prep/20261126/data/feature-experiment-results.csv": "6db27bd745173cd4cd39e112fd83fc915d3085b612a70e3c81bda7f03cec6ec3",
+    "repo/report-prep/20261126/data/feature-experiment-verification.json": "9d7196663e6b589df412859e6f0dde38d45b8b5d3a719960c66748c4e9e8aa30",
+    "repo/report-prep/20261126/data/feature-transform-fit.csv": "60bd63e236a1ce61ed2d655abcee806cf562c09b109867e8bc583991f82e859b",
+    "repo/report-prep/20261126/data/frozen-test-paired.csv": "5e769c81f954924077cc02d3b8e9251d5346aea4a07d05c00894bef9bb139447",
+    "repo/report-prep/20261126/data/frozen-pair-decomposition.csv": "6c6895048e436faa275e74e4a1b896391bf025ec1aac0a2c4746e5ad3a5a8e69",
+    "repo/report-prep/20261126/data/frozen-test-metrics.csv": "f2c3b0c9f63dcbe6d66965e577f41117c35209b945ceed05b7a1526ba80cb892",
+    "repo/report-prep/20261126/cv-and-uncertainty.md": "2f105f4235faaf012270a1ff9eae68fb7117d7f23158fb7ab617701fcdef4f56",
+    "repo/report-prep/20261126/figures/03-feature-comparisons.svg": "fd95b0a51f33f29bb9805d10aabd5d25baf586fcbca3a3e530f0800b34fcf47f",
+    "repo/report-prep/20261126/figures/03-feature-comparisons.pdf": "1fa511470a5429bbc964c3197e6902bfa3ad21bdd4b0234827bc0ab591ef4872",
+    "repo/report-prep/20261126/figures/07-paired-evidence.svg": "9ca9f8f36e506ac75c17f481b3dd306ab6c9f7a966fa6fb6431487b0de9fa122",
+    "repo/report-prep/20261126/figures/07-paired-evidence.pdf": "d0b8c0f51ed1960b9c89cc67d4f4afd2ca2cef9ffca1bb0c877f039d247b8175",
+    "repo/research/team-round3-20261112/members/role03/metadata_helpers.py": "e7710330bda41d5844bec8872d08d2a82d3152dc5b96fdfb08fa9b45ec01bd03",
+    "repo/research/team-round3-20261112/members/role03/run_round3.py": "fbaae12d34f0dac2e27bc930b87346975d0afd87eb248ec350f9565e2d7702c4",
+    "repo/research/team-round3-20261112/members/role03/run_group_models.py": "642ea712913e28617f007477a974519ae7fc7d683749e217eec9c1c410f61e8a",
+    "previews/03-feature-comparisons.png": "fa46beeeb0285f6e0954fdb6d602ba24a75484ee28783cd42965559753f102f1",
+    "previews/07-paired-evidence.png": "4b57c4be20f1a3f8c5c933f016b8e7695e32c42e8bdfcaeb8c5aed3f714f1ce2"
+  }
+}

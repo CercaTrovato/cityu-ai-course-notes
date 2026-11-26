@@ -1,0 +1,118 @@
+[
+  {
+    "figure": "01-time-windows",
+    "source_tables": [
+      "dataset-flow.csv"
+    ],
+    "caption": "All intervals left-closed/right-open. October training, January development, April–June saved-model evaluation; calendar coverage is not source-system completeness.",
+    "files": {
+      "svg": "fe465a45d6d6bc39e99ecd61d977664fa256f9c8556a9db2a03de9926d5d456f",
+      "pdf": "1e438f58ff10f18b576c7fa441d839752a8dd0783ba4ba2f194dda58c4f186d2"
+    }
+  },
+  {
+    "figure": "02-initial-screening",
+    "source_tables": [
+      "h04-screening.csv"
+    ],
+    "caption": "Separate H04 saved stage. Weighted LR leads Top10% hits/AP; CatBoost leads ROC-AUC; not all metrics have the same winner.",
+    "files": {
+      "svg": "230d64b3d9dbad12e6dcb670ec3a8c32d2eeca3b3ee4edfbbf4f00ed7f01f4a5",
+      "pdf": "bc0881a2213c450b3b99c9e3aecd43209a81384b5e270f70c40d0278ef1e1c72"
+    }
+  },
+  {
+    "figure": "03-feature-comparisons",
+    "source_tables": [
+      "r3-methods.csv",
+      "r3-group-methods.csv",
+      "feature-experiment-results.csv"
+    ],
+    "caption": "New fixed run: F0=50,G1=49,G2=48. Only October/January used for fitting/evaluation; tests not used for reselection. G2 AUC improves while primary hits/AP do not.",
+    "files": {
+      "svg": "fd95b0a51f33f29bb9805d10aabd5d25baf586fcbca3a3e530f0800b34fcf47f",
+      "pdf": "1fa511470a5429bbc964c3197e6902bfa3ad21bdd4b0234827bc0ab591ef4872"
+    }
+  },
+  {
+    "figure": "04-frozen-months",
+    "source_tables": [
+      "frozen-test-metrics.csv",
+      "frozen-test-windows.csv"
+    ],
+    "caption": "All methods and adverse month retained. Wilson intervals are conditional reference intervals, not evidence from three independent blind tests.",
+    "files": {
+      "svg": "3ea15702b8b3602c2ca2ba2fd4da6e62255326fa2f24fed5e0256496de9bef8a",
+      "pdf": "cbcb8e4c52848f01ffd1f64854c98e0227f3d60ce52d1dd8c46c54fe0029f6ba"
+    }
+  },
+  {
+    "figure": "05-frozen-capacity",
+    "source_tables": [
+      "frozen-test-metrics.csv"
+    ],
+    "caption": "More contacts can increase counts while lowering list concentration;10% is a comparison capacity, not a proven operating optimum.",
+    "files": {
+      "svg": "39c0a1e0f8af72eeaa7911dfc105c93b4b7395d46089258001d43f2cca9eebae",
+      "pdf": "5233e6a3ed035bf8fca0f51579ae51fde596a9917ed4056da718a556d62fc7be"
+    }
+  },
+  {
+    "figure": "06-group-coverage",
+    "source_tables": [
+      "r3-group-methods.csv",
+      "fixed-long79.csv",
+      "current-profiles.csv"
+    ],
+    "caption": "73/181/518 are group places inside a global list;79 is a separate same-size within-group comparison.",
+    "files": {
+      "svg": "cc72f7527292729752f8c8a2001d9e412a04307d497078de1a4e3538de469cb0",
+      "pdf": "592b572d37a7b22083c85d31503a279979c6d9ec5f9643c743fee0e97c69cff3"
+    }
+  },
+  {
+    "figure": "07-paired-evidence",
+    "source_tables": [
+      "frozen-test-paired.csv",
+      "frozen-test-metrics.csv"
+    ],
+    "caption": "April shared56 plus9/8 unique gives totals65/64,net+1,p1.0. A large p-value does not prove equivalence;months are not independent replications.",
+    "files": {
+      "svg": "9ca9f8f36e506ac75c17f481b3dd306ab6c9f7a966fa6fb6431487b0de9fa122",
+      "pdf": "d0b8c0f51ed1960b9c89cc67d4f4afd2ca2cef9ffca1bb0c877f039d247b8175"
+    }
+  },
+  {
+    "figure": "08-trial-feasibility",
+    "source_tables": [
+      "trial-plan.csv"
+    ],
+    "caption": "Both groups contacted:home-goods versus generic guide. Sample plan is not evidence of treatment effectiveness.",
+    "files": {
+      "svg": "f2ed50b68cd5eb76fe13dfa5205be32dcac0651213eff56633d424f9db29dc52",
+      "pdf": "b11bc581adb7255f6d73547e4fb22729cca03adfcfe14a3be7725b8bc0fd650a"
+    }
+  },
+  {
+    "figure": "09-probability-extension",
+    "source_tables": [
+      "extension-calibrated-probabilities.csv"
+    ],
+    "caption": "Compare single/pooled within a family/date;do not read falling loss across dates as isolated model improvement because prevalence changes.",
+    "files": {
+      "svg": "dd1ca63b0d69c4dde31916d23b2750ea7c3073edcd41ee3b2c1d199e7aae8720",
+      "pdf": "d48335200b730424d74d9b086c4bdaeafd81ec50738258912b1286aa1ad170c2"
+    }
+  },
+  {
+    "figure": "10-value-extension",
+    "source_tables": [
+      "extension-value-capacity.csv"
+    ],
+    "caption": "Same calibrated p,only ranking formula changes;43/4598.15 vs37/6557.40 vs30/5857.29. Never attach these amounts to the R3 50-buyer list.",
+    "files": {
+      "svg": "3eef337fb75a1d247be3d8ce326159b9a856e022ae856e76f4cde1cc0435a2fc",
+      "pdf": "9f25502aa82f88336214bdda9b5e9515387d5070cca41e2b86454e429256ef64"
+    }
+  }
+]

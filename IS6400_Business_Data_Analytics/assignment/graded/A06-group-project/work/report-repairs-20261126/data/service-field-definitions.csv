@@ -1,0 +1,11 @@
+field,group,unit,definition,missing_rule,transform,availability_assumption
+delivery_known_any,delivery,binary,At least one historical eligible order delivered before snapshot with nonnegative duration,0 means no known valid delivery,Train standard scaling,Actual event timestamp is recorded without retrospective changes
+known_late_rate,delivery,fraction,Share late by calendar date among known deliveries with estimated date,NaN if none; separate known_late_rate_missing,Train median imputation then standard scaling,Estimated date known and unchanged at approval
+last_order_late,delivery,binary,Latest approved historical order is late only when delivery is already known,NaN if last order not delivered before cut or estimate missing; separate last_order_late_missing,Train median imputation then standard scaling,Estimated date known and unchanged at approval
+known_delivery_days_mean,delivery,days,Mean elapsed approval-to-delivery days over known valid deliveries,NaN if no known delivery; separate known_delivery_days_mean_missing,Train median imputation then standard scaling,Actual delivery strictly before snapshot
+review_known_any,review,binary,At least one valid answered review for historical eligible orders before snapshot,0 means no valid known answer,Train standard scaling,Answer timestamp represents information availability
+latest_known_review_score,review,stars_1_to_5,Latest known answered review after per-order deduplication,NaN if no valid known answer; separate latest_known_review_score_missing,Train median imputation then standard scaling without log,Creation <= answer and approval <= answer < snapshot
+known_late_rate_missing,delivery,binary,known_late_rate is NaN,No missing; explicit zero or one,Train standard scaling,Derived from time-truncated source only
+last_order_late_missing,delivery,binary,last_order_late is NaN,No missing; explicit zero or one,Train standard scaling,Derived from time-truncated source only
+known_delivery_days_mean_missing,delivery,binary,known_delivery_days_mean is NaN,No missing; explicit zero or one,Train standard scaling,Derived from time-truncated source only
+latest_known_review_score_missing,review,binary,latest_known_review_score is NaN,No missing; explicit zero or one,Train standard scaling,Derived from time-truncated source only

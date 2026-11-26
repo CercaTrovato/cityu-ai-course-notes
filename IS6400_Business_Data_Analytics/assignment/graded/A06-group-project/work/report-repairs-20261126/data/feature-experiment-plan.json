@@ -1,0 +1,54 @@
+{
+  "scope": "3 fixed development configurations; report repair R13",
+  "train": "2017-10-01",
+  "development": "2018-01-01",
+  "raw_fields": [
+    "R",
+    "F",
+    "M",
+    "average_item_rows",
+    "freight_share",
+    "recent30_orders",
+    "recent30_spend",
+    "state"
+  ],
+  "extras": {
+    "F0": [],
+    "G1": [
+      "delivery_pending_n",
+      "delivery_days_log",
+      "delivery_days_mean_missing"
+    ],
+    "G2": [
+      "review_score_mean",
+      "known_review_ratio",
+      "review_score_mean_missing"
+    ]
+  },
+  "classifier": {
+    "C": 1,
+    "penalty": "l2",
+    "solver": "lbfgs",
+    "class_weight": "balanced",
+    "max_iter": 2000,
+    "tol": 0.0001,
+    "random_state": 2026
+  },
+  "capacities": [
+    0.05,
+    0.1,
+    0.2
+  ],
+  "new_extra_preprocessing": "Explicit formulas then median imputation and standardization fitted on October; no extra log1p on delivery_days_log or review stars. Base seven numeric fields retain their log1p pipeline.",
+  "purpose": "Test the delivered Role02 field formulas, not recreate unavailable private candidate table bytes. Existing field screening and all prior outcomes have been seen.",
+  "no_test_scoring": true,
+  "no_model_reselection_using_test": true,
+  "no_grid_search": true,
+  "source_spec_sha256": "65fcbfb655b82244b5aad9eb946547bcf8c59b2dcc1bb9a675272c40e401dd5e",
+  "input_sha256": {
+    "h02_archive": "3b58f4e493e825a76ccc569f205cfa0db5d27e22b13389c3c00ff958a316419a",
+    "asof_features": "549f0502199291466a42e674e2f9f746462de57953974ff06b5b66dc409b0628",
+    "stored_r3_predictions": "93b3c500a1ae6987b7fb0c4c358c24cbe61bb9842b0ed4a0cb0b21f9e01efd69",
+    "stored_group_predictions": "146cb5f206ba06612fafed744f89cbb36f7465dbf059dd707f906b554ca1730a"
+  }
+}
