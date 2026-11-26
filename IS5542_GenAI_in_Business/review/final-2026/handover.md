@@ -41,3 +41,8 @@
 尚待总监督统一完成根 Git 与本地／线上看板同步；本会话没有提交推送、操作 A01／A07、正式提交作业或跨会话发送。
 
 最终隔离完整性回读：102 篇 Markdown，errors=0；另有 7 处本批范围外并发变动（课程总览、当前状态、作业与 DDL、review 入口及 A01 v6 内容审查的 3 份文档），已在 update-receipt.json 单列，均未由本会话写入或覆盖，不纳入本批完成／提交。
+
+
+## 2026-11-27 · M07 review补充接续
+
+已取得62页网页 review、12个演示输出及10份去重输入，原课堂PPT/完整链接影片和录音首尾仍缺；transcript:partial、status:draft、date:null保留。sources由本轮前实际47条新增bank-review-web/bank-review-demos两条后为49条；不删改已有来源身份。bank-slides仅继续追原课堂PPT/完整影片，历史核查保留。U09增加逐页和附件入口，学习status/mastery/evidence、sessions/mistakes保持原值；A01/A05正式作业与提交评分不在本批范围。独立抽检和发布按本讲实际回执。

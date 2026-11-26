@@ -30,3 +30,8 @@ updated: 2026-11-26
 
 <!-- canvas-all-material-audit-20261126 -->
 > **11/26 全材料处理判定**：[[_meta/canvas-file-audit-20261126/README|全材料矩阵与三阶段队列]]。范围包含配套数据、代码、题目、参考答案、模板和原作答，不只最新课件；档案和教学完成分别记录。
+
+
+## M07 复习网页与来源核验（2026-11-27）
+
+[[IS5542_GenAI_in_Business/notes/M07-银行AI转型与多agent实践|M07：62页review逐页讲解及部分录音专题]]；[[IS5542_GenAI_in_Business/_prep/外部参考-M07网页演示与输入核验|12演示与10输入核验]]；[[IS5542_GenAI_in_Business/course_files_export/web-review-20261127/README|源快照、阅读PDF与分支附册]]。原课堂PPT/完整影片与音频边界未补齐，材料partial/draft，不表示本人已学会。

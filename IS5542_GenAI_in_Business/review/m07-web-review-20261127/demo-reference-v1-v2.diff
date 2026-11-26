@@ -1,0 +1,11 @@
+--- demo-reference-v1-frozen.md
++++ demo-reference.md
+@@ -115,6 +115,8 @@
+ 
+ **不可直接依赖的一处分流**：程序在 `q_impact` 将“已评估、输出不会未经人审到客户”直接设置为 standard risk。事先有人审有助控制，却不等于不准确/不适当输出没有潜在不利影响，更不能普遍撤销§8已明确的高风险分类。应把“风险身份”和“已设计缓解”分开，必要时交负责治理/合规的人核定。原工具只读保留，本卡没有暗中改写它。
+ 
++路径边界也要分清：程序在 `q_advice=Yes` 时已经设为 high，直接进入 `q_dev`，不会经过 `q_impact`；本处指出的是进入后者的其他用途不能仅凭“有人预审”便自动归为普通风险，没有声称程序把该投资建议路径实际降级。
++
+ 💡 有条件例（笔记补充）：持牌机构用第三方模型向客户给投资建议，先由主体与用途进入§6，再核§8的高风险范围；加人工复核不自动把它改为普通风险。若机构只是用模型写不关联受规管活动的内部人事草稿，此份通函范围可能不同，其他隐私/安全义务仍需另查。
+ 
+ 英文参考答案：“Check the entity, activity and risk classification against the circular itself. Human review is a control; it does not automatically make a high-risk use case standard risk. The demonstration tree is an extracted interpretation and has not been reviewed by a compliance officer.”

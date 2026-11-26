@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "course": "IS5542",
-  "updated_on": "2026-11-26",
+  "updated_on": "2026-11-27",
   "sources": [
     {
       "id": "guest-design",
@@ -553,15 +553,34 @@
       "kind": "笔记参考",
       "academic_year": "2026/27",
       "semester": "2026/27 Semester A",
-      "status": "verified",
-      "verified_on": "2026-11-23",
-      "verification_scope": "读取开头、§0–§2.9、来源边界和时间轴；作为部分录音的已有解释，原讲义仍未找到",
+      "status": "verified_with_explicit_limits",
+      "verified_on": "2026-11-27",
+      "verification_scope": "62页review逐页正文及42源图；保留11录音专题；12output/10input来源卡。独立抽检及写回状态据review/m07-web-review-20261127实际回执，不冒称全篇独审。",
       "locators": [],
       "limitations": [
-        "本次没有改原笔记，没有重新验收全篇，也不据笔记状态推定本人掌握"
+        "partial/draft/date:null保持，原课堂PPT/完整影片与音频边界未补齐",
+        "笔记制作不代表本人已读/已会，个人字段不变"
       ],
-      "sha256": "06f3ee031786c2dfce5bf61c7b4cc2326d6d3f48c497a7f86b2fc10a86eef523",
-      "bytes": 55231
+      "sha256": "eb68ea6b50c08d4b13ddf6a2688a34bf000d2e2ebe37cb2679b227b05d41aad7",
+      "bytes": 149354,
+      "verification_history": [
+        {
+          "status": "verified",
+          "verified_on": "2026-11-23",
+          "verification_scope": "读取开头、§0–§2.9、来源边界和时间轴；作为部分录音的已有解释，原讲义仍未找到",
+          "limitations": [
+            "本次没有改原笔记，没有重新验收全篇，也不据笔记状态推定本人掌握"
+          ],
+          "sha256": "06f3ee031786c2dfce5bf61c7b4cc2326d6d3f48c497a7f86b2fc10a86eef523",
+          "bytes": 55231
+        }
+      ],
+      "source_ids": [
+        "bank-source26",
+        "bank-source27",
+        "bank-review-web",
+        "bank-review-demos"
+      ]
     },
     {
       "id": "note-m08",
@@ -736,7 +755,7 @@
     },
     {
       "id": "bank-slides",
-      "title": "金融客座原讲义／演示原件（重新核查）",
+      "title": "金融客座原课堂PPT／完整影片仍待补；review网页已取得",
       "path": null,
       "url": "https://canvas.cityu.edu.hk/courses/71410",
       "kind": "课堂",
@@ -744,10 +763,11 @@
       "semester": "2026/27 Semester A",
       "status": "pending",
       "verified_on": null,
-      "verification_scope": "承接 11/23 本地查找，及总监督 11/26 Canvas 已核入口范围；金融专属讲义／演示原件仍未取得。Lecture 10 的回顾图不冒充 M07 原件。",
+      "verification_scope": "已取得62页网页 review、12个演示输出及10份去重输入，原课堂PPT/完整链接影片和录音首尾仍缺；transcript:partial、status:draft、date:null保留；新增来源另列bank-review-web/bank-review-demos，不把网页与原课堂PPT混为一件。",
       "locators": [],
       "limitations": [
-        "仍仅部分录音与笔记；不能称资料全齐；本会话未另登 Canvas"
+        "仍缺原课堂PPT及完整影片新增逐帧核验；录音partial，首尾/接缝未知",
+        "Canvas已查范围未见该网址不代表老师没有在其他渠道发布"
       ],
       "verification_history": [
         {
@@ -757,9 +777,26 @@
           "limitations": [
             "本地核查结论，不是本轮 Canvas 无该文件的结论"
           ]
+        },
+        {
+          "status": "pending",
+          "verified_on": null,
+          "verification_scope": "承接 11/23 本地查找，及总监督 11/26 Canvas 已核入口范围；金融专属讲义／演示原件仍未取得。Lecture 10 的回顾图不冒充 M07 原件。",
+          "limitations": [
+            "仍仅部分录音与笔记；不能称资料全齐；本会话未另登 Canvas"
+          ]
         }
       ],
-      "last_checked_via_supervisor_on": "2026-11-26"
+      "last_checked_via_supervisor_on": "2026-11-27",
+      "resolved_components": [
+        "review website: bank-review-web",
+        "demo outputs/inputs: bank-review-demos"
+      ],
+      "pending_components": [
+        "original classroom PPT",
+        "complete video frame review",
+        "complete classroom recording alignment"
+      ]
     },
     {
       "id": "teacher-mock",
@@ -1030,6 +1067,52 @@
         "M07原件仍缺；不把M10回顾替代M07"
       ],
       "verified_by": "course_author_plus_independent_sample_and_directed_closure"
+    },
+    {
+      "id": "bank-review-web",
+      "title": "Manager of Intelligence · Review edition（62页）",
+      "path": "IS5542_GenAI_in_Business/course_files_export/web-review-20261127/source-snapshot.html.txt",
+      "url": "https://cityu-ai-review.vercel.app/",
+      "kind": "讲座复习网页",
+      "academic_year": "2026/27",
+      "semester": "2026/27 Semester A",
+      "status": "verified",
+      "verified_on": "2026-11-27",
+      "sha256": "d735f3580f8f746e1b947a37ab02e3a922318ac0b84c9b7b3fd255ef80f46a3e",
+      "bytes": 310795,
+      "physical_pages": 62,
+      "verification_scope": "实际查看全部62网页物理页和适用互动分支，源页/页序/原图与正文定位分开记录；源响应只读保留。",
+      "locators": [
+        "Review p.01–62",
+        "reading PDF 62p",
+        "interaction appendix"
+      ],
+      "limitations": [
+        "网页自标review，不认证原课堂PPT、发送人/渠道或音频实际日期",
+        "链接完整影片未新增逐帧核验；外部研究多为转引非本次重做"
+      ],
+      "evidence_path": "IS5542_GenAI_in_Business/review/m07-web-review-20261127/page-evidence.json"
+    },
+    {
+      "id": "bank-review-demos",
+      "title": "M07演示库12输出／10输入：去标识核验卡",
+      "path": "IS5542_GenAI_in_Business/_prep/外部参考-M07网页演示与输入核验.md",
+      "url": "https://cityu-ai-review.vercel.app/",
+      "kind": "网页附件与教学来源卡",
+      "status": "verified_with_explicit_limits",
+      "verified_on": "2026-11-27",
+      "verification_scope": "12默认输出视图与静态完整载荷；10输入全文/全部数据行结构、重要汇总复算；SFC8页源视觉。",
+      "locators": [
+        "PMO3 outputs",
+        "BI8 outputs",
+        "Policy1 output"
+      ],
+      "limitations": [
+        "默认视图不等全功能验收；不调用模型/修改数据/提交",
+        "具名22原附件仅本机；年度/季度与地图输入输出版本差异明确",
+        "Policy8问不是官方树，人预审不自动降低高风险"
+      ],
+      "evidence_path": "IS5542_GenAI_in_Business/course_files_export/web-review-20261127/source-manifest.json"
     }
   ],
   "search_log": {
@@ -1082,6 +1165,18 @@
       ],
       "scope": "L10 read and integrated; supervisor Canvas receipt explicitly attributed",
       "no_independent_mock_found_in_checked_scope": true
+    },
+    {
+      "date": "2026-11-27",
+      "added_source_ids": [
+        "bank-review-web",
+        "bank-review-demos"
+      ],
+      "updated_source_ids": [
+        "bank-slides",
+        "note-m07"
+      ],
+      "scope": "Review website and demo sources acquired; original PPT/complete recording/video remain limited; no personal learning/submission update"
     }
   ]
 }

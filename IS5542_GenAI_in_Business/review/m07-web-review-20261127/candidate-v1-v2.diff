@@ -1,0 +1,102 @@
+--- candidate-v1-frozen.md
++++ candidate.md
+@@ -282,6 +282,26 @@
+ 
+ 网页列提示高手少于 10 分钟、新手约 30 分钟，及私有模型保护数据等说法。前者是网页转引培训示例、缺相同任务与测量细节；后者取决于真实部署、合同及配置。不能把“私有托管”“只用可信 PDF”写成零泄露或零错误保证。
+ 
++
++<details><summary>网页 p.17 的关键英文定义原句</summary>
++
++以下是网页书面定义原句；上文中文解释及边界是学习译解，不能把网页的简化表述当零错误或零泄露保证。
++
++- **Model**: “A large language model is a prediction engine trained on huge amounts of text. It writes the most likely next words, very well.”
++  中文对照：大量文本训练的预测引擎生成可能的后续文字；这不保证事实正确。
++- **Prompt**: “The instruction you give the model. A clear goal, context, format and examples get better answers.”
++  中文对照：给模型的任务指令，目标、资料、格式和示例帮助限定答案。
++- **Context**: “Everything the model can see when it answers: your prompt, attached files, the chat so far. It knows nothing else about your situation.”
++  中文对照：回答时能看到的提示、附件和当前聊天，不能假定它知道未提供的情境。
++- **Hallucination**: “When the model states something false, confidently. It isn't lying. It's predicting plausible words with no source behind them.”
++  中文对照：把错误内容说得有把握；应回到证据检查，不能凭语气判断。
++- **Grounding**: “Making the model answer only from documents you trust, and show which line each answer came from. Often called RAG (retrieval-augmented generation).”
++  中文对照：让答案连回可信文档及具体位置；RAG 是常见实现，仍要核引用是否支持结论。
++- **Agent**: “A model that can plan steps, use tools (search, files, email, code) and keep going until a goal is done.”
++  中文对照：能规划、用工具并继续多步任务的模型系统，实际动作受权限与停止条件约束。
++
++</details>
++
+ ### 2.18 四段治理影片要看哪四件事（Review p.18）
+ 
+ 本页预告约 9 分钟、四段由 agent 制作并使用嘉宾克隆声音的影片：美国规则边界、三种监管路径、香港 Sandbox++、了解 agent。合成旁白与现场讲话须分开，影片不是监管机关官方解释。
+@@ -602,6 +622,18 @@
+ 
+ 网页的 *plans its own steps, uses tools and loops until the goal is met* 中，循环是“提出动作→调用工具→看结果→判断下一步”。停止要有目标达成、明确失败或资源/权限界限；不能把“继续直到做完”解释成无限调用、无限权限。网页也没有证明每次新对话会丢失所有历史；prompt “then it’s gone”是可复用程序与一次交代的教学对比。
+ 
++
++<details><summary>网页 p.37 的 skill 与 plugin 英文定义原句</summary>
++
++- **Skill**: “A saved file of instructions, and sometimes templates and scripts, that the AI loads when the task comes up. Same steps, same checks, same format, every time.”
++  中文对照：保存的任务指令及可选模板/脚本，用于复用相同步骤、检查和格式。
++- **Plugin**: “A package for a team: several skills plus connections to the tools they need (calendar, email, a database), and shortcut commands. Install once, the whole team works the same way.”
++  中文对照：团队使用的一组技能、工具连接和快捷入口，安装一致不代表结果必然正确。
++
++这是网页用于比较可复用程序的表述。中文机制及执行限制见本节；“same every time”表达统一程序目标，不证明每次产出都正确。
++
++</details>
++
+ ### 2.38 Skill 把个人做法变成可检查文件（Review p.38）
+ 
+ 表格逐行比较同一任务靠聊天临时交代，和靠保存的 skill 执行。五行分别是 consistency、rules、review、sharing、know-how：步骤/格式更统一，规则可写入文件，文件能版本审阅，团队能分发，新人也可读业务做法。
+@@ -676,7 +708,7 @@
+ 
+ 项目管理办公室（Project Management Office, PMO）任务通常要把同一事项展成流程、行动表、甘特及计划。关键是共享同一份状态：人把负责人改掉，各视图应一致；如果每张图各写一份，容易彼此矛盾。具体完整教学例保留在 [[#2.70 录音专题：PMO：让会议变成可追溯、可修正的行动|录音专题 PMO]]。
+ 
+-网页附件库还列 10-Q 双来源计划、访谈单源版本和 research kickoff。它们是不同输入/输出组合，不能以一个封面代表全部附件已核。本次三份文本已全文读取，三output已核默认视图和完整节点载荷。10-Q所谓“单访谈”输出实际含双源；研究输出还给未明确指定的工作包补了负责人，不能把工具的confirmed标签当原文批准。详见[[IS5542_GenAI_in_Business/_prep/外部参考-M07网页演示与输入核验|演示与输入核验卡]] §2。
++网页附件库还列 10-Q 双来源计划、访谈单源版本和 research kickoff。它们是不同输入/输出组合，不能以一个封面代表全部附件已核。本次三份文本已全文读取，三output已核默认视图和完整节点载荷。10-Q所谓“单访谈”输出实际含双源；研究输出还给未明确指定的工作包补了负责人，不能把工具的confirmed标签当原文批准。详见[[IS5542_GenAI_in_Business/_prep/外部参考-M07网页演示与输入核验#2.1 PMO：提取成功不等于原文已经批准|PMO 输入与提取核验]]。
+ 
+ ### 2.44 Chat BI：筛选条件必须跟着结论走（Review p.44）
+ 
+@@ -686,7 +718,7 @@
+ 
+ 网页库分别提供真实/合成资产、真实/合成 P&L、合成 cohort 和蚊患开放数据。先确认每版身份，再比较字段与结果。
+ 
+-本次已核 8 个 BI 输出和 6 份去重 JSON 输入，复算载荷内的均值、分母及重要对账；外部原序列未全部重下载。年度/季度来源的区别、水平 CV 的含义和推荐评分均值的口径，详见[[IS5542_GenAI_in_Business/_prep/外部参考-M07网页演示与输入核验|演示与输入核验卡]] §3。
++本次已核 8 个 BI 输出和 6 份去重 JSON 输入，复算载荷内的均值、分母及重要对账；外部原序列未全部重下载。年度/季度来源的区别、水平 CV 的含义和推荐评分均值的口径，详见[[IS5542_GenAI_in_Business/_prep/外部参考-M07网页演示与输入核验#2.2 BI：看清一行、一个数、一个比较|BI 数据口径核验]]。
+ 
+ ### 2.45 Policy Companion：引用让人能回去核（Review p.45）
+ 
+@@ -694,7 +726,7 @@
+ 
+ 一个合格学习过程是：先核文件版本和适用主体→逐问收集真实事实→沿条件判断→查看原段落及例外→保留人决定。若事实“不知道是否客户直接接触”，应停在待确认，不可由模型补成 yes。
+ 
+-网页把它称为 looks like door one, does door-two work。政策解读结果可影响核心业务，故仍须适当职责审核。完整录音案例的英文问法、给定结果与不能复核范围，保留在 [[#2.71.2 Policy Companion：把适用条件接到原文段落|政策录音专题]]；本次已取得2024-11-12通函8页及程序载荷：实际8问题/5结果，与本页七问不一致；程序也不能因“有人预审”便自动降为普通风险。按§6–9独立核主体、用途、客户影响与高风险身份，详见[[IS5542_GenAI_in_Business/_prep/外部参考-M07网页演示与输入核验|演示与输入核验卡]] §4。
++网页把它称为 looks like door one, does door-two work。政策解读结果可影响核心业务，故仍须适当职责审核。完整录音案例的英文问法、给定结果与不能复核范围，保留在 [[#2.71.2 Policy Companion：把适用条件接到原文段落|政策录音专题]]；本次已取得2024-11-12通函8页及程序载荷：实际8问题/5结果，与本页七问不一致；程序也不能因“有人预审”便自动降为普通风险。按§6–9独立核主体、用途、客户影响与高风险身份，详见[[IS5542_GenAI_in_Business/_prep/外部参考-M07网页演示与输入核验#2.3 Policy Companion：把程序映射同原文分开|Policy 条件与原文核验]]。
+ 
+ ### 2.46 CHO 把日常聊天变成什么（Review p.46）
+ 
+@@ -1201,16 +1233,16 @@
+ 
+ | 要区分 | 正确读法 | 回看 |
+ |---|---|---|
+-| 模型 / agent | 生成能力 / 接上工具及执行控制的系统 | §2.64 |
+-| 事实正确 / 没有泄露 | 内容依据 / 信息流向，须分别检查 | §2.65 |
+-| 人在环内 / 人重新做全部工作 | 按风险与证据设计审核，不只留签字 | §2.66 |
+-| 事前拦截 / 事后监测 | 阻止部分输出 / 发现已发生异常 | §2.66 |
+-| 沙盒 / 上线许可 | 试验安排 / 正式生产资格不同 | §2.67 |
+-| KYC / KYA | 客户身份 / 代表软件及其授权边界 | §2.67 |
+-| 采用率 / 回报 | 有人使用 / 相对成本的已验证收益 | §2.68、§2.73 |
+-| 80/20 / 准确率 | 嘉宾设计启发 / 不是统计指标 | §2.69 |
+-| 来源引用 / 合规结论 | 找到段落 / 还须核版本、事实及适用条件 | §2.71 |
+-| 提议 / 已确认 | 等人决定 / 有权限者已经接受 | §2.70、§2.72 |
++| 模型 / agent | 生成能力 / 接上工具及执行控制的系统 | [[#2.64 录音专题：模型怎样获得行动能力：指令、资料与工具\|§2.64]] |
++| 事实正确 / 没有泄露 | 内容依据 / 信息流向，须分别检查 | [[#2.65 录音专题：银行为什么不能直接把客户资料交给聊天工具\|§2.65]] |
++| 人在环内 / 人重新做全部工作 | 按风险与证据设计审核，不只留签字 | [[#2.66 录音专题：怎样检查而不把省下的工作全做回来\|§2.66]] |
++| 事前拦截 / 事后监测 | 阻止部分输出 / 发现已发生异常 | [[#2.66 录音专题：怎样检查而不把省下的工作全做回来\|§2.66]] |
++| 沙盒 / 上线许可 | 试验安排 / 正式生产资格不同 | [[#2.67 录音专题：沙盒和 KYA：能试验，不等于已获准上线\|§2.67]] |
++| KYC / KYA | 客户身份 / 代表软件及其授权边界 | [[#2.67 录音专题：沙盒和 KYA：能试验，不等于已获准上线\|§2.67]] |
++| 采用率 / 回报 | 有人使用 / 相对成本的已验证收益 | [[#2.68 录音专题：两道门：按业务用途判断风险\|§2.68]]、[[#2.73 录音专题：怎样评价就业和 AI 编码观点\|§2.73]] |
++| 80/20 / 准确率 | 嘉宾设计启发 / 不是统计指标 | [[#2.69 录音专题：从一次提示到可复用技能：统一程序仍要保留可修改结果\|§2.69]] |
++| 来源引用 / 合规结论 | 找到段落 / 还须核版本、事实及适用条件 | [[#2.71 录音专题：Chat BI 与 Policy Companion：把来源和规则做成能核对的结果\|§2.71]] |
++| 提议 / 已确认 | 等人决定 / 有权限者已经接受 | [[#2.70 录音专题：PMO：让会议变成可追溯、可修正的行动\|§2.70]]、[[#2.72 录音专题：CHO：从聊天到有来源、有时间的共同记忆\|§2.72]] |
+ 
+ ## 5. 双语术语卡
+ 

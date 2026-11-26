@@ -51,3 +51,8 @@ AC6761的11份PPT远端与本地完全同字节，11/25的updated_at不是内容
 - [IS6400-ProjectTemplate导览](../../IS6400_Business_Data_Analytics/review/project-template-20261126/ProjectTemplate-逐页使用导览.md)：ProjectTemplate 实际 4 页与 CRISP-DM/现有证据映射已补，原页 3 图；只是模板使用导览，不表示 A06 正式报告已写完。 [写回/gate证据](../../IS6400_Business_Data_Analytics/review/material-completion-review-20261126/publication-receipt.json)。
 
 逐项当前结果：[production-status.json](production-status.json)；保留原 processing-queue／teacher-file／source-processing 矩阵字节与历史判定。IS5113 旧索引只做来源对应/导航维护，见 [原维护证据](is5113-index-maintenance.json)，原检查器因无§2 不适用的 FAIL 保留。两份 ChatGPT 分享失效、IS5542 M07 与 M02 p45 源图、DEBS13/三段外部视频等缺口不记完成。
+
+
+## 2026-11-27 M07 补源覆盖
+
+原矩阵保留11/26审计时事实。M07现已另取得62页网页review版，逐页笔记与12演示/10输入已核，见[正式回执](../../IS5542_GenAI_in_Business/review/m07-web-review-20261127/publication-receipt.json)。课堂原始PPT与完整影片、录音缺首尾/接缝仍待补；“网页资料已取得”与“课堂原件全齐”分开记录。M10及EF M12讲义版此前已完成。

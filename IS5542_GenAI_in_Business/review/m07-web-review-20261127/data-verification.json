@@ -1,0 +1,177 @@
+{
+  "bi-assetcv": {
+    "rows": 1105,
+    "fields": 6,
+    "cv63": {
+      "nonnull": 1105,
+      "mean": 3.9752135746606334,
+      "sum": 4392.611
+    },
+    "cv_rel": {
+      "nonnull": 855,
+      "mean": 0.9606421052631579,
+      "sum": 821.349
+    },
+    "cv63_max": {
+      "date": "2026-04-10",
+      "asset_class": "Commodities — WTI crude",
+      "cv63": 22.553
+    },
+    "library_input": "assetclass-cv-fred.json",
+    "rows_equal_library_input": true,
+    "order_equal_library_input": true,
+    "whole_payload_equal": true
+  },
+  "bi-assetcv-chatbi": {
+    "rows": 5980,
+    "fields": 5,
+    "cv63": {
+      "nonnull": 5980,
+      "mean": 5.46873143812709,
+      "sum": 32703.014
+    },
+    "cv_rel": {
+      "nonnull": 5665,
+      "mean": 0.9848455251544572,
+      "sum": 5579.1499
+    },
+    "cv63_max": {
+      "date": "2022-06-23",
+      "asset_class": "Rates — 10y benchmark yield",
+      "cv63": 30.5506
+    },
+    "library_input": "SYNTHETIC-assetclass-cv.json",
+    "rows_equal_library_input": true,
+    "order_equal_library_input": true,
+    "whole_payload_equal": true
+  },
+  "bi-pnl": {
+    "rows": 129,
+    "fields": 8,
+    "revenue_by_date": {
+      "2025-12-31": 182447.0,
+      "2024-12-31": 177556.0,
+      "2023-12-31": 158104.0
+    },
+    "library_input": "jpm-segment-fy2025.json",
+    "rows_equal_library_input": true,
+    "order_equal_library_input": true,
+    "whole_payload_equal": true
+  },
+  "bi-pnl-q": {
+    "rows": 328,
+    "fields": 9,
+    "revenue_by_date": {
+      "2023-03-31": 38349.0,
+      "2023-06-30": 41307.0,
+      "2023-09-30": 39874.0,
+      "2023-12-31": 38574.0,
+      "2024-03-31": 41934.0,
+      "2024-06-30": 50200.0,
+      "2024-09-30": 42654.0,
+      "2024-12-31": 42768.0,
+      "2025-03-31": 45310.0,
+      "2025-06-30": 44912.0,
+      "2025-09-30": 46427.0,
+      "2025-12-31": 45798.0,
+      "2026-03-31": 49836.0,
+      "2026-06-30": 57347.0
+    },
+    "library_input": "jpm-segment-fy2025.json",
+    "rows_equal_library_input": false,
+    "order_equal_library_input": false,
+    "whole_payload_equal": false
+  },
+  "bi-pnl-chatbi": {
+    "rows": 588,
+    "fields": 8,
+    "variance": {
+      "nonnull": 588,
+      "mean": 1.432482993197279,
+      "sum": 842.3
+    },
+    "actual": {
+      "nonnull": 588,
+      "mean": 81.24829931972789,
+      "sum": 47774.0
+    },
+    "max_rounded_delta_error": 0.10000000000001741,
+    "library_input": "SYNTHETIC-segment-pnl.json",
+    "rows_equal_library_input": true,
+    "order_equal_library_input": true,
+    "whole_payload_equal": true
+  },
+  "bi-cohort": {
+    "rows": 1164,
+    "fields": 17,
+    "post_score": {
+      "nonnull": 725,
+      "mean": 75.0911724137931,
+      "sum": 54441.1
+    },
+    "minutes": {
+      "nonnull": 725,
+      "mean": 69.05379310344827,
+      "sum": 50064
+    },
+    "nps": {
+      "nonnull": 725,
+      "mean": 8.303448275862069,
+      "sum": 6020
+    },
+    "attended": 725,
+    "attendance_rate": 0.622852233676976,
+    "participants": 100,
+    "sessions": 12,
+    "library_input": "cohort-apac-2026.json",
+    "rows_equal_library_input": true,
+    "order_equal_library_input": true,
+    "whole_payload_equal": false
+  },
+  "bi-cohort-chatbi": {
+    "rows": 1164,
+    "fields": 17,
+    "post_score": {
+      "nonnull": 725,
+      "mean": 75.0911724137931,
+      "sum": 54441.1
+    },
+    "minutes": {
+      "nonnull": 725,
+      "mean": 69.05379310344827,
+      "sum": 50064
+    },
+    "nps": {
+      "nonnull": 725,
+      "mean": 8.303448275862069,
+      "sum": 6020
+    },
+    "attended": 725,
+    "attendance_rate": 0.622852233676976,
+    "participants": 100,
+    "sessions": 12,
+    "library_input": "cohort-apac-2026.json",
+    "rows_equal_library_input": true,
+    "order_equal_library_input": true,
+    "whole_payload_equal": false
+  },
+  "bi-agi": {
+    "rows": 2022,
+    "fields": 9,
+    "agi": {
+      "nonnull": 2022,
+      "mean": 4.206033630069238,
+      "sum": 8504.6
+    },
+    "adi": {
+      "nonnull": 1219,
+      "mean": 1.166529942575882,
+      "sum": 1422.0
+    },
+    "agi_max": 54.4,
+    "library_input": "hk-agi-2024-2026.json",
+    "rows_equal_library_input": true,
+    "order_equal_library_input": true,
+    "whole_payload_equal": false
+  }
+}

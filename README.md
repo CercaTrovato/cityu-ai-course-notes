@@ -1,12 +1,16 @@
 ---
 type: MOC
 scope: vault 根
-updated: 2026-11-26
+updated: 2026-11-27
 ---
 
 # CityU 课程知识库
 
 > 本批最终 GitHub、Notion、本地与线上看板核验见 [11/26 同步回执](_meta/canvas-file-audit-20261126/production-closeout.md)。
+
+## 2026-11-27 · M07 金融客座网页补源
+
+[M07 笔记](IS5542_GenAI_in_Business/notes/M07-银行AI转型与多agent实践.md)已补入 62 页网页 review 版、原图与互动原题，保留 11 个录音专题；[演示输入输出核验](IS5542_GenAI_in_Business/_prep/外部参考-M07网页演示与输入核验.md)逐份覆盖 12 个输出与 10 个去重输入。资料来自本人提供的 [Manager of Intelligence](https://cityu-ai-review.vercel.app/)，本次 Canvas 学生可见 13 文件、5 模块和 11 公告中未找到该来源。网页 review 版已取得；课堂原始 PPT、完整影片及录音缺首尾／接缝仍分别保留缺口，M07 继续 draft / partial。EF5560 M12、IS5542 M10 的讲义版此前已完成，两篇转录仍待补。本批范围和同步证据见 [M07 回执](IS5542_GenAI_in_Business/review/m07-web-review-20261127/publication-receipt.json)。
 
 ## 2026-11-26 · 新教学与复盘的当前落地结果
 
@@ -25,7 +29,7 @@ updated: 2026-11-26
 本次是复习专题，不增加 M／T 讲次数。材料记录与教学审查只覆盖新专题；期末重点按最新范围准备，完整旧笔记继续保留。
 
 
-五门 MScAIB 课程的中文精读笔记、原始材料、课堂转录、学习解析与期末复习入口。当前有 **62 个核心 M/T 入口：46 篇 v1.0、15 篇 v0.9、1 篇缺源草稿**；材料版本与本人掌握程度分别记录。
+五门 MScAIB 课程的中文精读笔记、原始材料、课堂转录、学习解析与期末复习入口。当前有 **62 个核心 M/T 入口：46 篇 v1.0、15 篇 v0.9、1 篇网页 review 与部分转录草稿**；材料版本与本人掌握程度分别记录。
 
 
 > **11/26 全材料与三阶段审计**：[153份教师源、28份实际交件、逐源处理矩阵与队列](_meta/canvas-file-audit-20261126/README.md)。包含数据、代码、题目、参考答案、模板、反馈和行政附件；归档及核验完成不代表新增教学已经制作。
@@ -70,7 +74,7 @@ IS5542 第 6 次反思于 11/26 16:16:34 HKT 提交，现六次反思均有提�
 
 - [录音与下载索引](_meta/audio-library/录音索引.md)：原始音频保存在 Google Drive，GitHub 留索引与哈希。
 - [期末与作业口径复盘](_meta/audio-fusion-20261121/考试与作业复盘.md)：课堂口头、书面要求和未知项分列。
-- [本次维护与核验](_meta/github-maintenance-20261126/README.md) · [待补来源与差异](_meta/github-maintenance-20261126/remaining-gaps.md)。IS5542 M10（71 页）已正式写回并接入原 U12；原 M07、视频及考务等缺口保留。
+- [本次维护与核验](_meta/github-maintenance-20261126/README.md) · [待补来源与差异](_meta/github-maintenance-20261126/remaining-gaps.md)。IS5542 M10（71 页）已正式写回并接入原 U12；M07 已另补网页 review 版；课堂原始 PPT、视频及考务等具体缺口保留。
 - [11/21 及以前首页历史](README-history-through-20261121.md)：完整保留旧批次、回执和当时限制，避免旧“未提交／待展示”继续充当今日待办。
 
 ## 看板与保存
