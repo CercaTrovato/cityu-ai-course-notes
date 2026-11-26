@@ -1,9 +1,12 @@
 ---
 type: 作业与DDL
 course: IS6400
-updated: 2026-11-07
+updated: 2026-11-26
 tags: [IS6400, DDL, 作业]
 ---
+
+<!-- current-maintenance-20261126 -->
+> **当前入口（2026-11-26）**：[[IS6400_Business_Data_Analytics/_meta/current-status-20261126|最新项目、提交与材料状态]] · [[IS6400_Business_Data_Analytics/review/final-2026/framework|期末复习框架]]。下文较早的日期记录保留当时事实；已过展示、旧 Q&A 与旧材料版本不作为当前待办。本人学习、正式提交和评分分别记录。
 
 > 2026-11-02 提交格式更正：重新现场读取教师10/1公告《Assignment Submission Instructions & Checklists》，开头明确“For all assignments”，并要求“Save your notebook in HTML format for submission”。Extra原题“One Jupyter Notebook”未明确要求.ipynb扩展名或另附源文件；按该统一格式，已提交HTML不构成已证实的附件缺失。撤销本页此前“建议补交Notebook”的行动提醒，不据此催交或改变已提交状态。三项真实回执不变，Notebook源文件保留本地即可。[教师统一公告](https://canvas.cityu.edu.hk/courses/71457/discussion_topics/637007)。
 

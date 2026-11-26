@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "assignment_id": "IS5542-A01",
+  "publication": "local_review",
+  "as_of": "2026-11-26",
+  "title": "IS5542 · 全思路解析",
+  "intro": "项目围绕一次外卖延误投诉展开：先理解业务依据，再把订单、判断和审批接起来，最后用可复跑的结果证明处理是否正确。",
+  "current": "最新最终 PPT 为 v5，成员信息本人已确认；gaga 计划 11/26 或 11/27 单人录制，本人负责录像和 Slides 提交。项目截止 11/28 23:59 HKT；反思 1–6 均已有 Submitted 回执，第 6 次于 11/26 16:16:34 HKT 完成。正式小组作业提交仍待核，互评等全部工作完成后按官方表单处理。",
+  "decision": "gaga 录制，本人收片终检并于 11/28 23:59 HKT 前提交小组录像和 Slides；项目结束后处理官方互评。六次反思均已有提交记录。",
+  "assignment_revision": "571b03b8ff45b2e41fd3b7afb5b76c1535f32a51e2d04b72014ec5dbca95c94d",
+  "primary_source": "narrative",
+  "sources": [
+    {
+      "id": "narrative",
+      "title": "项目发展顺读 · 当前整理版",
+      "path": "D:\\上课资料\\CityU\\IS5542_GenAI_in_Business\\assignment\\graded\\A01-genai-project\\notes\\project-thinking.md",
+      "sha256": "3cf61c4df8a9d5954ddfa0f8255bbbdb57638ca38d534c7e6360f3ce46ef6e52"
+    },
+    {
+      "id": "report",
+      "title": "IS5542 阶段监督回传",
+      "path": "D:\\上课资料\\CityU\\IS5542_GenAI_in_Business\\assignment\\graded\\A01-genai-project\\notes\\supervision-report.md",
+      "sha256": "7fa939e6e83c4c4127e3e10c10bcac61798cc35cde924a5beb1ee7128d1a88e7"
+    },
+    {
+      "id": "plan",
+      "title": "历史方案与进度（11月12日基线）",
+      "path": "E:\\app-data\\codex\\outputs\\is5542-flow-board-shared-20261112\\notes\\current-plan.md",
+      "sha256": "9cfe2b29108b9533c372a15cd229be5e2a4b5309aa29d38300db947d7d9ef098"
+    },
+    {
+      "id": "frontend",
+      "title": "前端与工程交接",
+      "path": "E:\\app-data\\codex\\outputs\\is5542-flow-board-shared-20261112\\notes\\team\\frontend-handoff.md",
+      "sha256": "4fd6d173a5f940fdf75fd3d1ef78330f1f90b5bf433568484f2fe7c1d0005890"
+    },
+    {
+      "id": "research",
+      "title": "业务调研交接",
+      "path": "E:\\app-data\\codex\\outputs\\is5542-flow-board-shared-20261112\\notes\\team\\research-handoff.md",
+      "sha256": "c11a43568c644c9500ae5f1387399f02293adae2ea5a348f1c5af77687ef66b3"
+    },
+    {
+      "id": "eligibility",
+      "title": "补偿资格判定表",
+      "path": "E:\\app-data\\codex\\outputs\\is5542-flow-board-shared-20261112\\work\\spec\\eligibility-matrix.md",
+      "sha256": "1a3b21bcfa085fd9ecafd5829d6cd67ac196cfb51be5e0de129f8e34172c8d17"
+    },
+    {
+      "id": "flow-evidence",
+      "title": "三平台9行首轮观察与核验边界",
+      "path": "E:\\app-data\\codex\\outputs\\is5542-flow-board-shared-20261112\\work\\spec\\competitor-evidence.md",
+      "sha256": "9caeb91b16301566c879534a526bab1528966179d200891cee9e1a60f4e0947f"
+    },
+    {
+      "id": "flow-archive",
+      "title": "三份脱敏正文与26页截图索引",
+      "path": "E:\\app-data\\codex\\outputs\\is5542-flow-board-shared-20261112\\work\\team-private\\2026-11-12-customer-service-flows\\README.md",
+      "sha256": "7c37c04d0c20ac6323d22db4c222550aab7f8aa4ec8c657ee3cb99b54aa2096e"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "problem",
+      "title": "把客服问题收在外卖延误",
+      "stage": 0,
+      "status": "decision",
+      "question": "怎样让项目有一个能够实际验证的业务场景？",
+      "choice": "本人确定外卖客服方向，首版聚焦已送达订单的延误补偿。",
+      "result": "业务目标进一步确认：优先证明处理正确且安全，效率和成本作为辅助。",
+      "meaning": "选一个具体投诉场景，才能定义订单事实、政策条件和完成标准。",
+      "next": "继续保持首版场景范围，新增功能另行判断。",
+      "owner": "全组；6 人沿用原角色",
+      "evidence": [
+        "report"
+      ],
+      "summary": "选一个具体投诉场景，才能定义订单事实、政策条件和完成标准。",
+      "date": "截至 2026-11-10"
+    },
+    {
+      "id": "research",
+      "title": "公开规则与实际流程分开调研",
+      "stage": 1,
+      "status": "team",
+      "question": "平台写出的规则，是否就等于顾客实际看到的客服过程？",
+      "choice": "两位调研成员分别核公开补偿规则与实际客服流程，按共同 R01–R03 留证据。",
+      "result": "新规则稿已收且同哈希；五项官方出处待补。三平台首轮材料已有，本轮流程比较表待收。",
+      "meaning": "规则依据、前台样本回复和完整服务闭环回答不同问题。退款指引不是延误补偿；48／24小时仅为样本话术，京东10分钟券和旧指定20分钟免单须分产品版本核。",
+      "next": "用无订单观察和公开证据补三平台对照，标明日期和不可比项。",
+      "owner": "Jacky、林",
+      "evidence": [
+        "report",
+        "research",
+        "flow-evidence",
+        "flow-archive"
+      ],
+      "summary": "首轮观察与有限比较已核；真实赔付、真人接通、工单闭环另列待补。",
+      "date": "截至 2026-11-12"
+    },
+    {
+      "id": "control",
+      "title": "把判断与批准拆成明确状态",
+      "stage": 1,
+      "status": "decision",
+      "question": "模型能解释延误，是否就可以承诺已经发放补偿？",
+      "choice": "采用 LangChain／LangGraph 方向，将查单、资格判断、人工审批和状态恢复分开。",
+      "result": "本人负责规则判定表、资格判定与分流节点、baseline B 和同案评分口径。",
+      "meaning": "拟申请补偿、等待批准、批准后执行是不同状态；对话不能越过权限和事实。",
+      "next": "让网页后端调用确定的资格接口，保留人工批准环节。",
+      "owner": "李宾雄与技术开发组员",
+      "evidence": [
+        "report",
+        "eligibility"
+      ],
+      "summary": "拟申请补偿、等待批准、批准后执行是不同状态；对话不能越过权限和事实。",
+      "date": "截至 2026-11-10"
+    },
+    {
+      "id": "prototype",
+      "title": "开发分支已见，当前接收验收待核",
+      "stage": 2,
+      "status": "team",
+      "question": "已做出的参考模块证明了什么？",
+      "choice": "先用 ORD001 与可替换的演示政策复跑，再交给开发成员集成。",
+      "result": "已核开发 PR #2 的候选 29171c8 和 11 月 22 日四次迭代。",
+      "meaning": "已核的是远端分支与历史报告确实存在；报告的自检结果属于对应历史版本和作者环境，不替代本次独立运行或接收人签收。",
+      "next": "锁定受测提交、模型配置和演示初态，按四项规则核代码。",
+      "owner": "工程提供接口，开发完成集成",
+      "evidence": [
+        "report",
+        "frontend",
+        "eligibility",
+        "narrative"
+      ],
+      "summary": "它证明局部规则可运行；还没有证明顾客确认、订单归属、审批权限与页面回显组成了完整团队网页。",
+      "date": "截至 2026-11-10",
+      "history": [
+        {
+          "observed_on": "2026-11-20",
+          "reason": "核对最新阶段，原内容作为历史保存",
+          "previous": {
+            "title": "局部接口已验证，完整网页待验",
+            "status": "local",
+            "result": "demo-v1 资格接口已验证三路：延误恰好 30 分钟不符合，30 分 01 秒返回“可申请”，缺实际送达时间需补资料。对于 30 分 01 秒这一支，本地模拟 C 流程会暂停待审；团队网页仍须先让顾客确认，服务端才建立真正的待审工单。前端交接已发布。",
+            "meaning": "它证明局部规则可运行；还没有证明顾客确认、订单归属、审批权限与页面回显组成了完整团队网页。",
+            "next": "收顾客和审批两个入口、可复跑分支、启动方式及 P01 结果。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "title": "按正常、边界与异常检查结果",
+      "stage": 3,
+      "status": "pending",
+      "question": "收到一个能打开的页面后，怎样判断交付质量？",
+      "choice": "P01 验正常流程，P02／P03 检查阈值、权限与信息缺失。B 让模型按提示判断下一步，C 用明确规则节点控制分流；两边共用订单授权和人工审批边界。",
+      "result": "11 月 22 日原表有 8 行标为通过或已解决，缺受测提交及完整配置；末次图片提交晚于测试反馈。四项新边界的代码对齐和 9 组定向复测待核。",
+      "meaning": "“页面能开”与“按规则正确处理”分别验收，才能知道哪里还需要补。",
+      "next": "固定版本后跑 9 组边界和基础工具 B／规则 C 的同条件真实模型对照，保留原始证据。",
+      "owner": "gaga老师、A、技术组",
+      "evidence": [
+        "report",
+        "frontend",
+        "plan",
+        "narrative"
+      ],
+      "summary": "“页面能开”与“按规则正确处理”分别验收，才能知道哪里还需要补。",
+      "date": "截至 2026-11-10",
+      "history": [
+        {
+          "observed_on": "2026-11-20",
+          "reason": "核对最新阶段，原内容作为历史保存",
+          "previous": {
+            "result": "完整团队网页与首轮测试证据尚待交接；B/C 对照是否共用延误秒数等条件仍待对齐。",
+            "next": "两位测试成员用同案政策核对状态；不要只凭演示截图计为通过。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "policy",
+      "title": "四项人工审核规则已确认，运行对齐待验",
+      "stage": 4,
+      "status": "decision",
+      "question": "首版到底采用哪个阈值和券额，何时算项目完成？",
+      "choice": "演示规则用于打通流程；正式补偿档位、审批边界和 B/C 评价口径由团队确认。",
+      "result": "已确认四项规则：未补偿的已驳回订单，有可核实的新信息或原处理错误才沿原工单人工重审；仅主管 R002 可改额；默认 ¥10 模拟券，改额限 1–20 元整数、不超实付且记录原因；同一订单最多成功补偿一次。",
+      "meaning": "候选政策不能伪装成平台真实规则，局部验证不能替代正式交付。",
+      "next": "部署和评测均沿同一规则版本，保留工程对齐与正式结果的单独验收。",
+      "owner": "总监督与全组",
+      "evidence": [
+        "report",
+        "plan"
+      ],
+      "summary": "候选政策不能伪装成平台真实规则，局部验证不能替代正式交付。",
+      "date": "截至 2026-11-10"
+    }
+  ],
+  "edges": [
+    {
+      "from": "problem",
+      "to": "research",
+      "label": "先取得业务依据"
+    },
+    {
+      "from": "problem",
+      "to": "control",
+      "label": "明确工程处理边界"
+    },
+    {
+      "from": "research",
+      "to": "prototype",
+      "label": "后续校正演示参数与例外"
+    },
+    {
+      "from": "control",
+      "to": "prototype",
+      "label": "形成可调用模块"
+    },
+    {
+      "from": "prototype",
+      "to": "test",
+      "label": "用集成网页接受检验"
+    },
+    {
+      "from": "test",
+      "to": "policy",
+      "label": "据实测结果冻结方案"
+    }
+  ],
+  "updated_at": "2026-11-23T11:19:18+08:00",
+  "history": [
+    {
+      "observed_on": "2026-11-20",
+      "as_of": "2026-11-12",
+      "intro": "项目围绕一次外卖延误投诉展开：先理解业务依据，再把订单、判断和审批接起来，最后用可复跑的结果证明处理是否正确。",
+      "current": "林已交三份 R01–R03 报告。课程会话核读全部正文、15 张表和 26 张截图，整理九个有限样本观察。作者自述 11 月11日在佛山观察，11月12日接收核阅；本轮完成的是材料接收和有边界的流程比较。",
+      "decision": "林补可取得的采集日期、选单／点击步骤、真人转接或已有工单进度；Jacky 协助核京东产品版本及48／24小时来源。开发沿demo-v1并行，另核分支、可运行网页与P01；正式政策、B/C及新增功能由本人和团队决定。",
+      "assignment_revision": "c6bc4bb1dbf03066c6dc271c8f0d68e195ff1810703b5d7cad60c3365ca6234a"
+    }
+  ]
+}

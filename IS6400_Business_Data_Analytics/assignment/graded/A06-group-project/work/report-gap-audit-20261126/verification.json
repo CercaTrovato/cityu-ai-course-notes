@@ -1,0 +1,206 @@
+{
+  "source_commit": "4a61991ad2c0a1e70deaa691078a6aff5f6dfec6",
+  "inventory": {
+    "tracked_files": 1283,
+    "cached_text_files": 939,
+    "extensions": {
+      "": 5,
+      ".md": 275,
+      ".zip": 3,
+      ".json": 243,
+      ".csv": 363,
+      ".png": 151,
+      ".ipynb": 2,
+      ".txt": 3,
+      ".svg": 92,
+      ".py": 129,
+      ".gz": 1,
+      ".pdf": 9,
+      ".pptx": 7
+    },
+    "research_families": {
+      "ae-ablation-20261112": 138,
+      "common-comparison-20261112": 149,
+      "final-validation-20261112": 83,
+      "frozen-temporal-test-20261125": 11,
+      "historical-figure-archive-20261125": 2,
+      "ppt-draft-intake-20261115": 5,
+      "ppt-handoff-20261115": 8,
+      "question-design-20261111": 4,
+      "role02-v11-20261113": 33,
+      "role05-mainline-20261113": 41,
+      "round3-extension": 34,
+      "round3": 73,
+      "route-A-decision-20261115": 8,
+      "route-comparison-20261114": 35,
+      "team-round3-20261112": 157,
+      "validation-20261111": 194
+    }
+  },
+  "manifest_checks": [
+    {
+      "manifest": "research/final-validation-20261112/public-evidence-manifest.json",
+      "entries": 82,
+      "mismatch": [],
+      "missing": []
+    },
+    {
+      "manifest": "research/ppt-draft-intake-20261115/public-evidence-manifest.json",
+      "entries": 4,
+      "mismatch": [],
+      "missing": []
+    },
+    {
+      "manifest": "research/ppt-handoff-20261115/public-evidence-manifest.json",
+      "entries": 7,
+      "mismatch": [],
+      "missing": []
+    },
+    {
+      "manifest": "research/role02-v11-20261113/public-evidence-manifest.json",
+      "entries": 32,
+      "mismatch": [],
+      "missing": []
+    },
+    {
+      "manifest": "research/role05-mainline-20261113/public-evidence-manifest.json",
+      "entries": 40,
+      "mismatch": [],
+      "missing": []
+    },
+    {
+      "manifest": "research/route-A-decision-20261115/public-evidence-manifest.json",
+      "entries": 7,
+      "mismatch": [],
+      "missing": []
+    },
+    {
+      "manifest": "research/route-comparison-20261114/public-evidence-manifest.json",
+      "entries": 34,
+      "mismatch": [],
+      "missing": []
+    },
+    {
+      "manifest": "research/team-round3-20261112/public-evidence-manifest.json",
+      "entries": 156,
+      "mismatch": [],
+      "missing": []
+    }
+  ],
+  "arithmetic_checks": [
+    {
+      "path": "research/team-round3-20261112/members/role03/january-comparison.csv",
+      "rows": 18,
+      "arithmetic_errors": []
+    },
+    {
+      "path": "research/team-round3-20261112/members/role03/group-model-comparison.csv",
+      "rows": 9,
+      "arithmetic_errors": []
+    },
+    {
+      "path": "research/role05-mainline-20261113/audit/capacity-all-models.csv",
+      "rows": 12,
+      "arithmetic_errors": []
+    },
+    {
+      "path": "research/frozen-temporal-test-20261125/metrics.csv",
+      "rows": 27,
+      "arithmetic_errors": []
+    }
+  ],
+  "code_structure_checks": [
+    {
+      "path": "research/team-round3-20261112/members/role03/run_round3.py",
+      "ast_parse_ok": true,
+      "fit_call_sites": [
+        "fit",
+        "fit"
+      ],
+      "absolute_path_literal_count": 0
+    },
+    {
+      "path": "research/team-round3-20261112/members/role03/run_group_models.py",
+      "ast_parse_ok": true,
+      "fit_call_sites": [
+        "fit",
+        "fit",
+        "fit",
+        "fit",
+        "fit",
+        "fit"
+      ],
+      "absolute_path_literal_count": 0
+    },
+    {
+      "path": "research/frozen-temporal-test-20261125/score_frozen.py",
+      "ast_parse_ok": true,
+      "fit_call_sites": [],
+      "absolute_path_literal_count": 6
+    },
+    {
+      "path": "research/final-validation-20261112/data/run_data.py",
+      "ast_parse_ok": true,
+      "fit_call_sites": [
+        "fit"
+      ],
+      "absolute_path_literal_count": 1
+    },
+    {
+      "path": "research/final-validation-20261112/probability/run_probability.py",
+      "ast_parse_ok": true,
+      "fit_call_sites": [
+        "fit",
+        "fit",
+        "fit",
+        "fit"
+      ],
+      "absolute_path_literal_count": 1
+    },
+    {
+      "path": "research/final-validation-20261112/value/run_value.py",
+      "ast_parse_ok": true,
+      "fit_call_sites": [
+        "fit",
+        "fit"
+      ],
+      "absolute_path_literal_count": 0
+    }
+  ],
+  "ppt_source_matches_git": true,
+  "ppt_chart_cache_hits": {
+    "initial_screening": [
+      30,
+      35,
+      36,
+      44,
+      45,
+      46,
+      50
+    ],
+    "later_R3": [
+      50,
+      48,
+      46,
+      50,
+      49
+    ]
+  },
+  "figure_visual_sample": [
+    "research/team-round3-20261112/figures/01-team-models-and-long79.png",
+    "research/role05-mainline-20261113/figures/02-role05-paired-changes.png",
+    "research/final-validation-20261112/figures/01-rolling-probability.png",
+    "research/final-validation-20261112/figures/02-january-hits-value-tradeoff.png",
+    "research/common-comparison-20261112/statistics/figures/calibration-base8-weightedLR.png",
+    "research/ae-ablation-20261112/statistics/blocks-canonical-conditional-intervals.png"
+  ],
+  "private_input_check": {
+    "manifest_paths_checked": 14,
+    "paths_present": 14,
+    "frozen_test_row_scores_present": true,
+    "contents_not_published": true
+  },
+  "fits_run_this_batch": 0,
+  "new_experiments_run_this_batch": 0,
+  "source_scope_limit": "Manifest hashes, aggregate arithmetic, selected code and visual sample; no full model or raw dataset re-execution."
+}

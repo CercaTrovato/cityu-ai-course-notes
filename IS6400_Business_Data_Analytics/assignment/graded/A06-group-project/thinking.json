@@ -1,0 +1,1261 @@
+{
+  "schema_version": 1,
+  "assignment_id": "IS6400-A06",
+  "publication": "local_review",
+  "as_of": "2026-11-26",
+  "title": "IS6400 · 全思路解析",
+  "intro": "项目从历史订单预测未来复购，以分群理解结果；早期建模、A/B 选择和辅助研究均按当时证据保留。当前展示使用本人确认已提交的最终13页A稿，以下历史节点不构成重新投票或重做PPT要求。",
+  "current": "本人11/26确认11/25展示完成、没有老师反馈；最终报告正文未开始，需要分工。已完成基于现有代码/表/图的报告前审计：18条准备事项（4个P0、14个P1），其中当前状态写回由本批处理；区分现成证据、记录错误、必补报告材料及可选实验，未重训。六岗第一批交件/日期为建议，待本人及成员确认。",
+  "decision": "本人评审审计R02范围单及六岗建议；先整理实验身份、修R3元数据、数据时间图和三期完整报告表，再确认正文分工；不默认开启新模型训练。",
+  "assignment_revision": "a39959857996eb53a9f4157ce778eef2a1e0865b08d994b937a3b7bbfa2fb5b6",
+  "primary_source": "narrative",
+  "sources": [
+    {
+      "id": "narrative",
+      "title": "完整思路：原文起点与最新研究迭代",
+      "path": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\assignment\\graded\\A06-group-project\\notes\\project-thinking.md",
+      "sha256": "15459c49c68ee25d5fbea0b513f38e9ccc3442ac337f5c207759ccb5b10772ec"
+    },
+    {
+      "id": "original",
+      "title": "项目全思路解析 · 你认可的完整原文",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-project-explanation-20261110\\项目全思路解析.md",
+      "sha256": "b987732922a7194d66b0d75b7c38af65d55b63eb0ef62b38b3f9d3f772addddb"
+    },
+    {
+      "id": "discussion",
+      "title": "讨论续接与神经网络对照方案",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-project-explanation-20261110\\讨论续接与神经网络对照方案.md",
+      "sha256": "68edd9f0789678f204206fbed2fd641e425a6f27c6a93cf942ce5880a791d811"
+    },
+    {
+      "id": "mlp",
+      "title": "小型神经网络对照结果",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-mlp-comparison-20261110\\README.md",
+      "sha256": "c259c95489fdbc573e68edf37e4134f54c8d6ef3756f2ebd5b8484b35aba21c2"
+    },
+    {
+      "id": "metrics",
+      "title": "一月验证：全部 10 行实测数据",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-mlp-comparison-20261110\\validation-metrics.csv",
+      "sha256": "fa79ff2c5cb44e1b255992d774c9b801d37bbad113ae01f78eeb730d401be0ef"
+    },
+    {
+      "id": "group-metrics",
+      "title": "三群明细",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-mlp-comparison-20261110\\group-metrics.csv",
+      "sha256": "7e8174337ed6774f93b67f6561361ffe158acbca5140d99d0524d659d69259b4"
+    },
+    {
+      "id": "paired",
+      "title": "同方法前后差",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-mlp-comparison-20261110\\paired-differences.csv",
+      "sha256": "73ed5d59195702840b4cf71f154bbd57408b98f2d384ed93c780a681dab3efe9"
+    },
+    {
+      "id": "team-ranking",
+      "title": "原文引用：团队首轮结果",
+      "path": "E:/AIworkspace/codex-workspace/olist-repurchase-analysis/docs/team/evidence/h04-ranking.csv",
+      "sha256": "7fb78548468af0f4f99e8e7916d7ccda67fda60d8b3d5d6dac7a1381569a4e7c"
+    },
+    {
+      "id": "common-groups",
+      "title": "原文引用：团队与本地同群对照",
+      "path": "E:/app-data/codex/outputs/is6400-team-intake-20261110/common-group-metrics.json",
+      "sha256": "8baa000fa8df6bb95e26233dbebdd1cdb3830d7f9e168520ae77792759aecf2b"
+    },
+    {
+      "id": "published-status",
+      "title": "最新团队进度与验收边界",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-board-source-86d0ead-20261110\\docs\\team\\current-status.md",
+      "sha256": "389c0a654a64fb945f8f30754b424eb5d99d3c5c4d42b54526296428dad2998a"
+    },
+    {
+      "id": "published-exploration",
+      "title": "本地探索与更强基线对照",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-board-source-86d0ead-20261110\\docs\\team\\local-exploration.md",
+      "sha256": "8e4f01a9c577a84303bd279337da8025297b60c602b0b3ddc006faa25bad6e17"
+    },
+    {
+      "id": "published-evidence",
+      "title": "公开汇总证据索引",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-board-source-86d0ead-20261110\\docs\\team\\evidence\\README.md",
+      "sha256": "42990f4563bed2d28df11ba8ac21903ff05e58909a35f48e6e307f5bc8722b32"
+    },
+    {
+      "id": "h06-latest",
+      "title": "H06 一月加权前后对照",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-board-source-86d0ead-20261110\\docs\\team\\evidence\\h06-weighting-comparison.csv",
+      "sha256": "ddda5d474fa425ba1e7ec65d5a97564772669d9f7c3dd28d16df0fe97921d4e8"
+    },
+    {
+      "id": "april-latest",
+      "title": "本地已见四月回测汇总",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-board-source-86d0ead-20261110\\docs\\team\\evidence\\april-seen-window.csv",
+      "sha256": "20f2c089f366c9d6fd6eca1cf0fb467d01ccdcd20957645b2fdd1a83edd8593e"
+    },
+    {
+      "id": "capacity-latest",
+      "title": "一月不同名额的简单规则对照",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-board-source-86d0ead-20261110\\docs\\team\\evidence\\local-january-capacity.csv",
+      "sha256": "5b995e45f9c1d2cb246da5bfd697a61cde05237b83352cc25dbda95626ea0d70"
+    },
+    {
+      "id": "weighting-latest",
+      "title": "三字段与八字段的加权对照",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-board-source-86d0ead-20261110\\docs\\team\\evidence\\local-weighting-ablation.csv",
+      "sha256": "7d19307a41088fe162f19e969f75b5d04c8bcca2ca8ebdaa2299ad8e478bb4a4"
+    },
+    {
+      "id": "h05-latest",
+      "title": "群号和群特征交互对照",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-board-source-86d0ead-20261110\\docs\\team\\evidence\\local-h05-interactions.csv",
+      "sha256": "06563c0357b3eae7e12b634415c9bb51baae1d24155eade22d3ac04c83c2b851"
+    },
+    {
+      "id": "h05-groups-latest",
+      "title": "群号交互后的各群名额与命中",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-board-source-86d0ead-20261110\\docs\\team\\evidence\\local-h05-interaction-groups.csv",
+      "sha256": "07d640a261ddb1173cb9c1faf1245994e27356f0d12c09d063f641ea60b8636b"
+    },
+    {
+      "id": "h05-screen-latest",
+      "title": "十月群内候选筛选记录",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-board-source-86d0ead-20261110\\docs\\team\\evidence\\local-h05-interaction-screen.csv",
+      "sha256": "0aa872a7cb05fc973fd184d1f551d18f05c6b966e1e94b0275b10d36556fae6c"
+    },
+    {
+      "id": "graph-grid-latest",
+      "title": "三种历史图与层数维度完整汇总",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-board-source-86d0ead-20261110\\docs\\team\\evidence\\local-gcn-graph-grid.csv",
+      "sha256": "656259a5409a7f5ed683ad92dbb950f9c086da620129d9a87a06e4cf325286e9"
+    },
+    {
+      "id": "graph-residual-latest",
+      "title": "同卖家 GCN 残差与对比训练汇总",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-board-source-86d0ead-20261110\\docs\\team\\evidence\\local-gcn-residual.csv",
+      "sha256": "59775bc39bc27b74190ac1185f02c044266ae9b9cb871a9195bcb3d29328eae9"
+    },
+    {
+      "id": "current-receipt",
+      "title": "本轮监督回执与机制读法（共享摘要）",
+      "path": "D:\\上课资料\\CityU\\IS6400_Business_Data_Analytics\\assignment\\graded\\A06-group-project\\notes\\supervision-report.md",
+      "sha256": "248a52ffc8439ff43c9ae881c927e28f961611d3cc7fc1119fd29ac428333a85"
+    },
+    {
+      "id": "h04-v04",
+      "title": "H04 v0.4 四月评分补件核验摘要",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-v04-board-20261110\\h04-v04-summary.md",
+      "sha256": "c1dd5f5855d90f373e67accdf00093d5e1626f6021f7633723c0d0d3c5ab20aa"
+    },
+    {
+      "id": "h04-v04-numbers",
+      "title": "v0.4 名单复现与分数差异汇总",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-v04-board-20261110\\verification-summary.json",
+      "sha256": "30aada6bff0f521f4e6e330d8fb9b9fc13a379f2221f57eae77663c814c7cf99"
+    },
+    {
+      "id": "round3-results",
+      "title": "第三轮结果与完整证据边界",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-round3-board-shared-20261111\\docs\\team\\round-3-results.md",
+      "sha256": "cc6fb6bfbe225f8be8c1cc5f595e200f712ff987244c753168ae2f5d2f63180a"
+    },
+    {
+      "id": "round3-briefs",
+      "title": "第三轮成员任务包（待本人分发）",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-round3-board-shared-20261111\\docs\\team\\round-3\\README.md",
+      "sha256": "466d53c170ce8a919a564e1bade990b43d4590b8acc48d2a7cade601cf56bd7b"
+    },
+    {
+      "id": "round3-visuals",
+      "title": "13 组图表、中文读法与聚合入口",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-round3-board-shared-20261111\\docs\\team\\visual-assets.md",
+      "sha256": "596e361127a259b98ea16956ac51ee4921821605597919069b96af066006c3ce"
+    },
+    {
+      "id": "extension-results",
+      "title": "已发群后的 11 个新候选与完整限制",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-extension-board-shared-20261111\\docs\\team\\round-3-extension.md",
+      "sha256": "6d27c3148b612409a26aa212be0e15d695c60ef32950c9d2e391b40e6bfa1828"
+    },
+    {
+      "id": "extension-visuals",
+      "title": "18 组图表总索引（含新图14—18）",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-extension-board-shared-20261111\\docs\\team\\visual-assets.md",
+      "sha256": "296926a4587f112c75930a0845a18457de87ee3edaddb5aa3a6bd7cca66fe3de"
+    },
+    {
+      "id": "design-questions",
+      "title": "历史 D08 设计阶段 · Q01—Q18 建模质疑与已有证据",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-design-gate-board-shared-20261111\\docs\\team\\research-questions.md",
+      "sha256": "79fc53cedb560e4a1d793207ff47e18b417f007f958f572da90b0c39157cb75a"
+    },
+    {
+      "id": "design-protocol",
+      "title": "历史 D08 设计阶段 · 待明确开测的验证方案草案",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-design-gate-board-shared-20261111\\docs\\team\\research-protocol-draft.md",
+      "sha256": "7e35f0399f77db7cd15ab2fa6de51e95e0c8224402ab25255bece5757a21b66a"
+    },
+    {
+      "id": "design-mvsib",
+      "title": "历史 D08 设计阶段 · MVSIB 迁移短摘要（只读与设计）",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-design-gate-board-shared-20261111\\docs\\team\\mvsib-transfer-notes.md",
+      "sha256": "7efc54ccc08b140d1901a5d28bd5aa0ba8290fdcdc6577043b1ef113a8cc046a"
+    },
+    {
+      "id": "design-register",
+      "title": "历史 D08 设计阶段 · 18 条新实验未开始的机器记录",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-design-gate-board-shared-20261111\\research\\question-design-20261111\\question-register.json",
+      "sha256": "3e096b270d98c09a281df5439acdde5c8a3485b7626759d16406741689354f04"
+    },
+    {
+      "id": "validation-execution",
+      "title": "D10授权后的执行范围、结果与限制",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-validation-board-shared-20261111\\docs\\team\\validation-execution.md",
+      "sha256": "89288088cd271f5e1c9ce2b1ad093c01c418c38b94355a535b1c40242aa73e65"
+    },
+    {
+      "id": "validation-register",
+      "title": "Q01—Q18 当前验证状态（D10已授权）",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-validation-board-shared-20261111\\research\\validation-20261111\\question-register.json",
+      "sha256": "8e6e73e9d7fb6662c3c0447722ccbe6d0501db7afc17b4365bdd810c273505c4"
+    },
+    {
+      "id": "validation-gallery",
+      "title": "40幅图：历史18与本批22",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-validation-board-shared-20261111\\figure-gallery.md",
+      "sha256": "478e8d4f59abdaaafca6ca25da8e23767c1a7b0afad96cfe4d463dccbff98241"
+    },
+    {
+      "id": "common-comparison-results",
+      "title": "历史 D11 · D11 统一比较：已审完整说明",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-common-board-shared-20261112\\docs\\team\\common-candidate-comparison.md",
+      "sha256": "4e761d16c37f52e4869b02ba986e979400cc85cc8530631c1599c2bc2a495b5e"
+    },
+    {
+      "id": "common-comparison-gallery",
+      "title": "历史 D11 · 57 幅图：历史 40 与本批 17",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-common-board-shared-20261112\\figure-gallery.md",
+      "sha256": "7a3a6a2329bd1a64e9a8e42a095f6f7304b6b210f9d8ee311b3af04f1896eddd"
+    },
+    {
+      "id": "ae-followup-results",
+      "title": "历史 D12 · D12 最新结论：AE 消融与时间诊断",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-ae-board-shared-20261112\\docs\\team\\ae-validation-results.md",
+      "sha256": "df02179c28de2be1d17572cff088f3f105faf6b4f74e21aaf92c173c107085e0"
+    },
+    {
+      "id": "ae-followup-gallery",
+      "title": "历史 D12 · 66 幅图：历史 57 与本批 9",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-ae-board-shared-20261112\\figure-gallery.md",
+      "sha256": "6e047e05bc89366a44dfc03a6a5d016af62ee28aa35982179a6728761d19681e"
+    },
+    {
+      "id": "final-value-results",
+      "title": "D13 最终完整解析：概率、价值与经理名单",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-final-board-shared-20261112\\research\\final-validation-20261112\\README.md",
+      "sha256": "2885d56b33f5ba56f8ebf5d9832a3952d70541aa2e1ccb359d7d1be4fba1c2da"
+    },
+    {
+      "id": "final-value-manager",
+      "title": "经理怎样使用概率和价值规则",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-final-board-shared-20261112\\docs\\team\\final-value-guide.md",
+      "sha256": "7e2e9584b46319982556a3edfa59075571e444b858a832a7ba4e4ef127f29f74"
+    },
+    {
+      "id": "final-value-closure",
+      "title": "20项质疑逐项结案与证据边界",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-final-board-shared-20261112\\research\\final-validation-20261112\\closure\\question-closeout.md",
+      "sha256": "c4eeeb98018eed396ae5bd9e5973dc1c5fc34dfb998f127bdf7090b43bc83f70"
+    },
+    {
+      "id": "final-value-gallery",
+      "title": "72幅主图与完整公开材料包",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-final-board-shared-20261112\\figure-gallery.md",
+      "sha256": "5670ee6e52dc0b986c6b8dca4a5989c61446ba42e87796832d9940b5cc11cc58"
+    },
+    {
+      "id": "team-round3-results",
+      "title": "真实1–4号回件：完整核验与合稿边界",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-team-board-shared-20261112\\research\\team-round3-20261112\\README.md",
+      "sha256": "79460ff607d9f99db5b1d47937b8967283a7e253225dfa7e076fbe1e5bc93c39"
+    },
+    {
+      "id": "team-round3-status",
+      "title": "逐岗验收、课程修正与待补项",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-team-board-shared-20261112\\research\\team-round3-20261112\\acceptance.json",
+      "sha256": "346821edfae38dc6a3aa6554ce9177e75552d39ceb09525d7e6f9c478e821f6b"
+    },
+    {
+      "id": "team-round3-gallery",
+      "title": "85幅主图：真实回件与历史研究",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-team-board-shared-20261112\\figure-gallery.md",
+      "sha256": "ef731bdfada3625a700aef830558ab29e42fdfe1bdedc58b3f0c412055d63abd"
+    },
+    {
+      "id": "role05-mainline-results",
+      "title": "历史5号验收及当时主线解读（当前待投票）",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-role05-board-shared-20261113\\research\\role05-mainline-20261113\\README.md",
+      "sha256": "b51dc746d6589a3585fbae4e4d24e74fc4a6e48e4f15c3361ab9f577ea5e9710"
+    },
+    {
+      "id": "role05-mainline-decision",
+      "title": "历史11月13日原话：集体采用解读现已更正",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-role05-board-shared-20261113\\research\\role05-mainline-20261113\\report-mainline-decision.json",
+      "sha256": "fd317e6d1231c5118acd073a1f8e0dc33047b3254e709afbb24a50cc4306cb89"
+    },
+    {
+      "id": "role05-mainline-gallery",
+      "title": "92 科学图与最终已提交 PPT",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-role05-board-shared-20261113\\figure-gallery.md",
+      "sha256": "66a6bd563b629df638567743da47483e6f38eef9dd5673f2a20dd0fa0720bde8"
+    },
+    {
+      "id": "role02-v11-receipt",
+      "title": "2号v1.1定向补件：区间及说明已修复",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-role02-v11-board-shared-20261113\\research\\role02-v11-20261113\\README.md",
+      "sha256": "9dec5c8e55c3fe1146b4c63448c27b6d727ef5d55c335033481f9e13edfecbd1"
+    },
+    {
+      "id": "route-vote-review",
+      "title": "历史B/对照资料入口（当前A稿优先，见本页下方历史）",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-submitted-board-shared-20261115\\submitted-reader.md",
+      "sha256": "242d42f6aadccc0746abfb20141c08bae95edf13e994dd4bdcf811a07ef3db66"
+    },
+    {
+      "id": "ppt-handoff-review-reader",
+      "title": "历史B/对照资料入口（当前A稿优先，见本页下方历史）",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-submitted-board-shared-20261115\\submitted-reader.md",
+      "sha256": "242d42f6aadccc0746abfb20141c08bae95edf13e994dd4bdcf811a07ef3db66"
+    },
+    {
+      "id": "ppt-draft-reader",
+      "title": "历史B/对照资料入口（当前A稿优先，见本页下方历史）",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-submitted-board-shared-20261115\\submitted-reader.md",
+      "sha256": "242d42f6aadccc0746abfb20141c08bae95edf13e994dd4bdcf811a07ef3db66"
+    },
+    {
+      "id": "ppt-A-review-reader",
+      "title": "最终已提交 PPT：周三展示、回执边界与历史资料",
+      "path": "E:\\app-data\\codex\\outputs\\is6400-submitted-board-shared-20261115\\submitted-reader.md",
+      "sha256": "242d42f6aadccc0746abfb20141c08bae95edf13e994dd4bdcf811a07ef3db66"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "question",
+      "title": "从客户历史判断未来复购",
+      "stage": 0,
+      "status": "decision",
+      "question": "我们究竟要帮助谁作什么判断？",
+      "choice": "把研究对象固定为客户：根据分析日以前的订单，给未来 90 天的复购倾向排序。",
+      "result": "项目同时采用监督学习作预测、无监督分群解释预测在哪些人身上有效。",
+      "meaning": "先明确判断对象，后面的数据、模型和评价才会回答同一个问题。",
+      "next": "将预测结果与后续营销干预的效果分开写。",
+      "owner": "6 号统筹",
+      "evidence": [
+        "original"
+      ],
+      "summary": "先明确判断对象，后面的数据、模型和评价才会回答同一个问题。",
+      "date": "截至 2026-11-10"
+    },
+    {
+      "id": "data",
+      "title": "把订单流水变成客户历史",
+      "stage": 1,
+      "status": "team",
+      "question": "一笔订单里有多件商品，怎样避免重复计算购买次数？",
+      "choice": "以客户为单位，统一订单批准、正金额、过去 6 个自然月和未来 90 天的标签定义。",
+      "result": "团队 8 字段覆盖 R、F、M、平均商品行数、运费占比、近 30 天订单与金额、州代码。前两期共同字段及标签已有逐键核对。",
+      "meaning": "特征是作判断时已有的信息；不能把一单三件商品当成三次复购。",
+      "next": "新增特征仍需给出历史窗口内可复算的计算方法。",
+      "owner": "1、2 号",
+      "evidence": [
+        "original",
+        "mlp"
+      ],
+      "summary": "特征是作判断时已有的信息；不能把一单三件商品当成三次复购。",
+      "date": "截至 2026-11-10"
+    },
+    {
+      "id": "time",
+      "title": "先划清训练、验证和四月边界",
+      "stage": 1,
+      "status": "team",
+      "question": "哪些结果用于学习，哪些用于选择方法？",
+      "choice": "2017-10-01 快照训练，2018-01-01 验证。四月曾被看过，若再使用须称已见窗口回测。",
+      "result": "训练有 21,160 人、211 个正例；一月验证有 29,368 人、230 个正例。本轮 MLP 对照没有使用四月。",
+      "meaning": "时间切分能限制未来信息混入，但已经看过的时期不能重新称为盲测。",
+      "next": "上述投票、冻结或新回测安排属于当时历史。当前展示采用本人确认已提交的最终13页A稿，不重开投票或四月回测；最终报告的研究采用与已见窗口披露另按真实记录待核。",
+      "owner": "1、3、5、6 号",
+      "evidence": [
+        "original",
+        "mlp"
+      ],
+      "summary": "时间切分能限制未来信息混入，但已经看过的时期不能重新称为盲测。",
+      "date": "截至 2026-11-10",
+      "history": [
+        {
+          "observed_on": "2026-11-20",
+          "previous": {
+            "next": "由 6 号确认冻结后的四月回测安排及披露方式。"
+          },
+          "reason": "旧投票/回测安排仅保留历史，不作当前展示门槛"
+        }
+      ]
+    },
+    {
+      "id": "ranking",
+      "title": "用同样长的名单比较预测",
+      "stage": 2,
+      "status": "team",
+      "question": "正例不足 1%，怎样判断模型真正找到了人？",
+      "choice": "所有方法从同一批 29,368 人中选 2,937 人；比较实际复购命中，而不是只看整体准确率。",
+      "result": "最近购买优先命中 30，团队逻辑回归 46、随机森林 44、CatBoost 45。逻辑回归的名单精确率是 46/2,937≈1.57%；在全部复购者中找回的比例是 46/230=20%，即召回率。",
+      "meaning": "这一期模型优于简单规则，但几个模型差距很小，不能据此宣布普遍优胜。",
+      "next": "后续对照保持相同客户、名额与同分排序。",
+      "owner": "3、5 号",
+      "evidence": [
+        "original",
+        "discussion",
+        "mlp"
+      ],
+      "summary": "这一期模型优于简单规则，但几个模型差距很小，不能据此宣布普遍优胜。",
+      "date": "2026-11-10 · 首轮记录（后续结果见下方）"
+    },
+    {
+      "id": "groups",
+      "title": "用分群解释总体成绩",
+      "stage": 2,
+      "status": "team",
+      "question": "总体命中 46 人，是否掩盖了某些客户群的表现？",
+      "choice": "按历史 R、F、M 等行为分群，再用同一套团队三群划分检查全局名单。",
+      "result": "较近单单群、较久单单群、历史多单群分别有 16,335、12,330、703 人。群数与本地辅助分群不同，不自动代表谁做错。",
+      "meaning": "分群提供诊断视角；它不是直接使用未来复购标签把客户分好类。",
+      "next": "最初要求的分群复跑材料已由4号补齐，一月29,368个群号已逐键复跑吻合。继续使用已核H05-km3-v1；若改群版本再核，不顺带宣称四月群号已核。",
+      "owner": "4、5 号",
+      "evidence": [
+        "original",
+        "discussion",
+        "published-status"
+      ],
+      "summary": "分群提供诊断视角；它不是直接使用未来复购标签把客户分好类。",
+      "date": "2026-11-10 · 首轮分群与补件闭环"
+    },
+    {
+      "id": "gap",
+      "title": "久单群漏判引出了什么问题",
+      "stage": 3,
+      "status": "team",
+      "question": "久单群有 90 位后来复购者，为何名单只选 17 人、一个也没命中？",
+      "choice": "把群体人数、实际复购、入选名额和命中分开看，不先强行给每群配额。",
+      "result": "久单群有 12,330 人，其中 90 人后来复购；全局 2,937 人名单中只有 17 人来自该群，命中 0 人，所以该群召回率为 0/90。久单群复购率 90/12,330≈0.73%，多单群为 28/703≈3.98%。17 是按群统计的入选人数，不是预先给该群的配额。",
+      "meaning": "真正的问题是能否找到分析日前的有效线索，而不是仅把名额挪给久单群。",
+      "next": "这是早期提出的品类查证问题；后来4号已完成筛查，暂不推荐新增品类字段。若继续找新线索，仍需同时核群内复购者和未复购者。",
+      "owner": "2、4、5 号",
+      "evidence": [
+        "original",
+        "discussion",
+        "published-status"
+      ],
+      "summary": "真正的问题是能否找到分析日前的有效线索，而不是仅把名额挪给久单群。",
+      "date": "截至 2026-11-10"
+    },
+    {
+      "id": "feature",
+      "title": "从群内发现提出新特征",
+      "stage": 4,
+      "status": "decision",
+      "question": "怎样知道改善来自新线索，而不是同时改了很多条件？",
+      "choice": "采用“分群发现 → 群内提特征 → 全体验证”。原模型只加一项，其他条件保持一致。",
+      "result": "本人已认可这条研究路线。团队已交类别加权的H06前后表；品类筛查没有推荐新字段，独立新增字段实验尚无团队交件证据。不能把这两类进展混写成“所有新预测未交”。",
+      "meaning": "这是一条已确认的推进方向；不能把本地辅助交互替代为组员已交的新特征。",
+      "next": "若提出真正新字段，附公式、预测日前可用性和群内支持人数；当前加权候选的交接情况见下方H04/H06节点。",
+      "owner": "2、4 号提出；3、5 号验证",
+      "evidence": [
+        "discussion",
+        "mlp",
+        "published-status"
+      ],
+      "summary": "这是一条已确认的推进方向；不能把本地辅助交互替代为组员已交的新特征。",
+      "date": "截至 2026-11-10"
+    },
+    {
+      "id": "learner",
+      "title": "早期选择：加入小 MLP 对照",
+      "stage": 4,
+      "status": "decision",
+      "question": "是否是现有模型没学会历史字段之间的复杂关系？",
+      "choice": "先在相同 8 字段下比较逻辑回归与小 MLP，再给两者加入同一交互；分开检验换模型与加特征。",
+      "result": "本人认可加入神经网络对照。采用固定小网络和三个随机起点，避免只展示最好一次。",
+      "meaning": "MLP 是可检验的候选；随机森林和 CatBoost 本来也能学非线性，差表现不能直接归因于线性模型。",
+      "next": "保留这轮完整结果；后续图模型探索见新增节点。",
+      "owner": "本地辅助实验；团队是否采纳待确认",
+      "evidence": [
+        "discussion",
+        "mlp"
+      ],
+      "summary": "MLP 是可检验的候选；随机森林和 CatBoost 本来也能学非线性，差表现不能直接归因于线性模型。",
+      "date": "2026-11-10 · 早期探索"
+    },
+    {
+      "id": "experiment",
+      "title": "早期小 MLP 对照的结果与限制",
+      "stage": 5,
+      "status": "local",
+      "question": "在同样名额下，新模型与新交互实际带来了什么？",
+      "choice": "使用一个 8 单元隐藏层、固定 80 轮预算，种子 2026、2027、2028；保留全体及久单群结果。新增交互把“过去是否买过多次”（0/1）乘以“购买间隔天数加 1 后的对数”。先对天数作 log1p 变换，再与多单标志组合；它不是直接乘原始天数。",
+      "result": "原 8 字段 MLP 命中 45／48／39，中位数 45。逻辑回归加交互由 46 到 48；久单群入选由 17 到 32，命中由 0 到 1。MLP 加交互三次均为 44。六次 MLP 都达到 80 轮上限，末段训练损失仍略降，不能认为它已充分收敛。",
+      "meaning": "不能只选 48 那次称神经网络更好。久单群都只买过一次，这个交互在群内为常数，不能区分其中两个人；新增命中来自重训后的全局重排。结论只限这一网络、预算和同一已见一月验证，不代表其他配置或时期。",
+      "next": "历史节点：保留当时实验、交接和判断。当前展示采用本人确认已提交的最终13页稿；不据此重开投票、训练或制作，报告中的未决范围另行保留。",
+      "owner": "本地实验；6 号判断如何使用",
+      "evidence": [
+        "mlp",
+        "metrics",
+        "group-metrics",
+        "paired"
+      ],
+      "summary": "三种子完整结果没有显示稳定优势；固定预算与已见验证的边界必须一起读。",
+      "date": "2026-11-10 · 早期探索",
+      "history": [
+        {
+          "observed_on": "2026-11-20",
+          "reason": "核对最新阶段，原内容作为历史保存",
+          "previous": {
+            "next": "这批结果作为历史对照保留；当前团队候选与后续结构实验见下方节点。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "decision",
+      "title": "早期计划：收对照后再冻结",
+      "stage": 6,
+      "status": "team",
+      "question": "怎样把实验变成可解释的项目结论？",
+      "choice": "建议保留现有逻辑回归作团队主对照；同时报告总体和各群表现。四月回测是否开展单独确认。",
+      "result": "当时团队新预测与正式前后表尚待交件；后续 H04/H06 已收到，最新状态见新增团队节点。这里保留最初怎样安排核对的记录。",
+      "meaning": "“至少 46 且久单改善”是候选工作规则，不是统计显著性门槛；一个已见验证期不足以证明跨期稳定。",
+      "next": "沿下方 H04/H06 节点查看已经闭合的旧待办，再看当前冻结与四月证据缺口。",
+      "owner": "6 号统筹，1—5 号按分工举证",
+      "evidence": [
+        "original",
+        "mlp"
+      ],
+      "summary": "保留当时的推进计划；不把后来已收到的交件继续算作当前未交。",
+      "date": "2026-11-10 · 早期计划（历史）"
+    },
+    {
+      "id": "future",
+      "title": "完整群分支或 MoE 仍是设想",
+      "stage": 6,
+      "status": "idea",
+      "question": "加入群号、到群中心距离或小分支，会不会更有用？",
+      "choice": "先检验简单群信息，再考虑共享网络加小分支；完整混合专家需另行设计。",
+      "result": "后续已做群号交互和图模型探索，但不能把这些实验当作完整按群路由或混合专家实现。完整架构尚未确定。",
+      "meaning": "结构图只说明候选设计，不等于已有运行结果；群号也不会凭空增加外部信息。",
+      "next": "先读后续简化结构的实测结果，再判断是否值得设计完整群分支。",
+      "owner": "6 号与 3、4 号",
+      "evidence": [
+        "discussion",
+        "mlp"
+      ],
+      "summary": "结构图只说明候选设计，不等于已有运行结果；群号也不会凭空增加外部信息。",
+      "date": "2026-11-10 · 早期设想与边界"
+    },
+    {
+      "id": "strong-baselines",
+      "title": "50 人要与哪些简单办法比较",
+      "stage": 7,
+      "status": "local",
+      "question": "加权模型命中 50 人，是否足以说明复杂方法一定更好？",
+      "choice": "这里的类别加权是在训练时提高误判复购样本的代价，与模型给各特征学习系数不同；评分后仍全局排序，不是强制给某群名额。再加入“历史多单客户优先、组内按最近购买”的规则，并比较三字段/八字段加权前后。",
+      "result": "一月同取2,937人，多单优先规则48，三字段未加权51、加权48，八字段未加权46、加权50。",
+      "meaning": "50相对最近购买30有提升，但相对更强规则48只多2；加权的作用随字段组合变化，不能把50称为所有已试方法中的最高分。",
+      "next": "报告保留这些对照，并把候选选择的理由和局限写清。",
+      "owner": "本地辅助探索；6号解释取舍",
+      "evidence": [
+        "published-exploration",
+        "capacity-latest",
+        "weighting-latest"
+      ],
+      "summary": "更强的简单基线让我们看清，提升有多大、依赖哪些输入。",
+      "date": "2026-11-10 · 本轮接续"
+    },
+    {
+      "id": "team-h04",
+      "title": "历史：H04 v0.3 收到了什么，还缺什么",
+      "stage": 8,
+      "status": "team",
+      "question": "交接说明写了四月结果，是否就代表评分过程已经可验收？",
+      "choice": "将一月已核数据、更新的说明文件和四月评分过程分开检查。",
+      "result": "H04 v0.3原有脚本、配置和数据表与v0.2相同；课程回传具体核到13项一致。四月45／64／65只见于交接说明；README与交接单两项校验值不匹配。",
+      "meaning": "相同数字能作为待核声明，不能替代团队评分入口、模型配置、冻结记录和逐人结果。",
+      "next": "后续 v0.4 已补齐评分材料并完成名单复现，见后续“v0.4 补齐四月评分证据”节点；正式冻结仍单独待确认。",
+      "owner": "3号交件，5号核验",
+      "evidence": [
+        "published-status",
+        "published-evidence",
+        "h04-v04"
+      ],
+      "summary": "此处保留 v0.3 当时的证据缺口；v0.4 已补齐，见后续节点。",
+      "date": "2026-11-10 · v0.3 历史阶段"
+    },
+    {
+      "id": "h05-interactions",
+      "title": "加群号提高全体命中，群内是否更准",
+      "stage": 8,
+      "status": "local",
+      "question": "只加群号后命中52，是久单群内部排序改善了吗？",
+      "choice": "固定同一套H05和全局2,937名额，四版依次是：原八字段加权；只加群号；加群号并与历史金额、近30天订单数做两项交互；加群号并仅与历史金额交互。交互让同一历史字段在不同群的评分作用可以不同。另在久单群内部单独排序，各取79人检查群内顺序。",
+      "result": "全体命中分别50／52／42／42。全局名单中久单入选/命中为79/2、172/3、176/3、172/3；固定久单79人后则为2／2／0／0。",
+      "meaning": "只加群号后，全局名单里久单命中多1，名额也从79增到172；另在久单群内各取79人时，仍命中原来的两人。后者不是把全局名单预分配79个名额，不能把覆盖增加直接说成群内排名更准。两项交互和仅金额交互在本次配置都变差。",
+      "next": "同时保留全局与固定群内名额两套结果，只在一月开发比较后决定是否继续。",
+      "owner": "本地辅助探索",
+      "evidence": [
+        "published-exploration",
+        "h05-latest",
+        "h05-groups-latest",
+        "h05-screen-latest"
+      ],
+      "summary": "全体、群覆盖和群内排名回答三个不同的问题。",
+      "date": "2026-11-10 · 本轮接续"
+    },
+    {
+      "id": "team-h06",
+      "title": "H06 把团队加权增量逐群核清",
+      "stage": 9,
+      "status": "team",
+      "question": "全体多命中的4人来自哪里，哪些群有损失？",
+      "choice": "固定H02/H05、29,368人、230正例与2,937名额，对照两版逐人结果及逐群汇总。",
+      "result": "团队H06已交并复核：全体46→50；近期单单命中18→21、久单0→2、多单28→27。久单入选17→79，90位复购者仍有88位未入选。",
+      "meaning": "增量为+3、+2、−1，合计+4。H06的一月验收已完成，不应继续催同一份旧交件；这仍不是团队四月过程验收。",
+      "next": "保留一月 H06 的各群取舍与固定容量；后续 v0.4 四月名单已由课程会话复核，不再催要已经补齐的材料。",
+      "owner": "5号已交一月H06",
+      "evidence": [
+        "published-status",
+        "h06-latest"
+      ],
+      "summary": "一月正式前后表已收到，旧的“H06未回传”状态应关闭。",
+      "date": "2026-11-10 · 本轮接续"
+    },
+    {
+      "id": "graph-followup",
+      "title": "图模型增加结构，结果仍要逐项比较",
+      "stage": 9,
+      "status": "local",
+      "question": "残差和对比训练是否能在保住总体命中的同时改善久单覆盖？",
+      "choice": "固定预测日前曾向同一卖家购买的客户关系、两层8维和三个种子。GCN汇总这些邻居的历史信息；残差将客户自身历史字段经线性投影直接加回；对比训练让同一客户两份轻度遮盖的历史记录在模型表示中接近。四格分别只改是否有残差、是否有对比目标。",
+      "result": "一月仍是同一批29,368人，每版取2,937。按种子2026/2027/2028，原GCN全体46/46/43、久单3/2/2；只加对比为40/40/39、久单4/3/4；残差＋对比为46/48/44、久单0/1/0。这里久单命中从全局名单按群统计。",
+      "meaning": "“拉回”指从只加对比到残差＋对比：全体多6/8/5，同时久单少4/2/4；不能说久单固定名额下也改善。三个种子共用同一已见一月，不是三期外推，也不能只挑48那次。本地探索不计为组员交件。",
+      "next": "若继续探索，仍用十月训练与一月开发验证，固定输入和预算逐项比较。",
+      "owner": "本地辅助探索",
+      "evidence": [
+        "published-exploration",
+        "graph-residual-latest",
+        "graph-grid-latest",
+        "current-receipt"
+      ],
+      "summary": "方法更复杂不自动意味着两个目标都变好，完整种子结果必须保留。",
+      "date": "2026-11-10 · 本轮接续"
+    },
+    {
+      "id": "april-boundary",
+      "title": "历史：同样的四月数字，证据来源仍不同",
+      "stage": 10,
+      "status": "local",
+      "question": "本地已复现45／64／65，能否替团队确认四月评分已完成？",
+      "choice": "本地沿用十月拟合的八字段模型和名单规则，在同一四月客户池各取3,782人；团队评分过程另收材料。",
+      "result": "本地37,813人、299个正例下，最近购买45、原版64、加权65。加权AP约0.02037，原版约0.02067；团队v0.3说明写相同命中数，但过程证据仍待补。",
+      "meaning": "平均精确率（AP）综合不同名单长度下的排序表现；只取3,782人时加权多命中1人，但AP略低，不能说整体排序都改善。本地结果不替代团队过程验收；四月是已见窗口，不用其反馈选择特征、模型或名单规则。",
+      "next": "后续 v0.4 已补齐评分材料并完成名单复现，见后续“v0.4 补齐四月评分证据”节点；正式冻结仍单独待确认。",
+      "owner": "3号补团队材料；5号核；本地结果单列",
+      "evidence": [
+        "published-status",
+        "april-latest",
+        "h04-v04"
+      ],
+      "summary": "此处保留 v0.3 当时的证据缺口；v0.4 已补齐，见后续节点。",
+      "date": "2026-11-10 · v0.3 历史阶段"
+    },
+    {
+      "id": "team-h04-v04",
+      "title": "v0.4 补齐四月评分证据",
+      "stage": 11,
+      "status": "team",
+      "date": "2026-11-10 · v0.4 补件",
+      "owner": "3 号交件；课程会话复跑核验",
+      "question": "补件后，能否确认团队四月名单是怎样生成的？",
+      "choice": "按 v0.2 配置仅用十月数据重新拟合；课程会话先不读四月标签生成名单，再用标签核命中，并与交件逐人对齐。",
+      "result": "19 项校验通过。37,813 位客户、299 位复购者，每法取 3,782 人，最近购买／原版／加权命中 45／64／65，三份名单的入选差异均为 0。加权分数最大差约 8.05e-5，不能称浮点分数逐位相同。",
+      "meaning": "团队评分过程与名单现已能复现；仍不能据评分后生成的配置 JSON 证明事前冻结，也不能恢复四月的独立盲测性质。尚无充分证据判定历史选型是否受四月结果影响。",
+      "next": "3 号改正“不重新训练”和“最终测试”表述；6 号记录真实的选择依据、版本与时间，H07 可并行推进。",
+      "evidence": [
+        "h04-v04",
+        "h04-v04-numbers"
+      ],
+      "summary": "评分材料和名单缺口已关闭；交接措辞、事前冻结证据及评估边界仍需处理。"
+    },
+    {
+      "id": "current-handoff",
+      "title": "11 月 10 日阶段收尾",
+      "stage": 12,
+      "status": "pending",
+      "question": "哪些动作完成后，才能进入最终合稿与提交？",
+      "choice": "主方案候选保持原八字段＋类别加权逻辑回归＋全局 Top 10%。后续选择继续用十月训练与一月开发验证；实际冻结依据必须有真实记录，不按四月成绩反推。",
+      "result": "一月 H06、H05 复跑与 v0.4 四月名单核验已完成。交接措辞、正式冻结记录及 H07 仍待完成。",
+      "meaning": "不重复催要已经收到且核验的材料；名单可复现、文档准确、决策已冻结和最终提交是不同状态。",
+      "next": "接续第三轮统一比较、成员任务分发和展示采用决定；旧已完成证据继续保留。",
+      "owner": "3、5、6号与全组",
+      "evidence": [
+        "h04-v04",
+        "published-status"
+      ],
+      "summary": "保留上一阶段的交接收尾；最新第三轮研究与决定见后续节点。",
+      "date": "2026-11-10 · 本轮接续"
+    },
+    {
+      "id": "round3-evidence",
+      "title": "第三轮首批：强基线、条件区间与新信息",
+      "stage": 12,
+      "status": "local",
+      "date": "2026-11-11",
+      "owner": "本地辅助研究；本人决定采用版本",
+      "question": "在统一名额下，复杂方法是否比强规则更可靠，新增信息能否改善结果？",
+      "choice": "本地以十月训练、一月开发验证比较六方法，主名额 2,937 人；久单另取固定 79 人作诊断。保留配对重采样区间、字段与时间核验，以及 13 组可复用图表。",
+      "result": "六方法主名额命中依次为最近购买 30、多单规则 48、三字段 51、原八字段 46、加权 50、加群号 52。新增配送、评价和组合版为 46／45／46，未超过原加权的 50；固定久单分别为 2／1／1，原版为 2。",
+      "meaning": "加权相对最近购买差 +20，固定已拟合分数下 2,000 次配对客户重采样的 95% 区间为 [7,34]；对三种强对照的区间均跨 0，不能据单次高分宣称稳定胜出。这不是重训或新时期泛化区间；候选日期仍没有补齐独立盲测证据。内容试验目前只有设计，没有执行。",
+      "next": "后续本人已确认发群，成员回件仍待；新的本地候选结果见下一节点。",
+      "summary": "本地证据与图表已完成；成员自主策略回传和最终选模仍待后续实际记录。",
+      "evidence": [
+        "round3-results",
+        "round3-briefs",
+        "round3-visuals"
+      ]
+    },
+    {
+      "id": "round3-extension",
+      "title": "前批结果：新候选的增益与取舍",
+      "stage": 12,
+      "status": "local",
+      "date": "2026-11-11",
+      "owner": "本地辅助研究；本人等待成员回传后决定采用",
+      "question": "在统一比较口径下，新的历史上下文或策略能否同时改善全体和久单群命中？",
+      "choice": "用户已确认第三轮任务发群。本地预先固定 11 个新候选，只用十月训练和一月已见开发，主名单 2,937 人，久单单独取 79 人；四月没有新评分或标签解析。",
+      "result": "历史卖家版全局命中 54、固定久单 2；卖家与篮子／支付组合版为 56／1，原加权为 50／2。14 字段未加权浅树全局 50、固定久单 3，但全局名单实际给久单 0 个名额。新旧共 17 方法和 18 组图表均保留。",
+      "meaning": "组合版的全局久单 200 个名额命中 3 人，不等于固定 79 人的成绩。卖家版全局差 +4 的条件区间为 [-2,10]，组合版 +6 为 [-4,14]；全部 11 个主指标差异区间跨 0。区间只基于固定分数的已见期重采样，不覆盖重训、方法搜索或新期泛化；静态字段在预测日可知且未回写仍是保留假设。",
+      "next": "历史节点：保留当时实验、交接和判断。当前展示采用本人确认已提交的最终13页稿；不据此重开投票、训练或制作，报告中的未决范围另行保留。",
+      "summary": "新策略出现单期改善线索，也有全局与群内的取舍；尚未确立稳定胜出或正式采用。",
+      "evidence": [
+        "extension-results",
+        "extension-visuals"
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-20",
+          "reason": "核对最新阶段，原内容作为历史保存",
+          "previous": {
+            "next": "本地后续已转为问题解释和设计，等待本人明确开测；原第三轮成员任务继续等待回传。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "research-design-gate",
+      "title": "历史 D08：先设计等待开测（已由 D10 解除）",
+      "stage": 12,
+      "status": "pending",
+      "date": "2026-11-11",
+      "owner": "本人审阅和决定；课程会话记录解释与设计",
+      "question": "继续增加模型之前，哪些问题需要先解释清楚，新的研究到底以什么为主目标？",
+      "choice": "按本人明确答复，本轮只建表、解释、只读核查和设计。Q01–Q18 分开记录已有事实、待检验假设和拟议读数；新增实验统一等待本人明确说开测。",
+      "result": "18 条问题和验证方案草案已准备，所有新实验均为 not_started、结果为 null，本批新增实验为 0。现有流程是全量合格客户训练和打分，固定 K 只影响输出名单；已有类别权重处理与未加权的实现分别核实，不能概括为从未处理不平衡。",
+      "meaning": "科学预测层的概率质量与商业选择层的容量排序回答不同问题，主次仍待 D09 决定。论文中的少数簇不等于复购少数类，潜空间伪表示的迁移路线也只是设计；不能把读完论文或画出方案当作已采用、已实现或已验证有效。",
+      "next": "本人随后已以D10明确授权逐步验证；原等待开测仅为历史，不再作为当前状态。",
+      "summary": "保留当时的18条未开测记录；当前授权与实测进展见D10后续节点。",
+      "evidence": [
+        "design-questions",
+        "design-protocol",
+        "design-mvsib",
+        "design-register"
+      ]
+    },
+    {
+      "id": "authorized-validation",
+      "title": "D10 已开测：首批验证与优化控制已完成",
+      "stage": 12,
+      "status": "local",
+      "date": "2026-11-11",
+      "owner": "本地辅助验证；本人决定主指标与团队采用",
+      "question": "解除原等待开测后，哪些质疑已有实测回答，哪些仍不能直接下结论？",
+      "choice": "本人以 D10 明确允许逐步验证，D08 等待开测仅保留历史。按冻结矩阵分别检查概率质量、容量排序、字段、异常/分群、学习模块，并补优化充分性控制；不同训练人数和预处理的矩阵分别解释。",
+      "result": "本批 P1/P2/P3、P4A/P4B/P4C 首批矩阵及数值控制已核。更多字段的 LR 未自动改善，全结构 CatBoost 为全局54／久单独立79命中3；异常线按弱支持规则停止。群初始化、共享支路、采样和样本注意力没有一致优胜，列门和 AE 只显示局部线索。新增22图，连同历史共40图。",
+      "meaning": "默认 LR 停止精度会改变名单，已另补7项控制；深群原后端拟合不足，固定原群归属矩阵、补统一高精度 LR 后端后，仍不能把原差距归为深聚类无效。跨矩阵不能拼因果排行榜；MVSIB 为简化适配，不是完整论文复现。一月已见及时间泛化限制继续保留。",
+      "next": "历史节点：保留当时实验、交接和判断。当前展示采用本人确认已提交的最终13页稿；不据此重开投票、训练或制作，报告中的未决范围另行保留。",
+      "summary": "保留 D10 首批验证；D11 统一比较及 D12 研究对象消融随后已做，最新采用判断见后续。",
+      "evidence": [
+        "validation-execution",
+        "validation-register",
+        "validation-gallery"
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-20",
+          "reason": "核对最新阶段，原内容作为历史保存",
+          "previous": {
+            "next": "此处为 D10 历史计划；随后 D11 比较与 D12 AE 预算／六块消融已完成。正式团队采用和主指标仍独立待决。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "common-candidate-comparison",
+      "title": "历史 D11：AE 曾列优先研究线索",
+      "stage": 12,
+      "status": "local",
+      "date": "2026-11-12",
+      "owner": "本地辅助研究；本人决定正式采用",
+      "question": "字段更多、模型更复杂，究竟是否更能找到复购客户？",
+      "choice": "每档比较加权LR、未加权LR、统一编码CatBoost、同结构等权神经参照、列门控、AE。未加权LR帮助拆出类别权重的作用；等权参照帮助判断门控/AE是否额外有用。原生类别CatBoost只在完整字段另作桥接，它还改变数值变换和缺失处理，不能把桥接差异只归因于类别编码。",
+      "result": "建议优先保留“完整字段＋AE三种子概率融合”作为研究候选，CatBoost作为概率质量对照；列门控暂不优先。现在尚无足够证据宣布新的稳定命中赢家，也未替小组冻结正式采用版本。 AE融合在五个训练/校准扰动中全体4胜1平、久单5胜，但参考划分的命中差条件区间仍跨0。",
+      "meaning": "所有名单差区间都跨0。因此目前可以说“有改善线索、部分训练扰动方向一致”，不能说已经证明稳定提高命中。CatBoost两域的Log loss差条件区间均小于0，概率质量的证据更强；这也不能直接升级为固定名单命中优势。",
+      "next": "上述投票、冻结或新回测安排属于当时历史。当前展示采用本人确认已提交的最终13页A稿，不重开投票或四月回测；最终报告的研究采用与已见窗口披露另按真实记录待核。",
+      "summary": "保留当时同一月扰动下的判断；D12 已做后续消融与较早时间诊断，未支持 AE 稳定升级。",
+      "evidence": [
+        "common-comparison-results",
+        "common-comparison-gallery"
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-20",
+          "previous": {
+            "next": "当时计划的 AE 预算／六块消融已在 D12 执行，当前判断见下一节点；正式采用与主指标仍待本人决定。"
+          },
+          "reason": "旧投票/回测安排仅保留历史，不作当前展示门槛"
+        }
+      ]
+    },
+    {
+      "id": "ae-followup-validation",
+      "title": "D12 AE 消融与时间诊断：不支持升级为正式模型",
+      "stage": 12,
+      "status": "local",
+      "date": "2026-11-12",
+      "owner": "本地辅助研究；本人确认正式版本",
+      "question": "AE 的线索来自更多训练、哪些输入，还是只在当前时间组合有效？",
+      "choice": "新做135个正式监督拟合、105次AE预训练；复用65个旧模型原件，不重训旧参照。另行准入的时间分支做13个正式监督拟合、3次AE预训练，因此本轮正式新增监督共148、预训练108；另有仅fit数据的小试计时和合成验码，实际进程训练调用数不只148，它们不计正式模型。所有失败、种子和负结果保留，没有看一月分数后改变轮数、字段组合或再挑子集。",
+      "result": "AE在这个组合少于同口径基线5个全局命中、1个久单命中；未保持一月的相对优势。CatBoost全局命中较多，但久单、AP及概率指标不一致，也不是统一赢家。这里只跑冻结设置，没有根据十月结果再调参数。",
+      "meaning": "上一轮“AE优先研究”的依据是同一月训练扰动较一致，本轮已补预算、字段及较早时间诊断。现有证据不足以将AE升级为正式模型；不推荐凭一月最高分删行为块，也不自动换掉原加权参照。",
+      "next": "上述投票、冻结或新回测安排属于当时历史。当前展示采用本人确认已提交的最终13页A稿，不重开投票或四月回测；最终报告的研究采用与已见窗口披露另按真实记录待核。",
+      "summary": "研究 AE 的预算／六块消融已完成；较早时间组合未延续优势。保留原加权参照，正式团队采用与主指标仍待决定。",
+      "evidence": [
+        "ae-followup-results",
+        "ae-followup-gallery"
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-20",
+          "previous": {
+            "next": "此处保留 D12 的研究建议。随后 D13 已完成三期滚动、价值层和20项结案；不再作为下一轮待跑任务。AE未支持稳定升级的结论保留，正式团队采用仍待决定。"
+          },
+          "reason": "旧投票/回测安排仅保留历史，不作当前展示门槛"
+        }
+      ]
+    },
+    {
+      "id": "final-value-closeout",
+      "title": "D13 最终收尾：全体概率接上价值与经理名单",
+      "stage": 12,
+      "status": "local",
+      "date": "2026-11-12",
+      "owner": "本地研究已收尾；本人确认主目标与团队版本",
+      "question": "此前已经给全体客户预测，也比较了概率排序、分群和很多模型，但主要盯着“同样名额找到多少复购者”，没有完整实现你要求的价值排序层。这是此前目标落实的缺口；不能把概率名单的结果说成已经验证了价值名单。",
+      "choice": "主原式保留为 p × F × M：F 是历史半年批准订单数，M 是同一半年累计商品金额。它同时偏好更可能复购、买过更多次、累计花费更多的客户，是合理的业务偏好分。",
+      "result": "这只是解释用的一组，完整结果没有只挑这一组：预先确定的 3 个窗口 × 2 种训练策略 × 3 种概率家族 = 18 个组合中，主原式和预计金额各在 15/18 个组合捕获金额高于概率排序；预计金额只在 11/18 个组合高于主原式。三期有客户重复、目标日期也重叠，这 18 个组合不是 18 次独立试验。",
+      "meaning": "久单也没有被总体金额掩盖：上述同一加权模型，群内各选 79 人，概率排序命中 2 人、捕获金额 177.00；原式命中 0 人、金额 0；预计金额命中 1 人、金额 756.88。价值规则没有同时稳定改善全体和久单的命中人数；经理偏好较高消费与希望覆盖更多久单客户可能冲突。",
+      "next": "历史节点：保留当时实验、交接和判断。当前展示采用本人确认已提交的最终13页稿；不据此重开投票、训练或制作，报告中的未决范围另行保留。",
+      "summary": "冻结研究清单与20项质疑已结案；概率和价值层全部完成。金额与人数有取舍，D05/D09及真实团队采用、提交仍待事实。",
+      "evidence": [
+        "final-value-results",
+        "final-value-manager",
+        "final-value-closure",
+        "final-value-gallery"
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-20",
+          "reason": "核对最新阶段，原内容作为历史保存",
+          "previous": {
+            "next": "该批交件／研究成果继续有效；当前路线采用解读已于11月14日更正为个人倾向，团队A/B待真实投票。2号v1.1已修闭，3/5号余项保留，正式PPT待共同确认。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "team-round3-intake",
+      "title": "历史第三轮：1–4号先收核，随后5号已补交",
+      "stage": 12,
+      "status": "team",
+      "date": "2026-11-12",
+      "owner": "1–4号补齐交接；5号回签；6号确认采用",
+      "question": "真实组员交了什么，哪些结果已核，哪些补件仍影响合稿？",
+      "choice": "共同口径：十月全部 21,160 人拟合，一月全部 29,368 人开发评价，实际复购者 230 人；全局各选 2,937 人。久单另固定选 79 人，是独立的群内诊断，不是全局名单中的久单席位。",
+      "result": "组员这轮结果支持保留原八字段加权逻辑回归、全局排序作为团队主方案参照：3 号的本轮全局 2,937 人名单命中 50 人，配送版 48、评价版 46、加群号 50、分群模型 49，已由逐人表重新计算。但正式采用版本、业务主指标和真实冻结时间仍由 6 号记录，组员自报“冻结”不等于全组已经正式采用。",
+      "meaning": "第三轮曾发现2号区间支持人数错误及4号旧名单画像。2号已在v1.1补交正确区间、图与说明，该项关闭；当前R3三卡仍标课程衍生。2号新组合尚未被3号本轮模型测试，不能说已证明无效。",
+      "next": "历史节点：保留当时实验、交接和判断。当前展示采用本人确认已提交的最终13页稿；不据此重开投票、训练或制作，报告中的未决范围另行保留。",
+      "summary": "1–5号已收，2号v1.1区间补件已闭合；3号／5号待修与具体采用配置分开。",
+      "evidence": [
+        "team-round3-results",
+        "team-round3-status",
+        "team-round3-gallery",
+        "role02-v11-receipt"
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-20",
+          "reason": "核对最新阶段，原内容作为历史保存",
+          "previous": {
+            "next": "该批交件／研究成果继续有效；当前路线采用解读已于11月14日更正为个人倾向，团队A/B待真实投票。2号v1.1已修闭，3/5号余项保留，正式PPT待共同确认。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "local-mainline-role05",
+      "title": "历史D14：原集体采用解读已更正",
+      "stage": 12,
+      "status": "pending",
+      "date": "2026-11-13",
+      "owner": "6号报告主线已定；其余决定等本人稍后答复",
+      "question": "报告采用哪条主线，5号的回传能证明到哪一步？",
+      "choice": "历史上按“我们统一觉得…我的本地线”登记为采用；最新本人已明确未与组员确认，因此不能继续作当前团队决定。原话和旧版本保留追溯。",
+      "result": "5号15个成员文件已收到。已有R3输入复算的加权50、未加权46、加群50、分群49、三群汇总与三组名单交换均吻合；课程补齐4方法×3容量和群切片。这不是模型重拟合或全部脚本执行证明。",
+      "meaning": "本地路线是一整套已核研究：字段与模型对照、概率质量、时间验证、消融、全体预测、客户价值及名单容量。它没有一个在所有目标和时期都胜出的模型；路线被采用，不等于已经证明某个新网络全面最好，也不把最高一月分数直接设成最终模型。成员原始交付和技术贡献继续保留并标明来源。",
+      "next": "上述投票、冻结或新回测安排属于当时历史。当前展示采用本人确认已提交的最终13页A稿，不重开投票或四月回测；最终报告的研究采用与已见窗口披露另按真实记录待核。",
+      "summary": "11月13日按当时原话登记采用；本人11月14日澄清未与组员确认，当前只是个人倾向B、团队待票。",
+      "evidence": [
+        "role05-mainline-results",
+        "role05-mainline-decision",
+        "role05-mainline-gallery",
+        "role02-v11-receipt"
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-20",
+          "previous": {
+            "next": "D14当前pending，团队A/B先投票共同确认。D05/D09仍待，D15仅确认比较→投票→PPT顺序；旧5号验收边界保留。"
+          },
+          "reason": "旧投票/回测安排仅保留历史，不作当前展示门槛"
+        }
+      ]
+    },
+    {
+      "id": "route-vote-comparison",
+      "title": "历史A/B对照：后续当前展示已改回A",
+      "stage": 12,
+      "status": "team",
+      "date": "2026-11-14",
+      "owner": "6号发材料与汇总；全组真实投票确认",
+      "question": "B怎样承接A并进一步分析，哪些仍需全组共同确认？",
+      "choice": "本人通过D16统一名称：A为现有成果整理版，B为在A基础上的深入分析版。B承接A的数据审计、逻辑回归基线、字段／分群和核验成果，再深入概率可靠性、信息／模型控制、时间／消融反证、客户价值和容量。",
+      "result": "A/B完整对照与提案已备；当时待投票。本人11月15日随后确认已投票选B，不再重新组织路线投票；具体配置/主指标仍另记。",
+      "meaning": "“在A基础上”描述分析范围和承接关系，不表示沿用相同训练／校准划分，也不表示全员运行全部实验。A50/B49不是受控胜负，B内部43/49也同时换信息与模型；已有贡献、反例与限制保留。",
+      "next": "历史节点：保留当时实验、交接和判断。当前展示采用本人确认已提交的最终13页稿；不据此重开投票、训练或制作，报告中的未决范围另行保留。",
+      "summary": "对照和先前B选择保留历史；本人后续因熟悉度确认当前PPT采用A，不是算法胜负实验。",
+      "evidence": [
+        "route-vote-review",
+        "role05-mainline-gallery"
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-20",
+          "reason": "核对最新阶段，原内容作为历史保存",
+          "previous": {
+            "next": "当前A稿已完成，按页收成员反馈并修订；不再投路线或制作另一份A。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ppt-production-handoff",
+      "title": "历史B · 历史制作交接：现已形成第一稿，组审修改优先",
+      "stage": 12,
+      "status": "decision",
+      "date": "2026-11-15",
+      "owner": "本人自行开启新制作会话；制作/审阅/提交各自留证",
+      "question": "团队选B以后，今天怎样从资料进入可审阅PPT和真实提交？",
+      "choice": "本人明确投票已完成并选择B，要求今天完成并提交PPT，同时自行开启新会话。D14路线已确认；D05具体配置、D09主指标仍独立记录，先以既有B提案制作完整成品。",
+      "result": "完整交接、复制指令、要求/采用记录和31项素材索引已核。教师指南是8+2分钟、全员、经理受众；今日Canvas重开需登录，11月15日23:59截止来自昨日已核。这里只完成交接，没有PPT成品或提交回执。",
+      "meaning": "5页/3分钟属于Briefing，20–25页属于报告；8主讲页和460秒只是建议。B获选不等于具体配置早已冻结，也不等于模型全面胜出；原证据和限制继续保留。",
+      "next": "历史节点：保留当时实验、交接和判断。当前展示采用本人确认已提交的最终13页稿；不据此重开投票、训练或制作，报告中的未决范围另行保留。",
+      "summary": "保留B当时交接/技术初稿记录；当前已改A且A初稿已成，参见最新节点。",
+      "evidence": [
+        "ppt-handoff-review-reader",
+        "role05-mainline-gallery"
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-20",
+          "reason": "核对最新阶段，原内容作为历史保存",
+          "previous": {
+            "next": "当前审阅A现稿，B原件保留历史。不重新安排A制作、不经原课程接收，不得提交Canvas。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ppt-first-draft-review",
+      "title": "历史B · 第一版已核：先小组审阅修改，明确不得提交",
+      "stage": 12,
+      "status": "pending",
+      "date": "2026-11-15",
+      "owner": "本人分发组审；成员反馈；制作会话修订",
+      "question": "第一版技术核验通过以后，当前允许推进到哪一步？",
+      "choice": "本人最新明确“不能提交，整体方向对的，我说了这是第一版，我还需要给小组成员过目并且修改”。D18记录当前停止提交；B方向认可不等于批准本版或D05/D09采用。",
+      "result": "稳定PPTX、原生PDF、12页预览/Notes、讲稿、中文支持和14项Q&A已接收。25文件及26项ZIP核验一致，今日Canvas要求已由制作会话登录复核。当前未选文件、未上传、未提交。",
+      "meaning": "技术初稿可给成员看，但分工提案不是认领、词数预算不是真人排练，方向认可不是最终版本授权。只用1–6号、不需名字。此前“今天提交”目标不能覆盖最新不得提交指令。",
+      "next": "历史节点：保留当时实验、交接和判断。当前展示采用本人确认已提交的最终13页稿；不据此重开投票、训练或制作，报告中的未决范围另行保留。",
+      "summary": "保留B当时交接/技术初稿记录；当前已改A且A初稿已成，参见最新节点。",
+      "evidence": [
+        "ppt-draft-reader",
+        "role05-mainline-gallery"
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-20",
+          "reason": "核对最新阶段，原内容作为历史保存",
+          "previous": {
+            "next": "当前审阅A现稿，B原件保留历史。不重新安排A制作、不经原课程接收，不得提交Canvas。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "route-a-draft-current",
+      "title": "当前：已提交13页稿，11月25日展示",
+      "stage": 12,
+      "status": "pending",
+      "date": "2026-11-15",
+      "owner": "当前PPT制作会话直接对本人和总监督",
+      "question": "改回熟悉的A后，当前成品和成员准备到哪一步？",
+      "choice": "本人明确当前PPT用A现有成果整理版，理由为成员熟悉度和共同讲述准备；分歧按原编号中立记录，不裁定动机或把观点当比较可靠性结论。B研究/原稿保留历史。",
+      "result": "当前展示采用最终已提交的 13 页 PPT（本人确认）；11 月 25 日、Week 13、第 2 组，准确钟点未新核。主讲页码：1号3、2号4、3号5/6、4号8、5号7、6号1/2/9。本人确认的提交事实保留，独立成功回执待补而不重交；真人计时、问答熟练度与最终报告继续单独推进。A/B、已见四月及辅助研究保留历史，不再作为重新投票、重训或重做 PPT 的待办。",
+      "meaning": "Slides 提交事实与回执独立核验分开：已提交不因缺成功截图而退回待提交。接下来按最终 13 页准备课堂表达与问答，旧 v3 讲稿和 17 问答仅供历史参考；实际团队改稿没有被本轮重新完整科学审查。",
+      "next": "按最终 13 页准备 11 月 25 日展示与 Q&A；本人负责第 1、2、9 页及统筹衔接。已有成功回执可补存；报告按已登记建议节奏推进，12 月 6 日 23:59 HKT 正式截止保留。",
+      "summary": "Slides本人确认已提交，原稿保留；独立回执另补，展示与真人排练仍待完成。",
+      "evidence": [
+        "ppt-A-review-reader",
+        "role05-mainline-gallery"
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-20",
+          "reason": "核对最新阶段，原内容作为历史保存",
+          "previous": {
+            "title": "最终稿已提交：11月25日Week13第2组展示",
+            "result": "Six Sigma 展示已确定为 11 月 25 日（周三），Week 13、第 2 组；具体钟点未新核。最终 13 页 PPT 仍为本人确认已提交 Canvas，独立回执待补。接下来按最终稿准备展示与问答，报告继续推进。 主讲页码不变：1号3、2号4、3号5/6、4号8、5号7、6号1/2/9。",
+            "next": "按最终 13 页版本准备 11 月 25 日课堂展示：各成员核对自己页面、数字和转场，再按本人安排进行真人计时与问答准备。已有提交回执可补存以核准确时刻和实际账号；不再催 3 号提交，不修改或重新提交已交附件。"
+          }
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "question",
+      "to": "data",
+      "label": "把研究问题落实到客户记录"
+    },
+    {
+      "from": "question",
+      "to": "time",
+      "label": "规定可用信息与评价时期"
+    },
+    {
+      "from": "data",
+      "to": "ranking",
+      "label": "同一批客户进入排序"
+    },
+    {
+      "from": "time",
+      "to": "ranking",
+      "label": "固定训练与验证口径"
+    },
+    {
+      "from": "data",
+      "to": "groups",
+      "label": "同一份历史特征形成群体"
+    },
+    {
+      "from": "ranking",
+      "to": "gap",
+      "label": "把总体结果按群拆开"
+    },
+    {
+      "from": "groups",
+      "to": "gap",
+      "label": "用同群标签解释遗漏"
+    },
+    {
+      "from": "gap",
+      "to": "feature",
+      "label": "寻找群内可区分的历史线索"
+    },
+    {
+      "from": "gap",
+      "to": "learner",
+      "label": "检验学习方式是否有帮助"
+    },
+    {
+      "from": "feature",
+      "to": "experiment",
+      "label": "本地先用可复算交互作辅助对照"
+    },
+    {
+      "from": "learner",
+      "to": "experiment",
+      "label": "先建立简单 MLP 基准"
+    },
+    {
+      "from": "experiment",
+      "to": "decision",
+      "label": "结果限制了当前可下的结论"
+    },
+    {
+      "from": "experiment",
+      "to": "future",
+      "label": "复杂架构需要额外证据"
+    },
+    {
+      "from": "decision",
+      "to": "strong-baselines",
+      "label": "补上更有说服力的简单对照"
+    },
+    {
+      "from": "strong-baselines",
+      "to": "team-h04",
+      "label": "把候选的优势放回明确比较范围"
+    },
+    {
+      "from": "future",
+      "to": "h05-interactions",
+      "label": "先检查简化的群结构输入"
+    },
+    {
+      "from": "h05-interactions",
+      "to": "graph-followup",
+      "label": "继续检查不同历史关系与结构"
+    },
+    {
+      "from": "team-h04",
+      "to": "team-h06",
+      "label": "用正式前后表核清一月取舍"
+    },
+    {
+      "from": "team-h06",
+      "to": "april-boundary",
+      "label": "一月闭合后，单独核四月过程"
+    },
+    {
+      "from": "april-boundary",
+      "to": "current-handoff",
+      "label": "为汇报补四月证据，不用四月反馈选型"
+    },
+    {
+      "from": "graph-followup",
+      "to": "current-handoff",
+      "label": "辅助探索提供取舍，不抵扣正式交付"
+    },
+    {
+      "from": "team-h04",
+      "to": "team-h04-v04",
+      "label": "后续补件关闭材料缺口"
+    },
+    {
+      "from": "april-boundary",
+      "to": "team-h04-v04",
+      "label": "团队过程取得独立证据"
+    },
+    {
+      "from": "team-h04-v04",
+      "to": "current-handoff",
+      "label": "带着已核结果收尾"
+    },
+    {
+      "from": "current-handoff",
+      "to": "round3-evidence",
+      "label": "从已核交接进入统一比较与第三轮任务"
+    },
+    {
+      "from": "round3-evidence",
+      "to": "round3-extension",
+      "label": "发群后继续固定口径探索并等待真实回件"
+    },
+    {
+      "from": "round3-extension",
+      "to": "research-design-gate",
+      "label": "从结果中的疑问回到目标和验证方案，先明确门禁"
+    },
+    {
+      "from": "research-design-gate",
+      "to": "authorized-validation",
+      "label": "D10解除原等待开测，按冻结方案完成首批验证"
+    },
+    {
+      "from": "authorized-validation",
+      "to": "common-candidate-comparison",
+      "label": "D11 统一条件比较，收窄研究候选"
+    },
+    {
+      "from": "common-candidate-comparison",
+      "to": "ae-followup-validation",
+      "label": "继续验证改变了原优先研究判断"
+    },
+    {
+      "from": "ae-followup-validation",
+      "to": "final-value-closeout",
+      "label": "补齐价值目标与滚动比较，冻结研究收尾"
+    },
+    {
+      "from": "final-value-closeout",
+      "to": "team-round3-intake",
+      "label": "本地研究收尾后接到真实成员回件，转向版本对齐与合稿"
+    },
+    {
+      "from": "team-round3-intake",
+      "to": "local-mainline-role05",
+      "label": "收到5号并由本人决定本地报告主线"
+    },
+    {
+      "from": "local-mainline-role05",
+      "to": "route-vote-comparison",
+      "label": "本人澄清尚未共同确认，改为公平对照后投票"
+    },
+    {
+      "from": "route-vote-comparison",
+      "to": "ppt-production-handoff",
+      "label": "本人确认团队选B，转入制作准备"
+    },
+    {
+      "from": "ppt-production-handoff",
+      "to": "ppt-first-draft-review",
+      "label": "初稿已接收，但本人明确要求先组审修改"
+    },
+    {
+      "from": "ppt-first-draft-review",
+      "to": "route-a-draft-current",
+      "label": "本人改选A；直接制作会话已完成A稿"
+    }
+  ],
+  "updated_at": "2026-11-17T15:33:52+08:00",
+  "history": [
+    {
+      "observed_on": "2026-11-20",
+      "as_of": "2026-11-15",
+      "intro": "当前展示路线A，A第一稿已由制作会话完成并核验，待小组审阅修改，禁止提交。路线选择基于熟悉度与共同讲述，B历史不覆写，不推断比较可靠性胜负或全员已掌握。",
+      "current": "Six Sigma 展示已确定为 11 月 25 日（周三），Week 13、第 2 组；具体钟点未新核。最终 13 页 PPT 仍为本人确认已提交 Canvas，独立回执待补。接下来按最终稿准备展示与问答，报告继续推进。 主讲页码不变：1号3、2号4、3号5/6、4号8、5号7、6号1/2/9。",
+      "decision": "按最终 13 页版本准备 11 月 25 日课堂展示：各成员核对自己页面、数字和转场，再按本人安排进行真人计时与问答准备。已有提交回执可补存以核准确时刻和实际账号；不再催 3 号提交，不修改或重新提交已交附件。",
+      "assignment_revision": "2c98b215e373a60f67b1991b9e27ab369ffe19f41b56a04ec2e5021c529e8a88"
+    }
+  ]
+}

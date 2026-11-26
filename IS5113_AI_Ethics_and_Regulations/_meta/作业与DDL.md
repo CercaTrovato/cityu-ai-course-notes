@@ -1,8 +1,11 @@
 ---
 type: 台账
 course: IS5113
-updated: 2026-11-07
+updated: 2026-11-26
 ---
+
+<!-- current-maintenance-20261126 -->
+> **当前入口（2026-11-26）**：[[IS5113_AI_Ethics_and_Regulations/_meta/current-status-20261126|最新项目、提交与材料状态]] · [[IS5113_AI_Ethics_and_Regulations/review/final-2026/framework|期末复习框架]]。下文较早的日期记录保留当时事实；已过展示、旧 Q&A 与旧材料版本不作为当前待办。本人学习、正式提交和评分分别记录。
 
 # IS5113 作业与 DDL
 

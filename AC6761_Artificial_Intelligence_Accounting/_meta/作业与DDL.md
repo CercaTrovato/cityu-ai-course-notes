@@ -1,15 +1,13 @@
 ---
 type: 作业与DDL
 course: AC6761
-updated: 2026-11-07
+updated: 2026-11-26
 ---
 
+<!-- current-maintenance-20261126 -->
+> **当前入口（2026-11-26）**：[[AC6761_Artificial_Intelligence_Accounting/_meta/current-status-20261126|最新项目、提交与材料状态]] · [[AC6761_Artificial_Intelligence_Accounting/review/final-2026/framework|期末复习框架]]。下文较早的日期记录保留当时事实；已过展示、旧 Q&A 与旧材料版本不作为当前待办。本人学习、正式提交和评分分别记录。
+
 # AC6761 作业与 DDL
-
-## 2026-11-07 · 当前作业与项目节点
-
-- **11 月 11 日前**邮件提交所有组的展示 PPT，公告未给具体时刻。Group 11 名单显示 **11 月 18 日**展示，项目说明要求约 25–30 分钟、全员参与。[PPT 公告](https://canvas.cityu.edu.hk/courses/70229/discussion_topics/643580) · [展示名单](https://canvas.cityu.edu.hk/courses/70229/files/16067043)
-- **11 月 29 日**是书面报告最后提交日。原件未给具体时刻，要求邮件交 PDF，正文最多 7 页，封面与参考文献另计。[项目原件](https://canvas.cityu.edu.hk/courses/70229/files/16312020)
 
 ## 2026-11-05 · 当前新增行政要求
 

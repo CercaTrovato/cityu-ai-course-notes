@@ -1,8 +1,19 @@
 ---
-type: 复习资料索引
 course: EF5560
-updated: 2026-10-26
+type: review-index
+updated: 2026-11-26
 ---
+
+# EF5560 · 复习资料
+
+<!-- current-maintenance-20261126 -->
+当前先从 [[EF5560_Fintech_and_AI_in_Finance/review/final-2026/framework|期末复习框架]]开始，共 15 个单元。[[EF5560_Fintech_and_AI_in_Finance/review/final-2026/sources.json|来源清单]] · [[EF5560_Fintech_and_AI_in_Finance/review/final-2026/progress.json|学习进度]] · [[EF5560_Fintech_and_AI_in_Finance/review/final-2026/handover|交接说明]]。框架已准备，未开始本人学习或诊断；旧考务安排未在本批重登 AIMS。
+
+[[EF5560_Fintech_and_AI_in_Finance/_meta/current-status-20261126|当前课程与交件状态]]。
+
+## 历史归档入口
+
+下文为较早归档记录；当前行动以本页上方入口为准。
 
 # EF5560 复习资料
 

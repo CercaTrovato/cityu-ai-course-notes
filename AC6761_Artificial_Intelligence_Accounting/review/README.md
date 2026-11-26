@@ -1,8 +1,19 @@
 ---
-type: 复习资料索引
 course: AC6761
-updated: 2026-11-04
+type: review-index
+updated: 2026-11-26
 ---
+
+# AC6761 · 复习资料
+
+<!-- current-maintenance-20261126 -->
+当前先从 [[AC6761_Artificial_Intelligence_Accounting/review/final-2026/framework|期末复习框架]]开始，共 17 个单元。[[AC6761_Artificial_Intelligence_Accounting/review/final-2026/sources.json|来源清单]] · [[AC6761_Artificial_Intelligence_Accounting/review/final-2026/progress.json|学习进度]] · [[AC6761_Artificial_Intelligence_Accounting/review/final-2026/handover|交接说明]]。框架已准备，未开始本人学习或诊断；旧考务安排未在本批重登 AIMS。
+
+[[AC6761_Artificial_Intelligence_Accounting/_meta/current-status-20261126|当前课程与交件状态]]。
+
+## 历史归档入口
+
+下文为较早归档记录；当前行动以本页上方入口为准。
 
 # AC6761 复习资料
 

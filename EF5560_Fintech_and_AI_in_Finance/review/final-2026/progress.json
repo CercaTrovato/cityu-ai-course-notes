@@ -1,0 +1,982 @@
+{
+  "schema_version": 1,
+  "course": "EF5560",
+  "updated_at": "2026-11-23",
+  "time_zone": "Asia/Hong_Kong",
+  "framework_status": "ready_with_pending_sources",
+  "units": [
+    {
+      "id": "U01",
+      "title": "做出一行可信的金融数据",
+      "source_ids": [
+        "L01",
+        "L03",
+        "MOCK-A",
+        "MOCK-B"
+      ],
+      "prerequisite_ids": [],
+      "question_types": [
+        "数据时点/泄漏判断",
+        "收益与单位",
+        "配对交易假设与因果"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "teaching_material_status": "local_sources_available_current_Canvas_pending",
+      "diagnostic_status": "not_administered",
+      "evidence": []
+    },
+    {
+      "id": "U02",
+      "title": "回归、验证和样本外评估",
+      "source_ids": [
+        "L02",
+        "L03",
+        "MOCK-A",
+        "MOCK-B"
+      ],
+      "prerequisite_ids": [
+        "U01"
+      ],
+      "question_types": [
+        "回归输出判断",
+        "时间划分与基准",
+        "SSE/MSE/OOS R²计算"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "teaching_material_status": "local_sources_available_current_Canvas_pending",
+      "diagnostic_status": "not_administered",
+      "evidence": []
+    },
+    {
+      "id": "U03",
+      "title": "线性ML的收缩、选择和成分",
+      "source_ids": [
+        "L02",
+        "L03",
+        "MOCK-A",
+        "MOCK-B"
+      ],
+      "prerequisite_ids": [
+        "U02"
+      ],
+      "question_types": [
+        "方法比较/选择",
+        "标准化与线性预测",
+        "PCR/PLS及零系数"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "teaching_material_status": "local_sources_available_current_Canvas_pending",
+      "diagnostic_status": "not_administered",
+      "evidence": []
+    },
+    {
+      "id": "U04",
+      "title": "非线性ML与模型复杂度",
+      "source_ids": [
+        "L04",
+        "MOCK-A",
+        "MOCK-B"
+      ],
+      "prerequisite_ids": [
+        "U02",
+        "U03"
+      ],
+      "question_types": [
+        "树与交互解释",
+        "bagging/森林/boosting",
+        "隐藏单元/early stopping/面板划分"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "teaching_material_status": "local_sources_available_current_Canvas_pending",
+      "diagnostic_status": "not_administered",
+      "evidence": []
+    },
+    {
+      "id": "U05",
+      "title": "模型解释的含义与边界",
+      "source_ids": [
+        "L05",
+        "MOCK-B"
+      ],
+      "prerequisite_ids": [
+        "U03",
+        "U04"
+      ],
+      "question_types": [
+        "系数/置零重要性",
+        "响应曲线",
+        "模型解释与因果区分"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "teaching_material_status": "local_sources_available_current_Canvas_pending",
+      "diagnostic_status": "not_administered",
+      "evidence": []
+    },
+    {
+      "id": "U06",
+      "title": "投资组合、成本、风险与绩效",
+      "source_ids": [
+        "L05",
+        "MOCK-A",
+        "MOCK-B"
+      ],
+      "prerequisite_ids": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05"
+      ],
+      "question_types": [
+        "权重/暴露/收益",
+        "费用/Sharpe/回撤",
+        "择时/CAPM基准与解释"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "teaching_material_status": "local_sources_available_current_Canvas_pending",
+      "diagnostic_status": "not_administered",
+      "evidence": []
+    },
+    {
+      "id": "U07",
+      "title": "区块链、共享记录与贸易融资",
+      "source_ids": [
+        "L06",
+        "MOCK-A",
+        "MOCK-B"
+      ],
+      "prerequisite_ids": [
+        "U01"
+      ],
+      "question_types": [
+        "区块链机制/适用性",
+        "融资上限",
+        "证据/链下事实/因果"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "teaching_material_status": "local_sources_available_current_Canvas_pending",
+      "diagnostic_status": "not_administered",
+      "evidence": []
+    },
+    {
+      "id": "U08",
+      "title": "加密资产机制与经营现金流",
+      "source_ids": [
+        "L07",
+        "MOCK-A",
+        "MOCK-B"
+      ],
+      "prerequisite_ids": [
+        "U07"
+      ],
+      "question_types": [
+        "分叉/托管/权利",
+        "矿工/平台/持币公司风险",
+        "增发前后NAV"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "teaching_material_status": "local_sources_available_current_Canvas_pending",
+      "diagnostic_status": "not_administered",
+      "evidence": []
+    },
+    {
+      "id": "U09",
+      "title": "DeFi的交易、借贷与清算",
+      "source_ids": [
+        "L07",
+        "L08"
+      ],
+      "prerequisite_ids": [
+        "U01",
+        "U07",
+        "U08"
+      ],
+      "question_types": [
+        "AMM储备与价格",
+        "TVL/清算/健康因子",
+        "收益/流动性/跨链"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "teaching_material_status": "local_sources_available_current_Canvas_pending",
+      "diagnostic_status": "not_administered",
+      "evidence": []
+    },
+    {
+      "id": "U10",
+      "title": "NFT与现实资产代币化",
+      "source_ids": [
+        "L08",
+        "MOCK-A",
+        "MOCK-B"
+      ],
+      "prerequisite_ids": [
+        "U07",
+        "U08"
+      ],
+      "question_types": [
+        "token/媒体/合同权利",
+        "黄金/基金/债券现金流",
+        "NAV/二级市场折价"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "teaching_material_status": "local_sources_available_current_Canvas_pending",
+      "diagnostic_status": "not_administered",
+      "evidence": []
+    },
+    {
+      "id": "U11",
+      "title": "稳定币、CBDC与兑换渠道",
+      "source_ids": [
+        "L09",
+        "MOCK-A",
+        "MOCK-B"
+      ],
+      "prerequisite_ids": [
+        "U07",
+        "U08",
+        "U09",
+        "U10"
+      ],
+      "question_types": [
+        "稳定币设计/储备",
+        "赎回摩擦/收入",
+        "CBDC债权/钱包/采用"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "teaching_material_status": "local_sources_available_current_Canvas_pending",
+      "diagnostic_status": "not_administered",
+      "evidence": []
+    },
+    {
+      "id": "U12",
+      "title": "支付与BNPL的资金和成本",
+      "source_ids": [
+        "L10",
+        "MOCK-A",
+        "MOCK-B"
+      ],
+      "prerequisite_ids": [
+        "U07",
+        "U11"
+      ],
+      "question_types": [
+        "授权/清算/结算",
+        "跨境全成本与到账",
+        "留存收入/BNPL贡献"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "teaching_material_status": "local_sources_available_current_Canvas_pending",
+      "diagnostic_status": "not_administered",
+      "evidence": []
+    },
+    {
+      "id": "U13",
+      "title": "数字信贷与众筹",
+      "source_ids": [
+        "L11",
+        "MOCK-A",
+        "MOCK-B"
+      ],
+      "prerequisite_ids": [
+        "U02",
+        "U07",
+        "U12"
+      ],
+      "question_types": [
+        "排序/校准/预期损失",
+        "资金方/first-loss损失分摊",
+        "众筹权利与达标边界"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "teaching_material_status": "local_sources_available_current_Canvas_pending",
+      "diagnostic_status": "not_administered",
+      "evidence": []
+    },
+    {
+      "id": "U14",
+      "title": "智能投顾与客户风险能力",
+      "source_ids": [
+        "SYLLABUS-20261105",
+        "MOCK-A",
+        "MOCK-B",
+        "L12-PENDING"
+      ],
+      "prerequisite_ids": [
+        "U06"
+      ],
+      "question_types": [
+        "意愿/能力/期限",
+        "AUM盈亏平衡"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "teaching_material_status": "partial_pending_L12",
+      "diagnostic_status": "not_administered",
+      "evidence": []
+    },
+    {
+      "id": "U15",
+      "title": "网络恢复、RegTech与金融文本AI",
+      "source_ids": [
+        "L07",
+        "L10",
+        "L11",
+        "MOCK-A",
+        "MOCK-B",
+        "SYLLABUS-20261105",
+        "L12-PENDING"
+      ],
+      "prerequisite_ids": [
+        "U01",
+        "U07",
+        "U12",
+        "U13"
+      ],
+      "question_types": [
+        "身份冲突与复核",
+        "共同凭证备份/恢复",
+        "金融文本AI来源与职责（待L12细化）"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "teaching_material_status": "partial_pending_L12",
+      "diagnostic_status": "not_administered",
+      "evidence": []
+    }
+  ],
+  "sessions": [],
+  "mistakes": [],
+  "next_step": {
+    "type": "diagnostic_before_teaching",
+    "description": "本人准备好复习后，先逐题做D1/D2，保留原作答；同时待总监督恢复Canvas核Lec12与最终课/复习/答案材料。今晚不主动占用录制熟稿时间。",
+    "unit_ids": [
+      "U01"
+    ],
+    "required_user_input_before_simulation": "是否看过/做过B及本地解析；尚未询问/确认",
+    "diagnostic_plan_id": "DIAGNOSTIC-PLAN"
+  },
+  "mock_question_map": [
+    {
+      "source_id": "MOCK-A",
+      "question": "MC1",
+      "physical_page": 2,
+      "topic": "Ridge 收缩与拟合代价",
+      "unit_ids": [
+        "U03"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "MC2",
+      "physical_page": 2,
+      "topic": "加变量后的训练误差与未来误差",
+      "unit_ids": [
+        "U02"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "MC3",
+      "physical_page": 2,
+      "topic": "PCR 与 PLS",
+      "unit_ids": [
+        "U03"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "MC4",
+      "physical_page": 3,
+      "topic": "alpha、beta 和拟合超额收益",
+      "unit_ids": [
+        "U06"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "MC5",
+      "physical_page": 3,
+      "topic": "双边交易成本与净 Sharpe",
+      "unit_ids": [
+        "U06"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "MC6",
+      "physical_page": 3,
+      "topic": "总暴露和净暴露",
+      "unit_ids": [
+        "U06"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "MC7",
+      "physical_page": 4,
+      "topic": "托管资产、隔离与回收权利",
+      "unit_ids": [
+        "U08"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "MC8",
+      "physical_page": 4,
+      "topic": "BTC/BCH 分叉",
+      "unit_ids": [
+        "U08"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "MC9",
+      "physical_page": 4,
+      "topic": "代币化基金收益来源",
+      "unit_ids": [
+        "U10"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "MC10",
+      "physical_page": 5,
+      "topic": "NFT、媒体与版权",
+      "unit_ids": [
+        "U10"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "MC11",
+      "physical_page": 5,
+      "topic": "CBDC 与商业银行债权",
+      "unit_ids": [
+        "U11"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "MC12",
+      "physical_page": 5,
+      "topic": "注册量与实际采用",
+      "unit_ids": [
+        "U11"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "MC13",
+      "physical_page": 6,
+      "topic": "钱包故障与底层债权",
+      "unit_ids": [
+        "U11",
+        "U15"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "MC14",
+      "physical_page": 6,
+      "topic": "风险意愿与能力",
+      "unit_ids": [
+        "U14"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "MC15",
+      "physical_page": 6,
+      "topic": "制裁筛查与身份核验",
+      "unit_ids": [
+        "U15"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "MC16",
+      "physical_page": 6,
+      "topic": "智能投顾 AUM 盈亏平衡",
+      "unit_ids": [
+        "U14"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "SA1(a)(b)",
+      "physical_page": 7,
+      "topic": "PDD/JD 假设、残余风险与历史因果",
+      "unit_ids": [
+        "U01"
+      ],
+      "answer_units": 2,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "SA2(a)(b)",
+      "physical_page": 8,
+      "topic": "early stopping、月份/股票树",
+      "unit_ids": [
+        "U04"
+      ],
+      "answer_units": 2,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "SA3(a)(b)",
+      "physical_page": 9,
+      "topic": "违约排序、校准与定价",
+      "unit_ids": [
+        "U13"
+      ],
+      "answer_units": 2,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "SA4(a)(b)",
+      "physical_page": 10,
+      "topic": "融资上限、共享记录与现实核验",
+      "unit_ids": [
+        "U07"
+      ],
+      "answer_units": 2,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "CAL1(a)(b)",
+      "physical_page": 11,
+      "topic": "SSE、OOS R² 与盈利边界",
+      "unit_ids": [
+        "U02"
+      ],
+      "answer_units": 2,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-A",
+      "question": "CAL2(a)(b)",
+      "physical_page": 12,
+      "topic": "BNPL fee、商户所得与贡献压力",
+      "unit_ids": [
+        "U12"
+      ],
+      "answer_units": 2,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "MC1",
+      "physical_page": 2,
+      "topic": "显著性与测试表现",
+      "unit_ids": [
+        "U02"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "MC2",
+      "physical_page": 2,
+      "topic": "股票超额收益目标",
+      "unit_ids": [
+        "U01",
+        "U03"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "MC3",
+      "physical_page": 2,
+      "topic": "样本内 R² 的边界",
+      "unit_ids": [
+        "U02"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "MC4",
+      "physical_page": 3,
+      "topic": "响应曲线与因果",
+      "unit_ids": [
+        "U05"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "MC5",
+      "physical_page": 3,
+      "topic": "最大回撤",
+      "unit_ids": [
+        "U06"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "MC6",
+      "physical_page": 3,
+      "topic": "CAPM 本地基准",
+      "unit_ids": [
+        "U06"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "MC7",
+      "physical_page": 4,
+      "topic": "两银行剩余融资额度",
+      "unit_ids": [
+        "U07"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "MC8",
+      "physical_page": 4,
+      "topic": "文件哈希与重复融资记录",
+      "unit_ids": [
+        "U07"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "MC9",
+      "physical_page": 4,
+      "topic": "处理改善、信用风险与对照",
+      "unit_ids": [
+        "U07"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "MC10",
+      "physical_page": 5,
+      "topic": "代币化基金收入",
+      "unit_ids": [
+        "U10"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "MC11",
+      "physical_page": 5,
+      "topic": "二级市场卖出与 NAV 折价",
+      "unit_ids": [
+        "U10"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "MC12",
+      "physical_page": 5,
+      "topic": "代币化黄金的背书与兑换权",
+      "unit_ids": [
+        "U10"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "MC13",
+      "physical_page": 6,
+      "topic": "稳定币赎回摩擦",
+      "unit_ids": [
+        "U11"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "MC14",
+      "physical_page": 6,
+      "topic": "违约概率校准",
+      "unit_ids": [
+        "U13"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "MC15",
+      "physical_page": 6,
+      "topic": "回收与 first-loss guarantee",
+      "unit_ids": [
+        "U13"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "MC16",
+      "physical_page": 6,
+      "topic": "近期负债与风险承受能力",
+      "unit_ids": [
+        "U14"
+      ],
+      "answer_units": 1,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "SA1(a)(b)",
+      "physical_page": 7,
+      "topic": "财报披露时间与数据检查",
+      "unit_ids": [
+        "U01"
+      ],
+      "answer_units": 2,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "SA2(a)(b)",
+      "physical_page": 8,
+      "topic": "树、交互、神经网络与复杂度",
+      "unit_ids": [
+        "U04"
+      ],
+      "answer_units": 2,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "SA3(a)(b)",
+      "physical_page": 9,
+      "topic": "支付收入与跨境报价/完成",
+      "unit_ids": [
+        "U12"
+      ],
+      "answer_units": 2,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "SA4(a)(b)",
+      "physical_page": 10,
+      "topic": "赎回条款与共同凭证备份",
+      "unit_ids": [
+        "U11",
+        "U15"
+      ],
+      "answer_units": 2,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "CAL1(a)(b)",
+      "physical_page": 11,
+      "topic": "标准化、LASSO 预测与零系数",
+      "unit_ids": [
+        "U03"
+      ],
+      "answer_units": 2,
+      "student_exposure": "unknown",
+      "answered": false
+    },
+    {
+      "source_id": "MOCK-B",
+      "question": "CAL2(a)(b)",
+      "physical_page": 12,
+      "topic": "增发前后每股 NAV",
+      "unit_ids": [
+        "U08"
+      ],
+      "answer_units": 2,
+      "student_exposure": "unknown",
+      "answered": false
+    }
+  ],
+  "assessment_policy": {
+    "initial_state": "not_started/unknown",
+    "levels": [
+      "not_started",
+      "explanation_seen",
+      "solved_with_hint",
+      "independently_correct",
+      "delayed_retest_passed"
+    ],
+    "unit_mastery_requires": "实际覆盖本单元关键技能的无提示作答与延后变式；不能按聊天/笔记/题数自动推断",
+    "future_session_fields": [
+      "id",
+      "started_at",
+      "ended_at",
+      "unit_ids",
+      "source_ids",
+      "question_id",
+      "question_text_or_reference",
+      "user_question_verbatim",
+      "user_answer_verbatim",
+      "hint_level",
+      "feedback",
+      "correction_process",
+      "result",
+      "limitations",
+      "next_step"
+    ],
+    "future_mistake_fields": [
+      "id",
+      "session_id",
+      "unit_id",
+      "question_reference",
+      "original_answer",
+      "cause",
+      "hint_used",
+      "corrected_reasoning",
+      "method",
+      "retest_reference",
+      "retest_status"
+    ],
+    "student_progress_known": false
+  },
+  "diagnostic_coverage_limit": [
+    "D1-D8未实施",
+    "U08每股NAV首轮未直接测，进入U08前另作短诊断",
+    "U09可在D7追加分支，其余未测技能保留unknown"
+  ],
+  "holdout_policy": {
+    "learning_paper": "MOCK-A",
+    "proposed_holdout": "MOCK-B",
+    "student_exposure": "unknown",
+    "holdout_confirmed": false,
+    "if_exposed": "B作为练习；后续制作并审查不同数字/条件的自编平行卷",
+    "parallel_paper_status": "not_created"
+  },
+  "sync_status": {
+    "local": "written_and_read_back",
+    "github": "pending_supervisor",
+    "local_board": "pending_supervisor",
+    "online_board": "pending_supervisor"
+  },
+  "external_pending_source_ids": [
+    "CANVAS-CURRENT",
+    "L12-PENDING",
+    "FINAL-CLASS-PENDING",
+    "TA-REVIEW-PENDING",
+    "OFFICIAL-ANSWERS-PENDING",
+    "PAST-PAPERS-PENDING",
+    "DIAGNOSTIC-PLAN"
+  ],
+  "framework_review": {
+    "status": "independent_samples_reviewed",
+    "reviewer": "/root/framework_review",
+    "model": "gpt-6.1-sol",
+    "scope": "两条路线及收益口径提醒、未测状态、措辞的定向复核；不代表全课教学验收",
+    "candidate_sha256": "7f4138324c3aa3e76e91d72328c1bcfbaa933e00eb485dc6ed689798fccc5e78",
+    "report": "independent-review.md"
+  }
+}

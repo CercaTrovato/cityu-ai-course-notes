@@ -1,8 +1,22 @@
 ---
-type: 复习资料索引
 course: IS5542
-updated: 2026-10-26
+type: review-index
+updated: 2026-11-26
 ---
+
+# IS5542 · 复习资料
+
+<!-- current-maintenance-20261126 -->
+当前先从 [[IS5542_GenAI_in_Business/review/final-2026/framework|期末复习框架]]开始，共 12 个单元。[[IS5542_GenAI_in_Business/review/final-2026/sources.json|来源清单]] · [[IS5542_GenAI_in_Business/review/final-2026/progress.json|学习进度]] · [[IS5542_GenAI_in_Business/review/final-2026/handover|交接说明]]。框架已准备，未开始本人学习或诊断；旧考务安排未在本批重登 AIMS。
+
+[[IS5542_GenAI_in_Business/_meta/current-status-20261126|当前课程与交件状态]]。
+
+
+> **11/26 新材料**：[Lecture 10 原件](../course_files_export/canvas-20261126/IS5542%20-%20Lecture%2010.pdf)共 71 页，含 Responsible AI 与 Exam Info；[接收与版本记录](https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/_meta/github-maintenance-20261126/source-intake.json)。本框架仍承接 11/23 版本，新增讲义尚未逐页制作／融合；p.2 旧考试日期不覆盖本学期考务。
+
+## 历史归档入口
+
+下文为较早归档记录；当前行动以本页上方入口为准。
 
 # IS5542 复习资料
 

@@ -1,0 +1,385 @@
+{
+  "schema_version": 1,
+  "course": "IS6400",
+  "updated_at": "2026-11-23T18:09:25+08:00",
+  "framework_status": "ready_with_source_gaps",
+  "units": [
+    {
+      "id": "U00",
+      "title": "业务问题、数据表与 Python 读题起点",
+      "source_ids": [
+        "S-W1",
+        "S-T01",
+        "S-SYL"
+      ],
+      "prerequisite_ids": [],
+      "question_types": [
+        "任务识别",
+        "代码/数据形状解读"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "exam_priority": "core",
+      "learning_goal": "从一行一客户、一列一属性出发，分清预测对象、标签、特征与业务决策；能跟踪 import→建对象→fit→predict。",
+      "prerequisite_bridge": "四则运算、百分数；必要 Python 赋值/索引现场补。",
+      "source_locators": "W1 p.13–45；T01 cells 3–23；安装页面仅按需要回查。",
+      "difficulty_and_boundary": "看到输出会问“一个数对应谁、单位是什么”，不把能运行当作结果有效。",
+      "evidence": []
+    },
+    {
+      "id": "U01",
+      "title": "数据类型、描述统计与关联规则",
+      "source_ids": [
+        "S-DATA",
+        "S-T03",
+        "S-SAMPLE"
+      ],
+      "prerequisite_ids": [
+        "U00"
+      ],
+      "question_types": [
+        "缺失值处理",
+        "IQR/分位数",
+        "读图",
+        "支持度/置信度/lift"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "exam_priority": "core",
+      "learning_goal": "会判断属性类型，解释缺失/离群；算均值、方差、分位数/IQR，读箱线与相关；从交易表计算关联规则。",
+      "prerequisite_bridge": "排序、比例、平方与简单求和；概率分母用具体样本补。",
+      "source_locators": "W3 p.4–49、51–72；T03 cells 2–43；Sample Q1(1)(2)。",
+      "difficulty_and_boundary": "Q1 all customers 的总体不能被另一问的删行偷偷改变；相关不证明因果，confidence 不等于 lift。",
+      "evidence": []
+    },
+    {
+      "id": "U02",
+      "title": "回归、拟合与正则化初步",
+      "source_ids": [
+        "S-REG",
+        "S-T02",
+        "S-S32"
+      ],
+      "prerequisite_ids": [
+        "U00",
+        "U01"
+      ],
+      "question_types": [
+        "系数/显著性解读",
+        "预测与残差",
+        "梯度更新",
+        "Ridge/Lasso 比较",
+        "代码填空"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "exam_priority": "core",
+      "learning_goal": "能把业务问题写成回归，解释系数/dummy，计算预测和误差；理解最小二乘、梯度下降以及正则化改变什么。",
+      "prerequisite_bridge": "代数直线、平方误差；导数/矩阵只在真正用到时逐步搭桥。",
+      "source_locators": "L2 p.2–53；T02 cells 3–36；S32 01:26:17–01:26:33。",
+      "difficulty_and_boundary": "拟合训练数据与预测未来不同；标准化/正则化不能从测试集学参数。",
+      "evidence": []
+    },
+    {
+      "id": "U03",
+      "title": "特征选择、纯度与 PCA",
+      "source_ids": [
+        "S-FEAT",
+        "S-T04",
+        "S-CLUST",
+        "S-S32"
+      ],
+      "prerequisite_ids": [
+        "U01",
+        "U02"
+      ],
+      "question_types": [
+        "Gini/entropy/information gain",
+        "filter/wrapper/搜索",
+        "PCA 读图与解释",
+        "代码输出对照"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "exam_priority": "core",
+      "learning_goal": "会算分裂前后加权不纯度，解释前向选择/RFE；区分保留原变量与生成主成分，读解释方差和变换。",
+      "prerequisite_bridge": "加权平均、概率、对数；向量投影用二维例补。",
+      "source_locators": "W4 p.16–69；L5 p.2–8回顾；T04 cells 2–37。",
+      "difficulty_and_boundary": "纯度指标、搜索策略和预测模型各管不同环节；PCA 大方差不是必然最有预测力。",
+      "evidence": []
+    },
+    {
+      "id": "U04",
+      "title": "聚类及距离：K-means、层次与 DBSCAN",
+      "source_ids": [
+        "S-CLUST",
+        "S-T05",
+        "S-S32"
+      ],
+      "prerequisite_ids": [
+        "U01",
+        "U03"
+      ],
+      "question_types": [
+        "迭代手算",
+        "距离矩阵合并",
+        "方法选择",
+        "参数/输出解释"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "exam_priority": "core",
+      "learning_goal": "会做 K-means 分配/更新、解释 K-means++/bisecting；能按 linkage 合并距离矩阵，辨认 DBSCAN 核心/边界/噪声；理解谱聚类的教程用途。",
+      "prerequisite_bridge": "坐标距离、平均、标准化；矩阵按距离表来读。",
+      "source_locators": "L5 p.9–67，尤其 p.23–40、42–60、62–67；T05 cells 4–34。",
+      "difficulty_and_boundary": "分组没有现成真标签；缩放和簇形状影响结果，簇编号无大小意义。",
+      "evidence": []
+    },
+    {
+      "id": "U05",
+      "title": "决策树、集成与 SVM",
+      "source_ids": [
+        "S-CLASS",
+        "S-T07",
+        "S-SAMPLE",
+        "S-S32"
+      ],
+      "prerequisite_ids": [
+        "U01",
+        "U03"
+      ],
+      "question_types": [
+        "沿树预测",
+        "Hunt/分裂手算",
+        "bagging/boosting/stacking 比较",
+        "SVM 边界",
+        "模型导入与参数"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "exam_priority": "core",
+      "learning_goal": "能沿树逐例分类，区分树深度与软件 max_depth；解释 bootstrap/随机特征、加权改错、元模型与支持向量。",
+      "prerequisite_bridge": "U03 不纯度；分类标签和训练数据；加权投票。",
+      "source_locators": "L6 p.3–74；T07 cells 3–16；Sample Problem3(4)。",
+      "difficulty_and_boundary": "不能用验证集真值改叶标签后再报同集成绩；API 参数必须连接模型行为。",
+      "evidence": []
+    },
+    {
+      "id": "U06",
+      "title": "分类/回归评价与不平衡成本",
+      "source_ids": [
+        "S-CLASS",
+        "S-ASSESS",
+        "S-T07"
+      ],
+      "prerequisite_ids": [
+        "U02",
+        "U05"
+      ],
+      "question_types": [
+        "混淆矩阵",
+        "precision/recall/F1/ROC",
+        "MAE/RMSE/MAPE",
+        "成本敏感选择"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "exam_priority": "core",
+      "learning_goal": "能固定正类与分母，算评价指标并解释错判成本；选择符合业务目标的阈值/指标。",
+      "prerequisite_bridge": "比例和平方平均；每次先标实际/预测方向。",
+      "source_locators": "L6 p.75–92；Assessment p.8–15；T07 cells 16–22。",
+      "difficulty_and_boundary": "极少数欺诈时 accuracy 可误导；MAPE 在真值为0或很小时有问题。",
+      "evidence": []
+    },
+    {
+      "id": "U07",
+      "title": "时间序列：模式、平滑与趋势季节",
+      "source_ids": [
+        "S-TS1",
+        "S-T08",
+        "S-S32"
+      ],
+      "prerequisite_ids": [
+        "U01",
+        "U02"
+      ],
+      "question_types": [
+        "图形识别",
+        "移动平均/SES/Holt/Holt-Winters",
+        "一步更新",
+        "加法/乘法季节",
+        "代码读值"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "exam_priority": "core",
+      "learning_goal": "能辨别水平/趋势/季节/周期，按已知状态预测，选择平滑模型并解释窗口、权重及季节周期。",
+      "prerequisite_bridge": "时间顺序、加权平均；递推用同一小例跟踪状态。",
+      "source_locators": "L8 p.7–45，重点 p.20–37；T08 cells 4–48；S32 01:29:36–01:29:48、01:32:03。",
+      "difficulty_and_boundary": "统计 MA 模型与平滑 moving average 区分；未来真实值不可提前放入多步预测。",
+      "evidence": []
+    },
+    {
+      "id": "U08",
+      "title": "平稳化、AR/MA/ARIMA 与恢复预测",
+      "source_ids": [
+        "S-TS2",
+        "S-T09",
+        "S-SAMPLE",
+        "S-S32"
+      ],
+      "prerequisite_ids": [
+        "U02",
+        "U07"
+      ],
+      "question_types": [
+        "差分/平稳性",
+        "ACF/PACF 判读",
+        "ARIMA(p,d,q)",
+        "多步预测恢复",
+        "滚动预测设计"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "exam_priority": "core",
+      "learning_goal": "能解释历史值/误差项、差分含义，依据原/差分序列看图选阶，再把预测恢复到原量纲。",
+      "prerequisite_bridge": "滞后、差分、残差；必要相关系数与统计检验解释。",
+      "source_locators": "L9 p.14–46；T09 cells 4–81；Sample Q5(1)(2)(3)。",
+      "difficulty_and_boundary": "不能仅凭价格上涨保证差分后平稳；不能比较不同变换尺度 RMSE 后直接宣布胜者。",
+      "evidence": []
+    },
+    {
+      "id": "U09",
+      "title": "选模、剪枝、交叉验证与整体业务评价",
+      "source_ids": [
+        "S-ASSESS",
+        "S-T11",
+        "S-SAMPLE",
+        "S-S32"
+      ],
+      "prerequisite_ids": [
+        "U04",
+        "U06",
+        "U08"
+      ],
+      "question_types": [
+        "训练/验证/测试",
+        "k-fold/nested CV",
+        "剪枝与悲观误差",
+        "rolling evaluation",
+        "A/B 设计",
+        "聚类评价"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "exam_priority": "core",
+      "learning_goal": "能设计不泄漏的数据切分，区分选超参与最终报告；计算树复杂度惩罚并比较剪枝；评价聚类和整体方案的业务贡献。",
+      "prerequisite_bridge": "前三类模型与误差；超参数与拟合参数重新辨认。",
+      "source_locators": "Assessment p.16–84；T11 cells 3–61；Sample Problem3(1)–(3)、Q5(3)。",
+      "difficulty_and_boundary": "样卷每叶 penalty=1，课件例可用0.5，须按题面；A/B 随机分配与离线验证不混同。",
+      "evidence": []
+    },
+    {
+      "id": "U10",
+      "title": "全课补全：深度学习、文本与图像",
+      "source_ids": [
+        "S-DL98",
+        "S-DL137",
+        "S-T10",
+        "S-S32"
+      ],
+      "prerequisite_ids": [
+        "U02",
+        "U03",
+        "U08"
+      ],
+      "question_types": [
+        "前向计算/形状",
+        "RNN/LSTM 状态",
+        "TF-IDF",
+        "图像/CNN 流程解读"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "exam_priority": "course_completion_after_exam_core",
+      "learning_goal": "按课程完整性补 ANN 激活/训练、RNN/LSTM、文本表示/NLP、图像表示与 CNN；接回传统模型比较。",
+      "prerequisite_bridge": "带权求和、向量/矩阵与函数；从输入形状逐步补。",
+      "source_locators": "98页版 p.1–98；137页版 p.99–137 图像/CNN补充；T10源 86 cells。",
+      "difficulty_and_boundary": "S32 01:26:11、01:30:32–01:30:49 明确 Week10排除；保留全课学习，但考试主线优先完成。两个深度PDF非同一版本，不能按文件名 L11 误当模型评估。",
+      "evidence": []
+    },
+    {
+      "id": "U11",
+      "title": "综合案例、保留题检测与错题复测",
+      "source_ids": [
+        "S-SAMPLE",
+        "S-SAMPLE-NOTES",
+        "S-S32"
+      ],
+      "prerequisite_ids": [
+        "U00",
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09"
+      ],
+      "question_types": [
+        "混合题型识别",
+        "限时模拟",
+        "英文解释",
+        "错题变式/延迟复测"
+      ],
+      "status": "not_started",
+      "mastery": "unknown",
+      "exam_priority": "core",
+      "learning_goal": "先学会按题型选择方法，再做未提前讲解的混合卷；用原作答复盘读题、公式、参数、泄漏和业务解释。",
+      "prerequisite_bridge": "考试主线单元完成；U10 的学习完成另外记录。",
+      "source_locators": "教师Sample用作示范与练习；最终独立检测另用未展示自编同型题，获取校方旧卷后先标已见/未见。",
+      "difficulty_and_boundary": "练过原题不计独立检测；当前尚未出卷、未施测、未评分。",
+      "evidence": []
+    }
+  ],
+  "sessions": [],
+  "mistakes": [],
+  "next_step": {
+    "type": "diagnostic",
+    "unit_ids": [
+      "U00",
+      "U01"
+    ],
+    "description": "框架审查后由用户选择开始；先问已有把握与最近卡点，再逐题做 D1–D6；不预填作答。",
+    "awaiting_user_attempt": true
+  },
+  "exam_conditions": {
+    "date": "2026-12-15",
+    "start": "18:30",
+    "end": "20:30",
+    "timezone": "Asia/Hong_Kong",
+    "venue": "YEUNG LT2",
+    "schedule_status": "historical_baseline_not_reverified",
+    "scope_source_id": "S-S32",
+    "scope": "Canvas Week1–11 excluding Week10, latest official notice pending",
+    "aids_status": "single-page oral statement; paper size/sides/calculator/writing rules pending",
+    "question_count_status": "oral ASR13, not final written paper"
+  },
+  "mastery_levels": [
+    "not_started",
+    "explanation_seen",
+    "solved_with_hint",
+    "independently_correct",
+    "retest_passed"
+  ],
+  "last_learning_position": null,
+  "independent_review": {
+    "status": "sample_reviewed_no_blocker",
+    "report": "evidence/independent-review.md",
+    "framework_sha256": "002c04b1e2597798437cc6a4ef0d7db960bf5355742bfa0c93a4f682c4a1b87d",
+    "reviewed_progress_sha256_before_status_maintenance": "a0ace4780f8b45fab19d91e60de2c1425a0c0f3aeb82f8a1887ec744ebafca69",
+    "scope": "Week10/11与样卷两条导航/诊断及必要结构；非全课审查"
+  }
+}

@@ -33,7 +33,9 @@ class BoardTests(unittest.TestCase):
         result=server.collect()
         self.assertFalse(result['errors'])
         self.assertFalse(result['missing'])
-        self.assertEqual(5,len([r for r in result['assignments'] if r['board_scope']=='active']))
+        self.assertEqual({'AC6761','EF5560','IS5113','IS5542','IS6400'},
+                         {r['course'] for r in result['assignments']
+                          if r['board_scope']=='active' and r['assignment_type']=='group'})
 
     def test_unknown_work_does_not_get_percentage(self):
         r=server.collect(self.root)['assignments'][0]

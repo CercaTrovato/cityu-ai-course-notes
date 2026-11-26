@@ -1,8 +1,11 @@
 ---
 type: 作业与DDL
 course: EF5560
-updated: 2026-11-07
+updated: 2026-11-26
 ---
+
+<!-- current-maintenance-20261126 -->
+> **当前入口（2026-11-26）**：[[EF5560_Fintech_and_AI_in_Finance/_meta/current-status-20261126|最新项目、提交与材料状态]] · [[EF5560_Fintech_and_AI_in_Finance/review/final-2026/framework|期末复习框架]]。下文较早的日期记录保留当时事实；已过展示、旧 Q&A 与旧材料版本不作为当前待办。本人学习、正式提交和评分分别记录。
 
 # EF5560 作业与 DDL
 

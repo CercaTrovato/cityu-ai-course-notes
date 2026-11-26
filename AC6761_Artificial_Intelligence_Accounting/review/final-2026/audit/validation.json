@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "artifact": "AC6761 final revision framework",
+  "updated_at": "2026-11-23",
+  "checks": {
+    "source_ids_unique": 61,
+    "unit_ids_unique": 17,
+    "source_references_valid": true,
+    "prerequisite_dag_valid": true,
+    "learning_status_unchanged_not_started": true,
+    "sessions_and_mistakes_empty": true,
+    "all_recorded_source_paths_exist": true,
+    "source_hashes_unchanged": true,
+    "original_files_hash_checked": 39,
+    "original_files_changed": [],
+    "main_slides": 543,
+    "supplementary_slides": 17,
+    "physical_slide_order_checked": 560,
+    "full_source_visual_verified": false,
+    "source_visual_samples": 60,
+    "case5_solution_pages_viewed": 1,
+    "wiki_note_links_resolved": 10
+  },
+  "limits": [
+    "结构、路径与哈希检查不认证教学质量或本人掌握。",
+    "本框架不是完整教学讲义，未运行仅适用于 M/T 笔记的 §0–§9 发布门槛。",
+    "Canvas 当前／最终复习课与 mock／历年卷等缺口保留。"
+  ],
+  "independent_review": {
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "high",
+    "scope": "路线框架风险抽检及来源/状态定向核对，不是全课教学验收",
+    "binding_file": "audit/review-binding.json",
+    "report_file": "audit/independent-review.md"
+  },
+  "writeback": {
+    "method": "safe_write.atomic_write + target baseline CAS + exact bytes readback",
+    "status": "verified",
+    "files": [
+      {
+        "path": "AC6761_Artificial_Intelligence_Accounting/review/final-2026/framework.md",
+        "sha256": "31e6707f8232188b8b197bc3852e58e53308f2728d0acad22502ee8aaadefeb4",
+        "bytes": 25970
+      },
+      {
+        "path": "AC6761_Artificial_Intelligence_Accounting/review/final-2026/sources.json",
+        "sha256": "5fb3e3498fad57ea8817a68b914f85f472dcc032af02fa30b7cd95849b95763d",
+        "bytes": 84583
+      },
+      {
+        "path": "AC6761_Artificial_Intelligence_Accounting/review/final-2026/progress.json",
+        "sha256": "7ffbbba535093a8819ebe37ce328b9bda9b7b719a09d2159c1145da262295dbf",
+        "bytes": 14813
+      },
+      {
+        "path": "AC6761_Artificial_Intelligence_Accounting/review/final-2026/handover.md",
+        "sha256": "0f3ba86061e10d221b28fab1bb0dec7ac0b36bfb9021761ca15daa52a7217de1",
+        "bytes": 8593
+      },
+      {
+        "path": "AC6761_Artificial_Intelligence_Accounting/review/final-2026/audit/stage-1.md",
+        "sha256": "7d0cf53a16c4126412cfe6be3c8d0f47ca99c67132098251cb0626aff8e10ada",
+        "bytes": 5259
+      },
+      {
+        "path": "AC6761_Artificial_Intelligence_Accounting/review/final-2026/audit/independent-review.md",
+        "sha256": "5ebe84ebb144587ad3ec68abe1cee373b3182f89cd13ed22b01048ed06235602",
+        "bytes": 11697
+      },
+      {
+        "path": "AC6761_Artificial_Intelligence_Accounting/review/final-2026/audit/review-binding.json",
+        "sha256": "4b90434486e52f5ca78c6eb42f4698e0809f12f8fde08067735473438da71ce9",
+        "bytes": 1534
+      }
+    ]
+  },
+  "integrity": {
+    "passed": true,
+    "baseline": "E:/app-data/codex/scratchpad/ac6761-final-framework-20261123/integrity-baseline.json",
+    "unintended_changes_by_this_process": [],
+    "outside_target_course_markdown_changes": [
+      {
+        "path": "AC6761_Artificial_Intelligence_Accounting/assignment/graded/A01-ai-accounting-project/notes/final-closeout-20261123.md",
+        "change": "created_concurrently"
+      },
+      {
+        "path": "AC6761_Artificial_Intelligence_Accounting/assignment/graded/A01-ai-accounting-project/notes/section-e-handover-20261123.md",
+        "change": "created_concurrently"
+      },
+      {
+        "path": "AC6761_Artificial_Intelligence_Accounting/assignment/graded/A01-ai-accounting-project/notes/section-e-independent-review-20261123.md",
+        "change": "created_concurrently"
+      },
+      {
+        "path": "AC6761_Artificial_Intelligence_Accounting/assignment/graded/A01-ai-accounting-project/notes/section-e-review-stage-1-20261123.md",
+        "change": "created_concurrently"
+      },
+      {
+        "path": "AC6761_Artificial_Intelligence_Accounting/assignment/graded/A01-ai-accounting-project/work/section-e-report-20261123/section-e-report-draft.md",
+        "change": "created_concurrently"
+      }
+    ],
+    "scope_note": "只枚举本课程，未监视其他课程并发修改；本进程只写分配目录。"
+  },
+  "synchronization": {
+    "git_staged": false,
+    "git_committed": false,
+    "git_pushed": false,
+    "shared_board_changed": false,
+    "owner": "总监督统一收尾",
+    "reason": "本任务明确禁止并发操作根 Git 与共享看板。"
+  }
+}

@@ -1,0 +1,766 @@
+{
+  "board_scope": "active",
+  "updated_at": "2026-11-26T16:57:30+08:00",
+  "group": "Group 24",
+  "schema_version": 1,
+  "tasks": [
+    {
+      "id": "meeting",
+      "title": "会议记录与初步分工",
+      "status": "done",
+      "owner": null,
+      "note": "不设总领。11/08 本人确认原开发、测试、调研等角色继续沿用。",
+      "evidence": [
+        "meeting",
+        "owner-team-handoff"
+      ]
+    },
+    {
+      "id": "environment",
+      "title": "环境准备与数据分布统计",
+      "status": "done",
+      "owner": null,
+      "note": "10/31 环境和美团统计已完成；11/07 在既有固定版本环境重跑 tau2 check-data，通过的是数据目录检查。",
+      "evidence": [
+        "brief",
+        "handoff"
+      ]
+    },
+    {
+      "id": "scope",
+      "title": "确认外卖为项目主场景",
+      "status": "done",
+      "owner": null,
+      "note": "11/07 本人确认方向已定。报告沿此外卖场景续作，政策和评测细节另行确定。",
+      "evidence": [
+        "owner-direction",
+        "meeting"
+      ]
+    },
+    {
+      "id": "research",
+      "title": "商业调研与 Demo 设计稿",
+      "status": "done",
+      "owner": "业务调研成员",
+      "note": "11/06 组员交文档，核读正文、表格、9 张证据图与 8 条建议情形。",
+      "evidence": [
+        "team-report",
+        "handoff"
+      ]
+    },
+    {
+      "id": "collaboration",
+      "title": "建立私有 GitHub 协作仓库并上传现有材料",
+      "status": "done",
+      "owner": "本人",
+      "note": "私有协作仓库已建立并上传初始 28 个文件。11/08 复核有 1 个邀请待接受，暂无组员分支或 PR。",
+      "evidence": [
+        "collaboration-repo",
+        "collaboration-commit",
+        "handoff"
+      ]
+    },
+    {
+      "id": "local-prototype",
+      "title": "ORD001 参考原型、边界验证及私有仓库同步",
+      "status": "done",
+      "owner": "本人",
+      "note": "真实模型查单、Python 算延误、Studio 人工批准、30 分钟直接结束均已核。合并图的两种审批决定另用模拟模型验证。 已回读远端提交 28fdea3，干净目录无 Key 重跑批准、驳回及 30／31 分钟边界。",
+      "evidence": [
+        "studio-prototype",
+        "handoff",
+        "prototype-commit"
+      ]
+    },
+    {
+      "id": "agent",
+      "title": "领域工具与 Agent 最小可运行链路",
+      "status": "in_progress",
+      "owner": "技术开发组员／开发",
+      "note": "固定176fbb0的基础工具B与规则版C、配置及演示已收；HR九组离线复跑9/9。正式120次已完成，已知解释和承诺缺陷见完整处理复核；当前部署同版与测试组人工签验仍单列。",
+      "evidence": [
+        "app",
+        "handoff",
+        "owner-team-handoff",
+        "framework-discussion",
+        "studio-prototype",
+        "owner-framework-plan",
+        "owner-frontend-and-learning",
+        "frontend-handoff-commit",
+        "web-branch-20261120",
+        "dev-and-ablation-86632a6",
+        "final-week-task-pack",
+        "owner-two-day-plan-20261121",
+        "team-feedback-20261121",
+        "team-test-sheet-read-20261121",
+        "owner-rejection-scope-20261121",
+        "group-progress-20261122",
+        "owner-human-review-four-boundaries-20261123",
+        "developer-complete-delivery-20261123",
+        "board-sync-20261126"
+      ]
+    },
+    {
+      "id": "pilot",
+      "title": "3 个剧本试跑与成本记录",
+      "status": "in_progress",
+      "owner": "测试组（A＋gaga老师）",
+      "note": "承接11/22历史8行试用表；固定176fbb0的HR九组由课程助手离线复跑9/9，正式模型120次另已完成。测试组真人界面意见与签验仍可后补。",
+      "evidence": [
+        "handoff",
+        "final-week-task-pack",
+        "owner-two-day-plan-20261121",
+        "team-feedback-20261121",
+        "team-test-sheet-read-20261121",
+        "owner-rejection-scope-20261121",
+        "group-progress-20261122",
+        "owner-human-review-four-boundaries-20261123",
+        "developer-complete-delivery-20261123",
+        "agent-offline-hr-replay-20261123",
+        "board-sync-20261126"
+      ]
+    },
+    {
+      "id": "evaluation",
+      "title": "基线比较与系统评测",
+      "status": "in_progress",
+      "owner": "本人／本会话Agent已执行；测试组可后补复核",
+      "note": "正式120次及完整处理复核已归档：B37/23，C45/6/9；12格市场比较、成本情景与缺陷分析已纳入当前PPT。3元范围待决定，不扩新实验。",
+      "evidence": [
+        "brief",
+        "handoff",
+        "owner-business-objective",
+        "owner-personal-scope",
+        "dev-and-ablation-86632a6",
+        "final-week-task-pack",
+        "owner-two-day-plan-20261121",
+        "developer-complete-delivery-20261123",
+        "agent-offline-hr-replay-20261123",
+        "owner-gpt56-live120-20261123",
+        "owner-ppt-evidence-complete-review-20261123",
+        "board-sync-20261126"
+      ]
+    },
+    {
+      "id": "slides",
+      "title": "Slides 与 Demo 叙事",
+      "status": "in_progress",
+      "owner": "本人",
+      "note": "v5 可编辑 PPTX／PDF 已备，六位成员封面信息已补齐；两段演示已嵌入并核完整播放，15 页英文录制讲稿及中文对照已备。正式 120 次完整处理复核：B 37 通过／23 未过，C 45 通过／6 未过／9 政策待核。下一步为本人审稿、贡献措辞确认、彩排和最终录制。 11/26本人确认小组最终PPT已更新，所有成员姓名／学号已确认；实核当前v5文件存在，身份不再作为缺件，贡献措辞不由身份确认推定。",
+      "evidence": [
+        "owner-final-week-20261121",
+        "final-week-task-pack",
+        "owner-two-day-plan-20261121",
+        "team-feedback-20261121",
+        "team-test-sheet-read-20261121",
+        "owner-dispatch-ppt-framework-20261121",
+        "group-progress-20261122",
+        "owner-human-review-four-boundaries-20261123",
+        "editable-presentation-draft-20261123",
+        "presentation-visual-redesign-20261123",
+        "supervision-20261123",
+        "developer-complete-delivery-20261123",
+        "final-ppt-review-v3-20261124",
+        "presentation-v4-links-copy-20261124",
+        "cover-roster-v5-20261126",
+        "board-sync-20261126"
+      ]
+    },
+    {
+      "id": "recording",
+      "title": "gaga单人录制及本人最终检查",
+      "status": "todo",
+      "owner": "gaga（唯一录制人）；本人收片检查",
+      "note": "本人11/26确认计划今天或明天（11/26或11/27）由gaga一人录制；没有已录完成证据，不要求全员上台／出镜。",
+      "evidence": [
+        "final-week-task-pack",
+        "owner-two-day-plan-20261121",
+        "supervision-update-20261126"
+      ]
+    },
+    {
+      "id": "named-handoff",
+      "title": "私有仓库首轮个人分工与交接入口",
+      "status": "done",
+      "owner": "本人",
+      "note": "现行分工截图核对为开发、工程／baseline 各一人，业务调研、测试各两人。私有首页连到六张任务卡，细任务和日期标为建议。远端 d7e7bc6 已核。",
+      "evidence": [
+        "named-handoff-commit",
+        "handoff",
+        "owner-current-roster"
+      ]
+    },
+    {
+      "id": "market-research-dispatch",
+      "title": "派发三平台补偿规则与客服流程调研",
+      "status": "done",
+      "owner": "本人",
+      "note": "本人确认任务已经发给两位调研组员。以仓库交接模板为准，接收与交件状态待核。",
+      "evidence": [
+        "owner-research-dispatch",
+        "current-github-plan",
+        "handoff"
+      ]
+    },
+    {
+      "id": "market-rules-intake",
+      "title": "收取三平台规则初稿及两项保障 v1.3 补件",
+      "status": "done",
+      "owner": "业务调研组",
+      "note": "11/11 v1.3 和 8 页截图已逐页核读；两项保障存在和基本条件已有依据，截图来源、精确边界与版本仍待核。不等于正式政策批准或客服实测完成。",
+      "evidence": [
+        "market-rules-received",
+        "handoff",
+        "market-rules-v13"
+      ]
+    },
+    {
+      "id": "flow-intake",
+      "title": "收取并核读三平台客服流程首轮材料",
+      "status": "done",
+      "owner": "业务流程调研成员／本人核阅",
+      "note": "实际收三份报告、15 张表、26 张截图，已完成首轮有限样本核阅与去标识整理；真实赔付、真人与工单闭环仍待核，不等于正式评测完成。",
+      "evidence": [
+        "flow-observations-received",
+        "handoff"
+      ]
+    },
+    {
+      "id": "owner-submit",
+      "title": "本人提交最终录像与Slides",
+      "status": "todo",
+      "owner": "本人",
+      "note": "本人已确认负责提交；等待gaga录像及最终文件检查，不标已提交。",
+      "evidence": [
+        "supervision-update-20261126"
+      ]
+    },
+    {
+      "id": "peer-review-deferred",
+      "title": "项目全部工作完成后再写同伴互评",
+      "status": "todo",
+      "owner": "本人",
+      "note": "本人明确后置；当前不写评价、分数或虚构贡献。官方表／入口／截止本轮未核成，不用自拟表替代。",
+      "evidence": [
+        "supervision-update-20261126"
+      ]
+    }
+  ],
+  "my_role": "本人统一PPT／录制与结论把关，Agent可协助核方法和数据；开发由技术开发组员主做，A＋gaga作为测试组整体交件。",
+  "sources": [
+    {
+      "id": "brief",
+      "kind": "local",
+      "label": "A01 当前任务说明",
+      "locator": "IS5542_GenAI_in_Business/assignment/graded/A01-genai-project/notes/任务说明.md",
+      "observed_at": "2026-11-26",
+      "sha256": "8ce83e8e29a53020f47d070246dd20dd954349aa935a4096f131b25b25c741d0"
+    },
+    {
+      "id": "deadline-chat",
+      "kind": "thread",
+      "label": "整理各课程作业截止时间表（已登录 Canvas 核对）",
+      "locator": "01a1b1d5-d4db-7911-a458-11f3770a19ee",
+      "observed_at": "2026-11-07",
+      "sha256": null
+    },
+    {
+      "id": "meeting",
+      "kind": "local",
+      "label": "团队会议历史与本人方向确认",
+      "locator": "IS5542_GenAI_in_Business/assignment/graded/A01-genai-project/notes/团队会议与决策.md",
+      "observed_at": "2026-11-08",
+      "sha256": "11ed0efe9f19d51557847ca29ed2ec3f96279c805f0075e3a1ec6f5d2eb8a1ec"
+    },
+    {
+      "id": "app",
+      "kind": "local",
+      "label": "外卖 app 本地环境与状态说明",
+      "locator": "IS5542_GenAI_in_Business/assignment/graded/A01-genai-project/work/app/README.md",
+      "observed_at": "2026-11-07",
+      "sha256": "977679a6105cbb4e86bd51dbf413d0db3bbf4bb2e3f66f4726bac6cd18dcc030"
+    },
+    {
+      "id": "announcement",
+      "kind": "web",
+      "label": "Canvas 项目公告（沿用已核会话）",
+      "locator": "https://canvas.cityu.edu.hk/courses/71410/discussion_topics/632216",
+      "observed_at": "2026-11-07",
+      "sha256": null
+    },
+    {
+      "id": "owner-direction",
+      "kind": "thread",
+      "label": "本人于 11/07 确认外卖方案已定",
+      "locator": "01a1b491-403e-7651-9aba-13e5b647af93",
+      "observed_at": "2026-11-07",
+      "sha256": null
+    },
+    {
+      "id": "team-report",
+      "kind": "web",
+      "label": "11/06 商业调研与Demo原件（已发布同哈希存档）",
+      "locator": "https://github.com/CercaTrovato/is5542-food-delivery-agent/blob/main/work/team-private/FoodDelivery_Agent_Report.docx",
+      "observed_at": "2026-11-21",
+      "sha256": "5cefb330ad2eeedae82ff8741f538a6d336126147a028808c127984fedd281da"
+    },
+    {
+      "kind": "local",
+      "id": "handoff",
+      "sha256": "9051fc763b0b17210e5e456c4631da916c320ed788b301902e94c0cc96e73b66",
+      "label": "组员续作核查与开发交接（脱敏）",
+      "observed_at": "2026-11-26",
+      "locator": "IS5542_GenAI_in_Business/assignment/graded/A01-genai-project/notes/supervision-report.md"
+    },
+    {
+      "id": "owner-team-handoff",
+      "kind": "thread",
+      "label": "11/08 本人确认原角色沿用及开发部署交接方向",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-08",
+      "sha256": null
+    },
+    {
+      "id": "framework-discussion",
+      "kind": "thread",
+      "label": "11/08 本人补充框架讨论与群聊（Dify 试用计划）",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-08",
+      "sha256": null
+    },
+    {
+      "id": "collaboration-repo",
+      "kind": "web",
+      "label": "GitHub 私有协作仓库",
+      "locator": "https://github.com/CercaTrovato/is5542-food-delivery-agent",
+      "observed_at": "2026-11-08",
+      "sha256": null
+    },
+    {
+      "id": "collaboration-commit",
+      "kind": "web",
+      "label": "首个 main 提交与上传文件",
+      "locator": "https://github.com/CercaTrovato/is5542-food-delivery-agent/commit/f579bf5429f99feb01c9f051407227e68d17e5cd",
+      "observed_at": "2026-11-08",
+      "sha256": null
+    },
+    {
+      "id": "studio-prototype",
+      "kind": "thread",
+      "label": "11/08 本地 Studio 真实模型审批及边界核验",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-08",
+      "sha256": null
+    },
+    {
+      "id": "prototype-commit",
+      "kind": "web",
+      "label": "GitHub ORD001 参考原型和最新版交接提交",
+      "locator": "https://github.com/CercaTrovato/is5542-food-delivery-agent/commit/28fdea3e240bcb994f004513b438ce77d3b9cb21",
+      "observed_at": "2026-11-08",
+      "sha256": null
+    },
+    {
+      "id": "owner-framework-plan",
+      "kind": "thread",
+      "label": "11/09 本人确认团队首版计划采用 LangChain／LangGraph",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-09",
+      "sha256": null
+    },
+    {
+      "id": "named-handoff-commit",
+      "kind": "web",
+      "label": "私有 GitHub 现行六人任务卡和首页交接",
+      "locator": "https://github.com/CercaTrovato/is5542-food-delivery-agent/commit/d7e7bc62943beca32e1d2303e3354ff85f2dab65",
+      "observed_at": "2026-11-09",
+      "sha256": null
+    },
+    {
+      "id": "owner-current-roster",
+      "kind": "thread",
+      "label": "11/09 本人提供现行六人分工截图",
+      "locator": "01a1b491-403e-7651-9aba-13e5b647af93",
+      "observed_at": "2026-11-09",
+      "sha256": null
+    },
+    {
+      "id": "owner-business-objective",
+      "kind": "thread",
+      "label": "11/10 本人确认项目主目标和辅助指标方向",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-10",
+      "sha256": null
+    },
+    {
+      "id": "owner-personal-scope",
+      "kind": "thread",
+      "label": "11/10 本人确认首轮职责与亲手实现的模块",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-10",
+      "sha256": null
+    },
+    {
+      "id": "owner-research-dispatch",
+      "kind": "thread",
+      "label": "11/10 本人确认三平台调研任务已发送",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-10",
+      "sha256": null
+    },
+    {
+      "id": "current-github-plan",
+      "kind": "web",
+      "label": "私有 GitHub 现行项目说明与调研交接",
+      "locator": "https://github.com/CercaTrovato/is5542-food-delivery-agent/commit/fa4391c82bb2b2fe0f87cf6fea2054c4d9123a4d",
+      "observed_at": "2026-11-10",
+      "sha256": null
+    },
+    {
+      "id": "owner-frontend-and-learning",
+      "kind": "thread",
+      "label": "11/10 本人明确网页前端与 Agent 推进安排",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-10",
+      "sha256": null
+    },
+    {
+      "id": "market-rules-received",
+      "kind": "thread",
+      "label": "11/10 本人转发三平台公开补偿规则初稿",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-10",
+      "sha256": null
+    },
+    {
+      "id": "frontend-handoff-commit",
+      "kind": "web",
+      "label": "私有 GitHub 前端交接及资格判定接口提交",
+      "locator": "https://github.com/CercaTrovato/is5542-food-delivery-agent/commit/2d7951b1cab009e54447ef357db709ca941d3f28",
+      "observed_at": "2026-11-10",
+      "sha256": null
+    },
+    {
+      "id": "market-rules-v13",
+      "kind": "web",
+      "label": "11/11 补件 v1.3 的核验与资料索引",
+      "locator": "https://github.com/CercaTrovato/is5542-food-delivery-agent/blob/main/work/spec/market-compensation-rules.md",
+      "observed_at": "2026-11-11",
+      "sha256": null
+    },
+    {
+      "id": "flow-observations-received",
+      "kind": "web",
+      "label": "11/12 三平台流程回件与九行核验",
+      "locator": "https://github.com/CercaTrovato/is5542-food-delivery-agent/blob/main/work/spec/competitor-evidence.md",
+      "observed_at": "2026-11-12",
+      "sha256": null
+    },
+    {
+      "id": "notes-update-20261118",
+      "kind": "local",
+      "label": "课程笔记更新：补充复习资料，不计小组交付",
+      "locator": "IS5542_GenAI_in_Business/review/notes-update-20261118.md",
+      "observed_at": "2026-11-20",
+      "sha256": "98892c6607ddaa937003d66da69d5e16b19042822b3ffcb860e280a77e2d0f8a"
+    },
+    {
+      "id": "web-branch-20261120",
+      "kind": "web",
+      "label": "已见开发分支 9c8fdbc；历史交付自检不等于当前接收验收",
+      "locator": "https://github.com/CercaTrovato/is5542-food-delivery-agent/tree/9c8fdbc",
+      "observed_at": "2026-11-20",
+      "sha256": null
+    },
+    {
+      "id": "audio-update-20261121",
+      "kind": "web",
+      "label": "11/21录音与期末复盘（学习补充；不计小组交付）",
+      "locator": "https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/IS5542_GenAI_in_Business/review/audio-update-20261121.md",
+      "observed_at": "2026-11-21",
+      "sha256": "a3ffb88af2d56488c132a414c22ab6c41d5d9ee370d3e92f1d64db84aae4b990"
+    },
+    {
+      "id": "owner-final-week-20261121",
+      "kind": "thread",
+      "label": "11/21 本人确认PPT与六人分工方向",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-21",
+      "sha256": null
+    },
+    {
+      "id": "final-week-task-pack",
+      "kind": "web",
+      "label": "当前48小时五个工作包与验收模板（替代上一版排期）",
+      "locator": "https://github.com/CercaTrovato/is5542-food-delivery-agent/blob/main/notes/team/final-week-tasks-2026-11-21.md",
+      "observed_at": "2026-11-21",
+      "sha256": null
+    },
+    {
+      "id": "dev-and-ablation-86632a6",
+      "kind": "web",
+      "label": "新到开发候选与对照报告（待复核）",
+      "locator": "https://github.com/CercaTrovato/is5542-food-delivery-agent/commit/86632a6a44c76cfedae6f444e7c005d60fa56164",
+      "observed_at": "2026-11-21",
+      "sha256": null
+    },
+    {
+      "id": "owner-two-day-plan-20261121",
+      "kind": "thread",
+      "label": "本人确认两天收敛、基础Agent及测试组合交、跨会话限制",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-21",
+      "sha256": null
+    },
+    {
+      "id": "team-feedback-20261121",
+      "kind": "thread",
+      "label": "本人提供11/21晚群截图：测试组报三个问题、开发收到修复请求；原表访问受限",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-21",
+      "sha256": null
+    },
+    {
+      "id": "team-test-sheet-read-20261121",
+      "kind": "thread",
+      "label": "原链接已纠正；实际核读测试记录.xlsx四张表，7条标记4过3未过，三问题步骤已明确",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-21",
+      "sha256": null
+    },
+    {
+      "id": "owner-rejection-scope-20261121",
+      "kind": "thread",
+      "label": "本人确认驳回后原因＋人工入口、不新增二次申请，并要求两天群稿",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-21",
+      "sha256": null
+    },
+    {
+      "id": "owner-dispatch-ppt-framework-20261121",
+      "kind": "thread",
+      "label": "本人确认安排已发群，并要求课程对齐的逐页PPT框架、材料清单和空结果位",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-21",
+      "sha256": null
+    },
+    {
+      "id": "group-progress-20261122",
+      "kind": "thread",
+      "label": "11/22群聊、新8行复测表、4个开发提交及Jacky新稿接收；本人考虑人工重审改额",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-22",
+      "sha256": null
+    },
+    {
+      "id": "owner-human-review-four-boundaries-20261123",
+      "kind": "thread",
+      "label": "本人四次逐项确认人工重审、主管改额、金额范围、防重复，规范已整理",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-23",
+      "sha256": null
+    },
+    {
+      "id": "editable-presentation-draft-20261123",
+      "kind": "local",
+      "label": "15页已保存可编辑DRAFT与逐页说明、缺素材、来源及渲染记录",
+      "locator": "IS5542_GenAI_in_Business/assignment/graded/A01-genai-project/work/presentation/draft-20261123/artifact-manifest.json",
+      "observed_at": "2026-11-23",
+      "sha256": "594ba5da4d9787fabdbb1e3ac81a3ad79c4208533f5825acd3290c8af56b9d84"
+    },
+    {
+      "id": "presentation-visual-redesign-20261123",
+      "kind": "local",
+      "label": "本人视觉反馈后的15页重排、实际渲染检查与素材出处",
+      "locator": "IS5542_GenAI_in_Business/assignment/graded/A01-genai-project/work/presentation/redesign-20261123/artifact-manifest.json",
+      "observed_at": "2026-11-23",
+      "sha256": "533b2df5eb44e162952fa5bec1e42633db4c9222bfc2d9839bec879ae81c676b"
+    },
+    {
+      "id": "supervision-20261123",
+      "kind": "web",
+      "label": "11月23日总监督进度核验与本周交付清单",
+      "locator": "https://github.com/CercaTrovato/is5542-food-delivery-agent/blob/main/notes/team/supervision-2026-11-23.md",
+      "observed_at": "2026-11-23",
+      "sha256": null
+    },
+    {
+      "id": "pptx-local-export-20261123",
+      "kind": "local",
+      "label": "本地可编辑PPTX v2（15页，待本人核阅）",
+      "locator": "IS5542_GenAI_in_Business/assignment/graded/A01-genai-project/submission/IS5542-Group24-DRAFT-v2.pptx",
+      "observed_at": "2026-11-23",
+      "sha256": "a74e365ef9807008277e10ae249f9947a47482f609329ba9bd794a309c00f6c3"
+    },
+    {
+      "id": "developer-complete-delivery-20261123",
+      "kind": "thread",
+      "label": "本人转交开发补齐材料，已核176fbb0／36854f4、两MP4、B与配置；本人确认20题120次",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-23",
+      "sha256": null
+    },
+    {
+      "id": "agent-offline-hr-replay-20261123",
+      "kind": "thread",
+      "label": "本人不等测试组，本会话固定176离线复跑HR9/9通过，真实120次未跑",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-23",
+      "sha256": null
+    },
+    {
+      "id": "owner-agent-real-evaluation-budget-20261123",
+      "kind": "thread",
+      "label": "本人确认本会话接手真实120并无金额上限，偏好OpenAI资源，具体配置仍待",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-23",
+      "sha256": null
+    },
+    {
+      "id": "owner-gpt56-live120-20261123",
+      "kind": "thread",
+      "label": "本人授权GPT-5.6统一配置，120真实系统试跑与259API留档／诊断",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-23",
+      "sha256": null
+    },
+    {
+      "id": "owner-ppt-evidence-complete-review-20261123",
+      "kind": "thread",
+      "label": "本人截图提出补齐PPT证据并确认完整处理口径；接收外部基准线索",
+      "locator": "01a1b4b5-357e-7762-84f1-ae8ff400cba3",
+      "observed_at": "2026-11-23",
+      "sha256": null
+    },
+    {
+      "id": "final-closeout-intake-20261123",
+      "kind": "local",
+      "label": "最终PPT页位、验收清单及fe27ea3新候选接收；120原文件哈希与复核计数核对",
+      "locator": "IS5542_GenAI_in_Business/assignment/graded/A01-genai-project/notes/final-ppt-fill-20261123.md",
+      "observed_at": "2026-11-23",
+      "sha256": "3dec84a48d899393ca6fcf09382c574ac078697ea4d1bf7331be62693a892732"
+    },
+    {
+      "id": "final-runtime-jacky-v14-20261123",
+      "kind": "external_file",
+      "label": "技术开发组员运行环境与成本TXT、Jacky规则人工成本v1.4，原件本机保留，接收评阅与脱敏副本可查",
+      "locator": "E:\\app-data\\is5542\\private\\final-replies-20261123\\intake-manifest.json",
+      "observed_at": "2026-11-23",
+      "sha256": "939755c138338e5e3829ea9bc5b059e7e1135a9fe7e1539871ba39147b9a1dd5"
+    },
+    {
+      "id": "final-ppt-review-v3-20261124",
+      "kind": "local",
+      "label": "15页v3、两段嵌入视频、PDF、中文讲稿和本次核验",
+      "locator": "IS5542_GenAI_in_Business/assignment/graded/A01-genai-project/work/presentation/final-review-20261124/manifest.json",
+      "observed_at": "2026-11-24",
+      "sha256": "16c0be4dd07940f5c699c59c6f3585a4ebea08ceda919480f65081a83b6099ac"
+    },
+    {
+      "id": "canvas-group-project-20261124",
+      "kind": "web",
+      "label": "本人登录后实际读取Group Project、公告、Modules和Files",
+      "locator": "https://canvas.cityu.edu.hk/courses/71410/assignments/340779",
+      "observed_at": "2026-11-24",
+      "sha256": null
+    },
+    {
+      "id": "presentation-v4-links-copy-20261124",
+      "kind": "local",
+      "label": "本人指定网址和措辞修订的v4及检查记录",
+      "locator": "IS5542_GenAI_in_Business/assignment/graded/A01-genai-project/work/presentation/revision-v4-20261124/manifest.json",
+      "observed_at": "2026-11-24",
+      "sha256": "b6c374914955a7b1b55096f64e21d38a508a9bc2e4d3e1bd176173aa59208024"
+    },
+    {
+      "id": "speaker-script-v4-20261125",
+      "kind": "local",
+      "label": "最新v4中英文录制讲稿、Word/PDF、时间安排及定向核验",
+      "locator": "IS5542_GenAI_in_Business/assignment/graded/A01-genai-project/work/presentation/recording-script-v4-20261125/manifest.json",
+      "observed_at": "2026-11-25",
+      "sha256": "f6bbdb02d2da726f170cc9d1ce798cd484e53590a675a7bc2f59a7fc7b01281d"
+    },
+    {
+      "id": "cover-roster-v5-20261126",
+      "kind": "local",
+      "label": "本人提供的6人封面名单与v5核验",
+      "locator": "IS5542_GenAI_in_Business/assignment/graded/A01-genai-project/work/presentation/cover-roster-v5-20261126/manifest.json",
+      "observed_at": "2026-11-26",
+      "sha256": "be38462deaeeba4565c9adccfae9a5b905aaaf30a103c40d5d3292ebd04fca56"
+    },
+    {
+      "id": "board-sync-20261126",
+      "kind": "local",
+      "locator": "IS5542_GenAI_in_Business/assignment/graded/A01-genai-project/notes/board-sync-20261126.md",
+      "label": "11月26日已核交付与当前收尾事项",
+      "observed_at": "2026-11-26",
+      "sha256": "789b7ea113b2e626fc1855cd41545426afdfb6c6d074103db211a6f98eca20ea"
+    },
+    {
+      "id": "supervision-update-20261126",
+      "kind": "local",
+      "label": "本人确认身份／gaga单人录制／本人提交／互评后置；Canvas核验安全停止与反思历史证据",
+      "locator": "IS5542_GenAI_in_Business/assignment/graded/A01-genai-project/notes/supervision-update-20261126.md",
+      "observed_at": "2026-11-26",
+      "sha256": "284cb6043413cb680751e0db426ed598b90c32b3a7f9312d3259b3420be5516d"
+    },
+    {
+      "id": "canvas-readback-20261126",
+      "kind": "local",
+      "label": "11/26四入口、六次反思及香港时区实际回读",
+      "locator": "IS5542_GenAI_in_Business/assignment/graded/A01-genai-project/notes/canvas-readback-20261126.md",
+      "observed_at": "2026-11-26",
+      "sha256": "2df79dcf7deddf1af2a0e989adb166e2015668906a4922c33d182b78177546be"
+    },
+    {
+      "id": "reflection6-submitted-20261126",
+      "kind": "local",
+      "label": "第 6 次反思已提交回执（不代表小组项目提交）",
+      "locator": "IS5542_GenAI_in_Business/assignment/graded/A07-legal-industry-reflection/notes/canvas-readback-20261126.md",
+      "observed_at": "2026-11-26",
+      "sha256": "e532de569245f12f153f8db2e1104374d5633636e643acbf1b33e6735f50f8a6"
+    }
+  ],
+  "course": "IS5542",
+  "summary": "最新最终 PPT 为 v5，成员信息本人已确认；gaga 计划 11/26 或 11/27 单人录制，本人负责录像和 Slides 提交。项目截止 11/28 23:59 HKT；反思 1–6 均已有 Submitted 回执，第 6 次于 11/26 16:16:34 HKT 完成。正式小组作业提交仍待核，互评等全部工作完成后按官方表单处理。",
+  "stage": "v5最终稿与讲稿已备 · gaga单人录制计划 · 本人提交 · 互评后置",
+  "task_scope_complete": false,
+  "submission": {
+    "status": "unknown",
+    "note": "11/24已核Canvas项目入口和显示截止；本次未见最终录像或正式提交回执，保持原未知状态。",
+    "evidence": []
+  },
+  "assignment_type": "group",
+  "id": "IS5542-A01",
+  "next_action": {
+    "title": "gaga 录制，本人收片终检并于 11/28 23:59 HKT 前提交小组录像和 Slides；项目结束后处理官方互评。六次反思均已有提交记录。",
+    "owner": "gaga 录制；本人终检和小组项目提交",
+    "basis": "agreed"
+  },
+  "milestones": [
+    {
+      "id": "project",
+      "title": "录像与 Slides",
+      "due": "2026-11-28T23:59:00+08:00",
+      "precision": "datetime",
+      "kind": "submission",
+      "status": "unknown",
+      "channel": "Canvas Group Project340779；视频和slides两个文件，各组一次；账户时区Hong Kong已核",
+      "evidence": [
+        "deadline-chat",
+        "canvas-group-project-20261124",
+        "canvas-readback-20261126"
+      ]
+    }
+  ],
+  "progress_as_of": "2026-11-26",
+  "reviewed_at": "2026-11-26",
+  "title": "客服 Agent 与模拟评测",
+  "blockers": [
+    "额外3元暖心券范围仍待本人决定，C9次保留政策待核。",
+    "已知B解释误拦／反意图弹卡和C未落实承诺等缺陷仍未修复；本批只制作和如实报告，不升级为全部业务验收。",
+    "北京图表27原始岗位数值未核，已从主稿排除；供应商报价不能替代真实净人工节省。",
+    "gaga计划11/26或11/27单人录制，完整录像及本人提交回执尚未取得；成员身份信息本人已确认，不再列缺失。",
+    "官方互评表在本次四入口检查范围内未见；按公告等待后续Google Form，不把内部草稿当官方表。"
+  ]
+}

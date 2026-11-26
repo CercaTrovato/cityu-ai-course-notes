@@ -1,0 +1,3886 @@
+{
+  "schema_version": 1,
+  "assignment_id": "IS6400-A06",
+  "course": "IS6400",
+  "timezone": "Asia/Shanghai",
+  "as_of": "2026-11-26",
+  "basis_revision": "a39959857996eb53a9f4157ce778eef2a1e0865b08d994b937a3b7bbfa2fb5b6",
+  "repository_url": "https://github.com/CercaTrovato/olist-repurchase-analysis",
+  "summary": "本人11/26确认11/25展示完成、没有老师反馈；最终报告正文未开始，需要分工。已完成基于现有代码/表/图的报告前审计：18条准备事项（4个P0、14个P1），其中当前状态写回由本批处理；区分现成证据、记录错误、必补报告材料及可选实验，未重训。六岗第一批交件/日期为建议，待本人及成员确认。",
+  "date_policy": "日期建议不等于承诺；未知实际开始、完成日期与工时保留 null。",
+  "items": [
+    {
+      "id": "scope",
+      "title": "展示完成，报告范围待确认",
+      "status": "needs_review",
+      "owner": "本人 · 总监督",
+      "owner_role": "me",
+      "scope": "team",
+      "summary": "本人11/26确认11/25展示完成、没有老师反馈；最终报告正文未开始，需要分工。已完成基于现有代码/表/图的报告前审计：18条准备事项（4个P0、14个P1），其中当前状态写回由本批处理；区分现成证据、记录错误、必补报告材料及可选实验，未重训。六岗第一批交件/日期为建议，待本人及成员确认。",
+      "deliverable": "决定方法冻结后怎样评价，并清楚披露哪些时期已经看过。",
+      "next_action": "本人评审审计R02范围单及六岗建议；先整理实验身份、修R3元数据、数据时间图和三期完整报告表，再确认正文分工；不默认开启新模型训练。",
+      "my_next_action": "本人评审审计R02范围单及六岗建议；先整理实验身份、修R3元数据、数据时间图和三期完整报告表，再确认正文分工；不默认开启新模型训练。",
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "direction",
+          "label": "业务方向及开发窗口有记录",
+          "status": "pass",
+          "evidence": [
+            "supervision-report"
+          ]
+        },
+        {
+          "id": "final",
+          "label": "团队正式冻结的版本、时间和依据已记录",
+          "status": "unknown",
+          "evidence": []
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-26",
+      "estimated_minutes": null,
+      "state_basis": "沿用已有核验；未凭文件存在推定正式提交。 本日期为总监督建议，待相关成员确认，不改变正式截止。 原内部建议日期已过，实际完成未证；旧日期保存在 history，不自动改期或判迟交。",
+      "evidence": [
+        {
+          "label": "课程监督回传，分列真实团队与本地对照",
+          "url": null
+        },
+        {
+          "label": "A v2 认可状态：本人转述已核原消息",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/07bfcac704da37deb34d15ebf7fe8b0e5e2e685e/slides/a-draft-20261115/decision.json"
+        },
+        {
+          "label": "本人认可 A v3 与 3 号提交安排",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/b688bda713ad80b55cff8e922b103ff95281768a/slides/a-v3-20261115/decision.json"
+        },
+        {
+          "label": "本人确认提交与展示安排",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/fc5186ecb804149cb5aad177d5c10dfb3b16fb85/slides/submitted-20261115/submission-record.json"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "needs_review",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "observed_on": "2026-11-11",
+          "status": "needs_review",
+          "note": "新目标为审阅中的提问，未代本人定稿；本地新实验按D08等待明确开测。"
+        },
+        {
+          "observed_on": "2026-11-11",
+          "status": "needs_review",
+          "note": "D10已解除D08开测门禁；正式主指标与采用仍未代本人决定。"
+        },
+        {
+          "observed_on": "2026-11-12",
+          "status": "needs_review",
+          "note": "新增155格统一比较、17图和条件区间；AE列研究线索，未确认正式模型，系统消融仍后置。"
+        },
+        {
+          "observed_on": "2026-11-12",
+          "status": "needs_review",
+          "note": "新增AE研究对象135消融+13时间诊断；一月线索未在更早窗口延续，正式采用仍待真实记录。"
+        },
+        {
+          "observed_on": "2026-11-12",
+          "status": "needs_review",
+          "note": "最后固定清单已收尾，新增3滚动期/价值层与20Q；不存在本批待跑模型，正式团队采用另记。"
+        },
+        {
+          "observed_on": "2026-11-14",
+          "status": "needs_review",
+          "note": "本人澄清未跟组员确认，更正当前已采解释为待A/B投票；旧原话/历史成果保留，无新模型/正式PPT。"
+        },
+        {
+          "observed_on": "2026-11-14",
+          "status": "needs_review",
+          "note": "本人要求统一A整理版/B在A基础上的深入分析版口径；实验/验收/投票状态不变。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "needs_review",
+          "note": "本人确认全组已选B并要求今天制作提交；本轮只交接与核要求，具体配置/成品/提交分别记录。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "needs_review",
+          "note": "已收到B第一稿，当前按本人新回复先组审修改，禁止提交；今日Canvas复核已由制作会话完成。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "needs_review",
+          "note": "记录7图分歧和重投过程；本人最新确认A制作路线。原B及成果保留，A稿/理解准备/提交未完成，不编全员票数。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "needs_review",
+          "note": "本人转述全组认可 A v2；排练、掌握和提交不因此完成。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "needs_review",
+          "note": "本人认可 A v3 并要求同步；安排 3 号最后修改后提交，代理不代交，尚无回执。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "needs_review",
+          "note": "本人提供最终13页PPT并确认已提交；11/18周三课堂展示。独立回执/钟点/账号另核，不退回未提交。"
+        },
+        {
+          "observed_on": "2026-11-17",
+          "status": "needs_review",
+          "note": "最新截图与本人确认：Six Sigma Week13第2组，日期11/25，替代旧11/18；不改Slides已提交状态。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "needs_review",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "status": "needs_review",
+            "target": {
+              "value": "2026-11-12",
+              "precision": "date",
+              "basis": "proposed"
+            },
+            "state_basis": "沿用已有核验；未凭文件存在推定正式提交。 本日期为总监督建议，待相关成员确认，不改变正式截止。"
+          }
+        },
+        {
+          "on": "2026-11-20",
+          "status": "needs_review",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "title": "确定最终评价口径",
+            "summary": "本人已提供最终 13 页 PPT，并明确确认已提交 Canvas；Slides 待提交事项已关闭。本人同时确认 11 月 25 日（周三）课堂展示，具体钟点未新核。成功页面、准确提交时刻和实际账号仍待独立核验；这项证据缺口不改变本人确认已提交的状态。",
+            "next_action": "按最终 13 页版本准备 11 月 25 日课堂展示：各成员核对自己页面、数字和转场，再按本人安排进行真人计时与问答准备。已有提交回执可补存以核准确时刻和实际账号；不再催 3 号提交，不修改或重新提交已交附件。",
+            "my_next_action": "按最终稿准备第 1、2、9 页并统筹 11 月 25 日展示；已有提交回执可补存，不重新提交。"
+          }
+        },
+        {
+          "observed_on": "2026-11-25",
+          "status": "needs_review",
+          "note": "同步新课堂稿与历史提交/复现的边界，状态不升级。",
+          "previous": {
+            "title": "当前展示采用最终已提交13页稿",
+            "summary": "当前展示采用最终已提交的 13 页 PPT（本人确认）；11 月 25 日、Week 13、第 2 组，准确钟点未新核。主讲页码：1号3、2号4、3号5/6、4号8、5号7、6号1/2/9。本人确认的提交事实保留，独立成功回执待补而不重交；真人计时、问答熟练度与最终报告继续单独推进。A/B、已见四月及辅助研究保留历史，不再作为重新投票、重训或重做 PPT 的待办。",
+            "next_action": "按最终 13 页准备 11 月 25 日展示与 Q&A；本人负责第 1、2、9 页及统筹衔接。已有成功回执可补存；报告按已登记建议节奏推进，12 月 6 日 23:59 HKT 正式截止保留。",
+            "my_next_action": "按最终 13 页准备 11 月 25 日展示与 Q&A；本人负责第 1、2、9 页及统筹衔接。已有成功回执可补存；报告按已登记建议节奏推进，12 月 6 日 23:59 HKT 正式截止保留。"
+          }
+        },
+        {
+          "observed_on": "2026-11-26",
+          "status": "needs_review",
+          "note": "展示已完成，转报告审计与建议分工；不把旧排练要求作为当前行动。"
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "title": "统一数据与整体检查",
+      "status": "done",
+      "owner": "1、2 号 · 数据与 EDA",
+      "owner_role": "member",
+      "scope": "team",
+      "summary": "H02、H03 已收到；共同两期 50,528 个键、标签和字段已对齐。 首轮数据核对没有已登记的阻塞；后续改字段仍需重新对版本。",
+      "deliverable": "交版本化客户快照、字段说明和数据检查，供模型与分群使用。",
+      "next_action": "保留已验收成果和版本；后续修订作为新状态记录。",
+      "my_next_action": null,
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "received",
+          "label": "数据及检查材料已收到",
+          "status": "pass",
+          "evidence": [
+            "team-wechat-verification"
+          ]
+        },
+        {
+          "id": "keys",
+          "label": "组合键与标签已核对",
+          "status": "pass",
+          "evidence": [
+            "team-wechat-verification"
+          ]
+        },
+        {
+          "id": "fields",
+          "label": "共同字段与版本已对齐",
+          "status": "pass",
+          "evidence": [
+            "team-wechat-verification"
+          ]
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-10",
+      "estimated_minutes": null,
+      "state_basis": "沿用已有核验；未凭文件存在推定正式提交。",
+      "evidence": [
+        {
+          "label": "五份群附件哈希、与本地逐键核对和组员指标复算",
+          "url": null
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "done",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        }
+      ]
+    },
+    {
+      "id": "prediction",
+      "title": "团队 H04 v0.4 交件与文件校验",
+      "status": "done",
+      "owner": "3 号 · 预测",
+      "owner_role": "member",
+      "scope": "team",
+      "summary": "v0.4 新增四月评分脚本、配置、逐人分数和结果表；19 项文件校验全部通过。原有 13 项文件与 v0.2 相同。 原两项校验问题已关闭；四月的说明措辞在四月交接环节单列待办。",
+      "deliverable": "交逐行预测和同容量基线，保证每种方法比较的是同一批客户。",
+      "next_action": "保留已验收成果和版本；后续修订作为新状态记录。",
+      "my_next_action": null,
+      "depends_on": [
+        "data"
+      ],
+      "dependency_gates": [
+        {
+          "task_id": "data",
+          "check_ids": [],
+          "note": "统一客户与标签"
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "rows",
+          "label": "逐行客户键、标签和名单已核；浮点分数有差异",
+          "status": "pass",
+          "evidence": [
+            "team-h04-v04-verified"
+          ]
+        },
+        {
+          "id": "capacity",
+          "label": "名单容量与基线一致",
+          "status": "pass",
+          "evidence": [
+            "team-h04-v04-verified"
+          ]
+        },
+        {
+          "id": "metrics",
+          "label": "首轮计数已复算",
+          "status": "pass",
+          "evidence": [
+            "team-h04-v04-verified"
+          ]
+        },
+        {
+          "id": "manifest",
+          "label": "本版 19 项文件校验通过",
+          "status": "pass",
+          "evidence": [
+            "team-h04-v04-verified"
+          ]
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-10",
+      "estimated_minutes": null,
+      "state_basis": "沿用已有核验；未凭文件存在推定正式提交。",
+      "evidence": [
+        {
+          "label": "H04 v0.4 四月评分补件核验摘要",
+          "url": null
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "done",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        }
+      ]
+    },
+    {
+      "id": "clusters",
+      "title": "分群结果与复跑",
+      "status": "done",
+      "owner": "4 号 · 分群",
+      "owner_role": "member",
+      "scope": "team",
+      "summary": "4号补交脚本已复跑，一月29,368个群标记逐键匹配。品类筛查本轮没有推荐可靠的单一新增字段。 一月H05补件已闭合；不由此推定四月群标记或新字段效果已核。",
+      "deliverable": "交群标签、画像、代码版本和可运行命令。",
+      "next_action": "保留已验收成果和版本；后续修订作为新状态记录。",
+      "my_next_action": null,
+      "depends_on": [
+        "data"
+      ],
+      "dependency_gates": [
+        {
+          "task_id": "data",
+          "check_ids": [],
+          "note": "统一客户与字段"
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "groups",
+          "label": "群标签与验证键一致",
+          "status": "pass",
+          "evidence": [
+            "team-role04-h05-verified"
+          ]
+        },
+        {
+          "id": "profile",
+          "label": "画像及结果表已收到",
+          "status": "pass",
+          "evidence": [
+            "team-role04-h05-verified"
+          ]
+        },
+        {
+          "id": "code",
+          "label": "可运行脚本与命令齐全",
+          "status": "pass",
+          "evidence": [
+            "team-role04-h05-verified"
+          ]
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-10",
+      "estimated_minutes": null,
+      "state_basis": "沿用已有核验；未凭文件存在推定正式提交。",
+      "evidence": [
+        {
+          "label": "4 号 ZIP、群号复跑和品类逐项核验",
+          "url": null
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "done",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "title": "团队一月 H06 加权前后对照",
+      "status": "done",
+      "owner": "2、3、4、5 号 · 联合反馈",
+      "owner_role": "member",
+      "scope": "team",
+      "summary": "一月H06已交并复核：29,368人、230正例、同取2,937。全体46→50；近期单单+3、久单+2、多单−1，合计+4。久单仍漏掉90人中的88人。 一月 H06 核验完成；v0.4 四月名单也已有课程会话复跑记录。",
+      "deliverable": "按同一套H02/H04/H05、同一客户与名额，核两版名单及全体、各群前后变化。",
+      "next_action": "保留已验收成果和版本；后续修订作为新状态记录。",
+      "my_next_action": null,
+      "depends_on": [
+        "prediction",
+        "clusters"
+      ],
+      "dependency_gates": [
+        {
+          "task_id": "prediction",
+          "check_ids": [
+            "rows",
+            "capacity",
+            "metrics"
+          ],
+          "note": "数据与名单已可供正式验收"
+        },
+        {
+          "task_id": "clusters",
+          "check_ids": [
+            "groups"
+          ],
+          "note": "群标签已可用于分析"
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "diagnosis",
+          "label": "一月H06前后表已收并有逐人核验记录",
+          "status": "pass",
+          "evidence": [
+            "published-status-86d0ead",
+            "h06-latest-86d0ead"
+          ]
+        },
+        {
+          "id": "new",
+          "label": "一月样本、群标记与2,937名额一致",
+          "status": "pass",
+          "evidence": [
+            "published-status-86d0ead",
+            "h06-latest-86d0ead"
+          ]
+        },
+        {
+          "id": "comparison",
+          "label": "全体与逐群汇总已核对一致",
+          "status": "pass",
+          "evidence": [
+            "h06-latest-86d0ead"
+          ]
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-10",
+      "estimated_minutes": null,
+      "state_basis": "沿用已有核验；未凭文件存在推定正式提交。",
+      "evidence": [
+        {
+          "label": "最新团队进度与验收边界（固定 GitHub 版本）",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/86d0ead3d597e571cdf4fe7c13501cf3216181d1/docs/team/current-status.md"
+        },
+        {
+          "label": "H06 一月加权前后对照（固定 GitHub 版本）",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/86d0ead3d597e571cdf4fe7c13501cf3216181d1/docs/team/evidence/h06-weighting-comparison.csv"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "done",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        }
+      ]
+    },
+    {
+      "id": "local-comparison",
+      "title": "本地探索与四月已见回测（辅助）",
+      "status": "needs_review",
+      "owner": "本地辅助 1–5 号；本人核取舍",
+      "owner_role": "member",
+      "scope": "supporting",
+      "summary": "本地AE后续135+13正式新拟合及时间/时点审计已核，四月无新评分，否定临时稳定升级依据。 最终滚动/价值验证已收尾，详见辅助最终研究节点。",
+      "deliverable": "用锁定的十月拟合管线、相同四月客户与前 10% 名额，对照原版和最近购买基线。",
+      "next_action": "保留完整结果，转真实成员回件验收和合稿；无本冻结清单计算欠账。",
+      "my_next_action": "阅读目标取舍及真实团队版本，完成合稿。",
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "material",
+          "label": "本地各类完整汇总已公开并核版本",
+          "status": "pass",
+          "evidence": [
+            "published-exploration-86d0ead",
+            "published-evidence-86d0ead"
+          ]
+        },
+        {
+          "id": "checked",
+          "label": "本地四月同口径结果有独立记录",
+          "status": "pass",
+          "evidence": [
+            "april-latest-86d0ead",
+            "local-april-weighted-verified"
+          ]
+        },
+        {
+          "id": "adopted",
+          "label": "团队正式冻结与汇报采用已记录",
+          "status": "unknown",
+          "evidence": []
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "沿用已有核验；未凭文件存在推定正式提交。",
+      "evidence": [
+        {
+          "label": "本地探索与更强基线对照（固定 GitHub 版本）",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/86d0ead3d597e571cdf4fe7c13501cf3216181d1/docs/team/local-exploration.md"
+        },
+        {
+          "label": "公开汇总证据索引（固定 GitHub 版本）",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/86d0ead3d597e571cdf4fe7c13501cf3216181d1/docs/team/evidence/README.md"
+        },
+        {
+          "label": "本地已见四月回测汇总（固定 GitHub 版本）",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/86d0ead3d597e571cdf4fe7c13501cf3216181d1/docs/team/evidence/april-seen-window.csv"
+        },
+        {
+          "label": "加权版本冻结及四月同容量核验",
+          "url": null
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "needs_review",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "observed_on": "2026-11-11",
+          "status": "needs_review",
+          "note": "新增第三轮本地四线结果与13幅图，正式采用保持待决定。"
+        },
+        {
+          "observed_on": "2026-11-11",
+          "status": "needs_review",
+          "note": "新增11个本地候选，不升级成员成果或最终采用。"
+        },
+        {
+          "observed_on": "2026-11-11",
+          "status": "needs_review",
+          "note": "本地研究结果与真实组员交付分开；不是最终采用或正式提交。"
+        },
+        {
+          "observed_on": "2026-11-12",
+          "status": "needs_review",
+          "note": "新增155格统一比较、17图和条件区间；AE列研究线索，未确认正式模型，系统消融仍后置。"
+        },
+        {
+          "observed_on": "2026-11-12",
+          "status": "needs_review",
+          "note": "新增AE研究对象135消融+13时间诊断；一月线索未在更早窗口延续，正式采用仍待真实记录。"
+        },
+        {
+          "observed_on": "2026-11-12",
+          "status": "needs_review",
+          "note": "最后固定清单已收尾，新增3滚动期/价值层与20Q；不存在本批待跑模型，正式团队采用另记。"
+        }
+      ]
+    },
+    {
+      "id": "team-april",
+      "title": "历史团队四月复现与11/25冻结测试的区别",
+      "status": "needs_review",
+      "owner": "3 号修说明；课程会话已复跑",
+      "owner_role": "member",
+      "scope": "team",
+      "summary": "v0.4 材料齐备。课程会话复跑最近购买／原版／加权三份名单，均与交件逐人一致；3,782 名额下命中 45／64／65。 11/25另已直接加载保存的H04规格权重评分，未重新拟合；本次新稿第14页及冻结测试回执承载该新证据。",
+      "deliverable": "提供评分入口、所用配置、逐人分数和入选名单，并在交接说明中准确说明训练与评价过程；真实正式冻结由方向环节单列。",
+      "next_action": "课堂稿采用11/25保存权重测试证据；旧交接说明如后续修订，应分别写明当时重新拟合与本次无拟合过程。",
+      "my_next_action": null,
+      "depends_on": [
+        "feedback"
+      ],
+      "dependency_gates": [
+        {
+          "task_id": "feedback",
+          "check_ids": [
+            "comparison"
+          ],
+          "note": "沿用已核一月版本作过程核对"
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "entry",
+          "label": "评分入口已提供并检查",
+          "status": "pass",
+          "evidence": [
+            "team-h04-v04-verified"
+          ]
+        },
+        {
+          "id": "model",
+          "label": "十月重新拟合所用配置可追溯",
+          "status": "pass",
+          "evidence": [
+            "team-h04-v04-verified"
+          ]
+        },
+        {
+          "id": "rows",
+          "label": "三份逐人名单复现一致",
+          "status": "pass",
+          "evidence": [
+            "team-h04-v04-verified"
+          ]
+        },
+        {
+          "id": "wording",
+          "label": "交接说明准确交代重新拟合与四月已见",
+          "status": "gap",
+          "evidence": [
+            "team-h04-v04-verified"
+          ]
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-25",
+      "estimated_minutes": null,
+      "state_basis": "沿用已有核验；未凭文件存在推定正式提交。 本日期为总监督建议，待相关成员确认，不改变正式截止。 原内部建议日期已过，实际完成未证；旧日期保存在 history，不自动改期或判迟交。",
+      "evidence": [
+        {
+          "label": "H04 v0.4 四月评分补件核验摘要",
+          "url": null
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "needs_review",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "needs_review",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "status": "needs_review",
+            "target": {
+              "value": "2026-11-12",
+              "precision": "date",
+              "basis": "proposed"
+            },
+            "state_basis": "沿用已有核验；未凭文件存在推定正式提交。 本日期为总监督建议，待相关成员确认，不改变正式截止。"
+          }
+        },
+        {
+          "observed_on": "2026-11-25",
+          "status": "needs_review",
+          "note": "同步新课堂稿与历史提交/复现的边界，状态不升级。",
+          "previous": {
+            "title": "团队四月名单复现与交接说明",
+            "summary": "v0.4 材料齐备。课程会话复跑最近购买／原版／加权三份名单，均与交件逐人一致；3,782 名额下命中 45／64／65。 交接单仍需改正“不重新训练”及四月独立测试的表述；真实正式冻结另在方向环节待办。",
+            "next_action": "只修准确的交接说明，不再催已交的评分材料；6 号另记真实冻结。",
+            "my_next_action": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "delivery",
+      "title": "Slides 已提交，课堂展示与报告继续",
+      "status": "in_progress",
+      "owner": "全组；本人负责统筹",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "本人11/26确认11/25展示完成、没有老师反馈；最终报告正文未开始，需要分工。已完成基于现有代码/表/图的报告前审计：18条准备事项（4个P0、14个P1），其中当前状态写回由本批处理；区分现成证据、记录错误、必补报告材料及可选实验，未重训。六岗第一批交件/日期为建议，待本人及成员确认。",
+      "deliverable": "按同一版结论交 Slides、讲稿与报告，再核排练和提交回执。",
+      "next_action": "本人评审审计R02范围单及六岗建议；先整理实验身份、修R3元数据、数据时间图和三期完整报告表，再确认正文分工；不默认开启新模型训练。",
+      "my_next_action": "本人评审审计R02范围单及六岗建议；先整理实验身份、修R3元数据、数据时间图和三期完整报告表，再确认正文分工；不默认开启新模型训练。",
+      "depends_on": [
+        "ppt-a-first-draft-review",
+        "date-slides"
+      ],
+      "dependency_gates": [
+        {
+          "task_id": "ppt-a-first-draft-review",
+          "check_ids": [
+            "files",
+            "review",
+            "boundary"
+          ],
+          "note": "最终13页原件及归档/提交事实边界已核"
+        },
+        {
+          "task_id": "date-slides",
+          "check_ids": [
+            "receipt"
+          ],
+          "note": "保留本人确认已提交事实"
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "freeze",
+          "label": "方法与最终评价已冻结",
+          "status": "unknown",
+          "evidence": []
+        },
+        {
+          "id": "slides",
+          "label": "Slides／讲稿已合并并核数",
+          "status": "pass",
+          "evidence": [
+            "ppt-A-draft-manifest",
+            "ppt-A-draft-review"
+          ]
+        },
+        {
+          "id": "receipt",
+          "label": "正式提交回执已核验",
+          "status": "unknown",
+          "evidence": []
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-26",
+      "estimated_minutes": null,
+      "state_basis": "Slides 本人确认已提交；课堂展示/报告与回执独立核验仍分别待完成。",
+      "evidence": [
+        {
+          "label": "课程当前进度记录及总监督管理复核；依据日期 2026-11-10",
+          "url": null
+        },
+        {
+          "label": "A v2 认可状态：本人转述已核原消息",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/07bfcac704da37deb34d15ebf7fe8b0e5e2e685e/slides/a-draft-20261115/decision.json"
+        },
+        {
+          "label": "本人认可 A v3 与 3 号提交安排",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/b688bda713ad80b55cff8e922b103ff95281768a/slides/a-v3-20261115/decision.json"
+        },
+        {
+          "label": "本人确认提交与展示安排",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/fc5186ecb804149cb5aad177d5c10dfb3b16fb85/slides/submitted-20261115/submission-record.json"
+        },
+        {
+          "label": "11/23 最终13页展示准备与Q&A",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/presentation-prep-20261123/presentation-prep-20261123.md"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "unknown",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "unknown",
+          "note": "本人转述全组认可 A v2；排练、掌握和提交不因此完成。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "in_progress",
+          "note": "本人认可 A v3 并要求同步；安排 3 号最后修改后提交，代理不代交，尚无回执。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "in_progress",
+          "note": "本人提供最终13页PPT并确认已提交；11/18周三课堂展示。独立回执/钟点/账号另核，不退回未提交。"
+        },
+        {
+          "observed_on": "2026-11-17",
+          "status": "in_progress",
+          "note": "最新截图与本人确认：Six Sigma Week13第2组，日期11/25，替代旧11/18；不改Slides已提交状态。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "in_progress",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "title": "Slides 已提交，课堂展示与报告继续",
+            "summary": "本人已提供最终 13 页 PPT，并明确确认已提交 Canvas；Slides 待提交事项已关闭。本人同时确认 11 月 25 日（周三）课堂展示，具体钟点未新核。成功页面、准确提交时刻和实际账号仍待独立核验；这项证据缺口不改变本人确认已提交的状态。",
+            "next_action": "按最终 13 页版本准备 11 月 25 日课堂展示：各成员核对自己页面、数字和转场，再按本人安排进行真人计时与问答准备。已有提交回执可补存以核准确时刻和实际账号；不再催 3 号提交，不修改或重新提交已交附件。",
+            "my_next_action": "按最终稿准备第 1、2、9 页并统筹 11 月 25 日展示；已有提交回执可补存，不重新提交。"
+          }
+        },
+        {
+          "observed_on": "2026-11-20",
+          "status": "in_progress",
+          "note": "R5：当前展示不再依赖旧研究冻结/四月措辞门槛；这些缺口移入报告依赖",
+          "previous": {
+            "depends_on": [
+              "clusters",
+              "scope",
+              "feedback",
+              "prediction",
+              "team-april"
+            ],
+            "dependency_gates": [
+              {
+                "task_id": "clusters",
+                "check_ids": [
+                  "code"
+                ],
+                "note": "复跑材料齐全"
+              },
+              {
+                "task_id": "scope",
+                "check_ids": [
+                  "final"
+                ],
+                "note": "基于十月/一月的正式冻结记录"
+              },
+              {
+                "task_id": "feedback",
+                "check_ids": [
+                  "comparison"
+                ],
+                "note": "已核一月H06可用于合稿"
+              },
+              {
+                "task_id": "prediction",
+                "check_ids": [
+                  "manifest"
+                ],
+                "note": "已核文件与一月结果用于合稿"
+              },
+              {
+                "task_id": "team-april",
+                "check_ids": [
+                  "entry",
+                  "model",
+                  "rows",
+                  "wording"
+                ],
+                "note": "数字已核；合稿时写准确的评价说明"
+              }
+            ]
+          }
+        },
+        {
+          "observed_on": "2026-11-23",
+          "status": "in_progress",
+          "note": "新增最终稿学习与讲稿资料；实际排练/掌握状态不升级，报告正文未开写。",
+          "previous": {
+            "summary": "当前展示采用最终已提交的 13 页 PPT（本人确认）；11 月 25 日、Week 13、第 2 组，准确钟点未新核。主讲页码：1号3、2号4、3号5/6、4号8、5号7、6号1/2/9。本人确认的提交事实保留，独立成功回执待补而不重交；真人计时、问答熟练度与最终报告继续单独推进。A/B、已见四月及辅助研究保留历史，不再作为重新投票、重训或重做 PPT 的待办。",
+            "next_action": "按最终 13 页准备 11 月 25 日展示与 Q&A；本人负责第 1、2、9 页及统筹衔接。已有成功回执可补存；报告按已登记建议节奏推进，12 月 6 日 23:59 HKT 正式截止保留。",
+            "my_next_action": "按最终 13 页准备 11 月 25 日展示与 Q&A；本人负责第 1、2、9 页及统筹衔接。已有成功回执可补存；报告按已登记建议节奏推进，12 月 6 日 23:59 HKT 正式截止保留。"
+          }
+        },
+        {
+          "observed_on": "2026-11-25",
+          "status": "in_progress",
+          "note": "课堂15页更新稿及测试/参数已制作，不升级排练或展示完成。",
+          "previous": {
+            "summary": "Six Sigma 11 月 25 日展示，最终 13 页 Slides 保留本人已提交状态。11/23 已按最终稿准备整份故事、6号第1/2/9页中英讲法、转场、数字与12项Q&A，已完成独立轻量抽检；本人互动练习和真人计时未核。报告仅梳理要求、材料和建议结构，未写正文或代选路线/模型；准确展示钟点待核。",
+            "next_action": "打开本批展示准备，先用中文讲清项目，再练第1/2/9页并记录真实用时；按实际回答继续Q&A。报告先理解要求，不写正文或代选模型。准确展示钟点及Slides独立回执仍待核。",
+            "my_next_action": "打开本批展示准备，先用中文讲清项目，再练第1/2/9页并记录真实用时；按实际回答继续Q&A。报告先理解要求，不写正文或代选模型。准确展示钟点及Slides独立回执仍待核。"
+          }
+        },
+        {
+          "observed_on": "2026-11-26",
+          "status": "in_progress",
+          "note": "展示已完成，转报告审计与建议分工；不把旧排练要求作为当前行动。"
+        }
+      ]
+    },
+    {
+      "id": "my-delivery",
+      "title": "本人下一步：确认报告审计范围并组织正文分工",
+      "status": "in_progress",
+      "owner": "本人 · 统筹",
+      "owner_role": "me",
+      "scope": "team",
+      "summary": "本人11/26确认11/25展示完成、没有老师反馈；最终报告正文未开始，需要分工。已完成基于现有代码/表/图的报告前审计：18条准备事项（4个P0、14个P1），其中当前状态写回由本批处理；区分现成证据、记录错误、必补报告材料及可选实验，未重训。六岗第一批交件/日期为建议，待本人及成员确认。",
+      "deliverable": "完成核对或交接，并将实际答复更新回任务记录。",
+      "next_action": "本人评审审计R02范围单及六岗建议；先整理实验身份、修R3元数据、数据时间图和三期完整报告表，再确认正文分工；不默认开启新模型训练。",
+      "my_next_action": "本人评审审计R02范围单及六岗建议；先整理实验身份、修R3元数据、数据时间图和三期完整报告表，再确认正文分工；不默认开启新模型训练。",
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "followup",
+          "label": "已核对并登记实际结果或待回复内容",
+          "status": "unknown"
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-26",
+      "estimated_minutes": null,
+      "state_basis": "11/26 本人确认 11/25 展示已完成、无教师反馈；最终报告正文未开始，当前先确认审计采用范围及六岗认领，不编造内部承诺日期。正式报告截止由独立 deadline 入口保留。",
+      "evidence": [
+        {
+          "label": "课程当前进度记录及总监督管理复核；依据日期 2026-11-10",
+          "url": null
+        },
+        {
+          "label": "本人认可 A v3 与 3 号提交安排",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/b688bda713ad80b55cff8e922b103ff95281768a/slides/a-v3-20261115/decision.json"
+        },
+        {
+          "label": "本人确认提交与展示安排",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/fc5186ecb804149cb5aad177d5c10dfb3b16fb85/slides/submitted-20261115/submission-record.json"
+        },
+        {
+          "label": "11/23 最终13页展示准备与Q&A",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/presentation-prep-20261123/presentation-prep-20261123.md"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "planned",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "observed_on": "2026-11-14",
+          "status": "planned",
+          "note": "本人澄清未跟组员确认，更正当前已采解释为待A/B投票；旧原话/历史成果保留，无新模型/正式PPT。"
+        },
+        {
+          "observed_on": "2026-11-14",
+          "status": "planned",
+          "note": "本人要求统一A整理版/B在A基础上的深入分析版口径；实验/验收/投票状态不变。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "in_progress",
+          "note": "本人确认全组已选B并要求今天制作提交；本轮只交接与核要求，具体配置/成品/提交分别记录。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "in_progress",
+          "note": "已收到B第一稿，当前按本人新回复先组审修改，禁止提交；今日Canvas复核已由制作会话完成。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "in_progress",
+          "note": "记录7图分歧和重投过程；本人最新确认A制作路线。原B及成果保留，A稿/理解准备/提交未完成，不编全员票数。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "in_progress",
+          "note": "本人认可 A v3 并要求同步；安排 3 号最后修改后提交，代理不代交，尚无回执。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "in_progress",
+          "note": "本人提供最终13页PPT并确认已提交；11/18周三课堂展示。独立回执/钟点/账号另核，不退回未提交。"
+        },
+        {
+          "observed_on": "2026-11-17",
+          "status": "in_progress",
+          "note": "最新截图与本人确认：Six Sigma Week13第2组，日期11/25，替代旧11/18；不改Slides已提交状态。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "in_progress",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "title": "本人下一步：准备 11 月 25 日课堂展示",
+            "summary": "本人已提供最终 13 页 PPT，并明确确认已提交 Canvas；Slides 待提交事项已关闭。本人同时确认 11 月 25 日（周三）课堂展示，具体钟点未新核。成功页面、准确提交时刻和实际账号仍待独立核验；这项证据缺口不改变本人确认已提交的状态。",
+            "next_action": "按最终 13 页版本准备 11 月 25 日课堂展示：各成员核对自己页面、数字和转场，再按本人安排进行真人计时与问答准备。已有提交回执可补存以核准确时刻和实际账号；不再催 3 号提交，不修改或重新提交已交附件。",
+            "my_next_action": "按最终稿准备第 1、2、9 页并统筹 11 月 25 日展示；已有提交回执可补存，不重新提交。"
+          }
+        },
+        {
+          "observed_on": "2026-11-23",
+          "status": "in_progress",
+          "note": "新增最终稿学习与讲稿资料；实际排练/掌握状态不升级，报告正文未开写。",
+          "previous": {
+            "summary": "当前展示采用最终已提交的 13 页 PPT（本人确认）；11 月 25 日、Week 13、第 2 组，准确钟点未新核。主讲页码：1号3、2号4、3号5/6、4号8、5号7、6号1/2/9。本人确认的提交事实保留，独立成功回执待补而不重交；真人计时、问答熟练度与最终报告继续单独推进。A/B、已见四月及辅助研究保留历史，不再作为重新投票、重训或重做 PPT 的待办。",
+            "next_action": "按最终 13 页准备 11 月 25 日展示与 Q&A；本人负责第 1、2、9 页及统筹衔接。已有成功回执可补存；报告按已登记建议节奏推进，12 月 6 日 23:59 HKT 正式截止保留。",
+            "my_next_action": "按最终 13 页准备 11 月 25 日展示与 Q&A；本人负责第 1、2、9 页及统筹衔接。已有成功回执可补存；报告按已登记建议节奏推进，12 月 6 日 23:59 HKT 正式截止保留。"
+          }
+        },
+        {
+          "observed_on": "2026-11-25",
+          "status": "in_progress",
+          "note": "课堂15页更新稿及测试/参数已制作，不升级排练或展示完成。",
+          "previous": {
+            "summary": "Six Sigma 11 月 25 日展示，最终 13 页 Slides 保留本人已提交状态。11/23 已按最终稿准备整份故事、6号第1/2/9页中英讲法、转场、数字与12项Q&A，已完成独立轻量抽检；本人互动练习和真人计时未核。报告仅梳理要求、材料和建议结构，未写正文或代选路线/模型；准确展示钟点待核。",
+            "next_action": "打开本批展示准备，先用中文讲清项目，再练第1/2/9页并记录真实用时；按实际回答继续Q&A。报告先理解要求，不写正文或代选模型。准确展示钟点及Slides独立回执仍待核。",
+            "my_next_action": "打开本批展示准备，先用中文讲清项目，再练第1/2/9页并记录真实用时；按实际回答继续Q&A。报告先理解要求，不写正文或代选模型。准确展示钟点及Slides独立回执仍待核。"
+          }
+        },
+        {
+          "observed_on": "2026-11-26",
+          "status": "in_progress",
+          "note": "展示已完成，转报告审计与建议分工；不把旧排练要求作为当前行动。"
+        },
+        {
+          "date": "2026-11-26",
+          "status": "in_progress",
+          "note": "当前事项由已结束的展示准备切换为报告审计与正文组织；旧展示日期保留在历史和展示里程碑。"
+        }
+      ]
+    },
+    {
+      "id": "my-team-april",
+      "title": "本人下一步：团队四月名单复现与交接说明",
+      "status": "waiting",
+      "owner": "本人 · 统筹",
+      "owner_role": "me",
+      "scope": "team",
+      "summary": "核对 3 号修订后的交接说明，不再催已经验收的四月评分材料。",
+      "deliverable": "完成核对或交接，并将实际答复更新回任务记录。",
+      "next_action": "仅收3号已见窗口/冻结说明修订；数值已有历史复现，无需新跑四月。",
+      "my_next_action": null,
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "followup",
+          "label": "已核对并登记实际结果或待回复内容",
+          "status": "unknown"
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "先等 3 号返回修订说明，收到后才能核阅；已交评分材料不重复催。",
+      "evidence": [
+        {
+          "label": "H04 v0.4 四月评分补件核验摘要",
+          "url": null
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "waiting",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        }
+      ]
+    },
+    {
+      "id": "date-slides",
+      "title": "最终 Slides 已提交（本人确认）",
+      "status": "done",
+      "owner": "本人确认已提交；实际提交账号未核",
+      "owner_role": "member",
+      "scope": "team",
+      "summary": "本人已提供最终 13 页 PPT，并明确确认已提交 Canvas；Slides 待提交事项已关闭。本人同时确认 11 月 25 日（周三）课堂展示，具体钟点未新核。成功页面、准确提交时刻和实际账号仍待独立核验；这项证据缺口不改变本人确认已提交的状态。",
+      "deliverable": "最终已提交 PPT 原件；独立回执另行补存。",
+      "next_action": "Slides 提交与课堂展示均已结束；现有材料作历史归档。若取得独立成功页、时刻或账号记录，再补证而不重交。",
+      "my_next_action": null,
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "receipt",
+          "label": "本人明确确认最终 Slides 已提交",
+          "status": "pass"
+        }
+      ],
+      "target": {
+        "value": "2026-11-15T23:59:00+08:00",
+        "precision": "datetime",
+        "basis": "official"
+      },
+      "started_on": null,
+      "completed_on": "2026-11-15",
+      "observed_on": "2026-11-15",
+      "estimated_minutes": null,
+      "state_basis": "本人于11月15日明确确认已提交；该日为确认日期，准确提交时刻及实际账号未知，不能据缺回执回退为未提交。",
+      "evidence": [
+        {
+          "label": "11 月 7 日整理各课程作业截止时间表（已登录 Canvas 核对）",
+          "url": null
+        },
+        {
+          "label": "Canvas Slides 正式截止（沿用已核会话）",
+          "url": "https://canvas.cityu.edu.hk/courses/71457/assignments/339540"
+        },
+        {
+          "label": "本人确认提交与展示安排",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/fc5186ecb804149cb5aad177d5c10dfb3b16fb85/slides/submitted-20261115/submission-record.json"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "planned",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "planned",
+          "note": "本人安排 3 号最后修改后提交；当前尚无回执，代理不代提交。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "本人提供最终13页PPT并确认已提交；11/18周三课堂展示。独立回执/钟点/账号另核，不退回未提交。"
+        }
+      ],
+      "milestone_kind": "submission"
+    },
+    {
+      "id": "date-presentation",
+      "title": "Six Sigma 展示：Week 13 第 2 组",
+      "status": "done",
+      "owner": "全组；提交代表待确认",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "本人11/26确认11/25小组展示已完成，没有老师反馈。",
+      "deliverable": "Six Sigma 课堂展示",
+      "next_action": "转入报告前审计与分工，不再催本次展示准备。",
+      "my_next_action": null,
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "presented",
+          "label": "本人确认课堂展示已完成",
+          "status": "pass"
+        }
+      ],
+      "target": {
+        "value": "2026-11-25",
+        "precision": "date",
+        "basis": "agreed"
+      },
+      "started_on": null,
+      "completed_on": "2026-11-25",
+      "observed_on": "2026-11-26",
+      "estimated_minutes": null,
+      "state_basis": "本人经总监督明确授权回传确认；无准确钟点、未独立观察课堂。",
+      "evidence": [
+        {
+          "label": "11 月 7 日整理各课程作业截止时间表（已登录 Canvas 核对）",
+          "url": null
+        },
+        {
+          "label": "本人确认提交与展示安排",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/fc5186ecb804149cb5aad177d5c10dfb3b16fb85/slides/submitted-20261115/submission-record.json"
+        },
+        {
+          "label": "11/17本人提供最新分周截图：Week13第2组，下周三11/25",
+          "url": null
+        },
+        {
+          "label": "本人11/26新事实回传",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/report-gap-audit-20261126/user-facts-20261126.json"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "planned",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "planned",
+          "note": "本人提供最终13页PPT并确认已提交；11/18周三课堂展示。独立回执/钟点/账号另核，不退回未提交。"
+        },
+        {
+          "observed_on": "2026-11-17",
+          "status": "planned",
+          "note": "最新截图与本人确认：Six Sigma Week13第2组，日期11/25，替代旧11/18；不改Slides已提交状态。"
+        },
+        {
+          "observed_on": "2026-11-25",
+          "status": "planned",
+          "note": "课堂15页更新稿及测试/参数已制作，不升级排练或展示完成。",
+          "previous": {
+            "summary": "Six Sigma 展示已确定为 11 月 25 日（周三），Week 13、第 2 组；具体钟点未新核。最终 13 页 PPT 仍为本人确认已提交 Canvas，独立回执待补。接下来按最终稿准备展示与问答，报告继续推进。",
+            "next_action": "各人按最终13页版本准备对应主讲内容，核对数字/转场并按本人安排计时与问答练习。",
+            "my_next_action": "准备第1、2、9页，统筹组内展示衔接与到课安排。"
+          }
+        },
+        {
+          "observed_on": "2026-11-26",
+          "status": "done",
+          "note": "本人确认11/25展示完成，未收到老师反馈。",
+          "previous": {
+            "status": "planned",
+            "summary": "11/25课堂更新版已制作：15页（9主讲/6备查），本人仍负责1/2/9页；补十月训练、一月验证、四月冻结测试与三期结果、参数备查，讲者备注/中英讲稿/QA已齐。原13页已交原件与提交状态保持，不重交Canvas。新版通读、真人计时、正式展示与报告完成未由材料更新推定。",
+            "next_action": "使用11/25课堂新版核对本人第1/2/9页并真人计时；1号留意第3页训练/验证/测试，3号留意第5/6页文字与第14/15页备查。准确展示钟点和原Slides独立回执另核，不重新提交附件。"
+          }
+        }
+      ],
+      "milestone_kind": "presentation"
+    },
+    {
+      "id": "date-report",
+      "title": "最终报告",
+      "status": "planned",
+      "owner": "全组；提交代表待确认",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "本人确认最终报告正文未开始；本批完成前审计，尚需分工。12/6 23:59 HKT正式截止保留。",
+      "deliverable": "最终报告",
+      "next_action": "本人评审审计R02范围单及六岗建议；先整理实验身份、修R3元数据、数据时间图和三期完整报告表，再确认正文分工；不默认开启新模型训练。",
+      "my_next_action": "本人评审审计R02范围单及六岗建议；先整理实验身份、修R3元数据、数据时间图和三期完整报告表，再确认正文分工；不默认开启新模型训练。",
+      "depends_on": [
+        "scope",
+        "team-april"
+      ],
+      "dependency_gates": [
+        {
+          "task_id": "scope",
+          "check_ids": [
+            "final"
+          ],
+          "note": "报告须如实记录研究版本/选择依据"
+        },
+        {
+          "task_id": "team-april",
+          "check_ids": [
+            "wording"
+          ],
+          "note": "报告保留已见窗口和重拟合的准确说明"
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "receipt",
+          "label": "对应交件或活动有可核完成记录",
+          "status": "unknown"
+        }
+      ],
+      "target": {
+        "value": "2026-12-06T23:59:00+08:00",
+        "precision": "datetime",
+        "basis": "official"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-26",
+      "estimated_minutes": null,
+      "state_basis": "沿用原截止记录；内部节点为建议，日期已过不自动标迟交。",
+      "evidence": [
+        {
+          "label": "11 月 7 日整理各课程作业截止时间表（已登录 Canvas 核对）",
+          "url": null
+        },
+        {
+          "label": "Canvas 最终报告正式截止（沿用 11 月 7 日已核会话）",
+          "url": "https://canvas.cityu.edu.hk/courses/71457/assignments/339541"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "planned",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "observed_on": "2026-11-20",
+          "status": "planned",
+          "note": "R5：研究冻结与四月措辞缺口保留到正式报告，平行于已提交稿的展示准备",
+          "previous": {
+            "depends_on": [],
+            "dependency_gates": []
+          }
+        },
+        {
+          "observed_on": "2026-11-26",
+          "status": "planned",
+          "note": "本人确认正文未开始；原内部日期仍为建议，按审计与实际认领接续。"
+        }
+      ],
+      "milestone_kind": "submission"
+    },
+    {
+      "id": "date-direction",
+      "title": "同步已定方向、核 H01 口径并收各岗回报（建议）",
+      "status": "needs_review",
+      "owner": "全组；提交代表待确认",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "渠道：组内拟定。这是交付节点；实际制作、审批和提交状态须分别核验。",
+      "deliverable": "同步已定方向、核 H01 口径并收各岗回报（建议）",
+      "next_action": "核对本节点交件负责人、前置版本与实际回执。",
+      "my_next_action": null,
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "receipt",
+          "label": "对应交件或活动有可核完成记录",
+          "status": "unknown"
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "沿用原截止记录；内部节点为建议，日期已过不自动标迟交。 原内部建议日期已过，实际完成未证；旧日期保存在 history，不自动改期或判迟交。",
+      "evidence": [
+        {
+          "label": "本人确认 A 主线，B 为分群后的补充",
+          "url": null
+        },
+        {
+          "label": "GitHub 已回读：六岗任务卡及交接协议",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/93ec8b34756f93ff0129520780a1c31a6f831672/docs/team/README.md"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "planned",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "needs_review",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "status": "planned",
+            "target": {
+              "value": "2026-11-07T21:00:00+08:00",
+              "precision": "datetime",
+              "basis": "proposed"
+            },
+            "state_basis": "沿用原截止记录；内部节点为建议，日期已过不自动标迟交。"
+          }
+        }
+      ],
+      "milestone_kind": "internal"
+    },
+    {
+      "id": "date-data-v1",
+      "title": "统一数据、整体 EDA 与比较框架交接（建议）",
+      "status": "done",
+      "owner": "全组；提交代表待确认",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "渠道：组内拟定。既有记录已完成。",
+      "deliverable": "统一数据、整体 EDA 与比较框架交接（建议）",
+      "next_action": "核对本节点交件负责人、前置版本与实际回执。",
+      "my_next_action": null,
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "receipt",
+          "label": "对应交件或活动有可核完成记录",
+          "status": "pass"
+        }
+      ],
+      "target": {
+        "value": "2026-11-08T21:00:00+08:00",
+        "precision": "datetime",
+        "basis": "proposed"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-10",
+      "estimated_minutes": null,
+      "state_basis": "沿用原截止记录；内部节点为建议，日期已过不自动标迟交。",
+      "evidence": [
+        {
+          "label": "已发布的六人协作与交付倒排",
+          "url": null
+        },
+        {
+          "label": "真实组员微信交付核对，覆盖 11 月 8–9 日",
+          "url": null
+        },
+        {
+          "label": "五份群附件哈希、与本地逐键核对和组员指标复算",
+          "url": null
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "done",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        }
+      ],
+      "milestone_kind": "internal"
+    },
+    {
+      "id": "date-model-v1",
+      "title": "初版分类、分群与验证交接（建议）",
+      "status": "done",
+      "owner": "全组；提交代表待确认",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "渠道：组内拟定。既有记录已完成。",
+      "deliverable": "初版分类、分群与验证交接（建议）",
+      "next_action": "核对本节点交件负责人、前置版本与实际回执。",
+      "my_next_action": null,
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "receipt",
+          "label": "对应交件或活动有可核完成记录",
+          "status": "pass"
+        }
+      ],
+      "target": {
+        "value": "2026-11-09T21:00:00+08:00",
+        "precision": "datetime",
+        "basis": "proposed"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-10",
+      "estimated_minutes": null,
+      "state_basis": "沿用原截止记录；内部节点为建议，日期已过不自动标迟交。",
+      "evidence": [
+        {
+          "label": "已发布的六人协作与交付倒排",
+          "url": null
+        },
+        {
+          "label": "真实组员微信交付核对，覆盖 11 月 8–9 日",
+          "url": null
+        },
+        {
+          "label": "五份群附件哈希、与本地逐键核对和组员指标复算",
+          "url": null
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "done",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        }
+      ],
+      "milestone_kind": "internal"
+    },
+    {
+      "id": "date-method-freeze",
+      "title": "历史方法冻结排期的实际记录待核",
+      "status": "needs_review",
+      "owner": "全组；提交代表待确认",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "旧约定为11月12日21:00；真实研究版本、选择依据和已见窗口披露的完整记录仍待核。后续最终13页A稿已由本人确认提交，旧冻结排期不要求重新制作或提交PPT。",
+      "deliverable": "冻结分析方法（建议）",
+      "next_action": "只补核真实研究版本与选择/披露记录，供最终报告使用；当前按已提交最终稿准备展示。",
+      "my_next_action": "核历史研究版本与选择记录；不制作新PPT、不重新提交。",
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "receipt",
+          "label": "对应交件或活动有可核完成记录",
+          "status": "unknown"
+        }
+      ],
+      "target": {
+        "value": "2026-11-12T21:00:00+08:00",
+        "precision": "datetime",
+        "basis": "agreed"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "本人2026-11-11明确同意展示方法采用截止；成员交付承诺另记。 原日期已过，活动或执行结果待核，不据日历认定完成或未完成。",
+      "evidence": [
+        {
+          "label": "已发布的六人协作与交付倒排",
+          "url": null
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "planned",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "observed_on": "2026-11-11",
+          "status": "planned",
+          "note": "本人确认11月12日21:00展示采用截止，最终方法尚待选择。"
+        },
+        {
+          "observed_on": "2026-11-14",
+          "status": "needs_review",
+          "note": "本人澄清未跟组员确认，更正当前已采解释为待A/B投票；旧原话/历史成果保留，无新模型/正式PPT。"
+        },
+        {
+          "observed_on": "2026-11-14",
+          "status": "needs_review",
+          "note": "本人要求统一A整理版/B在A基础上的深入分析版口径；实验/验收/投票状态不变。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "needs_review",
+          "note": "本人确认全组已选B并要求今天制作提交；本轮只交接与核要求，具体配置/成品/提交分别记录。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "needs_review",
+          "note": "已收到B第一稿，当前按本人新回复先组审修改，禁止提交；今日Canvas复核已由制作会话完成。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "needs_review",
+          "note": "记录7图分歧和重投过程；本人最新确认A制作路线。原B及成果保留，A稿/理解准备/提交未完成，不编全员票数。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "needs_review",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "status": "needs_review",
+            "state_basis": "本人2026-11-11明确同意展示方法采用截止；成员交付承诺另记。"
+          }
+        },
+        {
+          "observed_on": "2026-11-20",
+          "status": "needs_review",
+          "note": "R4定向修复，当前展示制作/提交已由后续真实记录覆盖，旧约定及未知科研冻结不删除",
+          "previous": {
+            "title": "冻结分析方法（建议）",
+            "summary": "当前PPT路线A已确认，另一会话制作A稿；具体定稿版本/指标呈现及成员讲述准备另核，不能把B稿当A成品。",
+            "next_action": "读取A接续说明，用已核A资料制作新PPT，供本人/小组过目修改；未获最终版本新授权前不得提交。",
+            "my_next_action": "读取A接续说明，用已核A资料制作新PPT，供本人/小组过目修改；未获最终版本新授权前不得提交。"
+          }
+        }
+      ],
+      "milestone_kind": "internal"
+    },
+    {
+      "id": "date-slides-sections",
+      "title": "各岗交 Slides、讲稿与主要数字（建议）",
+      "status": "done",
+      "owner": "全组；提交代表待确认",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "最终13页成品已由本人提供，并确认已提交；记录实际成品，不推定各成员具体交件时间。",
+      "deliverable": "各岗交 Slides、讲稿与主要数字（建议）",
+      "next_action": "按最终 13 页版本准备 11 月 25 日课堂展示：各成员核对自己页面、数字和转场，再按本人安排进行真人计时与问答准备。已有提交回执可补存以核准确时刻和实际账号；不再催 3 号提交，不修改或重新提交已交附件。",
+      "my_next_action": null,
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "receipt",
+          "label": "最终合稿与 notes 已收到",
+          "status": "pass"
+        }
+      ],
+      "target": {
+        "value": "2026-11-13T21:00:00+08:00",
+        "precision": "datetime",
+        "basis": "proposed"
+      },
+      "started_on": null,
+      "completed_on": "2026-11-15",
+      "observed_on": "2026-11-15",
+      "estimated_minutes": null,
+      "state_basis": "依据最终成品和本人提交确认关闭本轮制作待办；不改写历史建议为实际执行时间。",
+      "evidence": [
+        {
+          "label": "已发布的六人协作与交付倒排",
+          "url": null
+        },
+        {
+          "label": "本人确认提交与展示安排",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/fc5186ecb804149cb5aad177d5c10dfb3b16fb85/slides/submitted-20261115/submission-record.json"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "planned",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "本人提供最终13页PPT并确认已提交；11/18周三课堂展示。独立回执/钟点/账号另核，不退回未提交。"
+        }
+      ],
+      "milestone_kind": "internal"
+    },
+    {
+      "id": "date-slides-merge",
+      "title": "最终 13 页成品归档",
+      "status": "done",
+      "owner": "全组；提交代表待确认",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "最终13页成品已由本人提供，并确认已提交；记录实际成品，不推定各成员具体交件时间。",
+      "deliverable": "合稿、核数（建议）",
+      "next_action": "按最终 13 页版本准备 11 月 25 日课堂展示：各成员核对自己页面、数字和转场，再按本人安排进行真人计时与问答准备。已有提交回执可补存以核准确时刻和实际账号；不再催 3 号提交，不修改或重新提交已交附件。",
+      "my_next_action": null,
+      "depends_on": [
+        "date-slides-sections"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "receipt",
+          "label": "A v2 成品与核验记录可查，本人转述团队认可",
+          "status": "pass"
+        }
+      ],
+      "target": {
+        "value": "2026-11-14T12:00:00+08:00",
+        "precision": "datetime",
+        "basis": "proposed"
+      },
+      "started_on": null,
+      "completed_on": "2026-11-15",
+      "observed_on": "2026-11-15",
+      "estimated_minutes": null,
+      "state_basis": "依据最终成品和本人提交确认关闭本轮制作待办；不改写历史建议为实际执行时间。",
+      "evidence": [
+        {
+          "label": "已发布的六人协作与交付倒排",
+          "url": null
+        },
+        {
+          "label": "本人认可 A v3 与 3 号提交安排",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/b688bda713ad80b55cff8e922b103ff95281768a/slides/a-v3-20261115/decision.json"
+        },
+        {
+          "label": "本人确认提交与展示安排",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/fc5186ecb804149cb5aad177d5c10dfb3b16fb85/slides/submitted-20261115/submission-record.json"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "planned",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "A v2 成品和定向核验已核，团队认可按本人转述记录；排练及提交仍未完成。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "本人认可 A v3 并要求同步；安排 3 号最后修改后提交，代理不代交，尚无回执。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "本人提供最终13页PPT并确认已提交；11/18周三课堂展示。独立回执/钟点/账号另核，不退回未提交。"
+        }
+      ],
+      "milestone_kind": "internal"
+    },
+    {
+      "id": "date-slides-rehearse",
+      "title": "按最终 13 页准备计时与问答（尚未核完成）",
+      "status": "planned",
+      "owner": "全组；6 号统筹",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "11/25课堂更新版已制作：15页（9主讲/6备查），本人仍负责1/2/9页；补十月训练、一月验证、四月冻结测试与三期结果、参数备查，讲者备注/中英讲稿/QA已齐。原13页已交原件与提交状态保持，不重交Canvas。新版通读、真人计时、正式展示与报告完成未由材料更新推定。",
+      "deliverable": "每位成员的实际用时、全程用时、转场问题及按页码整理的修订清单。",
+      "next_action": "使用11/25课堂新版核对本人第1/2/9页并真人计时；1号留意第3页训练/验证/测试，3号留意第5/6页文字与第14/15页备查。准确展示钟点和原Slides独立回执另核，不重新提交附件。",
+      "my_next_action": null,
+      "depends_on": [
+        "date-slides-merge"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "receipt",
+          "label": "对应交件或活动有可核完成记录",
+          "status": "unknown"
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-25",
+      "estimated_minutes": null,
+      "state_basis": "本人转述团队认可后进入讲稿熟悉/排练准备；新排练时间未提供，真人完成状态未知。",
+      "evidence": [
+        {
+          "label": "已发布的六人协作与交付倒排",
+          "url": null
+        },
+        {
+          "label": "11/23 最终13页展示准备与Q&A",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/presentation-prep-20261123/presentation-prep-20261123.md"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "planned",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "planned",
+          "note": "原 11 月 14 日 19:00 为已过建议，未证实执行；本次按已认可 A v2 继续安排，具体时间待定。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "planned",
+          "note": "沿本人暂缓练习安排，当前版本改为 A v3；未记录真人排练完成。"
+        },
+        {
+          "observed_on": "2026-11-23",
+          "status": "planned",
+          "note": "新增最终稿学习与讲稿资料；实际排练/掌握状态不升级，报告正文未开写。",
+          "previous": {
+            "summary": "按最终13页及13页notes准备；旧v3讲稿/17QA只作历史参考，不视为与最终稿逐字一致。真人计时仍未知。",
+            "next_action": "按本人安排进行真人计时及问答准备，重点核最终第5、6页修改和第13页备查。",
+            "my_next_action": null
+          }
+        },
+        {
+          "observed_on": "2026-11-25",
+          "status": "planned",
+          "note": "课堂15页更新稿及测试/参数已制作，不升级排练或展示完成。",
+          "previous": {
+            "summary": "Six Sigma 11 月 25 日展示，最终 13 页 Slides 保留本人已提交状态。11/23 已按最终稿准备整份故事、6号第1/2/9页中英讲法、转场、数字与12项Q&A，已完成独立轻量抽检；本人互动练习和真人计时未核。报告仅梳理要求、材料和建议结构，未写正文或代选路线/模型；准确展示钟点待核。",
+            "next_action": "打开本批展示准备，先用中文讲清项目，再练第1/2/9页并记录真实用时；按实际回答继续Q&A。报告先理解要求，不写正文或代选模型。准确展示钟点及Slides独立回执仍待核。",
+            "my_next_action": null
+          }
+        }
+      ],
+      "milestone_kind": "internal"
+    },
+    {
+      "id": "date-slides-freeze",
+      "title": "最终提交版已收到并锁定原件",
+      "status": "done",
+      "owner": "3 号；本人协调",
+      "owner_role": "member",
+      "scope": "team",
+      "summary": "最终13页成品已由本人提供，并确认已提交；记录实际成品，不推定各成员具体交件时间。",
+      "deliverable": "团队核对并冻结 Slides（建议）",
+      "next_action": "按最终 13 页版本准备 11 月 25 日课堂展示：各成员核对自己页面、数字和转场，再按本人安排进行真人计时与问答准备。已有提交回执可补存以核准确时刻和实际账号；不再催 3 号提交，不修改或重新提交已交附件。",
+      "my_next_action": null,
+      "depends_on": [
+        "date-slides-merge"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "receipt",
+          "label": "本人提供的最终原件已归档",
+          "status": "pass"
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": "2026-11-15",
+      "observed_on": "2026-11-15",
+      "estimated_minutes": null,
+      "state_basis": "依据最终成品和本人提交确认关闭本轮制作待办；不改写历史建议为实际执行时间。",
+      "evidence": [
+        {
+          "label": "已发布的六人协作与交付倒排",
+          "url": null
+        },
+        {
+          "label": "本人确认提交与展示安排",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/fc5186ecb804149cb5aad177d5c10dfb3b16fb85/slides/submitted-20261115/submission-record.json"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "planned",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "planned",
+          "note": "本人认可 A v3 后交 3 号最后修改并提交；旧 13:00 建议及先排练依赖由当前明确安排替代。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "本人提供最终13页PPT并确认已提交；11/18周三课堂展示。独立回执/钟点/账号另核，不退回未提交。"
+        }
+      ],
+      "milestone_kind": "internal"
+    },
+    {
+      "id": "date-slides-target",
+      "title": "补存已提交 Slides 的独立回执（不重交）",
+      "status": "waiting",
+      "owner": "本人或实际提交人提供记录",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "本人已确认提交；独立回执未提供，不再催交或重新提交。",
+      "deliverable": "成功页面、准确提交时刻、实际账号与附件名的独立核验记录。",
+      "next_action": "已有回执时另行补存并核对；保持 Slides 已提交状态。",
+      "my_next_action": "如有提交成功页面或记录，补存以便独立核验。",
+      "depends_on": [
+        "date-slides"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "receipt",
+          "label": "对应交件或活动有可核完成记录",
+          "status": "unknown"
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "证据补存独立待办，不是提交阻塞，也不影响已提交事实。",
+      "evidence": [
+        {
+          "label": "已发布的六人协作与交付倒排",
+          "url": null
+        },
+        {
+          "label": "本人确认提交与展示安排",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/fc5186ecb804149cb5aad177d5c10dfb3b16fb85/slides/submitted-20261115/submission-record.json"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "planned",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "planned",
+          "note": "本人提供最终13页PPT并确认已提交；11/18周三课堂展示。独立回执/钟点/账号另核，不退回未提交。"
+        }
+      ],
+      "milestone_kind": "internal"
+    },
+    {
+      "id": "date-report-sections",
+      "title": "交完整报告段落与复跑入口（建议）",
+      "status": "planned",
+      "owner": "全组；提交代表待确认",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "渠道：组内拟定。这是交付节点；实际制作、审批和提交状态须分别核验。",
+      "deliverable": "交完整报告段落与复跑入口（建议）",
+      "next_action": "核对本节点交件负责人、前置版本与实际回执。",
+      "my_next_action": null,
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "receipt",
+          "label": "对应交件或活动有可核完成记录",
+          "status": "unknown"
+        }
+      ],
+      "target": {
+        "value": "2026-11-28T21:00:00+08:00",
+        "precision": "datetime",
+        "basis": "proposed"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-26",
+      "estimated_minutes": null,
+      "state_basis": "沿用原截止记录；内部节点为建议，日期已过不自动标迟交。",
+      "evidence": [
+        {
+          "label": "已发布的六人协作与交付倒排",
+          "url": null
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "planned",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "observed_on": "2026-11-26",
+          "status": "planned",
+          "note": "本人确认正文未开始；原内部日期仍为建议，按审计与实际认领接续。"
+        }
+      ],
+      "milestone_kind": "internal"
+    },
+    {
+      "id": "date-report-review",
+      "title": "报告合稿、复跑与核数（建议）",
+      "status": "planned",
+      "owner": "全组；提交代表待确认",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "渠道：组内拟定。这是交付节点；实际制作、审批和提交状态须分别核验。",
+      "deliverable": "报告合稿、复跑与核数（建议）",
+      "next_action": "核对本节点交件负责人、前置版本与实际回执。",
+      "my_next_action": null,
+      "depends_on": [
+        "date-report-sections"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "receipt",
+          "label": "对应交件或活动有可核完成记录",
+          "status": "unknown"
+        }
+      ],
+      "target": {
+        "value": "2026-12-02T21:00:00+08:00",
+        "precision": "datetime",
+        "basis": "proposed"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-26",
+      "estimated_minutes": null,
+      "state_basis": "沿用原截止记录；内部节点为建议，日期已过不自动标迟交。",
+      "evidence": [
+        {
+          "label": "已发布的六人协作与交付倒排",
+          "url": null
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "planned",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "observed_on": "2026-11-26",
+          "status": "planned",
+          "note": "本人确认正文未开始；原内部日期仍为建议，按审计与实际认领接续。"
+        }
+      ],
+      "milestone_kind": "internal"
+    },
+    {
+      "id": "date-report-freeze",
+      "title": "团队核准报告定稿（建议）",
+      "status": "planned",
+      "owner": "全组；提交代表待确认",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "渠道：组内拟定。这是交付节点；实际制作、审批和提交状态须分别核验。",
+      "deliverable": "团队核准报告定稿（建议）",
+      "next_action": "核对本节点交件负责人、前置版本与实际回执。",
+      "my_next_action": null,
+      "depends_on": [
+        "date-report-review"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "receipt",
+          "label": "对应交件或活动有可核完成记录",
+          "status": "unknown"
+        }
+      ],
+      "target": {
+        "value": "2026-12-04T18:00:00+08:00",
+        "precision": "datetime",
+        "basis": "proposed"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-26",
+      "estimated_minutes": null,
+      "state_basis": "沿用原截止记录；内部节点为建议，日期已过不自动标迟交。",
+      "evidence": [
+        {
+          "label": "已发布的六人协作与交付倒排",
+          "url": null
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "planned",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "observed_on": "2026-11-26",
+          "status": "planned",
+          "note": "本人确认正文未开始；原内部日期仍为建议，按审计与实际认领接续。"
+        }
+      ],
+      "milestone_kind": "internal"
+    },
+    {
+      "id": "date-report-target",
+      "title": "经确认的代表提交报告（建议）",
+      "status": "planned",
+      "owner": "全组；提交代表待确认",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "渠道：组内拟定。这是交付节点；实际制作、审批和提交状态须分别核验。",
+      "deliverable": "经确认的代表提交报告（建议）",
+      "next_action": "核对本节点交件负责人、前置版本与实际回执。",
+      "my_next_action": null,
+      "depends_on": [
+        "date-report-freeze"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "receipt",
+          "label": "对应交件或活动有可核完成记录",
+          "status": "unknown"
+        }
+      ],
+      "target": {
+        "value": "2026-12-05T18:00:00+08:00",
+        "precision": "datetime",
+        "basis": "proposed"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-26",
+      "estimated_minutes": null,
+      "state_basis": "沿用原截止记录；内部节点为建议，日期已过不自动标迟交。",
+      "evidence": [
+        {
+          "label": "已发布的六人协作与交付倒排",
+          "url": null
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "planned",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        },
+        {
+          "observed_on": "2026-11-26",
+          "status": "planned",
+          "note": "本人确认正文未开始；原内部日期仍为建议，按审计与实际认领接续。"
+        }
+      ],
+      "milestone_kind": "internal"
+    },
+    {
+      "id": "history-briefing",
+      "title": "Project Briefing",
+      "status": "done",
+      "owner": "全组",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "依据本人在进度会话中的确认。",
+      "deliverable": "Project Briefing",
+      "next_action": "保留已有依据，新增工作另列任务。",
+      "my_next_action": null,
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "evidence",
+          "label": "已有完成依据",
+          "status": "pass"
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-10",
+      "estimated_minutes": null,
+      "state_basis": "沿用已有核验；未凭文件存在推定正式提交。",
+      "evidence": [
+        {
+          "label": "梳理 IS6400 小组作业进度",
+          "url": null
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "done",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        }
+      ]
+    },
+    {
+      "id": "history-team-plan",
+      "title": "六人职责与交接方案",
+      "status": "done",
+      "owner": "全组",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "六岗已认领；协作指南已发布，本人已分发任务。11 月 8–9 日各岗首轮附件已在群里交接。 GitHub 已同步首轮交接与当前待办。",
+      "deliverable": "六人职责与交接方案",
+      "next_action": "保留已有依据，新增工作另列任务。",
+      "my_next_action": null,
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "evidence",
+          "label": "已有完成依据",
+          "status": "pass"
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-10",
+      "estimated_minutes": null,
+      "state_basis": "沿用已有核验；未凭文件存在推定正式提交。",
+      "evidence": [
+        {
+          "label": "本人于总监督会话确认六岗已认领，等待本人（6 号）给方向",
+          "url": null
+        },
+        {
+          "label": "已发布的六人协作与交付倒排",
+          "url": null
+        },
+        {
+          "label": "GitHub 已回读：六岗任务卡及交接协议",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/93ec8b34756f93ff0129520780a1c31a6f831672/docs/team/README.md"
+        },
+        {
+          "label": "本人确认已向真实组员发出任务",
+          "url": null
+        },
+        {
+          "label": "真实组员微信交付核对，覆盖 11 月 8–9 日",
+          "url": null
+        },
+        {
+          "label": "已回读 GitHub 当前进度与首轮公开汇总",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/f37413386e54873e5a09ac9fe06b4682818b1d8e/docs/team/current-status.md"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-10",
+          "status": "done",
+          "note": "首次纳入统一时间线；该日为核实日期，不代替实际完成日。"
+        }
+      ]
+    },
+    {
+      "id": "my-liu-invite-20261115",
+      "title": "周日邮件联系 Liu Junming，约周一小组讨论",
+      "status": "needs_review",
+      "owner": "本人 · 6 号统筹",
+      "owner_role": "me",
+      "scope": "team",
+      "summary": "本周日（11 月 15 日）发邮件给 Liu Junming，邀约周一（11 月 16 日）的小组讨论会；具体会面时间尚未确定。",
+      "deliverable": "周日邮件联系 Liu Junming，约周一小组讨论的发送记录",
+      "next_action": "核11月15–16日原邮件／会面是否已实际发生及其结果；不按过期计划补发 reminder。",
+      "my_next_action": "核原联系与会面结果；没有实际记录则继续未知。",
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "sent",
+          "label": "已发出小组讨论邀约，并保留发送记录",
+          "status": "unknown"
+        }
+      ],
+      "target": {
+        "value": "2026-11-15",
+        "precision": "date",
+        "basis": "agreed"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "本人明确要求记录看板待办；尚未发出邀约，周一具体会面时刻未定，仅记录相对提前 20 分钟要求，不设置定时通知。 原日期已过，活动或执行结果待核，不据日历认定完成或未完成。",
+      "evidence": [
+        {
+          "label": "本人于 2026-11-11 在总监督会话安排：只记看板，周一会面时间未定。",
+          "url": null
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-11",
+          "status": "planned",
+          "note": "根据本人指示新增；会面日期为拟约周一，教师回复和具体时刻待确认。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "needs_review",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "status": "planned",
+            "state_basis": "本人明确要求记录看板待办；尚未发出邀约，周一具体会面时刻未定，仅记录相对提前 20 分钟要求，不设置定时通知。"
+          }
+        },
+        {
+          "on": "2026-11-20",
+          "status": "needs_review",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "status": "needs_review",
+            "next_action": "11 月 15 日发送邀约邮件，询问并确认 11 月 16 日的可用会面时段；收到回复后更新具体时间。",
+            "my_next_action": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "my-liu-reminder-20261116",
+      "title": "周一见面前 20 分钟给 Liu Junming 发 reminder（时刻待定）",
+      "status": "needs_review",
+      "owner": "本人 · 6 号统筹",
+      "owner_role": "me",
+      "scope": "team",
+      "summary": "拟于周一（11 月 16 日）去找 Liu Junming。见面前需提前 20 分钟发 reminder；具体会面时刻待教师确认，目前没有可计算的精确发送时间。",
+      "deliverable": "周一见面前 20 分钟给 Liu Junming 发 reminder（时刻待定）的发送记录",
+      "next_action": "核11月15–16日原邮件／会面是否已实际发生及其结果；不按过期计划补发 reminder。",
+      "my_next_action": "核原联系与会面结果；没有实际记录则继续未知。",
+      "depends_on": [
+        "my-liu-invite-20261115"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "meeting-time",
+          "label": "已确认周一会面的具体时刻",
+          "status": "unknown"
+        },
+        {
+          "id": "sent",
+          "label": "已在会面前 20 分钟发送 reminder，并保留记录",
+          "status": "unknown"
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "本人明确要求记录看板待办；尚未发出邀约，周一具体会面时刻未定，仅记录相对提前 20 分钟要求，不设置定时通知。 原内部建议日期已过，实际完成未证；旧日期保存在 history，不自动改期或判迟交。",
+      "evidence": [
+        {
+          "label": "本人于 2026-11-11 在总监督会话安排：只记看板，周一会面时间未定。",
+          "url": null
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-11",
+          "status": "waiting",
+          "note": "根据本人指示新增；会面日期为拟约周一，教师回复和具体时刻待确认。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "needs_review",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "status": "waiting",
+            "target": {
+              "value": "2026-11-16",
+              "precision": "date",
+              "basis": "proposed"
+            },
+            "state_basis": "本人明确要求记录看板待办；尚未发出邀约，周一具体会面时刻未定，仅记录相对提前 20 分钟要求，不设置定时通知。"
+          }
+        },
+        {
+          "on": "2026-11-20",
+          "status": "needs_review",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "status": "needs_review",
+            "next_action": "收到并确认周一会面时刻后，计算“会面开始时间 − 20 分钟”，在该时刻向 Liu Junming 发送 reminder。",
+            "my_next_action": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "local-round3-research",
+      "title": "本地第三轮四线与可视化素材",
+      "status": "done",
+      "owner": "本人 · 6号",
+      "owner_role": "me",
+      "scope": "supporting",
+      "summary": "六基线、新字段、时间审计、群画像及13幅PNG/SVG研究图已核。",
+      "deliverable": "六基线、新字段、时间审计、群画像及13幅PNG/SVG研究图已核。",
+      "next_action": "保留已核的阶段成果和原始证据；当前行动在未完成条目另列。",
+      "my_next_action": null,
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "result",
+          "label": "六基线、新字段、时间审计、群画像及13幅PNG/SVG研究图已核。",
+          "status": "pass",
+          "evidence": []
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-11",
+      "completed_on": "2026-11-11",
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "本地影子结果与成员实际交件分开；实际发群状态待本人确认。",
+      "evidence": [
+        {
+          "label": "第三轮研究与任务包",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/tree/main/docs/team/round-3"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-11",
+          "status": "done",
+          "note": "六基线、新字段、时间审计、群画像及13幅PNG/SVG研究图已核。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "my_next_action": "与成员新回件对照并决定展示采用内容。",
+            "next_action": "与成员新回件对照并决定展示采用内容。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "my-round3-dispatch",
+      "title": "分发第三轮独立策略任务包",
+      "status": "done",
+      "owner": "本人 · 6号",
+      "owner_role": "me",
+      "scope": "team",
+      "summary": "本人已于本课程会话确认第三轮任务已发群。",
+      "deliverable": "第三轮1–5号任务实际发群确认。",
+      "next_action": "保留已核的阶段成果和原始证据；当前行动在未完成条目另列。",
+      "my_next_action": null,
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "result",
+          "label": "准备好的1-5号MD任务包待本人实际分发。",
+          "status": "pass",
+          "evidence": []
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-11",
+      "completed_on": "2026-11-11",
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "本人2026-11-11直接确认发群；不推定成员已接单或已交付。",
+      "evidence": [
+        {
+          "label": "第三轮研究与任务包",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/tree/main/docs/team/round-3"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-11",
+          "status": "planned",
+          "note": "准备好的1-5号MD任务包待本人实际分发。"
+        },
+        {
+          "observed_on": "2026-11-11",
+          "status": "done",
+          "note": "用户明确说已发群，派发完成。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "my_next_action": "收第三轮回件与预计时间。",
+            "next_action": "收成员接单与预计交付时间，按同口径核新回件。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "local-round3-extension",
+      "title": "本地后续11候选与5幅新图",
+      "status": "done",
+      "owner": "本地辅助；本人核取舍",
+      "owner_role": "me",
+      "scope": "supporting",
+      "summary": "11候选、完整对照及5幅PNG/SVG已核，共18幅素材。",
+      "deliverable": "11候选、完整对照及5幅PNG/SVG已核，共18幅素材。",
+      "next_action": "保留已核的阶段成果和原始证据；当前行动在未完成条目另列。",
+      "my_next_action": null,
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "result",
+          "label": "11候选、完整对照及5幅PNG/SVG已核，共18幅素材。",
+          "status": "pass",
+          "evidence": []
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-11",
+      "completed_on": "2026-11-11",
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "本地辅助与组员实际回传分开，最终模型采用未代本人决定。",
+      "evidence": [
+        {
+          "label": "本地后续结果与可视化",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/team/round-3-extension.md"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-11",
+          "status": "done",
+          "note": "11候选、完整对照及5幅PNG/SVG已核，共18幅素材。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "my_next_action": "与成员回件并列比较并确定展示采用。",
+            "next_action": "与成员回件并列比较并确定展示采用。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "round3-member-returns",
+      "title": "收第三轮组员策略与结果",
+      "status": "needs_review",
+      "owner": "1–5号；本人统筹",
+      "owner_role": "team",
+      "scope": "team",
+      "summary": "1–5号R3均已实收核验，2号v1.1的20CI修订通过；3/5号原说明问题仍分列。当前展示已经采用最终13页A稿并由本人确认已提交，不重开原路线投票。",
+      "deliverable": "已发群后的成员接单/承诺与实际回件待收。",
+      "next_action": "保留原证据及3/5号说明等真实余项；按最终提交稿准备展示和报告，不重训、不重新投票。",
+      "my_next_action": null,
+      "depends_on": [
+        "my-round3-dispatch"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "result",
+          "label": "仍缺的3/5号说明修订及实际确认已核；1–5号已收件另有历史依据",
+          "status": "unknown",
+          "evidence": []
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": null,
+      "completed_on": null,
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "本地辅助与组员实际回传分开，最终模型采用未代本人决定。",
+      "evidence": [
+        {
+          "label": "本地后续结果与可视化",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/team/round-3-extension.md"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-11",
+          "status": "waiting",
+          "note": "已发群后的成员接单/承诺与实际回件待收。"
+        },
+        {
+          "observed_on": "2026-11-12",
+          "status": "in_progress",
+          "note": "本人上传四包/两CSV及六截图；技术验收与5号回签/本人采用分开。"
+        },
+        {
+          "observed_on": "2026-11-13",
+          "status": "needs_review",
+          "note": "5号原包真实收到并有界复核，不再写未回签，也不无条件关闭全部材料问题。"
+        },
+        {
+          "observed_on": "2026-11-13",
+          "status": "needs_review",
+          "note": "2号v1.1成员补件已闭20CI项，不连带关闭实际模型组合/3号/5号其他缺口，不改期。"
+        },
+        {
+          "observed_on": "2026-11-14",
+          "status": "needs_review",
+          "note": "本人澄清未跟组员确认，更正当前已采解释为待A/B投票；旧原话/历史成果保留，无新模型/正式PPT。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "needs_review",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "summary": "1–5号R3均已实收核验，2号v1.1的20CI修订通过，3/5原记录问题分列；团队最终路线待投票，不由交件或研究完成代替。",
+            "next_action": "6号发A/B比较并汇总真实投票，列明配置/指标和分工共同确认，之后正式PPT；不追加模型或四月评分。",
+            "my_next_action": "6号发A/B比较并汇总真实投票，列明配置/指标和分工共同确认，之后正式PPT；不追加模型或四月评分。"
+          }
+        },
+        {
+          "observed_on": "2026-11-20",
+          "status": "needs_review",
+          "note": "S1：验收标签精确为剩余记录修订，不再泛称所有成员未交件",
+          "previous": {
+            "acceptance": [
+              {
+                "id": "result",
+                "label": "仍缺的3/5号说明修订及实际确认已核；1–5号已收件另有历史依据",
+                "status": "unknown",
+                "evidence": []
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "research-questions-and-design",
+      "title": "建模质疑与逐步受控验证",
+      "status": "done",
+      "owner": "本人 · 6号与本课程会话",
+      "owner_role": "me",
+      "scope": "supporting",
+      "summary": "原18+2问题固定研究与最终滚动/价值清单已完成；此前in_progress标记现按已核final-research-closeout收束。",
+      "deliverable": "逐问题假设、配置、全部结果、局限与可编辑可视化，保留负结果和纠正历史。",
+      "next_action": "保留已核的阶段成果和原始证据；当前行动在未完成条目另列。",
+      "my_next_action": null,
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "register",
+          "label": "18条问题及已有证据/拟验证已记录",
+          "status": "pass",
+          "evidence": []
+        },
+        {
+          "id": "start",
+          "label": "本人已明确启动后续实验",
+          "status": "pass",
+          "evidence": []
+        },
+        {
+          "id": "foundation",
+          "label": "P1–P3基础结果与回源/模型核验完成",
+          "status": "pass",
+          "evidence": []
+        },
+        {
+          "id": "modules",
+          "label": "P4固定矩阵及跨模块数值差异已核",
+          "status": "pass",
+          "evidence": []
+        },
+        {
+          "id": "ablation",
+          "label": "冻结AE研究对象后的预算/信息块消融完成（正式团队采用另列）",
+          "status": "pass",
+          "evidence": [
+            "supervision-report"
+          ]
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-11",
+      "completed_on": "2026-11-12",
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "D10为本人明确开测授权；所有研究完成仅限已核矩阵，不宣称穷尽或独立盲测。",
+      "evidence": [
+        {
+          "label": "研究质疑台账",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/team/research-questions.md"
+        },
+        {
+          "label": "本地逐步验证结果与下一步",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/team/validation-execution.md"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-11",
+          "status": "needs_review",
+          "note": "用户要求先记录解释，开测待本人明确指令。"
+        },
+        {
+          "observed_on": "2026-11-11",
+          "status": "in_progress",
+          "note": "用户明确开始逐步验证，原新增实验0只属设计阶段历史。P1–P4首批实际结果已核。"
+        },
+        {
+          "observed_on": "2026-11-12",
+          "status": "in_progress",
+          "note": "新增155格统一比较、17图和条件区间；AE列研究线索，未确认正式模型，系统消融仍后置。"
+        },
+        {
+          "observed_on": "2026-11-12",
+          "status": "in_progress",
+          "note": "新增AE研究对象135消融+13时间诊断；一月线索未在更早窗口延续，正式采用仍待真实记录。"
+        },
+        {
+          "observed_on": "2026-11-12",
+          "status": "in_progress",
+          "note": "最后固定清单已收尾，新增3滚动期/价值层与20Q；不存在本批待跑模型，正式团队采用另记。"
+        },
+        {
+          "observed_on": "2026-11-12",
+          "status": "done",
+          "note": "按此前最终科研实际完成证据校正辅助节点旧进行中状态，不计入团队主完成度。 旧ablation验收项以此前已核AE对象消融证据收束，限定为本地研究，不表示团队采用。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "my_next_action": "据已完成研究和真实成员版本决定采用，不继续追加模型。",
+            "next_action": "保留完整证据；本批成员验收不重开研究。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "common-candidate-comparison",
+      "title": "本地四候选同口径比较（辅助）",
+      "status": "done",
+      "owner": "本课程会话本地研究；本人核采用",
+      "owner_role": "me",
+      "scope": "supporting",
+      "summary": "本地155模型统一比较已核：同字段/模型、五重叠fit-cal划分、三seed。AE概率融合为优先研究线索（参考51/久单4 vs基线43/2，五split全体4胜1平/久单5胜），名单差条件区间仍含0；CatBoost概率质量较好。未确认新正式模型，系统消融后置，四月无新评分。新17图累计57，成员回件/采用仍按实际。 最终滚动/价值验证已收尾，详见辅助最终研究节点。",
+      "deliverable": "155模型共享矩阵与完整对照、稳定性/条件区间、17图与独立读回。",
+      "next_action": "保留已核的阶段成果和原始证据；当前行动在未完成条目另列。",
+      "my_next_action": null,
+      "depends_on": [
+        "research-questions-and-design"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "comparison",
+          "label": "同矩阵/字段×模型155格与实际优化诊断齐",
+          "status": "pass",
+          "evidence": []
+        },
+        {
+          "id": "readback",
+          "label": "模型重放、统计及最终说明独立核验通过",
+          "status": "pass",
+          "evidence": []
+        },
+        {
+          "id": "visual",
+          "label": "17新PNG/SVG及数据源码实际检查",
+          "status": "pass",
+          "evidence": []
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-12",
+      "completed_on": "2026-11-12",
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "仅本地辅助比较范围完成，不代表团队采用、系统消融或正式提交。",
+      "evidence": [
+        {
+          "label": "统一比较结果与研究候选",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/team/common-candidate-comparison.md"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-12",
+          "status": "done",
+          "note": "用户明确同口径继续，完整比较及复核完成；quota恢复后接续不重训。"
+        },
+        {
+          "observed_on": "2026-11-12",
+          "status": "done",
+          "note": "最后固定清单已收尾，新增3滚动期/价值层与20Q；不存在本批待跑模型，正式团队采用另记。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "my_next_action": "阅读目标取舍及真实团队版本，完成合稿。",
+            "next_action": "保留完整结果，转真实成员回件验收和合稿；无本冻结清单计算欠账。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ae-research-validation",
+      "title": "AE研究对象消融与较早时间诊断（辅助）",
+      "status": "done",
+      "owner": "本课程会话本地研究；本人核采用",
+      "owner_role": "me",
+      "scope": "supporting",
+      "summary": "AE研究对象后续验证完成：135新预算/六块消融+13个七月→十月诊断模型，旧65复用，新增9图累计66。AE较早窗口31/久单1低于WLR36/2；一月去行为58/4条件区间仍含0，不支持稳定升级或直接删RFM。科研对象消融已做，正式团队模型未自动采用；四月无新评分，真实交件/冻结与提交按事实。",
+      "deliverable": "135预算/块消融+13时间模型、审批语义审计、完整CI及9图。",
+      "next_action": "保留已核的阶段成果和原始证据；当前行动在未完成条目另列。",
+      "my_next_action": null,
+      "depends_on": [
+        "common-candidate-comparison"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "ablation",
+          "label": "固定AE对象的预算/六块条件消融及完整统计完成",
+          "status": "pass",
+          "evidence": []
+        },
+        {
+          "id": "time",
+          "label": "Jul→Oct已见时间诊断与批准时点guard核验完成",
+          "status": "pass",
+          "evidence": []
+        },
+        {
+          "id": "review",
+          "label": "模型/指标读回、9图与主说明有界独审完成",
+          "status": "pass",
+          "evidence": []
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-12",
+      "completed_on": "2026-11-12",
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "只计本地研究范围，不计真实成员主任务/正式采用/提交。",
+      "evidence": [
+        {
+          "label": "AE后续验证结果与限制",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/team/ae-validation-results.md"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-12",
+          "status": "done",
+          "note": "用户继续验证，固定研究对象后完成148正式新拟合及来源/统计/可视化核验，不表示稳定升级获证。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "my_next_action": "按真实团队成果确认展示采用版本并收H07。",
+            "next_action": "不自动换团队模型；后续先多时点训练/滚动验证与目标定义。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "final-research-closeout",
+      "title": "全体概率、价值与二十项研究结案（本地辅助）",
+      "status": "done",
+      "owner": "本课程会话本地研究；本人决定业务采用",
+      "owner_role": "me",
+      "scope": "supporting",
+      "summary": "本地固定研究范围已完成，结果与计算保留。展示现已使用最终13页A稿并提交；辅助B研究保留历史，报告是否采用其具体内容仍未逐项重定。",
+      "deliverable": "3期单/多期概率，6金额模型/18私表，容量与20Q，6图及独审。",
+      "next_action": "保留原证据及3/5号说明等真实余项；按最终提交稿准备展示和报告，不重训、不重新投票。",
+      "my_next_action": null,
+      "depends_on": [
+        "research-questions-and-design"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "computation",
+          "label": "固定滚动/概率/价值/容量清单实际执行完成",
+          "status": "pass",
+          "evidence": []
+        },
+        {
+          "id": "review",
+          "label": "保存回算及最终说明有界独审通过",
+          "status": "pass",
+          "evidence": []
+        },
+        {
+          "id": "visual",
+          "label": "6新图及源码、完整对照实际查看",
+          "status": "pass",
+          "evidence": []
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-12",
+      "completed_on": "2026-11-12",
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "本地辅助研究收尾，不代表团队新回件、正式采用、冻结或提交完成。",
+      "evidence": [
+        {
+          "label": "最终研究与价值名单说明",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/team/final-research-closeout.md"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-12",
+          "status": "done",
+          "note": "最后一次固定清单完成，原目标价值层补齐，无新四月评分。"
+        },
+        {
+          "observed_on": "2026-11-14",
+          "status": "done",
+          "note": "本人澄清未跟组员确认，更正当前已采解释为待A/B投票；旧原话/历史成果保留，无新模型/正式PPT。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "my_next_action": "6号发A/B比较并汇总真实投票，列明配置/指标和分工共同确认，之后正式PPT；不追加模型或四月评分。",
+            "next_action": "6号发A/B比较并汇总真实投票，列明配置/指标和分工共同确认，之后正式PPT；不追加模型或四月评分。"
+          }
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "summary": "本地固定研究范围已完成，事实和计算不回退；团队是否用它为报告/展示主线待A/B投票，尚未自动采用。",
+            "next_action": "保留已核的阶段成果和原始证据；当前行动在未完成条目另列。",
+            "my_next_action": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "round3-team-intake-audit",
+      "title": "真实第三轮1–5号交件技术验收（辅助）",
+      "status": "done",
+      "owner": "本课程会话核技术；成员确认/本人采用另列",
+      "owner_role": "me",
+      "scope": "supporting",
+      "summary": "真实第三轮1–5号交件的所述技术核验已完成，3/5原记录问题分列；当前展示已沿最终13页A稿提交，不将旧待投票状态当当前要求。",
+      "deliverable": "四包原件哈希、聚合/原始回算、当前三卡、13图与独审。",
+      "next_action": "保留原证据及3/5号说明等真实余项；按最终提交稿准备展示和报告，不重训、不重新投票。",
+      "my_next_action": null,
+      "depends_on": [
+        "round3-member-returns"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "numeric",
+          "label": "真实逐人预测/群/字段与品类聚合关键数值有界回算",
+          "status": "pass",
+          "evidence": []
+        },
+        {
+          "id": "review",
+          "label": "未参写代理独审并定向关闭说明问题",
+          "status": "pass",
+          "evidence": []
+        },
+        {
+          "id": "visual",
+          "label": "13当前PNG/SVG实际查看，排除旧名单卡/旧CI图",
+          "status": "pass",
+          "evidence": []
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-12",
+      "completed_on": "2026-11-13",
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "完成课程技术验收范围；不替代5号回签、2/3号原包修订、6号正式采用或提交。",
+      "evidence": [
+        {
+          "label": "第三轮真实交件验收",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/team/round3-team-intake.md"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-12",
+          "status": "done",
+          "note": "四包原件保留，2次旧配置复跑无新候选/四月评分，13图共85。"
+        },
+        {
+          "observed_on": "2026-11-13",
+          "status": "done",
+          "note": "承接原四岗12日证据，13日扩展5号有界核验；不重跑旧研究，不等于原包全通过。"
+        },
+        {
+          "observed_on": "2026-11-13",
+          "status": "done",
+          "note": "2号v1.1成员补件已闭20CI项，不连带关闭实际模型组合/3号/5号其他缺口，不改期。"
+        },
+        {
+          "observed_on": "2026-11-14",
+          "status": "done",
+          "note": "本人澄清未跟组员确认，更正当前已采解释为待A/B投票；旧原话/历史成果保留，无新模型/正式PPT。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "my_next_action": "6号发A/B比较并汇总真实投票，列明配置/指标和分工共同确认，之后正式PPT；不追加模型或四月评分。",
+            "next_action": "6号发A/B比较并汇总真实投票，列明配置/指标和分工共同确认，之后正式PPT；不追加模型或四月评分。"
+          }
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "summary": "1–5号R3均已实收核验，2号v1.1的20CI修订通过，3/5原记录问题分列；团队最终路线待投票，不由交件或研究完成代替。",
+            "next_action": "保留已核的阶段成果和原始证据；当前行动在未完成条目另列。",
+            "my_next_action": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "report-local-mainline-adopted",
+      "title": "当前PPT路线已重新确认A（此前B选择保留历史）",
+      "status": "done",
+      "owner": "本人（6号）转报全组投票结果",
+      "owner_role": "me",
+      "scope": "team",
+      "summary": "组内反馈和重投后已确认改回A；其后最终13页A稿已由本人提供并确认提交。B研究原文和报告未决范围继续保留。",
+      "deliverable": "记录路线采用原话、来源与未决定范围，更新报告材料入口。",
+      "next_action": "保留原证据及3/5号说明等真实余项；按最终提交稿准备展示和报告，不重训、不重新投票。",
+      "my_next_action": null,
+      "depends_on": [
+        "final-research-closeout"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "confirmed",
+          "label": "当前PPT采用A有本人最新确认记录",
+          "status": "pass",
+          "evidence": [
+            "route-A-adoption"
+          ]
+        },
+        {
+          "id": "bounded",
+          "label": "未决定的具体模型/指标等与路线采用分开记录",
+          "status": "pass",
+          "evidence": [
+            "team-B-adoption"
+          ]
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-13",
+      "completed_on": "2026-11-15",
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "最新本人直接确认A执行路线，旧B选择在history和原证据中保留；只路线选择完成，不代表A稿或最终提交完成。",
+      "evidence": [
+        {
+          "label": "本地主线采用说明",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/team/report-mainline-decision.md"
+        },
+        {
+          "label": "本人确认B及制作交接",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/team/ppt-handoff-20261115.md"
+        },
+        {
+          "label": "最新A路线与分歧记录",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/team/discussion-and-A-decision-20261115.md"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-13",
+          "status": "done",
+          "note": "用户本轮明确采用本地线，其余问题明确稍后回答。"
+        },
+        {
+          "observed_on": "2026-11-14",
+          "status": "needs_review",
+          "note": "本人澄清未跟组员确认，更正当前已采解释为待A/B投票；旧原话/历史成果保留，无新模型/正式PPT。"
+        },
+        {
+          "observed_on": "2026-11-14",
+          "status": "needs_review",
+          "note": "本人要求统一A整理版/B在A基础上的深入分析版口径；实验/验收/投票状态不变。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "本人确认全组已选B并要求今天制作提交；本轮只交接与核要求，具体配置/成品/提交分别记录。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "记录7图分歧和重投过程；本人最新确认A制作路线。原B及成果保留，A稿/理解准备/提交未完成，不编全员票数。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "my_next_action": "用A接续说明开启制作，不再默认B。",
+            "next_action": "本人另开A制作会话，按已核A资料整理新稿，审阅与具体最终授权另核。"
+          }
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "summary": "组内反馈和重投后，本人以末图和本轮直接说明确认当前PPT走A；不据此编全员票数或删除B研究，报告取舍未逐项重定。",
+            "next_action": "保留已核的阶段成果和原始证据；当前行动在未完成条目另列。",
+            "my_next_action": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "route-vote-comparison",
+      "title": "A整理版/B在A基础上的深入分析版对照材料（辅助）",
+      "status": "done",
+      "owner": "本课程会话整理核验；6号发群，成员投票另列",
+      "owner_role": "me",
+      "scope": "supporting",
+      "summary": "A/B对照材料和当时选择B的记录保留；后续反馈后改回A，当前最终13页A稿已提交。此条不再要求投票或重新制作PPT。",
+      "deliverable": "完整比较、8旧3新图片读法、具体配置清单、8分钟页序、群稿及独审。",
+      "next_action": "保留原证据及3/5号说明等真实余项；按最终提交稿准备展示和报告，不重训、不重新投票。",
+      "my_next_action": null,
+      "depends_on": [
+        "final-research-closeout",
+        "round3-team-intake-audit"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "source",
+          "label": "现成聚合和当前指南有界核验",
+          "status": "pass",
+          "evidence": [
+            "route-comparison",
+            "canvas-requirements-live"
+          ]
+        },
+        {
+          "id": "review",
+          "label": "完整六份候选独审与读图修正定向封核",
+          "status": "pass",
+          "evidence": [
+            "route-independent-review"
+          ]
+        },
+        {
+          "id": "bounded",
+          "label": "更正D14待投票，未代采用/制作PPT/提交",
+          "status": "pass",
+          "evidence": [
+            "route-decision-correction"
+          ]
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-14",
+      "completed_on": "2026-11-14",
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "只完成本批辅助比较交付，不计入团队主任务/投票/报告完成度。",
+      "evidence": [
+        {
+          "label": "A/B全面对比与投票入口",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/team/route-vote-comparison.md"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-14",
+          "status": "done",
+          "note": "本人要求全面比较后再投票，六份候选及图文来源验收完成；集体路线仍待。"
+        },
+        {
+          "observed_on": "2026-11-14",
+          "status": "done",
+          "note": "本人要求统一A整理版/B在A基础上的深入分析版口径；实验/验收/投票状态不变。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "本人确认全组已选B并要求今天制作提交；本轮只交接与核要求，具体配置/成品/提交分别记录。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "my_next_action": "新会话按B已有方案制作完整PPT与讲稿，核要求/数字/全部页面，交本人审阅并按截止提交。",
+            "next_action": "新会话按B已有方案制作完整PPT与讲稿，核要求/数字/全部页面，交本人审阅并按截止提交。"
+          }
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "summary": "A/B材料准备已完成；团队11月15日已选B，当前转PPT交接，旧待投票描述保留历史。",
+            "next_action": "保留已核的阶段成果和原始证据；当前行动在未完成条目另列。",
+            "my_next_action": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "ppt-production-handoff",
+      "title": "B版最终PPT制作要求与新会话交接（辅助）",
+      "status": "done",
+      "owner": "本课程会话核要求并交接；本人开启新制作会话",
+      "owner_role": "me",
+      "scope": "supporting",
+      "summary": "此前B制作交接/第一稿接收已完成，保留为历史/参考；当前已改A，不作为A稿交付或最终提交。",
+      "deliverable": "完整交接MD、团队选择/要求记录、素材索引、旧模板本地参考和定向审查。",
+      "next_action": "保留已核的阶段成果和原始证据；当前行动在未完成条目另列。",
+      "my_next_action": null,
+      "depends_on": [
+        "report-local-mainline-adopted",
+        "route-vote-comparison"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "requirements",
+          "label": "教师原件与Canvas新旧核验边界清楚",
+          "status": "pass",
+          "evidence": [
+            "ppt-requirements"
+          ]
+        },
+        {
+          "id": "handoff",
+          "label": "完整交接/31路径/旧模板与独审完成",
+          "status": "pass",
+          "evidence": [
+            "ppt-handoff",
+            "ppt-assets",
+            "ppt-handoff-review"
+          ]
+        },
+        {
+          "id": "bounded",
+          "label": "路线已选与参数/成品/提交区分",
+          "status": "pass",
+          "evidence": [
+            "team-B-adoption"
+          ]
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-15",
+      "completed_on": "2026-11-15",
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "只完成本次辅助交接，不计为正式Slides或Canvas提交完成。",
+      "evidence": [
+        {
+          "label": "最终PPT交接",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/team/ppt-handoff-20261115.md"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "本人要求新会话制作前先核要求并交接，文档已核；今天制作提交目标不等于已完成。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "记录7图分歧和重投过程；本人最新确认A制作路线。原B及成果保留，A稿/理解准备/提交未完成，不编全员票数。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "my_next_action": "保持B源包和研究原字节，使用新A接续文件进入另一制作会话。",
+            "next_action": "保持B源包和研究原字节，使用新A接续文件进入另一制作会话。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ppt-first-draft-review",
+      "title": "B第一稿成品接收与技术核验（供小组审阅）",
+      "status": "done",
+      "owner": "本人统筹初稿；制作会话产出，本课程只读接收核验",
+      "owner_role": "me",
+      "scope": "supporting",
+      "summary": "此前B制作交接/第一稿接收已完成，保留为历史/参考；当前已改A，不作为A稿交付或最终提交。",
+      "deliverable": "完整第一稿和配套说明、原全12页独审、本课结构/4页查看/稳定源核验与明确当前状态。",
+      "next_action": "保留已核的阶段成果和原始证据；当前行动在未完成条目另列。",
+      "my_next_action": null,
+      "depends_on": [
+        "ppt-production-handoff"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "artifact",
+          "label": "第一稿及配套资料完整可核",
+          "status": "pass",
+          "evidence": [
+            "ppt-first-draft-package"
+          ]
+        },
+        {
+          "id": "technical",
+          "label": "原全篇独审关闭且本课有界接收核验通过",
+          "status": "pass",
+          "evidence": [
+            "ppt-first-draft-review",
+            "ppt-first-draft-checks"
+          ]
+        },
+        {
+          "id": "stage",
+          "label": "第一稿/组审/正式采用/提交边界正确记录",
+          "status": "pass",
+          "evidence": [
+            "ppt-first-draft-user-instruction"
+          ]
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-15",
+      "completed_on": "2026-11-15",
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "只完成接收与技术核验，不计为本人或成员审阅完成、最终定稿、排练或提交成功。",
+      "evidence": [
+        {
+          "label": "第一稿状态和接收核验",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/team/ppt-first-draft-status-20261115.md"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "初稿技术接收完成，本人明确先组审修改，提交授权为false。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "记录7图分歧和重投过程；本人最新确认A制作路线。原B及成果保留，A稿/理解准备/提交未完成，不编全员票数。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "my_next_action": "保持B源包和研究原字节，使用新A接续文件进入另一制作会话。",
+            "next_action": "保持B源包和研究原字节，使用新A接续文件进入另一制作会话。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "route-a-reconfirmation",
+      "title": "组内反馈分歧记录与当前A确认（辅助）",
+      "status": "done",
+      "owner": "本人确认当前A，课程会话中立记录/核来源；新A制作会话由本人开",
+      "owner_role": "me",
+      "scope": "supporting",
+      "summary": "7图来源/中立观点、重投过程与最终A确认已记录，A基线与接续齐，原图仅本地留档；不制作A或改B，不宣称全员已准备好。",
+      "deliverable": "匿名分歧记录、决定/证据索引、A数字基线、代码状态与A接续、独立定向审查。",
+      "next_action": "保留已核的阶段成果和原始证据；当前行动在未完成条目另列。",
+      "my_next_action": null,
+      "depends_on": [
+        "ppt-first-draft-review"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "source",
+          "label": "7图与最新直接A确认的来源/范围已核",
+          "status": "pass",
+          "evidence": [
+            "route-A-adoption",
+            "route-A-evidence-index"
+          ]
+        },
+        {
+          "id": "neutral",
+          "label": "观点/事实/过程/最终决定区分且独审通过",
+          "status": "pass",
+          "evidence": [
+            "route-A-review"
+          ]
+        },
+        {
+          "id": "bounded",
+          "label": "只记录与交接，原图不公开，不改研究/PPT或自动提交",
+          "status": "pass",
+          "evidence": [
+            "route-A-discussion"
+          ]
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-15",
+      "completed_on": "2026-11-15",
+      "observed_on": "2026-11-20",
+      "estimated_minutes": null,
+      "state_basis": "只完成本轮协作记录和路线确认支持材料，不计A稿制作/审阅/排练或提交完成。",
+      "evidence": [
+        {
+          "label": "当前A决定与协作记录",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/main/docs/team/discussion-and-A-decision-20261115.md"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "先收到6图过程后收到7图与直接最新A确认，合并记录为当前A已定，不停在中间待票状态。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "制作会话随后直接交付稳定A第一稿，不再重复安排制作或旧课程接收。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "my_next_action": "分发当前A稿的对应页、讲稿和问答，收页码化意见。",
+            "next_action": "A稿现已完成，直接审阅现稿并收成员反馈；早期另会话制作的计划已被成品实证覆盖。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ppt-a-first-draft-review",
+      "title": "最终 13 页原稿归档与提交事实记录",
+      "status": "done",
+      "owner": "当前PPT制作会话制稿；总监督直接同步；本人组织组审",
+      "owner_role": "me",
+      "scope": "supporting",
+      "summary": "最终原件 70,283 字节、13 页；20 文件哈希清单 + manifest 已核。本人确认已提交，PDF 为本地导出预览。",
+      "deliverable": "最终 PPT 原件、衍生 PDF、13 页预览与提交事实记录。",
+      "next_action": "原已交13页仅归档回溯；课堂准备使用11/25另存的15页版本。已有提交回执可补存，不修改或重交原附件。",
+      "my_next_action": null,
+      "depends_on": [
+        "route-a-reconfirmation"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "files",
+          "label": "最终20文件哈希 + manifest 与 Git 一致",
+          "status": "pass",
+          "evidence": [
+            "ppt-final-manifest"
+          ]
+        },
+        {
+          "id": "review",
+          "label": "最终文件归档/结构/导出及差异核对完成",
+          "status": "pass",
+          "evidence": [
+            "ppt-final-intake"
+          ]
+        },
+        {
+          "id": "boundary",
+          "label": "本人确认已提交与回执独立核验分开",
+          "status": "pass",
+          "evidence": [
+            "ppt-final-user-confirmation",
+            "ppt-final-record"
+          ]
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-15",
+      "completed_on": "2026-11-15",
+      "observed_on": "2026-11-25",
+      "estimated_minutes": null,
+      "state_basis": "本人提交确认与文件核验，不冒称独立核 Canvas 回执或完成科学全审。",
+      "evidence": [
+        {
+          "label": "当前A第一稿协作入口",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/tree/main/slides/a-draft-20261115"
+        },
+        {
+          "label": "A v2 认可状态：本人转述已核原消息",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/07bfcac704da37deb34d15ebf7fe8b0e5e2e685e/slides/a-draft-20261115/decision.json"
+        },
+        {
+          "label": "本人认可 A v3 与 3 号提交安排",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/b688bda713ad80b55cff8e922b103ff95281768a/slides/a-v3-20261115/decision.json"
+        },
+        {
+          "label": "本人确认提交与展示安排",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/fc5186ecb804149cb5aad177d5c10dfb3b16fb85/slides/submitted-20261115/submission-record.json"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "A稿已实际完成并通过有界验收；禁止提交与成员审阅修改仍待。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "按本人新增P4数据/3号讲P5请求完成v2，核心状态不变，不增主任务done。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "本人转述全组认可 A v2；排练、掌握和提交不因此完成。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "本人认可 A v3 并要求同步；安排 3 号最后修改后提交，代理不代交，尚无回执。"
+        },
+        {
+          "observed_on": "2026-11-15",
+          "status": "done",
+          "note": "本人提供最终13页PPT并确认已提交；11/18周三课堂展示。独立回执/钟点/账号另核，不退回未提交。"
+        },
+        {
+          "observed_on": "2026-11-17",
+          "status": "done",
+          "note": "最新截图与本人确认：Six Sigma Week13第2组，日期11/25，替代旧11/18；不改Slides已提交状态。"
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "my_next_action": "按最终稿准备第 1、2、9 页并统筹 11 月 25 日展示；已有提交回执可补存，不重新提交。",
+            "next_action": "按最终 13 页版本准备 11 月 25 日课堂展示：各成员核对自己页面、数字和转场，再按本人安排进行真人计时与问答准备。已有提交回执可补存以核准确时刻和实际账号；不再催 3 号提交，不修改或重新提交已交附件。"
+          }
+        },
+        {
+          "on": "2026-11-20",
+          "status": "done",
+          "note": "2026-11-20 逐项复核；未推定实际完成日期",
+          "previous": {
+            "title": "最终 13 页原稿归档与提交确认",
+            "summary": "本人已提供最终 13 页 PPT，并明确确认已提交 Canvas；Slides 待提交事项已关闭。本人同时确认 11 月 25 日（周三）课堂展示，具体钟点未新核。成功页面、准确提交时刻和实际账号仍待独立核验；这项证据缺口不改变本人确认已提交的状态。",
+            "next_action": "保留已核的阶段成果和原始证据；当前行动在未完成条目另列。",
+            "my_next_action": null
+          }
+        },
+        {
+          "observed_on": "2026-11-25",
+          "status": "done",
+          "note": "同步新课堂稿与历史提交/复现的边界，状态不升级。",
+          "previous": {
+            "title": "最终 13 页原稿归档与提交确认",
+            "summary": "当前展示采用最终已提交的 13 页 PPT（本人确认）；11 月 25 日、Week 13、第 2 组，准确钟点未新核。主讲页码：1号3、2号4、3号5/6、4号8、5号7、6号1/2/9。本人确认的提交事实保留，独立成功回执待补而不重交；真人计时、问答熟练度与最终报告继续单独推进。A/B、已见四月及辅助研究保留历史，不再作为重新投票、重训或重做 PPT 的待办。",
+            "next_action": "按最终 13 页准备 11 月 25 日展示与 Q&A；本人负责第 1、2、9 页及统筹衔接。已有成功回执可补存；报告按已登记建议节奏推进，12 月 6 日 23:59 HKT 正式截止保留。",
+            "my_next_action": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "frozen-temporal-test-20261125",
+      "title": "已有冻结H04模型的三期时间测试（本机补充）",
+      "status": "done",
+      "owner": "本人 · 6号（本机测试辅助）",
+      "owner_role": "me",
+      "scope": "supporting",
+      "summary": "11/25本人核验四月表现未用于调参；已加载原冻结H04规格八字段LR完成四月测试，并补五月/六月检查，全程无训练或调参。加权前10%命中65/65/59，普通64/67/53，最近购买45/57/48；三期分别报告、不改选模型。最终13页Slides保留本人已提交状态；本人演练、课堂展示与正式报告状态未升级。",
+      "deliverable": "固定权重、三期27行指标、源码/计划/独审/哈希与课堂解释。",
+      "next_action": "用于展示问答补充并交总监督核看板；不根据测试成绩换模型，不修改已交Slides。",
+      "my_next_action": null,
+      "depends_on": [],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "frozen",
+          "label": "已有权重和预处理载入、无拟合/调参、原指纹不变",
+          "status": "pass",
+          "evidence": [
+            "frozen-test-verification-20261125"
+          ]
+        },
+        {
+          "id": "data",
+          "label": "完整90天窗口与四月H02对齐、全部月份结果保留",
+          "status": "pass",
+          "evidence": [
+            "frozen-test-verification-20261125"
+          ]
+        },
+        {
+          "id": "review",
+          "label": "独立风险抽检与配对解释缺口定向关闭",
+          "status": "pass",
+          "evidence": [
+            "frozen-test-20261125"
+          ]
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-25",
+      "completed_on": "2026-11-25",
+      "observed_on": "2026-11-25",
+      "estimated_minutes": null,
+      "state_basis": "本人明确要求的新本机测试辅助，非成员新交件；不计主团队任务完成度，不推定课堂展示、本人学会或正式报告完成。",
+      "evidence": [
+        {
+          "label": "冻结测试结果与公开聚合数据",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/tree/main/research/frozen-temporal-test-20261125"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-25",
+          "status": "done",
+          "note": "本人确认四月表现未用于调参；固定既有权重实际完成三期测试，未修改参数或按结果换模型。"
+        }
+      ]
+    },
+    {
+      "id": "classroom-deck-20261125",
+      "title": "11/25课堂PPT及讲稿更新（15页）",
+      "status": "done",
+      "owner": "本人 · 6号（材料更新）",
+      "owner_role": "me",
+      "scope": "supporting",
+      "summary": "11/25课堂更新版已制作：15页（9主讲/6备查），本人仍负责1/2/9页；补十月训练、一月验证、四月冻结测试与三期结果、参数备查，讲者备注/中英讲稿/QA已齐。原13页已交原件与提交状态保持，不重交Canvas。新版通读、真人计时、正式展示与报告完成未由材料更新推定。",
+      "deliverable": "15页可编辑PPT/原生PDF/全部备注，中英讲稿和13项QA。",
+      "next_action": "使用11/25课堂新版核对本人第1/2/9页并真人计时；1号留意第3页训练/验证/测试，3号留意第5/6页文字与第14/15页备查。准确展示钟点和原Slides独立回执另核，不重新提交附件。",
+      "my_next_action": null,
+      "depends_on": [
+        "frozen-temporal-test-20261125"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "deck",
+          "label": "15页/15备注、主讲分工保持与原件保护",
+          "status": "pass",
+          "evidence": [
+            "ppt-classroom-20261125"
+          ]
+        },
+        {
+          "id": "display",
+          "label": "原生导出和独立风险抽检完成",
+          "status": "pass",
+          "evidence": [
+            "ppt-classroom-pdf-20261125",
+            "ppt-classroom-review-20261125"
+          ]
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-25",
+      "completed_on": "2026-11-25",
+      "observed_on": "2026-11-25",
+      "estimated_minutes": null,
+      "state_basis": "完成所述材料制作与核验，不代表团队已通读、新版已提交或本人已展示。",
+      "evidence": [
+        {
+          "label": "课堂更新包",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/tree/main/slides/classroom-20261125"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-25",
+          "status": "done",
+          "note": "本人要求改PPT并更新看板；已制作15页课堂副本，不覆盖已交原件。"
+        }
+      ]
+    },
+    {
+      "id": "mobile-presenter-20261125",
+      "title": "本人手机英文提词与10题QA制作",
+      "status": "done",
+      "owner": "本人 · 6号（材料更新）",
+      "owner_role": "me",
+      "scope": "supporting",
+      "summary": "另附本人1/2/9页手机大字英文讲稿3页（24pt）及10题问答10页（英文22pt、中文提示16pt），只完成材料制作，不升级本人排练状态。",
+      "deliverable": "3页24pt英文稿及10页一题一页QA，均为可选择文字、嵌入字体PDF。",
+      "next_action": "展示已于 11/25 完成，本项作为历史制作材料保留；当前推进最终报告。",
+      "my_next_action": null,
+      "depends_on": [
+        "classroom-deck-20261125"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "pdf",
+          "label": "3页讲稿24pt、10页QA22pt及CJK显示已核",
+          "status": "pass",
+          "evidence": [
+            "mobile-script-20261125",
+            "mobile-qa10-20261125"
+          ]
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-25",
+      "completed_on": "2026-11-25",
+      "observed_on": "2026-11-25",
+      "estimated_minutes": null,
+      "state_basis": "材料已制作与核验，不证明本人排练、掌握或正式展示。",
+      "evidence": [
+        {
+          "label": "手机讲稿与10题QA",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/tree/main/slides/classroom-20261125/mobile"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-25",
+          "status": "done",
+          "note": "按本人要求生成手机大字材料，一题一页QA；不升级真人活动。"
+        }
+      ]
+    },
+    {
+      "id": "manager-script-20261125",
+      "title": "本人三页经理版讲稿重写",
+      "status": "done",
+      "owner": "本人 · 6号（材料更新）",
+      "owner_role": "me",
+      "scope": "supporting",
+      "summary": "本人要求给非技术经理讲明白，1/2/9页已重写为193词业务口述，手机24pt三页；旧技术稿保留，当前主讲入口改为经理版。",
+      "deliverable": "193词业务口述、3页24pt英文PDF、中英理解及转场。",
+      "next_action": "展示已于 11/25 完成，本项作为历史制作材料保留；当前推进最终报告。",
+      "my_next_action": null,
+      "depends_on": [
+        "mobile-presenter-20261125"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "script",
+          "label": "业务对象、同容量数字与未执行提案已核，3页显示通过",
+          "status": "pass",
+          "evidence": [
+            "manager-script-20261125"
+          ]
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-25",
+      "completed_on": "2026-11-25",
+      "observed_on": "2026-11-25",
+      "estimated_minutes": null,
+      "state_basis": "材料已制作与核验，不证明本人排练、掌握或正式展示。",
+      "evidence": [
+        {
+          "label": "当前经理版讲稿",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/tree/main/slides/classroom-20261125/mobile/manager"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-25",
+          "status": "done",
+          "note": "按本人易懂反馈重写主讲，技术细节作问答备查；不升级真人活动。"
+        }
+      ]
+    },
+    {
+      "id": "report-gap-audit-20261126",
+      "title": "报告前证据审计与第一批分工建议",
+      "status": "done",
+      "owner": "本人 · 6号（材料更新）",
+      "owner_role": "me",
+      "scope": "supporting",
+      "summary": "本人11/26确认11/25展示完成、没有老师反馈；最终报告正文未开始，需要分工。已完成基于现有代码/表/图的报告前审计：18条准备事项（4个P0、14个P1），其中当前状态写回由本批处理；区分现成证据、记录错误、必补报告材料及可选实验，未重训。六岗第一批交件/日期为建议，待本人及成员确认。",
+      "deliverable": "18条逐项缺口、11条结论证据映射、库存/核验和六岗建议；未写报告正文。",
+      "next_action": "本人评审审计R02范围单及六岗建议；先整理实验身份、修R3元数据、数据时间图和三期完整报告表，再确认正文分工；不默认开启新模型训练。",
+      "my_next_action": null,
+      "depends_on": [
+        "date-presentation"
+      ],
+      "dependency_gates": [],
+      "acceptance": [
+        {
+          "id": "audit",
+          "label": "证据范围、风险抽检和建议交件已备",
+          "status": "pass"
+        }
+      ],
+      "target": {
+        "value": null,
+        "precision": "unknown",
+        "basis": "unknown"
+      },
+      "started_on": "2026-11-26",
+      "completed_on": "2026-11-26",
+      "observed_on": "2026-11-26",
+      "estimated_minutes": null,
+      "state_basis": "只完成审计与建议，不表示补件/成员认领/报告正文完成。",
+      "evidence": [
+        {
+          "label": "报告前审计",
+          "url": "https://github.com/CercaTrovato/olist-repurchase-analysis/tree/main/docs/report-gap-audit-20261126"
+        }
+      ],
+      "history": [
+        {
+          "observed_on": "2026-11-26",
+          "status": "done",
+          "note": "按本人授权完成审计；不执行新模型或代交。"
+        }
+      ]
+    }
+  ],
+  "basis_management_revision": "e8167dba1b5baeb30e781fff7965f23cc71607a3984c5ce957fa23d2c4907a0e"
+}

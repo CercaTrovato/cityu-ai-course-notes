@@ -1,0 +1,1558 @@
+{
+  "schema_version": 1,
+  "id": "IS6400-A06",
+  "course": "IS6400",
+  "title": "Olist 复购预测与客户分群",
+  "assignment_type": "group",
+  "board_scope": "active",
+  "group": "Six Sigma",
+  "my_role": "业务目标与项目统筹（6 号）",
+  "summary": "本人11/26确认11/25展示完成、没有老师反馈；最终报告正文未开始，需要分工。已完成基于现有代码/表/图的报告前审计：18条准备事项（4个P0、14个P1），其中当前状态写回由本批处理；区分现成证据、记录错误、必补报告材料及可选实验，未重训。六岗第一批交件/日期为建议，待本人及成员确认。",
+  "stage": "11/25展示已完成｜报告正文未开始，前审计与分工建议已备",
+  "updated_at": "2026-11-26T16:52:33+08:00",
+  "reviewed_at": "2026-11-26",
+  "progress_as_of": "2026-11-26",
+  "task_scope_complete": false,
+  "next_action": {
+    "title": "本人评审审计R02范围单及六岗建议；先整理实验身份、修R3元数据、数据时间图和三期完整报告表，再确认正文分工；不默认开启新模型训练。",
+    "owner": "本人统筹；1–5号按既有能力建议分工，未认领",
+    "basis": "proposed"
+  },
+  "blockers": [
+    "最终报告正文未开始，章节与具体认领待本人/成员确认；正式截止仍12/6 23:59 HKT。",
+    "报告目标、采用模型/预处理/拟合文件及正文/附录素材需现行范围单，不能用旧A/B采用文案代选。",
+    "R3元数据生成矛盾、错误原CI素材准用和版本身份需按审计处理；现成数据/图不重做。",
+    "展示已完成且本人未报告教师反馈；旧Slides提交成功页/时刻/账号仍未独立核实，补证不构成重交。",
+    "本批共享management、CityU根Git及线上收尾由总监督接续，不因课程文件写回而声称三端完成。"
+  ],
+  "tasks": [
+    {
+      "id": "briefing",
+      "title": "Project Briefing",
+      "status": "done",
+      "owner": null,
+      "note": "依据本人在进度会话中的确认。",
+      "evidence": [
+        "progress-chat"
+      ]
+    },
+    {
+      "id": "team-plan",
+      "title": "六人职责与交接方案",
+      "status": "done",
+      "owner": null,
+      "note": "六岗已认领；协作指南已发布，本人已分发任务。11 月 8–9 日各岗首轮附件已在群里交接。 GitHub 已同步首轮交接与当前待办。 2026-11-11 本人明确确认第三轮任务已发群；成员接单与回传另记。",
+      "evidence": [
+        "supervision-confirmation",
+        "local-team-guide",
+        "team-release",
+        "team-dispatch-confirmation",
+        "team-wechat-intake",
+        "github-current-status",
+        "round3-dispatch-confirmed"
+      ]
+    },
+    {
+      "id": "scope",
+      "title": "业务场景、样本、标签及评价口径",
+      "status": "in_progress",
+      "owner": "本人 + 1、3 号",
+      "note": "课堂展示11/25已完成；最终报告的目标、精确版本及素材范围需按本次审计R02确认，不重新默认A/B路线。",
+      "evidence": [
+        "published-status-86d0ead",
+        "april-latest-86d0ead",
+        "route-comparison",
+        "route-A-adoption",
+        "post-presentation-facts-20261126",
+        "report-gap-audit-20261126"
+      ]
+    },
+    {
+      "id": "data",
+      "title": "首轮统一数据候选与整体 EDA",
+      "status": "done",
+      "owner": "1、2 号",
+      "note": "1 号 H02-v2-candidate-reviewed 与 2 号 H03-role02-v0.1 已收。前两期与本地对照 50,528 个键和标签一致。最终评估日期单列待核。 1–5号第三轮现均实收并有界核验；数值与原记录性补件分列，成员交件不等于最终路线已采用。",
+      "evidence": [
+        "team-wechat-intake",
+        "team-wechat-verification",
+        "team-round3-intake"
+      ]
+    },
+    {
+      "id": "models",
+      "title": "首轮监督模型与无监督分群",
+      "status": "done",
+      "owner": "3、4 号",
+      "note": "首轮模型与 H05 结果已交。4 号复跑脚本已补，本地复跑 29,368 个一月群号逐键一致。 1–5号第三轮现均实收并有界核验；数值与原记录性补件分列，成员交件不等于最终路线已采用。",
+      "evidence": [
+        "team-wechat-intake",
+        "team-wechat-verification",
+        "team-role04-h05-intake",
+        "team-round3-intake"
+      ]
+    },
+    {
+      "id": "iteration",
+      "title": "组内 EDA 与特征反馈实验",
+      "status": "in_progress",
+      "owner": "3、4、5 号",
+      "note": "固定本地研究与1–5号第三轮验收已完成各自核定范围，2号v1.1修订已通过；3/5原记录问题保持。本批只对照/作图和纠正采用状态，无新实验。当前展示已采用 A v2，并由本人转述全组认可；不重开路线投票。",
+      "evidence": [
+        "published-status-86d0ead",
+        "h06-latest-86d0ead",
+        "published-exploration-86d0ead",
+        "team-h04-v04-verified",
+        "team-round3-intake",
+        "role02-v11-acceptance",
+        "route-comparison"
+      ]
+    },
+    {
+      "id": "slides",
+      "title": "最终结果、Slides 与讲稿合稿",
+      "status": "done",
+      "owner": "全组",
+      "note": "本人提供最终 PPT 并确认已提交 Canvas；已归档 13 页原件，独立回执待补。主讲页码不变：1 号第 3 页；2 号第 4 页；3 号第 5、6 页；4 号第 8 页；5 号第 7 页；6 号第 1、2、9 页。第 10–13 页备查。旧 v3 第 13 页来源/职责页已删除，原第 14 页反馈备查改为第 13 页。 11/26本人另确认11/25课堂展示已完成、没有老师反馈；未由此推定重新提交或报告完成。",
+      "evidence": [
+        "local-team-guide",
+        "slides-page",
+        "ppt-handoff",
+        "team-B-adoption",
+        "ppt-first-draft-package",
+        "ppt-first-draft-intake",
+        "ppt-first-draft-user-instruction",
+        "route-A-adoption",
+        "route-A-discussion",
+        "route-A-PPT-handoff",
+        "ppt-A-draft-manifest",
+        "ppt-A-draft-review",
+        "ppt-A-draft-decision",
+        "ppt-A-v2-ranking-csv",
+        "ppt-A-team-accepted",
+        "ppt-A-v3-approved",
+        "ppt-final-user-confirmation",
+        "ppt-final-manifest",
+        "ppt-final-record",
+        "post-presentation-facts-20261126",
+        "report-gap-audit-20261126"
+      ]
+    },
+    {
+      "id": "report",
+      "title": "最终报告与复现核验",
+      "status": "todo",
+      "owner": "全组",
+      "note": "本人11/26确认最终报告正文尚未开始。本批完成前审计和六岗建议，不代表正文、团队采用或交件完成。",
+      "evidence": [
+        "local-team-guide",
+        "report-page",
+        "report-local-mainline-decision",
+        "route-decision-correction",
+        "team-B-adoption",
+        "post-presentation-facts-20261126",
+        "report-gap-audit-20261126"
+      ]
+    },
+    {
+      "id": "h06-january-verified",
+      "title": "团队一月 H06 加权前后对照",
+      "status": "done",
+      "owner": "5号",
+      "note": "课程会话逐行核对29,368人、230正例、同取2,937人；本轮核公开CSV三群加总与总计行，46→50，久单17→79及0→2。",
+      "evidence": [
+        "h06-latest-86d0ead",
+        "published-status-86d0ead"
+      ]
+    },
+    {
+      "id": "team-april-evidence",
+      "title": "团队四月评分与名单复现",
+      "status": "done",
+      "owner": "3 号交件；课程会话复跑核验",
+      "note": "v0.4 的评分入口、配置、逐人分数和名单已补齐；19 项校验通过，三份名单各 3,782 人完全一致，命中 45／64／65。交接措辞和正式冻结另列待办。",
+      "evidence": [
+        "team-h04-v04-verified"
+      ]
+    },
+    {
+      "id": "h04-handoff-wording",
+      "title": "修正 H04 交接说明与评价口径",
+      "status": "todo",
+      "owner": "3 号",
+      "note": "既有四月名单已复现不重跑；本轮R3实验记录仍有最终测试旧措辞，需3号修为已见回测并澄清冻结依据。",
+      "evidence": [
+        "team-h04-v04-verified"
+      ]
+    }
+  ],
+  "milestones": [
+    {
+      "id": "slides",
+      "title": "最终 Slides（本人确认已提交）",
+      "due": "2026-11-15T23:59:00+08:00",
+      "precision": "datetime",
+      "kind": "submission",
+      "status": "submitted",
+      "channel": "Canvas",
+      "evidence": [
+        "deadline-chat",
+        "slides-page",
+        "ppt-final-user-confirmation",
+        "ppt-final-record"
+      ]
+    },
+    {
+      "id": "presentation",
+      "title": "Six Sigma 课堂展示（本人确认11/25完成）",
+      "due": "2026-11-25",
+      "precision": "date",
+      "kind": "presentation",
+      "status": "done",
+      "channel": "课堂；本人11/26确认完成，没有老师反馈；准确钟点不补填",
+      "evidence": [
+        "deadline-chat",
+        "ppt-final-user-confirmation",
+        "ppt-final-record",
+        "presentation-schedule-20261117",
+        "post-presentation-facts-20261126"
+      ]
+    },
+    {
+      "id": "report",
+      "title": "最终报告（正文未开始，需分工）",
+      "due": "2026-12-06T23:59:00+08:00",
+      "precision": "datetime",
+      "kind": "submission",
+      "status": "todo",
+      "channel": "Canvas",
+      "evidence": [
+        "deadline-chat",
+        "report-page",
+        "post-presentation-facts-20261126"
+      ]
+    },
+    {
+      "id": "direction",
+      "title": "同步已定方向、核 H01 口径并收各岗回报（建议）",
+      "due": "2026-11-07T21:00:00+08:00",
+      "precision": "datetime",
+      "kind": "internal",
+      "status": "todo",
+      "channel": "组内拟定",
+      "evidence": [
+        "business-decision",
+        "team-release"
+      ]
+    },
+    {
+      "id": "data-v1",
+      "title": "统一数据、整体 EDA 与比较框架交接（建议）",
+      "due": "2026-11-08T21:00:00+08:00",
+      "precision": "datetime",
+      "kind": "internal",
+      "status": "done",
+      "channel": "组内拟定",
+      "evidence": [
+        "local-team-guide",
+        "team-wechat-intake",
+        "team-wechat-verification"
+      ]
+    },
+    {
+      "id": "model-v1",
+      "title": "初版分类、分群与验证交接（建议）",
+      "due": "2026-11-09T21:00:00+08:00",
+      "precision": "datetime",
+      "kind": "internal",
+      "status": "done",
+      "channel": "组内拟定",
+      "evidence": [
+        "local-team-guide",
+        "team-wechat-intake",
+        "team-wechat-verification"
+      ]
+    },
+    {
+      "id": "method-freeze",
+      "title": "冻结分析方法（建议）",
+      "due": "2026-11-12T21:00:00+08:00",
+      "precision": "datetime",
+      "kind": "internal",
+      "status": "todo",
+      "channel": "组内拟定",
+      "evidence": [
+        "local-team-guide"
+      ]
+    },
+    {
+      "id": "slides-sections",
+      "title": "各岗交 Slides、讲稿与主要数字（建议）",
+      "due": "2026-11-13T21:00:00+08:00",
+      "precision": "datetime",
+      "kind": "internal",
+      "status": "done",
+      "channel": "组内拟定",
+      "evidence": [
+        "local-team-guide",
+        "ppt-final-manifest",
+        "ppt-final-user-confirmation"
+      ]
+    },
+    {
+      "id": "slides-merge",
+      "title": "合稿、核数（建议）",
+      "due": "2026-11-14T12:00:00+08:00",
+      "precision": "datetime",
+      "kind": "internal",
+      "status": "done",
+      "channel": "组内拟定",
+      "evidence": [
+        "local-team-guide",
+        "ppt-final-manifest",
+        "ppt-final-user-confirmation"
+      ]
+    },
+    {
+      "id": "slides-rehearse",
+      "title": "全员计时排练和问答（建议）",
+      "due": "2026-11-14T19:00:00+08:00",
+      "precision": "datetime",
+      "kind": "internal",
+      "status": "todo",
+      "channel": "组内拟定",
+      "evidence": [
+        "local-team-guide"
+      ]
+    },
+    {
+      "id": "slides-freeze",
+      "title": "团队核对并冻结 Slides（建议）",
+      "due": "2026-11-15T13:00:00+08:00",
+      "precision": "datetime",
+      "kind": "internal",
+      "status": "done",
+      "channel": "组内拟定",
+      "evidence": [
+        "local-team-guide",
+        "ppt-final-manifest",
+        "ppt-final-user-confirmation"
+      ]
+    },
+    {
+      "id": "slides-target",
+      "title": "补存已提交 Slides 的独立回执（不重交）",
+      "due": null,
+      "precision": "unknown",
+      "kind": "internal",
+      "status": "todo",
+      "channel": "本人已确认提交；成功页/时刻/账号另补",
+      "evidence": [
+        "local-team-guide",
+        "ppt-final-record"
+      ]
+    },
+    {
+      "id": "report-sections",
+      "title": "交完整报告段落与复跑入口（建议）",
+      "due": "2026-11-28T21:00:00+08:00",
+      "precision": "datetime",
+      "kind": "internal",
+      "status": "todo",
+      "channel": "组内拟定",
+      "evidence": [
+        "local-team-guide"
+      ]
+    },
+    {
+      "id": "report-review",
+      "title": "报告合稿、复跑与核数（建议）",
+      "due": "2026-12-02T21:00:00+08:00",
+      "precision": "datetime",
+      "kind": "internal",
+      "status": "todo",
+      "channel": "组内拟定",
+      "evidence": [
+        "local-team-guide"
+      ]
+    },
+    {
+      "id": "report-freeze",
+      "title": "团队核准报告定稿（建议）",
+      "due": "2026-12-04T18:00:00+08:00",
+      "precision": "datetime",
+      "kind": "internal",
+      "status": "todo",
+      "channel": "组内拟定",
+      "evidence": [
+        "local-team-guide"
+      ]
+    },
+    {
+      "id": "report-target",
+      "title": "经确认的代表提交报告（建议）",
+      "due": "2026-12-05T18:00:00+08:00",
+      "precision": "datetime",
+      "kind": "internal",
+      "status": "todo",
+      "channel": "组内拟定",
+      "evidence": [
+        "local-team-guide"
+      ]
+    }
+  ],
+  "submission": {
+    "status": "submitted",
+    "note": "仅指Slides：本人11/15确认已提交Canvas；成功页/准确时刻/账号未独立核验。11/26本人确认11/25展示完成、没有老师反馈；最终报告正文未开始，未提交。",
+    "evidence": [
+      "ppt-final-user-confirmation",
+      "ppt-final-record"
+    ]
+  },
+  "sources": [
+    {
+      "id": "brief",
+      "kind": "local",
+      "label": "任务说明（11 月 7 日 Canvas 核对记录与项目状态）",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/notes/任务说明.md",
+      "observed_at": "2026-11-26",
+      "sha256": "dff0c85b5eadd528eda8a08232fe4912422f47fdc8bb3361a11a8a30d2a1cdb1"
+    },
+    {
+      "id": "deadline-chat",
+      "kind": "thread",
+      "label": "11 月 7 日整理各课程作业截止时间表（已登录 Canvas 核对）",
+      "locator": "01a1b1d5-d4db-7911-a458-11f3770a19ee",
+      "observed_at": "2026-11-07",
+      "sha256": null
+    },
+    {
+      "id": "progress-chat",
+      "kind": "thread",
+      "label": "梳理 IS6400 小组作业进度",
+      "locator": "01a1a655-3c6c-74f3-8622-5fe22da6dfc9",
+      "observed_at": "2026-11-05",
+      "sha256": null
+    },
+    {
+      "id": "team-guide",
+      "kind": "web",
+      "label": "11 月 5 日六人协作指南（远端历史版，本轮已核原版）",
+      "locator": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/c46bd7b232a8212484a98b7f44796ac6686d4678/docs/07-team-guide.md",
+      "observed_at": "2026-11-07",
+      "sha256": null
+    },
+    {
+      "id": "slides-page",
+      "kind": "web",
+      "label": "Canvas Slides 正式截止（沿用已核会话）",
+      "locator": "https://canvas.cityu.edu.hk/courses/71457/assignments/339540",
+      "observed_at": "2026-11-07",
+      "sha256": null
+    },
+    {
+      "id": "supervision-confirmation",
+      "kind": "thread",
+      "label": "本人于总监督会话确认六岗已认领，等待本人（6 号）给方向",
+      "locator": "01a1b491-403e-7651-9aba-13e5b647af93",
+      "observed_at": "2026-11-07",
+      "sha256": null
+    },
+    {
+      "id": "report-page",
+      "kind": "web",
+      "label": "Canvas 最终报告正式截止（沿用 11 月 7 日已核会话）",
+      "locator": "https://canvas.cityu.edu.hk/courses/71457/assignments/339541",
+      "observed_at": "2026-11-07",
+      "sha256": null
+    },
+    {
+      "id": "local-team-guide",
+      "kind": "external_file",
+      "label": "已发布的六人协作与交付倒排",
+      "locator": "E:/AIworkspace/codex-workspace/olist-repurchase-analysis/docs/07-team-guide.md",
+      "observed_at": "2026-11-10",
+      "sha256": "cb42a51898942cabe5226a9b4962d6cfa59fba0ba7b5407e9cac04938a6e0592"
+    },
+    {
+      "id": "direction-draft",
+      "kind": "local",
+      "label": "6 号方向决策与已确认选择",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/notes/direction-decision.md",
+      "observed_at": "2026-11-07",
+      "sha256": "a44de909b7737b17e200fcb37bc3a3fdfbb6f265c0e99a19324ab1f1291bba65"
+    },
+    {
+      "id": "business-decision",
+      "kind": "thread",
+      "label": "本人确认 A 主线，B 为分群后的补充",
+      "locator": "01a1b4b5-28d9-7ab3-8933-36583e623c7f",
+      "observed_at": "2026-11-07",
+      "sha256": null
+    },
+    {
+      "id": "team-release",
+      "kind": "web",
+      "label": "GitHub 已回读：六岗任务卡及交接协议",
+      "locator": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/93ec8b34756f93ff0129520780a1c31a6f831672/docs/team/README.md",
+      "observed_at": "2026-11-07",
+      "sha256": null
+    },
+    {
+      "id": "supervision-report",
+      "kind": "local",
+      "label": "当前PPT制作会话直接回传与总监督状态，旧课程记录保留历史",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/notes/supervision-report.md",
+      "observed_at": "2026-11-17",
+      "sha256": "248a52ffc8439ff43c9ae881c927e28f961611d3cc7fc1119fd29ac428333a85"
+    },
+    {
+      "id": "team-dispatch-confirmation",
+      "kind": "thread",
+      "label": "本人确认已向真实组员发出任务",
+      "locator": "01a1b4b5-28d9-7ab3-8933-36583e623c7f",
+      "observed_at": "2026-11-08",
+      "sha256": null
+    },
+    {
+      "id": "local-shadow-stage",
+      "kind": "external_file",
+      "label": "本地对照组从原始数据独立复算",
+      "locator": "E:/app-data/codex/outputs/olist-round1-local-20261107/raw-reconstruction.json",
+      "observed_at": "2026-11-08",
+      "sha256": "42650423ac9a0ad7d1a84adf1e590b2d73ee0bce52bfc2f98940275b657d515b"
+    },
+    {
+      "id": "local-shadow-final",
+      "kind": "external_file",
+      "label": "本地首轮对照成果与核验（独立于真实组员）",
+      "locator": "E:/app-data/codex/outputs/olist-round1-local-20261107/README.md",
+      "observed_at": "2026-11-08",
+      "sha256": "2a43af6bf0eec5996b0f86b1e64de5dba63522d31245d28bd1aa87b46947af99"
+    },
+    {
+      "id": "team-wechat-intake",
+      "kind": "external_file",
+      "label": "真实组员微信交付核对，覆盖 11 月 8–9 日",
+      "locator": "E:/app-data/codex/outputs/is6400-team-intake-20261110/README.md",
+      "observed_at": "2026-11-10",
+      "sha256": "36c48f2622e4b9f16be1913b44b9820c4f1736fe0e4e00ac13539c11453b3c50"
+    },
+    {
+      "id": "team-wechat-verification",
+      "kind": "external_file",
+      "label": "五份群附件哈希、与本地逐键核对和组员指标复算",
+      "locator": "E:/app-data/codex/outputs/is6400-team-intake-20261110/comparison-verification.json",
+      "observed_at": "2026-11-10",
+      "sha256": "e31ba57d069c55fd1cd148c81b563d93dd58d9cc8f08a24dae3670919985a256"
+    },
+    {
+      "id": "team-wechat-materials",
+      "kind": "external_file",
+      "label": "微信文件与图片补查，6 份文件和 4 张图",
+      "locator": "E:/app-data/codex/outputs/is6400-team-intake-20261110/wechat-materials-index.md",
+      "observed_at": "2026-11-10",
+      "sha256": "d8bacf177193284bf42451e0dc951b6fc000b7d11bde9bcd9ee558a146a1aa40"
+    },
+    {
+      "id": "github-current-status",
+      "kind": "web",
+      "label": "已回读 GitHub 当前进度与首轮公开汇总",
+      "locator": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/f37413386e54873e5a09ac9fe06b4682818b1d8e/docs/team/current-status.md",
+      "observed_at": "2026-11-10",
+      "sha256": null
+    },
+    {
+      "id": "local-mlp-comparison",
+      "kind": "external_file",
+      "label": "本地八字段 MLP 及单交互控制对照",
+      "locator": "E:/app-data/codex/outputs/is6400-mlp-comparison-20261110/README.md",
+      "observed_at": "2026-11-10",
+      "sha256": "c259c95489fdbc573e68edf37e4134f54c8d6ef3756f2ebd5b8484b35aba21c2"
+    },
+    {
+      "id": "local-mlp-run",
+      "kind": "external_file",
+      "label": "本地 MLP 复跑清单及指纹",
+      "locator": "E:/app-data/codex/outputs/is6400-mlp-comparison-20261110/run-manifest.json",
+      "observed_at": "2026-11-10",
+      "sha256": "8469182506f6bf0a87f9514490e14fb2ef6c6b8fe4c6e3102eabbe91dd818b94"
+    },
+    {
+      "id": "local-round2-results",
+      "kind": "external_file",
+      "label": "本地独立第二轮 1–5 号结果与证据",
+      "locator": "E:/app-data/codex/outputs/is6400-local-round2-20261110/README.md",
+      "observed_at": "2026-11-10",
+      "sha256": "e7f016419684620e8eb6b332603fbbcffc836acdf454ac3f5cd7144ab7299454"
+    },
+    {
+      "id": "local-round2-verification",
+      "kind": "external_file",
+      "label": "本地第二轮固定名单逐键复核",
+      "locator": "E:/app-data/codex/outputs/is6400-local-round2-20261110/role-05/verification.json",
+      "observed_at": "2026-11-10",
+      "sha256": "cd0471c49de3787081ebb3b00ea7106c33f2e817ec92cd8808967e9d5bfbc49a"
+    },
+    {
+      "id": "april-graph-local",
+      "kind": "external_file",
+      "label": "本地原版四月已见回测与一月 GCN 探索",
+      "locator": "E:/app-data/codex/outputs/is6400-april-graph-20261110/README.md",
+      "observed_at": "2026-11-10",
+      "sha256": "001a7c730cf2055793f4695bf1e23cf7cbc1e0c288cf1aaaccf86aee7de951c0"
+    },
+    {
+      "id": "team-april-coverage",
+      "kind": "external_file",
+      "label": "1 号四月样本及 90 天覆盖补件",
+      "locator": "E:/app-data/codex/outputs/is6400-april-graph-20261110/team-april-coverage.md",
+      "observed_at": "2026-11-10",
+      "sha256": "720ca3d5bd9100113dd6d11304d13ef7921427b7273bb2339b6f7d778c90ad52"
+    },
+    {
+      "id": "gcn-grid-local",
+      "kind": "external_file",
+      "label": "一月三种图、层数及维度的本地对照",
+      "locator": "E:/app-data/codex/outputs/is6400-gcn-graph-grid-20261110/README.md",
+      "observed_at": "2026-11-10",
+      "sha256": "2840aaa5775fe52b0fe97dad396556c749a8e4ba30967575dfd3fe19efae4b97"
+    },
+    {
+      "id": "team-h05-january-join",
+      "kind": "external_file",
+      "label": "团队 H05 一月逐人群号与 H02 的双向核验",
+      "locator": "E:/app-data/codex/outputs/is6400-h05-january-handoff-20261110/verification.json",
+      "observed_at": "2026-11-10",
+      "sha256": "f3d879b0aadd7c4f5f3a86152ce05eb2c95ca5e821d47db93e1489bff7e2301f"
+    },
+    {
+      "id": "team-role04-h05-intake",
+      "kind": "external_file",
+      "label": "4 号复跑补件与 H06 品类核验",
+      "locator": "E:/app-data/codex/outputs/is6400-role04-h05-intake-20261110/README.md",
+      "observed_at": "2026-11-10",
+      "sha256": "54689ceaa2191fcb145a0f578dad5c0695378d868b8e6e5a159073514c5c19e0"
+    },
+    {
+      "id": "team-role04-h05-verified",
+      "kind": "external_file",
+      "label": "4 号 ZIP、群号复跑和品类逐项核验",
+      "locator": "E:/app-data/codex/outputs/is6400-role04-h05-intake-20261110/verification.json",
+      "observed_at": "2026-11-10",
+      "sha256": "61683a91c312eb39bcfdc5b3bf906e51a1dc8d5289ba5e91a9eabebe04d67cde"
+    },
+    {
+      "id": "team-h04-v02-intake",
+      "kind": "external_file",
+      "label": "团队 H04 v0.2 验收和加权全局候选",
+      "locator": "E:/app-data/codex/outputs/is6400-h04-v02-intake-20261110/README.md",
+      "observed_at": "2026-11-10",
+      "sha256": "f1cef5e954844d3554acf052a942dc316ecb4f89aba52ce06aa5ba032151b5da"
+    },
+    {
+      "id": "team-h04-v02-verified",
+      "kind": "external_file",
+      "label": "H04 v0.2 逐键、配额与原脚本复跑核验",
+      "locator": "E:/app-data/codex/outputs/is6400-h04-v02-intake-20261110/verification.json",
+      "observed_at": "2026-11-10",
+      "sha256": "25ca4094e5d13d6a9a6cc008f8ac3fe819632158b997a732de41d624929762ed"
+    },
+    {
+      "id": "local-april-weighted-replay",
+      "kind": "external_file",
+      "label": "本地加权全局四月已见回测与模型",
+      "locator": "E:/app-data/codex/outputs/is6400-weighted-april-20261110/README.md",
+      "observed_at": "2026-11-10",
+      "sha256": "7850c4170c9c2d2cc1178eb67345ef8ec286f25ba2b9f8ec36868fa3c7b42bf3"
+    },
+    {
+      "id": "local-april-weighted-verified",
+      "kind": "external_file",
+      "label": "加权版本冻结及四月同容量核验",
+      "locator": "E:/app-data/codex/outputs/is6400-weighted-april-20261110/verification.json",
+      "observed_at": "2026-11-10",
+      "sha256": "c11899def4ca2f5d1ab6a0b840d93c1f1088294e09ec967efc1144020a372974"
+    },
+    {
+      "id": "local-rfm-weight-2x2",
+      "kind": "external_file",
+      "label": "一月三字段与八字段加权对照",
+      "locator": "E:/app-data/codex/outputs/is6400-rfm-weighted-2x2-20261110/README.md",
+      "observed_at": "2026-11-10",
+      "sha256": "cc67e46bcfccbe783f54eeedf53a285a50a4b06e0d149ba370a4183ca5cf5364"
+    },
+    {
+      "id": "local-contrastive-gcn",
+      "kind": "external_file",
+      "label": "同卖家 GCN 加对比学习的一月配对试验",
+      "locator": "E:/app-data/codex/outputs/is6400-gcn-contrastive-20261110/README.md",
+      "observed_at": "2026-11-10",
+      "sha256": "8bed38680eea85daa93d0643195ff87eb2485ba205a78738fd9bc1098ffdd864"
+    },
+    {
+      "id": "local-residual-gcn-2x2",
+      "kind": "external_file",
+      "label": "同卖家 GCN 残差与对比学习一月四格",
+      "locator": "E:/app-data/codex/outputs/is6400-gcn-residual-2x2-20261110/README.md",
+      "observed_at": "2026-11-10",
+      "sha256": "4bb423996edace5fb9ee87711cf82e1cf2a003b598d023a3f5d30a467bb3b731"
+    },
+    {
+      "id": "published-status-86d0ead",
+      "kind": "web",
+      "label": "最新团队进度与验收边界（固定 GitHub 版本）",
+      "locator": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/86d0ead3d597e571cdf4fe7c13501cf3216181d1/docs/team/current-status.md",
+      "observed_at": "2026-11-10",
+      "sha256": null
+    },
+    {
+      "id": "published-exploration-86d0ead",
+      "kind": "web",
+      "label": "本地探索与更强基线对照（固定 GitHub 版本）",
+      "locator": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/86d0ead3d597e571cdf4fe7c13501cf3216181d1/docs/team/local-exploration.md",
+      "observed_at": "2026-11-10",
+      "sha256": null
+    },
+    {
+      "id": "published-evidence-86d0ead",
+      "kind": "web",
+      "label": "公开汇总证据索引（固定 GitHub 版本）",
+      "locator": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/86d0ead3d597e571cdf4fe7c13501cf3216181d1/docs/team/evidence/README.md",
+      "observed_at": "2026-11-10",
+      "sha256": null
+    },
+    {
+      "id": "h06-latest-86d0ead",
+      "kind": "web",
+      "label": "H06 一月加权前后对照（固定 GitHub 版本）",
+      "locator": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/86d0ead3d597e571cdf4fe7c13501cf3216181d1/docs/team/evidence/h06-weighting-comparison.csv",
+      "observed_at": "2026-11-10",
+      "sha256": null
+    },
+    {
+      "id": "april-latest-86d0ead",
+      "kind": "web",
+      "label": "本地已见四月回测汇总（固定 GitHub 版本）",
+      "locator": "https://github.com/CercaTrovato/olist-repurchase-analysis/blob/86d0ead3d597e571cdf4fe7c13501cf3216181d1/docs/team/evidence/april-seen-window.csv",
+      "observed_at": "2026-11-10",
+      "sha256": null
+    },
+    {
+      "id": "team-h04-v04-verified",
+      "kind": "external_file",
+      "label": "H04 v0.4 四月评分补件核验摘要",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-v04-board-20261110\\h04-v04-summary.md",
+      "observed_at": "2026-11-10",
+      "sha256": "c1dd5f5855d90f373e67accdf00093d5e1626f6021f7633723c0d0d3c5ab20aa"
+    },
+    {
+      "id": "local-round3-20261111",
+      "kind": "external_file",
+      "label": "第三轮本地研究约定与结果入口",
+      "locator": "E:/app-data/codex/outputs/is6400-round3-20261111/experiment-plan.md",
+      "observed_at": "2026-11-11",
+      "sha256": "545a8cd4d8e2926ba2e578b280cd0bb60c525125d298e6328b354732c72e987d"
+    },
+    {
+      "id": "round3-dispatch-confirmed",
+      "kind": "thread",
+      "label": "本人2026-11-11确认第三轮已发群",
+      "locator": "01a1b4b5-28d9-7ab3-8933-36583e623c7f",
+      "observed_at": "2026-11-11",
+      "sha256": null
+    },
+    {
+      "id": "round3-extension-local",
+      "kind": "external_file",
+      "label": "第三轮本地后续预定实验及汇总",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-round3-extension-20261111\\experiment-plan.md",
+      "observed_at": "2026-11-11",
+      "sha256": "2e7a0a6a42d31c05fd9943787004ef9ce4e055d68df3d038735b94c2d96012eb"
+    },
+    {
+      "id": "research-questions-register",
+      "kind": "external_file",
+      "label": "开测前Q01–Q18只读设计记录（历史）",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-research-questions-20261111\\question-register.json",
+      "observed_at": "2026-11-11",
+      "sha256": "3e096b270d98c09a281df5439acdde5c8a3485b7626759d16406741689354f04"
+    },
+    {
+      "id": "mvsib-transfer-design",
+      "kind": "external_file",
+      "label": "MVSIB只读迁移设计短摘要",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-research-questions-20261111\\mvsib-transfer-notes.md",
+      "observed_at": "2026-11-11",
+      "sha256": "7efc54ccc08b140d1901a5d28bd5aa0ba8290fdcdc6577043b1ef113a8cc046a"
+    },
+    {
+      "id": "research-validation-register",
+      "kind": "external_file",
+      "label": "Q01–Q18开测后问题与结果状态",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-validation-20261111\\question-register.json",
+      "observed_at": "2026-11-11",
+      "sha256": "8e6e73e9d7fb6662c3c0447722ccbe6d0501db7afc17b4365bdd810c273505c4"
+    },
+    {
+      "id": "research-validation-plan",
+      "kind": "external_file",
+      "label": "本轮逐步验证执行计划",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-validation-20261111\\task_plan.md",
+      "observed_at": "2026-11-11",
+      "sha256": "f4d4680dff3ae1f2c5f043969b62dd0e153c0fd73c17fab32e17a117d56fbbd2"
+    },
+    {
+      "id": "research-validation-public-manifest",
+      "kind": "external_file",
+      "label": "本批公开材料精确白名单与哈希",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-validation-20261111\\public-evidence-manifest.json",
+      "observed_at": "2026-11-11",
+      "sha256": "c120de584ec3171300efb7fc8cdd3ef8c537f043171617c12b63e0721b6055f9"
+    },
+    {
+      "id": "common-comparison-plan",
+      "kind": "external_file",
+      "label": "四候选统一比较冻结计划",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-common-comparison-20261112\\task_plan.md",
+      "observed_at": "2026-11-12",
+      "sha256": "1a2a957a7e0a2046cba77a77184ceb88079644893a1a56ea4cfab7c721c1fc6f"
+    },
+    {
+      "id": "common-comparison-results",
+      "kind": "external_file",
+      "label": "四候选统一结果与研究候选/限制",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-common-comparison-20261112\\README.md",
+      "observed_at": "2026-11-12",
+      "sha256": "aee005a01c798c51e680a5a61b9d1c887cb10920461896a5a4cfdc0cc246e5f1"
+    },
+    {
+      "id": "common-comparison-manifest",
+      "kind": "external_file",
+      "label": "本批精确公共白名单与文件哈希",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-common-comparison-20261112\\public-evidence-manifest.json",
+      "observed_at": "2026-11-12",
+      "sha256": "845cd6f478c6c745e509d783f9e12be114472a50d6139c863241d921e5d84589"
+    },
+    {
+      "id": "common-comparison-statistics",
+      "kind": "external_file",
+      "label": "统一统计独立读回",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-common-comparison-20261112\\statistics\\readback-verification.json",
+      "observed_at": "2026-11-12",
+      "sha256": "ff4ea999b4801a3a25201e043f5676c06b9ced614621fa4fd8a9ce67d27415df"
+    },
+    {
+      "id": "ae-followup-plan",
+      "kind": "external_file",
+      "label": "AE固定研究对象与预算/六块计划",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-common-comparison-20261112\\ae-followup\\task_plan.md",
+      "observed_at": "2026-11-12",
+      "sha256": "0d90f392b7c6af9e211d6a2ae295cf170b792e1ae371d5c78436b9df091ffad4"
+    },
+    {
+      "id": "ae-followup-results",
+      "kind": "external_file",
+      "label": "AE后续验证与否定稳健升级的边界",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-common-comparison-20261112\\ae-followup\\README.md",
+      "observed_at": "2026-11-12",
+      "sha256": "b398aa72a0eb05cfc9cea30bc72248d08628ab6ea987356694bfe16f328b5973"
+    },
+    {
+      "id": "ae-followup-public",
+      "kind": "external_file",
+      "label": "本批精确公开清单",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-common-comparison-20261112\\ae-followup\\public-evidence-manifest.json",
+      "observed_at": "2026-11-12",
+      "sha256": "1b41f9c2ab611be89aa8823ba4aa47c5deeec2d5b6cf968e056808a0b0395a5f"
+    },
+    {
+      "id": "ae-followup-review",
+      "kind": "external_file",
+      "label": "新研究说明独立审查",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-common-comparison-20261112\\ae-followup\\review-followup-final.md",
+      "observed_at": "2026-11-12",
+      "sha256": "1ceb089d62ff3480352e2a9bfd4c964416be72786c6e9853a14b970b7519a03a"
+    },
+    {
+      "id": "final-research-plan",
+      "kind": "external_file",
+      "label": "最后固定执行计划",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-final-validation-20261112\\task_plan.md",
+      "observed_at": "2026-11-12",
+      "sha256": "c6d0ff58feed195bc4db1a803813faaedebb4fd7902874168d4139faeb24c1f4"
+    },
+    {
+      "id": "final-research-results",
+      "kind": "external_file",
+      "label": "全体概率价值经理名单与最终取舍",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-final-validation-20261112\\README.md",
+      "observed_at": "2026-11-12",
+      "sha256": "8942c184e70ddc396721ebf4544765632ace18dc99918bf4a591b01d0219a94d"
+    },
+    {
+      "id": "final-research-data",
+      "kind": "external_file",
+      "label": "七快照成熟隔离数据manifest",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-final-validation-20261112\\data\\data-manifest.json",
+      "observed_at": "2026-11-12",
+      "sha256": "0f7f16aed6f01b0b3d2ed83bf14f2eaf739cea88c393418449419b23b6bf37f6"
+    },
+    {
+      "id": "final-research-probability",
+      "kind": "external_file",
+      "label": "全体概率保存回放",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-final-validation-20261112\\probability\\replay-verification.json",
+      "observed_at": "2026-11-12",
+      "sha256": "249a25c596c2c89175a6697662f93680597cfe3c0ad9ddfad443acce8667cf24"
+    },
+    {
+      "id": "final-research-value",
+      "kind": "external_file",
+      "label": "六金额模型十八全量经理表及容量manifest",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-final-validation-20261112\\value\\value-manifest.json",
+      "observed_at": "2026-11-12",
+      "sha256": "8e84ac942574f03242db089b82db08a30ef105e61e16b7eb74b0ca8c72bd01a5"
+    },
+    {
+      "id": "final-research-questions",
+      "kind": "external_file",
+      "label": "原十八与新增两项最终结案",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-final-validation-20261112\\closure\\question-closeout.json",
+      "observed_at": "2026-11-12",
+      "sha256": "8cccffb6d5619fa119b073722d30783e7f9140c0f8cce62bdfabf46e0af563c1"
+    },
+    {
+      "id": "final-research-review",
+      "kind": "external_file",
+      "label": "最终说明独立有界审查",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-final-validation-20261112\\review-final-report.md",
+      "observed_at": "2026-11-12",
+      "sha256": "d7e687c6d42b8b55f533667f6b333a46c5eee9fa72b017a57c6eb965108f0f3e"
+    },
+    {
+      "id": "team-round3-intake",
+      "kind": "external_file",
+      "label": "真实1–4号收件哈希与目录",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-round3-team-intake-20261112\\intake-manifest.json",
+      "observed_at": "2026-11-12",
+      "sha256": "0726e824efd246a887d3330413d4cf20932be4a2ef337a1c16a408ccac8e886e"
+    },
+    {
+      "id": "team-round3-acceptance",
+      "kind": "external_file",
+      "label": "逐岗验收/补件与整体说明",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-round3-team-intake-20261112\\README.md",
+      "observed_at": "2026-11-12",
+      "sha256": "7731a2917ebf0b86cec60b8a4e14391427551d63662c33dd631400726a15e219"
+    },
+    {
+      "id": "team-round3-state",
+      "kind": "external_file",
+      "label": "结构化逐岗验收状态",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-round3-team-intake-20261112\\acceptance.json",
+      "observed_at": "2026-11-12",
+      "sha256": "346821edfae38dc6a3aa6554ce9177e75552d39ceb09525d7e6f9c478e821f6b"
+    },
+    {
+      "id": "team-round3-replay",
+      "kind": "external_file",
+      "label": "逐人回算/来源验收总表",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-round3-team-intake-20261112\\audit\\readback-summary.json",
+      "observed_at": "2026-11-12",
+      "sha256": "8dfcf6e449391151ce30c3659a2c768783217babd477fcb95bddfc875a93dc59"
+    },
+    {
+      "id": "team-round3-independent-review",
+      "kind": "external_file",
+      "label": "本批独立有界审查",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-round3-team-intake-20261112\\review\\independent-review.json",
+      "observed_at": "2026-11-12",
+      "sha256": "e30e1661e1b395973780ef9a5520d90e2aabb74e6ff537af7212819a57bc6a32"
+    },
+    {
+      "id": "team-round3-public-manifest",
+      "kind": "external_file",
+      "label": "本批精确公共白名单",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-round3-team-intake-20261112\\public-evidence-manifest.json",
+      "observed_at": "2026-11-12",
+      "sha256": "5e2d420d152684cfbbaac01de749f2c0d018958be9dc1cae1c6c0721c3692540"
+    },
+    {
+      "id": "role05-intake",
+      "kind": "external_file",
+      "label": "5号原件收件与哈希",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-role05-intake-20261113\\intake-manifest.json",
+      "observed_at": "2026-11-13",
+      "sha256": "2b17e9f9396f62d59edf932ef61f00324cceeacc57813d2f816447da90167ddd"
+    },
+    {
+      "id": "role05-readback",
+      "kind": "external_file",
+      "label": "5号关键数字独立回算",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-role05-intake-20261113\\audit\\readback.json",
+      "observed_at": "2026-11-13",
+      "sha256": "be76b4aa8ea4fd4e64ec3e23518c7d80bb8caac2624f6d7f53ea71abfcd335e2"
+    },
+    {
+      "id": "role05-acceptance",
+      "kind": "external_file",
+      "label": "5号有界验收与限制",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-role05-intake-20261113\\README.md",
+      "observed_at": "2026-11-13",
+      "sha256": "ddad3ec4d172300bda255a2f864b7d8311bbff2f0e8cc6f18f22b4ba53b557dc"
+    },
+    {
+      "id": "report-local-mainline-decision",
+      "kind": "external_file",
+      "label": "本人确认最终报告采用本地研究主线",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-role05-intake-20261113\\report-mainline-decision.json",
+      "observed_at": "2026-11-13",
+      "sha256": "fd317e6d1231c5118acd073a1f8e0dc33047b3254e709afbb24a50cc4306cb89"
+    },
+    {
+      "id": "role05-independent-review",
+      "kind": "external_file",
+      "label": "本批独立说明复核",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-role05-intake-20261113\\review\\intake-mainline-review.json",
+      "observed_at": "2026-11-13",
+      "sha256": "9b9426c1be50d44dc21ab15d93fc24c5d9f329017ab778c1a637f400dd23b317"
+    },
+    {
+      "id": "role05-public-manifest",
+      "kind": "external_file",
+      "label": "本批精确公共白名单",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-role05-intake-20261113\\public-evidence-manifest.json",
+      "observed_at": "2026-11-13",
+      "sha256": "0a6a1215f815d0f9a86b91c0540e48a54dc5e9f628517c6915fb48c2fe797203"
+    },
+    {
+      "id": "role02-v11-intake",
+      "kind": "external_file",
+      "label": "特征证据v1.1补件收件与差异",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-role02-v11-intake-20261113\\intake-manifest.json",
+      "observed_at": "2026-11-13",
+      "sha256": "bb09df876f320eda6816464bb0c4994bde8a9d92c6769f0b758b04b8fc42a0dd"
+    },
+    {
+      "id": "role02-v11-acceptance",
+      "kind": "external_file",
+      "label": "20CI修订定向验收与范围",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-role02-v11-intake-20261113\\README.md",
+      "observed_at": "2026-11-13",
+      "sha256": "a6b1affba0c309e8a8e897c1062e4fe4803f3e8d740b69c01051c5a162563c47"
+    },
+    {
+      "id": "role02-v11-verification",
+      "kind": "external_file",
+      "label": "v1.1区间重算和不变性",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-role02-v11-intake-20261113\\audit\\verification.json",
+      "observed_at": "2026-11-13",
+      "sha256": "1331184be46cf184389ea4a416c2c87646e27c0ef22bae05fc54322ecfdd6c66"
+    },
+    {
+      "id": "role02-v11-independent-review",
+      "kind": "external_file",
+      "label": "补件定向独审",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-role02-v11-intake-20261113\\review\\role02-v11-intake-review.json",
+      "observed_at": "2026-11-13",
+      "sha256": "983e48a4f4874cd1648c3d30449539718b5c654d7c93d14ac77c74276ff08a7c"
+    },
+    {
+      "id": "role02-v11-public-manifest",
+      "kind": "external_file",
+      "label": "本批增量公共清单",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-role02-v11-intake-20261113\\public-evidence-manifest.json",
+      "observed_at": "2026-11-13",
+      "sha256": "d1612ecfb1ffdcf817fd6813df1c5d7faeac7b28340bf0588bdf5328de2ce462"
+    },
+    {
+      "id": "route-comparison",
+      "kind": "external_file",
+      "label": "A/B设计效果资料全面对照",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-route-wording-20261114\\candidate\\research\\route-comparison-20261114\\README.md",
+      "observed_at": "2026-11-14",
+      "sha256": "2e1a9991911606392e4d1cbbb88daba8698ac7ed696fa31165fa2c485a4d615f"
+    },
+    {
+      "id": "route-image-comparison",
+      "kind": "external_file",
+      "label": "8旧3新精选图并列和适用边界",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-route-wording-20261114\\candidate\\research\\route-comparison-20261114\\IMAGE-COMPARISON.md",
+      "observed_at": "2026-11-14",
+      "sha256": "80853a0d42dcb54fdcf317e3bb05f2fa2158f4c71c54cab3177b0e8f9f89025c"
+    },
+    {
+      "id": "route-decision-correction",
+      "kind": "external_file",
+      "label": "本人澄清与D14待投票更正",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-route-comparison-20261114\\decision-correction.json",
+      "observed_at": "2026-11-14",
+      "sha256": "37094f09eddc37eb803103d78290587dbe3a255b37f545b7d47daf582949f019"
+    },
+    {
+      "id": "route-vote-packages",
+      "kind": "external_file",
+      "label": "两套具体冻结提案未采用",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-route-wording-20261114\\candidate\\research\\route-comparison-20261114\\vote-packages.json",
+      "observed_at": "2026-11-14",
+      "sha256": "959cc2a70da02d2b22da240601e5635ad96cc9e728991761ffd005833a3897a4"
+    },
+    {
+      "id": "route-independent-review",
+      "kind": "external_file",
+      "label": "全面对照与群投票独审",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-route-comparison-20261114\\review\\final-review.md",
+      "observed_at": "2026-11-14",
+      "sha256": "e7c755481017b36f83d77ed2918b521c17a810de027974ff524e0f5215db8d97"
+    },
+    {
+      "id": "route-public-manifest",
+      "kind": "external_file",
+      "label": "本批聚合图文白名单",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-route-wording-20261114\\public-evidence-manifest.json",
+      "observed_at": "2026-11-14",
+      "sha256": "4cf05e51bd1f5697afec43a3bfbd49c47ba12ad9f8a44f33d0077c91189bb8c5"
+    },
+    {
+      "id": "canvas-requirements-live",
+      "kind": "external_file",
+      "label": "已登录Canvas当前截止与指南要求",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-route-comparison-20261114\\canvas-current-requirements.json",
+      "observed_at": "2026-11-14",
+      "sha256": "11986f257529d01d3fdcf991e4e2704b6488f656fbc2d16bc1df19104ac7197e"
+    },
+    {
+      "id": "route-wording-update",
+      "kind": "external_file",
+      "label": "A/B版本称呼与承接关系更新",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-route-wording-20261114\\README.md",
+      "observed_at": "2026-11-14",
+      "sha256": "8d6227b84f6726df3a7b6d685f2d6c87d65fd38e5bea41b8cd2a8edcb5ef3017"
+    },
+    {
+      "id": "route-wording-review",
+      "kind": "external_file",
+      "label": "19当前候选措辞定向独审",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-route-wording-20261114\\review\\wording-review.md",
+      "observed_at": "2026-11-14",
+      "sha256": "cdd52ba5c11dab37be4324067350a7fa2f810be27437b34a0dccef0f20d42790"
+    },
+    {
+      "id": "route-wording-checks",
+      "kind": "external_file",
+      "label": "配置/结果不变及发布链接核验",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-route-wording-20261114\\checks.json",
+      "observed_at": "2026-11-14",
+      "sha256": "11ff106f976d07e8f9fd0e6353a493569d55c0e152c57ab0327e817f6ac3168b"
+    },
+    {
+      "id": "ppt-handoff",
+      "kind": "external_file",
+      "label": "新会话最终PPT完整交接",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-ppt-handoff-20261115\\README.md",
+      "observed_at": "2026-11-15",
+      "sha256": "0cbe5ea386e57c547f504b0bd5d6e3e7eb89cf8b8ca846828deb71d5e067217b"
+    },
+    {
+      "id": "team-B-adoption",
+      "kind": "external_file",
+      "label": "本人直接确认全组已选B",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-ppt-handoff-20261115\\team-adoption.json",
+      "observed_at": "2026-11-15",
+      "sha256": "75dadeb4d0410011879015b5dbcdae54dd60a7ff59e6a11c9c250538c51b856a"
+    },
+    {
+      "id": "ppt-requirements",
+      "kind": "external_file",
+      "label": "历史制作阶段的Canvas要求与当时不得提交边界（2026-11-15）；不改变当前已提交事实",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-final-presentation-20261115\\canvas-requirements-20261115.json",
+      "observed_at": "2026-11-15",
+      "sha256": "4e209d81b053c6a9b8ee7117464dab2cbe76aa6d1c7361f9de046f2417fadbbf"
+    },
+    {
+      "id": "ppt-assets",
+      "kind": "external_file",
+      "label": "31项现有素材/源码路径与SHA",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-ppt-handoff-20261115\\asset-index.csv",
+      "observed_at": "2026-11-15",
+      "sha256": "f22215237f69aee935be389cd0be8c17addff1464b65ceae7bff583cc1b7cf95"
+    },
+    {
+      "id": "ppt-handoff-review",
+      "kind": "external_file",
+      "label": "交接全文定向独审",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-ppt-handoff-20261115\\review\\handoff-review.md",
+      "observed_at": "2026-11-15",
+      "sha256": "60aefc3806f27de799600fe42e26ee4941f7820c0366f789e521416aba761b19"
+    },
+    {
+      "id": "ppt-handoff-public-manifest",
+      "kind": "external_file",
+      "label": "本批公开交接清单",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-ppt-handoff-20261115\\public-evidence-manifest.json",
+      "observed_at": "2026-11-15",
+      "sha256": "84719902de7dd8e09c2e6311fdfcbca87197f1d5b5567e5187ccb8bc099a28b9"
+    },
+    {
+      "id": "ppt-first-draft-package",
+      "kind": "external_file",
+      "label": "稳定初稿25文件清单",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-final-presentation-20261115\\release-manifest.json",
+      "observed_at": "2026-11-15",
+      "sha256": "2157e2e673909436540b4fb6195c2787eef52d3dc92ab5316b74a7ef55882d0e"
+    },
+    {
+      "id": "ppt-first-draft-github",
+      "kind": "external_file",
+      "label": "作者Git远端25项核验",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-final-presentation-20261115\\github-receipt.json",
+      "observed_at": "2026-11-15",
+      "sha256": "b99efcc974d627527a5e46cfcb1c6e0ca5a6cacb1b7bc208c68eea9ec788bcd1"
+    },
+    {
+      "id": "ppt-first-draft-intake",
+      "kind": "external_file",
+      "label": "本课初稿接收说明",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-ppt-draft-intake-20261115\\README.md",
+      "observed_at": "2026-11-15",
+      "sha256": "dd6ffd7e01f7bacd7650abe66b963b2699d02133c729efa6ab6a0559115f589e"
+    },
+    {
+      "id": "ppt-first-draft-user-instruction",
+      "kind": "external_file",
+      "label": "本人明确第一版需组审修改，不得提交",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-ppt-draft-intake-20261115\\review-status.json",
+      "observed_at": "2026-11-15",
+      "sha256": "91b6353cd1ce9ec96f4d7b50cd3cddf8a965ad39b8487ad55f3945fa64706daf"
+    },
+    {
+      "id": "ppt-first-draft-checks",
+      "kind": "external_file",
+      "label": "25源文件/ZIP/当日要求证据",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-ppt-draft-intake-20261115\\source-package-verification.json",
+      "observed_at": "2026-11-15",
+      "sha256": "1753477cd735900df3e4204a5b535ed479bf918823ed29dd2ecd00febd0a04be"
+    },
+    {
+      "id": "ppt-first-draft-review",
+      "kind": "external_file",
+      "label": "作者全12页独审与定向关闭",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-final-presentation-20261115\\review\\independent-review.md",
+      "observed_at": "2026-11-15",
+      "sha256": "fac838cd85d0edeed4355153cd97110c25fea2f40a4c472def6f3a94393f8d8f"
+    },
+    {
+      "id": "ppt-first-draft-public-manifest",
+      "kind": "external_file",
+      "label": "本批接收公开清单",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-ppt-draft-intake-20261115\\public-evidence-manifest.json",
+      "observed_at": "2026-11-15",
+      "sha256": "f6cb4ec89ccd868597de5bab65cf7dda9143fb28625585d3b7c061ef965fa2ab"
+    },
+    {
+      "id": "route-A-adoption",
+      "kind": "external_file",
+      "label": "本人最新确认当前PPT采用A",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-route-A-decision-20261115\\route-decision.json",
+      "observed_at": "2026-11-15",
+      "sha256": "e6f89457f158555cb35ab1f2fe21ed1b9f217708f4faaa7023ffc2f435127603"
+    },
+    {
+      "id": "route-A-discussion",
+      "kind": "external_file",
+      "label": "组内反馈分歧与中立过程记录",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-route-A-decision-20261115\\README.md",
+      "observed_at": "2026-11-15",
+      "sha256": "57d53865d8b3b0f652edea5910f4f8ee1f691a62905284173b9f3171128e7b94"
+    },
+    {
+      "id": "route-A-PPT-handoff",
+      "kind": "external_file",
+      "label": "A制作会话接续说明",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-route-A-decision-20261115\\A-PPT-START-HERE.md",
+      "observed_at": "2026-11-15",
+      "sha256": "ece4413d1d51f69e602d03aa5b563d5554ebdc82d7c03b814f828a5a03bde6aa"
+    },
+    {
+      "id": "route-A-baseline",
+      "kind": "external_file",
+      "label": "A原结果/群切片来源",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-route-A-decision-20261115\\A-baseline.json",
+      "observed_at": "2026-11-15",
+      "sha256": "c7c731d4059d4073513c59e3bf1eb160e0547f91aff17717b69e44cc5bc9cae1"
+    },
+    {
+      "id": "route-A-evidence-index",
+      "kind": "external_file",
+      "label": "7源图哈希与匿名证据范围",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-route-A-decision-20261115\\evidence-index.json",
+      "observed_at": "2026-11-15",
+      "sha256": "471f0a213f88be0bb705d80ec02912b4c172f95d030078586a5861e8d8afb3b4"
+    },
+    {
+      "id": "route-A-review",
+      "kind": "external_file",
+      "label": "本次中立记录与A接续独审",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-route-A-decision-20261115\\review\\record-review.md",
+      "observed_at": "2026-11-15",
+      "sha256": "7bf12216cef008dc89f7dfdf995002f54570eb4a66170ddf4bbf8d54564245c4"
+    },
+    {
+      "id": "route-A-public-manifest",
+      "kind": "external_file",
+      "label": "本批匿名公开白名单",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-route-A-decision-20261115\\public-evidence-manifest.json",
+      "observed_at": "2026-11-15",
+      "sha256": "b3c8bc3a0bb0637f8ddfcad085d233b87408272999adcb170cbdb37448dd2ccc"
+    },
+    {
+      "id": "ppt-A-draft-manifest",
+      "kind": "external_file",
+      "label": "当前 A v3：26 文件哈希清单及独立 manifest",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-a-v3-board-shared-20261115\\original\\manifest.json",
+      "observed_at": "2026-11-15",
+      "sha256": "bf16f05edd8f19e35483350575bbb928117a4dc874d875e2298bb0a3d21ea12e"
+    },
+    {
+      "id": "ppt-A-draft-review",
+      "kind": "external_file",
+      "label": "新增第 2/14 页与顺延页码定向独审，缺陷已关闭",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-workflow-preview-20261115\\review\\workflow-review.md",
+      "observed_at": "2026-11-15",
+      "sha256": "c70b7ca733158215f9c031259d8a77e3d6db62c616647b2dbc59685ce9a5550a"
+    },
+    {
+      "id": "ppt-A-draft-decision",
+      "kind": "external_file",
+      "label": "本人认可 A v3 并安排 3 号提交；代理不代交",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-a-v3-board-shared-20261115\\original\\decision.json",
+      "observed_at": "2026-11-15",
+      "sha256": "47a949cc1c7a0d4302006241add457b11ab9e9581f6e50fc2510302813116d14"
+    },
+    {
+      "id": "ppt-A-draft-verification",
+      "kind": "external_file",
+      "label": "A v3 已有 36 项定向核验",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-a-v3-board-shared-20261115\\original\\verification.json",
+      "observed_at": "2026-11-15",
+      "sha256": "f290bbd85f59ab4b9c7573380f5577732ac9015fee2756674a0e275230256ada"
+    },
+    {
+      "id": "ppt-A-draft-github",
+      "kind": "web",
+      "label": "A v3 已认可版本 GitHub 固定入口",
+      "locator": "https://github.com/CercaTrovato/olist-repurchase-analysis/tree/b688bda713ad80b55cff8e922b103ff95281768a/slides/a-v3-20261115",
+      "observed_at": "2026-11-15",
+      "sha256": null
+    },
+    {
+      "id": "ppt-A-v2-ranking-csv",
+      "kind": "external_file",
+      "label": "P4指定H04七方法原CSV；与后续R3分开",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-presentation-a-v2-20261115\\source\\ranking-comparison.csv",
+      "sha256": "0c441cba15087c84c24f77a540b040675ad9eab0bebc05083e1ab8b4d4f5bb9a",
+      "observed_at": "2026-11-15"
+    },
+    {
+      "id": "ppt-A-team-accepted",
+      "kind": "thread",
+      "label": "本人转述全组认可 A v2；掌握和排练未证实，未授权提交",
+      "locator": "01a1dd44-e244-7dd1-aab8-0a3255e1cf64 / 01a1de5d-a695-7cb1-bafd-e71813007054",
+      "observed_at": "2026-11-15",
+      "sha256": null
+    },
+    {
+      "id": "ppt-A-v3-approved",
+      "kind": "thread",
+      "label": "本人认可 A v3、授权同步，并安排 3 号修改后提交",
+      "locator": "01a1dd44-e244-7dd1-aab8-0a3255e1cf64 / 01a1defd-e566-7470-abff-cccac22150f1",
+      "observed_at": "2026-11-15",
+      "sha256": null
+    },
+    {
+      "id": "ppt-final-manifest",
+      "kind": "external_file",
+      "label": "最终提交稿：20 文件哈希清单及 manifest",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-submitted-board-shared-20261115\\original\\manifest.json",
+      "sha256": "b91af86d6372e6acd379d213cef7adb8b967c85bfaed14a91a5a3ba188bceddf",
+      "observed_at": "2026-11-15"
+    },
+    {
+      "id": "ppt-final-record",
+      "kind": "external_file",
+      "label": "本人确认 Slides 已提交与周三展示安排",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-submitted-board-shared-20261115\\original\\submission-record.json",
+      "sha256": "0a870b7d9d645a751a4654bca0957b4720264d03a9bf43a467a1be11a1ecf882",
+      "observed_at": "2026-11-15"
+    },
+    {
+      "id": "ppt-final-intake",
+      "kind": "external_file",
+      "label": "最终 13 页文件结构、原生图缓存及文字差异核对",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-submitted-board-shared-20261115\\original\\intake-record.json",
+      "sha256": "1c285ab106d9ee14665f79128b4152956f385d2a484ddb04d6df046e4b231988",
+      "observed_at": "2026-11-15"
+    },
+    {
+      "id": "ppt-final-user-confirmation",
+      "kind": "thread",
+      "label": "本人提供最终文件并确认已提交、周三课堂展示",
+      "locator": "01a1dd44-e244-7dd1-aab8-0a3255e1cf64 / 01a1dfc2-789f-71a2-8272-97691d1f9edb / 01a1dfc3-9c29-7cd2-acf9-522812d1e73a",
+      "sha256": null,
+      "observed_at": "2026-11-15"
+    },
+    {
+      "id": "presentation-schedule-20261117",
+      "kind": "external_file",
+      "label": "11/17 最新截图与本人确认：Six Sigma Week13 第2组，11/25展示",
+      "locator": "E:\\app-data\\codex\\outputs\\is6400-schedule-update-20261117\\schedule-confirmation.json",
+      "sha256": "e01d1ed38d852793c603e2833770234a7ac713ec16176eebe597960f06eeb5ea",
+      "observed_at": "2026-11-17"
+    },
+    {
+      "id": "notes-update-20261118",
+      "kind": "web",
+      "label": "课程笔记更新：GitHub 已核版本（补充资料，不计小组交付）",
+      "locator": "https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/IS6400_Business_Data_Analytics/review/notes-update-20261118.md",
+      "observed_at": "2026-11-20",
+      "sha256": "29dee557c5c95858e6c5f2c3a919fb057ae373818c584d546c31f6f64fa3e625"
+    },
+    {
+      "id": "audio-update-20261121",
+      "kind": "web",
+      "label": "11/21录音与期末复盘（学习补充；不计小组交付）",
+      "locator": "https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/IS6400_Business_Data_Analytics/review/audio-update-20261121.md",
+      "observed_at": "2026-11-21",
+      "sha256": "0fd731a06f6d5c6909d4940f5bfba3297e5699f235f028f94dc6fe03b3e01982"
+    },
+    {
+      "id": "presentation-prep-20261123",
+      "kind": "local",
+      "label": "最终13页展示理解、6号讲稿与问答准备（未代填排练）",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/notes/presentation-prep-20261123.md",
+      "observed_at": "2026-11-23",
+      "sha256": "7476345b2aa08390962f68598e9f61c30249747c0b75c11474e77c0f6a5c0e94"
+    },
+    {
+      "id": "report-brief-20261123",
+      "kind": "local",
+      "label": "报告要求、已有资料与范围边界（未制作正文）",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/notes/report-brief-20261123.md",
+      "observed_at": "2026-11-23",
+      "sha256": "6f0991ae70f505d1bc0ce9b2b7c18f3b2a5bc52cd657e0c43122fd25de144ecd"
+    },
+    {
+      "id": "frozen-test-20261125",
+      "kind": "local",
+      "label": "冻结模型三期测试及用户核验事实（测试执行完成）",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/notes/frozen-test-20261125.md",
+      "observed_at": "2026-11-25",
+      "sha256": "2f47185812c6a03b631c7366515b16eaa2792927b86e7f3b2871bf8e64d461ff"
+    },
+    {
+      "id": "frozen-test-verification-20261125",
+      "kind": "local",
+      "label": "模型指纹、无训练调用、H02一致与真实运行结果",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/frozen-test-20261125/verification.json",
+      "observed_at": "2026-11-25",
+      "sha256": "4f2bef56477290f216ecd0457faea6559f7deb09197eba71cb885a743457971e"
+    },
+    {
+      "id": "ppt-classroom-20261125",
+      "kind": "local",
+      "label": "11/25课堂15页可编辑PPTX",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/presentation-20261125/IS6400_SixSigma_Classroom_20261125.pptx",
+      "observed_at": "2026-11-25",
+      "sha256": "763f3eb54639798135c987bb5476e4f5ce2804f268eab6a2f0a15b24f3348f11"
+    },
+    {
+      "id": "ppt-classroom-pdf-20261125",
+      "kind": "local",
+      "label": "11/25原生PDF预览",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/presentation-20261125/IS6400_SixSigma_Classroom_20261125.pdf",
+      "observed_at": "2026-11-25",
+      "sha256": "96b06e3830a369a7e420a70e280fab63de81bdaacd1612b7fa1c5b0b40880066"
+    },
+    {
+      "id": "ppt-classroom-guide-20261125",
+      "kind": "local",
+      "label": "11/25中英讲稿与转场",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/notes/classroom-speaker-20261125.md",
+      "observed_at": "2026-11-25",
+      "sha256": "512d2046b63583401052b732974bb91d2bb38c19e837f1d349f66ace37656386"
+    },
+    {
+      "id": "ppt-classroom-qa-20261125",
+      "kind": "local",
+      "label": "11/25参数/划分/测试Q&A",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/notes/classroom-qa-20261125.md",
+      "observed_at": "2026-11-25",
+      "sha256": "132af8168005834c3eb583c41678bec829c5578a5b24d60aa06c29e90cff780f"
+    },
+    {
+      "id": "ppt-classroom-review-20261125",
+      "kind": "local",
+      "label": "本批独立风险抽检与定向复核",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/notes/classroom-ppt-review-20261125/review-stage-2.md",
+      "observed_at": "2026-11-25",
+      "sha256": "b1057969b968e3e61c6c7f00263e35244652b96e62ee40a6a0ee57aa57c976a8"
+    },
+    {
+      "id": "ppt-classroom-report-20261125",
+      "kind": "local",
+      "label": "课堂版本更新与同步范围回传",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/notes/classroom-update-20261125.md",
+      "observed_at": "2026-11-25",
+      "sha256": "161d27a801ea67d285770fb81c8f177fdcdecc736432f0e32652108641385436"
+    },
+    {
+      "id": "mobile-script-20261125",
+      "kind": "local",
+      "label": "旧技术版手机讲稿（历史，当前用经理版）",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/mobile-presenter-20261125/IS6400_Slides_1-2-9_Mobile.pdf",
+      "observed_at": "2026-11-25",
+      "sha256": "24437eb17a4bbf8b19e01ff85a753dcf4fce4aeea807100a8aac5b834ccf2f5f"
+    },
+    {
+      "id": "mobile-qa10-20261125",
+      "kind": "local",
+      "label": "手机10题Q&A｜英文短答与中文提示",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/mobile-presenter-20261125/IS6400_QA10_Mobile.pdf",
+      "observed_at": "2026-11-25",
+      "sha256": "28ee6c010514bfae0bbb636b37c1574d0ba3790d3e0add7c7deec08ce5cb73f9"
+    },
+    {
+      "id": "manager-script-20261125",
+      "kind": "local",
+      "label": "当前本人经理版主讲｜第1/2/9页，24pt",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/mobile-presenter-20261125/manager/IS6400_Slides_1-2-9_Manager_Mobile.pdf",
+      "observed_at": "2026-11-25",
+      "sha256": "1c1a5b1847277a6962952fe6f779e92870997bd9dfe0a81dbd8c8eb212dd9369"
+    },
+    {
+      "id": "report-gap-audit-20261126",
+      "kind": "local",
+      "label": "最终报告前审计与六岗建议",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/notes/report-gap-audit-20261126.md",
+      "observed_at": "2026-11-26",
+      "sha256": "83cb349f61f6a5f0c1aa2779f857e5933ff861029b92c5f31bc2b416d1e4fd79"
+    },
+    {
+      "id": "post-presentation-facts-20261126",
+      "kind": "local",
+      "label": "本人确认展示完成及报告未开始",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-gap-audit-20261126/user-facts-20261126.json",
+      "observed_at": "2026-11-26",
+      "sha256": "239e62c85bdcd5be6f1e256414b5fa208befb63994e6e15471b44408fc5c432b"
+    },
+    {
+      "id": "report-audit-verification-20261126",
+      "kind": "local",
+      "label": "审计实际范围与机器核验",
+      "locator": "IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-gap-audit-20261126/verification.json",
+      "observed_at": "2026-11-26",
+      "sha256": "cd9c0d848df5a1cc6e37bb39ac69a5e692971b2e5c2d3733cb438a88004a5de2"
+    }
+  ]
+}

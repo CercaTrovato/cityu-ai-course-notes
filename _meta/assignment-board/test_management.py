@@ -24,13 +24,26 @@ class ManagementTests(unittest.TestCase):
     def test_partial_dependency_can_be_satisfied(self):
         fixture=copy.deepcopy(self.config['IS6400-A06'])
         stage=next(n for n in fixture['deliverables'] if n['id']=='clusters')
-        next(c for c in stage['checks'] if c['id']=='code')['status']='unknown'
+        ready,pending=stage['checks'][:2]
+        stage['receipt']='verified'
+        ready.update(status='pass',evidence=[self.records['IS6400-A06']['sources'][0]['id']])
+        pending.update(status='unknown',evidence=[])
+        for edge in fixture['edges']:
+            if edge['from']=='clusters' and edge['to'] in ('feedback','delivery'):
+                edge.update(kind='required',requires=[ready['id']] if edge['to']=='feedback' else [ready['id'],pending['id']])
         m=enrich(self.records['IS6400-A06'],fixture)
         edges={(e['from'],e['to']):e for e in m['edges']}
         self.assertTrue(edges['clusters','feedback']['satisfied'])
         self.assertFalse(edges['clusters','delivery']['satisfied'])
     def test_parallel_work_is_not_blocked_by_unfinished_research(self):
-        m=enrich(self.records['IS5542-A01'],self.config['IS5542-A01'])
+        fixture=copy.deepcopy(self.config['IS5542-A01'])
+        rules=next(n for n in fixture['deliverables'] if n['id']=='rules')
+        pending=rules['checks'][0]
+        pending.update(status='unknown',evidence=[])
+        for edge in fixture['edges']:
+            if edge['from']=='rules' and edge['to']=='core':edge['kind']='parallel'
+            if edge['from']=='rules' and edge['to']=='acceptance':edge.update(kind='required',requires=[pending['id']])
+        m=enrich(self.records['IS5542-A01'],fixture)
         self.assertTrue(next(e for e in m['edges'] if e['from']=='rules' and e['to']=='core')['satisfied'])
         self.assertFalse(next(e for e in m['edges'] if e['from']=='rules' and e['to']=='acceptance')['satisfied'])
     def test_source_change_invalidates_manager_snapshot(self):
@@ -50,12 +63,15 @@ class ManagementTests(unittest.TestCase):
         config=copy.deepcopy(self.config['IS6400-A06'])
         without=copy.deepcopy(config)
         without['deliverables']=[n for n in without['deliverables'] if n.get('scope')!='supporting']
-        without['edges']=[e for e in without['edges'] if e['from']!='local-comparison' and e['to']!='local-comparison']
+        kept={n['id'] for n in without['deliverables']}
+        without['edges']=[e for e in without['edges'] if e['from'] in kept and e['to'] in kept]
         baseline=enrich(self.records['IS6400-A06'],without)['metrics']
         actual=enrich(self.records['IS6400-A06'],config)['metrics']
         for key in ('received','total','pass','accepted','checks'):
             self.assertEqual(baseline[key],actual[key])
-        self.assertEqual(1,actual['supporting'])
+        expected=sum(n.get('scope')=='supporting' for n in config['deliverables'])
+        self.assertGreater(expected,0)
+        self.assertEqual(expected,actual['supporting'])
 
     def test_coordination_change_also_invalidates_snapshot(self):
         r=copy.deepcopy(self.records['IS6400-A06'])
