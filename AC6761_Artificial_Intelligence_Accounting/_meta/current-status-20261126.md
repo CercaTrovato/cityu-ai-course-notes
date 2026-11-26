@@ -21,4 +21,4 @@ updated: 2026-11-26
 
 [[AC6761_Artificial_Intelligence_Accounting/00-课程总览|课程总览]] · [[AC6761_Artificial_Intelligence_Accounting/_meta/作业与DDL|作业与 DDL]] · [[AC6761_Artificial_Intelligence_Accounting/review/README|复习资料]] · [[_meta/github-maintenance-20261126/remaining-gaps|全库待补来源]]
 
-Outline 提到 essay/case，尚无本次最终题数或范围确认；不据此断言期末必无选择题。
+11/25 最后复习课已给口头范围，当前先看 [[AC6761_Artificial_Intelligence_Accounting/review/final-2026/last-class-review|考点、排除范围与英文作答]]；早期17单元保留完整知识路线。题数、分值、选答和允许材料仍待核，不据Outline断言绝无选择题。
