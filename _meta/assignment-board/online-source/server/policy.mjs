@@ -23,7 +23,7 @@ export function validateAsset(a){
 export function validateSnapshot(snapshot,course){
  if(!snapshot||snapshot.schema_version!==1||snapshot.course!==course||!Array.isArray(snapshot.assignments)||snapshot.assignments.length!==1)throw new HttpError(400,'课程发布包结构无效。');
  if(snapshot.assignments.some(r=>r.course!==course||r.assignment_type!=='group'))throw new HttpError(400,'发布包包含跨课程或个人作业。');
- for(const r of snapshot.assignments){const t=r.timeline;if(t&&(t.error||t.schema_version!==1||t.course!==course||t.assignment_id!==r.id||!Array.isArray(t.items)))throw new HttpError(400,'时间线归属或结构无效。');}
+ for(const r of snapshot.assignments){if(r.review&&(r.review.course!==course||!Array.isArray(r.review.units)||!Array.isArray(r.review.documents)))throw new HttpError(400,'复习记录归属或结构无效。');const t=r.timeline;if(t&&(t.error||t.schema_version!==1||t.course!==course||t.assignment_id!==r.id||!Array.isArray(t.items)))throw new HttpError(400,'时间线归属或结构无效。');}
  if(!Array.isArray(snapshot.files)||snapshot.files.length>250)throw new HttpError(400,'附件索引无效。');
  const ids=new Set(snapshot.files.map(f=>f.id));
  for(const f of snapshot.files){validateAsset({asset_id:f.id,sha256:f.id,bytes:f.bytes,name:f.name,mime:f.mime});if((f.preview_id&&!ids.has(f.preview_id))||Object.values(f.links||{}).some(id=>!ids.has(id)))throw new HttpError(400,'附件预览或引用不完整。');}

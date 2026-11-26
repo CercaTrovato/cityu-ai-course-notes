@@ -177,6 +177,8 @@ def collect(root=ROOT, now=None):
     ids = [r['id'] for r in records]
     if len(ids) != len(set(ids)):
         errors.append({'path': '', 'message': '发现重复作业 ID，不能视为有效快照'})
+    from review import attach as attach_review
+    errors.extend(attach_review(records, root))
     from management import attach
     errors.extend(attach(records, root / '_meta/assignment-board/management.json'))
     from timeline import attach as attach_timeline
@@ -218,6 +220,9 @@ class Handler(BaseHTTPRequestHandler):
             data, kind = (ROOT / c['report_path']).read_bytes(), 'text/plain; charset=utf-8'
         elif route in ('/', '/index.html'):
             data, kind = (APP / 'index.html').read_bytes(), 'text/html; charset=utf-8'
+        elif route in ('/review.js', '/review.css'):
+            data = (APP / route.lstrip('/')).read_bytes()
+            kind = 'text/javascript; charset=utf-8' if route.endswith('.js') else 'text/css; charset=utf-8'
         elif route in ('/board.css', '/board.js', '/thinking.css', '/thinking.js', '/timeline.js', '/timeline.css', '/classic.html'):
             kind = {'/board.css':'text/css; charset=utf-8','/board.js':'text/javascript; charset=utf-8','/classic.html':'text/html; charset=utf-8','/thinking.css':'text/css; charset=utf-8','/thinking.js':'text/javascript; charset=utf-8','/timeline.js':'text/javascript; charset=utf-8','/timeline.css':'text/css; charset=utf-8'}[route]
             data = (APP / route.lstrip('/')).read_bytes()
@@ -233,7 +238,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header('Content-Length', str(len(data)))
         self.send_header('Cache-Control', 'no-store')
         self.send_header('X-Content-Type-Options', 'nosniff')
-        self.send_header('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'")
+        self.send_header('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' data: https://raw.githubusercontent.com; frame-ancestors 'none'")
         self.end_headers()
         self.wfile.write(data)
 

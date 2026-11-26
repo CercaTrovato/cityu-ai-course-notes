@@ -49,7 +49,8 @@ export async function buildCourse(record,policy,{cacheDir}){
  }
  // Only references to explicitly listed files become links. Never follow links recursively.
  for(const d of descriptors){if(path.extname(d.real).toLowerCase()!=='.md')continue;const links=Object.fromEntries(Object.entries(d.references).map(([alias,target])=>[alias,target.id]));for(const match of d.bytes.toString('utf8').matchAll(/!?\[[^\]]*\]\(([^\s)]+)(?:\s+[^)]*)?\)/g)){const href=match[1];if(/^[a-z]+:/i.test(href)||href.startsWith('#'))continue;let target;try{target=path.resolve(path.dirname(d.real),decodeURIComponent(href.split('#')[0]));}catch{continue;}const id=filesByPath.get(target.toLowerCase());if(id)links[href]=id;else warnings.push('未共享引用：'+path.basename(d.real)+' → '+href);}entries.get(d.id).links=links;}
- const recordCopy=clean(record);recordCopy.sources=(record.sources||[]).map(s=>{
+ const recordCopy=clean(record);
+ if(record.review){const reviewClean=v=>typeof v==='string'?v.replace(/(?:codex|plugin|file):\/\/[^\s)\]<>"']+/gi,'[本地入口]').replace(/\b[A-Z]:[\\/][^\r\n)\]<>"'，；]+/gi,'[本地资料]').replace(uuid,'[内部记录]'):Array.isArray(v)?v.map(reviewClean):v&&typeof v==='object'?Object.fromEntries(Object.entries(v).filter(([k])=>!privateKeys.has(k)&&k!=='path').map(([k,x])=>[k,reviewClean(x)])):v;recordCopy.review=reviewClean(record.review);}recordCopy.sources=(record.sources||[]).map(s=>{
   const out={id:s.id,label:sharedText(s.label),observed_at:s.observed_at,sha256:s.sha256,assignment_id:record.id};
   const descriptor=descriptors.find(d=>d.item.source_ids?.includes(s.id));
   if(descriptor)return {...out,kind:'shared',asset_id:descriptor.id};

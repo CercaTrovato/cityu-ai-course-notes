@@ -20,5 +20,7 @@ thinking=thinking.replace('async function json(url){','async function json(url){
 thinking=thinking.replace('本地验收版 · 尚未发布线上','线上只读镜像 · 已同步版本').replace('本地工作版 · 线上以最近同步为准','线上只读镜像 · 已同步版本').replace('查看来源路径与当前文件指纹','查看共享文件与当前指纹').replace('当前文件','本次共享文件');
 await fs.writeFile('dist/assets/thinking.js',thinking);await fs.copyFile('src/thinking.css','dist/assets/thinking.css');
 await fs.copyFile('src/timeline.js','dist/assets/timeline.js');await fs.copyFile('src/timeline.css','dist/assets/timeline.css');
+await build({entryPoints:['src/review.mjs'],bundle:true,format:'iife',target:'es2022',outfile:'dist/assets/review.js',minify:true});
+await fs.copyFile('src/review.css','dist/assets/review.css');
 await fs.copyFile('src/index.html','dist/index.html');
 console.log('Built browser app without course data or credentials.');
