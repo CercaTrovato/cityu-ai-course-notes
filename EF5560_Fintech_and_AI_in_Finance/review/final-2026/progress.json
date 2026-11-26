@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "course": "EF5560",
-  "updated_at": "2026-11-23",
+  "updated_at": "2026-11-26",
   "time_zone": "Asia/Hong_Kong",
   "framework_status": "ready_with_pending_sources",
   "units": [
@@ -309,7 +309,7 @@
       "id": "U14",
       "title": "智能投顾与客户风险能力",
       "source_ids": [
-        "SYLLABUS-20261105",
+        "SYLLABUS-20261126",
         "MOCK-A",
         "MOCK-B",
         "L12-PENDING"
@@ -318,14 +318,38 @@
         "U06"
       ],
       "question_types": [
-        "意愿/能力/期限",
-        "AUM盈亏平衡"
+        "意愿/能力/目标/期限与假设",
+        "自动化与人工复核",
+        "小账户收费/AUM盈亏平衡",
+        "再平衡与双边成本",
+        "Betterment/余额宝服务与分销比较"
       ],
       "status": "not_started",
       "mastery": "unknown",
-      "teaching_material_status": "partial_pending_L12",
+      "teaching_material_status": "source_route_integrated_teaching_pending_actual_interaction",
       "diagnostic_status": "not_administered",
-      "evidence": []
+      "evidence": [],
+      "material_updated_at": "2026-11-26",
+      "material_evidence_file": "source-update-20261126.md",
+      "source_sections": [
+        {
+          "source_id": "L12-PENDING",
+          "pages": "2–16",
+          "topics": [
+            "p3–4进入壁垒/服务成本",
+            "p5–9投顾流程/风险画像/客户冲突",
+            "p10再平衡成本",
+            "p11–14 Betterment/治理",
+            "p15余额宝分销",
+            "p16 MCQ"
+          ]
+        },
+        {
+          "source_id": "MOCK-A",
+          "question": "MC16",
+          "note": "盈亏平衡参数来自题面，不是Betterment实际结果"
+        }
+      ]
     },
     {
       "id": "U15",
@@ -336,7 +360,7 @@
         "L11",
         "MOCK-A",
         "MOCK-B",
-        "SYLLABUS-20261105",
+        "SYLLABUS-20261126",
         "L12-PENDING"
       ],
       "prerequisite_ids": [
@@ -346,27 +370,67 @@
         "U13"
       ],
       "question_types": [
-        "身份冲突与复核",
-        "共同凭证备份/恢复",
-        "金融文本AI来源与职责（待L12细化）"
+        "CIA/风险来源/事件响应",
+        "异常检测/误报漏报/服务价值",
+        "独立备份权限/恢复测试",
+        "KYC/AML/制裁筛查/身份冲突与决策留痕",
+        "金融文本金额/单位/期间/公开时点核验",
+        "赎回资格/请求处理/实际到账区别"
       ],
       "status": "not_started",
       "mastery": "unknown",
-      "teaching_material_status": "partial_pending_L12",
+      "teaching_material_status": "source_route_integrated_teaching_pending_actual_interaction",
       "diagnostic_status": "not_administered",
-      "evidence": []
+      "evidence": [],
+      "material_updated_at": "2026-11-26",
+      "material_evidence_file": "source-update-20261126.md",
+      "source_sections": [
+        {
+          "source_id": "L12-PENDING",
+          "pages": "17–27",
+          "topics": [
+            "CIA/事件响应",
+            "Binance与Darktrace案例",
+            "凭证/软件/供应商风险",
+            "恢复与备份"
+          ]
+        },
+        {
+          "source_id": "L12-PENDING",
+          "pages": "28–35",
+          "topics": [
+            "KYC/AML/筛查职责",
+            "服务价值/误报漏报/工作量",
+            "WeLab情境/源记录核验/人工复核"
+          ]
+        },
+        {
+          "source_id": "L12-PENDING",
+          "pages": "36–38",
+          "topics": [
+            "金融文本字段/公布时点",
+            "后续预测评价",
+            "赎回资格/处理与到账"
+          ]
+        }
+      ]
     }
   ],
   "sessions": [],
   "mistakes": [],
   "next_step": {
     "type": "diagnostic_before_teaching",
-    "description": "本人准备好复习后，先逐题做D1/D2，保留原作答；同时待总监督恢复Canvas核Lec12与最终课/复习/答案材料。今晚不主动占用录制熟稿时间。",
+    "description": "资料与路线已补齐L12；本人准备好时先做D1/D2并进入U01。后续按现有顺序到U14/U15，不等待L12；未进行授课/诊断。",
     "unit_ids": [
       "U01"
     ],
     "required_user_input_before_simulation": "是否看过/做过B及本地解析；尚未询问/确认",
-    "diagnostic_plan_id": "DIAGNOSTIC-PLAN"
+    "diagnostic_plan_id": "DIAGNOSTIC-PLAN",
+    "material_followup": [
+      "取得实际末节课录音/转录与当日强调",
+      "11/30后核最终允许材料",
+      "12/6前确认TA准确时刻/会议入口/讲哪卷，课后取得录像/答疑"
+    ]
   },
   "mock_question_map": [
     {
@@ -536,7 +600,13 @@
       ],
       "answer_units": 1,
       "student_exposure": "unknown",
-      "answered": false
+      "answered": false,
+      "supplementary_source_sections": [
+        {
+          "source_id": "L12-PENDING",
+          "pages": "7–9、16"
+        }
+      ]
     },
     {
       "source_id": "MOCK-A",
@@ -548,7 +618,13 @@
       ],
       "answer_units": 1,
       "student_exposure": "unknown",
-      "answered": false
+      "answered": false,
+      "supplementary_source_sections": [
+        {
+          "source_id": "L12-PENDING",
+          "pages": "29–35"
+        }
+      ]
     },
     {
       "source_id": "MOCK-A",
@@ -560,7 +636,13 @@
       ],
       "answer_units": 1,
       "student_exposure": "unknown",
-      "answered": false
+      "answered": false,
+      "supplementary_source_sections": [
+        {
+          "source_id": "L12-PENDING",
+          "pages": "4、12（背景；计算参数仍按原mock）"
+        }
+      ]
     },
     {
       "source_id": "MOCK-A",
@@ -825,7 +907,13 @@
       ],
       "answer_units": 1,
       "student_exposure": "unknown",
-      "answered": false
+      "answered": false,
+      "supplementary_source_sections": [
+        {
+          "source_id": "L12-PENDING",
+          "pages": "7–9、16"
+        }
+      ]
     },
     {
       "source_id": "MOCK-B",
@@ -837,7 +925,13 @@
       ],
       "answer_units": 2,
       "student_exposure": "unknown",
-      "answered": false
+      "answered": false,
+      "supplementary_source_sections": [
+        {
+          "source_id": "L12-PENDING",
+          "pages": "36–37"
+        }
+      ]
     },
     {
       "source_id": "MOCK-B",
@@ -874,7 +968,13 @@
       ],
       "answer_units": 2,
       "student_exposure": "unknown",
-      "answered": false
+      "answered": false,
+      "supplementary_source_sections": [
+        {
+          "source_id": "L12-PENDING",
+          "pages": "26–27、38"
+        }
+      ]
     },
     {
       "source_id": "MOCK-B",
@@ -963,8 +1063,6 @@
     "online_board": "pending_supervisor"
   },
   "external_pending_source_ids": [
-    "CANVAS-CURRENT",
-    "L12-PENDING",
     "FINAL-CLASS-PENDING",
     "TA-REVIEW-PENDING",
     "OFFICIAL-ANSWERS-PENDING",
@@ -972,11 +1070,74 @@
     "DIAGNOSTIC-PLAN"
   ],
   "framework_review": {
-    "status": "independent_samples_reviewed",
-    "reviewer": "/root/framework_review",
+    "status": "independent_increment_samples_reviewed",
+    "reviewer": "/root/l12_route_review",
     "model": "gpt-6.1-sol",
-    "scope": "两条路线及收益口径提醒、未测状态、措辞的定向复核；不代表全课教学验收",
-    "candidate_sha256": "7f4138324c3aa3e76e91d72328c1bcfbaa933e00eb485dc6ed689798fccc5e78",
-    "report": "independent-review.md"
-  }
+    "date": "2026-11-26",
+    "scope": "U14/U15来源与路线的轻量定向样本；未重审全课",
+    "candidate_sha256": "673e0d4adba9a488bb3954bc94ad2b622e1a114ab66b884d19442dbc1be4444b",
+    "report": "independent-review-20261126.md"
+  },
+  "cross_course_review": [
+    {
+      "source_id": "L12-PENDING",
+      "pages": "39",
+      "unit_ids": [
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13"
+      ],
+      "task": "按六问串联同一FinTech服务，只安排复习不修改作业"
+    },
+    {
+      "source_id": "L12-PENDING",
+      "pages": "40",
+      "unit_ids": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13"
+      ],
+      "task": "连接预测/组合与产品/收入/成本/金融权利"
+    }
+  ],
+  "source_updates": [
+    {
+      "date": "2026-11-26",
+      "file": "source-update-20261126.md",
+      "source_ids": [
+        "L12-PENDING",
+        "SYLLABUS-20261126",
+        "CANVAS-RECEIPTS-20261126",
+        "SOURCE-STATUS-20261126"
+      ],
+      "scope": "U14/U15及跨单元回看来源接入",
+      "student_learning_changed": false,
+      "review_status": "independent_targeted_review_complete"
+    }
+  ],
+  "framework_review_history": [
+    {
+      "as_of": "2026-11-23",
+      "status": "independent_samples_reviewed",
+      "reviewer": "/root/framework_review",
+      "model": "gpt-6.1-sol",
+      "scope": "两条路线及收益口径提醒、未测状态、措辞的定向复核；不代表全课教学验收",
+      "candidate_sha256": "7f4138324c3aa3e76e91d72328c1bcfbaa933e00eb485dc6ed689798fccc5e78",
+      "report": "independent-review.md"
+    }
+  ]
 }

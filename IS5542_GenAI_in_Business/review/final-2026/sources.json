@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "course": "IS5542",
-  "updated_on": "2026-11-23",
+  "updated_on": "2026-11-26",
   "sources": [
     {
       "id": "guest-design",
@@ -645,17 +645,32 @@
       "kind": "官方当年",
       "academic_year": "2026/27",
       "semester": "2026/27 Semester A",
-      "status": "pending",
-      "verified_on": null,
-      "verification_scope": "仅尝试访问：iab 与 chrome 均报告 Browser is not available，未进入 Canvas 内容",
+      "status": "verified",
+      "verified_on": "2026-11-26",
+      "verification_scope": "总监督 11/26 已核 Canvas Modules、Announcements 11 条、Files 根 13 项及子目录 1 项；本会话读取其持久回执并直接核新 PDF。不是本会话重新登录 Canvas。",
       "locators": [],
       "limitations": [
-        "无法判定 11/21 后是否已上传新课件、样题、答案或改考试格式；不是“教师尚未发布”"
-      ]
+        "核查只覆盖所报入口和时点；没有独立 mock 不等于以后不会发布；本会话未重新登录 Canvas"
+      ],
+      "verification_history": [
+        {
+          "status": "pending",
+          "verified_on": null,
+          "verification_scope": "仅尝试访问：iab 与 chrome 均报告 Browser is not available，未进入 Canvas 内容",
+          "limitations": [
+            "无法判定 11/21 后是否已上传新课件、样题、答案或改考试格式；不是“教师尚未发布”"
+          ]
+        }
+      ],
+      "evidence_paths": [
+        "_meta/final-review-2026/source-status.json",
+        "_meta/final-review-2026/canvas-receipts.json"
+      ],
+      "verified_by": "supervisor_live_check_plus_local_receipt_read"
     },
     {
       "id": "final-review-1128",
-      "title": "最后复习课：计划 2026-11-28",
+      "title": "2026-11-28 final review：安排已核，实际讲解待补",
       "path": null,
       "url": "https://canvas.cityu.edu.hk/courses/71410",
       "kind": "官方当年",
@@ -663,18 +678,31 @@
       "semester": "2026/27 Semester A",
       "status": "pending",
       "verified_on": null,
-      "verification_scope": "L1 p.9、M01 转录支持最后一周复习的历史安排；按客户端日期 11/23 尚未到 11/28",
+      "verification_scope": "承接总监督对 11/16 公告 646229 的核查：11/28 CMC M3017 10:00 常规课一小时后进行 final review；本会话读 source-status.json 及委派说明。11/26 尚未发生。",
       "locators": [
-        "Lecture 1 p.9",
-        "M01 07:09／11:00"
+        "https://canvas.cityu.edu.hk/courses/71410/discussion_topics/646229"
       ],
       "limitations": [
-        "日期安排原标 tentative；最新公告未回读；复习课课件、录音／转录尚未取得"
-      ]
+        "安排证据来自总监督核查与本地回执，本会话未直接回读公告正文",
+        "实际复习课讲解、录音／转录、教师最终考试说明仍 pending"
+      ],
+      "verification_history": [
+        {
+          "status": "pending",
+          "verified_on": null,
+          "verification_scope": "L1 p.9、M01 转录支持最后一周复习的历史安排；按客户端日期 11/23 尚未到 11/28",
+          "limitations": [
+            "日期安排原标 tentative；最新公告未回读；复习课课件、录音／转录尚未取得"
+          ]
+        }
+      ],
+      "schedule_status": "verified_via_supervisor_receipt",
+      "lecture_content_status": "pending",
+      "schedule_verified_on": "2026-11-26"
     },
     {
       "id": "responsible-1121",
-      "title": "11/21 Responsible AI 新课件与录音／转录",
+      "title": "M10 责任 AI 材料跟踪：讲义已取得，录音／转录待补",
       "path": null,
       "url": "https://canvas.cityu.edu.hk/courses/71410",
       "kind": "官方当年",
@@ -682,11 +710,29 @@
       "semester": "2026/27 Semester A",
       "status": "pending",
       "verified_on": null,
-      "verification_scope": "重查本课 course_files_export 全部 15 文件与 transcripts；未找到专属 M10 原件／转录",
+      "verification_scope": "第 10 讲 PDF 已取得并在新 source lecture-10 中逐页定位、读图文；本条只保留原录音／转录缺口，课件不再列缺。",
       "locators": [],
       "limitations": [
-        "不能推定当天实际授课内容，也不能把 M01 的责任 AI 概览当作 M10 已覆盖"
-      ]
+        "未取得对应课堂录音／转录，不能推定实际口头讲解",
+        "11/21 是既有计划日期，不单凭 PDF 文件名证明实际授课日期"
+      ],
+      "verification_history": [
+        {
+          "status": "pending",
+          "verified_on": null,
+          "verification_scope": "重查本课 course_files_export 全部 15 文件与 transcripts；未找到专属 M10 原件／转录",
+          "limitations": [
+            "不能推定当天实际授课内容，也不能把 M01 的责任 AI 概览当作 M10 已覆盖"
+          ]
+        }
+      ],
+      "resolved_components": [
+        "slides: lecture-10"
+      ],
+      "pending_components": [
+        "classroom audio/transcript"
+      ],
+      "resolved_source_id": "lecture-10"
     },
     {
       "id": "bank-slides",
@@ -698,11 +744,22 @@
       "semester": "2026/27 Semester A",
       "status": "pending",
       "verified_on": null,
-      "verification_scope": "重新枚举本课 course_files_export 全部文件（含无扩展名 PDF）并查 Downloads 相关文件名，未找到；本课当前仍仅部分录音与笔记",
+      "verification_scope": "承接 11/23 本地查找，及总监督 11/26 Canvas 已核入口范围；金融专属讲义／演示原件仍未取得。Lecture 10 的回顾图不冒充 M07 原件。",
       "locators": [],
       "limitations": [
-        "本地核查结论，不是本轮 Canvas 无该文件的结论"
-      ]
+        "仍仅部分录音与笔记；不能称资料全齐；本会话未另登 Canvas"
+      ],
+      "verification_history": [
+        {
+          "status": "pending",
+          "verified_on": null,
+          "verification_scope": "重新枚举本课 course_files_export 全部文件（含无扩展名 PDF）并查 Downloads 相关文件名，未找到；本课当前仍仅部分录音与笔记",
+          "limitations": [
+            "本地核查结论，不是本轮 Canvas 无该文件的结论"
+          ]
+        }
+      ],
+      "last_checked_via_supervisor_on": "2026-11-26"
     },
     {
       "id": "teacher-mock",
@@ -714,11 +771,23 @@
       "semester": "2026/27 Semester A",
       "status": "pending",
       "verified_on": null,
-      "verification_scope": "本课课件与 review 目录未找到独立教师参考卷；公开检索未取得可核题面；Canvas 未进入",
+      "verification_scope": "总监督 11/26 已核 Modules、Announcements 11 条、Files 根 13 项及子目录 1 项，当前已查范围未发现独立 mock 或对应官方答案；本会话读取 source-status 与委派说明。",
       "locators": [],
       "limitations": [
-        "M02 benchmark 示例不是该课程 mock；不能称教师未发布；不编题冒充真题"
-      ]
+        "Lecture 10 的回顾图和 p.2 格式说明不是完整参考卷",
+        "只说明已查范围及当日结果，不证明课程永久没有 mock／答案；本会话未直接重登 Canvas"
+      ],
+      "verification_history": [
+        {
+          "status": "pending",
+          "verified_on": null,
+          "verification_scope": "本课课件与 review 目录未找到独立教师参考卷；公开检索未取得可核题面；Canvas 未进入",
+          "limitations": [
+            "M02 benchmark 示例不是该课程 mock；不能称教师未发布；不编题冒充真题"
+          ]
+        }
+      ],
+      "last_checked_via_supervisor_on": "2026-11-26"
     },
     {
       "id": "teacher-answers",
@@ -730,11 +799,23 @@
       "semester": "2026/27 Semester A",
       "status": "pending",
       "verified_on": null,
-      "verification_scope": "未取得参考卷，也未取得对应官方答案",
+      "verification_scope": "总监督 11/26 已核 Modules、Announcements 11 条、Files 根 13 项及子目录 1 项，当前已查范围未发现独立 mock 或对应官方答案；本会话读取 source-status 与委派说明。",
       "locators": [],
       "limitations": [
-        "笔记自拟答案、讲义自带 benchmark answer key 与 IS5542 教师官方答案分别记录"
-      ]
+        "Lecture 10 的回顾图和 p.2 格式说明不是完整参考卷",
+        "只说明已查范围及当日结果，不证明课程永久没有 mock／答案；本会话未直接重登 Canvas"
+      ],
+      "verification_history": [
+        {
+          "status": "pending",
+          "verified_on": null,
+          "verification_scope": "未取得参考卷，也未取得对应官方答案",
+          "limitations": [
+            "笔记自拟答案、讲义自带 benchmark answer key 与 IS5542 教师官方答案分别记录"
+          ]
+        }
+      ],
+      "last_checked_via_supervisor_on": "2026-11-26"
     },
     {
       "id": "library-index",
@@ -867,6 +948,66 @@
       "limitations": [
         "不是教师样题、没有真实作答与得分；最终检测题尚未生成／泄露"
       ]
+    },
+    {
+      "id": "lecture-10",
+      "title": "IS5542 Lecture 10：全课回顾与 Responsible AI",
+      "path": "IS5542_GenAI_in_Business/course_files_export/canvas-20261126-review/IS5542 - Lecture 10.pdf",
+      "url": "https://canvas.cityu.edu.hk/courses/71410/files/16659404",
+      "kind": "课堂",
+      "academic_year": "2026/27",
+      "semester": "2026/27 Semester A（Canvas 当前来源；p.2 含旧学期信息）",
+      "status": "verified",
+      "verified_on": "2026-11-26",
+      "sha256": "f216367f92aaeaa512135de6cbf51ba531c49fd1e9d3799111802e5eb7e12744",
+      "bytes": 12001699,
+      "physical_pages": 71,
+      "canvas_file_id": 16659404,
+      "canvas_module_item_id": 689609,
+      "canvas_created_at": "2026-11-23 15:22:13（总监督回执）",
+      "verification_scope": "本会话直接核原件 SHA／71 页，抽取全部可提取文本，实际查看 p.1–71 的逐页联系图；p.3–54 复用总监督同源联系图，p.1–2、55–71 本会话从原件新渲染。不是逐声核课或全篇新 M10 正文制作。",
+      "locators": [
+        "p.2 旧日期考试信息",
+        "pp.3–9 全课回顾（pp.3–8 技术／方法；p.9 地区创投观点）",
+        "pp.10–20 责任 AI 原则与背景",
+        "pp.21–32 公平",
+        "p.33 LOQ 行政页",
+        "pp.34–44 透明、可理解和可解释性",
+        "pp.45–54 问责、RACI 与治理",
+        "pp.55–70 措施、安全评估、引用、监测和水印",
+        "p.71 结束页"
+      ],
+      "limitations": [
+        "p.2 8-May-26；20%／80% 与五选四未认证为当前学期规则",
+        "媒体视频未播放；未取得 M10 对应课堂录音／转录",
+        "人物、产品、法规、效果数字按课件版本，不认证现实最新；公平不可能、SHAP 保证、热图因果等过强表述保留限制",
+        "M07 金融原件和 11/28 实际讲解仍缺"
+      ],
+      "page_evidence_path": "evidence/lecture10-20261126/page-map.json",
+      "material_status": "slides_read_and_framework_integrated; transcript_pending",
+      "verified_by": "this_session_local_pdf_and_visual_read"
+    },
+    {
+      "id": "announcement-review-1116",
+      "title": "11/16 公告：11/28 常规课与 final review",
+      "path": null,
+      "url": "https://canvas.cityu.edu.hk/courses/71410/discussion_topics/646229",
+      "kind": "官方当年",
+      "academic_year": "2026/27",
+      "semester": "2026/27 Semester A",
+      "status": "verified",
+      "verified_on": "2026-11-26",
+      "verification_scope": "总监督已核公告；本会话承接委派明确内容并读取 _meta/final-review-2026/source-status.json。未本会话直接登录读公告。",
+      "locators": [
+        "11/28 CMC M3017；10:00 常规课一小时后 final review"
+      ],
+      "limitations": [
+        "实际讲解、录音／转录与最终考试规则尚未到位"
+      ],
+      "verified_by": "supervisor_live_check_and_handoff",
+      "evidence_paths": [
+        "_meta/final-review-2026/source-status.json"
+      ]
     }
   ],
   "search_log": {
@@ -901,5 +1042,24 @@
     ],
     "official_direct_fetches": "2026/27 catalogue PDF and library index/ftlist returned 403 in web open; indexed official excerpts available",
     "limits": "未认证进入 Canvas／AIMS／图书馆具体课程清单；未完成小红书站内检索；不把无搜索结果当无资料"
-  }
+  },
+  "source_update_log": [
+    {
+      "date": "2026-11-26",
+      "added_source_ids": [
+        "lecture-10",
+        "announcement-review-1116"
+      ],
+      "updated_source_ids": [
+        "canvas-latest",
+        "final-review-1128",
+        "responsible-1121",
+        "bank-slides",
+        "teacher-mock",
+        "teacher-answers"
+      ],
+      "scope": "L10 read and integrated; supervisor Canvas receipt explicitly attributed",
+      "no_independent_mock_found_in_checked_scope": true
+    }
+  ]
 }

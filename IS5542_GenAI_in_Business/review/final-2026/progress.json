@@ -2,9 +2,9 @@
   "schema_version": 1,
   "course": "IS5542",
   "course_directory": "IS5542_GenAI_in_Business",
-  "updated_at": "2026-11-23",
+  "updated_at": "2026-11-26",
   "framework_status": "usable_with_source_gaps",
-  "framework_review_status": "sample_review_completed",
+  "framework_review_status": "source_update_sample_review_completed",
   "units": [
     {
       "id": "U01",
@@ -12,7 +12,8 @@
       "source_ids": [
         "lecture-01",
         "lecture-02",
-        "note-m01"
+        "note-m01",
+        "lecture-10"
       ],
       "prerequisite_ids": [],
       "question_types": [
@@ -23,15 +24,18 @@
       "mastery": "unknown",
       "outcomes": [
         "区别规则、预测、生成与产品界面",
-        "追踪文字→token→表示→注意力→逐 token 生成"
+        "追踪文字→token→表示→注意力→逐 token 生成",
+        "对照第 10 讲演进图解释符号、深度学习、生成式与神经符号方向；区分简化时间图与此前四范式分类"
       ],
       "source_locations": [
         "Lecture 1 pp.14–58",
-        "Lecture 2 p.7"
+        "Lecture 2 p.7",
+        "Lecture 10 p.3：四阶段演进回顾图"
       ],
       "teaching_boundaries": [
         "不默认会神经网络／向量；先讲输入输出和学到的参数",
-        "注意训练可并行与生成逐步的区别；语言流畅不证明理解／正确"
+        "注意训练可并行与生成逐步的区别；语言流畅不证明理解／正确",
+        "L10 p.3 的图示阶段不替代 M01 四范式共存框架；图中年份、人物／产品只按课件版本理解"
       ],
       "evidence": []
     },
@@ -42,7 +46,8 @@
         "lecture-01",
         "lecture-02",
         "note-m01",
-        "note-m02"
+        "note-m02",
+        "lecture-10"
       ],
       "prerequisite_ids": [
         "U01",
@@ -57,15 +62,18 @@
       "mastery": "unknown",
       "outcomes": [
         "从任务找模态、性能、延迟、吞吐、上下文、成本约束",
-        "比较开放权重／托管 API／路由方案并提出取舍"
+        "比较开放权重／托管 API／路由方案并提出取舍",
+        "用第 10 讲六向量图重述业务选型取舍，将模型生态分组与具体任务测量分开"
       ],
       "source_locations": [
         "Lecture 1 pp.60–87",
-        "Lecture 2 pp.7–27、81"
+        "Lecture 2 pp.7–27、81",
+        "Lecture 10 pp.4–5：六向量与模型生态回顾"
       ],
       "teaching_boundaries": [
         "先补 token 计价、单位与比例；不背模型榜单名次",
-        "价格与模型表是课件日期快照；用给定数据练方法，不充当实时产品建议"
+        "价格与模型表是课件日期快照；用给定数据练方法，不充当实时产品建议",
+        "L10 p.5 地域生态分组为概览，不能用地域或品牌替代本任务实测，也不认证当前市场排名"
       ],
       "evidence": []
     },
@@ -76,7 +84,8 @@
         "lecture-02",
         "lecture-03",
         "note-m02",
-        "note-m03"
+        "note-m03",
+        "lecture-10"
       ],
       "prerequisite_ids": [
         "U01",
@@ -94,15 +103,18 @@
       "outcomes": [
         "从业务任务选择相应评测类别和验收条件",
         "识别污染、饱和、judge 偏差；解释每个分母和失败类型",
-        "分清至少一次成功的 pass@k、重复全成功的 pass^k、Elo 偏好分及校准／弃答；不把总体通过率直接作幂代替逐题统计"
+        "分清至少一次成功的 pass@k、重复全成功的 pass^k、Elo 偏好分及校准／弃答；不把总体通过率直接作幂代替逐题统计",
+        "把第 10 讲五支柱评测回顾映射到原十类基准，保留数据污染、偏好与客观正确率差异；将公平分组与安全评估接回任务验收"
       ],
       "source_locations": [
         "Lecture 2 pp.28–80",
-        "Lecture 3 pp.69–77"
+        "Lecture 3 pp.69–77",
+        "Lecture 10 p.6、pp.25–29、62、65、67：评测分组、群体口径与监测"
       ],
       "teaching_boundaries": [
         "十类完整覆盖：知识推理、数学、代码、多模态、长上下文、事实性、agent工具、人类偏好、安全、综合／经济价值",
-        "benchmarks 的数学／科学示例用于理解测量对象，不据此设定本课须掌握全部竞赛数学或物理；p.45 原图仍缺"
+        "benchmarks 的数学／科学示例用于理解测量对象，不据此设定本课须掌握全部竞赛数学或物理；p.45 原图仍缺",
+        "L10 p.6 五支柱是另一种归并，不替换十类；公平指标分母在 U12B 展开，安全分类／AutoSxS 的分数不自动成为真值"
       ],
       "evidence": []
     },
@@ -113,7 +125,8 @@
         "lecture-02",
         "guest-design",
         "note-m02",
-        "note-m04"
+        "note-m04",
+        "lecture-10"
       ],
       "prerequisite_ids": [
         "U01"
@@ -127,15 +140,18 @@
       "mastery": "unknown",
       "outcomes": [
         "写清任务、资料、示例、约束、输出格式和未知项",
-        "区分 zero-shot／few-shot、检索补证据、调参训练与上下文修复"
+        "区分 zero-shot／few-shot、检索补证据、调参训练与上下文修复",
+        "用第 10 讲回顾图区分提示中角色、受众、约束、任务和输出格式，解释这些内容怎样服务已明确的业务问题"
       ],
       "source_locations": [
         "Lecture 2 pp.82–87",
-        "Design Thinking pp.5–30"
+        "Design Thinking pp.5–30",
+        "Lecture 10 p.8：提示→JTBD→问题与方案的回顾入口"
       ],
       "teaching_boundaries": [
         "结构合法与事实正确分开；few-shot 不改模型权重",
-        "fine-tuning 在现有课件只作概念／可选干预比较；完整训练或 function calling 工程链未据材料设为已讲必考"
+        "fine-tuning 在现有课件只作概念／可选干预比较；完整训练或 function calling 工程链未据材料设为已讲必考",
+        "L10 p.8 是提示与创意流程概览，不把“上下文越详细越好”等图中文字当成无限堆资料的通用规则"
       ],
       "evidence": []
     },
@@ -181,7 +197,8 @@
         "guest-fde",
         "syllabus-2026a",
         "note-m03",
-        "note-m05"
+        "note-m05",
+        "lecture-10"
       ],
       "prerequisite_ids": [
         "U02",
@@ -199,16 +216,19 @@
       "outcomes": [
         "比较 Deep Research、OpenClaw、autoresearch 的输入、回路和验证信号",
         "从 Diagnose→Prototype→Deploy→Productize 说明数据、人员、监控、成本与放行条件",
-        "用七类应用检查环境是否有界、反馈是否明确；区分 AlphaFold 等科学 AI、强化学习 agent 与 LLM agent，不把预测结构写成实物实验"
+        "用七类应用检查环境是否有界、反馈是否明确；区分 AlphaFold 等科学 AI、强化学习 agent 与 LLM agent，不把预测结构写成实物实验",
+        "用情境判断框架（Cynefin）区分清楚（Clear）、繁杂但可分析（Complicated）、复杂且需试探（Complex）、混乱需先稳定（Chaotic）及未判明（Disorder），说明为何分别采用规则、专家分析、小试验或先稳定再判断"
       ],
       "source_locations": [
         "Lecture 3 pp.42–80",
         "Agentic Era pp.4–12",
-        "FDE pp.6–12"
+        "FDE pp.6–12",
+        "Lecture 10 p.7、p.9、pp.45–54、57–63：Cynefin、地区创投观点与治理交付"
       ],
       "teaching_boundaries": [
         "不把成功 demo 当生产证据；评审和失败尝试也进入成本分母",
-        "嘉宾倍数／行业趋势是材料说法；不是本人部署结果或普遍回报保证"
+        "嘉宾倍数／行业趋势是材料说法；不是本人部署结果或普遍回报保证",
+        "L10 p.7 的情境分类不能按任务名称机械套用，图中从探索到自动化的路径不是每个项目的必经顺序；p.9 地区创投比较为课件观点，非本轮市场事实认证"
       ],
       "evidence": []
     },
@@ -218,7 +238,8 @@
       "source_ids": [
         "guest-design",
         "syllabus-2026a",
-        "note-m04"
+        "note-m04",
+        "lecture-10"
       ],
       "prerequisite_ids": [
         "U01"
@@ -233,15 +254,18 @@
       "outcomes": [
         "从情境、动机、期望结果写 job story，再转 HMW",
         "按组织价值与实施复杂度说明 Top 3 选择依据",
-        "说出同理理解（Empathise）→定义问题（Define）→构思（Ideate）→原型（Prototype）→测试（Test）的阶段任务、产物及反馈；分清理解问题与寻找方案中的发散和收敛"
+        "说出同理理解（Empathise）→定义问题（Define）→构思（Ideate）→原型（Prototype）→测试（Test）的阶段任务、产物及反馈；分清理解问题与寻找方案中的发散和收敛",
+        "把第 10 讲提示→JTBD→HMW→排序→构思／原型的路线接回原 Design Thinking 五阶段，辨别“先找问题”和“先试方案”各在解决什么不确定性"
       ],
       "source_locations": [
-        "Design Thinking pp.31–71；尤其 pp.34、39、49–63"
+        "Design Thinking pp.31–71；尤其 pp.34、39、49–63",
+        "Lecture 10 pp.7–8：情境、提示、JTBD、HMW、排序与原型回顾"
       ],
       "teaching_boundaries": [
         "用户想完成的事（Jobs To Be Done, JTBD）用工作故事（job story）的情境、动机、结果表达；我们可以怎样（How Might We, HMW）把目标改为开放问题；Top 3 指前三条 HMW 候选",
         "job 是用户想实现的结果；不等同岗位或一项产品功能",
-        "p.61 的一般建议和 p.63 的课堂 Top 3 程序分开；先用事实支持定位，再讨论投票"
+        "p.61 的一般建议和 p.63 的课堂 Top 3 程序分开；先用事实支持定位，再讨论投票",
+        "L10 p.8 创意里程碑与原工作坊五阶段是不同层次，不能把里程碑清单当作删除原型／测试的依据"
       ],
       "evidence": []
     },
@@ -357,7 +381,8 @@
       "source_ids": [
         "guest-legal",
         "lecture-01",
-        "note-m09"
+        "note-m09",
+        "lecture-10"
       ],
       "prerequisite_ids": [
         "U01",
@@ -372,15 +397,18 @@
       "mastery": "unknown",
       "outcomes": [
         "分别分析输出权属、训练资料、专业意见、自动驾驶和客户数据",
-        "用事实→争点→适用规则／法域→应用→有条件结论写答案；对 Meridian 分开法律与伦理"
+        "用事实→争点→适用规则／法域→应用→有条件结论写答案；对 Meridian 分开法律与伦理",
+        "把第 10 讲程序公平、申诉纠错、隐私透明取舍与组织问责接回法律案例，区分解释、伦理评价、内部职责与法律责任"
       ],
       "source_locations": [
         "Legal pp.11–49、51–62",
-        "Lecture 1 pp.91–104"
+        "Lecture 1 pp.91–104",
+        "Lecture 10 pp.28、30、37、44、48–51：公平程序、法域／隐私与治理回指"
       ],
       "teaching_boundaries": [
         "先解释权属／许可／责任／隐私，不用案例名代替推理",
-        "法律材料是讲者截至日期的教学版本；没有复核全部现行法律或完整判词，不输出法律意见；缺事实可给条件结论"
+        "法律材料是讲者截至日期的教学版本；没有复核全部现行法律或完整判词，不输出法律意见；缺事实可给条件结论",
+        "L10 的法规概览、RACI 和模型解释不替代逐法域、事实与义务分析；仍未逐项核现行法律"
       ],
       "evidence": []
     },
@@ -391,10 +419,10 @@
         "lecture-01",
         "guest-legal",
         "bank-source26",
-        "responsible-1121",
         "final-review-1128",
         "note-m01",
-        "note-m09"
+        "note-m09",
+        "lecture-10"
       ],
       "prerequisite_ids": [
         "U02",
@@ -411,17 +439,182 @@
       "mastery": "unknown",
       "outcomes": [
         "逐项检查幻觉、注入／权限、隐私、知识产权、公平、人机关系和供应链／环境影响",
-        "用 Govern／Map／Measure／Manage 连接负责人、证据、处理和剩余风险"
+        "用 Govern／Map／Measure／Manage 连接负责人、证据、处理和剩余风险",
+        "按 U12A–U12E 依次学习责任原则、公平、解释、问责与治理措施，把各项控制接回 U03 评测、U06 上线、U11 法律边界"
       ],
       "source_locations": [
+        "Lecture 10 pp.10–32、34–70（p.33 为 LOQ 行政页）",
         "Lecture 1 pp.88–117；NIST pp.111–117",
-        "Legal pp.51–62；11/21 新材料待补"
+        "Legal pp.51–62；11/28 final review 讲解仍待补"
       ],
       "teaching_boundaries": [
         "不能把责任压缩成“加一个人审核”；核人能看到的证据和停止权",
-        "M01 责任 AI 部分可先学，不能冒充已覆盖 11/21；最后复习课到位后定向补范围／题型"
+        "第 10 讲 71 页已实际读图文并接入路线，课堂录音／转录未取得；不因此记本人已学会或全篇正式教学完成",
+        "p.33 是 LOQ 行政信息；p.2 留旧日期的考试说明不用于确认本学期规则；11/28 后据真实讲解定向更新"
       ],
-      "evidence": []
+      "evidence": [],
+      "subunits": [
+        {
+          "id": "U12A",
+          "title": "责任 AI 的对象、原则与社会技术边界",
+          "pages": "10–20",
+          "prerequisite_ids": [],
+          "related_unit_ids": [
+            "U06",
+            "U11"
+          ],
+          "outcomes": [
+            "区分 Responsible／Trustworthy／Ethical AI 的课件用法，指出谁受影响、什么后果、哪些原则需转成可检查的动作",
+            "将有用、无害、诚实及人为控制放回实际应用，区分讲义价值主张与已验证效果"
+          ],
+          "question_types": [
+            "概念比较",
+            "风险定位"
+          ],
+          "boundaries": [
+            "p.11 人物经历与 p.13／14／17 视频为引子，视频本轮未播放；p.16／18 的成功与商业价值说法不能当回报保证"
+          ],
+          "source_ids": [
+            "lecture-10"
+          ],
+          "status": "not_started",
+          "mastery": "unknown",
+          "evidence": []
+        },
+        {
+          "id": "U12B",
+          "title": "公平：先分清比较对象、分母和决策过程",
+          "pages": "21–32",
+          "prerequisite_ids": [
+            "U12A"
+          ],
+          "related_unit_ids": [
+            "U03",
+            "U11"
+          ],
+          "outcomes": [
+            "定位历史／世界、采样测量、设计目标、部署生态的偏差；用代理变量说明删掉敏感列为何可能不足",
+            "区分人口统计均等（Demographic Parity）、机会均等（Equality of Opportunity）、均等化胜算（Equalized Odds）、个体公平与群体公平；逐项说清比较谁和用什么分母",
+            "比较结果公平、程序公平、交叉子群体、反事实问题及前／中／后处理的干预位置"
+          ],
+          "question_types": [
+            "指标辨别",
+            "案例条件判断",
+            "控制设计"
+          ],
+          "boundaries": [
+            "p.26 冲突图不作为无条件不可能定理；正式练习须给基率、预测／标签与适用假设，不把公平和准确率预设为必然此消彼长",
+            "p.27 反事实问句需要因果模型和假设，不能仅翻转一列就宣称因果公平；p.30 法规图仅按课件版本学习，非本轮现行法律核验"
+          ],
+          "source_ids": [
+            "lecture-10"
+          ],
+          "status": "not_started",
+          "mastery": "unknown",
+          "evidence": []
+        },
+        {
+          "id": "U12C",
+          "title": "透明、可理解与解释：解释能证明什么",
+          "pages": "34–44",
+          "prerequisite_ids": [
+            "U12A"
+          ],
+          "related_unit_ids": [
+            "U03",
+            "U11"
+          ],
+          "outcomes": [
+            "区分透明性（Transparency）、可理解性（Interpretability）、可解释性（Explainability），并区分数据／模型／决策透明",
+            "比较本身可理解的模型与事后解释、全局与局部解释；说明 LIME 的局部扰动／替代近似、SHAP 的特征归因、Saliency／Grad-CAM 的关注区域分别提供哪类信息",
+            "读模型卡（Model Card）的用途、数据、评估、局限与群体结果，分析透明、隐私、知识产权、性能间的具体取舍"
+          ],
+          "question_types": [
+            "方法比较",
+            "解释范围判断",
+            "案例论述"
+          ],
+          "boundaries": [
+            "p.41 SHAP 的课件保证措辞不扩为无条件数学保证；本轮不做算法推导或认证实现",
+            "p.42 热图是可视化线索，不能证明精确因果像素、模型正确性或公平性；解释不替代验证；p.37 案例数字未另核"
+          ],
+          "source_ids": [
+            "lecture-10"
+          ],
+          "status": "not_started",
+          "mastery": "unknown",
+          "evidence": []
+        },
+        {
+          "id": "U12D",
+          "title": "问责与治理：把执行、批准和监督落实到人",
+          "pages": "45–54",
+          "prerequisite_ids": [
+            "U12A",
+            "U12C"
+          ],
+          "related_unit_ids": [
+            "U06",
+            "U11"
+          ],
+          "outcomes": [
+            "区分伦理目标和治理流程，按环境／组织／系统三层寻找控制与证据",
+            "解释董事会、CAIO、CRO、合规与技术团队的职责；读 RACI 中执行（Responsible）、最终负责（Accountable）、咨询（Consulted）、知会（Informed）的区别",
+            "将算法影响评估（Algorithmic Impact Assessment）的系统目的、利益相关者、补救、人工干预接到部署审批、监测、问题工单和复查"
+          ],
+          "question_types": [
+            "责任分配",
+            "流程追踪",
+            "治理方案设计"
+          ],
+          "boundaries": [
+            "p.50 RACI 是课件示例分工；每项决策需清楚指定 A，不能由该表推定所有组织／法域相同法律责任",
+            "p.46／52／53 百分比、倍数及审计提速均未另核，自动化报告不等于已经合规或风险消失"
+          ],
+          "source_ids": [
+            "lecture-10"
+          ],
+          "status": "not_started",
+          "mastery": "unknown",
+          "evidence": []
+        },
+        {
+          "id": "U12E",
+          "title": "落实控制：技术、政策、文档、工具和反馈",
+          "pages": "55–70",
+          "prerequisite_ids": [
+            "U12B",
+            "U12C",
+            "U12D"
+          ],
+          "related_unit_ids": [
+            "U03",
+            "U04",
+            "U06",
+            "U11"
+          ],
+          "outcomes": [
+            "把识别→评估→缓解接到技术措施、政策限制、文档透明、工具和反馈；定位训练数据整理、SFT／RLHF、安全策略各在哪一步起作用",
+            "区分开发评估、红队、内部独立保证评估与外部评估；给任务测试、引用检查、漂移监测和客户反馈安排证据与负责人",
+            "追踪输入检查→模型／检索或扩展→引用检查→输出检查，并识别内容分类、图像过滤、数字水印的用途和残余风险"
+          ],
+          "question_types": [
+            "控制匹配",
+            "评测设计",
+            "跨单元综合案例"
+          ],
+          "boundaries": [
+            "Google／Vertex／Imagen／SynthID 仅作为此 PDF 所载版本例子，未核产品当前能力、政策和可用范围；p.63／66 的第一方模型限定保留",
+            "引用、水印、分类分数、LLM 评审或过滤通过均不能单独证明事实正确、完全安全、版权合规或来源覆盖；小数据快速评估不代替代表性任务验证"
+          ],
+          "source_ids": [
+            "lecture-10"
+          ],
+          "status": "not_started",
+          "mastery": "unknown",
+          "evidence": []
+        }
+      ]
     }
   ],
   "sessions": [],
@@ -430,7 +623,7 @@
     "action": "offer_starting_diagnostic_one_question_at_a_time",
     "unit_id": "U01",
     "user_response_required": true,
-    "description": "用户开始后，先确认自评与可用时长，做 D1；当前未施测。同期等待 11/28 最后复习课，补核 M10、教师 mock、答案及正式考试条件。"
+    "description": "有真实学习断点则从该处继续；尚未开始时从 D1 逐题诊断。第 10 讲已接入，依原顺序学习，U12 按 A–E 分轮；11/28 CMC M3017 10:00 常规课一小时后 final review，课后核讲解／转录及最终题型、允许材料；继续等待 M07 金融原件及 mock／答案。"
   },
   "suggested_order": [
     "U01",
@@ -472,30 +665,90 @@
     ],
     "format_final_confirmed": false,
     "permitted_materials": "unknown",
-    "exact_questions_and_choice_rules": "unknown"
+    "exact_questions_and_choice_rules": "unknown",
+    "conflicting_notices": [
+      {
+        "source_id": "lecture-10",
+        "page": 2,
+        "printed_date": "8-May-26",
+        "printed_time": "18:30–20:30",
+        "printed_format": {
+          "multiple_choice": 0.2,
+          "essay": 0.8,
+          "choose_essays": "4 out of 5; 20 points each"
+        },
+        "status": "unconfirmed_for_current_semester",
+        "action": "retain current baseline; seek 11/28 or formal notice confirmation"
+      }
+    ]
   },
   "coverage_notes": [
-    "12 个学习单元覆盖现有 M01–M09 和四模块；并非全部材料已齐或本人学会",
-    "M07 slides、M10／M11、mock／official answers 为待补来源",
-    "不把 syllabus／CILO 比例当考卷各单元分值；不开源模型／法规现状未当作本轮事实重新核验"
+    "12 个主单元覆盖 M01–M10 已取得材料；U12 增五个子单元，学习状态按真实证据保留",
+    "第 10 讲已接入；金融原讲义、11/28 讲解／转录、独立 mock／官方答案与最终考试条件仍待补",
+    "L10 p.2 的旧日期与 20%／80%／五选四作为版本冲突记录，未替换 L1 暂定结构，也未认证哪版为最终规则"
   ],
   "framework_review": {
-    "kind": "independent_planning_sample_review",
-    "reviewer": "/root/is5542_framework_review",
+    "kind": "directed_framework_source_update",
+    "date": "2026-11-26",
+    "status": "completed",
+    "result": "no_remaining_blocker_in_directed_sample",
+    "reviewer": "/root/lecture10_update_review",
     "model": "gpt-6.1-sol",
     "reasoning_effort": "high",
     "scope": [
-      "U07",
-      "U05",
-      "D5 learning path",
-      "accepted changes and U03/U06 wording"
+      "U12C",
+      "exam-version boundary",
+      "source attribution",
+      "L10 p.2 and pp.34–44: 12 source pages"
     ],
-    "result": "no_remaining_blocker_in_sample_and_changes",
     "not_a_full_teaching_or_visual_audit": true,
-    "report_path": "evidence/final-review.md",
-    "report_sha256": "de30f6b218395a7dd82aa394bf96f625fb91f863a6bd1f6eb6bcb3c02a71ca7d",
-    "framework_reviewed_sha256": "1fdb9b1be8fb70b3400c4b6232f74baab5265316518db7a9c44ca74a738753ca",
-    "progress_reviewed_sha256": "870f309e9e3c896e87899e9db5bfd9ceb0d4bc36798a2fac488c4032381c7436",
-    "post_review_maintenance": "Only this review status and review metadata were added after the reviewed version; units, sessions, mistakes and exam conditions unchanged."
-  }
+    "report_path": "evidence/lecture10-20261126/independent-review.md",
+    "report_sha256": "ffbf1090889e66804f69a4956f8ab5c6bac89ea365463874f4e48d9945a0ddb8",
+    "source_check_report_path": "evidence/lecture10-20261126/stage-2.md",
+    "source_check_report_sha256": "be0c96b3eb8ff4cf86d32dbe1411ffc10db8d6164a6dee948f00f2476b3b6206",
+    "reviewed_candidate_sha256": {
+      "framework.md": "db662a9dd4531c99a798ea50b41a9b0d2791df5905abe474f6a83d7e38812405",
+      "progress.json": "eab4ab77f3fb9ef49c508d3a6ebe9d504c687cc81a9b767024a43f0c648e5531",
+      "sources.json": "c3d75d21916bd7eca642d9bdded53abdbfe9854c1c4e66a463222cd8aaa13dda"
+    },
+    "post_review_maintenance": "Only review metadata/material-update review status changed after the reviewed candidate; units, sources, exams, sessions and mistakes unchanged."
+  },
+  "material_updates": [
+    {
+      "date": "2026-11-26",
+      "source_id": "lecture-10",
+      "status": "integrated_into_framework",
+      "pages": 71,
+      "subunits_added": [
+        "U12A",
+        "U12B",
+        "U12C",
+        "U12D",
+        "U12E"
+      ],
+      "learning_status_changed": false,
+      "independent_review_status": "completed_directed_sample_no_remaining_blocker"
+    }
+  ],
+  "framework_review_history": [
+    {
+      "kind": "independent_planning_sample_review",
+      "reviewer": "/root/is5542_framework_review",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "high",
+      "scope": [
+        "U07",
+        "U05",
+        "D5 learning path",
+        "accepted changes and U03/U06 wording"
+      ],
+      "result": "no_remaining_blocker_in_sample_and_changes",
+      "not_a_full_teaching_or_visual_audit": true,
+      "report_path": "evidence/final-review.md",
+      "report_sha256": "de30f6b218395a7dd82aa394bf96f625fb91f863a6bd1f6eb6bcb3c02a71ca7d",
+      "framework_reviewed_sha256": "1fdb9b1be8fb70b3400c4b6232f74baab5265316518db7a9c44ca74a738753ca",
+      "progress_reviewed_sha256": "870f309e9e3c896e87899e9db5bfd9ceb0d4bc36798a2fac488c4032381c7436",
+      "post_review_maintenance": "Only this review status and review metadata were added after the reviewed version; units, sessions, mistakes and exam conditions unchanged."
+    }
+  ]
 }
