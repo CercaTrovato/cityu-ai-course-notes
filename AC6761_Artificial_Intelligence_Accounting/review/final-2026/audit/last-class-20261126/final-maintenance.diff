@@ -1,0 +1,48 @@
+--- reviewed-candidate
++++ final-candidate
+@@ -945,6 +945,8 @@
+ 
+ 给定 Cash 表，Balance >= 50,000 仅保留 BA-8 的 75,000。BA-9 为 0，不满足；BA-6 与 BA-7 是缺失值，不是 0，不能当作已知余额来比较。
+ 
++英文参考：Only BA-8 is returned, with a balance of 75,000. The zero balance does not satisfy the condition, and null balances do not establish that the condition is true.
++
+ ![[AC6761_Artificial_Intelligence_Accounting/notes/figures/final-review-20261125/w06-s011.png]]
+ 
+ 原图保留整页标注；读图方法见本页解释。可在 Obsidian 点开大图核对小字。
+@@ -956,6 +958,8 @@
+ 题目要求 SalesRep# <> E-10，按原表只留下 S-1 的 7,200 和 S-7 的 23,000。符号 <> 是不等于；筛选用员工列，输出却只显示 Sale# 与 Amount。
+ 
+ 文本编号在真实 SQL 应加引号。
++
++英文参考：The query returns S-1 with 7,200 and S-7 with 23,000 because their salesperson numbers are not E-10. Only Sale# and Amount appear in the output.
+ 
+ ![[AC6761_Artificial_Intelligence_Accounting/notes/figures/final-review-20261125/w06-s012.png]]
+ 
+@@ -1029,6 +1033,8 @@
+ 
+ IS NULL 检查缺失或未知的值。原表 BA-6、BA-7 的 Balance 为空，因此保留；BA-9 的 0 是已知数值，不属于 Null。不能用 = NULL 代替此判断。
+ 
++英文参考：BA-6 and BA-7 are returned because their balances are null. BA-9 has a known zero balance and is not returned by IS NULL.
++
+ ![[AC6761_Artificial_Intelligence_Accounting/notes/figures/final-review-20261125/w06-s015.png]]
+ 
+ 原图保留整页标注；读图方法见本页解释。可在 Obsidian 点开大图核对小字。
+@@ -1550,14 +1556,14 @@
+ | Statements | Balance Sheet 是时点、Income Statement 是期间 |
+ | Common-size | 资产负债表除总资产、利润表除当年收入 |
+ | REA | 至少两优两缺、采购／销售、三种核心关联 |
+-| Expanded REA | Proposition 推介、Reservation 为未来交换保留资源 |
++| [[AC6761_Artificial_Intelligence_Accounting/review/final-2026/last-class-review#2.5.12 W5 节选 p.12 · 扩展关联\|Expanded REA]] | Proposition 推介、Reservation 为未来交换保留资源 |
+ | Database | Entity Integrity、Referential Integrity、One Fact, One Place |
+-| SQL | FROM 找表，WHERE 筛行，SELECT 按要求输出列、BETWEEN 包含两端 |
++| [[AC6761_Artificial_Intelligence_Accounting/review/final-2026/last-class-review#2.6.04 W6 节选 p.4 · SQL 基本结构\|SQL]] | FROM 找表，WHERE 筛行，SELECT 按要求输出列、BETWEEN 包含两端 |
+ | ML | 四种学习各会意思、会计例子及利弊 |
+ | Key technologies | 可核五项全部准备、“六项”不补造 |
+ | AI benefits／costs | 至少两个优点与两个缺点，并说明理由 |
+-| Stakeholders | 至少五类，每类至少两项关切、不限指定五类 |
+-| Analytical models | 已讲八个，至少熟悉三至四个，能提出具体相关问题 |
++| [[AC6761_Artificial_Intelligence_Accounting/review/final-2026/last-class-review#2.9.06 W9 节选 p.6 · 老师明确可能考Prompt设计\|Stakeholders]] | 至少五类，每类至少两项关切、不限指定五类 |
++| [[AC6761_Artificial_Intelligence_Accounting/review/final-2026/last-class-review#2.10.02 W10 节选 p.2 · Financial statement analyses – analytical models\|Analytical models]] | 已讲八个，至少熟悉三至四个，能提出具体相关问题 |
+ | Hallucination／Bias | 分别会定义、例子、影响与缓解，不混成同一现象 |
+ 
+ ## 5. 双语术语卡

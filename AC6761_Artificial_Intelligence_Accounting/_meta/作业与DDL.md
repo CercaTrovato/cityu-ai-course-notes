@@ -9,6 +9,11 @@ updated: 2026-11-26
 
 # AC6761 作业与 DDL
 
+## 2026-11-26 · 期末复习课补证
+
+[[AC6761_Artificial_Intelligence_Accounting/review/final-2026/last-class-review|最后复习课：考点、排除范围与英文作答]] §0.3、§9.3 保留考务与不确定性。录音支持 12/12 09:30 开考、闭卷纸笔；3 小时及 12:30 结束同时沿用本学期 Outline／11/5 AIMS 快照。老师列 LT13 与 B5 207，个人房间不从列表推断。及格数字 DOCX 为 15、本地 ASR 为 50，具体门槛及分母仍待官方确认；题数、分值、选答、允许材料未知。无新增作业提交，本人状态不变。
+
+
 ## 2026-11-05 · 当前新增行政要求
 
 - **展示 PPT：before Nov. 11, 2026 发给教师**。10/31 18:13 的 [Presentation PPT submission 公告](https://canvas.cityu.edu.hk/courses/70229/discussion_topics/643580) 要求所有组在 11 月 11 日前邮件交 PPT，未给具体小时；不推算为某日 23:59。展示从 11/11 起按名单，本人 Group 11 的既有 11/18 安排保留，不能将其当成 PPT 截止。

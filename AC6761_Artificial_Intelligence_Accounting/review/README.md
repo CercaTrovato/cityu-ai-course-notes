@@ -6,6 +6,11 @@ updated: 2026-11-26
 
 # AC6761 · 复习资料
 
+2026-11-26 已整理 11/25 最后课：[[AC6761_Artificial_Intelligence_Accounting/review/final-2026/last-class-review|最后复习课：考点、排除范围与英文作答]]。原音 `00:44:54`–`01:32:51` 的 427 段；9 份重点页 131 张、32 张原图，包含最新排除范围、英文参考与自测。旧 M01–M11 不整体升级，个人学习／提交状态不变。
+
+期末准备先看最后课范围；早期 17 单元框架保留完整知识路线，不能再把其全部练习当作本次考试必做。
+
+
 <!-- current-maintenance-20261126 -->
 当前先从 [[AC6761_Artificial_Intelligence_Accounting/review/final-2026/framework|期末复习框架]]开始，共 17 个单元。[[AC6761_Artificial_Intelligence_Accounting/review/final-2026/sources.json|来源清单]] · [[AC6761_Artificial_Intelligence_Accounting/review/final-2026/progress.json|学习进度]] · [[AC6761_Artificial_Intelligence_Accounting/review/final-2026/handover|交接说明]]。框架已准备，未开始本人学习或诊断；旧考务安排未在本批重登 AIMS。
 
