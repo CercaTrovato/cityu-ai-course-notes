@@ -6,6 +6,8 @@ updated: 2026-11-26
 
 # CityU 课程知识库
 
+> 本批最终 GitHub、Notion、本地与线上看板核验见 [11/26 同步回执](_meta/canvas-file-audit-20261126/production-closeout.md)。
+
 ## 2026-11-26 · 新教学与复盘的当前落地结果
 
 - [AC6761-T01](AC6761_Artificial_Intelligence_Accounting/notes/T01-股价OLS回归实操.md)：完整 OLS 实操、三份精确数据卡、M11 两处回链；数据/图/代码已核，字段字典/单位/时间限制保留。 [正式回执](AC6761_Artificial_Intelligence_Accounting/_meta/material-completion-20261126/writeback-receipt.json)。
