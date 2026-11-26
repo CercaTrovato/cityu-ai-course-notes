@@ -25,4 +25,9 @@ updated: 2026-11-26
 
 ## Canvas 全材料审计 · 2026-11-26
 
-本课已按教师原件、数据/代码、题目/答案、模板/行政、本人成绩/原交件分别核对课前、课中、课后用途。完整处理判定见 [全材料矩阵与队列](https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/_meta/canvas-file-audit-20261126/README.md)。新增教学候选仍待制作，不由归档或评分推定已学。
+本课已按教师原件、数据/代码、题目/答案、模板/行政、本人成绩/原交件分别核对课前、课中、课后用途。完整处理判定见 [全材料矩阵与队列](https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/_meta/canvas-file-audit-20261126/README.md)。本批正式教学/复盘的具体入口和完成范围见下方；尚缺来源继续保留，不由归档或评分推定本人已学。
+
+
+## 本批已正式写回的学习入口
+
+- [[AC6761_Artificial_Intelligence_Accounting/notes/T01-股价OLS回归实操|AC6761-T01]]：完整 OLS 实操、三份精确数据卡、M11 两处回链；数据/图/代码已核，字段字典/单位/时间限制保留。 证据：[[AC6761_Artificial_Intelligence_Accounting/_meta/material-completion-20261126/writeback-receipt.json|正式回执]]。

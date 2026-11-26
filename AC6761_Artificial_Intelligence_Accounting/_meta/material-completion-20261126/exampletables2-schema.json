@@ -1,0 +1,1876 @@
+{
+  "source": {
+    "path": "AC6761_Artificial_Intelligence_Accounting/course_files_export/ExampleTables2.accdb",
+    "size": 1765376,
+    "sha256": "45e7587826646e948c79d7eff18c4039ca7ec0b91d063e6c50e88fbcb2084fa8"
+  },
+  "connection": "scratch copy; Access ODBC; READONLY=TRUE; COUNT/NULL/empty-string aggregates plus schema metadata and SaleID identifiers only",
+  "tables": [
+    {
+      "table": "AccountsPayableClerk",
+      "rows": 1,
+      "columns": [
+        {
+          "name": "APClerkID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Name",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Address",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Telephone",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "DateOfBirth",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "APClerkID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "Cash",
+      "rows": 4,
+      "columns": [
+        {
+          "name": "CashAccountID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "AccountType",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Location",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "DateAccountEstablished",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "CashAccountID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "CashDisbursement",
+      "rows": 3,
+      "columns": [
+        {
+          "name": "DisbVoucherID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "VoucherDate",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "DollarAmount",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "CheckNumber",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "CashAccountID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "APClerkID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "PayeeID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "DisbVoucherID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "Cashier",
+      "rows": 2,
+      "columns": [
+        {
+          "name": "CashierID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Name",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Address",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Telephone",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "DateOfBirth",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "CashierID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "CashReceipt",
+      "rows": 3,
+      "columns": [
+        {
+          "name": "CashReceiptID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Date",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "DollarTotal",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "CashAccountID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "CustomerID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 1,
+          "empty_text_count": 0
+        },
+        {
+          "name": "CashierID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "CashReceiptID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "Customer",
+      "rows": 4,
+      "columns": [
+        {
+          "name": "CustomerID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Name",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Address",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Telephone",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "CreditRating",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "CustomerID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "FulfillmentPurchasePurchaseOrder",
+      "rows": 5,
+      "columns": [
+        {
+          "name": "PurchOrderID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "PurchaseID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "PurchOrderID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        },
+        {
+          "name": "PrimaryKey",
+          "column": "PurchaseID",
+          "ordinal_position": 2,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "FulfillmentSaleOrderSale",
+      "rows": 4,
+      "columns": [
+        {
+          "name": "SaleOrderID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "SaleID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "SaleOrderID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        },
+        {
+          "name": "PrimaryKey",
+          "column": "SaleID",
+          "ordinal_position": 2,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "InventoryType",
+      "rows": 6,
+      "columns": [
+        {
+          "name": "ItemID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Description",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "UnitOfMeasure",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "StandardCost",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "ListPrice",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "ItemID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "OperatingAssets",
+      "rows": 20,
+      "columns": [
+        {
+          "name": "AssetTagID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Description",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "AcquisitionDate",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "AcquisitionCost",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "AssetCategory",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "EstimatedLifeYrs",
+          "type": "INTEGER",
+          "nullable": 1,
+          "size": 10,
+          "null_count": 0
+        },
+        {
+          "name": "EstimatedSalvage",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "IRSListedProperty",
+          "type": "BIT",
+          "nullable": 0,
+          "size": 1,
+          "null_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "AssetTagID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "PropositionPurchaseRequisitionInventoryType",
+      "rows": 10,
+      "columns": [
+        {
+          "name": "PurchRequistionID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "ItemID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "QuantityNeeded",
+          "type": "INTEGER",
+          "nullable": 1,
+          "size": 10,
+          "null_count": 0
+        },
+        {
+          "name": "EstimatedUnitCost",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "PurchRequistionID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        },
+        {
+          "name": "PrimaryKey",
+          "column": "ItemID",
+          "ordinal_position": 2,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "PropositionSalesCallInventory",
+      "rows": 15,
+      "columns": [
+        {
+          "name": "SalesCallID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "ItemID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "CustomerReactiontoProduct",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "SalesCallID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        },
+        {
+          "name": "PrimaryKey",
+          "column": "ItemID",
+          "ordinal_position": 2,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "Purchase",
+      "rows": 5,
+      "columns": [
+        {
+          "name": "ReceivingReportID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Date",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "DollarAmount",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "ReceivingClerkID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "SupplierID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "VendorInvoice#",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "InvoiceAmount",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "CashDisbursementID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 4,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "ReceivingReportID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "PurchaseOrder",
+      "rows": 6,
+      "columns": [
+        {
+          "name": "PurchaseOrderID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "OrderDate",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "DateNeeded",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "DollarTotal",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "PurchaseReqID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "PurchAgentID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "SupplierID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "PurchaseOrderID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "PurchaseRequisition",
+      "rows": 5,
+      "columns": [
+        {
+          "name": "PurchReqID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Date",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "MaxBudgetforPurchase",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "DateNeeded",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "SupervisorID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "PurchaseAgentID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "RecommendedSupplier",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 1,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "PurchReqID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "PurchaseReturn",
+      "rows": 1,
+      "columns": [
+        {
+          "name": "PurchReturnID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Date",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "DollarAmount",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "PackingSlip#",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "DebitMemo#",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "ReceivingReport#",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "SupplierID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "DeptSupervisorID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "ShippingClerkID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "PurchReturnID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "Receiving Clerk",
+      "rows": 2,
+      "columns": [
+        {
+          "name": "ReceivingClerkID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Name",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Address",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Telephone",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "DateOfBirth",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "ReceivingClerkID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "ReservationPurchaseOrderInventoryType",
+      "rows": 9,
+      "columns": [
+        {
+          "name": "PurchOrderID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "ItemID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "QuantityOrdered",
+          "type": "INTEGER",
+          "nullable": 1,
+          "size": 10,
+          "null_count": 0
+        },
+        {
+          "name": "OrderedUnitCost",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "PurchOrderID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        },
+        {
+          "name": "PrimaryKey",
+          "column": "ItemID",
+          "ordinal_position": 2,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "ReservationSaleOrderInventory",
+      "rows": 6,
+      "columns": [
+        {
+          "name": "SaleOrderID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "ItemID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "QuantityOrdered",
+          "type": "INTEGER",
+          "nullable": 1,
+          "size": 10,
+          "null_count": 0
+        },
+        {
+          "name": "QuotedUnitPrice",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "SaleOrderID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        },
+        {
+          "name": "PrimaryKey",
+          "column": "ItemID",
+          "ordinal_position": 2,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "Sale",
+      "rows": 4,
+      "columns": [
+        {
+          "name": "SaleID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Date",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "DollarTotal",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "PickListID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "PackListID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "BOL#",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "SalesRepID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "CustomerID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "CashReceiptID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 1,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "SaleID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "SaleOrder",
+      "rows": 4,
+      "columns": [
+        {
+          "name": "SaleOrderID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "OrderDate",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "DateNeeded",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "DollarTotal",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "SalesTax",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "ShippingCharge",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "SalesCallID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "SalesRepID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "CustomerID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "SaleOrderID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "SaleReturn",
+      "rows": 1,
+      "columns": [
+        {
+          "name": "SaleReturnID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Date",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "DollarAmount",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "ReceivingReportNo",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "CreditMemo#",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "CreditMgrID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "SaleID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "CustomerID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "ReceivingClerkID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "SaleReturnID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "SalesCall",
+      "rows": 3,
+      "columns": [
+        {
+          "name": "SalesCallID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Date",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "StartTime",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "EndTime",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "Location",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "SalesRepID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "CustomerID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "SalesCallID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "SalesRepresentative",
+      "rows": 3,
+      "columns": [
+        {
+          "name": "SalesRepID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Name",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Address",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Telephone",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "DateOfBirth",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "SalesRepID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "ShippingClerk",
+      "rows": 1,
+      "columns": [
+        {
+          "name": "ShippingClerkID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Name",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Address",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Telephone",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "DateOfBirth",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "ShippingClerkID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "StockflowPurchaseInventoryType",
+      "rows": 8,
+      "columns": [
+        {
+          "name": "PurchaseID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "ItemID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "QuantityPurchased",
+          "type": "INTEGER",
+          "nullable": 1,
+          "size": 10,
+          "null_count": 0
+        },
+        {
+          "name": "ActualUnitCost",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "PurchaseID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        },
+        {
+          "name": "PrimaryKey",
+          "column": "ItemID",
+          "ordinal_position": 2,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "StockflowPurchaseReturnInventoryType",
+      "rows": 1,
+      "columns": [
+        {
+          "name": "PurchReturnID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "ItemID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "QuantityReturned",
+          "type": "INTEGER",
+          "nullable": 1,
+          "size": 10,
+          "null_count": 0
+        },
+        {
+          "name": "UnitCostAllowed",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "PurchReturnID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        },
+        {
+          "name": "PrimaryKey",
+          "column": "ItemID",
+          "ordinal_position": 2,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "StockflowSaleInventory",
+      "rows": 6,
+      "columns": [
+        {
+          "name": "SaleID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "ItemID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "QuantitySold",
+          "type": "INTEGER",
+          "nullable": 1,
+          "size": 10,
+          "null_count": 0
+        },
+        {
+          "name": "ActualUnitSellingPrice",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "SaleID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        },
+        {
+          "name": "PrimaryKey",
+          "column": "ItemID",
+          "ordinal_position": 2,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "StockflowSaleReturnInventory",
+      "rows": 1,
+      "columns": [
+        {
+          "name": "SaleReturnID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "ItemID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "QuantityReturned",
+          "type": "INTEGER",
+          "nullable": 1,
+          "size": 10,
+          "null_count": 0
+        },
+        {
+          "name": "ActualUnitSellPrice",
+          "type": "CURRENCY",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        },
+        {
+          "name": "ConditionOfGoods",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "ReasonReturned",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "SaleReturnID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        },
+        {
+          "name": "PrimaryKey",
+          "column": "ItemID",
+          "ordinal_position": 2,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "Supervisor",
+      "rows": 1,
+      "columns": [
+        {
+          "name": "SupervisorID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Name",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Address",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Telephone",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "DateOfBirth",
+          "type": "DATETIME",
+          "nullable": 1,
+          "size": 19,
+          "null_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "SupervisorID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    },
+    {
+      "table": "Supplier",
+      "rows": 3,
+      "columns": [
+        {
+          "name": "SupplierID",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Name",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Address",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "Telephone",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        },
+        {
+          "name": "PerformanceRating",
+          "type": "VARCHAR",
+          "nullable": 1,
+          "size": 50,
+          "null_count": 0,
+          "empty_text_count": 0
+        }
+      ],
+      "unique_index_metadata": [
+        {
+          "name": "PrimaryKey",
+          "column": "SupplierID",
+          "ordinal_position": 1,
+          "non_unique": 0
+        }
+      ],
+      "primary_key_status": "SQLPrimaryKeys unsupported by this installed driver; unique index metadata is not relabelled as certified PK"
+    }
+  ],
+  "table_count": 31,
+  "sum_table_rows": 147,
+  "saved_query_view_names_only": [],
+  "SaleIDs": [
+    "12",
+    "13",
+    "14",
+    "15"
+  ],
+  "not_performed": [
+    "no source DB write",
+    "no macro execution",
+    "no saved query execution",
+    "no update/delete/insert",
+    "no private name/address/telephone/date-of-birth values selected",
+    "no assertion screenshot and current database are identical versions"
+  ],
+  "source_unchanged": true
+}

@@ -1,0 +1,84 @@
+--- M10-责任AI-公平解释与治理落地.md
++++ M10-责任AI-公平解释与治理落地-v2.md
+@@ -374,6 +374,19 @@
+ 
+ 左图把无知、群体均等和更复杂指标排在一起，纵轴写技术努力（technical effort），横轴写分配公平（distributive fairness）。这是概念示意，没有可据以计算的刻度；不能读成“越复杂一定越公平”。右侧天平表示可能要权衡准确性与公平约束，也不证明每次改公平必然降低准确率。
+ 
++#### 准确率均等：把两类正确决定一起数
++
++左图的另一项是准确率均等（Accuracy Parity），原文为 “The protected and unprotected groups should have equal accuracy.” 中文是：受保护群体与比较群体的总体准确率应相同。准确率的分子是判断正确的人数：合格者获批，加上不合格者被正确拒绝；分母是该组全部人数。它既计算批得对，也计算拒得对，和只数获批人数的获批率不同。
++
++💡 沿用 p.25 的笔记补充数据，逐组核正确决定：
++
++1. A 的不合格者有 40 人，其中误批 8 人，故正确拒绝 $40-8=32$ 人。加上合格且获批的 48 人，总体准确率为 $(48+32)/100=80\%$。
++2. B 的不合格者有 70 人，其中误批 14 人，故正确拒绝 $70-14=56$ 人。加上合格且获批的 24 人，总体准确率为 $(24+56)/100=80\%$。
++
++本例准确率同为 80%，但获批率仍为 56%／38%。准确率把两类正确决定合并，相同准确率本身不保证真阳性率、假阳性率或获批率都相同。English reference（笔记自拟）：Accuracy parity requires equal overall accuracy across groups. Accuracy counts correct approvals and correct rejections, whereas the acceptance rate counts all approvals.
++
++#### 不同公平要求何时会冲突
++
+ 原图称不同基础率下人口统计均等与均等赔率不能同时优化。应补条件：令 p 表示某组真实合格比例；t 为共享 TPR；f 为共享 FPR。则该组获批率为 $t p + f(1-p)$：先在合格者中获批，再加不合格者中的误批。两组获批率相减，得到 $(t-f)(p_A-p_B)$。
+ 
+ 用 p.25 的数值验证这条关系：
+@@ -588,9 +601,19 @@
+ 
+ ### 讲义 p.42 · Visualizing Decisions: Saliency & Grad-CAM
+ 
+-右侧两张图把红黄热区叠在医学影像和道路场景上。显著性图（saliency map）显示输入某些部分对指定输出的敏感程度。梯度加权类激活映射（Gradient-weighted Class Activation Mapping, Grad-CAM）用目标输出对卷积特征图的梯度形成权重，再组合特征图，产生重要区域热图。
+-
+-按一条路径读：指定模型输出类别→找与类别相关的特征变化→加权合成区域→叠回原图供人检查。较亮区域提示模型对这个输出使用了哪里的信息；不是“此处一定有病”或“已证明刹车由行人造成”。原论文明确是 coarse localization，原页“exact pixels”与“visual proof”说法过强。
++右侧两张图把红黄热区叠在医学影像和道路场景上。显著性图（saliency map）显示输入某些部分对指定输出的敏感程度。梯度加权类激活映射（Gradient-weighted Class Activation Mapping, Grad-CAM）则把网络中间的区域响应，组合成与一个目标输出有关的粗热区。
++
++先认清被组合的对象：网络处理图像时，中间会形成多张特征图（feature maps）。每张可看成一个小网格，各格记录图像相应区域对某种模式的响应强弱，例如边缘或纹理。它们是网络内部的数值记录，不是人工已经标好的病灶图。
++
++💡 机制桥梁（笔记补充）：以想检查的“异常”类别分数为目标，梯度（gradient）描述这个分数对某个区域响应的小幅变化有多敏感。若该响应稍增，目标分数明显上升，就说明它在当前输入附近有正向影响；若分数下降，影响方向相反。这里解释的是模型分数对内部数值的局部敏感性，不是改变现实物体后的因果效应。
++
++再按顺序把这些记录变成可看的图：
++
++1. 对每张特征图，把不同空间位置的目标分数敏感性作平均，形成这张图的权重。权重表示这类模式对当前目标分数的局部影响方向和程度。
++2. 各张特征图乘上自己的权重后相加，保留对目标起正向支持的部分，得到粗粒度区域图。某区域在重要模式上的响应强，组合后可能更亮。
++3. 把小区域图放大并叠回原图，供人定位模型关注的区域。放大不会补出原来没有的精确像素证据。
++
++较亮区域提示模型对这个输出使用了哪里的信息；不是“此处一定有病”或“已证明刹车由行人造成”。原论文明确是 coarse localization，原页“exact pixels”与“visual proof”说法过强。
+ 
+ 💡 笔记补充：若识别动物时热区主要在角落水印，可能提示模型靠背景捷径；移除水印、换背景并复测才能进一步判断。图像解释适合发现线索，不能替代临床／驾驶安全的独立验收。本页图片没有模型、数据和生成记录，不当作本轮真实诊断演示。
+ 
+@@ -1004,6 +1027,7 @@
+ | 责任 AI | Responsible AI | Designing, using, and governing AI with attention to its impacts, quality, risks, and human accountability. | p.15 |
+ | 代理变量 | Proxy variable | A variable that can indirectly carry information about another attribute. | p.24 |
+ | 人口统计均等 | Demographic parity | Equal acceptance rates across groups. | p.25 |
++| 准确率均等 | Accuracy parity | Equal overall accuracy across groups, counting correct approvals and correct rejections. | p.26 |
+ | 机会均等 | Equality of opportunity | Equal true positive rates across groups. | p.25 |
+ | 均等赔率 | Equalized odds | Equal true positive and false positive rates across groups. | p.25 |
+ | 个体公平 | Individual fairness | Treating individuals similarly when they are similar in task-relevant respects. | p.25 |
+@@ -1016,7 +1040,7 @@
+ | 局部替代模型 | Local surrogate model | A simpler model fitted to approximate another model near a selected input. | p.41 |
+ | LIME | Local Interpretable Model-agnostic Explanations | A method that fits an interpretable approximation around a prediction. | p.41 |
+ | SHAP | SHapley Additive exPlanations | An additive allocation of a prediction's difference from a reference to features. | p.41 |
+-| Grad-CAM | Gradient-weighted Class Activation Mapping | A gradient-based method producing coarse regions relevant to a chosen model output. | p.42 |
++| Grad-CAM | Gradient-weighted Class Activation Mapping | A method that weights internal feature maps by their sensitivity to a target score and combines them into a coarse region map. | p.42 |
+ | 模型卡 | Model card | Versioned documentation of intended use, evaluation, data, and limitations. | p.43 |
+ | RACI | Responsible, Accountable, Consulted, Informed | A matrix distinguishing execution, final accountability, consultation, and notification. | p.50 |
+ | 算法影响评估 | Algorithmic impact assessment | A structured assessment of purpose, affected stakeholders, risks, mitigations, and oversight. | p.51 |
+@@ -1055,15 +1079,17 @@
+ 
+ ## 7. 自测 · 先作答，再展开
+ 
+-### 7.1 三种公平比例
+-
+-A、B 各 100 人，真实合格分别 60、30 人。合格获批分别 48、24，不合格误批分别 8、14。计算两组获批率、TPR、FPR；满足哪些公平定义？若 B 误批改为 7，哪项结论会变？
++### 7.1 公平比例与总体准确率
++
++A、B 各 100 人，真实合格分别 60、30 人。合格获批分别 48、24，不合格误批分别 8、14。计算两组获批率、TPR、FPR 和总体准确率；满足哪些公平定义？若 B 误批改为 7，哪项结论会变？
+ 
+ <details><summary>答案与理由</summary>
+ 
+ A 获批率 $(48+8)/100=56\%$；B 为 $(24+14)/100=38\%$。TPR 分母只用合格者，均为 80%；FPR 分母只用不合格者，A 为 $8/40=20\%$，B 为 $14/70=20\%$。因此机会均等和均等赔率成立，总体获批不均等。
+ 
+-B 误批改 7 后，B 获批率变 31%，FPR 变 10%，TPR 仍是 $24/30=80\%$。机会均等仍成立，均等赔率不再成立。不是所有指标跟着一项同时变化。返回 [[#讲义 p.25 · The Mathematical Illusion of Perfect Distributive Equity|p.25]]。
++A 正确拒绝 32 人，总体准确率为 $(48+32)/100=80\%$；B 正确拒绝 56 人，总体准确率为 $(24+56)/100=80\%$。两组也满足准确率均等，但这不使获批率自动相同。
++
++B 误批改 7 后，B 获批率变 31%，FPR 变 10%，TPR 仍是 $24/30=80\%$。B 正确拒绝变为 $70-7=63$ 人，总体准确率升为 $(24+63)/100=87\%$。机会均等仍成立，均等赔率与准确率均等不再成立。不是所有指标跟着一项同时变化。准确率的读法见 [[#讲义 p.26 · Optimizing Every Fairness Metric Simultaneously is Mathematically Impossible|p.26]]。返回 [[#讲义 p.25 · The Mathematical Illusion of Perfect Distributive Equity|p.25]]。
+ 
+ </details>
+ 

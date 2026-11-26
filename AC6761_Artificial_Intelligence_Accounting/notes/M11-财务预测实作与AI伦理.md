@@ -9,7 +9,7 @@ prerequisites: [会计报表, 比率分析, 监督学习]
 new_concepts: [预测时点, 标签成熟, 样本外核验, 算法公平, 问责]
 tags: [AC6761, AI, forecasting, ethics]
 status: v0.9
-updated: 2026-10-22
+updated: 2026-11-26
 readability_rules: v2
 mechanism_spec: v1
 mechanism_review: passed
@@ -790,6 +790,8 @@ print(f’regression coefficient: {model.coef_[0]}, intercept: {model.intercept_
 
 ### 2.6 系数表与时间图：能读出什么（讲义 p.21–23）
 
+配套附件 `PredictStockprice.docx` 与 `data1.csv` 的完整实操另见 [[AC6761_Artificial_Intelligence_Accounting/notes/T01-股价OLS回归实操|T01 股价 OLS 回归实操]]。那里按36,103条公司年记录实际拟合指定的三个输入，解释系数尺度、重复公司、不确定性和数据来源限制；它不替换本讲销售示意，也不因期末重点收窄而省略实操。
+
 一张系数表出现负数，是否说明政策一定降低了选择四大的概率？还要先辨认变量和模型。
 
 **是什么**：系数（coefficient）描述其他已纳入变量保持相同时，一个输入与模型输出的条件关系。标准误（standard error）描述该系数估计的不确定性。
@@ -905,6 +907,8 @@ p.23 是时间相对位置图。横轴从 `t-4` 到 `=t+5`，纵轴约 −0.08 �
 **所以呢**：先缩小输入和访问范围，再用记录证明控制实际执行。
 
 ### 2.8 偏差与公平：总体准不代表每组都准（讲义 p.27–29）
+
+`AI Bias.docx` 的招聘案例已接入 [[AC6761_Artificial_Intelligence_Accounting/review/final-2026/last-class-review#补得附件：招聘筛选怎样放大历史偏差|最后课：招聘筛选怎样放大历史偏差]]，可逐项对照历史标签、直接/代理偏差、92/65与前20%门槛、原反馈环及控制。原附件为案例叙述，没有另列教师问题；其中英文参考与改条件是笔记补充，不冒称原题答案。
 
 模型可能在大多数交易上正确，却总把某一类正常交易标成异常。总体准确率会把这个问题藏起来。
 

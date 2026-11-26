@@ -21,8 +21,13 @@ updated: 2026-11-26
 
 [[EF5560_Fintech_and_AI_in_Finance/00-课程总览|课程总览]] · [[EF5560_Fintech_and_AI_in_Finance/_meta/作业与DDL|作业与 DDL]] · [[EF5560_Fintech_and_AI_in_Finance/review/README|复习资料]] · [[_meta/github-maintenance-20261126/remaining-gaps|全库待补来源]]
 
-M10/M11 已融合现有录音，早期 v0.9/pending 提示仅为历史。录制平台采用本人补充的腾讯会议课堂口径，旧 Zoom 要求保留历史。个人材料按现行公开规则处理，第三方信息仍保护。
+M10/M11 已融合现有录音，早期 v0.9/pending 提示仅为历史。新版 brief/大纲已给腾讯会议及首页 video link 的书面依据；旧 Zoom 版原件保留历史。个人材料按现行公开规则处理，第三方信息仍保护。
 
 ## Canvas 全材料审计 · 2026-11-26
 
-本课已按教师原件、数据/代码、题目/答案、模板/行政、本人成绩/原交件分别核对课前、课中、课后用途。完整处理判定见 [全材料矩阵与队列](https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/_meta/canvas-file-audit-20261126/README.md)。新增教学候选仍待制作，不由归档或评分推定已学。
+本课已按教师原件、数据/代码、题目/答案、模板/行政、本人成绩/原交件分别核对课前、课中、课后用途。完整处理判定见 [全材料矩阵与队列](https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/_meta/canvas-file-audit-20261126/README.md)。本批正式教学/复盘的具体入口和完成范围见下方；尚缺来源继续保留，不由归档或评分推定本人已学。
+
+
+## 本批已正式写回的学习入口
+
+- [[EF5560_Fintech_and_AI_in_Finance/notes/M12-智能投顾网络安全与监管科技|EF5560-M12]]：40 页、13 原图、三道 MCQ 与财报/条款练习；class03 两表卡已补。p36–38 已核为假设 filing/issuer policy，无指定真实基金，不再以外部基金文件阻塞；转录/失效分享等限制保留。 证据：[[EF5560_Fintech_and_AI_in_Finance/_meta/material-completion-20261126/m12/writeback-receipt.json|正式回执]]。

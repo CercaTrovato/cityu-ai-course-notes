@@ -1,0 +1,72 @@
+--- ProjectTemplate-逐页使用导览.md
++++ ProjectTemplate-逐页使用导览-v2.md
+@@ -100,7 +100,37 @@
+ | Data Description and Preparation | 数据理解＋准备：一行是谁，何时可知道字段？ | [[IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-repairs-20261126/methods-and-data\|methods-and-data]]、[[IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-repairs-20261126/data/dataset-flow.csv\|dataset-flow]]、[[IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-repairs-20261126/data/feature-availability.csv\|feature-availability]] | 客户＋快照日为一行；核历史窗、标签窗与字段可得性 |
+ | Methodology | 建模：相同对象怎样产出分数和名单？ | [[IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-repairs-20261126/data/experiment-registry.csv\|45 行 run 身份]]、[[IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-repairs-20261126/data/model-parameters.csv\|model-parameters]]、[[IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-repairs-20261126/RUN-REPORT\|RUN-REPORT]] | 按运行身份解释预处理和排序；分数不自动等于概率 |
+ | Experiment and Discussion | 测试评价：同协议下比谁、差多少？ | [[IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-repairs-20261126/results-for-writing\|results-for-writing]]、[[IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-repairs-20261126/cv-and-uncertainty\|cv-and-uncertainty]]、[[IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-repairs-20261126/figures/README\|10 张图与读法]] | 同容量对照并保留不利月份；开发结果不称新盲测 |
+-| Conclusion | 部署：支持什么行动，还缺什么证据？ | [[IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-repairs-20261126/business-experiment\|business-experiment]]、[[IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-repairs-20261126/limitations-and-use\|limitations-and-use]] | 提出随机内容对照方案；真实触达和利润仍未验证 |
++| Conclusion | 部署：支持什么行动，还缺什么证据？ | [[IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-repairs-20261126/business-experiment\|business-experiment]]、[[IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-repairs-20261126/limitations-and-use\|limitations-and-use]] | 两组均联系，只比指南内容；不能检验联系增量或利润 |
++
++### 3.1 怎样核一条运行记录，再引用结果
++
++一次运行（run）是一条可追溯的分析记录。它固定用了哪些数据、怎样处理、采用哪些参数和模型权重，以及在什么条件下评价。参数可以是预先指定的设置，模型权重则是训练学出的数值；名字相同不保证这些内容相同。
++
++先分清数据在做什么。训练（training）让模型从数据中学习参数，也在训练数据上确定填补、缩放等处理。开发（development）用来比较方法或选择方案；用过它来作选择，就不能再称它是完全未见的最终测试。
++
++冻结后期检查（fixed-model later-period check）把已经定好的模型用于后来的月份，观察跨期表现；本项目不拿这些已见结果重新选模型。概率扩展另把训练期数据按 80/20 分为拟合（fit）和校准（cal）两部分：80% 学基础模型，20% 用来学习把分数转成概率的校准关系，之后才去评价。
++
++因此，fit/cal 是训练期内部的不同用途，不等于“80% 训练、20% 最终测试”。本项目扩展的 43 与全十月模型的 50 也不能当作“只增加校准后的变化”，因为拟合与校准协议同时不同。
++
++实际操作时，打开上表的 `experiment-registry.csv`，先找 `run_id` 和 `method`，再依次读训练、校准、评价和名单条件。以下是一条真实记录，不是新运行：
++
++| 要核的字段 | 本例原值 | 读成普通话 |
++|---|---|---|
++| `run_id` | `repair-G1G2-20261126` | 本日固定新字段对照的运行身份 |
++| `method` | `F0` | 其中的基础字段版本 |
++| `train` | `2017-10-01 full` | 用十月全部训练快照学习模型 |
++| `calibration` | `none` | 此次没有另分校准数据 |
++| `evaluation` | `2018-01-01 additional development, already seen` | 一月是已见的额外开发比较 |
++| `class_weight` | `balanced` | 训练时提高少数类别的重要性 |
++| `cohort_N`、`positives` | `29368`、`230` | 评价中有29368位客户，230位发生复购 |
++| `K`、`hits` | `2937`、`50` | 固定选2937位，其中50位复购 |
++| `source_table` | `data/feature-experiment-results.csv` | 这些结果对应的原表位置 |
++
++再核该记录的 `preprocessing`，确认填补、标准化等处理来自训练数据；核 `model_sha256`，辨认保存的具体权重文件。SHA-256 是文件指纹，用于分辨版本，不是准确率指标。本例模型指纹以 `f80dbec2` 开头，完整值保留在登记表；不要用另一条同名 F0 的文件替换。
++
++最后打开 `source_table` 指向的结果表，核同一方法、客户范围、名额和命中，才写“本次开发比较选2937人、命中50人”。若换成其他 run，必须重新核这些字段；不能只看最后的50恰好相同。
++
++### 3.2 把数据和比较条件写进章节
+ 
+ 数据章的时间解释应完整：历史窗为预测日前六个月，标签看未来 90 天。配送／评价字段按当时可得性解释；没有变更日志不能声称绝对没有历史回写。
+ 
+@@ -108,7 +138,9 @@
+ 
+ 例如新特征实验为十月训练、一月开发，同取 2937 人。F0/G1/G2 命中 50/49/48，只回答这次开发比较，不回答线上收益。方法章先交代三版差别，实验章放同协议数值，结论章说明新字段未改善该开发指标及后续怎么验证。
+ 
+-概率／价值扩展的协议为独立的 80/20 fit/cal。概率校准（calibration）是检查分数与实际发生频率是否匹配；它与把谁排进前 10% 是不同问题。该扩展中的 43 人结果不能与全十月 R3 的 50 直接排名，也不把商品金额当作利润。细节以 [[IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-repairs-20261126/scope-decision|范围说明]] 和结果文件为准。
++概率校准（calibration）要让给出的概率与实际发生频率较相称；它与把谁排进前 10% 是不同问题。按 §3.1 的用途区分，该扩展中的 43 人结果不能与全十月 R3 的 50 直接排名，也不把商品金额当作利润。细节以 [[IS6400_Business_Data_Analytics/assignment/graded/A06-group-project/work/report-repairs-20261126/scope-decision|范围说明]] 和结果文件为准。
++
++现有 `business-experiment` 方案让两组都收到联系，比较通用购物指南与家居用品主题指南，只检验内容主题差异。它不能回答“联系比完全不联系多带来多少购买”；若要研究这个问题，还需另设合适的不联系对照。利润则还需要成本与利润口径，这里不修改已有内容试验方案。
+ 
+ ## 4. 写作前可执行的检查
+ 
+@@ -116,7 +148,7 @@
+ 
+ 1. 数字对应哪个 run、月份、客户数和容量；同名 F0 不自动代表相同权重。
+ 2. 训练、开发、冻结后期检查和校准扩展分开；后期结果不回流重选已冻结模型。
+-3. 图和表的准用版本来自 11/26 包。旧错误 CI 图禁用，不从旧展示直接剪贴复用。
++3. 图和表的准用版本来自 11/26 包。旧错误置信区间（confidence interval，CI）图禁用，不从旧展示直接剪贴复用。
+ 4. 每个结论能接到一个表／图和影响结论的限制；“代码跑通”本身不是业务结论。
+ 
+ 写作示例（笔记自拟）：在固定一月开发比较中，三版同选 2937 位客户，命中分别为 50、49、48。这个结果支持“新增配送／评价字段没有改善这一次同容量命中”；不能推广成所有未来月份都无用。
+@@ -158,7 +190,9 @@
+ 
+ <details><summary>答案与理由</summary>
+ 
+-名单命中是观察性预测表现，不识别触达引起的新增购买，也没有成本和利润证据。结论章可提出随机内容对照试验，按 business-experiment 的方案验证；不能把提案写成已执行结果。
++名单命中是观察性预测表现，不识别触达引起的新增购买，也没有成本和利润证据。现有 `business-experiment` 让两组都收到联系，只比较通用购物指南与家居主题指南的内容差异。
++
++这个方案仍不能证明联系比不联系多带来多少购买；研究触达增量需另设合适的不联系对照，研究利润还需成本与利润口径。已有内容试验仍是未执行的方案，不把它写成利润主张已经得到验证。
+ 
+ </details>
+ 

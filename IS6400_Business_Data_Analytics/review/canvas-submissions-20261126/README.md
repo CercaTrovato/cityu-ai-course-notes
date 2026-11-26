@@ -9,3 +9,7 @@
 颜色距离截图中，按截图列出的向量计算，peach–apple 的平方距离为 1956、peach–orange 为 1214，原写 816 有算术错误。此结论仅针对截图里的式子；完整教师题面和评分依据仍须另核。
 
 [完整材料审计](../../../_meta/canvas-file-audit-20261126/README.md)
+
+## 配套学习复盘
+
+[[IS6400_Business_Data_Analytics/review/canvas-submissions-20261126/课后复盘-原作答与纠错|三份 Quiz 原作答复盘]]：Quiz3 单位与测量类型；截图算术及 Apple G=194/156 两套输入；quiz1028 的一阶差分与 KPSS/ADF 对照。原题与教师评分缺口仍保留，不替换本目录原附件。

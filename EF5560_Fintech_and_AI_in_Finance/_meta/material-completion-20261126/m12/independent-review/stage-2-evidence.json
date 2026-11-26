@@ -1,0 +1,139 @@
+{
+  "source": "D:\\上课资料\\CityU\\EF5560_Fintech_and_AI_in_Finance\\course_files_export\\canvas-20261126-review\\Lec12_Robo_Cybersecurity_and_RegTech.pdf",
+  "source_sha256": "f893de6551a6d6d4772f5d0ecf64575a44199bb33f8eb28215fa53f1a50b77f5",
+  "page_count": 40,
+  "sample_text": {
+    "5": "What a Robo-Advisor Does\n\n                                 An investment service, not\n                                 just an algorithm.\n                                 Risk profiling leads to a portfolio\n                                 proposal, implementation, and\n                                 ongoing monitoring.\n                                 Execution and custody matter\n                                 alongside the model.\n                                 Human support remains\n                                 important when circumstances\n                                 change.\n\n  Illustrative service design.\n\n\n                                                                       5/40\n\f",
+    "10": "Portfolio Rebalancing and Transaction Costs\n\n\n                        Asset    Target Weight     After Market Gains\n                        Stocks        40%            50% (too high)\n                        Bonds         60%             50% (too low)\n\n    • Target allocation: The client’s risk capacity and investment horizon determine the\n      stock–bond mix. A return forecast is optional.\n\n    • Rebalancing: In this example, sell stocks worth 10% of portfolio value and buy the same\n      amount of bonds to restore the target, before costs.\n\n    • The Class 5 cost calculation: At an assumed 10 bp per purchase or sale, cost is\n      0.001 × (0.10 + 0.10) = 0.02%, or 2 bp of portfolio value. More frequent rebalancing\n      can increase this cost.\n\n\n                                                                                                10/40\n\f",
+    "21": "HKSAR Cyber Incidents Reached a Record in 2025\n\n\n\n\n   Finance interpretation\n   Phishing still dominates account and payment fraud risk, while malware’s rising share raises\n   endpoint and credential risk. Shared cloud, identity, and payment infrastructure can amplify\n   one weak control.\n                                                                                                  21/40\n\f",
+    "24": "Darktrace Case: Is the Service Worth Its Cost?\n\n\n     • Contain the suspicious session or device while keeping unaffected payment services\n       available.\n\n     • Preserve logs and review the incident before restoring access.\n\n     • In a trial, compare missed incidents, false alarms, staff time and disruption with existing\n       controls.\n\n\n   Illustration: reducing 100 daily alerts to 20 saves review work only if serious incidents are still\n   detected. Subscription renewal depends on the value of the service, not the alert count alone.\n\n\n   Product context: Darktrace. Trial and alert counts are teaching examples.\n\n\n\n                                                                                                         24/40\n\f",
+    "26": "Operational Resilience: Can the Bank Keep Serving Clients?\n\n\n\n     • Identify the payment or account service customers depend on.\n\n     • Set a tolerance for disruption, including how long the service can be unavailable.\n\n     • Test restoration with staff, systems and critical external providers involved.\n\n\n   For a payment firm, a protected backup is useful only if the team can restore the required\n   service. A successful file copy is not a recovery test.\n\n\n\n   Source: HKMA Supervisory Policy Manual OR-2, Operational Resilience.\n\n\n\n\n                                                                                                26/40\n\f",
+    "27": "Multiple-Choice Question: Recovery after Ransomware\n\n\n\n   A payment firm keeps live records and backups under the same administrator account. An\n   attacker takes over that account and encrypts both copies.\n\n   Which change most directly improves the firm’s ability to recover?\n\n    A) Maintain separately protected backups and test restoration regularly.\n\n    B) Replicate records more often under the same administrator account.\n\n    C) Encrypt the live database more strongly under the same access rules.\n\n   D) Retain more login alerts without changing how backups are protected.\n\n\n\n                                                                                            27/40\n\f",
+    "29": "A Customer Matches a Sanctions-List Name\n\n\n\n   Illustrative account application: the name matches a list entry, but the date of birth differs.\n\n    • The bank’s problem. It needs to establish whether the applicant and the listed person\n      are the same person.\n\n    • The software’s task. Compare names and identifiers, find possible matches, and show\n      the evidence to a reviewer.\n\n    • The reviewer’s task. Resolve missing or conflicting information and record the decision.\n\n   Regulatory technology (RegTech) helps institutions perform and document these checks.\n\n\n\n                                                                                                     29/40\n\f",
+    "30": "What RegTech Does\n\n\n\n\n                    • Know your customer (KYC). Verify identity and\n                      understand who owns or controls an account.\n\n                    • Anti-money-laundering (AML) monitoring. Flag\n                      unusual transactions for investigation.\n\n                    • Sanctions screening. Compare customer details\n                      with relevant lists and review possible matches.\n\n\n\n\n                                                                         30/40\n\f",
+    "34": "WeLab Case: A Similar Name Creates an Alert\n\n\n\n   Hypothetical applicant: the name resembles a sanctions entry, the date of birth differs, and\n   the identity number is not yet verified.\n\n    • Compare the matching and conflicting identifiers against source records.\n\n    • Verify the missing evidence and keep a record of what resolves the uncertainty.\n\n    • Apply the bank’s screening rules; record the decision and escalate unresolved doubt.\n\n   Review capacity: if 40 alerts remain and staff can review 10 today, 30 need a priority and\n   interim-control decision. AI summaries can assist review without settling the identity question.\n\n\n\n\n                                                                                                      34/40\n\f",
+    "35": "Multiple-Choice Question: A Possible Sanctions Match\n\n\n\n   A screening system flags a customer whose name matches a sanctions entry. The date of birth\n   differs, and the record has no verified passport number.\n\n   What is the best next step?\n\n    A) Reject the customer automatically because the name matches exactly.\n\n    B) Close the alert automatically because one field differs.\n\n    C) Verify identity evidence, document the review, and escalate unresolved doubt.\n\n   D) Raise the screening threshold for all customers to reduce similar alerts.\n\n\n\n                                                                                                 35/40\n\f",
+    "36": "Check an LLM’s Financial-Data Extraction\n\n\n\n\n        Hypothetical filing                               Draft — not yet checked\n        First published 15 March 2026\n                                                          2025 revenue: 120\n                                                 LLM\n        “For the year ended 31 Decem-\n                                                          Currency and unit: HK dollars\n        ber 2025, revenue was HK$120\n        million, compared with HK$100                     Information available from:\n        million in 2024.”                                 31 December 2025\n\n\n\n   Which fields need correction before using this record as a return predictor?\n\n\n                                                                                          36/40\n\f",
+    "37": "LLM-Extracted Filings as Return Predictors\n\n\n   Illustrative filing: Revenue rose from HK$100 million to HK$120 million.\n\n                             Revenue growth = 120/100 − 1 = 20%.\n\n\n\n    • Extraction: The LLM records the amounts and reporting periods. Check the units and\n      retain the source passage before calculating growth.\n\n    • Timing (Class 1): The predictor becomes available when the company publishes the\n      information, not at the accounting period end.\n\n    • Evaluation (Classes 2–4): Test whether the extracted predictor improves forecasts on\n      later observations relative to the same model without it.\n\n\n                                                                                             37/40\n\f",
+    "38": "Check an LLM’s Reading of Redemption Terms\n\n\n  Hypothetical issuer policy\n  “Only approved business account holders may request direct USD redemption. Complete\n  requests received after 15:00 HKSAR time are processed on the next business day.”\n\n  LLM draft — not yet checked\n\n    • Eligible customer: any token holder.\n\n    • Cash available in the bank: next business day for requests after 15:00.\n\n  Who is actually eligible? Does the passage specify when bank funds become available?\n\n  Classroom policy, not an actual issuer’s terms. Connect the review to the Class 9 CFO and Class 10 supplier payment.\n\n\n\n\n                                                                                                                         38/40\n\f"
+  },
+  "sample_assets": [
+    {
+      "page": 5,
+      "observed_sha256": "820464105fcd8ceec1328fbc39157421a65c697c9d4e765904ae41ce0d0fd304",
+      "manifest_sha256": "820464105fcd8ceec1328fbc39157421a65c697c9d4e765904ae41ce0d0fd304",
+      "matches": true,
+      "same_as_source_page_png": true
+    },
+    {
+      "page": 10,
+      "observed_sha256": "2ded28d367feb9418d7488971e91b1a7fd30019cddbd06ee87dc0560c755d34c",
+      "manifest_sha256": "2ded28d367feb9418d7488971e91b1a7fd30019cddbd06ee87dc0560c755d34c",
+      "matches": true,
+      "same_as_source_page_png": true
+    },
+    {
+      "page": 21,
+      "observed_sha256": "b18fa934e032efd969d75fb64507ab9aee5020c36bb2f332e35037af7c8dd6b4",
+      "manifest_sha256": "b18fa934e032efd969d75fb64507ab9aee5020c36bb2f332e35037af7c8dd6b4",
+      "matches": true,
+      "same_as_source_page_png": true
+    },
+    {
+      "page": 36,
+      "observed_sha256": "1595c8e2b28e18222e3aebbb260ad02ef49388d74d5117a1b7e36e34b6d4074c",
+      "manifest_sha256": "1595c8e2b28e18222e3aebbb260ad02ef49388d74d5117a1b7e36e34b6d4074c",
+      "matches": true,
+      "same_as_source_page_png": true
+    }
+  ],
+  "tables": [
+    {
+      "name": "stock_linear_quintiles.csv",
+      "sha256": "44ffd6716a13704ada395b0345fceba3127c3c1a533a4dc6a7f3c94063aa4f16",
+      "bytes": 1502,
+      "rows": 20,
+      "columns": [
+        "universe",
+        "model",
+        "forecast_quintile",
+        "mean_excess_return",
+        "mean_stock_return",
+        "observations"
+      ],
+      "nulls": {
+        "universe": 0,
+        "model": 0,
+        "forecast_quintile": 0,
+        "mean_excess_return": 0,
+        "mean_stock_return": 0,
+        "observations": 0
+      },
+      "models": {
+        "OLS": 5,
+        "PCR": 5,
+        "PLS": 5,
+        "Ridge": 5
+      },
+      "matches_zip": true,
+      "ridge_q1_q5_spread_pct": [
+        -0.2838910031385437,
+        0.19663057687272992,
+        0.48052158001127365
+      ],
+      "observations_by_model": {
+        "OLS": 4108,
+        "PCR": 4108,
+        "PLS": 4108,
+        "Ridge": 4108
+      }
+    },
+    {
+      "name": "stock_linear_validation.csv",
+      "sha256": "3c9a6f823878f67680d54228ad20c9447ef1f2fdcc49b275bf5b4c257c308a48",
+      "bytes": 2014,
+      "rows": 37,
+      "columns": [
+        "universe",
+        "model",
+        "alpha",
+        "l1_ratio",
+        "validation_mse"
+      ],
+      "nulls": {
+        "universe": 0,
+        "model": 0,
+        "alpha": 1,
+        "l1_ratio": 12,
+        "validation_mse": 0
+      },
+      "models": {
+        "OLS": 1,
+        "Ridge": 6,
+        "LASSO": 7,
+        "Elastic Net": 12,
+        "PCR": 6,
+        "PLS": 5
+      },
+      "matches_zip": true,
+      "pcr_min": {
+        "universe": "Hang Seng Index",
+        "model": "PCR",
+        "alpha": "5.0",
+        "l1_ratio": "",
+        "validation_mse": "0.002619719178792539"
+      }
+    }
+  ],
+  "test_calendar": {
+    "rows": 4108,
+    "weeks": 52,
+    "first": "2025-07-04",
+    "last": "2026-06-26",
+    "stocks_per_week": [
+      79
+    ],
+    "lasso_unique": 1,
+    "en_unique": 1
+  }
+}

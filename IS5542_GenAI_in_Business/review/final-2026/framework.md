@@ -157,40 +157,46 @@ flowchart TD
 - 练什么题：风险定位、控制设计、跨单元综合案例；这些细分名称是训练设计，教师目前只确认到选择／简答／论述类别。
 - 先修：U02、U03、U05、U11。
 - 回源：Lecture 10 pp.10–32、34–70（p.33 为 LOQ 行政页）；Lecture 1 pp.88–117；NIST pp.111–117；Legal pp.51–62；11/28 final review 讲解仍待补。材料稳定 ID：lecture-01, guest-legal, bank-source26, final-review-1128, note-m01, note-m09, lecture-10。
-- 已有讲解入口：[[IS5542_GenAI_in_Business/notes/M01-导论-生成式AI基础与企业落地|M01 现有讲解]]、[[IS5542_GenAI_in_Business/notes/M09-AI法律问题-版权责任与客户资料|M09 现有讲解]]。
-- 最容易卡住与适用边界：不能把责任压缩成“加一个人审核”；核人能看到的证据和停止权；第 10 讲 71 页已实际读图文并接入路线，课堂录音／转录未取得；不因此记本人已学会或全篇正式教学完成；p.33 是 LOQ 行政信息；p.2 留旧日期的考试说明不用于确认本学期规则；11/28 后据真实讲解定向更新。
+- 已有讲解入口：[[IS5542_GenAI_in_Business/notes/M01-导论-生成式AI基础与企业落地|M01 现有讲解]]、[[IS5542_GenAI_in_Business/notes/M09-AI法律问题-版权责任与客户资料|M09 现有讲解]]、[[IS5542_GenAI_in_Business/notes/M10-责任AI-公平解释与治理落地|M10 责任 AI 逐页正文]]。
+- 最容易卡住与适用边界：不能把责任压缩成“加一个人审核”；核人能看到的证据和停止权；第 10 讲 71 页已实际读图文并接入路线，课堂录音／转录未取得；本批 M10 正文已完成作者逐页主核、独立抽检及局部缺陷关闭；不因此记本人已学会或其他讲次重新审过；p.33 是 LOQ 行政信息；p.2 留旧日期的考试说明不用于确认本学期规则；11/28 后据真实讲解定向更新。
 
 以下五节仍是学习路线，尚未代用户授课或作答。按 A→B→C→D→E 走；用一份完整案例串联，再用改条件题检测，而非每节只背定义。
 
 #### U12A 责任 AI 的对象、原则与社会技术边界
 
 - 来源：Lecture 10 pp.10–20；回接 U06, U11。
+- 逐页正文：[[IS5542_GenAI_in_Business/notes/M10-责任AI-公平解释与治理落地#讲义 p.15 · Responsible AI is|M10 p.15]]、[[IS5542_GenAI_in_Business/notes/M10-责任AI-公平解释与治理落地#讲义 p.20 · Responsible, Trustworthy, and Ethical AI|M10 p.20]]。
 - 做题目标：区分 Responsible／Trustworthy／Ethical AI 的课件用法，指出谁受影响、什么后果、哪些原则需转成可检查的动作；将有用、无害、诚实及人为控制放回实际应用，区分讲义价值主张与已验证效果。
 - 适用边界：p.11 人物经历与 p.13／14／17 视频为引子，视频本轮未播放；p.16／18 的成功与商业价值说法不能当回报保证。
 
 #### U12B 公平：先分清比较对象、分母和决策过程
 
 - 来源：Lecture 10 pp.21–32；回接 U03, U11。
+- 逐页正文：[[IS5542_GenAI_in_Business/notes/M10-责任AI-公平解释与治理落地#讲义 p.25 · The Mathematical Illusion of Perfect Distributive Equity|M10 p.25]]、[[IS5542_GenAI_in_Business/notes/M10-责任AI-公平解释与治理落地#讲义 p.26 · Optimizing Every Fairness Metric Simultaneously is Mathematically Impossible|M10 p.26]]。
 - 做题目标：定位历史／世界、采样测量、设计目标、部署生态的偏差；用代理变量说明删掉敏感列为何可能不足；区分人口统计均等（Demographic Parity）、机会均等（Equality of Opportunity）、均等化胜算（Equalized Odds）、个体公平与群体公平；逐项说清比较谁和用什么分母；比较结果公平、程序公平、交叉子群体、反事实问题及前／中／后处理的干预位置。
 - 适用边界：p.26 冲突图不作为无条件不可能定理；正式练习须给基率、预测／标签与适用假设，不把公平和准确率预设为必然此消彼长；p.27 反事实问句需要因果模型和假设，不能仅翻转一列就宣称因果公平；p.30 法规图仅按课件版本学习，非本轮现行法律核验。
 
 #### U12C 透明、可理解与解释：解释能证明什么
 
 - 来源：Lecture 10 pp.34–44；回接 U03, U11。
+- 逐页正文：[[IS5542_GenAI_in_Business/notes/M10-责任AI-公平解释与治理落地#讲义 p.36 · Decoding the Vocabulary|M10 p.36]]、[[IS5542_GenAI_in_Business/notes/M10-责任AI-公平解释与治理落地#讲义 p.42 · Visualizing Decisions: Saliency & Grad-CAM|M10 p.42]]。
 - 做题目标：区分透明性（Transparency）、可理解性（Interpretability）、可解释性（Explainability），并区分数据／模型／决策透明；比较本身可理解的模型与事后解释、全局与局部解释；说明 LIME 的局部扰动／替代近似、SHAP 的特征归因、Saliency／Grad-CAM 的关注区域分别提供哪类信息；读模型卡（Model Card）的用途、数据、评估、局限与群体结果，分析透明、隐私、知识产权、性能间的具体取舍。
 - 适用边界：p.41 SHAP 的课件保证措辞不扩为无条件数学保证；本轮不做算法推导或认证实现；p.42 热图是可视化线索，不能证明精确因果像素、模型正确性或公平性；解释不替代验证；p.37 案例数字未另核。
 
 #### U12D 问责与治理：把执行、批准和监督落实到人
 
 - 来源：Lecture 10 pp.45–54；回接 U06, U11。
+- 逐页正文：[[IS5542_GenAI_in_Business/notes/M10-责任AI-公平解释与治理落地#讲义 p.50 · Delineating Decision Rights Across the AI Lifecycle|M10 p.50]]、[[IS5542_GenAI_in_Business/notes/M10-责任AI-公平解释与治理落地#讲义 p.51 · Operationalizing Trust via Algorithmic Impact Assessments|M10 p.51]]。
 - 做题目标：区分伦理目标和治理流程，按环境／组织／系统三层寻找控制与证据；解释董事会、CAIO、CRO、合规与技术团队的职责；读 RACI 中执行（Responsible）、最终负责（Accountable）、咨询（Consulted）、知会（Informed）的区别；将算法影响评估（Algorithmic Impact Assessment）的系统目的、利益相关者、补救、人工干预接到部署审批、监测、问题工单和复查。
 - 适用边界：p.50 RACI 是课件示例分工；每项决策需清楚指定 A，不能由该表推定所有组织／法域相同法律责任；p.46／52／53 百分比、倍数及审计提速均未另核，自动化报告不等于已经合规或风险消失。
 
 #### U12E 落实控制：技术、政策、文档、工具和反馈
 
 - 来源：Lecture 10 pp.55–70；回接 U03, U04, U06, U11。
+- 逐页正文：[[IS5542_GenAI_in_Business/notes/M10-责任AI-公平解释与治理落地#讲义 p.63 · Gen AI Responsible AI Tooling, Enablement, and Support|M10 p.63]]、[[IS5542_GenAI_in_Business/notes/M10-责任AI-公平解释与治理落地#讲义 p.67 · Evaluation and Monitoring|M10 p.67]]。
 - 做题目标：把识别→评估→缓解接到技术措施、政策限制、文档透明、工具和反馈；定位训练数据整理、SFT／RLHF、安全策略各在哪一步起作用；区分开发评估、红队、内部独立保证评估与外部评估；给任务测试、引用检查、漂移监测和客户反馈安排证据与负责人；追踪输入检查→模型／检索或扩展→引用检查→输出检查，并识别内容分类、图像过滤、数字水印的用途和残余风险。
 - 适用边界：Google／Vertex／Imagen／SynthID 仅作为此 PDF 所载版本例子，未核产品当前能力、政策和可用范围；p.63／66 的第一方模型限定保留；引用、水印、分类分数、LLM 评审或过滤通过均不能单独证明事实正确、完全安全、版权合规或来源覆盖；小数据快速评估不代替代表性任务验证。
+
 
 ## 从题面动作选解题路线
 
@@ -219,7 +225,7 @@ flowchart TD
 | M10 Responsible AI 与全课回顾；11/28 final review | U01–U04、U06、U07、U11 回顾／回指；U12A–E 作为新增核心 | M10 71 页已接入；p.33 LOQ 不作考点，p.2 旧日期规则未认证；11/28 讲解待补 |
 | Syllabus 提到的零售、保险、HR 等业务功能 | 在 U06／U08／U09 用已出现例子作迁移；等待复习课核范围 | 没找到独立完整专讲，不能编成已授课内容；若 final review 列为要求，补实际材料后扩单元 |
 
-11/23 已对 **10 份核心原件、551 个物理页／slide** 建立文本索引（含 3 页 syllabus、117 页 L1、88 页 L2、80 页 L3、71 页设计工作坊、12＋22 页 M05、68 页营销、25 页创作者、65 页法律）。这是来源盘点和定向回源，不是 551 页重新全篇教学／视觉验收。两张公告与五张既有源页图像资产实际查看；低文本媒体页保留待视觉复验。M01–M09 现有笔记只作解释与导航辅助，本轮没有重写、升级或替用户标记学会。11/26 新增 M10 71 页，现为 11 份核心原件、622 个物理页／slide；新增 71 页全部实际看过逐页联系图，源页→单元定位见 [本批接入记录](source-update-20261126.md)。这仍不是 622 页重新全篇教学验收，也没有新写 M10 正式讲义笔记。
+11/23 已对 **10 份核心原件、551 个物理页／slide** 建立文本索引（含 3 页 syllabus、117 页 L1、88 页 L2、80 页 L3、71 页设计工作坊、12＋22 页 M05、68 页营销、25 页创作者、65 页法律）。这是来源盘点和定向回源，不是 551 页重新全篇教学／视觉验收。两张公告与五张既有源页图像资产实际查看；低文本媒体页保留待视觉复验。M01–M09 现有笔记只作解释与导航辅助，本轮没有重写、升级或替用户标记学会。11/26 新增 M10 71 页，现为 11 份核心原件、622 个物理页／slide；新增 71 页全部实际看过逐页联系图，源页→单元定位见 [本批接入记录](source-update-20261126.md)。这仍不是 622 页重新全篇教学验收，本批另新增 [[IS5542_GenAI_in_Business/notes/M10-责任AI-公平解释与治理落地|M10 正式讲义笔记]]，71 页／60 原图，v0.9／transcript pending；其作者覆盖、独立抽检和发布证据另见本讲回执，不扩为全课重审。
 
 ## 参考卷、历年卷与外部资料怎样使用
 

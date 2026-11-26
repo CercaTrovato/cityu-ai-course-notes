@@ -261,3 +261,8 @@ S26/S27已归M07并制作录音先行笔记，具体反思任务页、截止、�
 
 <!-- canvas-all-material-audit-20261126 -->
 > **11/26 全材料处理判定**：[[_meta/canvas-file-audit-20261126/README|全材料矩阵与三阶段队列]]。范围包含配套数据、代码、题目、参考答案、模板和原作答，不只最新课件；档案和教学完成分别记录。
+
+
+## 2026-11-26 · Lecture 10 考务证据的边界
+
+原件 `course_files_export/canvas-20261126/IS5542 - Lecture 10.pdf` p.2 写 `8-May-26 18:30 to 20:30`，题型 MCQ 20%／Essay 80%，五题选四题每题 20 分。日期与本学期冲突，不能覆盖 12/18 的既有 AIMS 历史基线；题型现行性也待教师确认，M01 暂定口径并未因此成为最终版。项目本页写以 Canvas 截止为准，只交 presentation video and slides、无 report；未新增截止或本人提交证据。完整译解见 M10 p.2。

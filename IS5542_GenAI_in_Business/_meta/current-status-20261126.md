@@ -21,8 +21,11 @@ updated: 2026-11-26
 
 [[IS5542_GenAI_in_Business/00-课程总览|课程总览]] · [[IS5542_GenAI_in_Business/_meta/作业与DDL|作业与 DDL]] · [[IS5542_GenAI_in_Business/review/README|复习资料]] · [[_meta/github-maintenance-20261126/remaining-gaps|全库待补来源]]
 
-第 6 次反思的 [[IS5542_GenAI_in_Business/assignment/graded/A07-legal-industry-reflection/notes/canvas-readback-20261126|提交回执]]已归档；远端附件字节哈希未核。新增 Lecture 10 已在 Canvas 发现，接收及教学处理状态见全库待补来源。
+第 6 次反思的 [[IS5542_GenAI_in_Business/assignment/graded/A07-legal-industry-reflection/notes/canvas-readback-20261126|提交回执]]已归档；远端附件字节哈希未核。Lecture 10 已取得并制成 [[IS5542_GenAI_in_Business/notes/M10-责任AI-公平解释与治理落地|M10 责任 AI]]：71 页／60 原图，v0.9、转录待补；独立抽检及 B1/B2 关闭和发布证据见 [[_meta/material-completion-20261126/is5542/m10/review.json|本讲回执]]。三段视频全文、p.2 考务现行性等边界保留，M07 原件仍缺。
 
 ## Canvas 全材料审计 · 2026-11-26
 
-本课已按教师原件、数据/代码、题目/答案、模板/行政、本人成绩/原交件分别核对课前、课中、课后用途。完整处理判定见 [全材料矩阵与队列](https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/_meta/canvas-file-audit-20261126/README.md)。新增教学候选仍待制作，不由归档或评分推定已学。
+本课已按教师原件、数据/代码、题目/答案、模板/行政、本人成绩/原交件分别核对课前、课中、课后用途。完整处理判定见 [全材料矩阵与队列](https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/_meta/canvas-file-audit-20261126/README.md)。本批 M10 教学正文已制作并按配套回执验收；其他材料的真实缺口保留，不由归档或评分推定本人已学。
+
+
+本批当前处理与保留缺口见 [[_meta/canvas-file-audit-20261126/production-status.json|制作状态覆盖表]]；不以本篇材料完成推进本人掌握。

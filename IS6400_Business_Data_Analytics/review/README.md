@@ -33,3 +33,7 @@ updated: 2026-11-26
 
 <!-- canvas-all-material-audit-20261126 -->
 > **11/26 全材料处理判定**：[[_meta/canvas-file-audit-20261126/README|全材料矩阵与三阶段队列]]。范围包含配套数据、代码、题目、参考答案、模板和原作答，不只最新课件；档案和教学完成分别记录。
+
+## 2026-11-26 · 历史作答与模板补件
+
+[[IS6400_Business_Data_Analytics/review/canvas-submissions-20261126/课后复盘-原作答与纠错|三份 Quiz 原作答复盘]]保留三份本人原作答，逐题区分已核错误、同源条件参考和缺失题面，附英文与变式。[[IS6400_Business_Data_Analytics/review/project-template-20261126/ProjectTemplate-逐页使用导览|ProjectTemplate 四页使用导览]]按 4 张原页讲解六阶段与六章，接入 A06 11/26 已核准备包。只补学习材料，不改本人掌握、历史提交或 A06 正式报告状态。

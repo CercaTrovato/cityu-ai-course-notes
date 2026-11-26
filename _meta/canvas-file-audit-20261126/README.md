@@ -1,6 +1,6 @@
 # 五课 Canvas 全材料审计 · 2026-11-26
 
-本批覆盖学生当前可见的全部文件入口，并将教师材料、本人成绩/交件记录和实际学习状态分开。完成的是文件身份核对、归档与三阶段处理判定；新增教学候选仍按队列制作，不能称全部笔记已补齐。
+本批覆盖学生当前可见的全部文件入口，并将教师材料、本人成绩/交件记录和实际学习状态分开。完成的是文件身份核对、归档与三阶段处理判定；审计时的处理判定与本批实际制作结果分列，不能称全部笔记/全部外部来源已补齐。
 
 ## 覆盖与版本
 
@@ -13,6 +13,8 @@
 AC6761的11份PPT远端与本地完全同字节，11/25的updated_at不是内容改写证据。Analyze balance sheet.docx与本地“2 Analyze balance sheet.docx”同字节，已有M03承接；两个IS5542模板ID也是同字节。配套Notebook导出、独立参考答案和同数据不同任务均在矩阵分列。
 
 ## 三阶段具体处理
+
+> 下表保留本次审计时的来源判定；当前已制作/正式写回与仍受阻项见文末“当前制作结果”，不再将旧 pending 判定直接当作今日待办。
 
 |优先级|课程|产出位置/类型|需处理内容|
 |---|---|---|---|
@@ -38,3 +40,14 @@ AC6761的11份PPT远端与本地完全同字节，11/25的updated_at不是内容
 本批未重写59篇既有M/T正文，未替本人提交、撤回、重新评分或标记学会。独立检查只验本报告的身份、范围、分类和重点证据，不冒称全库存量教学/视觉重审。
 
 既有练习索引另作定向核对：IS5113 P01–P05/79页题索引，IS5542 M01备注四问及M02 p45缺图。先确认索引与正文版本，避免把旧待办重复派成整篇重审。
+
+
+## 当前制作结果 · 课程正式写回后
+
+- [AC6761-T01](../../AC6761_Artificial_Intelligence_Accounting/notes/T01-股价OLS回归实操.md)：完整 OLS 实操、三份精确数据卡、M11 两处回链；数据/图/代码已核，字段字典/单位/时间限制保留。 [写回/gate证据](../../AC6761_Artificial_Intelligence_Accounting/_meta/material-completion-20261126/writeback-receipt.json)。
+- [EF5560-M12](../../EF5560_Fintech_and_AI_in_Finance/notes/M12-智能投顾网络安全与监管科技.md)：40 页、13 原图、三道 MCQ 与财报/条款练习；class03 两表卡已补。p36–38 已核为假设 filing/issuer policy，无指定真实基金，不再以外部基金文件阻塞；转录/失效分享等限制保留。 [写回/gate证据](../../EF5560_Fintech_and_AI_in_Finance/_meta/material-completion-20261126/m12/writeback-receipt.json)。
+- [IS5542-M10](../../IS5542_GenAI_in_Business/notes/M10-责任AI-公平解释与治理落地.md)：71 页、60 原图；B1/B2 定向关闭，U12 接入。视频全文、旧考试页现行性及 M07 原件仍有缺口。 [写回/gate证据](../../_meta/material-completion-20261126/is5542/m10/publication-result.json)。
+- [IS6400-Quiz复盘](../../IS6400_Business_Data_Analytics/review/canvas-submissions-20261126/课后复盘-原作答与纠错.md)：三份历史 Quiz 原作答复盘、同源条件纠错及中英变式；完整 Canvas 题面/教师评分/原始数列缺口保留，不替换原附件。 [写回/gate证据](../../IS6400_Business_Data_Analytics/review/material-completion-review-20261126/publication-receipt.json)。
+- [IS6400-ProjectTemplate导览](../../IS6400_Business_Data_Analytics/review/project-template-20261126/ProjectTemplate-逐页使用导览.md)：ProjectTemplate 实际 4 页与 CRISP-DM/现有证据映射已补，原页 3 图；只是模板使用导览，不表示 A06 正式报告已写完。 [写回/gate证据](../../IS6400_Business_Data_Analytics/review/material-completion-review-20261126/publication-receipt.json)。
+
+逐项当前结果：[production-status.json](production-status.json)；保留原 processing-queue／teacher-file／source-processing 矩阵字节与历史判定。IS5113 旧索引只做来源对应/导航维护，见 [原维护证据](is5113-index-maintenance.json)，原检查器因无§2 不适用的 FAIL 保留。两份 ChatGPT 分享失效、IS5542 M07 与 M02 p45 源图、DEBS13/三段外部视频等缺口不记完成。

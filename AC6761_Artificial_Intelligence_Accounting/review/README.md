@@ -42,3 +42,8 @@ updated: 2026-11-26
 
 <!-- canvas-all-material-audit-20261126 -->
 > **11/26 全材料处理判定**：[[_meta/canvas-file-audit-20261126/README|全材料矩阵与三阶段队列]]。范围包含配套数据、代码、题目、参考答案、模板和原作答，不只最新课件；档案和教学完成分别记录。
+
+
+## 配套实操导航 · 2026-11-26
+
+[[AC6761_Artificial_Intelligence_Accounting/notes/T01-股价OLS回归实操|T01 股价OLS]]可按课前/课中/课后路线复做附件任务，已有自编练习和解释。它独立于期末重点和本人掌握记录；不在review另抄一套同题答案。

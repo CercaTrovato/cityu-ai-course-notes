@@ -1,0 +1,109 @@
+[
+  {
+    "path": "EF5560_Fintech_and_AI_in_Finance\\course_files_export\\class03\\class03\\stock_linear_quintiles.csv",
+    "sha256": "44ffd6716a13704ada395b0345fceba3127c3c1a533a4dc6a7f3c94063aa4f16",
+    "bytes": 1502,
+    "rows": 20,
+    "columns": [
+      "universe",
+      "model",
+      "forecast_quintile",
+      "mean_excess_return",
+      "mean_stock_return",
+      "observations"
+    ],
+    "missing": {
+      "universe": 0,
+      "model": 0,
+      "forecast_quintile": 0,
+      "mean_excess_return": 0,
+      "mean_stock_return": 0,
+      "observations": 0
+    },
+    "distinct": {
+      "universe": 1,
+      "model": 4,
+      "forecast_quintile": 5,
+      "mean_excess_return": 20,
+      "mean_stock_return": 20,
+      "observations": 2
+    },
+    "ranges": {
+      "forecast_quintile": [
+        1.0,
+        5.0
+      ],
+      "mean_excess_return": [
+        -0.0028424859064715316,
+        0.0023131906636329586
+      ],
+      "mean_stock_return": [
+        -0.002106212352627183,
+        0.003049464217477313
+      ],
+      "observations": [
+        780.0,
+        832.0
+      ]
+    },
+    "model_counts": {
+      "OLS": 5,
+      "PCR": 5,
+      "PLS": 5,
+      "Ridge": 5
+    },
+    "current_zip_member_sha256": "44ffd6716a13704ada395b0345fceba3127c3c1a533a4dc6a7f3c94063aa4f16",
+    "same_as_current_zip_member": true
+  },
+  {
+    "path": "EF5560_Fintech_and_AI_in_Finance\\course_files_export\\class03\\class03\\stock_linear_validation.csv",
+    "sha256": "3c9a6f823878f67680d54228ad20c9447ef1f2fdcc49b275bf5b4c257c308a48",
+    "bytes": 2014,
+    "rows": 37,
+    "columns": [
+      "universe",
+      "model",
+      "alpha",
+      "l1_ratio",
+      "validation_mse"
+    ],
+    "missing": {
+      "universe": 0,
+      "model": 0,
+      "alpha": 1,
+      "l1_ratio": 12,
+      "validation_mse": 0
+    },
+    "distinct": {
+      "universe": 1,
+      "model": 6,
+      "alpha": 18,
+      "l1_ratio": 6,
+      "validation_mse": 34
+    },
+    "ranges": {
+      "alpha": [
+        1e-05,
+        1000.0
+      ],
+      "l1_ratio": [
+        0.0,
+        1.0
+      ],
+      "validation_mse": [
+        0.002619719178792539,
+        0.0026633952435149463
+      ]
+    },
+    "model_counts": {
+      "OLS": 1,
+      "Ridge": 6,
+      "LASSO": 7,
+      "Elastic Net": 12,
+      "PCR": 6,
+      "PLS": 5
+    },
+    "current_zip_member_sha256": "3c9a6f823878f67680d54228ad20c9447ef1f2fdcc49b275bf5b4c257c308a48",
+    "same_as_current_zip_member": true
+  }
+]

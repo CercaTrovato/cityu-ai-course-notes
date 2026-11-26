@@ -23,4 +23,10 @@ updated: 2026-11-26
 
 ## Canvas 全材料审计 · 2026-11-26
 
-本课已按教师原件、数据/代码、题目/答案、模板/行政、本人成绩/原交件分别核对课前、课中、课后用途。完整处理判定见 [全材料矩阵与队列](https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/_meta/canvas-file-audit-20261126/README.md)。新增教学候选仍待制作，不由归档或评分推定已学。
+本课已按教师原件、数据/代码、题目/答案、模板/行政、本人成绩/原交件分别核对课前、课中、课后用途。完整处理判定见 [全材料矩阵与队列](https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/_meta/canvas-file-audit-20261126/README.md)。本批正式教学/复盘的具体入口和完成范围见下方；尚缺来源继续保留，不由归档或评分推定本人已学。
+
+
+## 本批已正式写回的学习入口
+
+- [[IS6400_Business_Data_Analytics/review/canvas-submissions-20261126/课后复盘-原作答与纠错|IS6400-Quiz复盘]]：三份历史 Quiz 原作答复盘、同源条件纠错及中英变式；完整 Canvas 题面/教师评分/原始数列缺口保留，不替换原附件。 证据：[[IS6400_Business_Data_Analytics/review/material-completion-review-20261126/publication-receipt.json|正式回执]]。
+- [[IS6400_Business_Data_Analytics/review/project-template-20261126/ProjectTemplate-逐页使用导览|IS6400-ProjectTemplate导览]]：ProjectTemplate 实际 4 页与 CRISP-DM/现有证据映射已补，原页 3 图；只是模板使用导览，不表示 A06 正式报告已写完。 证据：[[IS6400_Business_Data_Analytics/review/material-completion-review-20261126/publication-receipt.json|正式回执]]。

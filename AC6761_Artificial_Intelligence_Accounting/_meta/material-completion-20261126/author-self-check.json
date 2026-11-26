@@ -1,0 +1,205 @@
+{
+  "author": "/root/audit_ac_ef",
+  "status": "frozen_candidate_pending_independent_review",
+  "independent_review_executed_by_author": false,
+  "candidate_note": "E:\\app-data\\codex\\scratchpad\\cityu-material-completion-20261126\\ac6761\\candidates\\T01-股价OLS回归实操.md",
+  "candidate_sha256": "74752ec9db5632cae65da1412f15003afe429af5105b3aa1fd2f186da10ff761",
+  "dataset_card_fragment": "E:\\app-data\\codex\\scratchpad\\cityu-material-completion-20261126\\ac6761\\candidates\\dataset-card-additions.md",
+  "dataset_card_sha256": "cb4eba9981c3e982dfc8d7c43e7f7a9acb50419bbf403e835a3c6adf13f99d35",
+  "scope": [
+    "T01完整原题/数据/OLS代码/公式/系数/误差/面板与不确定性/5个自编中英练习",
+    "data1、AuditFee、Access2三份精确卡",
+    "M11两处入口及课程导航/台账/术语/考点草稿"
+  ],
+  "author_checks": {
+    "source_prompt": "DOCX唯一任务段逐字保留；scratch只读副本Word导出1页实际查看",
+    "data1": "全部36103行/8列/6406公司/年键/空值/有限值核；两求解器、SSE/R²与第一行核算",
+    "auditfee": "公式/缓存双读、全部25行，一元OLS独立计算与M08旧数值一致",
+    "access2": "scratch READONLY副本，31表/147跨表记录、全部列NULL/空文本汇总；只查SaleID，不查姓名/电话/地址/生日值",
+    "figures": "2张720DPI PNG实际查看，原SVG/PDF与源代码保留；未直接查看Obsidian整篇渲染",
+    "mechanical": "current L=0/C.hard=0/R.hard=0，C.warn1/R.warn54；historical strict FAIL如实保留",
+    "AI_Bias": "实际读last-class完整案例，复用精确heading，只新增M11回链；不虚构原题问句"
+  },
+  "warnings": [
+    {
+      "code": "R7a",
+      "all_lines": [
+        31,
+        175,
+        208,
+        210,
+        222,
+        224,
+        226,
+        228,
+        232,
+        240,
+        248,
+        264,
+        335,
+        341,
+        345,
+        365
+      ],
+      "disposition": "OLS系数/误差/精度是当前实操结果和代入依据，保留必要精度；浮点对照只认证实现，不认证经济数据。"
+    },
+    {
+      "code": "R1c",
+      "all_lines": [
+        37
+      ],
+      "disposition": "对象/模型/代码职责在同一短段并列，分别说明用途，不是省略操作。"
+    },
+    {
+      "code": "R6a",
+      "all_lines": [
+        49
+      ],
+      "disposition": "原题中文译解紧接dependent/independent/OLS三个必须识别的原题术语；之后分开逐节解释。"
+    },
+    {
+      "code": "R4c",
+      "all_lines": [
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        306,
+        307
+      ],
+      "disposition": "范围列的分号分别给本列的值和来源限制；速查表只用于已教内容回查，没有用它替代机制。"
+    },
+    {
+      "code": "R8b",
+      "all_lines": [
+        91
+      ],
+      "disposition": "§2.2先给具体两条记录问题再讲每单位变化；正式符号表随后逐项解释，不依赖四句句数证明可读。"
+    },
+    {
+      "code": "R5a",
+      "all_lines": [
+        113
+      ],
+      "disposition": "§2.3的三点同一例必须并列输入、残差与平方；正文和图完整走x=2，不是散公式。"
+    },
+    {
+      "code": "R1a",
+      "all_lines": [
+        208
+      ],
+      "disposition": "95%区间先交代重复造区间的覆盖含义，再区分未来个股预测区间；保留必要条件。"
+    },
+    {
+      "code": "R6d",
+      "all_lines": [
+        49,
+        107,
+        117,
+        132,
+        150,
+        150,
+        175,
+        185,
+        232,
+        240,
+        242,
+        279,
+        287,
+        355,
+        365,
+        375
+      ],
+      "disposition": "OLS在§1.2展开并在§2.3讲动作；SSE/SST/RMSE在§2.3/2.7讲分母与计算；UTF-8是编码名，SHA-256是原字节指纹；HC1在§2.8解释。FYEAR是原列名不是新统计术语。"
+    },
+    {
+      "code": "R4f",
+      "all_lines": [
+        119,
+        119,
+        119,
+        199,
+        199,
+        266,
+        266,
+        266
+      ],
+      "disposition": "三点例表前说明两候选线，逐行完整残差/平方；系数表先解释SE并随后以roe算t；聚类表前后比较同系数的SE。"
+    }
+  ],
+  "C_warn_disposition": {
+    "code": "C_CALCULATION_STEPS",
+    "section": "2.2",
+    "action": "该节定义四项加总式；同一机制的真实第一行代入在§2.6，三点残差在§2.3，未用软件表替代数值解释。"
+  },
+  "pending": [
+    "主会话协调两阶段独立抽检/必要定向关闭",
+    "统一正式note-review-v2绑定/发布门槛/CAS原子写回",
+    "正式Obsidian或同源浏览器全文显示与链接回读",
+    "Git/根共享与看板由主会话收尾"
+  ],
+  "source_limits": [
+    "data1字段字典/币种/复权/发布时间/清洗链未给；只按原编码",
+    "Access2驱动不支持SQLPrimaryKeys；不把唯一索引冒称PK认证；未检所有对象/隐私值",
+    "Access2的SaleIDs12–15与原AI查询S-5/S-2未有映射，不拼造答案"
+  ],
+  "source_hash_recheck": [
+    {
+      "path": "AC6761_Artificial_Intelligence_Accounting/course_files_export/canvas-20261126-review/data1.csv",
+      "size": 2985657,
+      "sha256": "c29fbd2ba03c5daa337420c2cf403731927654236e33c8223eed182c42f8fc83",
+      "still_same": true
+    },
+    {
+      "path": "AC6761_Artificial_Intelligence_Accounting/course_files_export/canvas-20261126-review/PredictStockprice.docx",
+      "size": 13698,
+      "sha256": "a698a1a80c73c49fc7b750eb56d5dc85cab38c255c18fdf6ca35a8c1d374f3d6",
+      "still_same": true
+    },
+    {
+      "path": "AC6761_Artificial_Intelligence_Accounting/course_files_export/PredictAuditFee.xlsx",
+      "size": 10467,
+      "sha256": "8e974827c441f5ec9f61f963f113af4779a08fdebcd4319d083db8db011addcb",
+      "still_same": true
+    },
+    {
+      "path": "AC6761_Artificial_Intelligence_Accounting/course_files_export/ExampleTables2.accdb",
+      "size": 1765376,
+      "sha256": "45e7587826646e948c79d7eff18c4039ca7ec0b91d063e6c50e88fbcb2084fa8",
+      "still_same": true
+    },
+    {
+      "path": "AC6761_Artificial_Intelligence_Accounting/course_files_export/ExampleTables1.accdb",
+      "size": 704512,
+      "sha256": "25ccd123ee4a1548e867980ec4afec4e237e502dcca63f77901805c25955674e",
+      "still_same": true
+    },
+    {
+      "path": "AC6761_Artificial_Intelligence_Accounting/course_files_export/AI in REA ACCESS database.docx",
+      "size": 15535,
+      "sha256": "bec8d98b81269163642e837d16dd4e618c1238b9d096fe859da189168739b23f",
+      "still_same": true
+    },
+    {
+      "path": "AC6761_Artificial_Intelligence_Accounting/course_files_export/Excel.pptx",
+      "size": 43741,
+      "sha256": "df899b51302c6d3fa09911c8b8e780503c18a14422b1bca28f5337cb5effa0f7",
+      "still_same": true
+    },
+    {
+      "path": "AC6761_Artificial_Intelligence_Accounting/review/final-2026/last-class-review.md",
+      "size": 143492,
+      "sha256": "020fcd14472901b7fca48b9fabb19fe154b806664355018b72f7ea34f95f0cf6",
+      "still_same": true
+    },
+    {
+      "path": "AC6761_Artificial_Intelligence_Accounting/notes/M11-财务预测实作与AI伦理.md",
+      "size": 78226,
+      "sha256": "9c6d0b853c0f598ac7fef45ae41e9ede7ab0761fe7bca340e7c0af3ca07de313",
+      "still_same": true
+    }
+  ]
+}

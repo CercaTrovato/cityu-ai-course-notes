@@ -23,6 +23,11 @@ updated: 2026-11-26
 
 ## Canvas 全材料审计 · 2026-11-26
 
-本课已按教师原件、数据/代码、题目/答案、模板/行政、本人成绩/原交件分别核对课前、课中、课后用途。完整处理判定见 [全材料矩阵与队列](https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/_meta/canvas-file-audit-20261126/README.md)。新增教学候选仍待制作，不由归档或评分推定已学。
+本课已按教师原件、数据/代码、题目/答案、模板/行政、本人成绩/原交件分别核对课前、课中、课后用途。完整处理判定见 [全材料矩阵与队列](https://github.com/CercaTrovato/cityu-ai-course-notes/blob/main/_meta/canvas-file-audit-20261126/README.md)。本批正式教学/复盘的具体入口和完成范围见下方；尚缺来源继续保留，不由归档或评分推定本人已学。
 
 最新正式提交证据见 [报告回读](../assignment/graded/A02-group-project/notes/canvas-report-readback-20261126.md)。
+
+
+## 本批学习资料维护
+
+旧练习索引已按真实源题/页码对应做纯导航维护，见 [[_meta/canvas-file-audit-20261126/is5113-index-maintenance.json|维护记录]]；不是新建 M/T 或整篇教学重审。原无§2 索引的教学检查器 FAIL 保留为不适用，未改本人学习或评分。

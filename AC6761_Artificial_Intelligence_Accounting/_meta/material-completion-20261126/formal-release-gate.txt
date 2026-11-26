@@ -1,0 +1,107 @@
+====================================================================================================
+笔记质量量表   T01-股价OLS回归实操.md   模式: current/strict   status: v0.9
+----------------------------------------------------------------------------------------------------
+【L 合规检查】
+   L5_围栏数 : 8
+   L5_details : [5, 5]
+   ✓ 七项无问题（L1 未讲解页见上，封面/目标页允许）
+【现行内容检查】字数/固定标签/类比配额不计FAIL
+   △ C_CALCULATION_STEPS 行91 §2.2 从“估一个数”到模型里的四个参数 本单元有计算公式但未找到数字代入过程；给定结果或API调用不能替代可复算例。本篇其他单元有代入，请核是否为同一机制及是否需就近回指：2.3, 2.5, 2.6, 2.7
+   ✓ 未报确定性阻塞；不是教学完整证明
+   原题清单: unverified_without_manifest 核对题数: 0
+   范围: 机检通过不代表解释正确或读者已理解；页码引述不证明该页已实质讲解。
+   范围: 纯数字等式只核支持的四则/幂/开方及显示精度；不执行代码、不验证符号推导或模型结果。
+   范围: 无显式源题清单时，无法验证漏整题/原文保真；有清单也只核其字面契约，清单抄写与逐问语义仍需回源。
+   历史G/E统计已保存；查看旧配额详情用 --profile historical
+【逐小节明细】
+   num | cjk | pages | formula_n | numex_step | first_kind
+   2.1 | 427 | 0 | 0 | 0 | text
+   2.2 | 298 | 0 | 1 | 0 | text
+   2.3 | 387 | 0 | 1 | 5 | text
+   2.4 | 120 | 0 | 0 | 0 | text
+    | 83 | 0 | 0 | 0 | text
+    | 188 | 0 | 0 | 0 | text
+    | 177 | 0 | 0 | 0 | text
+    | 260 | 0 | 0 | 0 | text
+   2.5 | 371 | 0 | 1 | 1 | text
+   2.6 | 314 | 0 | 0 | 1 | text
+   2.7 | 500 | 0 | 2 | 1 | text
+   2.8 | 431 | 0 | 0 | 0 | text
+   2.9 | 512 | 0 | 0 | 0 | text
+【R 可读性】 计入判定（规则：_meta/可读性总规则.md）
+   语义检查仅为 △ 疑点；PASS 不表示读者已理解。
+   表格: 最多 4 列，最大单元格 27 单元（行 79）
+   句长（阅读单元）: 214 句  均值 28.4  中位 26  p90 45  最长 82  >80: 1（0.5%）  >120: 0  豁免块: 0
+   ✗ 0 项  △ 54 项
+     R1a  单句长度           ✗ 0    △ 1
+     R1c  一句多个分号         ✗ 0    △ 1
+     R4c  单元格句数          ✗ 0    △ 9
+     R5a  一段行内公式过多       ✗ 0    △ 1
+     R6a  一段术语注释过密       ✗ 0    △ 1
+     R7a  主线混入核验细节       ✗ 0    △ 16
+     R8b  小节首段过长         ✗ 0    △ 1
+     R4f  表头说明线索待核       ✗ 0    △ 8
+     R6d  术语首用解释待核       ✗ 0    △ 16
+   △ R7a 行31 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R1c 行37 2 个分号：原始数据是一张表；回归模型是一条用表内三个数生成一个拟合值的规则；代码是…
+   △ R6a 行49 一段 3 处括号英文注释（约等于 3 个新术语）
+   △ R4c 行79 单元格 2 句
+   △ R4c 行80 单元格 2 句
+   △ R4c 行81 单元格 2 句
+   △ R4c 行82 单元格 2 句
+   △ R4c 行83 单元格 2 句
+   △ R4c 行84 单元格 2 句
+   △ R4c 行85 单元格 2 句
+   △ R8b 行93 小节首段 4 句；首段 ≤ 3 句，先给问题或结论
+   △ R5a 行115 一段 4 个不同行内公式
+   △ R7a 行186 浮点级误差；移到 §9 或折叠「复算与来源」
+   △ R1a 行221 82 单元：它是按规定抽样/误差条件构造区间的方法：若反复取得符合条件的同类数据并照…
+   △ R7a 行221 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R7a 行223 浮点级误差；移到 §9 或折叠「复算与来源」
+   △ R7a 行235 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R7a 行237 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R7a 行239 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R7a 行241 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R7a 行245 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R7a 行253 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R7a 行261 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R7a 行277 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R4c 行319 单元格 2 句
+   △ R4c 行320 单元格 2 句
+   △ R7a 行348 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R7a 行354 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R7a 行358 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R7a 行378 6 位以上小数；移到 §9 或折叠「复算与来源」
+   △ R6d 行49 缩写“OLS”首用未识别到中文说明；人工核对
+   △ R6d 行109 缩写“OLS”首用未识别到中文说明；人工核对
+   △ R6d 行119 缩写“OLS”首用未识别到中文说明；人工核对
+   △ R6d 行134 缩写“SSE”首用未识别到中文说明；人工核对
+   △ R6d 行157 缩写“OLS”首用未识别到中文说明；人工核对
+   △ R6d 行157 缩写“UTF”首用未识别到中文说明；人工核对
+   △ R6d 行186 缩写“SSE”首用未识别到中文说明；人工核对
+   △ R6d 行198 缩写“SHA”首用未识别到中文说明；人工核对
+   △ R6d 行245 缩写“SST”首用未识别到中文说明；人工核对
+   △ R6d 行253 缩写“OLS”首用未识别到中文说明；人工核对
+   △ R6d 行255 缩写“RMSE”首用未识别到中文说明；人工核对
+   △ R6d 行292 缩写“OLS”首用未识别到中文说明；人工核对
+   △ R6d 行300 缩写“FYEAR”首用未识别到中文说明；人工核对
+   △ R6d 行368 缩写“OLS”首用未识别到中文说明；人工核对
+   △ R6d 行378 缩写“SSE”首用未识别到中文说明；人工核对
+   △ R6d 行388 缩写“OLS”首用未识别到中文说明；人工核对
+   △ R4f 行121 表头“(x,y)”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行121 表头“候选线残差及平方”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行121 表头“OLS线残差及平方”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行212 表头“常规SE”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行212 表头“常规t”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行279 表头“常规SE”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行279 表头“HC1SE”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+   △ R4f 行279 表头“公司聚类SE”未识别到专门说明；核对含义、算法或来源、单位和一行读法
+【汇总】 {'body_cjk': 4068, 'note_cjk': 6630, 'leaf_n': 13, 'strict': True, 'code_blocks_observed': 4}
+【判定】 PASS（机器可验证项；仍须教学、计算运行与原题回源核对） 
+【教学边界】本脚本未评估教学可读性；须独立子代理按高中知识起点审查，零报错不能作为教学质量指标。
+====================================================================================================
+JSON:{"file": "E:\\app-data\\codex\\scratchpad\\cityu-material-completion-20261126\\ac6761\\publication-ready\\T01-股价OLS回归实操.md", "profile": "current", "teaching_assessment": "not_assessed_by_script", "C": {"spec": "2026-10-21", "hard": [], "warn": [{"code": "C_CALCULATION_STEPS", "section": "2.2 从“估一个数”到模型里的四个参数", "line": 91, "message": "本单元有计算公式但未找到数字代入过程；给定结果或API调用不能替代可复算例。本篇其他单元有代入，请核是否为同一机制及是否需就近回指：2.3, 2.5, 2.6, 2.7", "evidence": ""}], "source_coverage": {"status": "unverified_without_manifest", "checked_questions": 0, "hard": [], "warnings": []}, "limits": ["机检通过不代表解释正确或读者已理解；页码引述不证明该页已实质讲解。", "纯数字等式只核支持的四则/幂/开方及显示精度；不执行代码、不验证符号推导或模型结果。", "无显式源题清单时，无法验证漏整题/原文保真；有清单也只核其字面契约，清单抄写与逐问语义仍需回源。"]}, "historical": {"spec": "2026-09-16", "G": {"G1t 逐块讲解 字/code cell ≥ 350": [1017, true], "G3d 代码三件套缺失率 ≤ 0.20": [[2, 4], false], "G3a 小节首元素为段落": [[], true]}, "E": [["2.1", "cell 块", ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]], ["2.2", "cell 块", ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]], ["2.3", "cell 块", ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]], ["2.4", "cell 块", ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]], ["A · 确认环境与路径", "cell 块", ["缺 这块在干什么", "缺 逐行", "缺 为什么这么写", "缺 易错点", "缺 输出"]], ["B · 阅读完整脚本的读取片段", "cell 块", ["缺 这块在干什么", "缺 逐行", "缺 为什么这么写", "缺 易错点", "缺 输出"]], ["C · 阅读完整脚本的拟合片段", "cell 块", ["缺 这块在干什么", "缺 逐行", "缺 为什么这么写", "缺 易错点", "缺 输出"]], ["D · 在 PowerShell", "cell 块", ["缺 这块在干什么", "缺 逐行", "缺 为什么这么写", "缺 易错点", "缺 输出"]], ["2.5", "cell 块", ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]], ["2.6", "cell 块", ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]], ["2.7", "cell 块", ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]], ["2.8", "cell 块", ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]], ["2.9", "cell 块", ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]]], "verdict": "FAIL"}, "verdict": "PASS（机器可验证项；仍须教学、计算运行与原题回源核对）", "legacy_problems": [], "legacy_info": {"L5_围栏数": 8, "L5_details": [5, 5]}, "G": {}, "E": [["2.2 从“估一个数”到模型里的四个参数", "待核线索", ["本单元有计算公式但未找到数字代入过程；给定结果或API调用不能替代可复算例。本篇其他单元有代入，请核是否为同一机制及是否需就近回指：2.3, 2.5, 2.6, 2.7"]]], "summary": {"file": "E:\\app-data\\codex\\scratchpad\\cityu-material-completion-20261126\\ac6761\\publication-ready\\T01-股价OLS回归实操.md", "body_cjk": 4068, "note_cjk": 6630, "leaf_n": 13, "strict": true, "code_blocks_observed": 4}, "sections": [{"sec": "2.1 读表：36,103 行不是 36,103 家公司", "num": "2.1", "level": 3, "cjk": 427, "chars": 771, "own_cjk": 244, "bq_ratio": 0.0, "code_blocks": 0, "pages": [], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 7, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "E_miss": ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]}, {"sec": "2.2 从“估一个数”到模型里的四个参数", "num": "2.2", "level": 3, "cjk": 298, "chars": 563, "own_cjk": 215, "bq_ratio": 0.0, "code_blocks": 0, "pages": [], "labels": [], "type": "公式型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 1, "symtab_syms": "{'\\\\widehat', 'x', 'b', 'y'}", "prose_syms": "set()", "formulas": [[6, "$$ \\widehat y_i=b_0+b_1x_{i1}+b_2x_{i2}+b_3x_{i3}. $$", true]], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "E_miss": ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]}, {"sec": "2.3 为什么求的是残差平方和最小", "num": "2.3", "level": 3, "cjk": 387, "chars": 878, "own_cjk": 353, "bq_ratio": 0.0, "code_blocks": 0, "pages": [], "labels": [], "type": "公式型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 1, "symtab_syms": "set()", "prose_syms": "{'\\\\widehat', 'x', 'b', 'y'}", "formulas": [[23, "$$ \\operatorname{SSE}=\\sum_{i=1}^{36103}(y_i-\\widehat y_i)^2. $$", false]], "numex_step": 5, "numex_any": 6, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 1, "has_script": 1, "orig_cjk": 0, "E_miss": ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]}, {"sec": "2.4 实操 A–D：从原件跑到结果文件", "num": "2.4", "level": 3, "cjk": 120, "chars": 191, "own_cjk": 120, "bq_ratio": 0.0, "code_blocks": 0, "pages": [], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 0, "has_script": 1, "orig_cjk": 0, "E_miss": ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]}, {"sec": "A · 确认环境与路径", "num": "", "level": 4, "cjk": 83, "chars": 224, "own_cjk": 83, "bq_ratio": 0.0, "code_blocks": 1, "pages": [], "labels": [], "type": "代码型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 1, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "E_miss": ["缺 这块在干什么", "缺 逐行", "缺 为什么这么写", "缺 易错点", "缺 输出"]}, {"sec": "B · 阅读完整脚本的读取片段", "num": "", "level": 4, "cjk": 188, "chars": 302, "own_cjk": 188, "bq_ratio": 0.0, "code_blocks": 1, "pages": [], "labels": [], "type": "代码型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "{'b'}", "formulas": [], "numex_step": 0, "numex_any": 1, "code_bad": 1, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 1, "orig_cjk": 0, "E_miss": ["缺 这块在干什么", "缺 逐行", "缺 为什么这么写", "缺 易错点", "缺 输出"]}, {"sec": "C · 阅读完整脚本的拟合片段", "num": "", "level": 4, "cjk": 177, "chars": 290, "own_cjk": 177, "bq_ratio": 0.0, "code_blocks": 1, "pages": [], "labels": [], "type": "代码型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "{'R'}", "formulas": [], "numex_step": 0, "numex_any": 2, "code_bad": 1, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 1, "orig_cjk": 0, "E_miss": ["缺 这块在干什么", "缺 逐行", "缺 为什么这么写", "缺 易错点", "缺 输出"]}, {"sec": "D · 在 PowerShell 执行完整脚本", "num": "", "level": 4, "cjk": 260, "chars": 442, "own_cjk": 260, "bq_ratio": 0.0, "code_blocks": 1, "pages": [], "labels": [], "type": "代码型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 1, "orig_cjk": 0, "E_miss": ["缺 这块在干什么", "缺 逐行", "缺 为什么这么写", "缺 易错点", "缺 输出"]}, {"sec": "2.5 读原任务的回归结果", "num": "2.5", "level": 3, "cjk": 371, "chars": 1321, "own_cjk": 361, "bq_ratio": 0.32, "code_blocks": 0, "pages": [], "labels": [], "type": "公式型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 1, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [[4, "$$ \\widehat{stockprice}=-40.499759-10.292999\\,bmratio+23.834252\\,roe+12.601410\\,size. $$", false]], "numex_step": 1, "numex_any": 8, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 1, "has_step_table": 0, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "E_miss": ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]}, {"sec": "2.6 系数尺度：增加 0.01 和增加 1 不相同", "num": "2.6", "level": 3, "cjk": 314, "chars": 628, "own_cjk": 314, "bq_ratio": 0.0, "code_blocks": 0, "pages": [], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "{'\\\\widehat', 'y'}", "formulas": [], "numex_step": 1, "numex_any": 4, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "E_miss": ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]}, {"sec": "2.7 R平方、误差与不合理拟合值", "num": "2.7", "level": 3, "cjk": 500, "chars": 944, "own_cjk": 500, "bq_ratio": 0.0, "code_blocks": 0, "pages": [], "labels": [], "type": "公式型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 2, "symtab_syms": "set()", "prose_syms": "{'R'}", "formulas": [[4, "$$ R^2=1-\\frac{SSE}{SST} =1-\\frac{309074240.315684}{343445849.768843} \\approx0.1000786863. $$", true], [14, "$$ RMSE=\\sqrt{SSE/36103}\\approx92.525142. $$", false]], "numex_step": 1, "numex_any": 7, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 0, "has_cmp_table": 0, "has_script": 0, "orig_cjk": 0, "E_miss": ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]}, {"sec": "2.8 同一公司反复出现：系数和“有多确定”分开处理", "num": "2.8", "level": 3, "cjk": 431, "chars": 781, "own_cjk": 421, "bq_ratio": 0.0, "code_blocks": 0, "pages": [], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 7, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 1, "has_step_table": 0, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "E_miss": ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]}, {"sec": "2.9 能回答原任务，不等于能作因果或未来预测", "num": "2.9", "level": 3, "cjk": 512, "chars": 660, "own_cjk": 368, "bq_ratio": 0.0, "code_blocks": 0, "pages": [], "labels": [], "type": "定义型", "what_cjk": 0, "why_cjk": 0, "alt_angles": 0, "alt_nodigit": 0, "alt_cjk": 0, "misc_n": 0, "misc_reason": 0, "formula_n": 0, "symtab_syms": "set()", "prose_syms": "set()", "formulas": [], "numex_step": 0, "numex_any": 0, "code_bad": 0, "first_kind": "text", "first_bad": 0, "has_so": 0, "has_whyf": 0, "has_edge": 0, "has_step_table": 1, "has_cmp_table": 1, "has_script": 0, "orig_cjk": 0, "E_miss": ["缺 这块在干什么", "缺 为什么这么写", "缺 易错点"]}], "R": {"strict": true, "stats": {"sentences": 214, "mean": 28.4, "p50": 26, "p90": 45, "max": 82, "over80": 1, "over120": 0, "long_share": 0.005, "exempt": 0, "table_max_columns": 4, "table_max_cell_units": 27, "table_max_cell_line": 79, "measurement_version": "v2"}, "hard": [], "warn": [["R7a", 31, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R1c", 37, "2 个分号：原始数据是一张表；回归模型是一条用表内三个数生成一个拟合值的规则；代码是…"], ["R6a", 49, "一段 3 处括号英文注释（约等于 3 个新术语）"], ["R4c", 79, "单元格 2 句"], ["R4c", 80, "单元格 2 句"], ["R4c", 81, "单元格 2 句"], ["R4c", 82, "单元格 2 句"], ["R4c", 83, "单元格 2 句"], ["R4c", 84, "单元格 2 句"], ["R4c", 85, "单元格 2 句"], ["R8b", 93, "小节首段 4 句；首段 ≤ 3 句，先给问题或结论"], ["R5a", 115, "一段 4 个不同行内公式"], ["R7a", 186, "浮点级误差；移到 §9 或折叠「复算与来源」"], ["R1a", 221, "82 单元：它是按规定抽样/误差条件构造区间的方法：若反复取得符合条件的同类数据并照…"], ["R7a", 221, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R7a", 223, "浮点级误差；移到 §9 或折叠「复算与来源」"], ["R7a", 235, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R7a", 237, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R7a", 239, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R7a", 241, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R7a", 245, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R7a", 253, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R7a", 261, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R7a", 277, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R4c", 319, "单元格 2 句"], ["R4c", 320, "单元格 2 句"], ["R7a", 348, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R7a", 354, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R7a", 358, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R7a", 378, "6 位以上小数；移到 §9 或折叠「复算与来源」"], ["R6d", 49, "缩写“OLS”首用未识别到中文说明；人工核对"], ["R6d", 109, "缩写“OLS”首用未识别到中文说明；人工核对"], ["R6d", 119, "缩写“OLS”首用未识别到中文说明；人工核对"], ["R6d", 134, "缩写“SSE”首用未识别到中文说明；人工核对"], ["R6d", 157, "缩写“OLS”首用未识别到中文说明；人工核对"], ["R6d", 157, "缩写“UTF”首用未识别到中文说明；人工核对"], ["R6d", 186, "缩写“SSE”首用未识别到中文说明；人工核对"], ["R6d", 198, "缩写“SHA”首用未识别到中文说明；人工核对"], ["R6d", 245, "缩写“SST”首用未识别到中文说明；人工核对"], ["R6d", 253, "缩写“OLS”首用未识别到中文说明；人工核对"], ["R6d", 255, "缩写“RMSE”首用未识别到中文说明；人工核对"], ["R6d", 292, "缩写“OLS”首用未识别到中文说明；人工核对"], ["R6d", 300, "缩写“FYEAR”首用未识别到中文说明；人工核对"], ["R6d", 368, "缩写“OLS”首用未识别到中文说明；人工核对"], ["R6d", 378, "缩写“SSE”首用未识别到中文说明；人工核对"], ["R6d", 388, "缩写“OLS”首用未识别到中文说明；人工核对"], ["R4f", 121, "表头“(x,y)”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 121, "表头“候选线残差及平方”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 121, "表头“OLS线残差及平方”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 212, "表头“常规SE”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 212, "表头“常规t”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 279, "表头“常规SE”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 279, "表头“HC1SE”未识别到专门说明；核对含义、算法或来源、单位和一行读法"], ["R4f", 279, "表头“公司聚类SE”未识别到专门说明；核对含义、算法或来源、单位和一行读法"]]}}
+
+发布机械门槛：PASS（不代表教学或视觉通过）
+
+记录完整且版本一致；程序不认证独立身份、教学语义或视觉，须核真实代理执行与报告
