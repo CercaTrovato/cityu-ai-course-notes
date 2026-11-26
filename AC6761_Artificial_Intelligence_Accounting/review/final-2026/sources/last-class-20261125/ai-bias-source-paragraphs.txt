@@ -1,0 +1,25 @@
+P001: An Automated Resume Screening System for a Tech Company
+P002: A fictional tech company, "InnovateTech," wants to automate the first round of its hiring process for software engineers. They decide to train an AI model to scan resumes and score them from 1 to 100, passing only the top 20% to human recruiters.
+P003: 1. The Training Data
+P004: To train this model, InnovateTech uses its own historical hiring data from the past 10 years. This dataset includes:
+P005: Features (Input):​ The text from all resumes submitted.
+P006: Labels (Output):​ Whether the candidate was hired (1) or not hired (0).
+P007: 
+P008: The Problem with the Data: Over the past 10 years, InnovateTech’s engineering department has been predominantly male (around 85%), a common issue in the tech industry. Furthermore, the company primarily recruited from a small set of prestigious universities. Therefore, the training data is unrepresentative of the ideal, diverse talent pool.​ It reflects past biases and imbalances instead of a fair standard.
+P009: 2. How the AI Learns
+P010: The AI model’s goal is simple: find patterns in the resumes of people who were hired and use them to score new resumes. The model might learn the following correlations from the biased data:
+P011: Direct Bias:​ The word "women" might be correlated with a "not hired" outcome because fewer women were hired in the past. The model learns to downgrade resumes containing this word.
+P012: Indirect Bias:​ The model might find that graduates from "University A" are strongly correlated with being hired. However, if University A has a male-dominated computer science program, the model effectively uses the university name as a proxy​ for gender. 
+P013: 3. The Discriminatory Outcome
+P014: The model is deployed to screen new applicants for an open position.
+P015: Candidate A (Male):​ Graduated from University A. Resume gets a score of 92.
+P016: Candidate B (Female):​ Graduated from University B (a high-quality school with a more balanced gender ratio). Has equivalent skills and experience to Candidate A. Resume gets a score of 65.
+P017: 
+P018: The Result:​ Candidate A’s resume is passed to the human recruiter. Candidate B’s resume is automatically rejected. The human recruiter never even sees Candidate B’s application. The AI has automated and scaled​ the past bias. 
+P019: 
+P020: The entire process creates a harmful, self-reinforcing cycle:
+P021: 
+P022: 
+P023: The problem is garbage in, garbage out. The model learned an inaccurate and unfair pattern from the world because the data it was fed was not representative of a fair and equitable hiring process.
+P024: 
+P025: 
