@@ -1,7 +1,7 @@
 # AGENTS.md — EF5560 Fintech and AI in Finance（课程级 · 工具无关版）
 
 > 课程特有口径以本文件补充；现行进度以 `00-课程总览.md`、笔记 frontmatter 与原始材料核对。通用融合与验收规则见 vault 根文件及 `.claude/skills/transcript-merge/SKILL.md`。
-> **开工前必做**：读 `syllabus_EF5560_2026.pdf` + 抓官方课程目录对校 → 产出 `_prep/课程前置资料.md`。
+> **开工前必做**：读当前 `course_files_export/canvas-20261126-review/syllabus_EF5560_2026.pdf`（Canvas file16626864；2026-11-26 重下同 SHA）+ 对校当前官网目录；旧根目录同名原件仅作历史 → 产出 `_prep/课程前置资料.md`。
 
 ---
 
@@ -18,7 +18,7 @@
 
 | 文件 | 状态 |
 |---|---|
-| `syllabus_EF5560_2026.pdf` | 课程口径见 `_prep/课程前置资料.md`；原件细节仍以原件核对 |
+| `canvas-20261126-review/syllabus_EF5560_2026.pdf`（当前 3 页） | 现行核验见 `_meta/syllabus-reconcile-20261126/README.md`；课程口径见 `_prep/课程前置资料.md`；原件细节仍以原件核对 |
 | `Lec01_Data_and_Vibe_Coding.pdf` · `Lec02_Regression_Vibe_Coding.pdf` | ✅ 对应 M01 / M02 v1.0，转录已合并 |
 | `Lec03_Linear_Machine_Learning.pdf`（56 页）+ `class03/` | ✅ M03 v1.0；9/22 重下受同步截断影响的课件与数据 |
 | `Lec04_Nonlinear_Machine_Learning.pdf`（54 页）+ `class04/` | ✅ M04 v1.0（2026-09-26）；同课 A/B 双录音互补，37 个 🎙️ 格已回填；实际课堂至 p.39，p.40–54 明确顺延；课件 54 页仍全覆盖 |

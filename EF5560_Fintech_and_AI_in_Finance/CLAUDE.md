@@ -1,7 +1,7 @@
 # CLAUDE.md — EF5560 Fintech and AI in Finance（课程级）
 
 > 课程特有口径以本文件补充；现行进度以 `00-课程总览.md`、笔记 frontmatter 与原始材料核对。通用融合与验收规则见 vault 根文件及 `.claude/skills/transcript-merge/SKILL.md`。
-> **开工前必做**：读 `syllabus_EF5560_2026.pdf` + 抓官方课程目录对校 → 产出 `_prep/课程前置资料.md`。
+> **开工前必做**：读当前 `course_files_export/canvas-20261126-review/syllabus_EF5560_2026.pdf`（Canvas file16626864；2026-11-26 重下同 SHA）+ 对校当前官网目录；旧根目录同名原件仅作历史 → 产出 `_prep/课程前置资料.md`。
 
 ---
 

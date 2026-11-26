@@ -1,7 +1,7 @@
 ---
 type: 作业与DDL
 course: EF5560
-updated: 2026-11-26
+updated: 2026-11-27
 ---
 
 <!-- current-maintenance-20261126 -->
@@ -9,15 +9,24 @@ updated: 2026-11-26
 
 # EF5560 作业与 DDL
 
+## 当前大纲执行摘要 · 2026-11-26
+
+当前原件为 [[EF5560_Fintech_and_AI_in_Finance/course_files_export/canvas-20261126-review/syllabus_EF5560_2026.pdf|file16626864，3页]]，本次在线重下与归档同 SHA。考核及日期完整对照见 [[EF5560_Fintech_and_AI_in_Finance/_prep/课程前置资料#当前课程要求 · 2026-11-26 Canvas 实核|现行要求表]]。
+
+- A02：11/29 12:00 HKT；PDF≤10页，视频≤10分钟/每人至少2分钟。Tencent Meeting 录制及首页 video link 已有 syllabus p.2 书面依据。11/17公告646699允许多种可播放云链接；无密码、评分前持续可用，不交视频文件。
+- TA第二次辅导日期12/6，有录像；本场时刻/会议入口仍核Canvas，不能把一般周日10:00咨询直接当该场确认。
+- 期末40%、2小时手写、两块课程与四类能力；允许材料按正式清单，GenAI禁用。11/30学术诚信课程/测验/声明节点保留；本人是否已完成不由本次材料维护改变。
+
+
 ## 2026-11-07 · 当前作业与项目节点
 
-- **11 月 29 日 12:00（香港时间）**提交 FinTech 案例项目。由一名组员上传一份最多 10 页的 PDF，按本人补充的老师课堂口径用腾讯会议录制，首页附无密码视频链接及组员资料。录像最多 10 分钟，每人至少讲 2 分钟。Canvas 要求上传 PDF，录像通过首页链接交付。[正式作业页](https://canvas.cityu.edu.hk/courses/70898/assignments/339476)
+- **11 月 29 日 12:00（香港时间）**提交 FinTech 案例项目。由一名组员上传一份最多 10 页的 PDF，按当前 syllabus p.2 的书面要求用腾讯会议录制，首页附无密码视频链接及组员资料。录像最多 10 分钟，每人至少讲 2 分钟。Canvas 要求上传 PDF，录像通过首页链接交付。[正式作业页](https://canvas.cityu.edu.hk/courses/70898/assignments/339476)
 
 > 2026-11-21，本人补充老师在课堂说明 A02 用腾讯会议录制。S34 开头仅录到视频分享链接须无密码，录制平台名称来自本人补充。旧版书面 brief 及 syllabus 的 Zoom 要求保留为历史。
 
 > 制作规则：[[作业规范|全局通用规则]] → [[EF5560_Fintech_and_AI_in_Finance/_meta/EF5560作业制作规范|EF5560 课程细则]] → 本地私有 Axx 任务说明。本页维护作业事实与历史来源，不能覆盖制作规则。
 
-> **来源**：`syllabus_EF5560_2026.pdf` ＋ `EF5560_FinTech_Company_Case_Requirements.pdf` ＋ ML 作业 Canvas 页及 2026-09-27 已与官方 ZIP 逐文件比对的 `EF5560_ML_Investment_Project_2026.pdf` ＋ `Lec01` 讲义 p.5 ＋ M01–M04 课堂转录。M04 为 A/B 同课双录音；最终截止与入口以 Canvas 为准。
+> **来源**：当前 `course_files_export/canvas-20261126-review/syllabus_EF5560_2026.pdf`（file16626864；旧根目录版本保留历史） ＋ `EF5560_FinTech_Company_Case_Requirements.pdf` ＋ ML 作业 Canvas 页及 2026-09-27 已与官方 ZIP 逐文件比对的 `EF5560_ML_Investment_Project_2026.pdf` ＋ `Lec01` 讲义 p.5 ＋ M01–M04 课堂转录。M04 为 A/B 同课双录音；最终截止与入口以 Canvas 为准。
 > ⚠️ **Canvas 是唯一权威**。syllabus 自己写着「Later Canvas or University announcements take precedence.」讲义 p.5 也写着「**Canvas is the source of truth for rubrics, submission links, and any administrative updates.**」下面凡标 ⚪ 的日期都是推算，**不要据此安排最后一天**。
 
 ---

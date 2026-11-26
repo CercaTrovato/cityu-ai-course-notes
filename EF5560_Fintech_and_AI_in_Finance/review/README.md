@@ -1,7 +1,7 @@
 ---
 course: EF5560
 type: review-index
-updated: 2026-11-26
+updated: 2026-11-27
 ---
 
 # EF5560 · 复习资料
@@ -27,3 +27,6 @@ updated: 2026-11-26
 
 <!-- canvas-all-material-audit-20261126 -->
 > **11/26 全材料处理判定**：[[_meta/canvas-file-audit-20261126/README|全材料矩阵与三阶段队列]]。范围包含配套数据、代码、题目、参考答案、模板和原作答，不只最新课件；档案和教学完成分别记录。
+
+<!-- syllabus-reconcile-20261126 -->
+当前大纲与课程执行要求见 [[EF5560_Fintech_and_AI_in_Finance/_prep/课程前置资料#当前课程要求 · 2026-11-26 Canvas 实核|11/26在线核验的要求表]]；期末允许材料仍按最终正式通知。

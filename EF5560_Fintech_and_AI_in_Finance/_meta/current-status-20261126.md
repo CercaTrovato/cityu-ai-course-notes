@@ -1,7 +1,7 @@
 ---
 course: EF5560
 type: current-status
-updated: 2026-11-26
+updated: 2026-11-27
 ---
 
 # EF5560 · 当前入口 · 2026-11-26
@@ -31,3 +31,7 @@ M10/M11 已融合现有录音，早期 v0.9/pending 提示仅为历史。新版 
 ## 本批已正式写回的学习入口
 
 - [[EF5560_Fintech_and_AI_in_Finance/notes/M12-智能投顾网络安全与监管科技|EF5560-M12]]：40 页、13 原图、三道 MCQ 与财报/条款练习；class03 两表卡已补。p36–38 已核为假设 filing/issuer policy，无指定真实基金，不再以外部基金文件阻塞；转录/失效分享等限制保留。 证据：[[EF5560_Fintech_and_AI_in_Finance/_meta/material-completion-20261126/m12/writeback-receipt.json|正式回执]]。
+
+## syllabus 当前版本与说明核验
+
+11/26 已在 Canvas 重下 file16626864，163061 字节/SHA4e002edafcc83e7d…，与已有新版归档同字节。当前入口已统一指向该版；课程前置、总览与 DDL 的旧 Zoom／根目录旧版指针、闭卷及分项门槛绝对表述已按实际来源纠正。课程教学正文、本人学习及提交状态不因本次说明维护升级。详见 [[EF5560_Fintech_and_AI_in_Finance/_meta/syllabus-reconcile-20261126/README|当前大纲核验]]。
