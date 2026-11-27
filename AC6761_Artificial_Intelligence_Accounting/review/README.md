@@ -6,6 +6,25 @@ updated: 2026-11-26
 
 # AC6761 · 复习资料
 
+<!-- review-workspace-20261127 -->
+## 当前复习工作区
+
+这里是 AC6761 期末复习的持久入口。**先读 [工作区规则](AGENTS.md)，再按下表继续**；旧聊天/下方历史记录里的“待登录”“未取得”不覆盖当前依据。
+
+| 要找什么 | 当前文件 |
+|---|---|
+| 老师要求、考试重点与排除 | [exam-guide.md](final-2026/exam-guide.md) |
+| 哪些资料已取得、哪些还差 | [preparation.md](final-2026/preparation.md) |
+| 固定知识框架与题型 | [framework.md](final-2026/framework.md) |
+| 当前顺序、停点与下一轮 | [route.md](final-2026/route.md) |
+| 实际学习证据 | [progress.json](final-2026/progress.json)；sessions/ 与 mistakes/ 有真实互动才新增 |
+
+当前：17 个主单元；0 轮 session、0 条错题。这里只报告已落盘记录，不断言本人从未学过。下一步：先读 exam-guide 和 last-class-review §0；无实际断点则从 U01 假设/约束与交易识别进入，先走考试保留点并模拟，再完整补学已排除部分。
+
+固定框架与动态路线分开；每轮收尾更新本段、progress 和 route。本次准备维护未改变本人学习/作业提交/评分。
+<!-- /review-workspace-20261127 -->
+
+
 2026-11-26 已整理 11/25 最后课：[[AC6761_Artificial_Intelligence_Accounting/review/final-2026/last-class-review|最后复习课：考点、排除范围与英文作答]]。原音 `00:44:54`–`01:32:51` 的 427 段；9 份重点页 131 张、32 张原图，包含最新排除范围、英文参考与自测。旧 M01–M11 不整体升级，个人学习／提交状态不变。
 
 期末准备先看最后课范围；早期 17 单元框架保留完整知识路线，不能再把其全部练习当作本次考试必做。

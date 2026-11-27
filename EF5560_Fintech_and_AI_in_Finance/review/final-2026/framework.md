@@ -1,5 +1,12 @@
 # EF5560 期末复习路线 · 2026/27 Semester A
 
+## 启动时先读（2026-11-27 固定框架基线）
+
+本文件保留既有知识单元、依赖和题型目标。当前考试事实以 [exam-guide](exam-guide.md) 为准，资料准备见 [preparation](preparation.md)，每轮学习只更新 [route](route.md) 和 [progress](progress.json)。下文带日期的早期核查、待登录或缺源陈述是历史，不覆盖新回执；新增源与考试重点不要求重建框架。
+
+下一次授课前必须重读上述文件及最近 session。总监督负责安排，本课复习会话负责教学与逐轮记录。全课范围保留，考试排除不等于已学会；深浅取舍按本人决定记 route。
+
+
 更新：2026-11-26（香港时间）。第 12 讲与新版 syllabus 已接入原来的 15 个单元；来源和路线保留；本批另补 M12 逐页教学与参考解析，尚未进行本人作答、诊断或模拟考试，不能据此判断你已掌握。
 
 入口资料：当年教师 [Practice A](../../course_files_export/canvas-20261118/practice_exam_A.pdf)、[Practice B](../../course_files_export/canvas-20261118/practice_exam_B.pdf)、[当前归档 syllabus](../../course_files_export/canvas-20261126-review/syllabus_EF5560_2026.pdf)、[第 12 讲](../../course_files_export/canvas-20261126-review/Lec12_Robo_Cybersecurity_and_RegTech.pdf)。逐源版本、可读范围与缺口见 [sources.json](sources.json)，学习状态见 [progress.json](progress.json)。

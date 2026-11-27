@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "course": "EF5560",
+  "frozen_on": "2026-11-27",
+  "framework_file": "framework.md",
+  "framework_sha256": "1a688ce0cad1db83f8eb1df67153e5b608ab7cd6839e2bbcc65abb34a96b66f7",
+  "unit_contracts": [
+    {
+      "id": "U01",
+      "title": "做出一行可信的金融数据",
+      "prerequisite_ids": [],
+      "question_types": [
+        "数据时点/泄漏判断",
+        "收益与单位",
+        "配对交易假设与因果"
+      ]
+    },
+    {
+      "id": "U02",
+      "title": "回归、验证和样本外评估",
+      "prerequisite_ids": [
+        "U01"
+      ],
+      "question_types": [
+        "回归输出判断",
+        "时间划分与基准",
+        "SSE/MSE/OOS R²计算"
+      ]
+    },
+    {
+      "id": "U03",
+      "title": "线性ML的收缩、选择和成分",
+      "prerequisite_ids": [
+        "U02"
+      ],
+      "question_types": [
+        "方法比较/选择",
+        "标准化与线性预测",
+        "PCR/PLS及零系数"
+      ]
+    },
+    {
+      "id": "U04",
+      "title": "非线性ML与模型复杂度",
+      "prerequisite_ids": [
+        "U02",
+        "U03"
+      ],
+      "question_types": [
+        "树与交互解释",
+        "bagging/森林/boosting",
+        "隐藏单元/early stopping/面板划分"
+      ]
+    },
+    {
+      "id": "U05",
+      "title": "模型解释的含义与边界",
+      "prerequisite_ids": [
+        "U03",
+        "U04"
+      ],
+      "question_types": [
+        "系数/置零重要性",
+        "响应曲线",
+        "模型解释与因果区分"
+      ]
+    },
+    {
+      "id": "U06",
+      "title": "投资组合、成本、风险与绩效",
+      "prerequisite_ids": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05"
+      ],
+      "question_types": [
+        "权重/暴露/收益",
+        "费用/Sharpe/回撤",
+        "择时/CAPM基准与解释"
+      ]
+    },
+    {
+      "id": "U07",
+      "title": "区块链、共享记录与贸易融资",
+      "prerequisite_ids": [
+        "U01"
+      ],
+      "question_types": [
+        "区块链机制/适用性",
+        "融资上限",
+        "证据/链下事实/因果"
+      ]
+    },
+    {
+      "id": "U08",
+      "title": "加密资产机制与经营现金流",
+      "prerequisite_ids": [
+        "U07"
+      ],
+      "question_types": [
+        "分叉/托管/权利",
+        "矿工/平台/持币公司风险",
+        "增发前后NAV"
+      ]
+    },
+    {
+      "id": "U09",
+      "title": "DeFi的交易、借贷与清算",
+      "prerequisite_ids": [
+        "U01",
+        "U07",
+        "U08"
+      ],
+      "question_types": [
+        "AMM储备与价格",
+        "TVL/清算/健康因子",
+        "收益/流动性/跨链"
+      ]
+    },
+    {
+      "id": "U10",
+      "title": "NFT与现实资产代币化",
+      "prerequisite_ids": [
+        "U07",
+        "U08"
+      ],
+      "question_types": [
+        "token/媒体/合同权利",
+        "黄金/基金/债券现金流",
+        "NAV/二级市场折价"
+      ]
+    },
+    {
+      "id": "U11",
+      "title": "稳定币、CBDC与兑换渠道",
+      "prerequisite_ids": [
+        "U07",
+        "U08",
+        "U09",
+        "U10"
+      ],
+      "question_types": [
+        "稳定币设计/储备",
+        "赎回摩擦/收入",
+        "CBDC债权/钱包/采用"
+      ]
+    },
+    {
+      "id": "U12",
+      "title": "支付与BNPL的资金和成本",
+      "prerequisite_ids": [
+        "U07",
+        "U11"
+      ],
+      "question_types": [
+        "授权/清算/结算",
+        "跨境全成本与到账",
+        "留存收入/BNPL贡献"
+      ]
+    },
+    {
+      "id": "U13",
+      "title": "数字信贷与众筹",
+      "prerequisite_ids": [
+        "U02",
+        "U07",
+        "U12"
+      ],
+      "question_types": [
+        "排序/校准/预期损失",
+        "资金方/first-loss损失分摊",
+        "众筹权利与达标边界"
+      ]
+    },
+    {
+      "id": "U14",
+      "title": "智能投顾与客户风险能力",
+      "prerequisite_ids": [
+        "U06"
+      ],
+      "question_types": [
+        "意愿/能力/目标/期限与假设",
+        "自动化与人工复核",
+        "小账户收费/AUM盈亏平衡",
+        "再平衡与双边成本",
+        "Betterment/余额宝服务与分销比较"
+      ]
+    },
+    {
+      "id": "U15",
+      "title": "网络恢复、RegTech与金融文本AI",
+      "prerequisite_ids": [
+        "U01",
+        "U07",
+        "U12",
+        "U13"
+      ],
+      "question_types": [
+        "CIA/风险来源/事件响应",
+        "异常检测/误报漏报/服务价值",
+        "独立备份权限/恢复测试",
+        "KYC/AML/制裁筛查/身份冲突与决策留痕",
+        "金融文本金额/单位/期间/公开时点核验",
+        "赎回资格/请求处理/实际到账区别"
+      ]
+    }
+  ],
+  "change_rule": "实际学习只更新route/progress/sessions/mistakes；新增来源改exam-guide/preparation/sources。修改框架结构须本人决定与新版本映射。"
+}

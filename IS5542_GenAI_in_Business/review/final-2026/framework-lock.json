@@ -1,0 +1,320 @@
+{
+  "schema_version": 1,
+  "course": "IS5542",
+  "frozen_on": "2026-11-27",
+  "framework_file": "framework.md",
+  "framework_sha256": "9560393b29dddb00123adee5d85b46bfee830a379d24aefe675a991800e3008c",
+  "unit_contracts": [
+    {
+      "id": "U01",
+      "title": "从 AI 到 LLM：概念和生成过程",
+      "prerequisite_ids": [],
+      "question_types": [
+        "概念辨别",
+        "机制解释"
+      ],
+      "outcomes": [
+        "区别规则、预测、生成与产品界面",
+        "追踪文字→token→表示→注意力→逐 token 生成",
+        "对照第 10 讲演进图解释符号、深度学习、生成式与神经符号方向；区分简化时间图与此前四范式分类"
+      ]
+    },
+    {
+      "id": "U02",
+      "title": "按业务约束选模型与部署方案",
+      "prerequisite_ids": [
+        "U01",
+        "U07"
+      ],
+      "question_types": [
+        "比较选择",
+        "读图读表",
+        "简单成本计算"
+      ],
+      "outcomes": [
+        "从任务找模态、性能、延迟、吞吐、上下文、成本约束",
+        "比较开放权重／托管 API／路由方案并提出取舍",
+        "用第 10 讲六向量图重述业务选型取舍，将模型生态分组与具体任务测量分开"
+      ]
+    },
+    {
+      "id": "U03",
+      "title": "证明系统有效：十类评测、任务集与留出集",
+      "prerequisite_ids": [
+        "U01",
+        "U02",
+        "U05"
+      ],
+      "question_types": [
+        "评测匹配",
+        "实验设计",
+        "指标解释",
+        "简单成本计算"
+      ],
+      "outcomes": [
+        "从业务任务选择相应评测类别和验收条件",
+        "识别污染、饱和、judge 偏差；解释每个分母和失败类型",
+        "分清至少一次成功的 pass@k、重复全成功的 pass^k、Elo 偏好分及校准／弃答；不把总体通过率直接作幂代替逐题统计",
+        "把第 10 讲五支柱评测回顾映射到原十类基准，保留数据污染、偏好与客观正确率差异；将公平分组与安全评估接回任务验收"
+      ]
+    },
+    {
+      "id": "U04",
+      "title": "把任务写清：提示、结构化输出与上下文",
+      "prerequisite_ids": [
+        "U01"
+      ],
+      "question_types": [
+        "提示改写",
+        "错误诊断",
+        "方法选择"
+      ],
+      "outcomes": [
+        "写清任务、资料、示例、约束、输出格式和未知项",
+        "区分 zero-shot／few-shot、检索补证据、调参训练与上下文修复",
+        "用第 10 讲回顾图区分提示中角色、受众、约束、任务和输出格式，解释这些内容怎样服务已明确的业务问题"
+      ]
+    },
+    {
+      "id": "U05",
+      "title": "模型怎样行动：智能体、运行系统与检索增强生成",
+      "prerequisite_ids": [
+        "U01",
+        "U04"
+      ],
+      "question_types": [
+        "概念比较",
+        "流程追踪",
+        "架构设计",
+        "风险定位"
+      ],
+      "outcomes": [
+        "分清 chatbot、固定 workflow、single／multi-agent 的下一步由谁决定",
+        "追踪读上下文→选动作→工具执行→观察→继续／停止，并定位权限与证据"
+      ]
+    },
+    {
+      "id": "U06",
+      "title": "从原型到上线：架构、业务价值与交付",
+      "prerequisite_ids": [
+        "U02",
+        "U03",
+        "U05",
+        "U07"
+      ],
+      "question_types": [
+        "场景匹配",
+        "实施路线论述",
+        "业务案例分析"
+      ],
+      "outcomes": [
+        "比较 Deep Research、OpenClaw、autoresearch 的输入、回路和验证信号",
+        "从 Diagnose→Prototype→Deploy→Productize 说明数据、人员、监控、成本与放行条件",
+        "用七类应用检查环境是否有界、反馈是否明确；区分 AlphaFold 等科学 AI、强化学习 agent 与 LLM agent，不把预测结构写成实物实验",
+        "用情境判断框架（Cynefin）区分清楚（Clear）、繁杂但可分析（Complicated）、复杂且需试探（Complex）、混乱需先稳定（Chaotic）及未判明（Disorder），说明为何分别采用规则、专家分析、小试验或先稳定再判断"
+      ]
+    },
+    {
+      "id": "U07",
+      "title": "先找值得解决的问题：用户目标与设计思维",
+      "prerequisite_ids": [
+        "U01"
+      ],
+      "question_types": [
+        "情境转写",
+        "机会识别",
+        "优先级选择"
+      ],
+      "outcomes": [
+        "从情境、动机、期望结果写 job story，再转 HMW",
+        "按组织价值与实施复杂度说明 Top 3 选择依据",
+        "说出同理理解（Empathise）→定义问题（Define）→构思（Ideate）→原型（Prototype）→测试（Test）的阶段任务、产物及反馈；分清理解问题与寻找方案中的发散和收敛",
+        "把第 10 讲提示→JTBD→HMW→排序→构思／原型的路线接回原 Design Thinking 五阶段，辨别“先找问题”和“先试方案”各在解决什么不确定性"
+      ]
+    },
+    {
+      "id": "U08",
+      "title": "营销：研究、创作、触达与测量",
+      "prerequisite_ids": [
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U07"
+      ],
+      "question_types": [
+        "行业案例",
+        "流程追踪",
+        "效果证据判断",
+        "指标解释"
+      ],
+      "outcomes": [
+        "把 AI 任务放到 Discover／Create／Activate／Analyze 对应步骤",
+        "区分真人研究、synthetic persona、内容生成与邮件 agent；检查资料、客户授权、复核与效果"
+      ]
+    },
+    {
+      "id": "U09",
+      "title": "银行：控制、用途分层与多 agent 工作",
+      "prerequisite_ids": [
+        "U03",
+        "U05",
+        "U06"
+      ],
+      "question_types": [
+        "用途风险分类",
+        "流程追踪",
+        "控制设计",
+        "证据判断"
+      ],
+      "outcomes": [
+        "按业务用途和后果区分辅助生产率与核心流程",
+        "追踪 PMO、Chat BI、Policy Companion、CHO 的来源、冲突、提议与确认"
+      ]
+    },
+    {
+      "id": "U10",
+      "title": "AI 创作者平台：数据、训练、评估与再创作",
+      "prerequisite_ids": [
+        "U01",
+        "U03",
+        "U04",
+        "U06"
+      ],
+      "question_types": [
+        "行业比较",
+        "产品机制解释",
+        "方案评价"
+      ],
+      "outcomes": [
+        "解释 compute／data／model 及 pretraining／SFT／RL 的分工",
+        "从 Discover→Create→Reuse 追踪素材和用户结果，评价平台反馈"
+      ]
+    },
+    {
+      "id": "U11",
+      "title": "AI 法律案例：按法域、事实与责任分析",
+      "prerequisite_ids": [
+        "U01",
+        "U05"
+      ],
+      "question_types": [
+        "案例选择／短答",
+        "多方责任分析",
+        "案例论述"
+      ],
+      "outcomes": [
+        "分别分析输出权属、训练资料、专业意见、自动驾驶和客户数据",
+        "用事实→争点→适用规则／法域→应用→有条件结论写答案；对 Meridian 分开法律与伦理",
+        "把第 10 讲程序公平、申诉纠错、隐私透明取舍与组织问责接回法律案例，区分解释、伦理评价、内部职责与法律责任"
+      ]
+    },
+    {
+      "id": "U12",
+      "title": "Responsible AI：把风险转成持续控制",
+      "prerequisite_ids": [
+        "U02",
+        "U03",
+        "U05",
+        "U11"
+      ],
+      "question_types": [
+        "风险定位",
+        "控制设计",
+        "跨单元综合案例"
+      ],
+      "outcomes": [
+        "逐项检查幻觉、注入／权限、隐私、知识产权、公平、人机关系和供应链／环境影响",
+        "用 Govern／Map／Measure／Manage 连接负责人、证据、处理和剩余风险",
+        "按 U12A–U12E 依次学习责任原则、公平、解释、问责与治理措施，把各项控制接回 U03 评测、U06 上线、U11 法律边界"
+      ],
+      "subunits": [
+        {
+          "id": "U12A",
+          "title": "责任 AI 的对象、原则与社会技术边界",
+          "prerequisite_ids": [],
+          "question_types": [
+            "概念比较",
+            "风险定位"
+          ],
+          "outcomes": [
+            "区分 Responsible／Trustworthy／Ethical AI 的课件用法，指出谁受影响、什么后果、哪些原则需转成可检查的动作",
+            "将有用、无害、诚实及人为控制放回实际应用，区分讲义价值主张与已验证效果"
+          ]
+        },
+        {
+          "id": "U12B",
+          "title": "公平：先分清比较对象、分母和决策过程",
+          "prerequisite_ids": [
+            "U12A"
+          ],
+          "question_types": [
+            "指标辨别",
+            "案例条件判断",
+            "控制设计"
+          ],
+          "outcomes": [
+            "定位历史／世界、采样测量、设计目标、部署生态的偏差；用代理变量说明删掉敏感列为何可能不足",
+            "区分人口统计均等（Demographic Parity）、机会均等（Equality of Opportunity）、均等化胜算（Equalized Odds）、个体公平与群体公平；逐项说清比较谁和用什么分母",
+            "比较结果公平、程序公平、交叉子群体、反事实问题及前／中／后处理的干预位置"
+          ]
+        },
+        {
+          "id": "U12C",
+          "title": "透明、可理解与解释：解释能证明什么",
+          "prerequisite_ids": [
+            "U12A"
+          ],
+          "question_types": [
+            "方法比较",
+            "解释范围判断",
+            "案例论述"
+          ],
+          "outcomes": [
+            "区分透明性（Transparency）、可理解性（Interpretability）、可解释性（Explainability），并区分数据／模型／决策透明",
+            "比较本身可理解的模型与事后解释、全局与局部解释；说明 LIME 的局部扰动／替代近似、SHAP 的特征归因、Saliency／Grad-CAM 的关注区域分别提供哪类信息",
+            "读模型卡（Model Card）的用途、数据、评估、局限与群体结果，分析透明、隐私、知识产权、性能间的具体取舍"
+          ]
+        },
+        {
+          "id": "U12D",
+          "title": "问责与治理：把执行、批准和监督落实到人",
+          "prerequisite_ids": [
+            "U12A",
+            "U12C"
+          ],
+          "question_types": [
+            "责任分配",
+            "流程追踪",
+            "治理方案设计"
+          ],
+          "outcomes": [
+            "区分伦理目标和治理流程，按环境／组织／系统三层寻找控制与证据",
+            "解释董事会、CAIO、CRO、合规与技术团队的职责；读 RACI 中执行（Responsible）、最终负责（Accountable）、咨询（Consulted）、知会（Informed）的区别",
+            "将算法影响评估（Algorithmic Impact Assessment）的系统目的、利益相关者、补救、人工干预接到部署审批、监测、问题工单和复查"
+          ]
+        },
+        {
+          "id": "U12E",
+          "title": "落实控制：技术、政策、文档、工具和反馈",
+          "prerequisite_ids": [
+            "U12B",
+            "U12C",
+            "U12D"
+          ],
+          "question_types": [
+            "控制匹配",
+            "评测设计",
+            "跨单元综合案例"
+          ],
+          "outcomes": [
+            "把识别→评估→缓解接到技术措施、政策限制、文档透明、工具和反馈；定位训练数据整理、SFT／RLHF、安全策略各在哪一步起作用",
+            "区分开发评估、红队、内部独立保证评估与外部评估；给任务测试、引用检查、漂移监测和客户反馈安排证据与负责人",
+            "追踪输入检查→模型／检索或扩展→引用检查→输出检查，并识别内容分类、图像过滤、数字水印的用途和残余风险"
+          ]
+        }
+      ]
+    }
+  ],
+  "change_rule": "实际学习只更新route/progress/sessions/mistakes；新增来源改exam-guide/preparation/sources。修改框架结构须本人决定与新版本映射。"
+}

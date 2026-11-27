@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "course": "IS6400",
+  "frozen_on": "2026-11-27",
+  "framework_file": "framework.md",
+  "framework_sha256": "7a77cb0a078b7106735e3d40e33c179b767ff091c7e17462aa36a267f02d04e5",
+  "unit_contracts": [
+    {
+      "id": "U00",
+      "title": "业务问题、数据表与 Python 读题起点",
+      "prerequisite_ids": [],
+      "question_types": [
+        "任务识别",
+        "代码/数据形状解读"
+      ],
+      "learning_goal": "从一行一客户、一列一属性出发，分清预测对象、标签、特征与业务决策；能跟踪 import→建对象→fit→predict。"
+    },
+    {
+      "id": "U01",
+      "title": "数据类型、描述统计与关联规则",
+      "prerequisite_ids": [
+        "U00"
+      ],
+      "question_types": [
+        "缺失值处理",
+        "IQR/分位数",
+        "读图",
+        "支持度/置信度/lift"
+      ],
+      "learning_goal": "会判断属性类型，解释缺失/离群；算均值、方差、分位数/IQR，读箱线与相关；从交易表计算关联规则。"
+    },
+    {
+      "id": "U02",
+      "title": "回归、拟合与正则化初步",
+      "prerequisite_ids": [
+        "U00",
+        "U01"
+      ],
+      "question_types": [
+        "系数/显著性解读",
+        "预测与残差",
+        "梯度更新",
+        "Ridge/Lasso 比较",
+        "代码填空"
+      ],
+      "learning_goal": "能把业务问题写成回归，解释系数/dummy，计算预测和误差；理解最小二乘、梯度下降以及正则化改变什么。"
+    },
+    {
+      "id": "U03",
+      "title": "特征选择、纯度与 PCA",
+      "prerequisite_ids": [
+        "U01",
+        "U02"
+      ],
+      "question_types": [
+        "Gini/entropy/information gain",
+        "filter/wrapper/搜索",
+        "PCA 读图与解释",
+        "代码输出对照"
+      ],
+      "learning_goal": "会算分裂前后加权不纯度，解释前向选择/RFE；区分保留原变量与生成主成分，读解释方差和变换。"
+    },
+    {
+      "id": "U04",
+      "title": "聚类及距离：K-means、层次与 DBSCAN",
+      "prerequisite_ids": [
+        "U01",
+        "U03"
+      ],
+      "question_types": [
+        "迭代手算",
+        "距离矩阵合并",
+        "方法选择",
+        "参数/输出解释"
+      ],
+      "learning_goal": "会做 K-means 分配/更新、解释 K-means++/bisecting；能按 linkage 合并距离矩阵，辨认 DBSCAN 核心/边界/噪声；理解谱聚类的教程用途。"
+    },
+    {
+      "id": "U05",
+      "title": "决策树、集成与 SVM",
+      "prerequisite_ids": [
+        "U01",
+        "U03"
+      ],
+      "question_types": [
+        "沿树预测",
+        "Hunt/分裂手算",
+        "bagging/boosting/stacking 比较",
+        "SVM 边界",
+        "模型导入与参数"
+      ],
+      "learning_goal": "能沿树逐例分类，区分树深度与软件 max_depth；解释 bootstrap/随机特征、加权改错、元模型与支持向量。"
+    },
+    {
+      "id": "U06",
+      "title": "分类/回归评价与不平衡成本",
+      "prerequisite_ids": [
+        "U02",
+        "U05"
+      ],
+      "question_types": [
+        "混淆矩阵",
+        "precision/recall/F1/ROC",
+        "MAE/RMSE/MAPE",
+        "成本敏感选择"
+      ],
+      "learning_goal": "能固定正类与分母，算评价指标并解释错判成本；选择符合业务目标的阈值/指标。"
+    },
+    {
+      "id": "U07",
+      "title": "时间序列：模式、平滑与趋势季节",
+      "prerequisite_ids": [
+        "U01",
+        "U02"
+      ],
+      "question_types": [
+        "图形识别",
+        "移动平均/SES/Holt/Holt-Winters",
+        "一步更新",
+        "加法/乘法季节",
+        "代码读值"
+      ],
+      "learning_goal": "能辨别水平/趋势/季节/周期，按已知状态预测，选择平滑模型并解释窗口、权重及季节周期。"
+    },
+    {
+      "id": "U08",
+      "title": "平稳化、AR/MA/ARIMA 与恢复预测",
+      "prerequisite_ids": [
+        "U02",
+        "U07"
+      ],
+      "question_types": [
+        "差分/平稳性",
+        "ACF/PACF 判读",
+        "ARIMA(p,d,q)",
+        "多步预测恢复",
+        "滚动预测设计"
+      ],
+      "learning_goal": "能解释历史值/误差项、差分含义，依据原/差分序列看图选阶，再把预测恢复到原量纲。"
+    },
+    {
+      "id": "U09",
+      "title": "选模、剪枝、交叉验证与整体业务评价",
+      "prerequisite_ids": [
+        "U04",
+        "U06",
+        "U08"
+      ],
+      "question_types": [
+        "训练/验证/测试",
+        "k-fold/nested CV",
+        "剪枝与悲观误差",
+        "rolling evaluation",
+        "A/B 设计",
+        "聚类评价"
+      ],
+      "learning_goal": "能设计不泄漏的数据切分，区分选超参与最终报告；计算树复杂度惩罚并比较剪枝；评价聚类和整体方案的业务贡献。"
+    },
+    {
+      "id": "U10",
+      "title": "全课补全：深度学习、文本与图像",
+      "prerequisite_ids": [
+        "U02",
+        "U03",
+        "U08"
+      ],
+      "question_types": [
+        "前向计算/形状",
+        "RNN/LSTM 状态",
+        "TF-IDF",
+        "图像/CNN 流程解读"
+      ],
+      "learning_goal": "按课程完整性补 ANN 激活/训练、RNN/LSTM、文本表示/NLP、图像表示与 CNN；接回传统模型比较。"
+    },
+    {
+      "id": "U11",
+      "title": "综合案例、保留题检测与错题复测",
+      "prerequisite_ids": [
+        "U00",
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09"
+      ],
+      "question_types": [
+        "混合题型识别",
+        "限时模拟",
+        "英文解释",
+        "错题变式/延迟复测"
+      ],
+      "learning_goal": "先学会按题型选择方法，再做未提前讲解的混合卷；用原作答复盘读题、公式、参数、泄漏和业务解释。"
+    }
+  ],
+  "change_rule": "实际学习只更新route/progress/sessions/mistakes；新增来源改exam-guide/preparation/sources。修改框架结构须本人决定与新版本映射。"
+}

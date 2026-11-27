@@ -1,5 +1,23 @@
 # 五课期末复习 · 总监督入口
 
+## 2026-11-27 · 持久复习工作区
+
+当前以[统一工作协议](WORKSPACE-PROTOCOL.md)为准：固定全课框架，动态路线/真实问答/错题分别维护，各课 review/AGENTS.md 是启动入口。五课原有 73 主单元与 IS5542 五个子单元保留；本次不增加个人完成量。
+
+资料可支持开始复习，但未称全部齐备。各课 preparation 列已取得、检索范围与明确待补；exam-guide列当前教师要求、口述时间戳、重点和排除。AC6761最后课此前已进文件，本批强化启动读取，不再让旧聊天“末次课待取得”覆盖。11/26 AIMS复核已承接，11/30允许材料、11/28 IS5542复习课、12/6 EF5560 TA讲卷仍按日期跟进。
+
+| 课程 | 工作区 | 当前依据 | 动态路线 |
+|---|---|---|---|
+| IS5113 | [review/README](../../IS5113_AI_Ethics_and_Regulations/review/README.md) | [考试与资料](../../IS5113_AI_Ethics_and_Regulations/review/final-2026/exam-guide.md) | [route](../../IS5113_AI_Ethics_and_Regulations/review/final-2026/route.md) |
+| AC6761 | [review/README](../../AC6761_Artificial_Intelligence_Accounting/review/README.md) | [考试与资料](../../AC6761_Artificial_Intelligence_Accounting/review/final-2026/exam-guide.md) | [route](../../AC6761_Artificial_Intelligence_Accounting/review/final-2026/route.md) |
+| IS6400 | [review/README](../../IS6400_Business_Data_Analytics/review/README.md) | [考试与资料](../../IS6400_Business_Data_Analytics/review/final-2026/exam-guide.md) | [route](../../IS6400_Business_Data_Analytics/review/final-2026/route.md) |
+| EF5560 | [review/README](../../EF5560_Fintech_and_AI_in_Finance/review/README.md) | [考试与资料](../../EF5560_Fintech_and_AI_in_Finance/review/final-2026/exam-guide.md) | [route](../../EF5560_Fintech_and_AI_in_Finance/review/final-2026/route.md) |
+| IS5542 | [review/README](../../IS5542_GenAI_in_Business/review/README.md) | [考试与资料](../../IS5542_GenAI_in_Business/review/final-2026/exam-guide.md) | [route](../../IS5542_GenAI_in_Business/review/final-2026/route.md) |
+
+[本批公开补查](public-search-20261127.json) · [工作区核验](workspace-audit-20261127.json)。下方保留早期核查快照，其过时缺口不覆盖本段与各课当前文件。
+
+
+
 本轮于 2026-11-26 在已登录的侧栏 Canvas、LibraryFind、小红书实核。完整逐课状态见 [source-status.json](source-status.json)，下载与同版证据见 [canvas-receipts.json](canvas-receipts.json)，图书馆检索边界见 [library-receipts.json](library-receipts.json)，往届学生经验见 [external-leads.json](external-leads.json)。
 
 教师当期 mock、最后复习课和当前公告优先；往届回忆只补题型，不覆盖本学期规则。资料取得、教学融合、本人作答、独立做对、延后复测分开。

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "course": "IS6400",
-  "updated_at": "2026-11-23T18:09:25+08:00",
+  "updated_at": "2026-11-27",
   "framework_status": "ready_with_source_gaps",
   "units": [
     {
@@ -352,8 +352,9 @@
       "U00",
       "U01"
     ],
-    "description": "框架审查后由用户选择开始；先问已有把握与最近卡点，再逐题做 D1–D6；不预填作答。",
-    "awaiting_user_attempt": true
+    "description": "先核最近学习停点；无实际记录时从 U00/U01 的 D1 起逐题诊断，按回答补桥，再进入既有 12 单元。",
+    "awaiting_user_attempt": true,
+    "workspace_route": "route.md"
   },
   "exam_conditions": {
     "date": "2026-12-15",
@@ -381,5 +382,20 @@
     "framework_sha256": "002c04b1e2597798437cc6a4ef0d7db960bf5355742bfa0c93a4f682c4a1b87d",
     "reviewed_progress_sha256_before_status_maintenance": "a0ace4780f8b45fab19d91e60de2c1425a0c0f3aeb82f8a1887ec744ebafca69",
     "scope": "Week10/11与样卷两条导航/诊断及必要结构；非全课审查"
+  },
+  "workspace": {
+    "version": 1,
+    "framework_lock": "framework-lock.json",
+    "protocol": "../../../_meta/final-review-2026/WORKSPACE-PROTOCOL.md",
+    "exam_guide": "exam-guide.md",
+    "preparation": "preparation.md",
+    "route": "route.md",
+    "updated_on": "2026-11-27",
+    "learning_state_unchanged": true,
+    "route_decision": {
+      "date": "2026-11-27",
+      "status": "user_confirmed",
+      "quote": "先完成考试范围和模拟，再补不考内容的完整学习"
+    }
   }
 }

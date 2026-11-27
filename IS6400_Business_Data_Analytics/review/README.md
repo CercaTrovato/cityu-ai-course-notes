@@ -6,6 +6,25 @@ updated: 2026-11-26
 
 # IS6400 · 复习资料
 
+<!-- review-workspace-20261127 -->
+## 当前复习工作区
+
+这里是 IS6400 期末复习的持久入口。**先读 [工作区规则](AGENTS.md)，再按下表继续**；旧聊天/下方历史记录里的“待登录”“未取得”不覆盖当前依据。
+
+| 要找什么 | 当前文件 |
+|---|---|
+| 老师要求、考试重点与排除 | [exam-guide.md](final-2026/exam-guide.md) |
+| 哪些资料已取得、哪些还差 | [preparation.md](final-2026/preparation.md) |
+| 固定知识框架与题型 | [framework.md](final-2026/framework.md) |
+| 当前顺序、停点与下一轮 | [route.md](final-2026/route.md) |
+| 实际学习证据 | [progress.json](final-2026/progress.json)；sessions/ 与 mistakes/ 有真实互动才新增 |
+
+当前：12 个主单元；0 轮 session、0 条错题。这里只报告已落盘记录，不断言本人从未学过。下一步：先核最近学习停点；无实际记录时从 U00/U01 的 D1 起逐题诊断，按回答补桥，再进入既有 12 单元。
+
+固定框架与动态路线分开；每轮收尾更新本段、progress 和 route。本次准备维护未改变本人学习/作业提交/评分。
+<!-- /review-workspace-20261127 -->
+
+
 <!-- current-maintenance-20261126 -->
 当前先从 [[IS6400_Business_Data_Analytics/review/final-2026/framework|期末复习框架]]开始，共 12 个单元。[[IS6400_Business_Data_Analytics/review/final-2026/sources.json|来源清单]] · [[IS6400_Business_Data_Analytics/review/final-2026/progress.json|学习进度]] · [[IS6400_Business_Data_Analytics/review/final-2026/handover|交接说明]]。框架已准备，未开始本人学习或诊断；旧考务安排未在本批重登 AIMS。
 

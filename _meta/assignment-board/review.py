@@ -36,7 +36,7 @@ def load(root, course):
             issues.append(u['id'] + ' 来源编号待核')
     # Only these learning documents enter the projection, not audit/private files.
     documents = []
-    selected = [base / 'framework.md', base / 'last-class-review.md']
+    selected = [base / name for name in ('exam-guide.md', 'preparation.md', 'framework.md', 'route.md', 'last-class-review.md')]
     selected += sorted((base / 'sessions').glob('*.md'))
     selected += sorted((base / 'mistakes').glob('*.md'))
     for file in selected:
@@ -51,7 +51,9 @@ def load(root, course):
         rel = file.relative_to(root).as_posix()
         documents.append({'id':file.relative_to(base).as_posix(), 'title':title,
                           'text':text, 'sha256':digest(content), 'url':REPO+quote(rel, safe='/')})
-    return {**info, 'exam_basis':status['exam_basis'], 'progress_updated_at':progress.get('updated_at'),
+    next_step = progress.get('next_step') or {}
+    next_action = next_step.get('description') or next_step.get('title') or next_step.get('action') or info['next']
+    return {**info, 'next':next_action, 'exam_basis':status['exam_basis'], 'progress_updated_at':progress.get('updated_at'),
             'progress_sha256':digest(raw), 'sources_sha256':digest(source_raw),
             'framework_status':progress.get('framework_status'), 'issues':issues,
             'units':units, 'sessions':progress.get('sessions', []), 'mistakes':progress.get('mistakes', []),
