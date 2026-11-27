@@ -1,3 +1,15 @@
+# 2026-11-27 · 用户收集重点参考已归档
+
+本次本人明确要求归档 `GenAI in business复习资料.docx` 并作为重点参考。已存本课 review/references/collected-20261127，正文含9组讲义／客座提纲、714个XML段落和7表，无图片／嵌入对象；原字节副本哈希 c1131c6b2a165a1dcc81d4955bcb2f0fe6ad56e5c758736668be08094c899a93，原微信临时文件未动。阅读发布副本仅去作者／编辑者文件属性，正文、表格及其他OOXML部件逐项同字节；原稿由包内 .gitignore 排除，公开保存只选 publication/。
+
+入口：[来源卡与阅读副本](../references/collected-20261127/README.md)。sources 新增 `user-collected-cheatsheet-20261127`，并更新 review README、preparation、exam-guide 与 route 的资料入口。标为“用户指定重点辅助参考”；作者／学期／官方性未核，日期属性有2026-05-08线索但不能单凭属性定学期。文档多处“必考”和MCQ／长问答／optional quiz编号没有相应完整卷面；Lecture9治理等编号与当前M10不同，不能覆盖老师口径或固定骨架。
+
+本轮属于归档／来源与导航维护，没有制作新教学解析，不触发新一轮教学独审或虚构验收。framework、framework-lock、learning-map、progress 全字节保留；sessions／mistakes、本人状态及原停点未变。原件／阅读副本／内容与哈希记录在 source-index.json，本批核验在 archive-receipt.json。
+
+待总监督统一GitHub资料保存及远端核验、本地／线上看板收口；本会话不并发根Git提交，不跨会话发送。原稿含编辑者属性，原件排除、发布副本可选范围已具体给出，不扩大发布权限或公开原件。
+
+---
+
 # IS5542 当前工作区接续 · 2026-11-27
 
 ## 2026-11-27 · 五课统一的层级教学要求
