@@ -15,3 +15,9 @@ test('opening the map clears an old search and selects the map document',()=>{
  assert.equal(vm.runInContext('docId',context),'learning-map.md');
  assert.equal(vm.runInContext('filter',context),'');
 });
+
+test('overview starts with the whole course before details and practice',()=>{
+ const html=vm.runInContext('overview()',context);
+ assert.match(html,/总图 <span>→<\/span> 分支 <span>→<\/span> 知识点/);
+ assert.doesNotMatch(html,/诊断 <span>→<\/span> 短讲/);
+});
