@@ -36,7 +36,7 @@ def load(root, course):
             issues.append(u['id'] + ' 来源编号待核')
     # Only these learning documents enter the projection, not audit/private files.
     documents = []
-    selected = [base / name for name in ('exam-guide.md', 'preparation.md', 'framework.md', 'route.md', 'last-class-review.md')]
+    selected = [base / name for name in ('exam-guide.md', 'preparation.md', 'learning-map.md', 'framework.md', 'route.md', 'last-class-review.md')]
     selected += sorted((base / 'sessions').glob('*.md'))
     selected += sorted((base / 'mistakes').glob('*.md'))
     for file in selected:

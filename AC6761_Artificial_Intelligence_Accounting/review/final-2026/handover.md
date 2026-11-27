@@ -1,5 +1,23 @@
 # AC6761 当前工作区接续 · 2026-11-27
 
+## 2026-11-27 · 五课统一的层级教学要求
+
+本人要求从整体脉络到分支和知识点，由浅入深，同时理解理由并快速学会考试作答。下次开工读 [learning-map](learning-map.md) 与 review/AGENTS.md；已有导览停点保留，不重新开始，不增加掌握记录。当前顺序详见 route；每轮记层级位置、理解/作答证据、变式与回图串联。规则和本批新增地图的三端收尾由总监督负责，当前发布结果见共享回执；下方历史“待同步”保留原时点。
+
+
+## 当前接续：2026-11-27 全景导览与授课顺序修正
+
+本人要求先从总体脉络了解框架地图，再由浅入深走分支与细节。本轮已整理全景导览，暂停此前自编咖啡店题；尚无知识题作答、提示、评分或复测，不建错题，不升级17单元学习/掌握状态。
+
+当前 session：[AC6761-20261127-01-U01-overview](sessions/2026-11-27-01-U01-overview.md)。progress 共1轮导览（awaiting_feedback）、mistakes仍空；route 与本课 review/README.md 同步记录当前停点。framework.md 和 framework-lock.json 原字节不改。独立抽检及隔离完整性回执在 audit/map-orientation-20261127/。
+
+下一步：先确认全景图中财报、业务数据、分析方法与 AI 的连接；随后从 U01“企业与老板的边界”由浅入深展开，再讲例子和小题。先完成考内内容、模拟与补弱，再完整补学不考内容。
+
+三端状态逐项：本课本地文件已完成原子写回与回读后，以 audit/map-orientation-20261127/writeback.json 为准；**GitHub资料保存/远端核验、本地共享看板、线上发布/回读均待总监督统一收尾，当前未完成**。coordination.root_git_write_owner 仍为 supervisor，本会话不并发 git add/commit/push、不改共享看板，不向其他会话发送。请总监督读取本段及session承接，不把11/23的旧“三端/无session”文字当成当前状态。
+
+本次写回清单：session、progress.json、route.md、review/README.md、handover.md，以及该轮独立报告和写回回执；不改正式作业或其他课程。下文为历史交接记录。
+
+
 本批由总监督落实持久工作区；本课复习会话下次必须从 [../AGENTS.md](../AGENTS.md) 与 [../README.md](../README.md) 开始，再读 exam-guide/preparation/framework/route/progress，不依赖旧聊天重建范围。
 
 最后课与 AI Bias 已在框架、progress.exam.final_scope 和 U16 接入；旧复习聊天“末次课待取得”已经过时。本批另建启动入口，文件优先于该旧答复。

@@ -1,5 +1,10 @@
 # IS5113 当前工作区接续 · 2026-11-27
 
+## 2026-11-27 · 五课统一的层级教学要求
+
+本人要求从整体脉络到分支和知识点，由浅入深，同时理解理由并快速学会考试作答。下次开工读 [learning-map](learning-map.md) 与 review/AGENTS.md；已有导览停点保留，不重新开始，不增加掌握记录。当前顺序详见 route；每轮记层级位置、理解/作答证据、变式与回图串联。规则和本批新增地图的三端收尾由总监督负责，当前发布结果见共享回执；下方历史“待同步”保留原时点。
+
+
 本批由总监督落实持久工作区；本课复习会话下次必须从 [../AGENTS.md](../AGENTS.md) 与 [../README.md](../README.md) 开始，再读 exam-guide/preparation/framework/route/progress，不依赖旧聊天重建范围。
 
 不得将“约一页案例材料”改成答卷限长；前三题合计 25% 不是每题 25%；不称 Q1 为已确认选择题。
@@ -84,3 +89,11 @@ T09 口头说明：闭卷、2 小时、4 题；Q1 事实短题，Q2/Q3 情境短
 - `IS5113_AI_Ethics_and_Regulations/assignment/graded/A02-group-project/notes/任务说明.md`
 - `IS5113_AI_Ethics_and_Regulations/assignment/graded/A02-group-project/work/final-version-20261117.md`
 - `IS5113_AI_Ethics_and_Regulations/assignment/graded/A02-group-project/work/README.md`
+
+## 2026-11-27 地图导览回合：最新接续
+
+本人要求先了解全课总体脉络及细节分支，由浅入深。已暂停前一条 D1 诊断，改为五层导览：认识问题→判断标准→具体风险→场景应用→综合模拟；框架及17个单元的稳定结构未改。
+
+记录：sessions/2026-11-27-01-map-orientation.md；本人学科原答未提供，无提示、错题、得分或复测；全部单元掌握字段保持原值。下一步以当前 route/progress 为准，先等地图反馈，再入 U01。上方早期“0 session”“待登录”等只保留历史。
+
+本回合本地原子写回及精确回读已执行；结构校验和课程隔离完整性结果见 evidence/map-20261127-validation.json。按当前单写者分工，不并发 git add/commit/push 根仓库、不改共享看板、不发送跨会话消息；GitHub资料保存/远端回读、本地共享看板及线上发布/回读均待当前总监督统一收尾，不记三端完成。沿用电脑/手机自动同步关闭的既有确认，未观察实时手机。

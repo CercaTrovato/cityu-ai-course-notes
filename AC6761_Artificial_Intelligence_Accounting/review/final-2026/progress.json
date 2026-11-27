@@ -481,13 +481,70 @@
       "exam_scope_details": "后续诊断按最后课新范围，自编题不称教师mock"
     }
   ],
-  "sessions": [],
+  "sessions": [
+    {
+      "id": "AC6761-20261127-01-U01-overview",
+      "path": "sessions/2026-11-27-01-U01-overview.md",
+      "unit_ids": [
+        "U01"
+      ],
+      "context_unit_ids": [
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17"
+      ],
+      "date": "2026-11-27",
+      "type": "course_orientation",
+      "status": "awaiting_feedback",
+      "user_original_question": "我觉得你现在是不是应该让我从头到尾了解一下这个复习的框架地图？ 我觉得应该是由浅入深，有一个从总体脉络到细节分支的一个路线",
+      "user_original_answer": null,
+      "independence": "not_answered",
+      "elapsed_minutes": null,
+      "score": null,
+      "prompts_and_hints": [],
+      "correction_steps": [
+        "主代理暂停过早出题，先提供全景和分支连接；不是纠正本人会计答案。"
+      ],
+      "result": "全景导览与路线调整已整理，等待本人理解反馈，未形成掌握判断。",
+      "seen_question_before": null,
+      "question_exposure": [
+        {
+          "question_id": "Q0-coffee-personal-expense",
+          "identity": "self_authored",
+          "presented_in_chat": true,
+          "user_reading_confirmed": false,
+          "answer_presented": false,
+          "status": "paused_unanswered"
+        }
+      ],
+      "source_ids": [
+        "s-w01",
+        "s-final-review-transcript",
+        "s-ai-bias-20261126"
+      ],
+      "next_step": "先确认全景图中财报、业务数据、分析方法与 AI 的连接；随后从 U01“企业与老板的边界”由浅入深展开，再讲例子和小题。先完成考内内容、模拟与补弱，再完整补学不考内容。"
+    }
+  ],
   "mistakes": [],
   "next_step": {
-    "type": "diagnostic_proposed_not_started",
-    "title": "先读 exam-guide 和 last-class-review §0；无实际断点则从 U01 假设/约束与交易识别进入，先走考试保留点并模拟，再完整补学已排除部分。",
+    "type": "overview_awaiting_feedback",
+    "title": "先确认全景图中财报、业务数据、分析方法与 AI 的连接；随后从 U01“企业与老板的边界”由浅入深展开，再讲例子和小题。先完成考内内容、模拟与补弱，再完整补学不考内容。",
     "source_ids": [
-      "s-self-diagnostic-plan"
+      "s-w01",
+      "s-final-review-transcript"
     ],
     "requires_user_response": true,
     "pending_source_priority": [
@@ -600,6 +657,29 @@
       "date": "2026-11-27",
       "status": "user_confirmed",
       "quote": "先完成考试范围和模拟，再补不考内容的完整学习"
+    },
+    "latest_session_id": "AC6761-20261127-01-U01-overview",
+    "unit_mastery_unchanged_this_round": true,
+    "route_adjustments": [
+      {
+        "date": "2026-11-27",
+        "quote": "我觉得你现在是不是应该让我从头到尾了解一下这个复习的框架地图？ 我觉得应该是由浅入深，有一个从总体脉络到细节分支的一个路线",
+        "decision": "先全景地图，再依次展开分支、方法和小题；暂停此前起点题",
+        "exam_first_strategy_unchanged": true,
+        "framework_changed": false
+      }
+    ],
+    "teaching_sequence": {
+      "version": "2026-11-27",
+      "map": "learning-map.md",
+      "order": [
+        "整体问题与主干",
+        "分支结构和连接",
+        "关键知识点与理由",
+        "例题与本人尝试",
+        "变式、回图串联与延后复测"
+      ],
+      "rule": "教学路径规范，不作为已开展或已掌握的记录"
     }
   }
 }

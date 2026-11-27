@@ -1,5 +1,18 @@
 # 五课期末复习 · 总监督入口
 
+## 2026-11-27 · 从整体到分支，再到知识点和考题
+
+五课统一：**全课问题 → 主干与分支 → 关键知识点及理由 → 例题/本人作答 → 变式/综合串联与复测**。固定框架和考试优先决定保留；已有导览从真实停点接续。
+
+- [IS5113 学习地图](../../IS5113_AI_Ethics_and_Regulations/review/final-2026/learning-map.md)
+- [AC6761 学习地图](../../AC6761_Artificial_Intelligence_Accounting/review/final-2026/learning-map.md)
+- [IS6400 学习地图](../../IS6400_Business_Data_Analytics/review/final-2026/learning-map.md)
+- [EF5560 学习地图](../../EF5560_Fintech_and_AI_in_Finance/review/final-2026/learning-map.md)
+- [IS5542 学习地图](../../IS5542_GenAI_in_Business/review/final-2026/learning-map.md)
+
+具体执行见[统一协议](WORKSPACE-PROTOCOL.md)；地图和导览记录不计作独立掌握。
+
+
 ## 2026-11-27 · 持久复习工作区
 
 当前以[统一工作协议](WORKSPACE-PROTOCOL.md)为准：固定全课框架，动态路线/真实问答/错题分别维护，各课 review/AGENTS.md 是启动入口。五课原有 73 主单元与 IS5542 五个子单元保留；本次不增加个人完成量。
