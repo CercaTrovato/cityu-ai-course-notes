@@ -1,0 +1,126 @@
+{
+  "date": "2026-11-27",
+  "change": "新增考试范围与要求首个栏目；点击课程默认进入；五课范围/排除/开闭卷/辅助资料/待确认集中展示；窄屏直接展示表格，桌面保留目录。",
+  "github": {
+    "source_commit": "26dbb60837004b1156d89be13f7d90ba89cb5091",
+    "remote_head_verified": true,
+    "remote_files_verified": 10
+  },
+  "local": {
+    "courses_verified": 5,
+    "guide_sha256": {
+      "AC6761": {
+        "guide_sha256": "8bfc753e4daf4ba0703a104de998b5b67635b25718d2ce26a742858f20116a90",
+        "units": 17,
+        "sessions": 1,
+        "mistakes": 0
+      },
+      "EF5560": {
+        "guide_sha256": "4d2516f476bb38026ec80892133437f2f47f73e07db962053f82f7b1bea39896",
+        "units": 15,
+        "sessions": 0,
+        "mistakes": 0
+      },
+      "IS5113": {
+        "guide_sha256": "fa40178a7129385f0003b5eebc507069048c805ed6e19feb4fac428540bb1825",
+        "units": 17,
+        "sessions": 1,
+        "mistakes": 0
+      },
+      "IS5542": {
+        "guide_sha256": "5d77dbbc647a447cd0a0da490f1e291b6d39b2e8eeeed77bd28736ae4d40de8a",
+        "units": 12,
+        "sessions": 0,
+        "mistakes": 0
+      },
+      "IS6400": {
+        "guide_sha256": "2f7300b4677aac410395de1220b9967ead9aa1d0b61f8d721bd690343f9189ed",
+        "units": 12,
+        "sessions": 0,
+        "mistakes": 0
+      }
+    },
+    "checks_passed": 6,
+    "build": "passed",
+    "integrity_errors": 0
+  },
+  "online": {
+    "published_at": "2026-11-27T05:00:11.724Z",
+    "courses": [
+      {
+        "course": "AC6761",
+        "release": "82fd75e5-1ced-4b96-a355-a5d71fe46706",
+        "content_hash": "29b93c2c9d980b1a26cb477ab9948d6d95e73e75e78693eeea92b84c9b6cb6db",
+        "expected_release": "82fd75e5-1ced-4b96-a355-a5d71fe46706",
+        "expected_hash": "29b93c2c9d980b1a26cb477ab9948d6d95e73e75e78693eeea92b84c9b6cb6db",
+        "matches": true
+      },
+      {
+        "course": "IS6400",
+        "release": "4cfe01db-1e66-4022-8087-ba64b583f597",
+        "content_hash": "6a083469c0604ac1fa2ca439526c90edac0875e2bc6698ebb2430181dcfd9ae9",
+        "expected_release": "4cfe01db-1e66-4022-8087-ba64b583f597",
+        "expected_hash": "6a083469c0604ac1fa2ca439526c90edac0875e2bc6698ebb2430181dcfd9ae9",
+        "matches": true
+      },
+      {
+        "course": "IS5113",
+        "release": "6c89055a-a650-43b2-b2e6-73dc815fef43",
+        "content_hash": "69d50d12af6bee1bf09b76776a54cac8649d311d589b43b08ed25d1280b43a91",
+        "expected_release": "6c89055a-a650-43b2-b2e6-73dc815fef43",
+        "expected_hash": "69d50d12af6bee1bf09b76776a54cac8649d311d589b43b08ed25d1280b43a91",
+        "matches": true
+      },
+      {
+        "course": "IS5542",
+        "release": "f3d8437f-3802-4b22-8a42-77eda4431275",
+        "content_hash": "3a62a7bf99e7aafc92334ded17eb775f0cb3737158dbd206c977ea3952e58c07",
+        "expected_release": "f3d8437f-3802-4b22-8a42-77eda4431275",
+        "expected_hash": "3a62a7bf99e7aafc92334ded17eb775f0cb3737158dbd206c977ea3952e58c07",
+        "matches": true
+      },
+      {
+        "course": "EF5560",
+        "release": "06396d79-1359-4a9b-881b-72293b3ea32f",
+        "content_hash": "7000bcb92404c183710eba9fa2433a9ca16e27e93ee50afaa0aa29ad0c1f3031",
+        "expected_release": "06396d79-1359-4a9b-881b-72293b3ea32f",
+        "expected_hash": "7000bcb92404c183710eba9fa2433a9ca16e27e93ee50afaa0aa29ad0c1f3031",
+        "matches": true
+      }
+    ]
+  },
+  "deployment": {
+    "id": "dpl_4yEeEq37djqZTX3x4JS3UjKBQ5su",
+    "status": "READY",
+    "production_alias": "https://cityu-board-online.vercel.app",
+    "bundles": [
+      {
+        "file": "review.js",
+        "sha256": "82c80a9b8c78c9bf9654f5e5ed1f5daee985ef1cd4ffb3d702a8504e7ea52986"
+      },
+      {
+        "file": "review.css",
+        "sha256": "abd39787eac9561333cc47c081450ce80c46958c504b7961474a2787c40f0fbf"
+      }
+    ],
+    "source_commit_note": "部署请求开始时页面优化尚在本地；随后已提交为source_commit，线上JS/CSS与同版构建逐字节一致，不以请求meta代替源文件核验。"
+  },
+  "ui": {
+    "browser": "iab",
+    "five_course_default_tab": true,
+    "five_course_scope_aids_pending_visible": true,
+    "narrow_screen_scope_table_verified": true,
+    "unconfirmed_exam_rules_remain_unconfirmed": true
+  },
+  "concurrent_changes_preserved": [
+    "AC6761_Artificial_Intelligence_Accounting/review/README.md",
+    "AC6761_Artificial_Intelligence_Accounting/review/final-2026/handover.md",
+    "AC6761_Artificial_Intelligence_Accounting/review/final-2026/route.md",
+    "IS5113_AI_Ethics_and_Regulations/review/README.md",
+    "IS5113_AI_Ethics_and_Regulations/review/final-2026/handover.md",
+    "IS5113_AI_Ethics_and_Regulations/review/final-2026/route.md"
+  ],
+  "learning_records_written_by_this_task": false,
+  "fixed_frameworks_written_by_this_task": false,
+  "sharing_and_permissions_changed": false
+}
