@@ -615,12 +615,24 @@
       "latest_observation": "本轮提示后已纠正；事实陈述真假边界即时题正确，延迟复测待做",
       "immediate_correction_observed": true,
       "session_id": "2026-11-27-03-u01-facts-and-norms"
+    },
+    {
+      "id": "2026-11-27-m02-mind-evidence",
+      "unit_id": "U01",
+      "question_id": "Q-U01-07",
+      "path": "mistakes/2026-11-27-m02-mind-evidence.md",
+      "status": "open",
+      "type": "evidence_scope_and_concept_clarification",
+      "original_answer": "不能，因为AI没有人的心理过程，AI只是拥有智能，可以理解和识别语言并做出推测，但是确认AI能理解人的主观内在感受。",
+      "observation": "结论正确；理由可能越过给定证据，末句含义待重述，不把本人话语改写成已断言所有AI绝无意识。",
+      "correction_verified": false,
+      "retest_passed": false
     }
   ],
   "next_step": {
     "type": "guided_practice",
     "unit_id": "U01",
-    "action": "认识问题 → U01 → 补AI基本概念：论证骨架/反例和条件改写小点即时练习收束；讲智能（可观察任务能力）与心灵/主观体验区别，等待自编 Q-U01-07 客服安慰例原答。",
+    "action": "认识问题 → U01 → 智能与心灵：Q07“不能仅凭表现断定有同情”的结论正确，理由需收紧到证据不足；澄清末句，不擅自补否定词；待本人用“观察到……但不足以证明……”重述。",
     "dependent_source_gaps": [
       "G01",
       "G02",
@@ -635,13 +647,13 @@
     "question_id": "Q-U01-07",
     "question_origin": "self_authored",
     "question_text": "客服AI能准确识别用户的抱怨，并输出恰当的安慰话。仅凭这些表现，能否断定它自己感到了同情？为什么？",
-    "question_status": "awaiting_answer",
+    "question_status": "correct_judgment_reason_needs_clarification",
     "current_location": {
       "trunk": "认识问题",
       "unit": "U01",
-      "point": "智能与心灵/主观体验"
+      "point": "可观察能力、理解他人情绪与自身体验的证据边界"
     },
-    "followup_question": "说明可观察的任务表现能否单独证明主观体验。"
+    "followup_question": "请把这题的理由改写成一句话：“我们能观察到……，但这还不足以证明……。”后半句说明AI自己是否具有感受，不只说能否识别人的情绪。"
   },
   "learning_started": true,
   "state_definitions": {
@@ -747,6 +759,33 @@
         "变式、回图串联与延后复测"
       ],
       "rule": "教学路径规范，不作为已开展或已掌握的记录"
+    },
+    "record_execution": {
+      "date": "2026-11-27",
+      "status": "user_confirmed_for_current_course_review",
+      "user_quote_verbatim": "我建议是这样子的，我发现我们的时间大部分消耗在等待你做一些资料同步和自检上，能不能每一轮把这些交给子代理去做，而不是你每次都要我等你做完再继续，这样子学习效率太低了。",
+      "main_role": "continue_teaching_and_send_substantive_fragments",
+      "record_writer": "background_record_agent_single_writer",
+      "scope": "IS5113_AI_Ethics_and_Regulations/review/",
+      "grouping": "raw_events_first_then_point_closeout_and_independent_sample_review",
+      "checks": "once_per_batch_course_workspace_and_scoped_integrity",
+      "not_a_permanent_service_or_global_authorization": true,
+      "raw_event_path": "evidence/async-workflow-20261127-event.json",
+      "learning_state_changed_by_workflow_decision": false,
+      "shared_sync": "pending_current_supervisor_closeout"
     }
+  },
+  "pending_interaction": {
+    "date": "2026-11-27",
+    "unit_id": "U01",
+    "question_id": "Q-U01-07",
+    "user_answer_verbatim": "不能，因为AI没有人的心理过程，AI只是拥有智能，可以理解和识别语言并做出推测，但是确认AI能理解人的主观内在感受。",
+    "judgment": "cannot_infer_experience_from_behavior_alone_correct",
+    "reasoning_issue": "用“没有人的心理过程/只有智能”作依据需区分非人过程与否定体验；题设只给行为，未提供体验有无的独立证据",
+    "ambiguous_clause": "但是确认AI能理解人的主观内在感受",
+    "ambiguity_handling": "不擅自补“不能”；请本人重述",
+    "status": "needs_evidence_based_rephrasing",
+    "mastery_claimed": false,
+    "session_consolidation": "pending_until_current_point_finishes"
   }
 }
