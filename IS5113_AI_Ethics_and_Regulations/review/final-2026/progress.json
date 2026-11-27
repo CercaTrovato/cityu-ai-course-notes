@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "course": "IS5113",
-  "updated_at": "2026-11-27",
+  "updated_at": "2026-11-27T23:55:52+08:00",
   "framework_status": "ready_with_source_gaps",
   "units": [
     {
@@ -71,9 +71,66 @@
           "format_guidance_for_revision": true,
           "independent_unseen_or_delayed_test": false,
           "whole_unit_mastery_claimed": false
+        },
+        {
+          "session_id": "2026-11-27-05-u01-mind-evidence",
+          "path": "sessions/2026-11-27-05-u01-mind-evidence.md",
+          "point": "可观察安慰行为与自身同情体验的证据边界",
+          "question_id": "Q-U01-07",
+          "result": "accurate_rephrasing_after_explicit_hints",
+          "independent_unseen_or_delayed_test": false,
+          "whole_unit_mastery_claimed": false
+        },
+        {
+          "session_id": "2026-11-27-06-u01-turing-evidence",
+          "path": "sessions/2026-11-27-06-u01-turing-evidence.md",
+          "point": "图灵测试单次结果/通过标准/体验边界",
+          "question_ids": [
+            "Q-U01-08",
+            "Q-U01-08-followup"
+          ],
+          "result": "valid_single_trial_boundary_and_correct_experience_conclusion_after_targeted_question",
+          "mechanism_explanation": "assistant_demonstrated_not_independently_explained_by_user",
+          "independent_unseen_or_delayed_test": false,
+          "whole_unit_mastery_claimed": false
+        },
+        {
+          "session_id": "2026-11-27-07-u01-task-intelligence",
+          "path": "sessions/2026-11-27-07-u01-task-intelligence.md",
+          "point": "按任务目标评价智能，识别聊天指标不适用",
+          "question_id": "Q-U01-09",
+          "result": "correct_judgment_and_definition_to_task_reason_after_teaching",
+          "additional_content_hint_for_this_answer": false,
+          "independent_unseen_or_delayed_test": false,
+          "whole_unit_mastery_claimed": false
+        },
+        {
+          "session_id": "2026-11-27-08-u01-legality-ethics-case",
+          "path": "sessions/2026-11-27-08-u01-legality-ethics-case.md",
+          "point": "合法/技术有效不单独保证伦理正当及具体公平理由",
+          "question_ids": [
+            "Q-U01-10",
+            "Q-U01-10-purpose-followup"
+          ],
+          "result": "correct_framework_then_specific_fairness_application_with_focused_prompt",
+          "teacher_contribution": "purpose_comparison_also_changed_means; transparency_must_be_conditional_given_missing_disclosure_facts",
+          "fact_hypothesis_boundary": "reminder_given_no_user_independent_rephrasing_yet",
+          "independent_unseen_or_delayed_test": false,
+          "whole_unit_mastery_claimed": false
+        },
+        {
+          "session_id": "2026-11-27-09-u01-fatp-accountability",
+          "path": "sessions/2026-11-27-09-u01-fatp-accountability.md",
+          "point": "问责解释主体/机制审查/误判补救与信任理由",
+          "question_id": "Q-U01-11",
+          "result": "correct_specific_accountability_questions_and_causal_reason_after_teaching",
+          "conditional_case": "prediction_error_and_promotion_limit_are_user_hypothesis_not_proven_original_case",
+          "remedy": "compensation_is_question_not_automatic_legal_conclusion",
+          "independent_unseen_or_delayed_test": false,
+          "whole_unit_mastery_claimed": false
         }
       ],
-      "coverage_note": "AI任务/伦理必要性、事实规范分类、论证反例与条件标准已开展；当前补智能/心灵与后续内容。U01整体掌握未知；既有关键词卡点间隔复测仍待做。"
+      "coverage_note": "既有AI/伦理起点、论证、表现/体验、测试任务范围与技术/法律/伦理具体应用已开展；FATP已初识，Q11问责具体应用正确。P隐私Q12仅拟题计划，无原答。U01整体掌握未知，两条卡点间隔复测待做。"
     },
     {
       "id": "U02",
@@ -598,6 +655,116 @@
       "teaching_review": "passed_for_sampled_argument_point",
       "review_path": "evidence/argument-close-20261127-review.md",
       "next_step": "认识问题 → U01 → 补AI基本概念：论证骨架/反例和条件改写小点即时练习收束；讲智能（可观察任务能力）与心灵/主观体验区别，等待自编 Q-U01-07 客服安慰例原答。"
+    },
+    {
+      "id": "2026-11-27-05-u01-mind-evidence",
+      "date": "2026-11-27",
+      "type": "guided_evidence_scope_rephrasing",
+      "unit_ids": [
+        "U01"
+      ],
+      "path": "sessions/2026-11-27-05-u01-mind-evidence.md",
+      "status": "point_practice_completed",
+      "source_ids": [
+        "N01"
+      ],
+      "question_ids": [
+        "Q-U01-07"
+      ],
+      "exposed_next_question_id": "Q-U01-08",
+      "outcome": "Q07在明确句式与概念提示后重述准确；Q08只记录已讲/已出题，尚无原答",
+      "teaching_review": "passed_for_sampled_mind_evidence_point_and_turing_intro",
+      "review_path": "evidence/mind-close-20261127-review.md",
+      "next_step": "认识问题 → U01 → 图灵测试：Q07在明确句式/概念提示后重述准确，心灵证据卡点留待间隔复测；已讲简化文字辨人流程，等待自编Q-U01-08的实际原答。",
+      "maintenance_round_id": "20261127-175235-q07-close"
+    },
+    {
+      "id": "2026-11-27-06-u01-turing-evidence",
+      "date": "2026-11-27",
+      "type": "turing_test_evidence_scope_and_targeted_followup",
+      "unit_ids": [
+        "U01"
+      ],
+      "path": "sessions/2026-11-27-06-u01-turing-evidence.md",
+      "status": "point_practice_completed_with_teacher_model_reason",
+      "source_ids": [
+        "N01"
+      ],
+      "question_ids": [
+        "Q-U01-08",
+        "Q-U01-08-followup"
+      ],
+      "exposed_next_question_id": "Q-U01-09",
+      "outcome": "首答提出有效通过标准边界；追问结论正确、理由较抽象，具体机制由助手示范，不记本人无提示解释",
+      "teaching_review": "passed_for_sampled_turing_evidence_point_and_task_intro",
+      "review_path": "evidence/turing-close-20261127-review.md",
+      "next_step": "认识问题 → U01 → 测试适用范围与工程取向：Q08首答识别有效边界，追问结论正确、具体机制由助手示范；已引入按任务目标评估，等待自编Q-U01-09工厂故障预警题原答。两条卡点间隔复测待做，U01整体掌握未知。",
+      "maintenance_round_id": "20261127-180013-q08-close"
+    },
+    {
+      "id": "2026-11-27-07-u01-task-intelligence",
+      "date": "2026-11-27",
+      "type": "task_based_intelligence_immediate_application",
+      "unit_ids": [
+        "U01"
+      ],
+      "path": "sessions/2026-11-27-07-u01-task-intelligence.md",
+      "status": "point_practice_completed",
+      "source_ids": [
+        "N01"
+      ],
+      "question_ids": [
+        "Q-U01-09"
+      ],
+      "outcome": "本人自行唤醒定义、定位故障预警任务并指出聊天指标不适用；已讲概念后的即时应用，不记独立陌生/延迟检测",
+      "teaching_review": "passed_for_sampled_task_intelligence_point",
+      "review_path": "evidence/task-close-20261127-review.md",
+      "next_step_at_point_closeout": "准备技术/法律/伦理三问；其后实际Q10以单独原始事件为准",
+      "maintenance_round_id": "20261127-181546-q09-close"
+    },
+    {
+      "id": "2026-11-27-08-u01-legality-ethics-case",
+      "date": "2026-11-27",
+      "type": "legality_technical_ethics_and_specific_case_application",
+      "unit_ids": [
+        "U01"
+      ],
+      "path": "sessions/2026-11-27-08-u01-legality-ethics-case.md",
+      "status": "point_practice_completed_with_scope_feedback",
+      "source_ids": [
+        "N01",
+        "N02"
+      ],
+      "question_ids": [
+        "Q-U01-10",
+        "Q-U01-10-purpose-followup"
+      ],
+      "outcome": "首答框架正确后具体分析公平/潜在透明；保留题面变量未控制及假设需条件化反馈，不记未知事实已证",
+      "teaching_review": "passed_for_sampled_legal_ethics_case_point",
+      "review_path": "evidence/legal-ethics-close-20261127-review.md",
+      "next_step_at_point_closeout": "FATP承接另存原始事件，后续原答未知",
+      "maintenance_round_id": "20261127-203736-q10-close"
+    },
+    {
+      "id": "2026-11-27-09-u01-fatp-accountability",
+      "date": "2026-11-27",
+      "type": "fatp_accountability_case_application",
+      "unit_ids": [
+        "U01"
+      ],
+      "path": "sessions/2026-11-27-09-u01-fatp-accountability.md",
+      "status": "point_practice_completed",
+      "source_ids": [
+        "N01"
+      ],
+      "question_ids": [
+        "Q-U01-11"
+      ],
+      "outcome": "自主选择A，给解释/审查/补救问题和信任因果理由；条件误判与补救法律边界保留，已讲后即时应用",
+      "teaching_review": "passed_for_sampled_FATP_accountability_point",
+      "review_path": "evidence/accountability-close-20261127-review.md",
+      "next_step": "认识问题 → U01 → FATP隐私接续：Q11问责应用已给具体三问及信任理由；下一步计划用Q-U01-12私人聊天/更准确假设练习P。当前仅确认拟题计划，尚无实际出题确认或本人原答；U01整体掌握未知，两条卡点待间隔复测。",
+      "maintenance_round_id": "20261127-235332-q11-accountability"
     }
   ],
   "mistakes": [
@@ -626,13 +793,17 @@
       "original_answer": "不能，因为AI没有人的心理过程，AI只是拥有智能，可以理解和识别语言并做出推测，但是确认AI能理解人的主观内在感受。",
       "observation": "结论正确；理由可能越过给定证据，末句含义待重述，不把本人话语改写成已断言所有AI绝无意识。",
       "correction_verified": false,
-      "retest_passed": false
+      "retest_passed": false,
+      "latest_observation": "本轮在明确句式/概念提示后重述准确，区分观察行为和自身体验；间隔复测待做",
+      "correction_answer_verbatim": "我们能观察到AI可以识别人的情绪和输出安慰的话，但是不足以证明AI自己能感受到同情。",
+      "immediate_correction_observed": true,
+      "session_id": "2026-11-27-05-u01-mind-evidence"
     }
   ],
   "next_step": {
-    "type": "guided_practice",
+    "type": "planned_short_explanation_and_practice",
     "unit_id": "U01",
-    "action": "认识问题 → U01 → 智能与心灵：Q07“不能仅凭表现断定有同情”的结论正确，理由需收紧到证据不足；澄清末句，不擅自补否定词；待本人用“观察到……但不足以证明……”重述。",
+    "action": "认识问题 → U01 → FATP隐私接续：Q11问责应用已给具体三问及信任理由；下一步计划用Q-U01-12私人聊天/更准确假设练习P。当前仅确认拟题计划，尚无实际出题确认或本人原答；U01整体掌握未知，两条卡点待间隔复测。",
     "dependent_source_gaps": [
       "G01",
       "G02",
@@ -644,16 +815,15 @@
     "blocked_by_login_for_starting_learning": false,
     "source_gap_note": "11/26 Canvas已核；旧G01等历史缺口以exam-guide/preparation当前状态为准，不重复要求登录。",
     "workspace_route": "route.md",
-    "question_id": "Q-U01-07",
+    "question_id": "Q-U01-12",
     "question_origin": "self_authored",
-    "question_text": "客服AI能准确识别用户的抱怨，并输出恰当的安慰话。仅凭这些表现，能否断定它自己感到了同情？为什么？",
-    "question_status": "correct_judgment_reason_needs_clarification",
+    "question_text": "公司发现，读取员工私人聊天能让离职预测更准确。仅凭“更准确”，是否足以支持收集这些聊天？请提出一个具体隐私问题，并说明理由。",
+    "question_status": "planned_next_teaching_response_not_confirmed_asked",
     "current_location": {
       "trunk": "认识问题",
       "unit": "U01",
-      "point": "可观察能力、理解他人情绪与自身体验的证据边界"
-    },
-    "followup_question": "请把这题的理由改写成一句话：“我们能观察到……，但这还不足以证明……。”后半句说明AI自己是否具有感受，不只说能否识别人的情绪。"
+      "point": "FATP隐私：数据收集目的、必要性与范围"
+    }
   },
   "learning_started": true,
   "state_definitions": {
@@ -772,20 +942,31 @@
       "not_a_permanent_service_or_global_authorization": true,
       "raw_event_path": "evidence/async-workflow-20261127-event.json",
       "learning_state_changed_by_workflow_decision": false,
-      "shared_sync": "pending_current_supervisor_closeout"
+      "shared_sync": "authorized_background_serial_publication_under_new_delegation",
+      "publication_delegation": {
+        "date": "2026-11-27",
+        "scope": "current IS5113 review finite batches",
+        "course_then_shared_publish_lock": true,
+        "root_git_old_blanket_prohibition_replaced_by_explicit_current_delegation": true,
+        "other_courses_assignments_shared_code_or_whitelist_not_authorized": true
+      }
     }
   },
   "pending_interaction": {
     "date": "2026-11-27",
     "unit_id": "U01",
-    "question_id": "Q-U01-07",
-    "user_answer_verbatim": "不能，因为AI没有人的心理过程，AI只是拥有智能，可以理解和识别语言并做出推测，但是确认AI能理解人的主观内在感受。",
-    "judgment": "cannot_infer_experience_from_behavior_alone_correct",
-    "reasoning_issue": "用“没有人的心理过程/只有智能”作依据需区分非人过程与否定体验；题设只给行为，未提供体验有无的独立证据",
-    "ambiguous_clause": "但是确认AI能理解人的主观内在感受",
-    "ambiguity_handling": "不擅自补“不能”；请本人重述",
-    "status": "needs_evidence_based_rephrasing",
+    "question_id": "Q-U01-12",
+    "question_text": "公司发现，读取员工私人聊天能让离职预测更准确。仅凭“更准确”，是否足以支持收集这些聊天？请提出一个具体隐私问题，并说明理由。",
+    "question_origin": "self_authored_hypothetical",
+    "status": "planned_not_confirmed_asked",
+    "user_answer_verbatim": null,
     "mastery_claimed": false,
-    "session_consolidation": "pending_until_current_point_finishes"
+    "previous_point": {
+      "question_id": "Q-U01-11",
+      "status": "correct_immediate_accountability_application_after_teaching",
+      "session_id": "2026-11-27-09-u01-fatp-accountability"
+    },
+    "raw_event_path": "maintenance/inbox/20261127-235332-q11-accountability.json",
+    "session_consolidation": "pending_actual_next_teaching_and_answer"
   }
 }

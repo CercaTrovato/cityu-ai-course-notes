@@ -5,7 +5,7 @@ unit_id: U01
 question_id: Q-U01-07
 status: open
 record_type: raw_learning_event
-teaching_review: pending_point_closeout
+teaching_review: passed_for_sampled_point_closeout
 ---
 
 # 智能/体验：证据范围与末句含义待澄清
@@ -19,3 +19,11 @@ teaching_review: pending_point_closeout
 原答“不能”的结论符合题问。理由用“没有人的心理过程/只有智能”作依据，需区分不是人类过程、缺乏证明体验的证据、已经证明完全没有体验等不同主张。末句“但是确认……”含义不清，必须保留原样并请重述，不替本人补“不能”，也不把原话直接改记为本人宣称所有AI绝无意识。
 
 当前只记录原始卡点；后续修正讲解与本人原答在本知识点结束后集中保存/抽检。掌握未知，尚无纠正或复测通过证据。与既有关键词卡点分开，既有正确记录保留。
+
+## 后续：提示后准确重述，间隔复测待做
+
+本人逐字原答：
+
+> 我们能观察到AI可以识别人的情绪和输出安慰的话，但是不足以证明AI自己能感受到同情。
+
+此前已给“我们能观察到……，但这还不足以证明……”句式，并明确要求后半句讲 AI 自身感受。新答已准确区分可观察行为与自身体验，本轮即时纠正可观察；不倒改首答、不代补旧末句否定。当前 status 仍 open，表示间隔复测待做；未记独立陌生迁移、retest_passed 或整个 U01 掌握。完整讲解/提示先后见 [本轮 session](../sessions/2026-11-27-05-u01-mind-evidence.md)。
