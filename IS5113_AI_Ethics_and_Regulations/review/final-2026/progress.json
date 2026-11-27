@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "course": "IS5113",
-  "updated_at": "2026-11-28T00:02:01+08:00",
+  "updated_at": "2026-11-28T00:05:42+08:00",
   "framework_status": "ready_with_source_gaps",
   "units": [
     {
@@ -138,9 +138,19 @@
           "purpose_necessity_bridge": "assistant_demonstrated_not_user_independent_answer",
           "independent_unseen_or_delayed_test": false,
           "whole_unit_mastery_claimed": false
+        },
+        {
+          "session_id": "2026-11-28-11-u01-privacy-collection",
+          "path": "sessions/2026-11-28-11-u01-privacy-collection.md",
+          "point": "安全不自动认证收集/使用合理，具体必要性与替代条件",
+          "question_id": "Q-U01-13",
+          "result": "correct_specific_conditions_and_reason_after_teaching",
+          "hints": "privacy_security_distinction_taught_and_question_excludes_leakage",
+          "independent_unseen_or_delayed_test": false,
+          "whole_unit_mastery_claimed": false
         }
       ],
-      "coverage_note": "已开展AI/伦理起点、论证、体验/测试/任务范围、技术法律伦理案例及FATP；Q11问责与Q12隐私泄露风险应用有效。收集/使用本身的必要性Q13尚为计划待答，U01整体掌握未知；两条卡点间隔复测待做。"
+      "coverage_note": "AI/伦理起点、论证、体验/测试/任务范围、技术法律伦理案例与FATP已开展；Q13隐私/安全变式的具体条件和理由正确。计划Q14跨知识点短提取，尚无原答，不认证U01或长期保持；两条卡点仍待各自检验。"
     },
     {
       "id": "U02",
@@ -797,6 +807,28 @@
       "review_path": "evidence/privacy-close-20261127-review.md",
       "next_step": "认识问题 → U01 → FATP隐私与安全边界：Q12已给泄露→个人生活受影响的有效风险理由，目的/必要性由助手补桥；Q13为下一步计划，尚无实际出题确认或本人原答。U01整体掌握未知，两条卡点仍待间隔复测。",
       "maintenance_round_id": "20261127-235813-q12-privacy"
+    },
+    {
+      "id": "2026-11-28-11-u01-privacy-collection",
+      "date": "2026-11-28",
+      "type": "privacy_collection_necessity_guided_variant",
+      "unit_ids": [
+        "U01"
+      ],
+      "path": "sessions/2026-11-28-11-u01-privacy-collection.md",
+      "status": "point_practice_completed",
+      "source_ids": [
+        "N01",
+        "N06"
+      ],
+      "question_ids": [
+        "Q-U01-13"
+      ],
+      "outcome": "正确给知情同意、必要性、较少侵入替代及收集/使用本身的隐私理由，已讲后聚焦变式",
+      "teaching_review": "passed_for_sampled_privacy_collection_point",
+      "review_path": "evidence/collection-close-20261128-review.md",
+      "next_step": "认识问题 → U01 → 第一层回图与跨知识点短提取：Q13已在已讲后的变式中正确区分安全和收集/使用合理性，提出具体条件。计划Q-U01-14检验主张及理由，尚无原答；不提前关闭关键词卡点或认证长期保持/U01掌握，之后再入U02。",
+      "maintenance_round_id": "20261128-000242-q13-privacy-boundary"
     }
   ],
   "mistakes": [
@@ -833,9 +865,9 @@
     }
   ],
   "next_step": {
-    "type": "planned_short_explanation_and_practice",
+    "type": "planned_short_retrieval",
     "unit_id": "U01",
-    "action": "认识问题 → U01 → FATP隐私与安全边界：Q12已给泄露→个人生活受影响的有效风险理由，目的/必要性由助手补桥；Q13为下一步计划，尚无实际出题确认或本人原答。U01整体掌握未知，两条卡点仍待间隔复测。",
+    "action": "认识问题 → U01 → 第一层回图与跨知识点短提取：Q13已在已讲后的变式中正确区分安全和收集/使用合理性，提出具体条件。计划Q-U01-14检验主张及理由，尚无原答；不提前关闭关键词卡点或认证长期保持/U01掌握，之后再入U02。",
     "dependent_source_gaps": [
       "G01",
       "G02",
@@ -847,15 +879,17 @@
     "blocked_by_login_for_starting_learning": false,
     "source_gap_note": "11/26 Canvas已核；旧G01等历史缺口以exam-guide/preparation当前状态为准，不重复要求登录。",
     "workspace_route": "route.md",
-    "question_id": "Q-U01-13",
+    "question_id": "Q-U01-14",
     "question_origin": "self_authored",
-    "question_text": "假设公司能妥善保护聊天内容，保证不泄露，也只允许指定HR人员查看。这是否就足以说明收集员工私人聊天是合理的？请从收集或使用本身提出一个仍需追问的问题。",
-    "question_status": "planned_next_response_not_confirmed_asked",
+    "question_text": "“为了保住客户，公司隐瞒 AI 客服经常答错的情况，这种做法是可以接受的。”这句话的主张属于事实陈述还是规范判断？请根据它在做什么说明理由。",
+    "question_status": "planned_next_response_no_answer",
     "current_location": {
       "trunk": "认识问题",
       "unit": "U01",
-      "point": "资料安全之后，收集/使用本身是否有充分理由"
-    }
+      "point": "回图后对主张功能作跨知识点短提取"
+    },
+    "grading_guard": "accept mixed-sentence analysis if target claim/function and reason are correctly identified; avoid binary trap; no answer prefilled",
+    "not_long_term_retention_certification": true
   },
   "learning_started": true,
   "state_definitions": {
@@ -914,8 +948,8 @@
     "shared_board": "deferred_to_current_supervisor",
     "current_supervisor_thread_id": "01a20688-5a1e-7a10-9e18-4ae2d0bcd7bd",
     "cross_thread_message_sent": false,
-    "latest_completed_git_commit": "b3ba0feca41bd700fd81136011c0f0243ca019ef",
-    "current_batch_sync": "Q12_local_records_prepared_next_serial_transaction",
+    "latest_completed_git_commit": "ac37fb78eb2b4a6ae32e39003c815276ddf8ee4b",
+    "current_batch_sync": "Q13_local_records_prepared_next_serial_transaction",
     "online_blocker": "existing exporter false positive on task-close evidence filename; no bypass or shared code change"
   },
   "independent_review": {
@@ -988,20 +1022,21 @@
     }
   },
   "pending_interaction": {
-    "date": "2026-11-27",
+    "date": "2026-11-28",
     "unit_id": "U01",
-    "question_id": "Q-U01-13",
-    "question_text": "假设公司能妥善保护聊天内容，保证不泄露，也只允许指定HR人员查看。这是否就足以说明收集员工私人聊天是合理的？请从收集或使用本身提出一个仍需追问的问题。",
-    "question_origin": "self_authored_hypothetical",
-    "status": "planned_not_confirmed_asked",
+    "question_id": "Q-U01-14",
+    "question_text": "“为了保住客户，公司隐瞒 AI 客服经常答错的情况，这种做法是可以接受的。”这句话的主张属于事实陈述还是规范判断？请根据它在做什么说明理由。",
+    "question_origin": "self_authored_cross_point_short_retrieval",
+    "status": "planned_next_response_no_answer",
     "user_answer_verbatim": null,
     "mastery_claimed": false,
     "previous_point": {
-      "question_id": "Q-U01-12",
-      "status": "valid_privacy_risk_after_teaching_with_assistant_bridge",
-      "session_id": "2026-11-27-10-u01-privacy-security"
+      "question_id": "Q-U01-13",
+      "status": "correct_conditions_and_reason_after_teaching",
+      "session_id": "2026-11-28-11-u01-privacy-collection"
     },
-    "raw_event_path": "maintenance/inbox/20261127-235813-q12-privacy.json",
-    "session_consolidation": "pending_actual_next_teaching_and_answer"
+    "raw_event_path": "maintenance/inbox/20261128-000242-q13-privacy-boundary.json",
+    "session_consolidation": "pending_actual_short_retrieval_and_answer",
+    "keyword_mistake_not_closed": true
   }
 }
