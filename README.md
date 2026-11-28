@@ -6,16 +6,20 @@ updated: 2026-11-27
 
 # CityU 课程知识库
 
+## 2026-11-28 · EF5560 最后一课转录已融合
+
+[S35 本批回执](_meta/audio-fusion-20261128/README.md)：11/26 录音 2:07:41，最终转录 1,460 段位；M11 p.39–54 补讲、M12 首融 v1.0。新增范围完成独立轻量抽检及适用来源/显示核验；本人学习和提交状态不改。
+
 > 本次 M07 补源的 GitHub、Notion、本地与线上证据见 [11/27 同步回执](_meta/canvas-file-audit-20261126/m07-web-review-20261127-closeout.md)；上批见 [11/26 回执](_meta/canvas-file-audit-20261126/production-closeout.md)。
 
 ## 2026-11-27 · M07 金融客座网页补源
 
-[M07 笔记](IS5542_GenAI_in_Business/notes/M07-银行AI转型与多agent实践.md)已补入 62 页网页 review 版、原图与互动原题，保留 11 个录音专题；[演示输入输出核验](IS5542_GenAI_in_Business/_prep/外部参考-M07网页演示与输入核验.md)逐份覆盖 12 个输出与 10 个去重输入。资料来自本人提供的 [Manager of Intelligence](https://cityu-ai-review.vercel.app/)，本次 Canvas 学生可见 13 文件、5 模块和 11 公告中未找到该来源。网页 review 版已取得；课堂原始 PPT、完整影片及录音缺首尾／接缝仍分别保留缺口，M07 继续 draft / partial。EF5560 M12、IS5542 M10 的讲义版此前已完成，两篇转录仍待补。本批范围和同步证据见 [M07 回执](IS5542_GenAI_in_Business/review/m07-web-review-20261127/publication-receipt.json)。
+[M07 笔记](IS5542_GenAI_in_Business/notes/M07-银行AI转型与多agent实践.md)已补入 62 页网页 review 版、原图与互动原题，保留 11 个录音专题；[演示输入输出核验](IS5542_GenAI_in_Business/_prep/外部参考-M07网页演示与输入核验.md)逐份覆盖 12 个输出与 10 个去重输入。资料来自本人提供的 [Manager of Intelligence](https://cityu-ai-review.vercel.app/)，本次 Canvas 学生可见 13 文件、5 模块和 11 公告中未找到该来源。网页 review 版已取得；课堂原始 PPT、完整影片及录音缺首尾／接缝仍分别保留缺口，M07 继续 draft / partial。EF5560 M12、IS5542 M10 的讲义版此前已完成；EF5560 M12 已于 11/28 融合 S35，IS5542 M10 转录仍待补。本批范围和同步证据见 [M07 回执](IS5542_GenAI_in_Business/review/m07-web-review-20261127/publication-receipt.json)。
 
 ## 2026-11-26 · 新教学与复盘的当前落地结果
 
 - [AC6761-T01](AC6761_Artificial_Intelligence_Accounting/notes/T01-股价OLS回归实操.md)：完整 OLS 实操、三份精确数据卡、M11 两处回链；数据/图/代码已核，字段字典/单位/时间限制保留。 [正式回执](AC6761_Artificial_Intelligence_Accounting/_meta/material-completion-20261126/writeback-receipt.json)。
-- [EF5560-M12](EF5560_Fintech_and_AI_in_Finance/notes/M12-智能投顾网络安全与监管科技.md)：40 页、13 原图、三道 MCQ 与财报/条款练习；class03 两表卡已补。p36–38 已核为假设 filing/issuer policy，无指定真实基金，不再以外部基金文件阻塞；转录/失效分享等限制保留。 [正式回执](EF5560_Fintech_and_AI_in_Finance/_meta/material-completion-20261126/m12/writeback-receipt.json)。
+- [EF5560-M12](EF5560_Fintech_and_AI_in_Finance/notes/M12-智能投顾网络安全与监管科技.md)：40 页、13 原图、三道 MCQ 与财报/条款练习；class03 两表卡已补。p36–38 已核为假设 filing/issuer policy，无指定真实基金，不再以外部基金文件阻塞；S35 最后一课已融合，失效分享等其他限制保留。 [正式回执](EF5560_Fintech_and_AI_in_Finance/_meta/material-completion-20261126/m12/writeback-receipt.json)。
 - [IS5542-M10](IS5542_GenAI_in_Business/notes/M10-责任AI-公平解释与治理落地.md)：71 页、60 原图；B1/B2 定向关闭，U12 接入。视频全文、旧考试页现行性及 M07 原件仍有缺口。 [正式回执](_meta/material-completion-20261126/is5542/m10/publication-result.json)。
 - [IS6400-Quiz复盘](IS6400_Business_Data_Analytics/review/canvas-submissions-20261126/课后复盘-原作答与纠错.md)：三份历史 Quiz 原作答复盘、同源条件纠错及中英变式；完整 Canvas 题面/教师评分/原始数列缺口保留，不替换原附件。 [正式回执](IS6400_Business_Data_Analytics/review/material-completion-review-20261126/publication-receipt.json)。
 - [IS6400-ProjectTemplate导览](IS6400_Business_Data_Analytics/review/project-template-20261126/ProjectTemplate-逐页使用导览.md)：ProjectTemplate 实际 4 页与 CRISP-DM/现有证据映射已补，原页 3 图；只是模板使用导览，不表示 A06 正式报告已写完。 [正式回执](IS6400_Business_Data_Analytics/review/material-completion-review-20261126/publication-receipt.json)。
@@ -29,7 +33,7 @@ updated: 2026-11-27
 本次是复习专题，不增加 M／T 讲次数。材料记录与教学审查只覆盖新专题；期末重点按最新范围准备，完整旧笔记继续保留。
 
 
-五门 MScAIB 课程的中文精读笔记、原始材料、课堂转录、学习解析与期末复习入口。当前有 **62 个核心 M/T 入口：46 篇 v1.0、15 篇 v0.9、1 篇网页 review 与部分转录草稿**；材料版本与本人掌握程度分别记录。
+五门 MScAIB 课程的中文精读笔记、原始材料、课堂转录、学习解析与期末复习入口。当前有 **62 个核心 M/T 入口：47 篇 v1.0、14 篇 v0.9、1 篇网页 review 与部分转录草稿**；材料版本与本人掌握程度分别记录。
 
 
 > **11/26 全材料与三阶段审计**：[153份教师源、28份实际交件、逐源处理矩阵与队列](_meta/canvas-file-audit-20261126/README.md)。包含数据、代码、题目、参考答案、模板、反馈和行政附件；归档及核验完成不代表新增教学已经制作。
@@ -53,7 +57,7 @@ updated: 2026-11-27
 | 课程 | 课程码 | 核心 M/T 数 | 笔记 | 转录 |
 |---|---|---:|---|---|
 | AI 会计 | AC6761 | 11 | M01–M06 v1.0；M08–M09 v1.0；M10–M11 v0.9；T01 v0.9 | M01 ✅、M02 ✅、M03 ✅、M04 ✅、M05 ✅、M06 ✅、M08 ✅、M09 ✅；待补：M10/M11；无专属转录：T01 |
-| 金融科技与 AI | EF5560 | 12 | M01–M11 v1.0；M12 v0.9 | M01 ✅、M02 ✅、M03 ✅、M04 ✅、M05 ✅、M06 ✅、M07 ✅、M08 ✅、M09 ✅、M10 ✅、M11 ✅；待补：M12 |
+| 金融科技与 AI | EF5560 | 12 | M01–M12 v1.0 | M01 ✅、M02 ✅、M03 ✅、M04 ✅、M05 ✅、M06 ✅、M07 ✅、M08 ✅、M09 ✅、M10 ✅、M11 ✅、M12 ✅；S35 11/26 最后一课及M11后续已融合，原音未逐字听校 |
 | AI 伦理规管 | IS5113 | 9 | M01 v0.9；M02–M06 v1.0；M07–M08 v0.9；M09 v1.0 | M02 ✅、M03 ✅、M04 ✅、M05 ✅、M06 ✅、M09 ✅；待补：M07/M08；无专属转录：M01 |
 | 商业生成式 AI | IS5542 | 10 | M01–M05 v1.0；M06 v0.9；M07 draft；M08–M10 v0.9 | M01 ✅、M02 ✅、M03 ✅、M04 ✅、M05 ✅；待补：M06/M08/M09/M10；部分：M07 partial |
 | 商业数据分析 | IS6400 | 20 | M01 v0.9；M02–M10 v1.0；T01 v0.9；T02–T05 v1.0；T07 v1.0；T08 v0.9；T09 v1.0；T10 v0.9；T11 v1.0 | M02 ✅、M03 ✅、M04 ✅、M05 ✅、M06 ✅、M07 ✅、M08 ✅、M09 ✅、M10 ✅、T02 ✅、T03 ✅、T04 ✅、T05 ✅、T07 ✅、T09 ✅、T11 ✅；待补：T01/T08/T10；无专属转录：M01 |

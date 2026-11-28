@@ -1,0 +1,298 @@
+PAGE 24
+Darktrace Case: Is the Service Worth Its Cost?
+
+
+     • Contain the suspicious session or device while keeping unaffected payment services
+       available.
+
+     • Preserve logs and review the incident before restoring access.
+
+     • In a trial, compare missed incidents, false alarms, staff time and disruption with existing
+       controls.
+
+
+   Illustration: reducing 100 daily alerts to 20 saves review work only if serious incidents are still
+   detected. Subscription renewal depends on the value of the service, not the alert count alone.
+
+
+   Product context: Darktrace. Trial and alert counts are teaching examples.
+
+
+
+                                                                                                         24/40
+
+
+PAGE 26
+Operational Resilience: Can the Bank Keep Serving Clients?
+
+
+
+     • Identify the payment or account service customers depend on.
+
+     • Set a tolerance for disruption, including how long the service can be unavailable.
+
+     • Test restoration with staff, systems and critical external providers involved.
+
+
+   For a payment firm, a protected backup is useful only if the team can restore the required
+   service. A successful file copy is not a recovery test.
+
+
+
+   Source: HKMA Supervisory Policy Manual OR-2, Operational Resilience.
+
+
+
+
+                                                                                                26/40
+
+
+PAGE 27
+Multiple-Choice Question: Recovery after Ransomware
+
+
+
+   A payment firm keeps live records and backups under the same administrator account. An
+   attacker takes over that account and encrypts both copies.
+
+   Which change most directly improves the firm’s ability to recover?
+
+    A) Maintain separately protected backups and test restoration regularly.
+
+    B) Replicate records more often under the same administrator account.
+
+    C) Encrypt the live database more strongly under the same access rules.
+
+   D) Retain more login alerts without changing how backups are protected.
+
+
+
+                                                                                            27/40
+
+
+PAGE 29
+A Customer Matches a Sanctions-List Name
+
+
+
+   Illustrative account application: the name matches a list entry, but the date of birth differs.
+
+    • The bank’s problem. It needs to establish whether the applicant and the listed person
+      are the same person.
+
+    • The software’s task. Compare names and identifiers, find possible matches, and show
+      the evidence to a reviewer.
+
+    • The reviewer’s task. Resolve missing or conflicting information and record the decision.
+
+   Regulatory technology (RegTech) helps institutions perform and document these checks.
+
+
+
+                                                                                                     29/40
+
+
+PAGE 30
+What RegTech Does
+
+
+
+
+                    • Know your customer (KYC). Verify identity and
+                      understand who owns or controls an account.
+
+                    • Anti-money-laundering (AML) monitoring. Flag
+                      unusual transactions for investigation.
+
+                    • Sanctions screening. Compare customer details
+                      with relevant lists and review possible matches.
+
+
+
+
+                                                                         30/40
+
+
+PAGE 31
+Why Banks Buy Compliance Software
+
+
+  A bank must review many customers and payments, with limited staff time.
+
+    • Reduce repeated work. Retrieve documents and match records automatically so staff
+      can investigate uncertain cases.
+
+    • Keep checks current. Updated lists and customer information can change whether an
+      earlier decision remains appropriate.
+
+    • Retain evidence. Link each alert and decision to its source records so another reviewer
+      can reconstruct what happened.
+
+  Useful measures include review time, missed cases, and the workload caused by false alerts.
+
+
+                                                                                                31/40
+
+
+PAGE 32
+WeLab Bank: The Business behind Mobile Onboarding
+
+
+
+
+     • WeLab Bank 汇立银行 is a licensed digital bank in HKSAR, offering deposits, lending and
+       wealth services through an app.
+
+     • Lending income must cover funding, credit losses and operating costs. Remote onboarding
+       can reduce branch paperwork.
+
+     • Genuine customers need to complete the application; missing or conflicting identity
+       evidence needs review.
+
+
+   Sources: HKMA Register of Authorized Institutions; WeLab Bank company and account-opening information.
+
+
+
+                                                                                                            32/40
+
+
+PAGE 33
+WeLab Case: From an Identity Image to a Review
+
+
+
+   Capture                                  Check                                      Resolve
+   The applicant submits an                 Verify the document and                    An unclear image needs a
+   identity document and                    compare identifiers with                   clearer copy; conflicting
+   required consent.                        relevant records.                          evidence needs a reviewer.
+
+   Identity suppliers such as Persona sell verification software and services. The bank sets its
+   decision rules and remains responsible for the account decision.
+
+
+
+   WeLab onboarding context; Persona platform. This is a teaching workflow, not a claim that WeLab uses Persona.
+
+
+
+
+                                                                                                                    33/40
+
+
+PAGE 34
+WeLab Case: A Similar Name Creates an Alert
+
+
+
+   Hypothetical applicant: the name resembles a sanctions entry, the date of birth differs, and
+   the identity number is not yet verified.
+
+    • Compare the matching and conflicting identifiers against source records.
+
+    • Verify the missing evidence and keep a record of what resolves the uncertainty.
+
+    • Apply the bank’s screening rules; record the decision and escalate unresolved doubt.
+
+   Review capacity: if 40 alerts remain and staff can review 10 today, 30 need a priority and
+   interim-control decision. AI summaries can assist review without settling the identity question.
+
+
+
+
+                                                                                                      34/40
+
+
+PAGE 35
+Multiple-Choice Question: A Possible Sanctions Match
+
+
+
+   A screening system flags a customer whose name matches a sanctions entry. The date of birth
+   differs, and the record has no verified passport number.
+
+   What is the best next step?
+
+    A) Reject the customer automatically because the name matches exactly.
+
+    B) Close the alert automatically because one field differs.
+
+    C) Verify identity evidence, document the review, and escalate unresolved doubt.
+
+   D) Raise the screening threshold for all customers to reduce similar alerts.
+
+
+
+                                                                                                 35/40
+
+
+PAGE 36
+Check an LLM’s Financial-Data Extraction
+
+
+
+
+        Hypothetical filing                               Draft — not yet checked
+        First published 15 March 2026
+                                                          2025 revenue: 120
+                                                 LLM
+        “For the year ended 31 Decem-
+                                                          Currency and unit: HK dollars
+        ber 2025, revenue was HK$120
+        million, compared with HK$100                     Information available from:
+        million in 2024.”                                 31 December 2025
+
+
+
+   Which fields need correction before using this record as a return predictor?
+
+
+                                                                                          36/40
+
+
+PAGE 37
+LLM-Extracted Filings as Return Predictors
+
+
+   Illustrative filing: Revenue rose from HK$100 million to HK$120 million.
+
+                             Revenue growth = 120/100 − 1 = 20%.
+
+
+
+    • Extraction: The LLM records the amounts and reporting periods. Check the units and
+      retain the source passage before calculating growth.
+
+    • Timing (Class 1): The predictor becomes available when the company publishes the
+      information, not at the accounting period end.
+
+    • Evaluation (Classes 2–4): Test whether the extracted predictor improves forecasts on
+      later observations relative to the same model without it.
+
+
+                                                                                             37/40
+
+
+PAGE 38
+Check an LLM’s Reading of Redemption Terms
+
+
+  Hypothetical issuer policy
+  “Only approved business account holders may request direct USD redemption. Complete
+  requests received after 15:00 HKSAR time are processed on the next business day.”
+
+  LLM draft — not yet checked
+
+    • Eligible customer: any token holder.
+
+    • Cash available in the bank: next business day for requests after 15:00.
+
+  Who is actually eligible? Does the passage specify when bank funds become available?
+
+  Classroom policy, not an actual issuer’s terms. Connect the review to the Class 9 CFO and Class 10 supplier payment.
+
+
+
+
+                                                                                                                         38/40
+

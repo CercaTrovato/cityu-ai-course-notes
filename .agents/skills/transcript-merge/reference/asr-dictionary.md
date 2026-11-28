@@ -268,6 +268,15 @@
 | PVOC / SEC | PBOC 等机构名 `[?]` | EF5560 M04 A `02:03:46`、B `01:49:41`；B 支持 PBOC，后句仍需回听，不硬改细则 |
 | 00:58:43–00:59:53 | “OLX”“Farmer French”“asset return”是 ASR 风险词 | 不把它们当校正后的英文原话；使用 `[?]` 或按讲义术语回写（OLS / Fama-French / excess return 需主代理回源核对） |
 | 01:49–02:04 | Sharpe → “shock ratio”；fire sales → “file sales” | 按语境与讲义校正，必要处标 [?] |
+| invoice violence / Alex / Bambi | invoice finance / Alice / Bank B（仅按讲义解释，不改原转录） | EF5560 S35 `04:19`、`04:24`、`22:20`；L11 p39/45 |
+| 95% / 50,000；no-return无loss；50→20/10.0；low guarantee | 数字或否定冲突：按原题与算术保留，非确定逐字纠词 | EF5560 S35 `05:37`–`07:23`、`22:36`、`35:25`–`35:46`、`38:26` |
+| mobile / global / broker / work advisor | Robo-advisor（按 Lec12 p.5–14） | S35 M12 多处；仅解释校词，原引文改动用方括号 |
+| human with will / AI with will | human review / AI review | S35 `01:01:41`–`01:01:48`；Lec12 p.6/9 问卷冲突语境 |
+| DuckTrain / duck trace / dot trace | Darktrace | S35 `01:31:13`–`01:34:34`，Lec12 p.22–24 |
+| agri-bank；QoS drive / CloudStripes | Equifax；CrowdStrike | S35 `01:34:57`–`01:36:13`，Lec12 p.25 |
+| a sauna（身份供应商语境） | Persona | S35 `01:51:31`，Lec12 p.33；不推 WeLab 采购关系 |
+| revealed（资料由真人核查语境） | reviewed | S35 `01:51:06`，Lec12 p.32–33；引文作 [reviewed] |
+| 首轮 Tumtion | 顺序版为 use the video link，无平台名 | S35 `02:05:50`；丢弃首轮平台猜测，不把 Tencent Meeting 书面名称冒作口述听清 |
 
 ## IS6400 T02 定点校词复核（2026-10-01）
 
