@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "course": "IS5113",
-  "updated_at": "2026-11-28T10:45:19+08:00",
+  "updated_at": "2026-11-28T18:40:30+08:00",
   "framework_status": "ready_with_source_gaps",
   "units": [
     {
@@ -379,9 +379,21 @@
           "question_id": "Q-U03-01",
           "user_answer_provided": false,
           "whole_unit_mastery_claimed": false
+        },
+        {
+          "session_id": "2026-11-28-20-u03-duty-motive-maxim-entry",
+          "path": "sessions/2026-11-28-20-u03-duty-motive-maxim-entry.md",
+          "point": "合乎义务行为与出于义务动机的区别",
+          "question_id": "Q-U03-01",
+          "result": "correct_full_distinction_with_reason_after_teaching_and_given_motives",
+          "motive_is_given_in_case_not_real_mind_reading": true,
+          "benefit_presence_not_sole_motive_test": "assistant_scope_precision",
+          "reference_access": "unknown",
+          "long_term_retention_tested": false,
+          "whole_unit_mastery_claimed": false
         }
       ],
-      "coverage_note": "仅已引入康德善良意志/动机起点并给Q-U03-01，尚无本人原答。康德是义务论一支；普遍化/人为目的、行动准则及具体义务检验仍待后续，掌握未知。"
+      "coverage_note": "Q-U03-01动机/行为区分及理由正确，收益不能单独定动机；准则maxim的情况/目的/行动一般规则和模板已引入，Q02尚无原答。未由此讲完普遍化/矛盾或后续表述，整体掌握未知。"
     },
     {
       "id": "U04",
@@ -1204,6 +1216,28 @@
         "20261128-103843-u02-09-self-interest"
       ],
       "maintenance_round_id": "20261128-103843-u02-09-self-interest"
+    },
+    {
+      "id": "2026-11-28-20-u03-duty-motive-maxim-entry",
+      "date": "2026-11-28",
+      "type": "duty_motive_application_and_maxim_formation_intro",
+      "unit_ids": [
+        "U03"
+      ],
+      "path": "sessions/2026-11-28-20-u03-duty-motive-maxim-entry.md",
+      "status": "duty_motive_practice_completed_maxim_introduced",
+      "source_ids": [
+        "N02"
+      ],
+      "question_ids": [
+        "Q-U03-01"
+      ],
+      "exposed_next_question_id": "Q-U03-02",
+      "outcome": "完整区分合乎/出于义务并保留理由；下一准则形成有模板支持，无本人原答或普遍化结论",
+      "teaching_review": "passed_for_sampled_duty_motive_and_maxim_intro",
+      "review_path": "evidence/duty-motive-close-20261128-review.md",
+      "next_step": "建立判断标准 → U03 → 行动准则maxim形成：Q-U03-01已正确区分行为合乎义务与出于义务的决定性理由，收益有无不单独定动机。已给情况/目的/行动的一般规则模板，Q-U03-02虚假用途承诺题待答；先形成准则，普遍化与矛盾检验仍待下一步。",
+      "maintenance_round_id": "20261128-183247-u03-01-duty"
     }
   ],
   "mistakes": [
@@ -1256,7 +1290,7 @@
   "next_step": {
     "type": "guided_practice",
     "unit_id": "U03",
-    "action": "建立判断标准 → U03 → 善良意志与动机：伦理利己主义Q08/Q09已同组核心收束，U02核心入门转下一层，完整覆盖/长期掌握不宣称。已引入合乎义务的行为与出于义务的动机之别，Q-U03-01两经理保密承诺题待答；后续准则检验仍待教。",
+    "action": "建立判断标准 → U03 → 行动准则maxim形成：Q-U03-01已正确区分行为合乎义务与出于义务的决定性理由，收益有无不单独定动机。已给情况/目的/行动的一般规则模板，Q-U03-02虚假用途承诺题待答；先形成准则，普遍化与矛盾检验仍待下一步。",
     "dependent_source_gaps": [
       "G01",
       "G02",
@@ -1268,16 +1302,17 @@
     "blocked_by_login_for_starting_learning": false,
     "source_gap_note": "11/26 Canvas已核；旧G01等历史缺口以exam-guide/preparation当前状态为准，不重复要求登录。",
     "workspace_route": "route.md",
-    "question_id": "Q-U03-01",
-    "question_origin": "self_authored_given_same_action_different_motives",
-    "question_text": "两位经理都遵守员工数据保密承诺。甲只是为了保护自己的长期奖金和声誉；乙认为履行保密承诺本身就是自己应尽的义务，即使没有额外收益也这样做。按康德这里的标准，谁的动机更符合“出于义务”？为什么？",
+    "question_id": "Q-U03-02",
+    "question_origin": "self_authored_general_maxim_with_template_support",
+    "question_text": "一家企业为了拿到员工数据，向员工承诺“数据只用于培训支持”，但从一开始就打算将数据用于不利的人事筛选。请把它的行动理由写成一条一般准则。先描述它依据什么规则行动，不必先下好坏判决。",
     "question_status": "awaiting_user_answer",
     "current_location": {
       "trunk": "建立判断标准",
       "unit": "U03",
-      "point": "相同行为下动机是否出于义务"
+      "point": "从题设情况、目的和行动形成一般准则"
     },
-    "actual_intro_source": "parent_completed_response_after_Q09_packet"
+    "actual_intro_source": "parent_completed_response_after_intake",
+    "template_given": "当……时，为了……，我会……"
   },
   "learning_started": true,
   "state_definitions": {
@@ -1336,8 +1371,8 @@
     "shared_board": "deferred_to_current_supervisor",
     "current_supervisor_thread_id": "01a20688-5a1e-7a10-9e18-4ae2d0bcd7bd",
     "cross_thread_message_sent": false,
-    "latest_completed_git_commit": "291e57df4d2c1d103359863a53da62924d7bdcdb",
-    "current_batch_sync": "egoism_group_and_U03_intro_local_records_prepared_fixed_serial_transaction",
+    "latest_completed_git_commit": "72e1f4eef45193328bbd053cf14a8b7a5c9f94f7",
+    "current_batch_sync": "U03_01_local_records_prepared_fixed_serial_transaction",
     "online_blocker": "existing exporter false positive on task-close evidence filename; no bypass or shared code change"
   },
   "independent_review": {
@@ -1423,24 +1458,24 @@
   "pending_interaction": {
     "date": "2026-11-28",
     "unit_id": "U03",
-    "question_id": "Q-U03-01",
-    "question_text": "两位经理都遵守员工数据保密承诺。甲只是为了保护自己的长期奖金和声誉；乙认为履行保密承诺本身就是自己应尽的义务，即使没有额外收益也这样做。按康德这里的标准，谁的动机更符合“出于义务”？为什么？",
-    "question_origin": "self_authored_motive_comparison_after_short_intro",
+    "question_id": "Q-U03-02",
+    "question_text": "一家企业为了拿到员工数据，向员工承诺“数据只用于培训支持”，但从一开始就打算将数据用于不利的人事筛选。请把它的行动理由写成一条一般准则。先描述它依据什么规则行动，不必先下好坏判决。",
+    "question_origin": "self_authored_hypothetical_maxim_formation",
     "status": "awaiting_user_answer",
     "user_answer_verbatim": null,
     "mastery_claimed": false,
     "previous_point": {
-      "question_ids": [
-        "Q-U02-08",
-        "Q-U02-09"
-      ],
-      "status": "core_group_correct_after_teaching_not_full_U02_or_long_term",
-      "session_id": "2026-11-28-19-u02-egoism-group-u03-entry"
+      "question_id": "Q-U03-01",
+      "status": "correct_full_duty_action_motive_distinction_after_teaching",
+      "session_id": "2026-11-28-20-u03-duty-motive-maxim-entry"
     },
-    "raw_event_path": "maintenance/inbox/20261128-103843-u02-09-self-interest.json",
+    "raw_event_path": "maintenance/inbox/20261128-183247-u03-01-duty.json",
     "actual_intro_source": "parent_completed_response_frozen_addendum",
-    "session_consolidation": "pending_Kant_first_point_actual_answer",
-    "question_task_scope": "motives_and_Kant_moral_worth_not_same_behaviour_rightness",
-    "no_good_will_as_merely_kind_intention_sufficiency": true
+    "template_given": "当……时，为了……，我会……",
+    "not_independent_blind_test": true,
+    "session_consolidation": "pending_maxim_formation_actual_answer",
+    "question_task_scope": "form_general_rule_only_no_universalization_or_verdict_required",
+    "critical_given_condition": "from_beginning_false_use_promise_not_later_unplanned_use",
+    "no_single_fixed_wording_required": true
   }
 }
