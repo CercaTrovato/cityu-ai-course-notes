@@ -1,0 +1,62 @@
+{
+  "schema": "cityu-audio-cloud-audit-closeout-v1",
+  "date": "2026-11-28",
+  "scope": "All five courses: current registered audio archive and available local source inventory; non-teaching metadata maintenance.",
+  "cloud": {
+    "files": 50,
+    "bytes": 4018142458,
+    "owner_verified_files": 50,
+    "owner_email": "cercatrovato@gmail.com",
+    "local_upload_input_hashes_verified": 50,
+    "valid_audio_headers": 50,
+    "S30_missing_file_uploaded": true,
+    "S29_full_download_hash_matches_local": true,
+    "anonymous_audio_responses": 32,
+    "anonymous_normal_large_file_confirmation_pages": 18,
+    "login_or_permission_probe_failures": 0
+  },
+  "github": {
+    "core_commit": "bf1bf1ee19179578b41abf565755ae876eda115b",
+    "core_files_blob_verified": 18,
+    "core_critical_body_readbacks": 5,
+    "closing_receipt_remote_commit": "Recorded after push in the local final-remote-readback.json output."
+  },
+  "local_board": {
+    "all_five_audit_links_read_back": true,
+    "browser_sample": "EF5560"
+  },
+  "online_board": {
+    "all_five_published_and_read_back": true,
+    "all_five_browser_links_verified": true,
+    "only_audit_link_changed": true,
+    "existing_assets_reused": 459,
+    "pending_local_learning_records_exported": false
+  },
+  "boundaries": [
+    "Old account was not logged into; unregistered files and historical ownership transfers in that account were not audited.",
+    "50 upload versions do not establish complete original recordings of every class.",
+    "Known source gaps and private originals are separately listed in README.md.",
+    "Only S29 received a full remote byte-for-byte hash; other remote evidence is metadata and bounded download probes.",
+    "No new ASR or full listening pass was performed."
+  ],
+  "checks": {
+    "README_issues": 0,
+    "new_link_issues": 0,
+    "preexisting_link_issues": 6,
+    "integrity_errors": 0
+  },
+  "unrelated_workspace_changes_preserved": true,
+  "force_push": false,
+  "evidence": [
+    "current-audit.json",
+    "remote-file-metadata-final.json",
+    "S29-full-download-sha256-verified.json",
+    "S30-upload-verified.json",
+    "public-download-probes.json",
+    "local-media-headers.json",
+    "github-readback.json",
+    "board-publication.json",
+    "board-browser-readback.json",
+    "checks.json"
+  ]
+}
