@@ -6,6 +6,10 @@ updated: 2026-11-27
 
 # CityU 课程知识库
 
+## 2026-11-28 · 五课录音归档已核对
+
+[当前50份录音](_meta/audio-library/current-files-20261128.md)均由当前归档账号cercatrovato@gmail.com拥有，合计4,018,142,458字节。S30漏传已补，S29旧指纹漏字已核实修正；原件、脱敏、节选与私存/缺音范围分别记录。[本次审计](_meta/audio-cloud-audit-20261128/README.md)。
+
 ## 2026-11-28 · IS5542 最后一课与考前指南
 
 [Review Session考前指南](IS5542_GenAI_in_Business/review/review-session-20261128/Review-Session-考试要求与复习重点.md)已完成20页书面资料与最后课部分录音融合；[口头复习增量](IS5542_GenAI_in_Business/review/final-2026/last-class-review.md)提炼八项重点和两个自拟变式。2小时开卷，A20题/20分、B3题/30分、C三选二/50分，限获允许纸质资料，禁电子/联网/GenAI；课堂照片印证p.2，录音242段覆盖p.3–15，不据缺录排除其余内容。本人学习与固定单元不改。
