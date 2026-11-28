@@ -45,4 +45,6 @@
 
 Notion M11/M12两行已写并回读：M12材料v1.0，录音/转录/融合勾选为真，11/26课日有用户和媒体互证。既有备注按日期保留；通读、自测、复习次数/下次复习不变。[Notion回读](notion-sync-verified.json)。没有新确认的课程DDL，未创建暂定银行活动日程或改变作业提交/评分。
 
-GitHub、本地看板及线上看板以随后实际生成的 `closeout.json` 分别记录；本回执不把计划或上传尝试当三端完成。总监督回传也单列实际目标与结果。
+GitHub、本地和线上看板均已实际回读：核心提交 `df808732e163063822fa391163e0f089a4264f11`，121项白名单blob与五份关键正文已核；Notion两行及本地EF5560来源投影已核。线上release `89ec14cb-4347-4bb6-bc45-fe9960684551`，内容指纹 `150704e84d48fae061b05d8eff070b831b4b6e6b2146432698a4f6189a5d2b6f`，29项既有附件/28复用；独立GET与侧栏实际页面的最后一课段落已回读。当前总监督已收到回传，未给旧看板会话发消息。[最终三端回执](closeout.json) · [GitHub正文回读](github-readback.json) · [发布器回执](publisher-receipt.json) · [看板数据回读](board-sync-verified.json) · [页面回读](board-browser-readback.json)。
+
+完整性0问题，README检查0问题；全库链接仍有6项历史候选表格转义问题，本批新增0项，不追改历史候选。Git whitespace诊断保留冻结原字节/CRLF与replay diff的实际提示，不声称该诊断零警告。个人progress原始字节与HEAD一致；当前核心库存62篇（47 v1.0、14 v0.9、1 draft）。收尾回执以随后正常提交保存，不为自引用提交SHA循环追提。
