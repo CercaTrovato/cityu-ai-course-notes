@@ -1,0 +1,726 @@
+00:00
+I uploaded the slides on the canvas so that you can download it. In the example, an employee
+
+00:09
+submits an expense claim for HK$400. So first the retrieval looks up the policy and the
+
+00:20
+amount of the claim, and the policy says the limit for this type of expense is HK$600.
+
+00:27
+So the claim is for 500, then we apply the policy to the claim and the 500 is below 300.
+
+00:38
+So the claim meets the amount requirement, that comparison is the reasoning step.
+
+00:46
+The manager gives the final approval based on this reasoning results.
+
+00:51
+results. So a fixed rule gives the same results for the same input, while the Janti AI estimates
+
+00:57
+how likely different outputs are.
+
+01:06
+And in this page I list two concepts we mentioned in I think this lecture too. We compared two
+
+01:16
+problem with long cock inputs. A model can miss detail because it sits in the middle.
+
+01:26
+It can also lose track of a detail as more information fills up. In both examples, we
+
+01:35
+are looking for a flight that costs 200 Hong Kong dollars or less. So the first problem
+
+01:42
+is called lost in the middle.
+
+01:45
+We keep the flight details and the question
+
+01:50
+and also the lengths of the inputs.
+
+01:53
+And we move only the budget line from the beginning
+
+01:57
+to the middle and then to the end.
+
+02:00
+So the model may miss the budget
+
+02:02
+when the line is in the middle.
+
+02:05
+In some past models even did worse
+
+02:08
+with the author buried in the middle.
+
+02:12
+then they did no retrieval tax at all so that caused loss in the middle and the
+
+02:21
+second problem is the context rule I tell the agents my budget in the first
+
+02:27
+message and the agent runs 20 searches and keep all the old results and the
+
+02:36
+The budget is due in the first message,
+
+02:39
+but with the pages of fares to read,
+
+02:43
+the agent can lose track of it
+
+02:47
+and suggest, for example, a $2,500 flight.
+
+02:52
+And this can happen because the input is full.
+
+02:56
+So the harness can keep a short note with the budget,
+
+03:01
+and the fare it has checked
+
+03:04
+and it's like source ID so it can leave the old search results out of the next
+
+03:12
+if the traveler later asked about it like the changing the ticket the harness
+
+03:18
+can use the link to fetch the fare rules at that point that's just in time to
+
+03:26
+travel so the harness can also check the fare against the budget before the
+
+03:32
+the agent shows.
+
+03:34
+So actually, these two concepts is
+
+03:39
+in totally different contents.
+
+03:41
+One is the message within one prompt.
+
+03:45
+Another is multiple message and multiple prompts.
+
+03:55
+So next, let's look at the six vector for model selection.
+
+04:01
+The first question is about the data storage.
+
+04:07
+We ask where the data is allowed to be processed and who may see it.
+
+04:13
+For example, I might ask the AI app to summarize a confidential supply quote.
+
+04:20
+If the app sends the quote to an outside API, then the provider receives it and we need
+
+04:29
+to know who can see the quote and whether the provider keeps the copy and if the quote must
+
+04:36
+stay inside the company and we can run an open weight model in our private cloud or our own
+
+04:46
+local servers we still need to check where the tools send data and where we store the logs
+
+04:53
+So once we know which options make the data rules, we can compare them using the table.
+
+05:04
+And the modality tells us what the model can read and produce.
+
+05:11
+For example, can it handle a photo or can it handle a video?
+
+05:17
+And the latency tells us whether one response is fast enough for our time requirement.
+
+05:27
+And the performance tells us how well the model does the kinds of tasks we did.
+
+05:35
+And to estimate what one usable result cost, we add up the token charges,
+
+05:42
+charges, the tool fees, retrace, and the time people spend reviewing the answer.
+
+05:51
+Through all this approach tells us how many requests the system can handle in a given
+
+06:00
+time, especially at peak time.
+
+06:03
+So when we compare models on complex, we check whether each one can use the red facts in a long input.
+
+06:18
+The frontier AI needs more computing power as models get larger or more people use them.
+
+06:27
+So if GPU are in short supply, expansion can slow down, and data centers also need the electricity to run and cool their servers.
+
+06:40
+So the gigawatt wall is about power, and silicon wall is about the chips like GPU.
+
+06:47
+A 100 megawatt AI data center can use as much electricity in a year as about 100,000 homes.
+
+07:00
+And that's the international energy agency example.
+
+07:05
+So all that demand is in one place.
+
+07:09
+and to deliver more power, the grid may need new lines.
+
+07:18
+And the data center came up in 2016 Texas governor's race.
+
+07:26
+We know that Texas is deep blue, a deep red state.
+
+07:30
+And actually in the midterm, the state
+
+07:34
+elect the first demographic governor in over 30 years so one question for this
+
+07:43
+family was who would pay to upgrade the grid and for the AI company the question
+
+07:50
+is how many GPUs it can run with the power it has and I think that's the kind
+
+07:59
+kind of because of the electricity,
+
+08:02
+there is a butterfly effect that the data center
+
+08:08
+kind of lead to the success of the democratic governor
+
+08:15
+and it indirectly influence the U.S. stock market
+
+08:21
+in all the AI-related companies.
+
+08:25
+But I think the electricity cannot explain, I think,
+
+08:32
+80-hundred virus.
+
+08:34
+But I think it's the key reason that the demographic governor
+
+08:40
+went in the midterm, as they try to reject the data center
+
+08:52
+her established in Texas, in the whole state.
+
+08:58
+And this slide is about what we need to test
+
+09:02
+before we put an agent to work.
+
+09:05
+So a benchmark score tells us how a system did
+
+09:09
+in one test, such as the ARC-AGI,
+
+09:13
+and we need to know the test version
+
+09:17
+and how it scores and what tools the system could use.
+
+09:23
+It's budget and how many tries it has.
+
+09:26
+A benchmark is less useful for comparing system
+
+09:32
+where many of them scored close to full mark.
+
+09:36
+That's the benchmark saturation.
+
+09:38
+When we test an agent, we can give it a task
+
+09:42
+that takes several days and we want it to see
+
+09:46
+whether it can finish the job, recover
+
+09:49
+cover if something goes wrong and stay within its permission.
+
+09:55
+For example, we can pass an agent that checks
+
+09:58
+purchase request, we would give it new cases,
+
+10:03
+it should process a routine request correctly,
+
+10:06
+ask for any missing details that way for a manager
+
+10:11
+if a large elder needs approval,
+
+10:15
+and we would run each new cases more than once
+
+10:19
+with the same settings to get the robustness check.
+
+10:24
+And we would compare where the agent fails in each group,
+
+10:30
+and an agent could do well on most routine cases
+
+10:33
+and still try to place a large order without approval.
+
+10:39
+So the overall score would hide that problem.
+
+10:43
+And I think in business practice in the company,
+
+10:49
+We usually do not only use the standard test, we developed our own evaluation data set for
+
+11:00
+the practical targets as the GMB or ROI or the click-through rate.
+
+11:11
+So we would design our own test data set for ourselves based on our own work instead of
+
+11:20
+the standardized test set because if you know how to post-train the model, it would be easy
+
+11:29
+to achieve a decent results across this public standard evaluation data and next
+
+11:44
+we talk about the benchmark contamination it's about what happens
+
+11:49
+when the test material gets into training the red area shows where the
+
+11:55
+the two stats overlap.
+
+11:57
+A model can sometimes answer all questions from memory
+
+12:03
+and its scope, it gives us less convincing results
+
+12:10
+and less information about how well it will do
+
+12:16
+in new questions.
+
+12:18
+The DCR here stands for Data Contamination Risk.
+
+12:23
+it helps us look for different kinds of overlap in a timetable test a model might
+
+12:31
+have seen the same questions worded differently and that's the
+
+12:36
+semantic overlap and it might have seen a fact or a step that helps solve it
+
+12:45
+that's the information overlap. And it also might have seen the actual past record,
+
+12:54
+that's the data overlap. And lastly, it might have seen the answer linked to the
+
+13:01
+past item, that's the label or index overlap. The same case can involve more
+
+13:08
+more than one kind of overlap.
+
+13:11
+So we can look for overlap in the training material.
+
+13:15
+We can check and compare old and new questions
+
+13:20
+of similar difficulty.
+
+13:24
+Suppose the model scores 90 on the old data set
+
+13:29
+and 70 on the new data set.
+
+13:33
+The 20 point gap could come from
+
+13:37
+the prior exposure, the differences in difficulty were both. So to estimate the
+
+13:47
+effect of exposure, we could train two copies of the same model and they're in
+
+13:54
+the same condition and one sees the test question and the other sees the
+
+13:59
+comparable material inset and both take the same test. That difference
+
+14:05
+estimate how much the prior exposure helped in the previous evaluation.
+
+14:16
+Harness is the software around the model, and it lets agents use tools,
+
+14:25
+keep track of its work, and check the results.
+
+14:29
+The model is like a chip, and the harness is like the operational system, and the Tokyo
+
+14:38
+flight example in the, I think it's lecture three, shows what each part of the harness
+
+14:45
+does.
+
+14:47
+So E is the loop, it runs each steps and know when to stop, and T is the tool layer, it
+
+14:54
+it gives the agent a flight search tool
+
+14:56
+that takes a route and a date.
+
+15:00
+And C is content.
+
+15:02
+It gives the middle or gives the facts that it needs
+
+15:10
+for the step, like the budget.
+
+15:13
+And S is for state.
+
+15:15
+It saves facts for later,
+
+15:17
+like the dates checked and the search IDs.
+
+15:21
+L is for lifecycle hooks. This run at set points. For example, a hook can check the
+
+15:31
+permission before a tool call or log the results after it. And V is for evaluation
+
+15:39
+and verification. Before the agents quotes a file, the harness can use the
+
+15:48
+a safe search ID to check it against the original results.
+
+15:53
+And we can also run the same checks after a system updates
+
+15:59
+to catch any new failures.
+
+16:04
+A model can do better when it gives an editing tool
+
+16:08
+clearly, that can clearly instruct the requirement.
+
+16:16
+For example, we might want to change a wait time from 10 seconds to 30.
+
+16:21
+How does the model tell the tool which line to change?
+
+16:28
+This is the example in lecture three with the patch.
+
+16:34
+The model sends the old code and then the new code.
+
+16:39
+and a 12 find in all lines which with harsh line each line has a short tag so
+
+16:46
+the model sent that tag and the new text so in the actual comparison the group
+
+16:55
+code first took the same path both times with the same weights and the pass rate
+
+17:03
+rate was 6.7% with patches and about 65% with hashline. The result shows how the same model
+
+17:15
+can perform differently when it works with the tool in different formats.
+
+17:26
+React is a loop. The agent reads what it knows. It picks an action, calls a tool, and records
+
+17:39
+what comes back. And it uses the result to decide the next step. For example, I might
+
+17:47
+I want to a Toki flight on weekends
+
+17:53
+and my budget is $2,000 Hong Kong dollars.
+
+17:57
+And the agent sent Saturday dates to the flight search tool
+
+18:02
+and records the lowest fare it's get back
+
+18:06
+and $2,500 that's over my budget.
+
+18:10
+So it's search Sunday and Sunday comes back at like $1,000
+
+18:16
+and that fits my target.
+
+18:19
+So it tells me the date and price, and then it stops.
+
+18:23
+So if the search fails, then the agent records the error.
+
+18:29
+One time, or we try to run out,
+
+18:32
+it tells me what it couldn't confirm.
+
+18:39
+The next structure I want to review
+
+18:44
+review is a recursive self-improvement or RSI, a theory of experiment, an agent tries
+
+18:53
+a change and checks the score and uses it to choose what to try next.
+
+19:00
+So in this diagram, a person sets a goal, the time limit, and the scoring rule.
+
+19:09
+The agent changes the training code and runs it.
+
+19:13
+In this example, each run gets one GPU and five minutes, for example, and a fixed evaluator
+
+19:23
+then scores the results.
+
+19:27
+The evaluator stays locked so that each experiment is judged in the same way.
+
+19:33
+Here a lower score is better, so the agent keeps a change if it beats the best score
+
+19:40
+so far.
+
+19:40
+otherwise they discard the change and the agents record each result so it can
+
+19:48
+plan the next experiment in this example it's run 83 experiments and keep only 15
+
+19:57
+changes we still need a fresh test to see if all these changes help on the new
+
+20:06
+cases. Now let's discuss what happens when an agent treats an outside test as a command.
+
+20:19
+That test can come from an email, a document, or a passenger, or that the agent retrieved.
+
+20:30
+we can call this indirect prompt injection. For example, a supplier might
+
+20:37
+email us like a delivery date and the agent can read the dates only and
+
+20:44
+an authorized person at the company can approve a change to the author.
+
+20:54
+So in this diagram, a reader model takes the details we need from the email, and it has no credentials for business tools.
+
+21:07
+And the app checks the extracted fields, the user, and the matching records, and passes only the checked data to the second model.
+
+21:17
+and the second model can propose a tool action and the tool checks the users
+
+21:24
+permission before it acts so we separate the two LM to function based on their
+
+21:32
+based on our target to avoid this indirect prompt injection and we
+
+21:39
+need to check how the whole design works together that include what comes in what
+
+21:45
+what the user sees and what each model can do
+
+21:49
+and what tools allow.
+
+21:55
+The next concept is patch of rule.
+
+21:58
+And this is simple.
+
+22:00
+Before an agent takes the high risk action,
+
+22:03
+it stops, the action goes ahead only after
+
+22:07
+an authorized person approve it.
+
+22:11
+The picture on the left shows a false alarm from 1983,
+
+22:18
+a Soviet warning system reported incoming missiles,
+
+22:22
+and Petrov checked the alert and judged it was false.
+
+22:26
+Actually, he was right.
+
+22:28
+So that's why a possible human judgment can matter.
+
+22:32
+For example, an agent might draft a purchase order.
+
+22:37
+order, before it sends the order, a manager checks the supplier, the quantity, the, discuss
+
+22:46
+the price. If any of this change, then the manager has to approve the updated order instead
+
+22:55
+of the initial one. And the picture on the right-hand side shows just-in-time access,
+
+23:01
+we call it JIT. After the manager approves the order, the system gives the agent access
+
+23:10
+it needs for that one task, and that access expires when the task ends. A sandbox limits
+
+23:20
+what the agents can reach while it works. For example, it can use the purchase system
+
+23:26
+while the payroll files stay outside its reach,
+
+23:30
+and the system can also limit how long the task runs
+
+23:34
+and how much the agent can spend,
+
+23:36
+a lot of records who approved the order
+
+23:40
+and what the agent did.
+
+23:42
+Actually, the spam box is quite common in the company
+
+23:48
+as some colleagues usually dispatch the debugging work
+
+23:54
+work to the interns and sometimes some interns may make mistakes and our colleagues hope
+
+24:03
+that they can only access the limited data and the limited systems so that they may not
+
+24:12
+be able to destroy all the systems.
+
+24:16
+So we usually let interns to work in the set box.
+
+24:22
+and since this ID helps us identify where an image came from, in the diagram an app uses
+
+24:31
+Imagine Vertex AI to make a picture image and embeds a watermark in the pixels and the
+
+24:42
+The watermark is designed to be invisible and the SYNCID can check for it.
+
+24:50
+So if we find the signal, we have a clue about what made the image and to tell whether the
+
+25:01
+event really happened, so we still need evidence.
+
+25:17
+Thank you.
+

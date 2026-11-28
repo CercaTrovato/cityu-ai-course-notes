@@ -1,0 +1,55 @@
+{
+  "schema": "is5542-last-class-source-v1",
+  "received_on": "2026-11-28",
+  "user_priority": "本人确认最后一节课；录音与课堂照片列为重点来源，不据此把每项内容称必考",
+  "course": "IS5542",
+  "audio": {
+    "original_name": "香港城市大学 5.m4a",
+    "bytes": 12551756,
+    "sha256": "08b3dbd718e791e979a5cd167b30968c7073851bad1800d0365a56da25971057",
+    "duration_seconds": 1518.656,
+    "drive_file_id": "1-_llGnCQYC9iS8Q0QkTNU6Wv5WAuJZeF",
+    "drive_url": "https://drive.google.com/file/d/1-_llGnCQYC9iS8Q0QkTNU6Wv5WAuJZeF/view?usp=drivesdk",
+    "scope": "partial lecture review, p3–15"
+  },
+  "photo": {
+    "path": "IS5542_GenAI_in_Business/course_files_export/last-class-20261128/exam-arrangements-classroom.jpg",
+    "bytes": 126164,
+    "sha256": "21e8daaf8824862e61a7f0c59802031ce2e6a8d10b3912c4126e79ae98e6761d",
+    "reading": "actual source photo visually read; matches Review Session p2 incl open book, partsA/B/C, paper-only and no devices/Internet/GenAI"
+  },
+  "transcript": {
+    "path": "IS5542_GenAI_in_Business/transcripts/final-review-20261128-partial.txt",
+    "sha256": "dad9b54d203752b8c60c028cad3fb5807a068ba0b2811f921b6b20e154942d86",
+    "method": "local faster-whisper large-v3; sequential noVAD beam5 condition_on_previous_textFalse; raw ASR preserved; first166-segment pass retained in local library",
+    "segments": 242,
+    "machine_artifacts": "timestamps and verbatim ASR may contain errors; written PDF used to qualify numeric/technical differences"
+  },
+  "source_discrepancies": [
+    {
+      "time": "00:09/00:27",
+      "issue": "ASR400/500 and500below300 differ from written500/600; do not decide whether spoken slip or recognition error without independent listening"
+    },
+    {
+      "time": "01:35/02:47/17:53/18:06/18:10",
+      "issue": "oral-ASR fare figures differ from PDF; examples kept distinct, mechanism follows explicit constraints"
+    },
+    {
+      "time": "02:52",
+      "issue": "ASRbecause input full is not adopted as definition or necessary condition; p4 explicitly before input limit"
+    },
+    {
+      "time": "17:03",
+      "issue": "oral-ASR about65% vs PDF68.3%; no replacement of written exact result"
+    },
+    {
+      "time": "11:00",
+      "issue": "GMB acronym not resolved or expanded by guessing"
+    },
+    {
+      "time": "25:17",
+      "issue": "shortThankyou/highnoSpeech; not proof whole lecture ended"
+    }
+  ],
+  "privacy": "Full ASR read; no private contact/list information found; no word-by-word human listening claimed"
+}

@@ -13,13 +13,23 @@ updated: 2026-11-26
 
 ## 默认教材：先用本地笔记
 
-本课 `notes/` 精读笔记、已有练习解析和复习专题是主要教学材料；PPT/PDF/原题附件/转录在具体需要核实时定向回查。[M01 生成式AI笔记](../notes/M01-导论-生成式AI基础与企业落地.md)是入口示例；后续按当前知识点找对应小节，保留已有学习停点。[执行规则](AGENTS.md)。
+本课 `notes/` 精读笔记、已有练习解析和复习专题是主要教学材料；PPT/PDF/原题附件/转录在具体需要核实时定向回查。[M01 生成式 AI 笔记](../notes/M01-导论-生成式AI基础与企业落地.md)是入口示例；后续按当前知识点找对应小节，保留已有学习停点。[执行规则](AGENTS.md)。
 
 
+
+## 11/28 最后一课录音与课堂照片
+
+[[IS5542_GenAI_in_Business/review/final-2026/last-class-review|最后一课：口头复习增量]]：按本人要求列为重点材料，提炼八项答题增量与两个自拟变式。录音为 25 分 18.656 秒的部分来源，覆盖 Review p.3–15；照片印证 p.2，未录到的页不标略过。原指南已接入有用增量，个人学习/掌握状态不变。
+
+## 11/28 新增：Review Session 考前复习指南
+
+[[IS5542_GenAI_in_Business/review/review-session-20261128/Review-Session-考试要求与复习重点|考试要求与复习重点]]：20 页原件已归档，按考前指南安排 14 个要点、两道案例中英参考解析、9 张原图、1 个补充循环图和逐页入口。p.2 已明确 **2 小时、开卷、20 道 MCQ 共 20 分／3 道简答共 30 分／案例三选二共 50 分**；只限允许的纸质材料，禁电子设备、联网和 GenAI。完整范围保留，未宣布其他章节不考。
+
+[原始 PDF](../course_files_export/canvas-20261128/IS5542%20-%20Review%20Session.pdf) · [当前考试依据](final-2026/exam-guide.md)。这是资料与参考解析，不新增 M11，不改变本人学习停点、session、自测或掌握。最后一课 242 段部分转录及照片已补，具体允许材料清单仍待核。
 
 ## 11/27 新增重点参考
 
-[GenAI in business 复习资料](references/collected-20261127/README.md)已按本人要求归档并列为重点辅助参考，提供阅读副本、原稿哈希与9板块主题索引。来源／学期、文内“必考”与答案提示仍未核，不替代教师规则；固定框架和学习停点保持原值。
+[GenAI in business 复习资料](references/collected-20261127/README.md)已按本人要求归档并列为重点辅助参考，提供阅读副本、原稿哈希与 9 板块主题索引。来源／学期、文内“必考”与答案提示仍未核，不替代教师规则；固定框架和学习停点保持原值。
 
 ## 由浅入深的学习入口
 
@@ -39,7 +49,7 @@ updated: 2026-11-26
 | 当前顺序、停点与下一轮 | [route.md](final-2026/route.md) |
 | 实际学习证据 | [progress.json](final-2026/progress.json)；sessions/ 与 mistakes/ 有真实互动才新增 |
 
-当前：12 个主单元；0 轮 session、0 条错题。这里只报告已落盘记录，不断言本人从未学过。下一步：有真实学习断点则接续；没有则从 U01/D1 逐题诊断。11/28 复习课资料到位后只更新考试依据和路线，不重建单元。
+当前：12 个主单元；0 轮 session、0 条错题。这里只报告已落盘记录，不断言本人从未学过。下一步：有真实学习断点则接续；没有则从 U01/D1 逐题诊断。11/28 Review Session 已到位并更新考试依据和路线，固定单元与本人学习状态保留。
 
 固定框架与动态路线分开；每轮收尾更新本段、progress 和 route。本次准备维护未改变本人学习/作业提交/评分。
 <!-- /review-workspace-20261127 -->
@@ -73,4 +83,4 @@ updated: 2026-11-26
 
 ## M07 复习网页与来源核验（2026-11-27）
 
-[[IS5542_GenAI_in_Business/notes/M07-银行AI转型与多agent实践|M07：62页review逐页讲解及部分录音专题]]；[[IS5542_GenAI_in_Business/_prep/外部参考-M07网页演示与输入核验|12演示与10输入核验]]；[[IS5542_GenAI_in_Business/course_files_export/web-review-20261127/README|源快照、阅读PDF与分支附册]]。原课堂PPT/完整影片与音频边界未补齐，材料partial/draft，不表示本人已学会。
+[[IS5542_GenAI_in_Business/notes/M07-银行AI转型与多agent实践|M07：62 页 review 逐页讲解及部分录音专题]]；[[IS5542_GenAI_in_Business/_prep/外部参考-M07网页演示与输入核验|12 演示与 10 输入核验]]；[[IS5542_GenAI_in_Business/course_files_export/web-review-20261127/README|源快照、阅读 PDF 与分支附册]]。原课堂 PPT/完整影片与音频边界未补齐，材料 partial/draft，不表示本人已学会。

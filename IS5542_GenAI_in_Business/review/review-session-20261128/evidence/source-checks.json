@@ -1,0 +1,74 @@
+{
+  "schema": "note-source-checks-v1",
+  "scope": "p3 expense question and p17/p18 complete case task groups; p6/p7 checklist questions are explained in the corresponding concept sections.",
+  "sources": {
+    "review-20261127": {
+      "path": "../../../course_files_export/canvas-20261128/IS5542 - Review Session.pdf",
+      "sha256": "ec7a484c82040b8554005fa489d3ec9de524927d12afe8cee7c8d56080d55fa8"
+    }
+  },
+  "questions": [
+    {
+      "id": "p03-claim",
+      "source_id": "review-20261127",
+      "section": "3.1",
+      "source_location": "physical p.3",
+      "original": "Does this expense meet the reimbursement limit?",
+      "answers": [
+        {
+          "id": "claim",
+          "chinese": "金额条件满足",
+          "english": "Retrieval finds the HK\\$600 policy limit and the HK\\$500 claim."
+        }
+      ]
+    },
+    {
+      "id": "p17-email",
+      "source_id": "review-20261127",
+      "section": "4.1",
+      "source_location": "physical p.17, all three task groups",
+      "original": "Situation\n\nA support assistant reads an external email and attempts to change an account setting the user never approved.\n\nTrace the decision\n\nWhat came from the email? What led to the tool request? Where was the user's authorization checked?\n\nSeparate the roles\n\nIf one model reads the email and another can use tools, what should pass between them? Who should check the requested action?\n\nTest the boundary\n\nHow would you check that the unauthorized change is blocked and a legitimate request can still proceed?",
+      "answers": [
+        {
+          "id": "trace",
+          "chinese": "先区分邮件中的业务事实",
+          "english": "Separate email facts from instructions and user authorization."
+        },
+        {
+          "id": "roles",
+          "chinese": "Reader 没有改账号的凭据",
+          "english": "Pass only validated fields and source references from a reader without business-tool credentials."
+        },
+        {
+          "id": "test",
+          "chinese": "这同时查",
+          "english": "Test unauthorized email-driven requests, authorized requests and requests outside an approval's scope."
+        }
+      ]
+    },
+    {
+      "id": "p18-benchmark",
+      "source_id": "review-20261127",
+      "section": "5.1",
+      "source_location": "physical p.18, all three task groups",
+      "original": "Situation\n\nA new model scores well on old benchmark questions and substantially lower on newly written questions.\n\nCompare explanations\n\nCould the model have seen the old questions or their solutions? Could the new questions be harder or cover different topics?\n\nDesign a fair check\n\nHow would you build a fresh test with comparable topics and difficulty? What would you look for in possible training sources?\n\nInterpret the evidence\n\nWhich result would make the old score less credible? What does a similarity match tell you, and what would you check next?",
+      "answers": [
+        {
+          "id": "explanations",
+          "chinese": "可能见过旧题",
+          "english": "The gap is consistent with contamination, but it could also reflect harder questions, different topics or evaluation settings."
+        },
+        {
+          "id": "fair-check",
+          "chinese": "先列旧测试各主题和难度分布",
+          "english": "Build independently written fresh questions matched by topic and difficulty."
+        },
+        {
+          "id": "interpret",
+          "chinese": "相似匹配先证明",
+          "english": "A persistent old-question advantage under matched conditions, together with traceable training overlap, weakens the old score as evidence of generalization."
+        }
+      ]
+    }
+  ]
+}
